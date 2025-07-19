@@ -59,6 +59,4160 @@ struct Namer
 };
 Namer namer;
 
+Variable Float32_convert_UInt32_arg0;
+Function Float32_convert_UInt32;
+std::array<Variable*> Float32_convert_UInt32_args = { &Float32_convert_UInt32_arg0 };
+Variable Float32_convert_Int32_arg0;
+Function Float32_convert_Int32;
+std::array<Variable*> Float32_convert_Int32_args = { &Float32_convert_Int32_arg0 };
+Variable Float32_convert_Float16_arg0;
+Function Float32_convert_Float16;
+std::array<Variable*> Float32_convert_Float16_args = { &Float32_convert_Float16_arg0 };
+Variable Float32_convert_UInt16_arg0;
+Function Float32_convert_UInt16;
+std::array<Variable*> Float32_convert_UInt16_args = { &Float32_convert_UInt16_arg0 };
+Variable Float32_convert_Int16_arg0;
+Function Float32_convert_Int16;
+std::array<Variable*> Float32_convert_Int16_args = { &Float32_convert_Int16_arg0 };
+Variable Float32_ctor0_arg0;
+Function Float32_ctor0_Float32;
+std::array<Variable*> Float32_ctor0_Float32_args = { &Float32_ctor0_arg0 };
+Variable Float32_operator_index_Int32_arg0;
+Function Float32_operator_index_Int32;
+std::array<Variable*> Float32_operator_index_Int32_args = { &Float32_operator_index_Int32_arg0 };
+Variable Float32_operator_index_UInt32_arg0;
+Function Float32_operator_index_UInt32;
+std::array<Variable*> Float32_operator_index_UInt32_args = { &Float32_operator_index_UInt32_arg0 };
+Variable Float32_operator_index_Int16_arg0;
+Function Float32_operator_index_Int16;
+std::array<Variable*> Float32_operator_index_Int16_args = { &Float32_operator_index_Int16_arg0 };
+Variable Float32_operator_index_UInt16_arg0;
+Function Float32_operator_index_UInt16;
+std::array<Variable*> Float32_operator_index_UInt16_args = { &Float32_operator_index_UInt16_arg0 };
+Variable Float32_operator_add_Float32_arg0;
+Function Float32_operator_add_Float32;
+std::array<Variable*> Float32_operator_add_Float32_args = { &Float32_operator_add_Float32_arg0 };
+Variable Float32_operator_sub_Float32_arg0;
+Function Float32_operator_sub_Float32;
+std::array<Variable*> Float32_operator_sub_Float32_args = { &Float32_operator_sub_Float32_arg0 };
+Variable Float32_operator_mul_Float32_arg0;
+Function Float32_operator_mul_Float32;
+std::array<Variable*> Float32_operator_mul_Float32_args = { &Float32_operator_mul_Float32_arg0 };
+Variable Float32_operator_div_Float32_arg0;
+Function Float32_operator_div_Float32;
+std::array<Variable*> Float32_operator_div_Float32_args = { &Float32_operator_div_Float32_arg0 };
+Variable Float32_operator_mod_Float32_arg0;
+Function Float32_operator_mod_Float32;
+std::array<Variable*> Float32_operator_mod_Float32_args = { &Float32_operator_mod_Float32_arg0 };
+Variable Float32_operator_addasg_Float32_arg0;
+Function Float32_operator_addasg_Float32;
+std::array<Variable*> Float32_operator_addasg_Float32_args = { &Float32_operator_addasg_Float32_arg0 };
+Variable Float32_operator_subasg_Float32_arg0;
+Function Float32_operator_subasg_Float32;
+std::array<Variable*> Float32_operator_subasg_Float32_args = { &Float32_operator_subasg_Float32_arg0 };
+Variable Float32_operator_mulasg_Float32_arg0;
+Function Float32_operator_mulasg_Float32;
+std::array<Variable*> Float32_operator_mulasg_Float32_args = { &Float32_operator_mulasg_Float32_arg0 };
+Variable Float32_operator_divasg_Float32_arg0;
+Function Float32_operator_divasg_Float32;
+std::array<Variable*> Float32_operator_divasg_Float32_args = { &Float32_operator_divasg_Float32_arg0 };
+Variable Float32_operator_lt_Float32_arg0;
+Function Float32_operator_lt_Float32;
+std::array<Variable*> Float32_operator_lt_Float32_args = { &Float32_operator_lt_Float32_arg0 };
+Variable Float32_operator_lte_Float32_arg0;
+Function Float32_operator_lte_Float32;
+std::array<Variable*> Float32_operator_lte_Float32_args = { &Float32_operator_lte_Float32_arg0 };
+Variable Float32_operator_gt_Float32_arg0;
+Function Float32_operator_gt_Float32;
+std::array<Variable*> Float32_operator_gt_Float32_args = { &Float32_operator_gt_Float32_arg0 };
+Variable Float32_operator_gte_Float32_arg0;
+Function Float32_operator_gte_Float32;
+std::array<Variable*> Float32_operator_gte_Float32_args = { &Float32_operator_gte_Float32_arg0 };
+Variable Float32_operator_eq_Float32_arg0;
+Function Float32_operator_eq_Float32;
+std::array<Variable*> Float32_operator_eq_Float32_args = { &Float32_operator_eq_Float32_arg0 };
+Variable Float32_operator_neq_Float32_arg0;
+Function Float32_operator_neq_Float32;
+std::array<Variable*> Float32_operator_neq_Float32_args = { &Float32_operator_neq_Float32_arg0 };
+Variable UInt32_convert_Float32_arg0;
+Function UInt32_convert_Float32;
+std::array<Variable*> UInt32_convert_Float32_args = { &UInt32_convert_Float32_arg0 };
+Variable UInt32_convert_Int32_arg0;
+Function UInt32_convert_Int32;
+std::array<Variable*> UInt32_convert_Int32_args = { &UInt32_convert_Int32_arg0 };
+Variable UInt32_convert_Float16_arg0;
+Function UInt32_convert_Float16;
+std::array<Variable*> UInt32_convert_Float16_args = { &UInt32_convert_Float16_arg0 };
+Variable UInt32_convert_UInt16_arg0;
+Function UInt32_convert_UInt16;
+std::array<Variable*> UInt32_convert_UInt16_args = { &UInt32_convert_UInt16_arg0 };
+Variable UInt32_convert_Int16_arg0;
+Function UInt32_convert_Int16;
+std::array<Variable*> UInt32_convert_Int16_args = { &UInt32_convert_Int16_arg0 };
+Variable UInt32_ctor0_arg0;
+Function UInt32_ctor0_UInt32;
+std::array<Variable*> UInt32_ctor0_UInt32_args = { &UInt32_ctor0_arg0 };
+Variable UInt32_operator_index_Int32_arg0;
+Function UInt32_operator_index_Int32;
+std::array<Variable*> UInt32_operator_index_Int32_args = { &UInt32_operator_index_Int32_arg0 };
+Variable UInt32_operator_index_UInt32_arg0;
+Function UInt32_operator_index_UInt32;
+std::array<Variable*> UInt32_operator_index_UInt32_args = { &UInt32_operator_index_UInt32_arg0 };
+Variable UInt32_operator_index_Int16_arg0;
+Function UInt32_operator_index_Int16;
+std::array<Variable*> UInt32_operator_index_Int16_args = { &UInt32_operator_index_Int16_arg0 };
+Variable UInt32_operator_index_UInt16_arg0;
+Function UInt32_operator_index_UInt16;
+std::array<Variable*> UInt32_operator_index_UInt16_args = { &UInt32_operator_index_UInt16_arg0 };
+Variable UInt32_operator_add_UInt32_arg0;
+Function UInt32_operator_add_UInt32;
+std::array<Variable*> UInt32_operator_add_UInt32_args = { &UInt32_operator_add_UInt32_arg0 };
+Variable UInt32_operator_sub_UInt32_arg0;
+Function UInt32_operator_sub_UInt32;
+std::array<Variable*> UInt32_operator_sub_UInt32_args = { &UInt32_operator_sub_UInt32_arg0 };
+Variable UInt32_operator_mul_UInt32_arg0;
+Function UInt32_operator_mul_UInt32;
+std::array<Variable*> UInt32_operator_mul_UInt32_args = { &UInt32_operator_mul_UInt32_arg0 };
+Variable UInt32_operator_div_UInt32_arg0;
+Function UInt32_operator_div_UInt32;
+std::array<Variable*> UInt32_operator_div_UInt32_args = { &UInt32_operator_div_UInt32_arg0 };
+Variable UInt32_operator_mod_UInt32_arg0;
+Function UInt32_operator_mod_UInt32;
+std::array<Variable*> UInt32_operator_mod_UInt32_args = { &UInt32_operator_mod_UInt32_arg0 };
+Variable UInt32_operator_addasg_UInt32_arg0;
+Function UInt32_operator_addasg_UInt32;
+std::array<Variable*> UInt32_operator_addasg_UInt32_args = { &UInt32_operator_addasg_UInt32_arg0 };
+Variable UInt32_operator_subasg_UInt32_arg0;
+Function UInt32_operator_subasg_UInt32;
+std::array<Variable*> UInt32_operator_subasg_UInt32_args = { &UInt32_operator_subasg_UInt32_arg0 };
+Variable UInt32_operator_mulasg_UInt32_arg0;
+Function UInt32_operator_mulasg_UInt32;
+std::array<Variable*> UInt32_operator_mulasg_UInt32_args = { &UInt32_operator_mulasg_UInt32_arg0 };
+Variable UInt32_operator_divasg_UInt32_arg0;
+Function UInt32_operator_divasg_UInt32;
+std::array<Variable*> UInt32_operator_divasg_UInt32_args = { &UInt32_operator_divasg_UInt32_arg0 };
+Variable UInt32_operator_lt_UInt32_arg0;
+Function UInt32_operator_lt_UInt32;
+std::array<Variable*> UInt32_operator_lt_UInt32_args = { &UInt32_operator_lt_UInt32_arg0 };
+Variable UInt32_operator_lte_UInt32_arg0;
+Function UInt32_operator_lte_UInt32;
+std::array<Variable*> UInt32_operator_lte_UInt32_args = { &UInt32_operator_lte_UInt32_arg0 };
+Variable UInt32_operator_gt_UInt32_arg0;
+Function UInt32_operator_gt_UInt32;
+std::array<Variable*> UInt32_operator_gt_UInt32_args = { &UInt32_operator_gt_UInt32_arg0 };
+Variable UInt32_operator_gte_UInt32_arg0;
+Function UInt32_operator_gte_UInt32;
+std::array<Variable*> UInt32_operator_gte_UInt32_args = { &UInt32_operator_gte_UInt32_arg0 };
+Variable UInt32_operator_eq_UInt32_arg0;
+Function UInt32_operator_eq_UInt32;
+std::array<Variable*> UInt32_operator_eq_UInt32_args = { &UInt32_operator_eq_UInt32_arg0 };
+Variable UInt32_operator_neq_UInt32_arg0;
+Function UInt32_operator_neq_UInt32;
+std::array<Variable*> UInt32_operator_neq_UInt32_args = { &UInt32_operator_neq_UInt32_arg0 };
+Variable UInt32_operator_or_UInt32_arg0;
+Function UInt32_operator_or_UInt32;
+std::array<Variable*> UInt32_operator_or_UInt32_args = { &UInt32_operator_or_UInt32_arg0 };
+Variable UInt32_operator_and_UInt32_arg0;
+Function UInt32_operator_and_UInt32;
+std::array<Variable*> UInt32_operator_and_UInt32_args = { &UInt32_operator_and_UInt32_arg0 };
+Variable UInt32_operator_xor_UInt32_arg0;
+Function UInt32_operator_xor_UInt32;
+std::array<Variable*> UInt32_operator_xor_UInt32_args = { &UInt32_operator_xor_UInt32_arg0 };
+Variable UInt32_operator_lsh_UInt32_arg0;
+Function UInt32_operator_lsh_UInt32;
+std::array<Variable*> UInt32_operator_lsh_UInt32_args = { &UInt32_operator_lsh_UInt32_arg0 };
+Variable UInt32_operator_rsh_UInt32_arg0;
+Function UInt32_operator_rsh_UInt32;
+std::array<Variable*> UInt32_operator_rsh_UInt32_args = { &UInt32_operator_rsh_UInt32_arg0 };
+Variable UInt32_operator_orasg_UInt32_arg0;
+Function UInt32_operator_orasg_UInt32;
+std::array<Variable*> UInt32_operator_orasg_UInt32_args = { &UInt32_operator_orasg_UInt32_arg0 };
+Variable UInt32_operator_andasg_UInt32_arg0;
+Function UInt32_operator_andasg_UInt32;
+std::array<Variable*> UInt32_operator_andasg_UInt32_args = { &UInt32_operator_andasg_UInt32_arg0 };
+Variable UInt32_operator_xorasg_UInt32_arg0;
+Function UInt32_operator_xorasg_UInt32;
+std::array<Variable*> UInt32_operator_xorasg_UInt32_args = { &UInt32_operator_xorasg_UInt32_arg0 };
+Variable UInt32_operator_lshasg_UInt32_arg0;
+Function UInt32_operator_lshasg_UInt32;
+std::array<Variable*> UInt32_operator_lshasg_UInt32_args = { &UInt32_operator_lshasg_UInt32_arg0 };
+Variable UInt32_operator_rhsasg_UInt32_arg0;
+Function UInt32_operator_rhsasg_UInt32;
+std::array<Variable*> UInt32_operator_rhsasg_UInt32_args = { &UInt32_operator_rhsasg_UInt32_arg0 };
+Variable Int32_convert_Float32_arg0;
+Function Int32_convert_Float32;
+std::array<Variable*> Int32_convert_Float32_args = { &Int32_convert_Float32_arg0 };
+Variable Int32_convert_UInt32_arg0;
+Function Int32_convert_UInt32;
+std::array<Variable*> Int32_convert_UInt32_args = { &Int32_convert_UInt32_arg0 };
+Variable Int32_convert_Float16_arg0;
+Function Int32_convert_Float16;
+std::array<Variable*> Int32_convert_Float16_args = { &Int32_convert_Float16_arg0 };
+Variable Int32_convert_UInt16_arg0;
+Function Int32_convert_UInt16;
+std::array<Variable*> Int32_convert_UInt16_args = { &Int32_convert_UInt16_arg0 };
+Variable Int32_convert_Int16_arg0;
+Function Int32_convert_Int16;
+std::array<Variable*> Int32_convert_Int16_args = { &Int32_convert_Int16_arg0 };
+Variable Int32_ctor0_arg0;
+Function Int32_ctor0_Int32;
+std::array<Variable*> Int32_ctor0_Int32_args = { &Int32_ctor0_arg0 };
+Variable Int32_operator_index_Int32_arg0;
+Function Int32_operator_index_Int32;
+std::array<Variable*> Int32_operator_index_Int32_args = { &Int32_operator_index_Int32_arg0 };
+Variable Int32_operator_index_UInt32_arg0;
+Function Int32_operator_index_UInt32;
+std::array<Variable*> Int32_operator_index_UInt32_args = { &Int32_operator_index_UInt32_arg0 };
+Variable Int32_operator_index_Int16_arg0;
+Function Int32_operator_index_Int16;
+std::array<Variable*> Int32_operator_index_Int16_args = { &Int32_operator_index_Int16_arg0 };
+Variable Int32_operator_index_UInt16_arg0;
+Function Int32_operator_index_UInt16;
+std::array<Variable*> Int32_operator_index_UInt16_args = { &Int32_operator_index_UInt16_arg0 };
+Variable Int32_operator_add_Int32_arg0;
+Function Int32_operator_add_Int32;
+std::array<Variable*> Int32_operator_add_Int32_args = { &Int32_operator_add_Int32_arg0 };
+Variable Int32_operator_sub_Int32_arg0;
+Function Int32_operator_sub_Int32;
+std::array<Variable*> Int32_operator_sub_Int32_args = { &Int32_operator_sub_Int32_arg0 };
+Variable Int32_operator_mul_Int32_arg0;
+Function Int32_operator_mul_Int32;
+std::array<Variable*> Int32_operator_mul_Int32_args = { &Int32_operator_mul_Int32_arg0 };
+Variable Int32_operator_div_Int32_arg0;
+Function Int32_operator_div_Int32;
+std::array<Variable*> Int32_operator_div_Int32_args = { &Int32_operator_div_Int32_arg0 };
+Variable Int32_operator_mod_Int32_arg0;
+Function Int32_operator_mod_Int32;
+std::array<Variable*> Int32_operator_mod_Int32_args = { &Int32_operator_mod_Int32_arg0 };
+Variable Int32_operator_addasg_Int32_arg0;
+Function Int32_operator_addasg_Int32;
+std::array<Variable*> Int32_operator_addasg_Int32_args = { &Int32_operator_addasg_Int32_arg0 };
+Variable Int32_operator_subasg_Int32_arg0;
+Function Int32_operator_subasg_Int32;
+std::array<Variable*> Int32_operator_subasg_Int32_args = { &Int32_operator_subasg_Int32_arg0 };
+Variable Int32_operator_mulasg_Int32_arg0;
+Function Int32_operator_mulasg_Int32;
+std::array<Variable*> Int32_operator_mulasg_Int32_args = { &Int32_operator_mulasg_Int32_arg0 };
+Variable Int32_operator_divasg_Int32_arg0;
+Function Int32_operator_divasg_Int32;
+std::array<Variable*> Int32_operator_divasg_Int32_args = { &Int32_operator_divasg_Int32_arg0 };
+Variable Int32_operator_lt_Int32_arg0;
+Function Int32_operator_lt_Int32;
+std::array<Variable*> Int32_operator_lt_Int32_args = { &Int32_operator_lt_Int32_arg0 };
+Variable Int32_operator_lte_Int32_arg0;
+Function Int32_operator_lte_Int32;
+std::array<Variable*> Int32_operator_lte_Int32_args = { &Int32_operator_lte_Int32_arg0 };
+Variable Int32_operator_gt_Int32_arg0;
+Function Int32_operator_gt_Int32;
+std::array<Variable*> Int32_operator_gt_Int32_args = { &Int32_operator_gt_Int32_arg0 };
+Variable Int32_operator_gte_Int32_arg0;
+Function Int32_operator_gte_Int32;
+std::array<Variable*> Int32_operator_gte_Int32_args = { &Int32_operator_gte_Int32_arg0 };
+Variable Int32_operator_eq_Int32_arg0;
+Function Int32_operator_eq_Int32;
+std::array<Variable*> Int32_operator_eq_Int32_args = { &Int32_operator_eq_Int32_arg0 };
+Variable Int32_operator_neq_Int32_arg0;
+Function Int32_operator_neq_Int32;
+std::array<Variable*> Int32_operator_neq_Int32_args = { &Int32_operator_neq_Int32_arg0 };
+Variable Int32_operator_or_Int32_arg0;
+Function Int32_operator_or_Int32;
+std::array<Variable*> Int32_operator_or_Int32_args = { &Int32_operator_or_Int32_arg0 };
+Variable Int32_operator_and_Int32_arg0;
+Function Int32_operator_and_Int32;
+std::array<Variable*> Int32_operator_and_Int32_args = { &Int32_operator_and_Int32_arg0 };
+Variable Int32_operator_xor_Int32_arg0;
+Function Int32_operator_xor_Int32;
+std::array<Variable*> Int32_operator_xor_Int32_args = { &Int32_operator_xor_Int32_arg0 };
+Variable Int32_operator_lsh_Int32_arg0;
+Function Int32_operator_lsh_Int32;
+std::array<Variable*> Int32_operator_lsh_Int32_args = { &Int32_operator_lsh_Int32_arg0 };
+Variable Int32_operator_rsh_Int32_arg0;
+Function Int32_operator_rsh_Int32;
+std::array<Variable*> Int32_operator_rsh_Int32_args = { &Int32_operator_rsh_Int32_arg0 };
+Variable Int32_operator_orasg_Int32_arg0;
+Function Int32_operator_orasg_Int32;
+std::array<Variable*> Int32_operator_orasg_Int32_args = { &Int32_operator_orasg_Int32_arg0 };
+Variable Int32_operator_andasg_Int32_arg0;
+Function Int32_operator_andasg_Int32;
+std::array<Variable*> Int32_operator_andasg_Int32_args = { &Int32_operator_andasg_Int32_arg0 };
+Variable Int32_operator_xorasg_Int32_arg0;
+Function Int32_operator_xorasg_Int32;
+std::array<Variable*> Int32_operator_xorasg_Int32_args = { &Int32_operator_xorasg_Int32_arg0 };
+Variable Int32_operator_lshasg_Int32_arg0;
+Function Int32_operator_lshasg_Int32;
+std::array<Variable*> Int32_operator_lshasg_Int32_args = { &Int32_operator_lshasg_Int32_arg0 };
+Variable Int32_operator_rhsasg_Int32_arg0;
+Function Int32_operator_rhsasg_Int32;
+std::array<Variable*> Int32_operator_rhsasg_Int32_args = { &Int32_operator_rhsasg_Int32_arg0 };
+Variable Bool8_convert_UInt32_arg0;
+Function Bool8_convert_UInt32;
+std::array<Variable*> Bool8_convert_UInt32_args = { &Bool8_convert_UInt32_arg0 };
+Variable Bool8_convert_Int32_arg0;
+Function Bool8_convert_Int32;
+std::array<Variable*> Bool8_convert_Int32_args = { &Bool8_convert_Int32_arg0 };
+Variable Bool8_convert_UInt16_arg0;
+Function Bool8_convert_UInt16;
+std::array<Variable*> Bool8_convert_UInt16_args = { &Bool8_convert_UInt16_arg0 };
+Variable Bool8_convert_Int16_arg0;
+Function Bool8_convert_Int16;
+std::array<Variable*> Bool8_convert_Int16_args = { &Bool8_convert_Int16_arg0 };
+Variable Bool8_ctor0_arg0;
+Function Bool8_ctor0_Bool8;
+std::array<Variable*> Bool8_ctor0_Bool8_args = { &Bool8_ctor0_arg0 };
+Variable Bool8_operator_index_Int32_arg0;
+Function Bool8_operator_index_Int32;
+std::array<Variable*> Bool8_operator_index_Int32_args = { &Bool8_operator_index_Int32_arg0 };
+Variable Bool8_operator_index_UInt32_arg0;
+Function Bool8_operator_index_UInt32;
+std::array<Variable*> Bool8_operator_index_UInt32_args = { &Bool8_operator_index_UInt32_arg0 };
+Variable Bool8_operator_index_Int16_arg0;
+Function Bool8_operator_index_Int16;
+std::array<Variable*> Bool8_operator_index_Int16_args = { &Bool8_operator_index_Int16_arg0 };
+Variable Bool8_operator_index_UInt16_arg0;
+Function Bool8_operator_index_UInt16;
+std::array<Variable*> Bool8_operator_index_UInt16_args = { &Bool8_operator_index_UInt16_arg0 };
+Variable Bool8_operator_oror_Bool8_arg0;
+Function Bool8_operator_oror_Bool8;
+std::array<Variable*> Bool8_operator_oror_Bool8_args = { &Bool8_operator_oror_Bool8_arg0 };
+Variable Bool8_operator_andand_Bool8_arg0;
+Function Bool8_operator_andand_Bool8;
+std::array<Variable*> Bool8_operator_andand_Bool8_args = { &Bool8_operator_andand_Bool8_arg0 };
+Variable Bool8_operator_eq_Bool8_arg0;
+Function Bool8_operator_eq_Bool8;
+std::array<Variable*> Bool8_operator_eq_Bool8_args = { &Bool8_operator_eq_Bool8_arg0 };
+Variable Bool8_operator_neq_Bool8_arg0;
+Function Bool8_operator_neq_Bool8;
+std::array<Variable*> Bool8_operator_neq_Bool8_args = { &Bool8_operator_neq_Bool8_arg0 };
+Variable Float16_convert_Float32_arg0;
+Function Float16_convert_Float32;
+std::array<Variable*> Float16_convert_Float32_args = { &Float16_convert_Float32_arg0 };
+Variable Float16_convert_UInt32_arg0;
+Function Float16_convert_UInt32;
+std::array<Variable*> Float16_convert_UInt32_args = { &Float16_convert_UInt32_arg0 };
+Variable Float16_convert_Int32_arg0;
+Function Float16_convert_Int32;
+std::array<Variable*> Float16_convert_Int32_args = { &Float16_convert_Int32_arg0 };
+Variable Float16_convert_UInt16_arg0;
+Function Float16_convert_UInt16;
+std::array<Variable*> Float16_convert_UInt16_args = { &Float16_convert_UInt16_arg0 };
+Variable Float16_convert_Int16_arg0;
+Function Float16_convert_Int16;
+std::array<Variable*> Float16_convert_Int16_args = { &Float16_convert_Int16_arg0 };
+Variable Float16_ctor0_arg0;
+Function Float16_ctor0_Float16;
+std::array<Variable*> Float16_ctor0_Float16_args = { &Float16_ctor0_arg0 };
+Variable Float16_operator_index_Int32_arg0;
+Function Float16_operator_index_Int32;
+std::array<Variable*> Float16_operator_index_Int32_args = { &Float16_operator_index_Int32_arg0 };
+Variable Float16_operator_index_UInt32_arg0;
+Function Float16_operator_index_UInt32;
+std::array<Variable*> Float16_operator_index_UInt32_args = { &Float16_operator_index_UInt32_arg0 };
+Variable Float16_operator_index_Int16_arg0;
+Function Float16_operator_index_Int16;
+std::array<Variable*> Float16_operator_index_Int16_args = { &Float16_operator_index_Int16_arg0 };
+Variable Float16_operator_index_UInt16_arg0;
+Function Float16_operator_index_UInt16;
+std::array<Variable*> Float16_operator_index_UInt16_args = { &Float16_operator_index_UInt16_arg0 };
+Variable Float16_operator_add_Float16_arg0;
+Function Float16_operator_add_Float16;
+std::array<Variable*> Float16_operator_add_Float16_args = { &Float16_operator_add_Float16_arg0 };
+Variable Float16_operator_sub_Float16_arg0;
+Function Float16_operator_sub_Float16;
+std::array<Variable*> Float16_operator_sub_Float16_args = { &Float16_operator_sub_Float16_arg0 };
+Variable Float16_operator_mul_Float16_arg0;
+Function Float16_operator_mul_Float16;
+std::array<Variable*> Float16_operator_mul_Float16_args = { &Float16_operator_mul_Float16_arg0 };
+Variable Float16_operator_div_Float16_arg0;
+Function Float16_operator_div_Float16;
+std::array<Variable*> Float16_operator_div_Float16_args = { &Float16_operator_div_Float16_arg0 };
+Variable Float16_operator_mod_Float16_arg0;
+Function Float16_operator_mod_Float16;
+std::array<Variable*> Float16_operator_mod_Float16_args = { &Float16_operator_mod_Float16_arg0 };
+Variable Float16_operator_addasg_Float16_arg0;
+Function Float16_operator_addasg_Float16;
+std::array<Variable*> Float16_operator_addasg_Float16_args = { &Float16_operator_addasg_Float16_arg0 };
+Variable Float16_operator_subasg_Float16_arg0;
+Function Float16_operator_subasg_Float16;
+std::array<Variable*> Float16_operator_subasg_Float16_args = { &Float16_operator_subasg_Float16_arg0 };
+Variable Float16_operator_mulasg_Float16_arg0;
+Function Float16_operator_mulasg_Float16;
+std::array<Variable*> Float16_operator_mulasg_Float16_args = { &Float16_operator_mulasg_Float16_arg0 };
+Variable Float16_operator_divasg_Float16_arg0;
+Function Float16_operator_divasg_Float16;
+std::array<Variable*> Float16_operator_divasg_Float16_args = { &Float16_operator_divasg_Float16_arg0 };
+Variable Float16_operator_lt_Float16_arg0;
+Function Float16_operator_lt_Float16;
+std::array<Variable*> Float16_operator_lt_Float16_args = { &Float16_operator_lt_Float16_arg0 };
+Variable Float16_operator_lte_Float16_arg0;
+Function Float16_operator_lte_Float16;
+std::array<Variable*> Float16_operator_lte_Float16_args = { &Float16_operator_lte_Float16_arg0 };
+Variable Float16_operator_gt_Float16_arg0;
+Function Float16_operator_gt_Float16;
+std::array<Variable*> Float16_operator_gt_Float16_args = { &Float16_operator_gt_Float16_arg0 };
+Variable Float16_operator_gte_Float16_arg0;
+Function Float16_operator_gte_Float16;
+std::array<Variable*> Float16_operator_gte_Float16_args = { &Float16_operator_gte_Float16_arg0 };
+Variable Float16_operator_eq_Float16_arg0;
+Function Float16_operator_eq_Float16;
+std::array<Variable*> Float16_operator_eq_Float16_args = { &Float16_operator_eq_Float16_arg0 };
+Variable Float16_operator_neq_Float16_arg0;
+Function Float16_operator_neq_Float16;
+std::array<Variable*> Float16_operator_neq_Float16_args = { &Float16_operator_neq_Float16_arg0 };
+Variable UInt16_convert_Float32_arg0;
+Function UInt16_convert_Float32;
+std::array<Variable*> UInt16_convert_Float32_args = { &UInt16_convert_Float32_arg0 };
+Variable UInt16_convert_UInt32_arg0;
+Function UInt16_convert_UInt32;
+std::array<Variable*> UInt16_convert_UInt32_args = { &UInt16_convert_UInt32_arg0 };
+Variable UInt16_convert_Int32_arg0;
+Function UInt16_convert_Int32;
+std::array<Variable*> UInt16_convert_Int32_args = { &UInt16_convert_Int32_arg0 };
+Variable UInt16_convert_Float16_arg0;
+Function UInt16_convert_Float16;
+std::array<Variable*> UInt16_convert_Float16_args = { &UInt16_convert_Float16_arg0 };
+Variable UInt16_convert_Int16_arg0;
+Function UInt16_convert_Int16;
+std::array<Variable*> UInt16_convert_Int16_args = { &UInt16_convert_Int16_arg0 };
+Variable UInt16_ctor0_arg0;
+Function UInt16_ctor0_UInt16;
+std::array<Variable*> UInt16_ctor0_UInt16_args = { &UInt16_ctor0_arg0 };
+Variable UInt16_operator_index_Int32_arg0;
+Function UInt16_operator_index_Int32;
+std::array<Variable*> UInt16_operator_index_Int32_args = { &UInt16_operator_index_Int32_arg0 };
+Variable UInt16_operator_index_UInt32_arg0;
+Function UInt16_operator_index_UInt32;
+std::array<Variable*> UInt16_operator_index_UInt32_args = { &UInt16_operator_index_UInt32_arg0 };
+Variable UInt16_operator_index_Int16_arg0;
+Function UInt16_operator_index_Int16;
+std::array<Variable*> UInt16_operator_index_Int16_args = { &UInt16_operator_index_Int16_arg0 };
+Variable UInt16_operator_index_UInt16_arg0;
+Function UInt16_operator_index_UInt16;
+std::array<Variable*> UInt16_operator_index_UInt16_args = { &UInt16_operator_index_UInt16_arg0 };
+Variable UInt16_operator_add_UInt16_arg0;
+Function UInt16_operator_add_UInt16;
+std::array<Variable*> UInt16_operator_add_UInt16_args = { &UInt16_operator_add_UInt16_arg0 };
+Variable UInt16_operator_sub_UInt16_arg0;
+Function UInt16_operator_sub_UInt16;
+std::array<Variable*> UInt16_operator_sub_UInt16_args = { &UInt16_operator_sub_UInt16_arg0 };
+Variable UInt16_operator_mul_UInt16_arg0;
+Function UInt16_operator_mul_UInt16;
+std::array<Variable*> UInt16_operator_mul_UInt16_args = { &UInt16_operator_mul_UInt16_arg0 };
+Variable UInt16_operator_div_UInt16_arg0;
+Function UInt16_operator_div_UInt16;
+std::array<Variable*> UInt16_operator_div_UInt16_args = { &UInt16_operator_div_UInt16_arg0 };
+Variable UInt16_operator_mod_UInt16_arg0;
+Function UInt16_operator_mod_UInt16;
+std::array<Variable*> UInt16_operator_mod_UInt16_args = { &UInt16_operator_mod_UInt16_arg0 };
+Variable UInt16_operator_addasg_UInt16_arg0;
+Function UInt16_operator_addasg_UInt16;
+std::array<Variable*> UInt16_operator_addasg_UInt16_args = { &UInt16_operator_addasg_UInt16_arg0 };
+Variable UInt16_operator_subasg_UInt16_arg0;
+Function UInt16_operator_subasg_UInt16;
+std::array<Variable*> UInt16_operator_subasg_UInt16_args = { &UInt16_operator_subasg_UInt16_arg0 };
+Variable UInt16_operator_mulasg_UInt16_arg0;
+Function UInt16_operator_mulasg_UInt16;
+std::array<Variable*> UInt16_operator_mulasg_UInt16_args = { &UInt16_operator_mulasg_UInt16_arg0 };
+Variable UInt16_operator_divasg_UInt16_arg0;
+Function UInt16_operator_divasg_UInt16;
+std::array<Variable*> UInt16_operator_divasg_UInt16_args = { &UInt16_operator_divasg_UInt16_arg0 };
+Variable UInt16_operator_lt_UInt16_arg0;
+Function UInt16_operator_lt_UInt16;
+std::array<Variable*> UInt16_operator_lt_UInt16_args = { &UInt16_operator_lt_UInt16_arg0 };
+Variable UInt16_operator_lte_UInt16_arg0;
+Function UInt16_operator_lte_UInt16;
+std::array<Variable*> UInt16_operator_lte_UInt16_args = { &UInt16_operator_lte_UInt16_arg0 };
+Variable UInt16_operator_gt_UInt16_arg0;
+Function UInt16_operator_gt_UInt16;
+std::array<Variable*> UInt16_operator_gt_UInt16_args = { &UInt16_operator_gt_UInt16_arg0 };
+Variable UInt16_operator_gte_UInt16_arg0;
+Function UInt16_operator_gte_UInt16;
+std::array<Variable*> UInt16_operator_gte_UInt16_args = { &UInt16_operator_gte_UInt16_arg0 };
+Variable UInt16_operator_eq_UInt16_arg0;
+Function UInt16_operator_eq_UInt16;
+std::array<Variable*> UInt16_operator_eq_UInt16_args = { &UInt16_operator_eq_UInt16_arg0 };
+Variable UInt16_operator_neq_UInt16_arg0;
+Function UInt16_operator_neq_UInt16;
+std::array<Variable*> UInt16_operator_neq_UInt16_args = { &UInt16_operator_neq_UInt16_arg0 };
+Variable UInt16_operator_or_UInt16_arg0;
+Function UInt16_operator_or_UInt16;
+std::array<Variable*> UInt16_operator_or_UInt16_args = { &UInt16_operator_or_UInt16_arg0 };
+Variable UInt16_operator_and_UInt16_arg0;
+Function UInt16_operator_and_UInt16;
+std::array<Variable*> UInt16_operator_and_UInt16_args = { &UInt16_operator_and_UInt16_arg0 };
+Variable UInt16_operator_xor_UInt16_arg0;
+Function UInt16_operator_xor_UInt16;
+std::array<Variable*> UInt16_operator_xor_UInt16_args = { &UInt16_operator_xor_UInt16_arg0 };
+Variable UInt16_operator_lsh_UInt16_arg0;
+Function UInt16_operator_lsh_UInt16;
+std::array<Variable*> UInt16_operator_lsh_UInt16_args = { &UInt16_operator_lsh_UInt16_arg0 };
+Variable UInt16_operator_rsh_UInt16_arg0;
+Function UInt16_operator_rsh_UInt16;
+std::array<Variable*> UInt16_operator_rsh_UInt16_args = { &UInt16_operator_rsh_UInt16_arg0 };
+Variable UInt16_operator_orasg_UInt16_arg0;
+Function UInt16_operator_orasg_UInt16;
+std::array<Variable*> UInt16_operator_orasg_UInt16_args = { &UInt16_operator_orasg_UInt16_arg0 };
+Variable UInt16_operator_andasg_UInt16_arg0;
+Function UInt16_operator_andasg_UInt16;
+std::array<Variable*> UInt16_operator_andasg_UInt16_args = { &UInt16_operator_andasg_UInt16_arg0 };
+Variable UInt16_operator_xorasg_UInt16_arg0;
+Function UInt16_operator_xorasg_UInt16;
+std::array<Variable*> UInt16_operator_xorasg_UInt16_args = { &UInt16_operator_xorasg_UInt16_arg0 };
+Variable UInt16_operator_lshasg_UInt16_arg0;
+Function UInt16_operator_lshasg_UInt16;
+std::array<Variable*> UInt16_operator_lshasg_UInt16_args = { &UInt16_operator_lshasg_UInt16_arg0 };
+Variable UInt16_operator_rhsasg_UInt16_arg0;
+Function UInt16_operator_rhsasg_UInt16;
+std::array<Variable*> UInt16_operator_rhsasg_UInt16_args = { &UInt16_operator_rhsasg_UInt16_arg0 };
+Variable Int16_convert_Float32_arg0;
+Function Int16_convert_Float32;
+std::array<Variable*> Int16_convert_Float32_args = { &Int16_convert_Float32_arg0 };
+Variable Int16_convert_UInt32_arg0;
+Function Int16_convert_UInt32;
+std::array<Variable*> Int16_convert_UInt32_args = { &Int16_convert_UInt32_arg0 };
+Variable Int16_convert_Int32_arg0;
+Function Int16_convert_Int32;
+std::array<Variable*> Int16_convert_Int32_args = { &Int16_convert_Int32_arg0 };
+Variable Int16_convert_Float16_arg0;
+Function Int16_convert_Float16;
+std::array<Variable*> Int16_convert_Float16_args = { &Int16_convert_Float16_arg0 };
+Variable Int16_convert_UInt16_arg0;
+Function Int16_convert_UInt16;
+std::array<Variable*> Int16_convert_UInt16_args = { &Int16_convert_UInt16_arg0 };
+Variable Int16_ctor0_arg0;
+Function Int16_ctor0_Int16;
+std::array<Variable*> Int16_ctor0_Int16_args = { &Int16_ctor0_arg0 };
+Variable Int16_operator_index_Int32_arg0;
+Function Int16_operator_index_Int32;
+std::array<Variable*> Int16_operator_index_Int32_args = { &Int16_operator_index_Int32_arg0 };
+Variable Int16_operator_index_UInt32_arg0;
+Function Int16_operator_index_UInt32;
+std::array<Variable*> Int16_operator_index_UInt32_args = { &Int16_operator_index_UInt32_arg0 };
+Variable Int16_operator_index_Int16_arg0;
+Function Int16_operator_index_Int16;
+std::array<Variable*> Int16_operator_index_Int16_args = { &Int16_operator_index_Int16_arg0 };
+Variable Int16_operator_index_UInt16_arg0;
+Function Int16_operator_index_UInt16;
+std::array<Variable*> Int16_operator_index_UInt16_args = { &Int16_operator_index_UInt16_arg0 };
+Variable Int16_operator_add_Int16_arg0;
+Function Int16_operator_add_Int16;
+std::array<Variable*> Int16_operator_add_Int16_args = { &Int16_operator_add_Int16_arg0 };
+Variable Int16_operator_sub_Int16_arg0;
+Function Int16_operator_sub_Int16;
+std::array<Variable*> Int16_operator_sub_Int16_args = { &Int16_operator_sub_Int16_arg0 };
+Variable Int16_operator_mul_Int16_arg0;
+Function Int16_operator_mul_Int16;
+std::array<Variable*> Int16_operator_mul_Int16_args = { &Int16_operator_mul_Int16_arg0 };
+Variable Int16_operator_div_Int16_arg0;
+Function Int16_operator_div_Int16;
+std::array<Variable*> Int16_operator_div_Int16_args = { &Int16_operator_div_Int16_arg0 };
+Variable Int16_operator_mod_Int16_arg0;
+Function Int16_operator_mod_Int16;
+std::array<Variable*> Int16_operator_mod_Int16_args = { &Int16_operator_mod_Int16_arg0 };
+Variable Int16_operator_addasg_Int16_arg0;
+Function Int16_operator_addasg_Int16;
+std::array<Variable*> Int16_operator_addasg_Int16_args = { &Int16_operator_addasg_Int16_arg0 };
+Variable Int16_operator_subasg_Int16_arg0;
+Function Int16_operator_subasg_Int16;
+std::array<Variable*> Int16_operator_subasg_Int16_args = { &Int16_operator_subasg_Int16_arg0 };
+Variable Int16_operator_mulasg_Int16_arg0;
+Function Int16_operator_mulasg_Int16;
+std::array<Variable*> Int16_operator_mulasg_Int16_args = { &Int16_operator_mulasg_Int16_arg0 };
+Variable Int16_operator_divasg_Int16_arg0;
+Function Int16_operator_divasg_Int16;
+std::array<Variable*> Int16_operator_divasg_Int16_args = { &Int16_operator_divasg_Int16_arg0 };
+Variable Int16_operator_lt_Int16_arg0;
+Function Int16_operator_lt_Int16;
+std::array<Variable*> Int16_operator_lt_Int16_args = { &Int16_operator_lt_Int16_arg0 };
+Variable Int16_operator_lte_Int16_arg0;
+Function Int16_operator_lte_Int16;
+std::array<Variable*> Int16_operator_lte_Int16_args = { &Int16_operator_lte_Int16_arg0 };
+Variable Int16_operator_gt_Int16_arg0;
+Function Int16_operator_gt_Int16;
+std::array<Variable*> Int16_operator_gt_Int16_args = { &Int16_operator_gt_Int16_arg0 };
+Variable Int16_operator_gte_Int16_arg0;
+Function Int16_operator_gte_Int16;
+std::array<Variable*> Int16_operator_gte_Int16_args = { &Int16_operator_gte_Int16_arg0 };
+Variable Int16_operator_eq_Int16_arg0;
+Function Int16_operator_eq_Int16;
+std::array<Variable*> Int16_operator_eq_Int16_args = { &Int16_operator_eq_Int16_arg0 };
+Variable Int16_operator_neq_Int16_arg0;
+Function Int16_operator_neq_Int16;
+std::array<Variable*> Int16_operator_neq_Int16_args = { &Int16_operator_neq_Int16_arg0 };
+Variable Int16_operator_or_Int16_arg0;
+Function Int16_operator_or_Int16;
+std::array<Variable*> Int16_operator_or_Int16_args = { &Int16_operator_or_Int16_arg0 };
+Variable Int16_operator_and_Int16_arg0;
+Function Int16_operator_and_Int16;
+std::array<Variable*> Int16_operator_and_Int16_args = { &Int16_operator_and_Int16_arg0 };
+Variable Int16_operator_xor_Int16_arg0;
+Function Int16_operator_xor_Int16;
+std::array<Variable*> Int16_operator_xor_Int16_args = { &Int16_operator_xor_Int16_arg0 };
+Variable Int16_operator_lsh_Int16_arg0;
+Function Int16_operator_lsh_Int16;
+std::array<Variable*> Int16_operator_lsh_Int16_args = { &Int16_operator_lsh_Int16_arg0 };
+Variable Int16_operator_rsh_Int16_arg0;
+Function Int16_operator_rsh_Int16;
+std::array<Variable*> Int16_operator_rsh_Int16_args = { &Int16_operator_rsh_Int16_arg0 };
+Variable Int16_operator_orasg_Int16_arg0;
+Function Int16_operator_orasg_Int16;
+std::array<Variable*> Int16_operator_orasg_Int16_args = { &Int16_operator_orasg_Int16_arg0 };
+Variable Int16_operator_andasg_Int16_arg0;
+Function Int16_operator_andasg_Int16;
+std::array<Variable*> Int16_operator_andasg_Int16_args = { &Int16_operator_andasg_Int16_arg0 };
+Variable Int16_operator_xorasg_Int16_arg0;
+Function Int16_operator_xorasg_Int16;
+std::array<Variable*> Int16_operator_xorasg_Int16_args = { &Int16_operator_xorasg_Int16_arg0 };
+Variable Int16_operator_lshasg_Int16_arg0;
+Function Int16_operator_lshasg_Int16;
+std::array<Variable*> Int16_operator_lshasg_Int16_args = { &Int16_operator_lshasg_Int16_arg0 };
+Variable Int16_operator_rhsasg_Int16_arg0;
+Function Int16_operator_rhsasg_Int16;
+std::array<Variable*> Int16_operator_rhsasg_Int16_args = { &Int16_operator_rhsasg_Int16_arg0 };
+Variable Float32x2_convert_Float32x2_arg0;
+Function Float32x2_convert_Float32x2;
+std::array<Variable*> Float32x2_convert_Float32x2_args = { &Float32x2_convert_Float32x2_arg0 };
+Variable Float32x2_splat_Float32_arg0;
+Function Float32x2_splat_Float32;
+std::array<Variable*> Float32x2_splat_Float32_args = { &Float32x2_splat_Float32_arg0 };
+Variable Float32x2_convert_UInt32x2_arg0;
+Function Float32x2_convert_UInt32x2;
+std::array<Variable*> Float32x2_convert_UInt32x2_args = { &Float32x2_convert_UInt32x2_arg0 };
+Variable Float32x2_splat_UInt32_arg0;
+Function Float32x2_splat_UInt32;
+std::array<Variable*> Float32x2_splat_UInt32_args = { &Float32x2_splat_UInt32_arg0 };
+Variable Float32x2_convert_Int32x2_arg0;
+Function Float32x2_convert_Int32x2;
+std::array<Variable*> Float32x2_convert_Int32x2_args = { &Float32x2_convert_Int32x2_arg0 };
+Variable Float32x2_splat_Int32_arg0;
+Function Float32x2_splat_Int32;
+std::array<Variable*> Float32x2_splat_Int32_args = { &Float32x2_splat_Int32_arg0 };
+Variable Float32x2_convert_Float16x2_arg0;
+Function Float32x2_convert_Float16x2;
+std::array<Variable*> Float32x2_convert_Float16x2_args = { &Float32x2_convert_Float16x2_arg0 };
+Variable Float32x2_splat_Float16_arg0;
+Function Float32x2_splat_Float16;
+std::array<Variable*> Float32x2_splat_Float16_args = { &Float32x2_splat_Float16_arg0 };
+Variable Float32x2_convert_UInt16x2_arg0;
+Function Float32x2_convert_UInt16x2;
+std::array<Variable*> Float32x2_convert_UInt16x2_args = { &Float32x2_convert_UInt16x2_arg0 };
+Variable Float32x2_splat_UInt16_arg0;
+Function Float32x2_splat_UInt16;
+std::array<Variable*> Float32x2_splat_UInt16_args = { &Float32x2_splat_UInt16_arg0 };
+Variable Float32x2_convert_Int16x2_arg0;
+Function Float32x2_convert_Int16x2;
+std::array<Variable*> Float32x2_convert_Int16x2_args = { &Float32x2_convert_Int16x2_arg0 };
+Variable Float32x2_splat_Int16_arg0;
+Function Float32x2_splat_Int16;
+std::array<Variable*> Float32x2_splat_Int16_args = { &Float32x2_splat_Int16_arg0 };
+Variable Float32x2_ctor0_arg0;
+Variable Float32x2_ctor0_arg1;
+Function Float32x2_ctor0_Float32_Float32;
+std::array<Variable*> Float32x2_ctor0_Float32_Float32_args = { &Float32x2_ctor0_arg0, &Float32x2_ctor0_arg1 };
+Variable Float32x2_operator_index_Int32_arg0;
+Function Float32x2_operator_index_Int32;
+std::array<Variable*> Float32x2_operator_index_Int32_args = { &Float32x2_operator_index_Int32_arg0 };
+Variable Float32x2_operator_index_UInt32_arg0;
+Function Float32x2_operator_index_UInt32;
+std::array<Variable*> Float32x2_operator_index_UInt32_args = { &Float32x2_operator_index_UInt32_arg0 };
+Variable Float32x2_operator_index_Int16_arg0;
+Function Float32x2_operator_index_Int16;
+std::array<Variable*> Float32x2_operator_index_Int16_args = { &Float32x2_operator_index_Int16_arg0 };
+Variable Float32x2_operator_index_UInt16_arg0;
+Function Float32x2_operator_index_UInt16;
+std::array<Variable*> Float32x2_operator_index_UInt16_args = { &Float32x2_operator_index_UInt16_arg0 };
+Variable Float32x2_operator_add_Float32x2_arg0;
+Function Float32x2_operator_add_Float32x2;
+std::array<Variable*> Float32x2_operator_add_Float32x2_args = { &Float32x2_operator_add_Float32x2_arg0 };
+Variable Float32x2_operator_sub_Float32x2_arg0;
+Function Float32x2_operator_sub_Float32x2;
+std::array<Variable*> Float32x2_operator_sub_Float32x2_args = { &Float32x2_operator_sub_Float32x2_arg0 };
+Variable Float32x2_operator_mul_Float32x2_arg0;
+Function Float32x2_operator_mul_Float32x2;
+std::array<Variable*> Float32x2_operator_mul_Float32x2_args = { &Float32x2_operator_mul_Float32x2_arg0 };
+Variable Float32x2_operator_div_Float32x2_arg0;
+Function Float32x2_operator_div_Float32x2;
+std::array<Variable*> Float32x2_operator_div_Float32x2_args = { &Float32x2_operator_div_Float32x2_arg0 };
+Variable Float32x2_operator_mod_Float32x2_arg0;
+Function Float32x2_operator_mod_Float32x2;
+std::array<Variable*> Float32x2_operator_mod_Float32x2_args = { &Float32x2_operator_mod_Float32x2_arg0 };
+Variable Float32x2_operator_addasg_Float32x2_arg0;
+Function Float32x2_operator_addasg_Float32x2;
+std::array<Variable*> Float32x2_operator_addasg_Float32x2_args = { &Float32x2_operator_addasg_Float32x2_arg0 };
+Variable Float32x2_operator_subasg_Float32x2_arg0;
+Function Float32x2_operator_subasg_Float32x2;
+std::array<Variable*> Float32x2_operator_subasg_Float32x2_args = { &Float32x2_operator_subasg_Float32x2_arg0 };
+Variable Float32x2_operator_mulasg_Float32x2_arg0;
+Function Float32x2_operator_mulasg_Float32x2;
+std::array<Variable*> Float32x2_operator_mulasg_Float32x2_args = { &Float32x2_operator_mulasg_Float32x2_arg0 };
+Variable Float32x2_operator_divasg_Float32x2_arg0;
+Function Float32x2_operator_divasg_Float32x2;
+std::array<Variable*> Float32x2_operator_divasg_Float32x2_args = { &Float32x2_operator_divasg_Float32x2_arg0 };
+Variable Float32x2_operator_lt_Float32x2_arg0;
+Function Float32x2_operator_lt_Float32x2;
+std::array<Variable*> Float32x2_operator_lt_Float32x2_args = { &Float32x2_operator_lt_Float32x2_arg0 };
+Variable Float32x2_operator_lte_Float32x2_arg0;
+Function Float32x2_operator_lte_Float32x2;
+std::array<Variable*> Float32x2_operator_lte_Float32x2_args = { &Float32x2_operator_lte_Float32x2_arg0 };
+Variable Float32x2_operator_gt_Float32x2_arg0;
+Function Float32x2_operator_gt_Float32x2;
+std::array<Variable*> Float32x2_operator_gt_Float32x2_args = { &Float32x2_operator_gt_Float32x2_arg0 };
+Variable Float32x2_operator_gte_Float32x2_arg0;
+Function Float32x2_operator_gte_Float32x2;
+std::array<Variable*> Float32x2_operator_gte_Float32x2_args = { &Float32x2_operator_gte_Float32x2_arg0 };
+Variable Float32x2_operator_eq_Float32x2_arg0;
+Function Float32x2_operator_eq_Float32x2;
+std::array<Variable*> Float32x2_operator_eq_Float32x2_args = { &Float32x2_operator_eq_Float32x2_arg0 };
+Variable Float32x2_operator_neq_Float32x2_arg0;
+Function Float32x2_operator_neq_Float32x2;
+std::array<Variable*> Float32x2_operator_neq_Float32x2_args = { &Float32x2_operator_neq_Float32x2_arg0 };
+Variable Float32x2_operator_scale_Float32x2_Float32_arg0;
+Function Float32x2_operator_scale_Float32x2_Float32;
+std::array<Variable*> Float32x2_operator_scale_Float32x2_Float32_args = { &Float32x2_operator_scale_Float32x2_Float32_arg0 };
+Variable Float32x2_operator_scale_Float32x2_Float16_arg0;
+Function Float32x2_operator_scale_Float32x2_Float16;
+std::array<Variable*> Float32x2_operator_scale_Float32x2_Float16_args = { &Float32x2_operator_scale_Float32x2_Float16_arg0 };
+Variable Float32x2_operator_scale_Float32x2_UInt32_arg0;
+Function Float32x2_operator_scale_Float32x2_UInt32;
+std::array<Variable*> Float32x2_operator_scale_Float32x2_UInt32_args = { &Float32x2_operator_scale_Float32x2_UInt32_arg0 };
+Variable Float32x2_operator_scale_Float32x2_UInt16_arg0;
+Function Float32x2_operator_scale_Float32x2_UInt16;
+std::array<Variable*> Float32x2_operator_scale_Float32x2_UInt16_args = { &Float32x2_operator_scale_Float32x2_UInt16_arg0 };
+Variable Float32x2_operator_scale_Float32x2_Int32_arg0;
+Function Float32x2_operator_scale_Float32x2_Int32;
+std::array<Variable*> Float32x2_operator_scale_Float32x2_Int32_args = { &Float32x2_operator_scale_Float32x2_Int32_arg0 };
+Variable Float32x2_operator_scale_Float32x2_Int16_arg0;
+Function Float32x2_operator_scale_Float32x2_Int16;
+std::array<Variable*> Float32x2_operator_scale_Float32x2_Int16_args = { &Float32x2_operator_scale_Float32x2_Int16_arg0 };
+Variable Float32x2_operator_mul_Float32x2x2_arg0;
+Function Float32x2_operator_mul_Float32x2x2;
+std::array<Variable*> Float32x2_operator_mul_Float32x2x2_args = { &Float32x2_operator_mul_Float32x2x2_arg0 };
+Variable Float32x2_operator_mul_Float32x2x3_arg0;
+Function Float32x2_operator_mul_Float32x2x3;
+std::array<Variable*> Float32x2_operator_mul_Float32x2x3_args = { &Float32x2_operator_mul_Float32x2x3_arg0 };
+Variable Float32x2_operator_mul_Float32x2x4_arg0;
+Function Float32x2_operator_mul_Float32x2x4;
+std::array<Variable*> Float32x2_operator_mul_Float32x2x4_args = { &Float32x2_operator_mul_Float32x2x4_arg0 };
+Variable UInt32x2_convert_Float32x2_arg0;
+Function UInt32x2_convert_Float32x2;
+std::array<Variable*> UInt32x2_convert_Float32x2_args = { &UInt32x2_convert_Float32x2_arg0 };
+Variable UInt32x2_splat_Float32_arg0;
+Function UInt32x2_splat_Float32;
+std::array<Variable*> UInt32x2_splat_Float32_args = { &UInt32x2_splat_Float32_arg0 };
+Variable UInt32x2_convert_UInt32x2_arg0;
+Function UInt32x2_convert_UInt32x2;
+std::array<Variable*> UInt32x2_convert_UInt32x2_args = { &UInt32x2_convert_UInt32x2_arg0 };
+Variable UInt32x2_splat_UInt32_arg0;
+Function UInt32x2_splat_UInt32;
+std::array<Variable*> UInt32x2_splat_UInt32_args = { &UInt32x2_splat_UInt32_arg0 };
+Variable UInt32x2_convert_Int32x2_arg0;
+Function UInt32x2_convert_Int32x2;
+std::array<Variable*> UInt32x2_convert_Int32x2_args = { &UInt32x2_convert_Int32x2_arg0 };
+Variable UInt32x2_splat_Int32_arg0;
+Function UInt32x2_splat_Int32;
+std::array<Variable*> UInt32x2_splat_Int32_args = { &UInt32x2_splat_Int32_arg0 };
+Variable UInt32x2_convert_Float16x2_arg0;
+Function UInt32x2_convert_Float16x2;
+std::array<Variable*> UInt32x2_convert_Float16x2_args = { &UInt32x2_convert_Float16x2_arg0 };
+Variable UInt32x2_splat_Float16_arg0;
+Function UInt32x2_splat_Float16;
+std::array<Variable*> UInt32x2_splat_Float16_args = { &UInt32x2_splat_Float16_arg0 };
+Variable UInt32x2_convert_UInt16x2_arg0;
+Function UInt32x2_convert_UInt16x2;
+std::array<Variable*> UInt32x2_convert_UInt16x2_args = { &UInt32x2_convert_UInt16x2_arg0 };
+Variable UInt32x2_splat_UInt16_arg0;
+Function UInt32x2_splat_UInt16;
+std::array<Variable*> UInt32x2_splat_UInt16_args = { &UInt32x2_splat_UInt16_arg0 };
+Variable UInt32x2_convert_Int16x2_arg0;
+Function UInt32x2_convert_Int16x2;
+std::array<Variable*> UInt32x2_convert_Int16x2_args = { &UInt32x2_convert_Int16x2_arg0 };
+Variable UInt32x2_splat_Int16_arg0;
+Function UInt32x2_splat_Int16;
+std::array<Variable*> UInt32x2_splat_Int16_args = { &UInt32x2_splat_Int16_arg0 };
+Variable UInt32x2_ctor0_arg0;
+Variable UInt32x2_ctor0_arg1;
+Function UInt32x2_ctor0_UInt32_UInt32;
+std::array<Variable*> UInt32x2_ctor0_UInt32_UInt32_args = { &UInt32x2_ctor0_arg0, &UInt32x2_ctor0_arg1 };
+Variable UInt32x2_operator_index_Int32_arg0;
+Function UInt32x2_operator_index_Int32;
+std::array<Variable*> UInt32x2_operator_index_Int32_args = { &UInt32x2_operator_index_Int32_arg0 };
+Variable UInt32x2_operator_index_UInt32_arg0;
+Function UInt32x2_operator_index_UInt32;
+std::array<Variable*> UInt32x2_operator_index_UInt32_args = { &UInt32x2_operator_index_UInt32_arg0 };
+Variable UInt32x2_operator_index_Int16_arg0;
+Function UInt32x2_operator_index_Int16;
+std::array<Variable*> UInt32x2_operator_index_Int16_args = { &UInt32x2_operator_index_Int16_arg0 };
+Variable UInt32x2_operator_index_UInt16_arg0;
+Function UInt32x2_operator_index_UInt16;
+std::array<Variable*> UInt32x2_operator_index_UInt16_args = { &UInt32x2_operator_index_UInt16_arg0 };
+Variable UInt32x2_operator_add_UInt32x2_arg0;
+Function UInt32x2_operator_add_UInt32x2;
+std::array<Variable*> UInt32x2_operator_add_UInt32x2_args = { &UInt32x2_operator_add_UInt32x2_arg0 };
+Variable UInt32x2_operator_sub_UInt32x2_arg0;
+Function UInt32x2_operator_sub_UInt32x2;
+std::array<Variable*> UInt32x2_operator_sub_UInt32x2_args = { &UInt32x2_operator_sub_UInt32x2_arg0 };
+Variable UInt32x2_operator_mul_UInt32x2_arg0;
+Function UInt32x2_operator_mul_UInt32x2;
+std::array<Variable*> UInt32x2_operator_mul_UInt32x2_args = { &UInt32x2_operator_mul_UInt32x2_arg0 };
+Variable UInt32x2_operator_div_UInt32x2_arg0;
+Function UInt32x2_operator_div_UInt32x2;
+std::array<Variable*> UInt32x2_operator_div_UInt32x2_args = { &UInt32x2_operator_div_UInt32x2_arg0 };
+Variable UInt32x2_operator_mod_UInt32x2_arg0;
+Function UInt32x2_operator_mod_UInt32x2;
+std::array<Variable*> UInt32x2_operator_mod_UInt32x2_args = { &UInt32x2_operator_mod_UInt32x2_arg0 };
+Variable UInt32x2_operator_addasg_UInt32x2_arg0;
+Function UInt32x2_operator_addasg_UInt32x2;
+std::array<Variable*> UInt32x2_operator_addasg_UInt32x2_args = { &UInt32x2_operator_addasg_UInt32x2_arg0 };
+Variable UInt32x2_operator_subasg_UInt32x2_arg0;
+Function UInt32x2_operator_subasg_UInt32x2;
+std::array<Variable*> UInt32x2_operator_subasg_UInt32x2_args = { &UInt32x2_operator_subasg_UInt32x2_arg0 };
+Variable UInt32x2_operator_mulasg_UInt32x2_arg0;
+Function UInt32x2_operator_mulasg_UInt32x2;
+std::array<Variable*> UInt32x2_operator_mulasg_UInt32x2_args = { &UInt32x2_operator_mulasg_UInt32x2_arg0 };
+Variable UInt32x2_operator_divasg_UInt32x2_arg0;
+Function UInt32x2_operator_divasg_UInt32x2;
+std::array<Variable*> UInt32x2_operator_divasg_UInt32x2_args = { &UInt32x2_operator_divasg_UInt32x2_arg0 };
+Variable UInt32x2_operator_lt_UInt32x2_arg0;
+Function UInt32x2_operator_lt_UInt32x2;
+std::array<Variable*> UInt32x2_operator_lt_UInt32x2_args = { &UInt32x2_operator_lt_UInt32x2_arg0 };
+Variable UInt32x2_operator_lte_UInt32x2_arg0;
+Function UInt32x2_operator_lte_UInt32x2;
+std::array<Variable*> UInt32x2_operator_lte_UInt32x2_args = { &UInt32x2_operator_lte_UInt32x2_arg0 };
+Variable UInt32x2_operator_gt_UInt32x2_arg0;
+Function UInt32x2_operator_gt_UInt32x2;
+std::array<Variable*> UInt32x2_operator_gt_UInt32x2_args = { &UInt32x2_operator_gt_UInt32x2_arg0 };
+Variable UInt32x2_operator_gte_UInt32x2_arg0;
+Function UInt32x2_operator_gte_UInt32x2;
+std::array<Variable*> UInt32x2_operator_gte_UInt32x2_args = { &UInt32x2_operator_gte_UInt32x2_arg0 };
+Variable UInt32x2_operator_eq_UInt32x2_arg0;
+Function UInt32x2_operator_eq_UInt32x2;
+std::array<Variable*> UInt32x2_operator_eq_UInt32x2_args = { &UInt32x2_operator_eq_UInt32x2_arg0 };
+Variable UInt32x2_operator_neq_UInt32x2_arg0;
+Function UInt32x2_operator_neq_UInt32x2;
+std::array<Variable*> UInt32x2_operator_neq_UInt32x2_args = { &UInt32x2_operator_neq_UInt32x2_arg0 };
+Variable UInt32x2_operator_scale_UInt32x2_Float32_arg0;
+Function UInt32x2_operator_scale_UInt32x2_Float32;
+std::array<Variable*> UInt32x2_operator_scale_UInt32x2_Float32_args = { &UInt32x2_operator_scale_UInt32x2_Float32_arg0 };
+Variable UInt32x2_operator_scale_UInt32x2_Float16_arg0;
+Function UInt32x2_operator_scale_UInt32x2_Float16;
+std::array<Variable*> UInt32x2_operator_scale_UInt32x2_Float16_args = { &UInt32x2_operator_scale_UInt32x2_Float16_arg0 };
+Variable UInt32x2_operator_scale_UInt32x2_UInt32_arg0;
+Function UInt32x2_operator_scale_UInt32x2_UInt32;
+std::array<Variable*> UInt32x2_operator_scale_UInt32x2_UInt32_args = { &UInt32x2_operator_scale_UInt32x2_UInt32_arg0 };
+Variable UInt32x2_operator_scale_UInt32x2_UInt16_arg0;
+Function UInt32x2_operator_scale_UInt32x2_UInt16;
+std::array<Variable*> UInt32x2_operator_scale_UInt32x2_UInt16_args = { &UInt32x2_operator_scale_UInt32x2_UInt16_arg0 };
+Variable UInt32x2_operator_scale_UInt32x2_Int32_arg0;
+Function UInt32x2_operator_scale_UInt32x2_Int32;
+std::array<Variable*> UInt32x2_operator_scale_UInt32x2_Int32_args = { &UInt32x2_operator_scale_UInt32x2_Int32_arg0 };
+Variable UInt32x2_operator_scale_UInt32x2_Int16_arg0;
+Function UInt32x2_operator_scale_UInt32x2_Int16;
+std::array<Variable*> UInt32x2_operator_scale_UInt32x2_Int16_args = { &UInt32x2_operator_scale_UInt32x2_Int16_arg0 };
+Variable UInt32x2_operator_or_UInt32x2_arg0;
+Function UInt32x2_operator_or_UInt32x2;
+std::array<Variable*> UInt32x2_operator_or_UInt32x2_args = { &UInt32x2_operator_or_UInt32x2_arg0 };
+Variable UInt32x2_operator_and_UInt32x2_arg0;
+Function UInt32x2_operator_and_UInt32x2;
+std::array<Variable*> UInt32x2_operator_and_UInt32x2_args = { &UInt32x2_operator_and_UInt32x2_arg0 };
+Variable UInt32x2_operator_xor_UInt32x2_arg0;
+Function UInt32x2_operator_xor_UInt32x2;
+std::array<Variable*> UInt32x2_operator_xor_UInt32x2_args = { &UInt32x2_operator_xor_UInt32x2_arg0 };
+Variable UInt32x2_operator_lsh_UInt32x2_arg0;
+Function UInt32x2_operator_lsh_UInt32x2;
+std::array<Variable*> UInt32x2_operator_lsh_UInt32x2_args = { &UInt32x2_operator_lsh_UInt32x2_arg0 };
+Variable UInt32x2_operator_rsh_UInt32x2_arg0;
+Function UInt32x2_operator_rsh_UInt32x2;
+std::array<Variable*> UInt32x2_operator_rsh_UInt32x2_args = { &UInt32x2_operator_rsh_UInt32x2_arg0 };
+Variable UInt32x2_operator_orasg_UInt32x2_arg0;
+Function UInt32x2_operator_orasg_UInt32x2;
+std::array<Variable*> UInt32x2_operator_orasg_UInt32x2_args = { &UInt32x2_operator_orasg_UInt32x2_arg0 };
+Variable UInt32x2_operator_andasg_UInt32x2_arg0;
+Function UInt32x2_operator_andasg_UInt32x2;
+std::array<Variable*> UInt32x2_operator_andasg_UInt32x2_args = { &UInt32x2_operator_andasg_UInt32x2_arg0 };
+Variable UInt32x2_operator_xorasg_UInt32x2_arg0;
+Function UInt32x2_operator_xorasg_UInt32x2;
+std::array<Variable*> UInt32x2_operator_xorasg_UInt32x2_args = { &UInt32x2_operator_xorasg_UInt32x2_arg0 };
+Variable UInt32x2_operator_lshasg_UInt32x2_arg0;
+Function UInt32x2_operator_lshasg_UInt32x2;
+std::array<Variable*> UInt32x2_operator_lshasg_UInt32x2_args = { &UInt32x2_operator_lshasg_UInt32x2_arg0 };
+Variable UInt32x2_operator_rhsasg_UInt32x2_arg0;
+Function UInt32x2_operator_rhsasg_UInt32x2;
+std::array<Variable*> UInt32x2_operator_rhsasg_UInt32x2_args = { &UInt32x2_operator_rhsasg_UInt32x2_arg0 };
+Variable Int32x2_convert_Float32x2_arg0;
+Function Int32x2_convert_Float32x2;
+std::array<Variable*> Int32x2_convert_Float32x2_args = { &Int32x2_convert_Float32x2_arg0 };
+Variable Int32x2_splat_Float32_arg0;
+Function Int32x2_splat_Float32;
+std::array<Variable*> Int32x2_splat_Float32_args = { &Int32x2_splat_Float32_arg0 };
+Variable Int32x2_convert_UInt32x2_arg0;
+Function Int32x2_convert_UInt32x2;
+std::array<Variable*> Int32x2_convert_UInt32x2_args = { &Int32x2_convert_UInt32x2_arg0 };
+Variable Int32x2_splat_UInt32_arg0;
+Function Int32x2_splat_UInt32;
+std::array<Variable*> Int32x2_splat_UInt32_args = { &Int32x2_splat_UInt32_arg0 };
+Variable Int32x2_convert_Int32x2_arg0;
+Function Int32x2_convert_Int32x2;
+std::array<Variable*> Int32x2_convert_Int32x2_args = { &Int32x2_convert_Int32x2_arg0 };
+Variable Int32x2_splat_Int32_arg0;
+Function Int32x2_splat_Int32;
+std::array<Variable*> Int32x2_splat_Int32_args = { &Int32x2_splat_Int32_arg0 };
+Variable Int32x2_convert_Float16x2_arg0;
+Function Int32x2_convert_Float16x2;
+std::array<Variable*> Int32x2_convert_Float16x2_args = { &Int32x2_convert_Float16x2_arg0 };
+Variable Int32x2_splat_Float16_arg0;
+Function Int32x2_splat_Float16;
+std::array<Variable*> Int32x2_splat_Float16_args = { &Int32x2_splat_Float16_arg0 };
+Variable Int32x2_convert_UInt16x2_arg0;
+Function Int32x2_convert_UInt16x2;
+std::array<Variable*> Int32x2_convert_UInt16x2_args = { &Int32x2_convert_UInt16x2_arg0 };
+Variable Int32x2_splat_UInt16_arg0;
+Function Int32x2_splat_UInt16;
+std::array<Variable*> Int32x2_splat_UInt16_args = { &Int32x2_splat_UInt16_arg0 };
+Variable Int32x2_convert_Int16x2_arg0;
+Function Int32x2_convert_Int16x2;
+std::array<Variable*> Int32x2_convert_Int16x2_args = { &Int32x2_convert_Int16x2_arg0 };
+Variable Int32x2_splat_Int16_arg0;
+Function Int32x2_splat_Int16;
+std::array<Variable*> Int32x2_splat_Int16_args = { &Int32x2_splat_Int16_arg0 };
+Variable Int32x2_ctor0_arg0;
+Variable Int32x2_ctor0_arg1;
+Function Int32x2_ctor0_Int32_Int32;
+std::array<Variable*> Int32x2_ctor0_Int32_Int32_args = { &Int32x2_ctor0_arg0, &Int32x2_ctor0_arg1 };
+Variable Int32x2_operator_index_Int32_arg0;
+Function Int32x2_operator_index_Int32;
+std::array<Variable*> Int32x2_operator_index_Int32_args = { &Int32x2_operator_index_Int32_arg0 };
+Variable Int32x2_operator_index_UInt32_arg0;
+Function Int32x2_operator_index_UInt32;
+std::array<Variable*> Int32x2_operator_index_UInt32_args = { &Int32x2_operator_index_UInt32_arg0 };
+Variable Int32x2_operator_index_Int16_arg0;
+Function Int32x2_operator_index_Int16;
+std::array<Variable*> Int32x2_operator_index_Int16_args = { &Int32x2_operator_index_Int16_arg0 };
+Variable Int32x2_operator_index_UInt16_arg0;
+Function Int32x2_operator_index_UInt16;
+std::array<Variable*> Int32x2_operator_index_UInt16_args = { &Int32x2_operator_index_UInt16_arg0 };
+Variable Int32x2_operator_add_Int32x2_arg0;
+Function Int32x2_operator_add_Int32x2;
+std::array<Variable*> Int32x2_operator_add_Int32x2_args = { &Int32x2_operator_add_Int32x2_arg0 };
+Variable Int32x2_operator_sub_Int32x2_arg0;
+Function Int32x2_operator_sub_Int32x2;
+std::array<Variable*> Int32x2_operator_sub_Int32x2_args = { &Int32x2_operator_sub_Int32x2_arg0 };
+Variable Int32x2_operator_mul_Int32x2_arg0;
+Function Int32x2_operator_mul_Int32x2;
+std::array<Variable*> Int32x2_operator_mul_Int32x2_args = { &Int32x2_operator_mul_Int32x2_arg0 };
+Variable Int32x2_operator_div_Int32x2_arg0;
+Function Int32x2_operator_div_Int32x2;
+std::array<Variable*> Int32x2_operator_div_Int32x2_args = { &Int32x2_operator_div_Int32x2_arg0 };
+Variable Int32x2_operator_mod_Int32x2_arg0;
+Function Int32x2_operator_mod_Int32x2;
+std::array<Variable*> Int32x2_operator_mod_Int32x2_args = { &Int32x2_operator_mod_Int32x2_arg0 };
+Variable Int32x2_operator_addasg_Int32x2_arg0;
+Function Int32x2_operator_addasg_Int32x2;
+std::array<Variable*> Int32x2_operator_addasg_Int32x2_args = { &Int32x2_operator_addasg_Int32x2_arg0 };
+Variable Int32x2_operator_subasg_Int32x2_arg0;
+Function Int32x2_operator_subasg_Int32x2;
+std::array<Variable*> Int32x2_operator_subasg_Int32x2_args = { &Int32x2_operator_subasg_Int32x2_arg0 };
+Variable Int32x2_operator_mulasg_Int32x2_arg0;
+Function Int32x2_operator_mulasg_Int32x2;
+std::array<Variable*> Int32x2_operator_mulasg_Int32x2_args = { &Int32x2_operator_mulasg_Int32x2_arg0 };
+Variable Int32x2_operator_divasg_Int32x2_arg0;
+Function Int32x2_operator_divasg_Int32x2;
+std::array<Variable*> Int32x2_operator_divasg_Int32x2_args = { &Int32x2_operator_divasg_Int32x2_arg0 };
+Variable Int32x2_operator_lt_Int32x2_arg0;
+Function Int32x2_operator_lt_Int32x2;
+std::array<Variable*> Int32x2_operator_lt_Int32x2_args = { &Int32x2_operator_lt_Int32x2_arg0 };
+Variable Int32x2_operator_lte_Int32x2_arg0;
+Function Int32x2_operator_lte_Int32x2;
+std::array<Variable*> Int32x2_operator_lte_Int32x2_args = { &Int32x2_operator_lte_Int32x2_arg0 };
+Variable Int32x2_operator_gt_Int32x2_arg0;
+Function Int32x2_operator_gt_Int32x2;
+std::array<Variable*> Int32x2_operator_gt_Int32x2_args = { &Int32x2_operator_gt_Int32x2_arg0 };
+Variable Int32x2_operator_gte_Int32x2_arg0;
+Function Int32x2_operator_gte_Int32x2;
+std::array<Variable*> Int32x2_operator_gte_Int32x2_args = { &Int32x2_operator_gte_Int32x2_arg0 };
+Variable Int32x2_operator_eq_Int32x2_arg0;
+Function Int32x2_operator_eq_Int32x2;
+std::array<Variable*> Int32x2_operator_eq_Int32x2_args = { &Int32x2_operator_eq_Int32x2_arg0 };
+Variable Int32x2_operator_neq_Int32x2_arg0;
+Function Int32x2_operator_neq_Int32x2;
+std::array<Variable*> Int32x2_operator_neq_Int32x2_args = { &Int32x2_operator_neq_Int32x2_arg0 };
+Variable Int32x2_operator_scale_Int32x2_Float32_arg0;
+Function Int32x2_operator_scale_Int32x2_Float32;
+std::array<Variable*> Int32x2_operator_scale_Int32x2_Float32_args = { &Int32x2_operator_scale_Int32x2_Float32_arg0 };
+Variable Int32x2_operator_scale_Int32x2_Float16_arg0;
+Function Int32x2_operator_scale_Int32x2_Float16;
+std::array<Variable*> Int32x2_operator_scale_Int32x2_Float16_args = { &Int32x2_operator_scale_Int32x2_Float16_arg0 };
+Variable Int32x2_operator_scale_Int32x2_UInt32_arg0;
+Function Int32x2_operator_scale_Int32x2_UInt32;
+std::array<Variable*> Int32x2_operator_scale_Int32x2_UInt32_args = { &Int32x2_operator_scale_Int32x2_UInt32_arg0 };
+Variable Int32x2_operator_scale_Int32x2_UInt16_arg0;
+Function Int32x2_operator_scale_Int32x2_UInt16;
+std::array<Variable*> Int32x2_operator_scale_Int32x2_UInt16_args = { &Int32x2_operator_scale_Int32x2_UInt16_arg0 };
+Variable Int32x2_operator_scale_Int32x2_Int32_arg0;
+Function Int32x2_operator_scale_Int32x2_Int32;
+std::array<Variable*> Int32x2_operator_scale_Int32x2_Int32_args = { &Int32x2_operator_scale_Int32x2_Int32_arg0 };
+Variable Int32x2_operator_scale_Int32x2_Int16_arg0;
+Function Int32x2_operator_scale_Int32x2_Int16;
+std::array<Variable*> Int32x2_operator_scale_Int32x2_Int16_args = { &Int32x2_operator_scale_Int32x2_Int16_arg0 };
+Variable Int32x2_operator_or_Int32x2_arg0;
+Function Int32x2_operator_or_Int32x2;
+std::array<Variable*> Int32x2_operator_or_Int32x2_args = { &Int32x2_operator_or_Int32x2_arg0 };
+Variable Int32x2_operator_and_Int32x2_arg0;
+Function Int32x2_operator_and_Int32x2;
+std::array<Variable*> Int32x2_operator_and_Int32x2_args = { &Int32x2_operator_and_Int32x2_arg0 };
+Variable Int32x2_operator_xor_Int32x2_arg0;
+Function Int32x2_operator_xor_Int32x2;
+std::array<Variable*> Int32x2_operator_xor_Int32x2_args = { &Int32x2_operator_xor_Int32x2_arg0 };
+Variable Int32x2_operator_lsh_Int32x2_arg0;
+Function Int32x2_operator_lsh_Int32x2;
+std::array<Variable*> Int32x2_operator_lsh_Int32x2_args = { &Int32x2_operator_lsh_Int32x2_arg0 };
+Variable Int32x2_operator_rsh_Int32x2_arg0;
+Function Int32x2_operator_rsh_Int32x2;
+std::array<Variable*> Int32x2_operator_rsh_Int32x2_args = { &Int32x2_operator_rsh_Int32x2_arg0 };
+Variable Int32x2_operator_orasg_Int32x2_arg0;
+Function Int32x2_operator_orasg_Int32x2;
+std::array<Variable*> Int32x2_operator_orasg_Int32x2_args = { &Int32x2_operator_orasg_Int32x2_arg0 };
+Variable Int32x2_operator_andasg_Int32x2_arg0;
+Function Int32x2_operator_andasg_Int32x2;
+std::array<Variable*> Int32x2_operator_andasg_Int32x2_args = { &Int32x2_operator_andasg_Int32x2_arg0 };
+Variable Int32x2_operator_xorasg_Int32x2_arg0;
+Function Int32x2_operator_xorasg_Int32x2;
+std::array<Variable*> Int32x2_operator_xorasg_Int32x2_args = { &Int32x2_operator_xorasg_Int32x2_arg0 };
+Variable Int32x2_operator_lshasg_Int32x2_arg0;
+Function Int32x2_operator_lshasg_Int32x2;
+std::array<Variable*> Int32x2_operator_lshasg_Int32x2_args = { &Int32x2_operator_lshasg_Int32x2_arg0 };
+Variable Int32x2_operator_rhsasg_Int32x2_arg0;
+Function Int32x2_operator_rhsasg_Int32x2;
+std::array<Variable*> Int32x2_operator_rhsasg_Int32x2_args = { &Int32x2_operator_rhsasg_Int32x2_arg0 };
+Variable Bool8x2_convert_UInt32x2_arg0;
+Function Bool8x2_convert_UInt32x2;
+std::array<Variable*> Bool8x2_convert_UInt32x2_args = { &Bool8x2_convert_UInt32x2_arg0 };
+Variable Bool8x2_splat_UInt32_arg0;
+Function Bool8x2_splat_UInt32;
+std::array<Variable*> Bool8x2_splat_UInt32_args = { &Bool8x2_splat_UInt32_arg0 };
+Variable Bool8x2_convert_Int32x2_arg0;
+Function Bool8x2_convert_Int32x2;
+std::array<Variable*> Bool8x2_convert_Int32x2_args = { &Bool8x2_convert_Int32x2_arg0 };
+Variable Bool8x2_splat_Int32_arg0;
+Function Bool8x2_splat_Int32;
+std::array<Variable*> Bool8x2_splat_Int32_args = { &Bool8x2_splat_Int32_arg0 };
+Variable Bool8x2_convert_UInt16x2_arg0;
+Function Bool8x2_convert_UInt16x2;
+std::array<Variable*> Bool8x2_convert_UInt16x2_args = { &Bool8x2_convert_UInt16x2_arg0 };
+Variable Bool8x2_splat_UInt16_arg0;
+Function Bool8x2_splat_UInt16;
+std::array<Variable*> Bool8x2_splat_UInt16_args = { &Bool8x2_splat_UInt16_arg0 };
+Variable Bool8x2_convert_Int16x2_arg0;
+Function Bool8x2_convert_Int16x2;
+std::array<Variable*> Bool8x2_convert_Int16x2_args = { &Bool8x2_convert_Int16x2_arg0 };
+Variable Bool8x2_splat_Int16_arg0;
+Function Bool8x2_splat_Int16;
+std::array<Variable*> Bool8x2_splat_Int16_args = { &Bool8x2_splat_Int16_arg0 };
+Variable Bool8x2_ctor0_arg0;
+Variable Bool8x2_ctor0_arg1;
+Function Bool8x2_ctor0_Bool8_Bool8;
+std::array<Variable*> Bool8x2_ctor0_Bool8_Bool8_args = { &Bool8x2_ctor0_arg0, &Bool8x2_ctor0_arg1 };
+Variable Bool8x2_operator_index_Int32_arg0;
+Function Bool8x2_operator_index_Int32;
+std::array<Variable*> Bool8x2_operator_index_Int32_args = { &Bool8x2_operator_index_Int32_arg0 };
+Variable Bool8x2_operator_index_UInt32_arg0;
+Function Bool8x2_operator_index_UInt32;
+std::array<Variable*> Bool8x2_operator_index_UInt32_args = { &Bool8x2_operator_index_UInt32_arg0 };
+Variable Bool8x2_operator_index_Int16_arg0;
+Function Bool8x2_operator_index_Int16;
+std::array<Variable*> Bool8x2_operator_index_Int16_args = { &Bool8x2_operator_index_Int16_arg0 };
+Variable Bool8x2_operator_index_UInt16_arg0;
+Function Bool8x2_operator_index_UInt16;
+std::array<Variable*> Bool8x2_operator_index_UInt16_args = { &Bool8x2_operator_index_UInt16_arg0 };
+Variable Bool8x2_operator_oror_Bool8x2_arg0;
+Function Bool8x2_operator_oror_Bool8x2;
+std::array<Variable*> Bool8x2_operator_oror_Bool8x2_args = { &Bool8x2_operator_oror_Bool8x2_arg0 };
+Variable Bool8x2_operator_andand_Bool8x2_arg0;
+Function Bool8x2_operator_andand_Bool8x2;
+std::array<Variable*> Bool8x2_operator_andand_Bool8x2_args = { &Bool8x2_operator_andand_Bool8x2_arg0 };
+Variable Bool8x2_operator_eq_Bool8x2_arg0;
+Function Bool8x2_operator_eq_Bool8x2;
+std::array<Variable*> Bool8x2_operator_eq_Bool8x2_args = { &Bool8x2_operator_eq_Bool8x2_arg0 };
+Variable Bool8x2_operator_neq_Bool8x2_arg0;
+Function Bool8x2_operator_neq_Bool8x2;
+std::array<Variable*> Bool8x2_operator_neq_Bool8x2_args = { &Bool8x2_operator_neq_Bool8x2_arg0 };
+Variable Float16x2_convert_Float32x2_arg0;
+Function Float16x2_convert_Float32x2;
+std::array<Variable*> Float16x2_convert_Float32x2_args = { &Float16x2_convert_Float32x2_arg0 };
+Variable Float16x2_splat_Float32_arg0;
+Function Float16x2_splat_Float32;
+std::array<Variable*> Float16x2_splat_Float32_args = { &Float16x2_splat_Float32_arg0 };
+Variable Float16x2_convert_UInt32x2_arg0;
+Function Float16x2_convert_UInt32x2;
+std::array<Variable*> Float16x2_convert_UInt32x2_args = { &Float16x2_convert_UInt32x2_arg0 };
+Variable Float16x2_splat_UInt32_arg0;
+Function Float16x2_splat_UInt32;
+std::array<Variable*> Float16x2_splat_UInt32_args = { &Float16x2_splat_UInt32_arg0 };
+Variable Float16x2_convert_Int32x2_arg0;
+Function Float16x2_convert_Int32x2;
+std::array<Variable*> Float16x2_convert_Int32x2_args = { &Float16x2_convert_Int32x2_arg0 };
+Variable Float16x2_splat_Int32_arg0;
+Function Float16x2_splat_Int32;
+std::array<Variable*> Float16x2_splat_Int32_args = { &Float16x2_splat_Int32_arg0 };
+Variable Float16x2_convert_Float16x2_arg0;
+Function Float16x2_convert_Float16x2;
+std::array<Variable*> Float16x2_convert_Float16x2_args = { &Float16x2_convert_Float16x2_arg0 };
+Variable Float16x2_splat_Float16_arg0;
+Function Float16x2_splat_Float16;
+std::array<Variable*> Float16x2_splat_Float16_args = { &Float16x2_splat_Float16_arg0 };
+Variable Float16x2_convert_UInt16x2_arg0;
+Function Float16x2_convert_UInt16x2;
+std::array<Variable*> Float16x2_convert_UInt16x2_args = { &Float16x2_convert_UInt16x2_arg0 };
+Variable Float16x2_splat_UInt16_arg0;
+Function Float16x2_splat_UInt16;
+std::array<Variable*> Float16x2_splat_UInt16_args = { &Float16x2_splat_UInt16_arg0 };
+Variable Float16x2_convert_Int16x2_arg0;
+Function Float16x2_convert_Int16x2;
+std::array<Variable*> Float16x2_convert_Int16x2_args = { &Float16x2_convert_Int16x2_arg0 };
+Variable Float16x2_splat_Int16_arg0;
+Function Float16x2_splat_Int16;
+std::array<Variable*> Float16x2_splat_Int16_args = { &Float16x2_splat_Int16_arg0 };
+Variable Float16x2_ctor0_arg0;
+Variable Float16x2_ctor0_arg1;
+Function Float16x2_ctor0_Float16_Float16;
+std::array<Variable*> Float16x2_ctor0_Float16_Float16_args = { &Float16x2_ctor0_arg0, &Float16x2_ctor0_arg1 };
+Variable Float16x2_operator_index_Int32_arg0;
+Function Float16x2_operator_index_Int32;
+std::array<Variable*> Float16x2_operator_index_Int32_args = { &Float16x2_operator_index_Int32_arg0 };
+Variable Float16x2_operator_index_UInt32_arg0;
+Function Float16x2_operator_index_UInt32;
+std::array<Variable*> Float16x2_operator_index_UInt32_args = { &Float16x2_operator_index_UInt32_arg0 };
+Variable Float16x2_operator_index_Int16_arg0;
+Function Float16x2_operator_index_Int16;
+std::array<Variable*> Float16x2_operator_index_Int16_args = { &Float16x2_operator_index_Int16_arg0 };
+Variable Float16x2_operator_index_UInt16_arg0;
+Function Float16x2_operator_index_UInt16;
+std::array<Variable*> Float16x2_operator_index_UInt16_args = { &Float16x2_operator_index_UInt16_arg0 };
+Variable Float16x2_operator_add_Float16x2_arg0;
+Function Float16x2_operator_add_Float16x2;
+std::array<Variable*> Float16x2_operator_add_Float16x2_args = { &Float16x2_operator_add_Float16x2_arg0 };
+Variable Float16x2_operator_sub_Float16x2_arg0;
+Function Float16x2_operator_sub_Float16x2;
+std::array<Variable*> Float16x2_operator_sub_Float16x2_args = { &Float16x2_operator_sub_Float16x2_arg0 };
+Variable Float16x2_operator_mul_Float16x2_arg0;
+Function Float16x2_operator_mul_Float16x2;
+std::array<Variable*> Float16x2_operator_mul_Float16x2_args = { &Float16x2_operator_mul_Float16x2_arg0 };
+Variable Float16x2_operator_div_Float16x2_arg0;
+Function Float16x2_operator_div_Float16x2;
+std::array<Variable*> Float16x2_operator_div_Float16x2_args = { &Float16x2_operator_div_Float16x2_arg0 };
+Variable Float16x2_operator_mod_Float16x2_arg0;
+Function Float16x2_operator_mod_Float16x2;
+std::array<Variable*> Float16x2_operator_mod_Float16x2_args = { &Float16x2_operator_mod_Float16x2_arg0 };
+Variable Float16x2_operator_addasg_Float16x2_arg0;
+Function Float16x2_operator_addasg_Float16x2;
+std::array<Variable*> Float16x2_operator_addasg_Float16x2_args = { &Float16x2_operator_addasg_Float16x2_arg0 };
+Variable Float16x2_operator_subasg_Float16x2_arg0;
+Function Float16x2_operator_subasg_Float16x2;
+std::array<Variable*> Float16x2_operator_subasg_Float16x2_args = { &Float16x2_operator_subasg_Float16x2_arg0 };
+Variable Float16x2_operator_mulasg_Float16x2_arg0;
+Function Float16x2_operator_mulasg_Float16x2;
+std::array<Variable*> Float16x2_operator_mulasg_Float16x2_args = { &Float16x2_operator_mulasg_Float16x2_arg0 };
+Variable Float16x2_operator_divasg_Float16x2_arg0;
+Function Float16x2_operator_divasg_Float16x2;
+std::array<Variable*> Float16x2_operator_divasg_Float16x2_args = { &Float16x2_operator_divasg_Float16x2_arg0 };
+Variable Float16x2_operator_lt_Float16x2_arg0;
+Function Float16x2_operator_lt_Float16x2;
+std::array<Variable*> Float16x2_operator_lt_Float16x2_args = { &Float16x2_operator_lt_Float16x2_arg0 };
+Variable Float16x2_operator_lte_Float16x2_arg0;
+Function Float16x2_operator_lte_Float16x2;
+std::array<Variable*> Float16x2_operator_lte_Float16x2_args = { &Float16x2_operator_lte_Float16x2_arg0 };
+Variable Float16x2_operator_gt_Float16x2_arg0;
+Function Float16x2_operator_gt_Float16x2;
+std::array<Variable*> Float16x2_operator_gt_Float16x2_args = { &Float16x2_operator_gt_Float16x2_arg0 };
+Variable Float16x2_operator_gte_Float16x2_arg0;
+Function Float16x2_operator_gte_Float16x2;
+std::array<Variable*> Float16x2_operator_gte_Float16x2_args = { &Float16x2_operator_gte_Float16x2_arg0 };
+Variable Float16x2_operator_eq_Float16x2_arg0;
+Function Float16x2_operator_eq_Float16x2;
+std::array<Variable*> Float16x2_operator_eq_Float16x2_args = { &Float16x2_operator_eq_Float16x2_arg0 };
+Variable Float16x2_operator_neq_Float16x2_arg0;
+Function Float16x2_operator_neq_Float16x2;
+std::array<Variable*> Float16x2_operator_neq_Float16x2_args = { &Float16x2_operator_neq_Float16x2_arg0 };
+Variable Float16x2_operator_scale_Float16x2_Float32_arg0;
+Function Float16x2_operator_scale_Float16x2_Float32;
+std::array<Variable*> Float16x2_operator_scale_Float16x2_Float32_args = { &Float16x2_operator_scale_Float16x2_Float32_arg0 };
+Variable Float16x2_operator_scale_Float16x2_Float16_arg0;
+Function Float16x2_operator_scale_Float16x2_Float16;
+std::array<Variable*> Float16x2_operator_scale_Float16x2_Float16_args = { &Float16x2_operator_scale_Float16x2_Float16_arg0 };
+Variable Float16x2_operator_scale_Float16x2_UInt32_arg0;
+Function Float16x2_operator_scale_Float16x2_UInt32;
+std::array<Variable*> Float16x2_operator_scale_Float16x2_UInt32_args = { &Float16x2_operator_scale_Float16x2_UInt32_arg0 };
+Variable Float16x2_operator_scale_Float16x2_UInt16_arg0;
+Function Float16x2_operator_scale_Float16x2_UInt16;
+std::array<Variable*> Float16x2_operator_scale_Float16x2_UInt16_args = { &Float16x2_operator_scale_Float16x2_UInt16_arg0 };
+Variable Float16x2_operator_scale_Float16x2_Int32_arg0;
+Function Float16x2_operator_scale_Float16x2_Int32;
+std::array<Variable*> Float16x2_operator_scale_Float16x2_Int32_args = { &Float16x2_operator_scale_Float16x2_Int32_arg0 };
+Variable Float16x2_operator_scale_Float16x2_Int16_arg0;
+Function Float16x2_operator_scale_Float16x2_Int16;
+std::array<Variable*> Float16x2_operator_scale_Float16x2_Int16_args = { &Float16x2_operator_scale_Float16x2_Int16_arg0 };
+Variable Float16x2_operator_mul_Float32x2x2_arg0;
+Function Float16x2_operator_mul_Float32x2x2;
+std::array<Variable*> Float16x2_operator_mul_Float32x2x2_args = { &Float16x2_operator_mul_Float32x2x2_arg0 };
+Variable Float16x2_operator_mul_Float32x2x3_arg0;
+Function Float16x2_operator_mul_Float32x2x3;
+std::array<Variable*> Float16x2_operator_mul_Float32x2x3_args = { &Float16x2_operator_mul_Float32x2x3_arg0 };
+Variable Float16x2_operator_mul_Float32x2x4_arg0;
+Function Float16x2_operator_mul_Float32x2x4;
+std::array<Variable*> Float16x2_operator_mul_Float32x2x4_args = { &Float16x2_operator_mul_Float32x2x4_arg0 };
+Variable UInt16x2_convert_Float32x2_arg0;
+Function UInt16x2_convert_Float32x2;
+std::array<Variable*> UInt16x2_convert_Float32x2_args = { &UInt16x2_convert_Float32x2_arg0 };
+Variable UInt16x2_splat_Float32_arg0;
+Function UInt16x2_splat_Float32;
+std::array<Variable*> UInt16x2_splat_Float32_args = { &UInt16x2_splat_Float32_arg0 };
+Variable UInt16x2_convert_UInt32x2_arg0;
+Function UInt16x2_convert_UInt32x2;
+std::array<Variable*> UInt16x2_convert_UInt32x2_args = { &UInt16x2_convert_UInt32x2_arg0 };
+Variable UInt16x2_splat_UInt32_arg0;
+Function UInt16x2_splat_UInt32;
+std::array<Variable*> UInt16x2_splat_UInt32_args = { &UInt16x2_splat_UInt32_arg0 };
+Variable UInt16x2_convert_Int32x2_arg0;
+Function UInt16x2_convert_Int32x2;
+std::array<Variable*> UInt16x2_convert_Int32x2_args = { &UInt16x2_convert_Int32x2_arg0 };
+Variable UInt16x2_splat_Int32_arg0;
+Function UInt16x2_splat_Int32;
+std::array<Variable*> UInt16x2_splat_Int32_args = { &UInt16x2_splat_Int32_arg0 };
+Variable UInt16x2_convert_Float16x2_arg0;
+Function UInt16x2_convert_Float16x2;
+std::array<Variable*> UInt16x2_convert_Float16x2_args = { &UInt16x2_convert_Float16x2_arg0 };
+Variable UInt16x2_splat_Float16_arg0;
+Function UInt16x2_splat_Float16;
+std::array<Variable*> UInt16x2_splat_Float16_args = { &UInt16x2_splat_Float16_arg0 };
+Variable UInt16x2_convert_UInt16x2_arg0;
+Function UInt16x2_convert_UInt16x2;
+std::array<Variable*> UInt16x2_convert_UInt16x2_args = { &UInt16x2_convert_UInt16x2_arg0 };
+Variable UInt16x2_splat_UInt16_arg0;
+Function UInt16x2_splat_UInt16;
+std::array<Variable*> UInt16x2_splat_UInt16_args = { &UInt16x2_splat_UInt16_arg0 };
+Variable UInt16x2_convert_Int16x2_arg0;
+Function UInt16x2_convert_Int16x2;
+std::array<Variable*> UInt16x2_convert_Int16x2_args = { &UInt16x2_convert_Int16x2_arg0 };
+Variable UInt16x2_splat_Int16_arg0;
+Function UInt16x2_splat_Int16;
+std::array<Variable*> UInt16x2_splat_Int16_args = { &UInt16x2_splat_Int16_arg0 };
+Variable UInt16x2_ctor0_arg0;
+Variable UInt16x2_ctor0_arg1;
+Function UInt16x2_ctor0_UInt16_UInt16;
+std::array<Variable*> UInt16x2_ctor0_UInt16_UInt16_args = { &UInt16x2_ctor0_arg0, &UInt16x2_ctor0_arg1 };
+Variable UInt16x2_operator_index_Int32_arg0;
+Function UInt16x2_operator_index_Int32;
+std::array<Variable*> UInt16x2_operator_index_Int32_args = { &UInt16x2_operator_index_Int32_arg0 };
+Variable UInt16x2_operator_index_UInt32_arg0;
+Function UInt16x2_operator_index_UInt32;
+std::array<Variable*> UInt16x2_operator_index_UInt32_args = { &UInt16x2_operator_index_UInt32_arg0 };
+Variable UInt16x2_operator_index_Int16_arg0;
+Function UInt16x2_operator_index_Int16;
+std::array<Variable*> UInt16x2_operator_index_Int16_args = { &UInt16x2_operator_index_Int16_arg0 };
+Variable UInt16x2_operator_index_UInt16_arg0;
+Function UInt16x2_operator_index_UInt16;
+std::array<Variable*> UInt16x2_operator_index_UInt16_args = { &UInt16x2_operator_index_UInt16_arg0 };
+Variable UInt16x2_operator_add_UInt16x2_arg0;
+Function UInt16x2_operator_add_UInt16x2;
+std::array<Variable*> UInt16x2_operator_add_UInt16x2_args = { &UInt16x2_operator_add_UInt16x2_arg0 };
+Variable UInt16x2_operator_sub_UInt16x2_arg0;
+Function UInt16x2_operator_sub_UInt16x2;
+std::array<Variable*> UInt16x2_operator_sub_UInt16x2_args = { &UInt16x2_operator_sub_UInt16x2_arg0 };
+Variable UInt16x2_operator_mul_UInt16x2_arg0;
+Function UInt16x2_operator_mul_UInt16x2;
+std::array<Variable*> UInt16x2_operator_mul_UInt16x2_args = { &UInt16x2_operator_mul_UInt16x2_arg0 };
+Variable UInt16x2_operator_div_UInt16x2_arg0;
+Function UInt16x2_operator_div_UInt16x2;
+std::array<Variable*> UInt16x2_operator_div_UInt16x2_args = { &UInt16x2_operator_div_UInt16x2_arg0 };
+Variable UInt16x2_operator_mod_UInt16x2_arg0;
+Function UInt16x2_operator_mod_UInt16x2;
+std::array<Variable*> UInt16x2_operator_mod_UInt16x2_args = { &UInt16x2_operator_mod_UInt16x2_arg0 };
+Variable UInt16x2_operator_addasg_UInt16x2_arg0;
+Function UInt16x2_operator_addasg_UInt16x2;
+std::array<Variable*> UInt16x2_operator_addasg_UInt16x2_args = { &UInt16x2_operator_addasg_UInt16x2_arg0 };
+Variable UInt16x2_operator_subasg_UInt16x2_arg0;
+Function UInt16x2_operator_subasg_UInt16x2;
+std::array<Variable*> UInt16x2_operator_subasg_UInt16x2_args = { &UInt16x2_operator_subasg_UInt16x2_arg0 };
+Variable UInt16x2_operator_mulasg_UInt16x2_arg0;
+Function UInt16x2_operator_mulasg_UInt16x2;
+std::array<Variable*> UInt16x2_operator_mulasg_UInt16x2_args = { &UInt16x2_operator_mulasg_UInt16x2_arg0 };
+Variable UInt16x2_operator_divasg_UInt16x2_arg0;
+Function UInt16x2_operator_divasg_UInt16x2;
+std::array<Variable*> UInt16x2_operator_divasg_UInt16x2_args = { &UInt16x2_operator_divasg_UInt16x2_arg0 };
+Variable UInt16x2_operator_lt_UInt16x2_arg0;
+Function UInt16x2_operator_lt_UInt16x2;
+std::array<Variable*> UInt16x2_operator_lt_UInt16x2_args = { &UInt16x2_operator_lt_UInt16x2_arg0 };
+Variable UInt16x2_operator_lte_UInt16x2_arg0;
+Function UInt16x2_operator_lte_UInt16x2;
+std::array<Variable*> UInt16x2_operator_lte_UInt16x2_args = { &UInt16x2_operator_lte_UInt16x2_arg0 };
+Variable UInt16x2_operator_gt_UInt16x2_arg0;
+Function UInt16x2_operator_gt_UInt16x2;
+std::array<Variable*> UInt16x2_operator_gt_UInt16x2_args = { &UInt16x2_operator_gt_UInt16x2_arg0 };
+Variable UInt16x2_operator_gte_UInt16x2_arg0;
+Function UInt16x2_operator_gte_UInt16x2;
+std::array<Variable*> UInt16x2_operator_gte_UInt16x2_args = { &UInt16x2_operator_gte_UInt16x2_arg0 };
+Variable UInt16x2_operator_eq_UInt16x2_arg0;
+Function UInt16x2_operator_eq_UInt16x2;
+std::array<Variable*> UInt16x2_operator_eq_UInt16x2_args = { &UInt16x2_operator_eq_UInt16x2_arg0 };
+Variable UInt16x2_operator_neq_UInt16x2_arg0;
+Function UInt16x2_operator_neq_UInt16x2;
+std::array<Variable*> UInt16x2_operator_neq_UInt16x2_args = { &UInt16x2_operator_neq_UInt16x2_arg0 };
+Variable UInt16x2_operator_scale_UInt16x2_Float32_arg0;
+Function UInt16x2_operator_scale_UInt16x2_Float32;
+std::array<Variable*> UInt16x2_operator_scale_UInt16x2_Float32_args = { &UInt16x2_operator_scale_UInt16x2_Float32_arg0 };
+Variable UInt16x2_operator_scale_UInt16x2_Float16_arg0;
+Function UInt16x2_operator_scale_UInt16x2_Float16;
+std::array<Variable*> UInt16x2_operator_scale_UInt16x2_Float16_args = { &UInt16x2_operator_scale_UInt16x2_Float16_arg0 };
+Variable UInt16x2_operator_scale_UInt16x2_UInt32_arg0;
+Function UInt16x2_operator_scale_UInt16x2_UInt32;
+std::array<Variable*> UInt16x2_operator_scale_UInt16x2_UInt32_args = { &UInt16x2_operator_scale_UInt16x2_UInt32_arg0 };
+Variable UInt16x2_operator_scale_UInt16x2_UInt16_arg0;
+Function UInt16x2_operator_scale_UInt16x2_UInt16;
+std::array<Variable*> UInt16x2_operator_scale_UInt16x2_UInt16_args = { &UInt16x2_operator_scale_UInt16x2_UInt16_arg0 };
+Variable UInt16x2_operator_scale_UInt16x2_Int32_arg0;
+Function UInt16x2_operator_scale_UInt16x2_Int32;
+std::array<Variable*> UInt16x2_operator_scale_UInt16x2_Int32_args = { &UInt16x2_operator_scale_UInt16x2_Int32_arg0 };
+Variable UInt16x2_operator_scale_UInt16x2_Int16_arg0;
+Function UInt16x2_operator_scale_UInt16x2_Int16;
+std::array<Variable*> UInt16x2_operator_scale_UInt16x2_Int16_args = { &UInt16x2_operator_scale_UInt16x2_Int16_arg0 };
+Variable UInt16x2_operator_or_UInt16x2_arg0;
+Function UInt16x2_operator_or_UInt16x2;
+std::array<Variable*> UInt16x2_operator_or_UInt16x2_args = { &UInt16x2_operator_or_UInt16x2_arg0 };
+Variable UInt16x2_operator_and_UInt16x2_arg0;
+Function UInt16x2_operator_and_UInt16x2;
+std::array<Variable*> UInt16x2_operator_and_UInt16x2_args = { &UInt16x2_operator_and_UInt16x2_arg0 };
+Variable UInt16x2_operator_xor_UInt16x2_arg0;
+Function UInt16x2_operator_xor_UInt16x2;
+std::array<Variable*> UInt16x2_operator_xor_UInt16x2_args = { &UInt16x2_operator_xor_UInt16x2_arg0 };
+Variable UInt16x2_operator_lsh_UInt16x2_arg0;
+Function UInt16x2_operator_lsh_UInt16x2;
+std::array<Variable*> UInt16x2_operator_lsh_UInt16x2_args = { &UInt16x2_operator_lsh_UInt16x2_arg0 };
+Variable UInt16x2_operator_rsh_UInt16x2_arg0;
+Function UInt16x2_operator_rsh_UInt16x2;
+std::array<Variable*> UInt16x2_operator_rsh_UInt16x2_args = { &UInt16x2_operator_rsh_UInt16x2_arg0 };
+Variable UInt16x2_operator_orasg_UInt16x2_arg0;
+Function UInt16x2_operator_orasg_UInt16x2;
+std::array<Variable*> UInt16x2_operator_orasg_UInt16x2_args = { &UInt16x2_operator_orasg_UInt16x2_arg0 };
+Variable UInt16x2_operator_andasg_UInt16x2_arg0;
+Function UInt16x2_operator_andasg_UInt16x2;
+std::array<Variable*> UInt16x2_operator_andasg_UInt16x2_args = { &UInt16x2_operator_andasg_UInt16x2_arg0 };
+Variable UInt16x2_operator_xorasg_UInt16x2_arg0;
+Function UInt16x2_operator_xorasg_UInt16x2;
+std::array<Variable*> UInt16x2_operator_xorasg_UInt16x2_args = { &UInt16x2_operator_xorasg_UInt16x2_arg0 };
+Variable UInt16x2_operator_lshasg_UInt16x2_arg0;
+Function UInt16x2_operator_lshasg_UInt16x2;
+std::array<Variable*> UInt16x2_operator_lshasg_UInt16x2_args = { &UInt16x2_operator_lshasg_UInt16x2_arg0 };
+Variable UInt16x2_operator_rhsasg_UInt16x2_arg0;
+Function UInt16x2_operator_rhsasg_UInt16x2;
+std::array<Variable*> UInt16x2_operator_rhsasg_UInt16x2_args = { &UInt16x2_operator_rhsasg_UInt16x2_arg0 };
+Variable Int16x2_convert_Float32x2_arg0;
+Function Int16x2_convert_Float32x2;
+std::array<Variable*> Int16x2_convert_Float32x2_args = { &Int16x2_convert_Float32x2_arg0 };
+Variable Int16x2_splat_Float32_arg0;
+Function Int16x2_splat_Float32;
+std::array<Variable*> Int16x2_splat_Float32_args = { &Int16x2_splat_Float32_arg0 };
+Variable Int16x2_convert_UInt32x2_arg0;
+Function Int16x2_convert_UInt32x2;
+std::array<Variable*> Int16x2_convert_UInt32x2_args = { &Int16x2_convert_UInt32x2_arg0 };
+Variable Int16x2_splat_UInt32_arg0;
+Function Int16x2_splat_UInt32;
+std::array<Variable*> Int16x2_splat_UInt32_args = { &Int16x2_splat_UInt32_arg0 };
+Variable Int16x2_convert_Int32x2_arg0;
+Function Int16x2_convert_Int32x2;
+std::array<Variable*> Int16x2_convert_Int32x2_args = { &Int16x2_convert_Int32x2_arg0 };
+Variable Int16x2_splat_Int32_arg0;
+Function Int16x2_splat_Int32;
+std::array<Variable*> Int16x2_splat_Int32_args = { &Int16x2_splat_Int32_arg0 };
+Variable Int16x2_convert_Float16x2_arg0;
+Function Int16x2_convert_Float16x2;
+std::array<Variable*> Int16x2_convert_Float16x2_args = { &Int16x2_convert_Float16x2_arg0 };
+Variable Int16x2_splat_Float16_arg0;
+Function Int16x2_splat_Float16;
+std::array<Variable*> Int16x2_splat_Float16_args = { &Int16x2_splat_Float16_arg0 };
+Variable Int16x2_convert_UInt16x2_arg0;
+Function Int16x2_convert_UInt16x2;
+std::array<Variable*> Int16x2_convert_UInt16x2_args = { &Int16x2_convert_UInt16x2_arg0 };
+Variable Int16x2_splat_UInt16_arg0;
+Function Int16x2_splat_UInt16;
+std::array<Variable*> Int16x2_splat_UInt16_args = { &Int16x2_splat_UInt16_arg0 };
+Variable Int16x2_convert_Int16x2_arg0;
+Function Int16x2_convert_Int16x2;
+std::array<Variable*> Int16x2_convert_Int16x2_args = { &Int16x2_convert_Int16x2_arg0 };
+Variable Int16x2_splat_Int16_arg0;
+Function Int16x2_splat_Int16;
+std::array<Variable*> Int16x2_splat_Int16_args = { &Int16x2_splat_Int16_arg0 };
+Variable Int16x2_ctor0_arg0;
+Variable Int16x2_ctor0_arg1;
+Function Int16x2_ctor0_Int16_Int16;
+std::array<Variable*> Int16x2_ctor0_Int16_Int16_args = { &Int16x2_ctor0_arg0, &Int16x2_ctor0_arg1 };
+Variable Int16x2_operator_index_Int32_arg0;
+Function Int16x2_operator_index_Int32;
+std::array<Variable*> Int16x2_operator_index_Int32_args = { &Int16x2_operator_index_Int32_arg0 };
+Variable Int16x2_operator_index_UInt32_arg0;
+Function Int16x2_operator_index_UInt32;
+std::array<Variable*> Int16x2_operator_index_UInt32_args = { &Int16x2_operator_index_UInt32_arg0 };
+Variable Int16x2_operator_index_Int16_arg0;
+Function Int16x2_operator_index_Int16;
+std::array<Variable*> Int16x2_operator_index_Int16_args = { &Int16x2_operator_index_Int16_arg0 };
+Variable Int16x2_operator_index_UInt16_arg0;
+Function Int16x2_operator_index_UInt16;
+std::array<Variable*> Int16x2_operator_index_UInt16_args = { &Int16x2_operator_index_UInt16_arg0 };
+Variable Int16x2_operator_add_Int16x2_arg0;
+Function Int16x2_operator_add_Int16x2;
+std::array<Variable*> Int16x2_operator_add_Int16x2_args = { &Int16x2_operator_add_Int16x2_arg0 };
+Variable Int16x2_operator_sub_Int16x2_arg0;
+Function Int16x2_operator_sub_Int16x2;
+std::array<Variable*> Int16x2_operator_sub_Int16x2_args = { &Int16x2_operator_sub_Int16x2_arg0 };
+Variable Int16x2_operator_mul_Int16x2_arg0;
+Function Int16x2_operator_mul_Int16x2;
+std::array<Variable*> Int16x2_operator_mul_Int16x2_args = { &Int16x2_operator_mul_Int16x2_arg0 };
+Variable Int16x2_operator_div_Int16x2_arg0;
+Function Int16x2_operator_div_Int16x2;
+std::array<Variable*> Int16x2_operator_div_Int16x2_args = { &Int16x2_operator_div_Int16x2_arg0 };
+Variable Int16x2_operator_mod_Int16x2_arg0;
+Function Int16x2_operator_mod_Int16x2;
+std::array<Variable*> Int16x2_operator_mod_Int16x2_args = { &Int16x2_operator_mod_Int16x2_arg0 };
+Variable Int16x2_operator_addasg_Int16x2_arg0;
+Function Int16x2_operator_addasg_Int16x2;
+std::array<Variable*> Int16x2_operator_addasg_Int16x2_args = { &Int16x2_operator_addasg_Int16x2_arg0 };
+Variable Int16x2_operator_subasg_Int16x2_arg0;
+Function Int16x2_operator_subasg_Int16x2;
+std::array<Variable*> Int16x2_operator_subasg_Int16x2_args = { &Int16x2_operator_subasg_Int16x2_arg0 };
+Variable Int16x2_operator_mulasg_Int16x2_arg0;
+Function Int16x2_operator_mulasg_Int16x2;
+std::array<Variable*> Int16x2_operator_mulasg_Int16x2_args = { &Int16x2_operator_mulasg_Int16x2_arg0 };
+Variable Int16x2_operator_divasg_Int16x2_arg0;
+Function Int16x2_operator_divasg_Int16x2;
+std::array<Variable*> Int16x2_operator_divasg_Int16x2_args = { &Int16x2_operator_divasg_Int16x2_arg0 };
+Variable Int16x2_operator_lt_Int16x2_arg0;
+Function Int16x2_operator_lt_Int16x2;
+std::array<Variable*> Int16x2_operator_lt_Int16x2_args = { &Int16x2_operator_lt_Int16x2_arg0 };
+Variable Int16x2_operator_lte_Int16x2_arg0;
+Function Int16x2_operator_lte_Int16x2;
+std::array<Variable*> Int16x2_operator_lte_Int16x2_args = { &Int16x2_operator_lte_Int16x2_arg0 };
+Variable Int16x2_operator_gt_Int16x2_arg0;
+Function Int16x2_operator_gt_Int16x2;
+std::array<Variable*> Int16x2_operator_gt_Int16x2_args = { &Int16x2_operator_gt_Int16x2_arg0 };
+Variable Int16x2_operator_gte_Int16x2_arg0;
+Function Int16x2_operator_gte_Int16x2;
+std::array<Variable*> Int16x2_operator_gte_Int16x2_args = { &Int16x2_operator_gte_Int16x2_arg0 };
+Variable Int16x2_operator_eq_Int16x2_arg0;
+Function Int16x2_operator_eq_Int16x2;
+std::array<Variable*> Int16x2_operator_eq_Int16x2_args = { &Int16x2_operator_eq_Int16x2_arg0 };
+Variable Int16x2_operator_neq_Int16x2_arg0;
+Function Int16x2_operator_neq_Int16x2;
+std::array<Variable*> Int16x2_operator_neq_Int16x2_args = { &Int16x2_operator_neq_Int16x2_arg0 };
+Variable Int16x2_operator_scale_Int16x2_Float32_arg0;
+Function Int16x2_operator_scale_Int16x2_Float32;
+std::array<Variable*> Int16x2_operator_scale_Int16x2_Float32_args = { &Int16x2_operator_scale_Int16x2_Float32_arg0 };
+Variable Int16x2_operator_scale_Int16x2_Float16_arg0;
+Function Int16x2_operator_scale_Int16x2_Float16;
+std::array<Variable*> Int16x2_operator_scale_Int16x2_Float16_args = { &Int16x2_operator_scale_Int16x2_Float16_arg0 };
+Variable Int16x2_operator_scale_Int16x2_UInt32_arg0;
+Function Int16x2_operator_scale_Int16x2_UInt32;
+std::array<Variable*> Int16x2_operator_scale_Int16x2_UInt32_args = { &Int16x2_operator_scale_Int16x2_UInt32_arg0 };
+Variable Int16x2_operator_scale_Int16x2_UInt16_arg0;
+Function Int16x2_operator_scale_Int16x2_UInt16;
+std::array<Variable*> Int16x2_operator_scale_Int16x2_UInt16_args = { &Int16x2_operator_scale_Int16x2_UInt16_arg0 };
+Variable Int16x2_operator_scale_Int16x2_Int32_arg0;
+Function Int16x2_operator_scale_Int16x2_Int32;
+std::array<Variable*> Int16x2_operator_scale_Int16x2_Int32_args = { &Int16x2_operator_scale_Int16x2_Int32_arg0 };
+Variable Int16x2_operator_scale_Int16x2_Int16_arg0;
+Function Int16x2_operator_scale_Int16x2_Int16;
+std::array<Variable*> Int16x2_operator_scale_Int16x2_Int16_args = { &Int16x2_operator_scale_Int16x2_Int16_arg0 };
+Variable Int16x2_operator_or_Int16x2_arg0;
+Function Int16x2_operator_or_Int16x2;
+std::array<Variable*> Int16x2_operator_or_Int16x2_args = { &Int16x2_operator_or_Int16x2_arg0 };
+Variable Int16x2_operator_and_Int16x2_arg0;
+Function Int16x2_operator_and_Int16x2;
+std::array<Variable*> Int16x2_operator_and_Int16x2_args = { &Int16x2_operator_and_Int16x2_arg0 };
+Variable Int16x2_operator_xor_Int16x2_arg0;
+Function Int16x2_operator_xor_Int16x2;
+std::array<Variable*> Int16x2_operator_xor_Int16x2_args = { &Int16x2_operator_xor_Int16x2_arg0 };
+Variable Int16x2_operator_lsh_Int16x2_arg0;
+Function Int16x2_operator_lsh_Int16x2;
+std::array<Variable*> Int16x2_operator_lsh_Int16x2_args = { &Int16x2_operator_lsh_Int16x2_arg0 };
+Variable Int16x2_operator_rsh_Int16x2_arg0;
+Function Int16x2_operator_rsh_Int16x2;
+std::array<Variable*> Int16x2_operator_rsh_Int16x2_args = { &Int16x2_operator_rsh_Int16x2_arg0 };
+Variable Int16x2_operator_orasg_Int16x2_arg0;
+Function Int16x2_operator_orasg_Int16x2;
+std::array<Variable*> Int16x2_operator_orasg_Int16x2_args = { &Int16x2_operator_orasg_Int16x2_arg0 };
+Variable Int16x2_operator_andasg_Int16x2_arg0;
+Function Int16x2_operator_andasg_Int16x2;
+std::array<Variable*> Int16x2_operator_andasg_Int16x2_args = { &Int16x2_operator_andasg_Int16x2_arg0 };
+Variable Int16x2_operator_xorasg_Int16x2_arg0;
+Function Int16x2_operator_xorasg_Int16x2;
+std::array<Variable*> Int16x2_operator_xorasg_Int16x2_args = { &Int16x2_operator_xorasg_Int16x2_arg0 };
+Variable Int16x2_operator_lshasg_Int16x2_arg0;
+Function Int16x2_operator_lshasg_Int16x2;
+std::array<Variable*> Int16x2_operator_lshasg_Int16x2_args = { &Int16x2_operator_lshasg_Int16x2_arg0 };
+Variable Int16x2_operator_rhsasg_Int16x2_arg0;
+Function Int16x2_operator_rhsasg_Int16x2;
+std::array<Variable*> Int16x2_operator_rhsasg_Int16x2_args = { &Int16x2_operator_rhsasg_Int16x2_arg0 };
+Variable Float32x3_convert_Float32x3_arg0;
+Function Float32x3_convert_Float32x3;
+std::array<Variable*> Float32x3_convert_Float32x3_args = { &Float32x3_convert_Float32x3_arg0 };
+Variable Float32x3_splat_Float32_arg0;
+Function Float32x3_splat_Float32;
+std::array<Variable*> Float32x3_splat_Float32_args = { &Float32x3_splat_Float32_arg0 };
+Variable Float32x3_convert_UInt32x3_arg0;
+Function Float32x3_convert_UInt32x3;
+std::array<Variable*> Float32x3_convert_UInt32x3_args = { &Float32x3_convert_UInt32x3_arg0 };
+Variable Float32x3_splat_UInt32_arg0;
+Function Float32x3_splat_UInt32;
+std::array<Variable*> Float32x3_splat_UInt32_args = { &Float32x3_splat_UInt32_arg0 };
+Variable Float32x3_convert_Int32x3_arg0;
+Function Float32x3_convert_Int32x3;
+std::array<Variable*> Float32x3_convert_Int32x3_args = { &Float32x3_convert_Int32x3_arg0 };
+Variable Float32x3_splat_Int32_arg0;
+Function Float32x3_splat_Int32;
+std::array<Variable*> Float32x3_splat_Int32_args = { &Float32x3_splat_Int32_arg0 };
+Variable Float32x3_convert_Float16x3_arg0;
+Function Float32x3_convert_Float16x3;
+std::array<Variable*> Float32x3_convert_Float16x3_args = { &Float32x3_convert_Float16x3_arg0 };
+Variable Float32x3_splat_Float16_arg0;
+Function Float32x3_splat_Float16;
+std::array<Variable*> Float32x3_splat_Float16_args = { &Float32x3_splat_Float16_arg0 };
+Variable Float32x3_convert_UInt16x3_arg0;
+Function Float32x3_convert_UInt16x3;
+std::array<Variable*> Float32x3_convert_UInt16x3_args = { &Float32x3_convert_UInt16x3_arg0 };
+Variable Float32x3_splat_UInt16_arg0;
+Function Float32x3_splat_UInt16;
+std::array<Variable*> Float32x3_splat_UInt16_args = { &Float32x3_splat_UInt16_arg0 };
+Variable Float32x3_convert_Int16x3_arg0;
+Function Float32x3_convert_Int16x3;
+std::array<Variable*> Float32x3_convert_Int16x3_args = { &Float32x3_convert_Int16x3_arg0 };
+Variable Float32x3_splat_Int16_arg0;
+Function Float32x3_splat_Int16;
+std::array<Variable*> Float32x3_splat_Int16_args = { &Float32x3_splat_Int16_arg0 };
+Variable Float32x3_ctor0_arg0;
+Variable Float32x3_ctor0_arg1;
+Variable Float32x3_ctor0_arg2;
+Function Float32x3_ctor0_Float32_Float32_Float32;
+std::array<Variable*> Float32x3_ctor0_Float32_Float32_Float32_args = { &Float32x3_ctor0_arg0, &Float32x3_ctor0_arg1, &Float32x3_ctor0_arg2 };
+Variable Float32x3_ctor1_arg0;
+Variable Float32x3_ctor1_arg1;
+Function Float32x3_ctor1_Float32x2_Float32;
+std::array<Variable*> Float32x3_ctor1_Float32x2_Float32_args = { &Float32x3_ctor1_arg0, &Float32x3_ctor1_arg1 };
+Variable Float32x3_ctor2_arg0;
+Variable Float32x3_ctor2_arg1;
+Function Float32x3_ctor2_Float32_Float32x2;
+std::array<Variable*> Float32x3_ctor2_Float32_Float32x2_args = { &Float32x3_ctor2_arg0, &Float32x3_ctor2_arg1 };
+Variable Float32x3_operator_index_Int32_arg0;
+Function Float32x3_operator_index_Int32;
+std::array<Variable*> Float32x3_operator_index_Int32_args = { &Float32x3_operator_index_Int32_arg0 };
+Variable Float32x3_operator_index_UInt32_arg0;
+Function Float32x3_operator_index_UInt32;
+std::array<Variable*> Float32x3_operator_index_UInt32_args = { &Float32x3_operator_index_UInt32_arg0 };
+Variable Float32x3_operator_index_Int16_arg0;
+Function Float32x3_operator_index_Int16;
+std::array<Variable*> Float32x3_operator_index_Int16_args = { &Float32x3_operator_index_Int16_arg0 };
+Variable Float32x3_operator_index_UInt16_arg0;
+Function Float32x3_operator_index_UInt16;
+std::array<Variable*> Float32x3_operator_index_UInt16_args = { &Float32x3_operator_index_UInt16_arg0 };
+Variable Float32x3_operator_add_Float32x3_arg0;
+Function Float32x3_operator_add_Float32x3;
+std::array<Variable*> Float32x3_operator_add_Float32x3_args = { &Float32x3_operator_add_Float32x3_arg0 };
+Variable Float32x3_operator_sub_Float32x3_arg0;
+Function Float32x3_operator_sub_Float32x3;
+std::array<Variable*> Float32x3_operator_sub_Float32x3_args = { &Float32x3_operator_sub_Float32x3_arg0 };
+Variable Float32x3_operator_mul_Float32x3_arg0;
+Function Float32x3_operator_mul_Float32x3;
+std::array<Variable*> Float32x3_operator_mul_Float32x3_args = { &Float32x3_operator_mul_Float32x3_arg0 };
+Variable Float32x3_operator_div_Float32x3_arg0;
+Function Float32x3_operator_div_Float32x3;
+std::array<Variable*> Float32x3_operator_div_Float32x3_args = { &Float32x3_operator_div_Float32x3_arg0 };
+Variable Float32x3_operator_mod_Float32x3_arg0;
+Function Float32x3_operator_mod_Float32x3;
+std::array<Variable*> Float32x3_operator_mod_Float32x3_args = { &Float32x3_operator_mod_Float32x3_arg0 };
+Variable Float32x3_operator_addasg_Float32x3_arg0;
+Function Float32x3_operator_addasg_Float32x3;
+std::array<Variable*> Float32x3_operator_addasg_Float32x3_args = { &Float32x3_operator_addasg_Float32x3_arg0 };
+Variable Float32x3_operator_subasg_Float32x3_arg0;
+Function Float32x3_operator_subasg_Float32x3;
+std::array<Variable*> Float32x3_operator_subasg_Float32x3_args = { &Float32x3_operator_subasg_Float32x3_arg0 };
+Variable Float32x3_operator_mulasg_Float32x3_arg0;
+Function Float32x3_operator_mulasg_Float32x3;
+std::array<Variable*> Float32x3_operator_mulasg_Float32x3_args = { &Float32x3_operator_mulasg_Float32x3_arg0 };
+Variable Float32x3_operator_divasg_Float32x3_arg0;
+Function Float32x3_operator_divasg_Float32x3;
+std::array<Variable*> Float32x3_operator_divasg_Float32x3_args = { &Float32x3_operator_divasg_Float32x3_arg0 };
+Variable Float32x3_operator_lt_Float32x3_arg0;
+Function Float32x3_operator_lt_Float32x3;
+std::array<Variable*> Float32x3_operator_lt_Float32x3_args = { &Float32x3_operator_lt_Float32x3_arg0 };
+Variable Float32x3_operator_lte_Float32x3_arg0;
+Function Float32x3_operator_lte_Float32x3;
+std::array<Variable*> Float32x3_operator_lte_Float32x3_args = { &Float32x3_operator_lte_Float32x3_arg0 };
+Variable Float32x3_operator_gt_Float32x3_arg0;
+Function Float32x3_operator_gt_Float32x3;
+std::array<Variable*> Float32x3_operator_gt_Float32x3_args = { &Float32x3_operator_gt_Float32x3_arg0 };
+Variable Float32x3_operator_gte_Float32x3_arg0;
+Function Float32x3_operator_gte_Float32x3;
+std::array<Variable*> Float32x3_operator_gte_Float32x3_args = { &Float32x3_operator_gte_Float32x3_arg0 };
+Variable Float32x3_operator_eq_Float32x3_arg0;
+Function Float32x3_operator_eq_Float32x3;
+std::array<Variable*> Float32x3_operator_eq_Float32x3_args = { &Float32x3_operator_eq_Float32x3_arg0 };
+Variable Float32x3_operator_neq_Float32x3_arg0;
+Function Float32x3_operator_neq_Float32x3;
+std::array<Variable*> Float32x3_operator_neq_Float32x3_args = { &Float32x3_operator_neq_Float32x3_arg0 };
+Variable Float32x3_operator_scale_Float32x3_Float32_arg0;
+Function Float32x3_operator_scale_Float32x3_Float32;
+std::array<Variable*> Float32x3_operator_scale_Float32x3_Float32_args = { &Float32x3_operator_scale_Float32x3_Float32_arg0 };
+Variable Float32x3_operator_scale_Float32x3_Float16_arg0;
+Function Float32x3_operator_scale_Float32x3_Float16;
+std::array<Variable*> Float32x3_operator_scale_Float32x3_Float16_args = { &Float32x3_operator_scale_Float32x3_Float16_arg0 };
+Variable Float32x3_operator_scale_Float32x3_UInt32_arg0;
+Function Float32x3_operator_scale_Float32x3_UInt32;
+std::array<Variable*> Float32x3_operator_scale_Float32x3_UInt32_args = { &Float32x3_operator_scale_Float32x3_UInt32_arg0 };
+Variable Float32x3_operator_scale_Float32x3_UInt16_arg0;
+Function Float32x3_operator_scale_Float32x3_UInt16;
+std::array<Variable*> Float32x3_operator_scale_Float32x3_UInt16_args = { &Float32x3_operator_scale_Float32x3_UInt16_arg0 };
+Variable Float32x3_operator_scale_Float32x3_Int32_arg0;
+Function Float32x3_operator_scale_Float32x3_Int32;
+std::array<Variable*> Float32x3_operator_scale_Float32x3_Int32_args = { &Float32x3_operator_scale_Float32x3_Int32_arg0 };
+Variable Float32x3_operator_scale_Float32x3_Int16_arg0;
+Function Float32x3_operator_scale_Float32x3_Int16;
+std::array<Variable*> Float32x3_operator_scale_Float32x3_Int16_args = { &Float32x3_operator_scale_Float32x3_Int16_arg0 };
+Variable Float32x3_operator_mul_Float32x3x2_arg0;
+Function Float32x3_operator_mul_Float32x3x2;
+std::array<Variable*> Float32x3_operator_mul_Float32x3x2_args = { &Float32x3_operator_mul_Float32x3x2_arg0 };
+Variable Float32x3_operator_mul_Float32x3x3_arg0;
+Function Float32x3_operator_mul_Float32x3x3;
+std::array<Variable*> Float32x3_operator_mul_Float32x3x3_args = { &Float32x3_operator_mul_Float32x3x3_arg0 };
+Variable Float32x3_operator_mul_Float32x3x4_arg0;
+Function Float32x3_operator_mul_Float32x3x4;
+std::array<Variable*> Float32x3_operator_mul_Float32x3x4_args = { &Float32x3_operator_mul_Float32x3x4_arg0 };
+Variable UInt32x3_convert_Float32x3_arg0;
+Function UInt32x3_convert_Float32x3;
+std::array<Variable*> UInt32x3_convert_Float32x3_args = { &UInt32x3_convert_Float32x3_arg0 };
+Variable UInt32x3_splat_Float32_arg0;
+Function UInt32x3_splat_Float32;
+std::array<Variable*> UInt32x3_splat_Float32_args = { &UInt32x3_splat_Float32_arg0 };
+Variable UInt32x3_convert_UInt32x3_arg0;
+Function UInt32x3_convert_UInt32x3;
+std::array<Variable*> UInt32x3_convert_UInt32x3_args = { &UInt32x3_convert_UInt32x3_arg0 };
+Variable UInt32x3_splat_UInt32_arg0;
+Function UInt32x3_splat_UInt32;
+std::array<Variable*> UInt32x3_splat_UInt32_args = { &UInt32x3_splat_UInt32_arg0 };
+Variable UInt32x3_convert_Int32x3_arg0;
+Function UInt32x3_convert_Int32x3;
+std::array<Variable*> UInt32x3_convert_Int32x3_args = { &UInt32x3_convert_Int32x3_arg0 };
+Variable UInt32x3_splat_Int32_arg0;
+Function UInt32x3_splat_Int32;
+std::array<Variable*> UInt32x3_splat_Int32_args = { &UInt32x3_splat_Int32_arg0 };
+Variable UInt32x3_convert_Float16x3_arg0;
+Function UInt32x3_convert_Float16x3;
+std::array<Variable*> UInt32x3_convert_Float16x3_args = { &UInt32x3_convert_Float16x3_arg0 };
+Variable UInt32x3_splat_Float16_arg0;
+Function UInt32x3_splat_Float16;
+std::array<Variable*> UInt32x3_splat_Float16_args = { &UInt32x3_splat_Float16_arg0 };
+Variable UInt32x3_convert_UInt16x3_arg0;
+Function UInt32x3_convert_UInt16x3;
+std::array<Variable*> UInt32x3_convert_UInt16x3_args = { &UInt32x3_convert_UInt16x3_arg0 };
+Variable UInt32x3_splat_UInt16_arg0;
+Function UInt32x3_splat_UInt16;
+std::array<Variable*> UInt32x3_splat_UInt16_args = { &UInt32x3_splat_UInt16_arg0 };
+Variable UInt32x3_convert_Int16x3_arg0;
+Function UInt32x3_convert_Int16x3;
+std::array<Variable*> UInt32x3_convert_Int16x3_args = { &UInt32x3_convert_Int16x3_arg0 };
+Variable UInt32x3_splat_Int16_arg0;
+Function UInt32x3_splat_Int16;
+std::array<Variable*> UInt32x3_splat_Int16_args = { &UInt32x3_splat_Int16_arg0 };
+Variable UInt32x3_ctor0_arg0;
+Variable UInt32x3_ctor0_arg1;
+Variable UInt32x3_ctor0_arg2;
+Function UInt32x3_ctor0_UInt32_UInt32_UInt32;
+std::array<Variable*> UInt32x3_ctor0_UInt32_UInt32_UInt32_args = { &UInt32x3_ctor0_arg0, &UInt32x3_ctor0_arg1, &UInt32x3_ctor0_arg2 };
+Variable UInt32x3_ctor1_arg0;
+Variable UInt32x3_ctor1_arg1;
+Function UInt32x3_ctor1_UInt32x2_UInt32;
+std::array<Variable*> UInt32x3_ctor1_UInt32x2_UInt32_args = { &UInt32x3_ctor1_arg0, &UInt32x3_ctor1_arg1 };
+Variable UInt32x3_ctor2_arg0;
+Variable UInt32x3_ctor2_arg1;
+Function UInt32x3_ctor2_UInt32_UInt32x2;
+std::array<Variable*> UInt32x3_ctor2_UInt32_UInt32x2_args = { &UInt32x3_ctor2_arg0, &UInt32x3_ctor2_arg1 };
+Variable UInt32x3_operator_index_Int32_arg0;
+Function UInt32x3_operator_index_Int32;
+std::array<Variable*> UInt32x3_operator_index_Int32_args = { &UInt32x3_operator_index_Int32_arg0 };
+Variable UInt32x3_operator_index_UInt32_arg0;
+Function UInt32x3_operator_index_UInt32;
+std::array<Variable*> UInt32x3_operator_index_UInt32_args = { &UInt32x3_operator_index_UInt32_arg0 };
+Variable UInt32x3_operator_index_Int16_arg0;
+Function UInt32x3_operator_index_Int16;
+std::array<Variable*> UInt32x3_operator_index_Int16_args = { &UInt32x3_operator_index_Int16_arg0 };
+Variable UInt32x3_operator_index_UInt16_arg0;
+Function UInt32x3_operator_index_UInt16;
+std::array<Variable*> UInt32x3_operator_index_UInt16_args = { &UInt32x3_operator_index_UInt16_arg0 };
+Variable UInt32x3_operator_add_UInt32x3_arg0;
+Function UInt32x3_operator_add_UInt32x3;
+std::array<Variable*> UInt32x3_operator_add_UInt32x3_args = { &UInt32x3_operator_add_UInt32x3_arg0 };
+Variable UInt32x3_operator_sub_UInt32x3_arg0;
+Function UInt32x3_operator_sub_UInt32x3;
+std::array<Variable*> UInt32x3_operator_sub_UInt32x3_args = { &UInt32x3_operator_sub_UInt32x3_arg0 };
+Variable UInt32x3_operator_mul_UInt32x3_arg0;
+Function UInt32x3_operator_mul_UInt32x3;
+std::array<Variable*> UInt32x3_operator_mul_UInt32x3_args = { &UInt32x3_operator_mul_UInt32x3_arg0 };
+Variable UInt32x3_operator_div_UInt32x3_arg0;
+Function UInt32x3_operator_div_UInt32x3;
+std::array<Variable*> UInt32x3_operator_div_UInt32x3_args = { &UInt32x3_operator_div_UInt32x3_arg0 };
+Variable UInt32x3_operator_mod_UInt32x3_arg0;
+Function UInt32x3_operator_mod_UInt32x3;
+std::array<Variable*> UInt32x3_operator_mod_UInt32x3_args = { &UInt32x3_operator_mod_UInt32x3_arg0 };
+Variable UInt32x3_operator_addasg_UInt32x3_arg0;
+Function UInt32x3_operator_addasg_UInt32x3;
+std::array<Variable*> UInt32x3_operator_addasg_UInt32x3_args = { &UInt32x3_operator_addasg_UInt32x3_arg0 };
+Variable UInt32x3_operator_subasg_UInt32x3_arg0;
+Function UInt32x3_operator_subasg_UInt32x3;
+std::array<Variable*> UInt32x3_operator_subasg_UInt32x3_args = { &UInt32x3_operator_subasg_UInt32x3_arg0 };
+Variable UInt32x3_operator_mulasg_UInt32x3_arg0;
+Function UInt32x3_operator_mulasg_UInt32x3;
+std::array<Variable*> UInt32x3_operator_mulasg_UInt32x3_args = { &UInt32x3_operator_mulasg_UInt32x3_arg0 };
+Variable UInt32x3_operator_divasg_UInt32x3_arg0;
+Function UInt32x3_operator_divasg_UInt32x3;
+std::array<Variable*> UInt32x3_operator_divasg_UInt32x3_args = { &UInt32x3_operator_divasg_UInt32x3_arg0 };
+Variable UInt32x3_operator_lt_UInt32x3_arg0;
+Function UInt32x3_operator_lt_UInt32x3;
+std::array<Variable*> UInt32x3_operator_lt_UInt32x3_args = { &UInt32x3_operator_lt_UInt32x3_arg0 };
+Variable UInt32x3_operator_lte_UInt32x3_arg0;
+Function UInt32x3_operator_lte_UInt32x3;
+std::array<Variable*> UInt32x3_operator_lte_UInt32x3_args = { &UInt32x3_operator_lte_UInt32x3_arg0 };
+Variable UInt32x3_operator_gt_UInt32x3_arg0;
+Function UInt32x3_operator_gt_UInt32x3;
+std::array<Variable*> UInt32x3_operator_gt_UInt32x3_args = { &UInt32x3_operator_gt_UInt32x3_arg0 };
+Variable UInt32x3_operator_gte_UInt32x3_arg0;
+Function UInt32x3_operator_gte_UInt32x3;
+std::array<Variable*> UInt32x3_operator_gte_UInt32x3_args = { &UInt32x3_operator_gte_UInt32x3_arg0 };
+Variable UInt32x3_operator_eq_UInt32x3_arg0;
+Function UInt32x3_operator_eq_UInt32x3;
+std::array<Variable*> UInt32x3_operator_eq_UInt32x3_args = { &UInt32x3_operator_eq_UInt32x3_arg0 };
+Variable UInt32x3_operator_neq_UInt32x3_arg0;
+Function UInt32x3_operator_neq_UInt32x3;
+std::array<Variable*> UInt32x3_operator_neq_UInt32x3_args = { &UInt32x3_operator_neq_UInt32x3_arg0 };
+Variable UInt32x3_operator_scale_UInt32x3_Float32_arg0;
+Function UInt32x3_operator_scale_UInt32x3_Float32;
+std::array<Variable*> UInt32x3_operator_scale_UInt32x3_Float32_args = { &UInt32x3_operator_scale_UInt32x3_Float32_arg0 };
+Variable UInt32x3_operator_scale_UInt32x3_Float16_arg0;
+Function UInt32x3_operator_scale_UInt32x3_Float16;
+std::array<Variable*> UInt32x3_operator_scale_UInt32x3_Float16_args = { &UInt32x3_operator_scale_UInt32x3_Float16_arg0 };
+Variable UInt32x3_operator_scale_UInt32x3_UInt32_arg0;
+Function UInt32x3_operator_scale_UInt32x3_UInt32;
+std::array<Variable*> UInt32x3_operator_scale_UInt32x3_UInt32_args = { &UInt32x3_operator_scale_UInt32x3_UInt32_arg0 };
+Variable UInt32x3_operator_scale_UInt32x3_UInt16_arg0;
+Function UInt32x3_operator_scale_UInt32x3_UInt16;
+std::array<Variable*> UInt32x3_operator_scale_UInt32x3_UInt16_args = { &UInt32x3_operator_scale_UInt32x3_UInt16_arg0 };
+Variable UInt32x3_operator_scale_UInt32x3_Int32_arg0;
+Function UInt32x3_operator_scale_UInt32x3_Int32;
+std::array<Variable*> UInt32x3_operator_scale_UInt32x3_Int32_args = { &UInt32x3_operator_scale_UInt32x3_Int32_arg0 };
+Variable UInt32x3_operator_scale_UInt32x3_Int16_arg0;
+Function UInt32x3_operator_scale_UInt32x3_Int16;
+std::array<Variable*> UInt32x3_operator_scale_UInt32x3_Int16_args = { &UInt32x3_operator_scale_UInt32x3_Int16_arg0 };
+Variable UInt32x3_operator_or_UInt32x3_arg0;
+Function UInt32x3_operator_or_UInt32x3;
+std::array<Variable*> UInt32x3_operator_or_UInt32x3_args = { &UInt32x3_operator_or_UInt32x3_arg0 };
+Variable UInt32x3_operator_and_UInt32x3_arg0;
+Function UInt32x3_operator_and_UInt32x3;
+std::array<Variable*> UInt32x3_operator_and_UInt32x3_args = { &UInt32x3_operator_and_UInt32x3_arg0 };
+Variable UInt32x3_operator_xor_UInt32x3_arg0;
+Function UInt32x3_operator_xor_UInt32x3;
+std::array<Variable*> UInt32x3_operator_xor_UInt32x3_args = { &UInt32x3_operator_xor_UInt32x3_arg0 };
+Variable UInt32x3_operator_lsh_UInt32x3_arg0;
+Function UInt32x3_operator_lsh_UInt32x3;
+std::array<Variable*> UInt32x3_operator_lsh_UInt32x3_args = { &UInt32x3_operator_lsh_UInt32x3_arg0 };
+Variable UInt32x3_operator_rsh_UInt32x3_arg0;
+Function UInt32x3_operator_rsh_UInt32x3;
+std::array<Variable*> UInt32x3_operator_rsh_UInt32x3_args = { &UInt32x3_operator_rsh_UInt32x3_arg0 };
+Variable UInt32x3_operator_orasg_UInt32x3_arg0;
+Function UInt32x3_operator_orasg_UInt32x3;
+std::array<Variable*> UInt32x3_operator_orasg_UInt32x3_args = { &UInt32x3_operator_orasg_UInt32x3_arg0 };
+Variable UInt32x3_operator_andasg_UInt32x3_arg0;
+Function UInt32x3_operator_andasg_UInt32x3;
+std::array<Variable*> UInt32x3_operator_andasg_UInt32x3_args = { &UInt32x3_operator_andasg_UInt32x3_arg0 };
+Variable UInt32x3_operator_xorasg_UInt32x3_arg0;
+Function UInt32x3_operator_xorasg_UInt32x3;
+std::array<Variable*> UInt32x3_operator_xorasg_UInt32x3_args = { &UInt32x3_operator_xorasg_UInt32x3_arg0 };
+Variable UInt32x3_operator_lshasg_UInt32x3_arg0;
+Function UInt32x3_operator_lshasg_UInt32x3;
+std::array<Variable*> UInt32x3_operator_lshasg_UInt32x3_args = { &UInt32x3_operator_lshasg_UInt32x3_arg0 };
+Variable UInt32x3_operator_rhsasg_UInt32x3_arg0;
+Function UInt32x3_operator_rhsasg_UInt32x3;
+std::array<Variable*> UInt32x3_operator_rhsasg_UInt32x3_args = { &UInt32x3_operator_rhsasg_UInt32x3_arg0 };
+Variable Int32x3_convert_Float32x3_arg0;
+Function Int32x3_convert_Float32x3;
+std::array<Variable*> Int32x3_convert_Float32x3_args = { &Int32x3_convert_Float32x3_arg0 };
+Variable Int32x3_splat_Float32_arg0;
+Function Int32x3_splat_Float32;
+std::array<Variable*> Int32x3_splat_Float32_args = { &Int32x3_splat_Float32_arg0 };
+Variable Int32x3_convert_UInt32x3_arg0;
+Function Int32x3_convert_UInt32x3;
+std::array<Variable*> Int32x3_convert_UInt32x3_args = { &Int32x3_convert_UInt32x3_arg0 };
+Variable Int32x3_splat_UInt32_arg0;
+Function Int32x3_splat_UInt32;
+std::array<Variable*> Int32x3_splat_UInt32_args = { &Int32x3_splat_UInt32_arg0 };
+Variable Int32x3_convert_Int32x3_arg0;
+Function Int32x3_convert_Int32x3;
+std::array<Variable*> Int32x3_convert_Int32x3_args = { &Int32x3_convert_Int32x3_arg0 };
+Variable Int32x3_splat_Int32_arg0;
+Function Int32x3_splat_Int32;
+std::array<Variable*> Int32x3_splat_Int32_args = { &Int32x3_splat_Int32_arg0 };
+Variable Int32x3_convert_Float16x3_arg0;
+Function Int32x3_convert_Float16x3;
+std::array<Variable*> Int32x3_convert_Float16x3_args = { &Int32x3_convert_Float16x3_arg0 };
+Variable Int32x3_splat_Float16_arg0;
+Function Int32x3_splat_Float16;
+std::array<Variable*> Int32x3_splat_Float16_args = { &Int32x3_splat_Float16_arg0 };
+Variable Int32x3_convert_UInt16x3_arg0;
+Function Int32x3_convert_UInt16x3;
+std::array<Variable*> Int32x3_convert_UInt16x3_args = { &Int32x3_convert_UInt16x3_arg0 };
+Variable Int32x3_splat_UInt16_arg0;
+Function Int32x3_splat_UInt16;
+std::array<Variable*> Int32x3_splat_UInt16_args = { &Int32x3_splat_UInt16_arg0 };
+Variable Int32x3_convert_Int16x3_arg0;
+Function Int32x3_convert_Int16x3;
+std::array<Variable*> Int32x3_convert_Int16x3_args = { &Int32x3_convert_Int16x3_arg0 };
+Variable Int32x3_splat_Int16_arg0;
+Function Int32x3_splat_Int16;
+std::array<Variable*> Int32x3_splat_Int16_args = { &Int32x3_splat_Int16_arg0 };
+Variable Int32x3_ctor0_arg0;
+Variable Int32x3_ctor0_arg1;
+Variable Int32x3_ctor0_arg2;
+Function Int32x3_ctor0_Int32_Int32_Int32;
+std::array<Variable*> Int32x3_ctor0_Int32_Int32_Int32_args = { &Int32x3_ctor0_arg0, &Int32x3_ctor0_arg1, &Int32x3_ctor0_arg2 };
+Variable Int32x3_ctor1_arg0;
+Variable Int32x3_ctor1_arg1;
+Function Int32x3_ctor1_Int32x2_Int32;
+std::array<Variable*> Int32x3_ctor1_Int32x2_Int32_args = { &Int32x3_ctor1_arg0, &Int32x3_ctor1_arg1 };
+Variable Int32x3_ctor2_arg0;
+Variable Int32x3_ctor2_arg1;
+Function Int32x3_ctor2_Int32_Int32x2;
+std::array<Variable*> Int32x3_ctor2_Int32_Int32x2_args = { &Int32x3_ctor2_arg0, &Int32x3_ctor2_arg1 };
+Variable Int32x3_operator_index_Int32_arg0;
+Function Int32x3_operator_index_Int32;
+std::array<Variable*> Int32x3_operator_index_Int32_args = { &Int32x3_operator_index_Int32_arg0 };
+Variable Int32x3_operator_index_UInt32_arg0;
+Function Int32x3_operator_index_UInt32;
+std::array<Variable*> Int32x3_operator_index_UInt32_args = { &Int32x3_operator_index_UInt32_arg0 };
+Variable Int32x3_operator_index_Int16_arg0;
+Function Int32x3_operator_index_Int16;
+std::array<Variable*> Int32x3_operator_index_Int16_args = { &Int32x3_operator_index_Int16_arg0 };
+Variable Int32x3_operator_index_UInt16_arg0;
+Function Int32x3_operator_index_UInt16;
+std::array<Variable*> Int32x3_operator_index_UInt16_args = { &Int32x3_operator_index_UInt16_arg0 };
+Variable Int32x3_operator_add_Int32x3_arg0;
+Function Int32x3_operator_add_Int32x3;
+std::array<Variable*> Int32x3_operator_add_Int32x3_args = { &Int32x3_operator_add_Int32x3_arg0 };
+Variable Int32x3_operator_sub_Int32x3_arg0;
+Function Int32x3_operator_sub_Int32x3;
+std::array<Variable*> Int32x3_operator_sub_Int32x3_args = { &Int32x3_operator_sub_Int32x3_arg0 };
+Variable Int32x3_operator_mul_Int32x3_arg0;
+Function Int32x3_operator_mul_Int32x3;
+std::array<Variable*> Int32x3_operator_mul_Int32x3_args = { &Int32x3_operator_mul_Int32x3_arg0 };
+Variable Int32x3_operator_div_Int32x3_arg0;
+Function Int32x3_operator_div_Int32x3;
+std::array<Variable*> Int32x3_operator_div_Int32x3_args = { &Int32x3_operator_div_Int32x3_arg0 };
+Variable Int32x3_operator_mod_Int32x3_arg0;
+Function Int32x3_operator_mod_Int32x3;
+std::array<Variable*> Int32x3_operator_mod_Int32x3_args = { &Int32x3_operator_mod_Int32x3_arg0 };
+Variable Int32x3_operator_addasg_Int32x3_arg0;
+Function Int32x3_operator_addasg_Int32x3;
+std::array<Variable*> Int32x3_operator_addasg_Int32x3_args = { &Int32x3_operator_addasg_Int32x3_arg0 };
+Variable Int32x3_operator_subasg_Int32x3_arg0;
+Function Int32x3_operator_subasg_Int32x3;
+std::array<Variable*> Int32x3_operator_subasg_Int32x3_args = { &Int32x3_operator_subasg_Int32x3_arg0 };
+Variable Int32x3_operator_mulasg_Int32x3_arg0;
+Function Int32x3_operator_mulasg_Int32x3;
+std::array<Variable*> Int32x3_operator_mulasg_Int32x3_args = { &Int32x3_operator_mulasg_Int32x3_arg0 };
+Variable Int32x3_operator_divasg_Int32x3_arg0;
+Function Int32x3_operator_divasg_Int32x3;
+std::array<Variable*> Int32x3_operator_divasg_Int32x3_args = { &Int32x3_operator_divasg_Int32x3_arg0 };
+Variable Int32x3_operator_lt_Int32x3_arg0;
+Function Int32x3_operator_lt_Int32x3;
+std::array<Variable*> Int32x3_operator_lt_Int32x3_args = { &Int32x3_operator_lt_Int32x3_arg0 };
+Variable Int32x3_operator_lte_Int32x3_arg0;
+Function Int32x3_operator_lte_Int32x3;
+std::array<Variable*> Int32x3_operator_lte_Int32x3_args = { &Int32x3_operator_lte_Int32x3_arg0 };
+Variable Int32x3_operator_gt_Int32x3_arg0;
+Function Int32x3_operator_gt_Int32x3;
+std::array<Variable*> Int32x3_operator_gt_Int32x3_args = { &Int32x3_operator_gt_Int32x3_arg0 };
+Variable Int32x3_operator_gte_Int32x3_arg0;
+Function Int32x3_operator_gte_Int32x3;
+std::array<Variable*> Int32x3_operator_gte_Int32x3_args = { &Int32x3_operator_gte_Int32x3_arg0 };
+Variable Int32x3_operator_eq_Int32x3_arg0;
+Function Int32x3_operator_eq_Int32x3;
+std::array<Variable*> Int32x3_operator_eq_Int32x3_args = { &Int32x3_operator_eq_Int32x3_arg0 };
+Variable Int32x3_operator_neq_Int32x3_arg0;
+Function Int32x3_operator_neq_Int32x3;
+std::array<Variable*> Int32x3_operator_neq_Int32x3_args = { &Int32x3_operator_neq_Int32x3_arg0 };
+Variable Int32x3_operator_scale_Int32x3_Float32_arg0;
+Function Int32x3_operator_scale_Int32x3_Float32;
+std::array<Variable*> Int32x3_operator_scale_Int32x3_Float32_args = { &Int32x3_operator_scale_Int32x3_Float32_arg0 };
+Variable Int32x3_operator_scale_Int32x3_Float16_arg0;
+Function Int32x3_operator_scale_Int32x3_Float16;
+std::array<Variable*> Int32x3_operator_scale_Int32x3_Float16_args = { &Int32x3_operator_scale_Int32x3_Float16_arg0 };
+Variable Int32x3_operator_scale_Int32x3_UInt32_arg0;
+Function Int32x3_operator_scale_Int32x3_UInt32;
+std::array<Variable*> Int32x3_operator_scale_Int32x3_UInt32_args = { &Int32x3_operator_scale_Int32x3_UInt32_arg0 };
+Variable Int32x3_operator_scale_Int32x3_UInt16_arg0;
+Function Int32x3_operator_scale_Int32x3_UInt16;
+std::array<Variable*> Int32x3_operator_scale_Int32x3_UInt16_args = { &Int32x3_operator_scale_Int32x3_UInt16_arg0 };
+Variable Int32x3_operator_scale_Int32x3_Int32_arg0;
+Function Int32x3_operator_scale_Int32x3_Int32;
+std::array<Variable*> Int32x3_operator_scale_Int32x3_Int32_args = { &Int32x3_operator_scale_Int32x3_Int32_arg0 };
+Variable Int32x3_operator_scale_Int32x3_Int16_arg0;
+Function Int32x3_operator_scale_Int32x3_Int16;
+std::array<Variable*> Int32x3_operator_scale_Int32x3_Int16_args = { &Int32x3_operator_scale_Int32x3_Int16_arg0 };
+Variable Int32x3_operator_or_Int32x3_arg0;
+Function Int32x3_operator_or_Int32x3;
+std::array<Variable*> Int32x3_operator_or_Int32x3_args = { &Int32x3_operator_or_Int32x3_arg0 };
+Variable Int32x3_operator_and_Int32x3_arg0;
+Function Int32x3_operator_and_Int32x3;
+std::array<Variable*> Int32x3_operator_and_Int32x3_args = { &Int32x3_operator_and_Int32x3_arg0 };
+Variable Int32x3_operator_xor_Int32x3_arg0;
+Function Int32x3_operator_xor_Int32x3;
+std::array<Variable*> Int32x3_operator_xor_Int32x3_args = { &Int32x3_operator_xor_Int32x3_arg0 };
+Variable Int32x3_operator_lsh_Int32x3_arg0;
+Function Int32x3_operator_lsh_Int32x3;
+std::array<Variable*> Int32x3_operator_lsh_Int32x3_args = { &Int32x3_operator_lsh_Int32x3_arg0 };
+Variable Int32x3_operator_rsh_Int32x3_arg0;
+Function Int32x3_operator_rsh_Int32x3;
+std::array<Variable*> Int32x3_operator_rsh_Int32x3_args = { &Int32x3_operator_rsh_Int32x3_arg0 };
+Variable Int32x3_operator_orasg_Int32x3_arg0;
+Function Int32x3_operator_orasg_Int32x3;
+std::array<Variable*> Int32x3_operator_orasg_Int32x3_args = { &Int32x3_operator_orasg_Int32x3_arg0 };
+Variable Int32x3_operator_andasg_Int32x3_arg0;
+Function Int32x3_operator_andasg_Int32x3;
+std::array<Variable*> Int32x3_operator_andasg_Int32x3_args = { &Int32x3_operator_andasg_Int32x3_arg0 };
+Variable Int32x3_operator_xorasg_Int32x3_arg0;
+Function Int32x3_operator_xorasg_Int32x3;
+std::array<Variable*> Int32x3_operator_xorasg_Int32x3_args = { &Int32x3_operator_xorasg_Int32x3_arg0 };
+Variable Int32x3_operator_lshasg_Int32x3_arg0;
+Function Int32x3_operator_lshasg_Int32x3;
+std::array<Variable*> Int32x3_operator_lshasg_Int32x3_args = { &Int32x3_operator_lshasg_Int32x3_arg0 };
+Variable Int32x3_operator_rhsasg_Int32x3_arg0;
+Function Int32x3_operator_rhsasg_Int32x3;
+std::array<Variable*> Int32x3_operator_rhsasg_Int32x3_args = { &Int32x3_operator_rhsasg_Int32x3_arg0 };
+Variable Bool8x3_convert_UInt32x3_arg0;
+Function Bool8x3_convert_UInt32x3;
+std::array<Variable*> Bool8x3_convert_UInt32x3_args = { &Bool8x3_convert_UInt32x3_arg0 };
+Variable Bool8x3_splat_UInt32_arg0;
+Function Bool8x3_splat_UInt32;
+std::array<Variable*> Bool8x3_splat_UInt32_args = { &Bool8x3_splat_UInt32_arg0 };
+Variable Bool8x3_convert_Int32x3_arg0;
+Function Bool8x3_convert_Int32x3;
+std::array<Variable*> Bool8x3_convert_Int32x3_args = { &Bool8x3_convert_Int32x3_arg0 };
+Variable Bool8x3_splat_Int32_arg0;
+Function Bool8x3_splat_Int32;
+std::array<Variable*> Bool8x3_splat_Int32_args = { &Bool8x3_splat_Int32_arg0 };
+Variable Bool8x3_convert_UInt16x3_arg0;
+Function Bool8x3_convert_UInt16x3;
+std::array<Variable*> Bool8x3_convert_UInt16x3_args = { &Bool8x3_convert_UInt16x3_arg0 };
+Variable Bool8x3_splat_UInt16_arg0;
+Function Bool8x3_splat_UInt16;
+std::array<Variable*> Bool8x3_splat_UInt16_args = { &Bool8x3_splat_UInt16_arg0 };
+Variable Bool8x3_convert_Int16x3_arg0;
+Function Bool8x3_convert_Int16x3;
+std::array<Variable*> Bool8x3_convert_Int16x3_args = { &Bool8x3_convert_Int16x3_arg0 };
+Variable Bool8x3_splat_Int16_arg0;
+Function Bool8x3_splat_Int16;
+std::array<Variable*> Bool8x3_splat_Int16_args = { &Bool8x3_splat_Int16_arg0 };
+Variable Bool8x3_ctor0_arg0;
+Variable Bool8x3_ctor0_arg1;
+Variable Bool8x3_ctor0_arg2;
+Function Bool8x3_ctor0_Bool8_Bool8_Bool8;
+std::array<Variable*> Bool8x3_ctor0_Bool8_Bool8_Bool8_args = { &Bool8x3_ctor0_arg0, &Bool8x3_ctor0_arg1, &Bool8x3_ctor0_arg2 };
+Variable Bool8x3_ctor1_arg0;
+Variable Bool8x3_ctor1_arg1;
+Function Bool8x3_ctor1_Bool8x2_Bool8;
+std::array<Variable*> Bool8x3_ctor1_Bool8x2_Bool8_args = { &Bool8x3_ctor1_arg0, &Bool8x3_ctor1_arg1 };
+Variable Bool8x3_ctor2_arg0;
+Variable Bool8x3_ctor2_arg1;
+Function Bool8x3_ctor2_Bool8_Bool8x2;
+std::array<Variable*> Bool8x3_ctor2_Bool8_Bool8x2_args = { &Bool8x3_ctor2_arg0, &Bool8x3_ctor2_arg1 };
+Variable Bool8x3_operator_index_Int32_arg0;
+Function Bool8x3_operator_index_Int32;
+std::array<Variable*> Bool8x3_operator_index_Int32_args = { &Bool8x3_operator_index_Int32_arg0 };
+Variable Bool8x3_operator_index_UInt32_arg0;
+Function Bool8x3_operator_index_UInt32;
+std::array<Variable*> Bool8x3_operator_index_UInt32_args = { &Bool8x3_operator_index_UInt32_arg0 };
+Variable Bool8x3_operator_index_Int16_arg0;
+Function Bool8x3_operator_index_Int16;
+std::array<Variable*> Bool8x3_operator_index_Int16_args = { &Bool8x3_operator_index_Int16_arg0 };
+Variable Bool8x3_operator_index_UInt16_arg0;
+Function Bool8x3_operator_index_UInt16;
+std::array<Variable*> Bool8x3_operator_index_UInt16_args = { &Bool8x3_operator_index_UInt16_arg0 };
+Variable Bool8x3_operator_oror_Bool8x3_arg0;
+Function Bool8x3_operator_oror_Bool8x3;
+std::array<Variable*> Bool8x3_operator_oror_Bool8x3_args = { &Bool8x3_operator_oror_Bool8x3_arg0 };
+Variable Bool8x3_operator_andand_Bool8x3_arg0;
+Function Bool8x3_operator_andand_Bool8x3;
+std::array<Variable*> Bool8x3_operator_andand_Bool8x3_args = { &Bool8x3_operator_andand_Bool8x3_arg0 };
+Variable Bool8x3_operator_eq_Bool8x3_arg0;
+Function Bool8x3_operator_eq_Bool8x3;
+std::array<Variable*> Bool8x3_operator_eq_Bool8x3_args = { &Bool8x3_operator_eq_Bool8x3_arg0 };
+Variable Bool8x3_operator_neq_Bool8x3_arg0;
+Function Bool8x3_operator_neq_Bool8x3;
+std::array<Variable*> Bool8x3_operator_neq_Bool8x3_args = { &Bool8x3_operator_neq_Bool8x3_arg0 };
+Variable Float16x3_convert_Float32x3_arg0;
+Function Float16x3_convert_Float32x3;
+std::array<Variable*> Float16x3_convert_Float32x3_args = { &Float16x3_convert_Float32x3_arg0 };
+Variable Float16x3_splat_Float32_arg0;
+Function Float16x3_splat_Float32;
+std::array<Variable*> Float16x3_splat_Float32_args = { &Float16x3_splat_Float32_arg0 };
+Variable Float16x3_convert_UInt32x3_arg0;
+Function Float16x3_convert_UInt32x3;
+std::array<Variable*> Float16x3_convert_UInt32x3_args = { &Float16x3_convert_UInt32x3_arg0 };
+Variable Float16x3_splat_UInt32_arg0;
+Function Float16x3_splat_UInt32;
+std::array<Variable*> Float16x3_splat_UInt32_args = { &Float16x3_splat_UInt32_arg0 };
+Variable Float16x3_convert_Int32x3_arg0;
+Function Float16x3_convert_Int32x3;
+std::array<Variable*> Float16x3_convert_Int32x3_args = { &Float16x3_convert_Int32x3_arg0 };
+Variable Float16x3_splat_Int32_arg0;
+Function Float16x3_splat_Int32;
+std::array<Variable*> Float16x3_splat_Int32_args = { &Float16x3_splat_Int32_arg0 };
+Variable Float16x3_convert_Float16x3_arg0;
+Function Float16x3_convert_Float16x3;
+std::array<Variable*> Float16x3_convert_Float16x3_args = { &Float16x3_convert_Float16x3_arg0 };
+Variable Float16x3_splat_Float16_arg0;
+Function Float16x3_splat_Float16;
+std::array<Variable*> Float16x3_splat_Float16_args = { &Float16x3_splat_Float16_arg0 };
+Variable Float16x3_convert_UInt16x3_arg0;
+Function Float16x3_convert_UInt16x3;
+std::array<Variable*> Float16x3_convert_UInt16x3_args = { &Float16x3_convert_UInt16x3_arg0 };
+Variable Float16x3_splat_UInt16_arg0;
+Function Float16x3_splat_UInt16;
+std::array<Variable*> Float16x3_splat_UInt16_args = { &Float16x3_splat_UInt16_arg0 };
+Variable Float16x3_convert_Int16x3_arg0;
+Function Float16x3_convert_Int16x3;
+std::array<Variable*> Float16x3_convert_Int16x3_args = { &Float16x3_convert_Int16x3_arg0 };
+Variable Float16x3_splat_Int16_arg0;
+Function Float16x3_splat_Int16;
+std::array<Variable*> Float16x3_splat_Int16_args = { &Float16x3_splat_Int16_arg0 };
+Variable Float16x3_ctor0_arg0;
+Variable Float16x3_ctor0_arg1;
+Variable Float16x3_ctor0_arg2;
+Function Float16x3_ctor0_Float16_Float16_Float16;
+std::array<Variable*> Float16x3_ctor0_Float16_Float16_Float16_args = { &Float16x3_ctor0_arg0, &Float16x3_ctor0_arg1, &Float16x3_ctor0_arg2 };
+Variable Float16x3_ctor1_arg0;
+Variable Float16x3_ctor1_arg1;
+Function Float16x3_ctor1_Float16x2_Float16;
+std::array<Variable*> Float16x3_ctor1_Float16x2_Float16_args = { &Float16x3_ctor1_arg0, &Float16x3_ctor1_arg1 };
+Variable Float16x3_ctor2_arg0;
+Variable Float16x3_ctor2_arg1;
+Function Float16x3_ctor2_Float16_Float16x2;
+std::array<Variable*> Float16x3_ctor2_Float16_Float16x2_args = { &Float16x3_ctor2_arg0, &Float16x3_ctor2_arg1 };
+Variable Float16x3_operator_index_Int32_arg0;
+Function Float16x3_operator_index_Int32;
+std::array<Variable*> Float16x3_operator_index_Int32_args = { &Float16x3_operator_index_Int32_arg0 };
+Variable Float16x3_operator_index_UInt32_arg0;
+Function Float16x3_operator_index_UInt32;
+std::array<Variable*> Float16x3_operator_index_UInt32_args = { &Float16x3_operator_index_UInt32_arg0 };
+Variable Float16x3_operator_index_Int16_arg0;
+Function Float16x3_operator_index_Int16;
+std::array<Variable*> Float16x3_operator_index_Int16_args = { &Float16x3_operator_index_Int16_arg0 };
+Variable Float16x3_operator_index_UInt16_arg0;
+Function Float16x3_operator_index_UInt16;
+std::array<Variable*> Float16x3_operator_index_UInt16_args = { &Float16x3_operator_index_UInt16_arg0 };
+Variable Float16x3_operator_add_Float16x3_arg0;
+Function Float16x3_operator_add_Float16x3;
+std::array<Variable*> Float16x3_operator_add_Float16x3_args = { &Float16x3_operator_add_Float16x3_arg0 };
+Variable Float16x3_operator_sub_Float16x3_arg0;
+Function Float16x3_operator_sub_Float16x3;
+std::array<Variable*> Float16x3_operator_sub_Float16x3_args = { &Float16x3_operator_sub_Float16x3_arg0 };
+Variable Float16x3_operator_mul_Float16x3_arg0;
+Function Float16x3_operator_mul_Float16x3;
+std::array<Variable*> Float16x3_operator_mul_Float16x3_args = { &Float16x3_operator_mul_Float16x3_arg0 };
+Variable Float16x3_operator_div_Float16x3_arg0;
+Function Float16x3_operator_div_Float16x3;
+std::array<Variable*> Float16x3_operator_div_Float16x3_args = { &Float16x3_operator_div_Float16x3_arg0 };
+Variable Float16x3_operator_mod_Float16x3_arg0;
+Function Float16x3_operator_mod_Float16x3;
+std::array<Variable*> Float16x3_operator_mod_Float16x3_args = { &Float16x3_operator_mod_Float16x3_arg0 };
+Variable Float16x3_operator_addasg_Float16x3_arg0;
+Function Float16x3_operator_addasg_Float16x3;
+std::array<Variable*> Float16x3_operator_addasg_Float16x3_args = { &Float16x3_operator_addasg_Float16x3_arg0 };
+Variable Float16x3_operator_subasg_Float16x3_arg0;
+Function Float16x3_operator_subasg_Float16x3;
+std::array<Variable*> Float16x3_operator_subasg_Float16x3_args = { &Float16x3_operator_subasg_Float16x3_arg0 };
+Variable Float16x3_operator_mulasg_Float16x3_arg0;
+Function Float16x3_operator_mulasg_Float16x3;
+std::array<Variable*> Float16x3_operator_mulasg_Float16x3_args = { &Float16x3_operator_mulasg_Float16x3_arg0 };
+Variable Float16x3_operator_divasg_Float16x3_arg0;
+Function Float16x3_operator_divasg_Float16x3;
+std::array<Variable*> Float16x3_operator_divasg_Float16x3_args = { &Float16x3_operator_divasg_Float16x3_arg0 };
+Variable Float16x3_operator_lt_Float16x3_arg0;
+Function Float16x3_operator_lt_Float16x3;
+std::array<Variable*> Float16x3_operator_lt_Float16x3_args = { &Float16x3_operator_lt_Float16x3_arg0 };
+Variable Float16x3_operator_lte_Float16x3_arg0;
+Function Float16x3_operator_lte_Float16x3;
+std::array<Variable*> Float16x3_operator_lte_Float16x3_args = { &Float16x3_operator_lte_Float16x3_arg0 };
+Variable Float16x3_operator_gt_Float16x3_arg0;
+Function Float16x3_operator_gt_Float16x3;
+std::array<Variable*> Float16x3_operator_gt_Float16x3_args = { &Float16x3_operator_gt_Float16x3_arg0 };
+Variable Float16x3_operator_gte_Float16x3_arg0;
+Function Float16x3_operator_gte_Float16x3;
+std::array<Variable*> Float16x3_operator_gte_Float16x3_args = { &Float16x3_operator_gte_Float16x3_arg0 };
+Variable Float16x3_operator_eq_Float16x3_arg0;
+Function Float16x3_operator_eq_Float16x3;
+std::array<Variable*> Float16x3_operator_eq_Float16x3_args = { &Float16x3_operator_eq_Float16x3_arg0 };
+Variable Float16x3_operator_neq_Float16x3_arg0;
+Function Float16x3_operator_neq_Float16x3;
+std::array<Variable*> Float16x3_operator_neq_Float16x3_args = { &Float16x3_operator_neq_Float16x3_arg0 };
+Variable Float16x3_operator_scale_Float16x3_Float32_arg0;
+Function Float16x3_operator_scale_Float16x3_Float32;
+std::array<Variable*> Float16x3_operator_scale_Float16x3_Float32_args = { &Float16x3_operator_scale_Float16x3_Float32_arg0 };
+Variable Float16x3_operator_scale_Float16x3_Float16_arg0;
+Function Float16x3_operator_scale_Float16x3_Float16;
+std::array<Variable*> Float16x3_operator_scale_Float16x3_Float16_args = { &Float16x3_operator_scale_Float16x3_Float16_arg0 };
+Variable Float16x3_operator_scale_Float16x3_UInt32_arg0;
+Function Float16x3_operator_scale_Float16x3_UInt32;
+std::array<Variable*> Float16x3_operator_scale_Float16x3_UInt32_args = { &Float16x3_operator_scale_Float16x3_UInt32_arg0 };
+Variable Float16x3_operator_scale_Float16x3_UInt16_arg0;
+Function Float16x3_operator_scale_Float16x3_UInt16;
+std::array<Variable*> Float16x3_operator_scale_Float16x3_UInt16_args = { &Float16x3_operator_scale_Float16x3_UInt16_arg0 };
+Variable Float16x3_operator_scale_Float16x3_Int32_arg0;
+Function Float16x3_operator_scale_Float16x3_Int32;
+std::array<Variable*> Float16x3_operator_scale_Float16x3_Int32_args = { &Float16x3_operator_scale_Float16x3_Int32_arg0 };
+Variable Float16x3_operator_scale_Float16x3_Int16_arg0;
+Function Float16x3_operator_scale_Float16x3_Int16;
+std::array<Variable*> Float16x3_operator_scale_Float16x3_Int16_args = { &Float16x3_operator_scale_Float16x3_Int16_arg0 };
+Variable Float16x3_operator_mul_Float32x3x2_arg0;
+Function Float16x3_operator_mul_Float32x3x2;
+std::array<Variable*> Float16x3_operator_mul_Float32x3x2_args = { &Float16x3_operator_mul_Float32x3x2_arg0 };
+Variable Float16x3_operator_mul_Float32x3x3_arg0;
+Function Float16x3_operator_mul_Float32x3x3;
+std::array<Variable*> Float16x3_operator_mul_Float32x3x3_args = { &Float16x3_operator_mul_Float32x3x3_arg0 };
+Variable Float16x3_operator_mul_Float32x3x4_arg0;
+Function Float16x3_operator_mul_Float32x3x4;
+std::array<Variable*> Float16x3_operator_mul_Float32x3x4_args = { &Float16x3_operator_mul_Float32x3x4_arg0 };
+Variable UInt16x3_convert_Float32x3_arg0;
+Function UInt16x3_convert_Float32x3;
+std::array<Variable*> UInt16x3_convert_Float32x3_args = { &UInt16x3_convert_Float32x3_arg0 };
+Variable UInt16x3_splat_Float32_arg0;
+Function UInt16x3_splat_Float32;
+std::array<Variable*> UInt16x3_splat_Float32_args = { &UInt16x3_splat_Float32_arg0 };
+Variable UInt16x3_convert_UInt32x3_arg0;
+Function UInt16x3_convert_UInt32x3;
+std::array<Variable*> UInt16x3_convert_UInt32x3_args = { &UInt16x3_convert_UInt32x3_arg0 };
+Variable UInt16x3_splat_UInt32_arg0;
+Function UInt16x3_splat_UInt32;
+std::array<Variable*> UInt16x3_splat_UInt32_args = { &UInt16x3_splat_UInt32_arg0 };
+Variable UInt16x3_convert_Int32x3_arg0;
+Function UInt16x3_convert_Int32x3;
+std::array<Variable*> UInt16x3_convert_Int32x3_args = { &UInt16x3_convert_Int32x3_arg0 };
+Variable UInt16x3_splat_Int32_arg0;
+Function UInt16x3_splat_Int32;
+std::array<Variable*> UInt16x3_splat_Int32_args = { &UInt16x3_splat_Int32_arg0 };
+Variable UInt16x3_convert_Float16x3_arg0;
+Function UInt16x3_convert_Float16x3;
+std::array<Variable*> UInt16x3_convert_Float16x3_args = { &UInt16x3_convert_Float16x3_arg0 };
+Variable UInt16x3_splat_Float16_arg0;
+Function UInt16x3_splat_Float16;
+std::array<Variable*> UInt16x3_splat_Float16_args = { &UInt16x3_splat_Float16_arg0 };
+Variable UInt16x3_convert_UInt16x3_arg0;
+Function UInt16x3_convert_UInt16x3;
+std::array<Variable*> UInt16x3_convert_UInt16x3_args = { &UInt16x3_convert_UInt16x3_arg0 };
+Variable UInt16x3_splat_UInt16_arg0;
+Function UInt16x3_splat_UInt16;
+std::array<Variable*> UInt16x3_splat_UInt16_args = { &UInt16x3_splat_UInt16_arg0 };
+Variable UInt16x3_convert_Int16x3_arg0;
+Function UInt16x3_convert_Int16x3;
+std::array<Variable*> UInt16x3_convert_Int16x3_args = { &UInt16x3_convert_Int16x3_arg0 };
+Variable UInt16x3_splat_Int16_arg0;
+Function UInt16x3_splat_Int16;
+std::array<Variable*> UInt16x3_splat_Int16_args = { &UInt16x3_splat_Int16_arg0 };
+Variable UInt16x3_ctor0_arg0;
+Variable UInt16x3_ctor0_arg1;
+Variable UInt16x3_ctor0_arg2;
+Function UInt16x3_ctor0_UInt16_UInt16_UInt16;
+std::array<Variable*> UInt16x3_ctor0_UInt16_UInt16_UInt16_args = { &UInt16x3_ctor0_arg0, &UInt16x3_ctor0_arg1, &UInt16x3_ctor0_arg2 };
+Variable UInt16x3_ctor1_arg0;
+Variable UInt16x3_ctor1_arg1;
+Function UInt16x3_ctor1_UInt16x2_UInt16;
+std::array<Variable*> UInt16x3_ctor1_UInt16x2_UInt16_args = { &UInt16x3_ctor1_arg0, &UInt16x3_ctor1_arg1 };
+Variable UInt16x3_ctor2_arg0;
+Variable UInt16x3_ctor2_arg1;
+Function UInt16x3_ctor2_UInt16_UInt16x2;
+std::array<Variable*> UInt16x3_ctor2_UInt16_UInt16x2_args = { &UInt16x3_ctor2_arg0, &UInt16x3_ctor2_arg1 };
+Variable UInt16x3_operator_index_Int32_arg0;
+Function UInt16x3_operator_index_Int32;
+std::array<Variable*> UInt16x3_operator_index_Int32_args = { &UInt16x3_operator_index_Int32_arg0 };
+Variable UInt16x3_operator_index_UInt32_arg0;
+Function UInt16x3_operator_index_UInt32;
+std::array<Variable*> UInt16x3_operator_index_UInt32_args = { &UInt16x3_operator_index_UInt32_arg0 };
+Variable UInt16x3_operator_index_Int16_arg0;
+Function UInt16x3_operator_index_Int16;
+std::array<Variable*> UInt16x3_operator_index_Int16_args = { &UInt16x3_operator_index_Int16_arg0 };
+Variable UInt16x3_operator_index_UInt16_arg0;
+Function UInt16x3_operator_index_UInt16;
+std::array<Variable*> UInt16x3_operator_index_UInt16_args = { &UInt16x3_operator_index_UInt16_arg0 };
+Variable UInt16x3_operator_add_UInt16x3_arg0;
+Function UInt16x3_operator_add_UInt16x3;
+std::array<Variable*> UInt16x3_operator_add_UInt16x3_args = { &UInt16x3_operator_add_UInt16x3_arg0 };
+Variable UInt16x3_operator_sub_UInt16x3_arg0;
+Function UInt16x3_operator_sub_UInt16x3;
+std::array<Variable*> UInt16x3_operator_sub_UInt16x3_args = { &UInt16x3_operator_sub_UInt16x3_arg0 };
+Variable UInt16x3_operator_mul_UInt16x3_arg0;
+Function UInt16x3_operator_mul_UInt16x3;
+std::array<Variable*> UInt16x3_operator_mul_UInt16x3_args = { &UInt16x3_operator_mul_UInt16x3_arg0 };
+Variable UInt16x3_operator_div_UInt16x3_arg0;
+Function UInt16x3_operator_div_UInt16x3;
+std::array<Variable*> UInt16x3_operator_div_UInt16x3_args = { &UInt16x3_operator_div_UInt16x3_arg0 };
+Variable UInt16x3_operator_mod_UInt16x3_arg0;
+Function UInt16x3_operator_mod_UInt16x3;
+std::array<Variable*> UInt16x3_operator_mod_UInt16x3_args = { &UInt16x3_operator_mod_UInt16x3_arg0 };
+Variable UInt16x3_operator_addasg_UInt16x3_arg0;
+Function UInt16x3_operator_addasg_UInt16x3;
+std::array<Variable*> UInt16x3_operator_addasg_UInt16x3_args = { &UInt16x3_operator_addasg_UInt16x3_arg0 };
+Variable UInt16x3_operator_subasg_UInt16x3_arg0;
+Function UInt16x3_operator_subasg_UInt16x3;
+std::array<Variable*> UInt16x3_operator_subasg_UInt16x3_args = { &UInt16x3_operator_subasg_UInt16x3_arg0 };
+Variable UInt16x3_operator_mulasg_UInt16x3_arg0;
+Function UInt16x3_operator_mulasg_UInt16x3;
+std::array<Variable*> UInt16x3_operator_mulasg_UInt16x3_args = { &UInt16x3_operator_mulasg_UInt16x3_arg0 };
+Variable UInt16x3_operator_divasg_UInt16x3_arg0;
+Function UInt16x3_operator_divasg_UInt16x3;
+std::array<Variable*> UInt16x3_operator_divasg_UInt16x3_args = { &UInt16x3_operator_divasg_UInt16x3_arg0 };
+Variable UInt16x3_operator_lt_UInt16x3_arg0;
+Function UInt16x3_operator_lt_UInt16x3;
+std::array<Variable*> UInt16x3_operator_lt_UInt16x3_args = { &UInt16x3_operator_lt_UInt16x3_arg0 };
+Variable UInt16x3_operator_lte_UInt16x3_arg0;
+Function UInt16x3_operator_lte_UInt16x3;
+std::array<Variable*> UInt16x3_operator_lte_UInt16x3_args = { &UInt16x3_operator_lte_UInt16x3_arg0 };
+Variable UInt16x3_operator_gt_UInt16x3_arg0;
+Function UInt16x3_operator_gt_UInt16x3;
+std::array<Variable*> UInt16x3_operator_gt_UInt16x3_args = { &UInt16x3_operator_gt_UInt16x3_arg0 };
+Variable UInt16x3_operator_gte_UInt16x3_arg0;
+Function UInt16x3_operator_gte_UInt16x3;
+std::array<Variable*> UInt16x3_operator_gte_UInt16x3_args = { &UInt16x3_operator_gte_UInt16x3_arg0 };
+Variable UInt16x3_operator_eq_UInt16x3_arg0;
+Function UInt16x3_operator_eq_UInt16x3;
+std::array<Variable*> UInt16x3_operator_eq_UInt16x3_args = { &UInt16x3_operator_eq_UInt16x3_arg0 };
+Variable UInt16x3_operator_neq_UInt16x3_arg0;
+Function UInt16x3_operator_neq_UInt16x3;
+std::array<Variable*> UInt16x3_operator_neq_UInt16x3_args = { &UInt16x3_operator_neq_UInt16x3_arg0 };
+Variable UInt16x3_operator_scale_UInt16x3_Float32_arg0;
+Function UInt16x3_operator_scale_UInt16x3_Float32;
+std::array<Variable*> UInt16x3_operator_scale_UInt16x3_Float32_args = { &UInt16x3_operator_scale_UInt16x3_Float32_arg0 };
+Variable UInt16x3_operator_scale_UInt16x3_Float16_arg0;
+Function UInt16x3_operator_scale_UInt16x3_Float16;
+std::array<Variable*> UInt16x3_operator_scale_UInt16x3_Float16_args = { &UInt16x3_operator_scale_UInt16x3_Float16_arg0 };
+Variable UInt16x3_operator_scale_UInt16x3_UInt32_arg0;
+Function UInt16x3_operator_scale_UInt16x3_UInt32;
+std::array<Variable*> UInt16x3_operator_scale_UInt16x3_UInt32_args = { &UInt16x3_operator_scale_UInt16x3_UInt32_arg0 };
+Variable UInt16x3_operator_scale_UInt16x3_UInt16_arg0;
+Function UInt16x3_operator_scale_UInt16x3_UInt16;
+std::array<Variable*> UInt16x3_operator_scale_UInt16x3_UInt16_args = { &UInt16x3_operator_scale_UInt16x3_UInt16_arg0 };
+Variable UInt16x3_operator_scale_UInt16x3_Int32_arg0;
+Function UInt16x3_operator_scale_UInt16x3_Int32;
+std::array<Variable*> UInt16x3_operator_scale_UInt16x3_Int32_args = { &UInt16x3_operator_scale_UInt16x3_Int32_arg0 };
+Variable UInt16x3_operator_scale_UInt16x3_Int16_arg0;
+Function UInt16x3_operator_scale_UInt16x3_Int16;
+std::array<Variable*> UInt16x3_operator_scale_UInt16x3_Int16_args = { &UInt16x3_operator_scale_UInt16x3_Int16_arg0 };
+Variable UInt16x3_operator_or_UInt16x3_arg0;
+Function UInt16x3_operator_or_UInt16x3;
+std::array<Variable*> UInt16x3_operator_or_UInt16x3_args = { &UInt16x3_operator_or_UInt16x3_arg0 };
+Variable UInt16x3_operator_and_UInt16x3_arg0;
+Function UInt16x3_operator_and_UInt16x3;
+std::array<Variable*> UInt16x3_operator_and_UInt16x3_args = { &UInt16x3_operator_and_UInt16x3_arg0 };
+Variable UInt16x3_operator_xor_UInt16x3_arg0;
+Function UInt16x3_operator_xor_UInt16x3;
+std::array<Variable*> UInt16x3_operator_xor_UInt16x3_args = { &UInt16x3_operator_xor_UInt16x3_arg0 };
+Variable UInt16x3_operator_lsh_UInt16x3_arg0;
+Function UInt16x3_operator_lsh_UInt16x3;
+std::array<Variable*> UInt16x3_operator_lsh_UInt16x3_args = { &UInt16x3_operator_lsh_UInt16x3_arg0 };
+Variable UInt16x3_operator_rsh_UInt16x3_arg0;
+Function UInt16x3_operator_rsh_UInt16x3;
+std::array<Variable*> UInt16x3_operator_rsh_UInt16x3_args = { &UInt16x3_operator_rsh_UInt16x3_arg0 };
+Variable UInt16x3_operator_orasg_UInt16x3_arg0;
+Function UInt16x3_operator_orasg_UInt16x3;
+std::array<Variable*> UInt16x3_operator_orasg_UInt16x3_args = { &UInt16x3_operator_orasg_UInt16x3_arg0 };
+Variable UInt16x3_operator_andasg_UInt16x3_arg0;
+Function UInt16x3_operator_andasg_UInt16x3;
+std::array<Variable*> UInt16x3_operator_andasg_UInt16x3_args = { &UInt16x3_operator_andasg_UInt16x3_arg0 };
+Variable UInt16x3_operator_xorasg_UInt16x3_arg0;
+Function UInt16x3_operator_xorasg_UInt16x3;
+std::array<Variable*> UInt16x3_operator_xorasg_UInt16x3_args = { &UInt16x3_operator_xorasg_UInt16x3_arg0 };
+Variable UInt16x3_operator_lshasg_UInt16x3_arg0;
+Function UInt16x3_operator_lshasg_UInt16x3;
+std::array<Variable*> UInt16x3_operator_lshasg_UInt16x3_args = { &UInt16x3_operator_lshasg_UInt16x3_arg0 };
+Variable UInt16x3_operator_rhsasg_UInt16x3_arg0;
+Function UInt16x3_operator_rhsasg_UInt16x3;
+std::array<Variable*> UInt16x3_operator_rhsasg_UInt16x3_args = { &UInt16x3_operator_rhsasg_UInt16x3_arg0 };
+Variable Int16x3_convert_Float32x3_arg0;
+Function Int16x3_convert_Float32x3;
+std::array<Variable*> Int16x3_convert_Float32x3_args = { &Int16x3_convert_Float32x3_arg0 };
+Variable Int16x3_splat_Float32_arg0;
+Function Int16x3_splat_Float32;
+std::array<Variable*> Int16x3_splat_Float32_args = { &Int16x3_splat_Float32_arg0 };
+Variable Int16x3_convert_UInt32x3_arg0;
+Function Int16x3_convert_UInt32x3;
+std::array<Variable*> Int16x3_convert_UInt32x3_args = { &Int16x3_convert_UInt32x3_arg0 };
+Variable Int16x3_splat_UInt32_arg0;
+Function Int16x3_splat_UInt32;
+std::array<Variable*> Int16x3_splat_UInt32_args = { &Int16x3_splat_UInt32_arg0 };
+Variable Int16x3_convert_Int32x3_arg0;
+Function Int16x3_convert_Int32x3;
+std::array<Variable*> Int16x3_convert_Int32x3_args = { &Int16x3_convert_Int32x3_arg0 };
+Variable Int16x3_splat_Int32_arg0;
+Function Int16x3_splat_Int32;
+std::array<Variable*> Int16x3_splat_Int32_args = { &Int16x3_splat_Int32_arg0 };
+Variable Int16x3_convert_Float16x3_arg0;
+Function Int16x3_convert_Float16x3;
+std::array<Variable*> Int16x3_convert_Float16x3_args = { &Int16x3_convert_Float16x3_arg0 };
+Variable Int16x3_splat_Float16_arg0;
+Function Int16x3_splat_Float16;
+std::array<Variable*> Int16x3_splat_Float16_args = { &Int16x3_splat_Float16_arg0 };
+Variable Int16x3_convert_UInt16x3_arg0;
+Function Int16x3_convert_UInt16x3;
+std::array<Variable*> Int16x3_convert_UInt16x3_args = { &Int16x3_convert_UInt16x3_arg0 };
+Variable Int16x3_splat_UInt16_arg0;
+Function Int16x3_splat_UInt16;
+std::array<Variable*> Int16x3_splat_UInt16_args = { &Int16x3_splat_UInt16_arg0 };
+Variable Int16x3_convert_Int16x3_arg0;
+Function Int16x3_convert_Int16x3;
+std::array<Variable*> Int16x3_convert_Int16x3_args = { &Int16x3_convert_Int16x3_arg0 };
+Variable Int16x3_splat_Int16_arg0;
+Function Int16x3_splat_Int16;
+std::array<Variable*> Int16x3_splat_Int16_args = { &Int16x3_splat_Int16_arg0 };
+Variable Int16x3_ctor0_arg0;
+Variable Int16x3_ctor0_arg1;
+Variable Int16x3_ctor0_arg2;
+Function Int16x3_ctor0_Int16_Int16_Int16;
+std::array<Variable*> Int16x3_ctor0_Int16_Int16_Int16_args = { &Int16x3_ctor0_arg0, &Int16x3_ctor0_arg1, &Int16x3_ctor0_arg2 };
+Variable Int16x3_ctor1_arg0;
+Variable Int16x3_ctor1_arg1;
+Function Int16x3_ctor1_Int16x2_Int16;
+std::array<Variable*> Int16x3_ctor1_Int16x2_Int16_args = { &Int16x3_ctor1_arg0, &Int16x3_ctor1_arg1 };
+Variable Int16x3_ctor2_arg0;
+Variable Int16x3_ctor2_arg1;
+Function Int16x3_ctor2_Int16_Int16x2;
+std::array<Variable*> Int16x3_ctor2_Int16_Int16x2_args = { &Int16x3_ctor2_arg0, &Int16x3_ctor2_arg1 };
+Variable Int16x3_operator_index_Int32_arg0;
+Function Int16x3_operator_index_Int32;
+std::array<Variable*> Int16x3_operator_index_Int32_args = { &Int16x3_operator_index_Int32_arg0 };
+Variable Int16x3_operator_index_UInt32_arg0;
+Function Int16x3_operator_index_UInt32;
+std::array<Variable*> Int16x3_operator_index_UInt32_args = { &Int16x3_operator_index_UInt32_arg0 };
+Variable Int16x3_operator_index_Int16_arg0;
+Function Int16x3_operator_index_Int16;
+std::array<Variable*> Int16x3_operator_index_Int16_args = { &Int16x3_operator_index_Int16_arg0 };
+Variable Int16x3_operator_index_UInt16_arg0;
+Function Int16x3_operator_index_UInt16;
+std::array<Variable*> Int16x3_operator_index_UInt16_args = { &Int16x3_operator_index_UInt16_arg0 };
+Variable Int16x3_operator_add_Int16x3_arg0;
+Function Int16x3_operator_add_Int16x3;
+std::array<Variable*> Int16x3_operator_add_Int16x3_args = { &Int16x3_operator_add_Int16x3_arg0 };
+Variable Int16x3_operator_sub_Int16x3_arg0;
+Function Int16x3_operator_sub_Int16x3;
+std::array<Variable*> Int16x3_operator_sub_Int16x3_args = { &Int16x3_operator_sub_Int16x3_arg0 };
+Variable Int16x3_operator_mul_Int16x3_arg0;
+Function Int16x3_operator_mul_Int16x3;
+std::array<Variable*> Int16x3_operator_mul_Int16x3_args = { &Int16x3_operator_mul_Int16x3_arg0 };
+Variable Int16x3_operator_div_Int16x3_arg0;
+Function Int16x3_operator_div_Int16x3;
+std::array<Variable*> Int16x3_operator_div_Int16x3_args = { &Int16x3_operator_div_Int16x3_arg0 };
+Variable Int16x3_operator_mod_Int16x3_arg0;
+Function Int16x3_operator_mod_Int16x3;
+std::array<Variable*> Int16x3_operator_mod_Int16x3_args = { &Int16x3_operator_mod_Int16x3_arg0 };
+Variable Int16x3_operator_addasg_Int16x3_arg0;
+Function Int16x3_operator_addasg_Int16x3;
+std::array<Variable*> Int16x3_operator_addasg_Int16x3_args = { &Int16x3_operator_addasg_Int16x3_arg0 };
+Variable Int16x3_operator_subasg_Int16x3_arg0;
+Function Int16x3_operator_subasg_Int16x3;
+std::array<Variable*> Int16x3_operator_subasg_Int16x3_args = { &Int16x3_operator_subasg_Int16x3_arg0 };
+Variable Int16x3_operator_mulasg_Int16x3_arg0;
+Function Int16x3_operator_mulasg_Int16x3;
+std::array<Variable*> Int16x3_operator_mulasg_Int16x3_args = { &Int16x3_operator_mulasg_Int16x3_arg0 };
+Variable Int16x3_operator_divasg_Int16x3_arg0;
+Function Int16x3_operator_divasg_Int16x3;
+std::array<Variable*> Int16x3_operator_divasg_Int16x3_args = { &Int16x3_operator_divasg_Int16x3_arg0 };
+Variable Int16x3_operator_lt_Int16x3_arg0;
+Function Int16x3_operator_lt_Int16x3;
+std::array<Variable*> Int16x3_operator_lt_Int16x3_args = { &Int16x3_operator_lt_Int16x3_arg0 };
+Variable Int16x3_operator_lte_Int16x3_arg0;
+Function Int16x3_operator_lte_Int16x3;
+std::array<Variable*> Int16x3_operator_lte_Int16x3_args = { &Int16x3_operator_lte_Int16x3_arg0 };
+Variable Int16x3_operator_gt_Int16x3_arg0;
+Function Int16x3_operator_gt_Int16x3;
+std::array<Variable*> Int16x3_operator_gt_Int16x3_args = { &Int16x3_operator_gt_Int16x3_arg0 };
+Variable Int16x3_operator_gte_Int16x3_arg0;
+Function Int16x3_operator_gte_Int16x3;
+std::array<Variable*> Int16x3_operator_gte_Int16x3_args = { &Int16x3_operator_gte_Int16x3_arg0 };
+Variable Int16x3_operator_eq_Int16x3_arg0;
+Function Int16x3_operator_eq_Int16x3;
+std::array<Variable*> Int16x3_operator_eq_Int16x3_args = { &Int16x3_operator_eq_Int16x3_arg0 };
+Variable Int16x3_operator_neq_Int16x3_arg0;
+Function Int16x3_operator_neq_Int16x3;
+std::array<Variable*> Int16x3_operator_neq_Int16x3_args = { &Int16x3_operator_neq_Int16x3_arg0 };
+Variable Int16x3_operator_scale_Int16x3_Float32_arg0;
+Function Int16x3_operator_scale_Int16x3_Float32;
+std::array<Variable*> Int16x3_operator_scale_Int16x3_Float32_args = { &Int16x3_operator_scale_Int16x3_Float32_arg0 };
+Variable Int16x3_operator_scale_Int16x3_Float16_arg0;
+Function Int16x3_operator_scale_Int16x3_Float16;
+std::array<Variable*> Int16x3_operator_scale_Int16x3_Float16_args = { &Int16x3_operator_scale_Int16x3_Float16_arg0 };
+Variable Int16x3_operator_scale_Int16x3_UInt32_arg0;
+Function Int16x3_operator_scale_Int16x3_UInt32;
+std::array<Variable*> Int16x3_operator_scale_Int16x3_UInt32_args = { &Int16x3_operator_scale_Int16x3_UInt32_arg0 };
+Variable Int16x3_operator_scale_Int16x3_UInt16_arg0;
+Function Int16x3_operator_scale_Int16x3_UInt16;
+std::array<Variable*> Int16x3_operator_scale_Int16x3_UInt16_args = { &Int16x3_operator_scale_Int16x3_UInt16_arg0 };
+Variable Int16x3_operator_scale_Int16x3_Int32_arg0;
+Function Int16x3_operator_scale_Int16x3_Int32;
+std::array<Variable*> Int16x3_operator_scale_Int16x3_Int32_args = { &Int16x3_operator_scale_Int16x3_Int32_arg0 };
+Variable Int16x3_operator_scale_Int16x3_Int16_arg0;
+Function Int16x3_operator_scale_Int16x3_Int16;
+std::array<Variable*> Int16x3_operator_scale_Int16x3_Int16_args = { &Int16x3_operator_scale_Int16x3_Int16_arg0 };
+Variable Int16x3_operator_or_Int16x3_arg0;
+Function Int16x3_operator_or_Int16x3;
+std::array<Variable*> Int16x3_operator_or_Int16x3_args = { &Int16x3_operator_or_Int16x3_arg0 };
+Variable Int16x3_operator_and_Int16x3_arg0;
+Function Int16x3_operator_and_Int16x3;
+std::array<Variable*> Int16x3_operator_and_Int16x3_args = { &Int16x3_operator_and_Int16x3_arg0 };
+Variable Int16x3_operator_xor_Int16x3_arg0;
+Function Int16x3_operator_xor_Int16x3;
+std::array<Variable*> Int16x3_operator_xor_Int16x3_args = { &Int16x3_operator_xor_Int16x3_arg0 };
+Variable Int16x3_operator_lsh_Int16x3_arg0;
+Function Int16x3_operator_lsh_Int16x3;
+std::array<Variable*> Int16x3_operator_lsh_Int16x3_args = { &Int16x3_operator_lsh_Int16x3_arg0 };
+Variable Int16x3_operator_rsh_Int16x3_arg0;
+Function Int16x3_operator_rsh_Int16x3;
+std::array<Variable*> Int16x3_operator_rsh_Int16x3_args = { &Int16x3_operator_rsh_Int16x3_arg0 };
+Variable Int16x3_operator_orasg_Int16x3_arg0;
+Function Int16x3_operator_orasg_Int16x3;
+std::array<Variable*> Int16x3_operator_orasg_Int16x3_args = { &Int16x3_operator_orasg_Int16x3_arg0 };
+Variable Int16x3_operator_andasg_Int16x3_arg0;
+Function Int16x3_operator_andasg_Int16x3;
+std::array<Variable*> Int16x3_operator_andasg_Int16x3_args = { &Int16x3_operator_andasg_Int16x3_arg0 };
+Variable Int16x3_operator_xorasg_Int16x3_arg0;
+Function Int16x3_operator_xorasg_Int16x3;
+std::array<Variable*> Int16x3_operator_xorasg_Int16x3_args = { &Int16x3_operator_xorasg_Int16x3_arg0 };
+Variable Int16x3_operator_lshasg_Int16x3_arg0;
+Function Int16x3_operator_lshasg_Int16x3;
+std::array<Variable*> Int16x3_operator_lshasg_Int16x3_args = { &Int16x3_operator_lshasg_Int16x3_arg0 };
+Variable Int16x3_operator_rhsasg_Int16x3_arg0;
+Function Int16x3_operator_rhsasg_Int16x3;
+std::array<Variable*> Int16x3_operator_rhsasg_Int16x3_args = { &Int16x3_operator_rhsasg_Int16x3_arg0 };
+Variable Float32x4_convert_Float32x4_arg0;
+Function Float32x4_convert_Float32x4;
+std::array<Variable*> Float32x4_convert_Float32x4_args = { &Float32x4_convert_Float32x4_arg0 };
+Variable Float32x4_splat_Float32_arg0;
+Function Float32x4_splat_Float32;
+std::array<Variable*> Float32x4_splat_Float32_args = { &Float32x4_splat_Float32_arg0 };
+Variable Float32x4_convert_UInt32x4_arg0;
+Function Float32x4_convert_UInt32x4;
+std::array<Variable*> Float32x4_convert_UInt32x4_args = { &Float32x4_convert_UInt32x4_arg0 };
+Variable Float32x4_splat_UInt32_arg0;
+Function Float32x4_splat_UInt32;
+std::array<Variable*> Float32x4_splat_UInt32_args = { &Float32x4_splat_UInt32_arg0 };
+Variable Float32x4_convert_Int32x4_arg0;
+Function Float32x4_convert_Int32x4;
+std::array<Variable*> Float32x4_convert_Int32x4_args = { &Float32x4_convert_Int32x4_arg0 };
+Variable Float32x4_splat_Int32_arg0;
+Function Float32x4_splat_Int32;
+std::array<Variable*> Float32x4_splat_Int32_args = { &Float32x4_splat_Int32_arg0 };
+Variable Float32x4_convert_Float16x4_arg0;
+Function Float32x4_convert_Float16x4;
+std::array<Variable*> Float32x4_convert_Float16x4_args = { &Float32x4_convert_Float16x4_arg0 };
+Variable Float32x4_splat_Float16_arg0;
+Function Float32x4_splat_Float16;
+std::array<Variable*> Float32x4_splat_Float16_args = { &Float32x4_splat_Float16_arg0 };
+Variable Float32x4_convert_UInt16x4_arg0;
+Function Float32x4_convert_UInt16x4;
+std::array<Variable*> Float32x4_convert_UInt16x4_args = { &Float32x4_convert_UInt16x4_arg0 };
+Variable Float32x4_splat_UInt16_arg0;
+Function Float32x4_splat_UInt16;
+std::array<Variable*> Float32x4_splat_UInt16_args = { &Float32x4_splat_UInt16_arg0 };
+Variable Float32x4_convert_Int16x4_arg0;
+Function Float32x4_convert_Int16x4;
+std::array<Variable*> Float32x4_convert_Int16x4_args = { &Float32x4_convert_Int16x4_arg0 };
+Variable Float32x4_splat_Int16_arg0;
+Function Float32x4_splat_Int16;
+std::array<Variable*> Float32x4_splat_Int16_args = { &Float32x4_splat_Int16_arg0 };
+Variable Float32x4_ctor0_arg0;
+Variable Float32x4_ctor0_arg1;
+Variable Float32x4_ctor0_arg2;
+Variable Float32x4_ctor0_arg3;
+Function Float32x4_ctor0_Float32_Float32_Float32_Float32;
+std::array<Variable*> Float32x4_ctor0_Float32_Float32_Float32_Float32_args = { &Float32x4_ctor0_arg0, &Float32x4_ctor0_arg1, &Float32x4_ctor0_arg2, &Float32x4_ctor0_arg3 };
+Variable Float32x4_ctor1_arg0;
+Variable Float32x4_ctor1_arg1;
+Variable Float32x4_ctor1_arg2;
+Function Float32x4_ctor1_Float32x2_Float32_Float32;
+std::array<Variable*> Float32x4_ctor1_Float32x2_Float32_Float32_args = { &Float32x4_ctor1_arg0, &Float32x4_ctor1_arg1, &Float32x4_ctor1_arg2 };
+Variable Float32x4_ctor2_arg0;
+Variable Float32x4_ctor2_arg1;
+Variable Float32x4_ctor2_arg2;
+Function Float32x4_ctor2_Float32_Float32x2_Float32;
+std::array<Variable*> Float32x4_ctor2_Float32_Float32x2_Float32_args = { &Float32x4_ctor2_arg0, &Float32x4_ctor2_arg1, &Float32x4_ctor2_arg2 };
+Variable Float32x4_ctor3_arg0;
+Variable Float32x4_ctor3_arg1;
+Variable Float32x4_ctor3_arg2;
+Function Float32x4_ctor3_Float32_Float32_Float32x2;
+std::array<Variable*> Float32x4_ctor3_Float32_Float32_Float32x2_args = { &Float32x4_ctor3_arg0, &Float32x4_ctor3_arg1, &Float32x4_ctor3_arg2 };
+Variable Float32x4_ctor4_arg0;
+Variable Float32x4_ctor4_arg1;
+Function Float32x4_ctor4_Float32x3_Float32;
+std::array<Variable*> Float32x4_ctor4_Float32x3_Float32_args = { &Float32x4_ctor4_arg0, &Float32x4_ctor4_arg1 };
+Variable Float32x4_ctor5_arg0;
+Variable Float32x4_ctor5_arg1;
+Function Float32x4_ctor5_Float32_Float32x3;
+std::array<Variable*> Float32x4_ctor5_Float32_Float32x3_args = { &Float32x4_ctor5_arg0, &Float32x4_ctor5_arg1 };
+Variable Float32x4_operator_index_Int32_arg0;
+Function Float32x4_operator_index_Int32;
+std::array<Variable*> Float32x4_operator_index_Int32_args = { &Float32x4_operator_index_Int32_arg0 };
+Variable Float32x4_operator_index_UInt32_arg0;
+Function Float32x4_operator_index_UInt32;
+std::array<Variable*> Float32x4_operator_index_UInt32_args = { &Float32x4_operator_index_UInt32_arg0 };
+Variable Float32x4_operator_index_Int16_arg0;
+Function Float32x4_operator_index_Int16;
+std::array<Variable*> Float32x4_operator_index_Int16_args = { &Float32x4_operator_index_Int16_arg0 };
+Variable Float32x4_operator_index_UInt16_arg0;
+Function Float32x4_operator_index_UInt16;
+std::array<Variable*> Float32x4_operator_index_UInt16_args = { &Float32x4_operator_index_UInt16_arg0 };
+Variable Float32x4_operator_add_Float32x4_arg0;
+Function Float32x4_operator_add_Float32x4;
+std::array<Variable*> Float32x4_operator_add_Float32x4_args = { &Float32x4_operator_add_Float32x4_arg0 };
+Variable Float32x4_operator_sub_Float32x4_arg0;
+Function Float32x4_operator_sub_Float32x4;
+std::array<Variable*> Float32x4_operator_sub_Float32x4_args = { &Float32x4_operator_sub_Float32x4_arg0 };
+Variable Float32x4_operator_mul_Float32x4_arg0;
+Function Float32x4_operator_mul_Float32x4;
+std::array<Variable*> Float32x4_operator_mul_Float32x4_args = { &Float32x4_operator_mul_Float32x4_arg0 };
+Variable Float32x4_operator_div_Float32x4_arg0;
+Function Float32x4_operator_div_Float32x4;
+std::array<Variable*> Float32x4_operator_div_Float32x4_args = { &Float32x4_operator_div_Float32x4_arg0 };
+Variable Float32x4_operator_mod_Float32x4_arg0;
+Function Float32x4_operator_mod_Float32x4;
+std::array<Variable*> Float32x4_operator_mod_Float32x4_args = { &Float32x4_operator_mod_Float32x4_arg0 };
+Variable Float32x4_operator_addasg_Float32x4_arg0;
+Function Float32x4_operator_addasg_Float32x4;
+std::array<Variable*> Float32x4_operator_addasg_Float32x4_args = { &Float32x4_operator_addasg_Float32x4_arg0 };
+Variable Float32x4_operator_subasg_Float32x4_arg0;
+Function Float32x4_operator_subasg_Float32x4;
+std::array<Variable*> Float32x4_operator_subasg_Float32x4_args = { &Float32x4_operator_subasg_Float32x4_arg0 };
+Variable Float32x4_operator_mulasg_Float32x4_arg0;
+Function Float32x4_operator_mulasg_Float32x4;
+std::array<Variable*> Float32x4_operator_mulasg_Float32x4_args = { &Float32x4_operator_mulasg_Float32x4_arg0 };
+Variable Float32x4_operator_divasg_Float32x4_arg0;
+Function Float32x4_operator_divasg_Float32x4;
+std::array<Variable*> Float32x4_operator_divasg_Float32x4_args = { &Float32x4_operator_divasg_Float32x4_arg0 };
+Variable Float32x4_operator_lt_Float32x4_arg0;
+Function Float32x4_operator_lt_Float32x4;
+std::array<Variable*> Float32x4_operator_lt_Float32x4_args = { &Float32x4_operator_lt_Float32x4_arg0 };
+Variable Float32x4_operator_lte_Float32x4_arg0;
+Function Float32x4_operator_lte_Float32x4;
+std::array<Variable*> Float32x4_operator_lte_Float32x4_args = { &Float32x4_operator_lte_Float32x4_arg0 };
+Variable Float32x4_operator_gt_Float32x4_arg0;
+Function Float32x4_operator_gt_Float32x4;
+std::array<Variable*> Float32x4_operator_gt_Float32x4_args = { &Float32x4_operator_gt_Float32x4_arg0 };
+Variable Float32x4_operator_gte_Float32x4_arg0;
+Function Float32x4_operator_gte_Float32x4;
+std::array<Variable*> Float32x4_operator_gte_Float32x4_args = { &Float32x4_operator_gte_Float32x4_arg0 };
+Variable Float32x4_operator_eq_Float32x4_arg0;
+Function Float32x4_operator_eq_Float32x4;
+std::array<Variable*> Float32x4_operator_eq_Float32x4_args = { &Float32x4_operator_eq_Float32x4_arg0 };
+Variable Float32x4_operator_neq_Float32x4_arg0;
+Function Float32x4_operator_neq_Float32x4;
+std::array<Variable*> Float32x4_operator_neq_Float32x4_args = { &Float32x4_operator_neq_Float32x4_arg0 };
+Variable Float32x4_operator_scale_Float32x4_Float32_arg0;
+Function Float32x4_operator_scale_Float32x4_Float32;
+std::array<Variable*> Float32x4_operator_scale_Float32x4_Float32_args = { &Float32x4_operator_scale_Float32x4_Float32_arg0 };
+Variable Float32x4_operator_scale_Float32x4_Float16_arg0;
+Function Float32x4_operator_scale_Float32x4_Float16;
+std::array<Variable*> Float32x4_operator_scale_Float32x4_Float16_args = { &Float32x4_operator_scale_Float32x4_Float16_arg0 };
+Variable Float32x4_operator_scale_Float32x4_UInt32_arg0;
+Function Float32x4_operator_scale_Float32x4_UInt32;
+std::array<Variable*> Float32x4_operator_scale_Float32x4_UInt32_args = { &Float32x4_operator_scale_Float32x4_UInt32_arg0 };
+Variable Float32x4_operator_scale_Float32x4_UInt16_arg0;
+Function Float32x4_operator_scale_Float32x4_UInt16;
+std::array<Variable*> Float32x4_operator_scale_Float32x4_UInt16_args = { &Float32x4_operator_scale_Float32x4_UInt16_arg0 };
+Variable Float32x4_operator_scale_Float32x4_Int32_arg0;
+Function Float32x4_operator_scale_Float32x4_Int32;
+std::array<Variable*> Float32x4_operator_scale_Float32x4_Int32_args = { &Float32x4_operator_scale_Float32x4_Int32_arg0 };
+Variable Float32x4_operator_scale_Float32x4_Int16_arg0;
+Function Float32x4_operator_scale_Float32x4_Int16;
+std::array<Variable*> Float32x4_operator_scale_Float32x4_Int16_args = { &Float32x4_operator_scale_Float32x4_Int16_arg0 };
+Variable Float32x4_operator_mul_Float32x4x2_arg0;
+Function Float32x4_operator_mul_Float32x4x2;
+std::array<Variable*> Float32x4_operator_mul_Float32x4x2_args = { &Float32x4_operator_mul_Float32x4x2_arg0 };
+Variable Float32x4_operator_mul_Float32x4x3_arg0;
+Function Float32x4_operator_mul_Float32x4x3;
+std::array<Variable*> Float32x4_operator_mul_Float32x4x3_args = { &Float32x4_operator_mul_Float32x4x3_arg0 };
+Variable Float32x4_operator_mul_Float32x4x4_arg0;
+Function Float32x4_operator_mul_Float32x4x4;
+std::array<Variable*> Float32x4_operator_mul_Float32x4x4_args = { &Float32x4_operator_mul_Float32x4x4_arg0 };
+Variable UInt32x4_convert_Float32x4_arg0;
+Function UInt32x4_convert_Float32x4;
+std::array<Variable*> UInt32x4_convert_Float32x4_args = { &UInt32x4_convert_Float32x4_arg0 };
+Variable UInt32x4_splat_Float32_arg0;
+Function UInt32x4_splat_Float32;
+std::array<Variable*> UInt32x4_splat_Float32_args = { &UInt32x4_splat_Float32_arg0 };
+Variable UInt32x4_convert_UInt32x4_arg0;
+Function UInt32x4_convert_UInt32x4;
+std::array<Variable*> UInt32x4_convert_UInt32x4_args = { &UInt32x4_convert_UInt32x4_arg0 };
+Variable UInt32x4_splat_UInt32_arg0;
+Function UInt32x4_splat_UInt32;
+std::array<Variable*> UInt32x4_splat_UInt32_args = { &UInt32x4_splat_UInt32_arg0 };
+Variable UInt32x4_convert_Int32x4_arg0;
+Function UInt32x4_convert_Int32x4;
+std::array<Variable*> UInt32x4_convert_Int32x4_args = { &UInt32x4_convert_Int32x4_arg0 };
+Variable UInt32x4_splat_Int32_arg0;
+Function UInt32x4_splat_Int32;
+std::array<Variable*> UInt32x4_splat_Int32_args = { &UInt32x4_splat_Int32_arg0 };
+Variable UInt32x4_convert_Float16x4_arg0;
+Function UInt32x4_convert_Float16x4;
+std::array<Variable*> UInt32x4_convert_Float16x4_args = { &UInt32x4_convert_Float16x4_arg0 };
+Variable UInt32x4_splat_Float16_arg0;
+Function UInt32x4_splat_Float16;
+std::array<Variable*> UInt32x4_splat_Float16_args = { &UInt32x4_splat_Float16_arg0 };
+Variable UInt32x4_convert_UInt16x4_arg0;
+Function UInt32x4_convert_UInt16x4;
+std::array<Variable*> UInt32x4_convert_UInt16x4_args = { &UInt32x4_convert_UInt16x4_arg0 };
+Variable UInt32x4_splat_UInt16_arg0;
+Function UInt32x4_splat_UInt16;
+std::array<Variable*> UInt32x4_splat_UInt16_args = { &UInt32x4_splat_UInt16_arg0 };
+Variable UInt32x4_convert_Int16x4_arg0;
+Function UInt32x4_convert_Int16x4;
+std::array<Variable*> UInt32x4_convert_Int16x4_args = { &UInt32x4_convert_Int16x4_arg0 };
+Variable UInt32x4_splat_Int16_arg0;
+Function UInt32x4_splat_Int16;
+std::array<Variable*> UInt32x4_splat_Int16_args = { &UInt32x4_splat_Int16_arg0 };
+Variable UInt32x4_ctor0_arg0;
+Variable UInt32x4_ctor0_arg1;
+Variable UInt32x4_ctor0_arg2;
+Variable UInt32x4_ctor0_arg3;
+Function UInt32x4_ctor0_UInt32_UInt32_UInt32_UInt32;
+std::array<Variable*> UInt32x4_ctor0_UInt32_UInt32_UInt32_UInt32_args = { &UInt32x4_ctor0_arg0, &UInt32x4_ctor0_arg1, &UInt32x4_ctor0_arg2, &UInt32x4_ctor0_arg3 };
+Variable UInt32x4_ctor1_arg0;
+Variable UInt32x4_ctor1_arg1;
+Variable UInt32x4_ctor1_arg2;
+Function UInt32x4_ctor1_UInt32x2_UInt32_UInt32;
+std::array<Variable*> UInt32x4_ctor1_UInt32x2_UInt32_UInt32_args = { &UInt32x4_ctor1_arg0, &UInt32x4_ctor1_arg1, &UInt32x4_ctor1_arg2 };
+Variable UInt32x4_ctor2_arg0;
+Variable UInt32x4_ctor2_arg1;
+Variable UInt32x4_ctor2_arg2;
+Function UInt32x4_ctor2_UInt32_UInt32x2_UInt32;
+std::array<Variable*> UInt32x4_ctor2_UInt32_UInt32x2_UInt32_args = { &UInt32x4_ctor2_arg0, &UInt32x4_ctor2_arg1, &UInt32x4_ctor2_arg2 };
+Variable UInt32x4_ctor3_arg0;
+Variable UInt32x4_ctor3_arg1;
+Variable UInt32x4_ctor3_arg2;
+Function UInt32x4_ctor3_UInt32_UInt32_UInt32x2;
+std::array<Variable*> UInt32x4_ctor3_UInt32_UInt32_UInt32x2_args = { &UInt32x4_ctor3_arg0, &UInt32x4_ctor3_arg1, &UInt32x4_ctor3_arg2 };
+Variable UInt32x4_ctor4_arg0;
+Variable UInt32x4_ctor4_arg1;
+Function UInt32x4_ctor4_UInt32x3_UInt32;
+std::array<Variable*> UInt32x4_ctor4_UInt32x3_UInt32_args = { &UInt32x4_ctor4_arg0, &UInt32x4_ctor4_arg1 };
+Variable UInt32x4_ctor5_arg0;
+Variable UInt32x4_ctor5_arg1;
+Function UInt32x4_ctor5_UInt32_UInt32x3;
+std::array<Variable*> UInt32x4_ctor5_UInt32_UInt32x3_args = { &UInt32x4_ctor5_arg0, &UInt32x4_ctor5_arg1 };
+Variable UInt32x4_operator_index_Int32_arg0;
+Function UInt32x4_operator_index_Int32;
+std::array<Variable*> UInt32x4_operator_index_Int32_args = { &UInt32x4_operator_index_Int32_arg0 };
+Variable UInt32x4_operator_index_UInt32_arg0;
+Function UInt32x4_operator_index_UInt32;
+std::array<Variable*> UInt32x4_operator_index_UInt32_args = { &UInt32x4_operator_index_UInt32_arg0 };
+Variable UInt32x4_operator_index_Int16_arg0;
+Function UInt32x4_operator_index_Int16;
+std::array<Variable*> UInt32x4_operator_index_Int16_args = { &UInt32x4_operator_index_Int16_arg0 };
+Variable UInt32x4_operator_index_UInt16_arg0;
+Function UInt32x4_operator_index_UInt16;
+std::array<Variable*> UInt32x4_operator_index_UInt16_args = { &UInt32x4_operator_index_UInt16_arg0 };
+Variable UInt32x4_operator_add_UInt32x4_arg0;
+Function UInt32x4_operator_add_UInt32x4;
+std::array<Variable*> UInt32x4_operator_add_UInt32x4_args = { &UInt32x4_operator_add_UInt32x4_arg0 };
+Variable UInt32x4_operator_sub_UInt32x4_arg0;
+Function UInt32x4_operator_sub_UInt32x4;
+std::array<Variable*> UInt32x4_operator_sub_UInt32x4_args = { &UInt32x4_operator_sub_UInt32x4_arg0 };
+Variable UInt32x4_operator_mul_UInt32x4_arg0;
+Function UInt32x4_operator_mul_UInt32x4;
+std::array<Variable*> UInt32x4_operator_mul_UInt32x4_args = { &UInt32x4_operator_mul_UInt32x4_arg0 };
+Variable UInt32x4_operator_div_UInt32x4_arg0;
+Function UInt32x4_operator_div_UInt32x4;
+std::array<Variable*> UInt32x4_operator_div_UInt32x4_args = { &UInt32x4_operator_div_UInt32x4_arg0 };
+Variable UInt32x4_operator_mod_UInt32x4_arg0;
+Function UInt32x4_operator_mod_UInt32x4;
+std::array<Variable*> UInt32x4_operator_mod_UInt32x4_args = { &UInt32x4_operator_mod_UInt32x4_arg0 };
+Variable UInt32x4_operator_addasg_UInt32x4_arg0;
+Function UInt32x4_operator_addasg_UInt32x4;
+std::array<Variable*> UInt32x4_operator_addasg_UInt32x4_args = { &UInt32x4_operator_addasg_UInt32x4_arg0 };
+Variable UInt32x4_operator_subasg_UInt32x4_arg0;
+Function UInt32x4_operator_subasg_UInt32x4;
+std::array<Variable*> UInt32x4_operator_subasg_UInt32x4_args = { &UInt32x4_operator_subasg_UInt32x4_arg0 };
+Variable UInt32x4_operator_mulasg_UInt32x4_arg0;
+Function UInt32x4_operator_mulasg_UInt32x4;
+std::array<Variable*> UInt32x4_operator_mulasg_UInt32x4_args = { &UInt32x4_operator_mulasg_UInt32x4_arg0 };
+Variable UInt32x4_operator_divasg_UInt32x4_arg0;
+Function UInt32x4_operator_divasg_UInt32x4;
+std::array<Variable*> UInt32x4_operator_divasg_UInt32x4_args = { &UInt32x4_operator_divasg_UInt32x4_arg0 };
+Variable UInt32x4_operator_lt_UInt32x4_arg0;
+Function UInt32x4_operator_lt_UInt32x4;
+std::array<Variable*> UInt32x4_operator_lt_UInt32x4_args = { &UInt32x4_operator_lt_UInt32x4_arg0 };
+Variable UInt32x4_operator_lte_UInt32x4_arg0;
+Function UInt32x4_operator_lte_UInt32x4;
+std::array<Variable*> UInt32x4_operator_lte_UInt32x4_args = { &UInt32x4_operator_lte_UInt32x4_arg0 };
+Variable UInt32x4_operator_gt_UInt32x4_arg0;
+Function UInt32x4_operator_gt_UInt32x4;
+std::array<Variable*> UInt32x4_operator_gt_UInt32x4_args = { &UInt32x4_operator_gt_UInt32x4_arg0 };
+Variable UInt32x4_operator_gte_UInt32x4_arg0;
+Function UInt32x4_operator_gte_UInt32x4;
+std::array<Variable*> UInt32x4_operator_gte_UInt32x4_args = { &UInt32x4_operator_gte_UInt32x4_arg0 };
+Variable UInt32x4_operator_eq_UInt32x4_arg0;
+Function UInt32x4_operator_eq_UInt32x4;
+std::array<Variable*> UInt32x4_operator_eq_UInt32x4_args = { &UInt32x4_operator_eq_UInt32x4_arg0 };
+Variable UInt32x4_operator_neq_UInt32x4_arg0;
+Function UInt32x4_operator_neq_UInt32x4;
+std::array<Variable*> UInt32x4_operator_neq_UInt32x4_args = { &UInt32x4_operator_neq_UInt32x4_arg0 };
+Variable UInt32x4_operator_scale_UInt32x4_Float32_arg0;
+Function UInt32x4_operator_scale_UInt32x4_Float32;
+std::array<Variable*> UInt32x4_operator_scale_UInt32x4_Float32_args = { &UInt32x4_operator_scale_UInt32x4_Float32_arg0 };
+Variable UInt32x4_operator_scale_UInt32x4_Float16_arg0;
+Function UInt32x4_operator_scale_UInt32x4_Float16;
+std::array<Variable*> UInt32x4_operator_scale_UInt32x4_Float16_args = { &UInt32x4_operator_scale_UInt32x4_Float16_arg0 };
+Variable UInt32x4_operator_scale_UInt32x4_UInt32_arg0;
+Function UInt32x4_operator_scale_UInt32x4_UInt32;
+std::array<Variable*> UInt32x4_operator_scale_UInt32x4_UInt32_args = { &UInt32x4_operator_scale_UInt32x4_UInt32_arg0 };
+Variable UInt32x4_operator_scale_UInt32x4_UInt16_arg0;
+Function UInt32x4_operator_scale_UInt32x4_UInt16;
+std::array<Variable*> UInt32x4_operator_scale_UInt32x4_UInt16_args = { &UInt32x4_operator_scale_UInt32x4_UInt16_arg0 };
+Variable UInt32x4_operator_scale_UInt32x4_Int32_arg0;
+Function UInt32x4_operator_scale_UInt32x4_Int32;
+std::array<Variable*> UInt32x4_operator_scale_UInt32x4_Int32_args = { &UInt32x4_operator_scale_UInt32x4_Int32_arg0 };
+Variable UInt32x4_operator_scale_UInt32x4_Int16_arg0;
+Function UInt32x4_operator_scale_UInt32x4_Int16;
+std::array<Variable*> UInt32x4_operator_scale_UInt32x4_Int16_args = { &UInt32x4_operator_scale_UInt32x4_Int16_arg0 };
+Variable UInt32x4_operator_or_UInt32x4_arg0;
+Function UInt32x4_operator_or_UInt32x4;
+std::array<Variable*> UInt32x4_operator_or_UInt32x4_args = { &UInt32x4_operator_or_UInt32x4_arg0 };
+Variable UInt32x4_operator_and_UInt32x4_arg0;
+Function UInt32x4_operator_and_UInt32x4;
+std::array<Variable*> UInt32x4_operator_and_UInt32x4_args = { &UInt32x4_operator_and_UInt32x4_arg0 };
+Variable UInt32x4_operator_xor_UInt32x4_arg0;
+Function UInt32x4_operator_xor_UInt32x4;
+std::array<Variable*> UInt32x4_operator_xor_UInt32x4_args = { &UInt32x4_operator_xor_UInt32x4_arg0 };
+Variable UInt32x4_operator_lsh_UInt32x4_arg0;
+Function UInt32x4_operator_lsh_UInt32x4;
+std::array<Variable*> UInt32x4_operator_lsh_UInt32x4_args = { &UInt32x4_operator_lsh_UInt32x4_arg0 };
+Variable UInt32x4_operator_rsh_UInt32x4_arg0;
+Function UInt32x4_operator_rsh_UInt32x4;
+std::array<Variable*> UInt32x4_operator_rsh_UInt32x4_args = { &UInt32x4_operator_rsh_UInt32x4_arg0 };
+Variable UInt32x4_operator_orasg_UInt32x4_arg0;
+Function UInt32x4_operator_orasg_UInt32x4;
+std::array<Variable*> UInt32x4_operator_orasg_UInt32x4_args = { &UInt32x4_operator_orasg_UInt32x4_arg0 };
+Variable UInt32x4_operator_andasg_UInt32x4_arg0;
+Function UInt32x4_operator_andasg_UInt32x4;
+std::array<Variable*> UInt32x4_operator_andasg_UInt32x4_args = { &UInt32x4_operator_andasg_UInt32x4_arg0 };
+Variable UInt32x4_operator_xorasg_UInt32x4_arg0;
+Function UInt32x4_operator_xorasg_UInt32x4;
+std::array<Variable*> UInt32x4_operator_xorasg_UInt32x4_args = { &UInt32x4_operator_xorasg_UInt32x4_arg0 };
+Variable UInt32x4_operator_lshasg_UInt32x4_arg0;
+Function UInt32x4_operator_lshasg_UInt32x4;
+std::array<Variable*> UInt32x4_operator_lshasg_UInt32x4_args = { &UInt32x4_operator_lshasg_UInt32x4_arg0 };
+Variable UInt32x4_operator_rhsasg_UInt32x4_arg0;
+Function UInt32x4_operator_rhsasg_UInt32x4;
+std::array<Variable*> UInt32x4_operator_rhsasg_UInt32x4_args = { &UInt32x4_operator_rhsasg_UInt32x4_arg0 };
+Variable Int32x4_convert_Float32x4_arg0;
+Function Int32x4_convert_Float32x4;
+std::array<Variable*> Int32x4_convert_Float32x4_args = { &Int32x4_convert_Float32x4_arg0 };
+Variable Int32x4_splat_Float32_arg0;
+Function Int32x4_splat_Float32;
+std::array<Variable*> Int32x4_splat_Float32_args = { &Int32x4_splat_Float32_arg0 };
+Variable Int32x4_convert_UInt32x4_arg0;
+Function Int32x4_convert_UInt32x4;
+std::array<Variable*> Int32x4_convert_UInt32x4_args = { &Int32x4_convert_UInt32x4_arg0 };
+Variable Int32x4_splat_UInt32_arg0;
+Function Int32x4_splat_UInt32;
+std::array<Variable*> Int32x4_splat_UInt32_args = { &Int32x4_splat_UInt32_arg0 };
+Variable Int32x4_convert_Int32x4_arg0;
+Function Int32x4_convert_Int32x4;
+std::array<Variable*> Int32x4_convert_Int32x4_args = { &Int32x4_convert_Int32x4_arg0 };
+Variable Int32x4_splat_Int32_arg0;
+Function Int32x4_splat_Int32;
+std::array<Variable*> Int32x4_splat_Int32_args = { &Int32x4_splat_Int32_arg0 };
+Variable Int32x4_convert_Float16x4_arg0;
+Function Int32x4_convert_Float16x4;
+std::array<Variable*> Int32x4_convert_Float16x4_args = { &Int32x4_convert_Float16x4_arg0 };
+Variable Int32x4_splat_Float16_arg0;
+Function Int32x4_splat_Float16;
+std::array<Variable*> Int32x4_splat_Float16_args = { &Int32x4_splat_Float16_arg0 };
+Variable Int32x4_convert_UInt16x4_arg0;
+Function Int32x4_convert_UInt16x4;
+std::array<Variable*> Int32x4_convert_UInt16x4_args = { &Int32x4_convert_UInt16x4_arg0 };
+Variable Int32x4_splat_UInt16_arg0;
+Function Int32x4_splat_UInt16;
+std::array<Variable*> Int32x4_splat_UInt16_args = { &Int32x4_splat_UInt16_arg0 };
+Variable Int32x4_convert_Int16x4_arg0;
+Function Int32x4_convert_Int16x4;
+std::array<Variable*> Int32x4_convert_Int16x4_args = { &Int32x4_convert_Int16x4_arg0 };
+Variable Int32x4_splat_Int16_arg0;
+Function Int32x4_splat_Int16;
+std::array<Variable*> Int32x4_splat_Int16_args = { &Int32x4_splat_Int16_arg0 };
+Variable Int32x4_ctor0_arg0;
+Variable Int32x4_ctor0_arg1;
+Variable Int32x4_ctor0_arg2;
+Variable Int32x4_ctor0_arg3;
+Function Int32x4_ctor0_Int32_Int32_Int32_Int32;
+std::array<Variable*> Int32x4_ctor0_Int32_Int32_Int32_Int32_args = { &Int32x4_ctor0_arg0, &Int32x4_ctor0_arg1, &Int32x4_ctor0_arg2, &Int32x4_ctor0_arg3 };
+Variable Int32x4_ctor1_arg0;
+Variable Int32x4_ctor1_arg1;
+Variable Int32x4_ctor1_arg2;
+Function Int32x4_ctor1_Int32x2_Int32_Int32;
+std::array<Variable*> Int32x4_ctor1_Int32x2_Int32_Int32_args = { &Int32x4_ctor1_arg0, &Int32x4_ctor1_arg1, &Int32x4_ctor1_arg2 };
+Variable Int32x4_ctor2_arg0;
+Variable Int32x4_ctor2_arg1;
+Variable Int32x4_ctor2_arg2;
+Function Int32x4_ctor2_Int32_Int32x2_Int32;
+std::array<Variable*> Int32x4_ctor2_Int32_Int32x2_Int32_args = { &Int32x4_ctor2_arg0, &Int32x4_ctor2_arg1, &Int32x4_ctor2_arg2 };
+Variable Int32x4_ctor3_arg0;
+Variable Int32x4_ctor3_arg1;
+Variable Int32x4_ctor3_arg2;
+Function Int32x4_ctor3_Int32_Int32_Int32x2;
+std::array<Variable*> Int32x4_ctor3_Int32_Int32_Int32x2_args = { &Int32x4_ctor3_arg0, &Int32x4_ctor3_arg1, &Int32x4_ctor3_arg2 };
+Variable Int32x4_ctor4_arg0;
+Variable Int32x4_ctor4_arg1;
+Function Int32x4_ctor4_Int32x3_Int32;
+std::array<Variable*> Int32x4_ctor4_Int32x3_Int32_args = { &Int32x4_ctor4_arg0, &Int32x4_ctor4_arg1 };
+Variable Int32x4_ctor5_arg0;
+Variable Int32x4_ctor5_arg1;
+Function Int32x4_ctor5_Int32_Int32x3;
+std::array<Variable*> Int32x4_ctor5_Int32_Int32x3_args = { &Int32x4_ctor5_arg0, &Int32x4_ctor5_arg1 };
+Variable Int32x4_operator_index_Int32_arg0;
+Function Int32x4_operator_index_Int32;
+std::array<Variable*> Int32x4_operator_index_Int32_args = { &Int32x4_operator_index_Int32_arg0 };
+Variable Int32x4_operator_index_UInt32_arg0;
+Function Int32x4_operator_index_UInt32;
+std::array<Variable*> Int32x4_operator_index_UInt32_args = { &Int32x4_operator_index_UInt32_arg0 };
+Variable Int32x4_operator_index_Int16_arg0;
+Function Int32x4_operator_index_Int16;
+std::array<Variable*> Int32x4_operator_index_Int16_args = { &Int32x4_operator_index_Int16_arg0 };
+Variable Int32x4_operator_index_UInt16_arg0;
+Function Int32x4_operator_index_UInt16;
+std::array<Variable*> Int32x4_operator_index_UInt16_args = { &Int32x4_operator_index_UInt16_arg0 };
+Variable Int32x4_operator_add_Int32x4_arg0;
+Function Int32x4_operator_add_Int32x4;
+std::array<Variable*> Int32x4_operator_add_Int32x4_args = { &Int32x4_operator_add_Int32x4_arg0 };
+Variable Int32x4_operator_sub_Int32x4_arg0;
+Function Int32x4_operator_sub_Int32x4;
+std::array<Variable*> Int32x4_operator_sub_Int32x4_args = { &Int32x4_operator_sub_Int32x4_arg0 };
+Variable Int32x4_operator_mul_Int32x4_arg0;
+Function Int32x4_operator_mul_Int32x4;
+std::array<Variable*> Int32x4_operator_mul_Int32x4_args = { &Int32x4_operator_mul_Int32x4_arg0 };
+Variable Int32x4_operator_div_Int32x4_arg0;
+Function Int32x4_operator_div_Int32x4;
+std::array<Variable*> Int32x4_operator_div_Int32x4_args = { &Int32x4_operator_div_Int32x4_arg0 };
+Variable Int32x4_operator_mod_Int32x4_arg0;
+Function Int32x4_operator_mod_Int32x4;
+std::array<Variable*> Int32x4_operator_mod_Int32x4_args = { &Int32x4_operator_mod_Int32x4_arg0 };
+Variable Int32x4_operator_addasg_Int32x4_arg0;
+Function Int32x4_operator_addasg_Int32x4;
+std::array<Variable*> Int32x4_operator_addasg_Int32x4_args = { &Int32x4_operator_addasg_Int32x4_arg0 };
+Variable Int32x4_operator_subasg_Int32x4_arg0;
+Function Int32x4_operator_subasg_Int32x4;
+std::array<Variable*> Int32x4_operator_subasg_Int32x4_args = { &Int32x4_operator_subasg_Int32x4_arg0 };
+Variable Int32x4_operator_mulasg_Int32x4_arg0;
+Function Int32x4_operator_mulasg_Int32x4;
+std::array<Variable*> Int32x4_operator_mulasg_Int32x4_args = { &Int32x4_operator_mulasg_Int32x4_arg0 };
+Variable Int32x4_operator_divasg_Int32x4_arg0;
+Function Int32x4_operator_divasg_Int32x4;
+std::array<Variable*> Int32x4_operator_divasg_Int32x4_args = { &Int32x4_operator_divasg_Int32x4_arg0 };
+Variable Int32x4_operator_lt_Int32x4_arg0;
+Function Int32x4_operator_lt_Int32x4;
+std::array<Variable*> Int32x4_operator_lt_Int32x4_args = { &Int32x4_operator_lt_Int32x4_arg0 };
+Variable Int32x4_operator_lte_Int32x4_arg0;
+Function Int32x4_operator_lte_Int32x4;
+std::array<Variable*> Int32x4_operator_lte_Int32x4_args = { &Int32x4_operator_lte_Int32x4_arg0 };
+Variable Int32x4_operator_gt_Int32x4_arg0;
+Function Int32x4_operator_gt_Int32x4;
+std::array<Variable*> Int32x4_operator_gt_Int32x4_args = { &Int32x4_operator_gt_Int32x4_arg0 };
+Variable Int32x4_operator_gte_Int32x4_arg0;
+Function Int32x4_operator_gte_Int32x4;
+std::array<Variable*> Int32x4_operator_gte_Int32x4_args = { &Int32x4_operator_gte_Int32x4_arg0 };
+Variable Int32x4_operator_eq_Int32x4_arg0;
+Function Int32x4_operator_eq_Int32x4;
+std::array<Variable*> Int32x4_operator_eq_Int32x4_args = { &Int32x4_operator_eq_Int32x4_arg0 };
+Variable Int32x4_operator_neq_Int32x4_arg0;
+Function Int32x4_operator_neq_Int32x4;
+std::array<Variable*> Int32x4_operator_neq_Int32x4_args = { &Int32x4_operator_neq_Int32x4_arg0 };
+Variable Int32x4_operator_scale_Int32x4_Float32_arg0;
+Function Int32x4_operator_scale_Int32x4_Float32;
+std::array<Variable*> Int32x4_operator_scale_Int32x4_Float32_args = { &Int32x4_operator_scale_Int32x4_Float32_arg0 };
+Variable Int32x4_operator_scale_Int32x4_Float16_arg0;
+Function Int32x4_operator_scale_Int32x4_Float16;
+std::array<Variable*> Int32x4_operator_scale_Int32x4_Float16_args = { &Int32x4_operator_scale_Int32x4_Float16_arg0 };
+Variable Int32x4_operator_scale_Int32x4_UInt32_arg0;
+Function Int32x4_operator_scale_Int32x4_UInt32;
+std::array<Variable*> Int32x4_operator_scale_Int32x4_UInt32_args = { &Int32x4_operator_scale_Int32x4_UInt32_arg0 };
+Variable Int32x4_operator_scale_Int32x4_UInt16_arg0;
+Function Int32x4_operator_scale_Int32x4_UInt16;
+std::array<Variable*> Int32x4_operator_scale_Int32x4_UInt16_args = { &Int32x4_operator_scale_Int32x4_UInt16_arg0 };
+Variable Int32x4_operator_scale_Int32x4_Int32_arg0;
+Function Int32x4_operator_scale_Int32x4_Int32;
+std::array<Variable*> Int32x4_operator_scale_Int32x4_Int32_args = { &Int32x4_operator_scale_Int32x4_Int32_arg0 };
+Variable Int32x4_operator_scale_Int32x4_Int16_arg0;
+Function Int32x4_operator_scale_Int32x4_Int16;
+std::array<Variable*> Int32x4_operator_scale_Int32x4_Int16_args = { &Int32x4_operator_scale_Int32x4_Int16_arg0 };
+Variable Int32x4_operator_or_Int32x4_arg0;
+Function Int32x4_operator_or_Int32x4;
+std::array<Variable*> Int32x4_operator_or_Int32x4_args = { &Int32x4_operator_or_Int32x4_arg0 };
+Variable Int32x4_operator_and_Int32x4_arg0;
+Function Int32x4_operator_and_Int32x4;
+std::array<Variable*> Int32x4_operator_and_Int32x4_args = { &Int32x4_operator_and_Int32x4_arg0 };
+Variable Int32x4_operator_xor_Int32x4_arg0;
+Function Int32x4_operator_xor_Int32x4;
+std::array<Variable*> Int32x4_operator_xor_Int32x4_args = { &Int32x4_operator_xor_Int32x4_arg0 };
+Variable Int32x4_operator_lsh_Int32x4_arg0;
+Function Int32x4_operator_lsh_Int32x4;
+std::array<Variable*> Int32x4_operator_lsh_Int32x4_args = { &Int32x4_operator_lsh_Int32x4_arg0 };
+Variable Int32x4_operator_rsh_Int32x4_arg0;
+Function Int32x4_operator_rsh_Int32x4;
+std::array<Variable*> Int32x4_operator_rsh_Int32x4_args = { &Int32x4_operator_rsh_Int32x4_arg0 };
+Variable Int32x4_operator_orasg_Int32x4_arg0;
+Function Int32x4_operator_orasg_Int32x4;
+std::array<Variable*> Int32x4_operator_orasg_Int32x4_args = { &Int32x4_operator_orasg_Int32x4_arg0 };
+Variable Int32x4_operator_andasg_Int32x4_arg0;
+Function Int32x4_operator_andasg_Int32x4;
+std::array<Variable*> Int32x4_operator_andasg_Int32x4_args = { &Int32x4_operator_andasg_Int32x4_arg0 };
+Variable Int32x4_operator_xorasg_Int32x4_arg0;
+Function Int32x4_operator_xorasg_Int32x4;
+std::array<Variable*> Int32x4_operator_xorasg_Int32x4_args = { &Int32x4_operator_xorasg_Int32x4_arg0 };
+Variable Int32x4_operator_lshasg_Int32x4_arg0;
+Function Int32x4_operator_lshasg_Int32x4;
+std::array<Variable*> Int32x4_operator_lshasg_Int32x4_args = { &Int32x4_operator_lshasg_Int32x4_arg0 };
+Variable Int32x4_operator_rhsasg_Int32x4_arg0;
+Function Int32x4_operator_rhsasg_Int32x4;
+std::array<Variable*> Int32x4_operator_rhsasg_Int32x4_args = { &Int32x4_operator_rhsasg_Int32x4_arg0 };
+Variable Bool8x4_convert_UInt32x4_arg0;
+Function Bool8x4_convert_UInt32x4;
+std::array<Variable*> Bool8x4_convert_UInt32x4_args = { &Bool8x4_convert_UInt32x4_arg0 };
+Variable Bool8x4_splat_UInt32_arg0;
+Function Bool8x4_splat_UInt32;
+std::array<Variable*> Bool8x4_splat_UInt32_args = { &Bool8x4_splat_UInt32_arg0 };
+Variable Bool8x4_convert_Int32x4_arg0;
+Function Bool8x4_convert_Int32x4;
+std::array<Variable*> Bool8x4_convert_Int32x4_args = { &Bool8x4_convert_Int32x4_arg0 };
+Variable Bool8x4_splat_Int32_arg0;
+Function Bool8x4_splat_Int32;
+std::array<Variable*> Bool8x4_splat_Int32_args = { &Bool8x4_splat_Int32_arg0 };
+Variable Bool8x4_convert_UInt16x4_arg0;
+Function Bool8x4_convert_UInt16x4;
+std::array<Variable*> Bool8x4_convert_UInt16x4_args = { &Bool8x4_convert_UInt16x4_arg0 };
+Variable Bool8x4_splat_UInt16_arg0;
+Function Bool8x4_splat_UInt16;
+std::array<Variable*> Bool8x4_splat_UInt16_args = { &Bool8x4_splat_UInt16_arg0 };
+Variable Bool8x4_convert_Int16x4_arg0;
+Function Bool8x4_convert_Int16x4;
+std::array<Variable*> Bool8x4_convert_Int16x4_args = { &Bool8x4_convert_Int16x4_arg0 };
+Variable Bool8x4_splat_Int16_arg0;
+Function Bool8x4_splat_Int16;
+std::array<Variable*> Bool8x4_splat_Int16_args = { &Bool8x4_splat_Int16_arg0 };
+Variable Bool8x4_ctor0_arg0;
+Variable Bool8x4_ctor0_arg1;
+Variable Bool8x4_ctor0_arg2;
+Variable Bool8x4_ctor0_arg3;
+Function Bool8x4_ctor0_Bool8_Bool8_Bool8_Bool8;
+std::array<Variable*> Bool8x4_ctor0_Bool8_Bool8_Bool8_Bool8_args = { &Bool8x4_ctor0_arg0, &Bool8x4_ctor0_arg1, &Bool8x4_ctor0_arg2, &Bool8x4_ctor0_arg3 };
+Variable Bool8x4_ctor1_arg0;
+Variable Bool8x4_ctor1_arg1;
+Variable Bool8x4_ctor1_arg2;
+Function Bool8x4_ctor1_Bool8x2_Bool8_Bool8;
+std::array<Variable*> Bool8x4_ctor1_Bool8x2_Bool8_Bool8_args = { &Bool8x4_ctor1_arg0, &Bool8x4_ctor1_arg1, &Bool8x4_ctor1_arg2 };
+Variable Bool8x4_ctor2_arg0;
+Variable Bool8x4_ctor2_arg1;
+Variable Bool8x4_ctor2_arg2;
+Function Bool8x4_ctor2_Bool8_Bool8x2_Bool8;
+std::array<Variable*> Bool8x4_ctor2_Bool8_Bool8x2_Bool8_args = { &Bool8x4_ctor2_arg0, &Bool8x4_ctor2_arg1, &Bool8x4_ctor2_arg2 };
+Variable Bool8x4_ctor3_arg0;
+Variable Bool8x4_ctor3_arg1;
+Variable Bool8x4_ctor3_arg2;
+Function Bool8x4_ctor3_Bool8_Bool8_Bool8x2;
+std::array<Variable*> Bool8x4_ctor3_Bool8_Bool8_Bool8x2_args = { &Bool8x4_ctor3_arg0, &Bool8x4_ctor3_arg1, &Bool8x4_ctor3_arg2 };
+Variable Bool8x4_ctor4_arg0;
+Variable Bool8x4_ctor4_arg1;
+Function Bool8x4_ctor4_Bool8x3_Bool8;
+std::array<Variable*> Bool8x4_ctor4_Bool8x3_Bool8_args = { &Bool8x4_ctor4_arg0, &Bool8x4_ctor4_arg1 };
+Variable Bool8x4_ctor5_arg0;
+Variable Bool8x4_ctor5_arg1;
+Function Bool8x4_ctor5_Bool8_Bool8x3;
+std::array<Variable*> Bool8x4_ctor5_Bool8_Bool8x3_args = { &Bool8x4_ctor5_arg0, &Bool8x4_ctor5_arg1 };
+Variable Bool8x4_operator_index_Int32_arg0;
+Function Bool8x4_operator_index_Int32;
+std::array<Variable*> Bool8x4_operator_index_Int32_args = { &Bool8x4_operator_index_Int32_arg0 };
+Variable Bool8x4_operator_index_UInt32_arg0;
+Function Bool8x4_operator_index_UInt32;
+std::array<Variable*> Bool8x4_operator_index_UInt32_args = { &Bool8x4_operator_index_UInt32_arg0 };
+Variable Bool8x4_operator_index_Int16_arg0;
+Function Bool8x4_operator_index_Int16;
+std::array<Variable*> Bool8x4_operator_index_Int16_args = { &Bool8x4_operator_index_Int16_arg0 };
+Variable Bool8x4_operator_index_UInt16_arg0;
+Function Bool8x4_operator_index_UInt16;
+std::array<Variable*> Bool8x4_operator_index_UInt16_args = { &Bool8x4_operator_index_UInt16_arg0 };
+Variable Bool8x4_operator_oror_Bool8x4_arg0;
+Function Bool8x4_operator_oror_Bool8x4;
+std::array<Variable*> Bool8x4_operator_oror_Bool8x4_args = { &Bool8x4_operator_oror_Bool8x4_arg0 };
+Variable Bool8x4_operator_andand_Bool8x4_arg0;
+Function Bool8x4_operator_andand_Bool8x4;
+std::array<Variable*> Bool8x4_operator_andand_Bool8x4_args = { &Bool8x4_operator_andand_Bool8x4_arg0 };
+Variable Bool8x4_operator_eq_Bool8x4_arg0;
+Function Bool8x4_operator_eq_Bool8x4;
+std::array<Variable*> Bool8x4_operator_eq_Bool8x4_args = { &Bool8x4_operator_eq_Bool8x4_arg0 };
+Variable Bool8x4_operator_neq_Bool8x4_arg0;
+Function Bool8x4_operator_neq_Bool8x4;
+std::array<Variable*> Bool8x4_operator_neq_Bool8x4_args = { &Bool8x4_operator_neq_Bool8x4_arg0 };
+Variable Float16x4_convert_Float32x4_arg0;
+Function Float16x4_convert_Float32x4;
+std::array<Variable*> Float16x4_convert_Float32x4_args = { &Float16x4_convert_Float32x4_arg0 };
+Variable Float16x4_splat_Float32_arg0;
+Function Float16x4_splat_Float32;
+std::array<Variable*> Float16x4_splat_Float32_args = { &Float16x4_splat_Float32_arg0 };
+Variable Float16x4_convert_UInt32x4_arg0;
+Function Float16x4_convert_UInt32x4;
+std::array<Variable*> Float16x4_convert_UInt32x4_args = { &Float16x4_convert_UInt32x4_arg0 };
+Variable Float16x4_splat_UInt32_arg0;
+Function Float16x4_splat_UInt32;
+std::array<Variable*> Float16x4_splat_UInt32_args = { &Float16x4_splat_UInt32_arg0 };
+Variable Float16x4_convert_Int32x4_arg0;
+Function Float16x4_convert_Int32x4;
+std::array<Variable*> Float16x4_convert_Int32x4_args = { &Float16x4_convert_Int32x4_arg0 };
+Variable Float16x4_splat_Int32_arg0;
+Function Float16x4_splat_Int32;
+std::array<Variable*> Float16x4_splat_Int32_args = { &Float16x4_splat_Int32_arg0 };
+Variable Float16x4_convert_Float16x4_arg0;
+Function Float16x4_convert_Float16x4;
+std::array<Variable*> Float16x4_convert_Float16x4_args = { &Float16x4_convert_Float16x4_arg0 };
+Variable Float16x4_splat_Float16_arg0;
+Function Float16x4_splat_Float16;
+std::array<Variable*> Float16x4_splat_Float16_args = { &Float16x4_splat_Float16_arg0 };
+Variable Float16x4_convert_UInt16x4_arg0;
+Function Float16x4_convert_UInt16x4;
+std::array<Variable*> Float16x4_convert_UInt16x4_args = { &Float16x4_convert_UInt16x4_arg0 };
+Variable Float16x4_splat_UInt16_arg0;
+Function Float16x4_splat_UInt16;
+std::array<Variable*> Float16x4_splat_UInt16_args = { &Float16x4_splat_UInt16_arg0 };
+Variable Float16x4_convert_Int16x4_arg0;
+Function Float16x4_convert_Int16x4;
+std::array<Variable*> Float16x4_convert_Int16x4_args = { &Float16x4_convert_Int16x4_arg0 };
+Variable Float16x4_splat_Int16_arg0;
+Function Float16x4_splat_Int16;
+std::array<Variable*> Float16x4_splat_Int16_args = { &Float16x4_splat_Int16_arg0 };
+Variable Float16x4_ctor0_arg0;
+Variable Float16x4_ctor0_arg1;
+Variable Float16x4_ctor0_arg2;
+Variable Float16x4_ctor0_arg3;
+Function Float16x4_ctor0_Float16_Float16_Float16_Float16;
+std::array<Variable*> Float16x4_ctor0_Float16_Float16_Float16_Float16_args = { &Float16x4_ctor0_arg0, &Float16x4_ctor0_arg1, &Float16x4_ctor0_arg2, &Float16x4_ctor0_arg3 };
+Variable Float16x4_ctor1_arg0;
+Variable Float16x4_ctor1_arg1;
+Variable Float16x4_ctor1_arg2;
+Function Float16x4_ctor1_Float16x2_Float16_Float16;
+std::array<Variable*> Float16x4_ctor1_Float16x2_Float16_Float16_args = { &Float16x4_ctor1_arg0, &Float16x4_ctor1_arg1, &Float16x4_ctor1_arg2 };
+Variable Float16x4_ctor2_arg0;
+Variable Float16x4_ctor2_arg1;
+Variable Float16x4_ctor2_arg2;
+Function Float16x4_ctor2_Float16_Float16x2_Float16;
+std::array<Variable*> Float16x4_ctor2_Float16_Float16x2_Float16_args = { &Float16x4_ctor2_arg0, &Float16x4_ctor2_arg1, &Float16x4_ctor2_arg2 };
+Variable Float16x4_ctor3_arg0;
+Variable Float16x4_ctor3_arg1;
+Variable Float16x4_ctor3_arg2;
+Function Float16x4_ctor3_Float16_Float16_Float16x2;
+std::array<Variable*> Float16x4_ctor3_Float16_Float16_Float16x2_args = { &Float16x4_ctor3_arg0, &Float16x4_ctor3_arg1, &Float16x4_ctor3_arg2 };
+Variable Float16x4_ctor4_arg0;
+Variable Float16x4_ctor4_arg1;
+Function Float16x4_ctor4_Float16x3_Float16;
+std::array<Variable*> Float16x4_ctor4_Float16x3_Float16_args = { &Float16x4_ctor4_arg0, &Float16x4_ctor4_arg1 };
+Variable Float16x4_ctor5_arg0;
+Variable Float16x4_ctor5_arg1;
+Function Float16x4_ctor5_Float16_Float16x3;
+std::array<Variable*> Float16x4_ctor5_Float16_Float16x3_args = { &Float16x4_ctor5_arg0, &Float16x4_ctor5_arg1 };
+Variable Float16x4_operator_index_Int32_arg0;
+Function Float16x4_operator_index_Int32;
+std::array<Variable*> Float16x4_operator_index_Int32_args = { &Float16x4_operator_index_Int32_arg0 };
+Variable Float16x4_operator_index_UInt32_arg0;
+Function Float16x4_operator_index_UInt32;
+std::array<Variable*> Float16x4_operator_index_UInt32_args = { &Float16x4_operator_index_UInt32_arg0 };
+Variable Float16x4_operator_index_Int16_arg0;
+Function Float16x4_operator_index_Int16;
+std::array<Variable*> Float16x4_operator_index_Int16_args = { &Float16x4_operator_index_Int16_arg0 };
+Variable Float16x4_operator_index_UInt16_arg0;
+Function Float16x4_operator_index_UInt16;
+std::array<Variable*> Float16x4_operator_index_UInt16_args = { &Float16x4_operator_index_UInt16_arg0 };
+Variable Float16x4_operator_add_Float16x4_arg0;
+Function Float16x4_operator_add_Float16x4;
+std::array<Variable*> Float16x4_operator_add_Float16x4_args = { &Float16x4_operator_add_Float16x4_arg0 };
+Variable Float16x4_operator_sub_Float16x4_arg0;
+Function Float16x4_operator_sub_Float16x4;
+std::array<Variable*> Float16x4_operator_sub_Float16x4_args = { &Float16x4_operator_sub_Float16x4_arg0 };
+Variable Float16x4_operator_mul_Float16x4_arg0;
+Function Float16x4_operator_mul_Float16x4;
+std::array<Variable*> Float16x4_operator_mul_Float16x4_args = { &Float16x4_operator_mul_Float16x4_arg0 };
+Variable Float16x4_operator_div_Float16x4_arg0;
+Function Float16x4_operator_div_Float16x4;
+std::array<Variable*> Float16x4_operator_div_Float16x4_args = { &Float16x4_operator_div_Float16x4_arg0 };
+Variable Float16x4_operator_mod_Float16x4_arg0;
+Function Float16x4_operator_mod_Float16x4;
+std::array<Variable*> Float16x4_operator_mod_Float16x4_args = { &Float16x4_operator_mod_Float16x4_arg0 };
+Variable Float16x4_operator_addasg_Float16x4_arg0;
+Function Float16x4_operator_addasg_Float16x4;
+std::array<Variable*> Float16x4_operator_addasg_Float16x4_args = { &Float16x4_operator_addasg_Float16x4_arg0 };
+Variable Float16x4_operator_subasg_Float16x4_arg0;
+Function Float16x4_operator_subasg_Float16x4;
+std::array<Variable*> Float16x4_operator_subasg_Float16x4_args = { &Float16x4_operator_subasg_Float16x4_arg0 };
+Variable Float16x4_operator_mulasg_Float16x4_arg0;
+Function Float16x4_operator_mulasg_Float16x4;
+std::array<Variable*> Float16x4_operator_mulasg_Float16x4_args = { &Float16x4_operator_mulasg_Float16x4_arg0 };
+Variable Float16x4_operator_divasg_Float16x4_arg0;
+Function Float16x4_operator_divasg_Float16x4;
+std::array<Variable*> Float16x4_operator_divasg_Float16x4_args = { &Float16x4_operator_divasg_Float16x4_arg0 };
+Variable Float16x4_operator_lt_Float16x4_arg0;
+Function Float16x4_operator_lt_Float16x4;
+std::array<Variable*> Float16x4_operator_lt_Float16x4_args = { &Float16x4_operator_lt_Float16x4_arg0 };
+Variable Float16x4_operator_lte_Float16x4_arg0;
+Function Float16x4_operator_lte_Float16x4;
+std::array<Variable*> Float16x4_operator_lte_Float16x4_args = { &Float16x4_operator_lte_Float16x4_arg0 };
+Variable Float16x4_operator_gt_Float16x4_arg0;
+Function Float16x4_operator_gt_Float16x4;
+std::array<Variable*> Float16x4_operator_gt_Float16x4_args = { &Float16x4_operator_gt_Float16x4_arg0 };
+Variable Float16x4_operator_gte_Float16x4_arg0;
+Function Float16x4_operator_gte_Float16x4;
+std::array<Variable*> Float16x4_operator_gte_Float16x4_args = { &Float16x4_operator_gte_Float16x4_arg0 };
+Variable Float16x4_operator_eq_Float16x4_arg0;
+Function Float16x4_operator_eq_Float16x4;
+std::array<Variable*> Float16x4_operator_eq_Float16x4_args = { &Float16x4_operator_eq_Float16x4_arg0 };
+Variable Float16x4_operator_neq_Float16x4_arg0;
+Function Float16x4_operator_neq_Float16x4;
+std::array<Variable*> Float16x4_operator_neq_Float16x4_args = { &Float16x4_operator_neq_Float16x4_arg0 };
+Variable Float16x4_operator_scale_Float16x4_Float32_arg0;
+Function Float16x4_operator_scale_Float16x4_Float32;
+std::array<Variable*> Float16x4_operator_scale_Float16x4_Float32_args = { &Float16x4_operator_scale_Float16x4_Float32_arg0 };
+Variable Float16x4_operator_scale_Float16x4_Float16_arg0;
+Function Float16x4_operator_scale_Float16x4_Float16;
+std::array<Variable*> Float16x4_operator_scale_Float16x4_Float16_args = { &Float16x4_operator_scale_Float16x4_Float16_arg0 };
+Variable Float16x4_operator_scale_Float16x4_UInt32_arg0;
+Function Float16x4_operator_scale_Float16x4_UInt32;
+std::array<Variable*> Float16x4_operator_scale_Float16x4_UInt32_args = { &Float16x4_operator_scale_Float16x4_UInt32_arg0 };
+Variable Float16x4_operator_scale_Float16x4_UInt16_arg0;
+Function Float16x4_operator_scale_Float16x4_UInt16;
+std::array<Variable*> Float16x4_operator_scale_Float16x4_UInt16_args = { &Float16x4_operator_scale_Float16x4_UInt16_arg0 };
+Variable Float16x4_operator_scale_Float16x4_Int32_arg0;
+Function Float16x4_operator_scale_Float16x4_Int32;
+std::array<Variable*> Float16x4_operator_scale_Float16x4_Int32_args = { &Float16x4_operator_scale_Float16x4_Int32_arg0 };
+Variable Float16x4_operator_scale_Float16x4_Int16_arg0;
+Function Float16x4_operator_scale_Float16x4_Int16;
+std::array<Variable*> Float16x4_operator_scale_Float16x4_Int16_args = { &Float16x4_operator_scale_Float16x4_Int16_arg0 };
+Variable Float16x4_operator_mul_Float32x4x2_arg0;
+Function Float16x4_operator_mul_Float32x4x2;
+std::array<Variable*> Float16x4_operator_mul_Float32x4x2_args = { &Float16x4_operator_mul_Float32x4x2_arg0 };
+Variable Float16x4_operator_mul_Float32x4x3_arg0;
+Function Float16x4_operator_mul_Float32x4x3;
+std::array<Variable*> Float16x4_operator_mul_Float32x4x3_args = { &Float16x4_operator_mul_Float32x4x3_arg0 };
+Variable Float16x4_operator_mul_Float32x4x4_arg0;
+Function Float16x4_operator_mul_Float32x4x4;
+std::array<Variable*> Float16x4_operator_mul_Float32x4x4_args = { &Float16x4_operator_mul_Float32x4x4_arg0 };
+Variable UInt16x4_convert_Float32x4_arg0;
+Function UInt16x4_convert_Float32x4;
+std::array<Variable*> UInt16x4_convert_Float32x4_args = { &UInt16x4_convert_Float32x4_arg0 };
+Variable UInt16x4_splat_Float32_arg0;
+Function UInt16x4_splat_Float32;
+std::array<Variable*> UInt16x4_splat_Float32_args = { &UInt16x4_splat_Float32_arg0 };
+Variable UInt16x4_convert_UInt32x4_arg0;
+Function UInt16x4_convert_UInt32x4;
+std::array<Variable*> UInt16x4_convert_UInt32x4_args = { &UInt16x4_convert_UInt32x4_arg0 };
+Variable UInt16x4_splat_UInt32_arg0;
+Function UInt16x4_splat_UInt32;
+std::array<Variable*> UInt16x4_splat_UInt32_args = { &UInt16x4_splat_UInt32_arg0 };
+Variable UInt16x4_convert_Int32x4_arg0;
+Function UInt16x4_convert_Int32x4;
+std::array<Variable*> UInt16x4_convert_Int32x4_args = { &UInt16x4_convert_Int32x4_arg0 };
+Variable UInt16x4_splat_Int32_arg0;
+Function UInt16x4_splat_Int32;
+std::array<Variable*> UInt16x4_splat_Int32_args = { &UInt16x4_splat_Int32_arg0 };
+Variable UInt16x4_convert_Float16x4_arg0;
+Function UInt16x4_convert_Float16x4;
+std::array<Variable*> UInt16x4_convert_Float16x4_args = { &UInt16x4_convert_Float16x4_arg0 };
+Variable UInt16x4_splat_Float16_arg0;
+Function UInt16x4_splat_Float16;
+std::array<Variable*> UInt16x4_splat_Float16_args = { &UInt16x4_splat_Float16_arg0 };
+Variable UInt16x4_convert_UInt16x4_arg0;
+Function UInt16x4_convert_UInt16x4;
+std::array<Variable*> UInt16x4_convert_UInt16x4_args = { &UInt16x4_convert_UInt16x4_arg0 };
+Variable UInt16x4_splat_UInt16_arg0;
+Function UInt16x4_splat_UInt16;
+std::array<Variable*> UInt16x4_splat_UInt16_args = { &UInt16x4_splat_UInt16_arg0 };
+Variable UInt16x4_convert_Int16x4_arg0;
+Function UInt16x4_convert_Int16x4;
+std::array<Variable*> UInt16x4_convert_Int16x4_args = { &UInt16x4_convert_Int16x4_arg0 };
+Variable UInt16x4_splat_Int16_arg0;
+Function UInt16x4_splat_Int16;
+std::array<Variable*> UInt16x4_splat_Int16_args = { &UInt16x4_splat_Int16_arg0 };
+Variable UInt16x4_ctor0_arg0;
+Variable UInt16x4_ctor0_arg1;
+Variable UInt16x4_ctor0_arg2;
+Variable UInt16x4_ctor0_arg3;
+Function UInt16x4_ctor0_UInt16_UInt16_UInt16_UInt16;
+std::array<Variable*> UInt16x4_ctor0_UInt16_UInt16_UInt16_UInt16_args = { &UInt16x4_ctor0_arg0, &UInt16x4_ctor0_arg1, &UInt16x4_ctor0_arg2, &UInt16x4_ctor0_arg3 };
+Variable UInt16x4_ctor1_arg0;
+Variable UInt16x4_ctor1_arg1;
+Variable UInt16x4_ctor1_arg2;
+Function UInt16x4_ctor1_UInt16x2_UInt16_UInt16;
+std::array<Variable*> UInt16x4_ctor1_UInt16x2_UInt16_UInt16_args = { &UInt16x4_ctor1_arg0, &UInt16x4_ctor1_arg1, &UInt16x4_ctor1_arg2 };
+Variable UInt16x4_ctor2_arg0;
+Variable UInt16x4_ctor2_arg1;
+Variable UInt16x4_ctor2_arg2;
+Function UInt16x4_ctor2_UInt16_UInt16x2_UInt16;
+std::array<Variable*> UInt16x4_ctor2_UInt16_UInt16x2_UInt16_args = { &UInt16x4_ctor2_arg0, &UInt16x4_ctor2_arg1, &UInt16x4_ctor2_arg2 };
+Variable UInt16x4_ctor3_arg0;
+Variable UInt16x4_ctor3_arg1;
+Variable UInt16x4_ctor3_arg2;
+Function UInt16x4_ctor3_UInt16_UInt16_UInt16x2;
+std::array<Variable*> UInt16x4_ctor3_UInt16_UInt16_UInt16x2_args = { &UInt16x4_ctor3_arg0, &UInt16x4_ctor3_arg1, &UInt16x4_ctor3_arg2 };
+Variable UInt16x4_ctor4_arg0;
+Variable UInt16x4_ctor4_arg1;
+Function UInt16x4_ctor4_UInt16x3_UInt16;
+std::array<Variable*> UInt16x4_ctor4_UInt16x3_UInt16_args = { &UInt16x4_ctor4_arg0, &UInt16x4_ctor4_arg1 };
+Variable UInt16x4_ctor5_arg0;
+Variable UInt16x4_ctor5_arg1;
+Function UInt16x4_ctor5_UInt16_UInt16x3;
+std::array<Variable*> UInt16x4_ctor5_UInt16_UInt16x3_args = { &UInt16x4_ctor5_arg0, &UInt16x4_ctor5_arg1 };
+Variable UInt16x4_operator_index_Int32_arg0;
+Function UInt16x4_operator_index_Int32;
+std::array<Variable*> UInt16x4_operator_index_Int32_args = { &UInt16x4_operator_index_Int32_arg0 };
+Variable UInt16x4_operator_index_UInt32_arg0;
+Function UInt16x4_operator_index_UInt32;
+std::array<Variable*> UInt16x4_operator_index_UInt32_args = { &UInt16x4_operator_index_UInt32_arg0 };
+Variable UInt16x4_operator_index_Int16_arg0;
+Function UInt16x4_operator_index_Int16;
+std::array<Variable*> UInt16x4_operator_index_Int16_args = { &UInt16x4_operator_index_Int16_arg0 };
+Variable UInt16x4_operator_index_UInt16_arg0;
+Function UInt16x4_operator_index_UInt16;
+std::array<Variable*> UInt16x4_operator_index_UInt16_args = { &UInt16x4_operator_index_UInt16_arg0 };
+Variable UInt16x4_operator_add_UInt16x4_arg0;
+Function UInt16x4_operator_add_UInt16x4;
+std::array<Variable*> UInt16x4_operator_add_UInt16x4_args = { &UInt16x4_operator_add_UInt16x4_arg0 };
+Variable UInt16x4_operator_sub_UInt16x4_arg0;
+Function UInt16x4_operator_sub_UInt16x4;
+std::array<Variable*> UInt16x4_operator_sub_UInt16x4_args = { &UInt16x4_operator_sub_UInt16x4_arg0 };
+Variable UInt16x4_operator_mul_UInt16x4_arg0;
+Function UInt16x4_operator_mul_UInt16x4;
+std::array<Variable*> UInt16x4_operator_mul_UInt16x4_args = { &UInt16x4_operator_mul_UInt16x4_arg0 };
+Variable UInt16x4_operator_div_UInt16x4_arg0;
+Function UInt16x4_operator_div_UInt16x4;
+std::array<Variable*> UInt16x4_operator_div_UInt16x4_args = { &UInt16x4_operator_div_UInt16x4_arg0 };
+Variable UInt16x4_operator_mod_UInt16x4_arg0;
+Function UInt16x4_operator_mod_UInt16x4;
+std::array<Variable*> UInt16x4_operator_mod_UInt16x4_args = { &UInt16x4_operator_mod_UInt16x4_arg0 };
+Variable UInt16x4_operator_addasg_UInt16x4_arg0;
+Function UInt16x4_operator_addasg_UInt16x4;
+std::array<Variable*> UInt16x4_operator_addasg_UInt16x4_args = { &UInt16x4_operator_addasg_UInt16x4_arg0 };
+Variable UInt16x4_operator_subasg_UInt16x4_arg0;
+Function UInt16x4_operator_subasg_UInt16x4;
+std::array<Variable*> UInt16x4_operator_subasg_UInt16x4_args = { &UInt16x4_operator_subasg_UInt16x4_arg0 };
+Variable UInt16x4_operator_mulasg_UInt16x4_arg0;
+Function UInt16x4_operator_mulasg_UInt16x4;
+std::array<Variable*> UInt16x4_operator_mulasg_UInt16x4_args = { &UInt16x4_operator_mulasg_UInt16x4_arg0 };
+Variable UInt16x4_operator_divasg_UInt16x4_arg0;
+Function UInt16x4_operator_divasg_UInt16x4;
+std::array<Variable*> UInt16x4_operator_divasg_UInt16x4_args = { &UInt16x4_operator_divasg_UInt16x4_arg0 };
+Variable UInt16x4_operator_lt_UInt16x4_arg0;
+Function UInt16x4_operator_lt_UInt16x4;
+std::array<Variable*> UInt16x4_operator_lt_UInt16x4_args = { &UInt16x4_operator_lt_UInt16x4_arg0 };
+Variable UInt16x4_operator_lte_UInt16x4_arg0;
+Function UInt16x4_operator_lte_UInt16x4;
+std::array<Variable*> UInt16x4_operator_lte_UInt16x4_args = { &UInt16x4_operator_lte_UInt16x4_arg0 };
+Variable UInt16x4_operator_gt_UInt16x4_arg0;
+Function UInt16x4_operator_gt_UInt16x4;
+std::array<Variable*> UInt16x4_operator_gt_UInt16x4_args = { &UInt16x4_operator_gt_UInt16x4_arg0 };
+Variable UInt16x4_operator_gte_UInt16x4_arg0;
+Function UInt16x4_operator_gte_UInt16x4;
+std::array<Variable*> UInt16x4_operator_gte_UInt16x4_args = { &UInt16x4_operator_gte_UInt16x4_arg0 };
+Variable UInt16x4_operator_eq_UInt16x4_arg0;
+Function UInt16x4_operator_eq_UInt16x4;
+std::array<Variable*> UInt16x4_operator_eq_UInt16x4_args = { &UInt16x4_operator_eq_UInt16x4_arg0 };
+Variable UInt16x4_operator_neq_UInt16x4_arg0;
+Function UInt16x4_operator_neq_UInt16x4;
+std::array<Variable*> UInt16x4_operator_neq_UInt16x4_args = { &UInt16x4_operator_neq_UInt16x4_arg0 };
+Variable UInt16x4_operator_scale_UInt16x4_Float32_arg0;
+Function UInt16x4_operator_scale_UInt16x4_Float32;
+std::array<Variable*> UInt16x4_operator_scale_UInt16x4_Float32_args = { &UInt16x4_operator_scale_UInt16x4_Float32_arg0 };
+Variable UInt16x4_operator_scale_UInt16x4_Float16_arg0;
+Function UInt16x4_operator_scale_UInt16x4_Float16;
+std::array<Variable*> UInt16x4_operator_scale_UInt16x4_Float16_args = { &UInt16x4_operator_scale_UInt16x4_Float16_arg0 };
+Variable UInt16x4_operator_scale_UInt16x4_UInt32_arg0;
+Function UInt16x4_operator_scale_UInt16x4_UInt32;
+std::array<Variable*> UInt16x4_operator_scale_UInt16x4_UInt32_args = { &UInt16x4_operator_scale_UInt16x4_UInt32_arg0 };
+Variable UInt16x4_operator_scale_UInt16x4_UInt16_arg0;
+Function UInt16x4_operator_scale_UInt16x4_UInt16;
+std::array<Variable*> UInt16x4_operator_scale_UInt16x4_UInt16_args = { &UInt16x4_operator_scale_UInt16x4_UInt16_arg0 };
+Variable UInt16x4_operator_scale_UInt16x4_Int32_arg0;
+Function UInt16x4_operator_scale_UInt16x4_Int32;
+std::array<Variable*> UInt16x4_operator_scale_UInt16x4_Int32_args = { &UInt16x4_operator_scale_UInt16x4_Int32_arg0 };
+Variable UInt16x4_operator_scale_UInt16x4_Int16_arg0;
+Function UInt16x4_operator_scale_UInt16x4_Int16;
+std::array<Variable*> UInt16x4_operator_scale_UInt16x4_Int16_args = { &UInt16x4_operator_scale_UInt16x4_Int16_arg0 };
+Variable UInt16x4_operator_or_UInt16x4_arg0;
+Function UInt16x4_operator_or_UInt16x4;
+std::array<Variable*> UInt16x4_operator_or_UInt16x4_args = { &UInt16x4_operator_or_UInt16x4_arg0 };
+Variable UInt16x4_operator_and_UInt16x4_arg0;
+Function UInt16x4_operator_and_UInt16x4;
+std::array<Variable*> UInt16x4_operator_and_UInt16x4_args = { &UInt16x4_operator_and_UInt16x4_arg0 };
+Variable UInt16x4_operator_xor_UInt16x4_arg0;
+Function UInt16x4_operator_xor_UInt16x4;
+std::array<Variable*> UInt16x4_operator_xor_UInt16x4_args = { &UInt16x4_operator_xor_UInt16x4_arg0 };
+Variable UInt16x4_operator_lsh_UInt16x4_arg0;
+Function UInt16x4_operator_lsh_UInt16x4;
+std::array<Variable*> UInt16x4_operator_lsh_UInt16x4_args = { &UInt16x4_operator_lsh_UInt16x4_arg0 };
+Variable UInt16x4_operator_rsh_UInt16x4_arg0;
+Function UInt16x4_operator_rsh_UInt16x4;
+std::array<Variable*> UInt16x4_operator_rsh_UInt16x4_args = { &UInt16x4_operator_rsh_UInt16x4_arg0 };
+Variable UInt16x4_operator_orasg_UInt16x4_arg0;
+Function UInt16x4_operator_orasg_UInt16x4;
+std::array<Variable*> UInt16x4_operator_orasg_UInt16x4_args = { &UInt16x4_operator_orasg_UInt16x4_arg0 };
+Variable UInt16x4_operator_andasg_UInt16x4_arg0;
+Function UInt16x4_operator_andasg_UInt16x4;
+std::array<Variable*> UInt16x4_operator_andasg_UInt16x4_args = { &UInt16x4_operator_andasg_UInt16x4_arg0 };
+Variable UInt16x4_operator_xorasg_UInt16x4_arg0;
+Function UInt16x4_operator_xorasg_UInt16x4;
+std::array<Variable*> UInt16x4_operator_xorasg_UInt16x4_args = { &UInt16x4_operator_xorasg_UInt16x4_arg0 };
+Variable UInt16x4_operator_lshasg_UInt16x4_arg0;
+Function UInt16x4_operator_lshasg_UInt16x4;
+std::array<Variable*> UInt16x4_operator_lshasg_UInt16x4_args = { &UInt16x4_operator_lshasg_UInt16x4_arg0 };
+Variable UInt16x4_operator_rhsasg_UInt16x4_arg0;
+Function UInt16x4_operator_rhsasg_UInt16x4;
+std::array<Variable*> UInt16x4_operator_rhsasg_UInt16x4_args = { &UInt16x4_operator_rhsasg_UInt16x4_arg0 };
+Variable Int16x4_convert_Float32x4_arg0;
+Function Int16x4_convert_Float32x4;
+std::array<Variable*> Int16x4_convert_Float32x4_args = { &Int16x4_convert_Float32x4_arg0 };
+Variable Int16x4_splat_Float32_arg0;
+Function Int16x4_splat_Float32;
+std::array<Variable*> Int16x4_splat_Float32_args = { &Int16x4_splat_Float32_arg0 };
+Variable Int16x4_convert_UInt32x4_arg0;
+Function Int16x4_convert_UInt32x4;
+std::array<Variable*> Int16x4_convert_UInt32x4_args = { &Int16x4_convert_UInt32x4_arg0 };
+Variable Int16x4_splat_UInt32_arg0;
+Function Int16x4_splat_UInt32;
+std::array<Variable*> Int16x4_splat_UInt32_args = { &Int16x4_splat_UInt32_arg0 };
+Variable Int16x4_convert_Int32x4_arg0;
+Function Int16x4_convert_Int32x4;
+std::array<Variable*> Int16x4_convert_Int32x4_args = { &Int16x4_convert_Int32x4_arg0 };
+Variable Int16x4_splat_Int32_arg0;
+Function Int16x4_splat_Int32;
+std::array<Variable*> Int16x4_splat_Int32_args = { &Int16x4_splat_Int32_arg0 };
+Variable Int16x4_convert_Float16x4_arg0;
+Function Int16x4_convert_Float16x4;
+std::array<Variable*> Int16x4_convert_Float16x4_args = { &Int16x4_convert_Float16x4_arg0 };
+Variable Int16x4_splat_Float16_arg0;
+Function Int16x4_splat_Float16;
+std::array<Variable*> Int16x4_splat_Float16_args = { &Int16x4_splat_Float16_arg0 };
+Variable Int16x4_convert_UInt16x4_arg0;
+Function Int16x4_convert_UInt16x4;
+std::array<Variable*> Int16x4_convert_UInt16x4_args = { &Int16x4_convert_UInt16x4_arg0 };
+Variable Int16x4_splat_UInt16_arg0;
+Function Int16x4_splat_UInt16;
+std::array<Variable*> Int16x4_splat_UInt16_args = { &Int16x4_splat_UInt16_arg0 };
+Variable Int16x4_convert_Int16x4_arg0;
+Function Int16x4_convert_Int16x4;
+std::array<Variable*> Int16x4_convert_Int16x4_args = { &Int16x4_convert_Int16x4_arg0 };
+Variable Int16x4_splat_Int16_arg0;
+Function Int16x4_splat_Int16;
+std::array<Variable*> Int16x4_splat_Int16_args = { &Int16x4_splat_Int16_arg0 };
+Variable Int16x4_ctor0_arg0;
+Variable Int16x4_ctor0_arg1;
+Variable Int16x4_ctor0_arg2;
+Variable Int16x4_ctor0_arg3;
+Function Int16x4_ctor0_Int16_Int16_Int16_Int16;
+std::array<Variable*> Int16x4_ctor0_Int16_Int16_Int16_Int16_args = { &Int16x4_ctor0_arg0, &Int16x4_ctor0_arg1, &Int16x4_ctor0_arg2, &Int16x4_ctor0_arg3 };
+Variable Int16x4_ctor1_arg0;
+Variable Int16x4_ctor1_arg1;
+Variable Int16x4_ctor1_arg2;
+Function Int16x4_ctor1_Int16x2_Int16_Int16;
+std::array<Variable*> Int16x4_ctor1_Int16x2_Int16_Int16_args = { &Int16x4_ctor1_arg0, &Int16x4_ctor1_arg1, &Int16x4_ctor1_arg2 };
+Variable Int16x4_ctor2_arg0;
+Variable Int16x4_ctor2_arg1;
+Variable Int16x4_ctor2_arg2;
+Function Int16x4_ctor2_Int16_Int16x2_Int16;
+std::array<Variable*> Int16x4_ctor2_Int16_Int16x2_Int16_args = { &Int16x4_ctor2_arg0, &Int16x4_ctor2_arg1, &Int16x4_ctor2_arg2 };
+Variable Int16x4_ctor3_arg0;
+Variable Int16x4_ctor3_arg1;
+Variable Int16x4_ctor3_arg2;
+Function Int16x4_ctor3_Int16_Int16_Int16x2;
+std::array<Variable*> Int16x4_ctor3_Int16_Int16_Int16x2_args = { &Int16x4_ctor3_arg0, &Int16x4_ctor3_arg1, &Int16x4_ctor3_arg2 };
+Variable Int16x4_ctor4_arg0;
+Variable Int16x4_ctor4_arg1;
+Function Int16x4_ctor4_Int16x3_Int16;
+std::array<Variable*> Int16x4_ctor4_Int16x3_Int16_args = { &Int16x4_ctor4_arg0, &Int16x4_ctor4_arg1 };
+Variable Int16x4_ctor5_arg0;
+Variable Int16x4_ctor5_arg1;
+Function Int16x4_ctor5_Int16_Int16x3;
+std::array<Variable*> Int16x4_ctor5_Int16_Int16x3_args = { &Int16x4_ctor5_arg0, &Int16x4_ctor5_arg1 };
+Variable Int16x4_operator_index_Int32_arg0;
+Function Int16x4_operator_index_Int32;
+std::array<Variable*> Int16x4_operator_index_Int32_args = { &Int16x4_operator_index_Int32_arg0 };
+Variable Int16x4_operator_index_UInt32_arg0;
+Function Int16x4_operator_index_UInt32;
+std::array<Variable*> Int16x4_operator_index_UInt32_args = { &Int16x4_operator_index_UInt32_arg0 };
+Variable Int16x4_operator_index_Int16_arg0;
+Function Int16x4_operator_index_Int16;
+std::array<Variable*> Int16x4_operator_index_Int16_args = { &Int16x4_operator_index_Int16_arg0 };
+Variable Int16x4_operator_index_UInt16_arg0;
+Function Int16x4_operator_index_UInt16;
+std::array<Variable*> Int16x4_operator_index_UInt16_args = { &Int16x4_operator_index_UInt16_arg0 };
+Variable Int16x4_operator_add_Int16x4_arg0;
+Function Int16x4_operator_add_Int16x4;
+std::array<Variable*> Int16x4_operator_add_Int16x4_args = { &Int16x4_operator_add_Int16x4_arg0 };
+Variable Int16x4_operator_sub_Int16x4_arg0;
+Function Int16x4_operator_sub_Int16x4;
+std::array<Variable*> Int16x4_operator_sub_Int16x4_args = { &Int16x4_operator_sub_Int16x4_arg0 };
+Variable Int16x4_operator_mul_Int16x4_arg0;
+Function Int16x4_operator_mul_Int16x4;
+std::array<Variable*> Int16x4_operator_mul_Int16x4_args = { &Int16x4_operator_mul_Int16x4_arg0 };
+Variable Int16x4_operator_div_Int16x4_arg0;
+Function Int16x4_operator_div_Int16x4;
+std::array<Variable*> Int16x4_operator_div_Int16x4_args = { &Int16x4_operator_div_Int16x4_arg0 };
+Variable Int16x4_operator_mod_Int16x4_arg0;
+Function Int16x4_operator_mod_Int16x4;
+std::array<Variable*> Int16x4_operator_mod_Int16x4_args = { &Int16x4_operator_mod_Int16x4_arg0 };
+Variable Int16x4_operator_addasg_Int16x4_arg0;
+Function Int16x4_operator_addasg_Int16x4;
+std::array<Variable*> Int16x4_operator_addasg_Int16x4_args = { &Int16x4_operator_addasg_Int16x4_arg0 };
+Variable Int16x4_operator_subasg_Int16x4_arg0;
+Function Int16x4_operator_subasg_Int16x4;
+std::array<Variable*> Int16x4_operator_subasg_Int16x4_args = { &Int16x4_operator_subasg_Int16x4_arg0 };
+Variable Int16x4_operator_mulasg_Int16x4_arg0;
+Function Int16x4_operator_mulasg_Int16x4;
+std::array<Variable*> Int16x4_operator_mulasg_Int16x4_args = { &Int16x4_operator_mulasg_Int16x4_arg0 };
+Variable Int16x4_operator_divasg_Int16x4_arg0;
+Function Int16x4_operator_divasg_Int16x4;
+std::array<Variable*> Int16x4_operator_divasg_Int16x4_args = { &Int16x4_operator_divasg_Int16x4_arg0 };
+Variable Int16x4_operator_lt_Int16x4_arg0;
+Function Int16x4_operator_lt_Int16x4;
+std::array<Variable*> Int16x4_operator_lt_Int16x4_args = { &Int16x4_operator_lt_Int16x4_arg0 };
+Variable Int16x4_operator_lte_Int16x4_arg0;
+Function Int16x4_operator_lte_Int16x4;
+std::array<Variable*> Int16x4_operator_lte_Int16x4_args = { &Int16x4_operator_lte_Int16x4_arg0 };
+Variable Int16x4_operator_gt_Int16x4_arg0;
+Function Int16x4_operator_gt_Int16x4;
+std::array<Variable*> Int16x4_operator_gt_Int16x4_args = { &Int16x4_operator_gt_Int16x4_arg0 };
+Variable Int16x4_operator_gte_Int16x4_arg0;
+Function Int16x4_operator_gte_Int16x4;
+std::array<Variable*> Int16x4_operator_gte_Int16x4_args = { &Int16x4_operator_gte_Int16x4_arg0 };
+Variable Int16x4_operator_eq_Int16x4_arg0;
+Function Int16x4_operator_eq_Int16x4;
+std::array<Variable*> Int16x4_operator_eq_Int16x4_args = { &Int16x4_operator_eq_Int16x4_arg0 };
+Variable Int16x4_operator_neq_Int16x4_arg0;
+Function Int16x4_operator_neq_Int16x4;
+std::array<Variable*> Int16x4_operator_neq_Int16x4_args = { &Int16x4_operator_neq_Int16x4_arg0 };
+Variable Int16x4_operator_scale_Int16x4_Float32_arg0;
+Function Int16x4_operator_scale_Int16x4_Float32;
+std::array<Variable*> Int16x4_operator_scale_Int16x4_Float32_args = { &Int16x4_operator_scale_Int16x4_Float32_arg0 };
+Variable Int16x4_operator_scale_Int16x4_Float16_arg0;
+Function Int16x4_operator_scale_Int16x4_Float16;
+std::array<Variable*> Int16x4_operator_scale_Int16x4_Float16_args = { &Int16x4_operator_scale_Int16x4_Float16_arg0 };
+Variable Int16x4_operator_scale_Int16x4_UInt32_arg0;
+Function Int16x4_operator_scale_Int16x4_UInt32;
+std::array<Variable*> Int16x4_operator_scale_Int16x4_UInt32_args = { &Int16x4_operator_scale_Int16x4_UInt32_arg0 };
+Variable Int16x4_operator_scale_Int16x4_UInt16_arg0;
+Function Int16x4_operator_scale_Int16x4_UInt16;
+std::array<Variable*> Int16x4_operator_scale_Int16x4_UInt16_args = { &Int16x4_operator_scale_Int16x4_UInt16_arg0 };
+Variable Int16x4_operator_scale_Int16x4_Int32_arg0;
+Function Int16x4_operator_scale_Int16x4_Int32;
+std::array<Variable*> Int16x4_operator_scale_Int16x4_Int32_args = { &Int16x4_operator_scale_Int16x4_Int32_arg0 };
+Variable Int16x4_operator_scale_Int16x4_Int16_arg0;
+Function Int16x4_operator_scale_Int16x4_Int16;
+std::array<Variable*> Int16x4_operator_scale_Int16x4_Int16_args = { &Int16x4_operator_scale_Int16x4_Int16_arg0 };
+Variable Int16x4_operator_or_Int16x4_arg0;
+Function Int16x4_operator_or_Int16x4;
+std::array<Variable*> Int16x4_operator_or_Int16x4_args = { &Int16x4_operator_or_Int16x4_arg0 };
+Variable Int16x4_operator_and_Int16x4_arg0;
+Function Int16x4_operator_and_Int16x4;
+std::array<Variable*> Int16x4_operator_and_Int16x4_args = { &Int16x4_operator_and_Int16x4_arg0 };
+Variable Int16x4_operator_xor_Int16x4_arg0;
+Function Int16x4_operator_xor_Int16x4;
+std::array<Variable*> Int16x4_operator_xor_Int16x4_args = { &Int16x4_operator_xor_Int16x4_arg0 };
+Variable Int16x4_operator_lsh_Int16x4_arg0;
+Function Int16x4_operator_lsh_Int16x4;
+std::array<Variable*> Int16x4_operator_lsh_Int16x4_args = { &Int16x4_operator_lsh_Int16x4_arg0 };
+Variable Int16x4_operator_rsh_Int16x4_arg0;
+Function Int16x4_operator_rsh_Int16x4;
+std::array<Variable*> Int16x4_operator_rsh_Int16x4_args = { &Int16x4_operator_rsh_Int16x4_arg0 };
+Variable Int16x4_operator_orasg_Int16x4_arg0;
+Function Int16x4_operator_orasg_Int16x4;
+std::array<Variable*> Int16x4_operator_orasg_Int16x4_args = { &Int16x4_operator_orasg_Int16x4_arg0 };
+Variable Int16x4_operator_andasg_Int16x4_arg0;
+Function Int16x4_operator_andasg_Int16x4;
+std::array<Variable*> Int16x4_operator_andasg_Int16x4_args = { &Int16x4_operator_andasg_Int16x4_arg0 };
+Variable Int16x4_operator_xorasg_Int16x4_arg0;
+Function Int16x4_operator_xorasg_Int16x4;
+std::array<Variable*> Int16x4_operator_xorasg_Int16x4_args = { &Int16x4_operator_xorasg_Int16x4_arg0 };
+Variable Int16x4_operator_lshasg_Int16x4_arg0;
+Function Int16x4_operator_lshasg_Int16x4;
+std::array<Variable*> Int16x4_operator_lshasg_Int16x4_args = { &Int16x4_operator_lshasg_Int16x4_arg0 };
+Variable Int16x4_operator_rhsasg_Int16x4_arg0;
+Function Int16x4_operator_rhsasg_Int16x4;
+std::array<Variable*> Int16x4_operator_rhsasg_Int16x4_args = { &Int16x4_operator_rhsasg_Int16x4_arg0 };
+Variable Float32x2x2_Float32_2_ctor_arg0;
+Variable Float32x2x2_Float32_2_ctor_arg1;
+Function Float32x2x2_Float32_2_ctor;
+Function Float32x2x2_identity;
+Variable Float32x2x2_Float32_4_ctor_arg0;
+Variable Float32x2x2_Float32_4_ctor_arg1;
+Variable Float32x2x2_Float32_4_ctor_arg2;
+Variable Float32x2x2_Float32_4_ctor_arg3;
+Function Float32x2x2_Float32_4_ctor;
+Variable Float32x2x2_operator_index_Int32_arg0;
+Function Float32x2x2_operator_index_Int32;
+Variable Float32x2x2_operator_index_UInt32_arg0;
+Function Float32x2x2_operator_index_UInt32;
+Variable Float32x2x2_operator_index_Int16_arg0;
+Function Float32x2x2_operator_index_Int16;
+Variable Float32x2x2_operator_index_UInt16_arg0;
+Function Float32x2x2_operator_index_UInt16;
+Variable Float32x2x2_operator_add_Float32x2x2_arg0;
+Function Float32x2x2_operator_add_Float32x2x2;
+Variable Float32x2x2_operator_sub_Float32x2x2_arg0;
+Function Float32x2x2_operator_sub_Float32x2x2;
+Variable Float32x2x2_operator_mul_Float32x2x2_arg0;
+Function Float32x2x2_operator_mul_Float32x2x2;
+Variable Float32x2x2_operator_addasg_Float32x2x2_arg0;
+Function Float32x2x2_operator_addasg_Float32x2x2;
+Variable Float32x2x2_operator_subasg_Float32x2x2_arg0;
+Function Float32x2x2_operator_subasg_Float32x2x2;
+Variable Float32x2x2_operator_mulasg_Float32x2x2_arg0;
+Function Float32x2x2_operator_mulasg_Float32x2x2;
+Variable Float32x2x2_operator_scale_Float32_arg0;
+Function Float32x2x2_operator_scale_Float32;
+Variable Float32x2x3_Float32_3_ctor_arg0;
+Variable Float32x2x3_Float32_3_ctor_arg1;
+Function Float32x2x3_Float32_3_ctor;
+Function Float32x2x3_identity;
+Variable Float32x2x3_Float32_6_ctor_arg0;
+Variable Float32x2x3_Float32_6_ctor_arg1;
+Variable Float32x2x3_Float32_6_ctor_arg2;
+Variable Float32x2x3_Float32_6_ctor_arg3;
+Variable Float32x2x3_Float32_6_ctor_arg4;
+Variable Float32x2x3_Float32_6_ctor_arg5;
+Function Float32x2x3_Float32_6_ctor;
+Variable Float32x2x3_operator_index_Int32_arg0;
+Function Float32x2x3_operator_index_Int32;
+Variable Float32x2x3_operator_index_UInt32_arg0;
+Function Float32x2x3_operator_index_UInt32;
+Variable Float32x2x3_operator_index_Int16_arg0;
+Function Float32x2x3_operator_index_Int16;
+Variable Float32x2x3_operator_index_UInt16_arg0;
+Function Float32x2x3_operator_index_UInt16;
+Variable Float32x2x3_operator_add_Float32x2x3_arg0;
+Function Float32x2x3_operator_add_Float32x2x3;
+Variable Float32x2x3_operator_sub_Float32x2x3_arg0;
+Function Float32x2x3_operator_sub_Float32x2x3;
+Variable Float32x2x3_operator_mul_Float32x2x3_arg0;
+Function Float32x2x3_operator_mul_Float32x2x3;
+Variable Float32x2x3_operator_addasg_Float32x2x3_arg0;
+Function Float32x2x3_operator_addasg_Float32x2x3;
+Variable Float32x2x3_operator_subasg_Float32x2x3_arg0;
+Function Float32x2x3_operator_subasg_Float32x2x3;
+Variable Float32x2x3_operator_mulasg_Float32x2x3_arg0;
+Function Float32x2x3_operator_mulasg_Float32x2x3;
+Variable Float32x2x3_operator_scale_Float32_arg0;
+Function Float32x2x3_operator_scale_Float32;
+Variable Float32x2x4_Float32_4_ctor_arg0;
+Variable Float32x2x4_Float32_4_ctor_arg1;
+Function Float32x2x4_Float32_4_ctor;
+Function Float32x2x4_identity;
+Variable Float32x2x4_Float32_8_ctor_arg0;
+Variable Float32x2x4_Float32_8_ctor_arg1;
+Variable Float32x2x4_Float32_8_ctor_arg2;
+Variable Float32x2x4_Float32_8_ctor_arg3;
+Variable Float32x2x4_Float32_8_ctor_arg4;
+Variable Float32x2x4_Float32_8_ctor_arg5;
+Variable Float32x2x4_Float32_8_ctor_arg6;
+Variable Float32x2x4_Float32_8_ctor_arg7;
+Function Float32x2x4_Float32_8_ctor;
+Variable Float32x2x4_operator_index_Int32_arg0;
+Function Float32x2x4_operator_index_Int32;
+Variable Float32x2x4_operator_index_UInt32_arg0;
+Function Float32x2x4_operator_index_UInt32;
+Variable Float32x2x4_operator_index_Int16_arg0;
+Function Float32x2x4_operator_index_Int16;
+Variable Float32x2x4_operator_index_UInt16_arg0;
+Function Float32x2x4_operator_index_UInt16;
+Variable Float32x2x4_operator_add_Float32x2x4_arg0;
+Function Float32x2x4_operator_add_Float32x2x4;
+Variable Float32x2x4_operator_sub_Float32x2x4_arg0;
+Function Float32x2x4_operator_sub_Float32x2x4;
+Variable Float32x2x4_operator_mul_Float32x2x4_arg0;
+Function Float32x2x4_operator_mul_Float32x2x4;
+Variable Float32x2x4_operator_addasg_Float32x2x4_arg0;
+Function Float32x2x4_operator_addasg_Float32x2x4;
+Variable Float32x2x4_operator_subasg_Float32x2x4_arg0;
+Function Float32x2x4_operator_subasg_Float32x2x4;
+Variable Float32x2x4_operator_mulasg_Float32x2x4_arg0;
+Function Float32x2x4_operator_mulasg_Float32x2x4;
+Variable Float32x2x4_operator_scale_Float32_arg0;
+Function Float32x2x4_operator_scale_Float32;
+Variable Float32x3x2_Float32_2_ctor_arg0;
+Variable Float32x3x2_Float32_2_ctor_arg1;
+Variable Float32x3x2_Float32_2_ctor_arg2;
+Function Float32x3x2_Float32_2_ctor;
+Function Float32x3x2_identity;
+Variable Float32x3x2_Float32_6_ctor_arg0;
+Variable Float32x3x2_Float32_6_ctor_arg1;
+Variable Float32x3x2_Float32_6_ctor_arg2;
+Variable Float32x3x2_Float32_6_ctor_arg3;
+Variable Float32x3x2_Float32_6_ctor_arg4;
+Variable Float32x3x2_Float32_6_ctor_arg5;
+Function Float32x3x2_Float32_6_ctor;
+Variable Float32x3x2_operator_index_Int32_arg0;
+Function Float32x3x2_operator_index_Int32;
+Variable Float32x3x2_operator_index_UInt32_arg0;
+Function Float32x3x2_operator_index_UInt32;
+Variable Float32x3x2_operator_index_Int16_arg0;
+Function Float32x3x2_operator_index_Int16;
+Variable Float32x3x2_operator_index_UInt16_arg0;
+Function Float32x3x2_operator_index_UInt16;
+Variable Float32x3x2_operator_add_Float32x3x2_arg0;
+Function Float32x3x2_operator_add_Float32x3x2;
+Variable Float32x3x2_operator_sub_Float32x3x2_arg0;
+Function Float32x3x2_operator_sub_Float32x3x2;
+Variable Float32x3x2_operator_mul_Float32x3x2_arg0;
+Function Float32x3x2_operator_mul_Float32x3x2;
+Variable Float32x3x2_operator_addasg_Float32x3x2_arg0;
+Function Float32x3x2_operator_addasg_Float32x3x2;
+Variable Float32x3x2_operator_subasg_Float32x3x2_arg0;
+Function Float32x3x2_operator_subasg_Float32x3x2;
+Variable Float32x3x2_operator_mulasg_Float32x3x2_arg0;
+Function Float32x3x2_operator_mulasg_Float32x3x2;
+Variable Float32x3x2_operator_scale_Float32_arg0;
+Function Float32x3x2_operator_scale_Float32;
+Variable Float32x3x3_Float32_3_ctor_arg0;
+Variable Float32x3x3_Float32_3_ctor_arg1;
+Variable Float32x3x3_Float32_3_ctor_arg2;
+Function Float32x3x3_Float32_3_ctor;
+Function Float32x3x3_identity;
+Variable Float32x3x3_Float32_9_ctor_arg0;
+Variable Float32x3x3_Float32_9_ctor_arg1;
+Variable Float32x3x3_Float32_9_ctor_arg2;
+Variable Float32x3x3_Float32_9_ctor_arg3;
+Variable Float32x3x3_Float32_9_ctor_arg4;
+Variable Float32x3x3_Float32_9_ctor_arg5;
+Variable Float32x3x3_Float32_9_ctor_arg6;
+Variable Float32x3x3_Float32_9_ctor_arg7;
+Variable Float32x3x3_Float32_9_ctor_arg8;
+Function Float32x3x3_Float32_9_ctor;
+Variable Float32x3x3_operator_index_Int32_arg0;
+Function Float32x3x3_operator_index_Int32;
+Variable Float32x3x3_operator_index_UInt32_arg0;
+Function Float32x3x3_operator_index_UInt32;
+Variable Float32x3x3_operator_index_Int16_arg0;
+Function Float32x3x3_operator_index_Int16;
+Variable Float32x3x3_operator_index_UInt16_arg0;
+Function Float32x3x3_operator_index_UInt16;
+Variable Float32x3x3_operator_add_Float32x3x3_arg0;
+Function Float32x3x3_operator_add_Float32x3x3;
+Variable Float32x3x3_operator_sub_Float32x3x3_arg0;
+Function Float32x3x3_operator_sub_Float32x3x3;
+Variable Float32x3x3_operator_mul_Float32x3x3_arg0;
+Function Float32x3x3_operator_mul_Float32x3x3;
+Variable Float32x3x3_operator_addasg_Float32x3x3_arg0;
+Function Float32x3x3_operator_addasg_Float32x3x3;
+Variable Float32x3x3_operator_subasg_Float32x3x3_arg0;
+Function Float32x3x3_operator_subasg_Float32x3x3;
+Variable Float32x3x3_operator_mulasg_Float32x3x3_arg0;
+Function Float32x3x3_operator_mulasg_Float32x3x3;
+Variable Float32x3x3_operator_scale_Float32_arg0;
+Function Float32x3x3_operator_scale_Float32;
+Variable Float32x3x4_Float32_4_ctor_arg0;
+Variable Float32x3x4_Float32_4_ctor_arg1;
+Variable Float32x3x4_Float32_4_ctor_arg2;
+Function Float32x3x4_Float32_4_ctor;
+Function Float32x3x4_identity;
+Variable Float32x3x4_Float32_12_ctor_arg0;
+Variable Float32x3x4_Float32_12_ctor_arg1;
+Variable Float32x3x4_Float32_12_ctor_arg2;
+Variable Float32x3x4_Float32_12_ctor_arg3;
+Variable Float32x3x4_Float32_12_ctor_arg4;
+Variable Float32x3x4_Float32_12_ctor_arg5;
+Variable Float32x3x4_Float32_12_ctor_arg6;
+Variable Float32x3x4_Float32_12_ctor_arg7;
+Variable Float32x3x4_Float32_12_ctor_arg8;
+Variable Float32x3x4_Float32_12_ctor_arg9;
+Variable Float32x3x4_Float32_12_ctor_arg10;
+Variable Float32x3x4_Float32_12_ctor_arg11;
+Function Float32x3x4_Float32_12_ctor;
+Variable Float32x3x4_operator_index_Int32_arg0;
+Function Float32x3x4_operator_index_Int32;
+Variable Float32x3x4_operator_index_UInt32_arg0;
+Function Float32x3x4_operator_index_UInt32;
+Variable Float32x3x4_operator_index_Int16_arg0;
+Function Float32x3x4_operator_index_Int16;
+Variable Float32x3x4_operator_index_UInt16_arg0;
+Function Float32x3x4_operator_index_UInt16;
+Variable Float32x3x4_operator_add_Float32x3x4_arg0;
+Function Float32x3x4_operator_add_Float32x3x4;
+Variable Float32x3x4_operator_sub_Float32x3x4_arg0;
+Function Float32x3x4_operator_sub_Float32x3x4;
+Variable Float32x3x4_operator_mul_Float32x3x4_arg0;
+Function Float32x3x4_operator_mul_Float32x3x4;
+Variable Float32x3x4_operator_addasg_Float32x3x4_arg0;
+Function Float32x3x4_operator_addasg_Float32x3x4;
+Variable Float32x3x4_operator_subasg_Float32x3x4_arg0;
+Function Float32x3x4_operator_subasg_Float32x3x4;
+Variable Float32x3x4_operator_mulasg_Float32x3x4_arg0;
+Function Float32x3x4_operator_mulasg_Float32x3x4;
+Variable Float32x3x4_operator_scale_Float32_arg0;
+Function Float32x3x4_operator_scale_Float32;
+Variable Float32x4x2_Float32_2_ctor_arg0;
+Variable Float32x4x2_Float32_2_ctor_arg1;
+Variable Float32x4x2_Float32_2_ctor_arg2;
+Variable Float32x4x2_Float32_2_ctor_arg3;
+Function Float32x4x2_Float32_2_ctor;
+Function Float32x4x2_identity;
+Variable Float32x4x2_Float32_8_ctor_arg0;
+Variable Float32x4x2_Float32_8_ctor_arg1;
+Variable Float32x4x2_Float32_8_ctor_arg2;
+Variable Float32x4x2_Float32_8_ctor_arg3;
+Variable Float32x4x2_Float32_8_ctor_arg4;
+Variable Float32x4x2_Float32_8_ctor_arg5;
+Variable Float32x4x2_Float32_8_ctor_arg6;
+Variable Float32x4x2_Float32_8_ctor_arg7;
+Function Float32x4x2_Float32_8_ctor;
+Variable Float32x4x2_operator_index_Int32_arg0;
+Function Float32x4x2_operator_index_Int32;
+Variable Float32x4x2_operator_index_UInt32_arg0;
+Function Float32x4x2_operator_index_UInt32;
+Variable Float32x4x2_operator_index_Int16_arg0;
+Function Float32x4x2_operator_index_Int16;
+Variable Float32x4x2_operator_index_UInt16_arg0;
+Function Float32x4x2_operator_index_UInt16;
+Variable Float32x4x2_operator_add_Float32x4x2_arg0;
+Function Float32x4x2_operator_add_Float32x4x2;
+Variable Float32x4x2_operator_sub_Float32x4x2_arg0;
+Function Float32x4x2_operator_sub_Float32x4x2;
+Variable Float32x4x2_operator_mul_Float32x4x2_arg0;
+Function Float32x4x2_operator_mul_Float32x4x2;
+Variable Float32x4x2_operator_addasg_Float32x4x2_arg0;
+Function Float32x4x2_operator_addasg_Float32x4x2;
+Variable Float32x4x2_operator_subasg_Float32x4x2_arg0;
+Function Float32x4x2_operator_subasg_Float32x4x2;
+Variable Float32x4x2_operator_mulasg_Float32x4x2_arg0;
+Function Float32x4x2_operator_mulasg_Float32x4x2;
+Variable Float32x4x2_operator_scale_Float32_arg0;
+Function Float32x4x2_operator_scale_Float32;
+Variable Float32x4x3_Float32_3_ctor_arg0;
+Variable Float32x4x3_Float32_3_ctor_arg1;
+Variable Float32x4x3_Float32_3_ctor_arg2;
+Variable Float32x4x3_Float32_3_ctor_arg3;
+Function Float32x4x3_Float32_3_ctor;
+Function Float32x4x3_identity;
+Variable Float32x4x3_Float32_12_ctor_arg0;
+Variable Float32x4x3_Float32_12_ctor_arg1;
+Variable Float32x4x3_Float32_12_ctor_arg2;
+Variable Float32x4x3_Float32_12_ctor_arg3;
+Variable Float32x4x3_Float32_12_ctor_arg4;
+Variable Float32x4x3_Float32_12_ctor_arg5;
+Variable Float32x4x3_Float32_12_ctor_arg6;
+Variable Float32x4x3_Float32_12_ctor_arg7;
+Variable Float32x4x3_Float32_12_ctor_arg8;
+Variable Float32x4x3_Float32_12_ctor_arg9;
+Variable Float32x4x3_Float32_12_ctor_arg10;
+Variable Float32x4x3_Float32_12_ctor_arg11;
+Function Float32x4x3_Float32_12_ctor;
+Variable Float32x4x3_operator_index_Int32_arg0;
+Function Float32x4x3_operator_index_Int32;
+Variable Float32x4x3_operator_index_UInt32_arg0;
+Function Float32x4x3_operator_index_UInt32;
+Variable Float32x4x3_operator_index_Int16_arg0;
+Function Float32x4x3_operator_index_Int16;
+Variable Float32x4x3_operator_index_UInt16_arg0;
+Function Float32x4x3_operator_index_UInt16;
+Variable Float32x4x3_operator_add_Float32x4x3_arg0;
+Function Float32x4x3_operator_add_Float32x4x3;
+Variable Float32x4x3_operator_sub_Float32x4x3_arg0;
+Function Float32x4x3_operator_sub_Float32x4x3;
+Variable Float32x4x3_operator_mul_Float32x4x3_arg0;
+Function Float32x4x3_operator_mul_Float32x4x3;
+Variable Float32x4x3_operator_addasg_Float32x4x3_arg0;
+Function Float32x4x3_operator_addasg_Float32x4x3;
+Variable Float32x4x3_operator_subasg_Float32x4x3_arg0;
+Function Float32x4x3_operator_subasg_Float32x4x3;
+Variable Float32x4x3_operator_mulasg_Float32x4x3_arg0;
+Function Float32x4x3_operator_mulasg_Float32x4x3;
+Variable Float32x4x3_operator_scale_Float32_arg0;
+Function Float32x4x3_operator_scale_Float32;
+Variable Float32x4x4_Float32_4_ctor_arg0;
+Variable Float32x4x4_Float32_4_ctor_arg1;
+Variable Float32x4x4_Float32_4_ctor_arg2;
+Variable Float32x4x4_Float32_4_ctor_arg3;
+Function Float32x4x4_Float32_4_ctor;
+Function Float32x4x4_identity;
+Variable Float32x4x4_Float32_16_ctor_arg0;
+Variable Float32x4x4_Float32_16_ctor_arg1;
+Variable Float32x4x4_Float32_16_ctor_arg2;
+Variable Float32x4x4_Float32_16_ctor_arg3;
+Variable Float32x4x4_Float32_16_ctor_arg4;
+Variable Float32x4x4_Float32_16_ctor_arg5;
+Variable Float32x4x4_Float32_16_ctor_arg6;
+Variable Float32x4x4_Float32_16_ctor_arg7;
+Variable Float32x4x4_Float32_16_ctor_arg8;
+Variable Float32x4x4_Float32_16_ctor_arg9;
+Variable Float32x4x4_Float32_16_ctor_arg10;
+Variable Float32x4x4_Float32_16_ctor_arg11;
+Variable Float32x4x4_Float32_16_ctor_arg12;
+Variable Float32x4x4_Float32_16_ctor_arg13;
+Variable Float32x4x4_Float32_16_ctor_arg14;
+Variable Float32x4x4_Float32_16_ctor_arg15;
+Function Float32x4x4_Float32_16_ctor;
+Variable Float32x4x4_operator_index_Int32_arg0;
+Function Float32x4x4_operator_index_Int32;
+Variable Float32x4x4_operator_index_UInt32_arg0;
+Function Float32x4x4_operator_index_UInt32;
+Variable Float32x4x4_operator_index_Int16_arg0;
+Function Float32x4x4_operator_index_Int16;
+Variable Float32x4x4_operator_index_UInt16_arg0;
+Function Float32x4x4_operator_index_UInt16;
+Variable Float32x4x4_operator_add_Float32x4x4_arg0;
+Function Float32x4x4_operator_add_Float32x4x4;
+Variable Float32x4x4_operator_sub_Float32x4x4_arg0;
+Function Float32x4x4_operator_sub_Float32x4x4;
+Variable Float32x4x4_operator_mul_Float32x4x4_arg0;
+Function Float32x4x4_operator_mul_Float32x4x4;
+Variable Float32x4x4_operator_addasg_Float32x4x4_arg0;
+Function Float32x4x4_operator_addasg_Float32x4x4;
+Variable Float32x4x4_operator_subasg_Float32x4x4_arg0;
+Function Float32x4x4_operator_subasg_Float32x4x4;
+Variable Float32x4x4_operator_mulasg_Float32x4x4_arg0;
+Function Float32x4x4_operator_mulasg_Float32x4x4;
+Variable Float32x4x4_operator_scale_Float32_arg0;
+Function Float32x4x4_operator_scale_Float32;
+Variable Float16x2x2_Float16_2_ctor_arg0;
+Variable Float16x2x2_Float16_2_ctor_arg1;
+Function Float16x2x2_Float16_2_ctor;
+Function Float16x2x2_identity;
+Variable Float16x2x2_Float16_4_ctor_arg0;
+Variable Float16x2x2_Float16_4_ctor_arg1;
+Variable Float16x2x2_Float16_4_ctor_arg2;
+Variable Float16x2x2_Float16_4_ctor_arg3;
+Function Float16x2x2_Float16_4_ctor;
+Variable Float16x2x2_operator_index_Int32_arg0;
+Function Float16x2x2_operator_index_Int32;
+Variable Float16x2x2_operator_index_UInt32_arg0;
+Function Float16x2x2_operator_index_UInt32;
+Variable Float16x2x2_operator_index_Int16_arg0;
+Function Float16x2x2_operator_index_Int16;
+Variable Float16x2x2_operator_index_UInt16_arg0;
+Function Float16x2x2_operator_index_UInt16;
+Variable Float16x2x2_operator_add_Float16x2x2_arg0;
+Function Float16x2x2_operator_add_Float16x2x2;
+Variable Float16x2x2_operator_sub_Float16x2x2_arg0;
+Function Float16x2x2_operator_sub_Float16x2x2;
+Variable Float16x2x2_operator_mul_Float16x2x2_arg0;
+Function Float16x2x2_operator_mul_Float16x2x2;
+Variable Float16x2x2_operator_addasg_Float16x2x2_arg0;
+Function Float16x2x2_operator_addasg_Float16x2x2;
+Variable Float16x2x2_operator_subasg_Float16x2x2_arg0;
+Function Float16x2x2_operator_subasg_Float16x2x2;
+Variable Float16x2x2_operator_mulasg_Float16x2x2_arg0;
+Function Float16x2x2_operator_mulasg_Float16x2x2;
+Variable Float16x2x2_operator_scale_Float16_arg0;
+Function Float16x2x2_operator_scale_Float16;
+Variable Float16x2x3_Float16_3_ctor_arg0;
+Variable Float16x2x3_Float16_3_ctor_arg1;
+Function Float16x2x3_Float16_3_ctor;
+Function Float16x2x3_identity;
+Variable Float16x2x3_Float16_6_ctor_arg0;
+Variable Float16x2x3_Float16_6_ctor_arg1;
+Variable Float16x2x3_Float16_6_ctor_arg2;
+Variable Float16x2x3_Float16_6_ctor_arg3;
+Variable Float16x2x3_Float16_6_ctor_arg4;
+Variable Float16x2x3_Float16_6_ctor_arg5;
+Function Float16x2x3_Float16_6_ctor;
+Variable Float16x2x3_operator_index_Int32_arg0;
+Function Float16x2x3_operator_index_Int32;
+Variable Float16x2x3_operator_index_UInt32_arg0;
+Function Float16x2x3_operator_index_UInt32;
+Variable Float16x2x3_operator_index_Int16_arg0;
+Function Float16x2x3_operator_index_Int16;
+Variable Float16x2x3_operator_index_UInt16_arg0;
+Function Float16x2x3_operator_index_UInt16;
+Variable Float16x2x3_operator_add_Float16x2x3_arg0;
+Function Float16x2x3_operator_add_Float16x2x3;
+Variable Float16x2x3_operator_sub_Float16x2x3_arg0;
+Function Float16x2x3_operator_sub_Float16x2x3;
+Variable Float16x2x3_operator_mul_Float16x2x3_arg0;
+Function Float16x2x3_operator_mul_Float16x2x3;
+Variable Float16x2x3_operator_addasg_Float16x2x3_arg0;
+Function Float16x2x3_operator_addasg_Float16x2x3;
+Variable Float16x2x3_operator_subasg_Float16x2x3_arg0;
+Function Float16x2x3_operator_subasg_Float16x2x3;
+Variable Float16x2x3_operator_mulasg_Float16x2x3_arg0;
+Function Float16x2x3_operator_mulasg_Float16x2x3;
+Variable Float16x2x3_operator_scale_Float16_arg0;
+Function Float16x2x3_operator_scale_Float16;
+Variable Float16x2x4_Float16_4_ctor_arg0;
+Variable Float16x2x4_Float16_4_ctor_arg1;
+Function Float16x2x4_Float16_4_ctor;
+Function Float16x2x4_identity;
+Variable Float16x2x4_Float16_8_ctor_arg0;
+Variable Float16x2x4_Float16_8_ctor_arg1;
+Variable Float16x2x4_Float16_8_ctor_arg2;
+Variable Float16x2x4_Float16_8_ctor_arg3;
+Variable Float16x2x4_Float16_8_ctor_arg4;
+Variable Float16x2x4_Float16_8_ctor_arg5;
+Variable Float16x2x4_Float16_8_ctor_arg6;
+Variable Float16x2x4_Float16_8_ctor_arg7;
+Function Float16x2x4_Float16_8_ctor;
+Variable Float16x2x4_operator_index_Int32_arg0;
+Function Float16x2x4_operator_index_Int32;
+Variable Float16x2x4_operator_index_UInt32_arg0;
+Function Float16x2x4_operator_index_UInt32;
+Variable Float16x2x4_operator_index_Int16_arg0;
+Function Float16x2x4_operator_index_Int16;
+Variable Float16x2x4_operator_index_UInt16_arg0;
+Function Float16x2x4_operator_index_UInt16;
+Variable Float16x2x4_operator_add_Float16x2x4_arg0;
+Function Float16x2x4_operator_add_Float16x2x4;
+Variable Float16x2x4_operator_sub_Float16x2x4_arg0;
+Function Float16x2x4_operator_sub_Float16x2x4;
+Variable Float16x2x4_operator_mul_Float16x2x4_arg0;
+Function Float16x2x4_operator_mul_Float16x2x4;
+Variable Float16x2x4_operator_addasg_Float16x2x4_arg0;
+Function Float16x2x4_operator_addasg_Float16x2x4;
+Variable Float16x2x4_operator_subasg_Float16x2x4_arg0;
+Function Float16x2x4_operator_subasg_Float16x2x4;
+Variable Float16x2x4_operator_mulasg_Float16x2x4_arg0;
+Function Float16x2x4_operator_mulasg_Float16x2x4;
+Variable Float16x2x4_operator_scale_Float16_arg0;
+Function Float16x2x4_operator_scale_Float16;
+Variable Float16x3x2_Float16_2_ctor_arg0;
+Variable Float16x3x2_Float16_2_ctor_arg1;
+Variable Float16x3x2_Float16_2_ctor_arg2;
+Function Float16x3x2_Float16_2_ctor;
+Function Float16x3x2_identity;
+Variable Float16x3x2_Float16_6_ctor_arg0;
+Variable Float16x3x2_Float16_6_ctor_arg1;
+Variable Float16x3x2_Float16_6_ctor_arg2;
+Variable Float16x3x2_Float16_6_ctor_arg3;
+Variable Float16x3x2_Float16_6_ctor_arg4;
+Variable Float16x3x2_Float16_6_ctor_arg5;
+Function Float16x3x2_Float16_6_ctor;
+Variable Float16x3x2_operator_index_Int32_arg0;
+Function Float16x3x2_operator_index_Int32;
+Variable Float16x3x2_operator_index_UInt32_arg0;
+Function Float16x3x2_operator_index_UInt32;
+Variable Float16x3x2_operator_index_Int16_arg0;
+Function Float16x3x2_operator_index_Int16;
+Variable Float16x3x2_operator_index_UInt16_arg0;
+Function Float16x3x2_operator_index_UInt16;
+Variable Float16x3x2_operator_add_Float16x3x2_arg0;
+Function Float16x3x2_operator_add_Float16x3x2;
+Variable Float16x3x2_operator_sub_Float16x3x2_arg0;
+Function Float16x3x2_operator_sub_Float16x3x2;
+Variable Float16x3x2_operator_mul_Float16x3x2_arg0;
+Function Float16x3x2_operator_mul_Float16x3x2;
+Variable Float16x3x2_operator_addasg_Float16x3x2_arg0;
+Function Float16x3x2_operator_addasg_Float16x3x2;
+Variable Float16x3x2_operator_subasg_Float16x3x2_arg0;
+Function Float16x3x2_operator_subasg_Float16x3x2;
+Variable Float16x3x2_operator_mulasg_Float16x3x2_arg0;
+Function Float16x3x2_operator_mulasg_Float16x3x2;
+Variable Float16x3x2_operator_scale_Float16_arg0;
+Function Float16x3x2_operator_scale_Float16;
+Variable Float16x3x3_Float16_3_ctor_arg0;
+Variable Float16x3x3_Float16_3_ctor_arg1;
+Variable Float16x3x3_Float16_3_ctor_arg2;
+Function Float16x3x3_Float16_3_ctor;
+Function Float16x3x3_identity;
+Variable Float16x3x3_Float16_9_ctor_arg0;
+Variable Float16x3x3_Float16_9_ctor_arg1;
+Variable Float16x3x3_Float16_9_ctor_arg2;
+Variable Float16x3x3_Float16_9_ctor_arg3;
+Variable Float16x3x3_Float16_9_ctor_arg4;
+Variable Float16x3x3_Float16_9_ctor_arg5;
+Variable Float16x3x3_Float16_9_ctor_arg6;
+Variable Float16x3x3_Float16_9_ctor_arg7;
+Variable Float16x3x3_Float16_9_ctor_arg8;
+Function Float16x3x3_Float16_9_ctor;
+Variable Float16x3x3_operator_index_Int32_arg0;
+Function Float16x3x3_operator_index_Int32;
+Variable Float16x3x3_operator_index_UInt32_arg0;
+Function Float16x3x3_operator_index_UInt32;
+Variable Float16x3x3_operator_index_Int16_arg0;
+Function Float16x3x3_operator_index_Int16;
+Variable Float16x3x3_operator_index_UInt16_arg0;
+Function Float16x3x3_operator_index_UInt16;
+Variable Float16x3x3_operator_add_Float16x3x3_arg0;
+Function Float16x3x3_operator_add_Float16x3x3;
+Variable Float16x3x3_operator_sub_Float16x3x3_arg0;
+Function Float16x3x3_operator_sub_Float16x3x3;
+Variable Float16x3x3_operator_mul_Float16x3x3_arg0;
+Function Float16x3x3_operator_mul_Float16x3x3;
+Variable Float16x3x3_operator_addasg_Float16x3x3_arg0;
+Function Float16x3x3_operator_addasg_Float16x3x3;
+Variable Float16x3x3_operator_subasg_Float16x3x3_arg0;
+Function Float16x3x3_operator_subasg_Float16x3x3;
+Variable Float16x3x3_operator_mulasg_Float16x3x3_arg0;
+Function Float16x3x3_operator_mulasg_Float16x3x3;
+Variable Float16x3x3_operator_scale_Float16_arg0;
+Function Float16x3x3_operator_scale_Float16;
+Variable Float16x3x4_Float16_4_ctor_arg0;
+Variable Float16x3x4_Float16_4_ctor_arg1;
+Variable Float16x3x4_Float16_4_ctor_arg2;
+Function Float16x3x4_Float16_4_ctor;
+Function Float16x3x4_identity;
+Variable Float16x3x4_Float16_12_ctor_arg0;
+Variable Float16x3x4_Float16_12_ctor_arg1;
+Variable Float16x3x4_Float16_12_ctor_arg2;
+Variable Float16x3x4_Float16_12_ctor_arg3;
+Variable Float16x3x4_Float16_12_ctor_arg4;
+Variable Float16x3x4_Float16_12_ctor_arg5;
+Variable Float16x3x4_Float16_12_ctor_arg6;
+Variable Float16x3x4_Float16_12_ctor_arg7;
+Variable Float16x3x4_Float16_12_ctor_arg8;
+Variable Float16x3x4_Float16_12_ctor_arg9;
+Variable Float16x3x4_Float16_12_ctor_arg10;
+Variable Float16x3x4_Float16_12_ctor_arg11;
+Function Float16x3x4_Float16_12_ctor;
+Variable Float16x3x4_operator_index_Int32_arg0;
+Function Float16x3x4_operator_index_Int32;
+Variable Float16x3x4_operator_index_UInt32_arg0;
+Function Float16x3x4_operator_index_UInt32;
+Variable Float16x3x4_operator_index_Int16_arg0;
+Function Float16x3x4_operator_index_Int16;
+Variable Float16x3x4_operator_index_UInt16_arg0;
+Function Float16x3x4_operator_index_UInt16;
+Variable Float16x3x4_operator_add_Float16x3x4_arg0;
+Function Float16x3x4_operator_add_Float16x3x4;
+Variable Float16x3x4_operator_sub_Float16x3x4_arg0;
+Function Float16x3x4_operator_sub_Float16x3x4;
+Variable Float16x3x4_operator_mul_Float16x3x4_arg0;
+Function Float16x3x4_operator_mul_Float16x3x4;
+Variable Float16x3x4_operator_addasg_Float16x3x4_arg0;
+Function Float16x3x4_operator_addasg_Float16x3x4;
+Variable Float16x3x4_operator_subasg_Float16x3x4_arg0;
+Function Float16x3x4_operator_subasg_Float16x3x4;
+Variable Float16x3x4_operator_mulasg_Float16x3x4_arg0;
+Function Float16x3x4_operator_mulasg_Float16x3x4;
+Variable Float16x3x4_operator_scale_Float16_arg0;
+Function Float16x3x4_operator_scale_Float16;
+Variable Float16x4x2_Float16_2_ctor_arg0;
+Variable Float16x4x2_Float16_2_ctor_arg1;
+Variable Float16x4x2_Float16_2_ctor_arg2;
+Variable Float16x4x2_Float16_2_ctor_arg3;
+Function Float16x4x2_Float16_2_ctor;
+Function Float16x4x2_identity;
+Variable Float16x4x2_Float16_8_ctor_arg0;
+Variable Float16x4x2_Float16_8_ctor_arg1;
+Variable Float16x4x2_Float16_8_ctor_arg2;
+Variable Float16x4x2_Float16_8_ctor_arg3;
+Variable Float16x4x2_Float16_8_ctor_arg4;
+Variable Float16x4x2_Float16_8_ctor_arg5;
+Variable Float16x4x2_Float16_8_ctor_arg6;
+Variable Float16x4x2_Float16_8_ctor_arg7;
+Function Float16x4x2_Float16_8_ctor;
+Variable Float16x4x2_operator_index_Int32_arg0;
+Function Float16x4x2_operator_index_Int32;
+Variable Float16x4x2_operator_index_UInt32_arg0;
+Function Float16x4x2_operator_index_UInt32;
+Variable Float16x4x2_operator_index_Int16_arg0;
+Function Float16x4x2_operator_index_Int16;
+Variable Float16x4x2_operator_index_UInt16_arg0;
+Function Float16x4x2_operator_index_UInt16;
+Variable Float16x4x2_operator_add_Float16x4x2_arg0;
+Function Float16x4x2_operator_add_Float16x4x2;
+Variable Float16x4x2_operator_sub_Float16x4x2_arg0;
+Function Float16x4x2_operator_sub_Float16x4x2;
+Variable Float16x4x2_operator_mul_Float16x4x2_arg0;
+Function Float16x4x2_operator_mul_Float16x4x2;
+Variable Float16x4x2_operator_addasg_Float16x4x2_arg0;
+Function Float16x4x2_operator_addasg_Float16x4x2;
+Variable Float16x4x2_operator_subasg_Float16x4x2_arg0;
+Function Float16x4x2_operator_subasg_Float16x4x2;
+Variable Float16x4x2_operator_mulasg_Float16x4x2_arg0;
+Function Float16x4x2_operator_mulasg_Float16x4x2;
+Variable Float16x4x2_operator_scale_Float16_arg0;
+Function Float16x4x2_operator_scale_Float16;
+Variable Float16x4x3_Float16_3_ctor_arg0;
+Variable Float16x4x3_Float16_3_ctor_arg1;
+Variable Float16x4x3_Float16_3_ctor_arg2;
+Variable Float16x4x3_Float16_3_ctor_arg3;
+Function Float16x4x3_Float16_3_ctor;
+Function Float16x4x3_identity;
+Variable Float16x4x3_Float16_12_ctor_arg0;
+Variable Float16x4x3_Float16_12_ctor_arg1;
+Variable Float16x4x3_Float16_12_ctor_arg2;
+Variable Float16x4x3_Float16_12_ctor_arg3;
+Variable Float16x4x3_Float16_12_ctor_arg4;
+Variable Float16x4x3_Float16_12_ctor_arg5;
+Variable Float16x4x3_Float16_12_ctor_arg6;
+Variable Float16x4x3_Float16_12_ctor_arg7;
+Variable Float16x4x3_Float16_12_ctor_arg8;
+Variable Float16x4x3_Float16_12_ctor_arg9;
+Variable Float16x4x3_Float16_12_ctor_arg10;
+Variable Float16x4x3_Float16_12_ctor_arg11;
+Function Float16x4x3_Float16_12_ctor;
+Variable Float16x4x3_operator_index_Int32_arg0;
+Function Float16x4x3_operator_index_Int32;
+Variable Float16x4x3_operator_index_UInt32_arg0;
+Function Float16x4x3_operator_index_UInt32;
+Variable Float16x4x3_operator_index_Int16_arg0;
+Function Float16x4x3_operator_index_Int16;
+Variable Float16x4x3_operator_index_UInt16_arg0;
+Function Float16x4x3_operator_index_UInt16;
+Variable Float16x4x3_operator_add_Float16x4x3_arg0;
+Function Float16x4x3_operator_add_Float16x4x3;
+Variable Float16x4x3_operator_sub_Float16x4x3_arg0;
+Function Float16x4x3_operator_sub_Float16x4x3;
+Variable Float16x4x3_operator_mul_Float16x4x3_arg0;
+Function Float16x4x3_operator_mul_Float16x4x3;
+Variable Float16x4x3_operator_addasg_Float16x4x3_arg0;
+Function Float16x4x3_operator_addasg_Float16x4x3;
+Variable Float16x4x3_operator_subasg_Float16x4x3_arg0;
+Function Float16x4x3_operator_subasg_Float16x4x3;
+Variable Float16x4x3_operator_mulasg_Float16x4x3_arg0;
+Function Float16x4x3_operator_mulasg_Float16x4x3;
+Variable Float16x4x3_operator_scale_Float16_arg0;
+Function Float16x4x3_operator_scale_Float16;
+Variable Float16x4x4_Float16_4_ctor_arg0;
+Variable Float16x4x4_Float16_4_ctor_arg1;
+Variable Float16x4x4_Float16_4_ctor_arg2;
+Variable Float16x4x4_Float16_4_ctor_arg3;
+Function Float16x4x4_Float16_4_ctor;
+Function Float16x4x4_identity;
+Variable Float16x4x4_Float16_16_ctor_arg0;
+Variable Float16x4x4_Float16_16_ctor_arg1;
+Variable Float16x4x4_Float16_16_ctor_arg2;
+Variable Float16x4x4_Float16_16_ctor_arg3;
+Variable Float16x4x4_Float16_16_ctor_arg4;
+Variable Float16x4x4_Float16_16_ctor_arg5;
+Variable Float16x4x4_Float16_16_ctor_arg6;
+Variable Float16x4x4_Float16_16_ctor_arg7;
+Variable Float16x4x4_Float16_16_ctor_arg8;
+Variable Float16x4x4_Float16_16_ctor_arg9;
+Variable Float16x4x4_Float16_16_ctor_arg10;
+Variable Float16x4x4_Float16_16_ctor_arg11;
+Variable Float16x4x4_Float16_16_ctor_arg12;
+Variable Float16x4x4_Float16_16_ctor_arg13;
+Variable Float16x4x4_Float16_16_ctor_arg14;
+Variable Float16x4x4_Float16_16_ctor_arg15;
+Function Float16x4x4_Float16_16_ctor;
+Variable Float16x4x4_operator_index_Int32_arg0;
+Function Float16x4x4_operator_index_Int32;
+Variable Float16x4x4_operator_index_UInt32_arg0;
+Function Float16x4x4_operator_index_UInt32;
+Variable Float16x4x4_operator_index_Int16_arg0;
+Function Float16x4x4_operator_index_Int16;
+Variable Float16x4x4_operator_index_UInt16_arg0;
+Function Float16x4x4_operator_index_UInt16;
+Variable Float16x4x4_operator_add_Float16x4x4_arg0;
+Function Float16x4x4_operator_add_Float16x4x4;
+Variable Float16x4x4_operator_sub_Float16x4x4_arg0;
+Function Float16x4x4_operator_sub_Float16x4x4;
+Variable Float16x4x4_operator_mul_Float16x4x4_arg0;
+Function Float16x4x4_operator_mul_Float16x4x4;
+Variable Float16x4x4_operator_addasg_Float16x4x4_arg0;
+Function Float16x4x4_operator_addasg_Float16x4x4;
+Variable Float16x4x4_operator_subasg_Float16x4x4_arg0;
+Function Float16x4x4_operator_subasg_Float16x4x4;
+Variable Float16x4x4_operator_mulasg_Float16x4x4_arg0;
+Function Float16x4x4_operator_mulasg_Float16x4x4;
+Variable Float16x4x4_operator_scale_Float16_arg0;
+Function Float16x4x4_operator_scale_Float16;
+
 Float32::Float32()
 {
     this->name = "f32";
@@ -69,51 +4223,52 @@ Float32::Float32()
     this->baseType = TypeCode::Float32;
     this->builtin = true;
 
-    // Conversion from UInt32
-    Float32_convert_UInt32_arg0.name = "_arg0"_c;
+    Float32_convert_UInt32_arg0.name = "val"_c;
     Float32_convert_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    Float32_convert_UInt32.documentation = "Convert u32 to f32"_c;
     Float32_convert_UInt32.name = "f32"_c;
     Float32_convert_UInt32.returnType = Type::FullType { Float32Type.name };
-    Symbol::Resolved(&Float32_convert_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float32_convert_UInt32)->returnTypeSymbol = &Float32Type;
-
-    // Conversion from Int32
-    Float32_convert_Int32_arg0.name = "_arg0"_c;
+    Float32_convert_UInt32.parameters = Float32_convert_UInt32_args;
+    Symbol::Resolved(&Float32_convert_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&Float32_convert_UInt32).returnTypeSymbol = &Float32Type;
+    Float32_convert_Int32_arg0.name = "val"_c;
     Float32_convert_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    Float32_convert_Int32.documentation = "Convert i32 to f32"_c;
     Float32_convert_Int32.name = "f32"_c;
     Float32_convert_Int32.returnType = Type::FullType { Float32Type.name };
-    Symbol::Resolved(&Float32_convert_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float32_convert_Int32)->returnTypeSymbol = &Float32Type;
-
-    // Conversion from Float16
-    Float32_convert_Float16_arg0.name = "_arg0"_c;
+    Float32_convert_Int32.parameters = Float32_convert_Int32_args;
+    Symbol::Resolved(&Float32_convert_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&Float32_convert_Int32).returnTypeSymbol = &Float32Type;
+    Float32_convert_Float16_arg0.name = "val"_c;
     Float32_convert_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    Float32_convert_Float16.documentation = "Convert f16 to f32"_c;
     Float32_convert_Float16.name = "f32"_c;
     Float32_convert_Float16.returnType = Type::FullType { Float32Type.name };
-    Symbol::Resolved(&Float32_convert_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Float32_convert_Float16)->returnTypeSymbol = &Float32Type;
-
-    // Conversion from UInt16
-    Float32_convert_UInt16_arg0.name = "_arg0"_c;
+    Float32_convert_Float16.parameters = Float32_convert_Float16_args;
+    Symbol::Resolved(&Float32_convert_Float16_arg0).typeSymbol = &Float16Type;
+    Symbol::Resolved(&Float32_convert_Float16).returnTypeSymbol = &Float32Type;
+    Float32_convert_UInt16_arg0.name = "val"_c;
     Float32_convert_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    Float32_convert_UInt16.documentation = "Convert u16 to f32"_c;
     Float32_convert_UInt16.name = "f32"_c;
     Float32_convert_UInt16.returnType = Type::FullType { Float32Type.name };
-    Symbol::Resolved(&Float32_convert_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float32_convert_UInt16)->returnTypeSymbol = &Float32Type;
-
-    // Conversion from Int16
-    Float32_convert_Int16_arg0.name = "_arg0"_c;
+    Float32_convert_UInt16.parameters = Float32_convert_UInt16_args;
+    Symbol::Resolved(&Float32_convert_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&Float32_convert_UInt16).returnTypeSymbol = &Float32Type;
+    Float32_convert_Int16_arg0.name = "val"_c;
     Float32_convert_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    Float32_convert_Int16.documentation = "Convert i16 to f32"_c;
     Float32_convert_Int16.name = "f32"_c;
     Float32_convert_Int16.returnType = Type::FullType { Float32Type.name };
-    Symbol::Resolved(&Float32_convert_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float32_convert_Int16)->returnTypeSymbol = &Float32Type;
-
+    Float32_convert_Int16.parameters = Float32_convert_Int16_args;
+    Symbol::Resolved(&Float32_convert_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&Float32_convert_Int16).returnTypeSymbol = &Float32Type;
     // Construct with Float32
     Float32_ctor0_arg0.name = "_arg0"_c;
     Float32_ctor0_arg0.type = Type::FullType { Float32Type.name };
     Float32_ctor0_Float32.name = "0"_c;
     Float32_ctor0_Float32.returnType = Type::FullType{ Float32Type.name };
+    Float32_ctor0_Float32.parameters = Float32_ctor0_Float32_args;
     Symbol::Resolved(&Float32_ctor0_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32_ctor0_Float32)->returnTypeSymbol = &Float32Type;
 
@@ -122,6 +4277,7 @@ Float32::Float32()
     Float32_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Float32_operator_index_Int32.name = "operator[]"_c;
     Float32_operator_index_Int32.returnType = Type::FullType{ Float32Type.name };
+    Float32_operator_index_Int32.parameters = Float32_operator_index_Int32_args;
     Symbol::Resolved(&Float32_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Float32_operator_index_Int32)->returnTypeSymbol = &Float32Type;
 
@@ -130,6 +4286,7 @@ Float32::Float32()
     Float32_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Float32_operator_index_UInt32.name = "operator[]"_c;
     Float32_operator_index_UInt32.returnType = Type::FullType{ Float32Type.name };
+    Float32_operator_index_UInt32.parameters = Float32_operator_index_UInt32_args;
     Symbol::Resolved(&Float32_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Float32_operator_index_UInt32)->returnTypeSymbol = &Float32Type;
 
@@ -138,6 +4295,7 @@ Float32::Float32()
     Float32_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Float32_operator_index_Int16.name = "operator[]"_c;
     Float32_operator_index_Int16.returnType = Type::FullType{ Float32Type.name };
+    Float32_operator_index_Int16.parameters = Float32_operator_index_Int16_args;
     Symbol::Resolved(&Float32_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Float32_operator_index_Int16)->returnTypeSymbol = &Float32Type;
 
@@ -146,6 +4304,7 @@ Float32::Float32()
     Float32_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Float32_operator_index_UInt16.name = "operator[]"_c;
     Float32_operator_index_UInt16.returnType = Type::FullType{ Float32Type.name };
+    Float32_operator_index_UInt16.parameters = Float32_operator_index_UInt16_args;
     Symbol::Resolved(&Float32_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float32_operator_index_UInt16)->returnTypeSymbol = &Float32Type;
 
@@ -154,6 +4313,7 @@ Float32::Float32()
     Float32_operator_add_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Float32_operator_add_Float32.name = "operator+"_c;
     Float32_operator_add_Float32.returnType = Type::FullType{ Float32Type.name };
+    Float32_operator_add_Float32.parameters = Float32_operator_add_Float32_args;
     Symbol::Resolved(&Float32_operator_add_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32_operator_add_Float32)->returnTypeSymbol = &Float32Type;
 
@@ -162,6 +4322,7 @@ Float32::Float32()
     Float32_operator_sub_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Float32_operator_sub_Float32.name = "operator-"_c;
     Float32_operator_sub_Float32.returnType = Type::FullType{ Float32Type.name };
+    Float32_operator_sub_Float32.parameters = Float32_operator_sub_Float32_args;
     Symbol::Resolved(&Float32_operator_sub_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32_operator_sub_Float32)->returnTypeSymbol = &Float32Type;
 
@@ -170,6 +4331,7 @@ Float32::Float32()
     Float32_operator_mul_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Float32_operator_mul_Float32.name = "operator*"_c;
     Float32_operator_mul_Float32.returnType = Type::FullType{ Float32Type.name };
+    Float32_operator_mul_Float32.parameters = Float32_operator_mul_Float32_args;
     Symbol::Resolved(&Float32_operator_mul_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32_operator_mul_Float32)->returnTypeSymbol = &Float32Type;
 
@@ -178,6 +4340,7 @@ Float32::Float32()
     Float32_operator_div_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Float32_operator_div_Float32.name = "operator/"_c;
     Float32_operator_div_Float32.returnType = Type::FullType{ Float32Type.name };
+    Float32_operator_div_Float32.parameters = Float32_operator_div_Float32_args;
     Symbol::Resolved(&Float32_operator_div_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32_operator_div_Float32)->returnTypeSymbol = &Float32Type;
 
@@ -186,6 +4349,7 @@ Float32::Float32()
     Float32_operator_mod_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Float32_operator_mod_Float32.name = "operator%"_c;
     Float32_operator_mod_Float32.returnType = Type::FullType{ Float32Type.name };
+    Float32_operator_mod_Float32.parameters = Float32_operator_mod_Float32_args;
     Symbol::Resolved(&Float32_operator_mod_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32_operator_mod_Float32)->returnTypeSymbol = &Float32Type;
 
@@ -194,6 +4358,7 @@ Float32::Float32()
     Float32_operator_addasg_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Float32_operator_addasg_Float32.name = "operator+="_c;
     Float32_operator_addasg_Float32.returnType = Type::FullType{ Float32Type.name };
+    Float32_operator_addasg_Float32.parameters = Float32_operator_addasg_Float32_args;
     Symbol::Resolved(&Float32_operator_addasg_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32_operator_addasg_Float32)->returnTypeSymbol = &Float32Type;
 
@@ -202,6 +4367,7 @@ Float32::Float32()
     Float32_operator_subasg_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Float32_operator_subasg_Float32.name = "operator-="_c;
     Float32_operator_subasg_Float32.returnType = Type::FullType{ Float32Type.name };
+    Float32_operator_subasg_Float32.parameters = Float32_operator_subasg_Float32_args;
     Symbol::Resolved(&Float32_operator_subasg_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32_operator_subasg_Float32)->returnTypeSymbol = &Float32Type;
 
@@ -210,6 +4376,7 @@ Float32::Float32()
     Float32_operator_mulasg_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Float32_operator_mulasg_Float32.name = "operator*="_c;
     Float32_operator_mulasg_Float32.returnType = Type::FullType{ Float32Type.name };
+    Float32_operator_mulasg_Float32.parameters = Float32_operator_mulasg_Float32_args;
     Symbol::Resolved(&Float32_operator_mulasg_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32_operator_mulasg_Float32)->returnTypeSymbol = &Float32Type;
 
@@ -218,6 +4385,7 @@ Float32::Float32()
     Float32_operator_divasg_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Float32_operator_divasg_Float32.name = "operator/="_c;
     Float32_operator_divasg_Float32.returnType = Type::FullType{ Float32Type.name };
+    Float32_operator_divasg_Float32.parameters = Float32_operator_divasg_Float32_args;
     Symbol::Resolved(&Float32_operator_divasg_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32_operator_divasg_Float32)->returnTypeSymbol = &Float32Type;
 
@@ -226,6 +4394,7 @@ Float32::Float32()
     Float32_operator_lt_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Float32_operator_lt_Float32.name = "operator<"_c;
     Float32_operator_lt_Float32.returnType = Type::FullType{ Float32Type.name };
+    Float32_operator_lt_Float32.parameters = Float32_operator_lt_Float32_args;
     Symbol::Resolved(&Float32_operator_lt_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32_operator_lt_Float32)->returnTypeSymbol = &Float32Type;
 
@@ -234,6 +4403,7 @@ Float32::Float32()
     Float32_operator_lte_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Float32_operator_lte_Float32.name = "operator<="_c;
     Float32_operator_lte_Float32.returnType = Type::FullType{ Float32Type.name };
+    Float32_operator_lte_Float32.parameters = Float32_operator_lte_Float32_args;
     Symbol::Resolved(&Float32_operator_lte_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32_operator_lte_Float32)->returnTypeSymbol = &Float32Type;
 
@@ -242,6 +4412,7 @@ Float32::Float32()
     Float32_operator_gt_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Float32_operator_gt_Float32.name = "operator>"_c;
     Float32_operator_gt_Float32.returnType = Type::FullType{ Float32Type.name };
+    Float32_operator_gt_Float32.parameters = Float32_operator_gt_Float32_args;
     Symbol::Resolved(&Float32_operator_gt_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32_operator_gt_Float32)->returnTypeSymbol = &Float32Type;
 
@@ -250,6 +4421,7 @@ Float32::Float32()
     Float32_operator_gte_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Float32_operator_gte_Float32.name = "operator>="_c;
     Float32_operator_gte_Float32.returnType = Type::FullType{ Float32Type.name };
+    Float32_operator_gte_Float32.parameters = Float32_operator_gte_Float32_args;
     Symbol::Resolved(&Float32_operator_gte_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32_operator_gte_Float32)->returnTypeSymbol = &Float32Type;
 
@@ -258,6 +4430,7 @@ Float32::Float32()
     Float32_operator_eq_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Float32_operator_eq_Float32.name = "operator=="_c;
     Float32_operator_eq_Float32.returnType = Type::FullType{ Float32Type.name };
+    Float32_operator_eq_Float32.parameters = Float32_operator_eq_Float32_args;
     Symbol::Resolved(&Float32_operator_eq_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32_operator_eq_Float32)->returnTypeSymbol = &Float32Type;
 
@@ -266,22 +4439,11 @@ Float32::Float32()
     Float32_operator_neq_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Float32_operator_neq_Float32.name = "operator!="_c;
     Float32_operator_neq_Float32.returnType = Type::FullType{ Float32Type.name };
+    Float32_operator_neq_Float32.parameters = Float32_operator_neq_Float32_args;
     Symbol::Resolved(&Float32_operator_neq_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32_operator_neq_Float32)->returnTypeSymbol = &Float32Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "f32"_c, &Float32_convert_UInt32 },
-        std::pair{ "f32(u32)"_c, &Float32_convert_UInt32 },
-        std::pair{ "f32"_c, &Float32_convert_Int32 },
-        std::pair{ "f32(i32)"_c, &Float32_convert_Int32 },
-        std::pair{ "f32"_c, &Float32_convert_Float16 },
-        std::pair{ "f32(f16)"_c, &Float32_convert_Float16 },
-        std::pair{ "f32"_c, &Float32_convert_UInt16 },
-        std::pair{ "f32(u16)"_c, &Float32_convert_UInt16 },
-        std::pair{ "f32"_c, &Float32_convert_Int16 },
-        std::pair{ "f32(i16)"_c, &Float32_convert_Int16 },
-        std::pair{ "f32"_c, &Float32_ctor0_Float32},
-        std::pair{ "f32(f32)"_c, &Float32_ctor0_Float32},
         std::pair{ "operator[](i32)"_c, &Float32_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &Float32_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &Float32_operator_index_Int16},
@@ -314,51 +4476,52 @@ UInt32::UInt32()
     this->baseType = TypeCode::UInt32;
     this->builtin = true;
 
-    // Conversion from Float32
-    UInt32_convert_Float32_arg0.name = "_arg0"_c;
+    UInt32_convert_Float32_arg0.name = "val"_c;
     UInt32_convert_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    UInt32_convert_Float32.documentation = "Convert f32 to u32"_c;
     UInt32_convert_Float32.name = "u32"_c;
     UInt32_convert_Float32.returnType = Type::FullType { UInt32Type.name };
-    Symbol::Resolved(&UInt32_convert_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&UInt32_convert_Float32)->returnTypeSymbol = &UInt32Type;
-
-    // Conversion from Int32
-    UInt32_convert_Int32_arg0.name = "_arg0"_c;
+    UInt32_convert_Float32.parameters = UInt32_convert_Float32_args;
+    Symbol::Resolved(&UInt32_convert_Float32_arg0).typeSymbol = &Float32Type;
+    Symbol::Resolved(&UInt32_convert_Float32).returnTypeSymbol = &UInt32Type;
+    UInt32_convert_Int32_arg0.name = "val"_c;
     UInt32_convert_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    UInt32_convert_Int32.documentation = "Convert i32 to u32"_c;
     UInt32_convert_Int32.name = "u32"_c;
     UInt32_convert_Int32.returnType = Type::FullType { UInt32Type.name };
-    Symbol::Resolved(&UInt32_convert_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&UInt32_convert_Int32)->returnTypeSymbol = &UInt32Type;
-
-    // Conversion from Float16
-    UInt32_convert_Float16_arg0.name = "_arg0"_c;
+    UInt32_convert_Int32.parameters = UInt32_convert_Int32_args;
+    Symbol::Resolved(&UInt32_convert_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&UInt32_convert_Int32).returnTypeSymbol = &UInt32Type;
+    UInt32_convert_Float16_arg0.name = "val"_c;
     UInt32_convert_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    UInt32_convert_Float16.documentation = "Convert f16 to u32"_c;
     UInt32_convert_Float16.name = "u32"_c;
     UInt32_convert_Float16.returnType = Type::FullType { UInt32Type.name };
-    Symbol::Resolved(&UInt32_convert_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&UInt32_convert_Float16)->returnTypeSymbol = &UInt32Type;
-
-    // Conversion from UInt16
-    UInt32_convert_UInt16_arg0.name = "_arg0"_c;
+    UInt32_convert_Float16.parameters = UInt32_convert_Float16_args;
+    Symbol::Resolved(&UInt32_convert_Float16_arg0).typeSymbol = &Float16Type;
+    Symbol::Resolved(&UInt32_convert_Float16).returnTypeSymbol = &UInt32Type;
+    UInt32_convert_UInt16_arg0.name = "val"_c;
     UInt32_convert_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    UInt32_convert_UInt16.documentation = "Convert u16 to u32"_c;
     UInt32_convert_UInt16.name = "u32"_c;
     UInt32_convert_UInt16.returnType = Type::FullType { UInt32Type.name };
-    Symbol::Resolved(&UInt32_convert_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&UInt32_convert_UInt16)->returnTypeSymbol = &UInt32Type;
-
-    // Conversion from Int16
-    UInt32_convert_Int16_arg0.name = "_arg0"_c;
+    UInt32_convert_UInt16.parameters = UInt32_convert_UInt16_args;
+    Symbol::Resolved(&UInt32_convert_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&UInt32_convert_UInt16).returnTypeSymbol = &UInt32Type;
+    UInt32_convert_Int16_arg0.name = "val"_c;
     UInt32_convert_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    UInt32_convert_Int16.documentation = "Convert i16 to u32"_c;
     UInt32_convert_Int16.name = "u32"_c;
     UInt32_convert_Int16.returnType = Type::FullType { UInt32Type.name };
-    Symbol::Resolved(&UInt32_convert_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&UInt32_convert_Int16)->returnTypeSymbol = &UInt32Type;
-
+    UInt32_convert_Int16.parameters = UInt32_convert_Int16_args;
+    Symbol::Resolved(&UInt32_convert_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&UInt32_convert_Int16).returnTypeSymbol = &UInt32Type;
     // Construct with UInt32
     UInt32_ctor0_arg0.name = "_arg0"_c;
     UInt32_ctor0_arg0.type = Type::FullType { UInt32Type.name };
     UInt32_ctor0_UInt32.name = "0"_c;
     UInt32_ctor0_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_ctor0_UInt32.parameters = UInt32_ctor0_UInt32_args;
     Symbol::Resolved(&UInt32_ctor0_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_ctor0_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -367,6 +4530,7 @@ UInt32::UInt32()
     UInt32_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     UInt32_operator_index_Int32.name = "operator[]"_c;
     UInt32_operator_index_Int32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_index_Int32.parameters = UInt32_operator_index_Int32_args;
     Symbol::Resolved(&UInt32_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&UInt32_operator_index_Int32)->returnTypeSymbol = &UInt32Type;
 
@@ -375,6 +4539,7 @@ UInt32::UInt32()
     UInt32_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32_operator_index_UInt32.name = "operator[]"_c;
     UInt32_operator_index_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_index_UInt32.parameters = UInt32_operator_index_UInt32_args;
     Symbol::Resolved(&UInt32_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_operator_index_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -383,6 +4548,7 @@ UInt32::UInt32()
     UInt32_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     UInt32_operator_index_Int16.name = "operator[]"_c;
     UInt32_operator_index_Int16.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_index_Int16.parameters = UInt32_operator_index_Int16_args;
     Symbol::Resolved(&UInt32_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&UInt32_operator_index_Int16)->returnTypeSymbol = &UInt32Type;
 
@@ -391,6 +4557,7 @@ UInt32::UInt32()
     UInt32_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt32_operator_index_UInt16.name = "operator[]"_c;
     UInt32_operator_index_UInt16.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_index_UInt16.parameters = UInt32_operator_index_UInt16_args;
     Symbol::Resolved(&UInt32_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt32_operator_index_UInt16)->returnTypeSymbol = &UInt32Type;
 
@@ -399,6 +4566,7 @@ UInt32::UInt32()
     UInt32_operator_add_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32_operator_add_UInt32.name = "operator+"_c;
     UInt32_operator_add_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_add_UInt32.parameters = UInt32_operator_add_UInt32_args;
     Symbol::Resolved(&UInt32_operator_add_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_operator_add_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -407,6 +4575,7 @@ UInt32::UInt32()
     UInt32_operator_sub_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32_operator_sub_UInt32.name = "operator-"_c;
     UInt32_operator_sub_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_sub_UInt32.parameters = UInt32_operator_sub_UInt32_args;
     Symbol::Resolved(&UInt32_operator_sub_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_operator_sub_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -415,6 +4584,7 @@ UInt32::UInt32()
     UInt32_operator_mul_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32_operator_mul_UInt32.name = "operator*"_c;
     UInt32_operator_mul_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_mul_UInt32.parameters = UInt32_operator_mul_UInt32_args;
     Symbol::Resolved(&UInt32_operator_mul_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_operator_mul_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -423,6 +4593,7 @@ UInt32::UInt32()
     UInt32_operator_div_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32_operator_div_UInt32.name = "operator/"_c;
     UInt32_operator_div_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_div_UInt32.parameters = UInt32_operator_div_UInt32_args;
     Symbol::Resolved(&UInt32_operator_div_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_operator_div_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -431,6 +4602,7 @@ UInt32::UInt32()
     UInt32_operator_mod_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32_operator_mod_UInt32.name = "operator%"_c;
     UInt32_operator_mod_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_mod_UInt32.parameters = UInt32_operator_mod_UInt32_args;
     Symbol::Resolved(&UInt32_operator_mod_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_operator_mod_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -439,6 +4611,7 @@ UInt32::UInt32()
     UInt32_operator_addasg_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32_operator_addasg_UInt32.name = "operator+="_c;
     UInt32_operator_addasg_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_addasg_UInt32.parameters = UInt32_operator_addasg_UInt32_args;
     Symbol::Resolved(&UInt32_operator_addasg_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_operator_addasg_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -447,6 +4620,7 @@ UInt32::UInt32()
     UInt32_operator_subasg_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32_operator_subasg_UInt32.name = "operator-="_c;
     UInt32_operator_subasg_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_subasg_UInt32.parameters = UInt32_operator_subasg_UInt32_args;
     Symbol::Resolved(&UInt32_operator_subasg_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_operator_subasg_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -455,6 +4629,7 @@ UInt32::UInt32()
     UInt32_operator_mulasg_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32_operator_mulasg_UInt32.name = "operator*="_c;
     UInt32_operator_mulasg_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_mulasg_UInt32.parameters = UInt32_operator_mulasg_UInt32_args;
     Symbol::Resolved(&UInt32_operator_mulasg_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_operator_mulasg_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -463,6 +4638,7 @@ UInt32::UInt32()
     UInt32_operator_divasg_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32_operator_divasg_UInt32.name = "operator/="_c;
     UInt32_operator_divasg_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_divasg_UInt32.parameters = UInt32_operator_divasg_UInt32_args;
     Symbol::Resolved(&UInt32_operator_divasg_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_operator_divasg_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -471,6 +4647,7 @@ UInt32::UInt32()
     UInt32_operator_lt_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32_operator_lt_UInt32.name = "operator<"_c;
     UInt32_operator_lt_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_lt_UInt32.parameters = UInt32_operator_lt_UInt32_args;
     Symbol::Resolved(&UInt32_operator_lt_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_operator_lt_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -479,6 +4656,7 @@ UInt32::UInt32()
     UInt32_operator_lte_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32_operator_lte_UInt32.name = "operator<="_c;
     UInt32_operator_lte_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_lte_UInt32.parameters = UInt32_operator_lte_UInt32_args;
     Symbol::Resolved(&UInt32_operator_lte_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_operator_lte_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -487,6 +4665,7 @@ UInt32::UInt32()
     UInt32_operator_gt_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32_operator_gt_UInt32.name = "operator>"_c;
     UInt32_operator_gt_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_gt_UInt32.parameters = UInt32_operator_gt_UInt32_args;
     Symbol::Resolved(&UInt32_operator_gt_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_operator_gt_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -495,6 +4674,7 @@ UInt32::UInt32()
     UInt32_operator_gte_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32_operator_gte_UInt32.name = "operator>="_c;
     UInt32_operator_gte_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_gte_UInt32.parameters = UInt32_operator_gte_UInt32_args;
     Symbol::Resolved(&UInt32_operator_gte_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_operator_gte_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -503,6 +4683,7 @@ UInt32::UInt32()
     UInt32_operator_eq_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32_operator_eq_UInt32.name = "operator=="_c;
     UInt32_operator_eq_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_eq_UInt32.parameters = UInt32_operator_eq_UInt32_args;
     Symbol::Resolved(&UInt32_operator_eq_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_operator_eq_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -511,6 +4692,7 @@ UInt32::UInt32()
     UInt32_operator_neq_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32_operator_neq_UInt32.name = "operator!="_c;
     UInt32_operator_neq_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_neq_UInt32.parameters = UInt32_operator_neq_UInt32_args;
     Symbol::Resolved(&UInt32_operator_neq_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_operator_neq_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -519,6 +4701,7 @@ UInt32::UInt32()
     UInt32_operator_or_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32_operator_or_UInt32.name = "operator|"_c;
     UInt32_operator_or_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_or_UInt32.parameters = UInt32_operator_or_UInt32_args;
     Symbol::Resolved(&UInt32_operator_or_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_operator_or_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -527,6 +4710,7 @@ UInt32::UInt32()
     UInt32_operator_and_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32_operator_and_UInt32.name = "operator&"_c;
     UInt32_operator_and_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_and_UInt32.parameters = UInt32_operator_and_UInt32_args;
     Symbol::Resolved(&UInt32_operator_and_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_operator_and_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -535,6 +4719,7 @@ UInt32::UInt32()
     UInt32_operator_xor_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32_operator_xor_UInt32.name = "operator^"_c;
     UInt32_operator_xor_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_xor_UInt32.parameters = UInt32_operator_xor_UInt32_args;
     Symbol::Resolved(&UInt32_operator_xor_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_operator_xor_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -543,6 +4728,7 @@ UInt32::UInt32()
     UInt32_operator_lsh_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32_operator_lsh_UInt32.name = "operator<<"_c;
     UInt32_operator_lsh_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_lsh_UInt32.parameters = UInt32_operator_lsh_UInt32_args;
     Symbol::Resolved(&UInt32_operator_lsh_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_operator_lsh_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -551,6 +4737,7 @@ UInt32::UInt32()
     UInt32_operator_rsh_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32_operator_rsh_UInt32.name = "operator>>"_c;
     UInt32_operator_rsh_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_rsh_UInt32.parameters = UInt32_operator_rsh_UInt32_args;
     Symbol::Resolved(&UInt32_operator_rsh_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_operator_rsh_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -559,6 +4746,7 @@ UInt32::UInt32()
     UInt32_operator_orasg_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32_operator_orasg_UInt32.name = "operator|="_c;
     UInt32_operator_orasg_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_orasg_UInt32.parameters = UInt32_operator_orasg_UInt32_args;
     Symbol::Resolved(&UInt32_operator_orasg_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_operator_orasg_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -567,6 +4755,7 @@ UInt32::UInt32()
     UInt32_operator_andasg_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32_operator_andasg_UInt32.name = "operator&="_c;
     UInt32_operator_andasg_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_andasg_UInt32.parameters = UInt32_operator_andasg_UInt32_args;
     Symbol::Resolved(&UInt32_operator_andasg_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_operator_andasg_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -575,6 +4764,7 @@ UInt32::UInt32()
     UInt32_operator_xorasg_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32_operator_xorasg_UInt32.name = "operator^="_c;
     UInt32_operator_xorasg_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_xorasg_UInt32.parameters = UInt32_operator_xorasg_UInt32_args;
     Symbol::Resolved(&UInt32_operator_xorasg_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_operator_xorasg_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -583,6 +4773,7 @@ UInt32::UInt32()
     UInt32_operator_lshasg_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32_operator_lshasg_UInt32.name = "operator<<="_c;
     UInt32_operator_lshasg_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_lshasg_UInt32.parameters = UInt32_operator_lshasg_UInt32_args;
     Symbol::Resolved(&UInt32_operator_lshasg_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_operator_lshasg_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -591,22 +4782,11 @@ UInt32::UInt32()
     UInt32_operator_rhsasg_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32_operator_rhsasg_UInt32.name = "operator>>="_c;
     UInt32_operator_rhsasg_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32_operator_rhsasg_UInt32.parameters = UInt32_operator_rhsasg_UInt32_args;
     Symbol::Resolved(&UInt32_operator_rhsasg_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32_operator_rhsasg_UInt32)->returnTypeSymbol = &UInt32Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "u32"_c, &UInt32_convert_Float32 },
-        std::pair{ "u32(f32)"_c, &UInt32_convert_Float32 },
-        std::pair{ "u32"_c, &UInt32_convert_Int32 },
-        std::pair{ "u32(i32)"_c, &UInt32_convert_Int32 },
-        std::pair{ "u32"_c, &UInt32_convert_Float16 },
-        std::pair{ "u32(f16)"_c, &UInt32_convert_Float16 },
-        std::pair{ "u32"_c, &UInt32_convert_UInt16 },
-        std::pair{ "u32(u16)"_c, &UInt32_convert_UInt16 },
-        std::pair{ "u32"_c, &UInt32_convert_Int16 },
-        std::pair{ "u32(i16)"_c, &UInt32_convert_Int16 },
-        std::pair{ "u32"_c, &UInt32_ctor0_UInt32},
-        std::pair{ "u32(u32)"_c, &UInt32_ctor0_UInt32},
         std::pair{ "operator[](i32)"_c, &UInt32_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &UInt32_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &UInt32_operator_index_Int16},
@@ -649,51 +4829,52 @@ Int32::Int32()
     this->baseType = TypeCode::Int32;
     this->builtin = true;
 
-    // Conversion from Float32
-    Int32_convert_Float32_arg0.name = "_arg0"_c;
+    Int32_convert_Float32_arg0.name = "val"_c;
     Int32_convert_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    Int32_convert_Float32.documentation = "Convert f32 to i32"_c;
     Int32_convert_Float32.name = "i32"_c;
     Int32_convert_Float32.returnType = Type::FullType { Int32Type.name };
-    Symbol::Resolved(&Int32_convert_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Int32_convert_Float32)->returnTypeSymbol = &Int32Type;
-
-    // Conversion from UInt32
-    Int32_convert_UInt32_arg0.name = "_arg0"_c;
+    Int32_convert_Float32.parameters = Int32_convert_Float32_args;
+    Symbol::Resolved(&Int32_convert_Float32_arg0).typeSymbol = &Float32Type;
+    Symbol::Resolved(&Int32_convert_Float32).returnTypeSymbol = &Int32Type;
+    Int32_convert_UInt32_arg0.name = "val"_c;
     Int32_convert_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    Int32_convert_UInt32.documentation = "Convert u32 to i32"_c;
     Int32_convert_UInt32.name = "i32"_c;
     Int32_convert_UInt32.returnType = Type::FullType { Int32Type.name };
-    Symbol::Resolved(&Int32_convert_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Int32_convert_UInt32)->returnTypeSymbol = &Int32Type;
-
-    // Conversion from Float16
-    Int32_convert_Float16_arg0.name = "_arg0"_c;
+    Int32_convert_UInt32.parameters = Int32_convert_UInt32_args;
+    Symbol::Resolved(&Int32_convert_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&Int32_convert_UInt32).returnTypeSymbol = &Int32Type;
+    Int32_convert_Float16_arg0.name = "val"_c;
     Int32_convert_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    Int32_convert_Float16.documentation = "Convert f16 to i32"_c;
     Int32_convert_Float16.name = "i32"_c;
     Int32_convert_Float16.returnType = Type::FullType { Int32Type.name };
-    Symbol::Resolved(&Int32_convert_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Int32_convert_Float16)->returnTypeSymbol = &Int32Type;
-
-    // Conversion from UInt16
-    Int32_convert_UInt16_arg0.name = "_arg0"_c;
+    Int32_convert_Float16.parameters = Int32_convert_Float16_args;
+    Symbol::Resolved(&Int32_convert_Float16_arg0).typeSymbol = &Float16Type;
+    Symbol::Resolved(&Int32_convert_Float16).returnTypeSymbol = &Int32Type;
+    Int32_convert_UInt16_arg0.name = "val"_c;
     Int32_convert_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    Int32_convert_UInt16.documentation = "Convert u16 to i32"_c;
     Int32_convert_UInt16.name = "i32"_c;
     Int32_convert_UInt16.returnType = Type::FullType { Int32Type.name };
-    Symbol::Resolved(&Int32_convert_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Int32_convert_UInt16)->returnTypeSymbol = &Int32Type;
-
-    // Conversion from Int16
-    Int32_convert_Int16_arg0.name = "_arg0"_c;
+    Int32_convert_UInt16.parameters = Int32_convert_UInt16_args;
+    Symbol::Resolved(&Int32_convert_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&Int32_convert_UInt16).returnTypeSymbol = &Int32Type;
+    Int32_convert_Int16_arg0.name = "val"_c;
     Int32_convert_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    Int32_convert_Int16.documentation = "Convert i16 to i32"_c;
     Int32_convert_Int16.name = "i32"_c;
     Int32_convert_Int16.returnType = Type::FullType { Int32Type.name };
-    Symbol::Resolved(&Int32_convert_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Int32_convert_Int16)->returnTypeSymbol = &Int32Type;
-
+    Int32_convert_Int16.parameters = Int32_convert_Int16_args;
+    Symbol::Resolved(&Int32_convert_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&Int32_convert_Int16).returnTypeSymbol = &Int32Type;
     // Construct with Int32
     Int32_ctor0_arg0.name = "_arg0"_c;
     Int32_ctor0_arg0.type = Type::FullType { Int32Type.name };
     Int32_ctor0_Int32.name = "0"_c;
     Int32_ctor0_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_ctor0_Int32.parameters = Int32_ctor0_Int32_args;
     Symbol::Resolved(&Int32_ctor0_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_ctor0_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -702,6 +4883,7 @@ Int32::Int32()
     Int32_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32_operator_index_Int32.name = "operator[]"_c;
     Int32_operator_index_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_index_Int32.parameters = Int32_operator_index_Int32_args;
     Symbol::Resolved(&Int32_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_operator_index_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -710,6 +4892,7 @@ Int32::Int32()
     Int32_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Int32_operator_index_UInt32.name = "operator[]"_c;
     Int32_operator_index_UInt32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_index_UInt32.parameters = Int32_operator_index_UInt32_args;
     Symbol::Resolved(&Int32_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Int32_operator_index_UInt32)->returnTypeSymbol = &Int32Type;
 
@@ -718,6 +4901,7 @@ Int32::Int32()
     Int32_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int32_operator_index_Int16.name = "operator[]"_c;
     Int32_operator_index_Int16.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_index_Int16.parameters = Int32_operator_index_Int16_args;
     Symbol::Resolved(&Int32_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int32_operator_index_Int16)->returnTypeSymbol = &Int32Type;
 
@@ -726,6 +4910,7 @@ Int32::Int32()
     Int32_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Int32_operator_index_UInt16.name = "operator[]"_c;
     Int32_operator_index_UInt16.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_index_UInt16.parameters = Int32_operator_index_UInt16_args;
     Symbol::Resolved(&Int32_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Int32_operator_index_UInt16)->returnTypeSymbol = &Int32Type;
 
@@ -734,6 +4919,7 @@ Int32::Int32()
     Int32_operator_add_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32_operator_add_Int32.name = "operator+"_c;
     Int32_operator_add_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_add_Int32.parameters = Int32_operator_add_Int32_args;
     Symbol::Resolved(&Int32_operator_add_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_operator_add_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -742,6 +4928,7 @@ Int32::Int32()
     Int32_operator_sub_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32_operator_sub_Int32.name = "operator-"_c;
     Int32_operator_sub_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_sub_Int32.parameters = Int32_operator_sub_Int32_args;
     Symbol::Resolved(&Int32_operator_sub_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_operator_sub_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -750,6 +4937,7 @@ Int32::Int32()
     Int32_operator_mul_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32_operator_mul_Int32.name = "operator*"_c;
     Int32_operator_mul_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_mul_Int32.parameters = Int32_operator_mul_Int32_args;
     Symbol::Resolved(&Int32_operator_mul_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_operator_mul_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -758,6 +4946,7 @@ Int32::Int32()
     Int32_operator_div_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32_operator_div_Int32.name = "operator/"_c;
     Int32_operator_div_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_div_Int32.parameters = Int32_operator_div_Int32_args;
     Symbol::Resolved(&Int32_operator_div_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_operator_div_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -766,6 +4955,7 @@ Int32::Int32()
     Int32_operator_mod_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32_operator_mod_Int32.name = "operator%"_c;
     Int32_operator_mod_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_mod_Int32.parameters = Int32_operator_mod_Int32_args;
     Symbol::Resolved(&Int32_operator_mod_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_operator_mod_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -774,6 +4964,7 @@ Int32::Int32()
     Int32_operator_addasg_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32_operator_addasg_Int32.name = "operator+="_c;
     Int32_operator_addasg_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_addasg_Int32.parameters = Int32_operator_addasg_Int32_args;
     Symbol::Resolved(&Int32_operator_addasg_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_operator_addasg_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -782,6 +4973,7 @@ Int32::Int32()
     Int32_operator_subasg_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32_operator_subasg_Int32.name = "operator-="_c;
     Int32_operator_subasg_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_subasg_Int32.parameters = Int32_operator_subasg_Int32_args;
     Symbol::Resolved(&Int32_operator_subasg_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_operator_subasg_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -790,6 +4982,7 @@ Int32::Int32()
     Int32_operator_mulasg_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32_operator_mulasg_Int32.name = "operator*="_c;
     Int32_operator_mulasg_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_mulasg_Int32.parameters = Int32_operator_mulasg_Int32_args;
     Symbol::Resolved(&Int32_operator_mulasg_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_operator_mulasg_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -798,6 +4991,7 @@ Int32::Int32()
     Int32_operator_divasg_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32_operator_divasg_Int32.name = "operator/="_c;
     Int32_operator_divasg_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_divasg_Int32.parameters = Int32_operator_divasg_Int32_args;
     Symbol::Resolved(&Int32_operator_divasg_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_operator_divasg_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -806,6 +5000,7 @@ Int32::Int32()
     Int32_operator_lt_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32_operator_lt_Int32.name = "operator<"_c;
     Int32_operator_lt_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_lt_Int32.parameters = Int32_operator_lt_Int32_args;
     Symbol::Resolved(&Int32_operator_lt_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_operator_lt_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -814,6 +5009,7 @@ Int32::Int32()
     Int32_operator_lte_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32_operator_lte_Int32.name = "operator<="_c;
     Int32_operator_lte_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_lte_Int32.parameters = Int32_operator_lte_Int32_args;
     Symbol::Resolved(&Int32_operator_lte_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_operator_lte_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -822,6 +5018,7 @@ Int32::Int32()
     Int32_operator_gt_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32_operator_gt_Int32.name = "operator>"_c;
     Int32_operator_gt_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_gt_Int32.parameters = Int32_operator_gt_Int32_args;
     Symbol::Resolved(&Int32_operator_gt_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_operator_gt_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -830,6 +5027,7 @@ Int32::Int32()
     Int32_operator_gte_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32_operator_gte_Int32.name = "operator>="_c;
     Int32_operator_gte_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_gte_Int32.parameters = Int32_operator_gte_Int32_args;
     Symbol::Resolved(&Int32_operator_gte_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_operator_gte_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -838,6 +5036,7 @@ Int32::Int32()
     Int32_operator_eq_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32_operator_eq_Int32.name = "operator=="_c;
     Int32_operator_eq_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_eq_Int32.parameters = Int32_operator_eq_Int32_args;
     Symbol::Resolved(&Int32_operator_eq_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_operator_eq_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -846,6 +5045,7 @@ Int32::Int32()
     Int32_operator_neq_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32_operator_neq_Int32.name = "operator!="_c;
     Int32_operator_neq_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_neq_Int32.parameters = Int32_operator_neq_Int32_args;
     Symbol::Resolved(&Int32_operator_neq_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_operator_neq_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -854,6 +5054,7 @@ Int32::Int32()
     Int32_operator_or_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32_operator_or_Int32.name = "operator|"_c;
     Int32_operator_or_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_or_Int32.parameters = Int32_operator_or_Int32_args;
     Symbol::Resolved(&Int32_operator_or_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_operator_or_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -862,6 +5063,7 @@ Int32::Int32()
     Int32_operator_and_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32_operator_and_Int32.name = "operator&"_c;
     Int32_operator_and_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_and_Int32.parameters = Int32_operator_and_Int32_args;
     Symbol::Resolved(&Int32_operator_and_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_operator_and_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -870,6 +5072,7 @@ Int32::Int32()
     Int32_operator_xor_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32_operator_xor_Int32.name = "operator^"_c;
     Int32_operator_xor_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_xor_Int32.parameters = Int32_operator_xor_Int32_args;
     Symbol::Resolved(&Int32_operator_xor_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_operator_xor_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -878,6 +5081,7 @@ Int32::Int32()
     Int32_operator_lsh_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32_operator_lsh_Int32.name = "operator<<"_c;
     Int32_operator_lsh_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_lsh_Int32.parameters = Int32_operator_lsh_Int32_args;
     Symbol::Resolved(&Int32_operator_lsh_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_operator_lsh_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -886,6 +5090,7 @@ Int32::Int32()
     Int32_operator_rsh_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32_operator_rsh_Int32.name = "operator>>"_c;
     Int32_operator_rsh_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_rsh_Int32.parameters = Int32_operator_rsh_Int32_args;
     Symbol::Resolved(&Int32_operator_rsh_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_operator_rsh_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -894,6 +5099,7 @@ Int32::Int32()
     Int32_operator_orasg_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32_operator_orasg_Int32.name = "operator|="_c;
     Int32_operator_orasg_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_orasg_Int32.parameters = Int32_operator_orasg_Int32_args;
     Symbol::Resolved(&Int32_operator_orasg_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_operator_orasg_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -902,6 +5108,7 @@ Int32::Int32()
     Int32_operator_andasg_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32_operator_andasg_Int32.name = "operator&="_c;
     Int32_operator_andasg_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_andasg_Int32.parameters = Int32_operator_andasg_Int32_args;
     Symbol::Resolved(&Int32_operator_andasg_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_operator_andasg_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -910,6 +5117,7 @@ Int32::Int32()
     Int32_operator_xorasg_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32_operator_xorasg_Int32.name = "operator^="_c;
     Int32_operator_xorasg_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_xorasg_Int32.parameters = Int32_operator_xorasg_Int32_args;
     Symbol::Resolved(&Int32_operator_xorasg_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_operator_xorasg_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -918,6 +5126,7 @@ Int32::Int32()
     Int32_operator_lshasg_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32_operator_lshasg_Int32.name = "operator<<="_c;
     Int32_operator_lshasg_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_lshasg_Int32.parameters = Int32_operator_lshasg_Int32_args;
     Symbol::Resolved(&Int32_operator_lshasg_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_operator_lshasg_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -926,22 +5135,11 @@ Int32::Int32()
     Int32_operator_rhsasg_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32_operator_rhsasg_Int32.name = "operator>>="_c;
     Int32_operator_rhsasg_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32_operator_rhsasg_Int32.parameters = Int32_operator_rhsasg_Int32_args;
     Symbol::Resolved(&Int32_operator_rhsasg_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32_operator_rhsasg_Int32)->returnTypeSymbol = &Int32Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "i32"_c, &Int32_convert_Float32 },
-        std::pair{ "i32(f32)"_c, &Int32_convert_Float32 },
-        std::pair{ "i32"_c, &Int32_convert_UInt32 },
-        std::pair{ "i32(u32)"_c, &Int32_convert_UInt32 },
-        std::pair{ "i32"_c, &Int32_convert_Float16 },
-        std::pair{ "i32(f16)"_c, &Int32_convert_Float16 },
-        std::pair{ "i32"_c, &Int32_convert_UInt16 },
-        std::pair{ "i32(u16)"_c, &Int32_convert_UInt16 },
-        std::pair{ "i32"_c, &Int32_convert_Int16 },
-        std::pair{ "i32(i16)"_c, &Int32_convert_Int16 },
-        std::pair{ "i32"_c, &Int32_ctor0_Int32},
-        std::pair{ "i32(i32)"_c, &Int32_ctor0_Int32},
         std::pair{ "operator[](i32)"_c, &Int32_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &Int32_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &Int32_operator_index_Int16},
@@ -984,43 +5182,44 @@ Bool8::Bool8()
     this->baseType = TypeCode::Bool8;
     this->builtin = true;
 
-    // Conversion from UInt32
-    Bool8_convert_UInt32_arg0.name = "_arg0"_c;
+    Bool8_convert_UInt32_arg0.name = "val"_c;
     Bool8_convert_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    Bool8_convert_UInt32.documentation = "Convert u32 to b8"_c;
     Bool8_convert_UInt32.name = "b8"_c;
     Bool8_convert_UInt32.returnType = Type::FullType { Bool8Type.name };
-    Symbol::Resolved(&Bool8_convert_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Bool8_convert_UInt32)->returnTypeSymbol = &Bool8Type;
-
-    // Conversion from Int32
-    Bool8_convert_Int32_arg0.name = "_arg0"_c;
+    Bool8_convert_UInt32.parameters = Bool8_convert_UInt32_args;
+    Symbol::Resolved(&Bool8_convert_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&Bool8_convert_UInt32).returnTypeSymbol = &Bool8Type;
+    Bool8_convert_Int32_arg0.name = "val"_c;
     Bool8_convert_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    Bool8_convert_Int32.documentation = "Convert i32 to b8"_c;
     Bool8_convert_Int32.name = "b8"_c;
     Bool8_convert_Int32.returnType = Type::FullType { Bool8Type.name };
-    Symbol::Resolved(&Bool8_convert_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Bool8_convert_Int32)->returnTypeSymbol = &Bool8Type;
-
-    // Conversion from UInt16
-    Bool8_convert_UInt16_arg0.name = "_arg0"_c;
+    Bool8_convert_Int32.parameters = Bool8_convert_Int32_args;
+    Symbol::Resolved(&Bool8_convert_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&Bool8_convert_Int32).returnTypeSymbol = &Bool8Type;
+    Bool8_convert_UInt16_arg0.name = "val"_c;
     Bool8_convert_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    Bool8_convert_UInt16.documentation = "Convert u16 to b8"_c;
     Bool8_convert_UInt16.name = "b8"_c;
     Bool8_convert_UInt16.returnType = Type::FullType { Bool8Type.name };
-    Symbol::Resolved(&Bool8_convert_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Bool8_convert_UInt16)->returnTypeSymbol = &Bool8Type;
-
-    // Conversion from Int16
-    Bool8_convert_Int16_arg0.name = "_arg0"_c;
+    Bool8_convert_UInt16.parameters = Bool8_convert_UInt16_args;
+    Symbol::Resolved(&Bool8_convert_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&Bool8_convert_UInt16).returnTypeSymbol = &Bool8Type;
+    Bool8_convert_Int16_arg0.name = "val"_c;
     Bool8_convert_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    Bool8_convert_Int16.documentation = "Convert i16 to b8"_c;
     Bool8_convert_Int16.name = "b8"_c;
     Bool8_convert_Int16.returnType = Type::FullType { Bool8Type.name };
-    Symbol::Resolved(&Bool8_convert_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Bool8_convert_Int16)->returnTypeSymbol = &Bool8Type;
-
+    Bool8_convert_Int16.parameters = Bool8_convert_Int16_args;
+    Symbol::Resolved(&Bool8_convert_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&Bool8_convert_Int16).returnTypeSymbol = &Bool8Type;
     // Construct with Bool8
     Bool8_ctor0_arg0.name = "_arg0"_c;
     Bool8_ctor0_arg0.type = Type::FullType { Bool8Type.name };
     Bool8_ctor0_Bool8.name = "0"_c;
     Bool8_ctor0_Bool8.returnType = Type::FullType{ Bool8Type.name };
+    Bool8_ctor0_Bool8.parameters = Bool8_ctor0_Bool8_args;
     Symbol::Resolved(&Bool8_ctor0_arg0)->typeSymbol = &Bool8Type;
     Symbol::Resolved(&Bool8_ctor0_Bool8)->returnTypeSymbol = &Bool8Type;
 
@@ -1029,6 +5228,7 @@ Bool8::Bool8()
     Bool8_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Bool8_operator_index_Int32.name = "operator[]"_c;
     Bool8_operator_index_Int32.returnType = Type::FullType{ Bool8Type.name };
+    Bool8_operator_index_Int32.parameters = Bool8_operator_index_Int32_args;
     Symbol::Resolved(&Bool8_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Bool8_operator_index_Int32)->returnTypeSymbol = &Bool8Type;
 
@@ -1037,6 +5237,7 @@ Bool8::Bool8()
     Bool8_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Bool8_operator_index_UInt32.name = "operator[]"_c;
     Bool8_operator_index_UInt32.returnType = Type::FullType{ Bool8Type.name };
+    Bool8_operator_index_UInt32.parameters = Bool8_operator_index_UInt32_args;
     Symbol::Resolved(&Bool8_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Bool8_operator_index_UInt32)->returnTypeSymbol = &Bool8Type;
 
@@ -1045,6 +5246,7 @@ Bool8::Bool8()
     Bool8_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Bool8_operator_index_Int16.name = "operator[]"_c;
     Bool8_operator_index_Int16.returnType = Type::FullType{ Bool8Type.name };
+    Bool8_operator_index_Int16.parameters = Bool8_operator_index_Int16_args;
     Symbol::Resolved(&Bool8_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Bool8_operator_index_Int16)->returnTypeSymbol = &Bool8Type;
 
@@ -1053,6 +5255,7 @@ Bool8::Bool8()
     Bool8_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Bool8_operator_index_UInt16.name = "operator[]"_c;
     Bool8_operator_index_UInt16.returnType = Type::FullType{ Bool8Type.name };
+    Bool8_operator_index_UInt16.parameters = Bool8_operator_index_UInt16_args;
     Symbol::Resolved(&Bool8_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Bool8_operator_index_UInt16)->returnTypeSymbol = &Bool8Type;
 
@@ -1061,6 +5264,7 @@ Bool8::Bool8()
     Bool8_operator_oror_Bool8_arg0.type = Type::FullType{ Bool8Type.name };
     Bool8_operator_oror_Bool8.name = "operator||"_c;
     Bool8_operator_oror_Bool8.returnType = Type::FullType{ Bool8Type.name };
+    Bool8_operator_oror_Bool8.parameters = Bool8_operator_oror_Bool8_args;
     Symbol::Resolved(&Bool8_operator_oror_Bool8_arg0)->typeSymbol = &Bool8Type;
     Symbol::Resolved(&Bool8_operator_oror_Bool8)->returnTypeSymbol = &Bool8Type;
 
@@ -1069,6 +5273,7 @@ Bool8::Bool8()
     Bool8_operator_andand_Bool8_arg0.type = Type::FullType{ Bool8Type.name };
     Bool8_operator_andand_Bool8.name = "operator&&"_c;
     Bool8_operator_andand_Bool8.returnType = Type::FullType{ Bool8Type.name };
+    Bool8_operator_andand_Bool8.parameters = Bool8_operator_andand_Bool8_args;
     Symbol::Resolved(&Bool8_operator_andand_Bool8_arg0)->typeSymbol = &Bool8Type;
     Symbol::Resolved(&Bool8_operator_andand_Bool8)->returnTypeSymbol = &Bool8Type;
 
@@ -1077,6 +5282,7 @@ Bool8::Bool8()
     Bool8_operator_eq_Bool8_arg0.type = Type::FullType{ Bool8Type.name };
     Bool8_operator_eq_Bool8.name = "operator=="_c;
     Bool8_operator_eq_Bool8.returnType = Type::FullType{ Bool8Type.name };
+    Bool8_operator_eq_Bool8.parameters = Bool8_operator_eq_Bool8_args;
     Symbol::Resolved(&Bool8_operator_eq_Bool8_arg0)->typeSymbol = &Bool8Type;
     Symbol::Resolved(&Bool8_operator_eq_Bool8)->returnTypeSymbol = &Bool8Type;
 
@@ -1085,20 +5291,11 @@ Bool8::Bool8()
     Bool8_operator_neq_Bool8_arg0.type = Type::FullType{ Bool8Type.name };
     Bool8_operator_neq_Bool8.name = "operator!="_c;
     Bool8_operator_neq_Bool8.returnType = Type::FullType{ Bool8Type.name };
+    Bool8_operator_neq_Bool8.parameters = Bool8_operator_neq_Bool8_args;
     Symbol::Resolved(&Bool8_operator_neq_Bool8_arg0)->typeSymbol = &Bool8Type;
     Symbol::Resolved(&Bool8_operator_neq_Bool8)->returnTypeSymbol = &Bool8Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "b8"_c, &Bool8_convert_UInt32 },
-        std::pair{ "b8(u32)"_c, &Bool8_convert_UInt32 },
-        std::pair{ "b8"_c, &Bool8_convert_Int32 },
-        std::pair{ "b8(i32)"_c, &Bool8_convert_Int32 },
-        std::pair{ "b8"_c, &Bool8_convert_UInt16 },
-        std::pair{ "b8(u16)"_c, &Bool8_convert_UInt16 },
-        std::pair{ "b8"_c, &Bool8_convert_Int16 },
-        std::pair{ "b8(i16)"_c, &Bool8_convert_Int16 },
-        std::pair{ "b8"_c, &Bool8_ctor0_Bool8},
-        std::pair{ "b8(b8)"_c, &Bool8_ctor0_Bool8},
         std::pair{ "operator[](i32)"_c, &Bool8_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &Bool8_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &Bool8_operator_index_Int16},
@@ -1120,51 +5317,52 @@ Float16::Float16()
     this->baseType = TypeCode::Float16;
     this->builtin = true;
 
-    // Conversion from Float32
-    Float16_convert_Float32_arg0.name = "_arg0"_c;
+    Float16_convert_Float32_arg0.name = "val"_c;
     Float16_convert_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    Float16_convert_Float32.documentation = "Convert f32 to f16"_c;
     Float16_convert_Float32.name = "f16"_c;
     Float16_convert_Float32.returnType = Type::FullType { Float16Type.name };
-    Symbol::Resolved(&Float16_convert_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Float16_convert_Float32)->returnTypeSymbol = &Float16Type;
-
-    // Conversion from UInt32
-    Float16_convert_UInt32_arg0.name = "_arg0"_c;
+    Float16_convert_Float32.parameters = Float16_convert_Float32_args;
+    Symbol::Resolved(&Float16_convert_Float32_arg0).typeSymbol = &Float32Type;
+    Symbol::Resolved(&Float16_convert_Float32).returnTypeSymbol = &Float16Type;
+    Float16_convert_UInt32_arg0.name = "val"_c;
     Float16_convert_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    Float16_convert_UInt32.documentation = "Convert u32 to f16"_c;
     Float16_convert_UInt32.name = "f16"_c;
     Float16_convert_UInt32.returnType = Type::FullType { Float16Type.name };
-    Symbol::Resolved(&Float16_convert_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float16_convert_UInt32)->returnTypeSymbol = &Float16Type;
-
-    // Conversion from Int32
-    Float16_convert_Int32_arg0.name = "_arg0"_c;
+    Float16_convert_UInt32.parameters = Float16_convert_UInt32_args;
+    Symbol::Resolved(&Float16_convert_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&Float16_convert_UInt32).returnTypeSymbol = &Float16Type;
+    Float16_convert_Int32_arg0.name = "val"_c;
     Float16_convert_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    Float16_convert_Int32.documentation = "Convert i32 to f16"_c;
     Float16_convert_Int32.name = "f16"_c;
     Float16_convert_Int32.returnType = Type::FullType { Float16Type.name };
-    Symbol::Resolved(&Float16_convert_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float16_convert_Int32)->returnTypeSymbol = &Float16Type;
-
-    // Conversion from UInt16
-    Float16_convert_UInt16_arg0.name = "_arg0"_c;
+    Float16_convert_Int32.parameters = Float16_convert_Int32_args;
+    Symbol::Resolved(&Float16_convert_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&Float16_convert_Int32).returnTypeSymbol = &Float16Type;
+    Float16_convert_UInt16_arg0.name = "val"_c;
     Float16_convert_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    Float16_convert_UInt16.documentation = "Convert u16 to f16"_c;
     Float16_convert_UInt16.name = "f16"_c;
     Float16_convert_UInt16.returnType = Type::FullType { Float16Type.name };
-    Symbol::Resolved(&Float16_convert_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float16_convert_UInt16)->returnTypeSymbol = &Float16Type;
-
-    // Conversion from Int16
-    Float16_convert_Int16_arg0.name = "_arg0"_c;
+    Float16_convert_UInt16.parameters = Float16_convert_UInt16_args;
+    Symbol::Resolved(&Float16_convert_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&Float16_convert_UInt16).returnTypeSymbol = &Float16Type;
+    Float16_convert_Int16_arg0.name = "val"_c;
     Float16_convert_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    Float16_convert_Int16.documentation = "Convert i16 to f16"_c;
     Float16_convert_Int16.name = "f16"_c;
     Float16_convert_Int16.returnType = Type::FullType { Float16Type.name };
-    Symbol::Resolved(&Float16_convert_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float16_convert_Int16)->returnTypeSymbol = &Float16Type;
-
+    Float16_convert_Int16.parameters = Float16_convert_Int16_args;
+    Symbol::Resolved(&Float16_convert_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&Float16_convert_Int16).returnTypeSymbol = &Float16Type;
     // Construct with Float16
     Float16_ctor0_arg0.name = "_arg0"_c;
     Float16_ctor0_arg0.type = Type::FullType { Float16Type.name };
     Float16_ctor0_Float16.name = "0"_c;
     Float16_ctor0_Float16.returnType = Type::FullType{ Float16Type.name };
+    Float16_ctor0_Float16.parameters = Float16_ctor0_Float16_args;
     Symbol::Resolved(&Float16_ctor0_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16_ctor0_Float16)->returnTypeSymbol = &Float16Type;
 
@@ -1173,6 +5371,7 @@ Float16::Float16()
     Float16_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Float16_operator_index_Int32.name = "operator[]"_c;
     Float16_operator_index_Int32.returnType = Type::FullType{ Float16Type.name };
+    Float16_operator_index_Int32.parameters = Float16_operator_index_Int32_args;
     Symbol::Resolved(&Float16_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Float16_operator_index_Int32)->returnTypeSymbol = &Float16Type;
 
@@ -1181,6 +5380,7 @@ Float16::Float16()
     Float16_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Float16_operator_index_UInt32.name = "operator[]"_c;
     Float16_operator_index_UInt32.returnType = Type::FullType{ Float16Type.name };
+    Float16_operator_index_UInt32.parameters = Float16_operator_index_UInt32_args;
     Symbol::Resolved(&Float16_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Float16_operator_index_UInt32)->returnTypeSymbol = &Float16Type;
 
@@ -1189,6 +5389,7 @@ Float16::Float16()
     Float16_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Float16_operator_index_Int16.name = "operator[]"_c;
     Float16_operator_index_Int16.returnType = Type::FullType{ Float16Type.name };
+    Float16_operator_index_Int16.parameters = Float16_operator_index_Int16_args;
     Symbol::Resolved(&Float16_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Float16_operator_index_Int16)->returnTypeSymbol = &Float16Type;
 
@@ -1197,6 +5398,7 @@ Float16::Float16()
     Float16_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Float16_operator_index_UInt16.name = "operator[]"_c;
     Float16_operator_index_UInt16.returnType = Type::FullType{ Float16Type.name };
+    Float16_operator_index_UInt16.parameters = Float16_operator_index_UInt16_args;
     Symbol::Resolved(&Float16_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float16_operator_index_UInt16)->returnTypeSymbol = &Float16Type;
 
@@ -1205,6 +5407,7 @@ Float16::Float16()
     Float16_operator_add_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Float16_operator_add_Float16.name = "operator+"_c;
     Float16_operator_add_Float16.returnType = Type::FullType{ Float16Type.name };
+    Float16_operator_add_Float16.parameters = Float16_operator_add_Float16_args;
     Symbol::Resolved(&Float16_operator_add_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16_operator_add_Float16)->returnTypeSymbol = &Float16Type;
 
@@ -1213,6 +5416,7 @@ Float16::Float16()
     Float16_operator_sub_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Float16_operator_sub_Float16.name = "operator-"_c;
     Float16_operator_sub_Float16.returnType = Type::FullType{ Float16Type.name };
+    Float16_operator_sub_Float16.parameters = Float16_operator_sub_Float16_args;
     Symbol::Resolved(&Float16_operator_sub_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16_operator_sub_Float16)->returnTypeSymbol = &Float16Type;
 
@@ -1221,6 +5425,7 @@ Float16::Float16()
     Float16_operator_mul_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Float16_operator_mul_Float16.name = "operator*"_c;
     Float16_operator_mul_Float16.returnType = Type::FullType{ Float16Type.name };
+    Float16_operator_mul_Float16.parameters = Float16_operator_mul_Float16_args;
     Symbol::Resolved(&Float16_operator_mul_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16_operator_mul_Float16)->returnTypeSymbol = &Float16Type;
 
@@ -1229,6 +5434,7 @@ Float16::Float16()
     Float16_operator_div_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Float16_operator_div_Float16.name = "operator/"_c;
     Float16_operator_div_Float16.returnType = Type::FullType{ Float16Type.name };
+    Float16_operator_div_Float16.parameters = Float16_operator_div_Float16_args;
     Symbol::Resolved(&Float16_operator_div_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16_operator_div_Float16)->returnTypeSymbol = &Float16Type;
 
@@ -1237,6 +5443,7 @@ Float16::Float16()
     Float16_operator_mod_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Float16_operator_mod_Float16.name = "operator%"_c;
     Float16_operator_mod_Float16.returnType = Type::FullType{ Float16Type.name };
+    Float16_operator_mod_Float16.parameters = Float16_operator_mod_Float16_args;
     Symbol::Resolved(&Float16_operator_mod_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16_operator_mod_Float16)->returnTypeSymbol = &Float16Type;
 
@@ -1245,6 +5452,7 @@ Float16::Float16()
     Float16_operator_addasg_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Float16_operator_addasg_Float16.name = "operator+="_c;
     Float16_operator_addasg_Float16.returnType = Type::FullType{ Float16Type.name };
+    Float16_operator_addasg_Float16.parameters = Float16_operator_addasg_Float16_args;
     Symbol::Resolved(&Float16_operator_addasg_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16_operator_addasg_Float16)->returnTypeSymbol = &Float16Type;
 
@@ -1253,6 +5461,7 @@ Float16::Float16()
     Float16_operator_subasg_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Float16_operator_subasg_Float16.name = "operator-="_c;
     Float16_operator_subasg_Float16.returnType = Type::FullType{ Float16Type.name };
+    Float16_operator_subasg_Float16.parameters = Float16_operator_subasg_Float16_args;
     Symbol::Resolved(&Float16_operator_subasg_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16_operator_subasg_Float16)->returnTypeSymbol = &Float16Type;
 
@@ -1261,6 +5470,7 @@ Float16::Float16()
     Float16_operator_mulasg_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Float16_operator_mulasg_Float16.name = "operator*="_c;
     Float16_operator_mulasg_Float16.returnType = Type::FullType{ Float16Type.name };
+    Float16_operator_mulasg_Float16.parameters = Float16_operator_mulasg_Float16_args;
     Symbol::Resolved(&Float16_operator_mulasg_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16_operator_mulasg_Float16)->returnTypeSymbol = &Float16Type;
 
@@ -1269,6 +5479,7 @@ Float16::Float16()
     Float16_operator_divasg_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Float16_operator_divasg_Float16.name = "operator/="_c;
     Float16_operator_divasg_Float16.returnType = Type::FullType{ Float16Type.name };
+    Float16_operator_divasg_Float16.parameters = Float16_operator_divasg_Float16_args;
     Symbol::Resolved(&Float16_operator_divasg_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16_operator_divasg_Float16)->returnTypeSymbol = &Float16Type;
 
@@ -1277,6 +5488,7 @@ Float16::Float16()
     Float16_operator_lt_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Float16_operator_lt_Float16.name = "operator<"_c;
     Float16_operator_lt_Float16.returnType = Type::FullType{ Float16Type.name };
+    Float16_operator_lt_Float16.parameters = Float16_operator_lt_Float16_args;
     Symbol::Resolved(&Float16_operator_lt_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16_operator_lt_Float16)->returnTypeSymbol = &Float16Type;
 
@@ -1285,6 +5497,7 @@ Float16::Float16()
     Float16_operator_lte_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Float16_operator_lte_Float16.name = "operator<="_c;
     Float16_operator_lte_Float16.returnType = Type::FullType{ Float16Type.name };
+    Float16_operator_lte_Float16.parameters = Float16_operator_lte_Float16_args;
     Symbol::Resolved(&Float16_operator_lte_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16_operator_lte_Float16)->returnTypeSymbol = &Float16Type;
 
@@ -1293,6 +5506,7 @@ Float16::Float16()
     Float16_operator_gt_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Float16_operator_gt_Float16.name = "operator>"_c;
     Float16_operator_gt_Float16.returnType = Type::FullType{ Float16Type.name };
+    Float16_operator_gt_Float16.parameters = Float16_operator_gt_Float16_args;
     Symbol::Resolved(&Float16_operator_gt_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16_operator_gt_Float16)->returnTypeSymbol = &Float16Type;
 
@@ -1301,6 +5515,7 @@ Float16::Float16()
     Float16_operator_gte_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Float16_operator_gte_Float16.name = "operator>="_c;
     Float16_operator_gte_Float16.returnType = Type::FullType{ Float16Type.name };
+    Float16_operator_gte_Float16.parameters = Float16_operator_gte_Float16_args;
     Symbol::Resolved(&Float16_operator_gte_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16_operator_gte_Float16)->returnTypeSymbol = &Float16Type;
 
@@ -1309,6 +5524,7 @@ Float16::Float16()
     Float16_operator_eq_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Float16_operator_eq_Float16.name = "operator=="_c;
     Float16_operator_eq_Float16.returnType = Type::FullType{ Float16Type.name };
+    Float16_operator_eq_Float16.parameters = Float16_operator_eq_Float16_args;
     Symbol::Resolved(&Float16_operator_eq_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16_operator_eq_Float16)->returnTypeSymbol = &Float16Type;
 
@@ -1317,22 +5533,11 @@ Float16::Float16()
     Float16_operator_neq_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Float16_operator_neq_Float16.name = "operator!="_c;
     Float16_operator_neq_Float16.returnType = Type::FullType{ Float16Type.name };
+    Float16_operator_neq_Float16.parameters = Float16_operator_neq_Float16_args;
     Symbol::Resolved(&Float16_operator_neq_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16_operator_neq_Float16)->returnTypeSymbol = &Float16Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "f16"_c, &Float16_convert_Float32 },
-        std::pair{ "f16(f32)"_c, &Float16_convert_Float32 },
-        std::pair{ "f16"_c, &Float16_convert_UInt32 },
-        std::pair{ "f16(u32)"_c, &Float16_convert_UInt32 },
-        std::pair{ "f16"_c, &Float16_convert_Int32 },
-        std::pair{ "f16(i32)"_c, &Float16_convert_Int32 },
-        std::pair{ "f16"_c, &Float16_convert_UInt16 },
-        std::pair{ "f16(u16)"_c, &Float16_convert_UInt16 },
-        std::pair{ "f16"_c, &Float16_convert_Int16 },
-        std::pair{ "f16(i16)"_c, &Float16_convert_Int16 },
-        std::pair{ "f16"_c, &Float16_ctor0_Float16},
-        std::pair{ "f16(f16)"_c, &Float16_ctor0_Float16},
         std::pair{ "operator[](i32)"_c, &Float16_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &Float16_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &Float16_operator_index_Int16},
@@ -1365,51 +5570,52 @@ UInt16::UInt16()
     this->baseType = TypeCode::UInt16;
     this->builtin = true;
 
-    // Conversion from Float32
-    UInt16_convert_Float32_arg0.name = "_arg0"_c;
+    UInt16_convert_Float32_arg0.name = "val"_c;
     UInt16_convert_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    UInt16_convert_Float32.documentation = "Convert f32 to u16"_c;
     UInt16_convert_Float32.name = "u16"_c;
     UInt16_convert_Float32.returnType = Type::FullType { UInt16Type.name };
-    Symbol::Resolved(&UInt16_convert_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&UInt16_convert_Float32)->returnTypeSymbol = &UInt16Type;
-
-    // Conversion from UInt32
-    UInt16_convert_UInt32_arg0.name = "_arg0"_c;
+    UInt16_convert_Float32.parameters = UInt16_convert_Float32_args;
+    Symbol::Resolved(&UInt16_convert_Float32_arg0).typeSymbol = &Float32Type;
+    Symbol::Resolved(&UInt16_convert_Float32).returnTypeSymbol = &UInt16Type;
+    UInt16_convert_UInt32_arg0.name = "val"_c;
     UInt16_convert_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    UInt16_convert_UInt32.documentation = "Convert u32 to u16"_c;
     UInt16_convert_UInt32.name = "u16"_c;
     UInt16_convert_UInt32.returnType = Type::FullType { UInt16Type.name };
-    Symbol::Resolved(&UInt16_convert_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&UInt16_convert_UInt32)->returnTypeSymbol = &UInt16Type;
-
-    // Conversion from Int32
-    UInt16_convert_Int32_arg0.name = "_arg0"_c;
+    UInt16_convert_UInt32.parameters = UInt16_convert_UInt32_args;
+    Symbol::Resolved(&UInt16_convert_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&UInt16_convert_UInt32).returnTypeSymbol = &UInt16Type;
+    UInt16_convert_Int32_arg0.name = "val"_c;
     UInt16_convert_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    UInt16_convert_Int32.documentation = "Convert i32 to u16"_c;
     UInt16_convert_Int32.name = "u16"_c;
     UInt16_convert_Int32.returnType = Type::FullType { UInt16Type.name };
-    Symbol::Resolved(&UInt16_convert_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&UInt16_convert_Int32)->returnTypeSymbol = &UInt16Type;
-
-    // Conversion from Float16
-    UInt16_convert_Float16_arg0.name = "_arg0"_c;
+    UInt16_convert_Int32.parameters = UInt16_convert_Int32_args;
+    Symbol::Resolved(&UInt16_convert_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&UInt16_convert_Int32).returnTypeSymbol = &UInt16Type;
+    UInt16_convert_Float16_arg0.name = "val"_c;
     UInt16_convert_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    UInt16_convert_Float16.documentation = "Convert f16 to u16"_c;
     UInt16_convert_Float16.name = "u16"_c;
     UInt16_convert_Float16.returnType = Type::FullType { UInt16Type.name };
-    Symbol::Resolved(&UInt16_convert_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&UInt16_convert_Float16)->returnTypeSymbol = &UInt16Type;
-
-    // Conversion from Int16
-    UInt16_convert_Int16_arg0.name = "_arg0"_c;
+    UInt16_convert_Float16.parameters = UInt16_convert_Float16_args;
+    Symbol::Resolved(&UInt16_convert_Float16_arg0).typeSymbol = &Float16Type;
+    Symbol::Resolved(&UInt16_convert_Float16).returnTypeSymbol = &UInt16Type;
+    UInt16_convert_Int16_arg0.name = "val"_c;
     UInt16_convert_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    UInt16_convert_Int16.documentation = "Convert i16 to u16"_c;
     UInt16_convert_Int16.name = "u16"_c;
     UInt16_convert_Int16.returnType = Type::FullType { UInt16Type.name };
-    Symbol::Resolved(&UInt16_convert_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&UInt16_convert_Int16)->returnTypeSymbol = &UInt16Type;
-
+    UInt16_convert_Int16.parameters = UInt16_convert_Int16_args;
+    Symbol::Resolved(&UInt16_convert_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&UInt16_convert_Int16).returnTypeSymbol = &UInt16Type;
     // Construct with UInt16
     UInt16_ctor0_arg0.name = "_arg0"_c;
     UInt16_ctor0_arg0.type = Type::FullType { UInt16Type.name };
     UInt16_ctor0_UInt16.name = "0"_c;
     UInt16_ctor0_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_ctor0_UInt16.parameters = UInt16_ctor0_UInt16_args;
     Symbol::Resolved(&UInt16_ctor0_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_ctor0_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -1418,6 +5624,7 @@ UInt16::UInt16()
     UInt16_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     UInt16_operator_index_Int32.name = "operator[]"_c;
     UInt16_operator_index_Int32.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_index_Int32.parameters = UInt16_operator_index_Int32_args;
     Symbol::Resolved(&UInt16_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&UInt16_operator_index_Int32)->returnTypeSymbol = &UInt16Type;
 
@@ -1426,6 +5633,7 @@ UInt16::UInt16()
     UInt16_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt16_operator_index_UInt32.name = "operator[]"_c;
     UInt16_operator_index_UInt32.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_index_UInt32.parameters = UInt16_operator_index_UInt32_args;
     Symbol::Resolved(&UInt16_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt16_operator_index_UInt32)->returnTypeSymbol = &UInt16Type;
 
@@ -1434,6 +5642,7 @@ UInt16::UInt16()
     UInt16_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     UInt16_operator_index_Int16.name = "operator[]"_c;
     UInt16_operator_index_Int16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_index_Int16.parameters = UInt16_operator_index_Int16_args;
     Symbol::Resolved(&UInt16_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&UInt16_operator_index_Int16)->returnTypeSymbol = &UInt16Type;
 
@@ -1442,6 +5651,7 @@ UInt16::UInt16()
     UInt16_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16_operator_index_UInt16.name = "operator[]"_c;
     UInt16_operator_index_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_index_UInt16.parameters = UInt16_operator_index_UInt16_args;
     Symbol::Resolved(&UInt16_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_operator_index_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -1450,6 +5660,7 @@ UInt16::UInt16()
     UInt16_operator_add_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16_operator_add_UInt16.name = "operator+"_c;
     UInt16_operator_add_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_add_UInt16.parameters = UInt16_operator_add_UInt16_args;
     Symbol::Resolved(&UInt16_operator_add_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_operator_add_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -1458,6 +5669,7 @@ UInt16::UInt16()
     UInt16_operator_sub_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16_operator_sub_UInt16.name = "operator-"_c;
     UInt16_operator_sub_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_sub_UInt16.parameters = UInt16_operator_sub_UInt16_args;
     Symbol::Resolved(&UInt16_operator_sub_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_operator_sub_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -1466,6 +5678,7 @@ UInt16::UInt16()
     UInt16_operator_mul_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16_operator_mul_UInt16.name = "operator*"_c;
     UInt16_operator_mul_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_mul_UInt16.parameters = UInt16_operator_mul_UInt16_args;
     Symbol::Resolved(&UInt16_operator_mul_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_operator_mul_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -1474,6 +5687,7 @@ UInt16::UInt16()
     UInt16_operator_div_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16_operator_div_UInt16.name = "operator/"_c;
     UInt16_operator_div_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_div_UInt16.parameters = UInt16_operator_div_UInt16_args;
     Symbol::Resolved(&UInt16_operator_div_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_operator_div_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -1482,6 +5696,7 @@ UInt16::UInt16()
     UInt16_operator_mod_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16_operator_mod_UInt16.name = "operator%"_c;
     UInt16_operator_mod_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_mod_UInt16.parameters = UInt16_operator_mod_UInt16_args;
     Symbol::Resolved(&UInt16_operator_mod_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_operator_mod_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -1490,6 +5705,7 @@ UInt16::UInt16()
     UInt16_operator_addasg_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16_operator_addasg_UInt16.name = "operator+="_c;
     UInt16_operator_addasg_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_addasg_UInt16.parameters = UInt16_operator_addasg_UInt16_args;
     Symbol::Resolved(&UInt16_operator_addasg_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_operator_addasg_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -1498,6 +5714,7 @@ UInt16::UInt16()
     UInt16_operator_subasg_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16_operator_subasg_UInt16.name = "operator-="_c;
     UInt16_operator_subasg_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_subasg_UInt16.parameters = UInt16_operator_subasg_UInt16_args;
     Symbol::Resolved(&UInt16_operator_subasg_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_operator_subasg_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -1506,6 +5723,7 @@ UInt16::UInt16()
     UInt16_operator_mulasg_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16_operator_mulasg_UInt16.name = "operator*="_c;
     UInt16_operator_mulasg_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_mulasg_UInt16.parameters = UInt16_operator_mulasg_UInt16_args;
     Symbol::Resolved(&UInt16_operator_mulasg_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_operator_mulasg_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -1514,6 +5732,7 @@ UInt16::UInt16()
     UInt16_operator_divasg_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16_operator_divasg_UInt16.name = "operator/="_c;
     UInt16_operator_divasg_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_divasg_UInt16.parameters = UInt16_operator_divasg_UInt16_args;
     Symbol::Resolved(&UInt16_operator_divasg_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_operator_divasg_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -1522,6 +5741,7 @@ UInt16::UInt16()
     UInt16_operator_lt_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16_operator_lt_UInt16.name = "operator<"_c;
     UInt16_operator_lt_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_lt_UInt16.parameters = UInt16_operator_lt_UInt16_args;
     Symbol::Resolved(&UInt16_operator_lt_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_operator_lt_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -1530,6 +5750,7 @@ UInt16::UInt16()
     UInt16_operator_lte_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16_operator_lte_UInt16.name = "operator<="_c;
     UInt16_operator_lte_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_lte_UInt16.parameters = UInt16_operator_lte_UInt16_args;
     Symbol::Resolved(&UInt16_operator_lte_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_operator_lte_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -1538,6 +5759,7 @@ UInt16::UInt16()
     UInt16_operator_gt_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16_operator_gt_UInt16.name = "operator>"_c;
     UInt16_operator_gt_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_gt_UInt16.parameters = UInt16_operator_gt_UInt16_args;
     Symbol::Resolved(&UInt16_operator_gt_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_operator_gt_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -1546,6 +5768,7 @@ UInt16::UInt16()
     UInt16_operator_gte_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16_operator_gte_UInt16.name = "operator>="_c;
     UInt16_operator_gte_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_gte_UInt16.parameters = UInt16_operator_gte_UInt16_args;
     Symbol::Resolved(&UInt16_operator_gte_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_operator_gte_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -1554,6 +5777,7 @@ UInt16::UInt16()
     UInt16_operator_eq_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16_operator_eq_UInt16.name = "operator=="_c;
     UInt16_operator_eq_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_eq_UInt16.parameters = UInt16_operator_eq_UInt16_args;
     Symbol::Resolved(&UInt16_operator_eq_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_operator_eq_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -1562,6 +5786,7 @@ UInt16::UInt16()
     UInt16_operator_neq_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16_operator_neq_UInt16.name = "operator!="_c;
     UInt16_operator_neq_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_neq_UInt16.parameters = UInt16_operator_neq_UInt16_args;
     Symbol::Resolved(&UInt16_operator_neq_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_operator_neq_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -1570,6 +5795,7 @@ UInt16::UInt16()
     UInt16_operator_or_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16_operator_or_UInt16.name = "operator|"_c;
     UInt16_operator_or_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_or_UInt16.parameters = UInt16_operator_or_UInt16_args;
     Symbol::Resolved(&UInt16_operator_or_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_operator_or_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -1578,6 +5804,7 @@ UInt16::UInt16()
     UInt16_operator_and_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16_operator_and_UInt16.name = "operator&"_c;
     UInt16_operator_and_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_and_UInt16.parameters = UInt16_operator_and_UInt16_args;
     Symbol::Resolved(&UInt16_operator_and_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_operator_and_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -1586,6 +5813,7 @@ UInt16::UInt16()
     UInt16_operator_xor_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16_operator_xor_UInt16.name = "operator^"_c;
     UInt16_operator_xor_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_xor_UInt16.parameters = UInt16_operator_xor_UInt16_args;
     Symbol::Resolved(&UInt16_operator_xor_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_operator_xor_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -1594,6 +5822,7 @@ UInt16::UInt16()
     UInt16_operator_lsh_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16_operator_lsh_UInt16.name = "operator<<"_c;
     UInt16_operator_lsh_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_lsh_UInt16.parameters = UInt16_operator_lsh_UInt16_args;
     Symbol::Resolved(&UInt16_operator_lsh_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_operator_lsh_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -1602,6 +5831,7 @@ UInt16::UInt16()
     UInt16_operator_rsh_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16_operator_rsh_UInt16.name = "operator>>"_c;
     UInt16_operator_rsh_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_rsh_UInt16.parameters = UInt16_operator_rsh_UInt16_args;
     Symbol::Resolved(&UInt16_operator_rsh_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_operator_rsh_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -1610,6 +5840,7 @@ UInt16::UInt16()
     UInt16_operator_orasg_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16_operator_orasg_UInt16.name = "operator|="_c;
     UInt16_operator_orasg_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_orasg_UInt16.parameters = UInt16_operator_orasg_UInt16_args;
     Symbol::Resolved(&UInt16_operator_orasg_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_operator_orasg_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -1618,6 +5849,7 @@ UInt16::UInt16()
     UInt16_operator_andasg_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16_operator_andasg_UInt16.name = "operator&="_c;
     UInt16_operator_andasg_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_andasg_UInt16.parameters = UInt16_operator_andasg_UInt16_args;
     Symbol::Resolved(&UInt16_operator_andasg_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_operator_andasg_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -1626,6 +5858,7 @@ UInt16::UInt16()
     UInt16_operator_xorasg_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16_operator_xorasg_UInt16.name = "operator^="_c;
     UInt16_operator_xorasg_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_xorasg_UInt16.parameters = UInt16_operator_xorasg_UInt16_args;
     Symbol::Resolved(&UInt16_operator_xorasg_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_operator_xorasg_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -1634,6 +5867,7 @@ UInt16::UInt16()
     UInt16_operator_lshasg_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16_operator_lshasg_UInt16.name = "operator<<="_c;
     UInt16_operator_lshasg_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_lshasg_UInt16.parameters = UInt16_operator_lshasg_UInt16_args;
     Symbol::Resolved(&UInt16_operator_lshasg_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_operator_lshasg_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -1642,22 +5876,11 @@ UInt16::UInt16()
     UInt16_operator_rhsasg_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16_operator_rhsasg_UInt16.name = "operator>>="_c;
     UInt16_operator_rhsasg_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16_operator_rhsasg_UInt16.parameters = UInt16_operator_rhsasg_UInt16_args;
     Symbol::Resolved(&UInt16_operator_rhsasg_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16_operator_rhsasg_UInt16)->returnTypeSymbol = &UInt16Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "u16"_c, &UInt16_convert_Float32 },
-        std::pair{ "u16(f32)"_c, &UInt16_convert_Float32 },
-        std::pair{ "u16"_c, &UInt16_convert_UInt32 },
-        std::pair{ "u16(u32)"_c, &UInt16_convert_UInt32 },
-        std::pair{ "u16"_c, &UInt16_convert_Int32 },
-        std::pair{ "u16(i32)"_c, &UInt16_convert_Int32 },
-        std::pair{ "u16"_c, &UInt16_convert_Float16 },
-        std::pair{ "u16(f16)"_c, &UInt16_convert_Float16 },
-        std::pair{ "u16"_c, &UInt16_convert_Int16 },
-        std::pair{ "u16(i16)"_c, &UInt16_convert_Int16 },
-        std::pair{ "u16"_c, &UInt16_ctor0_UInt16},
-        std::pair{ "u16(u16)"_c, &UInt16_ctor0_UInt16},
         std::pair{ "operator[](i32)"_c, &UInt16_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &UInt16_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &UInt16_operator_index_Int16},
@@ -1700,51 +5923,52 @@ Int16::Int16()
     this->baseType = TypeCode::Int16;
     this->builtin = true;
 
-    // Conversion from Float32
-    Int16_convert_Float32_arg0.name = "_arg0"_c;
+    Int16_convert_Float32_arg0.name = "val"_c;
     Int16_convert_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    Int16_convert_Float32.documentation = "Convert f32 to i16"_c;
     Int16_convert_Float32.name = "i16"_c;
     Int16_convert_Float32.returnType = Type::FullType { Int16Type.name };
-    Symbol::Resolved(&Int16_convert_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Int16_convert_Float32)->returnTypeSymbol = &Int16Type;
-
-    // Conversion from UInt32
-    Int16_convert_UInt32_arg0.name = "_arg0"_c;
+    Int16_convert_Float32.parameters = Int16_convert_Float32_args;
+    Symbol::Resolved(&Int16_convert_Float32_arg0).typeSymbol = &Float32Type;
+    Symbol::Resolved(&Int16_convert_Float32).returnTypeSymbol = &Int16Type;
+    Int16_convert_UInt32_arg0.name = "val"_c;
     Int16_convert_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    Int16_convert_UInt32.documentation = "Convert u32 to i16"_c;
     Int16_convert_UInt32.name = "i16"_c;
     Int16_convert_UInt32.returnType = Type::FullType { Int16Type.name };
-    Symbol::Resolved(&Int16_convert_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Int16_convert_UInt32)->returnTypeSymbol = &Int16Type;
-
-    // Conversion from Int32
-    Int16_convert_Int32_arg0.name = "_arg0"_c;
+    Int16_convert_UInt32.parameters = Int16_convert_UInt32_args;
+    Symbol::Resolved(&Int16_convert_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&Int16_convert_UInt32).returnTypeSymbol = &Int16Type;
+    Int16_convert_Int32_arg0.name = "val"_c;
     Int16_convert_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    Int16_convert_Int32.documentation = "Convert i32 to i16"_c;
     Int16_convert_Int32.name = "i16"_c;
     Int16_convert_Int32.returnType = Type::FullType { Int16Type.name };
-    Symbol::Resolved(&Int16_convert_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Int16_convert_Int32)->returnTypeSymbol = &Int16Type;
-
-    // Conversion from Float16
-    Int16_convert_Float16_arg0.name = "_arg0"_c;
+    Int16_convert_Int32.parameters = Int16_convert_Int32_args;
+    Symbol::Resolved(&Int16_convert_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&Int16_convert_Int32).returnTypeSymbol = &Int16Type;
+    Int16_convert_Float16_arg0.name = "val"_c;
     Int16_convert_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    Int16_convert_Float16.documentation = "Convert f16 to i16"_c;
     Int16_convert_Float16.name = "i16"_c;
     Int16_convert_Float16.returnType = Type::FullType { Int16Type.name };
-    Symbol::Resolved(&Int16_convert_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Int16_convert_Float16)->returnTypeSymbol = &Int16Type;
-
-    // Conversion from UInt16
-    Int16_convert_UInt16_arg0.name = "_arg0"_c;
+    Int16_convert_Float16.parameters = Int16_convert_Float16_args;
+    Symbol::Resolved(&Int16_convert_Float16_arg0).typeSymbol = &Float16Type;
+    Symbol::Resolved(&Int16_convert_Float16).returnTypeSymbol = &Int16Type;
+    Int16_convert_UInt16_arg0.name = "val"_c;
     Int16_convert_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    Int16_convert_UInt16.documentation = "Convert u16 to i16"_c;
     Int16_convert_UInt16.name = "i16"_c;
     Int16_convert_UInt16.returnType = Type::FullType { Int16Type.name };
-    Symbol::Resolved(&Int16_convert_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Int16_convert_UInt16)->returnTypeSymbol = &Int16Type;
-
+    Int16_convert_UInt16.parameters = Int16_convert_UInt16_args;
+    Symbol::Resolved(&Int16_convert_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&Int16_convert_UInt16).returnTypeSymbol = &Int16Type;
     // Construct with Int16
     Int16_ctor0_arg0.name = "_arg0"_c;
     Int16_ctor0_arg0.type = Type::FullType { Int16Type.name };
     Int16_ctor0_Int16.name = "0"_c;
     Int16_ctor0_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_ctor0_Int16.parameters = Int16_ctor0_Int16_args;
     Symbol::Resolved(&Int16_ctor0_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_ctor0_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -1753,6 +5977,7 @@ Int16::Int16()
     Int16_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int16_operator_index_Int32.name = "operator[]"_c;
     Int16_operator_index_Int32.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_index_Int32.parameters = Int16_operator_index_Int32_args;
     Symbol::Resolved(&Int16_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int16_operator_index_Int32)->returnTypeSymbol = &Int16Type;
 
@@ -1761,6 +5986,7 @@ Int16::Int16()
     Int16_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Int16_operator_index_UInt32.name = "operator[]"_c;
     Int16_operator_index_UInt32.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_index_UInt32.parameters = Int16_operator_index_UInt32_args;
     Symbol::Resolved(&Int16_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Int16_operator_index_UInt32)->returnTypeSymbol = &Int16Type;
 
@@ -1769,6 +5995,7 @@ Int16::Int16()
     Int16_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16_operator_index_Int16.name = "operator[]"_c;
     Int16_operator_index_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_index_Int16.parameters = Int16_operator_index_Int16_args;
     Symbol::Resolved(&Int16_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_operator_index_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -1777,6 +6004,7 @@ Int16::Int16()
     Int16_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Int16_operator_index_UInt16.name = "operator[]"_c;
     Int16_operator_index_UInt16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_index_UInt16.parameters = Int16_operator_index_UInt16_args;
     Symbol::Resolved(&Int16_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Int16_operator_index_UInt16)->returnTypeSymbol = &Int16Type;
 
@@ -1785,6 +6013,7 @@ Int16::Int16()
     Int16_operator_add_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16_operator_add_Int16.name = "operator+"_c;
     Int16_operator_add_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_add_Int16.parameters = Int16_operator_add_Int16_args;
     Symbol::Resolved(&Int16_operator_add_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_operator_add_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -1793,6 +6022,7 @@ Int16::Int16()
     Int16_operator_sub_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16_operator_sub_Int16.name = "operator-"_c;
     Int16_operator_sub_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_sub_Int16.parameters = Int16_operator_sub_Int16_args;
     Symbol::Resolved(&Int16_operator_sub_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_operator_sub_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -1801,6 +6031,7 @@ Int16::Int16()
     Int16_operator_mul_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16_operator_mul_Int16.name = "operator*"_c;
     Int16_operator_mul_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_mul_Int16.parameters = Int16_operator_mul_Int16_args;
     Symbol::Resolved(&Int16_operator_mul_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_operator_mul_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -1809,6 +6040,7 @@ Int16::Int16()
     Int16_operator_div_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16_operator_div_Int16.name = "operator/"_c;
     Int16_operator_div_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_div_Int16.parameters = Int16_operator_div_Int16_args;
     Symbol::Resolved(&Int16_operator_div_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_operator_div_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -1817,6 +6049,7 @@ Int16::Int16()
     Int16_operator_mod_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16_operator_mod_Int16.name = "operator%"_c;
     Int16_operator_mod_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_mod_Int16.parameters = Int16_operator_mod_Int16_args;
     Symbol::Resolved(&Int16_operator_mod_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_operator_mod_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -1825,6 +6058,7 @@ Int16::Int16()
     Int16_operator_addasg_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16_operator_addasg_Int16.name = "operator+="_c;
     Int16_operator_addasg_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_addasg_Int16.parameters = Int16_operator_addasg_Int16_args;
     Symbol::Resolved(&Int16_operator_addasg_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_operator_addasg_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -1833,6 +6067,7 @@ Int16::Int16()
     Int16_operator_subasg_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16_operator_subasg_Int16.name = "operator-="_c;
     Int16_operator_subasg_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_subasg_Int16.parameters = Int16_operator_subasg_Int16_args;
     Symbol::Resolved(&Int16_operator_subasg_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_operator_subasg_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -1841,6 +6076,7 @@ Int16::Int16()
     Int16_operator_mulasg_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16_operator_mulasg_Int16.name = "operator*="_c;
     Int16_operator_mulasg_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_mulasg_Int16.parameters = Int16_operator_mulasg_Int16_args;
     Symbol::Resolved(&Int16_operator_mulasg_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_operator_mulasg_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -1849,6 +6085,7 @@ Int16::Int16()
     Int16_operator_divasg_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16_operator_divasg_Int16.name = "operator/="_c;
     Int16_operator_divasg_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_divasg_Int16.parameters = Int16_operator_divasg_Int16_args;
     Symbol::Resolved(&Int16_operator_divasg_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_operator_divasg_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -1857,6 +6094,7 @@ Int16::Int16()
     Int16_operator_lt_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16_operator_lt_Int16.name = "operator<"_c;
     Int16_operator_lt_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_lt_Int16.parameters = Int16_operator_lt_Int16_args;
     Symbol::Resolved(&Int16_operator_lt_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_operator_lt_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -1865,6 +6103,7 @@ Int16::Int16()
     Int16_operator_lte_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16_operator_lte_Int16.name = "operator<="_c;
     Int16_operator_lte_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_lte_Int16.parameters = Int16_operator_lte_Int16_args;
     Symbol::Resolved(&Int16_operator_lte_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_operator_lte_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -1873,6 +6112,7 @@ Int16::Int16()
     Int16_operator_gt_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16_operator_gt_Int16.name = "operator>"_c;
     Int16_operator_gt_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_gt_Int16.parameters = Int16_operator_gt_Int16_args;
     Symbol::Resolved(&Int16_operator_gt_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_operator_gt_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -1881,6 +6121,7 @@ Int16::Int16()
     Int16_operator_gte_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16_operator_gte_Int16.name = "operator>="_c;
     Int16_operator_gte_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_gte_Int16.parameters = Int16_operator_gte_Int16_args;
     Symbol::Resolved(&Int16_operator_gte_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_operator_gte_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -1889,6 +6130,7 @@ Int16::Int16()
     Int16_operator_eq_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16_operator_eq_Int16.name = "operator=="_c;
     Int16_operator_eq_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_eq_Int16.parameters = Int16_operator_eq_Int16_args;
     Symbol::Resolved(&Int16_operator_eq_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_operator_eq_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -1897,6 +6139,7 @@ Int16::Int16()
     Int16_operator_neq_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16_operator_neq_Int16.name = "operator!="_c;
     Int16_operator_neq_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_neq_Int16.parameters = Int16_operator_neq_Int16_args;
     Symbol::Resolved(&Int16_operator_neq_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_operator_neq_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -1905,6 +6148,7 @@ Int16::Int16()
     Int16_operator_or_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16_operator_or_Int16.name = "operator|"_c;
     Int16_operator_or_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_or_Int16.parameters = Int16_operator_or_Int16_args;
     Symbol::Resolved(&Int16_operator_or_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_operator_or_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -1913,6 +6157,7 @@ Int16::Int16()
     Int16_operator_and_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16_operator_and_Int16.name = "operator&"_c;
     Int16_operator_and_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_and_Int16.parameters = Int16_operator_and_Int16_args;
     Symbol::Resolved(&Int16_operator_and_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_operator_and_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -1921,6 +6166,7 @@ Int16::Int16()
     Int16_operator_xor_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16_operator_xor_Int16.name = "operator^"_c;
     Int16_operator_xor_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_xor_Int16.parameters = Int16_operator_xor_Int16_args;
     Symbol::Resolved(&Int16_operator_xor_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_operator_xor_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -1929,6 +6175,7 @@ Int16::Int16()
     Int16_operator_lsh_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16_operator_lsh_Int16.name = "operator<<"_c;
     Int16_operator_lsh_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_lsh_Int16.parameters = Int16_operator_lsh_Int16_args;
     Symbol::Resolved(&Int16_operator_lsh_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_operator_lsh_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -1937,6 +6184,7 @@ Int16::Int16()
     Int16_operator_rsh_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16_operator_rsh_Int16.name = "operator>>"_c;
     Int16_operator_rsh_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_rsh_Int16.parameters = Int16_operator_rsh_Int16_args;
     Symbol::Resolved(&Int16_operator_rsh_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_operator_rsh_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -1945,6 +6193,7 @@ Int16::Int16()
     Int16_operator_orasg_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16_operator_orasg_Int16.name = "operator|="_c;
     Int16_operator_orasg_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_orasg_Int16.parameters = Int16_operator_orasg_Int16_args;
     Symbol::Resolved(&Int16_operator_orasg_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_operator_orasg_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -1953,6 +6202,7 @@ Int16::Int16()
     Int16_operator_andasg_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16_operator_andasg_Int16.name = "operator&="_c;
     Int16_operator_andasg_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_andasg_Int16.parameters = Int16_operator_andasg_Int16_args;
     Symbol::Resolved(&Int16_operator_andasg_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_operator_andasg_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -1961,6 +6211,7 @@ Int16::Int16()
     Int16_operator_xorasg_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16_operator_xorasg_Int16.name = "operator^="_c;
     Int16_operator_xorasg_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_xorasg_Int16.parameters = Int16_operator_xorasg_Int16_args;
     Symbol::Resolved(&Int16_operator_xorasg_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_operator_xorasg_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -1969,6 +6220,7 @@ Int16::Int16()
     Int16_operator_lshasg_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16_operator_lshasg_Int16.name = "operator<<="_c;
     Int16_operator_lshasg_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_lshasg_Int16.parameters = Int16_operator_lshasg_Int16_args;
     Symbol::Resolved(&Int16_operator_lshasg_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_operator_lshasg_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -1977,22 +6229,11 @@ Int16::Int16()
     Int16_operator_rhsasg_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16_operator_rhsasg_Int16.name = "operator>>="_c;
     Int16_operator_rhsasg_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16_operator_rhsasg_Int16.parameters = Int16_operator_rhsasg_Int16_args;
     Symbol::Resolved(&Int16_operator_rhsasg_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16_operator_rhsasg_Int16)->returnTypeSymbol = &Int16Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "i16"_c, &Int16_convert_Float32 },
-        std::pair{ "i16(f32)"_c, &Int16_convert_Float32 },
-        std::pair{ "i16"_c, &Int16_convert_UInt32 },
-        std::pair{ "i16(u32)"_c, &Int16_convert_UInt32 },
-        std::pair{ "i16"_c, &Int16_convert_Int32 },
-        std::pair{ "i16(i32)"_c, &Int16_convert_Int32 },
-        std::pair{ "i16"_c, &Int16_convert_Float16 },
-        std::pair{ "i16(f16)"_c, &Int16_convert_Float16 },
-        std::pair{ "i16"_c, &Int16_convert_UInt16 },
-        std::pair{ "i16(u16)"_c, &Int16_convert_UInt16 },
-        std::pair{ "i16"_c, &Int16_ctor0_Int16},
-        std::pair{ "i16(i16)"_c, &Int16_ctor0_Int16},
         std::pair{ "operator[](i32)"_c, &Int16_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &Int16_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &Int16_operator_index_Int16},
@@ -2035,102 +6276,102 @@ Float32x2::Float32x2()
     this->baseType = TypeCode::Float32;
     this->builtin = true;
 
-    // Conversion from Float32x2
-    Float32x2_convert_Float32x2_arg0.name = "_arg0"_c;
+    Float32x2_convert_Float32x2_arg0.name = "val"_c;
     Float32x2_convert_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
+    Float32x2_convert_Float32x2.documentation = "Convert f32x2 to f32x2"_c;
     Float32x2_convert_Float32x2.name = "f32x2"_c;
     Float32x2_convert_Float32x2.returnType = Type::FullType { Float32x2Type.name };
-    Symbol::Resolved(&Float32x2_convert_Float32x2_arg0)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&Float32x2_convert_Float32x2)->returnTypeSymbol = &Float32x2Type;
-
-    // Splat with Float32
-    Float32x2_splat_Float32_arg0.name = "_arg0"_c;
+    Float32x2_convert_Float32x2.parameters = Float32x2_convert_Float32x2_args;
+    Symbol::Resolved(&Float32x2_convert_Float32x2_arg0).typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&Float32x2_convert_Float32x2).returnTypeSymbol = &Float32x2Type;
+    Float32x2_splat_Float32_arg0.name = "val"_c;
     Float32x2_splat_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    Float32x2_splat_Float32.documentation = "Splat f32x2 to f32x2"_c;
     Float32x2_splat_Float32.name = "f32x2"_c;
     Float32x2_splat_Float32.returnType = Type::FullType { Float32x2Type.name };
-    Symbol::Resolved(&Float32x2_splat_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Float32x2_splat_Float32)->returnTypeSymbol = &Float32x2Type;
-
-    // Conversion from UInt32x2
-    Float32x2_convert_UInt32x2_arg0.name = "_arg0"_c;
+    Float32x2_splat_Float32.parameters = Float32x2_splat_Float32_args;
+    Symbol::Resolved(&Float32x2_splat_Float32_arg0).typeSymbol = &Float32Type;
+    Symbol::Resolved(&Float32x2_splat_Float32).returnTypeSymbol = &Float32x2Type;
+    Float32x2_convert_UInt32x2_arg0.name = "val"_c;
     Float32x2_convert_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
+    Float32x2_convert_UInt32x2.documentation = "Convert u32x2 to f32x2"_c;
     Float32x2_convert_UInt32x2.name = "f32x2"_c;
     Float32x2_convert_UInt32x2.returnType = Type::FullType { Float32x2Type.name };
-    Symbol::Resolved(&Float32x2_convert_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
-    Symbol::Resolved(&Float32x2_convert_UInt32x2)->returnTypeSymbol = &Float32x2Type;
-
-    // Splat with UInt32
-    Float32x2_splat_UInt32_arg0.name = "_arg0"_c;
+    Float32x2_convert_UInt32x2.parameters = Float32x2_convert_UInt32x2_args;
+    Symbol::Resolved(&Float32x2_convert_UInt32x2_arg0).typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&Float32x2_convert_UInt32x2).returnTypeSymbol = &Float32x2Type;
+    Float32x2_splat_UInt32_arg0.name = "val"_c;
     Float32x2_splat_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    Float32x2_splat_UInt32.documentation = "Splat u32x2 to f32x2"_c;
     Float32x2_splat_UInt32.name = "f32x2"_c;
     Float32x2_splat_UInt32.returnType = Type::FullType { Float32x2Type.name };
-    Symbol::Resolved(&Float32x2_splat_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float32x2_splat_UInt32)->returnTypeSymbol = &Float32x2Type;
-
-    // Conversion from Int32x2
-    Float32x2_convert_Int32x2_arg0.name = "_arg0"_c;
+    Float32x2_splat_UInt32.parameters = Float32x2_splat_UInt32_args;
+    Symbol::Resolved(&Float32x2_splat_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&Float32x2_splat_UInt32).returnTypeSymbol = &Float32x2Type;
+    Float32x2_convert_Int32x2_arg0.name = "val"_c;
     Float32x2_convert_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
+    Float32x2_convert_Int32x2.documentation = "Convert i32x2 to f32x2"_c;
     Float32x2_convert_Int32x2.name = "f32x2"_c;
     Float32x2_convert_Int32x2.returnType = Type::FullType { Float32x2Type.name };
-    Symbol::Resolved(&Float32x2_convert_Int32x2_arg0)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&Float32x2_convert_Int32x2)->returnTypeSymbol = &Float32x2Type;
-
-    // Splat with Int32
-    Float32x2_splat_Int32_arg0.name = "_arg0"_c;
+    Float32x2_convert_Int32x2.parameters = Float32x2_convert_Int32x2_args;
+    Symbol::Resolved(&Float32x2_convert_Int32x2_arg0).typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&Float32x2_convert_Int32x2).returnTypeSymbol = &Float32x2Type;
+    Float32x2_splat_Int32_arg0.name = "val"_c;
     Float32x2_splat_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    Float32x2_splat_Int32.documentation = "Splat i32x2 to f32x2"_c;
     Float32x2_splat_Int32.name = "f32x2"_c;
     Float32x2_splat_Int32.returnType = Type::FullType { Float32x2Type.name };
-    Symbol::Resolved(&Float32x2_splat_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float32x2_splat_Int32)->returnTypeSymbol = &Float32x2Type;
-
-    // Conversion from Float16x2
-    Float32x2_convert_Float16x2_arg0.name = "_arg0"_c;
+    Float32x2_splat_Int32.parameters = Float32x2_splat_Int32_args;
+    Symbol::Resolved(&Float32x2_splat_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&Float32x2_splat_Int32).returnTypeSymbol = &Float32x2Type;
+    Float32x2_convert_Float16x2_arg0.name = "val"_c;
     Float32x2_convert_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
+    Float32x2_convert_Float16x2.documentation = "Convert f16x2 to f32x2"_c;
     Float32x2_convert_Float16x2.name = "f32x2"_c;
     Float32x2_convert_Float16x2.returnType = Type::FullType { Float32x2Type.name };
-    Symbol::Resolved(&Float32x2_convert_Float16x2_arg0)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&Float32x2_convert_Float16x2)->returnTypeSymbol = &Float32x2Type;
-
-    // Splat with Float16
-    Float32x2_splat_Float16_arg0.name = "_arg0"_c;
+    Float32x2_convert_Float16x2.parameters = Float32x2_convert_Float16x2_args;
+    Symbol::Resolved(&Float32x2_convert_Float16x2_arg0).typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&Float32x2_convert_Float16x2).returnTypeSymbol = &Float32x2Type;
+    Float32x2_splat_Float16_arg0.name = "val"_c;
     Float32x2_splat_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    Float32x2_splat_Float16.documentation = "Splat f16x2 to f32x2"_c;
     Float32x2_splat_Float16.name = "f32x2"_c;
     Float32x2_splat_Float16.returnType = Type::FullType { Float32x2Type.name };
-    Symbol::Resolved(&Float32x2_splat_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Float32x2_splat_Float16)->returnTypeSymbol = &Float32x2Type;
-
-    // Conversion from UInt16x2
-    Float32x2_convert_UInt16x2_arg0.name = "_arg0"_c;
+    Float32x2_splat_Float16.parameters = Float32x2_splat_Float16_args;
+    Symbol::Resolved(&Float32x2_splat_Float16_arg0).typeSymbol = &Float16Type;
+    Symbol::Resolved(&Float32x2_splat_Float16).returnTypeSymbol = &Float32x2Type;
+    Float32x2_convert_UInt16x2_arg0.name = "val"_c;
     Float32x2_convert_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
+    Float32x2_convert_UInt16x2.documentation = "Convert u16x2 to f32x2"_c;
     Float32x2_convert_UInt16x2.name = "f32x2"_c;
     Float32x2_convert_UInt16x2.returnType = Type::FullType { Float32x2Type.name };
-    Symbol::Resolved(&Float32x2_convert_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&Float32x2_convert_UInt16x2)->returnTypeSymbol = &Float32x2Type;
-
-    // Splat with UInt16
-    Float32x2_splat_UInt16_arg0.name = "_arg0"_c;
+    Float32x2_convert_UInt16x2.parameters = Float32x2_convert_UInt16x2_args;
+    Symbol::Resolved(&Float32x2_convert_UInt16x2_arg0).typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&Float32x2_convert_UInt16x2).returnTypeSymbol = &Float32x2Type;
+    Float32x2_splat_UInt16_arg0.name = "val"_c;
     Float32x2_splat_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    Float32x2_splat_UInt16.documentation = "Splat u16x2 to f32x2"_c;
     Float32x2_splat_UInt16.name = "f32x2"_c;
     Float32x2_splat_UInt16.returnType = Type::FullType { Float32x2Type.name };
-    Symbol::Resolved(&Float32x2_splat_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float32x2_splat_UInt16)->returnTypeSymbol = &Float32x2Type;
-
-    // Conversion from Int16x2
-    Float32x2_convert_Int16x2_arg0.name = "_arg0"_c;
+    Float32x2_splat_UInt16.parameters = Float32x2_splat_UInt16_args;
+    Symbol::Resolved(&Float32x2_splat_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&Float32x2_splat_UInt16).returnTypeSymbol = &Float32x2Type;
+    Float32x2_convert_Int16x2_arg0.name = "val"_c;
     Float32x2_convert_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
+    Float32x2_convert_Int16x2.documentation = "Convert i16x2 to f32x2"_c;
     Float32x2_convert_Int16x2.name = "f32x2"_c;
     Float32x2_convert_Int16x2.returnType = Type::FullType { Float32x2Type.name };
-    Symbol::Resolved(&Float32x2_convert_Int16x2_arg0)->typeSymbol = &Int16x2Type;
-    Symbol::Resolved(&Float32x2_convert_Int16x2)->returnTypeSymbol = &Float32x2Type;
-
-    // Splat with Int16
-    Float32x2_splat_Int16_arg0.name = "_arg0"_c;
+    Float32x2_convert_Int16x2.parameters = Float32x2_convert_Int16x2_args;
+    Symbol::Resolved(&Float32x2_convert_Int16x2_arg0).typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&Float32x2_convert_Int16x2).returnTypeSymbol = &Float32x2Type;
+    Float32x2_splat_Int16_arg0.name = "val"_c;
     Float32x2_splat_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    Float32x2_splat_Int16.documentation = "Splat i16x2 to f32x2"_c;
     Float32x2_splat_Int16.name = "f32x2"_c;
     Float32x2_splat_Int16.returnType = Type::FullType { Float32x2Type.name };
-    Symbol::Resolved(&Float32x2_splat_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float32x2_splat_Int16)->returnTypeSymbol = &Float32x2Type;
-
+    Float32x2_splat_Int16.parameters = Float32x2_splat_Int16_args;
+    Symbol::Resolved(&Float32x2_splat_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&Float32x2_splat_Int16).returnTypeSymbol = &Float32x2Type;
     // Construct with Float32, Float32
     Float32x2_ctor0_arg0.name = "_arg0"_c;
     Float32x2_ctor0_arg0.type = Type::FullType { Float32Type.name };
@@ -2138,6 +6379,7 @@ Float32x2::Float32x2()
     Float32x2_ctor0_arg1.type = Type::FullType { Float32Type.name };
     Float32x2_ctor0_Float32_Float32.name = "0"_c;
     Float32x2_ctor0_Float32_Float32.returnType = Type::FullType{ Float32x2Type.name };
+    Float32x2_ctor0_Float32_Float32.parameters = Float32x2_ctor0_Float32_Float32_args;
     Symbol::Resolved(&Float32x2_ctor0_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x2_ctor0_arg1)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x2_ctor0_Float32_Float32)->returnTypeSymbol = &Float32x2Type;
@@ -2147,6 +6389,7 @@ Float32x2::Float32x2()
     Float32x2_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Float32x2_operator_index_Int32.name = "operator[]"_c;
     Float32x2_operator_index_Int32.returnType = Type::FullType{ Float32Type.name };
+    Float32x2_operator_index_Int32.parameters = Float32x2_operator_index_Int32_args;
     Symbol::Resolved(&Float32x2_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Float32x2_operator_index_Int32)->returnTypeSymbol = &Float32Type;
 
@@ -2155,6 +6398,7 @@ Float32x2::Float32x2()
     Float32x2_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Float32x2_operator_index_UInt32.name = "operator[]"_c;
     Float32x2_operator_index_UInt32.returnType = Type::FullType{ Float32Type.name };
+    Float32x2_operator_index_UInt32.parameters = Float32x2_operator_index_UInt32_args;
     Symbol::Resolved(&Float32x2_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Float32x2_operator_index_UInt32)->returnTypeSymbol = &Float32Type;
 
@@ -2163,6 +6407,7 @@ Float32x2::Float32x2()
     Float32x2_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Float32x2_operator_index_Int16.name = "operator[]"_c;
     Float32x2_operator_index_Int16.returnType = Type::FullType{ Float32Type.name };
+    Float32x2_operator_index_Int16.parameters = Float32x2_operator_index_Int16_args;
     Symbol::Resolved(&Float32x2_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Float32x2_operator_index_Int16)->returnTypeSymbol = &Float32Type;
 
@@ -2171,6 +6416,7 @@ Float32x2::Float32x2()
     Float32x2_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Float32x2_operator_index_UInt16.name = "operator[]"_c;
     Float32x2_operator_index_UInt16.returnType = Type::FullType{ Float32Type.name };
+    Float32x2_operator_index_UInt16.parameters = Float32x2_operator_index_UInt16_args;
     Symbol::Resolved(&Float32x2_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float32x2_operator_index_UInt16)->returnTypeSymbol = &Float32Type;
 
@@ -2179,6 +6425,7 @@ Float32x2::Float32x2()
     Float32x2_operator_add_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
     Float32x2_operator_add_Float32x2.name = "operator+"_c;
     Float32x2_operator_add_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    Float32x2_operator_add_Float32x2.parameters = Float32x2_operator_add_Float32x2_args;
     Symbol::Resolved(&Float32x2_operator_add_Float32x2_arg0)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&Float32x2_operator_add_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
@@ -2187,6 +6434,7 @@ Float32x2::Float32x2()
     Float32x2_operator_sub_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
     Float32x2_operator_sub_Float32x2.name = "operator-"_c;
     Float32x2_operator_sub_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    Float32x2_operator_sub_Float32x2.parameters = Float32x2_operator_sub_Float32x2_args;
     Symbol::Resolved(&Float32x2_operator_sub_Float32x2_arg0)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&Float32x2_operator_sub_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
@@ -2195,6 +6443,7 @@ Float32x2::Float32x2()
     Float32x2_operator_mul_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
     Float32x2_operator_mul_Float32x2.name = "operator*"_c;
     Float32x2_operator_mul_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    Float32x2_operator_mul_Float32x2.parameters = Float32x2_operator_mul_Float32x2_args;
     Symbol::Resolved(&Float32x2_operator_mul_Float32x2_arg0)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&Float32x2_operator_mul_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
@@ -2203,6 +6452,7 @@ Float32x2::Float32x2()
     Float32x2_operator_div_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
     Float32x2_operator_div_Float32x2.name = "operator/"_c;
     Float32x2_operator_div_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    Float32x2_operator_div_Float32x2.parameters = Float32x2_operator_div_Float32x2_args;
     Symbol::Resolved(&Float32x2_operator_div_Float32x2_arg0)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&Float32x2_operator_div_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
@@ -2211,6 +6461,7 @@ Float32x2::Float32x2()
     Float32x2_operator_mod_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
     Float32x2_operator_mod_Float32x2.name = "operator%"_c;
     Float32x2_operator_mod_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    Float32x2_operator_mod_Float32x2.parameters = Float32x2_operator_mod_Float32x2_args;
     Symbol::Resolved(&Float32x2_operator_mod_Float32x2_arg0)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&Float32x2_operator_mod_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
@@ -2219,6 +6470,7 @@ Float32x2::Float32x2()
     Float32x2_operator_addasg_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
     Float32x2_operator_addasg_Float32x2.name = "operator+="_c;
     Float32x2_operator_addasg_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    Float32x2_operator_addasg_Float32x2.parameters = Float32x2_operator_addasg_Float32x2_args;
     Symbol::Resolved(&Float32x2_operator_addasg_Float32x2_arg0)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&Float32x2_operator_addasg_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
@@ -2227,6 +6479,7 @@ Float32x2::Float32x2()
     Float32x2_operator_subasg_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
     Float32x2_operator_subasg_Float32x2.name = "operator-="_c;
     Float32x2_operator_subasg_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    Float32x2_operator_subasg_Float32x2.parameters = Float32x2_operator_subasg_Float32x2_args;
     Symbol::Resolved(&Float32x2_operator_subasg_Float32x2_arg0)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&Float32x2_operator_subasg_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
@@ -2235,6 +6488,7 @@ Float32x2::Float32x2()
     Float32x2_operator_mulasg_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
     Float32x2_operator_mulasg_Float32x2.name = "operator*="_c;
     Float32x2_operator_mulasg_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    Float32x2_operator_mulasg_Float32x2.parameters = Float32x2_operator_mulasg_Float32x2_args;
     Symbol::Resolved(&Float32x2_operator_mulasg_Float32x2_arg0)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&Float32x2_operator_mulasg_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
@@ -2243,6 +6497,7 @@ Float32x2::Float32x2()
     Float32x2_operator_divasg_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
     Float32x2_operator_divasg_Float32x2.name = "operator/="_c;
     Float32x2_operator_divasg_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    Float32x2_operator_divasg_Float32x2.parameters = Float32x2_operator_divasg_Float32x2_args;
     Symbol::Resolved(&Float32x2_operator_divasg_Float32x2_arg0)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&Float32x2_operator_divasg_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
@@ -2251,6 +6506,7 @@ Float32x2::Float32x2()
     Float32x2_operator_lt_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
     Float32x2_operator_lt_Float32x2.name = "operator<"_c;
     Float32x2_operator_lt_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    Float32x2_operator_lt_Float32x2.parameters = Float32x2_operator_lt_Float32x2_args;
     Symbol::Resolved(&Float32x2_operator_lt_Float32x2_arg0)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&Float32x2_operator_lt_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
@@ -2259,6 +6515,7 @@ Float32x2::Float32x2()
     Float32x2_operator_lte_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
     Float32x2_operator_lte_Float32x2.name = "operator<="_c;
     Float32x2_operator_lte_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    Float32x2_operator_lte_Float32x2.parameters = Float32x2_operator_lte_Float32x2_args;
     Symbol::Resolved(&Float32x2_operator_lte_Float32x2_arg0)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&Float32x2_operator_lte_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
@@ -2267,6 +6524,7 @@ Float32x2::Float32x2()
     Float32x2_operator_gt_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
     Float32x2_operator_gt_Float32x2.name = "operator>"_c;
     Float32x2_operator_gt_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    Float32x2_operator_gt_Float32x2.parameters = Float32x2_operator_gt_Float32x2_args;
     Symbol::Resolved(&Float32x2_operator_gt_Float32x2_arg0)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&Float32x2_operator_gt_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
@@ -2275,6 +6533,7 @@ Float32x2::Float32x2()
     Float32x2_operator_gte_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
     Float32x2_operator_gte_Float32x2.name = "operator>="_c;
     Float32x2_operator_gte_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    Float32x2_operator_gte_Float32x2.parameters = Float32x2_operator_gte_Float32x2_args;
     Symbol::Resolved(&Float32x2_operator_gte_Float32x2_arg0)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&Float32x2_operator_gte_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
@@ -2283,6 +6542,7 @@ Float32x2::Float32x2()
     Float32x2_operator_eq_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
     Float32x2_operator_eq_Float32x2.name = "operator=="_c;
     Float32x2_operator_eq_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    Float32x2_operator_eq_Float32x2.parameters = Float32x2_operator_eq_Float32x2_args;
     Symbol::Resolved(&Float32x2_operator_eq_Float32x2_arg0)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&Float32x2_operator_eq_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
@@ -2291,6 +6551,7 @@ Float32x2::Float32x2()
     Float32x2_operator_neq_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
     Float32x2_operator_neq_Float32x2.name = "operator!="_c;
     Float32x2_operator_neq_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    Float32x2_operator_neq_Float32x2.parameters = Float32x2_operator_neq_Float32x2_args;
     Symbol::Resolved(&Float32x2_operator_neq_Float32x2_arg0)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&Float32x2_operator_neq_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
@@ -2299,6 +6560,7 @@ Float32x2::Float32x2()
     Float32x2_operator_scale_Float32x2_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Float32x2_operator_scale_Float32x2_Float32.name = "operator*"_c;
     Float32x2_operator_scale_Float32x2_Float32.returnType = Type::FullType{ Float32x2Type.name };
+    Float32x2_operator_scale_Float32x2_Float32.parameters = Float32x2_operator_scale_Float32x2_Float32_args;
     Symbol::Resolved(&Float32x2_operator_scale_Float32x2_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x2_operator_scale_Float32x2_Float32)->returnTypeSymbol = &Float32x2Type;
 
@@ -2307,6 +6569,7 @@ Float32x2::Float32x2()
     Float32x2_operator_scale_Float32x2_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Float32x2_operator_scale_Float32x2_Float16.name = "operator*"_c;
     Float32x2_operator_scale_Float32x2_Float16.returnType = Type::FullType{ Float32x2Type.name };
+    Float32x2_operator_scale_Float32x2_Float16.parameters = Float32x2_operator_scale_Float32x2_Float16_args;
     Symbol::Resolved(&Float32x2_operator_scale_Float32x2_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float32x2_operator_scale_Float32x2_Float16)->returnTypeSymbol = &Float32x2Type;
 
@@ -2315,6 +6578,7 @@ Float32x2::Float32x2()
     Float32x2_operator_scale_Float32x2_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Float32x2_operator_scale_Float32x2_UInt32.name = "operator*"_c;
     Float32x2_operator_scale_Float32x2_UInt32.returnType = Type::FullType{ Float32x2Type.name };
+    Float32x2_operator_scale_Float32x2_UInt32.parameters = Float32x2_operator_scale_Float32x2_UInt32_args;
     Symbol::Resolved(&Float32x2_operator_scale_Float32x2_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Float32x2_operator_scale_Float32x2_UInt32)->returnTypeSymbol = &Float32x2Type;
 
@@ -2323,6 +6587,7 @@ Float32x2::Float32x2()
     Float32x2_operator_scale_Float32x2_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Float32x2_operator_scale_Float32x2_UInt16.name = "operator*"_c;
     Float32x2_operator_scale_Float32x2_UInt16.returnType = Type::FullType{ Float32x2Type.name };
+    Float32x2_operator_scale_Float32x2_UInt16.parameters = Float32x2_operator_scale_Float32x2_UInt16_args;
     Symbol::Resolved(&Float32x2_operator_scale_Float32x2_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float32x2_operator_scale_Float32x2_UInt16)->returnTypeSymbol = &Float32x2Type;
 
@@ -2331,6 +6596,7 @@ Float32x2::Float32x2()
     Float32x2_operator_scale_Float32x2_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Float32x2_operator_scale_Float32x2_Int32.name = "operator*"_c;
     Float32x2_operator_scale_Float32x2_Int32.returnType = Type::FullType{ Float32x2Type.name };
+    Float32x2_operator_scale_Float32x2_Int32.parameters = Float32x2_operator_scale_Float32x2_Int32_args;
     Symbol::Resolved(&Float32x2_operator_scale_Float32x2_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Float32x2_operator_scale_Float32x2_Int32)->returnTypeSymbol = &Float32x2Type;
 
@@ -2339,6 +6605,7 @@ Float32x2::Float32x2()
     Float32x2_operator_scale_Float32x2_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Float32x2_operator_scale_Float32x2_Int16.name = "operator*"_c;
     Float32x2_operator_scale_Float32x2_Int16.returnType = Type::FullType{ Float32x2Type.name };
+    Float32x2_operator_scale_Float32x2_Int16.parameters = Float32x2_operator_scale_Float32x2_Int16_args;
     Symbol::Resolved(&Float32x2_operator_scale_Float32x2_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Float32x2_operator_scale_Float32x2_Int16)->returnTypeSymbol = &Float32x2Type;
 
@@ -2347,6 +6614,7 @@ Float32x2::Float32x2()
     Float32x2_operator_mul_Float32x2x2_arg0.type = Type::FullType{ Float32x2x2Type.name };
     Float32x2_operator_mul_Float32x2x2.name = "operator*"_c;
     Float32x2_operator_mul_Float32x2x2.returnType = Type::FullType{ Float32x2Type.name };
+    Float32x2_operator_mul_Float32x2x2.parameters = Float32x2_operator_mul_Float32x2x2_args;
     Symbol::Resolved(&Float32x2_operator_mul_Float32x2x2_arg0)->typeSymbol = &Float32x2x2Type;
     Symbol::Resolved(&Float32x2_operator_mul_Float32x2x2)->returnTypeSymbol = &Float32x2Type;
 
@@ -2355,6 +6623,7 @@ Float32x2::Float32x2()
     Float32x2_operator_mul_Float32x2x3_arg0.type = Type::FullType{ Float32x2x3Type.name };
     Float32x2_operator_mul_Float32x2x3.name = "operator*"_c;
     Float32x2_operator_mul_Float32x2x3.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x2_operator_mul_Float32x2x3.parameters = Float32x2_operator_mul_Float32x2x3_args;
     Symbol::Resolved(&Float32x2_operator_mul_Float32x2x3_arg0)->typeSymbol = &Float32x2x3Type;
     Symbol::Resolved(&Float32x2_operator_mul_Float32x2x3)->returnTypeSymbol = &Float32x3Type;
 
@@ -2363,36 +6632,11 @@ Float32x2::Float32x2()
     Float32x2_operator_mul_Float32x2x4_arg0.type = Type::FullType{ Float32x2x4Type.name };
     Float32x2_operator_mul_Float32x2x4.name = "operator*"_c;
     Float32x2_operator_mul_Float32x2x4.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x2_operator_mul_Float32x2x4.parameters = Float32x2_operator_mul_Float32x2x4_args;
     Symbol::Resolved(&Float32x2_operator_mul_Float32x2x4_arg0)->typeSymbol = &Float32x2x4Type;
     Symbol::Resolved(&Float32x2_operator_mul_Float32x2x4)->returnTypeSymbol = &Float32x4Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "f32x2"_c, &Float32x2_convert_Float32x2 },
-        std::pair{ "f32x2(f32x2)"_c, &Float32x2_convert_Float32x2 },
-        std::pair{ "f32x2"_c, &Float32x2_splat_Float32 },
-        std::pair{ "f32x2(f32)"_c, &Float32x2_splat_Float32 },
-        std::pair{ "f32x2"_c, &Float32x2_convert_UInt32x2 },
-        std::pair{ "f32x2(u32x2)"_c, &Float32x2_convert_UInt32x2 },
-        std::pair{ "f32x2"_c, &Float32x2_splat_UInt32 },
-        std::pair{ "f32x2(u32)"_c, &Float32x2_splat_UInt32 },
-        std::pair{ "f32x2"_c, &Float32x2_convert_Int32x2 },
-        std::pair{ "f32x2(i32x2)"_c, &Float32x2_convert_Int32x2 },
-        std::pair{ "f32x2"_c, &Float32x2_splat_Int32 },
-        std::pair{ "f32x2(i32)"_c, &Float32x2_splat_Int32 },
-        std::pair{ "f32x2"_c, &Float32x2_convert_Float16x2 },
-        std::pair{ "f32x2(f16x2)"_c, &Float32x2_convert_Float16x2 },
-        std::pair{ "f32x2"_c, &Float32x2_splat_Float16 },
-        std::pair{ "f32x2(f16)"_c, &Float32x2_splat_Float16 },
-        std::pair{ "f32x2"_c, &Float32x2_convert_UInt16x2 },
-        std::pair{ "f32x2(u16x2)"_c, &Float32x2_convert_UInt16x2 },
-        std::pair{ "f32x2"_c, &Float32x2_splat_UInt16 },
-        std::pair{ "f32x2(u16)"_c, &Float32x2_splat_UInt16 },
-        std::pair{ "f32x2"_c, &Float32x2_convert_Int16x2 },
-        std::pair{ "f32x2(i16x2)"_c, &Float32x2_convert_Int16x2 },
-        std::pair{ "f32x2"_c, &Float32x2_splat_Int16 },
-        std::pair{ "f32x2(i16)"_c, &Float32x2_splat_Int16 },
-        std::pair{ "f32x2"_c, &Float32x2_ctor0_Float32_Float32},
-        std::pair{ "f32x2(f32,f32)"_c, &Float32x2_ctor0_Float32_Float32},
         std::pair{ "operator[](i32)"_c, &Float32x2_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &Float32x2_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &Float32x2_operator_index_Int16},
@@ -2434,102 +6678,102 @@ UInt32x2::UInt32x2()
     this->baseType = TypeCode::UInt32;
     this->builtin = true;
 
-    // Conversion from Float32x2
-    UInt32x2_convert_Float32x2_arg0.name = "_arg0"_c;
+    UInt32x2_convert_Float32x2_arg0.name = "val"_c;
     UInt32x2_convert_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
+    UInt32x2_convert_Float32x2.documentation = "Convert f32x2 to u32x2"_c;
     UInt32x2_convert_Float32x2.name = "u32x2"_c;
     UInt32x2_convert_Float32x2.returnType = Type::FullType { UInt32x2Type.name };
-    Symbol::Resolved(&UInt32x2_convert_Float32x2_arg0)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&UInt32x2_convert_Float32x2)->returnTypeSymbol = &UInt32x2Type;
-
-    // Splat with Float32
-    UInt32x2_splat_Float32_arg0.name = "_arg0"_c;
+    UInt32x2_convert_Float32x2.parameters = UInt32x2_convert_Float32x2_args;
+    Symbol::Resolved(&UInt32x2_convert_Float32x2_arg0).typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&UInt32x2_convert_Float32x2).returnTypeSymbol = &UInt32x2Type;
+    UInt32x2_splat_Float32_arg0.name = "val"_c;
     UInt32x2_splat_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    UInt32x2_splat_Float32.documentation = "Splat f32x2 to u32x2"_c;
     UInt32x2_splat_Float32.name = "u32x2"_c;
     UInt32x2_splat_Float32.returnType = Type::FullType { UInt32x2Type.name };
-    Symbol::Resolved(&UInt32x2_splat_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&UInt32x2_splat_Float32)->returnTypeSymbol = &UInt32x2Type;
-
-    // Conversion from UInt32x2
-    UInt32x2_convert_UInt32x2_arg0.name = "_arg0"_c;
+    UInt32x2_splat_Float32.parameters = UInt32x2_splat_Float32_args;
+    Symbol::Resolved(&UInt32x2_splat_Float32_arg0).typeSymbol = &Float32Type;
+    Symbol::Resolved(&UInt32x2_splat_Float32).returnTypeSymbol = &UInt32x2Type;
+    UInt32x2_convert_UInt32x2_arg0.name = "val"_c;
     UInt32x2_convert_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_convert_UInt32x2.documentation = "Convert u32x2 to u32x2"_c;
     UInt32x2_convert_UInt32x2.name = "u32x2"_c;
     UInt32x2_convert_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
-    Symbol::Resolved(&UInt32x2_convert_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
-    Symbol::Resolved(&UInt32x2_convert_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
-
-    // Splat with UInt32
-    UInt32x2_splat_UInt32_arg0.name = "_arg0"_c;
+    UInt32x2_convert_UInt32x2.parameters = UInt32x2_convert_UInt32x2_args;
+    Symbol::Resolved(&UInt32x2_convert_UInt32x2_arg0).typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&UInt32x2_convert_UInt32x2).returnTypeSymbol = &UInt32x2Type;
+    UInt32x2_splat_UInt32_arg0.name = "val"_c;
     UInt32x2_splat_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    UInt32x2_splat_UInt32.documentation = "Splat u32x2 to u32x2"_c;
     UInt32x2_splat_UInt32.name = "u32x2"_c;
     UInt32x2_splat_UInt32.returnType = Type::FullType { UInt32x2Type.name };
-    Symbol::Resolved(&UInt32x2_splat_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&UInt32x2_splat_UInt32)->returnTypeSymbol = &UInt32x2Type;
-
-    // Conversion from Int32x2
-    UInt32x2_convert_Int32x2_arg0.name = "_arg0"_c;
+    UInt32x2_splat_UInt32.parameters = UInt32x2_splat_UInt32_args;
+    Symbol::Resolved(&UInt32x2_splat_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&UInt32x2_splat_UInt32).returnTypeSymbol = &UInt32x2Type;
+    UInt32x2_convert_Int32x2_arg0.name = "val"_c;
     UInt32x2_convert_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
+    UInt32x2_convert_Int32x2.documentation = "Convert i32x2 to u32x2"_c;
     UInt32x2_convert_Int32x2.name = "u32x2"_c;
     UInt32x2_convert_Int32x2.returnType = Type::FullType { UInt32x2Type.name };
-    Symbol::Resolved(&UInt32x2_convert_Int32x2_arg0)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&UInt32x2_convert_Int32x2)->returnTypeSymbol = &UInt32x2Type;
-
-    // Splat with Int32
-    UInt32x2_splat_Int32_arg0.name = "_arg0"_c;
+    UInt32x2_convert_Int32x2.parameters = UInt32x2_convert_Int32x2_args;
+    Symbol::Resolved(&UInt32x2_convert_Int32x2_arg0).typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&UInt32x2_convert_Int32x2).returnTypeSymbol = &UInt32x2Type;
+    UInt32x2_splat_Int32_arg0.name = "val"_c;
     UInt32x2_splat_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    UInt32x2_splat_Int32.documentation = "Splat i32x2 to u32x2"_c;
     UInt32x2_splat_Int32.name = "u32x2"_c;
     UInt32x2_splat_Int32.returnType = Type::FullType { UInt32x2Type.name };
-    Symbol::Resolved(&UInt32x2_splat_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&UInt32x2_splat_Int32)->returnTypeSymbol = &UInt32x2Type;
-
-    // Conversion from Float16x2
-    UInt32x2_convert_Float16x2_arg0.name = "_arg0"_c;
+    UInt32x2_splat_Int32.parameters = UInt32x2_splat_Int32_args;
+    Symbol::Resolved(&UInt32x2_splat_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&UInt32x2_splat_Int32).returnTypeSymbol = &UInt32x2Type;
+    UInt32x2_convert_Float16x2_arg0.name = "val"_c;
     UInt32x2_convert_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
+    UInt32x2_convert_Float16x2.documentation = "Convert f16x2 to u32x2"_c;
     UInt32x2_convert_Float16x2.name = "u32x2"_c;
     UInt32x2_convert_Float16x2.returnType = Type::FullType { UInt32x2Type.name };
-    Symbol::Resolved(&UInt32x2_convert_Float16x2_arg0)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&UInt32x2_convert_Float16x2)->returnTypeSymbol = &UInt32x2Type;
-
-    // Splat with Float16
-    UInt32x2_splat_Float16_arg0.name = "_arg0"_c;
+    UInt32x2_convert_Float16x2.parameters = UInt32x2_convert_Float16x2_args;
+    Symbol::Resolved(&UInt32x2_convert_Float16x2_arg0).typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&UInt32x2_convert_Float16x2).returnTypeSymbol = &UInt32x2Type;
+    UInt32x2_splat_Float16_arg0.name = "val"_c;
     UInt32x2_splat_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    UInt32x2_splat_Float16.documentation = "Splat f16x2 to u32x2"_c;
     UInt32x2_splat_Float16.name = "u32x2"_c;
     UInt32x2_splat_Float16.returnType = Type::FullType { UInt32x2Type.name };
-    Symbol::Resolved(&UInt32x2_splat_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&UInt32x2_splat_Float16)->returnTypeSymbol = &UInt32x2Type;
-
-    // Conversion from UInt16x2
-    UInt32x2_convert_UInt16x2_arg0.name = "_arg0"_c;
+    UInt32x2_splat_Float16.parameters = UInt32x2_splat_Float16_args;
+    Symbol::Resolved(&UInt32x2_splat_Float16_arg0).typeSymbol = &Float16Type;
+    Symbol::Resolved(&UInt32x2_splat_Float16).returnTypeSymbol = &UInt32x2Type;
+    UInt32x2_convert_UInt16x2_arg0.name = "val"_c;
     UInt32x2_convert_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
+    UInt32x2_convert_UInt16x2.documentation = "Convert u16x2 to u32x2"_c;
     UInt32x2_convert_UInt16x2.name = "u32x2"_c;
     UInt32x2_convert_UInt16x2.returnType = Type::FullType { UInt32x2Type.name };
-    Symbol::Resolved(&UInt32x2_convert_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&UInt32x2_convert_UInt16x2)->returnTypeSymbol = &UInt32x2Type;
-
-    // Splat with UInt16
-    UInt32x2_splat_UInt16_arg0.name = "_arg0"_c;
+    UInt32x2_convert_UInt16x2.parameters = UInt32x2_convert_UInt16x2_args;
+    Symbol::Resolved(&UInt32x2_convert_UInt16x2_arg0).typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&UInt32x2_convert_UInt16x2).returnTypeSymbol = &UInt32x2Type;
+    UInt32x2_splat_UInt16_arg0.name = "val"_c;
     UInt32x2_splat_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    UInt32x2_splat_UInt16.documentation = "Splat u16x2 to u32x2"_c;
     UInt32x2_splat_UInt16.name = "u32x2"_c;
     UInt32x2_splat_UInt16.returnType = Type::FullType { UInt32x2Type.name };
-    Symbol::Resolved(&UInt32x2_splat_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&UInt32x2_splat_UInt16)->returnTypeSymbol = &UInt32x2Type;
-
-    // Conversion from Int16x2
-    UInt32x2_convert_Int16x2_arg0.name = "_arg0"_c;
+    UInt32x2_splat_UInt16.parameters = UInt32x2_splat_UInt16_args;
+    Symbol::Resolved(&UInt32x2_splat_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&UInt32x2_splat_UInt16).returnTypeSymbol = &UInt32x2Type;
+    UInt32x2_convert_Int16x2_arg0.name = "val"_c;
     UInt32x2_convert_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
+    UInt32x2_convert_Int16x2.documentation = "Convert i16x2 to u32x2"_c;
     UInt32x2_convert_Int16x2.name = "u32x2"_c;
     UInt32x2_convert_Int16x2.returnType = Type::FullType { UInt32x2Type.name };
-    Symbol::Resolved(&UInt32x2_convert_Int16x2_arg0)->typeSymbol = &Int16x2Type;
-    Symbol::Resolved(&UInt32x2_convert_Int16x2)->returnTypeSymbol = &UInt32x2Type;
-
-    // Splat with Int16
-    UInt32x2_splat_Int16_arg0.name = "_arg0"_c;
+    UInt32x2_convert_Int16x2.parameters = UInt32x2_convert_Int16x2_args;
+    Symbol::Resolved(&UInt32x2_convert_Int16x2_arg0).typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&UInt32x2_convert_Int16x2).returnTypeSymbol = &UInt32x2Type;
+    UInt32x2_splat_Int16_arg0.name = "val"_c;
     UInt32x2_splat_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    UInt32x2_splat_Int16.documentation = "Splat i16x2 to u32x2"_c;
     UInt32x2_splat_Int16.name = "u32x2"_c;
     UInt32x2_splat_Int16.returnType = Type::FullType { UInt32x2Type.name };
-    Symbol::Resolved(&UInt32x2_splat_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&UInt32x2_splat_Int16)->returnTypeSymbol = &UInt32x2Type;
-
+    UInt32x2_splat_Int16.parameters = UInt32x2_splat_Int16_args;
+    Symbol::Resolved(&UInt32x2_splat_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&UInt32x2_splat_Int16).returnTypeSymbol = &UInt32x2Type;
     // Construct with UInt32, UInt32
     UInt32x2_ctor0_arg0.name = "_arg0"_c;
     UInt32x2_ctor0_arg0.type = Type::FullType { UInt32Type.name };
@@ -2537,6 +6781,7 @@ UInt32x2::UInt32x2()
     UInt32x2_ctor0_arg1.type = Type::FullType { UInt32Type.name };
     UInt32x2_ctor0_UInt32_UInt32.name = "0"_c;
     UInt32x2_ctor0_UInt32_UInt32.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_ctor0_UInt32_UInt32.parameters = UInt32x2_ctor0_UInt32_UInt32_args;
     Symbol::Resolved(&UInt32x2_ctor0_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32x2_ctor0_arg1)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32x2_ctor0_UInt32_UInt32)->returnTypeSymbol = &UInt32x2Type;
@@ -2546,6 +6791,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     UInt32x2_operator_index_Int32.name = "operator[]"_c;
     UInt32x2_operator_index_Int32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32x2_operator_index_Int32.parameters = UInt32x2_operator_index_Int32_args;
     Symbol::Resolved(&UInt32x2_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&UInt32x2_operator_index_Int32)->returnTypeSymbol = &UInt32Type;
 
@@ -2554,6 +6800,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32x2_operator_index_UInt32.name = "operator[]"_c;
     UInt32x2_operator_index_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32x2_operator_index_UInt32.parameters = UInt32x2_operator_index_UInt32_args;
     Symbol::Resolved(&UInt32x2_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32x2_operator_index_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -2562,6 +6809,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     UInt32x2_operator_index_Int16.name = "operator[]"_c;
     UInt32x2_operator_index_Int16.returnType = Type::FullType{ UInt32Type.name };
+    UInt32x2_operator_index_Int16.parameters = UInt32x2_operator_index_Int16_args;
     Symbol::Resolved(&UInt32x2_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&UInt32x2_operator_index_Int16)->returnTypeSymbol = &UInt32Type;
 
@@ -2570,6 +6818,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt32x2_operator_index_UInt16.name = "operator[]"_c;
     UInt32x2_operator_index_UInt16.returnType = Type::FullType{ UInt32Type.name };
+    UInt32x2_operator_index_UInt16.parameters = UInt32x2_operator_index_UInt16_args;
     Symbol::Resolved(&UInt32x2_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt32x2_operator_index_UInt16)->returnTypeSymbol = &UInt32Type;
 
@@ -2578,6 +6827,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_add_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
     UInt32x2_operator_add_UInt32x2.name = "operator+"_c;
     UInt32x2_operator_add_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_add_UInt32x2.parameters = UInt32x2_operator_add_UInt32x2_args;
     Symbol::Resolved(&UInt32x2_operator_add_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x2_operator_add_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2586,6 +6836,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_sub_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
     UInt32x2_operator_sub_UInt32x2.name = "operator-"_c;
     UInt32x2_operator_sub_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_sub_UInt32x2.parameters = UInt32x2_operator_sub_UInt32x2_args;
     Symbol::Resolved(&UInt32x2_operator_sub_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x2_operator_sub_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2594,6 +6845,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_mul_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
     UInt32x2_operator_mul_UInt32x2.name = "operator*"_c;
     UInt32x2_operator_mul_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_mul_UInt32x2.parameters = UInt32x2_operator_mul_UInt32x2_args;
     Symbol::Resolved(&UInt32x2_operator_mul_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x2_operator_mul_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2602,6 +6854,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_div_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
     UInt32x2_operator_div_UInt32x2.name = "operator/"_c;
     UInt32x2_operator_div_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_div_UInt32x2.parameters = UInt32x2_operator_div_UInt32x2_args;
     Symbol::Resolved(&UInt32x2_operator_div_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x2_operator_div_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2610,6 +6863,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_mod_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
     UInt32x2_operator_mod_UInt32x2.name = "operator%"_c;
     UInt32x2_operator_mod_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_mod_UInt32x2.parameters = UInt32x2_operator_mod_UInt32x2_args;
     Symbol::Resolved(&UInt32x2_operator_mod_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x2_operator_mod_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2618,6 +6872,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_addasg_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
     UInt32x2_operator_addasg_UInt32x2.name = "operator+="_c;
     UInt32x2_operator_addasg_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_addasg_UInt32x2.parameters = UInt32x2_operator_addasg_UInt32x2_args;
     Symbol::Resolved(&UInt32x2_operator_addasg_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x2_operator_addasg_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2626,6 +6881,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_subasg_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
     UInt32x2_operator_subasg_UInt32x2.name = "operator-="_c;
     UInt32x2_operator_subasg_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_subasg_UInt32x2.parameters = UInt32x2_operator_subasg_UInt32x2_args;
     Symbol::Resolved(&UInt32x2_operator_subasg_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x2_operator_subasg_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2634,6 +6890,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_mulasg_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
     UInt32x2_operator_mulasg_UInt32x2.name = "operator*="_c;
     UInt32x2_operator_mulasg_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_mulasg_UInt32x2.parameters = UInt32x2_operator_mulasg_UInt32x2_args;
     Symbol::Resolved(&UInt32x2_operator_mulasg_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x2_operator_mulasg_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2642,6 +6899,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_divasg_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
     UInt32x2_operator_divasg_UInt32x2.name = "operator/="_c;
     UInt32x2_operator_divasg_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_divasg_UInt32x2.parameters = UInt32x2_operator_divasg_UInt32x2_args;
     Symbol::Resolved(&UInt32x2_operator_divasg_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x2_operator_divasg_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2650,6 +6908,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_lt_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
     UInt32x2_operator_lt_UInt32x2.name = "operator<"_c;
     UInt32x2_operator_lt_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_lt_UInt32x2.parameters = UInt32x2_operator_lt_UInt32x2_args;
     Symbol::Resolved(&UInt32x2_operator_lt_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x2_operator_lt_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2658,6 +6917,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_lte_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
     UInt32x2_operator_lte_UInt32x2.name = "operator<="_c;
     UInt32x2_operator_lte_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_lte_UInt32x2.parameters = UInt32x2_operator_lte_UInt32x2_args;
     Symbol::Resolved(&UInt32x2_operator_lte_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x2_operator_lte_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2666,6 +6926,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_gt_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
     UInt32x2_operator_gt_UInt32x2.name = "operator>"_c;
     UInt32x2_operator_gt_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_gt_UInt32x2.parameters = UInt32x2_operator_gt_UInt32x2_args;
     Symbol::Resolved(&UInt32x2_operator_gt_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x2_operator_gt_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2674,6 +6935,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_gte_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
     UInt32x2_operator_gte_UInt32x2.name = "operator>="_c;
     UInt32x2_operator_gte_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_gte_UInt32x2.parameters = UInt32x2_operator_gte_UInt32x2_args;
     Symbol::Resolved(&UInt32x2_operator_gte_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x2_operator_gte_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2682,6 +6944,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_eq_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
     UInt32x2_operator_eq_UInt32x2.name = "operator=="_c;
     UInt32x2_operator_eq_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_eq_UInt32x2.parameters = UInt32x2_operator_eq_UInt32x2_args;
     Symbol::Resolved(&UInt32x2_operator_eq_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x2_operator_eq_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2690,6 +6953,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_neq_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
     UInt32x2_operator_neq_UInt32x2.name = "operator!="_c;
     UInt32x2_operator_neq_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_neq_UInt32x2.parameters = UInt32x2_operator_neq_UInt32x2_args;
     Symbol::Resolved(&UInt32x2_operator_neq_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x2_operator_neq_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2698,6 +6962,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_scale_UInt32x2_Float32_arg0.type = Type::FullType{ Float32Type.name };
     UInt32x2_operator_scale_UInt32x2_Float32.name = "operator*"_c;
     UInt32x2_operator_scale_UInt32x2_Float32.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_scale_UInt32x2_Float32.parameters = UInt32x2_operator_scale_UInt32x2_Float32_args;
     Symbol::Resolved(&UInt32x2_operator_scale_UInt32x2_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&UInt32x2_operator_scale_UInt32x2_Float32)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2706,6 +6971,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_scale_UInt32x2_Float16_arg0.type = Type::FullType{ Float16Type.name };
     UInt32x2_operator_scale_UInt32x2_Float16.name = "operator*"_c;
     UInt32x2_operator_scale_UInt32x2_Float16.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_scale_UInt32x2_Float16.parameters = UInt32x2_operator_scale_UInt32x2_Float16_args;
     Symbol::Resolved(&UInt32x2_operator_scale_UInt32x2_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&UInt32x2_operator_scale_UInt32x2_Float16)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2714,6 +6980,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_scale_UInt32x2_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32x2_operator_scale_UInt32x2_UInt32.name = "operator*"_c;
     UInt32x2_operator_scale_UInt32x2_UInt32.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_scale_UInt32x2_UInt32.parameters = UInt32x2_operator_scale_UInt32x2_UInt32_args;
     Symbol::Resolved(&UInt32x2_operator_scale_UInt32x2_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32x2_operator_scale_UInt32x2_UInt32)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2722,6 +6989,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_scale_UInt32x2_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt32x2_operator_scale_UInt32x2_UInt16.name = "operator*"_c;
     UInt32x2_operator_scale_UInt32x2_UInt16.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_scale_UInt32x2_UInt16.parameters = UInt32x2_operator_scale_UInt32x2_UInt16_args;
     Symbol::Resolved(&UInt32x2_operator_scale_UInt32x2_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt32x2_operator_scale_UInt32x2_UInt16)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2730,6 +6998,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_scale_UInt32x2_Int32_arg0.type = Type::FullType{ Int32Type.name };
     UInt32x2_operator_scale_UInt32x2_Int32.name = "operator*"_c;
     UInt32x2_operator_scale_UInt32x2_Int32.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_scale_UInt32x2_Int32.parameters = UInt32x2_operator_scale_UInt32x2_Int32_args;
     Symbol::Resolved(&UInt32x2_operator_scale_UInt32x2_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&UInt32x2_operator_scale_UInt32x2_Int32)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2738,6 +7007,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_scale_UInt32x2_Int16_arg0.type = Type::FullType{ Int16Type.name };
     UInt32x2_operator_scale_UInt32x2_Int16.name = "operator*"_c;
     UInt32x2_operator_scale_UInt32x2_Int16.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_scale_UInt32x2_Int16.parameters = UInt32x2_operator_scale_UInt32x2_Int16_args;
     Symbol::Resolved(&UInt32x2_operator_scale_UInt32x2_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&UInt32x2_operator_scale_UInt32x2_Int16)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2746,6 +7016,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_or_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
     UInt32x2_operator_or_UInt32x2.name = "operator|"_c;
     UInt32x2_operator_or_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_or_UInt32x2.parameters = UInt32x2_operator_or_UInt32x2_args;
     Symbol::Resolved(&UInt32x2_operator_or_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x2_operator_or_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2754,6 +7025,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_and_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
     UInt32x2_operator_and_UInt32x2.name = "operator&"_c;
     UInt32x2_operator_and_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_and_UInt32x2.parameters = UInt32x2_operator_and_UInt32x2_args;
     Symbol::Resolved(&UInt32x2_operator_and_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x2_operator_and_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2762,6 +7034,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_xor_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
     UInt32x2_operator_xor_UInt32x2.name = "operator^"_c;
     UInt32x2_operator_xor_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_xor_UInt32x2.parameters = UInt32x2_operator_xor_UInt32x2_args;
     Symbol::Resolved(&UInt32x2_operator_xor_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x2_operator_xor_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2770,6 +7043,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_lsh_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
     UInt32x2_operator_lsh_UInt32x2.name = "operator<<"_c;
     UInt32x2_operator_lsh_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_lsh_UInt32x2.parameters = UInt32x2_operator_lsh_UInt32x2_args;
     Symbol::Resolved(&UInt32x2_operator_lsh_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x2_operator_lsh_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2778,6 +7052,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_rsh_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
     UInt32x2_operator_rsh_UInt32x2.name = "operator>>"_c;
     UInt32x2_operator_rsh_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_rsh_UInt32x2.parameters = UInt32x2_operator_rsh_UInt32x2_args;
     Symbol::Resolved(&UInt32x2_operator_rsh_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x2_operator_rsh_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2786,6 +7061,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_orasg_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
     UInt32x2_operator_orasg_UInt32x2.name = "operator|="_c;
     UInt32x2_operator_orasg_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_orasg_UInt32x2.parameters = UInt32x2_operator_orasg_UInt32x2_args;
     Symbol::Resolved(&UInt32x2_operator_orasg_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x2_operator_orasg_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2794,6 +7070,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_andasg_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
     UInt32x2_operator_andasg_UInt32x2.name = "operator&="_c;
     UInt32x2_operator_andasg_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_andasg_UInt32x2.parameters = UInt32x2_operator_andasg_UInt32x2_args;
     Symbol::Resolved(&UInt32x2_operator_andasg_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x2_operator_andasg_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2802,6 +7079,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_xorasg_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
     UInt32x2_operator_xorasg_UInt32x2.name = "operator^="_c;
     UInt32x2_operator_xorasg_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_xorasg_UInt32x2.parameters = UInt32x2_operator_xorasg_UInt32x2_args;
     Symbol::Resolved(&UInt32x2_operator_xorasg_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x2_operator_xorasg_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2810,6 +7088,7 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_lshasg_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
     UInt32x2_operator_lshasg_UInt32x2.name = "operator<<="_c;
     UInt32x2_operator_lshasg_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_lshasg_UInt32x2.parameters = UInt32x2_operator_lshasg_UInt32x2_args;
     Symbol::Resolved(&UInt32x2_operator_lshasg_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x2_operator_lshasg_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
@@ -2818,36 +7097,11 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_rhsasg_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
     UInt32x2_operator_rhsasg_UInt32x2.name = "operator>>="_c;
     UInt32x2_operator_rhsasg_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_operator_rhsasg_UInt32x2.parameters = UInt32x2_operator_rhsasg_UInt32x2_args;
     Symbol::Resolved(&UInt32x2_operator_rhsasg_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x2_operator_rhsasg_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "u32x2"_c, &UInt32x2_convert_Float32x2 },
-        std::pair{ "u32x2(f32x2)"_c, &UInt32x2_convert_Float32x2 },
-        std::pair{ "u32x2"_c, &UInt32x2_splat_Float32 },
-        std::pair{ "u32x2(f32)"_c, &UInt32x2_splat_Float32 },
-        std::pair{ "u32x2"_c, &UInt32x2_convert_UInt32x2 },
-        std::pair{ "u32x2(u32x2)"_c, &UInt32x2_convert_UInt32x2 },
-        std::pair{ "u32x2"_c, &UInt32x2_splat_UInt32 },
-        std::pair{ "u32x2(u32)"_c, &UInt32x2_splat_UInt32 },
-        std::pair{ "u32x2"_c, &UInt32x2_convert_Int32x2 },
-        std::pair{ "u32x2(i32x2)"_c, &UInt32x2_convert_Int32x2 },
-        std::pair{ "u32x2"_c, &UInt32x2_splat_Int32 },
-        std::pair{ "u32x2(i32)"_c, &UInt32x2_splat_Int32 },
-        std::pair{ "u32x2"_c, &UInt32x2_convert_Float16x2 },
-        std::pair{ "u32x2(f16x2)"_c, &UInt32x2_convert_Float16x2 },
-        std::pair{ "u32x2"_c, &UInt32x2_splat_Float16 },
-        std::pair{ "u32x2(f16)"_c, &UInt32x2_splat_Float16 },
-        std::pair{ "u32x2"_c, &UInt32x2_convert_UInt16x2 },
-        std::pair{ "u32x2(u16x2)"_c, &UInt32x2_convert_UInt16x2 },
-        std::pair{ "u32x2"_c, &UInt32x2_splat_UInt16 },
-        std::pair{ "u32x2(u16)"_c, &UInt32x2_splat_UInt16 },
-        std::pair{ "u32x2"_c, &UInt32x2_convert_Int16x2 },
-        std::pair{ "u32x2(i16x2)"_c, &UInt32x2_convert_Int16x2 },
-        std::pair{ "u32x2"_c, &UInt32x2_splat_Int16 },
-        std::pair{ "u32x2(i16)"_c, &UInt32x2_splat_Int16 },
-        std::pair{ "u32x2"_c, &UInt32x2_ctor0_UInt32_UInt32},
-        std::pair{ "u32x2(u32,u32)"_c, &UInt32x2_ctor0_UInt32_UInt32},
         std::pair{ "operator[](i32)"_c, &UInt32x2_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &UInt32x2_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &UInt32x2_operator_index_Int16},
@@ -2896,102 +7150,102 @@ Int32x2::Int32x2()
     this->baseType = TypeCode::Int32;
     this->builtin = true;
 
-    // Conversion from Float32x2
-    Int32x2_convert_Float32x2_arg0.name = "_arg0"_c;
+    Int32x2_convert_Float32x2_arg0.name = "val"_c;
     Int32x2_convert_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
+    Int32x2_convert_Float32x2.documentation = "Convert f32x2 to i32x2"_c;
     Int32x2_convert_Float32x2.name = "i32x2"_c;
     Int32x2_convert_Float32x2.returnType = Type::FullType { Int32x2Type.name };
-    Symbol::Resolved(&Int32x2_convert_Float32x2_arg0)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&Int32x2_convert_Float32x2)->returnTypeSymbol = &Int32x2Type;
-
-    // Splat with Float32
-    Int32x2_splat_Float32_arg0.name = "_arg0"_c;
+    Int32x2_convert_Float32x2.parameters = Int32x2_convert_Float32x2_args;
+    Symbol::Resolved(&Int32x2_convert_Float32x2_arg0).typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&Int32x2_convert_Float32x2).returnTypeSymbol = &Int32x2Type;
+    Int32x2_splat_Float32_arg0.name = "val"_c;
     Int32x2_splat_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    Int32x2_splat_Float32.documentation = "Splat f32x2 to i32x2"_c;
     Int32x2_splat_Float32.name = "i32x2"_c;
     Int32x2_splat_Float32.returnType = Type::FullType { Int32x2Type.name };
-    Symbol::Resolved(&Int32x2_splat_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Int32x2_splat_Float32)->returnTypeSymbol = &Int32x2Type;
-
-    // Conversion from UInt32x2
-    Int32x2_convert_UInt32x2_arg0.name = "_arg0"_c;
+    Int32x2_splat_Float32.parameters = Int32x2_splat_Float32_args;
+    Symbol::Resolved(&Int32x2_splat_Float32_arg0).typeSymbol = &Float32Type;
+    Symbol::Resolved(&Int32x2_splat_Float32).returnTypeSymbol = &Int32x2Type;
+    Int32x2_convert_UInt32x2_arg0.name = "val"_c;
     Int32x2_convert_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
+    Int32x2_convert_UInt32x2.documentation = "Convert u32x2 to i32x2"_c;
     Int32x2_convert_UInt32x2.name = "i32x2"_c;
     Int32x2_convert_UInt32x2.returnType = Type::FullType { Int32x2Type.name };
-    Symbol::Resolved(&Int32x2_convert_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
-    Symbol::Resolved(&Int32x2_convert_UInt32x2)->returnTypeSymbol = &Int32x2Type;
-
-    // Splat with UInt32
-    Int32x2_splat_UInt32_arg0.name = "_arg0"_c;
+    Int32x2_convert_UInt32x2.parameters = Int32x2_convert_UInt32x2_args;
+    Symbol::Resolved(&Int32x2_convert_UInt32x2_arg0).typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&Int32x2_convert_UInt32x2).returnTypeSymbol = &Int32x2Type;
+    Int32x2_splat_UInt32_arg0.name = "val"_c;
     Int32x2_splat_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    Int32x2_splat_UInt32.documentation = "Splat u32x2 to i32x2"_c;
     Int32x2_splat_UInt32.name = "i32x2"_c;
     Int32x2_splat_UInt32.returnType = Type::FullType { Int32x2Type.name };
-    Symbol::Resolved(&Int32x2_splat_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Int32x2_splat_UInt32)->returnTypeSymbol = &Int32x2Type;
-
-    // Conversion from Int32x2
-    Int32x2_convert_Int32x2_arg0.name = "_arg0"_c;
+    Int32x2_splat_UInt32.parameters = Int32x2_splat_UInt32_args;
+    Symbol::Resolved(&Int32x2_splat_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&Int32x2_splat_UInt32).returnTypeSymbol = &Int32x2Type;
+    Int32x2_convert_Int32x2_arg0.name = "val"_c;
     Int32x2_convert_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
+    Int32x2_convert_Int32x2.documentation = "Convert i32x2 to i32x2"_c;
     Int32x2_convert_Int32x2.name = "i32x2"_c;
     Int32x2_convert_Int32x2.returnType = Type::FullType { Int32x2Type.name };
-    Symbol::Resolved(&Int32x2_convert_Int32x2_arg0)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&Int32x2_convert_Int32x2)->returnTypeSymbol = &Int32x2Type;
-
-    // Splat with Int32
-    Int32x2_splat_Int32_arg0.name = "_arg0"_c;
+    Int32x2_convert_Int32x2.parameters = Int32x2_convert_Int32x2_args;
+    Symbol::Resolved(&Int32x2_convert_Int32x2_arg0).typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&Int32x2_convert_Int32x2).returnTypeSymbol = &Int32x2Type;
+    Int32x2_splat_Int32_arg0.name = "val"_c;
     Int32x2_splat_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    Int32x2_splat_Int32.documentation = "Splat i32x2 to i32x2"_c;
     Int32x2_splat_Int32.name = "i32x2"_c;
     Int32x2_splat_Int32.returnType = Type::FullType { Int32x2Type.name };
-    Symbol::Resolved(&Int32x2_splat_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Int32x2_splat_Int32)->returnTypeSymbol = &Int32x2Type;
-
-    // Conversion from Float16x2
-    Int32x2_convert_Float16x2_arg0.name = "_arg0"_c;
+    Int32x2_splat_Int32.parameters = Int32x2_splat_Int32_args;
+    Symbol::Resolved(&Int32x2_splat_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&Int32x2_splat_Int32).returnTypeSymbol = &Int32x2Type;
+    Int32x2_convert_Float16x2_arg0.name = "val"_c;
     Int32x2_convert_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
+    Int32x2_convert_Float16x2.documentation = "Convert f16x2 to i32x2"_c;
     Int32x2_convert_Float16x2.name = "i32x2"_c;
     Int32x2_convert_Float16x2.returnType = Type::FullType { Int32x2Type.name };
-    Symbol::Resolved(&Int32x2_convert_Float16x2_arg0)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&Int32x2_convert_Float16x2)->returnTypeSymbol = &Int32x2Type;
-
-    // Splat with Float16
-    Int32x2_splat_Float16_arg0.name = "_arg0"_c;
+    Int32x2_convert_Float16x2.parameters = Int32x2_convert_Float16x2_args;
+    Symbol::Resolved(&Int32x2_convert_Float16x2_arg0).typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&Int32x2_convert_Float16x2).returnTypeSymbol = &Int32x2Type;
+    Int32x2_splat_Float16_arg0.name = "val"_c;
     Int32x2_splat_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    Int32x2_splat_Float16.documentation = "Splat f16x2 to i32x2"_c;
     Int32x2_splat_Float16.name = "i32x2"_c;
     Int32x2_splat_Float16.returnType = Type::FullType { Int32x2Type.name };
-    Symbol::Resolved(&Int32x2_splat_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Int32x2_splat_Float16)->returnTypeSymbol = &Int32x2Type;
-
-    // Conversion from UInt16x2
-    Int32x2_convert_UInt16x2_arg0.name = "_arg0"_c;
+    Int32x2_splat_Float16.parameters = Int32x2_splat_Float16_args;
+    Symbol::Resolved(&Int32x2_splat_Float16_arg0).typeSymbol = &Float16Type;
+    Symbol::Resolved(&Int32x2_splat_Float16).returnTypeSymbol = &Int32x2Type;
+    Int32x2_convert_UInt16x2_arg0.name = "val"_c;
     Int32x2_convert_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
+    Int32x2_convert_UInt16x2.documentation = "Convert u16x2 to i32x2"_c;
     Int32x2_convert_UInt16x2.name = "i32x2"_c;
     Int32x2_convert_UInt16x2.returnType = Type::FullType { Int32x2Type.name };
-    Symbol::Resolved(&Int32x2_convert_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&Int32x2_convert_UInt16x2)->returnTypeSymbol = &Int32x2Type;
-
-    // Splat with UInt16
-    Int32x2_splat_UInt16_arg0.name = "_arg0"_c;
+    Int32x2_convert_UInt16x2.parameters = Int32x2_convert_UInt16x2_args;
+    Symbol::Resolved(&Int32x2_convert_UInt16x2_arg0).typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&Int32x2_convert_UInt16x2).returnTypeSymbol = &Int32x2Type;
+    Int32x2_splat_UInt16_arg0.name = "val"_c;
     Int32x2_splat_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    Int32x2_splat_UInt16.documentation = "Splat u16x2 to i32x2"_c;
     Int32x2_splat_UInt16.name = "i32x2"_c;
     Int32x2_splat_UInt16.returnType = Type::FullType { Int32x2Type.name };
-    Symbol::Resolved(&Int32x2_splat_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Int32x2_splat_UInt16)->returnTypeSymbol = &Int32x2Type;
-
-    // Conversion from Int16x2
-    Int32x2_convert_Int16x2_arg0.name = "_arg0"_c;
+    Int32x2_splat_UInt16.parameters = Int32x2_splat_UInt16_args;
+    Symbol::Resolved(&Int32x2_splat_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&Int32x2_splat_UInt16).returnTypeSymbol = &Int32x2Type;
+    Int32x2_convert_Int16x2_arg0.name = "val"_c;
     Int32x2_convert_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
+    Int32x2_convert_Int16x2.documentation = "Convert i16x2 to i32x2"_c;
     Int32x2_convert_Int16x2.name = "i32x2"_c;
     Int32x2_convert_Int16x2.returnType = Type::FullType { Int32x2Type.name };
-    Symbol::Resolved(&Int32x2_convert_Int16x2_arg0)->typeSymbol = &Int16x2Type;
-    Symbol::Resolved(&Int32x2_convert_Int16x2)->returnTypeSymbol = &Int32x2Type;
-
-    // Splat with Int16
-    Int32x2_splat_Int16_arg0.name = "_arg0"_c;
+    Int32x2_convert_Int16x2.parameters = Int32x2_convert_Int16x2_args;
+    Symbol::Resolved(&Int32x2_convert_Int16x2_arg0).typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&Int32x2_convert_Int16x2).returnTypeSymbol = &Int32x2Type;
+    Int32x2_splat_Int16_arg0.name = "val"_c;
     Int32x2_splat_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    Int32x2_splat_Int16.documentation = "Splat i16x2 to i32x2"_c;
     Int32x2_splat_Int16.name = "i32x2"_c;
     Int32x2_splat_Int16.returnType = Type::FullType { Int32x2Type.name };
-    Symbol::Resolved(&Int32x2_splat_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Int32x2_splat_Int16)->returnTypeSymbol = &Int32x2Type;
-
+    Int32x2_splat_Int16.parameters = Int32x2_splat_Int16_args;
+    Symbol::Resolved(&Int32x2_splat_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&Int32x2_splat_Int16).returnTypeSymbol = &Int32x2Type;
     // Construct with Int32, Int32
     Int32x2_ctor0_arg0.name = "_arg0"_c;
     Int32x2_ctor0_arg0.type = Type::FullType { Int32Type.name };
@@ -2999,6 +7253,7 @@ Int32x2::Int32x2()
     Int32x2_ctor0_arg1.type = Type::FullType { Int32Type.name };
     Int32x2_ctor0_Int32_Int32.name = "0"_c;
     Int32x2_ctor0_Int32_Int32.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_ctor0_Int32_Int32.parameters = Int32x2_ctor0_Int32_Int32_args;
     Symbol::Resolved(&Int32x2_ctor0_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32x2_ctor0_arg1)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32x2_ctor0_Int32_Int32)->returnTypeSymbol = &Int32x2Type;
@@ -3008,6 +7263,7 @@ Int32x2::Int32x2()
     Int32x2_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32x2_operator_index_Int32.name = "operator[]"_c;
     Int32x2_operator_index_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32x2_operator_index_Int32.parameters = Int32x2_operator_index_Int32_args;
     Symbol::Resolved(&Int32x2_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32x2_operator_index_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -3016,6 +7272,7 @@ Int32x2::Int32x2()
     Int32x2_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Int32x2_operator_index_UInt32.name = "operator[]"_c;
     Int32x2_operator_index_UInt32.returnType = Type::FullType{ Int32Type.name };
+    Int32x2_operator_index_UInt32.parameters = Int32x2_operator_index_UInt32_args;
     Symbol::Resolved(&Int32x2_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Int32x2_operator_index_UInt32)->returnTypeSymbol = &Int32Type;
 
@@ -3024,6 +7281,7 @@ Int32x2::Int32x2()
     Int32x2_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int32x2_operator_index_Int16.name = "operator[]"_c;
     Int32x2_operator_index_Int16.returnType = Type::FullType{ Int32Type.name };
+    Int32x2_operator_index_Int16.parameters = Int32x2_operator_index_Int16_args;
     Symbol::Resolved(&Int32x2_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int32x2_operator_index_Int16)->returnTypeSymbol = &Int32Type;
 
@@ -3032,6 +7290,7 @@ Int32x2::Int32x2()
     Int32x2_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Int32x2_operator_index_UInt16.name = "operator[]"_c;
     Int32x2_operator_index_UInt16.returnType = Type::FullType{ Int32Type.name };
+    Int32x2_operator_index_UInt16.parameters = Int32x2_operator_index_UInt16_args;
     Symbol::Resolved(&Int32x2_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Int32x2_operator_index_UInt16)->returnTypeSymbol = &Int32Type;
 
@@ -3040,6 +7299,7 @@ Int32x2::Int32x2()
     Int32x2_operator_add_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
     Int32x2_operator_add_Int32x2.name = "operator+"_c;
     Int32x2_operator_add_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_add_Int32x2.parameters = Int32x2_operator_add_Int32x2_args;
     Symbol::Resolved(&Int32x2_operator_add_Int32x2_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x2_operator_add_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
@@ -3048,6 +7308,7 @@ Int32x2::Int32x2()
     Int32x2_operator_sub_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
     Int32x2_operator_sub_Int32x2.name = "operator-"_c;
     Int32x2_operator_sub_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_sub_Int32x2.parameters = Int32x2_operator_sub_Int32x2_args;
     Symbol::Resolved(&Int32x2_operator_sub_Int32x2_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x2_operator_sub_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
@@ -3056,6 +7317,7 @@ Int32x2::Int32x2()
     Int32x2_operator_mul_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
     Int32x2_operator_mul_Int32x2.name = "operator*"_c;
     Int32x2_operator_mul_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_mul_Int32x2.parameters = Int32x2_operator_mul_Int32x2_args;
     Symbol::Resolved(&Int32x2_operator_mul_Int32x2_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x2_operator_mul_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
@@ -3064,6 +7326,7 @@ Int32x2::Int32x2()
     Int32x2_operator_div_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
     Int32x2_operator_div_Int32x2.name = "operator/"_c;
     Int32x2_operator_div_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_div_Int32x2.parameters = Int32x2_operator_div_Int32x2_args;
     Symbol::Resolved(&Int32x2_operator_div_Int32x2_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x2_operator_div_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
@@ -3072,6 +7335,7 @@ Int32x2::Int32x2()
     Int32x2_operator_mod_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
     Int32x2_operator_mod_Int32x2.name = "operator%"_c;
     Int32x2_operator_mod_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_mod_Int32x2.parameters = Int32x2_operator_mod_Int32x2_args;
     Symbol::Resolved(&Int32x2_operator_mod_Int32x2_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x2_operator_mod_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
@@ -3080,6 +7344,7 @@ Int32x2::Int32x2()
     Int32x2_operator_addasg_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
     Int32x2_operator_addasg_Int32x2.name = "operator+="_c;
     Int32x2_operator_addasg_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_addasg_Int32x2.parameters = Int32x2_operator_addasg_Int32x2_args;
     Symbol::Resolved(&Int32x2_operator_addasg_Int32x2_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x2_operator_addasg_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
@@ -3088,6 +7353,7 @@ Int32x2::Int32x2()
     Int32x2_operator_subasg_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
     Int32x2_operator_subasg_Int32x2.name = "operator-="_c;
     Int32x2_operator_subasg_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_subasg_Int32x2.parameters = Int32x2_operator_subasg_Int32x2_args;
     Symbol::Resolved(&Int32x2_operator_subasg_Int32x2_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x2_operator_subasg_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
@@ -3096,6 +7362,7 @@ Int32x2::Int32x2()
     Int32x2_operator_mulasg_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
     Int32x2_operator_mulasg_Int32x2.name = "operator*="_c;
     Int32x2_operator_mulasg_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_mulasg_Int32x2.parameters = Int32x2_operator_mulasg_Int32x2_args;
     Symbol::Resolved(&Int32x2_operator_mulasg_Int32x2_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x2_operator_mulasg_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
@@ -3104,6 +7371,7 @@ Int32x2::Int32x2()
     Int32x2_operator_divasg_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
     Int32x2_operator_divasg_Int32x2.name = "operator/="_c;
     Int32x2_operator_divasg_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_divasg_Int32x2.parameters = Int32x2_operator_divasg_Int32x2_args;
     Symbol::Resolved(&Int32x2_operator_divasg_Int32x2_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x2_operator_divasg_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
@@ -3112,6 +7380,7 @@ Int32x2::Int32x2()
     Int32x2_operator_lt_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
     Int32x2_operator_lt_Int32x2.name = "operator<"_c;
     Int32x2_operator_lt_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_lt_Int32x2.parameters = Int32x2_operator_lt_Int32x2_args;
     Symbol::Resolved(&Int32x2_operator_lt_Int32x2_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x2_operator_lt_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
@@ -3120,6 +7389,7 @@ Int32x2::Int32x2()
     Int32x2_operator_lte_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
     Int32x2_operator_lte_Int32x2.name = "operator<="_c;
     Int32x2_operator_lte_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_lte_Int32x2.parameters = Int32x2_operator_lte_Int32x2_args;
     Symbol::Resolved(&Int32x2_operator_lte_Int32x2_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x2_operator_lte_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
@@ -3128,6 +7398,7 @@ Int32x2::Int32x2()
     Int32x2_operator_gt_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
     Int32x2_operator_gt_Int32x2.name = "operator>"_c;
     Int32x2_operator_gt_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_gt_Int32x2.parameters = Int32x2_operator_gt_Int32x2_args;
     Symbol::Resolved(&Int32x2_operator_gt_Int32x2_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x2_operator_gt_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
@@ -3136,6 +7407,7 @@ Int32x2::Int32x2()
     Int32x2_operator_gte_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
     Int32x2_operator_gte_Int32x2.name = "operator>="_c;
     Int32x2_operator_gte_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_gte_Int32x2.parameters = Int32x2_operator_gte_Int32x2_args;
     Symbol::Resolved(&Int32x2_operator_gte_Int32x2_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x2_operator_gte_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
@@ -3144,6 +7416,7 @@ Int32x2::Int32x2()
     Int32x2_operator_eq_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
     Int32x2_operator_eq_Int32x2.name = "operator=="_c;
     Int32x2_operator_eq_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_eq_Int32x2.parameters = Int32x2_operator_eq_Int32x2_args;
     Symbol::Resolved(&Int32x2_operator_eq_Int32x2_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x2_operator_eq_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
@@ -3152,6 +7425,7 @@ Int32x2::Int32x2()
     Int32x2_operator_neq_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
     Int32x2_operator_neq_Int32x2.name = "operator!="_c;
     Int32x2_operator_neq_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_neq_Int32x2.parameters = Int32x2_operator_neq_Int32x2_args;
     Symbol::Resolved(&Int32x2_operator_neq_Int32x2_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x2_operator_neq_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
@@ -3160,6 +7434,7 @@ Int32x2::Int32x2()
     Int32x2_operator_scale_Int32x2_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Int32x2_operator_scale_Int32x2_Float32.name = "operator*"_c;
     Int32x2_operator_scale_Int32x2_Float32.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_scale_Int32x2_Float32.parameters = Int32x2_operator_scale_Int32x2_Float32_args;
     Symbol::Resolved(&Int32x2_operator_scale_Int32x2_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Int32x2_operator_scale_Int32x2_Float32)->returnTypeSymbol = &Int32x2Type;
 
@@ -3168,6 +7443,7 @@ Int32x2::Int32x2()
     Int32x2_operator_scale_Int32x2_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Int32x2_operator_scale_Int32x2_Float16.name = "operator*"_c;
     Int32x2_operator_scale_Int32x2_Float16.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_scale_Int32x2_Float16.parameters = Int32x2_operator_scale_Int32x2_Float16_args;
     Symbol::Resolved(&Int32x2_operator_scale_Int32x2_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Int32x2_operator_scale_Int32x2_Float16)->returnTypeSymbol = &Int32x2Type;
 
@@ -3176,6 +7452,7 @@ Int32x2::Int32x2()
     Int32x2_operator_scale_Int32x2_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Int32x2_operator_scale_Int32x2_UInt32.name = "operator*"_c;
     Int32x2_operator_scale_Int32x2_UInt32.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_scale_Int32x2_UInt32.parameters = Int32x2_operator_scale_Int32x2_UInt32_args;
     Symbol::Resolved(&Int32x2_operator_scale_Int32x2_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Int32x2_operator_scale_Int32x2_UInt32)->returnTypeSymbol = &Int32x2Type;
 
@@ -3184,6 +7461,7 @@ Int32x2::Int32x2()
     Int32x2_operator_scale_Int32x2_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Int32x2_operator_scale_Int32x2_UInt16.name = "operator*"_c;
     Int32x2_operator_scale_Int32x2_UInt16.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_scale_Int32x2_UInt16.parameters = Int32x2_operator_scale_Int32x2_UInt16_args;
     Symbol::Resolved(&Int32x2_operator_scale_Int32x2_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Int32x2_operator_scale_Int32x2_UInt16)->returnTypeSymbol = &Int32x2Type;
 
@@ -3192,6 +7470,7 @@ Int32x2::Int32x2()
     Int32x2_operator_scale_Int32x2_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32x2_operator_scale_Int32x2_Int32.name = "operator*"_c;
     Int32x2_operator_scale_Int32x2_Int32.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_scale_Int32x2_Int32.parameters = Int32x2_operator_scale_Int32x2_Int32_args;
     Symbol::Resolved(&Int32x2_operator_scale_Int32x2_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32x2_operator_scale_Int32x2_Int32)->returnTypeSymbol = &Int32x2Type;
 
@@ -3200,6 +7479,7 @@ Int32x2::Int32x2()
     Int32x2_operator_scale_Int32x2_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int32x2_operator_scale_Int32x2_Int16.name = "operator*"_c;
     Int32x2_operator_scale_Int32x2_Int16.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_scale_Int32x2_Int16.parameters = Int32x2_operator_scale_Int32x2_Int16_args;
     Symbol::Resolved(&Int32x2_operator_scale_Int32x2_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int32x2_operator_scale_Int32x2_Int16)->returnTypeSymbol = &Int32x2Type;
 
@@ -3208,6 +7488,7 @@ Int32x2::Int32x2()
     Int32x2_operator_or_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
     Int32x2_operator_or_Int32x2.name = "operator|"_c;
     Int32x2_operator_or_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_or_Int32x2.parameters = Int32x2_operator_or_Int32x2_args;
     Symbol::Resolved(&Int32x2_operator_or_Int32x2_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x2_operator_or_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
@@ -3216,6 +7497,7 @@ Int32x2::Int32x2()
     Int32x2_operator_and_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
     Int32x2_operator_and_Int32x2.name = "operator&"_c;
     Int32x2_operator_and_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_and_Int32x2.parameters = Int32x2_operator_and_Int32x2_args;
     Symbol::Resolved(&Int32x2_operator_and_Int32x2_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x2_operator_and_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
@@ -3224,6 +7506,7 @@ Int32x2::Int32x2()
     Int32x2_operator_xor_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
     Int32x2_operator_xor_Int32x2.name = "operator^"_c;
     Int32x2_operator_xor_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_xor_Int32x2.parameters = Int32x2_operator_xor_Int32x2_args;
     Symbol::Resolved(&Int32x2_operator_xor_Int32x2_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x2_operator_xor_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
@@ -3232,6 +7515,7 @@ Int32x2::Int32x2()
     Int32x2_operator_lsh_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
     Int32x2_operator_lsh_Int32x2.name = "operator<<"_c;
     Int32x2_operator_lsh_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_lsh_Int32x2.parameters = Int32x2_operator_lsh_Int32x2_args;
     Symbol::Resolved(&Int32x2_operator_lsh_Int32x2_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x2_operator_lsh_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
@@ -3240,6 +7524,7 @@ Int32x2::Int32x2()
     Int32x2_operator_rsh_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
     Int32x2_operator_rsh_Int32x2.name = "operator>>"_c;
     Int32x2_operator_rsh_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_rsh_Int32x2.parameters = Int32x2_operator_rsh_Int32x2_args;
     Symbol::Resolved(&Int32x2_operator_rsh_Int32x2_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x2_operator_rsh_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
@@ -3248,6 +7533,7 @@ Int32x2::Int32x2()
     Int32x2_operator_orasg_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
     Int32x2_operator_orasg_Int32x2.name = "operator|="_c;
     Int32x2_operator_orasg_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_orasg_Int32x2.parameters = Int32x2_operator_orasg_Int32x2_args;
     Symbol::Resolved(&Int32x2_operator_orasg_Int32x2_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x2_operator_orasg_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
@@ -3256,6 +7542,7 @@ Int32x2::Int32x2()
     Int32x2_operator_andasg_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
     Int32x2_operator_andasg_Int32x2.name = "operator&="_c;
     Int32x2_operator_andasg_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_andasg_Int32x2.parameters = Int32x2_operator_andasg_Int32x2_args;
     Symbol::Resolved(&Int32x2_operator_andasg_Int32x2_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x2_operator_andasg_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
@@ -3264,6 +7551,7 @@ Int32x2::Int32x2()
     Int32x2_operator_xorasg_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
     Int32x2_operator_xorasg_Int32x2.name = "operator^="_c;
     Int32x2_operator_xorasg_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_xorasg_Int32x2.parameters = Int32x2_operator_xorasg_Int32x2_args;
     Symbol::Resolved(&Int32x2_operator_xorasg_Int32x2_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x2_operator_xorasg_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
@@ -3272,6 +7560,7 @@ Int32x2::Int32x2()
     Int32x2_operator_lshasg_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
     Int32x2_operator_lshasg_Int32x2.name = "operator<<="_c;
     Int32x2_operator_lshasg_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_lshasg_Int32x2.parameters = Int32x2_operator_lshasg_Int32x2_args;
     Symbol::Resolved(&Int32x2_operator_lshasg_Int32x2_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x2_operator_lshasg_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
@@ -3280,36 +7569,11 @@ Int32x2::Int32x2()
     Int32x2_operator_rhsasg_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
     Int32x2_operator_rhsasg_Int32x2.name = "operator>>="_c;
     Int32x2_operator_rhsasg_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    Int32x2_operator_rhsasg_Int32x2.parameters = Int32x2_operator_rhsasg_Int32x2_args;
     Symbol::Resolved(&Int32x2_operator_rhsasg_Int32x2_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x2_operator_rhsasg_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "i32x2"_c, &Int32x2_convert_Float32x2 },
-        std::pair{ "i32x2(f32x2)"_c, &Int32x2_convert_Float32x2 },
-        std::pair{ "i32x2"_c, &Int32x2_splat_Float32 },
-        std::pair{ "i32x2(f32)"_c, &Int32x2_splat_Float32 },
-        std::pair{ "i32x2"_c, &Int32x2_convert_UInt32x2 },
-        std::pair{ "i32x2(u32x2)"_c, &Int32x2_convert_UInt32x2 },
-        std::pair{ "i32x2"_c, &Int32x2_splat_UInt32 },
-        std::pair{ "i32x2(u32)"_c, &Int32x2_splat_UInt32 },
-        std::pair{ "i32x2"_c, &Int32x2_convert_Int32x2 },
-        std::pair{ "i32x2(i32x2)"_c, &Int32x2_convert_Int32x2 },
-        std::pair{ "i32x2"_c, &Int32x2_splat_Int32 },
-        std::pair{ "i32x2(i32)"_c, &Int32x2_splat_Int32 },
-        std::pair{ "i32x2"_c, &Int32x2_convert_Float16x2 },
-        std::pair{ "i32x2(f16x2)"_c, &Int32x2_convert_Float16x2 },
-        std::pair{ "i32x2"_c, &Int32x2_splat_Float16 },
-        std::pair{ "i32x2(f16)"_c, &Int32x2_splat_Float16 },
-        std::pair{ "i32x2"_c, &Int32x2_convert_UInt16x2 },
-        std::pair{ "i32x2(u16x2)"_c, &Int32x2_convert_UInt16x2 },
-        std::pair{ "i32x2"_c, &Int32x2_splat_UInt16 },
-        std::pair{ "i32x2(u16)"_c, &Int32x2_splat_UInt16 },
-        std::pair{ "i32x2"_c, &Int32x2_convert_Int16x2 },
-        std::pair{ "i32x2(i16x2)"_c, &Int32x2_convert_Int16x2 },
-        std::pair{ "i32x2"_c, &Int32x2_splat_Int16 },
-        std::pair{ "i32x2(i16)"_c, &Int32x2_splat_Int16 },
-        std::pair{ "i32x2"_c, &Int32x2_ctor0_Int32_Int32},
-        std::pair{ "i32x2(i32,i32)"_c, &Int32x2_ctor0_Int32_Int32},
         std::pair{ "operator[](i32)"_c, &Int32x2_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &Int32x2_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &Int32x2_operator_index_Int16},
@@ -3358,70 +7622,70 @@ Bool8x2::Bool8x2()
     this->baseType = TypeCode::Bool8;
     this->builtin = true;
 
-    // Conversion from UInt32x2
-    Bool8x2_convert_UInt32x2_arg0.name = "_arg0"_c;
+    Bool8x2_convert_UInt32x2_arg0.name = "val"_c;
     Bool8x2_convert_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
+    Bool8x2_convert_UInt32x2.documentation = "Convert u32x2 to b8x2"_c;
     Bool8x2_convert_UInt32x2.name = "b8x2"_c;
     Bool8x2_convert_UInt32x2.returnType = Type::FullType { Bool8x2Type.name };
-    Symbol::Resolved(&Bool8x2_convert_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
-    Symbol::Resolved(&Bool8x2_convert_UInt32x2)->returnTypeSymbol = &Bool8x2Type;
-
-    // Splat with UInt32
-    Bool8x2_splat_UInt32_arg0.name = "_arg0"_c;
+    Bool8x2_convert_UInt32x2.parameters = Bool8x2_convert_UInt32x2_args;
+    Symbol::Resolved(&Bool8x2_convert_UInt32x2_arg0).typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&Bool8x2_convert_UInt32x2).returnTypeSymbol = &Bool8x2Type;
+    Bool8x2_splat_UInt32_arg0.name = "val"_c;
     Bool8x2_splat_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    Bool8x2_splat_UInt32.documentation = "Splat u32x2 to b8x2"_c;
     Bool8x2_splat_UInt32.name = "b8x2"_c;
     Bool8x2_splat_UInt32.returnType = Type::FullType { Bool8x2Type.name };
-    Symbol::Resolved(&Bool8x2_splat_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Bool8x2_splat_UInt32)->returnTypeSymbol = &Bool8x2Type;
-
-    // Conversion from Int32x2
-    Bool8x2_convert_Int32x2_arg0.name = "_arg0"_c;
+    Bool8x2_splat_UInt32.parameters = Bool8x2_splat_UInt32_args;
+    Symbol::Resolved(&Bool8x2_splat_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&Bool8x2_splat_UInt32).returnTypeSymbol = &Bool8x2Type;
+    Bool8x2_convert_Int32x2_arg0.name = "val"_c;
     Bool8x2_convert_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
+    Bool8x2_convert_Int32x2.documentation = "Convert i32x2 to b8x2"_c;
     Bool8x2_convert_Int32x2.name = "b8x2"_c;
     Bool8x2_convert_Int32x2.returnType = Type::FullType { Bool8x2Type.name };
-    Symbol::Resolved(&Bool8x2_convert_Int32x2_arg0)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&Bool8x2_convert_Int32x2)->returnTypeSymbol = &Bool8x2Type;
-
-    // Splat with Int32
-    Bool8x2_splat_Int32_arg0.name = "_arg0"_c;
+    Bool8x2_convert_Int32x2.parameters = Bool8x2_convert_Int32x2_args;
+    Symbol::Resolved(&Bool8x2_convert_Int32x2_arg0).typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&Bool8x2_convert_Int32x2).returnTypeSymbol = &Bool8x2Type;
+    Bool8x2_splat_Int32_arg0.name = "val"_c;
     Bool8x2_splat_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    Bool8x2_splat_Int32.documentation = "Splat i32x2 to b8x2"_c;
     Bool8x2_splat_Int32.name = "b8x2"_c;
     Bool8x2_splat_Int32.returnType = Type::FullType { Bool8x2Type.name };
-    Symbol::Resolved(&Bool8x2_splat_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Bool8x2_splat_Int32)->returnTypeSymbol = &Bool8x2Type;
-
-    // Conversion from UInt16x2
-    Bool8x2_convert_UInt16x2_arg0.name = "_arg0"_c;
+    Bool8x2_splat_Int32.parameters = Bool8x2_splat_Int32_args;
+    Symbol::Resolved(&Bool8x2_splat_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&Bool8x2_splat_Int32).returnTypeSymbol = &Bool8x2Type;
+    Bool8x2_convert_UInt16x2_arg0.name = "val"_c;
     Bool8x2_convert_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
+    Bool8x2_convert_UInt16x2.documentation = "Convert u16x2 to b8x2"_c;
     Bool8x2_convert_UInt16x2.name = "b8x2"_c;
     Bool8x2_convert_UInt16x2.returnType = Type::FullType { Bool8x2Type.name };
-    Symbol::Resolved(&Bool8x2_convert_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&Bool8x2_convert_UInt16x2)->returnTypeSymbol = &Bool8x2Type;
-
-    // Splat with UInt16
-    Bool8x2_splat_UInt16_arg0.name = "_arg0"_c;
+    Bool8x2_convert_UInt16x2.parameters = Bool8x2_convert_UInt16x2_args;
+    Symbol::Resolved(&Bool8x2_convert_UInt16x2_arg0).typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&Bool8x2_convert_UInt16x2).returnTypeSymbol = &Bool8x2Type;
+    Bool8x2_splat_UInt16_arg0.name = "val"_c;
     Bool8x2_splat_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    Bool8x2_splat_UInt16.documentation = "Splat u16x2 to b8x2"_c;
     Bool8x2_splat_UInt16.name = "b8x2"_c;
     Bool8x2_splat_UInt16.returnType = Type::FullType { Bool8x2Type.name };
-    Symbol::Resolved(&Bool8x2_splat_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Bool8x2_splat_UInt16)->returnTypeSymbol = &Bool8x2Type;
-
-    // Conversion from Int16x2
-    Bool8x2_convert_Int16x2_arg0.name = "_arg0"_c;
+    Bool8x2_splat_UInt16.parameters = Bool8x2_splat_UInt16_args;
+    Symbol::Resolved(&Bool8x2_splat_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&Bool8x2_splat_UInt16).returnTypeSymbol = &Bool8x2Type;
+    Bool8x2_convert_Int16x2_arg0.name = "val"_c;
     Bool8x2_convert_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
+    Bool8x2_convert_Int16x2.documentation = "Convert i16x2 to b8x2"_c;
     Bool8x2_convert_Int16x2.name = "b8x2"_c;
     Bool8x2_convert_Int16x2.returnType = Type::FullType { Bool8x2Type.name };
-    Symbol::Resolved(&Bool8x2_convert_Int16x2_arg0)->typeSymbol = &Int16x2Type;
-    Symbol::Resolved(&Bool8x2_convert_Int16x2)->returnTypeSymbol = &Bool8x2Type;
-
-    // Splat with Int16
-    Bool8x2_splat_Int16_arg0.name = "_arg0"_c;
+    Bool8x2_convert_Int16x2.parameters = Bool8x2_convert_Int16x2_args;
+    Symbol::Resolved(&Bool8x2_convert_Int16x2_arg0).typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&Bool8x2_convert_Int16x2).returnTypeSymbol = &Bool8x2Type;
+    Bool8x2_splat_Int16_arg0.name = "val"_c;
     Bool8x2_splat_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    Bool8x2_splat_Int16.documentation = "Splat i16x2 to b8x2"_c;
     Bool8x2_splat_Int16.name = "b8x2"_c;
     Bool8x2_splat_Int16.returnType = Type::FullType { Bool8x2Type.name };
-    Symbol::Resolved(&Bool8x2_splat_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Bool8x2_splat_Int16)->returnTypeSymbol = &Bool8x2Type;
-
+    Bool8x2_splat_Int16.parameters = Bool8x2_splat_Int16_args;
+    Symbol::Resolved(&Bool8x2_splat_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&Bool8x2_splat_Int16).returnTypeSymbol = &Bool8x2Type;
     // Construct with Bool8, Bool8
     Bool8x2_ctor0_arg0.name = "_arg0"_c;
     Bool8x2_ctor0_arg0.type = Type::FullType { Bool8Type.name };
@@ -3429,6 +7693,7 @@ Bool8x2::Bool8x2()
     Bool8x2_ctor0_arg1.type = Type::FullType { Bool8Type.name };
     Bool8x2_ctor0_Bool8_Bool8.name = "0"_c;
     Bool8x2_ctor0_Bool8_Bool8.returnType = Type::FullType{ Bool8x2Type.name };
+    Bool8x2_ctor0_Bool8_Bool8.parameters = Bool8x2_ctor0_Bool8_Bool8_args;
     Symbol::Resolved(&Bool8x2_ctor0_arg0)->typeSymbol = &Bool8Type;
     Symbol::Resolved(&Bool8x2_ctor0_arg1)->typeSymbol = &Bool8Type;
     Symbol::Resolved(&Bool8x2_ctor0_Bool8_Bool8)->returnTypeSymbol = &Bool8x2Type;
@@ -3438,6 +7703,7 @@ Bool8x2::Bool8x2()
     Bool8x2_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Bool8x2_operator_index_Int32.name = "operator[]"_c;
     Bool8x2_operator_index_Int32.returnType = Type::FullType{ Bool8Type.name };
+    Bool8x2_operator_index_Int32.parameters = Bool8x2_operator_index_Int32_args;
     Symbol::Resolved(&Bool8x2_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Bool8x2_operator_index_Int32)->returnTypeSymbol = &Bool8Type;
 
@@ -3446,6 +7712,7 @@ Bool8x2::Bool8x2()
     Bool8x2_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Bool8x2_operator_index_UInt32.name = "operator[]"_c;
     Bool8x2_operator_index_UInt32.returnType = Type::FullType{ Bool8Type.name };
+    Bool8x2_operator_index_UInt32.parameters = Bool8x2_operator_index_UInt32_args;
     Symbol::Resolved(&Bool8x2_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Bool8x2_operator_index_UInt32)->returnTypeSymbol = &Bool8Type;
 
@@ -3454,6 +7721,7 @@ Bool8x2::Bool8x2()
     Bool8x2_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Bool8x2_operator_index_Int16.name = "operator[]"_c;
     Bool8x2_operator_index_Int16.returnType = Type::FullType{ Bool8Type.name };
+    Bool8x2_operator_index_Int16.parameters = Bool8x2_operator_index_Int16_args;
     Symbol::Resolved(&Bool8x2_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Bool8x2_operator_index_Int16)->returnTypeSymbol = &Bool8Type;
 
@@ -3462,6 +7730,7 @@ Bool8x2::Bool8x2()
     Bool8x2_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Bool8x2_operator_index_UInt16.name = "operator[]"_c;
     Bool8x2_operator_index_UInt16.returnType = Type::FullType{ Bool8Type.name };
+    Bool8x2_operator_index_UInt16.parameters = Bool8x2_operator_index_UInt16_args;
     Symbol::Resolved(&Bool8x2_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Bool8x2_operator_index_UInt16)->returnTypeSymbol = &Bool8Type;
 
@@ -3470,6 +7739,7 @@ Bool8x2::Bool8x2()
     Bool8x2_operator_oror_Bool8x2_arg0.type = Type::FullType{ Bool8x2Type.name };
     Bool8x2_operator_oror_Bool8x2.name = "operator||"_c;
     Bool8x2_operator_oror_Bool8x2.returnType = Type::FullType{ Bool8x2Type.name };
+    Bool8x2_operator_oror_Bool8x2.parameters = Bool8x2_operator_oror_Bool8x2_args;
     Symbol::Resolved(&Bool8x2_operator_oror_Bool8x2_arg0)->typeSymbol = &Bool8x2Type;
     Symbol::Resolved(&Bool8x2_operator_oror_Bool8x2)->returnTypeSymbol = &Bool8x2Type;
 
@@ -3478,6 +7748,7 @@ Bool8x2::Bool8x2()
     Bool8x2_operator_andand_Bool8x2_arg0.type = Type::FullType{ Bool8x2Type.name };
     Bool8x2_operator_andand_Bool8x2.name = "operator&&"_c;
     Bool8x2_operator_andand_Bool8x2.returnType = Type::FullType{ Bool8x2Type.name };
+    Bool8x2_operator_andand_Bool8x2.parameters = Bool8x2_operator_andand_Bool8x2_args;
     Symbol::Resolved(&Bool8x2_operator_andand_Bool8x2_arg0)->typeSymbol = &Bool8x2Type;
     Symbol::Resolved(&Bool8x2_operator_andand_Bool8x2)->returnTypeSymbol = &Bool8x2Type;
 
@@ -3486,6 +7757,7 @@ Bool8x2::Bool8x2()
     Bool8x2_operator_eq_Bool8x2_arg0.type = Type::FullType{ Bool8x2Type.name };
     Bool8x2_operator_eq_Bool8x2.name = "operator=="_c;
     Bool8x2_operator_eq_Bool8x2.returnType = Type::FullType{ Bool8x2Type.name };
+    Bool8x2_operator_eq_Bool8x2.parameters = Bool8x2_operator_eq_Bool8x2_args;
     Symbol::Resolved(&Bool8x2_operator_eq_Bool8x2_arg0)->typeSymbol = &Bool8x2Type;
     Symbol::Resolved(&Bool8x2_operator_eq_Bool8x2)->returnTypeSymbol = &Bool8x2Type;
 
@@ -3494,28 +7766,11 @@ Bool8x2::Bool8x2()
     Bool8x2_operator_neq_Bool8x2_arg0.type = Type::FullType{ Bool8x2Type.name };
     Bool8x2_operator_neq_Bool8x2.name = "operator!="_c;
     Bool8x2_operator_neq_Bool8x2.returnType = Type::FullType{ Bool8x2Type.name };
+    Bool8x2_operator_neq_Bool8x2.parameters = Bool8x2_operator_neq_Bool8x2_args;
     Symbol::Resolved(&Bool8x2_operator_neq_Bool8x2_arg0)->typeSymbol = &Bool8x2Type;
     Symbol::Resolved(&Bool8x2_operator_neq_Bool8x2)->returnTypeSymbol = &Bool8x2Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "b8x2"_c, &Bool8x2_convert_UInt32x2 },
-        std::pair{ "b8x2(u32x2)"_c, &Bool8x2_convert_UInt32x2 },
-        std::pair{ "b8x2"_c, &Bool8x2_splat_UInt32 },
-        std::pair{ "b8x2(u32)"_c, &Bool8x2_splat_UInt32 },
-        std::pair{ "b8x2"_c, &Bool8x2_convert_Int32x2 },
-        std::pair{ "b8x2(i32x2)"_c, &Bool8x2_convert_Int32x2 },
-        std::pair{ "b8x2"_c, &Bool8x2_splat_Int32 },
-        std::pair{ "b8x2(i32)"_c, &Bool8x2_splat_Int32 },
-        std::pair{ "b8x2"_c, &Bool8x2_convert_UInt16x2 },
-        std::pair{ "b8x2(u16x2)"_c, &Bool8x2_convert_UInt16x2 },
-        std::pair{ "b8x2"_c, &Bool8x2_splat_UInt16 },
-        std::pair{ "b8x2(u16)"_c, &Bool8x2_splat_UInt16 },
-        std::pair{ "b8x2"_c, &Bool8x2_convert_Int16x2 },
-        std::pair{ "b8x2(i16x2)"_c, &Bool8x2_convert_Int16x2 },
-        std::pair{ "b8x2"_c, &Bool8x2_splat_Int16 },
-        std::pair{ "b8x2(i16)"_c, &Bool8x2_splat_Int16 },
-        std::pair{ "b8x2"_c, &Bool8x2_ctor0_Bool8_Bool8},
-        std::pair{ "b8x2(b8,b8)"_c, &Bool8x2_ctor0_Bool8_Bool8},
         std::pair{ "operator[](i32)"_c, &Bool8x2_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &Bool8x2_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &Bool8x2_operator_index_Int16},
@@ -3537,102 +7792,102 @@ Float16x2::Float16x2()
     this->baseType = TypeCode::Float16;
     this->builtin = true;
 
-    // Conversion from Float32x2
-    Float16x2_convert_Float32x2_arg0.name = "_arg0"_c;
+    Float16x2_convert_Float32x2_arg0.name = "val"_c;
     Float16x2_convert_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
+    Float16x2_convert_Float32x2.documentation = "Convert f32x2 to f16x2"_c;
     Float16x2_convert_Float32x2.name = "f16x2"_c;
     Float16x2_convert_Float32x2.returnType = Type::FullType { Float16x2Type.name };
-    Symbol::Resolved(&Float16x2_convert_Float32x2_arg0)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&Float16x2_convert_Float32x2)->returnTypeSymbol = &Float16x2Type;
-
-    // Splat with Float32
-    Float16x2_splat_Float32_arg0.name = "_arg0"_c;
+    Float16x2_convert_Float32x2.parameters = Float16x2_convert_Float32x2_args;
+    Symbol::Resolved(&Float16x2_convert_Float32x2_arg0).typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&Float16x2_convert_Float32x2).returnTypeSymbol = &Float16x2Type;
+    Float16x2_splat_Float32_arg0.name = "val"_c;
     Float16x2_splat_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    Float16x2_splat_Float32.documentation = "Splat f32x2 to f16x2"_c;
     Float16x2_splat_Float32.name = "f16x2"_c;
     Float16x2_splat_Float32.returnType = Type::FullType { Float16x2Type.name };
-    Symbol::Resolved(&Float16x2_splat_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Float16x2_splat_Float32)->returnTypeSymbol = &Float16x2Type;
-
-    // Conversion from UInt32x2
-    Float16x2_convert_UInt32x2_arg0.name = "_arg0"_c;
+    Float16x2_splat_Float32.parameters = Float16x2_splat_Float32_args;
+    Symbol::Resolved(&Float16x2_splat_Float32_arg0).typeSymbol = &Float32Type;
+    Symbol::Resolved(&Float16x2_splat_Float32).returnTypeSymbol = &Float16x2Type;
+    Float16x2_convert_UInt32x2_arg0.name = "val"_c;
     Float16x2_convert_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
+    Float16x2_convert_UInt32x2.documentation = "Convert u32x2 to f16x2"_c;
     Float16x2_convert_UInt32x2.name = "f16x2"_c;
     Float16x2_convert_UInt32x2.returnType = Type::FullType { Float16x2Type.name };
-    Symbol::Resolved(&Float16x2_convert_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
-    Symbol::Resolved(&Float16x2_convert_UInt32x2)->returnTypeSymbol = &Float16x2Type;
-
-    // Splat with UInt32
-    Float16x2_splat_UInt32_arg0.name = "_arg0"_c;
+    Float16x2_convert_UInt32x2.parameters = Float16x2_convert_UInt32x2_args;
+    Symbol::Resolved(&Float16x2_convert_UInt32x2_arg0).typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&Float16x2_convert_UInt32x2).returnTypeSymbol = &Float16x2Type;
+    Float16x2_splat_UInt32_arg0.name = "val"_c;
     Float16x2_splat_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    Float16x2_splat_UInt32.documentation = "Splat u32x2 to f16x2"_c;
     Float16x2_splat_UInt32.name = "f16x2"_c;
     Float16x2_splat_UInt32.returnType = Type::FullType { Float16x2Type.name };
-    Symbol::Resolved(&Float16x2_splat_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float16x2_splat_UInt32)->returnTypeSymbol = &Float16x2Type;
-
-    // Conversion from Int32x2
-    Float16x2_convert_Int32x2_arg0.name = "_arg0"_c;
+    Float16x2_splat_UInt32.parameters = Float16x2_splat_UInt32_args;
+    Symbol::Resolved(&Float16x2_splat_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&Float16x2_splat_UInt32).returnTypeSymbol = &Float16x2Type;
+    Float16x2_convert_Int32x2_arg0.name = "val"_c;
     Float16x2_convert_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
+    Float16x2_convert_Int32x2.documentation = "Convert i32x2 to f16x2"_c;
     Float16x2_convert_Int32x2.name = "f16x2"_c;
     Float16x2_convert_Int32x2.returnType = Type::FullType { Float16x2Type.name };
-    Symbol::Resolved(&Float16x2_convert_Int32x2_arg0)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&Float16x2_convert_Int32x2)->returnTypeSymbol = &Float16x2Type;
-
-    // Splat with Int32
-    Float16x2_splat_Int32_arg0.name = "_arg0"_c;
+    Float16x2_convert_Int32x2.parameters = Float16x2_convert_Int32x2_args;
+    Symbol::Resolved(&Float16x2_convert_Int32x2_arg0).typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&Float16x2_convert_Int32x2).returnTypeSymbol = &Float16x2Type;
+    Float16x2_splat_Int32_arg0.name = "val"_c;
     Float16x2_splat_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    Float16x2_splat_Int32.documentation = "Splat i32x2 to f16x2"_c;
     Float16x2_splat_Int32.name = "f16x2"_c;
     Float16x2_splat_Int32.returnType = Type::FullType { Float16x2Type.name };
-    Symbol::Resolved(&Float16x2_splat_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float16x2_splat_Int32)->returnTypeSymbol = &Float16x2Type;
-
-    // Conversion from Float16x2
-    Float16x2_convert_Float16x2_arg0.name = "_arg0"_c;
+    Float16x2_splat_Int32.parameters = Float16x2_splat_Int32_args;
+    Symbol::Resolved(&Float16x2_splat_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&Float16x2_splat_Int32).returnTypeSymbol = &Float16x2Type;
+    Float16x2_convert_Float16x2_arg0.name = "val"_c;
     Float16x2_convert_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
+    Float16x2_convert_Float16x2.documentation = "Convert f16x2 to f16x2"_c;
     Float16x2_convert_Float16x2.name = "f16x2"_c;
     Float16x2_convert_Float16x2.returnType = Type::FullType { Float16x2Type.name };
-    Symbol::Resolved(&Float16x2_convert_Float16x2_arg0)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&Float16x2_convert_Float16x2)->returnTypeSymbol = &Float16x2Type;
-
-    // Splat with Float16
-    Float16x2_splat_Float16_arg0.name = "_arg0"_c;
+    Float16x2_convert_Float16x2.parameters = Float16x2_convert_Float16x2_args;
+    Symbol::Resolved(&Float16x2_convert_Float16x2_arg0).typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&Float16x2_convert_Float16x2).returnTypeSymbol = &Float16x2Type;
+    Float16x2_splat_Float16_arg0.name = "val"_c;
     Float16x2_splat_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    Float16x2_splat_Float16.documentation = "Splat f16x2 to f16x2"_c;
     Float16x2_splat_Float16.name = "f16x2"_c;
     Float16x2_splat_Float16.returnType = Type::FullType { Float16x2Type.name };
-    Symbol::Resolved(&Float16x2_splat_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Float16x2_splat_Float16)->returnTypeSymbol = &Float16x2Type;
-
-    // Conversion from UInt16x2
-    Float16x2_convert_UInt16x2_arg0.name = "_arg0"_c;
+    Float16x2_splat_Float16.parameters = Float16x2_splat_Float16_args;
+    Symbol::Resolved(&Float16x2_splat_Float16_arg0).typeSymbol = &Float16Type;
+    Symbol::Resolved(&Float16x2_splat_Float16).returnTypeSymbol = &Float16x2Type;
+    Float16x2_convert_UInt16x2_arg0.name = "val"_c;
     Float16x2_convert_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
+    Float16x2_convert_UInt16x2.documentation = "Convert u16x2 to f16x2"_c;
     Float16x2_convert_UInt16x2.name = "f16x2"_c;
     Float16x2_convert_UInt16x2.returnType = Type::FullType { Float16x2Type.name };
-    Symbol::Resolved(&Float16x2_convert_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&Float16x2_convert_UInt16x2)->returnTypeSymbol = &Float16x2Type;
-
-    // Splat with UInt16
-    Float16x2_splat_UInt16_arg0.name = "_arg0"_c;
+    Float16x2_convert_UInt16x2.parameters = Float16x2_convert_UInt16x2_args;
+    Symbol::Resolved(&Float16x2_convert_UInt16x2_arg0).typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&Float16x2_convert_UInt16x2).returnTypeSymbol = &Float16x2Type;
+    Float16x2_splat_UInt16_arg0.name = "val"_c;
     Float16x2_splat_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    Float16x2_splat_UInt16.documentation = "Splat u16x2 to f16x2"_c;
     Float16x2_splat_UInt16.name = "f16x2"_c;
     Float16x2_splat_UInt16.returnType = Type::FullType { Float16x2Type.name };
-    Symbol::Resolved(&Float16x2_splat_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float16x2_splat_UInt16)->returnTypeSymbol = &Float16x2Type;
-
-    // Conversion from Int16x2
-    Float16x2_convert_Int16x2_arg0.name = "_arg0"_c;
+    Float16x2_splat_UInt16.parameters = Float16x2_splat_UInt16_args;
+    Symbol::Resolved(&Float16x2_splat_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&Float16x2_splat_UInt16).returnTypeSymbol = &Float16x2Type;
+    Float16x2_convert_Int16x2_arg0.name = "val"_c;
     Float16x2_convert_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
+    Float16x2_convert_Int16x2.documentation = "Convert i16x2 to f16x2"_c;
     Float16x2_convert_Int16x2.name = "f16x2"_c;
     Float16x2_convert_Int16x2.returnType = Type::FullType { Float16x2Type.name };
-    Symbol::Resolved(&Float16x2_convert_Int16x2_arg0)->typeSymbol = &Int16x2Type;
-    Symbol::Resolved(&Float16x2_convert_Int16x2)->returnTypeSymbol = &Float16x2Type;
-
-    // Splat with Int16
-    Float16x2_splat_Int16_arg0.name = "_arg0"_c;
+    Float16x2_convert_Int16x2.parameters = Float16x2_convert_Int16x2_args;
+    Symbol::Resolved(&Float16x2_convert_Int16x2_arg0).typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&Float16x2_convert_Int16x2).returnTypeSymbol = &Float16x2Type;
+    Float16x2_splat_Int16_arg0.name = "val"_c;
     Float16x2_splat_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    Float16x2_splat_Int16.documentation = "Splat i16x2 to f16x2"_c;
     Float16x2_splat_Int16.name = "f16x2"_c;
     Float16x2_splat_Int16.returnType = Type::FullType { Float16x2Type.name };
-    Symbol::Resolved(&Float16x2_splat_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float16x2_splat_Int16)->returnTypeSymbol = &Float16x2Type;
-
+    Float16x2_splat_Int16.parameters = Float16x2_splat_Int16_args;
+    Symbol::Resolved(&Float16x2_splat_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&Float16x2_splat_Int16).returnTypeSymbol = &Float16x2Type;
     // Construct with Float16, Float16
     Float16x2_ctor0_arg0.name = "_arg0"_c;
     Float16x2_ctor0_arg0.type = Type::FullType { Float16Type.name };
@@ -3640,6 +7895,7 @@ Float16x2::Float16x2()
     Float16x2_ctor0_arg1.type = Type::FullType { Float16Type.name };
     Float16x2_ctor0_Float16_Float16.name = "0"_c;
     Float16x2_ctor0_Float16_Float16.returnType = Type::FullType{ Float16x2Type.name };
+    Float16x2_ctor0_Float16_Float16.parameters = Float16x2_ctor0_Float16_Float16_args;
     Symbol::Resolved(&Float16x2_ctor0_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x2_ctor0_arg1)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x2_ctor0_Float16_Float16)->returnTypeSymbol = &Float16x2Type;
@@ -3649,6 +7905,7 @@ Float16x2::Float16x2()
     Float16x2_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Float16x2_operator_index_Int32.name = "operator[]"_c;
     Float16x2_operator_index_Int32.returnType = Type::FullType{ Float16Type.name };
+    Float16x2_operator_index_Int32.parameters = Float16x2_operator_index_Int32_args;
     Symbol::Resolved(&Float16x2_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Float16x2_operator_index_Int32)->returnTypeSymbol = &Float16Type;
 
@@ -3657,6 +7914,7 @@ Float16x2::Float16x2()
     Float16x2_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Float16x2_operator_index_UInt32.name = "operator[]"_c;
     Float16x2_operator_index_UInt32.returnType = Type::FullType{ Float16Type.name };
+    Float16x2_operator_index_UInt32.parameters = Float16x2_operator_index_UInt32_args;
     Symbol::Resolved(&Float16x2_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Float16x2_operator_index_UInt32)->returnTypeSymbol = &Float16Type;
 
@@ -3665,6 +7923,7 @@ Float16x2::Float16x2()
     Float16x2_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Float16x2_operator_index_Int16.name = "operator[]"_c;
     Float16x2_operator_index_Int16.returnType = Type::FullType{ Float16Type.name };
+    Float16x2_operator_index_Int16.parameters = Float16x2_operator_index_Int16_args;
     Symbol::Resolved(&Float16x2_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Float16x2_operator_index_Int16)->returnTypeSymbol = &Float16Type;
 
@@ -3673,6 +7932,7 @@ Float16x2::Float16x2()
     Float16x2_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Float16x2_operator_index_UInt16.name = "operator[]"_c;
     Float16x2_operator_index_UInt16.returnType = Type::FullType{ Float16Type.name };
+    Float16x2_operator_index_UInt16.parameters = Float16x2_operator_index_UInt16_args;
     Symbol::Resolved(&Float16x2_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float16x2_operator_index_UInt16)->returnTypeSymbol = &Float16Type;
 
@@ -3681,6 +7941,7 @@ Float16x2::Float16x2()
     Float16x2_operator_add_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
     Float16x2_operator_add_Float16x2.name = "operator+"_c;
     Float16x2_operator_add_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    Float16x2_operator_add_Float16x2.parameters = Float16x2_operator_add_Float16x2_args;
     Symbol::Resolved(&Float16x2_operator_add_Float16x2_arg0)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&Float16x2_operator_add_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
@@ -3689,6 +7950,7 @@ Float16x2::Float16x2()
     Float16x2_operator_sub_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
     Float16x2_operator_sub_Float16x2.name = "operator-"_c;
     Float16x2_operator_sub_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    Float16x2_operator_sub_Float16x2.parameters = Float16x2_operator_sub_Float16x2_args;
     Symbol::Resolved(&Float16x2_operator_sub_Float16x2_arg0)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&Float16x2_operator_sub_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
@@ -3697,6 +7959,7 @@ Float16x2::Float16x2()
     Float16x2_operator_mul_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
     Float16x2_operator_mul_Float16x2.name = "operator*"_c;
     Float16x2_operator_mul_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    Float16x2_operator_mul_Float16x2.parameters = Float16x2_operator_mul_Float16x2_args;
     Symbol::Resolved(&Float16x2_operator_mul_Float16x2_arg0)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&Float16x2_operator_mul_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
@@ -3705,6 +7968,7 @@ Float16x2::Float16x2()
     Float16x2_operator_div_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
     Float16x2_operator_div_Float16x2.name = "operator/"_c;
     Float16x2_operator_div_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    Float16x2_operator_div_Float16x2.parameters = Float16x2_operator_div_Float16x2_args;
     Symbol::Resolved(&Float16x2_operator_div_Float16x2_arg0)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&Float16x2_operator_div_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
@@ -3713,6 +7977,7 @@ Float16x2::Float16x2()
     Float16x2_operator_mod_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
     Float16x2_operator_mod_Float16x2.name = "operator%"_c;
     Float16x2_operator_mod_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    Float16x2_operator_mod_Float16x2.parameters = Float16x2_operator_mod_Float16x2_args;
     Symbol::Resolved(&Float16x2_operator_mod_Float16x2_arg0)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&Float16x2_operator_mod_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
@@ -3721,6 +7986,7 @@ Float16x2::Float16x2()
     Float16x2_operator_addasg_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
     Float16x2_operator_addasg_Float16x2.name = "operator+="_c;
     Float16x2_operator_addasg_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    Float16x2_operator_addasg_Float16x2.parameters = Float16x2_operator_addasg_Float16x2_args;
     Symbol::Resolved(&Float16x2_operator_addasg_Float16x2_arg0)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&Float16x2_operator_addasg_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
@@ -3729,6 +7995,7 @@ Float16x2::Float16x2()
     Float16x2_operator_subasg_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
     Float16x2_operator_subasg_Float16x2.name = "operator-="_c;
     Float16x2_operator_subasg_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    Float16x2_operator_subasg_Float16x2.parameters = Float16x2_operator_subasg_Float16x2_args;
     Symbol::Resolved(&Float16x2_operator_subasg_Float16x2_arg0)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&Float16x2_operator_subasg_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
@@ -3737,6 +8004,7 @@ Float16x2::Float16x2()
     Float16x2_operator_mulasg_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
     Float16x2_operator_mulasg_Float16x2.name = "operator*="_c;
     Float16x2_operator_mulasg_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    Float16x2_operator_mulasg_Float16x2.parameters = Float16x2_operator_mulasg_Float16x2_args;
     Symbol::Resolved(&Float16x2_operator_mulasg_Float16x2_arg0)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&Float16x2_operator_mulasg_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
@@ -3745,6 +8013,7 @@ Float16x2::Float16x2()
     Float16x2_operator_divasg_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
     Float16x2_operator_divasg_Float16x2.name = "operator/="_c;
     Float16x2_operator_divasg_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    Float16x2_operator_divasg_Float16x2.parameters = Float16x2_operator_divasg_Float16x2_args;
     Symbol::Resolved(&Float16x2_operator_divasg_Float16x2_arg0)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&Float16x2_operator_divasg_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
@@ -3753,6 +8022,7 @@ Float16x2::Float16x2()
     Float16x2_operator_lt_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
     Float16x2_operator_lt_Float16x2.name = "operator<"_c;
     Float16x2_operator_lt_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    Float16x2_operator_lt_Float16x2.parameters = Float16x2_operator_lt_Float16x2_args;
     Symbol::Resolved(&Float16x2_operator_lt_Float16x2_arg0)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&Float16x2_operator_lt_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
@@ -3761,6 +8031,7 @@ Float16x2::Float16x2()
     Float16x2_operator_lte_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
     Float16x2_operator_lte_Float16x2.name = "operator<="_c;
     Float16x2_operator_lte_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    Float16x2_operator_lte_Float16x2.parameters = Float16x2_operator_lte_Float16x2_args;
     Symbol::Resolved(&Float16x2_operator_lte_Float16x2_arg0)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&Float16x2_operator_lte_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
@@ -3769,6 +8040,7 @@ Float16x2::Float16x2()
     Float16x2_operator_gt_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
     Float16x2_operator_gt_Float16x2.name = "operator>"_c;
     Float16x2_operator_gt_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    Float16x2_operator_gt_Float16x2.parameters = Float16x2_operator_gt_Float16x2_args;
     Symbol::Resolved(&Float16x2_operator_gt_Float16x2_arg0)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&Float16x2_operator_gt_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
@@ -3777,6 +8049,7 @@ Float16x2::Float16x2()
     Float16x2_operator_gte_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
     Float16x2_operator_gte_Float16x2.name = "operator>="_c;
     Float16x2_operator_gte_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    Float16x2_operator_gte_Float16x2.parameters = Float16x2_operator_gte_Float16x2_args;
     Symbol::Resolved(&Float16x2_operator_gte_Float16x2_arg0)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&Float16x2_operator_gte_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
@@ -3785,6 +8058,7 @@ Float16x2::Float16x2()
     Float16x2_operator_eq_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
     Float16x2_operator_eq_Float16x2.name = "operator=="_c;
     Float16x2_operator_eq_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    Float16x2_operator_eq_Float16x2.parameters = Float16x2_operator_eq_Float16x2_args;
     Symbol::Resolved(&Float16x2_operator_eq_Float16x2_arg0)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&Float16x2_operator_eq_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
@@ -3793,6 +8067,7 @@ Float16x2::Float16x2()
     Float16x2_operator_neq_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
     Float16x2_operator_neq_Float16x2.name = "operator!="_c;
     Float16x2_operator_neq_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    Float16x2_operator_neq_Float16x2.parameters = Float16x2_operator_neq_Float16x2_args;
     Symbol::Resolved(&Float16x2_operator_neq_Float16x2_arg0)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&Float16x2_operator_neq_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
@@ -3801,6 +8076,7 @@ Float16x2::Float16x2()
     Float16x2_operator_scale_Float16x2_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Float16x2_operator_scale_Float16x2_Float32.name = "operator*"_c;
     Float16x2_operator_scale_Float16x2_Float32.returnType = Type::FullType{ Float16x2Type.name };
+    Float16x2_operator_scale_Float16x2_Float32.parameters = Float16x2_operator_scale_Float16x2_Float32_args;
     Symbol::Resolved(&Float16x2_operator_scale_Float16x2_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float16x2_operator_scale_Float16x2_Float32)->returnTypeSymbol = &Float16x2Type;
 
@@ -3809,6 +8085,7 @@ Float16x2::Float16x2()
     Float16x2_operator_scale_Float16x2_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Float16x2_operator_scale_Float16x2_Float16.name = "operator*"_c;
     Float16x2_operator_scale_Float16x2_Float16.returnType = Type::FullType{ Float16x2Type.name };
+    Float16x2_operator_scale_Float16x2_Float16.parameters = Float16x2_operator_scale_Float16x2_Float16_args;
     Symbol::Resolved(&Float16x2_operator_scale_Float16x2_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x2_operator_scale_Float16x2_Float16)->returnTypeSymbol = &Float16x2Type;
 
@@ -3817,6 +8094,7 @@ Float16x2::Float16x2()
     Float16x2_operator_scale_Float16x2_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Float16x2_operator_scale_Float16x2_UInt32.name = "operator*"_c;
     Float16x2_operator_scale_Float16x2_UInt32.returnType = Type::FullType{ Float16x2Type.name };
+    Float16x2_operator_scale_Float16x2_UInt32.parameters = Float16x2_operator_scale_Float16x2_UInt32_args;
     Symbol::Resolved(&Float16x2_operator_scale_Float16x2_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Float16x2_operator_scale_Float16x2_UInt32)->returnTypeSymbol = &Float16x2Type;
 
@@ -3825,6 +8103,7 @@ Float16x2::Float16x2()
     Float16x2_operator_scale_Float16x2_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Float16x2_operator_scale_Float16x2_UInt16.name = "operator*"_c;
     Float16x2_operator_scale_Float16x2_UInt16.returnType = Type::FullType{ Float16x2Type.name };
+    Float16x2_operator_scale_Float16x2_UInt16.parameters = Float16x2_operator_scale_Float16x2_UInt16_args;
     Symbol::Resolved(&Float16x2_operator_scale_Float16x2_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float16x2_operator_scale_Float16x2_UInt16)->returnTypeSymbol = &Float16x2Type;
 
@@ -3833,6 +8112,7 @@ Float16x2::Float16x2()
     Float16x2_operator_scale_Float16x2_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Float16x2_operator_scale_Float16x2_Int32.name = "operator*"_c;
     Float16x2_operator_scale_Float16x2_Int32.returnType = Type::FullType{ Float16x2Type.name };
+    Float16x2_operator_scale_Float16x2_Int32.parameters = Float16x2_operator_scale_Float16x2_Int32_args;
     Symbol::Resolved(&Float16x2_operator_scale_Float16x2_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Float16x2_operator_scale_Float16x2_Int32)->returnTypeSymbol = &Float16x2Type;
 
@@ -3841,6 +8121,7 @@ Float16x2::Float16x2()
     Float16x2_operator_scale_Float16x2_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Float16x2_operator_scale_Float16x2_Int16.name = "operator*"_c;
     Float16x2_operator_scale_Float16x2_Int16.returnType = Type::FullType{ Float16x2Type.name };
+    Float16x2_operator_scale_Float16x2_Int16.parameters = Float16x2_operator_scale_Float16x2_Int16_args;
     Symbol::Resolved(&Float16x2_operator_scale_Float16x2_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Float16x2_operator_scale_Float16x2_Int16)->returnTypeSymbol = &Float16x2Type;
 
@@ -3849,6 +8130,7 @@ Float16x2::Float16x2()
     Float16x2_operator_mul_Float32x2x2_arg0.type = Type::FullType{ Float32x2x2Type.name };
     Float16x2_operator_mul_Float32x2x2.name = "operator*"_c;
     Float16x2_operator_mul_Float32x2x2.returnType = Type::FullType{ Float16x2Type.name };
+    Float16x2_operator_mul_Float32x2x2.parameters = Float16x2_operator_mul_Float32x2x2_args;
     Symbol::Resolved(&Float16x2_operator_mul_Float32x2x2_arg0)->typeSymbol = &Float32x2x2Type;
     Symbol::Resolved(&Float16x2_operator_mul_Float32x2x2)->returnTypeSymbol = &Float16x2Type;
 
@@ -3857,6 +8139,7 @@ Float16x2::Float16x2()
     Float16x2_operator_mul_Float32x2x3_arg0.type = Type::FullType{ Float32x2x3Type.name };
     Float16x2_operator_mul_Float32x2x3.name = "operator*"_c;
     Float16x2_operator_mul_Float32x2x3.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x2_operator_mul_Float32x2x3.parameters = Float16x2_operator_mul_Float32x2x3_args;
     Symbol::Resolved(&Float16x2_operator_mul_Float32x2x3_arg0)->typeSymbol = &Float32x2x3Type;
     Symbol::Resolved(&Float16x2_operator_mul_Float32x2x3)->returnTypeSymbol = &Float16x3Type;
 
@@ -3865,36 +8148,11 @@ Float16x2::Float16x2()
     Float16x2_operator_mul_Float32x2x4_arg0.type = Type::FullType{ Float32x2x4Type.name };
     Float16x2_operator_mul_Float32x2x4.name = "operator*"_c;
     Float16x2_operator_mul_Float32x2x4.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x2_operator_mul_Float32x2x4.parameters = Float16x2_operator_mul_Float32x2x4_args;
     Symbol::Resolved(&Float16x2_operator_mul_Float32x2x4_arg0)->typeSymbol = &Float32x2x4Type;
     Symbol::Resolved(&Float16x2_operator_mul_Float32x2x4)->returnTypeSymbol = &Float16x4Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "f16x2"_c, &Float16x2_convert_Float32x2 },
-        std::pair{ "f16x2(f32x2)"_c, &Float16x2_convert_Float32x2 },
-        std::pair{ "f16x2"_c, &Float16x2_splat_Float32 },
-        std::pair{ "f16x2(f32)"_c, &Float16x2_splat_Float32 },
-        std::pair{ "f16x2"_c, &Float16x2_convert_UInt32x2 },
-        std::pair{ "f16x2(u32x2)"_c, &Float16x2_convert_UInt32x2 },
-        std::pair{ "f16x2"_c, &Float16x2_splat_UInt32 },
-        std::pair{ "f16x2(u32)"_c, &Float16x2_splat_UInt32 },
-        std::pair{ "f16x2"_c, &Float16x2_convert_Int32x2 },
-        std::pair{ "f16x2(i32x2)"_c, &Float16x2_convert_Int32x2 },
-        std::pair{ "f16x2"_c, &Float16x2_splat_Int32 },
-        std::pair{ "f16x2(i32)"_c, &Float16x2_splat_Int32 },
-        std::pair{ "f16x2"_c, &Float16x2_convert_Float16x2 },
-        std::pair{ "f16x2(f16x2)"_c, &Float16x2_convert_Float16x2 },
-        std::pair{ "f16x2"_c, &Float16x2_splat_Float16 },
-        std::pair{ "f16x2(f16)"_c, &Float16x2_splat_Float16 },
-        std::pair{ "f16x2"_c, &Float16x2_convert_UInt16x2 },
-        std::pair{ "f16x2(u16x2)"_c, &Float16x2_convert_UInt16x2 },
-        std::pair{ "f16x2"_c, &Float16x2_splat_UInt16 },
-        std::pair{ "f16x2(u16)"_c, &Float16x2_splat_UInt16 },
-        std::pair{ "f16x2"_c, &Float16x2_convert_Int16x2 },
-        std::pair{ "f16x2(i16x2)"_c, &Float16x2_convert_Int16x2 },
-        std::pair{ "f16x2"_c, &Float16x2_splat_Int16 },
-        std::pair{ "f16x2(i16)"_c, &Float16x2_splat_Int16 },
-        std::pair{ "f16x2"_c, &Float16x2_ctor0_Float16_Float16},
-        std::pair{ "f16x2(f16,f16)"_c, &Float16x2_ctor0_Float16_Float16},
         std::pair{ "operator[](i32)"_c, &Float16x2_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &Float16x2_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &Float16x2_operator_index_Int16},
@@ -3936,102 +8194,102 @@ UInt16x2::UInt16x2()
     this->baseType = TypeCode::UInt16;
     this->builtin = true;
 
-    // Conversion from Float32x2
-    UInt16x2_convert_Float32x2_arg0.name = "_arg0"_c;
+    UInt16x2_convert_Float32x2_arg0.name = "val"_c;
     UInt16x2_convert_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
+    UInt16x2_convert_Float32x2.documentation = "Convert f32x2 to u16x2"_c;
     UInt16x2_convert_Float32x2.name = "u16x2"_c;
     UInt16x2_convert_Float32x2.returnType = Type::FullType { UInt16x2Type.name };
-    Symbol::Resolved(&UInt16x2_convert_Float32x2_arg0)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&UInt16x2_convert_Float32x2)->returnTypeSymbol = &UInt16x2Type;
-
-    // Splat with Float32
-    UInt16x2_splat_Float32_arg0.name = "_arg0"_c;
+    UInt16x2_convert_Float32x2.parameters = UInt16x2_convert_Float32x2_args;
+    Symbol::Resolved(&UInt16x2_convert_Float32x2_arg0).typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&UInt16x2_convert_Float32x2).returnTypeSymbol = &UInt16x2Type;
+    UInt16x2_splat_Float32_arg0.name = "val"_c;
     UInt16x2_splat_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    UInt16x2_splat_Float32.documentation = "Splat f32x2 to u16x2"_c;
     UInt16x2_splat_Float32.name = "u16x2"_c;
     UInt16x2_splat_Float32.returnType = Type::FullType { UInt16x2Type.name };
-    Symbol::Resolved(&UInt16x2_splat_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&UInt16x2_splat_Float32)->returnTypeSymbol = &UInt16x2Type;
-
-    // Conversion from UInt32x2
-    UInt16x2_convert_UInt32x2_arg0.name = "_arg0"_c;
+    UInt16x2_splat_Float32.parameters = UInt16x2_splat_Float32_args;
+    Symbol::Resolved(&UInt16x2_splat_Float32_arg0).typeSymbol = &Float32Type;
+    Symbol::Resolved(&UInt16x2_splat_Float32).returnTypeSymbol = &UInt16x2Type;
+    UInt16x2_convert_UInt32x2_arg0.name = "val"_c;
     UInt16x2_convert_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
+    UInt16x2_convert_UInt32x2.documentation = "Convert u32x2 to u16x2"_c;
     UInt16x2_convert_UInt32x2.name = "u16x2"_c;
     UInt16x2_convert_UInt32x2.returnType = Type::FullType { UInt16x2Type.name };
-    Symbol::Resolved(&UInt16x2_convert_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
-    Symbol::Resolved(&UInt16x2_convert_UInt32x2)->returnTypeSymbol = &UInt16x2Type;
-
-    // Splat with UInt32
-    UInt16x2_splat_UInt32_arg0.name = "_arg0"_c;
+    UInt16x2_convert_UInt32x2.parameters = UInt16x2_convert_UInt32x2_args;
+    Symbol::Resolved(&UInt16x2_convert_UInt32x2_arg0).typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&UInt16x2_convert_UInt32x2).returnTypeSymbol = &UInt16x2Type;
+    UInt16x2_splat_UInt32_arg0.name = "val"_c;
     UInt16x2_splat_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    UInt16x2_splat_UInt32.documentation = "Splat u32x2 to u16x2"_c;
     UInt16x2_splat_UInt32.name = "u16x2"_c;
     UInt16x2_splat_UInt32.returnType = Type::FullType { UInt16x2Type.name };
-    Symbol::Resolved(&UInt16x2_splat_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&UInt16x2_splat_UInt32)->returnTypeSymbol = &UInt16x2Type;
-
-    // Conversion from Int32x2
-    UInt16x2_convert_Int32x2_arg0.name = "_arg0"_c;
+    UInt16x2_splat_UInt32.parameters = UInt16x2_splat_UInt32_args;
+    Symbol::Resolved(&UInt16x2_splat_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&UInt16x2_splat_UInt32).returnTypeSymbol = &UInt16x2Type;
+    UInt16x2_convert_Int32x2_arg0.name = "val"_c;
     UInt16x2_convert_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
+    UInt16x2_convert_Int32x2.documentation = "Convert i32x2 to u16x2"_c;
     UInt16x2_convert_Int32x2.name = "u16x2"_c;
     UInt16x2_convert_Int32x2.returnType = Type::FullType { UInt16x2Type.name };
-    Symbol::Resolved(&UInt16x2_convert_Int32x2_arg0)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&UInt16x2_convert_Int32x2)->returnTypeSymbol = &UInt16x2Type;
-
-    // Splat with Int32
-    UInt16x2_splat_Int32_arg0.name = "_arg0"_c;
+    UInt16x2_convert_Int32x2.parameters = UInt16x2_convert_Int32x2_args;
+    Symbol::Resolved(&UInt16x2_convert_Int32x2_arg0).typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&UInt16x2_convert_Int32x2).returnTypeSymbol = &UInt16x2Type;
+    UInt16x2_splat_Int32_arg0.name = "val"_c;
     UInt16x2_splat_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    UInt16x2_splat_Int32.documentation = "Splat i32x2 to u16x2"_c;
     UInt16x2_splat_Int32.name = "u16x2"_c;
     UInt16x2_splat_Int32.returnType = Type::FullType { UInt16x2Type.name };
-    Symbol::Resolved(&UInt16x2_splat_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&UInt16x2_splat_Int32)->returnTypeSymbol = &UInt16x2Type;
-
-    // Conversion from Float16x2
-    UInt16x2_convert_Float16x2_arg0.name = "_arg0"_c;
+    UInt16x2_splat_Int32.parameters = UInt16x2_splat_Int32_args;
+    Symbol::Resolved(&UInt16x2_splat_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&UInt16x2_splat_Int32).returnTypeSymbol = &UInt16x2Type;
+    UInt16x2_convert_Float16x2_arg0.name = "val"_c;
     UInt16x2_convert_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
+    UInt16x2_convert_Float16x2.documentation = "Convert f16x2 to u16x2"_c;
     UInt16x2_convert_Float16x2.name = "u16x2"_c;
     UInt16x2_convert_Float16x2.returnType = Type::FullType { UInt16x2Type.name };
-    Symbol::Resolved(&UInt16x2_convert_Float16x2_arg0)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&UInt16x2_convert_Float16x2)->returnTypeSymbol = &UInt16x2Type;
-
-    // Splat with Float16
-    UInt16x2_splat_Float16_arg0.name = "_arg0"_c;
+    UInt16x2_convert_Float16x2.parameters = UInt16x2_convert_Float16x2_args;
+    Symbol::Resolved(&UInt16x2_convert_Float16x2_arg0).typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&UInt16x2_convert_Float16x2).returnTypeSymbol = &UInt16x2Type;
+    UInt16x2_splat_Float16_arg0.name = "val"_c;
     UInt16x2_splat_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    UInt16x2_splat_Float16.documentation = "Splat f16x2 to u16x2"_c;
     UInt16x2_splat_Float16.name = "u16x2"_c;
     UInt16x2_splat_Float16.returnType = Type::FullType { UInt16x2Type.name };
-    Symbol::Resolved(&UInt16x2_splat_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&UInt16x2_splat_Float16)->returnTypeSymbol = &UInt16x2Type;
-
-    // Conversion from UInt16x2
-    UInt16x2_convert_UInt16x2_arg0.name = "_arg0"_c;
+    UInt16x2_splat_Float16.parameters = UInt16x2_splat_Float16_args;
+    Symbol::Resolved(&UInt16x2_splat_Float16_arg0).typeSymbol = &Float16Type;
+    Symbol::Resolved(&UInt16x2_splat_Float16).returnTypeSymbol = &UInt16x2Type;
+    UInt16x2_convert_UInt16x2_arg0.name = "val"_c;
     UInt16x2_convert_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_convert_UInt16x2.documentation = "Convert u16x2 to u16x2"_c;
     UInt16x2_convert_UInt16x2.name = "u16x2"_c;
     UInt16x2_convert_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
-    Symbol::Resolved(&UInt16x2_convert_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&UInt16x2_convert_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
-
-    // Splat with UInt16
-    UInt16x2_splat_UInt16_arg0.name = "_arg0"_c;
+    UInt16x2_convert_UInt16x2.parameters = UInt16x2_convert_UInt16x2_args;
+    Symbol::Resolved(&UInt16x2_convert_UInt16x2_arg0).typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&UInt16x2_convert_UInt16x2).returnTypeSymbol = &UInt16x2Type;
+    UInt16x2_splat_UInt16_arg0.name = "val"_c;
     UInt16x2_splat_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    UInt16x2_splat_UInt16.documentation = "Splat u16x2 to u16x2"_c;
     UInt16x2_splat_UInt16.name = "u16x2"_c;
     UInt16x2_splat_UInt16.returnType = Type::FullType { UInt16x2Type.name };
-    Symbol::Resolved(&UInt16x2_splat_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&UInt16x2_splat_UInt16)->returnTypeSymbol = &UInt16x2Type;
-
-    // Conversion from Int16x2
-    UInt16x2_convert_Int16x2_arg0.name = "_arg0"_c;
+    UInt16x2_splat_UInt16.parameters = UInt16x2_splat_UInt16_args;
+    Symbol::Resolved(&UInt16x2_splat_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&UInt16x2_splat_UInt16).returnTypeSymbol = &UInt16x2Type;
+    UInt16x2_convert_Int16x2_arg0.name = "val"_c;
     UInt16x2_convert_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
+    UInt16x2_convert_Int16x2.documentation = "Convert i16x2 to u16x2"_c;
     UInt16x2_convert_Int16x2.name = "u16x2"_c;
     UInt16x2_convert_Int16x2.returnType = Type::FullType { UInt16x2Type.name };
-    Symbol::Resolved(&UInt16x2_convert_Int16x2_arg0)->typeSymbol = &Int16x2Type;
-    Symbol::Resolved(&UInt16x2_convert_Int16x2)->returnTypeSymbol = &UInt16x2Type;
-
-    // Splat with Int16
-    UInt16x2_splat_Int16_arg0.name = "_arg0"_c;
+    UInt16x2_convert_Int16x2.parameters = UInt16x2_convert_Int16x2_args;
+    Symbol::Resolved(&UInt16x2_convert_Int16x2_arg0).typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&UInt16x2_convert_Int16x2).returnTypeSymbol = &UInt16x2Type;
+    UInt16x2_splat_Int16_arg0.name = "val"_c;
     UInt16x2_splat_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    UInt16x2_splat_Int16.documentation = "Splat i16x2 to u16x2"_c;
     UInt16x2_splat_Int16.name = "u16x2"_c;
     UInt16x2_splat_Int16.returnType = Type::FullType { UInt16x2Type.name };
-    Symbol::Resolved(&UInt16x2_splat_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&UInt16x2_splat_Int16)->returnTypeSymbol = &UInt16x2Type;
-
+    UInt16x2_splat_Int16.parameters = UInt16x2_splat_Int16_args;
+    Symbol::Resolved(&UInt16x2_splat_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&UInt16x2_splat_Int16).returnTypeSymbol = &UInt16x2Type;
     // Construct with UInt16, UInt16
     UInt16x2_ctor0_arg0.name = "_arg0"_c;
     UInt16x2_ctor0_arg0.type = Type::FullType { UInt16Type.name };
@@ -4039,6 +8297,7 @@ UInt16x2::UInt16x2()
     UInt16x2_ctor0_arg1.type = Type::FullType { UInt16Type.name };
     UInt16x2_ctor0_UInt16_UInt16.name = "0"_c;
     UInt16x2_ctor0_UInt16_UInt16.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_ctor0_UInt16_UInt16.parameters = UInt16x2_ctor0_UInt16_UInt16_args;
     Symbol::Resolved(&UInt16x2_ctor0_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16x2_ctor0_arg1)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16x2_ctor0_UInt16_UInt16)->returnTypeSymbol = &UInt16x2Type;
@@ -4048,6 +8307,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     UInt16x2_operator_index_Int32.name = "operator[]"_c;
     UInt16x2_operator_index_Int32.returnType = Type::FullType{ UInt16Type.name };
+    UInt16x2_operator_index_Int32.parameters = UInt16x2_operator_index_Int32_args;
     Symbol::Resolved(&UInt16x2_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&UInt16x2_operator_index_Int32)->returnTypeSymbol = &UInt16Type;
 
@@ -4056,6 +8316,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt16x2_operator_index_UInt32.name = "operator[]"_c;
     UInt16x2_operator_index_UInt32.returnType = Type::FullType{ UInt16Type.name };
+    UInt16x2_operator_index_UInt32.parameters = UInt16x2_operator_index_UInt32_args;
     Symbol::Resolved(&UInt16x2_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt16x2_operator_index_UInt32)->returnTypeSymbol = &UInt16Type;
 
@@ -4064,6 +8325,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     UInt16x2_operator_index_Int16.name = "operator[]"_c;
     UInt16x2_operator_index_Int16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16x2_operator_index_Int16.parameters = UInt16x2_operator_index_Int16_args;
     Symbol::Resolved(&UInt16x2_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&UInt16x2_operator_index_Int16)->returnTypeSymbol = &UInt16Type;
 
@@ -4072,6 +8334,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16x2_operator_index_UInt16.name = "operator[]"_c;
     UInt16x2_operator_index_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16x2_operator_index_UInt16.parameters = UInt16x2_operator_index_UInt16_args;
     Symbol::Resolved(&UInt16x2_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16x2_operator_index_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -4080,6 +8343,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_add_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
     UInt16x2_operator_add_UInt16x2.name = "operator+"_c;
     UInt16x2_operator_add_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_add_UInt16x2.parameters = UInt16x2_operator_add_UInt16x2_args;
     Symbol::Resolved(&UInt16x2_operator_add_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x2_operator_add_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4088,6 +8352,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_sub_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
     UInt16x2_operator_sub_UInt16x2.name = "operator-"_c;
     UInt16x2_operator_sub_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_sub_UInt16x2.parameters = UInt16x2_operator_sub_UInt16x2_args;
     Symbol::Resolved(&UInt16x2_operator_sub_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x2_operator_sub_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4096,6 +8361,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_mul_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
     UInt16x2_operator_mul_UInt16x2.name = "operator*"_c;
     UInt16x2_operator_mul_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_mul_UInt16x2.parameters = UInt16x2_operator_mul_UInt16x2_args;
     Symbol::Resolved(&UInt16x2_operator_mul_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x2_operator_mul_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4104,6 +8370,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_div_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
     UInt16x2_operator_div_UInt16x2.name = "operator/"_c;
     UInt16x2_operator_div_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_div_UInt16x2.parameters = UInt16x2_operator_div_UInt16x2_args;
     Symbol::Resolved(&UInt16x2_operator_div_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x2_operator_div_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4112,6 +8379,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_mod_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
     UInt16x2_operator_mod_UInt16x2.name = "operator%"_c;
     UInt16x2_operator_mod_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_mod_UInt16x2.parameters = UInt16x2_operator_mod_UInt16x2_args;
     Symbol::Resolved(&UInt16x2_operator_mod_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x2_operator_mod_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4120,6 +8388,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_addasg_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
     UInt16x2_operator_addasg_UInt16x2.name = "operator+="_c;
     UInt16x2_operator_addasg_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_addasg_UInt16x2.parameters = UInt16x2_operator_addasg_UInt16x2_args;
     Symbol::Resolved(&UInt16x2_operator_addasg_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x2_operator_addasg_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4128,6 +8397,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_subasg_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
     UInt16x2_operator_subasg_UInt16x2.name = "operator-="_c;
     UInt16x2_operator_subasg_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_subasg_UInt16x2.parameters = UInt16x2_operator_subasg_UInt16x2_args;
     Symbol::Resolved(&UInt16x2_operator_subasg_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x2_operator_subasg_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4136,6 +8406,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_mulasg_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
     UInt16x2_operator_mulasg_UInt16x2.name = "operator*="_c;
     UInt16x2_operator_mulasg_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_mulasg_UInt16x2.parameters = UInt16x2_operator_mulasg_UInt16x2_args;
     Symbol::Resolved(&UInt16x2_operator_mulasg_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x2_operator_mulasg_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4144,6 +8415,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_divasg_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
     UInt16x2_operator_divasg_UInt16x2.name = "operator/="_c;
     UInt16x2_operator_divasg_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_divasg_UInt16x2.parameters = UInt16x2_operator_divasg_UInt16x2_args;
     Symbol::Resolved(&UInt16x2_operator_divasg_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x2_operator_divasg_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4152,6 +8424,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_lt_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
     UInt16x2_operator_lt_UInt16x2.name = "operator<"_c;
     UInt16x2_operator_lt_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_lt_UInt16x2.parameters = UInt16x2_operator_lt_UInt16x2_args;
     Symbol::Resolved(&UInt16x2_operator_lt_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x2_operator_lt_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4160,6 +8433,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_lte_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
     UInt16x2_operator_lte_UInt16x2.name = "operator<="_c;
     UInt16x2_operator_lte_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_lte_UInt16x2.parameters = UInt16x2_operator_lte_UInt16x2_args;
     Symbol::Resolved(&UInt16x2_operator_lte_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x2_operator_lte_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4168,6 +8442,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_gt_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
     UInt16x2_operator_gt_UInt16x2.name = "operator>"_c;
     UInt16x2_operator_gt_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_gt_UInt16x2.parameters = UInt16x2_operator_gt_UInt16x2_args;
     Symbol::Resolved(&UInt16x2_operator_gt_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x2_operator_gt_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4176,6 +8451,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_gte_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
     UInt16x2_operator_gte_UInt16x2.name = "operator>="_c;
     UInt16x2_operator_gte_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_gte_UInt16x2.parameters = UInt16x2_operator_gte_UInt16x2_args;
     Symbol::Resolved(&UInt16x2_operator_gte_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x2_operator_gte_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4184,6 +8460,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_eq_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
     UInt16x2_operator_eq_UInt16x2.name = "operator=="_c;
     UInt16x2_operator_eq_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_eq_UInt16x2.parameters = UInt16x2_operator_eq_UInt16x2_args;
     Symbol::Resolved(&UInt16x2_operator_eq_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x2_operator_eq_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4192,6 +8469,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_neq_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
     UInt16x2_operator_neq_UInt16x2.name = "operator!="_c;
     UInt16x2_operator_neq_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_neq_UInt16x2.parameters = UInt16x2_operator_neq_UInt16x2_args;
     Symbol::Resolved(&UInt16x2_operator_neq_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x2_operator_neq_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4200,6 +8478,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_scale_UInt16x2_Float32_arg0.type = Type::FullType{ Float32Type.name };
     UInt16x2_operator_scale_UInt16x2_Float32.name = "operator*"_c;
     UInt16x2_operator_scale_UInt16x2_Float32.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_scale_UInt16x2_Float32.parameters = UInt16x2_operator_scale_UInt16x2_Float32_args;
     Symbol::Resolved(&UInt16x2_operator_scale_UInt16x2_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&UInt16x2_operator_scale_UInt16x2_Float32)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4208,6 +8487,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_scale_UInt16x2_Float16_arg0.type = Type::FullType{ Float16Type.name };
     UInt16x2_operator_scale_UInt16x2_Float16.name = "operator*"_c;
     UInt16x2_operator_scale_UInt16x2_Float16.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_scale_UInt16x2_Float16.parameters = UInt16x2_operator_scale_UInt16x2_Float16_args;
     Symbol::Resolved(&UInt16x2_operator_scale_UInt16x2_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&UInt16x2_operator_scale_UInt16x2_Float16)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4216,6 +8496,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_scale_UInt16x2_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt16x2_operator_scale_UInt16x2_UInt32.name = "operator*"_c;
     UInt16x2_operator_scale_UInt16x2_UInt32.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_scale_UInt16x2_UInt32.parameters = UInt16x2_operator_scale_UInt16x2_UInt32_args;
     Symbol::Resolved(&UInt16x2_operator_scale_UInt16x2_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt16x2_operator_scale_UInt16x2_UInt32)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4224,6 +8505,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_scale_UInt16x2_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16x2_operator_scale_UInt16x2_UInt16.name = "operator*"_c;
     UInt16x2_operator_scale_UInt16x2_UInt16.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_scale_UInt16x2_UInt16.parameters = UInt16x2_operator_scale_UInt16x2_UInt16_args;
     Symbol::Resolved(&UInt16x2_operator_scale_UInt16x2_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16x2_operator_scale_UInt16x2_UInt16)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4232,6 +8514,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_scale_UInt16x2_Int32_arg0.type = Type::FullType{ Int32Type.name };
     UInt16x2_operator_scale_UInt16x2_Int32.name = "operator*"_c;
     UInt16x2_operator_scale_UInt16x2_Int32.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_scale_UInt16x2_Int32.parameters = UInt16x2_operator_scale_UInt16x2_Int32_args;
     Symbol::Resolved(&UInt16x2_operator_scale_UInt16x2_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&UInt16x2_operator_scale_UInt16x2_Int32)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4240,6 +8523,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_scale_UInt16x2_Int16_arg0.type = Type::FullType{ Int16Type.name };
     UInt16x2_operator_scale_UInt16x2_Int16.name = "operator*"_c;
     UInt16x2_operator_scale_UInt16x2_Int16.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_scale_UInt16x2_Int16.parameters = UInt16x2_operator_scale_UInt16x2_Int16_args;
     Symbol::Resolved(&UInt16x2_operator_scale_UInt16x2_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&UInt16x2_operator_scale_UInt16x2_Int16)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4248,6 +8532,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_or_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
     UInt16x2_operator_or_UInt16x2.name = "operator|"_c;
     UInt16x2_operator_or_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_or_UInt16x2.parameters = UInt16x2_operator_or_UInt16x2_args;
     Symbol::Resolved(&UInt16x2_operator_or_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x2_operator_or_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4256,6 +8541,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_and_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
     UInt16x2_operator_and_UInt16x2.name = "operator&"_c;
     UInt16x2_operator_and_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_and_UInt16x2.parameters = UInt16x2_operator_and_UInt16x2_args;
     Symbol::Resolved(&UInt16x2_operator_and_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x2_operator_and_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4264,6 +8550,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_xor_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
     UInt16x2_operator_xor_UInt16x2.name = "operator^"_c;
     UInt16x2_operator_xor_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_xor_UInt16x2.parameters = UInt16x2_operator_xor_UInt16x2_args;
     Symbol::Resolved(&UInt16x2_operator_xor_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x2_operator_xor_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4272,6 +8559,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_lsh_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
     UInt16x2_operator_lsh_UInt16x2.name = "operator<<"_c;
     UInt16x2_operator_lsh_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_lsh_UInt16x2.parameters = UInt16x2_operator_lsh_UInt16x2_args;
     Symbol::Resolved(&UInt16x2_operator_lsh_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x2_operator_lsh_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4280,6 +8568,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_rsh_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
     UInt16x2_operator_rsh_UInt16x2.name = "operator>>"_c;
     UInt16x2_operator_rsh_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_rsh_UInt16x2.parameters = UInt16x2_operator_rsh_UInt16x2_args;
     Symbol::Resolved(&UInt16x2_operator_rsh_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x2_operator_rsh_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4288,6 +8577,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_orasg_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
     UInt16x2_operator_orasg_UInt16x2.name = "operator|="_c;
     UInt16x2_operator_orasg_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_orasg_UInt16x2.parameters = UInt16x2_operator_orasg_UInt16x2_args;
     Symbol::Resolved(&UInt16x2_operator_orasg_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x2_operator_orasg_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4296,6 +8586,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_andasg_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
     UInt16x2_operator_andasg_UInt16x2.name = "operator&="_c;
     UInt16x2_operator_andasg_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_andasg_UInt16x2.parameters = UInt16x2_operator_andasg_UInt16x2_args;
     Symbol::Resolved(&UInt16x2_operator_andasg_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x2_operator_andasg_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4304,6 +8595,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_xorasg_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
     UInt16x2_operator_xorasg_UInt16x2.name = "operator^="_c;
     UInt16x2_operator_xorasg_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_xorasg_UInt16x2.parameters = UInt16x2_operator_xorasg_UInt16x2_args;
     Symbol::Resolved(&UInt16x2_operator_xorasg_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x2_operator_xorasg_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4312,6 +8604,7 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_lshasg_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
     UInt16x2_operator_lshasg_UInt16x2.name = "operator<<="_c;
     UInt16x2_operator_lshasg_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_lshasg_UInt16x2.parameters = UInt16x2_operator_lshasg_UInt16x2_args;
     Symbol::Resolved(&UInt16x2_operator_lshasg_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x2_operator_lshasg_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
@@ -4320,36 +8613,11 @@ UInt16x2::UInt16x2()
     UInt16x2_operator_rhsasg_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
     UInt16x2_operator_rhsasg_UInt16x2.name = "operator>>="_c;
     UInt16x2_operator_rhsasg_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_operator_rhsasg_UInt16x2.parameters = UInt16x2_operator_rhsasg_UInt16x2_args;
     Symbol::Resolved(&UInt16x2_operator_rhsasg_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x2_operator_rhsasg_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "u16x2"_c, &UInt16x2_convert_Float32x2 },
-        std::pair{ "u16x2(f32x2)"_c, &UInt16x2_convert_Float32x2 },
-        std::pair{ "u16x2"_c, &UInt16x2_splat_Float32 },
-        std::pair{ "u16x2(f32)"_c, &UInt16x2_splat_Float32 },
-        std::pair{ "u16x2"_c, &UInt16x2_convert_UInt32x2 },
-        std::pair{ "u16x2(u32x2)"_c, &UInt16x2_convert_UInt32x2 },
-        std::pair{ "u16x2"_c, &UInt16x2_splat_UInt32 },
-        std::pair{ "u16x2(u32)"_c, &UInt16x2_splat_UInt32 },
-        std::pair{ "u16x2"_c, &UInt16x2_convert_Int32x2 },
-        std::pair{ "u16x2(i32x2)"_c, &UInt16x2_convert_Int32x2 },
-        std::pair{ "u16x2"_c, &UInt16x2_splat_Int32 },
-        std::pair{ "u16x2(i32)"_c, &UInt16x2_splat_Int32 },
-        std::pair{ "u16x2"_c, &UInt16x2_convert_Float16x2 },
-        std::pair{ "u16x2(f16x2)"_c, &UInt16x2_convert_Float16x2 },
-        std::pair{ "u16x2"_c, &UInt16x2_splat_Float16 },
-        std::pair{ "u16x2(f16)"_c, &UInt16x2_splat_Float16 },
-        std::pair{ "u16x2"_c, &UInt16x2_convert_UInt16x2 },
-        std::pair{ "u16x2(u16x2)"_c, &UInt16x2_convert_UInt16x2 },
-        std::pair{ "u16x2"_c, &UInt16x2_splat_UInt16 },
-        std::pair{ "u16x2(u16)"_c, &UInt16x2_splat_UInt16 },
-        std::pair{ "u16x2"_c, &UInt16x2_convert_Int16x2 },
-        std::pair{ "u16x2(i16x2)"_c, &UInt16x2_convert_Int16x2 },
-        std::pair{ "u16x2"_c, &UInt16x2_splat_Int16 },
-        std::pair{ "u16x2(i16)"_c, &UInt16x2_splat_Int16 },
-        std::pair{ "u16x2"_c, &UInt16x2_ctor0_UInt16_UInt16},
-        std::pair{ "u16x2(u16,u16)"_c, &UInt16x2_ctor0_UInt16_UInt16},
         std::pair{ "operator[](i32)"_c, &UInt16x2_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &UInt16x2_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &UInt16x2_operator_index_Int16},
@@ -4398,102 +8666,102 @@ Int16x2::Int16x2()
     this->baseType = TypeCode::Int16;
     this->builtin = true;
 
-    // Conversion from Float32x2
-    Int16x2_convert_Float32x2_arg0.name = "_arg0"_c;
+    Int16x2_convert_Float32x2_arg0.name = "val"_c;
     Int16x2_convert_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
+    Int16x2_convert_Float32x2.documentation = "Convert f32x2 to i16x2"_c;
     Int16x2_convert_Float32x2.name = "i16x2"_c;
     Int16x2_convert_Float32x2.returnType = Type::FullType { Int16x2Type.name };
-    Symbol::Resolved(&Int16x2_convert_Float32x2_arg0)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&Int16x2_convert_Float32x2)->returnTypeSymbol = &Int16x2Type;
-
-    // Splat with Float32
-    Int16x2_splat_Float32_arg0.name = "_arg0"_c;
+    Int16x2_convert_Float32x2.parameters = Int16x2_convert_Float32x2_args;
+    Symbol::Resolved(&Int16x2_convert_Float32x2_arg0).typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&Int16x2_convert_Float32x2).returnTypeSymbol = &Int16x2Type;
+    Int16x2_splat_Float32_arg0.name = "val"_c;
     Int16x2_splat_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    Int16x2_splat_Float32.documentation = "Splat f32x2 to i16x2"_c;
     Int16x2_splat_Float32.name = "i16x2"_c;
     Int16x2_splat_Float32.returnType = Type::FullType { Int16x2Type.name };
-    Symbol::Resolved(&Int16x2_splat_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Int16x2_splat_Float32)->returnTypeSymbol = &Int16x2Type;
-
-    // Conversion from UInt32x2
-    Int16x2_convert_UInt32x2_arg0.name = "_arg0"_c;
+    Int16x2_splat_Float32.parameters = Int16x2_splat_Float32_args;
+    Symbol::Resolved(&Int16x2_splat_Float32_arg0).typeSymbol = &Float32Type;
+    Symbol::Resolved(&Int16x2_splat_Float32).returnTypeSymbol = &Int16x2Type;
+    Int16x2_convert_UInt32x2_arg0.name = "val"_c;
     Int16x2_convert_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
+    Int16x2_convert_UInt32x2.documentation = "Convert u32x2 to i16x2"_c;
     Int16x2_convert_UInt32x2.name = "i16x2"_c;
     Int16x2_convert_UInt32x2.returnType = Type::FullType { Int16x2Type.name };
-    Symbol::Resolved(&Int16x2_convert_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
-    Symbol::Resolved(&Int16x2_convert_UInt32x2)->returnTypeSymbol = &Int16x2Type;
-
-    // Splat with UInt32
-    Int16x2_splat_UInt32_arg0.name = "_arg0"_c;
+    Int16x2_convert_UInt32x2.parameters = Int16x2_convert_UInt32x2_args;
+    Symbol::Resolved(&Int16x2_convert_UInt32x2_arg0).typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&Int16x2_convert_UInt32x2).returnTypeSymbol = &Int16x2Type;
+    Int16x2_splat_UInt32_arg0.name = "val"_c;
     Int16x2_splat_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    Int16x2_splat_UInt32.documentation = "Splat u32x2 to i16x2"_c;
     Int16x2_splat_UInt32.name = "i16x2"_c;
     Int16x2_splat_UInt32.returnType = Type::FullType { Int16x2Type.name };
-    Symbol::Resolved(&Int16x2_splat_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Int16x2_splat_UInt32)->returnTypeSymbol = &Int16x2Type;
-
-    // Conversion from Int32x2
-    Int16x2_convert_Int32x2_arg0.name = "_arg0"_c;
+    Int16x2_splat_UInt32.parameters = Int16x2_splat_UInt32_args;
+    Symbol::Resolved(&Int16x2_splat_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&Int16x2_splat_UInt32).returnTypeSymbol = &Int16x2Type;
+    Int16x2_convert_Int32x2_arg0.name = "val"_c;
     Int16x2_convert_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
+    Int16x2_convert_Int32x2.documentation = "Convert i32x2 to i16x2"_c;
     Int16x2_convert_Int32x2.name = "i16x2"_c;
     Int16x2_convert_Int32x2.returnType = Type::FullType { Int16x2Type.name };
-    Symbol::Resolved(&Int16x2_convert_Int32x2_arg0)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&Int16x2_convert_Int32x2)->returnTypeSymbol = &Int16x2Type;
-
-    // Splat with Int32
-    Int16x2_splat_Int32_arg0.name = "_arg0"_c;
+    Int16x2_convert_Int32x2.parameters = Int16x2_convert_Int32x2_args;
+    Symbol::Resolved(&Int16x2_convert_Int32x2_arg0).typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&Int16x2_convert_Int32x2).returnTypeSymbol = &Int16x2Type;
+    Int16x2_splat_Int32_arg0.name = "val"_c;
     Int16x2_splat_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    Int16x2_splat_Int32.documentation = "Splat i32x2 to i16x2"_c;
     Int16x2_splat_Int32.name = "i16x2"_c;
     Int16x2_splat_Int32.returnType = Type::FullType { Int16x2Type.name };
-    Symbol::Resolved(&Int16x2_splat_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Int16x2_splat_Int32)->returnTypeSymbol = &Int16x2Type;
-
-    // Conversion from Float16x2
-    Int16x2_convert_Float16x2_arg0.name = "_arg0"_c;
+    Int16x2_splat_Int32.parameters = Int16x2_splat_Int32_args;
+    Symbol::Resolved(&Int16x2_splat_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&Int16x2_splat_Int32).returnTypeSymbol = &Int16x2Type;
+    Int16x2_convert_Float16x2_arg0.name = "val"_c;
     Int16x2_convert_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
+    Int16x2_convert_Float16x2.documentation = "Convert f16x2 to i16x2"_c;
     Int16x2_convert_Float16x2.name = "i16x2"_c;
     Int16x2_convert_Float16x2.returnType = Type::FullType { Int16x2Type.name };
-    Symbol::Resolved(&Int16x2_convert_Float16x2_arg0)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&Int16x2_convert_Float16x2)->returnTypeSymbol = &Int16x2Type;
-
-    // Splat with Float16
-    Int16x2_splat_Float16_arg0.name = "_arg0"_c;
+    Int16x2_convert_Float16x2.parameters = Int16x2_convert_Float16x2_args;
+    Symbol::Resolved(&Int16x2_convert_Float16x2_arg0).typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&Int16x2_convert_Float16x2).returnTypeSymbol = &Int16x2Type;
+    Int16x2_splat_Float16_arg0.name = "val"_c;
     Int16x2_splat_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    Int16x2_splat_Float16.documentation = "Splat f16x2 to i16x2"_c;
     Int16x2_splat_Float16.name = "i16x2"_c;
     Int16x2_splat_Float16.returnType = Type::FullType { Int16x2Type.name };
-    Symbol::Resolved(&Int16x2_splat_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Int16x2_splat_Float16)->returnTypeSymbol = &Int16x2Type;
-
-    // Conversion from UInt16x2
-    Int16x2_convert_UInt16x2_arg0.name = "_arg0"_c;
+    Int16x2_splat_Float16.parameters = Int16x2_splat_Float16_args;
+    Symbol::Resolved(&Int16x2_splat_Float16_arg0).typeSymbol = &Float16Type;
+    Symbol::Resolved(&Int16x2_splat_Float16).returnTypeSymbol = &Int16x2Type;
+    Int16x2_convert_UInt16x2_arg0.name = "val"_c;
     Int16x2_convert_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
+    Int16x2_convert_UInt16x2.documentation = "Convert u16x2 to i16x2"_c;
     Int16x2_convert_UInt16x2.name = "i16x2"_c;
     Int16x2_convert_UInt16x2.returnType = Type::FullType { Int16x2Type.name };
-    Symbol::Resolved(&Int16x2_convert_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&Int16x2_convert_UInt16x2)->returnTypeSymbol = &Int16x2Type;
-
-    // Splat with UInt16
-    Int16x2_splat_UInt16_arg0.name = "_arg0"_c;
+    Int16x2_convert_UInt16x2.parameters = Int16x2_convert_UInt16x2_args;
+    Symbol::Resolved(&Int16x2_convert_UInt16x2_arg0).typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&Int16x2_convert_UInt16x2).returnTypeSymbol = &Int16x2Type;
+    Int16x2_splat_UInt16_arg0.name = "val"_c;
     Int16x2_splat_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    Int16x2_splat_UInt16.documentation = "Splat u16x2 to i16x2"_c;
     Int16x2_splat_UInt16.name = "i16x2"_c;
     Int16x2_splat_UInt16.returnType = Type::FullType { Int16x2Type.name };
-    Symbol::Resolved(&Int16x2_splat_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Int16x2_splat_UInt16)->returnTypeSymbol = &Int16x2Type;
-
-    // Conversion from Int16x2
-    Int16x2_convert_Int16x2_arg0.name = "_arg0"_c;
+    Int16x2_splat_UInt16.parameters = Int16x2_splat_UInt16_args;
+    Symbol::Resolved(&Int16x2_splat_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&Int16x2_splat_UInt16).returnTypeSymbol = &Int16x2Type;
+    Int16x2_convert_Int16x2_arg0.name = "val"_c;
     Int16x2_convert_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
+    Int16x2_convert_Int16x2.documentation = "Convert i16x2 to i16x2"_c;
     Int16x2_convert_Int16x2.name = "i16x2"_c;
     Int16x2_convert_Int16x2.returnType = Type::FullType { Int16x2Type.name };
-    Symbol::Resolved(&Int16x2_convert_Int16x2_arg0)->typeSymbol = &Int16x2Type;
-    Symbol::Resolved(&Int16x2_convert_Int16x2)->returnTypeSymbol = &Int16x2Type;
-
-    // Splat with Int16
-    Int16x2_splat_Int16_arg0.name = "_arg0"_c;
+    Int16x2_convert_Int16x2.parameters = Int16x2_convert_Int16x2_args;
+    Symbol::Resolved(&Int16x2_convert_Int16x2_arg0).typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&Int16x2_convert_Int16x2).returnTypeSymbol = &Int16x2Type;
+    Int16x2_splat_Int16_arg0.name = "val"_c;
     Int16x2_splat_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    Int16x2_splat_Int16.documentation = "Splat i16x2 to i16x2"_c;
     Int16x2_splat_Int16.name = "i16x2"_c;
     Int16x2_splat_Int16.returnType = Type::FullType { Int16x2Type.name };
-    Symbol::Resolved(&Int16x2_splat_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Int16x2_splat_Int16)->returnTypeSymbol = &Int16x2Type;
-
+    Int16x2_splat_Int16.parameters = Int16x2_splat_Int16_args;
+    Symbol::Resolved(&Int16x2_splat_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&Int16x2_splat_Int16).returnTypeSymbol = &Int16x2Type;
     // Construct with Int16, Int16
     Int16x2_ctor0_arg0.name = "_arg0"_c;
     Int16x2_ctor0_arg0.type = Type::FullType { Int16Type.name };
@@ -4501,6 +8769,7 @@ Int16x2::Int16x2()
     Int16x2_ctor0_arg1.type = Type::FullType { Int16Type.name };
     Int16x2_ctor0_Int16_Int16.name = "0"_c;
     Int16x2_ctor0_Int16_Int16.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_ctor0_Int16_Int16.parameters = Int16x2_ctor0_Int16_Int16_args;
     Symbol::Resolved(&Int16x2_ctor0_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16x2_ctor0_arg1)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16x2_ctor0_Int16_Int16)->returnTypeSymbol = &Int16x2Type;
@@ -4510,6 +8779,7 @@ Int16x2::Int16x2()
     Int16x2_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int16x2_operator_index_Int32.name = "operator[]"_c;
     Int16x2_operator_index_Int32.returnType = Type::FullType{ Int16Type.name };
+    Int16x2_operator_index_Int32.parameters = Int16x2_operator_index_Int32_args;
     Symbol::Resolved(&Int16x2_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int16x2_operator_index_Int32)->returnTypeSymbol = &Int16Type;
 
@@ -4518,6 +8788,7 @@ Int16x2::Int16x2()
     Int16x2_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Int16x2_operator_index_UInt32.name = "operator[]"_c;
     Int16x2_operator_index_UInt32.returnType = Type::FullType{ Int16Type.name };
+    Int16x2_operator_index_UInt32.parameters = Int16x2_operator_index_UInt32_args;
     Symbol::Resolved(&Int16x2_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Int16x2_operator_index_UInt32)->returnTypeSymbol = &Int16Type;
 
@@ -4526,6 +8797,7 @@ Int16x2::Int16x2()
     Int16x2_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16x2_operator_index_Int16.name = "operator[]"_c;
     Int16x2_operator_index_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16x2_operator_index_Int16.parameters = Int16x2_operator_index_Int16_args;
     Symbol::Resolved(&Int16x2_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16x2_operator_index_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -4534,6 +8806,7 @@ Int16x2::Int16x2()
     Int16x2_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Int16x2_operator_index_UInt16.name = "operator[]"_c;
     Int16x2_operator_index_UInt16.returnType = Type::FullType{ Int16Type.name };
+    Int16x2_operator_index_UInt16.parameters = Int16x2_operator_index_UInt16_args;
     Symbol::Resolved(&Int16x2_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Int16x2_operator_index_UInt16)->returnTypeSymbol = &Int16Type;
 
@@ -4542,6 +8815,7 @@ Int16x2::Int16x2()
     Int16x2_operator_add_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
     Int16x2_operator_add_Int16x2.name = "operator+"_c;
     Int16x2_operator_add_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_add_Int16x2.parameters = Int16x2_operator_add_Int16x2_args;
     Symbol::Resolved(&Int16x2_operator_add_Int16x2_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x2_operator_add_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
@@ -4550,6 +8824,7 @@ Int16x2::Int16x2()
     Int16x2_operator_sub_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
     Int16x2_operator_sub_Int16x2.name = "operator-"_c;
     Int16x2_operator_sub_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_sub_Int16x2.parameters = Int16x2_operator_sub_Int16x2_args;
     Symbol::Resolved(&Int16x2_operator_sub_Int16x2_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x2_operator_sub_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
@@ -4558,6 +8833,7 @@ Int16x2::Int16x2()
     Int16x2_operator_mul_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
     Int16x2_operator_mul_Int16x2.name = "operator*"_c;
     Int16x2_operator_mul_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_mul_Int16x2.parameters = Int16x2_operator_mul_Int16x2_args;
     Symbol::Resolved(&Int16x2_operator_mul_Int16x2_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x2_operator_mul_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
@@ -4566,6 +8842,7 @@ Int16x2::Int16x2()
     Int16x2_operator_div_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
     Int16x2_operator_div_Int16x2.name = "operator/"_c;
     Int16x2_operator_div_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_div_Int16x2.parameters = Int16x2_operator_div_Int16x2_args;
     Symbol::Resolved(&Int16x2_operator_div_Int16x2_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x2_operator_div_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
@@ -4574,6 +8851,7 @@ Int16x2::Int16x2()
     Int16x2_operator_mod_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
     Int16x2_operator_mod_Int16x2.name = "operator%"_c;
     Int16x2_operator_mod_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_mod_Int16x2.parameters = Int16x2_operator_mod_Int16x2_args;
     Symbol::Resolved(&Int16x2_operator_mod_Int16x2_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x2_operator_mod_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
@@ -4582,6 +8860,7 @@ Int16x2::Int16x2()
     Int16x2_operator_addasg_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
     Int16x2_operator_addasg_Int16x2.name = "operator+="_c;
     Int16x2_operator_addasg_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_addasg_Int16x2.parameters = Int16x2_operator_addasg_Int16x2_args;
     Symbol::Resolved(&Int16x2_operator_addasg_Int16x2_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x2_operator_addasg_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
@@ -4590,6 +8869,7 @@ Int16x2::Int16x2()
     Int16x2_operator_subasg_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
     Int16x2_operator_subasg_Int16x2.name = "operator-="_c;
     Int16x2_operator_subasg_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_subasg_Int16x2.parameters = Int16x2_operator_subasg_Int16x2_args;
     Symbol::Resolved(&Int16x2_operator_subasg_Int16x2_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x2_operator_subasg_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
@@ -4598,6 +8878,7 @@ Int16x2::Int16x2()
     Int16x2_operator_mulasg_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
     Int16x2_operator_mulasg_Int16x2.name = "operator*="_c;
     Int16x2_operator_mulasg_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_mulasg_Int16x2.parameters = Int16x2_operator_mulasg_Int16x2_args;
     Symbol::Resolved(&Int16x2_operator_mulasg_Int16x2_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x2_operator_mulasg_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
@@ -4606,6 +8887,7 @@ Int16x2::Int16x2()
     Int16x2_operator_divasg_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
     Int16x2_operator_divasg_Int16x2.name = "operator/="_c;
     Int16x2_operator_divasg_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_divasg_Int16x2.parameters = Int16x2_operator_divasg_Int16x2_args;
     Symbol::Resolved(&Int16x2_operator_divasg_Int16x2_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x2_operator_divasg_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
@@ -4614,6 +8896,7 @@ Int16x2::Int16x2()
     Int16x2_operator_lt_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
     Int16x2_operator_lt_Int16x2.name = "operator<"_c;
     Int16x2_operator_lt_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_lt_Int16x2.parameters = Int16x2_operator_lt_Int16x2_args;
     Symbol::Resolved(&Int16x2_operator_lt_Int16x2_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x2_operator_lt_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
@@ -4622,6 +8905,7 @@ Int16x2::Int16x2()
     Int16x2_operator_lte_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
     Int16x2_operator_lte_Int16x2.name = "operator<="_c;
     Int16x2_operator_lte_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_lte_Int16x2.parameters = Int16x2_operator_lte_Int16x2_args;
     Symbol::Resolved(&Int16x2_operator_lte_Int16x2_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x2_operator_lte_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
@@ -4630,6 +8914,7 @@ Int16x2::Int16x2()
     Int16x2_operator_gt_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
     Int16x2_operator_gt_Int16x2.name = "operator>"_c;
     Int16x2_operator_gt_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_gt_Int16x2.parameters = Int16x2_operator_gt_Int16x2_args;
     Symbol::Resolved(&Int16x2_operator_gt_Int16x2_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x2_operator_gt_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
@@ -4638,6 +8923,7 @@ Int16x2::Int16x2()
     Int16x2_operator_gte_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
     Int16x2_operator_gte_Int16x2.name = "operator>="_c;
     Int16x2_operator_gte_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_gte_Int16x2.parameters = Int16x2_operator_gte_Int16x2_args;
     Symbol::Resolved(&Int16x2_operator_gte_Int16x2_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x2_operator_gte_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
@@ -4646,6 +8932,7 @@ Int16x2::Int16x2()
     Int16x2_operator_eq_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
     Int16x2_operator_eq_Int16x2.name = "operator=="_c;
     Int16x2_operator_eq_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_eq_Int16x2.parameters = Int16x2_operator_eq_Int16x2_args;
     Symbol::Resolved(&Int16x2_operator_eq_Int16x2_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x2_operator_eq_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
@@ -4654,6 +8941,7 @@ Int16x2::Int16x2()
     Int16x2_operator_neq_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
     Int16x2_operator_neq_Int16x2.name = "operator!="_c;
     Int16x2_operator_neq_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_neq_Int16x2.parameters = Int16x2_operator_neq_Int16x2_args;
     Symbol::Resolved(&Int16x2_operator_neq_Int16x2_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x2_operator_neq_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
@@ -4662,6 +8950,7 @@ Int16x2::Int16x2()
     Int16x2_operator_scale_Int16x2_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Int16x2_operator_scale_Int16x2_Float32.name = "operator*"_c;
     Int16x2_operator_scale_Int16x2_Float32.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_scale_Int16x2_Float32.parameters = Int16x2_operator_scale_Int16x2_Float32_args;
     Symbol::Resolved(&Int16x2_operator_scale_Int16x2_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Int16x2_operator_scale_Int16x2_Float32)->returnTypeSymbol = &Int16x2Type;
 
@@ -4670,6 +8959,7 @@ Int16x2::Int16x2()
     Int16x2_operator_scale_Int16x2_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Int16x2_operator_scale_Int16x2_Float16.name = "operator*"_c;
     Int16x2_operator_scale_Int16x2_Float16.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_scale_Int16x2_Float16.parameters = Int16x2_operator_scale_Int16x2_Float16_args;
     Symbol::Resolved(&Int16x2_operator_scale_Int16x2_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Int16x2_operator_scale_Int16x2_Float16)->returnTypeSymbol = &Int16x2Type;
 
@@ -4678,6 +8968,7 @@ Int16x2::Int16x2()
     Int16x2_operator_scale_Int16x2_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Int16x2_operator_scale_Int16x2_UInt32.name = "operator*"_c;
     Int16x2_operator_scale_Int16x2_UInt32.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_scale_Int16x2_UInt32.parameters = Int16x2_operator_scale_Int16x2_UInt32_args;
     Symbol::Resolved(&Int16x2_operator_scale_Int16x2_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Int16x2_operator_scale_Int16x2_UInt32)->returnTypeSymbol = &Int16x2Type;
 
@@ -4686,6 +8977,7 @@ Int16x2::Int16x2()
     Int16x2_operator_scale_Int16x2_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Int16x2_operator_scale_Int16x2_UInt16.name = "operator*"_c;
     Int16x2_operator_scale_Int16x2_UInt16.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_scale_Int16x2_UInt16.parameters = Int16x2_operator_scale_Int16x2_UInt16_args;
     Symbol::Resolved(&Int16x2_operator_scale_Int16x2_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Int16x2_operator_scale_Int16x2_UInt16)->returnTypeSymbol = &Int16x2Type;
 
@@ -4694,6 +8986,7 @@ Int16x2::Int16x2()
     Int16x2_operator_scale_Int16x2_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int16x2_operator_scale_Int16x2_Int32.name = "operator*"_c;
     Int16x2_operator_scale_Int16x2_Int32.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_scale_Int16x2_Int32.parameters = Int16x2_operator_scale_Int16x2_Int32_args;
     Symbol::Resolved(&Int16x2_operator_scale_Int16x2_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int16x2_operator_scale_Int16x2_Int32)->returnTypeSymbol = &Int16x2Type;
 
@@ -4702,6 +8995,7 @@ Int16x2::Int16x2()
     Int16x2_operator_scale_Int16x2_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16x2_operator_scale_Int16x2_Int16.name = "operator*"_c;
     Int16x2_operator_scale_Int16x2_Int16.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_scale_Int16x2_Int16.parameters = Int16x2_operator_scale_Int16x2_Int16_args;
     Symbol::Resolved(&Int16x2_operator_scale_Int16x2_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16x2_operator_scale_Int16x2_Int16)->returnTypeSymbol = &Int16x2Type;
 
@@ -4710,6 +9004,7 @@ Int16x2::Int16x2()
     Int16x2_operator_or_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
     Int16x2_operator_or_Int16x2.name = "operator|"_c;
     Int16x2_operator_or_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_or_Int16x2.parameters = Int16x2_operator_or_Int16x2_args;
     Symbol::Resolved(&Int16x2_operator_or_Int16x2_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x2_operator_or_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
@@ -4718,6 +9013,7 @@ Int16x2::Int16x2()
     Int16x2_operator_and_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
     Int16x2_operator_and_Int16x2.name = "operator&"_c;
     Int16x2_operator_and_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_and_Int16x2.parameters = Int16x2_operator_and_Int16x2_args;
     Symbol::Resolved(&Int16x2_operator_and_Int16x2_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x2_operator_and_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
@@ -4726,6 +9022,7 @@ Int16x2::Int16x2()
     Int16x2_operator_xor_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
     Int16x2_operator_xor_Int16x2.name = "operator^"_c;
     Int16x2_operator_xor_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_xor_Int16x2.parameters = Int16x2_operator_xor_Int16x2_args;
     Symbol::Resolved(&Int16x2_operator_xor_Int16x2_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x2_operator_xor_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
@@ -4734,6 +9031,7 @@ Int16x2::Int16x2()
     Int16x2_operator_lsh_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
     Int16x2_operator_lsh_Int16x2.name = "operator<<"_c;
     Int16x2_operator_lsh_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_lsh_Int16x2.parameters = Int16x2_operator_lsh_Int16x2_args;
     Symbol::Resolved(&Int16x2_operator_lsh_Int16x2_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x2_operator_lsh_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
@@ -4742,6 +9040,7 @@ Int16x2::Int16x2()
     Int16x2_operator_rsh_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
     Int16x2_operator_rsh_Int16x2.name = "operator>>"_c;
     Int16x2_operator_rsh_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_rsh_Int16x2.parameters = Int16x2_operator_rsh_Int16x2_args;
     Symbol::Resolved(&Int16x2_operator_rsh_Int16x2_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x2_operator_rsh_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
@@ -4750,6 +9049,7 @@ Int16x2::Int16x2()
     Int16x2_operator_orasg_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
     Int16x2_operator_orasg_Int16x2.name = "operator|="_c;
     Int16x2_operator_orasg_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_orasg_Int16x2.parameters = Int16x2_operator_orasg_Int16x2_args;
     Symbol::Resolved(&Int16x2_operator_orasg_Int16x2_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x2_operator_orasg_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
@@ -4758,6 +9058,7 @@ Int16x2::Int16x2()
     Int16x2_operator_andasg_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
     Int16x2_operator_andasg_Int16x2.name = "operator&="_c;
     Int16x2_operator_andasg_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_andasg_Int16x2.parameters = Int16x2_operator_andasg_Int16x2_args;
     Symbol::Resolved(&Int16x2_operator_andasg_Int16x2_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x2_operator_andasg_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
@@ -4766,6 +9067,7 @@ Int16x2::Int16x2()
     Int16x2_operator_xorasg_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
     Int16x2_operator_xorasg_Int16x2.name = "operator^="_c;
     Int16x2_operator_xorasg_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_xorasg_Int16x2.parameters = Int16x2_operator_xorasg_Int16x2_args;
     Symbol::Resolved(&Int16x2_operator_xorasg_Int16x2_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x2_operator_xorasg_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
@@ -4774,6 +9076,7 @@ Int16x2::Int16x2()
     Int16x2_operator_lshasg_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
     Int16x2_operator_lshasg_Int16x2.name = "operator<<="_c;
     Int16x2_operator_lshasg_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_lshasg_Int16x2.parameters = Int16x2_operator_lshasg_Int16x2_args;
     Symbol::Resolved(&Int16x2_operator_lshasg_Int16x2_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x2_operator_lshasg_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
@@ -4782,36 +9085,11 @@ Int16x2::Int16x2()
     Int16x2_operator_rhsasg_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
     Int16x2_operator_rhsasg_Int16x2.name = "operator>>="_c;
     Int16x2_operator_rhsasg_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    Int16x2_operator_rhsasg_Int16x2.parameters = Int16x2_operator_rhsasg_Int16x2_args;
     Symbol::Resolved(&Int16x2_operator_rhsasg_Int16x2_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x2_operator_rhsasg_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "i16x2"_c, &Int16x2_convert_Float32x2 },
-        std::pair{ "i16x2(f32x2)"_c, &Int16x2_convert_Float32x2 },
-        std::pair{ "i16x2"_c, &Int16x2_splat_Float32 },
-        std::pair{ "i16x2(f32)"_c, &Int16x2_splat_Float32 },
-        std::pair{ "i16x2"_c, &Int16x2_convert_UInt32x2 },
-        std::pair{ "i16x2(u32x2)"_c, &Int16x2_convert_UInt32x2 },
-        std::pair{ "i16x2"_c, &Int16x2_splat_UInt32 },
-        std::pair{ "i16x2(u32)"_c, &Int16x2_splat_UInt32 },
-        std::pair{ "i16x2"_c, &Int16x2_convert_Int32x2 },
-        std::pair{ "i16x2(i32x2)"_c, &Int16x2_convert_Int32x2 },
-        std::pair{ "i16x2"_c, &Int16x2_splat_Int32 },
-        std::pair{ "i16x2(i32)"_c, &Int16x2_splat_Int32 },
-        std::pair{ "i16x2"_c, &Int16x2_convert_Float16x2 },
-        std::pair{ "i16x2(f16x2)"_c, &Int16x2_convert_Float16x2 },
-        std::pair{ "i16x2"_c, &Int16x2_splat_Float16 },
-        std::pair{ "i16x2(f16)"_c, &Int16x2_splat_Float16 },
-        std::pair{ "i16x2"_c, &Int16x2_convert_UInt16x2 },
-        std::pair{ "i16x2(u16x2)"_c, &Int16x2_convert_UInt16x2 },
-        std::pair{ "i16x2"_c, &Int16x2_splat_UInt16 },
-        std::pair{ "i16x2(u16)"_c, &Int16x2_splat_UInt16 },
-        std::pair{ "i16x2"_c, &Int16x2_convert_Int16x2 },
-        std::pair{ "i16x2(i16x2)"_c, &Int16x2_convert_Int16x2 },
-        std::pair{ "i16x2"_c, &Int16x2_splat_Int16 },
-        std::pair{ "i16x2(i16)"_c, &Int16x2_splat_Int16 },
-        std::pair{ "i16x2"_c, &Int16x2_ctor0_Int16_Int16},
-        std::pair{ "i16x2(i16,i16)"_c, &Int16x2_ctor0_Int16_Int16},
         std::pair{ "operator[](i32)"_c, &Int16x2_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &Int16x2_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &Int16x2_operator_index_Int16},
@@ -4860,102 +9138,102 @@ Float32x3::Float32x3()
     this->baseType = TypeCode::Float32;
     this->builtin = true;
 
-    // Conversion from Float32x3
-    Float32x3_convert_Float32x3_arg0.name = "_arg0"_c;
+    Float32x3_convert_Float32x3_arg0.name = "val"_c;
     Float32x3_convert_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
+    Float32x3_convert_Float32x3.documentation = "Convert f32x3 to f32x3"_c;
     Float32x3_convert_Float32x3.name = "f32x3"_c;
     Float32x3_convert_Float32x3.returnType = Type::FullType { Float32x3Type.name };
-    Symbol::Resolved(&Float32x3_convert_Float32x3_arg0)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&Float32x3_convert_Float32x3)->returnTypeSymbol = &Float32x3Type;
-
-    // Splat with Float32
-    Float32x3_splat_Float32_arg0.name = "_arg0"_c;
+    Float32x3_convert_Float32x3.parameters = Float32x3_convert_Float32x3_args;
+    Symbol::Resolved(&Float32x3_convert_Float32x3_arg0).typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&Float32x3_convert_Float32x3).returnTypeSymbol = &Float32x3Type;
+    Float32x3_splat_Float32_arg0.name = "val"_c;
     Float32x3_splat_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    Float32x3_splat_Float32.documentation = "Splat f32x3 to f32x3"_c;
     Float32x3_splat_Float32.name = "f32x3"_c;
     Float32x3_splat_Float32.returnType = Type::FullType { Float32x3Type.name };
-    Symbol::Resolved(&Float32x3_splat_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Float32x3_splat_Float32)->returnTypeSymbol = &Float32x3Type;
-
-    // Conversion from UInt32x3
-    Float32x3_convert_UInt32x3_arg0.name = "_arg0"_c;
+    Float32x3_splat_Float32.parameters = Float32x3_splat_Float32_args;
+    Symbol::Resolved(&Float32x3_splat_Float32_arg0).typeSymbol = &Float32Type;
+    Symbol::Resolved(&Float32x3_splat_Float32).returnTypeSymbol = &Float32x3Type;
+    Float32x3_convert_UInt32x3_arg0.name = "val"_c;
     Float32x3_convert_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
+    Float32x3_convert_UInt32x3.documentation = "Convert u32x3 to f32x3"_c;
     Float32x3_convert_UInt32x3.name = "f32x3"_c;
     Float32x3_convert_UInt32x3.returnType = Type::FullType { Float32x3Type.name };
-    Symbol::Resolved(&Float32x3_convert_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&Float32x3_convert_UInt32x3)->returnTypeSymbol = &Float32x3Type;
-
-    // Splat with UInt32
-    Float32x3_splat_UInt32_arg0.name = "_arg0"_c;
+    Float32x3_convert_UInt32x3.parameters = Float32x3_convert_UInt32x3_args;
+    Symbol::Resolved(&Float32x3_convert_UInt32x3_arg0).typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&Float32x3_convert_UInt32x3).returnTypeSymbol = &Float32x3Type;
+    Float32x3_splat_UInt32_arg0.name = "val"_c;
     Float32x3_splat_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    Float32x3_splat_UInt32.documentation = "Splat u32x3 to f32x3"_c;
     Float32x3_splat_UInt32.name = "f32x3"_c;
     Float32x3_splat_UInt32.returnType = Type::FullType { Float32x3Type.name };
-    Symbol::Resolved(&Float32x3_splat_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float32x3_splat_UInt32)->returnTypeSymbol = &Float32x3Type;
-
-    // Conversion from Int32x3
-    Float32x3_convert_Int32x3_arg0.name = "_arg0"_c;
+    Float32x3_splat_UInt32.parameters = Float32x3_splat_UInt32_args;
+    Symbol::Resolved(&Float32x3_splat_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&Float32x3_splat_UInt32).returnTypeSymbol = &Float32x3Type;
+    Float32x3_convert_Int32x3_arg0.name = "val"_c;
     Float32x3_convert_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
+    Float32x3_convert_Int32x3.documentation = "Convert i32x3 to f32x3"_c;
     Float32x3_convert_Int32x3.name = "f32x3"_c;
     Float32x3_convert_Int32x3.returnType = Type::FullType { Float32x3Type.name };
-    Symbol::Resolved(&Float32x3_convert_Int32x3_arg0)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&Float32x3_convert_Int32x3)->returnTypeSymbol = &Float32x3Type;
-
-    // Splat with Int32
-    Float32x3_splat_Int32_arg0.name = "_arg0"_c;
+    Float32x3_convert_Int32x3.parameters = Float32x3_convert_Int32x3_args;
+    Symbol::Resolved(&Float32x3_convert_Int32x3_arg0).typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&Float32x3_convert_Int32x3).returnTypeSymbol = &Float32x3Type;
+    Float32x3_splat_Int32_arg0.name = "val"_c;
     Float32x3_splat_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    Float32x3_splat_Int32.documentation = "Splat i32x3 to f32x3"_c;
     Float32x3_splat_Int32.name = "f32x3"_c;
     Float32x3_splat_Int32.returnType = Type::FullType { Float32x3Type.name };
-    Symbol::Resolved(&Float32x3_splat_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float32x3_splat_Int32)->returnTypeSymbol = &Float32x3Type;
-
-    // Conversion from Float16x3
-    Float32x3_convert_Float16x3_arg0.name = "_arg0"_c;
+    Float32x3_splat_Int32.parameters = Float32x3_splat_Int32_args;
+    Symbol::Resolved(&Float32x3_splat_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&Float32x3_splat_Int32).returnTypeSymbol = &Float32x3Type;
+    Float32x3_convert_Float16x3_arg0.name = "val"_c;
     Float32x3_convert_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
+    Float32x3_convert_Float16x3.documentation = "Convert f16x3 to f32x3"_c;
     Float32x3_convert_Float16x3.name = "f32x3"_c;
     Float32x3_convert_Float16x3.returnType = Type::FullType { Float32x3Type.name };
-    Symbol::Resolved(&Float32x3_convert_Float16x3_arg0)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&Float32x3_convert_Float16x3)->returnTypeSymbol = &Float32x3Type;
-
-    // Splat with Float16
-    Float32x3_splat_Float16_arg0.name = "_arg0"_c;
+    Float32x3_convert_Float16x3.parameters = Float32x3_convert_Float16x3_args;
+    Symbol::Resolved(&Float32x3_convert_Float16x3_arg0).typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&Float32x3_convert_Float16x3).returnTypeSymbol = &Float32x3Type;
+    Float32x3_splat_Float16_arg0.name = "val"_c;
     Float32x3_splat_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    Float32x3_splat_Float16.documentation = "Splat f16x3 to f32x3"_c;
     Float32x3_splat_Float16.name = "f32x3"_c;
     Float32x3_splat_Float16.returnType = Type::FullType { Float32x3Type.name };
-    Symbol::Resolved(&Float32x3_splat_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Float32x3_splat_Float16)->returnTypeSymbol = &Float32x3Type;
-
-    // Conversion from UInt16x3
-    Float32x3_convert_UInt16x3_arg0.name = "_arg0"_c;
+    Float32x3_splat_Float16.parameters = Float32x3_splat_Float16_args;
+    Symbol::Resolved(&Float32x3_splat_Float16_arg0).typeSymbol = &Float16Type;
+    Symbol::Resolved(&Float32x3_splat_Float16).returnTypeSymbol = &Float32x3Type;
+    Float32x3_convert_UInt16x3_arg0.name = "val"_c;
     Float32x3_convert_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
+    Float32x3_convert_UInt16x3.documentation = "Convert u16x3 to f32x3"_c;
     Float32x3_convert_UInt16x3.name = "f32x3"_c;
     Float32x3_convert_UInt16x3.returnType = Type::FullType { Float32x3Type.name };
-    Symbol::Resolved(&Float32x3_convert_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&Float32x3_convert_UInt16x3)->returnTypeSymbol = &Float32x3Type;
-
-    // Splat with UInt16
-    Float32x3_splat_UInt16_arg0.name = "_arg0"_c;
+    Float32x3_convert_UInt16x3.parameters = Float32x3_convert_UInt16x3_args;
+    Symbol::Resolved(&Float32x3_convert_UInt16x3_arg0).typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&Float32x3_convert_UInt16x3).returnTypeSymbol = &Float32x3Type;
+    Float32x3_splat_UInt16_arg0.name = "val"_c;
     Float32x3_splat_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    Float32x3_splat_UInt16.documentation = "Splat u16x3 to f32x3"_c;
     Float32x3_splat_UInt16.name = "f32x3"_c;
     Float32x3_splat_UInt16.returnType = Type::FullType { Float32x3Type.name };
-    Symbol::Resolved(&Float32x3_splat_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float32x3_splat_UInt16)->returnTypeSymbol = &Float32x3Type;
-
-    // Conversion from Int16x3
-    Float32x3_convert_Int16x3_arg0.name = "_arg0"_c;
+    Float32x3_splat_UInt16.parameters = Float32x3_splat_UInt16_args;
+    Symbol::Resolved(&Float32x3_splat_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&Float32x3_splat_UInt16).returnTypeSymbol = &Float32x3Type;
+    Float32x3_convert_Int16x3_arg0.name = "val"_c;
     Float32x3_convert_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
+    Float32x3_convert_Int16x3.documentation = "Convert i16x3 to f32x3"_c;
     Float32x3_convert_Int16x3.name = "f32x3"_c;
     Float32x3_convert_Int16x3.returnType = Type::FullType { Float32x3Type.name };
-    Symbol::Resolved(&Float32x3_convert_Int16x3_arg0)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&Float32x3_convert_Int16x3)->returnTypeSymbol = &Float32x3Type;
-
-    // Splat with Int16
-    Float32x3_splat_Int16_arg0.name = "_arg0"_c;
+    Float32x3_convert_Int16x3.parameters = Float32x3_convert_Int16x3_args;
+    Symbol::Resolved(&Float32x3_convert_Int16x3_arg0).typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&Float32x3_convert_Int16x3).returnTypeSymbol = &Float32x3Type;
+    Float32x3_splat_Int16_arg0.name = "val"_c;
     Float32x3_splat_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    Float32x3_splat_Int16.documentation = "Splat i16x3 to f32x3"_c;
     Float32x3_splat_Int16.name = "f32x3"_c;
     Float32x3_splat_Int16.returnType = Type::FullType { Float32x3Type.name };
-    Symbol::Resolved(&Float32x3_splat_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float32x3_splat_Int16)->returnTypeSymbol = &Float32x3Type;
-
+    Float32x3_splat_Int16.parameters = Float32x3_splat_Int16_args;
+    Symbol::Resolved(&Float32x3_splat_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&Float32x3_splat_Int16).returnTypeSymbol = &Float32x3Type;
     // Construct with Float32, Float32, Float32
     Float32x3_ctor0_arg0.name = "_arg0"_c;
     Float32x3_ctor0_arg0.type = Type::FullType { Float32Type.name };
@@ -4965,6 +9243,7 @@ Float32x3::Float32x3()
     Float32x3_ctor0_arg2.type = Type::FullType { Float32Type.name };
     Float32x3_ctor0_Float32_Float32_Float32.name = "0"_c;
     Float32x3_ctor0_Float32_Float32_Float32.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x3_ctor0_Float32_Float32_Float32.parameters = Float32x3_ctor0_Float32_Float32_Float32_args;
     Symbol::Resolved(&Float32x3_ctor0_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x3_ctor0_arg1)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x3_ctor0_arg2)->typeSymbol = &Float32Type;
@@ -4977,6 +9256,7 @@ Float32x3::Float32x3()
     Float32x3_ctor1_arg1.type = Type::FullType { Float32Type.name };
     Float32x3_ctor1_Float32x2_Float32.name = "1"_c;
     Float32x3_ctor1_Float32x2_Float32.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x3_ctor1_Float32x2_Float32.parameters = Float32x3_ctor1_Float32x2_Float32_args;
     Symbol::Resolved(&Float32x3_ctor1_arg0)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&Float32x3_ctor1_arg1)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x3_ctor1_Float32x2_Float32)->returnTypeSymbol = &Float32x3Type;
@@ -4988,6 +9268,7 @@ Float32x3::Float32x3()
     Float32x3_ctor2_arg1.type = Type::FullType { Float32x2Type.name };
     Float32x3_ctor2_Float32_Float32x2.name = "2"_c;
     Float32x3_ctor2_Float32_Float32x2.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x3_ctor2_Float32_Float32x2.parameters = Float32x3_ctor2_Float32_Float32x2_args;
     Symbol::Resolved(&Float32x3_ctor2_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x3_ctor2_arg1)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&Float32x3_ctor2_Float32_Float32x2)->returnTypeSymbol = &Float32x3Type;
@@ -4997,6 +9278,7 @@ Float32x3::Float32x3()
     Float32x3_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Float32x3_operator_index_Int32.name = "operator[]"_c;
     Float32x3_operator_index_Int32.returnType = Type::FullType{ Float32Type.name };
+    Float32x3_operator_index_Int32.parameters = Float32x3_operator_index_Int32_args;
     Symbol::Resolved(&Float32x3_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Float32x3_operator_index_Int32)->returnTypeSymbol = &Float32Type;
 
@@ -5005,6 +9287,7 @@ Float32x3::Float32x3()
     Float32x3_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Float32x3_operator_index_UInt32.name = "operator[]"_c;
     Float32x3_operator_index_UInt32.returnType = Type::FullType{ Float32Type.name };
+    Float32x3_operator_index_UInt32.parameters = Float32x3_operator_index_UInt32_args;
     Symbol::Resolved(&Float32x3_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Float32x3_operator_index_UInt32)->returnTypeSymbol = &Float32Type;
 
@@ -5013,6 +9296,7 @@ Float32x3::Float32x3()
     Float32x3_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Float32x3_operator_index_Int16.name = "operator[]"_c;
     Float32x3_operator_index_Int16.returnType = Type::FullType{ Float32Type.name };
+    Float32x3_operator_index_Int16.parameters = Float32x3_operator_index_Int16_args;
     Symbol::Resolved(&Float32x3_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Float32x3_operator_index_Int16)->returnTypeSymbol = &Float32Type;
 
@@ -5021,6 +9305,7 @@ Float32x3::Float32x3()
     Float32x3_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Float32x3_operator_index_UInt16.name = "operator[]"_c;
     Float32x3_operator_index_UInt16.returnType = Type::FullType{ Float32Type.name };
+    Float32x3_operator_index_UInt16.parameters = Float32x3_operator_index_UInt16_args;
     Symbol::Resolved(&Float32x3_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float32x3_operator_index_UInt16)->returnTypeSymbol = &Float32Type;
 
@@ -5029,6 +9314,7 @@ Float32x3::Float32x3()
     Float32x3_operator_add_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
     Float32x3_operator_add_Float32x3.name = "operator+"_c;
     Float32x3_operator_add_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x3_operator_add_Float32x3.parameters = Float32x3_operator_add_Float32x3_args;
     Symbol::Resolved(&Float32x3_operator_add_Float32x3_arg0)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&Float32x3_operator_add_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
@@ -5037,6 +9323,7 @@ Float32x3::Float32x3()
     Float32x3_operator_sub_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
     Float32x3_operator_sub_Float32x3.name = "operator-"_c;
     Float32x3_operator_sub_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x3_operator_sub_Float32x3.parameters = Float32x3_operator_sub_Float32x3_args;
     Symbol::Resolved(&Float32x3_operator_sub_Float32x3_arg0)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&Float32x3_operator_sub_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
@@ -5045,6 +9332,7 @@ Float32x3::Float32x3()
     Float32x3_operator_mul_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
     Float32x3_operator_mul_Float32x3.name = "operator*"_c;
     Float32x3_operator_mul_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x3_operator_mul_Float32x3.parameters = Float32x3_operator_mul_Float32x3_args;
     Symbol::Resolved(&Float32x3_operator_mul_Float32x3_arg0)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&Float32x3_operator_mul_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
@@ -5053,6 +9341,7 @@ Float32x3::Float32x3()
     Float32x3_operator_div_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
     Float32x3_operator_div_Float32x3.name = "operator/"_c;
     Float32x3_operator_div_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x3_operator_div_Float32x3.parameters = Float32x3_operator_div_Float32x3_args;
     Symbol::Resolved(&Float32x3_operator_div_Float32x3_arg0)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&Float32x3_operator_div_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
@@ -5061,6 +9350,7 @@ Float32x3::Float32x3()
     Float32x3_operator_mod_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
     Float32x3_operator_mod_Float32x3.name = "operator%"_c;
     Float32x3_operator_mod_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x3_operator_mod_Float32x3.parameters = Float32x3_operator_mod_Float32x3_args;
     Symbol::Resolved(&Float32x3_operator_mod_Float32x3_arg0)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&Float32x3_operator_mod_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
@@ -5069,6 +9359,7 @@ Float32x3::Float32x3()
     Float32x3_operator_addasg_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
     Float32x3_operator_addasg_Float32x3.name = "operator+="_c;
     Float32x3_operator_addasg_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x3_operator_addasg_Float32x3.parameters = Float32x3_operator_addasg_Float32x3_args;
     Symbol::Resolved(&Float32x3_operator_addasg_Float32x3_arg0)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&Float32x3_operator_addasg_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
@@ -5077,6 +9368,7 @@ Float32x3::Float32x3()
     Float32x3_operator_subasg_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
     Float32x3_operator_subasg_Float32x3.name = "operator-="_c;
     Float32x3_operator_subasg_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x3_operator_subasg_Float32x3.parameters = Float32x3_operator_subasg_Float32x3_args;
     Symbol::Resolved(&Float32x3_operator_subasg_Float32x3_arg0)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&Float32x3_operator_subasg_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
@@ -5085,6 +9377,7 @@ Float32x3::Float32x3()
     Float32x3_operator_mulasg_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
     Float32x3_operator_mulasg_Float32x3.name = "operator*="_c;
     Float32x3_operator_mulasg_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x3_operator_mulasg_Float32x3.parameters = Float32x3_operator_mulasg_Float32x3_args;
     Symbol::Resolved(&Float32x3_operator_mulasg_Float32x3_arg0)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&Float32x3_operator_mulasg_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
@@ -5093,6 +9386,7 @@ Float32x3::Float32x3()
     Float32x3_operator_divasg_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
     Float32x3_operator_divasg_Float32x3.name = "operator/="_c;
     Float32x3_operator_divasg_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x3_operator_divasg_Float32x3.parameters = Float32x3_operator_divasg_Float32x3_args;
     Symbol::Resolved(&Float32x3_operator_divasg_Float32x3_arg0)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&Float32x3_operator_divasg_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
@@ -5101,6 +9395,7 @@ Float32x3::Float32x3()
     Float32x3_operator_lt_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
     Float32x3_operator_lt_Float32x3.name = "operator<"_c;
     Float32x3_operator_lt_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x3_operator_lt_Float32x3.parameters = Float32x3_operator_lt_Float32x3_args;
     Symbol::Resolved(&Float32x3_operator_lt_Float32x3_arg0)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&Float32x3_operator_lt_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
@@ -5109,6 +9404,7 @@ Float32x3::Float32x3()
     Float32x3_operator_lte_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
     Float32x3_operator_lte_Float32x3.name = "operator<="_c;
     Float32x3_operator_lte_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x3_operator_lte_Float32x3.parameters = Float32x3_operator_lte_Float32x3_args;
     Symbol::Resolved(&Float32x3_operator_lte_Float32x3_arg0)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&Float32x3_operator_lte_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
@@ -5117,6 +9413,7 @@ Float32x3::Float32x3()
     Float32x3_operator_gt_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
     Float32x3_operator_gt_Float32x3.name = "operator>"_c;
     Float32x3_operator_gt_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x3_operator_gt_Float32x3.parameters = Float32x3_operator_gt_Float32x3_args;
     Symbol::Resolved(&Float32x3_operator_gt_Float32x3_arg0)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&Float32x3_operator_gt_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
@@ -5125,6 +9422,7 @@ Float32x3::Float32x3()
     Float32x3_operator_gte_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
     Float32x3_operator_gte_Float32x3.name = "operator>="_c;
     Float32x3_operator_gte_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x3_operator_gte_Float32x3.parameters = Float32x3_operator_gte_Float32x3_args;
     Symbol::Resolved(&Float32x3_operator_gte_Float32x3_arg0)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&Float32x3_operator_gte_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
@@ -5133,6 +9431,7 @@ Float32x3::Float32x3()
     Float32x3_operator_eq_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
     Float32x3_operator_eq_Float32x3.name = "operator=="_c;
     Float32x3_operator_eq_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x3_operator_eq_Float32x3.parameters = Float32x3_operator_eq_Float32x3_args;
     Symbol::Resolved(&Float32x3_operator_eq_Float32x3_arg0)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&Float32x3_operator_eq_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
@@ -5141,6 +9440,7 @@ Float32x3::Float32x3()
     Float32x3_operator_neq_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
     Float32x3_operator_neq_Float32x3.name = "operator!="_c;
     Float32x3_operator_neq_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x3_operator_neq_Float32x3.parameters = Float32x3_operator_neq_Float32x3_args;
     Symbol::Resolved(&Float32x3_operator_neq_Float32x3_arg0)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&Float32x3_operator_neq_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
@@ -5149,6 +9449,7 @@ Float32x3::Float32x3()
     Float32x3_operator_scale_Float32x3_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Float32x3_operator_scale_Float32x3_Float32.name = "operator*"_c;
     Float32x3_operator_scale_Float32x3_Float32.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x3_operator_scale_Float32x3_Float32.parameters = Float32x3_operator_scale_Float32x3_Float32_args;
     Symbol::Resolved(&Float32x3_operator_scale_Float32x3_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x3_operator_scale_Float32x3_Float32)->returnTypeSymbol = &Float32x3Type;
 
@@ -5157,6 +9458,7 @@ Float32x3::Float32x3()
     Float32x3_operator_scale_Float32x3_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Float32x3_operator_scale_Float32x3_Float16.name = "operator*"_c;
     Float32x3_operator_scale_Float32x3_Float16.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x3_operator_scale_Float32x3_Float16.parameters = Float32x3_operator_scale_Float32x3_Float16_args;
     Symbol::Resolved(&Float32x3_operator_scale_Float32x3_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float32x3_operator_scale_Float32x3_Float16)->returnTypeSymbol = &Float32x3Type;
 
@@ -5165,6 +9467,7 @@ Float32x3::Float32x3()
     Float32x3_operator_scale_Float32x3_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Float32x3_operator_scale_Float32x3_UInt32.name = "operator*"_c;
     Float32x3_operator_scale_Float32x3_UInt32.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x3_operator_scale_Float32x3_UInt32.parameters = Float32x3_operator_scale_Float32x3_UInt32_args;
     Symbol::Resolved(&Float32x3_operator_scale_Float32x3_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Float32x3_operator_scale_Float32x3_UInt32)->returnTypeSymbol = &Float32x3Type;
 
@@ -5173,6 +9476,7 @@ Float32x3::Float32x3()
     Float32x3_operator_scale_Float32x3_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Float32x3_operator_scale_Float32x3_UInt16.name = "operator*"_c;
     Float32x3_operator_scale_Float32x3_UInt16.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x3_operator_scale_Float32x3_UInt16.parameters = Float32x3_operator_scale_Float32x3_UInt16_args;
     Symbol::Resolved(&Float32x3_operator_scale_Float32x3_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float32x3_operator_scale_Float32x3_UInt16)->returnTypeSymbol = &Float32x3Type;
 
@@ -5181,6 +9485,7 @@ Float32x3::Float32x3()
     Float32x3_operator_scale_Float32x3_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Float32x3_operator_scale_Float32x3_Int32.name = "operator*"_c;
     Float32x3_operator_scale_Float32x3_Int32.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x3_operator_scale_Float32x3_Int32.parameters = Float32x3_operator_scale_Float32x3_Int32_args;
     Symbol::Resolved(&Float32x3_operator_scale_Float32x3_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Float32x3_operator_scale_Float32x3_Int32)->returnTypeSymbol = &Float32x3Type;
 
@@ -5189,6 +9494,7 @@ Float32x3::Float32x3()
     Float32x3_operator_scale_Float32x3_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Float32x3_operator_scale_Float32x3_Int16.name = "operator*"_c;
     Float32x3_operator_scale_Float32x3_Int16.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x3_operator_scale_Float32x3_Int16.parameters = Float32x3_operator_scale_Float32x3_Int16_args;
     Symbol::Resolved(&Float32x3_operator_scale_Float32x3_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Float32x3_operator_scale_Float32x3_Int16)->returnTypeSymbol = &Float32x3Type;
 
@@ -5197,6 +9503,7 @@ Float32x3::Float32x3()
     Float32x3_operator_mul_Float32x3x2_arg0.type = Type::FullType{ Float32x3x2Type.name };
     Float32x3_operator_mul_Float32x3x2.name = "operator*"_c;
     Float32x3_operator_mul_Float32x3x2.returnType = Type::FullType{ Float32x2Type.name };
+    Float32x3_operator_mul_Float32x3x2.parameters = Float32x3_operator_mul_Float32x3x2_args;
     Symbol::Resolved(&Float32x3_operator_mul_Float32x3x2_arg0)->typeSymbol = &Float32x3x2Type;
     Symbol::Resolved(&Float32x3_operator_mul_Float32x3x2)->returnTypeSymbol = &Float32x2Type;
 
@@ -5205,6 +9512,7 @@ Float32x3::Float32x3()
     Float32x3_operator_mul_Float32x3x3_arg0.type = Type::FullType{ Float32x3x3Type.name };
     Float32x3_operator_mul_Float32x3x3.name = "operator*"_c;
     Float32x3_operator_mul_Float32x3x3.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x3_operator_mul_Float32x3x3.parameters = Float32x3_operator_mul_Float32x3x3_args;
     Symbol::Resolved(&Float32x3_operator_mul_Float32x3x3_arg0)->typeSymbol = &Float32x3x3Type;
     Symbol::Resolved(&Float32x3_operator_mul_Float32x3x3)->returnTypeSymbol = &Float32x3Type;
 
@@ -5213,40 +9521,11 @@ Float32x3::Float32x3()
     Float32x3_operator_mul_Float32x3x4_arg0.type = Type::FullType{ Float32x3x4Type.name };
     Float32x3_operator_mul_Float32x3x4.name = "operator*"_c;
     Float32x3_operator_mul_Float32x3x4.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x3_operator_mul_Float32x3x4.parameters = Float32x3_operator_mul_Float32x3x4_args;
     Symbol::Resolved(&Float32x3_operator_mul_Float32x3x4_arg0)->typeSymbol = &Float32x3x4Type;
     Symbol::Resolved(&Float32x3_operator_mul_Float32x3x4)->returnTypeSymbol = &Float32x4Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "f32x3"_c, &Float32x3_convert_Float32x3 },
-        std::pair{ "f32x3(f32x3)"_c, &Float32x3_convert_Float32x3 },
-        std::pair{ "f32x3"_c, &Float32x3_splat_Float32 },
-        std::pair{ "f32x3(f32)"_c, &Float32x3_splat_Float32 },
-        std::pair{ "f32x3"_c, &Float32x3_convert_UInt32x3 },
-        std::pair{ "f32x3(u32x3)"_c, &Float32x3_convert_UInt32x3 },
-        std::pair{ "f32x3"_c, &Float32x3_splat_UInt32 },
-        std::pair{ "f32x3(u32)"_c, &Float32x3_splat_UInt32 },
-        std::pair{ "f32x3"_c, &Float32x3_convert_Int32x3 },
-        std::pair{ "f32x3(i32x3)"_c, &Float32x3_convert_Int32x3 },
-        std::pair{ "f32x3"_c, &Float32x3_splat_Int32 },
-        std::pair{ "f32x3(i32)"_c, &Float32x3_splat_Int32 },
-        std::pair{ "f32x3"_c, &Float32x3_convert_Float16x3 },
-        std::pair{ "f32x3(f16x3)"_c, &Float32x3_convert_Float16x3 },
-        std::pair{ "f32x3"_c, &Float32x3_splat_Float16 },
-        std::pair{ "f32x3(f16)"_c, &Float32x3_splat_Float16 },
-        std::pair{ "f32x3"_c, &Float32x3_convert_UInt16x3 },
-        std::pair{ "f32x3(u16x3)"_c, &Float32x3_convert_UInt16x3 },
-        std::pair{ "f32x3"_c, &Float32x3_splat_UInt16 },
-        std::pair{ "f32x3(u16)"_c, &Float32x3_splat_UInt16 },
-        std::pair{ "f32x3"_c, &Float32x3_convert_Int16x3 },
-        std::pair{ "f32x3(i16x3)"_c, &Float32x3_convert_Int16x3 },
-        std::pair{ "f32x3"_c, &Float32x3_splat_Int16 },
-        std::pair{ "f32x3(i16)"_c, &Float32x3_splat_Int16 },
-        std::pair{ "f32x3"_c, &Float32x3_ctor0_Float32_Float32_Float32},
-        std::pair{ "f32x3(f32,f32,f32)"_c, &Float32x3_ctor0_Float32_Float32_Float32},
-        std::pair{ "f32x3"_c, &Float32x3_ctor1_Float32x2_Float32},
-        std::pair{ "f32x3(f32x2,f32)"_c, &Float32x3_ctor1_Float32x2_Float32},
-        std::pair{ "f32x3"_c, &Float32x3_ctor2_Float32_Float32x2},
-        std::pair{ "f32x3(f32,f32x2)"_c, &Float32x3_ctor2_Float32_Float32x2},
         std::pair{ "operator[](i32)"_c, &Float32x3_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &Float32x3_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &Float32x3_operator_index_Int16},
@@ -5288,102 +9567,102 @@ UInt32x3::UInt32x3()
     this->baseType = TypeCode::UInt32;
     this->builtin = true;
 
-    // Conversion from Float32x3
-    UInt32x3_convert_Float32x3_arg0.name = "_arg0"_c;
+    UInt32x3_convert_Float32x3_arg0.name = "val"_c;
     UInt32x3_convert_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
+    UInt32x3_convert_Float32x3.documentation = "Convert f32x3 to u32x3"_c;
     UInt32x3_convert_Float32x3.name = "u32x3"_c;
     UInt32x3_convert_Float32x3.returnType = Type::FullType { UInt32x3Type.name };
-    Symbol::Resolved(&UInt32x3_convert_Float32x3_arg0)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&UInt32x3_convert_Float32x3)->returnTypeSymbol = &UInt32x3Type;
-
-    // Splat with Float32
-    UInt32x3_splat_Float32_arg0.name = "_arg0"_c;
+    UInt32x3_convert_Float32x3.parameters = UInt32x3_convert_Float32x3_args;
+    Symbol::Resolved(&UInt32x3_convert_Float32x3_arg0).typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&UInt32x3_convert_Float32x3).returnTypeSymbol = &UInt32x3Type;
+    UInt32x3_splat_Float32_arg0.name = "val"_c;
     UInt32x3_splat_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    UInt32x3_splat_Float32.documentation = "Splat f32x3 to u32x3"_c;
     UInt32x3_splat_Float32.name = "u32x3"_c;
     UInt32x3_splat_Float32.returnType = Type::FullType { UInt32x3Type.name };
-    Symbol::Resolved(&UInt32x3_splat_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&UInt32x3_splat_Float32)->returnTypeSymbol = &UInt32x3Type;
-
-    // Conversion from UInt32x3
-    UInt32x3_convert_UInt32x3_arg0.name = "_arg0"_c;
+    UInt32x3_splat_Float32.parameters = UInt32x3_splat_Float32_args;
+    Symbol::Resolved(&UInt32x3_splat_Float32_arg0).typeSymbol = &Float32Type;
+    Symbol::Resolved(&UInt32x3_splat_Float32).returnTypeSymbol = &UInt32x3Type;
+    UInt32x3_convert_UInt32x3_arg0.name = "val"_c;
     UInt32x3_convert_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_convert_UInt32x3.documentation = "Convert u32x3 to u32x3"_c;
     UInt32x3_convert_UInt32x3.name = "u32x3"_c;
     UInt32x3_convert_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
-    Symbol::Resolved(&UInt32x3_convert_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&UInt32x3_convert_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
-
-    // Splat with UInt32
-    UInt32x3_splat_UInt32_arg0.name = "_arg0"_c;
+    UInt32x3_convert_UInt32x3.parameters = UInt32x3_convert_UInt32x3_args;
+    Symbol::Resolved(&UInt32x3_convert_UInt32x3_arg0).typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&UInt32x3_convert_UInt32x3).returnTypeSymbol = &UInt32x3Type;
+    UInt32x3_splat_UInt32_arg0.name = "val"_c;
     UInt32x3_splat_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    UInt32x3_splat_UInt32.documentation = "Splat u32x3 to u32x3"_c;
     UInt32x3_splat_UInt32.name = "u32x3"_c;
     UInt32x3_splat_UInt32.returnType = Type::FullType { UInt32x3Type.name };
-    Symbol::Resolved(&UInt32x3_splat_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&UInt32x3_splat_UInt32)->returnTypeSymbol = &UInt32x3Type;
-
-    // Conversion from Int32x3
-    UInt32x3_convert_Int32x3_arg0.name = "_arg0"_c;
+    UInt32x3_splat_UInt32.parameters = UInt32x3_splat_UInt32_args;
+    Symbol::Resolved(&UInt32x3_splat_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&UInt32x3_splat_UInt32).returnTypeSymbol = &UInt32x3Type;
+    UInt32x3_convert_Int32x3_arg0.name = "val"_c;
     UInt32x3_convert_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
+    UInt32x3_convert_Int32x3.documentation = "Convert i32x3 to u32x3"_c;
     UInt32x3_convert_Int32x3.name = "u32x3"_c;
     UInt32x3_convert_Int32x3.returnType = Type::FullType { UInt32x3Type.name };
-    Symbol::Resolved(&UInt32x3_convert_Int32x3_arg0)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&UInt32x3_convert_Int32x3)->returnTypeSymbol = &UInt32x3Type;
-
-    // Splat with Int32
-    UInt32x3_splat_Int32_arg0.name = "_arg0"_c;
+    UInt32x3_convert_Int32x3.parameters = UInt32x3_convert_Int32x3_args;
+    Symbol::Resolved(&UInt32x3_convert_Int32x3_arg0).typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&UInt32x3_convert_Int32x3).returnTypeSymbol = &UInt32x3Type;
+    UInt32x3_splat_Int32_arg0.name = "val"_c;
     UInt32x3_splat_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    UInt32x3_splat_Int32.documentation = "Splat i32x3 to u32x3"_c;
     UInt32x3_splat_Int32.name = "u32x3"_c;
     UInt32x3_splat_Int32.returnType = Type::FullType { UInt32x3Type.name };
-    Symbol::Resolved(&UInt32x3_splat_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&UInt32x3_splat_Int32)->returnTypeSymbol = &UInt32x3Type;
-
-    // Conversion from Float16x3
-    UInt32x3_convert_Float16x3_arg0.name = "_arg0"_c;
+    UInt32x3_splat_Int32.parameters = UInt32x3_splat_Int32_args;
+    Symbol::Resolved(&UInt32x3_splat_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&UInt32x3_splat_Int32).returnTypeSymbol = &UInt32x3Type;
+    UInt32x3_convert_Float16x3_arg0.name = "val"_c;
     UInt32x3_convert_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
+    UInt32x3_convert_Float16x3.documentation = "Convert f16x3 to u32x3"_c;
     UInt32x3_convert_Float16x3.name = "u32x3"_c;
     UInt32x3_convert_Float16x3.returnType = Type::FullType { UInt32x3Type.name };
-    Symbol::Resolved(&UInt32x3_convert_Float16x3_arg0)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&UInt32x3_convert_Float16x3)->returnTypeSymbol = &UInt32x3Type;
-
-    // Splat with Float16
-    UInt32x3_splat_Float16_arg0.name = "_arg0"_c;
+    UInt32x3_convert_Float16x3.parameters = UInt32x3_convert_Float16x3_args;
+    Symbol::Resolved(&UInt32x3_convert_Float16x3_arg0).typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&UInt32x3_convert_Float16x3).returnTypeSymbol = &UInt32x3Type;
+    UInt32x3_splat_Float16_arg0.name = "val"_c;
     UInt32x3_splat_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    UInt32x3_splat_Float16.documentation = "Splat f16x3 to u32x3"_c;
     UInt32x3_splat_Float16.name = "u32x3"_c;
     UInt32x3_splat_Float16.returnType = Type::FullType { UInt32x3Type.name };
-    Symbol::Resolved(&UInt32x3_splat_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&UInt32x3_splat_Float16)->returnTypeSymbol = &UInt32x3Type;
-
-    // Conversion from UInt16x3
-    UInt32x3_convert_UInt16x3_arg0.name = "_arg0"_c;
+    UInt32x3_splat_Float16.parameters = UInt32x3_splat_Float16_args;
+    Symbol::Resolved(&UInt32x3_splat_Float16_arg0).typeSymbol = &Float16Type;
+    Symbol::Resolved(&UInt32x3_splat_Float16).returnTypeSymbol = &UInt32x3Type;
+    UInt32x3_convert_UInt16x3_arg0.name = "val"_c;
     UInt32x3_convert_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
+    UInt32x3_convert_UInt16x3.documentation = "Convert u16x3 to u32x3"_c;
     UInt32x3_convert_UInt16x3.name = "u32x3"_c;
     UInt32x3_convert_UInt16x3.returnType = Type::FullType { UInt32x3Type.name };
-    Symbol::Resolved(&UInt32x3_convert_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&UInt32x3_convert_UInt16x3)->returnTypeSymbol = &UInt32x3Type;
-
-    // Splat with UInt16
-    UInt32x3_splat_UInt16_arg0.name = "_arg0"_c;
+    UInt32x3_convert_UInt16x3.parameters = UInt32x3_convert_UInt16x3_args;
+    Symbol::Resolved(&UInt32x3_convert_UInt16x3_arg0).typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&UInt32x3_convert_UInt16x3).returnTypeSymbol = &UInt32x3Type;
+    UInt32x3_splat_UInt16_arg0.name = "val"_c;
     UInt32x3_splat_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    UInt32x3_splat_UInt16.documentation = "Splat u16x3 to u32x3"_c;
     UInt32x3_splat_UInt16.name = "u32x3"_c;
     UInt32x3_splat_UInt16.returnType = Type::FullType { UInt32x3Type.name };
-    Symbol::Resolved(&UInt32x3_splat_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&UInt32x3_splat_UInt16)->returnTypeSymbol = &UInt32x3Type;
-
-    // Conversion from Int16x3
-    UInt32x3_convert_Int16x3_arg0.name = "_arg0"_c;
+    UInt32x3_splat_UInt16.parameters = UInt32x3_splat_UInt16_args;
+    Symbol::Resolved(&UInt32x3_splat_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&UInt32x3_splat_UInt16).returnTypeSymbol = &UInt32x3Type;
+    UInt32x3_convert_Int16x3_arg0.name = "val"_c;
     UInt32x3_convert_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
+    UInt32x3_convert_Int16x3.documentation = "Convert i16x3 to u32x3"_c;
     UInt32x3_convert_Int16x3.name = "u32x3"_c;
     UInt32x3_convert_Int16x3.returnType = Type::FullType { UInt32x3Type.name };
-    Symbol::Resolved(&UInt32x3_convert_Int16x3_arg0)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&UInt32x3_convert_Int16x3)->returnTypeSymbol = &UInt32x3Type;
-
-    // Splat with Int16
-    UInt32x3_splat_Int16_arg0.name = "_arg0"_c;
+    UInt32x3_convert_Int16x3.parameters = UInt32x3_convert_Int16x3_args;
+    Symbol::Resolved(&UInt32x3_convert_Int16x3_arg0).typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&UInt32x3_convert_Int16x3).returnTypeSymbol = &UInt32x3Type;
+    UInt32x3_splat_Int16_arg0.name = "val"_c;
     UInt32x3_splat_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    UInt32x3_splat_Int16.documentation = "Splat i16x3 to u32x3"_c;
     UInt32x3_splat_Int16.name = "u32x3"_c;
     UInt32x3_splat_Int16.returnType = Type::FullType { UInt32x3Type.name };
-    Symbol::Resolved(&UInt32x3_splat_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&UInt32x3_splat_Int16)->returnTypeSymbol = &UInt32x3Type;
-
+    UInt32x3_splat_Int16.parameters = UInt32x3_splat_Int16_args;
+    Symbol::Resolved(&UInt32x3_splat_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&UInt32x3_splat_Int16).returnTypeSymbol = &UInt32x3Type;
     // Construct with UInt32, UInt32, UInt32
     UInt32x3_ctor0_arg0.name = "_arg0"_c;
     UInt32x3_ctor0_arg0.type = Type::FullType { UInt32Type.name };
@@ -5393,6 +9672,7 @@ UInt32x3::UInt32x3()
     UInt32x3_ctor0_arg2.type = Type::FullType { UInt32Type.name };
     UInt32x3_ctor0_UInt32_UInt32_UInt32.name = "0"_c;
     UInt32x3_ctor0_UInt32_UInt32_UInt32.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_ctor0_UInt32_UInt32_UInt32.parameters = UInt32x3_ctor0_UInt32_UInt32_UInt32_args;
     Symbol::Resolved(&UInt32x3_ctor0_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32x3_ctor0_arg1)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32x3_ctor0_arg2)->typeSymbol = &UInt32Type;
@@ -5405,6 +9685,7 @@ UInt32x3::UInt32x3()
     UInt32x3_ctor1_arg1.type = Type::FullType { UInt32Type.name };
     UInt32x3_ctor1_UInt32x2_UInt32.name = "1"_c;
     UInt32x3_ctor1_UInt32x2_UInt32.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_ctor1_UInt32x2_UInt32.parameters = UInt32x3_ctor1_UInt32x2_UInt32_args;
     Symbol::Resolved(&UInt32x3_ctor1_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x3_ctor1_arg1)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32x3_ctor1_UInt32x2_UInt32)->returnTypeSymbol = &UInt32x3Type;
@@ -5416,6 +9697,7 @@ UInt32x3::UInt32x3()
     UInt32x3_ctor2_arg1.type = Type::FullType { UInt32x2Type.name };
     UInt32x3_ctor2_UInt32_UInt32x2.name = "2"_c;
     UInt32x3_ctor2_UInt32_UInt32x2.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_ctor2_UInt32_UInt32x2.parameters = UInt32x3_ctor2_UInt32_UInt32x2_args;
     Symbol::Resolved(&UInt32x3_ctor2_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32x3_ctor2_arg1)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x3_ctor2_UInt32_UInt32x2)->returnTypeSymbol = &UInt32x3Type;
@@ -5425,6 +9707,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     UInt32x3_operator_index_Int32.name = "operator[]"_c;
     UInt32x3_operator_index_Int32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32x3_operator_index_Int32.parameters = UInt32x3_operator_index_Int32_args;
     Symbol::Resolved(&UInt32x3_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&UInt32x3_operator_index_Int32)->returnTypeSymbol = &UInt32Type;
 
@@ -5433,6 +9716,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32x3_operator_index_UInt32.name = "operator[]"_c;
     UInt32x3_operator_index_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32x3_operator_index_UInt32.parameters = UInt32x3_operator_index_UInt32_args;
     Symbol::Resolved(&UInt32x3_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32x3_operator_index_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -5441,6 +9725,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     UInt32x3_operator_index_Int16.name = "operator[]"_c;
     UInt32x3_operator_index_Int16.returnType = Type::FullType{ UInt32Type.name };
+    UInt32x3_operator_index_Int16.parameters = UInt32x3_operator_index_Int16_args;
     Symbol::Resolved(&UInt32x3_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&UInt32x3_operator_index_Int16)->returnTypeSymbol = &UInt32Type;
 
@@ -5449,6 +9734,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt32x3_operator_index_UInt16.name = "operator[]"_c;
     UInt32x3_operator_index_UInt16.returnType = Type::FullType{ UInt32Type.name };
+    UInt32x3_operator_index_UInt16.parameters = UInt32x3_operator_index_UInt16_args;
     Symbol::Resolved(&UInt32x3_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt32x3_operator_index_UInt16)->returnTypeSymbol = &UInt32Type;
 
@@ -5457,6 +9743,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_add_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
     UInt32x3_operator_add_UInt32x3.name = "operator+"_c;
     UInt32x3_operator_add_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_add_UInt32x3.parameters = UInt32x3_operator_add_UInt32x3_args;
     Symbol::Resolved(&UInt32x3_operator_add_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x3_operator_add_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5465,6 +9752,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_sub_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
     UInt32x3_operator_sub_UInt32x3.name = "operator-"_c;
     UInt32x3_operator_sub_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_sub_UInt32x3.parameters = UInt32x3_operator_sub_UInt32x3_args;
     Symbol::Resolved(&UInt32x3_operator_sub_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x3_operator_sub_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5473,6 +9761,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_mul_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
     UInt32x3_operator_mul_UInt32x3.name = "operator*"_c;
     UInt32x3_operator_mul_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_mul_UInt32x3.parameters = UInt32x3_operator_mul_UInt32x3_args;
     Symbol::Resolved(&UInt32x3_operator_mul_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x3_operator_mul_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5481,6 +9770,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_div_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
     UInt32x3_operator_div_UInt32x3.name = "operator/"_c;
     UInt32x3_operator_div_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_div_UInt32x3.parameters = UInt32x3_operator_div_UInt32x3_args;
     Symbol::Resolved(&UInt32x3_operator_div_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x3_operator_div_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5489,6 +9779,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_mod_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
     UInt32x3_operator_mod_UInt32x3.name = "operator%"_c;
     UInt32x3_operator_mod_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_mod_UInt32x3.parameters = UInt32x3_operator_mod_UInt32x3_args;
     Symbol::Resolved(&UInt32x3_operator_mod_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x3_operator_mod_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5497,6 +9788,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_addasg_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
     UInt32x3_operator_addasg_UInt32x3.name = "operator+="_c;
     UInt32x3_operator_addasg_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_addasg_UInt32x3.parameters = UInt32x3_operator_addasg_UInt32x3_args;
     Symbol::Resolved(&UInt32x3_operator_addasg_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x3_operator_addasg_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5505,6 +9797,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_subasg_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
     UInt32x3_operator_subasg_UInt32x3.name = "operator-="_c;
     UInt32x3_operator_subasg_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_subasg_UInt32x3.parameters = UInt32x3_operator_subasg_UInt32x3_args;
     Symbol::Resolved(&UInt32x3_operator_subasg_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x3_operator_subasg_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5513,6 +9806,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_mulasg_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
     UInt32x3_operator_mulasg_UInt32x3.name = "operator*="_c;
     UInt32x3_operator_mulasg_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_mulasg_UInt32x3.parameters = UInt32x3_operator_mulasg_UInt32x3_args;
     Symbol::Resolved(&UInt32x3_operator_mulasg_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x3_operator_mulasg_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5521,6 +9815,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_divasg_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
     UInt32x3_operator_divasg_UInt32x3.name = "operator/="_c;
     UInt32x3_operator_divasg_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_divasg_UInt32x3.parameters = UInt32x3_operator_divasg_UInt32x3_args;
     Symbol::Resolved(&UInt32x3_operator_divasg_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x3_operator_divasg_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5529,6 +9824,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_lt_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
     UInt32x3_operator_lt_UInt32x3.name = "operator<"_c;
     UInt32x3_operator_lt_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_lt_UInt32x3.parameters = UInt32x3_operator_lt_UInt32x3_args;
     Symbol::Resolved(&UInt32x3_operator_lt_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x3_operator_lt_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5537,6 +9833,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_lte_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
     UInt32x3_operator_lte_UInt32x3.name = "operator<="_c;
     UInt32x3_operator_lte_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_lte_UInt32x3.parameters = UInt32x3_operator_lte_UInt32x3_args;
     Symbol::Resolved(&UInt32x3_operator_lte_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x3_operator_lte_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5545,6 +9842,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_gt_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
     UInt32x3_operator_gt_UInt32x3.name = "operator>"_c;
     UInt32x3_operator_gt_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_gt_UInt32x3.parameters = UInt32x3_operator_gt_UInt32x3_args;
     Symbol::Resolved(&UInt32x3_operator_gt_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x3_operator_gt_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5553,6 +9851,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_gte_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
     UInt32x3_operator_gte_UInt32x3.name = "operator>="_c;
     UInt32x3_operator_gte_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_gte_UInt32x3.parameters = UInt32x3_operator_gte_UInt32x3_args;
     Symbol::Resolved(&UInt32x3_operator_gte_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x3_operator_gte_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5561,6 +9860,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_eq_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
     UInt32x3_operator_eq_UInt32x3.name = "operator=="_c;
     UInt32x3_operator_eq_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_eq_UInt32x3.parameters = UInt32x3_operator_eq_UInt32x3_args;
     Symbol::Resolved(&UInt32x3_operator_eq_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x3_operator_eq_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5569,6 +9869,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_neq_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
     UInt32x3_operator_neq_UInt32x3.name = "operator!="_c;
     UInt32x3_operator_neq_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_neq_UInt32x3.parameters = UInt32x3_operator_neq_UInt32x3_args;
     Symbol::Resolved(&UInt32x3_operator_neq_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x3_operator_neq_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5577,6 +9878,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_scale_UInt32x3_Float32_arg0.type = Type::FullType{ Float32Type.name };
     UInt32x3_operator_scale_UInt32x3_Float32.name = "operator*"_c;
     UInt32x3_operator_scale_UInt32x3_Float32.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_scale_UInt32x3_Float32.parameters = UInt32x3_operator_scale_UInt32x3_Float32_args;
     Symbol::Resolved(&UInt32x3_operator_scale_UInt32x3_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&UInt32x3_operator_scale_UInt32x3_Float32)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5585,6 +9887,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_scale_UInt32x3_Float16_arg0.type = Type::FullType{ Float16Type.name };
     UInt32x3_operator_scale_UInt32x3_Float16.name = "operator*"_c;
     UInt32x3_operator_scale_UInt32x3_Float16.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_scale_UInt32x3_Float16.parameters = UInt32x3_operator_scale_UInt32x3_Float16_args;
     Symbol::Resolved(&UInt32x3_operator_scale_UInt32x3_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&UInt32x3_operator_scale_UInt32x3_Float16)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5593,6 +9896,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_scale_UInt32x3_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32x3_operator_scale_UInt32x3_UInt32.name = "operator*"_c;
     UInt32x3_operator_scale_UInt32x3_UInt32.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_scale_UInt32x3_UInt32.parameters = UInt32x3_operator_scale_UInt32x3_UInt32_args;
     Symbol::Resolved(&UInt32x3_operator_scale_UInt32x3_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32x3_operator_scale_UInt32x3_UInt32)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5601,6 +9905,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_scale_UInt32x3_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt32x3_operator_scale_UInt32x3_UInt16.name = "operator*"_c;
     UInt32x3_operator_scale_UInt32x3_UInt16.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_scale_UInt32x3_UInt16.parameters = UInt32x3_operator_scale_UInt32x3_UInt16_args;
     Symbol::Resolved(&UInt32x3_operator_scale_UInt32x3_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt32x3_operator_scale_UInt32x3_UInt16)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5609,6 +9914,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_scale_UInt32x3_Int32_arg0.type = Type::FullType{ Int32Type.name };
     UInt32x3_operator_scale_UInt32x3_Int32.name = "operator*"_c;
     UInt32x3_operator_scale_UInt32x3_Int32.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_scale_UInt32x3_Int32.parameters = UInt32x3_operator_scale_UInt32x3_Int32_args;
     Symbol::Resolved(&UInt32x3_operator_scale_UInt32x3_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&UInt32x3_operator_scale_UInt32x3_Int32)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5617,6 +9923,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_scale_UInt32x3_Int16_arg0.type = Type::FullType{ Int16Type.name };
     UInt32x3_operator_scale_UInt32x3_Int16.name = "operator*"_c;
     UInt32x3_operator_scale_UInt32x3_Int16.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_scale_UInt32x3_Int16.parameters = UInt32x3_operator_scale_UInt32x3_Int16_args;
     Symbol::Resolved(&UInt32x3_operator_scale_UInt32x3_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&UInt32x3_operator_scale_UInt32x3_Int16)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5625,6 +9932,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_or_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
     UInt32x3_operator_or_UInt32x3.name = "operator|"_c;
     UInt32x3_operator_or_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_or_UInt32x3.parameters = UInt32x3_operator_or_UInt32x3_args;
     Symbol::Resolved(&UInt32x3_operator_or_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x3_operator_or_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5633,6 +9941,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_and_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
     UInt32x3_operator_and_UInt32x3.name = "operator&"_c;
     UInt32x3_operator_and_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_and_UInt32x3.parameters = UInt32x3_operator_and_UInt32x3_args;
     Symbol::Resolved(&UInt32x3_operator_and_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x3_operator_and_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5641,6 +9950,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_xor_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
     UInt32x3_operator_xor_UInt32x3.name = "operator^"_c;
     UInt32x3_operator_xor_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_xor_UInt32x3.parameters = UInt32x3_operator_xor_UInt32x3_args;
     Symbol::Resolved(&UInt32x3_operator_xor_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x3_operator_xor_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5649,6 +9959,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_lsh_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
     UInt32x3_operator_lsh_UInt32x3.name = "operator<<"_c;
     UInt32x3_operator_lsh_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_lsh_UInt32x3.parameters = UInt32x3_operator_lsh_UInt32x3_args;
     Symbol::Resolved(&UInt32x3_operator_lsh_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x3_operator_lsh_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5657,6 +9968,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_rsh_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
     UInt32x3_operator_rsh_UInt32x3.name = "operator>>"_c;
     UInt32x3_operator_rsh_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_rsh_UInt32x3.parameters = UInt32x3_operator_rsh_UInt32x3_args;
     Symbol::Resolved(&UInt32x3_operator_rsh_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x3_operator_rsh_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5665,6 +9977,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_orasg_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
     UInt32x3_operator_orasg_UInt32x3.name = "operator|="_c;
     UInt32x3_operator_orasg_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_orasg_UInt32x3.parameters = UInt32x3_operator_orasg_UInt32x3_args;
     Symbol::Resolved(&UInt32x3_operator_orasg_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x3_operator_orasg_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5673,6 +9986,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_andasg_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
     UInt32x3_operator_andasg_UInt32x3.name = "operator&="_c;
     UInt32x3_operator_andasg_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_andasg_UInt32x3.parameters = UInt32x3_operator_andasg_UInt32x3_args;
     Symbol::Resolved(&UInt32x3_operator_andasg_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x3_operator_andasg_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5681,6 +9995,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_xorasg_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
     UInt32x3_operator_xorasg_UInt32x3.name = "operator^="_c;
     UInt32x3_operator_xorasg_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_xorasg_UInt32x3.parameters = UInt32x3_operator_xorasg_UInt32x3_args;
     Symbol::Resolved(&UInt32x3_operator_xorasg_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x3_operator_xorasg_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5689,6 +10004,7 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_lshasg_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
     UInt32x3_operator_lshasg_UInt32x3.name = "operator<<="_c;
     UInt32x3_operator_lshasg_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_lshasg_UInt32x3.parameters = UInt32x3_operator_lshasg_UInt32x3_args;
     Symbol::Resolved(&UInt32x3_operator_lshasg_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x3_operator_lshasg_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
@@ -5697,40 +10013,11 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_rhsasg_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
     UInt32x3_operator_rhsasg_UInt32x3.name = "operator>>="_c;
     UInt32x3_operator_rhsasg_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_operator_rhsasg_UInt32x3.parameters = UInt32x3_operator_rhsasg_UInt32x3_args;
     Symbol::Resolved(&UInt32x3_operator_rhsasg_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x3_operator_rhsasg_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "u32x3"_c, &UInt32x3_convert_Float32x3 },
-        std::pair{ "u32x3(f32x3)"_c, &UInt32x3_convert_Float32x3 },
-        std::pair{ "u32x3"_c, &UInt32x3_splat_Float32 },
-        std::pair{ "u32x3(f32)"_c, &UInt32x3_splat_Float32 },
-        std::pair{ "u32x3"_c, &UInt32x3_convert_UInt32x3 },
-        std::pair{ "u32x3(u32x3)"_c, &UInt32x3_convert_UInt32x3 },
-        std::pair{ "u32x3"_c, &UInt32x3_splat_UInt32 },
-        std::pair{ "u32x3(u32)"_c, &UInt32x3_splat_UInt32 },
-        std::pair{ "u32x3"_c, &UInt32x3_convert_Int32x3 },
-        std::pair{ "u32x3(i32x3)"_c, &UInt32x3_convert_Int32x3 },
-        std::pair{ "u32x3"_c, &UInt32x3_splat_Int32 },
-        std::pair{ "u32x3(i32)"_c, &UInt32x3_splat_Int32 },
-        std::pair{ "u32x3"_c, &UInt32x3_convert_Float16x3 },
-        std::pair{ "u32x3(f16x3)"_c, &UInt32x3_convert_Float16x3 },
-        std::pair{ "u32x3"_c, &UInt32x3_splat_Float16 },
-        std::pair{ "u32x3(f16)"_c, &UInt32x3_splat_Float16 },
-        std::pair{ "u32x3"_c, &UInt32x3_convert_UInt16x3 },
-        std::pair{ "u32x3(u16x3)"_c, &UInt32x3_convert_UInt16x3 },
-        std::pair{ "u32x3"_c, &UInt32x3_splat_UInt16 },
-        std::pair{ "u32x3(u16)"_c, &UInt32x3_splat_UInt16 },
-        std::pair{ "u32x3"_c, &UInt32x3_convert_Int16x3 },
-        std::pair{ "u32x3(i16x3)"_c, &UInt32x3_convert_Int16x3 },
-        std::pair{ "u32x3"_c, &UInt32x3_splat_Int16 },
-        std::pair{ "u32x3(i16)"_c, &UInt32x3_splat_Int16 },
-        std::pair{ "u32x3"_c, &UInt32x3_ctor0_UInt32_UInt32_UInt32},
-        std::pair{ "u32x3(u32,u32,u32)"_c, &UInt32x3_ctor0_UInt32_UInt32_UInt32},
-        std::pair{ "u32x3"_c, &UInt32x3_ctor1_UInt32x2_UInt32},
-        std::pair{ "u32x3(u32x2,u32)"_c, &UInt32x3_ctor1_UInt32x2_UInt32},
-        std::pair{ "u32x3"_c, &UInt32x3_ctor2_UInt32_UInt32x2},
-        std::pair{ "u32x3(u32,u32x2)"_c, &UInt32x3_ctor2_UInt32_UInt32x2},
         std::pair{ "operator[](i32)"_c, &UInt32x3_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &UInt32x3_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &UInt32x3_operator_index_Int16},
@@ -5779,102 +10066,102 @@ Int32x3::Int32x3()
     this->baseType = TypeCode::Int32;
     this->builtin = true;
 
-    // Conversion from Float32x3
-    Int32x3_convert_Float32x3_arg0.name = "_arg0"_c;
+    Int32x3_convert_Float32x3_arg0.name = "val"_c;
     Int32x3_convert_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
+    Int32x3_convert_Float32x3.documentation = "Convert f32x3 to i32x3"_c;
     Int32x3_convert_Float32x3.name = "i32x3"_c;
     Int32x3_convert_Float32x3.returnType = Type::FullType { Int32x3Type.name };
-    Symbol::Resolved(&Int32x3_convert_Float32x3_arg0)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&Int32x3_convert_Float32x3)->returnTypeSymbol = &Int32x3Type;
-
-    // Splat with Float32
-    Int32x3_splat_Float32_arg0.name = "_arg0"_c;
+    Int32x3_convert_Float32x3.parameters = Int32x3_convert_Float32x3_args;
+    Symbol::Resolved(&Int32x3_convert_Float32x3_arg0).typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&Int32x3_convert_Float32x3).returnTypeSymbol = &Int32x3Type;
+    Int32x3_splat_Float32_arg0.name = "val"_c;
     Int32x3_splat_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    Int32x3_splat_Float32.documentation = "Splat f32x3 to i32x3"_c;
     Int32x3_splat_Float32.name = "i32x3"_c;
     Int32x3_splat_Float32.returnType = Type::FullType { Int32x3Type.name };
-    Symbol::Resolved(&Int32x3_splat_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Int32x3_splat_Float32)->returnTypeSymbol = &Int32x3Type;
-
-    // Conversion from UInt32x3
-    Int32x3_convert_UInt32x3_arg0.name = "_arg0"_c;
+    Int32x3_splat_Float32.parameters = Int32x3_splat_Float32_args;
+    Symbol::Resolved(&Int32x3_splat_Float32_arg0).typeSymbol = &Float32Type;
+    Symbol::Resolved(&Int32x3_splat_Float32).returnTypeSymbol = &Int32x3Type;
+    Int32x3_convert_UInt32x3_arg0.name = "val"_c;
     Int32x3_convert_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
+    Int32x3_convert_UInt32x3.documentation = "Convert u32x3 to i32x3"_c;
     Int32x3_convert_UInt32x3.name = "i32x3"_c;
     Int32x3_convert_UInt32x3.returnType = Type::FullType { Int32x3Type.name };
-    Symbol::Resolved(&Int32x3_convert_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&Int32x3_convert_UInt32x3)->returnTypeSymbol = &Int32x3Type;
-
-    // Splat with UInt32
-    Int32x3_splat_UInt32_arg0.name = "_arg0"_c;
+    Int32x3_convert_UInt32x3.parameters = Int32x3_convert_UInt32x3_args;
+    Symbol::Resolved(&Int32x3_convert_UInt32x3_arg0).typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&Int32x3_convert_UInt32x3).returnTypeSymbol = &Int32x3Type;
+    Int32x3_splat_UInt32_arg0.name = "val"_c;
     Int32x3_splat_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    Int32x3_splat_UInt32.documentation = "Splat u32x3 to i32x3"_c;
     Int32x3_splat_UInt32.name = "i32x3"_c;
     Int32x3_splat_UInt32.returnType = Type::FullType { Int32x3Type.name };
-    Symbol::Resolved(&Int32x3_splat_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Int32x3_splat_UInt32)->returnTypeSymbol = &Int32x3Type;
-
-    // Conversion from Int32x3
-    Int32x3_convert_Int32x3_arg0.name = "_arg0"_c;
+    Int32x3_splat_UInt32.parameters = Int32x3_splat_UInt32_args;
+    Symbol::Resolved(&Int32x3_splat_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&Int32x3_splat_UInt32).returnTypeSymbol = &Int32x3Type;
+    Int32x3_convert_Int32x3_arg0.name = "val"_c;
     Int32x3_convert_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
+    Int32x3_convert_Int32x3.documentation = "Convert i32x3 to i32x3"_c;
     Int32x3_convert_Int32x3.name = "i32x3"_c;
     Int32x3_convert_Int32x3.returnType = Type::FullType { Int32x3Type.name };
-    Symbol::Resolved(&Int32x3_convert_Int32x3_arg0)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&Int32x3_convert_Int32x3)->returnTypeSymbol = &Int32x3Type;
-
-    // Splat with Int32
-    Int32x3_splat_Int32_arg0.name = "_arg0"_c;
+    Int32x3_convert_Int32x3.parameters = Int32x3_convert_Int32x3_args;
+    Symbol::Resolved(&Int32x3_convert_Int32x3_arg0).typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&Int32x3_convert_Int32x3).returnTypeSymbol = &Int32x3Type;
+    Int32x3_splat_Int32_arg0.name = "val"_c;
     Int32x3_splat_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    Int32x3_splat_Int32.documentation = "Splat i32x3 to i32x3"_c;
     Int32x3_splat_Int32.name = "i32x3"_c;
     Int32x3_splat_Int32.returnType = Type::FullType { Int32x3Type.name };
-    Symbol::Resolved(&Int32x3_splat_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Int32x3_splat_Int32)->returnTypeSymbol = &Int32x3Type;
-
-    // Conversion from Float16x3
-    Int32x3_convert_Float16x3_arg0.name = "_arg0"_c;
+    Int32x3_splat_Int32.parameters = Int32x3_splat_Int32_args;
+    Symbol::Resolved(&Int32x3_splat_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&Int32x3_splat_Int32).returnTypeSymbol = &Int32x3Type;
+    Int32x3_convert_Float16x3_arg0.name = "val"_c;
     Int32x3_convert_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
+    Int32x3_convert_Float16x3.documentation = "Convert f16x3 to i32x3"_c;
     Int32x3_convert_Float16x3.name = "i32x3"_c;
     Int32x3_convert_Float16x3.returnType = Type::FullType { Int32x3Type.name };
-    Symbol::Resolved(&Int32x3_convert_Float16x3_arg0)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&Int32x3_convert_Float16x3)->returnTypeSymbol = &Int32x3Type;
-
-    // Splat with Float16
-    Int32x3_splat_Float16_arg0.name = "_arg0"_c;
+    Int32x3_convert_Float16x3.parameters = Int32x3_convert_Float16x3_args;
+    Symbol::Resolved(&Int32x3_convert_Float16x3_arg0).typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&Int32x3_convert_Float16x3).returnTypeSymbol = &Int32x3Type;
+    Int32x3_splat_Float16_arg0.name = "val"_c;
     Int32x3_splat_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    Int32x3_splat_Float16.documentation = "Splat f16x3 to i32x3"_c;
     Int32x3_splat_Float16.name = "i32x3"_c;
     Int32x3_splat_Float16.returnType = Type::FullType { Int32x3Type.name };
-    Symbol::Resolved(&Int32x3_splat_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Int32x3_splat_Float16)->returnTypeSymbol = &Int32x3Type;
-
-    // Conversion from UInt16x3
-    Int32x3_convert_UInt16x3_arg0.name = "_arg0"_c;
+    Int32x3_splat_Float16.parameters = Int32x3_splat_Float16_args;
+    Symbol::Resolved(&Int32x3_splat_Float16_arg0).typeSymbol = &Float16Type;
+    Symbol::Resolved(&Int32x3_splat_Float16).returnTypeSymbol = &Int32x3Type;
+    Int32x3_convert_UInt16x3_arg0.name = "val"_c;
     Int32x3_convert_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
+    Int32x3_convert_UInt16x3.documentation = "Convert u16x3 to i32x3"_c;
     Int32x3_convert_UInt16x3.name = "i32x3"_c;
     Int32x3_convert_UInt16x3.returnType = Type::FullType { Int32x3Type.name };
-    Symbol::Resolved(&Int32x3_convert_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&Int32x3_convert_UInt16x3)->returnTypeSymbol = &Int32x3Type;
-
-    // Splat with UInt16
-    Int32x3_splat_UInt16_arg0.name = "_arg0"_c;
+    Int32x3_convert_UInt16x3.parameters = Int32x3_convert_UInt16x3_args;
+    Symbol::Resolved(&Int32x3_convert_UInt16x3_arg0).typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&Int32x3_convert_UInt16x3).returnTypeSymbol = &Int32x3Type;
+    Int32x3_splat_UInt16_arg0.name = "val"_c;
     Int32x3_splat_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    Int32x3_splat_UInt16.documentation = "Splat u16x3 to i32x3"_c;
     Int32x3_splat_UInt16.name = "i32x3"_c;
     Int32x3_splat_UInt16.returnType = Type::FullType { Int32x3Type.name };
-    Symbol::Resolved(&Int32x3_splat_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Int32x3_splat_UInt16)->returnTypeSymbol = &Int32x3Type;
-
-    // Conversion from Int16x3
-    Int32x3_convert_Int16x3_arg0.name = "_arg0"_c;
+    Int32x3_splat_UInt16.parameters = Int32x3_splat_UInt16_args;
+    Symbol::Resolved(&Int32x3_splat_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&Int32x3_splat_UInt16).returnTypeSymbol = &Int32x3Type;
+    Int32x3_convert_Int16x3_arg0.name = "val"_c;
     Int32x3_convert_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
+    Int32x3_convert_Int16x3.documentation = "Convert i16x3 to i32x3"_c;
     Int32x3_convert_Int16x3.name = "i32x3"_c;
     Int32x3_convert_Int16x3.returnType = Type::FullType { Int32x3Type.name };
-    Symbol::Resolved(&Int32x3_convert_Int16x3_arg0)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&Int32x3_convert_Int16x3)->returnTypeSymbol = &Int32x3Type;
-
-    // Splat with Int16
-    Int32x3_splat_Int16_arg0.name = "_arg0"_c;
+    Int32x3_convert_Int16x3.parameters = Int32x3_convert_Int16x3_args;
+    Symbol::Resolved(&Int32x3_convert_Int16x3_arg0).typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&Int32x3_convert_Int16x3).returnTypeSymbol = &Int32x3Type;
+    Int32x3_splat_Int16_arg0.name = "val"_c;
     Int32x3_splat_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    Int32x3_splat_Int16.documentation = "Splat i16x3 to i32x3"_c;
     Int32x3_splat_Int16.name = "i32x3"_c;
     Int32x3_splat_Int16.returnType = Type::FullType { Int32x3Type.name };
-    Symbol::Resolved(&Int32x3_splat_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Int32x3_splat_Int16)->returnTypeSymbol = &Int32x3Type;
-
+    Int32x3_splat_Int16.parameters = Int32x3_splat_Int16_args;
+    Symbol::Resolved(&Int32x3_splat_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&Int32x3_splat_Int16).returnTypeSymbol = &Int32x3Type;
     // Construct with Int32, Int32, Int32
     Int32x3_ctor0_arg0.name = "_arg0"_c;
     Int32x3_ctor0_arg0.type = Type::FullType { Int32Type.name };
@@ -5884,6 +10171,7 @@ Int32x3::Int32x3()
     Int32x3_ctor0_arg2.type = Type::FullType { Int32Type.name };
     Int32x3_ctor0_Int32_Int32_Int32.name = "0"_c;
     Int32x3_ctor0_Int32_Int32_Int32.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_ctor0_Int32_Int32_Int32.parameters = Int32x3_ctor0_Int32_Int32_Int32_args;
     Symbol::Resolved(&Int32x3_ctor0_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32x3_ctor0_arg1)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32x3_ctor0_arg2)->typeSymbol = &Int32Type;
@@ -5896,6 +10184,7 @@ Int32x3::Int32x3()
     Int32x3_ctor1_arg1.type = Type::FullType { Int32Type.name };
     Int32x3_ctor1_Int32x2_Int32.name = "1"_c;
     Int32x3_ctor1_Int32x2_Int32.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_ctor1_Int32x2_Int32.parameters = Int32x3_ctor1_Int32x2_Int32_args;
     Symbol::Resolved(&Int32x3_ctor1_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x3_ctor1_arg1)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32x3_ctor1_Int32x2_Int32)->returnTypeSymbol = &Int32x3Type;
@@ -5907,6 +10196,7 @@ Int32x3::Int32x3()
     Int32x3_ctor2_arg1.type = Type::FullType { Int32x2Type.name };
     Int32x3_ctor2_Int32_Int32x2.name = "2"_c;
     Int32x3_ctor2_Int32_Int32x2.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_ctor2_Int32_Int32x2.parameters = Int32x3_ctor2_Int32_Int32x2_args;
     Symbol::Resolved(&Int32x3_ctor2_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32x3_ctor2_arg1)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x3_ctor2_Int32_Int32x2)->returnTypeSymbol = &Int32x3Type;
@@ -5916,6 +10206,7 @@ Int32x3::Int32x3()
     Int32x3_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32x3_operator_index_Int32.name = "operator[]"_c;
     Int32x3_operator_index_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32x3_operator_index_Int32.parameters = Int32x3_operator_index_Int32_args;
     Symbol::Resolved(&Int32x3_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32x3_operator_index_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -5924,6 +10215,7 @@ Int32x3::Int32x3()
     Int32x3_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Int32x3_operator_index_UInt32.name = "operator[]"_c;
     Int32x3_operator_index_UInt32.returnType = Type::FullType{ Int32Type.name };
+    Int32x3_operator_index_UInt32.parameters = Int32x3_operator_index_UInt32_args;
     Symbol::Resolved(&Int32x3_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Int32x3_operator_index_UInt32)->returnTypeSymbol = &Int32Type;
 
@@ -5932,6 +10224,7 @@ Int32x3::Int32x3()
     Int32x3_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int32x3_operator_index_Int16.name = "operator[]"_c;
     Int32x3_operator_index_Int16.returnType = Type::FullType{ Int32Type.name };
+    Int32x3_operator_index_Int16.parameters = Int32x3_operator_index_Int16_args;
     Symbol::Resolved(&Int32x3_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int32x3_operator_index_Int16)->returnTypeSymbol = &Int32Type;
 
@@ -5940,6 +10233,7 @@ Int32x3::Int32x3()
     Int32x3_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Int32x3_operator_index_UInt16.name = "operator[]"_c;
     Int32x3_operator_index_UInt16.returnType = Type::FullType{ Int32Type.name };
+    Int32x3_operator_index_UInt16.parameters = Int32x3_operator_index_UInt16_args;
     Symbol::Resolved(&Int32x3_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Int32x3_operator_index_UInt16)->returnTypeSymbol = &Int32Type;
 
@@ -5948,6 +10242,7 @@ Int32x3::Int32x3()
     Int32x3_operator_add_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
     Int32x3_operator_add_Int32x3.name = "operator+"_c;
     Int32x3_operator_add_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_add_Int32x3.parameters = Int32x3_operator_add_Int32x3_args;
     Symbol::Resolved(&Int32x3_operator_add_Int32x3_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x3_operator_add_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
@@ -5956,6 +10251,7 @@ Int32x3::Int32x3()
     Int32x3_operator_sub_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
     Int32x3_operator_sub_Int32x3.name = "operator-"_c;
     Int32x3_operator_sub_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_sub_Int32x3.parameters = Int32x3_operator_sub_Int32x3_args;
     Symbol::Resolved(&Int32x3_operator_sub_Int32x3_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x3_operator_sub_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
@@ -5964,6 +10260,7 @@ Int32x3::Int32x3()
     Int32x3_operator_mul_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
     Int32x3_operator_mul_Int32x3.name = "operator*"_c;
     Int32x3_operator_mul_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_mul_Int32x3.parameters = Int32x3_operator_mul_Int32x3_args;
     Symbol::Resolved(&Int32x3_operator_mul_Int32x3_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x3_operator_mul_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
@@ -5972,6 +10269,7 @@ Int32x3::Int32x3()
     Int32x3_operator_div_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
     Int32x3_operator_div_Int32x3.name = "operator/"_c;
     Int32x3_operator_div_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_div_Int32x3.parameters = Int32x3_operator_div_Int32x3_args;
     Symbol::Resolved(&Int32x3_operator_div_Int32x3_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x3_operator_div_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
@@ -5980,6 +10278,7 @@ Int32x3::Int32x3()
     Int32x3_operator_mod_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
     Int32x3_operator_mod_Int32x3.name = "operator%"_c;
     Int32x3_operator_mod_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_mod_Int32x3.parameters = Int32x3_operator_mod_Int32x3_args;
     Symbol::Resolved(&Int32x3_operator_mod_Int32x3_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x3_operator_mod_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
@@ -5988,6 +10287,7 @@ Int32x3::Int32x3()
     Int32x3_operator_addasg_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
     Int32x3_operator_addasg_Int32x3.name = "operator+="_c;
     Int32x3_operator_addasg_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_addasg_Int32x3.parameters = Int32x3_operator_addasg_Int32x3_args;
     Symbol::Resolved(&Int32x3_operator_addasg_Int32x3_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x3_operator_addasg_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
@@ -5996,6 +10296,7 @@ Int32x3::Int32x3()
     Int32x3_operator_subasg_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
     Int32x3_operator_subasg_Int32x3.name = "operator-="_c;
     Int32x3_operator_subasg_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_subasg_Int32x3.parameters = Int32x3_operator_subasg_Int32x3_args;
     Symbol::Resolved(&Int32x3_operator_subasg_Int32x3_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x3_operator_subasg_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
@@ -6004,6 +10305,7 @@ Int32x3::Int32x3()
     Int32x3_operator_mulasg_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
     Int32x3_operator_mulasg_Int32x3.name = "operator*="_c;
     Int32x3_operator_mulasg_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_mulasg_Int32x3.parameters = Int32x3_operator_mulasg_Int32x3_args;
     Symbol::Resolved(&Int32x3_operator_mulasg_Int32x3_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x3_operator_mulasg_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
@@ -6012,6 +10314,7 @@ Int32x3::Int32x3()
     Int32x3_operator_divasg_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
     Int32x3_operator_divasg_Int32x3.name = "operator/="_c;
     Int32x3_operator_divasg_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_divasg_Int32x3.parameters = Int32x3_operator_divasg_Int32x3_args;
     Symbol::Resolved(&Int32x3_operator_divasg_Int32x3_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x3_operator_divasg_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
@@ -6020,6 +10323,7 @@ Int32x3::Int32x3()
     Int32x3_operator_lt_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
     Int32x3_operator_lt_Int32x3.name = "operator<"_c;
     Int32x3_operator_lt_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_lt_Int32x3.parameters = Int32x3_operator_lt_Int32x3_args;
     Symbol::Resolved(&Int32x3_operator_lt_Int32x3_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x3_operator_lt_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
@@ -6028,6 +10332,7 @@ Int32x3::Int32x3()
     Int32x3_operator_lte_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
     Int32x3_operator_lte_Int32x3.name = "operator<="_c;
     Int32x3_operator_lte_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_lte_Int32x3.parameters = Int32x3_operator_lte_Int32x3_args;
     Symbol::Resolved(&Int32x3_operator_lte_Int32x3_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x3_operator_lte_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
@@ -6036,6 +10341,7 @@ Int32x3::Int32x3()
     Int32x3_operator_gt_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
     Int32x3_operator_gt_Int32x3.name = "operator>"_c;
     Int32x3_operator_gt_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_gt_Int32x3.parameters = Int32x3_operator_gt_Int32x3_args;
     Symbol::Resolved(&Int32x3_operator_gt_Int32x3_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x3_operator_gt_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
@@ -6044,6 +10350,7 @@ Int32x3::Int32x3()
     Int32x3_operator_gte_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
     Int32x3_operator_gte_Int32x3.name = "operator>="_c;
     Int32x3_operator_gte_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_gte_Int32x3.parameters = Int32x3_operator_gte_Int32x3_args;
     Symbol::Resolved(&Int32x3_operator_gte_Int32x3_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x3_operator_gte_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
@@ -6052,6 +10359,7 @@ Int32x3::Int32x3()
     Int32x3_operator_eq_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
     Int32x3_operator_eq_Int32x3.name = "operator=="_c;
     Int32x3_operator_eq_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_eq_Int32x3.parameters = Int32x3_operator_eq_Int32x3_args;
     Symbol::Resolved(&Int32x3_operator_eq_Int32x3_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x3_operator_eq_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
@@ -6060,6 +10368,7 @@ Int32x3::Int32x3()
     Int32x3_operator_neq_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
     Int32x3_operator_neq_Int32x3.name = "operator!="_c;
     Int32x3_operator_neq_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_neq_Int32x3.parameters = Int32x3_operator_neq_Int32x3_args;
     Symbol::Resolved(&Int32x3_operator_neq_Int32x3_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x3_operator_neq_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
@@ -6068,6 +10377,7 @@ Int32x3::Int32x3()
     Int32x3_operator_scale_Int32x3_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Int32x3_operator_scale_Int32x3_Float32.name = "operator*"_c;
     Int32x3_operator_scale_Int32x3_Float32.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_scale_Int32x3_Float32.parameters = Int32x3_operator_scale_Int32x3_Float32_args;
     Symbol::Resolved(&Int32x3_operator_scale_Int32x3_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Int32x3_operator_scale_Int32x3_Float32)->returnTypeSymbol = &Int32x3Type;
 
@@ -6076,6 +10386,7 @@ Int32x3::Int32x3()
     Int32x3_operator_scale_Int32x3_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Int32x3_operator_scale_Int32x3_Float16.name = "operator*"_c;
     Int32x3_operator_scale_Int32x3_Float16.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_scale_Int32x3_Float16.parameters = Int32x3_operator_scale_Int32x3_Float16_args;
     Symbol::Resolved(&Int32x3_operator_scale_Int32x3_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Int32x3_operator_scale_Int32x3_Float16)->returnTypeSymbol = &Int32x3Type;
 
@@ -6084,6 +10395,7 @@ Int32x3::Int32x3()
     Int32x3_operator_scale_Int32x3_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Int32x3_operator_scale_Int32x3_UInt32.name = "operator*"_c;
     Int32x3_operator_scale_Int32x3_UInt32.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_scale_Int32x3_UInt32.parameters = Int32x3_operator_scale_Int32x3_UInt32_args;
     Symbol::Resolved(&Int32x3_operator_scale_Int32x3_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Int32x3_operator_scale_Int32x3_UInt32)->returnTypeSymbol = &Int32x3Type;
 
@@ -6092,6 +10404,7 @@ Int32x3::Int32x3()
     Int32x3_operator_scale_Int32x3_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Int32x3_operator_scale_Int32x3_UInt16.name = "operator*"_c;
     Int32x3_operator_scale_Int32x3_UInt16.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_scale_Int32x3_UInt16.parameters = Int32x3_operator_scale_Int32x3_UInt16_args;
     Symbol::Resolved(&Int32x3_operator_scale_Int32x3_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Int32x3_operator_scale_Int32x3_UInt16)->returnTypeSymbol = &Int32x3Type;
 
@@ -6100,6 +10413,7 @@ Int32x3::Int32x3()
     Int32x3_operator_scale_Int32x3_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32x3_operator_scale_Int32x3_Int32.name = "operator*"_c;
     Int32x3_operator_scale_Int32x3_Int32.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_scale_Int32x3_Int32.parameters = Int32x3_operator_scale_Int32x3_Int32_args;
     Symbol::Resolved(&Int32x3_operator_scale_Int32x3_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32x3_operator_scale_Int32x3_Int32)->returnTypeSymbol = &Int32x3Type;
 
@@ -6108,6 +10422,7 @@ Int32x3::Int32x3()
     Int32x3_operator_scale_Int32x3_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int32x3_operator_scale_Int32x3_Int16.name = "operator*"_c;
     Int32x3_operator_scale_Int32x3_Int16.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_scale_Int32x3_Int16.parameters = Int32x3_operator_scale_Int32x3_Int16_args;
     Symbol::Resolved(&Int32x3_operator_scale_Int32x3_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int32x3_operator_scale_Int32x3_Int16)->returnTypeSymbol = &Int32x3Type;
 
@@ -6116,6 +10431,7 @@ Int32x3::Int32x3()
     Int32x3_operator_or_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
     Int32x3_operator_or_Int32x3.name = "operator|"_c;
     Int32x3_operator_or_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_or_Int32x3.parameters = Int32x3_operator_or_Int32x3_args;
     Symbol::Resolved(&Int32x3_operator_or_Int32x3_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x3_operator_or_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
@@ -6124,6 +10440,7 @@ Int32x3::Int32x3()
     Int32x3_operator_and_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
     Int32x3_operator_and_Int32x3.name = "operator&"_c;
     Int32x3_operator_and_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_and_Int32x3.parameters = Int32x3_operator_and_Int32x3_args;
     Symbol::Resolved(&Int32x3_operator_and_Int32x3_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x3_operator_and_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
@@ -6132,6 +10449,7 @@ Int32x3::Int32x3()
     Int32x3_operator_xor_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
     Int32x3_operator_xor_Int32x3.name = "operator^"_c;
     Int32x3_operator_xor_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_xor_Int32x3.parameters = Int32x3_operator_xor_Int32x3_args;
     Symbol::Resolved(&Int32x3_operator_xor_Int32x3_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x3_operator_xor_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
@@ -6140,6 +10458,7 @@ Int32x3::Int32x3()
     Int32x3_operator_lsh_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
     Int32x3_operator_lsh_Int32x3.name = "operator<<"_c;
     Int32x3_operator_lsh_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_lsh_Int32x3.parameters = Int32x3_operator_lsh_Int32x3_args;
     Symbol::Resolved(&Int32x3_operator_lsh_Int32x3_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x3_operator_lsh_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
@@ -6148,6 +10467,7 @@ Int32x3::Int32x3()
     Int32x3_operator_rsh_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
     Int32x3_operator_rsh_Int32x3.name = "operator>>"_c;
     Int32x3_operator_rsh_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_rsh_Int32x3.parameters = Int32x3_operator_rsh_Int32x3_args;
     Symbol::Resolved(&Int32x3_operator_rsh_Int32x3_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x3_operator_rsh_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
@@ -6156,6 +10476,7 @@ Int32x3::Int32x3()
     Int32x3_operator_orasg_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
     Int32x3_operator_orasg_Int32x3.name = "operator|="_c;
     Int32x3_operator_orasg_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_orasg_Int32x3.parameters = Int32x3_operator_orasg_Int32x3_args;
     Symbol::Resolved(&Int32x3_operator_orasg_Int32x3_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x3_operator_orasg_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
@@ -6164,6 +10485,7 @@ Int32x3::Int32x3()
     Int32x3_operator_andasg_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
     Int32x3_operator_andasg_Int32x3.name = "operator&="_c;
     Int32x3_operator_andasg_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_andasg_Int32x3.parameters = Int32x3_operator_andasg_Int32x3_args;
     Symbol::Resolved(&Int32x3_operator_andasg_Int32x3_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x3_operator_andasg_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
@@ -6172,6 +10494,7 @@ Int32x3::Int32x3()
     Int32x3_operator_xorasg_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
     Int32x3_operator_xorasg_Int32x3.name = "operator^="_c;
     Int32x3_operator_xorasg_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_xorasg_Int32x3.parameters = Int32x3_operator_xorasg_Int32x3_args;
     Symbol::Resolved(&Int32x3_operator_xorasg_Int32x3_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x3_operator_xorasg_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
@@ -6180,6 +10503,7 @@ Int32x3::Int32x3()
     Int32x3_operator_lshasg_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
     Int32x3_operator_lshasg_Int32x3.name = "operator<<="_c;
     Int32x3_operator_lshasg_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_lshasg_Int32x3.parameters = Int32x3_operator_lshasg_Int32x3_args;
     Symbol::Resolved(&Int32x3_operator_lshasg_Int32x3_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x3_operator_lshasg_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
@@ -6188,40 +10512,11 @@ Int32x3::Int32x3()
     Int32x3_operator_rhsasg_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
     Int32x3_operator_rhsasg_Int32x3.name = "operator>>="_c;
     Int32x3_operator_rhsasg_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    Int32x3_operator_rhsasg_Int32x3.parameters = Int32x3_operator_rhsasg_Int32x3_args;
     Symbol::Resolved(&Int32x3_operator_rhsasg_Int32x3_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x3_operator_rhsasg_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "i32x3"_c, &Int32x3_convert_Float32x3 },
-        std::pair{ "i32x3(f32x3)"_c, &Int32x3_convert_Float32x3 },
-        std::pair{ "i32x3"_c, &Int32x3_splat_Float32 },
-        std::pair{ "i32x3(f32)"_c, &Int32x3_splat_Float32 },
-        std::pair{ "i32x3"_c, &Int32x3_convert_UInt32x3 },
-        std::pair{ "i32x3(u32x3)"_c, &Int32x3_convert_UInt32x3 },
-        std::pair{ "i32x3"_c, &Int32x3_splat_UInt32 },
-        std::pair{ "i32x3(u32)"_c, &Int32x3_splat_UInt32 },
-        std::pair{ "i32x3"_c, &Int32x3_convert_Int32x3 },
-        std::pair{ "i32x3(i32x3)"_c, &Int32x3_convert_Int32x3 },
-        std::pair{ "i32x3"_c, &Int32x3_splat_Int32 },
-        std::pair{ "i32x3(i32)"_c, &Int32x3_splat_Int32 },
-        std::pair{ "i32x3"_c, &Int32x3_convert_Float16x3 },
-        std::pair{ "i32x3(f16x3)"_c, &Int32x3_convert_Float16x3 },
-        std::pair{ "i32x3"_c, &Int32x3_splat_Float16 },
-        std::pair{ "i32x3(f16)"_c, &Int32x3_splat_Float16 },
-        std::pair{ "i32x3"_c, &Int32x3_convert_UInt16x3 },
-        std::pair{ "i32x3(u16x3)"_c, &Int32x3_convert_UInt16x3 },
-        std::pair{ "i32x3"_c, &Int32x3_splat_UInt16 },
-        std::pair{ "i32x3(u16)"_c, &Int32x3_splat_UInt16 },
-        std::pair{ "i32x3"_c, &Int32x3_convert_Int16x3 },
-        std::pair{ "i32x3(i16x3)"_c, &Int32x3_convert_Int16x3 },
-        std::pair{ "i32x3"_c, &Int32x3_splat_Int16 },
-        std::pair{ "i32x3(i16)"_c, &Int32x3_splat_Int16 },
-        std::pair{ "i32x3"_c, &Int32x3_ctor0_Int32_Int32_Int32},
-        std::pair{ "i32x3(i32,i32,i32)"_c, &Int32x3_ctor0_Int32_Int32_Int32},
-        std::pair{ "i32x3"_c, &Int32x3_ctor1_Int32x2_Int32},
-        std::pair{ "i32x3(i32x2,i32)"_c, &Int32x3_ctor1_Int32x2_Int32},
-        std::pair{ "i32x3"_c, &Int32x3_ctor2_Int32_Int32x2},
-        std::pair{ "i32x3(i32,i32x2)"_c, &Int32x3_ctor2_Int32_Int32x2},
         std::pair{ "operator[](i32)"_c, &Int32x3_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &Int32x3_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &Int32x3_operator_index_Int16},
@@ -6270,70 +10565,70 @@ Bool8x3::Bool8x3()
     this->baseType = TypeCode::Bool8;
     this->builtin = true;
 
-    // Conversion from UInt32x3
-    Bool8x3_convert_UInt32x3_arg0.name = "_arg0"_c;
+    Bool8x3_convert_UInt32x3_arg0.name = "val"_c;
     Bool8x3_convert_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
+    Bool8x3_convert_UInt32x3.documentation = "Convert u32x3 to b8x3"_c;
     Bool8x3_convert_UInt32x3.name = "b8x3"_c;
     Bool8x3_convert_UInt32x3.returnType = Type::FullType { Bool8x3Type.name };
-    Symbol::Resolved(&Bool8x3_convert_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&Bool8x3_convert_UInt32x3)->returnTypeSymbol = &Bool8x3Type;
-
-    // Splat with UInt32
-    Bool8x3_splat_UInt32_arg0.name = "_arg0"_c;
+    Bool8x3_convert_UInt32x3.parameters = Bool8x3_convert_UInt32x3_args;
+    Symbol::Resolved(&Bool8x3_convert_UInt32x3_arg0).typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&Bool8x3_convert_UInt32x3).returnTypeSymbol = &Bool8x3Type;
+    Bool8x3_splat_UInt32_arg0.name = "val"_c;
     Bool8x3_splat_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    Bool8x3_splat_UInt32.documentation = "Splat u32x3 to b8x3"_c;
     Bool8x3_splat_UInt32.name = "b8x3"_c;
     Bool8x3_splat_UInt32.returnType = Type::FullType { Bool8x3Type.name };
-    Symbol::Resolved(&Bool8x3_splat_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Bool8x3_splat_UInt32)->returnTypeSymbol = &Bool8x3Type;
-
-    // Conversion from Int32x3
-    Bool8x3_convert_Int32x3_arg0.name = "_arg0"_c;
+    Bool8x3_splat_UInt32.parameters = Bool8x3_splat_UInt32_args;
+    Symbol::Resolved(&Bool8x3_splat_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&Bool8x3_splat_UInt32).returnTypeSymbol = &Bool8x3Type;
+    Bool8x3_convert_Int32x3_arg0.name = "val"_c;
     Bool8x3_convert_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
+    Bool8x3_convert_Int32x3.documentation = "Convert i32x3 to b8x3"_c;
     Bool8x3_convert_Int32x3.name = "b8x3"_c;
     Bool8x3_convert_Int32x3.returnType = Type::FullType { Bool8x3Type.name };
-    Symbol::Resolved(&Bool8x3_convert_Int32x3_arg0)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&Bool8x3_convert_Int32x3)->returnTypeSymbol = &Bool8x3Type;
-
-    // Splat with Int32
-    Bool8x3_splat_Int32_arg0.name = "_arg0"_c;
+    Bool8x3_convert_Int32x3.parameters = Bool8x3_convert_Int32x3_args;
+    Symbol::Resolved(&Bool8x3_convert_Int32x3_arg0).typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&Bool8x3_convert_Int32x3).returnTypeSymbol = &Bool8x3Type;
+    Bool8x3_splat_Int32_arg0.name = "val"_c;
     Bool8x3_splat_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    Bool8x3_splat_Int32.documentation = "Splat i32x3 to b8x3"_c;
     Bool8x3_splat_Int32.name = "b8x3"_c;
     Bool8x3_splat_Int32.returnType = Type::FullType { Bool8x3Type.name };
-    Symbol::Resolved(&Bool8x3_splat_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Bool8x3_splat_Int32)->returnTypeSymbol = &Bool8x3Type;
-
-    // Conversion from UInt16x3
-    Bool8x3_convert_UInt16x3_arg0.name = "_arg0"_c;
+    Bool8x3_splat_Int32.parameters = Bool8x3_splat_Int32_args;
+    Symbol::Resolved(&Bool8x3_splat_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&Bool8x3_splat_Int32).returnTypeSymbol = &Bool8x3Type;
+    Bool8x3_convert_UInt16x3_arg0.name = "val"_c;
     Bool8x3_convert_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
+    Bool8x3_convert_UInt16x3.documentation = "Convert u16x3 to b8x3"_c;
     Bool8x3_convert_UInt16x3.name = "b8x3"_c;
     Bool8x3_convert_UInt16x3.returnType = Type::FullType { Bool8x3Type.name };
-    Symbol::Resolved(&Bool8x3_convert_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&Bool8x3_convert_UInt16x3)->returnTypeSymbol = &Bool8x3Type;
-
-    // Splat with UInt16
-    Bool8x3_splat_UInt16_arg0.name = "_arg0"_c;
+    Bool8x3_convert_UInt16x3.parameters = Bool8x3_convert_UInt16x3_args;
+    Symbol::Resolved(&Bool8x3_convert_UInt16x3_arg0).typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&Bool8x3_convert_UInt16x3).returnTypeSymbol = &Bool8x3Type;
+    Bool8x3_splat_UInt16_arg0.name = "val"_c;
     Bool8x3_splat_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    Bool8x3_splat_UInt16.documentation = "Splat u16x3 to b8x3"_c;
     Bool8x3_splat_UInt16.name = "b8x3"_c;
     Bool8x3_splat_UInt16.returnType = Type::FullType { Bool8x3Type.name };
-    Symbol::Resolved(&Bool8x3_splat_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Bool8x3_splat_UInt16)->returnTypeSymbol = &Bool8x3Type;
-
-    // Conversion from Int16x3
-    Bool8x3_convert_Int16x3_arg0.name = "_arg0"_c;
+    Bool8x3_splat_UInt16.parameters = Bool8x3_splat_UInt16_args;
+    Symbol::Resolved(&Bool8x3_splat_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&Bool8x3_splat_UInt16).returnTypeSymbol = &Bool8x3Type;
+    Bool8x3_convert_Int16x3_arg0.name = "val"_c;
     Bool8x3_convert_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
+    Bool8x3_convert_Int16x3.documentation = "Convert i16x3 to b8x3"_c;
     Bool8x3_convert_Int16x3.name = "b8x3"_c;
     Bool8x3_convert_Int16x3.returnType = Type::FullType { Bool8x3Type.name };
-    Symbol::Resolved(&Bool8x3_convert_Int16x3_arg0)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&Bool8x3_convert_Int16x3)->returnTypeSymbol = &Bool8x3Type;
-
-    // Splat with Int16
-    Bool8x3_splat_Int16_arg0.name = "_arg0"_c;
+    Bool8x3_convert_Int16x3.parameters = Bool8x3_convert_Int16x3_args;
+    Symbol::Resolved(&Bool8x3_convert_Int16x3_arg0).typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&Bool8x3_convert_Int16x3).returnTypeSymbol = &Bool8x3Type;
+    Bool8x3_splat_Int16_arg0.name = "val"_c;
     Bool8x3_splat_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    Bool8x3_splat_Int16.documentation = "Splat i16x3 to b8x3"_c;
     Bool8x3_splat_Int16.name = "b8x3"_c;
     Bool8x3_splat_Int16.returnType = Type::FullType { Bool8x3Type.name };
-    Symbol::Resolved(&Bool8x3_splat_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Bool8x3_splat_Int16)->returnTypeSymbol = &Bool8x3Type;
-
+    Bool8x3_splat_Int16.parameters = Bool8x3_splat_Int16_args;
+    Symbol::Resolved(&Bool8x3_splat_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&Bool8x3_splat_Int16).returnTypeSymbol = &Bool8x3Type;
     // Construct with Bool8, Bool8, Bool8
     Bool8x3_ctor0_arg0.name = "_arg0"_c;
     Bool8x3_ctor0_arg0.type = Type::FullType { Bool8Type.name };
@@ -6343,6 +10638,7 @@ Bool8x3::Bool8x3()
     Bool8x3_ctor0_arg2.type = Type::FullType { Bool8Type.name };
     Bool8x3_ctor0_Bool8_Bool8_Bool8.name = "0"_c;
     Bool8x3_ctor0_Bool8_Bool8_Bool8.returnType = Type::FullType{ Bool8x3Type.name };
+    Bool8x3_ctor0_Bool8_Bool8_Bool8.parameters = Bool8x3_ctor0_Bool8_Bool8_Bool8_args;
     Symbol::Resolved(&Bool8x3_ctor0_arg0)->typeSymbol = &Bool8Type;
     Symbol::Resolved(&Bool8x3_ctor0_arg1)->typeSymbol = &Bool8Type;
     Symbol::Resolved(&Bool8x3_ctor0_arg2)->typeSymbol = &Bool8Type;
@@ -6355,6 +10651,7 @@ Bool8x3::Bool8x3()
     Bool8x3_ctor1_arg1.type = Type::FullType { Bool8Type.name };
     Bool8x3_ctor1_Bool8x2_Bool8.name = "1"_c;
     Bool8x3_ctor1_Bool8x2_Bool8.returnType = Type::FullType{ Bool8x3Type.name };
+    Bool8x3_ctor1_Bool8x2_Bool8.parameters = Bool8x3_ctor1_Bool8x2_Bool8_args;
     Symbol::Resolved(&Bool8x3_ctor1_arg0)->typeSymbol = &Bool8x2Type;
     Symbol::Resolved(&Bool8x3_ctor1_arg1)->typeSymbol = &Bool8Type;
     Symbol::Resolved(&Bool8x3_ctor1_Bool8x2_Bool8)->returnTypeSymbol = &Bool8x3Type;
@@ -6366,6 +10663,7 @@ Bool8x3::Bool8x3()
     Bool8x3_ctor2_arg1.type = Type::FullType { Bool8x2Type.name };
     Bool8x3_ctor2_Bool8_Bool8x2.name = "2"_c;
     Bool8x3_ctor2_Bool8_Bool8x2.returnType = Type::FullType{ Bool8x3Type.name };
+    Bool8x3_ctor2_Bool8_Bool8x2.parameters = Bool8x3_ctor2_Bool8_Bool8x2_args;
     Symbol::Resolved(&Bool8x3_ctor2_arg0)->typeSymbol = &Bool8Type;
     Symbol::Resolved(&Bool8x3_ctor2_arg1)->typeSymbol = &Bool8x2Type;
     Symbol::Resolved(&Bool8x3_ctor2_Bool8_Bool8x2)->returnTypeSymbol = &Bool8x3Type;
@@ -6375,6 +10673,7 @@ Bool8x3::Bool8x3()
     Bool8x3_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Bool8x3_operator_index_Int32.name = "operator[]"_c;
     Bool8x3_operator_index_Int32.returnType = Type::FullType{ Bool8Type.name };
+    Bool8x3_operator_index_Int32.parameters = Bool8x3_operator_index_Int32_args;
     Symbol::Resolved(&Bool8x3_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Bool8x3_operator_index_Int32)->returnTypeSymbol = &Bool8Type;
 
@@ -6383,6 +10682,7 @@ Bool8x3::Bool8x3()
     Bool8x3_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Bool8x3_operator_index_UInt32.name = "operator[]"_c;
     Bool8x3_operator_index_UInt32.returnType = Type::FullType{ Bool8Type.name };
+    Bool8x3_operator_index_UInt32.parameters = Bool8x3_operator_index_UInt32_args;
     Symbol::Resolved(&Bool8x3_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Bool8x3_operator_index_UInt32)->returnTypeSymbol = &Bool8Type;
 
@@ -6391,6 +10691,7 @@ Bool8x3::Bool8x3()
     Bool8x3_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Bool8x3_operator_index_Int16.name = "operator[]"_c;
     Bool8x3_operator_index_Int16.returnType = Type::FullType{ Bool8Type.name };
+    Bool8x3_operator_index_Int16.parameters = Bool8x3_operator_index_Int16_args;
     Symbol::Resolved(&Bool8x3_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Bool8x3_operator_index_Int16)->returnTypeSymbol = &Bool8Type;
 
@@ -6399,6 +10700,7 @@ Bool8x3::Bool8x3()
     Bool8x3_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Bool8x3_operator_index_UInt16.name = "operator[]"_c;
     Bool8x3_operator_index_UInt16.returnType = Type::FullType{ Bool8Type.name };
+    Bool8x3_operator_index_UInt16.parameters = Bool8x3_operator_index_UInt16_args;
     Symbol::Resolved(&Bool8x3_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Bool8x3_operator_index_UInt16)->returnTypeSymbol = &Bool8Type;
 
@@ -6407,6 +10709,7 @@ Bool8x3::Bool8x3()
     Bool8x3_operator_oror_Bool8x3_arg0.type = Type::FullType{ Bool8x3Type.name };
     Bool8x3_operator_oror_Bool8x3.name = "operator||"_c;
     Bool8x3_operator_oror_Bool8x3.returnType = Type::FullType{ Bool8x3Type.name };
+    Bool8x3_operator_oror_Bool8x3.parameters = Bool8x3_operator_oror_Bool8x3_args;
     Symbol::Resolved(&Bool8x3_operator_oror_Bool8x3_arg0)->typeSymbol = &Bool8x3Type;
     Symbol::Resolved(&Bool8x3_operator_oror_Bool8x3)->returnTypeSymbol = &Bool8x3Type;
 
@@ -6415,6 +10718,7 @@ Bool8x3::Bool8x3()
     Bool8x3_operator_andand_Bool8x3_arg0.type = Type::FullType{ Bool8x3Type.name };
     Bool8x3_operator_andand_Bool8x3.name = "operator&&"_c;
     Bool8x3_operator_andand_Bool8x3.returnType = Type::FullType{ Bool8x3Type.name };
+    Bool8x3_operator_andand_Bool8x3.parameters = Bool8x3_operator_andand_Bool8x3_args;
     Symbol::Resolved(&Bool8x3_operator_andand_Bool8x3_arg0)->typeSymbol = &Bool8x3Type;
     Symbol::Resolved(&Bool8x3_operator_andand_Bool8x3)->returnTypeSymbol = &Bool8x3Type;
 
@@ -6423,6 +10727,7 @@ Bool8x3::Bool8x3()
     Bool8x3_operator_eq_Bool8x3_arg0.type = Type::FullType{ Bool8x3Type.name };
     Bool8x3_operator_eq_Bool8x3.name = "operator=="_c;
     Bool8x3_operator_eq_Bool8x3.returnType = Type::FullType{ Bool8x3Type.name };
+    Bool8x3_operator_eq_Bool8x3.parameters = Bool8x3_operator_eq_Bool8x3_args;
     Symbol::Resolved(&Bool8x3_operator_eq_Bool8x3_arg0)->typeSymbol = &Bool8x3Type;
     Symbol::Resolved(&Bool8x3_operator_eq_Bool8x3)->returnTypeSymbol = &Bool8x3Type;
 
@@ -6431,32 +10736,11 @@ Bool8x3::Bool8x3()
     Bool8x3_operator_neq_Bool8x3_arg0.type = Type::FullType{ Bool8x3Type.name };
     Bool8x3_operator_neq_Bool8x3.name = "operator!="_c;
     Bool8x3_operator_neq_Bool8x3.returnType = Type::FullType{ Bool8x3Type.name };
+    Bool8x3_operator_neq_Bool8x3.parameters = Bool8x3_operator_neq_Bool8x3_args;
     Symbol::Resolved(&Bool8x3_operator_neq_Bool8x3_arg0)->typeSymbol = &Bool8x3Type;
     Symbol::Resolved(&Bool8x3_operator_neq_Bool8x3)->returnTypeSymbol = &Bool8x3Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "b8x3"_c, &Bool8x3_convert_UInt32x3 },
-        std::pair{ "b8x3(u32x3)"_c, &Bool8x3_convert_UInt32x3 },
-        std::pair{ "b8x3"_c, &Bool8x3_splat_UInt32 },
-        std::pair{ "b8x3(u32)"_c, &Bool8x3_splat_UInt32 },
-        std::pair{ "b8x3"_c, &Bool8x3_convert_Int32x3 },
-        std::pair{ "b8x3(i32x3)"_c, &Bool8x3_convert_Int32x3 },
-        std::pair{ "b8x3"_c, &Bool8x3_splat_Int32 },
-        std::pair{ "b8x3(i32)"_c, &Bool8x3_splat_Int32 },
-        std::pair{ "b8x3"_c, &Bool8x3_convert_UInt16x3 },
-        std::pair{ "b8x3(u16x3)"_c, &Bool8x3_convert_UInt16x3 },
-        std::pair{ "b8x3"_c, &Bool8x3_splat_UInt16 },
-        std::pair{ "b8x3(u16)"_c, &Bool8x3_splat_UInt16 },
-        std::pair{ "b8x3"_c, &Bool8x3_convert_Int16x3 },
-        std::pair{ "b8x3(i16x3)"_c, &Bool8x3_convert_Int16x3 },
-        std::pair{ "b8x3"_c, &Bool8x3_splat_Int16 },
-        std::pair{ "b8x3(i16)"_c, &Bool8x3_splat_Int16 },
-        std::pair{ "b8x3"_c, &Bool8x3_ctor0_Bool8_Bool8_Bool8},
-        std::pair{ "b8x3(b8,b8,b8)"_c, &Bool8x3_ctor0_Bool8_Bool8_Bool8},
-        std::pair{ "b8x3"_c, &Bool8x3_ctor1_Bool8x2_Bool8},
-        std::pair{ "b8x3(b8x2,b8)"_c, &Bool8x3_ctor1_Bool8x2_Bool8},
-        std::pair{ "b8x3"_c, &Bool8x3_ctor2_Bool8_Bool8x2},
-        std::pair{ "b8x3(b8,b8x2)"_c, &Bool8x3_ctor2_Bool8_Bool8x2},
         std::pair{ "operator[](i32)"_c, &Bool8x3_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &Bool8x3_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &Bool8x3_operator_index_Int16},
@@ -6478,102 +10762,102 @@ Float16x3::Float16x3()
     this->baseType = TypeCode::Float16;
     this->builtin = true;
 
-    // Conversion from Float32x3
-    Float16x3_convert_Float32x3_arg0.name = "_arg0"_c;
+    Float16x3_convert_Float32x3_arg0.name = "val"_c;
     Float16x3_convert_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
+    Float16x3_convert_Float32x3.documentation = "Convert f32x3 to f16x3"_c;
     Float16x3_convert_Float32x3.name = "f16x3"_c;
     Float16x3_convert_Float32x3.returnType = Type::FullType { Float16x3Type.name };
-    Symbol::Resolved(&Float16x3_convert_Float32x3_arg0)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&Float16x3_convert_Float32x3)->returnTypeSymbol = &Float16x3Type;
-
-    // Splat with Float32
-    Float16x3_splat_Float32_arg0.name = "_arg0"_c;
+    Float16x3_convert_Float32x3.parameters = Float16x3_convert_Float32x3_args;
+    Symbol::Resolved(&Float16x3_convert_Float32x3_arg0).typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&Float16x3_convert_Float32x3).returnTypeSymbol = &Float16x3Type;
+    Float16x3_splat_Float32_arg0.name = "val"_c;
     Float16x3_splat_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    Float16x3_splat_Float32.documentation = "Splat f32x3 to f16x3"_c;
     Float16x3_splat_Float32.name = "f16x3"_c;
     Float16x3_splat_Float32.returnType = Type::FullType { Float16x3Type.name };
-    Symbol::Resolved(&Float16x3_splat_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Float16x3_splat_Float32)->returnTypeSymbol = &Float16x3Type;
-
-    // Conversion from UInt32x3
-    Float16x3_convert_UInt32x3_arg0.name = "_arg0"_c;
+    Float16x3_splat_Float32.parameters = Float16x3_splat_Float32_args;
+    Symbol::Resolved(&Float16x3_splat_Float32_arg0).typeSymbol = &Float32Type;
+    Symbol::Resolved(&Float16x3_splat_Float32).returnTypeSymbol = &Float16x3Type;
+    Float16x3_convert_UInt32x3_arg0.name = "val"_c;
     Float16x3_convert_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
+    Float16x3_convert_UInt32x3.documentation = "Convert u32x3 to f16x3"_c;
     Float16x3_convert_UInt32x3.name = "f16x3"_c;
     Float16x3_convert_UInt32x3.returnType = Type::FullType { Float16x3Type.name };
-    Symbol::Resolved(&Float16x3_convert_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&Float16x3_convert_UInt32x3)->returnTypeSymbol = &Float16x3Type;
-
-    // Splat with UInt32
-    Float16x3_splat_UInt32_arg0.name = "_arg0"_c;
+    Float16x3_convert_UInt32x3.parameters = Float16x3_convert_UInt32x3_args;
+    Symbol::Resolved(&Float16x3_convert_UInt32x3_arg0).typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&Float16x3_convert_UInt32x3).returnTypeSymbol = &Float16x3Type;
+    Float16x3_splat_UInt32_arg0.name = "val"_c;
     Float16x3_splat_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    Float16x3_splat_UInt32.documentation = "Splat u32x3 to f16x3"_c;
     Float16x3_splat_UInt32.name = "f16x3"_c;
     Float16x3_splat_UInt32.returnType = Type::FullType { Float16x3Type.name };
-    Symbol::Resolved(&Float16x3_splat_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float16x3_splat_UInt32)->returnTypeSymbol = &Float16x3Type;
-
-    // Conversion from Int32x3
-    Float16x3_convert_Int32x3_arg0.name = "_arg0"_c;
+    Float16x3_splat_UInt32.parameters = Float16x3_splat_UInt32_args;
+    Symbol::Resolved(&Float16x3_splat_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&Float16x3_splat_UInt32).returnTypeSymbol = &Float16x3Type;
+    Float16x3_convert_Int32x3_arg0.name = "val"_c;
     Float16x3_convert_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
+    Float16x3_convert_Int32x3.documentation = "Convert i32x3 to f16x3"_c;
     Float16x3_convert_Int32x3.name = "f16x3"_c;
     Float16x3_convert_Int32x3.returnType = Type::FullType { Float16x3Type.name };
-    Symbol::Resolved(&Float16x3_convert_Int32x3_arg0)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&Float16x3_convert_Int32x3)->returnTypeSymbol = &Float16x3Type;
-
-    // Splat with Int32
-    Float16x3_splat_Int32_arg0.name = "_arg0"_c;
+    Float16x3_convert_Int32x3.parameters = Float16x3_convert_Int32x3_args;
+    Symbol::Resolved(&Float16x3_convert_Int32x3_arg0).typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&Float16x3_convert_Int32x3).returnTypeSymbol = &Float16x3Type;
+    Float16x3_splat_Int32_arg0.name = "val"_c;
     Float16x3_splat_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    Float16x3_splat_Int32.documentation = "Splat i32x3 to f16x3"_c;
     Float16x3_splat_Int32.name = "f16x3"_c;
     Float16x3_splat_Int32.returnType = Type::FullType { Float16x3Type.name };
-    Symbol::Resolved(&Float16x3_splat_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float16x3_splat_Int32)->returnTypeSymbol = &Float16x3Type;
-
-    // Conversion from Float16x3
-    Float16x3_convert_Float16x3_arg0.name = "_arg0"_c;
+    Float16x3_splat_Int32.parameters = Float16x3_splat_Int32_args;
+    Symbol::Resolved(&Float16x3_splat_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&Float16x3_splat_Int32).returnTypeSymbol = &Float16x3Type;
+    Float16x3_convert_Float16x3_arg0.name = "val"_c;
     Float16x3_convert_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
+    Float16x3_convert_Float16x3.documentation = "Convert f16x3 to f16x3"_c;
     Float16x3_convert_Float16x3.name = "f16x3"_c;
     Float16x3_convert_Float16x3.returnType = Type::FullType { Float16x3Type.name };
-    Symbol::Resolved(&Float16x3_convert_Float16x3_arg0)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&Float16x3_convert_Float16x3)->returnTypeSymbol = &Float16x3Type;
-
-    // Splat with Float16
-    Float16x3_splat_Float16_arg0.name = "_arg0"_c;
+    Float16x3_convert_Float16x3.parameters = Float16x3_convert_Float16x3_args;
+    Symbol::Resolved(&Float16x3_convert_Float16x3_arg0).typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&Float16x3_convert_Float16x3).returnTypeSymbol = &Float16x3Type;
+    Float16x3_splat_Float16_arg0.name = "val"_c;
     Float16x3_splat_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    Float16x3_splat_Float16.documentation = "Splat f16x3 to f16x3"_c;
     Float16x3_splat_Float16.name = "f16x3"_c;
     Float16x3_splat_Float16.returnType = Type::FullType { Float16x3Type.name };
-    Symbol::Resolved(&Float16x3_splat_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Float16x3_splat_Float16)->returnTypeSymbol = &Float16x3Type;
-
-    // Conversion from UInt16x3
-    Float16x3_convert_UInt16x3_arg0.name = "_arg0"_c;
+    Float16x3_splat_Float16.parameters = Float16x3_splat_Float16_args;
+    Symbol::Resolved(&Float16x3_splat_Float16_arg0).typeSymbol = &Float16Type;
+    Symbol::Resolved(&Float16x3_splat_Float16).returnTypeSymbol = &Float16x3Type;
+    Float16x3_convert_UInt16x3_arg0.name = "val"_c;
     Float16x3_convert_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
+    Float16x3_convert_UInt16x3.documentation = "Convert u16x3 to f16x3"_c;
     Float16x3_convert_UInt16x3.name = "f16x3"_c;
     Float16x3_convert_UInt16x3.returnType = Type::FullType { Float16x3Type.name };
-    Symbol::Resolved(&Float16x3_convert_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&Float16x3_convert_UInt16x3)->returnTypeSymbol = &Float16x3Type;
-
-    // Splat with UInt16
-    Float16x3_splat_UInt16_arg0.name = "_arg0"_c;
+    Float16x3_convert_UInt16x3.parameters = Float16x3_convert_UInt16x3_args;
+    Symbol::Resolved(&Float16x3_convert_UInt16x3_arg0).typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&Float16x3_convert_UInt16x3).returnTypeSymbol = &Float16x3Type;
+    Float16x3_splat_UInt16_arg0.name = "val"_c;
     Float16x3_splat_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    Float16x3_splat_UInt16.documentation = "Splat u16x3 to f16x3"_c;
     Float16x3_splat_UInt16.name = "f16x3"_c;
     Float16x3_splat_UInt16.returnType = Type::FullType { Float16x3Type.name };
-    Symbol::Resolved(&Float16x3_splat_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float16x3_splat_UInt16)->returnTypeSymbol = &Float16x3Type;
-
-    // Conversion from Int16x3
-    Float16x3_convert_Int16x3_arg0.name = "_arg0"_c;
+    Float16x3_splat_UInt16.parameters = Float16x3_splat_UInt16_args;
+    Symbol::Resolved(&Float16x3_splat_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&Float16x3_splat_UInt16).returnTypeSymbol = &Float16x3Type;
+    Float16x3_convert_Int16x3_arg0.name = "val"_c;
     Float16x3_convert_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
+    Float16x3_convert_Int16x3.documentation = "Convert i16x3 to f16x3"_c;
     Float16x3_convert_Int16x3.name = "f16x3"_c;
     Float16x3_convert_Int16x3.returnType = Type::FullType { Float16x3Type.name };
-    Symbol::Resolved(&Float16x3_convert_Int16x3_arg0)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&Float16x3_convert_Int16x3)->returnTypeSymbol = &Float16x3Type;
-
-    // Splat with Int16
-    Float16x3_splat_Int16_arg0.name = "_arg0"_c;
+    Float16x3_convert_Int16x3.parameters = Float16x3_convert_Int16x3_args;
+    Symbol::Resolved(&Float16x3_convert_Int16x3_arg0).typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&Float16x3_convert_Int16x3).returnTypeSymbol = &Float16x3Type;
+    Float16x3_splat_Int16_arg0.name = "val"_c;
     Float16x3_splat_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    Float16x3_splat_Int16.documentation = "Splat i16x3 to f16x3"_c;
     Float16x3_splat_Int16.name = "f16x3"_c;
     Float16x3_splat_Int16.returnType = Type::FullType { Float16x3Type.name };
-    Symbol::Resolved(&Float16x3_splat_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float16x3_splat_Int16)->returnTypeSymbol = &Float16x3Type;
-
+    Float16x3_splat_Int16.parameters = Float16x3_splat_Int16_args;
+    Symbol::Resolved(&Float16x3_splat_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&Float16x3_splat_Int16).returnTypeSymbol = &Float16x3Type;
     // Construct with Float16, Float16, Float16
     Float16x3_ctor0_arg0.name = "_arg0"_c;
     Float16x3_ctor0_arg0.type = Type::FullType { Float16Type.name };
@@ -6583,6 +10867,7 @@ Float16x3::Float16x3()
     Float16x3_ctor0_arg2.type = Type::FullType { Float16Type.name };
     Float16x3_ctor0_Float16_Float16_Float16.name = "0"_c;
     Float16x3_ctor0_Float16_Float16_Float16.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x3_ctor0_Float16_Float16_Float16.parameters = Float16x3_ctor0_Float16_Float16_Float16_args;
     Symbol::Resolved(&Float16x3_ctor0_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x3_ctor0_arg1)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x3_ctor0_arg2)->typeSymbol = &Float16Type;
@@ -6595,6 +10880,7 @@ Float16x3::Float16x3()
     Float16x3_ctor1_arg1.type = Type::FullType { Float16Type.name };
     Float16x3_ctor1_Float16x2_Float16.name = "1"_c;
     Float16x3_ctor1_Float16x2_Float16.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x3_ctor1_Float16x2_Float16.parameters = Float16x3_ctor1_Float16x2_Float16_args;
     Symbol::Resolved(&Float16x3_ctor1_arg0)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&Float16x3_ctor1_arg1)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x3_ctor1_Float16x2_Float16)->returnTypeSymbol = &Float16x3Type;
@@ -6606,6 +10892,7 @@ Float16x3::Float16x3()
     Float16x3_ctor2_arg1.type = Type::FullType { Float16x2Type.name };
     Float16x3_ctor2_Float16_Float16x2.name = "2"_c;
     Float16x3_ctor2_Float16_Float16x2.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x3_ctor2_Float16_Float16x2.parameters = Float16x3_ctor2_Float16_Float16x2_args;
     Symbol::Resolved(&Float16x3_ctor2_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x3_ctor2_arg1)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&Float16x3_ctor2_Float16_Float16x2)->returnTypeSymbol = &Float16x3Type;
@@ -6615,6 +10902,7 @@ Float16x3::Float16x3()
     Float16x3_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Float16x3_operator_index_Int32.name = "operator[]"_c;
     Float16x3_operator_index_Int32.returnType = Type::FullType{ Float16Type.name };
+    Float16x3_operator_index_Int32.parameters = Float16x3_operator_index_Int32_args;
     Symbol::Resolved(&Float16x3_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Float16x3_operator_index_Int32)->returnTypeSymbol = &Float16Type;
 
@@ -6623,6 +10911,7 @@ Float16x3::Float16x3()
     Float16x3_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Float16x3_operator_index_UInt32.name = "operator[]"_c;
     Float16x3_operator_index_UInt32.returnType = Type::FullType{ Float16Type.name };
+    Float16x3_operator_index_UInt32.parameters = Float16x3_operator_index_UInt32_args;
     Symbol::Resolved(&Float16x3_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Float16x3_operator_index_UInt32)->returnTypeSymbol = &Float16Type;
 
@@ -6631,6 +10920,7 @@ Float16x3::Float16x3()
     Float16x3_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Float16x3_operator_index_Int16.name = "operator[]"_c;
     Float16x3_operator_index_Int16.returnType = Type::FullType{ Float16Type.name };
+    Float16x3_operator_index_Int16.parameters = Float16x3_operator_index_Int16_args;
     Symbol::Resolved(&Float16x3_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Float16x3_operator_index_Int16)->returnTypeSymbol = &Float16Type;
 
@@ -6639,6 +10929,7 @@ Float16x3::Float16x3()
     Float16x3_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Float16x3_operator_index_UInt16.name = "operator[]"_c;
     Float16x3_operator_index_UInt16.returnType = Type::FullType{ Float16Type.name };
+    Float16x3_operator_index_UInt16.parameters = Float16x3_operator_index_UInt16_args;
     Symbol::Resolved(&Float16x3_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float16x3_operator_index_UInt16)->returnTypeSymbol = &Float16Type;
 
@@ -6647,6 +10938,7 @@ Float16x3::Float16x3()
     Float16x3_operator_add_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
     Float16x3_operator_add_Float16x3.name = "operator+"_c;
     Float16x3_operator_add_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x3_operator_add_Float16x3.parameters = Float16x3_operator_add_Float16x3_args;
     Symbol::Resolved(&Float16x3_operator_add_Float16x3_arg0)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&Float16x3_operator_add_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
@@ -6655,6 +10947,7 @@ Float16x3::Float16x3()
     Float16x3_operator_sub_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
     Float16x3_operator_sub_Float16x3.name = "operator-"_c;
     Float16x3_operator_sub_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x3_operator_sub_Float16x3.parameters = Float16x3_operator_sub_Float16x3_args;
     Symbol::Resolved(&Float16x3_operator_sub_Float16x3_arg0)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&Float16x3_operator_sub_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
@@ -6663,6 +10956,7 @@ Float16x3::Float16x3()
     Float16x3_operator_mul_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
     Float16x3_operator_mul_Float16x3.name = "operator*"_c;
     Float16x3_operator_mul_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x3_operator_mul_Float16x3.parameters = Float16x3_operator_mul_Float16x3_args;
     Symbol::Resolved(&Float16x3_operator_mul_Float16x3_arg0)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&Float16x3_operator_mul_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
@@ -6671,6 +10965,7 @@ Float16x3::Float16x3()
     Float16x3_operator_div_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
     Float16x3_operator_div_Float16x3.name = "operator/"_c;
     Float16x3_operator_div_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x3_operator_div_Float16x3.parameters = Float16x3_operator_div_Float16x3_args;
     Symbol::Resolved(&Float16x3_operator_div_Float16x3_arg0)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&Float16x3_operator_div_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
@@ -6679,6 +10974,7 @@ Float16x3::Float16x3()
     Float16x3_operator_mod_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
     Float16x3_operator_mod_Float16x3.name = "operator%"_c;
     Float16x3_operator_mod_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x3_operator_mod_Float16x3.parameters = Float16x3_operator_mod_Float16x3_args;
     Symbol::Resolved(&Float16x3_operator_mod_Float16x3_arg0)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&Float16x3_operator_mod_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
@@ -6687,6 +10983,7 @@ Float16x3::Float16x3()
     Float16x3_operator_addasg_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
     Float16x3_operator_addasg_Float16x3.name = "operator+="_c;
     Float16x3_operator_addasg_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x3_operator_addasg_Float16x3.parameters = Float16x3_operator_addasg_Float16x3_args;
     Symbol::Resolved(&Float16x3_operator_addasg_Float16x3_arg0)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&Float16x3_operator_addasg_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
@@ -6695,6 +10992,7 @@ Float16x3::Float16x3()
     Float16x3_operator_subasg_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
     Float16x3_operator_subasg_Float16x3.name = "operator-="_c;
     Float16x3_operator_subasg_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x3_operator_subasg_Float16x3.parameters = Float16x3_operator_subasg_Float16x3_args;
     Symbol::Resolved(&Float16x3_operator_subasg_Float16x3_arg0)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&Float16x3_operator_subasg_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
@@ -6703,6 +11001,7 @@ Float16x3::Float16x3()
     Float16x3_operator_mulasg_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
     Float16x3_operator_mulasg_Float16x3.name = "operator*="_c;
     Float16x3_operator_mulasg_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x3_operator_mulasg_Float16x3.parameters = Float16x3_operator_mulasg_Float16x3_args;
     Symbol::Resolved(&Float16x3_operator_mulasg_Float16x3_arg0)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&Float16x3_operator_mulasg_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
@@ -6711,6 +11010,7 @@ Float16x3::Float16x3()
     Float16x3_operator_divasg_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
     Float16x3_operator_divasg_Float16x3.name = "operator/="_c;
     Float16x3_operator_divasg_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x3_operator_divasg_Float16x3.parameters = Float16x3_operator_divasg_Float16x3_args;
     Symbol::Resolved(&Float16x3_operator_divasg_Float16x3_arg0)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&Float16x3_operator_divasg_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
@@ -6719,6 +11019,7 @@ Float16x3::Float16x3()
     Float16x3_operator_lt_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
     Float16x3_operator_lt_Float16x3.name = "operator<"_c;
     Float16x3_operator_lt_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x3_operator_lt_Float16x3.parameters = Float16x3_operator_lt_Float16x3_args;
     Symbol::Resolved(&Float16x3_operator_lt_Float16x3_arg0)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&Float16x3_operator_lt_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
@@ -6727,6 +11028,7 @@ Float16x3::Float16x3()
     Float16x3_operator_lte_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
     Float16x3_operator_lte_Float16x3.name = "operator<="_c;
     Float16x3_operator_lte_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x3_operator_lte_Float16x3.parameters = Float16x3_operator_lte_Float16x3_args;
     Symbol::Resolved(&Float16x3_operator_lte_Float16x3_arg0)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&Float16x3_operator_lte_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
@@ -6735,6 +11037,7 @@ Float16x3::Float16x3()
     Float16x3_operator_gt_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
     Float16x3_operator_gt_Float16x3.name = "operator>"_c;
     Float16x3_operator_gt_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x3_operator_gt_Float16x3.parameters = Float16x3_operator_gt_Float16x3_args;
     Symbol::Resolved(&Float16x3_operator_gt_Float16x3_arg0)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&Float16x3_operator_gt_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
@@ -6743,6 +11046,7 @@ Float16x3::Float16x3()
     Float16x3_operator_gte_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
     Float16x3_operator_gte_Float16x3.name = "operator>="_c;
     Float16x3_operator_gte_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x3_operator_gte_Float16x3.parameters = Float16x3_operator_gte_Float16x3_args;
     Symbol::Resolved(&Float16x3_operator_gte_Float16x3_arg0)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&Float16x3_operator_gte_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
@@ -6751,6 +11055,7 @@ Float16x3::Float16x3()
     Float16x3_operator_eq_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
     Float16x3_operator_eq_Float16x3.name = "operator=="_c;
     Float16x3_operator_eq_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x3_operator_eq_Float16x3.parameters = Float16x3_operator_eq_Float16x3_args;
     Symbol::Resolved(&Float16x3_operator_eq_Float16x3_arg0)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&Float16x3_operator_eq_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
@@ -6759,6 +11064,7 @@ Float16x3::Float16x3()
     Float16x3_operator_neq_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
     Float16x3_operator_neq_Float16x3.name = "operator!="_c;
     Float16x3_operator_neq_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x3_operator_neq_Float16x3.parameters = Float16x3_operator_neq_Float16x3_args;
     Symbol::Resolved(&Float16x3_operator_neq_Float16x3_arg0)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&Float16x3_operator_neq_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
@@ -6767,6 +11073,7 @@ Float16x3::Float16x3()
     Float16x3_operator_scale_Float16x3_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Float16x3_operator_scale_Float16x3_Float32.name = "operator*"_c;
     Float16x3_operator_scale_Float16x3_Float32.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x3_operator_scale_Float16x3_Float32.parameters = Float16x3_operator_scale_Float16x3_Float32_args;
     Symbol::Resolved(&Float16x3_operator_scale_Float16x3_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float16x3_operator_scale_Float16x3_Float32)->returnTypeSymbol = &Float16x3Type;
 
@@ -6775,6 +11082,7 @@ Float16x3::Float16x3()
     Float16x3_operator_scale_Float16x3_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Float16x3_operator_scale_Float16x3_Float16.name = "operator*"_c;
     Float16x3_operator_scale_Float16x3_Float16.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x3_operator_scale_Float16x3_Float16.parameters = Float16x3_operator_scale_Float16x3_Float16_args;
     Symbol::Resolved(&Float16x3_operator_scale_Float16x3_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x3_operator_scale_Float16x3_Float16)->returnTypeSymbol = &Float16x3Type;
 
@@ -6783,6 +11091,7 @@ Float16x3::Float16x3()
     Float16x3_operator_scale_Float16x3_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Float16x3_operator_scale_Float16x3_UInt32.name = "operator*"_c;
     Float16x3_operator_scale_Float16x3_UInt32.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x3_operator_scale_Float16x3_UInt32.parameters = Float16x3_operator_scale_Float16x3_UInt32_args;
     Symbol::Resolved(&Float16x3_operator_scale_Float16x3_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Float16x3_operator_scale_Float16x3_UInt32)->returnTypeSymbol = &Float16x3Type;
 
@@ -6791,6 +11100,7 @@ Float16x3::Float16x3()
     Float16x3_operator_scale_Float16x3_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Float16x3_operator_scale_Float16x3_UInt16.name = "operator*"_c;
     Float16x3_operator_scale_Float16x3_UInt16.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x3_operator_scale_Float16x3_UInt16.parameters = Float16x3_operator_scale_Float16x3_UInt16_args;
     Symbol::Resolved(&Float16x3_operator_scale_Float16x3_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float16x3_operator_scale_Float16x3_UInt16)->returnTypeSymbol = &Float16x3Type;
 
@@ -6799,6 +11109,7 @@ Float16x3::Float16x3()
     Float16x3_operator_scale_Float16x3_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Float16x3_operator_scale_Float16x3_Int32.name = "operator*"_c;
     Float16x3_operator_scale_Float16x3_Int32.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x3_operator_scale_Float16x3_Int32.parameters = Float16x3_operator_scale_Float16x3_Int32_args;
     Symbol::Resolved(&Float16x3_operator_scale_Float16x3_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Float16x3_operator_scale_Float16x3_Int32)->returnTypeSymbol = &Float16x3Type;
 
@@ -6807,6 +11118,7 @@ Float16x3::Float16x3()
     Float16x3_operator_scale_Float16x3_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Float16x3_operator_scale_Float16x3_Int16.name = "operator*"_c;
     Float16x3_operator_scale_Float16x3_Int16.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x3_operator_scale_Float16x3_Int16.parameters = Float16x3_operator_scale_Float16x3_Int16_args;
     Symbol::Resolved(&Float16x3_operator_scale_Float16x3_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Float16x3_operator_scale_Float16x3_Int16)->returnTypeSymbol = &Float16x3Type;
 
@@ -6815,6 +11127,7 @@ Float16x3::Float16x3()
     Float16x3_operator_mul_Float32x3x2_arg0.type = Type::FullType{ Float32x3x2Type.name };
     Float16x3_operator_mul_Float32x3x2.name = "operator*"_c;
     Float16x3_operator_mul_Float32x3x2.returnType = Type::FullType{ Float16x2Type.name };
+    Float16x3_operator_mul_Float32x3x2.parameters = Float16x3_operator_mul_Float32x3x2_args;
     Symbol::Resolved(&Float16x3_operator_mul_Float32x3x2_arg0)->typeSymbol = &Float32x3x2Type;
     Symbol::Resolved(&Float16x3_operator_mul_Float32x3x2)->returnTypeSymbol = &Float16x2Type;
 
@@ -6823,6 +11136,7 @@ Float16x3::Float16x3()
     Float16x3_operator_mul_Float32x3x3_arg0.type = Type::FullType{ Float32x3x3Type.name };
     Float16x3_operator_mul_Float32x3x3.name = "operator*"_c;
     Float16x3_operator_mul_Float32x3x3.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x3_operator_mul_Float32x3x3.parameters = Float16x3_operator_mul_Float32x3x3_args;
     Symbol::Resolved(&Float16x3_operator_mul_Float32x3x3_arg0)->typeSymbol = &Float32x3x3Type;
     Symbol::Resolved(&Float16x3_operator_mul_Float32x3x3)->returnTypeSymbol = &Float16x3Type;
 
@@ -6831,40 +11145,11 @@ Float16x3::Float16x3()
     Float16x3_operator_mul_Float32x3x4_arg0.type = Type::FullType{ Float32x3x4Type.name };
     Float16x3_operator_mul_Float32x3x4.name = "operator*"_c;
     Float16x3_operator_mul_Float32x3x4.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x3_operator_mul_Float32x3x4.parameters = Float16x3_operator_mul_Float32x3x4_args;
     Symbol::Resolved(&Float16x3_operator_mul_Float32x3x4_arg0)->typeSymbol = &Float32x3x4Type;
     Symbol::Resolved(&Float16x3_operator_mul_Float32x3x4)->returnTypeSymbol = &Float16x4Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "f16x3"_c, &Float16x3_convert_Float32x3 },
-        std::pair{ "f16x3(f32x3)"_c, &Float16x3_convert_Float32x3 },
-        std::pair{ "f16x3"_c, &Float16x3_splat_Float32 },
-        std::pair{ "f16x3(f32)"_c, &Float16x3_splat_Float32 },
-        std::pair{ "f16x3"_c, &Float16x3_convert_UInt32x3 },
-        std::pair{ "f16x3(u32x3)"_c, &Float16x3_convert_UInt32x3 },
-        std::pair{ "f16x3"_c, &Float16x3_splat_UInt32 },
-        std::pair{ "f16x3(u32)"_c, &Float16x3_splat_UInt32 },
-        std::pair{ "f16x3"_c, &Float16x3_convert_Int32x3 },
-        std::pair{ "f16x3(i32x3)"_c, &Float16x3_convert_Int32x3 },
-        std::pair{ "f16x3"_c, &Float16x3_splat_Int32 },
-        std::pair{ "f16x3(i32)"_c, &Float16x3_splat_Int32 },
-        std::pair{ "f16x3"_c, &Float16x3_convert_Float16x3 },
-        std::pair{ "f16x3(f16x3)"_c, &Float16x3_convert_Float16x3 },
-        std::pair{ "f16x3"_c, &Float16x3_splat_Float16 },
-        std::pair{ "f16x3(f16)"_c, &Float16x3_splat_Float16 },
-        std::pair{ "f16x3"_c, &Float16x3_convert_UInt16x3 },
-        std::pair{ "f16x3(u16x3)"_c, &Float16x3_convert_UInt16x3 },
-        std::pair{ "f16x3"_c, &Float16x3_splat_UInt16 },
-        std::pair{ "f16x3(u16)"_c, &Float16x3_splat_UInt16 },
-        std::pair{ "f16x3"_c, &Float16x3_convert_Int16x3 },
-        std::pair{ "f16x3(i16x3)"_c, &Float16x3_convert_Int16x3 },
-        std::pair{ "f16x3"_c, &Float16x3_splat_Int16 },
-        std::pair{ "f16x3(i16)"_c, &Float16x3_splat_Int16 },
-        std::pair{ "f16x3"_c, &Float16x3_ctor0_Float16_Float16_Float16},
-        std::pair{ "f16x3(f16,f16,f16)"_c, &Float16x3_ctor0_Float16_Float16_Float16},
-        std::pair{ "f16x3"_c, &Float16x3_ctor1_Float16x2_Float16},
-        std::pair{ "f16x3(f16x2,f16)"_c, &Float16x3_ctor1_Float16x2_Float16},
-        std::pair{ "f16x3"_c, &Float16x3_ctor2_Float16_Float16x2},
-        std::pair{ "f16x3(f16,f16x2)"_c, &Float16x3_ctor2_Float16_Float16x2},
         std::pair{ "operator[](i32)"_c, &Float16x3_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &Float16x3_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &Float16x3_operator_index_Int16},
@@ -6906,102 +11191,102 @@ UInt16x3::UInt16x3()
     this->baseType = TypeCode::UInt16;
     this->builtin = true;
 
-    // Conversion from Float32x3
-    UInt16x3_convert_Float32x3_arg0.name = "_arg0"_c;
+    UInt16x3_convert_Float32x3_arg0.name = "val"_c;
     UInt16x3_convert_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
+    UInt16x3_convert_Float32x3.documentation = "Convert f32x3 to u16x3"_c;
     UInt16x3_convert_Float32x3.name = "u16x3"_c;
     UInt16x3_convert_Float32x3.returnType = Type::FullType { UInt16x3Type.name };
-    Symbol::Resolved(&UInt16x3_convert_Float32x3_arg0)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&UInt16x3_convert_Float32x3)->returnTypeSymbol = &UInt16x3Type;
-
-    // Splat with Float32
-    UInt16x3_splat_Float32_arg0.name = "_arg0"_c;
+    UInt16x3_convert_Float32x3.parameters = UInt16x3_convert_Float32x3_args;
+    Symbol::Resolved(&UInt16x3_convert_Float32x3_arg0).typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&UInt16x3_convert_Float32x3).returnTypeSymbol = &UInt16x3Type;
+    UInt16x3_splat_Float32_arg0.name = "val"_c;
     UInt16x3_splat_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    UInt16x3_splat_Float32.documentation = "Splat f32x3 to u16x3"_c;
     UInt16x3_splat_Float32.name = "u16x3"_c;
     UInt16x3_splat_Float32.returnType = Type::FullType { UInt16x3Type.name };
-    Symbol::Resolved(&UInt16x3_splat_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&UInt16x3_splat_Float32)->returnTypeSymbol = &UInt16x3Type;
-
-    // Conversion from UInt32x3
-    UInt16x3_convert_UInt32x3_arg0.name = "_arg0"_c;
+    UInt16x3_splat_Float32.parameters = UInt16x3_splat_Float32_args;
+    Symbol::Resolved(&UInt16x3_splat_Float32_arg0).typeSymbol = &Float32Type;
+    Symbol::Resolved(&UInt16x3_splat_Float32).returnTypeSymbol = &UInt16x3Type;
+    UInt16x3_convert_UInt32x3_arg0.name = "val"_c;
     UInt16x3_convert_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
+    UInt16x3_convert_UInt32x3.documentation = "Convert u32x3 to u16x3"_c;
     UInt16x3_convert_UInt32x3.name = "u16x3"_c;
     UInt16x3_convert_UInt32x3.returnType = Type::FullType { UInt16x3Type.name };
-    Symbol::Resolved(&UInt16x3_convert_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&UInt16x3_convert_UInt32x3)->returnTypeSymbol = &UInt16x3Type;
-
-    // Splat with UInt32
-    UInt16x3_splat_UInt32_arg0.name = "_arg0"_c;
+    UInt16x3_convert_UInt32x3.parameters = UInt16x3_convert_UInt32x3_args;
+    Symbol::Resolved(&UInt16x3_convert_UInt32x3_arg0).typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&UInt16x3_convert_UInt32x3).returnTypeSymbol = &UInt16x3Type;
+    UInt16x3_splat_UInt32_arg0.name = "val"_c;
     UInt16x3_splat_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    UInt16x3_splat_UInt32.documentation = "Splat u32x3 to u16x3"_c;
     UInt16x3_splat_UInt32.name = "u16x3"_c;
     UInt16x3_splat_UInt32.returnType = Type::FullType { UInt16x3Type.name };
-    Symbol::Resolved(&UInt16x3_splat_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&UInt16x3_splat_UInt32)->returnTypeSymbol = &UInt16x3Type;
-
-    // Conversion from Int32x3
-    UInt16x3_convert_Int32x3_arg0.name = "_arg0"_c;
+    UInt16x3_splat_UInt32.parameters = UInt16x3_splat_UInt32_args;
+    Symbol::Resolved(&UInt16x3_splat_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&UInt16x3_splat_UInt32).returnTypeSymbol = &UInt16x3Type;
+    UInt16x3_convert_Int32x3_arg0.name = "val"_c;
     UInt16x3_convert_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
+    UInt16x3_convert_Int32x3.documentation = "Convert i32x3 to u16x3"_c;
     UInt16x3_convert_Int32x3.name = "u16x3"_c;
     UInt16x3_convert_Int32x3.returnType = Type::FullType { UInt16x3Type.name };
-    Symbol::Resolved(&UInt16x3_convert_Int32x3_arg0)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&UInt16x3_convert_Int32x3)->returnTypeSymbol = &UInt16x3Type;
-
-    // Splat with Int32
-    UInt16x3_splat_Int32_arg0.name = "_arg0"_c;
+    UInt16x3_convert_Int32x3.parameters = UInt16x3_convert_Int32x3_args;
+    Symbol::Resolved(&UInt16x3_convert_Int32x3_arg0).typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&UInt16x3_convert_Int32x3).returnTypeSymbol = &UInt16x3Type;
+    UInt16x3_splat_Int32_arg0.name = "val"_c;
     UInt16x3_splat_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    UInt16x3_splat_Int32.documentation = "Splat i32x3 to u16x3"_c;
     UInt16x3_splat_Int32.name = "u16x3"_c;
     UInt16x3_splat_Int32.returnType = Type::FullType { UInt16x3Type.name };
-    Symbol::Resolved(&UInt16x3_splat_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&UInt16x3_splat_Int32)->returnTypeSymbol = &UInt16x3Type;
-
-    // Conversion from Float16x3
-    UInt16x3_convert_Float16x3_arg0.name = "_arg0"_c;
+    UInt16x3_splat_Int32.parameters = UInt16x3_splat_Int32_args;
+    Symbol::Resolved(&UInt16x3_splat_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&UInt16x3_splat_Int32).returnTypeSymbol = &UInt16x3Type;
+    UInt16x3_convert_Float16x3_arg0.name = "val"_c;
     UInt16x3_convert_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
+    UInt16x3_convert_Float16x3.documentation = "Convert f16x3 to u16x3"_c;
     UInt16x3_convert_Float16x3.name = "u16x3"_c;
     UInt16x3_convert_Float16x3.returnType = Type::FullType { UInt16x3Type.name };
-    Symbol::Resolved(&UInt16x3_convert_Float16x3_arg0)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&UInt16x3_convert_Float16x3)->returnTypeSymbol = &UInt16x3Type;
-
-    // Splat with Float16
-    UInt16x3_splat_Float16_arg0.name = "_arg0"_c;
+    UInt16x3_convert_Float16x3.parameters = UInt16x3_convert_Float16x3_args;
+    Symbol::Resolved(&UInt16x3_convert_Float16x3_arg0).typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&UInt16x3_convert_Float16x3).returnTypeSymbol = &UInt16x3Type;
+    UInt16x3_splat_Float16_arg0.name = "val"_c;
     UInt16x3_splat_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    UInt16x3_splat_Float16.documentation = "Splat f16x3 to u16x3"_c;
     UInt16x3_splat_Float16.name = "u16x3"_c;
     UInt16x3_splat_Float16.returnType = Type::FullType { UInt16x3Type.name };
-    Symbol::Resolved(&UInt16x3_splat_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&UInt16x3_splat_Float16)->returnTypeSymbol = &UInt16x3Type;
-
-    // Conversion from UInt16x3
-    UInt16x3_convert_UInt16x3_arg0.name = "_arg0"_c;
+    UInt16x3_splat_Float16.parameters = UInt16x3_splat_Float16_args;
+    Symbol::Resolved(&UInt16x3_splat_Float16_arg0).typeSymbol = &Float16Type;
+    Symbol::Resolved(&UInt16x3_splat_Float16).returnTypeSymbol = &UInt16x3Type;
+    UInt16x3_convert_UInt16x3_arg0.name = "val"_c;
     UInt16x3_convert_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_convert_UInt16x3.documentation = "Convert u16x3 to u16x3"_c;
     UInt16x3_convert_UInt16x3.name = "u16x3"_c;
     UInt16x3_convert_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
-    Symbol::Resolved(&UInt16x3_convert_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&UInt16x3_convert_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
-
-    // Splat with UInt16
-    UInt16x3_splat_UInt16_arg0.name = "_arg0"_c;
+    UInt16x3_convert_UInt16x3.parameters = UInt16x3_convert_UInt16x3_args;
+    Symbol::Resolved(&UInt16x3_convert_UInt16x3_arg0).typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&UInt16x3_convert_UInt16x3).returnTypeSymbol = &UInt16x3Type;
+    UInt16x3_splat_UInt16_arg0.name = "val"_c;
     UInt16x3_splat_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    UInt16x3_splat_UInt16.documentation = "Splat u16x3 to u16x3"_c;
     UInt16x3_splat_UInt16.name = "u16x3"_c;
     UInt16x3_splat_UInt16.returnType = Type::FullType { UInt16x3Type.name };
-    Symbol::Resolved(&UInt16x3_splat_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&UInt16x3_splat_UInt16)->returnTypeSymbol = &UInt16x3Type;
-
-    // Conversion from Int16x3
-    UInt16x3_convert_Int16x3_arg0.name = "_arg0"_c;
+    UInt16x3_splat_UInt16.parameters = UInt16x3_splat_UInt16_args;
+    Symbol::Resolved(&UInt16x3_splat_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&UInt16x3_splat_UInt16).returnTypeSymbol = &UInt16x3Type;
+    UInt16x3_convert_Int16x3_arg0.name = "val"_c;
     UInt16x3_convert_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
+    UInt16x3_convert_Int16x3.documentation = "Convert i16x3 to u16x3"_c;
     UInt16x3_convert_Int16x3.name = "u16x3"_c;
     UInt16x3_convert_Int16x3.returnType = Type::FullType { UInt16x3Type.name };
-    Symbol::Resolved(&UInt16x3_convert_Int16x3_arg0)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&UInt16x3_convert_Int16x3)->returnTypeSymbol = &UInt16x3Type;
-
-    // Splat with Int16
-    UInt16x3_splat_Int16_arg0.name = "_arg0"_c;
+    UInt16x3_convert_Int16x3.parameters = UInt16x3_convert_Int16x3_args;
+    Symbol::Resolved(&UInt16x3_convert_Int16x3_arg0).typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&UInt16x3_convert_Int16x3).returnTypeSymbol = &UInt16x3Type;
+    UInt16x3_splat_Int16_arg0.name = "val"_c;
     UInt16x3_splat_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    UInt16x3_splat_Int16.documentation = "Splat i16x3 to u16x3"_c;
     UInt16x3_splat_Int16.name = "u16x3"_c;
     UInt16x3_splat_Int16.returnType = Type::FullType { UInt16x3Type.name };
-    Symbol::Resolved(&UInt16x3_splat_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&UInt16x3_splat_Int16)->returnTypeSymbol = &UInt16x3Type;
-
+    UInt16x3_splat_Int16.parameters = UInt16x3_splat_Int16_args;
+    Symbol::Resolved(&UInt16x3_splat_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&UInt16x3_splat_Int16).returnTypeSymbol = &UInt16x3Type;
     // Construct with UInt16, UInt16, UInt16
     UInt16x3_ctor0_arg0.name = "_arg0"_c;
     UInt16x3_ctor0_arg0.type = Type::FullType { UInt16Type.name };
@@ -7011,6 +11296,7 @@ UInt16x3::UInt16x3()
     UInt16x3_ctor0_arg2.type = Type::FullType { UInt16Type.name };
     UInt16x3_ctor0_UInt16_UInt16_UInt16.name = "0"_c;
     UInt16x3_ctor0_UInt16_UInt16_UInt16.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_ctor0_UInt16_UInt16_UInt16.parameters = UInt16x3_ctor0_UInt16_UInt16_UInt16_args;
     Symbol::Resolved(&UInt16x3_ctor0_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16x3_ctor0_arg1)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16x3_ctor0_arg2)->typeSymbol = &UInt16Type;
@@ -7023,6 +11309,7 @@ UInt16x3::UInt16x3()
     UInt16x3_ctor1_arg1.type = Type::FullType { UInt16Type.name };
     UInt16x3_ctor1_UInt16x2_UInt16.name = "1"_c;
     UInt16x3_ctor1_UInt16x2_UInt16.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_ctor1_UInt16x2_UInt16.parameters = UInt16x3_ctor1_UInt16x2_UInt16_args;
     Symbol::Resolved(&UInt16x3_ctor1_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x3_ctor1_arg1)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16x3_ctor1_UInt16x2_UInt16)->returnTypeSymbol = &UInt16x3Type;
@@ -7034,6 +11321,7 @@ UInt16x3::UInt16x3()
     UInt16x3_ctor2_arg1.type = Type::FullType { UInt16x2Type.name };
     UInt16x3_ctor2_UInt16_UInt16x2.name = "2"_c;
     UInt16x3_ctor2_UInt16_UInt16x2.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_ctor2_UInt16_UInt16x2.parameters = UInt16x3_ctor2_UInt16_UInt16x2_args;
     Symbol::Resolved(&UInt16x3_ctor2_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16x3_ctor2_arg1)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x3_ctor2_UInt16_UInt16x2)->returnTypeSymbol = &UInt16x3Type;
@@ -7043,6 +11331,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     UInt16x3_operator_index_Int32.name = "operator[]"_c;
     UInt16x3_operator_index_Int32.returnType = Type::FullType{ UInt16Type.name };
+    UInt16x3_operator_index_Int32.parameters = UInt16x3_operator_index_Int32_args;
     Symbol::Resolved(&UInt16x3_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&UInt16x3_operator_index_Int32)->returnTypeSymbol = &UInt16Type;
 
@@ -7051,6 +11340,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt16x3_operator_index_UInt32.name = "operator[]"_c;
     UInt16x3_operator_index_UInt32.returnType = Type::FullType{ UInt16Type.name };
+    UInt16x3_operator_index_UInt32.parameters = UInt16x3_operator_index_UInt32_args;
     Symbol::Resolved(&UInt16x3_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt16x3_operator_index_UInt32)->returnTypeSymbol = &UInt16Type;
 
@@ -7059,6 +11349,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     UInt16x3_operator_index_Int16.name = "operator[]"_c;
     UInt16x3_operator_index_Int16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16x3_operator_index_Int16.parameters = UInt16x3_operator_index_Int16_args;
     Symbol::Resolved(&UInt16x3_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&UInt16x3_operator_index_Int16)->returnTypeSymbol = &UInt16Type;
 
@@ -7067,6 +11358,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16x3_operator_index_UInt16.name = "operator[]"_c;
     UInt16x3_operator_index_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16x3_operator_index_UInt16.parameters = UInt16x3_operator_index_UInt16_args;
     Symbol::Resolved(&UInt16x3_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16x3_operator_index_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -7075,6 +11367,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_add_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
     UInt16x3_operator_add_UInt16x3.name = "operator+"_c;
     UInt16x3_operator_add_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_add_UInt16x3.parameters = UInt16x3_operator_add_UInt16x3_args;
     Symbol::Resolved(&UInt16x3_operator_add_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x3_operator_add_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7083,6 +11376,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_sub_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
     UInt16x3_operator_sub_UInt16x3.name = "operator-"_c;
     UInt16x3_operator_sub_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_sub_UInt16x3.parameters = UInt16x3_operator_sub_UInt16x3_args;
     Symbol::Resolved(&UInt16x3_operator_sub_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x3_operator_sub_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7091,6 +11385,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_mul_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
     UInt16x3_operator_mul_UInt16x3.name = "operator*"_c;
     UInt16x3_operator_mul_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_mul_UInt16x3.parameters = UInt16x3_operator_mul_UInt16x3_args;
     Symbol::Resolved(&UInt16x3_operator_mul_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x3_operator_mul_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7099,6 +11394,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_div_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
     UInt16x3_operator_div_UInt16x3.name = "operator/"_c;
     UInt16x3_operator_div_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_div_UInt16x3.parameters = UInt16x3_operator_div_UInt16x3_args;
     Symbol::Resolved(&UInt16x3_operator_div_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x3_operator_div_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7107,6 +11403,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_mod_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
     UInt16x3_operator_mod_UInt16x3.name = "operator%"_c;
     UInt16x3_operator_mod_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_mod_UInt16x3.parameters = UInt16x3_operator_mod_UInt16x3_args;
     Symbol::Resolved(&UInt16x3_operator_mod_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x3_operator_mod_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7115,6 +11412,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_addasg_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
     UInt16x3_operator_addasg_UInt16x3.name = "operator+="_c;
     UInt16x3_operator_addasg_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_addasg_UInt16x3.parameters = UInt16x3_operator_addasg_UInt16x3_args;
     Symbol::Resolved(&UInt16x3_operator_addasg_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x3_operator_addasg_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7123,6 +11421,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_subasg_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
     UInt16x3_operator_subasg_UInt16x3.name = "operator-="_c;
     UInt16x3_operator_subasg_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_subasg_UInt16x3.parameters = UInt16x3_operator_subasg_UInt16x3_args;
     Symbol::Resolved(&UInt16x3_operator_subasg_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x3_operator_subasg_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7131,6 +11430,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_mulasg_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
     UInt16x3_operator_mulasg_UInt16x3.name = "operator*="_c;
     UInt16x3_operator_mulasg_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_mulasg_UInt16x3.parameters = UInt16x3_operator_mulasg_UInt16x3_args;
     Symbol::Resolved(&UInt16x3_operator_mulasg_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x3_operator_mulasg_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7139,6 +11439,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_divasg_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
     UInt16x3_operator_divasg_UInt16x3.name = "operator/="_c;
     UInt16x3_operator_divasg_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_divasg_UInt16x3.parameters = UInt16x3_operator_divasg_UInt16x3_args;
     Symbol::Resolved(&UInt16x3_operator_divasg_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x3_operator_divasg_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7147,6 +11448,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_lt_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
     UInt16x3_operator_lt_UInt16x3.name = "operator<"_c;
     UInt16x3_operator_lt_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_lt_UInt16x3.parameters = UInt16x3_operator_lt_UInt16x3_args;
     Symbol::Resolved(&UInt16x3_operator_lt_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x3_operator_lt_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7155,6 +11457,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_lte_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
     UInt16x3_operator_lte_UInt16x3.name = "operator<="_c;
     UInt16x3_operator_lte_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_lte_UInt16x3.parameters = UInt16x3_operator_lte_UInt16x3_args;
     Symbol::Resolved(&UInt16x3_operator_lte_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x3_operator_lte_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7163,6 +11466,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_gt_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
     UInt16x3_operator_gt_UInt16x3.name = "operator>"_c;
     UInt16x3_operator_gt_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_gt_UInt16x3.parameters = UInt16x3_operator_gt_UInt16x3_args;
     Symbol::Resolved(&UInt16x3_operator_gt_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x3_operator_gt_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7171,6 +11475,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_gte_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
     UInt16x3_operator_gte_UInt16x3.name = "operator>="_c;
     UInt16x3_operator_gte_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_gte_UInt16x3.parameters = UInt16x3_operator_gte_UInt16x3_args;
     Symbol::Resolved(&UInt16x3_operator_gte_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x3_operator_gte_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7179,6 +11484,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_eq_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
     UInt16x3_operator_eq_UInt16x3.name = "operator=="_c;
     UInt16x3_operator_eq_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_eq_UInt16x3.parameters = UInt16x3_operator_eq_UInt16x3_args;
     Symbol::Resolved(&UInt16x3_operator_eq_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x3_operator_eq_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7187,6 +11493,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_neq_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
     UInt16x3_operator_neq_UInt16x3.name = "operator!="_c;
     UInt16x3_operator_neq_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_neq_UInt16x3.parameters = UInt16x3_operator_neq_UInt16x3_args;
     Symbol::Resolved(&UInt16x3_operator_neq_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x3_operator_neq_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7195,6 +11502,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_scale_UInt16x3_Float32_arg0.type = Type::FullType{ Float32Type.name };
     UInt16x3_operator_scale_UInt16x3_Float32.name = "operator*"_c;
     UInt16x3_operator_scale_UInt16x3_Float32.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_scale_UInt16x3_Float32.parameters = UInt16x3_operator_scale_UInt16x3_Float32_args;
     Symbol::Resolved(&UInt16x3_operator_scale_UInt16x3_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&UInt16x3_operator_scale_UInt16x3_Float32)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7203,6 +11511,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_scale_UInt16x3_Float16_arg0.type = Type::FullType{ Float16Type.name };
     UInt16x3_operator_scale_UInt16x3_Float16.name = "operator*"_c;
     UInt16x3_operator_scale_UInt16x3_Float16.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_scale_UInt16x3_Float16.parameters = UInt16x3_operator_scale_UInt16x3_Float16_args;
     Symbol::Resolved(&UInt16x3_operator_scale_UInt16x3_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&UInt16x3_operator_scale_UInt16x3_Float16)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7211,6 +11520,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_scale_UInt16x3_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt16x3_operator_scale_UInt16x3_UInt32.name = "operator*"_c;
     UInt16x3_operator_scale_UInt16x3_UInt32.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_scale_UInt16x3_UInt32.parameters = UInt16x3_operator_scale_UInt16x3_UInt32_args;
     Symbol::Resolved(&UInt16x3_operator_scale_UInt16x3_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt16x3_operator_scale_UInt16x3_UInt32)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7219,6 +11529,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_scale_UInt16x3_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16x3_operator_scale_UInt16x3_UInt16.name = "operator*"_c;
     UInt16x3_operator_scale_UInt16x3_UInt16.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_scale_UInt16x3_UInt16.parameters = UInt16x3_operator_scale_UInt16x3_UInt16_args;
     Symbol::Resolved(&UInt16x3_operator_scale_UInt16x3_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16x3_operator_scale_UInt16x3_UInt16)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7227,6 +11538,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_scale_UInt16x3_Int32_arg0.type = Type::FullType{ Int32Type.name };
     UInt16x3_operator_scale_UInt16x3_Int32.name = "operator*"_c;
     UInt16x3_operator_scale_UInt16x3_Int32.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_scale_UInt16x3_Int32.parameters = UInt16x3_operator_scale_UInt16x3_Int32_args;
     Symbol::Resolved(&UInt16x3_operator_scale_UInt16x3_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&UInt16x3_operator_scale_UInt16x3_Int32)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7235,6 +11547,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_scale_UInt16x3_Int16_arg0.type = Type::FullType{ Int16Type.name };
     UInt16x3_operator_scale_UInt16x3_Int16.name = "operator*"_c;
     UInt16x3_operator_scale_UInt16x3_Int16.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_scale_UInt16x3_Int16.parameters = UInt16x3_operator_scale_UInt16x3_Int16_args;
     Symbol::Resolved(&UInt16x3_operator_scale_UInt16x3_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&UInt16x3_operator_scale_UInt16x3_Int16)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7243,6 +11556,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_or_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
     UInt16x3_operator_or_UInt16x3.name = "operator|"_c;
     UInt16x3_operator_or_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_or_UInt16x3.parameters = UInt16x3_operator_or_UInt16x3_args;
     Symbol::Resolved(&UInt16x3_operator_or_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x3_operator_or_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7251,6 +11565,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_and_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
     UInt16x3_operator_and_UInt16x3.name = "operator&"_c;
     UInt16x3_operator_and_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_and_UInt16x3.parameters = UInt16x3_operator_and_UInt16x3_args;
     Symbol::Resolved(&UInt16x3_operator_and_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x3_operator_and_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7259,6 +11574,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_xor_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
     UInt16x3_operator_xor_UInt16x3.name = "operator^"_c;
     UInt16x3_operator_xor_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_xor_UInt16x3.parameters = UInt16x3_operator_xor_UInt16x3_args;
     Symbol::Resolved(&UInt16x3_operator_xor_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x3_operator_xor_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7267,6 +11583,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_lsh_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
     UInt16x3_operator_lsh_UInt16x3.name = "operator<<"_c;
     UInt16x3_operator_lsh_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_lsh_UInt16x3.parameters = UInt16x3_operator_lsh_UInt16x3_args;
     Symbol::Resolved(&UInt16x3_operator_lsh_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x3_operator_lsh_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7275,6 +11592,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_rsh_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
     UInt16x3_operator_rsh_UInt16x3.name = "operator>>"_c;
     UInt16x3_operator_rsh_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_rsh_UInt16x3.parameters = UInt16x3_operator_rsh_UInt16x3_args;
     Symbol::Resolved(&UInt16x3_operator_rsh_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x3_operator_rsh_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7283,6 +11601,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_orasg_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
     UInt16x3_operator_orasg_UInt16x3.name = "operator|="_c;
     UInt16x3_operator_orasg_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_orasg_UInt16x3.parameters = UInt16x3_operator_orasg_UInt16x3_args;
     Symbol::Resolved(&UInt16x3_operator_orasg_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x3_operator_orasg_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7291,6 +11610,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_andasg_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
     UInt16x3_operator_andasg_UInt16x3.name = "operator&="_c;
     UInt16x3_operator_andasg_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_andasg_UInt16x3.parameters = UInt16x3_operator_andasg_UInt16x3_args;
     Symbol::Resolved(&UInt16x3_operator_andasg_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x3_operator_andasg_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7299,6 +11619,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_xorasg_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
     UInt16x3_operator_xorasg_UInt16x3.name = "operator^="_c;
     UInt16x3_operator_xorasg_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_xorasg_UInt16x3.parameters = UInt16x3_operator_xorasg_UInt16x3_args;
     Symbol::Resolved(&UInt16x3_operator_xorasg_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x3_operator_xorasg_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7307,6 +11628,7 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_lshasg_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
     UInt16x3_operator_lshasg_UInt16x3.name = "operator<<="_c;
     UInt16x3_operator_lshasg_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_lshasg_UInt16x3.parameters = UInt16x3_operator_lshasg_UInt16x3_args;
     Symbol::Resolved(&UInt16x3_operator_lshasg_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x3_operator_lshasg_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
@@ -7315,40 +11637,11 @@ UInt16x3::UInt16x3()
     UInt16x3_operator_rhsasg_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
     UInt16x3_operator_rhsasg_UInt16x3.name = "operator>>="_c;
     UInt16x3_operator_rhsasg_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_operator_rhsasg_UInt16x3.parameters = UInt16x3_operator_rhsasg_UInt16x3_args;
     Symbol::Resolved(&UInt16x3_operator_rhsasg_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x3_operator_rhsasg_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "u16x3"_c, &UInt16x3_convert_Float32x3 },
-        std::pair{ "u16x3(f32x3)"_c, &UInt16x3_convert_Float32x3 },
-        std::pair{ "u16x3"_c, &UInt16x3_splat_Float32 },
-        std::pair{ "u16x3(f32)"_c, &UInt16x3_splat_Float32 },
-        std::pair{ "u16x3"_c, &UInt16x3_convert_UInt32x3 },
-        std::pair{ "u16x3(u32x3)"_c, &UInt16x3_convert_UInt32x3 },
-        std::pair{ "u16x3"_c, &UInt16x3_splat_UInt32 },
-        std::pair{ "u16x3(u32)"_c, &UInt16x3_splat_UInt32 },
-        std::pair{ "u16x3"_c, &UInt16x3_convert_Int32x3 },
-        std::pair{ "u16x3(i32x3)"_c, &UInt16x3_convert_Int32x3 },
-        std::pair{ "u16x3"_c, &UInt16x3_splat_Int32 },
-        std::pair{ "u16x3(i32)"_c, &UInt16x3_splat_Int32 },
-        std::pair{ "u16x3"_c, &UInt16x3_convert_Float16x3 },
-        std::pair{ "u16x3(f16x3)"_c, &UInt16x3_convert_Float16x3 },
-        std::pair{ "u16x3"_c, &UInt16x3_splat_Float16 },
-        std::pair{ "u16x3(f16)"_c, &UInt16x3_splat_Float16 },
-        std::pair{ "u16x3"_c, &UInt16x3_convert_UInt16x3 },
-        std::pair{ "u16x3(u16x3)"_c, &UInt16x3_convert_UInt16x3 },
-        std::pair{ "u16x3"_c, &UInt16x3_splat_UInt16 },
-        std::pair{ "u16x3(u16)"_c, &UInt16x3_splat_UInt16 },
-        std::pair{ "u16x3"_c, &UInt16x3_convert_Int16x3 },
-        std::pair{ "u16x3(i16x3)"_c, &UInt16x3_convert_Int16x3 },
-        std::pair{ "u16x3"_c, &UInt16x3_splat_Int16 },
-        std::pair{ "u16x3(i16)"_c, &UInt16x3_splat_Int16 },
-        std::pair{ "u16x3"_c, &UInt16x3_ctor0_UInt16_UInt16_UInt16},
-        std::pair{ "u16x3(u16,u16,u16)"_c, &UInt16x3_ctor0_UInt16_UInt16_UInt16},
-        std::pair{ "u16x3"_c, &UInt16x3_ctor1_UInt16x2_UInt16},
-        std::pair{ "u16x3(u16x2,u16)"_c, &UInt16x3_ctor1_UInt16x2_UInt16},
-        std::pair{ "u16x3"_c, &UInt16x3_ctor2_UInt16_UInt16x2},
-        std::pair{ "u16x3(u16,u16x2)"_c, &UInt16x3_ctor2_UInt16_UInt16x2},
         std::pair{ "operator[](i32)"_c, &UInt16x3_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &UInt16x3_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &UInt16x3_operator_index_Int16},
@@ -7397,102 +11690,102 @@ Int16x3::Int16x3()
     this->baseType = TypeCode::Int16;
     this->builtin = true;
 
-    // Conversion from Float32x3
-    Int16x3_convert_Float32x3_arg0.name = "_arg0"_c;
+    Int16x3_convert_Float32x3_arg0.name = "val"_c;
     Int16x3_convert_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
+    Int16x3_convert_Float32x3.documentation = "Convert f32x3 to i16x3"_c;
     Int16x3_convert_Float32x3.name = "i16x3"_c;
     Int16x3_convert_Float32x3.returnType = Type::FullType { Int16x3Type.name };
-    Symbol::Resolved(&Int16x3_convert_Float32x3_arg0)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&Int16x3_convert_Float32x3)->returnTypeSymbol = &Int16x3Type;
-
-    // Splat with Float32
-    Int16x3_splat_Float32_arg0.name = "_arg0"_c;
+    Int16x3_convert_Float32x3.parameters = Int16x3_convert_Float32x3_args;
+    Symbol::Resolved(&Int16x3_convert_Float32x3_arg0).typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&Int16x3_convert_Float32x3).returnTypeSymbol = &Int16x3Type;
+    Int16x3_splat_Float32_arg0.name = "val"_c;
     Int16x3_splat_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    Int16x3_splat_Float32.documentation = "Splat f32x3 to i16x3"_c;
     Int16x3_splat_Float32.name = "i16x3"_c;
     Int16x3_splat_Float32.returnType = Type::FullType { Int16x3Type.name };
-    Symbol::Resolved(&Int16x3_splat_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Int16x3_splat_Float32)->returnTypeSymbol = &Int16x3Type;
-
-    // Conversion from UInt32x3
-    Int16x3_convert_UInt32x3_arg0.name = "_arg0"_c;
+    Int16x3_splat_Float32.parameters = Int16x3_splat_Float32_args;
+    Symbol::Resolved(&Int16x3_splat_Float32_arg0).typeSymbol = &Float32Type;
+    Symbol::Resolved(&Int16x3_splat_Float32).returnTypeSymbol = &Int16x3Type;
+    Int16x3_convert_UInt32x3_arg0.name = "val"_c;
     Int16x3_convert_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
+    Int16x3_convert_UInt32x3.documentation = "Convert u32x3 to i16x3"_c;
     Int16x3_convert_UInt32x3.name = "i16x3"_c;
     Int16x3_convert_UInt32x3.returnType = Type::FullType { Int16x3Type.name };
-    Symbol::Resolved(&Int16x3_convert_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&Int16x3_convert_UInt32x3)->returnTypeSymbol = &Int16x3Type;
-
-    // Splat with UInt32
-    Int16x3_splat_UInt32_arg0.name = "_arg0"_c;
+    Int16x3_convert_UInt32x3.parameters = Int16x3_convert_UInt32x3_args;
+    Symbol::Resolved(&Int16x3_convert_UInt32x3_arg0).typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&Int16x3_convert_UInt32x3).returnTypeSymbol = &Int16x3Type;
+    Int16x3_splat_UInt32_arg0.name = "val"_c;
     Int16x3_splat_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    Int16x3_splat_UInt32.documentation = "Splat u32x3 to i16x3"_c;
     Int16x3_splat_UInt32.name = "i16x3"_c;
     Int16x3_splat_UInt32.returnType = Type::FullType { Int16x3Type.name };
-    Symbol::Resolved(&Int16x3_splat_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Int16x3_splat_UInt32)->returnTypeSymbol = &Int16x3Type;
-
-    // Conversion from Int32x3
-    Int16x3_convert_Int32x3_arg0.name = "_arg0"_c;
+    Int16x3_splat_UInt32.parameters = Int16x3_splat_UInt32_args;
+    Symbol::Resolved(&Int16x3_splat_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&Int16x3_splat_UInt32).returnTypeSymbol = &Int16x3Type;
+    Int16x3_convert_Int32x3_arg0.name = "val"_c;
     Int16x3_convert_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
+    Int16x3_convert_Int32x3.documentation = "Convert i32x3 to i16x3"_c;
     Int16x3_convert_Int32x3.name = "i16x3"_c;
     Int16x3_convert_Int32x3.returnType = Type::FullType { Int16x3Type.name };
-    Symbol::Resolved(&Int16x3_convert_Int32x3_arg0)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&Int16x3_convert_Int32x3)->returnTypeSymbol = &Int16x3Type;
-
-    // Splat with Int32
-    Int16x3_splat_Int32_arg0.name = "_arg0"_c;
+    Int16x3_convert_Int32x3.parameters = Int16x3_convert_Int32x3_args;
+    Symbol::Resolved(&Int16x3_convert_Int32x3_arg0).typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&Int16x3_convert_Int32x3).returnTypeSymbol = &Int16x3Type;
+    Int16x3_splat_Int32_arg0.name = "val"_c;
     Int16x3_splat_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    Int16x3_splat_Int32.documentation = "Splat i32x3 to i16x3"_c;
     Int16x3_splat_Int32.name = "i16x3"_c;
     Int16x3_splat_Int32.returnType = Type::FullType { Int16x3Type.name };
-    Symbol::Resolved(&Int16x3_splat_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Int16x3_splat_Int32)->returnTypeSymbol = &Int16x3Type;
-
-    // Conversion from Float16x3
-    Int16x3_convert_Float16x3_arg0.name = "_arg0"_c;
+    Int16x3_splat_Int32.parameters = Int16x3_splat_Int32_args;
+    Symbol::Resolved(&Int16x3_splat_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&Int16x3_splat_Int32).returnTypeSymbol = &Int16x3Type;
+    Int16x3_convert_Float16x3_arg0.name = "val"_c;
     Int16x3_convert_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
+    Int16x3_convert_Float16x3.documentation = "Convert f16x3 to i16x3"_c;
     Int16x3_convert_Float16x3.name = "i16x3"_c;
     Int16x3_convert_Float16x3.returnType = Type::FullType { Int16x3Type.name };
-    Symbol::Resolved(&Int16x3_convert_Float16x3_arg0)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&Int16x3_convert_Float16x3)->returnTypeSymbol = &Int16x3Type;
-
-    // Splat with Float16
-    Int16x3_splat_Float16_arg0.name = "_arg0"_c;
+    Int16x3_convert_Float16x3.parameters = Int16x3_convert_Float16x3_args;
+    Symbol::Resolved(&Int16x3_convert_Float16x3_arg0).typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&Int16x3_convert_Float16x3).returnTypeSymbol = &Int16x3Type;
+    Int16x3_splat_Float16_arg0.name = "val"_c;
     Int16x3_splat_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    Int16x3_splat_Float16.documentation = "Splat f16x3 to i16x3"_c;
     Int16x3_splat_Float16.name = "i16x3"_c;
     Int16x3_splat_Float16.returnType = Type::FullType { Int16x3Type.name };
-    Symbol::Resolved(&Int16x3_splat_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Int16x3_splat_Float16)->returnTypeSymbol = &Int16x3Type;
-
-    // Conversion from UInt16x3
-    Int16x3_convert_UInt16x3_arg0.name = "_arg0"_c;
+    Int16x3_splat_Float16.parameters = Int16x3_splat_Float16_args;
+    Symbol::Resolved(&Int16x3_splat_Float16_arg0).typeSymbol = &Float16Type;
+    Symbol::Resolved(&Int16x3_splat_Float16).returnTypeSymbol = &Int16x3Type;
+    Int16x3_convert_UInt16x3_arg0.name = "val"_c;
     Int16x3_convert_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
+    Int16x3_convert_UInt16x3.documentation = "Convert u16x3 to i16x3"_c;
     Int16x3_convert_UInt16x3.name = "i16x3"_c;
     Int16x3_convert_UInt16x3.returnType = Type::FullType { Int16x3Type.name };
-    Symbol::Resolved(&Int16x3_convert_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&Int16x3_convert_UInt16x3)->returnTypeSymbol = &Int16x3Type;
-
-    // Splat with UInt16
-    Int16x3_splat_UInt16_arg0.name = "_arg0"_c;
+    Int16x3_convert_UInt16x3.parameters = Int16x3_convert_UInt16x3_args;
+    Symbol::Resolved(&Int16x3_convert_UInt16x3_arg0).typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&Int16x3_convert_UInt16x3).returnTypeSymbol = &Int16x3Type;
+    Int16x3_splat_UInt16_arg0.name = "val"_c;
     Int16x3_splat_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    Int16x3_splat_UInt16.documentation = "Splat u16x3 to i16x3"_c;
     Int16x3_splat_UInt16.name = "i16x3"_c;
     Int16x3_splat_UInt16.returnType = Type::FullType { Int16x3Type.name };
-    Symbol::Resolved(&Int16x3_splat_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Int16x3_splat_UInt16)->returnTypeSymbol = &Int16x3Type;
-
-    // Conversion from Int16x3
-    Int16x3_convert_Int16x3_arg0.name = "_arg0"_c;
+    Int16x3_splat_UInt16.parameters = Int16x3_splat_UInt16_args;
+    Symbol::Resolved(&Int16x3_splat_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&Int16x3_splat_UInt16).returnTypeSymbol = &Int16x3Type;
+    Int16x3_convert_Int16x3_arg0.name = "val"_c;
     Int16x3_convert_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
+    Int16x3_convert_Int16x3.documentation = "Convert i16x3 to i16x3"_c;
     Int16x3_convert_Int16x3.name = "i16x3"_c;
     Int16x3_convert_Int16x3.returnType = Type::FullType { Int16x3Type.name };
-    Symbol::Resolved(&Int16x3_convert_Int16x3_arg0)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&Int16x3_convert_Int16x3)->returnTypeSymbol = &Int16x3Type;
-
-    // Splat with Int16
-    Int16x3_splat_Int16_arg0.name = "_arg0"_c;
+    Int16x3_convert_Int16x3.parameters = Int16x3_convert_Int16x3_args;
+    Symbol::Resolved(&Int16x3_convert_Int16x3_arg0).typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&Int16x3_convert_Int16x3).returnTypeSymbol = &Int16x3Type;
+    Int16x3_splat_Int16_arg0.name = "val"_c;
     Int16x3_splat_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    Int16x3_splat_Int16.documentation = "Splat i16x3 to i16x3"_c;
     Int16x3_splat_Int16.name = "i16x3"_c;
     Int16x3_splat_Int16.returnType = Type::FullType { Int16x3Type.name };
-    Symbol::Resolved(&Int16x3_splat_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Int16x3_splat_Int16)->returnTypeSymbol = &Int16x3Type;
-
+    Int16x3_splat_Int16.parameters = Int16x3_splat_Int16_args;
+    Symbol::Resolved(&Int16x3_splat_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&Int16x3_splat_Int16).returnTypeSymbol = &Int16x3Type;
     // Construct with Int16, Int16, Int16
     Int16x3_ctor0_arg0.name = "_arg0"_c;
     Int16x3_ctor0_arg0.type = Type::FullType { Int16Type.name };
@@ -7502,6 +11795,7 @@ Int16x3::Int16x3()
     Int16x3_ctor0_arg2.type = Type::FullType { Int16Type.name };
     Int16x3_ctor0_Int16_Int16_Int16.name = "0"_c;
     Int16x3_ctor0_Int16_Int16_Int16.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_ctor0_Int16_Int16_Int16.parameters = Int16x3_ctor0_Int16_Int16_Int16_args;
     Symbol::Resolved(&Int16x3_ctor0_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16x3_ctor0_arg1)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16x3_ctor0_arg2)->typeSymbol = &Int16Type;
@@ -7514,6 +11808,7 @@ Int16x3::Int16x3()
     Int16x3_ctor1_arg1.type = Type::FullType { Int16Type.name };
     Int16x3_ctor1_Int16x2_Int16.name = "1"_c;
     Int16x3_ctor1_Int16x2_Int16.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_ctor1_Int16x2_Int16.parameters = Int16x3_ctor1_Int16x2_Int16_args;
     Symbol::Resolved(&Int16x3_ctor1_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x3_ctor1_arg1)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16x3_ctor1_Int16x2_Int16)->returnTypeSymbol = &Int16x3Type;
@@ -7525,6 +11820,7 @@ Int16x3::Int16x3()
     Int16x3_ctor2_arg1.type = Type::FullType { Int16x2Type.name };
     Int16x3_ctor2_Int16_Int16x2.name = "2"_c;
     Int16x3_ctor2_Int16_Int16x2.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_ctor2_Int16_Int16x2.parameters = Int16x3_ctor2_Int16_Int16x2_args;
     Symbol::Resolved(&Int16x3_ctor2_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16x3_ctor2_arg1)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x3_ctor2_Int16_Int16x2)->returnTypeSymbol = &Int16x3Type;
@@ -7534,6 +11830,7 @@ Int16x3::Int16x3()
     Int16x3_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int16x3_operator_index_Int32.name = "operator[]"_c;
     Int16x3_operator_index_Int32.returnType = Type::FullType{ Int16Type.name };
+    Int16x3_operator_index_Int32.parameters = Int16x3_operator_index_Int32_args;
     Symbol::Resolved(&Int16x3_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int16x3_operator_index_Int32)->returnTypeSymbol = &Int16Type;
 
@@ -7542,6 +11839,7 @@ Int16x3::Int16x3()
     Int16x3_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Int16x3_operator_index_UInt32.name = "operator[]"_c;
     Int16x3_operator_index_UInt32.returnType = Type::FullType{ Int16Type.name };
+    Int16x3_operator_index_UInt32.parameters = Int16x3_operator_index_UInt32_args;
     Symbol::Resolved(&Int16x3_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Int16x3_operator_index_UInt32)->returnTypeSymbol = &Int16Type;
 
@@ -7550,6 +11848,7 @@ Int16x3::Int16x3()
     Int16x3_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16x3_operator_index_Int16.name = "operator[]"_c;
     Int16x3_operator_index_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16x3_operator_index_Int16.parameters = Int16x3_operator_index_Int16_args;
     Symbol::Resolved(&Int16x3_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16x3_operator_index_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -7558,6 +11857,7 @@ Int16x3::Int16x3()
     Int16x3_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Int16x3_operator_index_UInt16.name = "operator[]"_c;
     Int16x3_operator_index_UInt16.returnType = Type::FullType{ Int16Type.name };
+    Int16x3_operator_index_UInt16.parameters = Int16x3_operator_index_UInt16_args;
     Symbol::Resolved(&Int16x3_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Int16x3_operator_index_UInt16)->returnTypeSymbol = &Int16Type;
 
@@ -7566,6 +11866,7 @@ Int16x3::Int16x3()
     Int16x3_operator_add_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
     Int16x3_operator_add_Int16x3.name = "operator+"_c;
     Int16x3_operator_add_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_add_Int16x3.parameters = Int16x3_operator_add_Int16x3_args;
     Symbol::Resolved(&Int16x3_operator_add_Int16x3_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x3_operator_add_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
@@ -7574,6 +11875,7 @@ Int16x3::Int16x3()
     Int16x3_operator_sub_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
     Int16x3_operator_sub_Int16x3.name = "operator-"_c;
     Int16x3_operator_sub_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_sub_Int16x3.parameters = Int16x3_operator_sub_Int16x3_args;
     Symbol::Resolved(&Int16x3_operator_sub_Int16x3_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x3_operator_sub_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
@@ -7582,6 +11884,7 @@ Int16x3::Int16x3()
     Int16x3_operator_mul_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
     Int16x3_operator_mul_Int16x3.name = "operator*"_c;
     Int16x3_operator_mul_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_mul_Int16x3.parameters = Int16x3_operator_mul_Int16x3_args;
     Symbol::Resolved(&Int16x3_operator_mul_Int16x3_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x3_operator_mul_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
@@ -7590,6 +11893,7 @@ Int16x3::Int16x3()
     Int16x3_operator_div_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
     Int16x3_operator_div_Int16x3.name = "operator/"_c;
     Int16x3_operator_div_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_div_Int16x3.parameters = Int16x3_operator_div_Int16x3_args;
     Symbol::Resolved(&Int16x3_operator_div_Int16x3_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x3_operator_div_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
@@ -7598,6 +11902,7 @@ Int16x3::Int16x3()
     Int16x3_operator_mod_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
     Int16x3_operator_mod_Int16x3.name = "operator%"_c;
     Int16x3_operator_mod_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_mod_Int16x3.parameters = Int16x3_operator_mod_Int16x3_args;
     Symbol::Resolved(&Int16x3_operator_mod_Int16x3_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x3_operator_mod_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
@@ -7606,6 +11911,7 @@ Int16x3::Int16x3()
     Int16x3_operator_addasg_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
     Int16x3_operator_addasg_Int16x3.name = "operator+="_c;
     Int16x3_operator_addasg_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_addasg_Int16x3.parameters = Int16x3_operator_addasg_Int16x3_args;
     Symbol::Resolved(&Int16x3_operator_addasg_Int16x3_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x3_operator_addasg_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
@@ -7614,6 +11920,7 @@ Int16x3::Int16x3()
     Int16x3_operator_subasg_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
     Int16x3_operator_subasg_Int16x3.name = "operator-="_c;
     Int16x3_operator_subasg_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_subasg_Int16x3.parameters = Int16x3_operator_subasg_Int16x3_args;
     Symbol::Resolved(&Int16x3_operator_subasg_Int16x3_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x3_operator_subasg_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
@@ -7622,6 +11929,7 @@ Int16x3::Int16x3()
     Int16x3_operator_mulasg_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
     Int16x3_operator_mulasg_Int16x3.name = "operator*="_c;
     Int16x3_operator_mulasg_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_mulasg_Int16x3.parameters = Int16x3_operator_mulasg_Int16x3_args;
     Symbol::Resolved(&Int16x3_operator_mulasg_Int16x3_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x3_operator_mulasg_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
@@ -7630,6 +11938,7 @@ Int16x3::Int16x3()
     Int16x3_operator_divasg_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
     Int16x3_operator_divasg_Int16x3.name = "operator/="_c;
     Int16x3_operator_divasg_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_divasg_Int16x3.parameters = Int16x3_operator_divasg_Int16x3_args;
     Symbol::Resolved(&Int16x3_operator_divasg_Int16x3_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x3_operator_divasg_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
@@ -7638,6 +11947,7 @@ Int16x3::Int16x3()
     Int16x3_operator_lt_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
     Int16x3_operator_lt_Int16x3.name = "operator<"_c;
     Int16x3_operator_lt_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_lt_Int16x3.parameters = Int16x3_operator_lt_Int16x3_args;
     Symbol::Resolved(&Int16x3_operator_lt_Int16x3_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x3_operator_lt_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
@@ -7646,6 +11956,7 @@ Int16x3::Int16x3()
     Int16x3_operator_lte_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
     Int16x3_operator_lte_Int16x3.name = "operator<="_c;
     Int16x3_operator_lte_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_lte_Int16x3.parameters = Int16x3_operator_lte_Int16x3_args;
     Symbol::Resolved(&Int16x3_operator_lte_Int16x3_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x3_operator_lte_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
@@ -7654,6 +11965,7 @@ Int16x3::Int16x3()
     Int16x3_operator_gt_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
     Int16x3_operator_gt_Int16x3.name = "operator>"_c;
     Int16x3_operator_gt_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_gt_Int16x3.parameters = Int16x3_operator_gt_Int16x3_args;
     Symbol::Resolved(&Int16x3_operator_gt_Int16x3_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x3_operator_gt_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
@@ -7662,6 +11974,7 @@ Int16x3::Int16x3()
     Int16x3_operator_gte_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
     Int16x3_operator_gte_Int16x3.name = "operator>="_c;
     Int16x3_operator_gte_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_gte_Int16x3.parameters = Int16x3_operator_gte_Int16x3_args;
     Symbol::Resolved(&Int16x3_operator_gte_Int16x3_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x3_operator_gte_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
@@ -7670,6 +11983,7 @@ Int16x3::Int16x3()
     Int16x3_operator_eq_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
     Int16x3_operator_eq_Int16x3.name = "operator=="_c;
     Int16x3_operator_eq_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_eq_Int16x3.parameters = Int16x3_operator_eq_Int16x3_args;
     Symbol::Resolved(&Int16x3_operator_eq_Int16x3_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x3_operator_eq_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
@@ -7678,6 +11992,7 @@ Int16x3::Int16x3()
     Int16x3_operator_neq_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
     Int16x3_operator_neq_Int16x3.name = "operator!="_c;
     Int16x3_operator_neq_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_neq_Int16x3.parameters = Int16x3_operator_neq_Int16x3_args;
     Symbol::Resolved(&Int16x3_operator_neq_Int16x3_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x3_operator_neq_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
@@ -7686,6 +12001,7 @@ Int16x3::Int16x3()
     Int16x3_operator_scale_Int16x3_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Int16x3_operator_scale_Int16x3_Float32.name = "operator*"_c;
     Int16x3_operator_scale_Int16x3_Float32.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_scale_Int16x3_Float32.parameters = Int16x3_operator_scale_Int16x3_Float32_args;
     Symbol::Resolved(&Int16x3_operator_scale_Int16x3_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Int16x3_operator_scale_Int16x3_Float32)->returnTypeSymbol = &Int16x3Type;
 
@@ -7694,6 +12010,7 @@ Int16x3::Int16x3()
     Int16x3_operator_scale_Int16x3_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Int16x3_operator_scale_Int16x3_Float16.name = "operator*"_c;
     Int16x3_operator_scale_Int16x3_Float16.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_scale_Int16x3_Float16.parameters = Int16x3_operator_scale_Int16x3_Float16_args;
     Symbol::Resolved(&Int16x3_operator_scale_Int16x3_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Int16x3_operator_scale_Int16x3_Float16)->returnTypeSymbol = &Int16x3Type;
 
@@ -7702,6 +12019,7 @@ Int16x3::Int16x3()
     Int16x3_operator_scale_Int16x3_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Int16x3_operator_scale_Int16x3_UInt32.name = "operator*"_c;
     Int16x3_operator_scale_Int16x3_UInt32.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_scale_Int16x3_UInt32.parameters = Int16x3_operator_scale_Int16x3_UInt32_args;
     Symbol::Resolved(&Int16x3_operator_scale_Int16x3_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Int16x3_operator_scale_Int16x3_UInt32)->returnTypeSymbol = &Int16x3Type;
 
@@ -7710,6 +12028,7 @@ Int16x3::Int16x3()
     Int16x3_operator_scale_Int16x3_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Int16x3_operator_scale_Int16x3_UInt16.name = "operator*"_c;
     Int16x3_operator_scale_Int16x3_UInt16.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_scale_Int16x3_UInt16.parameters = Int16x3_operator_scale_Int16x3_UInt16_args;
     Symbol::Resolved(&Int16x3_operator_scale_Int16x3_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Int16x3_operator_scale_Int16x3_UInt16)->returnTypeSymbol = &Int16x3Type;
 
@@ -7718,6 +12037,7 @@ Int16x3::Int16x3()
     Int16x3_operator_scale_Int16x3_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int16x3_operator_scale_Int16x3_Int32.name = "operator*"_c;
     Int16x3_operator_scale_Int16x3_Int32.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_scale_Int16x3_Int32.parameters = Int16x3_operator_scale_Int16x3_Int32_args;
     Symbol::Resolved(&Int16x3_operator_scale_Int16x3_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int16x3_operator_scale_Int16x3_Int32)->returnTypeSymbol = &Int16x3Type;
 
@@ -7726,6 +12046,7 @@ Int16x3::Int16x3()
     Int16x3_operator_scale_Int16x3_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16x3_operator_scale_Int16x3_Int16.name = "operator*"_c;
     Int16x3_operator_scale_Int16x3_Int16.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_scale_Int16x3_Int16.parameters = Int16x3_operator_scale_Int16x3_Int16_args;
     Symbol::Resolved(&Int16x3_operator_scale_Int16x3_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16x3_operator_scale_Int16x3_Int16)->returnTypeSymbol = &Int16x3Type;
 
@@ -7734,6 +12055,7 @@ Int16x3::Int16x3()
     Int16x3_operator_or_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
     Int16x3_operator_or_Int16x3.name = "operator|"_c;
     Int16x3_operator_or_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_or_Int16x3.parameters = Int16x3_operator_or_Int16x3_args;
     Symbol::Resolved(&Int16x3_operator_or_Int16x3_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x3_operator_or_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
@@ -7742,6 +12064,7 @@ Int16x3::Int16x3()
     Int16x3_operator_and_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
     Int16x3_operator_and_Int16x3.name = "operator&"_c;
     Int16x3_operator_and_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_and_Int16x3.parameters = Int16x3_operator_and_Int16x3_args;
     Symbol::Resolved(&Int16x3_operator_and_Int16x3_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x3_operator_and_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
@@ -7750,6 +12073,7 @@ Int16x3::Int16x3()
     Int16x3_operator_xor_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
     Int16x3_operator_xor_Int16x3.name = "operator^"_c;
     Int16x3_operator_xor_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_xor_Int16x3.parameters = Int16x3_operator_xor_Int16x3_args;
     Symbol::Resolved(&Int16x3_operator_xor_Int16x3_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x3_operator_xor_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
@@ -7758,6 +12082,7 @@ Int16x3::Int16x3()
     Int16x3_operator_lsh_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
     Int16x3_operator_lsh_Int16x3.name = "operator<<"_c;
     Int16x3_operator_lsh_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_lsh_Int16x3.parameters = Int16x3_operator_lsh_Int16x3_args;
     Symbol::Resolved(&Int16x3_operator_lsh_Int16x3_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x3_operator_lsh_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
@@ -7766,6 +12091,7 @@ Int16x3::Int16x3()
     Int16x3_operator_rsh_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
     Int16x3_operator_rsh_Int16x3.name = "operator>>"_c;
     Int16x3_operator_rsh_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_rsh_Int16x3.parameters = Int16x3_operator_rsh_Int16x3_args;
     Symbol::Resolved(&Int16x3_operator_rsh_Int16x3_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x3_operator_rsh_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
@@ -7774,6 +12100,7 @@ Int16x3::Int16x3()
     Int16x3_operator_orasg_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
     Int16x3_operator_orasg_Int16x3.name = "operator|="_c;
     Int16x3_operator_orasg_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_orasg_Int16x3.parameters = Int16x3_operator_orasg_Int16x3_args;
     Symbol::Resolved(&Int16x3_operator_orasg_Int16x3_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x3_operator_orasg_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
@@ -7782,6 +12109,7 @@ Int16x3::Int16x3()
     Int16x3_operator_andasg_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
     Int16x3_operator_andasg_Int16x3.name = "operator&="_c;
     Int16x3_operator_andasg_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_andasg_Int16x3.parameters = Int16x3_operator_andasg_Int16x3_args;
     Symbol::Resolved(&Int16x3_operator_andasg_Int16x3_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x3_operator_andasg_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
@@ -7790,6 +12118,7 @@ Int16x3::Int16x3()
     Int16x3_operator_xorasg_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
     Int16x3_operator_xorasg_Int16x3.name = "operator^="_c;
     Int16x3_operator_xorasg_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_xorasg_Int16x3.parameters = Int16x3_operator_xorasg_Int16x3_args;
     Symbol::Resolved(&Int16x3_operator_xorasg_Int16x3_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x3_operator_xorasg_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
@@ -7798,6 +12127,7 @@ Int16x3::Int16x3()
     Int16x3_operator_lshasg_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
     Int16x3_operator_lshasg_Int16x3.name = "operator<<="_c;
     Int16x3_operator_lshasg_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_lshasg_Int16x3.parameters = Int16x3_operator_lshasg_Int16x3_args;
     Symbol::Resolved(&Int16x3_operator_lshasg_Int16x3_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x3_operator_lshasg_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
@@ -7806,40 +12136,11 @@ Int16x3::Int16x3()
     Int16x3_operator_rhsasg_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
     Int16x3_operator_rhsasg_Int16x3.name = "operator>>="_c;
     Int16x3_operator_rhsasg_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    Int16x3_operator_rhsasg_Int16x3.parameters = Int16x3_operator_rhsasg_Int16x3_args;
     Symbol::Resolved(&Int16x3_operator_rhsasg_Int16x3_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x3_operator_rhsasg_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "i16x3"_c, &Int16x3_convert_Float32x3 },
-        std::pair{ "i16x3(f32x3)"_c, &Int16x3_convert_Float32x3 },
-        std::pair{ "i16x3"_c, &Int16x3_splat_Float32 },
-        std::pair{ "i16x3(f32)"_c, &Int16x3_splat_Float32 },
-        std::pair{ "i16x3"_c, &Int16x3_convert_UInt32x3 },
-        std::pair{ "i16x3(u32x3)"_c, &Int16x3_convert_UInt32x3 },
-        std::pair{ "i16x3"_c, &Int16x3_splat_UInt32 },
-        std::pair{ "i16x3(u32)"_c, &Int16x3_splat_UInt32 },
-        std::pair{ "i16x3"_c, &Int16x3_convert_Int32x3 },
-        std::pair{ "i16x3(i32x3)"_c, &Int16x3_convert_Int32x3 },
-        std::pair{ "i16x3"_c, &Int16x3_splat_Int32 },
-        std::pair{ "i16x3(i32)"_c, &Int16x3_splat_Int32 },
-        std::pair{ "i16x3"_c, &Int16x3_convert_Float16x3 },
-        std::pair{ "i16x3(f16x3)"_c, &Int16x3_convert_Float16x3 },
-        std::pair{ "i16x3"_c, &Int16x3_splat_Float16 },
-        std::pair{ "i16x3(f16)"_c, &Int16x3_splat_Float16 },
-        std::pair{ "i16x3"_c, &Int16x3_convert_UInt16x3 },
-        std::pair{ "i16x3(u16x3)"_c, &Int16x3_convert_UInt16x3 },
-        std::pair{ "i16x3"_c, &Int16x3_splat_UInt16 },
-        std::pair{ "i16x3(u16)"_c, &Int16x3_splat_UInt16 },
-        std::pair{ "i16x3"_c, &Int16x3_convert_Int16x3 },
-        std::pair{ "i16x3(i16x3)"_c, &Int16x3_convert_Int16x3 },
-        std::pair{ "i16x3"_c, &Int16x3_splat_Int16 },
-        std::pair{ "i16x3(i16)"_c, &Int16x3_splat_Int16 },
-        std::pair{ "i16x3"_c, &Int16x3_ctor0_Int16_Int16_Int16},
-        std::pair{ "i16x3(i16,i16,i16)"_c, &Int16x3_ctor0_Int16_Int16_Int16},
-        std::pair{ "i16x3"_c, &Int16x3_ctor1_Int16x2_Int16},
-        std::pair{ "i16x3(i16x2,i16)"_c, &Int16x3_ctor1_Int16x2_Int16},
-        std::pair{ "i16x3"_c, &Int16x3_ctor2_Int16_Int16x2},
-        std::pair{ "i16x3(i16,i16x2)"_c, &Int16x3_ctor2_Int16_Int16x2},
         std::pair{ "operator[](i32)"_c, &Int16x3_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &Int16x3_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &Int16x3_operator_index_Int16},
@@ -7888,102 +12189,102 @@ Float32x4::Float32x4()
     this->baseType = TypeCode::Float32;
     this->builtin = true;
 
-    // Conversion from Float32x4
-    Float32x4_convert_Float32x4_arg0.name = "_arg0"_c;
+    Float32x4_convert_Float32x4_arg0.name = "val"_c;
     Float32x4_convert_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
+    Float32x4_convert_Float32x4.documentation = "Convert f32x4 to f32x4"_c;
     Float32x4_convert_Float32x4.name = "f32x4"_c;
     Float32x4_convert_Float32x4.returnType = Type::FullType { Float32x4Type.name };
-    Symbol::Resolved(&Float32x4_convert_Float32x4_arg0)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&Float32x4_convert_Float32x4)->returnTypeSymbol = &Float32x4Type;
-
-    // Splat with Float32
-    Float32x4_splat_Float32_arg0.name = "_arg0"_c;
+    Float32x4_convert_Float32x4.parameters = Float32x4_convert_Float32x4_args;
+    Symbol::Resolved(&Float32x4_convert_Float32x4_arg0).typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&Float32x4_convert_Float32x4).returnTypeSymbol = &Float32x4Type;
+    Float32x4_splat_Float32_arg0.name = "val"_c;
     Float32x4_splat_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    Float32x4_splat_Float32.documentation = "Splat f32x4 to f32x4"_c;
     Float32x4_splat_Float32.name = "f32x4"_c;
     Float32x4_splat_Float32.returnType = Type::FullType { Float32x4Type.name };
-    Symbol::Resolved(&Float32x4_splat_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Float32x4_splat_Float32)->returnTypeSymbol = &Float32x4Type;
-
-    // Conversion from UInt32x4
-    Float32x4_convert_UInt32x4_arg0.name = "_arg0"_c;
+    Float32x4_splat_Float32.parameters = Float32x4_splat_Float32_args;
+    Symbol::Resolved(&Float32x4_splat_Float32_arg0).typeSymbol = &Float32Type;
+    Symbol::Resolved(&Float32x4_splat_Float32).returnTypeSymbol = &Float32x4Type;
+    Float32x4_convert_UInt32x4_arg0.name = "val"_c;
     Float32x4_convert_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
+    Float32x4_convert_UInt32x4.documentation = "Convert u32x4 to f32x4"_c;
     Float32x4_convert_UInt32x4.name = "f32x4"_c;
     Float32x4_convert_UInt32x4.returnType = Type::FullType { Float32x4Type.name };
-    Symbol::Resolved(&Float32x4_convert_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&Float32x4_convert_UInt32x4)->returnTypeSymbol = &Float32x4Type;
-
-    // Splat with UInt32
-    Float32x4_splat_UInt32_arg0.name = "_arg0"_c;
+    Float32x4_convert_UInt32x4.parameters = Float32x4_convert_UInt32x4_args;
+    Symbol::Resolved(&Float32x4_convert_UInt32x4_arg0).typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&Float32x4_convert_UInt32x4).returnTypeSymbol = &Float32x4Type;
+    Float32x4_splat_UInt32_arg0.name = "val"_c;
     Float32x4_splat_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    Float32x4_splat_UInt32.documentation = "Splat u32x4 to f32x4"_c;
     Float32x4_splat_UInt32.name = "f32x4"_c;
     Float32x4_splat_UInt32.returnType = Type::FullType { Float32x4Type.name };
-    Symbol::Resolved(&Float32x4_splat_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float32x4_splat_UInt32)->returnTypeSymbol = &Float32x4Type;
-
-    // Conversion from Int32x4
-    Float32x4_convert_Int32x4_arg0.name = "_arg0"_c;
+    Float32x4_splat_UInt32.parameters = Float32x4_splat_UInt32_args;
+    Symbol::Resolved(&Float32x4_splat_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&Float32x4_splat_UInt32).returnTypeSymbol = &Float32x4Type;
+    Float32x4_convert_Int32x4_arg0.name = "val"_c;
     Float32x4_convert_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
+    Float32x4_convert_Int32x4.documentation = "Convert i32x4 to f32x4"_c;
     Float32x4_convert_Int32x4.name = "f32x4"_c;
     Float32x4_convert_Int32x4.returnType = Type::FullType { Float32x4Type.name };
-    Symbol::Resolved(&Float32x4_convert_Int32x4_arg0)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&Float32x4_convert_Int32x4)->returnTypeSymbol = &Float32x4Type;
-
-    // Splat with Int32
-    Float32x4_splat_Int32_arg0.name = "_arg0"_c;
+    Float32x4_convert_Int32x4.parameters = Float32x4_convert_Int32x4_args;
+    Symbol::Resolved(&Float32x4_convert_Int32x4_arg0).typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&Float32x4_convert_Int32x4).returnTypeSymbol = &Float32x4Type;
+    Float32x4_splat_Int32_arg0.name = "val"_c;
     Float32x4_splat_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    Float32x4_splat_Int32.documentation = "Splat i32x4 to f32x4"_c;
     Float32x4_splat_Int32.name = "f32x4"_c;
     Float32x4_splat_Int32.returnType = Type::FullType { Float32x4Type.name };
-    Symbol::Resolved(&Float32x4_splat_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float32x4_splat_Int32)->returnTypeSymbol = &Float32x4Type;
-
-    // Conversion from Float16x4
-    Float32x4_convert_Float16x4_arg0.name = "_arg0"_c;
+    Float32x4_splat_Int32.parameters = Float32x4_splat_Int32_args;
+    Symbol::Resolved(&Float32x4_splat_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&Float32x4_splat_Int32).returnTypeSymbol = &Float32x4Type;
+    Float32x4_convert_Float16x4_arg0.name = "val"_c;
     Float32x4_convert_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
+    Float32x4_convert_Float16x4.documentation = "Convert f16x4 to f32x4"_c;
     Float32x4_convert_Float16x4.name = "f32x4"_c;
     Float32x4_convert_Float16x4.returnType = Type::FullType { Float32x4Type.name };
-    Symbol::Resolved(&Float32x4_convert_Float16x4_arg0)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&Float32x4_convert_Float16x4)->returnTypeSymbol = &Float32x4Type;
-
-    // Splat with Float16
-    Float32x4_splat_Float16_arg0.name = "_arg0"_c;
+    Float32x4_convert_Float16x4.parameters = Float32x4_convert_Float16x4_args;
+    Symbol::Resolved(&Float32x4_convert_Float16x4_arg0).typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&Float32x4_convert_Float16x4).returnTypeSymbol = &Float32x4Type;
+    Float32x4_splat_Float16_arg0.name = "val"_c;
     Float32x4_splat_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    Float32x4_splat_Float16.documentation = "Splat f16x4 to f32x4"_c;
     Float32x4_splat_Float16.name = "f32x4"_c;
     Float32x4_splat_Float16.returnType = Type::FullType { Float32x4Type.name };
-    Symbol::Resolved(&Float32x4_splat_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Float32x4_splat_Float16)->returnTypeSymbol = &Float32x4Type;
-
-    // Conversion from UInt16x4
-    Float32x4_convert_UInt16x4_arg0.name = "_arg0"_c;
+    Float32x4_splat_Float16.parameters = Float32x4_splat_Float16_args;
+    Symbol::Resolved(&Float32x4_splat_Float16_arg0).typeSymbol = &Float16Type;
+    Symbol::Resolved(&Float32x4_splat_Float16).returnTypeSymbol = &Float32x4Type;
+    Float32x4_convert_UInt16x4_arg0.name = "val"_c;
     Float32x4_convert_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
+    Float32x4_convert_UInt16x4.documentation = "Convert u16x4 to f32x4"_c;
     Float32x4_convert_UInt16x4.name = "f32x4"_c;
     Float32x4_convert_UInt16x4.returnType = Type::FullType { Float32x4Type.name };
-    Symbol::Resolved(&Float32x4_convert_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
-    Symbol::Resolved(&Float32x4_convert_UInt16x4)->returnTypeSymbol = &Float32x4Type;
-
-    // Splat with UInt16
-    Float32x4_splat_UInt16_arg0.name = "_arg0"_c;
+    Float32x4_convert_UInt16x4.parameters = Float32x4_convert_UInt16x4_args;
+    Symbol::Resolved(&Float32x4_convert_UInt16x4_arg0).typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&Float32x4_convert_UInt16x4).returnTypeSymbol = &Float32x4Type;
+    Float32x4_splat_UInt16_arg0.name = "val"_c;
     Float32x4_splat_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    Float32x4_splat_UInt16.documentation = "Splat u16x4 to f32x4"_c;
     Float32x4_splat_UInt16.name = "f32x4"_c;
     Float32x4_splat_UInt16.returnType = Type::FullType { Float32x4Type.name };
-    Symbol::Resolved(&Float32x4_splat_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float32x4_splat_UInt16)->returnTypeSymbol = &Float32x4Type;
-
-    // Conversion from Int16x4
-    Float32x4_convert_Int16x4_arg0.name = "_arg0"_c;
+    Float32x4_splat_UInt16.parameters = Float32x4_splat_UInt16_args;
+    Symbol::Resolved(&Float32x4_splat_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&Float32x4_splat_UInt16).returnTypeSymbol = &Float32x4Type;
+    Float32x4_convert_Int16x4_arg0.name = "val"_c;
     Float32x4_convert_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
+    Float32x4_convert_Int16x4.documentation = "Convert i16x4 to f32x4"_c;
     Float32x4_convert_Int16x4.name = "f32x4"_c;
     Float32x4_convert_Int16x4.returnType = Type::FullType { Float32x4Type.name };
-    Symbol::Resolved(&Float32x4_convert_Int16x4_arg0)->typeSymbol = &Int16x4Type;
-    Symbol::Resolved(&Float32x4_convert_Int16x4)->returnTypeSymbol = &Float32x4Type;
-
-    // Splat with Int16
-    Float32x4_splat_Int16_arg0.name = "_arg0"_c;
+    Float32x4_convert_Int16x4.parameters = Float32x4_convert_Int16x4_args;
+    Symbol::Resolved(&Float32x4_convert_Int16x4_arg0).typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&Float32x4_convert_Int16x4).returnTypeSymbol = &Float32x4Type;
+    Float32x4_splat_Int16_arg0.name = "val"_c;
     Float32x4_splat_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    Float32x4_splat_Int16.documentation = "Splat i16x4 to f32x4"_c;
     Float32x4_splat_Int16.name = "f32x4"_c;
     Float32x4_splat_Int16.returnType = Type::FullType { Float32x4Type.name };
-    Symbol::Resolved(&Float32x4_splat_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float32x4_splat_Int16)->returnTypeSymbol = &Float32x4Type;
-
+    Float32x4_splat_Int16.parameters = Float32x4_splat_Int16_args;
+    Symbol::Resolved(&Float32x4_splat_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&Float32x4_splat_Int16).returnTypeSymbol = &Float32x4Type;
     // Construct with Float32, Float32, Float32, Float32
     Float32x4_ctor0_arg0.name = "_arg0"_c;
     Float32x4_ctor0_arg0.type = Type::FullType { Float32Type.name };
@@ -7995,6 +12296,7 @@ Float32x4::Float32x4()
     Float32x4_ctor0_arg3.type = Type::FullType { Float32Type.name };
     Float32x4_ctor0_Float32_Float32_Float32_Float32.name = "0"_c;
     Float32x4_ctor0_Float32_Float32_Float32_Float32.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_ctor0_Float32_Float32_Float32_Float32.parameters = Float32x4_ctor0_Float32_Float32_Float32_Float32_args;
     Symbol::Resolved(&Float32x4_ctor0_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x4_ctor0_arg1)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x4_ctor0_arg2)->typeSymbol = &Float32Type;
@@ -8010,6 +12312,7 @@ Float32x4::Float32x4()
     Float32x4_ctor1_arg2.type = Type::FullType { Float32Type.name };
     Float32x4_ctor1_Float32x2_Float32_Float32.name = "1"_c;
     Float32x4_ctor1_Float32x2_Float32_Float32.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_ctor1_Float32x2_Float32_Float32.parameters = Float32x4_ctor1_Float32x2_Float32_Float32_args;
     Symbol::Resolved(&Float32x4_ctor1_arg0)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&Float32x4_ctor1_arg1)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x4_ctor1_arg2)->typeSymbol = &Float32Type;
@@ -8024,6 +12327,7 @@ Float32x4::Float32x4()
     Float32x4_ctor2_arg2.type = Type::FullType { Float32Type.name };
     Float32x4_ctor2_Float32_Float32x2_Float32.name = "2"_c;
     Float32x4_ctor2_Float32_Float32x2_Float32.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_ctor2_Float32_Float32x2_Float32.parameters = Float32x4_ctor2_Float32_Float32x2_Float32_args;
     Symbol::Resolved(&Float32x4_ctor2_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x4_ctor2_arg1)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&Float32x4_ctor2_arg2)->typeSymbol = &Float32Type;
@@ -8038,6 +12342,7 @@ Float32x4::Float32x4()
     Float32x4_ctor3_arg2.type = Type::FullType { Float32x2Type.name };
     Float32x4_ctor3_Float32_Float32_Float32x2.name = "3"_c;
     Float32x4_ctor3_Float32_Float32_Float32x2.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_ctor3_Float32_Float32_Float32x2.parameters = Float32x4_ctor3_Float32_Float32_Float32x2_args;
     Symbol::Resolved(&Float32x4_ctor3_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x4_ctor3_arg1)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x4_ctor3_arg2)->typeSymbol = &Float32x2Type;
@@ -8050,6 +12355,7 @@ Float32x4::Float32x4()
     Float32x4_ctor4_arg1.type = Type::FullType { Float32Type.name };
     Float32x4_ctor4_Float32x3_Float32.name = "4"_c;
     Float32x4_ctor4_Float32x3_Float32.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_ctor4_Float32x3_Float32.parameters = Float32x4_ctor4_Float32x3_Float32_args;
     Symbol::Resolved(&Float32x4_ctor4_arg0)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&Float32x4_ctor4_arg1)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x4_ctor4_Float32x3_Float32)->returnTypeSymbol = &Float32x4Type;
@@ -8061,6 +12367,7 @@ Float32x4::Float32x4()
     Float32x4_ctor5_arg1.type = Type::FullType { Float32x3Type.name };
     Float32x4_ctor5_Float32_Float32x3.name = "5"_c;
     Float32x4_ctor5_Float32_Float32x3.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_ctor5_Float32_Float32x3.parameters = Float32x4_ctor5_Float32_Float32x3_args;
     Symbol::Resolved(&Float32x4_ctor5_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x4_ctor5_arg1)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&Float32x4_ctor5_Float32_Float32x3)->returnTypeSymbol = &Float32x4Type;
@@ -8070,6 +12377,7 @@ Float32x4::Float32x4()
     Float32x4_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Float32x4_operator_index_Int32.name = "operator[]"_c;
     Float32x4_operator_index_Int32.returnType = Type::FullType{ Float32Type.name };
+    Float32x4_operator_index_Int32.parameters = Float32x4_operator_index_Int32_args;
     Symbol::Resolved(&Float32x4_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Float32x4_operator_index_Int32)->returnTypeSymbol = &Float32Type;
 
@@ -8078,6 +12386,7 @@ Float32x4::Float32x4()
     Float32x4_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Float32x4_operator_index_UInt32.name = "operator[]"_c;
     Float32x4_operator_index_UInt32.returnType = Type::FullType{ Float32Type.name };
+    Float32x4_operator_index_UInt32.parameters = Float32x4_operator_index_UInt32_args;
     Symbol::Resolved(&Float32x4_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Float32x4_operator_index_UInt32)->returnTypeSymbol = &Float32Type;
 
@@ -8086,6 +12395,7 @@ Float32x4::Float32x4()
     Float32x4_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Float32x4_operator_index_Int16.name = "operator[]"_c;
     Float32x4_operator_index_Int16.returnType = Type::FullType{ Float32Type.name };
+    Float32x4_operator_index_Int16.parameters = Float32x4_operator_index_Int16_args;
     Symbol::Resolved(&Float32x4_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Float32x4_operator_index_Int16)->returnTypeSymbol = &Float32Type;
 
@@ -8094,6 +12404,7 @@ Float32x4::Float32x4()
     Float32x4_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Float32x4_operator_index_UInt16.name = "operator[]"_c;
     Float32x4_operator_index_UInt16.returnType = Type::FullType{ Float32Type.name };
+    Float32x4_operator_index_UInt16.parameters = Float32x4_operator_index_UInt16_args;
     Symbol::Resolved(&Float32x4_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float32x4_operator_index_UInt16)->returnTypeSymbol = &Float32Type;
 
@@ -8102,6 +12413,7 @@ Float32x4::Float32x4()
     Float32x4_operator_add_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
     Float32x4_operator_add_Float32x4.name = "operator+"_c;
     Float32x4_operator_add_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_operator_add_Float32x4.parameters = Float32x4_operator_add_Float32x4_args;
     Symbol::Resolved(&Float32x4_operator_add_Float32x4_arg0)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&Float32x4_operator_add_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
@@ -8110,6 +12422,7 @@ Float32x4::Float32x4()
     Float32x4_operator_sub_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
     Float32x4_operator_sub_Float32x4.name = "operator-"_c;
     Float32x4_operator_sub_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_operator_sub_Float32x4.parameters = Float32x4_operator_sub_Float32x4_args;
     Symbol::Resolved(&Float32x4_operator_sub_Float32x4_arg0)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&Float32x4_operator_sub_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
@@ -8118,6 +12431,7 @@ Float32x4::Float32x4()
     Float32x4_operator_mul_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
     Float32x4_operator_mul_Float32x4.name = "operator*"_c;
     Float32x4_operator_mul_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_operator_mul_Float32x4.parameters = Float32x4_operator_mul_Float32x4_args;
     Symbol::Resolved(&Float32x4_operator_mul_Float32x4_arg0)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&Float32x4_operator_mul_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
@@ -8126,6 +12440,7 @@ Float32x4::Float32x4()
     Float32x4_operator_div_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
     Float32x4_operator_div_Float32x4.name = "operator/"_c;
     Float32x4_operator_div_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_operator_div_Float32x4.parameters = Float32x4_operator_div_Float32x4_args;
     Symbol::Resolved(&Float32x4_operator_div_Float32x4_arg0)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&Float32x4_operator_div_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
@@ -8134,6 +12449,7 @@ Float32x4::Float32x4()
     Float32x4_operator_mod_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
     Float32x4_operator_mod_Float32x4.name = "operator%"_c;
     Float32x4_operator_mod_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_operator_mod_Float32x4.parameters = Float32x4_operator_mod_Float32x4_args;
     Symbol::Resolved(&Float32x4_operator_mod_Float32x4_arg0)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&Float32x4_operator_mod_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
@@ -8142,6 +12458,7 @@ Float32x4::Float32x4()
     Float32x4_operator_addasg_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
     Float32x4_operator_addasg_Float32x4.name = "operator+="_c;
     Float32x4_operator_addasg_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_operator_addasg_Float32x4.parameters = Float32x4_operator_addasg_Float32x4_args;
     Symbol::Resolved(&Float32x4_operator_addasg_Float32x4_arg0)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&Float32x4_operator_addasg_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
@@ -8150,6 +12467,7 @@ Float32x4::Float32x4()
     Float32x4_operator_subasg_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
     Float32x4_operator_subasg_Float32x4.name = "operator-="_c;
     Float32x4_operator_subasg_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_operator_subasg_Float32x4.parameters = Float32x4_operator_subasg_Float32x4_args;
     Symbol::Resolved(&Float32x4_operator_subasg_Float32x4_arg0)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&Float32x4_operator_subasg_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
@@ -8158,6 +12476,7 @@ Float32x4::Float32x4()
     Float32x4_operator_mulasg_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
     Float32x4_operator_mulasg_Float32x4.name = "operator*="_c;
     Float32x4_operator_mulasg_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_operator_mulasg_Float32x4.parameters = Float32x4_operator_mulasg_Float32x4_args;
     Symbol::Resolved(&Float32x4_operator_mulasg_Float32x4_arg0)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&Float32x4_operator_mulasg_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
@@ -8166,6 +12485,7 @@ Float32x4::Float32x4()
     Float32x4_operator_divasg_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
     Float32x4_operator_divasg_Float32x4.name = "operator/="_c;
     Float32x4_operator_divasg_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_operator_divasg_Float32x4.parameters = Float32x4_operator_divasg_Float32x4_args;
     Symbol::Resolved(&Float32x4_operator_divasg_Float32x4_arg0)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&Float32x4_operator_divasg_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
@@ -8174,6 +12494,7 @@ Float32x4::Float32x4()
     Float32x4_operator_lt_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
     Float32x4_operator_lt_Float32x4.name = "operator<"_c;
     Float32x4_operator_lt_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_operator_lt_Float32x4.parameters = Float32x4_operator_lt_Float32x4_args;
     Symbol::Resolved(&Float32x4_operator_lt_Float32x4_arg0)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&Float32x4_operator_lt_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
@@ -8182,6 +12503,7 @@ Float32x4::Float32x4()
     Float32x4_operator_lte_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
     Float32x4_operator_lte_Float32x4.name = "operator<="_c;
     Float32x4_operator_lte_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_operator_lte_Float32x4.parameters = Float32x4_operator_lte_Float32x4_args;
     Symbol::Resolved(&Float32x4_operator_lte_Float32x4_arg0)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&Float32x4_operator_lte_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
@@ -8190,6 +12512,7 @@ Float32x4::Float32x4()
     Float32x4_operator_gt_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
     Float32x4_operator_gt_Float32x4.name = "operator>"_c;
     Float32x4_operator_gt_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_operator_gt_Float32x4.parameters = Float32x4_operator_gt_Float32x4_args;
     Symbol::Resolved(&Float32x4_operator_gt_Float32x4_arg0)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&Float32x4_operator_gt_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
@@ -8198,6 +12521,7 @@ Float32x4::Float32x4()
     Float32x4_operator_gte_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
     Float32x4_operator_gte_Float32x4.name = "operator>="_c;
     Float32x4_operator_gte_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_operator_gte_Float32x4.parameters = Float32x4_operator_gte_Float32x4_args;
     Symbol::Resolved(&Float32x4_operator_gte_Float32x4_arg0)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&Float32x4_operator_gte_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
@@ -8206,6 +12530,7 @@ Float32x4::Float32x4()
     Float32x4_operator_eq_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
     Float32x4_operator_eq_Float32x4.name = "operator=="_c;
     Float32x4_operator_eq_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_operator_eq_Float32x4.parameters = Float32x4_operator_eq_Float32x4_args;
     Symbol::Resolved(&Float32x4_operator_eq_Float32x4_arg0)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&Float32x4_operator_eq_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
@@ -8214,6 +12539,7 @@ Float32x4::Float32x4()
     Float32x4_operator_neq_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
     Float32x4_operator_neq_Float32x4.name = "operator!="_c;
     Float32x4_operator_neq_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_operator_neq_Float32x4.parameters = Float32x4_operator_neq_Float32x4_args;
     Symbol::Resolved(&Float32x4_operator_neq_Float32x4_arg0)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&Float32x4_operator_neq_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
@@ -8222,6 +12548,7 @@ Float32x4::Float32x4()
     Float32x4_operator_scale_Float32x4_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Float32x4_operator_scale_Float32x4_Float32.name = "operator*"_c;
     Float32x4_operator_scale_Float32x4_Float32.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_operator_scale_Float32x4_Float32.parameters = Float32x4_operator_scale_Float32x4_Float32_args;
     Symbol::Resolved(&Float32x4_operator_scale_Float32x4_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x4_operator_scale_Float32x4_Float32)->returnTypeSymbol = &Float32x4Type;
 
@@ -8230,6 +12557,7 @@ Float32x4::Float32x4()
     Float32x4_operator_scale_Float32x4_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Float32x4_operator_scale_Float32x4_Float16.name = "operator*"_c;
     Float32x4_operator_scale_Float32x4_Float16.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_operator_scale_Float32x4_Float16.parameters = Float32x4_operator_scale_Float32x4_Float16_args;
     Symbol::Resolved(&Float32x4_operator_scale_Float32x4_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float32x4_operator_scale_Float32x4_Float16)->returnTypeSymbol = &Float32x4Type;
 
@@ -8238,6 +12566,7 @@ Float32x4::Float32x4()
     Float32x4_operator_scale_Float32x4_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Float32x4_operator_scale_Float32x4_UInt32.name = "operator*"_c;
     Float32x4_operator_scale_Float32x4_UInt32.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_operator_scale_Float32x4_UInt32.parameters = Float32x4_operator_scale_Float32x4_UInt32_args;
     Symbol::Resolved(&Float32x4_operator_scale_Float32x4_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Float32x4_operator_scale_Float32x4_UInt32)->returnTypeSymbol = &Float32x4Type;
 
@@ -8246,6 +12575,7 @@ Float32x4::Float32x4()
     Float32x4_operator_scale_Float32x4_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Float32x4_operator_scale_Float32x4_UInt16.name = "operator*"_c;
     Float32x4_operator_scale_Float32x4_UInt16.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_operator_scale_Float32x4_UInt16.parameters = Float32x4_operator_scale_Float32x4_UInt16_args;
     Symbol::Resolved(&Float32x4_operator_scale_Float32x4_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float32x4_operator_scale_Float32x4_UInt16)->returnTypeSymbol = &Float32x4Type;
 
@@ -8254,6 +12584,7 @@ Float32x4::Float32x4()
     Float32x4_operator_scale_Float32x4_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Float32x4_operator_scale_Float32x4_Int32.name = "operator*"_c;
     Float32x4_operator_scale_Float32x4_Int32.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_operator_scale_Float32x4_Int32.parameters = Float32x4_operator_scale_Float32x4_Int32_args;
     Symbol::Resolved(&Float32x4_operator_scale_Float32x4_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Float32x4_operator_scale_Float32x4_Int32)->returnTypeSymbol = &Float32x4Type;
 
@@ -8262,6 +12593,7 @@ Float32x4::Float32x4()
     Float32x4_operator_scale_Float32x4_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Float32x4_operator_scale_Float32x4_Int16.name = "operator*"_c;
     Float32x4_operator_scale_Float32x4_Int16.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_operator_scale_Float32x4_Int16.parameters = Float32x4_operator_scale_Float32x4_Int16_args;
     Symbol::Resolved(&Float32x4_operator_scale_Float32x4_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Float32x4_operator_scale_Float32x4_Int16)->returnTypeSymbol = &Float32x4Type;
 
@@ -8270,6 +12602,7 @@ Float32x4::Float32x4()
     Float32x4_operator_mul_Float32x4x2_arg0.type = Type::FullType{ Float32x4x2Type.name };
     Float32x4_operator_mul_Float32x4x2.name = "operator*"_c;
     Float32x4_operator_mul_Float32x4x2.returnType = Type::FullType{ Float32x2Type.name };
+    Float32x4_operator_mul_Float32x4x2.parameters = Float32x4_operator_mul_Float32x4x2_args;
     Symbol::Resolved(&Float32x4_operator_mul_Float32x4x2_arg0)->typeSymbol = &Float32x4x2Type;
     Symbol::Resolved(&Float32x4_operator_mul_Float32x4x2)->returnTypeSymbol = &Float32x2Type;
 
@@ -8278,6 +12611,7 @@ Float32x4::Float32x4()
     Float32x4_operator_mul_Float32x4x3_arg0.type = Type::FullType{ Float32x4x3Type.name };
     Float32x4_operator_mul_Float32x4x3.name = "operator*"_c;
     Float32x4_operator_mul_Float32x4x3.returnType = Type::FullType{ Float32x3Type.name };
+    Float32x4_operator_mul_Float32x4x3.parameters = Float32x4_operator_mul_Float32x4x3_args;
     Symbol::Resolved(&Float32x4_operator_mul_Float32x4x3_arg0)->typeSymbol = &Float32x4x3Type;
     Symbol::Resolved(&Float32x4_operator_mul_Float32x4x3)->returnTypeSymbol = &Float32x3Type;
 
@@ -8286,46 +12620,11 @@ Float32x4::Float32x4()
     Float32x4_operator_mul_Float32x4x4_arg0.type = Type::FullType{ Float32x4x4Type.name };
     Float32x4_operator_mul_Float32x4x4.name = "operator*"_c;
     Float32x4_operator_mul_Float32x4x4.returnType = Type::FullType{ Float32x4Type.name };
+    Float32x4_operator_mul_Float32x4x4.parameters = Float32x4_operator_mul_Float32x4x4_args;
     Symbol::Resolved(&Float32x4_operator_mul_Float32x4x4_arg0)->typeSymbol = &Float32x4x4Type;
     Symbol::Resolved(&Float32x4_operator_mul_Float32x4x4)->returnTypeSymbol = &Float32x4Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "f32x4"_c, &Float32x4_convert_Float32x4 },
-        std::pair{ "f32x4(f32x4)"_c, &Float32x4_convert_Float32x4 },
-        std::pair{ "f32x4"_c, &Float32x4_splat_Float32 },
-        std::pair{ "f32x4(f32)"_c, &Float32x4_splat_Float32 },
-        std::pair{ "f32x4"_c, &Float32x4_convert_UInt32x4 },
-        std::pair{ "f32x4(u32x4)"_c, &Float32x4_convert_UInt32x4 },
-        std::pair{ "f32x4"_c, &Float32x4_splat_UInt32 },
-        std::pair{ "f32x4(u32)"_c, &Float32x4_splat_UInt32 },
-        std::pair{ "f32x4"_c, &Float32x4_convert_Int32x4 },
-        std::pair{ "f32x4(i32x4)"_c, &Float32x4_convert_Int32x4 },
-        std::pair{ "f32x4"_c, &Float32x4_splat_Int32 },
-        std::pair{ "f32x4(i32)"_c, &Float32x4_splat_Int32 },
-        std::pair{ "f32x4"_c, &Float32x4_convert_Float16x4 },
-        std::pair{ "f32x4(f16x4)"_c, &Float32x4_convert_Float16x4 },
-        std::pair{ "f32x4"_c, &Float32x4_splat_Float16 },
-        std::pair{ "f32x4(f16)"_c, &Float32x4_splat_Float16 },
-        std::pair{ "f32x4"_c, &Float32x4_convert_UInt16x4 },
-        std::pair{ "f32x4(u16x4)"_c, &Float32x4_convert_UInt16x4 },
-        std::pair{ "f32x4"_c, &Float32x4_splat_UInt16 },
-        std::pair{ "f32x4(u16)"_c, &Float32x4_splat_UInt16 },
-        std::pair{ "f32x4"_c, &Float32x4_convert_Int16x4 },
-        std::pair{ "f32x4(i16x4)"_c, &Float32x4_convert_Int16x4 },
-        std::pair{ "f32x4"_c, &Float32x4_splat_Int16 },
-        std::pair{ "f32x4(i16)"_c, &Float32x4_splat_Int16 },
-        std::pair{ "f32x4"_c, &Float32x4_ctor0_Float32_Float32_Float32_Float32},
-        std::pair{ "f32x4(f32,f32,f32,f32)"_c, &Float32x4_ctor0_Float32_Float32_Float32_Float32},
-        std::pair{ "f32x4"_c, &Float32x4_ctor1_Float32x2_Float32_Float32},
-        std::pair{ "f32x4(f32x2,f32,f32)"_c, &Float32x4_ctor1_Float32x2_Float32_Float32},
-        std::pair{ "f32x4"_c, &Float32x4_ctor2_Float32_Float32x2_Float32},
-        std::pair{ "f32x4(f32,f32x2,f32)"_c, &Float32x4_ctor2_Float32_Float32x2_Float32},
-        std::pair{ "f32x4"_c, &Float32x4_ctor3_Float32_Float32_Float32x2},
-        std::pair{ "f32x4(f32,f32,f32x2)"_c, &Float32x4_ctor3_Float32_Float32_Float32x2},
-        std::pair{ "f32x4"_c, &Float32x4_ctor4_Float32x3_Float32},
-        std::pair{ "f32x4(f32x3,f32)"_c, &Float32x4_ctor4_Float32x3_Float32},
-        std::pair{ "f32x4"_c, &Float32x4_ctor5_Float32_Float32x3},
-        std::pair{ "f32x4(f32,f32x3)"_c, &Float32x4_ctor5_Float32_Float32x3},
         std::pair{ "operator[](i32)"_c, &Float32x4_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &Float32x4_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &Float32x4_operator_index_Int16},
@@ -8367,102 +12666,102 @@ UInt32x4::UInt32x4()
     this->baseType = TypeCode::UInt32;
     this->builtin = true;
 
-    // Conversion from Float32x4
-    UInt32x4_convert_Float32x4_arg0.name = "_arg0"_c;
+    UInt32x4_convert_Float32x4_arg0.name = "val"_c;
     UInt32x4_convert_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
+    UInt32x4_convert_Float32x4.documentation = "Convert f32x4 to u32x4"_c;
     UInt32x4_convert_Float32x4.name = "u32x4"_c;
     UInt32x4_convert_Float32x4.returnType = Type::FullType { UInt32x4Type.name };
-    Symbol::Resolved(&UInt32x4_convert_Float32x4_arg0)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&UInt32x4_convert_Float32x4)->returnTypeSymbol = &UInt32x4Type;
-
-    // Splat with Float32
-    UInt32x4_splat_Float32_arg0.name = "_arg0"_c;
+    UInt32x4_convert_Float32x4.parameters = UInt32x4_convert_Float32x4_args;
+    Symbol::Resolved(&UInt32x4_convert_Float32x4_arg0).typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&UInt32x4_convert_Float32x4).returnTypeSymbol = &UInt32x4Type;
+    UInt32x4_splat_Float32_arg0.name = "val"_c;
     UInt32x4_splat_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    UInt32x4_splat_Float32.documentation = "Splat f32x4 to u32x4"_c;
     UInt32x4_splat_Float32.name = "u32x4"_c;
     UInt32x4_splat_Float32.returnType = Type::FullType { UInt32x4Type.name };
-    Symbol::Resolved(&UInt32x4_splat_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&UInt32x4_splat_Float32)->returnTypeSymbol = &UInt32x4Type;
-
-    // Conversion from UInt32x4
-    UInt32x4_convert_UInt32x4_arg0.name = "_arg0"_c;
+    UInt32x4_splat_Float32.parameters = UInt32x4_splat_Float32_args;
+    Symbol::Resolved(&UInt32x4_splat_Float32_arg0).typeSymbol = &Float32Type;
+    Symbol::Resolved(&UInt32x4_splat_Float32).returnTypeSymbol = &UInt32x4Type;
+    UInt32x4_convert_UInt32x4_arg0.name = "val"_c;
     UInt32x4_convert_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_convert_UInt32x4.documentation = "Convert u32x4 to u32x4"_c;
     UInt32x4_convert_UInt32x4.name = "u32x4"_c;
     UInt32x4_convert_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
-    Symbol::Resolved(&UInt32x4_convert_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&UInt32x4_convert_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
-
-    // Splat with UInt32
-    UInt32x4_splat_UInt32_arg0.name = "_arg0"_c;
+    UInt32x4_convert_UInt32x4.parameters = UInt32x4_convert_UInt32x4_args;
+    Symbol::Resolved(&UInt32x4_convert_UInt32x4_arg0).typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&UInt32x4_convert_UInt32x4).returnTypeSymbol = &UInt32x4Type;
+    UInt32x4_splat_UInt32_arg0.name = "val"_c;
     UInt32x4_splat_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    UInt32x4_splat_UInt32.documentation = "Splat u32x4 to u32x4"_c;
     UInt32x4_splat_UInt32.name = "u32x4"_c;
     UInt32x4_splat_UInt32.returnType = Type::FullType { UInt32x4Type.name };
-    Symbol::Resolved(&UInt32x4_splat_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&UInt32x4_splat_UInt32)->returnTypeSymbol = &UInt32x4Type;
-
-    // Conversion from Int32x4
-    UInt32x4_convert_Int32x4_arg0.name = "_arg0"_c;
+    UInt32x4_splat_UInt32.parameters = UInt32x4_splat_UInt32_args;
+    Symbol::Resolved(&UInt32x4_splat_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&UInt32x4_splat_UInt32).returnTypeSymbol = &UInt32x4Type;
+    UInt32x4_convert_Int32x4_arg0.name = "val"_c;
     UInt32x4_convert_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
+    UInt32x4_convert_Int32x4.documentation = "Convert i32x4 to u32x4"_c;
     UInt32x4_convert_Int32x4.name = "u32x4"_c;
     UInt32x4_convert_Int32x4.returnType = Type::FullType { UInt32x4Type.name };
-    Symbol::Resolved(&UInt32x4_convert_Int32x4_arg0)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&UInt32x4_convert_Int32x4)->returnTypeSymbol = &UInt32x4Type;
-
-    // Splat with Int32
-    UInt32x4_splat_Int32_arg0.name = "_arg0"_c;
+    UInt32x4_convert_Int32x4.parameters = UInt32x4_convert_Int32x4_args;
+    Symbol::Resolved(&UInt32x4_convert_Int32x4_arg0).typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&UInt32x4_convert_Int32x4).returnTypeSymbol = &UInt32x4Type;
+    UInt32x4_splat_Int32_arg0.name = "val"_c;
     UInt32x4_splat_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    UInt32x4_splat_Int32.documentation = "Splat i32x4 to u32x4"_c;
     UInt32x4_splat_Int32.name = "u32x4"_c;
     UInt32x4_splat_Int32.returnType = Type::FullType { UInt32x4Type.name };
-    Symbol::Resolved(&UInt32x4_splat_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&UInt32x4_splat_Int32)->returnTypeSymbol = &UInt32x4Type;
-
-    // Conversion from Float16x4
-    UInt32x4_convert_Float16x4_arg0.name = "_arg0"_c;
+    UInt32x4_splat_Int32.parameters = UInt32x4_splat_Int32_args;
+    Symbol::Resolved(&UInt32x4_splat_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&UInt32x4_splat_Int32).returnTypeSymbol = &UInt32x4Type;
+    UInt32x4_convert_Float16x4_arg0.name = "val"_c;
     UInt32x4_convert_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
+    UInt32x4_convert_Float16x4.documentation = "Convert f16x4 to u32x4"_c;
     UInt32x4_convert_Float16x4.name = "u32x4"_c;
     UInt32x4_convert_Float16x4.returnType = Type::FullType { UInt32x4Type.name };
-    Symbol::Resolved(&UInt32x4_convert_Float16x4_arg0)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&UInt32x4_convert_Float16x4)->returnTypeSymbol = &UInt32x4Type;
-
-    // Splat with Float16
-    UInt32x4_splat_Float16_arg0.name = "_arg0"_c;
+    UInt32x4_convert_Float16x4.parameters = UInt32x4_convert_Float16x4_args;
+    Symbol::Resolved(&UInt32x4_convert_Float16x4_arg0).typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&UInt32x4_convert_Float16x4).returnTypeSymbol = &UInt32x4Type;
+    UInt32x4_splat_Float16_arg0.name = "val"_c;
     UInt32x4_splat_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    UInt32x4_splat_Float16.documentation = "Splat f16x4 to u32x4"_c;
     UInt32x4_splat_Float16.name = "u32x4"_c;
     UInt32x4_splat_Float16.returnType = Type::FullType { UInt32x4Type.name };
-    Symbol::Resolved(&UInt32x4_splat_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&UInt32x4_splat_Float16)->returnTypeSymbol = &UInt32x4Type;
-
-    // Conversion from UInt16x4
-    UInt32x4_convert_UInt16x4_arg0.name = "_arg0"_c;
+    UInt32x4_splat_Float16.parameters = UInt32x4_splat_Float16_args;
+    Symbol::Resolved(&UInt32x4_splat_Float16_arg0).typeSymbol = &Float16Type;
+    Symbol::Resolved(&UInt32x4_splat_Float16).returnTypeSymbol = &UInt32x4Type;
+    UInt32x4_convert_UInt16x4_arg0.name = "val"_c;
     UInt32x4_convert_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
+    UInt32x4_convert_UInt16x4.documentation = "Convert u16x4 to u32x4"_c;
     UInt32x4_convert_UInt16x4.name = "u32x4"_c;
     UInt32x4_convert_UInt16x4.returnType = Type::FullType { UInt32x4Type.name };
-    Symbol::Resolved(&UInt32x4_convert_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
-    Symbol::Resolved(&UInt32x4_convert_UInt16x4)->returnTypeSymbol = &UInt32x4Type;
-
-    // Splat with UInt16
-    UInt32x4_splat_UInt16_arg0.name = "_arg0"_c;
+    UInt32x4_convert_UInt16x4.parameters = UInt32x4_convert_UInt16x4_args;
+    Symbol::Resolved(&UInt32x4_convert_UInt16x4_arg0).typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&UInt32x4_convert_UInt16x4).returnTypeSymbol = &UInt32x4Type;
+    UInt32x4_splat_UInt16_arg0.name = "val"_c;
     UInt32x4_splat_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    UInt32x4_splat_UInt16.documentation = "Splat u16x4 to u32x4"_c;
     UInt32x4_splat_UInt16.name = "u32x4"_c;
     UInt32x4_splat_UInt16.returnType = Type::FullType { UInt32x4Type.name };
-    Symbol::Resolved(&UInt32x4_splat_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&UInt32x4_splat_UInt16)->returnTypeSymbol = &UInt32x4Type;
-
-    // Conversion from Int16x4
-    UInt32x4_convert_Int16x4_arg0.name = "_arg0"_c;
+    UInt32x4_splat_UInt16.parameters = UInt32x4_splat_UInt16_args;
+    Symbol::Resolved(&UInt32x4_splat_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&UInt32x4_splat_UInt16).returnTypeSymbol = &UInt32x4Type;
+    UInt32x4_convert_Int16x4_arg0.name = "val"_c;
     UInt32x4_convert_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
+    UInt32x4_convert_Int16x4.documentation = "Convert i16x4 to u32x4"_c;
     UInt32x4_convert_Int16x4.name = "u32x4"_c;
     UInt32x4_convert_Int16x4.returnType = Type::FullType { UInt32x4Type.name };
-    Symbol::Resolved(&UInt32x4_convert_Int16x4_arg0)->typeSymbol = &Int16x4Type;
-    Symbol::Resolved(&UInt32x4_convert_Int16x4)->returnTypeSymbol = &UInt32x4Type;
-
-    // Splat with Int16
-    UInt32x4_splat_Int16_arg0.name = "_arg0"_c;
+    UInt32x4_convert_Int16x4.parameters = UInt32x4_convert_Int16x4_args;
+    Symbol::Resolved(&UInt32x4_convert_Int16x4_arg0).typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&UInt32x4_convert_Int16x4).returnTypeSymbol = &UInt32x4Type;
+    UInt32x4_splat_Int16_arg0.name = "val"_c;
     UInt32x4_splat_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    UInt32x4_splat_Int16.documentation = "Splat i16x4 to u32x4"_c;
     UInt32x4_splat_Int16.name = "u32x4"_c;
     UInt32x4_splat_Int16.returnType = Type::FullType { UInt32x4Type.name };
-    Symbol::Resolved(&UInt32x4_splat_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&UInt32x4_splat_Int16)->returnTypeSymbol = &UInt32x4Type;
-
+    UInt32x4_splat_Int16.parameters = UInt32x4_splat_Int16_args;
+    Symbol::Resolved(&UInt32x4_splat_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&UInt32x4_splat_Int16).returnTypeSymbol = &UInt32x4Type;
     // Construct with UInt32, UInt32, UInt32, UInt32
     UInt32x4_ctor0_arg0.name = "_arg0"_c;
     UInt32x4_ctor0_arg0.type = Type::FullType { UInt32Type.name };
@@ -8474,6 +12773,7 @@ UInt32x4::UInt32x4()
     UInt32x4_ctor0_arg3.type = Type::FullType { UInt32Type.name };
     UInt32x4_ctor0_UInt32_UInt32_UInt32_UInt32.name = "0"_c;
     UInt32x4_ctor0_UInt32_UInt32_UInt32_UInt32.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_ctor0_UInt32_UInt32_UInt32_UInt32.parameters = UInt32x4_ctor0_UInt32_UInt32_UInt32_UInt32_args;
     Symbol::Resolved(&UInt32x4_ctor0_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32x4_ctor0_arg1)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32x4_ctor0_arg2)->typeSymbol = &UInt32Type;
@@ -8489,6 +12789,7 @@ UInt32x4::UInt32x4()
     UInt32x4_ctor1_arg2.type = Type::FullType { UInt32Type.name };
     UInt32x4_ctor1_UInt32x2_UInt32_UInt32.name = "1"_c;
     UInt32x4_ctor1_UInt32x2_UInt32_UInt32.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_ctor1_UInt32x2_UInt32_UInt32.parameters = UInt32x4_ctor1_UInt32x2_UInt32_UInt32_args;
     Symbol::Resolved(&UInt32x4_ctor1_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x4_ctor1_arg1)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32x4_ctor1_arg2)->typeSymbol = &UInt32Type;
@@ -8503,6 +12804,7 @@ UInt32x4::UInt32x4()
     UInt32x4_ctor2_arg2.type = Type::FullType { UInt32Type.name };
     UInt32x4_ctor2_UInt32_UInt32x2_UInt32.name = "2"_c;
     UInt32x4_ctor2_UInt32_UInt32x2_UInt32.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_ctor2_UInt32_UInt32x2_UInt32.parameters = UInt32x4_ctor2_UInt32_UInt32x2_UInt32_args;
     Symbol::Resolved(&UInt32x4_ctor2_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32x4_ctor2_arg1)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x4_ctor2_arg2)->typeSymbol = &UInt32Type;
@@ -8517,6 +12819,7 @@ UInt32x4::UInt32x4()
     UInt32x4_ctor3_arg2.type = Type::FullType { UInt32x2Type.name };
     UInt32x4_ctor3_UInt32_UInt32_UInt32x2.name = "3"_c;
     UInt32x4_ctor3_UInt32_UInt32_UInt32x2.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_ctor3_UInt32_UInt32_UInt32x2.parameters = UInt32x4_ctor3_UInt32_UInt32_UInt32x2_args;
     Symbol::Resolved(&UInt32x4_ctor3_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32x4_ctor3_arg1)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32x4_ctor3_arg2)->typeSymbol = &UInt32x2Type;
@@ -8529,6 +12832,7 @@ UInt32x4::UInt32x4()
     UInt32x4_ctor4_arg1.type = Type::FullType { UInt32Type.name };
     UInt32x4_ctor4_UInt32x3_UInt32.name = "4"_c;
     UInt32x4_ctor4_UInt32x3_UInt32.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_ctor4_UInt32x3_UInt32.parameters = UInt32x4_ctor4_UInt32x3_UInt32_args;
     Symbol::Resolved(&UInt32x4_ctor4_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x4_ctor4_arg1)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32x4_ctor4_UInt32x3_UInt32)->returnTypeSymbol = &UInt32x4Type;
@@ -8540,6 +12844,7 @@ UInt32x4::UInt32x4()
     UInt32x4_ctor5_arg1.type = Type::FullType { UInt32x3Type.name };
     UInt32x4_ctor5_UInt32_UInt32x3.name = "5"_c;
     UInt32x4_ctor5_UInt32_UInt32x3.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_ctor5_UInt32_UInt32x3.parameters = UInt32x4_ctor5_UInt32_UInt32x3_args;
     Symbol::Resolved(&UInt32x4_ctor5_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32x4_ctor5_arg1)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x4_ctor5_UInt32_UInt32x3)->returnTypeSymbol = &UInt32x4Type;
@@ -8549,6 +12854,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     UInt32x4_operator_index_Int32.name = "operator[]"_c;
     UInt32x4_operator_index_Int32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32x4_operator_index_Int32.parameters = UInt32x4_operator_index_Int32_args;
     Symbol::Resolved(&UInt32x4_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&UInt32x4_operator_index_Int32)->returnTypeSymbol = &UInt32Type;
 
@@ -8557,6 +12863,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32x4_operator_index_UInt32.name = "operator[]"_c;
     UInt32x4_operator_index_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    UInt32x4_operator_index_UInt32.parameters = UInt32x4_operator_index_UInt32_args;
     Symbol::Resolved(&UInt32x4_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32x4_operator_index_UInt32)->returnTypeSymbol = &UInt32Type;
 
@@ -8565,6 +12872,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     UInt32x4_operator_index_Int16.name = "operator[]"_c;
     UInt32x4_operator_index_Int16.returnType = Type::FullType{ UInt32Type.name };
+    UInt32x4_operator_index_Int16.parameters = UInt32x4_operator_index_Int16_args;
     Symbol::Resolved(&UInt32x4_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&UInt32x4_operator_index_Int16)->returnTypeSymbol = &UInt32Type;
 
@@ -8573,6 +12881,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt32x4_operator_index_UInt16.name = "operator[]"_c;
     UInt32x4_operator_index_UInt16.returnType = Type::FullType{ UInt32Type.name };
+    UInt32x4_operator_index_UInt16.parameters = UInt32x4_operator_index_UInt16_args;
     Symbol::Resolved(&UInt32x4_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt32x4_operator_index_UInt16)->returnTypeSymbol = &UInt32Type;
 
@@ -8581,6 +12890,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_add_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
     UInt32x4_operator_add_UInt32x4.name = "operator+"_c;
     UInt32x4_operator_add_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_add_UInt32x4.parameters = UInt32x4_operator_add_UInt32x4_args;
     Symbol::Resolved(&UInt32x4_operator_add_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&UInt32x4_operator_add_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8589,6 +12899,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_sub_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
     UInt32x4_operator_sub_UInt32x4.name = "operator-"_c;
     UInt32x4_operator_sub_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_sub_UInt32x4.parameters = UInt32x4_operator_sub_UInt32x4_args;
     Symbol::Resolved(&UInt32x4_operator_sub_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&UInt32x4_operator_sub_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8597,6 +12908,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_mul_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
     UInt32x4_operator_mul_UInt32x4.name = "operator*"_c;
     UInt32x4_operator_mul_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_mul_UInt32x4.parameters = UInt32x4_operator_mul_UInt32x4_args;
     Symbol::Resolved(&UInt32x4_operator_mul_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&UInt32x4_operator_mul_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8605,6 +12917,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_div_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
     UInt32x4_operator_div_UInt32x4.name = "operator/"_c;
     UInt32x4_operator_div_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_div_UInt32x4.parameters = UInt32x4_operator_div_UInt32x4_args;
     Symbol::Resolved(&UInt32x4_operator_div_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&UInt32x4_operator_div_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8613,6 +12926,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_mod_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
     UInt32x4_operator_mod_UInt32x4.name = "operator%"_c;
     UInt32x4_operator_mod_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_mod_UInt32x4.parameters = UInt32x4_operator_mod_UInt32x4_args;
     Symbol::Resolved(&UInt32x4_operator_mod_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&UInt32x4_operator_mod_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8621,6 +12935,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_addasg_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
     UInt32x4_operator_addasg_UInt32x4.name = "operator+="_c;
     UInt32x4_operator_addasg_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_addasg_UInt32x4.parameters = UInt32x4_operator_addasg_UInt32x4_args;
     Symbol::Resolved(&UInt32x4_operator_addasg_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&UInt32x4_operator_addasg_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8629,6 +12944,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_subasg_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
     UInt32x4_operator_subasg_UInt32x4.name = "operator-="_c;
     UInt32x4_operator_subasg_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_subasg_UInt32x4.parameters = UInt32x4_operator_subasg_UInt32x4_args;
     Symbol::Resolved(&UInt32x4_operator_subasg_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&UInt32x4_operator_subasg_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8637,6 +12953,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_mulasg_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
     UInt32x4_operator_mulasg_UInt32x4.name = "operator*="_c;
     UInt32x4_operator_mulasg_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_mulasg_UInt32x4.parameters = UInt32x4_operator_mulasg_UInt32x4_args;
     Symbol::Resolved(&UInt32x4_operator_mulasg_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&UInt32x4_operator_mulasg_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8645,6 +12962,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_divasg_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
     UInt32x4_operator_divasg_UInt32x4.name = "operator/="_c;
     UInt32x4_operator_divasg_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_divasg_UInt32x4.parameters = UInt32x4_operator_divasg_UInt32x4_args;
     Symbol::Resolved(&UInt32x4_operator_divasg_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&UInt32x4_operator_divasg_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8653,6 +12971,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_lt_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
     UInt32x4_operator_lt_UInt32x4.name = "operator<"_c;
     UInt32x4_operator_lt_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_lt_UInt32x4.parameters = UInt32x4_operator_lt_UInt32x4_args;
     Symbol::Resolved(&UInt32x4_operator_lt_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&UInt32x4_operator_lt_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8661,6 +12980,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_lte_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
     UInt32x4_operator_lte_UInt32x4.name = "operator<="_c;
     UInt32x4_operator_lte_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_lte_UInt32x4.parameters = UInt32x4_operator_lte_UInt32x4_args;
     Symbol::Resolved(&UInt32x4_operator_lte_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&UInt32x4_operator_lte_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8669,6 +12989,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_gt_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
     UInt32x4_operator_gt_UInt32x4.name = "operator>"_c;
     UInt32x4_operator_gt_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_gt_UInt32x4.parameters = UInt32x4_operator_gt_UInt32x4_args;
     Symbol::Resolved(&UInt32x4_operator_gt_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&UInt32x4_operator_gt_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8677,6 +12998,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_gte_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
     UInt32x4_operator_gte_UInt32x4.name = "operator>="_c;
     UInt32x4_operator_gte_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_gte_UInt32x4.parameters = UInt32x4_operator_gte_UInt32x4_args;
     Symbol::Resolved(&UInt32x4_operator_gte_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&UInt32x4_operator_gte_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8685,6 +13007,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_eq_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
     UInt32x4_operator_eq_UInt32x4.name = "operator=="_c;
     UInt32x4_operator_eq_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_eq_UInt32x4.parameters = UInt32x4_operator_eq_UInt32x4_args;
     Symbol::Resolved(&UInt32x4_operator_eq_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&UInt32x4_operator_eq_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8693,6 +13016,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_neq_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
     UInt32x4_operator_neq_UInt32x4.name = "operator!="_c;
     UInt32x4_operator_neq_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_neq_UInt32x4.parameters = UInt32x4_operator_neq_UInt32x4_args;
     Symbol::Resolved(&UInt32x4_operator_neq_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&UInt32x4_operator_neq_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8701,6 +13025,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_scale_UInt32x4_Float32_arg0.type = Type::FullType{ Float32Type.name };
     UInt32x4_operator_scale_UInt32x4_Float32.name = "operator*"_c;
     UInt32x4_operator_scale_UInt32x4_Float32.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_scale_UInt32x4_Float32.parameters = UInt32x4_operator_scale_UInt32x4_Float32_args;
     Symbol::Resolved(&UInt32x4_operator_scale_UInt32x4_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&UInt32x4_operator_scale_UInt32x4_Float32)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8709,6 +13034,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_scale_UInt32x4_Float16_arg0.type = Type::FullType{ Float16Type.name };
     UInt32x4_operator_scale_UInt32x4_Float16.name = "operator*"_c;
     UInt32x4_operator_scale_UInt32x4_Float16.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_scale_UInt32x4_Float16.parameters = UInt32x4_operator_scale_UInt32x4_Float16_args;
     Symbol::Resolved(&UInt32x4_operator_scale_UInt32x4_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&UInt32x4_operator_scale_UInt32x4_Float16)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8717,6 +13043,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_scale_UInt32x4_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt32x4_operator_scale_UInt32x4_UInt32.name = "operator*"_c;
     UInt32x4_operator_scale_UInt32x4_UInt32.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_scale_UInt32x4_UInt32.parameters = UInt32x4_operator_scale_UInt32x4_UInt32_args;
     Symbol::Resolved(&UInt32x4_operator_scale_UInt32x4_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32x4_operator_scale_UInt32x4_UInt32)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8725,6 +13052,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_scale_UInt32x4_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt32x4_operator_scale_UInt32x4_UInt16.name = "operator*"_c;
     UInt32x4_operator_scale_UInt32x4_UInt16.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_scale_UInt32x4_UInt16.parameters = UInt32x4_operator_scale_UInt32x4_UInt16_args;
     Symbol::Resolved(&UInt32x4_operator_scale_UInt32x4_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt32x4_operator_scale_UInt32x4_UInt16)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8733,6 +13061,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_scale_UInt32x4_Int32_arg0.type = Type::FullType{ Int32Type.name };
     UInt32x4_operator_scale_UInt32x4_Int32.name = "operator*"_c;
     UInt32x4_operator_scale_UInt32x4_Int32.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_scale_UInt32x4_Int32.parameters = UInt32x4_operator_scale_UInt32x4_Int32_args;
     Symbol::Resolved(&UInt32x4_operator_scale_UInt32x4_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&UInt32x4_operator_scale_UInt32x4_Int32)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8741,6 +13070,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_scale_UInt32x4_Int16_arg0.type = Type::FullType{ Int16Type.name };
     UInt32x4_operator_scale_UInt32x4_Int16.name = "operator*"_c;
     UInt32x4_operator_scale_UInt32x4_Int16.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_scale_UInt32x4_Int16.parameters = UInt32x4_operator_scale_UInt32x4_Int16_args;
     Symbol::Resolved(&UInt32x4_operator_scale_UInt32x4_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&UInt32x4_operator_scale_UInt32x4_Int16)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8749,6 +13079,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_or_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
     UInt32x4_operator_or_UInt32x4.name = "operator|"_c;
     UInt32x4_operator_or_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_or_UInt32x4.parameters = UInt32x4_operator_or_UInt32x4_args;
     Symbol::Resolved(&UInt32x4_operator_or_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&UInt32x4_operator_or_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8757,6 +13088,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_and_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
     UInt32x4_operator_and_UInt32x4.name = "operator&"_c;
     UInt32x4_operator_and_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_and_UInt32x4.parameters = UInt32x4_operator_and_UInt32x4_args;
     Symbol::Resolved(&UInt32x4_operator_and_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&UInt32x4_operator_and_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8765,6 +13097,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_xor_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
     UInt32x4_operator_xor_UInt32x4.name = "operator^"_c;
     UInt32x4_operator_xor_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_xor_UInt32x4.parameters = UInt32x4_operator_xor_UInt32x4_args;
     Symbol::Resolved(&UInt32x4_operator_xor_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&UInt32x4_operator_xor_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8773,6 +13106,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_lsh_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
     UInt32x4_operator_lsh_UInt32x4.name = "operator<<"_c;
     UInt32x4_operator_lsh_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_lsh_UInt32x4.parameters = UInt32x4_operator_lsh_UInt32x4_args;
     Symbol::Resolved(&UInt32x4_operator_lsh_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&UInt32x4_operator_lsh_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8781,6 +13115,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_rsh_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
     UInt32x4_operator_rsh_UInt32x4.name = "operator>>"_c;
     UInt32x4_operator_rsh_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_rsh_UInt32x4.parameters = UInt32x4_operator_rsh_UInt32x4_args;
     Symbol::Resolved(&UInt32x4_operator_rsh_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&UInt32x4_operator_rsh_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8789,6 +13124,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_orasg_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
     UInt32x4_operator_orasg_UInt32x4.name = "operator|="_c;
     UInt32x4_operator_orasg_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_orasg_UInt32x4.parameters = UInt32x4_operator_orasg_UInt32x4_args;
     Symbol::Resolved(&UInt32x4_operator_orasg_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&UInt32x4_operator_orasg_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8797,6 +13133,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_andasg_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
     UInt32x4_operator_andasg_UInt32x4.name = "operator&="_c;
     UInt32x4_operator_andasg_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_andasg_UInt32x4.parameters = UInt32x4_operator_andasg_UInt32x4_args;
     Symbol::Resolved(&UInt32x4_operator_andasg_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&UInt32x4_operator_andasg_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8805,6 +13142,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_xorasg_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
     UInt32x4_operator_xorasg_UInt32x4.name = "operator^="_c;
     UInt32x4_operator_xorasg_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_xorasg_UInt32x4.parameters = UInt32x4_operator_xorasg_UInt32x4_args;
     Symbol::Resolved(&UInt32x4_operator_xorasg_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&UInt32x4_operator_xorasg_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8813,6 +13151,7 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_lshasg_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
     UInt32x4_operator_lshasg_UInt32x4.name = "operator<<="_c;
     UInt32x4_operator_lshasg_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_lshasg_UInt32x4.parameters = UInt32x4_operator_lshasg_UInt32x4_args;
     Symbol::Resolved(&UInt32x4_operator_lshasg_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&UInt32x4_operator_lshasg_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
@@ -8821,46 +13160,11 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_rhsasg_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
     UInt32x4_operator_rhsasg_UInt32x4.name = "operator>>="_c;
     UInt32x4_operator_rhsasg_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_operator_rhsasg_UInt32x4.parameters = UInt32x4_operator_rhsasg_UInt32x4_args;
     Symbol::Resolved(&UInt32x4_operator_rhsasg_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&UInt32x4_operator_rhsasg_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "u32x4"_c, &UInt32x4_convert_Float32x4 },
-        std::pair{ "u32x4(f32x4)"_c, &UInt32x4_convert_Float32x4 },
-        std::pair{ "u32x4"_c, &UInt32x4_splat_Float32 },
-        std::pair{ "u32x4(f32)"_c, &UInt32x4_splat_Float32 },
-        std::pair{ "u32x4"_c, &UInt32x4_convert_UInt32x4 },
-        std::pair{ "u32x4(u32x4)"_c, &UInt32x4_convert_UInt32x4 },
-        std::pair{ "u32x4"_c, &UInt32x4_splat_UInt32 },
-        std::pair{ "u32x4(u32)"_c, &UInt32x4_splat_UInt32 },
-        std::pair{ "u32x4"_c, &UInt32x4_convert_Int32x4 },
-        std::pair{ "u32x4(i32x4)"_c, &UInt32x4_convert_Int32x4 },
-        std::pair{ "u32x4"_c, &UInt32x4_splat_Int32 },
-        std::pair{ "u32x4(i32)"_c, &UInt32x4_splat_Int32 },
-        std::pair{ "u32x4"_c, &UInt32x4_convert_Float16x4 },
-        std::pair{ "u32x4(f16x4)"_c, &UInt32x4_convert_Float16x4 },
-        std::pair{ "u32x4"_c, &UInt32x4_splat_Float16 },
-        std::pair{ "u32x4(f16)"_c, &UInt32x4_splat_Float16 },
-        std::pair{ "u32x4"_c, &UInt32x4_convert_UInt16x4 },
-        std::pair{ "u32x4(u16x4)"_c, &UInt32x4_convert_UInt16x4 },
-        std::pair{ "u32x4"_c, &UInt32x4_splat_UInt16 },
-        std::pair{ "u32x4(u16)"_c, &UInt32x4_splat_UInt16 },
-        std::pair{ "u32x4"_c, &UInt32x4_convert_Int16x4 },
-        std::pair{ "u32x4(i16x4)"_c, &UInt32x4_convert_Int16x4 },
-        std::pair{ "u32x4"_c, &UInt32x4_splat_Int16 },
-        std::pair{ "u32x4(i16)"_c, &UInt32x4_splat_Int16 },
-        std::pair{ "u32x4"_c, &UInt32x4_ctor0_UInt32_UInt32_UInt32_UInt32},
-        std::pair{ "u32x4(u32,u32,u32,u32)"_c, &UInt32x4_ctor0_UInt32_UInt32_UInt32_UInt32},
-        std::pair{ "u32x4"_c, &UInt32x4_ctor1_UInt32x2_UInt32_UInt32},
-        std::pair{ "u32x4(u32x2,u32,u32)"_c, &UInt32x4_ctor1_UInt32x2_UInt32_UInt32},
-        std::pair{ "u32x4"_c, &UInt32x4_ctor2_UInt32_UInt32x2_UInt32},
-        std::pair{ "u32x4(u32,u32x2,u32)"_c, &UInt32x4_ctor2_UInt32_UInt32x2_UInt32},
-        std::pair{ "u32x4"_c, &UInt32x4_ctor3_UInt32_UInt32_UInt32x2},
-        std::pair{ "u32x4(u32,u32,u32x2)"_c, &UInt32x4_ctor3_UInt32_UInt32_UInt32x2},
-        std::pair{ "u32x4"_c, &UInt32x4_ctor4_UInt32x3_UInt32},
-        std::pair{ "u32x4(u32x3,u32)"_c, &UInt32x4_ctor4_UInt32x3_UInt32},
-        std::pair{ "u32x4"_c, &UInt32x4_ctor5_UInt32_UInt32x3},
-        std::pair{ "u32x4(u32,u32x3)"_c, &UInt32x4_ctor5_UInt32_UInt32x3},
         std::pair{ "operator[](i32)"_c, &UInt32x4_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &UInt32x4_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &UInt32x4_operator_index_Int16},
@@ -8909,102 +13213,102 @@ Int32x4::Int32x4()
     this->baseType = TypeCode::Int32;
     this->builtin = true;
 
-    // Conversion from Float32x4
-    Int32x4_convert_Float32x4_arg0.name = "_arg0"_c;
+    Int32x4_convert_Float32x4_arg0.name = "val"_c;
     Int32x4_convert_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
+    Int32x4_convert_Float32x4.documentation = "Convert f32x4 to i32x4"_c;
     Int32x4_convert_Float32x4.name = "i32x4"_c;
     Int32x4_convert_Float32x4.returnType = Type::FullType { Int32x4Type.name };
-    Symbol::Resolved(&Int32x4_convert_Float32x4_arg0)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&Int32x4_convert_Float32x4)->returnTypeSymbol = &Int32x4Type;
-
-    // Splat with Float32
-    Int32x4_splat_Float32_arg0.name = "_arg0"_c;
+    Int32x4_convert_Float32x4.parameters = Int32x4_convert_Float32x4_args;
+    Symbol::Resolved(&Int32x4_convert_Float32x4_arg0).typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&Int32x4_convert_Float32x4).returnTypeSymbol = &Int32x4Type;
+    Int32x4_splat_Float32_arg0.name = "val"_c;
     Int32x4_splat_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    Int32x4_splat_Float32.documentation = "Splat f32x4 to i32x4"_c;
     Int32x4_splat_Float32.name = "i32x4"_c;
     Int32x4_splat_Float32.returnType = Type::FullType { Int32x4Type.name };
-    Symbol::Resolved(&Int32x4_splat_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Int32x4_splat_Float32)->returnTypeSymbol = &Int32x4Type;
-
-    // Conversion from UInt32x4
-    Int32x4_convert_UInt32x4_arg0.name = "_arg0"_c;
+    Int32x4_splat_Float32.parameters = Int32x4_splat_Float32_args;
+    Symbol::Resolved(&Int32x4_splat_Float32_arg0).typeSymbol = &Float32Type;
+    Symbol::Resolved(&Int32x4_splat_Float32).returnTypeSymbol = &Int32x4Type;
+    Int32x4_convert_UInt32x4_arg0.name = "val"_c;
     Int32x4_convert_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
+    Int32x4_convert_UInt32x4.documentation = "Convert u32x4 to i32x4"_c;
     Int32x4_convert_UInt32x4.name = "i32x4"_c;
     Int32x4_convert_UInt32x4.returnType = Type::FullType { Int32x4Type.name };
-    Symbol::Resolved(&Int32x4_convert_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&Int32x4_convert_UInt32x4)->returnTypeSymbol = &Int32x4Type;
-
-    // Splat with UInt32
-    Int32x4_splat_UInt32_arg0.name = "_arg0"_c;
+    Int32x4_convert_UInt32x4.parameters = Int32x4_convert_UInt32x4_args;
+    Symbol::Resolved(&Int32x4_convert_UInt32x4_arg0).typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&Int32x4_convert_UInt32x4).returnTypeSymbol = &Int32x4Type;
+    Int32x4_splat_UInt32_arg0.name = "val"_c;
     Int32x4_splat_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    Int32x4_splat_UInt32.documentation = "Splat u32x4 to i32x4"_c;
     Int32x4_splat_UInt32.name = "i32x4"_c;
     Int32x4_splat_UInt32.returnType = Type::FullType { Int32x4Type.name };
-    Symbol::Resolved(&Int32x4_splat_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Int32x4_splat_UInt32)->returnTypeSymbol = &Int32x4Type;
-
-    // Conversion from Int32x4
-    Int32x4_convert_Int32x4_arg0.name = "_arg0"_c;
+    Int32x4_splat_UInt32.parameters = Int32x4_splat_UInt32_args;
+    Symbol::Resolved(&Int32x4_splat_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&Int32x4_splat_UInt32).returnTypeSymbol = &Int32x4Type;
+    Int32x4_convert_Int32x4_arg0.name = "val"_c;
     Int32x4_convert_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
+    Int32x4_convert_Int32x4.documentation = "Convert i32x4 to i32x4"_c;
     Int32x4_convert_Int32x4.name = "i32x4"_c;
     Int32x4_convert_Int32x4.returnType = Type::FullType { Int32x4Type.name };
-    Symbol::Resolved(&Int32x4_convert_Int32x4_arg0)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&Int32x4_convert_Int32x4)->returnTypeSymbol = &Int32x4Type;
-
-    // Splat with Int32
-    Int32x4_splat_Int32_arg0.name = "_arg0"_c;
+    Int32x4_convert_Int32x4.parameters = Int32x4_convert_Int32x4_args;
+    Symbol::Resolved(&Int32x4_convert_Int32x4_arg0).typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&Int32x4_convert_Int32x4).returnTypeSymbol = &Int32x4Type;
+    Int32x4_splat_Int32_arg0.name = "val"_c;
     Int32x4_splat_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    Int32x4_splat_Int32.documentation = "Splat i32x4 to i32x4"_c;
     Int32x4_splat_Int32.name = "i32x4"_c;
     Int32x4_splat_Int32.returnType = Type::FullType { Int32x4Type.name };
-    Symbol::Resolved(&Int32x4_splat_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Int32x4_splat_Int32)->returnTypeSymbol = &Int32x4Type;
-
-    // Conversion from Float16x4
-    Int32x4_convert_Float16x4_arg0.name = "_arg0"_c;
+    Int32x4_splat_Int32.parameters = Int32x4_splat_Int32_args;
+    Symbol::Resolved(&Int32x4_splat_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&Int32x4_splat_Int32).returnTypeSymbol = &Int32x4Type;
+    Int32x4_convert_Float16x4_arg0.name = "val"_c;
     Int32x4_convert_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
+    Int32x4_convert_Float16x4.documentation = "Convert f16x4 to i32x4"_c;
     Int32x4_convert_Float16x4.name = "i32x4"_c;
     Int32x4_convert_Float16x4.returnType = Type::FullType { Int32x4Type.name };
-    Symbol::Resolved(&Int32x4_convert_Float16x4_arg0)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&Int32x4_convert_Float16x4)->returnTypeSymbol = &Int32x4Type;
-
-    // Splat with Float16
-    Int32x4_splat_Float16_arg0.name = "_arg0"_c;
+    Int32x4_convert_Float16x4.parameters = Int32x4_convert_Float16x4_args;
+    Symbol::Resolved(&Int32x4_convert_Float16x4_arg0).typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&Int32x4_convert_Float16x4).returnTypeSymbol = &Int32x4Type;
+    Int32x4_splat_Float16_arg0.name = "val"_c;
     Int32x4_splat_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    Int32x4_splat_Float16.documentation = "Splat f16x4 to i32x4"_c;
     Int32x4_splat_Float16.name = "i32x4"_c;
     Int32x4_splat_Float16.returnType = Type::FullType { Int32x4Type.name };
-    Symbol::Resolved(&Int32x4_splat_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Int32x4_splat_Float16)->returnTypeSymbol = &Int32x4Type;
-
-    // Conversion from UInt16x4
-    Int32x4_convert_UInt16x4_arg0.name = "_arg0"_c;
+    Int32x4_splat_Float16.parameters = Int32x4_splat_Float16_args;
+    Symbol::Resolved(&Int32x4_splat_Float16_arg0).typeSymbol = &Float16Type;
+    Symbol::Resolved(&Int32x4_splat_Float16).returnTypeSymbol = &Int32x4Type;
+    Int32x4_convert_UInt16x4_arg0.name = "val"_c;
     Int32x4_convert_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
+    Int32x4_convert_UInt16x4.documentation = "Convert u16x4 to i32x4"_c;
     Int32x4_convert_UInt16x4.name = "i32x4"_c;
     Int32x4_convert_UInt16x4.returnType = Type::FullType { Int32x4Type.name };
-    Symbol::Resolved(&Int32x4_convert_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
-    Symbol::Resolved(&Int32x4_convert_UInt16x4)->returnTypeSymbol = &Int32x4Type;
-
-    // Splat with UInt16
-    Int32x4_splat_UInt16_arg0.name = "_arg0"_c;
+    Int32x4_convert_UInt16x4.parameters = Int32x4_convert_UInt16x4_args;
+    Symbol::Resolved(&Int32x4_convert_UInt16x4_arg0).typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&Int32x4_convert_UInt16x4).returnTypeSymbol = &Int32x4Type;
+    Int32x4_splat_UInt16_arg0.name = "val"_c;
     Int32x4_splat_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    Int32x4_splat_UInt16.documentation = "Splat u16x4 to i32x4"_c;
     Int32x4_splat_UInt16.name = "i32x4"_c;
     Int32x4_splat_UInt16.returnType = Type::FullType { Int32x4Type.name };
-    Symbol::Resolved(&Int32x4_splat_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Int32x4_splat_UInt16)->returnTypeSymbol = &Int32x4Type;
-
-    // Conversion from Int16x4
-    Int32x4_convert_Int16x4_arg0.name = "_arg0"_c;
+    Int32x4_splat_UInt16.parameters = Int32x4_splat_UInt16_args;
+    Symbol::Resolved(&Int32x4_splat_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&Int32x4_splat_UInt16).returnTypeSymbol = &Int32x4Type;
+    Int32x4_convert_Int16x4_arg0.name = "val"_c;
     Int32x4_convert_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
+    Int32x4_convert_Int16x4.documentation = "Convert i16x4 to i32x4"_c;
     Int32x4_convert_Int16x4.name = "i32x4"_c;
     Int32x4_convert_Int16x4.returnType = Type::FullType { Int32x4Type.name };
-    Symbol::Resolved(&Int32x4_convert_Int16x4_arg0)->typeSymbol = &Int16x4Type;
-    Symbol::Resolved(&Int32x4_convert_Int16x4)->returnTypeSymbol = &Int32x4Type;
-
-    // Splat with Int16
-    Int32x4_splat_Int16_arg0.name = "_arg0"_c;
+    Int32x4_convert_Int16x4.parameters = Int32x4_convert_Int16x4_args;
+    Symbol::Resolved(&Int32x4_convert_Int16x4_arg0).typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&Int32x4_convert_Int16x4).returnTypeSymbol = &Int32x4Type;
+    Int32x4_splat_Int16_arg0.name = "val"_c;
     Int32x4_splat_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    Int32x4_splat_Int16.documentation = "Splat i16x4 to i32x4"_c;
     Int32x4_splat_Int16.name = "i32x4"_c;
     Int32x4_splat_Int16.returnType = Type::FullType { Int32x4Type.name };
-    Symbol::Resolved(&Int32x4_splat_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Int32x4_splat_Int16)->returnTypeSymbol = &Int32x4Type;
-
+    Int32x4_splat_Int16.parameters = Int32x4_splat_Int16_args;
+    Symbol::Resolved(&Int32x4_splat_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&Int32x4_splat_Int16).returnTypeSymbol = &Int32x4Type;
     // Construct with Int32, Int32, Int32, Int32
     Int32x4_ctor0_arg0.name = "_arg0"_c;
     Int32x4_ctor0_arg0.type = Type::FullType { Int32Type.name };
@@ -9016,6 +13320,7 @@ Int32x4::Int32x4()
     Int32x4_ctor0_arg3.type = Type::FullType { Int32Type.name };
     Int32x4_ctor0_Int32_Int32_Int32_Int32.name = "0"_c;
     Int32x4_ctor0_Int32_Int32_Int32_Int32.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_ctor0_Int32_Int32_Int32_Int32.parameters = Int32x4_ctor0_Int32_Int32_Int32_Int32_args;
     Symbol::Resolved(&Int32x4_ctor0_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32x4_ctor0_arg1)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32x4_ctor0_arg2)->typeSymbol = &Int32Type;
@@ -9031,6 +13336,7 @@ Int32x4::Int32x4()
     Int32x4_ctor1_arg2.type = Type::FullType { Int32Type.name };
     Int32x4_ctor1_Int32x2_Int32_Int32.name = "1"_c;
     Int32x4_ctor1_Int32x2_Int32_Int32.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_ctor1_Int32x2_Int32_Int32.parameters = Int32x4_ctor1_Int32x2_Int32_Int32_args;
     Symbol::Resolved(&Int32x4_ctor1_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x4_ctor1_arg1)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32x4_ctor1_arg2)->typeSymbol = &Int32Type;
@@ -9045,6 +13351,7 @@ Int32x4::Int32x4()
     Int32x4_ctor2_arg2.type = Type::FullType { Int32Type.name };
     Int32x4_ctor2_Int32_Int32x2_Int32.name = "2"_c;
     Int32x4_ctor2_Int32_Int32x2_Int32.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_ctor2_Int32_Int32x2_Int32.parameters = Int32x4_ctor2_Int32_Int32x2_Int32_args;
     Symbol::Resolved(&Int32x4_ctor2_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32x4_ctor2_arg1)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x4_ctor2_arg2)->typeSymbol = &Int32Type;
@@ -9059,6 +13366,7 @@ Int32x4::Int32x4()
     Int32x4_ctor3_arg2.type = Type::FullType { Int32x2Type.name };
     Int32x4_ctor3_Int32_Int32_Int32x2.name = "3"_c;
     Int32x4_ctor3_Int32_Int32_Int32x2.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_ctor3_Int32_Int32_Int32x2.parameters = Int32x4_ctor3_Int32_Int32_Int32x2_args;
     Symbol::Resolved(&Int32x4_ctor3_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32x4_ctor3_arg1)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32x4_ctor3_arg2)->typeSymbol = &Int32x2Type;
@@ -9071,6 +13379,7 @@ Int32x4::Int32x4()
     Int32x4_ctor4_arg1.type = Type::FullType { Int32Type.name };
     Int32x4_ctor4_Int32x3_Int32.name = "4"_c;
     Int32x4_ctor4_Int32x3_Int32.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_ctor4_Int32x3_Int32.parameters = Int32x4_ctor4_Int32x3_Int32_args;
     Symbol::Resolved(&Int32x4_ctor4_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x4_ctor4_arg1)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32x4_ctor4_Int32x3_Int32)->returnTypeSymbol = &Int32x4Type;
@@ -9082,6 +13391,7 @@ Int32x4::Int32x4()
     Int32x4_ctor5_arg1.type = Type::FullType { Int32x3Type.name };
     Int32x4_ctor5_Int32_Int32x3.name = "5"_c;
     Int32x4_ctor5_Int32_Int32x3.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_ctor5_Int32_Int32x3.parameters = Int32x4_ctor5_Int32_Int32x3_args;
     Symbol::Resolved(&Int32x4_ctor5_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32x4_ctor5_arg1)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x4_ctor5_Int32_Int32x3)->returnTypeSymbol = &Int32x4Type;
@@ -9091,6 +13401,7 @@ Int32x4::Int32x4()
     Int32x4_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32x4_operator_index_Int32.name = "operator[]"_c;
     Int32x4_operator_index_Int32.returnType = Type::FullType{ Int32Type.name };
+    Int32x4_operator_index_Int32.parameters = Int32x4_operator_index_Int32_args;
     Symbol::Resolved(&Int32x4_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32x4_operator_index_Int32)->returnTypeSymbol = &Int32Type;
 
@@ -9099,6 +13410,7 @@ Int32x4::Int32x4()
     Int32x4_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Int32x4_operator_index_UInt32.name = "operator[]"_c;
     Int32x4_operator_index_UInt32.returnType = Type::FullType{ Int32Type.name };
+    Int32x4_operator_index_UInt32.parameters = Int32x4_operator_index_UInt32_args;
     Symbol::Resolved(&Int32x4_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Int32x4_operator_index_UInt32)->returnTypeSymbol = &Int32Type;
 
@@ -9107,6 +13419,7 @@ Int32x4::Int32x4()
     Int32x4_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int32x4_operator_index_Int16.name = "operator[]"_c;
     Int32x4_operator_index_Int16.returnType = Type::FullType{ Int32Type.name };
+    Int32x4_operator_index_Int16.parameters = Int32x4_operator_index_Int16_args;
     Symbol::Resolved(&Int32x4_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int32x4_operator_index_Int16)->returnTypeSymbol = &Int32Type;
 
@@ -9115,6 +13428,7 @@ Int32x4::Int32x4()
     Int32x4_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Int32x4_operator_index_UInt16.name = "operator[]"_c;
     Int32x4_operator_index_UInt16.returnType = Type::FullType{ Int32Type.name };
+    Int32x4_operator_index_UInt16.parameters = Int32x4_operator_index_UInt16_args;
     Symbol::Resolved(&Int32x4_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Int32x4_operator_index_UInt16)->returnTypeSymbol = &Int32Type;
 
@@ -9123,6 +13437,7 @@ Int32x4::Int32x4()
     Int32x4_operator_add_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
     Int32x4_operator_add_Int32x4.name = "operator+"_c;
     Int32x4_operator_add_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_add_Int32x4.parameters = Int32x4_operator_add_Int32x4_args;
     Symbol::Resolved(&Int32x4_operator_add_Int32x4_arg0)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&Int32x4_operator_add_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
@@ -9131,6 +13446,7 @@ Int32x4::Int32x4()
     Int32x4_operator_sub_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
     Int32x4_operator_sub_Int32x4.name = "operator-"_c;
     Int32x4_operator_sub_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_sub_Int32x4.parameters = Int32x4_operator_sub_Int32x4_args;
     Symbol::Resolved(&Int32x4_operator_sub_Int32x4_arg0)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&Int32x4_operator_sub_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
@@ -9139,6 +13455,7 @@ Int32x4::Int32x4()
     Int32x4_operator_mul_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
     Int32x4_operator_mul_Int32x4.name = "operator*"_c;
     Int32x4_operator_mul_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_mul_Int32x4.parameters = Int32x4_operator_mul_Int32x4_args;
     Symbol::Resolved(&Int32x4_operator_mul_Int32x4_arg0)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&Int32x4_operator_mul_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
@@ -9147,6 +13464,7 @@ Int32x4::Int32x4()
     Int32x4_operator_div_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
     Int32x4_operator_div_Int32x4.name = "operator/"_c;
     Int32x4_operator_div_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_div_Int32x4.parameters = Int32x4_operator_div_Int32x4_args;
     Symbol::Resolved(&Int32x4_operator_div_Int32x4_arg0)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&Int32x4_operator_div_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
@@ -9155,6 +13473,7 @@ Int32x4::Int32x4()
     Int32x4_operator_mod_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
     Int32x4_operator_mod_Int32x4.name = "operator%"_c;
     Int32x4_operator_mod_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_mod_Int32x4.parameters = Int32x4_operator_mod_Int32x4_args;
     Symbol::Resolved(&Int32x4_operator_mod_Int32x4_arg0)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&Int32x4_operator_mod_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
@@ -9163,6 +13482,7 @@ Int32x4::Int32x4()
     Int32x4_operator_addasg_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
     Int32x4_operator_addasg_Int32x4.name = "operator+="_c;
     Int32x4_operator_addasg_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_addasg_Int32x4.parameters = Int32x4_operator_addasg_Int32x4_args;
     Symbol::Resolved(&Int32x4_operator_addasg_Int32x4_arg0)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&Int32x4_operator_addasg_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
@@ -9171,6 +13491,7 @@ Int32x4::Int32x4()
     Int32x4_operator_subasg_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
     Int32x4_operator_subasg_Int32x4.name = "operator-="_c;
     Int32x4_operator_subasg_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_subasg_Int32x4.parameters = Int32x4_operator_subasg_Int32x4_args;
     Symbol::Resolved(&Int32x4_operator_subasg_Int32x4_arg0)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&Int32x4_operator_subasg_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
@@ -9179,6 +13500,7 @@ Int32x4::Int32x4()
     Int32x4_operator_mulasg_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
     Int32x4_operator_mulasg_Int32x4.name = "operator*="_c;
     Int32x4_operator_mulasg_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_mulasg_Int32x4.parameters = Int32x4_operator_mulasg_Int32x4_args;
     Symbol::Resolved(&Int32x4_operator_mulasg_Int32x4_arg0)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&Int32x4_operator_mulasg_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
@@ -9187,6 +13509,7 @@ Int32x4::Int32x4()
     Int32x4_operator_divasg_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
     Int32x4_operator_divasg_Int32x4.name = "operator/="_c;
     Int32x4_operator_divasg_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_divasg_Int32x4.parameters = Int32x4_operator_divasg_Int32x4_args;
     Symbol::Resolved(&Int32x4_operator_divasg_Int32x4_arg0)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&Int32x4_operator_divasg_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
@@ -9195,6 +13518,7 @@ Int32x4::Int32x4()
     Int32x4_operator_lt_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
     Int32x4_operator_lt_Int32x4.name = "operator<"_c;
     Int32x4_operator_lt_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_lt_Int32x4.parameters = Int32x4_operator_lt_Int32x4_args;
     Symbol::Resolved(&Int32x4_operator_lt_Int32x4_arg0)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&Int32x4_operator_lt_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
@@ -9203,6 +13527,7 @@ Int32x4::Int32x4()
     Int32x4_operator_lte_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
     Int32x4_operator_lte_Int32x4.name = "operator<="_c;
     Int32x4_operator_lte_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_lte_Int32x4.parameters = Int32x4_operator_lte_Int32x4_args;
     Symbol::Resolved(&Int32x4_operator_lte_Int32x4_arg0)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&Int32x4_operator_lte_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
@@ -9211,6 +13536,7 @@ Int32x4::Int32x4()
     Int32x4_operator_gt_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
     Int32x4_operator_gt_Int32x4.name = "operator>"_c;
     Int32x4_operator_gt_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_gt_Int32x4.parameters = Int32x4_operator_gt_Int32x4_args;
     Symbol::Resolved(&Int32x4_operator_gt_Int32x4_arg0)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&Int32x4_operator_gt_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
@@ -9219,6 +13545,7 @@ Int32x4::Int32x4()
     Int32x4_operator_gte_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
     Int32x4_operator_gte_Int32x4.name = "operator>="_c;
     Int32x4_operator_gte_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_gte_Int32x4.parameters = Int32x4_operator_gte_Int32x4_args;
     Symbol::Resolved(&Int32x4_operator_gte_Int32x4_arg0)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&Int32x4_operator_gte_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
@@ -9227,6 +13554,7 @@ Int32x4::Int32x4()
     Int32x4_operator_eq_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
     Int32x4_operator_eq_Int32x4.name = "operator=="_c;
     Int32x4_operator_eq_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_eq_Int32x4.parameters = Int32x4_operator_eq_Int32x4_args;
     Symbol::Resolved(&Int32x4_operator_eq_Int32x4_arg0)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&Int32x4_operator_eq_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
@@ -9235,6 +13563,7 @@ Int32x4::Int32x4()
     Int32x4_operator_neq_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
     Int32x4_operator_neq_Int32x4.name = "operator!="_c;
     Int32x4_operator_neq_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_neq_Int32x4.parameters = Int32x4_operator_neq_Int32x4_args;
     Symbol::Resolved(&Int32x4_operator_neq_Int32x4_arg0)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&Int32x4_operator_neq_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
@@ -9243,6 +13572,7 @@ Int32x4::Int32x4()
     Int32x4_operator_scale_Int32x4_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Int32x4_operator_scale_Int32x4_Float32.name = "operator*"_c;
     Int32x4_operator_scale_Int32x4_Float32.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_scale_Int32x4_Float32.parameters = Int32x4_operator_scale_Int32x4_Float32_args;
     Symbol::Resolved(&Int32x4_operator_scale_Int32x4_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Int32x4_operator_scale_Int32x4_Float32)->returnTypeSymbol = &Int32x4Type;
 
@@ -9251,6 +13581,7 @@ Int32x4::Int32x4()
     Int32x4_operator_scale_Int32x4_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Int32x4_operator_scale_Int32x4_Float16.name = "operator*"_c;
     Int32x4_operator_scale_Int32x4_Float16.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_scale_Int32x4_Float16.parameters = Int32x4_operator_scale_Int32x4_Float16_args;
     Symbol::Resolved(&Int32x4_operator_scale_Int32x4_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Int32x4_operator_scale_Int32x4_Float16)->returnTypeSymbol = &Int32x4Type;
 
@@ -9259,6 +13590,7 @@ Int32x4::Int32x4()
     Int32x4_operator_scale_Int32x4_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Int32x4_operator_scale_Int32x4_UInt32.name = "operator*"_c;
     Int32x4_operator_scale_Int32x4_UInt32.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_scale_Int32x4_UInt32.parameters = Int32x4_operator_scale_Int32x4_UInt32_args;
     Symbol::Resolved(&Int32x4_operator_scale_Int32x4_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Int32x4_operator_scale_Int32x4_UInt32)->returnTypeSymbol = &Int32x4Type;
 
@@ -9267,6 +13599,7 @@ Int32x4::Int32x4()
     Int32x4_operator_scale_Int32x4_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Int32x4_operator_scale_Int32x4_UInt16.name = "operator*"_c;
     Int32x4_operator_scale_Int32x4_UInt16.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_scale_Int32x4_UInt16.parameters = Int32x4_operator_scale_Int32x4_UInt16_args;
     Symbol::Resolved(&Int32x4_operator_scale_Int32x4_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Int32x4_operator_scale_Int32x4_UInt16)->returnTypeSymbol = &Int32x4Type;
 
@@ -9275,6 +13608,7 @@ Int32x4::Int32x4()
     Int32x4_operator_scale_Int32x4_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int32x4_operator_scale_Int32x4_Int32.name = "operator*"_c;
     Int32x4_operator_scale_Int32x4_Int32.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_scale_Int32x4_Int32.parameters = Int32x4_operator_scale_Int32x4_Int32_args;
     Symbol::Resolved(&Int32x4_operator_scale_Int32x4_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32x4_operator_scale_Int32x4_Int32)->returnTypeSymbol = &Int32x4Type;
 
@@ -9283,6 +13617,7 @@ Int32x4::Int32x4()
     Int32x4_operator_scale_Int32x4_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int32x4_operator_scale_Int32x4_Int16.name = "operator*"_c;
     Int32x4_operator_scale_Int32x4_Int16.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_scale_Int32x4_Int16.parameters = Int32x4_operator_scale_Int32x4_Int16_args;
     Symbol::Resolved(&Int32x4_operator_scale_Int32x4_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int32x4_operator_scale_Int32x4_Int16)->returnTypeSymbol = &Int32x4Type;
 
@@ -9291,6 +13626,7 @@ Int32x4::Int32x4()
     Int32x4_operator_or_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
     Int32x4_operator_or_Int32x4.name = "operator|"_c;
     Int32x4_operator_or_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_or_Int32x4.parameters = Int32x4_operator_or_Int32x4_args;
     Symbol::Resolved(&Int32x4_operator_or_Int32x4_arg0)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&Int32x4_operator_or_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
@@ -9299,6 +13635,7 @@ Int32x4::Int32x4()
     Int32x4_operator_and_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
     Int32x4_operator_and_Int32x4.name = "operator&"_c;
     Int32x4_operator_and_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_and_Int32x4.parameters = Int32x4_operator_and_Int32x4_args;
     Symbol::Resolved(&Int32x4_operator_and_Int32x4_arg0)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&Int32x4_operator_and_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
@@ -9307,6 +13644,7 @@ Int32x4::Int32x4()
     Int32x4_operator_xor_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
     Int32x4_operator_xor_Int32x4.name = "operator^"_c;
     Int32x4_operator_xor_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_xor_Int32x4.parameters = Int32x4_operator_xor_Int32x4_args;
     Symbol::Resolved(&Int32x4_operator_xor_Int32x4_arg0)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&Int32x4_operator_xor_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
@@ -9315,6 +13653,7 @@ Int32x4::Int32x4()
     Int32x4_operator_lsh_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
     Int32x4_operator_lsh_Int32x4.name = "operator<<"_c;
     Int32x4_operator_lsh_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_lsh_Int32x4.parameters = Int32x4_operator_lsh_Int32x4_args;
     Symbol::Resolved(&Int32x4_operator_lsh_Int32x4_arg0)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&Int32x4_operator_lsh_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
@@ -9323,6 +13662,7 @@ Int32x4::Int32x4()
     Int32x4_operator_rsh_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
     Int32x4_operator_rsh_Int32x4.name = "operator>>"_c;
     Int32x4_operator_rsh_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_rsh_Int32x4.parameters = Int32x4_operator_rsh_Int32x4_args;
     Symbol::Resolved(&Int32x4_operator_rsh_Int32x4_arg0)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&Int32x4_operator_rsh_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
@@ -9331,6 +13671,7 @@ Int32x4::Int32x4()
     Int32x4_operator_orasg_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
     Int32x4_operator_orasg_Int32x4.name = "operator|="_c;
     Int32x4_operator_orasg_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_orasg_Int32x4.parameters = Int32x4_operator_orasg_Int32x4_args;
     Symbol::Resolved(&Int32x4_operator_orasg_Int32x4_arg0)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&Int32x4_operator_orasg_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
@@ -9339,6 +13680,7 @@ Int32x4::Int32x4()
     Int32x4_operator_andasg_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
     Int32x4_operator_andasg_Int32x4.name = "operator&="_c;
     Int32x4_operator_andasg_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_andasg_Int32x4.parameters = Int32x4_operator_andasg_Int32x4_args;
     Symbol::Resolved(&Int32x4_operator_andasg_Int32x4_arg0)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&Int32x4_operator_andasg_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
@@ -9347,6 +13689,7 @@ Int32x4::Int32x4()
     Int32x4_operator_xorasg_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
     Int32x4_operator_xorasg_Int32x4.name = "operator^="_c;
     Int32x4_operator_xorasg_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_xorasg_Int32x4.parameters = Int32x4_operator_xorasg_Int32x4_args;
     Symbol::Resolved(&Int32x4_operator_xorasg_Int32x4_arg0)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&Int32x4_operator_xorasg_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
@@ -9355,6 +13698,7 @@ Int32x4::Int32x4()
     Int32x4_operator_lshasg_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
     Int32x4_operator_lshasg_Int32x4.name = "operator<<="_c;
     Int32x4_operator_lshasg_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_lshasg_Int32x4.parameters = Int32x4_operator_lshasg_Int32x4_args;
     Symbol::Resolved(&Int32x4_operator_lshasg_Int32x4_arg0)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&Int32x4_operator_lshasg_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
@@ -9363,46 +13707,11 @@ Int32x4::Int32x4()
     Int32x4_operator_rhsasg_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
     Int32x4_operator_rhsasg_Int32x4.name = "operator>>="_c;
     Int32x4_operator_rhsasg_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    Int32x4_operator_rhsasg_Int32x4.parameters = Int32x4_operator_rhsasg_Int32x4_args;
     Symbol::Resolved(&Int32x4_operator_rhsasg_Int32x4_arg0)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&Int32x4_operator_rhsasg_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "i32x4"_c, &Int32x4_convert_Float32x4 },
-        std::pair{ "i32x4(f32x4)"_c, &Int32x4_convert_Float32x4 },
-        std::pair{ "i32x4"_c, &Int32x4_splat_Float32 },
-        std::pair{ "i32x4(f32)"_c, &Int32x4_splat_Float32 },
-        std::pair{ "i32x4"_c, &Int32x4_convert_UInt32x4 },
-        std::pair{ "i32x4(u32x4)"_c, &Int32x4_convert_UInt32x4 },
-        std::pair{ "i32x4"_c, &Int32x4_splat_UInt32 },
-        std::pair{ "i32x4(u32)"_c, &Int32x4_splat_UInt32 },
-        std::pair{ "i32x4"_c, &Int32x4_convert_Int32x4 },
-        std::pair{ "i32x4(i32x4)"_c, &Int32x4_convert_Int32x4 },
-        std::pair{ "i32x4"_c, &Int32x4_splat_Int32 },
-        std::pair{ "i32x4(i32)"_c, &Int32x4_splat_Int32 },
-        std::pair{ "i32x4"_c, &Int32x4_convert_Float16x4 },
-        std::pair{ "i32x4(f16x4)"_c, &Int32x4_convert_Float16x4 },
-        std::pair{ "i32x4"_c, &Int32x4_splat_Float16 },
-        std::pair{ "i32x4(f16)"_c, &Int32x4_splat_Float16 },
-        std::pair{ "i32x4"_c, &Int32x4_convert_UInt16x4 },
-        std::pair{ "i32x4(u16x4)"_c, &Int32x4_convert_UInt16x4 },
-        std::pair{ "i32x4"_c, &Int32x4_splat_UInt16 },
-        std::pair{ "i32x4(u16)"_c, &Int32x4_splat_UInt16 },
-        std::pair{ "i32x4"_c, &Int32x4_convert_Int16x4 },
-        std::pair{ "i32x4(i16x4)"_c, &Int32x4_convert_Int16x4 },
-        std::pair{ "i32x4"_c, &Int32x4_splat_Int16 },
-        std::pair{ "i32x4(i16)"_c, &Int32x4_splat_Int16 },
-        std::pair{ "i32x4"_c, &Int32x4_ctor0_Int32_Int32_Int32_Int32},
-        std::pair{ "i32x4(i32,i32,i32,i32)"_c, &Int32x4_ctor0_Int32_Int32_Int32_Int32},
-        std::pair{ "i32x4"_c, &Int32x4_ctor1_Int32x2_Int32_Int32},
-        std::pair{ "i32x4(i32x2,i32,i32)"_c, &Int32x4_ctor1_Int32x2_Int32_Int32},
-        std::pair{ "i32x4"_c, &Int32x4_ctor2_Int32_Int32x2_Int32},
-        std::pair{ "i32x4(i32,i32x2,i32)"_c, &Int32x4_ctor2_Int32_Int32x2_Int32},
-        std::pair{ "i32x4"_c, &Int32x4_ctor3_Int32_Int32_Int32x2},
-        std::pair{ "i32x4(i32,i32,i32x2)"_c, &Int32x4_ctor3_Int32_Int32_Int32x2},
-        std::pair{ "i32x4"_c, &Int32x4_ctor4_Int32x3_Int32},
-        std::pair{ "i32x4(i32x3,i32)"_c, &Int32x4_ctor4_Int32x3_Int32},
-        std::pair{ "i32x4"_c, &Int32x4_ctor5_Int32_Int32x3},
-        std::pair{ "i32x4(i32,i32x3)"_c, &Int32x4_ctor5_Int32_Int32x3},
         std::pair{ "operator[](i32)"_c, &Int32x4_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &Int32x4_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &Int32x4_operator_index_Int16},
@@ -9451,70 +13760,70 @@ Bool8x4::Bool8x4()
     this->baseType = TypeCode::Bool8;
     this->builtin = true;
 
-    // Conversion from UInt32x4
-    Bool8x4_convert_UInt32x4_arg0.name = "_arg0"_c;
+    Bool8x4_convert_UInt32x4_arg0.name = "val"_c;
     Bool8x4_convert_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
+    Bool8x4_convert_UInt32x4.documentation = "Convert u32x4 to b8x4"_c;
     Bool8x4_convert_UInt32x4.name = "b8x4"_c;
     Bool8x4_convert_UInt32x4.returnType = Type::FullType { Bool8x4Type.name };
-    Symbol::Resolved(&Bool8x4_convert_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&Bool8x4_convert_UInt32x4)->returnTypeSymbol = &Bool8x4Type;
-
-    // Splat with UInt32
-    Bool8x4_splat_UInt32_arg0.name = "_arg0"_c;
+    Bool8x4_convert_UInt32x4.parameters = Bool8x4_convert_UInt32x4_args;
+    Symbol::Resolved(&Bool8x4_convert_UInt32x4_arg0).typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&Bool8x4_convert_UInt32x4).returnTypeSymbol = &Bool8x4Type;
+    Bool8x4_splat_UInt32_arg0.name = "val"_c;
     Bool8x4_splat_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    Bool8x4_splat_UInt32.documentation = "Splat u32x4 to b8x4"_c;
     Bool8x4_splat_UInt32.name = "b8x4"_c;
     Bool8x4_splat_UInt32.returnType = Type::FullType { Bool8x4Type.name };
-    Symbol::Resolved(&Bool8x4_splat_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Bool8x4_splat_UInt32)->returnTypeSymbol = &Bool8x4Type;
-
-    // Conversion from Int32x4
-    Bool8x4_convert_Int32x4_arg0.name = "_arg0"_c;
+    Bool8x4_splat_UInt32.parameters = Bool8x4_splat_UInt32_args;
+    Symbol::Resolved(&Bool8x4_splat_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&Bool8x4_splat_UInt32).returnTypeSymbol = &Bool8x4Type;
+    Bool8x4_convert_Int32x4_arg0.name = "val"_c;
     Bool8x4_convert_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
+    Bool8x4_convert_Int32x4.documentation = "Convert i32x4 to b8x4"_c;
     Bool8x4_convert_Int32x4.name = "b8x4"_c;
     Bool8x4_convert_Int32x4.returnType = Type::FullType { Bool8x4Type.name };
-    Symbol::Resolved(&Bool8x4_convert_Int32x4_arg0)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&Bool8x4_convert_Int32x4)->returnTypeSymbol = &Bool8x4Type;
-
-    // Splat with Int32
-    Bool8x4_splat_Int32_arg0.name = "_arg0"_c;
+    Bool8x4_convert_Int32x4.parameters = Bool8x4_convert_Int32x4_args;
+    Symbol::Resolved(&Bool8x4_convert_Int32x4_arg0).typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&Bool8x4_convert_Int32x4).returnTypeSymbol = &Bool8x4Type;
+    Bool8x4_splat_Int32_arg0.name = "val"_c;
     Bool8x4_splat_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    Bool8x4_splat_Int32.documentation = "Splat i32x4 to b8x4"_c;
     Bool8x4_splat_Int32.name = "b8x4"_c;
     Bool8x4_splat_Int32.returnType = Type::FullType { Bool8x4Type.name };
-    Symbol::Resolved(&Bool8x4_splat_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Bool8x4_splat_Int32)->returnTypeSymbol = &Bool8x4Type;
-
-    // Conversion from UInt16x4
-    Bool8x4_convert_UInt16x4_arg0.name = "_arg0"_c;
+    Bool8x4_splat_Int32.parameters = Bool8x4_splat_Int32_args;
+    Symbol::Resolved(&Bool8x4_splat_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&Bool8x4_splat_Int32).returnTypeSymbol = &Bool8x4Type;
+    Bool8x4_convert_UInt16x4_arg0.name = "val"_c;
     Bool8x4_convert_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
+    Bool8x4_convert_UInt16x4.documentation = "Convert u16x4 to b8x4"_c;
     Bool8x4_convert_UInt16x4.name = "b8x4"_c;
     Bool8x4_convert_UInt16x4.returnType = Type::FullType { Bool8x4Type.name };
-    Symbol::Resolved(&Bool8x4_convert_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
-    Symbol::Resolved(&Bool8x4_convert_UInt16x4)->returnTypeSymbol = &Bool8x4Type;
-
-    // Splat with UInt16
-    Bool8x4_splat_UInt16_arg0.name = "_arg0"_c;
+    Bool8x4_convert_UInt16x4.parameters = Bool8x4_convert_UInt16x4_args;
+    Symbol::Resolved(&Bool8x4_convert_UInt16x4_arg0).typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&Bool8x4_convert_UInt16x4).returnTypeSymbol = &Bool8x4Type;
+    Bool8x4_splat_UInt16_arg0.name = "val"_c;
     Bool8x4_splat_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    Bool8x4_splat_UInt16.documentation = "Splat u16x4 to b8x4"_c;
     Bool8x4_splat_UInt16.name = "b8x4"_c;
     Bool8x4_splat_UInt16.returnType = Type::FullType { Bool8x4Type.name };
-    Symbol::Resolved(&Bool8x4_splat_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Bool8x4_splat_UInt16)->returnTypeSymbol = &Bool8x4Type;
-
-    // Conversion from Int16x4
-    Bool8x4_convert_Int16x4_arg0.name = "_arg0"_c;
+    Bool8x4_splat_UInt16.parameters = Bool8x4_splat_UInt16_args;
+    Symbol::Resolved(&Bool8x4_splat_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&Bool8x4_splat_UInt16).returnTypeSymbol = &Bool8x4Type;
+    Bool8x4_convert_Int16x4_arg0.name = "val"_c;
     Bool8x4_convert_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
+    Bool8x4_convert_Int16x4.documentation = "Convert i16x4 to b8x4"_c;
     Bool8x4_convert_Int16x4.name = "b8x4"_c;
     Bool8x4_convert_Int16x4.returnType = Type::FullType { Bool8x4Type.name };
-    Symbol::Resolved(&Bool8x4_convert_Int16x4_arg0)->typeSymbol = &Int16x4Type;
-    Symbol::Resolved(&Bool8x4_convert_Int16x4)->returnTypeSymbol = &Bool8x4Type;
-
-    // Splat with Int16
-    Bool8x4_splat_Int16_arg0.name = "_arg0"_c;
+    Bool8x4_convert_Int16x4.parameters = Bool8x4_convert_Int16x4_args;
+    Symbol::Resolved(&Bool8x4_convert_Int16x4_arg0).typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&Bool8x4_convert_Int16x4).returnTypeSymbol = &Bool8x4Type;
+    Bool8x4_splat_Int16_arg0.name = "val"_c;
     Bool8x4_splat_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    Bool8x4_splat_Int16.documentation = "Splat i16x4 to b8x4"_c;
     Bool8x4_splat_Int16.name = "b8x4"_c;
     Bool8x4_splat_Int16.returnType = Type::FullType { Bool8x4Type.name };
-    Symbol::Resolved(&Bool8x4_splat_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Bool8x4_splat_Int16)->returnTypeSymbol = &Bool8x4Type;
-
+    Bool8x4_splat_Int16.parameters = Bool8x4_splat_Int16_args;
+    Symbol::Resolved(&Bool8x4_splat_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&Bool8x4_splat_Int16).returnTypeSymbol = &Bool8x4Type;
     // Construct with Bool8, Bool8, Bool8, Bool8
     Bool8x4_ctor0_arg0.name = "_arg0"_c;
     Bool8x4_ctor0_arg0.type = Type::FullType { Bool8Type.name };
@@ -9526,6 +13835,7 @@ Bool8x4::Bool8x4()
     Bool8x4_ctor0_arg3.type = Type::FullType { Bool8Type.name };
     Bool8x4_ctor0_Bool8_Bool8_Bool8_Bool8.name = "0"_c;
     Bool8x4_ctor0_Bool8_Bool8_Bool8_Bool8.returnType = Type::FullType{ Bool8x4Type.name };
+    Bool8x4_ctor0_Bool8_Bool8_Bool8_Bool8.parameters = Bool8x4_ctor0_Bool8_Bool8_Bool8_Bool8_args;
     Symbol::Resolved(&Bool8x4_ctor0_arg0)->typeSymbol = &Bool8Type;
     Symbol::Resolved(&Bool8x4_ctor0_arg1)->typeSymbol = &Bool8Type;
     Symbol::Resolved(&Bool8x4_ctor0_arg2)->typeSymbol = &Bool8Type;
@@ -9541,6 +13851,7 @@ Bool8x4::Bool8x4()
     Bool8x4_ctor1_arg2.type = Type::FullType { Bool8Type.name };
     Bool8x4_ctor1_Bool8x2_Bool8_Bool8.name = "1"_c;
     Bool8x4_ctor1_Bool8x2_Bool8_Bool8.returnType = Type::FullType{ Bool8x4Type.name };
+    Bool8x4_ctor1_Bool8x2_Bool8_Bool8.parameters = Bool8x4_ctor1_Bool8x2_Bool8_Bool8_args;
     Symbol::Resolved(&Bool8x4_ctor1_arg0)->typeSymbol = &Bool8x2Type;
     Symbol::Resolved(&Bool8x4_ctor1_arg1)->typeSymbol = &Bool8Type;
     Symbol::Resolved(&Bool8x4_ctor1_arg2)->typeSymbol = &Bool8Type;
@@ -9555,6 +13866,7 @@ Bool8x4::Bool8x4()
     Bool8x4_ctor2_arg2.type = Type::FullType { Bool8Type.name };
     Bool8x4_ctor2_Bool8_Bool8x2_Bool8.name = "2"_c;
     Bool8x4_ctor2_Bool8_Bool8x2_Bool8.returnType = Type::FullType{ Bool8x4Type.name };
+    Bool8x4_ctor2_Bool8_Bool8x2_Bool8.parameters = Bool8x4_ctor2_Bool8_Bool8x2_Bool8_args;
     Symbol::Resolved(&Bool8x4_ctor2_arg0)->typeSymbol = &Bool8Type;
     Symbol::Resolved(&Bool8x4_ctor2_arg1)->typeSymbol = &Bool8x2Type;
     Symbol::Resolved(&Bool8x4_ctor2_arg2)->typeSymbol = &Bool8Type;
@@ -9569,6 +13881,7 @@ Bool8x4::Bool8x4()
     Bool8x4_ctor3_arg2.type = Type::FullType { Bool8x2Type.name };
     Bool8x4_ctor3_Bool8_Bool8_Bool8x2.name = "3"_c;
     Bool8x4_ctor3_Bool8_Bool8_Bool8x2.returnType = Type::FullType{ Bool8x4Type.name };
+    Bool8x4_ctor3_Bool8_Bool8_Bool8x2.parameters = Bool8x4_ctor3_Bool8_Bool8_Bool8x2_args;
     Symbol::Resolved(&Bool8x4_ctor3_arg0)->typeSymbol = &Bool8Type;
     Symbol::Resolved(&Bool8x4_ctor3_arg1)->typeSymbol = &Bool8Type;
     Symbol::Resolved(&Bool8x4_ctor3_arg2)->typeSymbol = &Bool8x2Type;
@@ -9581,6 +13894,7 @@ Bool8x4::Bool8x4()
     Bool8x4_ctor4_arg1.type = Type::FullType { Bool8Type.name };
     Bool8x4_ctor4_Bool8x3_Bool8.name = "4"_c;
     Bool8x4_ctor4_Bool8x3_Bool8.returnType = Type::FullType{ Bool8x4Type.name };
+    Bool8x4_ctor4_Bool8x3_Bool8.parameters = Bool8x4_ctor4_Bool8x3_Bool8_args;
     Symbol::Resolved(&Bool8x4_ctor4_arg0)->typeSymbol = &Bool8x3Type;
     Symbol::Resolved(&Bool8x4_ctor4_arg1)->typeSymbol = &Bool8Type;
     Symbol::Resolved(&Bool8x4_ctor4_Bool8x3_Bool8)->returnTypeSymbol = &Bool8x4Type;
@@ -9592,6 +13906,7 @@ Bool8x4::Bool8x4()
     Bool8x4_ctor5_arg1.type = Type::FullType { Bool8x3Type.name };
     Bool8x4_ctor5_Bool8_Bool8x3.name = "5"_c;
     Bool8x4_ctor5_Bool8_Bool8x3.returnType = Type::FullType{ Bool8x4Type.name };
+    Bool8x4_ctor5_Bool8_Bool8x3.parameters = Bool8x4_ctor5_Bool8_Bool8x3_args;
     Symbol::Resolved(&Bool8x4_ctor5_arg0)->typeSymbol = &Bool8Type;
     Symbol::Resolved(&Bool8x4_ctor5_arg1)->typeSymbol = &Bool8x3Type;
     Symbol::Resolved(&Bool8x4_ctor5_Bool8_Bool8x3)->returnTypeSymbol = &Bool8x4Type;
@@ -9601,6 +13916,7 @@ Bool8x4::Bool8x4()
     Bool8x4_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Bool8x4_operator_index_Int32.name = "operator[]"_c;
     Bool8x4_operator_index_Int32.returnType = Type::FullType{ Bool8Type.name };
+    Bool8x4_operator_index_Int32.parameters = Bool8x4_operator_index_Int32_args;
     Symbol::Resolved(&Bool8x4_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Bool8x4_operator_index_Int32)->returnTypeSymbol = &Bool8Type;
 
@@ -9609,6 +13925,7 @@ Bool8x4::Bool8x4()
     Bool8x4_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Bool8x4_operator_index_UInt32.name = "operator[]"_c;
     Bool8x4_operator_index_UInt32.returnType = Type::FullType{ Bool8Type.name };
+    Bool8x4_operator_index_UInt32.parameters = Bool8x4_operator_index_UInt32_args;
     Symbol::Resolved(&Bool8x4_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Bool8x4_operator_index_UInt32)->returnTypeSymbol = &Bool8Type;
 
@@ -9617,6 +13934,7 @@ Bool8x4::Bool8x4()
     Bool8x4_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Bool8x4_operator_index_Int16.name = "operator[]"_c;
     Bool8x4_operator_index_Int16.returnType = Type::FullType{ Bool8Type.name };
+    Bool8x4_operator_index_Int16.parameters = Bool8x4_operator_index_Int16_args;
     Symbol::Resolved(&Bool8x4_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Bool8x4_operator_index_Int16)->returnTypeSymbol = &Bool8Type;
 
@@ -9625,6 +13943,7 @@ Bool8x4::Bool8x4()
     Bool8x4_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Bool8x4_operator_index_UInt16.name = "operator[]"_c;
     Bool8x4_operator_index_UInt16.returnType = Type::FullType{ Bool8Type.name };
+    Bool8x4_operator_index_UInt16.parameters = Bool8x4_operator_index_UInt16_args;
     Symbol::Resolved(&Bool8x4_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Bool8x4_operator_index_UInt16)->returnTypeSymbol = &Bool8Type;
 
@@ -9633,6 +13952,7 @@ Bool8x4::Bool8x4()
     Bool8x4_operator_oror_Bool8x4_arg0.type = Type::FullType{ Bool8x4Type.name };
     Bool8x4_operator_oror_Bool8x4.name = "operator||"_c;
     Bool8x4_operator_oror_Bool8x4.returnType = Type::FullType{ Bool8x4Type.name };
+    Bool8x4_operator_oror_Bool8x4.parameters = Bool8x4_operator_oror_Bool8x4_args;
     Symbol::Resolved(&Bool8x4_operator_oror_Bool8x4_arg0)->typeSymbol = &Bool8x4Type;
     Symbol::Resolved(&Bool8x4_operator_oror_Bool8x4)->returnTypeSymbol = &Bool8x4Type;
 
@@ -9641,6 +13961,7 @@ Bool8x4::Bool8x4()
     Bool8x4_operator_andand_Bool8x4_arg0.type = Type::FullType{ Bool8x4Type.name };
     Bool8x4_operator_andand_Bool8x4.name = "operator&&"_c;
     Bool8x4_operator_andand_Bool8x4.returnType = Type::FullType{ Bool8x4Type.name };
+    Bool8x4_operator_andand_Bool8x4.parameters = Bool8x4_operator_andand_Bool8x4_args;
     Symbol::Resolved(&Bool8x4_operator_andand_Bool8x4_arg0)->typeSymbol = &Bool8x4Type;
     Symbol::Resolved(&Bool8x4_operator_andand_Bool8x4)->returnTypeSymbol = &Bool8x4Type;
 
@@ -9649,6 +13970,7 @@ Bool8x4::Bool8x4()
     Bool8x4_operator_eq_Bool8x4_arg0.type = Type::FullType{ Bool8x4Type.name };
     Bool8x4_operator_eq_Bool8x4.name = "operator=="_c;
     Bool8x4_operator_eq_Bool8x4.returnType = Type::FullType{ Bool8x4Type.name };
+    Bool8x4_operator_eq_Bool8x4.parameters = Bool8x4_operator_eq_Bool8x4_args;
     Symbol::Resolved(&Bool8x4_operator_eq_Bool8x4_arg0)->typeSymbol = &Bool8x4Type;
     Symbol::Resolved(&Bool8x4_operator_eq_Bool8x4)->returnTypeSymbol = &Bool8x4Type;
 
@@ -9657,38 +13979,11 @@ Bool8x4::Bool8x4()
     Bool8x4_operator_neq_Bool8x4_arg0.type = Type::FullType{ Bool8x4Type.name };
     Bool8x4_operator_neq_Bool8x4.name = "operator!="_c;
     Bool8x4_operator_neq_Bool8x4.returnType = Type::FullType{ Bool8x4Type.name };
+    Bool8x4_operator_neq_Bool8x4.parameters = Bool8x4_operator_neq_Bool8x4_args;
     Symbol::Resolved(&Bool8x4_operator_neq_Bool8x4_arg0)->typeSymbol = &Bool8x4Type;
     Symbol::Resolved(&Bool8x4_operator_neq_Bool8x4)->returnTypeSymbol = &Bool8x4Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "b8x4"_c, &Bool8x4_convert_UInt32x4 },
-        std::pair{ "b8x4(u32x4)"_c, &Bool8x4_convert_UInt32x4 },
-        std::pair{ "b8x4"_c, &Bool8x4_splat_UInt32 },
-        std::pair{ "b8x4(u32)"_c, &Bool8x4_splat_UInt32 },
-        std::pair{ "b8x4"_c, &Bool8x4_convert_Int32x4 },
-        std::pair{ "b8x4(i32x4)"_c, &Bool8x4_convert_Int32x4 },
-        std::pair{ "b8x4"_c, &Bool8x4_splat_Int32 },
-        std::pair{ "b8x4(i32)"_c, &Bool8x4_splat_Int32 },
-        std::pair{ "b8x4"_c, &Bool8x4_convert_UInt16x4 },
-        std::pair{ "b8x4(u16x4)"_c, &Bool8x4_convert_UInt16x4 },
-        std::pair{ "b8x4"_c, &Bool8x4_splat_UInt16 },
-        std::pair{ "b8x4(u16)"_c, &Bool8x4_splat_UInt16 },
-        std::pair{ "b8x4"_c, &Bool8x4_convert_Int16x4 },
-        std::pair{ "b8x4(i16x4)"_c, &Bool8x4_convert_Int16x4 },
-        std::pair{ "b8x4"_c, &Bool8x4_splat_Int16 },
-        std::pair{ "b8x4(i16)"_c, &Bool8x4_splat_Int16 },
-        std::pair{ "b8x4"_c, &Bool8x4_ctor0_Bool8_Bool8_Bool8_Bool8},
-        std::pair{ "b8x4(b8,b8,b8,b8)"_c, &Bool8x4_ctor0_Bool8_Bool8_Bool8_Bool8},
-        std::pair{ "b8x4"_c, &Bool8x4_ctor1_Bool8x2_Bool8_Bool8},
-        std::pair{ "b8x4(b8x2,b8,b8)"_c, &Bool8x4_ctor1_Bool8x2_Bool8_Bool8},
-        std::pair{ "b8x4"_c, &Bool8x4_ctor2_Bool8_Bool8x2_Bool8},
-        std::pair{ "b8x4(b8,b8x2,b8)"_c, &Bool8x4_ctor2_Bool8_Bool8x2_Bool8},
-        std::pair{ "b8x4"_c, &Bool8x4_ctor3_Bool8_Bool8_Bool8x2},
-        std::pair{ "b8x4(b8,b8,b8x2)"_c, &Bool8x4_ctor3_Bool8_Bool8_Bool8x2},
-        std::pair{ "b8x4"_c, &Bool8x4_ctor4_Bool8x3_Bool8},
-        std::pair{ "b8x4(b8x3,b8)"_c, &Bool8x4_ctor4_Bool8x3_Bool8},
-        std::pair{ "b8x4"_c, &Bool8x4_ctor5_Bool8_Bool8x3},
-        std::pair{ "b8x4(b8,b8x3)"_c, &Bool8x4_ctor5_Bool8_Bool8x3},
         std::pair{ "operator[](i32)"_c, &Bool8x4_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &Bool8x4_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &Bool8x4_operator_index_Int16},
@@ -9710,102 +14005,102 @@ Float16x4::Float16x4()
     this->baseType = TypeCode::Float16;
     this->builtin = true;
 
-    // Conversion from Float32x4
-    Float16x4_convert_Float32x4_arg0.name = "_arg0"_c;
+    Float16x4_convert_Float32x4_arg0.name = "val"_c;
     Float16x4_convert_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
+    Float16x4_convert_Float32x4.documentation = "Convert f32x4 to f16x4"_c;
     Float16x4_convert_Float32x4.name = "f16x4"_c;
     Float16x4_convert_Float32x4.returnType = Type::FullType { Float16x4Type.name };
-    Symbol::Resolved(&Float16x4_convert_Float32x4_arg0)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&Float16x4_convert_Float32x4)->returnTypeSymbol = &Float16x4Type;
-
-    // Splat with Float32
-    Float16x4_splat_Float32_arg0.name = "_arg0"_c;
+    Float16x4_convert_Float32x4.parameters = Float16x4_convert_Float32x4_args;
+    Symbol::Resolved(&Float16x4_convert_Float32x4_arg0).typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&Float16x4_convert_Float32x4).returnTypeSymbol = &Float16x4Type;
+    Float16x4_splat_Float32_arg0.name = "val"_c;
     Float16x4_splat_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    Float16x4_splat_Float32.documentation = "Splat f32x4 to f16x4"_c;
     Float16x4_splat_Float32.name = "f16x4"_c;
     Float16x4_splat_Float32.returnType = Type::FullType { Float16x4Type.name };
-    Symbol::Resolved(&Float16x4_splat_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Float16x4_splat_Float32)->returnTypeSymbol = &Float16x4Type;
-
-    // Conversion from UInt32x4
-    Float16x4_convert_UInt32x4_arg0.name = "_arg0"_c;
+    Float16x4_splat_Float32.parameters = Float16x4_splat_Float32_args;
+    Symbol::Resolved(&Float16x4_splat_Float32_arg0).typeSymbol = &Float32Type;
+    Symbol::Resolved(&Float16x4_splat_Float32).returnTypeSymbol = &Float16x4Type;
+    Float16x4_convert_UInt32x4_arg0.name = "val"_c;
     Float16x4_convert_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
+    Float16x4_convert_UInt32x4.documentation = "Convert u32x4 to f16x4"_c;
     Float16x4_convert_UInt32x4.name = "f16x4"_c;
     Float16x4_convert_UInt32x4.returnType = Type::FullType { Float16x4Type.name };
-    Symbol::Resolved(&Float16x4_convert_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&Float16x4_convert_UInt32x4)->returnTypeSymbol = &Float16x4Type;
-
-    // Splat with UInt32
-    Float16x4_splat_UInt32_arg0.name = "_arg0"_c;
+    Float16x4_convert_UInt32x4.parameters = Float16x4_convert_UInt32x4_args;
+    Symbol::Resolved(&Float16x4_convert_UInt32x4_arg0).typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&Float16x4_convert_UInt32x4).returnTypeSymbol = &Float16x4Type;
+    Float16x4_splat_UInt32_arg0.name = "val"_c;
     Float16x4_splat_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    Float16x4_splat_UInt32.documentation = "Splat u32x4 to f16x4"_c;
     Float16x4_splat_UInt32.name = "f16x4"_c;
     Float16x4_splat_UInt32.returnType = Type::FullType { Float16x4Type.name };
-    Symbol::Resolved(&Float16x4_splat_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float16x4_splat_UInt32)->returnTypeSymbol = &Float16x4Type;
-
-    // Conversion from Int32x4
-    Float16x4_convert_Int32x4_arg0.name = "_arg0"_c;
+    Float16x4_splat_UInt32.parameters = Float16x4_splat_UInt32_args;
+    Symbol::Resolved(&Float16x4_splat_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&Float16x4_splat_UInt32).returnTypeSymbol = &Float16x4Type;
+    Float16x4_convert_Int32x4_arg0.name = "val"_c;
     Float16x4_convert_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
+    Float16x4_convert_Int32x4.documentation = "Convert i32x4 to f16x4"_c;
     Float16x4_convert_Int32x4.name = "f16x4"_c;
     Float16x4_convert_Int32x4.returnType = Type::FullType { Float16x4Type.name };
-    Symbol::Resolved(&Float16x4_convert_Int32x4_arg0)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&Float16x4_convert_Int32x4)->returnTypeSymbol = &Float16x4Type;
-
-    // Splat with Int32
-    Float16x4_splat_Int32_arg0.name = "_arg0"_c;
+    Float16x4_convert_Int32x4.parameters = Float16x4_convert_Int32x4_args;
+    Symbol::Resolved(&Float16x4_convert_Int32x4_arg0).typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&Float16x4_convert_Int32x4).returnTypeSymbol = &Float16x4Type;
+    Float16x4_splat_Int32_arg0.name = "val"_c;
     Float16x4_splat_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    Float16x4_splat_Int32.documentation = "Splat i32x4 to f16x4"_c;
     Float16x4_splat_Int32.name = "f16x4"_c;
     Float16x4_splat_Int32.returnType = Type::FullType { Float16x4Type.name };
-    Symbol::Resolved(&Float16x4_splat_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float16x4_splat_Int32)->returnTypeSymbol = &Float16x4Type;
-
-    // Conversion from Float16x4
-    Float16x4_convert_Float16x4_arg0.name = "_arg0"_c;
+    Float16x4_splat_Int32.parameters = Float16x4_splat_Int32_args;
+    Symbol::Resolved(&Float16x4_splat_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&Float16x4_splat_Int32).returnTypeSymbol = &Float16x4Type;
+    Float16x4_convert_Float16x4_arg0.name = "val"_c;
     Float16x4_convert_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
+    Float16x4_convert_Float16x4.documentation = "Convert f16x4 to f16x4"_c;
     Float16x4_convert_Float16x4.name = "f16x4"_c;
     Float16x4_convert_Float16x4.returnType = Type::FullType { Float16x4Type.name };
-    Symbol::Resolved(&Float16x4_convert_Float16x4_arg0)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&Float16x4_convert_Float16x4)->returnTypeSymbol = &Float16x4Type;
-
-    // Splat with Float16
-    Float16x4_splat_Float16_arg0.name = "_arg0"_c;
+    Float16x4_convert_Float16x4.parameters = Float16x4_convert_Float16x4_args;
+    Symbol::Resolved(&Float16x4_convert_Float16x4_arg0).typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&Float16x4_convert_Float16x4).returnTypeSymbol = &Float16x4Type;
+    Float16x4_splat_Float16_arg0.name = "val"_c;
     Float16x4_splat_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    Float16x4_splat_Float16.documentation = "Splat f16x4 to f16x4"_c;
     Float16x4_splat_Float16.name = "f16x4"_c;
     Float16x4_splat_Float16.returnType = Type::FullType { Float16x4Type.name };
-    Symbol::Resolved(&Float16x4_splat_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Float16x4_splat_Float16)->returnTypeSymbol = &Float16x4Type;
-
-    // Conversion from UInt16x4
-    Float16x4_convert_UInt16x4_arg0.name = "_arg0"_c;
+    Float16x4_splat_Float16.parameters = Float16x4_splat_Float16_args;
+    Symbol::Resolved(&Float16x4_splat_Float16_arg0).typeSymbol = &Float16Type;
+    Symbol::Resolved(&Float16x4_splat_Float16).returnTypeSymbol = &Float16x4Type;
+    Float16x4_convert_UInt16x4_arg0.name = "val"_c;
     Float16x4_convert_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
+    Float16x4_convert_UInt16x4.documentation = "Convert u16x4 to f16x4"_c;
     Float16x4_convert_UInt16x4.name = "f16x4"_c;
     Float16x4_convert_UInt16x4.returnType = Type::FullType { Float16x4Type.name };
-    Symbol::Resolved(&Float16x4_convert_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
-    Symbol::Resolved(&Float16x4_convert_UInt16x4)->returnTypeSymbol = &Float16x4Type;
-
-    // Splat with UInt16
-    Float16x4_splat_UInt16_arg0.name = "_arg0"_c;
+    Float16x4_convert_UInt16x4.parameters = Float16x4_convert_UInt16x4_args;
+    Symbol::Resolved(&Float16x4_convert_UInt16x4_arg0).typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&Float16x4_convert_UInt16x4).returnTypeSymbol = &Float16x4Type;
+    Float16x4_splat_UInt16_arg0.name = "val"_c;
     Float16x4_splat_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    Float16x4_splat_UInt16.documentation = "Splat u16x4 to f16x4"_c;
     Float16x4_splat_UInt16.name = "f16x4"_c;
     Float16x4_splat_UInt16.returnType = Type::FullType { Float16x4Type.name };
-    Symbol::Resolved(&Float16x4_splat_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float16x4_splat_UInt16)->returnTypeSymbol = &Float16x4Type;
-
-    // Conversion from Int16x4
-    Float16x4_convert_Int16x4_arg0.name = "_arg0"_c;
+    Float16x4_splat_UInt16.parameters = Float16x4_splat_UInt16_args;
+    Symbol::Resolved(&Float16x4_splat_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&Float16x4_splat_UInt16).returnTypeSymbol = &Float16x4Type;
+    Float16x4_convert_Int16x4_arg0.name = "val"_c;
     Float16x4_convert_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
+    Float16x4_convert_Int16x4.documentation = "Convert i16x4 to f16x4"_c;
     Float16x4_convert_Int16x4.name = "f16x4"_c;
     Float16x4_convert_Int16x4.returnType = Type::FullType { Float16x4Type.name };
-    Symbol::Resolved(&Float16x4_convert_Int16x4_arg0)->typeSymbol = &Int16x4Type;
-    Symbol::Resolved(&Float16x4_convert_Int16x4)->returnTypeSymbol = &Float16x4Type;
-
-    // Splat with Int16
-    Float16x4_splat_Int16_arg0.name = "_arg0"_c;
+    Float16x4_convert_Int16x4.parameters = Float16x4_convert_Int16x4_args;
+    Symbol::Resolved(&Float16x4_convert_Int16x4_arg0).typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&Float16x4_convert_Int16x4).returnTypeSymbol = &Float16x4Type;
+    Float16x4_splat_Int16_arg0.name = "val"_c;
     Float16x4_splat_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    Float16x4_splat_Int16.documentation = "Splat i16x4 to f16x4"_c;
     Float16x4_splat_Int16.name = "f16x4"_c;
     Float16x4_splat_Int16.returnType = Type::FullType { Float16x4Type.name };
-    Symbol::Resolved(&Float16x4_splat_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float16x4_splat_Int16)->returnTypeSymbol = &Float16x4Type;
-
+    Float16x4_splat_Int16.parameters = Float16x4_splat_Int16_args;
+    Symbol::Resolved(&Float16x4_splat_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&Float16x4_splat_Int16).returnTypeSymbol = &Float16x4Type;
     // Construct with Float16, Float16, Float16, Float16
     Float16x4_ctor0_arg0.name = "_arg0"_c;
     Float16x4_ctor0_arg0.type = Type::FullType { Float16Type.name };
@@ -9817,6 +14112,7 @@ Float16x4::Float16x4()
     Float16x4_ctor0_arg3.type = Type::FullType { Float16Type.name };
     Float16x4_ctor0_Float16_Float16_Float16_Float16.name = "0"_c;
     Float16x4_ctor0_Float16_Float16_Float16_Float16.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_ctor0_Float16_Float16_Float16_Float16.parameters = Float16x4_ctor0_Float16_Float16_Float16_Float16_args;
     Symbol::Resolved(&Float16x4_ctor0_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x4_ctor0_arg1)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x4_ctor0_arg2)->typeSymbol = &Float16Type;
@@ -9832,6 +14128,7 @@ Float16x4::Float16x4()
     Float16x4_ctor1_arg2.type = Type::FullType { Float16Type.name };
     Float16x4_ctor1_Float16x2_Float16_Float16.name = "1"_c;
     Float16x4_ctor1_Float16x2_Float16_Float16.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_ctor1_Float16x2_Float16_Float16.parameters = Float16x4_ctor1_Float16x2_Float16_Float16_args;
     Symbol::Resolved(&Float16x4_ctor1_arg0)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&Float16x4_ctor1_arg1)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x4_ctor1_arg2)->typeSymbol = &Float16Type;
@@ -9846,6 +14143,7 @@ Float16x4::Float16x4()
     Float16x4_ctor2_arg2.type = Type::FullType { Float16Type.name };
     Float16x4_ctor2_Float16_Float16x2_Float16.name = "2"_c;
     Float16x4_ctor2_Float16_Float16x2_Float16.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_ctor2_Float16_Float16x2_Float16.parameters = Float16x4_ctor2_Float16_Float16x2_Float16_args;
     Symbol::Resolved(&Float16x4_ctor2_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x4_ctor2_arg1)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&Float16x4_ctor2_arg2)->typeSymbol = &Float16Type;
@@ -9860,6 +14158,7 @@ Float16x4::Float16x4()
     Float16x4_ctor3_arg2.type = Type::FullType { Float16x2Type.name };
     Float16x4_ctor3_Float16_Float16_Float16x2.name = "3"_c;
     Float16x4_ctor3_Float16_Float16_Float16x2.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_ctor3_Float16_Float16_Float16x2.parameters = Float16x4_ctor3_Float16_Float16_Float16x2_args;
     Symbol::Resolved(&Float16x4_ctor3_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x4_ctor3_arg1)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x4_ctor3_arg2)->typeSymbol = &Float16x2Type;
@@ -9872,6 +14171,7 @@ Float16x4::Float16x4()
     Float16x4_ctor4_arg1.type = Type::FullType { Float16Type.name };
     Float16x4_ctor4_Float16x3_Float16.name = "4"_c;
     Float16x4_ctor4_Float16x3_Float16.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_ctor4_Float16x3_Float16.parameters = Float16x4_ctor4_Float16x3_Float16_args;
     Symbol::Resolved(&Float16x4_ctor4_arg0)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&Float16x4_ctor4_arg1)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x4_ctor4_Float16x3_Float16)->returnTypeSymbol = &Float16x4Type;
@@ -9883,6 +14183,7 @@ Float16x4::Float16x4()
     Float16x4_ctor5_arg1.type = Type::FullType { Float16x3Type.name };
     Float16x4_ctor5_Float16_Float16x3.name = "5"_c;
     Float16x4_ctor5_Float16_Float16x3.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_ctor5_Float16_Float16x3.parameters = Float16x4_ctor5_Float16_Float16x3_args;
     Symbol::Resolved(&Float16x4_ctor5_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x4_ctor5_arg1)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&Float16x4_ctor5_Float16_Float16x3)->returnTypeSymbol = &Float16x4Type;
@@ -9892,6 +14193,7 @@ Float16x4::Float16x4()
     Float16x4_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Float16x4_operator_index_Int32.name = "operator[]"_c;
     Float16x4_operator_index_Int32.returnType = Type::FullType{ Float16Type.name };
+    Float16x4_operator_index_Int32.parameters = Float16x4_operator_index_Int32_args;
     Symbol::Resolved(&Float16x4_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Float16x4_operator_index_Int32)->returnTypeSymbol = &Float16Type;
 
@@ -9900,6 +14202,7 @@ Float16x4::Float16x4()
     Float16x4_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Float16x4_operator_index_UInt32.name = "operator[]"_c;
     Float16x4_operator_index_UInt32.returnType = Type::FullType{ Float16Type.name };
+    Float16x4_operator_index_UInt32.parameters = Float16x4_operator_index_UInt32_args;
     Symbol::Resolved(&Float16x4_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Float16x4_operator_index_UInt32)->returnTypeSymbol = &Float16Type;
 
@@ -9908,6 +14211,7 @@ Float16x4::Float16x4()
     Float16x4_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Float16x4_operator_index_Int16.name = "operator[]"_c;
     Float16x4_operator_index_Int16.returnType = Type::FullType{ Float16Type.name };
+    Float16x4_operator_index_Int16.parameters = Float16x4_operator_index_Int16_args;
     Symbol::Resolved(&Float16x4_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Float16x4_operator_index_Int16)->returnTypeSymbol = &Float16Type;
 
@@ -9916,6 +14220,7 @@ Float16x4::Float16x4()
     Float16x4_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Float16x4_operator_index_UInt16.name = "operator[]"_c;
     Float16x4_operator_index_UInt16.returnType = Type::FullType{ Float16Type.name };
+    Float16x4_operator_index_UInt16.parameters = Float16x4_operator_index_UInt16_args;
     Symbol::Resolved(&Float16x4_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float16x4_operator_index_UInt16)->returnTypeSymbol = &Float16Type;
 
@@ -9924,6 +14229,7 @@ Float16x4::Float16x4()
     Float16x4_operator_add_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
     Float16x4_operator_add_Float16x4.name = "operator+"_c;
     Float16x4_operator_add_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_operator_add_Float16x4.parameters = Float16x4_operator_add_Float16x4_args;
     Symbol::Resolved(&Float16x4_operator_add_Float16x4_arg0)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&Float16x4_operator_add_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
@@ -9932,6 +14238,7 @@ Float16x4::Float16x4()
     Float16x4_operator_sub_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
     Float16x4_operator_sub_Float16x4.name = "operator-"_c;
     Float16x4_operator_sub_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_operator_sub_Float16x4.parameters = Float16x4_operator_sub_Float16x4_args;
     Symbol::Resolved(&Float16x4_operator_sub_Float16x4_arg0)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&Float16x4_operator_sub_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
@@ -9940,6 +14247,7 @@ Float16x4::Float16x4()
     Float16x4_operator_mul_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
     Float16x4_operator_mul_Float16x4.name = "operator*"_c;
     Float16x4_operator_mul_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_operator_mul_Float16x4.parameters = Float16x4_operator_mul_Float16x4_args;
     Symbol::Resolved(&Float16x4_operator_mul_Float16x4_arg0)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&Float16x4_operator_mul_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
@@ -9948,6 +14256,7 @@ Float16x4::Float16x4()
     Float16x4_operator_div_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
     Float16x4_operator_div_Float16x4.name = "operator/"_c;
     Float16x4_operator_div_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_operator_div_Float16x4.parameters = Float16x4_operator_div_Float16x4_args;
     Symbol::Resolved(&Float16x4_operator_div_Float16x4_arg0)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&Float16x4_operator_div_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
@@ -9956,6 +14265,7 @@ Float16x4::Float16x4()
     Float16x4_operator_mod_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
     Float16x4_operator_mod_Float16x4.name = "operator%"_c;
     Float16x4_operator_mod_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_operator_mod_Float16x4.parameters = Float16x4_operator_mod_Float16x4_args;
     Symbol::Resolved(&Float16x4_operator_mod_Float16x4_arg0)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&Float16x4_operator_mod_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
@@ -9964,6 +14274,7 @@ Float16x4::Float16x4()
     Float16x4_operator_addasg_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
     Float16x4_operator_addasg_Float16x4.name = "operator+="_c;
     Float16x4_operator_addasg_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_operator_addasg_Float16x4.parameters = Float16x4_operator_addasg_Float16x4_args;
     Symbol::Resolved(&Float16x4_operator_addasg_Float16x4_arg0)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&Float16x4_operator_addasg_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
@@ -9972,6 +14283,7 @@ Float16x4::Float16x4()
     Float16x4_operator_subasg_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
     Float16x4_operator_subasg_Float16x4.name = "operator-="_c;
     Float16x4_operator_subasg_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_operator_subasg_Float16x4.parameters = Float16x4_operator_subasg_Float16x4_args;
     Symbol::Resolved(&Float16x4_operator_subasg_Float16x4_arg0)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&Float16x4_operator_subasg_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
@@ -9980,6 +14292,7 @@ Float16x4::Float16x4()
     Float16x4_operator_mulasg_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
     Float16x4_operator_mulasg_Float16x4.name = "operator*="_c;
     Float16x4_operator_mulasg_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_operator_mulasg_Float16x4.parameters = Float16x4_operator_mulasg_Float16x4_args;
     Symbol::Resolved(&Float16x4_operator_mulasg_Float16x4_arg0)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&Float16x4_operator_mulasg_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
@@ -9988,6 +14301,7 @@ Float16x4::Float16x4()
     Float16x4_operator_divasg_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
     Float16x4_operator_divasg_Float16x4.name = "operator/="_c;
     Float16x4_operator_divasg_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_operator_divasg_Float16x4.parameters = Float16x4_operator_divasg_Float16x4_args;
     Symbol::Resolved(&Float16x4_operator_divasg_Float16x4_arg0)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&Float16x4_operator_divasg_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
@@ -9996,6 +14310,7 @@ Float16x4::Float16x4()
     Float16x4_operator_lt_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
     Float16x4_operator_lt_Float16x4.name = "operator<"_c;
     Float16x4_operator_lt_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_operator_lt_Float16x4.parameters = Float16x4_operator_lt_Float16x4_args;
     Symbol::Resolved(&Float16x4_operator_lt_Float16x4_arg0)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&Float16x4_operator_lt_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
@@ -10004,6 +14319,7 @@ Float16x4::Float16x4()
     Float16x4_operator_lte_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
     Float16x4_operator_lte_Float16x4.name = "operator<="_c;
     Float16x4_operator_lte_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_operator_lte_Float16x4.parameters = Float16x4_operator_lte_Float16x4_args;
     Symbol::Resolved(&Float16x4_operator_lte_Float16x4_arg0)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&Float16x4_operator_lte_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
@@ -10012,6 +14328,7 @@ Float16x4::Float16x4()
     Float16x4_operator_gt_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
     Float16x4_operator_gt_Float16x4.name = "operator>"_c;
     Float16x4_operator_gt_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_operator_gt_Float16x4.parameters = Float16x4_operator_gt_Float16x4_args;
     Symbol::Resolved(&Float16x4_operator_gt_Float16x4_arg0)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&Float16x4_operator_gt_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
@@ -10020,6 +14337,7 @@ Float16x4::Float16x4()
     Float16x4_operator_gte_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
     Float16x4_operator_gte_Float16x4.name = "operator>="_c;
     Float16x4_operator_gte_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_operator_gte_Float16x4.parameters = Float16x4_operator_gte_Float16x4_args;
     Symbol::Resolved(&Float16x4_operator_gte_Float16x4_arg0)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&Float16x4_operator_gte_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
@@ -10028,6 +14346,7 @@ Float16x4::Float16x4()
     Float16x4_operator_eq_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
     Float16x4_operator_eq_Float16x4.name = "operator=="_c;
     Float16x4_operator_eq_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_operator_eq_Float16x4.parameters = Float16x4_operator_eq_Float16x4_args;
     Symbol::Resolved(&Float16x4_operator_eq_Float16x4_arg0)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&Float16x4_operator_eq_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
@@ -10036,6 +14355,7 @@ Float16x4::Float16x4()
     Float16x4_operator_neq_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
     Float16x4_operator_neq_Float16x4.name = "operator!="_c;
     Float16x4_operator_neq_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_operator_neq_Float16x4.parameters = Float16x4_operator_neq_Float16x4_args;
     Symbol::Resolved(&Float16x4_operator_neq_Float16x4_arg0)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&Float16x4_operator_neq_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
@@ -10044,6 +14364,7 @@ Float16x4::Float16x4()
     Float16x4_operator_scale_Float16x4_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Float16x4_operator_scale_Float16x4_Float32.name = "operator*"_c;
     Float16x4_operator_scale_Float16x4_Float32.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_operator_scale_Float16x4_Float32.parameters = Float16x4_operator_scale_Float16x4_Float32_args;
     Symbol::Resolved(&Float16x4_operator_scale_Float16x4_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float16x4_operator_scale_Float16x4_Float32)->returnTypeSymbol = &Float16x4Type;
 
@@ -10052,6 +14373,7 @@ Float16x4::Float16x4()
     Float16x4_operator_scale_Float16x4_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Float16x4_operator_scale_Float16x4_Float16.name = "operator*"_c;
     Float16x4_operator_scale_Float16x4_Float16.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_operator_scale_Float16x4_Float16.parameters = Float16x4_operator_scale_Float16x4_Float16_args;
     Symbol::Resolved(&Float16x4_operator_scale_Float16x4_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x4_operator_scale_Float16x4_Float16)->returnTypeSymbol = &Float16x4Type;
 
@@ -10060,6 +14382,7 @@ Float16x4::Float16x4()
     Float16x4_operator_scale_Float16x4_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Float16x4_operator_scale_Float16x4_UInt32.name = "operator*"_c;
     Float16x4_operator_scale_Float16x4_UInt32.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_operator_scale_Float16x4_UInt32.parameters = Float16x4_operator_scale_Float16x4_UInt32_args;
     Symbol::Resolved(&Float16x4_operator_scale_Float16x4_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Float16x4_operator_scale_Float16x4_UInt32)->returnTypeSymbol = &Float16x4Type;
 
@@ -10068,6 +14391,7 @@ Float16x4::Float16x4()
     Float16x4_operator_scale_Float16x4_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Float16x4_operator_scale_Float16x4_UInt16.name = "operator*"_c;
     Float16x4_operator_scale_Float16x4_UInt16.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_operator_scale_Float16x4_UInt16.parameters = Float16x4_operator_scale_Float16x4_UInt16_args;
     Symbol::Resolved(&Float16x4_operator_scale_Float16x4_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float16x4_operator_scale_Float16x4_UInt16)->returnTypeSymbol = &Float16x4Type;
 
@@ -10076,6 +14400,7 @@ Float16x4::Float16x4()
     Float16x4_operator_scale_Float16x4_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Float16x4_operator_scale_Float16x4_Int32.name = "operator*"_c;
     Float16x4_operator_scale_Float16x4_Int32.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_operator_scale_Float16x4_Int32.parameters = Float16x4_operator_scale_Float16x4_Int32_args;
     Symbol::Resolved(&Float16x4_operator_scale_Float16x4_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Float16x4_operator_scale_Float16x4_Int32)->returnTypeSymbol = &Float16x4Type;
 
@@ -10084,6 +14409,7 @@ Float16x4::Float16x4()
     Float16x4_operator_scale_Float16x4_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Float16x4_operator_scale_Float16x4_Int16.name = "operator*"_c;
     Float16x4_operator_scale_Float16x4_Int16.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_operator_scale_Float16x4_Int16.parameters = Float16x4_operator_scale_Float16x4_Int16_args;
     Symbol::Resolved(&Float16x4_operator_scale_Float16x4_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Float16x4_operator_scale_Float16x4_Int16)->returnTypeSymbol = &Float16x4Type;
 
@@ -10092,6 +14418,7 @@ Float16x4::Float16x4()
     Float16x4_operator_mul_Float32x4x2_arg0.type = Type::FullType{ Float32x4x2Type.name };
     Float16x4_operator_mul_Float32x4x2.name = "operator*"_c;
     Float16x4_operator_mul_Float32x4x2.returnType = Type::FullType{ Float16x2Type.name };
+    Float16x4_operator_mul_Float32x4x2.parameters = Float16x4_operator_mul_Float32x4x2_args;
     Symbol::Resolved(&Float16x4_operator_mul_Float32x4x2_arg0)->typeSymbol = &Float32x4x2Type;
     Symbol::Resolved(&Float16x4_operator_mul_Float32x4x2)->returnTypeSymbol = &Float16x2Type;
 
@@ -10100,6 +14427,7 @@ Float16x4::Float16x4()
     Float16x4_operator_mul_Float32x4x3_arg0.type = Type::FullType{ Float32x4x3Type.name };
     Float16x4_operator_mul_Float32x4x3.name = "operator*"_c;
     Float16x4_operator_mul_Float32x4x3.returnType = Type::FullType{ Float16x3Type.name };
+    Float16x4_operator_mul_Float32x4x3.parameters = Float16x4_operator_mul_Float32x4x3_args;
     Symbol::Resolved(&Float16x4_operator_mul_Float32x4x3_arg0)->typeSymbol = &Float32x4x3Type;
     Symbol::Resolved(&Float16x4_operator_mul_Float32x4x3)->returnTypeSymbol = &Float16x3Type;
 
@@ -10108,46 +14436,11 @@ Float16x4::Float16x4()
     Float16x4_operator_mul_Float32x4x4_arg0.type = Type::FullType{ Float32x4x4Type.name };
     Float16x4_operator_mul_Float32x4x4.name = "operator*"_c;
     Float16x4_operator_mul_Float32x4x4.returnType = Type::FullType{ Float16x4Type.name };
+    Float16x4_operator_mul_Float32x4x4.parameters = Float16x4_operator_mul_Float32x4x4_args;
     Symbol::Resolved(&Float16x4_operator_mul_Float32x4x4_arg0)->typeSymbol = &Float32x4x4Type;
     Symbol::Resolved(&Float16x4_operator_mul_Float32x4x4)->returnTypeSymbol = &Float16x4Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "f16x4"_c, &Float16x4_convert_Float32x4 },
-        std::pair{ "f16x4(f32x4)"_c, &Float16x4_convert_Float32x4 },
-        std::pair{ "f16x4"_c, &Float16x4_splat_Float32 },
-        std::pair{ "f16x4(f32)"_c, &Float16x4_splat_Float32 },
-        std::pair{ "f16x4"_c, &Float16x4_convert_UInt32x4 },
-        std::pair{ "f16x4(u32x4)"_c, &Float16x4_convert_UInt32x4 },
-        std::pair{ "f16x4"_c, &Float16x4_splat_UInt32 },
-        std::pair{ "f16x4(u32)"_c, &Float16x4_splat_UInt32 },
-        std::pair{ "f16x4"_c, &Float16x4_convert_Int32x4 },
-        std::pair{ "f16x4(i32x4)"_c, &Float16x4_convert_Int32x4 },
-        std::pair{ "f16x4"_c, &Float16x4_splat_Int32 },
-        std::pair{ "f16x4(i32)"_c, &Float16x4_splat_Int32 },
-        std::pair{ "f16x4"_c, &Float16x4_convert_Float16x4 },
-        std::pair{ "f16x4(f16x4)"_c, &Float16x4_convert_Float16x4 },
-        std::pair{ "f16x4"_c, &Float16x4_splat_Float16 },
-        std::pair{ "f16x4(f16)"_c, &Float16x4_splat_Float16 },
-        std::pair{ "f16x4"_c, &Float16x4_convert_UInt16x4 },
-        std::pair{ "f16x4(u16x4)"_c, &Float16x4_convert_UInt16x4 },
-        std::pair{ "f16x4"_c, &Float16x4_splat_UInt16 },
-        std::pair{ "f16x4(u16)"_c, &Float16x4_splat_UInt16 },
-        std::pair{ "f16x4"_c, &Float16x4_convert_Int16x4 },
-        std::pair{ "f16x4(i16x4)"_c, &Float16x4_convert_Int16x4 },
-        std::pair{ "f16x4"_c, &Float16x4_splat_Int16 },
-        std::pair{ "f16x4(i16)"_c, &Float16x4_splat_Int16 },
-        std::pair{ "f16x4"_c, &Float16x4_ctor0_Float16_Float16_Float16_Float16},
-        std::pair{ "f16x4(f16,f16,f16,f16)"_c, &Float16x4_ctor0_Float16_Float16_Float16_Float16},
-        std::pair{ "f16x4"_c, &Float16x4_ctor1_Float16x2_Float16_Float16},
-        std::pair{ "f16x4(f16x2,f16,f16)"_c, &Float16x4_ctor1_Float16x2_Float16_Float16},
-        std::pair{ "f16x4"_c, &Float16x4_ctor2_Float16_Float16x2_Float16},
-        std::pair{ "f16x4(f16,f16x2,f16)"_c, &Float16x4_ctor2_Float16_Float16x2_Float16},
-        std::pair{ "f16x4"_c, &Float16x4_ctor3_Float16_Float16_Float16x2},
-        std::pair{ "f16x4(f16,f16,f16x2)"_c, &Float16x4_ctor3_Float16_Float16_Float16x2},
-        std::pair{ "f16x4"_c, &Float16x4_ctor4_Float16x3_Float16},
-        std::pair{ "f16x4(f16x3,f16)"_c, &Float16x4_ctor4_Float16x3_Float16},
-        std::pair{ "f16x4"_c, &Float16x4_ctor5_Float16_Float16x3},
-        std::pair{ "f16x4(f16,f16x3)"_c, &Float16x4_ctor5_Float16_Float16x3},
         std::pair{ "operator[](i32)"_c, &Float16x4_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &Float16x4_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &Float16x4_operator_index_Int16},
@@ -10189,102 +14482,102 @@ UInt16x4::UInt16x4()
     this->baseType = TypeCode::UInt16;
     this->builtin = true;
 
-    // Conversion from Float32x4
-    UInt16x4_convert_Float32x4_arg0.name = "_arg0"_c;
+    UInt16x4_convert_Float32x4_arg0.name = "val"_c;
     UInt16x4_convert_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
+    UInt16x4_convert_Float32x4.documentation = "Convert f32x4 to u16x4"_c;
     UInt16x4_convert_Float32x4.name = "u16x4"_c;
     UInt16x4_convert_Float32x4.returnType = Type::FullType { UInt16x4Type.name };
-    Symbol::Resolved(&UInt16x4_convert_Float32x4_arg0)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&UInt16x4_convert_Float32x4)->returnTypeSymbol = &UInt16x4Type;
-
-    // Splat with Float32
-    UInt16x4_splat_Float32_arg0.name = "_arg0"_c;
+    UInt16x4_convert_Float32x4.parameters = UInt16x4_convert_Float32x4_args;
+    Symbol::Resolved(&UInt16x4_convert_Float32x4_arg0).typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&UInt16x4_convert_Float32x4).returnTypeSymbol = &UInt16x4Type;
+    UInt16x4_splat_Float32_arg0.name = "val"_c;
     UInt16x4_splat_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    UInt16x4_splat_Float32.documentation = "Splat f32x4 to u16x4"_c;
     UInt16x4_splat_Float32.name = "u16x4"_c;
     UInt16x4_splat_Float32.returnType = Type::FullType { UInt16x4Type.name };
-    Symbol::Resolved(&UInt16x4_splat_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&UInt16x4_splat_Float32)->returnTypeSymbol = &UInt16x4Type;
-
-    // Conversion from UInt32x4
-    UInt16x4_convert_UInt32x4_arg0.name = "_arg0"_c;
+    UInt16x4_splat_Float32.parameters = UInt16x4_splat_Float32_args;
+    Symbol::Resolved(&UInt16x4_splat_Float32_arg0).typeSymbol = &Float32Type;
+    Symbol::Resolved(&UInt16x4_splat_Float32).returnTypeSymbol = &UInt16x4Type;
+    UInt16x4_convert_UInt32x4_arg0.name = "val"_c;
     UInt16x4_convert_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
+    UInt16x4_convert_UInt32x4.documentation = "Convert u32x4 to u16x4"_c;
     UInt16x4_convert_UInt32x4.name = "u16x4"_c;
     UInt16x4_convert_UInt32x4.returnType = Type::FullType { UInt16x4Type.name };
-    Symbol::Resolved(&UInt16x4_convert_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&UInt16x4_convert_UInt32x4)->returnTypeSymbol = &UInt16x4Type;
-
-    // Splat with UInt32
-    UInt16x4_splat_UInt32_arg0.name = "_arg0"_c;
+    UInt16x4_convert_UInt32x4.parameters = UInt16x4_convert_UInt32x4_args;
+    Symbol::Resolved(&UInt16x4_convert_UInt32x4_arg0).typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&UInt16x4_convert_UInt32x4).returnTypeSymbol = &UInt16x4Type;
+    UInt16x4_splat_UInt32_arg0.name = "val"_c;
     UInt16x4_splat_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    UInt16x4_splat_UInt32.documentation = "Splat u32x4 to u16x4"_c;
     UInt16x4_splat_UInt32.name = "u16x4"_c;
     UInt16x4_splat_UInt32.returnType = Type::FullType { UInt16x4Type.name };
-    Symbol::Resolved(&UInt16x4_splat_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&UInt16x4_splat_UInt32)->returnTypeSymbol = &UInt16x4Type;
-
-    // Conversion from Int32x4
-    UInt16x4_convert_Int32x4_arg0.name = "_arg0"_c;
+    UInt16x4_splat_UInt32.parameters = UInt16x4_splat_UInt32_args;
+    Symbol::Resolved(&UInt16x4_splat_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&UInt16x4_splat_UInt32).returnTypeSymbol = &UInt16x4Type;
+    UInt16x4_convert_Int32x4_arg0.name = "val"_c;
     UInt16x4_convert_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
+    UInt16x4_convert_Int32x4.documentation = "Convert i32x4 to u16x4"_c;
     UInt16x4_convert_Int32x4.name = "u16x4"_c;
     UInt16x4_convert_Int32x4.returnType = Type::FullType { UInt16x4Type.name };
-    Symbol::Resolved(&UInt16x4_convert_Int32x4_arg0)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&UInt16x4_convert_Int32x4)->returnTypeSymbol = &UInt16x4Type;
-
-    // Splat with Int32
-    UInt16x4_splat_Int32_arg0.name = "_arg0"_c;
+    UInt16x4_convert_Int32x4.parameters = UInt16x4_convert_Int32x4_args;
+    Symbol::Resolved(&UInt16x4_convert_Int32x4_arg0).typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&UInt16x4_convert_Int32x4).returnTypeSymbol = &UInt16x4Type;
+    UInt16x4_splat_Int32_arg0.name = "val"_c;
     UInt16x4_splat_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    UInt16x4_splat_Int32.documentation = "Splat i32x4 to u16x4"_c;
     UInt16x4_splat_Int32.name = "u16x4"_c;
     UInt16x4_splat_Int32.returnType = Type::FullType { UInt16x4Type.name };
-    Symbol::Resolved(&UInt16x4_splat_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&UInt16x4_splat_Int32)->returnTypeSymbol = &UInt16x4Type;
-
-    // Conversion from Float16x4
-    UInt16x4_convert_Float16x4_arg0.name = "_arg0"_c;
+    UInt16x4_splat_Int32.parameters = UInt16x4_splat_Int32_args;
+    Symbol::Resolved(&UInt16x4_splat_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&UInt16x4_splat_Int32).returnTypeSymbol = &UInt16x4Type;
+    UInt16x4_convert_Float16x4_arg0.name = "val"_c;
     UInt16x4_convert_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
+    UInt16x4_convert_Float16x4.documentation = "Convert f16x4 to u16x4"_c;
     UInt16x4_convert_Float16x4.name = "u16x4"_c;
     UInt16x4_convert_Float16x4.returnType = Type::FullType { UInt16x4Type.name };
-    Symbol::Resolved(&UInt16x4_convert_Float16x4_arg0)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&UInt16x4_convert_Float16x4)->returnTypeSymbol = &UInt16x4Type;
-
-    // Splat with Float16
-    UInt16x4_splat_Float16_arg0.name = "_arg0"_c;
+    UInt16x4_convert_Float16x4.parameters = UInt16x4_convert_Float16x4_args;
+    Symbol::Resolved(&UInt16x4_convert_Float16x4_arg0).typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&UInt16x4_convert_Float16x4).returnTypeSymbol = &UInt16x4Type;
+    UInt16x4_splat_Float16_arg0.name = "val"_c;
     UInt16x4_splat_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    UInt16x4_splat_Float16.documentation = "Splat f16x4 to u16x4"_c;
     UInt16x4_splat_Float16.name = "u16x4"_c;
     UInt16x4_splat_Float16.returnType = Type::FullType { UInt16x4Type.name };
-    Symbol::Resolved(&UInt16x4_splat_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&UInt16x4_splat_Float16)->returnTypeSymbol = &UInt16x4Type;
-
-    // Conversion from UInt16x4
-    UInt16x4_convert_UInt16x4_arg0.name = "_arg0"_c;
+    UInt16x4_splat_Float16.parameters = UInt16x4_splat_Float16_args;
+    Symbol::Resolved(&UInt16x4_splat_Float16_arg0).typeSymbol = &Float16Type;
+    Symbol::Resolved(&UInt16x4_splat_Float16).returnTypeSymbol = &UInt16x4Type;
+    UInt16x4_convert_UInt16x4_arg0.name = "val"_c;
     UInt16x4_convert_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_convert_UInt16x4.documentation = "Convert u16x4 to u16x4"_c;
     UInt16x4_convert_UInt16x4.name = "u16x4"_c;
     UInt16x4_convert_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
-    Symbol::Resolved(&UInt16x4_convert_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
-    Symbol::Resolved(&UInt16x4_convert_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
-
-    // Splat with UInt16
-    UInt16x4_splat_UInt16_arg0.name = "_arg0"_c;
+    UInt16x4_convert_UInt16x4.parameters = UInt16x4_convert_UInt16x4_args;
+    Symbol::Resolved(&UInt16x4_convert_UInt16x4_arg0).typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&UInt16x4_convert_UInt16x4).returnTypeSymbol = &UInt16x4Type;
+    UInt16x4_splat_UInt16_arg0.name = "val"_c;
     UInt16x4_splat_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    UInt16x4_splat_UInt16.documentation = "Splat u16x4 to u16x4"_c;
     UInt16x4_splat_UInt16.name = "u16x4"_c;
     UInt16x4_splat_UInt16.returnType = Type::FullType { UInt16x4Type.name };
-    Symbol::Resolved(&UInt16x4_splat_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&UInt16x4_splat_UInt16)->returnTypeSymbol = &UInt16x4Type;
-
-    // Conversion from Int16x4
-    UInt16x4_convert_Int16x4_arg0.name = "_arg0"_c;
+    UInt16x4_splat_UInt16.parameters = UInt16x4_splat_UInt16_args;
+    Symbol::Resolved(&UInt16x4_splat_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&UInt16x4_splat_UInt16).returnTypeSymbol = &UInt16x4Type;
+    UInt16x4_convert_Int16x4_arg0.name = "val"_c;
     UInt16x4_convert_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
+    UInt16x4_convert_Int16x4.documentation = "Convert i16x4 to u16x4"_c;
     UInt16x4_convert_Int16x4.name = "u16x4"_c;
     UInt16x4_convert_Int16x4.returnType = Type::FullType { UInt16x4Type.name };
-    Symbol::Resolved(&UInt16x4_convert_Int16x4_arg0)->typeSymbol = &Int16x4Type;
-    Symbol::Resolved(&UInt16x4_convert_Int16x4)->returnTypeSymbol = &UInt16x4Type;
-
-    // Splat with Int16
-    UInt16x4_splat_Int16_arg0.name = "_arg0"_c;
+    UInt16x4_convert_Int16x4.parameters = UInt16x4_convert_Int16x4_args;
+    Symbol::Resolved(&UInt16x4_convert_Int16x4_arg0).typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&UInt16x4_convert_Int16x4).returnTypeSymbol = &UInt16x4Type;
+    UInt16x4_splat_Int16_arg0.name = "val"_c;
     UInt16x4_splat_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    UInt16x4_splat_Int16.documentation = "Splat i16x4 to u16x4"_c;
     UInt16x4_splat_Int16.name = "u16x4"_c;
     UInt16x4_splat_Int16.returnType = Type::FullType { UInt16x4Type.name };
-    Symbol::Resolved(&UInt16x4_splat_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&UInt16x4_splat_Int16)->returnTypeSymbol = &UInt16x4Type;
-
+    UInt16x4_splat_Int16.parameters = UInt16x4_splat_Int16_args;
+    Symbol::Resolved(&UInt16x4_splat_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&UInt16x4_splat_Int16).returnTypeSymbol = &UInt16x4Type;
     // Construct with UInt16, UInt16, UInt16, UInt16
     UInt16x4_ctor0_arg0.name = "_arg0"_c;
     UInt16x4_ctor0_arg0.type = Type::FullType { UInt16Type.name };
@@ -10296,6 +14589,7 @@ UInt16x4::UInt16x4()
     UInt16x4_ctor0_arg3.type = Type::FullType { UInt16Type.name };
     UInt16x4_ctor0_UInt16_UInt16_UInt16_UInt16.name = "0"_c;
     UInt16x4_ctor0_UInt16_UInt16_UInt16_UInt16.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_ctor0_UInt16_UInt16_UInt16_UInt16.parameters = UInt16x4_ctor0_UInt16_UInt16_UInt16_UInt16_args;
     Symbol::Resolved(&UInt16x4_ctor0_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16x4_ctor0_arg1)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16x4_ctor0_arg2)->typeSymbol = &UInt16Type;
@@ -10311,6 +14605,7 @@ UInt16x4::UInt16x4()
     UInt16x4_ctor1_arg2.type = Type::FullType { UInt16Type.name };
     UInt16x4_ctor1_UInt16x2_UInt16_UInt16.name = "1"_c;
     UInt16x4_ctor1_UInt16x2_UInt16_UInt16.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_ctor1_UInt16x2_UInt16_UInt16.parameters = UInt16x4_ctor1_UInt16x2_UInt16_UInt16_args;
     Symbol::Resolved(&UInt16x4_ctor1_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x4_ctor1_arg1)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16x4_ctor1_arg2)->typeSymbol = &UInt16Type;
@@ -10325,6 +14620,7 @@ UInt16x4::UInt16x4()
     UInt16x4_ctor2_arg2.type = Type::FullType { UInt16Type.name };
     UInt16x4_ctor2_UInt16_UInt16x2_UInt16.name = "2"_c;
     UInt16x4_ctor2_UInt16_UInt16x2_UInt16.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_ctor2_UInt16_UInt16x2_UInt16.parameters = UInt16x4_ctor2_UInt16_UInt16x2_UInt16_args;
     Symbol::Resolved(&UInt16x4_ctor2_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16x4_ctor2_arg1)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x4_ctor2_arg2)->typeSymbol = &UInt16Type;
@@ -10339,6 +14635,7 @@ UInt16x4::UInt16x4()
     UInt16x4_ctor3_arg2.type = Type::FullType { UInt16x2Type.name };
     UInt16x4_ctor3_UInt16_UInt16_UInt16x2.name = "3"_c;
     UInt16x4_ctor3_UInt16_UInt16_UInt16x2.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_ctor3_UInt16_UInt16_UInt16x2.parameters = UInt16x4_ctor3_UInt16_UInt16_UInt16x2_args;
     Symbol::Resolved(&UInt16x4_ctor3_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16x4_ctor3_arg1)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16x4_ctor3_arg2)->typeSymbol = &UInt16x2Type;
@@ -10351,6 +14648,7 @@ UInt16x4::UInt16x4()
     UInt16x4_ctor4_arg1.type = Type::FullType { UInt16Type.name };
     UInt16x4_ctor4_UInt16x3_UInt16.name = "4"_c;
     UInt16x4_ctor4_UInt16x3_UInt16.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_ctor4_UInt16x3_UInt16.parameters = UInt16x4_ctor4_UInt16x3_UInt16_args;
     Symbol::Resolved(&UInt16x4_ctor4_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x4_ctor4_arg1)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16x4_ctor4_UInt16x3_UInt16)->returnTypeSymbol = &UInt16x4Type;
@@ -10362,6 +14660,7 @@ UInt16x4::UInt16x4()
     UInt16x4_ctor5_arg1.type = Type::FullType { UInt16x3Type.name };
     UInt16x4_ctor5_UInt16_UInt16x3.name = "5"_c;
     UInt16x4_ctor5_UInt16_UInt16x3.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_ctor5_UInt16_UInt16x3.parameters = UInt16x4_ctor5_UInt16_UInt16x3_args;
     Symbol::Resolved(&UInt16x4_ctor5_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16x4_ctor5_arg1)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x4_ctor5_UInt16_UInt16x3)->returnTypeSymbol = &UInt16x4Type;
@@ -10371,6 +14670,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     UInt16x4_operator_index_Int32.name = "operator[]"_c;
     UInt16x4_operator_index_Int32.returnType = Type::FullType{ UInt16Type.name };
+    UInt16x4_operator_index_Int32.parameters = UInt16x4_operator_index_Int32_args;
     Symbol::Resolved(&UInt16x4_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&UInt16x4_operator_index_Int32)->returnTypeSymbol = &UInt16Type;
 
@@ -10379,6 +14679,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt16x4_operator_index_UInt32.name = "operator[]"_c;
     UInt16x4_operator_index_UInt32.returnType = Type::FullType{ UInt16Type.name };
+    UInt16x4_operator_index_UInt32.parameters = UInt16x4_operator_index_UInt32_args;
     Symbol::Resolved(&UInt16x4_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt16x4_operator_index_UInt32)->returnTypeSymbol = &UInt16Type;
 
@@ -10387,6 +14688,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     UInt16x4_operator_index_Int16.name = "operator[]"_c;
     UInt16x4_operator_index_Int16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16x4_operator_index_Int16.parameters = UInt16x4_operator_index_Int16_args;
     Symbol::Resolved(&UInt16x4_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&UInt16x4_operator_index_Int16)->returnTypeSymbol = &UInt16Type;
 
@@ -10395,6 +14697,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16x4_operator_index_UInt16.name = "operator[]"_c;
     UInt16x4_operator_index_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    UInt16x4_operator_index_UInt16.parameters = UInt16x4_operator_index_UInt16_args;
     Symbol::Resolved(&UInt16x4_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16x4_operator_index_UInt16)->returnTypeSymbol = &UInt16Type;
 
@@ -10403,6 +14706,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_add_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
     UInt16x4_operator_add_UInt16x4.name = "operator+"_c;
     UInt16x4_operator_add_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_add_UInt16x4.parameters = UInt16x4_operator_add_UInt16x4_args;
     Symbol::Resolved(&UInt16x4_operator_add_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&UInt16x4_operator_add_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10411,6 +14715,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_sub_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
     UInt16x4_operator_sub_UInt16x4.name = "operator-"_c;
     UInt16x4_operator_sub_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_sub_UInt16x4.parameters = UInt16x4_operator_sub_UInt16x4_args;
     Symbol::Resolved(&UInt16x4_operator_sub_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&UInt16x4_operator_sub_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10419,6 +14724,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_mul_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
     UInt16x4_operator_mul_UInt16x4.name = "operator*"_c;
     UInt16x4_operator_mul_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_mul_UInt16x4.parameters = UInt16x4_operator_mul_UInt16x4_args;
     Symbol::Resolved(&UInt16x4_operator_mul_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&UInt16x4_operator_mul_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10427,6 +14733,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_div_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
     UInt16x4_operator_div_UInt16x4.name = "operator/"_c;
     UInt16x4_operator_div_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_div_UInt16x4.parameters = UInt16x4_operator_div_UInt16x4_args;
     Symbol::Resolved(&UInt16x4_operator_div_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&UInt16x4_operator_div_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10435,6 +14742,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_mod_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
     UInt16x4_operator_mod_UInt16x4.name = "operator%"_c;
     UInt16x4_operator_mod_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_mod_UInt16x4.parameters = UInt16x4_operator_mod_UInt16x4_args;
     Symbol::Resolved(&UInt16x4_operator_mod_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&UInt16x4_operator_mod_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10443,6 +14751,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_addasg_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
     UInt16x4_operator_addasg_UInt16x4.name = "operator+="_c;
     UInt16x4_operator_addasg_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_addasg_UInt16x4.parameters = UInt16x4_operator_addasg_UInt16x4_args;
     Symbol::Resolved(&UInt16x4_operator_addasg_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&UInt16x4_operator_addasg_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10451,6 +14760,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_subasg_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
     UInt16x4_operator_subasg_UInt16x4.name = "operator-="_c;
     UInt16x4_operator_subasg_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_subasg_UInt16x4.parameters = UInt16x4_operator_subasg_UInt16x4_args;
     Symbol::Resolved(&UInt16x4_operator_subasg_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&UInt16x4_operator_subasg_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10459,6 +14769,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_mulasg_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
     UInt16x4_operator_mulasg_UInt16x4.name = "operator*="_c;
     UInt16x4_operator_mulasg_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_mulasg_UInt16x4.parameters = UInt16x4_operator_mulasg_UInt16x4_args;
     Symbol::Resolved(&UInt16x4_operator_mulasg_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&UInt16x4_operator_mulasg_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10467,6 +14778,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_divasg_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
     UInt16x4_operator_divasg_UInt16x4.name = "operator/="_c;
     UInt16x4_operator_divasg_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_divasg_UInt16x4.parameters = UInt16x4_operator_divasg_UInt16x4_args;
     Symbol::Resolved(&UInt16x4_operator_divasg_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&UInt16x4_operator_divasg_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10475,6 +14787,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_lt_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
     UInt16x4_operator_lt_UInt16x4.name = "operator<"_c;
     UInt16x4_operator_lt_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_lt_UInt16x4.parameters = UInt16x4_operator_lt_UInt16x4_args;
     Symbol::Resolved(&UInt16x4_operator_lt_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&UInt16x4_operator_lt_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10483,6 +14796,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_lte_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
     UInt16x4_operator_lte_UInt16x4.name = "operator<="_c;
     UInt16x4_operator_lte_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_lte_UInt16x4.parameters = UInt16x4_operator_lte_UInt16x4_args;
     Symbol::Resolved(&UInt16x4_operator_lte_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&UInt16x4_operator_lte_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10491,6 +14805,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_gt_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
     UInt16x4_operator_gt_UInt16x4.name = "operator>"_c;
     UInt16x4_operator_gt_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_gt_UInt16x4.parameters = UInt16x4_operator_gt_UInt16x4_args;
     Symbol::Resolved(&UInt16x4_operator_gt_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&UInt16x4_operator_gt_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10499,6 +14814,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_gte_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
     UInt16x4_operator_gte_UInt16x4.name = "operator>="_c;
     UInt16x4_operator_gte_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_gte_UInt16x4.parameters = UInt16x4_operator_gte_UInt16x4_args;
     Symbol::Resolved(&UInt16x4_operator_gte_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&UInt16x4_operator_gte_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10507,6 +14823,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_eq_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
     UInt16x4_operator_eq_UInt16x4.name = "operator=="_c;
     UInt16x4_operator_eq_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_eq_UInt16x4.parameters = UInt16x4_operator_eq_UInt16x4_args;
     Symbol::Resolved(&UInt16x4_operator_eq_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&UInt16x4_operator_eq_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10515,6 +14832,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_neq_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
     UInt16x4_operator_neq_UInt16x4.name = "operator!="_c;
     UInt16x4_operator_neq_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_neq_UInt16x4.parameters = UInt16x4_operator_neq_UInt16x4_args;
     Symbol::Resolved(&UInt16x4_operator_neq_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&UInt16x4_operator_neq_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10523,6 +14841,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_scale_UInt16x4_Float32_arg0.type = Type::FullType{ Float32Type.name };
     UInt16x4_operator_scale_UInt16x4_Float32.name = "operator*"_c;
     UInt16x4_operator_scale_UInt16x4_Float32.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_scale_UInt16x4_Float32.parameters = UInt16x4_operator_scale_UInt16x4_Float32_args;
     Symbol::Resolved(&UInt16x4_operator_scale_UInt16x4_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&UInt16x4_operator_scale_UInt16x4_Float32)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10531,6 +14850,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_scale_UInt16x4_Float16_arg0.type = Type::FullType{ Float16Type.name };
     UInt16x4_operator_scale_UInt16x4_Float16.name = "operator*"_c;
     UInt16x4_operator_scale_UInt16x4_Float16.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_scale_UInt16x4_Float16.parameters = UInt16x4_operator_scale_UInt16x4_Float16_args;
     Symbol::Resolved(&UInt16x4_operator_scale_UInt16x4_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&UInt16x4_operator_scale_UInt16x4_Float16)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10539,6 +14859,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_scale_UInt16x4_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     UInt16x4_operator_scale_UInt16x4_UInt32.name = "operator*"_c;
     UInt16x4_operator_scale_UInt16x4_UInt32.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_scale_UInt16x4_UInt32.parameters = UInt16x4_operator_scale_UInt16x4_UInt32_args;
     Symbol::Resolved(&UInt16x4_operator_scale_UInt16x4_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt16x4_operator_scale_UInt16x4_UInt32)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10547,6 +14868,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_scale_UInt16x4_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     UInt16x4_operator_scale_UInt16x4_UInt16.name = "operator*"_c;
     UInt16x4_operator_scale_UInt16x4_UInt16.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_scale_UInt16x4_UInt16.parameters = UInt16x4_operator_scale_UInt16x4_UInt16_args;
     Symbol::Resolved(&UInt16x4_operator_scale_UInt16x4_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16x4_operator_scale_UInt16x4_UInt16)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10555,6 +14877,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_scale_UInt16x4_Int32_arg0.type = Type::FullType{ Int32Type.name };
     UInt16x4_operator_scale_UInt16x4_Int32.name = "operator*"_c;
     UInt16x4_operator_scale_UInt16x4_Int32.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_scale_UInt16x4_Int32.parameters = UInt16x4_operator_scale_UInt16x4_Int32_args;
     Symbol::Resolved(&UInt16x4_operator_scale_UInt16x4_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&UInt16x4_operator_scale_UInt16x4_Int32)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10563,6 +14886,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_scale_UInt16x4_Int16_arg0.type = Type::FullType{ Int16Type.name };
     UInt16x4_operator_scale_UInt16x4_Int16.name = "operator*"_c;
     UInt16x4_operator_scale_UInt16x4_Int16.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_scale_UInt16x4_Int16.parameters = UInt16x4_operator_scale_UInt16x4_Int16_args;
     Symbol::Resolved(&UInt16x4_operator_scale_UInt16x4_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&UInt16x4_operator_scale_UInt16x4_Int16)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10571,6 +14895,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_or_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
     UInt16x4_operator_or_UInt16x4.name = "operator|"_c;
     UInt16x4_operator_or_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_or_UInt16x4.parameters = UInt16x4_operator_or_UInt16x4_args;
     Symbol::Resolved(&UInt16x4_operator_or_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&UInt16x4_operator_or_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10579,6 +14904,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_and_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
     UInt16x4_operator_and_UInt16x4.name = "operator&"_c;
     UInt16x4_operator_and_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_and_UInt16x4.parameters = UInt16x4_operator_and_UInt16x4_args;
     Symbol::Resolved(&UInt16x4_operator_and_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&UInt16x4_operator_and_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10587,6 +14913,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_xor_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
     UInt16x4_operator_xor_UInt16x4.name = "operator^"_c;
     UInt16x4_operator_xor_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_xor_UInt16x4.parameters = UInt16x4_operator_xor_UInt16x4_args;
     Symbol::Resolved(&UInt16x4_operator_xor_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&UInt16x4_operator_xor_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10595,6 +14922,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_lsh_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
     UInt16x4_operator_lsh_UInt16x4.name = "operator<<"_c;
     UInt16x4_operator_lsh_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_lsh_UInt16x4.parameters = UInt16x4_operator_lsh_UInt16x4_args;
     Symbol::Resolved(&UInt16x4_operator_lsh_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&UInt16x4_operator_lsh_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10603,6 +14931,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_rsh_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
     UInt16x4_operator_rsh_UInt16x4.name = "operator>>"_c;
     UInt16x4_operator_rsh_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_rsh_UInt16x4.parameters = UInt16x4_operator_rsh_UInt16x4_args;
     Symbol::Resolved(&UInt16x4_operator_rsh_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&UInt16x4_operator_rsh_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10611,6 +14940,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_orasg_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
     UInt16x4_operator_orasg_UInt16x4.name = "operator|="_c;
     UInt16x4_operator_orasg_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_orasg_UInt16x4.parameters = UInt16x4_operator_orasg_UInt16x4_args;
     Symbol::Resolved(&UInt16x4_operator_orasg_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&UInt16x4_operator_orasg_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10619,6 +14949,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_andasg_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
     UInt16x4_operator_andasg_UInt16x4.name = "operator&="_c;
     UInt16x4_operator_andasg_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_andasg_UInt16x4.parameters = UInt16x4_operator_andasg_UInt16x4_args;
     Symbol::Resolved(&UInt16x4_operator_andasg_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&UInt16x4_operator_andasg_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10627,6 +14958,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_xorasg_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
     UInt16x4_operator_xorasg_UInt16x4.name = "operator^="_c;
     UInt16x4_operator_xorasg_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_xorasg_UInt16x4.parameters = UInt16x4_operator_xorasg_UInt16x4_args;
     Symbol::Resolved(&UInt16x4_operator_xorasg_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&UInt16x4_operator_xorasg_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10635,6 +14967,7 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_lshasg_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
     UInt16x4_operator_lshasg_UInt16x4.name = "operator<<="_c;
     UInt16x4_operator_lshasg_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_lshasg_UInt16x4.parameters = UInt16x4_operator_lshasg_UInt16x4_args;
     Symbol::Resolved(&UInt16x4_operator_lshasg_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&UInt16x4_operator_lshasg_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
@@ -10643,46 +14976,11 @@ UInt16x4::UInt16x4()
     UInt16x4_operator_rhsasg_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
     UInt16x4_operator_rhsasg_UInt16x4.name = "operator>>="_c;
     UInt16x4_operator_rhsasg_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_operator_rhsasg_UInt16x4.parameters = UInt16x4_operator_rhsasg_UInt16x4_args;
     Symbol::Resolved(&UInt16x4_operator_rhsasg_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&UInt16x4_operator_rhsasg_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "u16x4"_c, &UInt16x4_convert_Float32x4 },
-        std::pair{ "u16x4(f32x4)"_c, &UInt16x4_convert_Float32x4 },
-        std::pair{ "u16x4"_c, &UInt16x4_splat_Float32 },
-        std::pair{ "u16x4(f32)"_c, &UInt16x4_splat_Float32 },
-        std::pair{ "u16x4"_c, &UInt16x4_convert_UInt32x4 },
-        std::pair{ "u16x4(u32x4)"_c, &UInt16x4_convert_UInt32x4 },
-        std::pair{ "u16x4"_c, &UInt16x4_splat_UInt32 },
-        std::pair{ "u16x4(u32)"_c, &UInt16x4_splat_UInt32 },
-        std::pair{ "u16x4"_c, &UInt16x4_convert_Int32x4 },
-        std::pair{ "u16x4(i32x4)"_c, &UInt16x4_convert_Int32x4 },
-        std::pair{ "u16x4"_c, &UInt16x4_splat_Int32 },
-        std::pair{ "u16x4(i32)"_c, &UInt16x4_splat_Int32 },
-        std::pair{ "u16x4"_c, &UInt16x4_convert_Float16x4 },
-        std::pair{ "u16x4(f16x4)"_c, &UInt16x4_convert_Float16x4 },
-        std::pair{ "u16x4"_c, &UInt16x4_splat_Float16 },
-        std::pair{ "u16x4(f16)"_c, &UInt16x4_splat_Float16 },
-        std::pair{ "u16x4"_c, &UInt16x4_convert_UInt16x4 },
-        std::pair{ "u16x4(u16x4)"_c, &UInt16x4_convert_UInt16x4 },
-        std::pair{ "u16x4"_c, &UInt16x4_splat_UInt16 },
-        std::pair{ "u16x4(u16)"_c, &UInt16x4_splat_UInt16 },
-        std::pair{ "u16x4"_c, &UInt16x4_convert_Int16x4 },
-        std::pair{ "u16x4(i16x4)"_c, &UInt16x4_convert_Int16x4 },
-        std::pair{ "u16x4"_c, &UInt16x4_splat_Int16 },
-        std::pair{ "u16x4(i16)"_c, &UInt16x4_splat_Int16 },
-        std::pair{ "u16x4"_c, &UInt16x4_ctor0_UInt16_UInt16_UInt16_UInt16},
-        std::pair{ "u16x4(u16,u16,u16,u16)"_c, &UInt16x4_ctor0_UInt16_UInt16_UInt16_UInt16},
-        std::pair{ "u16x4"_c, &UInt16x4_ctor1_UInt16x2_UInt16_UInt16},
-        std::pair{ "u16x4(u16x2,u16,u16)"_c, &UInt16x4_ctor1_UInt16x2_UInt16_UInt16},
-        std::pair{ "u16x4"_c, &UInt16x4_ctor2_UInt16_UInt16x2_UInt16},
-        std::pair{ "u16x4(u16,u16x2,u16)"_c, &UInt16x4_ctor2_UInt16_UInt16x2_UInt16},
-        std::pair{ "u16x4"_c, &UInt16x4_ctor3_UInt16_UInt16_UInt16x2},
-        std::pair{ "u16x4(u16,u16,u16x2)"_c, &UInt16x4_ctor3_UInt16_UInt16_UInt16x2},
-        std::pair{ "u16x4"_c, &UInt16x4_ctor4_UInt16x3_UInt16},
-        std::pair{ "u16x4(u16x3,u16)"_c, &UInt16x4_ctor4_UInt16x3_UInt16},
-        std::pair{ "u16x4"_c, &UInt16x4_ctor5_UInt16_UInt16x3},
-        std::pair{ "u16x4(u16,u16x3)"_c, &UInt16x4_ctor5_UInt16_UInt16x3},
         std::pair{ "operator[](i32)"_c, &UInt16x4_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &UInt16x4_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &UInt16x4_operator_index_Int16},
@@ -10731,102 +15029,102 @@ Int16x4::Int16x4()
     this->baseType = TypeCode::Int16;
     this->builtin = true;
 
-    // Conversion from Float32x4
-    Int16x4_convert_Float32x4_arg0.name = "_arg0"_c;
+    Int16x4_convert_Float32x4_arg0.name = "val"_c;
     Int16x4_convert_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
+    Int16x4_convert_Float32x4.documentation = "Convert f32x4 to i16x4"_c;
     Int16x4_convert_Float32x4.name = "i16x4"_c;
     Int16x4_convert_Float32x4.returnType = Type::FullType { Int16x4Type.name };
-    Symbol::Resolved(&Int16x4_convert_Float32x4_arg0)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&Int16x4_convert_Float32x4)->returnTypeSymbol = &Int16x4Type;
-
-    // Splat with Float32
-    Int16x4_splat_Float32_arg0.name = "_arg0"_c;
+    Int16x4_convert_Float32x4.parameters = Int16x4_convert_Float32x4_args;
+    Symbol::Resolved(&Int16x4_convert_Float32x4_arg0).typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&Int16x4_convert_Float32x4).returnTypeSymbol = &Int16x4Type;
+    Int16x4_splat_Float32_arg0.name = "val"_c;
     Int16x4_splat_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    Int16x4_splat_Float32.documentation = "Splat f32x4 to i16x4"_c;
     Int16x4_splat_Float32.name = "i16x4"_c;
     Int16x4_splat_Float32.returnType = Type::FullType { Int16x4Type.name };
-    Symbol::Resolved(&Int16x4_splat_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Int16x4_splat_Float32)->returnTypeSymbol = &Int16x4Type;
-
-    // Conversion from UInt32x4
-    Int16x4_convert_UInt32x4_arg0.name = "_arg0"_c;
+    Int16x4_splat_Float32.parameters = Int16x4_splat_Float32_args;
+    Symbol::Resolved(&Int16x4_splat_Float32_arg0).typeSymbol = &Float32Type;
+    Symbol::Resolved(&Int16x4_splat_Float32).returnTypeSymbol = &Int16x4Type;
+    Int16x4_convert_UInt32x4_arg0.name = "val"_c;
     Int16x4_convert_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
+    Int16x4_convert_UInt32x4.documentation = "Convert u32x4 to i16x4"_c;
     Int16x4_convert_UInt32x4.name = "i16x4"_c;
     Int16x4_convert_UInt32x4.returnType = Type::FullType { Int16x4Type.name };
-    Symbol::Resolved(&Int16x4_convert_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&Int16x4_convert_UInt32x4)->returnTypeSymbol = &Int16x4Type;
-
-    // Splat with UInt32
-    Int16x4_splat_UInt32_arg0.name = "_arg0"_c;
+    Int16x4_convert_UInt32x4.parameters = Int16x4_convert_UInt32x4_args;
+    Symbol::Resolved(&Int16x4_convert_UInt32x4_arg0).typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&Int16x4_convert_UInt32x4).returnTypeSymbol = &Int16x4Type;
+    Int16x4_splat_UInt32_arg0.name = "val"_c;
     Int16x4_splat_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    Int16x4_splat_UInt32.documentation = "Splat u32x4 to i16x4"_c;
     Int16x4_splat_UInt32.name = "i16x4"_c;
     Int16x4_splat_UInt32.returnType = Type::FullType { Int16x4Type.name };
-    Symbol::Resolved(&Int16x4_splat_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Int16x4_splat_UInt32)->returnTypeSymbol = &Int16x4Type;
-
-    // Conversion from Int32x4
-    Int16x4_convert_Int32x4_arg0.name = "_arg0"_c;
+    Int16x4_splat_UInt32.parameters = Int16x4_splat_UInt32_args;
+    Symbol::Resolved(&Int16x4_splat_UInt32_arg0).typeSymbol = &UInt32Type;
+    Symbol::Resolved(&Int16x4_splat_UInt32).returnTypeSymbol = &Int16x4Type;
+    Int16x4_convert_Int32x4_arg0.name = "val"_c;
     Int16x4_convert_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
+    Int16x4_convert_Int32x4.documentation = "Convert i32x4 to i16x4"_c;
     Int16x4_convert_Int32x4.name = "i16x4"_c;
     Int16x4_convert_Int32x4.returnType = Type::FullType { Int16x4Type.name };
-    Symbol::Resolved(&Int16x4_convert_Int32x4_arg0)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&Int16x4_convert_Int32x4)->returnTypeSymbol = &Int16x4Type;
-
-    // Splat with Int32
-    Int16x4_splat_Int32_arg0.name = "_arg0"_c;
+    Int16x4_convert_Int32x4.parameters = Int16x4_convert_Int32x4_args;
+    Symbol::Resolved(&Int16x4_convert_Int32x4_arg0).typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&Int16x4_convert_Int32x4).returnTypeSymbol = &Int16x4Type;
+    Int16x4_splat_Int32_arg0.name = "val"_c;
     Int16x4_splat_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    Int16x4_splat_Int32.documentation = "Splat i32x4 to i16x4"_c;
     Int16x4_splat_Int32.name = "i16x4"_c;
     Int16x4_splat_Int32.returnType = Type::FullType { Int16x4Type.name };
-    Symbol::Resolved(&Int16x4_splat_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Int16x4_splat_Int32)->returnTypeSymbol = &Int16x4Type;
-
-    // Conversion from Float16x4
-    Int16x4_convert_Float16x4_arg0.name = "_arg0"_c;
+    Int16x4_splat_Int32.parameters = Int16x4_splat_Int32_args;
+    Symbol::Resolved(&Int16x4_splat_Int32_arg0).typeSymbol = &Int32Type;
+    Symbol::Resolved(&Int16x4_splat_Int32).returnTypeSymbol = &Int16x4Type;
+    Int16x4_convert_Float16x4_arg0.name = "val"_c;
     Int16x4_convert_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
+    Int16x4_convert_Float16x4.documentation = "Convert f16x4 to i16x4"_c;
     Int16x4_convert_Float16x4.name = "i16x4"_c;
     Int16x4_convert_Float16x4.returnType = Type::FullType { Int16x4Type.name };
-    Symbol::Resolved(&Int16x4_convert_Float16x4_arg0)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&Int16x4_convert_Float16x4)->returnTypeSymbol = &Int16x4Type;
-
-    // Splat with Float16
-    Int16x4_splat_Float16_arg0.name = "_arg0"_c;
+    Int16x4_convert_Float16x4.parameters = Int16x4_convert_Float16x4_args;
+    Symbol::Resolved(&Int16x4_convert_Float16x4_arg0).typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&Int16x4_convert_Float16x4).returnTypeSymbol = &Int16x4Type;
+    Int16x4_splat_Float16_arg0.name = "val"_c;
     Int16x4_splat_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    Int16x4_splat_Float16.documentation = "Splat f16x4 to i16x4"_c;
     Int16x4_splat_Float16.name = "i16x4"_c;
     Int16x4_splat_Float16.returnType = Type::FullType { Int16x4Type.name };
-    Symbol::Resolved(&Int16x4_splat_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Int16x4_splat_Float16)->returnTypeSymbol = &Int16x4Type;
-
-    // Conversion from UInt16x4
-    Int16x4_convert_UInt16x4_arg0.name = "_arg0"_c;
+    Int16x4_splat_Float16.parameters = Int16x4_splat_Float16_args;
+    Symbol::Resolved(&Int16x4_splat_Float16_arg0).typeSymbol = &Float16Type;
+    Symbol::Resolved(&Int16x4_splat_Float16).returnTypeSymbol = &Int16x4Type;
+    Int16x4_convert_UInt16x4_arg0.name = "val"_c;
     Int16x4_convert_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
+    Int16x4_convert_UInt16x4.documentation = "Convert u16x4 to i16x4"_c;
     Int16x4_convert_UInt16x4.name = "i16x4"_c;
     Int16x4_convert_UInt16x4.returnType = Type::FullType { Int16x4Type.name };
-    Symbol::Resolved(&Int16x4_convert_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
-    Symbol::Resolved(&Int16x4_convert_UInt16x4)->returnTypeSymbol = &Int16x4Type;
-
-    // Splat with UInt16
-    Int16x4_splat_UInt16_arg0.name = "_arg0"_c;
+    Int16x4_convert_UInt16x4.parameters = Int16x4_convert_UInt16x4_args;
+    Symbol::Resolved(&Int16x4_convert_UInt16x4_arg0).typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&Int16x4_convert_UInt16x4).returnTypeSymbol = &Int16x4Type;
+    Int16x4_splat_UInt16_arg0.name = "val"_c;
     Int16x4_splat_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    Int16x4_splat_UInt16.documentation = "Splat u16x4 to i16x4"_c;
     Int16x4_splat_UInt16.name = "i16x4"_c;
     Int16x4_splat_UInt16.returnType = Type::FullType { Int16x4Type.name };
-    Symbol::Resolved(&Int16x4_splat_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Int16x4_splat_UInt16)->returnTypeSymbol = &Int16x4Type;
-
-    // Conversion from Int16x4
-    Int16x4_convert_Int16x4_arg0.name = "_arg0"_c;
+    Int16x4_splat_UInt16.parameters = Int16x4_splat_UInt16_args;
+    Symbol::Resolved(&Int16x4_splat_UInt16_arg0).typeSymbol = &UInt16Type;
+    Symbol::Resolved(&Int16x4_splat_UInt16).returnTypeSymbol = &Int16x4Type;
+    Int16x4_convert_Int16x4_arg0.name = "val"_c;
     Int16x4_convert_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
+    Int16x4_convert_Int16x4.documentation = "Convert i16x4 to i16x4"_c;
     Int16x4_convert_Int16x4.name = "i16x4"_c;
     Int16x4_convert_Int16x4.returnType = Type::FullType { Int16x4Type.name };
-    Symbol::Resolved(&Int16x4_convert_Int16x4_arg0)->typeSymbol = &Int16x4Type;
-    Symbol::Resolved(&Int16x4_convert_Int16x4)->returnTypeSymbol = &Int16x4Type;
-
-    // Splat with Int16
-    Int16x4_splat_Int16_arg0.name = "_arg0"_c;
+    Int16x4_convert_Int16x4.parameters = Int16x4_convert_Int16x4_args;
+    Symbol::Resolved(&Int16x4_convert_Int16x4_arg0).typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&Int16x4_convert_Int16x4).returnTypeSymbol = &Int16x4Type;
+    Int16x4_splat_Int16_arg0.name = "val"_c;
     Int16x4_splat_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    Int16x4_splat_Int16.documentation = "Splat i16x4 to i16x4"_c;
     Int16x4_splat_Int16.name = "i16x4"_c;
     Int16x4_splat_Int16.returnType = Type::FullType { Int16x4Type.name };
-    Symbol::Resolved(&Int16x4_splat_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Int16x4_splat_Int16)->returnTypeSymbol = &Int16x4Type;
-
+    Int16x4_splat_Int16.parameters = Int16x4_splat_Int16_args;
+    Symbol::Resolved(&Int16x4_splat_Int16_arg0).typeSymbol = &Int16Type;
+    Symbol::Resolved(&Int16x4_splat_Int16).returnTypeSymbol = &Int16x4Type;
     // Construct with Int16, Int16, Int16, Int16
     Int16x4_ctor0_arg0.name = "_arg0"_c;
     Int16x4_ctor0_arg0.type = Type::FullType { Int16Type.name };
@@ -10838,6 +15136,7 @@ Int16x4::Int16x4()
     Int16x4_ctor0_arg3.type = Type::FullType { Int16Type.name };
     Int16x4_ctor0_Int16_Int16_Int16_Int16.name = "0"_c;
     Int16x4_ctor0_Int16_Int16_Int16_Int16.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_ctor0_Int16_Int16_Int16_Int16.parameters = Int16x4_ctor0_Int16_Int16_Int16_Int16_args;
     Symbol::Resolved(&Int16x4_ctor0_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16x4_ctor0_arg1)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16x4_ctor0_arg2)->typeSymbol = &Int16Type;
@@ -10853,6 +15152,7 @@ Int16x4::Int16x4()
     Int16x4_ctor1_arg2.type = Type::FullType { Int16Type.name };
     Int16x4_ctor1_Int16x2_Int16_Int16.name = "1"_c;
     Int16x4_ctor1_Int16x2_Int16_Int16.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_ctor1_Int16x2_Int16_Int16.parameters = Int16x4_ctor1_Int16x2_Int16_Int16_args;
     Symbol::Resolved(&Int16x4_ctor1_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x4_ctor1_arg1)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16x4_ctor1_arg2)->typeSymbol = &Int16Type;
@@ -10867,6 +15167,7 @@ Int16x4::Int16x4()
     Int16x4_ctor2_arg2.type = Type::FullType { Int16Type.name };
     Int16x4_ctor2_Int16_Int16x2_Int16.name = "2"_c;
     Int16x4_ctor2_Int16_Int16x2_Int16.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_ctor2_Int16_Int16x2_Int16.parameters = Int16x4_ctor2_Int16_Int16x2_Int16_args;
     Symbol::Resolved(&Int16x4_ctor2_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16x4_ctor2_arg1)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x4_ctor2_arg2)->typeSymbol = &Int16Type;
@@ -10881,6 +15182,7 @@ Int16x4::Int16x4()
     Int16x4_ctor3_arg2.type = Type::FullType { Int16x2Type.name };
     Int16x4_ctor3_Int16_Int16_Int16x2.name = "3"_c;
     Int16x4_ctor3_Int16_Int16_Int16x2.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_ctor3_Int16_Int16_Int16x2.parameters = Int16x4_ctor3_Int16_Int16_Int16x2_args;
     Symbol::Resolved(&Int16x4_ctor3_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16x4_ctor3_arg1)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16x4_ctor3_arg2)->typeSymbol = &Int16x2Type;
@@ -10893,6 +15195,7 @@ Int16x4::Int16x4()
     Int16x4_ctor4_arg1.type = Type::FullType { Int16Type.name };
     Int16x4_ctor4_Int16x3_Int16.name = "4"_c;
     Int16x4_ctor4_Int16x3_Int16.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_ctor4_Int16x3_Int16.parameters = Int16x4_ctor4_Int16x3_Int16_args;
     Symbol::Resolved(&Int16x4_ctor4_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x4_ctor4_arg1)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16x4_ctor4_Int16x3_Int16)->returnTypeSymbol = &Int16x4Type;
@@ -10904,6 +15207,7 @@ Int16x4::Int16x4()
     Int16x4_ctor5_arg1.type = Type::FullType { Int16x3Type.name };
     Int16x4_ctor5_Int16_Int16x3.name = "5"_c;
     Int16x4_ctor5_Int16_Int16x3.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_ctor5_Int16_Int16x3.parameters = Int16x4_ctor5_Int16_Int16x3_args;
     Symbol::Resolved(&Int16x4_ctor5_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16x4_ctor5_arg1)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x4_ctor5_Int16_Int16x3)->returnTypeSymbol = &Int16x4Type;
@@ -10913,6 +15217,7 @@ Int16x4::Int16x4()
     Int16x4_operator_index_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int16x4_operator_index_Int32.name = "operator[]"_c;
     Int16x4_operator_index_Int32.returnType = Type::FullType{ Int16Type.name };
+    Int16x4_operator_index_Int32.parameters = Int16x4_operator_index_Int32_args;
     Symbol::Resolved(&Int16x4_operator_index_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int16x4_operator_index_Int32)->returnTypeSymbol = &Int16Type;
 
@@ -10921,6 +15226,7 @@ Int16x4::Int16x4()
     Int16x4_operator_index_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Int16x4_operator_index_UInt32.name = "operator[]"_c;
     Int16x4_operator_index_UInt32.returnType = Type::FullType{ Int16Type.name };
+    Int16x4_operator_index_UInt32.parameters = Int16x4_operator_index_UInt32_args;
     Symbol::Resolved(&Int16x4_operator_index_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Int16x4_operator_index_UInt32)->returnTypeSymbol = &Int16Type;
 
@@ -10929,6 +15235,7 @@ Int16x4::Int16x4()
     Int16x4_operator_index_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16x4_operator_index_Int16.name = "operator[]"_c;
     Int16x4_operator_index_Int16.returnType = Type::FullType{ Int16Type.name };
+    Int16x4_operator_index_Int16.parameters = Int16x4_operator_index_Int16_args;
     Symbol::Resolved(&Int16x4_operator_index_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16x4_operator_index_Int16)->returnTypeSymbol = &Int16Type;
 
@@ -10937,6 +15244,7 @@ Int16x4::Int16x4()
     Int16x4_operator_index_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Int16x4_operator_index_UInt16.name = "operator[]"_c;
     Int16x4_operator_index_UInt16.returnType = Type::FullType{ Int16Type.name };
+    Int16x4_operator_index_UInt16.parameters = Int16x4_operator_index_UInt16_args;
     Symbol::Resolved(&Int16x4_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Int16x4_operator_index_UInt16)->returnTypeSymbol = &Int16Type;
 
@@ -10945,6 +15253,7 @@ Int16x4::Int16x4()
     Int16x4_operator_add_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
     Int16x4_operator_add_Int16x4.name = "operator+"_c;
     Int16x4_operator_add_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_add_Int16x4.parameters = Int16x4_operator_add_Int16x4_args;
     Symbol::Resolved(&Int16x4_operator_add_Int16x4_arg0)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&Int16x4_operator_add_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
@@ -10953,6 +15262,7 @@ Int16x4::Int16x4()
     Int16x4_operator_sub_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
     Int16x4_operator_sub_Int16x4.name = "operator-"_c;
     Int16x4_operator_sub_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_sub_Int16x4.parameters = Int16x4_operator_sub_Int16x4_args;
     Symbol::Resolved(&Int16x4_operator_sub_Int16x4_arg0)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&Int16x4_operator_sub_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
@@ -10961,6 +15271,7 @@ Int16x4::Int16x4()
     Int16x4_operator_mul_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
     Int16x4_operator_mul_Int16x4.name = "operator*"_c;
     Int16x4_operator_mul_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_mul_Int16x4.parameters = Int16x4_operator_mul_Int16x4_args;
     Symbol::Resolved(&Int16x4_operator_mul_Int16x4_arg0)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&Int16x4_operator_mul_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
@@ -10969,6 +15280,7 @@ Int16x4::Int16x4()
     Int16x4_operator_div_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
     Int16x4_operator_div_Int16x4.name = "operator/"_c;
     Int16x4_operator_div_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_div_Int16x4.parameters = Int16x4_operator_div_Int16x4_args;
     Symbol::Resolved(&Int16x4_operator_div_Int16x4_arg0)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&Int16x4_operator_div_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
@@ -10977,6 +15289,7 @@ Int16x4::Int16x4()
     Int16x4_operator_mod_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
     Int16x4_operator_mod_Int16x4.name = "operator%"_c;
     Int16x4_operator_mod_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_mod_Int16x4.parameters = Int16x4_operator_mod_Int16x4_args;
     Symbol::Resolved(&Int16x4_operator_mod_Int16x4_arg0)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&Int16x4_operator_mod_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
@@ -10985,6 +15298,7 @@ Int16x4::Int16x4()
     Int16x4_operator_addasg_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
     Int16x4_operator_addasg_Int16x4.name = "operator+="_c;
     Int16x4_operator_addasg_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_addasg_Int16x4.parameters = Int16x4_operator_addasg_Int16x4_args;
     Symbol::Resolved(&Int16x4_operator_addasg_Int16x4_arg0)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&Int16x4_operator_addasg_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
@@ -10993,6 +15307,7 @@ Int16x4::Int16x4()
     Int16x4_operator_subasg_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
     Int16x4_operator_subasg_Int16x4.name = "operator-="_c;
     Int16x4_operator_subasg_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_subasg_Int16x4.parameters = Int16x4_operator_subasg_Int16x4_args;
     Symbol::Resolved(&Int16x4_operator_subasg_Int16x4_arg0)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&Int16x4_operator_subasg_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
@@ -11001,6 +15316,7 @@ Int16x4::Int16x4()
     Int16x4_operator_mulasg_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
     Int16x4_operator_mulasg_Int16x4.name = "operator*="_c;
     Int16x4_operator_mulasg_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_mulasg_Int16x4.parameters = Int16x4_operator_mulasg_Int16x4_args;
     Symbol::Resolved(&Int16x4_operator_mulasg_Int16x4_arg0)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&Int16x4_operator_mulasg_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
@@ -11009,6 +15325,7 @@ Int16x4::Int16x4()
     Int16x4_operator_divasg_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
     Int16x4_operator_divasg_Int16x4.name = "operator/="_c;
     Int16x4_operator_divasg_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_divasg_Int16x4.parameters = Int16x4_operator_divasg_Int16x4_args;
     Symbol::Resolved(&Int16x4_operator_divasg_Int16x4_arg0)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&Int16x4_operator_divasg_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
@@ -11017,6 +15334,7 @@ Int16x4::Int16x4()
     Int16x4_operator_lt_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
     Int16x4_operator_lt_Int16x4.name = "operator<"_c;
     Int16x4_operator_lt_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_lt_Int16x4.parameters = Int16x4_operator_lt_Int16x4_args;
     Symbol::Resolved(&Int16x4_operator_lt_Int16x4_arg0)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&Int16x4_operator_lt_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
@@ -11025,6 +15343,7 @@ Int16x4::Int16x4()
     Int16x4_operator_lte_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
     Int16x4_operator_lte_Int16x4.name = "operator<="_c;
     Int16x4_operator_lte_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_lte_Int16x4.parameters = Int16x4_operator_lte_Int16x4_args;
     Symbol::Resolved(&Int16x4_operator_lte_Int16x4_arg0)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&Int16x4_operator_lte_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
@@ -11033,6 +15352,7 @@ Int16x4::Int16x4()
     Int16x4_operator_gt_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
     Int16x4_operator_gt_Int16x4.name = "operator>"_c;
     Int16x4_operator_gt_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_gt_Int16x4.parameters = Int16x4_operator_gt_Int16x4_args;
     Symbol::Resolved(&Int16x4_operator_gt_Int16x4_arg0)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&Int16x4_operator_gt_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
@@ -11041,6 +15361,7 @@ Int16x4::Int16x4()
     Int16x4_operator_gte_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
     Int16x4_operator_gte_Int16x4.name = "operator>="_c;
     Int16x4_operator_gte_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_gte_Int16x4.parameters = Int16x4_operator_gte_Int16x4_args;
     Symbol::Resolved(&Int16x4_operator_gte_Int16x4_arg0)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&Int16x4_operator_gte_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
@@ -11049,6 +15370,7 @@ Int16x4::Int16x4()
     Int16x4_operator_eq_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
     Int16x4_operator_eq_Int16x4.name = "operator=="_c;
     Int16x4_operator_eq_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_eq_Int16x4.parameters = Int16x4_operator_eq_Int16x4_args;
     Symbol::Resolved(&Int16x4_operator_eq_Int16x4_arg0)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&Int16x4_operator_eq_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
@@ -11057,6 +15379,7 @@ Int16x4::Int16x4()
     Int16x4_operator_neq_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
     Int16x4_operator_neq_Int16x4.name = "operator!="_c;
     Int16x4_operator_neq_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_neq_Int16x4.parameters = Int16x4_operator_neq_Int16x4_args;
     Symbol::Resolved(&Int16x4_operator_neq_Int16x4_arg0)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&Int16x4_operator_neq_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
@@ -11065,6 +15388,7 @@ Int16x4::Int16x4()
     Int16x4_operator_scale_Int16x4_Float32_arg0.type = Type::FullType{ Float32Type.name };
     Int16x4_operator_scale_Int16x4_Float32.name = "operator*"_c;
     Int16x4_operator_scale_Int16x4_Float32.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_scale_Int16x4_Float32.parameters = Int16x4_operator_scale_Int16x4_Float32_args;
     Symbol::Resolved(&Int16x4_operator_scale_Int16x4_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Int16x4_operator_scale_Int16x4_Float32)->returnTypeSymbol = &Int16x4Type;
 
@@ -11073,6 +15397,7 @@ Int16x4::Int16x4()
     Int16x4_operator_scale_Int16x4_Float16_arg0.type = Type::FullType{ Float16Type.name };
     Int16x4_operator_scale_Int16x4_Float16.name = "operator*"_c;
     Int16x4_operator_scale_Int16x4_Float16.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_scale_Int16x4_Float16.parameters = Int16x4_operator_scale_Int16x4_Float16_args;
     Symbol::Resolved(&Int16x4_operator_scale_Int16x4_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Int16x4_operator_scale_Int16x4_Float16)->returnTypeSymbol = &Int16x4Type;
 
@@ -11081,6 +15406,7 @@ Int16x4::Int16x4()
     Int16x4_operator_scale_Int16x4_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
     Int16x4_operator_scale_Int16x4_UInt32.name = "operator*"_c;
     Int16x4_operator_scale_Int16x4_UInt32.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_scale_Int16x4_UInt32.parameters = Int16x4_operator_scale_Int16x4_UInt32_args;
     Symbol::Resolved(&Int16x4_operator_scale_Int16x4_UInt32_arg0)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&Int16x4_operator_scale_Int16x4_UInt32)->returnTypeSymbol = &Int16x4Type;
 
@@ -11089,6 +15415,7 @@ Int16x4::Int16x4()
     Int16x4_operator_scale_Int16x4_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
     Int16x4_operator_scale_Int16x4_UInt16.name = "operator*"_c;
     Int16x4_operator_scale_Int16x4_UInt16.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_scale_Int16x4_UInt16.parameters = Int16x4_operator_scale_Int16x4_UInt16_args;
     Symbol::Resolved(&Int16x4_operator_scale_Int16x4_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Int16x4_operator_scale_Int16x4_UInt16)->returnTypeSymbol = &Int16x4Type;
 
@@ -11097,6 +15424,7 @@ Int16x4::Int16x4()
     Int16x4_operator_scale_Int16x4_Int32_arg0.type = Type::FullType{ Int32Type.name };
     Int16x4_operator_scale_Int16x4_Int32.name = "operator*"_c;
     Int16x4_operator_scale_Int16x4_Int32.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_scale_Int16x4_Int32.parameters = Int16x4_operator_scale_Int16x4_Int32_args;
     Symbol::Resolved(&Int16x4_operator_scale_Int16x4_Int32_arg0)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int16x4_operator_scale_Int16x4_Int32)->returnTypeSymbol = &Int16x4Type;
 
@@ -11105,6 +15433,7 @@ Int16x4::Int16x4()
     Int16x4_operator_scale_Int16x4_Int16_arg0.type = Type::FullType{ Int16Type.name };
     Int16x4_operator_scale_Int16x4_Int16.name = "operator*"_c;
     Int16x4_operator_scale_Int16x4_Int16.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_scale_Int16x4_Int16.parameters = Int16x4_operator_scale_Int16x4_Int16_args;
     Symbol::Resolved(&Int16x4_operator_scale_Int16x4_Int16_arg0)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16x4_operator_scale_Int16x4_Int16)->returnTypeSymbol = &Int16x4Type;
 
@@ -11113,6 +15442,7 @@ Int16x4::Int16x4()
     Int16x4_operator_or_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
     Int16x4_operator_or_Int16x4.name = "operator|"_c;
     Int16x4_operator_or_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_or_Int16x4.parameters = Int16x4_operator_or_Int16x4_args;
     Symbol::Resolved(&Int16x4_operator_or_Int16x4_arg0)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&Int16x4_operator_or_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
@@ -11121,6 +15451,7 @@ Int16x4::Int16x4()
     Int16x4_operator_and_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
     Int16x4_operator_and_Int16x4.name = "operator&"_c;
     Int16x4_operator_and_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_and_Int16x4.parameters = Int16x4_operator_and_Int16x4_args;
     Symbol::Resolved(&Int16x4_operator_and_Int16x4_arg0)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&Int16x4_operator_and_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
@@ -11129,6 +15460,7 @@ Int16x4::Int16x4()
     Int16x4_operator_xor_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
     Int16x4_operator_xor_Int16x4.name = "operator^"_c;
     Int16x4_operator_xor_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_xor_Int16x4.parameters = Int16x4_operator_xor_Int16x4_args;
     Symbol::Resolved(&Int16x4_operator_xor_Int16x4_arg0)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&Int16x4_operator_xor_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
@@ -11137,6 +15469,7 @@ Int16x4::Int16x4()
     Int16x4_operator_lsh_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
     Int16x4_operator_lsh_Int16x4.name = "operator<<"_c;
     Int16x4_operator_lsh_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_lsh_Int16x4.parameters = Int16x4_operator_lsh_Int16x4_args;
     Symbol::Resolved(&Int16x4_operator_lsh_Int16x4_arg0)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&Int16x4_operator_lsh_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
@@ -11145,6 +15478,7 @@ Int16x4::Int16x4()
     Int16x4_operator_rsh_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
     Int16x4_operator_rsh_Int16x4.name = "operator>>"_c;
     Int16x4_operator_rsh_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_rsh_Int16x4.parameters = Int16x4_operator_rsh_Int16x4_args;
     Symbol::Resolved(&Int16x4_operator_rsh_Int16x4_arg0)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&Int16x4_operator_rsh_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
@@ -11153,6 +15487,7 @@ Int16x4::Int16x4()
     Int16x4_operator_orasg_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
     Int16x4_operator_orasg_Int16x4.name = "operator|="_c;
     Int16x4_operator_orasg_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_orasg_Int16x4.parameters = Int16x4_operator_orasg_Int16x4_args;
     Symbol::Resolved(&Int16x4_operator_orasg_Int16x4_arg0)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&Int16x4_operator_orasg_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
@@ -11161,6 +15496,7 @@ Int16x4::Int16x4()
     Int16x4_operator_andasg_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
     Int16x4_operator_andasg_Int16x4.name = "operator&="_c;
     Int16x4_operator_andasg_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_andasg_Int16x4.parameters = Int16x4_operator_andasg_Int16x4_args;
     Symbol::Resolved(&Int16x4_operator_andasg_Int16x4_arg0)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&Int16x4_operator_andasg_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
@@ -11169,6 +15505,7 @@ Int16x4::Int16x4()
     Int16x4_operator_xorasg_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
     Int16x4_operator_xorasg_Int16x4.name = "operator^="_c;
     Int16x4_operator_xorasg_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_xorasg_Int16x4.parameters = Int16x4_operator_xorasg_Int16x4_args;
     Symbol::Resolved(&Int16x4_operator_xorasg_Int16x4_arg0)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&Int16x4_operator_xorasg_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
@@ -11177,6 +15514,7 @@ Int16x4::Int16x4()
     Int16x4_operator_lshasg_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
     Int16x4_operator_lshasg_Int16x4.name = "operator<<="_c;
     Int16x4_operator_lshasg_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_lshasg_Int16x4.parameters = Int16x4_operator_lshasg_Int16x4_args;
     Symbol::Resolved(&Int16x4_operator_lshasg_Int16x4_arg0)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&Int16x4_operator_lshasg_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
@@ -11185,46 +15523,11 @@ Int16x4::Int16x4()
     Int16x4_operator_rhsasg_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
     Int16x4_operator_rhsasg_Int16x4.name = "operator>>="_c;
     Int16x4_operator_rhsasg_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    Int16x4_operator_rhsasg_Int16x4.parameters = Int16x4_operator_rhsasg_Int16x4_args;
     Symbol::Resolved(&Int16x4_operator_rhsasg_Int16x4_arg0)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&Int16x4_operator_rhsasg_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
     this->scope.symbolLookup = StaticMap { std::array{
-        std::pair{ "i16x4"_c, &Int16x4_convert_Float32x4 },
-        std::pair{ "i16x4(f32x4)"_c, &Int16x4_convert_Float32x4 },
-        std::pair{ "i16x4"_c, &Int16x4_splat_Float32 },
-        std::pair{ "i16x4(f32)"_c, &Int16x4_splat_Float32 },
-        std::pair{ "i16x4"_c, &Int16x4_convert_UInt32x4 },
-        std::pair{ "i16x4(u32x4)"_c, &Int16x4_convert_UInt32x4 },
-        std::pair{ "i16x4"_c, &Int16x4_splat_UInt32 },
-        std::pair{ "i16x4(u32)"_c, &Int16x4_splat_UInt32 },
-        std::pair{ "i16x4"_c, &Int16x4_convert_Int32x4 },
-        std::pair{ "i16x4(i32x4)"_c, &Int16x4_convert_Int32x4 },
-        std::pair{ "i16x4"_c, &Int16x4_splat_Int32 },
-        std::pair{ "i16x4(i32)"_c, &Int16x4_splat_Int32 },
-        std::pair{ "i16x4"_c, &Int16x4_convert_Float16x4 },
-        std::pair{ "i16x4(f16x4)"_c, &Int16x4_convert_Float16x4 },
-        std::pair{ "i16x4"_c, &Int16x4_splat_Float16 },
-        std::pair{ "i16x4(f16)"_c, &Int16x4_splat_Float16 },
-        std::pair{ "i16x4"_c, &Int16x4_convert_UInt16x4 },
-        std::pair{ "i16x4(u16x4)"_c, &Int16x4_convert_UInt16x4 },
-        std::pair{ "i16x4"_c, &Int16x4_splat_UInt16 },
-        std::pair{ "i16x4(u16)"_c, &Int16x4_splat_UInt16 },
-        std::pair{ "i16x4"_c, &Int16x4_convert_Int16x4 },
-        std::pair{ "i16x4(i16x4)"_c, &Int16x4_convert_Int16x4 },
-        std::pair{ "i16x4"_c, &Int16x4_splat_Int16 },
-        std::pair{ "i16x4(i16)"_c, &Int16x4_splat_Int16 },
-        std::pair{ "i16x4"_c, &Int16x4_ctor0_Int16_Int16_Int16_Int16},
-        std::pair{ "i16x4(i16,i16,i16,i16)"_c, &Int16x4_ctor0_Int16_Int16_Int16_Int16},
-        std::pair{ "i16x4"_c, &Int16x4_ctor1_Int16x2_Int16_Int16},
-        std::pair{ "i16x4(i16x2,i16,i16)"_c, &Int16x4_ctor1_Int16x2_Int16_Int16},
-        std::pair{ "i16x4"_c, &Int16x4_ctor2_Int16_Int16x2_Int16},
-        std::pair{ "i16x4(i16,i16x2,i16)"_c, &Int16x4_ctor2_Int16_Int16x2_Int16},
-        std::pair{ "i16x4"_c, &Int16x4_ctor3_Int16_Int16_Int16x2},
-        std::pair{ "i16x4(i16,i16,i16x2)"_c, &Int16x4_ctor3_Int16_Int16_Int16x2},
-        std::pair{ "i16x4"_c, &Int16x4_ctor4_Int16x3_Int16},
-        std::pair{ "i16x4(i16x3,i16)"_c, &Int16x4_ctor4_Int16x3_Int16},
-        std::pair{ "i16x4"_c, &Int16x4_ctor5_Int16_Int16x3},
-        std::pair{ "i16x4(i16,i16x3)"_c, &Int16x4_ctor5_Int16_Int16x3},
         std::pair{ "operator[](i32)"_c, &Int16x4_operator_index_Int32},
         std::pair{ "operator[](u32)"_c, &Int16x4_operator_index_UInt32},
         std::pair{ "operator[](i16)"_c, &Int16x4_operator_index_Int16},
