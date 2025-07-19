@@ -70,7 +70,55 @@ def generate_types():
     base_types = ["Float", "UInt", "Int", "Bool", "Float", "UInt", "Int"]
 
     bit_widths = [32, 32, 32, 8, 16, 16, 16]
-    data_types = ["f32", "u32", "i32", "b8", "f16", "u16", "i16"]
+
+    data_type_mapping = {
+        "Float32": "f32",
+        "UInt32": "u32",
+        "Int32": "i32",
+        "Bool8": "b8",
+        "Float16": "f16",
+        "UInt16": "u16",
+        "Int16": "i16",
+        "Float32x2": "f32x2",
+        "Float32x3": "f32x3",
+        "Float32x4": "f32x4",
+        "UInt32x2": "u32x2",
+        "UInt32x3": "u32x3",
+        "UInt32x4": "u32x4",
+        "Int32x2": "i32x2",
+        "Int32x3": "i32x3",
+        "Int32x4": "i32x4",
+        "Bool8x2": "b8x2",
+        "Bool8x3": "b8x3",
+        "Bool8x4": "b8x4",
+        "Float16x2": "f16x2",
+        "Float16x3": "f16x3",
+        "Float16x4": "f16x4",
+        "UInt16x2": "u16x2",
+        "UInt16x3": "u16x3",
+        "UInt16x4": "u16x4",
+        "Int16x2": "i16x2",
+        "Int16x3": "i16x3",
+        "Int16x4": "i16x4",
+        "Float32x2x2": "f32x2x2",
+        "Float32x2x3": "f32x2x3",
+        "Float32x2x4": "f32x2x4",
+        "Float32x3x2": "f32x3x2",
+        "Float32x3x3": "f32x3x3",
+        "Float32x3x4": "f32x3x4",
+        "Float32x4x2": "f32x4x2",
+        "Float32x4x3": "f32x4x3",
+        "Float32x4x4": "f32x4x4",
+        "Float16x2x2": "f16x2x2",
+        "Float16x2x3": "f16x2x3",
+        "Float16x2x4": "f16x2x4",
+        "Float16x3x2": "f16x3x2",
+        "Float16x3x3": "f16x3x3",
+        "Float16x3x4": "f16x3x4",
+        "Float16x4x2": "f16x4x2",
+        "Float16x4x3": "f16x4x3",
+        "Float16x4x4": "f16x4x4"
+    }
 
     bit_operator_names = ['or', 'and', 'xor', 'lsh', 'rsh']
     bit_operators = ['|', '&', '^', '<<', '>>']
@@ -93,12 +141,10 @@ def generate_types():
     scale_operator_names = ['scale', 'scale', 'scale', 'scale', 'scale', 'scale']
     scale_operators = ['*', '*', '*', '*', '*', '*']
     scale_operator_types = ['Float32', 'Float16', 'UInt32', 'UInt16', 'Int32', 'Int16']
-    scale_operator_data_types = ['f32', 'f16', 'u32', 'u16', 'i32', 'i16']
 
     index_operator_names = ['index_Int32', 'index_UInt32', 'index_Int16', 'index_UInt16']
     index_operators = ['[]', '[]', '[]', '[]']
     index_types = ['Int32', 'UInt32', 'Int16', 'UInt16']
-    index_data_types = ['i32', 'u32', 'i16', 'u16']
 
     vector_matrix_operator_names = ['mul']
     vector_matrix_operators = ['*']
@@ -124,8 +170,8 @@ def generate_types():
             self.spirv_conversion_arguments = spirv_conversion_arguments
 
     type_conversions = []
-    for type1, width1, data_type1 in zip(types, bit_widths, data_types):
-        for type2, width2, data_type2 in zip(types, bit_widths, data_types):
+    for type1, width1 in zip(types, bit_widths):
+        for type2, width2 in zip(types, bit_widths):
             if type1 != type2:
                 conversion_table_enum += f'    {type1}To{type2},\n'
                 spirv_conversion_function = ''
@@ -135,7 +181,7 @@ def generate_types():
                     if type2.startswith('Int') or type2.startswith('UInt'):
                         spirv_conversion_prep = f'            SPIRVResult trueValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::{type2}(1));\n'
                         spirv_conversion_prep += f'            SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::{type2}(0));\n'
-                        type_conversions.append(TypeConverter(f'{type1}To{type2}', type2, data_type1, 'OpSelect', spirv_conversion_prep, 'trueValue, falseValue'))
+                        type_conversions.append(TypeConverter(f'{type1}To{type2}', type2, data_type_mapping[type1], 'OpSelect', spirv_conversion_prep, 'trueValue, falseValue'))
                 else:    
                     if not type2.startswith('Bool'):
                         spirv_conversion_prep = ''
@@ -160,11 +206,11 @@ def generate_types():
                                 spirv_conversion_function = 'OpBitcast'
                             elif type2.startswith('Float'):
                                 spirv_conversion_function = 'OpConvertSToF'
-                        type_conversions.append(TypeConverter(f'{type1}To{type2}', type2, data_type1, spirv_conversion_function, spirv_conversion_prep, ''))
+                        type_conversions.append(TypeConverter(f'{type1}To{type2}', type2, data_type_mapping[type1], spirv_conversion_function, spirv_conversion_prep, ''))
                     else:
                         if type1.startswith('UInt') or type1.startswith('Int'):
                             spirv_conversion_prep += f'            SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::{type1}(0));\n'
-                            type_conversions.append(TypeConverter(f'{type1}To{type2}', type2, data_type1, 'OpINotEqual', spirv_conversion_prep, 'falseValue'))
+                            type_conversions.append(TypeConverter(f'{type1}To{type2}', type2, data_type_mapping[type1], 'OpINotEqual', spirv_conversion_prep, 'falseValue'))
 
 
     conversion_table_enum = conversion_table_enum[0:-2]
@@ -177,18 +223,6 @@ def generate_types():
     spirv_intrinsics.write("// *** Generated by type_gen.py. ***\n")
     spirv_intrinsics.write("//       DO NOT MODIFY!!!\n")
     spirv_intrinsics.write("//-------------------------------------------------\n")
-    #spirv_intrinsics.write('#include "compiler.h"\n')
-    #spirv_intrinsics.write('#include "generators/spirvgenerator.h"\n')
-    #spirv_intrinsics.write('#include "containers.h"\n')
-    #spirv_intrinsics.write('#include "types.h"\n')
-    #spirv_intrinsics.write('namespace GPULang\n')
-    #spirv_intrinsics.write('{\n')
-    #spirv_intrinsics.write('class SPIRVGenerator;\n')
-    #spirv_intrinsics.write('struct Compiler;\n')
-    #spirv_intrinsics.write('struct SPIRVResult;\n')
-    #spirv_intrinsics.write('SPIRVResult LoadValueSPIRV(const Compiler*, SPIRVGenerator*, SPIRVResult, bool = false);\n')
-    #spirv_intrinsics.write('SPIRVResult GenerateConversionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, TypeConversionTable conversion, uint32_t vectorSize, SPIRVResult inArg);\n')
-    #spirv_intrinsics.write('SPIRVResult GenerateSplatCompositeSPIRV(const Compiler* compiler, SPIRVGenerator* generator, uint32_t returnType, uint32_t num, SPIRVResult arg);\n')
     spirv_intrinsics.write("static auto CreateSampledImageSPIRV = [](const Compiler* c, SPIRVGenerator* g, SPIRVResult img, SPIRVResult samp) -> SPIRVResult\n")
     spirv_intrinsics.write("{\n")
     spirv_intrinsics.write("        assert(img.parentTypes.size() > 0);\n")
@@ -352,54 +386,60 @@ def generate_types():
             self.documentation = documentation
 
         def declaration(self):
-            return_string = ''
+            return_string = f'/// {self.api_name}\n'
             for param in self.parameters:
                 return_string += f'extern Variable {param.decl_name};\n'
             return_string += f'extern Function {self.decl_name};\n'
+            return_string += '\n'
             return return_string
 
         def definition(self):
-            return_string = ''
+            return_string = f'/// {self.api_name}\n'
             for param in self.parameters:
                 return_string += f'Variable {param.decl_name};\n'
             return_string += f'Function {self.decl_name};\n'
             return_string += f'std::array<Variable*> {self.decl_name}_args = {{ {", ".join([f"&{param.decl_name}" for param in self.parameters])} }};\n'
+            return_string += '\n'
             return return_string
 
         def setup(self):
-            setup_string = ''
+            return_string = f'    /// {self.api_name}\n'
             for param in self.parameters:
-                setup_string += f'    {param.decl_name}.name = "{param.api_name}"_c;\n'
-                setup_string += f'    {param.decl_name}.type = Type::FullType{{ {param.type_name}Type.name }};\n'
+                return_string += f'    {param.decl_name}.name = "{param.api_name}"_c;\n'
+                return_string += f'    {param.decl_name}.type = Type::FullType{{ {param.type_name}Type.name }};\n'
                 if param.pointer:
-                    setup_string += f'    {param.decl_name}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'
+                    return_string += f'    {param.decl_name}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'
             if self.documentation:
-                setup_string += f'    {self.decl_name}.documentation = "{self.documentation}"_c;\n'
-            setup_string += f'    {self.decl_name}.name = "{self.api_name}"_c;\n'
-            setup_string += f'    {self.decl_name}.returnType = Type::FullType {{ {self.return_type}Type.name }};\n'
-            setup_string += f'    {self.decl_name}.parameters = {self.decl_name}_args;\n'
+                return_string += f'    {self.decl_name}.documentation = "{self.documentation}"_c;\n'
+            return_string += f'    {self.decl_name}.name = "{self.api_name}"_c;\n'
+            return_string += f'    {self.decl_name}.returnType = Type::FullType {{ {self.return_type}Type.name }};\n'
+            return_string += f'    {self.decl_name}.parameters = {self.decl_name}_args;\n'
             for param in self.parameters:
-                setup_string += f'    Symbol::Resolved(&{param.decl_name}).typeSymbol = &{param.type_name}Type;\n'
+                return_string += f'    Symbol::Resolved(&{param.decl_name}).typeSymbol = &{param.type_name}Type;\n'
                 if param.uniform:
-                    intrinsic_setup += f'    Symbol::Resolved(&{param.decl_name}).storage = Storage::Uniform;\n'
+                    return_string += f'    Symbol::Resolved(&{param.decl_name}).storage = Storage::Uniform;\n'
 
-            setup_string += f'    Symbol::Resolved(&{self.decl_name}).returnTypeSymbol = &{self.return_type}Type;\n'
-            return setup_string
+            return_string += f'    Symbol::Resolved(&{self.decl_name}).returnTypeSymbol = &{self.return_type}Type;\n'
+            return_string += '\n'
+            return return_string
 
         def pair(self):
             return f'std::pair{{ "{self.api_name}"_c, {self.api_name} }}'
+        
+        def constructor_pair(self):
+            return f'std::pair{{ "{self.api_name}({",".join([data_type_mapping[param.type_name] for param in self.parameters])})"_c, &{self.decl_name} }}'
 
     class_def = ""
     declaration_string = ""
     definition_string = ""
     for size in range(1, 5):
-        for type, data_type, base_type, bits in zip(types, data_types, base_types, bit_widths):
+        for type, base_type, bits in zip(types, base_types, bit_widths):
             if size == 1:
-                data_type_name = data_type
+                data_type_name = data_type_mapping[type]
                 type_name = type
             else:
                 type_name = f'{type}x{size}'
-                data_type_name = f'{data_type}x{size}'
+                data_type_name = f'{data_type_mapping[type]}x{size}'
             spirv_type_construction = ''
             class_decl = ''
             class_decl += f'struct {type_name} : public Type\n'
@@ -410,12 +450,11 @@ def generate_types():
             declaration_string += class_decl
 
             namer_line += f'        {type_name}Type.name = "{data_type_name}"_c;\n'
-            #definition_string += f'\n#define DEF_{type_name}\\\n'
             setup_string = ""
-            list_string = ""
+            list_string = []
 
             # Conversions
-            for type2, data_type2, bits2 in zip(types, data_types, bit_widths):
+            for type2, bits2 in zip(types, bit_widths):
                 if type2 == 'Bool8' and type != 'Bool8':
                     continue
 
@@ -426,11 +465,11 @@ def generate_types():
                     continue
 
                 if size == 1:
-                    data_type_name2 = data_type2
+                    data_type_name2 = data_type_mapping[type2]
                     type_name2 = type2
                 else:
                     type_name2 = f'{type2}x{size}'
-                    data_type_name2 = f'{data_type2}x{size}'
+                    data_type_name2 = f'{data_type_mapping[type2]}x{size}'
 
                 function_name = f'{type_name}_convert_{type_name2}'
                 arg_name = f'{type_name}_convert_{type_name2}_arg0'
@@ -447,8 +486,8 @@ def generate_types():
                 definition_string += fun.definition()
                 setup_string += fun.setup()
 
-                intrinsic_list.append(f'    std::pair{{ "{data_type_name}"_c, &{function_name} }}')
-                intrinsic_list.append(f'    std::pair{{ "{data_type_name}({data_type_name2})"_c, &{function_name} }}')
+                intrinsic_list.append(fun.pair())
+                intrinsic_list.append(fun.constructor_pair())
                 if type == type2:
                     spirv_type_construction += spirv_intrinsic(function_name, '    return args[0];\n')
                 else:
@@ -468,8 +507,8 @@ def generate_types():
                     definition_string += fun.definition()
                     setup_string += fun.setup()
 
-                    intrinsic_list.append(f'    std::pair{{ "{data_type_name}"_c, &{function_name} }}')
-                    intrinsic_list.append(f'    std::pair{{ "{data_type_name}({data_type_name2})"_c, &{function_name} }}')
+                    intrinsic_list.append(fun.pair())
+                    intrinsic_list.append(fun.constructor_pair())
                     spirv_function = '    SPIRVResult val = args[0];\n'
                     if type != type2:
                         spirv_function += f'    val = ConverterTable[TypeConversionTable::{type2}To{type}](c, g, 1, val);\n'
@@ -491,14 +530,8 @@ def generate_types():
             for ctor_idx, comb in enumerate(combinations):
                 function_name = f'{type_name}_ctor{ctor_idx}'
 
-                dec_var = ''
-                def_var = ''
-                list_entry_key = ""
-                list_entry_value = ""
-                arg_list = ""
-                setup_args = ""
+                list_entry_key = []
                 args = []
-                arg_types = []
                 spirv_function =  "        SPIRVResult loadedArg = LoadValueSPIRV(c, g, args[0]);\n"
                 spirv_function += "        if (returnType == loadedArg.typeName) {\n"
                 spirv_function += "            return loadedArg;\n"
@@ -507,50 +540,32 @@ def generate_types():
                     spirv_function += f'    loadedArg = GenerateConversionSPIRV(c, g, TypeConversionTable::{type}To{type2}, {size}, loadedArg);\n'
                 spirv_function += '    return loadedArg;\n'
 
+                fun = Function(
+                    decl_name =function_name,
+                    api_name = f'{data_type_mapping[type_name]}',
+                    return_type = type_name,
+                    parameters = []
+                )
                 for arg_idx, s in enumerate(comb):
-                    arg_name = f'{type_name}_ctor{ctor_idx}_arg{arg_idx}'
-                    args.append(arg_name)
-                    if list_entry_key != "":
-                        list_entry_key += ","
                     if s == 1:
-                        arg_type_name = f'{type}'
-                        function_name += f'_{type}'
-                        list_entry_value += f'_{type}'
-                        list_entry_key += f'{data_type}'
-                        dec_var += f'extern Variable {arg_name};\n'
-                        def_var += f'Variable {arg_name};\n'
-                        arg_list += f'{arg_type_name}, '
-
+                        arg_type_name = type
                     else:
-                        function_name += f'_{type}x{s}'
-                        list_entry_key += f'{data_type}x{s}'
-                        list_entry_value += f'_{type}x{s}'
-                        dec_var += f'extern Variable {arg_name};\n'
-                        def_var += f'Variable {arg_name};\n'
                         arg_type_name = f'{type}x{s}'
-                        arg_list += f'{arg_type_name}, '
-                    arg_types.append(arg_type_name)
-                    setup_args += f'    {arg_name}.name = "_arg{arg_idx}"_c;\n'
-                    setup_args += f'    {arg_name}.type = Type::FullType {{ {arg_type_name}Type.name }};\n'
+                    arg_name = f'{type_name}_ctor{ctor_idx}_arg{arg_idx}_{arg_type_name}'
+                    fun.parameters.append(Variable(decl_name=arg_name, api_name=f'_arg{arg_idx}', type_name=arg_type_name))
+                    args.append(arg_name)
+                    if s == 1:
+                        list_entry_key.append(f'{data_type_mapping[type]}')
+                    else:
+                        list_entry_key.append(f'{data_type_mapping[type]}x{s}')
 
+                declaration_string += fun.declaration()
+                definition_string += fun.definition()
+                setup_string += fun.setup()
                 arg_list_name = f'{function_name}_args'
-                declaration_string += f'{dec_var}'
-                declaration_string += f'extern Function {function_name};\n'
-                definition_string += f'{def_var}'
-                definition_string += f'Function {function_name};\n'
-                definition_string += f'std::array<Variable*> {arg_list_name} = {{ {", ".join([f"&{arg}" for arg in args])} }};\n'
 
-                setup_string += f'    // Construct with {arg_list[0:-2]}\n'
-                setup_string += setup_args
-                setup_string += f'    {function_name}.name = "{ctor_idx}"_c;\n'
-                setup_string += f'    {function_name}.returnType = Type::FullType{{ {type_name}Type.name }};\n'
-                setup_string += f'    {function_name}.parameters = {arg_list_name};\n'
-                for arg, arg_type in zip(args, arg_types):
-                    setup_string += f'    Symbol::Resolved(&{arg})->typeSymbol = &{arg_type}Type;\n'
-                setup_string += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{type_name}Type;\n\n'
-
-                intrinsic_list.append(f'    std::pair{{ "{data_type_name}"_c, &{function_name} }}')
-                intrinsic_list.append(f'    std::pair{{ "{data_type_name}({list_entry_key})"_c, &{function_name} }}')
+                intrinsic_list.append(fun.pair())
+                intrinsic_list.append(fun.constructor_pair())
                 spirv_function = f'    return GenerateCompositeSPIRV(c, g, returnType, {{{", ".join([f"args[{idx}]" for idx, arg in enumerate(args)])}}});\n'
                 spirv_type_construction += spirv_intrinsic(function_name, spirv_function)
 
@@ -558,24 +573,19 @@ def generate_types():
             spirv_intrinsics.write(spirv_type_construction)
         
 
-            for name, op, idx_type, idx_data_type in zip(index_operator_names, index_operators, index_types, index_data_types):
+            for name, op, idx_type in zip(index_operator_names, index_operators, index_types):
                 function_name = f'{type_name}_operator_{name}'
                 arg_name = f'{type_name}_operator_{name}_arg0'
-                arg_list_name = f'{function_name}_args'
-                declaration_string += f'extern Variable {arg_name};\n'
-                declaration_string += f'extern Function {function_name};\n'
-                definition_string += f'Variable {arg_name};\n'
-                definition_string += f'Function {function_name};\n'
-                definition_string += f'std::array<Variable*> {arg_list_name} = {{ &{arg_name} }};\n'
-                setup_string += f'    // operator{op}({idx_data_type})\n'
-                setup_string += f'    {arg_name}.name = "_arg0"_c;\n'
-                setup_string += f'    {arg_name}.type = Type::FullType{{ {idx_type}Type.name }};\n'
-                setup_string += f'    {function_name}.name = "operator{op}"_c;\n'
-                setup_string += f'    {function_name}.returnType = Type::FullType{{ {type}Type.name }};\n'
-                setup_string += f'    {function_name}.parameters = {arg_list_name};\n'
-                setup_string += f'    Symbol::Resolved(&{arg_name})->typeSymbol = &{idx_type}Type;\n'
-                setup_string += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{type}Type;\n\n'
-                list_string += f'        std::pair{{ "operator{op}({idx_data_type})"_c, &{function_name}}},\n'
+                fun = Function(
+                    decl_name=function_name,
+                    api_name=f'operator{op}',
+                    return_type=type,
+                    parameters=[Variable(decl_name=arg_name, api_name='_arg0', type_name=idx_type)],
+                )
+                declaration_string += fun.declaration()
+                definition_string += fun.definition()
+                setup_string += fun.setup()
+                list_string.append(fun.pair())
 
                 spirv_function =  f'    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, {function_name}.returnType, &{type}Type, args[0].scope);\n'
                 spirv_function += '    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);\n'
@@ -592,21 +602,16 @@ def generate_types():
                 for name, op in zip(bool_operator_names, bool_operators):
                     function_name = f'{type_name}_operator_{name}_{type_name}'
                     arg_name = f'{function_name}_arg0'
-                    arg_list_name = f'{function_name}_args'
-                    declaration_string += f'extern Variable {arg_name};\n'
-                    declaration_string += f'extern Function {function_name};\n'
-                    definition_string += f'Variable {arg_name};\n'
-                    definition_string += f'Function {function_name};\n'
-                    definition_string += f'std::array<Variable*> {arg_list_name} = {{ &{arg_name} }};\n'
-                    setup_string += f'    // operator{op}({data_type_name})\n'
-                    setup_string += f'    {arg_name}.name = "_arg0"_c;\n'
-                    setup_string += f'    {arg_name}.type = Type::FullType{{ {type_name}Type.name }};\n'
-                    setup_string += f'    {function_name}.name = "operator{op}"_c;\n'
-                    setup_string += f'    {function_name}.returnType = Type::FullType{{ {type_name}Type.name }};\n'
-                    setup_string += f'    {function_name}.parameters = {arg_list_name};\n'
-                    setup_string += f'    Symbol::Resolved(&{arg_name})->typeSymbol = &{type_name}Type;\n'
-                    setup_string += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{type_name}Type;\n\n'
-                    list_string += f'        std::pair{{ "operator{op}({data_type_name})"_c, &{function_name}}},\n'
+                    fun = Function(
+                        decl_name=function_name,
+                        api_name=f'operator{op}',
+                        return_type=type,
+                        parameters=[Variable(decl_name=arg_name, api_name='_arg0', type_name=type_name)],
+                    )
+                    declaration_string += fun.declaration()
+                    definition_string += fun.definition()
+                    setup_string += fun.setup()
+                    list_string.append(fun.pair())
 
                     spirv_function =  ''
                     spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
@@ -633,22 +638,17 @@ def generate_types():
                     for name, op in operator_set:
                         function_name = f'{type_name}_operator_{name}_{type_name}'
                         arg_name = f'{function_name}_arg0'
-                        arg_list_name = f'{function_name}_args'
-                        declaration_string += f'extern Variable {arg_name};\n'
-                        declaration_string += f'extern Function {function_name};\n'
-                        definition_string += f'Variable {arg_name};\n'
-                        definition_string += f'Function {function_name};\n'
-                        definition_string += f'std::array<Variable*> {arg_list_name} = {{ &{arg_name} }};\n'
-                        setup_string += f'    // operator{op}({data_type_name})\n'
-                        setup_string += f'    {arg_name}.name = "_arg0"_c;\n'
-                        setup_string += f'    {arg_name}.type = Type::FullType{{ {type_name}Type.name }};\n'
-                        setup_string += f'    {function_name}.name = "operator{op}"_c;\n'
-                        setup_string += f'    {function_name}.returnType = Type::FullType{{ {type_name}Type.name }};\n'
-                        setup_string += f'    {function_name}.parameters = {arg_list_name};\n'
-                        setup_string += f'    Symbol::Resolved(&{arg_name})->typeSymbol = &{type_name}Type;\n'
-                        setup_string += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{type_name}Type;\n\n'
-                        
-                        list_string += f'        std::pair{{ "operator{op}({data_type_name})"_c, &{function_name}}},\n'
+                        fun = Function(
+                            decl_name=function_name,
+                            api_name=f'operator{op}',
+                            return_type=type_name,
+                            parameters=[Variable(decl_name=arg_name, api_name='_arg0', type_name=type_name)],
+                        )
+
+                        declaration_string += fun.declaration()
+                        definition_string += fun.definition()
+                        setup_string += fun.setup()
+                        list_string.append(fun.pair())
 
                         spirv_function = ''
                         spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
@@ -697,25 +697,21 @@ def generate_types():
                         spirv_code += spirv_intrinsic(function_name, spirv_function)
                 
                 if size > 1:
-                    for name, op, scale_type, scale_data_type in zip(scale_operator_names, scale_operators, scale_operator_types, scale_operator_data_types):
-                        function_name = f'{type_name}_operator_{name}_{type_name}_{scale_type}'
+                    for name, op, scale_type in zip(scale_operator_names, scale_operators, scale_operator_types):
+                        function_name = f'{type_name}_operator_{name}_{scale_type}'
                         arg_name = f'{function_name}_arg0'
-                        arg_list_name = f'{function_name}_args'
-                        declaration_string += f'extern Variable {arg_name};\n'
-                        declaration_string += f'extern Function {function_name};\n'
-                        definition_string += f'Variable {arg_name};\n'
-                        definition_string += f'Function {function_name};\n'
-                        definition_string += f'std::array<Variable*> {arg_list_name} = {{ &{arg_name} }};\n'
-                        setup_string += f'    // operator{op}({scale_data_type})\n'
-                        setup_string += f'    {arg_name}.name = "_arg0"_c;\n'
-                        setup_string += f'    {arg_name}.type = Type::FullType{{ {scale_type}Type.name }};\n'
-                        setup_string += f'    {function_name}.name = "operator{op}"_c;\n'
-                        setup_string += f'    {function_name}.returnType = Type::FullType{{ {type_name}Type.name }};\n'
-                        setup_string += f'    {function_name}.parameters = {arg_list_name};\n'
-                        setup_string += f'    Symbol::Resolved(&{arg_name})->typeSymbol = &{scale_type}Type;\n'
-                        setup_string += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{type_name}Type;\n\n'
-                        
-                        list_string += f'        std::pair{{ "operator{op}({scale_data_type})"_c, &{function_name}}},\n'
+
+
+                        fun = Function(
+                            decl_name=function_name,
+                            api_name=f'operator{op}',
+                            return_type=type_name,
+                            parameters=[Variable(decl_name=arg_name, api_name='_arg0', type_name=scale_type)],
+                        )
+                        declaration_string += fun.declaration()
+                        definition_string += fun.definition()
+                        setup_string += fun.setup()
+                        list_string.append(fun.pair())
 
                         spirv_function = ''
                         spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
@@ -737,22 +733,17 @@ def generate_types():
                     for name, op in zip(vector_matrix_operator_names, vector_matrix_operators):
                         function_name = f'{type_name}_operator_{name}_{compatible_matrix_type}'
                         arg_name = f'{function_name}_arg0'
-                        arg_list_name = f'{function_name}_args'
-                        declaration_string += f'extern Variable {arg_name};\n'
-                        declaration_string += f'extern Function {function_name};\n'
-                        definition_string += f'Variable {arg_name};\n'
-                        definition_string += f'Function {function_name};\n'
-                        definition_string += f'std::array<Variable*> {arg_list_name} = {{ &{arg_name} }};\n'
-                        setup_string += f'    // operator{op}({compatible_matrix_data_type})\n'
-                        setup_string += f'    {arg_name}.name = "_arg0"_c;\n'
-                        setup_string += f'    {arg_name}.type = Type::FullType{{ {compatible_matrix_type}Type.name }};\n'
-                        setup_string += f'    {function_name}.name = "operator{op}"_c;\n'
-                        setup_string += f'    {function_name}.returnType = Type::FullType{{ {return_type}Type.name }};\n'
-                        setup_string += f'    {function_name}.parameters = {arg_list_name};\n'
-                        setup_string += f'    Symbol::Resolved(&{arg_name})->typeSymbol = &{compatible_matrix_type}Type;\n'
-                        setup_string += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{return_type}Type;\n\n'
-                        
-                        list_string += f'        std::pair{{ "operator{op}({compatible_matrix_data_type})"_c, &{function_name}}},\n'
+
+                        fun = Function(
+                            decl_name=function_name,
+                            api_name=f'operator{op}',
+                            return_type=return_type,
+                            parameters=[Variable(decl_name=arg_name, api_name='_arg0', type_name=compatible_matrix_type)],
+                        )
+                        declaration_string += fun.declaration()
+                        definition_string += fun.definition()
+                        setup_string += fun.setup()
+                        list_string.append(fun.pair())
 
                         spirv_function = ''
                         spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
@@ -770,22 +761,16 @@ def generate_types():
                     for name, op in operator_set:
                         function_name = f'{type_name}_operator_{name}_{type_name}'
                         arg_name = f'{function_name}_arg0'
-                        arg_list_name = f'{function_name}_args'
-                        declaration_string += f'extern Variable {arg_name};\n'
-                        declaration_string += f'extern Function {function_name};\n'
-                        definition_string += f'Variable {arg_name};\n'
-                        definition_string += f'Function {function_name};\n'
-                        definition_string += f'std::array<Variable*> {arg_list_name} = {{ &{arg_name} }};\n'
-                        setup_string += f'    // operator{op}\n'
-                        setup_string += f'    {arg_name}.name = "_arg0"_c;\n'
-                        setup_string += f'    {arg_name}.type = Type::FullType{{ {type_name}Type.name }};\n'
-                        setup_string += f'    {function_name}.name = "operator{op}"_c;\n'
-                        setup_string += f'    {function_name}.returnType = Type::FullType{{ {type_name}Type.name }};\n'
-                        setup_string += f'    {function_name}.parameters = {arg_list_name};\n'
-                        setup_string += f'    Symbol::Resolved(&{arg_name})->typeSymbol = &{type_name}Type;\n'
-                        setup_string += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{type_name}Type;\n\n'
-
-                        list_string += f'        std::pair{{ "operator{op}({data_type_name})"_c, &{function_name}}},\n'
+                        fun = Function(
+                            decl_name=function_name,
+                            api_name=f'operator{op}',
+                            return_type=type_name,
+                            parameters=[Variable(decl_name=arg_name, api_name='_arg0', type_name=type_name)],
+                        )
+                        declaration_string += fun.declaration()
+                        definition_string += fun.definition()
+                        setup_string += fun.setup()
+                        list_string.append(fun.pair())
 
                         if op == '&':
                             spirv_op = 'OpBitwiseAnd'
@@ -806,7 +791,7 @@ def generate_types():
 
             class_def += f'{type_name}::{type_name}()\n'
             class_def += '{\n'
-            class_def += f'    this->name = "{data_type}";\n'
+            class_def += f'    this->name = "{data_type_mapping[type_name]}";\n'
             class_def += f'    this->columnSize = {size};\n'
             class_def += f'    this->rowSize = 1;\n'
             class_def += f'    this->byteSize = {trunc((bits * size) / 8)};\n'
@@ -833,20 +818,16 @@ def generate_types():
     scale_operator_names = ['scale', 'scale']
     scale_operators = ['*', '*']
     scale_operator_types = ['Float32', 'Float16']
-    scale_operator_data_types = ['f32', 'f16']
 
-    for type, data_type, bits in zip(types, data_types, bit_widths):
+    for type, bits in zip(types, bit_widths):
         for row_size in range(2, 5):
             for column_size in range(2, 5):
 
                 type_name = f'{type}x{row_size}x{column_size}'
-                data_type_name = f'{data_type}x{row_size}x{column_size}'
+                data_type_name = f'{data_type_mapping[type]}x{row_size}x{column_size}'
 
                 namer_line += f'        {type_name}Type.name = "{data_type_name}"_c;\n'
 
-                #definition_string += f"\n#define DEF_{type_name}\n"
-
-                list_string = ""
                 setup_string = ""
                 
                 class_decl = ''
@@ -859,46 +840,71 @@ def generate_types():
 
                 vector_ctor_name = f'{type_name}_{type}_{column_size}_ctor'
 
+                fun = Function(
+                    decl_name=vector_ctor_name,
+                    api_name=f'{data_type_name}',
+                    return_type=type_name,
+                    parameters=[]
+                )
+
                 for arg_index in range(0, row_size):
-                    arg_name = f'{vector_ctor_name}_arg{arg_index}'
-                    declaration_string += f'extern Variable {arg_name};\n'
-                    definition_string += f'Variable {arg_name};\n'
+                    fun.parameters.append(Variable(
+                        decl_name=f'{vector_ctor_name}_arg{arg_index}',
+                        api_name=f'_arg{arg_index}',
+                        type_name=f'{type}x{column_size}'
+                    ))
 
-                declaration_string += f'extern Function {vector_ctor_name};\n'
-                definition_string += f'Function {vector_ctor_name};\n'
-                list_string += f'        std::pair{{ "{data_type_name}"_c, &{vector_ctor_name}}},\n'
+                declaration_string += fun.declaration()
+                definition_string += fun.definition()
+                setup_string += fun.setup()
+                intrinsic_list.append(fun.pair())
+                intrinsic_list.append(fun.constructor_pair())
 
-                declaration_string += f'extern Function {type_name}_identity;\n'
-                definition_string += f'Function {type_name}_identity;\n'
-                list_string += f'        std::pair{{ "{data_type_name}"_c, &{type_name}_identity}},\n'
+                fun = Function(
+                    decl_name=f'{type_name}_identity',
+                    api_name=f'{data_type_name}',
+                    return_type=type_name,
+                    parameters=[]
+                )
 
-                array_ctor_name = f'{type_name}_{type}_{column_size * row_size}_ctor'
+                declaration_string += fun.declaration()
+                definition_string += fun.definition()
+                setup_string += fun.setup()
+                intrinsic_list.append(fun.pair())
+                intrinsic_list.append(fun.constructor_pair())
+
+                fun = Function(
+                    decl_name=f'{type_name}_raw_list',
+                    api_name=f'{data_type_name}',
+                    return_type=type_name,
+                    parameters=[]
+                )
                 for arg_index in range(0, column_size * row_size):
-                    arg_name = f'{array_ctor_name}_arg{arg_index}'
-                    declaration_string += f'extern Variable {arg_name};\n'
-                    definition_string += f'Variable {arg_name};\n'
-
-                declaration_string += f'extern Function {array_ctor_name};\n'
-                definition_string += f'Function {array_ctor_name};\n'
-                list_string += f'        std::pair{{ "{data_type_name}"_c, &{array_ctor_name}}},\n'
-
+                    fun.parameters.append(Variable(
+                        decl_name=f'{type_name}_raw_list_arg{arg_index}',
+                        api_name=f'_arg{arg_index}',
+                        type_name=type
+                    ))
+                declaration_string += fun.declaration()
+                definition_string += fun.definition()
+                setup_string += fun.setup()
+                intrinsic_list.append(fun.pair())
+                intrinsic_list.append(fun.constructor_pair())
 
                 vec_type = f'{type}x{column_size}'
-                for name, op, idx_type, idx_data_type in zip(index_operator_names, index_operators, index_types, index_data_types):
+                for name, op, idx_type in zip(index_operator_names, index_operators, index_types):
                     function_name = f'{type_name}_operator_{name}'
                     arg_name = f'{type_name}_operator_{name}_arg0'
-                    declaration_string += f'extern Variable {arg_name};\n'
-                    declaration_string += f'extern Function {function_name};\n'
-                    definition_string += f'Variable {arg_name};\n'
-                    definition_string += f'Function {function_name};\n'
-                    setup_string += f'    // operator{op}({idx_data_type})\n'
-                    setup_string += f'    {arg_name}.name = "_arg0"_c;\n'
-                    setup_string += f'    {arg_name}.type = Type::FullType{{ {idx_type}Type.name }};\n'
-                    setup_string += f'    {function_name}.name = "operator{op}"_c;\n'
-                    setup_string += f'    {function_name}.returnType = Type::FullType{{ {vec_type}Type.name }};\n'
-                    setup_string += f'    Symbol::Resolved(&{arg_name})->typeSymbol = &{idx_type}Type;\n'
-                    setup_string += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{vec_type}Type;\n\n'
-                    list_string += f'        std::pair{{ "operator{op}({idx_data_type})"_c, &{function_name}}},\n'
+                    fun = Function(
+                        decl_name=function_name,
+                        api_name=f'operator{op}',
+                        return_type=vec_type,
+                        parameters=[Variable(decl_name=arg_name, api_name='idx', type_name=idx_type)],
+                    )
+                    declaration_string += fun.declaration()
+                    definition_string += fun.definition()
+                    setup_string += fun.setup()
+                    list_string.append(fun.pair())
 
                     spirv_function =  f'    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, {function_name}.returnType, &{type}Type, args[0].scope);\n'
                     spirv_function += '    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);\n'
@@ -919,19 +925,17 @@ def generate_types():
                     for name, op in operator_set:
                         function_name = f'{type_name}_operator_{name}_{type_name}'
                         arg_name = f'{function_name}_arg0'
-                        setup_string += f'    // operator{op}({data_type})\n'
-                        setup_string += f'    {arg_name}.name = "_arg0"_c;\n'
-                        setup_string += f'    {arg_name}.type = Type::FullType{{ {type_name}Type.name }};\n'
-                        setup_string += f'    {function_name}.name = "operator{op}"_c;\n'
-                        setup_string += f'    {function_name}.returnType = Type::FullType{{ {type_name}Type.name }};\n'
-                        setup_string += f'    Symbol::Resolved(&{arg_name})->typeSymbol = &{type_name}Type;\n'
-                        setup_string += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{type_name}Type;\n\n'
 
-                        declaration_string += f'extern Variable {arg_name};\n'
-                        declaration_string += f'extern Function {function_name};\n'
-                        definition_string += f'Variable {arg_name};\n'
-                        definition_string += f'Function {function_name};\n'
-                        list_string += f'        std::pair{{ "operator{op}({data_type_name})"_c, &{function_name}}},\n'
+                        fun = Function(
+                            decl_name=function_name,
+                            api_name=f'operator{op}',
+                            return_type=type_name,
+                            parameters=[Variable(decl_name=arg_name, api_name='_arg0', type_name=type_name)],
+                        )
+                        declaration_string += fun.declaration()
+                        definition_string += fun.definition()
+                        setup_string += fun.setup()
+                        list_string.append(fun.pair())
 
                         spirv_function = ''
                         spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
@@ -967,18 +971,16 @@ def generate_types():
                 op = '*'
                 function_name = f'{type_name}_operator_scale_{type}'
                 arg_name = f'{function_name}_arg0'
-                setup_string += f'    // operator{op}({data_type})\n'
-                setup_string += f'    {arg_name}.name = "_arg0"_c;\n'
-                setup_string += f'    {arg_name}.type = Type::FullType{{ {type}Type.name }};\n'
-                setup_string += f'    {function_name}.name = "operator{op}"_c;\n'
-                setup_string += f'    {function_name}.returnType = Type::FullType{{ {type_name}Type.name }};\n'
-                setup_string += f'    Symbol::Resolved(&{arg_name})->typeSymbol = &{type}Type;\n'
-                setup_string += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{type_name}Type;\n\n'
-                declaration_string += f'extern Variable {arg_name};\n'
-                declaration_string += f'extern Function {function_name};\n'
-                definition_string += f'Variable {arg_name};\n'
-                definition_string += f'Function {function_name};\n'
-                list_string += f'        std::pair{{ "operator{op}({data_type})"_c, &{function_name}}},\n'
+                fun = Function(
+                    decl_name=function_name,
+                    api_name=f'operator{op}',
+                    return_type=type_name,
+                    parameters=[Variable(decl_name=arg_name, api_name='_arg0', type_name=type)],
+                )
+                declaration_string += fun.declaration()
+                definition_string += fun.definition()
+                setup_string += fun.setup()
+                list_string.append(fun.pair())
 
                 spirv_function = ''
                 spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
@@ -989,7 +991,7 @@ def generate_types():
 
                 class_def += f'{type_name}::{type_name}()\n'
                 class_def += '{\n'
-                class_def += f'    this->name = "{data_type}";\n'
+                class_def += f'    this->name = "{data_type_mapping[type]}";\n'
                 class_def += f'    this->columnSize = {column_size};\n'
                 class_def += f'    this->rowSize = {row_size};\n'
                 class_def += f'    this->byteSize = {trunc((bits * row_size * column_size) / 8)};\n'

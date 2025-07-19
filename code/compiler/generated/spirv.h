@@ -900,7 +900,7 @@ SPIRVResult SPIRV_Float32_convert_Int16(const Compiler* c, SPIRVGenerator* g, ui
     return ConverterTable[TypeConversionTable::Float32ToInt16](c, g, 1, args[0]);
 }
 
-SPIRVResult SPIRV_Float32_ctor0_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0]});
 }
@@ -930,7 +930,7 @@ SPIRVResult SPIRV_UInt32_convert_Int16(const Compiler* c, SPIRVGenerator* g, uin
     return ConverterTable[TypeConversionTable::UInt32ToInt16](c, g, 1, args[0]);
 }
 
-SPIRVResult SPIRV_UInt32_ctor0_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0]});
 }
@@ -960,7 +960,7 @@ SPIRVResult SPIRV_Int32_convert_Int16(const Compiler* c, SPIRVGenerator* g, uint
     return ConverterTable[TypeConversionTable::Int32ToInt16](c, g, 1, args[0]);
 }
 
-SPIRVResult SPIRV_Int32_ctor0_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0]});
 }
@@ -985,7 +985,7 @@ SPIRVResult SPIRV_Bool8_convert_Int16(const Compiler* c, SPIRVGenerator* g, uint
     return ConverterTable[TypeConversionTable::Bool8ToInt16](c, g, 1, args[0]);
 }
 
-SPIRVResult SPIRV_Bool8_ctor0_Bool8(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Bool8_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0]});
 }
@@ -1015,7 +1015,7 @@ SPIRVResult SPIRV_Float16_convert_Int16(const Compiler* c, SPIRVGenerator* g, ui
     return ConverterTable[TypeConversionTable::Float16ToInt16](c, g, 1, args[0]);
 }
 
-SPIRVResult SPIRV_Float16_ctor0_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0]});
 }
@@ -1045,7 +1045,7 @@ SPIRVResult SPIRV_UInt16_convert_Int16(const Compiler* c, SPIRVGenerator* g, uin
     return ConverterTable[TypeConversionTable::UInt16ToInt16](c, g, 1, args[0]);
 }
 
-SPIRVResult SPIRV_UInt16_ctor0_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0]});
 }
@@ -1075,7 +1075,7 @@ SPIRVResult SPIRV_Int16_convert_UInt16(const Compiler* c, SPIRVGenerator* g, uin
     return ConverterTable[TypeConversionTable::Int16ToUInt16](c, g, 1, args[0]);
 }
 
-SPIRVResult SPIRV_Int16_ctor0_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0]});
 }
@@ -1151,7 +1151,7 @@ SPIRVResult SPIRV_Float32x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, ui
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
 
-SPIRVResult SPIRV_Float32x2_ctor0_Float32_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
@@ -1227,7 +1227,7 @@ SPIRVResult SPIRV_UInt32x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, uin
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
 
-SPIRVResult SPIRV_UInt32x2_ctor0_UInt32_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
@@ -1303,7 +1303,7 @@ SPIRVResult SPIRV_Int32x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
 
-SPIRVResult SPIRV_Int32x2_ctor0_Int32_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
@@ -1356,7 +1356,7 @@ SPIRVResult SPIRV_Bool8x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
 
-SPIRVResult SPIRV_Bool8x2_ctor0_Bool8_Bool8(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Bool8x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
@@ -1432,7 +1432,7 @@ SPIRVResult SPIRV_Float16x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, ui
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
 
-SPIRVResult SPIRV_Float16x2_ctor0_Float16_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
@@ -1508,7 +1508,7 @@ SPIRVResult SPIRV_UInt16x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, uin
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
 
-SPIRVResult SPIRV_UInt16x2_ctor0_UInt16_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
@@ -1584,7 +1584,7 @@ SPIRVResult SPIRV_Int16x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
 
-SPIRVResult SPIRV_Int16x2_ctor0_Int16_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
@@ -1660,17 +1660,17 @@ SPIRVResult SPIRV_Float32x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, ui
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
 
-SPIRVResult SPIRV_Float32x3_ctor0_Float32_Float32_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_Float32x3_ctor1_Float32x2_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
 
-SPIRVResult SPIRV_Float32x3_ctor2_Float32_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
@@ -1746,17 +1746,17 @@ SPIRVResult SPIRV_UInt32x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, uin
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
 
-SPIRVResult SPIRV_UInt32x3_ctor0_UInt32_UInt32_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_UInt32x3_ctor1_UInt32x2_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
 
-SPIRVResult SPIRV_UInt32x3_ctor2_UInt32_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
@@ -1832,17 +1832,17 @@ SPIRVResult SPIRV_Int32x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
 
-SPIRVResult SPIRV_Int32x3_ctor0_Int32_Int32_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_Int32x3_ctor1_Int32x2_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
 
-SPIRVResult SPIRV_Int32x3_ctor2_Int32_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
@@ -1895,17 +1895,17 @@ SPIRVResult SPIRV_Bool8x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
 
-SPIRVResult SPIRV_Bool8x3_ctor0_Bool8_Bool8_Bool8(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Bool8x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_Bool8x3_ctor1_Bool8x2_Bool8(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Bool8x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
 
-SPIRVResult SPIRV_Bool8x3_ctor2_Bool8_Bool8x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Bool8x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
@@ -1981,17 +1981,17 @@ SPIRVResult SPIRV_Float16x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, ui
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
 
-SPIRVResult SPIRV_Float16x3_ctor0_Float16_Float16_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_Float16x3_ctor1_Float16x2_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
 
-SPIRVResult SPIRV_Float16x3_ctor2_Float16_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
@@ -2067,17 +2067,17 @@ SPIRVResult SPIRV_UInt16x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, uin
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
 
-SPIRVResult SPIRV_UInt16x3_ctor0_UInt16_UInt16_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_UInt16x3_ctor1_UInt16x2_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
 
-SPIRVResult SPIRV_UInt16x3_ctor2_UInt16_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
@@ -2153,17 +2153,17 @@ SPIRVResult SPIRV_Int16x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
 
-SPIRVResult SPIRV_Int16x3_ctor0_Int16_Int16_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_Int16x3_ctor1_Int16x2_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
 
-SPIRVResult SPIRV_Int16x3_ctor2_Int16_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
@@ -2239,32 +2239,32 @@ SPIRVResult SPIRV_Float32x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, ui
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
 
-SPIRVResult SPIRV_Float32x4_ctor0_Float32_Float32_Float32_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2], args[3]});
 }
 
-SPIRVResult SPIRV_Float32x4_ctor1_Float32x2_Float32_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_Float32x4_ctor2_Float32_Float32x2_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_Float32x4_ctor3_Float32_Float32_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_Float32x4_ctor4_Float32x3_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
 
-SPIRVResult SPIRV_Float32x4_ctor5_Float32_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
@@ -2340,32 +2340,32 @@ SPIRVResult SPIRV_UInt32x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, uin
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
 
-SPIRVResult SPIRV_UInt32x4_ctor0_UInt32_UInt32_UInt32_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2], args[3]});
 }
 
-SPIRVResult SPIRV_UInt32x4_ctor1_UInt32x2_UInt32_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_UInt32x4_ctor2_UInt32_UInt32x2_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_UInt32x4_ctor3_UInt32_UInt32_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_UInt32x4_ctor4_UInt32x3_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
 
-SPIRVResult SPIRV_UInt32x4_ctor5_UInt32_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
@@ -2441,32 +2441,32 @@ SPIRVResult SPIRV_Int32x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
 
-SPIRVResult SPIRV_Int32x4_ctor0_Int32_Int32_Int32_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2], args[3]});
 }
 
-SPIRVResult SPIRV_Int32x4_ctor1_Int32x2_Int32_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_Int32x4_ctor2_Int32_Int32x2_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_Int32x4_ctor3_Int32_Int32_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_Int32x4_ctor4_Int32x3_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
 
-SPIRVResult SPIRV_Int32x4_ctor5_Int32_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
@@ -2519,32 +2519,32 @@ SPIRVResult SPIRV_Bool8x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
 
-SPIRVResult SPIRV_Bool8x4_ctor0_Bool8_Bool8_Bool8_Bool8(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Bool8x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2], args[3]});
 }
 
-SPIRVResult SPIRV_Bool8x4_ctor1_Bool8x2_Bool8_Bool8(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Bool8x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_Bool8x4_ctor2_Bool8_Bool8x2_Bool8(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Bool8x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_Bool8x4_ctor3_Bool8_Bool8_Bool8x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Bool8x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_Bool8x4_ctor4_Bool8x3_Bool8(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Bool8x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
 
-SPIRVResult SPIRV_Bool8x4_ctor5_Bool8_Bool8x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Bool8x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
@@ -2620,32 +2620,32 @@ SPIRVResult SPIRV_Float16x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, ui
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
 
-SPIRVResult SPIRV_Float16x4_ctor0_Float16_Float16_Float16_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2], args[3]});
 }
 
-SPIRVResult SPIRV_Float16x4_ctor1_Float16x2_Float16_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_Float16x4_ctor2_Float16_Float16x2_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_Float16x4_ctor3_Float16_Float16_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_Float16x4_ctor4_Float16x3_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
 
-SPIRVResult SPIRV_Float16x4_ctor5_Float16_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
@@ -2721,32 +2721,32 @@ SPIRVResult SPIRV_UInt16x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, uin
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
 
-SPIRVResult SPIRV_UInt16x4_ctor0_UInt16_UInt16_UInt16_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2], args[3]});
 }
 
-SPIRVResult SPIRV_UInt16x4_ctor1_UInt16x2_UInt16_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_UInt16x4_ctor2_UInt16_UInt16x2_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_UInt16x4_ctor3_UInt16_UInt16_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_UInt16x4_ctor4_UInt16x3_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
 
-SPIRVResult SPIRV_UInt16x4_ctor5_UInt16_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
@@ -2822,32 +2822,32 @@ SPIRVResult SPIRV_Int16x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
 
-SPIRVResult SPIRV_Int16x4_ctor0_Int16_Int16_Int16_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2], args[3]});
 }
 
-SPIRVResult SPIRV_Int16x4_ctor1_Int16x2_Int16_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_Int16x4_ctor2_Int16_Int16x2_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_Int16x4_ctor3_Int16_Int16_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
 }
 
-SPIRVResult SPIRV_Int16x4_ctor4_Int16x3_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
 
-SPIRVResult SPIRV_Int16x4_ctor5_Int16_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
@@ -4460,7 +4460,7 @@ SPIRVResult SPIRV_Float32x2_operator_neq_Float32x2(const Compiler* c, SPIRVGener
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x2_operator_scale_Float32x2_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x2_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -4468,7 +4468,7 @@ SPIRVResult SPIRV_Float32x2_operator_scale_Float32x2_Float32(const Compiler* c, 
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x2_operator_scale_Float32x2_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x2_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -4476,7 +4476,7 @@ SPIRVResult SPIRV_Float32x2_operator_scale_Float32x2_Float16(const Compiler* c, 
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x2_operator_scale_Float32x2_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x2_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[1]);
@@ -4484,7 +4484,7 @@ SPIRVResult SPIRV_Float32x2_operator_scale_Float32x2_UInt32(const Compiler* c, S
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x2_operator_scale_Float32x2_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x2_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[1]);
@@ -4492,7 +4492,7 @@ SPIRVResult SPIRV_Float32x2_operator_scale_Float32x2_UInt16(const Compiler* c, S
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x2_operator_scale_Float32x2_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x2_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[1]);
@@ -4500,7 +4500,7 @@ SPIRVResult SPIRV_Float32x2_operator_scale_Float32x2_Int32(const Compiler* c, SP
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x2_operator_scale_Float32x2_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x2_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[1]);
@@ -4704,7 +4704,7 @@ SPIRVResult SPIRV_UInt32x2_operator_neq_UInt32x2(const Compiler* c, SPIRVGenerat
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt32x2_operator_scale_UInt32x2_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x2_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -4712,7 +4712,7 @@ SPIRVResult SPIRV_UInt32x2_operator_scale_UInt32x2_Float32(const Compiler* c, SP
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt32x2_operator_scale_UInt32x2_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x2_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -4720,7 +4720,7 @@ SPIRVResult SPIRV_UInt32x2_operator_scale_UInt32x2_Float16(const Compiler* c, SP
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt32x2_operator_scale_UInt32x2_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x2_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[1]);
@@ -4728,7 +4728,7 @@ SPIRVResult SPIRV_UInt32x2_operator_scale_UInt32x2_UInt32(const Compiler* c, SPI
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt32x2_operator_scale_UInt32x2_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x2_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[1]);
@@ -4736,7 +4736,7 @@ SPIRVResult SPIRV_UInt32x2_operator_scale_UInt32x2_UInt16(const Compiler* c, SPI
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt32x2_operator_scale_UInt32x2_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x2_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[1]);
@@ -4744,7 +4744,7 @@ SPIRVResult SPIRV_UInt32x2_operator_scale_UInt32x2_Int32(const Compiler* c, SPIR
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt32x2_operator_scale_UInt32x2_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x2_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[1]);
@@ -5004,7 +5004,7 @@ SPIRVResult SPIRV_Int32x2_operator_neq_Int32x2(const Compiler* c, SPIRVGenerator
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int32x2_operator_scale_Int32x2_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x2_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -5012,7 +5012,7 @@ SPIRVResult SPIRV_Int32x2_operator_scale_Int32x2_Float32(const Compiler* c, SPIR
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int32x2_operator_scale_Int32x2_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x2_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -5020,7 +5020,7 @@ SPIRVResult SPIRV_Int32x2_operator_scale_Int32x2_Float16(const Compiler* c, SPIR
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int32x2_operator_scale_Int32x2_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x2_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[1]);
@@ -5028,7 +5028,7 @@ SPIRVResult SPIRV_Int32x2_operator_scale_Int32x2_UInt32(const Compiler* c, SPIRV
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int32x2_operator_scale_Int32x2_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x2_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[1]);
@@ -5036,7 +5036,7 @@ SPIRVResult SPIRV_Int32x2_operator_scale_Int32x2_UInt16(const Compiler* c, SPIRV
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int32x2_operator_scale_Int32x2_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x2_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[1]);
@@ -5044,7 +5044,7 @@ SPIRVResult SPIRV_Int32x2_operator_scale_Int32x2_Int32(const Compiler* c, SPIRVG
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int32x2_operator_scale_Int32x2_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x2_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[1]);
@@ -5388,7 +5388,7 @@ SPIRVResult SPIRV_Float16x2_operator_neq_Float16x2(const Compiler* c, SPIRVGener
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x2_operator_scale_Float16x2_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x2_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -5396,7 +5396,7 @@ SPIRVResult SPIRV_Float16x2_operator_scale_Float16x2_Float32(const Compiler* c, 
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x2_operator_scale_Float16x2_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x2_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -5404,7 +5404,7 @@ SPIRVResult SPIRV_Float16x2_operator_scale_Float16x2_Float16(const Compiler* c, 
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x2_operator_scale_Float16x2_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x2_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[1]);
@@ -5412,7 +5412,7 @@ SPIRVResult SPIRV_Float16x2_operator_scale_Float16x2_UInt32(const Compiler* c, S
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x2_operator_scale_Float16x2_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x2_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[1]);
@@ -5420,7 +5420,7 @@ SPIRVResult SPIRV_Float16x2_operator_scale_Float16x2_UInt16(const Compiler* c, S
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x2_operator_scale_Float16x2_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x2_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[1]);
@@ -5428,7 +5428,7 @@ SPIRVResult SPIRV_Float16x2_operator_scale_Float16x2_Int32(const Compiler* c, SP
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x2_operator_scale_Float16x2_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x2_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[1]);
@@ -5632,7 +5632,7 @@ SPIRVResult SPIRV_UInt16x2_operator_neq_UInt16x2(const Compiler* c, SPIRVGenerat
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt16x2_operator_scale_UInt16x2_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x2_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -5640,7 +5640,7 @@ SPIRVResult SPIRV_UInt16x2_operator_scale_UInt16x2_Float32(const Compiler* c, SP
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt16x2_operator_scale_UInt16x2_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x2_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -5648,7 +5648,7 @@ SPIRVResult SPIRV_UInt16x2_operator_scale_UInt16x2_Float16(const Compiler* c, SP
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt16x2_operator_scale_UInt16x2_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x2_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[1]);
@@ -5656,7 +5656,7 @@ SPIRVResult SPIRV_UInt16x2_operator_scale_UInt16x2_UInt32(const Compiler* c, SPI
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt16x2_operator_scale_UInt16x2_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x2_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[1]);
@@ -5664,7 +5664,7 @@ SPIRVResult SPIRV_UInt16x2_operator_scale_UInt16x2_UInt16(const Compiler* c, SPI
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt16x2_operator_scale_UInt16x2_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x2_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[1]);
@@ -5672,7 +5672,7 @@ SPIRVResult SPIRV_UInt16x2_operator_scale_UInt16x2_Int32(const Compiler* c, SPIR
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt16x2_operator_scale_UInt16x2_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x2_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[1]);
@@ -5932,7 +5932,7 @@ SPIRVResult SPIRV_Int16x2_operator_neq_Int16x2(const Compiler* c, SPIRVGenerator
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int16x2_operator_scale_Int16x2_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x2_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -5940,7 +5940,7 @@ SPIRVResult SPIRV_Int16x2_operator_scale_Int16x2_Float32(const Compiler* c, SPIR
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int16x2_operator_scale_Int16x2_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x2_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -5948,7 +5948,7 @@ SPIRVResult SPIRV_Int16x2_operator_scale_Int16x2_Float16(const Compiler* c, SPIR
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int16x2_operator_scale_Int16x2_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x2_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[1]);
@@ -5956,7 +5956,7 @@ SPIRVResult SPIRV_Int16x2_operator_scale_Int16x2_UInt32(const Compiler* c, SPIRV
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int16x2_operator_scale_Int16x2_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x2_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[1]);
@@ -5964,7 +5964,7 @@ SPIRVResult SPIRV_Int16x2_operator_scale_Int16x2_UInt16(const Compiler* c, SPIRV
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int16x2_operator_scale_Int16x2_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x2_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[1]);
@@ -5972,7 +5972,7 @@ SPIRVResult SPIRV_Int16x2_operator_scale_Int16x2_Int32(const Compiler* c, SPIRVG
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int16x2_operator_scale_Int16x2_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x2_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[1]);
@@ -6232,7 +6232,7 @@ SPIRVResult SPIRV_Float32x3_operator_neq_Float32x3(const Compiler* c, SPIRVGener
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x3_operator_scale_Float32x3_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x3_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -6240,7 +6240,7 @@ SPIRVResult SPIRV_Float32x3_operator_scale_Float32x3_Float32(const Compiler* c, 
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x3_operator_scale_Float32x3_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x3_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -6248,7 +6248,7 @@ SPIRVResult SPIRV_Float32x3_operator_scale_Float32x3_Float16(const Compiler* c, 
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x3_operator_scale_Float32x3_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x3_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[1]);
@@ -6256,7 +6256,7 @@ SPIRVResult SPIRV_Float32x3_operator_scale_Float32x3_UInt32(const Compiler* c, S
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x3_operator_scale_Float32x3_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x3_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[1]);
@@ -6264,7 +6264,7 @@ SPIRVResult SPIRV_Float32x3_operator_scale_Float32x3_UInt16(const Compiler* c, S
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x3_operator_scale_Float32x3_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x3_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[1]);
@@ -6272,7 +6272,7 @@ SPIRVResult SPIRV_Float32x3_operator_scale_Float32x3_Int32(const Compiler* c, SP
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x3_operator_scale_Float32x3_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x3_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[1]);
@@ -6476,7 +6476,7 @@ SPIRVResult SPIRV_UInt32x3_operator_neq_UInt32x3(const Compiler* c, SPIRVGenerat
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt32x3_operator_scale_UInt32x3_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x3_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -6484,7 +6484,7 @@ SPIRVResult SPIRV_UInt32x3_operator_scale_UInt32x3_Float32(const Compiler* c, SP
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt32x3_operator_scale_UInt32x3_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x3_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -6492,7 +6492,7 @@ SPIRVResult SPIRV_UInt32x3_operator_scale_UInt32x3_Float16(const Compiler* c, SP
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt32x3_operator_scale_UInt32x3_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x3_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[1]);
@@ -6500,7 +6500,7 @@ SPIRVResult SPIRV_UInt32x3_operator_scale_UInt32x3_UInt32(const Compiler* c, SPI
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt32x3_operator_scale_UInt32x3_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x3_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[1]);
@@ -6508,7 +6508,7 @@ SPIRVResult SPIRV_UInt32x3_operator_scale_UInt32x3_UInt16(const Compiler* c, SPI
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt32x3_operator_scale_UInt32x3_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x3_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[1]);
@@ -6516,7 +6516,7 @@ SPIRVResult SPIRV_UInt32x3_operator_scale_UInt32x3_Int32(const Compiler* c, SPIR
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt32x3_operator_scale_UInt32x3_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x3_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[1]);
@@ -6776,7 +6776,7 @@ SPIRVResult SPIRV_Int32x3_operator_neq_Int32x3(const Compiler* c, SPIRVGenerator
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int32x3_operator_scale_Int32x3_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x3_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -6784,7 +6784,7 @@ SPIRVResult SPIRV_Int32x3_operator_scale_Int32x3_Float32(const Compiler* c, SPIR
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int32x3_operator_scale_Int32x3_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x3_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -6792,7 +6792,7 @@ SPIRVResult SPIRV_Int32x3_operator_scale_Int32x3_Float16(const Compiler* c, SPIR
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int32x3_operator_scale_Int32x3_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x3_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[1]);
@@ -6800,7 +6800,7 @@ SPIRVResult SPIRV_Int32x3_operator_scale_Int32x3_UInt32(const Compiler* c, SPIRV
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int32x3_operator_scale_Int32x3_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x3_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[1]);
@@ -6808,7 +6808,7 @@ SPIRVResult SPIRV_Int32x3_operator_scale_Int32x3_UInt16(const Compiler* c, SPIRV
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int32x3_operator_scale_Int32x3_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x3_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[1]);
@@ -6816,7 +6816,7 @@ SPIRVResult SPIRV_Int32x3_operator_scale_Int32x3_Int32(const Compiler* c, SPIRVG
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int32x3_operator_scale_Int32x3_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x3_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[1]);
@@ -7160,7 +7160,7 @@ SPIRVResult SPIRV_Float16x3_operator_neq_Float16x3(const Compiler* c, SPIRVGener
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x3_operator_scale_Float16x3_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x3_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -7168,7 +7168,7 @@ SPIRVResult SPIRV_Float16x3_operator_scale_Float16x3_Float32(const Compiler* c, 
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x3_operator_scale_Float16x3_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x3_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -7176,7 +7176,7 @@ SPIRVResult SPIRV_Float16x3_operator_scale_Float16x3_Float16(const Compiler* c, 
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x3_operator_scale_Float16x3_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x3_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[1]);
@@ -7184,7 +7184,7 @@ SPIRVResult SPIRV_Float16x3_operator_scale_Float16x3_UInt32(const Compiler* c, S
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x3_operator_scale_Float16x3_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x3_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[1]);
@@ -7192,7 +7192,7 @@ SPIRVResult SPIRV_Float16x3_operator_scale_Float16x3_UInt16(const Compiler* c, S
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x3_operator_scale_Float16x3_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x3_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[1]);
@@ -7200,7 +7200,7 @@ SPIRVResult SPIRV_Float16x3_operator_scale_Float16x3_Int32(const Compiler* c, SP
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x3_operator_scale_Float16x3_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x3_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[1]);
@@ -7404,7 +7404,7 @@ SPIRVResult SPIRV_UInt16x3_operator_neq_UInt16x3(const Compiler* c, SPIRVGenerat
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt16x3_operator_scale_UInt16x3_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x3_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -7412,7 +7412,7 @@ SPIRVResult SPIRV_UInt16x3_operator_scale_UInt16x3_Float32(const Compiler* c, SP
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt16x3_operator_scale_UInt16x3_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x3_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -7420,7 +7420,7 @@ SPIRVResult SPIRV_UInt16x3_operator_scale_UInt16x3_Float16(const Compiler* c, SP
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt16x3_operator_scale_UInt16x3_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x3_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[1]);
@@ -7428,7 +7428,7 @@ SPIRVResult SPIRV_UInt16x3_operator_scale_UInt16x3_UInt32(const Compiler* c, SPI
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt16x3_operator_scale_UInt16x3_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x3_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[1]);
@@ -7436,7 +7436,7 @@ SPIRVResult SPIRV_UInt16x3_operator_scale_UInt16x3_UInt16(const Compiler* c, SPI
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt16x3_operator_scale_UInt16x3_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x3_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[1]);
@@ -7444,7 +7444,7 @@ SPIRVResult SPIRV_UInt16x3_operator_scale_UInt16x3_Int32(const Compiler* c, SPIR
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt16x3_operator_scale_UInt16x3_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x3_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[1]);
@@ -7704,7 +7704,7 @@ SPIRVResult SPIRV_Int16x3_operator_neq_Int16x3(const Compiler* c, SPIRVGenerator
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int16x3_operator_scale_Int16x3_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x3_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -7712,7 +7712,7 @@ SPIRVResult SPIRV_Int16x3_operator_scale_Int16x3_Float32(const Compiler* c, SPIR
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int16x3_operator_scale_Int16x3_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x3_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -7720,7 +7720,7 @@ SPIRVResult SPIRV_Int16x3_operator_scale_Int16x3_Float16(const Compiler* c, SPIR
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int16x3_operator_scale_Int16x3_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x3_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[1]);
@@ -7728,7 +7728,7 @@ SPIRVResult SPIRV_Int16x3_operator_scale_Int16x3_UInt32(const Compiler* c, SPIRV
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int16x3_operator_scale_Int16x3_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x3_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[1]);
@@ -7736,7 +7736,7 @@ SPIRVResult SPIRV_Int16x3_operator_scale_Int16x3_UInt16(const Compiler* c, SPIRV
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int16x3_operator_scale_Int16x3_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x3_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[1]);
@@ -7744,7 +7744,7 @@ SPIRVResult SPIRV_Int16x3_operator_scale_Int16x3_Int32(const Compiler* c, SPIRVG
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int16x3_operator_scale_Int16x3_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x3_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[1]);
@@ -8004,7 +8004,7 @@ SPIRVResult SPIRV_Float32x4_operator_neq_Float32x4(const Compiler* c, SPIRVGener
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x4_operator_scale_Float32x4_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x4_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -8012,7 +8012,7 @@ SPIRVResult SPIRV_Float32x4_operator_scale_Float32x4_Float32(const Compiler* c, 
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x4_operator_scale_Float32x4_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x4_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -8020,7 +8020,7 @@ SPIRVResult SPIRV_Float32x4_operator_scale_Float32x4_Float16(const Compiler* c, 
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x4_operator_scale_Float32x4_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x4_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[1]);
@@ -8028,7 +8028,7 @@ SPIRVResult SPIRV_Float32x4_operator_scale_Float32x4_UInt32(const Compiler* c, S
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x4_operator_scale_Float32x4_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x4_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[1]);
@@ -8036,7 +8036,7 @@ SPIRVResult SPIRV_Float32x4_operator_scale_Float32x4_UInt16(const Compiler* c, S
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x4_operator_scale_Float32x4_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x4_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[1]);
@@ -8044,7 +8044,7 @@ SPIRVResult SPIRV_Float32x4_operator_scale_Float32x4_Int32(const Compiler* c, SP
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x4_operator_scale_Float32x4_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x4_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[1]);
@@ -8248,7 +8248,7 @@ SPIRVResult SPIRV_UInt32x4_operator_neq_UInt32x4(const Compiler* c, SPIRVGenerat
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt32x4_operator_scale_UInt32x4_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x4_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -8256,7 +8256,7 @@ SPIRVResult SPIRV_UInt32x4_operator_scale_UInt32x4_Float32(const Compiler* c, SP
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt32x4_operator_scale_UInt32x4_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x4_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -8264,7 +8264,7 @@ SPIRVResult SPIRV_UInt32x4_operator_scale_UInt32x4_Float16(const Compiler* c, SP
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt32x4_operator_scale_UInt32x4_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x4_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[1]);
@@ -8272,7 +8272,7 @@ SPIRVResult SPIRV_UInt32x4_operator_scale_UInt32x4_UInt32(const Compiler* c, SPI
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt32x4_operator_scale_UInt32x4_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x4_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[1]);
@@ -8280,7 +8280,7 @@ SPIRVResult SPIRV_UInt32x4_operator_scale_UInt32x4_UInt16(const Compiler* c, SPI
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt32x4_operator_scale_UInt32x4_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x4_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[1]);
@@ -8288,7 +8288,7 @@ SPIRVResult SPIRV_UInt32x4_operator_scale_UInt32x4_Int32(const Compiler* c, SPIR
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt32x4_operator_scale_UInt32x4_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt32x4_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[1]);
@@ -8548,7 +8548,7 @@ SPIRVResult SPIRV_Int32x4_operator_neq_Int32x4(const Compiler* c, SPIRVGenerator
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int32x4_operator_scale_Int32x4_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x4_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -8556,7 +8556,7 @@ SPIRVResult SPIRV_Int32x4_operator_scale_Int32x4_Float32(const Compiler* c, SPIR
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int32x4_operator_scale_Int32x4_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x4_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -8564,7 +8564,7 @@ SPIRVResult SPIRV_Int32x4_operator_scale_Int32x4_Float16(const Compiler* c, SPIR
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int32x4_operator_scale_Int32x4_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x4_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[1]);
@@ -8572,7 +8572,7 @@ SPIRVResult SPIRV_Int32x4_operator_scale_Int32x4_UInt32(const Compiler* c, SPIRV
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int32x4_operator_scale_Int32x4_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x4_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[1]);
@@ -8580,7 +8580,7 @@ SPIRVResult SPIRV_Int32x4_operator_scale_Int32x4_UInt16(const Compiler* c, SPIRV
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int32x4_operator_scale_Int32x4_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x4_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[1]);
@@ -8588,7 +8588,7 @@ SPIRVResult SPIRV_Int32x4_operator_scale_Int32x4_Int32(const Compiler* c, SPIRVG
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int32x4_operator_scale_Int32x4_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int32x4_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[1]);
@@ -8932,7 +8932,7 @@ SPIRVResult SPIRV_Float16x4_operator_neq_Float16x4(const Compiler* c, SPIRVGener
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x4_operator_scale_Float16x4_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x4_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -8940,7 +8940,7 @@ SPIRVResult SPIRV_Float16x4_operator_scale_Float16x4_Float32(const Compiler* c, 
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x4_operator_scale_Float16x4_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x4_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -8948,7 +8948,7 @@ SPIRVResult SPIRV_Float16x4_operator_scale_Float16x4_Float16(const Compiler* c, 
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x4_operator_scale_Float16x4_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x4_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[1]);
@@ -8956,7 +8956,7 @@ SPIRVResult SPIRV_Float16x4_operator_scale_Float16x4_UInt32(const Compiler* c, S
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x4_operator_scale_Float16x4_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x4_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[1]);
@@ -8964,7 +8964,7 @@ SPIRVResult SPIRV_Float16x4_operator_scale_Float16x4_UInt16(const Compiler* c, S
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x4_operator_scale_Float16x4_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x4_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[1]);
@@ -8972,7 +8972,7 @@ SPIRVResult SPIRV_Float16x4_operator_scale_Float16x4_Int32(const Compiler* c, SP
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x4_operator_scale_Float16x4_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x4_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[1]);
@@ -9176,7 +9176,7 @@ SPIRVResult SPIRV_UInt16x4_operator_neq_UInt16x4(const Compiler* c, SPIRVGenerat
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt16x4_operator_scale_UInt16x4_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x4_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -9184,7 +9184,7 @@ SPIRVResult SPIRV_UInt16x4_operator_scale_UInt16x4_Float32(const Compiler* c, SP
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt16x4_operator_scale_UInt16x4_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x4_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -9192,7 +9192,7 @@ SPIRVResult SPIRV_UInt16x4_operator_scale_UInt16x4_Float16(const Compiler* c, SP
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt16x4_operator_scale_UInt16x4_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x4_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[1]);
@@ -9200,7 +9200,7 @@ SPIRVResult SPIRV_UInt16x4_operator_scale_UInt16x4_UInt32(const Compiler* c, SPI
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt16x4_operator_scale_UInt16x4_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x4_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[1]);
@@ -9208,7 +9208,7 @@ SPIRVResult SPIRV_UInt16x4_operator_scale_UInt16x4_UInt16(const Compiler* c, SPI
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt16x4_operator_scale_UInt16x4_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x4_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[1]);
@@ -9216,7 +9216,7 @@ SPIRVResult SPIRV_UInt16x4_operator_scale_UInt16x4_Int32(const Compiler* c, SPIR
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_UInt16x4_operator_scale_UInt16x4_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_UInt16x4_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[1]);
@@ -9476,7 +9476,7 @@ SPIRVResult SPIRV_Int16x4_operator_neq_Int16x4(const Compiler* c, SPIRVGenerator
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int16x4_operator_scale_Int16x4_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x4_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -9484,7 +9484,7 @@ SPIRVResult SPIRV_Int16x4_operator_scale_Int16x4_Float32(const Compiler* c, SPIR
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int16x4_operator_scale_Int16x4_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x4_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -9492,7 +9492,7 @@ SPIRVResult SPIRV_Int16x4_operator_scale_Int16x4_Float16(const Compiler* c, SPIR
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int16x4_operator_scale_Int16x4_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x4_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[1]);
@@ -9500,7 +9500,7 @@ SPIRVResult SPIRV_Int16x4_operator_scale_Int16x4_UInt32(const Compiler* c, SPIRV
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int16x4_operator_scale_Int16x4_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x4_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[1]);
@@ -9508,7 +9508,7 @@ SPIRVResult SPIRV_Int16x4_operator_scale_Int16x4_UInt16(const Compiler* c, SPIRV
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int16x4_operator_scale_Int16x4_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x4_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[1]);
@@ -9516,7 +9516,7 @@ SPIRVResult SPIRV_Int16x4_operator_scale_Int16x4_Int32(const Compiler* c, SPIRVG
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Int16x4_operator_scale_Int16x4_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Int16x4_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[1]);
@@ -23483,7 +23483,7 @@ std::pair{ &Float32_convert_Int32, &SPIRV_Float32_convert_Int32 },
 std::pair{ &Float32_convert_Float16, &SPIRV_Float32_convert_Float16 },
 std::pair{ &Float32_convert_UInt16, &SPIRV_Float32_convert_UInt16 },
 std::pair{ &Float32_convert_Int16, &SPIRV_Float32_convert_Int16 },
-std::pair{ &Float32_ctor0_Float32, &SPIRV_Float32_ctor0_Float32 },
+std::pair{ &Float32_ctor0, &SPIRV_Float32_ctor0 },
 std::pair{ &Float32_operator_index_Int32, &SPIRV_Float32_operator_index_Int32 },
 std::pair{ &Float32_operator_index_UInt32, &SPIRV_Float32_operator_index_UInt32 },
 std::pair{ &Float32_operator_index_Int16, &SPIRV_Float32_operator_index_Int16 },
@@ -23508,7 +23508,7 @@ std::pair{ &UInt32_convert_Int32, &SPIRV_UInt32_convert_Int32 },
 std::pair{ &UInt32_convert_Float16, &SPIRV_UInt32_convert_Float16 },
 std::pair{ &UInt32_convert_UInt16, &SPIRV_UInt32_convert_UInt16 },
 std::pair{ &UInt32_convert_Int16, &SPIRV_UInt32_convert_Int16 },
-std::pair{ &UInt32_ctor0_UInt32, &SPIRV_UInt32_ctor0_UInt32 },
+std::pair{ &UInt32_ctor0, &SPIRV_UInt32_ctor0 },
 std::pair{ &UInt32_operator_index_Int32, &SPIRV_UInt32_operator_index_Int32 },
 std::pair{ &UInt32_operator_index_UInt32, &SPIRV_UInt32_operator_index_UInt32 },
 std::pair{ &UInt32_operator_index_Int16, &SPIRV_UInt32_operator_index_Int16 },
@@ -23543,7 +23543,7 @@ std::pair{ &Int32_convert_UInt32, &SPIRV_Int32_convert_UInt32 },
 std::pair{ &Int32_convert_Float16, &SPIRV_Int32_convert_Float16 },
 std::pair{ &Int32_convert_UInt16, &SPIRV_Int32_convert_UInt16 },
 std::pair{ &Int32_convert_Int16, &SPIRV_Int32_convert_Int16 },
-std::pair{ &Int32_ctor0_Int32, &SPIRV_Int32_ctor0_Int32 },
+std::pair{ &Int32_ctor0, &SPIRV_Int32_ctor0 },
 std::pair{ &Int32_operator_index_Int32, &SPIRV_Int32_operator_index_Int32 },
 std::pair{ &Int32_operator_index_UInt32, &SPIRV_Int32_operator_index_UInt32 },
 std::pair{ &Int32_operator_index_Int16, &SPIRV_Int32_operator_index_Int16 },
@@ -23577,7 +23577,7 @@ std::pair{ &Bool8_convert_UInt32, &SPIRV_Bool8_convert_UInt32 },
 std::pair{ &Bool8_convert_Int32, &SPIRV_Bool8_convert_Int32 },
 std::pair{ &Bool8_convert_UInt16, &SPIRV_Bool8_convert_UInt16 },
 std::pair{ &Bool8_convert_Int16, &SPIRV_Bool8_convert_Int16 },
-std::pair{ &Bool8_ctor0_Bool8, &SPIRV_Bool8_ctor0_Bool8 },
+std::pair{ &Bool8_ctor0, &SPIRV_Bool8_ctor0 },
 std::pair{ &Bool8_operator_index_Int32, &SPIRV_Bool8_operator_index_Int32 },
 std::pair{ &Bool8_operator_index_UInt32, &SPIRV_Bool8_operator_index_UInt32 },
 std::pair{ &Bool8_operator_index_Int16, &SPIRV_Bool8_operator_index_Int16 },
@@ -23591,7 +23591,7 @@ std::pair{ &Float16_convert_UInt32, &SPIRV_Float16_convert_UInt32 },
 std::pair{ &Float16_convert_Int32, &SPIRV_Float16_convert_Int32 },
 std::pair{ &Float16_convert_UInt16, &SPIRV_Float16_convert_UInt16 },
 std::pair{ &Float16_convert_Int16, &SPIRV_Float16_convert_Int16 },
-std::pair{ &Float16_ctor0_Float16, &SPIRV_Float16_ctor0_Float16 },
+std::pair{ &Float16_ctor0, &SPIRV_Float16_ctor0 },
 std::pair{ &Float16_operator_index_Int32, &SPIRV_Float16_operator_index_Int32 },
 std::pair{ &Float16_operator_index_UInt32, &SPIRV_Float16_operator_index_UInt32 },
 std::pair{ &Float16_operator_index_Int16, &SPIRV_Float16_operator_index_Int16 },
@@ -23616,7 +23616,7 @@ std::pair{ &UInt16_convert_UInt32, &SPIRV_UInt16_convert_UInt32 },
 std::pair{ &UInt16_convert_Int32, &SPIRV_UInt16_convert_Int32 },
 std::pair{ &UInt16_convert_Float16, &SPIRV_UInt16_convert_Float16 },
 std::pair{ &UInt16_convert_Int16, &SPIRV_UInt16_convert_Int16 },
-std::pair{ &UInt16_ctor0_UInt16, &SPIRV_UInt16_ctor0_UInt16 },
+std::pair{ &UInt16_ctor0, &SPIRV_UInt16_ctor0 },
 std::pair{ &UInt16_operator_index_Int32, &SPIRV_UInt16_operator_index_Int32 },
 std::pair{ &UInt16_operator_index_UInt32, &SPIRV_UInt16_operator_index_UInt32 },
 std::pair{ &UInt16_operator_index_Int16, &SPIRV_UInt16_operator_index_Int16 },
@@ -23651,7 +23651,7 @@ std::pair{ &Int16_convert_UInt32, &SPIRV_Int16_convert_UInt32 },
 std::pair{ &Int16_convert_Int32, &SPIRV_Int16_convert_Int32 },
 std::pair{ &Int16_convert_Float16, &SPIRV_Int16_convert_Float16 },
 std::pair{ &Int16_convert_UInt16, &SPIRV_Int16_convert_UInt16 },
-std::pair{ &Int16_ctor0_Int16, &SPIRV_Int16_ctor0_Int16 },
+std::pair{ &Int16_ctor0, &SPIRV_Int16_ctor0 },
 std::pair{ &Int16_operator_index_Int32, &SPIRV_Int16_operator_index_Int32 },
 std::pair{ &Int16_operator_index_UInt32, &SPIRV_Int16_operator_index_UInt32 },
 std::pair{ &Int16_operator_index_Int16, &SPIRV_Int16_operator_index_Int16 },
@@ -23693,7 +23693,7 @@ std::pair{ &Float32x2_convert_UInt16x2, &SPIRV_Float32x2_convert_UInt16x2 },
 std::pair{ &Float32x2_splat_UInt16, &SPIRV_Float32x2_splat_UInt16 },
 std::pair{ &Float32x2_convert_Int16x2, &SPIRV_Float32x2_convert_Int16x2 },
 std::pair{ &Float32x2_splat_Int16, &SPIRV_Float32x2_splat_Int16 },
-std::pair{ &Float32x2_ctor0_Float32_Float32, &SPIRV_Float32x2_ctor0_Float32_Float32 },
+std::pair{ &Float32x2_ctor0, &SPIRV_Float32x2_ctor0 },
 std::pair{ &Float32x2_operator_index_Int32, &SPIRV_Float32x2_operator_index_Int32 },
 std::pair{ &Float32x2_operator_index_UInt32, &SPIRV_Float32x2_operator_index_UInt32 },
 std::pair{ &Float32x2_operator_index_Int16, &SPIRV_Float32x2_operator_index_Int16 },
@@ -23713,12 +23713,12 @@ std::pair{ &Float32x2_operator_gt_Float32x2, &SPIRV_Float32x2_operator_gt_Float3
 std::pair{ &Float32x2_operator_gte_Float32x2, &SPIRV_Float32x2_operator_gte_Float32x2 },
 std::pair{ &Float32x2_operator_eq_Float32x2, &SPIRV_Float32x2_operator_eq_Float32x2 },
 std::pair{ &Float32x2_operator_neq_Float32x2, &SPIRV_Float32x2_operator_neq_Float32x2 },
-std::pair{ &Float32x2_operator_scale_Float32x2_Float32, &SPIRV_Float32x2_operator_scale_Float32x2_Float32 },
-std::pair{ &Float32x2_operator_scale_Float32x2_Float16, &SPIRV_Float32x2_operator_scale_Float32x2_Float16 },
-std::pair{ &Float32x2_operator_scale_Float32x2_UInt32, &SPIRV_Float32x2_operator_scale_Float32x2_UInt32 },
-std::pair{ &Float32x2_operator_scale_Float32x2_UInt16, &SPIRV_Float32x2_operator_scale_Float32x2_UInt16 },
-std::pair{ &Float32x2_operator_scale_Float32x2_Int32, &SPIRV_Float32x2_operator_scale_Float32x2_Int32 },
-std::pair{ &Float32x2_operator_scale_Float32x2_Int16, &SPIRV_Float32x2_operator_scale_Float32x2_Int16 },
+std::pair{ &Float32x2_operator_scale_Float32, &SPIRV_Float32x2_operator_scale_Float32 },
+std::pair{ &Float32x2_operator_scale_Float16, &SPIRV_Float32x2_operator_scale_Float16 },
+std::pair{ &Float32x2_operator_scale_UInt32, &SPIRV_Float32x2_operator_scale_UInt32 },
+std::pair{ &Float32x2_operator_scale_UInt16, &SPIRV_Float32x2_operator_scale_UInt16 },
+std::pair{ &Float32x2_operator_scale_Int32, &SPIRV_Float32x2_operator_scale_Int32 },
+std::pair{ &Float32x2_operator_scale_Int16, &SPIRV_Float32x2_operator_scale_Int16 },
 std::pair{ &Float32x2_operator_mul_Float32x2x2, &SPIRV_Float32x2_operator_mul_Float32x2x2 },
 std::pair{ &Float32x2_operator_mul_Float32x2x3, &SPIRV_Float32x2_operator_mul_Float32x2x3 },
 std::pair{ &Float32x2_operator_mul_Float32x2x4, &SPIRV_Float32x2_operator_mul_Float32x2x4 },
@@ -23734,7 +23734,7 @@ std::pair{ &UInt32x2_convert_UInt16x2, &SPIRV_UInt32x2_convert_UInt16x2 },
 std::pair{ &UInt32x2_splat_UInt16, &SPIRV_UInt32x2_splat_UInt16 },
 std::pair{ &UInt32x2_convert_Int16x2, &SPIRV_UInt32x2_convert_Int16x2 },
 std::pair{ &UInt32x2_splat_Int16, &SPIRV_UInt32x2_splat_Int16 },
-std::pair{ &UInt32x2_ctor0_UInt32_UInt32, &SPIRV_UInt32x2_ctor0_UInt32_UInt32 },
+std::pair{ &UInt32x2_ctor0, &SPIRV_UInt32x2_ctor0 },
 std::pair{ &UInt32x2_operator_index_Int32, &SPIRV_UInt32x2_operator_index_Int32 },
 std::pair{ &UInt32x2_operator_index_UInt32, &SPIRV_UInt32x2_operator_index_UInt32 },
 std::pair{ &UInt32x2_operator_index_Int16, &SPIRV_UInt32x2_operator_index_Int16 },
@@ -23754,12 +23754,12 @@ std::pair{ &UInt32x2_operator_gt_UInt32x2, &SPIRV_UInt32x2_operator_gt_UInt32x2 
 std::pair{ &UInt32x2_operator_gte_UInt32x2, &SPIRV_UInt32x2_operator_gte_UInt32x2 },
 std::pair{ &UInt32x2_operator_eq_UInt32x2, &SPIRV_UInt32x2_operator_eq_UInt32x2 },
 std::pair{ &UInt32x2_operator_neq_UInt32x2, &SPIRV_UInt32x2_operator_neq_UInt32x2 },
-std::pair{ &UInt32x2_operator_scale_UInt32x2_Float32, &SPIRV_UInt32x2_operator_scale_UInt32x2_Float32 },
-std::pair{ &UInt32x2_operator_scale_UInt32x2_Float16, &SPIRV_UInt32x2_operator_scale_UInt32x2_Float16 },
-std::pair{ &UInt32x2_operator_scale_UInt32x2_UInt32, &SPIRV_UInt32x2_operator_scale_UInt32x2_UInt32 },
-std::pair{ &UInt32x2_operator_scale_UInt32x2_UInt16, &SPIRV_UInt32x2_operator_scale_UInt32x2_UInt16 },
-std::pair{ &UInt32x2_operator_scale_UInt32x2_Int32, &SPIRV_UInt32x2_operator_scale_UInt32x2_Int32 },
-std::pair{ &UInt32x2_operator_scale_UInt32x2_Int16, &SPIRV_UInt32x2_operator_scale_UInt32x2_Int16 },
+std::pair{ &UInt32x2_operator_scale_Float32, &SPIRV_UInt32x2_operator_scale_Float32 },
+std::pair{ &UInt32x2_operator_scale_Float16, &SPIRV_UInt32x2_operator_scale_Float16 },
+std::pair{ &UInt32x2_operator_scale_UInt32, &SPIRV_UInt32x2_operator_scale_UInt32 },
+std::pair{ &UInt32x2_operator_scale_UInt16, &SPIRV_UInt32x2_operator_scale_UInt16 },
+std::pair{ &UInt32x2_operator_scale_Int32, &SPIRV_UInt32x2_operator_scale_Int32 },
+std::pair{ &UInt32x2_operator_scale_Int16, &SPIRV_UInt32x2_operator_scale_Int16 },
 std::pair{ &UInt32x2_operator_or_UInt32x2, &SPIRV_UInt32x2_operator_or_UInt32x2 },
 std::pair{ &UInt32x2_operator_and_UInt32x2, &SPIRV_UInt32x2_operator_and_UInt32x2 },
 std::pair{ &UInt32x2_operator_xor_UInt32x2, &SPIRV_UInt32x2_operator_xor_UInt32x2 },
@@ -23782,7 +23782,7 @@ std::pair{ &Int32x2_convert_UInt16x2, &SPIRV_Int32x2_convert_UInt16x2 },
 std::pair{ &Int32x2_splat_UInt16, &SPIRV_Int32x2_splat_UInt16 },
 std::pair{ &Int32x2_convert_Int16x2, &SPIRV_Int32x2_convert_Int16x2 },
 std::pair{ &Int32x2_splat_Int16, &SPIRV_Int32x2_splat_Int16 },
-std::pair{ &Int32x2_ctor0_Int32_Int32, &SPIRV_Int32x2_ctor0_Int32_Int32 },
+std::pair{ &Int32x2_ctor0, &SPIRV_Int32x2_ctor0 },
 std::pair{ &Int32x2_operator_index_Int32, &SPIRV_Int32x2_operator_index_Int32 },
 std::pair{ &Int32x2_operator_index_UInt32, &SPIRV_Int32x2_operator_index_UInt32 },
 std::pair{ &Int32x2_operator_index_Int16, &SPIRV_Int32x2_operator_index_Int16 },
@@ -23802,12 +23802,12 @@ std::pair{ &Int32x2_operator_gt_Int32x2, &SPIRV_Int32x2_operator_gt_Int32x2 },
 std::pair{ &Int32x2_operator_gte_Int32x2, &SPIRV_Int32x2_operator_gte_Int32x2 },
 std::pair{ &Int32x2_operator_eq_Int32x2, &SPIRV_Int32x2_operator_eq_Int32x2 },
 std::pair{ &Int32x2_operator_neq_Int32x2, &SPIRV_Int32x2_operator_neq_Int32x2 },
-std::pair{ &Int32x2_operator_scale_Int32x2_Float32, &SPIRV_Int32x2_operator_scale_Int32x2_Float32 },
-std::pair{ &Int32x2_operator_scale_Int32x2_Float16, &SPIRV_Int32x2_operator_scale_Int32x2_Float16 },
-std::pair{ &Int32x2_operator_scale_Int32x2_UInt32, &SPIRV_Int32x2_operator_scale_Int32x2_UInt32 },
-std::pair{ &Int32x2_operator_scale_Int32x2_UInt16, &SPIRV_Int32x2_operator_scale_Int32x2_UInt16 },
-std::pair{ &Int32x2_operator_scale_Int32x2_Int32, &SPIRV_Int32x2_operator_scale_Int32x2_Int32 },
-std::pair{ &Int32x2_operator_scale_Int32x2_Int16, &SPIRV_Int32x2_operator_scale_Int32x2_Int16 },
+std::pair{ &Int32x2_operator_scale_Float32, &SPIRV_Int32x2_operator_scale_Float32 },
+std::pair{ &Int32x2_operator_scale_Float16, &SPIRV_Int32x2_operator_scale_Float16 },
+std::pair{ &Int32x2_operator_scale_UInt32, &SPIRV_Int32x2_operator_scale_UInt32 },
+std::pair{ &Int32x2_operator_scale_UInt16, &SPIRV_Int32x2_operator_scale_UInt16 },
+std::pair{ &Int32x2_operator_scale_Int32, &SPIRV_Int32x2_operator_scale_Int32 },
+std::pair{ &Int32x2_operator_scale_Int16, &SPIRV_Int32x2_operator_scale_Int16 },
 std::pair{ &Int32x2_operator_or_Int32x2, &SPIRV_Int32x2_operator_or_Int32x2 },
 std::pair{ &Int32x2_operator_and_Int32x2, &SPIRV_Int32x2_operator_and_Int32x2 },
 std::pair{ &Int32x2_operator_xor_Int32x2, &SPIRV_Int32x2_operator_xor_Int32x2 },
@@ -23826,7 +23826,7 @@ std::pair{ &Bool8x2_convert_UInt16x2, &SPIRV_Bool8x2_convert_UInt16x2 },
 std::pair{ &Bool8x2_splat_UInt16, &SPIRV_Bool8x2_splat_UInt16 },
 std::pair{ &Bool8x2_convert_Int16x2, &SPIRV_Bool8x2_convert_Int16x2 },
 std::pair{ &Bool8x2_splat_Int16, &SPIRV_Bool8x2_splat_Int16 },
-std::pair{ &Bool8x2_ctor0_Bool8_Bool8, &SPIRV_Bool8x2_ctor0_Bool8_Bool8 },
+std::pair{ &Bool8x2_ctor0, &SPIRV_Bool8x2_ctor0 },
 std::pair{ &Bool8x2_operator_index_Int32, &SPIRV_Bool8x2_operator_index_Int32 },
 std::pair{ &Bool8x2_operator_index_UInt32, &SPIRV_Bool8x2_operator_index_UInt32 },
 std::pair{ &Bool8x2_operator_index_Int16, &SPIRV_Bool8x2_operator_index_Int16 },
@@ -23847,7 +23847,7 @@ std::pair{ &Float16x2_convert_UInt16x2, &SPIRV_Float16x2_convert_UInt16x2 },
 std::pair{ &Float16x2_splat_UInt16, &SPIRV_Float16x2_splat_UInt16 },
 std::pair{ &Float16x2_convert_Int16x2, &SPIRV_Float16x2_convert_Int16x2 },
 std::pair{ &Float16x2_splat_Int16, &SPIRV_Float16x2_splat_Int16 },
-std::pair{ &Float16x2_ctor0_Float16_Float16, &SPIRV_Float16x2_ctor0_Float16_Float16 },
+std::pair{ &Float16x2_ctor0, &SPIRV_Float16x2_ctor0 },
 std::pair{ &Float16x2_operator_index_Int32, &SPIRV_Float16x2_operator_index_Int32 },
 std::pair{ &Float16x2_operator_index_UInt32, &SPIRV_Float16x2_operator_index_UInt32 },
 std::pair{ &Float16x2_operator_index_Int16, &SPIRV_Float16x2_operator_index_Int16 },
@@ -23867,12 +23867,12 @@ std::pair{ &Float16x2_operator_gt_Float16x2, &SPIRV_Float16x2_operator_gt_Float1
 std::pair{ &Float16x2_operator_gte_Float16x2, &SPIRV_Float16x2_operator_gte_Float16x2 },
 std::pair{ &Float16x2_operator_eq_Float16x2, &SPIRV_Float16x2_operator_eq_Float16x2 },
 std::pair{ &Float16x2_operator_neq_Float16x2, &SPIRV_Float16x2_operator_neq_Float16x2 },
-std::pair{ &Float16x2_operator_scale_Float16x2_Float32, &SPIRV_Float16x2_operator_scale_Float16x2_Float32 },
-std::pair{ &Float16x2_operator_scale_Float16x2_Float16, &SPIRV_Float16x2_operator_scale_Float16x2_Float16 },
-std::pair{ &Float16x2_operator_scale_Float16x2_UInt32, &SPIRV_Float16x2_operator_scale_Float16x2_UInt32 },
-std::pair{ &Float16x2_operator_scale_Float16x2_UInt16, &SPIRV_Float16x2_operator_scale_Float16x2_UInt16 },
-std::pair{ &Float16x2_operator_scale_Float16x2_Int32, &SPIRV_Float16x2_operator_scale_Float16x2_Int32 },
-std::pair{ &Float16x2_operator_scale_Float16x2_Int16, &SPIRV_Float16x2_operator_scale_Float16x2_Int16 },
+std::pair{ &Float16x2_operator_scale_Float32, &SPIRV_Float16x2_operator_scale_Float32 },
+std::pair{ &Float16x2_operator_scale_Float16, &SPIRV_Float16x2_operator_scale_Float16 },
+std::pair{ &Float16x2_operator_scale_UInt32, &SPIRV_Float16x2_operator_scale_UInt32 },
+std::pair{ &Float16x2_operator_scale_UInt16, &SPIRV_Float16x2_operator_scale_UInt16 },
+std::pair{ &Float16x2_operator_scale_Int32, &SPIRV_Float16x2_operator_scale_Int32 },
+std::pair{ &Float16x2_operator_scale_Int16, &SPIRV_Float16x2_operator_scale_Int16 },
 std::pair{ &Float16x2_operator_mul_Float32x2x2, &SPIRV_Float16x2_operator_mul_Float32x2x2 },
 std::pair{ &Float16x2_operator_mul_Float32x2x3, &SPIRV_Float16x2_operator_mul_Float32x2x3 },
 std::pair{ &Float16x2_operator_mul_Float32x2x4, &SPIRV_Float16x2_operator_mul_Float32x2x4 },
@@ -23888,7 +23888,7 @@ std::pair{ &UInt16x2_convert_UInt16x2, &SPIRV_UInt16x2_convert_UInt16x2 },
 std::pair{ &UInt16x2_splat_UInt16, &SPIRV_UInt16x2_splat_UInt16 },
 std::pair{ &UInt16x2_convert_Int16x2, &SPIRV_UInt16x2_convert_Int16x2 },
 std::pair{ &UInt16x2_splat_Int16, &SPIRV_UInt16x2_splat_Int16 },
-std::pair{ &UInt16x2_ctor0_UInt16_UInt16, &SPIRV_UInt16x2_ctor0_UInt16_UInt16 },
+std::pair{ &UInt16x2_ctor0, &SPIRV_UInt16x2_ctor0 },
 std::pair{ &UInt16x2_operator_index_Int32, &SPIRV_UInt16x2_operator_index_Int32 },
 std::pair{ &UInt16x2_operator_index_UInt32, &SPIRV_UInt16x2_operator_index_UInt32 },
 std::pair{ &UInt16x2_operator_index_Int16, &SPIRV_UInt16x2_operator_index_Int16 },
@@ -23908,12 +23908,12 @@ std::pair{ &UInt16x2_operator_gt_UInt16x2, &SPIRV_UInt16x2_operator_gt_UInt16x2 
 std::pair{ &UInt16x2_operator_gte_UInt16x2, &SPIRV_UInt16x2_operator_gte_UInt16x2 },
 std::pair{ &UInt16x2_operator_eq_UInt16x2, &SPIRV_UInt16x2_operator_eq_UInt16x2 },
 std::pair{ &UInt16x2_operator_neq_UInt16x2, &SPIRV_UInt16x2_operator_neq_UInt16x2 },
-std::pair{ &UInt16x2_operator_scale_UInt16x2_Float32, &SPIRV_UInt16x2_operator_scale_UInt16x2_Float32 },
-std::pair{ &UInt16x2_operator_scale_UInt16x2_Float16, &SPIRV_UInt16x2_operator_scale_UInt16x2_Float16 },
-std::pair{ &UInt16x2_operator_scale_UInt16x2_UInt32, &SPIRV_UInt16x2_operator_scale_UInt16x2_UInt32 },
-std::pair{ &UInt16x2_operator_scale_UInt16x2_UInt16, &SPIRV_UInt16x2_operator_scale_UInt16x2_UInt16 },
-std::pair{ &UInt16x2_operator_scale_UInt16x2_Int32, &SPIRV_UInt16x2_operator_scale_UInt16x2_Int32 },
-std::pair{ &UInt16x2_operator_scale_UInt16x2_Int16, &SPIRV_UInt16x2_operator_scale_UInt16x2_Int16 },
+std::pair{ &UInt16x2_operator_scale_Float32, &SPIRV_UInt16x2_operator_scale_Float32 },
+std::pair{ &UInt16x2_operator_scale_Float16, &SPIRV_UInt16x2_operator_scale_Float16 },
+std::pair{ &UInt16x2_operator_scale_UInt32, &SPIRV_UInt16x2_operator_scale_UInt32 },
+std::pair{ &UInt16x2_operator_scale_UInt16, &SPIRV_UInt16x2_operator_scale_UInt16 },
+std::pair{ &UInt16x2_operator_scale_Int32, &SPIRV_UInt16x2_operator_scale_Int32 },
+std::pair{ &UInt16x2_operator_scale_Int16, &SPIRV_UInt16x2_operator_scale_Int16 },
 std::pair{ &UInt16x2_operator_or_UInt16x2, &SPIRV_UInt16x2_operator_or_UInt16x2 },
 std::pair{ &UInt16x2_operator_and_UInt16x2, &SPIRV_UInt16x2_operator_and_UInt16x2 },
 std::pair{ &UInt16x2_operator_xor_UInt16x2, &SPIRV_UInt16x2_operator_xor_UInt16x2 },
@@ -23936,7 +23936,7 @@ std::pair{ &Int16x2_convert_UInt16x2, &SPIRV_Int16x2_convert_UInt16x2 },
 std::pair{ &Int16x2_splat_UInt16, &SPIRV_Int16x2_splat_UInt16 },
 std::pair{ &Int16x2_convert_Int16x2, &SPIRV_Int16x2_convert_Int16x2 },
 std::pair{ &Int16x2_splat_Int16, &SPIRV_Int16x2_splat_Int16 },
-std::pair{ &Int16x2_ctor0_Int16_Int16, &SPIRV_Int16x2_ctor0_Int16_Int16 },
+std::pair{ &Int16x2_ctor0, &SPIRV_Int16x2_ctor0 },
 std::pair{ &Int16x2_operator_index_Int32, &SPIRV_Int16x2_operator_index_Int32 },
 std::pair{ &Int16x2_operator_index_UInt32, &SPIRV_Int16x2_operator_index_UInt32 },
 std::pair{ &Int16x2_operator_index_Int16, &SPIRV_Int16x2_operator_index_Int16 },
@@ -23956,12 +23956,12 @@ std::pair{ &Int16x2_operator_gt_Int16x2, &SPIRV_Int16x2_operator_gt_Int16x2 },
 std::pair{ &Int16x2_operator_gte_Int16x2, &SPIRV_Int16x2_operator_gte_Int16x2 },
 std::pair{ &Int16x2_operator_eq_Int16x2, &SPIRV_Int16x2_operator_eq_Int16x2 },
 std::pair{ &Int16x2_operator_neq_Int16x2, &SPIRV_Int16x2_operator_neq_Int16x2 },
-std::pair{ &Int16x2_operator_scale_Int16x2_Float32, &SPIRV_Int16x2_operator_scale_Int16x2_Float32 },
-std::pair{ &Int16x2_operator_scale_Int16x2_Float16, &SPIRV_Int16x2_operator_scale_Int16x2_Float16 },
-std::pair{ &Int16x2_operator_scale_Int16x2_UInt32, &SPIRV_Int16x2_operator_scale_Int16x2_UInt32 },
-std::pair{ &Int16x2_operator_scale_Int16x2_UInt16, &SPIRV_Int16x2_operator_scale_Int16x2_UInt16 },
-std::pair{ &Int16x2_operator_scale_Int16x2_Int32, &SPIRV_Int16x2_operator_scale_Int16x2_Int32 },
-std::pair{ &Int16x2_operator_scale_Int16x2_Int16, &SPIRV_Int16x2_operator_scale_Int16x2_Int16 },
+std::pair{ &Int16x2_operator_scale_Float32, &SPIRV_Int16x2_operator_scale_Float32 },
+std::pair{ &Int16x2_operator_scale_Float16, &SPIRV_Int16x2_operator_scale_Float16 },
+std::pair{ &Int16x2_operator_scale_UInt32, &SPIRV_Int16x2_operator_scale_UInt32 },
+std::pair{ &Int16x2_operator_scale_UInt16, &SPIRV_Int16x2_operator_scale_UInt16 },
+std::pair{ &Int16x2_operator_scale_Int32, &SPIRV_Int16x2_operator_scale_Int32 },
+std::pair{ &Int16x2_operator_scale_Int16, &SPIRV_Int16x2_operator_scale_Int16 },
 std::pair{ &Int16x2_operator_or_Int16x2, &SPIRV_Int16x2_operator_or_Int16x2 },
 std::pair{ &Int16x2_operator_and_Int16x2, &SPIRV_Int16x2_operator_and_Int16x2 },
 std::pair{ &Int16x2_operator_xor_Int16x2, &SPIRV_Int16x2_operator_xor_Int16x2 },
@@ -23984,9 +23984,9 @@ std::pair{ &Float32x3_convert_UInt16x3, &SPIRV_Float32x3_convert_UInt16x3 },
 std::pair{ &Float32x3_splat_UInt16, &SPIRV_Float32x3_splat_UInt16 },
 std::pair{ &Float32x3_convert_Int16x3, &SPIRV_Float32x3_convert_Int16x3 },
 std::pair{ &Float32x3_splat_Int16, &SPIRV_Float32x3_splat_Int16 },
-std::pair{ &Float32x3_ctor0_Float32_Float32_Float32, &SPIRV_Float32x3_ctor0_Float32_Float32_Float32 },
-std::pair{ &Float32x3_ctor1_Float32x2_Float32, &SPIRV_Float32x3_ctor1_Float32x2_Float32 },
-std::pair{ &Float32x3_ctor2_Float32_Float32x2, &SPIRV_Float32x3_ctor2_Float32_Float32x2 },
+std::pair{ &Float32x3_ctor0, &SPIRV_Float32x3_ctor0 },
+std::pair{ &Float32x3_ctor1, &SPIRV_Float32x3_ctor1 },
+std::pair{ &Float32x3_ctor2, &SPIRV_Float32x3_ctor2 },
 std::pair{ &Float32x3_operator_index_Int32, &SPIRV_Float32x3_operator_index_Int32 },
 std::pair{ &Float32x3_operator_index_UInt32, &SPIRV_Float32x3_operator_index_UInt32 },
 std::pair{ &Float32x3_operator_index_Int16, &SPIRV_Float32x3_operator_index_Int16 },
@@ -24006,12 +24006,12 @@ std::pair{ &Float32x3_operator_gt_Float32x3, &SPIRV_Float32x3_operator_gt_Float3
 std::pair{ &Float32x3_operator_gte_Float32x3, &SPIRV_Float32x3_operator_gte_Float32x3 },
 std::pair{ &Float32x3_operator_eq_Float32x3, &SPIRV_Float32x3_operator_eq_Float32x3 },
 std::pair{ &Float32x3_operator_neq_Float32x3, &SPIRV_Float32x3_operator_neq_Float32x3 },
-std::pair{ &Float32x3_operator_scale_Float32x3_Float32, &SPIRV_Float32x3_operator_scale_Float32x3_Float32 },
-std::pair{ &Float32x3_operator_scale_Float32x3_Float16, &SPIRV_Float32x3_operator_scale_Float32x3_Float16 },
-std::pair{ &Float32x3_operator_scale_Float32x3_UInt32, &SPIRV_Float32x3_operator_scale_Float32x3_UInt32 },
-std::pair{ &Float32x3_operator_scale_Float32x3_UInt16, &SPIRV_Float32x3_operator_scale_Float32x3_UInt16 },
-std::pair{ &Float32x3_operator_scale_Float32x3_Int32, &SPIRV_Float32x3_operator_scale_Float32x3_Int32 },
-std::pair{ &Float32x3_operator_scale_Float32x3_Int16, &SPIRV_Float32x3_operator_scale_Float32x3_Int16 },
+std::pair{ &Float32x3_operator_scale_Float32, &SPIRV_Float32x3_operator_scale_Float32 },
+std::pair{ &Float32x3_operator_scale_Float16, &SPIRV_Float32x3_operator_scale_Float16 },
+std::pair{ &Float32x3_operator_scale_UInt32, &SPIRV_Float32x3_operator_scale_UInt32 },
+std::pair{ &Float32x3_operator_scale_UInt16, &SPIRV_Float32x3_operator_scale_UInt16 },
+std::pair{ &Float32x3_operator_scale_Int32, &SPIRV_Float32x3_operator_scale_Int32 },
+std::pair{ &Float32x3_operator_scale_Int16, &SPIRV_Float32x3_operator_scale_Int16 },
 std::pair{ &Float32x3_operator_mul_Float32x3x2, &SPIRV_Float32x3_operator_mul_Float32x3x2 },
 std::pair{ &Float32x3_operator_mul_Float32x3x3, &SPIRV_Float32x3_operator_mul_Float32x3x3 },
 std::pair{ &Float32x3_operator_mul_Float32x3x4, &SPIRV_Float32x3_operator_mul_Float32x3x4 },
@@ -24027,9 +24027,9 @@ std::pair{ &UInt32x3_convert_UInt16x3, &SPIRV_UInt32x3_convert_UInt16x3 },
 std::pair{ &UInt32x3_splat_UInt16, &SPIRV_UInt32x3_splat_UInt16 },
 std::pair{ &UInt32x3_convert_Int16x3, &SPIRV_UInt32x3_convert_Int16x3 },
 std::pair{ &UInt32x3_splat_Int16, &SPIRV_UInt32x3_splat_Int16 },
-std::pair{ &UInt32x3_ctor0_UInt32_UInt32_UInt32, &SPIRV_UInt32x3_ctor0_UInt32_UInt32_UInt32 },
-std::pair{ &UInt32x3_ctor1_UInt32x2_UInt32, &SPIRV_UInt32x3_ctor1_UInt32x2_UInt32 },
-std::pair{ &UInt32x3_ctor2_UInt32_UInt32x2, &SPIRV_UInt32x3_ctor2_UInt32_UInt32x2 },
+std::pair{ &UInt32x3_ctor0, &SPIRV_UInt32x3_ctor0 },
+std::pair{ &UInt32x3_ctor1, &SPIRV_UInt32x3_ctor1 },
+std::pair{ &UInt32x3_ctor2, &SPIRV_UInt32x3_ctor2 },
 std::pair{ &UInt32x3_operator_index_Int32, &SPIRV_UInt32x3_operator_index_Int32 },
 std::pair{ &UInt32x3_operator_index_UInt32, &SPIRV_UInt32x3_operator_index_UInt32 },
 std::pair{ &UInt32x3_operator_index_Int16, &SPIRV_UInt32x3_operator_index_Int16 },
@@ -24049,12 +24049,12 @@ std::pair{ &UInt32x3_operator_gt_UInt32x3, &SPIRV_UInt32x3_operator_gt_UInt32x3 
 std::pair{ &UInt32x3_operator_gte_UInt32x3, &SPIRV_UInt32x3_operator_gte_UInt32x3 },
 std::pair{ &UInt32x3_operator_eq_UInt32x3, &SPIRV_UInt32x3_operator_eq_UInt32x3 },
 std::pair{ &UInt32x3_operator_neq_UInt32x3, &SPIRV_UInt32x3_operator_neq_UInt32x3 },
-std::pair{ &UInt32x3_operator_scale_UInt32x3_Float32, &SPIRV_UInt32x3_operator_scale_UInt32x3_Float32 },
-std::pair{ &UInt32x3_operator_scale_UInt32x3_Float16, &SPIRV_UInt32x3_operator_scale_UInt32x3_Float16 },
-std::pair{ &UInt32x3_operator_scale_UInt32x3_UInt32, &SPIRV_UInt32x3_operator_scale_UInt32x3_UInt32 },
-std::pair{ &UInt32x3_operator_scale_UInt32x3_UInt16, &SPIRV_UInt32x3_operator_scale_UInt32x3_UInt16 },
-std::pair{ &UInt32x3_operator_scale_UInt32x3_Int32, &SPIRV_UInt32x3_operator_scale_UInt32x3_Int32 },
-std::pair{ &UInt32x3_operator_scale_UInt32x3_Int16, &SPIRV_UInt32x3_operator_scale_UInt32x3_Int16 },
+std::pair{ &UInt32x3_operator_scale_Float32, &SPIRV_UInt32x3_operator_scale_Float32 },
+std::pair{ &UInt32x3_operator_scale_Float16, &SPIRV_UInt32x3_operator_scale_Float16 },
+std::pair{ &UInt32x3_operator_scale_UInt32, &SPIRV_UInt32x3_operator_scale_UInt32 },
+std::pair{ &UInt32x3_operator_scale_UInt16, &SPIRV_UInt32x3_operator_scale_UInt16 },
+std::pair{ &UInt32x3_operator_scale_Int32, &SPIRV_UInt32x3_operator_scale_Int32 },
+std::pair{ &UInt32x3_operator_scale_Int16, &SPIRV_UInt32x3_operator_scale_Int16 },
 std::pair{ &UInt32x3_operator_or_UInt32x3, &SPIRV_UInt32x3_operator_or_UInt32x3 },
 std::pair{ &UInt32x3_operator_and_UInt32x3, &SPIRV_UInt32x3_operator_and_UInt32x3 },
 std::pair{ &UInt32x3_operator_xor_UInt32x3, &SPIRV_UInt32x3_operator_xor_UInt32x3 },
@@ -24077,9 +24077,9 @@ std::pair{ &Int32x3_convert_UInt16x3, &SPIRV_Int32x3_convert_UInt16x3 },
 std::pair{ &Int32x3_splat_UInt16, &SPIRV_Int32x3_splat_UInt16 },
 std::pair{ &Int32x3_convert_Int16x3, &SPIRV_Int32x3_convert_Int16x3 },
 std::pair{ &Int32x3_splat_Int16, &SPIRV_Int32x3_splat_Int16 },
-std::pair{ &Int32x3_ctor0_Int32_Int32_Int32, &SPIRV_Int32x3_ctor0_Int32_Int32_Int32 },
-std::pair{ &Int32x3_ctor1_Int32x2_Int32, &SPIRV_Int32x3_ctor1_Int32x2_Int32 },
-std::pair{ &Int32x3_ctor2_Int32_Int32x2, &SPIRV_Int32x3_ctor2_Int32_Int32x2 },
+std::pair{ &Int32x3_ctor0, &SPIRV_Int32x3_ctor0 },
+std::pair{ &Int32x3_ctor1, &SPIRV_Int32x3_ctor1 },
+std::pair{ &Int32x3_ctor2, &SPIRV_Int32x3_ctor2 },
 std::pair{ &Int32x3_operator_index_Int32, &SPIRV_Int32x3_operator_index_Int32 },
 std::pair{ &Int32x3_operator_index_UInt32, &SPIRV_Int32x3_operator_index_UInt32 },
 std::pair{ &Int32x3_operator_index_Int16, &SPIRV_Int32x3_operator_index_Int16 },
@@ -24099,12 +24099,12 @@ std::pair{ &Int32x3_operator_gt_Int32x3, &SPIRV_Int32x3_operator_gt_Int32x3 },
 std::pair{ &Int32x3_operator_gte_Int32x3, &SPIRV_Int32x3_operator_gte_Int32x3 },
 std::pair{ &Int32x3_operator_eq_Int32x3, &SPIRV_Int32x3_operator_eq_Int32x3 },
 std::pair{ &Int32x3_operator_neq_Int32x3, &SPIRV_Int32x3_operator_neq_Int32x3 },
-std::pair{ &Int32x3_operator_scale_Int32x3_Float32, &SPIRV_Int32x3_operator_scale_Int32x3_Float32 },
-std::pair{ &Int32x3_operator_scale_Int32x3_Float16, &SPIRV_Int32x3_operator_scale_Int32x3_Float16 },
-std::pair{ &Int32x3_operator_scale_Int32x3_UInt32, &SPIRV_Int32x3_operator_scale_Int32x3_UInt32 },
-std::pair{ &Int32x3_operator_scale_Int32x3_UInt16, &SPIRV_Int32x3_operator_scale_Int32x3_UInt16 },
-std::pair{ &Int32x3_operator_scale_Int32x3_Int32, &SPIRV_Int32x3_operator_scale_Int32x3_Int32 },
-std::pair{ &Int32x3_operator_scale_Int32x3_Int16, &SPIRV_Int32x3_operator_scale_Int32x3_Int16 },
+std::pair{ &Int32x3_operator_scale_Float32, &SPIRV_Int32x3_operator_scale_Float32 },
+std::pair{ &Int32x3_operator_scale_Float16, &SPIRV_Int32x3_operator_scale_Float16 },
+std::pair{ &Int32x3_operator_scale_UInt32, &SPIRV_Int32x3_operator_scale_UInt32 },
+std::pair{ &Int32x3_operator_scale_UInt16, &SPIRV_Int32x3_operator_scale_UInt16 },
+std::pair{ &Int32x3_operator_scale_Int32, &SPIRV_Int32x3_operator_scale_Int32 },
+std::pair{ &Int32x3_operator_scale_Int16, &SPIRV_Int32x3_operator_scale_Int16 },
 std::pair{ &Int32x3_operator_or_Int32x3, &SPIRV_Int32x3_operator_or_Int32x3 },
 std::pair{ &Int32x3_operator_and_Int32x3, &SPIRV_Int32x3_operator_and_Int32x3 },
 std::pair{ &Int32x3_operator_xor_Int32x3, &SPIRV_Int32x3_operator_xor_Int32x3 },
@@ -24123,9 +24123,9 @@ std::pair{ &Bool8x3_convert_UInt16x3, &SPIRV_Bool8x3_convert_UInt16x3 },
 std::pair{ &Bool8x3_splat_UInt16, &SPIRV_Bool8x3_splat_UInt16 },
 std::pair{ &Bool8x3_convert_Int16x3, &SPIRV_Bool8x3_convert_Int16x3 },
 std::pair{ &Bool8x3_splat_Int16, &SPIRV_Bool8x3_splat_Int16 },
-std::pair{ &Bool8x3_ctor0_Bool8_Bool8_Bool8, &SPIRV_Bool8x3_ctor0_Bool8_Bool8_Bool8 },
-std::pair{ &Bool8x3_ctor1_Bool8x2_Bool8, &SPIRV_Bool8x3_ctor1_Bool8x2_Bool8 },
-std::pair{ &Bool8x3_ctor2_Bool8_Bool8x2, &SPIRV_Bool8x3_ctor2_Bool8_Bool8x2 },
+std::pair{ &Bool8x3_ctor0, &SPIRV_Bool8x3_ctor0 },
+std::pair{ &Bool8x3_ctor1, &SPIRV_Bool8x3_ctor1 },
+std::pair{ &Bool8x3_ctor2, &SPIRV_Bool8x3_ctor2 },
 std::pair{ &Bool8x3_operator_index_Int32, &SPIRV_Bool8x3_operator_index_Int32 },
 std::pair{ &Bool8x3_operator_index_UInt32, &SPIRV_Bool8x3_operator_index_UInt32 },
 std::pair{ &Bool8x3_operator_index_Int16, &SPIRV_Bool8x3_operator_index_Int16 },
@@ -24146,9 +24146,9 @@ std::pair{ &Float16x3_convert_UInt16x3, &SPIRV_Float16x3_convert_UInt16x3 },
 std::pair{ &Float16x3_splat_UInt16, &SPIRV_Float16x3_splat_UInt16 },
 std::pair{ &Float16x3_convert_Int16x3, &SPIRV_Float16x3_convert_Int16x3 },
 std::pair{ &Float16x3_splat_Int16, &SPIRV_Float16x3_splat_Int16 },
-std::pair{ &Float16x3_ctor0_Float16_Float16_Float16, &SPIRV_Float16x3_ctor0_Float16_Float16_Float16 },
-std::pair{ &Float16x3_ctor1_Float16x2_Float16, &SPIRV_Float16x3_ctor1_Float16x2_Float16 },
-std::pair{ &Float16x3_ctor2_Float16_Float16x2, &SPIRV_Float16x3_ctor2_Float16_Float16x2 },
+std::pair{ &Float16x3_ctor0, &SPIRV_Float16x3_ctor0 },
+std::pair{ &Float16x3_ctor1, &SPIRV_Float16x3_ctor1 },
+std::pair{ &Float16x3_ctor2, &SPIRV_Float16x3_ctor2 },
 std::pair{ &Float16x3_operator_index_Int32, &SPIRV_Float16x3_operator_index_Int32 },
 std::pair{ &Float16x3_operator_index_UInt32, &SPIRV_Float16x3_operator_index_UInt32 },
 std::pair{ &Float16x3_operator_index_Int16, &SPIRV_Float16x3_operator_index_Int16 },
@@ -24168,12 +24168,12 @@ std::pair{ &Float16x3_operator_gt_Float16x3, &SPIRV_Float16x3_operator_gt_Float1
 std::pair{ &Float16x3_operator_gte_Float16x3, &SPIRV_Float16x3_operator_gte_Float16x3 },
 std::pair{ &Float16x3_operator_eq_Float16x3, &SPIRV_Float16x3_operator_eq_Float16x3 },
 std::pair{ &Float16x3_operator_neq_Float16x3, &SPIRV_Float16x3_operator_neq_Float16x3 },
-std::pair{ &Float16x3_operator_scale_Float16x3_Float32, &SPIRV_Float16x3_operator_scale_Float16x3_Float32 },
-std::pair{ &Float16x3_operator_scale_Float16x3_Float16, &SPIRV_Float16x3_operator_scale_Float16x3_Float16 },
-std::pair{ &Float16x3_operator_scale_Float16x3_UInt32, &SPIRV_Float16x3_operator_scale_Float16x3_UInt32 },
-std::pair{ &Float16x3_operator_scale_Float16x3_UInt16, &SPIRV_Float16x3_operator_scale_Float16x3_UInt16 },
-std::pair{ &Float16x3_operator_scale_Float16x3_Int32, &SPIRV_Float16x3_operator_scale_Float16x3_Int32 },
-std::pair{ &Float16x3_operator_scale_Float16x3_Int16, &SPIRV_Float16x3_operator_scale_Float16x3_Int16 },
+std::pair{ &Float16x3_operator_scale_Float32, &SPIRV_Float16x3_operator_scale_Float32 },
+std::pair{ &Float16x3_operator_scale_Float16, &SPIRV_Float16x3_operator_scale_Float16 },
+std::pair{ &Float16x3_operator_scale_UInt32, &SPIRV_Float16x3_operator_scale_UInt32 },
+std::pair{ &Float16x3_operator_scale_UInt16, &SPIRV_Float16x3_operator_scale_UInt16 },
+std::pair{ &Float16x3_operator_scale_Int32, &SPIRV_Float16x3_operator_scale_Int32 },
+std::pair{ &Float16x3_operator_scale_Int16, &SPIRV_Float16x3_operator_scale_Int16 },
 std::pair{ &Float16x3_operator_mul_Float32x3x2, &SPIRV_Float16x3_operator_mul_Float32x3x2 },
 std::pair{ &Float16x3_operator_mul_Float32x3x3, &SPIRV_Float16x3_operator_mul_Float32x3x3 },
 std::pair{ &Float16x3_operator_mul_Float32x3x4, &SPIRV_Float16x3_operator_mul_Float32x3x4 },
@@ -24189,9 +24189,9 @@ std::pair{ &UInt16x3_convert_UInt16x3, &SPIRV_UInt16x3_convert_UInt16x3 },
 std::pair{ &UInt16x3_splat_UInt16, &SPIRV_UInt16x3_splat_UInt16 },
 std::pair{ &UInt16x3_convert_Int16x3, &SPIRV_UInt16x3_convert_Int16x3 },
 std::pair{ &UInt16x3_splat_Int16, &SPIRV_UInt16x3_splat_Int16 },
-std::pair{ &UInt16x3_ctor0_UInt16_UInt16_UInt16, &SPIRV_UInt16x3_ctor0_UInt16_UInt16_UInt16 },
-std::pair{ &UInt16x3_ctor1_UInt16x2_UInt16, &SPIRV_UInt16x3_ctor1_UInt16x2_UInt16 },
-std::pair{ &UInt16x3_ctor2_UInt16_UInt16x2, &SPIRV_UInt16x3_ctor2_UInt16_UInt16x2 },
+std::pair{ &UInt16x3_ctor0, &SPIRV_UInt16x3_ctor0 },
+std::pair{ &UInt16x3_ctor1, &SPIRV_UInt16x3_ctor1 },
+std::pair{ &UInt16x3_ctor2, &SPIRV_UInt16x3_ctor2 },
 std::pair{ &UInt16x3_operator_index_Int32, &SPIRV_UInt16x3_operator_index_Int32 },
 std::pair{ &UInt16x3_operator_index_UInt32, &SPIRV_UInt16x3_operator_index_UInt32 },
 std::pair{ &UInt16x3_operator_index_Int16, &SPIRV_UInt16x3_operator_index_Int16 },
@@ -24211,12 +24211,12 @@ std::pair{ &UInt16x3_operator_gt_UInt16x3, &SPIRV_UInt16x3_operator_gt_UInt16x3 
 std::pair{ &UInt16x3_operator_gte_UInt16x3, &SPIRV_UInt16x3_operator_gte_UInt16x3 },
 std::pair{ &UInt16x3_operator_eq_UInt16x3, &SPIRV_UInt16x3_operator_eq_UInt16x3 },
 std::pair{ &UInt16x3_operator_neq_UInt16x3, &SPIRV_UInt16x3_operator_neq_UInt16x3 },
-std::pair{ &UInt16x3_operator_scale_UInt16x3_Float32, &SPIRV_UInt16x3_operator_scale_UInt16x3_Float32 },
-std::pair{ &UInt16x3_operator_scale_UInt16x3_Float16, &SPIRV_UInt16x3_operator_scale_UInt16x3_Float16 },
-std::pair{ &UInt16x3_operator_scale_UInt16x3_UInt32, &SPIRV_UInt16x3_operator_scale_UInt16x3_UInt32 },
-std::pair{ &UInt16x3_operator_scale_UInt16x3_UInt16, &SPIRV_UInt16x3_operator_scale_UInt16x3_UInt16 },
-std::pair{ &UInt16x3_operator_scale_UInt16x3_Int32, &SPIRV_UInt16x3_operator_scale_UInt16x3_Int32 },
-std::pair{ &UInt16x3_operator_scale_UInt16x3_Int16, &SPIRV_UInt16x3_operator_scale_UInt16x3_Int16 },
+std::pair{ &UInt16x3_operator_scale_Float32, &SPIRV_UInt16x3_operator_scale_Float32 },
+std::pair{ &UInt16x3_operator_scale_Float16, &SPIRV_UInt16x3_operator_scale_Float16 },
+std::pair{ &UInt16x3_operator_scale_UInt32, &SPIRV_UInt16x3_operator_scale_UInt32 },
+std::pair{ &UInt16x3_operator_scale_UInt16, &SPIRV_UInt16x3_operator_scale_UInt16 },
+std::pair{ &UInt16x3_operator_scale_Int32, &SPIRV_UInt16x3_operator_scale_Int32 },
+std::pair{ &UInt16x3_operator_scale_Int16, &SPIRV_UInt16x3_operator_scale_Int16 },
 std::pair{ &UInt16x3_operator_or_UInt16x3, &SPIRV_UInt16x3_operator_or_UInt16x3 },
 std::pair{ &UInt16x3_operator_and_UInt16x3, &SPIRV_UInt16x3_operator_and_UInt16x3 },
 std::pair{ &UInt16x3_operator_xor_UInt16x3, &SPIRV_UInt16x3_operator_xor_UInt16x3 },
@@ -24239,9 +24239,9 @@ std::pair{ &Int16x3_convert_UInt16x3, &SPIRV_Int16x3_convert_UInt16x3 },
 std::pair{ &Int16x3_splat_UInt16, &SPIRV_Int16x3_splat_UInt16 },
 std::pair{ &Int16x3_convert_Int16x3, &SPIRV_Int16x3_convert_Int16x3 },
 std::pair{ &Int16x3_splat_Int16, &SPIRV_Int16x3_splat_Int16 },
-std::pair{ &Int16x3_ctor0_Int16_Int16_Int16, &SPIRV_Int16x3_ctor0_Int16_Int16_Int16 },
-std::pair{ &Int16x3_ctor1_Int16x2_Int16, &SPIRV_Int16x3_ctor1_Int16x2_Int16 },
-std::pair{ &Int16x3_ctor2_Int16_Int16x2, &SPIRV_Int16x3_ctor2_Int16_Int16x2 },
+std::pair{ &Int16x3_ctor0, &SPIRV_Int16x3_ctor0 },
+std::pair{ &Int16x3_ctor1, &SPIRV_Int16x3_ctor1 },
+std::pair{ &Int16x3_ctor2, &SPIRV_Int16x3_ctor2 },
 std::pair{ &Int16x3_operator_index_Int32, &SPIRV_Int16x3_operator_index_Int32 },
 std::pair{ &Int16x3_operator_index_UInt32, &SPIRV_Int16x3_operator_index_UInt32 },
 std::pair{ &Int16x3_operator_index_Int16, &SPIRV_Int16x3_operator_index_Int16 },
@@ -24261,12 +24261,12 @@ std::pair{ &Int16x3_operator_gt_Int16x3, &SPIRV_Int16x3_operator_gt_Int16x3 },
 std::pair{ &Int16x3_operator_gte_Int16x3, &SPIRV_Int16x3_operator_gte_Int16x3 },
 std::pair{ &Int16x3_operator_eq_Int16x3, &SPIRV_Int16x3_operator_eq_Int16x3 },
 std::pair{ &Int16x3_operator_neq_Int16x3, &SPIRV_Int16x3_operator_neq_Int16x3 },
-std::pair{ &Int16x3_operator_scale_Int16x3_Float32, &SPIRV_Int16x3_operator_scale_Int16x3_Float32 },
-std::pair{ &Int16x3_operator_scale_Int16x3_Float16, &SPIRV_Int16x3_operator_scale_Int16x3_Float16 },
-std::pair{ &Int16x3_operator_scale_Int16x3_UInt32, &SPIRV_Int16x3_operator_scale_Int16x3_UInt32 },
-std::pair{ &Int16x3_operator_scale_Int16x3_UInt16, &SPIRV_Int16x3_operator_scale_Int16x3_UInt16 },
-std::pair{ &Int16x3_operator_scale_Int16x3_Int32, &SPIRV_Int16x3_operator_scale_Int16x3_Int32 },
-std::pair{ &Int16x3_operator_scale_Int16x3_Int16, &SPIRV_Int16x3_operator_scale_Int16x3_Int16 },
+std::pair{ &Int16x3_operator_scale_Float32, &SPIRV_Int16x3_operator_scale_Float32 },
+std::pair{ &Int16x3_operator_scale_Float16, &SPIRV_Int16x3_operator_scale_Float16 },
+std::pair{ &Int16x3_operator_scale_UInt32, &SPIRV_Int16x3_operator_scale_UInt32 },
+std::pair{ &Int16x3_operator_scale_UInt16, &SPIRV_Int16x3_operator_scale_UInt16 },
+std::pair{ &Int16x3_operator_scale_Int32, &SPIRV_Int16x3_operator_scale_Int32 },
+std::pair{ &Int16x3_operator_scale_Int16, &SPIRV_Int16x3_operator_scale_Int16 },
 std::pair{ &Int16x3_operator_or_Int16x3, &SPIRV_Int16x3_operator_or_Int16x3 },
 std::pair{ &Int16x3_operator_and_Int16x3, &SPIRV_Int16x3_operator_and_Int16x3 },
 std::pair{ &Int16x3_operator_xor_Int16x3, &SPIRV_Int16x3_operator_xor_Int16x3 },
@@ -24289,12 +24289,12 @@ std::pair{ &Float32x4_convert_UInt16x4, &SPIRV_Float32x4_convert_UInt16x4 },
 std::pair{ &Float32x4_splat_UInt16, &SPIRV_Float32x4_splat_UInt16 },
 std::pair{ &Float32x4_convert_Int16x4, &SPIRV_Float32x4_convert_Int16x4 },
 std::pair{ &Float32x4_splat_Int16, &SPIRV_Float32x4_splat_Int16 },
-std::pair{ &Float32x4_ctor0_Float32_Float32_Float32_Float32, &SPIRV_Float32x4_ctor0_Float32_Float32_Float32_Float32 },
-std::pair{ &Float32x4_ctor1_Float32x2_Float32_Float32, &SPIRV_Float32x4_ctor1_Float32x2_Float32_Float32 },
-std::pair{ &Float32x4_ctor2_Float32_Float32x2_Float32, &SPIRV_Float32x4_ctor2_Float32_Float32x2_Float32 },
-std::pair{ &Float32x4_ctor3_Float32_Float32_Float32x2, &SPIRV_Float32x4_ctor3_Float32_Float32_Float32x2 },
-std::pair{ &Float32x4_ctor4_Float32x3_Float32, &SPIRV_Float32x4_ctor4_Float32x3_Float32 },
-std::pair{ &Float32x4_ctor5_Float32_Float32x3, &SPIRV_Float32x4_ctor5_Float32_Float32x3 },
+std::pair{ &Float32x4_ctor0, &SPIRV_Float32x4_ctor0 },
+std::pair{ &Float32x4_ctor1, &SPIRV_Float32x4_ctor1 },
+std::pair{ &Float32x4_ctor2, &SPIRV_Float32x4_ctor2 },
+std::pair{ &Float32x4_ctor3, &SPIRV_Float32x4_ctor3 },
+std::pair{ &Float32x4_ctor4, &SPIRV_Float32x4_ctor4 },
+std::pair{ &Float32x4_ctor5, &SPIRV_Float32x4_ctor5 },
 std::pair{ &Float32x4_operator_index_Int32, &SPIRV_Float32x4_operator_index_Int32 },
 std::pair{ &Float32x4_operator_index_UInt32, &SPIRV_Float32x4_operator_index_UInt32 },
 std::pair{ &Float32x4_operator_index_Int16, &SPIRV_Float32x4_operator_index_Int16 },
@@ -24314,12 +24314,12 @@ std::pair{ &Float32x4_operator_gt_Float32x4, &SPIRV_Float32x4_operator_gt_Float3
 std::pair{ &Float32x4_operator_gte_Float32x4, &SPIRV_Float32x4_operator_gte_Float32x4 },
 std::pair{ &Float32x4_operator_eq_Float32x4, &SPIRV_Float32x4_operator_eq_Float32x4 },
 std::pair{ &Float32x4_operator_neq_Float32x4, &SPIRV_Float32x4_operator_neq_Float32x4 },
-std::pair{ &Float32x4_operator_scale_Float32x4_Float32, &SPIRV_Float32x4_operator_scale_Float32x4_Float32 },
-std::pair{ &Float32x4_operator_scale_Float32x4_Float16, &SPIRV_Float32x4_operator_scale_Float32x4_Float16 },
-std::pair{ &Float32x4_operator_scale_Float32x4_UInt32, &SPIRV_Float32x4_operator_scale_Float32x4_UInt32 },
-std::pair{ &Float32x4_operator_scale_Float32x4_UInt16, &SPIRV_Float32x4_operator_scale_Float32x4_UInt16 },
-std::pair{ &Float32x4_operator_scale_Float32x4_Int32, &SPIRV_Float32x4_operator_scale_Float32x4_Int32 },
-std::pair{ &Float32x4_operator_scale_Float32x4_Int16, &SPIRV_Float32x4_operator_scale_Float32x4_Int16 },
+std::pair{ &Float32x4_operator_scale_Float32, &SPIRV_Float32x4_operator_scale_Float32 },
+std::pair{ &Float32x4_operator_scale_Float16, &SPIRV_Float32x4_operator_scale_Float16 },
+std::pair{ &Float32x4_operator_scale_UInt32, &SPIRV_Float32x4_operator_scale_UInt32 },
+std::pair{ &Float32x4_operator_scale_UInt16, &SPIRV_Float32x4_operator_scale_UInt16 },
+std::pair{ &Float32x4_operator_scale_Int32, &SPIRV_Float32x4_operator_scale_Int32 },
+std::pair{ &Float32x4_operator_scale_Int16, &SPIRV_Float32x4_operator_scale_Int16 },
 std::pair{ &Float32x4_operator_mul_Float32x4x2, &SPIRV_Float32x4_operator_mul_Float32x4x2 },
 std::pair{ &Float32x4_operator_mul_Float32x4x3, &SPIRV_Float32x4_operator_mul_Float32x4x3 },
 std::pair{ &Float32x4_operator_mul_Float32x4x4, &SPIRV_Float32x4_operator_mul_Float32x4x4 },
@@ -24335,12 +24335,12 @@ std::pair{ &UInt32x4_convert_UInt16x4, &SPIRV_UInt32x4_convert_UInt16x4 },
 std::pair{ &UInt32x4_splat_UInt16, &SPIRV_UInt32x4_splat_UInt16 },
 std::pair{ &UInt32x4_convert_Int16x4, &SPIRV_UInt32x4_convert_Int16x4 },
 std::pair{ &UInt32x4_splat_Int16, &SPIRV_UInt32x4_splat_Int16 },
-std::pair{ &UInt32x4_ctor0_UInt32_UInt32_UInt32_UInt32, &SPIRV_UInt32x4_ctor0_UInt32_UInt32_UInt32_UInt32 },
-std::pair{ &UInt32x4_ctor1_UInt32x2_UInt32_UInt32, &SPIRV_UInt32x4_ctor1_UInt32x2_UInt32_UInt32 },
-std::pair{ &UInt32x4_ctor2_UInt32_UInt32x2_UInt32, &SPIRV_UInt32x4_ctor2_UInt32_UInt32x2_UInt32 },
-std::pair{ &UInt32x4_ctor3_UInt32_UInt32_UInt32x2, &SPIRV_UInt32x4_ctor3_UInt32_UInt32_UInt32x2 },
-std::pair{ &UInt32x4_ctor4_UInt32x3_UInt32, &SPIRV_UInt32x4_ctor4_UInt32x3_UInt32 },
-std::pair{ &UInt32x4_ctor5_UInt32_UInt32x3, &SPIRV_UInt32x4_ctor5_UInt32_UInt32x3 },
+std::pair{ &UInt32x4_ctor0, &SPIRV_UInt32x4_ctor0 },
+std::pair{ &UInt32x4_ctor1, &SPIRV_UInt32x4_ctor1 },
+std::pair{ &UInt32x4_ctor2, &SPIRV_UInt32x4_ctor2 },
+std::pair{ &UInt32x4_ctor3, &SPIRV_UInt32x4_ctor3 },
+std::pair{ &UInt32x4_ctor4, &SPIRV_UInt32x4_ctor4 },
+std::pair{ &UInt32x4_ctor5, &SPIRV_UInt32x4_ctor5 },
 std::pair{ &UInt32x4_operator_index_Int32, &SPIRV_UInt32x4_operator_index_Int32 },
 std::pair{ &UInt32x4_operator_index_UInt32, &SPIRV_UInt32x4_operator_index_UInt32 },
 std::pair{ &UInt32x4_operator_index_Int16, &SPIRV_UInt32x4_operator_index_Int16 },
@@ -24360,12 +24360,12 @@ std::pair{ &UInt32x4_operator_gt_UInt32x4, &SPIRV_UInt32x4_operator_gt_UInt32x4 
 std::pair{ &UInt32x4_operator_gte_UInt32x4, &SPIRV_UInt32x4_operator_gte_UInt32x4 },
 std::pair{ &UInt32x4_operator_eq_UInt32x4, &SPIRV_UInt32x4_operator_eq_UInt32x4 },
 std::pair{ &UInt32x4_operator_neq_UInt32x4, &SPIRV_UInt32x4_operator_neq_UInt32x4 },
-std::pair{ &UInt32x4_operator_scale_UInt32x4_Float32, &SPIRV_UInt32x4_operator_scale_UInt32x4_Float32 },
-std::pair{ &UInt32x4_operator_scale_UInt32x4_Float16, &SPIRV_UInt32x4_operator_scale_UInt32x4_Float16 },
-std::pair{ &UInt32x4_operator_scale_UInt32x4_UInt32, &SPIRV_UInt32x4_operator_scale_UInt32x4_UInt32 },
-std::pair{ &UInt32x4_operator_scale_UInt32x4_UInt16, &SPIRV_UInt32x4_operator_scale_UInt32x4_UInt16 },
-std::pair{ &UInt32x4_operator_scale_UInt32x4_Int32, &SPIRV_UInt32x4_operator_scale_UInt32x4_Int32 },
-std::pair{ &UInt32x4_operator_scale_UInt32x4_Int16, &SPIRV_UInt32x4_operator_scale_UInt32x4_Int16 },
+std::pair{ &UInt32x4_operator_scale_Float32, &SPIRV_UInt32x4_operator_scale_Float32 },
+std::pair{ &UInt32x4_operator_scale_Float16, &SPIRV_UInt32x4_operator_scale_Float16 },
+std::pair{ &UInt32x4_operator_scale_UInt32, &SPIRV_UInt32x4_operator_scale_UInt32 },
+std::pair{ &UInt32x4_operator_scale_UInt16, &SPIRV_UInt32x4_operator_scale_UInt16 },
+std::pair{ &UInt32x4_operator_scale_Int32, &SPIRV_UInt32x4_operator_scale_Int32 },
+std::pair{ &UInt32x4_operator_scale_Int16, &SPIRV_UInt32x4_operator_scale_Int16 },
 std::pair{ &UInt32x4_operator_or_UInt32x4, &SPIRV_UInt32x4_operator_or_UInt32x4 },
 std::pair{ &UInt32x4_operator_and_UInt32x4, &SPIRV_UInt32x4_operator_and_UInt32x4 },
 std::pair{ &UInt32x4_operator_xor_UInt32x4, &SPIRV_UInt32x4_operator_xor_UInt32x4 },
@@ -24388,12 +24388,12 @@ std::pair{ &Int32x4_convert_UInt16x4, &SPIRV_Int32x4_convert_UInt16x4 },
 std::pair{ &Int32x4_splat_UInt16, &SPIRV_Int32x4_splat_UInt16 },
 std::pair{ &Int32x4_convert_Int16x4, &SPIRV_Int32x4_convert_Int16x4 },
 std::pair{ &Int32x4_splat_Int16, &SPIRV_Int32x4_splat_Int16 },
-std::pair{ &Int32x4_ctor0_Int32_Int32_Int32_Int32, &SPIRV_Int32x4_ctor0_Int32_Int32_Int32_Int32 },
-std::pair{ &Int32x4_ctor1_Int32x2_Int32_Int32, &SPIRV_Int32x4_ctor1_Int32x2_Int32_Int32 },
-std::pair{ &Int32x4_ctor2_Int32_Int32x2_Int32, &SPIRV_Int32x4_ctor2_Int32_Int32x2_Int32 },
-std::pair{ &Int32x4_ctor3_Int32_Int32_Int32x2, &SPIRV_Int32x4_ctor3_Int32_Int32_Int32x2 },
-std::pair{ &Int32x4_ctor4_Int32x3_Int32, &SPIRV_Int32x4_ctor4_Int32x3_Int32 },
-std::pair{ &Int32x4_ctor5_Int32_Int32x3, &SPIRV_Int32x4_ctor5_Int32_Int32x3 },
+std::pair{ &Int32x4_ctor0, &SPIRV_Int32x4_ctor0 },
+std::pair{ &Int32x4_ctor1, &SPIRV_Int32x4_ctor1 },
+std::pair{ &Int32x4_ctor2, &SPIRV_Int32x4_ctor2 },
+std::pair{ &Int32x4_ctor3, &SPIRV_Int32x4_ctor3 },
+std::pair{ &Int32x4_ctor4, &SPIRV_Int32x4_ctor4 },
+std::pair{ &Int32x4_ctor5, &SPIRV_Int32x4_ctor5 },
 std::pair{ &Int32x4_operator_index_Int32, &SPIRV_Int32x4_operator_index_Int32 },
 std::pair{ &Int32x4_operator_index_UInt32, &SPIRV_Int32x4_operator_index_UInt32 },
 std::pair{ &Int32x4_operator_index_Int16, &SPIRV_Int32x4_operator_index_Int16 },
@@ -24413,12 +24413,12 @@ std::pair{ &Int32x4_operator_gt_Int32x4, &SPIRV_Int32x4_operator_gt_Int32x4 },
 std::pair{ &Int32x4_operator_gte_Int32x4, &SPIRV_Int32x4_operator_gte_Int32x4 },
 std::pair{ &Int32x4_operator_eq_Int32x4, &SPIRV_Int32x4_operator_eq_Int32x4 },
 std::pair{ &Int32x4_operator_neq_Int32x4, &SPIRV_Int32x4_operator_neq_Int32x4 },
-std::pair{ &Int32x4_operator_scale_Int32x4_Float32, &SPIRV_Int32x4_operator_scale_Int32x4_Float32 },
-std::pair{ &Int32x4_operator_scale_Int32x4_Float16, &SPIRV_Int32x4_operator_scale_Int32x4_Float16 },
-std::pair{ &Int32x4_operator_scale_Int32x4_UInt32, &SPIRV_Int32x4_operator_scale_Int32x4_UInt32 },
-std::pair{ &Int32x4_operator_scale_Int32x4_UInt16, &SPIRV_Int32x4_operator_scale_Int32x4_UInt16 },
-std::pair{ &Int32x4_operator_scale_Int32x4_Int32, &SPIRV_Int32x4_operator_scale_Int32x4_Int32 },
-std::pair{ &Int32x4_operator_scale_Int32x4_Int16, &SPIRV_Int32x4_operator_scale_Int32x4_Int16 },
+std::pair{ &Int32x4_operator_scale_Float32, &SPIRV_Int32x4_operator_scale_Float32 },
+std::pair{ &Int32x4_operator_scale_Float16, &SPIRV_Int32x4_operator_scale_Float16 },
+std::pair{ &Int32x4_operator_scale_UInt32, &SPIRV_Int32x4_operator_scale_UInt32 },
+std::pair{ &Int32x4_operator_scale_UInt16, &SPIRV_Int32x4_operator_scale_UInt16 },
+std::pair{ &Int32x4_operator_scale_Int32, &SPIRV_Int32x4_operator_scale_Int32 },
+std::pair{ &Int32x4_operator_scale_Int16, &SPIRV_Int32x4_operator_scale_Int16 },
 std::pair{ &Int32x4_operator_or_Int32x4, &SPIRV_Int32x4_operator_or_Int32x4 },
 std::pair{ &Int32x4_operator_and_Int32x4, &SPIRV_Int32x4_operator_and_Int32x4 },
 std::pair{ &Int32x4_operator_xor_Int32x4, &SPIRV_Int32x4_operator_xor_Int32x4 },
@@ -24437,12 +24437,12 @@ std::pair{ &Bool8x4_convert_UInt16x4, &SPIRV_Bool8x4_convert_UInt16x4 },
 std::pair{ &Bool8x4_splat_UInt16, &SPIRV_Bool8x4_splat_UInt16 },
 std::pair{ &Bool8x4_convert_Int16x4, &SPIRV_Bool8x4_convert_Int16x4 },
 std::pair{ &Bool8x4_splat_Int16, &SPIRV_Bool8x4_splat_Int16 },
-std::pair{ &Bool8x4_ctor0_Bool8_Bool8_Bool8_Bool8, &SPIRV_Bool8x4_ctor0_Bool8_Bool8_Bool8_Bool8 },
-std::pair{ &Bool8x4_ctor1_Bool8x2_Bool8_Bool8, &SPIRV_Bool8x4_ctor1_Bool8x2_Bool8_Bool8 },
-std::pair{ &Bool8x4_ctor2_Bool8_Bool8x2_Bool8, &SPIRV_Bool8x4_ctor2_Bool8_Bool8x2_Bool8 },
-std::pair{ &Bool8x4_ctor3_Bool8_Bool8_Bool8x2, &SPIRV_Bool8x4_ctor3_Bool8_Bool8_Bool8x2 },
-std::pair{ &Bool8x4_ctor4_Bool8x3_Bool8, &SPIRV_Bool8x4_ctor4_Bool8x3_Bool8 },
-std::pair{ &Bool8x4_ctor5_Bool8_Bool8x3, &SPIRV_Bool8x4_ctor5_Bool8_Bool8x3 },
+std::pair{ &Bool8x4_ctor0, &SPIRV_Bool8x4_ctor0 },
+std::pair{ &Bool8x4_ctor1, &SPIRV_Bool8x4_ctor1 },
+std::pair{ &Bool8x4_ctor2, &SPIRV_Bool8x4_ctor2 },
+std::pair{ &Bool8x4_ctor3, &SPIRV_Bool8x4_ctor3 },
+std::pair{ &Bool8x4_ctor4, &SPIRV_Bool8x4_ctor4 },
+std::pair{ &Bool8x4_ctor5, &SPIRV_Bool8x4_ctor5 },
 std::pair{ &Bool8x4_operator_index_Int32, &SPIRV_Bool8x4_operator_index_Int32 },
 std::pair{ &Bool8x4_operator_index_UInt32, &SPIRV_Bool8x4_operator_index_UInt32 },
 std::pair{ &Bool8x4_operator_index_Int16, &SPIRV_Bool8x4_operator_index_Int16 },
@@ -24463,12 +24463,12 @@ std::pair{ &Float16x4_convert_UInt16x4, &SPIRV_Float16x4_convert_UInt16x4 },
 std::pair{ &Float16x4_splat_UInt16, &SPIRV_Float16x4_splat_UInt16 },
 std::pair{ &Float16x4_convert_Int16x4, &SPIRV_Float16x4_convert_Int16x4 },
 std::pair{ &Float16x4_splat_Int16, &SPIRV_Float16x4_splat_Int16 },
-std::pair{ &Float16x4_ctor0_Float16_Float16_Float16_Float16, &SPIRV_Float16x4_ctor0_Float16_Float16_Float16_Float16 },
-std::pair{ &Float16x4_ctor1_Float16x2_Float16_Float16, &SPIRV_Float16x4_ctor1_Float16x2_Float16_Float16 },
-std::pair{ &Float16x4_ctor2_Float16_Float16x2_Float16, &SPIRV_Float16x4_ctor2_Float16_Float16x2_Float16 },
-std::pair{ &Float16x4_ctor3_Float16_Float16_Float16x2, &SPIRV_Float16x4_ctor3_Float16_Float16_Float16x2 },
-std::pair{ &Float16x4_ctor4_Float16x3_Float16, &SPIRV_Float16x4_ctor4_Float16x3_Float16 },
-std::pair{ &Float16x4_ctor5_Float16_Float16x3, &SPIRV_Float16x4_ctor5_Float16_Float16x3 },
+std::pair{ &Float16x4_ctor0, &SPIRV_Float16x4_ctor0 },
+std::pair{ &Float16x4_ctor1, &SPIRV_Float16x4_ctor1 },
+std::pair{ &Float16x4_ctor2, &SPIRV_Float16x4_ctor2 },
+std::pair{ &Float16x4_ctor3, &SPIRV_Float16x4_ctor3 },
+std::pair{ &Float16x4_ctor4, &SPIRV_Float16x4_ctor4 },
+std::pair{ &Float16x4_ctor5, &SPIRV_Float16x4_ctor5 },
 std::pair{ &Float16x4_operator_index_Int32, &SPIRV_Float16x4_operator_index_Int32 },
 std::pair{ &Float16x4_operator_index_UInt32, &SPIRV_Float16x4_operator_index_UInt32 },
 std::pair{ &Float16x4_operator_index_Int16, &SPIRV_Float16x4_operator_index_Int16 },
@@ -24488,12 +24488,12 @@ std::pair{ &Float16x4_operator_gt_Float16x4, &SPIRV_Float16x4_operator_gt_Float1
 std::pair{ &Float16x4_operator_gte_Float16x4, &SPIRV_Float16x4_operator_gte_Float16x4 },
 std::pair{ &Float16x4_operator_eq_Float16x4, &SPIRV_Float16x4_operator_eq_Float16x4 },
 std::pair{ &Float16x4_operator_neq_Float16x4, &SPIRV_Float16x4_operator_neq_Float16x4 },
-std::pair{ &Float16x4_operator_scale_Float16x4_Float32, &SPIRV_Float16x4_operator_scale_Float16x4_Float32 },
-std::pair{ &Float16x4_operator_scale_Float16x4_Float16, &SPIRV_Float16x4_operator_scale_Float16x4_Float16 },
-std::pair{ &Float16x4_operator_scale_Float16x4_UInt32, &SPIRV_Float16x4_operator_scale_Float16x4_UInt32 },
-std::pair{ &Float16x4_operator_scale_Float16x4_UInt16, &SPIRV_Float16x4_operator_scale_Float16x4_UInt16 },
-std::pair{ &Float16x4_operator_scale_Float16x4_Int32, &SPIRV_Float16x4_operator_scale_Float16x4_Int32 },
-std::pair{ &Float16x4_operator_scale_Float16x4_Int16, &SPIRV_Float16x4_operator_scale_Float16x4_Int16 },
+std::pair{ &Float16x4_operator_scale_Float32, &SPIRV_Float16x4_operator_scale_Float32 },
+std::pair{ &Float16x4_operator_scale_Float16, &SPIRV_Float16x4_operator_scale_Float16 },
+std::pair{ &Float16x4_operator_scale_UInt32, &SPIRV_Float16x4_operator_scale_UInt32 },
+std::pair{ &Float16x4_operator_scale_UInt16, &SPIRV_Float16x4_operator_scale_UInt16 },
+std::pair{ &Float16x4_operator_scale_Int32, &SPIRV_Float16x4_operator_scale_Int32 },
+std::pair{ &Float16x4_operator_scale_Int16, &SPIRV_Float16x4_operator_scale_Int16 },
 std::pair{ &Float16x4_operator_mul_Float32x4x2, &SPIRV_Float16x4_operator_mul_Float32x4x2 },
 std::pair{ &Float16x4_operator_mul_Float32x4x3, &SPIRV_Float16x4_operator_mul_Float32x4x3 },
 std::pair{ &Float16x4_operator_mul_Float32x4x4, &SPIRV_Float16x4_operator_mul_Float32x4x4 },
@@ -24509,12 +24509,12 @@ std::pair{ &UInt16x4_convert_UInt16x4, &SPIRV_UInt16x4_convert_UInt16x4 },
 std::pair{ &UInt16x4_splat_UInt16, &SPIRV_UInt16x4_splat_UInt16 },
 std::pair{ &UInt16x4_convert_Int16x4, &SPIRV_UInt16x4_convert_Int16x4 },
 std::pair{ &UInt16x4_splat_Int16, &SPIRV_UInt16x4_splat_Int16 },
-std::pair{ &UInt16x4_ctor0_UInt16_UInt16_UInt16_UInt16, &SPIRV_UInt16x4_ctor0_UInt16_UInt16_UInt16_UInt16 },
-std::pair{ &UInt16x4_ctor1_UInt16x2_UInt16_UInt16, &SPIRV_UInt16x4_ctor1_UInt16x2_UInt16_UInt16 },
-std::pair{ &UInt16x4_ctor2_UInt16_UInt16x2_UInt16, &SPIRV_UInt16x4_ctor2_UInt16_UInt16x2_UInt16 },
-std::pair{ &UInt16x4_ctor3_UInt16_UInt16_UInt16x2, &SPIRV_UInt16x4_ctor3_UInt16_UInt16_UInt16x2 },
-std::pair{ &UInt16x4_ctor4_UInt16x3_UInt16, &SPIRV_UInt16x4_ctor4_UInt16x3_UInt16 },
-std::pair{ &UInt16x4_ctor5_UInt16_UInt16x3, &SPIRV_UInt16x4_ctor5_UInt16_UInt16x3 },
+std::pair{ &UInt16x4_ctor0, &SPIRV_UInt16x4_ctor0 },
+std::pair{ &UInt16x4_ctor1, &SPIRV_UInt16x4_ctor1 },
+std::pair{ &UInt16x4_ctor2, &SPIRV_UInt16x4_ctor2 },
+std::pair{ &UInt16x4_ctor3, &SPIRV_UInt16x4_ctor3 },
+std::pair{ &UInt16x4_ctor4, &SPIRV_UInt16x4_ctor4 },
+std::pair{ &UInt16x4_ctor5, &SPIRV_UInt16x4_ctor5 },
 std::pair{ &UInt16x4_operator_index_Int32, &SPIRV_UInt16x4_operator_index_Int32 },
 std::pair{ &UInt16x4_operator_index_UInt32, &SPIRV_UInt16x4_operator_index_UInt32 },
 std::pair{ &UInt16x4_operator_index_Int16, &SPIRV_UInt16x4_operator_index_Int16 },
@@ -24534,12 +24534,12 @@ std::pair{ &UInt16x4_operator_gt_UInt16x4, &SPIRV_UInt16x4_operator_gt_UInt16x4 
 std::pair{ &UInt16x4_operator_gte_UInt16x4, &SPIRV_UInt16x4_operator_gte_UInt16x4 },
 std::pair{ &UInt16x4_operator_eq_UInt16x4, &SPIRV_UInt16x4_operator_eq_UInt16x4 },
 std::pair{ &UInt16x4_operator_neq_UInt16x4, &SPIRV_UInt16x4_operator_neq_UInt16x4 },
-std::pair{ &UInt16x4_operator_scale_UInt16x4_Float32, &SPIRV_UInt16x4_operator_scale_UInt16x4_Float32 },
-std::pair{ &UInt16x4_operator_scale_UInt16x4_Float16, &SPIRV_UInt16x4_operator_scale_UInt16x4_Float16 },
-std::pair{ &UInt16x4_operator_scale_UInt16x4_UInt32, &SPIRV_UInt16x4_operator_scale_UInt16x4_UInt32 },
-std::pair{ &UInt16x4_operator_scale_UInt16x4_UInt16, &SPIRV_UInt16x4_operator_scale_UInt16x4_UInt16 },
-std::pair{ &UInt16x4_operator_scale_UInt16x4_Int32, &SPIRV_UInt16x4_operator_scale_UInt16x4_Int32 },
-std::pair{ &UInt16x4_operator_scale_UInt16x4_Int16, &SPIRV_UInt16x4_operator_scale_UInt16x4_Int16 },
+std::pair{ &UInt16x4_operator_scale_Float32, &SPIRV_UInt16x4_operator_scale_Float32 },
+std::pair{ &UInt16x4_operator_scale_Float16, &SPIRV_UInt16x4_operator_scale_Float16 },
+std::pair{ &UInt16x4_operator_scale_UInt32, &SPIRV_UInt16x4_operator_scale_UInt32 },
+std::pair{ &UInt16x4_operator_scale_UInt16, &SPIRV_UInt16x4_operator_scale_UInt16 },
+std::pair{ &UInt16x4_operator_scale_Int32, &SPIRV_UInt16x4_operator_scale_Int32 },
+std::pair{ &UInt16x4_operator_scale_Int16, &SPIRV_UInt16x4_operator_scale_Int16 },
 std::pair{ &UInt16x4_operator_or_UInt16x4, &SPIRV_UInt16x4_operator_or_UInt16x4 },
 std::pair{ &UInt16x4_operator_and_UInt16x4, &SPIRV_UInt16x4_operator_and_UInt16x4 },
 std::pair{ &UInt16x4_operator_xor_UInt16x4, &SPIRV_UInt16x4_operator_xor_UInt16x4 },
@@ -24562,12 +24562,12 @@ std::pair{ &Int16x4_convert_UInt16x4, &SPIRV_Int16x4_convert_UInt16x4 },
 std::pair{ &Int16x4_splat_UInt16, &SPIRV_Int16x4_splat_UInt16 },
 std::pair{ &Int16x4_convert_Int16x4, &SPIRV_Int16x4_convert_Int16x4 },
 std::pair{ &Int16x4_splat_Int16, &SPIRV_Int16x4_splat_Int16 },
-std::pair{ &Int16x4_ctor0_Int16_Int16_Int16_Int16, &SPIRV_Int16x4_ctor0_Int16_Int16_Int16_Int16 },
-std::pair{ &Int16x4_ctor1_Int16x2_Int16_Int16, &SPIRV_Int16x4_ctor1_Int16x2_Int16_Int16 },
-std::pair{ &Int16x4_ctor2_Int16_Int16x2_Int16, &SPIRV_Int16x4_ctor2_Int16_Int16x2_Int16 },
-std::pair{ &Int16x4_ctor3_Int16_Int16_Int16x2, &SPIRV_Int16x4_ctor3_Int16_Int16_Int16x2 },
-std::pair{ &Int16x4_ctor4_Int16x3_Int16, &SPIRV_Int16x4_ctor4_Int16x3_Int16 },
-std::pair{ &Int16x4_ctor5_Int16_Int16x3, &SPIRV_Int16x4_ctor5_Int16_Int16x3 },
+std::pair{ &Int16x4_ctor0, &SPIRV_Int16x4_ctor0 },
+std::pair{ &Int16x4_ctor1, &SPIRV_Int16x4_ctor1 },
+std::pair{ &Int16x4_ctor2, &SPIRV_Int16x4_ctor2 },
+std::pair{ &Int16x4_ctor3, &SPIRV_Int16x4_ctor3 },
+std::pair{ &Int16x4_ctor4, &SPIRV_Int16x4_ctor4 },
+std::pair{ &Int16x4_ctor5, &SPIRV_Int16x4_ctor5 },
 std::pair{ &Int16x4_operator_index_Int32, &SPIRV_Int16x4_operator_index_Int32 },
 std::pair{ &Int16x4_operator_index_UInt32, &SPIRV_Int16x4_operator_index_UInt32 },
 std::pair{ &Int16x4_operator_index_Int16, &SPIRV_Int16x4_operator_index_Int16 },
@@ -24587,12 +24587,12 @@ std::pair{ &Int16x4_operator_gt_Int16x4, &SPIRV_Int16x4_operator_gt_Int16x4 },
 std::pair{ &Int16x4_operator_gte_Int16x4, &SPIRV_Int16x4_operator_gte_Int16x4 },
 std::pair{ &Int16x4_operator_eq_Int16x4, &SPIRV_Int16x4_operator_eq_Int16x4 },
 std::pair{ &Int16x4_operator_neq_Int16x4, &SPIRV_Int16x4_operator_neq_Int16x4 },
-std::pair{ &Int16x4_operator_scale_Int16x4_Float32, &SPIRV_Int16x4_operator_scale_Int16x4_Float32 },
-std::pair{ &Int16x4_operator_scale_Int16x4_Float16, &SPIRV_Int16x4_operator_scale_Int16x4_Float16 },
-std::pair{ &Int16x4_operator_scale_Int16x4_UInt32, &SPIRV_Int16x4_operator_scale_Int16x4_UInt32 },
-std::pair{ &Int16x4_operator_scale_Int16x4_UInt16, &SPIRV_Int16x4_operator_scale_Int16x4_UInt16 },
-std::pair{ &Int16x4_operator_scale_Int16x4_Int32, &SPIRV_Int16x4_operator_scale_Int16x4_Int32 },
-std::pair{ &Int16x4_operator_scale_Int16x4_Int16, &SPIRV_Int16x4_operator_scale_Int16x4_Int16 },
+std::pair{ &Int16x4_operator_scale_Float32, &SPIRV_Int16x4_operator_scale_Float32 },
+std::pair{ &Int16x4_operator_scale_Float16, &SPIRV_Int16x4_operator_scale_Float16 },
+std::pair{ &Int16x4_operator_scale_UInt32, &SPIRV_Int16x4_operator_scale_UInt32 },
+std::pair{ &Int16x4_operator_scale_UInt16, &SPIRV_Int16x4_operator_scale_UInt16 },
+std::pair{ &Int16x4_operator_scale_Int32, &SPIRV_Int16x4_operator_scale_Int32 },
+std::pair{ &Int16x4_operator_scale_Int16, &SPIRV_Int16x4_operator_scale_Int16 },
 std::pair{ &Int16x4_operator_or_Int16x4, &SPIRV_Int16x4_operator_or_Int16x4 },
 std::pair{ &Int16x4_operator_and_Int16x4, &SPIRV_Int16x4_operator_and_Int16x4 },
 std::pair{ &Int16x4_operator_xor_Int16x4, &SPIRV_Int16x4_operator_xor_Int16x4 },
