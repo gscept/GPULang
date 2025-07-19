@@ -6115,8 +6115,6 @@ extern Function Float16x4x4_operator_mulasg_Float16x4x4;
 extern Variable Float16x4x4_operator_scale_Float16_arg0;
 extern Function Float16x4x4_operator_scale_Float16;
 
-
-
 struct Texture1D : public Type
 {
     Texture1D();
@@ -6302,6 +6300,7 @@ struct LogicOp : public Enumeration
     LogicOp();
 };
 extern LogicOp LogicOpType;
+
 extern EnumExpression LogicOpAnd;
 extern EnumExpression LogicOpAndInverted;
 extern EnumExpression LogicOpAndReverse;
@@ -6395,12 +6394,6 @@ extern BorderColor BorderColorType;
 extern EnumExpression BorderColorTransparent;
 extern EnumExpression BorderColorBlack;
 extern EnumExpression BorderColorWhite;
-
-struct StencilState : public Type
-{
-    StencilState();
-};
-extern StencilState StencilStateType;
 extern Variable StencilStateFail;
 extern Variable StencilStatePass;
 extern Variable StencilStateDepthFail;
@@ -6408,12 +6401,12 @@ extern Variable StencilStateCompareFunction;
 extern Variable StencilStateCompareMask;
 extern Variable StencilStateWriteMask;
 extern Variable StencilStateReference;
-
-struct RenderState : public Type
+struct StencilState : public Type
 {
-    RenderState();
+    StencilState();
 };
-extern RenderState RenderStateType;
+extern StencilState StencilStateType;
+
 extern Variable RenderStateDepthClampEnabled;
 extern Variable RenderStateDepthTestEnabled;
 extern Variable RenderStateDepthWriteEnabled;
@@ -6450,12 +6443,12 @@ extern Variable RenderStateAlphaBlendOp;
 extern IntExpression RenderStateAlphaBlendOpArraySize;
 extern Variable RenderStateMask;
 extern IntExpression RenderStateMaskArraySize;
-
-struct SamplerState : public Type
+struct RenderState : public Type
 {
-    SamplerState();
+    RenderState();
 };
-extern SamplerState SamplerStateType;
+extern RenderState RenderStateType;
+
 extern Variable SamplerStateAddress;
 extern Variable SamplerStateAddressU;
 extern Variable SamplerStateAddressV;
@@ -6473,12 +6466,12 @@ extern Variable SamplerStateMinLod;
 extern Variable SamplerStateMaxLod;
 extern Variable SamplerStateBorderColor;
 extern Variable SamplerStateUnnormalizedSamplingEnabled;
-
-struct Program : public Type
+struct SamplerState : public Type
 {
-    Program();
+    SamplerState();
 };
-extern Program ProgramType;
+extern SamplerState SamplerStateType;
+
 extern Variable ProgramVertexShader;
 extern Variable ProgramHullShader;
 extern Variable ProgramDomainShader;
@@ -6494,5 +6487,12 @@ extern Variable ProgramRayMissShader;
 extern Variable ProgramRayIntersectionShader;
 extern Variable ProgramRayCallableShader;
 extern Variable ProgramRenderState;
+struct Program : public Type
+{
+    Program();
+};
+extern Program ProgramType;
+
+
 } // namespace GPULang
 

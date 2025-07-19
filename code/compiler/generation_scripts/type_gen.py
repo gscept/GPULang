@@ -154,6 +154,29 @@ def generate_types():
     ### Type conversion enum and SPIRV conversion methods ###
     spirv_intrinsics = open("../generated/spirv.h", 'w')
 
+    class NamerEntry:
+        def __init__(self, name, type):
+            self.name = name
+            self.type = type
+
+    class Namer:
+        def __init__(self):
+            self.names = []
+
+        def definition(self):
+            namer_struct = ''
+            namer_struct += 'struct Namer\n'
+            namer_struct += '{\n'
+            namer_struct += '    Namer()\n'
+            namer_struct += '    {\n'
+            for name in self.names:
+                namer_struct += f'        {name.name}Type.name = "{name.type}"_c;\n'
+            namer_struct += '    }\n'
+            namer_struct += '};\n'
+            namer_struct += 'Namer namer;\n\n'
+            return namer_struct
+
+    namer = Namer()
     namer_line = ''
 
     conversion_table_enum = "enum TypeConversionTable\n"
@@ -442,7 +465,6 @@ def generate_types():
         def constructor_pair(self):
             return f'    std::pair{{ "{self.api_name}({",".join([data_type_mapping[param.type_name] for param in self.parameters])})"_c, &{self.decl_name} }}'
 
-    class_def = ""
     declaration_string = ""
     definition_string = ""
     for size in range(1, 5):
@@ -454,15 +476,13 @@ def generate_types():
                 type_name = f'{type}x{size}'
                 data_type_name = f'{data_type_mapping[type]}x{size}'
             spirv_type_construction = ''
-            class_decl = ''
-            class_decl += f'struct {type_name} : public Type\n'
-            class_decl += '{\n'
-            class_decl += f'    {type_name}();\n'
-            class_decl += '};\n'
-            class_decl += f'extern {type_name} {type_name}Type;\n\n'
-            declaration_string += class_decl
+            declaration_string += f'struct {type_name} : public Type\n'
+            declaration_string += '{\n'
+            declaration_string += f'    {type_name}();\n'
+            declaration_string += '};\n'
+            declaration_string += f'extern {type_name} {type_name}Type;\n\n'
 
-            namer_line += f'        {type_name}Type.name = "{data_type_name}"_c;\n'
+            namer.names.append(NamerEntry(type_name, data_type_name))
             setup_string = ""
             list_string = []
 
@@ -798,23 +818,22 @@ def generate_types():
                         spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_op}, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);\n'
                         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
                         spirv_code += spirv_intrinsic(function_name, spirv_function)
-
-            class_def += f'{type_name}::{type_name}()\n'
-            class_def += '{\n'
-            class_def += f'    this->name = "{data_type_mapping[type_name]}";\n'
-            class_def += f'    this->columnSize = {size};\n'
-            class_def += f'    this->rowSize = 1;\n'
-            class_def += f'    this->byteSize = {trunc((bits * size) / 8)};\n'
-            class_def += f'    this->category = Type::ScalarCategory;\n'
-            class_def += f'    this->baseType = TypeCode::{type};\n'
-            class_def += f'    this->builtin = true;\n'
-            class_def += f'\n'
-            class_def += f'{setup_string}'
-            class_def += f'    this->scope.symbolLookup = StaticMap {{ std::array{{\n'
-            class_def += f'    {{\n'
-            class_def += f'{",\n".join(list_string)}\n'
-            class_def += f'    }} }};\n'
-            class_def += '}\n\n'
+            definition_string += f'{type_name}::{type_name}()\n'
+            definition_string += '{\n'
+            definition_string += f'    this->name = "{data_type_mapping[type_name]}";\n'
+            definition_string += f'    this->columnSize = {size};\n'
+            definition_string += f'    this->rowSize = 1;\n'
+            definition_string += f'    this->byteSize = {trunc((bits * size) / 8)};\n'
+            definition_string += f'    this->category = Type::ScalarCategory;\n'
+            definition_string += f'    this->baseType = TypeCode::{type};\n'
+            definition_string += f'    this->builtin = true;\n'
+            definition_string += f'\n'
+            definition_string += f'{setup_string}'
+            definition_string += f'    this->scope.symbolLookup = StaticMap {{ std::array{{\n'
+            definition_string += f'    {{\n'
+            definition_string += f'{",\n".join(list_string)}\n'
+            definition_string += f'    }} }};\n'
+            definition_string += '}\n\n'
 
 
     # Matrix types
@@ -838,17 +857,15 @@ def generate_types():
                 type_name = f'{type}x{row_size}x{column_size}'
                 data_type_name = f'{data_type_mapping[type]}x{row_size}x{column_size}'
 
-                namer_line += f'        {type_name}Type.name = "{data_type_name}"_c;\n'
-
+                namer.names.append(NamerEntry(type_name, data_type_name))
+            
                 setup_string = ""
                 
-                class_decl = ''
-                class_decl += f'struct {type_name} : public Type\n'
-                class_decl += '{\n'
-                class_decl += f'    {type_name}();\n'
-                class_decl += '};\n'
-                class_decl += f'extern {type_name} {type_name}Type;\n\n'
-                declaration_string += class_decl
+                declaration_string += f'struct {type_name} : public Type\n'
+                declaration_string += '{\n'
+                declaration_string += f'    {type_name}();\n'
+                declaration_string += '};\n'
+                declaration_string += f'extern {type_name} {type_name}Type;\n\n'
 
                 vector_ctor_name = f'{type_name}_{type}_{column_size}_ctor'
 
@@ -1001,37 +1018,49 @@ def generate_types():
                 spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
                 spirv_code += spirv_intrinsic(function_name, spirv_function)
 
-                class_def += f'{type_name}::{type_name}()\n'
-                class_def += '{\n'
-                class_def += f'    this->name = "{data_type_mapping[type]}";\n'
-                class_def += f'    this->columnSize = {column_size};\n'
-                class_def += f'    this->rowSize = {row_size};\n'
-                class_def += f'    this->byteSize = {trunc((bits * row_size * column_size) / 8)};\n'
-                class_def += '    this->category = Type::ScalarCategory;\n'
-                class_def += f'    this->baseType = TypeCode::{type};\n'
-                class_def += '    this->builtin = true;\n'
-                class_def += '\n'
-                class_def += f'{setup_string}'
-                class_def += f'    this->scope.symbolLookup = StaticMap {{ \n    std::array{{\n{list_string[0:-2]}\n    }}\n    }};   \n'
-                class_def += '}\n\n'
+                definition_string += f'{type_name}::{type_name}()\n'
+                definition_string += '{\n'
+                definition_string += f'    this->name = "{data_type_mapping[type]}";\n'
+                definition_string += f'    this->columnSize = {column_size};\n'
+                definition_string += f'    this->rowSize = {row_size};\n'
+                definition_string += f'    this->byteSize = {trunc((bits * row_size * column_size) / 8)};\n'
+                definition_string += '    this->category = Type::ScalarCategory;\n'
+                definition_string += f'    this->baseType = TypeCode::{type};\n'
+                definition_string += '    this->builtin = true;\n'
+                definition_string += '\n'
+                definition_string += f'{setup_string}'
+                definition_string += f'    this->scope.symbolLookup = StaticMap {{ \n    std::array{{\n{list_string[0:-2]}\n    }}\n    }};   \n'
+                definition_string += '}\n\n'
 
+    class Type:
+        def __init__(self, name, category=None, base_type = None):
+            self.name = name
+            self.category = category
+            self.baseType = base_type
 
-    namer_struct = 'struct Namer\n'
-    namer_struct += '{\n'
-    namer_struct += '    Namer()\n'
-    namer_struct += '    {\n'
-    namer_struct += f'{namer_line[0:-1]}\n'
-    namer_struct += '    }\n'
-    namer_struct += '};\n'
-    namer_struct += 'Namer namer;\n\n'
-    source_file.write(namer_struct)
+        def declaration(self):
+            class_decl = ''
+            class_decl += f'struct {self.name} : public Type\n'
+            class_decl += '{\n'
+            class_decl += f'    {self.name}();\n'
+            class_decl += '};\n'
+            class_decl += f'extern {self.name} {self.name}Type;\n\n'
+            return class_decl
 
-    header_file.write(declaration_string[0:-1] + '\n')
-    header_file.write("\n")
-    source_file.write(definition_string[0:-1] + '\n')
-    source_file.write("\n")
-    source_file.write(class_def)
-    header_file.write("\n")
+        def definition(self):
+            class_def = ''
+            class_def += f'{self.name}::{self.name}()\n'
+            class_def += '{\n'
+            name = self.name[0].lower() + self.name[1:]
+            namer.names.append(NamerEntry(self.name, name))
+            class_def += f'    this->name = "{name}";\n'
+            if self.category:
+                class_def += f'    this->category = Type::{self.category};\n'
+            if self.baseType:
+                class_def += f'    this->baseType = TypeCode::{self.baseType};\n'
+            class_def += '    this->builtin = true;\n'
+            class_def += '};\n\n'
+            return class_def
 
     # Texture types
     texture_dimensions = ['1D', '2D', '3D', 'Cube']
@@ -1039,630 +1068,319 @@ def generate_types():
     texture_array = ['Array', 'Array', '', 'Array']
     for dim, ms, array in zip(texture_dimensions, texture_multisampling, texture_array):
 
-        class_decl = ""
-        class_decl += f'struct Texture{dim} : public Type\n'
-        class_decl += '{\n'
-        class_decl += f'    Texture{dim}();\n'
-        class_decl += '};\n'
-        class_decl += f'extern Texture{dim} Texture{dim}Type;\n\n'
+        type = Type(f'Texture{dim}', 'TextureCategory', f'Texture{dim}')
+        declaration_string += type.declaration()
+        definition_string += type.definition()
 
-        class_def = ""
-        class_def += f'Texture{dim}::Texture{dim}()\n'
-        class_def += '{\n'
-        class_def += f'    this->name = "texture{dim}";\n'
-        class_def += '    this->category = Type::TextureCategory;\n'
-        class_def += f'    this->baseType = TypeCode::Texture{dim};\n'
-        class_def += '    this->builtin = true;\n'
-        class_def += '};\n\n'
         if ms : 
-            class_decl += f'struct Texture{dim}MS : public Type\n'
-            class_decl += '{\n'
-            class_decl += f'    Texture{dim}MS();\n'
-            class_decl += '};\n'
-            class_decl += f'extern Texture{dim}MS Texture{dim}MSType;\n\n'
+            type = Type(f'Texture{dim}MS', 'TextureCategory', f'Texture{dim}')
+            declaration_string += type.declaration()
+            definition_string += type.definition()
 
-            class_def += f'Texture{dim}MS::Texture{dim}MS()\n'
-            class_def += '{\n'
-            class_def += f'    this->name = "texture{dim}MS";\n'
-            class_def += '    this->category = Type::TextureCategory;\n'
-            class_def += f'    this->baseType = TypeCode::Texture{dim};\n'
-            class_def += '    this->builtin = true;\n'
-            class_def += '};\n\n'
             if array:
-                class_decl += f'struct Texture{dim}MSArray : public Type\n'
-                class_decl += '{\n'
-                class_decl += f'    Texture{dim}MSArray();\n'
-                class_decl += '};\n'
-                class_decl += f'extern Texture{dim}MSArray Texture{dim}MSArrayType;\n\n'
+                type = Type(f'Texture{dim}MSArray', 'TextureCategory', f'Texture{dim}')
+                declaration_string += type.declaration()
+                definition_string += type.definition()
 
-                class_def += f'Texture{dim}MSArray::Texture{dim}MSArray()\n'
-                class_def += '{\n'
-                class_def += f'    this->name = "texture{dim}MSArray";\n'
-                class_def += '    this->category = Type::TextureCategory;\n'
-                class_def += f'    this->baseType = TypeCode::Texture{dim};\n'
-                class_def += '    this->builtin = true;\n'
-                class_def += '};\n\n'
         if array:
-            class_decl += f'struct Texture{dim}Array : public Type\n'
-            class_decl += '{\n'
-            class_decl += f'    Texture{dim}Array();\n'
-            class_decl += '};\n'
-            class_decl += f'extern Texture{dim}Array Texture{dim}ArrayType;\n\n'
-
-            class_def += f'Texture{dim}Array::Texture{dim}Array()\n'
-            class_def += '{\n'
-            class_def += f'    this->name = "texture{dim}Array";\n'
-            class_def += '    this->category = Type::TextureCategory;\n'
-            class_def += f'    this->baseType = TypeCode::Texture{dim};\n'
-            class_def += '    this->builtin = true;\n'
-            class_def += '};\n\n'
-
-        header_file.write(class_decl)
-        source_file.write(class_def)
+            type = Type(f'Texture{dim}Array', 'TextureCategory', f'Texture{dim}')
+            declaration_string += type.declaration()
+            definition_string += type.definition()
 
     # Pixel cache types
-    class_decl = ""
-    class_decl += 'struct PixelCache : public Type\n'
-    class_decl += '{\n'
-    class_decl += '    PixelCache();\n'
-    class_decl += '};\n'
-    class_decl += 'extern PixelCache PixelCacheType;\n\n'
 
-    class_decl += 'struct PixelCacheMS : public Type\n'
-    class_decl += '{\n'
-    class_decl += '    PixelCacheMS();\n'
-    class_decl += '};\n'
-    class_decl += 'extern PixelCacheMS PixelCacheMSType;\n\n'
+    type = Type('PixelCache', 'PixelCacheCategory', 'PixelCache')
+    declaration_string += type.declaration()
+    definition_string += type.definition()
 
-    class_def = ""
-    class_def += 'PixelCache::PixelCache()\n'
-    class_def += '{\n'
-    class_def += '    this->name = "pixelCache";\n'
-    class_def += '    this->category = Type::PixelCacheCategory;\n'
-    class_def += '    this->baseType = TypeCode::PixelCache;\n'
-    class_def += '    this->builtin = true;\n'
-    class_def += '};\n\n'
+    type = Type('PixelCacheMS', 'PixelCacheCategory', 'PixelCache')
+    declaration_string += type.declaration()
+    definition_string += type.definition()
 
-    class_def += 'PixelCacheMS::PixelCacheMS()\n'
-    class_def += '{\n'
-    class_def += '    this->name = "pixelCacheMS";\n'
-    class_def += '    this->category = Type::PixelCacheCategory;\n'
-    class_def += '    this->baseType = TypeCode::PixelCache;\n'
-    class_def += '    this->builtin = true;\n'
-    class_def += '};\n\n'
+    type = Type('Sampler', 'SamplerCategory', 'Sampler')
+    declaration_string += type.declaration()
+    definition_string += type.definition()
 
-    class_decl += 'struct Sampler : public Type\n'
-    class_decl += '{\n'
-    class_decl += '    Sampler();\n'
-    class_decl += '};\n'
-    class_decl += 'extern Sampler SamplerType;\n\n'
+    type = Type('FunctionPtr')
+    declaration_string += type.declaration()
+    definition_string += type.definition()
 
-    class_def = ""
-    class_def += 'Sampler::Sampler()\n'
-    class_def += '{\n'
-    class_def += '    this->name = "sampler"_c;\n'
-    class_def += '    this->category = Type::SamplerCategory;\n'
-    class_def += '    this->baseType = TypeCode::Sampler;\n'
-    class_def += '    this->builtin = true;\n'
-    class_def += '};\n\n'
+    type = Type('AccelerationStructure', 'AccelerationStructureCategory', 'AccelerationStructure')
+    declaration_string += type.declaration()
+    definition_string += type.definition()
 
-    class_decl += 'struct FunctionPtr : public Type\n'
-    class_decl += '{\n'
-    class_decl += '    FunctionPtr();\n'
-    class_decl += '};\n'
-    class_decl += 'extern FunctionPtr FunctionPtrType;\n\n'
+    type = Type('Void', 'VoidCategory', 'Void')
+    declaration_string += type.declaration()
+    definition_string += type.definition()
 
-    class_def = ""
-    class_def += f'FunctionPtr::FunctionPtr()\n'
-    class_def += '{\n'
-    class_def += '    this->name = "function"_c;\n'
-    class_def += '    this->builtin = true;\n'
-    class_def += '};\n\n'
+    class EnumCase:
+        def __init__(self, name, value=None):
+            self.name = name
+            self.value = value
 
-    header_file.write(class_decl)
-    source_file.write(class_def)
+    class Enumeration:
+        def __init__(self, name, type_name, members=[]):
+            self.name = name
+            self.type_name = type_name
+            self.members = members
 
-    # Acceleration Structure
-    class_decl = ""
-    class_decl += 'struct AccelerationStructure : public Type\n'
-    class_decl += '{\n'
-    class_decl += '    AccelerationStructure();\n'
-    class_decl += '};\n'
-    class_decl += 'extern AccelerationStructure AccelerationStructureType;\n\n'
+        def declaration(self):
+            decl = f'struct {self.name} : public Enumeration\n'
+            decl += '{\n'
+            decl += f'    {self.name}();\n'
+            decl += '};\n'
+            decl += f'extern {self.name} {self.name}Type;\n\n'
 
-    class_def = ""
-    class_def += f'AccelerationStructure::AccelerationStructure()\n'
-    class_def += '{\n'
-    class_def += '    this->name = "accelerationStructure";\n'
-    class_def += '    this->category = Type::AccelerationStructureCategory;\n'
-    class_def += '    this->baseType = TypeCode::AccelerationStructure;\n'
-    class_def += '    this->builtin = true;\n'
-    class_def += '};\n\n'
+            for member in self.members:
+                decl += f'extern EnumExpression {self.name}{member.name};\n'
+            return decl
+        
+        def definition(self):
+            defn = ''
+            for i, member in enumerate(self.members):
+                defn += f'EnumExpression {self.name}{member.name};\n'
+            defn += f'{self.name}::{self.name}()\n'
+            defn += '{\n'
+            defn += f'    this->name = "{self.name}";\n'
+            defn += '    this->category = Type::EnumCategory;\n'
+            defn += f'    this->type = Type::FullType{{ {self.type_name}Type.name }};\n'
+            defn += f'    Symbol::Resolved(this)->typeSymbol = &{self.type_name}Type;\n'
+            defn += '    this->baseType = TypeCode::UInt;\n'
+            defn += '    this->type.literal = true;\n'
+            defn += '    this->builtin = true;\n'
 
-    header_file.write(class_decl)
-    source_file.write(class_def)
+            for i, member in enumerate(self.members):
+                defn += f'    {self.name}{member.name}.value = {member.value if member.value else hex(i)};\n'
+                defn += f'    {self.name}{member.name}.type = Type::FullType{{ {self.name}Type.name, true }};\n'
+                defn += f'    {self.name}{member.name}.underlyingType = Type::FullType{{ {self.type_name}Type.name }};\n'
+                defn += f'    Symbol::Resolved(&{self.name}{member.name})->type = this;\n'
 
-    class_decl = ""
-    class_decl += 'struct Void : public Type\n'
-    class_decl += '{\n'
-    class_decl += '    Void();\n'
-    class_decl += '};\n'
-    class_decl += 'extern Void VoidType;\n\n'
+            defn += '    this->scope.symbolLookup = StaticMap { std::array{\n'
+            for member in self.members:
+                defn += f'        std::pair{{ "{member.name}"_c, &{self.name}{member.name} }},\n'
+            defn += '    }};\n'
+            defn += '};\n\n'
 
-    class_def = ""
-    class_def += 'Void::Void()\n'
-    class_def += '{\n'
-    class_def += '    this->name = "void";\n'
-    class_def += '    this->category = Type::VoidCategory;\n'
-    class_def += '    this->baseType = TypeCode::Void;\n'
-    class_def += '    this->builtin = true;\n'
-    class_def += '};\n\n' 
+            return defn
 
-    header_file.write(class_decl)
-    source_file.write(class_def)
+    enum = Enumeration(
+        name = "CompareMode",
+        type_name = "UInt32",
+        members=[
+            EnumCase("Less"),
+            EnumCase("LessEqual"),
+            EnumCase("Greater"),
+            EnumCase("GreaterEqual"),
+            EnumCase("Equal"),
+            EnumCase("NotEqual"),
+            EnumCase("Always"),
+            EnumCase("Never")
+        ]
+    )
+    declaration_string += enum.declaration()
+    definition_string += enum.definition()
 
-    class_decl = ""
-    class_def = ""
-    class_decl += 'struct CompareMode : public Enumeration\n'
-    class_decl += '{\n'
-    class_decl += '    CompareMode();\n'
-    class_decl += '};\n'
-    class_decl += 'extern CompareMode CompareModeType;\n\n'
-    compare_mode_names = [
-        'Less',
-        'LessEqual',
-        'Greater',
-        'GreaterEqual',
-        'Equal',
-        'NotEqual',
-        'Always',
-        'Never'
-    ]
-    for name in compare_mode_names:
-        class_decl += f'extern EnumExpression CompareMode{name};\n'
-        class_def += f'EnumExpression CompareMode{name};\n'
-    class_def += 'CompareMode CompareModeType;\n'
-    class_def += 'CompareMode::CompareMode()\n'
-    class_def += '{\n' 
-    class_def += '    this->name = "CompareMode";\n'
-    class_def += '    this->category = Type::EnumCategory;\n'
-    class_def += '    this->type = Type::FullType{{ UInt32Type.name }};\n'
-    class_def += '    Symbol::Resolved(this)->typeSymbol = &UInt32Type;\n'
-    class_def += '    this->baseType = TypeCode::UInt;\n'
-    class_def += '    this->type.literal = true;\n'
-    class_def += '    this->builtin = true;\n'
-    for i, name in enumerate(compare_mode_names):
-        class_def += f'    CompareMode{name}.value = {hex(i)};\n'
-        class_def += f'    CompareMode{name}.type = Type::FullType{{ CompareModeType.name, true }};\n'
-        class_def += f'    CompareMode{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
-        class_def += f'    Symbol::Resolved(&CompareMode{name})->type = this;\n'
-    class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
-    for name in compare_mode_names:
-        class_def += f'        std::pair{{ "{name}"_c, &CompareMode{name} }},\n'
-    class_def += '    }};\n'
-    class_def += '};\n\n'
+    enum = Enumeration(
+        name = "StencilOp",
+        type_name = "UInt32",
+        members=[
+            EnumCase("Keep"),
+            EnumCase("Zero"),
+            EnumCase("Replace"),
+            EnumCase("Increment"),
+            EnumCase("Decrement"),
+            EnumCase("Invert"),
+            EnumCase("IncrementWrap"),
+            EnumCase("DecrementWrap")
+        ]
+    )
+    declaration_string += enum.declaration()
+    definition_string += enum.definition()
 
-    class_decl += 'struct StencilOp : public Enumeration\n'
-    class_decl += '{\n'
-    class_decl += '    StencilOp();\n'
-    class_decl += '};\n'
+    enum = Enumeration(
+        name = 'ExecutionScope',
+        type_name = 'UInt32',
+        members=[
+            EnumCase("Global"),
+            EnumCase("Device"),
+            EnumCase("Workgroup"),
+            EnumCase("Subgroup"),
+            EnumCase("Invocation"),
+            EnumCase("Queue")
+        ]
+    )
+    declaration_string += enum.declaration()
+    definition_string += enum.definition()
 
-    stencil_op_names = [
-        'Keep', 'Zero', 'Replace', 'Increment', 'Decrement', 'Invert', 'IncrementWrap', 'DecrementWrap'
-    ]
-    class_decl += 'extern StencilOp StencilOpType;\n\n'
-    for name in stencil_op_names:
-        class_decl += f'extern EnumExpression StencilOp{name};\n'
-        class_def += f'EnumExpression StencilOp{name};\n'
-    class_def += 'StencilOp StencilOpType;\n'
-    class_def += 'StencilOp::StencilOp()\n'
-    class_def += '{\n'
-    class_def += '    this->name = "StencilOp";\n'
-    class_def += '    this->category = Type::EnumCategory;\n'
-    class_def += '    this->type = Type::FullType{{ UInt32Type.name }};\n'
-    class_def += '    Symbol::Resolved(this)->typeSymbol = &UInt32Type;\n'
-    class_def += '    this->baseType = TypeCode::UInt;\n'
-    class_def += '    this->type.literal = true;\n'
-    class_def += '    this->builtin = true;\n'
+    enum = Enumeration(
+        name = 'MemorySemantics',
+        type_name = 'UInt32',
+        members=[
+            EnumCase("Acquire", 0x1),
+            EnumCase("Release", 0x2),
+            EnumCase("AcquireRelease", 0x4),
+            EnumCase("SequentiallyConsistent", 0x8),
+            EnumCase("Relaxed", 0x10)
+        ]
+    )
+    declaration_string += enum.declaration()
+    definition_string += enum.definition()
 
-    for i, name in enumerate(stencil_op_names):
-        class_def += f'    StencilOp{name}.value = {hex(i)};\n'
-        class_def += f'    StencilOp{name}.type = Type::FullType{{ StencilOpType.name, true }};\n'
-        class_def += f'    StencilOp{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
-        class_def += f'    Symbol::Resolved(&StencilOp{name})->type = this;\n'
-    class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
-    for name in stencil_op_names:
-        class_def += f'        std::pair{{ "{name}"_c, &StencilOp{name} }},\n'
-    class_def += '    }};\n'
-    class_def += '};\n\n'
+    enum = Enumeration(
+        name = 'PolygonMode',
+        type_name = 'UInt32',
+        members=[
+            EnumCase("Fill", 0x1),
+            EnumCase("Line", 0x2),
+            EnumCase("Point", 0x4)
+        ]
+    )
+    declaration_string += enum.declaration()
+    definition_string += enum.definition()
 
-    class_decl += 'struct ExecutionScope : public Enumeration\n'
-    class_decl += '{\n'
-    class_decl += '    ExecutionScope();\n'
-    class_decl += '};\n'
-    class_decl += 'extern ExecutionScope ExecutionScopeType;\n\n'
+    enum = Enumeration(
+        name = 'CullMode',
+        type_name = 'UInt32',
+        members=[
+            EnumCase("None", 0x0),
+            EnumCase("Front", 0x1),
+            EnumCase("Back", 0x2),
+            EnumCase("FrontAndBack", 0x3)
+        ]
+    )
+    declaration_string += enum.declaration()
+    definition_string += enum.definition()
 
-    execution_scope_names = [
-        'Global', 'Device', 'Workgroup', 'Subgroup', 'Invocation', 'Queue'
-    ]
-    for name in execution_scope_names:
-        class_decl += f'extern EnumExpression ExecutionScope{name};\n'
-        class_def += f'EnumExpression ExecutionScope{name};\n'
-    class_def += 'ExecutionScope ExecutionScopeType;\n'
-    class_def += 'ExecutionScope::ExecutionScope()\n'
-    class_def += '{\n'
-    class_def += '    this->name = "ExecutionScope";\n'
-    class_def += '    this->category = Type::EnumCategory;\n'
-    class_def += '    this->type = Type::FullType{{ UInt32Type.name }};\n'
-    class_def += '    Symbol::Resolved(this)->typeSymbol = &UInt32Type;\n'
-    class_def += '    this->baseType = TypeCode::UInt;\n'
-    class_def += '    this->type.literal = true;\n'
-    class_def += '    this->builtin = true;\n'  
-    for i, name in enumerate(execution_scope_names):
-        class_def += f'    ExecutionScope{name}.value = {hex(i)};\n'
-        class_def += f'    ExecutionScope{name}.type = Type::FullType{{ ExecutionScopeType.name, true }};\n'
-        class_def += f'    ExecutionScope{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
-        class_def += f'    Symbol::Resolved(&ExecutionScope{name})->type = this;\n'
-    class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
-    for name in execution_scope_names:
-        class_def += f'        std::pair{{ "{name}"_c, &ExecutionScope{name} }},\n'
-    class_def += '    }};\n'
-    class_def += '};\n\n'
+    enum = Enumeration(
+        name = 'WindingOrder',
+        type_name = 'UInt32',
+        members=[
+            EnumCase("Clockwise", 0x0),
+            EnumCase("CounterClockwise", 0x1)
+        ]
+    )
+    declaration_string += enum.declaration()
+    definition_string += enum.definition()
 
-    class_decl += 'struct MemorySemantics : public Enumeration\n'
-    class_decl += '{\n'
-    class_decl += '    MemorySemantics();\n'
-    class_decl += '};\n'
-    class_decl += 'extern MemorySemantics MemorySemanticsType;\n\n'
-    memory_semantics_names = [
-        'Acquire', 'Release', 'AcquireRelease', 'SequentiallyConsistent', 'Relaxed'
-    ]
-    for name in memory_semantics_names:
-        class_decl += f'extern EnumExpression MemorySemantics{name};\n'
-        class_def += f'EnumExpression MemorySemantics{name};\n'
-    class_def += 'MemorySemantics MemorySemanticsType;\n'
-    class_def += 'MemorySemantics::MemorySemantics()\n'
-    class_def += '{\n'
-    class_def += '    this->name = "MemorySemantics";\n'
-    class_def += '    this->category = Type::EnumCategory;\n'
-    class_def += '    this->type = Type::FullType{{ UInt32Type.name }};\n'
-    class_def += '    Symbol::Resolved(this)->typeSymbol = &UInt32Type;\n'
-    class_def += '    this->baseType = TypeCode::UInt;\n'
-    class_def += '    this->type.literal = true;\n'
-    class_def += '    this->builtin = true;\n'
-    for i, name in enumerate(memory_semantics_names):
-        class_def += f'    MemorySemantics{name}.value = {hex(1 << i)};\n'
-        class_def += f'    MemorySemantics{name}.type = Type::FullType{{ MemorySemanticsType.name, true }};\n'
-        class_def += f'    MemorySemantics{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
-        class_def += f'    Symbol::Resolved(&MemorySemantics{name})->type = this;\n'
-    class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
-    for name in memory_semantics_names:
-        class_def += f'        std::pair{{ "{name}"_c, &MemorySemantics{name} }},\n'
-    class_def += '    }};\n'
-    class_def += '};\n\n'
+    enum = Enumeration(
+        name = 'LogicOp',
+        type_name = 'UInt32',
+        members=[
+            EnumCase("And"),
+            EnumCase("AndInverted"),
+            EnumCase("AndReverse"),
+            EnumCase("Clear"),
+            EnumCase("Copy"),
+            EnumCase("CopyInverted"),
+            EnumCase("Equivalence"),
+            EnumCase("Invert"),
+            EnumCase("Nand"),
+            EnumCase("No"),
+            EnumCase("Nor"),
+            EnumCase("Or"),
+            EnumCase("OrInverted"),
+            EnumCase("OrReverse"),
+            EnumCase("Set"),
+            EnumCase("Xor")
+        ]
+    )
+    declaration_string += enum.declaration()
+    definition_string += enum.definition()
 
-    class_decl += 'struct PolygonMode : public Enumeration\n'
-    class_decl += '{\n'
-    class_decl += '    PolygonMode();\n'
-    class_decl += '};\n'
-    class_decl += 'extern PolygonMode PolygonModeType;\n\n'
-    polygon_mode_names = [
-        'Fill', 'Line', 'Point'
-    ]
-    for name in polygon_mode_names:
-        class_decl += f'extern EnumExpression PolygonMode{name};\n'
-        class_def += f'EnumExpression PolygonMode{name};\n'
-    class_def += 'PolygonMode PolygonModeType;\n'
-    class_def += 'PolygonMode::PolygonMode()\n'
-    class_def += '{\n'
-    class_def += '    this->name = "PolygonMode";\n'
-    class_def += '    this->category = Type::EnumCategory;\n'
-    class_def += '    this->type = Type::FullType{{ UInt32Type.name }};\n'
-    class_def += '    Symbol::Resolved(this)->typeSymbol = &UInt32Type;\n'
-    class_def += '    this->baseType = TypeCode::UInt;\n'
-    class_def += '    this->type.literal = true;\n'
-    class_def += '    this->builtin = true;\n'
-    for i, name in enumerate(polygon_mode_names):
-        class_def += f'    PolygonMode{name}.value = {hex(i)};\n'
-        class_def += f'    PolygonMode{name}.type = Type::FullType{{ PolygonModeType.name, true }};\n'
-        class_def += f'    PolygonMode{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
-        class_def += f'    Symbol::Resolved(&PolygonMode{name})->type = this;\n'
-    class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
-    for name in polygon_mode_names:
-        class_def += f'        std::pair{{ "{name}"_c, &PolygonMode{name} }},\n'
-    class_def += '    }};\n'
-    class_def += '};\n\n'
+    enum = Enumeration(
+        name = 'BlendFactor',
+        type_name = 'UInt32',
+        members=[
+            EnumCase("Zero"),
+            EnumCase("One"),
+            EnumCase("SourceColor"),
+            EnumCase("OneMinusSourceColor"),
+            EnumCase("SourceAlpha"),
+            EnumCase("OneMinusSourceAlpha"),
+            EnumCase("DestinationColor"),
+            EnumCase("OneMinusDestinationColor"),
+            EnumCase("DestinationAlpha"),
+            EnumCase("OneMinusDestinationAlpha"),
+            EnumCase("ConstantColor"),
+            EnumCase("OneMinusConstantColor"),
+            EnumCase("ConstantAlpha"),
+            EnumCase("OneMinusConstantAlpha")
+        ]
+    )
+    declaration_string += enum.declaration()
+    definition_string += enum.definition()
 
-    class_decl += 'struct CullMode : public Enumeration\n'
-    class_decl += '{\n'
-    class_decl += '    CullMode();\n'
-    class_decl += '};\n'
-    class_decl += 'extern CullMode CullModeType;\n\n'
-    cull_mode_names = [
-        'None', 'Front', 'Back', 'FrontAndBack'
-    ]
-    for name in cull_mode_names:
-        class_decl += f'extern EnumExpression CullMode{name};\n'
-        class_def += f'EnumExpression CullMode{name};\n'
-    class_def += 'CullMode CullModeType;\n'
-    class_def += 'CullMode::CullMode()\n'
-    class_def += '{\n'
-    class_def += '    this->name = "CullMode";\n'
-    class_def += '    this->category = Type::EnumCategory;\n'
-    class_def += '    this->type = Type::FullType{{ UInt32Type.name }};\n'
-    class_def += '    Symbol::Resolved(this)->typeSymbol = &UInt32Type;\n'
-    class_def += '    this->baseType = TypeCode::UInt;\n'
-    class_def += '    this->type.literal = true;\n'
-    class_def += '    this->builtin = true;\n'
-    for i, name in enumerate(cull_mode_names):
-        class_def += f'    CullMode{name}.value = {hex(i)};\n'
-        class_def += f'    CullMode{name}.type = Type::FullType{{ CullModeType.name, true }};\n'
-        class_def += f'    CullMode{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
-        class_def += f'    Symbol::Resolved(&CullMode{name})->type = this;\n'
-    class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
-    for name in cull_mode_names:
-        class_def += f'        std::pair{{ "{name}"_c, &CullMode{name} }},\n'
-    class_def += '    }};\n'
-    class_def += '};\n\n'
+    enum = Enumeration(
+        name = 'BlendOperation',
+        type_name = 'UInt32',
+        members=[
+            EnumCase("Add"),
+            EnumCase("Subtract"),
+            EnumCase("ReverseSubtract"),
+            EnumCase("Min"),
+            EnumCase("Max")
+        ]
+    )
+    declaration_string += enum.declaration()
+    definition_string += enum.definition()
 
-    class_decl += 'struct WindingOrder : public Enumeration\n'
-    class_decl += '{\n'
-    class_decl += '    WindingOrder();\n'
-    class_decl += '};\n'
-    class_decl += 'extern WindingOrder WindingOrderType;\n\n'
-    winding_order_names = [
-        'Clockwise', 'CounterClockwise'
-    ]
-    for name in winding_order_names:
-        class_decl += f'extern EnumExpression WindingOrder{name};\n'
-        class_def += f'EnumExpression WindingOrder{name};\n'
-    class_def += 'WindingOrder WindingOrderType;\n'
-    class_def += 'WindingOrder::WindingOrder()\n'
-    class_def += '{\n'
-    class_def += '    this->name = "WindingOrder";\n'
-    class_def += '    this->category = Type::EnumCategory;\n'
-    class_def += '    this->type = Type::FullType{{ UInt32Type.name }};\n'
-    class_def += '    Symbol::Resolved(this)->typeSymbol = &UInt32Type;\n'
-    class_def += '    this->baseType = TypeCode::UInt;\n'
-    class_def += '    this->type.literal = true;\n'
-    class_def += '    this->builtin = true;\n'
-    for i, name in enumerate(winding_order_names):
-        class_def += f'    WindingOrder{name}.value = {hex(i)};\n'
-        class_def += f'    WindingOrder{name}.type = Type::FullType{{ WindingOrderType.name, true }};\n'
-        class_def += f'    WindingOrder{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
-        class_def += f'    Symbol::Resolved(&WindingOrder{name})->type = this;\n'
-    class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
-    for name in winding_order_names:
-        class_def += f'        std::pair{{ "{name}"_c, &WindingOrder{name} }},\n'
-    class_def += '    }};\n'
-    class_def += '};\n\n'
+    enum = Enumeration(
+        name = 'BlendColorMask',
+        type_name = 'UInt32',
+        members=[
+            EnumCase("None", 0x0),
+            EnumCase("R", 0x1),
+            EnumCase("RG", 0x3),
+            EnumCase("RGB", 0x7),
+            EnumCase("RGBA", 0xF)
+        ]
+    )
+    declaration_string += enum.declaration()
+    definition_string += enum.definition()
 
-    class_decl += 'struct LogicOp : public Enumeration\n'
-    class_decl += '{\n'
-    class_decl += '    LogicOp();\n'
-    class_decl += '};\n'
-    class_decl += 'extern LogicOp LogicOpType;\n'
-    logic_op_names = [
-        'And', 'AndInverted', 'AndReverse', 'Clear', 'Copy', 'CopyInverted', 'Equivalence', 'Invert', 'Nand', 'No', 'Nor', 'Or', 'OrInverted', 'OrReverse', 'Set', 'Xor'
-    ]
-    for name in logic_op_names:
-        class_decl += f'extern EnumExpression LogicOp{name};\n'
-        class_def += f'EnumExpression LogicOp{name};\n'
-    class_def += 'LogicOp LogicOpType;\n'
-    class_def += 'LogicOp::LogicOp()\n'
-    class_def += '{\n'
-    class_def += '    this->name = "LogicOp";\n'
-    class_def += '    this->category = Type::EnumCategory;\n'
-    class_def += '    this->type = Type::FullType{{ UInt32Type.name }};\n'
-    class_def += '    Symbol::Resolved(this)->typeSymbol = &UInt32Type;\n'
-    class_def += '    this->baseType = TypeCode::UInt;\n'
-    class_def += '    this->type.literal = true;\n'
-    class_def += '    this->builtin = true;\n'
-    for i, name in enumerate(logic_op_names):
-        class_def += f'    LogicOp{name}.value = {hex(i)};\n'
-        class_def += f'    LogicOp{name}.type = Type::FullType{{ LogicOpType.name, true }};\n'
-        class_def += f'    LogicOp{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
-        class_def += f'    Symbol::Resolved(&LogicOp{name})->type = this;\n'
-    class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
-    for name in logic_op_names:
-        class_def += f'        std::pair{{ "{name}"_c, &LogicOp{name} }},\n'
-    class_def += '    }};\n'
-    class_def += '};\n\n'
+    enum = Enumeration(
+        name = 'FilterMode',
+        type_name = 'UInt32',
+        members=[
+            EnumCase("Point"),
+            EnumCase("Linear"),
+            EnumCase("MinMagMipmapLinear"),
+            EnumCase("MinMagLinearMipPoint"),
+            EnumCase("MinLinearMagMipPoint"),
+            EnumCase("MinMagMipPoint"),
+            EnumCase("MinMagPointMipLinear"),
+            EnumCase("MinPointMagMipLinear"),
+            EnumCase("MinLinearMagPointMipLinear"),
+            EnumCase("MinPointMagLinearMipPoint")
+        ]
+    )
+    declaration_string += enum.declaration()
+    definition_string += enum.definition()
 
-    class_decl += 'struct BlendFactor : public Enumeration\n'
-    class_decl += '{\n'
-    class_decl += '    BlendFactor();\n'
-    class_decl += '};\n'
-    class_decl += 'extern BlendFactor BlendFactorType;\n\n'
-    blend_factor_names = [
-        'Zero', 'One', 'SourceColor', 'OneMinusSourceColor', 'SourceAlpha', 'OneMinusSourceAlpha',
-        'DestinationColor', 'OneMinusDestinationColor', 'DestinationAlpha', 'OneMinusDestinationAlpha', 'ConstantColor',
-        'OneMinusConstantColor', 'ConstantAlpha', 'OneMinusConstantAlpha'
-    ]
-    for name in blend_factor_names:
-        class_decl += f'extern EnumExpression BlendFactor{name};\n'
-        class_def += f'EnumExpression BlendFactor{name};\n'
-    class_def += 'BlendFactor BlendFactorType;\n'
-    class_def += 'BlendFactor::BlendFactor()\n'
-    class_def += '{\n'
-    class_def += '    this->name = "BlendFactor";\n'
-    class_def += '    this->category = Type::EnumCategory;\n'
-    class_def += '    this->type = Type::FullType{{ UInt32Type.name }};\n'
-    class_def += '    Symbol::Resolved(this)->typeSymbol = &UInt32Type;\n'
-    class_def += '    this->baseType = TypeCode::UInt;\n'
-    class_def += '    this->type.literal = true;\n'
-    class_def += '    this->builtin = true;\n'
-    for i, name in enumerate(blend_factor_names):
-        class_def += f'    BlendFactor{name}.value = {hex(i)};\n'
-        class_def += f'    BlendFactor{name}.type = Type::FullType{{ BlendFactorType.name, true }};\n'
-        class_def += f'    BlendFactor{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
-        class_def += f'    Symbol::Resolved(&BlendFactor{name})->type = this;\n'
-    class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
-    for name in blend_factor_names:
-        class_def += f'        std::pair{{ "{name}"_c, &BlendFactor{name} }},\n'
-    class_def += '    }};\n'
-    class_def += '};\n\n'
+    enum = Enumeration(
+        name = 'AddressMode',
+        type_name = 'UInt32',
+        members=[
+            EnumCase("Repeat"),
+            EnumCase("Mirror"),
+            EnumCase("Clamp"),
+            EnumCase("Border")
+        ]
+    )
+    declaration_string += enum.declaration()
+    definition_string += enum.definition()
 
-    class_decl += 'struct BlendOperation : public Enumeration\n'
-    class_decl += '{\n'
-    class_decl += '    BlendOperation();\n'
-    class_decl += '};\n'
-    class_decl += 'extern BlendOperation BlendOperationType;\n\n'
-    blend_operation_names = [
-        'Add', 'Subtract', 'ReverseSubtract', 'Min', 'Max'
-    ]
-    for name in blend_operation_names:
-        class_decl += f'extern EnumExpression BlendOperation{name};\n'
-        class_def += f'EnumExpression BlendOperation{name};\n'
-    class_def += 'BlendOperation BlendOperationType;\n'
-    class_def += 'BlendOperation::BlendOperation()\n'
-    class_def += '{\n'
-    class_def += '    this->name = "BlendOperation";\n'
-    class_def += '    this->category = Type::EnumCategory;\n'
-    class_def += '    this->type = Type::FullType{{ UInt32Type.name }};\n'
-    class_def += '    Symbol::Resolved(this)->typeSymbol = &UInt32Type;\n'
-    class_def += '    this->baseType = TypeCode::UInt;\n'
-    class_def += '    this->type.literal = true;\n'
-    class_def += '    this->builtin = true;\n'
-    for i, name in enumerate(blend_operation_names):
-        class_def += f'    BlendOperation{name}.value = {hex(i)};\n'
-        class_def += f'    BlendOperation{name}.type = Type::FullType{{ BlendOperationType.name, true }};\n'
-        class_def += f'    BlendOperation{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
-        class_def += f'    Symbol::Resolved(&BlendOperation{name})->type = this;\n'
-    class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
-    for name in blend_operation_names:
-        class_def += f'        std::pair{{ "{name}"_c, &BlendOperation{name} }},\n'
-    class_def += '    }};\n'
-    class_def += '};\n\n'
-
-    class_decl += 'struct BlendColorMask : public Enumeration\n'
-    class_decl += '{\n'
-    class_decl += '    BlendColorMask();\n'
-    class_decl += '};\n'
-    class_decl += 'extern BlendColorMask BlendColorMaskType;\n\n'
-    blend_color_mask_names = [
-        'None', 'R', 'RG', 'RGB', 'RGBA'
-    ]
-    for name in blend_color_mask_names:
-        class_decl += f'extern EnumExpression BlendColorMask{name};\n'
-        class_def += f'EnumExpression BlendColorMask{name};\n'
-    class_def += 'BlendColorMask BlendColorMaskType;\n'
-    class_def += 'BlendColorMask::BlendColorMask()\n'
-    class_def += '{\n'
-    class_def += '    this->name = "BlendColorMask";\n' 
-    class_def += '    this->category = Type::EnumCategory;\n'
-    class_def += '    this->type = Type::FullType{{ UInt32Type.name }};\n'
-    class_def += '    Symbol::Resolved(this)->typeSymbol = &UInt32Type;\n'
-    class_def += '    this->baseType = TypeCode::UInt;\n'
-    class_def += '    this->type.literal = true;\n'
-    class_def += '    this->builtin = true;\n'
-    for i, name in enumerate(blend_color_mask_names):
-        class_def += f'    BlendColorMask{name}.value = {hex(i)};\n'
-        class_def += f'    BlendColorMask{name}.type = Type::FullType{{ BlendColorMaskType.name, true }};\n'
-        class_def += f'    BlendColorMask{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
-        class_def += f'    Symbol::Resolved(&BlendColorMask{name})->type = this;\n'
-    class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
-    for name in blend_color_mask_names:
-        class_def += f'        std::pair{{ "{name}"_c, &BlendColorMask{name} }},\n'
-    class_def += '    }};\n'
-    class_def += '};\n\n'
-
-    class_decl += 'struct FilterMode : public Enumeration\n'
-    class_decl += '{\n'
-    class_decl += '    FilterMode();\n'
-    class_decl += '};\n'
-    class_decl += 'extern FilterMode FilterModeType;\n\n'
-    filter_mode_names = [
-        'Point', 'Linear', 'MinMagMipmapLinear', 'MinMagLinearMipPoint', 'MinLinearMagMipPoint', 'MinMagMipPoint', 'MinMagPointMipLinear', 'MinPointMagMipLinear', 'MinLinearMagPointMipLinear', 'MinPointMagLinearMipPoint'
-    ]
-    for name in filter_mode_names:
-        class_decl += f'extern EnumExpression FilterMode{name};\n'
-        class_def += f'EnumExpression FilterMode{name};\n'
-    class_def += 'FilterMode FilterModeType;\n'
-    class_def += 'FilterMode::FilterMode()\n'
-    class_def += '{\n'
-    class_def += '    this->name = "FilterMode";\n'
-    class_def += '    this->category = Type::EnumCategory;\n'
-    class_def += '    this->type = Type::FullType{{ UInt32Type.name }};\n'
-    class_def += '    Symbol::Resolved(this)->typeSymbol = &UInt32Type;\n'
-    class_def += '    this->baseType = TypeCode::UInt;\n'
-    class_def += '    this->type.literal = true;\n'
-    class_def += '    this->builtin = true;\n'
-    for i, name in enumerate(filter_mode_names):
-        class_def += f'    FilterMode{name}.value = {hex(i)};\n'
-        class_def += f'    FilterMode{name}.type = Type::FullType{{ FilterModeType.name, true }};\n'
-        class_def += f'    FilterMode{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
-        class_def += f'    Symbol::Resolved(&FilterMode{name})->type = this;\n'
-    class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
-    for name in filter_mode_names:
-        class_def += f'        std::pair{{ "{name}"_c, &FilterMode{name} }},\n'
-    class_def += '    }};\n'
-    class_def += '};\n\n'
-
-    class_decl += 'struct AddressMode : public Enumeration\n'
-    class_decl += '{\n'
-    class_decl += '    AddressMode();\n'
-    class_decl += '};\n'
-    class_decl += 'extern AddressMode AddressModeType;\n\n'
-    address_mode_names = [
-        'Repeat', 'Mirror', 'Clamp', 'Border'
-    ]
-    for name in address_mode_names:
-        class_decl += f'extern EnumExpression AddressMode{name};\n'
-        class_def += f'EnumExpression AddressMode{name};\n'
-    class_def += 'AddressMode AddressModeType;\n'
-    class_def += 'AddressMode::AddressMode()\n'
-    class_def += '{\n'
-    class_def += '    this->name = "AddressMode";\n'
-    class_def += '    this->category = Type::EnumCategory;\n'
-    class_def += '    this->type = Type::FullType{{ UInt32Type.name }};\n'
-    class_def += '    Symbol::Resolved(this)->typeSymbol = &UInt32Type;\n'
-    class_def += '    this->baseType = TypeCode::UInt;\n'
-    class_def += '    this->type.literal = true;\n'
-    class_def += '    this->builtin = true;\n'
-    for i, name in enumerate(address_mode_names):
-        class_def += f'    AddressMode{name}.value = {hex(i)};\n'
-        class_def += f'    AddressMode{name}.type = Type::FullType{{ AddressModeType.name, true }};\n'
-        class_def += f'    AddressMode{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
-        class_def += f'    Symbol::Resolved(&AddressMode{name})->type = this;\n'
-    class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
-    for name in address_mode_names:
-        class_def += f'        std::pair{{ "{name}"_c, &AddressMode{name} }},\n'
-    class_def += '    }};\n'
-    class_def += '};\n\n'
-
-    class_decl += 'struct BorderColor : public Enumeration\n'
-    class_decl += '{\n'
-    class_decl += '    BorderColor();\n'
-    class_decl += '};\n'
-    class_decl += 'extern BorderColor BorderColorType;\n\n'
-    border_color_names = [
-        'Transparent', 'Black', 'White'
-    ]
-    for name in border_color_names:
-        class_decl += f'extern EnumExpression BorderColor{name};\n'
-        class_def += f'EnumExpression BorderColor{name};\n'
-    class_def += 'BorderColor BorderColorType;\n'
-    class_def += 'BorderColor::BorderColor()\n'
-    class_def += '{\n'
-    class_def += '    this->name = "BorderColor";\n'
-    class_def += '    this->category = Type::EnumCategory;\n'
-    class_def += '    this->type = Type::FullType{{ UInt32Type.name }};\n'
-    class_def += '    Symbol::Resolved(this)->typeSymbol = &UInt32Type;\n'
-    class_def += '    this->baseType = TypeCode::UInt;\n'
-    class_def += '    this->type.literal = true;\n'
-    class_def += '    this->builtin = true;\n'
-    for i, name in enumerate(border_color_names):
-        class_def += f'    BorderColor{name}.value = {hex(i)};\n'
-        class_def += f'    BorderColor{name}.type = Type::FullType{{ BorderColorType.name, true }};\n'
-        class_def += f'    BorderColor{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
-        class_def += f'    Symbol::Resolved(&BorderColor{name})->type = this;\n'
-    class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
-    for name in border_color_names:
-        class_def += f'        std::pair{{ "{name}"_c, &BorderColor{name} }},\n'
-    class_def += '    }};\n'
-    class_def += '};\n\n'
-    class_decl += '\n'
+    enum = Enumeration(
+        name = 'BorderColor',
+        type_name = 'UInt32',
+        members=[
+            EnumCase("Transparent"),
+            EnumCase("Black"),
+            EnumCase("White")
+        ]
+    )
+    declaration_string += enum.declaration()
+    definition_string += enum.definition()
 
     class StateMember:
         def __init__(self, name, data_type, array_size=1):
@@ -1670,199 +1388,156 @@ def generate_types():
             self.data_type = data_type
             self.array_size = array_size
 
-    class_decl += 'struct StencilState : public Type\n'
-    class_decl += '{\n'
-    class_decl += '    StencilState();\n'
-    class_decl += '};\n'
-    class_decl += 'extern StencilState StencilStateType;\n'
+    class State:
+        def __init__(self, name, members):
+            self.name = name
+            self.members = members
 
-    stencil_state_members = [
-        StateMember('Fail', 'StencilOp'),
-        StateMember('Pass', 'StencilOp'),
-        StateMember('DepthFail', 'StencilOp'),
-        StateMember('CompareFunction', 'CompareMode'),
-        StateMember('CompareMask', 'UInt32'),
-        StateMember('WriteMask', 'UInt32'),
-        StateMember('Reference', 'UInt32'),
-    ]
-    for member in stencil_state_members:
-        class_decl += f'extern Variable StencilState{member.name};\n'
-        class_def += f'Variable StencilState{member.name};\n'
+        def declaration(self):
+            decl = ''
+            for member in self.members:
+                decl += f'extern Variable {self.name}{member.name};\n'
+                if member.array_size > 1:
+                    decl += f'extern IntExpression {self.name}{member.name}ArraySize;\n'
+            decl += f'struct {self.name} : public Type\n'
+            decl += '{\n'
+            decl += f'    {self.name}();\n'
+            decl += '};\n'
+            decl += f'extern {self.name} {self.name}Type;\n\n'
+            return decl
 
-    class_def += 'StencilState StencilStateType;\n'
-    class_def += 'StencilState::StencilState()\n'
-    class_def += '{\n'
-    class_def += '    this->name = "StencilState";\n'
-    class_def += '    this->category = Type::UserTypeCategory;\n'
-    class_def += '    this->builtin = true;\n'
-    for member in stencil_state_members:
-        class_def += f'    StencilState{member.name}.name = "{member.name}"_c;\n'
-        class_def += f'    StencilState{member.name}.type = Type::FullType{{ {member.data_type}Type.name }};\n'
-        class_def += f'    Symbol::Resolved(&StencilState{member.name})->typeSymbol = &{member.data_type}Type;\n\n'
-    class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
-    for member in stencil_state_members:
-        class_def += f'        std::pair{{ "{member.name}"_c, &StencilState{member.name} }},\n'
-    class_def += '    }};\n'
-    class_def += '};\n\n'
-    class_decl += '\n'
+        def definition(self):
+            defn = ''
+            for member in self.members:
+                defn += f'Variable {self.name}{member.name};\n'
+                if member.array_size > 1:
+                    defn += f'IntExpression {self.name}{member.name}ArraySize({member.array_size});\n'
 
-    class_decl += 'struct RenderState : public Type\n'
-    class_decl += '{\n'
-    class_decl += '    RenderState();\n'
-    class_decl += '};\n'
-    class_decl += 'extern RenderState RenderStateType;\n'
+            defn += f'{self.name} {self.name}Type;\n'
+            defn += f'{self.name}::{self.name}()\n'
+            defn += '{\n'
+            defn += f'    this->name = "{self.name}";\n'
+            defn += '    this->builtin = true;\n'
+            for member in self.members:
+                defn += f'    {self.name}{member.name}.name = "{member.name}"_c;\n'
+                if member.array_size > 1:
+                    defn += f'    {self.name}{member.name}.type = Type::FullType{{ {member.data_type}Type.name, {{Type::FullType::Modifier::Array}}, {{&{self.name}{member.name}ArraySize}} }};\n'
+                else:
+                    defn += f'    {self.name}{member.name}.type = Type::FullType{{ {member.data_type}Type.name }};\n'
+                defn += f'    Symbol::Resolved(&{self.name}{member.name})->typeSymbol = &{member.data_type}Type;\n\n'
 
-    render_state_members = [ 
-        StateMember('DepthClampEnabled', 'Bool8'),
-        StateMember('DepthTestEnabled', 'Bool8'),
-        StateMember('DepthWriteEnabled', 'Bool8'),
-        StateMember('DepthBiasEnabled', 'Bool8'),
-        StateMember('DepthBiasConstantFactor', 'Float32'),
-        StateMember('DepthBiasClamp', 'Float32'),
-        StateMember('DepthBiasSlopeFactor', 'Float32'),
-        StateMember('DepthTestFunction', 'CompareMode'),
-        StateMember('DepthBoundsTestEnabled', 'Bool8'),
-        StateMember('DepthBoundsMin', 'Float32'),
-        StateMember('DepthBoundsMax', 'Float32'),
-        StateMember('NoRasterization', 'Bool8'),
-        StateMember('PolygonMode', 'PolygonMode'),
-        StateMember('CullMode', 'CullMode'),
-        StateMember('WindingOrder', 'WindingOrder'),
-        StateMember('StencilEnabled', 'Bool8'),
-        StateMember('StencilFront', 'StencilState'),
-        StateMember('StencilBack', 'StencilState'),
-        StateMember('LogicOpEnabled', 'Bool8'),
-        StateMember('LogicOp', 'LogicOp'),
-        StateMember('BlendEnabled', 'Bool8', 8),
-        StateMember('SourceBlend', 'BlendFactor', 8),
-        StateMember('DestinationBlend', 'BlendFactor', 8),
-        StateMember('SourceAlphaBlend', 'BlendFactor', 8),
-        StateMember('DestinationAlphaBlend', 'BlendFactor', 8),
-        StateMember('ColorBlendOp', 'BlendOperation', 8),
-        StateMember('AlphaBlendOp', 'BlendOperation', 8),
-        StateMember('Mask', 'BlendColorMask', 8),
-    ]
-    for member in render_state_members:
-        class_decl += f'extern Variable RenderState{member.name};\n'
-        class_def += f'Variable RenderState{member.name};\n'
-        if member.array_size > 1:
-            class_decl += f'extern IntExpression RenderState{member.name}ArraySize;\n'
-            class_def += f'IntExpression RenderState{member.name}ArraySize({member.array_size});\n'
+            defn += '    this->scope.symbolLookup = StaticMap { std::array{\n'
+            for member in self.members:
+                defn += f'        std::pair{{ "{member.name}"_c, &{self.name}{member.name} }},\n'
+            defn += '    }};\n'
+            defn += '};\n\n'
 
-    class_def += 'RenderState RenderStateType;\n'
-    class_def += 'RenderState::RenderState()\n'
-    class_def += '{\n'
-    class_def += '    this->name = "RenderState";\n'
-    class_def += '    this->category = Type::UserTypeCategory;\n'
-    class_def += '    this->builtin = true;\n'
-    for member in render_state_members:
-        class_def += f'    RenderState{member.name}.name = "{member.name}"_c;\n'
-        if member.array_size > 1:
-            class_def += f'    RenderState{member.name}.type = Type::FullType{{ {member.data_type}Type.name, {{Type::FullType::Modifier::Array}}, {{&RenderState{member.name}ArraySize}} }};\n'
-        else:
-            class_def += f'    RenderState{member.name}.type = Type::FullType{{ {member.data_type}Type.name }};\n'
-        class_def += f'    Symbol::Resolved(&RenderState{member.name})->typeSymbol = &{member.data_type}Type;\n\n'
-    class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
-    for member in render_state_members:
-        class_def += f'        std::pair{{ "{member.name}"_c, &RenderState{member.name} }},\n'
-    class_def += '    }};\n'
-    class_def += '};\n\n'
-    class_decl += '\n'
+            return defn
 
-    class_decl += 'struct SamplerState : public Type\n'
-    class_decl += '{\n'
-    class_decl += '    SamplerState();\n'
-    class_decl += '};\n'
-    class_decl += 'extern SamplerState SamplerStateType;\n'
+    state = State(
+        name = 'StencilState',
+        members=[
+            StateMember('Fail', 'StencilOp'),
+            StateMember('Pass', 'StencilOp'),
+            StateMember('DepthFail', 'StencilOp'),
+            StateMember('CompareFunction', 'CompareMode'),
+            StateMember('CompareMask', 'UInt32'),
+            StateMember('WriteMask', 'UInt32'),
+            StateMember('Reference', 'UInt32')
+        ]
+    )
+    declaration_string += state.declaration()
+    definition_string += state.definition()
 
-    sampler_state_members = [
-        StateMember('Address', 'AddressMode'),
-        StateMember('AddressU', 'AddressMode'),
-        StateMember('AddressV', 'AddressMode'),
-        StateMember('AddressW', 'AddressMode'),
-        StateMember('Filter', 'FilterMode'),
-        StateMember('MinFilter', 'FilterMode'),
-        StateMember('MagFilter', 'FilterMode'),
-        StateMember('MipFilter', 'FilterMode'),
-        StateMember('MipLodBias', 'Float32'),
-        StateMember('AnisotropyEnabled', 'Bool8'),
-        StateMember('MaxAnisotropy', 'UInt32'),
-        StateMember('CompareEnabled', 'Bool8'),
-        StateMember('CompareFunction', 'CompareMode'),
-        StateMember('MinLod', 'Float32'),
-        StateMember('MaxLod', 'Float32'),
-        StateMember('BorderColor', 'BorderColor'),
-        StateMember('UnnormalizedSamplingEnabled', 'Bool8')
-    ]
-    for member in sampler_state_members:
-        class_decl += f'extern Variable SamplerState{member.name};\n'
-        class_def += f'Variable SamplerState{member.name};\n'
+    state = State(
+        name = 'RenderState',
+        members=[
+            StateMember('DepthClampEnabled', 'Bool8'),
+            StateMember('DepthTestEnabled', 'Bool8'),
+            StateMember('DepthWriteEnabled', 'Bool8'),
+            StateMember('DepthBiasEnabled', 'Bool8'),
+            StateMember('DepthBiasConstantFactor', 'Float32'),
+            StateMember('DepthBiasClamp', 'Float32'),
+            StateMember('DepthBiasSlopeFactor', 'Float32'),
+            StateMember('DepthTestFunction', 'CompareMode'),
+            StateMember('DepthBoundsTestEnabled', 'Bool8'),
+            StateMember('DepthBoundsMin', 'Float32'),
+            StateMember('DepthBoundsMax', 'Float32'),
+            StateMember('NoRasterization', 'Bool8'),
+            StateMember('PolygonMode', 'PolygonMode'),
+            StateMember('CullMode', 'CullMode'),
+            StateMember('WindingOrder', 'WindingOrder'),
+            StateMember('StencilEnabled', 'Bool8'),
+            StateMember('StencilFront', 'StencilState'),
+            StateMember('StencilBack', 'StencilState'),
+            StateMember('LogicOpEnabled', 'Bool8'),
+            StateMember('LogicOp', 'LogicOp'),
+            StateMember('BlendEnabled', 'Bool8', 8),
+            StateMember('SourceBlend', 'BlendFactor', 8),
+            StateMember('DestinationBlend', 'BlendFactor', 8),
+            StateMember('SourceAlphaBlend', 'BlendFactor', 8),
+            StateMember('DestinationAlphaBlend', 'BlendFactor', 8),
+            StateMember('ColorBlendOp', 'BlendOperation', 8),
+            StateMember('AlphaBlendOp', 'BlendOperation', 8),
+            StateMember('Mask', 'BlendColorMask', 8)
+        ]
+    )
+    declaration_string += state.declaration()
+    definition_string += state.definition()
 
-    class_decl += '\n'
+    state = State(
+        name = 'SamplerState',
+        members=[
+            StateMember('Address', 'AddressMode'),
+            StateMember('AddressU', 'AddressMode'),
+            StateMember('AddressV', 'AddressMode'),
+            StateMember('AddressW', 'AddressMode'),
+            StateMember('Filter', 'FilterMode'),
+            StateMember('MinFilter', 'FilterMode'),
+            StateMember('MagFilter', 'FilterMode'),
+            StateMember('MipFilter', 'FilterMode'),
+            StateMember('MipLodBias', 'Float32'),
+            StateMember('AnisotropyEnabled', 'Bool8'),
+            StateMember('MaxAnisotropy', 'UInt32'),
+            StateMember('CompareEnabled', 'Bool8'),
+            StateMember('CompareFunction', 'CompareMode'),
+            StateMember('MinLod', 'Float32'),
+            StateMember('MaxLod', 'Float32'),
+            StateMember('BorderColor', 'BorderColor'),
+            StateMember('UnnormalizedSamplingEnabled', 'Bool8')
+        ]
+    )
+    declaration_string += state.declaration()
+    definition_string += state.definition()
 
-    class_def += 'SamplerState SamplerStateType;\n'
-    class_def += 'SamplerState::SamplerState()\n'
-    class_def += '{\n'
-    class_def += '    this->name = "SamplerState";\n'
-    class_def += '    this->category = Type::UserTypeCategory;\n'
-    class_def += '    this->builtin = true;\n'
-    for member in sampler_state_members:
-        class_def += f'    SamplerState{member.name}.name = "{member.name}"_c;\n'
-        class_def += f'    SamplerState{member.name}.type = Type::FullType{{ {member.data_type}Type.name }};\n'
-        class_def += f'    Symbol::Resolved(&SamplerState{member.name})->typeSymbol = &{member.data_type}Type;\n\n'
-    class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
-    for member in sampler_state_members:
-        class_def += f'        std::pair{{ "{member.name}"_c, &SamplerState{member.name} }},\n'
-    class_def += '    }};\n'
-    class_def += '};\n\n' 
+    state = State(
+        name = 'Program',
+        members=[
+            StateMember('VertexShader', 'FunctionPtr'),
+            StateMember('HullShader', 'FunctionPtr'),
+            StateMember('DomainShader', 'FunctionPtr'),
+            StateMember('GeometryShader', 'FunctionPtr'),
+            StateMember('PixelShader', 'FunctionPtr'),
+            StateMember('ComputeShader', 'FunctionPtr'),
+            StateMember('TaskShader', 'FunctionPtr'),
+            StateMember('MeshShader', 'FunctionPtr'),
+            StateMember('RayGenerationShader', 'FunctionPtr'),
+            StateMember('RayAnyHitShader', 'FunctionPtr'),
+            StateMember('RayClosestHitShader', 'FunctionPtr'),
+            StateMember('RayMissShader', 'FunctionPtr'),
+            StateMember('RayIntersectionShader', 'FunctionPtr'),
+            StateMember('RayCallableShader', 'FunctionPtr'),
+            StateMember('RenderState', 'RenderState')
+        ]
+    )
+    declaration_string += state.declaration()
+    definition_string += state.definition()
 
-
-    class_decl += 'struct Program : public Type\n'
-    class_decl += '{\n'
-    class_decl += '    Program();\n'
-    class_decl += '};\n'
-    class_decl += 'extern Program ProgramType;\n'
-
-    program_members = [
-        StateMember('VertexShader', 'FunctionPtr'),
-        StateMember('HullShader', 'FunctionPtr'),
-        StateMember('DomainShader', 'FunctionPtr'),
-        StateMember('GeometryShader', 'FunctionPtr'),
-        StateMember('PixelShader', 'FunctionPtr'),
-        StateMember('ComputeShader', 'FunctionPtr'),
-        StateMember('TaskShader', 'FunctionPtr'),
-        StateMember('MeshShader', 'FunctionPtr'),
-        StateMember('RayGenerationShader', 'FunctionPtr'),
-        StateMember('RayAnyHitShader', 'FunctionPtr'),
-        StateMember('RayClosestHitShader', 'FunctionPtr'),
-        StateMember('RayMissShader', 'FunctionPtr'),
-        StateMember('RayIntersectionShader', 'FunctionPtr'),
-        StateMember('RayCallableShader', 'FunctionPtr'),
-        StateMember('RenderState', 'RenderState'),
-    ]
-    for member in program_members:
-        class_decl += f'extern Variable Program{member.name};\n'
-        class_def += f'Variable Program{member.name};\n'
-
-
-    class_def += 'Program ProgramType;\n'
-    class_def += 'Program::Program()\n'
-    class_def += '{\n'
-    class_def += '    this->name = "Program";\n'
-    class_def += '    this->category = Type::UserTypeCategory;\n'
-    class_def += '    this->builtin = true;\n'
-    for member in program_members:
-        class_def += f'    Program{member.name}.name = "{member.name}"_c;\n'
-        class_def += f'    Program{member.name}.type = Type::FullType{{ {member.data_type}Type.name }};\n'
-        class_def += f'    Symbol::Resolved(&Program{member.name})->typeSymbol = &{member.data_type}Type;\n\n'
-    class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
-    for member in program_members:
-        class_def += f'        std::pair{{ "{member.name}"_c, &Program{member.name} }},\n'
-    class_def += '    }};\n'
-    class_def += '};\n\n' 
-
-    header_file.write(class_decl)
-    source_file.write(class_def)
+    source_file.write(namer.definition())
+    header_file.write(declaration_string[0:-1] + '\n')
+    header_file.write("\n")
+    source_file.write(definition_string[0:-1] + '\n')
+    source_file.write("\n")
 
     header_file.write('} // namespace GPULang\n\n')
     source_file.write('} // namespace GPULang\n\n')
