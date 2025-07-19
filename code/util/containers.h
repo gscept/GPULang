@@ -157,19 +157,19 @@ template<typename TYPE>
 struct PinnedArray
 {
     PinnedArray()
-        : data(nullptr)
-        , maxAllocationCount(0)
+        : maxAllocationCount(0)
         , committedPages(0)
         , size(0)
         , capacity(0)
+        , data(nullptr)
     {
         
     }
     
     PinnedArray(size_t maxAllocationCount)
-        : size(0)
+        : committedPages(0)
+        , size(0)
         , capacity(0)
-        , committedPages(0)
     {
         this->maxAllocationCount = maxAllocationCount;
     }
@@ -697,6 +697,14 @@ struct FixedArray
         }
     }
     
+    template<size_t SIZE>
+    constexpr FixedArray(const std::array<T, SIZE>& list)
+    {
+        this->buf = const_cast<T*>(list.data());
+        this->size = list.size();
+        this->capacity = list.size();
+    }
+    
     FixedArray(const T* begin, const T* end)
     {
         size_t repeat = end - begin;
@@ -790,6 +798,15 @@ struct FixedArray
         {
             this->buf[this->size++] = val;
         }
+    }
+    
+    template<size_t SIZE>
+    constexpr FixedArray<T>& operator=(const std::array<T, SIZE>& list)
+    {
+        this->buf = const_cast<T*>(list.data());
+        this->size = list.size();
+        this->capacity = list.size();
+        return *this;
     }
     
     void operator=(const FixedArray<T>& vec)

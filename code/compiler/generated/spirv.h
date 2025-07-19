@@ -14807,56 +14807,84 @@ SPIRVResult SPIRV_fract_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_saturate_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Saturate, val);
+    SPIRVResult min = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(0));
+    SPIRVResult max = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(1));
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_saturate_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Saturate, val);
+    SPIRVResult min = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(0));
+    SPIRVResult max = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(1));
+    min = GenerateSplatCompositeSPIRV(c, g, returnType, 2, min);
+    max = GenerateSplatCompositeSPIRV(c, g, returnType, 2, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_saturate_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Saturate, val);
+    SPIRVResult min = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(0));
+    SPIRVResult max = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(1));
+    min = GenerateSplatCompositeSPIRV(c, g, returnType, 3, min);
+    max = GenerateSplatCompositeSPIRV(c, g, returnType, 3, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_saturate_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Saturate, val);
+    SPIRVResult min = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(0));
+    SPIRVResult max = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(1));
+    min = GenerateSplatCompositeSPIRV(c, g, returnType, 4, min);
+    max = GenerateSplatCompositeSPIRV(c, g, returnType, 4, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_saturate_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Saturate, val);
+    SPIRVResult min = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(0));
+    SPIRVResult max = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(1));
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_saturate_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Saturate, val);
+    SPIRVResult min = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(0));
+    SPIRVResult max = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(1));
+    min = GenerateSplatCompositeSPIRV(c, g, returnType, 2, min);
+    max = GenerateSplatCompositeSPIRV(c, g, returnType, 2, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_saturate_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Saturate, val);
+    SPIRVResult min = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(0));
+    SPIRVResult max = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(1));
+    min = GenerateSplatCompositeSPIRV(c, g, returnType, 3, min);
+    max = GenerateSplatCompositeSPIRV(c, g, returnType, 3, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_saturate_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Saturate, val);
+    SPIRVResult min = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(0));
+    SPIRVResult max = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(1));
+    min = GenerateSplatCompositeSPIRV(c, g, returnType, 4, min);
+    max = GenerateSplatCompositeSPIRV(c, g, returnType, 4, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -14919,168 +14947,168 @@ SPIRVResult SPIRV_trunc_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_ddx_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdx, val);
+    uint32_t ret = g->writer->MappedInstruction(OpDPdx, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddx_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdx, val);
+    uint32_t ret = g->writer->MappedInstruction(OpDPdx, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddx_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdx, val);
+    uint32_t ret = g->writer->MappedInstruction(OpDPdx, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddx_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdx, val);
+    uint32_t ret = g->writer->MappedInstruction(OpDPdx, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddx_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdx, val);
+    uint32_t ret = g->writer->MappedInstruction(OpDPdx, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddx_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdx, val);
+    uint32_t ret = g->writer->MappedInstruction(OpDPdx, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddx_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdx, val);
+    uint32_t ret = g->writer->MappedInstruction(OpDPdx, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddx_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdx, val);
+    uint32_t ret = g->writer->MappedInstruction(OpDPdx, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddy_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdy, val);
+    uint32_t ret = g->writer->MappedInstruction(OpDPdy, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddy_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdy, val);
+    uint32_t ret = g->writer->MappedInstruction(OpDPdy, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddy_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdy, val);
+    uint32_t ret = g->writer->MappedInstruction(OpDPdy, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddy_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdy, val);
+    uint32_t ret = g->writer->MappedInstruction(OpDPdy, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddy_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdy, val);
+    uint32_t ret = g->writer->MappedInstruction(OpDPdy, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddy_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdy, val);
+    uint32_t ret = g->writer->MappedInstruction(OpDPdy, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddy_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdy, val);
+    uint32_t ret = g->writer->MappedInstruction(OpDPdy, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddy_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdy, val);
+    uint32_t ret = g->writer->MappedInstruction(OpDPdy, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_fwidth_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Fwidth, val);
+    uint32_t ret = g->writer->MappedInstruction(OpFwidth, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_fwidth_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Fwidth, val);
+    uint32_t ret = g->writer->MappedInstruction(OpFwidth, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_fwidth_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Fwidth, val);
+    uint32_t ret = g->writer->MappedInstruction(OpFwidth, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_fwidth_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Fwidth, val);
+    uint32_t ret = g->writer->MappedInstruction(OpFwidth, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_fwidth_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Fwidth, val);
+    uint32_t ret = g->writer->MappedInstruction(OpFwidth, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_fwidth_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Fwidth, val);
+    uint32_t ret = g->writer->MappedInstruction(OpFwidth, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_fwidth_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Fwidth, val);
+    uint32_t ret = g->writer->MappedInstruction(OpFwidth, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_fwidth_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Fwidth, val);
+    uint32_t ret = g->writer->MappedInstruction(OpFwidth, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -15451,126 +15479,126 @@ SPIRVResult SPIRV_all_Bool8x4(const Compiler* c, SPIRVGenerator* g, uint32_t ret
 SPIRVResult SPIRV_transpose_Float32x2x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
+    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float16x2x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
+    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float32x2x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
+    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float16x2x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
+    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float32x2x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
+    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float16x2x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
+    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float32x3x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
+    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float16x3x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
+    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float32x3x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
+    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float16x3x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
+    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float32x3x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
+    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float16x3x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
+    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float32x4x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
+    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float16x4x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
+    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float32x4x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
+    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float16x4x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
+    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float32x4x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
+    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float16x4x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
+    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -15841,14 +15869,6 @@ SPIRVResult SPIRV_VertexSetOutputViewport_UInt32(const Compiler* c, SPIRVGenerat
 
 SPIRVResult SPIRV_VertexExportCoordinates_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::ShaderViewportIndex);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::ViewportIndex);
-    g->interfaceVariables.Insert(ret);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, args[0]);
-    return SPIRVResult::Invalid();
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
@@ -15862,23 +15882,6 @@ SPIRVResult SPIRV_VertexExportCoordinates_Float32x4(const Compiler* c, SPIRVGene
 
 SPIRVResult SPIRV_VertexExportCoordinates_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::ShaderViewportIndex);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::ViewportIndex);
-    g->interfaceVariables.Insert(ret);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, args[0]);
-    return SPIRVResult::Invalid();
-    g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Position);
-    g->interfaceVariables.Insert(ret);
-    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
-    return SPIRVResult::Invalid();
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
@@ -17392,7 +17395,7 @@ SPIRVResult SPIRV_SubgroupGetNum(const Compiler* c, SPIRVGenerator* g, uint32_t 
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSubgroupGetNum"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::SubgroupNum);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::NumSubgroups);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -17466,15 +17469,6 @@ SPIRVResult SPIRV_SubgroupGetGreaterMask(const Compiler* c, SPIRVGenerator* g, u
 
 SPIRVResult SPIRV_SubgroupGetFirstActiveThread(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    g->writer->Capability(Capabilities::GroupNonUniform);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplSubgroupGetGreaterMask"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::SubgroupGtMask);
-    g->interfaceVariables.Insert(ret);
-    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
-    res.parentTypes.push_back(baseType);
-    return res;
     g->writer->Capability(Capabilities::GroupNonUniform);
     uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformElect, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup);
     return SPIRVResult(ret, returnType, true);
@@ -17726,7 +17720,7 @@ SPIRVResult SPIRV_SubgroupSwapDiagonal_Float32(const Compiler* c, SPIRVGenerator
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17735,7 +17729,7 @@ SPIRVResult SPIRV_SubgroupSwapDiagonal_Float32x2(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17744,7 +17738,7 @@ SPIRVResult SPIRV_SubgroupSwapDiagonal_Float32x3(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17753,7 +17747,7 @@ SPIRVResult SPIRV_SubgroupSwapDiagonal_Float32x4(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17762,7 +17756,7 @@ SPIRVResult SPIRV_SubgroupSwapDiagonal_Float16(const Compiler* c, SPIRVGenerator
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17771,7 +17765,7 @@ SPIRVResult SPIRV_SubgroupSwapDiagonal_Float16x2(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17780,7 +17774,7 @@ SPIRVResult SPIRV_SubgroupSwapDiagonal_Float16x3(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17789,7 +17783,7 @@ SPIRVResult SPIRV_SubgroupSwapDiagonal_Float16x4(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17798,7 +17792,7 @@ SPIRVResult SPIRV_SubgroupSwapDiagonal_Int32(const Compiler* c, SPIRVGenerator* 
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17807,7 +17801,7 @@ SPIRVResult SPIRV_SubgroupSwapDiagonal_Int32x2(const Compiler* c, SPIRVGenerator
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17816,7 +17810,7 @@ SPIRVResult SPIRV_SubgroupSwapDiagonal_Int32x3(const Compiler* c, SPIRVGenerator
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17825,7 +17819,7 @@ SPIRVResult SPIRV_SubgroupSwapDiagonal_Int32x4(const Compiler* c, SPIRVGenerator
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17834,7 +17828,7 @@ SPIRVResult SPIRV_SubgroupSwapDiagonal_Int16(const Compiler* c, SPIRVGenerator* 
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17843,7 +17837,7 @@ SPIRVResult SPIRV_SubgroupSwapDiagonal_Int16x2(const Compiler* c, SPIRVGenerator
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17852,7 +17846,7 @@ SPIRVResult SPIRV_SubgroupSwapDiagonal_Int16x3(const Compiler* c, SPIRVGenerator
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17861,7 +17855,7 @@ SPIRVResult SPIRV_SubgroupSwapDiagonal_Int16x4(const Compiler* c, SPIRVGenerator
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17870,7 +17864,7 @@ SPIRVResult SPIRV_SubgroupSwapDiagonal_UInt32(const Compiler* c, SPIRVGenerator*
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17879,7 +17873,7 @@ SPIRVResult SPIRV_SubgroupSwapDiagonal_UInt32x2(const Compiler* c, SPIRVGenerato
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17888,7 +17882,7 @@ SPIRVResult SPIRV_SubgroupSwapDiagonal_UInt32x3(const Compiler* c, SPIRVGenerato
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17897,7 +17891,7 @@ SPIRVResult SPIRV_SubgroupSwapDiagonal_UInt32x4(const Compiler* c, SPIRVGenerato
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17906,7 +17900,7 @@ SPIRVResult SPIRV_SubgroupSwapDiagonal_UInt16(const Compiler* c, SPIRVGenerator*
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17915,7 +17909,7 @@ SPIRVResult SPIRV_SubgroupSwapDiagonal_UInt16x2(const Compiler* c, SPIRVGenerato
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17924,7 +17918,7 @@ SPIRVResult SPIRV_SubgroupSwapDiagonal_UInt16x3(const Compiler* c, SPIRVGenerato
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17933,7 +17927,7 @@ SPIRVResult SPIRV_SubgroupSwapDiagonal_UInt16x4(const Compiler* c, SPIRVGenerato
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17942,7 +17936,7 @@ SPIRVResult SPIRV_SubgroupSwapVertical_Float32(const Compiler* c, SPIRVGenerator
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17951,7 +17945,7 @@ SPIRVResult SPIRV_SubgroupSwapVertical_Float32x2(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17960,7 +17954,7 @@ SPIRVResult SPIRV_SubgroupSwapVertical_Float32x3(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17969,7 +17963,7 @@ SPIRVResult SPIRV_SubgroupSwapVertical_Float32x4(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17978,7 +17972,7 @@ SPIRVResult SPIRV_SubgroupSwapVertical_Float16(const Compiler* c, SPIRVGenerator
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17987,7 +17981,7 @@ SPIRVResult SPIRV_SubgroupSwapVertical_Float16x2(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17996,7 +17990,7 @@ SPIRVResult SPIRV_SubgroupSwapVertical_Float16x3(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18005,7 +17999,7 @@ SPIRVResult SPIRV_SubgroupSwapVertical_Float16x4(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18014,7 +18008,7 @@ SPIRVResult SPIRV_SubgroupSwapVertical_Int32(const Compiler* c, SPIRVGenerator* 
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18023,7 +18017,7 @@ SPIRVResult SPIRV_SubgroupSwapVertical_Int32x2(const Compiler* c, SPIRVGenerator
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18032,7 +18026,7 @@ SPIRVResult SPIRV_SubgroupSwapVertical_Int32x3(const Compiler* c, SPIRVGenerator
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18041,7 +18035,7 @@ SPIRVResult SPIRV_SubgroupSwapVertical_Int32x4(const Compiler* c, SPIRVGenerator
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18050,7 +18044,7 @@ SPIRVResult SPIRV_SubgroupSwapVertical_Int16(const Compiler* c, SPIRVGenerator* 
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18059,7 +18053,7 @@ SPIRVResult SPIRV_SubgroupSwapVertical_Int16x2(const Compiler* c, SPIRVGenerator
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18068,7 +18062,7 @@ SPIRVResult SPIRV_SubgroupSwapVertical_Int16x3(const Compiler* c, SPIRVGenerator
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18077,7 +18071,7 @@ SPIRVResult SPIRV_SubgroupSwapVertical_Int16x4(const Compiler* c, SPIRVGenerator
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18086,7 +18080,7 @@ SPIRVResult SPIRV_SubgroupSwapVertical_UInt32(const Compiler* c, SPIRVGenerator*
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18095,7 +18089,7 @@ SPIRVResult SPIRV_SubgroupSwapVertical_UInt32x2(const Compiler* c, SPIRVGenerato
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18104,7 +18098,7 @@ SPIRVResult SPIRV_SubgroupSwapVertical_UInt32x3(const Compiler* c, SPIRVGenerato
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18113,7 +18107,7 @@ SPIRVResult SPIRV_SubgroupSwapVertical_UInt32x4(const Compiler* c, SPIRVGenerato
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18122,7 +18116,7 @@ SPIRVResult SPIRV_SubgroupSwapVertical_UInt16(const Compiler* c, SPIRVGenerator*
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18131,7 +18125,7 @@ SPIRVResult SPIRV_SubgroupSwapVertical_UInt16x2(const Compiler* c, SPIRVGenerato
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18140,7 +18134,7 @@ SPIRVResult SPIRV_SubgroupSwapVertical_UInt16x3(const Compiler* c, SPIRVGenerato
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18149,7 +18143,7 @@ SPIRVResult SPIRV_SubgroupSwapVertical_UInt16x4(const Compiler* c, SPIRVGenerato
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18158,7 +18152,7 @@ SPIRVResult SPIRV_SubgroupSwapHorizontal_Float32(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18167,7 +18161,7 @@ SPIRVResult SPIRV_SubgroupSwapHorizontal_Float32x2(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18176,7 +18170,7 @@ SPIRVResult SPIRV_SubgroupSwapHorizontal_Float32x3(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18185,7 +18179,7 @@ SPIRVResult SPIRV_SubgroupSwapHorizontal_Float32x4(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18194,7 +18188,7 @@ SPIRVResult SPIRV_SubgroupSwapHorizontal_Float16(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18203,7 +18197,7 @@ SPIRVResult SPIRV_SubgroupSwapHorizontal_Float16x2(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18212,7 +18206,7 @@ SPIRVResult SPIRV_SubgroupSwapHorizontal_Float16x3(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18221,7 +18215,7 @@ SPIRVResult SPIRV_SubgroupSwapHorizontal_Float16x4(const Compiler* c, SPIRVGener
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18230,7 +18224,7 @@ SPIRVResult SPIRV_SubgroupSwapHorizontal_Int32(const Compiler* c, SPIRVGenerator
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18239,7 +18233,7 @@ SPIRVResult SPIRV_SubgroupSwapHorizontal_Int32x2(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18248,7 +18242,7 @@ SPIRVResult SPIRV_SubgroupSwapHorizontal_Int32x3(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18257,7 +18251,7 @@ SPIRVResult SPIRV_SubgroupSwapHorizontal_Int32x4(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18266,7 +18260,7 @@ SPIRVResult SPIRV_SubgroupSwapHorizontal_Int16(const Compiler* c, SPIRVGenerator
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18275,7 +18269,7 @@ SPIRVResult SPIRV_SubgroupSwapHorizontal_Int16x2(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18284,7 +18278,7 @@ SPIRVResult SPIRV_SubgroupSwapHorizontal_Int16x3(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18293,7 +18287,7 @@ SPIRVResult SPIRV_SubgroupSwapHorizontal_Int16x4(const Compiler* c, SPIRVGenerat
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18302,7 +18296,7 @@ SPIRVResult SPIRV_SubgroupSwapHorizontal_UInt32(const Compiler* c, SPIRVGenerato
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18311,7 +18305,7 @@ SPIRVResult SPIRV_SubgroupSwapHorizontal_UInt32x2(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18320,7 +18314,7 @@ SPIRVResult SPIRV_SubgroupSwapHorizontal_UInt32x3(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18329,7 +18323,7 @@ SPIRVResult SPIRV_SubgroupSwapHorizontal_UInt32x4(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18338,7 +18332,7 @@ SPIRVResult SPIRV_SubgroupSwapHorizontal_UInt16(const Compiler* c, SPIRVGenerato
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18347,7 +18341,7 @@ SPIRVResult SPIRV_SubgroupSwapHorizontal_UInt16x2(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18356,7 +18350,7 @@ SPIRVResult SPIRV_SubgroupSwapHorizontal_UInt16x3(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18365,7 +18359,7 @@ SPIRVResult SPIRV_SubgroupSwapHorizontal_UInt16x4(const Compiler* c, SPIRVGenera
     g->writer->Capability(Capabilities::GroupNonUniformQuad);
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
-    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -18909,78 +18903,6 @@ SPIRVResult SPIRV_BitInsert_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_BitExtract_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
-    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitFieldSExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitExtract_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
-    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitFieldSExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitExtract_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
-    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitFieldSExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitExtract_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
-    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitFieldSExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitExtract_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
-    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitFieldSExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitExtract_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
-    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitFieldSExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitExtract_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
-    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitFieldSExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitExtract_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
-    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitFieldSExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
-    return SPIRVResult(ret, returnType, true);
-}
-
 SPIRVResult SPIRV_BitExtract_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
@@ -18990,30 +18912,12 @@ SPIRVResult SPIRV_BitExtract_UInt32(const Compiler* c, SPIRVGenerator* g, uint32
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_BitExtract_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_BitExtract_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitFieldUExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitExtract_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
-    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitFieldUExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitExtract_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
-    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitFieldUExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
+    uint32_t ret = g->writer->MappedInstruction(OpBitFieldSExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -19026,86 +18930,12 @@ SPIRVResult SPIRV_BitExtract_UInt16(const Compiler* c, SPIRVGenerator* g, uint32
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_BitExtract_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_BitExtract_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitFieldUExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitExtract_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
-    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitFieldUExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitExtract_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
-    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitFieldUExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitReverse_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitReverse_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitReverse_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitReverse_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitReverse_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitReverse_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitReverse_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitReverse_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    uint32_t ret = g->writer->MappedInstruction(OpBitFieldSExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -19116,21 +18946,7 @@ SPIRVResult SPIRV_BitReverse_UInt32(const Compiler* c, SPIRVGenerator* g, uint32
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_BitReverse_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitReverse_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitReverse_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_BitReverse_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
     uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
@@ -19144,77 +18960,7 @@ SPIRVResult SPIRV_BitReverse_UInt16(const Compiler* c, SPIRVGenerator* g, uint32
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_BitReverse_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitReverse_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitReverse_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitCount_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitCount_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitCount_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitCount_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitCount_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitCount_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitCount_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitCount_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_BitReverse_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
     uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
@@ -19228,21 +18974,7 @@ SPIRVResult SPIRV_BitCount_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_BitCount_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitCount_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitCount_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_BitCount_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
     uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
@@ -19256,21 +18988,7 @@ SPIRVResult SPIRV_BitCount_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_BitCount_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitCount_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
-{
-    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
-    return SPIRVResult(ret, returnType, true);
-}
-
-SPIRVResult SPIRV_BitCount_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_BitCount_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
     uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
@@ -25736,54 +25454,18 @@ std::pair{ &AtomicCompareExchange_UInt16, &SPIRV_AtomicCompareExchange_UInt16 },
 std::pair{ &AtomicCompareExchange_Int16, &SPIRV_AtomicCompareExchange_Int16 },
 std::pair{ &BitInsert_UInt16, &SPIRV_BitInsert_UInt16 },
 std::pair{ &BitInsert_UInt32, &SPIRV_BitInsert_UInt32 },
-std::pair{ &BitExtract_Int32, &SPIRV_BitExtract_Int32 },
-std::pair{ &BitExtract_Int32x2, &SPIRV_BitExtract_Int32x2 },
-std::pair{ &BitExtract_Int32x3, &SPIRV_BitExtract_Int32x3 },
-std::pair{ &BitExtract_Int32x4, &SPIRV_BitExtract_Int32x4 },
-std::pair{ &BitExtract_Int16, &SPIRV_BitExtract_Int16 },
-std::pair{ &BitExtract_Int16x2, &SPIRV_BitExtract_Int16x2 },
-std::pair{ &BitExtract_Int16x3, &SPIRV_BitExtract_Int16x3 },
-std::pair{ &BitExtract_Int16x4, &SPIRV_BitExtract_Int16x4 },
 std::pair{ &BitExtract_UInt32, &SPIRV_BitExtract_UInt32 },
-std::pair{ &BitExtract_UInt32x2, &SPIRV_BitExtract_UInt32x2 },
-std::pair{ &BitExtract_UInt32x3, &SPIRV_BitExtract_UInt32x3 },
-std::pair{ &BitExtract_UInt32x4, &SPIRV_BitExtract_UInt32x4 },
+std::pair{ &BitExtract_Int32, &SPIRV_BitExtract_Int32 },
 std::pair{ &BitExtract_UInt16, &SPIRV_BitExtract_UInt16 },
-std::pair{ &BitExtract_UInt16x2, &SPIRV_BitExtract_UInt16x2 },
-std::pair{ &BitExtract_UInt16x3, &SPIRV_BitExtract_UInt16x3 },
-std::pair{ &BitExtract_UInt16x4, &SPIRV_BitExtract_UInt16x4 },
-std::pair{ &BitReverse_Int32, &SPIRV_BitReverse_Int32 },
-std::pair{ &BitReverse_Int32x2, &SPIRV_BitReverse_Int32x2 },
-std::pair{ &BitReverse_Int32x3, &SPIRV_BitReverse_Int32x3 },
-std::pair{ &BitReverse_Int32x4, &SPIRV_BitReverse_Int32x4 },
-std::pair{ &BitReverse_Int16, &SPIRV_BitReverse_Int16 },
-std::pair{ &BitReverse_Int16x2, &SPIRV_BitReverse_Int16x2 },
-std::pair{ &BitReverse_Int16x3, &SPIRV_BitReverse_Int16x3 },
-std::pair{ &BitReverse_Int16x4, &SPIRV_BitReverse_Int16x4 },
+std::pair{ &BitExtract_Int16, &SPIRV_BitExtract_Int16 },
 std::pair{ &BitReverse_UInt32, &SPIRV_BitReverse_UInt32 },
-std::pair{ &BitReverse_UInt32x2, &SPIRV_BitReverse_UInt32x2 },
-std::pair{ &BitReverse_UInt32x3, &SPIRV_BitReverse_UInt32x3 },
-std::pair{ &BitReverse_UInt32x4, &SPIRV_BitReverse_UInt32x4 },
+std::pair{ &BitReverse_Int32, &SPIRV_BitReverse_Int32 },
 std::pair{ &BitReverse_UInt16, &SPIRV_BitReverse_UInt16 },
-std::pair{ &BitReverse_UInt16x2, &SPIRV_BitReverse_UInt16x2 },
-std::pair{ &BitReverse_UInt16x3, &SPIRV_BitReverse_UInt16x3 },
-std::pair{ &BitReverse_UInt16x4, &SPIRV_BitReverse_UInt16x4 },
-std::pair{ &BitCount_Int32, &SPIRV_BitCount_Int32 },
-std::pair{ &BitCount_Int32x2, &SPIRV_BitCount_Int32x2 },
-std::pair{ &BitCount_Int32x3, &SPIRV_BitCount_Int32x3 },
-std::pair{ &BitCount_Int32x4, &SPIRV_BitCount_Int32x4 },
-std::pair{ &BitCount_Int16, &SPIRV_BitCount_Int16 },
-std::pair{ &BitCount_Int16x2, &SPIRV_BitCount_Int16x2 },
-std::pair{ &BitCount_Int16x3, &SPIRV_BitCount_Int16x3 },
-std::pair{ &BitCount_Int16x4, &SPIRV_BitCount_Int16x4 },
+std::pair{ &BitReverse_Int16, &SPIRV_BitReverse_Int16 },
 std::pair{ &BitCount_UInt32, &SPIRV_BitCount_UInt32 },
-std::pair{ &BitCount_UInt32x2, &SPIRV_BitCount_UInt32x2 },
-std::pair{ &BitCount_UInt32x3, &SPIRV_BitCount_UInt32x3 },
-std::pair{ &BitCount_UInt32x4, &SPIRV_BitCount_UInt32x4 },
+std::pair{ &BitCount_Int32, &SPIRV_BitCount_Int32 },
 std::pair{ &BitCount_UInt16, &SPIRV_BitCount_UInt16 },
-std::pair{ &BitCount_UInt16x2, &SPIRV_BitCount_UInt16x2 },
-std::pair{ &BitCount_UInt16x3, &SPIRV_BitCount_UInt16x3 },
-std::pair{ &BitCount_UInt16x4, &SPIRV_BitCount_UInt16x4 },
+std::pair{ &BitCount_Int16, &SPIRV_BitCount_Int16 },
 std::pair{ &ExecutionBarrier, &SPIRV_ExecutionBarrier },
 std::pair{ &ExecutionBarrierSubgroup, &SPIRV_ExecutionBarrierSubgroup },
 std::pair{ &ExecutionBarrierWorkgroup, &SPIRV_ExecutionBarrierWorkgroup },

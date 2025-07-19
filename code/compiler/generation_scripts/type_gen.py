@@ -441,7 +441,7 @@ def generate_types():
                 return_string += f'    {param.decl_name}.name = "{param.api_name}"_c;\n'
                 return_string += f'    {param.decl_name}.type = Type::FullType{{ {param.type_name}Type.name }};\n'
                 if param.literal:
-                    return_string += f'    {param.decl_name}.literal = true;\n'
+                    return_string += f'    {param.decl_name}.type.literal = true;\n'
                 if param.pointer:
                     return_string += f'    {param.decl_name}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'
             if self.documentation:
@@ -482,6 +482,7 @@ def generate_types():
             declaration_string += '};\n'
             declaration_string += f'extern {type_name} {type_name}Type;\n\n'
 
+            intrinsic_list.append(f'    std::pair{{ "{data_type_name}"_c, &{type_name}Type }}')
             namer.names.append(NamerEntry(type_name, data_type_name))
             setup_string = ""
             list_string = []
@@ -603,8 +604,6 @@ def generate_types():
 
 
             spirv_intrinsics.write(spirv_type_construction)
-        
-
             for name, op, idx_type in zip(index_operator_names, index_operators, index_types):
                 function_name = f'{type_name}_operator_{name}'
                 arg_name = f'{type_name}_operator_{name}_arg0'
@@ -760,6 +759,8 @@ def generate_types():
                 for cols in range(2, 5):
                     compatible_matrix_type = f'Float32x{size}x{cols}'
                     return_type = f'{type}x{cols}'
+
+                    
                     for name, op in zip(vector_matrix_operator_names, vector_matrix_operators):
                         function_name = f'{type_name}_operator_{name}_{compatible_matrix_type}'
                         arg_name = f'{function_name}_arg0'
@@ -830,10 +831,10 @@ def generate_types():
             definition_string += f'\n'
             definition_string += f'{setup_string}'
             definition_string += f'    this->scope.symbolLookup = StaticMap {{ std::array{{\n'
-            definition_string += f'    {{\n'
             definition_string += f'{",\n".join(list_string)}\n'
             definition_string += f'    }} }};\n'
-            definition_string += '}\n\n'
+            definition_string += '}\n'
+            definition_string += f'{type_name} {type_name}Type;\n\n'
 
 
     # Matrix types
@@ -856,7 +857,7 @@ def generate_types():
 
                 type_name = f'{type}x{row_size}x{column_size}'
                 data_type_name = f'{data_type_mapping[type]}x{row_size}x{column_size}'
-
+                intrinsic_list.append(f'    std::pair{{ "{data_type_name}"_c, &{type_name}Type }}')
                 namer.names.append(NamerEntry(type_name, data_type_name))
             
                 setup_string = ""
@@ -1029,8 +1030,11 @@ def generate_types():
                 definition_string += '    this->builtin = true;\n'
                 definition_string += '\n'
                 definition_string += f'{setup_string}'
-                definition_string += f'    this->scope.symbolLookup = StaticMap {{ \n    std::array{{\n{list_string[0:-2]}\n    }}\n    }};   \n'
-                definition_string += '}\n\n'
+                definition_string += f'    this->scope.symbolLookup = StaticMap {{ std::array<std::pair<ConstantString, Symbol*>, {list_string.__len__()}> {{\n'
+                definition_string += f'{",\n".join(list_string)}\n'
+                definition_string += f'    }} }};\n'
+                definition_string += '}\n'
+                definition_string += f'{type_name} {type_name}Type;\n\n'
 
     class Type:
         def __init__(self, name, category=None, base_type = None):
@@ -1059,12 +1063,13 @@ def generate_types():
             if self.baseType:
                 class_def += f'    this->baseType = TypeCode::{self.baseType};\n'
             class_def += '    this->builtin = true;\n'
-            class_def += '};\n\n'
+            class_def += '};\n'
+            class_def += f'{self.name} {self.name}Type;\n\n'
             return class_def
 
     # Texture types
     texture_dimensions = ['1D', '2D', '3D', 'Cube']
-    texture_multisampling = ['MS', 'MS', '', '']
+    texture_multisampling = ['', 'MS', '', '']
     texture_array = ['Array', 'Array', '', 'Array']
     for dim, ms, array in zip(texture_dimensions, texture_multisampling, texture_array):
 
@@ -1155,11 +1160,13 @@ def generate_types():
                 defn += f'    {self.name}{member.name}.underlyingType = Type::FullType{{ {self.type_name}Type.name }};\n'
                 defn += f'    Symbol::Resolved(&{self.name}{member.name})->type = this;\n'
 
-            defn += '    this->scope.symbolLookup = StaticMap { std::array{\n'
+            defn += f'    this->scope.symbolLookup = StaticMap {{ std::array<std::pair<ConstantString, Symbol*>, {self.members.__len__()}>{{\n'
             for member in self.members:
                 defn += f'        std::pair{{ "{member.name}"_c, &{self.name}{member.name} }},\n'
             defn += '    }};\n'
-            defn += '};\n\n'
+            defn += '};\n'
+            defn += f'{self.name} {self.name}Type;\n\n'
+
 
             return defn
 
@@ -1413,7 +1420,6 @@ def generate_types():
                 if member.array_size > 1:
                     defn += f'IntExpression {self.name}{member.name}ArraySize({member.array_size});\n'
 
-            defn += f'{self.name} {self.name}Type;\n'
             defn += f'{self.name}::{self.name}()\n'
             defn += '{\n'
             defn += f'    this->name = "{self.name}";\n'
@@ -1430,7 +1436,8 @@ def generate_types():
             for member in self.members:
                 defn += f'        std::pair{{ "{member.name}"_c, &{self.name}{member.name} }},\n'
             defn += '    }};\n'
-            defn += '};\n\n'
+            defn += '};\n'
+            defn += f'{self.name} {self.name}Type;\n\n'
 
             return defn
 
@@ -2052,9 +2059,9 @@ def generate_types():
 
             spirv_function = ''
             spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n' 
-            if op == 'ddx' or op == 'ddy' or op == 'fwidth':
+            if intrinsic == 'ddx' or intrinsic == 'ddy' or intrinsic == 'fwidth':
                 spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(Op{spirv_op}, SPVWriter::Section::LocalFunction, returnType, val);\n'
-            elif op == 'saturate':
+            elif intrinsic == 'saturate':
                 size = vector_sizes[type]
                 spirv_function += f'    SPIRVResult min = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(0));\n'
                 spirv_function += f'    SPIRVResult max = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(1));\n'
@@ -2205,7 +2212,7 @@ def generate_types():
             
             spirv_function = ''
             spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
-            if op == 'transpose':
+            if intrinsic == 'transpose':
                 spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);\n'
             else:
                 spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);\n'
@@ -2306,6 +2313,7 @@ def generate_types():
         intrinsic_setup += fun.setup()
         intrinsic_list.append(fun.pair())
 
+        spirv_function = ''
         spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
         spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);\n'
         spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
@@ -2515,7 +2523,7 @@ def generate_types():
     spirv_code += spirv_intrinsic(function_name, spirv_function)
 
     subgroup_builtin_getters = ['GetId', 'GetSize', 'GetNum']
-    subgroup_builtin_getters_spirv = ['SubgroupId', 'SubgroupSize', 'SubgroupNum']
+    subgroup_builtin_getters_spirv = ['SubgroupId', 'SubgroupSize', 'NumSubgroups']
     subgroup_builtin_getters_docs = [
         'Returns the subgroup ID of the current thread',
         'Returns the size of the subgroup',
@@ -2602,6 +2610,7 @@ def generate_types():
     intrinsic_setup += fun.setup()
     intrinsic_list.append(fun.pair())
 
+    spirv_function = ''
     spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniform);\n'
     spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformElect, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup);\n'
     spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
@@ -2610,7 +2619,7 @@ def generate_types():
     intrinsic = 'BroadcastFirstActiveThread'
     for type in scalar_types:
         function_name = f'Subgroup{intrinsic}_{type}'
-        value_argument_name = f'{intrinsic}_value'
+        value_argument_name = f'{function_name}_value'
         fun = Function( 
             decl_name = function_name,
             api_name = f'subgroup{intrinsic}',
@@ -2782,7 +2791,7 @@ def generate_types():
             spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformQuad);\n'
             spirv_function += '    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);\n'
             spirv_function += f'    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int({direction}));\n'
-            spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);\n'
+            spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformQuadSwap, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);\n'
             spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
             spirv_code += spirv_intrinsic(function_name, spirv_function)
 
@@ -2928,11 +2937,14 @@ def generate_types():
         spirv_code += spirv_intrinsic(function_name, spirv_function)
 
     intrinsic = 'Extract'
-    for type in integer_types:
+    for type in types:
         function_name = f'Bit{intrinsic}_{type}'
         base_argument_name = f'{function_name}_base'
         offset_argument_name = f'{function_name}_offset'
         count_argument_name = f'{function_name}_count'
+
+        if not type.startswith('UInt') and not type.startswith('Int'):
+            continue
 
         fun = Function( 
             decl_name = function_name,
@@ -2964,18 +2976,19 @@ def generate_types():
 
     intrinsics = ['Reverse', 'Count']
     for intrinsic in intrinsics:
-        for type in integer_types:
+        for type in types:
             function_name = f'Bit{intrinsic}_{type}'
             base_argument_name = f'{function_name}_base'
+
+            if not type.startswith('UInt') and not type.startswith('Int'):
+                continue
 
             fun = Function( 
                 decl_name = function_name,
                 api_name = f'bit{intrinsic}',
                 return_type = type,
                 parameters = [
-                    Variable(decl_name = base_argument_name, api_name = "base", type_name=type),
-                    Variable(decl_name = offset_argument_name, api_name = "offset", type_name=type),
-                    Variable(decl_name = count_argument_name, api_name = "count", type_name=type)
+                    Variable(decl_name = base_argument_name, api_name = "base", type_name=type)
                 ]
             )
             intrinsic_decls += fun.declaration()
@@ -3228,7 +3241,7 @@ def generate_types():
         ]
         base_args = [
             Variable(decl_name = f'{intrinsic}_texture', api_name = "texture", type_name=type, pointer=True, uniform=True),
-            Variable(decl_name = f'{intrinsic}_sampler', api_name = "sampler", type_name='SamplerType', pointer=True, uniform=True)
+            Variable(decl_name = f'{intrinsic}_sampler', api_name = "sampler", type_name='Sampler', pointer=True, uniform=True)
         ]
         
         return [(base_args, ''), (sampled_args, 'Sampled')]
@@ -3594,7 +3607,7 @@ def generate_types():
     
     intrinsics_header.write(intrinsic_decls)
 
-    intrinsics_header.write('inline constexpr StaticMap Intrinsics = std::array{\n')
+    intrinsics_header.write(f'inline constexpr StaticMap DefaultIntrinsics = std::array<std::pair<ConstantString, Symbol*>, {intrinsic_list.__len__()}> {{\n')
     intrinsics_header.write(',\n'.join(intrinsic_list))
     intrinsics_header.write('\n};\n\n')
     intrinsics_header.write('} // namespace GPULang\n\n')

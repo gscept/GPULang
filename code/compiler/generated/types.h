@@ -6121,18 +6121,6 @@ struct Texture1D : public Type
 };
 extern Texture1D Texture1DType;
 
-struct Texture1DMS : public Type
-{
-    Texture1DMS();
-};
-extern Texture1DMS Texture1DMSType;
-
-struct Texture1DMSArray : public Type
-{
-    Texture1DMSArray();
-};
-extern Texture1DMSArray Texture1DMSArrayType;
-
 struct Texture1DArray : public Type
 {
     Texture1DArray();

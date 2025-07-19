@@ -3265,124 +3265,124 @@ Function SubgroupGetGreaterMask;
 Function SubgroupGetFirstActiveThread;
 
 /// subgroupBroadcastFirstActiveThread with Float32
-Variable BroadcastFirstActiveThread_value;
+Variable SubgroupBroadcastFirstActiveThread_Float32_value;
 Function SubgroupBroadcastFirstActiveThread_Float32;
-inline constexpr std::array SubgroupBroadcastFirstActiveThread_Float32_args = { &BroadcastFirstActiveThread_value };
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Float32_args = { &SubgroupBroadcastFirstActiveThread_Float32_value };
 
 /// subgroupBroadcastFirstActiveThread with Float32x2
-Variable BroadcastFirstActiveThread_value;
+Variable SubgroupBroadcastFirstActiveThread_Float32x2_value;
 Function SubgroupBroadcastFirstActiveThread_Float32x2;
-inline constexpr std::array SubgroupBroadcastFirstActiveThread_Float32x2_args = { &BroadcastFirstActiveThread_value };
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Float32x2_args = { &SubgroupBroadcastFirstActiveThread_Float32x2_value };
 
 /// subgroupBroadcastFirstActiveThread with Float32x3
-Variable BroadcastFirstActiveThread_value;
+Variable SubgroupBroadcastFirstActiveThread_Float32x3_value;
 Function SubgroupBroadcastFirstActiveThread_Float32x3;
-inline constexpr std::array SubgroupBroadcastFirstActiveThread_Float32x3_args = { &BroadcastFirstActiveThread_value };
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Float32x3_args = { &SubgroupBroadcastFirstActiveThread_Float32x3_value };
 
 /// subgroupBroadcastFirstActiveThread with Float32x4
-Variable BroadcastFirstActiveThread_value;
+Variable SubgroupBroadcastFirstActiveThread_Float32x4_value;
 Function SubgroupBroadcastFirstActiveThread_Float32x4;
-inline constexpr std::array SubgroupBroadcastFirstActiveThread_Float32x4_args = { &BroadcastFirstActiveThread_value };
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Float32x4_args = { &SubgroupBroadcastFirstActiveThread_Float32x4_value };
 
 /// subgroupBroadcastFirstActiveThread with Float16
-Variable BroadcastFirstActiveThread_value;
+Variable SubgroupBroadcastFirstActiveThread_Float16_value;
 Function SubgroupBroadcastFirstActiveThread_Float16;
-inline constexpr std::array SubgroupBroadcastFirstActiveThread_Float16_args = { &BroadcastFirstActiveThread_value };
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Float16_args = { &SubgroupBroadcastFirstActiveThread_Float16_value };
 
 /// subgroupBroadcastFirstActiveThread with Float16x2
-Variable BroadcastFirstActiveThread_value;
+Variable SubgroupBroadcastFirstActiveThread_Float16x2_value;
 Function SubgroupBroadcastFirstActiveThread_Float16x2;
-inline constexpr std::array SubgroupBroadcastFirstActiveThread_Float16x2_args = { &BroadcastFirstActiveThread_value };
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Float16x2_args = { &SubgroupBroadcastFirstActiveThread_Float16x2_value };
 
 /// subgroupBroadcastFirstActiveThread with Float16x3
-Variable BroadcastFirstActiveThread_value;
+Variable SubgroupBroadcastFirstActiveThread_Float16x3_value;
 Function SubgroupBroadcastFirstActiveThread_Float16x3;
-inline constexpr std::array SubgroupBroadcastFirstActiveThread_Float16x3_args = { &BroadcastFirstActiveThread_value };
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Float16x3_args = { &SubgroupBroadcastFirstActiveThread_Float16x3_value };
 
 /// subgroupBroadcastFirstActiveThread with Float16x4
-Variable BroadcastFirstActiveThread_value;
+Variable SubgroupBroadcastFirstActiveThread_Float16x4_value;
 Function SubgroupBroadcastFirstActiveThread_Float16x4;
-inline constexpr std::array SubgroupBroadcastFirstActiveThread_Float16x4_args = { &BroadcastFirstActiveThread_value };
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Float16x4_args = { &SubgroupBroadcastFirstActiveThread_Float16x4_value };
 
 /// subgroupBroadcastFirstActiveThread with Int32
-Variable BroadcastFirstActiveThread_value;
+Variable SubgroupBroadcastFirstActiveThread_Int32_value;
 Function SubgroupBroadcastFirstActiveThread_Int32;
-inline constexpr std::array SubgroupBroadcastFirstActiveThread_Int32_args = { &BroadcastFirstActiveThread_value };
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Int32_args = { &SubgroupBroadcastFirstActiveThread_Int32_value };
 
 /// subgroupBroadcastFirstActiveThread with Int32x2
-Variable BroadcastFirstActiveThread_value;
+Variable SubgroupBroadcastFirstActiveThread_Int32x2_value;
 Function SubgroupBroadcastFirstActiveThread_Int32x2;
-inline constexpr std::array SubgroupBroadcastFirstActiveThread_Int32x2_args = { &BroadcastFirstActiveThread_value };
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Int32x2_args = { &SubgroupBroadcastFirstActiveThread_Int32x2_value };
 
 /// subgroupBroadcastFirstActiveThread with Int32x3
-Variable BroadcastFirstActiveThread_value;
+Variable SubgroupBroadcastFirstActiveThread_Int32x3_value;
 Function SubgroupBroadcastFirstActiveThread_Int32x3;
-inline constexpr std::array SubgroupBroadcastFirstActiveThread_Int32x3_args = { &BroadcastFirstActiveThread_value };
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Int32x3_args = { &SubgroupBroadcastFirstActiveThread_Int32x3_value };
 
 /// subgroupBroadcastFirstActiveThread with Int32x4
-Variable BroadcastFirstActiveThread_value;
+Variable SubgroupBroadcastFirstActiveThread_Int32x4_value;
 Function SubgroupBroadcastFirstActiveThread_Int32x4;
-inline constexpr std::array SubgroupBroadcastFirstActiveThread_Int32x4_args = { &BroadcastFirstActiveThread_value };
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Int32x4_args = { &SubgroupBroadcastFirstActiveThread_Int32x4_value };
 
 /// subgroupBroadcastFirstActiveThread with Int16
-Variable BroadcastFirstActiveThread_value;
+Variable SubgroupBroadcastFirstActiveThread_Int16_value;
 Function SubgroupBroadcastFirstActiveThread_Int16;
-inline constexpr std::array SubgroupBroadcastFirstActiveThread_Int16_args = { &BroadcastFirstActiveThread_value };
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Int16_args = { &SubgroupBroadcastFirstActiveThread_Int16_value };
 
 /// subgroupBroadcastFirstActiveThread with Int16x2
-Variable BroadcastFirstActiveThread_value;
+Variable SubgroupBroadcastFirstActiveThread_Int16x2_value;
 Function SubgroupBroadcastFirstActiveThread_Int16x2;
-inline constexpr std::array SubgroupBroadcastFirstActiveThread_Int16x2_args = { &BroadcastFirstActiveThread_value };
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Int16x2_args = { &SubgroupBroadcastFirstActiveThread_Int16x2_value };
 
 /// subgroupBroadcastFirstActiveThread with Int16x3
-Variable BroadcastFirstActiveThread_value;
+Variable SubgroupBroadcastFirstActiveThread_Int16x3_value;
 Function SubgroupBroadcastFirstActiveThread_Int16x3;
-inline constexpr std::array SubgroupBroadcastFirstActiveThread_Int16x3_args = { &BroadcastFirstActiveThread_value };
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Int16x3_args = { &SubgroupBroadcastFirstActiveThread_Int16x3_value };
 
 /// subgroupBroadcastFirstActiveThread with Int16x4
-Variable BroadcastFirstActiveThread_value;
+Variable SubgroupBroadcastFirstActiveThread_Int16x4_value;
 Function SubgroupBroadcastFirstActiveThread_Int16x4;
-inline constexpr std::array SubgroupBroadcastFirstActiveThread_Int16x4_args = { &BroadcastFirstActiveThread_value };
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_Int16x4_args = { &SubgroupBroadcastFirstActiveThread_Int16x4_value };
 
 /// subgroupBroadcastFirstActiveThread with UInt32
-Variable BroadcastFirstActiveThread_value;
+Variable SubgroupBroadcastFirstActiveThread_UInt32_value;
 Function SubgroupBroadcastFirstActiveThread_UInt32;
-inline constexpr std::array SubgroupBroadcastFirstActiveThread_UInt32_args = { &BroadcastFirstActiveThread_value };
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_UInt32_args = { &SubgroupBroadcastFirstActiveThread_UInt32_value };
 
 /// subgroupBroadcastFirstActiveThread with UInt32x2
-Variable BroadcastFirstActiveThread_value;
+Variable SubgroupBroadcastFirstActiveThread_UInt32x2_value;
 Function SubgroupBroadcastFirstActiveThread_UInt32x2;
-inline constexpr std::array SubgroupBroadcastFirstActiveThread_UInt32x2_args = { &BroadcastFirstActiveThread_value };
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_UInt32x2_args = { &SubgroupBroadcastFirstActiveThread_UInt32x2_value };
 
 /// subgroupBroadcastFirstActiveThread with UInt32x3
-Variable BroadcastFirstActiveThread_value;
+Variable SubgroupBroadcastFirstActiveThread_UInt32x3_value;
 Function SubgroupBroadcastFirstActiveThread_UInt32x3;
-inline constexpr std::array SubgroupBroadcastFirstActiveThread_UInt32x3_args = { &BroadcastFirstActiveThread_value };
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_UInt32x3_args = { &SubgroupBroadcastFirstActiveThread_UInt32x3_value };
 
 /// subgroupBroadcastFirstActiveThread with UInt32x4
-Variable BroadcastFirstActiveThread_value;
+Variable SubgroupBroadcastFirstActiveThread_UInt32x4_value;
 Function SubgroupBroadcastFirstActiveThread_UInt32x4;
-inline constexpr std::array SubgroupBroadcastFirstActiveThread_UInt32x4_args = { &BroadcastFirstActiveThread_value };
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_UInt32x4_args = { &SubgroupBroadcastFirstActiveThread_UInt32x4_value };
 
 /// subgroupBroadcastFirstActiveThread with UInt16
-Variable BroadcastFirstActiveThread_value;
+Variable SubgroupBroadcastFirstActiveThread_UInt16_value;
 Function SubgroupBroadcastFirstActiveThread_UInt16;
-inline constexpr std::array SubgroupBroadcastFirstActiveThread_UInt16_args = { &BroadcastFirstActiveThread_value };
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_UInt16_args = { &SubgroupBroadcastFirstActiveThread_UInt16_value };
 
 /// subgroupBroadcastFirstActiveThread with UInt16x2
-Variable BroadcastFirstActiveThread_value;
+Variable SubgroupBroadcastFirstActiveThread_UInt16x2_value;
 Function SubgroupBroadcastFirstActiveThread_UInt16x2;
-inline constexpr std::array SubgroupBroadcastFirstActiveThread_UInt16x2_args = { &BroadcastFirstActiveThread_value };
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_UInt16x2_args = { &SubgroupBroadcastFirstActiveThread_UInt16x2_value };
 
 /// subgroupBroadcastFirstActiveThread with UInt16x3
-Variable BroadcastFirstActiveThread_value;
+Variable SubgroupBroadcastFirstActiveThread_UInt16x3_value;
 Function SubgroupBroadcastFirstActiveThread_UInt16x3;
-inline constexpr std::array SubgroupBroadcastFirstActiveThread_UInt16x3_args = { &BroadcastFirstActiveThread_value };
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_UInt16x3_args = { &SubgroupBroadcastFirstActiveThread_UInt16x3_value };
 
 /// subgroupBroadcastFirstActiveThread with UInt16x4
-Variable BroadcastFirstActiveThread_value;
+Variable SubgroupBroadcastFirstActiveThread_UInt16x4_value;
 Function SubgroupBroadcastFirstActiveThread_UInt16x4;
-inline constexpr std::array SubgroupBroadcastFirstActiveThread_UInt16x4_args = { &BroadcastFirstActiveThread_value };
+inline constexpr std::array SubgroupBroadcastFirstActiveThread_UInt16x4_args = { &SubgroupBroadcastFirstActiveThread_UInt16x4_value };
 
 /// subgroupBallot with Bool8
 Variable SubgroupBallot_predicate;
@@ -4091,62 +4091,6 @@ Variable BitInsert_UInt32_count;
 Function BitInsert_UInt32;
 inline constexpr std::array BitInsert_UInt32_args = { &BitInsert_UInt32_base, &BitInsert_UInt32_value, &BitInsert_UInt32_offset, &BitInsert_UInt32_count };
 
-/// bitExtract with Int32, Int32, Int32
-Variable BitExtract_Int32_base;
-Variable BitExtract_Int32_offset;
-Variable BitExtract_Int32_count;
-Function BitExtract_Int32;
-inline constexpr std::array BitExtract_Int32_args = { &BitExtract_Int32_base, &BitExtract_Int32_offset, &BitExtract_Int32_count };
-
-/// bitExtract with Int32x2, Int32x2, Int32x2
-Variable BitExtract_Int32x2_base;
-Variable BitExtract_Int32x2_offset;
-Variable BitExtract_Int32x2_count;
-Function BitExtract_Int32x2;
-inline constexpr std::array BitExtract_Int32x2_args = { &BitExtract_Int32x2_base, &BitExtract_Int32x2_offset, &BitExtract_Int32x2_count };
-
-/// bitExtract with Int32x3, Int32x3, Int32x3
-Variable BitExtract_Int32x3_base;
-Variable BitExtract_Int32x3_offset;
-Variable BitExtract_Int32x3_count;
-Function BitExtract_Int32x3;
-inline constexpr std::array BitExtract_Int32x3_args = { &BitExtract_Int32x3_base, &BitExtract_Int32x3_offset, &BitExtract_Int32x3_count };
-
-/// bitExtract with Int32x4, Int32x4, Int32x4
-Variable BitExtract_Int32x4_base;
-Variable BitExtract_Int32x4_offset;
-Variable BitExtract_Int32x4_count;
-Function BitExtract_Int32x4;
-inline constexpr std::array BitExtract_Int32x4_args = { &BitExtract_Int32x4_base, &BitExtract_Int32x4_offset, &BitExtract_Int32x4_count };
-
-/// bitExtract with Int16, Int16, Int16
-Variable BitExtract_Int16_base;
-Variable BitExtract_Int16_offset;
-Variable BitExtract_Int16_count;
-Function BitExtract_Int16;
-inline constexpr std::array BitExtract_Int16_args = { &BitExtract_Int16_base, &BitExtract_Int16_offset, &BitExtract_Int16_count };
-
-/// bitExtract with Int16x2, Int16x2, Int16x2
-Variable BitExtract_Int16x2_base;
-Variable BitExtract_Int16x2_offset;
-Variable BitExtract_Int16x2_count;
-Function BitExtract_Int16x2;
-inline constexpr std::array BitExtract_Int16x2_args = { &BitExtract_Int16x2_base, &BitExtract_Int16x2_offset, &BitExtract_Int16x2_count };
-
-/// bitExtract with Int16x3, Int16x3, Int16x3
-Variable BitExtract_Int16x3_base;
-Variable BitExtract_Int16x3_offset;
-Variable BitExtract_Int16x3_count;
-Function BitExtract_Int16x3;
-inline constexpr std::array BitExtract_Int16x3_args = { &BitExtract_Int16x3_base, &BitExtract_Int16x3_offset, &BitExtract_Int16x3_count };
-
-/// bitExtract with Int16x4, Int16x4, Int16x4
-Variable BitExtract_Int16x4_base;
-Variable BitExtract_Int16x4_offset;
-Variable BitExtract_Int16x4_count;
-Function BitExtract_Int16x4;
-inline constexpr std::array BitExtract_Int16x4_args = { &BitExtract_Int16x4_base, &BitExtract_Int16x4_offset, &BitExtract_Int16x4_count };
-
 /// bitExtract with UInt32, UInt32, UInt32
 Variable BitExtract_UInt32_base;
 Variable BitExtract_UInt32_offset;
@@ -4154,26 +4098,12 @@ Variable BitExtract_UInt32_count;
 Function BitExtract_UInt32;
 inline constexpr std::array BitExtract_UInt32_args = { &BitExtract_UInt32_base, &BitExtract_UInt32_offset, &BitExtract_UInt32_count };
 
-/// bitExtract with UInt32x2, UInt32x2, UInt32x2
-Variable BitExtract_UInt32x2_base;
-Variable BitExtract_UInt32x2_offset;
-Variable BitExtract_UInt32x2_count;
-Function BitExtract_UInt32x2;
-inline constexpr std::array BitExtract_UInt32x2_args = { &BitExtract_UInt32x2_base, &BitExtract_UInt32x2_offset, &BitExtract_UInt32x2_count };
-
-/// bitExtract with UInt32x3, UInt32x3, UInt32x3
-Variable BitExtract_UInt32x3_base;
-Variable BitExtract_UInt32x3_offset;
-Variable BitExtract_UInt32x3_count;
-Function BitExtract_UInt32x3;
-inline constexpr std::array BitExtract_UInt32x3_args = { &BitExtract_UInt32x3_base, &BitExtract_UInt32x3_offset, &BitExtract_UInt32x3_count };
-
-/// bitExtract with UInt32x4, UInt32x4, UInt32x4
-Variable BitExtract_UInt32x4_base;
-Variable BitExtract_UInt32x4_offset;
-Variable BitExtract_UInt32x4_count;
-Function BitExtract_UInt32x4;
-inline constexpr std::array BitExtract_UInt32x4_args = { &BitExtract_UInt32x4_base, &BitExtract_UInt32x4_offset, &BitExtract_UInt32x4_count };
+/// bitExtract with Int32, Int32, Int32
+Variable BitExtract_Int32_base;
+Variable BitExtract_Int32_offset;
+Variable BitExtract_Int32_count;
+Function BitExtract_Int32;
+inline constexpr std::array BitExtract_Int32_args = { &BitExtract_Int32_base, &BitExtract_Int32_offset, &BitExtract_Int32_count };
 
 /// bitExtract with UInt16, UInt16, UInt16
 Variable BitExtract_UInt16_base;
@@ -4182,250 +4112,52 @@ Variable BitExtract_UInt16_count;
 Function BitExtract_UInt16;
 inline constexpr std::array BitExtract_UInt16_args = { &BitExtract_UInt16_base, &BitExtract_UInt16_offset, &BitExtract_UInt16_count };
 
-/// bitExtract with UInt16x2, UInt16x2, UInt16x2
-Variable BitExtract_UInt16x2_base;
-Variable BitExtract_UInt16x2_offset;
-Variable BitExtract_UInt16x2_count;
-Function BitExtract_UInt16x2;
-inline constexpr std::array BitExtract_UInt16x2_args = { &BitExtract_UInt16x2_base, &BitExtract_UInt16x2_offset, &BitExtract_UInt16x2_count };
+/// bitExtract with Int16, Int16, Int16
+Variable BitExtract_Int16_base;
+Variable BitExtract_Int16_offset;
+Variable BitExtract_Int16_count;
+Function BitExtract_Int16;
+inline constexpr std::array BitExtract_Int16_args = { &BitExtract_Int16_base, &BitExtract_Int16_offset, &BitExtract_Int16_count };
 
-/// bitExtract with UInt16x3, UInt16x3, UInt16x3
-Variable BitExtract_UInt16x3_base;
-Variable BitExtract_UInt16x3_offset;
-Variable BitExtract_UInt16x3_count;
-Function BitExtract_UInt16x3;
-inline constexpr std::array BitExtract_UInt16x3_args = { &BitExtract_UInt16x3_base, &BitExtract_UInt16x3_offset, &BitExtract_UInt16x3_count };
-
-/// bitExtract with UInt16x4, UInt16x4, UInt16x4
-Variable BitExtract_UInt16x4_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitExtract_UInt16x4;
-inline constexpr std::array BitExtract_UInt16x4_args = { &BitExtract_UInt16x4_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
-
-/// bitReverse with Int32, Int32, Int32
-Variable BitReverse_Int32_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitReverse_Int32;
-inline constexpr std::array BitReverse_Int32_args = { &BitReverse_Int32_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
-
-/// bitReverse with Int32x2, Int32x2, Int32x2
-Variable BitReverse_Int32x2_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitReverse_Int32x2;
-inline constexpr std::array BitReverse_Int32x2_args = { &BitReverse_Int32x2_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
-
-/// bitReverse with Int32x3, Int32x3, Int32x3
-Variable BitReverse_Int32x3_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitReverse_Int32x3;
-inline constexpr std::array BitReverse_Int32x3_args = { &BitReverse_Int32x3_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
-
-/// bitReverse with Int32x4, Int32x4, Int32x4
-Variable BitReverse_Int32x4_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitReverse_Int32x4;
-inline constexpr std::array BitReverse_Int32x4_args = { &BitReverse_Int32x4_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
-
-/// bitReverse with Int16, Int16, Int16
-Variable BitReverse_Int16_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitReverse_Int16;
-inline constexpr std::array BitReverse_Int16_args = { &BitReverse_Int16_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
-
-/// bitReverse with Int16x2, Int16x2, Int16x2
-Variable BitReverse_Int16x2_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitReverse_Int16x2;
-inline constexpr std::array BitReverse_Int16x2_args = { &BitReverse_Int16x2_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
-
-/// bitReverse with Int16x3, Int16x3, Int16x3
-Variable BitReverse_Int16x3_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitReverse_Int16x3;
-inline constexpr std::array BitReverse_Int16x3_args = { &BitReverse_Int16x3_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
-
-/// bitReverse with Int16x4, Int16x4, Int16x4
-Variable BitReverse_Int16x4_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitReverse_Int16x4;
-inline constexpr std::array BitReverse_Int16x4_args = { &BitReverse_Int16x4_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
-
-/// bitReverse with UInt32, UInt32, UInt32
+/// bitReverse with UInt32
 Variable BitReverse_UInt32_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
 Function BitReverse_UInt32;
-inline constexpr std::array BitReverse_UInt32_args = { &BitReverse_UInt32_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
+inline constexpr std::array BitReverse_UInt32_args = { &BitReverse_UInt32_base };
 
-/// bitReverse with UInt32x2, UInt32x2, UInt32x2
-Variable BitReverse_UInt32x2_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitReverse_UInt32x2;
-inline constexpr std::array BitReverse_UInt32x2_args = { &BitReverse_UInt32x2_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
+/// bitReverse with Int32
+Variable BitReverse_Int32_base;
+Function BitReverse_Int32;
+inline constexpr std::array BitReverse_Int32_args = { &BitReverse_Int32_base };
 
-/// bitReverse with UInt32x3, UInt32x3, UInt32x3
-Variable BitReverse_UInt32x3_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitReverse_UInt32x3;
-inline constexpr std::array BitReverse_UInt32x3_args = { &BitReverse_UInt32x3_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
-
-/// bitReverse with UInt32x4, UInt32x4, UInt32x4
-Variable BitReverse_UInt32x4_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitReverse_UInt32x4;
-inline constexpr std::array BitReverse_UInt32x4_args = { &BitReverse_UInt32x4_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
-
-/// bitReverse with UInt16, UInt16, UInt16
+/// bitReverse with UInt16
 Variable BitReverse_UInt16_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
 Function BitReverse_UInt16;
-inline constexpr std::array BitReverse_UInt16_args = { &BitReverse_UInt16_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
+inline constexpr std::array BitReverse_UInt16_args = { &BitReverse_UInt16_base };
 
-/// bitReverse with UInt16x2, UInt16x2, UInt16x2
-Variable BitReverse_UInt16x2_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitReverse_UInt16x2;
-inline constexpr std::array BitReverse_UInt16x2_args = { &BitReverse_UInt16x2_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
+/// bitReverse with Int16
+Variable BitReverse_Int16_base;
+Function BitReverse_Int16;
+inline constexpr std::array BitReverse_Int16_args = { &BitReverse_Int16_base };
 
-/// bitReverse with UInt16x3, UInt16x3, UInt16x3
-Variable BitReverse_UInt16x3_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitReverse_UInt16x3;
-inline constexpr std::array BitReverse_UInt16x3_args = { &BitReverse_UInt16x3_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
-
-/// bitReverse with UInt16x4, UInt16x4, UInt16x4
-Variable BitReverse_UInt16x4_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitReverse_UInt16x4;
-inline constexpr std::array BitReverse_UInt16x4_args = { &BitReverse_UInt16x4_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
-
-/// bitCount with Int32, Int32, Int32
-Variable BitCount_Int32_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitCount_Int32;
-inline constexpr std::array BitCount_Int32_args = { &BitCount_Int32_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
-
-/// bitCount with Int32x2, Int32x2, Int32x2
-Variable BitCount_Int32x2_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitCount_Int32x2;
-inline constexpr std::array BitCount_Int32x2_args = { &BitCount_Int32x2_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
-
-/// bitCount with Int32x3, Int32x3, Int32x3
-Variable BitCount_Int32x3_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitCount_Int32x3;
-inline constexpr std::array BitCount_Int32x3_args = { &BitCount_Int32x3_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
-
-/// bitCount with Int32x4, Int32x4, Int32x4
-Variable BitCount_Int32x4_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitCount_Int32x4;
-inline constexpr std::array BitCount_Int32x4_args = { &BitCount_Int32x4_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
-
-/// bitCount with Int16, Int16, Int16
-Variable BitCount_Int16_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitCount_Int16;
-inline constexpr std::array BitCount_Int16_args = { &BitCount_Int16_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
-
-/// bitCount with Int16x2, Int16x2, Int16x2
-Variable BitCount_Int16x2_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitCount_Int16x2;
-inline constexpr std::array BitCount_Int16x2_args = { &BitCount_Int16x2_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
-
-/// bitCount with Int16x3, Int16x3, Int16x3
-Variable BitCount_Int16x3_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitCount_Int16x3;
-inline constexpr std::array BitCount_Int16x3_args = { &BitCount_Int16x3_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
-
-/// bitCount with Int16x4, Int16x4, Int16x4
-Variable BitCount_Int16x4_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitCount_Int16x4;
-inline constexpr std::array BitCount_Int16x4_args = { &BitCount_Int16x4_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
-
-/// bitCount with UInt32, UInt32, UInt32
+/// bitCount with UInt32
 Variable BitCount_UInt32_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
 Function BitCount_UInt32;
-inline constexpr std::array BitCount_UInt32_args = { &BitCount_UInt32_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
+inline constexpr std::array BitCount_UInt32_args = { &BitCount_UInt32_base };
 
-/// bitCount with UInt32x2, UInt32x2, UInt32x2
-Variable BitCount_UInt32x2_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitCount_UInt32x2;
-inline constexpr std::array BitCount_UInt32x2_args = { &BitCount_UInt32x2_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
+/// bitCount with Int32
+Variable BitCount_Int32_base;
+Function BitCount_Int32;
+inline constexpr std::array BitCount_Int32_args = { &BitCount_Int32_base };
 
-/// bitCount with UInt32x3, UInt32x3, UInt32x3
-Variable BitCount_UInt32x3_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitCount_UInt32x3;
-inline constexpr std::array BitCount_UInt32x3_args = { &BitCount_UInt32x3_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
-
-/// bitCount with UInt32x4, UInt32x4, UInt32x4
-Variable BitCount_UInt32x4_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitCount_UInt32x4;
-inline constexpr std::array BitCount_UInt32x4_args = { &BitCount_UInt32x4_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
-
-/// bitCount with UInt16, UInt16, UInt16
+/// bitCount with UInt16
 Variable BitCount_UInt16_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
 Function BitCount_UInt16;
-inline constexpr std::array BitCount_UInt16_args = { &BitCount_UInt16_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
+inline constexpr std::array BitCount_UInt16_args = { &BitCount_UInt16_base };
 
-/// bitCount with UInt16x2, UInt16x2, UInt16x2
-Variable BitCount_UInt16x2_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitCount_UInt16x2;
-inline constexpr std::array BitCount_UInt16x2_args = { &BitCount_UInt16x2_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
-
-/// bitCount with UInt16x3, UInt16x3, UInt16x3
-Variable BitCount_UInt16x3_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitCount_UInt16x3;
-inline constexpr std::array BitCount_UInt16x3_args = { &BitCount_UInt16x3_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
-
-/// bitCount with UInt16x4, UInt16x4, UInt16x4
-Variable BitCount_UInt16x4_base;
-Variable BitExtract_UInt16x4_offset;
-Variable BitExtract_UInt16x4_count;
-Function BitCount_UInt16x4;
-inline constexpr std::array BitCount_UInt16x4_args = { &BitCount_UInt16x4_base, &BitExtract_UInt16x4_offset, &BitExtract_UInt16x4_count };
+/// bitCount with Int16
+Variable BitCount_Int16_base;
+Function BitCount_Int16;
+inline constexpr std::array BitCount_Int16_args = { &BitCount_Int16_base };
 
 /// executionBarrier
 Function ExecutionBarrier;
@@ -4576,7 +4308,7 @@ Variable TextureGetSamples_Texture2DMSArray_texture;
 Function TextureGetSamples_Texture2DMSArray;
 inline constexpr std::array TextureGetSamples_Texture2DMSArray_args = { &TextureGetSamples_Texture2DMSArray_texture };
 
-/// textureGetSampledMip with Texture1D, SamplerType, Float32
+/// textureGetSampledMip with Texture1D, Sampler, Float32
 Variable TextureGetSampledMip_Texture1D_texture;
 Variable TextureGetSampledMip_Texture1D_sampler;
 Variable TextureGetSampledMip_Texture1D_coordinate;
@@ -4589,7 +4321,7 @@ Variable SampledTextureGetSampledMip_Texture1D_coordinate;
 Function SampledTextureGetSampledMip_Texture1D;
 inline constexpr std::array SampledTextureGetSampledMip_Texture1D_args = { &SampledTextureGetSampledMip_Texture1D_texture, &SampledTextureGetSampledMip_Texture1D_coordinate };
 
-/// textureGetSampledMip with Texture2D, SamplerType, Float32x2
+/// textureGetSampledMip with Texture2D, Sampler, Float32x2
 Variable TextureGetSampledMip_Texture2D_texture;
 Variable TextureGetSampledMip_Texture2D_sampler;
 Variable TextureGetSampledMip_Texture2D_coordinate;
@@ -4602,7 +4334,7 @@ Variable SampledTextureGetSampledMip_Texture2D_coordinate;
 Function SampledTextureGetSampledMip_Texture2D;
 inline constexpr std::array SampledTextureGetSampledMip_Texture2D_args = { &SampledTextureGetSampledMip_Texture2D_texture, &SampledTextureGetSampledMip_Texture2D_coordinate };
 
-/// textureGetSampledMip with Texture3D, SamplerType, Float32x3
+/// textureGetSampledMip with Texture3D, Sampler, Float32x3
 Variable TextureGetSampledMip_Texture3D_texture;
 Variable TextureGetSampledMip_Texture3D_sampler;
 Variable TextureGetSampledMip_Texture3D_coordinate;
@@ -4615,7 +4347,7 @@ Variable SampledTextureGetSampledMip_Texture3D_coordinate;
 Function SampledTextureGetSampledMip_Texture3D;
 inline constexpr std::array SampledTextureGetSampledMip_Texture3D_args = { &SampledTextureGetSampledMip_Texture3D_texture, &SampledTextureGetSampledMip_Texture3D_coordinate };
 
-/// textureGetSampledMip with TextureCube, SamplerType, Float32x3
+/// textureGetSampledMip with TextureCube, Sampler, Float32x3
 Variable TextureGetSampledMip_TextureCube_texture;
 Variable TextureGetSampledMip_TextureCube_sampler;
 Variable TextureGetSampledMip_TextureCube_coordinate;
@@ -4628,7 +4360,7 @@ Variable SampledTextureGetSampledMip_TextureCube_coordinate;
 Function SampledTextureGetSampledMip_TextureCube;
 inline constexpr std::array SampledTextureGetSampledMip_TextureCube_args = { &SampledTextureGetSampledMip_TextureCube_texture, &SampledTextureGetSampledMip_TextureCube_coordinate };
 
-/// textureGetSampledMip with Texture1DArray, SamplerType, Float32x2
+/// textureGetSampledMip with Texture1DArray, Sampler, Float32x2
 Variable TextureGetSampledMip_Texture1DArray_texture;
 Variable TextureGetSampledMip_Texture1DArray_sampler;
 Variable TextureGetSampledMip_Texture1DArray_coordinate;
@@ -4641,7 +4373,7 @@ Variable SampledTextureGetSampledMip_Texture1DArray_coordinate;
 Function SampledTextureGetSampledMip_Texture1DArray;
 inline constexpr std::array SampledTextureGetSampledMip_Texture1DArray_args = { &SampledTextureGetSampledMip_Texture1DArray_texture, &SampledTextureGetSampledMip_Texture1DArray_coordinate };
 
-/// textureGetSampledMip with Texture2DArray, SamplerType, Float32x3
+/// textureGetSampledMip with Texture2DArray, Sampler, Float32x3
 Variable TextureGetSampledMip_Texture2DArray_texture;
 Variable TextureGetSampledMip_Texture2DArray_sampler;
 Variable TextureGetSampledMip_Texture2DArray_coordinate;
@@ -4654,7 +4386,7 @@ Variable SampledTextureGetSampledMip_Texture2DArray_coordinate;
 Function SampledTextureGetSampledMip_Texture2DArray;
 inline constexpr std::array SampledTextureGetSampledMip_Texture2DArray_args = { &SampledTextureGetSampledMip_Texture2DArray_texture, &SampledTextureGetSampledMip_Texture2DArray_coordinate };
 
-/// textureGetSampledMip with TextureCubeArray, SamplerType, Float32x4
+/// textureGetSampledMip with TextureCubeArray, Sampler, Float32x4
 Variable TextureGetSampledMip_TextureCubeArray_texture;
 Variable TextureGetSampledMip_TextureCubeArray_sampler;
 Variable TextureGetSampledMip_TextureCubeArray_coordinate;
@@ -5024,7 +4756,7 @@ Variable TextureFetchSample_Texture2DMSArray_sample;
 Function TextureFetchSample_Texture2DMSArray;
 inline constexpr std::array TextureFetchSample_Texture2DMSArray_args = { &TextureFetchSample_Texture2DMSArray_texture, &TextureFetchSample_Texture2DMSArray_coordinate, &TextureFetchSample_Texture2DMSArray_lod, &TextureFetchSample_Texture2DMSArray_sample };
 
-/// textureGather with Texture2D, SamplerType, Int32x2, Int32
+/// textureGather with Texture2D, Sampler, Int32x2, Int32
 Variable TextureGather_Texture2D_texture;
 Variable TextureGather_Texture2D_sampler;
 Variable TextureGather_Texture2D_coordinate;
@@ -5039,7 +4771,7 @@ Variable SampledTextureGather_Texture2D_component;
 Function SampledTextureGather_Texture2D;
 inline constexpr std::array SampledTextureGather_Texture2D_args = { &SampledTextureGather_Texture2D_texture, &SampledTextureGather_Texture2D_coordinate, &SampledTextureGather_Texture2D_component };
 
-/// textureGatherOffset with Texture2D, SamplerType, Int32x2, Int32, UInt32
+/// textureGatherOffset with Texture2D, Sampler, Int32x2, Int32, UInt32
 Variable TextureGatherOffset_Texture2D_texture;
 Variable TextureGatherOffset_Texture2D_sampler;
 Variable TextureGatherOffset_Texture2D_coordinate;
@@ -5056,7 +4788,7 @@ Variable SampledTextureGatherOffset_Texture2D_offset;
 Function SampledTextureGatherOffset_Texture2D;
 inline constexpr std::array SampledTextureGatherOffset_Texture2D_args = { &SampledTextureGatherOffset_Texture2D_texture, &SampledTextureGatherOffset_Texture2D_coordinate, &SampledTextureGatherOffset_Texture2D_component, &SampledTextureGatherOffset_Texture2D_offset };
 
-/// textureGather with TextureCube, SamplerType, Int32x3, Int32
+/// textureGather with TextureCube, Sampler, Int32x3, Int32
 Variable TextureGather_TextureCube_texture;
 Variable TextureGather_TextureCube_sampler;
 Variable TextureGather_TextureCube_coordinate;
@@ -5071,7 +4803,7 @@ Variable SampledTextureGather_TextureCube_component;
 Function SampledTextureGather_TextureCube;
 inline constexpr std::array SampledTextureGather_TextureCube_args = { &SampledTextureGather_TextureCube_texture, &SampledTextureGather_TextureCube_coordinate, &SampledTextureGather_TextureCube_component };
 
-/// textureGatherOffset with TextureCube, SamplerType, Int32x3, Int32, UInt32
+/// textureGatherOffset with TextureCube, Sampler, Int32x3, Int32, UInt32
 Variable TextureGatherOffset_TextureCube_texture;
 Variable TextureGatherOffset_TextureCube_sampler;
 Variable TextureGatherOffset_TextureCube_coordinate;
@@ -5088,7 +4820,7 @@ Variable SampledTextureGatherOffset_TextureCube_offset;
 Function SampledTextureGatherOffset_TextureCube;
 inline constexpr std::array SampledTextureGatherOffset_TextureCube_args = { &SampledTextureGatherOffset_TextureCube_texture, &SampledTextureGatherOffset_TextureCube_coordinate, &SampledTextureGatherOffset_TextureCube_component, &SampledTextureGatherOffset_TextureCube_offset };
 
-/// textureGather with Texture2DArray, SamplerType, Int32x3, Int32
+/// textureGather with Texture2DArray, Sampler, Int32x3, Int32
 Variable TextureGather_Texture2DArray_texture;
 Variable TextureGather_Texture2DArray_sampler;
 Variable TextureGather_Texture2DArray_coordinate;
@@ -5103,7 +4835,7 @@ Variable SampledTextureGather_Texture2DArray_component;
 Function SampledTextureGather_Texture2DArray;
 inline constexpr std::array SampledTextureGather_Texture2DArray_args = { &SampledTextureGather_Texture2DArray_texture, &SampledTextureGather_Texture2DArray_coordinate, &SampledTextureGather_Texture2DArray_component };
 
-/// textureGatherOffset with Texture2DArray, SamplerType, Int32x3, Int32, UInt32
+/// textureGatherOffset with Texture2DArray, Sampler, Int32x3, Int32, UInt32
 Variable TextureGatherOffset_Texture2DArray_texture;
 Variable TextureGatherOffset_Texture2DArray_sampler;
 Variable TextureGatherOffset_Texture2DArray_coordinate;
@@ -5120,7 +4852,7 @@ Variable SampledTextureGatherOffset_Texture2DArray_offset;
 Function SampledTextureGatherOffset_Texture2DArray;
 inline constexpr std::array SampledTextureGatherOffset_Texture2DArray_args = { &SampledTextureGatherOffset_Texture2DArray_texture, &SampledTextureGatherOffset_Texture2DArray_coordinate, &SampledTextureGatherOffset_Texture2DArray_component, &SampledTextureGatherOffset_Texture2DArray_offset };
 
-/// textureGather with TextureCubeArray, SamplerType, Int32x4, Int32
+/// textureGather with TextureCubeArray, Sampler, Int32x4, Int32
 Variable TextureGather_TextureCubeArray_texture;
 Variable TextureGather_TextureCubeArray_sampler;
 Variable TextureGather_TextureCubeArray_coordinate;
@@ -5135,7 +4867,7 @@ Variable SampledTextureGather_TextureCubeArray_component;
 Function SampledTextureGather_TextureCubeArray;
 inline constexpr std::array SampledTextureGather_TextureCubeArray_args = { &SampledTextureGather_TextureCubeArray_texture, &SampledTextureGather_TextureCubeArray_coordinate, &SampledTextureGather_TextureCubeArray_component };
 
-/// textureGatherOffset with TextureCubeArray, SamplerType, Int32x4, Int32, UInt32
+/// textureGatherOffset with TextureCubeArray, Sampler, Int32x4, Int32, UInt32
 Variable TextureGatherOffset_TextureCubeArray_texture;
 Variable TextureGatherOffset_TextureCubeArray_sampler;
 Variable TextureGatherOffset_TextureCubeArray_coordinate;
@@ -5163,7 +4895,7 @@ Variable TexturePixelCacheLoad_PixelCacheMS_sample;
 Function TexturePixelCacheLoad_PixelCacheMS;
 inline constexpr std::array TexturePixelCacheLoad_PixelCacheMS_args = { &TexturePixelCacheLoad_PixelCacheMS_texture, &TexturePixelCacheLoad_PixelCacheMS_sample };
 
-/// textureSample with Texture1D, SamplerType, Float32
+/// textureSample with Texture1D, Sampler, Float32
 Variable TextureSample_Texture1D_texture;
 Variable TextureSample_Texture1D_sampler;
 Variable TextureSample_Texture1D_coordinate;
@@ -5176,7 +4908,7 @@ Variable SampledTextureSample_Texture1D_coordinate;
 Function SampledTextureSample_Texture1D;
 inline constexpr std::array SampledTextureSample_Texture1D_args = { &SampledTextureSample_Texture1D_texture, &SampledTextureSample_Texture1D_coordinate };
 
-/// textureSample with Texture2D, SamplerType, Float32x2
+/// textureSample with Texture2D, Sampler, Float32x2
 Variable TextureSample_Texture2D_texture;
 Variable TextureSample_Texture2D_sampler;
 Variable TextureSample_Texture2D_coordinate;
@@ -5189,7 +4921,7 @@ Variable SampledTextureSample_Texture2D_coordinate;
 Function SampledTextureSample_Texture2D;
 inline constexpr std::array SampledTextureSample_Texture2D_args = { &SampledTextureSample_Texture2D_texture, &SampledTextureSample_Texture2D_coordinate };
 
-/// textureSample with Texture3D, SamplerType, Float32x3
+/// textureSample with Texture3D, Sampler, Float32x3
 Variable TextureSample_Texture3D_texture;
 Variable TextureSample_Texture3D_sampler;
 Variable TextureSample_Texture3D_coordinate;
@@ -5202,7 +4934,7 @@ Variable SampledTextureSample_Texture3D_coordinate;
 Function SampledTextureSample_Texture3D;
 inline constexpr std::array SampledTextureSample_Texture3D_args = { &SampledTextureSample_Texture3D_texture, &SampledTextureSample_Texture3D_coordinate };
 
-/// textureSample with TextureCube, SamplerType, Float32x3
+/// textureSample with TextureCube, Sampler, Float32x3
 Variable TextureSample_TextureCube_texture;
 Variable TextureSample_TextureCube_sampler;
 Variable TextureSample_TextureCube_coordinate;
@@ -5215,7 +4947,7 @@ Variable SampledTextureSample_TextureCube_coordinate;
 Function SampledTextureSample_TextureCube;
 inline constexpr std::array SampledTextureSample_TextureCube_args = { &SampledTextureSample_TextureCube_texture, &SampledTextureSample_TextureCube_coordinate };
 
-/// textureSample with Texture1DArray, SamplerType, Float32x2
+/// textureSample with Texture1DArray, Sampler, Float32x2
 Variable TextureSample_Texture1DArray_texture;
 Variable TextureSample_Texture1DArray_sampler;
 Variable TextureSample_Texture1DArray_coordinate;
@@ -5228,7 +4960,7 @@ Variable SampledTextureSample_Texture1DArray_coordinate;
 Function SampledTextureSample_Texture1DArray;
 inline constexpr std::array SampledTextureSample_Texture1DArray_args = { &SampledTextureSample_Texture1DArray_texture, &SampledTextureSample_Texture1DArray_coordinate };
 
-/// textureSample with Texture2DArray, SamplerType, Float32x3
+/// textureSample with Texture2DArray, Sampler, Float32x3
 Variable TextureSample_Texture2DArray_texture;
 Variable TextureSample_Texture2DArray_sampler;
 Variable TextureSample_Texture2DArray_coordinate;
@@ -5241,7 +4973,7 @@ Variable SampledTextureSample_Texture2DArray_coordinate;
 Function SampledTextureSample_Texture2DArray;
 inline constexpr std::array SampledTextureSample_Texture2DArray_args = { &SampledTextureSample_Texture2DArray_texture, &SampledTextureSample_Texture2DArray_coordinate };
 
-/// textureSample with TextureCubeArray, SamplerType, Float32x4
+/// textureSample with TextureCubeArray, Sampler, Float32x4
 Variable TextureSample_TextureCubeArray_texture;
 Variable TextureSample_TextureCubeArray_sampler;
 Variable TextureSample_TextureCubeArray_coordinate;
@@ -5254,7 +4986,7 @@ Variable SampledTextureSample_TextureCubeArray_coordinate;
 Function SampledTextureSample_TextureCubeArray;
 inline constexpr std::array SampledTextureSample_TextureCubeArray_args = { &SampledTextureSample_TextureCubeArray_texture, &SampledTextureSample_TextureCubeArray_coordinate };
 
-/// textureSampleOffset with Texture1D, SamplerType, Float32, Float32
+/// textureSampleOffset with Texture1D, Sampler, Float32, Float32
 Variable TextureSampleOffset_Texture1D_texture;
 Variable TextureSampleOffset_Texture1D_sampler;
 Variable TextureSampleOffset_Texture1D_coordinate;
@@ -5269,7 +5001,7 @@ Variable SampledTextureSampleOffset_Texture1D_offset;
 Function SampledTextureSampleOffset_Texture1D;
 inline constexpr std::array SampledTextureSampleOffset_Texture1D_args = { &SampledTextureSampleOffset_Texture1D_texture, &SampledTextureSampleOffset_Texture1D_coordinate, &SampledTextureSampleOffset_Texture1D_offset };
 
-/// textureSampleOffset with Texture2D, SamplerType, Float32x2, Float32x2
+/// textureSampleOffset with Texture2D, Sampler, Float32x2, Float32x2
 Variable TextureSampleOffset_Texture2D_texture;
 Variable TextureSampleOffset_Texture2D_sampler;
 Variable TextureSampleOffset_Texture2D_coordinate;
@@ -5284,7 +5016,7 @@ Variable SampledTextureSampleOffset_Texture2D_offset;
 Function SampledTextureSampleOffset_Texture2D;
 inline constexpr std::array SampledTextureSampleOffset_Texture2D_args = { &SampledTextureSampleOffset_Texture2D_texture, &SampledTextureSampleOffset_Texture2D_coordinate, &SampledTextureSampleOffset_Texture2D_offset };
 
-/// textureSampleOffset with Texture3D, SamplerType, Float32x3, Float32x3
+/// textureSampleOffset with Texture3D, Sampler, Float32x3, Float32x3
 Variable TextureSampleOffset_Texture3D_texture;
 Variable TextureSampleOffset_Texture3D_sampler;
 Variable TextureSampleOffset_Texture3D_coordinate;
@@ -5299,7 +5031,7 @@ Variable SampledTextureSampleOffset_Texture3D_offset;
 Function SampledTextureSampleOffset_Texture3D;
 inline constexpr std::array SampledTextureSampleOffset_Texture3D_args = { &SampledTextureSampleOffset_Texture3D_texture, &SampledTextureSampleOffset_Texture3D_coordinate, &SampledTextureSampleOffset_Texture3D_offset };
 
-/// textureSampleOffset with Texture1DArray, SamplerType, Float32x2, Float32x2
+/// textureSampleOffset with Texture1DArray, Sampler, Float32x2, Float32x2
 Variable TextureSampleOffset_Texture1DArray_texture;
 Variable TextureSampleOffset_Texture1DArray_sampler;
 Variable TextureSampleOffset_Texture1DArray_coordinate;
@@ -5314,7 +5046,7 @@ Variable SampledTextureSampleOffset_Texture1DArray_offset;
 Function SampledTextureSampleOffset_Texture1DArray;
 inline constexpr std::array SampledTextureSampleOffset_Texture1DArray_args = { &SampledTextureSampleOffset_Texture1DArray_texture, &SampledTextureSampleOffset_Texture1DArray_coordinate, &SampledTextureSampleOffset_Texture1DArray_offset };
 
-/// textureSampleOffset with Texture2DArray, SamplerType, Float32x3, Float32x3
+/// textureSampleOffset with Texture2DArray, Sampler, Float32x3, Float32x3
 Variable TextureSampleOffset_Texture2DArray_texture;
 Variable TextureSampleOffset_Texture2DArray_sampler;
 Variable TextureSampleOffset_Texture2DArray_coordinate;
@@ -5329,7 +5061,7 @@ Variable SampledTextureSampleOffset_Texture2DArray_offset;
 Function SampledTextureSampleOffset_Texture2DArray;
 inline constexpr std::array SampledTextureSampleOffset_Texture2DArray_args = { &SampledTextureSampleOffset_Texture2DArray_texture, &SampledTextureSampleOffset_Texture2DArray_coordinate, &SampledTextureSampleOffset_Texture2DArray_offset };
 
-/// textureSampleProj with Texture1D, SamplerType, Float32, Float32
+/// textureSampleProj with Texture1D, Sampler, Float32, Float32
 Variable TextureSampleProj_Texture1D_texture;
 Variable TextureSampleProj_Texture1D_sampler;
 Variable TextureSampleProj_Texture1D_coordinate;
@@ -5344,7 +5076,7 @@ Variable SampledTextureSampleProj_Texture1D_proj;
 Function SampledTextureSampleProj_Texture1D;
 inline constexpr std::array SampledTextureSampleProj_Texture1D_args = { &SampledTextureSampleProj_Texture1D_texture, &SampledTextureSampleProj_Texture1D_coordinate, &SampledTextureSampleProj_Texture1D_proj };
 
-/// textureSampleProj with Texture2D, SamplerType, Float32x2, Float32
+/// textureSampleProj with Texture2D, Sampler, Float32x2, Float32
 Variable TextureSampleProj_Texture2D_texture;
 Variable TextureSampleProj_Texture2D_sampler;
 Variable TextureSampleProj_Texture2D_coordinate;
@@ -5359,7 +5091,7 @@ Variable SampledTextureSampleProj_Texture2D_proj;
 Function SampledTextureSampleProj_Texture2D;
 inline constexpr std::array SampledTextureSampleProj_Texture2D_args = { &SampledTextureSampleProj_Texture2D_texture, &SampledTextureSampleProj_Texture2D_coordinate, &SampledTextureSampleProj_Texture2D_proj };
 
-/// textureSampleProj with Texture3D, SamplerType, Float32x3, Float32
+/// textureSampleProj with Texture3D, Sampler, Float32x3, Float32
 Variable TextureSampleProj_Texture3D_texture;
 Variable TextureSampleProj_Texture3D_sampler;
 Variable TextureSampleProj_Texture3D_coordinate;
@@ -5374,7 +5106,7 @@ Variable SampledTextureSampleProj_Texture3D_proj;
 Function SampledTextureSampleProj_Texture3D;
 inline constexpr std::array SampledTextureSampleProj_Texture3D_args = { &SampledTextureSampleProj_Texture3D_texture, &SampledTextureSampleProj_Texture3D_coordinate, &SampledTextureSampleProj_Texture3D_proj };
 
-/// textureSampleProjOffset with Texture1D, SamplerType, Float32, Float32, Float32
+/// textureSampleProjOffset with Texture1D, Sampler, Float32, Float32, Float32
 Variable TextureSampleProjOffset_Texture1D_texture;
 Variable TextureSampleProjOffset_Texture1D_sampler;
 Variable TextureSampleProjOffset_Texture1D_coordinate;
@@ -5391,7 +5123,7 @@ Variable SampledTextureSampleProjOffset_Texture1D_offset;
 Function SampledTextureSampleProjOffset_Texture1D;
 inline constexpr std::array SampledTextureSampleProjOffset_Texture1D_args = { &SampledTextureSampleProjOffset_Texture1D_texture, &SampledTextureSampleProjOffset_Texture1D_coordinate, &SampledTextureSampleProjOffset_Texture1D_proj, &SampledTextureSampleProjOffset_Texture1D_offset };
 
-/// textureSampleProjOffset with Texture2D, SamplerType, Float32x2, Float32, Float32x2
+/// textureSampleProjOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2
 Variable TextureSampleProjOffset_Texture2D_texture;
 Variable TextureSampleProjOffset_Texture2D_sampler;
 Variable TextureSampleProjOffset_Texture2D_coordinate;
@@ -5408,7 +5140,7 @@ Variable SampledTextureSampleProjOffset_Texture2D_offset;
 Function SampledTextureSampleProjOffset_Texture2D;
 inline constexpr std::array SampledTextureSampleProjOffset_Texture2D_args = { &SampledTextureSampleProjOffset_Texture2D_texture, &SampledTextureSampleProjOffset_Texture2D_coordinate, &SampledTextureSampleProjOffset_Texture2D_proj, &SampledTextureSampleProjOffset_Texture2D_offset };
 
-/// textureSampleProjOffset with Texture3D, SamplerType, Float32x3, Float32, Float32x3
+/// textureSampleProjOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3
 Variable TextureSampleProjOffset_Texture3D_texture;
 Variable TextureSampleProjOffset_Texture3D_sampler;
 Variable TextureSampleProjOffset_Texture3D_coordinate;
@@ -5425,7 +5157,7 @@ Variable SampledTextureSampleProjOffset_Texture3D_offset;
 Function SampledTextureSampleProjOffset_Texture3D;
 inline constexpr std::array SampledTextureSampleProjOffset_Texture3D_args = { &SampledTextureSampleProjOffset_Texture3D_texture, &SampledTextureSampleProjOffset_Texture3D_coordinate, &SampledTextureSampleProjOffset_Texture3D_proj, &SampledTextureSampleProjOffset_Texture3D_offset };
 
-/// textureSampleCompare with Texture1D, SamplerType, Float32, Float32
+/// textureSampleCompare with Texture1D, Sampler, Float32, Float32
 Variable TextureSampleCompare_Texture1D_texture;
 Variable TextureSampleCompare_Texture1D_sampler;
 Variable TextureSampleCompare_Texture1D_coordinate;
@@ -5440,7 +5172,7 @@ Variable SampledTextureSampleCompare_Texture1D_compare;
 Function SampledTextureSampleCompare_Texture1D;
 inline constexpr std::array SampledTextureSampleCompare_Texture1D_args = { &SampledTextureSampleCompare_Texture1D_texture, &SampledTextureSampleCompare_Texture1D_coordinate, &SampledTextureSampleCompare_Texture1D_compare };
 
-/// textureSampleCompare with Texture2D, SamplerType, Float32x2, Float32
+/// textureSampleCompare with Texture2D, Sampler, Float32x2, Float32
 Variable TextureSampleCompare_Texture2D_texture;
 Variable TextureSampleCompare_Texture2D_sampler;
 Variable TextureSampleCompare_Texture2D_coordinate;
@@ -5455,7 +5187,7 @@ Variable SampledTextureSampleCompare_Texture2D_compare;
 Function SampledTextureSampleCompare_Texture2D;
 inline constexpr std::array SampledTextureSampleCompare_Texture2D_args = { &SampledTextureSampleCompare_Texture2D_texture, &SampledTextureSampleCompare_Texture2D_coordinate, &SampledTextureSampleCompare_Texture2D_compare };
 
-/// textureSampleCompare with Texture3D, SamplerType, Float32x3, Float32
+/// textureSampleCompare with Texture3D, Sampler, Float32x3, Float32
 Variable TextureSampleCompare_Texture3D_texture;
 Variable TextureSampleCompare_Texture3D_sampler;
 Variable TextureSampleCompare_Texture3D_coordinate;
@@ -5470,7 +5202,7 @@ Variable SampledTextureSampleCompare_Texture3D_compare;
 Function SampledTextureSampleCompare_Texture3D;
 inline constexpr std::array SampledTextureSampleCompare_Texture3D_args = { &SampledTextureSampleCompare_Texture3D_texture, &SampledTextureSampleCompare_Texture3D_coordinate, &SampledTextureSampleCompare_Texture3D_compare };
 
-/// textureSampleCompare with Texture1DArray, SamplerType, Float32x2, Float32
+/// textureSampleCompare with Texture1DArray, Sampler, Float32x2, Float32
 Variable TextureSampleCompare_Texture1DArray_texture;
 Variable TextureSampleCompare_Texture1DArray_sampler;
 Variable TextureSampleCompare_Texture1DArray_coordinate;
@@ -5485,7 +5217,7 @@ Variable SampledTextureSampleCompare_Texture1DArray_compare;
 Function SampledTextureSampleCompare_Texture1DArray;
 inline constexpr std::array SampledTextureSampleCompare_Texture1DArray_args = { &SampledTextureSampleCompare_Texture1DArray_texture, &SampledTextureSampleCompare_Texture1DArray_coordinate, &SampledTextureSampleCompare_Texture1DArray_compare };
 
-/// textureSampleCompare with Texture2DArray, SamplerType, Float32x3, Float32
+/// textureSampleCompare with Texture2DArray, Sampler, Float32x3, Float32
 Variable TextureSampleCompare_Texture2DArray_texture;
 Variable TextureSampleCompare_Texture2DArray_sampler;
 Variable TextureSampleCompare_Texture2DArray_coordinate;
@@ -5500,7 +5232,7 @@ Variable SampledTextureSampleCompare_Texture2DArray_compare;
 Function SampledTextureSampleCompare_Texture2DArray;
 inline constexpr std::array SampledTextureSampleCompare_Texture2DArray_args = { &SampledTextureSampleCompare_Texture2DArray_texture, &SampledTextureSampleCompare_Texture2DArray_coordinate, &SampledTextureSampleCompare_Texture2DArray_compare };
 
-/// textureSampleCompareOffset with Texture1D, SamplerType, Float32, Float32, Float32
+/// textureSampleCompareOffset with Texture1D, Sampler, Float32, Float32, Float32
 Variable TextureSampleCompareOffset_Texture1D_texture;
 Variable TextureSampleCompareOffset_Texture1D_sampler;
 Variable TextureSampleCompareOffset_Texture1D_coordinate;
@@ -5517,7 +5249,7 @@ Variable SampledTextureSampleCompareOffset_Texture1D_offset;
 Function SampledTextureSampleCompareOffset_Texture1D;
 inline constexpr std::array SampledTextureSampleCompareOffset_Texture1D_args = { &SampledTextureSampleCompareOffset_Texture1D_texture, &SampledTextureSampleCompareOffset_Texture1D_coordinate, &SampledTextureSampleCompareOffset_Texture1D_compare, &SampledTextureSampleCompareOffset_Texture1D_offset };
 
-/// textureSampleCompareOffset with Texture2D, SamplerType, Float32x2, Float32, Float32x2
+/// textureSampleCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2
 Variable TextureSampleCompareOffset_Texture2D_texture;
 Variable TextureSampleCompareOffset_Texture2D_sampler;
 Variable TextureSampleCompareOffset_Texture2D_coordinate;
@@ -5534,7 +5266,7 @@ Variable SampledTextureSampleCompareOffset_Texture2D_offset;
 Function SampledTextureSampleCompareOffset_Texture2D;
 inline constexpr std::array SampledTextureSampleCompareOffset_Texture2D_args = { &SampledTextureSampleCompareOffset_Texture2D_texture, &SampledTextureSampleCompareOffset_Texture2D_coordinate, &SampledTextureSampleCompareOffset_Texture2D_compare, &SampledTextureSampleCompareOffset_Texture2D_offset };
 
-/// textureSampleCompareOffset with Texture3D, SamplerType, Float32x3, Float32, Float32x3
+/// textureSampleCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3
 Variable TextureSampleCompareOffset_Texture3D_texture;
 Variable TextureSampleCompareOffset_Texture3D_sampler;
 Variable TextureSampleCompareOffset_Texture3D_coordinate;
@@ -5551,7 +5283,7 @@ Variable SampledTextureSampleCompareOffset_Texture3D_offset;
 Function SampledTextureSampleCompareOffset_Texture3D;
 inline constexpr std::array SampledTextureSampleCompareOffset_Texture3D_args = { &SampledTextureSampleCompareOffset_Texture3D_texture, &SampledTextureSampleCompareOffset_Texture3D_coordinate, &SampledTextureSampleCompareOffset_Texture3D_compare, &SampledTextureSampleCompareOffset_Texture3D_offset };
 
-/// textureSampleCompareOffset with Texture1DArray, SamplerType, Float32x2, Float32, Float32x2
+/// textureSampleCompareOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32x2
 Variable TextureSampleCompareOffset_Texture1DArray_texture;
 Variable TextureSampleCompareOffset_Texture1DArray_sampler;
 Variable TextureSampleCompareOffset_Texture1DArray_coordinate;
@@ -5568,7 +5300,7 @@ Variable SampledTextureSampleCompareOffset_Texture1DArray_offset;
 Function SampledTextureSampleCompareOffset_Texture1DArray;
 inline constexpr std::array SampledTextureSampleCompareOffset_Texture1DArray_args = { &SampledTextureSampleCompareOffset_Texture1DArray_texture, &SampledTextureSampleCompareOffset_Texture1DArray_coordinate, &SampledTextureSampleCompareOffset_Texture1DArray_compare, &SampledTextureSampleCompareOffset_Texture1DArray_offset };
 
-/// textureSampleCompareOffset with Texture2DArray, SamplerType, Float32x3, Float32, Float32x3
+/// textureSampleCompareOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32x3
 Variable TextureSampleCompareOffset_Texture2DArray_texture;
 Variable TextureSampleCompareOffset_Texture2DArray_sampler;
 Variable TextureSampleCompareOffset_Texture2DArray_coordinate;
@@ -5585,7 +5317,7 @@ Variable SampledTextureSampleCompareOffset_Texture2DArray_offset;
 Function SampledTextureSampleCompareOffset_Texture2DArray;
 inline constexpr std::array SampledTextureSampleCompareOffset_Texture2DArray_args = { &SampledTextureSampleCompareOffset_Texture2DArray_texture, &SampledTextureSampleCompareOffset_Texture2DArray_coordinate, &SampledTextureSampleCompareOffset_Texture2DArray_compare, &SampledTextureSampleCompareOffset_Texture2DArray_offset };
 
-/// textureSampleProjCompare with Texture1D, SamplerType, Float32, Float32, Float32
+/// textureSampleProjCompare with Texture1D, Sampler, Float32, Float32, Float32
 Variable TextureSampleProjCompare_Texture1D_texture;
 Variable TextureSampleProjCompare_Texture1D_sampler;
 Variable TextureSampleProjCompare_Texture1D_coordinate;
@@ -5602,7 +5334,7 @@ Variable SampledTextureSampleProjCompare_Texture1D_compare;
 Function SampledTextureSampleProjCompare_Texture1D;
 inline constexpr std::array SampledTextureSampleProjCompare_Texture1D_args = { &SampledTextureSampleProjCompare_Texture1D_texture, &SampledTextureSampleProjCompare_Texture1D_coordinate, &SampledTextureSampleProjCompare_Texture1D_proj, &SampledTextureSampleProjCompare_Texture1D_compare };
 
-/// textureSampleProjCompare with Texture2D, SamplerType, Float32x2, Float32, Float32
+/// textureSampleProjCompare with Texture2D, Sampler, Float32x2, Float32, Float32
 Variable TextureSampleProjCompare_Texture2D_texture;
 Variable TextureSampleProjCompare_Texture2D_sampler;
 Variable TextureSampleProjCompare_Texture2D_coordinate;
@@ -5619,7 +5351,7 @@ Variable SampledTextureSampleProjCompare_Texture2D_compare;
 Function SampledTextureSampleProjCompare_Texture2D;
 inline constexpr std::array SampledTextureSampleProjCompare_Texture2D_args = { &SampledTextureSampleProjCompare_Texture2D_texture, &SampledTextureSampleProjCompare_Texture2D_coordinate, &SampledTextureSampleProjCompare_Texture2D_proj, &SampledTextureSampleProjCompare_Texture2D_compare };
 
-/// textureSampleProjCompare with Texture3D, SamplerType, Float32x3, Float32, Float32
+/// textureSampleProjCompare with Texture3D, Sampler, Float32x3, Float32, Float32
 Variable TextureSampleProjCompare_Texture3D_texture;
 Variable TextureSampleProjCompare_Texture3D_sampler;
 Variable TextureSampleProjCompare_Texture3D_coordinate;
@@ -5636,7 +5368,7 @@ Variable SampledTextureSampleProjCompare_Texture3D_compare;
 Function SampledTextureSampleProjCompare_Texture3D;
 inline constexpr std::array SampledTextureSampleProjCompare_Texture3D_args = { &SampledTextureSampleProjCompare_Texture3D_texture, &SampledTextureSampleProjCompare_Texture3D_coordinate, &SampledTextureSampleProjCompare_Texture3D_proj, &SampledTextureSampleProjCompare_Texture3D_compare };
 
-/// textureSampleProjCompareOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+/// textureSampleProjCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
 Variable TextureSampleProjCompareOffset_Texture1D_texture;
 Variable TextureSampleProjCompareOffset_Texture1D_sampler;
 Variable TextureSampleProjCompareOffset_Texture1D_coordinate;
@@ -5655,7 +5387,7 @@ Variable SampledTextureSampleProjCompareOffset_Texture1D_offset;
 Function SampledTextureSampleProjCompareOffset_Texture1D;
 inline constexpr std::array SampledTextureSampleProjCompareOffset_Texture1D_args = { &SampledTextureSampleProjCompareOffset_Texture1D_texture, &SampledTextureSampleProjCompareOffset_Texture1D_coordinate, &SampledTextureSampleProjCompareOffset_Texture1D_proj, &SampledTextureSampleProjCompareOffset_Texture1D_compare, &SampledTextureSampleProjCompareOffset_Texture1D_offset };
 
-/// textureSampleProjCompareOffset with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32x2
+/// textureSampleProjCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
 Variable TextureSampleProjCompareOffset_Texture2D_texture;
 Variable TextureSampleProjCompareOffset_Texture2D_sampler;
 Variable TextureSampleProjCompareOffset_Texture2D_coordinate;
@@ -5674,7 +5406,7 @@ Variable SampledTextureSampleProjCompareOffset_Texture2D_offset;
 Function SampledTextureSampleProjCompareOffset_Texture2D;
 inline constexpr std::array SampledTextureSampleProjCompareOffset_Texture2D_args = { &SampledTextureSampleProjCompareOffset_Texture2D_texture, &SampledTextureSampleProjCompareOffset_Texture2D_coordinate, &SampledTextureSampleProjCompareOffset_Texture2D_proj, &SampledTextureSampleProjCompareOffset_Texture2D_compare, &SampledTextureSampleProjCompareOffset_Texture2D_offset };
 
-/// textureSampleProjCompareOffset with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32x3
+/// textureSampleProjCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
 Variable TextureSampleProjCompareOffset_Texture3D_texture;
 Variable TextureSampleProjCompareOffset_Texture3D_sampler;
 Variable TextureSampleProjCompareOffset_Texture3D_coordinate;
@@ -5693,7 +5425,7 @@ Variable SampledTextureSampleProjCompareOffset_Texture3D_offset;
 Function SampledTextureSampleProjCompareOffset_Texture3D;
 inline constexpr std::array SampledTextureSampleProjCompareOffset_Texture3D_args = { &SampledTextureSampleProjCompareOffset_Texture3D_texture, &SampledTextureSampleProjCompareOffset_Texture3D_coordinate, &SampledTextureSampleProjCompareOffset_Texture3D_proj, &SampledTextureSampleProjCompareOffset_Texture3D_compare, &SampledTextureSampleProjCompareOffset_Texture3D_offset };
 
-/// textureSampleLod with Texture1D, SamplerType, Float32, Float32
+/// textureSampleLod with Texture1D, Sampler, Float32, Float32
 Variable TextureSampleLod_Texture1D_texture;
 Variable TextureSampleLod_Texture1D_sampler;
 Variable TextureSampleLod_Texture1D_coordinate;
@@ -5708,7 +5440,7 @@ Variable SampledTextureSampleLod_Texture1D_lod;
 Function SampledTextureSampleLod_Texture1D;
 inline constexpr std::array SampledTextureSampleLod_Texture1D_args = { &SampledTextureSampleLod_Texture1D_texture, &SampledTextureSampleLod_Texture1D_coordinate, &SampledTextureSampleLod_Texture1D_lod };
 
-/// textureSampleLod with Texture2D, SamplerType, Float32x2, Float32
+/// textureSampleLod with Texture2D, Sampler, Float32x2, Float32
 Variable TextureSampleLod_Texture2D_texture;
 Variable TextureSampleLod_Texture2D_sampler;
 Variable TextureSampleLod_Texture2D_coordinate;
@@ -5723,7 +5455,7 @@ Variable SampledTextureSampleLod_Texture2D_lod;
 Function SampledTextureSampleLod_Texture2D;
 inline constexpr std::array SampledTextureSampleLod_Texture2D_args = { &SampledTextureSampleLod_Texture2D_texture, &SampledTextureSampleLod_Texture2D_coordinate, &SampledTextureSampleLod_Texture2D_lod };
 
-/// textureSampleLod with Texture3D, SamplerType, Float32x3, Float32
+/// textureSampleLod with Texture3D, Sampler, Float32x3, Float32
 Variable TextureSampleLod_Texture3D_texture;
 Variable TextureSampleLod_Texture3D_sampler;
 Variable TextureSampleLod_Texture3D_coordinate;
@@ -5738,7 +5470,7 @@ Variable SampledTextureSampleLod_Texture3D_lod;
 Function SampledTextureSampleLod_Texture3D;
 inline constexpr std::array SampledTextureSampleLod_Texture3D_args = { &SampledTextureSampleLod_Texture3D_texture, &SampledTextureSampleLod_Texture3D_coordinate, &SampledTextureSampleLod_Texture3D_lod };
 
-/// textureSampleLod with TextureCube, SamplerType, Float32x3, Float32
+/// textureSampleLod with TextureCube, Sampler, Float32x3, Float32
 Variable TextureSampleLod_TextureCube_texture;
 Variable TextureSampleLod_TextureCube_sampler;
 Variable TextureSampleLod_TextureCube_coordinate;
@@ -5753,7 +5485,7 @@ Variable SampledTextureSampleLod_TextureCube_lod;
 Function SampledTextureSampleLod_TextureCube;
 inline constexpr std::array SampledTextureSampleLod_TextureCube_args = { &SampledTextureSampleLod_TextureCube_texture, &SampledTextureSampleLod_TextureCube_coordinate, &SampledTextureSampleLod_TextureCube_lod };
 
-/// textureSampleLod with Texture1DArray, SamplerType, Float32x2, Float32
+/// textureSampleLod with Texture1DArray, Sampler, Float32x2, Float32
 Variable TextureSampleLod_Texture1DArray_texture;
 Variable TextureSampleLod_Texture1DArray_sampler;
 Variable TextureSampleLod_Texture1DArray_coordinate;
@@ -5768,7 +5500,7 @@ Variable SampledTextureSampleLod_Texture1DArray_lod;
 Function SampledTextureSampleLod_Texture1DArray;
 inline constexpr std::array SampledTextureSampleLod_Texture1DArray_args = { &SampledTextureSampleLod_Texture1DArray_texture, &SampledTextureSampleLod_Texture1DArray_coordinate, &SampledTextureSampleLod_Texture1DArray_lod };
 
-/// textureSampleLod with Texture2DArray, SamplerType, Float32x3, Float32
+/// textureSampleLod with Texture2DArray, Sampler, Float32x3, Float32
 Variable TextureSampleLod_Texture2DArray_texture;
 Variable TextureSampleLod_Texture2DArray_sampler;
 Variable TextureSampleLod_Texture2DArray_coordinate;
@@ -5783,7 +5515,7 @@ Variable SampledTextureSampleLod_Texture2DArray_lod;
 Function SampledTextureSampleLod_Texture2DArray;
 inline constexpr std::array SampledTextureSampleLod_Texture2DArray_args = { &SampledTextureSampleLod_Texture2DArray_texture, &SampledTextureSampleLod_Texture2DArray_coordinate, &SampledTextureSampleLod_Texture2DArray_lod };
 
-/// textureSampleLod with TextureCubeArray, SamplerType, Float32x4, Float32
+/// textureSampleLod with TextureCubeArray, Sampler, Float32x4, Float32
 Variable TextureSampleLod_TextureCubeArray_texture;
 Variable TextureSampleLod_TextureCubeArray_sampler;
 Variable TextureSampleLod_TextureCubeArray_coordinate;
@@ -5798,7 +5530,7 @@ Variable SampledTextureSampleLod_TextureCubeArray_lod;
 Function SampledTextureSampleLod_TextureCubeArray;
 inline constexpr std::array SampledTextureSampleLod_TextureCubeArray_args = { &SampledTextureSampleLod_TextureCubeArray_texture, &SampledTextureSampleLod_TextureCubeArray_coordinate, &SampledTextureSampleLod_TextureCubeArray_lod };
 
-/// textureSampleLodOffset with Texture1D, SamplerType, Float32, Float32, Float32
+/// textureSampleLodOffset with Texture1D, Sampler, Float32, Float32, Float32
 Variable TextureSampleLodOffset_Texture1D_texture;
 Variable TextureSampleLodOffset_Texture1D_sampler;
 Variable TextureSampleLodOffset_Texture1D_coordinate;
@@ -5815,7 +5547,7 @@ Variable SampledTextureSampleLodOffset_Texture1D_offset;
 Function SampledTextureSampleLodOffset_Texture1D;
 inline constexpr std::array SampledTextureSampleLodOffset_Texture1D_args = { &SampledTextureSampleLodOffset_Texture1D_texture, &SampledTextureSampleLodOffset_Texture1D_coordinate, &SampledTextureSampleLodOffset_Texture1D_lod, &SampledTextureSampleLodOffset_Texture1D_offset };
 
-/// textureSampleLodOffset with Texture2D, SamplerType, Float32x2, Float32, Float32x2
+/// textureSampleLodOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2
 Variable TextureSampleLodOffset_Texture2D_texture;
 Variable TextureSampleLodOffset_Texture2D_sampler;
 Variable TextureSampleLodOffset_Texture2D_coordinate;
@@ -5832,7 +5564,7 @@ Variable SampledTextureSampleLodOffset_Texture2D_offset;
 Function SampledTextureSampleLodOffset_Texture2D;
 inline constexpr std::array SampledTextureSampleLodOffset_Texture2D_args = { &SampledTextureSampleLodOffset_Texture2D_texture, &SampledTextureSampleLodOffset_Texture2D_coordinate, &SampledTextureSampleLodOffset_Texture2D_lod, &SampledTextureSampleLodOffset_Texture2D_offset };
 
-/// textureSampleLodOffset with Texture3D, SamplerType, Float32x3, Float32, Float32x3
+/// textureSampleLodOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3
 Variable TextureSampleLodOffset_Texture3D_texture;
 Variable TextureSampleLodOffset_Texture3D_sampler;
 Variable TextureSampleLodOffset_Texture3D_coordinate;
@@ -5849,7 +5581,7 @@ Variable SampledTextureSampleLodOffset_Texture3D_offset;
 Function SampledTextureSampleLodOffset_Texture3D;
 inline constexpr std::array SampledTextureSampleLodOffset_Texture3D_args = { &SampledTextureSampleLodOffset_Texture3D_texture, &SampledTextureSampleLodOffset_Texture3D_coordinate, &SampledTextureSampleLodOffset_Texture3D_lod, &SampledTextureSampleLodOffset_Texture3D_offset };
 
-/// textureSampleLodOffset with Texture1DArray, SamplerType, Float32x2, Float32, Float32x2
+/// textureSampleLodOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32x2
 Variable TextureSampleLodOffset_Texture1DArray_texture;
 Variable TextureSampleLodOffset_Texture1DArray_sampler;
 Variable TextureSampleLodOffset_Texture1DArray_coordinate;
@@ -5866,7 +5598,7 @@ Variable SampledTextureSampleLodOffset_Texture1DArray_offset;
 Function SampledTextureSampleLodOffset_Texture1DArray;
 inline constexpr std::array SampledTextureSampleLodOffset_Texture1DArray_args = { &SampledTextureSampleLodOffset_Texture1DArray_texture, &SampledTextureSampleLodOffset_Texture1DArray_coordinate, &SampledTextureSampleLodOffset_Texture1DArray_lod, &SampledTextureSampleLodOffset_Texture1DArray_offset };
 
-/// textureSampleLodOffset with Texture2DArray, SamplerType, Float32x3, Float32, Float32x3
+/// textureSampleLodOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32x3
 Variable TextureSampleLodOffset_Texture2DArray_texture;
 Variable TextureSampleLodOffset_Texture2DArray_sampler;
 Variable TextureSampleLodOffset_Texture2DArray_coordinate;
@@ -5883,7 +5615,7 @@ Variable SampledTextureSampleLodOffset_Texture2DArray_offset;
 Function SampledTextureSampleLodOffset_Texture2DArray;
 inline constexpr std::array SampledTextureSampleLodOffset_Texture2DArray_args = { &SampledTextureSampleLodOffset_Texture2DArray_texture, &SampledTextureSampleLodOffset_Texture2DArray_coordinate, &SampledTextureSampleLodOffset_Texture2DArray_lod, &SampledTextureSampleLodOffset_Texture2DArray_offset };
 
-/// textureSampleLodProj with Texture1D, SamplerType, Float32, Float32, Float32
+/// textureSampleLodProj with Texture1D, Sampler, Float32, Float32, Float32
 Variable TextureSampleLodProj_Texture1D_texture;
 Variable TextureSampleLodProj_Texture1D_sampler;
 Variable TextureSampleLodProj_Texture1D_coordinate;
@@ -5900,7 +5632,7 @@ Variable SampledTextureSampleLodProj_Texture1D_proj;
 Function SampledTextureSampleLodProj_Texture1D;
 inline constexpr std::array SampledTextureSampleLodProj_Texture1D_args = { &SampledTextureSampleLodProj_Texture1D_texture, &SampledTextureSampleLodProj_Texture1D_coordinate, &SampledTextureSampleLodProj_Texture1D_lod, &SampledTextureSampleLodProj_Texture1D_proj };
 
-/// textureSampleLodProj with Texture2D, SamplerType, Float32x2, Float32, Float32
+/// textureSampleLodProj with Texture2D, Sampler, Float32x2, Float32, Float32
 Variable TextureSampleLodProj_Texture2D_texture;
 Variable TextureSampleLodProj_Texture2D_sampler;
 Variable TextureSampleLodProj_Texture2D_coordinate;
@@ -5917,7 +5649,7 @@ Variable SampledTextureSampleLodProj_Texture2D_proj;
 Function SampledTextureSampleLodProj_Texture2D;
 inline constexpr std::array SampledTextureSampleLodProj_Texture2D_args = { &SampledTextureSampleLodProj_Texture2D_texture, &SampledTextureSampleLodProj_Texture2D_coordinate, &SampledTextureSampleLodProj_Texture2D_lod, &SampledTextureSampleLodProj_Texture2D_proj };
 
-/// textureSampleLodProj with Texture3D, SamplerType, Float32x3, Float32, Float32
+/// textureSampleLodProj with Texture3D, Sampler, Float32x3, Float32, Float32
 Variable TextureSampleLodProj_Texture3D_texture;
 Variable TextureSampleLodProj_Texture3D_sampler;
 Variable TextureSampleLodProj_Texture3D_coordinate;
@@ -5934,7 +5666,7 @@ Variable SampledTextureSampleLodProj_Texture3D_proj;
 Function SampledTextureSampleLodProj_Texture3D;
 inline constexpr std::array SampledTextureSampleLodProj_Texture3D_args = { &SampledTextureSampleLodProj_Texture3D_texture, &SampledTextureSampleLodProj_Texture3D_coordinate, &SampledTextureSampleLodProj_Texture3D_lod, &SampledTextureSampleLodProj_Texture3D_proj };
 
-/// textureSampleLodProjOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+/// textureSampleLodProjOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
 Variable TextureSampleLodProjOffset_Texture1D_texture;
 Variable TextureSampleLodProjOffset_Texture1D_sampler;
 Variable TextureSampleLodProjOffset_Texture1D_coordinate;
@@ -5953,7 +5685,7 @@ Variable SampledTextureSampleLodProjOffset_Texture1D_offset;
 Function SampledTextureSampleLodProjOffset_Texture1D;
 inline constexpr std::array SampledTextureSampleLodProjOffset_Texture1D_args = { &SampledTextureSampleLodProjOffset_Texture1D_texture, &SampledTextureSampleLodProjOffset_Texture1D_coordinate, &SampledTextureSampleLodProjOffset_Texture1D_lod, &SampledTextureSampleLodProjOffset_Texture1D_proj, &SampledTextureSampleLodProjOffset_Texture1D_offset };
 
-/// textureSampleLodProjOffset with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32x2
+/// textureSampleLodProjOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
 Variable TextureSampleLodProjOffset_Texture2D_texture;
 Variable TextureSampleLodProjOffset_Texture2D_sampler;
 Variable TextureSampleLodProjOffset_Texture2D_coordinate;
@@ -5972,7 +5704,7 @@ Variable SampledTextureSampleLodProjOffset_Texture2D_offset;
 Function SampledTextureSampleLodProjOffset_Texture2D;
 inline constexpr std::array SampledTextureSampleLodProjOffset_Texture2D_args = { &SampledTextureSampleLodProjOffset_Texture2D_texture, &SampledTextureSampleLodProjOffset_Texture2D_coordinate, &SampledTextureSampleLodProjOffset_Texture2D_lod, &SampledTextureSampleLodProjOffset_Texture2D_proj, &SampledTextureSampleLodProjOffset_Texture2D_offset };
 
-/// textureSampleLodProjOffset with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32x3
+/// textureSampleLodProjOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
 Variable TextureSampleLodProjOffset_Texture3D_texture;
 Variable TextureSampleLodProjOffset_Texture3D_sampler;
 Variable TextureSampleLodProjOffset_Texture3D_coordinate;
@@ -5991,7 +5723,7 @@ Variable SampledTextureSampleLodProjOffset_Texture3D_offset;
 Function SampledTextureSampleLodProjOffset_Texture3D;
 inline constexpr std::array SampledTextureSampleLodProjOffset_Texture3D_args = { &SampledTextureSampleLodProjOffset_Texture3D_texture, &SampledTextureSampleLodProjOffset_Texture3D_coordinate, &SampledTextureSampleLodProjOffset_Texture3D_lod, &SampledTextureSampleLodProjOffset_Texture3D_proj, &SampledTextureSampleLodProjOffset_Texture3D_offset };
 
-/// textureSampleLodCompare with Texture1D, SamplerType, Float32, Float32, Float32
+/// textureSampleLodCompare with Texture1D, Sampler, Float32, Float32, Float32
 Variable TextureSampleLodCompare_Texture1D_texture;
 Variable TextureSampleLodCompare_Texture1D_sampler;
 Variable TextureSampleLodCompare_Texture1D_coordinate;
@@ -6008,7 +5740,7 @@ Variable SampledTextureSampleLodCompare_Texture1D_compare;
 Function SampledTextureSampleLodCompare_Texture1D;
 inline constexpr std::array SampledTextureSampleLodCompare_Texture1D_args = { &SampledTextureSampleLodCompare_Texture1D_texture, &SampledTextureSampleLodCompare_Texture1D_coordinate, &SampledTextureSampleLodCompare_Texture1D_lod, &SampledTextureSampleLodCompare_Texture1D_compare };
 
-/// textureSampleLodCompare with Texture2D, SamplerType, Float32x2, Float32, Float32
+/// textureSampleLodCompare with Texture2D, Sampler, Float32x2, Float32, Float32
 Variable TextureSampleLodCompare_Texture2D_texture;
 Variable TextureSampleLodCompare_Texture2D_sampler;
 Variable TextureSampleLodCompare_Texture2D_coordinate;
@@ -6025,7 +5757,7 @@ Variable SampledTextureSampleLodCompare_Texture2D_compare;
 Function SampledTextureSampleLodCompare_Texture2D;
 inline constexpr std::array SampledTextureSampleLodCompare_Texture2D_args = { &SampledTextureSampleLodCompare_Texture2D_texture, &SampledTextureSampleLodCompare_Texture2D_coordinate, &SampledTextureSampleLodCompare_Texture2D_lod, &SampledTextureSampleLodCompare_Texture2D_compare };
 
-/// textureSampleLodCompare with Texture3D, SamplerType, Float32x3, Float32, Float32
+/// textureSampleLodCompare with Texture3D, Sampler, Float32x3, Float32, Float32
 Variable TextureSampleLodCompare_Texture3D_texture;
 Variable TextureSampleLodCompare_Texture3D_sampler;
 Variable TextureSampleLodCompare_Texture3D_coordinate;
@@ -6042,7 +5774,7 @@ Variable SampledTextureSampleLodCompare_Texture3D_compare;
 Function SampledTextureSampleLodCompare_Texture3D;
 inline constexpr std::array SampledTextureSampleLodCompare_Texture3D_args = { &SampledTextureSampleLodCompare_Texture3D_texture, &SampledTextureSampleLodCompare_Texture3D_coordinate, &SampledTextureSampleLodCompare_Texture3D_lod, &SampledTextureSampleLodCompare_Texture3D_compare };
 
-/// textureSampleLodCompare with Texture1DArray, SamplerType, Float32x2, Float32, Float32
+/// textureSampleLodCompare with Texture1DArray, Sampler, Float32x2, Float32, Float32
 Variable TextureSampleLodCompare_Texture1DArray_texture;
 Variable TextureSampleLodCompare_Texture1DArray_sampler;
 Variable TextureSampleLodCompare_Texture1DArray_coordinate;
@@ -6059,7 +5791,7 @@ Variable SampledTextureSampleLodCompare_Texture1DArray_compare;
 Function SampledTextureSampleLodCompare_Texture1DArray;
 inline constexpr std::array SampledTextureSampleLodCompare_Texture1DArray_args = { &SampledTextureSampleLodCompare_Texture1DArray_texture, &SampledTextureSampleLodCompare_Texture1DArray_coordinate, &SampledTextureSampleLodCompare_Texture1DArray_lod, &SampledTextureSampleLodCompare_Texture1DArray_compare };
 
-/// textureSampleLodCompare with Texture2DArray, SamplerType, Float32x3, Float32, Float32
+/// textureSampleLodCompare with Texture2DArray, Sampler, Float32x3, Float32, Float32
 Variable TextureSampleLodCompare_Texture2DArray_texture;
 Variable TextureSampleLodCompare_Texture2DArray_sampler;
 Variable TextureSampleLodCompare_Texture2DArray_coordinate;
@@ -6076,7 +5808,7 @@ Variable SampledTextureSampleLodCompare_Texture2DArray_compare;
 Function SampledTextureSampleLodCompare_Texture2DArray;
 inline constexpr std::array SampledTextureSampleLodCompare_Texture2DArray_args = { &SampledTextureSampleLodCompare_Texture2DArray_texture, &SampledTextureSampleLodCompare_Texture2DArray_coordinate, &SampledTextureSampleLodCompare_Texture2DArray_lod, &SampledTextureSampleLodCompare_Texture2DArray_compare };
 
-/// textureSampleLodCompareOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+/// textureSampleLodCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
 Variable TextureSampleLodCompareOffset_Texture1D_texture;
 Variable TextureSampleLodCompareOffset_Texture1D_sampler;
 Variable TextureSampleLodCompareOffset_Texture1D_coordinate;
@@ -6095,7 +5827,7 @@ Variable SampledTextureSampleLodCompareOffset_Texture1D_offset;
 Function SampledTextureSampleLodCompareOffset_Texture1D;
 inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture1D_args = { &SampledTextureSampleLodCompareOffset_Texture1D_texture, &SampledTextureSampleLodCompareOffset_Texture1D_coordinate, &SampledTextureSampleLodCompareOffset_Texture1D_lod, &SampledTextureSampleLodCompareOffset_Texture1D_compare, &SampledTextureSampleLodCompareOffset_Texture1D_offset };
 
-/// textureSampleLodCompareOffset with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32x2
+/// textureSampleLodCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
 Variable TextureSampleLodCompareOffset_Texture2D_texture;
 Variable TextureSampleLodCompareOffset_Texture2D_sampler;
 Variable TextureSampleLodCompareOffset_Texture2D_coordinate;
@@ -6114,7 +5846,7 @@ Variable SampledTextureSampleLodCompareOffset_Texture2D_offset;
 Function SampledTextureSampleLodCompareOffset_Texture2D;
 inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture2D_args = { &SampledTextureSampleLodCompareOffset_Texture2D_texture, &SampledTextureSampleLodCompareOffset_Texture2D_coordinate, &SampledTextureSampleLodCompareOffset_Texture2D_lod, &SampledTextureSampleLodCompareOffset_Texture2D_compare, &SampledTextureSampleLodCompareOffset_Texture2D_offset };
 
-/// textureSampleLodCompareOffset with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32x3
+/// textureSampleLodCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
 Variable TextureSampleLodCompareOffset_Texture3D_texture;
 Variable TextureSampleLodCompareOffset_Texture3D_sampler;
 Variable TextureSampleLodCompareOffset_Texture3D_coordinate;
@@ -6133,7 +5865,7 @@ Variable SampledTextureSampleLodCompareOffset_Texture3D_offset;
 Function SampledTextureSampleLodCompareOffset_Texture3D;
 inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture3D_args = { &SampledTextureSampleLodCompareOffset_Texture3D_texture, &SampledTextureSampleLodCompareOffset_Texture3D_coordinate, &SampledTextureSampleLodCompareOffset_Texture3D_lod, &SampledTextureSampleLodCompareOffset_Texture3D_compare, &SampledTextureSampleLodCompareOffset_Texture3D_offset };
 
-/// textureSampleLodCompareOffset with Texture1DArray, SamplerType, Float32x2, Float32, Float32, Float32x2
+/// textureSampleLodCompareOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32, Float32x2
 Variable TextureSampleLodCompareOffset_Texture1DArray_texture;
 Variable TextureSampleLodCompareOffset_Texture1DArray_sampler;
 Variable TextureSampleLodCompareOffset_Texture1DArray_coordinate;
@@ -6152,7 +5884,7 @@ Variable SampledTextureSampleLodCompareOffset_Texture1DArray_offset;
 Function SampledTextureSampleLodCompareOffset_Texture1DArray;
 inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture1DArray_args = { &SampledTextureSampleLodCompareOffset_Texture1DArray_texture, &SampledTextureSampleLodCompareOffset_Texture1DArray_coordinate, &SampledTextureSampleLodCompareOffset_Texture1DArray_lod, &SampledTextureSampleLodCompareOffset_Texture1DArray_compare, &SampledTextureSampleLodCompareOffset_Texture1DArray_offset };
 
-/// textureSampleLodCompareOffset with Texture2DArray, SamplerType, Float32x3, Float32, Float32, Float32x3
+/// textureSampleLodCompareOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32, Float32x3
 Variable TextureSampleLodCompareOffset_Texture2DArray_texture;
 Variable TextureSampleLodCompareOffset_Texture2DArray_sampler;
 Variable TextureSampleLodCompareOffset_Texture2DArray_coordinate;
@@ -6171,7 +5903,7 @@ Variable SampledTextureSampleLodCompareOffset_Texture2DArray_offset;
 Function SampledTextureSampleLodCompareOffset_Texture2DArray;
 inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture2DArray_args = { &SampledTextureSampleLodCompareOffset_Texture2DArray_texture, &SampledTextureSampleLodCompareOffset_Texture2DArray_coordinate, &SampledTextureSampleLodCompareOffset_Texture2DArray_lod, &SampledTextureSampleLodCompareOffset_Texture2DArray_compare, &SampledTextureSampleLodCompareOffset_Texture2DArray_offset };
 
-/// textureSampleLodProjCompare with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+/// textureSampleLodProjCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32
 Variable TextureSampleLodProjCompare_Texture1D_texture;
 Variable TextureSampleLodProjCompare_Texture1D_sampler;
 Variable TextureSampleLodProjCompare_Texture1D_coordinate;
@@ -6190,7 +5922,7 @@ Variable SampledTextureSampleLodProjCompare_Texture1D_compare;
 Function SampledTextureSampleLodProjCompare_Texture1D;
 inline constexpr std::array SampledTextureSampleLodProjCompare_Texture1D_args = { &SampledTextureSampleLodProjCompare_Texture1D_texture, &SampledTextureSampleLodProjCompare_Texture1D_coordinate, &SampledTextureSampleLodProjCompare_Texture1D_lod, &SampledTextureSampleLodProjCompare_Texture1D_proj, &SampledTextureSampleLodProjCompare_Texture1D_compare };
 
-/// textureSampleLodProjCompare with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32
+/// textureSampleLodProjCompare with Texture2D, Sampler, Float32x2, Float32, Float32, Float32
 Variable TextureSampleLodProjCompare_Texture2D_texture;
 Variable TextureSampleLodProjCompare_Texture2D_sampler;
 Variable TextureSampleLodProjCompare_Texture2D_coordinate;
@@ -6209,7 +5941,7 @@ Variable SampledTextureSampleLodProjCompare_Texture2D_compare;
 Function SampledTextureSampleLodProjCompare_Texture2D;
 inline constexpr std::array SampledTextureSampleLodProjCompare_Texture2D_args = { &SampledTextureSampleLodProjCompare_Texture2D_texture, &SampledTextureSampleLodProjCompare_Texture2D_coordinate, &SampledTextureSampleLodProjCompare_Texture2D_lod, &SampledTextureSampleLodProjCompare_Texture2D_proj, &SampledTextureSampleLodProjCompare_Texture2D_compare };
 
-/// textureSampleLodProjCompare with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32
+/// textureSampleLodProjCompare with Texture3D, Sampler, Float32x3, Float32, Float32, Float32
 Variable TextureSampleLodProjCompare_Texture3D_texture;
 Variable TextureSampleLodProjCompare_Texture3D_sampler;
 Variable TextureSampleLodProjCompare_Texture3D_coordinate;
@@ -6228,7 +5960,7 @@ Variable SampledTextureSampleLodProjCompare_Texture3D_compare;
 Function SampledTextureSampleLodProjCompare_Texture3D;
 inline constexpr std::array SampledTextureSampleLodProjCompare_Texture3D_args = { &SampledTextureSampleLodProjCompare_Texture3D_texture, &SampledTextureSampleLodProjCompare_Texture3D_coordinate, &SampledTextureSampleLodProjCompare_Texture3D_lod, &SampledTextureSampleLodProjCompare_Texture3D_proj, &SampledTextureSampleLodProjCompare_Texture3D_compare };
 
-/// textureSampleLodProjCompareOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32, Float32
+/// textureSampleLodProjCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
 Variable TextureSampleLodProjCompareOffset_Texture1D_texture;
 Variable TextureSampleLodProjCompareOffset_Texture1D_sampler;
 Variable TextureSampleLodProjCompareOffset_Texture1D_coordinate;
@@ -6249,7 +5981,7 @@ Variable SampledTextureSampleLodProjCompareOffset_Texture1D_offset;
 Function SampledTextureSampleLodProjCompareOffset_Texture1D;
 inline constexpr std::array SampledTextureSampleLodProjCompareOffset_Texture1D_args = { &SampledTextureSampleLodProjCompareOffset_Texture1D_texture, &SampledTextureSampleLodProjCompareOffset_Texture1D_coordinate, &SampledTextureSampleLodProjCompareOffset_Texture1D_lod, &SampledTextureSampleLodProjCompareOffset_Texture1D_proj, &SampledTextureSampleLodProjCompareOffset_Texture1D_compare, &SampledTextureSampleLodProjCompareOffset_Texture1D_offset };
 
-/// textureSampleLodProjCompareOffset with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32, Float32x2
+/// textureSampleLodProjCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32, Float32x2
 Variable TextureSampleLodProjCompareOffset_Texture2D_texture;
 Variable TextureSampleLodProjCompareOffset_Texture2D_sampler;
 Variable TextureSampleLodProjCompareOffset_Texture2D_coordinate;
@@ -6270,7 +6002,7 @@ Variable SampledTextureSampleLodProjCompareOffset_Texture2D_offset;
 Function SampledTextureSampleLodProjCompareOffset_Texture2D;
 inline constexpr std::array SampledTextureSampleLodProjCompareOffset_Texture2D_args = { &SampledTextureSampleLodProjCompareOffset_Texture2D_texture, &SampledTextureSampleLodProjCompareOffset_Texture2D_coordinate, &SampledTextureSampleLodProjCompareOffset_Texture2D_lod, &SampledTextureSampleLodProjCompareOffset_Texture2D_proj, &SampledTextureSampleLodProjCompareOffset_Texture2D_compare, &SampledTextureSampleLodProjCompareOffset_Texture2D_offset };
 
-/// textureSampleLodProjCompareOffset with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32, Float32x3
+/// textureSampleLodProjCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32, Float32x3
 Variable TextureSampleLodProjCompareOffset_Texture3D_texture;
 Variable TextureSampleLodProjCompareOffset_Texture3D_sampler;
 Variable TextureSampleLodProjCompareOffset_Texture3D_coordinate;
@@ -6291,7 +6023,7 @@ Variable SampledTextureSampleLodProjCompareOffset_Texture3D_offset;
 Function SampledTextureSampleLodProjCompareOffset_Texture3D;
 inline constexpr std::array SampledTextureSampleLodProjCompareOffset_Texture3D_args = { &SampledTextureSampleLodProjCompareOffset_Texture3D_texture, &SampledTextureSampleLodProjCompareOffset_Texture3D_coordinate, &SampledTextureSampleLodProjCompareOffset_Texture3D_lod, &SampledTextureSampleLodProjCompareOffset_Texture3D_proj, &SampledTextureSampleLodProjCompareOffset_Texture3D_compare, &SampledTextureSampleLodProjCompareOffset_Texture3D_offset };
 
-/// textureSampleGrad with Texture1D, SamplerType, Float32, Float32, Float32
+/// textureSampleGrad with Texture1D, Sampler, Float32, Float32, Float32
 Variable TextureSampleGrad_Texture1D_texture;
 Variable TextureSampleGrad_Texture1D_sampler;
 Variable TextureSampleGrad_Texture1D_coordinate;
@@ -6308,7 +6040,7 @@ Variable SampledTextureSampleGrad_Texture1D_grad_y;
 Function SampledTextureSampleGrad_Texture1D;
 inline constexpr std::array SampledTextureSampleGrad_Texture1D_args = { &SampledTextureSampleGrad_Texture1D_texture, &SampledTextureSampleGrad_Texture1D_coordinate, &SampledTextureSampleGrad_Texture1D_grad_x, &SampledTextureSampleGrad_Texture1D_grad_y };
 
-/// textureSampleGrad with Texture2D, SamplerType, Float32x2, Float32x2, Float32x2
+/// textureSampleGrad with Texture2D, Sampler, Float32x2, Float32x2, Float32x2
 Variable TextureSampleGrad_Texture2D_texture;
 Variable TextureSampleGrad_Texture2D_sampler;
 Variable TextureSampleGrad_Texture2D_coordinate;
@@ -6325,7 +6057,7 @@ Variable SampledTextureSampleGrad_Texture2D_grad_y;
 Function SampledTextureSampleGrad_Texture2D;
 inline constexpr std::array SampledTextureSampleGrad_Texture2D_args = { &SampledTextureSampleGrad_Texture2D_texture, &SampledTextureSampleGrad_Texture2D_coordinate, &SampledTextureSampleGrad_Texture2D_grad_x, &SampledTextureSampleGrad_Texture2D_grad_y };
 
-/// textureSampleGrad with Texture3D, SamplerType, Float32x3, Float32x3, Float32x3
+/// textureSampleGrad with Texture3D, Sampler, Float32x3, Float32x3, Float32x3
 Variable TextureSampleGrad_Texture3D_texture;
 Variable TextureSampleGrad_Texture3D_sampler;
 Variable TextureSampleGrad_Texture3D_coordinate;
@@ -6342,7 +6074,7 @@ Variable SampledTextureSampleGrad_Texture3D_grad_y;
 Function SampledTextureSampleGrad_Texture3D;
 inline constexpr std::array SampledTextureSampleGrad_Texture3D_args = { &SampledTextureSampleGrad_Texture3D_texture, &SampledTextureSampleGrad_Texture3D_coordinate, &SampledTextureSampleGrad_Texture3D_grad_x, &SampledTextureSampleGrad_Texture3D_grad_y };
 
-/// textureSampleGrad with TextureCube, SamplerType, Float32x3, Float32x3, Float32x3
+/// textureSampleGrad with TextureCube, Sampler, Float32x3, Float32x3, Float32x3
 Variable TextureSampleGrad_TextureCube_texture;
 Variable TextureSampleGrad_TextureCube_sampler;
 Variable TextureSampleGrad_TextureCube_coordinate;
@@ -6359,7 +6091,7 @@ Variable SampledTextureSampleGrad_TextureCube_grad_y;
 Function SampledTextureSampleGrad_TextureCube;
 inline constexpr std::array SampledTextureSampleGrad_TextureCube_args = { &SampledTextureSampleGrad_TextureCube_texture, &SampledTextureSampleGrad_TextureCube_coordinate, &SampledTextureSampleGrad_TextureCube_grad_x, &SampledTextureSampleGrad_TextureCube_grad_y };
 
-/// textureSampleGrad with Texture1DArray, SamplerType, Float32x2, Float32x2, Float32x2
+/// textureSampleGrad with Texture1DArray, Sampler, Float32x2, Float32x2, Float32x2
 Variable TextureSampleGrad_Texture1DArray_texture;
 Variable TextureSampleGrad_Texture1DArray_sampler;
 Variable TextureSampleGrad_Texture1DArray_coordinate;
@@ -6376,7 +6108,7 @@ Variable SampledTextureSampleGrad_Texture1DArray_grad_y;
 Function SampledTextureSampleGrad_Texture1DArray;
 inline constexpr std::array SampledTextureSampleGrad_Texture1DArray_args = { &SampledTextureSampleGrad_Texture1DArray_texture, &SampledTextureSampleGrad_Texture1DArray_coordinate, &SampledTextureSampleGrad_Texture1DArray_grad_x, &SampledTextureSampleGrad_Texture1DArray_grad_y };
 
-/// textureSampleGrad with Texture2DArray, SamplerType, Float32x3, Float32x3, Float32x3
+/// textureSampleGrad with Texture2DArray, Sampler, Float32x3, Float32x3, Float32x3
 Variable TextureSampleGrad_Texture2DArray_texture;
 Variable TextureSampleGrad_Texture2DArray_sampler;
 Variable TextureSampleGrad_Texture2DArray_coordinate;
@@ -6393,7 +6125,7 @@ Variable SampledTextureSampleGrad_Texture2DArray_grad_y;
 Function SampledTextureSampleGrad_Texture2DArray;
 inline constexpr std::array SampledTextureSampleGrad_Texture2DArray_args = { &SampledTextureSampleGrad_Texture2DArray_texture, &SampledTextureSampleGrad_Texture2DArray_coordinate, &SampledTextureSampleGrad_Texture2DArray_grad_x, &SampledTextureSampleGrad_Texture2DArray_grad_y };
 
-/// textureSampleGrad with TextureCubeArray, SamplerType, Float32x4, Float32x4, Float32x4
+/// textureSampleGrad with TextureCubeArray, Sampler, Float32x4, Float32x4, Float32x4
 Variable TextureSampleGrad_TextureCubeArray_texture;
 Variable TextureSampleGrad_TextureCubeArray_sampler;
 Variable TextureSampleGrad_TextureCubeArray_coordinate;
@@ -6410,7 +6142,7 @@ Variable SampledTextureSampleGrad_TextureCubeArray_grad_y;
 Function SampledTextureSampleGrad_TextureCubeArray;
 inline constexpr std::array SampledTextureSampleGrad_TextureCubeArray_args = { &SampledTextureSampleGrad_TextureCubeArray_texture, &SampledTextureSampleGrad_TextureCubeArray_coordinate, &SampledTextureSampleGrad_TextureCubeArray_grad_x, &SampledTextureSampleGrad_TextureCubeArray_grad_y };
 
-/// textureSampleGradOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+/// textureSampleGradOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
 Variable TextureSampleGradOffset_Texture1D_texture;
 Variable TextureSampleGradOffset_Texture1D_sampler;
 Variable TextureSampleGradOffset_Texture1D_coordinate;
@@ -6429,7 +6161,7 @@ Variable SampledTextureSampleGradOffset_Texture1D_offset;
 Function SampledTextureSampleGradOffset_Texture1D;
 inline constexpr std::array SampledTextureSampleGradOffset_Texture1D_args = { &SampledTextureSampleGradOffset_Texture1D_texture, &SampledTextureSampleGradOffset_Texture1D_coordinate, &SampledTextureSampleGradOffset_Texture1D_grad_x, &SampledTextureSampleGradOffset_Texture1D_grad_y, &SampledTextureSampleGradOffset_Texture1D_offset };
 
-/// textureSampleGradOffset with Texture2D, SamplerType, Float32x2, Float32x2, Float32x2, Float32x2
+/// textureSampleGradOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32x2
 Variable TextureSampleGradOffset_Texture2D_texture;
 Variable TextureSampleGradOffset_Texture2D_sampler;
 Variable TextureSampleGradOffset_Texture2D_coordinate;
@@ -6448,7 +6180,7 @@ Variable SampledTextureSampleGradOffset_Texture2D_offset;
 Function SampledTextureSampleGradOffset_Texture2D;
 inline constexpr std::array SampledTextureSampleGradOffset_Texture2D_args = { &SampledTextureSampleGradOffset_Texture2D_texture, &SampledTextureSampleGradOffset_Texture2D_coordinate, &SampledTextureSampleGradOffset_Texture2D_grad_x, &SampledTextureSampleGradOffset_Texture2D_grad_y, &SampledTextureSampleGradOffset_Texture2D_offset };
 
-/// textureSampleGradOffset with Texture3D, SamplerType, Float32x3, Float32x3, Float32x3, Float32x3
+/// textureSampleGradOffset with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32x3
 Variable TextureSampleGradOffset_Texture3D_texture;
 Variable TextureSampleGradOffset_Texture3D_sampler;
 Variable TextureSampleGradOffset_Texture3D_coordinate;
@@ -6467,7 +6199,7 @@ Variable SampledTextureSampleGradOffset_Texture3D_offset;
 Function SampledTextureSampleGradOffset_Texture3D;
 inline constexpr std::array SampledTextureSampleGradOffset_Texture3D_args = { &SampledTextureSampleGradOffset_Texture3D_texture, &SampledTextureSampleGradOffset_Texture3D_coordinate, &SampledTextureSampleGradOffset_Texture3D_grad_x, &SampledTextureSampleGradOffset_Texture3D_grad_y, &SampledTextureSampleGradOffset_Texture3D_offset };
 
-/// textureSampleGradOffset with Texture1DArray, SamplerType, Float32x2, Float32x2, Float32x2, Float32x2
+/// textureSampleGradOffset with Texture1DArray, Sampler, Float32x2, Float32x2, Float32x2, Float32x2
 Variable TextureSampleGradOffset_Texture1DArray_texture;
 Variable TextureSampleGradOffset_Texture1DArray_sampler;
 Variable TextureSampleGradOffset_Texture1DArray_coordinate;
@@ -6486,7 +6218,7 @@ Variable SampledTextureSampleGradOffset_Texture1DArray_offset;
 Function SampledTextureSampleGradOffset_Texture1DArray;
 inline constexpr std::array SampledTextureSampleGradOffset_Texture1DArray_args = { &SampledTextureSampleGradOffset_Texture1DArray_texture, &SampledTextureSampleGradOffset_Texture1DArray_coordinate, &SampledTextureSampleGradOffset_Texture1DArray_grad_x, &SampledTextureSampleGradOffset_Texture1DArray_grad_y, &SampledTextureSampleGradOffset_Texture1DArray_offset };
 
-/// textureSampleGradOffset with Texture2DArray, SamplerType, Float32x3, Float32x3, Float32x3, Float32x3
+/// textureSampleGradOffset with Texture2DArray, Sampler, Float32x3, Float32x3, Float32x3, Float32x3
 Variable TextureSampleGradOffset_Texture2DArray_texture;
 Variable TextureSampleGradOffset_Texture2DArray_sampler;
 Variable TextureSampleGradOffset_Texture2DArray_coordinate;
@@ -6505,7 +6237,7 @@ Variable SampledTextureSampleGradOffset_Texture2DArray_offset;
 Function SampledTextureSampleGradOffset_Texture2DArray;
 inline constexpr std::array SampledTextureSampleGradOffset_Texture2DArray_args = { &SampledTextureSampleGradOffset_Texture2DArray_texture, &SampledTextureSampleGradOffset_Texture2DArray_coordinate, &SampledTextureSampleGradOffset_Texture2DArray_grad_x, &SampledTextureSampleGradOffset_Texture2DArray_grad_y, &SampledTextureSampleGradOffset_Texture2DArray_offset };
 
-/// textureSampleGradProj with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+/// textureSampleGradProj with Texture1D, Sampler, Float32, Float32, Float32, Float32
 Variable TextureSampleGradProj_Texture1D_texture;
 Variable TextureSampleGradProj_Texture1D_sampler;
 Variable TextureSampleGradProj_Texture1D_coordinate;
@@ -6524,7 +6256,7 @@ Variable SampledTextureSampleGradProj_Texture1D_proj;
 Function SampledTextureSampleGradProj_Texture1D;
 inline constexpr std::array SampledTextureSampleGradProj_Texture1D_args = { &SampledTextureSampleGradProj_Texture1D_texture, &SampledTextureSampleGradProj_Texture1D_coordinate, &SampledTextureSampleGradProj_Texture1D_grad_x, &SampledTextureSampleGradProj_Texture1D_grad_y, &SampledTextureSampleGradProj_Texture1D_proj };
 
-/// textureSampleGradProj with Texture2D, SamplerType, Float32x2, Float32x2, Float32x2, Float32
+/// textureSampleGradProj with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32
 Variable TextureSampleGradProj_Texture2D_texture;
 Variable TextureSampleGradProj_Texture2D_sampler;
 Variable TextureSampleGradProj_Texture2D_coordinate;
@@ -6543,7 +6275,7 @@ Variable SampledTextureSampleGradProj_Texture2D_proj;
 Function SampledTextureSampleGradProj_Texture2D;
 inline constexpr std::array SampledTextureSampleGradProj_Texture2D_args = { &SampledTextureSampleGradProj_Texture2D_texture, &SampledTextureSampleGradProj_Texture2D_coordinate, &SampledTextureSampleGradProj_Texture2D_grad_x, &SampledTextureSampleGradProj_Texture2D_grad_y, &SampledTextureSampleGradProj_Texture2D_proj };
 
-/// textureSampleGradProj with Texture3D, SamplerType, Float32x3, Float32x3, Float32x3, Float32
+/// textureSampleGradProj with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32
 Variable TextureSampleGradProj_Texture3D_texture;
 Variable TextureSampleGradProj_Texture3D_sampler;
 Variable TextureSampleGradProj_Texture3D_coordinate;
@@ -6562,7 +6294,7 @@ Variable SampledTextureSampleGradProj_Texture3D_proj;
 Function SampledTextureSampleGradProj_Texture3D;
 inline constexpr std::array SampledTextureSampleGradProj_Texture3D_args = { &SampledTextureSampleGradProj_Texture3D_texture, &SampledTextureSampleGradProj_Texture3D_coordinate, &SampledTextureSampleGradProj_Texture3D_grad_x, &SampledTextureSampleGradProj_Texture3D_grad_y, &SampledTextureSampleGradProj_Texture3D_proj };
 
-/// textureSampleGradProjOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32, Float32
+/// textureSampleGradProjOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
 Variable TextureSampleGradProjOffset_Texture1D_texture;
 Variable TextureSampleGradProjOffset_Texture1D_sampler;
 Variable TextureSampleGradProjOffset_Texture1D_coordinate;
@@ -6583,7 +6315,7 @@ Variable SampledTextureSampleGradProjOffset_Texture1D_offset;
 Function SampledTextureSampleGradProjOffset_Texture1D;
 inline constexpr std::array SampledTextureSampleGradProjOffset_Texture1D_args = { &SampledTextureSampleGradProjOffset_Texture1D_texture, &SampledTextureSampleGradProjOffset_Texture1D_coordinate, &SampledTextureSampleGradProjOffset_Texture1D_grad_x, &SampledTextureSampleGradProjOffset_Texture1D_grad_y, &SampledTextureSampleGradProjOffset_Texture1D_proj, &SampledTextureSampleGradProjOffset_Texture1D_offset };
 
-/// textureSampleGradProjOffset with Texture2D, SamplerType, Float32x2, Float32x2, Float32x2, Float32, Float32x2
+/// textureSampleGradProjOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32x2
 Variable TextureSampleGradProjOffset_Texture2D_texture;
 Variable TextureSampleGradProjOffset_Texture2D_sampler;
 Variable TextureSampleGradProjOffset_Texture2D_coordinate;
@@ -6604,7 +6336,7 @@ Variable SampledTextureSampleGradProjOffset_Texture2D_offset;
 Function SampledTextureSampleGradProjOffset_Texture2D;
 inline constexpr std::array SampledTextureSampleGradProjOffset_Texture2D_args = { &SampledTextureSampleGradProjOffset_Texture2D_texture, &SampledTextureSampleGradProjOffset_Texture2D_coordinate, &SampledTextureSampleGradProjOffset_Texture2D_grad_x, &SampledTextureSampleGradProjOffset_Texture2D_grad_y, &SampledTextureSampleGradProjOffset_Texture2D_proj, &SampledTextureSampleGradProjOffset_Texture2D_offset };
 
-/// textureSampleGradProjOffset with Texture3D, SamplerType, Float32x3, Float32x3, Float32x3, Float32, Float32x3
+/// textureSampleGradProjOffset with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32x3
 Variable TextureSampleGradProjOffset_Texture3D_texture;
 Variable TextureSampleGradProjOffset_Texture3D_sampler;
 Variable TextureSampleGradProjOffset_Texture3D_coordinate;
@@ -6625,7 +6357,7 @@ Variable SampledTextureSampleGradProjOffset_Texture3D_offset;
 Function SampledTextureSampleGradProjOffset_Texture3D;
 inline constexpr std::array SampledTextureSampleGradProjOffset_Texture3D_args = { &SampledTextureSampleGradProjOffset_Texture3D_texture, &SampledTextureSampleGradProjOffset_Texture3D_coordinate, &SampledTextureSampleGradProjOffset_Texture3D_grad_x, &SampledTextureSampleGradProjOffset_Texture3D_grad_y, &SampledTextureSampleGradProjOffset_Texture3D_proj, &SampledTextureSampleGradProjOffset_Texture3D_offset };
 
-/// textureSampleGradCompare with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+/// textureSampleGradCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32
 Variable TextureSampleGradCompare_Texture1D_texture;
 Variable TextureSampleGradCompare_Texture1D_sampler;
 Variable TextureSampleGradCompare_Texture1D_coordinate;
@@ -6644,7 +6376,7 @@ Variable SampledTextureSampleGradCompare_Texture1D_compare;
 Function SampledTextureSampleGradCompare_Texture1D;
 inline constexpr std::array SampledTextureSampleGradCompare_Texture1D_args = { &SampledTextureSampleGradCompare_Texture1D_texture, &SampledTextureSampleGradCompare_Texture1D_coordinate, &SampledTextureSampleGradCompare_Texture1D_grad_x, &SampledTextureSampleGradCompare_Texture1D_grad_y, &SampledTextureSampleGradCompare_Texture1D_compare };
 
-/// textureSampleGradCompare with Texture2D, SamplerType, Float32x2, Float32x2, Float32x2, Float32
+/// textureSampleGradCompare with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32
 Variable TextureSampleGradCompare_Texture2D_texture;
 Variable TextureSampleGradCompare_Texture2D_sampler;
 Variable TextureSampleGradCompare_Texture2D_coordinate;
@@ -6663,7 +6395,7 @@ Variable SampledTextureSampleGradCompare_Texture2D_compare;
 Function SampledTextureSampleGradCompare_Texture2D;
 inline constexpr std::array SampledTextureSampleGradCompare_Texture2D_args = { &SampledTextureSampleGradCompare_Texture2D_texture, &SampledTextureSampleGradCompare_Texture2D_coordinate, &SampledTextureSampleGradCompare_Texture2D_grad_x, &SampledTextureSampleGradCompare_Texture2D_grad_y, &SampledTextureSampleGradCompare_Texture2D_compare };
 
-/// textureSampleGradCompare with Texture3D, SamplerType, Float32x3, Float32x3, Float32x3, Float32
+/// textureSampleGradCompare with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32
 Variable TextureSampleGradCompare_Texture3D_texture;
 Variable TextureSampleGradCompare_Texture3D_sampler;
 Variable TextureSampleGradCompare_Texture3D_coordinate;
@@ -6682,7 +6414,7 @@ Variable SampledTextureSampleGradCompare_Texture3D_compare;
 Function SampledTextureSampleGradCompare_Texture3D;
 inline constexpr std::array SampledTextureSampleGradCompare_Texture3D_args = { &SampledTextureSampleGradCompare_Texture3D_texture, &SampledTextureSampleGradCompare_Texture3D_coordinate, &SampledTextureSampleGradCompare_Texture3D_grad_x, &SampledTextureSampleGradCompare_Texture3D_grad_y, &SampledTextureSampleGradCompare_Texture3D_compare };
 
-/// textureSampleGradCompare with Texture1DArray, SamplerType, Float32x2, Float32x2, Float32x2, Float32
+/// textureSampleGradCompare with Texture1DArray, Sampler, Float32x2, Float32x2, Float32x2, Float32
 Variable TextureSampleGradCompare_Texture1DArray_texture;
 Variable TextureSampleGradCompare_Texture1DArray_sampler;
 Variable TextureSampleGradCompare_Texture1DArray_coordinate;
@@ -6701,7 +6433,7 @@ Variable SampledTextureSampleGradCompare_Texture1DArray_compare;
 Function SampledTextureSampleGradCompare_Texture1DArray;
 inline constexpr std::array SampledTextureSampleGradCompare_Texture1DArray_args = { &SampledTextureSampleGradCompare_Texture1DArray_texture, &SampledTextureSampleGradCompare_Texture1DArray_coordinate, &SampledTextureSampleGradCompare_Texture1DArray_grad_x, &SampledTextureSampleGradCompare_Texture1DArray_grad_y, &SampledTextureSampleGradCompare_Texture1DArray_compare };
 
-/// textureSampleGradCompare with Texture2DArray, SamplerType, Float32x3, Float32x3, Float32x3, Float32
+/// textureSampleGradCompare with Texture2DArray, Sampler, Float32x3, Float32x3, Float32x3, Float32
 Variable TextureSampleGradCompare_Texture2DArray_texture;
 Variable TextureSampleGradCompare_Texture2DArray_sampler;
 Variable TextureSampleGradCompare_Texture2DArray_coordinate;
@@ -6720,7 +6452,7 @@ Variable SampledTextureSampleGradCompare_Texture2DArray_compare;
 Function SampledTextureSampleGradCompare_Texture2DArray;
 inline constexpr std::array SampledTextureSampleGradCompare_Texture2DArray_args = { &SampledTextureSampleGradCompare_Texture2DArray_texture, &SampledTextureSampleGradCompare_Texture2DArray_coordinate, &SampledTextureSampleGradCompare_Texture2DArray_grad_x, &SampledTextureSampleGradCompare_Texture2DArray_grad_y, &SampledTextureSampleGradCompare_Texture2DArray_compare };
 
-/// textureSampleGradCompareOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32, Float32
+/// textureSampleGradCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
 Variable TextureSampleGradCompareOffset_Texture1D_texture;
 Variable TextureSampleGradCompareOffset_Texture1D_sampler;
 Variable TextureSampleGradCompareOffset_Texture1D_coordinate;
@@ -6741,7 +6473,7 @@ Variable SampledTextureSampleGradCompareOffset_Texture1D_offset;
 Function SampledTextureSampleGradCompareOffset_Texture1D;
 inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture1D_args = { &SampledTextureSampleGradCompareOffset_Texture1D_texture, &SampledTextureSampleGradCompareOffset_Texture1D_coordinate, &SampledTextureSampleGradCompareOffset_Texture1D_grad_x, &SampledTextureSampleGradCompareOffset_Texture1D_grad_y, &SampledTextureSampleGradCompareOffset_Texture1D_compare, &SampledTextureSampleGradCompareOffset_Texture1D_offset };
 
-/// textureSampleGradCompareOffset with Texture2D, SamplerType, Float32x2, Float32x2, Float32x2, Float32, Float32x2
+/// textureSampleGradCompareOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32x2
 Variable TextureSampleGradCompareOffset_Texture2D_texture;
 Variable TextureSampleGradCompareOffset_Texture2D_sampler;
 Variable TextureSampleGradCompareOffset_Texture2D_coordinate;
@@ -6762,7 +6494,7 @@ Variable SampledTextureSampleGradCompareOffset_Texture2D_offset;
 Function SampledTextureSampleGradCompareOffset_Texture2D;
 inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture2D_args = { &SampledTextureSampleGradCompareOffset_Texture2D_texture, &SampledTextureSampleGradCompareOffset_Texture2D_coordinate, &SampledTextureSampleGradCompareOffset_Texture2D_grad_x, &SampledTextureSampleGradCompareOffset_Texture2D_grad_y, &SampledTextureSampleGradCompareOffset_Texture2D_compare, &SampledTextureSampleGradCompareOffset_Texture2D_offset };
 
-/// textureSampleGradCompareOffset with Texture3D, SamplerType, Float32x3, Float32x3, Float32x3, Float32, Float32x3
+/// textureSampleGradCompareOffset with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32x3
 Variable TextureSampleGradCompareOffset_Texture3D_texture;
 Variable TextureSampleGradCompareOffset_Texture3D_sampler;
 Variable TextureSampleGradCompareOffset_Texture3D_coordinate;
@@ -6783,7 +6515,7 @@ Variable SampledTextureSampleGradCompareOffset_Texture3D_offset;
 Function SampledTextureSampleGradCompareOffset_Texture3D;
 inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture3D_args = { &SampledTextureSampleGradCompareOffset_Texture3D_texture, &SampledTextureSampleGradCompareOffset_Texture3D_coordinate, &SampledTextureSampleGradCompareOffset_Texture3D_grad_x, &SampledTextureSampleGradCompareOffset_Texture3D_grad_y, &SampledTextureSampleGradCompareOffset_Texture3D_compare, &SampledTextureSampleGradCompareOffset_Texture3D_offset };
 
-/// textureSampleGradCompareOffset with Texture1DArray, SamplerType, Float32x2, Float32x2, Float32x2, Float32, Float32x2
+/// textureSampleGradCompareOffset with Texture1DArray, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32x2
 Variable TextureSampleGradCompareOffset_Texture1DArray_texture;
 Variable TextureSampleGradCompareOffset_Texture1DArray_sampler;
 Variable TextureSampleGradCompareOffset_Texture1DArray_coordinate;
@@ -6804,7 +6536,7 @@ Variable SampledTextureSampleGradCompareOffset_Texture1DArray_offset;
 Function SampledTextureSampleGradCompareOffset_Texture1DArray;
 inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture1DArray_args = { &SampledTextureSampleGradCompareOffset_Texture1DArray_texture, &SampledTextureSampleGradCompareOffset_Texture1DArray_coordinate, &SampledTextureSampleGradCompareOffset_Texture1DArray_grad_x, &SampledTextureSampleGradCompareOffset_Texture1DArray_grad_y, &SampledTextureSampleGradCompareOffset_Texture1DArray_compare, &SampledTextureSampleGradCompareOffset_Texture1DArray_offset };
 
-/// textureSampleGradCompareOffset with Texture2DArray, SamplerType, Float32x3, Float32x3, Float32x3, Float32, Float32x3
+/// textureSampleGradCompareOffset with Texture2DArray, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32x3
 Variable TextureSampleGradCompareOffset_Texture2DArray_texture;
 Variable TextureSampleGradCompareOffset_Texture2DArray_sampler;
 Variable TextureSampleGradCompareOffset_Texture2DArray_coordinate;
@@ -6825,7 +6557,7 @@ Variable SampledTextureSampleGradCompareOffset_Texture2DArray_offset;
 Function SampledTextureSampleGradCompareOffset_Texture2DArray;
 inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture2DArray_args = { &SampledTextureSampleGradCompareOffset_Texture2DArray_texture, &SampledTextureSampleGradCompareOffset_Texture2DArray_coordinate, &SampledTextureSampleGradCompareOffset_Texture2DArray_grad_x, &SampledTextureSampleGradCompareOffset_Texture2DArray_grad_y, &SampledTextureSampleGradCompareOffset_Texture2DArray_compare, &SampledTextureSampleGradCompareOffset_Texture2DArray_offset };
 
-/// textureSampleGradProjCompare with Texture1D, SamplerType, Float32, Float32, Float32, Float32, Float32
+/// textureSampleGradProjCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
 Variable TextureSampleGradProjCompare_Texture1D_texture;
 Variable TextureSampleGradProjCompare_Texture1D_sampler;
 Variable TextureSampleGradProjCompare_Texture1D_coordinate;
@@ -6846,7 +6578,7 @@ Variable SampledTextureSampleGradProjCompare_Texture1D_compare;
 Function SampledTextureSampleGradProjCompare_Texture1D;
 inline constexpr std::array SampledTextureSampleGradProjCompare_Texture1D_args = { &SampledTextureSampleGradProjCompare_Texture1D_texture, &SampledTextureSampleGradProjCompare_Texture1D_coordinate, &SampledTextureSampleGradProjCompare_Texture1D_grad_x, &SampledTextureSampleGradProjCompare_Texture1D_grad_y, &SampledTextureSampleGradProjCompare_Texture1D_proj, &SampledTextureSampleGradProjCompare_Texture1D_compare };
 
-/// textureSampleGradProjCompare with Texture2D, SamplerType, Float32x2, Float32x2, Float32x2, Float32, Float32
+/// textureSampleGradProjCompare with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32
 Variable TextureSampleGradProjCompare_Texture2D_texture;
 Variable TextureSampleGradProjCompare_Texture2D_sampler;
 Variable TextureSampleGradProjCompare_Texture2D_coordinate;
@@ -6867,7 +6599,7 @@ Variable SampledTextureSampleGradProjCompare_Texture2D_compare;
 Function SampledTextureSampleGradProjCompare_Texture2D;
 inline constexpr std::array SampledTextureSampleGradProjCompare_Texture2D_args = { &SampledTextureSampleGradProjCompare_Texture2D_texture, &SampledTextureSampleGradProjCompare_Texture2D_coordinate, &SampledTextureSampleGradProjCompare_Texture2D_grad_x, &SampledTextureSampleGradProjCompare_Texture2D_grad_y, &SampledTextureSampleGradProjCompare_Texture2D_proj, &SampledTextureSampleGradProjCompare_Texture2D_compare };
 
-/// textureSampleGradProjCompare with Texture3D, SamplerType, Float32x3, Float32x3, Float32x3, Float32, Float32
+/// textureSampleGradProjCompare with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32
 Variable TextureSampleGradProjCompare_Texture3D_texture;
 Variable TextureSampleGradProjCompare_Texture3D_sampler;
 Variable TextureSampleGradProjCompare_Texture3D_coordinate;
@@ -6888,7 +6620,7 @@ Variable SampledTextureSampleGradProjCompare_Texture3D_compare;
 Function SampledTextureSampleGradProjCompare_Texture3D;
 inline constexpr std::array SampledTextureSampleGradProjCompare_Texture3D_args = { &SampledTextureSampleGradProjCompare_Texture3D_texture, &SampledTextureSampleGradProjCompare_Texture3D_coordinate, &SampledTextureSampleGradProjCompare_Texture3D_grad_x, &SampledTextureSampleGradProjCompare_Texture3D_grad_y, &SampledTextureSampleGradProjCompare_Texture3D_proj, &SampledTextureSampleGradProjCompare_Texture3D_compare };
 
-/// textureSampleGradProjCompareOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32, Float32, Float32
+/// textureSampleGradProjCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32, Float32
 Variable TextureSampleGradProjCompareOffset_Texture1D_texture;
 Variable TextureSampleGradProjCompareOffset_Texture1D_sampler;
 Variable TextureSampleGradProjCompareOffset_Texture1D_coordinate;
@@ -6911,7 +6643,7 @@ Variable SampledTextureSampleGradProjCompareOffset_Texture1D_offset;
 Function SampledTextureSampleGradProjCompareOffset_Texture1D;
 inline constexpr std::array SampledTextureSampleGradProjCompareOffset_Texture1D_args = { &SampledTextureSampleGradProjCompareOffset_Texture1D_texture, &SampledTextureSampleGradProjCompareOffset_Texture1D_coordinate, &SampledTextureSampleGradProjCompareOffset_Texture1D_grad_x, &SampledTextureSampleGradProjCompareOffset_Texture1D_grad_y, &SampledTextureSampleGradProjCompareOffset_Texture1D_proj, &SampledTextureSampleGradProjCompareOffset_Texture1D_compare, &SampledTextureSampleGradProjCompareOffset_Texture1D_offset };
 
-/// textureSampleGradProjCompareOffset with Texture2D, SamplerType, Float32x2, Float32x2, Float32x2, Float32, Float32, Float32x2
+/// textureSampleGradProjCompareOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32, Float32x2
 Variable TextureSampleGradProjCompareOffset_Texture2D_texture;
 Variable TextureSampleGradProjCompareOffset_Texture2D_sampler;
 Variable TextureSampleGradProjCompareOffset_Texture2D_coordinate;
@@ -6934,7 +6666,7 @@ Variable SampledTextureSampleGradProjCompareOffset_Texture2D_offset;
 Function SampledTextureSampleGradProjCompareOffset_Texture2D;
 inline constexpr std::array SampledTextureSampleGradProjCompareOffset_Texture2D_args = { &SampledTextureSampleGradProjCompareOffset_Texture2D_texture, &SampledTextureSampleGradProjCompareOffset_Texture2D_coordinate, &SampledTextureSampleGradProjCompareOffset_Texture2D_grad_x, &SampledTextureSampleGradProjCompareOffset_Texture2D_grad_y, &SampledTextureSampleGradProjCompareOffset_Texture2D_proj, &SampledTextureSampleGradProjCompareOffset_Texture2D_compare, &SampledTextureSampleGradProjCompareOffset_Texture2D_offset };
 
-/// textureSampleGradProjCompareOffset with Texture3D, SamplerType, Float32x3, Float32x3, Float32x3, Float32, Float32, Float32x3
+/// textureSampleGradProjCompareOffset with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32, Float32x3
 Variable TextureSampleGradProjCompareOffset_Texture3D_texture;
 Variable TextureSampleGradProjCompareOffset_Texture3D_sampler;
 Variable TextureSampleGradProjCompareOffset_Texture3D_coordinate;
@@ -6957,7 +6689,7 @@ Variable SampledTextureSampleGradProjCompareOffset_Texture3D_offset;
 Function SampledTextureSampleGradProjCompareOffset_Texture3D;
 inline constexpr std::array SampledTextureSampleGradProjCompareOffset_Texture3D_args = { &SampledTextureSampleGradProjCompareOffset_Texture3D_texture, &SampledTextureSampleGradProjCompareOffset_Texture3D_coordinate, &SampledTextureSampleGradProjCompareOffset_Texture3D_grad_x, &SampledTextureSampleGradProjCompareOffset_Texture3D_grad_y, &SampledTextureSampleGradProjCompareOffset_Texture3D_proj, &SampledTextureSampleGradProjCompareOffset_Texture3D_compare, &SampledTextureSampleGradProjCompareOffset_Texture3D_offset };
 
-/// textureSampleBias with Texture1D, SamplerType, Float32, Float32
+/// textureSampleBias with Texture1D, Sampler, Float32, Float32
 Variable TextureSampleBias_Texture1D_texture;
 Variable TextureSampleBias_Texture1D_sampler;
 Variable TextureSampleBias_Texture1D_coordinate;
@@ -6972,7 +6704,7 @@ Variable SampledTextureSampleBias_Texture1D_bias;
 Function SampledTextureSampleBias_Texture1D;
 inline constexpr std::array SampledTextureSampleBias_Texture1D_args = { &SampledTextureSampleBias_Texture1D_texture, &SampledTextureSampleBias_Texture1D_coordinate, &SampledTextureSampleBias_Texture1D_bias };
 
-/// textureSampleBias with Texture2D, SamplerType, Float32x2, Float32
+/// textureSampleBias with Texture2D, Sampler, Float32x2, Float32
 Variable TextureSampleBias_Texture2D_texture;
 Variable TextureSampleBias_Texture2D_sampler;
 Variable TextureSampleBias_Texture2D_coordinate;
@@ -6987,7 +6719,7 @@ Variable SampledTextureSampleBias_Texture2D_bias;
 Function SampledTextureSampleBias_Texture2D;
 inline constexpr std::array SampledTextureSampleBias_Texture2D_args = { &SampledTextureSampleBias_Texture2D_texture, &SampledTextureSampleBias_Texture2D_coordinate, &SampledTextureSampleBias_Texture2D_bias };
 
-/// textureSampleBias with Texture3D, SamplerType, Float32x3, Float32
+/// textureSampleBias with Texture3D, Sampler, Float32x3, Float32
 Variable TextureSampleBias_Texture3D_texture;
 Variable TextureSampleBias_Texture3D_sampler;
 Variable TextureSampleBias_Texture3D_coordinate;
@@ -7002,7 +6734,7 @@ Variable SampledTextureSampleBias_Texture3D_bias;
 Function SampledTextureSampleBias_Texture3D;
 inline constexpr std::array SampledTextureSampleBias_Texture3D_args = { &SampledTextureSampleBias_Texture3D_texture, &SampledTextureSampleBias_Texture3D_coordinate, &SampledTextureSampleBias_Texture3D_bias };
 
-/// textureSampleBias with TextureCube, SamplerType, Float32x3, Float32
+/// textureSampleBias with TextureCube, Sampler, Float32x3, Float32
 Variable TextureSampleBias_TextureCube_texture;
 Variable TextureSampleBias_TextureCube_sampler;
 Variable TextureSampleBias_TextureCube_coordinate;
@@ -7017,7 +6749,7 @@ Variable SampledTextureSampleBias_TextureCube_bias;
 Function SampledTextureSampleBias_TextureCube;
 inline constexpr std::array SampledTextureSampleBias_TextureCube_args = { &SampledTextureSampleBias_TextureCube_texture, &SampledTextureSampleBias_TextureCube_coordinate, &SampledTextureSampleBias_TextureCube_bias };
 
-/// textureSampleBias with Texture1DArray, SamplerType, Float32x2, Float32
+/// textureSampleBias with Texture1DArray, Sampler, Float32x2, Float32
 Variable TextureSampleBias_Texture1DArray_texture;
 Variable TextureSampleBias_Texture1DArray_sampler;
 Variable TextureSampleBias_Texture1DArray_coordinate;
@@ -7032,7 +6764,7 @@ Variable SampledTextureSampleBias_Texture1DArray_bias;
 Function SampledTextureSampleBias_Texture1DArray;
 inline constexpr std::array SampledTextureSampleBias_Texture1DArray_args = { &SampledTextureSampleBias_Texture1DArray_texture, &SampledTextureSampleBias_Texture1DArray_coordinate, &SampledTextureSampleBias_Texture1DArray_bias };
 
-/// textureSampleBias with Texture2DArray, SamplerType, Float32x3, Float32
+/// textureSampleBias with Texture2DArray, Sampler, Float32x3, Float32
 Variable TextureSampleBias_Texture2DArray_texture;
 Variable TextureSampleBias_Texture2DArray_sampler;
 Variable TextureSampleBias_Texture2DArray_coordinate;
@@ -7047,7 +6779,7 @@ Variable SampledTextureSampleBias_Texture2DArray_bias;
 Function SampledTextureSampleBias_Texture2DArray;
 inline constexpr std::array SampledTextureSampleBias_Texture2DArray_args = { &SampledTextureSampleBias_Texture2DArray_texture, &SampledTextureSampleBias_Texture2DArray_coordinate, &SampledTextureSampleBias_Texture2DArray_bias };
 
-/// textureSampleBias with TextureCubeArray, SamplerType, Float32x4, Float32
+/// textureSampleBias with TextureCubeArray, Sampler, Float32x4, Float32
 Variable TextureSampleBias_TextureCubeArray_texture;
 Variable TextureSampleBias_TextureCubeArray_sampler;
 Variable TextureSampleBias_TextureCubeArray_coordinate;
@@ -7062,7 +6794,7 @@ Variable SampledTextureSampleBias_TextureCubeArray_bias;
 Function SampledTextureSampleBias_TextureCubeArray;
 inline constexpr std::array SampledTextureSampleBias_TextureCubeArray_args = { &SampledTextureSampleBias_TextureCubeArray_texture, &SampledTextureSampleBias_TextureCubeArray_coordinate, &SampledTextureSampleBias_TextureCubeArray_bias };
 
-/// textureSampleBiasOffset with Texture1D, SamplerType, Float32, Float32, Float32
+/// textureSampleBiasOffset with Texture1D, Sampler, Float32, Float32, Float32
 Variable TextureSampleBiasOffset_Texture1D_texture;
 Variable TextureSampleBiasOffset_Texture1D_sampler;
 Variable TextureSampleBiasOffset_Texture1D_coordinate;
@@ -7079,7 +6811,7 @@ Variable SampledTextureSampleBiasOffset_Texture1D_offset;
 Function SampledTextureSampleBiasOffset_Texture1D;
 inline constexpr std::array SampledTextureSampleBiasOffset_Texture1D_args = { &SampledTextureSampleBiasOffset_Texture1D_texture, &SampledTextureSampleBiasOffset_Texture1D_coordinate, &SampledTextureSampleBiasOffset_Texture1D_bias, &SampledTextureSampleBiasOffset_Texture1D_offset };
 
-/// textureSampleBiasOffset with Texture2D, SamplerType, Float32x2, Float32, Float32x2
+/// textureSampleBiasOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2
 Variable TextureSampleBiasOffset_Texture2D_texture;
 Variable TextureSampleBiasOffset_Texture2D_sampler;
 Variable TextureSampleBiasOffset_Texture2D_coordinate;
@@ -7096,7 +6828,7 @@ Variable SampledTextureSampleBiasOffset_Texture2D_offset;
 Function SampledTextureSampleBiasOffset_Texture2D;
 inline constexpr std::array SampledTextureSampleBiasOffset_Texture2D_args = { &SampledTextureSampleBiasOffset_Texture2D_texture, &SampledTextureSampleBiasOffset_Texture2D_coordinate, &SampledTextureSampleBiasOffset_Texture2D_bias, &SampledTextureSampleBiasOffset_Texture2D_offset };
 
-/// textureSampleBiasOffset with Texture3D, SamplerType, Float32x3, Float32, Float32x3
+/// textureSampleBiasOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3
 Variable TextureSampleBiasOffset_Texture3D_texture;
 Variable TextureSampleBiasOffset_Texture3D_sampler;
 Variable TextureSampleBiasOffset_Texture3D_coordinate;
@@ -7113,7 +6845,7 @@ Variable SampledTextureSampleBiasOffset_Texture3D_offset;
 Function SampledTextureSampleBiasOffset_Texture3D;
 inline constexpr std::array SampledTextureSampleBiasOffset_Texture3D_args = { &SampledTextureSampleBiasOffset_Texture3D_texture, &SampledTextureSampleBiasOffset_Texture3D_coordinate, &SampledTextureSampleBiasOffset_Texture3D_bias, &SampledTextureSampleBiasOffset_Texture3D_offset };
 
-/// textureSampleBiasOffset with Texture1DArray, SamplerType, Float32x2, Float32, Float32x2
+/// textureSampleBiasOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32x2
 Variable TextureSampleBiasOffset_Texture1DArray_texture;
 Variable TextureSampleBiasOffset_Texture1DArray_sampler;
 Variable TextureSampleBiasOffset_Texture1DArray_coordinate;
@@ -7130,7 +6862,7 @@ Variable SampledTextureSampleBiasOffset_Texture1DArray_offset;
 Function SampledTextureSampleBiasOffset_Texture1DArray;
 inline constexpr std::array SampledTextureSampleBiasOffset_Texture1DArray_args = { &SampledTextureSampleBiasOffset_Texture1DArray_texture, &SampledTextureSampleBiasOffset_Texture1DArray_coordinate, &SampledTextureSampleBiasOffset_Texture1DArray_bias, &SampledTextureSampleBiasOffset_Texture1DArray_offset };
 
-/// textureSampleBiasOffset with Texture2DArray, SamplerType, Float32x3, Float32, Float32x3
+/// textureSampleBiasOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32x3
 Variable TextureSampleBiasOffset_Texture2DArray_texture;
 Variable TextureSampleBiasOffset_Texture2DArray_sampler;
 Variable TextureSampleBiasOffset_Texture2DArray_coordinate;
@@ -7147,7 +6879,7 @@ Variable SampledTextureSampleBiasOffset_Texture2DArray_offset;
 Function SampledTextureSampleBiasOffset_Texture2DArray;
 inline constexpr std::array SampledTextureSampleBiasOffset_Texture2DArray_args = { &SampledTextureSampleBiasOffset_Texture2DArray_texture, &SampledTextureSampleBiasOffset_Texture2DArray_coordinate, &SampledTextureSampleBiasOffset_Texture2DArray_bias, &SampledTextureSampleBiasOffset_Texture2DArray_offset };
 
-/// textureSampleBiasProj with Texture1D, SamplerType, Float32, Float32, Float32
+/// textureSampleBiasProj with Texture1D, Sampler, Float32, Float32, Float32
 Variable TextureSampleBiasProj_Texture1D_texture;
 Variable TextureSampleBiasProj_Texture1D_sampler;
 Variable TextureSampleBiasProj_Texture1D_coordinate;
@@ -7164,7 +6896,7 @@ Variable SampledTextureSampleBiasProj_Texture1D_proj;
 Function SampledTextureSampleBiasProj_Texture1D;
 inline constexpr std::array SampledTextureSampleBiasProj_Texture1D_args = { &SampledTextureSampleBiasProj_Texture1D_texture, &SampledTextureSampleBiasProj_Texture1D_coordinate, &SampledTextureSampleBiasProj_Texture1D_bias, &SampledTextureSampleBiasProj_Texture1D_proj };
 
-/// textureSampleBiasProj with Texture2D, SamplerType, Float32x2, Float32, Float32
+/// textureSampleBiasProj with Texture2D, Sampler, Float32x2, Float32, Float32
 Variable TextureSampleBiasProj_Texture2D_texture;
 Variable TextureSampleBiasProj_Texture2D_sampler;
 Variable TextureSampleBiasProj_Texture2D_coordinate;
@@ -7181,7 +6913,7 @@ Variable SampledTextureSampleBiasProj_Texture2D_proj;
 Function SampledTextureSampleBiasProj_Texture2D;
 inline constexpr std::array SampledTextureSampleBiasProj_Texture2D_args = { &SampledTextureSampleBiasProj_Texture2D_texture, &SampledTextureSampleBiasProj_Texture2D_coordinate, &SampledTextureSampleBiasProj_Texture2D_bias, &SampledTextureSampleBiasProj_Texture2D_proj };
 
-/// textureSampleBiasProj with Texture3D, SamplerType, Float32x3, Float32, Float32
+/// textureSampleBiasProj with Texture3D, Sampler, Float32x3, Float32, Float32
 Variable TextureSampleBiasProj_Texture3D_texture;
 Variable TextureSampleBiasProj_Texture3D_sampler;
 Variable TextureSampleBiasProj_Texture3D_coordinate;
@@ -7198,7 +6930,7 @@ Variable SampledTextureSampleBiasProj_Texture3D_proj;
 Function SampledTextureSampleBiasProj_Texture3D;
 inline constexpr std::array SampledTextureSampleBiasProj_Texture3D_args = { &SampledTextureSampleBiasProj_Texture3D_texture, &SampledTextureSampleBiasProj_Texture3D_coordinate, &SampledTextureSampleBiasProj_Texture3D_bias, &SampledTextureSampleBiasProj_Texture3D_proj };
 
-/// textureSampleBiasProjOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+/// textureSampleBiasProjOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
 Variable TextureSampleBiasProjOffset_Texture1D_texture;
 Variable TextureSampleBiasProjOffset_Texture1D_sampler;
 Variable TextureSampleBiasProjOffset_Texture1D_coordinate;
@@ -7217,7 +6949,7 @@ Variable SampledTextureSampleBiasProjOffset_Texture1D_offset;
 Function SampledTextureSampleBiasProjOffset_Texture1D;
 inline constexpr std::array SampledTextureSampleBiasProjOffset_Texture1D_args = { &SampledTextureSampleBiasProjOffset_Texture1D_texture, &SampledTextureSampleBiasProjOffset_Texture1D_coordinate, &SampledTextureSampleBiasProjOffset_Texture1D_bias, &SampledTextureSampleBiasProjOffset_Texture1D_proj, &SampledTextureSampleBiasProjOffset_Texture1D_offset };
 
-/// textureSampleBiasProjOffset with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32x2
+/// textureSampleBiasProjOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
 Variable TextureSampleBiasProjOffset_Texture2D_texture;
 Variable TextureSampleBiasProjOffset_Texture2D_sampler;
 Variable TextureSampleBiasProjOffset_Texture2D_coordinate;
@@ -7236,7 +6968,7 @@ Variable SampledTextureSampleBiasProjOffset_Texture2D_offset;
 Function SampledTextureSampleBiasProjOffset_Texture2D;
 inline constexpr std::array SampledTextureSampleBiasProjOffset_Texture2D_args = { &SampledTextureSampleBiasProjOffset_Texture2D_texture, &SampledTextureSampleBiasProjOffset_Texture2D_coordinate, &SampledTextureSampleBiasProjOffset_Texture2D_bias, &SampledTextureSampleBiasProjOffset_Texture2D_proj, &SampledTextureSampleBiasProjOffset_Texture2D_offset };
 
-/// textureSampleBiasProjOffset with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32x3
+/// textureSampleBiasProjOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
 Variable TextureSampleBiasProjOffset_Texture3D_texture;
 Variable TextureSampleBiasProjOffset_Texture3D_sampler;
 Variable TextureSampleBiasProjOffset_Texture3D_coordinate;
@@ -7255,7 +6987,7 @@ Variable SampledTextureSampleBiasProjOffset_Texture3D_offset;
 Function SampledTextureSampleBiasProjOffset_Texture3D;
 inline constexpr std::array SampledTextureSampleBiasProjOffset_Texture3D_args = { &SampledTextureSampleBiasProjOffset_Texture3D_texture, &SampledTextureSampleBiasProjOffset_Texture3D_coordinate, &SampledTextureSampleBiasProjOffset_Texture3D_bias, &SampledTextureSampleBiasProjOffset_Texture3D_proj, &SampledTextureSampleBiasProjOffset_Texture3D_offset };
 
-/// textureSampleBiasCompare with Texture1D, SamplerType, Float32, Float32, Float32
+/// textureSampleBiasCompare with Texture1D, Sampler, Float32, Float32, Float32
 Variable TextureSampleBiasCompare_Texture1D_texture;
 Variable TextureSampleBiasCompare_Texture1D_sampler;
 Variable TextureSampleBiasCompare_Texture1D_coordinate;
@@ -7272,7 +7004,7 @@ Variable SampledTextureSampleBiasCompare_Texture1D_compare;
 Function SampledTextureSampleBiasCompare_Texture1D;
 inline constexpr std::array SampledTextureSampleBiasCompare_Texture1D_args = { &SampledTextureSampleBiasCompare_Texture1D_texture, &SampledTextureSampleBiasCompare_Texture1D_coordinate, &SampledTextureSampleBiasCompare_Texture1D_bias, &SampledTextureSampleBiasCompare_Texture1D_compare };
 
-/// textureSampleBiasCompare with Texture2D, SamplerType, Float32x2, Float32, Float32
+/// textureSampleBiasCompare with Texture2D, Sampler, Float32x2, Float32, Float32
 Variable TextureSampleBiasCompare_Texture2D_texture;
 Variable TextureSampleBiasCompare_Texture2D_sampler;
 Variable TextureSampleBiasCompare_Texture2D_coordinate;
@@ -7289,7 +7021,7 @@ Variable SampledTextureSampleBiasCompare_Texture2D_compare;
 Function SampledTextureSampleBiasCompare_Texture2D;
 inline constexpr std::array SampledTextureSampleBiasCompare_Texture2D_args = { &SampledTextureSampleBiasCompare_Texture2D_texture, &SampledTextureSampleBiasCompare_Texture2D_coordinate, &SampledTextureSampleBiasCompare_Texture2D_bias, &SampledTextureSampleBiasCompare_Texture2D_compare };
 
-/// textureSampleBiasCompare with Texture3D, SamplerType, Float32x3, Float32, Float32
+/// textureSampleBiasCompare with Texture3D, Sampler, Float32x3, Float32, Float32
 Variable TextureSampleBiasCompare_Texture3D_texture;
 Variable TextureSampleBiasCompare_Texture3D_sampler;
 Variable TextureSampleBiasCompare_Texture3D_coordinate;
@@ -7306,7 +7038,7 @@ Variable SampledTextureSampleBiasCompare_Texture3D_compare;
 Function SampledTextureSampleBiasCompare_Texture3D;
 inline constexpr std::array SampledTextureSampleBiasCompare_Texture3D_args = { &SampledTextureSampleBiasCompare_Texture3D_texture, &SampledTextureSampleBiasCompare_Texture3D_coordinate, &SampledTextureSampleBiasCompare_Texture3D_bias, &SampledTextureSampleBiasCompare_Texture3D_compare };
 
-/// textureSampleBiasCompare with Texture1DArray, SamplerType, Float32x2, Float32, Float32
+/// textureSampleBiasCompare with Texture1DArray, Sampler, Float32x2, Float32, Float32
 Variable TextureSampleBiasCompare_Texture1DArray_texture;
 Variable TextureSampleBiasCompare_Texture1DArray_sampler;
 Variable TextureSampleBiasCompare_Texture1DArray_coordinate;
@@ -7323,7 +7055,7 @@ Variable SampledTextureSampleBiasCompare_Texture1DArray_compare;
 Function SampledTextureSampleBiasCompare_Texture1DArray;
 inline constexpr std::array SampledTextureSampleBiasCompare_Texture1DArray_args = { &SampledTextureSampleBiasCompare_Texture1DArray_texture, &SampledTextureSampleBiasCompare_Texture1DArray_coordinate, &SampledTextureSampleBiasCompare_Texture1DArray_bias, &SampledTextureSampleBiasCompare_Texture1DArray_compare };
 
-/// textureSampleBiasCompare with Texture2DArray, SamplerType, Float32x3, Float32, Float32
+/// textureSampleBiasCompare with Texture2DArray, Sampler, Float32x3, Float32, Float32
 Variable TextureSampleBiasCompare_Texture2DArray_texture;
 Variable TextureSampleBiasCompare_Texture2DArray_sampler;
 Variable TextureSampleBiasCompare_Texture2DArray_coordinate;
@@ -7340,7 +7072,7 @@ Variable SampledTextureSampleBiasCompare_Texture2DArray_compare;
 Function SampledTextureSampleBiasCompare_Texture2DArray;
 inline constexpr std::array SampledTextureSampleBiasCompare_Texture2DArray_args = { &SampledTextureSampleBiasCompare_Texture2DArray_texture, &SampledTextureSampleBiasCompare_Texture2DArray_coordinate, &SampledTextureSampleBiasCompare_Texture2DArray_bias, &SampledTextureSampleBiasCompare_Texture2DArray_compare };
 
-/// textureSampleBiasCompareOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+/// textureSampleBiasCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
 Variable TextureSampleBiasCompareOffset_Texture1D_texture;
 Variable TextureSampleBiasCompareOffset_Texture1D_sampler;
 Variable TextureSampleBiasCompareOffset_Texture1D_coordinate;
@@ -7359,7 +7091,7 @@ Variable SampledTextureSampleBiasCompareOffset_Texture1D_offset;
 Function SampledTextureSampleBiasCompareOffset_Texture1D;
 inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture1D_args = { &SampledTextureSampleBiasCompareOffset_Texture1D_texture, &SampledTextureSampleBiasCompareOffset_Texture1D_coordinate, &SampledTextureSampleBiasCompareOffset_Texture1D_bias, &SampledTextureSampleBiasCompareOffset_Texture1D_compare, &SampledTextureSampleBiasCompareOffset_Texture1D_offset };
 
-/// textureSampleBiasCompareOffset with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32x2
+/// textureSampleBiasCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
 Variable TextureSampleBiasCompareOffset_Texture2D_texture;
 Variable TextureSampleBiasCompareOffset_Texture2D_sampler;
 Variable TextureSampleBiasCompareOffset_Texture2D_coordinate;
@@ -7378,7 +7110,7 @@ Variable SampledTextureSampleBiasCompareOffset_Texture2D_offset;
 Function SampledTextureSampleBiasCompareOffset_Texture2D;
 inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture2D_args = { &SampledTextureSampleBiasCompareOffset_Texture2D_texture, &SampledTextureSampleBiasCompareOffset_Texture2D_coordinate, &SampledTextureSampleBiasCompareOffset_Texture2D_bias, &SampledTextureSampleBiasCompareOffset_Texture2D_compare, &SampledTextureSampleBiasCompareOffset_Texture2D_offset };
 
-/// textureSampleBiasCompareOffset with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32x3
+/// textureSampleBiasCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
 Variable TextureSampleBiasCompareOffset_Texture3D_texture;
 Variable TextureSampleBiasCompareOffset_Texture3D_sampler;
 Variable TextureSampleBiasCompareOffset_Texture3D_coordinate;
@@ -7397,7 +7129,7 @@ Variable SampledTextureSampleBiasCompareOffset_Texture3D_offset;
 Function SampledTextureSampleBiasCompareOffset_Texture3D;
 inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture3D_args = { &SampledTextureSampleBiasCompareOffset_Texture3D_texture, &SampledTextureSampleBiasCompareOffset_Texture3D_coordinate, &SampledTextureSampleBiasCompareOffset_Texture3D_bias, &SampledTextureSampleBiasCompareOffset_Texture3D_compare, &SampledTextureSampleBiasCompareOffset_Texture3D_offset };
 
-/// textureSampleBiasCompareOffset with Texture1DArray, SamplerType, Float32x2, Float32, Float32, Float32x2
+/// textureSampleBiasCompareOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32, Float32x2
 Variable TextureSampleBiasCompareOffset_Texture1DArray_texture;
 Variable TextureSampleBiasCompareOffset_Texture1DArray_sampler;
 Variable TextureSampleBiasCompareOffset_Texture1DArray_coordinate;
@@ -7416,7 +7148,7 @@ Variable SampledTextureSampleBiasCompareOffset_Texture1DArray_offset;
 Function SampledTextureSampleBiasCompareOffset_Texture1DArray;
 inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture1DArray_args = { &SampledTextureSampleBiasCompareOffset_Texture1DArray_texture, &SampledTextureSampleBiasCompareOffset_Texture1DArray_coordinate, &SampledTextureSampleBiasCompareOffset_Texture1DArray_bias, &SampledTextureSampleBiasCompareOffset_Texture1DArray_compare, &SampledTextureSampleBiasCompareOffset_Texture1DArray_offset };
 
-/// textureSampleBiasCompareOffset with Texture2DArray, SamplerType, Float32x3, Float32, Float32, Float32x3
+/// textureSampleBiasCompareOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32, Float32x3
 Variable TextureSampleBiasCompareOffset_Texture2DArray_texture;
 Variable TextureSampleBiasCompareOffset_Texture2DArray_sampler;
 Variable TextureSampleBiasCompareOffset_Texture2DArray_coordinate;
@@ -7435,7 +7167,7 @@ Variable SampledTextureSampleBiasCompareOffset_Texture2DArray_offset;
 Function SampledTextureSampleBiasCompareOffset_Texture2DArray;
 inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture2DArray_args = { &SampledTextureSampleBiasCompareOffset_Texture2DArray_texture, &SampledTextureSampleBiasCompareOffset_Texture2DArray_coordinate, &SampledTextureSampleBiasCompareOffset_Texture2DArray_bias, &SampledTextureSampleBiasCompareOffset_Texture2DArray_compare, &SampledTextureSampleBiasCompareOffset_Texture2DArray_offset };
 
-/// textureSampleBiasProjCompare with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+/// textureSampleBiasProjCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32
 Variable TextureSampleBiasProjCompare_Texture1D_texture;
 Variable TextureSampleBiasProjCompare_Texture1D_sampler;
 Variable TextureSampleBiasProjCompare_Texture1D_coordinate;
@@ -7454,7 +7186,7 @@ Variable SampledTextureSampleBiasProjCompare_Texture1D_compare;
 Function SampledTextureSampleBiasProjCompare_Texture1D;
 inline constexpr std::array SampledTextureSampleBiasProjCompare_Texture1D_args = { &SampledTextureSampleBiasProjCompare_Texture1D_texture, &SampledTextureSampleBiasProjCompare_Texture1D_coordinate, &SampledTextureSampleBiasProjCompare_Texture1D_bias, &SampledTextureSampleBiasProjCompare_Texture1D_proj, &SampledTextureSampleBiasProjCompare_Texture1D_compare };
 
-/// textureSampleBiasProjCompare with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32
+/// textureSampleBiasProjCompare with Texture2D, Sampler, Float32x2, Float32, Float32, Float32
 Variable TextureSampleBiasProjCompare_Texture2D_texture;
 Variable TextureSampleBiasProjCompare_Texture2D_sampler;
 Variable TextureSampleBiasProjCompare_Texture2D_coordinate;
@@ -7473,7 +7205,7 @@ Variable SampledTextureSampleBiasProjCompare_Texture2D_compare;
 Function SampledTextureSampleBiasProjCompare_Texture2D;
 inline constexpr std::array SampledTextureSampleBiasProjCompare_Texture2D_args = { &SampledTextureSampleBiasProjCompare_Texture2D_texture, &SampledTextureSampleBiasProjCompare_Texture2D_coordinate, &SampledTextureSampleBiasProjCompare_Texture2D_bias, &SampledTextureSampleBiasProjCompare_Texture2D_proj, &SampledTextureSampleBiasProjCompare_Texture2D_compare };
 
-/// textureSampleBiasProjCompare with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32
+/// textureSampleBiasProjCompare with Texture3D, Sampler, Float32x3, Float32, Float32, Float32
 Variable TextureSampleBiasProjCompare_Texture3D_texture;
 Variable TextureSampleBiasProjCompare_Texture3D_sampler;
 Variable TextureSampleBiasProjCompare_Texture3D_coordinate;
@@ -7492,7 +7224,7 @@ Variable SampledTextureSampleBiasProjCompare_Texture3D_compare;
 Function SampledTextureSampleBiasProjCompare_Texture3D;
 inline constexpr std::array SampledTextureSampleBiasProjCompare_Texture3D_args = { &SampledTextureSampleBiasProjCompare_Texture3D_texture, &SampledTextureSampleBiasProjCompare_Texture3D_coordinate, &SampledTextureSampleBiasProjCompare_Texture3D_bias, &SampledTextureSampleBiasProjCompare_Texture3D_proj, &SampledTextureSampleBiasProjCompare_Texture3D_compare };
 
-/// textureSampleBiasProjCompareOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32, Float32
+/// textureSampleBiasProjCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
 Variable TextureSampleBiasProjCompareOffset_Texture1D_texture;
 Variable TextureSampleBiasProjCompareOffset_Texture1D_sampler;
 Variable TextureSampleBiasProjCompareOffset_Texture1D_coordinate;
@@ -7513,7 +7245,7 @@ Variable SampledTextureSampleBiasProjCompareOffset_Texture1D_offset;
 Function SampledTextureSampleBiasProjCompareOffset_Texture1D;
 inline constexpr std::array SampledTextureSampleBiasProjCompareOffset_Texture1D_args = { &SampledTextureSampleBiasProjCompareOffset_Texture1D_texture, &SampledTextureSampleBiasProjCompareOffset_Texture1D_coordinate, &SampledTextureSampleBiasProjCompareOffset_Texture1D_bias, &SampledTextureSampleBiasProjCompareOffset_Texture1D_proj, &SampledTextureSampleBiasProjCompareOffset_Texture1D_compare, &SampledTextureSampleBiasProjCompareOffset_Texture1D_offset };
 
-/// textureSampleBiasProjCompareOffset with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32, Float32x2
+/// textureSampleBiasProjCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32, Float32x2
 Variable TextureSampleBiasProjCompareOffset_Texture2D_texture;
 Variable TextureSampleBiasProjCompareOffset_Texture2D_sampler;
 Variable TextureSampleBiasProjCompareOffset_Texture2D_coordinate;
@@ -7534,7 +7266,7 @@ Variable SampledTextureSampleBiasProjCompareOffset_Texture2D_offset;
 Function SampledTextureSampleBiasProjCompareOffset_Texture2D;
 inline constexpr std::array SampledTextureSampleBiasProjCompareOffset_Texture2D_args = { &SampledTextureSampleBiasProjCompareOffset_Texture2D_texture, &SampledTextureSampleBiasProjCompareOffset_Texture2D_coordinate, &SampledTextureSampleBiasProjCompareOffset_Texture2D_bias, &SampledTextureSampleBiasProjCompareOffset_Texture2D_proj, &SampledTextureSampleBiasProjCompareOffset_Texture2D_compare, &SampledTextureSampleBiasProjCompareOffset_Texture2D_offset };
 
-/// textureSampleBiasProjCompareOffset with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32, Float32x3
+/// textureSampleBiasProjCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32, Float32x3
 Variable TextureSampleBiasProjCompareOffset_Texture3D_texture;
 Variable TextureSampleBiasProjCompareOffset_Texture3D_sampler;
 Variable TextureSampleBiasProjCompareOffset_Texture3D_coordinate;
@@ -12581,7 +12313,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32_Int32_color.type = Type::FullType{ Float32Type.name };
     PixelExportColor_Float32_Int32_index.name = "index"_c;
     PixelExportColor_Float32_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Float32_Int32_index.literal = true;
+    PixelExportColor_Float32_Int32_index.type.literal = true;
     PixelExportColor_Float32_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Float32_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32_Int32.parameters = PixelExportColor_Float32_Int32_args;
@@ -12594,7 +12326,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32_UInt32_color.type = Type::FullType{ Float32Type.name };
     PixelExportColor_Float32_UInt32_index.name = "index"_c;
     PixelExportColor_Float32_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Float32_UInt32_index.literal = true;
+    PixelExportColor_Float32_UInt32_index.type.literal = true;
     PixelExportColor_Float32_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Float32_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32_UInt32.parameters = PixelExportColor_Float32_UInt32_args;
@@ -12607,7 +12339,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32_Int16_color.type = Type::FullType{ Float32Type.name };
     PixelExportColor_Float32_Int16_index.name = "index"_c;
     PixelExportColor_Float32_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Float32_Int16_index.literal = true;
+    PixelExportColor_Float32_Int16_index.type.literal = true;
     PixelExportColor_Float32_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Float32_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32_Int16.parameters = PixelExportColor_Float32_Int16_args;
@@ -12620,7 +12352,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32_UInt16_color.type = Type::FullType{ Float32Type.name };
     PixelExportColor_Float32_UInt16_index.name = "index"_c;
     PixelExportColor_Float32_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Float32_UInt16_index.literal = true;
+    PixelExportColor_Float32_UInt16_index.type.literal = true;
     PixelExportColor_Float32_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Float32_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32_UInt16.parameters = PixelExportColor_Float32_UInt16_args;
@@ -12633,7 +12365,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x2_Int32_color.type = Type::FullType{ Float32x2Type.name };
     PixelExportColor_Float32x2_Int32_index.name = "index"_c;
     PixelExportColor_Float32x2_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Float32x2_Int32_index.literal = true;
+    PixelExportColor_Float32x2_Int32_index.type.literal = true;
     PixelExportColor_Float32x2_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Float32x2_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x2_Int32.parameters = PixelExportColor_Float32x2_Int32_args;
@@ -12646,7 +12378,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x2_UInt32_color.type = Type::FullType{ Float32x2Type.name };
     PixelExportColor_Float32x2_UInt32_index.name = "index"_c;
     PixelExportColor_Float32x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Float32x2_UInt32_index.literal = true;
+    PixelExportColor_Float32x2_UInt32_index.type.literal = true;
     PixelExportColor_Float32x2_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Float32x2_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x2_UInt32.parameters = PixelExportColor_Float32x2_UInt32_args;
@@ -12659,7 +12391,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x2_Int16_color.type = Type::FullType{ Float32x2Type.name };
     PixelExportColor_Float32x2_Int16_index.name = "index"_c;
     PixelExportColor_Float32x2_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Float32x2_Int16_index.literal = true;
+    PixelExportColor_Float32x2_Int16_index.type.literal = true;
     PixelExportColor_Float32x2_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Float32x2_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x2_Int16.parameters = PixelExportColor_Float32x2_Int16_args;
@@ -12672,7 +12404,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x2_UInt16_color.type = Type::FullType{ Float32x2Type.name };
     PixelExportColor_Float32x2_UInt16_index.name = "index"_c;
     PixelExportColor_Float32x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Float32x2_UInt16_index.literal = true;
+    PixelExportColor_Float32x2_UInt16_index.type.literal = true;
     PixelExportColor_Float32x2_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Float32x2_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x2_UInt16.parameters = PixelExportColor_Float32x2_UInt16_args;
@@ -12685,7 +12417,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x3_Int32_color.type = Type::FullType{ Float32x3Type.name };
     PixelExportColor_Float32x3_Int32_index.name = "index"_c;
     PixelExportColor_Float32x3_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Float32x3_Int32_index.literal = true;
+    PixelExportColor_Float32x3_Int32_index.type.literal = true;
     PixelExportColor_Float32x3_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Float32x3_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x3_Int32.parameters = PixelExportColor_Float32x3_Int32_args;
@@ -12698,7 +12430,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x3_UInt32_color.type = Type::FullType{ Float32x3Type.name };
     PixelExportColor_Float32x3_UInt32_index.name = "index"_c;
     PixelExportColor_Float32x3_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Float32x3_UInt32_index.literal = true;
+    PixelExportColor_Float32x3_UInt32_index.type.literal = true;
     PixelExportColor_Float32x3_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Float32x3_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x3_UInt32.parameters = PixelExportColor_Float32x3_UInt32_args;
@@ -12711,7 +12443,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x3_Int16_color.type = Type::FullType{ Float32x3Type.name };
     PixelExportColor_Float32x3_Int16_index.name = "index"_c;
     PixelExportColor_Float32x3_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Float32x3_Int16_index.literal = true;
+    PixelExportColor_Float32x3_Int16_index.type.literal = true;
     PixelExportColor_Float32x3_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Float32x3_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x3_Int16.parameters = PixelExportColor_Float32x3_Int16_args;
@@ -12724,7 +12456,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x3_UInt16_color.type = Type::FullType{ Float32x3Type.name };
     PixelExportColor_Float32x3_UInt16_index.name = "index"_c;
     PixelExportColor_Float32x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Float32x3_UInt16_index.literal = true;
+    PixelExportColor_Float32x3_UInt16_index.type.literal = true;
     PixelExportColor_Float32x3_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Float32x3_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x3_UInt16.parameters = PixelExportColor_Float32x3_UInt16_args;
@@ -12737,7 +12469,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x4_Int32_color.type = Type::FullType{ Float32x4Type.name };
     PixelExportColor_Float32x4_Int32_index.name = "index"_c;
     PixelExportColor_Float32x4_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Float32x4_Int32_index.literal = true;
+    PixelExportColor_Float32x4_Int32_index.type.literal = true;
     PixelExportColor_Float32x4_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Float32x4_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x4_Int32.parameters = PixelExportColor_Float32x4_Int32_args;
@@ -12750,7 +12482,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x4_UInt32_color.type = Type::FullType{ Float32x4Type.name };
     PixelExportColor_Float32x4_UInt32_index.name = "index"_c;
     PixelExportColor_Float32x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Float32x4_UInt32_index.literal = true;
+    PixelExportColor_Float32x4_UInt32_index.type.literal = true;
     PixelExportColor_Float32x4_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Float32x4_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x4_UInt32.parameters = PixelExportColor_Float32x4_UInt32_args;
@@ -12763,7 +12495,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x4_Int16_color.type = Type::FullType{ Float32x4Type.name };
     PixelExportColor_Float32x4_Int16_index.name = "index"_c;
     PixelExportColor_Float32x4_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Float32x4_Int16_index.literal = true;
+    PixelExportColor_Float32x4_Int16_index.type.literal = true;
     PixelExportColor_Float32x4_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Float32x4_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x4_Int16.parameters = PixelExportColor_Float32x4_Int16_args;
@@ -12776,7 +12508,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x4_UInt16_color.type = Type::FullType{ Float32x4Type.name };
     PixelExportColor_Float32x4_UInt16_index.name = "index"_c;
     PixelExportColor_Float32x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Float32x4_UInt16_index.literal = true;
+    PixelExportColor_Float32x4_UInt16_index.type.literal = true;
     PixelExportColor_Float32x4_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Float32x4_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x4_UInt16.parameters = PixelExportColor_Float32x4_UInt16_args;
@@ -12789,7 +12521,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16_Int32_color.type = Type::FullType{ Float16Type.name };
     PixelExportColor_Float16_Int32_index.name = "index"_c;
     PixelExportColor_Float16_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Float16_Int32_index.literal = true;
+    PixelExportColor_Float16_Int32_index.type.literal = true;
     PixelExportColor_Float16_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Float16_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16_Int32.parameters = PixelExportColor_Float16_Int32_args;
@@ -12802,7 +12534,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16_UInt32_color.type = Type::FullType{ Float16Type.name };
     PixelExportColor_Float16_UInt32_index.name = "index"_c;
     PixelExportColor_Float16_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Float16_UInt32_index.literal = true;
+    PixelExportColor_Float16_UInt32_index.type.literal = true;
     PixelExportColor_Float16_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Float16_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16_UInt32.parameters = PixelExportColor_Float16_UInt32_args;
@@ -12815,7 +12547,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16_Int16_color.type = Type::FullType{ Float16Type.name };
     PixelExportColor_Float16_Int16_index.name = "index"_c;
     PixelExportColor_Float16_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Float16_Int16_index.literal = true;
+    PixelExportColor_Float16_Int16_index.type.literal = true;
     PixelExportColor_Float16_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Float16_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16_Int16.parameters = PixelExportColor_Float16_Int16_args;
@@ -12828,7 +12560,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16_UInt16_color.type = Type::FullType{ Float16Type.name };
     PixelExportColor_Float16_UInt16_index.name = "index"_c;
     PixelExportColor_Float16_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Float16_UInt16_index.literal = true;
+    PixelExportColor_Float16_UInt16_index.type.literal = true;
     PixelExportColor_Float16_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Float16_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16_UInt16.parameters = PixelExportColor_Float16_UInt16_args;
@@ -12841,7 +12573,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x2_Int32_color.type = Type::FullType{ Float16x2Type.name };
     PixelExportColor_Float16x2_Int32_index.name = "index"_c;
     PixelExportColor_Float16x2_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Float16x2_Int32_index.literal = true;
+    PixelExportColor_Float16x2_Int32_index.type.literal = true;
     PixelExportColor_Float16x2_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Float16x2_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x2_Int32.parameters = PixelExportColor_Float16x2_Int32_args;
@@ -12854,7 +12586,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x2_UInt32_color.type = Type::FullType{ Float16x2Type.name };
     PixelExportColor_Float16x2_UInt32_index.name = "index"_c;
     PixelExportColor_Float16x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Float16x2_UInt32_index.literal = true;
+    PixelExportColor_Float16x2_UInt32_index.type.literal = true;
     PixelExportColor_Float16x2_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Float16x2_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x2_UInt32.parameters = PixelExportColor_Float16x2_UInt32_args;
@@ -12867,7 +12599,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x2_Int16_color.type = Type::FullType{ Float16x2Type.name };
     PixelExportColor_Float16x2_Int16_index.name = "index"_c;
     PixelExportColor_Float16x2_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Float16x2_Int16_index.literal = true;
+    PixelExportColor_Float16x2_Int16_index.type.literal = true;
     PixelExportColor_Float16x2_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Float16x2_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x2_Int16.parameters = PixelExportColor_Float16x2_Int16_args;
@@ -12880,7 +12612,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x2_UInt16_color.type = Type::FullType{ Float16x2Type.name };
     PixelExportColor_Float16x2_UInt16_index.name = "index"_c;
     PixelExportColor_Float16x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Float16x2_UInt16_index.literal = true;
+    PixelExportColor_Float16x2_UInt16_index.type.literal = true;
     PixelExportColor_Float16x2_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Float16x2_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x2_UInt16.parameters = PixelExportColor_Float16x2_UInt16_args;
@@ -12893,7 +12625,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x3_Int32_color.type = Type::FullType{ Float16x3Type.name };
     PixelExportColor_Float16x3_Int32_index.name = "index"_c;
     PixelExportColor_Float16x3_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Float16x3_Int32_index.literal = true;
+    PixelExportColor_Float16x3_Int32_index.type.literal = true;
     PixelExportColor_Float16x3_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Float16x3_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x3_Int32.parameters = PixelExportColor_Float16x3_Int32_args;
@@ -12906,7 +12638,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x3_UInt32_color.type = Type::FullType{ Float16x3Type.name };
     PixelExportColor_Float16x3_UInt32_index.name = "index"_c;
     PixelExportColor_Float16x3_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Float16x3_UInt32_index.literal = true;
+    PixelExportColor_Float16x3_UInt32_index.type.literal = true;
     PixelExportColor_Float16x3_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Float16x3_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x3_UInt32.parameters = PixelExportColor_Float16x3_UInt32_args;
@@ -12919,7 +12651,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x3_Int16_color.type = Type::FullType{ Float16x3Type.name };
     PixelExportColor_Float16x3_Int16_index.name = "index"_c;
     PixelExportColor_Float16x3_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Float16x3_Int16_index.literal = true;
+    PixelExportColor_Float16x3_Int16_index.type.literal = true;
     PixelExportColor_Float16x3_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Float16x3_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x3_Int16.parameters = PixelExportColor_Float16x3_Int16_args;
@@ -12932,7 +12664,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x3_UInt16_color.type = Type::FullType{ Float16x3Type.name };
     PixelExportColor_Float16x3_UInt16_index.name = "index"_c;
     PixelExportColor_Float16x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Float16x3_UInt16_index.literal = true;
+    PixelExportColor_Float16x3_UInt16_index.type.literal = true;
     PixelExportColor_Float16x3_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Float16x3_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x3_UInt16.parameters = PixelExportColor_Float16x3_UInt16_args;
@@ -12945,7 +12677,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x4_Int32_color.type = Type::FullType{ Float16x4Type.name };
     PixelExportColor_Float16x4_Int32_index.name = "index"_c;
     PixelExportColor_Float16x4_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Float16x4_Int32_index.literal = true;
+    PixelExportColor_Float16x4_Int32_index.type.literal = true;
     PixelExportColor_Float16x4_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Float16x4_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x4_Int32.parameters = PixelExportColor_Float16x4_Int32_args;
@@ -12958,7 +12690,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x4_UInt32_color.type = Type::FullType{ Float16x4Type.name };
     PixelExportColor_Float16x4_UInt32_index.name = "index"_c;
     PixelExportColor_Float16x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Float16x4_UInt32_index.literal = true;
+    PixelExportColor_Float16x4_UInt32_index.type.literal = true;
     PixelExportColor_Float16x4_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Float16x4_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x4_UInt32.parameters = PixelExportColor_Float16x4_UInt32_args;
@@ -12971,7 +12703,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x4_Int16_color.type = Type::FullType{ Float16x4Type.name };
     PixelExportColor_Float16x4_Int16_index.name = "index"_c;
     PixelExportColor_Float16x4_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Float16x4_Int16_index.literal = true;
+    PixelExportColor_Float16x4_Int16_index.type.literal = true;
     PixelExportColor_Float16x4_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Float16x4_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x4_Int16.parameters = PixelExportColor_Float16x4_Int16_args;
@@ -12984,7 +12716,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x4_UInt16_color.type = Type::FullType{ Float16x4Type.name };
     PixelExportColor_Float16x4_UInt16_index.name = "index"_c;
     PixelExportColor_Float16x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Float16x4_UInt16_index.literal = true;
+    PixelExportColor_Float16x4_UInt16_index.type.literal = true;
     PixelExportColor_Float16x4_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Float16x4_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x4_UInt16.parameters = PixelExportColor_Float16x4_UInt16_args;
@@ -12997,7 +12729,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32_Int32_color.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Int32_Int32_index.name = "index"_c;
     PixelExportColor_Int32_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Int32_Int32_index.literal = true;
+    PixelExportColor_Int32_Int32_index.type.literal = true;
     PixelExportColor_Int32_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Int32_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32_Int32.parameters = PixelExportColor_Int32_Int32_args;
@@ -13010,7 +12742,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32_UInt32_color.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Int32_UInt32_index.name = "index"_c;
     PixelExportColor_Int32_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Int32_UInt32_index.literal = true;
+    PixelExportColor_Int32_UInt32_index.type.literal = true;
     PixelExportColor_Int32_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Int32_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32_UInt32.parameters = PixelExportColor_Int32_UInt32_args;
@@ -13023,7 +12755,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32_Int16_color.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Int32_Int16_index.name = "index"_c;
     PixelExportColor_Int32_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Int32_Int16_index.literal = true;
+    PixelExportColor_Int32_Int16_index.type.literal = true;
     PixelExportColor_Int32_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Int32_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32_Int16.parameters = PixelExportColor_Int32_Int16_args;
@@ -13036,7 +12768,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32_UInt16_color.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Int32_UInt16_index.name = "index"_c;
     PixelExportColor_Int32_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Int32_UInt16_index.literal = true;
+    PixelExportColor_Int32_UInt16_index.type.literal = true;
     PixelExportColor_Int32_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Int32_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32_UInt16.parameters = PixelExportColor_Int32_UInt16_args;
@@ -13049,7 +12781,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x2_Int32_color.type = Type::FullType{ Int32x2Type.name };
     PixelExportColor_Int32x2_Int32_index.name = "index"_c;
     PixelExportColor_Int32x2_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Int32x2_Int32_index.literal = true;
+    PixelExportColor_Int32x2_Int32_index.type.literal = true;
     PixelExportColor_Int32x2_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Int32x2_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x2_Int32.parameters = PixelExportColor_Int32x2_Int32_args;
@@ -13062,7 +12794,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x2_UInt32_color.type = Type::FullType{ Int32x2Type.name };
     PixelExportColor_Int32x2_UInt32_index.name = "index"_c;
     PixelExportColor_Int32x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Int32x2_UInt32_index.literal = true;
+    PixelExportColor_Int32x2_UInt32_index.type.literal = true;
     PixelExportColor_Int32x2_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Int32x2_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x2_UInt32.parameters = PixelExportColor_Int32x2_UInt32_args;
@@ -13075,7 +12807,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x2_Int16_color.type = Type::FullType{ Int32x2Type.name };
     PixelExportColor_Int32x2_Int16_index.name = "index"_c;
     PixelExportColor_Int32x2_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Int32x2_Int16_index.literal = true;
+    PixelExportColor_Int32x2_Int16_index.type.literal = true;
     PixelExportColor_Int32x2_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Int32x2_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x2_Int16.parameters = PixelExportColor_Int32x2_Int16_args;
@@ -13088,7 +12820,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x2_UInt16_color.type = Type::FullType{ Int32x2Type.name };
     PixelExportColor_Int32x2_UInt16_index.name = "index"_c;
     PixelExportColor_Int32x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Int32x2_UInt16_index.literal = true;
+    PixelExportColor_Int32x2_UInt16_index.type.literal = true;
     PixelExportColor_Int32x2_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Int32x2_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x2_UInt16.parameters = PixelExportColor_Int32x2_UInt16_args;
@@ -13101,7 +12833,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x3_Int32_color.type = Type::FullType{ Int32x3Type.name };
     PixelExportColor_Int32x3_Int32_index.name = "index"_c;
     PixelExportColor_Int32x3_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Int32x3_Int32_index.literal = true;
+    PixelExportColor_Int32x3_Int32_index.type.literal = true;
     PixelExportColor_Int32x3_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Int32x3_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x3_Int32.parameters = PixelExportColor_Int32x3_Int32_args;
@@ -13114,7 +12846,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x3_UInt32_color.type = Type::FullType{ Int32x3Type.name };
     PixelExportColor_Int32x3_UInt32_index.name = "index"_c;
     PixelExportColor_Int32x3_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Int32x3_UInt32_index.literal = true;
+    PixelExportColor_Int32x3_UInt32_index.type.literal = true;
     PixelExportColor_Int32x3_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Int32x3_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x3_UInt32.parameters = PixelExportColor_Int32x3_UInt32_args;
@@ -13127,7 +12859,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x3_Int16_color.type = Type::FullType{ Int32x3Type.name };
     PixelExportColor_Int32x3_Int16_index.name = "index"_c;
     PixelExportColor_Int32x3_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Int32x3_Int16_index.literal = true;
+    PixelExportColor_Int32x3_Int16_index.type.literal = true;
     PixelExportColor_Int32x3_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Int32x3_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x3_Int16.parameters = PixelExportColor_Int32x3_Int16_args;
@@ -13140,7 +12872,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x3_UInt16_color.type = Type::FullType{ Int32x3Type.name };
     PixelExportColor_Int32x3_UInt16_index.name = "index"_c;
     PixelExportColor_Int32x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Int32x3_UInt16_index.literal = true;
+    PixelExportColor_Int32x3_UInt16_index.type.literal = true;
     PixelExportColor_Int32x3_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Int32x3_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x3_UInt16.parameters = PixelExportColor_Int32x3_UInt16_args;
@@ -13153,7 +12885,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x4_Int32_color.type = Type::FullType{ Int32x4Type.name };
     PixelExportColor_Int32x4_Int32_index.name = "index"_c;
     PixelExportColor_Int32x4_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Int32x4_Int32_index.literal = true;
+    PixelExportColor_Int32x4_Int32_index.type.literal = true;
     PixelExportColor_Int32x4_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Int32x4_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x4_Int32.parameters = PixelExportColor_Int32x4_Int32_args;
@@ -13166,7 +12898,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x4_UInt32_color.type = Type::FullType{ Int32x4Type.name };
     PixelExportColor_Int32x4_UInt32_index.name = "index"_c;
     PixelExportColor_Int32x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Int32x4_UInt32_index.literal = true;
+    PixelExportColor_Int32x4_UInt32_index.type.literal = true;
     PixelExportColor_Int32x4_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Int32x4_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x4_UInt32.parameters = PixelExportColor_Int32x4_UInt32_args;
@@ -13179,7 +12911,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x4_Int16_color.type = Type::FullType{ Int32x4Type.name };
     PixelExportColor_Int32x4_Int16_index.name = "index"_c;
     PixelExportColor_Int32x4_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Int32x4_Int16_index.literal = true;
+    PixelExportColor_Int32x4_Int16_index.type.literal = true;
     PixelExportColor_Int32x4_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Int32x4_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x4_Int16.parameters = PixelExportColor_Int32x4_Int16_args;
@@ -13192,7 +12924,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x4_UInt16_color.type = Type::FullType{ Int32x4Type.name };
     PixelExportColor_Int32x4_UInt16_index.name = "index"_c;
     PixelExportColor_Int32x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Int32x4_UInt16_index.literal = true;
+    PixelExportColor_Int32x4_UInt16_index.type.literal = true;
     PixelExportColor_Int32x4_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Int32x4_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x4_UInt16.parameters = PixelExportColor_Int32x4_UInt16_args;
@@ -13205,7 +12937,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16_Int32_color.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Int16_Int32_index.name = "index"_c;
     PixelExportColor_Int16_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Int16_Int32_index.literal = true;
+    PixelExportColor_Int16_Int32_index.type.literal = true;
     PixelExportColor_Int16_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Int16_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16_Int32.parameters = PixelExportColor_Int16_Int32_args;
@@ -13218,7 +12950,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16_UInt32_color.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Int16_UInt32_index.name = "index"_c;
     PixelExportColor_Int16_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Int16_UInt32_index.literal = true;
+    PixelExportColor_Int16_UInt32_index.type.literal = true;
     PixelExportColor_Int16_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Int16_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16_UInt32.parameters = PixelExportColor_Int16_UInt32_args;
@@ -13231,7 +12963,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16_Int16_color.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Int16_Int16_index.name = "index"_c;
     PixelExportColor_Int16_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Int16_Int16_index.literal = true;
+    PixelExportColor_Int16_Int16_index.type.literal = true;
     PixelExportColor_Int16_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Int16_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16_Int16.parameters = PixelExportColor_Int16_Int16_args;
@@ -13244,7 +12976,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16_UInt16_color.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Int16_UInt16_index.name = "index"_c;
     PixelExportColor_Int16_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Int16_UInt16_index.literal = true;
+    PixelExportColor_Int16_UInt16_index.type.literal = true;
     PixelExportColor_Int16_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Int16_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16_UInt16.parameters = PixelExportColor_Int16_UInt16_args;
@@ -13257,7 +12989,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x2_Int32_color.type = Type::FullType{ Int16x2Type.name };
     PixelExportColor_Int16x2_Int32_index.name = "index"_c;
     PixelExportColor_Int16x2_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Int16x2_Int32_index.literal = true;
+    PixelExportColor_Int16x2_Int32_index.type.literal = true;
     PixelExportColor_Int16x2_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Int16x2_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x2_Int32.parameters = PixelExportColor_Int16x2_Int32_args;
@@ -13270,7 +13002,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x2_UInt32_color.type = Type::FullType{ Int16x2Type.name };
     PixelExportColor_Int16x2_UInt32_index.name = "index"_c;
     PixelExportColor_Int16x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Int16x2_UInt32_index.literal = true;
+    PixelExportColor_Int16x2_UInt32_index.type.literal = true;
     PixelExportColor_Int16x2_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Int16x2_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x2_UInt32.parameters = PixelExportColor_Int16x2_UInt32_args;
@@ -13283,7 +13015,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x2_Int16_color.type = Type::FullType{ Int16x2Type.name };
     PixelExportColor_Int16x2_Int16_index.name = "index"_c;
     PixelExportColor_Int16x2_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Int16x2_Int16_index.literal = true;
+    PixelExportColor_Int16x2_Int16_index.type.literal = true;
     PixelExportColor_Int16x2_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Int16x2_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x2_Int16.parameters = PixelExportColor_Int16x2_Int16_args;
@@ -13296,7 +13028,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x2_UInt16_color.type = Type::FullType{ Int16x2Type.name };
     PixelExportColor_Int16x2_UInt16_index.name = "index"_c;
     PixelExportColor_Int16x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Int16x2_UInt16_index.literal = true;
+    PixelExportColor_Int16x2_UInt16_index.type.literal = true;
     PixelExportColor_Int16x2_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Int16x2_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x2_UInt16.parameters = PixelExportColor_Int16x2_UInt16_args;
@@ -13309,7 +13041,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x3_Int32_color.type = Type::FullType{ Int16x3Type.name };
     PixelExportColor_Int16x3_Int32_index.name = "index"_c;
     PixelExportColor_Int16x3_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Int16x3_Int32_index.literal = true;
+    PixelExportColor_Int16x3_Int32_index.type.literal = true;
     PixelExportColor_Int16x3_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Int16x3_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x3_Int32.parameters = PixelExportColor_Int16x3_Int32_args;
@@ -13322,7 +13054,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x3_UInt32_color.type = Type::FullType{ Int16x3Type.name };
     PixelExportColor_Int16x3_UInt32_index.name = "index"_c;
     PixelExportColor_Int16x3_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Int16x3_UInt32_index.literal = true;
+    PixelExportColor_Int16x3_UInt32_index.type.literal = true;
     PixelExportColor_Int16x3_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Int16x3_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x3_UInt32.parameters = PixelExportColor_Int16x3_UInt32_args;
@@ -13335,7 +13067,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x3_Int16_color.type = Type::FullType{ Int16x3Type.name };
     PixelExportColor_Int16x3_Int16_index.name = "index"_c;
     PixelExportColor_Int16x3_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Int16x3_Int16_index.literal = true;
+    PixelExportColor_Int16x3_Int16_index.type.literal = true;
     PixelExportColor_Int16x3_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Int16x3_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x3_Int16.parameters = PixelExportColor_Int16x3_Int16_args;
@@ -13348,7 +13080,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x3_UInt16_color.type = Type::FullType{ Int16x3Type.name };
     PixelExportColor_Int16x3_UInt16_index.name = "index"_c;
     PixelExportColor_Int16x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Int16x3_UInt16_index.literal = true;
+    PixelExportColor_Int16x3_UInt16_index.type.literal = true;
     PixelExportColor_Int16x3_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Int16x3_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x3_UInt16.parameters = PixelExportColor_Int16x3_UInt16_args;
@@ -13361,7 +13093,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x4_Int32_color.type = Type::FullType{ Int16x4Type.name };
     PixelExportColor_Int16x4_Int32_index.name = "index"_c;
     PixelExportColor_Int16x4_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Int16x4_Int32_index.literal = true;
+    PixelExportColor_Int16x4_Int32_index.type.literal = true;
     PixelExportColor_Int16x4_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Int16x4_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x4_Int32.parameters = PixelExportColor_Int16x4_Int32_args;
@@ -13374,7 +13106,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x4_UInt32_color.type = Type::FullType{ Int16x4Type.name };
     PixelExportColor_Int16x4_UInt32_index.name = "index"_c;
     PixelExportColor_Int16x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Int16x4_UInt32_index.literal = true;
+    PixelExportColor_Int16x4_UInt32_index.type.literal = true;
     PixelExportColor_Int16x4_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Int16x4_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x4_UInt32.parameters = PixelExportColor_Int16x4_UInt32_args;
@@ -13387,7 +13119,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x4_Int16_color.type = Type::FullType{ Int16x4Type.name };
     PixelExportColor_Int16x4_Int16_index.name = "index"_c;
     PixelExportColor_Int16x4_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Int16x4_Int16_index.literal = true;
+    PixelExportColor_Int16x4_Int16_index.type.literal = true;
     PixelExportColor_Int16x4_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Int16x4_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x4_Int16.parameters = PixelExportColor_Int16x4_Int16_args;
@@ -13400,7 +13132,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x4_UInt16_color.type = Type::FullType{ Int16x4Type.name };
     PixelExportColor_Int16x4_UInt16_index.name = "index"_c;
     PixelExportColor_Int16x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Int16x4_UInt16_index.literal = true;
+    PixelExportColor_Int16x4_UInt16_index.type.literal = true;
     PixelExportColor_Int16x4_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Int16x4_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x4_UInt16.parameters = PixelExportColor_Int16x4_UInt16_args;
@@ -13413,7 +13145,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32_Int32_color.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_UInt32_Int32_index.name = "index"_c;
     PixelExportColor_UInt32_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_UInt32_Int32_index.literal = true;
+    PixelExportColor_UInt32_Int32_index.type.literal = true;
     PixelExportColor_UInt32_Int32.name = "pixelExportColor"_c;
     PixelExportColor_UInt32_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32_Int32.parameters = PixelExportColor_UInt32_Int32_args;
@@ -13426,7 +13158,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32_UInt32_color.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_UInt32_UInt32_index.name = "index"_c;
     PixelExportColor_UInt32_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_UInt32_UInt32_index.literal = true;
+    PixelExportColor_UInt32_UInt32_index.type.literal = true;
     PixelExportColor_UInt32_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_UInt32_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32_UInt32.parameters = PixelExportColor_UInt32_UInt32_args;
@@ -13439,7 +13171,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32_Int16_color.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_UInt32_Int16_index.name = "index"_c;
     PixelExportColor_UInt32_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_UInt32_Int16_index.literal = true;
+    PixelExportColor_UInt32_Int16_index.type.literal = true;
     PixelExportColor_UInt32_Int16.name = "pixelExportColor"_c;
     PixelExportColor_UInt32_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32_Int16.parameters = PixelExportColor_UInt32_Int16_args;
@@ -13452,7 +13184,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32_UInt16_color.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_UInt32_UInt16_index.name = "index"_c;
     PixelExportColor_UInt32_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_UInt32_UInt16_index.literal = true;
+    PixelExportColor_UInt32_UInt16_index.type.literal = true;
     PixelExportColor_UInt32_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_UInt32_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32_UInt16.parameters = PixelExportColor_UInt32_UInt16_args;
@@ -13465,7 +13197,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x2_Int32_color.type = Type::FullType{ UInt32x2Type.name };
     PixelExportColor_UInt32x2_Int32_index.name = "index"_c;
     PixelExportColor_UInt32x2_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_UInt32x2_Int32_index.literal = true;
+    PixelExportColor_UInt32x2_Int32_index.type.literal = true;
     PixelExportColor_UInt32x2_Int32.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x2_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x2_Int32.parameters = PixelExportColor_UInt32x2_Int32_args;
@@ -13478,7 +13210,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x2_UInt32_color.type = Type::FullType{ UInt32x2Type.name };
     PixelExportColor_UInt32x2_UInt32_index.name = "index"_c;
     PixelExportColor_UInt32x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_UInt32x2_UInt32_index.literal = true;
+    PixelExportColor_UInt32x2_UInt32_index.type.literal = true;
     PixelExportColor_UInt32x2_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x2_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x2_UInt32.parameters = PixelExportColor_UInt32x2_UInt32_args;
@@ -13491,7 +13223,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x2_Int16_color.type = Type::FullType{ UInt32x2Type.name };
     PixelExportColor_UInt32x2_Int16_index.name = "index"_c;
     PixelExportColor_UInt32x2_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_UInt32x2_Int16_index.literal = true;
+    PixelExportColor_UInt32x2_Int16_index.type.literal = true;
     PixelExportColor_UInt32x2_Int16.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x2_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x2_Int16.parameters = PixelExportColor_UInt32x2_Int16_args;
@@ -13504,7 +13236,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x2_UInt16_color.type = Type::FullType{ UInt32x2Type.name };
     PixelExportColor_UInt32x2_UInt16_index.name = "index"_c;
     PixelExportColor_UInt32x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_UInt32x2_UInt16_index.literal = true;
+    PixelExportColor_UInt32x2_UInt16_index.type.literal = true;
     PixelExportColor_UInt32x2_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x2_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x2_UInt16.parameters = PixelExportColor_UInt32x2_UInt16_args;
@@ -13517,7 +13249,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x3_Int32_color.type = Type::FullType{ UInt32x3Type.name };
     PixelExportColor_UInt32x3_Int32_index.name = "index"_c;
     PixelExportColor_UInt32x3_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_UInt32x3_Int32_index.literal = true;
+    PixelExportColor_UInt32x3_Int32_index.type.literal = true;
     PixelExportColor_UInt32x3_Int32.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x3_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x3_Int32.parameters = PixelExportColor_UInt32x3_Int32_args;
@@ -13530,7 +13262,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x3_UInt32_color.type = Type::FullType{ UInt32x3Type.name };
     PixelExportColor_UInt32x3_UInt32_index.name = "index"_c;
     PixelExportColor_UInt32x3_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_UInt32x3_UInt32_index.literal = true;
+    PixelExportColor_UInt32x3_UInt32_index.type.literal = true;
     PixelExportColor_UInt32x3_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x3_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x3_UInt32.parameters = PixelExportColor_UInt32x3_UInt32_args;
@@ -13543,7 +13275,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x3_Int16_color.type = Type::FullType{ UInt32x3Type.name };
     PixelExportColor_UInt32x3_Int16_index.name = "index"_c;
     PixelExportColor_UInt32x3_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_UInt32x3_Int16_index.literal = true;
+    PixelExportColor_UInt32x3_Int16_index.type.literal = true;
     PixelExportColor_UInt32x3_Int16.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x3_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x3_Int16.parameters = PixelExportColor_UInt32x3_Int16_args;
@@ -13556,7 +13288,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x3_UInt16_color.type = Type::FullType{ UInt32x3Type.name };
     PixelExportColor_UInt32x3_UInt16_index.name = "index"_c;
     PixelExportColor_UInt32x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_UInt32x3_UInt16_index.literal = true;
+    PixelExportColor_UInt32x3_UInt16_index.type.literal = true;
     PixelExportColor_UInt32x3_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x3_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x3_UInt16.parameters = PixelExportColor_UInt32x3_UInt16_args;
@@ -13569,7 +13301,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x4_Int32_color.type = Type::FullType{ UInt32x4Type.name };
     PixelExportColor_UInt32x4_Int32_index.name = "index"_c;
     PixelExportColor_UInt32x4_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_UInt32x4_Int32_index.literal = true;
+    PixelExportColor_UInt32x4_Int32_index.type.literal = true;
     PixelExportColor_UInt32x4_Int32.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x4_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x4_Int32.parameters = PixelExportColor_UInt32x4_Int32_args;
@@ -13582,7 +13314,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x4_UInt32_color.type = Type::FullType{ UInt32x4Type.name };
     PixelExportColor_UInt32x4_UInt32_index.name = "index"_c;
     PixelExportColor_UInt32x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_UInt32x4_UInt32_index.literal = true;
+    PixelExportColor_UInt32x4_UInt32_index.type.literal = true;
     PixelExportColor_UInt32x4_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x4_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x4_UInt32.parameters = PixelExportColor_UInt32x4_UInt32_args;
@@ -13595,7 +13327,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x4_Int16_color.type = Type::FullType{ UInt32x4Type.name };
     PixelExportColor_UInt32x4_Int16_index.name = "index"_c;
     PixelExportColor_UInt32x4_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_UInt32x4_Int16_index.literal = true;
+    PixelExportColor_UInt32x4_Int16_index.type.literal = true;
     PixelExportColor_UInt32x4_Int16.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x4_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x4_Int16.parameters = PixelExportColor_UInt32x4_Int16_args;
@@ -13608,7 +13340,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x4_UInt16_color.type = Type::FullType{ UInt32x4Type.name };
     PixelExportColor_UInt32x4_UInt16_index.name = "index"_c;
     PixelExportColor_UInt32x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_UInt32x4_UInt16_index.literal = true;
+    PixelExportColor_UInt32x4_UInt16_index.type.literal = true;
     PixelExportColor_UInt32x4_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x4_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x4_UInt16.parameters = PixelExportColor_UInt32x4_UInt16_args;
@@ -13621,7 +13353,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16_Int32_color.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_UInt16_Int32_index.name = "index"_c;
     PixelExportColor_UInt16_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_UInt16_Int32_index.literal = true;
+    PixelExportColor_UInt16_Int32_index.type.literal = true;
     PixelExportColor_UInt16_Int32.name = "pixelExportColor"_c;
     PixelExportColor_UInt16_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16_Int32.parameters = PixelExportColor_UInt16_Int32_args;
@@ -13634,7 +13366,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16_UInt32_color.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_UInt16_UInt32_index.name = "index"_c;
     PixelExportColor_UInt16_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_UInt16_UInt32_index.literal = true;
+    PixelExportColor_UInt16_UInt32_index.type.literal = true;
     PixelExportColor_UInt16_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_UInt16_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16_UInt32.parameters = PixelExportColor_UInt16_UInt32_args;
@@ -13647,7 +13379,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16_Int16_color.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_UInt16_Int16_index.name = "index"_c;
     PixelExportColor_UInt16_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_UInt16_Int16_index.literal = true;
+    PixelExportColor_UInt16_Int16_index.type.literal = true;
     PixelExportColor_UInt16_Int16.name = "pixelExportColor"_c;
     PixelExportColor_UInt16_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16_Int16.parameters = PixelExportColor_UInt16_Int16_args;
@@ -13660,7 +13392,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16_UInt16_color.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_UInt16_UInt16_index.name = "index"_c;
     PixelExportColor_UInt16_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_UInt16_UInt16_index.literal = true;
+    PixelExportColor_UInt16_UInt16_index.type.literal = true;
     PixelExportColor_UInt16_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_UInt16_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16_UInt16.parameters = PixelExportColor_UInt16_UInt16_args;
@@ -13673,7 +13405,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x2_Int32_color.type = Type::FullType{ UInt16x2Type.name };
     PixelExportColor_UInt16x2_Int32_index.name = "index"_c;
     PixelExportColor_UInt16x2_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_UInt16x2_Int32_index.literal = true;
+    PixelExportColor_UInt16x2_Int32_index.type.literal = true;
     PixelExportColor_UInt16x2_Int32.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x2_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x2_Int32.parameters = PixelExportColor_UInt16x2_Int32_args;
@@ -13686,7 +13418,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x2_UInt32_color.type = Type::FullType{ UInt16x2Type.name };
     PixelExportColor_UInt16x2_UInt32_index.name = "index"_c;
     PixelExportColor_UInt16x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_UInt16x2_UInt32_index.literal = true;
+    PixelExportColor_UInt16x2_UInt32_index.type.literal = true;
     PixelExportColor_UInt16x2_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x2_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x2_UInt32.parameters = PixelExportColor_UInt16x2_UInt32_args;
@@ -13699,7 +13431,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x2_Int16_color.type = Type::FullType{ UInt16x2Type.name };
     PixelExportColor_UInt16x2_Int16_index.name = "index"_c;
     PixelExportColor_UInt16x2_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_UInt16x2_Int16_index.literal = true;
+    PixelExportColor_UInt16x2_Int16_index.type.literal = true;
     PixelExportColor_UInt16x2_Int16.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x2_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x2_Int16.parameters = PixelExportColor_UInt16x2_Int16_args;
@@ -13712,7 +13444,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x2_UInt16_color.type = Type::FullType{ UInt16x2Type.name };
     PixelExportColor_UInt16x2_UInt16_index.name = "index"_c;
     PixelExportColor_UInt16x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_UInt16x2_UInt16_index.literal = true;
+    PixelExportColor_UInt16x2_UInt16_index.type.literal = true;
     PixelExportColor_UInt16x2_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x2_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x2_UInt16.parameters = PixelExportColor_UInt16x2_UInt16_args;
@@ -13725,7 +13457,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x3_Int32_color.type = Type::FullType{ UInt16x3Type.name };
     PixelExportColor_UInt16x3_Int32_index.name = "index"_c;
     PixelExportColor_UInt16x3_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_UInt16x3_Int32_index.literal = true;
+    PixelExportColor_UInt16x3_Int32_index.type.literal = true;
     PixelExportColor_UInt16x3_Int32.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x3_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x3_Int32.parameters = PixelExportColor_UInt16x3_Int32_args;
@@ -13738,7 +13470,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x3_UInt32_color.type = Type::FullType{ UInt16x3Type.name };
     PixelExportColor_UInt16x3_UInt32_index.name = "index"_c;
     PixelExportColor_UInt16x3_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_UInt16x3_UInt32_index.literal = true;
+    PixelExportColor_UInt16x3_UInt32_index.type.literal = true;
     PixelExportColor_UInt16x3_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x3_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x3_UInt32.parameters = PixelExportColor_UInt16x3_UInt32_args;
@@ -13751,7 +13483,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x3_Int16_color.type = Type::FullType{ UInt16x3Type.name };
     PixelExportColor_UInt16x3_Int16_index.name = "index"_c;
     PixelExportColor_UInt16x3_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_UInt16x3_Int16_index.literal = true;
+    PixelExportColor_UInt16x3_Int16_index.type.literal = true;
     PixelExportColor_UInt16x3_Int16.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x3_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x3_Int16.parameters = PixelExportColor_UInt16x3_Int16_args;
@@ -13764,7 +13496,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x3_UInt16_color.type = Type::FullType{ UInt16x3Type.name };
     PixelExportColor_UInt16x3_UInt16_index.name = "index"_c;
     PixelExportColor_UInt16x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_UInt16x3_UInt16_index.literal = true;
+    PixelExportColor_UInt16x3_UInt16_index.type.literal = true;
     PixelExportColor_UInt16x3_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x3_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x3_UInt16.parameters = PixelExportColor_UInt16x3_UInt16_args;
@@ -13777,7 +13509,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x4_Int32_color.type = Type::FullType{ UInt16x4Type.name };
     PixelExportColor_UInt16x4_Int32_index.name = "index"_c;
     PixelExportColor_UInt16x4_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_UInt16x4_Int32_index.literal = true;
+    PixelExportColor_UInt16x4_Int32_index.type.literal = true;
     PixelExportColor_UInt16x4_Int32.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x4_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x4_Int32.parameters = PixelExportColor_UInt16x4_Int32_args;
@@ -13790,7 +13522,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x4_UInt32_color.type = Type::FullType{ UInt16x4Type.name };
     PixelExportColor_UInt16x4_UInt32_index.name = "index"_c;
     PixelExportColor_UInt16x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_UInt16x4_UInt32_index.literal = true;
+    PixelExportColor_UInt16x4_UInt32_index.type.literal = true;
     PixelExportColor_UInt16x4_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x4_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x4_UInt32.parameters = PixelExportColor_UInt16x4_UInt32_args;
@@ -13803,7 +13535,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x4_Int16_color.type = Type::FullType{ UInt16x4Type.name };
     PixelExportColor_UInt16x4_Int16_index.name = "index"_c;
     PixelExportColor_UInt16x4_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_UInt16x4_Int16_index.literal = true;
+    PixelExportColor_UInt16x4_Int16_index.type.literal = true;
     PixelExportColor_UInt16x4_Int16.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x4_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x4_Int16.parameters = PixelExportColor_UInt16x4_Int16_args;
@@ -13816,7 +13548,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x4_UInt16_color.type = Type::FullType{ UInt16x4Type.name };
     PixelExportColor_UInt16x4_UInt16_index.name = "index"_c;
     PixelExportColor_UInt16x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_UInt16x4_UInt16_index.literal = true;
+    PixelExportColor_UInt16x4_UInt16_index.type.literal = true;
     PixelExportColor_UInt16x4_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x4_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x4_UInt16.parameters = PixelExportColor_UInt16x4_UInt16_args;
@@ -13903,243 +13635,243 @@ void SetupIntrinsics()
     Symbol::Resolved(&SubgroupGetFirstActiveThread)->returnTypeSymbol = &UInt32Type;
 
     /// subgroupBroadcastFirstActiveThread with Float32
-    BroadcastFirstActiveThread_value.name = "value"_c;
-    BroadcastFirstActiveThread_value.type = Type::FullType{ Float32Type.name };
+    SubgroupBroadcastFirstActiveThread_Float32_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Float32_value.type = Type::FullType{ Float32Type.name };
     SubgroupBroadcastFirstActiveThread_Float32.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Float32.name = "subgroupBroadcastFirstActiveThread"_c;
     SubgroupBroadcastFirstActiveThread_Float32.returnType = Type::FullType { Float32Type.name };
     SubgroupBroadcastFirstActiveThread_Float32.parameters = SubgroupBroadcastFirstActiveThread_Float32_args;
-    Symbol::Resolved(&BroadcastFirstActiveThread_value)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float32_value)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float32)->returnTypeSymbol = &Float32Type;
 
     /// subgroupBroadcastFirstActiveThread with Float32x2
-    BroadcastFirstActiveThread_value.name = "value"_c;
-    BroadcastFirstActiveThread_value.type = Type::FullType{ Float32x2Type.name };
+    SubgroupBroadcastFirstActiveThread_Float32x2_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Float32x2_value.type = Type::FullType{ Float32x2Type.name };
     SubgroupBroadcastFirstActiveThread_Float32x2.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Float32x2.name = "subgroupBroadcastFirstActiveThread"_c;
     SubgroupBroadcastFirstActiveThread_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     SubgroupBroadcastFirstActiveThread_Float32x2.parameters = SubgroupBroadcastFirstActiveThread_Float32x2_args;
-    Symbol::Resolved(&BroadcastFirstActiveThread_value)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float32x2_value)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
     /// subgroupBroadcastFirstActiveThread with Float32x3
-    BroadcastFirstActiveThread_value.name = "value"_c;
-    BroadcastFirstActiveThread_value.type = Type::FullType{ Float32x3Type.name };
+    SubgroupBroadcastFirstActiveThread_Float32x3_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Float32x3_value.type = Type::FullType{ Float32x3Type.name };
     SubgroupBroadcastFirstActiveThread_Float32x3.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Float32x3.name = "subgroupBroadcastFirstActiveThread"_c;
     SubgroupBroadcastFirstActiveThread_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     SubgroupBroadcastFirstActiveThread_Float32x3.parameters = SubgroupBroadcastFirstActiveThread_Float32x3_args;
-    Symbol::Resolved(&BroadcastFirstActiveThread_value)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float32x3_value)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
     /// subgroupBroadcastFirstActiveThread with Float32x4
-    BroadcastFirstActiveThread_value.name = "value"_c;
-    BroadcastFirstActiveThread_value.type = Type::FullType{ Float32x4Type.name };
+    SubgroupBroadcastFirstActiveThread_Float32x4_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
     SubgroupBroadcastFirstActiveThread_Float32x4.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Float32x4.name = "subgroupBroadcastFirstActiveThread"_c;
     SubgroupBroadcastFirstActiveThread_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     SubgroupBroadcastFirstActiveThread_Float32x4.parameters = SubgroupBroadcastFirstActiveThread_Float32x4_args;
-    Symbol::Resolved(&BroadcastFirstActiveThread_value)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float32x4_value)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
     /// subgroupBroadcastFirstActiveThread with Float16
-    BroadcastFirstActiveThread_value.name = "value"_c;
-    BroadcastFirstActiveThread_value.type = Type::FullType{ Float16Type.name };
+    SubgroupBroadcastFirstActiveThread_Float16_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Float16_value.type = Type::FullType{ Float16Type.name };
     SubgroupBroadcastFirstActiveThread_Float16.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Float16.name = "subgroupBroadcastFirstActiveThread"_c;
     SubgroupBroadcastFirstActiveThread_Float16.returnType = Type::FullType { Float16Type.name };
     SubgroupBroadcastFirstActiveThread_Float16.parameters = SubgroupBroadcastFirstActiveThread_Float16_args;
-    Symbol::Resolved(&BroadcastFirstActiveThread_value)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16_value)->typeSymbol = &Float16Type;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16)->returnTypeSymbol = &Float16Type;
 
     /// subgroupBroadcastFirstActiveThread with Float16x2
-    BroadcastFirstActiveThread_value.name = "value"_c;
-    BroadcastFirstActiveThread_value.type = Type::FullType{ Float16x2Type.name };
+    SubgroupBroadcastFirstActiveThread_Float16x2_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Float16x2_value.type = Type::FullType{ Float16x2Type.name };
     SubgroupBroadcastFirstActiveThread_Float16x2.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Float16x2.name = "subgroupBroadcastFirstActiveThread"_c;
     SubgroupBroadcastFirstActiveThread_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     SubgroupBroadcastFirstActiveThread_Float16x2.parameters = SubgroupBroadcastFirstActiveThread_Float16x2_args;
-    Symbol::Resolved(&BroadcastFirstActiveThread_value)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16x2_value)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
     /// subgroupBroadcastFirstActiveThread with Float16x3
-    BroadcastFirstActiveThread_value.name = "value"_c;
-    BroadcastFirstActiveThread_value.type = Type::FullType{ Float16x3Type.name };
+    SubgroupBroadcastFirstActiveThread_Float16x3_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Float16x3_value.type = Type::FullType{ Float16x3Type.name };
     SubgroupBroadcastFirstActiveThread_Float16x3.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Float16x3.name = "subgroupBroadcastFirstActiveThread"_c;
     SubgroupBroadcastFirstActiveThread_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     SubgroupBroadcastFirstActiveThread_Float16x3.parameters = SubgroupBroadcastFirstActiveThread_Float16x3_args;
-    Symbol::Resolved(&BroadcastFirstActiveThread_value)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16x3_value)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
     /// subgroupBroadcastFirstActiveThread with Float16x4
-    BroadcastFirstActiveThread_value.name = "value"_c;
-    BroadcastFirstActiveThread_value.type = Type::FullType{ Float16x4Type.name };
+    SubgroupBroadcastFirstActiveThread_Float16x4_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Float16x4_value.type = Type::FullType{ Float16x4Type.name };
     SubgroupBroadcastFirstActiveThread_Float16x4.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Float16x4.name = "subgroupBroadcastFirstActiveThread"_c;
     SubgroupBroadcastFirstActiveThread_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     SubgroupBroadcastFirstActiveThread_Float16x4.parameters = SubgroupBroadcastFirstActiveThread_Float16x4_args;
-    Symbol::Resolved(&BroadcastFirstActiveThread_value)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16x4_value)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
     /// subgroupBroadcastFirstActiveThread with Int32
-    BroadcastFirstActiveThread_value.name = "value"_c;
-    BroadcastFirstActiveThread_value.type = Type::FullType{ Int32Type.name };
+    SubgroupBroadcastFirstActiveThread_Int32_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Int32_value.type = Type::FullType{ Int32Type.name };
     SubgroupBroadcastFirstActiveThread_Int32.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Int32.name = "subgroupBroadcastFirstActiveThread"_c;
     SubgroupBroadcastFirstActiveThread_Int32.returnType = Type::FullType { Int32Type.name };
     SubgroupBroadcastFirstActiveThread_Int32.parameters = SubgroupBroadcastFirstActiveThread_Int32_args;
-    Symbol::Resolved(&BroadcastFirstActiveThread_value)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32_value)->typeSymbol = &Int32Type;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32)->returnTypeSymbol = &Int32Type;
 
     /// subgroupBroadcastFirstActiveThread with Int32x2
-    BroadcastFirstActiveThread_value.name = "value"_c;
-    BroadcastFirstActiveThread_value.type = Type::FullType{ Int32x2Type.name };
+    SubgroupBroadcastFirstActiveThread_Int32x2_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
     SubgroupBroadcastFirstActiveThread_Int32x2.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Int32x2.name = "subgroupBroadcastFirstActiveThread"_c;
     SubgroupBroadcastFirstActiveThread_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     SubgroupBroadcastFirstActiveThread_Int32x2.parameters = SubgroupBroadcastFirstActiveThread_Int32x2_args;
-    Symbol::Resolved(&BroadcastFirstActiveThread_value)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32x2_value)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
     /// subgroupBroadcastFirstActiveThread with Int32x3
-    BroadcastFirstActiveThread_value.name = "value"_c;
-    BroadcastFirstActiveThread_value.type = Type::FullType{ Int32x3Type.name };
+    SubgroupBroadcastFirstActiveThread_Int32x3_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
     SubgroupBroadcastFirstActiveThread_Int32x3.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Int32x3.name = "subgroupBroadcastFirstActiveThread"_c;
     SubgroupBroadcastFirstActiveThread_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     SubgroupBroadcastFirstActiveThread_Int32x3.parameters = SubgroupBroadcastFirstActiveThread_Int32x3_args;
-    Symbol::Resolved(&BroadcastFirstActiveThread_value)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32x3_value)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
     /// subgroupBroadcastFirstActiveThread with Int32x4
-    BroadcastFirstActiveThread_value.name = "value"_c;
-    BroadcastFirstActiveThread_value.type = Type::FullType{ Int32x4Type.name };
+    SubgroupBroadcastFirstActiveThread_Int32x4_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
     SubgroupBroadcastFirstActiveThread_Int32x4.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Int32x4.name = "subgroupBroadcastFirstActiveThread"_c;
     SubgroupBroadcastFirstActiveThread_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     SubgroupBroadcastFirstActiveThread_Int32x4.parameters = SubgroupBroadcastFirstActiveThread_Int32x4_args;
-    Symbol::Resolved(&BroadcastFirstActiveThread_value)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32x4_value)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
     /// subgroupBroadcastFirstActiveThread with Int16
-    BroadcastFirstActiveThread_value.name = "value"_c;
-    BroadcastFirstActiveThread_value.type = Type::FullType{ Int16Type.name };
+    SubgroupBroadcastFirstActiveThread_Int16_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Int16_value.type = Type::FullType{ Int16Type.name };
     SubgroupBroadcastFirstActiveThread_Int16.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Int16.name = "subgroupBroadcastFirstActiveThread"_c;
     SubgroupBroadcastFirstActiveThread_Int16.returnType = Type::FullType { Int16Type.name };
     SubgroupBroadcastFirstActiveThread_Int16.parameters = SubgroupBroadcastFirstActiveThread_Int16_args;
-    Symbol::Resolved(&BroadcastFirstActiveThread_value)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16_value)->typeSymbol = &Int16Type;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16)->returnTypeSymbol = &Int16Type;
 
     /// subgroupBroadcastFirstActiveThread with Int16x2
-    BroadcastFirstActiveThread_value.name = "value"_c;
-    BroadcastFirstActiveThread_value.type = Type::FullType{ Int16x2Type.name };
+    SubgroupBroadcastFirstActiveThread_Int16x2_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
     SubgroupBroadcastFirstActiveThread_Int16x2.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Int16x2.name = "subgroupBroadcastFirstActiveThread"_c;
     SubgroupBroadcastFirstActiveThread_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     SubgroupBroadcastFirstActiveThread_Int16x2.parameters = SubgroupBroadcastFirstActiveThread_Int16x2_args;
-    Symbol::Resolved(&BroadcastFirstActiveThread_value)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16x2_value)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
     /// subgroupBroadcastFirstActiveThread with Int16x3
-    BroadcastFirstActiveThread_value.name = "value"_c;
-    BroadcastFirstActiveThread_value.type = Type::FullType{ Int16x3Type.name };
+    SubgroupBroadcastFirstActiveThread_Int16x3_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
     SubgroupBroadcastFirstActiveThread_Int16x3.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Int16x3.name = "subgroupBroadcastFirstActiveThread"_c;
     SubgroupBroadcastFirstActiveThread_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     SubgroupBroadcastFirstActiveThread_Int16x3.parameters = SubgroupBroadcastFirstActiveThread_Int16x3_args;
-    Symbol::Resolved(&BroadcastFirstActiveThread_value)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16x3_value)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
     /// subgroupBroadcastFirstActiveThread with Int16x4
-    BroadcastFirstActiveThread_value.name = "value"_c;
-    BroadcastFirstActiveThread_value.type = Type::FullType{ Int16x4Type.name };
+    SubgroupBroadcastFirstActiveThread_Int16x4_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
     SubgroupBroadcastFirstActiveThread_Int16x4.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_Int16x4.name = "subgroupBroadcastFirstActiveThread"_c;
     SubgroupBroadcastFirstActiveThread_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     SubgroupBroadcastFirstActiveThread_Int16x4.parameters = SubgroupBroadcastFirstActiveThread_Int16x4_args;
-    Symbol::Resolved(&BroadcastFirstActiveThread_value)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16x4_value)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
     /// subgroupBroadcastFirstActiveThread with UInt32
-    BroadcastFirstActiveThread_value.name = "value"_c;
-    BroadcastFirstActiveThread_value.type = Type::FullType{ UInt32Type.name };
+    SubgroupBroadcastFirstActiveThread_UInt32_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_UInt32_value.type = Type::FullType{ UInt32Type.name };
     SubgroupBroadcastFirstActiveThread_UInt32.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_UInt32.name = "subgroupBroadcastFirstActiveThread"_c;
     SubgroupBroadcastFirstActiveThread_UInt32.returnType = Type::FullType { UInt32Type.name };
     SubgroupBroadcastFirstActiveThread_UInt32.parameters = SubgroupBroadcastFirstActiveThread_UInt32_args;
-    Symbol::Resolved(&BroadcastFirstActiveThread_value)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32_value)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// subgroupBroadcastFirstActiveThread with UInt32x2
-    BroadcastFirstActiveThread_value.name = "value"_c;
-    BroadcastFirstActiveThread_value.type = Type::FullType{ UInt32x2Type.name };
+    SubgroupBroadcastFirstActiveThread_UInt32x2_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
     SubgroupBroadcastFirstActiveThread_UInt32x2.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_UInt32x2.name = "subgroupBroadcastFirstActiveThread"_c;
     SubgroupBroadcastFirstActiveThread_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
     SubgroupBroadcastFirstActiveThread_UInt32x2.parameters = SubgroupBroadcastFirstActiveThread_UInt32x2_args;
-    Symbol::Resolved(&BroadcastFirstActiveThread_value)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32x2_value)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
     /// subgroupBroadcastFirstActiveThread with UInt32x3
-    BroadcastFirstActiveThread_value.name = "value"_c;
-    BroadcastFirstActiveThread_value.type = Type::FullType{ UInt32x3Type.name };
+    SubgroupBroadcastFirstActiveThread_UInt32x3_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
     SubgroupBroadcastFirstActiveThread_UInt32x3.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_UInt32x3.name = "subgroupBroadcastFirstActiveThread"_c;
     SubgroupBroadcastFirstActiveThread_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
     SubgroupBroadcastFirstActiveThread_UInt32x3.parameters = SubgroupBroadcastFirstActiveThread_UInt32x3_args;
-    Symbol::Resolved(&BroadcastFirstActiveThread_value)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32x3_value)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
     /// subgroupBroadcastFirstActiveThread with UInt32x4
-    BroadcastFirstActiveThread_value.name = "value"_c;
-    BroadcastFirstActiveThread_value.type = Type::FullType{ UInt32x4Type.name };
+    SubgroupBroadcastFirstActiveThread_UInt32x4_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
     SubgroupBroadcastFirstActiveThread_UInt32x4.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_UInt32x4.name = "subgroupBroadcastFirstActiveThread"_c;
     SubgroupBroadcastFirstActiveThread_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
     SubgroupBroadcastFirstActiveThread_UInt32x4.parameters = SubgroupBroadcastFirstActiveThread_UInt32x4_args;
-    Symbol::Resolved(&BroadcastFirstActiveThread_value)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32x4_value)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
     /// subgroupBroadcastFirstActiveThread with UInt16
-    BroadcastFirstActiveThread_value.name = "value"_c;
-    BroadcastFirstActiveThread_value.type = Type::FullType{ UInt16Type.name };
+    SubgroupBroadcastFirstActiveThread_UInt16_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_UInt16_value.type = Type::FullType{ UInt16Type.name };
     SubgroupBroadcastFirstActiveThread_UInt16.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_UInt16.name = "subgroupBroadcastFirstActiveThread"_c;
     SubgroupBroadcastFirstActiveThread_UInt16.returnType = Type::FullType { UInt16Type.name };
     SubgroupBroadcastFirstActiveThread_UInt16.parameters = SubgroupBroadcastFirstActiveThread_UInt16_args;
-    Symbol::Resolved(&BroadcastFirstActiveThread_value)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt16_value)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// subgroupBroadcastFirstActiveThread with UInt16x2
-    BroadcastFirstActiveThread_value.name = "value"_c;
-    BroadcastFirstActiveThread_value.type = Type::FullType{ UInt16x2Type.name };
+    SubgroupBroadcastFirstActiveThread_UInt16x2_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
     SubgroupBroadcastFirstActiveThread_UInt16x2.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_UInt16x2.name = "subgroupBroadcastFirstActiveThread"_c;
     SubgroupBroadcastFirstActiveThread_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
     SubgroupBroadcastFirstActiveThread_UInt16x2.parameters = SubgroupBroadcastFirstActiveThread_UInt16x2_args;
-    Symbol::Resolved(&BroadcastFirstActiveThread_value)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt16x2_value)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
     /// subgroupBroadcastFirstActiveThread with UInt16x3
-    BroadcastFirstActiveThread_value.name = "value"_c;
-    BroadcastFirstActiveThread_value.type = Type::FullType{ UInt16x3Type.name };
+    SubgroupBroadcastFirstActiveThread_UInt16x3_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
     SubgroupBroadcastFirstActiveThread_UInt16x3.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_UInt16x3.name = "subgroupBroadcastFirstActiveThread"_c;
     SubgroupBroadcastFirstActiveThread_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
     SubgroupBroadcastFirstActiveThread_UInt16x3.parameters = SubgroupBroadcastFirstActiveThread_UInt16x3_args;
-    Symbol::Resolved(&BroadcastFirstActiveThread_value)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt16x3_value)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
     /// subgroupBroadcastFirstActiveThread with UInt16x4
-    BroadcastFirstActiveThread_value.name = "value"_c;
-    BroadcastFirstActiveThread_value.type = Type::FullType{ UInt16x4Type.name };
+    SubgroupBroadcastFirstActiveThread_UInt16x4_value.name = "value"_c;
+    SubgroupBroadcastFirstActiveThread_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
     SubgroupBroadcastFirstActiveThread_UInt16x4.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
     SubgroupBroadcastFirstActiveThread_UInt16x4.name = "subgroupBroadcastFirstActiveThread"_c;
     SubgroupBroadcastFirstActiveThread_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
     SubgroupBroadcastFirstActiveThread_UInt16x4.parameters = SubgroupBroadcastFirstActiveThread_UInt16x4_args;
-    Symbol::Resolved(&BroadcastFirstActiveThread_value)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt16x4_value)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&SubgroupBroadcastFirstActiveThread_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
     /// subgroupBallot with Bool8
@@ -14197,7 +13929,7 @@ void SetupIntrinsics()
     SubgroupBallotBit_mask.type = Type::FullType{ UInt32x4Type.name };
     SubgroupBallotBit_index.name = "index"_c;
     SubgroupBallotBit_index.type = Type::FullType{ UInt32Type.name };
-    SubgroupBallotBit_index.literal = true;
+    SubgroupBallotBit_index.type.literal = true;
     SubgroupBallotBit.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupBallotBit.name = "subgroupBallotBit"_c;
     SubgroupBallotBit.returnType = Type::FullType { UInt32Type.name };
@@ -14932,7 +14664,7 @@ void SetupIntrinsics()
     AtomicLoad_UInt32_ptr.type.AddModifier(Type::FullType::Modifier::Pointer);
     AtomicLoad_UInt32_semantics.name = "semantics"_c;
     AtomicLoad_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicLoad_UInt32_semantics.literal = true;
+    AtomicLoad_UInt32_semantics.type.literal = true;
     AtomicLoad_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicLoad_UInt32.name = "atomicLoad"_c;
     AtomicLoad_UInt32.returnType = Type::FullType { UInt32Type.name };
@@ -14947,7 +14679,7 @@ void SetupIntrinsics()
     AtomicIncrement_UInt32_ptr.type.AddModifier(Type::FullType::Modifier::Pointer);
     AtomicIncrement_UInt32_semantics.name = "semantics"_c;
     AtomicIncrement_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicIncrement_UInt32_semantics.literal = true;
+    AtomicIncrement_UInt32_semantics.type.literal = true;
     AtomicIncrement_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicIncrement_UInt32.name = "atomicIncrement"_c;
     AtomicIncrement_UInt32.returnType = Type::FullType { UInt32Type.name };
@@ -14962,7 +14694,7 @@ void SetupIntrinsics()
     AtomicDecrement_UInt32_ptr.type.AddModifier(Type::FullType::Modifier::Pointer);
     AtomicDecrement_UInt32_semantics.name = "semantics"_c;
     AtomicDecrement_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicDecrement_UInt32_semantics.literal = true;
+    AtomicDecrement_UInt32_semantics.type.literal = true;
     AtomicDecrement_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicDecrement_UInt32.name = "atomicDecrement"_c;
     AtomicDecrement_UInt32.returnType = Type::FullType { UInt32Type.name };
@@ -14977,7 +14709,7 @@ void SetupIntrinsics()
     AtomicLoad_Int32_ptr.type.AddModifier(Type::FullType::Modifier::Pointer);
     AtomicLoad_Int32_semantics.name = "semantics"_c;
     AtomicLoad_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicLoad_Int32_semantics.literal = true;
+    AtomicLoad_Int32_semantics.type.literal = true;
     AtomicLoad_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicLoad_Int32.name = "atomicLoad"_c;
     AtomicLoad_Int32.returnType = Type::FullType { Int32Type.name };
@@ -14992,7 +14724,7 @@ void SetupIntrinsics()
     AtomicIncrement_Int32_ptr.type.AddModifier(Type::FullType::Modifier::Pointer);
     AtomicIncrement_Int32_semantics.name = "semantics"_c;
     AtomicIncrement_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicIncrement_Int32_semantics.literal = true;
+    AtomicIncrement_Int32_semantics.type.literal = true;
     AtomicIncrement_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicIncrement_Int32.name = "atomicIncrement"_c;
     AtomicIncrement_Int32.returnType = Type::FullType { Int32Type.name };
@@ -15007,7 +14739,7 @@ void SetupIntrinsics()
     AtomicDecrement_Int32_ptr.type.AddModifier(Type::FullType::Modifier::Pointer);
     AtomicDecrement_Int32_semantics.name = "semantics"_c;
     AtomicDecrement_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicDecrement_Int32_semantics.literal = true;
+    AtomicDecrement_Int32_semantics.type.literal = true;
     AtomicDecrement_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicDecrement_Int32.name = "atomicDecrement"_c;
     AtomicDecrement_Int32.returnType = Type::FullType { Int32Type.name };
@@ -15022,7 +14754,7 @@ void SetupIntrinsics()
     AtomicLoad_UInt16_ptr.type.AddModifier(Type::FullType::Modifier::Pointer);
     AtomicLoad_UInt16_semantics.name = "semantics"_c;
     AtomicLoad_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicLoad_UInt16_semantics.literal = true;
+    AtomicLoad_UInt16_semantics.type.literal = true;
     AtomicLoad_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicLoad_UInt16.name = "atomicLoad"_c;
     AtomicLoad_UInt16.returnType = Type::FullType { UInt16Type.name };
@@ -15037,7 +14769,7 @@ void SetupIntrinsics()
     AtomicIncrement_UInt16_ptr.type.AddModifier(Type::FullType::Modifier::Pointer);
     AtomicIncrement_UInt16_semantics.name = "semantics"_c;
     AtomicIncrement_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicIncrement_UInt16_semantics.literal = true;
+    AtomicIncrement_UInt16_semantics.type.literal = true;
     AtomicIncrement_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicIncrement_UInt16.name = "atomicIncrement"_c;
     AtomicIncrement_UInt16.returnType = Type::FullType { UInt16Type.name };
@@ -15052,7 +14784,7 @@ void SetupIntrinsics()
     AtomicDecrement_UInt16_ptr.type.AddModifier(Type::FullType::Modifier::Pointer);
     AtomicDecrement_UInt16_semantics.name = "semantics"_c;
     AtomicDecrement_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicDecrement_UInt16_semantics.literal = true;
+    AtomicDecrement_UInt16_semantics.type.literal = true;
     AtomicDecrement_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicDecrement_UInt16.name = "atomicDecrement"_c;
     AtomicDecrement_UInt16.returnType = Type::FullType { UInt16Type.name };
@@ -15067,7 +14799,7 @@ void SetupIntrinsics()
     AtomicLoad_Int16_ptr.type.AddModifier(Type::FullType::Modifier::Pointer);
     AtomicLoad_Int16_semantics.name = "semantics"_c;
     AtomicLoad_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicLoad_Int16_semantics.literal = true;
+    AtomicLoad_Int16_semantics.type.literal = true;
     AtomicLoad_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicLoad_Int16.name = "atomicLoad"_c;
     AtomicLoad_Int16.returnType = Type::FullType { Int16Type.name };
@@ -15082,7 +14814,7 @@ void SetupIntrinsics()
     AtomicIncrement_Int16_ptr.type.AddModifier(Type::FullType::Modifier::Pointer);
     AtomicIncrement_Int16_semantics.name = "semantics"_c;
     AtomicIncrement_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicIncrement_Int16_semantics.literal = true;
+    AtomicIncrement_Int16_semantics.type.literal = true;
     AtomicIncrement_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicIncrement_Int16.name = "atomicIncrement"_c;
     AtomicIncrement_Int16.returnType = Type::FullType { Int16Type.name };
@@ -15097,7 +14829,7 @@ void SetupIntrinsics()
     AtomicDecrement_Int16_ptr.type.AddModifier(Type::FullType::Modifier::Pointer);
     AtomicDecrement_Int16_semantics.name = "semantics"_c;
     AtomicDecrement_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicDecrement_Int16_semantics.literal = true;
+    AtomicDecrement_Int16_semantics.type.literal = true;
     AtomicDecrement_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicDecrement_Int16.name = "atomicDecrement"_c;
     AtomicDecrement_Int16.returnType = Type::FullType { Int16Type.name };
@@ -15114,7 +14846,7 @@ void SetupIntrinsics()
     AtomicStore_UInt32_value.type = Type::FullType{ UInt32Type.name };
     AtomicStore_UInt32_semantics.name = "semantics"_c;
     AtomicStore_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicStore_UInt32_semantics.literal = true;
+    AtomicStore_UInt32_semantics.type.literal = true;
     AtomicStore_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicStore_UInt32.name = "atomicStore"_c;
     AtomicStore_UInt32.returnType = Type::FullType { UInt32Type.name };
@@ -15132,7 +14864,7 @@ void SetupIntrinsics()
     AtomicExchange_UInt32_value.type = Type::FullType{ UInt32Type.name };
     AtomicExchange_UInt32_semantics.name = "semantics"_c;
     AtomicExchange_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicExchange_UInt32_semantics.literal = true;
+    AtomicExchange_UInt32_semantics.type.literal = true;
     AtomicExchange_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicExchange_UInt32.name = "atomicExchange"_c;
     AtomicExchange_UInt32.returnType = Type::FullType { UInt32Type.name };
@@ -15150,7 +14882,7 @@ void SetupIntrinsics()
     AtomicAdd_UInt32_value.type = Type::FullType{ UInt32Type.name };
     AtomicAdd_UInt32_semantics.name = "semantics"_c;
     AtomicAdd_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAdd_UInt32_semantics.literal = true;
+    AtomicAdd_UInt32_semantics.type.literal = true;
     AtomicAdd_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicAdd_UInt32.name = "atomicAdd"_c;
     AtomicAdd_UInt32.returnType = Type::FullType { UInt32Type.name };
@@ -15168,7 +14900,7 @@ void SetupIntrinsics()
     AtomicSubtract_UInt32_value.type = Type::FullType{ UInt32Type.name };
     AtomicSubtract_UInt32_semantics.name = "semantics"_c;
     AtomicSubtract_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicSubtract_UInt32_semantics.literal = true;
+    AtomicSubtract_UInt32_semantics.type.literal = true;
     AtomicSubtract_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicSubtract_UInt32.name = "atomicSubtract"_c;
     AtomicSubtract_UInt32.returnType = Type::FullType { UInt32Type.name };
@@ -15186,7 +14918,7 @@ void SetupIntrinsics()
     AtomicAnd_UInt32_value.type = Type::FullType{ UInt32Type.name };
     AtomicAnd_UInt32_semantics.name = "semantics"_c;
     AtomicAnd_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAnd_UInt32_semantics.literal = true;
+    AtomicAnd_UInt32_semantics.type.literal = true;
     AtomicAnd_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicAnd_UInt32.name = "atomicAnd"_c;
     AtomicAnd_UInt32.returnType = Type::FullType { UInt32Type.name };
@@ -15204,7 +14936,7 @@ void SetupIntrinsics()
     AtomicOr_UInt32_value.type = Type::FullType{ UInt32Type.name };
     AtomicOr_UInt32_semantics.name = "semantics"_c;
     AtomicOr_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicOr_UInt32_semantics.literal = true;
+    AtomicOr_UInt32_semantics.type.literal = true;
     AtomicOr_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicOr_UInt32.name = "atomicOr"_c;
     AtomicOr_UInt32.returnType = Type::FullType { UInt32Type.name };
@@ -15222,7 +14954,7 @@ void SetupIntrinsics()
     AtomicXor_UInt32_value.type = Type::FullType{ UInt32Type.name };
     AtomicXor_UInt32_semantics.name = "semantics"_c;
     AtomicXor_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicXor_UInt32_semantics.literal = true;
+    AtomicXor_UInt32_semantics.type.literal = true;
     AtomicXor_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicXor_UInt32.name = "atomicXor"_c;
     AtomicXor_UInt32.returnType = Type::FullType { UInt32Type.name };
@@ -15240,7 +14972,7 @@ void SetupIntrinsics()
     AtomicStore_Int32_value.type = Type::FullType{ Int32Type.name };
     AtomicStore_Int32_semantics.name = "semantics"_c;
     AtomicStore_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicStore_Int32_semantics.literal = true;
+    AtomicStore_Int32_semantics.type.literal = true;
     AtomicStore_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicStore_Int32.name = "atomicStore"_c;
     AtomicStore_Int32.returnType = Type::FullType { Int32Type.name };
@@ -15258,7 +14990,7 @@ void SetupIntrinsics()
     AtomicExchange_Int32_value.type = Type::FullType{ Int32Type.name };
     AtomicExchange_Int32_semantics.name = "semantics"_c;
     AtomicExchange_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicExchange_Int32_semantics.literal = true;
+    AtomicExchange_Int32_semantics.type.literal = true;
     AtomicExchange_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicExchange_Int32.name = "atomicExchange"_c;
     AtomicExchange_Int32.returnType = Type::FullType { Int32Type.name };
@@ -15276,7 +15008,7 @@ void SetupIntrinsics()
     AtomicAdd_Int32_value.type = Type::FullType{ Int32Type.name };
     AtomicAdd_Int32_semantics.name = "semantics"_c;
     AtomicAdd_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAdd_Int32_semantics.literal = true;
+    AtomicAdd_Int32_semantics.type.literal = true;
     AtomicAdd_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicAdd_Int32.name = "atomicAdd"_c;
     AtomicAdd_Int32.returnType = Type::FullType { Int32Type.name };
@@ -15294,7 +15026,7 @@ void SetupIntrinsics()
     AtomicSubtract_Int32_value.type = Type::FullType{ Int32Type.name };
     AtomicSubtract_Int32_semantics.name = "semantics"_c;
     AtomicSubtract_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicSubtract_Int32_semantics.literal = true;
+    AtomicSubtract_Int32_semantics.type.literal = true;
     AtomicSubtract_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicSubtract_Int32.name = "atomicSubtract"_c;
     AtomicSubtract_Int32.returnType = Type::FullType { Int32Type.name };
@@ -15312,7 +15044,7 @@ void SetupIntrinsics()
     AtomicAnd_Int32_value.type = Type::FullType{ Int32Type.name };
     AtomicAnd_Int32_semantics.name = "semantics"_c;
     AtomicAnd_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAnd_Int32_semantics.literal = true;
+    AtomicAnd_Int32_semantics.type.literal = true;
     AtomicAnd_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicAnd_Int32.name = "atomicAnd"_c;
     AtomicAnd_Int32.returnType = Type::FullType { Int32Type.name };
@@ -15330,7 +15062,7 @@ void SetupIntrinsics()
     AtomicOr_Int32_value.type = Type::FullType{ Int32Type.name };
     AtomicOr_Int32_semantics.name = "semantics"_c;
     AtomicOr_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicOr_Int32_semantics.literal = true;
+    AtomicOr_Int32_semantics.type.literal = true;
     AtomicOr_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicOr_Int32.name = "atomicOr"_c;
     AtomicOr_Int32.returnType = Type::FullType { Int32Type.name };
@@ -15348,7 +15080,7 @@ void SetupIntrinsics()
     AtomicXor_Int32_value.type = Type::FullType{ Int32Type.name };
     AtomicXor_Int32_semantics.name = "semantics"_c;
     AtomicXor_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicXor_Int32_semantics.literal = true;
+    AtomicXor_Int32_semantics.type.literal = true;
     AtomicXor_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicXor_Int32.name = "atomicXor"_c;
     AtomicXor_Int32.returnType = Type::FullType { Int32Type.name };
@@ -15366,7 +15098,7 @@ void SetupIntrinsics()
     AtomicStore_UInt16_value.type = Type::FullType{ UInt16Type.name };
     AtomicStore_UInt16_semantics.name = "semantics"_c;
     AtomicStore_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicStore_UInt16_semantics.literal = true;
+    AtomicStore_UInt16_semantics.type.literal = true;
     AtomicStore_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicStore_UInt16.name = "atomicStore"_c;
     AtomicStore_UInt16.returnType = Type::FullType { UInt16Type.name };
@@ -15384,7 +15116,7 @@ void SetupIntrinsics()
     AtomicExchange_UInt16_value.type = Type::FullType{ UInt16Type.name };
     AtomicExchange_UInt16_semantics.name = "semantics"_c;
     AtomicExchange_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicExchange_UInt16_semantics.literal = true;
+    AtomicExchange_UInt16_semantics.type.literal = true;
     AtomicExchange_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicExchange_UInt16.name = "atomicExchange"_c;
     AtomicExchange_UInt16.returnType = Type::FullType { UInt16Type.name };
@@ -15402,7 +15134,7 @@ void SetupIntrinsics()
     AtomicAdd_UInt16_value.type = Type::FullType{ UInt16Type.name };
     AtomicAdd_UInt16_semantics.name = "semantics"_c;
     AtomicAdd_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAdd_UInt16_semantics.literal = true;
+    AtomicAdd_UInt16_semantics.type.literal = true;
     AtomicAdd_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicAdd_UInt16.name = "atomicAdd"_c;
     AtomicAdd_UInt16.returnType = Type::FullType { UInt16Type.name };
@@ -15420,7 +15152,7 @@ void SetupIntrinsics()
     AtomicSubtract_UInt16_value.type = Type::FullType{ UInt16Type.name };
     AtomicSubtract_UInt16_semantics.name = "semantics"_c;
     AtomicSubtract_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicSubtract_UInt16_semantics.literal = true;
+    AtomicSubtract_UInt16_semantics.type.literal = true;
     AtomicSubtract_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicSubtract_UInt16.name = "atomicSubtract"_c;
     AtomicSubtract_UInt16.returnType = Type::FullType { UInt16Type.name };
@@ -15438,7 +15170,7 @@ void SetupIntrinsics()
     AtomicAnd_UInt16_value.type = Type::FullType{ UInt16Type.name };
     AtomicAnd_UInt16_semantics.name = "semantics"_c;
     AtomicAnd_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAnd_UInt16_semantics.literal = true;
+    AtomicAnd_UInt16_semantics.type.literal = true;
     AtomicAnd_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicAnd_UInt16.name = "atomicAnd"_c;
     AtomicAnd_UInt16.returnType = Type::FullType { UInt16Type.name };
@@ -15456,7 +15188,7 @@ void SetupIntrinsics()
     AtomicOr_UInt16_value.type = Type::FullType{ UInt16Type.name };
     AtomicOr_UInt16_semantics.name = "semantics"_c;
     AtomicOr_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicOr_UInt16_semantics.literal = true;
+    AtomicOr_UInt16_semantics.type.literal = true;
     AtomicOr_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicOr_UInt16.name = "atomicOr"_c;
     AtomicOr_UInt16.returnType = Type::FullType { UInt16Type.name };
@@ -15474,7 +15206,7 @@ void SetupIntrinsics()
     AtomicXor_UInt16_value.type = Type::FullType{ UInt16Type.name };
     AtomicXor_UInt16_semantics.name = "semantics"_c;
     AtomicXor_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicXor_UInt16_semantics.literal = true;
+    AtomicXor_UInt16_semantics.type.literal = true;
     AtomicXor_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicXor_UInt16.name = "atomicXor"_c;
     AtomicXor_UInt16.returnType = Type::FullType { UInt16Type.name };
@@ -15492,7 +15224,7 @@ void SetupIntrinsics()
     AtomicStore_Int16_value.type = Type::FullType{ Int16Type.name };
     AtomicStore_Int16_semantics.name = "semantics"_c;
     AtomicStore_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicStore_Int16_semantics.literal = true;
+    AtomicStore_Int16_semantics.type.literal = true;
     AtomicStore_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicStore_Int16.name = "atomicStore"_c;
     AtomicStore_Int16.returnType = Type::FullType { Int16Type.name };
@@ -15510,7 +15242,7 @@ void SetupIntrinsics()
     AtomicExchange_Int16_value.type = Type::FullType{ Int16Type.name };
     AtomicExchange_Int16_semantics.name = "semantics"_c;
     AtomicExchange_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicExchange_Int16_semantics.literal = true;
+    AtomicExchange_Int16_semantics.type.literal = true;
     AtomicExchange_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicExchange_Int16.name = "atomicExchange"_c;
     AtomicExchange_Int16.returnType = Type::FullType { Int16Type.name };
@@ -15528,7 +15260,7 @@ void SetupIntrinsics()
     AtomicAdd_Int16_value.type = Type::FullType{ Int16Type.name };
     AtomicAdd_Int16_semantics.name = "semantics"_c;
     AtomicAdd_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAdd_Int16_semantics.literal = true;
+    AtomicAdd_Int16_semantics.type.literal = true;
     AtomicAdd_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicAdd_Int16.name = "atomicAdd"_c;
     AtomicAdd_Int16.returnType = Type::FullType { Int16Type.name };
@@ -15546,7 +15278,7 @@ void SetupIntrinsics()
     AtomicSubtract_Int16_value.type = Type::FullType{ Int16Type.name };
     AtomicSubtract_Int16_semantics.name = "semantics"_c;
     AtomicSubtract_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicSubtract_Int16_semantics.literal = true;
+    AtomicSubtract_Int16_semantics.type.literal = true;
     AtomicSubtract_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicSubtract_Int16.name = "atomicSubtract"_c;
     AtomicSubtract_Int16.returnType = Type::FullType { Int16Type.name };
@@ -15564,7 +15296,7 @@ void SetupIntrinsics()
     AtomicAnd_Int16_value.type = Type::FullType{ Int16Type.name };
     AtomicAnd_Int16_semantics.name = "semantics"_c;
     AtomicAnd_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicAnd_Int16_semantics.literal = true;
+    AtomicAnd_Int16_semantics.type.literal = true;
     AtomicAnd_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicAnd_Int16.name = "atomicAnd"_c;
     AtomicAnd_Int16.returnType = Type::FullType { Int16Type.name };
@@ -15582,7 +15314,7 @@ void SetupIntrinsics()
     AtomicOr_Int16_value.type = Type::FullType{ Int16Type.name };
     AtomicOr_Int16_semantics.name = "semantics"_c;
     AtomicOr_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicOr_Int16_semantics.literal = true;
+    AtomicOr_Int16_semantics.type.literal = true;
     AtomicOr_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicOr_Int16.name = "atomicOr"_c;
     AtomicOr_Int16.returnType = Type::FullType { Int16Type.name };
@@ -15600,7 +15332,7 @@ void SetupIntrinsics()
     AtomicXor_Int16_value.type = Type::FullType{ Int16Type.name };
     AtomicXor_Int16_semantics.name = "semantics"_c;
     AtomicXor_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicXor_Int16_semantics.literal = true;
+    AtomicXor_Int16_semantics.type.literal = true;
     AtomicXor_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicXor_Int16.name = "atomicXor"_c;
     AtomicXor_Int16.returnType = Type::FullType { Int16Type.name };
@@ -15620,7 +15352,7 @@ void SetupIntrinsics()
     AtomicCompareExchange_UInt32_compare.type = Type::FullType{ Int16Type.name };
     AtomicCompareExchange_UInt32_semantics.name = "semantics"_c;
     AtomicCompareExchange_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicCompareExchange_UInt32_semantics.literal = true;
+    AtomicCompareExchange_UInt32_semantics.type.literal = true;
     AtomicCompareExchange_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicCompareExchange_UInt32.name = "atomicCompareExchange"_c;
     AtomicCompareExchange_UInt32.returnType = Type::FullType { Int16Type.name };
@@ -15641,7 +15373,7 @@ void SetupIntrinsics()
     AtomicCompareExchange_Int32_compare.type = Type::FullType{ Int16Type.name };
     AtomicCompareExchange_Int32_semantics.name = "semantics"_c;
     AtomicCompareExchange_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicCompareExchange_Int32_semantics.literal = true;
+    AtomicCompareExchange_Int32_semantics.type.literal = true;
     AtomicCompareExchange_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicCompareExchange_Int32.name = "atomicCompareExchange"_c;
     AtomicCompareExchange_Int32.returnType = Type::FullType { Int16Type.name };
@@ -15662,7 +15394,7 @@ void SetupIntrinsics()
     AtomicCompareExchange_UInt16_compare.type = Type::FullType{ Int16Type.name };
     AtomicCompareExchange_UInt16_semantics.name = "semantics"_c;
     AtomicCompareExchange_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicCompareExchange_UInt16_semantics.literal = true;
+    AtomicCompareExchange_UInt16_semantics.type.literal = true;
     AtomicCompareExchange_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicCompareExchange_UInt16.name = "atomicCompareExchange"_c;
     AtomicCompareExchange_UInt16.returnType = Type::FullType { Int16Type.name };
@@ -15683,7 +15415,7 @@ void SetupIntrinsics()
     AtomicCompareExchange_Int16_compare.type = Type::FullType{ Int16Type.name };
     AtomicCompareExchange_Int16_semantics.name = "semantics"_c;
     AtomicCompareExchange_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
-    AtomicCompareExchange_Int16_semantics.literal = true;
+    AtomicCompareExchange_Int16_semantics.type.literal = true;
     AtomicCompareExchange_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
     AtomicCompareExchange_Int16.name = "atomicCompareExchange"_c;
     AtomicCompareExchange_Int16.returnType = Type::FullType { Int16Type.name };
@@ -15732,134 +15464,6 @@ void SetupIntrinsics()
     Symbol::Resolved(&BitInsert_UInt32_count)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&BitInsert_UInt32)->returnTypeSymbol = &UInt32Type;
 
-    /// bitExtract with Int32, Int32, Int32
-    BitExtract_Int32_base.name = "base"_c;
-    BitExtract_Int32_base.type = Type::FullType{ Int32Type.name };
-    BitExtract_Int32_offset.name = "offset"_c;
-    BitExtract_Int32_offset.type = Type::FullType{ Int32Type.name };
-    BitExtract_Int32_count.name = "count"_c;
-    BitExtract_Int32_count.type = Type::FullType{ Int32Type.name };
-    BitExtract_Int32.documentation = "Extract a specific bit from a bitmask"_c;
-    BitExtract_Int32.name = "bitExtract"_c;
-    BitExtract_Int32.returnType = Type::FullType { Int32Type.name };
-    BitExtract_Int32.parameters = BitExtract_Int32_args;
-    Symbol::Resolved(&BitExtract_Int32_base)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&BitExtract_Int32_offset)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&BitExtract_Int32_count)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&BitExtract_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// bitExtract with Int32x2, Int32x2, Int32x2
-    BitExtract_Int32x2_base.name = "base"_c;
-    BitExtract_Int32x2_base.type = Type::FullType{ Int32x2Type.name };
-    BitExtract_Int32x2_offset.name = "offset"_c;
-    BitExtract_Int32x2_offset.type = Type::FullType{ Int32x2Type.name };
-    BitExtract_Int32x2_count.name = "count"_c;
-    BitExtract_Int32x2_count.type = Type::FullType{ Int32x2Type.name };
-    BitExtract_Int32x2.documentation = "Extract a specific bit from a bitmask"_c;
-    BitExtract_Int32x2.name = "bitExtract"_c;
-    BitExtract_Int32x2.returnType = Type::FullType { Int32x2Type.name };
-    BitExtract_Int32x2.parameters = BitExtract_Int32x2_args;
-    Symbol::Resolved(&BitExtract_Int32x2_base)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&BitExtract_Int32x2_offset)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&BitExtract_Int32x2_count)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&BitExtract_Int32x2)->returnTypeSymbol = &Int32x2Type;
-
-    /// bitExtract with Int32x3, Int32x3, Int32x3
-    BitExtract_Int32x3_base.name = "base"_c;
-    BitExtract_Int32x3_base.type = Type::FullType{ Int32x3Type.name };
-    BitExtract_Int32x3_offset.name = "offset"_c;
-    BitExtract_Int32x3_offset.type = Type::FullType{ Int32x3Type.name };
-    BitExtract_Int32x3_count.name = "count"_c;
-    BitExtract_Int32x3_count.type = Type::FullType{ Int32x3Type.name };
-    BitExtract_Int32x3.documentation = "Extract a specific bit from a bitmask"_c;
-    BitExtract_Int32x3.name = "bitExtract"_c;
-    BitExtract_Int32x3.returnType = Type::FullType { Int32x3Type.name };
-    BitExtract_Int32x3.parameters = BitExtract_Int32x3_args;
-    Symbol::Resolved(&BitExtract_Int32x3_base)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&BitExtract_Int32x3_offset)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&BitExtract_Int32x3_count)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&BitExtract_Int32x3)->returnTypeSymbol = &Int32x3Type;
-
-    /// bitExtract with Int32x4, Int32x4, Int32x4
-    BitExtract_Int32x4_base.name = "base"_c;
-    BitExtract_Int32x4_base.type = Type::FullType{ Int32x4Type.name };
-    BitExtract_Int32x4_offset.name = "offset"_c;
-    BitExtract_Int32x4_offset.type = Type::FullType{ Int32x4Type.name };
-    BitExtract_Int32x4_count.name = "count"_c;
-    BitExtract_Int32x4_count.type = Type::FullType{ Int32x4Type.name };
-    BitExtract_Int32x4.documentation = "Extract a specific bit from a bitmask"_c;
-    BitExtract_Int32x4.name = "bitExtract"_c;
-    BitExtract_Int32x4.returnType = Type::FullType { Int32x4Type.name };
-    BitExtract_Int32x4.parameters = BitExtract_Int32x4_args;
-    Symbol::Resolved(&BitExtract_Int32x4_base)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&BitExtract_Int32x4_offset)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&BitExtract_Int32x4_count)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&BitExtract_Int32x4)->returnTypeSymbol = &Int32x4Type;
-
-    /// bitExtract with Int16, Int16, Int16
-    BitExtract_Int16_base.name = "base"_c;
-    BitExtract_Int16_base.type = Type::FullType{ Int16Type.name };
-    BitExtract_Int16_offset.name = "offset"_c;
-    BitExtract_Int16_offset.type = Type::FullType{ Int16Type.name };
-    BitExtract_Int16_count.name = "count"_c;
-    BitExtract_Int16_count.type = Type::FullType{ Int16Type.name };
-    BitExtract_Int16.documentation = "Extract a specific bit from a bitmask"_c;
-    BitExtract_Int16.name = "bitExtract"_c;
-    BitExtract_Int16.returnType = Type::FullType { Int16Type.name };
-    BitExtract_Int16.parameters = BitExtract_Int16_args;
-    Symbol::Resolved(&BitExtract_Int16_base)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&BitExtract_Int16_offset)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&BitExtract_Int16_count)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&BitExtract_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// bitExtract with Int16x2, Int16x2, Int16x2
-    BitExtract_Int16x2_base.name = "base"_c;
-    BitExtract_Int16x2_base.type = Type::FullType{ Int16x2Type.name };
-    BitExtract_Int16x2_offset.name = "offset"_c;
-    BitExtract_Int16x2_offset.type = Type::FullType{ Int16x2Type.name };
-    BitExtract_Int16x2_count.name = "count"_c;
-    BitExtract_Int16x2_count.type = Type::FullType{ Int16x2Type.name };
-    BitExtract_Int16x2.documentation = "Extract a specific bit from a bitmask"_c;
-    BitExtract_Int16x2.name = "bitExtract"_c;
-    BitExtract_Int16x2.returnType = Type::FullType { Int16x2Type.name };
-    BitExtract_Int16x2.parameters = BitExtract_Int16x2_args;
-    Symbol::Resolved(&BitExtract_Int16x2_base)->typeSymbol = &Int16x2Type;
-    Symbol::Resolved(&BitExtract_Int16x2_offset)->typeSymbol = &Int16x2Type;
-    Symbol::Resolved(&BitExtract_Int16x2_count)->typeSymbol = &Int16x2Type;
-    Symbol::Resolved(&BitExtract_Int16x2)->returnTypeSymbol = &Int16x2Type;
-
-    /// bitExtract with Int16x3, Int16x3, Int16x3
-    BitExtract_Int16x3_base.name = "base"_c;
-    BitExtract_Int16x3_base.type = Type::FullType{ Int16x3Type.name };
-    BitExtract_Int16x3_offset.name = "offset"_c;
-    BitExtract_Int16x3_offset.type = Type::FullType{ Int16x3Type.name };
-    BitExtract_Int16x3_count.name = "count"_c;
-    BitExtract_Int16x3_count.type = Type::FullType{ Int16x3Type.name };
-    BitExtract_Int16x3.documentation = "Extract a specific bit from a bitmask"_c;
-    BitExtract_Int16x3.name = "bitExtract"_c;
-    BitExtract_Int16x3.returnType = Type::FullType { Int16x3Type.name };
-    BitExtract_Int16x3.parameters = BitExtract_Int16x3_args;
-    Symbol::Resolved(&BitExtract_Int16x3_base)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&BitExtract_Int16x3_offset)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&BitExtract_Int16x3_count)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&BitExtract_Int16x3)->returnTypeSymbol = &Int16x3Type;
-
-    /// bitExtract with Int16x4, Int16x4, Int16x4
-    BitExtract_Int16x4_base.name = "base"_c;
-    BitExtract_Int16x4_base.type = Type::FullType{ Int16x4Type.name };
-    BitExtract_Int16x4_offset.name = "offset"_c;
-    BitExtract_Int16x4_offset.type = Type::FullType{ Int16x4Type.name };
-    BitExtract_Int16x4_count.name = "count"_c;
-    BitExtract_Int16x4_count.type = Type::FullType{ Int16x4Type.name };
-    BitExtract_Int16x4.documentation = "Extract a specific bit from a bitmask"_c;
-    BitExtract_Int16x4.name = "bitExtract"_c;
-    BitExtract_Int16x4.returnType = Type::FullType { Int16x4Type.name };
-    BitExtract_Int16x4.parameters = BitExtract_Int16x4_args;
-    Symbol::Resolved(&BitExtract_Int16x4_base)->typeSymbol = &Int16x4Type;
-    Symbol::Resolved(&BitExtract_Int16x4_offset)->typeSymbol = &Int16x4Type;
-    Symbol::Resolved(&BitExtract_Int16x4_count)->typeSymbol = &Int16x4Type;
-    Symbol::Resolved(&BitExtract_Int16x4)->returnTypeSymbol = &Int16x4Type;
-
     /// bitExtract with UInt32, UInt32, UInt32
     BitExtract_UInt32_base.name = "base"_c;
     BitExtract_UInt32_base.type = Type::FullType{ UInt32Type.name };
@@ -15876,53 +15480,21 @@ void SetupIntrinsics()
     Symbol::Resolved(&BitExtract_UInt32_count)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&BitExtract_UInt32)->returnTypeSymbol = &UInt32Type;
 
-    /// bitExtract with UInt32x2, UInt32x2, UInt32x2
-    BitExtract_UInt32x2_base.name = "base"_c;
-    BitExtract_UInt32x2_base.type = Type::FullType{ UInt32x2Type.name };
-    BitExtract_UInt32x2_offset.name = "offset"_c;
-    BitExtract_UInt32x2_offset.type = Type::FullType{ UInt32x2Type.name };
-    BitExtract_UInt32x2_count.name = "count"_c;
-    BitExtract_UInt32x2_count.type = Type::FullType{ UInt32x2Type.name };
-    BitExtract_UInt32x2.documentation = "Extract a specific bit from a bitmask"_c;
-    BitExtract_UInt32x2.name = "bitExtract"_c;
-    BitExtract_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
-    BitExtract_UInt32x2.parameters = BitExtract_UInt32x2_args;
-    Symbol::Resolved(&BitExtract_UInt32x2_base)->typeSymbol = &UInt32x2Type;
-    Symbol::Resolved(&BitExtract_UInt32x2_offset)->typeSymbol = &UInt32x2Type;
-    Symbol::Resolved(&BitExtract_UInt32x2_count)->typeSymbol = &UInt32x2Type;
-    Symbol::Resolved(&BitExtract_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
-
-    /// bitExtract with UInt32x3, UInt32x3, UInt32x3
-    BitExtract_UInt32x3_base.name = "base"_c;
-    BitExtract_UInt32x3_base.type = Type::FullType{ UInt32x3Type.name };
-    BitExtract_UInt32x3_offset.name = "offset"_c;
-    BitExtract_UInt32x3_offset.type = Type::FullType{ UInt32x3Type.name };
-    BitExtract_UInt32x3_count.name = "count"_c;
-    BitExtract_UInt32x3_count.type = Type::FullType{ UInt32x3Type.name };
-    BitExtract_UInt32x3.documentation = "Extract a specific bit from a bitmask"_c;
-    BitExtract_UInt32x3.name = "bitExtract"_c;
-    BitExtract_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
-    BitExtract_UInt32x3.parameters = BitExtract_UInt32x3_args;
-    Symbol::Resolved(&BitExtract_UInt32x3_base)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&BitExtract_UInt32x3_offset)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&BitExtract_UInt32x3_count)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&BitExtract_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
-
-    /// bitExtract with UInt32x4, UInt32x4, UInt32x4
-    BitExtract_UInt32x4_base.name = "base"_c;
-    BitExtract_UInt32x4_base.type = Type::FullType{ UInt32x4Type.name };
-    BitExtract_UInt32x4_offset.name = "offset"_c;
-    BitExtract_UInt32x4_offset.type = Type::FullType{ UInt32x4Type.name };
-    BitExtract_UInt32x4_count.name = "count"_c;
-    BitExtract_UInt32x4_count.type = Type::FullType{ UInt32x4Type.name };
-    BitExtract_UInt32x4.documentation = "Extract a specific bit from a bitmask"_c;
-    BitExtract_UInt32x4.name = "bitExtract"_c;
-    BitExtract_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
-    BitExtract_UInt32x4.parameters = BitExtract_UInt32x4_args;
-    Symbol::Resolved(&BitExtract_UInt32x4_base)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&BitExtract_UInt32x4_offset)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&BitExtract_UInt32x4_count)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&BitExtract_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
+    /// bitExtract with Int32, Int32, Int32
+    BitExtract_Int32_base.name = "base"_c;
+    BitExtract_Int32_base.type = Type::FullType{ Int32Type.name };
+    BitExtract_Int32_offset.name = "offset"_c;
+    BitExtract_Int32_offset.type = Type::FullType{ Int32Type.name };
+    BitExtract_Int32_count.name = "count"_c;
+    BitExtract_Int32_count.type = Type::FullType{ Int32Type.name };
+    BitExtract_Int32.documentation = "Extract a specific bit from a bitmask"_c;
+    BitExtract_Int32.name = "bitExtract"_c;
+    BitExtract_Int32.returnType = Type::FullType { Int32Type.name };
+    BitExtract_Int32.parameters = BitExtract_Int32_args;
+    Symbol::Resolved(&BitExtract_Int32_base)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&BitExtract_Int32_offset)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&BitExtract_Int32_count)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&BitExtract_Int32)->returnTypeSymbol = &Int32Type;
 
     /// bitExtract with UInt16, UInt16, UInt16
     BitExtract_UInt16_base.name = "base"_c;
@@ -15940,578 +15512,138 @@ void SetupIntrinsics()
     Symbol::Resolved(&BitExtract_UInt16_count)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&BitExtract_UInt16)->returnTypeSymbol = &UInt16Type;
 
-    /// bitExtract with UInt16x2, UInt16x2, UInt16x2
-    BitExtract_UInt16x2_base.name = "base"_c;
-    BitExtract_UInt16x2_base.type = Type::FullType{ UInt16x2Type.name };
-    BitExtract_UInt16x2_offset.name = "offset"_c;
-    BitExtract_UInt16x2_offset.type = Type::FullType{ UInt16x2Type.name };
-    BitExtract_UInt16x2_count.name = "count"_c;
-    BitExtract_UInt16x2_count.type = Type::FullType{ UInt16x2Type.name };
-    BitExtract_UInt16x2.documentation = "Extract a specific bit from a bitmask"_c;
-    BitExtract_UInt16x2.name = "bitExtract"_c;
-    BitExtract_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
-    BitExtract_UInt16x2.parameters = BitExtract_UInt16x2_args;
-    Symbol::Resolved(&BitExtract_UInt16x2_base)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&BitExtract_UInt16x2_offset)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&BitExtract_UInt16x2_count)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&BitExtract_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
+    /// bitExtract with Int16, Int16, Int16
+    BitExtract_Int16_base.name = "base"_c;
+    BitExtract_Int16_base.type = Type::FullType{ Int16Type.name };
+    BitExtract_Int16_offset.name = "offset"_c;
+    BitExtract_Int16_offset.type = Type::FullType{ Int16Type.name };
+    BitExtract_Int16_count.name = "count"_c;
+    BitExtract_Int16_count.type = Type::FullType{ Int16Type.name };
+    BitExtract_Int16.documentation = "Extract a specific bit from a bitmask"_c;
+    BitExtract_Int16.name = "bitExtract"_c;
+    BitExtract_Int16.returnType = Type::FullType { Int16Type.name };
+    BitExtract_Int16.parameters = BitExtract_Int16_args;
+    Symbol::Resolved(&BitExtract_Int16_base)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&BitExtract_Int16_offset)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&BitExtract_Int16_count)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&BitExtract_Int16)->returnTypeSymbol = &Int16Type;
 
-    /// bitExtract with UInt16x3, UInt16x3, UInt16x3
-    BitExtract_UInt16x3_base.name = "base"_c;
-    BitExtract_UInt16x3_base.type = Type::FullType{ UInt16x3Type.name };
-    BitExtract_UInt16x3_offset.name = "offset"_c;
-    BitExtract_UInt16x3_offset.type = Type::FullType{ UInt16x3Type.name };
-    BitExtract_UInt16x3_count.name = "count"_c;
-    BitExtract_UInt16x3_count.type = Type::FullType{ UInt16x3Type.name };
-    BitExtract_UInt16x3.documentation = "Extract a specific bit from a bitmask"_c;
-    BitExtract_UInt16x3.name = "bitExtract"_c;
-    BitExtract_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
-    BitExtract_UInt16x3.parameters = BitExtract_UInt16x3_args;
-    Symbol::Resolved(&BitExtract_UInt16x3_base)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&BitExtract_UInt16x3_offset)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&BitExtract_UInt16x3_count)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&BitExtract_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
-
-    /// bitExtract with UInt16x4, UInt16x4, UInt16x4
-    BitExtract_UInt16x4_base.name = "base"_c;
-    BitExtract_UInt16x4_base.type = Type::FullType{ UInt16x4Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ UInt16x4Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ UInt16x4Type.name };
-    BitExtract_UInt16x4.documentation = "Extract a specific bit from a bitmask"_c;
-    BitExtract_UInt16x4.name = "bitExtract"_c;
-    BitExtract_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
-    BitExtract_UInt16x4.parameters = BitExtract_UInt16x4_args;
-    Symbol::Resolved(&BitExtract_UInt16x4_base)->typeSymbol = &UInt16x4Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &UInt16x4Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &UInt16x4Type;
-    Symbol::Resolved(&BitExtract_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
-
-    /// bitReverse with Int32, Int32, Int32
-    BitReverse_Int32_base.name = "base"_c;
-    BitReverse_Int32_base.type = Type::FullType{ Int32Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ Int32Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ Int32Type.name };
-    BitReverse_Int32.name = "bitReverse"_c;
-    BitReverse_Int32.returnType = Type::FullType { Int32Type.name };
-    BitReverse_Int32.parameters = BitReverse_Int32_args;
-    Symbol::Resolved(&BitReverse_Int32_base)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&BitReverse_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// bitReverse with Int32x2, Int32x2, Int32x2
-    BitReverse_Int32x2_base.name = "base"_c;
-    BitReverse_Int32x2_base.type = Type::FullType{ Int32x2Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ Int32x2Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ Int32x2Type.name };
-    BitReverse_Int32x2.name = "bitReverse"_c;
-    BitReverse_Int32x2.returnType = Type::FullType { Int32x2Type.name };
-    BitReverse_Int32x2.parameters = BitReverse_Int32x2_args;
-    Symbol::Resolved(&BitReverse_Int32x2_base)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&BitReverse_Int32x2)->returnTypeSymbol = &Int32x2Type;
-
-    /// bitReverse with Int32x3, Int32x3, Int32x3
-    BitReverse_Int32x3_base.name = "base"_c;
-    BitReverse_Int32x3_base.type = Type::FullType{ Int32x3Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ Int32x3Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ Int32x3Type.name };
-    BitReverse_Int32x3.name = "bitReverse"_c;
-    BitReverse_Int32x3.returnType = Type::FullType { Int32x3Type.name };
-    BitReverse_Int32x3.parameters = BitReverse_Int32x3_args;
-    Symbol::Resolved(&BitReverse_Int32x3_base)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&BitReverse_Int32x3)->returnTypeSymbol = &Int32x3Type;
-
-    /// bitReverse with Int32x4, Int32x4, Int32x4
-    BitReverse_Int32x4_base.name = "base"_c;
-    BitReverse_Int32x4_base.type = Type::FullType{ Int32x4Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ Int32x4Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ Int32x4Type.name };
-    BitReverse_Int32x4.name = "bitReverse"_c;
-    BitReverse_Int32x4.returnType = Type::FullType { Int32x4Type.name };
-    BitReverse_Int32x4.parameters = BitReverse_Int32x4_args;
-    Symbol::Resolved(&BitReverse_Int32x4_base)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&BitReverse_Int32x4)->returnTypeSymbol = &Int32x4Type;
-
-    /// bitReverse with Int16, Int16, Int16
-    BitReverse_Int16_base.name = "base"_c;
-    BitReverse_Int16_base.type = Type::FullType{ Int16Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ Int16Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ Int16Type.name };
-    BitReverse_Int16.name = "bitReverse"_c;
-    BitReverse_Int16.returnType = Type::FullType { Int16Type.name };
-    BitReverse_Int16.parameters = BitReverse_Int16_args;
-    Symbol::Resolved(&BitReverse_Int16_base)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&BitReverse_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// bitReverse with Int16x2, Int16x2, Int16x2
-    BitReverse_Int16x2_base.name = "base"_c;
-    BitReverse_Int16x2_base.type = Type::FullType{ Int16x2Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ Int16x2Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ Int16x2Type.name };
-    BitReverse_Int16x2.name = "bitReverse"_c;
-    BitReverse_Int16x2.returnType = Type::FullType { Int16x2Type.name };
-    BitReverse_Int16x2.parameters = BitReverse_Int16x2_args;
-    Symbol::Resolved(&BitReverse_Int16x2_base)->typeSymbol = &Int16x2Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &Int16x2Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &Int16x2Type;
-    Symbol::Resolved(&BitReverse_Int16x2)->returnTypeSymbol = &Int16x2Type;
-
-    /// bitReverse with Int16x3, Int16x3, Int16x3
-    BitReverse_Int16x3_base.name = "base"_c;
-    BitReverse_Int16x3_base.type = Type::FullType{ Int16x3Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ Int16x3Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ Int16x3Type.name };
-    BitReverse_Int16x3.name = "bitReverse"_c;
-    BitReverse_Int16x3.returnType = Type::FullType { Int16x3Type.name };
-    BitReverse_Int16x3.parameters = BitReverse_Int16x3_args;
-    Symbol::Resolved(&BitReverse_Int16x3_base)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&BitReverse_Int16x3)->returnTypeSymbol = &Int16x3Type;
-
-    /// bitReverse with Int16x4, Int16x4, Int16x4
-    BitReverse_Int16x4_base.name = "base"_c;
-    BitReverse_Int16x4_base.type = Type::FullType{ Int16x4Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ Int16x4Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ Int16x4Type.name };
-    BitReverse_Int16x4.name = "bitReverse"_c;
-    BitReverse_Int16x4.returnType = Type::FullType { Int16x4Type.name };
-    BitReverse_Int16x4.parameters = BitReverse_Int16x4_args;
-    Symbol::Resolved(&BitReverse_Int16x4_base)->typeSymbol = &Int16x4Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &Int16x4Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &Int16x4Type;
-    Symbol::Resolved(&BitReverse_Int16x4)->returnTypeSymbol = &Int16x4Type;
-
-    /// bitReverse with UInt32, UInt32, UInt32
+    /// bitReverse with UInt32
     BitReverse_UInt32_base.name = "base"_c;
     BitReverse_UInt32_base.type = Type::FullType{ UInt32Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ UInt32Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ UInt32Type.name };
     BitReverse_UInt32.name = "bitReverse"_c;
     BitReverse_UInt32.returnType = Type::FullType { UInt32Type.name };
     BitReverse_UInt32.parameters = BitReverse_UInt32_args;
     Symbol::Resolved(&BitReverse_UInt32_base)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&BitReverse_UInt32)->returnTypeSymbol = &UInt32Type;
 
-    /// bitReverse with UInt32x2, UInt32x2, UInt32x2
-    BitReverse_UInt32x2_base.name = "base"_c;
-    BitReverse_UInt32x2_base.type = Type::FullType{ UInt32x2Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ UInt32x2Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ UInt32x2Type.name };
-    BitReverse_UInt32x2.name = "bitReverse"_c;
-    BitReverse_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
-    BitReverse_UInt32x2.parameters = BitReverse_UInt32x2_args;
-    Symbol::Resolved(&BitReverse_UInt32x2_base)->typeSymbol = &UInt32x2Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &UInt32x2Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &UInt32x2Type;
-    Symbol::Resolved(&BitReverse_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
+    /// bitReverse with Int32
+    BitReverse_Int32_base.name = "base"_c;
+    BitReverse_Int32_base.type = Type::FullType{ Int32Type.name };
+    BitReverse_Int32.name = "bitReverse"_c;
+    BitReverse_Int32.returnType = Type::FullType { Int32Type.name };
+    BitReverse_Int32.parameters = BitReverse_Int32_args;
+    Symbol::Resolved(&BitReverse_Int32_base)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&BitReverse_Int32)->returnTypeSymbol = &Int32Type;
 
-    /// bitReverse with UInt32x3, UInt32x3, UInt32x3
-    BitReverse_UInt32x3_base.name = "base"_c;
-    BitReverse_UInt32x3_base.type = Type::FullType{ UInt32x3Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ UInt32x3Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ UInt32x3Type.name };
-    BitReverse_UInt32x3.name = "bitReverse"_c;
-    BitReverse_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
-    BitReverse_UInt32x3.parameters = BitReverse_UInt32x3_args;
-    Symbol::Resolved(&BitReverse_UInt32x3_base)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&BitReverse_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
-
-    /// bitReverse with UInt32x4, UInt32x4, UInt32x4
-    BitReverse_UInt32x4_base.name = "base"_c;
-    BitReverse_UInt32x4_base.type = Type::FullType{ UInt32x4Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ UInt32x4Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ UInt32x4Type.name };
-    BitReverse_UInt32x4.name = "bitReverse"_c;
-    BitReverse_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
-    BitReverse_UInt32x4.parameters = BitReverse_UInt32x4_args;
-    Symbol::Resolved(&BitReverse_UInt32x4_base)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&BitReverse_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
-
-    /// bitReverse with UInt16, UInt16, UInt16
+    /// bitReverse with UInt16
     BitReverse_UInt16_base.name = "base"_c;
     BitReverse_UInt16_base.type = Type::FullType{ UInt16Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ UInt16Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ UInt16Type.name };
     BitReverse_UInt16.name = "bitReverse"_c;
     BitReverse_UInt16.returnType = Type::FullType { UInt16Type.name };
     BitReverse_UInt16.parameters = BitReverse_UInt16_args;
     Symbol::Resolved(&BitReverse_UInt16_base)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&BitReverse_UInt16)->returnTypeSymbol = &UInt16Type;
 
-    /// bitReverse with UInt16x2, UInt16x2, UInt16x2
-    BitReverse_UInt16x2_base.name = "base"_c;
-    BitReverse_UInt16x2_base.type = Type::FullType{ UInt16x2Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ UInt16x2Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ UInt16x2Type.name };
-    BitReverse_UInt16x2.name = "bitReverse"_c;
-    BitReverse_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
-    BitReverse_UInt16x2.parameters = BitReverse_UInt16x2_args;
-    Symbol::Resolved(&BitReverse_UInt16x2_base)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&BitReverse_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
+    /// bitReverse with Int16
+    BitReverse_Int16_base.name = "base"_c;
+    BitReverse_Int16_base.type = Type::FullType{ Int16Type.name };
+    BitReverse_Int16.name = "bitReverse"_c;
+    BitReverse_Int16.returnType = Type::FullType { Int16Type.name };
+    BitReverse_Int16.parameters = BitReverse_Int16_args;
+    Symbol::Resolved(&BitReverse_Int16_base)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&BitReverse_Int16)->returnTypeSymbol = &Int16Type;
 
-    /// bitReverse with UInt16x3, UInt16x3, UInt16x3
-    BitReverse_UInt16x3_base.name = "base"_c;
-    BitReverse_UInt16x3_base.type = Type::FullType{ UInt16x3Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ UInt16x3Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ UInt16x3Type.name };
-    BitReverse_UInt16x3.name = "bitReverse"_c;
-    BitReverse_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
-    BitReverse_UInt16x3.parameters = BitReverse_UInt16x3_args;
-    Symbol::Resolved(&BitReverse_UInt16x3_base)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&BitReverse_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
-
-    /// bitReverse with UInt16x4, UInt16x4, UInt16x4
-    BitReverse_UInt16x4_base.name = "base"_c;
-    BitReverse_UInt16x4_base.type = Type::FullType{ UInt16x4Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ UInt16x4Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ UInt16x4Type.name };
-    BitReverse_UInt16x4.name = "bitReverse"_c;
-    BitReverse_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
-    BitReverse_UInt16x4.parameters = BitReverse_UInt16x4_args;
-    Symbol::Resolved(&BitReverse_UInt16x4_base)->typeSymbol = &UInt16x4Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &UInt16x4Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &UInt16x4Type;
-    Symbol::Resolved(&BitReverse_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
-
-    /// bitCount with Int32, Int32, Int32
-    BitCount_Int32_base.name = "base"_c;
-    BitCount_Int32_base.type = Type::FullType{ Int32Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ Int32Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ Int32Type.name };
-    BitCount_Int32.name = "bitCount"_c;
-    BitCount_Int32.returnType = Type::FullType { Int32Type.name };
-    BitCount_Int32.parameters = BitCount_Int32_args;
-    Symbol::Resolved(&BitCount_Int32_base)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&BitCount_Int32)->returnTypeSymbol = &Int32Type;
-
-    /// bitCount with Int32x2, Int32x2, Int32x2
-    BitCount_Int32x2_base.name = "base"_c;
-    BitCount_Int32x2_base.type = Type::FullType{ Int32x2Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ Int32x2Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ Int32x2Type.name };
-    BitCount_Int32x2.name = "bitCount"_c;
-    BitCount_Int32x2.returnType = Type::FullType { Int32x2Type.name };
-    BitCount_Int32x2.parameters = BitCount_Int32x2_args;
-    Symbol::Resolved(&BitCount_Int32x2_base)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&BitCount_Int32x2)->returnTypeSymbol = &Int32x2Type;
-
-    /// bitCount with Int32x3, Int32x3, Int32x3
-    BitCount_Int32x3_base.name = "base"_c;
-    BitCount_Int32x3_base.type = Type::FullType{ Int32x3Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ Int32x3Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ Int32x3Type.name };
-    BitCount_Int32x3.name = "bitCount"_c;
-    BitCount_Int32x3.returnType = Type::FullType { Int32x3Type.name };
-    BitCount_Int32x3.parameters = BitCount_Int32x3_args;
-    Symbol::Resolved(&BitCount_Int32x3_base)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&BitCount_Int32x3)->returnTypeSymbol = &Int32x3Type;
-
-    /// bitCount with Int32x4, Int32x4, Int32x4
-    BitCount_Int32x4_base.name = "base"_c;
-    BitCount_Int32x4_base.type = Type::FullType{ Int32x4Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ Int32x4Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ Int32x4Type.name };
-    BitCount_Int32x4.name = "bitCount"_c;
-    BitCount_Int32x4.returnType = Type::FullType { Int32x4Type.name };
-    BitCount_Int32x4.parameters = BitCount_Int32x4_args;
-    Symbol::Resolved(&BitCount_Int32x4_base)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&BitCount_Int32x4)->returnTypeSymbol = &Int32x4Type;
-
-    /// bitCount with Int16, Int16, Int16
-    BitCount_Int16_base.name = "base"_c;
-    BitCount_Int16_base.type = Type::FullType{ Int16Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ Int16Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ Int16Type.name };
-    BitCount_Int16.name = "bitCount"_c;
-    BitCount_Int16.returnType = Type::FullType { Int16Type.name };
-    BitCount_Int16.parameters = BitCount_Int16_args;
-    Symbol::Resolved(&BitCount_Int16_base)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&BitCount_Int16)->returnTypeSymbol = &Int16Type;
-
-    /// bitCount with Int16x2, Int16x2, Int16x2
-    BitCount_Int16x2_base.name = "base"_c;
-    BitCount_Int16x2_base.type = Type::FullType{ Int16x2Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ Int16x2Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ Int16x2Type.name };
-    BitCount_Int16x2.name = "bitCount"_c;
-    BitCount_Int16x2.returnType = Type::FullType { Int16x2Type.name };
-    BitCount_Int16x2.parameters = BitCount_Int16x2_args;
-    Symbol::Resolved(&BitCount_Int16x2_base)->typeSymbol = &Int16x2Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &Int16x2Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &Int16x2Type;
-    Symbol::Resolved(&BitCount_Int16x2)->returnTypeSymbol = &Int16x2Type;
-
-    /// bitCount with Int16x3, Int16x3, Int16x3
-    BitCount_Int16x3_base.name = "base"_c;
-    BitCount_Int16x3_base.type = Type::FullType{ Int16x3Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ Int16x3Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ Int16x3Type.name };
-    BitCount_Int16x3.name = "bitCount"_c;
-    BitCount_Int16x3.returnType = Type::FullType { Int16x3Type.name };
-    BitCount_Int16x3.parameters = BitCount_Int16x3_args;
-    Symbol::Resolved(&BitCount_Int16x3_base)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&BitCount_Int16x3)->returnTypeSymbol = &Int16x3Type;
-
-    /// bitCount with Int16x4, Int16x4, Int16x4
-    BitCount_Int16x4_base.name = "base"_c;
-    BitCount_Int16x4_base.type = Type::FullType{ Int16x4Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ Int16x4Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ Int16x4Type.name };
-    BitCount_Int16x4.name = "bitCount"_c;
-    BitCount_Int16x4.returnType = Type::FullType { Int16x4Type.name };
-    BitCount_Int16x4.parameters = BitCount_Int16x4_args;
-    Symbol::Resolved(&BitCount_Int16x4_base)->typeSymbol = &Int16x4Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &Int16x4Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &Int16x4Type;
-    Symbol::Resolved(&BitCount_Int16x4)->returnTypeSymbol = &Int16x4Type;
-
-    /// bitCount with UInt32, UInt32, UInt32
+    /// bitCount with UInt32
     BitCount_UInt32_base.name = "base"_c;
     BitCount_UInt32_base.type = Type::FullType{ UInt32Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ UInt32Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ UInt32Type.name };
     BitCount_UInt32.name = "bitCount"_c;
     BitCount_UInt32.returnType = Type::FullType { UInt32Type.name };
     BitCount_UInt32.parameters = BitCount_UInt32_args;
     Symbol::Resolved(&BitCount_UInt32_base)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&BitCount_UInt32)->returnTypeSymbol = &UInt32Type;
 
-    /// bitCount with UInt32x2, UInt32x2, UInt32x2
-    BitCount_UInt32x2_base.name = "base"_c;
-    BitCount_UInt32x2_base.type = Type::FullType{ UInt32x2Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ UInt32x2Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ UInt32x2Type.name };
-    BitCount_UInt32x2.name = "bitCount"_c;
-    BitCount_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
-    BitCount_UInt32x2.parameters = BitCount_UInt32x2_args;
-    Symbol::Resolved(&BitCount_UInt32x2_base)->typeSymbol = &UInt32x2Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &UInt32x2Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &UInt32x2Type;
-    Symbol::Resolved(&BitCount_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
+    /// bitCount with Int32
+    BitCount_Int32_base.name = "base"_c;
+    BitCount_Int32_base.type = Type::FullType{ Int32Type.name };
+    BitCount_Int32.name = "bitCount"_c;
+    BitCount_Int32.returnType = Type::FullType { Int32Type.name };
+    BitCount_Int32.parameters = BitCount_Int32_args;
+    Symbol::Resolved(&BitCount_Int32_base)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&BitCount_Int32)->returnTypeSymbol = &Int32Type;
 
-    /// bitCount with UInt32x3, UInt32x3, UInt32x3
-    BitCount_UInt32x3_base.name = "base"_c;
-    BitCount_UInt32x3_base.type = Type::FullType{ UInt32x3Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ UInt32x3Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ UInt32x3Type.name };
-    BitCount_UInt32x3.name = "bitCount"_c;
-    BitCount_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
-    BitCount_UInt32x3.parameters = BitCount_UInt32x3_args;
-    Symbol::Resolved(&BitCount_UInt32x3_base)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&BitCount_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
-
-    /// bitCount with UInt32x4, UInt32x4, UInt32x4
-    BitCount_UInt32x4_base.name = "base"_c;
-    BitCount_UInt32x4_base.type = Type::FullType{ UInt32x4Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ UInt32x4Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ UInt32x4Type.name };
-    BitCount_UInt32x4.name = "bitCount"_c;
-    BitCount_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
-    BitCount_UInt32x4.parameters = BitCount_UInt32x4_args;
-    Symbol::Resolved(&BitCount_UInt32x4_base)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&BitCount_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
-
-    /// bitCount with UInt16, UInt16, UInt16
+    /// bitCount with UInt16
     BitCount_UInt16_base.name = "base"_c;
     BitCount_UInt16_base.type = Type::FullType{ UInt16Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ UInt16Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ UInt16Type.name };
     BitCount_UInt16.name = "bitCount"_c;
     BitCount_UInt16.returnType = Type::FullType { UInt16Type.name };
     BitCount_UInt16.parameters = BitCount_UInt16_args;
     Symbol::Resolved(&BitCount_UInt16_base)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&BitCount_UInt16)->returnTypeSymbol = &UInt16Type;
 
-    /// bitCount with UInt16x2, UInt16x2, UInt16x2
-    BitCount_UInt16x2_base.name = "base"_c;
-    BitCount_UInt16x2_base.type = Type::FullType{ UInt16x2Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ UInt16x2Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ UInt16x2Type.name };
-    BitCount_UInt16x2.name = "bitCount"_c;
-    BitCount_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
-    BitCount_UInt16x2.parameters = BitCount_UInt16x2_args;
-    Symbol::Resolved(&BitCount_UInt16x2_base)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&BitCount_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
-
-    /// bitCount with UInt16x3, UInt16x3, UInt16x3
-    BitCount_UInt16x3_base.name = "base"_c;
-    BitCount_UInt16x3_base.type = Type::FullType{ UInt16x3Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ UInt16x3Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ UInt16x3Type.name };
-    BitCount_UInt16x3.name = "bitCount"_c;
-    BitCount_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
-    BitCount_UInt16x3.parameters = BitCount_UInt16x3_args;
-    Symbol::Resolved(&BitCount_UInt16x3_base)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&BitCount_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
-
-    /// bitCount with UInt16x4, UInt16x4, UInt16x4
-    BitCount_UInt16x4_base.name = "base"_c;
-    BitCount_UInt16x4_base.type = Type::FullType{ UInt16x4Type.name };
-    BitExtract_UInt16x4_offset.name = "offset"_c;
-    BitExtract_UInt16x4_offset.type = Type::FullType{ UInt16x4Type.name };
-    BitExtract_UInt16x4_count.name = "count"_c;
-    BitExtract_UInt16x4_count.type = Type::FullType{ UInt16x4Type.name };
-    BitCount_UInt16x4.name = "bitCount"_c;
-    BitCount_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
-    BitCount_UInt16x4.parameters = BitCount_UInt16x4_args;
-    Symbol::Resolved(&BitCount_UInt16x4_base)->typeSymbol = &UInt16x4Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_offset)->typeSymbol = &UInt16x4Type;
-    Symbol::Resolved(&BitExtract_UInt16x4_count)->typeSymbol = &UInt16x4Type;
-    Symbol::Resolved(&BitCount_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
+    /// bitCount with Int16
+    BitCount_Int16_base.name = "base"_c;
+    BitCount_Int16_base.type = Type::FullType{ Int16Type.name };
+    BitCount_Int16.name = "bitCount"_c;
+    BitCount_Int16.returnType = Type::FullType { Int16Type.name };
+    BitCount_Int16.parameters = BitCount_Int16_args;
+    Symbol::Resolved(&BitCount_Int16_base)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&BitCount_Int16)->returnTypeSymbol = &Int16Type;
 
     /// executionBarrier
     ExecutionBarrier.name = "executionBarrier"_c;
-    ExecutionBarrier.returnType = Type::FullType { UInt16x4Type.name };
-    Symbol::Resolved(&ExecutionBarrier)->returnTypeSymbol = &UInt16x4Type;
+    ExecutionBarrier.returnType = Type::FullType { Int16Type.name };
+    Symbol::Resolved(&ExecutionBarrier)->returnTypeSymbol = &Int16Type;
 
     /// executionBarrierSubgroup
     ExecutionBarrierSubgroup.name = "executionBarrierSubgroup"_c;
-    ExecutionBarrierSubgroup.returnType = Type::FullType { UInt16x4Type.name };
-    Symbol::Resolved(&ExecutionBarrierSubgroup)->returnTypeSymbol = &UInt16x4Type;
+    ExecutionBarrierSubgroup.returnType = Type::FullType { Int16Type.name };
+    Symbol::Resolved(&ExecutionBarrierSubgroup)->returnTypeSymbol = &Int16Type;
 
     /// executionBarrierWorkgroup
     ExecutionBarrierWorkgroup.name = "executionBarrierWorkgroup"_c;
-    ExecutionBarrierWorkgroup.returnType = Type::FullType { UInt16x4Type.name };
-    Symbol::Resolved(&ExecutionBarrierWorkgroup)->returnTypeSymbol = &UInt16x4Type;
+    ExecutionBarrierWorkgroup.returnType = Type::FullType { Int16Type.name };
+    Symbol::Resolved(&ExecutionBarrierWorkgroup)->returnTypeSymbol = &Int16Type;
 
     /// memoryBarrier
     MemoryBarrier.name = "memoryBarrier"_c;
-    MemoryBarrier.returnType = Type::FullType { UInt16x4Type.name };
-    Symbol::Resolved(&MemoryBarrier)->returnTypeSymbol = &UInt16x4Type;
+    MemoryBarrier.returnType = Type::FullType { Int16Type.name };
+    Symbol::Resolved(&MemoryBarrier)->returnTypeSymbol = &Int16Type;
 
     /// memoryBarrierBuffer
     MemoryBarrierBuffer.name = "memoryBarrierBuffer"_c;
-    MemoryBarrierBuffer.returnType = Type::FullType { UInt16x4Type.name };
-    Symbol::Resolved(&MemoryBarrierBuffer)->returnTypeSymbol = &UInt16x4Type;
+    MemoryBarrierBuffer.returnType = Type::FullType { Int16Type.name };
+    Symbol::Resolved(&MemoryBarrierBuffer)->returnTypeSymbol = &Int16Type;
 
     /// memoryBarrierTexture
     MemoryBarrierTexture.name = "memoryBarrierTexture"_c;
-    MemoryBarrierTexture.returnType = Type::FullType { UInt16x4Type.name };
-    Symbol::Resolved(&MemoryBarrierTexture)->returnTypeSymbol = &UInt16x4Type;
+    MemoryBarrierTexture.returnType = Type::FullType { Int16Type.name };
+    Symbol::Resolved(&MemoryBarrierTexture)->returnTypeSymbol = &Int16Type;
 
     /// memoryBarrierAtomic
     MemoryBarrierAtomic.name = "memoryBarrierAtomic"_c;
-    MemoryBarrierAtomic.returnType = Type::FullType { UInt16x4Type.name };
-    Symbol::Resolved(&MemoryBarrierAtomic)->returnTypeSymbol = &UInt16x4Type;
+    MemoryBarrierAtomic.returnType = Type::FullType { Int16Type.name };
+    Symbol::Resolved(&MemoryBarrierAtomic)->returnTypeSymbol = &Int16Type;
 
     /// memoryBarrierSubgroup
     MemoryBarrierSubgroup.name = "memoryBarrierSubgroup"_c;
-    MemoryBarrierSubgroup.returnType = Type::FullType { UInt16x4Type.name };
-    Symbol::Resolved(&MemoryBarrierSubgroup)->returnTypeSymbol = &UInt16x4Type;
+    MemoryBarrierSubgroup.returnType = Type::FullType { Int16Type.name };
+    Symbol::Resolved(&MemoryBarrierSubgroup)->returnTypeSymbol = &Int16Type;
 
     /// memoryBarrierWorkgroup
     MemoryBarrierWorkgroup.name = "memoryBarrierWorkgroup"_c;
-    MemoryBarrierWorkgroup.returnType = Type::FullType { UInt16x4Type.name };
-    Symbol::Resolved(&MemoryBarrierWorkgroup)->returnTypeSymbol = &UInt16x4Type;
+    MemoryBarrierWorkgroup.returnType = Type::FullType { Int16Type.name };
+    Symbol::Resolved(&MemoryBarrierWorkgroup)->returnTypeSymbol = &Int16Type;
 
     /// textureGetSize with Texture1D
     TextureGetSize_Texture1D_texture.name = "texture"_c;
@@ -16787,12 +15919,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&TextureGetSamples_Texture2DMSArray_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureGetSamples_Texture2DMSArray)->returnTypeSymbol = &Texture2DMSArrayType;
 
-    /// textureGetSampledMip with Texture1D, SamplerType, Float32
+    /// textureGetSampledMip with Texture1D, Sampler, Float32
     TextureGetSampledMip_Texture1D_texture.name = "texture"_c;
     TextureGetSampledMip_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureGetSampledMip_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSampledMip_Texture1D_sampler.name = "sampler"_c;
-    TextureGetSampledMip_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureGetSampledMip_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureGetSampledMip_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSampledMip_Texture1D_coordinate.name = "coordinate"_c;
     TextureGetSampledMip_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -16801,7 +15933,7 @@ void SetupIntrinsics()
     TextureGetSampledMip_Texture1D.parameters = TextureGetSampledMip_Texture1D_args;
     Symbol::Resolved(&TextureGetSampledMip_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureGetSampledMip_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureGetSampledMip_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureGetSampledMip_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureGetSampledMip_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureGetSampledMip_Texture1D)->returnTypeSymbol = &Texture1DType;
@@ -16820,12 +15952,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureGetSampledMip_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureGetSampledMip_Texture1D)->returnTypeSymbol = &Texture1DType;
 
-    /// textureGetSampledMip with Texture2D, SamplerType, Float32x2
+    /// textureGetSampledMip with Texture2D, Sampler, Float32x2
     TextureGetSampledMip_Texture2D_texture.name = "texture"_c;
     TextureGetSampledMip_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureGetSampledMip_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSampledMip_Texture2D_sampler.name = "sampler"_c;
-    TextureGetSampledMip_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureGetSampledMip_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureGetSampledMip_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSampledMip_Texture2D_coordinate.name = "coordinate"_c;
     TextureGetSampledMip_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -16834,7 +15966,7 @@ void SetupIntrinsics()
     TextureGetSampledMip_Texture2D.parameters = TextureGetSampledMip_Texture2D_args;
     Symbol::Resolved(&TextureGetSampledMip_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureGetSampledMip_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureGetSampledMip_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureGetSampledMip_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureGetSampledMip_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureGetSampledMip_Texture2D)->returnTypeSymbol = &Texture2DType;
@@ -16853,12 +15985,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureGetSampledMip_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureGetSampledMip_Texture2D)->returnTypeSymbol = &Texture2DType;
 
-    /// textureGetSampledMip with Texture3D, SamplerType, Float32x3
+    /// textureGetSampledMip with Texture3D, Sampler, Float32x3
     TextureGetSampledMip_Texture3D_texture.name = "texture"_c;
     TextureGetSampledMip_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureGetSampledMip_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSampledMip_Texture3D_sampler.name = "sampler"_c;
-    TextureGetSampledMip_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureGetSampledMip_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureGetSampledMip_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSampledMip_Texture3D_coordinate.name = "coordinate"_c;
     TextureGetSampledMip_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -16867,7 +15999,7 @@ void SetupIntrinsics()
     TextureGetSampledMip_Texture3D.parameters = TextureGetSampledMip_Texture3D_args;
     Symbol::Resolved(&TextureGetSampledMip_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureGetSampledMip_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureGetSampledMip_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureGetSampledMip_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureGetSampledMip_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureGetSampledMip_Texture3D)->returnTypeSymbol = &Texture3DType;
@@ -16886,12 +16018,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureGetSampledMip_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureGetSampledMip_Texture3D)->returnTypeSymbol = &Texture3DType;
 
-    /// textureGetSampledMip with TextureCube, SamplerType, Float32x3
+    /// textureGetSampledMip with TextureCube, Sampler, Float32x3
     TextureGetSampledMip_TextureCube_texture.name = "texture"_c;
     TextureGetSampledMip_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
     TextureGetSampledMip_TextureCube_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSampledMip_TextureCube_sampler.name = "sampler"_c;
-    TextureGetSampledMip_TextureCube_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureGetSampledMip_TextureCube_sampler.type = Type::FullType{ SamplerType.name };
     TextureGetSampledMip_TextureCube_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSampledMip_TextureCube_coordinate.name = "coordinate"_c;
     TextureGetSampledMip_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -16900,7 +16032,7 @@ void SetupIntrinsics()
     TextureGetSampledMip_TextureCube.parameters = TextureGetSampledMip_TextureCube_args;
     Symbol::Resolved(&TextureGetSampledMip_TextureCube_texture)->typeSymbol = &TextureCubeType;
     Symbol::Resolved(&TextureGetSampledMip_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCube_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureGetSampledMip_TextureCube_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureGetSampledMip_TextureCube_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureGetSampledMip_TextureCube_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureGetSampledMip_TextureCube)->returnTypeSymbol = &TextureCubeType;
@@ -16919,12 +16051,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureGetSampledMip_TextureCube_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureGetSampledMip_TextureCube)->returnTypeSymbol = &TextureCubeType;
 
-    /// textureGetSampledMip with Texture1DArray, SamplerType, Float32x2
+    /// textureGetSampledMip with Texture1DArray, Sampler, Float32x2
     TextureGetSampledMip_Texture1DArray_texture.name = "texture"_c;
     TextureGetSampledMip_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
     TextureGetSampledMip_Texture1DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSampledMip_Texture1DArray_sampler.name = "sampler"_c;
-    TextureGetSampledMip_Texture1DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureGetSampledMip_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureGetSampledMip_Texture1DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSampledMip_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureGetSampledMip_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -16933,7 +16065,7 @@ void SetupIntrinsics()
     TextureGetSampledMip_Texture1DArray.parameters = TextureGetSampledMip_Texture1DArray_args;
     Symbol::Resolved(&TextureGetSampledMip_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureGetSampledMip_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_Texture1DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureGetSampledMip_Texture1DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureGetSampledMip_Texture1DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureGetSampledMip_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureGetSampledMip_Texture1DArray)->returnTypeSymbol = &Texture1DArrayType;
@@ -16952,12 +16084,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureGetSampledMip_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureGetSampledMip_Texture1DArray)->returnTypeSymbol = &Texture1DArrayType;
 
-    /// textureGetSampledMip with Texture2DArray, SamplerType, Float32x3
+    /// textureGetSampledMip with Texture2DArray, Sampler, Float32x3
     TextureGetSampledMip_Texture2DArray_texture.name = "texture"_c;
     TextureGetSampledMip_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
     TextureGetSampledMip_Texture2DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSampledMip_Texture2DArray_sampler.name = "sampler"_c;
-    TextureGetSampledMip_Texture2DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureGetSampledMip_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureGetSampledMip_Texture2DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSampledMip_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureGetSampledMip_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -16966,7 +16098,7 @@ void SetupIntrinsics()
     TextureGetSampledMip_Texture2DArray.parameters = TextureGetSampledMip_Texture2DArray_args;
     Symbol::Resolved(&TextureGetSampledMip_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureGetSampledMip_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_Texture2DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureGetSampledMip_Texture2DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureGetSampledMip_Texture2DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureGetSampledMip_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureGetSampledMip_Texture2DArray)->returnTypeSymbol = &Texture2DArrayType;
@@ -16985,12 +16117,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureGetSampledMip_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureGetSampledMip_Texture2DArray)->returnTypeSymbol = &Texture2DArrayType;
 
-    /// textureGetSampledMip with TextureCubeArray, SamplerType, Float32x4
+    /// textureGetSampledMip with TextureCubeArray, Sampler, Float32x4
     TextureGetSampledMip_TextureCubeArray_texture.name = "texture"_c;
     TextureGetSampledMip_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
     TextureGetSampledMip_TextureCubeArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSampledMip_TextureCubeArray_sampler.name = "sampler"_c;
-    TextureGetSampledMip_TextureCubeArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureGetSampledMip_TextureCubeArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureGetSampledMip_TextureCubeArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSampledMip_TextureCubeArray_coordinate.name = "coordinate"_c;
     TextureGetSampledMip_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
@@ -16999,7 +16131,7 @@ void SetupIntrinsics()
     TextureGetSampledMip_TextureCubeArray.parameters = TextureGetSampledMip_TextureCubeArray_args;
     Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray_coordinate)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&TextureGetSampledMip_TextureCubeArray)->returnTypeSymbol = &TextureCubeArrayType;
@@ -17889,12 +17021,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&TextureFetchSample_Texture2DMSArray_sample)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&TextureFetchSample_Texture2DMSArray)->returnTypeSymbol = &Texture2DMSArrayType;
 
-    /// textureGather with Texture2D, SamplerType, Int32x2, Int32
+    /// textureGather with Texture2D, Sampler, Int32x2, Int32
     TextureGather_Texture2D_texture.name = "texture"_c;
     TextureGather_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureGather_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGather_Texture2D_sampler.name = "sampler"_c;
-    TextureGather_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureGather_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureGather_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGather_Texture2D_coordinate.name = "coordinate"_c;
     TextureGather_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
@@ -17905,7 +17037,7 @@ void SetupIntrinsics()
     TextureGather_Texture2D.parameters = TextureGather_Texture2D_args;
     Symbol::Resolved(&TextureGather_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureGather_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGather_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureGather_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureGather_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureGather_Texture2D_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureGather_Texture2D_component)->typeSymbol = &Int32Type;
@@ -17928,12 +17060,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureGather_Texture2D_component)->typeSymbol = &Int32Type;
     Symbol::Resolved(&SampledTextureGather_Texture2D)->returnTypeSymbol = &Texture2DType;
 
-    /// textureGatherOffset with Texture2D, SamplerType, Int32x2, Int32, UInt32
+    /// textureGatherOffset with Texture2D, Sampler, Int32x2, Int32, UInt32
     TextureGatherOffset_Texture2D_texture.name = "texture"_c;
     TextureGatherOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureGatherOffset_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGatherOffset_Texture2D_sampler.name = "sampler"_c;
-    TextureGatherOffset_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureGatherOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureGatherOffset_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGatherOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureGatherOffset_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
@@ -17946,7 +17078,7 @@ void SetupIntrinsics()
     TextureGatherOffset_Texture2D.parameters = TextureGatherOffset_Texture2D_args;
     Symbol::Resolved(&TextureGatherOffset_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureGatherOffset_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGatherOffset_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureGatherOffset_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureGatherOffset_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureGatherOffset_Texture2D_coordinate)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&TextureGatherOffset_Texture2D_component)->typeSymbol = &Int32Type;
@@ -17973,12 +17105,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureGatherOffset_Texture2D_offset)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&SampledTextureGatherOffset_Texture2D)->returnTypeSymbol = &Texture2DType;
 
-    /// textureGather with TextureCube, SamplerType, Int32x3, Int32
+    /// textureGather with TextureCube, Sampler, Int32x3, Int32
     TextureGather_TextureCube_texture.name = "texture"_c;
     TextureGather_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
     TextureGather_TextureCube_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGather_TextureCube_sampler.name = "sampler"_c;
-    TextureGather_TextureCube_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureGather_TextureCube_sampler.type = Type::FullType{ SamplerType.name };
     TextureGather_TextureCube_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGather_TextureCube_coordinate.name = "coordinate"_c;
     TextureGather_TextureCube_coordinate.type = Type::FullType{ Int32x3Type.name };
@@ -17989,7 +17121,7 @@ void SetupIntrinsics()
     TextureGather_TextureCube.parameters = TextureGather_TextureCube_args;
     Symbol::Resolved(&TextureGather_TextureCube_texture)->typeSymbol = &TextureCubeType;
     Symbol::Resolved(&TextureGather_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGather_TextureCube_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureGather_TextureCube_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureGather_TextureCube_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureGather_TextureCube_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureGather_TextureCube_component)->typeSymbol = &Int32Type;
@@ -18012,12 +17144,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureGather_TextureCube_component)->typeSymbol = &Int32Type;
     Symbol::Resolved(&SampledTextureGather_TextureCube)->returnTypeSymbol = &TextureCubeType;
 
-    /// textureGatherOffset with TextureCube, SamplerType, Int32x3, Int32, UInt32
+    /// textureGatherOffset with TextureCube, Sampler, Int32x3, Int32, UInt32
     TextureGatherOffset_TextureCube_texture.name = "texture"_c;
     TextureGatherOffset_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
     TextureGatherOffset_TextureCube_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGatherOffset_TextureCube_sampler.name = "sampler"_c;
-    TextureGatherOffset_TextureCube_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureGatherOffset_TextureCube_sampler.type = Type::FullType{ SamplerType.name };
     TextureGatherOffset_TextureCube_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGatherOffset_TextureCube_coordinate.name = "coordinate"_c;
     TextureGatherOffset_TextureCube_coordinate.type = Type::FullType{ Int32x3Type.name };
@@ -18030,7 +17162,7 @@ void SetupIntrinsics()
     TextureGatherOffset_TextureCube.parameters = TextureGatherOffset_TextureCube_args;
     Symbol::Resolved(&TextureGatherOffset_TextureCube_texture)->typeSymbol = &TextureCubeType;
     Symbol::Resolved(&TextureGatherOffset_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGatherOffset_TextureCube_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureGatherOffset_TextureCube_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureGatherOffset_TextureCube_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureGatherOffset_TextureCube_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureGatherOffset_TextureCube_component)->typeSymbol = &Int32Type;
@@ -18057,12 +17189,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureGatherOffset_TextureCube_offset)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&SampledTextureGatherOffset_TextureCube)->returnTypeSymbol = &TextureCubeType;
 
-    /// textureGather with Texture2DArray, SamplerType, Int32x3, Int32
+    /// textureGather with Texture2DArray, Sampler, Int32x3, Int32
     TextureGather_Texture2DArray_texture.name = "texture"_c;
     TextureGather_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
     TextureGather_Texture2DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGather_Texture2DArray_sampler.name = "sampler"_c;
-    TextureGather_Texture2DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureGather_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureGather_Texture2DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGather_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureGather_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
@@ -18073,7 +17205,7 @@ void SetupIntrinsics()
     TextureGather_Texture2DArray.parameters = TextureGather_Texture2DArray_args;
     Symbol::Resolved(&TextureGather_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureGather_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGather_Texture2DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureGather_Texture2DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureGather_Texture2DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureGather_Texture2DArray_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureGather_Texture2DArray_component)->typeSymbol = &Int32Type;
@@ -18096,12 +17228,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureGather_Texture2DArray_component)->typeSymbol = &Int32Type;
     Symbol::Resolved(&SampledTextureGather_Texture2DArray)->returnTypeSymbol = &Texture2DArrayType;
 
-    /// textureGatherOffset with Texture2DArray, SamplerType, Int32x3, Int32, UInt32
+    /// textureGatherOffset with Texture2DArray, Sampler, Int32x3, Int32, UInt32
     TextureGatherOffset_Texture2DArray_texture.name = "texture"_c;
     TextureGatherOffset_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
     TextureGatherOffset_Texture2DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGatherOffset_Texture2DArray_sampler.name = "sampler"_c;
-    TextureGatherOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureGatherOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureGatherOffset_Texture2DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGatherOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureGatherOffset_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
@@ -18114,7 +17246,7 @@ void SetupIntrinsics()
     TextureGatherOffset_Texture2DArray.parameters = TextureGatherOffset_Texture2DArray_args;
     Symbol::Resolved(&TextureGatherOffset_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureGatherOffset_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGatherOffset_Texture2DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureGatherOffset_Texture2DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureGatherOffset_Texture2DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureGatherOffset_Texture2DArray_coordinate)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&TextureGatherOffset_Texture2DArray_component)->typeSymbol = &Int32Type;
@@ -18141,12 +17273,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureGatherOffset_Texture2DArray_offset)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&SampledTextureGatherOffset_Texture2DArray)->returnTypeSymbol = &Texture2DArrayType;
 
-    /// textureGather with TextureCubeArray, SamplerType, Int32x4, Int32
+    /// textureGather with TextureCubeArray, Sampler, Int32x4, Int32
     TextureGather_TextureCubeArray_texture.name = "texture"_c;
     TextureGather_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
     TextureGather_TextureCubeArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGather_TextureCubeArray_sampler.name = "sampler"_c;
-    TextureGather_TextureCubeArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureGather_TextureCubeArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureGather_TextureCubeArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGather_TextureCubeArray_coordinate.name = "coordinate"_c;
     TextureGather_TextureCubeArray_coordinate.type = Type::FullType{ Int32x4Type.name };
@@ -18157,7 +17289,7 @@ void SetupIntrinsics()
     TextureGather_TextureCubeArray.parameters = TextureGather_TextureCubeArray_args;
     Symbol::Resolved(&TextureGather_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureGather_TextureCubeArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGather_TextureCubeArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureGather_TextureCubeArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureGather_TextureCubeArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureGather_TextureCubeArray_coordinate)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&TextureGather_TextureCubeArray_component)->typeSymbol = &Int32Type;
@@ -18180,12 +17312,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureGather_TextureCubeArray_component)->typeSymbol = &Int32Type;
     Symbol::Resolved(&SampledTextureGather_TextureCubeArray)->returnTypeSymbol = &TextureCubeArrayType;
 
-    /// textureGatherOffset with TextureCubeArray, SamplerType, Int32x4, Int32, UInt32
+    /// textureGatherOffset with TextureCubeArray, Sampler, Int32x4, Int32, UInt32
     TextureGatherOffset_TextureCubeArray_texture.name = "texture"_c;
     TextureGatherOffset_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
     TextureGatherOffset_TextureCubeArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGatherOffset_TextureCubeArray_sampler.name = "sampler"_c;
-    TextureGatherOffset_TextureCubeArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureGatherOffset_TextureCubeArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureGatherOffset_TextureCubeArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGatherOffset_TextureCubeArray_coordinate.name = "coordinate"_c;
     TextureGatherOffset_TextureCubeArray_coordinate.type = Type::FullType{ Int32x4Type.name };
@@ -18198,7 +17330,7 @@ void SetupIntrinsics()
     TextureGatherOffset_TextureCubeArray.parameters = TextureGatherOffset_TextureCubeArray_args;
     Symbol::Resolved(&TextureGatherOffset_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureGatherOffset_TextureCubeArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGatherOffset_TextureCubeArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureGatherOffset_TextureCubeArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureGatherOffset_TextureCubeArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureGatherOffset_TextureCubeArray_coordinate)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&TextureGatherOffset_TextureCubeArray_component)->typeSymbol = &Int32Type;
@@ -18250,12 +17382,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&TexturePixelCacheLoad_PixelCacheMS_sample)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&TexturePixelCacheLoad_PixelCacheMS)->returnTypeSymbol = &PixelCacheMSType;
 
-    /// textureSample with Texture1D, SamplerType, Float32
+    /// textureSample with Texture1D, Sampler, Float32
     TextureSample_Texture1D_texture.name = "texture"_c;
     TextureSample_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSample_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSample_Texture1D_sampler.name = "sampler"_c;
-    TextureSample_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSample_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSample_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSample_Texture1D_coordinate.name = "coordinate"_c;
     TextureSample_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -18264,7 +17396,7 @@ void SetupIntrinsics()
     TextureSample_Texture1D.parameters = TextureSample_Texture1D_args;
     Symbol::Resolved(&TextureSample_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSample_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSample_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSample_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSample_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSample_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSample_Texture1D)->returnTypeSymbol = &Float32x4Type;
@@ -18283,12 +17415,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSample_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSample_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSample with Texture2D, SamplerType, Float32x2
+    /// textureSample with Texture2D, Sampler, Float32x2
     TextureSample_Texture2D_texture.name = "texture"_c;
     TextureSample_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSample_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSample_Texture2D_sampler.name = "sampler"_c;
-    TextureSample_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSample_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSample_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSample_Texture2D_coordinate.name = "coordinate"_c;
     TextureSample_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -18297,7 +17429,7 @@ void SetupIntrinsics()
     TextureSample_Texture2D.parameters = TextureSample_Texture2D_args;
     Symbol::Resolved(&TextureSample_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSample_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSample_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSample_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSample_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSample_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSample_Texture2D)->returnTypeSymbol = &Float32x4Type;
@@ -18316,12 +17448,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSample_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSample_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSample with Texture3D, SamplerType, Float32x3
+    /// textureSample with Texture3D, Sampler, Float32x3
     TextureSample_Texture3D_texture.name = "texture"_c;
     TextureSample_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSample_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSample_Texture3D_sampler.name = "sampler"_c;
-    TextureSample_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSample_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSample_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSample_Texture3D_coordinate.name = "coordinate"_c;
     TextureSample_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -18330,7 +17462,7 @@ void SetupIntrinsics()
     TextureSample_Texture3D.parameters = TextureSample_Texture3D_args;
     Symbol::Resolved(&TextureSample_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSample_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSample_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSample_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSample_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSample_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSample_Texture3D)->returnTypeSymbol = &Float32x4Type;
@@ -18349,12 +17481,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSample_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSample_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSample with TextureCube, SamplerType, Float32x3
+    /// textureSample with TextureCube, Sampler, Float32x3
     TextureSample_TextureCube_texture.name = "texture"_c;
     TextureSample_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
     TextureSample_TextureCube_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSample_TextureCube_sampler.name = "sampler"_c;
-    TextureSample_TextureCube_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSample_TextureCube_sampler.type = Type::FullType{ SamplerType.name };
     TextureSample_TextureCube_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSample_TextureCube_coordinate.name = "coordinate"_c;
     TextureSample_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -18363,7 +17495,7 @@ void SetupIntrinsics()
     TextureSample_TextureCube.parameters = TextureSample_TextureCube_args;
     Symbol::Resolved(&TextureSample_TextureCube_texture)->typeSymbol = &TextureCubeType;
     Symbol::Resolved(&TextureSample_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSample_TextureCube_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSample_TextureCube_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSample_TextureCube_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSample_TextureCube_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSample_TextureCube)->returnTypeSymbol = &Float32x4Type;
@@ -18382,12 +17514,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSample_TextureCube_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSample_TextureCube)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSample with Texture1DArray, SamplerType, Float32x2
+    /// textureSample with Texture1DArray, Sampler, Float32x2
     TextureSample_Texture1DArray_texture.name = "texture"_c;
     TextureSample_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
     TextureSample_Texture1DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSample_Texture1DArray_sampler.name = "sampler"_c;
-    TextureSample_Texture1DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSample_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSample_Texture1DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSample_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSample_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -18396,7 +17528,7 @@ void SetupIntrinsics()
     TextureSample_Texture1DArray.parameters = TextureSample_Texture1DArray_args;
     Symbol::Resolved(&TextureSample_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureSample_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSample_Texture1DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSample_Texture1DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSample_Texture1DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSample_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSample_Texture1DArray)->returnTypeSymbol = &Float32x4Type;
@@ -18415,12 +17547,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSample_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSample_Texture1DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSample with Texture2DArray, SamplerType, Float32x3
+    /// textureSample with Texture2DArray, Sampler, Float32x3
     TextureSample_Texture2DArray_texture.name = "texture"_c;
     TextureSample_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
     TextureSample_Texture2DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSample_Texture2DArray_sampler.name = "sampler"_c;
-    TextureSample_Texture2DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSample_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSample_Texture2DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSample_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSample_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -18429,7 +17561,7 @@ void SetupIntrinsics()
     TextureSample_Texture2DArray.parameters = TextureSample_Texture2DArray_args;
     Symbol::Resolved(&TextureSample_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureSample_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSample_Texture2DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSample_Texture2DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSample_Texture2DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSample_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSample_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
@@ -18448,12 +17580,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSample_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSample_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSample with TextureCubeArray, SamplerType, Float32x4
+    /// textureSample with TextureCubeArray, Sampler, Float32x4
     TextureSample_TextureCubeArray_texture.name = "texture"_c;
     TextureSample_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
     TextureSample_TextureCubeArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSample_TextureCubeArray_sampler.name = "sampler"_c;
-    TextureSample_TextureCubeArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSample_TextureCubeArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSample_TextureCubeArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSample_TextureCubeArray_coordinate.name = "coordinate"_c;
     TextureSample_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
@@ -18462,7 +17594,7 @@ void SetupIntrinsics()
     TextureSample_TextureCubeArray.parameters = TextureSample_TextureCubeArray_args;
     Symbol::Resolved(&TextureSample_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureSample_TextureCubeArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSample_TextureCubeArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSample_TextureCubeArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSample_TextureCubeArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSample_TextureCubeArray_coordinate)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&TextureSample_TextureCubeArray)->returnTypeSymbol = &Float32x4Type;
@@ -18481,12 +17613,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSample_TextureCubeArray_coordinate)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&SampledTextureSample_TextureCubeArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleOffset with Texture1D, SamplerType, Float32, Float32
+    /// textureSampleOffset with Texture1D, Sampler, Float32, Float32
     TextureSampleOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleOffset_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleOffset_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleOffset_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleOffset_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -18497,7 +17629,7 @@ void SetupIntrinsics()
     TextureSampleOffset_Texture1D.parameters = TextureSampleOffset_Texture1D_args;
     Symbol::Resolved(&TextureSampleOffset_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleOffset_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleOffset_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleOffset_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleOffset_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleOffset_Texture1D_offset)->typeSymbol = &Float32Type;
@@ -18520,12 +17652,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleOffset_Texture1D_offset)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleOffset_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleOffset with Texture2D, SamplerType, Float32x2, Float32x2
+    /// textureSampleOffset with Texture2D, Sampler, Float32x2, Float32x2
     TextureSampleOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleOffset_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleOffset_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleOffset_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleOffset_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -18536,7 +17668,7 @@ void SetupIntrinsics()
     TextureSampleOffset_Texture2D.parameters = TextureSampleOffset_Texture2D_args;
     Symbol::Resolved(&TextureSampleOffset_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleOffset_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleOffset_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleOffset_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleOffset_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
@@ -18559,12 +17691,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleOffset_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleOffset with Texture3D, SamplerType, Float32x3, Float32x3
+    /// textureSampleOffset with Texture3D, Sampler, Float32x3, Float32x3
     TextureSampleOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleOffset_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleOffset_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleOffset_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleOffset_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -18575,7 +17707,7 @@ void SetupIntrinsics()
     TextureSampleOffset_Texture3D.parameters = TextureSampleOffset_Texture3D_args;
     Symbol::Resolved(&TextureSampleOffset_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleOffset_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleOffset_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleOffset_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleOffset_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
@@ -18598,12 +17730,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleOffset_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleOffset with Texture1DArray, SamplerType, Float32x2, Float32x2
+    /// textureSampleOffset with Texture1DArray, Sampler, Float32x2, Float32x2
     TextureSampleOffset_Texture1DArray_texture.name = "texture"_c;
     TextureSampleOffset_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
     TextureSampleOffset_Texture1DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleOffset_Texture1DArray_sampler.name = "sampler"_c;
-    TextureSampleOffset_Texture1DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleOffset_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleOffset_Texture1DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleOffset_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -18614,7 +17746,7 @@ void SetupIntrinsics()
     TextureSampleOffset_Texture1DArray.parameters = TextureSampleOffset_Texture1DArray_args;
     Symbol::Resolved(&TextureSampleOffset_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureSampleOffset_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleOffset_Texture1DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleOffset_Texture1DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleOffset_Texture1DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleOffset_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleOffset_Texture1DArray_offset)->typeSymbol = &Float32x2Type;
@@ -18637,12 +17769,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleOffset_Texture1DArray_offset)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleOffset_Texture1DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleOffset with Texture2DArray, SamplerType, Float32x3, Float32x3
+    /// textureSampleOffset with Texture2DArray, Sampler, Float32x3, Float32x3
     TextureSampleOffset_Texture2DArray_texture.name = "texture"_c;
     TextureSampleOffset_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
     TextureSampleOffset_Texture2DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleOffset_Texture2DArray_sampler.name = "sampler"_c;
-    TextureSampleOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleOffset_Texture2DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -18653,7 +17785,7 @@ void SetupIntrinsics()
     TextureSampleOffset_Texture2DArray.parameters = TextureSampleOffset_Texture2DArray_args;
     Symbol::Resolved(&TextureSampleOffset_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureSampleOffset_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleOffset_Texture2DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleOffset_Texture2DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleOffset_Texture2DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleOffset_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleOffset_Texture2DArray_offset)->typeSymbol = &Float32x3Type;
@@ -18676,12 +17808,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleOffset_Texture2DArray_offset)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleOffset_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleProj with Texture1D, SamplerType, Float32, Float32
+    /// textureSampleProj with Texture1D, Sampler, Float32, Float32
     TextureSampleProj_Texture1D_texture.name = "texture"_c;
     TextureSampleProj_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleProj_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleProj_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleProj_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleProj_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleProj_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleProj_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleProj_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -18692,7 +17824,7 @@ void SetupIntrinsics()
     TextureSampleProj_Texture1D.parameters = TextureSampleProj_Texture1D_args;
     Symbol::Resolved(&TextureSampleProj_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleProj_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleProj_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleProj_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleProj_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleProj_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleProj_Texture1D_proj)->typeSymbol = &Float32Type;
@@ -18715,12 +17847,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleProj_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleProj_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleProj with Texture2D, SamplerType, Float32x2, Float32
+    /// textureSampleProj with Texture2D, Sampler, Float32x2, Float32
     TextureSampleProj_Texture2D_texture.name = "texture"_c;
     TextureSampleProj_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleProj_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleProj_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleProj_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleProj_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleProj_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleProj_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleProj_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -18731,7 +17863,7 @@ void SetupIntrinsics()
     TextureSampleProj_Texture2D.parameters = TextureSampleProj_Texture2D_args;
     Symbol::Resolved(&TextureSampleProj_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleProj_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleProj_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleProj_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleProj_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleProj_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleProj_Texture2D_proj)->typeSymbol = &Float32Type;
@@ -18754,12 +17886,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleProj_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleProj_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleProj with Texture3D, SamplerType, Float32x3, Float32
+    /// textureSampleProj with Texture3D, Sampler, Float32x3, Float32
     TextureSampleProj_Texture3D_texture.name = "texture"_c;
     TextureSampleProj_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleProj_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleProj_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleProj_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleProj_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleProj_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleProj_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleProj_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -18770,7 +17902,7 @@ void SetupIntrinsics()
     TextureSampleProj_Texture3D.parameters = TextureSampleProj_Texture3D_args;
     Symbol::Resolved(&TextureSampleProj_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleProj_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleProj_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleProj_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleProj_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleProj_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleProj_Texture3D_proj)->typeSymbol = &Float32Type;
@@ -18793,12 +17925,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleProj_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleProj_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleProjOffset with Texture1D, SamplerType, Float32, Float32, Float32
+    /// textureSampleProjOffset with Texture1D, Sampler, Float32, Float32, Float32
     TextureSampleProjOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleProjOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleProjOffset_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleProjOffset_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleProjOffset_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleProjOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleProjOffset_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleProjOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleProjOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -18811,7 +17943,7 @@ void SetupIntrinsics()
     TextureSampleProjOffset_Texture1D.parameters = TextureSampleProjOffset_Texture1D_args;
     Symbol::Resolved(&TextureSampleProjOffset_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleProjOffset_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleProjOffset_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleProjOffset_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleProjOffset_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleProjOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleProjOffset_Texture1D_proj)->typeSymbol = &Float32Type;
@@ -18838,12 +17970,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleProjOffset_Texture1D_offset)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleProjOffset_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleProjOffset with Texture2D, SamplerType, Float32x2, Float32, Float32x2
+    /// textureSampleProjOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2
     TextureSampleProjOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleProjOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleProjOffset_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleProjOffset_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleProjOffset_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleProjOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleProjOffset_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleProjOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleProjOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -18856,7 +17988,7 @@ void SetupIntrinsics()
     TextureSampleProjOffset_Texture2D.parameters = TextureSampleProjOffset_Texture2D_args;
     Symbol::Resolved(&TextureSampleProjOffset_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleProjOffset_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleProjOffset_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleProjOffset_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleProjOffset_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleProjOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleProjOffset_Texture2D_proj)->typeSymbol = &Float32Type;
@@ -18883,12 +18015,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleProjOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleProjOffset_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleProjOffset with Texture3D, SamplerType, Float32x3, Float32, Float32x3
+    /// textureSampleProjOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3
     TextureSampleProjOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleProjOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleProjOffset_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleProjOffset_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleProjOffset_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleProjOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleProjOffset_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleProjOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleProjOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -18901,7 +18033,7 @@ void SetupIntrinsics()
     TextureSampleProjOffset_Texture3D.parameters = TextureSampleProjOffset_Texture3D_args;
     Symbol::Resolved(&TextureSampleProjOffset_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleProjOffset_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleProjOffset_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleProjOffset_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleProjOffset_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleProjOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleProjOffset_Texture3D_proj)->typeSymbol = &Float32Type;
@@ -18928,12 +18060,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleProjOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleProjOffset_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleCompare with Texture1D, SamplerType, Float32, Float32
+    /// textureSampleCompare with Texture1D, Sampler, Float32, Float32
     TextureSampleCompare_Texture1D_texture.name = "texture"_c;
     TextureSampleCompare_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleCompare_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleCompare_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleCompare_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleCompare_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleCompare_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleCompare_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -18944,7 +18076,7 @@ void SetupIntrinsics()
     TextureSampleCompare_Texture1D.parameters = TextureSampleCompare_Texture1D_args;
     Symbol::Resolved(&TextureSampleCompare_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleCompare_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleCompare_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleCompare_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleCompare_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleCompare_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleCompare_Texture1D_compare)->typeSymbol = &Float32Type;
@@ -18967,12 +18099,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleCompare_Texture1D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleCompare_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleCompare with Texture2D, SamplerType, Float32x2, Float32
+    /// textureSampleCompare with Texture2D, Sampler, Float32x2, Float32
     TextureSampleCompare_Texture2D_texture.name = "texture"_c;
     TextureSampleCompare_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleCompare_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleCompare_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleCompare_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleCompare_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleCompare_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleCompare_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -18983,7 +18115,7 @@ void SetupIntrinsics()
     TextureSampleCompare_Texture2D.parameters = TextureSampleCompare_Texture2D_args;
     Symbol::Resolved(&TextureSampleCompare_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleCompare_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleCompare_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleCompare_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleCompare_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleCompare_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleCompare_Texture2D_compare)->typeSymbol = &Float32Type;
@@ -19006,12 +18138,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleCompare_Texture2D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleCompare_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleCompare with Texture3D, SamplerType, Float32x3, Float32
+    /// textureSampleCompare with Texture3D, Sampler, Float32x3, Float32
     TextureSampleCompare_Texture3D_texture.name = "texture"_c;
     TextureSampleCompare_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleCompare_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleCompare_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleCompare_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleCompare_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleCompare_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleCompare_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -19022,7 +18154,7 @@ void SetupIntrinsics()
     TextureSampleCompare_Texture3D.parameters = TextureSampleCompare_Texture3D_args;
     Symbol::Resolved(&TextureSampleCompare_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleCompare_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleCompare_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleCompare_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleCompare_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleCompare_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleCompare_Texture3D_compare)->typeSymbol = &Float32Type;
@@ -19045,12 +18177,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleCompare_Texture3D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleCompare_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleCompare with Texture1DArray, SamplerType, Float32x2, Float32
+    /// textureSampleCompare with Texture1DArray, Sampler, Float32x2, Float32
     TextureSampleCompare_Texture1DArray_texture.name = "texture"_c;
     TextureSampleCompare_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
     TextureSampleCompare_Texture1DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleCompare_Texture1DArray_sampler.name = "sampler"_c;
-    TextureSampleCompare_Texture1DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleCompare_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleCompare_Texture1DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleCompare_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleCompare_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -19061,7 +18193,7 @@ void SetupIntrinsics()
     TextureSampleCompare_Texture1DArray.parameters = TextureSampleCompare_Texture1DArray_args;
     Symbol::Resolved(&TextureSampleCompare_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureSampleCompare_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleCompare_Texture1DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleCompare_Texture1DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleCompare_Texture1DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleCompare_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleCompare_Texture1DArray_compare)->typeSymbol = &Float32Type;
@@ -19084,12 +18216,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleCompare_Texture1DArray_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleCompare_Texture1DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleCompare with Texture2DArray, SamplerType, Float32x3, Float32
+    /// textureSampleCompare with Texture2DArray, Sampler, Float32x3, Float32
     TextureSampleCompare_Texture2DArray_texture.name = "texture"_c;
     TextureSampleCompare_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
     TextureSampleCompare_Texture2DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleCompare_Texture2DArray_sampler.name = "sampler"_c;
-    TextureSampleCompare_Texture2DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleCompare_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleCompare_Texture2DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleCompare_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleCompare_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -19100,7 +18232,7 @@ void SetupIntrinsics()
     TextureSampleCompare_Texture2DArray.parameters = TextureSampleCompare_Texture2DArray_args;
     Symbol::Resolved(&TextureSampleCompare_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureSampleCompare_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleCompare_Texture2DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleCompare_Texture2DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleCompare_Texture2DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleCompare_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleCompare_Texture2DArray_compare)->typeSymbol = &Float32Type;
@@ -19123,12 +18255,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleCompare_Texture2DArray_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleCompare_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleCompareOffset with Texture1D, SamplerType, Float32, Float32, Float32
+    /// textureSampleCompareOffset with Texture1D, Sampler, Float32, Float32, Float32
     TextureSampleCompareOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleCompareOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleCompareOffset_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleCompareOffset_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleCompareOffset_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleCompareOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleCompareOffset_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -19141,7 +18273,7 @@ void SetupIntrinsics()
     TextureSampleCompareOffset_Texture1D.parameters = TextureSampleCompareOffset_Texture1D_args;
     Symbol::Resolved(&TextureSampleCompareOffset_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleCompareOffset_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleCompareOffset_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleCompareOffset_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleCompareOffset_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleCompareOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleCompareOffset_Texture1D_compare)->typeSymbol = &Float32Type;
@@ -19168,12 +18300,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleCompareOffset_Texture1D_offset)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleCompareOffset_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleCompareOffset with Texture2D, SamplerType, Float32x2, Float32, Float32x2
+    /// textureSampleCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2
     TextureSampleCompareOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleCompareOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleCompareOffset_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleCompareOffset_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleCompareOffset_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleCompareOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleCompareOffset_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -19186,7 +18318,7 @@ void SetupIntrinsics()
     TextureSampleCompareOffset_Texture2D.parameters = TextureSampleCompareOffset_Texture2D_args;
     Symbol::Resolved(&TextureSampleCompareOffset_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleCompareOffset_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleCompareOffset_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleCompareOffset_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleCompareOffset_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleCompareOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleCompareOffset_Texture2D_compare)->typeSymbol = &Float32Type;
@@ -19213,12 +18345,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleCompareOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleCompareOffset_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleCompareOffset with Texture3D, SamplerType, Float32x3, Float32, Float32x3
+    /// textureSampleCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3
     TextureSampleCompareOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleCompareOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleCompareOffset_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleCompareOffset_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleCompareOffset_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleCompareOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleCompareOffset_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -19231,7 +18363,7 @@ void SetupIntrinsics()
     TextureSampleCompareOffset_Texture3D.parameters = TextureSampleCompareOffset_Texture3D_args;
     Symbol::Resolved(&TextureSampleCompareOffset_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleCompareOffset_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleCompareOffset_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleCompareOffset_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleCompareOffset_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleCompareOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleCompareOffset_Texture3D_compare)->typeSymbol = &Float32Type;
@@ -19258,12 +18390,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleCompareOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleCompareOffset_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleCompareOffset with Texture1DArray, SamplerType, Float32x2, Float32, Float32x2
+    /// textureSampleCompareOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32x2
     TextureSampleCompareOffset_Texture1DArray_texture.name = "texture"_c;
     TextureSampleCompareOffset_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
     TextureSampleCompareOffset_Texture1DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleCompareOffset_Texture1DArray_sampler.name = "sampler"_c;
-    TextureSampleCompareOffset_Texture1DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleCompareOffset_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleCompareOffset_Texture1DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleCompareOffset_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleCompareOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -19276,7 +18408,7 @@ void SetupIntrinsics()
     TextureSampleCompareOffset_Texture1DArray.parameters = TextureSampleCompareOffset_Texture1DArray_args;
     Symbol::Resolved(&TextureSampleCompareOffset_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureSampleCompareOffset_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleCompareOffset_Texture1DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleCompareOffset_Texture1DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleCompareOffset_Texture1DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleCompareOffset_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleCompareOffset_Texture1DArray_compare)->typeSymbol = &Float32Type;
@@ -19303,12 +18435,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleCompareOffset_Texture1DArray_offset)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleCompareOffset_Texture1DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleCompareOffset with Texture2DArray, SamplerType, Float32x3, Float32, Float32x3
+    /// textureSampleCompareOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32x3
     TextureSampleCompareOffset_Texture2DArray_texture.name = "texture"_c;
     TextureSampleCompareOffset_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
     TextureSampleCompareOffset_Texture2DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleCompareOffset_Texture2DArray_sampler.name = "sampler"_c;
-    TextureSampleCompareOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleCompareOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleCompareOffset_Texture2DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleCompareOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleCompareOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -19321,7 +18453,7 @@ void SetupIntrinsics()
     TextureSampleCompareOffset_Texture2DArray.parameters = TextureSampleCompareOffset_Texture2DArray_args;
     Symbol::Resolved(&TextureSampleCompareOffset_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureSampleCompareOffset_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleCompareOffset_Texture2DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleCompareOffset_Texture2DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleCompareOffset_Texture2DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleCompareOffset_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleCompareOffset_Texture2DArray_compare)->typeSymbol = &Float32Type;
@@ -19348,12 +18480,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleCompareOffset_Texture2DArray_offset)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleCompareOffset_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleProjCompare with Texture1D, SamplerType, Float32, Float32, Float32
+    /// textureSampleProjCompare with Texture1D, Sampler, Float32, Float32, Float32
     TextureSampleProjCompare_Texture1D_texture.name = "texture"_c;
     TextureSampleProjCompare_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleProjCompare_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleProjCompare_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleProjCompare_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleProjCompare_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleProjCompare_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleProjCompare_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleProjCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -19366,7 +18498,7 @@ void SetupIntrinsics()
     TextureSampleProjCompare_Texture1D.parameters = TextureSampleProjCompare_Texture1D_args;
     Symbol::Resolved(&TextureSampleProjCompare_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleProjCompare_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleProjCompare_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleProjCompare_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleProjCompare_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleProjCompare_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleProjCompare_Texture1D_proj)->typeSymbol = &Float32Type;
@@ -19393,12 +18525,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleProjCompare_Texture1D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleProjCompare_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleProjCompare with Texture2D, SamplerType, Float32x2, Float32, Float32
+    /// textureSampleProjCompare with Texture2D, Sampler, Float32x2, Float32, Float32
     TextureSampleProjCompare_Texture2D_texture.name = "texture"_c;
     TextureSampleProjCompare_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleProjCompare_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleProjCompare_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleProjCompare_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleProjCompare_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleProjCompare_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleProjCompare_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleProjCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -19411,7 +18543,7 @@ void SetupIntrinsics()
     TextureSampleProjCompare_Texture2D.parameters = TextureSampleProjCompare_Texture2D_args;
     Symbol::Resolved(&TextureSampleProjCompare_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleProjCompare_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleProjCompare_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleProjCompare_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleProjCompare_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleProjCompare_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleProjCompare_Texture2D_proj)->typeSymbol = &Float32Type;
@@ -19438,12 +18570,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleProjCompare_Texture2D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleProjCompare_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleProjCompare with Texture3D, SamplerType, Float32x3, Float32, Float32
+    /// textureSampleProjCompare with Texture3D, Sampler, Float32x3, Float32, Float32
     TextureSampleProjCompare_Texture3D_texture.name = "texture"_c;
     TextureSampleProjCompare_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleProjCompare_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleProjCompare_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleProjCompare_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleProjCompare_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleProjCompare_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleProjCompare_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleProjCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -19456,7 +18588,7 @@ void SetupIntrinsics()
     TextureSampleProjCompare_Texture3D.parameters = TextureSampleProjCompare_Texture3D_args;
     Symbol::Resolved(&TextureSampleProjCompare_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleProjCompare_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleProjCompare_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleProjCompare_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleProjCompare_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleProjCompare_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleProjCompare_Texture3D_proj)->typeSymbol = &Float32Type;
@@ -19483,12 +18615,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleProjCompare_Texture3D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleProjCompare_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleProjCompareOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+    /// textureSampleProjCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
     TextureSampleProjCompareOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleProjCompareOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleProjCompareOffset_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleProjCompareOffset_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleProjCompareOffset_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleProjCompareOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleProjCompareOffset_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleProjCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleProjCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -19503,7 +18635,7 @@ void SetupIntrinsics()
     TextureSampleProjCompareOffset_Texture1D.parameters = TextureSampleProjCompareOffset_Texture1D_args;
     Symbol::Resolved(&TextureSampleProjCompareOffset_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleProjCompareOffset_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleProjCompareOffset_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleProjCompareOffset_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleProjCompareOffset_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleProjCompareOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleProjCompareOffset_Texture1D_proj)->typeSymbol = &Float32Type;
@@ -19534,12 +18666,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleProjCompareOffset_Texture1D_offset)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleProjCompareOffset_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleProjCompareOffset with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32x2
+    /// textureSampleProjCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
     TextureSampleProjCompareOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleProjCompareOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleProjCompareOffset_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleProjCompareOffset_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleProjCompareOffset_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleProjCompareOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleProjCompareOffset_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleProjCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleProjCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -19554,7 +18686,7 @@ void SetupIntrinsics()
     TextureSampleProjCompareOffset_Texture2D.parameters = TextureSampleProjCompareOffset_Texture2D_args;
     Symbol::Resolved(&TextureSampleProjCompareOffset_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleProjCompareOffset_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleProjCompareOffset_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleProjCompareOffset_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleProjCompareOffset_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleProjCompareOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleProjCompareOffset_Texture2D_proj)->typeSymbol = &Float32Type;
@@ -19585,12 +18717,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleProjCompareOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleProjCompareOffset_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleProjCompareOffset with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32x3
+    /// textureSampleProjCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
     TextureSampleProjCompareOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleProjCompareOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleProjCompareOffset_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleProjCompareOffset_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleProjCompareOffset_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleProjCompareOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleProjCompareOffset_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleProjCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleProjCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -19605,7 +18737,7 @@ void SetupIntrinsics()
     TextureSampleProjCompareOffset_Texture3D.parameters = TextureSampleProjCompareOffset_Texture3D_args;
     Symbol::Resolved(&TextureSampleProjCompareOffset_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleProjCompareOffset_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleProjCompareOffset_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleProjCompareOffset_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleProjCompareOffset_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleProjCompareOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleProjCompareOffset_Texture3D_proj)->typeSymbol = &Float32Type;
@@ -19636,12 +18768,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleProjCompareOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleProjCompareOffset_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLod with Texture1D, SamplerType, Float32, Float32
+    /// textureSampleLod with Texture1D, Sampler, Float32, Float32
     TextureSampleLod_Texture1D_texture.name = "texture"_c;
     TextureSampleLod_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleLod_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLod_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleLod_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLod_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLod_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLod_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleLod_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -19652,7 +18784,7 @@ void SetupIntrinsics()
     TextureSampleLod_Texture1D.parameters = TextureSampleLod_Texture1D_args;
     Symbol::Resolved(&TextureSampleLod_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleLod_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLod_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLod_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLod_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLod_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLod_Texture1D_lod)->typeSymbol = &Float32Type;
@@ -19675,12 +18807,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLod_Texture1D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLod_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLod with Texture2D, SamplerType, Float32x2, Float32
+    /// textureSampleLod with Texture2D, Sampler, Float32x2, Float32
     TextureSampleLod_Texture2D_texture.name = "texture"_c;
     TextureSampleLod_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleLod_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLod_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleLod_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLod_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLod_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLod_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleLod_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -19691,7 +18823,7 @@ void SetupIntrinsics()
     TextureSampleLod_Texture2D.parameters = TextureSampleLod_Texture2D_args;
     Symbol::Resolved(&TextureSampleLod_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleLod_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLod_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLod_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLod_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLod_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleLod_Texture2D_lod)->typeSymbol = &Float32Type;
@@ -19714,12 +18846,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLod_Texture2D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLod_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLod with Texture3D, SamplerType, Float32x3, Float32
+    /// textureSampleLod with Texture3D, Sampler, Float32x3, Float32
     TextureSampleLod_Texture3D_texture.name = "texture"_c;
     TextureSampleLod_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleLod_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLod_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleLod_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLod_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLod_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLod_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleLod_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -19730,7 +18862,7 @@ void SetupIntrinsics()
     TextureSampleLod_Texture3D.parameters = TextureSampleLod_Texture3D_args;
     Symbol::Resolved(&TextureSampleLod_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleLod_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLod_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLod_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLod_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLod_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleLod_Texture3D_lod)->typeSymbol = &Float32Type;
@@ -19753,12 +18885,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLod_Texture3D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLod_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLod with TextureCube, SamplerType, Float32x3, Float32
+    /// textureSampleLod with TextureCube, Sampler, Float32x3, Float32
     TextureSampleLod_TextureCube_texture.name = "texture"_c;
     TextureSampleLod_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
     TextureSampleLod_TextureCube_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLod_TextureCube_sampler.name = "sampler"_c;
-    TextureSampleLod_TextureCube_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLod_TextureCube_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLod_TextureCube_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLod_TextureCube_coordinate.name = "coordinate"_c;
     TextureSampleLod_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -19769,7 +18901,7 @@ void SetupIntrinsics()
     TextureSampleLod_TextureCube.parameters = TextureSampleLod_TextureCube_args;
     Symbol::Resolved(&TextureSampleLod_TextureCube_texture)->typeSymbol = &TextureCubeType;
     Symbol::Resolved(&TextureSampleLod_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLod_TextureCube_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLod_TextureCube_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLod_TextureCube_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLod_TextureCube_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleLod_TextureCube_lod)->typeSymbol = &Float32Type;
@@ -19792,12 +18924,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLod_TextureCube_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLod_TextureCube)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLod with Texture1DArray, SamplerType, Float32x2, Float32
+    /// textureSampleLod with Texture1DArray, Sampler, Float32x2, Float32
     TextureSampleLod_Texture1DArray_texture.name = "texture"_c;
     TextureSampleLod_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
     TextureSampleLod_Texture1DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLod_Texture1DArray_sampler.name = "sampler"_c;
-    TextureSampleLod_Texture1DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLod_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLod_Texture1DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLod_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleLod_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -19808,7 +18940,7 @@ void SetupIntrinsics()
     TextureSampleLod_Texture1DArray.parameters = TextureSampleLod_Texture1DArray_args;
     Symbol::Resolved(&TextureSampleLod_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureSampleLod_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLod_Texture1DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLod_Texture1DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLod_Texture1DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLod_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleLod_Texture1DArray_lod)->typeSymbol = &Float32Type;
@@ -19831,12 +18963,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLod_Texture1DArray_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLod_Texture1DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLod with Texture2DArray, SamplerType, Float32x3, Float32
+    /// textureSampleLod with Texture2DArray, Sampler, Float32x3, Float32
     TextureSampleLod_Texture2DArray_texture.name = "texture"_c;
     TextureSampleLod_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
     TextureSampleLod_Texture2DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLod_Texture2DArray_sampler.name = "sampler"_c;
-    TextureSampleLod_Texture2DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLod_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLod_Texture2DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLod_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleLod_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -19847,7 +18979,7 @@ void SetupIntrinsics()
     TextureSampleLod_Texture2DArray.parameters = TextureSampleLod_Texture2DArray_args;
     Symbol::Resolved(&TextureSampleLod_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureSampleLod_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLod_Texture2DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLod_Texture2DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLod_Texture2DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLod_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleLod_Texture2DArray_lod)->typeSymbol = &Float32Type;
@@ -19870,12 +19002,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLod_Texture2DArray_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLod_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLod with TextureCubeArray, SamplerType, Float32x4, Float32
+    /// textureSampleLod with TextureCubeArray, Sampler, Float32x4, Float32
     TextureSampleLod_TextureCubeArray_texture.name = "texture"_c;
     TextureSampleLod_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
     TextureSampleLod_TextureCubeArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLod_TextureCubeArray_sampler.name = "sampler"_c;
-    TextureSampleLod_TextureCubeArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLod_TextureCubeArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLod_TextureCubeArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLod_TextureCubeArray_coordinate.name = "coordinate"_c;
     TextureSampleLod_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
@@ -19886,7 +19018,7 @@ void SetupIntrinsics()
     TextureSampleLod_TextureCubeArray.parameters = TextureSampleLod_TextureCubeArray_args;
     Symbol::Resolved(&TextureSampleLod_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureSampleLod_TextureCubeArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLod_TextureCubeArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLod_TextureCubeArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLod_TextureCubeArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLod_TextureCubeArray_coordinate)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&TextureSampleLod_TextureCubeArray_lod)->typeSymbol = &Float32Type;
@@ -19909,12 +19041,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLod_TextureCubeArray_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLod_TextureCubeArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodOffset with Texture1D, SamplerType, Float32, Float32, Float32
+    /// textureSampleLodOffset with Texture1D, Sampler, Float32, Float32, Float32
     TextureSampleLodOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleLodOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleLodOffset_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodOffset_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleLodOffset_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodOffset_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleLodOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -19927,7 +19059,7 @@ void SetupIntrinsics()
     TextureSampleLodOffset_Texture1D.parameters = TextureSampleLodOffset_Texture1D_args;
     Symbol::Resolved(&TextureSampleLodOffset_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleLodOffset_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodOffset_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodOffset_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodOffset_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodOffset_Texture1D_lod)->typeSymbol = &Float32Type;
@@ -19954,12 +19086,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodOffset_Texture1D_offset)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodOffset_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodOffset with Texture2D, SamplerType, Float32x2, Float32, Float32x2
+    /// textureSampleLodOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2
     TextureSampleLodOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleLodOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleLodOffset_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodOffset_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleLodOffset_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodOffset_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleLodOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -19972,7 +19104,7 @@ void SetupIntrinsics()
     TextureSampleLodOffset_Texture2D.parameters = TextureSampleLodOffset_Texture2D_args;
     Symbol::Resolved(&TextureSampleLodOffset_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleLodOffset_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodOffset_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodOffset_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodOffset_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleLodOffset_Texture2D_lod)->typeSymbol = &Float32Type;
@@ -19999,12 +19131,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleLodOffset_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodOffset with Texture3D, SamplerType, Float32x3, Float32, Float32x3
+    /// textureSampleLodOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3
     TextureSampleLodOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleLodOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleLodOffset_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodOffset_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleLodOffset_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodOffset_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleLodOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -20017,7 +19149,7 @@ void SetupIntrinsics()
     TextureSampleLodOffset_Texture3D.parameters = TextureSampleLodOffset_Texture3D_args;
     Symbol::Resolved(&TextureSampleLodOffset_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleLodOffset_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodOffset_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodOffset_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodOffset_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleLodOffset_Texture3D_lod)->typeSymbol = &Float32Type;
@@ -20044,12 +19176,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleLodOffset_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodOffset with Texture1DArray, SamplerType, Float32x2, Float32, Float32x2
+    /// textureSampleLodOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32x2
     TextureSampleLodOffset_Texture1DArray_texture.name = "texture"_c;
     TextureSampleLodOffset_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
     TextureSampleLodOffset_Texture1DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodOffset_Texture1DArray_sampler.name = "sampler"_c;
-    TextureSampleLodOffset_Texture1DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodOffset_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodOffset_Texture1DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodOffset_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleLodOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -20062,7 +19194,7 @@ void SetupIntrinsics()
     TextureSampleLodOffset_Texture1DArray.parameters = TextureSampleLodOffset_Texture1DArray_args;
     Symbol::Resolved(&TextureSampleLodOffset_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureSampleLodOffset_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodOffset_Texture1DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodOffset_Texture1DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodOffset_Texture1DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodOffset_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleLodOffset_Texture1DArray_lod)->typeSymbol = &Float32Type;
@@ -20089,12 +19221,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodOffset_Texture1DArray_offset)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleLodOffset_Texture1DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodOffset with Texture2DArray, SamplerType, Float32x3, Float32, Float32x3
+    /// textureSampleLodOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32x3
     TextureSampleLodOffset_Texture2DArray_texture.name = "texture"_c;
     TextureSampleLodOffset_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
     TextureSampleLodOffset_Texture2DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodOffset_Texture2DArray_sampler.name = "sampler"_c;
-    TextureSampleLodOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodOffset_Texture2DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleLodOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -20107,7 +19239,7 @@ void SetupIntrinsics()
     TextureSampleLodOffset_Texture2DArray.parameters = TextureSampleLodOffset_Texture2DArray_args;
     Symbol::Resolved(&TextureSampleLodOffset_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureSampleLodOffset_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodOffset_Texture2DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodOffset_Texture2DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodOffset_Texture2DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodOffset_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleLodOffset_Texture2DArray_lod)->typeSymbol = &Float32Type;
@@ -20134,12 +19266,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodOffset_Texture2DArray_offset)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleLodOffset_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodProj with Texture1D, SamplerType, Float32, Float32, Float32
+    /// textureSampleLodProj with Texture1D, Sampler, Float32, Float32, Float32
     TextureSampleLodProj_Texture1D_texture.name = "texture"_c;
     TextureSampleLodProj_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleLodProj_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodProj_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleLodProj_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodProj_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodProj_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodProj_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleLodProj_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -20152,7 +19284,7 @@ void SetupIntrinsics()
     TextureSampleLodProj_Texture1D.parameters = TextureSampleLodProj_Texture1D_args;
     Symbol::Resolved(&TextureSampleLodProj_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleLodProj_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodProj_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodProj_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodProj_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodProj_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProj_Texture1D_lod)->typeSymbol = &Float32Type;
@@ -20179,12 +19311,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodProj with Texture2D, SamplerType, Float32x2, Float32, Float32
+    /// textureSampleLodProj with Texture2D, Sampler, Float32x2, Float32, Float32
     TextureSampleLodProj_Texture2D_texture.name = "texture"_c;
     TextureSampleLodProj_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleLodProj_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodProj_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleLodProj_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodProj_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodProj_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodProj_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleLodProj_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -20197,7 +19329,7 @@ void SetupIntrinsics()
     TextureSampleLodProj_Texture2D.parameters = TextureSampleLodProj_Texture2D_args;
     Symbol::Resolved(&TextureSampleLodProj_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleLodProj_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodProj_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodProj_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodProj_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodProj_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleLodProj_Texture2D_lod)->typeSymbol = &Float32Type;
@@ -20224,12 +19356,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodProj with Texture3D, SamplerType, Float32x3, Float32, Float32
+    /// textureSampleLodProj with Texture3D, Sampler, Float32x3, Float32, Float32
     TextureSampleLodProj_Texture3D_texture.name = "texture"_c;
     TextureSampleLodProj_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleLodProj_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodProj_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleLodProj_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodProj_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodProj_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodProj_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleLodProj_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -20242,7 +19374,7 @@ void SetupIntrinsics()
     TextureSampleLodProj_Texture3D.parameters = TextureSampleLodProj_Texture3D_args;
     Symbol::Resolved(&TextureSampleLodProj_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleLodProj_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodProj_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodProj_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodProj_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodProj_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleLodProj_Texture3D_lod)->typeSymbol = &Float32Type;
@@ -20269,12 +19401,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodProjOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+    /// textureSampleLodProjOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
     TextureSampleLodProjOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleLodProjOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleLodProjOffset_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodProjOffset_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleLodProjOffset_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodProjOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodProjOffset_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodProjOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -20289,7 +19421,7 @@ void SetupIntrinsics()
     TextureSampleLodProjOffset_Texture1D.parameters = TextureSampleLodProjOffset_Texture1D_args;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodProjOffset_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodProjOffset_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture1D_lod)->typeSymbol = &Float32Type;
@@ -20320,12 +19452,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture1D_offset)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodProjOffset with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32x2
+    /// textureSampleLodProjOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
     TextureSampleLodProjOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleLodProjOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleLodProjOffset_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodProjOffset_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleLodProjOffset_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodProjOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodProjOffset_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodProjOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -20340,7 +19472,7 @@ void SetupIntrinsics()
     TextureSampleLodProjOffset_Texture2D.parameters = TextureSampleLodProjOffset_Texture2D_args;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodProjOffset_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodProjOffset_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture2D_lod)->typeSymbol = &Float32Type;
@@ -20371,12 +19503,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodProjOffset with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32x3
+    /// textureSampleLodProjOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
     TextureSampleLodProjOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleLodProjOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleLodProjOffset_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodProjOffset_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleLodProjOffset_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodProjOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodProjOffset_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodProjOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -20391,7 +19523,7 @@ void SetupIntrinsics()
     TextureSampleLodProjOffset_Texture3D.parameters = TextureSampleLodProjOffset_Texture3D_args;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodProjOffset_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodProjOffset_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleLodProjOffset_Texture3D_lod)->typeSymbol = &Float32Type;
@@ -20422,12 +19554,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleLodProjOffset_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodCompare with Texture1D, SamplerType, Float32, Float32, Float32
+    /// textureSampleLodCompare with Texture1D, Sampler, Float32, Float32, Float32
     TextureSampleLodCompare_Texture1D_texture.name = "texture"_c;
     TextureSampleLodCompare_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleLodCompare_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodCompare_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleLodCompare_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodCompare_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodCompare_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodCompare_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleLodCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -20440,7 +19572,7 @@ void SetupIntrinsics()
     TextureSampleLodCompare_Texture1D.parameters = TextureSampleLodCompare_Texture1D_args;
     Symbol::Resolved(&TextureSampleLodCompare_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleLodCompare_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodCompare_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodCompare_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodCompare_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodCompare_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodCompare_Texture1D_lod)->typeSymbol = &Float32Type;
@@ -20467,12 +19599,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodCompare with Texture2D, SamplerType, Float32x2, Float32, Float32
+    /// textureSampleLodCompare with Texture2D, Sampler, Float32x2, Float32, Float32
     TextureSampleLodCompare_Texture2D_texture.name = "texture"_c;
     TextureSampleLodCompare_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleLodCompare_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodCompare_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleLodCompare_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodCompare_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodCompare_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodCompare_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleLodCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -20485,7 +19617,7 @@ void SetupIntrinsics()
     TextureSampleLodCompare_Texture2D.parameters = TextureSampleLodCompare_Texture2D_args;
     Symbol::Resolved(&TextureSampleLodCompare_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleLodCompare_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodCompare_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodCompare_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodCompare_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodCompare_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleLodCompare_Texture2D_lod)->typeSymbol = &Float32Type;
@@ -20512,12 +19644,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodCompare with Texture3D, SamplerType, Float32x3, Float32, Float32
+    /// textureSampleLodCompare with Texture3D, Sampler, Float32x3, Float32, Float32
     TextureSampleLodCompare_Texture3D_texture.name = "texture"_c;
     TextureSampleLodCompare_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleLodCompare_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodCompare_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleLodCompare_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodCompare_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodCompare_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodCompare_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleLodCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -20530,7 +19662,7 @@ void SetupIntrinsics()
     TextureSampleLodCompare_Texture3D.parameters = TextureSampleLodCompare_Texture3D_args;
     Symbol::Resolved(&TextureSampleLodCompare_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleLodCompare_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodCompare_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodCompare_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodCompare_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodCompare_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleLodCompare_Texture3D_lod)->typeSymbol = &Float32Type;
@@ -20557,12 +19689,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture3D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodCompare with Texture1DArray, SamplerType, Float32x2, Float32, Float32
+    /// textureSampleLodCompare with Texture1DArray, Sampler, Float32x2, Float32, Float32
     TextureSampleLodCompare_Texture1DArray_texture.name = "texture"_c;
     TextureSampleLodCompare_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
     TextureSampleLodCompare_Texture1DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodCompare_Texture1DArray_sampler.name = "sampler"_c;
-    TextureSampleLodCompare_Texture1DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodCompare_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodCompare_Texture1DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodCompare_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleLodCompare_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -20575,7 +19707,7 @@ void SetupIntrinsics()
     TextureSampleLodCompare_Texture1DArray.parameters = TextureSampleLodCompare_Texture1DArray_args;
     Symbol::Resolved(&TextureSampleLodCompare_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureSampleLodCompare_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodCompare_Texture1DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodCompare_Texture1DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodCompare_Texture1DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodCompare_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleLodCompare_Texture1DArray_lod)->typeSymbol = &Float32Type;
@@ -20602,12 +19734,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1DArray_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture1DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodCompare with Texture2DArray, SamplerType, Float32x3, Float32, Float32
+    /// textureSampleLodCompare with Texture2DArray, Sampler, Float32x3, Float32, Float32
     TextureSampleLodCompare_Texture2DArray_texture.name = "texture"_c;
     TextureSampleLodCompare_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
     TextureSampleLodCompare_Texture2DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodCompare_Texture2DArray_sampler.name = "sampler"_c;
-    TextureSampleLodCompare_Texture2DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodCompare_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodCompare_Texture2DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodCompare_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleLodCompare_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -20620,7 +19752,7 @@ void SetupIntrinsics()
     TextureSampleLodCompare_Texture2DArray.parameters = TextureSampleLodCompare_Texture2DArray_args;
     Symbol::Resolved(&TextureSampleLodCompare_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureSampleLodCompare_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodCompare_Texture2DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodCompare_Texture2DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodCompare_Texture2DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodCompare_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleLodCompare_Texture2DArray_lod)->typeSymbol = &Float32Type;
@@ -20647,12 +19779,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2DArray_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodCompare_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodCompareOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+    /// textureSampleLodCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
     TextureSampleLodCompareOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleLodCompareOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleLodCompareOffset_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodCompareOffset_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleLodCompareOffset_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodCompareOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodCompareOffset_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleLodCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -20667,7 +19799,7 @@ void SetupIntrinsics()
     TextureSampleLodCompareOffset_Texture1D.parameters = TextureSampleLodCompareOffset_Texture1D_args;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1D_lod)->typeSymbol = &Float32Type;
@@ -20698,12 +19830,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1D_offset)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodCompareOffset with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32x2
+    /// textureSampleLodCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
     TextureSampleLodCompareOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleLodCompareOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleLodCompareOffset_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodCompareOffset_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleLodCompareOffset_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodCompareOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodCompareOffset_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleLodCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -20718,7 +19850,7 @@ void SetupIntrinsics()
     TextureSampleLodCompareOffset_Texture2D.parameters = TextureSampleLodCompareOffset_Texture2D_args;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2D_lod)->typeSymbol = &Float32Type;
@@ -20749,12 +19881,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodCompareOffset with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32x3
+    /// textureSampleLodCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
     TextureSampleLodCompareOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleLodCompareOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleLodCompareOffset_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodCompareOffset_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleLodCompareOffset_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodCompareOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodCompareOffset_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleLodCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -20769,7 +19901,7 @@ void SetupIntrinsics()
     TextureSampleLodCompareOffset_Texture3D.parameters = TextureSampleLodCompareOffset_Texture3D_args;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture3D_lod)->typeSymbol = &Float32Type;
@@ -20800,12 +19932,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodCompareOffset with Texture1DArray, SamplerType, Float32x2, Float32, Float32, Float32x2
+    /// textureSampleLodCompareOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32, Float32x2
     TextureSampleLodCompareOffset_Texture1DArray_texture.name = "texture"_c;
     TextureSampleLodCompareOffset_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
     TextureSampleLodCompareOffset_Texture1DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodCompareOffset_Texture1DArray_sampler.name = "sampler"_c;
-    TextureSampleLodCompareOffset_Texture1DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodCompareOffset_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodCompareOffset_Texture1DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodCompareOffset_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleLodCompareOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -20820,7 +19952,7 @@ void SetupIntrinsics()
     TextureSampleLodCompareOffset_Texture1DArray.parameters = TextureSampleLodCompareOffset_Texture1DArray_args;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture1DArray_lod)->typeSymbol = &Float32Type;
@@ -20851,12 +19983,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1DArray_offset)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture1DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodCompareOffset with Texture2DArray, SamplerType, Float32x3, Float32, Float32, Float32x3
+    /// textureSampleLodCompareOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32, Float32x3
     TextureSampleLodCompareOffset_Texture2DArray_texture.name = "texture"_c;
     TextureSampleLodCompareOffset_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
     TextureSampleLodCompareOffset_Texture2DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodCompareOffset_Texture2DArray_sampler.name = "sampler"_c;
-    TextureSampleLodCompareOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodCompareOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodCompareOffset_Texture2DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodCompareOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleLodCompareOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -20871,7 +20003,7 @@ void SetupIntrinsics()
     TextureSampleLodCompareOffset_Texture2DArray.parameters = TextureSampleLodCompareOffset_Texture2DArray_args;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleLodCompareOffset_Texture2DArray_lod)->typeSymbol = &Float32Type;
@@ -20902,12 +20034,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2DArray_offset)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleLodCompareOffset_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodProjCompare with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+    /// textureSampleLodProjCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32
     TextureSampleLodProjCompare_Texture1D_texture.name = "texture"_c;
     TextureSampleLodProjCompare_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleLodProjCompare_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodProjCompare_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleLodProjCompare_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodProjCompare_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodProjCompare_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodProjCompare_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -20922,7 +20054,7 @@ void SetupIntrinsics()
     TextureSampleLodProjCompare_Texture1D.parameters = TextureSampleLodProjCompare_Texture1D_args;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D_lod)->typeSymbol = &Float32Type;
@@ -20953,12 +20085,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture1D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodProjCompare with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32
+    /// textureSampleLodProjCompare with Texture2D, Sampler, Float32x2, Float32, Float32, Float32
     TextureSampleLodProjCompare_Texture2D_texture.name = "texture"_c;
     TextureSampleLodProjCompare_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleLodProjCompare_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodProjCompare_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleLodProjCompare_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodProjCompare_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodProjCompare_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodProjCompare_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -20973,7 +20105,7 @@ void SetupIntrinsics()
     TextureSampleLodProjCompare_Texture2D.parameters = TextureSampleLodProjCompare_Texture2D_args;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D_lod)->typeSymbol = &Float32Type;
@@ -21004,12 +20136,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture2D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodProjCompare with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32
+    /// textureSampleLodProjCompare with Texture3D, Sampler, Float32x3, Float32, Float32, Float32
     TextureSampleLodProjCompare_Texture3D_texture.name = "texture"_c;
     TextureSampleLodProjCompare_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleLodProjCompare_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodProjCompare_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleLodProjCompare_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodProjCompare_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodProjCompare_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodProjCompare_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -21024,7 +20156,7 @@ void SetupIntrinsics()
     TextureSampleLodProjCompare_Texture3D.parameters = TextureSampleLodProjCompare_Texture3D_args;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D_lod)->typeSymbol = &Float32Type;
@@ -21055,12 +20187,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture3D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodProjCompareOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32, Float32
+    /// textureSampleLodProjCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
     TextureSampleLodProjCompareOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleLodProjCompareOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleLodProjCompareOffset_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodProjCompareOffset_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleLodProjCompareOffset_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodProjCompareOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodProjCompareOffset_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodProjCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -21077,7 +20209,7 @@ void SetupIntrinsics()
     TextureSampleLodProjCompareOffset_Texture1D.parameters = TextureSampleLodProjCompareOffset_Texture1D_args;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture1D_lod)->typeSymbol = &Float32Type;
@@ -21112,12 +20244,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture1D_offset)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodProjCompareOffset with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32, Float32x2
+    /// textureSampleLodProjCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32, Float32x2
     TextureSampleLodProjCompareOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleLodProjCompareOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleLodProjCompareOffset_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodProjCompareOffset_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleLodProjCompareOffset_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodProjCompareOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodProjCompareOffset_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodProjCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -21134,7 +20266,7 @@ void SetupIntrinsics()
     TextureSampleLodProjCompareOffset_Texture2D.parameters = TextureSampleLodProjCompareOffset_Texture2D_args;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture2D_lod)->typeSymbol = &Float32Type;
@@ -21169,12 +20301,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleLodProjCompareOffset with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32, Float32x3
+    /// textureSampleLodProjCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32, Float32x3
     TextureSampleLodProjCompareOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleLodProjCompareOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleLodProjCompareOffset_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodProjCompareOffset_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleLodProjCompareOffset_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleLodProjCompareOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleLodProjCompareOffset_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleLodProjCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -21191,7 +20323,7 @@ void SetupIntrinsics()
     TextureSampleLodProjCompareOffset_Texture3D.parameters = TextureSampleLodProjCompareOffset_Texture3D_args;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleLodProjCompareOffset_Texture3D_lod)->typeSymbol = &Float32Type;
@@ -21226,12 +20358,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompareOffset_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGrad with Texture1D, SamplerType, Float32, Float32, Float32
+    /// textureSampleGrad with Texture1D, Sampler, Float32, Float32, Float32
     TextureSampleGrad_Texture1D_texture.name = "texture"_c;
     TextureSampleGrad_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleGrad_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGrad_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleGrad_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGrad_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGrad_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGrad_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleGrad_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -21244,7 +20376,7 @@ void SetupIntrinsics()
     TextureSampleGrad_Texture1D.parameters = TextureSampleGrad_Texture1D_args;
     Symbol::Resolved(&TextureSampleGrad_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleGrad_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGrad_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGrad_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGrad_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGrad_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGrad_Texture1D_grad_x)->typeSymbol = &Float32Type;
@@ -21271,12 +20403,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGrad_Texture1D_grad_y)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGrad_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGrad with Texture2D, SamplerType, Float32x2, Float32x2, Float32x2
+    /// textureSampleGrad with Texture2D, Sampler, Float32x2, Float32x2, Float32x2
     TextureSampleGrad_Texture2D_texture.name = "texture"_c;
     TextureSampleGrad_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleGrad_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGrad_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleGrad_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGrad_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGrad_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGrad_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleGrad_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -21289,7 +20421,7 @@ void SetupIntrinsics()
     TextureSampleGrad_Texture2D.parameters = TextureSampleGrad_Texture2D_args;
     Symbol::Resolved(&TextureSampleGrad_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleGrad_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGrad_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGrad_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGrad_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGrad_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleGrad_Texture2D_grad_x)->typeSymbol = &Float32x2Type;
@@ -21316,12 +20448,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGrad_Texture2D_grad_y)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleGrad_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGrad with Texture3D, SamplerType, Float32x3, Float32x3, Float32x3
+    /// textureSampleGrad with Texture3D, Sampler, Float32x3, Float32x3, Float32x3
     TextureSampleGrad_Texture3D_texture.name = "texture"_c;
     TextureSampleGrad_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleGrad_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGrad_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleGrad_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGrad_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGrad_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGrad_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleGrad_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -21334,7 +20466,7 @@ void SetupIntrinsics()
     TextureSampleGrad_Texture3D.parameters = TextureSampleGrad_Texture3D_args;
     Symbol::Resolved(&TextureSampleGrad_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleGrad_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGrad_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGrad_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGrad_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGrad_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleGrad_Texture3D_grad_x)->typeSymbol = &Float32x3Type;
@@ -21361,12 +20493,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGrad_Texture3D_grad_y)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleGrad_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGrad with TextureCube, SamplerType, Float32x3, Float32x3, Float32x3
+    /// textureSampleGrad with TextureCube, Sampler, Float32x3, Float32x3, Float32x3
     TextureSampleGrad_TextureCube_texture.name = "texture"_c;
     TextureSampleGrad_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
     TextureSampleGrad_TextureCube_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGrad_TextureCube_sampler.name = "sampler"_c;
-    TextureSampleGrad_TextureCube_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGrad_TextureCube_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGrad_TextureCube_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGrad_TextureCube_coordinate.name = "coordinate"_c;
     TextureSampleGrad_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -21379,7 +20511,7 @@ void SetupIntrinsics()
     TextureSampleGrad_TextureCube.parameters = TextureSampleGrad_TextureCube_args;
     Symbol::Resolved(&TextureSampleGrad_TextureCube_texture)->typeSymbol = &TextureCubeType;
     Symbol::Resolved(&TextureSampleGrad_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGrad_TextureCube_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGrad_TextureCube_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGrad_TextureCube_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGrad_TextureCube_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleGrad_TextureCube_grad_x)->typeSymbol = &Float32x3Type;
@@ -21406,12 +20538,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGrad_TextureCube_grad_y)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleGrad_TextureCube)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGrad with Texture1DArray, SamplerType, Float32x2, Float32x2, Float32x2
+    /// textureSampleGrad with Texture1DArray, Sampler, Float32x2, Float32x2, Float32x2
     TextureSampleGrad_Texture1DArray_texture.name = "texture"_c;
     TextureSampleGrad_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
     TextureSampleGrad_Texture1DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGrad_Texture1DArray_sampler.name = "sampler"_c;
-    TextureSampleGrad_Texture1DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGrad_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGrad_Texture1DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGrad_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleGrad_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -21424,7 +20556,7 @@ void SetupIntrinsics()
     TextureSampleGrad_Texture1DArray.parameters = TextureSampleGrad_Texture1DArray_args;
     Symbol::Resolved(&TextureSampleGrad_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureSampleGrad_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGrad_Texture1DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGrad_Texture1DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGrad_Texture1DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGrad_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleGrad_Texture1DArray_grad_x)->typeSymbol = &Float32x2Type;
@@ -21451,12 +20583,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGrad_Texture1DArray_grad_y)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleGrad_Texture1DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGrad with Texture2DArray, SamplerType, Float32x3, Float32x3, Float32x3
+    /// textureSampleGrad with Texture2DArray, Sampler, Float32x3, Float32x3, Float32x3
     TextureSampleGrad_Texture2DArray_texture.name = "texture"_c;
     TextureSampleGrad_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
     TextureSampleGrad_Texture2DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGrad_Texture2DArray_sampler.name = "sampler"_c;
-    TextureSampleGrad_Texture2DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGrad_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGrad_Texture2DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGrad_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleGrad_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -21469,7 +20601,7 @@ void SetupIntrinsics()
     TextureSampleGrad_Texture2DArray.parameters = TextureSampleGrad_Texture2DArray_args;
     Symbol::Resolved(&TextureSampleGrad_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureSampleGrad_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGrad_Texture2DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGrad_Texture2DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGrad_Texture2DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGrad_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleGrad_Texture2DArray_grad_x)->typeSymbol = &Float32x3Type;
@@ -21496,12 +20628,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGrad_Texture2DArray_grad_y)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleGrad_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGrad with TextureCubeArray, SamplerType, Float32x4, Float32x4, Float32x4
+    /// textureSampleGrad with TextureCubeArray, Sampler, Float32x4, Float32x4, Float32x4
     TextureSampleGrad_TextureCubeArray_texture.name = "texture"_c;
     TextureSampleGrad_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
     TextureSampleGrad_TextureCubeArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGrad_TextureCubeArray_sampler.name = "sampler"_c;
-    TextureSampleGrad_TextureCubeArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGrad_TextureCubeArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGrad_TextureCubeArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGrad_TextureCubeArray_coordinate.name = "coordinate"_c;
     TextureSampleGrad_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
@@ -21514,7 +20646,7 @@ void SetupIntrinsics()
     TextureSampleGrad_TextureCubeArray.parameters = TextureSampleGrad_TextureCubeArray_args;
     Symbol::Resolved(&TextureSampleGrad_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureSampleGrad_TextureCubeArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGrad_TextureCubeArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGrad_TextureCubeArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGrad_TextureCubeArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGrad_TextureCubeArray_coordinate)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&TextureSampleGrad_TextureCubeArray_grad_x)->typeSymbol = &Float32x4Type;
@@ -21541,12 +20673,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGrad_TextureCubeArray_grad_y)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&SampledTextureSampleGrad_TextureCubeArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+    /// textureSampleGradOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
     TextureSampleGradOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleGradOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleGradOffset_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradOffset_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleGradOffset_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradOffset_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleGradOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -21561,7 +20693,7 @@ void SetupIntrinsics()
     TextureSampleGradOffset_Texture1D.parameters = TextureSampleGradOffset_Texture1D_args;
     Symbol::Resolved(&TextureSampleGradOffset_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleGradOffset_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradOffset_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradOffset_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradOffset_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradOffset_Texture1D_grad_x)->typeSymbol = &Float32Type;
@@ -21592,12 +20724,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradOffset_Texture1D_offset)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradOffset_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradOffset with Texture2D, SamplerType, Float32x2, Float32x2, Float32x2, Float32x2
+    /// textureSampleGradOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32x2
     TextureSampleGradOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleGradOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleGradOffset_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradOffset_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleGradOffset_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradOffset_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleGradOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -21612,7 +20744,7 @@ void SetupIntrinsics()
     TextureSampleGradOffset_Texture2D.parameters = TextureSampleGradOffset_Texture2D_args;
     Symbol::Resolved(&TextureSampleGradOffset_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleGradOffset_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradOffset_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradOffset_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradOffset_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleGradOffset_Texture2D_grad_x)->typeSymbol = &Float32x2Type;
@@ -21643,12 +20775,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleGradOffset_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradOffset with Texture3D, SamplerType, Float32x3, Float32x3, Float32x3, Float32x3
+    /// textureSampleGradOffset with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32x3
     TextureSampleGradOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleGradOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleGradOffset_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradOffset_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleGradOffset_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradOffset_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleGradOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -21663,7 +20795,7 @@ void SetupIntrinsics()
     TextureSampleGradOffset_Texture3D.parameters = TextureSampleGradOffset_Texture3D_args;
     Symbol::Resolved(&TextureSampleGradOffset_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleGradOffset_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradOffset_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradOffset_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradOffset_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleGradOffset_Texture3D_grad_x)->typeSymbol = &Float32x3Type;
@@ -21694,12 +20826,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleGradOffset_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradOffset with Texture1DArray, SamplerType, Float32x2, Float32x2, Float32x2, Float32x2
+    /// textureSampleGradOffset with Texture1DArray, Sampler, Float32x2, Float32x2, Float32x2, Float32x2
     TextureSampleGradOffset_Texture1DArray_texture.name = "texture"_c;
     TextureSampleGradOffset_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
     TextureSampleGradOffset_Texture1DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradOffset_Texture1DArray_sampler.name = "sampler"_c;
-    TextureSampleGradOffset_Texture1DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradOffset_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradOffset_Texture1DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradOffset_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleGradOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -21714,7 +20846,7 @@ void SetupIntrinsics()
     TextureSampleGradOffset_Texture1DArray.parameters = TextureSampleGradOffset_Texture1DArray_args;
     Symbol::Resolved(&TextureSampleGradOffset_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureSampleGradOffset_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradOffset_Texture1DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradOffset_Texture1DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradOffset_Texture1DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradOffset_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleGradOffset_Texture1DArray_grad_x)->typeSymbol = &Float32x2Type;
@@ -21745,12 +20877,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradOffset_Texture1DArray_offset)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleGradOffset_Texture1DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradOffset with Texture2DArray, SamplerType, Float32x3, Float32x3, Float32x3, Float32x3
+    /// textureSampleGradOffset with Texture2DArray, Sampler, Float32x3, Float32x3, Float32x3, Float32x3
     TextureSampleGradOffset_Texture2DArray_texture.name = "texture"_c;
     TextureSampleGradOffset_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
     TextureSampleGradOffset_Texture2DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradOffset_Texture2DArray_sampler.name = "sampler"_c;
-    TextureSampleGradOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradOffset_Texture2DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleGradOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -21765,7 +20897,7 @@ void SetupIntrinsics()
     TextureSampleGradOffset_Texture2DArray.parameters = TextureSampleGradOffset_Texture2DArray_args;
     Symbol::Resolved(&TextureSampleGradOffset_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureSampleGradOffset_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradOffset_Texture2DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradOffset_Texture2DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradOffset_Texture2DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradOffset_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleGradOffset_Texture2DArray_grad_x)->typeSymbol = &Float32x3Type;
@@ -21796,12 +20928,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradOffset_Texture2DArray_offset)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleGradOffset_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradProj with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+    /// textureSampleGradProj with Texture1D, Sampler, Float32, Float32, Float32, Float32
     TextureSampleGradProj_Texture1D_texture.name = "texture"_c;
     TextureSampleGradProj_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleGradProj_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradProj_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleGradProj_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradProj_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradProj_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradProj_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleGradProj_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -21816,7 +20948,7 @@ void SetupIntrinsics()
     TextureSampleGradProj_Texture1D.parameters = TextureSampleGradProj_Texture1D_args;
     Symbol::Resolved(&TextureSampleGradProj_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleGradProj_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradProj_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradProj_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradProj_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradProj_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradProj_Texture1D_grad_x)->typeSymbol = &Float32Type;
@@ -21847,12 +20979,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradProj with Texture2D, SamplerType, Float32x2, Float32x2, Float32x2, Float32
+    /// textureSampleGradProj with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32
     TextureSampleGradProj_Texture2D_texture.name = "texture"_c;
     TextureSampleGradProj_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleGradProj_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradProj_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleGradProj_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradProj_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradProj_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradProj_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleGradProj_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -21867,7 +20999,7 @@ void SetupIntrinsics()
     TextureSampleGradProj_Texture2D.parameters = TextureSampleGradProj_Texture2D_args;
     Symbol::Resolved(&TextureSampleGradProj_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleGradProj_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradProj_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradProj_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradProj_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradProj_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleGradProj_Texture2D_grad_x)->typeSymbol = &Float32x2Type;
@@ -21898,12 +21030,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradProj with Texture3D, SamplerType, Float32x3, Float32x3, Float32x3, Float32
+    /// textureSampleGradProj with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32
     TextureSampleGradProj_Texture3D_texture.name = "texture"_c;
     TextureSampleGradProj_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleGradProj_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradProj_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleGradProj_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradProj_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradProj_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradProj_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleGradProj_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -21918,7 +21050,7 @@ void SetupIntrinsics()
     TextureSampleGradProj_Texture3D.parameters = TextureSampleGradProj_Texture3D_args;
     Symbol::Resolved(&TextureSampleGradProj_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleGradProj_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradProj_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradProj_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradProj_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradProj_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleGradProj_Texture3D_grad_x)->typeSymbol = &Float32x3Type;
@@ -21949,12 +21081,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradProjOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32, Float32
+    /// textureSampleGradProjOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
     TextureSampleGradProjOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleGradProjOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleGradProjOffset_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradProjOffset_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleGradProjOffset_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradProjOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradProjOffset_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradProjOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleGradProjOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -21971,7 +21103,7 @@ void SetupIntrinsics()
     TextureSampleGradProjOffset_Texture1D.parameters = TextureSampleGradProjOffset_Texture1D_args;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradProjOffset_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradProjOffset_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture1D_grad_x)->typeSymbol = &Float32Type;
@@ -22006,12 +21138,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture1D_offset)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradProjOffset with Texture2D, SamplerType, Float32x2, Float32x2, Float32x2, Float32, Float32x2
+    /// textureSampleGradProjOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32x2
     TextureSampleGradProjOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleGradProjOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleGradProjOffset_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradProjOffset_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleGradProjOffset_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradProjOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradProjOffset_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradProjOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleGradProjOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -22028,7 +21160,7 @@ void SetupIntrinsics()
     TextureSampleGradProjOffset_Texture2D.parameters = TextureSampleGradProjOffset_Texture2D_args;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradProjOffset_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradProjOffset_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture2D_grad_x)->typeSymbol = &Float32x2Type;
@@ -22063,12 +21195,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradProjOffset with Texture3D, SamplerType, Float32x3, Float32x3, Float32x3, Float32, Float32x3
+    /// textureSampleGradProjOffset with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32x3
     TextureSampleGradProjOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleGradProjOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleGradProjOffset_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradProjOffset_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleGradProjOffset_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradProjOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradProjOffset_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradProjOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleGradProjOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -22085,7 +21217,7 @@ void SetupIntrinsics()
     TextureSampleGradProjOffset_Texture3D.parameters = TextureSampleGradProjOffset_Texture3D_args;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradProjOffset_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradProjOffset_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleGradProjOffset_Texture3D_grad_x)->typeSymbol = &Float32x3Type;
@@ -22120,12 +21252,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleGradProjOffset_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradCompare with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+    /// textureSampleGradCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32
     TextureSampleGradCompare_Texture1D_texture.name = "texture"_c;
     TextureSampleGradCompare_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleGradCompare_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradCompare_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleGradCompare_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradCompare_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradCompare_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradCompare_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleGradCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -22140,7 +21272,7 @@ void SetupIntrinsics()
     TextureSampleGradCompare_Texture1D.parameters = TextureSampleGradCompare_Texture1D_args;
     Symbol::Resolved(&TextureSampleGradCompare_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleGradCompare_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradCompare_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradCompare_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradCompare_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradCompare_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradCompare_Texture1D_grad_x)->typeSymbol = &Float32Type;
@@ -22171,12 +21303,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradCompare with Texture2D, SamplerType, Float32x2, Float32x2, Float32x2, Float32
+    /// textureSampleGradCompare with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32
     TextureSampleGradCompare_Texture2D_texture.name = "texture"_c;
     TextureSampleGradCompare_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleGradCompare_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradCompare_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleGradCompare_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradCompare_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradCompare_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradCompare_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleGradCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -22191,7 +21323,7 @@ void SetupIntrinsics()
     TextureSampleGradCompare_Texture2D.parameters = TextureSampleGradCompare_Texture2D_args;
     Symbol::Resolved(&TextureSampleGradCompare_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleGradCompare_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradCompare_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradCompare_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradCompare_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradCompare_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleGradCompare_Texture2D_grad_x)->typeSymbol = &Float32x2Type;
@@ -22222,12 +21354,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradCompare with Texture3D, SamplerType, Float32x3, Float32x3, Float32x3, Float32
+    /// textureSampleGradCompare with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32
     TextureSampleGradCompare_Texture3D_texture.name = "texture"_c;
     TextureSampleGradCompare_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleGradCompare_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradCompare_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleGradCompare_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradCompare_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradCompare_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradCompare_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleGradCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -22242,7 +21374,7 @@ void SetupIntrinsics()
     TextureSampleGradCompare_Texture3D.parameters = TextureSampleGradCompare_Texture3D_args;
     Symbol::Resolved(&TextureSampleGradCompare_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleGradCompare_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradCompare_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradCompare_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradCompare_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradCompare_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleGradCompare_Texture3D_grad_x)->typeSymbol = &Float32x3Type;
@@ -22273,12 +21405,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture3D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradCompare with Texture1DArray, SamplerType, Float32x2, Float32x2, Float32x2, Float32
+    /// textureSampleGradCompare with Texture1DArray, Sampler, Float32x2, Float32x2, Float32x2, Float32
     TextureSampleGradCompare_Texture1DArray_texture.name = "texture"_c;
     TextureSampleGradCompare_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
     TextureSampleGradCompare_Texture1DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradCompare_Texture1DArray_sampler.name = "sampler"_c;
-    TextureSampleGradCompare_Texture1DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradCompare_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradCompare_Texture1DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradCompare_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleGradCompare_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -22293,7 +21425,7 @@ void SetupIntrinsics()
     TextureSampleGradCompare_Texture1DArray.parameters = TextureSampleGradCompare_Texture1DArray_args;
     Symbol::Resolved(&TextureSampleGradCompare_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureSampleGradCompare_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradCompare_Texture1DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradCompare_Texture1DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradCompare_Texture1DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradCompare_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleGradCompare_Texture1DArray_grad_x)->typeSymbol = &Float32x2Type;
@@ -22324,12 +21456,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1DArray_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture1DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradCompare with Texture2DArray, SamplerType, Float32x3, Float32x3, Float32x3, Float32
+    /// textureSampleGradCompare with Texture2DArray, Sampler, Float32x3, Float32x3, Float32x3, Float32
     TextureSampleGradCompare_Texture2DArray_texture.name = "texture"_c;
     TextureSampleGradCompare_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
     TextureSampleGradCompare_Texture2DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradCompare_Texture2DArray_sampler.name = "sampler"_c;
-    TextureSampleGradCompare_Texture2DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradCompare_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradCompare_Texture2DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradCompare_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleGradCompare_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -22344,7 +21476,7 @@ void SetupIntrinsics()
     TextureSampleGradCompare_Texture2DArray.parameters = TextureSampleGradCompare_Texture2DArray_args;
     Symbol::Resolved(&TextureSampleGradCompare_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureSampleGradCompare_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradCompare_Texture2DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradCompare_Texture2DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradCompare_Texture2DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradCompare_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleGradCompare_Texture2DArray_grad_x)->typeSymbol = &Float32x3Type;
@@ -22375,12 +21507,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2DArray_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradCompare_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradCompareOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32, Float32
+    /// textureSampleGradCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
     TextureSampleGradCompareOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleGradCompareOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleGradCompareOffset_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradCompareOffset_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleGradCompareOffset_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradCompareOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradCompareOffset_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleGradCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -22397,7 +21529,7 @@ void SetupIntrinsics()
     TextureSampleGradCompareOffset_Texture1D.parameters = TextureSampleGradCompareOffset_Texture1D_args;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1D_grad_x)->typeSymbol = &Float32Type;
@@ -22432,12 +21564,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture1D_offset)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradCompareOffset with Texture2D, SamplerType, Float32x2, Float32x2, Float32x2, Float32, Float32x2
+    /// textureSampleGradCompareOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32x2
     TextureSampleGradCompareOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleGradCompareOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleGradCompareOffset_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradCompareOffset_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleGradCompareOffset_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradCompareOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradCompareOffset_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleGradCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -22454,7 +21586,7 @@ void SetupIntrinsics()
     TextureSampleGradCompareOffset_Texture2D.parameters = TextureSampleGradCompareOffset_Texture2D_args;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2D_grad_x)->typeSymbol = &Float32x2Type;
@@ -22489,12 +21621,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradCompareOffset with Texture3D, SamplerType, Float32x3, Float32x3, Float32x3, Float32, Float32x3
+    /// textureSampleGradCompareOffset with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32x3
     TextureSampleGradCompareOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleGradCompareOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleGradCompareOffset_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradCompareOffset_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleGradCompareOffset_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradCompareOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradCompareOffset_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleGradCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -22511,7 +21643,7 @@ void SetupIntrinsics()
     TextureSampleGradCompareOffset_Texture3D.parameters = TextureSampleGradCompareOffset_Texture3D_args;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradCompareOffset_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradCompareOffset_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture3D_grad_x)->typeSymbol = &Float32x3Type;
@@ -22546,12 +21678,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradCompareOffset with Texture1DArray, SamplerType, Float32x2, Float32x2, Float32x2, Float32, Float32x2
+    /// textureSampleGradCompareOffset with Texture1DArray, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32x2
     TextureSampleGradCompareOffset_Texture1DArray_texture.name = "texture"_c;
     TextureSampleGradCompareOffset_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
     TextureSampleGradCompareOffset_Texture1DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradCompareOffset_Texture1DArray_sampler.name = "sampler"_c;
-    TextureSampleGradCompareOffset_Texture1DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradCompareOffset_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradCompareOffset_Texture1DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradCompareOffset_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleGradCompareOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -22568,7 +21700,7 @@ void SetupIntrinsics()
     TextureSampleGradCompareOffset_Texture1DArray.parameters = TextureSampleGradCompareOffset_Texture1DArray_args;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture1DArray_grad_x)->typeSymbol = &Float32x2Type;
@@ -22603,12 +21735,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture1DArray_offset)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture1DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradCompareOffset with Texture2DArray, SamplerType, Float32x3, Float32x3, Float32x3, Float32, Float32x3
+    /// textureSampleGradCompareOffset with Texture2DArray, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32x3
     TextureSampleGradCompareOffset_Texture2DArray_texture.name = "texture"_c;
     TextureSampleGradCompareOffset_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
     TextureSampleGradCompareOffset_Texture2DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradCompareOffset_Texture2DArray_sampler.name = "sampler"_c;
-    TextureSampleGradCompareOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradCompareOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradCompareOffset_Texture2DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradCompareOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleGradCompareOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -22625,7 +21757,7 @@ void SetupIntrinsics()
     TextureSampleGradCompareOffset_Texture2DArray.parameters = TextureSampleGradCompareOffset_Texture2DArray_args;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleGradCompareOffset_Texture2DArray_grad_x)->typeSymbol = &Float32x3Type;
@@ -22660,12 +21792,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture2DArray_offset)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleGradCompareOffset_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradProjCompare with Texture1D, SamplerType, Float32, Float32, Float32, Float32, Float32
+    /// textureSampleGradProjCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
     TextureSampleGradProjCompare_Texture1D_texture.name = "texture"_c;
     TextureSampleGradProjCompare_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleGradProjCompare_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradProjCompare_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleGradProjCompare_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradProjCompare_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradProjCompare_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradProjCompare_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleGradProjCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -22682,7 +21814,7 @@ void SetupIntrinsics()
     TextureSampleGradProjCompare_Texture1D.parameters = TextureSampleGradProjCompare_Texture1D_args;
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradProjCompare_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradProjCompare_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture1D_grad_x)->typeSymbol = &Float32Type;
@@ -22717,12 +21849,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradProjCompare_Texture1D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradProjCompare_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradProjCompare with Texture2D, SamplerType, Float32x2, Float32x2, Float32x2, Float32, Float32
+    /// textureSampleGradProjCompare with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32
     TextureSampleGradProjCompare_Texture2D_texture.name = "texture"_c;
     TextureSampleGradProjCompare_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleGradProjCompare_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradProjCompare_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleGradProjCompare_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradProjCompare_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradProjCompare_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradProjCompare_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleGradProjCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -22739,7 +21871,7 @@ void SetupIntrinsics()
     TextureSampleGradProjCompare_Texture2D.parameters = TextureSampleGradProjCompare_Texture2D_args;
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradProjCompare_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradProjCompare_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture2D_grad_x)->typeSymbol = &Float32x2Type;
@@ -22774,12 +21906,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradProjCompare_Texture2D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradProjCompare_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradProjCompare with Texture3D, SamplerType, Float32x3, Float32x3, Float32x3, Float32, Float32
+    /// textureSampleGradProjCompare with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32
     TextureSampleGradProjCompare_Texture3D_texture.name = "texture"_c;
     TextureSampleGradProjCompare_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleGradProjCompare_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradProjCompare_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleGradProjCompare_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradProjCompare_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradProjCompare_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradProjCompare_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleGradProjCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -22796,7 +21928,7 @@ void SetupIntrinsics()
     TextureSampleGradProjCompare_Texture3D.parameters = TextureSampleGradProjCompare_Texture3D_args;
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradProjCompare_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradProjCompare_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture3D_grad_x)->typeSymbol = &Float32x3Type;
@@ -22831,12 +21963,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradProjCompare_Texture3D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradProjCompare_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradProjCompareOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32, Float32, Float32
+    /// textureSampleGradProjCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32, Float32
     TextureSampleGradProjCompareOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleGradProjCompareOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleGradProjCompareOffset_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradProjCompareOffset_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleGradProjCompareOffset_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradProjCompareOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradProjCompareOffset_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradProjCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleGradProjCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -22855,7 +21987,7 @@ void SetupIntrinsics()
     TextureSampleGradProjCompareOffset_Texture1D.parameters = TextureSampleGradProjCompareOffset_Texture1D_args;
     Symbol::Resolved(&TextureSampleGradProjCompareOffset_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleGradProjCompareOffset_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradProjCompareOffset_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradProjCompareOffset_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradProjCompareOffset_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradProjCompareOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradProjCompareOffset_Texture1D_grad_x)->typeSymbol = &Float32Type;
@@ -22894,12 +22026,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradProjCompareOffset_Texture1D_offset)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradProjCompareOffset_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradProjCompareOffset with Texture2D, SamplerType, Float32x2, Float32x2, Float32x2, Float32, Float32, Float32x2
+    /// textureSampleGradProjCompareOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32, Float32x2
     TextureSampleGradProjCompareOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleGradProjCompareOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleGradProjCompareOffset_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradProjCompareOffset_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleGradProjCompareOffset_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradProjCompareOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradProjCompareOffset_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradProjCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleGradProjCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -22918,7 +22050,7 @@ void SetupIntrinsics()
     TextureSampleGradProjCompareOffset_Texture2D.parameters = TextureSampleGradProjCompareOffset_Texture2D_args;
     Symbol::Resolved(&TextureSampleGradProjCompareOffset_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleGradProjCompareOffset_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradProjCompareOffset_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradProjCompareOffset_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradProjCompareOffset_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradProjCompareOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleGradProjCompareOffset_Texture2D_grad_x)->typeSymbol = &Float32x2Type;
@@ -22957,12 +22089,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradProjCompareOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleGradProjCompareOffset_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleGradProjCompareOffset with Texture3D, SamplerType, Float32x3, Float32x3, Float32x3, Float32, Float32, Float32x3
+    /// textureSampleGradProjCompareOffset with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32, Float32x3
     TextureSampleGradProjCompareOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleGradProjCompareOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleGradProjCompareOffset_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradProjCompareOffset_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleGradProjCompareOffset_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleGradProjCompareOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleGradProjCompareOffset_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleGradProjCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleGradProjCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -22981,7 +22113,7 @@ void SetupIntrinsics()
     TextureSampleGradProjCompareOffset_Texture3D.parameters = TextureSampleGradProjCompareOffset_Texture3D_args;
     Symbol::Resolved(&TextureSampleGradProjCompareOffset_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleGradProjCompareOffset_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradProjCompareOffset_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleGradProjCompareOffset_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleGradProjCompareOffset_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleGradProjCompareOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleGradProjCompareOffset_Texture3D_grad_x)->typeSymbol = &Float32x3Type;
@@ -23020,12 +22152,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradProjCompareOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleGradProjCompareOffset_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBias with Texture1D, SamplerType, Float32, Float32
+    /// textureSampleBias with Texture1D, Sampler, Float32, Float32
     TextureSampleBias_Texture1D_texture.name = "texture"_c;
     TextureSampleBias_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleBias_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBias_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleBias_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBias_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBias_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBias_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleBias_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -23036,7 +22168,7 @@ void SetupIntrinsics()
     TextureSampleBias_Texture1D.parameters = TextureSampleBias_Texture1D_args;
     Symbol::Resolved(&TextureSampleBias_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleBias_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBias_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBias_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBias_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBias_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleBias_Texture1D_bias)->typeSymbol = &Float32Type;
@@ -23059,12 +22191,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBias_Texture1D_bias)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBias_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBias with Texture2D, SamplerType, Float32x2, Float32
+    /// textureSampleBias with Texture2D, Sampler, Float32x2, Float32
     TextureSampleBias_Texture2D_texture.name = "texture"_c;
     TextureSampleBias_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleBias_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBias_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleBias_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBias_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBias_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBias_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleBias_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -23075,7 +22207,7 @@ void SetupIntrinsics()
     TextureSampleBias_Texture2D.parameters = TextureSampleBias_Texture2D_args;
     Symbol::Resolved(&TextureSampleBias_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleBias_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBias_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBias_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBias_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBias_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleBias_Texture2D_bias)->typeSymbol = &Float32Type;
@@ -23098,12 +22230,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBias_Texture2D_bias)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBias_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBias with Texture3D, SamplerType, Float32x3, Float32
+    /// textureSampleBias with Texture3D, Sampler, Float32x3, Float32
     TextureSampleBias_Texture3D_texture.name = "texture"_c;
     TextureSampleBias_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleBias_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBias_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleBias_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBias_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBias_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBias_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleBias_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -23114,7 +22246,7 @@ void SetupIntrinsics()
     TextureSampleBias_Texture3D.parameters = TextureSampleBias_Texture3D_args;
     Symbol::Resolved(&TextureSampleBias_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleBias_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBias_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBias_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBias_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBias_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleBias_Texture3D_bias)->typeSymbol = &Float32Type;
@@ -23137,12 +22269,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBias_Texture3D_bias)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBias_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBias with TextureCube, SamplerType, Float32x3, Float32
+    /// textureSampleBias with TextureCube, Sampler, Float32x3, Float32
     TextureSampleBias_TextureCube_texture.name = "texture"_c;
     TextureSampleBias_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
     TextureSampleBias_TextureCube_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBias_TextureCube_sampler.name = "sampler"_c;
-    TextureSampleBias_TextureCube_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBias_TextureCube_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBias_TextureCube_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBias_TextureCube_coordinate.name = "coordinate"_c;
     TextureSampleBias_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -23153,7 +22285,7 @@ void SetupIntrinsics()
     TextureSampleBias_TextureCube.parameters = TextureSampleBias_TextureCube_args;
     Symbol::Resolved(&TextureSampleBias_TextureCube_texture)->typeSymbol = &TextureCubeType;
     Symbol::Resolved(&TextureSampleBias_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBias_TextureCube_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBias_TextureCube_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBias_TextureCube_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBias_TextureCube_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleBias_TextureCube_bias)->typeSymbol = &Float32Type;
@@ -23176,12 +22308,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBias_TextureCube_bias)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBias_TextureCube)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBias with Texture1DArray, SamplerType, Float32x2, Float32
+    /// textureSampleBias with Texture1DArray, Sampler, Float32x2, Float32
     TextureSampleBias_Texture1DArray_texture.name = "texture"_c;
     TextureSampleBias_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
     TextureSampleBias_Texture1DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBias_Texture1DArray_sampler.name = "sampler"_c;
-    TextureSampleBias_Texture1DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBias_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBias_Texture1DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBias_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleBias_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -23192,7 +22324,7 @@ void SetupIntrinsics()
     TextureSampleBias_Texture1DArray.parameters = TextureSampleBias_Texture1DArray_args;
     Symbol::Resolved(&TextureSampleBias_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureSampleBias_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBias_Texture1DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBias_Texture1DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBias_Texture1DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBias_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleBias_Texture1DArray_bias)->typeSymbol = &Float32Type;
@@ -23215,12 +22347,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBias_Texture1DArray_bias)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBias_Texture1DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBias with Texture2DArray, SamplerType, Float32x3, Float32
+    /// textureSampleBias with Texture2DArray, Sampler, Float32x3, Float32
     TextureSampleBias_Texture2DArray_texture.name = "texture"_c;
     TextureSampleBias_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
     TextureSampleBias_Texture2DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBias_Texture2DArray_sampler.name = "sampler"_c;
-    TextureSampleBias_Texture2DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBias_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBias_Texture2DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBias_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleBias_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -23231,7 +22363,7 @@ void SetupIntrinsics()
     TextureSampleBias_Texture2DArray.parameters = TextureSampleBias_Texture2DArray_args;
     Symbol::Resolved(&TextureSampleBias_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureSampleBias_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBias_Texture2DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBias_Texture2DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBias_Texture2DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBias_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleBias_Texture2DArray_bias)->typeSymbol = &Float32Type;
@@ -23254,12 +22386,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBias_Texture2DArray_bias)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBias_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBias with TextureCubeArray, SamplerType, Float32x4, Float32
+    /// textureSampleBias with TextureCubeArray, Sampler, Float32x4, Float32
     TextureSampleBias_TextureCubeArray_texture.name = "texture"_c;
     TextureSampleBias_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
     TextureSampleBias_TextureCubeArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBias_TextureCubeArray_sampler.name = "sampler"_c;
-    TextureSampleBias_TextureCubeArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBias_TextureCubeArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBias_TextureCubeArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBias_TextureCubeArray_coordinate.name = "coordinate"_c;
     TextureSampleBias_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
@@ -23270,7 +22402,7 @@ void SetupIntrinsics()
     TextureSampleBias_TextureCubeArray.parameters = TextureSampleBias_TextureCubeArray_args;
     Symbol::Resolved(&TextureSampleBias_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureSampleBias_TextureCubeArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBias_TextureCubeArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBias_TextureCubeArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBias_TextureCubeArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBias_TextureCubeArray_coordinate)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&TextureSampleBias_TextureCubeArray_bias)->typeSymbol = &Float32Type;
@@ -23293,12 +22425,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBias_TextureCubeArray_bias)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBias_TextureCubeArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasOffset with Texture1D, SamplerType, Float32, Float32, Float32
+    /// textureSampleBiasOffset with Texture1D, Sampler, Float32, Float32, Float32
     TextureSampleBiasOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleBiasOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleBiasOffset_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasOffset_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleBiasOffset_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasOffset_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleBiasOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -23311,7 +22443,7 @@ void SetupIntrinsics()
     TextureSampleBiasOffset_Texture1D.parameters = TextureSampleBiasOffset_Texture1D_args;
     Symbol::Resolved(&TextureSampleBiasOffset_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleBiasOffset_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasOffset_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasOffset_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasOffset_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleBiasOffset_Texture1D_bias)->typeSymbol = &Float32Type;
@@ -23338,12 +22470,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasOffset_Texture1D_offset)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasOffset_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasOffset with Texture2D, SamplerType, Float32x2, Float32, Float32x2
+    /// textureSampleBiasOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2
     TextureSampleBiasOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleBiasOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleBiasOffset_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasOffset_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleBiasOffset_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasOffset_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleBiasOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -23356,7 +22488,7 @@ void SetupIntrinsics()
     TextureSampleBiasOffset_Texture2D.parameters = TextureSampleBiasOffset_Texture2D_args;
     Symbol::Resolved(&TextureSampleBiasOffset_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleBiasOffset_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasOffset_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasOffset_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasOffset_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleBiasOffset_Texture2D_bias)->typeSymbol = &Float32Type;
@@ -23383,12 +22515,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleBiasOffset_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasOffset with Texture3D, SamplerType, Float32x3, Float32, Float32x3
+    /// textureSampleBiasOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3
     TextureSampleBiasOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleBiasOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleBiasOffset_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasOffset_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleBiasOffset_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasOffset_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleBiasOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -23401,7 +22533,7 @@ void SetupIntrinsics()
     TextureSampleBiasOffset_Texture3D.parameters = TextureSampleBiasOffset_Texture3D_args;
     Symbol::Resolved(&TextureSampleBiasOffset_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleBiasOffset_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasOffset_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasOffset_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasOffset_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleBiasOffset_Texture3D_bias)->typeSymbol = &Float32Type;
@@ -23428,12 +22560,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleBiasOffset_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasOffset with Texture1DArray, SamplerType, Float32x2, Float32, Float32x2
+    /// textureSampleBiasOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32x2
     TextureSampleBiasOffset_Texture1DArray_texture.name = "texture"_c;
     TextureSampleBiasOffset_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
     TextureSampleBiasOffset_Texture1DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasOffset_Texture1DArray_sampler.name = "sampler"_c;
-    TextureSampleBiasOffset_Texture1DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasOffset_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasOffset_Texture1DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasOffset_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleBiasOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -23446,7 +22578,7 @@ void SetupIntrinsics()
     TextureSampleBiasOffset_Texture1DArray.parameters = TextureSampleBiasOffset_Texture1DArray_args;
     Symbol::Resolved(&TextureSampleBiasOffset_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureSampleBiasOffset_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasOffset_Texture1DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasOffset_Texture1DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasOffset_Texture1DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasOffset_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleBiasOffset_Texture1DArray_bias)->typeSymbol = &Float32Type;
@@ -23473,12 +22605,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasOffset_Texture1DArray_offset)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleBiasOffset_Texture1DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasOffset with Texture2DArray, SamplerType, Float32x3, Float32, Float32x3
+    /// textureSampleBiasOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32x3
     TextureSampleBiasOffset_Texture2DArray_texture.name = "texture"_c;
     TextureSampleBiasOffset_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
     TextureSampleBiasOffset_Texture2DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasOffset_Texture2DArray_sampler.name = "sampler"_c;
-    TextureSampleBiasOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasOffset_Texture2DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleBiasOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -23491,7 +22623,7 @@ void SetupIntrinsics()
     TextureSampleBiasOffset_Texture2DArray.parameters = TextureSampleBiasOffset_Texture2DArray_args;
     Symbol::Resolved(&TextureSampleBiasOffset_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureSampleBiasOffset_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasOffset_Texture2DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasOffset_Texture2DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasOffset_Texture2DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasOffset_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleBiasOffset_Texture2DArray_bias)->typeSymbol = &Float32Type;
@@ -23518,12 +22650,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasOffset_Texture2DArray_offset)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleBiasOffset_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasProj with Texture1D, SamplerType, Float32, Float32, Float32
+    /// textureSampleBiasProj with Texture1D, Sampler, Float32, Float32, Float32
     TextureSampleBiasProj_Texture1D_texture.name = "texture"_c;
     TextureSampleBiasProj_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleBiasProj_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasProj_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleBiasProj_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasProj_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasProj_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasProj_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleBiasProj_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -23536,7 +22668,7 @@ void SetupIntrinsics()
     TextureSampleBiasProj_Texture1D.parameters = TextureSampleBiasProj_Texture1D_args;
     Symbol::Resolved(&TextureSampleBiasProj_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleBiasProj_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasProj_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasProj_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasProj_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasProj_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleBiasProj_Texture1D_bias)->typeSymbol = &Float32Type;
@@ -23563,12 +22695,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasProj_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasProj_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasProj with Texture2D, SamplerType, Float32x2, Float32, Float32
+    /// textureSampleBiasProj with Texture2D, Sampler, Float32x2, Float32, Float32
     TextureSampleBiasProj_Texture2D_texture.name = "texture"_c;
     TextureSampleBiasProj_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleBiasProj_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasProj_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleBiasProj_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasProj_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasProj_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasProj_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleBiasProj_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -23581,7 +22713,7 @@ void SetupIntrinsics()
     TextureSampleBiasProj_Texture2D.parameters = TextureSampleBiasProj_Texture2D_args;
     Symbol::Resolved(&TextureSampleBiasProj_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleBiasProj_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasProj_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasProj_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasProj_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasProj_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleBiasProj_Texture2D_bias)->typeSymbol = &Float32Type;
@@ -23608,12 +22740,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasProj_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasProj_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasProj with Texture3D, SamplerType, Float32x3, Float32, Float32
+    /// textureSampleBiasProj with Texture3D, Sampler, Float32x3, Float32, Float32
     TextureSampleBiasProj_Texture3D_texture.name = "texture"_c;
     TextureSampleBiasProj_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleBiasProj_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasProj_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleBiasProj_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasProj_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasProj_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasProj_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleBiasProj_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -23626,7 +22758,7 @@ void SetupIntrinsics()
     TextureSampleBiasProj_Texture3D.parameters = TextureSampleBiasProj_Texture3D_args;
     Symbol::Resolved(&TextureSampleBiasProj_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleBiasProj_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasProj_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasProj_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasProj_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasProj_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleBiasProj_Texture3D_bias)->typeSymbol = &Float32Type;
@@ -23653,12 +22785,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasProj_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasProj_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasProjOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+    /// textureSampleBiasProjOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
     TextureSampleBiasProjOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleBiasProjOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleBiasProjOffset_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasProjOffset_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleBiasProjOffset_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasProjOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasProjOffset_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasProjOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleBiasProjOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -23673,7 +22805,7 @@ void SetupIntrinsics()
     TextureSampleBiasProjOffset_Texture1D.parameters = TextureSampleBiasProjOffset_Texture1D_args;
     Symbol::Resolved(&TextureSampleBiasProjOffset_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleBiasProjOffset_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasProjOffset_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasProjOffset_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasProjOffset_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasProjOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleBiasProjOffset_Texture1D_bias)->typeSymbol = &Float32Type;
@@ -23704,12 +22836,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasProjOffset_Texture1D_offset)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasProjOffset_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasProjOffset with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32x2
+    /// textureSampleBiasProjOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
     TextureSampleBiasProjOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleBiasProjOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleBiasProjOffset_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasProjOffset_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleBiasProjOffset_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasProjOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasProjOffset_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasProjOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleBiasProjOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -23724,7 +22856,7 @@ void SetupIntrinsics()
     TextureSampleBiasProjOffset_Texture2D.parameters = TextureSampleBiasProjOffset_Texture2D_args;
     Symbol::Resolved(&TextureSampleBiasProjOffset_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleBiasProjOffset_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasProjOffset_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasProjOffset_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasProjOffset_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasProjOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleBiasProjOffset_Texture2D_bias)->typeSymbol = &Float32Type;
@@ -23755,12 +22887,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasProjOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleBiasProjOffset_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasProjOffset with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32x3
+    /// textureSampleBiasProjOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
     TextureSampleBiasProjOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleBiasProjOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleBiasProjOffset_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasProjOffset_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleBiasProjOffset_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasProjOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasProjOffset_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasProjOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleBiasProjOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -23775,7 +22907,7 @@ void SetupIntrinsics()
     TextureSampleBiasProjOffset_Texture3D.parameters = TextureSampleBiasProjOffset_Texture3D_args;
     Symbol::Resolved(&TextureSampleBiasProjOffset_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleBiasProjOffset_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasProjOffset_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasProjOffset_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasProjOffset_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasProjOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleBiasProjOffset_Texture3D_bias)->typeSymbol = &Float32Type;
@@ -23806,12 +22938,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasProjOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleBiasProjOffset_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasCompare with Texture1D, SamplerType, Float32, Float32, Float32
+    /// textureSampleBiasCompare with Texture1D, Sampler, Float32, Float32, Float32
     TextureSampleBiasCompare_Texture1D_texture.name = "texture"_c;
     TextureSampleBiasCompare_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleBiasCompare_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasCompare_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleBiasCompare_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasCompare_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasCompare_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasCompare_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleBiasCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -23824,7 +22956,7 @@ void SetupIntrinsics()
     TextureSampleBiasCompare_Texture1D.parameters = TextureSampleBiasCompare_Texture1D_args;
     Symbol::Resolved(&TextureSampleBiasCompare_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleBiasCompare_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasCompare_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasCompare_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasCompare_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleBiasCompare_Texture1D_bias)->typeSymbol = &Float32Type;
@@ -23851,12 +22983,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture1D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasCompare with Texture2D, SamplerType, Float32x2, Float32, Float32
+    /// textureSampleBiasCompare with Texture2D, Sampler, Float32x2, Float32, Float32
     TextureSampleBiasCompare_Texture2D_texture.name = "texture"_c;
     TextureSampleBiasCompare_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleBiasCompare_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasCompare_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleBiasCompare_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasCompare_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasCompare_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasCompare_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleBiasCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -23869,7 +23001,7 @@ void SetupIntrinsics()
     TextureSampleBiasCompare_Texture2D.parameters = TextureSampleBiasCompare_Texture2D_args;
     Symbol::Resolved(&TextureSampleBiasCompare_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleBiasCompare_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasCompare_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasCompare_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasCompare_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleBiasCompare_Texture2D_bias)->typeSymbol = &Float32Type;
@@ -23896,12 +23028,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture2D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasCompare with Texture3D, SamplerType, Float32x3, Float32, Float32
+    /// textureSampleBiasCompare with Texture3D, Sampler, Float32x3, Float32, Float32
     TextureSampleBiasCompare_Texture3D_texture.name = "texture"_c;
     TextureSampleBiasCompare_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleBiasCompare_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasCompare_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleBiasCompare_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasCompare_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasCompare_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasCompare_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleBiasCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -23914,7 +23046,7 @@ void SetupIntrinsics()
     TextureSampleBiasCompare_Texture3D.parameters = TextureSampleBiasCompare_Texture3D_args;
     Symbol::Resolved(&TextureSampleBiasCompare_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleBiasCompare_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasCompare_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasCompare_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasCompare_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleBiasCompare_Texture3D_bias)->typeSymbol = &Float32Type;
@@ -23941,12 +23073,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture3D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasCompare with Texture1DArray, SamplerType, Float32x2, Float32, Float32
+    /// textureSampleBiasCompare with Texture1DArray, Sampler, Float32x2, Float32, Float32
     TextureSampleBiasCompare_Texture1DArray_texture.name = "texture"_c;
     TextureSampleBiasCompare_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
     TextureSampleBiasCompare_Texture1DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasCompare_Texture1DArray_sampler.name = "sampler"_c;
-    TextureSampleBiasCompare_Texture1DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasCompare_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasCompare_Texture1DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasCompare_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleBiasCompare_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -23959,7 +23091,7 @@ void SetupIntrinsics()
     TextureSampleBiasCompare_Texture1DArray.parameters = TextureSampleBiasCompare_Texture1DArray_args;
     Symbol::Resolved(&TextureSampleBiasCompare_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureSampleBiasCompare_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasCompare_Texture1DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture1DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasCompare_Texture1DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasCompare_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleBiasCompare_Texture1DArray_bias)->typeSymbol = &Float32Type;
@@ -23986,12 +23118,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture1DArray_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture1DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasCompare with Texture2DArray, SamplerType, Float32x3, Float32, Float32
+    /// textureSampleBiasCompare with Texture2DArray, Sampler, Float32x3, Float32, Float32
     TextureSampleBiasCompare_Texture2DArray_texture.name = "texture"_c;
     TextureSampleBiasCompare_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
     TextureSampleBiasCompare_Texture2DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasCompare_Texture2DArray_sampler.name = "sampler"_c;
-    TextureSampleBiasCompare_Texture2DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasCompare_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasCompare_Texture2DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasCompare_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleBiasCompare_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -24004,7 +23136,7 @@ void SetupIntrinsics()
     TextureSampleBiasCompare_Texture2DArray.parameters = TextureSampleBiasCompare_Texture2DArray_args;
     Symbol::Resolved(&TextureSampleBiasCompare_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureSampleBiasCompare_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasCompare_Texture2DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasCompare_Texture2DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasCompare_Texture2DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasCompare_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleBiasCompare_Texture2DArray_bias)->typeSymbol = &Float32Type;
@@ -24031,12 +23163,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture2DArray_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasCompareOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+    /// textureSampleBiasCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
     TextureSampleBiasCompareOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleBiasCompareOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleBiasCompareOffset_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasCompareOffset_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleBiasCompareOffset_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasCompareOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasCompareOffset_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleBiasCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -24051,7 +23183,7 @@ void SetupIntrinsics()
     TextureSampleBiasCompareOffset_Texture1D.parameters = TextureSampleBiasCompareOffset_Texture1D_args;
     Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1D_bias)->typeSymbol = &Float32Type;
@@ -24082,12 +23214,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture1D_offset)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasCompareOffset with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32x2
+    /// textureSampleBiasCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
     TextureSampleBiasCompareOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleBiasCompareOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleBiasCompareOffset_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasCompareOffset_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleBiasCompareOffset_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasCompareOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasCompareOffset_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleBiasCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -24102,7 +23234,7 @@ void SetupIntrinsics()
     TextureSampleBiasCompareOffset_Texture2D.parameters = TextureSampleBiasCompareOffset_Texture2D_args;
     Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2D_bias)->typeSymbol = &Float32Type;
@@ -24133,12 +23265,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasCompareOffset with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32x3
+    /// textureSampleBiasCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
     TextureSampleBiasCompareOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleBiasCompareOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleBiasCompareOffset_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasCompareOffset_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleBiasCompareOffset_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasCompareOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasCompareOffset_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleBiasCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -24153,7 +23285,7 @@ void SetupIntrinsics()
     TextureSampleBiasCompareOffset_Texture3D.parameters = TextureSampleBiasCompareOffset_Texture3D_args;
     Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture3D_bias)->typeSymbol = &Float32Type;
@@ -24184,12 +23316,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture3D_offset)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasCompareOffset with Texture1DArray, SamplerType, Float32x2, Float32, Float32, Float32x2
+    /// textureSampleBiasCompareOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32, Float32x2
     TextureSampleBiasCompareOffset_Texture1DArray_texture.name = "texture"_c;
     TextureSampleBiasCompareOffset_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
     TextureSampleBiasCompareOffset_Texture1DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasCompareOffset_Texture1DArray_sampler.name = "sampler"_c;
-    TextureSampleBiasCompareOffset_Texture1DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasCompareOffset_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasCompareOffset_Texture1DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasCompareOffset_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleBiasCompareOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -24204,7 +23336,7 @@ void SetupIntrinsics()
     TextureSampleBiasCompareOffset_Texture1DArray.parameters = TextureSampleBiasCompareOffset_Texture1DArray_args;
     Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1DArray_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture1DArray_bias)->typeSymbol = &Float32Type;
@@ -24235,12 +23367,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture1DArray_offset)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture1DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasCompareOffset with Texture2DArray, SamplerType, Float32x3, Float32, Float32, Float32x3
+    /// textureSampleBiasCompareOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32, Float32x3
     TextureSampleBiasCompareOffset_Texture2DArray_texture.name = "texture"_c;
     TextureSampleBiasCompareOffset_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
     TextureSampleBiasCompareOffset_Texture2DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasCompareOffset_Texture2DArray_sampler.name = "sampler"_c;
-    TextureSampleBiasCompareOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasCompareOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasCompareOffset_Texture2DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasCompareOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleBiasCompareOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -24255,7 +23387,7 @@ void SetupIntrinsics()
     TextureSampleBiasCompareOffset_Texture2DArray.parameters = TextureSampleBiasCompareOffset_Texture2DArray_args;
     Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2DArray_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2DArray_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2DArray_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2DArray_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleBiasCompareOffset_Texture2DArray_bias)->typeSymbol = &Float32Type;
@@ -24286,12 +23418,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture2DArray_offset)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleBiasCompareOffset_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasProjCompare with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+    /// textureSampleBiasProjCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32
     TextureSampleBiasProjCompare_Texture1D_texture.name = "texture"_c;
     TextureSampleBiasProjCompare_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleBiasProjCompare_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasProjCompare_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleBiasProjCompare_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasProjCompare_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasProjCompare_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasProjCompare_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleBiasProjCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -24306,7 +23438,7 @@ void SetupIntrinsics()
     TextureSampleBiasProjCompare_Texture1D.parameters = TextureSampleBiasProjCompare_Texture1D_args;
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture1D_bias)->typeSymbol = &Float32Type;
@@ -24337,12 +23469,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture1D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasProjCompare with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32
+    /// textureSampleBiasProjCompare with Texture2D, Sampler, Float32x2, Float32, Float32, Float32
     TextureSampleBiasProjCompare_Texture2D_texture.name = "texture"_c;
     TextureSampleBiasProjCompare_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleBiasProjCompare_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasProjCompare_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleBiasProjCompare_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasProjCompare_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasProjCompare_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasProjCompare_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleBiasProjCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -24357,7 +23489,7 @@ void SetupIntrinsics()
     TextureSampleBiasProjCompare_Texture2D.parameters = TextureSampleBiasProjCompare_Texture2D_args;
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture2D_bias)->typeSymbol = &Float32Type;
@@ -24388,12 +23520,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture2D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasProjCompare with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32
+    /// textureSampleBiasProjCompare with Texture3D, Sampler, Float32x3, Float32, Float32, Float32
     TextureSampleBiasProjCompare_Texture3D_texture.name = "texture"_c;
     TextureSampleBiasProjCompare_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleBiasProjCompare_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasProjCompare_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleBiasProjCompare_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasProjCompare_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasProjCompare_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasProjCompare_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleBiasProjCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -24408,7 +23540,7 @@ void SetupIntrinsics()
     TextureSampleBiasProjCompare_Texture3D.parameters = TextureSampleBiasProjCompare_Texture3D_args;
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture3D_bias)->typeSymbol = &Float32Type;
@@ -24439,12 +23571,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture3D_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasProjCompareOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32, Float32
+    /// textureSampleBiasProjCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
     TextureSampleBiasProjCompareOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleBiasProjCompareOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleBiasProjCompareOffset_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasProjCompareOffset_Texture1D_sampler.name = "sampler"_c;
-    TextureSampleBiasProjCompareOffset_Texture1D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasProjCompareOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasProjCompareOffset_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasProjCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleBiasProjCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
@@ -24461,7 +23593,7 @@ void SetupIntrinsics()
     TextureSampleBiasProjCompareOffset_Texture1D.parameters = TextureSampleBiasProjCompareOffset_Texture1D_args;
     Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture1D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture1D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture1D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture1D_bias)->typeSymbol = &Float32Type;
@@ -24496,12 +23628,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture1D_offset)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasProjCompareOffset with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32, Float32x2
+    /// textureSampleBiasProjCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32, Float32x2
     TextureSampleBiasProjCompareOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleBiasProjCompareOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureSampleBiasProjCompareOffset_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasProjCompareOffset_Texture2D_sampler.name = "sampler"_c;
-    TextureSampleBiasProjCompareOffset_Texture2D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasProjCompareOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasProjCompareOffset_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasProjCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleBiasProjCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
@@ -24518,7 +23650,7 @@ void SetupIntrinsics()
     TextureSampleBiasProjCompareOffset_Texture2D.parameters = TextureSampleBiasProjCompareOffset_Texture2D_args;
     Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture2D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture2D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture2D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture2D_bias)->typeSymbol = &Float32Type;
@@ -24553,12 +23685,12 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture2D_offset)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
-    /// textureSampleBiasProjCompareOffset with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32, Float32x3
+    /// textureSampleBiasProjCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32, Float32x3
     TextureSampleBiasProjCompareOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleBiasProjCompareOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureSampleBiasProjCompareOffset_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasProjCompareOffset_Texture3D_sampler.name = "sampler"_c;
-    TextureSampleBiasProjCompareOffset_Texture3D_sampler.type = Type::FullType{ SamplerTypeType.name };
+    TextureSampleBiasProjCompareOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
     TextureSampleBiasProjCompareOffset_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasProjCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleBiasProjCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
@@ -24575,7 +23707,7 @@ void SetupIntrinsics()
     TextureSampleBiasProjCompareOffset_Texture3D.parameters = TextureSampleBiasProjCompareOffset_Texture3D_args;
     Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture3D_sampler)->typeSymbol = &SamplerTypeType;
+    Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture3D_sampler)->typeSymbol = &SamplerType;
     Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture3D_sampler)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleBiasProjCompareOffset_Texture3D_bias)->typeSymbol = &Float32Type;

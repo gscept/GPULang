@@ -156,7 +156,7 @@ SetupVulkan(const VkDevice device, const Deserialize::Program* prog, GPULang::De
     for (uint32_t i = 0; i < numVariables; i++)
     {
         GPULang::Deserialize::Variable* var = variables[i];
-        if (var->bindingType == GPULang::BindingType::LinkDefined)
+        if (var->bindingType == Serialization::BindingType::LinkDefined)
             continue;
         VkPipelineStageFlags accessBits = 0x0;
         uint32_t bit = 1;

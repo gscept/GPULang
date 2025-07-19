@@ -21,8 +21,11 @@
 #include "ast/structure.h"
 #include "ast/variable.h"
 #include "generated/types.h"
+#include "generated/intrinsics.h"
 #include "thread.h"
 #include <thread>
+
+
 
 namespace GPULang
 {
@@ -218,64 +221,7 @@ Compiler::Setup(const Compiler::Language& lang, Options options)
         // push global scope for all the builtins
         this->PushScope(this->intrinsicScope);
 
-        // setup default types and their lookups
-        if (DefaultTypes.size == 0)
-            Type::SetupDefaultTypes();
-        auto typeIt = DefaultTypes.begin();
-        while (typeIt != DefaultTypes.end())
-        {
-            Type* type = static_cast<Type*>(*typeIt);
-            type->symbols.Invalidate();
-            type->scope.symbolLookup.Invalidate();
-            type->scope.symbolLookup.BeginBulkAdd();
-
-            this->validator->ResolveType(this, *typeIt);
-            typeIt++;
-        }
-
-        // Run again to resolve swizzle variables
-        typeIt = DefaultTypes.begin();
-        while (typeIt != DefaultTypes.end())
-        {
-            this->validator->ResolveTypeSwizzles(this, *typeIt);
-            typeIt++;
-        }
-
-        // Run again but resolve methods this time (needed as forward declaration)
-        typeIt = DefaultTypes.begin();
-        while (typeIt != DefaultTypes.end())
-        {
-            this->validator->ResolveTypeMethods(this, *typeIt);
-            Type* type = static_cast<Type*>(*typeIt);
-            type->scope.symbolLookup.EndBulkAdd();
-            typeIt++;
-        }
-
-        this->performanceTimer.Stop();
-
-        if (this->options.emitTimings)
-            this->performanceTimer.Print("Static setup types");
-
-        this->performanceTimer.Start();
-        // setup intrinsics
-        if (DefaultIntrinsics.size == 0)
-            Function::SetupIntrinsics();
-        this->ignoreReservedWords = true;
-        auto intrinIt = DefaultIntrinsics.begin();
-        while (intrinIt != DefaultIntrinsics.end())
-        {
-            auto fun = static_cast<Function*>(*intrinIt);
-            auto funRes = Symbol::Resolved(fun);
-            funRes->scope.symbols.Invalidate();
-            funRes->scope.symbolLookup.Invalidate();
-            this->validator->ResolveFunction(this, *intrinIt);
-            intrinIt++;
-        }
-
-        this->performanceTimer.Stop();
-
-        if (this->options.emitTimings)
-            this->performanceTimer.Print("Static setup intrinsics");
+        this->intrinsicScope->symbolLookup = DefaultIntrinsics;
 
         this->shaderSwitches[ProgramInstance::__Resolved::EntryType::VertexShader].name = "gplIsVertexShader";
         this->shaderSwitches[ProgramInstance::__Resolved::EntryType::HullShader].name = "gplIsHullShader";
@@ -359,77 +305,8 @@ Compiler::Setup(Options options)
         // push global scope for all the builtins
         this->PushScope(this->intrinsicScope);
         
-        // setup default types and their lookups
-        if (DefaultTypes.size == 0)
-        {
-            this->performanceTimer.Start();
-            Type::SetupDefaultTypes();
-            this->performanceTimer.Stop();
-            if (this->options.emitTimings)
-                this->performanceTimer.Print("Builtin types init");
-        }
-        this->performanceTimer.Start();
-        auto typeIt = DefaultTypes.begin();
-        while (typeIt != DefaultTypes.end())
-        {
-            Type* type = static_cast<Type*>(*typeIt);
-            type->symbols.Invalidate();
-            type->scope.symbolLookup.Invalidate();
-            type->scope.symbolLookup.BeginBulkAdd();
-            
-            this->validator->ResolveType(this, *typeIt);
-            typeIt++;
-        }
-        
-        // Run again to resolve swizzle variables
-        typeIt = DefaultTypes.begin();
-        while (typeIt != DefaultTypes.end())
-        {
-            this->validator->ResolveTypeSwizzles(this, *typeIt);
-            typeIt++;
-        }
-        
-        // Run again but resolve methods this time (needed as forward declaration)
-        typeIt = DefaultTypes.begin();
-        while (typeIt != DefaultTypes.end())
-        {
-            this->validator->ResolveTypeMethods(this, *typeIt);
-            Type* type = static_cast<Type*>(*typeIt);
-            type->scope.symbolLookup.EndBulkAdd();
-            typeIt++;
-        }
-        
-        this->performanceTimer.Stop();
-        
-        if (this->options.emitTimings)
-            this->performanceTimer.Print("Static setup types");
-        
-        
-        // setup intrinsics
-        if (DefaultIntrinsics.size == 0)
-        {
-            this->performanceTimer.Start();
-            Function::SetupIntrinsics();
-            this->performanceTimer.Stop();
-            if (this->options.emitTimings)
-                this->performanceTimer.Print("Intrinsics init");
-        }
-        
-        this->performanceTimer.Start();
-        this->ignoreReservedWords = true;
-        auto intrinIt = DefaultIntrinsics.begin();
-        while (intrinIt != DefaultIntrinsics.end())
-        {
-            auto fun = static_cast<Function*>(*intrinIt);
-            auto funRes = Symbol::Resolved(fun);
-            funRes->scope.symbols.Invalidate();
-            funRes->scope.symbolLookup.Invalidate();
-            this->validator->ResolveFunction(this, *intrinIt);
-            intrinIt++;
-        }
-        
-        this->performanceTimer.Stop();
-        
+        this->intrinsicScope->symbolLookup = DefaultIntrinsics;
+      
         if (this->options.emitTimings)
             this->performanceTimer.Print("Static setup intrinsics");
         
@@ -498,7 +375,6 @@ void
 Compiler::BeginStaticSymbolSetup()
 {
     this->staticSymbolSetup = true;
-    this->intrinsicScope->symbolLookup.BeginBulkAdd();
 }
 
 //------------------------------------------------------------------------------

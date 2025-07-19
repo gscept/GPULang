@@ -16,7 +16,6 @@
 namespace GPULang
 {
 
-extern FixedArray<Symbol*> DefaultIntrinsics;
 struct Variable;
 struct Type;
 struct Statement;

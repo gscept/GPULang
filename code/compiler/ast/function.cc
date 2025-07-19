@@ -135,7 +135,6 @@ Function::MatchOverload(Compiler* compiler, const std::vector<Symbol*>& function
 //------------------------------------------------------------------------------
 /**
 */
-FixedArray<Symbol*> DefaultIntrinsics;
 void
 Function::SetupIntrinsics()
 {

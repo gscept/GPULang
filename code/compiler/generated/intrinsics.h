@@ -2691,99 +2691,99 @@ extern Function SubgroupGetGreaterMask;
 extern Function SubgroupGetFirstActiveThread;
 
 /// subgroupBroadcastFirstActiveThread with Float32
-extern Variable BroadcastFirstActiveThread_value;
+extern Variable SubgroupBroadcastFirstActiveThread_Float32_value;
 extern Function SubgroupBroadcastFirstActiveThread_Float32;
 
 /// subgroupBroadcastFirstActiveThread with Float32x2
-extern Variable BroadcastFirstActiveThread_value;
+extern Variable SubgroupBroadcastFirstActiveThread_Float32x2_value;
 extern Function SubgroupBroadcastFirstActiveThread_Float32x2;
 
 /// subgroupBroadcastFirstActiveThread with Float32x3
-extern Variable BroadcastFirstActiveThread_value;
+extern Variable SubgroupBroadcastFirstActiveThread_Float32x3_value;
 extern Function SubgroupBroadcastFirstActiveThread_Float32x3;
 
 /// subgroupBroadcastFirstActiveThread with Float32x4
-extern Variable BroadcastFirstActiveThread_value;
+extern Variable SubgroupBroadcastFirstActiveThread_Float32x4_value;
 extern Function SubgroupBroadcastFirstActiveThread_Float32x4;
 
 /// subgroupBroadcastFirstActiveThread with Float16
-extern Variable BroadcastFirstActiveThread_value;
+extern Variable SubgroupBroadcastFirstActiveThread_Float16_value;
 extern Function SubgroupBroadcastFirstActiveThread_Float16;
 
 /// subgroupBroadcastFirstActiveThread with Float16x2
-extern Variable BroadcastFirstActiveThread_value;
+extern Variable SubgroupBroadcastFirstActiveThread_Float16x2_value;
 extern Function SubgroupBroadcastFirstActiveThread_Float16x2;
 
 /// subgroupBroadcastFirstActiveThread with Float16x3
-extern Variable BroadcastFirstActiveThread_value;
+extern Variable SubgroupBroadcastFirstActiveThread_Float16x3_value;
 extern Function SubgroupBroadcastFirstActiveThread_Float16x3;
 
 /// subgroupBroadcastFirstActiveThread with Float16x4
-extern Variable BroadcastFirstActiveThread_value;
+extern Variable SubgroupBroadcastFirstActiveThread_Float16x4_value;
 extern Function SubgroupBroadcastFirstActiveThread_Float16x4;
 
 /// subgroupBroadcastFirstActiveThread with Int32
-extern Variable BroadcastFirstActiveThread_value;
+extern Variable SubgroupBroadcastFirstActiveThread_Int32_value;
 extern Function SubgroupBroadcastFirstActiveThread_Int32;
 
 /// subgroupBroadcastFirstActiveThread with Int32x2
-extern Variable BroadcastFirstActiveThread_value;
+extern Variable SubgroupBroadcastFirstActiveThread_Int32x2_value;
 extern Function SubgroupBroadcastFirstActiveThread_Int32x2;
 
 /// subgroupBroadcastFirstActiveThread with Int32x3
-extern Variable BroadcastFirstActiveThread_value;
+extern Variable SubgroupBroadcastFirstActiveThread_Int32x3_value;
 extern Function SubgroupBroadcastFirstActiveThread_Int32x3;
 
 /// subgroupBroadcastFirstActiveThread with Int32x4
-extern Variable BroadcastFirstActiveThread_value;
+extern Variable SubgroupBroadcastFirstActiveThread_Int32x4_value;
 extern Function SubgroupBroadcastFirstActiveThread_Int32x4;
 
 /// subgroupBroadcastFirstActiveThread with Int16
-extern Variable BroadcastFirstActiveThread_value;
+extern Variable SubgroupBroadcastFirstActiveThread_Int16_value;
 extern Function SubgroupBroadcastFirstActiveThread_Int16;
 
 /// subgroupBroadcastFirstActiveThread with Int16x2
-extern Variable BroadcastFirstActiveThread_value;
+extern Variable SubgroupBroadcastFirstActiveThread_Int16x2_value;
 extern Function SubgroupBroadcastFirstActiveThread_Int16x2;
 
 /// subgroupBroadcastFirstActiveThread with Int16x3
-extern Variable BroadcastFirstActiveThread_value;
+extern Variable SubgroupBroadcastFirstActiveThread_Int16x3_value;
 extern Function SubgroupBroadcastFirstActiveThread_Int16x3;
 
 /// subgroupBroadcastFirstActiveThread with Int16x4
-extern Variable BroadcastFirstActiveThread_value;
+extern Variable SubgroupBroadcastFirstActiveThread_Int16x4_value;
 extern Function SubgroupBroadcastFirstActiveThread_Int16x4;
 
 /// subgroupBroadcastFirstActiveThread with UInt32
-extern Variable BroadcastFirstActiveThread_value;
+extern Variable SubgroupBroadcastFirstActiveThread_UInt32_value;
 extern Function SubgroupBroadcastFirstActiveThread_UInt32;
 
 /// subgroupBroadcastFirstActiveThread with UInt32x2
-extern Variable BroadcastFirstActiveThread_value;
+extern Variable SubgroupBroadcastFirstActiveThread_UInt32x2_value;
 extern Function SubgroupBroadcastFirstActiveThread_UInt32x2;
 
 /// subgroupBroadcastFirstActiveThread with UInt32x3
-extern Variable BroadcastFirstActiveThread_value;
+extern Variable SubgroupBroadcastFirstActiveThread_UInt32x3_value;
 extern Function SubgroupBroadcastFirstActiveThread_UInt32x3;
 
 /// subgroupBroadcastFirstActiveThread with UInt32x4
-extern Variable BroadcastFirstActiveThread_value;
+extern Variable SubgroupBroadcastFirstActiveThread_UInt32x4_value;
 extern Function SubgroupBroadcastFirstActiveThread_UInt32x4;
 
 /// subgroupBroadcastFirstActiveThread with UInt16
-extern Variable BroadcastFirstActiveThread_value;
+extern Variable SubgroupBroadcastFirstActiveThread_UInt16_value;
 extern Function SubgroupBroadcastFirstActiveThread_UInt16;
 
 /// subgroupBroadcastFirstActiveThread with UInt16x2
-extern Variable BroadcastFirstActiveThread_value;
+extern Variable SubgroupBroadcastFirstActiveThread_UInt16x2_value;
 extern Function SubgroupBroadcastFirstActiveThread_UInt16x2;
 
 /// subgroupBroadcastFirstActiveThread with UInt16x3
-extern Variable BroadcastFirstActiveThread_value;
+extern Variable SubgroupBroadcastFirstActiveThread_UInt16x3_value;
 extern Function SubgroupBroadcastFirstActiveThread_UInt16x3;
 
 /// subgroupBroadcastFirstActiveThread with UInt16x4
-extern Variable BroadcastFirstActiveThread_value;
+extern Variable SubgroupBroadcastFirstActiveThread_UInt16x4_value;
 extern Function SubgroupBroadcastFirstActiveThread_UInt16x4;
 
 /// subgroupBallot with Bool8
@@ -3369,77 +3369,17 @@ extern Variable BitInsert_UInt32_offset;
 extern Variable BitInsert_UInt32_count;
 extern Function BitInsert_UInt32;
 
-/// bitExtract with Int32, Int32, Int32
-extern Variable BitExtract_Int32_base;
-extern Variable BitExtract_Int32_offset;
-extern Variable BitExtract_Int32_count;
-extern Function BitExtract_Int32;
-
-/// bitExtract with Int32x2, Int32x2, Int32x2
-extern Variable BitExtract_Int32x2_base;
-extern Variable BitExtract_Int32x2_offset;
-extern Variable BitExtract_Int32x2_count;
-extern Function BitExtract_Int32x2;
-
-/// bitExtract with Int32x3, Int32x3, Int32x3
-extern Variable BitExtract_Int32x3_base;
-extern Variable BitExtract_Int32x3_offset;
-extern Variable BitExtract_Int32x3_count;
-extern Function BitExtract_Int32x3;
-
-/// bitExtract with Int32x4, Int32x4, Int32x4
-extern Variable BitExtract_Int32x4_base;
-extern Variable BitExtract_Int32x4_offset;
-extern Variable BitExtract_Int32x4_count;
-extern Function BitExtract_Int32x4;
-
-/// bitExtract with Int16, Int16, Int16
-extern Variable BitExtract_Int16_base;
-extern Variable BitExtract_Int16_offset;
-extern Variable BitExtract_Int16_count;
-extern Function BitExtract_Int16;
-
-/// bitExtract with Int16x2, Int16x2, Int16x2
-extern Variable BitExtract_Int16x2_base;
-extern Variable BitExtract_Int16x2_offset;
-extern Variable BitExtract_Int16x2_count;
-extern Function BitExtract_Int16x2;
-
-/// bitExtract with Int16x3, Int16x3, Int16x3
-extern Variable BitExtract_Int16x3_base;
-extern Variable BitExtract_Int16x3_offset;
-extern Variable BitExtract_Int16x3_count;
-extern Function BitExtract_Int16x3;
-
-/// bitExtract with Int16x4, Int16x4, Int16x4
-extern Variable BitExtract_Int16x4_base;
-extern Variable BitExtract_Int16x4_offset;
-extern Variable BitExtract_Int16x4_count;
-extern Function BitExtract_Int16x4;
-
 /// bitExtract with UInt32, UInt32, UInt32
 extern Variable BitExtract_UInt32_base;
 extern Variable BitExtract_UInt32_offset;
 extern Variable BitExtract_UInt32_count;
 extern Function BitExtract_UInt32;
 
-/// bitExtract with UInt32x2, UInt32x2, UInt32x2
-extern Variable BitExtract_UInt32x2_base;
-extern Variable BitExtract_UInt32x2_offset;
-extern Variable BitExtract_UInt32x2_count;
-extern Function BitExtract_UInt32x2;
-
-/// bitExtract with UInt32x3, UInt32x3, UInt32x3
-extern Variable BitExtract_UInt32x3_base;
-extern Variable BitExtract_UInt32x3_offset;
-extern Variable BitExtract_UInt32x3_count;
-extern Function BitExtract_UInt32x3;
-
-/// bitExtract with UInt32x4, UInt32x4, UInt32x4
-extern Variable BitExtract_UInt32x4_base;
-extern Variable BitExtract_UInt32x4_offset;
-extern Variable BitExtract_UInt32x4_count;
-extern Function BitExtract_UInt32x4;
+/// bitExtract with Int32, Int32, Int32
+extern Variable BitExtract_Int32_base;
+extern Variable BitExtract_Int32_offset;
+extern Variable BitExtract_Int32_count;
+extern Function BitExtract_Int32;
 
 /// bitExtract with UInt16, UInt16, UInt16
 extern Variable BitExtract_UInt16_base;
@@ -3447,215 +3387,43 @@ extern Variable BitExtract_UInt16_offset;
 extern Variable BitExtract_UInt16_count;
 extern Function BitExtract_UInt16;
 
-/// bitExtract with UInt16x2, UInt16x2, UInt16x2
-extern Variable BitExtract_UInt16x2_base;
-extern Variable BitExtract_UInt16x2_offset;
-extern Variable BitExtract_UInt16x2_count;
-extern Function BitExtract_UInt16x2;
+/// bitExtract with Int16, Int16, Int16
+extern Variable BitExtract_Int16_base;
+extern Variable BitExtract_Int16_offset;
+extern Variable BitExtract_Int16_count;
+extern Function BitExtract_Int16;
 
-/// bitExtract with UInt16x3, UInt16x3, UInt16x3
-extern Variable BitExtract_UInt16x3_base;
-extern Variable BitExtract_UInt16x3_offset;
-extern Variable BitExtract_UInt16x3_count;
-extern Function BitExtract_UInt16x3;
-
-/// bitExtract with UInt16x4, UInt16x4, UInt16x4
-extern Variable BitExtract_UInt16x4_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitExtract_UInt16x4;
-
-/// bitReverse with Int32, Int32, Int32
-extern Variable BitReverse_Int32_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitReverse_Int32;
-
-/// bitReverse with Int32x2, Int32x2, Int32x2
-extern Variable BitReverse_Int32x2_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitReverse_Int32x2;
-
-/// bitReverse with Int32x3, Int32x3, Int32x3
-extern Variable BitReverse_Int32x3_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitReverse_Int32x3;
-
-/// bitReverse with Int32x4, Int32x4, Int32x4
-extern Variable BitReverse_Int32x4_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitReverse_Int32x4;
-
-/// bitReverse with Int16, Int16, Int16
-extern Variable BitReverse_Int16_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitReverse_Int16;
-
-/// bitReverse with Int16x2, Int16x2, Int16x2
-extern Variable BitReverse_Int16x2_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitReverse_Int16x2;
-
-/// bitReverse with Int16x3, Int16x3, Int16x3
-extern Variable BitReverse_Int16x3_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitReverse_Int16x3;
-
-/// bitReverse with Int16x4, Int16x4, Int16x4
-extern Variable BitReverse_Int16x4_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitReverse_Int16x4;
-
-/// bitReverse with UInt32, UInt32, UInt32
+/// bitReverse with UInt32
 extern Variable BitReverse_UInt32_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
 extern Function BitReverse_UInt32;
 
-/// bitReverse with UInt32x2, UInt32x2, UInt32x2
-extern Variable BitReverse_UInt32x2_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitReverse_UInt32x2;
+/// bitReverse with Int32
+extern Variable BitReverse_Int32_base;
+extern Function BitReverse_Int32;
 
-/// bitReverse with UInt32x3, UInt32x3, UInt32x3
-extern Variable BitReverse_UInt32x3_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitReverse_UInt32x3;
-
-/// bitReverse with UInt32x4, UInt32x4, UInt32x4
-extern Variable BitReverse_UInt32x4_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitReverse_UInt32x4;
-
-/// bitReverse with UInt16, UInt16, UInt16
+/// bitReverse with UInt16
 extern Variable BitReverse_UInt16_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
 extern Function BitReverse_UInt16;
 
-/// bitReverse with UInt16x2, UInt16x2, UInt16x2
-extern Variable BitReverse_UInt16x2_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitReverse_UInt16x2;
+/// bitReverse with Int16
+extern Variable BitReverse_Int16_base;
+extern Function BitReverse_Int16;
 
-/// bitReverse with UInt16x3, UInt16x3, UInt16x3
-extern Variable BitReverse_UInt16x3_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitReverse_UInt16x3;
-
-/// bitReverse with UInt16x4, UInt16x4, UInt16x4
-extern Variable BitReverse_UInt16x4_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitReverse_UInt16x4;
-
-/// bitCount with Int32, Int32, Int32
-extern Variable BitCount_Int32_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitCount_Int32;
-
-/// bitCount with Int32x2, Int32x2, Int32x2
-extern Variable BitCount_Int32x2_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitCount_Int32x2;
-
-/// bitCount with Int32x3, Int32x3, Int32x3
-extern Variable BitCount_Int32x3_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitCount_Int32x3;
-
-/// bitCount with Int32x4, Int32x4, Int32x4
-extern Variable BitCount_Int32x4_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitCount_Int32x4;
-
-/// bitCount with Int16, Int16, Int16
-extern Variable BitCount_Int16_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitCount_Int16;
-
-/// bitCount with Int16x2, Int16x2, Int16x2
-extern Variable BitCount_Int16x2_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitCount_Int16x2;
-
-/// bitCount with Int16x3, Int16x3, Int16x3
-extern Variable BitCount_Int16x3_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitCount_Int16x3;
-
-/// bitCount with Int16x4, Int16x4, Int16x4
-extern Variable BitCount_Int16x4_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitCount_Int16x4;
-
-/// bitCount with UInt32, UInt32, UInt32
+/// bitCount with UInt32
 extern Variable BitCount_UInt32_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
 extern Function BitCount_UInt32;
 
-/// bitCount with UInt32x2, UInt32x2, UInt32x2
-extern Variable BitCount_UInt32x2_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitCount_UInt32x2;
+/// bitCount with Int32
+extern Variable BitCount_Int32_base;
+extern Function BitCount_Int32;
 
-/// bitCount with UInt32x3, UInt32x3, UInt32x3
-extern Variable BitCount_UInt32x3_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitCount_UInt32x3;
-
-/// bitCount with UInt32x4, UInt32x4, UInt32x4
-extern Variable BitCount_UInt32x4_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitCount_UInt32x4;
-
-/// bitCount with UInt16, UInt16, UInt16
+/// bitCount with UInt16
 extern Variable BitCount_UInt16_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
 extern Function BitCount_UInt16;
 
-/// bitCount with UInt16x2, UInt16x2, UInt16x2
-extern Variable BitCount_UInt16x2_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitCount_UInt16x2;
-
-/// bitCount with UInt16x3, UInt16x3, UInt16x3
-extern Variable BitCount_UInt16x3_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitCount_UInt16x3;
-
-/// bitCount with UInt16x4, UInt16x4, UInt16x4
-extern Variable BitCount_UInt16x4_base;
-extern Variable BitExtract_UInt16x4_offset;
-extern Variable BitExtract_UInt16x4_count;
-extern Function BitCount_UInt16x4;
+/// bitCount with Int16
+extern Variable BitCount_Int16_base;
+extern Function BitCount_Int16;
 
 /// executionBarrier
 extern Function ExecutionBarrier;
@@ -3783,7 +3551,7 @@ extern Function TextureGetSamples_Texture2DMS;
 extern Variable TextureGetSamples_Texture2DMSArray_texture;
 extern Function TextureGetSamples_Texture2DMSArray;
 
-/// textureGetSampledMip with Texture1D, SamplerType, Float32
+/// textureGetSampledMip with Texture1D, Sampler, Float32
 extern Variable TextureGetSampledMip_Texture1D_texture;
 extern Variable TextureGetSampledMip_Texture1D_sampler;
 extern Variable TextureGetSampledMip_Texture1D_coordinate;
@@ -3794,7 +3562,7 @@ extern Variable SampledTextureGetSampledMip_Texture1D_texture;
 extern Variable SampledTextureGetSampledMip_Texture1D_coordinate;
 extern Function SampledTextureGetSampledMip_Texture1D;
 
-/// textureGetSampledMip with Texture2D, SamplerType, Float32x2
+/// textureGetSampledMip with Texture2D, Sampler, Float32x2
 extern Variable TextureGetSampledMip_Texture2D_texture;
 extern Variable TextureGetSampledMip_Texture2D_sampler;
 extern Variable TextureGetSampledMip_Texture2D_coordinate;
@@ -3805,7 +3573,7 @@ extern Variable SampledTextureGetSampledMip_Texture2D_texture;
 extern Variable SampledTextureGetSampledMip_Texture2D_coordinate;
 extern Function SampledTextureGetSampledMip_Texture2D;
 
-/// textureGetSampledMip with Texture3D, SamplerType, Float32x3
+/// textureGetSampledMip with Texture3D, Sampler, Float32x3
 extern Variable TextureGetSampledMip_Texture3D_texture;
 extern Variable TextureGetSampledMip_Texture3D_sampler;
 extern Variable TextureGetSampledMip_Texture3D_coordinate;
@@ -3816,7 +3584,7 @@ extern Variable SampledTextureGetSampledMip_Texture3D_texture;
 extern Variable SampledTextureGetSampledMip_Texture3D_coordinate;
 extern Function SampledTextureGetSampledMip_Texture3D;
 
-/// textureGetSampledMip with TextureCube, SamplerType, Float32x3
+/// textureGetSampledMip with TextureCube, Sampler, Float32x3
 extern Variable TextureGetSampledMip_TextureCube_texture;
 extern Variable TextureGetSampledMip_TextureCube_sampler;
 extern Variable TextureGetSampledMip_TextureCube_coordinate;
@@ -3827,7 +3595,7 @@ extern Variable SampledTextureGetSampledMip_TextureCube_texture;
 extern Variable SampledTextureGetSampledMip_TextureCube_coordinate;
 extern Function SampledTextureGetSampledMip_TextureCube;
 
-/// textureGetSampledMip with Texture1DArray, SamplerType, Float32x2
+/// textureGetSampledMip with Texture1DArray, Sampler, Float32x2
 extern Variable TextureGetSampledMip_Texture1DArray_texture;
 extern Variable TextureGetSampledMip_Texture1DArray_sampler;
 extern Variable TextureGetSampledMip_Texture1DArray_coordinate;
@@ -3838,7 +3606,7 @@ extern Variable SampledTextureGetSampledMip_Texture1DArray_texture;
 extern Variable SampledTextureGetSampledMip_Texture1DArray_coordinate;
 extern Function SampledTextureGetSampledMip_Texture1DArray;
 
-/// textureGetSampledMip with Texture2DArray, SamplerType, Float32x3
+/// textureGetSampledMip with Texture2DArray, Sampler, Float32x3
 extern Variable TextureGetSampledMip_Texture2DArray_texture;
 extern Variable TextureGetSampledMip_Texture2DArray_sampler;
 extern Variable TextureGetSampledMip_Texture2DArray_coordinate;
@@ -3849,7 +3617,7 @@ extern Variable SampledTextureGetSampledMip_Texture2DArray_texture;
 extern Variable SampledTextureGetSampledMip_Texture2DArray_coordinate;
 extern Function SampledTextureGetSampledMip_Texture2DArray;
 
-/// textureGetSampledMip with TextureCubeArray, SamplerType, Float32x4
+/// textureGetSampledMip with TextureCubeArray, Sampler, Float32x4
 extern Variable TextureGetSampledMip_TextureCubeArray_texture;
 extern Variable TextureGetSampledMip_TextureCubeArray_sampler;
 extern Variable TextureGetSampledMip_TextureCubeArray_coordinate;
@@ -4167,7 +3935,7 @@ extern Variable TextureFetchSample_Texture2DMSArray_lod;
 extern Variable TextureFetchSample_Texture2DMSArray_sample;
 extern Function TextureFetchSample_Texture2DMSArray;
 
-/// textureGather with Texture2D, SamplerType, Int32x2, Int32
+/// textureGather with Texture2D, Sampler, Int32x2, Int32
 extern Variable TextureGather_Texture2D_texture;
 extern Variable TextureGather_Texture2D_sampler;
 extern Variable TextureGather_Texture2D_coordinate;
@@ -4180,7 +3948,7 @@ extern Variable SampledTextureGather_Texture2D_coordinate;
 extern Variable SampledTextureGather_Texture2D_component;
 extern Function SampledTextureGather_Texture2D;
 
-/// textureGatherOffset with Texture2D, SamplerType, Int32x2, Int32, UInt32
+/// textureGatherOffset with Texture2D, Sampler, Int32x2, Int32, UInt32
 extern Variable TextureGatherOffset_Texture2D_texture;
 extern Variable TextureGatherOffset_Texture2D_sampler;
 extern Variable TextureGatherOffset_Texture2D_coordinate;
@@ -4195,7 +3963,7 @@ extern Variable SampledTextureGatherOffset_Texture2D_component;
 extern Variable SampledTextureGatherOffset_Texture2D_offset;
 extern Function SampledTextureGatherOffset_Texture2D;
 
-/// textureGather with TextureCube, SamplerType, Int32x3, Int32
+/// textureGather with TextureCube, Sampler, Int32x3, Int32
 extern Variable TextureGather_TextureCube_texture;
 extern Variable TextureGather_TextureCube_sampler;
 extern Variable TextureGather_TextureCube_coordinate;
@@ -4208,7 +3976,7 @@ extern Variable SampledTextureGather_TextureCube_coordinate;
 extern Variable SampledTextureGather_TextureCube_component;
 extern Function SampledTextureGather_TextureCube;
 
-/// textureGatherOffset with TextureCube, SamplerType, Int32x3, Int32, UInt32
+/// textureGatherOffset with TextureCube, Sampler, Int32x3, Int32, UInt32
 extern Variable TextureGatherOffset_TextureCube_texture;
 extern Variable TextureGatherOffset_TextureCube_sampler;
 extern Variable TextureGatherOffset_TextureCube_coordinate;
@@ -4223,7 +3991,7 @@ extern Variable SampledTextureGatherOffset_TextureCube_component;
 extern Variable SampledTextureGatherOffset_TextureCube_offset;
 extern Function SampledTextureGatherOffset_TextureCube;
 
-/// textureGather with Texture2DArray, SamplerType, Int32x3, Int32
+/// textureGather with Texture2DArray, Sampler, Int32x3, Int32
 extern Variable TextureGather_Texture2DArray_texture;
 extern Variable TextureGather_Texture2DArray_sampler;
 extern Variable TextureGather_Texture2DArray_coordinate;
@@ -4236,7 +4004,7 @@ extern Variable SampledTextureGather_Texture2DArray_coordinate;
 extern Variable SampledTextureGather_Texture2DArray_component;
 extern Function SampledTextureGather_Texture2DArray;
 
-/// textureGatherOffset with Texture2DArray, SamplerType, Int32x3, Int32, UInt32
+/// textureGatherOffset with Texture2DArray, Sampler, Int32x3, Int32, UInt32
 extern Variable TextureGatherOffset_Texture2DArray_texture;
 extern Variable TextureGatherOffset_Texture2DArray_sampler;
 extern Variable TextureGatherOffset_Texture2DArray_coordinate;
@@ -4251,7 +4019,7 @@ extern Variable SampledTextureGatherOffset_Texture2DArray_component;
 extern Variable SampledTextureGatherOffset_Texture2DArray_offset;
 extern Function SampledTextureGatherOffset_Texture2DArray;
 
-/// textureGather with TextureCubeArray, SamplerType, Int32x4, Int32
+/// textureGather with TextureCubeArray, Sampler, Int32x4, Int32
 extern Variable TextureGather_TextureCubeArray_texture;
 extern Variable TextureGather_TextureCubeArray_sampler;
 extern Variable TextureGather_TextureCubeArray_coordinate;
@@ -4264,7 +4032,7 @@ extern Variable SampledTextureGather_TextureCubeArray_coordinate;
 extern Variable SampledTextureGather_TextureCubeArray_component;
 extern Function SampledTextureGather_TextureCubeArray;
 
-/// textureGatherOffset with TextureCubeArray, SamplerType, Int32x4, Int32, UInt32
+/// textureGatherOffset with TextureCubeArray, Sampler, Int32x4, Int32, UInt32
 extern Variable TextureGatherOffset_TextureCubeArray_texture;
 extern Variable TextureGatherOffset_TextureCubeArray_sampler;
 extern Variable TextureGatherOffset_TextureCubeArray_coordinate;
@@ -4288,7 +4056,7 @@ extern Variable TexturePixelCacheLoad_PixelCacheMS_texture;
 extern Variable TexturePixelCacheLoad_PixelCacheMS_sample;
 extern Function TexturePixelCacheLoad_PixelCacheMS;
 
-/// textureSample with Texture1D, SamplerType, Float32
+/// textureSample with Texture1D, Sampler, Float32
 extern Variable TextureSample_Texture1D_texture;
 extern Variable TextureSample_Texture1D_sampler;
 extern Variable TextureSample_Texture1D_coordinate;
@@ -4299,7 +4067,7 @@ extern Variable SampledTextureSample_Texture1D_texture;
 extern Variable SampledTextureSample_Texture1D_coordinate;
 extern Function SampledTextureSample_Texture1D;
 
-/// textureSample with Texture2D, SamplerType, Float32x2
+/// textureSample with Texture2D, Sampler, Float32x2
 extern Variable TextureSample_Texture2D_texture;
 extern Variable TextureSample_Texture2D_sampler;
 extern Variable TextureSample_Texture2D_coordinate;
@@ -4310,7 +4078,7 @@ extern Variable SampledTextureSample_Texture2D_texture;
 extern Variable SampledTextureSample_Texture2D_coordinate;
 extern Function SampledTextureSample_Texture2D;
 
-/// textureSample with Texture3D, SamplerType, Float32x3
+/// textureSample with Texture3D, Sampler, Float32x3
 extern Variable TextureSample_Texture3D_texture;
 extern Variable TextureSample_Texture3D_sampler;
 extern Variable TextureSample_Texture3D_coordinate;
@@ -4321,7 +4089,7 @@ extern Variable SampledTextureSample_Texture3D_texture;
 extern Variable SampledTextureSample_Texture3D_coordinate;
 extern Function SampledTextureSample_Texture3D;
 
-/// textureSample with TextureCube, SamplerType, Float32x3
+/// textureSample with TextureCube, Sampler, Float32x3
 extern Variable TextureSample_TextureCube_texture;
 extern Variable TextureSample_TextureCube_sampler;
 extern Variable TextureSample_TextureCube_coordinate;
@@ -4332,7 +4100,7 @@ extern Variable SampledTextureSample_TextureCube_texture;
 extern Variable SampledTextureSample_TextureCube_coordinate;
 extern Function SampledTextureSample_TextureCube;
 
-/// textureSample with Texture1DArray, SamplerType, Float32x2
+/// textureSample with Texture1DArray, Sampler, Float32x2
 extern Variable TextureSample_Texture1DArray_texture;
 extern Variable TextureSample_Texture1DArray_sampler;
 extern Variable TextureSample_Texture1DArray_coordinate;
@@ -4343,7 +4111,7 @@ extern Variable SampledTextureSample_Texture1DArray_texture;
 extern Variable SampledTextureSample_Texture1DArray_coordinate;
 extern Function SampledTextureSample_Texture1DArray;
 
-/// textureSample with Texture2DArray, SamplerType, Float32x3
+/// textureSample with Texture2DArray, Sampler, Float32x3
 extern Variable TextureSample_Texture2DArray_texture;
 extern Variable TextureSample_Texture2DArray_sampler;
 extern Variable TextureSample_Texture2DArray_coordinate;
@@ -4354,7 +4122,7 @@ extern Variable SampledTextureSample_Texture2DArray_texture;
 extern Variable SampledTextureSample_Texture2DArray_coordinate;
 extern Function SampledTextureSample_Texture2DArray;
 
-/// textureSample with TextureCubeArray, SamplerType, Float32x4
+/// textureSample with TextureCubeArray, Sampler, Float32x4
 extern Variable TextureSample_TextureCubeArray_texture;
 extern Variable TextureSample_TextureCubeArray_sampler;
 extern Variable TextureSample_TextureCubeArray_coordinate;
@@ -4365,7 +4133,7 @@ extern Variable SampledTextureSample_TextureCubeArray_texture;
 extern Variable SampledTextureSample_TextureCubeArray_coordinate;
 extern Function SampledTextureSample_TextureCubeArray;
 
-/// textureSampleOffset with Texture1D, SamplerType, Float32, Float32
+/// textureSampleOffset with Texture1D, Sampler, Float32, Float32
 extern Variable TextureSampleOffset_Texture1D_texture;
 extern Variable TextureSampleOffset_Texture1D_sampler;
 extern Variable TextureSampleOffset_Texture1D_coordinate;
@@ -4378,7 +4146,7 @@ extern Variable SampledTextureSampleOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleOffset_Texture1D_offset;
 extern Function SampledTextureSampleOffset_Texture1D;
 
-/// textureSampleOffset with Texture2D, SamplerType, Float32x2, Float32x2
+/// textureSampleOffset with Texture2D, Sampler, Float32x2, Float32x2
 extern Variable TextureSampleOffset_Texture2D_texture;
 extern Variable TextureSampleOffset_Texture2D_sampler;
 extern Variable TextureSampleOffset_Texture2D_coordinate;
@@ -4391,7 +4159,7 @@ extern Variable SampledTextureSampleOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleOffset_Texture2D_offset;
 extern Function SampledTextureSampleOffset_Texture2D;
 
-/// textureSampleOffset with Texture3D, SamplerType, Float32x3, Float32x3
+/// textureSampleOffset with Texture3D, Sampler, Float32x3, Float32x3
 extern Variable TextureSampleOffset_Texture3D_texture;
 extern Variable TextureSampleOffset_Texture3D_sampler;
 extern Variable TextureSampleOffset_Texture3D_coordinate;
@@ -4404,7 +4172,7 @@ extern Variable SampledTextureSampleOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleOffset_Texture3D_offset;
 extern Function SampledTextureSampleOffset_Texture3D;
 
-/// textureSampleOffset with Texture1DArray, SamplerType, Float32x2, Float32x2
+/// textureSampleOffset with Texture1DArray, Sampler, Float32x2, Float32x2
 extern Variable TextureSampleOffset_Texture1DArray_texture;
 extern Variable TextureSampleOffset_Texture1DArray_sampler;
 extern Variable TextureSampleOffset_Texture1DArray_coordinate;
@@ -4417,7 +4185,7 @@ extern Variable SampledTextureSampleOffset_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleOffset_Texture1DArray_offset;
 extern Function SampledTextureSampleOffset_Texture1DArray;
 
-/// textureSampleOffset with Texture2DArray, SamplerType, Float32x3, Float32x3
+/// textureSampleOffset with Texture2DArray, Sampler, Float32x3, Float32x3
 extern Variable TextureSampleOffset_Texture2DArray_texture;
 extern Variable TextureSampleOffset_Texture2DArray_sampler;
 extern Variable TextureSampleOffset_Texture2DArray_coordinate;
@@ -4430,7 +4198,7 @@ extern Variable SampledTextureSampleOffset_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleOffset_Texture2DArray_offset;
 extern Function SampledTextureSampleOffset_Texture2DArray;
 
-/// textureSampleProj with Texture1D, SamplerType, Float32, Float32
+/// textureSampleProj with Texture1D, Sampler, Float32, Float32
 extern Variable TextureSampleProj_Texture1D_texture;
 extern Variable TextureSampleProj_Texture1D_sampler;
 extern Variable TextureSampleProj_Texture1D_coordinate;
@@ -4443,7 +4211,7 @@ extern Variable SampledTextureSampleProj_Texture1D_coordinate;
 extern Variable SampledTextureSampleProj_Texture1D_proj;
 extern Function SampledTextureSampleProj_Texture1D;
 
-/// textureSampleProj with Texture2D, SamplerType, Float32x2, Float32
+/// textureSampleProj with Texture2D, Sampler, Float32x2, Float32
 extern Variable TextureSampleProj_Texture2D_texture;
 extern Variable TextureSampleProj_Texture2D_sampler;
 extern Variable TextureSampleProj_Texture2D_coordinate;
@@ -4456,7 +4224,7 @@ extern Variable SampledTextureSampleProj_Texture2D_coordinate;
 extern Variable SampledTextureSampleProj_Texture2D_proj;
 extern Function SampledTextureSampleProj_Texture2D;
 
-/// textureSampleProj with Texture3D, SamplerType, Float32x3, Float32
+/// textureSampleProj with Texture3D, Sampler, Float32x3, Float32
 extern Variable TextureSampleProj_Texture3D_texture;
 extern Variable TextureSampleProj_Texture3D_sampler;
 extern Variable TextureSampleProj_Texture3D_coordinate;
@@ -4469,7 +4237,7 @@ extern Variable SampledTextureSampleProj_Texture3D_coordinate;
 extern Variable SampledTextureSampleProj_Texture3D_proj;
 extern Function SampledTextureSampleProj_Texture3D;
 
-/// textureSampleProjOffset with Texture1D, SamplerType, Float32, Float32, Float32
+/// textureSampleProjOffset with Texture1D, Sampler, Float32, Float32, Float32
 extern Variable TextureSampleProjOffset_Texture1D_texture;
 extern Variable TextureSampleProjOffset_Texture1D_sampler;
 extern Variable TextureSampleProjOffset_Texture1D_coordinate;
@@ -4484,7 +4252,7 @@ extern Variable SampledTextureSampleProjOffset_Texture1D_proj;
 extern Variable SampledTextureSampleProjOffset_Texture1D_offset;
 extern Function SampledTextureSampleProjOffset_Texture1D;
 
-/// textureSampleProjOffset with Texture2D, SamplerType, Float32x2, Float32, Float32x2
+/// textureSampleProjOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2
 extern Variable TextureSampleProjOffset_Texture2D_texture;
 extern Variable TextureSampleProjOffset_Texture2D_sampler;
 extern Variable TextureSampleProjOffset_Texture2D_coordinate;
@@ -4499,7 +4267,7 @@ extern Variable SampledTextureSampleProjOffset_Texture2D_proj;
 extern Variable SampledTextureSampleProjOffset_Texture2D_offset;
 extern Function SampledTextureSampleProjOffset_Texture2D;
 
-/// textureSampleProjOffset with Texture3D, SamplerType, Float32x3, Float32, Float32x3
+/// textureSampleProjOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3
 extern Variable TextureSampleProjOffset_Texture3D_texture;
 extern Variable TextureSampleProjOffset_Texture3D_sampler;
 extern Variable TextureSampleProjOffset_Texture3D_coordinate;
@@ -4514,7 +4282,7 @@ extern Variable SampledTextureSampleProjOffset_Texture3D_proj;
 extern Variable SampledTextureSampleProjOffset_Texture3D_offset;
 extern Function SampledTextureSampleProjOffset_Texture3D;
 
-/// textureSampleCompare with Texture1D, SamplerType, Float32, Float32
+/// textureSampleCompare with Texture1D, Sampler, Float32, Float32
 extern Variable TextureSampleCompare_Texture1D_texture;
 extern Variable TextureSampleCompare_Texture1D_sampler;
 extern Variable TextureSampleCompare_Texture1D_coordinate;
@@ -4527,7 +4295,7 @@ extern Variable SampledTextureSampleCompare_Texture1D_coordinate;
 extern Variable SampledTextureSampleCompare_Texture1D_compare;
 extern Function SampledTextureSampleCompare_Texture1D;
 
-/// textureSampleCompare with Texture2D, SamplerType, Float32x2, Float32
+/// textureSampleCompare with Texture2D, Sampler, Float32x2, Float32
 extern Variable TextureSampleCompare_Texture2D_texture;
 extern Variable TextureSampleCompare_Texture2D_sampler;
 extern Variable TextureSampleCompare_Texture2D_coordinate;
@@ -4540,7 +4308,7 @@ extern Variable SampledTextureSampleCompare_Texture2D_coordinate;
 extern Variable SampledTextureSampleCompare_Texture2D_compare;
 extern Function SampledTextureSampleCompare_Texture2D;
 
-/// textureSampleCompare with Texture3D, SamplerType, Float32x3, Float32
+/// textureSampleCompare with Texture3D, Sampler, Float32x3, Float32
 extern Variable TextureSampleCompare_Texture3D_texture;
 extern Variable TextureSampleCompare_Texture3D_sampler;
 extern Variable TextureSampleCompare_Texture3D_coordinate;
@@ -4553,7 +4321,7 @@ extern Variable SampledTextureSampleCompare_Texture3D_coordinate;
 extern Variable SampledTextureSampleCompare_Texture3D_compare;
 extern Function SampledTextureSampleCompare_Texture3D;
 
-/// textureSampleCompare with Texture1DArray, SamplerType, Float32x2, Float32
+/// textureSampleCompare with Texture1DArray, Sampler, Float32x2, Float32
 extern Variable TextureSampleCompare_Texture1DArray_texture;
 extern Variable TextureSampleCompare_Texture1DArray_sampler;
 extern Variable TextureSampleCompare_Texture1DArray_coordinate;
@@ -4566,7 +4334,7 @@ extern Variable SampledTextureSampleCompare_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleCompare_Texture1DArray_compare;
 extern Function SampledTextureSampleCompare_Texture1DArray;
 
-/// textureSampleCompare with Texture2DArray, SamplerType, Float32x3, Float32
+/// textureSampleCompare with Texture2DArray, Sampler, Float32x3, Float32
 extern Variable TextureSampleCompare_Texture2DArray_texture;
 extern Variable TextureSampleCompare_Texture2DArray_sampler;
 extern Variable TextureSampleCompare_Texture2DArray_coordinate;
@@ -4579,7 +4347,7 @@ extern Variable SampledTextureSampleCompare_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleCompare_Texture2DArray_compare;
 extern Function SampledTextureSampleCompare_Texture2DArray;
 
-/// textureSampleCompareOffset with Texture1D, SamplerType, Float32, Float32, Float32
+/// textureSampleCompareOffset with Texture1D, Sampler, Float32, Float32, Float32
 extern Variable TextureSampleCompareOffset_Texture1D_texture;
 extern Variable TextureSampleCompareOffset_Texture1D_sampler;
 extern Variable TextureSampleCompareOffset_Texture1D_coordinate;
@@ -4594,7 +4362,7 @@ extern Variable SampledTextureSampleCompareOffset_Texture1D_compare;
 extern Variable SampledTextureSampleCompareOffset_Texture1D_offset;
 extern Function SampledTextureSampleCompareOffset_Texture1D;
 
-/// textureSampleCompareOffset with Texture2D, SamplerType, Float32x2, Float32, Float32x2
+/// textureSampleCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2
 extern Variable TextureSampleCompareOffset_Texture2D_texture;
 extern Variable TextureSampleCompareOffset_Texture2D_sampler;
 extern Variable TextureSampleCompareOffset_Texture2D_coordinate;
@@ -4609,7 +4377,7 @@ extern Variable SampledTextureSampleCompareOffset_Texture2D_compare;
 extern Variable SampledTextureSampleCompareOffset_Texture2D_offset;
 extern Function SampledTextureSampleCompareOffset_Texture2D;
 
-/// textureSampleCompareOffset with Texture3D, SamplerType, Float32x3, Float32, Float32x3
+/// textureSampleCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3
 extern Variable TextureSampleCompareOffset_Texture3D_texture;
 extern Variable TextureSampleCompareOffset_Texture3D_sampler;
 extern Variable TextureSampleCompareOffset_Texture3D_coordinate;
@@ -4624,7 +4392,7 @@ extern Variable SampledTextureSampleCompareOffset_Texture3D_compare;
 extern Variable SampledTextureSampleCompareOffset_Texture3D_offset;
 extern Function SampledTextureSampleCompareOffset_Texture3D;
 
-/// textureSampleCompareOffset with Texture1DArray, SamplerType, Float32x2, Float32, Float32x2
+/// textureSampleCompareOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32x2
 extern Variable TextureSampleCompareOffset_Texture1DArray_texture;
 extern Variable TextureSampleCompareOffset_Texture1DArray_sampler;
 extern Variable TextureSampleCompareOffset_Texture1DArray_coordinate;
@@ -4639,7 +4407,7 @@ extern Variable SampledTextureSampleCompareOffset_Texture1DArray_compare;
 extern Variable SampledTextureSampleCompareOffset_Texture1DArray_offset;
 extern Function SampledTextureSampleCompareOffset_Texture1DArray;
 
-/// textureSampleCompareOffset with Texture2DArray, SamplerType, Float32x3, Float32, Float32x3
+/// textureSampleCompareOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32x3
 extern Variable TextureSampleCompareOffset_Texture2DArray_texture;
 extern Variable TextureSampleCompareOffset_Texture2DArray_sampler;
 extern Variable TextureSampleCompareOffset_Texture2DArray_coordinate;
@@ -4654,7 +4422,7 @@ extern Variable SampledTextureSampleCompareOffset_Texture2DArray_compare;
 extern Variable SampledTextureSampleCompareOffset_Texture2DArray_offset;
 extern Function SampledTextureSampleCompareOffset_Texture2DArray;
 
-/// textureSampleProjCompare with Texture1D, SamplerType, Float32, Float32, Float32
+/// textureSampleProjCompare with Texture1D, Sampler, Float32, Float32, Float32
 extern Variable TextureSampleProjCompare_Texture1D_texture;
 extern Variable TextureSampleProjCompare_Texture1D_sampler;
 extern Variable TextureSampleProjCompare_Texture1D_coordinate;
@@ -4669,7 +4437,7 @@ extern Variable SampledTextureSampleProjCompare_Texture1D_proj;
 extern Variable SampledTextureSampleProjCompare_Texture1D_compare;
 extern Function SampledTextureSampleProjCompare_Texture1D;
 
-/// textureSampleProjCompare with Texture2D, SamplerType, Float32x2, Float32, Float32
+/// textureSampleProjCompare with Texture2D, Sampler, Float32x2, Float32, Float32
 extern Variable TextureSampleProjCompare_Texture2D_texture;
 extern Variable TextureSampleProjCompare_Texture2D_sampler;
 extern Variable TextureSampleProjCompare_Texture2D_coordinate;
@@ -4684,7 +4452,7 @@ extern Variable SampledTextureSampleProjCompare_Texture2D_proj;
 extern Variable SampledTextureSampleProjCompare_Texture2D_compare;
 extern Function SampledTextureSampleProjCompare_Texture2D;
 
-/// textureSampleProjCompare with Texture3D, SamplerType, Float32x3, Float32, Float32
+/// textureSampleProjCompare with Texture3D, Sampler, Float32x3, Float32, Float32
 extern Variable TextureSampleProjCompare_Texture3D_texture;
 extern Variable TextureSampleProjCompare_Texture3D_sampler;
 extern Variable TextureSampleProjCompare_Texture3D_coordinate;
@@ -4699,7 +4467,7 @@ extern Variable SampledTextureSampleProjCompare_Texture3D_proj;
 extern Variable SampledTextureSampleProjCompare_Texture3D_compare;
 extern Function SampledTextureSampleProjCompare_Texture3D;
 
-/// textureSampleProjCompareOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+/// textureSampleProjCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
 extern Variable TextureSampleProjCompareOffset_Texture1D_texture;
 extern Variable TextureSampleProjCompareOffset_Texture1D_sampler;
 extern Variable TextureSampleProjCompareOffset_Texture1D_coordinate;
@@ -4716,7 +4484,7 @@ extern Variable SampledTextureSampleProjCompareOffset_Texture1D_compare;
 extern Variable SampledTextureSampleProjCompareOffset_Texture1D_offset;
 extern Function SampledTextureSampleProjCompareOffset_Texture1D;
 
-/// textureSampleProjCompareOffset with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32x2
+/// textureSampleProjCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
 extern Variable TextureSampleProjCompareOffset_Texture2D_texture;
 extern Variable TextureSampleProjCompareOffset_Texture2D_sampler;
 extern Variable TextureSampleProjCompareOffset_Texture2D_coordinate;
@@ -4733,7 +4501,7 @@ extern Variable SampledTextureSampleProjCompareOffset_Texture2D_compare;
 extern Variable SampledTextureSampleProjCompareOffset_Texture2D_offset;
 extern Function SampledTextureSampleProjCompareOffset_Texture2D;
 
-/// textureSampleProjCompareOffset with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32x3
+/// textureSampleProjCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
 extern Variable TextureSampleProjCompareOffset_Texture3D_texture;
 extern Variable TextureSampleProjCompareOffset_Texture3D_sampler;
 extern Variable TextureSampleProjCompareOffset_Texture3D_coordinate;
@@ -4750,7 +4518,7 @@ extern Variable SampledTextureSampleProjCompareOffset_Texture3D_compare;
 extern Variable SampledTextureSampleProjCompareOffset_Texture3D_offset;
 extern Function SampledTextureSampleProjCompareOffset_Texture3D;
 
-/// textureSampleLod with Texture1D, SamplerType, Float32, Float32
+/// textureSampleLod with Texture1D, Sampler, Float32, Float32
 extern Variable TextureSampleLod_Texture1D_texture;
 extern Variable TextureSampleLod_Texture1D_sampler;
 extern Variable TextureSampleLod_Texture1D_coordinate;
@@ -4763,7 +4531,7 @@ extern Variable SampledTextureSampleLod_Texture1D_coordinate;
 extern Variable SampledTextureSampleLod_Texture1D_lod;
 extern Function SampledTextureSampleLod_Texture1D;
 
-/// textureSampleLod with Texture2D, SamplerType, Float32x2, Float32
+/// textureSampleLod with Texture2D, Sampler, Float32x2, Float32
 extern Variable TextureSampleLod_Texture2D_texture;
 extern Variable TextureSampleLod_Texture2D_sampler;
 extern Variable TextureSampleLod_Texture2D_coordinate;
@@ -4776,7 +4544,7 @@ extern Variable SampledTextureSampleLod_Texture2D_coordinate;
 extern Variable SampledTextureSampleLod_Texture2D_lod;
 extern Function SampledTextureSampleLod_Texture2D;
 
-/// textureSampleLod with Texture3D, SamplerType, Float32x3, Float32
+/// textureSampleLod with Texture3D, Sampler, Float32x3, Float32
 extern Variable TextureSampleLod_Texture3D_texture;
 extern Variable TextureSampleLod_Texture3D_sampler;
 extern Variable TextureSampleLod_Texture3D_coordinate;
@@ -4789,7 +4557,7 @@ extern Variable SampledTextureSampleLod_Texture3D_coordinate;
 extern Variable SampledTextureSampleLod_Texture3D_lod;
 extern Function SampledTextureSampleLod_Texture3D;
 
-/// textureSampleLod with TextureCube, SamplerType, Float32x3, Float32
+/// textureSampleLod with TextureCube, Sampler, Float32x3, Float32
 extern Variable TextureSampleLod_TextureCube_texture;
 extern Variable TextureSampleLod_TextureCube_sampler;
 extern Variable TextureSampleLod_TextureCube_coordinate;
@@ -4802,7 +4570,7 @@ extern Variable SampledTextureSampleLod_TextureCube_coordinate;
 extern Variable SampledTextureSampleLod_TextureCube_lod;
 extern Function SampledTextureSampleLod_TextureCube;
 
-/// textureSampleLod with Texture1DArray, SamplerType, Float32x2, Float32
+/// textureSampleLod with Texture1DArray, Sampler, Float32x2, Float32
 extern Variable TextureSampleLod_Texture1DArray_texture;
 extern Variable TextureSampleLod_Texture1DArray_sampler;
 extern Variable TextureSampleLod_Texture1DArray_coordinate;
@@ -4815,7 +4583,7 @@ extern Variable SampledTextureSampleLod_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleLod_Texture1DArray_lod;
 extern Function SampledTextureSampleLod_Texture1DArray;
 
-/// textureSampleLod with Texture2DArray, SamplerType, Float32x3, Float32
+/// textureSampleLod with Texture2DArray, Sampler, Float32x3, Float32
 extern Variable TextureSampleLod_Texture2DArray_texture;
 extern Variable TextureSampleLod_Texture2DArray_sampler;
 extern Variable TextureSampleLod_Texture2DArray_coordinate;
@@ -4828,7 +4596,7 @@ extern Variable SampledTextureSampleLod_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleLod_Texture2DArray_lod;
 extern Function SampledTextureSampleLod_Texture2DArray;
 
-/// textureSampleLod with TextureCubeArray, SamplerType, Float32x4, Float32
+/// textureSampleLod with TextureCubeArray, Sampler, Float32x4, Float32
 extern Variable TextureSampleLod_TextureCubeArray_texture;
 extern Variable TextureSampleLod_TextureCubeArray_sampler;
 extern Variable TextureSampleLod_TextureCubeArray_coordinate;
@@ -4841,7 +4609,7 @@ extern Variable SampledTextureSampleLod_TextureCubeArray_coordinate;
 extern Variable SampledTextureSampleLod_TextureCubeArray_lod;
 extern Function SampledTextureSampleLod_TextureCubeArray;
 
-/// textureSampleLodOffset with Texture1D, SamplerType, Float32, Float32, Float32
+/// textureSampleLodOffset with Texture1D, Sampler, Float32, Float32, Float32
 extern Variable TextureSampleLodOffset_Texture1D_texture;
 extern Variable TextureSampleLodOffset_Texture1D_sampler;
 extern Variable TextureSampleLodOffset_Texture1D_coordinate;
@@ -4856,7 +4624,7 @@ extern Variable SampledTextureSampleLodOffset_Texture1D_lod;
 extern Variable SampledTextureSampleLodOffset_Texture1D_offset;
 extern Function SampledTextureSampleLodOffset_Texture1D;
 
-/// textureSampleLodOffset with Texture2D, SamplerType, Float32x2, Float32, Float32x2
+/// textureSampleLodOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2
 extern Variable TextureSampleLodOffset_Texture2D_texture;
 extern Variable TextureSampleLodOffset_Texture2D_sampler;
 extern Variable TextureSampleLodOffset_Texture2D_coordinate;
@@ -4871,7 +4639,7 @@ extern Variable SampledTextureSampleLodOffset_Texture2D_lod;
 extern Variable SampledTextureSampleLodOffset_Texture2D_offset;
 extern Function SampledTextureSampleLodOffset_Texture2D;
 
-/// textureSampleLodOffset with Texture3D, SamplerType, Float32x3, Float32, Float32x3
+/// textureSampleLodOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3
 extern Variable TextureSampleLodOffset_Texture3D_texture;
 extern Variable TextureSampleLodOffset_Texture3D_sampler;
 extern Variable TextureSampleLodOffset_Texture3D_coordinate;
@@ -4886,7 +4654,7 @@ extern Variable SampledTextureSampleLodOffset_Texture3D_lod;
 extern Variable SampledTextureSampleLodOffset_Texture3D_offset;
 extern Function SampledTextureSampleLodOffset_Texture3D;
 
-/// textureSampleLodOffset with Texture1DArray, SamplerType, Float32x2, Float32, Float32x2
+/// textureSampleLodOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32x2
 extern Variable TextureSampleLodOffset_Texture1DArray_texture;
 extern Variable TextureSampleLodOffset_Texture1DArray_sampler;
 extern Variable TextureSampleLodOffset_Texture1DArray_coordinate;
@@ -4901,7 +4669,7 @@ extern Variable SampledTextureSampleLodOffset_Texture1DArray_lod;
 extern Variable SampledTextureSampleLodOffset_Texture1DArray_offset;
 extern Function SampledTextureSampleLodOffset_Texture1DArray;
 
-/// textureSampleLodOffset with Texture2DArray, SamplerType, Float32x3, Float32, Float32x3
+/// textureSampleLodOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32x3
 extern Variable TextureSampleLodOffset_Texture2DArray_texture;
 extern Variable TextureSampleLodOffset_Texture2DArray_sampler;
 extern Variable TextureSampleLodOffset_Texture2DArray_coordinate;
@@ -4916,7 +4684,7 @@ extern Variable SampledTextureSampleLodOffset_Texture2DArray_lod;
 extern Variable SampledTextureSampleLodOffset_Texture2DArray_offset;
 extern Function SampledTextureSampleLodOffset_Texture2DArray;
 
-/// textureSampleLodProj with Texture1D, SamplerType, Float32, Float32, Float32
+/// textureSampleLodProj with Texture1D, Sampler, Float32, Float32, Float32
 extern Variable TextureSampleLodProj_Texture1D_texture;
 extern Variable TextureSampleLodProj_Texture1D_sampler;
 extern Variable TextureSampleLodProj_Texture1D_coordinate;
@@ -4931,7 +4699,7 @@ extern Variable SampledTextureSampleLodProj_Texture1D_lod;
 extern Variable SampledTextureSampleLodProj_Texture1D_proj;
 extern Function SampledTextureSampleLodProj_Texture1D;
 
-/// textureSampleLodProj with Texture2D, SamplerType, Float32x2, Float32, Float32
+/// textureSampleLodProj with Texture2D, Sampler, Float32x2, Float32, Float32
 extern Variable TextureSampleLodProj_Texture2D_texture;
 extern Variable TextureSampleLodProj_Texture2D_sampler;
 extern Variable TextureSampleLodProj_Texture2D_coordinate;
@@ -4946,7 +4714,7 @@ extern Variable SampledTextureSampleLodProj_Texture2D_lod;
 extern Variable SampledTextureSampleLodProj_Texture2D_proj;
 extern Function SampledTextureSampleLodProj_Texture2D;
 
-/// textureSampleLodProj with Texture3D, SamplerType, Float32x3, Float32, Float32
+/// textureSampleLodProj with Texture3D, Sampler, Float32x3, Float32, Float32
 extern Variable TextureSampleLodProj_Texture3D_texture;
 extern Variable TextureSampleLodProj_Texture3D_sampler;
 extern Variable TextureSampleLodProj_Texture3D_coordinate;
@@ -4961,7 +4729,7 @@ extern Variable SampledTextureSampleLodProj_Texture3D_lod;
 extern Variable SampledTextureSampleLodProj_Texture3D_proj;
 extern Function SampledTextureSampleLodProj_Texture3D;
 
-/// textureSampleLodProjOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+/// textureSampleLodProjOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
 extern Variable TextureSampleLodProjOffset_Texture1D_texture;
 extern Variable TextureSampleLodProjOffset_Texture1D_sampler;
 extern Variable TextureSampleLodProjOffset_Texture1D_coordinate;
@@ -4978,7 +4746,7 @@ extern Variable SampledTextureSampleLodProjOffset_Texture1D_proj;
 extern Variable SampledTextureSampleLodProjOffset_Texture1D_offset;
 extern Function SampledTextureSampleLodProjOffset_Texture1D;
 
-/// textureSampleLodProjOffset with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32x2
+/// textureSampleLodProjOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
 extern Variable TextureSampleLodProjOffset_Texture2D_texture;
 extern Variable TextureSampleLodProjOffset_Texture2D_sampler;
 extern Variable TextureSampleLodProjOffset_Texture2D_coordinate;
@@ -4995,7 +4763,7 @@ extern Variable SampledTextureSampleLodProjOffset_Texture2D_proj;
 extern Variable SampledTextureSampleLodProjOffset_Texture2D_offset;
 extern Function SampledTextureSampleLodProjOffset_Texture2D;
 
-/// textureSampleLodProjOffset with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32x3
+/// textureSampleLodProjOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
 extern Variable TextureSampleLodProjOffset_Texture3D_texture;
 extern Variable TextureSampleLodProjOffset_Texture3D_sampler;
 extern Variable TextureSampleLodProjOffset_Texture3D_coordinate;
@@ -5012,7 +4780,7 @@ extern Variable SampledTextureSampleLodProjOffset_Texture3D_proj;
 extern Variable SampledTextureSampleLodProjOffset_Texture3D_offset;
 extern Function SampledTextureSampleLodProjOffset_Texture3D;
 
-/// textureSampleLodCompare with Texture1D, SamplerType, Float32, Float32, Float32
+/// textureSampleLodCompare with Texture1D, Sampler, Float32, Float32, Float32
 extern Variable TextureSampleLodCompare_Texture1D_texture;
 extern Variable TextureSampleLodCompare_Texture1D_sampler;
 extern Variable TextureSampleLodCompare_Texture1D_coordinate;
@@ -5027,7 +4795,7 @@ extern Variable SampledTextureSampleLodCompare_Texture1D_lod;
 extern Variable SampledTextureSampleLodCompare_Texture1D_compare;
 extern Function SampledTextureSampleLodCompare_Texture1D;
 
-/// textureSampleLodCompare with Texture2D, SamplerType, Float32x2, Float32, Float32
+/// textureSampleLodCompare with Texture2D, Sampler, Float32x2, Float32, Float32
 extern Variable TextureSampleLodCompare_Texture2D_texture;
 extern Variable TextureSampleLodCompare_Texture2D_sampler;
 extern Variable TextureSampleLodCompare_Texture2D_coordinate;
@@ -5042,7 +4810,7 @@ extern Variable SampledTextureSampleLodCompare_Texture2D_lod;
 extern Variable SampledTextureSampleLodCompare_Texture2D_compare;
 extern Function SampledTextureSampleLodCompare_Texture2D;
 
-/// textureSampleLodCompare with Texture3D, SamplerType, Float32x3, Float32, Float32
+/// textureSampleLodCompare with Texture3D, Sampler, Float32x3, Float32, Float32
 extern Variable TextureSampleLodCompare_Texture3D_texture;
 extern Variable TextureSampleLodCompare_Texture3D_sampler;
 extern Variable TextureSampleLodCompare_Texture3D_coordinate;
@@ -5057,7 +4825,7 @@ extern Variable SampledTextureSampleLodCompare_Texture3D_lod;
 extern Variable SampledTextureSampleLodCompare_Texture3D_compare;
 extern Function SampledTextureSampleLodCompare_Texture3D;
 
-/// textureSampleLodCompare with Texture1DArray, SamplerType, Float32x2, Float32, Float32
+/// textureSampleLodCompare with Texture1DArray, Sampler, Float32x2, Float32, Float32
 extern Variable TextureSampleLodCompare_Texture1DArray_texture;
 extern Variable TextureSampleLodCompare_Texture1DArray_sampler;
 extern Variable TextureSampleLodCompare_Texture1DArray_coordinate;
@@ -5072,7 +4840,7 @@ extern Variable SampledTextureSampleLodCompare_Texture1DArray_lod;
 extern Variable SampledTextureSampleLodCompare_Texture1DArray_compare;
 extern Function SampledTextureSampleLodCompare_Texture1DArray;
 
-/// textureSampleLodCompare with Texture2DArray, SamplerType, Float32x3, Float32, Float32
+/// textureSampleLodCompare with Texture2DArray, Sampler, Float32x3, Float32, Float32
 extern Variable TextureSampleLodCompare_Texture2DArray_texture;
 extern Variable TextureSampleLodCompare_Texture2DArray_sampler;
 extern Variable TextureSampleLodCompare_Texture2DArray_coordinate;
@@ -5087,7 +4855,7 @@ extern Variable SampledTextureSampleLodCompare_Texture2DArray_lod;
 extern Variable SampledTextureSampleLodCompare_Texture2DArray_compare;
 extern Function SampledTextureSampleLodCompare_Texture2DArray;
 
-/// textureSampleLodCompareOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+/// textureSampleLodCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
 extern Variable TextureSampleLodCompareOffset_Texture1D_texture;
 extern Variable TextureSampleLodCompareOffset_Texture1D_sampler;
 extern Variable TextureSampleLodCompareOffset_Texture1D_coordinate;
@@ -5104,7 +4872,7 @@ extern Variable SampledTextureSampleLodCompareOffset_Texture1D_compare;
 extern Variable SampledTextureSampleLodCompareOffset_Texture1D_offset;
 extern Function SampledTextureSampleLodCompareOffset_Texture1D;
 
-/// textureSampleLodCompareOffset with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32x2
+/// textureSampleLodCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
 extern Variable TextureSampleLodCompareOffset_Texture2D_texture;
 extern Variable TextureSampleLodCompareOffset_Texture2D_sampler;
 extern Variable TextureSampleLodCompareOffset_Texture2D_coordinate;
@@ -5121,7 +4889,7 @@ extern Variable SampledTextureSampleLodCompareOffset_Texture2D_compare;
 extern Variable SampledTextureSampleLodCompareOffset_Texture2D_offset;
 extern Function SampledTextureSampleLodCompareOffset_Texture2D;
 
-/// textureSampleLodCompareOffset with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32x3
+/// textureSampleLodCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
 extern Variable TextureSampleLodCompareOffset_Texture3D_texture;
 extern Variable TextureSampleLodCompareOffset_Texture3D_sampler;
 extern Variable TextureSampleLodCompareOffset_Texture3D_coordinate;
@@ -5138,7 +4906,7 @@ extern Variable SampledTextureSampleLodCompareOffset_Texture3D_compare;
 extern Variable SampledTextureSampleLodCompareOffset_Texture3D_offset;
 extern Function SampledTextureSampleLodCompareOffset_Texture3D;
 
-/// textureSampleLodCompareOffset with Texture1DArray, SamplerType, Float32x2, Float32, Float32, Float32x2
+/// textureSampleLodCompareOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32, Float32x2
 extern Variable TextureSampleLodCompareOffset_Texture1DArray_texture;
 extern Variable TextureSampleLodCompareOffset_Texture1DArray_sampler;
 extern Variable TextureSampleLodCompareOffset_Texture1DArray_coordinate;
@@ -5155,7 +4923,7 @@ extern Variable SampledTextureSampleLodCompareOffset_Texture1DArray_compare;
 extern Variable SampledTextureSampleLodCompareOffset_Texture1DArray_offset;
 extern Function SampledTextureSampleLodCompareOffset_Texture1DArray;
 
-/// textureSampleLodCompareOffset with Texture2DArray, SamplerType, Float32x3, Float32, Float32, Float32x3
+/// textureSampleLodCompareOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32, Float32x3
 extern Variable TextureSampleLodCompareOffset_Texture2DArray_texture;
 extern Variable TextureSampleLodCompareOffset_Texture2DArray_sampler;
 extern Variable TextureSampleLodCompareOffset_Texture2DArray_coordinate;
@@ -5172,7 +4940,7 @@ extern Variable SampledTextureSampleLodCompareOffset_Texture2DArray_compare;
 extern Variable SampledTextureSampleLodCompareOffset_Texture2DArray_offset;
 extern Function SampledTextureSampleLodCompareOffset_Texture2DArray;
 
-/// textureSampleLodProjCompare with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+/// textureSampleLodProjCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32
 extern Variable TextureSampleLodProjCompare_Texture1D_texture;
 extern Variable TextureSampleLodProjCompare_Texture1D_sampler;
 extern Variable TextureSampleLodProjCompare_Texture1D_coordinate;
@@ -5189,7 +4957,7 @@ extern Variable SampledTextureSampleLodProjCompare_Texture1D_proj;
 extern Variable SampledTextureSampleLodProjCompare_Texture1D_compare;
 extern Function SampledTextureSampleLodProjCompare_Texture1D;
 
-/// textureSampleLodProjCompare with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32
+/// textureSampleLodProjCompare with Texture2D, Sampler, Float32x2, Float32, Float32, Float32
 extern Variable TextureSampleLodProjCompare_Texture2D_texture;
 extern Variable TextureSampleLodProjCompare_Texture2D_sampler;
 extern Variable TextureSampleLodProjCompare_Texture2D_coordinate;
@@ -5206,7 +4974,7 @@ extern Variable SampledTextureSampleLodProjCompare_Texture2D_proj;
 extern Variable SampledTextureSampleLodProjCompare_Texture2D_compare;
 extern Function SampledTextureSampleLodProjCompare_Texture2D;
 
-/// textureSampleLodProjCompare with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32
+/// textureSampleLodProjCompare with Texture3D, Sampler, Float32x3, Float32, Float32, Float32
 extern Variable TextureSampleLodProjCompare_Texture3D_texture;
 extern Variable TextureSampleLodProjCompare_Texture3D_sampler;
 extern Variable TextureSampleLodProjCompare_Texture3D_coordinate;
@@ -5223,7 +4991,7 @@ extern Variable SampledTextureSampleLodProjCompare_Texture3D_proj;
 extern Variable SampledTextureSampleLodProjCompare_Texture3D_compare;
 extern Function SampledTextureSampleLodProjCompare_Texture3D;
 
-/// textureSampleLodProjCompareOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32, Float32
+/// textureSampleLodProjCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
 extern Variable TextureSampleLodProjCompareOffset_Texture1D_texture;
 extern Variable TextureSampleLodProjCompareOffset_Texture1D_sampler;
 extern Variable TextureSampleLodProjCompareOffset_Texture1D_coordinate;
@@ -5242,7 +5010,7 @@ extern Variable SampledTextureSampleLodProjCompareOffset_Texture1D_compare;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture1D_offset;
 extern Function SampledTextureSampleLodProjCompareOffset_Texture1D;
 
-/// textureSampleLodProjCompareOffset with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32, Float32x2
+/// textureSampleLodProjCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32, Float32x2
 extern Variable TextureSampleLodProjCompareOffset_Texture2D_texture;
 extern Variable TextureSampleLodProjCompareOffset_Texture2D_sampler;
 extern Variable TextureSampleLodProjCompareOffset_Texture2D_coordinate;
@@ -5261,7 +5029,7 @@ extern Variable SampledTextureSampleLodProjCompareOffset_Texture2D_compare;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture2D_offset;
 extern Function SampledTextureSampleLodProjCompareOffset_Texture2D;
 
-/// textureSampleLodProjCompareOffset with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32, Float32x3
+/// textureSampleLodProjCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32, Float32x3
 extern Variable TextureSampleLodProjCompareOffset_Texture3D_texture;
 extern Variable TextureSampleLodProjCompareOffset_Texture3D_sampler;
 extern Variable TextureSampleLodProjCompareOffset_Texture3D_coordinate;
@@ -5280,7 +5048,7 @@ extern Variable SampledTextureSampleLodProjCompareOffset_Texture3D_compare;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture3D_offset;
 extern Function SampledTextureSampleLodProjCompareOffset_Texture3D;
 
-/// textureSampleGrad with Texture1D, SamplerType, Float32, Float32, Float32
+/// textureSampleGrad with Texture1D, Sampler, Float32, Float32, Float32
 extern Variable TextureSampleGrad_Texture1D_texture;
 extern Variable TextureSampleGrad_Texture1D_sampler;
 extern Variable TextureSampleGrad_Texture1D_coordinate;
@@ -5295,7 +5063,7 @@ extern Variable SampledTextureSampleGrad_Texture1D_grad_x;
 extern Variable SampledTextureSampleGrad_Texture1D_grad_y;
 extern Function SampledTextureSampleGrad_Texture1D;
 
-/// textureSampleGrad with Texture2D, SamplerType, Float32x2, Float32x2, Float32x2
+/// textureSampleGrad with Texture2D, Sampler, Float32x2, Float32x2, Float32x2
 extern Variable TextureSampleGrad_Texture2D_texture;
 extern Variable TextureSampleGrad_Texture2D_sampler;
 extern Variable TextureSampleGrad_Texture2D_coordinate;
@@ -5310,7 +5078,7 @@ extern Variable SampledTextureSampleGrad_Texture2D_grad_x;
 extern Variable SampledTextureSampleGrad_Texture2D_grad_y;
 extern Function SampledTextureSampleGrad_Texture2D;
 
-/// textureSampleGrad with Texture3D, SamplerType, Float32x3, Float32x3, Float32x3
+/// textureSampleGrad with Texture3D, Sampler, Float32x3, Float32x3, Float32x3
 extern Variable TextureSampleGrad_Texture3D_texture;
 extern Variable TextureSampleGrad_Texture3D_sampler;
 extern Variable TextureSampleGrad_Texture3D_coordinate;
@@ -5325,7 +5093,7 @@ extern Variable SampledTextureSampleGrad_Texture3D_grad_x;
 extern Variable SampledTextureSampleGrad_Texture3D_grad_y;
 extern Function SampledTextureSampleGrad_Texture3D;
 
-/// textureSampleGrad with TextureCube, SamplerType, Float32x3, Float32x3, Float32x3
+/// textureSampleGrad with TextureCube, Sampler, Float32x3, Float32x3, Float32x3
 extern Variable TextureSampleGrad_TextureCube_texture;
 extern Variable TextureSampleGrad_TextureCube_sampler;
 extern Variable TextureSampleGrad_TextureCube_coordinate;
@@ -5340,7 +5108,7 @@ extern Variable SampledTextureSampleGrad_TextureCube_grad_x;
 extern Variable SampledTextureSampleGrad_TextureCube_grad_y;
 extern Function SampledTextureSampleGrad_TextureCube;
 
-/// textureSampleGrad with Texture1DArray, SamplerType, Float32x2, Float32x2, Float32x2
+/// textureSampleGrad with Texture1DArray, Sampler, Float32x2, Float32x2, Float32x2
 extern Variable TextureSampleGrad_Texture1DArray_texture;
 extern Variable TextureSampleGrad_Texture1DArray_sampler;
 extern Variable TextureSampleGrad_Texture1DArray_coordinate;
@@ -5355,7 +5123,7 @@ extern Variable SampledTextureSampleGrad_Texture1DArray_grad_x;
 extern Variable SampledTextureSampleGrad_Texture1DArray_grad_y;
 extern Function SampledTextureSampleGrad_Texture1DArray;
 
-/// textureSampleGrad with Texture2DArray, SamplerType, Float32x3, Float32x3, Float32x3
+/// textureSampleGrad with Texture2DArray, Sampler, Float32x3, Float32x3, Float32x3
 extern Variable TextureSampleGrad_Texture2DArray_texture;
 extern Variable TextureSampleGrad_Texture2DArray_sampler;
 extern Variable TextureSampleGrad_Texture2DArray_coordinate;
@@ -5370,7 +5138,7 @@ extern Variable SampledTextureSampleGrad_Texture2DArray_grad_x;
 extern Variable SampledTextureSampleGrad_Texture2DArray_grad_y;
 extern Function SampledTextureSampleGrad_Texture2DArray;
 
-/// textureSampleGrad with TextureCubeArray, SamplerType, Float32x4, Float32x4, Float32x4
+/// textureSampleGrad with TextureCubeArray, Sampler, Float32x4, Float32x4, Float32x4
 extern Variable TextureSampleGrad_TextureCubeArray_texture;
 extern Variable TextureSampleGrad_TextureCubeArray_sampler;
 extern Variable TextureSampleGrad_TextureCubeArray_coordinate;
@@ -5385,7 +5153,7 @@ extern Variable SampledTextureSampleGrad_TextureCubeArray_grad_x;
 extern Variable SampledTextureSampleGrad_TextureCubeArray_grad_y;
 extern Function SampledTextureSampleGrad_TextureCubeArray;
 
-/// textureSampleGradOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+/// textureSampleGradOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
 extern Variable TextureSampleGradOffset_Texture1D_texture;
 extern Variable TextureSampleGradOffset_Texture1D_sampler;
 extern Variable TextureSampleGradOffset_Texture1D_coordinate;
@@ -5402,7 +5170,7 @@ extern Variable SampledTextureSampleGradOffset_Texture1D_grad_y;
 extern Variable SampledTextureSampleGradOffset_Texture1D_offset;
 extern Function SampledTextureSampleGradOffset_Texture1D;
 
-/// textureSampleGradOffset with Texture2D, SamplerType, Float32x2, Float32x2, Float32x2, Float32x2
+/// textureSampleGradOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32x2
 extern Variable TextureSampleGradOffset_Texture2D_texture;
 extern Variable TextureSampleGradOffset_Texture2D_sampler;
 extern Variable TextureSampleGradOffset_Texture2D_coordinate;
@@ -5419,7 +5187,7 @@ extern Variable SampledTextureSampleGradOffset_Texture2D_grad_y;
 extern Variable SampledTextureSampleGradOffset_Texture2D_offset;
 extern Function SampledTextureSampleGradOffset_Texture2D;
 
-/// textureSampleGradOffset with Texture3D, SamplerType, Float32x3, Float32x3, Float32x3, Float32x3
+/// textureSampleGradOffset with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32x3
 extern Variable TextureSampleGradOffset_Texture3D_texture;
 extern Variable TextureSampleGradOffset_Texture3D_sampler;
 extern Variable TextureSampleGradOffset_Texture3D_coordinate;
@@ -5436,7 +5204,7 @@ extern Variable SampledTextureSampleGradOffset_Texture3D_grad_y;
 extern Variable SampledTextureSampleGradOffset_Texture3D_offset;
 extern Function SampledTextureSampleGradOffset_Texture3D;
 
-/// textureSampleGradOffset with Texture1DArray, SamplerType, Float32x2, Float32x2, Float32x2, Float32x2
+/// textureSampleGradOffset with Texture1DArray, Sampler, Float32x2, Float32x2, Float32x2, Float32x2
 extern Variable TextureSampleGradOffset_Texture1DArray_texture;
 extern Variable TextureSampleGradOffset_Texture1DArray_sampler;
 extern Variable TextureSampleGradOffset_Texture1DArray_coordinate;
@@ -5453,7 +5221,7 @@ extern Variable SampledTextureSampleGradOffset_Texture1DArray_grad_y;
 extern Variable SampledTextureSampleGradOffset_Texture1DArray_offset;
 extern Function SampledTextureSampleGradOffset_Texture1DArray;
 
-/// textureSampleGradOffset with Texture2DArray, SamplerType, Float32x3, Float32x3, Float32x3, Float32x3
+/// textureSampleGradOffset with Texture2DArray, Sampler, Float32x3, Float32x3, Float32x3, Float32x3
 extern Variable TextureSampleGradOffset_Texture2DArray_texture;
 extern Variable TextureSampleGradOffset_Texture2DArray_sampler;
 extern Variable TextureSampleGradOffset_Texture2DArray_coordinate;
@@ -5470,7 +5238,7 @@ extern Variable SampledTextureSampleGradOffset_Texture2DArray_grad_y;
 extern Variable SampledTextureSampleGradOffset_Texture2DArray_offset;
 extern Function SampledTextureSampleGradOffset_Texture2DArray;
 
-/// textureSampleGradProj with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+/// textureSampleGradProj with Texture1D, Sampler, Float32, Float32, Float32, Float32
 extern Variable TextureSampleGradProj_Texture1D_texture;
 extern Variable TextureSampleGradProj_Texture1D_sampler;
 extern Variable TextureSampleGradProj_Texture1D_coordinate;
@@ -5487,7 +5255,7 @@ extern Variable SampledTextureSampleGradProj_Texture1D_grad_y;
 extern Variable SampledTextureSampleGradProj_Texture1D_proj;
 extern Function SampledTextureSampleGradProj_Texture1D;
 
-/// textureSampleGradProj with Texture2D, SamplerType, Float32x2, Float32x2, Float32x2, Float32
+/// textureSampleGradProj with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32
 extern Variable TextureSampleGradProj_Texture2D_texture;
 extern Variable TextureSampleGradProj_Texture2D_sampler;
 extern Variable TextureSampleGradProj_Texture2D_coordinate;
@@ -5504,7 +5272,7 @@ extern Variable SampledTextureSampleGradProj_Texture2D_grad_y;
 extern Variable SampledTextureSampleGradProj_Texture2D_proj;
 extern Function SampledTextureSampleGradProj_Texture2D;
 
-/// textureSampleGradProj with Texture3D, SamplerType, Float32x3, Float32x3, Float32x3, Float32
+/// textureSampleGradProj with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32
 extern Variable TextureSampleGradProj_Texture3D_texture;
 extern Variable TextureSampleGradProj_Texture3D_sampler;
 extern Variable TextureSampleGradProj_Texture3D_coordinate;
@@ -5521,7 +5289,7 @@ extern Variable SampledTextureSampleGradProj_Texture3D_grad_y;
 extern Variable SampledTextureSampleGradProj_Texture3D_proj;
 extern Function SampledTextureSampleGradProj_Texture3D;
 
-/// textureSampleGradProjOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32, Float32
+/// textureSampleGradProjOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
 extern Variable TextureSampleGradProjOffset_Texture1D_texture;
 extern Variable TextureSampleGradProjOffset_Texture1D_sampler;
 extern Variable TextureSampleGradProjOffset_Texture1D_coordinate;
@@ -5540,7 +5308,7 @@ extern Variable SampledTextureSampleGradProjOffset_Texture1D_proj;
 extern Variable SampledTextureSampleGradProjOffset_Texture1D_offset;
 extern Function SampledTextureSampleGradProjOffset_Texture1D;
 
-/// textureSampleGradProjOffset with Texture2D, SamplerType, Float32x2, Float32x2, Float32x2, Float32, Float32x2
+/// textureSampleGradProjOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32x2
 extern Variable TextureSampleGradProjOffset_Texture2D_texture;
 extern Variable TextureSampleGradProjOffset_Texture2D_sampler;
 extern Variable TextureSampleGradProjOffset_Texture2D_coordinate;
@@ -5559,7 +5327,7 @@ extern Variable SampledTextureSampleGradProjOffset_Texture2D_proj;
 extern Variable SampledTextureSampleGradProjOffset_Texture2D_offset;
 extern Function SampledTextureSampleGradProjOffset_Texture2D;
 
-/// textureSampleGradProjOffset with Texture3D, SamplerType, Float32x3, Float32x3, Float32x3, Float32, Float32x3
+/// textureSampleGradProjOffset with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32x3
 extern Variable TextureSampleGradProjOffset_Texture3D_texture;
 extern Variable TextureSampleGradProjOffset_Texture3D_sampler;
 extern Variable TextureSampleGradProjOffset_Texture3D_coordinate;
@@ -5578,7 +5346,7 @@ extern Variable SampledTextureSampleGradProjOffset_Texture3D_proj;
 extern Variable SampledTextureSampleGradProjOffset_Texture3D_offset;
 extern Function SampledTextureSampleGradProjOffset_Texture3D;
 
-/// textureSampleGradCompare with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+/// textureSampleGradCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32
 extern Variable TextureSampleGradCompare_Texture1D_texture;
 extern Variable TextureSampleGradCompare_Texture1D_sampler;
 extern Variable TextureSampleGradCompare_Texture1D_coordinate;
@@ -5595,7 +5363,7 @@ extern Variable SampledTextureSampleGradCompare_Texture1D_grad_y;
 extern Variable SampledTextureSampleGradCompare_Texture1D_compare;
 extern Function SampledTextureSampleGradCompare_Texture1D;
 
-/// textureSampleGradCompare with Texture2D, SamplerType, Float32x2, Float32x2, Float32x2, Float32
+/// textureSampleGradCompare with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32
 extern Variable TextureSampleGradCompare_Texture2D_texture;
 extern Variable TextureSampleGradCompare_Texture2D_sampler;
 extern Variable TextureSampleGradCompare_Texture2D_coordinate;
@@ -5612,7 +5380,7 @@ extern Variable SampledTextureSampleGradCompare_Texture2D_grad_y;
 extern Variable SampledTextureSampleGradCompare_Texture2D_compare;
 extern Function SampledTextureSampleGradCompare_Texture2D;
 
-/// textureSampleGradCompare with Texture3D, SamplerType, Float32x3, Float32x3, Float32x3, Float32
+/// textureSampleGradCompare with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32
 extern Variable TextureSampleGradCompare_Texture3D_texture;
 extern Variable TextureSampleGradCompare_Texture3D_sampler;
 extern Variable TextureSampleGradCompare_Texture3D_coordinate;
@@ -5629,7 +5397,7 @@ extern Variable SampledTextureSampleGradCompare_Texture3D_grad_y;
 extern Variable SampledTextureSampleGradCompare_Texture3D_compare;
 extern Function SampledTextureSampleGradCompare_Texture3D;
 
-/// textureSampleGradCompare with Texture1DArray, SamplerType, Float32x2, Float32x2, Float32x2, Float32
+/// textureSampleGradCompare with Texture1DArray, Sampler, Float32x2, Float32x2, Float32x2, Float32
 extern Variable TextureSampleGradCompare_Texture1DArray_texture;
 extern Variable TextureSampleGradCompare_Texture1DArray_sampler;
 extern Variable TextureSampleGradCompare_Texture1DArray_coordinate;
@@ -5646,7 +5414,7 @@ extern Variable SampledTextureSampleGradCompare_Texture1DArray_grad_y;
 extern Variable SampledTextureSampleGradCompare_Texture1DArray_compare;
 extern Function SampledTextureSampleGradCompare_Texture1DArray;
 
-/// textureSampleGradCompare with Texture2DArray, SamplerType, Float32x3, Float32x3, Float32x3, Float32
+/// textureSampleGradCompare with Texture2DArray, Sampler, Float32x3, Float32x3, Float32x3, Float32
 extern Variable TextureSampleGradCompare_Texture2DArray_texture;
 extern Variable TextureSampleGradCompare_Texture2DArray_sampler;
 extern Variable TextureSampleGradCompare_Texture2DArray_coordinate;
@@ -5663,7 +5431,7 @@ extern Variable SampledTextureSampleGradCompare_Texture2DArray_grad_y;
 extern Variable SampledTextureSampleGradCompare_Texture2DArray_compare;
 extern Function SampledTextureSampleGradCompare_Texture2DArray;
 
-/// textureSampleGradCompareOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32, Float32
+/// textureSampleGradCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
 extern Variable TextureSampleGradCompareOffset_Texture1D_texture;
 extern Variable TextureSampleGradCompareOffset_Texture1D_sampler;
 extern Variable TextureSampleGradCompareOffset_Texture1D_coordinate;
@@ -5682,7 +5450,7 @@ extern Variable SampledTextureSampleGradCompareOffset_Texture1D_compare;
 extern Variable SampledTextureSampleGradCompareOffset_Texture1D_offset;
 extern Function SampledTextureSampleGradCompareOffset_Texture1D;
 
-/// textureSampleGradCompareOffset with Texture2D, SamplerType, Float32x2, Float32x2, Float32x2, Float32, Float32x2
+/// textureSampleGradCompareOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32x2
 extern Variable TextureSampleGradCompareOffset_Texture2D_texture;
 extern Variable TextureSampleGradCompareOffset_Texture2D_sampler;
 extern Variable TextureSampleGradCompareOffset_Texture2D_coordinate;
@@ -5701,7 +5469,7 @@ extern Variable SampledTextureSampleGradCompareOffset_Texture2D_compare;
 extern Variable SampledTextureSampleGradCompareOffset_Texture2D_offset;
 extern Function SampledTextureSampleGradCompareOffset_Texture2D;
 
-/// textureSampleGradCompareOffset with Texture3D, SamplerType, Float32x3, Float32x3, Float32x3, Float32, Float32x3
+/// textureSampleGradCompareOffset with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32x3
 extern Variable TextureSampleGradCompareOffset_Texture3D_texture;
 extern Variable TextureSampleGradCompareOffset_Texture3D_sampler;
 extern Variable TextureSampleGradCompareOffset_Texture3D_coordinate;
@@ -5720,7 +5488,7 @@ extern Variable SampledTextureSampleGradCompareOffset_Texture3D_compare;
 extern Variable SampledTextureSampleGradCompareOffset_Texture3D_offset;
 extern Function SampledTextureSampleGradCompareOffset_Texture3D;
 
-/// textureSampleGradCompareOffset with Texture1DArray, SamplerType, Float32x2, Float32x2, Float32x2, Float32, Float32x2
+/// textureSampleGradCompareOffset with Texture1DArray, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32x2
 extern Variable TextureSampleGradCompareOffset_Texture1DArray_texture;
 extern Variable TextureSampleGradCompareOffset_Texture1DArray_sampler;
 extern Variable TextureSampleGradCompareOffset_Texture1DArray_coordinate;
@@ -5739,7 +5507,7 @@ extern Variable SampledTextureSampleGradCompareOffset_Texture1DArray_compare;
 extern Variable SampledTextureSampleGradCompareOffset_Texture1DArray_offset;
 extern Function SampledTextureSampleGradCompareOffset_Texture1DArray;
 
-/// textureSampleGradCompareOffset with Texture2DArray, SamplerType, Float32x3, Float32x3, Float32x3, Float32, Float32x3
+/// textureSampleGradCompareOffset with Texture2DArray, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32x3
 extern Variable TextureSampleGradCompareOffset_Texture2DArray_texture;
 extern Variable TextureSampleGradCompareOffset_Texture2DArray_sampler;
 extern Variable TextureSampleGradCompareOffset_Texture2DArray_coordinate;
@@ -5758,7 +5526,7 @@ extern Variable SampledTextureSampleGradCompareOffset_Texture2DArray_compare;
 extern Variable SampledTextureSampleGradCompareOffset_Texture2DArray_offset;
 extern Function SampledTextureSampleGradCompareOffset_Texture2DArray;
 
-/// textureSampleGradProjCompare with Texture1D, SamplerType, Float32, Float32, Float32, Float32, Float32
+/// textureSampleGradProjCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
 extern Variable TextureSampleGradProjCompare_Texture1D_texture;
 extern Variable TextureSampleGradProjCompare_Texture1D_sampler;
 extern Variable TextureSampleGradProjCompare_Texture1D_coordinate;
@@ -5777,7 +5545,7 @@ extern Variable SampledTextureSampleGradProjCompare_Texture1D_proj;
 extern Variable SampledTextureSampleGradProjCompare_Texture1D_compare;
 extern Function SampledTextureSampleGradProjCompare_Texture1D;
 
-/// textureSampleGradProjCompare with Texture2D, SamplerType, Float32x2, Float32x2, Float32x2, Float32, Float32
+/// textureSampleGradProjCompare with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32
 extern Variable TextureSampleGradProjCompare_Texture2D_texture;
 extern Variable TextureSampleGradProjCompare_Texture2D_sampler;
 extern Variable TextureSampleGradProjCompare_Texture2D_coordinate;
@@ -5796,7 +5564,7 @@ extern Variable SampledTextureSampleGradProjCompare_Texture2D_proj;
 extern Variable SampledTextureSampleGradProjCompare_Texture2D_compare;
 extern Function SampledTextureSampleGradProjCompare_Texture2D;
 
-/// textureSampleGradProjCompare with Texture3D, SamplerType, Float32x3, Float32x3, Float32x3, Float32, Float32
+/// textureSampleGradProjCompare with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32
 extern Variable TextureSampleGradProjCompare_Texture3D_texture;
 extern Variable TextureSampleGradProjCompare_Texture3D_sampler;
 extern Variable TextureSampleGradProjCompare_Texture3D_coordinate;
@@ -5815,7 +5583,7 @@ extern Variable SampledTextureSampleGradProjCompare_Texture3D_proj;
 extern Variable SampledTextureSampleGradProjCompare_Texture3D_compare;
 extern Function SampledTextureSampleGradProjCompare_Texture3D;
 
-/// textureSampleGradProjCompareOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32, Float32, Float32
+/// textureSampleGradProjCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32, Float32
 extern Variable TextureSampleGradProjCompareOffset_Texture1D_texture;
 extern Variable TextureSampleGradProjCompareOffset_Texture1D_sampler;
 extern Variable TextureSampleGradProjCompareOffset_Texture1D_coordinate;
@@ -5836,7 +5604,7 @@ extern Variable SampledTextureSampleGradProjCompareOffset_Texture1D_compare;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture1D_offset;
 extern Function SampledTextureSampleGradProjCompareOffset_Texture1D;
 
-/// textureSampleGradProjCompareOffset with Texture2D, SamplerType, Float32x2, Float32x2, Float32x2, Float32, Float32, Float32x2
+/// textureSampleGradProjCompareOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32, Float32x2
 extern Variable TextureSampleGradProjCompareOffset_Texture2D_texture;
 extern Variable TextureSampleGradProjCompareOffset_Texture2D_sampler;
 extern Variable TextureSampleGradProjCompareOffset_Texture2D_coordinate;
@@ -5857,7 +5625,7 @@ extern Variable SampledTextureSampleGradProjCompareOffset_Texture2D_compare;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture2D_offset;
 extern Function SampledTextureSampleGradProjCompareOffset_Texture2D;
 
-/// textureSampleGradProjCompareOffset with Texture3D, SamplerType, Float32x3, Float32x3, Float32x3, Float32, Float32, Float32x3
+/// textureSampleGradProjCompareOffset with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32, Float32x3
 extern Variable TextureSampleGradProjCompareOffset_Texture3D_texture;
 extern Variable TextureSampleGradProjCompareOffset_Texture3D_sampler;
 extern Variable TextureSampleGradProjCompareOffset_Texture3D_coordinate;
@@ -5878,7 +5646,7 @@ extern Variable SampledTextureSampleGradProjCompareOffset_Texture3D_compare;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture3D_offset;
 extern Function SampledTextureSampleGradProjCompareOffset_Texture3D;
 
-/// textureSampleBias with Texture1D, SamplerType, Float32, Float32
+/// textureSampleBias with Texture1D, Sampler, Float32, Float32
 extern Variable TextureSampleBias_Texture1D_texture;
 extern Variable TextureSampleBias_Texture1D_sampler;
 extern Variable TextureSampleBias_Texture1D_coordinate;
@@ -5891,7 +5659,7 @@ extern Variable SampledTextureSampleBias_Texture1D_coordinate;
 extern Variable SampledTextureSampleBias_Texture1D_bias;
 extern Function SampledTextureSampleBias_Texture1D;
 
-/// textureSampleBias with Texture2D, SamplerType, Float32x2, Float32
+/// textureSampleBias with Texture2D, Sampler, Float32x2, Float32
 extern Variable TextureSampleBias_Texture2D_texture;
 extern Variable TextureSampleBias_Texture2D_sampler;
 extern Variable TextureSampleBias_Texture2D_coordinate;
@@ -5904,7 +5672,7 @@ extern Variable SampledTextureSampleBias_Texture2D_coordinate;
 extern Variable SampledTextureSampleBias_Texture2D_bias;
 extern Function SampledTextureSampleBias_Texture2D;
 
-/// textureSampleBias with Texture3D, SamplerType, Float32x3, Float32
+/// textureSampleBias with Texture3D, Sampler, Float32x3, Float32
 extern Variable TextureSampleBias_Texture3D_texture;
 extern Variable TextureSampleBias_Texture3D_sampler;
 extern Variable TextureSampleBias_Texture3D_coordinate;
@@ -5917,7 +5685,7 @@ extern Variable SampledTextureSampleBias_Texture3D_coordinate;
 extern Variable SampledTextureSampleBias_Texture3D_bias;
 extern Function SampledTextureSampleBias_Texture3D;
 
-/// textureSampleBias with TextureCube, SamplerType, Float32x3, Float32
+/// textureSampleBias with TextureCube, Sampler, Float32x3, Float32
 extern Variable TextureSampleBias_TextureCube_texture;
 extern Variable TextureSampleBias_TextureCube_sampler;
 extern Variable TextureSampleBias_TextureCube_coordinate;
@@ -5930,7 +5698,7 @@ extern Variable SampledTextureSampleBias_TextureCube_coordinate;
 extern Variable SampledTextureSampleBias_TextureCube_bias;
 extern Function SampledTextureSampleBias_TextureCube;
 
-/// textureSampleBias with Texture1DArray, SamplerType, Float32x2, Float32
+/// textureSampleBias with Texture1DArray, Sampler, Float32x2, Float32
 extern Variable TextureSampleBias_Texture1DArray_texture;
 extern Variable TextureSampleBias_Texture1DArray_sampler;
 extern Variable TextureSampleBias_Texture1DArray_coordinate;
@@ -5943,7 +5711,7 @@ extern Variable SampledTextureSampleBias_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleBias_Texture1DArray_bias;
 extern Function SampledTextureSampleBias_Texture1DArray;
 
-/// textureSampleBias with Texture2DArray, SamplerType, Float32x3, Float32
+/// textureSampleBias with Texture2DArray, Sampler, Float32x3, Float32
 extern Variable TextureSampleBias_Texture2DArray_texture;
 extern Variable TextureSampleBias_Texture2DArray_sampler;
 extern Variable TextureSampleBias_Texture2DArray_coordinate;
@@ -5956,7 +5724,7 @@ extern Variable SampledTextureSampleBias_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleBias_Texture2DArray_bias;
 extern Function SampledTextureSampleBias_Texture2DArray;
 
-/// textureSampleBias with TextureCubeArray, SamplerType, Float32x4, Float32
+/// textureSampleBias with TextureCubeArray, Sampler, Float32x4, Float32
 extern Variable TextureSampleBias_TextureCubeArray_texture;
 extern Variable TextureSampleBias_TextureCubeArray_sampler;
 extern Variable TextureSampleBias_TextureCubeArray_coordinate;
@@ -5969,7 +5737,7 @@ extern Variable SampledTextureSampleBias_TextureCubeArray_coordinate;
 extern Variable SampledTextureSampleBias_TextureCubeArray_bias;
 extern Function SampledTextureSampleBias_TextureCubeArray;
 
-/// textureSampleBiasOffset with Texture1D, SamplerType, Float32, Float32, Float32
+/// textureSampleBiasOffset with Texture1D, Sampler, Float32, Float32, Float32
 extern Variable TextureSampleBiasOffset_Texture1D_texture;
 extern Variable TextureSampleBiasOffset_Texture1D_sampler;
 extern Variable TextureSampleBiasOffset_Texture1D_coordinate;
@@ -5984,7 +5752,7 @@ extern Variable SampledTextureSampleBiasOffset_Texture1D_bias;
 extern Variable SampledTextureSampleBiasOffset_Texture1D_offset;
 extern Function SampledTextureSampleBiasOffset_Texture1D;
 
-/// textureSampleBiasOffset with Texture2D, SamplerType, Float32x2, Float32, Float32x2
+/// textureSampleBiasOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2
 extern Variable TextureSampleBiasOffset_Texture2D_texture;
 extern Variable TextureSampleBiasOffset_Texture2D_sampler;
 extern Variable TextureSampleBiasOffset_Texture2D_coordinate;
@@ -5999,7 +5767,7 @@ extern Variable SampledTextureSampleBiasOffset_Texture2D_bias;
 extern Variable SampledTextureSampleBiasOffset_Texture2D_offset;
 extern Function SampledTextureSampleBiasOffset_Texture2D;
 
-/// textureSampleBiasOffset with Texture3D, SamplerType, Float32x3, Float32, Float32x3
+/// textureSampleBiasOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3
 extern Variable TextureSampleBiasOffset_Texture3D_texture;
 extern Variable TextureSampleBiasOffset_Texture3D_sampler;
 extern Variable TextureSampleBiasOffset_Texture3D_coordinate;
@@ -6014,7 +5782,7 @@ extern Variable SampledTextureSampleBiasOffset_Texture3D_bias;
 extern Variable SampledTextureSampleBiasOffset_Texture3D_offset;
 extern Function SampledTextureSampleBiasOffset_Texture3D;
 
-/// textureSampleBiasOffset with Texture1DArray, SamplerType, Float32x2, Float32, Float32x2
+/// textureSampleBiasOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32x2
 extern Variable TextureSampleBiasOffset_Texture1DArray_texture;
 extern Variable TextureSampleBiasOffset_Texture1DArray_sampler;
 extern Variable TextureSampleBiasOffset_Texture1DArray_coordinate;
@@ -6029,7 +5797,7 @@ extern Variable SampledTextureSampleBiasOffset_Texture1DArray_bias;
 extern Variable SampledTextureSampleBiasOffset_Texture1DArray_offset;
 extern Function SampledTextureSampleBiasOffset_Texture1DArray;
 
-/// textureSampleBiasOffset with Texture2DArray, SamplerType, Float32x3, Float32, Float32x3
+/// textureSampleBiasOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32x3
 extern Variable TextureSampleBiasOffset_Texture2DArray_texture;
 extern Variable TextureSampleBiasOffset_Texture2DArray_sampler;
 extern Variable TextureSampleBiasOffset_Texture2DArray_coordinate;
@@ -6044,7 +5812,7 @@ extern Variable SampledTextureSampleBiasOffset_Texture2DArray_bias;
 extern Variable SampledTextureSampleBiasOffset_Texture2DArray_offset;
 extern Function SampledTextureSampleBiasOffset_Texture2DArray;
 
-/// textureSampleBiasProj with Texture1D, SamplerType, Float32, Float32, Float32
+/// textureSampleBiasProj with Texture1D, Sampler, Float32, Float32, Float32
 extern Variable TextureSampleBiasProj_Texture1D_texture;
 extern Variable TextureSampleBiasProj_Texture1D_sampler;
 extern Variable TextureSampleBiasProj_Texture1D_coordinate;
@@ -6059,7 +5827,7 @@ extern Variable SampledTextureSampleBiasProj_Texture1D_bias;
 extern Variable SampledTextureSampleBiasProj_Texture1D_proj;
 extern Function SampledTextureSampleBiasProj_Texture1D;
 
-/// textureSampleBiasProj with Texture2D, SamplerType, Float32x2, Float32, Float32
+/// textureSampleBiasProj with Texture2D, Sampler, Float32x2, Float32, Float32
 extern Variable TextureSampleBiasProj_Texture2D_texture;
 extern Variable TextureSampleBiasProj_Texture2D_sampler;
 extern Variable TextureSampleBiasProj_Texture2D_coordinate;
@@ -6074,7 +5842,7 @@ extern Variable SampledTextureSampleBiasProj_Texture2D_bias;
 extern Variable SampledTextureSampleBiasProj_Texture2D_proj;
 extern Function SampledTextureSampleBiasProj_Texture2D;
 
-/// textureSampleBiasProj with Texture3D, SamplerType, Float32x3, Float32, Float32
+/// textureSampleBiasProj with Texture3D, Sampler, Float32x3, Float32, Float32
 extern Variable TextureSampleBiasProj_Texture3D_texture;
 extern Variable TextureSampleBiasProj_Texture3D_sampler;
 extern Variable TextureSampleBiasProj_Texture3D_coordinate;
@@ -6089,7 +5857,7 @@ extern Variable SampledTextureSampleBiasProj_Texture3D_bias;
 extern Variable SampledTextureSampleBiasProj_Texture3D_proj;
 extern Function SampledTextureSampleBiasProj_Texture3D;
 
-/// textureSampleBiasProjOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+/// textureSampleBiasProjOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
 extern Variable TextureSampleBiasProjOffset_Texture1D_texture;
 extern Variable TextureSampleBiasProjOffset_Texture1D_sampler;
 extern Variable TextureSampleBiasProjOffset_Texture1D_coordinate;
@@ -6106,7 +5874,7 @@ extern Variable SampledTextureSampleBiasProjOffset_Texture1D_proj;
 extern Variable SampledTextureSampleBiasProjOffset_Texture1D_offset;
 extern Function SampledTextureSampleBiasProjOffset_Texture1D;
 
-/// textureSampleBiasProjOffset with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32x2
+/// textureSampleBiasProjOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
 extern Variable TextureSampleBiasProjOffset_Texture2D_texture;
 extern Variable TextureSampleBiasProjOffset_Texture2D_sampler;
 extern Variable TextureSampleBiasProjOffset_Texture2D_coordinate;
@@ -6123,7 +5891,7 @@ extern Variable SampledTextureSampleBiasProjOffset_Texture2D_proj;
 extern Variable SampledTextureSampleBiasProjOffset_Texture2D_offset;
 extern Function SampledTextureSampleBiasProjOffset_Texture2D;
 
-/// textureSampleBiasProjOffset with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32x3
+/// textureSampleBiasProjOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
 extern Variable TextureSampleBiasProjOffset_Texture3D_texture;
 extern Variable TextureSampleBiasProjOffset_Texture3D_sampler;
 extern Variable TextureSampleBiasProjOffset_Texture3D_coordinate;
@@ -6140,7 +5908,7 @@ extern Variable SampledTextureSampleBiasProjOffset_Texture3D_proj;
 extern Variable SampledTextureSampleBiasProjOffset_Texture3D_offset;
 extern Function SampledTextureSampleBiasProjOffset_Texture3D;
 
-/// textureSampleBiasCompare with Texture1D, SamplerType, Float32, Float32, Float32
+/// textureSampleBiasCompare with Texture1D, Sampler, Float32, Float32, Float32
 extern Variable TextureSampleBiasCompare_Texture1D_texture;
 extern Variable TextureSampleBiasCompare_Texture1D_sampler;
 extern Variable TextureSampleBiasCompare_Texture1D_coordinate;
@@ -6155,7 +5923,7 @@ extern Variable SampledTextureSampleBiasCompare_Texture1D_bias;
 extern Variable SampledTextureSampleBiasCompare_Texture1D_compare;
 extern Function SampledTextureSampleBiasCompare_Texture1D;
 
-/// textureSampleBiasCompare with Texture2D, SamplerType, Float32x2, Float32, Float32
+/// textureSampleBiasCompare with Texture2D, Sampler, Float32x2, Float32, Float32
 extern Variable TextureSampleBiasCompare_Texture2D_texture;
 extern Variable TextureSampleBiasCompare_Texture2D_sampler;
 extern Variable TextureSampleBiasCompare_Texture2D_coordinate;
@@ -6170,7 +5938,7 @@ extern Variable SampledTextureSampleBiasCompare_Texture2D_bias;
 extern Variable SampledTextureSampleBiasCompare_Texture2D_compare;
 extern Function SampledTextureSampleBiasCompare_Texture2D;
 
-/// textureSampleBiasCompare with Texture3D, SamplerType, Float32x3, Float32, Float32
+/// textureSampleBiasCompare with Texture3D, Sampler, Float32x3, Float32, Float32
 extern Variable TextureSampleBiasCompare_Texture3D_texture;
 extern Variable TextureSampleBiasCompare_Texture3D_sampler;
 extern Variable TextureSampleBiasCompare_Texture3D_coordinate;
@@ -6185,7 +5953,7 @@ extern Variable SampledTextureSampleBiasCompare_Texture3D_bias;
 extern Variable SampledTextureSampleBiasCompare_Texture3D_compare;
 extern Function SampledTextureSampleBiasCompare_Texture3D;
 
-/// textureSampleBiasCompare with Texture1DArray, SamplerType, Float32x2, Float32, Float32
+/// textureSampleBiasCompare with Texture1DArray, Sampler, Float32x2, Float32, Float32
 extern Variable TextureSampleBiasCompare_Texture1DArray_texture;
 extern Variable TextureSampleBiasCompare_Texture1DArray_sampler;
 extern Variable TextureSampleBiasCompare_Texture1DArray_coordinate;
@@ -6200,7 +5968,7 @@ extern Variable SampledTextureSampleBiasCompare_Texture1DArray_bias;
 extern Variable SampledTextureSampleBiasCompare_Texture1DArray_compare;
 extern Function SampledTextureSampleBiasCompare_Texture1DArray;
 
-/// textureSampleBiasCompare with Texture2DArray, SamplerType, Float32x3, Float32, Float32
+/// textureSampleBiasCompare with Texture2DArray, Sampler, Float32x3, Float32, Float32
 extern Variable TextureSampleBiasCompare_Texture2DArray_texture;
 extern Variable TextureSampleBiasCompare_Texture2DArray_sampler;
 extern Variable TextureSampleBiasCompare_Texture2DArray_coordinate;
@@ -6215,7 +5983,7 @@ extern Variable SampledTextureSampleBiasCompare_Texture2DArray_bias;
 extern Variable SampledTextureSampleBiasCompare_Texture2DArray_compare;
 extern Function SampledTextureSampleBiasCompare_Texture2DArray;
 
-/// textureSampleBiasCompareOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+/// textureSampleBiasCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
 extern Variable TextureSampleBiasCompareOffset_Texture1D_texture;
 extern Variable TextureSampleBiasCompareOffset_Texture1D_sampler;
 extern Variable TextureSampleBiasCompareOffset_Texture1D_coordinate;
@@ -6232,7 +6000,7 @@ extern Variable SampledTextureSampleBiasCompareOffset_Texture1D_compare;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture1D_offset;
 extern Function SampledTextureSampleBiasCompareOffset_Texture1D;
 
-/// textureSampleBiasCompareOffset with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32x2
+/// textureSampleBiasCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
 extern Variable TextureSampleBiasCompareOffset_Texture2D_texture;
 extern Variable TextureSampleBiasCompareOffset_Texture2D_sampler;
 extern Variable TextureSampleBiasCompareOffset_Texture2D_coordinate;
@@ -6249,7 +6017,7 @@ extern Variable SampledTextureSampleBiasCompareOffset_Texture2D_compare;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture2D_offset;
 extern Function SampledTextureSampleBiasCompareOffset_Texture2D;
 
-/// textureSampleBiasCompareOffset with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32x3
+/// textureSampleBiasCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
 extern Variable TextureSampleBiasCompareOffset_Texture3D_texture;
 extern Variable TextureSampleBiasCompareOffset_Texture3D_sampler;
 extern Variable TextureSampleBiasCompareOffset_Texture3D_coordinate;
@@ -6266,7 +6034,7 @@ extern Variable SampledTextureSampleBiasCompareOffset_Texture3D_compare;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture3D_offset;
 extern Function SampledTextureSampleBiasCompareOffset_Texture3D;
 
-/// textureSampleBiasCompareOffset with Texture1DArray, SamplerType, Float32x2, Float32, Float32, Float32x2
+/// textureSampleBiasCompareOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32, Float32x2
 extern Variable TextureSampleBiasCompareOffset_Texture1DArray_texture;
 extern Variable TextureSampleBiasCompareOffset_Texture1DArray_sampler;
 extern Variable TextureSampleBiasCompareOffset_Texture1DArray_coordinate;
@@ -6283,7 +6051,7 @@ extern Variable SampledTextureSampleBiasCompareOffset_Texture1DArray_compare;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture1DArray_offset;
 extern Function SampledTextureSampleBiasCompareOffset_Texture1DArray;
 
-/// textureSampleBiasCompareOffset with Texture2DArray, SamplerType, Float32x3, Float32, Float32, Float32x3
+/// textureSampleBiasCompareOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32, Float32x3
 extern Variable TextureSampleBiasCompareOffset_Texture2DArray_texture;
 extern Variable TextureSampleBiasCompareOffset_Texture2DArray_sampler;
 extern Variable TextureSampleBiasCompareOffset_Texture2DArray_coordinate;
@@ -6300,7 +6068,7 @@ extern Variable SampledTextureSampleBiasCompareOffset_Texture2DArray_compare;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture2DArray_offset;
 extern Function SampledTextureSampleBiasCompareOffset_Texture2DArray;
 
-/// textureSampleBiasProjCompare with Texture1D, SamplerType, Float32, Float32, Float32, Float32
+/// textureSampleBiasProjCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32
 extern Variable TextureSampleBiasProjCompare_Texture1D_texture;
 extern Variable TextureSampleBiasProjCompare_Texture1D_sampler;
 extern Variable TextureSampleBiasProjCompare_Texture1D_coordinate;
@@ -6317,7 +6085,7 @@ extern Variable SampledTextureSampleBiasProjCompare_Texture1D_proj;
 extern Variable SampledTextureSampleBiasProjCompare_Texture1D_compare;
 extern Function SampledTextureSampleBiasProjCompare_Texture1D;
 
-/// textureSampleBiasProjCompare with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32
+/// textureSampleBiasProjCompare with Texture2D, Sampler, Float32x2, Float32, Float32, Float32
 extern Variable TextureSampleBiasProjCompare_Texture2D_texture;
 extern Variable TextureSampleBiasProjCompare_Texture2D_sampler;
 extern Variable TextureSampleBiasProjCompare_Texture2D_coordinate;
@@ -6334,7 +6102,7 @@ extern Variable SampledTextureSampleBiasProjCompare_Texture2D_proj;
 extern Variable SampledTextureSampleBiasProjCompare_Texture2D_compare;
 extern Function SampledTextureSampleBiasProjCompare_Texture2D;
 
-/// textureSampleBiasProjCompare with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32
+/// textureSampleBiasProjCompare with Texture3D, Sampler, Float32x3, Float32, Float32, Float32
 extern Variable TextureSampleBiasProjCompare_Texture3D_texture;
 extern Variable TextureSampleBiasProjCompare_Texture3D_sampler;
 extern Variable TextureSampleBiasProjCompare_Texture3D_coordinate;
@@ -6351,7 +6119,7 @@ extern Variable SampledTextureSampleBiasProjCompare_Texture3D_proj;
 extern Variable SampledTextureSampleBiasProjCompare_Texture3D_compare;
 extern Function SampledTextureSampleBiasProjCompare_Texture3D;
 
-/// textureSampleBiasProjCompareOffset with Texture1D, SamplerType, Float32, Float32, Float32, Float32, Float32
+/// textureSampleBiasProjCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
 extern Variable TextureSampleBiasProjCompareOffset_Texture1D_texture;
 extern Variable TextureSampleBiasProjCompareOffset_Texture1D_sampler;
 extern Variable TextureSampleBiasProjCompareOffset_Texture1D_coordinate;
@@ -6370,7 +6138,7 @@ extern Variable SampledTextureSampleBiasProjCompareOffset_Texture1D_compare;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture1D_offset;
 extern Function SampledTextureSampleBiasProjCompareOffset_Texture1D;
 
-/// textureSampleBiasProjCompareOffset with Texture2D, SamplerType, Float32x2, Float32, Float32, Float32, Float32x2
+/// textureSampleBiasProjCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32, Float32x2
 extern Variable TextureSampleBiasProjCompareOffset_Texture2D_texture;
 extern Variable TextureSampleBiasProjCompareOffset_Texture2D_sampler;
 extern Variable TextureSampleBiasProjCompareOffset_Texture2D_coordinate;
@@ -6389,7 +6157,7 @@ extern Variable SampledTextureSampleBiasProjCompareOffset_Texture2D_compare;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture2D_offset;
 extern Function SampledTextureSampleBiasProjCompareOffset_Texture2D;
 
-/// textureSampleBiasProjCompareOffset with Texture3D, SamplerType, Float32x3, Float32, Float32, Float32, Float32x3
+/// textureSampleBiasProjCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32, Float32x3
 extern Variable TextureSampleBiasProjCompareOffset_Texture3D_texture;
 extern Variable TextureSampleBiasProjCompareOffset_Texture3D_sampler;
 extern Variable TextureSampleBiasProjCompareOffset_Texture3D_coordinate;
@@ -6408,7 +6176,8 @@ extern Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_compare;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_offset;
 extern Function SampledTextureSampleBiasProjCompareOffset_Texture3D;
 
-inline constexpr StaticMap Intrinsics = std::array{
+inline constexpr StaticMap DefaultIntrinsics = std::array<std::pair<ConstantString, Symbol*>, 1999> {
+    std::pair{ "f32"_c, &Float32Type },
     std::pair{ "f32"_c, &Float32_convert_UInt32 },
     std::pair{ "f32(u32)"_c, &Float32_convert_UInt32 },
     std::pair{ "f32"_c, &Float32_convert_Int32 },
@@ -6421,6 +6190,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "f32(i16)"_c, &Float32_convert_Int16 },
     std::pair{ "f32"_c, &Float32_ctor0 },
     std::pair{ "f32(f32)"_c, &Float32_ctor0 },
+    std::pair{ "u32"_c, &UInt32Type },
     std::pair{ "u32"_c, &UInt32_convert_Float32 },
     std::pair{ "u32(f32)"_c, &UInt32_convert_Float32 },
     std::pair{ "u32"_c, &UInt32_convert_Int32 },
@@ -6433,6 +6203,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "u32(i16)"_c, &UInt32_convert_Int16 },
     std::pair{ "u32"_c, &UInt32_ctor0 },
     std::pair{ "u32(u32)"_c, &UInt32_ctor0 },
+    std::pair{ "i32"_c, &Int32Type },
     std::pair{ "i32"_c, &Int32_convert_Float32 },
     std::pair{ "i32(f32)"_c, &Int32_convert_Float32 },
     std::pair{ "i32"_c, &Int32_convert_UInt32 },
@@ -6445,6 +6216,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "i32(i16)"_c, &Int32_convert_Int16 },
     std::pair{ "i32"_c, &Int32_ctor0 },
     std::pair{ "i32(i32)"_c, &Int32_ctor0 },
+    std::pair{ "b8"_c, &Bool8Type },
     std::pair{ "b8"_c, &Bool8_convert_UInt32 },
     std::pair{ "b8(u32)"_c, &Bool8_convert_UInt32 },
     std::pair{ "b8"_c, &Bool8_convert_Int32 },
@@ -6455,6 +6227,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "b8(i16)"_c, &Bool8_convert_Int16 },
     std::pair{ "b8"_c, &Bool8_ctor0 },
     std::pair{ "b8(b8)"_c, &Bool8_ctor0 },
+    std::pair{ "f16"_c, &Float16Type },
     std::pair{ "f16"_c, &Float16_convert_Float32 },
     std::pair{ "f16(f32)"_c, &Float16_convert_Float32 },
     std::pair{ "f16"_c, &Float16_convert_UInt32 },
@@ -6467,6 +6240,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "f16(i16)"_c, &Float16_convert_Int16 },
     std::pair{ "f16"_c, &Float16_ctor0 },
     std::pair{ "f16(f16)"_c, &Float16_ctor0 },
+    std::pair{ "u16"_c, &UInt16Type },
     std::pair{ "u16"_c, &UInt16_convert_Float32 },
     std::pair{ "u16(f32)"_c, &UInt16_convert_Float32 },
     std::pair{ "u16"_c, &UInt16_convert_UInt32 },
@@ -6479,6 +6253,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "u16(i16)"_c, &UInt16_convert_Int16 },
     std::pair{ "u16"_c, &UInt16_ctor0 },
     std::pair{ "u16(u16)"_c, &UInt16_ctor0 },
+    std::pair{ "i16"_c, &Int16Type },
     std::pair{ "i16"_c, &Int16_convert_Float32 },
     std::pair{ "i16(f32)"_c, &Int16_convert_Float32 },
     std::pair{ "i16"_c, &Int16_convert_UInt32 },
@@ -6491,6 +6266,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "i16(u16)"_c, &Int16_convert_UInt16 },
     std::pair{ "i16"_c, &Int16_ctor0 },
     std::pair{ "i16(i16)"_c, &Int16_ctor0 },
+    std::pair{ "f32x2"_c, &Float32x2Type },
     std::pair{ "f32x2"_c, &Float32x2_convert_Float32x2 },
     std::pair{ "f32x2(f32x2)"_c, &Float32x2_convert_Float32x2 },
     std::pair{ "f32x2"_c, &Float32x2_splat_Float32 },
@@ -6517,6 +6293,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "f32x2(i16)"_c, &Float32x2_splat_Int16 },
     std::pair{ "f32x2"_c, &Float32x2_ctor0 },
     std::pair{ "f32x2(f32,f32)"_c, &Float32x2_ctor0 },
+    std::pair{ "u32x2"_c, &UInt32x2Type },
     std::pair{ "u32x2"_c, &UInt32x2_convert_Float32x2 },
     std::pair{ "u32x2(f32x2)"_c, &UInt32x2_convert_Float32x2 },
     std::pair{ "u32x2"_c, &UInt32x2_splat_Float32 },
@@ -6543,6 +6320,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "u32x2(i16)"_c, &UInt32x2_splat_Int16 },
     std::pair{ "u32x2"_c, &UInt32x2_ctor0 },
     std::pair{ "u32x2(u32,u32)"_c, &UInt32x2_ctor0 },
+    std::pair{ "i32x2"_c, &Int32x2Type },
     std::pair{ "i32x2"_c, &Int32x2_convert_Float32x2 },
     std::pair{ "i32x2(f32x2)"_c, &Int32x2_convert_Float32x2 },
     std::pair{ "i32x2"_c, &Int32x2_splat_Float32 },
@@ -6569,6 +6347,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "i32x2(i16)"_c, &Int32x2_splat_Int16 },
     std::pair{ "i32x2"_c, &Int32x2_ctor0 },
     std::pair{ "i32x2(i32,i32)"_c, &Int32x2_ctor0 },
+    std::pair{ "b8x2"_c, &Bool8x2Type },
     std::pair{ "b8x2"_c, &Bool8x2_convert_UInt32x2 },
     std::pair{ "b8x2(u32x2)"_c, &Bool8x2_convert_UInt32x2 },
     std::pair{ "b8x2"_c, &Bool8x2_splat_UInt32 },
@@ -6587,6 +6366,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "b8x2(i16)"_c, &Bool8x2_splat_Int16 },
     std::pair{ "b8x2"_c, &Bool8x2_ctor0 },
     std::pair{ "b8x2(b8,b8)"_c, &Bool8x2_ctor0 },
+    std::pair{ "f16x2"_c, &Float16x2Type },
     std::pair{ "f16x2"_c, &Float16x2_convert_Float32x2 },
     std::pair{ "f16x2(f32x2)"_c, &Float16x2_convert_Float32x2 },
     std::pair{ "f16x2"_c, &Float16x2_splat_Float32 },
@@ -6613,6 +6393,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "f16x2(i16)"_c, &Float16x2_splat_Int16 },
     std::pair{ "f16x2"_c, &Float16x2_ctor0 },
     std::pair{ "f16x2(f16,f16)"_c, &Float16x2_ctor0 },
+    std::pair{ "u16x2"_c, &UInt16x2Type },
     std::pair{ "u16x2"_c, &UInt16x2_convert_Float32x2 },
     std::pair{ "u16x2(f32x2)"_c, &UInt16x2_convert_Float32x2 },
     std::pair{ "u16x2"_c, &UInt16x2_splat_Float32 },
@@ -6639,6 +6420,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "u16x2(i16)"_c, &UInt16x2_splat_Int16 },
     std::pair{ "u16x2"_c, &UInt16x2_ctor0 },
     std::pair{ "u16x2(u16,u16)"_c, &UInt16x2_ctor0 },
+    std::pair{ "i16x2"_c, &Int16x2Type },
     std::pair{ "i16x2"_c, &Int16x2_convert_Float32x2 },
     std::pair{ "i16x2(f32x2)"_c, &Int16x2_convert_Float32x2 },
     std::pair{ "i16x2"_c, &Int16x2_splat_Float32 },
@@ -6665,6 +6447,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "i16x2(i16)"_c, &Int16x2_splat_Int16 },
     std::pair{ "i16x2"_c, &Int16x2_ctor0 },
     std::pair{ "i16x2(i16,i16)"_c, &Int16x2_ctor0 },
+    std::pair{ "f32x3"_c, &Float32x3Type },
     std::pair{ "f32x3"_c, &Float32x3_convert_Float32x3 },
     std::pair{ "f32x3(f32x3)"_c, &Float32x3_convert_Float32x3 },
     std::pair{ "f32x3"_c, &Float32x3_splat_Float32 },
@@ -6695,6 +6478,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "f32x3(f32x2,f32)"_c, &Float32x3_ctor1 },
     std::pair{ "f32x3"_c, &Float32x3_ctor2 },
     std::pair{ "f32x3(f32,f32x2)"_c, &Float32x3_ctor2 },
+    std::pair{ "u32x3"_c, &UInt32x3Type },
     std::pair{ "u32x3"_c, &UInt32x3_convert_Float32x3 },
     std::pair{ "u32x3(f32x3)"_c, &UInt32x3_convert_Float32x3 },
     std::pair{ "u32x3"_c, &UInt32x3_splat_Float32 },
@@ -6725,6 +6509,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "u32x3(u32x2,u32)"_c, &UInt32x3_ctor1 },
     std::pair{ "u32x3"_c, &UInt32x3_ctor2 },
     std::pair{ "u32x3(u32,u32x2)"_c, &UInt32x3_ctor2 },
+    std::pair{ "i32x3"_c, &Int32x3Type },
     std::pair{ "i32x3"_c, &Int32x3_convert_Float32x3 },
     std::pair{ "i32x3(f32x3)"_c, &Int32x3_convert_Float32x3 },
     std::pair{ "i32x3"_c, &Int32x3_splat_Float32 },
@@ -6755,6 +6540,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "i32x3(i32x2,i32)"_c, &Int32x3_ctor1 },
     std::pair{ "i32x3"_c, &Int32x3_ctor2 },
     std::pair{ "i32x3(i32,i32x2)"_c, &Int32x3_ctor2 },
+    std::pair{ "b8x3"_c, &Bool8x3Type },
     std::pair{ "b8x3"_c, &Bool8x3_convert_UInt32x3 },
     std::pair{ "b8x3(u32x3)"_c, &Bool8x3_convert_UInt32x3 },
     std::pair{ "b8x3"_c, &Bool8x3_splat_UInt32 },
@@ -6777,6 +6563,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "b8x3(b8x2,b8)"_c, &Bool8x3_ctor1 },
     std::pair{ "b8x3"_c, &Bool8x3_ctor2 },
     std::pair{ "b8x3(b8,b8x2)"_c, &Bool8x3_ctor2 },
+    std::pair{ "f16x3"_c, &Float16x3Type },
     std::pair{ "f16x3"_c, &Float16x3_convert_Float32x3 },
     std::pair{ "f16x3(f32x3)"_c, &Float16x3_convert_Float32x3 },
     std::pair{ "f16x3"_c, &Float16x3_splat_Float32 },
@@ -6807,6 +6594,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "f16x3(f16x2,f16)"_c, &Float16x3_ctor1 },
     std::pair{ "f16x3"_c, &Float16x3_ctor2 },
     std::pair{ "f16x3(f16,f16x2)"_c, &Float16x3_ctor2 },
+    std::pair{ "u16x3"_c, &UInt16x3Type },
     std::pair{ "u16x3"_c, &UInt16x3_convert_Float32x3 },
     std::pair{ "u16x3(f32x3)"_c, &UInt16x3_convert_Float32x3 },
     std::pair{ "u16x3"_c, &UInt16x3_splat_Float32 },
@@ -6837,6 +6625,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "u16x3(u16x2,u16)"_c, &UInt16x3_ctor1 },
     std::pair{ "u16x3"_c, &UInt16x3_ctor2 },
     std::pair{ "u16x3(u16,u16x2)"_c, &UInt16x3_ctor2 },
+    std::pair{ "i16x3"_c, &Int16x3Type },
     std::pair{ "i16x3"_c, &Int16x3_convert_Float32x3 },
     std::pair{ "i16x3(f32x3)"_c, &Int16x3_convert_Float32x3 },
     std::pair{ "i16x3"_c, &Int16x3_splat_Float32 },
@@ -6867,6 +6656,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "i16x3(i16x2,i16)"_c, &Int16x3_ctor1 },
     std::pair{ "i16x3"_c, &Int16x3_ctor2 },
     std::pair{ "i16x3(i16,i16x2)"_c, &Int16x3_ctor2 },
+    std::pair{ "f32x4"_c, &Float32x4Type },
     std::pair{ "f32x4"_c, &Float32x4_convert_Float32x4 },
     std::pair{ "f32x4(f32x4)"_c, &Float32x4_convert_Float32x4 },
     std::pair{ "f32x4"_c, &Float32x4_splat_Float32 },
@@ -6903,6 +6693,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "f32x4(f32x3,f32)"_c, &Float32x4_ctor4 },
     std::pair{ "f32x4"_c, &Float32x4_ctor5 },
     std::pair{ "f32x4(f32,f32x3)"_c, &Float32x4_ctor5 },
+    std::pair{ "u32x4"_c, &UInt32x4Type },
     std::pair{ "u32x4"_c, &UInt32x4_convert_Float32x4 },
     std::pair{ "u32x4(f32x4)"_c, &UInt32x4_convert_Float32x4 },
     std::pair{ "u32x4"_c, &UInt32x4_splat_Float32 },
@@ -6939,6 +6730,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "u32x4(u32x3,u32)"_c, &UInt32x4_ctor4 },
     std::pair{ "u32x4"_c, &UInt32x4_ctor5 },
     std::pair{ "u32x4(u32,u32x3)"_c, &UInt32x4_ctor5 },
+    std::pair{ "i32x4"_c, &Int32x4Type },
     std::pair{ "i32x4"_c, &Int32x4_convert_Float32x4 },
     std::pair{ "i32x4(f32x4)"_c, &Int32x4_convert_Float32x4 },
     std::pair{ "i32x4"_c, &Int32x4_splat_Float32 },
@@ -6975,6 +6767,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "i32x4(i32x3,i32)"_c, &Int32x4_ctor4 },
     std::pair{ "i32x4"_c, &Int32x4_ctor5 },
     std::pair{ "i32x4(i32,i32x3)"_c, &Int32x4_ctor5 },
+    std::pair{ "b8x4"_c, &Bool8x4Type },
     std::pair{ "b8x4"_c, &Bool8x4_convert_UInt32x4 },
     std::pair{ "b8x4(u32x4)"_c, &Bool8x4_convert_UInt32x4 },
     std::pair{ "b8x4"_c, &Bool8x4_splat_UInt32 },
@@ -7003,6 +6796,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "b8x4(b8x3,b8)"_c, &Bool8x4_ctor4 },
     std::pair{ "b8x4"_c, &Bool8x4_ctor5 },
     std::pair{ "b8x4(b8,b8x3)"_c, &Bool8x4_ctor5 },
+    std::pair{ "f16x4"_c, &Float16x4Type },
     std::pair{ "f16x4"_c, &Float16x4_convert_Float32x4 },
     std::pair{ "f16x4(f32x4)"_c, &Float16x4_convert_Float32x4 },
     std::pair{ "f16x4"_c, &Float16x4_splat_Float32 },
@@ -7039,6 +6833,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "f16x4(f16x3,f16)"_c, &Float16x4_ctor4 },
     std::pair{ "f16x4"_c, &Float16x4_ctor5 },
     std::pair{ "f16x4(f16,f16x3)"_c, &Float16x4_ctor5 },
+    std::pair{ "u16x4"_c, &UInt16x4Type },
     std::pair{ "u16x4"_c, &UInt16x4_convert_Float32x4 },
     std::pair{ "u16x4(f32x4)"_c, &UInt16x4_convert_Float32x4 },
     std::pair{ "u16x4"_c, &UInt16x4_splat_Float32 },
@@ -7075,6 +6870,7 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "u16x4(u16x3,u16)"_c, &UInt16x4_ctor4 },
     std::pair{ "u16x4"_c, &UInt16x4_ctor5 },
     std::pair{ "u16x4(u16,u16x3)"_c, &UInt16x4_ctor5 },
+    std::pair{ "i16x4"_c, &Int16x4Type },
     std::pair{ "i16x4"_c, &Int16x4_convert_Float32x4 },
     std::pair{ "i16x4(f32x4)"_c, &Int16x4_convert_Float32x4 },
     std::pair{ "i16x4"_c, &Int16x4_splat_Float32 },
@@ -7111,108 +6907,126 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "i16x4(i16x3,i16)"_c, &Int16x4_ctor4 },
     std::pair{ "i16x4"_c, &Int16x4_ctor5 },
     std::pair{ "i16x4(i16,i16x3)"_c, &Int16x4_ctor5 },
+    std::pair{ "f32x2x2"_c, &Float32x2x2Type },
     std::pair{ "f32x2x2"_c, &Float32x2x2_Float32_2_ctor },
     std::pair{ "f32x2x2(f32x2,f32x2)"_c, &Float32x2x2_Float32_2_ctor },
     std::pair{ "f32x2x2"_c, &Float32x2x2_identity },
     std::pair{ "f32x2x2()"_c, &Float32x2x2_identity },
     std::pair{ "f32x2x2"_c, &Float32x2x2_raw_list },
     std::pair{ "f32x2x2(f32,f32,f32,f32)"_c, &Float32x2x2_raw_list },
+    std::pair{ "f32x2x3"_c, &Float32x2x3Type },
     std::pair{ "f32x2x3"_c, &Float32x2x3_Float32_3_ctor },
     std::pair{ "f32x2x3(f32x3,f32x3)"_c, &Float32x2x3_Float32_3_ctor },
     std::pair{ "f32x2x3"_c, &Float32x2x3_identity },
     std::pair{ "f32x2x3()"_c, &Float32x2x3_identity },
     std::pair{ "f32x2x3"_c, &Float32x2x3_raw_list },
     std::pair{ "f32x2x3(f32,f32,f32,f32,f32,f32)"_c, &Float32x2x3_raw_list },
+    std::pair{ "f32x2x4"_c, &Float32x2x4Type },
     std::pair{ "f32x2x4"_c, &Float32x2x4_Float32_4_ctor },
     std::pair{ "f32x2x4(f32x4,f32x4)"_c, &Float32x2x4_Float32_4_ctor },
     std::pair{ "f32x2x4"_c, &Float32x2x4_identity },
     std::pair{ "f32x2x4()"_c, &Float32x2x4_identity },
     std::pair{ "f32x2x4"_c, &Float32x2x4_raw_list },
     std::pair{ "f32x2x4(f32,f32,f32,f32,f32,f32,f32,f32)"_c, &Float32x2x4_raw_list },
+    std::pair{ "f32x3x2"_c, &Float32x3x2Type },
     std::pair{ "f32x3x2"_c, &Float32x3x2_Float32_2_ctor },
     std::pair{ "f32x3x2(f32x2,f32x2,f32x2)"_c, &Float32x3x2_Float32_2_ctor },
     std::pair{ "f32x3x2"_c, &Float32x3x2_identity },
     std::pair{ "f32x3x2()"_c, &Float32x3x2_identity },
     std::pair{ "f32x3x2"_c, &Float32x3x2_raw_list },
     std::pair{ "f32x3x2(f32,f32,f32,f32,f32,f32)"_c, &Float32x3x2_raw_list },
+    std::pair{ "f32x3x3"_c, &Float32x3x3Type },
     std::pair{ "f32x3x3"_c, &Float32x3x3_Float32_3_ctor },
     std::pair{ "f32x3x3(f32x3,f32x3,f32x3)"_c, &Float32x3x3_Float32_3_ctor },
     std::pair{ "f32x3x3"_c, &Float32x3x3_identity },
     std::pair{ "f32x3x3()"_c, &Float32x3x3_identity },
     std::pair{ "f32x3x3"_c, &Float32x3x3_raw_list },
     std::pair{ "f32x3x3(f32,f32,f32,f32,f32,f32,f32,f32,f32)"_c, &Float32x3x3_raw_list },
+    std::pair{ "f32x3x4"_c, &Float32x3x4Type },
     std::pair{ "f32x3x4"_c, &Float32x3x4_Float32_4_ctor },
     std::pair{ "f32x3x4(f32x4,f32x4,f32x4)"_c, &Float32x3x4_Float32_4_ctor },
     std::pair{ "f32x3x4"_c, &Float32x3x4_identity },
     std::pair{ "f32x3x4()"_c, &Float32x3x4_identity },
     std::pair{ "f32x3x4"_c, &Float32x3x4_raw_list },
     std::pair{ "f32x3x4(f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32)"_c, &Float32x3x4_raw_list },
+    std::pair{ "f32x4x2"_c, &Float32x4x2Type },
     std::pair{ "f32x4x2"_c, &Float32x4x2_Float32_2_ctor },
     std::pair{ "f32x4x2(f32x2,f32x2,f32x2,f32x2)"_c, &Float32x4x2_Float32_2_ctor },
     std::pair{ "f32x4x2"_c, &Float32x4x2_identity },
     std::pair{ "f32x4x2()"_c, &Float32x4x2_identity },
     std::pair{ "f32x4x2"_c, &Float32x4x2_raw_list },
     std::pair{ "f32x4x2(f32,f32,f32,f32,f32,f32,f32,f32)"_c, &Float32x4x2_raw_list },
+    std::pair{ "f32x4x3"_c, &Float32x4x3Type },
     std::pair{ "f32x4x3"_c, &Float32x4x3_Float32_3_ctor },
     std::pair{ "f32x4x3(f32x3,f32x3,f32x3,f32x3)"_c, &Float32x4x3_Float32_3_ctor },
     std::pair{ "f32x4x3"_c, &Float32x4x3_identity },
     std::pair{ "f32x4x3()"_c, &Float32x4x3_identity },
     std::pair{ "f32x4x3"_c, &Float32x4x3_raw_list },
     std::pair{ "f32x4x3(f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32)"_c, &Float32x4x3_raw_list },
+    std::pair{ "f32x4x4"_c, &Float32x4x4Type },
     std::pair{ "f32x4x4"_c, &Float32x4x4_Float32_4_ctor },
     std::pair{ "f32x4x4(f32x4,f32x4,f32x4,f32x4)"_c, &Float32x4x4_Float32_4_ctor },
     std::pair{ "f32x4x4"_c, &Float32x4x4_identity },
     std::pair{ "f32x4x4()"_c, &Float32x4x4_identity },
     std::pair{ "f32x4x4"_c, &Float32x4x4_raw_list },
     std::pair{ "f32x4x4(f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32)"_c, &Float32x4x4_raw_list },
+    std::pair{ "f16x2x2"_c, &Float16x2x2Type },
     std::pair{ "f16x2x2"_c, &Float16x2x2_Float16_2_ctor },
     std::pair{ "f16x2x2(f16x2,f16x2)"_c, &Float16x2x2_Float16_2_ctor },
     std::pair{ "f16x2x2"_c, &Float16x2x2_identity },
     std::pair{ "f16x2x2()"_c, &Float16x2x2_identity },
     std::pair{ "f16x2x2"_c, &Float16x2x2_raw_list },
     std::pair{ "f16x2x2(f16,f16,f16,f16)"_c, &Float16x2x2_raw_list },
+    std::pair{ "f16x2x3"_c, &Float16x2x3Type },
     std::pair{ "f16x2x3"_c, &Float16x2x3_Float16_3_ctor },
     std::pair{ "f16x2x3(f16x3,f16x3)"_c, &Float16x2x3_Float16_3_ctor },
     std::pair{ "f16x2x3"_c, &Float16x2x3_identity },
     std::pair{ "f16x2x3()"_c, &Float16x2x3_identity },
     std::pair{ "f16x2x3"_c, &Float16x2x3_raw_list },
     std::pair{ "f16x2x3(f16,f16,f16,f16,f16,f16)"_c, &Float16x2x3_raw_list },
+    std::pair{ "f16x2x4"_c, &Float16x2x4Type },
     std::pair{ "f16x2x4"_c, &Float16x2x4_Float16_4_ctor },
     std::pair{ "f16x2x4(f16x4,f16x4)"_c, &Float16x2x4_Float16_4_ctor },
     std::pair{ "f16x2x4"_c, &Float16x2x4_identity },
     std::pair{ "f16x2x4()"_c, &Float16x2x4_identity },
     std::pair{ "f16x2x4"_c, &Float16x2x4_raw_list },
     std::pair{ "f16x2x4(f16,f16,f16,f16,f16,f16,f16,f16)"_c, &Float16x2x4_raw_list },
+    std::pair{ "f16x3x2"_c, &Float16x3x2Type },
     std::pair{ "f16x3x2"_c, &Float16x3x2_Float16_2_ctor },
     std::pair{ "f16x3x2(f16x2,f16x2,f16x2)"_c, &Float16x3x2_Float16_2_ctor },
     std::pair{ "f16x3x2"_c, &Float16x3x2_identity },
     std::pair{ "f16x3x2()"_c, &Float16x3x2_identity },
     std::pair{ "f16x3x2"_c, &Float16x3x2_raw_list },
     std::pair{ "f16x3x2(f16,f16,f16,f16,f16,f16)"_c, &Float16x3x2_raw_list },
+    std::pair{ "f16x3x3"_c, &Float16x3x3Type },
     std::pair{ "f16x3x3"_c, &Float16x3x3_Float16_3_ctor },
     std::pair{ "f16x3x3(f16x3,f16x3,f16x3)"_c, &Float16x3x3_Float16_3_ctor },
     std::pair{ "f16x3x3"_c, &Float16x3x3_identity },
     std::pair{ "f16x3x3()"_c, &Float16x3x3_identity },
     std::pair{ "f16x3x3"_c, &Float16x3x3_raw_list },
     std::pair{ "f16x3x3(f16,f16,f16,f16,f16,f16,f16,f16,f16)"_c, &Float16x3x3_raw_list },
+    std::pair{ "f16x3x4"_c, &Float16x3x4Type },
     std::pair{ "f16x3x4"_c, &Float16x3x4_Float16_4_ctor },
     std::pair{ "f16x3x4(f16x4,f16x4,f16x4)"_c, &Float16x3x4_Float16_4_ctor },
     std::pair{ "f16x3x4"_c, &Float16x3x4_identity },
     std::pair{ "f16x3x4()"_c, &Float16x3x4_identity },
     std::pair{ "f16x3x4"_c, &Float16x3x4_raw_list },
     std::pair{ "f16x3x4(f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16)"_c, &Float16x3x4_raw_list },
+    std::pair{ "f16x4x2"_c, &Float16x4x2Type },
     std::pair{ "f16x4x2"_c, &Float16x4x2_Float16_2_ctor },
     std::pair{ "f16x4x2(f16x2,f16x2,f16x2,f16x2)"_c, &Float16x4x2_Float16_2_ctor },
     std::pair{ "f16x4x2"_c, &Float16x4x2_identity },
     std::pair{ "f16x4x2()"_c, &Float16x4x2_identity },
     std::pair{ "f16x4x2"_c, &Float16x4x2_raw_list },
     std::pair{ "f16x4x2(f16,f16,f16,f16,f16,f16,f16,f16)"_c, &Float16x4x2_raw_list },
+    std::pair{ "f16x4x3"_c, &Float16x4x3Type },
     std::pair{ "f16x4x3"_c, &Float16x4x3_Float16_3_ctor },
     std::pair{ "f16x4x3(f16x3,f16x3,f16x3,f16x3)"_c, &Float16x4x3_Float16_3_ctor },
     std::pair{ "f16x4x3"_c, &Float16x4x3_identity },
     std::pair{ "f16x4x3()"_c, &Float16x4x3_identity },
     std::pair{ "f16x4x3"_c, &Float16x4x3_raw_list },
     std::pair{ "f16x4x3(f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16)"_c, &Float16x4x3_raw_list },
+    std::pair{ "f16x4x4"_c, &Float16x4x4Type },
     std::pair{ "f16x4x4"_c, &Float16x4x4_Float16_4_ctor },
     std::pair{ "f16x4x4(f16x4,f16x4,f16x4,f16x4)"_c, &Float16x4x4_Float16_4_ctor },
     std::pair{ "f16x4x4"_c, &Float16x4x4_identity },
@@ -7964,54 +7778,18 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "atomicCompareExchange"_c, &AtomicCompareExchange_Int16 },
     std::pair{ "bitInsert"_c, &BitInsert_UInt16 },
     std::pair{ "bitInsert"_c, &BitInsert_UInt32 },
-    std::pair{ "bitExtract"_c, &BitExtract_Int32 },
-    std::pair{ "bitExtract"_c, &BitExtract_Int32x2 },
-    std::pair{ "bitExtract"_c, &BitExtract_Int32x3 },
-    std::pair{ "bitExtract"_c, &BitExtract_Int32x4 },
-    std::pair{ "bitExtract"_c, &BitExtract_Int16 },
-    std::pair{ "bitExtract"_c, &BitExtract_Int16x2 },
-    std::pair{ "bitExtract"_c, &BitExtract_Int16x3 },
-    std::pair{ "bitExtract"_c, &BitExtract_Int16x4 },
     std::pair{ "bitExtract"_c, &BitExtract_UInt32 },
-    std::pair{ "bitExtract"_c, &BitExtract_UInt32x2 },
-    std::pair{ "bitExtract"_c, &BitExtract_UInt32x3 },
-    std::pair{ "bitExtract"_c, &BitExtract_UInt32x4 },
+    std::pair{ "bitExtract"_c, &BitExtract_Int32 },
     std::pair{ "bitExtract"_c, &BitExtract_UInt16 },
-    std::pair{ "bitExtract"_c, &BitExtract_UInt16x2 },
-    std::pair{ "bitExtract"_c, &BitExtract_UInt16x3 },
-    std::pair{ "bitExtract"_c, &BitExtract_UInt16x4 },
-    std::pair{ "bitReverse"_c, &BitReverse_Int32 },
-    std::pair{ "bitReverse"_c, &BitReverse_Int32x2 },
-    std::pair{ "bitReverse"_c, &BitReverse_Int32x3 },
-    std::pair{ "bitReverse"_c, &BitReverse_Int32x4 },
-    std::pair{ "bitReverse"_c, &BitReverse_Int16 },
-    std::pair{ "bitReverse"_c, &BitReverse_Int16x2 },
-    std::pair{ "bitReverse"_c, &BitReverse_Int16x3 },
-    std::pair{ "bitReverse"_c, &BitReverse_Int16x4 },
+    std::pair{ "bitExtract"_c, &BitExtract_Int16 },
     std::pair{ "bitReverse"_c, &BitReverse_UInt32 },
-    std::pair{ "bitReverse"_c, &BitReverse_UInt32x2 },
-    std::pair{ "bitReverse"_c, &BitReverse_UInt32x3 },
-    std::pair{ "bitReverse"_c, &BitReverse_UInt32x4 },
+    std::pair{ "bitReverse"_c, &BitReverse_Int32 },
     std::pair{ "bitReverse"_c, &BitReverse_UInt16 },
-    std::pair{ "bitReverse"_c, &BitReverse_UInt16x2 },
-    std::pair{ "bitReverse"_c, &BitReverse_UInt16x3 },
-    std::pair{ "bitReverse"_c, &BitReverse_UInt16x4 },
-    std::pair{ "bitCount"_c, &BitCount_Int32 },
-    std::pair{ "bitCount"_c, &BitCount_Int32x2 },
-    std::pair{ "bitCount"_c, &BitCount_Int32x3 },
-    std::pair{ "bitCount"_c, &BitCount_Int32x4 },
-    std::pair{ "bitCount"_c, &BitCount_Int16 },
-    std::pair{ "bitCount"_c, &BitCount_Int16x2 },
-    std::pair{ "bitCount"_c, &BitCount_Int16x3 },
-    std::pair{ "bitCount"_c, &BitCount_Int16x4 },
+    std::pair{ "bitReverse"_c, &BitReverse_Int16 },
     std::pair{ "bitCount"_c, &BitCount_UInt32 },
-    std::pair{ "bitCount"_c, &BitCount_UInt32x2 },
-    std::pair{ "bitCount"_c, &BitCount_UInt32x3 },
-    std::pair{ "bitCount"_c, &BitCount_UInt32x4 },
+    std::pair{ "bitCount"_c, &BitCount_Int32 },
     std::pair{ "bitCount"_c, &BitCount_UInt16 },
-    std::pair{ "bitCount"_c, &BitCount_UInt16x2 },
-    std::pair{ "bitCount"_c, &BitCount_UInt16x3 },
-    std::pair{ "bitCount"_c, &BitCount_UInt16x4 },
+    std::pair{ "bitCount"_c, &BitCount_Int16 },
     std::pair{ "executionBarrier"_c, &ExecutionBarrier },
     std::pair{ "executionBarrierSubgroup"_c, &ExecutionBarrierSubgroup },
     std::pair{ "executionBarrierWorkgroup"_c, &ExecutionBarrierWorkgroup },
