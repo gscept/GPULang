@@ -1264,6 +1264,7 @@ struct PinnedMap
         this->data.Grow(SIZE);
         for (auto it : rhs)
             this->data.data[this->data.size++] = it;
+        this->searchValid = true;
     }
     
     template<typename U, size_t SIZE>
@@ -1274,6 +1275,7 @@ struct PinnedMap
 
         for (auto it : rhs)
             this->data.data[this->data.size++] = it;
+        this->searchValid = true;
     }
     
     template<typename U, typename W, size_t SIZE>
@@ -1285,6 +1287,7 @@ struct PinnedMap
 
         for (auto it : rhs)
             this->data.data[this->data.size++] = it;
+        this->searchValid = true;
     }
     
     void Insert(const K& key, const V& value)

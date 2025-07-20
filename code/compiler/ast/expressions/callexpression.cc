@@ -177,9 +177,9 @@ CallExpression::Resolve(Compiler* compiler)
                         if (!IsStorageCompatible(paramResolved->storage, this->thisResolved->argStorages[i]))
                             continue;
                         
-                        if (fun->parameters[i]->type != this->thisResolved->argumentTypes[i])
+                        if (param->type != this->thisResolved->argumentTypes[i])
                         {
-                            std::string conversion = Format("%s(%s)", fun->parameters[i]->type.name.c_str(), this->thisResolved->argTypes[i]->name.c_str());
+                            std::string conversion = Format("%s(%s)", param->type.name.c_str(), this->thisResolved->argTypes[i]->name.c_str());
                             Symbol* componentConversionSymbol = compiler->GetSymbol(conversion);
 
                             // No conversion available for this member, skip to next constructor

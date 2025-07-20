@@ -443,12 +443,13 @@ def generate_types():
             self.literal = literal
 
     class Function():
-        def __init__(self, decl_name, api_name, return_type, parameters, documentation=None):
+        def __init__(self, decl_name, api_name, return_type, parameters, documentation=None, compile_time=False):
             self.decl_name = decl_name
             self.api_name = api_name
             self.return_type = return_type
             self.parameters = parameters
             self.documentation = documentation
+            self.compile_time = compile_time
 
         def declaration(self):
             if len(self.parameters) > 0:
@@ -489,6 +490,8 @@ def generate_types():
             if self.documentation:
                 return_string += f'    {self.decl_name}.documentation = "{self.documentation}"_c;\n'
             return_string += f'    {self.decl_name}.name = "{self.api_name}"_c;\n'
+            if self.compile_time:
+                return_string += f'    {self.decl_name}.compileTime = true;\n'
             return_string += f'    {self.decl_name}.returnType = Type::FullType {{ {self.return_type}Type.name }};\n'
             if len(self.parameters) > 0:
                 return_string += f'    {self.decl_name}.parameters = {self.decl_name}_args;\n'
@@ -640,6 +643,7 @@ def generate_types():
                     decl_name=function_name,
                     api_name=data_type_name,
                     return_type=type_name,
+                    compile_time=True,
                     parameters=[Variable(decl_name=arg_name, api_name='val', type_name=type_name2)],
                     documentation=f'Convert {data_type_name2} to {data_type_name}'
                 )
@@ -659,12 +663,18 @@ def generate_types():
                     function_name = f'{type_name}_splat_{type2}'
                     arg_name = f'{type_name}_splat_{type2}_arg0'
 
+                    bit_width1 = bit_width_mapping[type]
+                    bit_width2 = bit_width_mapping[type2]
+                    if bit_width1 != bit_width2:
+                        continue
+
                     fun = Function(
                         decl_name=function_name,
                         api_name=data_type_name,
                         return_type=type_name,
                         parameters=[Variable(decl_name=arg_name, api_name='val', type_name=type2)],
-                        documentation=f'Splat {data_type_name2} to {data_type_name}'
+                        compile_time=True,
+                        documentation=f'Splat {data_type_mapping[type2]} to {data_type_name}'
                     )
                     declaration_string += fun.declaration()
                     definition_string += fun.definition()
@@ -708,6 +718,7 @@ def generate_types():
                     decl_name =function_name,
                     api_name = f'{data_type_mapping[type_name]}',
                     return_type = type_name,
+                    compile_time = True,
                     parameters = []
                 )
                 for arg_idx, s in enumerate(comb):
@@ -715,7 +726,7 @@ def generate_types():
                         arg_type_name = type
                     else:
                         arg_type_name = f'{type}x{s}'
-                    arg_name = f'{type_name}_ctor{ctor_idx}_arg{arg_idx}_{arg_type_name}'
+                    arg_name = f'{function_name}_arg{arg_idx}_{arg_type_name}'
                     fun.parameters.append(Variable(decl_name=arg_name, api_name=f'_arg{arg_idx}', type_name=arg_type_name))
                     args.append(arg_name)
                     if s == 1:
@@ -747,7 +758,7 @@ def generate_types():
                 declaration_string += fun.declaration()
                 definition_string += fun.definition()
                 setup_string += fun.setup()
-                
+                list_string.append(fun.pair())
                 list_string.append(fun.typed_pair())
 
                 spirv_function =  f'    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, {function_name}.returnType, &{type}Type, args[0].scope);\n'
@@ -774,6 +785,7 @@ def generate_types():
                     declaration_string += fun.declaration()
                     definition_string += fun.definition()
                     setup_string += fun.setup()
+                    list_string.append(fun.pair())
                     list_string.append(fun.typed_pair())
 
                     spirv_function =  ''
@@ -795,9 +807,9 @@ def generate_types():
                 operator_sets = [
                     zip(scalar_operator_names, scalar_operators), 
                     zip(assignment_operator_names, assignment_operators),
-                    zip(comparison_operator_names, comparison_operators)
-                    ]
+                ]
                 for operator_set in operator_sets:
+                    return_type = type_name
                     for name, op in operator_set:
                         function_name = f'{type_name}_operator_{name}_{type_name}'
                         arg_name = f'{function_name}_arg0'
@@ -811,6 +823,7 @@ def generate_types():
                         declaration_string += fun.declaration()
                         definition_string += fun.definition()
                         setup_string += fun.setup()
+                        list_string.append(fun.pair())
                         list_string.append(fun.typed_pair())
 
                         spirv_function = ''
@@ -820,15 +833,13 @@ def generate_types():
                         spirv_op_type = ''
                         if type.startswith('Float'):
                             spirv_op_type = 'F'
-                            if op == '<' or op == '>' or op == '<=' or op == '>=' or op == '==' or op == '!=':
-                                spirv_op_type += 'Ord'
                         elif type.startswith('Int'):
-                            if op == '/' or op == '/=' or op == '%' or op == '%=' or op == '<' or op == '>' or op == '<=' or op == '>=':
+                            if op == '/' or op == '/=' or op == '%' or op == '%=':
                                 spirv_op_type = 'S'
                             else:
                                 spirv_op_type = 'I'
                         elif type.startswith('UInt'):
-                            if op == '/' or op == '/=' or op == '%' or op == '%=' or op == '<' or op == '>' or op == '<=' or op == '>=':
+                            if op == '/' or op == '/=' or op == '%' or op == '%=':
                                 spirv_op_type = 'S'
                             else:
                                 spirv_op_type = 'I'
@@ -843,21 +854,64 @@ def generate_types():
                             spirv_op = f'Op{spirv_op_type}Div'
                         elif op == '%' or op == '%=':
                             spirv_op = f'Op{spirv_op_type}Mod'
-                        elif op == '<':
-                            spirv_op = f'Op{spirv_op_type}LessThan'
-                        elif op == '>':
-                            spirv_op = f'Op{spirv_op_type}GreaterThan'
-                        elif op == '<=':
-                            spirv_op = f'Op{spirv_op_type}LessThanEqual'
-                        elif op == '>=':
-                            spirv_op = f'Op{spirv_op_type}GreaterThanEqual'
-                        elif op == '==':
-                            spirv_op = f'Op{spirv_op_type}Equal'
-                        elif op == '!=':
-                            spirv_op = f'Op{spirv_op_type}NotEqual'
                         spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_op}, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);\n'
                         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
                         spirv_code += spirv_intrinsic(function_name, spirv_function)
+
+                for name, op in zip(comparison_operator_names, comparison_operators):
+                    function_name = f'{type_name}_operator_{name}_{type_name}'
+                    arg_name = f'{function_name}_arg0'
+                    return_type = f'Bool8'
+                    if size > 1:
+                        return_type = f'Bool8x{size}'
+                    fun = Function(
+                        decl_name=function_name,
+                        api_name=f'operator{op}',
+                        return_type=return_type,
+                        parameters=[Variable(decl_name=arg_name, api_name='_arg0', type_name=type_name)],
+                    )
+
+                    declaration_string += fun.declaration()
+                    definition_string += fun.definition()
+                    setup_string += fun.setup()
+                    list_string.append(fun.pair())
+                    list_string.append(fun.typed_pair())
+
+                    spirv_function = ''
+                    spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
+                    spirv_function += '    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);\n'
+
+                    spirv_op_type = ''
+                    if type.startswith('Float'):
+                        spirv_op_type = 'F'
+                        if op == '<' or op == '>' or op == '<=' or op == '>=' or op == '==' or op == '!=':
+                            spirv_op_type += 'Ord'
+                    elif type.startswith('Int'):
+                        if op == '<' or op == '>' or op == '<=' or op == '>=':
+                            spirv_op_type = 'S'
+                        else:
+                            spirv_op_type = 'I'
+                    elif type.startswith('UInt'):
+                        if op == '<' or op == '>' or op == '<=' or op == '>=':
+                            spirv_op_type = 'S'
+                        else:
+                            spirv_op_type = 'I'
+
+                    if op == '<':
+                        spirv_op = f'Op{spirv_op_type}LessThan'
+                    elif op == '>':
+                        spirv_op = f'Op{spirv_op_type}GreaterThan'
+                    elif op == '<=':
+                        spirv_op = f'Op{spirv_op_type}LessThanEqual'
+                    elif op == '>=':
+                        spirv_op = f'Op{spirv_op_type}GreaterThanEqual'
+                    elif op == '==':
+                        spirv_op = f'Op{spirv_op_type}Equal'
+                    elif op == '!=':
+                        spirv_op = f'Op{spirv_op_type}NotEqual'
+                    spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_op}, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);\n'
+                    spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+                    spirv_code += spirv_intrinsic(function_name, spirv_function)
                 
                 if size > 1:
                     for name, op, scale_type in zip(scale_operator_names, scale_operators, scale_operator_types):
@@ -874,6 +928,7 @@ def generate_types():
                         declaration_string += fun.declaration()
                         definition_string += fun.definition()
                         setup_string += fun.setup()
+                        list_string.append(fun.pair())
                         list_string.append(fun.typed_pair())
 
                         spirv_function = ''
@@ -906,6 +961,7 @@ def generate_types():
                         declaration_string += fun.declaration()
                         definition_string += fun.definition()
                         setup_string += fun.setup()
+                        list_string.append(fun.pair())
                         list_string.append(fun.typed_pair())
 
                         spirv_function = ''
@@ -933,6 +989,7 @@ def generate_types():
                         declaration_string += fun.declaration()
                         definition_string += fun.definition()
                         setup_string += fun.setup()
+                        list_string.append(fun.pair())
                         list_string.append(fun.typed_pair())
 
                         if op == '&':
@@ -991,6 +1048,7 @@ def generate_types():
                     decl_name=vector_ctor_name,
                     api_name=f'{data_type_name}',
                     return_type=type_name,
+                    compile_time = True,
                     parameters=[]
                 )
 
@@ -1012,6 +1070,7 @@ def generate_types():
                     decl_name=f'{type_name}_identity',
                     api_name=f'{data_type_name}',
                     return_type=type_name,
+                    compile_time=True,
                     parameters=[]
                 )
 
@@ -1025,6 +1084,7 @@ def generate_types():
                     decl_name=f'{type_name}_raw_list',
                     api_name=f'{data_type_name}',
                     return_type=type_name,
+                    compile_time=True,
                     parameters=[]
                 )
                 for arg_index in range(0, column_size * row_size):
@@ -1053,6 +1113,7 @@ def generate_types():
                     definition_string += fun.definition()
                     setup_string += fun.setup()
                     list_string.append(fun.pair())
+                    list_string.append(fun.typed_pair())
 
                     spirv_function =  f'    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, {function_name}.returnType, &{type}Type, args[0].scope);\n'
                     spirv_function += '    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);\n'
@@ -1078,6 +1139,7 @@ def generate_types():
                     declaration_string += fun.declaration()
                     definition_string += fun.definition()
                     setup_string += fun.setup()
+                    list_string.append(fun.pair())
                     list_string.append(fun.typed_pair())
 
                     spirv_function = ''
@@ -1105,7 +1167,7 @@ def generate_types():
                         declaration_string += fun.declaration()
                         definition_string += fun.definition()
                         setup_string += fun.setup()
-                        
+                        list_string.append(fun.pair())
                         list_string.append(fun.typed_pair())
 
                         spirv_function = ''
@@ -1151,6 +1213,7 @@ def generate_types():
                 declaration_string += fun.declaration()
                 definition_string += fun.definition()
                 setup_string += fun.setup()
+                list_string.append(fun.pair())
                 list_string.append(fun.typed_pair())
 
                 spirv_function = ''
@@ -1789,6 +1852,30 @@ def generate_types():
     signed_types = ['Int32', 'Int32x2', 'Int32x3', 'Int32x4', 'Int16', 'Int16x2', 'Int16x3', 'Int16x4', 'Float32', 'Float32x2', 'Float32x3', 'Float32x4', 'Float16', 'Float16x2', 'Float16x3', 'Float16x4']
     bool_types = ['Bool8', 'Bool8x2', 'Bool8x3', 'Bool8x4']
 
+    base_type_mapping = {
+        'Float32x2': 'Float32',
+        'Float32x3': 'Float32',
+        'Float32x4': 'Float32',
+        'Float16x2': 'Float16',
+        'Float16x3': 'Float16',
+        'Float16x4': 'Float16',
+        'Int32x2': 'Int32',
+        'Int32x3': 'Int32',
+        'Int32x4': 'Int32',
+        'Int16x2': 'Int16',
+        'Int16x3': 'Int16',
+        'Int16x4': 'Int16',
+        'UInt32x2': 'UInt32',
+        'UInt32x3': 'UInt32',
+        'UInt32x4': 'UInt32',
+        'UInt16x2': 'UInt16',
+        'UInt16x3': 'UInt16',
+        'UInt16x4': 'UInt16',
+        'Bool8x2': 'Bool8',
+        'Bool8x3': 'Bool8',
+        'Bool8x4': 'Bool8'
+    }
+
     vector_sizes = {
         'Float32': 1, 'Float32x2': 2, 'Float32x3': 3, 'Float32x4': 4,
         'Float16': 1, 'Float16x2': 2, 'Float16x3': 3, 'Float16x4': 4,
@@ -1964,7 +2051,7 @@ def generate_types():
         fun = Function(
             decl_name = function_name,
             api_name = intrinsic,
-            return_type = type,
+            return_type = base_type_mapping[type],
             parameters = [
                 Variable(decl_name = x_name, api_name = "x", type_name=type),
                 Variable(decl_name = y_name, api_name = "y", type_name=type)
@@ -2075,9 +2162,9 @@ def generate_types():
     # Length & Normalize
     ops = ['length', 'normalize']
     spirv_ops = ['Length', 'Normalize']
-    for op, spirv_op in zip(ops, spirv_ops):
+    for intrinsic, spirv_op in zip(ops, spirv_ops):
         for type in float_vec_types:
-            function_name = f'{op}_{type}'
+            function_name = f'{intrinsic}_{type}'
             argument_name = f'{function_name}_arg'
 
             fun = Function(
@@ -3418,6 +3505,7 @@ def generate_types():
         'Texture2DMSArray': 4
     }
 
+
     intrinsic = 'GetSize'
     for type in texture_types_no_ms:
         return_type = texture_size_types[type]
@@ -3427,7 +3515,7 @@ def generate_types():
         fun = Function( 
             decl_name = function_name,
             api_name = f'texture{intrinsic}',
-            return_type = type,
+            return_type = return_type,
             parameters = [
                 Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True)
             ]
@@ -3455,7 +3543,7 @@ def generate_types():
         fun = Function( 
             decl_name = function_name,
             api_name = f'texture{intrinsic}',
-            return_type = type,
+            return_type = return_type,
             parameters = [
                 Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True),
                 Variable(decl_name = mip_argument_name, api_name = "mip", type_name='UInt32')

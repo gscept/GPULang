@@ -1128,62 +1128,62 @@ Variable cross_Float16x3_v1;
 Function cross_Float16x3;
 inline constexpr std::array cross_Float16x3_args = { &cross_Float16x3_v0, &cross_Float16x3_v1 };
 
-/// cross with Float32x2
+/// length with Float32x2
 Variable length_Float32x2_arg;
 Function length_Float32x2;
 inline constexpr std::array length_Float32x2_args = { &length_Float32x2_arg };
 
-/// cross with Float32x3
+/// length with Float32x3
 Variable length_Float32x3_arg;
 Function length_Float32x3;
 inline constexpr std::array length_Float32x3_args = { &length_Float32x3_arg };
 
-/// cross with Float32x4
+/// length with Float32x4
 Variable length_Float32x4_arg;
 Function length_Float32x4;
 inline constexpr std::array length_Float32x4_args = { &length_Float32x4_arg };
 
-/// cross with Float16x2
+/// length with Float16x2
 Variable length_Float16x2_arg;
 Function length_Float16x2;
 inline constexpr std::array length_Float16x2_args = { &length_Float16x2_arg };
 
-/// cross with Float16x3
+/// length with Float16x3
 Variable length_Float16x3_arg;
 Function length_Float16x3;
 inline constexpr std::array length_Float16x3_args = { &length_Float16x3_arg };
 
-/// cross with Float16x4
+/// length with Float16x4
 Variable length_Float16x4_arg;
 Function length_Float16x4;
 inline constexpr std::array length_Float16x4_args = { &length_Float16x4_arg };
 
-/// cross with Float32x2
+/// normalize with Float32x2
 Variable normalize_Float32x2_arg;
 Function normalize_Float32x2;
 inline constexpr std::array normalize_Float32x2_args = { &normalize_Float32x2_arg };
 
-/// cross with Float32x3
+/// normalize with Float32x3
 Variable normalize_Float32x3_arg;
 Function normalize_Float32x3;
 inline constexpr std::array normalize_Float32x3_args = { &normalize_Float32x3_arg };
 
-/// cross with Float32x4
+/// normalize with Float32x4
 Variable normalize_Float32x4_arg;
 Function normalize_Float32x4;
 inline constexpr std::array normalize_Float32x4_args = { &normalize_Float32x4_arg };
 
-/// cross with Float16x2
+/// normalize with Float16x2
 Variable normalize_Float16x2_arg;
 Function normalize_Float16x2;
 inline constexpr std::array normalize_Float16x2_args = { &normalize_Float16x2_arg };
 
-/// cross with Float16x3
+/// normalize with Float16x3
 Variable normalize_Float16x3_arg;
 Function normalize_Float16x3;
 inline constexpr std::array normalize_Float16x3_args = { &normalize_Float16x3_arg };
 
-/// cross with Float16x4
+/// normalize with Float16x4
 Variable normalize_Float16x4_arg;
 Function normalize_Float16x4;
 inline constexpr std::array normalize_Float16x4_args = { &normalize_Float16x4_arg };
@@ -9154,11 +9154,11 @@ void SetupIntrinsics()
     dot_Float32x2_y.name = "y"_c;
     dot_Float32x2_y.type = Type::FullType{ Float32x2Type.name };
     dot_Float32x2.name = "dot"_c;
-    dot_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    dot_Float32x2.returnType = Type::FullType { Float32Type.name };
     dot_Float32x2.parameters = dot_Float32x2_args;
     Symbol::Resolved(&dot_Float32x2_x)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&dot_Float32x2_y)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&dot_Float32x2)->returnTypeSymbol = &Float32x2Type;
+    Symbol::Resolved(&dot_Float32x2)->returnTypeSymbol = &Float32Type;
 
     /// dot with Float32x3, Float32x3
     dot_Float32x3_x.name = "x"_c;
@@ -9166,11 +9166,11 @@ void SetupIntrinsics()
     dot_Float32x3_y.name = "y"_c;
     dot_Float32x3_y.type = Type::FullType{ Float32x3Type.name };
     dot_Float32x3.name = "dot"_c;
-    dot_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    dot_Float32x3.returnType = Type::FullType { Float32Type.name };
     dot_Float32x3.parameters = dot_Float32x3_args;
     Symbol::Resolved(&dot_Float32x3_x)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&dot_Float32x3_y)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&dot_Float32x3)->returnTypeSymbol = &Float32x3Type;
+    Symbol::Resolved(&dot_Float32x3)->returnTypeSymbol = &Float32Type;
 
     /// dot with Float32x4, Float32x4
     dot_Float32x4_x.name = "x"_c;
@@ -9178,11 +9178,11 @@ void SetupIntrinsics()
     dot_Float32x4_y.name = "y"_c;
     dot_Float32x4_y.type = Type::FullType{ Float32x4Type.name };
     dot_Float32x4.name = "dot"_c;
-    dot_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    dot_Float32x4.returnType = Type::FullType { Float32Type.name };
     dot_Float32x4.parameters = dot_Float32x4_args;
     Symbol::Resolved(&dot_Float32x4_x)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&dot_Float32x4_y)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&dot_Float32x4)->returnTypeSymbol = &Float32x4Type;
+    Symbol::Resolved(&dot_Float32x4)->returnTypeSymbol = &Float32Type;
 
     /// dot with Float16x2, Float16x2
     dot_Float16x2_x.name = "x"_c;
@@ -9190,11 +9190,11 @@ void SetupIntrinsics()
     dot_Float16x2_y.name = "y"_c;
     dot_Float16x2_y.type = Type::FullType{ Float16x2Type.name };
     dot_Float16x2.name = "dot"_c;
-    dot_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    dot_Float16x2.returnType = Type::FullType { Float16Type.name };
     dot_Float16x2.parameters = dot_Float16x2_args;
     Symbol::Resolved(&dot_Float16x2_x)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&dot_Float16x2_y)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&dot_Float16x2)->returnTypeSymbol = &Float16x2Type;
+    Symbol::Resolved(&dot_Float16x2)->returnTypeSymbol = &Float16Type;
 
     /// dot with Float16x3, Float16x3
     dot_Float16x3_x.name = "x"_c;
@@ -9202,11 +9202,11 @@ void SetupIntrinsics()
     dot_Float16x3_y.name = "y"_c;
     dot_Float16x3_y.type = Type::FullType{ Float16x3Type.name };
     dot_Float16x3.name = "dot"_c;
-    dot_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    dot_Float16x3.returnType = Type::FullType { Float16Type.name };
     dot_Float16x3.parameters = dot_Float16x3_args;
     Symbol::Resolved(&dot_Float16x3_x)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&dot_Float16x3_y)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&dot_Float16x3)->returnTypeSymbol = &Float16x3Type;
+    Symbol::Resolved(&dot_Float16x3)->returnTypeSymbol = &Float16Type;
 
     /// dot with Float16x4, Float16x4
     dot_Float16x4_x.name = "x"_c;
@@ -9214,11 +9214,11 @@ void SetupIntrinsics()
     dot_Float16x4_y.name = "y"_c;
     dot_Float16x4_y.type = Type::FullType{ Float16x4Type.name };
     dot_Float16x4.name = "dot"_c;
-    dot_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    dot_Float16x4.returnType = Type::FullType { Float16Type.name };
     dot_Float16x4.parameters = dot_Float16x4_args;
     Symbol::Resolved(&dot_Float16x4_x)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&dot_Float16x4_y)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&dot_Float16x4)->returnTypeSymbol = &Float16x4Type;
+    Symbol::Resolved(&dot_Float16x4)->returnTypeSymbol = &Float16Type;
 
     /// reflect with Float32x2, Float32x2
     reflect_Float32x2_incident.name = "incident"_c;
@@ -9406,109 +9406,109 @@ void SetupIntrinsics()
     Symbol::Resolved(&cross_Float16x3_v1)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&cross_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
-    /// cross with Float32x2
+    /// length with Float32x2
     length_Float32x2_arg.name = "val"_c;
     length_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
-    length_Float32x2.name = "cross"_c;
+    length_Float32x2.name = "length"_c;
     length_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     length_Float32x2.parameters = length_Float32x2_args;
     Symbol::Resolved(&length_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&length_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
-    /// cross with Float32x3
+    /// length with Float32x3
     length_Float32x3_arg.name = "val"_c;
     length_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
-    length_Float32x3.name = "cross"_c;
+    length_Float32x3.name = "length"_c;
     length_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     length_Float32x3.parameters = length_Float32x3_args;
     Symbol::Resolved(&length_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&length_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
-    /// cross with Float32x4
+    /// length with Float32x4
     length_Float32x4_arg.name = "val"_c;
     length_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
-    length_Float32x4.name = "cross"_c;
+    length_Float32x4.name = "length"_c;
     length_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     length_Float32x4.parameters = length_Float32x4_args;
     Symbol::Resolved(&length_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&length_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
-    /// cross with Float16x2
+    /// length with Float16x2
     length_Float16x2_arg.name = "val"_c;
     length_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
-    length_Float16x2.name = "cross"_c;
+    length_Float16x2.name = "length"_c;
     length_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     length_Float16x2.parameters = length_Float16x2_args;
     Symbol::Resolved(&length_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&length_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
-    /// cross with Float16x3
+    /// length with Float16x3
     length_Float16x3_arg.name = "val"_c;
     length_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
-    length_Float16x3.name = "cross"_c;
+    length_Float16x3.name = "length"_c;
     length_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     length_Float16x3.parameters = length_Float16x3_args;
     Symbol::Resolved(&length_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&length_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
-    /// cross with Float16x4
+    /// length with Float16x4
     length_Float16x4_arg.name = "val"_c;
     length_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
-    length_Float16x4.name = "cross"_c;
+    length_Float16x4.name = "length"_c;
     length_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     length_Float16x4.parameters = length_Float16x4_args;
     Symbol::Resolved(&length_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&length_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
-    /// cross with Float32x2
+    /// normalize with Float32x2
     normalize_Float32x2_arg.name = "val"_c;
     normalize_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
-    normalize_Float32x2.name = "cross"_c;
+    normalize_Float32x2.name = "normalize"_c;
     normalize_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     normalize_Float32x2.parameters = normalize_Float32x2_args;
     Symbol::Resolved(&normalize_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&normalize_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
-    /// cross with Float32x3
+    /// normalize with Float32x3
     normalize_Float32x3_arg.name = "val"_c;
     normalize_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
-    normalize_Float32x3.name = "cross"_c;
+    normalize_Float32x3.name = "normalize"_c;
     normalize_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     normalize_Float32x3.parameters = normalize_Float32x3_args;
     Symbol::Resolved(&normalize_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&normalize_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
-    /// cross with Float32x4
+    /// normalize with Float32x4
     normalize_Float32x4_arg.name = "val"_c;
     normalize_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
-    normalize_Float32x4.name = "cross"_c;
+    normalize_Float32x4.name = "normalize"_c;
     normalize_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     normalize_Float32x4.parameters = normalize_Float32x4_args;
     Symbol::Resolved(&normalize_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&normalize_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
-    /// cross with Float16x2
+    /// normalize with Float16x2
     normalize_Float16x2_arg.name = "val"_c;
     normalize_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
-    normalize_Float16x2.name = "cross"_c;
+    normalize_Float16x2.name = "normalize"_c;
     normalize_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     normalize_Float16x2.parameters = normalize_Float16x2_args;
     Symbol::Resolved(&normalize_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&normalize_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
-    /// cross with Float16x3
+    /// normalize with Float16x3
     normalize_Float16x3_arg.name = "val"_c;
     normalize_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
-    normalize_Float16x3.name = "cross"_c;
+    normalize_Float16x3.name = "normalize"_c;
     normalize_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     normalize_Float16x3.parameters = normalize_Float16x3_args;
     Symbol::Resolved(&normalize_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&normalize_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
-    /// cross with Float16x4
+    /// normalize with Float16x4
     normalize_Float16x4_arg.name = "val"_c;
     normalize_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
-    normalize_Float16x4.name = "cross"_c;
+    normalize_Float16x4.name = "normalize"_c;
     normalize_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     normalize_Float16x4.parameters = normalize_Float16x4_args;
     Symbol::Resolved(&normalize_Float16x4_arg)->typeSymbol = &Float16x4Type;
@@ -15661,77 +15661,77 @@ void SetupIntrinsics()
     TextureGetSize_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureGetSize_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSize_Texture1D.name = "textureGetSize"_c;
-    TextureGetSize_Texture1D.returnType = Type::FullType { Texture1DType.name };
+    TextureGetSize_Texture1D.returnType = Type::FullType { UInt32Type.name };
     TextureGetSize_Texture1D.parameters = TextureGetSize_Texture1D_args;
     Symbol::Resolved(&TextureGetSize_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureGetSize_Texture1D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_Texture1D)->returnTypeSymbol = &Texture1DType;
+    Symbol::Resolved(&TextureGetSize_Texture1D)->returnTypeSymbol = &UInt32Type;
 
     /// textureGetSize with Texture2D
     TextureGetSize_Texture2D_texture.name = "texture"_c;
     TextureGetSize_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureGetSize_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSize_Texture2D.name = "textureGetSize"_c;
-    TextureGetSize_Texture2D.returnType = Type::FullType { Texture2DType.name };
+    TextureGetSize_Texture2D.returnType = Type::FullType { UInt32x2Type.name };
     TextureGetSize_Texture2D.parameters = TextureGetSize_Texture2D_args;
     Symbol::Resolved(&TextureGetSize_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureGetSize_Texture2D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_Texture2D)->returnTypeSymbol = &Texture2DType;
+    Symbol::Resolved(&TextureGetSize_Texture2D)->returnTypeSymbol = &UInt32x2Type;
 
     /// textureGetSize with Texture3D
     TextureGetSize_Texture3D_texture.name = "texture"_c;
     TextureGetSize_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureGetSize_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSize_Texture3D.name = "textureGetSize"_c;
-    TextureGetSize_Texture3D.returnType = Type::FullType { Texture3DType.name };
+    TextureGetSize_Texture3D.returnType = Type::FullType { UInt32x3Type.name };
     TextureGetSize_Texture3D.parameters = TextureGetSize_Texture3D_args;
     Symbol::Resolved(&TextureGetSize_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureGetSize_Texture3D_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_Texture3D)->returnTypeSymbol = &Texture3DType;
+    Symbol::Resolved(&TextureGetSize_Texture3D)->returnTypeSymbol = &UInt32x3Type;
 
     /// textureGetSize with TextureCube
     TextureGetSize_TextureCube_texture.name = "texture"_c;
     TextureGetSize_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
     TextureGetSize_TextureCube_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSize_TextureCube.name = "textureGetSize"_c;
-    TextureGetSize_TextureCube.returnType = Type::FullType { TextureCubeType.name };
+    TextureGetSize_TextureCube.returnType = Type::FullType { UInt32x3Type.name };
     TextureGetSize_TextureCube.parameters = TextureGetSize_TextureCube_args;
     Symbol::Resolved(&TextureGetSize_TextureCube_texture)->typeSymbol = &TextureCubeType;
     Symbol::Resolved(&TextureGetSize_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_TextureCube)->returnTypeSymbol = &TextureCubeType;
+    Symbol::Resolved(&TextureGetSize_TextureCube)->returnTypeSymbol = &UInt32x3Type;
 
     /// textureGetSize with Texture1DArray
     TextureGetSize_Texture1DArray_texture.name = "texture"_c;
     TextureGetSize_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
     TextureGetSize_Texture1DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSize_Texture1DArray.name = "textureGetSize"_c;
-    TextureGetSize_Texture1DArray.returnType = Type::FullType { Texture1DArrayType.name };
+    TextureGetSize_Texture1DArray.returnType = Type::FullType { UInt32x2Type.name };
     TextureGetSize_Texture1DArray.parameters = TextureGetSize_Texture1DArray_args;
     Symbol::Resolved(&TextureGetSize_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureGetSize_Texture1DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_Texture1DArray)->returnTypeSymbol = &Texture1DArrayType;
+    Symbol::Resolved(&TextureGetSize_Texture1DArray)->returnTypeSymbol = &UInt32x2Type;
 
     /// textureGetSize with Texture2DArray
     TextureGetSize_Texture2DArray_texture.name = "texture"_c;
     TextureGetSize_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
     TextureGetSize_Texture2DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSize_Texture2DArray.name = "textureGetSize"_c;
-    TextureGetSize_Texture2DArray.returnType = Type::FullType { Texture2DArrayType.name };
+    TextureGetSize_Texture2DArray.returnType = Type::FullType { UInt32x3Type.name };
     TextureGetSize_Texture2DArray.parameters = TextureGetSize_Texture2DArray_args;
     Symbol::Resolved(&TextureGetSize_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureGetSize_Texture2DArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_Texture2DArray)->returnTypeSymbol = &Texture2DArrayType;
+    Symbol::Resolved(&TextureGetSize_Texture2DArray)->returnTypeSymbol = &UInt32x3Type;
 
     /// textureGetSize with TextureCubeArray
     TextureGetSize_TextureCubeArray_texture.name = "texture"_c;
     TextureGetSize_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
     TextureGetSize_TextureCubeArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSize_TextureCubeArray.name = "textureGetSize"_c;
-    TextureGetSize_TextureCubeArray.returnType = Type::FullType { TextureCubeArrayType.name };
+    TextureGetSize_TextureCubeArray.returnType = Type::FullType { UInt32x4Type.name };
     TextureGetSize_TextureCubeArray.parameters = TextureGetSize_TextureCubeArray_args;
     Symbol::Resolved(&TextureGetSize_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureGetSize_TextureCubeArray_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureGetSize_TextureCubeArray)->returnTypeSymbol = &TextureCubeArrayType;
+    Symbol::Resolved(&TextureGetSize_TextureCubeArray)->returnTypeSymbol = &UInt32x4Type;
 
     /// textureGetSizeMip with Texture1D, UInt32
     TextureGetSizeMip_Texture1D_texture.name = "texture"_c;
@@ -15740,12 +15740,12 @@ void SetupIntrinsics()
     TextureGetSizeMip_Texture1D_mip.name = "mip"_c;
     TextureGetSizeMip_Texture1D_mip.type = Type::FullType{ UInt32Type.name };
     TextureGetSizeMip_Texture1D.name = "textureGetSizeMip"_c;
-    TextureGetSizeMip_Texture1D.returnType = Type::FullType { Texture1DType.name };
+    TextureGetSizeMip_Texture1D.returnType = Type::FullType { UInt32Type.name };
     TextureGetSizeMip_Texture1D.parameters = TextureGetSizeMip_Texture1D_args;
     Symbol::Resolved(&TextureGetSizeMip_Texture1D_texture)->typeSymbol = &Texture1DType;
     Symbol::Resolved(&TextureGetSizeMip_Texture1D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureGetSizeMip_Texture1D_mip)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1D)->returnTypeSymbol = &Texture1DType;
+    Symbol::Resolved(&TextureGetSizeMip_Texture1D)->returnTypeSymbol = &UInt32Type;
 
     /// textureGetSizeMip with Texture2D, UInt32
     TextureGetSizeMip_Texture2D_texture.name = "texture"_c;
@@ -15754,12 +15754,12 @@ void SetupIntrinsics()
     TextureGetSizeMip_Texture2D_mip.name = "mip"_c;
     TextureGetSizeMip_Texture2D_mip.type = Type::FullType{ UInt32Type.name };
     TextureGetSizeMip_Texture2D.name = "textureGetSizeMip"_c;
-    TextureGetSizeMip_Texture2D.returnType = Type::FullType { Texture2DType.name };
+    TextureGetSizeMip_Texture2D.returnType = Type::FullType { UInt32x2Type.name };
     TextureGetSizeMip_Texture2D.parameters = TextureGetSizeMip_Texture2D_args;
     Symbol::Resolved(&TextureGetSizeMip_Texture2D_texture)->typeSymbol = &Texture2DType;
     Symbol::Resolved(&TextureGetSizeMip_Texture2D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureGetSizeMip_Texture2D_mip)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2D)->returnTypeSymbol = &Texture2DType;
+    Symbol::Resolved(&TextureGetSizeMip_Texture2D)->returnTypeSymbol = &UInt32x2Type;
 
     /// textureGetSizeMip with Texture3D, UInt32
     TextureGetSizeMip_Texture3D_texture.name = "texture"_c;
@@ -15768,12 +15768,12 @@ void SetupIntrinsics()
     TextureGetSizeMip_Texture3D_mip.name = "mip"_c;
     TextureGetSizeMip_Texture3D_mip.type = Type::FullType{ UInt32Type.name };
     TextureGetSizeMip_Texture3D.name = "textureGetSizeMip"_c;
-    TextureGetSizeMip_Texture3D.returnType = Type::FullType { Texture3DType.name };
+    TextureGetSizeMip_Texture3D.returnType = Type::FullType { UInt32x3Type.name };
     TextureGetSizeMip_Texture3D.parameters = TextureGetSizeMip_Texture3D_args;
     Symbol::Resolved(&TextureGetSizeMip_Texture3D_texture)->typeSymbol = &Texture3DType;
     Symbol::Resolved(&TextureGetSizeMip_Texture3D_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureGetSizeMip_Texture3D_mip)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureGetSizeMip_Texture3D)->returnTypeSymbol = &Texture3DType;
+    Symbol::Resolved(&TextureGetSizeMip_Texture3D)->returnTypeSymbol = &UInt32x3Type;
 
     /// textureGetSizeMip with TextureCube, UInt32
     TextureGetSizeMip_TextureCube_texture.name = "texture"_c;
@@ -15782,12 +15782,12 @@ void SetupIntrinsics()
     TextureGetSizeMip_TextureCube_mip.name = "mip"_c;
     TextureGetSizeMip_TextureCube_mip.type = Type::FullType{ UInt32Type.name };
     TextureGetSizeMip_TextureCube.name = "textureGetSizeMip"_c;
-    TextureGetSizeMip_TextureCube.returnType = Type::FullType { TextureCubeType.name };
+    TextureGetSizeMip_TextureCube.returnType = Type::FullType { UInt32x3Type.name };
     TextureGetSizeMip_TextureCube.parameters = TextureGetSizeMip_TextureCube_args;
     Symbol::Resolved(&TextureGetSizeMip_TextureCube_texture)->typeSymbol = &TextureCubeType;
     Symbol::Resolved(&TextureGetSizeMip_TextureCube_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureGetSizeMip_TextureCube_mip)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCube)->returnTypeSymbol = &TextureCubeType;
+    Symbol::Resolved(&TextureGetSizeMip_TextureCube)->returnTypeSymbol = &UInt32x3Type;
 
     /// textureGetSizeMip with Texture1DArray, UInt32
     TextureGetSizeMip_Texture1DArray_texture.name = "texture"_c;
@@ -15796,12 +15796,12 @@ void SetupIntrinsics()
     TextureGetSizeMip_Texture1DArray_mip.name = "mip"_c;
     TextureGetSizeMip_Texture1DArray_mip.type = Type::FullType{ UInt32Type.name };
     TextureGetSizeMip_Texture1DArray.name = "textureGetSizeMip"_c;
-    TextureGetSizeMip_Texture1DArray.returnType = Type::FullType { Texture1DArrayType.name };
+    TextureGetSizeMip_Texture1DArray.returnType = Type::FullType { UInt32x2Type.name };
     TextureGetSizeMip_Texture1DArray.parameters = TextureGetSizeMip_Texture1DArray_args;
     Symbol::Resolved(&TextureGetSizeMip_Texture1DArray_texture)->typeSymbol = &Texture1DArrayType;
     Symbol::Resolved(&TextureGetSizeMip_Texture1DArray_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureGetSizeMip_Texture1DArray_mip)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureGetSizeMip_Texture1DArray)->returnTypeSymbol = &Texture1DArrayType;
+    Symbol::Resolved(&TextureGetSizeMip_Texture1DArray)->returnTypeSymbol = &UInt32x2Type;
 
     /// textureGetSizeMip with Texture2DArray, UInt32
     TextureGetSizeMip_Texture2DArray_texture.name = "texture"_c;
@@ -15810,12 +15810,12 @@ void SetupIntrinsics()
     TextureGetSizeMip_Texture2DArray_mip.name = "mip"_c;
     TextureGetSizeMip_Texture2DArray_mip.type = Type::FullType{ UInt32Type.name };
     TextureGetSizeMip_Texture2DArray.name = "textureGetSizeMip"_c;
-    TextureGetSizeMip_Texture2DArray.returnType = Type::FullType { Texture2DArrayType.name };
+    TextureGetSizeMip_Texture2DArray.returnType = Type::FullType { UInt32x3Type.name };
     TextureGetSizeMip_Texture2DArray.parameters = TextureGetSizeMip_Texture2DArray_args;
     Symbol::Resolved(&TextureGetSizeMip_Texture2DArray_texture)->typeSymbol = &Texture2DArrayType;
     Symbol::Resolved(&TextureGetSizeMip_Texture2DArray_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureGetSizeMip_Texture2DArray_mip)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureGetSizeMip_Texture2DArray)->returnTypeSymbol = &Texture2DArrayType;
+    Symbol::Resolved(&TextureGetSizeMip_Texture2DArray)->returnTypeSymbol = &UInt32x3Type;
 
     /// textureGetSizeMip with TextureCubeArray, UInt32
     TextureGetSizeMip_TextureCubeArray_texture.name = "texture"_c;
@@ -15824,12 +15824,12 @@ void SetupIntrinsics()
     TextureGetSizeMip_TextureCubeArray_mip.name = "mip"_c;
     TextureGetSizeMip_TextureCubeArray_mip.type = Type::FullType{ UInt32Type.name };
     TextureGetSizeMip_TextureCubeArray.name = "textureGetSizeMip"_c;
-    TextureGetSizeMip_TextureCubeArray.returnType = Type::FullType { TextureCubeArrayType.name };
+    TextureGetSizeMip_TextureCubeArray.returnType = Type::FullType { UInt32x4Type.name };
     TextureGetSizeMip_TextureCubeArray.parameters = TextureGetSizeMip_TextureCubeArray_args;
     Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray_texture)->typeSymbol = &TextureCubeArrayType;
     Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray_texture)->storage = Storage::Uniform;
     Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray_mip)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray)->returnTypeSymbol = &TextureCubeArrayType;
+    Symbol::Resolved(&TextureGetSizeMip_TextureCubeArray)->returnTypeSymbol = &UInt32x4Type;
 
     /// textureGetMips with Texture1D
     TextureGetMips_Texture1D_texture.name = "texture"_c;

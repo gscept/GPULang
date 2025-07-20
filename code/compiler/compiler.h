@@ -455,7 +455,36 @@ Compiler::GetType(const Type::FullType& type) const
     else
         str = type.name;
     
-    return static_cast<Type*>(this->GetSymbol(str));
+    auto scopeIter = this->scopes.rbegin();
+    do
+    {
+        auto scope = scopeIter.get();
+        PinnedMap<FixedString, Symbol*>* map;
+        if (scope->type == Scope::ScopeType::Type)
+        {
+            Type* type = static_cast<Type*>(scope->owningSymbol);
+            map = &type->scope.symbolLookup;
+        }
+        else
+        {
+            map = &scope->symbolLookup;
+        }
+        auto it = map->Find(str);
+        if (it != map->end())
+        {
+            sym = it->second;
+            while (sym->name == str)
+            {
+                if (sym->symbolType == Symbol::SymbolType::TypeType || sym->symbolType == Symbol::SymbolType::StructureType || sym->symbolType == Symbol::SymbolType::EnumerationType)
+                    return static_cast<Type*>(sym);
+                it++;
+                sym = it->second;
+            }
+        }
+        scopeIter++;
+    }
+    while (scopeIter != this->scopes.rend());
+    return nullptr;
 }
 
 } // namespace GPULang
