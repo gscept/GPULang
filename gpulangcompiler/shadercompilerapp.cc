@@ -5,6 +5,7 @@
 
 #include "shadercompilerapp.h"
 #include "argh.h"
+#include "memory.h"
 #include <filesystem>
 
 
@@ -134,7 +135,7 @@ usage: gpulangc [-M] [--help] [-i <file>] [-I <path>]\n\
 }
 
 
-SystemSetup dummy;
+GPULang::SystemSetup dummy;
 
 //------------------------------------------------------------------------------
 /**

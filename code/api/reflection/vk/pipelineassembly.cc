@@ -168,14 +168,14 @@ SetupVulkan(const VkDevice device, const Deserialize::Program* prog, GPULang::De
             bit = bit << 1;
         }
 
-        VkDescriptorPoolSize& pool = poolSizes[var->bindingType];
-        pool.type = descriptorTypeTable[var->bindingType];
+        VkDescriptorPoolSize& pool = poolSizes[(uint32_t)var->bindingType];
+        pool.type = descriptorTypeTable[(uint32_t)var->bindingType];
         pool.descriptorCount += 1;
 
         VkDescriptorSetLayoutBinding& binding = ret.groupBindings[var->group][ret.groupBindingCounter[var->group]++];
         binding.binding = var->binding;
         binding.descriptorCount = std::max(1u, var->arraySizes[var->arraySizeCount - 1]);
-        binding.descriptorType = descriptorTypeTable[var->bindingType];
+        binding.descriptorType = descriptorTypeTable[(uint32_t)var->bindingType];
         
         binding.stageFlags = accessBits;
         binding.pImmutableSamplers = nullptr;
@@ -268,9 +268,9 @@ SetupVulkan(const VkDevice device, const Deserialize::Program* prog, GPULang::De
             .flags = 0x0,
             .depthClampEnable = prog->renderState->depthClampEnabled,
             .rasterizerDiscardEnable = prog->renderState->noPixels,
-            .polygonMode = polygonModeTable[prog->renderState->polygonMode],
-            .cullMode = cullModeTable[prog->renderState->cullMode],
-            .frontFace = frontFaceTable[prog->renderState->windingOrderMode],
+            .polygonMode = polygonModeTable[(uint32_t)prog->renderState->polygonMode],
+            .cullMode = cullModeTable[(uint32_t)prog->renderState->cullMode],
+            .frontFace = frontFaceTable[(uint32_t)prog->renderState->windingOrderMode],
             .depthBiasEnable = prog->renderState->depthBiasEnabled,
             .depthBiasConstantFactor = prog->renderState->depthBiasFactor,
             .depthBiasClamp = prog->renderState->depthBiasClamp,
@@ -311,25 +311,25 @@ SetupVulkan(const VkDevice device, const Deserialize::Program* prog, GPULang::De
             .flags = 0x0,
             .depthTestEnable = prog->renderState->depthTestEnabled,
             .depthWriteEnable = prog->renderState->depthWriteEnabled,
-            .depthCompareOp = compareTable[prog->renderState->depthCompare],
+            .depthCompareOp = compareTable[(uint32_t)prog->renderState->depthCompare],
             .depthBoundsTestEnable = prog->renderState->depthBoundsTestEnabled,
             .stencilTestEnable = prog->renderState->stencilEnabled,
             .front = 
             {
-                .failOp = stencilOpTable[prog->renderState->frontStencilState.fail],
-                .passOp = stencilOpTable[prog->renderState->frontStencilState.pass],
-                .depthFailOp = stencilOpTable[prog->renderState->frontStencilState.depthFail],
-                .compareOp = compareTable[prog->renderState->frontStencilState.compare],
+                .failOp = stencilOpTable[(uint32_t)prog->renderState->frontStencilState.fail],
+                .passOp = stencilOpTable[(uint32_t)prog->renderState->frontStencilState.pass],
+                .depthFailOp = stencilOpTable[(uint32_t)prog->renderState->frontStencilState.depthFail],
+                .compareOp = compareTable[(uint32_t)prog->renderState->frontStencilState.compare],
                 .compareMask = prog->renderState->frontStencilState.compareMask,
                 .writeMask = prog->renderState->frontStencilState.writeMask,
                 .reference = prog->renderState->frontStencilState.referenceMask
             },
             .back =
             {
-                .failOp = stencilOpTable[prog->renderState->backStencilState.fail],
-                .passOp = stencilOpTable[prog->renderState->backStencilState.pass],
-                .depthFailOp = stencilOpTable[prog->renderState->backStencilState.depthFail],
-                .compareOp = compareTable[prog->renderState->backStencilState.compare],
+                .failOp = stencilOpTable[(uint32_t)prog->renderState->backStencilState.fail],
+                .passOp = stencilOpTable[(uint32_t)prog->renderState->backStencilState.pass],
+                .depthFailOp = stencilOpTable[(uint32_t)prog->renderState->backStencilState.depthFail],
+                .compareOp = compareTable[(uint32_t)prog->renderState->backStencilState.compare],
                 .compareMask = prog->renderState->backStencilState.compareMask,
                 .writeMask = prog->renderState->backStencilState.writeMask,
                 .reference = prog->renderState->backStencilState.referenceMask
@@ -376,12 +376,12 @@ SetupVulkan(const VkDevice device, const Deserialize::Program* prog, GPULang::De
             ret.attachmentBlendInfo[i] =
             {
                 .blendEnable = prog->renderState->blendStates[i].blendEnabled,
-                .srcColorBlendFactor = blendFactorTable[prog->renderState->blendStates[i].sourceColorBlendFactor],
-                .dstColorBlendFactor = blendFactorTable[prog->renderState->blendStates[i].destinationColorBlendFactor],
-                .colorBlendOp = blendOpTable[prog->renderState->blendStates[i].colorBlendOp],
-                .srcAlphaBlendFactor = blendFactorTable[prog->renderState->blendStates[i].sourceAlphaBlendFactor],
-                .dstAlphaBlendFactor = blendFactorTable[prog->renderState->blendStates[i].destinationAlphaBlendFactor],
-                .alphaBlendOp = blendOpTable[prog->renderState->blendStates[i].alphaBlendOp],
+                .srcColorBlendFactor = blendFactorTable[(uint32_t)prog->renderState->blendStates[i].sourceColorBlendFactor],
+                .dstColorBlendFactor = blendFactorTable[(uint32_t)prog->renderState->blendStates[i].destinationColorBlendFactor],
+                .colorBlendOp = blendOpTable[(uint32_t)prog->renderState->blendStates[i].colorBlendOp],
+                .srcAlphaBlendFactor = blendFactorTable[(uint32_t)prog->renderState->blendStates[i].sourceAlphaBlendFactor],
+                .dstAlphaBlendFactor = blendFactorTable[(uint32_t)prog->renderState->blendStates[i].destinationAlphaBlendFactor],
+                .alphaBlendOp = blendOpTable[(uint32_t)prog->renderState->blendStates[i].alphaBlendOp],
                 .colorWriteMask = prog->renderState->blendStates[i].colorComponentMask
             };
         }
@@ -413,7 +413,7 @@ SetupVulkan(const VkDevice device, const Deserialize::Program* prog, GPULang::De
             .pNext = nullptr,
             .flags = 0x0,
             .logicOpEnable = prog->renderState->logicOpEnabled,
-            .logicOp = logicOpTable[prog->renderState->logicOp],
+            .logicOp = logicOpTable[(uint32_t)prog->renderState->logicOp],
             .attachmentCount = 8,
             .pAttachments = ret.attachmentBlendInfo,
             .blendConstants = { prog->renderState->blendConstants[0], prog->renderState->blendConstants[1], prog->renderState->blendConstants[2], prog->renderState->blendConstants[3] }
