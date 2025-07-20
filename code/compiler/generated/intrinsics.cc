@@ -23759,7 +23759,7 @@ struct StaticIntrinsicTimerStop
     StaticIntrinsicTimerStop()
     {
         StaticIntrinsicTimer.Stop();
-        StaticIntrinsicTimer.Print("Static Intrinsic Setup");
+        StaticIntrinsicTimer.Print("Static Intrinsic Alloc");
     }
 };
 StaticIntrinsicTimerStop StaticIntrinsicTimerStopInstance;

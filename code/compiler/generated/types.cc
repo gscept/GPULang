@@ -473,7 +473,8 @@ Float32::Float32()
         std::pair{ "operator[]", &Float32_operator_index_Int32 },
         std::pair{ "operator[]", &Float32_operator_index_UInt32 },
         std::pair{ "operator[]", &Float32_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32_operator_index_UInt16 }    };
+        std::pair{ "operator[]", &Float32_operator_index_UInt16 }
+    };
 }
 Float32 Float32Type;
 
@@ -1011,7 +1012,8 @@ UInt32::UInt32()
         std::pair{ "operator^", &UInt32_operator_xor_UInt32 },
         std::pair{ "operator^=", &UInt32_operator_xorasg_UInt32 },
         std::pair{ "operator|", &UInt32_operator_or_UInt32 },
-        std::pair{ "operator|=", &UInt32_operator_orasg_UInt32 }    };
+        std::pair{ "operator|=", &UInt32_operator_orasg_UInt32 }
+    };
 }
 UInt32 UInt32Type;
 
@@ -1549,7 +1551,8 @@ Int32::Int32()
         std::pair{ "operator^", &Int32_operator_xor_Int32 },
         std::pair{ "operator^=", &Int32_operator_xorasg_Int32 },
         std::pair{ "operator|", &Int32_operator_or_Int32 },
-        std::pair{ "operator|=", &Int32_operator_orasg_Int32 }    };
+        std::pair{ "operator|=", &Int32_operator_orasg_Int32 }
+    };
 }
 Int32 Int32Type;
 
@@ -1757,7 +1760,8 @@ Bool8::Bool8()
         std::pair{ "operator[]", &Bool8_operator_index_UInt32 },
         std::pair{ "operator[]", &Bool8_operator_index_Int16 },
         std::pair{ "operator[]", &Bool8_operator_index_UInt16 },
-        std::pair{ "operator||", &Bool8_operator_oror_Bool8 }    };
+        std::pair{ "operator||", &Bool8_operator_oror_Bool8 }
+    };
 }
 Bool8 Bool8Type;
 
@@ -2145,7 +2149,8 @@ Float16::Float16()
         std::pair{ "operator[]", &Float16_operator_index_Int32 },
         std::pair{ "operator[]", &Float16_operator_index_UInt32 },
         std::pair{ "operator[]", &Float16_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16_operator_index_UInt16 }    };
+        std::pair{ "operator[]", &Float16_operator_index_UInt16 }
+    };
 }
 Float16 Float16Type;
 
@@ -2683,7 +2688,8 @@ UInt16::UInt16()
         std::pair{ "operator^", &UInt16_operator_xor_UInt16 },
         std::pair{ "operator^=", &UInt16_operator_xorasg_UInt16 },
         std::pair{ "operator|", &UInt16_operator_or_UInt16 },
-        std::pair{ "operator|=", &UInt16_operator_orasg_UInt16 }    };
+        std::pair{ "operator|=", &UInt16_operator_orasg_UInt16 }
+    };
 }
 UInt16 UInt16Type;
 
@@ -3221,7 +3227,8 @@ Int16::Int16()
         std::pair{ "operator^", &Int16_operator_xor_Int16 },
         std::pair{ "operator^=", &Int16_operator_xorasg_Int16 },
         std::pair{ "operator|", &Int16_operator_or_Int16 },
-        std::pair{ "operator|=", &Int16_operator_orasg_Int16 }    };
+        std::pair{ "operator|=", &Int16_operator_orasg_Int16 }
+    };
 }
 Int16 Int16Type;
 
@@ -3853,7 +3860,8 @@ Float32x2::Float32x2()
         std::pair{ "operator[]", &Float32x2_operator_index_Int32 },
         std::pair{ "operator[]", &Float32x2_operator_index_UInt32 },
         std::pair{ "operator[]", &Float32x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2_operator_index_UInt16 }    };
+        std::pair{ "operator[]", &Float32x2_operator_index_UInt16 }
+    };
 }
 Float32x2 Float32x2Type;
 
@@ -4590,7 +4598,8 @@ UInt32x2::UInt32x2()
         std::pair{ "operator^", &UInt32x2_operator_xor_UInt32x2 },
         std::pair{ "operator^=", &UInt32x2_operator_xorasg_UInt32x2 },
         std::pair{ "operator|", &UInt32x2_operator_or_UInt32x2 },
-        std::pair{ "operator|=", &UInt32x2_operator_orasg_UInt32x2 }    };
+        std::pair{ "operator|=", &UInt32x2_operator_orasg_UInt32x2 }
+    };
 }
 UInt32x2 UInt32x2Type;
 
@@ -5327,7 +5336,8 @@ Int32x2::Int32x2()
         std::pair{ "operator^", &Int32x2_operator_xor_Int32x2 },
         std::pair{ "operator^=", &Int32x2_operator_xorasg_Int32x2 },
         std::pair{ "operator|", &Int32x2_operator_or_Int32x2 },
-        std::pair{ "operator|=", &Int32x2_operator_orasg_Int32x2 }    };
+        std::pair{ "operator|=", &Int32x2_operator_orasg_Int32x2 }
+    };
 }
 Int32x2 Int32x2Type;
 
@@ -5599,7 +5609,8 @@ Bool8x2::Bool8x2()
         std::pair{ "operator[]", &Bool8x2_operator_index_UInt32 },
         std::pair{ "operator[]", &Bool8x2_operator_index_Int16 },
         std::pair{ "operator[]", &Bool8x2_operator_index_UInt16 },
-        std::pair{ "operator||", &Bool8x2_operator_oror_Bool8x2 }    };
+        std::pair{ "operator||", &Bool8x2_operator_oror_Bool8x2 }
+    };
 }
 Bool8x2 Bool8x2Type;
 
@@ -6231,7 +6242,8 @@ Float16x2::Float16x2()
         std::pair{ "operator[]", &Float16x2_operator_index_Int32 },
         std::pair{ "operator[]", &Float16x2_operator_index_UInt32 },
         std::pair{ "operator[]", &Float16x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x2_operator_index_UInt16 }    };
+        std::pair{ "operator[]", &Float16x2_operator_index_UInt16 }
+    };
 }
 Float16x2 Float16x2Type;
 
@@ -6968,7 +6980,8 @@ UInt16x2::UInt16x2()
         std::pair{ "operator^", &UInt16x2_operator_xor_UInt16x2 },
         std::pair{ "operator^=", &UInt16x2_operator_xorasg_UInt16x2 },
         std::pair{ "operator|", &UInt16x2_operator_or_UInt16x2 },
-        std::pair{ "operator|=", &UInt16x2_operator_orasg_UInt16x2 }    };
+        std::pair{ "operator|=", &UInt16x2_operator_orasg_UInt16x2 }
+    };
 }
 UInt16x2 UInt16x2Type;
 
@@ -7705,7 +7718,8 @@ Int16x2::Int16x2()
         std::pair{ "operator^", &Int16x2_operator_xor_Int16x2 },
         std::pair{ "operator^=", &Int16x2_operator_xorasg_Int16x2 },
         std::pair{ "operator|", &Int16x2_operator_or_Int16x2 },
-        std::pair{ "operator|=", &Int16x2_operator_orasg_Int16x2 }    };
+        std::pair{ "operator|=", &Int16x2_operator_orasg_Int16x2 }
+    };
 }
 Int16x2 Int16x2Type;
 
@@ -8377,7 +8391,8 @@ Float32x3::Float32x3()
         std::pair{ "operator[]", &Float32x3_operator_index_Int32 },
         std::pair{ "operator[]", &Float32x3_operator_index_UInt32 },
         std::pair{ "operator[]", &Float32x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3_operator_index_UInt16 }    };
+        std::pair{ "operator[]", &Float32x3_operator_index_UInt16 }
+    };
 }
 Float32x3 Float32x3Type;
 
@@ -9154,7 +9169,8 @@ UInt32x3::UInt32x3()
         std::pair{ "operator^", &UInt32x3_operator_xor_UInt32x3 },
         std::pair{ "operator^=", &UInt32x3_operator_xorasg_UInt32x3 },
         std::pair{ "operator|", &UInt32x3_operator_or_UInt32x3 },
-        std::pair{ "operator|=", &UInt32x3_operator_orasg_UInt32x3 }    };
+        std::pair{ "operator|=", &UInt32x3_operator_orasg_UInt32x3 }
+    };
 }
 UInt32x3 UInt32x3Type;
 
@@ -9931,7 +9947,8 @@ Int32x3::Int32x3()
         std::pair{ "operator^", &Int32x3_operator_xor_Int32x3 },
         std::pair{ "operator^=", &Int32x3_operator_xorasg_Int32x3 },
         std::pair{ "operator|", &Int32x3_operator_or_Int32x3 },
-        std::pair{ "operator|=", &Int32x3_operator_orasg_Int32x3 }    };
+        std::pair{ "operator|=", &Int32x3_operator_orasg_Int32x3 }
+    };
 }
 Int32x3 Int32x3Type;
 
@@ -10243,7 +10260,8 @@ Bool8x3::Bool8x3()
         std::pair{ "operator[]", &Bool8x3_operator_index_UInt32 },
         std::pair{ "operator[]", &Bool8x3_operator_index_Int16 },
         std::pair{ "operator[]", &Bool8x3_operator_index_UInt16 },
-        std::pair{ "operator||", &Bool8x3_operator_oror_Bool8x3 }    };
+        std::pair{ "operator||", &Bool8x3_operator_oror_Bool8x3 }
+    };
 }
 Bool8x3 Bool8x3Type;
 
@@ -10915,7 +10933,8 @@ Float16x3::Float16x3()
         std::pair{ "operator[]", &Float16x3_operator_index_Int32 },
         std::pair{ "operator[]", &Float16x3_operator_index_UInt32 },
         std::pair{ "operator[]", &Float16x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x3_operator_index_UInt16 }    };
+        std::pair{ "operator[]", &Float16x3_operator_index_UInt16 }
+    };
 }
 Float16x3 Float16x3Type;
 
@@ -11692,7 +11711,8 @@ UInt16x3::UInt16x3()
         std::pair{ "operator^", &UInt16x3_operator_xor_UInt16x3 },
         std::pair{ "operator^=", &UInt16x3_operator_xorasg_UInt16x3 },
         std::pair{ "operator|", &UInt16x3_operator_or_UInt16x3 },
-        std::pair{ "operator|=", &UInt16x3_operator_orasg_UInt16x3 }    };
+        std::pair{ "operator|=", &UInt16x3_operator_orasg_UInt16x3 }
+    };
 }
 UInt16x3 UInt16x3Type;
 
@@ -12469,7 +12489,8 @@ Int16x3::Int16x3()
         std::pair{ "operator^", &Int16x3_operator_xor_Int16x3 },
         std::pair{ "operator^=", &Int16x3_operator_xorasg_Int16x3 },
         std::pair{ "operator|", &Int16x3_operator_or_Int16x3 },
-        std::pair{ "operator|=", &Int16x3_operator_orasg_Int16x3 }    };
+        std::pair{ "operator|=", &Int16x3_operator_orasg_Int16x3 }
+    };
 }
 Int16x3 Int16x3Type;
 
@@ -13211,7 +13232,8 @@ Float32x4::Float32x4()
         std::pair{ "operator[]", &Float32x4_operator_index_Int32 },
         std::pair{ "operator[]", &Float32x4_operator_index_UInt32 },
         std::pair{ "operator[]", &Float32x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4_operator_index_UInt16 }    };
+        std::pair{ "operator[]", &Float32x4_operator_index_UInt16 }
+    };
 }
 Float32x4 Float32x4Type;
 
@@ -14058,7 +14080,8 @@ UInt32x4::UInt32x4()
         std::pair{ "operator^", &UInt32x4_operator_xor_UInt32x4 },
         std::pair{ "operator^=", &UInt32x4_operator_xorasg_UInt32x4 },
         std::pair{ "operator|", &UInt32x4_operator_or_UInt32x4 },
-        std::pair{ "operator|=", &UInt32x4_operator_orasg_UInt32x4 }    };
+        std::pair{ "operator|=", &UInt32x4_operator_orasg_UInt32x4 }
+    };
 }
 UInt32x4 UInt32x4Type;
 
@@ -14905,7 +14928,8 @@ Int32x4::Int32x4()
         std::pair{ "operator^", &Int32x4_operator_xor_Int32x4 },
         std::pair{ "operator^=", &Int32x4_operator_xorasg_Int32x4 },
         std::pair{ "operator|", &Int32x4_operator_or_Int32x4 },
-        std::pair{ "operator|=", &Int32x4_operator_orasg_Int32x4 }    };
+        std::pair{ "operator|=", &Int32x4_operator_orasg_Int32x4 }
+    };
 }
 Int32x4 Int32x4Type;
 
@@ -15287,7 +15311,8 @@ Bool8x4::Bool8x4()
         std::pair{ "operator[]", &Bool8x4_operator_index_UInt32 },
         std::pair{ "operator[]", &Bool8x4_operator_index_Int16 },
         std::pair{ "operator[]", &Bool8x4_operator_index_UInt16 },
-        std::pair{ "operator||", &Bool8x4_operator_oror_Bool8x4 }    };
+        std::pair{ "operator||", &Bool8x4_operator_oror_Bool8x4 }
+    };
 }
 Bool8x4 Bool8x4Type;
 
@@ -16029,7 +16054,8 @@ Float16x4::Float16x4()
         std::pair{ "operator[]", &Float16x4_operator_index_Int32 },
         std::pair{ "operator[]", &Float16x4_operator_index_UInt32 },
         std::pair{ "operator[]", &Float16x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x4_operator_index_UInt16 }    };
+        std::pair{ "operator[]", &Float16x4_operator_index_UInt16 }
+    };
 }
 Float16x4 Float16x4Type;
 
@@ -16876,7 +16902,8 @@ UInt16x4::UInt16x4()
         std::pair{ "operator^", &UInt16x4_operator_xor_UInt16x4 },
         std::pair{ "operator^=", &UInt16x4_operator_xorasg_UInt16x4 },
         std::pair{ "operator|", &UInt16x4_operator_or_UInt16x4 },
-        std::pair{ "operator|=", &UInt16x4_operator_orasg_UInt16x4 }    };
+        std::pair{ "operator|=", &UInt16x4_operator_orasg_UInt16x4 }
+    };
 }
 UInt16x4 UInt16x4Type;
 
@@ -17723,7 +17750,8 @@ Int16x4::Int16x4()
         std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
         std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
         std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }    };
+        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    };
 }
 Int16x4 Int16x4Type;
 
@@ -17989,7 +18017,8 @@ Float32x2x2::Float32x2x2()
         std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
         std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
         std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }    };
+        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    };
 }
 Float32x2x2 Float32x2x2Type;
 
@@ -18274,7 +18303,8 @@ Float32x2x3::Float32x2x3()
         std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
         std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
         std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }    };
+        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    };
 }
 Float32x2x3 Float32x2x3Type;
 
@@ -18578,7 +18608,8 @@ Float32x2x4::Float32x2x4()
         std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
         std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
         std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }    };
+        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    };
 }
 Float32x2x4 Float32x2x4Type;
 
@@ -18889,7 +18920,8 @@ Float32x3x2::Float32x3x2()
         std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
         std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
         std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }    };
+        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    };
 }
 Float32x3x2 Float32x3x2Type;
 
@@ -19223,7 +19255,8 @@ Float32x3x3::Float32x3x3()
         std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
         std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
         std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }    };
+        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    };
 }
 Float32x3x3 Float32x3x3Type;
 
@@ -19580,7 +19613,8 @@ Float32x3x4::Float32x3x4()
         std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
         std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
         std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }    };
+        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    };
 }
 Float32x3x4 Float32x3x4Type;
 
@@ -19936,7 +19970,8 @@ Float32x4x2::Float32x4x2()
         std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
         std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
         std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }    };
+        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    };
 }
 Float32x4x2 Float32x4x2Type;
 
@@ -20319,7 +20354,8 @@ Float32x4x3::Float32x4x3()
         std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
         std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
         std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }    };
+        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    };
 }
 Float32x4x3 Float32x4x3Type;
 
@@ -20729,7 +20765,8 @@ Float32x4x4::Float32x4x4()
         std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
         std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
         std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }    };
+        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    };
 }
 Float32x4x4 Float32x4x4Type;
 
@@ -21094,7 +21131,8 @@ Float16x2x2::Float16x2x2()
         std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
         std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
         std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }    };
+        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    };
 }
 Float16x2x2 Float16x2x2Type;
 
@@ -21478,7 +21516,8 @@ Float16x2x3::Float16x2x3()
         std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
         std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
         std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }    };
+        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    };
 }
 Float16x2x3 Float16x2x3Type;
 
@@ -21881,7 +21920,8 @@ Float16x2x4::Float16x2x4()
         std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
         std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
         std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }    };
+        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    };
 }
 Float16x2x4 Float16x2x4Type;
 
@@ -22291,7 +22331,8 @@ Float16x3x2::Float16x3x2()
         std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
         std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
         std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }    };
+        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    };
 }
 Float16x3x2 Float16x3x2Type;
 
@@ -22724,7 +22765,8 @@ Float16x3x3::Float16x3x3()
         std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
         std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
         std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }    };
+        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    };
 }
 Float16x3x3 Float16x3x3Type;
 
@@ -23180,7 +23222,8 @@ Float16x3x4::Float16x3x4()
         std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
         std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
         std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }    };
+        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    };
 }
 Float16x3x4 Float16x3x4Type;
 
@@ -23635,7 +23678,8 @@ Float16x4x2::Float16x4x2()
         std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
         std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
         std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }    };
+        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    };
 }
 Float16x4x2 Float16x4x2Type;
 
@@ -24117,7 +24161,8 @@ Float16x4x3::Float16x4x3()
         std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
         std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
         std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }    };
+        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    };
 }
 Float16x4x3 Float16x4x3Type;
 
@@ -24626,7 +24671,8 @@ Float16x4x4::Float16x4x4()
         std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
         std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
         std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }    };
+        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    };
 }
 Float16x4x4 Float16x4x4Type;
 

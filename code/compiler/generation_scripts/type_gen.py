@@ -847,7 +847,7 @@ def generate_types():
             list_string.sort(key=IntrinsicSortKey)
             definition_string += f'    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, {len(list_string)}> {{ \n'
             definition_string += ',\n'.join(f'        std::pair{{ \"{item.api_name}\", &{item.decl_name} }}' for item in list_string)
-            definition_string += f'    }};\n'
+            definition_string += f'\n    }};\n'
             definition_string += '}\n'
             definition_string += f'{type_name} {type_name}Type;\n\n'
 
@@ -1048,7 +1048,7 @@ def generate_types():
                 list_string.sort(key=IntrinsicSortKey)
                 definition_string += f'    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, {len(list_string)}> {{ \n'
                 definition_string += ',\n'.join(f'        std::pair{{ "{item.api_name}", &{item.decl_name} }}' for item in list_string)
-                definition_string += f'    }};\n'
+                definition_string += f'\n    }};\n'
                 definition_string += '}\n'
                 definition_string += f'{type_name} {type_name}Type;\n\n'
 
