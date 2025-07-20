@@ -455,25 +455,25 @@ Float32::Float32()
     Symbol::Resolved(&Float32_operator_neq_Float32)->returnTypeSymbol = &Float32Type;
 
     this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 19> { 
-        std::pair{ "operator!=", &Float32_operator_neq_Float32 },
-        std::pair{ "operator%", &Float32_operator_mod_Float32 },
-        std::pair{ "operator*", &Float32_operator_mul_Float32 },
-        std::pair{ "operator*=", &Float32_operator_mulasg_Float32 },
-        std::pair{ "operator+", &Float32_operator_add_Float32 },
-        std::pair{ "operator+=", &Float32_operator_addasg_Float32 },
-        std::pair{ "operator-", &Float32_operator_sub_Float32 },
-        std::pair{ "operator-=", &Float32_operator_subasg_Float32 },
-        std::pair{ "operator/", &Float32_operator_div_Float32 },
-        std::pair{ "operator/=", &Float32_operator_divasg_Float32 },
-        std::pair{ "operator<", &Float32_operator_lt_Float32 },
-        std::pair{ "operator<=", &Float32_operator_lte_Float32 },
-        std::pair{ "operator==", &Float32_operator_eq_Float32 },
-        std::pair{ "operator>", &Float32_operator_gt_Float32 },
-        std::pair{ "operator>=", &Float32_operator_gte_Float32 },
-        std::pair{ "operator[]", &Float32_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32_operator_index_UInt16 }
+        std::pair{ "operator!=(f32)"_c, &Float32_operator_neq_Float32 },
+        std::pair{ "operator%(f32)"_c, &Float32_operator_mod_Float32 },
+        std::pair{ "operator*(f32)"_c, &Float32_operator_mul_Float32 },
+        std::pair{ "operator*=(f32)"_c, &Float32_operator_mulasg_Float32 },
+        std::pair{ "operator+(f32)"_c, &Float32_operator_add_Float32 },
+        std::pair{ "operator+=(f32)"_c, &Float32_operator_addasg_Float32 },
+        std::pair{ "operator-(f32)"_c, &Float32_operator_sub_Float32 },
+        std::pair{ "operator-=(f32)"_c, &Float32_operator_subasg_Float32 },
+        std::pair{ "operator/(f32)"_c, &Float32_operator_div_Float32 },
+        std::pair{ "operator/=(f32)"_c, &Float32_operator_divasg_Float32 },
+        std::pair{ "operator<(f32)"_c, &Float32_operator_lt_Float32 },
+        std::pair{ "operator<=(f32)"_c, &Float32_operator_lte_Float32 },
+        std::pair{ "operator==(f32)"_c, &Float32_operator_eq_Float32 },
+        std::pair{ "operator>(f32)"_c, &Float32_operator_gt_Float32 },
+        std::pair{ "operator>=(f32)"_c, &Float32_operator_gte_Float32 },
+        std::pair{ "operator[](i16)"_c, &Float32_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &Float32_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &Float32_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &Float32_operator_index_UInt32 }
     };
 }
 Float32 Float32Type;
@@ -984,35 +984,35 @@ UInt32::UInt32()
     Symbol::Resolved(&UInt32_operator_rhsasg_UInt32)->returnTypeSymbol = &UInt32Type;
 
     this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 29> { 
-        std::pair{ "operator!=", &UInt32_operator_neq_UInt32 },
-        std::pair{ "operator%", &UInt32_operator_mod_UInt32 },
-        std::pair{ "operator&", &UInt32_operator_and_UInt32 },
-        std::pair{ "operator&=", &UInt32_operator_andasg_UInt32 },
-        std::pair{ "operator*", &UInt32_operator_mul_UInt32 },
-        std::pair{ "operator*=", &UInt32_operator_mulasg_UInt32 },
-        std::pair{ "operator+", &UInt32_operator_add_UInt32 },
-        std::pair{ "operator+=", &UInt32_operator_addasg_UInt32 },
-        std::pair{ "operator-", &UInt32_operator_sub_UInt32 },
-        std::pair{ "operator-=", &UInt32_operator_subasg_UInt32 },
-        std::pair{ "operator/", &UInt32_operator_div_UInt32 },
-        std::pair{ "operator/=", &UInt32_operator_divasg_UInt32 },
-        std::pair{ "operator<", &UInt32_operator_lt_UInt32 },
-        std::pair{ "operator<<", &UInt32_operator_lsh_UInt32 },
-        std::pair{ "operator<<=", &UInt32_operator_lshasg_UInt32 },
-        std::pair{ "operator<=", &UInt32_operator_lte_UInt32 },
-        std::pair{ "operator==", &UInt32_operator_eq_UInt32 },
-        std::pair{ "operator>", &UInt32_operator_gt_UInt32 },
-        std::pair{ "operator>=", &UInt32_operator_gte_UInt32 },
-        std::pair{ "operator>>", &UInt32_operator_rsh_UInt32 },
-        std::pair{ "operator>>=", &UInt32_operator_rhsasg_UInt32 },
-        std::pair{ "operator[]", &UInt32_operator_index_Int32 },
-        std::pair{ "operator[]", &UInt32_operator_index_UInt32 },
-        std::pair{ "operator[]", &UInt32_operator_index_Int16 },
-        std::pair{ "operator[]", &UInt32_operator_index_UInt16 },
-        std::pair{ "operator^", &UInt32_operator_xor_UInt32 },
-        std::pair{ "operator^=", &UInt32_operator_xorasg_UInt32 },
-        std::pair{ "operator|", &UInt32_operator_or_UInt32 },
-        std::pair{ "operator|=", &UInt32_operator_orasg_UInt32 }
+        std::pair{ "operator!=(u32)"_c, &UInt32_operator_neq_UInt32 },
+        std::pair{ "operator%(u32)"_c, &UInt32_operator_mod_UInt32 },
+        std::pair{ "operator&(u32)"_c, &UInt32_operator_and_UInt32 },
+        std::pair{ "operator&=(u32)"_c, &UInt32_operator_andasg_UInt32 },
+        std::pair{ "operator*(u32)"_c, &UInt32_operator_mul_UInt32 },
+        std::pair{ "operator*=(u32)"_c, &UInt32_operator_mulasg_UInt32 },
+        std::pair{ "operator+(u32)"_c, &UInt32_operator_add_UInt32 },
+        std::pair{ "operator+=(u32)"_c, &UInt32_operator_addasg_UInt32 },
+        std::pair{ "operator-(u32)"_c, &UInt32_operator_sub_UInt32 },
+        std::pair{ "operator-=(u32)"_c, &UInt32_operator_subasg_UInt32 },
+        std::pair{ "operator/(u32)"_c, &UInt32_operator_div_UInt32 },
+        std::pair{ "operator/=(u32)"_c, &UInt32_operator_divasg_UInt32 },
+        std::pair{ "operator<(u32)"_c, &UInt32_operator_lt_UInt32 },
+        std::pair{ "operator<<(u32)"_c, &UInt32_operator_lsh_UInt32 },
+        std::pair{ "operator<<=(u32)"_c, &UInt32_operator_lshasg_UInt32 },
+        std::pair{ "operator<=(u32)"_c, &UInt32_operator_lte_UInt32 },
+        std::pair{ "operator==(u32)"_c, &UInt32_operator_eq_UInt32 },
+        std::pair{ "operator>(u32)"_c, &UInt32_operator_gt_UInt32 },
+        std::pair{ "operator>=(u32)"_c, &UInt32_operator_gte_UInt32 },
+        std::pair{ "operator>>(u32)"_c, &UInt32_operator_rsh_UInt32 },
+        std::pair{ "operator>>=(u32)"_c, &UInt32_operator_rhsasg_UInt32 },
+        std::pair{ "operator[](i16)"_c, &UInt32_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &UInt32_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &UInt32_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &UInt32_operator_index_UInt32 },
+        std::pair{ "operator^(u32)"_c, &UInt32_operator_xor_UInt32 },
+        std::pair{ "operator^=(u32)"_c, &UInt32_operator_xorasg_UInt32 },
+        std::pair{ "operator|(u32)"_c, &UInt32_operator_or_UInt32 },
+        std::pair{ "operator|=(u32)"_c, &UInt32_operator_orasg_UInt32 }
     };
 }
 UInt32 UInt32Type;
@@ -1523,35 +1523,35 @@ Int32::Int32()
     Symbol::Resolved(&Int32_operator_rhsasg_Int32)->returnTypeSymbol = &Int32Type;
 
     this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 29> { 
-        std::pair{ "operator!=", &Int32_operator_neq_Int32 },
-        std::pair{ "operator%", &Int32_operator_mod_Int32 },
-        std::pair{ "operator&", &Int32_operator_and_Int32 },
-        std::pair{ "operator&=", &Int32_operator_andasg_Int32 },
-        std::pair{ "operator*", &Int32_operator_mul_Int32 },
-        std::pair{ "operator*=", &Int32_operator_mulasg_Int32 },
-        std::pair{ "operator+", &Int32_operator_add_Int32 },
-        std::pair{ "operator+=", &Int32_operator_addasg_Int32 },
-        std::pair{ "operator-", &Int32_operator_sub_Int32 },
-        std::pair{ "operator-=", &Int32_operator_subasg_Int32 },
-        std::pair{ "operator/", &Int32_operator_div_Int32 },
-        std::pair{ "operator/=", &Int32_operator_divasg_Int32 },
-        std::pair{ "operator<", &Int32_operator_lt_Int32 },
-        std::pair{ "operator<<", &Int32_operator_lsh_Int32 },
-        std::pair{ "operator<<=", &Int32_operator_lshasg_Int32 },
-        std::pair{ "operator<=", &Int32_operator_lte_Int32 },
-        std::pair{ "operator==", &Int32_operator_eq_Int32 },
-        std::pair{ "operator>", &Int32_operator_gt_Int32 },
-        std::pair{ "operator>=", &Int32_operator_gte_Int32 },
-        std::pair{ "operator>>", &Int32_operator_rsh_Int32 },
-        std::pair{ "operator>>=", &Int32_operator_rhsasg_Int32 },
-        std::pair{ "operator[]", &Int32_operator_index_Int32 },
-        std::pair{ "operator[]", &Int32_operator_index_UInt32 },
-        std::pair{ "operator[]", &Int32_operator_index_Int16 },
-        std::pair{ "operator[]", &Int32_operator_index_UInt16 },
-        std::pair{ "operator^", &Int32_operator_xor_Int32 },
-        std::pair{ "operator^=", &Int32_operator_xorasg_Int32 },
-        std::pair{ "operator|", &Int32_operator_or_Int32 },
-        std::pair{ "operator|=", &Int32_operator_orasg_Int32 }
+        std::pair{ "operator!=(i32)"_c, &Int32_operator_neq_Int32 },
+        std::pair{ "operator%(i32)"_c, &Int32_operator_mod_Int32 },
+        std::pair{ "operator&(i32)"_c, &Int32_operator_and_Int32 },
+        std::pair{ "operator&=(i32)"_c, &Int32_operator_andasg_Int32 },
+        std::pair{ "operator*(i32)"_c, &Int32_operator_mul_Int32 },
+        std::pair{ "operator*=(i32)"_c, &Int32_operator_mulasg_Int32 },
+        std::pair{ "operator+(i32)"_c, &Int32_operator_add_Int32 },
+        std::pair{ "operator+=(i32)"_c, &Int32_operator_addasg_Int32 },
+        std::pair{ "operator-(i32)"_c, &Int32_operator_sub_Int32 },
+        std::pair{ "operator-=(i32)"_c, &Int32_operator_subasg_Int32 },
+        std::pair{ "operator/(i32)"_c, &Int32_operator_div_Int32 },
+        std::pair{ "operator/=(i32)"_c, &Int32_operator_divasg_Int32 },
+        std::pair{ "operator<(i32)"_c, &Int32_operator_lt_Int32 },
+        std::pair{ "operator<<(i32)"_c, &Int32_operator_lsh_Int32 },
+        std::pair{ "operator<<=(i32)"_c, &Int32_operator_lshasg_Int32 },
+        std::pair{ "operator<=(i32)"_c, &Int32_operator_lte_Int32 },
+        std::pair{ "operator==(i32)"_c, &Int32_operator_eq_Int32 },
+        std::pair{ "operator>(i32)"_c, &Int32_operator_gt_Int32 },
+        std::pair{ "operator>=(i32)"_c, &Int32_operator_gte_Int32 },
+        std::pair{ "operator>>(i32)"_c, &Int32_operator_rsh_Int32 },
+        std::pair{ "operator>>=(i32)"_c, &Int32_operator_rhsasg_Int32 },
+        std::pair{ "operator[](i16)"_c, &Int32_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &Int32_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &Int32_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &Int32_operator_index_UInt32 },
+        std::pair{ "operator^(i32)"_c, &Int32_operator_xor_Int32 },
+        std::pair{ "operator^=(i32)"_c, &Int32_operator_xorasg_Int32 },
+        std::pair{ "operator|(i32)"_c, &Int32_operator_or_Int32 },
+        std::pair{ "operator|=(i32)"_c, &Int32_operator_orasg_Int32 }
     };
 }
 Int32 Int32Type;
@@ -1753,14 +1753,14 @@ Bool8::Bool8()
     Symbol::Resolved(&Bool8_operator_neq_Bool8)->returnTypeSymbol = &Bool8Type;
 
     this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 8> { 
-        std::pair{ "operator!=", &Bool8_operator_neq_Bool8 },
-        std::pair{ "operator&&", &Bool8_operator_andand_Bool8 },
-        std::pair{ "operator==", &Bool8_operator_eq_Bool8 },
-        std::pair{ "operator[]", &Bool8_operator_index_Int32 },
-        std::pair{ "operator[]", &Bool8_operator_index_UInt32 },
-        std::pair{ "operator[]", &Bool8_operator_index_Int16 },
-        std::pair{ "operator[]", &Bool8_operator_index_UInt16 },
-        std::pair{ "operator||", &Bool8_operator_oror_Bool8 }
+        std::pair{ "operator!=(b8)"_c, &Bool8_operator_neq_Bool8 },
+        std::pair{ "operator&&(b8)"_c, &Bool8_operator_andand_Bool8 },
+        std::pair{ "operator==(b8)"_c, &Bool8_operator_eq_Bool8 },
+        std::pair{ "operator[](i16)"_c, &Bool8_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &Bool8_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &Bool8_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &Bool8_operator_index_UInt32 },
+        std::pair{ "operator||(b8)"_c, &Bool8_operator_oror_Bool8 }
     };
 }
 Bool8 Bool8Type;
@@ -2131,25 +2131,25 @@ Float16::Float16()
     Symbol::Resolved(&Float16_operator_neq_Float16)->returnTypeSymbol = &Float16Type;
 
     this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 19> { 
-        std::pair{ "operator!=", &Float16_operator_neq_Float16 },
-        std::pair{ "operator%", &Float16_operator_mod_Float16 },
-        std::pair{ "operator*", &Float16_operator_mul_Float16 },
-        std::pair{ "operator*=", &Float16_operator_mulasg_Float16 },
-        std::pair{ "operator+", &Float16_operator_add_Float16 },
-        std::pair{ "operator+=", &Float16_operator_addasg_Float16 },
-        std::pair{ "operator-", &Float16_operator_sub_Float16 },
-        std::pair{ "operator-=", &Float16_operator_subasg_Float16 },
-        std::pair{ "operator/", &Float16_operator_div_Float16 },
-        std::pair{ "operator/=", &Float16_operator_divasg_Float16 },
-        std::pair{ "operator<", &Float16_operator_lt_Float16 },
-        std::pair{ "operator<=", &Float16_operator_lte_Float16 },
-        std::pair{ "operator==", &Float16_operator_eq_Float16 },
-        std::pair{ "operator>", &Float16_operator_gt_Float16 },
-        std::pair{ "operator>=", &Float16_operator_gte_Float16 },
-        std::pair{ "operator[]", &Float16_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16_operator_index_UInt16 }
+        std::pair{ "operator!=(f16)"_c, &Float16_operator_neq_Float16 },
+        std::pair{ "operator%(f16)"_c, &Float16_operator_mod_Float16 },
+        std::pair{ "operator*(f16)"_c, &Float16_operator_mul_Float16 },
+        std::pair{ "operator*=(f16)"_c, &Float16_operator_mulasg_Float16 },
+        std::pair{ "operator+(f16)"_c, &Float16_operator_add_Float16 },
+        std::pair{ "operator+=(f16)"_c, &Float16_operator_addasg_Float16 },
+        std::pair{ "operator-(f16)"_c, &Float16_operator_sub_Float16 },
+        std::pair{ "operator-=(f16)"_c, &Float16_operator_subasg_Float16 },
+        std::pair{ "operator/(f16)"_c, &Float16_operator_div_Float16 },
+        std::pair{ "operator/=(f16)"_c, &Float16_operator_divasg_Float16 },
+        std::pair{ "operator<(f16)"_c, &Float16_operator_lt_Float16 },
+        std::pair{ "operator<=(f16)"_c, &Float16_operator_lte_Float16 },
+        std::pair{ "operator==(f16)"_c, &Float16_operator_eq_Float16 },
+        std::pair{ "operator>(f16)"_c, &Float16_operator_gt_Float16 },
+        std::pair{ "operator>=(f16)"_c, &Float16_operator_gte_Float16 },
+        std::pair{ "operator[](i16)"_c, &Float16_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &Float16_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &Float16_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &Float16_operator_index_UInt32 }
     };
 }
 Float16 Float16Type;
@@ -2660,35 +2660,35 @@ UInt16::UInt16()
     Symbol::Resolved(&UInt16_operator_rhsasg_UInt16)->returnTypeSymbol = &UInt16Type;
 
     this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 29> { 
-        std::pair{ "operator!=", &UInt16_operator_neq_UInt16 },
-        std::pair{ "operator%", &UInt16_operator_mod_UInt16 },
-        std::pair{ "operator&", &UInt16_operator_and_UInt16 },
-        std::pair{ "operator&=", &UInt16_operator_andasg_UInt16 },
-        std::pair{ "operator*", &UInt16_operator_mul_UInt16 },
-        std::pair{ "operator*=", &UInt16_operator_mulasg_UInt16 },
-        std::pair{ "operator+", &UInt16_operator_add_UInt16 },
-        std::pair{ "operator+=", &UInt16_operator_addasg_UInt16 },
-        std::pair{ "operator-", &UInt16_operator_sub_UInt16 },
-        std::pair{ "operator-=", &UInt16_operator_subasg_UInt16 },
-        std::pair{ "operator/", &UInt16_operator_div_UInt16 },
-        std::pair{ "operator/=", &UInt16_operator_divasg_UInt16 },
-        std::pair{ "operator<", &UInt16_operator_lt_UInt16 },
-        std::pair{ "operator<<", &UInt16_operator_lsh_UInt16 },
-        std::pair{ "operator<<=", &UInt16_operator_lshasg_UInt16 },
-        std::pair{ "operator<=", &UInt16_operator_lte_UInt16 },
-        std::pair{ "operator==", &UInt16_operator_eq_UInt16 },
-        std::pair{ "operator>", &UInt16_operator_gt_UInt16 },
-        std::pair{ "operator>=", &UInt16_operator_gte_UInt16 },
-        std::pair{ "operator>>", &UInt16_operator_rsh_UInt16 },
-        std::pair{ "operator>>=", &UInt16_operator_rhsasg_UInt16 },
-        std::pair{ "operator[]", &UInt16_operator_index_Int32 },
-        std::pair{ "operator[]", &UInt16_operator_index_UInt32 },
-        std::pair{ "operator[]", &UInt16_operator_index_Int16 },
-        std::pair{ "operator[]", &UInt16_operator_index_UInt16 },
-        std::pair{ "operator^", &UInt16_operator_xor_UInt16 },
-        std::pair{ "operator^=", &UInt16_operator_xorasg_UInt16 },
-        std::pair{ "operator|", &UInt16_operator_or_UInt16 },
-        std::pair{ "operator|=", &UInt16_operator_orasg_UInt16 }
+        std::pair{ "operator!=(u16)"_c, &UInt16_operator_neq_UInt16 },
+        std::pair{ "operator%(u16)"_c, &UInt16_operator_mod_UInt16 },
+        std::pair{ "operator&(u16)"_c, &UInt16_operator_and_UInt16 },
+        std::pair{ "operator&=(u16)"_c, &UInt16_operator_andasg_UInt16 },
+        std::pair{ "operator*(u16)"_c, &UInt16_operator_mul_UInt16 },
+        std::pair{ "operator*=(u16)"_c, &UInt16_operator_mulasg_UInt16 },
+        std::pair{ "operator+(u16)"_c, &UInt16_operator_add_UInt16 },
+        std::pair{ "operator+=(u16)"_c, &UInt16_operator_addasg_UInt16 },
+        std::pair{ "operator-(u16)"_c, &UInt16_operator_sub_UInt16 },
+        std::pair{ "operator-=(u16)"_c, &UInt16_operator_subasg_UInt16 },
+        std::pair{ "operator/(u16)"_c, &UInt16_operator_div_UInt16 },
+        std::pair{ "operator/=(u16)"_c, &UInt16_operator_divasg_UInt16 },
+        std::pair{ "operator<(u16)"_c, &UInt16_operator_lt_UInt16 },
+        std::pair{ "operator<<(u16)"_c, &UInt16_operator_lsh_UInt16 },
+        std::pair{ "operator<<=(u16)"_c, &UInt16_operator_lshasg_UInt16 },
+        std::pair{ "operator<=(u16)"_c, &UInt16_operator_lte_UInt16 },
+        std::pair{ "operator==(u16)"_c, &UInt16_operator_eq_UInt16 },
+        std::pair{ "operator>(u16)"_c, &UInt16_operator_gt_UInt16 },
+        std::pair{ "operator>=(u16)"_c, &UInt16_operator_gte_UInt16 },
+        std::pair{ "operator>>(u16)"_c, &UInt16_operator_rsh_UInt16 },
+        std::pair{ "operator>>=(u16)"_c, &UInt16_operator_rhsasg_UInt16 },
+        std::pair{ "operator[](i16)"_c, &UInt16_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &UInt16_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &UInt16_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &UInt16_operator_index_UInt32 },
+        std::pair{ "operator^(u16)"_c, &UInt16_operator_xor_UInt16 },
+        std::pair{ "operator^=(u16)"_c, &UInt16_operator_xorasg_UInt16 },
+        std::pair{ "operator|(u16)"_c, &UInt16_operator_or_UInt16 },
+        std::pair{ "operator|=(u16)"_c, &UInt16_operator_orasg_UInt16 }
     };
 }
 UInt16 UInt16Type;
@@ -3199,35 +3199,35 @@ Int16::Int16()
     Symbol::Resolved(&Int16_operator_rhsasg_Int16)->returnTypeSymbol = &Int16Type;
 
     this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 29> { 
-        std::pair{ "operator!=", &Int16_operator_neq_Int16 },
-        std::pair{ "operator%", &Int16_operator_mod_Int16 },
-        std::pair{ "operator&", &Int16_operator_and_Int16 },
-        std::pair{ "operator&=", &Int16_operator_andasg_Int16 },
-        std::pair{ "operator*", &Int16_operator_mul_Int16 },
-        std::pair{ "operator*=", &Int16_operator_mulasg_Int16 },
-        std::pair{ "operator+", &Int16_operator_add_Int16 },
-        std::pair{ "operator+=", &Int16_operator_addasg_Int16 },
-        std::pair{ "operator-", &Int16_operator_sub_Int16 },
-        std::pair{ "operator-=", &Int16_operator_subasg_Int16 },
-        std::pair{ "operator/", &Int16_operator_div_Int16 },
-        std::pair{ "operator/=", &Int16_operator_divasg_Int16 },
-        std::pair{ "operator<", &Int16_operator_lt_Int16 },
-        std::pair{ "operator<<", &Int16_operator_lsh_Int16 },
-        std::pair{ "operator<<=", &Int16_operator_lshasg_Int16 },
-        std::pair{ "operator<=", &Int16_operator_lte_Int16 },
-        std::pair{ "operator==", &Int16_operator_eq_Int16 },
-        std::pair{ "operator>", &Int16_operator_gt_Int16 },
-        std::pair{ "operator>=", &Int16_operator_gte_Int16 },
-        std::pair{ "operator>>", &Int16_operator_rsh_Int16 },
-        std::pair{ "operator>>=", &Int16_operator_rhsasg_Int16 },
-        std::pair{ "operator[]", &Int16_operator_index_Int32 },
-        std::pair{ "operator[]", &Int16_operator_index_UInt32 },
-        std::pair{ "operator[]", &Int16_operator_index_Int16 },
-        std::pair{ "operator[]", &Int16_operator_index_UInt16 },
-        std::pair{ "operator^", &Int16_operator_xor_Int16 },
-        std::pair{ "operator^=", &Int16_operator_xorasg_Int16 },
-        std::pair{ "operator|", &Int16_operator_or_Int16 },
-        std::pair{ "operator|=", &Int16_operator_orasg_Int16 }
+        std::pair{ "operator!=(i16)"_c, &Int16_operator_neq_Int16 },
+        std::pair{ "operator%(i16)"_c, &Int16_operator_mod_Int16 },
+        std::pair{ "operator&(i16)"_c, &Int16_operator_and_Int16 },
+        std::pair{ "operator&=(i16)"_c, &Int16_operator_andasg_Int16 },
+        std::pair{ "operator*(i16)"_c, &Int16_operator_mul_Int16 },
+        std::pair{ "operator*=(i16)"_c, &Int16_operator_mulasg_Int16 },
+        std::pair{ "operator+(i16)"_c, &Int16_operator_add_Int16 },
+        std::pair{ "operator+=(i16)"_c, &Int16_operator_addasg_Int16 },
+        std::pair{ "operator-(i16)"_c, &Int16_operator_sub_Int16 },
+        std::pair{ "operator-=(i16)"_c, &Int16_operator_subasg_Int16 },
+        std::pair{ "operator/(i16)"_c, &Int16_operator_div_Int16 },
+        std::pair{ "operator/=(i16)"_c, &Int16_operator_divasg_Int16 },
+        std::pair{ "operator<(i16)"_c, &Int16_operator_lt_Int16 },
+        std::pair{ "operator<<(i16)"_c, &Int16_operator_lsh_Int16 },
+        std::pair{ "operator<<=(i16)"_c, &Int16_operator_lshasg_Int16 },
+        std::pair{ "operator<=(i16)"_c, &Int16_operator_lte_Int16 },
+        std::pair{ "operator==(i16)"_c, &Int16_operator_eq_Int16 },
+        std::pair{ "operator>(i16)"_c, &Int16_operator_gt_Int16 },
+        std::pair{ "operator>=(i16)"_c, &Int16_operator_gte_Int16 },
+        std::pair{ "operator>>(i16)"_c, &Int16_operator_rsh_Int16 },
+        std::pair{ "operator>>=(i16)"_c, &Int16_operator_rhsasg_Int16 },
+        std::pair{ "operator[](i16)"_c, &Int16_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &Int16_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &Int16_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &Int16_operator_index_UInt32 },
+        std::pair{ "operator^(i16)"_c, &Int16_operator_xor_Int16 },
+        std::pair{ "operator^=(i16)"_c, &Int16_operator_xorasg_Int16 },
+        std::pair{ "operator|(i16)"_c, &Int16_operator_or_Int16 },
+        std::pair{ "operator|=(i16)"_c, &Int16_operator_orasg_Int16 }
     };
 }
 Int16 Int16Type;
@@ -3424,19 +3424,19 @@ Function Float32x2_operator_scale_Int16;
 inline constexpr std::array Float32x2_operator_scale_Int16_args = { &Float32x2_operator_scale_Int16_arg0 };
 
 /// operator* with Float32x2x2
-Variable Float32x2_operator_mul_Float32x2x2_arg0;
-Function Float32x2_operator_mul_Float32x2x2;
-inline constexpr std::array Float32x2_operator_mul_Float32x2x2_args = { &Float32x2_operator_mul_Float32x2x2_arg0 };
+Variable Float32x2_operator_transform_Float32x2x2_arg0;
+Function Float32x2_operator_transform_Float32x2x2;
+inline constexpr std::array Float32x2_operator_transform_Float32x2x2_args = { &Float32x2_operator_transform_Float32x2x2_arg0 };
 
 /// operator* with Float32x2x3
-Variable Float32x2_operator_mul_Float32x2x3_arg0;
-Function Float32x2_operator_mul_Float32x2x3;
-inline constexpr std::array Float32x2_operator_mul_Float32x2x3_args = { &Float32x2_operator_mul_Float32x2x3_arg0 };
+Variable Float32x2_operator_transform_Float32x2x3_arg0;
+Function Float32x2_operator_transform_Float32x2x3;
+inline constexpr std::array Float32x2_operator_transform_Float32x2x3_args = { &Float32x2_operator_transform_Float32x2x3_arg0 };
 
 /// operator* with Float32x2x4
-Variable Float32x2_operator_mul_Float32x2x4_arg0;
-Function Float32x2_operator_mul_Float32x2x4;
-inline constexpr std::array Float32x2_operator_mul_Float32x2x4_args = { &Float32x2_operator_mul_Float32x2x4_arg0 };
+Variable Float32x2_operator_transform_Float32x2x4_arg0;
+Function Float32x2_operator_transform_Float32x2x4;
+inline constexpr std::array Float32x2_operator_transform_Float32x2x4_args = { &Float32x2_operator_transform_Float32x2x4_arg0 };
 
 Float32x2::Float32x2()
 {
@@ -3806,61 +3806,121 @@ Float32x2::Float32x2()
     Symbol::Resolved(&Float32x2_operator_scale_Int16)->returnTypeSymbol = &Float32x2Type;
 
     /// operator* with Float32x2x2
-    Float32x2_operator_mul_Float32x2x2_arg0.name = "_arg0"_c;
-    Float32x2_operator_mul_Float32x2x2_arg0.type = Type::FullType{ Float32x2x2Type.name };
-    Float32x2_operator_mul_Float32x2x2.name = "operator*"_c;
-    Float32x2_operator_mul_Float32x2x2.returnType = Type::FullType { Float32x2Type.name };
-    Float32x2_operator_mul_Float32x2x2.parameters = Float32x2_operator_mul_Float32x2x2_args;
-    Symbol::Resolved(&Float32x2_operator_mul_Float32x2x2_arg0)->typeSymbol = &Float32x2x2Type;
-    Symbol::Resolved(&Float32x2_operator_mul_Float32x2x2)->returnTypeSymbol = &Float32x2Type;
+    Float32x2_operator_transform_Float32x2x2_arg0.name = "_arg0"_c;
+    Float32x2_operator_transform_Float32x2x2_arg0.type = Type::FullType{ Float32x2x2Type.name };
+    Float32x2_operator_transform_Float32x2x2.name = "operator*"_c;
+    Float32x2_operator_transform_Float32x2x2.returnType = Type::FullType { Float32x2Type.name };
+    Float32x2_operator_transform_Float32x2x2.parameters = Float32x2_operator_transform_Float32x2x2_args;
+    Symbol::Resolved(&Float32x2_operator_transform_Float32x2x2_arg0)->typeSymbol = &Float32x2x2Type;
+    Symbol::Resolved(&Float32x2_operator_transform_Float32x2x2)->returnTypeSymbol = &Float32x2Type;
 
     /// operator* with Float32x2x3
-    Float32x2_operator_mul_Float32x2x3_arg0.name = "_arg0"_c;
-    Float32x2_operator_mul_Float32x2x3_arg0.type = Type::FullType{ Float32x2x3Type.name };
-    Float32x2_operator_mul_Float32x2x3.name = "operator*"_c;
-    Float32x2_operator_mul_Float32x2x3.returnType = Type::FullType { Float32x3Type.name };
-    Float32x2_operator_mul_Float32x2x3.parameters = Float32x2_operator_mul_Float32x2x3_args;
-    Symbol::Resolved(&Float32x2_operator_mul_Float32x2x3_arg0)->typeSymbol = &Float32x2x3Type;
-    Symbol::Resolved(&Float32x2_operator_mul_Float32x2x3)->returnTypeSymbol = &Float32x3Type;
+    Float32x2_operator_transform_Float32x2x3_arg0.name = "_arg0"_c;
+    Float32x2_operator_transform_Float32x2x3_arg0.type = Type::FullType{ Float32x2x3Type.name };
+    Float32x2_operator_transform_Float32x2x3.name = "operator*"_c;
+    Float32x2_operator_transform_Float32x2x3.returnType = Type::FullType { Float32x3Type.name };
+    Float32x2_operator_transform_Float32x2x3.parameters = Float32x2_operator_transform_Float32x2x3_args;
+    Symbol::Resolved(&Float32x2_operator_transform_Float32x2x3_arg0)->typeSymbol = &Float32x2x3Type;
+    Symbol::Resolved(&Float32x2_operator_transform_Float32x2x3)->returnTypeSymbol = &Float32x3Type;
 
     /// operator* with Float32x2x4
-    Float32x2_operator_mul_Float32x2x4_arg0.name = "_arg0"_c;
-    Float32x2_operator_mul_Float32x2x4_arg0.type = Type::FullType{ Float32x2x4Type.name };
-    Float32x2_operator_mul_Float32x2x4.name = "operator*"_c;
-    Float32x2_operator_mul_Float32x2x4.returnType = Type::FullType { Float32x4Type.name };
-    Float32x2_operator_mul_Float32x2x4.parameters = Float32x2_operator_mul_Float32x2x4_args;
-    Symbol::Resolved(&Float32x2_operator_mul_Float32x2x4_arg0)->typeSymbol = &Float32x2x4Type;
-    Symbol::Resolved(&Float32x2_operator_mul_Float32x2x4)->returnTypeSymbol = &Float32x4Type;
+    Float32x2_operator_transform_Float32x2x4_arg0.name = "_arg0"_c;
+    Float32x2_operator_transform_Float32x2x4_arg0.type = Type::FullType{ Float32x2x4Type.name };
+    Float32x2_operator_transform_Float32x2x4.name = "operator*"_c;
+    Float32x2_operator_transform_Float32x2x4.returnType = Type::FullType { Float32x4Type.name };
+    Float32x2_operator_transform_Float32x2x4.parameters = Float32x2_operator_transform_Float32x2x4_args;
+    Symbol::Resolved(&Float32x2_operator_transform_Float32x2x4_arg0)->typeSymbol = &Float32x2x4Type;
+    Symbol::Resolved(&Float32x2_operator_transform_Float32x2x4)->returnTypeSymbol = &Float32x4Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 28> { 
-        std::pair{ "operator!=", &Float32x2_operator_neq_Float32x2 },
-        std::pair{ "operator%", &Float32x2_operator_mod_Float32x2 },
-        std::pair{ "operator*", &Float32x2_operator_mul_Float32x2 },
-        std::pair{ "operator*", &Float32x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2_operator_scale_Float16 },
-        std::pair{ "operator*", &Float32x2_operator_scale_UInt32 },
-        std::pair{ "operator*", &Float32x2_operator_scale_UInt16 },
-        std::pair{ "operator*", &Float32x2_operator_scale_Int32 },
-        std::pair{ "operator*", &Float32x2_operator_scale_Int16 },
-        std::pair{ "operator*", &Float32x2_operator_mul_Float32x2x2 },
-        std::pair{ "operator*", &Float32x2_operator_mul_Float32x2x3 },
-        std::pair{ "operator*", &Float32x2_operator_mul_Float32x2x4 },
-        std::pair{ "operator*=", &Float32x2_operator_mulasg_Float32x2 },
-        std::pair{ "operator+", &Float32x2_operator_add_Float32x2 },
-        std::pair{ "operator+=", &Float32x2_operator_addasg_Float32x2 },
-        std::pair{ "operator-", &Float32x2_operator_sub_Float32x2 },
-        std::pair{ "operator-=", &Float32x2_operator_subasg_Float32x2 },
-        std::pair{ "operator/", &Float32x2_operator_div_Float32x2 },
-        std::pair{ "operator/=", &Float32x2_operator_divasg_Float32x2 },
-        std::pair{ "operator<", &Float32x2_operator_lt_Float32x2 },
-        std::pair{ "operator<=", &Float32x2_operator_lte_Float32x2 },
-        std::pair{ "operator==", &Float32x2_operator_eq_Float32x2 },
-        std::pair{ "operator>", &Float32x2_operator_gt_Float32x2 },
-        std::pair{ "operator>=", &Float32x2_operator_gte_Float32x2 },
-        std::pair{ "operator[]", &Float32x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2_operator_index_UInt16 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 88> { 
+        std::pair{ "g"_c, &Float32Type },
+        std::pair{ "gg"_c, &Float32x2Type },
+        std::pair{ "ggg"_c, &Float32x3Type },
+        std::pair{ "gggg"_c, &Float32x4Type },
+        std::pair{ "gggr"_c, &Float32x4Type },
+        std::pair{ "ggr"_c, &Float32x3Type },
+        std::pair{ "ggrg"_c, &Float32x4Type },
+        std::pair{ "ggrr"_c, &Float32x4Type },
+        std::pair{ "gr"_c, &Float32x2Type },
+        std::pair{ "grg"_c, &Float32x3Type },
+        std::pair{ "grgg"_c, &Float32x4Type },
+        std::pair{ "grgr"_c, &Float32x4Type },
+        std::pair{ "grr"_c, &Float32x3Type },
+        std::pair{ "grrg"_c, &Float32x4Type },
+        std::pair{ "grrr"_c, &Float32x4Type },
+        std::pair{ "operator!=(f32x2)"_c, &Float32x2_operator_neq_Float32x2 },
+        std::pair{ "operator%(f32x2)"_c, &Float32x2_operator_mod_Float32x2 },
+        std::pair{ "operator*(f16)"_c, &Float32x2_operator_scale_Float16 },
+        std::pair{ "operator*(f32)"_c, &Float32x2_operator_scale_Float32 },
+        std::pair{ "operator*(f32x2)"_c, &Float32x2_operator_mul_Float32x2 },
+        std::pair{ "operator*(f32x2x2)"_c, &Float32x2_operator_transform_Float32x2x2 },
+        std::pair{ "operator*(f32x2x3)"_c, &Float32x2_operator_transform_Float32x2x3 },
+        std::pair{ "operator*(f32x2x4)"_c, &Float32x2_operator_transform_Float32x2x4 },
+        std::pair{ "operator*(i16)"_c, &Float32x2_operator_scale_Int16 },
+        std::pair{ "operator*(i32)"_c, &Float32x2_operator_scale_Int32 },
+        std::pair{ "operator*(u16)"_c, &Float32x2_operator_scale_UInt16 },
+        std::pair{ "operator*(u32)"_c, &Float32x2_operator_scale_UInt32 },
+        std::pair{ "operator*=(f32x2)"_c, &Float32x2_operator_mulasg_Float32x2 },
+        std::pair{ "operator+(f32x2)"_c, &Float32x2_operator_add_Float32x2 },
+        std::pair{ "operator+=(f32x2)"_c, &Float32x2_operator_addasg_Float32x2 },
+        std::pair{ "operator-(f32x2)"_c, &Float32x2_operator_sub_Float32x2 },
+        std::pair{ "operator-=(f32x2)"_c, &Float32x2_operator_subasg_Float32x2 },
+        std::pair{ "operator/(f32x2)"_c, &Float32x2_operator_div_Float32x2 },
+        std::pair{ "operator/=(f32x2)"_c, &Float32x2_operator_divasg_Float32x2 },
+        std::pair{ "operator<(f32x2)"_c, &Float32x2_operator_lt_Float32x2 },
+        std::pair{ "operator<=(f32x2)"_c, &Float32x2_operator_lte_Float32x2 },
+        std::pair{ "operator==(f32x2)"_c, &Float32x2_operator_eq_Float32x2 },
+        std::pair{ "operator>(f32x2)"_c, &Float32x2_operator_gt_Float32x2 },
+        std::pair{ "operator>=(f32x2)"_c, &Float32x2_operator_gte_Float32x2 },
+        std::pair{ "operator[](i16)"_c, &Float32x2_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &Float32x2_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &Float32x2_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &Float32x2_operator_index_UInt32 },
+        std::pair{ "r"_c, &Float32Type },
+        std::pair{ "rg"_c, &Float32x2Type },
+        std::pair{ "rgg"_c, &Float32x3Type },
+        std::pair{ "rggg"_c, &Float32x4Type },
+        std::pair{ "rggr"_c, &Float32x4Type },
+        std::pair{ "rgr"_c, &Float32x3Type },
+        std::pair{ "rgrg"_c, &Float32x4Type },
+        std::pair{ "rgrr"_c, &Float32x4Type },
+        std::pair{ "rr"_c, &Float32x2Type },
+        std::pair{ "rrg"_c, &Float32x3Type },
+        std::pair{ "rrgg"_c, &Float32x4Type },
+        std::pair{ "rrgr"_c, &Float32x4Type },
+        std::pair{ "rrr"_c, &Float32x3Type },
+        std::pair{ "rrrg"_c, &Float32x4Type },
+        std::pair{ "rrrr"_c, &Float32x4Type },
+        std::pair{ "x"_c, &Float32Type },
+        std::pair{ "xx"_c, &Float32x2Type },
+        std::pair{ "xxx"_c, &Float32x3Type },
+        std::pair{ "xxxx"_c, &Float32x4Type },
+        std::pair{ "xxxy"_c, &Float32x4Type },
+        std::pair{ "xxy"_c, &Float32x3Type },
+        std::pair{ "xxyx"_c, &Float32x4Type },
+        std::pair{ "xxyy"_c, &Float32x4Type },
+        std::pair{ "xy"_c, &Float32x2Type },
+        std::pair{ "xyx"_c, &Float32x3Type },
+        std::pair{ "xyxx"_c, &Float32x4Type },
+        std::pair{ "xyxy"_c, &Float32x4Type },
+        std::pair{ "xyy"_c, &Float32x3Type },
+        std::pair{ "xyyx"_c, &Float32x4Type },
+        std::pair{ "xyyy"_c, &Float32x4Type },
+        std::pair{ "y"_c, &Float32Type },
+        std::pair{ "yx"_c, &Float32x2Type },
+        std::pair{ "yxx"_c, &Float32x3Type },
+        std::pair{ "yxxx"_c, &Float32x4Type },
+        std::pair{ "yxxy"_c, &Float32x4Type },
+        std::pair{ "yxy"_c, &Float32x3Type },
+        std::pair{ "yxyx"_c, &Float32x4Type },
+        std::pair{ "yxyy"_c, &Float32x4Type },
+        std::pair{ "yy"_c, &Float32x2Type },
+        std::pair{ "yyx"_c, &Float32x3Type },
+        std::pair{ "yyxx"_c, &Float32x4Type },
+        std::pair{ "yyxy"_c, &Float32x4Type },
+        std::pair{ "yyy"_c, &Float32x3Type },
+        std::pair{ "yyyx"_c, &Float32x4Type },
+        std::pair{ "yyyy"_c, &Float32x4Type }
     };
 }
 Float32x2 Float32x2Type;
@@ -4563,42 +4623,102 @@ UInt32x2::UInt32x2()
     Symbol::Resolved(&UInt32x2_operator_rhsasg_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x2_operator_rhsasg_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 35> { 
-        std::pair{ "operator!=", &UInt32x2_operator_neq_UInt32x2 },
-        std::pair{ "operator%", &UInt32x2_operator_mod_UInt32x2 },
-        std::pair{ "operator&", &UInt32x2_operator_and_UInt32x2 },
-        std::pair{ "operator&=", &UInt32x2_operator_andasg_UInt32x2 },
-        std::pair{ "operator*", &UInt32x2_operator_mul_UInt32x2 },
-        std::pair{ "operator*", &UInt32x2_operator_scale_Float32 },
-        std::pair{ "operator*", &UInt32x2_operator_scale_Float16 },
-        std::pair{ "operator*", &UInt32x2_operator_scale_UInt32 },
-        std::pair{ "operator*", &UInt32x2_operator_scale_UInt16 },
-        std::pair{ "operator*", &UInt32x2_operator_scale_Int32 },
-        std::pair{ "operator*", &UInt32x2_operator_scale_Int16 },
-        std::pair{ "operator*=", &UInt32x2_operator_mulasg_UInt32x2 },
-        std::pair{ "operator+", &UInt32x2_operator_add_UInt32x2 },
-        std::pair{ "operator+=", &UInt32x2_operator_addasg_UInt32x2 },
-        std::pair{ "operator-", &UInt32x2_operator_sub_UInt32x2 },
-        std::pair{ "operator-=", &UInt32x2_operator_subasg_UInt32x2 },
-        std::pair{ "operator/", &UInt32x2_operator_div_UInt32x2 },
-        std::pair{ "operator/=", &UInt32x2_operator_divasg_UInt32x2 },
-        std::pair{ "operator<", &UInt32x2_operator_lt_UInt32x2 },
-        std::pair{ "operator<<", &UInt32x2_operator_lsh_UInt32x2 },
-        std::pair{ "operator<<=", &UInt32x2_operator_lshasg_UInt32x2 },
-        std::pair{ "operator<=", &UInt32x2_operator_lte_UInt32x2 },
-        std::pair{ "operator==", &UInt32x2_operator_eq_UInt32x2 },
-        std::pair{ "operator>", &UInt32x2_operator_gt_UInt32x2 },
-        std::pair{ "operator>=", &UInt32x2_operator_gte_UInt32x2 },
-        std::pair{ "operator>>", &UInt32x2_operator_rsh_UInt32x2 },
-        std::pair{ "operator>>=", &UInt32x2_operator_rhsasg_UInt32x2 },
-        std::pair{ "operator[]", &UInt32x2_operator_index_Int32 },
-        std::pair{ "operator[]", &UInt32x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &UInt32x2_operator_index_Int16 },
-        std::pair{ "operator[]", &UInt32x2_operator_index_UInt16 },
-        std::pair{ "operator^", &UInt32x2_operator_xor_UInt32x2 },
-        std::pair{ "operator^=", &UInt32x2_operator_xorasg_UInt32x2 },
-        std::pair{ "operator|", &UInt32x2_operator_or_UInt32x2 },
-        std::pair{ "operator|=", &UInt32x2_operator_orasg_UInt32x2 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 95> { 
+        std::pair{ "g"_c, &UInt32Type },
+        std::pair{ "gg"_c, &UInt32x2Type },
+        std::pair{ "ggg"_c, &UInt32x3Type },
+        std::pair{ "gggg"_c, &UInt32x4Type },
+        std::pair{ "gggr"_c, &UInt32x4Type },
+        std::pair{ "ggr"_c, &UInt32x3Type },
+        std::pair{ "ggrg"_c, &UInt32x4Type },
+        std::pair{ "ggrr"_c, &UInt32x4Type },
+        std::pair{ "gr"_c, &UInt32x2Type },
+        std::pair{ "grg"_c, &UInt32x3Type },
+        std::pair{ "grgg"_c, &UInt32x4Type },
+        std::pair{ "grgr"_c, &UInt32x4Type },
+        std::pair{ "grr"_c, &UInt32x3Type },
+        std::pair{ "grrg"_c, &UInt32x4Type },
+        std::pair{ "grrr"_c, &UInt32x4Type },
+        std::pair{ "operator!=(u32x2)"_c, &UInt32x2_operator_neq_UInt32x2 },
+        std::pair{ "operator%(u32x2)"_c, &UInt32x2_operator_mod_UInt32x2 },
+        std::pair{ "operator&(u32x2)"_c, &UInt32x2_operator_and_UInt32x2 },
+        std::pair{ "operator&=(u32x2)"_c, &UInt32x2_operator_andasg_UInt32x2 },
+        std::pair{ "operator*(f16)"_c, &UInt32x2_operator_scale_Float16 },
+        std::pair{ "operator*(f32)"_c, &UInt32x2_operator_scale_Float32 },
+        std::pair{ "operator*(i16)"_c, &UInt32x2_operator_scale_Int16 },
+        std::pair{ "operator*(i32)"_c, &UInt32x2_operator_scale_Int32 },
+        std::pair{ "operator*(u16)"_c, &UInt32x2_operator_scale_UInt16 },
+        std::pair{ "operator*(u32)"_c, &UInt32x2_operator_scale_UInt32 },
+        std::pair{ "operator*(u32x2)"_c, &UInt32x2_operator_mul_UInt32x2 },
+        std::pair{ "operator*=(u32x2)"_c, &UInt32x2_operator_mulasg_UInt32x2 },
+        std::pair{ "operator+(u32x2)"_c, &UInt32x2_operator_add_UInt32x2 },
+        std::pair{ "operator+=(u32x2)"_c, &UInt32x2_operator_addasg_UInt32x2 },
+        std::pair{ "operator-(u32x2)"_c, &UInt32x2_operator_sub_UInt32x2 },
+        std::pair{ "operator-=(u32x2)"_c, &UInt32x2_operator_subasg_UInt32x2 },
+        std::pair{ "operator/(u32x2)"_c, &UInt32x2_operator_div_UInt32x2 },
+        std::pair{ "operator/=(u32x2)"_c, &UInt32x2_operator_divasg_UInt32x2 },
+        std::pair{ "operator<(u32x2)"_c, &UInt32x2_operator_lt_UInt32x2 },
+        std::pair{ "operator<<(u32x2)"_c, &UInt32x2_operator_lsh_UInt32x2 },
+        std::pair{ "operator<<=(u32x2)"_c, &UInt32x2_operator_lshasg_UInt32x2 },
+        std::pair{ "operator<=(u32x2)"_c, &UInt32x2_operator_lte_UInt32x2 },
+        std::pair{ "operator==(u32x2)"_c, &UInt32x2_operator_eq_UInt32x2 },
+        std::pair{ "operator>(u32x2)"_c, &UInt32x2_operator_gt_UInt32x2 },
+        std::pair{ "operator>=(u32x2)"_c, &UInt32x2_operator_gte_UInt32x2 },
+        std::pair{ "operator>>(u32x2)"_c, &UInt32x2_operator_rsh_UInt32x2 },
+        std::pair{ "operator>>=(u32x2)"_c, &UInt32x2_operator_rhsasg_UInt32x2 },
+        std::pair{ "operator[](i16)"_c, &UInt32x2_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &UInt32x2_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &UInt32x2_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &UInt32x2_operator_index_UInt32 },
+        std::pair{ "operator^(u32x2)"_c, &UInt32x2_operator_xor_UInt32x2 },
+        std::pair{ "operator^=(u32x2)"_c, &UInt32x2_operator_xorasg_UInt32x2 },
+        std::pair{ "operator|(u32x2)"_c, &UInt32x2_operator_or_UInt32x2 },
+        std::pair{ "operator|=(u32x2)"_c, &UInt32x2_operator_orasg_UInt32x2 },
+        std::pair{ "r"_c, &UInt32Type },
+        std::pair{ "rg"_c, &UInt32x2Type },
+        std::pair{ "rgg"_c, &UInt32x3Type },
+        std::pair{ "rggg"_c, &UInt32x4Type },
+        std::pair{ "rggr"_c, &UInt32x4Type },
+        std::pair{ "rgr"_c, &UInt32x3Type },
+        std::pair{ "rgrg"_c, &UInt32x4Type },
+        std::pair{ "rgrr"_c, &UInt32x4Type },
+        std::pair{ "rr"_c, &UInt32x2Type },
+        std::pair{ "rrg"_c, &UInt32x3Type },
+        std::pair{ "rrgg"_c, &UInt32x4Type },
+        std::pair{ "rrgr"_c, &UInt32x4Type },
+        std::pair{ "rrr"_c, &UInt32x3Type },
+        std::pair{ "rrrg"_c, &UInt32x4Type },
+        std::pair{ "rrrr"_c, &UInt32x4Type },
+        std::pair{ "x"_c, &UInt32Type },
+        std::pair{ "xx"_c, &UInt32x2Type },
+        std::pair{ "xxx"_c, &UInt32x3Type },
+        std::pair{ "xxxx"_c, &UInt32x4Type },
+        std::pair{ "xxxy"_c, &UInt32x4Type },
+        std::pair{ "xxy"_c, &UInt32x3Type },
+        std::pair{ "xxyx"_c, &UInt32x4Type },
+        std::pair{ "xxyy"_c, &UInt32x4Type },
+        std::pair{ "xy"_c, &UInt32x2Type },
+        std::pair{ "xyx"_c, &UInt32x3Type },
+        std::pair{ "xyxx"_c, &UInt32x4Type },
+        std::pair{ "xyxy"_c, &UInt32x4Type },
+        std::pair{ "xyy"_c, &UInt32x3Type },
+        std::pair{ "xyyx"_c, &UInt32x4Type },
+        std::pair{ "xyyy"_c, &UInt32x4Type },
+        std::pair{ "y"_c, &UInt32Type },
+        std::pair{ "yx"_c, &UInt32x2Type },
+        std::pair{ "yxx"_c, &UInt32x3Type },
+        std::pair{ "yxxx"_c, &UInt32x4Type },
+        std::pair{ "yxxy"_c, &UInt32x4Type },
+        std::pair{ "yxy"_c, &UInt32x3Type },
+        std::pair{ "yxyx"_c, &UInt32x4Type },
+        std::pair{ "yxyy"_c, &UInt32x4Type },
+        std::pair{ "yy"_c, &UInt32x2Type },
+        std::pair{ "yyx"_c, &UInt32x3Type },
+        std::pair{ "yyxx"_c, &UInt32x4Type },
+        std::pair{ "yyxy"_c, &UInt32x4Type },
+        std::pair{ "yyy"_c, &UInt32x3Type },
+        std::pair{ "yyyx"_c, &UInt32x4Type },
+        std::pair{ "yyyy"_c, &UInt32x4Type }
     };
 }
 UInt32x2 UInt32x2Type;
@@ -5301,42 +5421,102 @@ Int32x2::Int32x2()
     Symbol::Resolved(&Int32x2_operator_rhsasg_Int32x2_arg0)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x2_operator_rhsasg_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 35> { 
-        std::pair{ "operator!=", &Int32x2_operator_neq_Int32x2 },
-        std::pair{ "operator%", &Int32x2_operator_mod_Int32x2 },
-        std::pair{ "operator&", &Int32x2_operator_and_Int32x2 },
-        std::pair{ "operator&=", &Int32x2_operator_andasg_Int32x2 },
-        std::pair{ "operator*", &Int32x2_operator_mul_Int32x2 },
-        std::pair{ "operator*", &Int32x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Int32x2_operator_scale_Float16 },
-        std::pair{ "operator*", &Int32x2_operator_scale_UInt32 },
-        std::pair{ "operator*", &Int32x2_operator_scale_UInt16 },
-        std::pair{ "operator*", &Int32x2_operator_scale_Int32 },
-        std::pair{ "operator*", &Int32x2_operator_scale_Int16 },
-        std::pair{ "operator*=", &Int32x2_operator_mulasg_Int32x2 },
-        std::pair{ "operator+", &Int32x2_operator_add_Int32x2 },
-        std::pair{ "operator+=", &Int32x2_operator_addasg_Int32x2 },
-        std::pair{ "operator-", &Int32x2_operator_sub_Int32x2 },
-        std::pair{ "operator-=", &Int32x2_operator_subasg_Int32x2 },
-        std::pair{ "operator/", &Int32x2_operator_div_Int32x2 },
-        std::pair{ "operator/=", &Int32x2_operator_divasg_Int32x2 },
-        std::pair{ "operator<", &Int32x2_operator_lt_Int32x2 },
-        std::pair{ "operator<<", &Int32x2_operator_lsh_Int32x2 },
-        std::pair{ "operator<<=", &Int32x2_operator_lshasg_Int32x2 },
-        std::pair{ "operator<=", &Int32x2_operator_lte_Int32x2 },
-        std::pair{ "operator==", &Int32x2_operator_eq_Int32x2 },
-        std::pair{ "operator>", &Int32x2_operator_gt_Int32x2 },
-        std::pair{ "operator>=", &Int32x2_operator_gte_Int32x2 },
-        std::pair{ "operator>>", &Int32x2_operator_rsh_Int32x2 },
-        std::pair{ "operator>>=", &Int32x2_operator_rhsasg_Int32x2 },
-        std::pair{ "operator[]", &Int32x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Int32x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Int32x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Int32x2_operator_index_UInt16 },
-        std::pair{ "operator^", &Int32x2_operator_xor_Int32x2 },
-        std::pair{ "operator^=", &Int32x2_operator_xorasg_Int32x2 },
-        std::pair{ "operator|", &Int32x2_operator_or_Int32x2 },
-        std::pair{ "operator|=", &Int32x2_operator_orasg_Int32x2 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 95> { 
+        std::pair{ "g"_c, &Int32Type },
+        std::pair{ "gg"_c, &Int32x2Type },
+        std::pair{ "ggg"_c, &Int32x3Type },
+        std::pair{ "gggg"_c, &Int32x4Type },
+        std::pair{ "gggr"_c, &Int32x4Type },
+        std::pair{ "ggr"_c, &Int32x3Type },
+        std::pair{ "ggrg"_c, &Int32x4Type },
+        std::pair{ "ggrr"_c, &Int32x4Type },
+        std::pair{ "gr"_c, &Int32x2Type },
+        std::pair{ "grg"_c, &Int32x3Type },
+        std::pair{ "grgg"_c, &Int32x4Type },
+        std::pair{ "grgr"_c, &Int32x4Type },
+        std::pair{ "grr"_c, &Int32x3Type },
+        std::pair{ "grrg"_c, &Int32x4Type },
+        std::pair{ "grrr"_c, &Int32x4Type },
+        std::pair{ "operator!=(i32x2)"_c, &Int32x2_operator_neq_Int32x2 },
+        std::pair{ "operator%(i32x2)"_c, &Int32x2_operator_mod_Int32x2 },
+        std::pair{ "operator&(i32x2)"_c, &Int32x2_operator_and_Int32x2 },
+        std::pair{ "operator&=(i32x2)"_c, &Int32x2_operator_andasg_Int32x2 },
+        std::pair{ "operator*(f16)"_c, &Int32x2_operator_scale_Float16 },
+        std::pair{ "operator*(f32)"_c, &Int32x2_operator_scale_Float32 },
+        std::pair{ "operator*(i16)"_c, &Int32x2_operator_scale_Int16 },
+        std::pair{ "operator*(i32)"_c, &Int32x2_operator_scale_Int32 },
+        std::pair{ "operator*(i32x2)"_c, &Int32x2_operator_mul_Int32x2 },
+        std::pair{ "operator*(u16)"_c, &Int32x2_operator_scale_UInt16 },
+        std::pair{ "operator*(u32)"_c, &Int32x2_operator_scale_UInt32 },
+        std::pair{ "operator*=(i32x2)"_c, &Int32x2_operator_mulasg_Int32x2 },
+        std::pair{ "operator+(i32x2)"_c, &Int32x2_operator_add_Int32x2 },
+        std::pair{ "operator+=(i32x2)"_c, &Int32x2_operator_addasg_Int32x2 },
+        std::pair{ "operator-(i32x2)"_c, &Int32x2_operator_sub_Int32x2 },
+        std::pair{ "operator-=(i32x2)"_c, &Int32x2_operator_subasg_Int32x2 },
+        std::pair{ "operator/(i32x2)"_c, &Int32x2_operator_div_Int32x2 },
+        std::pair{ "operator/=(i32x2)"_c, &Int32x2_operator_divasg_Int32x2 },
+        std::pair{ "operator<(i32x2)"_c, &Int32x2_operator_lt_Int32x2 },
+        std::pair{ "operator<<(i32x2)"_c, &Int32x2_operator_lsh_Int32x2 },
+        std::pair{ "operator<<=(i32x2)"_c, &Int32x2_operator_lshasg_Int32x2 },
+        std::pair{ "operator<=(i32x2)"_c, &Int32x2_operator_lte_Int32x2 },
+        std::pair{ "operator==(i32x2)"_c, &Int32x2_operator_eq_Int32x2 },
+        std::pair{ "operator>(i32x2)"_c, &Int32x2_operator_gt_Int32x2 },
+        std::pair{ "operator>=(i32x2)"_c, &Int32x2_operator_gte_Int32x2 },
+        std::pair{ "operator>>(i32x2)"_c, &Int32x2_operator_rsh_Int32x2 },
+        std::pair{ "operator>>=(i32x2)"_c, &Int32x2_operator_rhsasg_Int32x2 },
+        std::pair{ "operator[](i16)"_c, &Int32x2_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &Int32x2_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &Int32x2_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &Int32x2_operator_index_UInt32 },
+        std::pair{ "operator^(i32x2)"_c, &Int32x2_operator_xor_Int32x2 },
+        std::pair{ "operator^=(i32x2)"_c, &Int32x2_operator_xorasg_Int32x2 },
+        std::pair{ "operator|(i32x2)"_c, &Int32x2_operator_or_Int32x2 },
+        std::pair{ "operator|=(i32x2)"_c, &Int32x2_operator_orasg_Int32x2 },
+        std::pair{ "r"_c, &Int32Type },
+        std::pair{ "rg"_c, &Int32x2Type },
+        std::pair{ "rgg"_c, &Int32x3Type },
+        std::pair{ "rggg"_c, &Int32x4Type },
+        std::pair{ "rggr"_c, &Int32x4Type },
+        std::pair{ "rgr"_c, &Int32x3Type },
+        std::pair{ "rgrg"_c, &Int32x4Type },
+        std::pair{ "rgrr"_c, &Int32x4Type },
+        std::pair{ "rr"_c, &Int32x2Type },
+        std::pair{ "rrg"_c, &Int32x3Type },
+        std::pair{ "rrgg"_c, &Int32x4Type },
+        std::pair{ "rrgr"_c, &Int32x4Type },
+        std::pair{ "rrr"_c, &Int32x3Type },
+        std::pair{ "rrrg"_c, &Int32x4Type },
+        std::pair{ "rrrr"_c, &Int32x4Type },
+        std::pair{ "x"_c, &Int32Type },
+        std::pair{ "xx"_c, &Int32x2Type },
+        std::pair{ "xxx"_c, &Int32x3Type },
+        std::pair{ "xxxx"_c, &Int32x4Type },
+        std::pair{ "xxxy"_c, &Int32x4Type },
+        std::pair{ "xxy"_c, &Int32x3Type },
+        std::pair{ "xxyx"_c, &Int32x4Type },
+        std::pair{ "xxyy"_c, &Int32x4Type },
+        std::pair{ "xy"_c, &Int32x2Type },
+        std::pair{ "xyx"_c, &Int32x3Type },
+        std::pair{ "xyxx"_c, &Int32x4Type },
+        std::pair{ "xyxy"_c, &Int32x4Type },
+        std::pair{ "xyy"_c, &Int32x3Type },
+        std::pair{ "xyyx"_c, &Int32x4Type },
+        std::pair{ "xyyy"_c, &Int32x4Type },
+        std::pair{ "y"_c, &Int32Type },
+        std::pair{ "yx"_c, &Int32x2Type },
+        std::pair{ "yxx"_c, &Int32x3Type },
+        std::pair{ "yxxx"_c, &Int32x4Type },
+        std::pair{ "yxxy"_c, &Int32x4Type },
+        std::pair{ "yxy"_c, &Int32x3Type },
+        std::pair{ "yxyx"_c, &Int32x4Type },
+        std::pair{ "yxyy"_c, &Int32x4Type },
+        std::pair{ "yy"_c, &Int32x2Type },
+        std::pair{ "yyx"_c, &Int32x3Type },
+        std::pair{ "yyxx"_c, &Int32x4Type },
+        std::pair{ "yyxy"_c, &Int32x4Type },
+        std::pair{ "yyy"_c, &Int32x3Type },
+        std::pair{ "yyyx"_c, &Int32x4Type },
+        std::pair{ "yyyy"_c, &Int32x4Type }
     };
 }
 Int32x2 Int32x2Type;
@@ -5601,15 +5781,75 @@ Bool8x2::Bool8x2()
     Symbol::Resolved(&Bool8x2_operator_neq_Bool8x2_arg0)->typeSymbol = &Bool8x2Type;
     Symbol::Resolved(&Bool8x2_operator_neq_Bool8x2)->returnTypeSymbol = &Bool8Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 8> { 
-        std::pair{ "operator!=", &Bool8x2_operator_neq_Bool8x2 },
-        std::pair{ "operator&&", &Bool8x2_operator_andand_Bool8x2 },
-        std::pair{ "operator==", &Bool8x2_operator_eq_Bool8x2 },
-        std::pair{ "operator[]", &Bool8x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Bool8x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Bool8x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Bool8x2_operator_index_UInt16 },
-        std::pair{ "operator||", &Bool8x2_operator_oror_Bool8x2 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 68> { 
+        std::pair{ "g"_c, &Bool8Type },
+        std::pair{ "gg"_c, &Bool8x2Type },
+        std::pair{ "ggg"_c, &Bool8x3Type },
+        std::pair{ "gggg"_c, &Bool8x4Type },
+        std::pair{ "gggr"_c, &Bool8x4Type },
+        std::pair{ "ggr"_c, &Bool8x3Type },
+        std::pair{ "ggrg"_c, &Bool8x4Type },
+        std::pair{ "ggrr"_c, &Bool8x4Type },
+        std::pair{ "gr"_c, &Bool8x2Type },
+        std::pair{ "grg"_c, &Bool8x3Type },
+        std::pair{ "grgg"_c, &Bool8x4Type },
+        std::pair{ "grgr"_c, &Bool8x4Type },
+        std::pair{ "grr"_c, &Bool8x3Type },
+        std::pair{ "grrg"_c, &Bool8x4Type },
+        std::pair{ "grrr"_c, &Bool8x4Type },
+        std::pair{ "operator!=(b8x2)"_c, &Bool8x2_operator_neq_Bool8x2 },
+        std::pair{ "operator&&(b8x2)"_c, &Bool8x2_operator_andand_Bool8x2 },
+        std::pair{ "operator==(b8x2)"_c, &Bool8x2_operator_eq_Bool8x2 },
+        std::pair{ "operator[](i16)"_c, &Bool8x2_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &Bool8x2_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &Bool8x2_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &Bool8x2_operator_index_UInt32 },
+        std::pair{ "operator||(b8x2)"_c, &Bool8x2_operator_oror_Bool8x2 },
+        std::pair{ "r"_c, &Bool8Type },
+        std::pair{ "rg"_c, &Bool8x2Type },
+        std::pair{ "rgg"_c, &Bool8x3Type },
+        std::pair{ "rggg"_c, &Bool8x4Type },
+        std::pair{ "rggr"_c, &Bool8x4Type },
+        std::pair{ "rgr"_c, &Bool8x3Type },
+        std::pair{ "rgrg"_c, &Bool8x4Type },
+        std::pair{ "rgrr"_c, &Bool8x4Type },
+        std::pair{ "rr"_c, &Bool8x2Type },
+        std::pair{ "rrg"_c, &Bool8x3Type },
+        std::pair{ "rrgg"_c, &Bool8x4Type },
+        std::pair{ "rrgr"_c, &Bool8x4Type },
+        std::pair{ "rrr"_c, &Bool8x3Type },
+        std::pair{ "rrrg"_c, &Bool8x4Type },
+        std::pair{ "rrrr"_c, &Bool8x4Type },
+        std::pair{ "x"_c, &Bool8Type },
+        std::pair{ "xx"_c, &Bool8x2Type },
+        std::pair{ "xxx"_c, &Bool8x3Type },
+        std::pair{ "xxxx"_c, &Bool8x4Type },
+        std::pair{ "xxxy"_c, &Bool8x4Type },
+        std::pair{ "xxy"_c, &Bool8x3Type },
+        std::pair{ "xxyx"_c, &Bool8x4Type },
+        std::pair{ "xxyy"_c, &Bool8x4Type },
+        std::pair{ "xy"_c, &Bool8x2Type },
+        std::pair{ "xyx"_c, &Bool8x3Type },
+        std::pair{ "xyxx"_c, &Bool8x4Type },
+        std::pair{ "xyxy"_c, &Bool8x4Type },
+        std::pair{ "xyy"_c, &Bool8x3Type },
+        std::pair{ "xyyx"_c, &Bool8x4Type },
+        std::pair{ "xyyy"_c, &Bool8x4Type },
+        std::pair{ "y"_c, &Bool8Type },
+        std::pair{ "yx"_c, &Bool8x2Type },
+        std::pair{ "yxx"_c, &Bool8x3Type },
+        std::pair{ "yxxx"_c, &Bool8x4Type },
+        std::pair{ "yxxy"_c, &Bool8x4Type },
+        std::pair{ "yxy"_c, &Bool8x3Type },
+        std::pair{ "yxyx"_c, &Bool8x4Type },
+        std::pair{ "yxyy"_c, &Bool8x4Type },
+        std::pair{ "yy"_c, &Bool8x2Type },
+        std::pair{ "yyx"_c, &Bool8x3Type },
+        std::pair{ "yyxx"_c, &Bool8x4Type },
+        std::pair{ "yyxy"_c, &Bool8x4Type },
+        std::pair{ "yyy"_c, &Bool8x3Type },
+        std::pair{ "yyyx"_c, &Bool8x4Type },
+        std::pair{ "yyyy"_c, &Bool8x4Type }
     };
 }
 Bool8x2 Bool8x2Type;
@@ -5806,19 +6046,19 @@ Function Float16x2_operator_scale_Int16;
 inline constexpr std::array Float16x2_operator_scale_Int16_args = { &Float16x2_operator_scale_Int16_arg0 };
 
 /// operator* with Float32x2x2
-Variable Float16x2_operator_mul_Float32x2x2_arg0;
-Function Float16x2_operator_mul_Float32x2x2;
-inline constexpr std::array Float16x2_operator_mul_Float32x2x2_args = { &Float16x2_operator_mul_Float32x2x2_arg0 };
+Variable Float16x2_operator_transform_Float32x2x2_arg0;
+Function Float16x2_operator_transform_Float32x2x2;
+inline constexpr std::array Float16x2_operator_transform_Float32x2x2_args = { &Float16x2_operator_transform_Float32x2x2_arg0 };
 
 /// operator* with Float32x2x3
-Variable Float16x2_operator_mul_Float32x2x3_arg0;
-Function Float16x2_operator_mul_Float32x2x3;
-inline constexpr std::array Float16x2_operator_mul_Float32x2x3_args = { &Float16x2_operator_mul_Float32x2x3_arg0 };
+Variable Float16x2_operator_transform_Float32x2x3_arg0;
+Function Float16x2_operator_transform_Float32x2x3;
+inline constexpr std::array Float16x2_operator_transform_Float32x2x3_args = { &Float16x2_operator_transform_Float32x2x3_arg0 };
 
 /// operator* with Float32x2x4
-Variable Float16x2_operator_mul_Float32x2x4_arg0;
-Function Float16x2_operator_mul_Float32x2x4;
-inline constexpr std::array Float16x2_operator_mul_Float32x2x4_args = { &Float16x2_operator_mul_Float32x2x4_arg0 };
+Variable Float16x2_operator_transform_Float32x2x4_arg0;
+Function Float16x2_operator_transform_Float32x2x4;
+inline constexpr std::array Float16x2_operator_transform_Float32x2x4_args = { &Float16x2_operator_transform_Float32x2x4_arg0 };
 
 Float16x2::Float16x2()
 {
@@ -6188,61 +6428,121 @@ Float16x2::Float16x2()
     Symbol::Resolved(&Float16x2_operator_scale_Int16)->returnTypeSymbol = &Float16x2Type;
 
     /// operator* with Float32x2x2
-    Float16x2_operator_mul_Float32x2x2_arg0.name = "_arg0"_c;
-    Float16x2_operator_mul_Float32x2x2_arg0.type = Type::FullType{ Float32x2x2Type.name };
-    Float16x2_operator_mul_Float32x2x2.name = "operator*"_c;
-    Float16x2_operator_mul_Float32x2x2.returnType = Type::FullType { Float16x2Type.name };
-    Float16x2_operator_mul_Float32x2x2.parameters = Float16x2_operator_mul_Float32x2x2_args;
-    Symbol::Resolved(&Float16x2_operator_mul_Float32x2x2_arg0)->typeSymbol = &Float32x2x2Type;
-    Symbol::Resolved(&Float16x2_operator_mul_Float32x2x2)->returnTypeSymbol = &Float16x2Type;
+    Float16x2_operator_transform_Float32x2x2_arg0.name = "_arg0"_c;
+    Float16x2_operator_transform_Float32x2x2_arg0.type = Type::FullType{ Float32x2x2Type.name };
+    Float16x2_operator_transform_Float32x2x2.name = "operator*"_c;
+    Float16x2_operator_transform_Float32x2x2.returnType = Type::FullType { Float16x2Type.name };
+    Float16x2_operator_transform_Float32x2x2.parameters = Float16x2_operator_transform_Float32x2x2_args;
+    Symbol::Resolved(&Float16x2_operator_transform_Float32x2x2_arg0)->typeSymbol = &Float32x2x2Type;
+    Symbol::Resolved(&Float16x2_operator_transform_Float32x2x2)->returnTypeSymbol = &Float16x2Type;
 
     /// operator* with Float32x2x3
-    Float16x2_operator_mul_Float32x2x3_arg0.name = "_arg0"_c;
-    Float16x2_operator_mul_Float32x2x3_arg0.type = Type::FullType{ Float32x2x3Type.name };
-    Float16x2_operator_mul_Float32x2x3.name = "operator*"_c;
-    Float16x2_operator_mul_Float32x2x3.returnType = Type::FullType { Float16x3Type.name };
-    Float16x2_operator_mul_Float32x2x3.parameters = Float16x2_operator_mul_Float32x2x3_args;
-    Symbol::Resolved(&Float16x2_operator_mul_Float32x2x3_arg0)->typeSymbol = &Float32x2x3Type;
-    Symbol::Resolved(&Float16x2_operator_mul_Float32x2x3)->returnTypeSymbol = &Float16x3Type;
+    Float16x2_operator_transform_Float32x2x3_arg0.name = "_arg0"_c;
+    Float16x2_operator_transform_Float32x2x3_arg0.type = Type::FullType{ Float32x2x3Type.name };
+    Float16x2_operator_transform_Float32x2x3.name = "operator*"_c;
+    Float16x2_operator_transform_Float32x2x3.returnType = Type::FullType { Float16x3Type.name };
+    Float16x2_operator_transform_Float32x2x3.parameters = Float16x2_operator_transform_Float32x2x3_args;
+    Symbol::Resolved(&Float16x2_operator_transform_Float32x2x3_arg0)->typeSymbol = &Float32x2x3Type;
+    Symbol::Resolved(&Float16x2_operator_transform_Float32x2x3)->returnTypeSymbol = &Float16x3Type;
 
     /// operator* with Float32x2x4
-    Float16x2_operator_mul_Float32x2x4_arg0.name = "_arg0"_c;
-    Float16x2_operator_mul_Float32x2x4_arg0.type = Type::FullType{ Float32x2x4Type.name };
-    Float16x2_operator_mul_Float32x2x4.name = "operator*"_c;
-    Float16x2_operator_mul_Float32x2x4.returnType = Type::FullType { Float16x4Type.name };
-    Float16x2_operator_mul_Float32x2x4.parameters = Float16x2_operator_mul_Float32x2x4_args;
-    Symbol::Resolved(&Float16x2_operator_mul_Float32x2x4_arg0)->typeSymbol = &Float32x2x4Type;
-    Symbol::Resolved(&Float16x2_operator_mul_Float32x2x4)->returnTypeSymbol = &Float16x4Type;
+    Float16x2_operator_transform_Float32x2x4_arg0.name = "_arg0"_c;
+    Float16x2_operator_transform_Float32x2x4_arg0.type = Type::FullType{ Float32x2x4Type.name };
+    Float16x2_operator_transform_Float32x2x4.name = "operator*"_c;
+    Float16x2_operator_transform_Float32x2x4.returnType = Type::FullType { Float16x4Type.name };
+    Float16x2_operator_transform_Float32x2x4.parameters = Float16x2_operator_transform_Float32x2x4_args;
+    Symbol::Resolved(&Float16x2_operator_transform_Float32x2x4_arg0)->typeSymbol = &Float32x2x4Type;
+    Symbol::Resolved(&Float16x2_operator_transform_Float32x2x4)->returnTypeSymbol = &Float16x4Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 28> { 
-        std::pair{ "operator!=", &Float16x2_operator_neq_Float16x2 },
-        std::pair{ "operator%", &Float16x2_operator_mod_Float16x2 },
-        std::pair{ "operator*", &Float16x2_operator_mul_Float16x2 },
-        std::pair{ "operator*", &Float16x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float16x2_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x2_operator_scale_UInt32 },
-        std::pair{ "operator*", &Float16x2_operator_scale_UInt16 },
-        std::pair{ "operator*", &Float16x2_operator_scale_Int32 },
-        std::pair{ "operator*", &Float16x2_operator_scale_Int16 },
-        std::pair{ "operator*", &Float16x2_operator_mul_Float32x2x2 },
-        std::pair{ "operator*", &Float16x2_operator_mul_Float32x2x3 },
-        std::pair{ "operator*", &Float16x2_operator_mul_Float32x2x4 },
-        std::pair{ "operator*=", &Float16x2_operator_mulasg_Float16x2 },
-        std::pair{ "operator+", &Float16x2_operator_add_Float16x2 },
-        std::pair{ "operator+=", &Float16x2_operator_addasg_Float16x2 },
-        std::pair{ "operator-", &Float16x2_operator_sub_Float16x2 },
-        std::pair{ "operator-=", &Float16x2_operator_subasg_Float16x2 },
-        std::pair{ "operator/", &Float16x2_operator_div_Float16x2 },
-        std::pair{ "operator/=", &Float16x2_operator_divasg_Float16x2 },
-        std::pair{ "operator<", &Float16x2_operator_lt_Float16x2 },
-        std::pair{ "operator<=", &Float16x2_operator_lte_Float16x2 },
-        std::pair{ "operator==", &Float16x2_operator_eq_Float16x2 },
-        std::pair{ "operator>", &Float16x2_operator_gt_Float16x2 },
-        std::pair{ "operator>=", &Float16x2_operator_gte_Float16x2 },
-        std::pair{ "operator[]", &Float16x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x2_operator_index_UInt16 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 88> { 
+        std::pair{ "g"_c, &Float16Type },
+        std::pair{ "gg"_c, &Float16x2Type },
+        std::pair{ "ggg"_c, &Float16x3Type },
+        std::pair{ "gggg"_c, &Float16x4Type },
+        std::pair{ "gggr"_c, &Float16x4Type },
+        std::pair{ "ggr"_c, &Float16x3Type },
+        std::pair{ "ggrg"_c, &Float16x4Type },
+        std::pair{ "ggrr"_c, &Float16x4Type },
+        std::pair{ "gr"_c, &Float16x2Type },
+        std::pair{ "grg"_c, &Float16x3Type },
+        std::pair{ "grgg"_c, &Float16x4Type },
+        std::pair{ "grgr"_c, &Float16x4Type },
+        std::pair{ "grr"_c, &Float16x3Type },
+        std::pair{ "grrg"_c, &Float16x4Type },
+        std::pair{ "grrr"_c, &Float16x4Type },
+        std::pair{ "operator!=(f16x2)"_c, &Float16x2_operator_neq_Float16x2 },
+        std::pair{ "operator%(f16x2)"_c, &Float16x2_operator_mod_Float16x2 },
+        std::pair{ "operator*(f16)"_c, &Float16x2_operator_scale_Float16 },
+        std::pair{ "operator*(f16x2)"_c, &Float16x2_operator_mul_Float16x2 },
+        std::pair{ "operator*(f32)"_c, &Float16x2_operator_scale_Float32 },
+        std::pair{ "operator*(f32x2x2)"_c, &Float16x2_operator_transform_Float32x2x2 },
+        std::pair{ "operator*(f32x2x3)"_c, &Float16x2_operator_transform_Float32x2x3 },
+        std::pair{ "operator*(f32x2x4)"_c, &Float16x2_operator_transform_Float32x2x4 },
+        std::pair{ "operator*(i16)"_c, &Float16x2_operator_scale_Int16 },
+        std::pair{ "operator*(i32)"_c, &Float16x2_operator_scale_Int32 },
+        std::pair{ "operator*(u16)"_c, &Float16x2_operator_scale_UInt16 },
+        std::pair{ "operator*(u32)"_c, &Float16x2_operator_scale_UInt32 },
+        std::pair{ "operator*=(f16x2)"_c, &Float16x2_operator_mulasg_Float16x2 },
+        std::pair{ "operator+(f16x2)"_c, &Float16x2_operator_add_Float16x2 },
+        std::pair{ "operator+=(f16x2)"_c, &Float16x2_operator_addasg_Float16x2 },
+        std::pair{ "operator-(f16x2)"_c, &Float16x2_operator_sub_Float16x2 },
+        std::pair{ "operator-=(f16x2)"_c, &Float16x2_operator_subasg_Float16x2 },
+        std::pair{ "operator/(f16x2)"_c, &Float16x2_operator_div_Float16x2 },
+        std::pair{ "operator/=(f16x2)"_c, &Float16x2_operator_divasg_Float16x2 },
+        std::pair{ "operator<(f16x2)"_c, &Float16x2_operator_lt_Float16x2 },
+        std::pair{ "operator<=(f16x2)"_c, &Float16x2_operator_lte_Float16x2 },
+        std::pair{ "operator==(f16x2)"_c, &Float16x2_operator_eq_Float16x2 },
+        std::pair{ "operator>(f16x2)"_c, &Float16x2_operator_gt_Float16x2 },
+        std::pair{ "operator>=(f16x2)"_c, &Float16x2_operator_gte_Float16x2 },
+        std::pair{ "operator[](i16)"_c, &Float16x2_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &Float16x2_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &Float16x2_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &Float16x2_operator_index_UInt32 },
+        std::pair{ "r"_c, &Float16Type },
+        std::pair{ "rg"_c, &Float16x2Type },
+        std::pair{ "rgg"_c, &Float16x3Type },
+        std::pair{ "rggg"_c, &Float16x4Type },
+        std::pair{ "rggr"_c, &Float16x4Type },
+        std::pair{ "rgr"_c, &Float16x3Type },
+        std::pair{ "rgrg"_c, &Float16x4Type },
+        std::pair{ "rgrr"_c, &Float16x4Type },
+        std::pair{ "rr"_c, &Float16x2Type },
+        std::pair{ "rrg"_c, &Float16x3Type },
+        std::pair{ "rrgg"_c, &Float16x4Type },
+        std::pair{ "rrgr"_c, &Float16x4Type },
+        std::pair{ "rrr"_c, &Float16x3Type },
+        std::pair{ "rrrg"_c, &Float16x4Type },
+        std::pair{ "rrrr"_c, &Float16x4Type },
+        std::pair{ "x"_c, &Float16Type },
+        std::pair{ "xx"_c, &Float16x2Type },
+        std::pair{ "xxx"_c, &Float16x3Type },
+        std::pair{ "xxxx"_c, &Float16x4Type },
+        std::pair{ "xxxy"_c, &Float16x4Type },
+        std::pair{ "xxy"_c, &Float16x3Type },
+        std::pair{ "xxyx"_c, &Float16x4Type },
+        std::pair{ "xxyy"_c, &Float16x4Type },
+        std::pair{ "xy"_c, &Float16x2Type },
+        std::pair{ "xyx"_c, &Float16x3Type },
+        std::pair{ "xyxx"_c, &Float16x4Type },
+        std::pair{ "xyxy"_c, &Float16x4Type },
+        std::pair{ "xyy"_c, &Float16x3Type },
+        std::pair{ "xyyx"_c, &Float16x4Type },
+        std::pair{ "xyyy"_c, &Float16x4Type },
+        std::pair{ "y"_c, &Float16Type },
+        std::pair{ "yx"_c, &Float16x2Type },
+        std::pair{ "yxx"_c, &Float16x3Type },
+        std::pair{ "yxxx"_c, &Float16x4Type },
+        std::pair{ "yxxy"_c, &Float16x4Type },
+        std::pair{ "yxy"_c, &Float16x3Type },
+        std::pair{ "yxyx"_c, &Float16x4Type },
+        std::pair{ "yxyy"_c, &Float16x4Type },
+        std::pair{ "yy"_c, &Float16x2Type },
+        std::pair{ "yyx"_c, &Float16x3Type },
+        std::pair{ "yyxx"_c, &Float16x4Type },
+        std::pair{ "yyxy"_c, &Float16x4Type },
+        std::pair{ "yyy"_c, &Float16x3Type },
+        std::pair{ "yyyx"_c, &Float16x4Type },
+        std::pair{ "yyyy"_c, &Float16x4Type }
     };
 }
 Float16x2 Float16x2Type;
@@ -6945,42 +7245,102 @@ UInt16x2::UInt16x2()
     Symbol::Resolved(&UInt16x2_operator_rhsasg_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x2_operator_rhsasg_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 35> { 
-        std::pair{ "operator!=", &UInt16x2_operator_neq_UInt16x2 },
-        std::pair{ "operator%", &UInt16x2_operator_mod_UInt16x2 },
-        std::pair{ "operator&", &UInt16x2_operator_and_UInt16x2 },
-        std::pair{ "operator&=", &UInt16x2_operator_andasg_UInt16x2 },
-        std::pair{ "operator*", &UInt16x2_operator_mul_UInt16x2 },
-        std::pair{ "operator*", &UInt16x2_operator_scale_Float32 },
-        std::pair{ "operator*", &UInt16x2_operator_scale_Float16 },
-        std::pair{ "operator*", &UInt16x2_operator_scale_UInt32 },
-        std::pair{ "operator*", &UInt16x2_operator_scale_UInt16 },
-        std::pair{ "operator*", &UInt16x2_operator_scale_Int32 },
-        std::pair{ "operator*", &UInt16x2_operator_scale_Int16 },
-        std::pair{ "operator*=", &UInt16x2_operator_mulasg_UInt16x2 },
-        std::pair{ "operator+", &UInt16x2_operator_add_UInt16x2 },
-        std::pair{ "operator+=", &UInt16x2_operator_addasg_UInt16x2 },
-        std::pair{ "operator-", &UInt16x2_operator_sub_UInt16x2 },
-        std::pair{ "operator-=", &UInt16x2_operator_subasg_UInt16x2 },
-        std::pair{ "operator/", &UInt16x2_operator_div_UInt16x2 },
-        std::pair{ "operator/=", &UInt16x2_operator_divasg_UInt16x2 },
-        std::pair{ "operator<", &UInt16x2_operator_lt_UInt16x2 },
-        std::pair{ "operator<<", &UInt16x2_operator_lsh_UInt16x2 },
-        std::pair{ "operator<<=", &UInt16x2_operator_lshasg_UInt16x2 },
-        std::pair{ "operator<=", &UInt16x2_operator_lte_UInt16x2 },
-        std::pair{ "operator==", &UInt16x2_operator_eq_UInt16x2 },
-        std::pair{ "operator>", &UInt16x2_operator_gt_UInt16x2 },
-        std::pair{ "operator>=", &UInt16x2_operator_gte_UInt16x2 },
-        std::pair{ "operator>>", &UInt16x2_operator_rsh_UInt16x2 },
-        std::pair{ "operator>>=", &UInt16x2_operator_rhsasg_UInt16x2 },
-        std::pair{ "operator[]", &UInt16x2_operator_index_Int32 },
-        std::pair{ "operator[]", &UInt16x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &UInt16x2_operator_index_Int16 },
-        std::pair{ "operator[]", &UInt16x2_operator_index_UInt16 },
-        std::pair{ "operator^", &UInt16x2_operator_xor_UInt16x2 },
-        std::pair{ "operator^=", &UInt16x2_operator_xorasg_UInt16x2 },
-        std::pair{ "operator|", &UInt16x2_operator_or_UInt16x2 },
-        std::pair{ "operator|=", &UInt16x2_operator_orasg_UInt16x2 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 95> { 
+        std::pair{ "g"_c, &UInt16Type },
+        std::pair{ "gg"_c, &UInt16x2Type },
+        std::pair{ "ggg"_c, &UInt16x3Type },
+        std::pair{ "gggg"_c, &UInt16x4Type },
+        std::pair{ "gggr"_c, &UInt16x4Type },
+        std::pair{ "ggr"_c, &UInt16x3Type },
+        std::pair{ "ggrg"_c, &UInt16x4Type },
+        std::pair{ "ggrr"_c, &UInt16x4Type },
+        std::pair{ "gr"_c, &UInt16x2Type },
+        std::pair{ "grg"_c, &UInt16x3Type },
+        std::pair{ "grgg"_c, &UInt16x4Type },
+        std::pair{ "grgr"_c, &UInt16x4Type },
+        std::pair{ "grr"_c, &UInt16x3Type },
+        std::pair{ "grrg"_c, &UInt16x4Type },
+        std::pair{ "grrr"_c, &UInt16x4Type },
+        std::pair{ "operator!=(u16x2)"_c, &UInt16x2_operator_neq_UInt16x2 },
+        std::pair{ "operator%(u16x2)"_c, &UInt16x2_operator_mod_UInt16x2 },
+        std::pair{ "operator&(u16x2)"_c, &UInt16x2_operator_and_UInt16x2 },
+        std::pair{ "operator&=(u16x2)"_c, &UInt16x2_operator_andasg_UInt16x2 },
+        std::pair{ "operator*(f16)"_c, &UInt16x2_operator_scale_Float16 },
+        std::pair{ "operator*(f32)"_c, &UInt16x2_operator_scale_Float32 },
+        std::pair{ "operator*(i16)"_c, &UInt16x2_operator_scale_Int16 },
+        std::pair{ "operator*(i32)"_c, &UInt16x2_operator_scale_Int32 },
+        std::pair{ "operator*(u16)"_c, &UInt16x2_operator_scale_UInt16 },
+        std::pair{ "operator*(u16x2)"_c, &UInt16x2_operator_mul_UInt16x2 },
+        std::pair{ "operator*(u32)"_c, &UInt16x2_operator_scale_UInt32 },
+        std::pair{ "operator*=(u16x2)"_c, &UInt16x2_operator_mulasg_UInt16x2 },
+        std::pair{ "operator+(u16x2)"_c, &UInt16x2_operator_add_UInt16x2 },
+        std::pair{ "operator+=(u16x2)"_c, &UInt16x2_operator_addasg_UInt16x2 },
+        std::pair{ "operator-(u16x2)"_c, &UInt16x2_operator_sub_UInt16x2 },
+        std::pair{ "operator-=(u16x2)"_c, &UInt16x2_operator_subasg_UInt16x2 },
+        std::pair{ "operator/(u16x2)"_c, &UInt16x2_operator_div_UInt16x2 },
+        std::pair{ "operator/=(u16x2)"_c, &UInt16x2_operator_divasg_UInt16x2 },
+        std::pair{ "operator<(u16x2)"_c, &UInt16x2_operator_lt_UInt16x2 },
+        std::pair{ "operator<<(u16x2)"_c, &UInt16x2_operator_lsh_UInt16x2 },
+        std::pair{ "operator<<=(u16x2)"_c, &UInt16x2_operator_lshasg_UInt16x2 },
+        std::pair{ "operator<=(u16x2)"_c, &UInt16x2_operator_lte_UInt16x2 },
+        std::pair{ "operator==(u16x2)"_c, &UInt16x2_operator_eq_UInt16x2 },
+        std::pair{ "operator>(u16x2)"_c, &UInt16x2_operator_gt_UInt16x2 },
+        std::pair{ "operator>=(u16x2)"_c, &UInt16x2_operator_gte_UInt16x2 },
+        std::pair{ "operator>>(u16x2)"_c, &UInt16x2_operator_rsh_UInt16x2 },
+        std::pair{ "operator>>=(u16x2)"_c, &UInt16x2_operator_rhsasg_UInt16x2 },
+        std::pair{ "operator[](i16)"_c, &UInt16x2_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &UInt16x2_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &UInt16x2_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &UInt16x2_operator_index_UInt32 },
+        std::pair{ "operator^(u16x2)"_c, &UInt16x2_operator_xor_UInt16x2 },
+        std::pair{ "operator^=(u16x2)"_c, &UInt16x2_operator_xorasg_UInt16x2 },
+        std::pair{ "operator|(u16x2)"_c, &UInt16x2_operator_or_UInt16x2 },
+        std::pair{ "operator|=(u16x2)"_c, &UInt16x2_operator_orasg_UInt16x2 },
+        std::pair{ "r"_c, &UInt16Type },
+        std::pair{ "rg"_c, &UInt16x2Type },
+        std::pair{ "rgg"_c, &UInt16x3Type },
+        std::pair{ "rggg"_c, &UInt16x4Type },
+        std::pair{ "rggr"_c, &UInt16x4Type },
+        std::pair{ "rgr"_c, &UInt16x3Type },
+        std::pair{ "rgrg"_c, &UInt16x4Type },
+        std::pair{ "rgrr"_c, &UInt16x4Type },
+        std::pair{ "rr"_c, &UInt16x2Type },
+        std::pair{ "rrg"_c, &UInt16x3Type },
+        std::pair{ "rrgg"_c, &UInt16x4Type },
+        std::pair{ "rrgr"_c, &UInt16x4Type },
+        std::pair{ "rrr"_c, &UInt16x3Type },
+        std::pair{ "rrrg"_c, &UInt16x4Type },
+        std::pair{ "rrrr"_c, &UInt16x4Type },
+        std::pair{ "x"_c, &UInt16Type },
+        std::pair{ "xx"_c, &UInt16x2Type },
+        std::pair{ "xxx"_c, &UInt16x3Type },
+        std::pair{ "xxxx"_c, &UInt16x4Type },
+        std::pair{ "xxxy"_c, &UInt16x4Type },
+        std::pair{ "xxy"_c, &UInt16x3Type },
+        std::pair{ "xxyx"_c, &UInt16x4Type },
+        std::pair{ "xxyy"_c, &UInt16x4Type },
+        std::pair{ "xy"_c, &UInt16x2Type },
+        std::pair{ "xyx"_c, &UInt16x3Type },
+        std::pair{ "xyxx"_c, &UInt16x4Type },
+        std::pair{ "xyxy"_c, &UInt16x4Type },
+        std::pair{ "xyy"_c, &UInt16x3Type },
+        std::pair{ "xyyx"_c, &UInt16x4Type },
+        std::pair{ "xyyy"_c, &UInt16x4Type },
+        std::pair{ "y"_c, &UInt16Type },
+        std::pair{ "yx"_c, &UInt16x2Type },
+        std::pair{ "yxx"_c, &UInt16x3Type },
+        std::pair{ "yxxx"_c, &UInt16x4Type },
+        std::pair{ "yxxy"_c, &UInt16x4Type },
+        std::pair{ "yxy"_c, &UInt16x3Type },
+        std::pair{ "yxyx"_c, &UInt16x4Type },
+        std::pair{ "yxyy"_c, &UInt16x4Type },
+        std::pair{ "yy"_c, &UInt16x2Type },
+        std::pair{ "yyx"_c, &UInt16x3Type },
+        std::pair{ "yyxx"_c, &UInt16x4Type },
+        std::pair{ "yyxy"_c, &UInt16x4Type },
+        std::pair{ "yyy"_c, &UInt16x3Type },
+        std::pair{ "yyyx"_c, &UInt16x4Type },
+        std::pair{ "yyyy"_c, &UInt16x4Type }
     };
 }
 UInt16x2 UInt16x2Type;
@@ -7683,42 +8043,102 @@ Int16x2::Int16x2()
     Symbol::Resolved(&Int16x2_operator_rhsasg_Int16x2_arg0)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x2_operator_rhsasg_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 35> { 
-        std::pair{ "operator!=", &Int16x2_operator_neq_Int16x2 },
-        std::pair{ "operator%", &Int16x2_operator_mod_Int16x2 },
-        std::pair{ "operator&", &Int16x2_operator_and_Int16x2 },
-        std::pair{ "operator&=", &Int16x2_operator_andasg_Int16x2 },
-        std::pair{ "operator*", &Int16x2_operator_mul_Int16x2 },
-        std::pair{ "operator*", &Int16x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Int16x2_operator_scale_Float16 },
-        std::pair{ "operator*", &Int16x2_operator_scale_UInt32 },
-        std::pair{ "operator*", &Int16x2_operator_scale_UInt16 },
-        std::pair{ "operator*", &Int16x2_operator_scale_Int32 },
-        std::pair{ "operator*", &Int16x2_operator_scale_Int16 },
-        std::pair{ "operator*=", &Int16x2_operator_mulasg_Int16x2 },
-        std::pair{ "operator+", &Int16x2_operator_add_Int16x2 },
-        std::pair{ "operator+=", &Int16x2_operator_addasg_Int16x2 },
-        std::pair{ "operator-", &Int16x2_operator_sub_Int16x2 },
-        std::pair{ "operator-=", &Int16x2_operator_subasg_Int16x2 },
-        std::pair{ "operator/", &Int16x2_operator_div_Int16x2 },
-        std::pair{ "operator/=", &Int16x2_operator_divasg_Int16x2 },
-        std::pair{ "operator<", &Int16x2_operator_lt_Int16x2 },
-        std::pair{ "operator<<", &Int16x2_operator_lsh_Int16x2 },
-        std::pair{ "operator<<=", &Int16x2_operator_lshasg_Int16x2 },
-        std::pair{ "operator<=", &Int16x2_operator_lte_Int16x2 },
-        std::pair{ "operator==", &Int16x2_operator_eq_Int16x2 },
-        std::pair{ "operator>", &Int16x2_operator_gt_Int16x2 },
-        std::pair{ "operator>=", &Int16x2_operator_gte_Int16x2 },
-        std::pair{ "operator>>", &Int16x2_operator_rsh_Int16x2 },
-        std::pair{ "operator>>=", &Int16x2_operator_rhsasg_Int16x2 },
-        std::pair{ "operator[]", &Int16x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Int16x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Int16x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Int16x2_operator_index_UInt16 },
-        std::pair{ "operator^", &Int16x2_operator_xor_Int16x2 },
-        std::pair{ "operator^=", &Int16x2_operator_xorasg_Int16x2 },
-        std::pair{ "operator|", &Int16x2_operator_or_Int16x2 },
-        std::pair{ "operator|=", &Int16x2_operator_orasg_Int16x2 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 95> { 
+        std::pair{ "g"_c, &Int16Type },
+        std::pair{ "gg"_c, &Int16x2Type },
+        std::pair{ "ggg"_c, &Int16x3Type },
+        std::pair{ "gggg"_c, &Int16x4Type },
+        std::pair{ "gggr"_c, &Int16x4Type },
+        std::pair{ "ggr"_c, &Int16x3Type },
+        std::pair{ "ggrg"_c, &Int16x4Type },
+        std::pair{ "ggrr"_c, &Int16x4Type },
+        std::pair{ "gr"_c, &Int16x2Type },
+        std::pair{ "grg"_c, &Int16x3Type },
+        std::pair{ "grgg"_c, &Int16x4Type },
+        std::pair{ "grgr"_c, &Int16x4Type },
+        std::pair{ "grr"_c, &Int16x3Type },
+        std::pair{ "grrg"_c, &Int16x4Type },
+        std::pair{ "grrr"_c, &Int16x4Type },
+        std::pair{ "operator!=(i16x2)"_c, &Int16x2_operator_neq_Int16x2 },
+        std::pair{ "operator%(i16x2)"_c, &Int16x2_operator_mod_Int16x2 },
+        std::pair{ "operator&(i16x2)"_c, &Int16x2_operator_and_Int16x2 },
+        std::pair{ "operator&=(i16x2)"_c, &Int16x2_operator_andasg_Int16x2 },
+        std::pair{ "operator*(f16)"_c, &Int16x2_operator_scale_Float16 },
+        std::pair{ "operator*(f32)"_c, &Int16x2_operator_scale_Float32 },
+        std::pair{ "operator*(i16)"_c, &Int16x2_operator_scale_Int16 },
+        std::pair{ "operator*(i16x2)"_c, &Int16x2_operator_mul_Int16x2 },
+        std::pair{ "operator*(i32)"_c, &Int16x2_operator_scale_Int32 },
+        std::pair{ "operator*(u16)"_c, &Int16x2_operator_scale_UInt16 },
+        std::pair{ "operator*(u32)"_c, &Int16x2_operator_scale_UInt32 },
+        std::pair{ "operator*=(i16x2)"_c, &Int16x2_operator_mulasg_Int16x2 },
+        std::pair{ "operator+(i16x2)"_c, &Int16x2_operator_add_Int16x2 },
+        std::pair{ "operator+=(i16x2)"_c, &Int16x2_operator_addasg_Int16x2 },
+        std::pair{ "operator-(i16x2)"_c, &Int16x2_operator_sub_Int16x2 },
+        std::pair{ "operator-=(i16x2)"_c, &Int16x2_operator_subasg_Int16x2 },
+        std::pair{ "operator/(i16x2)"_c, &Int16x2_operator_div_Int16x2 },
+        std::pair{ "operator/=(i16x2)"_c, &Int16x2_operator_divasg_Int16x2 },
+        std::pair{ "operator<(i16x2)"_c, &Int16x2_operator_lt_Int16x2 },
+        std::pair{ "operator<<(i16x2)"_c, &Int16x2_operator_lsh_Int16x2 },
+        std::pair{ "operator<<=(i16x2)"_c, &Int16x2_operator_lshasg_Int16x2 },
+        std::pair{ "operator<=(i16x2)"_c, &Int16x2_operator_lte_Int16x2 },
+        std::pair{ "operator==(i16x2)"_c, &Int16x2_operator_eq_Int16x2 },
+        std::pair{ "operator>(i16x2)"_c, &Int16x2_operator_gt_Int16x2 },
+        std::pair{ "operator>=(i16x2)"_c, &Int16x2_operator_gte_Int16x2 },
+        std::pair{ "operator>>(i16x2)"_c, &Int16x2_operator_rsh_Int16x2 },
+        std::pair{ "operator>>=(i16x2)"_c, &Int16x2_operator_rhsasg_Int16x2 },
+        std::pair{ "operator[](i16)"_c, &Int16x2_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &Int16x2_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &Int16x2_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &Int16x2_operator_index_UInt32 },
+        std::pair{ "operator^(i16x2)"_c, &Int16x2_operator_xor_Int16x2 },
+        std::pair{ "operator^=(i16x2)"_c, &Int16x2_operator_xorasg_Int16x2 },
+        std::pair{ "operator|(i16x2)"_c, &Int16x2_operator_or_Int16x2 },
+        std::pair{ "operator|=(i16x2)"_c, &Int16x2_operator_orasg_Int16x2 },
+        std::pair{ "r"_c, &Int16Type },
+        std::pair{ "rg"_c, &Int16x2Type },
+        std::pair{ "rgg"_c, &Int16x3Type },
+        std::pair{ "rggg"_c, &Int16x4Type },
+        std::pair{ "rggr"_c, &Int16x4Type },
+        std::pair{ "rgr"_c, &Int16x3Type },
+        std::pair{ "rgrg"_c, &Int16x4Type },
+        std::pair{ "rgrr"_c, &Int16x4Type },
+        std::pair{ "rr"_c, &Int16x2Type },
+        std::pair{ "rrg"_c, &Int16x3Type },
+        std::pair{ "rrgg"_c, &Int16x4Type },
+        std::pair{ "rrgr"_c, &Int16x4Type },
+        std::pair{ "rrr"_c, &Int16x3Type },
+        std::pair{ "rrrg"_c, &Int16x4Type },
+        std::pair{ "rrrr"_c, &Int16x4Type },
+        std::pair{ "x"_c, &Int16Type },
+        std::pair{ "xx"_c, &Int16x2Type },
+        std::pair{ "xxx"_c, &Int16x3Type },
+        std::pair{ "xxxx"_c, &Int16x4Type },
+        std::pair{ "xxxy"_c, &Int16x4Type },
+        std::pair{ "xxy"_c, &Int16x3Type },
+        std::pair{ "xxyx"_c, &Int16x4Type },
+        std::pair{ "xxyy"_c, &Int16x4Type },
+        std::pair{ "xy"_c, &Int16x2Type },
+        std::pair{ "xyx"_c, &Int16x3Type },
+        std::pair{ "xyxx"_c, &Int16x4Type },
+        std::pair{ "xyxy"_c, &Int16x4Type },
+        std::pair{ "xyy"_c, &Int16x3Type },
+        std::pair{ "xyyx"_c, &Int16x4Type },
+        std::pair{ "xyyy"_c, &Int16x4Type },
+        std::pair{ "y"_c, &Int16Type },
+        std::pair{ "yx"_c, &Int16x2Type },
+        std::pair{ "yxx"_c, &Int16x3Type },
+        std::pair{ "yxxx"_c, &Int16x4Type },
+        std::pair{ "yxxy"_c, &Int16x4Type },
+        std::pair{ "yxy"_c, &Int16x3Type },
+        std::pair{ "yxyx"_c, &Int16x4Type },
+        std::pair{ "yxyy"_c, &Int16x4Type },
+        std::pair{ "yy"_c, &Int16x2Type },
+        std::pair{ "yyx"_c, &Int16x3Type },
+        std::pair{ "yyxx"_c, &Int16x4Type },
+        std::pair{ "yyxy"_c, &Int16x4Type },
+        std::pair{ "yyy"_c, &Int16x3Type },
+        std::pair{ "yyyx"_c, &Int16x4Type },
+        std::pair{ "yyyy"_c, &Int16x4Type }
     };
 }
 Int16x2 Int16x2Type;
@@ -7928,19 +8348,19 @@ Function Float32x3_operator_scale_Int16;
 inline constexpr std::array Float32x3_operator_scale_Int16_args = { &Float32x3_operator_scale_Int16_arg0 };
 
 /// operator* with Float32x3x2
-Variable Float32x3_operator_mul_Float32x3x2_arg0;
-Function Float32x3_operator_mul_Float32x3x2;
-inline constexpr std::array Float32x3_operator_mul_Float32x3x2_args = { &Float32x3_operator_mul_Float32x3x2_arg0 };
+Variable Float32x3_operator_transform_Float32x3x2_arg0;
+Function Float32x3_operator_transform_Float32x3x2;
+inline constexpr std::array Float32x3_operator_transform_Float32x3x2_args = { &Float32x3_operator_transform_Float32x3x2_arg0 };
 
 /// operator* with Float32x3x3
-Variable Float32x3_operator_mul_Float32x3x3_arg0;
-Function Float32x3_operator_mul_Float32x3x3;
-inline constexpr std::array Float32x3_operator_mul_Float32x3x3_args = { &Float32x3_operator_mul_Float32x3x3_arg0 };
+Variable Float32x3_operator_transform_Float32x3x3_arg0;
+Function Float32x3_operator_transform_Float32x3x3;
+inline constexpr std::array Float32x3_operator_transform_Float32x3x3_args = { &Float32x3_operator_transform_Float32x3x3_arg0 };
 
 /// operator* with Float32x3x4
-Variable Float32x3_operator_mul_Float32x3x4_arg0;
-Function Float32x3_operator_mul_Float32x3x4;
-inline constexpr std::array Float32x3_operator_mul_Float32x3x4_args = { &Float32x3_operator_mul_Float32x3x4_arg0 };
+Variable Float32x3_operator_transform_Float32x3x4_arg0;
+Function Float32x3_operator_transform_Float32x3x4;
+inline constexpr std::array Float32x3_operator_transform_Float32x3x4_args = { &Float32x3_operator_transform_Float32x3x4_arg0 };
 
 Float32x3::Float32x3()
 {
@@ -8337,61 +8757,301 @@ Float32x3::Float32x3()
     Symbol::Resolved(&Float32x3_operator_scale_Int16)->returnTypeSymbol = &Float32x3Type;
 
     /// operator* with Float32x3x2
-    Float32x3_operator_mul_Float32x3x2_arg0.name = "_arg0"_c;
-    Float32x3_operator_mul_Float32x3x2_arg0.type = Type::FullType{ Float32x3x2Type.name };
-    Float32x3_operator_mul_Float32x3x2.name = "operator*"_c;
-    Float32x3_operator_mul_Float32x3x2.returnType = Type::FullType { Float32x2Type.name };
-    Float32x3_operator_mul_Float32x3x2.parameters = Float32x3_operator_mul_Float32x3x2_args;
-    Symbol::Resolved(&Float32x3_operator_mul_Float32x3x2_arg0)->typeSymbol = &Float32x3x2Type;
-    Symbol::Resolved(&Float32x3_operator_mul_Float32x3x2)->returnTypeSymbol = &Float32x2Type;
+    Float32x3_operator_transform_Float32x3x2_arg0.name = "_arg0"_c;
+    Float32x3_operator_transform_Float32x3x2_arg0.type = Type::FullType{ Float32x3x2Type.name };
+    Float32x3_operator_transform_Float32x3x2.name = "operator*"_c;
+    Float32x3_operator_transform_Float32x3x2.returnType = Type::FullType { Float32x2Type.name };
+    Float32x3_operator_transform_Float32x3x2.parameters = Float32x3_operator_transform_Float32x3x2_args;
+    Symbol::Resolved(&Float32x3_operator_transform_Float32x3x2_arg0)->typeSymbol = &Float32x3x2Type;
+    Symbol::Resolved(&Float32x3_operator_transform_Float32x3x2)->returnTypeSymbol = &Float32x2Type;
 
     /// operator* with Float32x3x3
-    Float32x3_operator_mul_Float32x3x3_arg0.name = "_arg0"_c;
-    Float32x3_operator_mul_Float32x3x3_arg0.type = Type::FullType{ Float32x3x3Type.name };
-    Float32x3_operator_mul_Float32x3x3.name = "operator*"_c;
-    Float32x3_operator_mul_Float32x3x3.returnType = Type::FullType { Float32x3Type.name };
-    Float32x3_operator_mul_Float32x3x3.parameters = Float32x3_operator_mul_Float32x3x3_args;
-    Symbol::Resolved(&Float32x3_operator_mul_Float32x3x3_arg0)->typeSymbol = &Float32x3x3Type;
-    Symbol::Resolved(&Float32x3_operator_mul_Float32x3x3)->returnTypeSymbol = &Float32x3Type;
+    Float32x3_operator_transform_Float32x3x3_arg0.name = "_arg0"_c;
+    Float32x3_operator_transform_Float32x3x3_arg0.type = Type::FullType{ Float32x3x3Type.name };
+    Float32x3_operator_transform_Float32x3x3.name = "operator*"_c;
+    Float32x3_operator_transform_Float32x3x3.returnType = Type::FullType { Float32x3Type.name };
+    Float32x3_operator_transform_Float32x3x3.parameters = Float32x3_operator_transform_Float32x3x3_args;
+    Symbol::Resolved(&Float32x3_operator_transform_Float32x3x3_arg0)->typeSymbol = &Float32x3x3Type;
+    Symbol::Resolved(&Float32x3_operator_transform_Float32x3x3)->returnTypeSymbol = &Float32x3Type;
 
     /// operator* with Float32x3x4
-    Float32x3_operator_mul_Float32x3x4_arg0.name = "_arg0"_c;
-    Float32x3_operator_mul_Float32x3x4_arg0.type = Type::FullType{ Float32x3x4Type.name };
-    Float32x3_operator_mul_Float32x3x4.name = "operator*"_c;
-    Float32x3_operator_mul_Float32x3x4.returnType = Type::FullType { Float32x4Type.name };
-    Float32x3_operator_mul_Float32x3x4.parameters = Float32x3_operator_mul_Float32x3x4_args;
-    Symbol::Resolved(&Float32x3_operator_mul_Float32x3x4_arg0)->typeSymbol = &Float32x3x4Type;
-    Symbol::Resolved(&Float32x3_operator_mul_Float32x3x4)->returnTypeSymbol = &Float32x4Type;
+    Float32x3_operator_transform_Float32x3x4_arg0.name = "_arg0"_c;
+    Float32x3_operator_transform_Float32x3x4_arg0.type = Type::FullType{ Float32x3x4Type.name };
+    Float32x3_operator_transform_Float32x3x4.name = "operator*"_c;
+    Float32x3_operator_transform_Float32x3x4.returnType = Type::FullType { Float32x4Type.name };
+    Float32x3_operator_transform_Float32x3x4.parameters = Float32x3_operator_transform_Float32x3x4_args;
+    Symbol::Resolved(&Float32x3_operator_transform_Float32x3x4_arg0)->typeSymbol = &Float32x3x4Type;
+    Symbol::Resolved(&Float32x3_operator_transform_Float32x3x4)->returnTypeSymbol = &Float32x4Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 28> { 
-        std::pair{ "operator!=", &Float32x3_operator_neq_Float32x3 },
-        std::pair{ "operator%", &Float32x3_operator_mod_Float32x3 },
-        std::pair{ "operator*", &Float32x3_operator_mul_Float32x3 },
-        std::pair{ "operator*", &Float32x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3_operator_scale_Float16 },
-        std::pair{ "operator*", &Float32x3_operator_scale_UInt32 },
-        std::pair{ "operator*", &Float32x3_operator_scale_UInt16 },
-        std::pair{ "operator*", &Float32x3_operator_scale_Int32 },
-        std::pair{ "operator*", &Float32x3_operator_scale_Int16 },
-        std::pair{ "operator*", &Float32x3_operator_mul_Float32x3x2 },
-        std::pair{ "operator*", &Float32x3_operator_mul_Float32x3x3 },
-        std::pair{ "operator*", &Float32x3_operator_mul_Float32x3x4 },
-        std::pair{ "operator*=", &Float32x3_operator_mulasg_Float32x3 },
-        std::pair{ "operator+", &Float32x3_operator_add_Float32x3 },
-        std::pair{ "operator+=", &Float32x3_operator_addasg_Float32x3 },
-        std::pair{ "operator-", &Float32x3_operator_sub_Float32x3 },
-        std::pair{ "operator-=", &Float32x3_operator_subasg_Float32x3 },
-        std::pair{ "operator/", &Float32x3_operator_div_Float32x3 },
-        std::pair{ "operator/=", &Float32x3_operator_divasg_Float32x3 },
-        std::pair{ "operator<", &Float32x3_operator_lt_Float32x3 },
-        std::pair{ "operator<=", &Float32x3_operator_lte_Float32x3 },
-        std::pair{ "operator==", &Float32x3_operator_eq_Float32x3 },
-        std::pair{ "operator>", &Float32x3_operator_gt_Float32x3 },
-        std::pair{ "operator>=", &Float32x3_operator_gte_Float32x3 },
-        std::pair{ "operator[]", &Float32x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3_operator_index_UInt16 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 268> { 
+        std::pair{ "b"_c, &Float32Type },
+        std::pair{ "bb"_c, &Float32x2Type },
+        std::pair{ "bbb"_c, &Float32x3Type },
+        std::pair{ "bbbb"_c, &Float32x4Type },
+        std::pair{ "bbbg"_c, &Float32x4Type },
+        std::pair{ "bbbr"_c, &Float32x4Type },
+        std::pair{ "bbg"_c, &Float32x3Type },
+        std::pair{ "bbgb"_c, &Float32x4Type },
+        std::pair{ "bbgg"_c, &Float32x4Type },
+        std::pair{ "bbgr"_c, &Float32x4Type },
+        std::pair{ "bbr"_c, &Float32x3Type },
+        std::pair{ "bbrb"_c, &Float32x4Type },
+        std::pair{ "bbrg"_c, &Float32x4Type },
+        std::pair{ "bbrr"_c, &Float32x4Type },
+        std::pair{ "bg"_c, &Float32x2Type },
+        std::pair{ "bgb"_c, &Float32x3Type },
+        std::pair{ "bgbb"_c, &Float32x4Type },
+        std::pair{ "bgbg"_c, &Float32x4Type },
+        std::pair{ "bgbr"_c, &Float32x4Type },
+        std::pair{ "bgg"_c, &Float32x3Type },
+        std::pair{ "bggb"_c, &Float32x4Type },
+        std::pair{ "bggg"_c, &Float32x4Type },
+        std::pair{ "bggr"_c, &Float32x4Type },
+        std::pair{ "bgr"_c, &Float32x3Type },
+        std::pair{ "bgrb"_c, &Float32x4Type },
+        std::pair{ "bgrg"_c, &Float32x4Type },
+        std::pair{ "bgrr"_c, &Float32x4Type },
+        std::pair{ "br"_c, &Float32x2Type },
+        std::pair{ "brb"_c, &Float32x3Type },
+        std::pair{ "brbb"_c, &Float32x4Type },
+        std::pair{ "brbg"_c, &Float32x4Type },
+        std::pair{ "brbr"_c, &Float32x4Type },
+        std::pair{ "brg"_c, &Float32x3Type },
+        std::pair{ "brgb"_c, &Float32x4Type },
+        std::pair{ "brgg"_c, &Float32x4Type },
+        std::pair{ "brgr"_c, &Float32x4Type },
+        std::pair{ "brr"_c, &Float32x3Type },
+        std::pair{ "brrb"_c, &Float32x4Type },
+        std::pair{ "brrg"_c, &Float32x4Type },
+        std::pair{ "brrr"_c, &Float32x4Type },
+        std::pair{ "g"_c, &Float32Type },
+        std::pair{ "gb"_c, &Float32x2Type },
+        std::pair{ "gbb"_c, &Float32x3Type },
+        std::pair{ "gbbb"_c, &Float32x4Type },
+        std::pair{ "gbbg"_c, &Float32x4Type },
+        std::pair{ "gbbr"_c, &Float32x4Type },
+        std::pair{ "gbg"_c, &Float32x3Type },
+        std::pair{ "gbgb"_c, &Float32x4Type },
+        std::pair{ "gbgg"_c, &Float32x4Type },
+        std::pair{ "gbgr"_c, &Float32x4Type },
+        std::pair{ "gbr"_c, &Float32x3Type },
+        std::pair{ "gbrb"_c, &Float32x4Type },
+        std::pair{ "gbrg"_c, &Float32x4Type },
+        std::pair{ "gbrr"_c, &Float32x4Type },
+        std::pair{ "gg"_c, &Float32x2Type },
+        std::pair{ "ggb"_c, &Float32x3Type },
+        std::pair{ "ggbb"_c, &Float32x4Type },
+        std::pair{ "ggbg"_c, &Float32x4Type },
+        std::pair{ "ggbr"_c, &Float32x4Type },
+        std::pair{ "ggg"_c, &Float32x3Type },
+        std::pair{ "gggb"_c, &Float32x4Type },
+        std::pair{ "gggg"_c, &Float32x4Type },
+        std::pair{ "gggr"_c, &Float32x4Type },
+        std::pair{ "ggr"_c, &Float32x3Type },
+        std::pair{ "ggrb"_c, &Float32x4Type },
+        std::pair{ "ggrg"_c, &Float32x4Type },
+        std::pair{ "ggrr"_c, &Float32x4Type },
+        std::pair{ "gr"_c, &Float32x2Type },
+        std::pair{ "grb"_c, &Float32x3Type },
+        std::pair{ "grbb"_c, &Float32x4Type },
+        std::pair{ "grbg"_c, &Float32x4Type },
+        std::pair{ "grbr"_c, &Float32x4Type },
+        std::pair{ "grg"_c, &Float32x3Type },
+        std::pair{ "grgb"_c, &Float32x4Type },
+        std::pair{ "grgg"_c, &Float32x4Type },
+        std::pair{ "grgr"_c, &Float32x4Type },
+        std::pair{ "grr"_c, &Float32x3Type },
+        std::pair{ "grrb"_c, &Float32x4Type },
+        std::pair{ "grrg"_c, &Float32x4Type },
+        std::pair{ "grrr"_c, &Float32x4Type },
+        std::pair{ "operator!=(f32x3)"_c, &Float32x3_operator_neq_Float32x3 },
+        std::pair{ "operator%(f32x3)"_c, &Float32x3_operator_mod_Float32x3 },
+        std::pair{ "operator*(f16)"_c, &Float32x3_operator_scale_Float16 },
+        std::pair{ "operator*(f32)"_c, &Float32x3_operator_scale_Float32 },
+        std::pair{ "operator*(f32x3)"_c, &Float32x3_operator_mul_Float32x3 },
+        std::pair{ "operator*(f32x3x2)"_c, &Float32x3_operator_transform_Float32x3x2 },
+        std::pair{ "operator*(f32x3x3)"_c, &Float32x3_operator_transform_Float32x3x3 },
+        std::pair{ "operator*(f32x3x4)"_c, &Float32x3_operator_transform_Float32x3x4 },
+        std::pair{ "operator*(i16)"_c, &Float32x3_operator_scale_Int16 },
+        std::pair{ "operator*(i32)"_c, &Float32x3_operator_scale_Int32 },
+        std::pair{ "operator*(u16)"_c, &Float32x3_operator_scale_UInt16 },
+        std::pair{ "operator*(u32)"_c, &Float32x3_operator_scale_UInt32 },
+        std::pair{ "operator*=(f32x3)"_c, &Float32x3_operator_mulasg_Float32x3 },
+        std::pair{ "operator+(f32x3)"_c, &Float32x3_operator_add_Float32x3 },
+        std::pair{ "operator+=(f32x3)"_c, &Float32x3_operator_addasg_Float32x3 },
+        std::pair{ "operator-(f32x3)"_c, &Float32x3_operator_sub_Float32x3 },
+        std::pair{ "operator-=(f32x3)"_c, &Float32x3_operator_subasg_Float32x3 },
+        std::pair{ "operator/(f32x3)"_c, &Float32x3_operator_div_Float32x3 },
+        std::pair{ "operator/=(f32x3)"_c, &Float32x3_operator_divasg_Float32x3 },
+        std::pair{ "operator<(f32x3)"_c, &Float32x3_operator_lt_Float32x3 },
+        std::pair{ "operator<=(f32x3)"_c, &Float32x3_operator_lte_Float32x3 },
+        std::pair{ "operator==(f32x3)"_c, &Float32x3_operator_eq_Float32x3 },
+        std::pair{ "operator>(f32x3)"_c, &Float32x3_operator_gt_Float32x3 },
+        std::pair{ "operator>=(f32x3)"_c, &Float32x3_operator_gte_Float32x3 },
+        std::pair{ "operator[](i16)"_c, &Float32x3_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &Float32x3_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &Float32x3_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &Float32x3_operator_index_UInt32 },
+        std::pair{ "r"_c, &Float32Type },
+        std::pair{ "rb"_c, &Float32x2Type },
+        std::pair{ "rbb"_c, &Float32x3Type },
+        std::pair{ "rbbb"_c, &Float32x4Type },
+        std::pair{ "rbbg"_c, &Float32x4Type },
+        std::pair{ "rbbr"_c, &Float32x4Type },
+        std::pair{ "rbg"_c, &Float32x3Type },
+        std::pair{ "rbgb"_c, &Float32x4Type },
+        std::pair{ "rbgg"_c, &Float32x4Type },
+        std::pair{ "rbgr"_c, &Float32x4Type },
+        std::pair{ "rbr"_c, &Float32x3Type },
+        std::pair{ "rbrb"_c, &Float32x4Type },
+        std::pair{ "rbrg"_c, &Float32x4Type },
+        std::pair{ "rbrr"_c, &Float32x4Type },
+        std::pair{ "rg"_c, &Float32x2Type },
+        std::pair{ "rgb"_c, &Float32x3Type },
+        std::pair{ "rgbb"_c, &Float32x4Type },
+        std::pair{ "rgbg"_c, &Float32x4Type },
+        std::pair{ "rgbr"_c, &Float32x4Type },
+        std::pair{ "rgg"_c, &Float32x3Type },
+        std::pair{ "rggb"_c, &Float32x4Type },
+        std::pair{ "rggg"_c, &Float32x4Type },
+        std::pair{ "rggr"_c, &Float32x4Type },
+        std::pair{ "rgr"_c, &Float32x3Type },
+        std::pair{ "rgrb"_c, &Float32x4Type },
+        std::pair{ "rgrg"_c, &Float32x4Type },
+        std::pair{ "rgrr"_c, &Float32x4Type },
+        std::pair{ "rr"_c, &Float32x2Type },
+        std::pair{ "rrb"_c, &Float32x3Type },
+        std::pair{ "rrbb"_c, &Float32x4Type },
+        std::pair{ "rrbg"_c, &Float32x4Type },
+        std::pair{ "rrbr"_c, &Float32x4Type },
+        std::pair{ "rrg"_c, &Float32x3Type },
+        std::pair{ "rrgb"_c, &Float32x4Type },
+        std::pair{ "rrgg"_c, &Float32x4Type },
+        std::pair{ "rrgr"_c, &Float32x4Type },
+        std::pair{ "rrr"_c, &Float32x3Type },
+        std::pair{ "rrrb"_c, &Float32x4Type },
+        std::pair{ "rrrg"_c, &Float32x4Type },
+        std::pair{ "rrrr"_c, &Float32x4Type },
+        std::pair{ "x"_c, &Float32Type },
+        std::pair{ "xx"_c, &Float32x2Type },
+        std::pair{ "xxx"_c, &Float32x3Type },
+        std::pair{ "xxxx"_c, &Float32x4Type },
+        std::pair{ "xxxy"_c, &Float32x4Type },
+        std::pair{ "xxxz"_c, &Float32x4Type },
+        std::pair{ "xxy"_c, &Float32x3Type },
+        std::pair{ "xxyx"_c, &Float32x4Type },
+        std::pair{ "xxyy"_c, &Float32x4Type },
+        std::pair{ "xxyz"_c, &Float32x4Type },
+        std::pair{ "xxz"_c, &Float32x3Type },
+        std::pair{ "xxzx"_c, &Float32x4Type },
+        std::pair{ "xxzy"_c, &Float32x4Type },
+        std::pair{ "xxzz"_c, &Float32x4Type },
+        std::pair{ "xy"_c, &Float32x2Type },
+        std::pair{ "xyx"_c, &Float32x3Type },
+        std::pair{ "xyxx"_c, &Float32x4Type },
+        std::pair{ "xyxy"_c, &Float32x4Type },
+        std::pair{ "xyxz"_c, &Float32x4Type },
+        std::pair{ "xyy"_c, &Float32x3Type },
+        std::pair{ "xyyx"_c, &Float32x4Type },
+        std::pair{ "xyyy"_c, &Float32x4Type },
+        std::pair{ "xyyz"_c, &Float32x4Type },
+        std::pair{ "xyz"_c, &Float32x3Type },
+        std::pair{ "xyzx"_c, &Float32x4Type },
+        std::pair{ "xyzy"_c, &Float32x4Type },
+        std::pair{ "xyzz"_c, &Float32x4Type },
+        std::pair{ "xz"_c, &Float32x2Type },
+        std::pair{ "xzx"_c, &Float32x3Type },
+        std::pair{ "xzxx"_c, &Float32x4Type },
+        std::pair{ "xzxy"_c, &Float32x4Type },
+        std::pair{ "xzxz"_c, &Float32x4Type },
+        std::pair{ "xzy"_c, &Float32x3Type },
+        std::pair{ "xzyx"_c, &Float32x4Type },
+        std::pair{ "xzyy"_c, &Float32x4Type },
+        std::pair{ "xzyz"_c, &Float32x4Type },
+        std::pair{ "xzz"_c, &Float32x3Type },
+        std::pair{ "xzzx"_c, &Float32x4Type },
+        std::pair{ "xzzy"_c, &Float32x4Type },
+        std::pair{ "xzzz"_c, &Float32x4Type },
+        std::pair{ "y"_c, &Float32Type },
+        std::pair{ "yx"_c, &Float32x2Type },
+        std::pair{ "yxx"_c, &Float32x3Type },
+        std::pair{ "yxxx"_c, &Float32x4Type },
+        std::pair{ "yxxy"_c, &Float32x4Type },
+        std::pair{ "yxxz"_c, &Float32x4Type },
+        std::pair{ "yxy"_c, &Float32x3Type },
+        std::pair{ "yxyx"_c, &Float32x4Type },
+        std::pair{ "yxyy"_c, &Float32x4Type },
+        std::pair{ "yxyz"_c, &Float32x4Type },
+        std::pair{ "yxz"_c, &Float32x3Type },
+        std::pair{ "yxzx"_c, &Float32x4Type },
+        std::pair{ "yxzy"_c, &Float32x4Type },
+        std::pair{ "yxzz"_c, &Float32x4Type },
+        std::pair{ "yy"_c, &Float32x2Type },
+        std::pair{ "yyx"_c, &Float32x3Type },
+        std::pair{ "yyxx"_c, &Float32x4Type },
+        std::pair{ "yyxy"_c, &Float32x4Type },
+        std::pair{ "yyxz"_c, &Float32x4Type },
+        std::pair{ "yyy"_c, &Float32x3Type },
+        std::pair{ "yyyx"_c, &Float32x4Type },
+        std::pair{ "yyyy"_c, &Float32x4Type },
+        std::pair{ "yyyz"_c, &Float32x4Type },
+        std::pair{ "yyz"_c, &Float32x3Type },
+        std::pair{ "yyzx"_c, &Float32x4Type },
+        std::pair{ "yyzy"_c, &Float32x4Type },
+        std::pair{ "yyzz"_c, &Float32x4Type },
+        std::pair{ "yz"_c, &Float32x2Type },
+        std::pair{ "yzx"_c, &Float32x3Type },
+        std::pair{ "yzxx"_c, &Float32x4Type },
+        std::pair{ "yzxy"_c, &Float32x4Type },
+        std::pair{ "yzxz"_c, &Float32x4Type },
+        std::pair{ "yzy"_c, &Float32x3Type },
+        std::pair{ "yzyx"_c, &Float32x4Type },
+        std::pair{ "yzyy"_c, &Float32x4Type },
+        std::pair{ "yzyz"_c, &Float32x4Type },
+        std::pair{ "yzz"_c, &Float32x3Type },
+        std::pair{ "yzzx"_c, &Float32x4Type },
+        std::pair{ "yzzy"_c, &Float32x4Type },
+        std::pair{ "yzzz"_c, &Float32x4Type },
+        std::pair{ "z"_c, &Float32Type },
+        std::pair{ "zx"_c, &Float32x2Type },
+        std::pair{ "zxx"_c, &Float32x3Type },
+        std::pair{ "zxxx"_c, &Float32x4Type },
+        std::pair{ "zxxy"_c, &Float32x4Type },
+        std::pair{ "zxxz"_c, &Float32x4Type },
+        std::pair{ "zxy"_c, &Float32x3Type },
+        std::pair{ "zxyx"_c, &Float32x4Type },
+        std::pair{ "zxyy"_c, &Float32x4Type },
+        std::pair{ "zxyz"_c, &Float32x4Type },
+        std::pair{ "zxz"_c, &Float32x3Type },
+        std::pair{ "zxzx"_c, &Float32x4Type },
+        std::pair{ "zxzy"_c, &Float32x4Type },
+        std::pair{ "zxzz"_c, &Float32x4Type },
+        std::pair{ "zy"_c, &Float32x2Type },
+        std::pair{ "zyx"_c, &Float32x3Type },
+        std::pair{ "zyxx"_c, &Float32x4Type },
+        std::pair{ "zyxy"_c, &Float32x4Type },
+        std::pair{ "zyxz"_c, &Float32x4Type },
+        std::pair{ "zyy"_c, &Float32x3Type },
+        std::pair{ "zyyx"_c, &Float32x4Type },
+        std::pair{ "zyyy"_c, &Float32x4Type },
+        std::pair{ "zyyz"_c, &Float32x4Type },
+        std::pair{ "zyz"_c, &Float32x3Type },
+        std::pair{ "zyzx"_c, &Float32x4Type },
+        std::pair{ "zyzy"_c, &Float32x4Type },
+        std::pair{ "zyzz"_c, &Float32x4Type },
+        std::pair{ "zz"_c, &Float32x2Type },
+        std::pair{ "zzx"_c, &Float32x3Type },
+        std::pair{ "zzxx"_c, &Float32x4Type },
+        std::pair{ "zzxy"_c, &Float32x4Type },
+        std::pair{ "zzxz"_c, &Float32x4Type },
+        std::pair{ "zzy"_c, &Float32x3Type },
+        std::pair{ "zzyx"_c, &Float32x4Type },
+        std::pair{ "zzyy"_c, &Float32x4Type },
+        std::pair{ "zzyz"_c, &Float32x4Type },
+        std::pair{ "zzz"_c, &Float32x3Type },
+        std::pair{ "zzzx"_c, &Float32x4Type },
+        std::pair{ "zzzy"_c, &Float32x4Type },
+        std::pair{ "zzzz"_c, &Float32x4Type }
     };
 }
 Float32x3 Float32x3Type;
@@ -9134,42 +9794,282 @@ UInt32x3::UInt32x3()
     Symbol::Resolved(&UInt32x3_operator_rhsasg_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&UInt32x3_operator_rhsasg_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 35> { 
-        std::pair{ "operator!=", &UInt32x3_operator_neq_UInt32x3 },
-        std::pair{ "operator%", &UInt32x3_operator_mod_UInt32x3 },
-        std::pair{ "operator&", &UInt32x3_operator_and_UInt32x3 },
-        std::pair{ "operator&=", &UInt32x3_operator_andasg_UInt32x3 },
-        std::pair{ "operator*", &UInt32x3_operator_mul_UInt32x3 },
-        std::pair{ "operator*", &UInt32x3_operator_scale_Float32 },
-        std::pair{ "operator*", &UInt32x3_operator_scale_Float16 },
-        std::pair{ "operator*", &UInt32x3_operator_scale_UInt32 },
-        std::pair{ "operator*", &UInt32x3_operator_scale_UInt16 },
-        std::pair{ "operator*", &UInt32x3_operator_scale_Int32 },
-        std::pair{ "operator*", &UInt32x3_operator_scale_Int16 },
-        std::pair{ "operator*=", &UInt32x3_operator_mulasg_UInt32x3 },
-        std::pair{ "operator+", &UInt32x3_operator_add_UInt32x3 },
-        std::pair{ "operator+=", &UInt32x3_operator_addasg_UInt32x3 },
-        std::pair{ "operator-", &UInt32x3_operator_sub_UInt32x3 },
-        std::pair{ "operator-=", &UInt32x3_operator_subasg_UInt32x3 },
-        std::pair{ "operator/", &UInt32x3_operator_div_UInt32x3 },
-        std::pair{ "operator/=", &UInt32x3_operator_divasg_UInt32x3 },
-        std::pair{ "operator<", &UInt32x3_operator_lt_UInt32x3 },
-        std::pair{ "operator<<", &UInt32x3_operator_lsh_UInt32x3 },
-        std::pair{ "operator<<=", &UInt32x3_operator_lshasg_UInt32x3 },
-        std::pair{ "operator<=", &UInt32x3_operator_lte_UInt32x3 },
-        std::pair{ "operator==", &UInt32x3_operator_eq_UInt32x3 },
-        std::pair{ "operator>", &UInt32x3_operator_gt_UInt32x3 },
-        std::pair{ "operator>=", &UInt32x3_operator_gte_UInt32x3 },
-        std::pair{ "operator>>", &UInt32x3_operator_rsh_UInt32x3 },
-        std::pair{ "operator>>=", &UInt32x3_operator_rhsasg_UInt32x3 },
-        std::pair{ "operator[]", &UInt32x3_operator_index_Int32 },
-        std::pair{ "operator[]", &UInt32x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &UInt32x3_operator_index_Int16 },
-        std::pair{ "operator[]", &UInt32x3_operator_index_UInt16 },
-        std::pair{ "operator^", &UInt32x3_operator_xor_UInt32x3 },
-        std::pair{ "operator^=", &UInt32x3_operator_xorasg_UInt32x3 },
-        std::pair{ "operator|", &UInt32x3_operator_or_UInt32x3 },
-        std::pair{ "operator|=", &UInt32x3_operator_orasg_UInt32x3 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 275> { 
+        std::pair{ "b"_c, &UInt32Type },
+        std::pair{ "bb"_c, &UInt32x2Type },
+        std::pair{ "bbb"_c, &UInt32x3Type },
+        std::pair{ "bbbb"_c, &UInt32x4Type },
+        std::pair{ "bbbg"_c, &UInt32x4Type },
+        std::pair{ "bbbr"_c, &UInt32x4Type },
+        std::pair{ "bbg"_c, &UInt32x3Type },
+        std::pair{ "bbgb"_c, &UInt32x4Type },
+        std::pair{ "bbgg"_c, &UInt32x4Type },
+        std::pair{ "bbgr"_c, &UInt32x4Type },
+        std::pair{ "bbr"_c, &UInt32x3Type },
+        std::pair{ "bbrb"_c, &UInt32x4Type },
+        std::pair{ "bbrg"_c, &UInt32x4Type },
+        std::pair{ "bbrr"_c, &UInt32x4Type },
+        std::pair{ "bg"_c, &UInt32x2Type },
+        std::pair{ "bgb"_c, &UInt32x3Type },
+        std::pair{ "bgbb"_c, &UInt32x4Type },
+        std::pair{ "bgbg"_c, &UInt32x4Type },
+        std::pair{ "bgbr"_c, &UInt32x4Type },
+        std::pair{ "bgg"_c, &UInt32x3Type },
+        std::pair{ "bggb"_c, &UInt32x4Type },
+        std::pair{ "bggg"_c, &UInt32x4Type },
+        std::pair{ "bggr"_c, &UInt32x4Type },
+        std::pair{ "bgr"_c, &UInt32x3Type },
+        std::pair{ "bgrb"_c, &UInt32x4Type },
+        std::pair{ "bgrg"_c, &UInt32x4Type },
+        std::pair{ "bgrr"_c, &UInt32x4Type },
+        std::pair{ "br"_c, &UInt32x2Type },
+        std::pair{ "brb"_c, &UInt32x3Type },
+        std::pair{ "brbb"_c, &UInt32x4Type },
+        std::pair{ "brbg"_c, &UInt32x4Type },
+        std::pair{ "brbr"_c, &UInt32x4Type },
+        std::pair{ "brg"_c, &UInt32x3Type },
+        std::pair{ "brgb"_c, &UInt32x4Type },
+        std::pair{ "brgg"_c, &UInt32x4Type },
+        std::pair{ "brgr"_c, &UInt32x4Type },
+        std::pair{ "brr"_c, &UInt32x3Type },
+        std::pair{ "brrb"_c, &UInt32x4Type },
+        std::pair{ "brrg"_c, &UInt32x4Type },
+        std::pair{ "brrr"_c, &UInt32x4Type },
+        std::pair{ "g"_c, &UInt32Type },
+        std::pair{ "gb"_c, &UInt32x2Type },
+        std::pair{ "gbb"_c, &UInt32x3Type },
+        std::pair{ "gbbb"_c, &UInt32x4Type },
+        std::pair{ "gbbg"_c, &UInt32x4Type },
+        std::pair{ "gbbr"_c, &UInt32x4Type },
+        std::pair{ "gbg"_c, &UInt32x3Type },
+        std::pair{ "gbgb"_c, &UInt32x4Type },
+        std::pair{ "gbgg"_c, &UInt32x4Type },
+        std::pair{ "gbgr"_c, &UInt32x4Type },
+        std::pair{ "gbr"_c, &UInt32x3Type },
+        std::pair{ "gbrb"_c, &UInt32x4Type },
+        std::pair{ "gbrg"_c, &UInt32x4Type },
+        std::pair{ "gbrr"_c, &UInt32x4Type },
+        std::pair{ "gg"_c, &UInt32x2Type },
+        std::pair{ "ggb"_c, &UInt32x3Type },
+        std::pair{ "ggbb"_c, &UInt32x4Type },
+        std::pair{ "ggbg"_c, &UInt32x4Type },
+        std::pair{ "ggbr"_c, &UInt32x4Type },
+        std::pair{ "ggg"_c, &UInt32x3Type },
+        std::pair{ "gggb"_c, &UInt32x4Type },
+        std::pair{ "gggg"_c, &UInt32x4Type },
+        std::pair{ "gggr"_c, &UInt32x4Type },
+        std::pair{ "ggr"_c, &UInt32x3Type },
+        std::pair{ "ggrb"_c, &UInt32x4Type },
+        std::pair{ "ggrg"_c, &UInt32x4Type },
+        std::pair{ "ggrr"_c, &UInt32x4Type },
+        std::pair{ "gr"_c, &UInt32x2Type },
+        std::pair{ "grb"_c, &UInt32x3Type },
+        std::pair{ "grbb"_c, &UInt32x4Type },
+        std::pair{ "grbg"_c, &UInt32x4Type },
+        std::pair{ "grbr"_c, &UInt32x4Type },
+        std::pair{ "grg"_c, &UInt32x3Type },
+        std::pair{ "grgb"_c, &UInt32x4Type },
+        std::pair{ "grgg"_c, &UInt32x4Type },
+        std::pair{ "grgr"_c, &UInt32x4Type },
+        std::pair{ "grr"_c, &UInt32x3Type },
+        std::pair{ "grrb"_c, &UInt32x4Type },
+        std::pair{ "grrg"_c, &UInt32x4Type },
+        std::pair{ "grrr"_c, &UInt32x4Type },
+        std::pair{ "operator!=(u32x3)"_c, &UInt32x3_operator_neq_UInt32x3 },
+        std::pair{ "operator%(u32x3)"_c, &UInt32x3_operator_mod_UInt32x3 },
+        std::pair{ "operator&(u32x3)"_c, &UInt32x3_operator_and_UInt32x3 },
+        std::pair{ "operator&=(u32x3)"_c, &UInt32x3_operator_andasg_UInt32x3 },
+        std::pair{ "operator*(f16)"_c, &UInt32x3_operator_scale_Float16 },
+        std::pair{ "operator*(f32)"_c, &UInt32x3_operator_scale_Float32 },
+        std::pair{ "operator*(i16)"_c, &UInt32x3_operator_scale_Int16 },
+        std::pair{ "operator*(i32)"_c, &UInt32x3_operator_scale_Int32 },
+        std::pair{ "operator*(u16)"_c, &UInt32x3_operator_scale_UInt16 },
+        std::pair{ "operator*(u32)"_c, &UInt32x3_operator_scale_UInt32 },
+        std::pair{ "operator*(u32x3)"_c, &UInt32x3_operator_mul_UInt32x3 },
+        std::pair{ "operator*=(u32x3)"_c, &UInt32x3_operator_mulasg_UInt32x3 },
+        std::pair{ "operator+(u32x3)"_c, &UInt32x3_operator_add_UInt32x3 },
+        std::pair{ "operator+=(u32x3)"_c, &UInt32x3_operator_addasg_UInt32x3 },
+        std::pair{ "operator-(u32x3)"_c, &UInt32x3_operator_sub_UInt32x3 },
+        std::pair{ "operator-=(u32x3)"_c, &UInt32x3_operator_subasg_UInt32x3 },
+        std::pair{ "operator/(u32x3)"_c, &UInt32x3_operator_div_UInt32x3 },
+        std::pair{ "operator/=(u32x3)"_c, &UInt32x3_operator_divasg_UInt32x3 },
+        std::pair{ "operator<(u32x3)"_c, &UInt32x3_operator_lt_UInt32x3 },
+        std::pair{ "operator<<(u32x3)"_c, &UInt32x3_operator_lsh_UInt32x3 },
+        std::pair{ "operator<<=(u32x3)"_c, &UInt32x3_operator_lshasg_UInt32x3 },
+        std::pair{ "operator<=(u32x3)"_c, &UInt32x3_operator_lte_UInt32x3 },
+        std::pair{ "operator==(u32x3)"_c, &UInt32x3_operator_eq_UInt32x3 },
+        std::pair{ "operator>(u32x3)"_c, &UInt32x3_operator_gt_UInt32x3 },
+        std::pair{ "operator>=(u32x3)"_c, &UInt32x3_operator_gte_UInt32x3 },
+        std::pair{ "operator>>(u32x3)"_c, &UInt32x3_operator_rsh_UInt32x3 },
+        std::pair{ "operator>>=(u32x3)"_c, &UInt32x3_operator_rhsasg_UInt32x3 },
+        std::pair{ "operator[](i16)"_c, &UInt32x3_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &UInt32x3_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &UInt32x3_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &UInt32x3_operator_index_UInt32 },
+        std::pair{ "operator^(u32x3)"_c, &UInt32x3_operator_xor_UInt32x3 },
+        std::pair{ "operator^=(u32x3)"_c, &UInt32x3_operator_xorasg_UInt32x3 },
+        std::pair{ "operator|(u32x3)"_c, &UInt32x3_operator_or_UInt32x3 },
+        std::pair{ "operator|=(u32x3)"_c, &UInt32x3_operator_orasg_UInt32x3 },
+        std::pair{ "r"_c, &UInt32Type },
+        std::pair{ "rb"_c, &UInt32x2Type },
+        std::pair{ "rbb"_c, &UInt32x3Type },
+        std::pair{ "rbbb"_c, &UInt32x4Type },
+        std::pair{ "rbbg"_c, &UInt32x4Type },
+        std::pair{ "rbbr"_c, &UInt32x4Type },
+        std::pair{ "rbg"_c, &UInt32x3Type },
+        std::pair{ "rbgb"_c, &UInt32x4Type },
+        std::pair{ "rbgg"_c, &UInt32x4Type },
+        std::pair{ "rbgr"_c, &UInt32x4Type },
+        std::pair{ "rbr"_c, &UInt32x3Type },
+        std::pair{ "rbrb"_c, &UInt32x4Type },
+        std::pair{ "rbrg"_c, &UInt32x4Type },
+        std::pair{ "rbrr"_c, &UInt32x4Type },
+        std::pair{ "rg"_c, &UInt32x2Type },
+        std::pair{ "rgb"_c, &UInt32x3Type },
+        std::pair{ "rgbb"_c, &UInt32x4Type },
+        std::pair{ "rgbg"_c, &UInt32x4Type },
+        std::pair{ "rgbr"_c, &UInt32x4Type },
+        std::pair{ "rgg"_c, &UInt32x3Type },
+        std::pair{ "rggb"_c, &UInt32x4Type },
+        std::pair{ "rggg"_c, &UInt32x4Type },
+        std::pair{ "rggr"_c, &UInt32x4Type },
+        std::pair{ "rgr"_c, &UInt32x3Type },
+        std::pair{ "rgrb"_c, &UInt32x4Type },
+        std::pair{ "rgrg"_c, &UInt32x4Type },
+        std::pair{ "rgrr"_c, &UInt32x4Type },
+        std::pair{ "rr"_c, &UInt32x2Type },
+        std::pair{ "rrb"_c, &UInt32x3Type },
+        std::pair{ "rrbb"_c, &UInt32x4Type },
+        std::pair{ "rrbg"_c, &UInt32x4Type },
+        std::pair{ "rrbr"_c, &UInt32x4Type },
+        std::pair{ "rrg"_c, &UInt32x3Type },
+        std::pair{ "rrgb"_c, &UInt32x4Type },
+        std::pair{ "rrgg"_c, &UInt32x4Type },
+        std::pair{ "rrgr"_c, &UInt32x4Type },
+        std::pair{ "rrr"_c, &UInt32x3Type },
+        std::pair{ "rrrb"_c, &UInt32x4Type },
+        std::pair{ "rrrg"_c, &UInt32x4Type },
+        std::pair{ "rrrr"_c, &UInt32x4Type },
+        std::pair{ "x"_c, &UInt32Type },
+        std::pair{ "xx"_c, &UInt32x2Type },
+        std::pair{ "xxx"_c, &UInt32x3Type },
+        std::pair{ "xxxx"_c, &UInt32x4Type },
+        std::pair{ "xxxy"_c, &UInt32x4Type },
+        std::pair{ "xxxz"_c, &UInt32x4Type },
+        std::pair{ "xxy"_c, &UInt32x3Type },
+        std::pair{ "xxyx"_c, &UInt32x4Type },
+        std::pair{ "xxyy"_c, &UInt32x4Type },
+        std::pair{ "xxyz"_c, &UInt32x4Type },
+        std::pair{ "xxz"_c, &UInt32x3Type },
+        std::pair{ "xxzx"_c, &UInt32x4Type },
+        std::pair{ "xxzy"_c, &UInt32x4Type },
+        std::pair{ "xxzz"_c, &UInt32x4Type },
+        std::pair{ "xy"_c, &UInt32x2Type },
+        std::pair{ "xyx"_c, &UInt32x3Type },
+        std::pair{ "xyxx"_c, &UInt32x4Type },
+        std::pair{ "xyxy"_c, &UInt32x4Type },
+        std::pair{ "xyxz"_c, &UInt32x4Type },
+        std::pair{ "xyy"_c, &UInt32x3Type },
+        std::pair{ "xyyx"_c, &UInt32x4Type },
+        std::pair{ "xyyy"_c, &UInt32x4Type },
+        std::pair{ "xyyz"_c, &UInt32x4Type },
+        std::pair{ "xyz"_c, &UInt32x3Type },
+        std::pair{ "xyzx"_c, &UInt32x4Type },
+        std::pair{ "xyzy"_c, &UInt32x4Type },
+        std::pair{ "xyzz"_c, &UInt32x4Type },
+        std::pair{ "xz"_c, &UInt32x2Type },
+        std::pair{ "xzx"_c, &UInt32x3Type },
+        std::pair{ "xzxx"_c, &UInt32x4Type },
+        std::pair{ "xzxy"_c, &UInt32x4Type },
+        std::pair{ "xzxz"_c, &UInt32x4Type },
+        std::pair{ "xzy"_c, &UInt32x3Type },
+        std::pair{ "xzyx"_c, &UInt32x4Type },
+        std::pair{ "xzyy"_c, &UInt32x4Type },
+        std::pair{ "xzyz"_c, &UInt32x4Type },
+        std::pair{ "xzz"_c, &UInt32x3Type },
+        std::pair{ "xzzx"_c, &UInt32x4Type },
+        std::pair{ "xzzy"_c, &UInt32x4Type },
+        std::pair{ "xzzz"_c, &UInt32x4Type },
+        std::pair{ "y"_c, &UInt32Type },
+        std::pair{ "yx"_c, &UInt32x2Type },
+        std::pair{ "yxx"_c, &UInt32x3Type },
+        std::pair{ "yxxx"_c, &UInt32x4Type },
+        std::pair{ "yxxy"_c, &UInt32x4Type },
+        std::pair{ "yxxz"_c, &UInt32x4Type },
+        std::pair{ "yxy"_c, &UInt32x3Type },
+        std::pair{ "yxyx"_c, &UInt32x4Type },
+        std::pair{ "yxyy"_c, &UInt32x4Type },
+        std::pair{ "yxyz"_c, &UInt32x4Type },
+        std::pair{ "yxz"_c, &UInt32x3Type },
+        std::pair{ "yxzx"_c, &UInt32x4Type },
+        std::pair{ "yxzy"_c, &UInt32x4Type },
+        std::pair{ "yxzz"_c, &UInt32x4Type },
+        std::pair{ "yy"_c, &UInt32x2Type },
+        std::pair{ "yyx"_c, &UInt32x3Type },
+        std::pair{ "yyxx"_c, &UInt32x4Type },
+        std::pair{ "yyxy"_c, &UInt32x4Type },
+        std::pair{ "yyxz"_c, &UInt32x4Type },
+        std::pair{ "yyy"_c, &UInt32x3Type },
+        std::pair{ "yyyx"_c, &UInt32x4Type },
+        std::pair{ "yyyy"_c, &UInt32x4Type },
+        std::pair{ "yyyz"_c, &UInt32x4Type },
+        std::pair{ "yyz"_c, &UInt32x3Type },
+        std::pair{ "yyzx"_c, &UInt32x4Type },
+        std::pair{ "yyzy"_c, &UInt32x4Type },
+        std::pair{ "yyzz"_c, &UInt32x4Type },
+        std::pair{ "yz"_c, &UInt32x2Type },
+        std::pair{ "yzx"_c, &UInt32x3Type },
+        std::pair{ "yzxx"_c, &UInt32x4Type },
+        std::pair{ "yzxy"_c, &UInt32x4Type },
+        std::pair{ "yzxz"_c, &UInt32x4Type },
+        std::pair{ "yzy"_c, &UInt32x3Type },
+        std::pair{ "yzyx"_c, &UInt32x4Type },
+        std::pair{ "yzyy"_c, &UInt32x4Type },
+        std::pair{ "yzyz"_c, &UInt32x4Type },
+        std::pair{ "yzz"_c, &UInt32x3Type },
+        std::pair{ "yzzx"_c, &UInt32x4Type },
+        std::pair{ "yzzy"_c, &UInt32x4Type },
+        std::pair{ "yzzz"_c, &UInt32x4Type },
+        std::pair{ "z"_c, &UInt32Type },
+        std::pair{ "zx"_c, &UInt32x2Type },
+        std::pair{ "zxx"_c, &UInt32x3Type },
+        std::pair{ "zxxx"_c, &UInt32x4Type },
+        std::pair{ "zxxy"_c, &UInt32x4Type },
+        std::pair{ "zxxz"_c, &UInt32x4Type },
+        std::pair{ "zxy"_c, &UInt32x3Type },
+        std::pair{ "zxyx"_c, &UInt32x4Type },
+        std::pair{ "zxyy"_c, &UInt32x4Type },
+        std::pair{ "zxyz"_c, &UInt32x4Type },
+        std::pair{ "zxz"_c, &UInt32x3Type },
+        std::pair{ "zxzx"_c, &UInt32x4Type },
+        std::pair{ "zxzy"_c, &UInt32x4Type },
+        std::pair{ "zxzz"_c, &UInt32x4Type },
+        std::pair{ "zy"_c, &UInt32x2Type },
+        std::pair{ "zyx"_c, &UInt32x3Type },
+        std::pair{ "zyxx"_c, &UInt32x4Type },
+        std::pair{ "zyxy"_c, &UInt32x4Type },
+        std::pair{ "zyxz"_c, &UInt32x4Type },
+        std::pair{ "zyy"_c, &UInt32x3Type },
+        std::pair{ "zyyx"_c, &UInt32x4Type },
+        std::pair{ "zyyy"_c, &UInt32x4Type },
+        std::pair{ "zyyz"_c, &UInt32x4Type },
+        std::pair{ "zyz"_c, &UInt32x3Type },
+        std::pair{ "zyzx"_c, &UInt32x4Type },
+        std::pair{ "zyzy"_c, &UInt32x4Type },
+        std::pair{ "zyzz"_c, &UInt32x4Type },
+        std::pair{ "zz"_c, &UInt32x2Type },
+        std::pair{ "zzx"_c, &UInt32x3Type },
+        std::pair{ "zzxx"_c, &UInt32x4Type },
+        std::pair{ "zzxy"_c, &UInt32x4Type },
+        std::pair{ "zzxz"_c, &UInt32x4Type },
+        std::pair{ "zzy"_c, &UInt32x3Type },
+        std::pair{ "zzyx"_c, &UInt32x4Type },
+        std::pair{ "zzyy"_c, &UInt32x4Type },
+        std::pair{ "zzyz"_c, &UInt32x4Type },
+        std::pair{ "zzz"_c, &UInt32x3Type },
+        std::pair{ "zzzx"_c, &UInt32x4Type },
+        std::pair{ "zzzy"_c, &UInt32x4Type },
+        std::pair{ "zzzz"_c, &UInt32x4Type }
     };
 }
 UInt32x3 UInt32x3Type;
@@ -9912,42 +10812,282 @@ Int32x3::Int32x3()
     Symbol::Resolved(&Int32x3_operator_rhsasg_Int32x3_arg0)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&Int32x3_operator_rhsasg_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 35> { 
-        std::pair{ "operator!=", &Int32x3_operator_neq_Int32x3 },
-        std::pair{ "operator%", &Int32x3_operator_mod_Int32x3 },
-        std::pair{ "operator&", &Int32x3_operator_and_Int32x3 },
-        std::pair{ "operator&=", &Int32x3_operator_andasg_Int32x3 },
-        std::pair{ "operator*", &Int32x3_operator_mul_Int32x3 },
-        std::pair{ "operator*", &Int32x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Int32x3_operator_scale_Float16 },
-        std::pair{ "operator*", &Int32x3_operator_scale_UInt32 },
-        std::pair{ "operator*", &Int32x3_operator_scale_UInt16 },
-        std::pair{ "operator*", &Int32x3_operator_scale_Int32 },
-        std::pair{ "operator*", &Int32x3_operator_scale_Int16 },
-        std::pair{ "operator*=", &Int32x3_operator_mulasg_Int32x3 },
-        std::pair{ "operator+", &Int32x3_operator_add_Int32x3 },
-        std::pair{ "operator+=", &Int32x3_operator_addasg_Int32x3 },
-        std::pair{ "operator-", &Int32x3_operator_sub_Int32x3 },
-        std::pair{ "operator-=", &Int32x3_operator_subasg_Int32x3 },
-        std::pair{ "operator/", &Int32x3_operator_div_Int32x3 },
-        std::pair{ "operator/=", &Int32x3_operator_divasg_Int32x3 },
-        std::pair{ "operator<", &Int32x3_operator_lt_Int32x3 },
-        std::pair{ "operator<<", &Int32x3_operator_lsh_Int32x3 },
-        std::pair{ "operator<<=", &Int32x3_operator_lshasg_Int32x3 },
-        std::pair{ "operator<=", &Int32x3_operator_lte_Int32x3 },
-        std::pair{ "operator==", &Int32x3_operator_eq_Int32x3 },
-        std::pair{ "operator>", &Int32x3_operator_gt_Int32x3 },
-        std::pair{ "operator>=", &Int32x3_operator_gte_Int32x3 },
-        std::pair{ "operator>>", &Int32x3_operator_rsh_Int32x3 },
-        std::pair{ "operator>>=", &Int32x3_operator_rhsasg_Int32x3 },
-        std::pair{ "operator[]", &Int32x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Int32x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Int32x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Int32x3_operator_index_UInt16 },
-        std::pair{ "operator^", &Int32x3_operator_xor_Int32x3 },
-        std::pair{ "operator^=", &Int32x3_operator_xorasg_Int32x3 },
-        std::pair{ "operator|", &Int32x3_operator_or_Int32x3 },
-        std::pair{ "operator|=", &Int32x3_operator_orasg_Int32x3 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 275> { 
+        std::pair{ "b"_c, &Int32Type },
+        std::pair{ "bb"_c, &Int32x2Type },
+        std::pair{ "bbb"_c, &Int32x3Type },
+        std::pair{ "bbbb"_c, &Int32x4Type },
+        std::pair{ "bbbg"_c, &Int32x4Type },
+        std::pair{ "bbbr"_c, &Int32x4Type },
+        std::pair{ "bbg"_c, &Int32x3Type },
+        std::pair{ "bbgb"_c, &Int32x4Type },
+        std::pair{ "bbgg"_c, &Int32x4Type },
+        std::pair{ "bbgr"_c, &Int32x4Type },
+        std::pair{ "bbr"_c, &Int32x3Type },
+        std::pair{ "bbrb"_c, &Int32x4Type },
+        std::pair{ "bbrg"_c, &Int32x4Type },
+        std::pair{ "bbrr"_c, &Int32x4Type },
+        std::pair{ "bg"_c, &Int32x2Type },
+        std::pair{ "bgb"_c, &Int32x3Type },
+        std::pair{ "bgbb"_c, &Int32x4Type },
+        std::pair{ "bgbg"_c, &Int32x4Type },
+        std::pair{ "bgbr"_c, &Int32x4Type },
+        std::pair{ "bgg"_c, &Int32x3Type },
+        std::pair{ "bggb"_c, &Int32x4Type },
+        std::pair{ "bggg"_c, &Int32x4Type },
+        std::pair{ "bggr"_c, &Int32x4Type },
+        std::pair{ "bgr"_c, &Int32x3Type },
+        std::pair{ "bgrb"_c, &Int32x4Type },
+        std::pair{ "bgrg"_c, &Int32x4Type },
+        std::pair{ "bgrr"_c, &Int32x4Type },
+        std::pair{ "br"_c, &Int32x2Type },
+        std::pair{ "brb"_c, &Int32x3Type },
+        std::pair{ "brbb"_c, &Int32x4Type },
+        std::pair{ "brbg"_c, &Int32x4Type },
+        std::pair{ "brbr"_c, &Int32x4Type },
+        std::pair{ "brg"_c, &Int32x3Type },
+        std::pair{ "brgb"_c, &Int32x4Type },
+        std::pair{ "brgg"_c, &Int32x4Type },
+        std::pair{ "brgr"_c, &Int32x4Type },
+        std::pair{ "brr"_c, &Int32x3Type },
+        std::pair{ "brrb"_c, &Int32x4Type },
+        std::pair{ "brrg"_c, &Int32x4Type },
+        std::pair{ "brrr"_c, &Int32x4Type },
+        std::pair{ "g"_c, &Int32Type },
+        std::pair{ "gb"_c, &Int32x2Type },
+        std::pair{ "gbb"_c, &Int32x3Type },
+        std::pair{ "gbbb"_c, &Int32x4Type },
+        std::pair{ "gbbg"_c, &Int32x4Type },
+        std::pair{ "gbbr"_c, &Int32x4Type },
+        std::pair{ "gbg"_c, &Int32x3Type },
+        std::pair{ "gbgb"_c, &Int32x4Type },
+        std::pair{ "gbgg"_c, &Int32x4Type },
+        std::pair{ "gbgr"_c, &Int32x4Type },
+        std::pair{ "gbr"_c, &Int32x3Type },
+        std::pair{ "gbrb"_c, &Int32x4Type },
+        std::pair{ "gbrg"_c, &Int32x4Type },
+        std::pair{ "gbrr"_c, &Int32x4Type },
+        std::pair{ "gg"_c, &Int32x2Type },
+        std::pair{ "ggb"_c, &Int32x3Type },
+        std::pair{ "ggbb"_c, &Int32x4Type },
+        std::pair{ "ggbg"_c, &Int32x4Type },
+        std::pair{ "ggbr"_c, &Int32x4Type },
+        std::pair{ "ggg"_c, &Int32x3Type },
+        std::pair{ "gggb"_c, &Int32x4Type },
+        std::pair{ "gggg"_c, &Int32x4Type },
+        std::pair{ "gggr"_c, &Int32x4Type },
+        std::pair{ "ggr"_c, &Int32x3Type },
+        std::pair{ "ggrb"_c, &Int32x4Type },
+        std::pair{ "ggrg"_c, &Int32x4Type },
+        std::pair{ "ggrr"_c, &Int32x4Type },
+        std::pair{ "gr"_c, &Int32x2Type },
+        std::pair{ "grb"_c, &Int32x3Type },
+        std::pair{ "grbb"_c, &Int32x4Type },
+        std::pair{ "grbg"_c, &Int32x4Type },
+        std::pair{ "grbr"_c, &Int32x4Type },
+        std::pair{ "grg"_c, &Int32x3Type },
+        std::pair{ "grgb"_c, &Int32x4Type },
+        std::pair{ "grgg"_c, &Int32x4Type },
+        std::pair{ "grgr"_c, &Int32x4Type },
+        std::pair{ "grr"_c, &Int32x3Type },
+        std::pair{ "grrb"_c, &Int32x4Type },
+        std::pair{ "grrg"_c, &Int32x4Type },
+        std::pair{ "grrr"_c, &Int32x4Type },
+        std::pair{ "operator!=(i32x3)"_c, &Int32x3_operator_neq_Int32x3 },
+        std::pair{ "operator%(i32x3)"_c, &Int32x3_operator_mod_Int32x3 },
+        std::pair{ "operator&(i32x3)"_c, &Int32x3_operator_and_Int32x3 },
+        std::pair{ "operator&=(i32x3)"_c, &Int32x3_operator_andasg_Int32x3 },
+        std::pair{ "operator*(f16)"_c, &Int32x3_operator_scale_Float16 },
+        std::pair{ "operator*(f32)"_c, &Int32x3_operator_scale_Float32 },
+        std::pair{ "operator*(i16)"_c, &Int32x3_operator_scale_Int16 },
+        std::pair{ "operator*(i32)"_c, &Int32x3_operator_scale_Int32 },
+        std::pair{ "operator*(i32x3)"_c, &Int32x3_operator_mul_Int32x3 },
+        std::pair{ "operator*(u16)"_c, &Int32x3_operator_scale_UInt16 },
+        std::pair{ "operator*(u32)"_c, &Int32x3_operator_scale_UInt32 },
+        std::pair{ "operator*=(i32x3)"_c, &Int32x3_operator_mulasg_Int32x3 },
+        std::pair{ "operator+(i32x3)"_c, &Int32x3_operator_add_Int32x3 },
+        std::pair{ "operator+=(i32x3)"_c, &Int32x3_operator_addasg_Int32x3 },
+        std::pair{ "operator-(i32x3)"_c, &Int32x3_operator_sub_Int32x3 },
+        std::pair{ "operator-=(i32x3)"_c, &Int32x3_operator_subasg_Int32x3 },
+        std::pair{ "operator/(i32x3)"_c, &Int32x3_operator_div_Int32x3 },
+        std::pair{ "operator/=(i32x3)"_c, &Int32x3_operator_divasg_Int32x3 },
+        std::pair{ "operator<(i32x3)"_c, &Int32x3_operator_lt_Int32x3 },
+        std::pair{ "operator<<(i32x3)"_c, &Int32x3_operator_lsh_Int32x3 },
+        std::pair{ "operator<<=(i32x3)"_c, &Int32x3_operator_lshasg_Int32x3 },
+        std::pair{ "operator<=(i32x3)"_c, &Int32x3_operator_lte_Int32x3 },
+        std::pair{ "operator==(i32x3)"_c, &Int32x3_operator_eq_Int32x3 },
+        std::pair{ "operator>(i32x3)"_c, &Int32x3_operator_gt_Int32x3 },
+        std::pair{ "operator>=(i32x3)"_c, &Int32x3_operator_gte_Int32x3 },
+        std::pair{ "operator>>(i32x3)"_c, &Int32x3_operator_rsh_Int32x3 },
+        std::pair{ "operator>>=(i32x3)"_c, &Int32x3_operator_rhsasg_Int32x3 },
+        std::pair{ "operator[](i16)"_c, &Int32x3_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &Int32x3_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &Int32x3_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &Int32x3_operator_index_UInt32 },
+        std::pair{ "operator^(i32x3)"_c, &Int32x3_operator_xor_Int32x3 },
+        std::pair{ "operator^=(i32x3)"_c, &Int32x3_operator_xorasg_Int32x3 },
+        std::pair{ "operator|(i32x3)"_c, &Int32x3_operator_or_Int32x3 },
+        std::pair{ "operator|=(i32x3)"_c, &Int32x3_operator_orasg_Int32x3 },
+        std::pair{ "r"_c, &Int32Type },
+        std::pair{ "rb"_c, &Int32x2Type },
+        std::pair{ "rbb"_c, &Int32x3Type },
+        std::pair{ "rbbb"_c, &Int32x4Type },
+        std::pair{ "rbbg"_c, &Int32x4Type },
+        std::pair{ "rbbr"_c, &Int32x4Type },
+        std::pair{ "rbg"_c, &Int32x3Type },
+        std::pair{ "rbgb"_c, &Int32x4Type },
+        std::pair{ "rbgg"_c, &Int32x4Type },
+        std::pair{ "rbgr"_c, &Int32x4Type },
+        std::pair{ "rbr"_c, &Int32x3Type },
+        std::pair{ "rbrb"_c, &Int32x4Type },
+        std::pair{ "rbrg"_c, &Int32x4Type },
+        std::pair{ "rbrr"_c, &Int32x4Type },
+        std::pair{ "rg"_c, &Int32x2Type },
+        std::pair{ "rgb"_c, &Int32x3Type },
+        std::pair{ "rgbb"_c, &Int32x4Type },
+        std::pair{ "rgbg"_c, &Int32x4Type },
+        std::pair{ "rgbr"_c, &Int32x4Type },
+        std::pair{ "rgg"_c, &Int32x3Type },
+        std::pair{ "rggb"_c, &Int32x4Type },
+        std::pair{ "rggg"_c, &Int32x4Type },
+        std::pair{ "rggr"_c, &Int32x4Type },
+        std::pair{ "rgr"_c, &Int32x3Type },
+        std::pair{ "rgrb"_c, &Int32x4Type },
+        std::pair{ "rgrg"_c, &Int32x4Type },
+        std::pair{ "rgrr"_c, &Int32x4Type },
+        std::pair{ "rr"_c, &Int32x2Type },
+        std::pair{ "rrb"_c, &Int32x3Type },
+        std::pair{ "rrbb"_c, &Int32x4Type },
+        std::pair{ "rrbg"_c, &Int32x4Type },
+        std::pair{ "rrbr"_c, &Int32x4Type },
+        std::pair{ "rrg"_c, &Int32x3Type },
+        std::pair{ "rrgb"_c, &Int32x4Type },
+        std::pair{ "rrgg"_c, &Int32x4Type },
+        std::pair{ "rrgr"_c, &Int32x4Type },
+        std::pair{ "rrr"_c, &Int32x3Type },
+        std::pair{ "rrrb"_c, &Int32x4Type },
+        std::pair{ "rrrg"_c, &Int32x4Type },
+        std::pair{ "rrrr"_c, &Int32x4Type },
+        std::pair{ "x"_c, &Int32Type },
+        std::pair{ "xx"_c, &Int32x2Type },
+        std::pair{ "xxx"_c, &Int32x3Type },
+        std::pair{ "xxxx"_c, &Int32x4Type },
+        std::pair{ "xxxy"_c, &Int32x4Type },
+        std::pair{ "xxxz"_c, &Int32x4Type },
+        std::pair{ "xxy"_c, &Int32x3Type },
+        std::pair{ "xxyx"_c, &Int32x4Type },
+        std::pair{ "xxyy"_c, &Int32x4Type },
+        std::pair{ "xxyz"_c, &Int32x4Type },
+        std::pair{ "xxz"_c, &Int32x3Type },
+        std::pair{ "xxzx"_c, &Int32x4Type },
+        std::pair{ "xxzy"_c, &Int32x4Type },
+        std::pair{ "xxzz"_c, &Int32x4Type },
+        std::pair{ "xy"_c, &Int32x2Type },
+        std::pair{ "xyx"_c, &Int32x3Type },
+        std::pair{ "xyxx"_c, &Int32x4Type },
+        std::pair{ "xyxy"_c, &Int32x4Type },
+        std::pair{ "xyxz"_c, &Int32x4Type },
+        std::pair{ "xyy"_c, &Int32x3Type },
+        std::pair{ "xyyx"_c, &Int32x4Type },
+        std::pair{ "xyyy"_c, &Int32x4Type },
+        std::pair{ "xyyz"_c, &Int32x4Type },
+        std::pair{ "xyz"_c, &Int32x3Type },
+        std::pair{ "xyzx"_c, &Int32x4Type },
+        std::pair{ "xyzy"_c, &Int32x4Type },
+        std::pair{ "xyzz"_c, &Int32x4Type },
+        std::pair{ "xz"_c, &Int32x2Type },
+        std::pair{ "xzx"_c, &Int32x3Type },
+        std::pair{ "xzxx"_c, &Int32x4Type },
+        std::pair{ "xzxy"_c, &Int32x4Type },
+        std::pair{ "xzxz"_c, &Int32x4Type },
+        std::pair{ "xzy"_c, &Int32x3Type },
+        std::pair{ "xzyx"_c, &Int32x4Type },
+        std::pair{ "xzyy"_c, &Int32x4Type },
+        std::pair{ "xzyz"_c, &Int32x4Type },
+        std::pair{ "xzz"_c, &Int32x3Type },
+        std::pair{ "xzzx"_c, &Int32x4Type },
+        std::pair{ "xzzy"_c, &Int32x4Type },
+        std::pair{ "xzzz"_c, &Int32x4Type },
+        std::pair{ "y"_c, &Int32Type },
+        std::pair{ "yx"_c, &Int32x2Type },
+        std::pair{ "yxx"_c, &Int32x3Type },
+        std::pair{ "yxxx"_c, &Int32x4Type },
+        std::pair{ "yxxy"_c, &Int32x4Type },
+        std::pair{ "yxxz"_c, &Int32x4Type },
+        std::pair{ "yxy"_c, &Int32x3Type },
+        std::pair{ "yxyx"_c, &Int32x4Type },
+        std::pair{ "yxyy"_c, &Int32x4Type },
+        std::pair{ "yxyz"_c, &Int32x4Type },
+        std::pair{ "yxz"_c, &Int32x3Type },
+        std::pair{ "yxzx"_c, &Int32x4Type },
+        std::pair{ "yxzy"_c, &Int32x4Type },
+        std::pair{ "yxzz"_c, &Int32x4Type },
+        std::pair{ "yy"_c, &Int32x2Type },
+        std::pair{ "yyx"_c, &Int32x3Type },
+        std::pair{ "yyxx"_c, &Int32x4Type },
+        std::pair{ "yyxy"_c, &Int32x4Type },
+        std::pair{ "yyxz"_c, &Int32x4Type },
+        std::pair{ "yyy"_c, &Int32x3Type },
+        std::pair{ "yyyx"_c, &Int32x4Type },
+        std::pair{ "yyyy"_c, &Int32x4Type },
+        std::pair{ "yyyz"_c, &Int32x4Type },
+        std::pair{ "yyz"_c, &Int32x3Type },
+        std::pair{ "yyzx"_c, &Int32x4Type },
+        std::pair{ "yyzy"_c, &Int32x4Type },
+        std::pair{ "yyzz"_c, &Int32x4Type },
+        std::pair{ "yz"_c, &Int32x2Type },
+        std::pair{ "yzx"_c, &Int32x3Type },
+        std::pair{ "yzxx"_c, &Int32x4Type },
+        std::pair{ "yzxy"_c, &Int32x4Type },
+        std::pair{ "yzxz"_c, &Int32x4Type },
+        std::pair{ "yzy"_c, &Int32x3Type },
+        std::pair{ "yzyx"_c, &Int32x4Type },
+        std::pair{ "yzyy"_c, &Int32x4Type },
+        std::pair{ "yzyz"_c, &Int32x4Type },
+        std::pair{ "yzz"_c, &Int32x3Type },
+        std::pair{ "yzzx"_c, &Int32x4Type },
+        std::pair{ "yzzy"_c, &Int32x4Type },
+        std::pair{ "yzzz"_c, &Int32x4Type },
+        std::pair{ "z"_c, &Int32Type },
+        std::pair{ "zx"_c, &Int32x2Type },
+        std::pair{ "zxx"_c, &Int32x3Type },
+        std::pair{ "zxxx"_c, &Int32x4Type },
+        std::pair{ "zxxy"_c, &Int32x4Type },
+        std::pair{ "zxxz"_c, &Int32x4Type },
+        std::pair{ "zxy"_c, &Int32x3Type },
+        std::pair{ "zxyx"_c, &Int32x4Type },
+        std::pair{ "zxyy"_c, &Int32x4Type },
+        std::pair{ "zxyz"_c, &Int32x4Type },
+        std::pair{ "zxz"_c, &Int32x3Type },
+        std::pair{ "zxzx"_c, &Int32x4Type },
+        std::pair{ "zxzy"_c, &Int32x4Type },
+        std::pair{ "zxzz"_c, &Int32x4Type },
+        std::pair{ "zy"_c, &Int32x2Type },
+        std::pair{ "zyx"_c, &Int32x3Type },
+        std::pair{ "zyxx"_c, &Int32x4Type },
+        std::pair{ "zyxy"_c, &Int32x4Type },
+        std::pair{ "zyxz"_c, &Int32x4Type },
+        std::pair{ "zyy"_c, &Int32x3Type },
+        std::pair{ "zyyx"_c, &Int32x4Type },
+        std::pair{ "zyyy"_c, &Int32x4Type },
+        std::pair{ "zyyz"_c, &Int32x4Type },
+        std::pair{ "zyz"_c, &Int32x3Type },
+        std::pair{ "zyzx"_c, &Int32x4Type },
+        std::pair{ "zyzy"_c, &Int32x4Type },
+        std::pair{ "zyzz"_c, &Int32x4Type },
+        std::pair{ "zz"_c, &Int32x2Type },
+        std::pair{ "zzx"_c, &Int32x3Type },
+        std::pair{ "zzxx"_c, &Int32x4Type },
+        std::pair{ "zzxy"_c, &Int32x4Type },
+        std::pair{ "zzxz"_c, &Int32x4Type },
+        std::pair{ "zzy"_c, &Int32x3Type },
+        std::pair{ "zzyx"_c, &Int32x4Type },
+        std::pair{ "zzyy"_c, &Int32x4Type },
+        std::pair{ "zzyz"_c, &Int32x4Type },
+        std::pair{ "zzz"_c, &Int32x3Type },
+        std::pair{ "zzzx"_c, &Int32x4Type },
+        std::pair{ "zzzy"_c, &Int32x4Type },
+        std::pair{ "zzzz"_c, &Int32x4Type }
     };
 }
 Int32x3 Int32x3Type;
@@ -10252,15 +11392,255 @@ Bool8x3::Bool8x3()
     Symbol::Resolved(&Bool8x3_operator_neq_Bool8x3_arg0)->typeSymbol = &Bool8x3Type;
     Symbol::Resolved(&Bool8x3_operator_neq_Bool8x3)->returnTypeSymbol = &Bool8Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 8> { 
-        std::pair{ "operator!=", &Bool8x3_operator_neq_Bool8x3 },
-        std::pair{ "operator&&", &Bool8x3_operator_andand_Bool8x3 },
-        std::pair{ "operator==", &Bool8x3_operator_eq_Bool8x3 },
-        std::pair{ "operator[]", &Bool8x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Bool8x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Bool8x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Bool8x3_operator_index_UInt16 },
-        std::pair{ "operator||", &Bool8x3_operator_oror_Bool8x3 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 248> { 
+        std::pair{ "b"_c, &Bool8Type },
+        std::pair{ "bb"_c, &Bool8x2Type },
+        std::pair{ "bbb"_c, &Bool8x3Type },
+        std::pair{ "bbbb"_c, &Bool8x4Type },
+        std::pair{ "bbbg"_c, &Bool8x4Type },
+        std::pair{ "bbbr"_c, &Bool8x4Type },
+        std::pair{ "bbg"_c, &Bool8x3Type },
+        std::pair{ "bbgb"_c, &Bool8x4Type },
+        std::pair{ "bbgg"_c, &Bool8x4Type },
+        std::pair{ "bbgr"_c, &Bool8x4Type },
+        std::pair{ "bbr"_c, &Bool8x3Type },
+        std::pair{ "bbrb"_c, &Bool8x4Type },
+        std::pair{ "bbrg"_c, &Bool8x4Type },
+        std::pair{ "bbrr"_c, &Bool8x4Type },
+        std::pair{ "bg"_c, &Bool8x2Type },
+        std::pair{ "bgb"_c, &Bool8x3Type },
+        std::pair{ "bgbb"_c, &Bool8x4Type },
+        std::pair{ "bgbg"_c, &Bool8x4Type },
+        std::pair{ "bgbr"_c, &Bool8x4Type },
+        std::pair{ "bgg"_c, &Bool8x3Type },
+        std::pair{ "bggb"_c, &Bool8x4Type },
+        std::pair{ "bggg"_c, &Bool8x4Type },
+        std::pair{ "bggr"_c, &Bool8x4Type },
+        std::pair{ "bgr"_c, &Bool8x3Type },
+        std::pair{ "bgrb"_c, &Bool8x4Type },
+        std::pair{ "bgrg"_c, &Bool8x4Type },
+        std::pair{ "bgrr"_c, &Bool8x4Type },
+        std::pair{ "br"_c, &Bool8x2Type },
+        std::pair{ "brb"_c, &Bool8x3Type },
+        std::pair{ "brbb"_c, &Bool8x4Type },
+        std::pair{ "brbg"_c, &Bool8x4Type },
+        std::pair{ "brbr"_c, &Bool8x4Type },
+        std::pair{ "brg"_c, &Bool8x3Type },
+        std::pair{ "brgb"_c, &Bool8x4Type },
+        std::pair{ "brgg"_c, &Bool8x4Type },
+        std::pair{ "brgr"_c, &Bool8x4Type },
+        std::pair{ "brr"_c, &Bool8x3Type },
+        std::pair{ "brrb"_c, &Bool8x4Type },
+        std::pair{ "brrg"_c, &Bool8x4Type },
+        std::pair{ "brrr"_c, &Bool8x4Type },
+        std::pair{ "g"_c, &Bool8Type },
+        std::pair{ "gb"_c, &Bool8x2Type },
+        std::pair{ "gbb"_c, &Bool8x3Type },
+        std::pair{ "gbbb"_c, &Bool8x4Type },
+        std::pair{ "gbbg"_c, &Bool8x4Type },
+        std::pair{ "gbbr"_c, &Bool8x4Type },
+        std::pair{ "gbg"_c, &Bool8x3Type },
+        std::pair{ "gbgb"_c, &Bool8x4Type },
+        std::pair{ "gbgg"_c, &Bool8x4Type },
+        std::pair{ "gbgr"_c, &Bool8x4Type },
+        std::pair{ "gbr"_c, &Bool8x3Type },
+        std::pair{ "gbrb"_c, &Bool8x4Type },
+        std::pair{ "gbrg"_c, &Bool8x4Type },
+        std::pair{ "gbrr"_c, &Bool8x4Type },
+        std::pair{ "gg"_c, &Bool8x2Type },
+        std::pair{ "ggb"_c, &Bool8x3Type },
+        std::pair{ "ggbb"_c, &Bool8x4Type },
+        std::pair{ "ggbg"_c, &Bool8x4Type },
+        std::pair{ "ggbr"_c, &Bool8x4Type },
+        std::pair{ "ggg"_c, &Bool8x3Type },
+        std::pair{ "gggb"_c, &Bool8x4Type },
+        std::pair{ "gggg"_c, &Bool8x4Type },
+        std::pair{ "gggr"_c, &Bool8x4Type },
+        std::pair{ "ggr"_c, &Bool8x3Type },
+        std::pair{ "ggrb"_c, &Bool8x4Type },
+        std::pair{ "ggrg"_c, &Bool8x4Type },
+        std::pair{ "ggrr"_c, &Bool8x4Type },
+        std::pair{ "gr"_c, &Bool8x2Type },
+        std::pair{ "grb"_c, &Bool8x3Type },
+        std::pair{ "grbb"_c, &Bool8x4Type },
+        std::pair{ "grbg"_c, &Bool8x4Type },
+        std::pair{ "grbr"_c, &Bool8x4Type },
+        std::pair{ "grg"_c, &Bool8x3Type },
+        std::pair{ "grgb"_c, &Bool8x4Type },
+        std::pair{ "grgg"_c, &Bool8x4Type },
+        std::pair{ "grgr"_c, &Bool8x4Type },
+        std::pair{ "grr"_c, &Bool8x3Type },
+        std::pair{ "grrb"_c, &Bool8x4Type },
+        std::pair{ "grrg"_c, &Bool8x4Type },
+        std::pair{ "grrr"_c, &Bool8x4Type },
+        std::pair{ "operator!=(b8x3)"_c, &Bool8x3_operator_neq_Bool8x3 },
+        std::pair{ "operator&&(b8x3)"_c, &Bool8x3_operator_andand_Bool8x3 },
+        std::pair{ "operator==(b8x3)"_c, &Bool8x3_operator_eq_Bool8x3 },
+        std::pair{ "operator[](i16)"_c, &Bool8x3_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &Bool8x3_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &Bool8x3_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &Bool8x3_operator_index_UInt32 },
+        std::pair{ "operator||(b8x3)"_c, &Bool8x3_operator_oror_Bool8x3 },
+        std::pair{ "r"_c, &Bool8Type },
+        std::pair{ "rb"_c, &Bool8x2Type },
+        std::pair{ "rbb"_c, &Bool8x3Type },
+        std::pair{ "rbbb"_c, &Bool8x4Type },
+        std::pair{ "rbbg"_c, &Bool8x4Type },
+        std::pair{ "rbbr"_c, &Bool8x4Type },
+        std::pair{ "rbg"_c, &Bool8x3Type },
+        std::pair{ "rbgb"_c, &Bool8x4Type },
+        std::pair{ "rbgg"_c, &Bool8x4Type },
+        std::pair{ "rbgr"_c, &Bool8x4Type },
+        std::pair{ "rbr"_c, &Bool8x3Type },
+        std::pair{ "rbrb"_c, &Bool8x4Type },
+        std::pair{ "rbrg"_c, &Bool8x4Type },
+        std::pair{ "rbrr"_c, &Bool8x4Type },
+        std::pair{ "rg"_c, &Bool8x2Type },
+        std::pair{ "rgb"_c, &Bool8x3Type },
+        std::pair{ "rgbb"_c, &Bool8x4Type },
+        std::pair{ "rgbg"_c, &Bool8x4Type },
+        std::pair{ "rgbr"_c, &Bool8x4Type },
+        std::pair{ "rgg"_c, &Bool8x3Type },
+        std::pair{ "rggb"_c, &Bool8x4Type },
+        std::pair{ "rggg"_c, &Bool8x4Type },
+        std::pair{ "rggr"_c, &Bool8x4Type },
+        std::pair{ "rgr"_c, &Bool8x3Type },
+        std::pair{ "rgrb"_c, &Bool8x4Type },
+        std::pair{ "rgrg"_c, &Bool8x4Type },
+        std::pair{ "rgrr"_c, &Bool8x4Type },
+        std::pair{ "rr"_c, &Bool8x2Type },
+        std::pair{ "rrb"_c, &Bool8x3Type },
+        std::pair{ "rrbb"_c, &Bool8x4Type },
+        std::pair{ "rrbg"_c, &Bool8x4Type },
+        std::pair{ "rrbr"_c, &Bool8x4Type },
+        std::pair{ "rrg"_c, &Bool8x3Type },
+        std::pair{ "rrgb"_c, &Bool8x4Type },
+        std::pair{ "rrgg"_c, &Bool8x4Type },
+        std::pair{ "rrgr"_c, &Bool8x4Type },
+        std::pair{ "rrr"_c, &Bool8x3Type },
+        std::pair{ "rrrb"_c, &Bool8x4Type },
+        std::pair{ "rrrg"_c, &Bool8x4Type },
+        std::pair{ "rrrr"_c, &Bool8x4Type },
+        std::pair{ "x"_c, &Bool8Type },
+        std::pair{ "xx"_c, &Bool8x2Type },
+        std::pair{ "xxx"_c, &Bool8x3Type },
+        std::pair{ "xxxx"_c, &Bool8x4Type },
+        std::pair{ "xxxy"_c, &Bool8x4Type },
+        std::pair{ "xxxz"_c, &Bool8x4Type },
+        std::pair{ "xxy"_c, &Bool8x3Type },
+        std::pair{ "xxyx"_c, &Bool8x4Type },
+        std::pair{ "xxyy"_c, &Bool8x4Type },
+        std::pair{ "xxyz"_c, &Bool8x4Type },
+        std::pair{ "xxz"_c, &Bool8x3Type },
+        std::pair{ "xxzx"_c, &Bool8x4Type },
+        std::pair{ "xxzy"_c, &Bool8x4Type },
+        std::pair{ "xxzz"_c, &Bool8x4Type },
+        std::pair{ "xy"_c, &Bool8x2Type },
+        std::pair{ "xyx"_c, &Bool8x3Type },
+        std::pair{ "xyxx"_c, &Bool8x4Type },
+        std::pair{ "xyxy"_c, &Bool8x4Type },
+        std::pair{ "xyxz"_c, &Bool8x4Type },
+        std::pair{ "xyy"_c, &Bool8x3Type },
+        std::pair{ "xyyx"_c, &Bool8x4Type },
+        std::pair{ "xyyy"_c, &Bool8x4Type },
+        std::pair{ "xyyz"_c, &Bool8x4Type },
+        std::pair{ "xyz"_c, &Bool8x3Type },
+        std::pair{ "xyzx"_c, &Bool8x4Type },
+        std::pair{ "xyzy"_c, &Bool8x4Type },
+        std::pair{ "xyzz"_c, &Bool8x4Type },
+        std::pair{ "xz"_c, &Bool8x2Type },
+        std::pair{ "xzx"_c, &Bool8x3Type },
+        std::pair{ "xzxx"_c, &Bool8x4Type },
+        std::pair{ "xzxy"_c, &Bool8x4Type },
+        std::pair{ "xzxz"_c, &Bool8x4Type },
+        std::pair{ "xzy"_c, &Bool8x3Type },
+        std::pair{ "xzyx"_c, &Bool8x4Type },
+        std::pair{ "xzyy"_c, &Bool8x4Type },
+        std::pair{ "xzyz"_c, &Bool8x4Type },
+        std::pair{ "xzz"_c, &Bool8x3Type },
+        std::pair{ "xzzx"_c, &Bool8x4Type },
+        std::pair{ "xzzy"_c, &Bool8x4Type },
+        std::pair{ "xzzz"_c, &Bool8x4Type },
+        std::pair{ "y"_c, &Bool8Type },
+        std::pair{ "yx"_c, &Bool8x2Type },
+        std::pair{ "yxx"_c, &Bool8x3Type },
+        std::pair{ "yxxx"_c, &Bool8x4Type },
+        std::pair{ "yxxy"_c, &Bool8x4Type },
+        std::pair{ "yxxz"_c, &Bool8x4Type },
+        std::pair{ "yxy"_c, &Bool8x3Type },
+        std::pair{ "yxyx"_c, &Bool8x4Type },
+        std::pair{ "yxyy"_c, &Bool8x4Type },
+        std::pair{ "yxyz"_c, &Bool8x4Type },
+        std::pair{ "yxz"_c, &Bool8x3Type },
+        std::pair{ "yxzx"_c, &Bool8x4Type },
+        std::pair{ "yxzy"_c, &Bool8x4Type },
+        std::pair{ "yxzz"_c, &Bool8x4Type },
+        std::pair{ "yy"_c, &Bool8x2Type },
+        std::pair{ "yyx"_c, &Bool8x3Type },
+        std::pair{ "yyxx"_c, &Bool8x4Type },
+        std::pair{ "yyxy"_c, &Bool8x4Type },
+        std::pair{ "yyxz"_c, &Bool8x4Type },
+        std::pair{ "yyy"_c, &Bool8x3Type },
+        std::pair{ "yyyx"_c, &Bool8x4Type },
+        std::pair{ "yyyy"_c, &Bool8x4Type },
+        std::pair{ "yyyz"_c, &Bool8x4Type },
+        std::pair{ "yyz"_c, &Bool8x3Type },
+        std::pair{ "yyzx"_c, &Bool8x4Type },
+        std::pair{ "yyzy"_c, &Bool8x4Type },
+        std::pair{ "yyzz"_c, &Bool8x4Type },
+        std::pair{ "yz"_c, &Bool8x2Type },
+        std::pair{ "yzx"_c, &Bool8x3Type },
+        std::pair{ "yzxx"_c, &Bool8x4Type },
+        std::pair{ "yzxy"_c, &Bool8x4Type },
+        std::pair{ "yzxz"_c, &Bool8x4Type },
+        std::pair{ "yzy"_c, &Bool8x3Type },
+        std::pair{ "yzyx"_c, &Bool8x4Type },
+        std::pair{ "yzyy"_c, &Bool8x4Type },
+        std::pair{ "yzyz"_c, &Bool8x4Type },
+        std::pair{ "yzz"_c, &Bool8x3Type },
+        std::pair{ "yzzx"_c, &Bool8x4Type },
+        std::pair{ "yzzy"_c, &Bool8x4Type },
+        std::pair{ "yzzz"_c, &Bool8x4Type },
+        std::pair{ "z"_c, &Bool8Type },
+        std::pair{ "zx"_c, &Bool8x2Type },
+        std::pair{ "zxx"_c, &Bool8x3Type },
+        std::pair{ "zxxx"_c, &Bool8x4Type },
+        std::pair{ "zxxy"_c, &Bool8x4Type },
+        std::pair{ "zxxz"_c, &Bool8x4Type },
+        std::pair{ "zxy"_c, &Bool8x3Type },
+        std::pair{ "zxyx"_c, &Bool8x4Type },
+        std::pair{ "zxyy"_c, &Bool8x4Type },
+        std::pair{ "zxyz"_c, &Bool8x4Type },
+        std::pair{ "zxz"_c, &Bool8x3Type },
+        std::pair{ "zxzx"_c, &Bool8x4Type },
+        std::pair{ "zxzy"_c, &Bool8x4Type },
+        std::pair{ "zxzz"_c, &Bool8x4Type },
+        std::pair{ "zy"_c, &Bool8x2Type },
+        std::pair{ "zyx"_c, &Bool8x3Type },
+        std::pair{ "zyxx"_c, &Bool8x4Type },
+        std::pair{ "zyxy"_c, &Bool8x4Type },
+        std::pair{ "zyxz"_c, &Bool8x4Type },
+        std::pair{ "zyy"_c, &Bool8x3Type },
+        std::pair{ "zyyx"_c, &Bool8x4Type },
+        std::pair{ "zyyy"_c, &Bool8x4Type },
+        std::pair{ "zyyz"_c, &Bool8x4Type },
+        std::pair{ "zyz"_c, &Bool8x3Type },
+        std::pair{ "zyzx"_c, &Bool8x4Type },
+        std::pair{ "zyzy"_c, &Bool8x4Type },
+        std::pair{ "zyzz"_c, &Bool8x4Type },
+        std::pair{ "zz"_c, &Bool8x2Type },
+        std::pair{ "zzx"_c, &Bool8x3Type },
+        std::pair{ "zzxx"_c, &Bool8x4Type },
+        std::pair{ "zzxy"_c, &Bool8x4Type },
+        std::pair{ "zzxz"_c, &Bool8x4Type },
+        std::pair{ "zzy"_c, &Bool8x3Type },
+        std::pair{ "zzyx"_c, &Bool8x4Type },
+        std::pair{ "zzyy"_c, &Bool8x4Type },
+        std::pair{ "zzyz"_c, &Bool8x4Type },
+        std::pair{ "zzz"_c, &Bool8x3Type },
+        std::pair{ "zzzx"_c, &Bool8x4Type },
+        std::pair{ "zzzy"_c, &Bool8x4Type },
+        std::pair{ "zzzz"_c, &Bool8x4Type }
     };
 }
 Bool8x3 Bool8x3Type;
@@ -10470,19 +11850,19 @@ Function Float16x3_operator_scale_Int16;
 inline constexpr std::array Float16x3_operator_scale_Int16_args = { &Float16x3_operator_scale_Int16_arg0 };
 
 /// operator* with Float32x3x2
-Variable Float16x3_operator_mul_Float32x3x2_arg0;
-Function Float16x3_operator_mul_Float32x3x2;
-inline constexpr std::array Float16x3_operator_mul_Float32x3x2_args = { &Float16x3_operator_mul_Float32x3x2_arg0 };
+Variable Float16x3_operator_transform_Float32x3x2_arg0;
+Function Float16x3_operator_transform_Float32x3x2;
+inline constexpr std::array Float16x3_operator_transform_Float32x3x2_args = { &Float16x3_operator_transform_Float32x3x2_arg0 };
 
 /// operator* with Float32x3x3
-Variable Float16x3_operator_mul_Float32x3x3_arg0;
-Function Float16x3_operator_mul_Float32x3x3;
-inline constexpr std::array Float16x3_operator_mul_Float32x3x3_args = { &Float16x3_operator_mul_Float32x3x3_arg0 };
+Variable Float16x3_operator_transform_Float32x3x3_arg0;
+Function Float16x3_operator_transform_Float32x3x3;
+inline constexpr std::array Float16x3_operator_transform_Float32x3x3_args = { &Float16x3_operator_transform_Float32x3x3_arg0 };
 
 /// operator* with Float32x3x4
-Variable Float16x3_operator_mul_Float32x3x4_arg0;
-Function Float16x3_operator_mul_Float32x3x4;
-inline constexpr std::array Float16x3_operator_mul_Float32x3x4_args = { &Float16x3_operator_mul_Float32x3x4_arg0 };
+Variable Float16x3_operator_transform_Float32x3x4_arg0;
+Function Float16x3_operator_transform_Float32x3x4;
+inline constexpr std::array Float16x3_operator_transform_Float32x3x4_args = { &Float16x3_operator_transform_Float32x3x4_arg0 };
 
 Float16x3::Float16x3()
 {
@@ -10879,61 +12259,301 @@ Float16x3::Float16x3()
     Symbol::Resolved(&Float16x3_operator_scale_Int16)->returnTypeSymbol = &Float16x3Type;
 
     /// operator* with Float32x3x2
-    Float16x3_operator_mul_Float32x3x2_arg0.name = "_arg0"_c;
-    Float16x3_operator_mul_Float32x3x2_arg0.type = Type::FullType{ Float32x3x2Type.name };
-    Float16x3_operator_mul_Float32x3x2.name = "operator*"_c;
-    Float16x3_operator_mul_Float32x3x2.returnType = Type::FullType { Float16x2Type.name };
-    Float16x3_operator_mul_Float32x3x2.parameters = Float16x3_operator_mul_Float32x3x2_args;
-    Symbol::Resolved(&Float16x3_operator_mul_Float32x3x2_arg0)->typeSymbol = &Float32x3x2Type;
-    Symbol::Resolved(&Float16x3_operator_mul_Float32x3x2)->returnTypeSymbol = &Float16x2Type;
+    Float16x3_operator_transform_Float32x3x2_arg0.name = "_arg0"_c;
+    Float16x3_operator_transform_Float32x3x2_arg0.type = Type::FullType{ Float32x3x2Type.name };
+    Float16x3_operator_transform_Float32x3x2.name = "operator*"_c;
+    Float16x3_operator_transform_Float32x3x2.returnType = Type::FullType { Float16x2Type.name };
+    Float16x3_operator_transform_Float32x3x2.parameters = Float16x3_operator_transform_Float32x3x2_args;
+    Symbol::Resolved(&Float16x3_operator_transform_Float32x3x2_arg0)->typeSymbol = &Float32x3x2Type;
+    Symbol::Resolved(&Float16x3_operator_transform_Float32x3x2)->returnTypeSymbol = &Float16x2Type;
 
     /// operator* with Float32x3x3
-    Float16x3_operator_mul_Float32x3x3_arg0.name = "_arg0"_c;
-    Float16x3_operator_mul_Float32x3x3_arg0.type = Type::FullType{ Float32x3x3Type.name };
-    Float16x3_operator_mul_Float32x3x3.name = "operator*"_c;
-    Float16x3_operator_mul_Float32x3x3.returnType = Type::FullType { Float16x3Type.name };
-    Float16x3_operator_mul_Float32x3x3.parameters = Float16x3_operator_mul_Float32x3x3_args;
-    Symbol::Resolved(&Float16x3_operator_mul_Float32x3x3_arg0)->typeSymbol = &Float32x3x3Type;
-    Symbol::Resolved(&Float16x3_operator_mul_Float32x3x3)->returnTypeSymbol = &Float16x3Type;
+    Float16x3_operator_transform_Float32x3x3_arg0.name = "_arg0"_c;
+    Float16x3_operator_transform_Float32x3x3_arg0.type = Type::FullType{ Float32x3x3Type.name };
+    Float16x3_operator_transform_Float32x3x3.name = "operator*"_c;
+    Float16x3_operator_transform_Float32x3x3.returnType = Type::FullType { Float16x3Type.name };
+    Float16x3_operator_transform_Float32x3x3.parameters = Float16x3_operator_transform_Float32x3x3_args;
+    Symbol::Resolved(&Float16x3_operator_transform_Float32x3x3_arg0)->typeSymbol = &Float32x3x3Type;
+    Symbol::Resolved(&Float16x3_operator_transform_Float32x3x3)->returnTypeSymbol = &Float16x3Type;
 
     /// operator* with Float32x3x4
-    Float16x3_operator_mul_Float32x3x4_arg0.name = "_arg0"_c;
-    Float16x3_operator_mul_Float32x3x4_arg0.type = Type::FullType{ Float32x3x4Type.name };
-    Float16x3_operator_mul_Float32x3x4.name = "operator*"_c;
-    Float16x3_operator_mul_Float32x3x4.returnType = Type::FullType { Float16x4Type.name };
-    Float16x3_operator_mul_Float32x3x4.parameters = Float16x3_operator_mul_Float32x3x4_args;
-    Symbol::Resolved(&Float16x3_operator_mul_Float32x3x4_arg0)->typeSymbol = &Float32x3x4Type;
-    Symbol::Resolved(&Float16x3_operator_mul_Float32x3x4)->returnTypeSymbol = &Float16x4Type;
+    Float16x3_operator_transform_Float32x3x4_arg0.name = "_arg0"_c;
+    Float16x3_operator_transform_Float32x3x4_arg0.type = Type::FullType{ Float32x3x4Type.name };
+    Float16x3_operator_transform_Float32x3x4.name = "operator*"_c;
+    Float16x3_operator_transform_Float32x3x4.returnType = Type::FullType { Float16x4Type.name };
+    Float16x3_operator_transform_Float32x3x4.parameters = Float16x3_operator_transform_Float32x3x4_args;
+    Symbol::Resolved(&Float16x3_operator_transform_Float32x3x4_arg0)->typeSymbol = &Float32x3x4Type;
+    Symbol::Resolved(&Float16x3_operator_transform_Float32x3x4)->returnTypeSymbol = &Float16x4Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 28> { 
-        std::pair{ "operator!=", &Float16x3_operator_neq_Float16x3 },
-        std::pair{ "operator%", &Float16x3_operator_mod_Float16x3 },
-        std::pair{ "operator*", &Float16x3_operator_mul_Float16x3 },
-        std::pair{ "operator*", &Float16x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float16x3_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x3_operator_scale_UInt32 },
-        std::pair{ "operator*", &Float16x3_operator_scale_UInt16 },
-        std::pair{ "operator*", &Float16x3_operator_scale_Int32 },
-        std::pair{ "operator*", &Float16x3_operator_scale_Int16 },
-        std::pair{ "operator*", &Float16x3_operator_mul_Float32x3x2 },
-        std::pair{ "operator*", &Float16x3_operator_mul_Float32x3x3 },
-        std::pair{ "operator*", &Float16x3_operator_mul_Float32x3x4 },
-        std::pair{ "operator*=", &Float16x3_operator_mulasg_Float16x3 },
-        std::pair{ "operator+", &Float16x3_operator_add_Float16x3 },
-        std::pair{ "operator+=", &Float16x3_operator_addasg_Float16x3 },
-        std::pair{ "operator-", &Float16x3_operator_sub_Float16x3 },
-        std::pair{ "operator-=", &Float16x3_operator_subasg_Float16x3 },
-        std::pair{ "operator/", &Float16x3_operator_div_Float16x3 },
-        std::pair{ "operator/=", &Float16x3_operator_divasg_Float16x3 },
-        std::pair{ "operator<", &Float16x3_operator_lt_Float16x3 },
-        std::pair{ "operator<=", &Float16x3_operator_lte_Float16x3 },
-        std::pair{ "operator==", &Float16x3_operator_eq_Float16x3 },
-        std::pair{ "operator>", &Float16x3_operator_gt_Float16x3 },
-        std::pair{ "operator>=", &Float16x3_operator_gte_Float16x3 },
-        std::pair{ "operator[]", &Float16x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x3_operator_index_UInt16 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 268> { 
+        std::pair{ "b"_c, &Float16Type },
+        std::pair{ "bb"_c, &Float16x2Type },
+        std::pair{ "bbb"_c, &Float16x3Type },
+        std::pair{ "bbbb"_c, &Float16x4Type },
+        std::pair{ "bbbg"_c, &Float16x4Type },
+        std::pair{ "bbbr"_c, &Float16x4Type },
+        std::pair{ "bbg"_c, &Float16x3Type },
+        std::pair{ "bbgb"_c, &Float16x4Type },
+        std::pair{ "bbgg"_c, &Float16x4Type },
+        std::pair{ "bbgr"_c, &Float16x4Type },
+        std::pair{ "bbr"_c, &Float16x3Type },
+        std::pair{ "bbrb"_c, &Float16x4Type },
+        std::pair{ "bbrg"_c, &Float16x4Type },
+        std::pair{ "bbrr"_c, &Float16x4Type },
+        std::pair{ "bg"_c, &Float16x2Type },
+        std::pair{ "bgb"_c, &Float16x3Type },
+        std::pair{ "bgbb"_c, &Float16x4Type },
+        std::pair{ "bgbg"_c, &Float16x4Type },
+        std::pair{ "bgbr"_c, &Float16x4Type },
+        std::pair{ "bgg"_c, &Float16x3Type },
+        std::pair{ "bggb"_c, &Float16x4Type },
+        std::pair{ "bggg"_c, &Float16x4Type },
+        std::pair{ "bggr"_c, &Float16x4Type },
+        std::pair{ "bgr"_c, &Float16x3Type },
+        std::pair{ "bgrb"_c, &Float16x4Type },
+        std::pair{ "bgrg"_c, &Float16x4Type },
+        std::pair{ "bgrr"_c, &Float16x4Type },
+        std::pair{ "br"_c, &Float16x2Type },
+        std::pair{ "brb"_c, &Float16x3Type },
+        std::pair{ "brbb"_c, &Float16x4Type },
+        std::pair{ "brbg"_c, &Float16x4Type },
+        std::pair{ "brbr"_c, &Float16x4Type },
+        std::pair{ "brg"_c, &Float16x3Type },
+        std::pair{ "brgb"_c, &Float16x4Type },
+        std::pair{ "brgg"_c, &Float16x4Type },
+        std::pair{ "brgr"_c, &Float16x4Type },
+        std::pair{ "brr"_c, &Float16x3Type },
+        std::pair{ "brrb"_c, &Float16x4Type },
+        std::pair{ "brrg"_c, &Float16x4Type },
+        std::pair{ "brrr"_c, &Float16x4Type },
+        std::pair{ "g"_c, &Float16Type },
+        std::pair{ "gb"_c, &Float16x2Type },
+        std::pair{ "gbb"_c, &Float16x3Type },
+        std::pair{ "gbbb"_c, &Float16x4Type },
+        std::pair{ "gbbg"_c, &Float16x4Type },
+        std::pair{ "gbbr"_c, &Float16x4Type },
+        std::pair{ "gbg"_c, &Float16x3Type },
+        std::pair{ "gbgb"_c, &Float16x4Type },
+        std::pair{ "gbgg"_c, &Float16x4Type },
+        std::pair{ "gbgr"_c, &Float16x4Type },
+        std::pair{ "gbr"_c, &Float16x3Type },
+        std::pair{ "gbrb"_c, &Float16x4Type },
+        std::pair{ "gbrg"_c, &Float16x4Type },
+        std::pair{ "gbrr"_c, &Float16x4Type },
+        std::pair{ "gg"_c, &Float16x2Type },
+        std::pair{ "ggb"_c, &Float16x3Type },
+        std::pair{ "ggbb"_c, &Float16x4Type },
+        std::pair{ "ggbg"_c, &Float16x4Type },
+        std::pair{ "ggbr"_c, &Float16x4Type },
+        std::pair{ "ggg"_c, &Float16x3Type },
+        std::pair{ "gggb"_c, &Float16x4Type },
+        std::pair{ "gggg"_c, &Float16x4Type },
+        std::pair{ "gggr"_c, &Float16x4Type },
+        std::pair{ "ggr"_c, &Float16x3Type },
+        std::pair{ "ggrb"_c, &Float16x4Type },
+        std::pair{ "ggrg"_c, &Float16x4Type },
+        std::pair{ "ggrr"_c, &Float16x4Type },
+        std::pair{ "gr"_c, &Float16x2Type },
+        std::pair{ "grb"_c, &Float16x3Type },
+        std::pair{ "grbb"_c, &Float16x4Type },
+        std::pair{ "grbg"_c, &Float16x4Type },
+        std::pair{ "grbr"_c, &Float16x4Type },
+        std::pair{ "grg"_c, &Float16x3Type },
+        std::pair{ "grgb"_c, &Float16x4Type },
+        std::pair{ "grgg"_c, &Float16x4Type },
+        std::pair{ "grgr"_c, &Float16x4Type },
+        std::pair{ "grr"_c, &Float16x3Type },
+        std::pair{ "grrb"_c, &Float16x4Type },
+        std::pair{ "grrg"_c, &Float16x4Type },
+        std::pair{ "grrr"_c, &Float16x4Type },
+        std::pair{ "operator!=(f16x3)"_c, &Float16x3_operator_neq_Float16x3 },
+        std::pair{ "operator%(f16x3)"_c, &Float16x3_operator_mod_Float16x3 },
+        std::pair{ "operator*(f16)"_c, &Float16x3_operator_scale_Float16 },
+        std::pair{ "operator*(f16x3)"_c, &Float16x3_operator_mul_Float16x3 },
+        std::pair{ "operator*(f32)"_c, &Float16x3_operator_scale_Float32 },
+        std::pair{ "operator*(f32x3x2)"_c, &Float16x3_operator_transform_Float32x3x2 },
+        std::pair{ "operator*(f32x3x3)"_c, &Float16x3_operator_transform_Float32x3x3 },
+        std::pair{ "operator*(f32x3x4)"_c, &Float16x3_operator_transform_Float32x3x4 },
+        std::pair{ "operator*(i16)"_c, &Float16x3_operator_scale_Int16 },
+        std::pair{ "operator*(i32)"_c, &Float16x3_operator_scale_Int32 },
+        std::pair{ "operator*(u16)"_c, &Float16x3_operator_scale_UInt16 },
+        std::pair{ "operator*(u32)"_c, &Float16x3_operator_scale_UInt32 },
+        std::pair{ "operator*=(f16x3)"_c, &Float16x3_operator_mulasg_Float16x3 },
+        std::pair{ "operator+(f16x3)"_c, &Float16x3_operator_add_Float16x3 },
+        std::pair{ "operator+=(f16x3)"_c, &Float16x3_operator_addasg_Float16x3 },
+        std::pair{ "operator-(f16x3)"_c, &Float16x3_operator_sub_Float16x3 },
+        std::pair{ "operator-=(f16x3)"_c, &Float16x3_operator_subasg_Float16x3 },
+        std::pair{ "operator/(f16x3)"_c, &Float16x3_operator_div_Float16x3 },
+        std::pair{ "operator/=(f16x3)"_c, &Float16x3_operator_divasg_Float16x3 },
+        std::pair{ "operator<(f16x3)"_c, &Float16x3_operator_lt_Float16x3 },
+        std::pair{ "operator<=(f16x3)"_c, &Float16x3_operator_lte_Float16x3 },
+        std::pair{ "operator==(f16x3)"_c, &Float16x3_operator_eq_Float16x3 },
+        std::pair{ "operator>(f16x3)"_c, &Float16x3_operator_gt_Float16x3 },
+        std::pair{ "operator>=(f16x3)"_c, &Float16x3_operator_gte_Float16x3 },
+        std::pair{ "operator[](i16)"_c, &Float16x3_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &Float16x3_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &Float16x3_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &Float16x3_operator_index_UInt32 },
+        std::pair{ "r"_c, &Float16Type },
+        std::pair{ "rb"_c, &Float16x2Type },
+        std::pair{ "rbb"_c, &Float16x3Type },
+        std::pair{ "rbbb"_c, &Float16x4Type },
+        std::pair{ "rbbg"_c, &Float16x4Type },
+        std::pair{ "rbbr"_c, &Float16x4Type },
+        std::pair{ "rbg"_c, &Float16x3Type },
+        std::pair{ "rbgb"_c, &Float16x4Type },
+        std::pair{ "rbgg"_c, &Float16x4Type },
+        std::pair{ "rbgr"_c, &Float16x4Type },
+        std::pair{ "rbr"_c, &Float16x3Type },
+        std::pair{ "rbrb"_c, &Float16x4Type },
+        std::pair{ "rbrg"_c, &Float16x4Type },
+        std::pair{ "rbrr"_c, &Float16x4Type },
+        std::pair{ "rg"_c, &Float16x2Type },
+        std::pair{ "rgb"_c, &Float16x3Type },
+        std::pair{ "rgbb"_c, &Float16x4Type },
+        std::pair{ "rgbg"_c, &Float16x4Type },
+        std::pair{ "rgbr"_c, &Float16x4Type },
+        std::pair{ "rgg"_c, &Float16x3Type },
+        std::pair{ "rggb"_c, &Float16x4Type },
+        std::pair{ "rggg"_c, &Float16x4Type },
+        std::pair{ "rggr"_c, &Float16x4Type },
+        std::pair{ "rgr"_c, &Float16x3Type },
+        std::pair{ "rgrb"_c, &Float16x4Type },
+        std::pair{ "rgrg"_c, &Float16x4Type },
+        std::pair{ "rgrr"_c, &Float16x4Type },
+        std::pair{ "rr"_c, &Float16x2Type },
+        std::pair{ "rrb"_c, &Float16x3Type },
+        std::pair{ "rrbb"_c, &Float16x4Type },
+        std::pair{ "rrbg"_c, &Float16x4Type },
+        std::pair{ "rrbr"_c, &Float16x4Type },
+        std::pair{ "rrg"_c, &Float16x3Type },
+        std::pair{ "rrgb"_c, &Float16x4Type },
+        std::pair{ "rrgg"_c, &Float16x4Type },
+        std::pair{ "rrgr"_c, &Float16x4Type },
+        std::pair{ "rrr"_c, &Float16x3Type },
+        std::pair{ "rrrb"_c, &Float16x4Type },
+        std::pair{ "rrrg"_c, &Float16x4Type },
+        std::pair{ "rrrr"_c, &Float16x4Type },
+        std::pair{ "x"_c, &Float16Type },
+        std::pair{ "xx"_c, &Float16x2Type },
+        std::pair{ "xxx"_c, &Float16x3Type },
+        std::pair{ "xxxx"_c, &Float16x4Type },
+        std::pair{ "xxxy"_c, &Float16x4Type },
+        std::pair{ "xxxz"_c, &Float16x4Type },
+        std::pair{ "xxy"_c, &Float16x3Type },
+        std::pair{ "xxyx"_c, &Float16x4Type },
+        std::pair{ "xxyy"_c, &Float16x4Type },
+        std::pair{ "xxyz"_c, &Float16x4Type },
+        std::pair{ "xxz"_c, &Float16x3Type },
+        std::pair{ "xxzx"_c, &Float16x4Type },
+        std::pair{ "xxzy"_c, &Float16x4Type },
+        std::pair{ "xxzz"_c, &Float16x4Type },
+        std::pair{ "xy"_c, &Float16x2Type },
+        std::pair{ "xyx"_c, &Float16x3Type },
+        std::pair{ "xyxx"_c, &Float16x4Type },
+        std::pair{ "xyxy"_c, &Float16x4Type },
+        std::pair{ "xyxz"_c, &Float16x4Type },
+        std::pair{ "xyy"_c, &Float16x3Type },
+        std::pair{ "xyyx"_c, &Float16x4Type },
+        std::pair{ "xyyy"_c, &Float16x4Type },
+        std::pair{ "xyyz"_c, &Float16x4Type },
+        std::pair{ "xyz"_c, &Float16x3Type },
+        std::pair{ "xyzx"_c, &Float16x4Type },
+        std::pair{ "xyzy"_c, &Float16x4Type },
+        std::pair{ "xyzz"_c, &Float16x4Type },
+        std::pair{ "xz"_c, &Float16x2Type },
+        std::pair{ "xzx"_c, &Float16x3Type },
+        std::pair{ "xzxx"_c, &Float16x4Type },
+        std::pair{ "xzxy"_c, &Float16x4Type },
+        std::pair{ "xzxz"_c, &Float16x4Type },
+        std::pair{ "xzy"_c, &Float16x3Type },
+        std::pair{ "xzyx"_c, &Float16x4Type },
+        std::pair{ "xzyy"_c, &Float16x4Type },
+        std::pair{ "xzyz"_c, &Float16x4Type },
+        std::pair{ "xzz"_c, &Float16x3Type },
+        std::pair{ "xzzx"_c, &Float16x4Type },
+        std::pair{ "xzzy"_c, &Float16x4Type },
+        std::pair{ "xzzz"_c, &Float16x4Type },
+        std::pair{ "y"_c, &Float16Type },
+        std::pair{ "yx"_c, &Float16x2Type },
+        std::pair{ "yxx"_c, &Float16x3Type },
+        std::pair{ "yxxx"_c, &Float16x4Type },
+        std::pair{ "yxxy"_c, &Float16x4Type },
+        std::pair{ "yxxz"_c, &Float16x4Type },
+        std::pair{ "yxy"_c, &Float16x3Type },
+        std::pair{ "yxyx"_c, &Float16x4Type },
+        std::pair{ "yxyy"_c, &Float16x4Type },
+        std::pair{ "yxyz"_c, &Float16x4Type },
+        std::pair{ "yxz"_c, &Float16x3Type },
+        std::pair{ "yxzx"_c, &Float16x4Type },
+        std::pair{ "yxzy"_c, &Float16x4Type },
+        std::pair{ "yxzz"_c, &Float16x4Type },
+        std::pair{ "yy"_c, &Float16x2Type },
+        std::pair{ "yyx"_c, &Float16x3Type },
+        std::pair{ "yyxx"_c, &Float16x4Type },
+        std::pair{ "yyxy"_c, &Float16x4Type },
+        std::pair{ "yyxz"_c, &Float16x4Type },
+        std::pair{ "yyy"_c, &Float16x3Type },
+        std::pair{ "yyyx"_c, &Float16x4Type },
+        std::pair{ "yyyy"_c, &Float16x4Type },
+        std::pair{ "yyyz"_c, &Float16x4Type },
+        std::pair{ "yyz"_c, &Float16x3Type },
+        std::pair{ "yyzx"_c, &Float16x4Type },
+        std::pair{ "yyzy"_c, &Float16x4Type },
+        std::pair{ "yyzz"_c, &Float16x4Type },
+        std::pair{ "yz"_c, &Float16x2Type },
+        std::pair{ "yzx"_c, &Float16x3Type },
+        std::pair{ "yzxx"_c, &Float16x4Type },
+        std::pair{ "yzxy"_c, &Float16x4Type },
+        std::pair{ "yzxz"_c, &Float16x4Type },
+        std::pair{ "yzy"_c, &Float16x3Type },
+        std::pair{ "yzyx"_c, &Float16x4Type },
+        std::pair{ "yzyy"_c, &Float16x4Type },
+        std::pair{ "yzyz"_c, &Float16x4Type },
+        std::pair{ "yzz"_c, &Float16x3Type },
+        std::pair{ "yzzx"_c, &Float16x4Type },
+        std::pair{ "yzzy"_c, &Float16x4Type },
+        std::pair{ "yzzz"_c, &Float16x4Type },
+        std::pair{ "z"_c, &Float16Type },
+        std::pair{ "zx"_c, &Float16x2Type },
+        std::pair{ "zxx"_c, &Float16x3Type },
+        std::pair{ "zxxx"_c, &Float16x4Type },
+        std::pair{ "zxxy"_c, &Float16x4Type },
+        std::pair{ "zxxz"_c, &Float16x4Type },
+        std::pair{ "zxy"_c, &Float16x3Type },
+        std::pair{ "zxyx"_c, &Float16x4Type },
+        std::pair{ "zxyy"_c, &Float16x4Type },
+        std::pair{ "zxyz"_c, &Float16x4Type },
+        std::pair{ "zxz"_c, &Float16x3Type },
+        std::pair{ "zxzx"_c, &Float16x4Type },
+        std::pair{ "zxzy"_c, &Float16x4Type },
+        std::pair{ "zxzz"_c, &Float16x4Type },
+        std::pair{ "zy"_c, &Float16x2Type },
+        std::pair{ "zyx"_c, &Float16x3Type },
+        std::pair{ "zyxx"_c, &Float16x4Type },
+        std::pair{ "zyxy"_c, &Float16x4Type },
+        std::pair{ "zyxz"_c, &Float16x4Type },
+        std::pair{ "zyy"_c, &Float16x3Type },
+        std::pair{ "zyyx"_c, &Float16x4Type },
+        std::pair{ "zyyy"_c, &Float16x4Type },
+        std::pair{ "zyyz"_c, &Float16x4Type },
+        std::pair{ "zyz"_c, &Float16x3Type },
+        std::pair{ "zyzx"_c, &Float16x4Type },
+        std::pair{ "zyzy"_c, &Float16x4Type },
+        std::pair{ "zyzz"_c, &Float16x4Type },
+        std::pair{ "zz"_c, &Float16x2Type },
+        std::pair{ "zzx"_c, &Float16x3Type },
+        std::pair{ "zzxx"_c, &Float16x4Type },
+        std::pair{ "zzxy"_c, &Float16x4Type },
+        std::pair{ "zzxz"_c, &Float16x4Type },
+        std::pair{ "zzy"_c, &Float16x3Type },
+        std::pair{ "zzyx"_c, &Float16x4Type },
+        std::pair{ "zzyy"_c, &Float16x4Type },
+        std::pair{ "zzyz"_c, &Float16x4Type },
+        std::pair{ "zzz"_c, &Float16x3Type },
+        std::pair{ "zzzx"_c, &Float16x4Type },
+        std::pair{ "zzzy"_c, &Float16x4Type },
+        std::pair{ "zzzz"_c, &Float16x4Type }
     };
 }
 Float16x3 Float16x3Type;
@@ -11676,42 +13296,282 @@ UInt16x3::UInt16x3()
     Symbol::Resolved(&UInt16x3_operator_rhsasg_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&UInt16x3_operator_rhsasg_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 35> { 
-        std::pair{ "operator!=", &UInt16x3_operator_neq_UInt16x3 },
-        std::pair{ "operator%", &UInt16x3_operator_mod_UInt16x3 },
-        std::pair{ "operator&", &UInt16x3_operator_and_UInt16x3 },
-        std::pair{ "operator&=", &UInt16x3_operator_andasg_UInt16x3 },
-        std::pair{ "operator*", &UInt16x3_operator_mul_UInt16x3 },
-        std::pair{ "operator*", &UInt16x3_operator_scale_Float32 },
-        std::pair{ "operator*", &UInt16x3_operator_scale_Float16 },
-        std::pair{ "operator*", &UInt16x3_operator_scale_UInt32 },
-        std::pair{ "operator*", &UInt16x3_operator_scale_UInt16 },
-        std::pair{ "operator*", &UInt16x3_operator_scale_Int32 },
-        std::pair{ "operator*", &UInt16x3_operator_scale_Int16 },
-        std::pair{ "operator*=", &UInt16x3_operator_mulasg_UInt16x3 },
-        std::pair{ "operator+", &UInt16x3_operator_add_UInt16x3 },
-        std::pair{ "operator+=", &UInt16x3_operator_addasg_UInt16x3 },
-        std::pair{ "operator-", &UInt16x3_operator_sub_UInt16x3 },
-        std::pair{ "operator-=", &UInt16x3_operator_subasg_UInt16x3 },
-        std::pair{ "operator/", &UInt16x3_operator_div_UInt16x3 },
-        std::pair{ "operator/=", &UInt16x3_operator_divasg_UInt16x3 },
-        std::pair{ "operator<", &UInt16x3_operator_lt_UInt16x3 },
-        std::pair{ "operator<<", &UInt16x3_operator_lsh_UInt16x3 },
-        std::pair{ "operator<<=", &UInt16x3_operator_lshasg_UInt16x3 },
-        std::pair{ "operator<=", &UInt16x3_operator_lte_UInt16x3 },
-        std::pair{ "operator==", &UInt16x3_operator_eq_UInt16x3 },
-        std::pair{ "operator>", &UInt16x3_operator_gt_UInt16x3 },
-        std::pair{ "operator>=", &UInt16x3_operator_gte_UInt16x3 },
-        std::pair{ "operator>>", &UInt16x3_operator_rsh_UInt16x3 },
-        std::pair{ "operator>>=", &UInt16x3_operator_rhsasg_UInt16x3 },
-        std::pair{ "operator[]", &UInt16x3_operator_index_Int32 },
-        std::pair{ "operator[]", &UInt16x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &UInt16x3_operator_index_Int16 },
-        std::pair{ "operator[]", &UInt16x3_operator_index_UInt16 },
-        std::pair{ "operator^", &UInt16x3_operator_xor_UInt16x3 },
-        std::pair{ "operator^=", &UInt16x3_operator_xorasg_UInt16x3 },
-        std::pair{ "operator|", &UInt16x3_operator_or_UInt16x3 },
-        std::pair{ "operator|=", &UInt16x3_operator_orasg_UInt16x3 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 275> { 
+        std::pair{ "b"_c, &UInt16Type },
+        std::pair{ "bb"_c, &UInt16x2Type },
+        std::pair{ "bbb"_c, &UInt16x3Type },
+        std::pair{ "bbbb"_c, &UInt16x4Type },
+        std::pair{ "bbbg"_c, &UInt16x4Type },
+        std::pair{ "bbbr"_c, &UInt16x4Type },
+        std::pair{ "bbg"_c, &UInt16x3Type },
+        std::pair{ "bbgb"_c, &UInt16x4Type },
+        std::pair{ "bbgg"_c, &UInt16x4Type },
+        std::pair{ "bbgr"_c, &UInt16x4Type },
+        std::pair{ "bbr"_c, &UInt16x3Type },
+        std::pair{ "bbrb"_c, &UInt16x4Type },
+        std::pair{ "bbrg"_c, &UInt16x4Type },
+        std::pair{ "bbrr"_c, &UInt16x4Type },
+        std::pair{ "bg"_c, &UInt16x2Type },
+        std::pair{ "bgb"_c, &UInt16x3Type },
+        std::pair{ "bgbb"_c, &UInt16x4Type },
+        std::pair{ "bgbg"_c, &UInt16x4Type },
+        std::pair{ "bgbr"_c, &UInt16x4Type },
+        std::pair{ "bgg"_c, &UInt16x3Type },
+        std::pair{ "bggb"_c, &UInt16x4Type },
+        std::pair{ "bggg"_c, &UInt16x4Type },
+        std::pair{ "bggr"_c, &UInt16x4Type },
+        std::pair{ "bgr"_c, &UInt16x3Type },
+        std::pair{ "bgrb"_c, &UInt16x4Type },
+        std::pair{ "bgrg"_c, &UInt16x4Type },
+        std::pair{ "bgrr"_c, &UInt16x4Type },
+        std::pair{ "br"_c, &UInt16x2Type },
+        std::pair{ "brb"_c, &UInt16x3Type },
+        std::pair{ "brbb"_c, &UInt16x4Type },
+        std::pair{ "brbg"_c, &UInt16x4Type },
+        std::pair{ "brbr"_c, &UInt16x4Type },
+        std::pair{ "brg"_c, &UInt16x3Type },
+        std::pair{ "brgb"_c, &UInt16x4Type },
+        std::pair{ "brgg"_c, &UInt16x4Type },
+        std::pair{ "brgr"_c, &UInt16x4Type },
+        std::pair{ "brr"_c, &UInt16x3Type },
+        std::pair{ "brrb"_c, &UInt16x4Type },
+        std::pair{ "brrg"_c, &UInt16x4Type },
+        std::pair{ "brrr"_c, &UInt16x4Type },
+        std::pair{ "g"_c, &UInt16Type },
+        std::pair{ "gb"_c, &UInt16x2Type },
+        std::pair{ "gbb"_c, &UInt16x3Type },
+        std::pair{ "gbbb"_c, &UInt16x4Type },
+        std::pair{ "gbbg"_c, &UInt16x4Type },
+        std::pair{ "gbbr"_c, &UInt16x4Type },
+        std::pair{ "gbg"_c, &UInt16x3Type },
+        std::pair{ "gbgb"_c, &UInt16x4Type },
+        std::pair{ "gbgg"_c, &UInt16x4Type },
+        std::pair{ "gbgr"_c, &UInt16x4Type },
+        std::pair{ "gbr"_c, &UInt16x3Type },
+        std::pair{ "gbrb"_c, &UInt16x4Type },
+        std::pair{ "gbrg"_c, &UInt16x4Type },
+        std::pair{ "gbrr"_c, &UInt16x4Type },
+        std::pair{ "gg"_c, &UInt16x2Type },
+        std::pair{ "ggb"_c, &UInt16x3Type },
+        std::pair{ "ggbb"_c, &UInt16x4Type },
+        std::pair{ "ggbg"_c, &UInt16x4Type },
+        std::pair{ "ggbr"_c, &UInt16x4Type },
+        std::pair{ "ggg"_c, &UInt16x3Type },
+        std::pair{ "gggb"_c, &UInt16x4Type },
+        std::pair{ "gggg"_c, &UInt16x4Type },
+        std::pair{ "gggr"_c, &UInt16x4Type },
+        std::pair{ "ggr"_c, &UInt16x3Type },
+        std::pair{ "ggrb"_c, &UInt16x4Type },
+        std::pair{ "ggrg"_c, &UInt16x4Type },
+        std::pair{ "ggrr"_c, &UInt16x4Type },
+        std::pair{ "gr"_c, &UInt16x2Type },
+        std::pair{ "grb"_c, &UInt16x3Type },
+        std::pair{ "grbb"_c, &UInt16x4Type },
+        std::pair{ "grbg"_c, &UInt16x4Type },
+        std::pair{ "grbr"_c, &UInt16x4Type },
+        std::pair{ "grg"_c, &UInt16x3Type },
+        std::pair{ "grgb"_c, &UInt16x4Type },
+        std::pair{ "grgg"_c, &UInt16x4Type },
+        std::pair{ "grgr"_c, &UInt16x4Type },
+        std::pair{ "grr"_c, &UInt16x3Type },
+        std::pair{ "grrb"_c, &UInt16x4Type },
+        std::pair{ "grrg"_c, &UInt16x4Type },
+        std::pair{ "grrr"_c, &UInt16x4Type },
+        std::pair{ "operator!=(u16x3)"_c, &UInt16x3_operator_neq_UInt16x3 },
+        std::pair{ "operator%(u16x3)"_c, &UInt16x3_operator_mod_UInt16x3 },
+        std::pair{ "operator&(u16x3)"_c, &UInt16x3_operator_and_UInt16x3 },
+        std::pair{ "operator&=(u16x3)"_c, &UInt16x3_operator_andasg_UInt16x3 },
+        std::pair{ "operator*(f16)"_c, &UInt16x3_operator_scale_Float16 },
+        std::pair{ "operator*(f32)"_c, &UInt16x3_operator_scale_Float32 },
+        std::pair{ "operator*(i16)"_c, &UInt16x3_operator_scale_Int16 },
+        std::pair{ "operator*(i32)"_c, &UInt16x3_operator_scale_Int32 },
+        std::pair{ "operator*(u16)"_c, &UInt16x3_operator_scale_UInt16 },
+        std::pair{ "operator*(u16x3)"_c, &UInt16x3_operator_mul_UInt16x3 },
+        std::pair{ "operator*(u32)"_c, &UInt16x3_operator_scale_UInt32 },
+        std::pair{ "operator*=(u16x3)"_c, &UInt16x3_operator_mulasg_UInt16x3 },
+        std::pair{ "operator+(u16x3)"_c, &UInt16x3_operator_add_UInt16x3 },
+        std::pair{ "operator+=(u16x3)"_c, &UInt16x3_operator_addasg_UInt16x3 },
+        std::pair{ "operator-(u16x3)"_c, &UInt16x3_operator_sub_UInt16x3 },
+        std::pair{ "operator-=(u16x3)"_c, &UInt16x3_operator_subasg_UInt16x3 },
+        std::pair{ "operator/(u16x3)"_c, &UInt16x3_operator_div_UInt16x3 },
+        std::pair{ "operator/=(u16x3)"_c, &UInt16x3_operator_divasg_UInt16x3 },
+        std::pair{ "operator<(u16x3)"_c, &UInt16x3_operator_lt_UInt16x3 },
+        std::pair{ "operator<<(u16x3)"_c, &UInt16x3_operator_lsh_UInt16x3 },
+        std::pair{ "operator<<=(u16x3)"_c, &UInt16x3_operator_lshasg_UInt16x3 },
+        std::pair{ "operator<=(u16x3)"_c, &UInt16x3_operator_lte_UInt16x3 },
+        std::pair{ "operator==(u16x3)"_c, &UInt16x3_operator_eq_UInt16x3 },
+        std::pair{ "operator>(u16x3)"_c, &UInt16x3_operator_gt_UInt16x3 },
+        std::pair{ "operator>=(u16x3)"_c, &UInt16x3_operator_gte_UInt16x3 },
+        std::pair{ "operator>>(u16x3)"_c, &UInt16x3_operator_rsh_UInt16x3 },
+        std::pair{ "operator>>=(u16x3)"_c, &UInt16x3_operator_rhsasg_UInt16x3 },
+        std::pair{ "operator[](i16)"_c, &UInt16x3_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &UInt16x3_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &UInt16x3_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &UInt16x3_operator_index_UInt32 },
+        std::pair{ "operator^(u16x3)"_c, &UInt16x3_operator_xor_UInt16x3 },
+        std::pair{ "operator^=(u16x3)"_c, &UInt16x3_operator_xorasg_UInt16x3 },
+        std::pair{ "operator|(u16x3)"_c, &UInt16x3_operator_or_UInt16x3 },
+        std::pair{ "operator|=(u16x3)"_c, &UInt16x3_operator_orasg_UInt16x3 },
+        std::pair{ "r"_c, &UInt16Type },
+        std::pair{ "rb"_c, &UInt16x2Type },
+        std::pair{ "rbb"_c, &UInt16x3Type },
+        std::pair{ "rbbb"_c, &UInt16x4Type },
+        std::pair{ "rbbg"_c, &UInt16x4Type },
+        std::pair{ "rbbr"_c, &UInt16x4Type },
+        std::pair{ "rbg"_c, &UInt16x3Type },
+        std::pair{ "rbgb"_c, &UInt16x4Type },
+        std::pair{ "rbgg"_c, &UInt16x4Type },
+        std::pair{ "rbgr"_c, &UInt16x4Type },
+        std::pair{ "rbr"_c, &UInt16x3Type },
+        std::pair{ "rbrb"_c, &UInt16x4Type },
+        std::pair{ "rbrg"_c, &UInt16x4Type },
+        std::pair{ "rbrr"_c, &UInt16x4Type },
+        std::pair{ "rg"_c, &UInt16x2Type },
+        std::pair{ "rgb"_c, &UInt16x3Type },
+        std::pair{ "rgbb"_c, &UInt16x4Type },
+        std::pair{ "rgbg"_c, &UInt16x4Type },
+        std::pair{ "rgbr"_c, &UInt16x4Type },
+        std::pair{ "rgg"_c, &UInt16x3Type },
+        std::pair{ "rggb"_c, &UInt16x4Type },
+        std::pair{ "rggg"_c, &UInt16x4Type },
+        std::pair{ "rggr"_c, &UInt16x4Type },
+        std::pair{ "rgr"_c, &UInt16x3Type },
+        std::pair{ "rgrb"_c, &UInt16x4Type },
+        std::pair{ "rgrg"_c, &UInt16x4Type },
+        std::pair{ "rgrr"_c, &UInt16x4Type },
+        std::pair{ "rr"_c, &UInt16x2Type },
+        std::pair{ "rrb"_c, &UInt16x3Type },
+        std::pair{ "rrbb"_c, &UInt16x4Type },
+        std::pair{ "rrbg"_c, &UInt16x4Type },
+        std::pair{ "rrbr"_c, &UInt16x4Type },
+        std::pair{ "rrg"_c, &UInt16x3Type },
+        std::pair{ "rrgb"_c, &UInt16x4Type },
+        std::pair{ "rrgg"_c, &UInt16x4Type },
+        std::pair{ "rrgr"_c, &UInt16x4Type },
+        std::pair{ "rrr"_c, &UInt16x3Type },
+        std::pair{ "rrrb"_c, &UInt16x4Type },
+        std::pair{ "rrrg"_c, &UInt16x4Type },
+        std::pair{ "rrrr"_c, &UInt16x4Type },
+        std::pair{ "x"_c, &UInt16Type },
+        std::pair{ "xx"_c, &UInt16x2Type },
+        std::pair{ "xxx"_c, &UInt16x3Type },
+        std::pair{ "xxxx"_c, &UInt16x4Type },
+        std::pair{ "xxxy"_c, &UInt16x4Type },
+        std::pair{ "xxxz"_c, &UInt16x4Type },
+        std::pair{ "xxy"_c, &UInt16x3Type },
+        std::pair{ "xxyx"_c, &UInt16x4Type },
+        std::pair{ "xxyy"_c, &UInt16x4Type },
+        std::pair{ "xxyz"_c, &UInt16x4Type },
+        std::pair{ "xxz"_c, &UInt16x3Type },
+        std::pair{ "xxzx"_c, &UInt16x4Type },
+        std::pair{ "xxzy"_c, &UInt16x4Type },
+        std::pair{ "xxzz"_c, &UInt16x4Type },
+        std::pair{ "xy"_c, &UInt16x2Type },
+        std::pair{ "xyx"_c, &UInt16x3Type },
+        std::pair{ "xyxx"_c, &UInt16x4Type },
+        std::pair{ "xyxy"_c, &UInt16x4Type },
+        std::pair{ "xyxz"_c, &UInt16x4Type },
+        std::pair{ "xyy"_c, &UInt16x3Type },
+        std::pair{ "xyyx"_c, &UInt16x4Type },
+        std::pair{ "xyyy"_c, &UInt16x4Type },
+        std::pair{ "xyyz"_c, &UInt16x4Type },
+        std::pair{ "xyz"_c, &UInt16x3Type },
+        std::pair{ "xyzx"_c, &UInt16x4Type },
+        std::pair{ "xyzy"_c, &UInt16x4Type },
+        std::pair{ "xyzz"_c, &UInt16x4Type },
+        std::pair{ "xz"_c, &UInt16x2Type },
+        std::pair{ "xzx"_c, &UInt16x3Type },
+        std::pair{ "xzxx"_c, &UInt16x4Type },
+        std::pair{ "xzxy"_c, &UInt16x4Type },
+        std::pair{ "xzxz"_c, &UInt16x4Type },
+        std::pair{ "xzy"_c, &UInt16x3Type },
+        std::pair{ "xzyx"_c, &UInt16x4Type },
+        std::pair{ "xzyy"_c, &UInt16x4Type },
+        std::pair{ "xzyz"_c, &UInt16x4Type },
+        std::pair{ "xzz"_c, &UInt16x3Type },
+        std::pair{ "xzzx"_c, &UInt16x4Type },
+        std::pair{ "xzzy"_c, &UInt16x4Type },
+        std::pair{ "xzzz"_c, &UInt16x4Type },
+        std::pair{ "y"_c, &UInt16Type },
+        std::pair{ "yx"_c, &UInt16x2Type },
+        std::pair{ "yxx"_c, &UInt16x3Type },
+        std::pair{ "yxxx"_c, &UInt16x4Type },
+        std::pair{ "yxxy"_c, &UInt16x4Type },
+        std::pair{ "yxxz"_c, &UInt16x4Type },
+        std::pair{ "yxy"_c, &UInt16x3Type },
+        std::pair{ "yxyx"_c, &UInt16x4Type },
+        std::pair{ "yxyy"_c, &UInt16x4Type },
+        std::pair{ "yxyz"_c, &UInt16x4Type },
+        std::pair{ "yxz"_c, &UInt16x3Type },
+        std::pair{ "yxzx"_c, &UInt16x4Type },
+        std::pair{ "yxzy"_c, &UInt16x4Type },
+        std::pair{ "yxzz"_c, &UInt16x4Type },
+        std::pair{ "yy"_c, &UInt16x2Type },
+        std::pair{ "yyx"_c, &UInt16x3Type },
+        std::pair{ "yyxx"_c, &UInt16x4Type },
+        std::pair{ "yyxy"_c, &UInt16x4Type },
+        std::pair{ "yyxz"_c, &UInt16x4Type },
+        std::pair{ "yyy"_c, &UInt16x3Type },
+        std::pair{ "yyyx"_c, &UInt16x4Type },
+        std::pair{ "yyyy"_c, &UInt16x4Type },
+        std::pair{ "yyyz"_c, &UInt16x4Type },
+        std::pair{ "yyz"_c, &UInt16x3Type },
+        std::pair{ "yyzx"_c, &UInt16x4Type },
+        std::pair{ "yyzy"_c, &UInt16x4Type },
+        std::pair{ "yyzz"_c, &UInt16x4Type },
+        std::pair{ "yz"_c, &UInt16x2Type },
+        std::pair{ "yzx"_c, &UInt16x3Type },
+        std::pair{ "yzxx"_c, &UInt16x4Type },
+        std::pair{ "yzxy"_c, &UInt16x4Type },
+        std::pair{ "yzxz"_c, &UInt16x4Type },
+        std::pair{ "yzy"_c, &UInt16x3Type },
+        std::pair{ "yzyx"_c, &UInt16x4Type },
+        std::pair{ "yzyy"_c, &UInt16x4Type },
+        std::pair{ "yzyz"_c, &UInt16x4Type },
+        std::pair{ "yzz"_c, &UInt16x3Type },
+        std::pair{ "yzzx"_c, &UInt16x4Type },
+        std::pair{ "yzzy"_c, &UInt16x4Type },
+        std::pair{ "yzzz"_c, &UInt16x4Type },
+        std::pair{ "z"_c, &UInt16Type },
+        std::pair{ "zx"_c, &UInt16x2Type },
+        std::pair{ "zxx"_c, &UInt16x3Type },
+        std::pair{ "zxxx"_c, &UInt16x4Type },
+        std::pair{ "zxxy"_c, &UInt16x4Type },
+        std::pair{ "zxxz"_c, &UInt16x4Type },
+        std::pair{ "zxy"_c, &UInt16x3Type },
+        std::pair{ "zxyx"_c, &UInt16x4Type },
+        std::pair{ "zxyy"_c, &UInt16x4Type },
+        std::pair{ "zxyz"_c, &UInt16x4Type },
+        std::pair{ "zxz"_c, &UInt16x3Type },
+        std::pair{ "zxzx"_c, &UInt16x4Type },
+        std::pair{ "zxzy"_c, &UInt16x4Type },
+        std::pair{ "zxzz"_c, &UInt16x4Type },
+        std::pair{ "zy"_c, &UInt16x2Type },
+        std::pair{ "zyx"_c, &UInt16x3Type },
+        std::pair{ "zyxx"_c, &UInt16x4Type },
+        std::pair{ "zyxy"_c, &UInt16x4Type },
+        std::pair{ "zyxz"_c, &UInt16x4Type },
+        std::pair{ "zyy"_c, &UInt16x3Type },
+        std::pair{ "zyyx"_c, &UInt16x4Type },
+        std::pair{ "zyyy"_c, &UInt16x4Type },
+        std::pair{ "zyyz"_c, &UInt16x4Type },
+        std::pair{ "zyz"_c, &UInt16x3Type },
+        std::pair{ "zyzx"_c, &UInt16x4Type },
+        std::pair{ "zyzy"_c, &UInt16x4Type },
+        std::pair{ "zyzz"_c, &UInt16x4Type },
+        std::pair{ "zz"_c, &UInt16x2Type },
+        std::pair{ "zzx"_c, &UInt16x3Type },
+        std::pair{ "zzxx"_c, &UInt16x4Type },
+        std::pair{ "zzxy"_c, &UInt16x4Type },
+        std::pair{ "zzxz"_c, &UInt16x4Type },
+        std::pair{ "zzy"_c, &UInt16x3Type },
+        std::pair{ "zzyx"_c, &UInt16x4Type },
+        std::pair{ "zzyy"_c, &UInt16x4Type },
+        std::pair{ "zzyz"_c, &UInt16x4Type },
+        std::pair{ "zzz"_c, &UInt16x3Type },
+        std::pair{ "zzzx"_c, &UInt16x4Type },
+        std::pair{ "zzzy"_c, &UInt16x4Type },
+        std::pair{ "zzzz"_c, &UInt16x4Type }
     };
 }
 UInt16x3 UInt16x3Type;
@@ -12454,42 +14314,282 @@ Int16x3::Int16x3()
     Symbol::Resolved(&Int16x3_operator_rhsasg_Int16x3_arg0)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&Int16x3_operator_rhsasg_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 35> { 
-        std::pair{ "operator!=", &Int16x3_operator_neq_Int16x3 },
-        std::pair{ "operator%", &Int16x3_operator_mod_Int16x3 },
-        std::pair{ "operator&", &Int16x3_operator_and_Int16x3 },
-        std::pair{ "operator&=", &Int16x3_operator_andasg_Int16x3 },
-        std::pair{ "operator*", &Int16x3_operator_mul_Int16x3 },
-        std::pair{ "operator*", &Int16x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Int16x3_operator_scale_Float16 },
-        std::pair{ "operator*", &Int16x3_operator_scale_UInt32 },
-        std::pair{ "operator*", &Int16x3_operator_scale_UInt16 },
-        std::pair{ "operator*", &Int16x3_operator_scale_Int32 },
-        std::pair{ "operator*", &Int16x3_operator_scale_Int16 },
-        std::pair{ "operator*=", &Int16x3_operator_mulasg_Int16x3 },
-        std::pair{ "operator+", &Int16x3_operator_add_Int16x3 },
-        std::pair{ "operator+=", &Int16x3_operator_addasg_Int16x3 },
-        std::pair{ "operator-", &Int16x3_operator_sub_Int16x3 },
-        std::pair{ "operator-=", &Int16x3_operator_subasg_Int16x3 },
-        std::pair{ "operator/", &Int16x3_operator_div_Int16x3 },
-        std::pair{ "operator/=", &Int16x3_operator_divasg_Int16x3 },
-        std::pair{ "operator<", &Int16x3_operator_lt_Int16x3 },
-        std::pair{ "operator<<", &Int16x3_operator_lsh_Int16x3 },
-        std::pair{ "operator<<=", &Int16x3_operator_lshasg_Int16x3 },
-        std::pair{ "operator<=", &Int16x3_operator_lte_Int16x3 },
-        std::pair{ "operator==", &Int16x3_operator_eq_Int16x3 },
-        std::pair{ "operator>", &Int16x3_operator_gt_Int16x3 },
-        std::pair{ "operator>=", &Int16x3_operator_gte_Int16x3 },
-        std::pair{ "operator>>", &Int16x3_operator_rsh_Int16x3 },
-        std::pair{ "operator>>=", &Int16x3_operator_rhsasg_Int16x3 },
-        std::pair{ "operator[]", &Int16x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Int16x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Int16x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Int16x3_operator_index_UInt16 },
-        std::pair{ "operator^", &Int16x3_operator_xor_Int16x3 },
-        std::pair{ "operator^=", &Int16x3_operator_xorasg_Int16x3 },
-        std::pair{ "operator|", &Int16x3_operator_or_Int16x3 },
-        std::pair{ "operator|=", &Int16x3_operator_orasg_Int16x3 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 275> { 
+        std::pair{ "b"_c, &Int16Type },
+        std::pair{ "bb"_c, &Int16x2Type },
+        std::pair{ "bbb"_c, &Int16x3Type },
+        std::pair{ "bbbb"_c, &Int16x4Type },
+        std::pair{ "bbbg"_c, &Int16x4Type },
+        std::pair{ "bbbr"_c, &Int16x4Type },
+        std::pair{ "bbg"_c, &Int16x3Type },
+        std::pair{ "bbgb"_c, &Int16x4Type },
+        std::pair{ "bbgg"_c, &Int16x4Type },
+        std::pair{ "bbgr"_c, &Int16x4Type },
+        std::pair{ "bbr"_c, &Int16x3Type },
+        std::pair{ "bbrb"_c, &Int16x4Type },
+        std::pair{ "bbrg"_c, &Int16x4Type },
+        std::pair{ "bbrr"_c, &Int16x4Type },
+        std::pair{ "bg"_c, &Int16x2Type },
+        std::pair{ "bgb"_c, &Int16x3Type },
+        std::pair{ "bgbb"_c, &Int16x4Type },
+        std::pair{ "bgbg"_c, &Int16x4Type },
+        std::pair{ "bgbr"_c, &Int16x4Type },
+        std::pair{ "bgg"_c, &Int16x3Type },
+        std::pair{ "bggb"_c, &Int16x4Type },
+        std::pair{ "bggg"_c, &Int16x4Type },
+        std::pair{ "bggr"_c, &Int16x4Type },
+        std::pair{ "bgr"_c, &Int16x3Type },
+        std::pair{ "bgrb"_c, &Int16x4Type },
+        std::pair{ "bgrg"_c, &Int16x4Type },
+        std::pair{ "bgrr"_c, &Int16x4Type },
+        std::pair{ "br"_c, &Int16x2Type },
+        std::pair{ "brb"_c, &Int16x3Type },
+        std::pair{ "brbb"_c, &Int16x4Type },
+        std::pair{ "brbg"_c, &Int16x4Type },
+        std::pair{ "brbr"_c, &Int16x4Type },
+        std::pair{ "brg"_c, &Int16x3Type },
+        std::pair{ "brgb"_c, &Int16x4Type },
+        std::pair{ "brgg"_c, &Int16x4Type },
+        std::pair{ "brgr"_c, &Int16x4Type },
+        std::pair{ "brr"_c, &Int16x3Type },
+        std::pair{ "brrb"_c, &Int16x4Type },
+        std::pair{ "brrg"_c, &Int16x4Type },
+        std::pair{ "brrr"_c, &Int16x4Type },
+        std::pair{ "g"_c, &Int16Type },
+        std::pair{ "gb"_c, &Int16x2Type },
+        std::pair{ "gbb"_c, &Int16x3Type },
+        std::pair{ "gbbb"_c, &Int16x4Type },
+        std::pair{ "gbbg"_c, &Int16x4Type },
+        std::pair{ "gbbr"_c, &Int16x4Type },
+        std::pair{ "gbg"_c, &Int16x3Type },
+        std::pair{ "gbgb"_c, &Int16x4Type },
+        std::pair{ "gbgg"_c, &Int16x4Type },
+        std::pair{ "gbgr"_c, &Int16x4Type },
+        std::pair{ "gbr"_c, &Int16x3Type },
+        std::pair{ "gbrb"_c, &Int16x4Type },
+        std::pair{ "gbrg"_c, &Int16x4Type },
+        std::pair{ "gbrr"_c, &Int16x4Type },
+        std::pair{ "gg"_c, &Int16x2Type },
+        std::pair{ "ggb"_c, &Int16x3Type },
+        std::pair{ "ggbb"_c, &Int16x4Type },
+        std::pair{ "ggbg"_c, &Int16x4Type },
+        std::pair{ "ggbr"_c, &Int16x4Type },
+        std::pair{ "ggg"_c, &Int16x3Type },
+        std::pair{ "gggb"_c, &Int16x4Type },
+        std::pair{ "gggg"_c, &Int16x4Type },
+        std::pair{ "gggr"_c, &Int16x4Type },
+        std::pair{ "ggr"_c, &Int16x3Type },
+        std::pair{ "ggrb"_c, &Int16x4Type },
+        std::pair{ "ggrg"_c, &Int16x4Type },
+        std::pair{ "ggrr"_c, &Int16x4Type },
+        std::pair{ "gr"_c, &Int16x2Type },
+        std::pair{ "grb"_c, &Int16x3Type },
+        std::pair{ "grbb"_c, &Int16x4Type },
+        std::pair{ "grbg"_c, &Int16x4Type },
+        std::pair{ "grbr"_c, &Int16x4Type },
+        std::pair{ "grg"_c, &Int16x3Type },
+        std::pair{ "grgb"_c, &Int16x4Type },
+        std::pair{ "grgg"_c, &Int16x4Type },
+        std::pair{ "grgr"_c, &Int16x4Type },
+        std::pair{ "grr"_c, &Int16x3Type },
+        std::pair{ "grrb"_c, &Int16x4Type },
+        std::pair{ "grrg"_c, &Int16x4Type },
+        std::pair{ "grrr"_c, &Int16x4Type },
+        std::pair{ "operator!=(i16x3)"_c, &Int16x3_operator_neq_Int16x3 },
+        std::pair{ "operator%(i16x3)"_c, &Int16x3_operator_mod_Int16x3 },
+        std::pair{ "operator&(i16x3)"_c, &Int16x3_operator_and_Int16x3 },
+        std::pair{ "operator&=(i16x3)"_c, &Int16x3_operator_andasg_Int16x3 },
+        std::pair{ "operator*(f16)"_c, &Int16x3_operator_scale_Float16 },
+        std::pair{ "operator*(f32)"_c, &Int16x3_operator_scale_Float32 },
+        std::pair{ "operator*(i16)"_c, &Int16x3_operator_scale_Int16 },
+        std::pair{ "operator*(i16x3)"_c, &Int16x3_operator_mul_Int16x3 },
+        std::pair{ "operator*(i32)"_c, &Int16x3_operator_scale_Int32 },
+        std::pair{ "operator*(u16)"_c, &Int16x3_operator_scale_UInt16 },
+        std::pair{ "operator*(u32)"_c, &Int16x3_operator_scale_UInt32 },
+        std::pair{ "operator*=(i16x3)"_c, &Int16x3_operator_mulasg_Int16x3 },
+        std::pair{ "operator+(i16x3)"_c, &Int16x3_operator_add_Int16x3 },
+        std::pair{ "operator+=(i16x3)"_c, &Int16x3_operator_addasg_Int16x3 },
+        std::pair{ "operator-(i16x3)"_c, &Int16x3_operator_sub_Int16x3 },
+        std::pair{ "operator-=(i16x3)"_c, &Int16x3_operator_subasg_Int16x3 },
+        std::pair{ "operator/(i16x3)"_c, &Int16x3_operator_div_Int16x3 },
+        std::pair{ "operator/=(i16x3)"_c, &Int16x3_operator_divasg_Int16x3 },
+        std::pair{ "operator<(i16x3)"_c, &Int16x3_operator_lt_Int16x3 },
+        std::pair{ "operator<<(i16x3)"_c, &Int16x3_operator_lsh_Int16x3 },
+        std::pair{ "operator<<=(i16x3)"_c, &Int16x3_operator_lshasg_Int16x3 },
+        std::pair{ "operator<=(i16x3)"_c, &Int16x3_operator_lte_Int16x3 },
+        std::pair{ "operator==(i16x3)"_c, &Int16x3_operator_eq_Int16x3 },
+        std::pair{ "operator>(i16x3)"_c, &Int16x3_operator_gt_Int16x3 },
+        std::pair{ "operator>=(i16x3)"_c, &Int16x3_operator_gte_Int16x3 },
+        std::pair{ "operator>>(i16x3)"_c, &Int16x3_operator_rsh_Int16x3 },
+        std::pair{ "operator>>=(i16x3)"_c, &Int16x3_operator_rhsasg_Int16x3 },
+        std::pair{ "operator[](i16)"_c, &Int16x3_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &Int16x3_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &Int16x3_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &Int16x3_operator_index_UInt32 },
+        std::pair{ "operator^(i16x3)"_c, &Int16x3_operator_xor_Int16x3 },
+        std::pair{ "operator^=(i16x3)"_c, &Int16x3_operator_xorasg_Int16x3 },
+        std::pair{ "operator|(i16x3)"_c, &Int16x3_operator_or_Int16x3 },
+        std::pair{ "operator|=(i16x3)"_c, &Int16x3_operator_orasg_Int16x3 },
+        std::pair{ "r"_c, &Int16Type },
+        std::pair{ "rb"_c, &Int16x2Type },
+        std::pair{ "rbb"_c, &Int16x3Type },
+        std::pair{ "rbbb"_c, &Int16x4Type },
+        std::pair{ "rbbg"_c, &Int16x4Type },
+        std::pair{ "rbbr"_c, &Int16x4Type },
+        std::pair{ "rbg"_c, &Int16x3Type },
+        std::pair{ "rbgb"_c, &Int16x4Type },
+        std::pair{ "rbgg"_c, &Int16x4Type },
+        std::pair{ "rbgr"_c, &Int16x4Type },
+        std::pair{ "rbr"_c, &Int16x3Type },
+        std::pair{ "rbrb"_c, &Int16x4Type },
+        std::pair{ "rbrg"_c, &Int16x4Type },
+        std::pair{ "rbrr"_c, &Int16x4Type },
+        std::pair{ "rg"_c, &Int16x2Type },
+        std::pair{ "rgb"_c, &Int16x3Type },
+        std::pair{ "rgbb"_c, &Int16x4Type },
+        std::pair{ "rgbg"_c, &Int16x4Type },
+        std::pair{ "rgbr"_c, &Int16x4Type },
+        std::pair{ "rgg"_c, &Int16x3Type },
+        std::pair{ "rggb"_c, &Int16x4Type },
+        std::pair{ "rggg"_c, &Int16x4Type },
+        std::pair{ "rggr"_c, &Int16x4Type },
+        std::pair{ "rgr"_c, &Int16x3Type },
+        std::pair{ "rgrb"_c, &Int16x4Type },
+        std::pair{ "rgrg"_c, &Int16x4Type },
+        std::pair{ "rgrr"_c, &Int16x4Type },
+        std::pair{ "rr"_c, &Int16x2Type },
+        std::pair{ "rrb"_c, &Int16x3Type },
+        std::pair{ "rrbb"_c, &Int16x4Type },
+        std::pair{ "rrbg"_c, &Int16x4Type },
+        std::pair{ "rrbr"_c, &Int16x4Type },
+        std::pair{ "rrg"_c, &Int16x3Type },
+        std::pair{ "rrgb"_c, &Int16x4Type },
+        std::pair{ "rrgg"_c, &Int16x4Type },
+        std::pair{ "rrgr"_c, &Int16x4Type },
+        std::pair{ "rrr"_c, &Int16x3Type },
+        std::pair{ "rrrb"_c, &Int16x4Type },
+        std::pair{ "rrrg"_c, &Int16x4Type },
+        std::pair{ "rrrr"_c, &Int16x4Type },
+        std::pair{ "x"_c, &Int16Type },
+        std::pair{ "xx"_c, &Int16x2Type },
+        std::pair{ "xxx"_c, &Int16x3Type },
+        std::pair{ "xxxx"_c, &Int16x4Type },
+        std::pair{ "xxxy"_c, &Int16x4Type },
+        std::pair{ "xxxz"_c, &Int16x4Type },
+        std::pair{ "xxy"_c, &Int16x3Type },
+        std::pair{ "xxyx"_c, &Int16x4Type },
+        std::pair{ "xxyy"_c, &Int16x4Type },
+        std::pair{ "xxyz"_c, &Int16x4Type },
+        std::pair{ "xxz"_c, &Int16x3Type },
+        std::pair{ "xxzx"_c, &Int16x4Type },
+        std::pair{ "xxzy"_c, &Int16x4Type },
+        std::pair{ "xxzz"_c, &Int16x4Type },
+        std::pair{ "xy"_c, &Int16x2Type },
+        std::pair{ "xyx"_c, &Int16x3Type },
+        std::pair{ "xyxx"_c, &Int16x4Type },
+        std::pair{ "xyxy"_c, &Int16x4Type },
+        std::pair{ "xyxz"_c, &Int16x4Type },
+        std::pair{ "xyy"_c, &Int16x3Type },
+        std::pair{ "xyyx"_c, &Int16x4Type },
+        std::pair{ "xyyy"_c, &Int16x4Type },
+        std::pair{ "xyyz"_c, &Int16x4Type },
+        std::pair{ "xyz"_c, &Int16x3Type },
+        std::pair{ "xyzx"_c, &Int16x4Type },
+        std::pair{ "xyzy"_c, &Int16x4Type },
+        std::pair{ "xyzz"_c, &Int16x4Type },
+        std::pair{ "xz"_c, &Int16x2Type },
+        std::pair{ "xzx"_c, &Int16x3Type },
+        std::pair{ "xzxx"_c, &Int16x4Type },
+        std::pair{ "xzxy"_c, &Int16x4Type },
+        std::pair{ "xzxz"_c, &Int16x4Type },
+        std::pair{ "xzy"_c, &Int16x3Type },
+        std::pair{ "xzyx"_c, &Int16x4Type },
+        std::pair{ "xzyy"_c, &Int16x4Type },
+        std::pair{ "xzyz"_c, &Int16x4Type },
+        std::pair{ "xzz"_c, &Int16x3Type },
+        std::pair{ "xzzx"_c, &Int16x4Type },
+        std::pair{ "xzzy"_c, &Int16x4Type },
+        std::pair{ "xzzz"_c, &Int16x4Type },
+        std::pair{ "y"_c, &Int16Type },
+        std::pair{ "yx"_c, &Int16x2Type },
+        std::pair{ "yxx"_c, &Int16x3Type },
+        std::pair{ "yxxx"_c, &Int16x4Type },
+        std::pair{ "yxxy"_c, &Int16x4Type },
+        std::pair{ "yxxz"_c, &Int16x4Type },
+        std::pair{ "yxy"_c, &Int16x3Type },
+        std::pair{ "yxyx"_c, &Int16x4Type },
+        std::pair{ "yxyy"_c, &Int16x4Type },
+        std::pair{ "yxyz"_c, &Int16x4Type },
+        std::pair{ "yxz"_c, &Int16x3Type },
+        std::pair{ "yxzx"_c, &Int16x4Type },
+        std::pair{ "yxzy"_c, &Int16x4Type },
+        std::pair{ "yxzz"_c, &Int16x4Type },
+        std::pair{ "yy"_c, &Int16x2Type },
+        std::pair{ "yyx"_c, &Int16x3Type },
+        std::pair{ "yyxx"_c, &Int16x4Type },
+        std::pair{ "yyxy"_c, &Int16x4Type },
+        std::pair{ "yyxz"_c, &Int16x4Type },
+        std::pair{ "yyy"_c, &Int16x3Type },
+        std::pair{ "yyyx"_c, &Int16x4Type },
+        std::pair{ "yyyy"_c, &Int16x4Type },
+        std::pair{ "yyyz"_c, &Int16x4Type },
+        std::pair{ "yyz"_c, &Int16x3Type },
+        std::pair{ "yyzx"_c, &Int16x4Type },
+        std::pair{ "yyzy"_c, &Int16x4Type },
+        std::pair{ "yyzz"_c, &Int16x4Type },
+        std::pair{ "yz"_c, &Int16x2Type },
+        std::pair{ "yzx"_c, &Int16x3Type },
+        std::pair{ "yzxx"_c, &Int16x4Type },
+        std::pair{ "yzxy"_c, &Int16x4Type },
+        std::pair{ "yzxz"_c, &Int16x4Type },
+        std::pair{ "yzy"_c, &Int16x3Type },
+        std::pair{ "yzyx"_c, &Int16x4Type },
+        std::pair{ "yzyy"_c, &Int16x4Type },
+        std::pair{ "yzyz"_c, &Int16x4Type },
+        std::pair{ "yzz"_c, &Int16x3Type },
+        std::pair{ "yzzx"_c, &Int16x4Type },
+        std::pair{ "yzzy"_c, &Int16x4Type },
+        std::pair{ "yzzz"_c, &Int16x4Type },
+        std::pair{ "z"_c, &Int16Type },
+        std::pair{ "zx"_c, &Int16x2Type },
+        std::pair{ "zxx"_c, &Int16x3Type },
+        std::pair{ "zxxx"_c, &Int16x4Type },
+        std::pair{ "zxxy"_c, &Int16x4Type },
+        std::pair{ "zxxz"_c, &Int16x4Type },
+        std::pair{ "zxy"_c, &Int16x3Type },
+        std::pair{ "zxyx"_c, &Int16x4Type },
+        std::pair{ "zxyy"_c, &Int16x4Type },
+        std::pair{ "zxyz"_c, &Int16x4Type },
+        std::pair{ "zxz"_c, &Int16x3Type },
+        std::pair{ "zxzx"_c, &Int16x4Type },
+        std::pair{ "zxzy"_c, &Int16x4Type },
+        std::pair{ "zxzz"_c, &Int16x4Type },
+        std::pair{ "zy"_c, &Int16x2Type },
+        std::pair{ "zyx"_c, &Int16x3Type },
+        std::pair{ "zyxx"_c, &Int16x4Type },
+        std::pair{ "zyxy"_c, &Int16x4Type },
+        std::pair{ "zyxz"_c, &Int16x4Type },
+        std::pair{ "zyy"_c, &Int16x3Type },
+        std::pair{ "zyyx"_c, &Int16x4Type },
+        std::pair{ "zyyy"_c, &Int16x4Type },
+        std::pair{ "zyyz"_c, &Int16x4Type },
+        std::pair{ "zyz"_c, &Int16x3Type },
+        std::pair{ "zyzx"_c, &Int16x4Type },
+        std::pair{ "zyzy"_c, &Int16x4Type },
+        std::pair{ "zyzz"_c, &Int16x4Type },
+        std::pair{ "zz"_c, &Int16x2Type },
+        std::pair{ "zzx"_c, &Int16x3Type },
+        std::pair{ "zzxx"_c, &Int16x4Type },
+        std::pair{ "zzxy"_c, &Int16x4Type },
+        std::pair{ "zzxz"_c, &Int16x4Type },
+        std::pair{ "zzy"_c, &Int16x3Type },
+        std::pair{ "zzyx"_c, &Int16x4Type },
+        std::pair{ "zzyy"_c, &Int16x4Type },
+        std::pair{ "zzyz"_c, &Int16x4Type },
+        std::pair{ "zzz"_c, &Int16x3Type },
+        std::pair{ "zzzx"_c, &Int16x4Type },
+        std::pair{ "zzzy"_c, &Int16x4Type },
+        std::pair{ "zzzz"_c, &Int16x4Type }
     };
 }
 Int16x3 Int16x3Type;
@@ -12583,17 +14683,23 @@ Variable Float32x4_ctor3_arg2_Float32x2;
 Function Float32x4_ctor3;
 inline constexpr std::array Float32x4_ctor3_args = { &Float32x4_ctor3_arg0_Float32, &Float32x4_ctor3_arg1_Float32, &Float32x4_ctor3_arg2_Float32x2 };
 
-/// f32x4 with Float32x3, Float32
-Variable Float32x4_ctor4_arg0_Float32x3;
-Variable Float32x4_ctor4_arg1_Float32;
+/// f32x4 with Float32x2, Float32x2
+Variable Float32x4_ctor4_arg0_Float32x2;
+Variable Float32x4_ctor4_arg1_Float32x2;
 Function Float32x4_ctor4;
-inline constexpr std::array Float32x4_ctor4_args = { &Float32x4_ctor4_arg0_Float32x3, &Float32x4_ctor4_arg1_Float32 };
+inline constexpr std::array Float32x4_ctor4_args = { &Float32x4_ctor4_arg0_Float32x2, &Float32x4_ctor4_arg1_Float32x2 };
+
+/// f32x4 with Float32x3, Float32
+Variable Float32x4_ctor5_arg0_Float32x3;
+Variable Float32x4_ctor5_arg1_Float32;
+Function Float32x4_ctor5;
+inline constexpr std::array Float32x4_ctor5_args = { &Float32x4_ctor5_arg0_Float32x3, &Float32x4_ctor5_arg1_Float32 };
 
 /// f32x4 with Float32, Float32x3
-Variable Float32x4_ctor5_arg0_Float32;
-Variable Float32x4_ctor5_arg1_Float32x3;
-Function Float32x4_ctor5;
-inline constexpr std::array Float32x4_ctor5_args = { &Float32x4_ctor5_arg0_Float32, &Float32x4_ctor5_arg1_Float32x3 };
+Variable Float32x4_ctor6_arg0_Float32;
+Variable Float32x4_ctor6_arg1_Float32x3;
+Function Float32x4_ctor6;
+inline constexpr std::array Float32x4_ctor6_args = { &Float32x4_ctor6_arg0_Float32, &Float32x4_ctor6_arg1_Float32x3 };
 
 /// operator[] with Int32
 Variable Float32x4_operator_index_Int32_arg0;
@@ -12721,19 +14827,19 @@ Function Float32x4_operator_scale_Int16;
 inline constexpr std::array Float32x4_operator_scale_Int16_args = { &Float32x4_operator_scale_Int16_arg0 };
 
 /// operator* with Float32x4x2
-Variable Float32x4_operator_mul_Float32x4x2_arg0;
-Function Float32x4_operator_mul_Float32x4x2;
-inline constexpr std::array Float32x4_operator_mul_Float32x4x2_args = { &Float32x4_operator_mul_Float32x4x2_arg0 };
+Variable Float32x4_operator_transform_Float32x4x2_arg0;
+Function Float32x4_operator_transform_Float32x4x2;
+inline constexpr std::array Float32x4_operator_transform_Float32x4x2_args = { &Float32x4_operator_transform_Float32x4x2_arg0 };
 
 /// operator* with Float32x4x3
-Variable Float32x4_operator_mul_Float32x4x3_arg0;
-Function Float32x4_operator_mul_Float32x4x3;
-inline constexpr std::array Float32x4_operator_mul_Float32x4x3_args = { &Float32x4_operator_mul_Float32x4x3_arg0 };
+Variable Float32x4_operator_transform_Float32x4x3_arg0;
+Function Float32x4_operator_transform_Float32x4x3;
+inline constexpr std::array Float32x4_operator_transform_Float32x4x3_args = { &Float32x4_operator_transform_Float32x4x3_arg0 };
 
 /// operator* with Float32x4x4
-Variable Float32x4_operator_mul_Float32x4x4_arg0;
-Function Float32x4_operator_mul_Float32x4x4;
-inline constexpr std::array Float32x4_operator_mul_Float32x4x4_args = { &Float32x4_operator_mul_Float32x4x4_arg0 };
+Variable Float32x4_operator_transform_Float32x4x4_arg0;
+Function Float32x4_operator_transform_Float32x4x4;
+inline constexpr std::array Float32x4_operator_transform_Float32x4x4_args = { &Float32x4_operator_transform_Float32x4x4_arg0 };
 
 Float32x4::Float32x4()
 {
@@ -12928,29 +15034,41 @@ Float32x4::Float32x4()
     Symbol::Resolved(&Float32x4_ctor3_arg2_Float32x2)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&Float32x4_ctor3)->returnTypeSymbol = &Float32x4Type;
 
-    /// f32x4 with Float32x3, Float32
-    Float32x4_ctor4_arg0_Float32x3.name = "_arg0"_c;
-    Float32x4_ctor4_arg0_Float32x3.type = Type::FullType{ Float32x3Type.name };
-    Float32x4_ctor4_arg1_Float32.name = "_arg1"_c;
-    Float32x4_ctor4_arg1_Float32.type = Type::FullType{ Float32Type.name };
+    /// f32x4 with Float32x2, Float32x2
+    Float32x4_ctor4_arg0_Float32x2.name = "_arg0"_c;
+    Float32x4_ctor4_arg0_Float32x2.type = Type::FullType{ Float32x2Type.name };
+    Float32x4_ctor4_arg1_Float32x2.name = "_arg1"_c;
+    Float32x4_ctor4_arg1_Float32x2.type = Type::FullType{ Float32x2Type.name };
     Float32x4_ctor4.name = "f32x4"_c;
     Float32x4_ctor4.returnType = Type::FullType { Float32x4Type.name };
     Float32x4_ctor4.parameters = Float32x4_ctor4_args;
-    Symbol::Resolved(&Float32x4_ctor4_arg0_Float32x3)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&Float32x4_ctor4_arg1_Float32)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&Float32x4_ctor4_arg0_Float32x2)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&Float32x4_ctor4_arg1_Float32x2)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&Float32x4_ctor4)->returnTypeSymbol = &Float32x4Type;
 
-    /// f32x4 with Float32, Float32x3
-    Float32x4_ctor5_arg0_Float32.name = "_arg0"_c;
-    Float32x4_ctor5_arg0_Float32.type = Type::FullType{ Float32Type.name };
-    Float32x4_ctor5_arg1_Float32x3.name = "_arg1"_c;
-    Float32x4_ctor5_arg1_Float32x3.type = Type::FullType{ Float32x3Type.name };
+    /// f32x4 with Float32x3, Float32
+    Float32x4_ctor5_arg0_Float32x3.name = "_arg0"_c;
+    Float32x4_ctor5_arg0_Float32x3.type = Type::FullType{ Float32x3Type.name };
+    Float32x4_ctor5_arg1_Float32.name = "_arg1"_c;
+    Float32x4_ctor5_arg1_Float32.type = Type::FullType{ Float32Type.name };
     Float32x4_ctor5.name = "f32x4"_c;
     Float32x4_ctor5.returnType = Type::FullType { Float32x4Type.name };
     Float32x4_ctor5.parameters = Float32x4_ctor5_args;
-    Symbol::Resolved(&Float32x4_ctor5_arg0_Float32)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Float32x4_ctor5_arg1_Float32x3)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&Float32x4_ctor5_arg0_Float32x3)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&Float32x4_ctor5_arg1_Float32)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x4_ctor5)->returnTypeSymbol = &Float32x4Type;
+
+    /// f32x4 with Float32, Float32x3
+    Float32x4_ctor6_arg0_Float32.name = "_arg0"_c;
+    Float32x4_ctor6_arg0_Float32.type = Type::FullType{ Float32Type.name };
+    Float32x4_ctor6_arg1_Float32x3.name = "_arg1"_c;
+    Float32x4_ctor6_arg1_Float32x3.type = Type::FullType{ Float32x3Type.name };
+    Float32x4_ctor6.name = "f32x4"_c;
+    Float32x4_ctor6.returnType = Type::FullType { Float32x4Type.name };
+    Float32x4_ctor6.parameters = Float32x4_ctor6_args;
+    Symbol::Resolved(&Float32x4_ctor6_arg0_Float32)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&Float32x4_ctor6_arg1_Float32x3)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&Float32x4_ctor6)->returnTypeSymbol = &Float32x4Type;
 
     /// operator[] with Int32
     Float32x4_operator_index_Int32_arg0.name = "_arg0"_c;
@@ -13178,61 +15296,741 @@ Float32x4::Float32x4()
     Symbol::Resolved(&Float32x4_operator_scale_Int16)->returnTypeSymbol = &Float32x4Type;
 
     /// operator* with Float32x4x2
-    Float32x4_operator_mul_Float32x4x2_arg0.name = "_arg0"_c;
-    Float32x4_operator_mul_Float32x4x2_arg0.type = Type::FullType{ Float32x4x2Type.name };
-    Float32x4_operator_mul_Float32x4x2.name = "operator*"_c;
-    Float32x4_operator_mul_Float32x4x2.returnType = Type::FullType { Float32x2Type.name };
-    Float32x4_operator_mul_Float32x4x2.parameters = Float32x4_operator_mul_Float32x4x2_args;
-    Symbol::Resolved(&Float32x4_operator_mul_Float32x4x2_arg0)->typeSymbol = &Float32x4x2Type;
-    Symbol::Resolved(&Float32x4_operator_mul_Float32x4x2)->returnTypeSymbol = &Float32x2Type;
+    Float32x4_operator_transform_Float32x4x2_arg0.name = "_arg0"_c;
+    Float32x4_operator_transform_Float32x4x2_arg0.type = Type::FullType{ Float32x4x2Type.name };
+    Float32x4_operator_transform_Float32x4x2.name = "operator*"_c;
+    Float32x4_operator_transform_Float32x4x2.returnType = Type::FullType { Float32x2Type.name };
+    Float32x4_operator_transform_Float32x4x2.parameters = Float32x4_operator_transform_Float32x4x2_args;
+    Symbol::Resolved(&Float32x4_operator_transform_Float32x4x2_arg0)->typeSymbol = &Float32x4x2Type;
+    Symbol::Resolved(&Float32x4_operator_transform_Float32x4x2)->returnTypeSymbol = &Float32x2Type;
 
     /// operator* with Float32x4x3
-    Float32x4_operator_mul_Float32x4x3_arg0.name = "_arg0"_c;
-    Float32x4_operator_mul_Float32x4x3_arg0.type = Type::FullType{ Float32x4x3Type.name };
-    Float32x4_operator_mul_Float32x4x3.name = "operator*"_c;
-    Float32x4_operator_mul_Float32x4x3.returnType = Type::FullType { Float32x3Type.name };
-    Float32x4_operator_mul_Float32x4x3.parameters = Float32x4_operator_mul_Float32x4x3_args;
-    Symbol::Resolved(&Float32x4_operator_mul_Float32x4x3_arg0)->typeSymbol = &Float32x4x3Type;
-    Symbol::Resolved(&Float32x4_operator_mul_Float32x4x3)->returnTypeSymbol = &Float32x3Type;
+    Float32x4_operator_transform_Float32x4x3_arg0.name = "_arg0"_c;
+    Float32x4_operator_transform_Float32x4x3_arg0.type = Type::FullType{ Float32x4x3Type.name };
+    Float32x4_operator_transform_Float32x4x3.name = "operator*"_c;
+    Float32x4_operator_transform_Float32x4x3.returnType = Type::FullType { Float32x3Type.name };
+    Float32x4_operator_transform_Float32x4x3.parameters = Float32x4_operator_transform_Float32x4x3_args;
+    Symbol::Resolved(&Float32x4_operator_transform_Float32x4x3_arg0)->typeSymbol = &Float32x4x3Type;
+    Symbol::Resolved(&Float32x4_operator_transform_Float32x4x3)->returnTypeSymbol = &Float32x3Type;
 
     /// operator* with Float32x4x4
-    Float32x4_operator_mul_Float32x4x4_arg0.name = "_arg0"_c;
-    Float32x4_operator_mul_Float32x4x4_arg0.type = Type::FullType{ Float32x4x4Type.name };
-    Float32x4_operator_mul_Float32x4x4.name = "operator*"_c;
-    Float32x4_operator_mul_Float32x4x4.returnType = Type::FullType { Float32x4Type.name };
-    Float32x4_operator_mul_Float32x4x4.parameters = Float32x4_operator_mul_Float32x4x4_args;
-    Symbol::Resolved(&Float32x4_operator_mul_Float32x4x4_arg0)->typeSymbol = &Float32x4x4Type;
-    Symbol::Resolved(&Float32x4_operator_mul_Float32x4x4)->returnTypeSymbol = &Float32x4Type;
+    Float32x4_operator_transform_Float32x4x4_arg0.name = "_arg0"_c;
+    Float32x4_operator_transform_Float32x4x4_arg0.type = Type::FullType{ Float32x4x4Type.name };
+    Float32x4_operator_transform_Float32x4x4.name = "operator*"_c;
+    Float32x4_operator_transform_Float32x4x4.returnType = Type::FullType { Float32x4Type.name };
+    Float32x4_operator_transform_Float32x4x4.parameters = Float32x4_operator_transform_Float32x4x4_args;
+    Symbol::Resolved(&Float32x4_operator_transform_Float32x4x4_arg0)->typeSymbol = &Float32x4x4Type;
+    Symbol::Resolved(&Float32x4_operator_transform_Float32x4x4)->returnTypeSymbol = &Float32x4Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 28> { 
-        std::pair{ "operator!=", &Float32x4_operator_neq_Float32x4 },
-        std::pair{ "operator%", &Float32x4_operator_mod_Float32x4 },
-        std::pair{ "operator*", &Float32x4_operator_mul_Float32x4 },
-        std::pair{ "operator*", &Float32x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Float32x4_operator_scale_UInt32 },
-        std::pair{ "operator*", &Float32x4_operator_scale_UInt16 },
-        std::pair{ "operator*", &Float32x4_operator_scale_Int32 },
-        std::pair{ "operator*", &Float32x4_operator_scale_Int16 },
-        std::pair{ "operator*", &Float32x4_operator_mul_Float32x4x2 },
-        std::pair{ "operator*", &Float32x4_operator_mul_Float32x4x3 },
-        std::pair{ "operator*", &Float32x4_operator_mul_Float32x4x4 },
-        std::pair{ "operator*=", &Float32x4_operator_mulasg_Float32x4 },
-        std::pair{ "operator+", &Float32x4_operator_add_Float32x4 },
-        std::pair{ "operator+=", &Float32x4_operator_addasg_Float32x4 },
-        std::pair{ "operator-", &Float32x4_operator_sub_Float32x4 },
-        std::pair{ "operator-=", &Float32x4_operator_subasg_Float32x4 },
-        std::pair{ "operator/", &Float32x4_operator_div_Float32x4 },
-        std::pair{ "operator/=", &Float32x4_operator_divasg_Float32x4 },
-        std::pair{ "operator<", &Float32x4_operator_lt_Float32x4 },
-        std::pair{ "operator<=", &Float32x4_operator_lte_Float32x4 },
-        std::pair{ "operator==", &Float32x4_operator_eq_Float32x4 },
-        std::pair{ "operator>", &Float32x4_operator_gt_Float32x4 },
-        std::pair{ "operator>=", &Float32x4_operator_gte_Float32x4 },
-        std::pair{ "operator[]", &Float32x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4_operator_index_UInt16 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 708> { 
+        std::pair{ "a"_c, &Float32Type },
+        std::pair{ "aa"_c, &Float32x2Type },
+        std::pair{ "aaa"_c, &Float32x3Type },
+        std::pair{ "aaaa"_c, &Float32x4Type },
+        std::pair{ "aaab"_c, &Float32x4Type },
+        std::pair{ "aaag"_c, &Float32x4Type },
+        std::pair{ "aaar"_c, &Float32x4Type },
+        std::pair{ "aab"_c, &Float32x3Type },
+        std::pair{ "aaba"_c, &Float32x4Type },
+        std::pair{ "aabb"_c, &Float32x4Type },
+        std::pair{ "aabg"_c, &Float32x4Type },
+        std::pair{ "aabr"_c, &Float32x4Type },
+        std::pair{ "aag"_c, &Float32x3Type },
+        std::pair{ "aaga"_c, &Float32x4Type },
+        std::pair{ "aagb"_c, &Float32x4Type },
+        std::pair{ "aagg"_c, &Float32x4Type },
+        std::pair{ "aagr"_c, &Float32x4Type },
+        std::pair{ "aar"_c, &Float32x3Type },
+        std::pair{ "aara"_c, &Float32x4Type },
+        std::pair{ "aarb"_c, &Float32x4Type },
+        std::pair{ "aarg"_c, &Float32x4Type },
+        std::pair{ "aarr"_c, &Float32x4Type },
+        std::pair{ "ab"_c, &Float32x2Type },
+        std::pair{ "aba"_c, &Float32x3Type },
+        std::pair{ "abaa"_c, &Float32x4Type },
+        std::pair{ "abab"_c, &Float32x4Type },
+        std::pair{ "abag"_c, &Float32x4Type },
+        std::pair{ "abar"_c, &Float32x4Type },
+        std::pair{ "abb"_c, &Float32x3Type },
+        std::pair{ "abba"_c, &Float32x4Type },
+        std::pair{ "abbb"_c, &Float32x4Type },
+        std::pair{ "abbg"_c, &Float32x4Type },
+        std::pair{ "abbr"_c, &Float32x4Type },
+        std::pair{ "abg"_c, &Float32x3Type },
+        std::pair{ "abga"_c, &Float32x4Type },
+        std::pair{ "abgb"_c, &Float32x4Type },
+        std::pair{ "abgg"_c, &Float32x4Type },
+        std::pair{ "abgr"_c, &Float32x4Type },
+        std::pair{ "abr"_c, &Float32x3Type },
+        std::pair{ "abra"_c, &Float32x4Type },
+        std::pair{ "abrb"_c, &Float32x4Type },
+        std::pair{ "abrg"_c, &Float32x4Type },
+        std::pair{ "abrr"_c, &Float32x4Type },
+        std::pair{ "ag"_c, &Float32x2Type },
+        std::pair{ "aga"_c, &Float32x3Type },
+        std::pair{ "agaa"_c, &Float32x4Type },
+        std::pair{ "agab"_c, &Float32x4Type },
+        std::pair{ "agag"_c, &Float32x4Type },
+        std::pair{ "agar"_c, &Float32x4Type },
+        std::pair{ "agb"_c, &Float32x3Type },
+        std::pair{ "agba"_c, &Float32x4Type },
+        std::pair{ "agbb"_c, &Float32x4Type },
+        std::pair{ "agbg"_c, &Float32x4Type },
+        std::pair{ "agbr"_c, &Float32x4Type },
+        std::pair{ "agg"_c, &Float32x3Type },
+        std::pair{ "agga"_c, &Float32x4Type },
+        std::pair{ "aggb"_c, &Float32x4Type },
+        std::pair{ "aggg"_c, &Float32x4Type },
+        std::pair{ "aggr"_c, &Float32x4Type },
+        std::pair{ "agr"_c, &Float32x3Type },
+        std::pair{ "agra"_c, &Float32x4Type },
+        std::pair{ "agrb"_c, &Float32x4Type },
+        std::pair{ "agrg"_c, &Float32x4Type },
+        std::pair{ "agrr"_c, &Float32x4Type },
+        std::pair{ "ar"_c, &Float32x2Type },
+        std::pair{ "ara"_c, &Float32x3Type },
+        std::pair{ "araa"_c, &Float32x4Type },
+        std::pair{ "arab"_c, &Float32x4Type },
+        std::pair{ "arag"_c, &Float32x4Type },
+        std::pair{ "arar"_c, &Float32x4Type },
+        std::pair{ "arb"_c, &Float32x3Type },
+        std::pair{ "arba"_c, &Float32x4Type },
+        std::pair{ "arbb"_c, &Float32x4Type },
+        std::pair{ "arbg"_c, &Float32x4Type },
+        std::pair{ "arbr"_c, &Float32x4Type },
+        std::pair{ "arg"_c, &Float32x3Type },
+        std::pair{ "arga"_c, &Float32x4Type },
+        std::pair{ "argb"_c, &Float32x4Type },
+        std::pair{ "argg"_c, &Float32x4Type },
+        std::pair{ "argr"_c, &Float32x4Type },
+        std::pair{ "arr"_c, &Float32x3Type },
+        std::pair{ "arra"_c, &Float32x4Type },
+        std::pair{ "arrb"_c, &Float32x4Type },
+        std::pair{ "arrg"_c, &Float32x4Type },
+        std::pair{ "arrr"_c, &Float32x4Type },
+        std::pair{ "b"_c, &Float32Type },
+        std::pair{ "ba"_c, &Float32x2Type },
+        std::pair{ "baa"_c, &Float32x3Type },
+        std::pair{ "baaa"_c, &Float32x4Type },
+        std::pair{ "baab"_c, &Float32x4Type },
+        std::pair{ "baag"_c, &Float32x4Type },
+        std::pair{ "baar"_c, &Float32x4Type },
+        std::pair{ "bab"_c, &Float32x3Type },
+        std::pair{ "baba"_c, &Float32x4Type },
+        std::pair{ "babb"_c, &Float32x4Type },
+        std::pair{ "babg"_c, &Float32x4Type },
+        std::pair{ "babr"_c, &Float32x4Type },
+        std::pair{ "bag"_c, &Float32x3Type },
+        std::pair{ "baga"_c, &Float32x4Type },
+        std::pair{ "bagb"_c, &Float32x4Type },
+        std::pair{ "bagg"_c, &Float32x4Type },
+        std::pair{ "bagr"_c, &Float32x4Type },
+        std::pair{ "bar"_c, &Float32x3Type },
+        std::pair{ "bara"_c, &Float32x4Type },
+        std::pair{ "barb"_c, &Float32x4Type },
+        std::pair{ "barg"_c, &Float32x4Type },
+        std::pair{ "barr"_c, &Float32x4Type },
+        std::pair{ "bb"_c, &Float32x2Type },
+        std::pair{ "bba"_c, &Float32x3Type },
+        std::pair{ "bbaa"_c, &Float32x4Type },
+        std::pair{ "bbab"_c, &Float32x4Type },
+        std::pair{ "bbag"_c, &Float32x4Type },
+        std::pair{ "bbar"_c, &Float32x4Type },
+        std::pair{ "bbb"_c, &Float32x3Type },
+        std::pair{ "bbba"_c, &Float32x4Type },
+        std::pair{ "bbbb"_c, &Float32x4Type },
+        std::pair{ "bbbg"_c, &Float32x4Type },
+        std::pair{ "bbbr"_c, &Float32x4Type },
+        std::pair{ "bbg"_c, &Float32x3Type },
+        std::pair{ "bbga"_c, &Float32x4Type },
+        std::pair{ "bbgb"_c, &Float32x4Type },
+        std::pair{ "bbgg"_c, &Float32x4Type },
+        std::pair{ "bbgr"_c, &Float32x4Type },
+        std::pair{ "bbr"_c, &Float32x3Type },
+        std::pair{ "bbra"_c, &Float32x4Type },
+        std::pair{ "bbrb"_c, &Float32x4Type },
+        std::pair{ "bbrg"_c, &Float32x4Type },
+        std::pair{ "bbrr"_c, &Float32x4Type },
+        std::pair{ "bg"_c, &Float32x2Type },
+        std::pair{ "bga"_c, &Float32x3Type },
+        std::pair{ "bgaa"_c, &Float32x4Type },
+        std::pair{ "bgab"_c, &Float32x4Type },
+        std::pair{ "bgag"_c, &Float32x4Type },
+        std::pair{ "bgar"_c, &Float32x4Type },
+        std::pair{ "bgb"_c, &Float32x3Type },
+        std::pair{ "bgba"_c, &Float32x4Type },
+        std::pair{ "bgbb"_c, &Float32x4Type },
+        std::pair{ "bgbg"_c, &Float32x4Type },
+        std::pair{ "bgbr"_c, &Float32x4Type },
+        std::pair{ "bgg"_c, &Float32x3Type },
+        std::pair{ "bgga"_c, &Float32x4Type },
+        std::pair{ "bggb"_c, &Float32x4Type },
+        std::pair{ "bggg"_c, &Float32x4Type },
+        std::pair{ "bggr"_c, &Float32x4Type },
+        std::pair{ "bgr"_c, &Float32x3Type },
+        std::pair{ "bgra"_c, &Float32x4Type },
+        std::pair{ "bgrb"_c, &Float32x4Type },
+        std::pair{ "bgrg"_c, &Float32x4Type },
+        std::pair{ "bgrr"_c, &Float32x4Type },
+        std::pair{ "br"_c, &Float32x2Type },
+        std::pair{ "bra"_c, &Float32x3Type },
+        std::pair{ "braa"_c, &Float32x4Type },
+        std::pair{ "brab"_c, &Float32x4Type },
+        std::pair{ "brag"_c, &Float32x4Type },
+        std::pair{ "brar"_c, &Float32x4Type },
+        std::pair{ "brb"_c, &Float32x3Type },
+        std::pair{ "brba"_c, &Float32x4Type },
+        std::pair{ "brbb"_c, &Float32x4Type },
+        std::pair{ "brbg"_c, &Float32x4Type },
+        std::pair{ "brbr"_c, &Float32x4Type },
+        std::pair{ "brg"_c, &Float32x3Type },
+        std::pair{ "brga"_c, &Float32x4Type },
+        std::pair{ "brgb"_c, &Float32x4Type },
+        std::pair{ "brgg"_c, &Float32x4Type },
+        std::pair{ "brgr"_c, &Float32x4Type },
+        std::pair{ "brr"_c, &Float32x3Type },
+        std::pair{ "brra"_c, &Float32x4Type },
+        std::pair{ "brrb"_c, &Float32x4Type },
+        std::pair{ "brrg"_c, &Float32x4Type },
+        std::pair{ "brrr"_c, &Float32x4Type },
+        std::pair{ "g"_c, &Float32Type },
+        std::pair{ "ga"_c, &Float32x2Type },
+        std::pair{ "gaa"_c, &Float32x3Type },
+        std::pair{ "gaaa"_c, &Float32x4Type },
+        std::pair{ "gaab"_c, &Float32x4Type },
+        std::pair{ "gaag"_c, &Float32x4Type },
+        std::pair{ "gaar"_c, &Float32x4Type },
+        std::pair{ "gab"_c, &Float32x3Type },
+        std::pair{ "gaba"_c, &Float32x4Type },
+        std::pair{ "gabb"_c, &Float32x4Type },
+        std::pair{ "gabg"_c, &Float32x4Type },
+        std::pair{ "gabr"_c, &Float32x4Type },
+        std::pair{ "gag"_c, &Float32x3Type },
+        std::pair{ "gaga"_c, &Float32x4Type },
+        std::pair{ "gagb"_c, &Float32x4Type },
+        std::pair{ "gagg"_c, &Float32x4Type },
+        std::pair{ "gagr"_c, &Float32x4Type },
+        std::pair{ "gar"_c, &Float32x3Type },
+        std::pair{ "gara"_c, &Float32x4Type },
+        std::pair{ "garb"_c, &Float32x4Type },
+        std::pair{ "garg"_c, &Float32x4Type },
+        std::pair{ "garr"_c, &Float32x4Type },
+        std::pair{ "gb"_c, &Float32x2Type },
+        std::pair{ "gba"_c, &Float32x3Type },
+        std::pair{ "gbaa"_c, &Float32x4Type },
+        std::pair{ "gbab"_c, &Float32x4Type },
+        std::pair{ "gbag"_c, &Float32x4Type },
+        std::pair{ "gbar"_c, &Float32x4Type },
+        std::pair{ "gbb"_c, &Float32x3Type },
+        std::pair{ "gbba"_c, &Float32x4Type },
+        std::pair{ "gbbb"_c, &Float32x4Type },
+        std::pair{ "gbbg"_c, &Float32x4Type },
+        std::pair{ "gbbr"_c, &Float32x4Type },
+        std::pair{ "gbg"_c, &Float32x3Type },
+        std::pair{ "gbga"_c, &Float32x4Type },
+        std::pair{ "gbgb"_c, &Float32x4Type },
+        std::pair{ "gbgg"_c, &Float32x4Type },
+        std::pair{ "gbgr"_c, &Float32x4Type },
+        std::pair{ "gbr"_c, &Float32x3Type },
+        std::pair{ "gbra"_c, &Float32x4Type },
+        std::pair{ "gbrb"_c, &Float32x4Type },
+        std::pair{ "gbrg"_c, &Float32x4Type },
+        std::pair{ "gbrr"_c, &Float32x4Type },
+        std::pair{ "gg"_c, &Float32x2Type },
+        std::pair{ "gga"_c, &Float32x3Type },
+        std::pair{ "ggaa"_c, &Float32x4Type },
+        std::pair{ "ggab"_c, &Float32x4Type },
+        std::pair{ "ggag"_c, &Float32x4Type },
+        std::pair{ "ggar"_c, &Float32x4Type },
+        std::pair{ "ggb"_c, &Float32x3Type },
+        std::pair{ "ggba"_c, &Float32x4Type },
+        std::pair{ "ggbb"_c, &Float32x4Type },
+        std::pair{ "ggbg"_c, &Float32x4Type },
+        std::pair{ "ggbr"_c, &Float32x4Type },
+        std::pair{ "ggg"_c, &Float32x3Type },
+        std::pair{ "ggga"_c, &Float32x4Type },
+        std::pair{ "gggb"_c, &Float32x4Type },
+        std::pair{ "gggg"_c, &Float32x4Type },
+        std::pair{ "gggr"_c, &Float32x4Type },
+        std::pair{ "ggr"_c, &Float32x3Type },
+        std::pair{ "ggra"_c, &Float32x4Type },
+        std::pair{ "ggrb"_c, &Float32x4Type },
+        std::pair{ "ggrg"_c, &Float32x4Type },
+        std::pair{ "ggrr"_c, &Float32x4Type },
+        std::pair{ "gr"_c, &Float32x2Type },
+        std::pair{ "gra"_c, &Float32x3Type },
+        std::pair{ "graa"_c, &Float32x4Type },
+        std::pair{ "grab"_c, &Float32x4Type },
+        std::pair{ "grag"_c, &Float32x4Type },
+        std::pair{ "grar"_c, &Float32x4Type },
+        std::pair{ "grb"_c, &Float32x3Type },
+        std::pair{ "grba"_c, &Float32x4Type },
+        std::pair{ "grbb"_c, &Float32x4Type },
+        std::pair{ "grbg"_c, &Float32x4Type },
+        std::pair{ "grbr"_c, &Float32x4Type },
+        std::pair{ "grg"_c, &Float32x3Type },
+        std::pair{ "grga"_c, &Float32x4Type },
+        std::pair{ "grgb"_c, &Float32x4Type },
+        std::pair{ "grgg"_c, &Float32x4Type },
+        std::pair{ "grgr"_c, &Float32x4Type },
+        std::pair{ "grr"_c, &Float32x3Type },
+        std::pair{ "grra"_c, &Float32x4Type },
+        std::pair{ "grrb"_c, &Float32x4Type },
+        std::pair{ "grrg"_c, &Float32x4Type },
+        std::pair{ "grrr"_c, &Float32x4Type },
+        std::pair{ "operator!=(f32x4)"_c, &Float32x4_operator_neq_Float32x4 },
+        std::pair{ "operator%(f32x4)"_c, &Float32x4_operator_mod_Float32x4 },
+        std::pair{ "operator*(f16)"_c, &Float32x4_operator_scale_Float16 },
+        std::pair{ "operator*(f32)"_c, &Float32x4_operator_scale_Float32 },
+        std::pair{ "operator*(f32x4)"_c, &Float32x4_operator_mul_Float32x4 },
+        std::pair{ "operator*(f32x4x2)"_c, &Float32x4_operator_transform_Float32x4x2 },
+        std::pair{ "operator*(f32x4x3)"_c, &Float32x4_operator_transform_Float32x4x3 },
+        std::pair{ "operator*(f32x4x4)"_c, &Float32x4_operator_transform_Float32x4x4 },
+        std::pair{ "operator*(i16)"_c, &Float32x4_operator_scale_Int16 },
+        std::pair{ "operator*(i32)"_c, &Float32x4_operator_scale_Int32 },
+        std::pair{ "operator*(u16)"_c, &Float32x4_operator_scale_UInt16 },
+        std::pair{ "operator*(u32)"_c, &Float32x4_operator_scale_UInt32 },
+        std::pair{ "operator*=(f32x4)"_c, &Float32x4_operator_mulasg_Float32x4 },
+        std::pair{ "operator+(f32x4)"_c, &Float32x4_operator_add_Float32x4 },
+        std::pair{ "operator+=(f32x4)"_c, &Float32x4_operator_addasg_Float32x4 },
+        std::pair{ "operator-(f32x4)"_c, &Float32x4_operator_sub_Float32x4 },
+        std::pair{ "operator-=(f32x4)"_c, &Float32x4_operator_subasg_Float32x4 },
+        std::pair{ "operator/(f32x4)"_c, &Float32x4_operator_div_Float32x4 },
+        std::pair{ "operator/=(f32x4)"_c, &Float32x4_operator_divasg_Float32x4 },
+        std::pair{ "operator<(f32x4)"_c, &Float32x4_operator_lt_Float32x4 },
+        std::pair{ "operator<=(f32x4)"_c, &Float32x4_operator_lte_Float32x4 },
+        std::pair{ "operator==(f32x4)"_c, &Float32x4_operator_eq_Float32x4 },
+        std::pair{ "operator>(f32x4)"_c, &Float32x4_operator_gt_Float32x4 },
+        std::pair{ "operator>=(f32x4)"_c, &Float32x4_operator_gte_Float32x4 },
+        std::pair{ "operator[](i16)"_c, &Float32x4_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &Float32x4_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &Float32x4_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &Float32x4_operator_index_UInt32 },
+        std::pair{ "r"_c, &Float32Type },
+        std::pair{ "ra"_c, &Float32x2Type },
+        std::pair{ "raa"_c, &Float32x3Type },
+        std::pair{ "raaa"_c, &Float32x4Type },
+        std::pair{ "raab"_c, &Float32x4Type },
+        std::pair{ "raag"_c, &Float32x4Type },
+        std::pair{ "raar"_c, &Float32x4Type },
+        std::pair{ "rab"_c, &Float32x3Type },
+        std::pair{ "raba"_c, &Float32x4Type },
+        std::pair{ "rabb"_c, &Float32x4Type },
+        std::pair{ "rabg"_c, &Float32x4Type },
+        std::pair{ "rabr"_c, &Float32x4Type },
+        std::pair{ "rag"_c, &Float32x3Type },
+        std::pair{ "raga"_c, &Float32x4Type },
+        std::pair{ "ragb"_c, &Float32x4Type },
+        std::pair{ "ragg"_c, &Float32x4Type },
+        std::pair{ "ragr"_c, &Float32x4Type },
+        std::pair{ "rar"_c, &Float32x3Type },
+        std::pair{ "rara"_c, &Float32x4Type },
+        std::pair{ "rarb"_c, &Float32x4Type },
+        std::pair{ "rarg"_c, &Float32x4Type },
+        std::pair{ "rarr"_c, &Float32x4Type },
+        std::pair{ "rb"_c, &Float32x2Type },
+        std::pair{ "rba"_c, &Float32x3Type },
+        std::pair{ "rbaa"_c, &Float32x4Type },
+        std::pair{ "rbab"_c, &Float32x4Type },
+        std::pair{ "rbag"_c, &Float32x4Type },
+        std::pair{ "rbar"_c, &Float32x4Type },
+        std::pair{ "rbb"_c, &Float32x3Type },
+        std::pair{ "rbba"_c, &Float32x4Type },
+        std::pair{ "rbbb"_c, &Float32x4Type },
+        std::pair{ "rbbg"_c, &Float32x4Type },
+        std::pair{ "rbbr"_c, &Float32x4Type },
+        std::pair{ "rbg"_c, &Float32x3Type },
+        std::pair{ "rbga"_c, &Float32x4Type },
+        std::pair{ "rbgb"_c, &Float32x4Type },
+        std::pair{ "rbgg"_c, &Float32x4Type },
+        std::pair{ "rbgr"_c, &Float32x4Type },
+        std::pair{ "rbr"_c, &Float32x3Type },
+        std::pair{ "rbra"_c, &Float32x4Type },
+        std::pair{ "rbrb"_c, &Float32x4Type },
+        std::pair{ "rbrg"_c, &Float32x4Type },
+        std::pair{ "rbrr"_c, &Float32x4Type },
+        std::pair{ "rg"_c, &Float32x2Type },
+        std::pair{ "rga"_c, &Float32x3Type },
+        std::pair{ "rgaa"_c, &Float32x4Type },
+        std::pair{ "rgab"_c, &Float32x4Type },
+        std::pair{ "rgag"_c, &Float32x4Type },
+        std::pair{ "rgar"_c, &Float32x4Type },
+        std::pair{ "rgb"_c, &Float32x3Type },
+        std::pair{ "rgba"_c, &Float32x4Type },
+        std::pair{ "rgbb"_c, &Float32x4Type },
+        std::pair{ "rgbg"_c, &Float32x4Type },
+        std::pair{ "rgbr"_c, &Float32x4Type },
+        std::pair{ "rgg"_c, &Float32x3Type },
+        std::pair{ "rgga"_c, &Float32x4Type },
+        std::pair{ "rggb"_c, &Float32x4Type },
+        std::pair{ "rggg"_c, &Float32x4Type },
+        std::pair{ "rggr"_c, &Float32x4Type },
+        std::pair{ "rgr"_c, &Float32x3Type },
+        std::pair{ "rgra"_c, &Float32x4Type },
+        std::pair{ "rgrb"_c, &Float32x4Type },
+        std::pair{ "rgrg"_c, &Float32x4Type },
+        std::pair{ "rgrr"_c, &Float32x4Type },
+        std::pair{ "rr"_c, &Float32x2Type },
+        std::pair{ "rra"_c, &Float32x3Type },
+        std::pair{ "rraa"_c, &Float32x4Type },
+        std::pair{ "rrab"_c, &Float32x4Type },
+        std::pair{ "rrag"_c, &Float32x4Type },
+        std::pair{ "rrar"_c, &Float32x4Type },
+        std::pair{ "rrb"_c, &Float32x3Type },
+        std::pair{ "rrba"_c, &Float32x4Type },
+        std::pair{ "rrbb"_c, &Float32x4Type },
+        std::pair{ "rrbg"_c, &Float32x4Type },
+        std::pair{ "rrbr"_c, &Float32x4Type },
+        std::pair{ "rrg"_c, &Float32x3Type },
+        std::pair{ "rrga"_c, &Float32x4Type },
+        std::pair{ "rrgb"_c, &Float32x4Type },
+        std::pair{ "rrgg"_c, &Float32x4Type },
+        std::pair{ "rrgr"_c, &Float32x4Type },
+        std::pair{ "rrr"_c, &Float32x3Type },
+        std::pair{ "rrra"_c, &Float32x4Type },
+        std::pair{ "rrrb"_c, &Float32x4Type },
+        std::pair{ "rrrg"_c, &Float32x4Type },
+        std::pair{ "rrrr"_c, &Float32x4Type },
+        std::pair{ "w"_c, &Float32Type },
+        std::pair{ "ww"_c, &Float32x2Type },
+        std::pair{ "www"_c, &Float32x3Type },
+        std::pair{ "wwww"_c, &Float32x4Type },
+        std::pair{ "wwwx"_c, &Float32x4Type },
+        std::pair{ "wwwy"_c, &Float32x4Type },
+        std::pair{ "wwwz"_c, &Float32x4Type },
+        std::pair{ "wwx"_c, &Float32x3Type },
+        std::pair{ "wwxw"_c, &Float32x4Type },
+        std::pair{ "wwxx"_c, &Float32x4Type },
+        std::pair{ "wwxy"_c, &Float32x4Type },
+        std::pair{ "wwxz"_c, &Float32x4Type },
+        std::pair{ "wwy"_c, &Float32x3Type },
+        std::pair{ "wwyw"_c, &Float32x4Type },
+        std::pair{ "wwyx"_c, &Float32x4Type },
+        std::pair{ "wwyy"_c, &Float32x4Type },
+        std::pair{ "wwyz"_c, &Float32x4Type },
+        std::pair{ "wwz"_c, &Float32x3Type },
+        std::pair{ "wwzw"_c, &Float32x4Type },
+        std::pair{ "wwzx"_c, &Float32x4Type },
+        std::pair{ "wwzy"_c, &Float32x4Type },
+        std::pair{ "wwzz"_c, &Float32x4Type },
+        std::pair{ "wx"_c, &Float32x2Type },
+        std::pair{ "wxw"_c, &Float32x3Type },
+        std::pair{ "wxww"_c, &Float32x4Type },
+        std::pair{ "wxwx"_c, &Float32x4Type },
+        std::pair{ "wxwy"_c, &Float32x4Type },
+        std::pair{ "wxwz"_c, &Float32x4Type },
+        std::pair{ "wxx"_c, &Float32x3Type },
+        std::pair{ "wxxw"_c, &Float32x4Type },
+        std::pair{ "wxxx"_c, &Float32x4Type },
+        std::pair{ "wxxy"_c, &Float32x4Type },
+        std::pair{ "wxxz"_c, &Float32x4Type },
+        std::pair{ "wxy"_c, &Float32x3Type },
+        std::pair{ "wxyw"_c, &Float32x4Type },
+        std::pair{ "wxyx"_c, &Float32x4Type },
+        std::pair{ "wxyy"_c, &Float32x4Type },
+        std::pair{ "wxyz"_c, &Float32x4Type },
+        std::pair{ "wxz"_c, &Float32x3Type },
+        std::pair{ "wxzw"_c, &Float32x4Type },
+        std::pair{ "wxzx"_c, &Float32x4Type },
+        std::pair{ "wxzy"_c, &Float32x4Type },
+        std::pair{ "wxzz"_c, &Float32x4Type },
+        std::pair{ "wy"_c, &Float32x2Type },
+        std::pair{ "wyw"_c, &Float32x3Type },
+        std::pair{ "wyww"_c, &Float32x4Type },
+        std::pair{ "wywx"_c, &Float32x4Type },
+        std::pair{ "wywy"_c, &Float32x4Type },
+        std::pair{ "wywz"_c, &Float32x4Type },
+        std::pair{ "wyx"_c, &Float32x3Type },
+        std::pair{ "wyxw"_c, &Float32x4Type },
+        std::pair{ "wyxx"_c, &Float32x4Type },
+        std::pair{ "wyxy"_c, &Float32x4Type },
+        std::pair{ "wyxz"_c, &Float32x4Type },
+        std::pair{ "wyy"_c, &Float32x3Type },
+        std::pair{ "wyyw"_c, &Float32x4Type },
+        std::pair{ "wyyx"_c, &Float32x4Type },
+        std::pair{ "wyyy"_c, &Float32x4Type },
+        std::pair{ "wyyz"_c, &Float32x4Type },
+        std::pair{ "wyz"_c, &Float32x3Type },
+        std::pair{ "wyzw"_c, &Float32x4Type },
+        std::pair{ "wyzx"_c, &Float32x4Type },
+        std::pair{ "wyzy"_c, &Float32x4Type },
+        std::pair{ "wyzz"_c, &Float32x4Type },
+        std::pair{ "wz"_c, &Float32x2Type },
+        std::pair{ "wzw"_c, &Float32x3Type },
+        std::pair{ "wzww"_c, &Float32x4Type },
+        std::pair{ "wzwx"_c, &Float32x4Type },
+        std::pair{ "wzwy"_c, &Float32x4Type },
+        std::pair{ "wzwz"_c, &Float32x4Type },
+        std::pair{ "wzx"_c, &Float32x3Type },
+        std::pair{ "wzxw"_c, &Float32x4Type },
+        std::pair{ "wzxx"_c, &Float32x4Type },
+        std::pair{ "wzxy"_c, &Float32x4Type },
+        std::pair{ "wzxz"_c, &Float32x4Type },
+        std::pair{ "wzy"_c, &Float32x3Type },
+        std::pair{ "wzyw"_c, &Float32x4Type },
+        std::pair{ "wzyx"_c, &Float32x4Type },
+        std::pair{ "wzyy"_c, &Float32x4Type },
+        std::pair{ "wzyz"_c, &Float32x4Type },
+        std::pair{ "wzz"_c, &Float32x3Type },
+        std::pair{ "wzzw"_c, &Float32x4Type },
+        std::pair{ "wzzx"_c, &Float32x4Type },
+        std::pair{ "wzzy"_c, &Float32x4Type },
+        std::pair{ "wzzz"_c, &Float32x4Type },
+        std::pair{ "x"_c, &Float32Type },
+        std::pair{ "xw"_c, &Float32x2Type },
+        std::pair{ "xww"_c, &Float32x3Type },
+        std::pair{ "xwww"_c, &Float32x4Type },
+        std::pair{ "xwwx"_c, &Float32x4Type },
+        std::pair{ "xwwy"_c, &Float32x4Type },
+        std::pair{ "xwwz"_c, &Float32x4Type },
+        std::pair{ "xwx"_c, &Float32x3Type },
+        std::pair{ "xwxw"_c, &Float32x4Type },
+        std::pair{ "xwxx"_c, &Float32x4Type },
+        std::pair{ "xwxy"_c, &Float32x4Type },
+        std::pair{ "xwxz"_c, &Float32x4Type },
+        std::pair{ "xwy"_c, &Float32x3Type },
+        std::pair{ "xwyw"_c, &Float32x4Type },
+        std::pair{ "xwyx"_c, &Float32x4Type },
+        std::pair{ "xwyy"_c, &Float32x4Type },
+        std::pair{ "xwyz"_c, &Float32x4Type },
+        std::pair{ "xwz"_c, &Float32x3Type },
+        std::pair{ "xwzw"_c, &Float32x4Type },
+        std::pair{ "xwzx"_c, &Float32x4Type },
+        std::pair{ "xwzy"_c, &Float32x4Type },
+        std::pair{ "xwzz"_c, &Float32x4Type },
+        std::pair{ "xx"_c, &Float32x2Type },
+        std::pair{ "xxw"_c, &Float32x3Type },
+        std::pair{ "xxww"_c, &Float32x4Type },
+        std::pair{ "xxwx"_c, &Float32x4Type },
+        std::pair{ "xxwy"_c, &Float32x4Type },
+        std::pair{ "xxwz"_c, &Float32x4Type },
+        std::pair{ "xxx"_c, &Float32x3Type },
+        std::pair{ "xxxw"_c, &Float32x4Type },
+        std::pair{ "xxxx"_c, &Float32x4Type },
+        std::pair{ "xxxy"_c, &Float32x4Type },
+        std::pair{ "xxxz"_c, &Float32x4Type },
+        std::pair{ "xxy"_c, &Float32x3Type },
+        std::pair{ "xxyw"_c, &Float32x4Type },
+        std::pair{ "xxyx"_c, &Float32x4Type },
+        std::pair{ "xxyy"_c, &Float32x4Type },
+        std::pair{ "xxyz"_c, &Float32x4Type },
+        std::pair{ "xxz"_c, &Float32x3Type },
+        std::pair{ "xxzw"_c, &Float32x4Type },
+        std::pair{ "xxzx"_c, &Float32x4Type },
+        std::pair{ "xxzy"_c, &Float32x4Type },
+        std::pair{ "xxzz"_c, &Float32x4Type },
+        std::pair{ "xy"_c, &Float32x2Type },
+        std::pair{ "xyw"_c, &Float32x3Type },
+        std::pair{ "xyww"_c, &Float32x4Type },
+        std::pair{ "xywx"_c, &Float32x4Type },
+        std::pair{ "xywy"_c, &Float32x4Type },
+        std::pair{ "xywz"_c, &Float32x4Type },
+        std::pair{ "xyx"_c, &Float32x3Type },
+        std::pair{ "xyxw"_c, &Float32x4Type },
+        std::pair{ "xyxx"_c, &Float32x4Type },
+        std::pair{ "xyxy"_c, &Float32x4Type },
+        std::pair{ "xyxz"_c, &Float32x4Type },
+        std::pair{ "xyy"_c, &Float32x3Type },
+        std::pair{ "xyyw"_c, &Float32x4Type },
+        std::pair{ "xyyx"_c, &Float32x4Type },
+        std::pair{ "xyyy"_c, &Float32x4Type },
+        std::pair{ "xyyz"_c, &Float32x4Type },
+        std::pair{ "xyz"_c, &Float32x3Type },
+        std::pair{ "xyzw"_c, &Float32x4Type },
+        std::pair{ "xyzx"_c, &Float32x4Type },
+        std::pair{ "xyzy"_c, &Float32x4Type },
+        std::pair{ "xyzz"_c, &Float32x4Type },
+        std::pair{ "xz"_c, &Float32x2Type },
+        std::pair{ "xzw"_c, &Float32x3Type },
+        std::pair{ "xzww"_c, &Float32x4Type },
+        std::pair{ "xzwx"_c, &Float32x4Type },
+        std::pair{ "xzwy"_c, &Float32x4Type },
+        std::pair{ "xzwz"_c, &Float32x4Type },
+        std::pair{ "xzx"_c, &Float32x3Type },
+        std::pair{ "xzxw"_c, &Float32x4Type },
+        std::pair{ "xzxx"_c, &Float32x4Type },
+        std::pair{ "xzxy"_c, &Float32x4Type },
+        std::pair{ "xzxz"_c, &Float32x4Type },
+        std::pair{ "xzy"_c, &Float32x3Type },
+        std::pair{ "xzyw"_c, &Float32x4Type },
+        std::pair{ "xzyx"_c, &Float32x4Type },
+        std::pair{ "xzyy"_c, &Float32x4Type },
+        std::pair{ "xzyz"_c, &Float32x4Type },
+        std::pair{ "xzz"_c, &Float32x3Type },
+        std::pair{ "xzzw"_c, &Float32x4Type },
+        std::pair{ "xzzx"_c, &Float32x4Type },
+        std::pair{ "xzzy"_c, &Float32x4Type },
+        std::pair{ "xzzz"_c, &Float32x4Type },
+        std::pair{ "y"_c, &Float32Type },
+        std::pair{ "yw"_c, &Float32x2Type },
+        std::pair{ "yww"_c, &Float32x3Type },
+        std::pair{ "ywww"_c, &Float32x4Type },
+        std::pair{ "ywwx"_c, &Float32x4Type },
+        std::pair{ "ywwy"_c, &Float32x4Type },
+        std::pair{ "ywwz"_c, &Float32x4Type },
+        std::pair{ "ywx"_c, &Float32x3Type },
+        std::pair{ "ywxw"_c, &Float32x4Type },
+        std::pair{ "ywxx"_c, &Float32x4Type },
+        std::pair{ "ywxy"_c, &Float32x4Type },
+        std::pair{ "ywxz"_c, &Float32x4Type },
+        std::pair{ "ywy"_c, &Float32x3Type },
+        std::pair{ "ywyw"_c, &Float32x4Type },
+        std::pair{ "ywyx"_c, &Float32x4Type },
+        std::pair{ "ywyy"_c, &Float32x4Type },
+        std::pair{ "ywyz"_c, &Float32x4Type },
+        std::pair{ "ywz"_c, &Float32x3Type },
+        std::pair{ "ywzw"_c, &Float32x4Type },
+        std::pair{ "ywzx"_c, &Float32x4Type },
+        std::pair{ "ywzy"_c, &Float32x4Type },
+        std::pair{ "ywzz"_c, &Float32x4Type },
+        std::pair{ "yx"_c, &Float32x2Type },
+        std::pair{ "yxw"_c, &Float32x3Type },
+        std::pair{ "yxww"_c, &Float32x4Type },
+        std::pair{ "yxwx"_c, &Float32x4Type },
+        std::pair{ "yxwy"_c, &Float32x4Type },
+        std::pair{ "yxwz"_c, &Float32x4Type },
+        std::pair{ "yxx"_c, &Float32x3Type },
+        std::pair{ "yxxw"_c, &Float32x4Type },
+        std::pair{ "yxxx"_c, &Float32x4Type },
+        std::pair{ "yxxy"_c, &Float32x4Type },
+        std::pair{ "yxxz"_c, &Float32x4Type },
+        std::pair{ "yxy"_c, &Float32x3Type },
+        std::pair{ "yxyw"_c, &Float32x4Type },
+        std::pair{ "yxyx"_c, &Float32x4Type },
+        std::pair{ "yxyy"_c, &Float32x4Type },
+        std::pair{ "yxyz"_c, &Float32x4Type },
+        std::pair{ "yxz"_c, &Float32x3Type },
+        std::pair{ "yxzw"_c, &Float32x4Type },
+        std::pair{ "yxzx"_c, &Float32x4Type },
+        std::pair{ "yxzy"_c, &Float32x4Type },
+        std::pair{ "yxzz"_c, &Float32x4Type },
+        std::pair{ "yy"_c, &Float32x2Type },
+        std::pair{ "yyw"_c, &Float32x3Type },
+        std::pair{ "yyww"_c, &Float32x4Type },
+        std::pair{ "yywx"_c, &Float32x4Type },
+        std::pair{ "yywy"_c, &Float32x4Type },
+        std::pair{ "yywz"_c, &Float32x4Type },
+        std::pair{ "yyx"_c, &Float32x3Type },
+        std::pair{ "yyxw"_c, &Float32x4Type },
+        std::pair{ "yyxx"_c, &Float32x4Type },
+        std::pair{ "yyxy"_c, &Float32x4Type },
+        std::pair{ "yyxz"_c, &Float32x4Type },
+        std::pair{ "yyy"_c, &Float32x3Type },
+        std::pair{ "yyyw"_c, &Float32x4Type },
+        std::pair{ "yyyx"_c, &Float32x4Type },
+        std::pair{ "yyyy"_c, &Float32x4Type },
+        std::pair{ "yyyz"_c, &Float32x4Type },
+        std::pair{ "yyz"_c, &Float32x3Type },
+        std::pair{ "yyzw"_c, &Float32x4Type },
+        std::pair{ "yyzx"_c, &Float32x4Type },
+        std::pair{ "yyzy"_c, &Float32x4Type },
+        std::pair{ "yyzz"_c, &Float32x4Type },
+        std::pair{ "yz"_c, &Float32x2Type },
+        std::pair{ "yzw"_c, &Float32x3Type },
+        std::pair{ "yzww"_c, &Float32x4Type },
+        std::pair{ "yzwx"_c, &Float32x4Type },
+        std::pair{ "yzwy"_c, &Float32x4Type },
+        std::pair{ "yzwz"_c, &Float32x4Type },
+        std::pair{ "yzx"_c, &Float32x3Type },
+        std::pair{ "yzxw"_c, &Float32x4Type },
+        std::pair{ "yzxx"_c, &Float32x4Type },
+        std::pair{ "yzxy"_c, &Float32x4Type },
+        std::pair{ "yzxz"_c, &Float32x4Type },
+        std::pair{ "yzy"_c, &Float32x3Type },
+        std::pair{ "yzyw"_c, &Float32x4Type },
+        std::pair{ "yzyx"_c, &Float32x4Type },
+        std::pair{ "yzyy"_c, &Float32x4Type },
+        std::pair{ "yzyz"_c, &Float32x4Type },
+        std::pair{ "yzz"_c, &Float32x3Type },
+        std::pair{ "yzzw"_c, &Float32x4Type },
+        std::pair{ "yzzx"_c, &Float32x4Type },
+        std::pair{ "yzzy"_c, &Float32x4Type },
+        std::pair{ "yzzz"_c, &Float32x4Type },
+        std::pair{ "z"_c, &Float32Type },
+        std::pair{ "zw"_c, &Float32x2Type },
+        std::pair{ "zww"_c, &Float32x3Type },
+        std::pair{ "zwww"_c, &Float32x4Type },
+        std::pair{ "zwwx"_c, &Float32x4Type },
+        std::pair{ "zwwy"_c, &Float32x4Type },
+        std::pair{ "zwwz"_c, &Float32x4Type },
+        std::pair{ "zwx"_c, &Float32x3Type },
+        std::pair{ "zwxw"_c, &Float32x4Type },
+        std::pair{ "zwxx"_c, &Float32x4Type },
+        std::pair{ "zwxy"_c, &Float32x4Type },
+        std::pair{ "zwxz"_c, &Float32x4Type },
+        std::pair{ "zwy"_c, &Float32x3Type },
+        std::pair{ "zwyw"_c, &Float32x4Type },
+        std::pair{ "zwyx"_c, &Float32x4Type },
+        std::pair{ "zwyy"_c, &Float32x4Type },
+        std::pair{ "zwyz"_c, &Float32x4Type },
+        std::pair{ "zwz"_c, &Float32x3Type },
+        std::pair{ "zwzw"_c, &Float32x4Type },
+        std::pair{ "zwzx"_c, &Float32x4Type },
+        std::pair{ "zwzy"_c, &Float32x4Type },
+        std::pair{ "zwzz"_c, &Float32x4Type },
+        std::pair{ "zx"_c, &Float32x2Type },
+        std::pair{ "zxw"_c, &Float32x3Type },
+        std::pair{ "zxww"_c, &Float32x4Type },
+        std::pair{ "zxwx"_c, &Float32x4Type },
+        std::pair{ "zxwy"_c, &Float32x4Type },
+        std::pair{ "zxwz"_c, &Float32x4Type },
+        std::pair{ "zxx"_c, &Float32x3Type },
+        std::pair{ "zxxw"_c, &Float32x4Type },
+        std::pair{ "zxxx"_c, &Float32x4Type },
+        std::pair{ "zxxy"_c, &Float32x4Type },
+        std::pair{ "zxxz"_c, &Float32x4Type },
+        std::pair{ "zxy"_c, &Float32x3Type },
+        std::pair{ "zxyw"_c, &Float32x4Type },
+        std::pair{ "zxyx"_c, &Float32x4Type },
+        std::pair{ "zxyy"_c, &Float32x4Type },
+        std::pair{ "zxyz"_c, &Float32x4Type },
+        std::pair{ "zxz"_c, &Float32x3Type },
+        std::pair{ "zxzw"_c, &Float32x4Type },
+        std::pair{ "zxzx"_c, &Float32x4Type },
+        std::pair{ "zxzy"_c, &Float32x4Type },
+        std::pair{ "zxzz"_c, &Float32x4Type },
+        std::pair{ "zy"_c, &Float32x2Type },
+        std::pair{ "zyw"_c, &Float32x3Type },
+        std::pair{ "zyww"_c, &Float32x4Type },
+        std::pair{ "zywx"_c, &Float32x4Type },
+        std::pair{ "zywy"_c, &Float32x4Type },
+        std::pair{ "zywz"_c, &Float32x4Type },
+        std::pair{ "zyx"_c, &Float32x3Type },
+        std::pair{ "zyxw"_c, &Float32x4Type },
+        std::pair{ "zyxx"_c, &Float32x4Type },
+        std::pair{ "zyxy"_c, &Float32x4Type },
+        std::pair{ "zyxz"_c, &Float32x4Type },
+        std::pair{ "zyy"_c, &Float32x3Type },
+        std::pair{ "zyyw"_c, &Float32x4Type },
+        std::pair{ "zyyx"_c, &Float32x4Type },
+        std::pair{ "zyyy"_c, &Float32x4Type },
+        std::pair{ "zyyz"_c, &Float32x4Type },
+        std::pair{ "zyz"_c, &Float32x3Type },
+        std::pair{ "zyzw"_c, &Float32x4Type },
+        std::pair{ "zyzx"_c, &Float32x4Type },
+        std::pair{ "zyzy"_c, &Float32x4Type },
+        std::pair{ "zyzz"_c, &Float32x4Type },
+        std::pair{ "zz"_c, &Float32x2Type },
+        std::pair{ "zzw"_c, &Float32x3Type },
+        std::pair{ "zzww"_c, &Float32x4Type },
+        std::pair{ "zzwx"_c, &Float32x4Type },
+        std::pair{ "zzwy"_c, &Float32x4Type },
+        std::pair{ "zzwz"_c, &Float32x4Type },
+        std::pair{ "zzx"_c, &Float32x3Type },
+        std::pair{ "zzxw"_c, &Float32x4Type },
+        std::pair{ "zzxx"_c, &Float32x4Type },
+        std::pair{ "zzxy"_c, &Float32x4Type },
+        std::pair{ "zzxz"_c, &Float32x4Type },
+        std::pair{ "zzy"_c, &Float32x3Type },
+        std::pair{ "zzyw"_c, &Float32x4Type },
+        std::pair{ "zzyx"_c, &Float32x4Type },
+        std::pair{ "zzyy"_c, &Float32x4Type },
+        std::pair{ "zzyz"_c, &Float32x4Type },
+        std::pair{ "zzz"_c, &Float32x3Type },
+        std::pair{ "zzzw"_c, &Float32x4Type },
+        std::pair{ "zzzx"_c, &Float32x4Type },
+        std::pair{ "zzzy"_c, &Float32x4Type },
+        std::pair{ "zzzz"_c, &Float32x4Type }
     };
 }
 Float32x4 Float32x4Type;
@@ -13326,17 +16124,23 @@ Variable UInt32x4_ctor3_arg2_UInt32x2;
 Function UInt32x4_ctor3;
 inline constexpr std::array UInt32x4_ctor3_args = { &UInt32x4_ctor3_arg0_UInt32, &UInt32x4_ctor3_arg1_UInt32, &UInt32x4_ctor3_arg2_UInt32x2 };
 
-/// u32x4 with UInt32x3, UInt32
-Variable UInt32x4_ctor4_arg0_UInt32x3;
-Variable UInt32x4_ctor4_arg1_UInt32;
+/// u32x4 with UInt32x2, UInt32x2
+Variable UInt32x4_ctor4_arg0_UInt32x2;
+Variable UInt32x4_ctor4_arg1_UInt32x2;
 Function UInt32x4_ctor4;
-inline constexpr std::array UInt32x4_ctor4_args = { &UInt32x4_ctor4_arg0_UInt32x3, &UInt32x4_ctor4_arg1_UInt32 };
+inline constexpr std::array UInt32x4_ctor4_args = { &UInt32x4_ctor4_arg0_UInt32x2, &UInt32x4_ctor4_arg1_UInt32x2 };
+
+/// u32x4 with UInt32x3, UInt32
+Variable UInt32x4_ctor5_arg0_UInt32x3;
+Variable UInt32x4_ctor5_arg1_UInt32;
+Function UInt32x4_ctor5;
+inline constexpr std::array UInt32x4_ctor5_args = { &UInt32x4_ctor5_arg0_UInt32x3, &UInt32x4_ctor5_arg1_UInt32 };
 
 /// u32x4 with UInt32, UInt32x3
-Variable UInt32x4_ctor5_arg0_UInt32;
-Variable UInt32x4_ctor5_arg1_UInt32x3;
-Function UInt32x4_ctor5;
-inline constexpr std::array UInt32x4_ctor5_args = { &UInt32x4_ctor5_arg0_UInt32, &UInt32x4_ctor5_arg1_UInt32x3 };
+Variable UInt32x4_ctor6_arg0_UInt32;
+Variable UInt32x4_ctor6_arg1_UInt32x3;
+Function UInt32x4_ctor6;
+inline constexpr std::array UInt32x4_ctor6_args = { &UInt32x4_ctor6_arg0_UInt32, &UInt32x4_ctor6_arg1_UInt32x3 };
 
 /// operator[] with Int32
 Variable UInt32x4_operator_index_Int32_arg0;
@@ -13706,29 +16510,41 @@ UInt32x4::UInt32x4()
     Symbol::Resolved(&UInt32x4_ctor3_arg2_UInt32x2)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x4_ctor3)->returnTypeSymbol = &UInt32x4Type;
 
-    /// u32x4 with UInt32x3, UInt32
-    UInt32x4_ctor4_arg0_UInt32x3.name = "_arg0"_c;
-    UInt32x4_ctor4_arg0_UInt32x3.type = Type::FullType{ UInt32x3Type.name };
-    UInt32x4_ctor4_arg1_UInt32.name = "_arg1"_c;
-    UInt32x4_ctor4_arg1_UInt32.type = Type::FullType{ UInt32Type.name };
+    /// u32x4 with UInt32x2, UInt32x2
+    UInt32x4_ctor4_arg0_UInt32x2.name = "_arg0"_c;
+    UInt32x4_ctor4_arg0_UInt32x2.type = Type::FullType{ UInt32x2Type.name };
+    UInt32x4_ctor4_arg1_UInt32x2.name = "_arg1"_c;
+    UInt32x4_ctor4_arg1_UInt32x2.type = Type::FullType{ UInt32x2Type.name };
     UInt32x4_ctor4.name = "u32x4"_c;
     UInt32x4_ctor4.returnType = Type::FullType { UInt32x4Type.name };
     UInt32x4_ctor4.parameters = UInt32x4_ctor4_args;
-    Symbol::Resolved(&UInt32x4_ctor4_arg0_UInt32x3)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&UInt32x4_ctor4_arg1_UInt32)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&UInt32x4_ctor4_arg0_UInt32x2)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&UInt32x4_ctor4_arg1_UInt32x2)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&UInt32x4_ctor4)->returnTypeSymbol = &UInt32x4Type;
 
-    /// u32x4 with UInt32, UInt32x3
-    UInt32x4_ctor5_arg0_UInt32.name = "_arg0"_c;
-    UInt32x4_ctor5_arg0_UInt32.type = Type::FullType{ UInt32Type.name };
-    UInt32x4_ctor5_arg1_UInt32x3.name = "_arg1"_c;
-    UInt32x4_ctor5_arg1_UInt32x3.type = Type::FullType{ UInt32x3Type.name };
+    /// u32x4 with UInt32x3, UInt32
+    UInt32x4_ctor5_arg0_UInt32x3.name = "_arg0"_c;
+    UInt32x4_ctor5_arg0_UInt32x3.type = Type::FullType{ UInt32x3Type.name };
+    UInt32x4_ctor5_arg1_UInt32.name = "_arg1"_c;
+    UInt32x4_ctor5_arg1_UInt32.type = Type::FullType{ UInt32Type.name };
     UInt32x4_ctor5.name = "u32x4"_c;
     UInt32x4_ctor5.returnType = Type::FullType { UInt32x4Type.name };
     UInt32x4_ctor5.parameters = UInt32x4_ctor5_args;
-    Symbol::Resolved(&UInt32x4_ctor5_arg0_UInt32)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&UInt32x4_ctor5_arg1_UInt32x3)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&UInt32x4_ctor5_arg0_UInt32x3)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&UInt32x4_ctor5_arg1_UInt32)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&UInt32x4_ctor5)->returnTypeSymbol = &UInt32x4Type;
+
+    /// u32x4 with UInt32, UInt32x3
+    UInt32x4_ctor6_arg0_UInt32.name = "_arg0"_c;
+    UInt32x4_ctor6_arg0_UInt32.type = Type::FullType{ UInt32Type.name };
+    UInt32x4_ctor6_arg1_UInt32x3.name = "_arg1"_c;
+    UInt32x4_ctor6_arg1_UInt32x3.type = Type::FullType{ UInt32x3Type.name };
+    UInt32x4_ctor6.name = "u32x4"_c;
+    UInt32x4_ctor6.returnType = Type::FullType { UInt32x4Type.name };
+    UInt32x4_ctor6.parameters = UInt32x4_ctor6_args;
+    Symbol::Resolved(&UInt32x4_ctor6_arg0_UInt32)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&UInt32x4_ctor6_arg1_UInt32x3)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&UInt32x4_ctor6)->returnTypeSymbol = &UInt32x4Type;
 
     /// operator[] with Int32
     UInt32x4_operator_index_Int32_arg0.name = "_arg0"_c;
@@ -14045,42 +16861,722 @@ UInt32x4::UInt32x4()
     Symbol::Resolved(&UInt32x4_operator_rhsasg_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&UInt32x4_operator_rhsasg_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 35> { 
-        std::pair{ "operator!=", &UInt32x4_operator_neq_UInt32x4 },
-        std::pair{ "operator%", &UInt32x4_operator_mod_UInt32x4 },
-        std::pair{ "operator&", &UInt32x4_operator_and_UInt32x4 },
-        std::pair{ "operator&=", &UInt32x4_operator_andasg_UInt32x4 },
-        std::pair{ "operator*", &UInt32x4_operator_mul_UInt32x4 },
-        std::pair{ "operator*", &UInt32x4_operator_scale_Float32 },
-        std::pair{ "operator*", &UInt32x4_operator_scale_Float16 },
-        std::pair{ "operator*", &UInt32x4_operator_scale_UInt32 },
-        std::pair{ "operator*", &UInt32x4_operator_scale_UInt16 },
-        std::pair{ "operator*", &UInt32x4_operator_scale_Int32 },
-        std::pair{ "operator*", &UInt32x4_operator_scale_Int16 },
-        std::pair{ "operator*=", &UInt32x4_operator_mulasg_UInt32x4 },
-        std::pair{ "operator+", &UInt32x4_operator_add_UInt32x4 },
-        std::pair{ "operator+=", &UInt32x4_operator_addasg_UInt32x4 },
-        std::pair{ "operator-", &UInt32x4_operator_sub_UInt32x4 },
-        std::pair{ "operator-=", &UInt32x4_operator_subasg_UInt32x4 },
-        std::pair{ "operator/", &UInt32x4_operator_div_UInt32x4 },
-        std::pair{ "operator/=", &UInt32x4_operator_divasg_UInt32x4 },
-        std::pair{ "operator<", &UInt32x4_operator_lt_UInt32x4 },
-        std::pair{ "operator<<", &UInt32x4_operator_lsh_UInt32x4 },
-        std::pair{ "operator<<=", &UInt32x4_operator_lshasg_UInt32x4 },
-        std::pair{ "operator<=", &UInt32x4_operator_lte_UInt32x4 },
-        std::pair{ "operator==", &UInt32x4_operator_eq_UInt32x4 },
-        std::pair{ "operator>", &UInt32x4_operator_gt_UInt32x4 },
-        std::pair{ "operator>=", &UInt32x4_operator_gte_UInt32x4 },
-        std::pair{ "operator>>", &UInt32x4_operator_rsh_UInt32x4 },
-        std::pair{ "operator>>=", &UInt32x4_operator_rhsasg_UInt32x4 },
-        std::pair{ "operator[]", &UInt32x4_operator_index_Int32 },
-        std::pair{ "operator[]", &UInt32x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &UInt32x4_operator_index_Int16 },
-        std::pair{ "operator[]", &UInt32x4_operator_index_UInt16 },
-        std::pair{ "operator^", &UInt32x4_operator_xor_UInt32x4 },
-        std::pair{ "operator^=", &UInt32x4_operator_xorasg_UInt32x4 },
-        std::pair{ "operator|", &UInt32x4_operator_or_UInt32x4 },
-        std::pair{ "operator|=", &UInt32x4_operator_orasg_UInt32x4 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 715> { 
+        std::pair{ "a"_c, &UInt32Type },
+        std::pair{ "aa"_c, &UInt32x2Type },
+        std::pair{ "aaa"_c, &UInt32x3Type },
+        std::pair{ "aaaa"_c, &UInt32x4Type },
+        std::pair{ "aaab"_c, &UInt32x4Type },
+        std::pair{ "aaag"_c, &UInt32x4Type },
+        std::pair{ "aaar"_c, &UInt32x4Type },
+        std::pair{ "aab"_c, &UInt32x3Type },
+        std::pair{ "aaba"_c, &UInt32x4Type },
+        std::pair{ "aabb"_c, &UInt32x4Type },
+        std::pair{ "aabg"_c, &UInt32x4Type },
+        std::pair{ "aabr"_c, &UInt32x4Type },
+        std::pair{ "aag"_c, &UInt32x3Type },
+        std::pair{ "aaga"_c, &UInt32x4Type },
+        std::pair{ "aagb"_c, &UInt32x4Type },
+        std::pair{ "aagg"_c, &UInt32x4Type },
+        std::pair{ "aagr"_c, &UInt32x4Type },
+        std::pair{ "aar"_c, &UInt32x3Type },
+        std::pair{ "aara"_c, &UInt32x4Type },
+        std::pair{ "aarb"_c, &UInt32x4Type },
+        std::pair{ "aarg"_c, &UInt32x4Type },
+        std::pair{ "aarr"_c, &UInt32x4Type },
+        std::pair{ "ab"_c, &UInt32x2Type },
+        std::pair{ "aba"_c, &UInt32x3Type },
+        std::pair{ "abaa"_c, &UInt32x4Type },
+        std::pair{ "abab"_c, &UInt32x4Type },
+        std::pair{ "abag"_c, &UInt32x4Type },
+        std::pair{ "abar"_c, &UInt32x4Type },
+        std::pair{ "abb"_c, &UInt32x3Type },
+        std::pair{ "abba"_c, &UInt32x4Type },
+        std::pair{ "abbb"_c, &UInt32x4Type },
+        std::pair{ "abbg"_c, &UInt32x4Type },
+        std::pair{ "abbr"_c, &UInt32x4Type },
+        std::pair{ "abg"_c, &UInt32x3Type },
+        std::pair{ "abga"_c, &UInt32x4Type },
+        std::pair{ "abgb"_c, &UInt32x4Type },
+        std::pair{ "abgg"_c, &UInt32x4Type },
+        std::pair{ "abgr"_c, &UInt32x4Type },
+        std::pair{ "abr"_c, &UInt32x3Type },
+        std::pair{ "abra"_c, &UInt32x4Type },
+        std::pair{ "abrb"_c, &UInt32x4Type },
+        std::pair{ "abrg"_c, &UInt32x4Type },
+        std::pair{ "abrr"_c, &UInt32x4Type },
+        std::pair{ "ag"_c, &UInt32x2Type },
+        std::pair{ "aga"_c, &UInt32x3Type },
+        std::pair{ "agaa"_c, &UInt32x4Type },
+        std::pair{ "agab"_c, &UInt32x4Type },
+        std::pair{ "agag"_c, &UInt32x4Type },
+        std::pair{ "agar"_c, &UInt32x4Type },
+        std::pair{ "agb"_c, &UInt32x3Type },
+        std::pair{ "agba"_c, &UInt32x4Type },
+        std::pair{ "agbb"_c, &UInt32x4Type },
+        std::pair{ "agbg"_c, &UInt32x4Type },
+        std::pair{ "agbr"_c, &UInt32x4Type },
+        std::pair{ "agg"_c, &UInt32x3Type },
+        std::pair{ "agga"_c, &UInt32x4Type },
+        std::pair{ "aggb"_c, &UInt32x4Type },
+        std::pair{ "aggg"_c, &UInt32x4Type },
+        std::pair{ "aggr"_c, &UInt32x4Type },
+        std::pair{ "agr"_c, &UInt32x3Type },
+        std::pair{ "agra"_c, &UInt32x4Type },
+        std::pair{ "agrb"_c, &UInt32x4Type },
+        std::pair{ "agrg"_c, &UInt32x4Type },
+        std::pair{ "agrr"_c, &UInt32x4Type },
+        std::pair{ "ar"_c, &UInt32x2Type },
+        std::pair{ "ara"_c, &UInt32x3Type },
+        std::pair{ "araa"_c, &UInt32x4Type },
+        std::pair{ "arab"_c, &UInt32x4Type },
+        std::pair{ "arag"_c, &UInt32x4Type },
+        std::pair{ "arar"_c, &UInt32x4Type },
+        std::pair{ "arb"_c, &UInt32x3Type },
+        std::pair{ "arba"_c, &UInt32x4Type },
+        std::pair{ "arbb"_c, &UInt32x4Type },
+        std::pair{ "arbg"_c, &UInt32x4Type },
+        std::pair{ "arbr"_c, &UInt32x4Type },
+        std::pair{ "arg"_c, &UInt32x3Type },
+        std::pair{ "arga"_c, &UInt32x4Type },
+        std::pair{ "argb"_c, &UInt32x4Type },
+        std::pair{ "argg"_c, &UInt32x4Type },
+        std::pair{ "argr"_c, &UInt32x4Type },
+        std::pair{ "arr"_c, &UInt32x3Type },
+        std::pair{ "arra"_c, &UInt32x4Type },
+        std::pair{ "arrb"_c, &UInt32x4Type },
+        std::pair{ "arrg"_c, &UInt32x4Type },
+        std::pair{ "arrr"_c, &UInt32x4Type },
+        std::pair{ "b"_c, &UInt32Type },
+        std::pair{ "ba"_c, &UInt32x2Type },
+        std::pair{ "baa"_c, &UInt32x3Type },
+        std::pair{ "baaa"_c, &UInt32x4Type },
+        std::pair{ "baab"_c, &UInt32x4Type },
+        std::pair{ "baag"_c, &UInt32x4Type },
+        std::pair{ "baar"_c, &UInt32x4Type },
+        std::pair{ "bab"_c, &UInt32x3Type },
+        std::pair{ "baba"_c, &UInt32x4Type },
+        std::pair{ "babb"_c, &UInt32x4Type },
+        std::pair{ "babg"_c, &UInt32x4Type },
+        std::pair{ "babr"_c, &UInt32x4Type },
+        std::pair{ "bag"_c, &UInt32x3Type },
+        std::pair{ "baga"_c, &UInt32x4Type },
+        std::pair{ "bagb"_c, &UInt32x4Type },
+        std::pair{ "bagg"_c, &UInt32x4Type },
+        std::pair{ "bagr"_c, &UInt32x4Type },
+        std::pair{ "bar"_c, &UInt32x3Type },
+        std::pair{ "bara"_c, &UInt32x4Type },
+        std::pair{ "barb"_c, &UInt32x4Type },
+        std::pair{ "barg"_c, &UInt32x4Type },
+        std::pair{ "barr"_c, &UInt32x4Type },
+        std::pair{ "bb"_c, &UInt32x2Type },
+        std::pair{ "bba"_c, &UInt32x3Type },
+        std::pair{ "bbaa"_c, &UInt32x4Type },
+        std::pair{ "bbab"_c, &UInt32x4Type },
+        std::pair{ "bbag"_c, &UInt32x4Type },
+        std::pair{ "bbar"_c, &UInt32x4Type },
+        std::pair{ "bbb"_c, &UInt32x3Type },
+        std::pair{ "bbba"_c, &UInt32x4Type },
+        std::pair{ "bbbb"_c, &UInt32x4Type },
+        std::pair{ "bbbg"_c, &UInt32x4Type },
+        std::pair{ "bbbr"_c, &UInt32x4Type },
+        std::pair{ "bbg"_c, &UInt32x3Type },
+        std::pair{ "bbga"_c, &UInt32x4Type },
+        std::pair{ "bbgb"_c, &UInt32x4Type },
+        std::pair{ "bbgg"_c, &UInt32x4Type },
+        std::pair{ "bbgr"_c, &UInt32x4Type },
+        std::pair{ "bbr"_c, &UInt32x3Type },
+        std::pair{ "bbra"_c, &UInt32x4Type },
+        std::pair{ "bbrb"_c, &UInt32x4Type },
+        std::pair{ "bbrg"_c, &UInt32x4Type },
+        std::pair{ "bbrr"_c, &UInt32x4Type },
+        std::pair{ "bg"_c, &UInt32x2Type },
+        std::pair{ "bga"_c, &UInt32x3Type },
+        std::pair{ "bgaa"_c, &UInt32x4Type },
+        std::pair{ "bgab"_c, &UInt32x4Type },
+        std::pair{ "bgag"_c, &UInt32x4Type },
+        std::pair{ "bgar"_c, &UInt32x4Type },
+        std::pair{ "bgb"_c, &UInt32x3Type },
+        std::pair{ "bgba"_c, &UInt32x4Type },
+        std::pair{ "bgbb"_c, &UInt32x4Type },
+        std::pair{ "bgbg"_c, &UInt32x4Type },
+        std::pair{ "bgbr"_c, &UInt32x4Type },
+        std::pair{ "bgg"_c, &UInt32x3Type },
+        std::pair{ "bgga"_c, &UInt32x4Type },
+        std::pair{ "bggb"_c, &UInt32x4Type },
+        std::pair{ "bggg"_c, &UInt32x4Type },
+        std::pair{ "bggr"_c, &UInt32x4Type },
+        std::pair{ "bgr"_c, &UInt32x3Type },
+        std::pair{ "bgra"_c, &UInt32x4Type },
+        std::pair{ "bgrb"_c, &UInt32x4Type },
+        std::pair{ "bgrg"_c, &UInt32x4Type },
+        std::pair{ "bgrr"_c, &UInt32x4Type },
+        std::pair{ "br"_c, &UInt32x2Type },
+        std::pair{ "bra"_c, &UInt32x3Type },
+        std::pair{ "braa"_c, &UInt32x4Type },
+        std::pair{ "brab"_c, &UInt32x4Type },
+        std::pair{ "brag"_c, &UInt32x4Type },
+        std::pair{ "brar"_c, &UInt32x4Type },
+        std::pair{ "brb"_c, &UInt32x3Type },
+        std::pair{ "brba"_c, &UInt32x4Type },
+        std::pair{ "brbb"_c, &UInt32x4Type },
+        std::pair{ "brbg"_c, &UInt32x4Type },
+        std::pair{ "brbr"_c, &UInt32x4Type },
+        std::pair{ "brg"_c, &UInt32x3Type },
+        std::pair{ "brga"_c, &UInt32x4Type },
+        std::pair{ "brgb"_c, &UInt32x4Type },
+        std::pair{ "brgg"_c, &UInt32x4Type },
+        std::pair{ "brgr"_c, &UInt32x4Type },
+        std::pair{ "brr"_c, &UInt32x3Type },
+        std::pair{ "brra"_c, &UInt32x4Type },
+        std::pair{ "brrb"_c, &UInt32x4Type },
+        std::pair{ "brrg"_c, &UInt32x4Type },
+        std::pair{ "brrr"_c, &UInt32x4Type },
+        std::pair{ "g"_c, &UInt32Type },
+        std::pair{ "ga"_c, &UInt32x2Type },
+        std::pair{ "gaa"_c, &UInt32x3Type },
+        std::pair{ "gaaa"_c, &UInt32x4Type },
+        std::pair{ "gaab"_c, &UInt32x4Type },
+        std::pair{ "gaag"_c, &UInt32x4Type },
+        std::pair{ "gaar"_c, &UInt32x4Type },
+        std::pair{ "gab"_c, &UInt32x3Type },
+        std::pair{ "gaba"_c, &UInt32x4Type },
+        std::pair{ "gabb"_c, &UInt32x4Type },
+        std::pair{ "gabg"_c, &UInt32x4Type },
+        std::pair{ "gabr"_c, &UInt32x4Type },
+        std::pair{ "gag"_c, &UInt32x3Type },
+        std::pair{ "gaga"_c, &UInt32x4Type },
+        std::pair{ "gagb"_c, &UInt32x4Type },
+        std::pair{ "gagg"_c, &UInt32x4Type },
+        std::pair{ "gagr"_c, &UInt32x4Type },
+        std::pair{ "gar"_c, &UInt32x3Type },
+        std::pair{ "gara"_c, &UInt32x4Type },
+        std::pair{ "garb"_c, &UInt32x4Type },
+        std::pair{ "garg"_c, &UInt32x4Type },
+        std::pair{ "garr"_c, &UInt32x4Type },
+        std::pair{ "gb"_c, &UInt32x2Type },
+        std::pair{ "gba"_c, &UInt32x3Type },
+        std::pair{ "gbaa"_c, &UInt32x4Type },
+        std::pair{ "gbab"_c, &UInt32x4Type },
+        std::pair{ "gbag"_c, &UInt32x4Type },
+        std::pair{ "gbar"_c, &UInt32x4Type },
+        std::pair{ "gbb"_c, &UInt32x3Type },
+        std::pair{ "gbba"_c, &UInt32x4Type },
+        std::pair{ "gbbb"_c, &UInt32x4Type },
+        std::pair{ "gbbg"_c, &UInt32x4Type },
+        std::pair{ "gbbr"_c, &UInt32x4Type },
+        std::pair{ "gbg"_c, &UInt32x3Type },
+        std::pair{ "gbga"_c, &UInt32x4Type },
+        std::pair{ "gbgb"_c, &UInt32x4Type },
+        std::pair{ "gbgg"_c, &UInt32x4Type },
+        std::pair{ "gbgr"_c, &UInt32x4Type },
+        std::pair{ "gbr"_c, &UInt32x3Type },
+        std::pair{ "gbra"_c, &UInt32x4Type },
+        std::pair{ "gbrb"_c, &UInt32x4Type },
+        std::pair{ "gbrg"_c, &UInt32x4Type },
+        std::pair{ "gbrr"_c, &UInt32x4Type },
+        std::pair{ "gg"_c, &UInt32x2Type },
+        std::pair{ "gga"_c, &UInt32x3Type },
+        std::pair{ "ggaa"_c, &UInt32x4Type },
+        std::pair{ "ggab"_c, &UInt32x4Type },
+        std::pair{ "ggag"_c, &UInt32x4Type },
+        std::pair{ "ggar"_c, &UInt32x4Type },
+        std::pair{ "ggb"_c, &UInt32x3Type },
+        std::pair{ "ggba"_c, &UInt32x4Type },
+        std::pair{ "ggbb"_c, &UInt32x4Type },
+        std::pair{ "ggbg"_c, &UInt32x4Type },
+        std::pair{ "ggbr"_c, &UInt32x4Type },
+        std::pair{ "ggg"_c, &UInt32x3Type },
+        std::pair{ "ggga"_c, &UInt32x4Type },
+        std::pair{ "gggb"_c, &UInt32x4Type },
+        std::pair{ "gggg"_c, &UInt32x4Type },
+        std::pair{ "gggr"_c, &UInt32x4Type },
+        std::pair{ "ggr"_c, &UInt32x3Type },
+        std::pair{ "ggra"_c, &UInt32x4Type },
+        std::pair{ "ggrb"_c, &UInt32x4Type },
+        std::pair{ "ggrg"_c, &UInt32x4Type },
+        std::pair{ "ggrr"_c, &UInt32x4Type },
+        std::pair{ "gr"_c, &UInt32x2Type },
+        std::pair{ "gra"_c, &UInt32x3Type },
+        std::pair{ "graa"_c, &UInt32x4Type },
+        std::pair{ "grab"_c, &UInt32x4Type },
+        std::pair{ "grag"_c, &UInt32x4Type },
+        std::pair{ "grar"_c, &UInt32x4Type },
+        std::pair{ "grb"_c, &UInt32x3Type },
+        std::pair{ "grba"_c, &UInt32x4Type },
+        std::pair{ "grbb"_c, &UInt32x4Type },
+        std::pair{ "grbg"_c, &UInt32x4Type },
+        std::pair{ "grbr"_c, &UInt32x4Type },
+        std::pair{ "grg"_c, &UInt32x3Type },
+        std::pair{ "grga"_c, &UInt32x4Type },
+        std::pair{ "grgb"_c, &UInt32x4Type },
+        std::pair{ "grgg"_c, &UInt32x4Type },
+        std::pair{ "grgr"_c, &UInt32x4Type },
+        std::pair{ "grr"_c, &UInt32x3Type },
+        std::pair{ "grra"_c, &UInt32x4Type },
+        std::pair{ "grrb"_c, &UInt32x4Type },
+        std::pair{ "grrg"_c, &UInt32x4Type },
+        std::pair{ "grrr"_c, &UInt32x4Type },
+        std::pair{ "operator!=(u32x4)"_c, &UInt32x4_operator_neq_UInt32x4 },
+        std::pair{ "operator%(u32x4)"_c, &UInt32x4_operator_mod_UInt32x4 },
+        std::pair{ "operator&(u32x4)"_c, &UInt32x4_operator_and_UInt32x4 },
+        std::pair{ "operator&=(u32x4)"_c, &UInt32x4_operator_andasg_UInt32x4 },
+        std::pair{ "operator*(f16)"_c, &UInt32x4_operator_scale_Float16 },
+        std::pair{ "operator*(f32)"_c, &UInt32x4_operator_scale_Float32 },
+        std::pair{ "operator*(i16)"_c, &UInt32x4_operator_scale_Int16 },
+        std::pair{ "operator*(i32)"_c, &UInt32x4_operator_scale_Int32 },
+        std::pair{ "operator*(u16)"_c, &UInt32x4_operator_scale_UInt16 },
+        std::pair{ "operator*(u32)"_c, &UInt32x4_operator_scale_UInt32 },
+        std::pair{ "operator*(u32x4)"_c, &UInt32x4_operator_mul_UInt32x4 },
+        std::pair{ "operator*=(u32x4)"_c, &UInt32x4_operator_mulasg_UInt32x4 },
+        std::pair{ "operator+(u32x4)"_c, &UInt32x4_operator_add_UInt32x4 },
+        std::pair{ "operator+=(u32x4)"_c, &UInt32x4_operator_addasg_UInt32x4 },
+        std::pair{ "operator-(u32x4)"_c, &UInt32x4_operator_sub_UInt32x4 },
+        std::pair{ "operator-=(u32x4)"_c, &UInt32x4_operator_subasg_UInt32x4 },
+        std::pair{ "operator/(u32x4)"_c, &UInt32x4_operator_div_UInt32x4 },
+        std::pair{ "operator/=(u32x4)"_c, &UInt32x4_operator_divasg_UInt32x4 },
+        std::pair{ "operator<(u32x4)"_c, &UInt32x4_operator_lt_UInt32x4 },
+        std::pair{ "operator<<(u32x4)"_c, &UInt32x4_operator_lsh_UInt32x4 },
+        std::pair{ "operator<<=(u32x4)"_c, &UInt32x4_operator_lshasg_UInt32x4 },
+        std::pair{ "operator<=(u32x4)"_c, &UInt32x4_operator_lte_UInt32x4 },
+        std::pair{ "operator==(u32x4)"_c, &UInt32x4_operator_eq_UInt32x4 },
+        std::pair{ "operator>(u32x4)"_c, &UInt32x4_operator_gt_UInt32x4 },
+        std::pair{ "operator>=(u32x4)"_c, &UInt32x4_operator_gte_UInt32x4 },
+        std::pair{ "operator>>(u32x4)"_c, &UInt32x4_operator_rsh_UInt32x4 },
+        std::pair{ "operator>>=(u32x4)"_c, &UInt32x4_operator_rhsasg_UInt32x4 },
+        std::pair{ "operator[](i16)"_c, &UInt32x4_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &UInt32x4_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &UInt32x4_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &UInt32x4_operator_index_UInt32 },
+        std::pair{ "operator^(u32x4)"_c, &UInt32x4_operator_xor_UInt32x4 },
+        std::pair{ "operator^=(u32x4)"_c, &UInt32x4_operator_xorasg_UInt32x4 },
+        std::pair{ "operator|(u32x4)"_c, &UInt32x4_operator_or_UInt32x4 },
+        std::pair{ "operator|=(u32x4)"_c, &UInt32x4_operator_orasg_UInt32x4 },
+        std::pair{ "r"_c, &UInt32Type },
+        std::pair{ "ra"_c, &UInt32x2Type },
+        std::pair{ "raa"_c, &UInt32x3Type },
+        std::pair{ "raaa"_c, &UInt32x4Type },
+        std::pair{ "raab"_c, &UInt32x4Type },
+        std::pair{ "raag"_c, &UInt32x4Type },
+        std::pair{ "raar"_c, &UInt32x4Type },
+        std::pair{ "rab"_c, &UInt32x3Type },
+        std::pair{ "raba"_c, &UInt32x4Type },
+        std::pair{ "rabb"_c, &UInt32x4Type },
+        std::pair{ "rabg"_c, &UInt32x4Type },
+        std::pair{ "rabr"_c, &UInt32x4Type },
+        std::pair{ "rag"_c, &UInt32x3Type },
+        std::pair{ "raga"_c, &UInt32x4Type },
+        std::pair{ "ragb"_c, &UInt32x4Type },
+        std::pair{ "ragg"_c, &UInt32x4Type },
+        std::pair{ "ragr"_c, &UInt32x4Type },
+        std::pair{ "rar"_c, &UInt32x3Type },
+        std::pair{ "rara"_c, &UInt32x4Type },
+        std::pair{ "rarb"_c, &UInt32x4Type },
+        std::pair{ "rarg"_c, &UInt32x4Type },
+        std::pair{ "rarr"_c, &UInt32x4Type },
+        std::pair{ "rb"_c, &UInt32x2Type },
+        std::pair{ "rba"_c, &UInt32x3Type },
+        std::pair{ "rbaa"_c, &UInt32x4Type },
+        std::pair{ "rbab"_c, &UInt32x4Type },
+        std::pair{ "rbag"_c, &UInt32x4Type },
+        std::pair{ "rbar"_c, &UInt32x4Type },
+        std::pair{ "rbb"_c, &UInt32x3Type },
+        std::pair{ "rbba"_c, &UInt32x4Type },
+        std::pair{ "rbbb"_c, &UInt32x4Type },
+        std::pair{ "rbbg"_c, &UInt32x4Type },
+        std::pair{ "rbbr"_c, &UInt32x4Type },
+        std::pair{ "rbg"_c, &UInt32x3Type },
+        std::pair{ "rbga"_c, &UInt32x4Type },
+        std::pair{ "rbgb"_c, &UInt32x4Type },
+        std::pair{ "rbgg"_c, &UInt32x4Type },
+        std::pair{ "rbgr"_c, &UInt32x4Type },
+        std::pair{ "rbr"_c, &UInt32x3Type },
+        std::pair{ "rbra"_c, &UInt32x4Type },
+        std::pair{ "rbrb"_c, &UInt32x4Type },
+        std::pair{ "rbrg"_c, &UInt32x4Type },
+        std::pair{ "rbrr"_c, &UInt32x4Type },
+        std::pair{ "rg"_c, &UInt32x2Type },
+        std::pair{ "rga"_c, &UInt32x3Type },
+        std::pair{ "rgaa"_c, &UInt32x4Type },
+        std::pair{ "rgab"_c, &UInt32x4Type },
+        std::pair{ "rgag"_c, &UInt32x4Type },
+        std::pair{ "rgar"_c, &UInt32x4Type },
+        std::pair{ "rgb"_c, &UInt32x3Type },
+        std::pair{ "rgba"_c, &UInt32x4Type },
+        std::pair{ "rgbb"_c, &UInt32x4Type },
+        std::pair{ "rgbg"_c, &UInt32x4Type },
+        std::pair{ "rgbr"_c, &UInt32x4Type },
+        std::pair{ "rgg"_c, &UInt32x3Type },
+        std::pair{ "rgga"_c, &UInt32x4Type },
+        std::pair{ "rggb"_c, &UInt32x4Type },
+        std::pair{ "rggg"_c, &UInt32x4Type },
+        std::pair{ "rggr"_c, &UInt32x4Type },
+        std::pair{ "rgr"_c, &UInt32x3Type },
+        std::pair{ "rgra"_c, &UInt32x4Type },
+        std::pair{ "rgrb"_c, &UInt32x4Type },
+        std::pair{ "rgrg"_c, &UInt32x4Type },
+        std::pair{ "rgrr"_c, &UInt32x4Type },
+        std::pair{ "rr"_c, &UInt32x2Type },
+        std::pair{ "rra"_c, &UInt32x3Type },
+        std::pair{ "rraa"_c, &UInt32x4Type },
+        std::pair{ "rrab"_c, &UInt32x4Type },
+        std::pair{ "rrag"_c, &UInt32x4Type },
+        std::pair{ "rrar"_c, &UInt32x4Type },
+        std::pair{ "rrb"_c, &UInt32x3Type },
+        std::pair{ "rrba"_c, &UInt32x4Type },
+        std::pair{ "rrbb"_c, &UInt32x4Type },
+        std::pair{ "rrbg"_c, &UInt32x4Type },
+        std::pair{ "rrbr"_c, &UInt32x4Type },
+        std::pair{ "rrg"_c, &UInt32x3Type },
+        std::pair{ "rrga"_c, &UInt32x4Type },
+        std::pair{ "rrgb"_c, &UInt32x4Type },
+        std::pair{ "rrgg"_c, &UInt32x4Type },
+        std::pair{ "rrgr"_c, &UInt32x4Type },
+        std::pair{ "rrr"_c, &UInt32x3Type },
+        std::pair{ "rrra"_c, &UInt32x4Type },
+        std::pair{ "rrrb"_c, &UInt32x4Type },
+        std::pair{ "rrrg"_c, &UInt32x4Type },
+        std::pair{ "rrrr"_c, &UInt32x4Type },
+        std::pair{ "w"_c, &UInt32Type },
+        std::pair{ "ww"_c, &UInt32x2Type },
+        std::pair{ "www"_c, &UInt32x3Type },
+        std::pair{ "wwww"_c, &UInt32x4Type },
+        std::pair{ "wwwx"_c, &UInt32x4Type },
+        std::pair{ "wwwy"_c, &UInt32x4Type },
+        std::pair{ "wwwz"_c, &UInt32x4Type },
+        std::pair{ "wwx"_c, &UInt32x3Type },
+        std::pair{ "wwxw"_c, &UInt32x4Type },
+        std::pair{ "wwxx"_c, &UInt32x4Type },
+        std::pair{ "wwxy"_c, &UInt32x4Type },
+        std::pair{ "wwxz"_c, &UInt32x4Type },
+        std::pair{ "wwy"_c, &UInt32x3Type },
+        std::pair{ "wwyw"_c, &UInt32x4Type },
+        std::pair{ "wwyx"_c, &UInt32x4Type },
+        std::pair{ "wwyy"_c, &UInt32x4Type },
+        std::pair{ "wwyz"_c, &UInt32x4Type },
+        std::pair{ "wwz"_c, &UInt32x3Type },
+        std::pair{ "wwzw"_c, &UInt32x4Type },
+        std::pair{ "wwzx"_c, &UInt32x4Type },
+        std::pair{ "wwzy"_c, &UInt32x4Type },
+        std::pair{ "wwzz"_c, &UInt32x4Type },
+        std::pair{ "wx"_c, &UInt32x2Type },
+        std::pair{ "wxw"_c, &UInt32x3Type },
+        std::pair{ "wxww"_c, &UInt32x4Type },
+        std::pair{ "wxwx"_c, &UInt32x4Type },
+        std::pair{ "wxwy"_c, &UInt32x4Type },
+        std::pair{ "wxwz"_c, &UInt32x4Type },
+        std::pair{ "wxx"_c, &UInt32x3Type },
+        std::pair{ "wxxw"_c, &UInt32x4Type },
+        std::pair{ "wxxx"_c, &UInt32x4Type },
+        std::pair{ "wxxy"_c, &UInt32x4Type },
+        std::pair{ "wxxz"_c, &UInt32x4Type },
+        std::pair{ "wxy"_c, &UInt32x3Type },
+        std::pair{ "wxyw"_c, &UInt32x4Type },
+        std::pair{ "wxyx"_c, &UInt32x4Type },
+        std::pair{ "wxyy"_c, &UInt32x4Type },
+        std::pair{ "wxyz"_c, &UInt32x4Type },
+        std::pair{ "wxz"_c, &UInt32x3Type },
+        std::pair{ "wxzw"_c, &UInt32x4Type },
+        std::pair{ "wxzx"_c, &UInt32x4Type },
+        std::pair{ "wxzy"_c, &UInt32x4Type },
+        std::pair{ "wxzz"_c, &UInt32x4Type },
+        std::pair{ "wy"_c, &UInt32x2Type },
+        std::pair{ "wyw"_c, &UInt32x3Type },
+        std::pair{ "wyww"_c, &UInt32x4Type },
+        std::pair{ "wywx"_c, &UInt32x4Type },
+        std::pair{ "wywy"_c, &UInt32x4Type },
+        std::pair{ "wywz"_c, &UInt32x4Type },
+        std::pair{ "wyx"_c, &UInt32x3Type },
+        std::pair{ "wyxw"_c, &UInt32x4Type },
+        std::pair{ "wyxx"_c, &UInt32x4Type },
+        std::pair{ "wyxy"_c, &UInt32x4Type },
+        std::pair{ "wyxz"_c, &UInt32x4Type },
+        std::pair{ "wyy"_c, &UInt32x3Type },
+        std::pair{ "wyyw"_c, &UInt32x4Type },
+        std::pair{ "wyyx"_c, &UInt32x4Type },
+        std::pair{ "wyyy"_c, &UInt32x4Type },
+        std::pair{ "wyyz"_c, &UInt32x4Type },
+        std::pair{ "wyz"_c, &UInt32x3Type },
+        std::pair{ "wyzw"_c, &UInt32x4Type },
+        std::pair{ "wyzx"_c, &UInt32x4Type },
+        std::pair{ "wyzy"_c, &UInt32x4Type },
+        std::pair{ "wyzz"_c, &UInt32x4Type },
+        std::pair{ "wz"_c, &UInt32x2Type },
+        std::pair{ "wzw"_c, &UInt32x3Type },
+        std::pair{ "wzww"_c, &UInt32x4Type },
+        std::pair{ "wzwx"_c, &UInt32x4Type },
+        std::pair{ "wzwy"_c, &UInt32x4Type },
+        std::pair{ "wzwz"_c, &UInt32x4Type },
+        std::pair{ "wzx"_c, &UInt32x3Type },
+        std::pair{ "wzxw"_c, &UInt32x4Type },
+        std::pair{ "wzxx"_c, &UInt32x4Type },
+        std::pair{ "wzxy"_c, &UInt32x4Type },
+        std::pair{ "wzxz"_c, &UInt32x4Type },
+        std::pair{ "wzy"_c, &UInt32x3Type },
+        std::pair{ "wzyw"_c, &UInt32x4Type },
+        std::pair{ "wzyx"_c, &UInt32x4Type },
+        std::pair{ "wzyy"_c, &UInt32x4Type },
+        std::pair{ "wzyz"_c, &UInt32x4Type },
+        std::pair{ "wzz"_c, &UInt32x3Type },
+        std::pair{ "wzzw"_c, &UInt32x4Type },
+        std::pair{ "wzzx"_c, &UInt32x4Type },
+        std::pair{ "wzzy"_c, &UInt32x4Type },
+        std::pair{ "wzzz"_c, &UInt32x4Type },
+        std::pair{ "x"_c, &UInt32Type },
+        std::pair{ "xw"_c, &UInt32x2Type },
+        std::pair{ "xww"_c, &UInt32x3Type },
+        std::pair{ "xwww"_c, &UInt32x4Type },
+        std::pair{ "xwwx"_c, &UInt32x4Type },
+        std::pair{ "xwwy"_c, &UInt32x4Type },
+        std::pair{ "xwwz"_c, &UInt32x4Type },
+        std::pair{ "xwx"_c, &UInt32x3Type },
+        std::pair{ "xwxw"_c, &UInt32x4Type },
+        std::pair{ "xwxx"_c, &UInt32x4Type },
+        std::pair{ "xwxy"_c, &UInt32x4Type },
+        std::pair{ "xwxz"_c, &UInt32x4Type },
+        std::pair{ "xwy"_c, &UInt32x3Type },
+        std::pair{ "xwyw"_c, &UInt32x4Type },
+        std::pair{ "xwyx"_c, &UInt32x4Type },
+        std::pair{ "xwyy"_c, &UInt32x4Type },
+        std::pair{ "xwyz"_c, &UInt32x4Type },
+        std::pair{ "xwz"_c, &UInt32x3Type },
+        std::pair{ "xwzw"_c, &UInt32x4Type },
+        std::pair{ "xwzx"_c, &UInt32x4Type },
+        std::pair{ "xwzy"_c, &UInt32x4Type },
+        std::pair{ "xwzz"_c, &UInt32x4Type },
+        std::pair{ "xx"_c, &UInt32x2Type },
+        std::pair{ "xxw"_c, &UInt32x3Type },
+        std::pair{ "xxww"_c, &UInt32x4Type },
+        std::pair{ "xxwx"_c, &UInt32x4Type },
+        std::pair{ "xxwy"_c, &UInt32x4Type },
+        std::pair{ "xxwz"_c, &UInt32x4Type },
+        std::pair{ "xxx"_c, &UInt32x3Type },
+        std::pair{ "xxxw"_c, &UInt32x4Type },
+        std::pair{ "xxxx"_c, &UInt32x4Type },
+        std::pair{ "xxxy"_c, &UInt32x4Type },
+        std::pair{ "xxxz"_c, &UInt32x4Type },
+        std::pair{ "xxy"_c, &UInt32x3Type },
+        std::pair{ "xxyw"_c, &UInt32x4Type },
+        std::pair{ "xxyx"_c, &UInt32x4Type },
+        std::pair{ "xxyy"_c, &UInt32x4Type },
+        std::pair{ "xxyz"_c, &UInt32x4Type },
+        std::pair{ "xxz"_c, &UInt32x3Type },
+        std::pair{ "xxzw"_c, &UInt32x4Type },
+        std::pair{ "xxzx"_c, &UInt32x4Type },
+        std::pair{ "xxzy"_c, &UInt32x4Type },
+        std::pair{ "xxzz"_c, &UInt32x4Type },
+        std::pair{ "xy"_c, &UInt32x2Type },
+        std::pair{ "xyw"_c, &UInt32x3Type },
+        std::pair{ "xyww"_c, &UInt32x4Type },
+        std::pair{ "xywx"_c, &UInt32x4Type },
+        std::pair{ "xywy"_c, &UInt32x4Type },
+        std::pair{ "xywz"_c, &UInt32x4Type },
+        std::pair{ "xyx"_c, &UInt32x3Type },
+        std::pair{ "xyxw"_c, &UInt32x4Type },
+        std::pair{ "xyxx"_c, &UInt32x4Type },
+        std::pair{ "xyxy"_c, &UInt32x4Type },
+        std::pair{ "xyxz"_c, &UInt32x4Type },
+        std::pair{ "xyy"_c, &UInt32x3Type },
+        std::pair{ "xyyw"_c, &UInt32x4Type },
+        std::pair{ "xyyx"_c, &UInt32x4Type },
+        std::pair{ "xyyy"_c, &UInt32x4Type },
+        std::pair{ "xyyz"_c, &UInt32x4Type },
+        std::pair{ "xyz"_c, &UInt32x3Type },
+        std::pair{ "xyzw"_c, &UInt32x4Type },
+        std::pair{ "xyzx"_c, &UInt32x4Type },
+        std::pair{ "xyzy"_c, &UInt32x4Type },
+        std::pair{ "xyzz"_c, &UInt32x4Type },
+        std::pair{ "xz"_c, &UInt32x2Type },
+        std::pair{ "xzw"_c, &UInt32x3Type },
+        std::pair{ "xzww"_c, &UInt32x4Type },
+        std::pair{ "xzwx"_c, &UInt32x4Type },
+        std::pair{ "xzwy"_c, &UInt32x4Type },
+        std::pair{ "xzwz"_c, &UInt32x4Type },
+        std::pair{ "xzx"_c, &UInt32x3Type },
+        std::pair{ "xzxw"_c, &UInt32x4Type },
+        std::pair{ "xzxx"_c, &UInt32x4Type },
+        std::pair{ "xzxy"_c, &UInt32x4Type },
+        std::pair{ "xzxz"_c, &UInt32x4Type },
+        std::pair{ "xzy"_c, &UInt32x3Type },
+        std::pair{ "xzyw"_c, &UInt32x4Type },
+        std::pair{ "xzyx"_c, &UInt32x4Type },
+        std::pair{ "xzyy"_c, &UInt32x4Type },
+        std::pair{ "xzyz"_c, &UInt32x4Type },
+        std::pair{ "xzz"_c, &UInt32x3Type },
+        std::pair{ "xzzw"_c, &UInt32x4Type },
+        std::pair{ "xzzx"_c, &UInt32x4Type },
+        std::pair{ "xzzy"_c, &UInt32x4Type },
+        std::pair{ "xzzz"_c, &UInt32x4Type },
+        std::pair{ "y"_c, &UInt32Type },
+        std::pair{ "yw"_c, &UInt32x2Type },
+        std::pair{ "yww"_c, &UInt32x3Type },
+        std::pair{ "ywww"_c, &UInt32x4Type },
+        std::pair{ "ywwx"_c, &UInt32x4Type },
+        std::pair{ "ywwy"_c, &UInt32x4Type },
+        std::pair{ "ywwz"_c, &UInt32x4Type },
+        std::pair{ "ywx"_c, &UInt32x3Type },
+        std::pair{ "ywxw"_c, &UInt32x4Type },
+        std::pair{ "ywxx"_c, &UInt32x4Type },
+        std::pair{ "ywxy"_c, &UInt32x4Type },
+        std::pair{ "ywxz"_c, &UInt32x4Type },
+        std::pair{ "ywy"_c, &UInt32x3Type },
+        std::pair{ "ywyw"_c, &UInt32x4Type },
+        std::pair{ "ywyx"_c, &UInt32x4Type },
+        std::pair{ "ywyy"_c, &UInt32x4Type },
+        std::pair{ "ywyz"_c, &UInt32x4Type },
+        std::pair{ "ywz"_c, &UInt32x3Type },
+        std::pair{ "ywzw"_c, &UInt32x4Type },
+        std::pair{ "ywzx"_c, &UInt32x4Type },
+        std::pair{ "ywzy"_c, &UInt32x4Type },
+        std::pair{ "ywzz"_c, &UInt32x4Type },
+        std::pair{ "yx"_c, &UInt32x2Type },
+        std::pair{ "yxw"_c, &UInt32x3Type },
+        std::pair{ "yxww"_c, &UInt32x4Type },
+        std::pair{ "yxwx"_c, &UInt32x4Type },
+        std::pair{ "yxwy"_c, &UInt32x4Type },
+        std::pair{ "yxwz"_c, &UInt32x4Type },
+        std::pair{ "yxx"_c, &UInt32x3Type },
+        std::pair{ "yxxw"_c, &UInt32x4Type },
+        std::pair{ "yxxx"_c, &UInt32x4Type },
+        std::pair{ "yxxy"_c, &UInt32x4Type },
+        std::pair{ "yxxz"_c, &UInt32x4Type },
+        std::pair{ "yxy"_c, &UInt32x3Type },
+        std::pair{ "yxyw"_c, &UInt32x4Type },
+        std::pair{ "yxyx"_c, &UInt32x4Type },
+        std::pair{ "yxyy"_c, &UInt32x4Type },
+        std::pair{ "yxyz"_c, &UInt32x4Type },
+        std::pair{ "yxz"_c, &UInt32x3Type },
+        std::pair{ "yxzw"_c, &UInt32x4Type },
+        std::pair{ "yxzx"_c, &UInt32x4Type },
+        std::pair{ "yxzy"_c, &UInt32x4Type },
+        std::pair{ "yxzz"_c, &UInt32x4Type },
+        std::pair{ "yy"_c, &UInt32x2Type },
+        std::pair{ "yyw"_c, &UInt32x3Type },
+        std::pair{ "yyww"_c, &UInt32x4Type },
+        std::pair{ "yywx"_c, &UInt32x4Type },
+        std::pair{ "yywy"_c, &UInt32x4Type },
+        std::pair{ "yywz"_c, &UInt32x4Type },
+        std::pair{ "yyx"_c, &UInt32x3Type },
+        std::pair{ "yyxw"_c, &UInt32x4Type },
+        std::pair{ "yyxx"_c, &UInt32x4Type },
+        std::pair{ "yyxy"_c, &UInt32x4Type },
+        std::pair{ "yyxz"_c, &UInt32x4Type },
+        std::pair{ "yyy"_c, &UInt32x3Type },
+        std::pair{ "yyyw"_c, &UInt32x4Type },
+        std::pair{ "yyyx"_c, &UInt32x4Type },
+        std::pair{ "yyyy"_c, &UInt32x4Type },
+        std::pair{ "yyyz"_c, &UInt32x4Type },
+        std::pair{ "yyz"_c, &UInt32x3Type },
+        std::pair{ "yyzw"_c, &UInt32x4Type },
+        std::pair{ "yyzx"_c, &UInt32x4Type },
+        std::pair{ "yyzy"_c, &UInt32x4Type },
+        std::pair{ "yyzz"_c, &UInt32x4Type },
+        std::pair{ "yz"_c, &UInt32x2Type },
+        std::pair{ "yzw"_c, &UInt32x3Type },
+        std::pair{ "yzww"_c, &UInt32x4Type },
+        std::pair{ "yzwx"_c, &UInt32x4Type },
+        std::pair{ "yzwy"_c, &UInt32x4Type },
+        std::pair{ "yzwz"_c, &UInt32x4Type },
+        std::pair{ "yzx"_c, &UInt32x3Type },
+        std::pair{ "yzxw"_c, &UInt32x4Type },
+        std::pair{ "yzxx"_c, &UInt32x4Type },
+        std::pair{ "yzxy"_c, &UInt32x4Type },
+        std::pair{ "yzxz"_c, &UInt32x4Type },
+        std::pair{ "yzy"_c, &UInt32x3Type },
+        std::pair{ "yzyw"_c, &UInt32x4Type },
+        std::pair{ "yzyx"_c, &UInt32x4Type },
+        std::pair{ "yzyy"_c, &UInt32x4Type },
+        std::pair{ "yzyz"_c, &UInt32x4Type },
+        std::pair{ "yzz"_c, &UInt32x3Type },
+        std::pair{ "yzzw"_c, &UInt32x4Type },
+        std::pair{ "yzzx"_c, &UInt32x4Type },
+        std::pair{ "yzzy"_c, &UInt32x4Type },
+        std::pair{ "yzzz"_c, &UInt32x4Type },
+        std::pair{ "z"_c, &UInt32Type },
+        std::pair{ "zw"_c, &UInt32x2Type },
+        std::pair{ "zww"_c, &UInt32x3Type },
+        std::pair{ "zwww"_c, &UInt32x4Type },
+        std::pair{ "zwwx"_c, &UInt32x4Type },
+        std::pair{ "zwwy"_c, &UInt32x4Type },
+        std::pair{ "zwwz"_c, &UInt32x4Type },
+        std::pair{ "zwx"_c, &UInt32x3Type },
+        std::pair{ "zwxw"_c, &UInt32x4Type },
+        std::pair{ "zwxx"_c, &UInt32x4Type },
+        std::pair{ "zwxy"_c, &UInt32x4Type },
+        std::pair{ "zwxz"_c, &UInt32x4Type },
+        std::pair{ "zwy"_c, &UInt32x3Type },
+        std::pair{ "zwyw"_c, &UInt32x4Type },
+        std::pair{ "zwyx"_c, &UInt32x4Type },
+        std::pair{ "zwyy"_c, &UInt32x4Type },
+        std::pair{ "zwyz"_c, &UInt32x4Type },
+        std::pair{ "zwz"_c, &UInt32x3Type },
+        std::pair{ "zwzw"_c, &UInt32x4Type },
+        std::pair{ "zwzx"_c, &UInt32x4Type },
+        std::pair{ "zwzy"_c, &UInt32x4Type },
+        std::pair{ "zwzz"_c, &UInt32x4Type },
+        std::pair{ "zx"_c, &UInt32x2Type },
+        std::pair{ "zxw"_c, &UInt32x3Type },
+        std::pair{ "zxww"_c, &UInt32x4Type },
+        std::pair{ "zxwx"_c, &UInt32x4Type },
+        std::pair{ "zxwy"_c, &UInt32x4Type },
+        std::pair{ "zxwz"_c, &UInt32x4Type },
+        std::pair{ "zxx"_c, &UInt32x3Type },
+        std::pair{ "zxxw"_c, &UInt32x4Type },
+        std::pair{ "zxxx"_c, &UInt32x4Type },
+        std::pair{ "zxxy"_c, &UInt32x4Type },
+        std::pair{ "zxxz"_c, &UInt32x4Type },
+        std::pair{ "zxy"_c, &UInt32x3Type },
+        std::pair{ "zxyw"_c, &UInt32x4Type },
+        std::pair{ "zxyx"_c, &UInt32x4Type },
+        std::pair{ "zxyy"_c, &UInt32x4Type },
+        std::pair{ "zxyz"_c, &UInt32x4Type },
+        std::pair{ "zxz"_c, &UInt32x3Type },
+        std::pair{ "zxzw"_c, &UInt32x4Type },
+        std::pair{ "zxzx"_c, &UInt32x4Type },
+        std::pair{ "zxzy"_c, &UInt32x4Type },
+        std::pair{ "zxzz"_c, &UInt32x4Type },
+        std::pair{ "zy"_c, &UInt32x2Type },
+        std::pair{ "zyw"_c, &UInt32x3Type },
+        std::pair{ "zyww"_c, &UInt32x4Type },
+        std::pair{ "zywx"_c, &UInt32x4Type },
+        std::pair{ "zywy"_c, &UInt32x4Type },
+        std::pair{ "zywz"_c, &UInt32x4Type },
+        std::pair{ "zyx"_c, &UInt32x3Type },
+        std::pair{ "zyxw"_c, &UInt32x4Type },
+        std::pair{ "zyxx"_c, &UInt32x4Type },
+        std::pair{ "zyxy"_c, &UInt32x4Type },
+        std::pair{ "zyxz"_c, &UInt32x4Type },
+        std::pair{ "zyy"_c, &UInt32x3Type },
+        std::pair{ "zyyw"_c, &UInt32x4Type },
+        std::pair{ "zyyx"_c, &UInt32x4Type },
+        std::pair{ "zyyy"_c, &UInt32x4Type },
+        std::pair{ "zyyz"_c, &UInt32x4Type },
+        std::pair{ "zyz"_c, &UInt32x3Type },
+        std::pair{ "zyzw"_c, &UInt32x4Type },
+        std::pair{ "zyzx"_c, &UInt32x4Type },
+        std::pair{ "zyzy"_c, &UInt32x4Type },
+        std::pair{ "zyzz"_c, &UInt32x4Type },
+        std::pair{ "zz"_c, &UInt32x2Type },
+        std::pair{ "zzw"_c, &UInt32x3Type },
+        std::pair{ "zzww"_c, &UInt32x4Type },
+        std::pair{ "zzwx"_c, &UInt32x4Type },
+        std::pair{ "zzwy"_c, &UInt32x4Type },
+        std::pair{ "zzwz"_c, &UInt32x4Type },
+        std::pair{ "zzx"_c, &UInt32x3Type },
+        std::pair{ "zzxw"_c, &UInt32x4Type },
+        std::pair{ "zzxx"_c, &UInt32x4Type },
+        std::pair{ "zzxy"_c, &UInt32x4Type },
+        std::pair{ "zzxz"_c, &UInt32x4Type },
+        std::pair{ "zzy"_c, &UInt32x3Type },
+        std::pair{ "zzyw"_c, &UInt32x4Type },
+        std::pair{ "zzyx"_c, &UInt32x4Type },
+        std::pair{ "zzyy"_c, &UInt32x4Type },
+        std::pair{ "zzyz"_c, &UInt32x4Type },
+        std::pair{ "zzz"_c, &UInt32x3Type },
+        std::pair{ "zzzw"_c, &UInt32x4Type },
+        std::pair{ "zzzx"_c, &UInt32x4Type },
+        std::pair{ "zzzy"_c, &UInt32x4Type },
+        std::pair{ "zzzz"_c, &UInt32x4Type }
     };
 }
 UInt32x4 UInt32x4Type;
@@ -14174,17 +17670,23 @@ Variable Int32x4_ctor3_arg2_Int32x2;
 Function Int32x4_ctor3;
 inline constexpr std::array Int32x4_ctor3_args = { &Int32x4_ctor3_arg0_Int32, &Int32x4_ctor3_arg1_Int32, &Int32x4_ctor3_arg2_Int32x2 };
 
-/// i32x4 with Int32x3, Int32
-Variable Int32x4_ctor4_arg0_Int32x3;
-Variable Int32x4_ctor4_arg1_Int32;
+/// i32x4 with Int32x2, Int32x2
+Variable Int32x4_ctor4_arg0_Int32x2;
+Variable Int32x4_ctor4_arg1_Int32x2;
 Function Int32x4_ctor4;
-inline constexpr std::array Int32x4_ctor4_args = { &Int32x4_ctor4_arg0_Int32x3, &Int32x4_ctor4_arg1_Int32 };
+inline constexpr std::array Int32x4_ctor4_args = { &Int32x4_ctor4_arg0_Int32x2, &Int32x4_ctor4_arg1_Int32x2 };
+
+/// i32x4 with Int32x3, Int32
+Variable Int32x4_ctor5_arg0_Int32x3;
+Variable Int32x4_ctor5_arg1_Int32;
+Function Int32x4_ctor5;
+inline constexpr std::array Int32x4_ctor5_args = { &Int32x4_ctor5_arg0_Int32x3, &Int32x4_ctor5_arg1_Int32 };
 
 /// i32x4 with Int32, Int32x3
-Variable Int32x4_ctor5_arg0_Int32;
-Variable Int32x4_ctor5_arg1_Int32x3;
-Function Int32x4_ctor5;
-inline constexpr std::array Int32x4_ctor5_args = { &Int32x4_ctor5_arg0_Int32, &Int32x4_ctor5_arg1_Int32x3 };
+Variable Int32x4_ctor6_arg0_Int32;
+Variable Int32x4_ctor6_arg1_Int32x3;
+Function Int32x4_ctor6;
+inline constexpr std::array Int32x4_ctor6_args = { &Int32x4_ctor6_arg0_Int32, &Int32x4_ctor6_arg1_Int32x3 };
 
 /// operator[] with Int32
 Variable Int32x4_operator_index_Int32_arg0;
@@ -14554,29 +18056,41 @@ Int32x4::Int32x4()
     Symbol::Resolved(&Int32x4_ctor3_arg2_Int32x2)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x4_ctor3)->returnTypeSymbol = &Int32x4Type;
 
-    /// i32x4 with Int32x3, Int32
-    Int32x4_ctor4_arg0_Int32x3.name = "_arg0"_c;
-    Int32x4_ctor4_arg0_Int32x3.type = Type::FullType{ Int32x3Type.name };
-    Int32x4_ctor4_arg1_Int32.name = "_arg1"_c;
-    Int32x4_ctor4_arg1_Int32.type = Type::FullType{ Int32Type.name };
+    /// i32x4 with Int32x2, Int32x2
+    Int32x4_ctor4_arg0_Int32x2.name = "_arg0"_c;
+    Int32x4_ctor4_arg0_Int32x2.type = Type::FullType{ Int32x2Type.name };
+    Int32x4_ctor4_arg1_Int32x2.name = "_arg1"_c;
+    Int32x4_ctor4_arg1_Int32x2.type = Type::FullType{ Int32x2Type.name };
     Int32x4_ctor4.name = "i32x4"_c;
     Int32x4_ctor4.returnType = Type::FullType { Int32x4Type.name };
     Int32x4_ctor4.parameters = Int32x4_ctor4_args;
-    Symbol::Resolved(&Int32x4_ctor4_arg0_Int32x3)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&Int32x4_ctor4_arg1_Int32)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&Int32x4_ctor4_arg0_Int32x2)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&Int32x4_ctor4_arg1_Int32x2)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&Int32x4_ctor4)->returnTypeSymbol = &Int32x4Type;
 
-    /// i32x4 with Int32, Int32x3
-    Int32x4_ctor5_arg0_Int32.name = "_arg0"_c;
-    Int32x4_ctor5_arg0_Int32.type = Type::FullType{ Int32Type.name };
-    Int32x4_ctor5_arg1_Int32x3.name = "_arg1"_c;
-    Int32x4_ctor5_arg1_Int32x3.type = Type::FullType{ Int32x3Type.name };
+    /// i32x4 with Int32x3, Int32
+    Int32x4_ctor5_arg0_Int32x3.name = "_arg0"_c;
+    Int32x4_ctor5_arg0_Int32x3.type = Type::FullType{ Int32x3Type.name };
+    Int32x4_ctor5_arg1_Int32.name = "_arg1"_c;
+    Int32x4_ctor5_arg1_Int32.type = Type::FullType{ Int32Type.name };
     Int32x4_ctor5.name = "i32x4"_c;
     Int32x4_ctor5.returnType = Type::FullType { Int32x4Type.name };
     Int32x4_ctor5.parameters = Int32x4_ctor5_args;
-    Symbol::Resolved(&Int32x4_ctor5_arg0_Int32)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Int32x4_ctor5_arg1_Int32x3)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&Int32x4_ctor5_arg0_Int32x3)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&Int32x4_ctor5_arg1_Int32)->typeSymbol = &Int32Type;
     Symbol::Resolved(&Int32x4_ctor5)->returnTypeSymbol = &Int32x4Type;
+
+    /// i32x4 with Int32, Int32x3
+    Int32x4_ctor6_arg0_Int32.name = "_arg0"_c;
+    Int32x4_ctor6_arg0_Int32.type = Type::FullType{ Int32Type.name };
+    Int32x4_ctor6_arg1_Int32x3.name = "_arg1"_c;
+    Int32x4_ctor6_arg1_Int32x3.type = Type::FullType{ Int32x3Type.name };
+    Int32x4_ctor6.name = "i32x4"_c;
+    Int32x4_ctor6.returnType = Type::FullType { Int32x4Type.name };
+    Int32x4_ctor6.parameters = Int32x4_ctor6_args;
+    Symbol::Resolved(&Int32x4_ctor6_arg0_Int32)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&Int32x4_ctor6_arg1_Int32x3)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&Int32x4_ctor6)->returnTypeSymbol = &Int32x4Type;
 
     /// operator[] with Int32
     Int32x4_operator_index_Int32_arg0.name = "_arg0"_c;
@@ -14893,42 +18407,722 @@ Int32x4::Int32x4()
     Symbol::Resolved(&Int32x4_operator_rhsasg_Int32x4_arg0)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&Int32x4_operator_rhsasg_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 35> { 
-        std::pair{ "operator!=", &Int32x4_operator_neq_Int32x4 },
-        std::pair{ "operator%", &Int32x4_operator_mod_Int32x4 },
-        std::pair{ "operator&", &Int32x4_operator_and_Int32x4 },
-        std::pair{ "operator&=", &Int32x4_operator_andasg_Int32x4 },
-        std::pair{ "operator*", &Int32x4_operator_mul_Int32x4 },
-        std::pair{ "operator*", &Int32x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Int32x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Int32x4_operator_scale_UInt32 },
-        std::pair{ "operator*", &Int32x4_operator_scale_UInt16 },
-        std::pair{ "operator*", &Int32x4_operator_scale_Int32 },
-        std::pair{ "operator*", &Int32x4_operator_scale_Int16 },
-        std::pair{ "operator*=", &Int32x4_operator_mulasg_Int32x4 },
-        std::pair{ "operator+", &Int32x4_operator_add_Int32x4 },
-        std::pair{ "operator+=", &Int32x4_operator_addasg_Int32x4 },
-        std::pair{ "operator-", &Int32x4_operator_sub_Int32x4 },
-        std::pair{ "operator-=", &Int32x4_operator_subasg_Int32x4 },
-        std::pair{ "operator/", &Int32x4_operator_div_Int32x4 },
-        std::pair{ "operator/=", &Int32x4_operator_divasg_Int32x4 },
-        std::pair{ "operator<", &Int32x4_operator_lt_Int32x4 },
-        std::pair{ "operator<<", &Int32x4_operator_lsh_Int32x4 },
-        std::pair{ "operator<<=", &Int32x4_operator_lshasg_Int32x4 },
-        std::pair{ "operator<=", &Int32x4_operator_lte_Int32x4 },
-        std::pair{ "operator==", &Int32x4_operator_eq_Int32x4 },
-        std::pair{ "operator>", &Int32x4_operator_gt_Int32x4 },
-        std::pair{ "operator>=", &Int32x4_operator_gte_Int32x4 },
-        std::pair{ "operator>>", &Int32x4_operator_rsh_Int32x4 },
-        std::pair{ "operator>>=", &Int32x4_operator_rhsasg_Int32x4 },
-        std::pair{ "operator[]", &Int32x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Int32x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Int32x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Int32x4_operator_index_UInt16 },
-        std::pair{ "operator^", &Int32x4_operator_xor_Int32x4 },
-        std::pair{ "operator^=", &Int32x4_operator_xorasg_Int32x4 },
-        std::pair{ "operator|", &Int32x4_operator_or_Int32x4 },
-        std::pair{ "operator|=", &Int32x4_operator_orasg_Int32x4 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 715> { 
+        std::pair{ "a"_c, &Int32Type },
+        std::pair{ "aa"_c, &Int32x2Type },
+        std::pair{ "aaa"_c, &Int32x3Type },
+        std::pair{ "aaaa"_c, &Int32x4Type },
+        std::pair{ "aaab"_c, &Int32x4Type },
+        std::pair{ "aaag"_c, &Int32x4Type },
+        std::pair{ "aaar"_c, &Int32x4Type },
+        std::pair{ "aab"_c, &Int32x3Type },
+        std::pair{ "aaba"_c, &Int32x4Type },
+        std::pair{ "aabb"_c, &Int32x4Type },
+        std::pair{ "aabg"_c, &Int32x4Type },
+        std::pair{ "aabr"_c, &Int32x4Type },
+        std::pair{ "aag"_c, &Int32x3Type },
+        std::pair{ "aaga"_c, &Int32x4Type },
+        std::pair{ "aagb"_c, &Int32x4Type },
+        std::pair{ "aagg"_c, &Int32x4Type },
+        std::pair{ "aagr"_c, &Int32x4Type },
+        std::pair{ "aar"_c, &Int32x3Type },
+        std::pair{ "aara"_c, &Int32x4Type },
+        std::pair{ "aarb"_c, &Int32x4Type },
+        std::pair{ "aarg"_c, &Int32x4Type },
+        std::pair{ "aarr"_c, &Int32x4Type },
+        std::pair{ "ab"_c, &Int32x2Type },
+        std::pair{ "aba"_c, &Int32x3Type },
+        std::pair{ "abaa"_c, &Int32x4Type },
+        std::pair{ "abab"_c, &Int32x4Type },
+        std::pair{ "abag"_c, &Int32x4Type },
+        std::pair{ "abar"_c, &Int32x4Type },
+        std::pair{ "abb"_c, &Int32x3Type },
+        std::pair{ "abba"_c, &Int32x4Type },
+        std::pair{ "abbb"_c, &Int32x4Type },
+        std::pair{ "abbg"_c, &Int32x4Type },
+        std::pair{ "abbr"_c, &Int32x4Type },
+        std::pair{ "abg"_c, &Int32x3Type },
+        std::pair{ "abga"_c, &Int32x4Type },
+        std::pair{ "abgb"_c, &Int32x4Type },
+        std::pair{ "abgg"_c, &Int32x4Type },
+        std::pair{ "abgr"_c, &Int32x4Type },
+        std::pair{ "abr"_c, &Int32x3Type },
+        std::pair{ "abra"_c, &Int32x4Type },
+        std::pair{ "abrb"_c, &Int32x4Type },
+        std::pair{ "abrg"_c, &Int32x4Type },
+        std::pair{ "abrr"_c, &Int32x4Type },
+        std::pair{ "ag"_c, &Int32x2Type },
+        std::pair{ "aga"_c, &Int32x3Type },
+        std::pair{ "agaa"_c, &Int32x4Type },
+        std::pair{ "agab"_c, &Int32x4Type },
+        std::pair{ "agag"_c, &Int32x4Type },
+        std::pair{ "agar"_c, &Int32x4Type },
+        std::pair{ "agb"_c, &Int32x3Type },
+        std::pair{ "agba"_c, &Int32x4Type },
+        std::pair{ "agbb"_c, &Int32x4Type },
+        std::pair{ "agbg"_c, &Int32x4Type },
+        std::pair{ "agbr"_c, &Int32x4Type },
+        std::pair{ "agg"_c, &Int32x3Type },
+        std::pair{ "agga"_c, &Int32x4Type },
+        std::pair{ "aggb"_c, &Int32x4Type },
+        std::pair{ "aggg"_c, &Int32x4Type },
+        std::pair{ "aggr"_c, &Int32x4Type },
+        std::pair{ "agr"_c, &Int32x3Type },
+        std::pair{ "agra"_c, &Int32x4Type },
+        std::pair{ "agrb"_c, &Int32x4Type },
+        std::pair{ "agrg"_c, &Int32x4Type },
+        std::pair{ "agrr"_c, &Int32x4Type },
+        std::pair{ "ar"_c, &Int32x2Type },
+        std::pair{ "ara"_c, &Int32x3Type },
+        std::pair{ "araa"_c, &Int32x4Type },
+        std::pair{ "arab"_c, &Int32x4Type },
+        std::pair{ "arag"_c, &Int32x4Type },
+        std::pair{ "arar"_c, &Int32x4Type },
+        std::pair{ "arb"_c, &Int32x3Type },
+        std::pair{ "arba"_c, &Int32x4Type },
+        std::pair{ "arbb"_c, &Int32x4Type },
+        std::pair{ "arbg"_c, &Int32x4Type },
+        std::pair{ "arbr"_c, &Int32x4Type },
+        std::pair{ "arg"_c, &Int32x3Type },
+        std::pair{ "arga"_c, &Int32x4Type },
+        std::pair{ "argb"_c, &Int32x4Type },
+        std::pair{ "argg"_c, &Int32x4Type },
+        std::pair{ "argr"_c, &Int32x4Type },
+        std::pair{ "arr"_c, &Int32x3Type },
+        std::pair{ "arra"_c, &Int32x4Type },
+        std::pair{ "arrb"_c, &Int32x4Type },
+        std::pair{ "arrg"_c, &Int32x4Type },
+        std::pair{ "arrr"_c, &Int32x4Type },
+        std::pair{ "b"_c, &Int32Type },
+        std::pair{ "ba"_c, &Int32x2Type },
+        std::pair{ "baa"_c, &Int32x3Type },
+        std::pair{ "baaa"_c, &Int32x4Type },
+        std::pair{ "baab"_c, &Int32x4Type },
+        std::pair{ "baag"_c, &Int32x4Type },
+        std::pair{ "baar"_c, &Int32x4Type },
+        std::pair{ "bab"_c, &Int32x3Type },
+        std::pair{ "baba"_c, &Int32x4Type },
+        std::pair{ "babb"_c, &Int32x4Type },
+        std::pair{ "babg"_c, &Int32x4Type },
+        std::pair{ "babr"_c, &Int32x4Type },
+        std::pair{ "bag"_c, &Int32x3Type },
+        std::pair{ "baga"_c, &Int32x4Type },
+        std::pair{ "bagb"_c, &Int32x4Type },
+        std::pair{ "bagg"_c, &Int32x4Type },
+        std::pair{ "bagr"_c, &Int32x4Type },
+        std::pair{ "bar"_c, &Int32x3Type },
+        std::pair{ "bara"_c, &Int32x4Type },
+        std::pair{ "barb"_c, &Int32x4Type },
+        std::pair{ "barg"_c, &Int32x4Type },
+        std::pair{ "barr"_c, &Int32x4Type },
+        std::pair{ "bb"_c, &Int32x2Type },
+        std::pair{ "bba"_c, &Int32x3Type },
+        std::pair{ "bbaa"_c, &Int32x4Type },
+        std::pair{ "bbab"_c, &Int32x4Type },
+        std::pair{ "bbag"_c, &Int32x4Type },
+        std::pair{ "bbar"_c, &Int32x4Type },
+        std::pair{ "bbb"_c, &Int32x3Type },
+        std::pair{ "bbba"_c, &Int32x4Type },
+        std::pair{ "bbbb"_c, &Int32x4Type },
+        std::pair{ "bbbg"_c, &Int32x4Type },
+        std::pair{ "bbbr"_c, &Int32x4Type },
+        std::pair{ "bbg"_c, &Int32x3Type },
+        std::pair{ "bbga"_c, &Int32x4Type },
+        std::pair{ "bbgb"_c, &Int32x4Type },
+        std::pair{ "bbgg"_c, &Int32x4Type },
+        std::pair{ "bbgr"_c, &Int32x4Type },
+        std::pair{ "bbr"_c, &Int32x3Type },
+        std::pair{ "bbra"_c, &Int32x4Type },
+        std::pair{ "bbrb"_c, &Int32x4Type },
+        std::pair{ "bbrg"_c, &Int32x4Type },
+        std::pair{ "bbrr"_c, &Int32x4Type },
+        std::pair{ "bg"_c, &Int32x2Type },
+        std::pair{ "bga"_c, &Int32x3Type },
+        std::pair{ "bgaa"_c, &Int32x4Type },
+        std::pair{ "bgab"_c, &Int32x4Type },
+        std::pair{ "bgag"_c, &Int32x4Type },
+        std::pair{ "bgar"_c, &Int32x4Type },
+        std::pair{ "bgb"_c, &Int32x3Type },
+        std::pair{ "bgba"_c, &Int32x4Type },
+        std::pair{ "bgbb"_c, &Int32x4Type },
+        std::pair{ "bgbg"_c, &Int32x4Type },
+        std::pair{ "bgbr"_c, &Int32x4Type },
+        std::pair{ "bgg"_c, &Int32x3Type },
+        std::pair{ "bgga"_c, &Int32x4Type },
+        std::pair{ "bggb"_c, &Int32x4Type },
+        std::pair{ "bggg"_c, &Int32x4Type },
+        std::pair{ "bggr"_c, &Int32x4Type },
+        std::pair{ "bgr"_c, &Int32x3Type },
+        std::pair{ "bgra"_c, &Int32x4Type },
+        std::pair{ "bgrb"_c, &Int32x4Type },
+        std::pair{ "bgrg"_c, &Int32x4Type },
+        std::pair{ "bgrr"_c, &Int32x4Type },
+        std::pair{ "br"_c, &Int32x2Type },
+        std::pair{ "bra"_c, &Int32x3Type },
+        std::pair{ "braa"_c, &Int32x4Type },
+        std::pair{ "brab"_c, &Int32x4Type },
+        std::pair{ "brag"_c, &Int32x4Type },
+        std::pair{ "brar"_c, &Int32x4Type },
+        std::pair{ "brb"_c, &Int32x3Type },
+        std::pair{ "brba"_c, &Int32x4Type },
+        std::pair{ "brbb"_c, &Int32x4Type },
+        std::pair{ "brbg"_c, &Int32x4Type },
+        std::pair{ "brbr"_c, &Int32x4Type },
+        std::pair{ "brg"_c, &Int32x3Type },
+        std::pair{ "brga"_c, &Int32x4Type },
+        std::pair{ "brgb"_c, &Int32x4Type },
+        std::pair{ "brgg"_c, &Int32x4Type },
+        std::pair{ "brgr"_c, &Int32x4Type },
+        std::pair{ "brr"_c, &Int32x3Type },
+        std::pair{ "brra"_c, &Int32x4Type },
+        std::pair{ "brrb"_c, &Int32x4Type },
+        std::pair{ "brrg"_c, &Int32x4Type },
+        std::pair{ "brrr"_c, &Int32x4Type },
+        std::pair{ "g"_c, &Int32Type },
+        std::pair{ "ga"_c, &Int32x2Type },
+        std::pair{ "gaa"_c, &Int32x3Type },
+        std::pair{ "gaaa"_c, &Int32x4Type },
+        std::pair{ "gaab"_c, &Int32x4Type },
+        std::pair{ "gaag"_c, &Int32x4Type },
+        std::pair{ "gaar"_c, &Int32x4Type },
+        std::pair{ "gab"_c, &Int32x3Type },
+        std::pair{ "gaba"_c, &Int32x4Type },
+        std::pair{ "gabb"_c, &Int32x4Type },
+        std::pair{ "gabg"_c, &Int32x4Type },
+        std::pair{ "gabr"_c, &Int32x4Type },
+        std::pair{ "gag"_c, &Int32x3Type },
+        std::pair{ "gaga"_c, &Int32x4Type },
+        std::pair{ "gagb"_c, &Int32x4Type },
+        std::pair{ "gagg"_c, &Int32x4Type },
+        std::pair{ "gagr"_c, &Int32x4Type },
+        std::pair{ "gar"_c, &Int32x3Type },
+        std::pair{ "gara"_c, &Int32x4Type },
+        std::pair{ "garb"_c, &Int32x4Type },
+        std::pair{ "garg"_c, &Int32x4Type },
+        std::pair{ "garr"_c, &Int32x4Type },
+        std::pair{ "gb"_c, &Int32x2Type },
+        std::pair{ "gba"_c, &Int32x3Type },
+        std::pair{ "gbaa"_c, &Int32x4Type },
+        std::pair{ "gbab"_c, &Int32x4Type },
+        std::pair{ "gbag"_c, &Int32x4Type },
+        std::pair{ "gbar"_c, &Int32x4Type },
+        std::pair{ "gbb"_c, &Int32x3Type },
+        std::pair{ "gbba"_c, &Int32x4Type },
+        std::pair{ "gbbb"_c, &Int32x4Type },
+        std::pair{ "gbbg"_c, &Int32x4Type },
+        std::pair{ "gbbr"_c, &Int32x4Type },
+        std::pair{ "gbg"_c, &Int32x3Type },
+        std::pair{ "gbga"_c, &Int32x4Type },
+        std::pair{ "gbgb"_c, &Int32x4Type },
+        std::pair{ "gbgg"_c, &Int32x4Type },
+        std::pair{ "gbgr"_c, &Int32x4Type },
+        std::pair{ "gbr"_c, &Int32x3Type },
+        std::pair{ "gbra"_c, &Int32x4Type },
+        std::pair{ "gbrb"_c, &Int32x4Type },
+        std::pair{ "gbrg"_c, &Int32x4Type },
+        std::pair{ "gbrr"_c, &Int32x4Type },
+        std::pair{ "gg"_c, &Int32x2Type },
+        std::pair{ "gga"_c, &Int32x3Type },
+        std::pair{ "ggaa"_c, &Int32x4Type },
+        std::pair{ "ggab"_c, &Int32x4Type },
+        std::pair{ "ggag"_c, &Int32x4Type },
+        std::pair{ "ggar"_c, &Int32x4Type },
+        std::pair{ "ggb"_c, &Int32x3Type },
+        std::pair{ "ggba"_c, &Int32x4Type },
+        std::pair{ "ggbb"_c, &Int32x4Type },
+        std::pair{ "ggbg"_c, &Int32x4Type },
+        std::pair{ "ggbr"_c, &Int32x4Type },
+        std::pair{ "ggg"_c, &Int32x3Type },
+        std::pair{ "ggga"_c, &Int32x4Type },
+        std::pair{ "gggb"_c, &Int32x4Type },
+        std::pair{ "gggg"_c, &Int32x4Type },
+        std::pair{ "gggr"_c, &Int32x4Type },
+        std::pair{ "ggr"_c, &Int32x3Type },
+        std::pair{ "ggra"_c, &Int32x4Type },
+        std::pair{ "ggrb"_c, &Int32x4Type },
+        std::pair{ "ggrg"_c, &Int32x4Type },
+        std::pair{ "ggrr"_c, &Int32x4Type },
+        std::pair{ "gr"_c, &Int32x2Type },
+        std::pair{ "gra"_c, &Int32x3Type },
+        std::pair{ "graa"_c, &Int32x4Type },
+        std::pair{ "grab"_c, &Int32x4Type },
+        std::pair{ "grag"_c, &Int32x4Type },
+        std::pair{ "grar"_c, &Int32x4Type },
+        std::pair{ "grb"_c, &Int32x3Type },
+        std::pair{ "grba"_c, &Int32x4Type },
+        std::pair{ "grbb"_c, &Int32x4Type },
+        std::pair{ "grbg"_c, &Int32x4Type },
+        std::pair{ "grbr"_c, &Int32x4Type },
+        std::pair{ "grg"_c, &Int32x3Type },
+        std::pair{ "grga"_c, &Int32x4Type },
+        std::pair{ "grgb"_c, &Int32x4Type },
+        std::pair{ "grgg"_c, &Int32x4Type },
+        std::pair{ "grgr"_c, &Int32x4Type },
+        std::pair{ "grr"_c, &Int32x3Type },
+        std::pair{ "grra"_c, &Int32x4Type },
+        std::pair{ "grrb"_c, &Int32x4Type },
+        std::pair{ "grrg"_c, &Int32x4Type },
+        std::pair{ "grrr"_c, &Int32x4Type },
+        std::pair{ "operator!=(i32x4)"_c, &Int32x4_operator_neq_Int32x4 },
+        std::pair{ "operator%(i32x4)"_c, &Int32x4_operator_mod_Int32x4 },
+        std::pair{ "operator&(i32x4)"_c, &Int32x4_operator_and_Int32x4 },
+        std::pair{ "operator&=(i32x4)"_c, &Int32x4_operator_andasg_Int32x4 },
+        std::pair{ "operator*(f16)"_c, &Int32x4_operator_scale_Float16 },
+        std::pair{ "operator*(f32)"_c, &Int32x4_operator_scale_Float32 },
+        std::pair{ "operator*(i16)"_c, &Int32x4_operator_scale_Int16 },
+        std::pair{ "operator*(i32)"_c, &Int32x4_operator_scale_Int32 },
+        std::pair{ "operator*(i32x4)"_c, &Int32x4_operator_mul_Int32x4 },
+        std::pair{ "operator*(u16)"_c, &Int32x4_operator_scale_UInt16 },
+        std::pair{ "operator*(u32)"_c, &Int32x4_operator_scale_UInt32 },
+        std::pair{ "operator*=(i32x4)"_c, &Int32x4_operator_mulasg_Int32x4 },
+        std::pair{ "operator+(i32x4)"_c, &Int32x4_operator_add_Int32x4 },
+        std::pair{ "operator+=(i32x4)"_c, &Int32x4_operator_addasg_Int32x4 },
+        std::pair{ "operator-(i32x4)"_c, &Int32x4_operator_sub_Int32x4 },
+        std::pair{ "operator-=(i32x4)"_c, &Int32x4_operator_subasg_Int32x4 },
+        std::pair{ "operator/(i32x4)"_c, &Int32x4_operator_div_Int32x4 },
+        std::pair{ "operator/=(i32x4)"_c, &Int32x4_operator_divasg_Int32x4 },
+        std::pair{ "operator<(i32x4)"_c, &Int32x4_operator_lt_Int32x4 },
+        std::pair{ "operator<<(i32x4)"_c, &Int32x4_operator_lsh_Int32x4 },
+        std::pair{ "operator<<=(i32x4)"_c, &Int32x4_operator_lshasg_Int32x4 },
+        std::pair{ "operator<=(i32x4)"_c, &Int32x4_operator_lte_Int32x4 },
+        std::pair{ "operator==(i32x4)"_c, &Int32x4_operator_eq_Int32x4 },
+        std::pair{ "operator>(i32x4)"_c, &Int32x4_operator_gt_Int32x4 },
+        std::pair{ "operator>=(i32x4)"_c, &Int32x4_operator_gte_Int32x4 },
+        std::pair{ "operator>>(i32x4)"_c, &Int32x4_operator_rsh_Int32x4 },
+        std::pair{ "operator>>=(i32x4)"_c, &Int32x4_operator_rhsasg_Int32x4 },
+        std::pair{ "operator[](i16)"_c, &Int32x4_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &Int32x4_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &Int32x4_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &Int32x4_operator_index_UInt32 },
+        std::pair{ "operator^(i32x4)"_c, &Int32x4_operator_xor_Int32x4 },
+        std::pair{ "operator^=(i32x4)"_c, &Int32x4_operator_xorasg_Int32x4 },
+        std::pair{ "operator|(i32x4)"_c, &Int32x4_operator_or_Int32x4 },
+        std::pair{ "operator|=(i32x4)"_c, &Int32x4_operator_orasg_Int32x4 },
+        std::pair{ "r"_c, &Int32Type },
+        std::pair{ "ra"_c, &Int32x2Type },
+        std::pair{ "raa"_c, &Int32x3Type },
+        std::pair{ "raaa"_c, &Int32x4Type },
+        std::pair{ "raab"_c, &Int32x4Type },
+        std::pair{ "raag"_c, &Int32x4Type },
+        std::pair{ "raar"_c, &Int32x4Type },
+        std::pair{ "rab"_c, &Int32x3Type },
+        std::pair{ "raba"_c, &Int32x4Type },
+        std::pair{ "rabb"_c, &Int32x4Type },
+        std::pair{ "rabg"_c, &Int32x4Type },
+        std::pair{ "rabr"_c, &Int32x4Type },
+        std::pair{ "rag"_c, &Int32x3Type },
+        std::pair{ "raga"_c, &Int32x4Type },
+        std::pair{ "ragb"_c, &Int32x4Type },
+        std::pair{ "ragg"_c, &Int32x4Type },
+        std::pair{ "ragr"_c, &Int32x4Type },
+        std::pair{ "rar"_c, &Int32x3Type },
+        std::pair{ "rara"_c, &Int32x4Type },
+        std::pair{ "rarb"_c, &Int32x4Type },
+        std::pair{ "rarg"_c, &Int32x4Type },
+        std::pair{ "rarr"_c, &Int32x4Type },
+        std::pair{ "rb"_c, &Int32x2Type },
+        std::pair{ "rba"_c, &Int32x3Type },
+        std::pair{ "rbaa"_c, &Int32x4Type },
+        std::pair{ "rbab"_c, &Int32x4Type },
+        std::pair{ "rbag"_c, &Int32x4Type },
+        std::pair{ "rbar"_c, &Int32x4Type },
+        std::pair{ "rbb"_c, &Int32x3Type },
+        std::pair{ "rbba"_c, &Int32x4Type },
+        std::pair{ "rbbb"_c, &Int32x4Type },
+        std::pair{ "rbbg"_c, &Int32x4Type },
+        std::pair{ "rbbr"_c, &Int32x4Type },
+        std::pair{ "rbg"_c, &Int32x3Type },
+        std::pair{ "rbga"_c, &Int32x4Type },
+        std::pair{ "rbgb"_c, &Int32x4Type },
+        std::pair{ "rbgg"_c, &Int32x4Type },
+        std::pair{ "rbgr"_c, &Int32x4Type },
+        std::pair{ "rbr"_c, &Int32x3Type },
+        std::pair{ "rbra"_c, &Int32x4Type },
+        std::pair{ "rbrb"_c, &Int32x4Type },
+        std::pair{ "rbrg"_c, &Int32x4Type },
+        std::pair{ "rbrr"_c, &Int32x4Type },
+        std::pair{ "rg"_c, &Int32x2Type },
+        std::pair{ "rga"_c, &Int32x3Type },
+        std::pair{ "rgaa"_c, &Int32x4Type },
+        std::pair{ "rgab"_c, &Int32x4Type },
+        std::pair{ "rgag"_c, &Int32x4Type },
+        std::pair{ "rgar"_c, &Int32x4Type },
+        std::pair{ "rgb"_c, &Int32x3Type },
+        std::pair{ "rgba"_c, &Int32x4Type },
+        std::pair{ "rgbb"_c, &Int32x4Type },
+        std::pair{ "rgbg"_c, &Int32x4Type },
+        std::pair{ "rgbr"_c, &Int32x4Type },
+        std::pair{ "rgg"_c, &Int32x3Type },
+        std::pair{ "rgga"_c, &Int32x4Type },
+        std::pair{ "rggb"_c, &Int32x4Type },
+        std::pair{ "rggg"_c, &Int32x4Type },
+        std::pair{ "rggr"_c, &Int32x4Type },
+        std::pair{ "rgr"_c, &Int32x3Type },
+        std::pair{ "rgra"_c, &Int32x4Type },
+        std::pair{ "rgrb"_c, &Int32x4Type },
+        std::pair{ "rgrg"_c, &Int32x4Type },
+        std::pair{ "rgrr"_c, &Int32x4Type },
+        std::pair{ "rr"_c, &Int32x2Type },
+        std::pair{ "rra"_c, &Int32x3Type },
+        std::pair{ "rraa"_c, &Int32x4Type },
+        std::pair{ "rrab"_c, &Int32x4Type },
+        std::pair{ "rrag"_c, &Int32x4Type },
+        std::pair{ "rrar"_c, &Int32x4Type },
+        std::pair{ "rrb"_c, &Int32x3Type },
+        std::pair{ "rrba"_c, &Int32x4Type },
+        std::pair{ "rrbb"_c, &Int32x4Type },
+        std::pair{ "rrbg"_c, &Int32x4Type },
+        std::pair{ "rrbr"_c, &Int32x4Type },
+        std::pair{ "rrg"_c, &Int32x3Type },
+        std::pair{ "rrga"_c, &Int32x4Type },
+        std::pair{ "rrgb"_c, &Int32x4Type },
+        std::pair{ "rrgg"_c, &Int32x4Type },
+        std::pair{ "rrgr"_c, &Int32x4Type },
+        std::pair{ "rrr"_c, &Int32x3Type },
+        std::pair{ "rrra"_c, &Int32x4Type },
+        std::pair{ "rrrb"_c, &Int32x4Type },
+        std::pair{ "rrrg"_c, &Int32x4Type },
+        std::pair{ "rrrr"_c, &Int32x4Type },
+        std::pair{ "w"_c, &Int32Type },
+        std::pair{ "ww"_c, &Int32x2Type },
+        std::pair{ "www"_c, &Int32x3Type },
+        std::pair{ "wwww"_c, &Int32x4Type },
+        std::pair{ "wwwx"_c, &Int32x4Type },
+        std::pair{ "wwwy"_c, &Int32x4Type },
+        std::pair{ "wwwz"_c, &Int32x4Type },
+        std::pair{ "wwx"_c, &Int32x3Type },
+        std::pair{ "wwxw"_c, &Int32x4Type },
+        std::pair{ "wwxx"_c, &Int32x4Type },
+        std::pair{ "wwxy"_c, &Int32x4Type },
+        std::pair{ "wwxz"_c, &Int32x4Type },
+        std::pair{ "wwy"_c, &Int32x3Type },
+        std::pair{ "wwyw"_c, &Int32x4Type },
+        std::pair{ "wwyx"_c, &Int32x4Type },
+        std::pair{ "wwyy"_c, &Int32x4Type },
+        std::pair{ "wwyz"_c, &Int32x4Type },
+        std::pair{ "wwz"_c, &Int32x3Type },
+        std::pair{ "wwzw"_c, &Int32x4Type },
+        std::pair{ "wwzx"_c, &Int32x4Type },
+        std::pair{ "wwzy"_c, &Int32x4Type },
+        std::pair{ "wwzz"_c, &Int32x4Type },
+        std::pair{ "wx"_c, &Int32x2Type },
+        std::pair{ "wxw"_c, &Int32x3Type },
+        std::pair{ "wxww"_c, &Int32x4Type },
+        std::pair{ "wxwx"_c, &Int32x4Type },
+        std::pair{ "wxwy"_c, &Int32x4Type },
+        std::pair{ "wxwz"_c, &Int32x4Type },
+        std::pair{ "wxx"_c, &Int32x3Type },
+        std::pair{ "wxxw"_c, &Int32x4Type },
+        std::pair{ "wxxx"_c, &Int32x4Type },
+        std::pair{ "wxxy"_c, &Int32x4Type },
+        std::pair{ "wxxz"_c, &Int32x4Type },
+        std::pair{ "wxy"_c, &Int32x3Type },
+        std::pair{ "wxyw"_c, &Int32x4Type },
+        std::pair{ "wxyx"_c, &Int32x4Type },
+        std::pair{ "wxyy"_c, &Int32x4Type },
+        std::pair{ "wxyz"_c, &Int32x4Type },
+        std::pair{ "wxz"_c, &Int32x3Type },
+        std::pair{ "wxzw"_c, &Int32x4Type },
+        std::pair{ "wxzx"_c, &Int32x4Type },
+        std::pair{ "wxzy"_c, &Int32x4Type },
+        std::pair{ "wxzz"_c, &Int32x4Type },
+        std::pair{ "wy"_c, &Int32x2Type },
+        std::pair{ "wyw"_c, &Int32x3Type },
+        std::pair{ "wyww"_c, &Int32x4Type },
+        std::pair{ "wywx"_c, &Int32x4Type },
+        std::pair{ "wywy"_c, &Int32x4Type },
+        std::pair{ "wywz"_c, &Int32x4Type },
+        std::pair{ "wyx"_c, &Int32x3Type },
+        std::pair{ "wyxw"_c, &Int32x4Type },
+        std::pair{ "wyxx"_c, &Int32x4Type },
+        std::pair{ "wyxy"_c, &Int32x4Type },
+        std::pair{ "wyxz"_c, &Int32x4Type },
+        std::pair{ "wyy"_c, &Int32x3Type },
+        std::pair{ "wyyw"_c, &Int32x4Type },
+        std::pair{ "wyyx"_c, &Int32x4Type },
+        std::pair{ "wyyy"_c, &Int32x4Type },
+        std::pair{ "wyyz"_c, &Int32x4Type },
+        std::pair{ "wyz"_c, &Int32x3Type },
+        std::pair{ "wyzw"_c, &Int32x4Type },
+        std::pair{ "wyzx"_c, &Int32x4Type },
+        std::pair{ "wyzy"_c, &Int32x4Type },
+        std::pair{ "wyzz"_c, &Int32x4Type },
+        std::pair{ "wz"_c, &Int32x2Type },
+        std::pair{ "wzw"_c, &Int32x3Type },
+        std::pair{ "wzww"_c, &Int32x4Type },
+        std::pair{ "wzwx"_c, &Int32x4Type },
+        std::pair{ "wzwy"_c, &Int32x4Type },
+        std::pair{ "wzwz"_c, &Int32x4Type },
+        std::pair{ "wzx"_c, &Int32x3Type },
+        std::pair{ "wzxw"_c, &Int32x4Type },
+        std::pair{ "wzxx"_c, &Int32x4Type },
+        std::pair{ "wzxy"_c, &Int32x4Type },
+        std::pair{ "wzxz"_c, &Int32x4Type },
+        std::pair{ "wzy"_c, &Int32x3Type },
+        std::pair{ "wzyw"_c, &Int32x4Type },
+        std::pair{ "wzyx"_c, &Int32x4Type },
+        std::pair{ "wzyy"_c, &Int32x4Type },
+        std::pair{ "wzyz"_c, &Int32x4Type },
+        std::pair{ "wzz"_c, &Int32x3Type },
+        std::pair{ "wzzw"_c, &Int32x4Type },
+        std::pair{ "wzzx"_c, &Int32x4Type },
+        std::pair{ "wzzy"_c, &Int32x4Type },
+        std::pair{ "wzzz"_c, &Int32x4Type },
+        std::pair{ "x"_c, &Int32Type },
+        std::pair{ "xw"_c, &Int32x2Type },
+        std::pair{ "xww"_c, &Int32x3Type },
+        std::pair{ "xwww"_c, &Int32x4Type },
+        std::pair{ "xwwx"_c, &Int32x4Type },
+        std::pair{ "xwwy"_c, &Int32x4Type },
+        std::pair{ "xwwz"_c, &Int32x4Type },
+        std::pair{ "xwx"_c, &Int32x3Type },
+        std::pair{ "xwxw"_c, &Int32x4Type },
+        std::pair{ "xwxx"_c, &Int32x4Type },
+        std::pair{ "xwxy"_c, &Int32x4Type },
+        std::pair{ "xwxz"_c, &Int32x4Type },
+        std::pair{ "xwy"_c, &Int32x3Type },
+        std::pair{ "xwyw"_c, &Int32x4Type },
+        std::pair{ "xwyx"_c, &Int32x4Type },
+        std::pair{ "xwyy"_c, &Int32x4Type },
+        std::pair{ "xwyz"_c, &Int32x4Type },
+        std::pair{ "xwz"_c, &Int32x3Type },
+        std::pair{ "xwzw"_c, &Int32x4Type },
+        std::pair{ "xwzx"_c, &Int32x4Type },
+        std::pair{ "xwzy"_c, &Int32x4Type },
+        std::pair{ "xwzz"_c, &Int32x4Type },
+        std::pair{ "xx"_c, &Int32x2Type },
+        std::pair{ "xxw"_c, &Int32x3Type },
+        std::pair{ "xxww"_c, &Int32x4Type },
+        std::pair{ "xxwx"_c, &Int32x4Type },
+        std::pair{ "xxwy"_c, &Int32x4Type },
+        std::pair{ "xxwz"_c, &Int32x4Type },
+        std::pair{ "xxx"_c, &Int32x3Type },
+        std::pair{ "xxxw"_c, &Int32x4Type },
+        std::pair{ "xxxx"_c, &Int32x4Type },
+        std::pair{ "xxxy"_c, &Int32x4Type },
+        std::pair{ "xxxz"_c, &Int32x4Type },
+        std::pair{ "xxy"_c, &Int32x3Type },
+        std::pair{ "xxyw"_c, &Int32x4Type },
+        std::pair{ "xxyx"_c, &Int32x4Type },
+        std::pair{ "xxyy"_c, &Int32x4Type },
+        std::pair{ "xxyz"_c, &Int32x4Type },
+        std::pair{ "xxz"_c, &Int32x3Type },
+        std::pair{ "xxzw"_c, &Int32x4Type },
+        std::pair{ "xxzx"_c, &Int32x4Type },
+        std::pair{ "xxzy"_c, &Int32x4Type },
+        std::pair{ "xxzz"_c, &Int32x4Type },
+        std::pair{ "xy"_c, &Int32x2Type },
+        std::pair{ "xyw"_c, &Int32x3Type },
+        std::pair{ "xyww"_c, &Int32x4Type },
+        std::pair{ "xywx"_c, &Int32x4Type },
+        std::pair{ "xywy"_c, &Int32x4Type },
+        std::pair{ "xywz"_c, &Int32x4Type },
+        std::pair{ "xyx"_c, &Int32x3Type },
+        std::pair{ "xyxw"_c, &Int32x4Type },
+        std::pair{ "xyxx"_c, &Int32x4Type },
+        std::pair{ "xyxy"_c, &Int32x4Type },
+        std::pair{ "xyxz"_c, &Int32x4Type },
+        std::pair{ "xyy"_c, &Int32x3Type },
+        std::pair{ "xyyw"_c, &Int32x4Type },
+        std::pair{ "xyyx"_c, &Int32x4Type },
+        std::pair{ "xyyy"_c, &Int32x4Type },
+        std::pair{ "xyyz"_c, &Int32x4Type },
+        std::pair{ "xyz"_c, &Int32x3Type },
+        std::pair{ "xyzw"_c, &Int32x4Type },
+        std::pair{ "xyzx"_c, &Int32x4Type },
+        std::pair{ "xyzy"_c, &Int32x4Type },
+        std::pair{ "xyzz"_c, &Int32x4Type },
+        std::pair{ "xz"_c, &Int32x2Type },
+        std::pair{ "xzw"_c, &Int32x3Type },
+        std::pair{ "xzww"_c, &Int32x4Type },
+        std::pair{ "xzwx"_c, &Int32x4Type },
+        std::pair{ "xzwy"_c, &Int32x4Type },
+        std::pair{ "xzwz"_c, &Int32x4Type },
+        std::pair{ "xzx"_c, &Int32x3Type },
+        std::pair{ "xzxw"_c, &Int32x4Type },
+        std::pair{ "xzxx"_c, &Int32x4Type },
+        std::pair{ "xzxy"_c, &Int32x4Type },
+        std::pair{ "xzxz"_c, &Int32x4Type },
+        std::pair{ "xzy"_c, &Int32x3Type },
+        std::pair{ "xzyw"_c, &Int32x4Type },
+        std::pair{ "xzyx"_c, &Int32x4Type },
+        std::pair{ "xzyy"_c, &Int32x4Type },
+        std::pair{ "xzyz"_c, &Int32x4Type },
+        std::pair{ "xzz"_c, &Int32x3Type },
+        std::pair{ "xzzw"_c, &Int32x4Type },
+        std::pair{ "xzzx"_c, &Int32x4Type },
+        std::pair{ "xzzy"_c, &Int32x4Type },
+        std::pair{ "xzzz"_c, &Int32x4Type },
+        std::pair{ "y"_c, &Int32Type },
+        std::pair{ "yw"_c, &Int32x2Type },
+        std::pair{ "yww"_c, &Int32x3Type },
+        std::pair{ "ywww"_c, &Int32x4Type },
+        std::pair{ "ywwx"_c, &Int32x4Type },
+        std::pair{ "ywwy"_c, &Int32x4Type },
+        std::pair{ "ywwz"_c, &Int32x4Type },
+        std::pair{ "ywx"_c, &Int32x3Type },
+        std::pair{ "ywxw"_c, &Int32x4Type },
+        std::pair{ "ywxx"_c, &Int32x4Type },
+        std::pair{ "ywxy"_c, &Int32x4Type },
+        std::pair{ "ywxz"_c, &Int32x4Type },
+        std::pair{ "ywy"_c, &Int32x3Type },
+        std::pair{ "ywyw"_c, &Int32x4Type },
+        std::pair{ "ywyx"_c, &Int32x4Type },
+        std::pair{ "ywyy"_c, &Int32x4Type },
+        std::pair{ "ywyz"_c, &Int32x4Type },
+        std::pair{ "ywz"_c, &Int32x3Type },
+        std::pair{ "ywzw"_c, &Int32x4Type },
+        std::pair{ "ywzx"_c, &Int32x4Type },
+        std::pair{ "ywzy"_c, &Int32x4Type },
+        std::pair{ "ywzz"_c, &Int32x4Type },
+        std::pair{ "yx"_c, &Int32x2Type },
+        std::pair{ "yxw"_c, &Int32x3Type },
+        std::pair{ "yxww"_c, &Int32x4Type },
+        std::pair{ "yxwx"_c, &Int32x4Type },
+        std::pair{ "yxwy"_c, &Int32x4Type },
+        std::pair{ "yxwz"_c, &Int32x4Type },
+        std::pair{ "yxx"_c, &Int32x3Type },
+        std::pair{ "yxxw"_c, &Int32x4Type },
+        std::pair{ "yxxx"_c, &Int32x4Type },
+        std::pair{ "yxxy"_c, &Int32x4Type },
+        std::pair{ "yxxz"_c, &Int32x4Type },
+        std::pair{ "yxy"_c, &Int32x3Type },
+        std::pair{ "yxyw"_c, &Int32x4Type },
+        std::pair{ "yxyx"_c, &Int32x4Type },
+        std::pair{ "yxyy"_c, &Int32x4Type },
+        std::pair{ "yxyz"_c, &Int32x4Type },
+        std::pair{ "yxz"_c, &Int32x3Type },
+        std::pair{ "yxzw"_c, &Int32x4Type },
+        std::pair{ "yxzx"_c, &Int32x4Type },
+        std::pair{ "yxzy"_c, &Int32x4Type },
+        std::pair{ "yxzz"_c, &Int32x4Type },
+        std::pair{ "yy"_c, &Int32x2Type },
+        std::pair{ "yyw"_c, &Int32x3Type },
+        std::pair{ "yyww"_c, &Int32x4Type },
+        std::pair{ "yywx"_c, &Int32x4Type },
+        std::pair{ "yywy"_c, &Int32x4Type },
+        std::pair{ "yywz"_c, &Int32x4Type },
+        std::pair{ "yyx"_c, &Int32x3Type },
+        std::pair{ "yyxw"_c, &Int32x4Type },
+        std::pair{ "yyxx"_c, &Int32x4Type },
+        std::pair{ "yyxy"_c, &Int32x4Type },
+        std::pair{ "yyxz"_c, &Int32x4Type },
+        std::pair{ "yyy"_c, &Int32x3Type },
+        std::pair{ "yyyw"_c, &Int32x4Type },
+        std::pair{ "yyyx"_c, &Int32x4Type },
+        std::pair{ "yyyy"_c, &Int32x4Type },
+        std::pair{ "yyyz"_c, &Int32x4Type },
+        std::pair{ "yyz"_c, &Int32x3Type },
+        std::pair{ "yyzw"_c, &Int32x4Type },
+        std::pair{ "yyzx"_c, &Int32x4Type },
+        std::pair{ "yyzy"_c, &Int32x4Type },
+        std::pair{ "yyzz"_c, &Int32x4Type },
+        std::pair{ "yz"_c, &Int32x2Type },
+        std::pair{ "yzw"_c, &Int32x3Type },
+        std::pair{ "yzww"_c, &Int32x4Type },
+        std::pair{ "yzwx"_c, &Int32x4Type },
+        std::pair{ "yzwy"_c, &Int32x4Type },
+        std::pair{ "yzwz"_c, &Int32x4Type },
+        std::pair{ "yzx"_c, &Int32x3Type },
+        std::pair{ "yzxw"_c, &Int32x4Type },
+        std::pair{ "yzxx"_c, &Int32x4Type },
+        std::pair{ "yzxy"_c, &Int32x4Type },
+        std::pair{ "yzxz"_c, &Int32x4Type },
+        std::pair{ "yzy"_c, &Int32x3Type },
+        std::pair{ "yzyw"_c, &Int32x4Type },
+        std::pair{ "yzyx"_c, &Int32x4Type },
+        std::pair{ "yzyy"_c, &Int32x4Type },
+        std::pair{ "yzyz"_c, &Int32x4Type },
+        std::pair{ "yzz"_c, &Int32x3Type },
+        std::pair{ "yzzw"_c, &Int32x4Type },
+        std::pair{ "yzzx"_c, &Int32x4Type },
+        std::pair{ "yzzy"_c, &Int32x4Type },
+        std::pair{ "yzzz"_c, &Int32x4Type },
+        std::pair{ "z"_c, &Int32Type },
+        std::pair{ "zw"_c, &Int32x2Type },
+        std::pair{ "zww"_c, &Int32x3Type },
+        std::pair{ "zwww"_c, &Int32x4Type },
+        std::pair{ "zwwx"_c, &Int32x4Type },
+        std::pair{ "zwwy"_c, &Int32x4Type },
+        std::pair{ "zwwz"_c, &Int32x4Type },
+        std::pair{ "zwx"_c, &Int32x3Type },
+        std::pair{ "zwxw"_c, &Int32x4Type },
+        std::pair{ "zwxx"_c, &Int32x4Type },
+        std::pair{ "zwxy"_c, &Int32x4Type },
+        std::pair{ "zwxz"_c, &Int32x4Type },
+        std::pair{ "zwy"_c, &Int32x3Type },
+        std::pair{ "zwyw"_c, &Int32x4Type },
+        std::pair{ "zwyx"_c, &Int32x4Type },
+        std::pair{ "zwyy"_c, &Int32x4Type },
+        std::pair{ "zwyz"_c, &Int32x4Type },
+        std::pair{ "zwz"_c, &Int32x3Type },
+        std::pair{ "zwzw"_c, &Int32x4Type },
+        std::pair{ "zwzx"_c, &Int32x4Type },
+        std::pair{ "zwzy"_c, &Int32x4Type },
+        std::pair{ "zwzz"_c, &Int32x4Type },
+        std::pair{ "zx"_c, &Int32x2Type },
+        std::pair{ "zxw"_c, &Int32x3Type },
+        std::pair{ "zxww"_c, &Int32x4Type },
+        std::pair{ "zxwx"_c, &Int32x4Type },
+        std::pair{ "zxwy"_c, &Int32x4Type },
+        std::pair{ "zxwz"_c, &Int32x4Type },
+        std::pair{ "zxx"_c, &Int32x3Type },
+        std::pair{ "zxxw"_c, &Int32x4Type },
+        std::pair{ "zxxx"_c, &Int32x4Type },
+        std::pair{ "zxxy"_c, &Int32x4Type },
+        std::pair{ "zxxz"_c, &Int32x4Type },
+        std::pair{ "zxy"_c, &Int32x3Type },
+        std::pair{ "zxyw"_c, &Int32x4Type },
+        std::pair{ "zxyx"_c, &Int32x4Type },
+        std::pair{ "zxyy"_c, &Int32x4Type },
+        std::pair{ "zxyz"_c, &Int32x4Type },
+        std::pair{ "zxz"_c, &Int32x3Type },
+        std::pair{ "zxzw"_c, &Int32x4Type },
+        std::pair{ "zxzx"_c, &Int32x4Type },
+        std::pair{ "zxzy"_c, &Int32x4Type },
+        std::pair{ "zxzz"_c, &Int32x4Type },
+        std::pair{ "zy"_c, &Int32x2Type },
+        std::pair{ "zyw"_c, &Int32x3Type },
+        std::pair{ "zyww"_c, &Int32x4Type },
+        std::pair{ "zywx"_c, &Int32x4Type },
+        std::pair{ "zywy"_c, &Int32x4Type },
+        std::pair{ "zywz"_c, &Int32x4Type },
+        std::pair{ "zyx"_c, &Int32x3Type },
+        std::pair{ "zyxw"_c, &Int32x4Type },
+        std::pair{ "zyxx"_c, &Int32x4Type },
+        std::pair{ "zyxy"_c, &Int32x4Type },
+        std::pair{ "zyxz"_c, &Int32x4Type },
+        std::pair{ "zyy"_c, &Int32x3Type },
+        std::pair{ "zyyw"_c, &Int32x4Type },
+        std::pair{ "zyyx"_c, &Int32x4Type },
+        std::pair{ "zyyy"_c, &Int32x4Type },
+        std::pair{ "zyyz"_c, &Int32x4Type },
+        std::pair{ "zyz"_c, &Int32x3Type },
+        std::pair{ "zyzw"_c, &Int32x4Type },
+        std::pair{ "zyzx"_c, &Int32x4Type },
+        std::pair{ "zyzy"_c, &Int32x4Type },
+        std::pair{ "zyzz"_c, &Int32x4Type },
+        std::pair{ "zz"_c, &Int32x2Type },
+        std::pair{ "zzw"_c, &Int32x3Type },
+        std::pair{ "zzww"_c, &Int32x4Type },
+        std::pair{ "zzwx"_c, &Int32x4Type },
+        std::pair{ "zzwy"_c, &Int32x4Type },
+        std::pair{ "zzwz"_c, &Int32x4Type },
+        std::pair{ "zzx"_c, &Int32x3Type },
+        std::pair{ "zzxw"_c, &Int32x4Type },
+        std::pair{ "zzxx"_c, &Int32x4Type },
+        std::pair{ "zzxy"_c, &Int32x4Type },
+        std::pair{ "zzxz"_c, &Int32x4Type },
+        std::pair{ "zzy"_c, &Int32x3Type },
+        std::pair{ "zzyw"_c, &Int32x4Type },
+        std::pair{ "zzyx"_c, &Int32x4Type },
+        std::pair{ "zzyy"_c, &Int32x4Type },
+        std::pair{ "zzyz"_c, &Int32x4Type },
+        std::pair{ "zzz"_c, &Int32x3Type },
+        std::pair{ "zzzw"_c, &Int32x4Type },
+        std::pair{ "zzzx"_c, &Int32x4Type },
+        std::pair{ "zzzy"_c, &Int32x4Type },
+        std::pair{ "zzzz"_c, &Int32x4Type }
     };
 }
 Int32x4 Int32x4Type;
@@ -15002,17 +19196,23 @@ Variable Bool8x4_ctor3_arg2_Bool8x2;
 Function Bool8x4_ctor3;
 inline constexpr std::array Bool8x4_ctor3_args = { &Bool8x4_ctor3_arg0_Bool8, &Bool8x4_ctor3_arg1_Bool8, &Bool8x4_ctor3_arg2_Bool8x2 };
 
-/// b8x4 with Bool8x3, Bool8
-Variable Bool8x4_ctor4_arg0_Bool8x3;
-Variable Bool8x4_ctor4_arg1_Bool8;
+/// b8x4 with Bool8x2, Bool8x2
+Variable Bool8x4_ctor4_arg0_Bool8x2;
+Variable Bool8x4_ctor4_arg1_Bool8x2;
 Function Bool8x4_ctor4;
-inline constexpr std::array Bool8x4_ctor4_args = { &Bool8x4_ctor4_arg0_Bool8x3, &Bool8x4_ctor4_arg1_Bool8 };
+inline constexpr std::array Bool8x4_ctor4_args = { &Bool8x4_ctor4_arg0_Bool8x2, &Bool8x4_ctor4_arg1_Bool8x2 };
+
+/// b8x4 with Bool8x3, Bool8
+Variable Bool8x4_ctor5_arg0_Bool8x3;
+Variable Bool8x4_ctor5_arg1_Bool8;
+Function Bool8x4_ctor5;
+inline constexpr std::array Bool8x4_ctor5_args = { &Bool8x4_ctor5_arg0_Bool8x3, &Bool8x4_ctor5_arg1_Bool8 };
 
 /// b8x4 with Bool8, Bool8x3
-Variable Bool8x4_ctor5_arg0_Bool8;
-Variable Bool8x4_ctor5_arg1_Bool8x3;
-Function Bool8x4_ctor5;
-inline constexpr std::array Bool8x4_ctor5_args = { &Bool8x4_ctor5_arg0_Bool8, &Bool8x4_ctor5_arg1_Bool8x3 };
+Variable Bool8x4_ctor6_arg0_Bool8;
+Variable Bool8x4_ctor6_arg1_Bool8x3;
+Function Bool8x4_ctor6;
+inline constexpr std::array Bool8x4_ctor6_args = { &Bool8x4_ctor6_arg0_Bool8, &Bool8x4_ctor6_arg1_Bool8x3 };
 
 /// operator[] with Int32
 Variable Bool8x4_operator_index_Int32_arg0;
@@ -15207,29 +19407,41 @@ Bool8x4::Bool8x4()
     Symbol::Resolved(&Bool8x4_ctor3_arg2_Bool8x2)->typeSymbol = &Bool8x2Type;
     Symbol::Resolved(&Bool8x4_ctor3)->returnTypeSymbol = &Bool8x4Type;
 
-    /// b8x4 with Bool8x3, Bool8
-    Bool8x4_ctor4_arg0_Bool8x3.name = "_arg0"_c;
-    Bool8x4_ctor4_arg0_Bool8x3.type = Type::FullType{ Bool8x3Type.name };
-    Bool8x4_ctor4_arg1_Bool8.name = "_arg1"_c;
-    Bool8x4_ctor4_arg1_Bool8.type = Type::FullType{ Bool8Type.name };
+    /// b8x4 with Bool8x2, Bool8x2
+    Bool8x4_ctor4_arg0_Bool8x2.name = "_arg0"_c;
+    Bool8x4_ctor4_arg0_Bool8x2.type = Type::FullType{ Bool8x2Type.name };
+    Bool8x4_ctor4_arg1_Bool8x2.name = "_arg1"_c;
+    Bool8x4_ctor4_arg1_Bool8x2.type = Type::FullType{ Bool8x2Type.name };
     Bool8x4_ctor4.name = "b8x4"_c;
     Bool8x4_ctor4.returnType = Type::FullType { Bool8x4Type.name };
     Bool8x4_ctor4.parameters = Bool8x4_ctor4_args;
-    Symbol::Resolved(&Bool8x4_ctor4_arg0_Bool8x3)->typeSymbol = &Bool8x3Type;
-    Symbol::Resolved(&Bool8x4_ctor4_arg1_Bool8)->typeSymbol = &Bool8Type;
+    Symbol::Resolved(&Bool8x4_ctor4_arg0_Bool8x2)->typeSymbol = &Bool8x2Type;
+    Symbol::Resolved(&Bool8x4_ctor4_arg1_Bool8x2)->typeSymbol = &Bool8x2Type;
     Symbol::Resolved(&Bool8x4_ctor4)->returnTypeSymbol = &Bool8x4Type;
 
-    /// b8x4 with Bool8, Bool8x3
-    Bool8x4_ctor5_arg0_Bool8.name = "_arg0"_c;
-    Bool8x4_ctor5_arg0_Bool8.type = Type::FullType{ Bool8Type.name };
-    Bool8x4_ctor5_arg1_Bool8x3.name = "_arg1"_c;
-    Bool8x4_ctor5_arg1_Bool8x3.type = Type::FullType{ Bool8x3Type.name };
+    /// b8x4 with Bool8x3, Bool8
+    Bool8x4_ctor5_arg0_Bool8x3.name = "_arg0"_c;
+    Bool8x4_ctor5_arg0_Bool8x3.type = Type::FullType{ Bool8x3Type.name };
+    Bool8x4_ctor5_arg1_Bool8.name = "_arg1"_c;
+    Bool8x4_ctor5_arg1_Bool8.type = Type::FullType{ Bool8Type.name };
     Bool8x4_ctor5.name = "b8x4"_c;
     Bool8x4_ctor5.returnType = Type::FullType { Bool8x4Type.name };
     Bool8x4_ctor5.parameters = Bool8x4_ctor5_args;
-    Symbol::Resolved(&Bool8x4_ctor5_arg0_Bool8)->typeSymbol = &Bool8Type;
-    Symbol::Resolved(&Bool8x4_ctor5_arg1_Bool8x3)->typeSymbol = &Bool8x3Type;
+    Symbol::Resolved(&Bool8x4_ctor5_arg0_Bool8x3)->typeSymbol = &Bool8x3Type;
+    Symbol::Resolved(&Bool8x4_ctor5_arg1_Bool8)->typeSymbol = &Bool8Type;
     Symbol::Resolved(&Bool8x4_ctor5)->returnTypeSymbol = &Bool8x4Type;
+
+    /// b8x4 with Bool8, Bool8x3
+    Bool8x4_ctor6_arg0_Bool8.name = "_arg0"_c;
+    Bool8x4_ctor6_arg0_Bool8.type = Type::FullType{ Bool8Type.name };
+    Bool8x4_ctor6_arg1_Bool8x3.name = "_arg1"_c;
+    Bool8x4_ctor6_arg1_Bool8x3.type = Type::FullType{ Bool8x3Type.name };
+    Bool8x4_ctor6.name = "b8x4"_c;
+    Bool8x4_ctor6.returnType = Type::FullType { Bool8x4Type.name };
+    Bool8x4_ctor6.parameters = Bool8x4_ctor6_args;
+    Symbol::Resolved(&Bool8x4_ctor6_arg0_Bool8)->typeSymbol = &Bool8Type;
+    Symbol::Resolved(&Bool8x4_ctor6_arg1_Bool8x3)->typeSymbol = &Bool8x3Type;
+    Symbol::Resolved(&Bool8x4_ctor6)->returnTypeSymbol = &Bool8x4Type;
 
     /// operator[] with Int32
     Bool8x4_operator_index_Int32_arg0.name = "_arg0"_c;
@@ -15303,15 +19515,695 @@ Bool8x4::Bool8x4()
     Symbol::Resolved(&Bool8x4_operator_neq_Bool8x4_arg0)->typeSymbol = &Bool8x4Type;
     Symbol::Resolved(&Bool8x4_operator_neq_Bool8x4)->returnTypeSymbol = &Bool8Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 8> { 
-        std::pair{ "operator!=", &Bool8x4_operator_neq_Bool8x4 },
-        std::pair{ "operator&&", &Bool8x4_operator_andand_Bool8x4 },
-        std::pair{ "operator==", &Bool8x4_operator_eq_Bool8x4 },
-        std::pair{ "operator[]", &Bool8x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Bool8x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Bool8x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Bool8x4_operator_index_UInt16 },
-        std::pair{ "operator||", &Bool8x4_operator_oror_Bool8x4 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 688> { 
+        std::pair{ "a"_c, &Bool8Type },
+        std::pair{ "aa"_c, &Bool8x2Type },
+        std::pair{ "aaa"_c, &Bool8x3Type },
+        std::pair{ "aaaa"_c, &Bool8x4Type },
+        std::pair{ "aaab"_c, &Bool8x4Type },
+        std::pair{ "aaag"_c, &Bool8x4Type },
+        std::pair{ "aaar"_c, &Bool8x4Type },
+        std::pair{ "aab"_c, &Bool8x3Type },
+        std::pair{ "aaba"_c, &Bool8x4Type },
+        std::pair{ "aabb"_c, &Bool8x4Type },
+        std::pair{ "aabg"_c, &Bool8x4Type },
+        std::pair{ "aabr"_c, &Bool8x4Type },
+        std::pair{ "aag"_c, &Bool8x3Type },
+        std::pair{ "aaga"_c, &Bool8x4Type },
+        std::pair{ "aagb"_c, &Bool8x4Type },
+        std::pair{ "aagg"_c, &Bool8x4Type },
+        std::pair{ "aagr"_c, &Bool8x4Type },
+        std::pair{ "aar"_c, &Bool8x3Type },
+        std::pair{ "aara"_c, &Bool8x4Type },
+        std::pair{ "aarb"_c, &Bool8x4Type },
+        std::pair{ "aarg"_c, &Bool8x4Type },
+        std::pair{ "aarr"_c, &Bool8x4Type },
+        std::pair{ "ab"_c, &Bool8x2Type },
+        std::pair{ "aba"_c, &Bool8x3Type },
+        std::pair{ "abaa"_c, &Bool8x4Type },
+        std::pair{ "abab"_c, &Bool8x4Type },
+        std::pair{ "abag"_c, &Bool8x4Type },
+        std::pair{ "abar"_c, &Bool8x4Type },
+        std::pair{ "abb"_c, &Bool8x3Type },
+        std::pair{ "abba"_c, &Bool8x4Type },
+        std::pair{ "abbb"_c, &Bool8x4Type },
+        std::pair{ "abbg"_c, &Bool8x4Type },
+        std::pair{ "abbr"_c, &Bool8x4Type },
+        std::pair{ "abg"_c, &Bool8x3Type },
+        std::pair{ "abga"_c, &Bool8x4Type },
+        std::pair{ "abgb"_c, &Bool8x4Type },
+        std::pair{ "abgg"_c, &Bool8x4Type },
+        std::pair{ "abgr"_c, &Bool8x4Type },
+        std::pair{ "abr"_c, &Bool8x3Type },
+        std::pair{ "abra"_c, &Bool8x4Type },
+        std::pair{ "abrb"_c, &Bool8x4Type },
+        std::pair{ "abrg"_c, &Bool8x4Type },
+        std::pair{ "abrr"_c, &Bool8x4Type },
+        std::pair{ "ag"_c, &Bool8x2Type },
+        std::pair{ "aga"_c, &Bool8x3Type },
+        std::pair{ "agaa"_c, &Bool8x4Type },
+        std::pair{ "agab"_c, &Bool8x4Type },
+        std::pair{ "agag"_c, &Bool8x4Type },
+        std::pair{ "agar"_c, &Bool8x4Type },
+        std::pair{ "agb"_c, &Bool8x3Type },
+        std::pair{ "agba"_c, &Bool8x4Type },
+        std::pair{ "agbb"_c, &Bool8x4Type },
+        std::pair{ "agbg"_c, &Bool8x4Type },
+        std::pair{ "agbr"_c, &Bool8x4Type },
+        std::pair{ "agg"_c, &Bool8x3Type },
+        std::pair{ "agga"_c, &Bool8x4Type },
+        std::pair{ "aggb"_c, &Bool8x4Type },
+        std::pair{ "aggg"_c, &Bool8x4Type },
+        std::pair{ "aggr"_c, &Bool8x4Type },
+        std::pair{ "agr"_c, &Bool8x3Type },
+        std::pair{ "agra"_c, &Bool8x4Type },
+        std::pair{ "agrb"_c, &Bool8x4Type },
+        std::pair{ "agrg"_c, &Bool8x4Type },
+        std::pair{ "agrr"_c, &Bool8x4Type },
+        std::pair{ "ar"_c, &Bool8x2Type },
+        std::pair{ "ara"_c, &Bool8x3Type },
+        std::pair{ "araa"_c, &Bool8x4Type },
+        std::pair{ "arab"_c, &Bool8x4Type },
+        std::pair{ "arag"_c, &Bool8x4Type },
+        std::pair{ "arar"_c, &Bool8x4Type },
+        std::pair{ "arb"_c, &Bool8x3Type },
+        std::pair{ "arba"_c, &Bool8x4Type },
+        std::pair{ "arbb"_c, &Bool8x4Type },
+        std::pair{ "arbg"_c, &Bool8x4Type },
+        std::pair{ "arbr"_c, &Bool8x4Type },
+        std::pair{ "arg"_c, &Bool8x3Type },
+        std::pair{ "arga"_c, &Bool8x4Type },
+        std::pair{ "argb"_c, &Bool8x4Type },
+        std::pair{ "argg"_c, &Bool8x4Type },
+        std::pair{ "argr"_c, &Bool8x4Type },
+        std::pair{ "arr"_c, &Bool8x3Type },
+        std::pair{ "arra"_c, &Bool8x4Type },
+        std::pair{ "arrb"_c, &Bool8x4Type },
+        std::pair{ "arrg"_c, &Bool8x4Type },
+        std::pair{ "arrr"_c, &Bool8x4Type },
+        std::pair{ "b"_c, &Bool8Type },
+        std::pair{ "ba"_c, &Bool8x2Type },
+        std::pair{ "baa"_c, &Bool8x3Type },
+        std::pair{ "baaa"_c, &Bool8x4Type },
+        std::pair{ "baab"_c, &Bool8x4Type },
+        std::pair{ "baag"_c, &Bool8x4Type },
+        std::pair{ "baar"_c, &Bool8x4Type },
+        std::pair{ "bab"_c, &Bool8x3Type },
+        std::pair{ "baba"_c, &Bool8x4Type },
+        std::pair{ "babb"_c, &Bool8x4Type },
+        std::pair{ "babg"_c, &Bool8x4Type },
+        std::pair{ "babr"_c, &Bool8x4Type },
+        std::pair{ "bag"_c, &Bool8x3Type },
+        std::pair{ "baga"_c, &Bool8x4Type },
+        std::pair{ "bagb"_c, &Bool8x4Type },
+        std::pair{ "bagg"_c, &Bool8x4Type },
+        std::pair{ "bagr"_c, &Bool8x4Type },
+        std::pair{ "bar"_c, &Bool8x3Type },
+        std::pair{ "bara"_c, &Bool8x4Type },
+        std::pair{ "barb"_c, &Bool8x4Type },
+        std::pair{ "barg"_c, &Bool8x4Type },
+        std::pair{ "barr"_c, &Bool8x4Type },
+        std::pair{ "bb"_c, &Bool8x2Type },
+        std::pair{ "bba"_c, &Bool8x3Type },
+        std::pair{ "bbaa"_c, &Bool8x4Type },
+        std::pair{ "bbab"_c, &Bool8x4Type },
+        std::pair{ "bbag"_c, &Bool8x4Type },
+        std::pair{ "bbar"_c, &Bool8x4Type },
+        std::pair{ "bbb"_c, &Bool8x3Type },
+        std::pair{ "bbba"_c, &Bool8x4Type },
+        std::pair{ "bbbb"_c, &Bool8x4Type },
+        std::pair{ "bbbg"_c, &Bool8x4Type },
+        std::pair{ "bbbr"_c, &Bool8x4Type },
+        std::pair{ "bbg"_c, &Bool8x3Type },
+        std::pair{ "bbga"_c, &Bool8x4Type },
+        std::pair{ "bbgb"_c, &Bool8x4Type },
+        std::pair{ "bbgg"_c, &Bool8x4Type },
+        std::pair{ "bbgr"_c, &Bool8x4Type },
+        std::pair{ "bbr"_c, &Bool8x3Type },
+        std::pair{ "bbra"_c, &Bool8x4Type },
+        std::pair{ "bbrb"_c, &Bool8x4Type },
+        std::pair{ "bbrg"_c, &Bool8x4Type },
+        std::pair{ "bbrr"_c, &Bool8x4Type },
+        std::pair{ "bg"_c, &Bool8x2Type },
+        std::pair{ "bga"_c, &Bool8x3Type },
+        std::pair{ "bgaa"_c, &Bool8x4Type },
+        std::pair{ "bgab"_c, &Bool8x4Type },
+        std::pair{ "bgag"_c, &Bool8x4Type },
+        std::pair{ "bgar"_c, &Bool8x4Type },
+        std::pair{ "bgb"_c, &Bool8x3Type },
+        std::pair{ "bgba"_c, &Bool8x4Type },
+        std::pair{ "bgbb"_c, &Bool8x4Type },
+        std::pair{ "bgbg"_c, &Bool8x4Type },
+        std::pair{ "bgbr"_c, &Bool8x4Type },
+        std::pair{ "bgg"_c, &Bool8x3Type },
+        std::pair{ "bgga"_c, &Bool8x4Type },
+        std::pair{ "bggb"_c, &Bool8x4Type },
+        std::pair{ "bggg"_c, &Bool8x4Type },
+        std::pair{ "bggr"_c, &Bool8x4Type },
+        std::pair{ "bgr"_c, &Bool8x3Type },
+        std::pair{ "bgra"_c, &Bool8x4Type },
+        std::pair{ "bgrb"_c, &Bool8x4Type },
+        std::pair{ "bgrg"_c, &Bool8x4Type },
+        std::pair{ "bgrr"_c, &Bool8x4Type },
+        std::pair{ "br"_c, &Bool8x2Type },
+        std::pair{ "bra"_c, &Bool8x3Type },
+        std::pair{ "braa"_c, &Bool8x4Type },
+        std::pair{ "brab"_c, &Bool8x4Type },
+        std::pair{ "brag"_c, &Bool8x4Type },
+        std::pair{ "brar"_c, &Bool8x4Type },
+        std::pair{ "brb"_c, &Bool8x3Type },
+        std::pair{ "brba"_c, &Bool8x4Type },
+        std::pair{ "brbb"_c, &Bool8x4Type },
+        std::pair{ "brbg"_c, &Bool8x4Type },
+        std::pair{ "brbr"_c, &Bool8x4Type },
+        std::pair{ "brg"_c, &Bool8x3Type },
+        std::pair{ "brga"_c, &Bool8x4Type },
+        std::pair{ "brgb"_c, &Bool8x4Type },
+        std::pair{ "brgg"_c, &Bool8x4Type },
+        std::pair{ "brgr"_c, &Bool8x4Type },
+        std::pair{ "brr"_c, &Bool8x3Type },
+        std::pair{ "brra"_c, &Bool8x4Type },
+        std::pair{ "brrb"_c, &Bool8x4Type },
+        std::pair{ "brrg"_c, &Bool8x4Type },
+        std::pair{ "brrr"_c, &Bool8x4Type },
+        std::pair{ "g"_c, &Bool8Type },
+        std::pair{ "ga"_c, &Bool8x2Type },
+        std::pair{ "gaa"_c, &Bool8x3Type },
+        std::pair{ "gaaa"_c, &Bool8x4Type },
+        std::pair{ "gaab"_c, &Bool8x4Type },
+        std::pair{ "gaag"_c, &Bool8x4Type },
+        std::pair{ "gaar"_c, &Bool8x4Type },
+        std::pair{ "gab"_c, &Bool8x3Type },
+        std::pair{ "gaba"_c, &Bool8x4Type },
+        std::pair{ "gabb"_c, &Bool8x4Type },
+        std::pair{ "gabg"_c, &Bool8x4Type },
+        std::pair{ "gabr"_c, &Bool8x4Type },
+        std::pair{ "gag"_c, &Bool8x3Type },
+        std::pair{ "gaga"_c, &Bool8x4Type },
+        std::pair{ "gagb"_c, &Bool8x4Type },
+        std::pair{ "gagg"_c, &Bool8x4Type },
+        std::pair{ "gagr"_c, &Bool8x4Type },
+        std::pair{ "gar"_c, &Bool8x3Type },
+        std::pair{ "gara"_c, &Bool8x4Type },
+        std::pair{ "garb"_c, &Bool8x4Type },
+        std::pair{ "garg"_c, &Bool8x4Type },
+        std::pair{ "garr"_c, &Bool8x4Type },
+        std::pair{ "gb"_c, &Bool8x2Type },
+        std::pair{ "gba"_c, &Bool8x3Type },
+        std::pair{ "gbaa"_c, &Bool8x4Type },
+        std::pair{ "gbab"_c, &Bool8x4Type },
+        std::pair{ "gbag"_c, &Bool8x4Type },
+        std::pair{ "gbar"_c, &Bool8x4Type },
+        std::pair{ "gbb"_c, &Bool8x3Type },
+        std::pair{ "gbba"_c, &Bool8x4Type },
+        std::pair{ "gbbb"_c, &Bool8x4Type },
+        std::pair{ "gbbg"_c, &Bool8x4Type },
+        std::pair{ "gbbr"_c, &Bool8x4Type },
+        std::pair{ "gbg"_c, &Bool8x3Type },
+        std::pair{ "gbga"_c, &Bool8x4Type },
+        std::pair{ "gbgb"_c, &Bool8x4Type },
+        std::pair{ "gbgg"_c, &Bool8x4Type },
+        std::pair{ "gbgr"_c, &Bool8x4Type },
+        std::pair{ "gbr"_c, &Bool8x3Type },
+        std::pair{ "gbra"_c, &Bool8x4Type },
+        std::pair{ "gbrb"_c, &Bool8x4Type },
+        std::pair{ "gbrg"_c, &Bool8x4Type },
+        std::pair{ "gbrr"_c, &Bool8x4Type },
+        std::pair{ "gg"_c, &Bool8x2Type },
+        std::pair{ "gga"_c, &Bool8x3Type },
+        std::pair{ "ggaa"_c, &Bool8x4Type },
+        std::pair{ "ggab"_c, &Bool8x4Type },
+        std::pair{ "ggag"_c, &Bool8x4Type },
+        std::pair{ "ggar"_c, &Bool8x4Type },
+        std::pair{ "ggb"_c, &Bool8x3Type },
+        std::pair{ "ggba"_c, &Bool8x4Type },
+        std::pair{ "ggbb"_c, &Bool8x4Type },
+        std::pair{ "ggbg"_c, &Bool8x4Type },
+        std::pair{ "ggbr"_c, &Bool8x4Type },
+        std::pair{ "ggg"_c, &Bool8x3Type },
+        std::pair{ "ggga"_c, &Bool8x4Type },
+        std::pair{ "gggb"_c, &Bool8x4Type },
+        std::pair{ "gggg"_c, &Bool8x4Type },
+        std::pair{ "gggr"_c, &Bool8x4Type },
+        std::pair{ "ggr"_c, &Bool8x3Type },
+        std::pair{ "ggra"_c, &Bool8x4Type },
+        std::pair{ "ggrb"_c, &Bool8x4Type },
+        std::pair{ "ggrg"_c, &Bool8x4Type },
+        std::pair{ "ggrr"_c, &Bool8x4Type },
+        std::pair{ "gr"_c, &Bool8x2Type },
+        std::pair{ "gra"_c, &Bool8x3Type },
+        std::pair{ "graa"_c, &Bool8x4Type },
+        std::pair{ "grab"_c, &Bool8x4Type },
+        std::pair{ "grag"_c, &Bool8x4Type },
+        std::pair{ "grar"_c, &Bool8x4Type },
+        std::pair{ "grb"_c, &Bool8x3Type },
+        std::pair{ "grba"_c, &Bool8x4Type },
+        std::pair{ "grbb"_c, &Bool8x4Type },
+        std::pair{ "grbg"_c, &Bool8x4Type },
+        std::pair{ "grbr"_c, &Bool8x4Type },
+        std::pair{ "grg"_c, &Bool8x3Type },
+        std::pair{ "grga"_c, &Bool8x4Type },
+        std::pair{ "grgb"_c, &Bool8x4Type },
+        std::pair{ "grgg"_c, &Bool8x4Type },
+        std::pair{ "grgr"_c, &Bool8x4Type },
+        std::pair{ "grr"_c, &Bool8x3Type },
+        std::pair{ "grra"_c, &Bool8x4Type },
+        std::pair{ "grrb"_c, &Bool8x4Type },
+        std::pair{ "grrg"_c, &Bool8x4Type },
+        std::pair{ "grrr"_c, &Bool8x4Type },
+        std::pair{ "operator!=(b8x4)"_c, &Bool8x4_operator_neq_Bool8x4 },
+        std::pair{ "operator&&(b8x4)"_c, &Bool8x4_operator_andand_Bool8x4 },
+        std::pair{ "operator==(b8x4)"_c, &Bool8x4_operator_eq_Bool8x4 },
+        std::pair{ "operator[](i16)"_c, &Bool8x4_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &Bool8x4_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &Bool8x4_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &Bool8x4_operator_index_UInt32 },
+        std::pair{ "operator||(b8x4)"_c, &Bool8x4_operator_oror_Bool8x4 },
+        std::pair{ "r"_c, &Bool8Type },
+        std::pair{ "ra"_c, &Bool8x2Type },
+        std::pair{ "raa"_c, &Bool8x3Type },
+        std::pair{ "raaa"_c, &Bool8x4Type },
+        std::pair{ "raab"_c, &Bool8x4Type },
+        std::pair{ "raag"_c, &Bool8x4Type },
+        std::pair{ "raar"_c, &Bool8x4Type },
+        std::pair{ "rab"_c, &Bool8x3Type },
+        std::pair{ "raba"_c, &Bool8x4Type },
+        std::pair{ "rabb"_c, &Bool8x4Type },
+        std::pair{ "rabg"_c, &Bool8x4Type },
+        std::pair{ "rabr"_c, &Bool8x4Type },
+        std::pair{ "rag"_c, &Bool8x3Type },
+        std::pair{ "raga"_c, &Bool8x4Type },
+        std::pair{ "ragb"_c, &Bool8x4Type },
+        std::pair{ "ragg"_c, &Bool8x4Type },
+        std::pair{ "ragr"_c, &Bool8x4Type },
+        std::pair{ "rar"_c, &Bool8x3Type },
+        std::pair{ "rara"_c, &Bool8x4Type },
+        std::pair{ "rarb"_c, &Bool8x4Type },
+        std::pair{ "rarg"_c, &Bool8x4Type },
+        std::pair{ "rarr"_c, &Bool8x4Type },
+        std::pair{ "rb"_c, &Bool8x2Type },
+        std::pair{ "rba"_c, &Bool8x3Type },
+        std::pair{ "rbaa"_c, &Bool8x4Type },
+        std::pair{ "rbab"_c, &Bool8x4Type },
+        std::pair{ "rbag"_c, &Bool8x4Type },
+        std::pair{ "rbar"_c, &Bool8x4Type },
+        std::pair{ "rbb"_c, &Bool8x3Type },
+        std::pair{ "rbba"_c, &Bool8x4Type },
+        std::pair{ "rbbb"_c, &Bool8x4Type },
+        std::pair{ "rbbg"_c, &Bool8x4Type },
+        std::pair{ "rbbr"_c, &Bool8x4Type },
+        std::pair{ "rbg"_c, &Bool8x3Type },
+        std::pair{ "rbga"_c, &Bool8x4Type },
+        std::pair{ "rbgb"_c, &Bool8x4Type },
+        std::pair{ "rbgg"_c, &Bool8x4Type },
+        std::pair{ "rbgr"_c, &Bool8x4Type },
+        std::pair{ "rbr"_c, &Bool8x3Type },
+        std::pair{ "rbra"_c, &Bool8x4Type },
+        std::pair{ "rbrb"_c, &Bool8x4Type },
+        std::pair{ "rbrg"_c, &Bool8x4Type },
+        std::pair{ "rbrr"_c, &Bool8x4Type },
+        std::pair{ "rg"_c, &Bool8x2Type },
+        std::pair{ "rga"_c, &Bool8x3Type },
+        std::pair{ "rgaa"_c, &Bool8x4Type },
+        std::pair{ "rgab"_c, &Bool8x4Type },
+        std::pair{ "rgag"_c, &Bool8x4Type },
+        std::pair{ "rgar"_c, &Bool8x4Type },
+        std::pair{ "rgb"_c, &Bool8x3Type },
+        std::pair{ "rgba"_c, &Bool8x4Type },
+        std::pair{ "rgbb"_c, &Bool8x4Type },
+        std::pair{ "rgbg"_c, &Bool8x4Type },
+        std::pair{ "rgbr"_c, &Bool8x4Type },
+        std::pair{ "rgg"_c, &Bool8x3Type },
+        std::pair{ "rgga"_c, &Bool8x4Type },
+        std::pair{ "rggb"_c, &Bool8x4Type },
+        std::pair{ "rggg"_c, &Bool8x4Type },
+        std::pair{ "rggr"_c, &Bool8x4Type },
+        std::pair{ "rgr"_c, &Bool8x3Type },
+        std::pair{ "rgra"_c, &Bool8x4Type },
+        std::pair{ "rgrb"_c, &Bool8x4Type },
+        std::pair{ "rgrg"_c, &Bool8x4Type },
+        std::pair{ "rgrr"_c, &Bool8x4Type },
+        std::pair{ "rr"_c, &Bool8x2Type },
+        std::pair{ "rra"_c, &Bool8x3Type },
+        std::pair{ "rraa"_c, &Bool8x4Type },
+        std::pair{ "rrab"_c, &Bool8x4Type },
+        std::pair{ "rrag"_c, &Bool8x4Type },
+        std::pair{ "rrar"_c, &Bool8x4Type },
+        std::pair{ "rrb"_c, &Bool8x3Type },
+        std::pair{ "rrba"_c, &Bool8x4Type },
+        std::pair{ "rrbb"_c, &Bool8x4Type },
+        std::pair{ "rrbg"_c, &Bool8x4Type },
+        std::pair{ "rrbr"_c, &Bool8x4Type },
+        std::pair{ "rrg"_c, &Bool8x3Type },
+        std::pair{ "rrga"_c, &Bool8x4Type },
+        std::pair{ "rrgb"_c, &Bool8x4Type },
+        std::pair{ "rrgg"_c, &Bool8x4Type },
+        std::pair{ "rrgr"_c, &Bool8x4Type },
+        std::pair{ "rrr"_c, &Bool8x3Type },
+        std::pair{ "rrra"_c, &Bool8x4Type },
+        std::pair{ "rrrb"_c, &Bool8x4Type },
+        std::pair{ "rrrg"_c, &Bool8x4Type },
+        std::pair{ "rrrr"_c, &Bool8x4Type },
+        std::pair{ "w"_c, &Bool8Type },
+        std::pair{ "ww"_c, &Bool8x2Type },
+        std::pair{ "www"_c, &Bool8x3Type },
+        std::pair{ "wwww"_c, &Bool8x4Type },
+        std::pair{ "wwwx"_c, &Bool8x4Type },
+        std::pair{ "wwwy"_c, &Bool8x4Type },
+        std::pair{ "wwwz"_c, &Bool8x4Type },
+        std::pair{ "wwx"_c, &Bool8x3Type },
+        std::pair{ "wwxw"_c, &Bool8x4Type },
+        std::pair{ "wwxx"_c, &Bool8x4Type },
+        std::pair{ "wwxy"_c, &Bool8x4Type },
+        std::pair{ "wwxz"_c, &Bool8x4Type },
+        std::pair{ "wwy"_c, &Bool8x3Type },
+        std::pair{ "wwyw"_c, &Bool8x4Type },
+        std::pair{ "wwyx"_c, &Bool8x4Type },
+        std::pair{ "wwyy"_c, &Bool8x4Type },
+        std::pair{ "wwyz"_c, &Bool8x4Type },
+        std::pair{ "wwz"_c, &Bool8x3Type },
+        std::pair{ "wwzw"_c, &Bool8x4Type },
+        std::pair{ "wwzx"_c, &Bool8x4Type },
+        std::pair{ "wwzy"_c, &Bool8x4Type },
+        std::pair{ "wwzz"_c, &Bool8x4Type },
+        std::pair{ "wx"_c, &Bool8x2Type },
+        std::pair{ "wxw"_c, &Bool8x3Type },
+        std::pair{ "wxww"_c, &Bool8x4Type },
+        std::pair{ "wxwx"_c, &Bool8x4Type },
+        std::pair{ "wxwy"_c, &Bool8x4Type },
+        std::pair{ "wxwz"_c, &Bool8x4Type },
+        std::pair{ "wxx"_c, &Bool8x3Type },
+        std::pair{ "wxxw"_c, &Bool8x4Type },
+        std::pair{ "wxxx"_c, &Bool8x4Type },
+        std::pair{ "wxxy"_c, &Bool8x4Type },
+        std::pair{ "wxxz"_c, &Bool8x4Type },
+        std::pair{ "wxy"_c, &Bool8x3Type },
+        std::pair{ "wxyw"_c, &Bool8x4Type },
+        std::pair{ "wxyx"_c, &Bool8x4Type },
+        std::pair{ "wxyy"_c, &Bool8x4Type },
+        std::pair{ "wxyz"_c, &Bool8x4Type },
+        std::pair{ "wxz"_c, &Bool8x3Type },
+        std::pair{ "wxzw"_c, &Bool8x4Type },
+        std::pair{ "wxzx"_c, &Bool8x4Type },
+        std::pair{ "wxzy"_c, &Bool8x4Type },
+        std::pair{ "wxzz"_c, &Bool8x4Type },
+        std::pair{ "wy"_c, &Bool8x2Type },
+        std::pair{ "wyw"_c, &Bool8x3Type },
+        std::pair{ "wyww"_c, &Bool8x4Type },
+        std::pair{ "wywx"_c, &Bool8x4Type },
+        std::pair{ "wywy"_c, &Bool8x4Type },
+        std::pair{ "wywz"_c, &Bool8x4Type },
+        std::pair{ "wyx"_c, &Bool8x3Type },
+        std::pair{ "wyxw"_c, &Bool8x4Type },
+        std::pair{ "wyxx"_c, &Bool8x4Type },
+        std::pair{ "wyxy"_c, &Bool8x4Type },
+        std::pair{ "wyxz"_c, &Bool8x4Type },
+        std::pair{ "wyy"_c, &Bool8x3Type },
+        std::pair{ "wyyw"_c, &Bool8x4Type },
+        std::pair{ "wyyx"_c, &Bool8x4Type },
+        std::pair{ "wyyy"_c, &Bool8x4Type },
+        std::pair{ "wyyz"_c, &Bool8x4Type },
+        std::pair{ "wyz"_c, &Bool8x3Type },
+        std::pair{ "wyzw"_c, &Bool8x4Type },
+        std::pair{ "wyzx"_c, &Bool8x4Type },
+        std::pair{ "wyzy"_c, &Bool8x4Type },
+        std::pair{ "wyzz"_c, &Bool8x4Type },
+        std::pair{ "wz"_c, &Bool8x2Type },
+        std::pair{ "wzw"_c, &Bool8x3Type },
+        std::pair{ "wzww"_c, &Bool8x4Type },
+        std::pair{ "wzwx"_c, &Bool8x4Type },
+        std::pair{ "wzwy"_c, &Bool8x4Type },
+        std::pair{ "wzwz"_c, &Bool8x4Type },
+        std::pair{ "wzx"_c, &Bool8x3Type },
+        std::pair{ "wzxw"_c, &Bool8x4Type },
+        std::pair{ "wzxx"_c, &Bool8x4Type },
+        std::pair{ "wzxy"_c, &Bool8x4Type },
+        std::pair{ "wzxz"_c, &Bool8x4Type },
+        std::pair{ "wzy"_c, &Bool8x3Type },
+        std::pair{ "wzyw"_c, &Bool8x4Type },
+        std::pair{ "wzyx"_c, &Bool8x4Type },
+        std::pair{ "wzyy"_c, &Bool8x4Type },
+        std::pair{ "wzyz"_c, &Bool8x4Type },
+        std::pair{ "wzz"_c, &Bool8x3Type },
+        std::pair{ "wzzw"_c, &Bool8x4Type },
+        std::pair{ "wzzx"_c, &Bool8x4Type },
+        std::pair{ "wzzy"_c, &Bool8x4Type },
+        std::pair{ "wzzz"_c, &Bool8x4Type },
+        std::pair{ "x"_c, &Bool8Type },
+        std::pair{ "xw"_c, &Bool8x2Type },
+        std::pair{ "xww"_c, &Bool8x3Type },
+        std::pair{ "xwww"_c, &Bool8x4Type },
+        std::pair{ "xwwx"_c, &Bool8x4Type },
+        std::pair{ "xwwy"_c, &Bool8x4Type },
+        std::pair{ "xwwz"_c, &Bool8x4Type },
+        std::pair{ "xwx"_c, &Bool8x3Type },
+        std::pair{ "xwxw"_c, &Bool8x4Type },
+        std::pair{ "xwxx"_c, &Bool8x4Type },
+        std::pair{ "xwxy"_c, &Bool8x4Type },
+        std::pair{ "xwxz"_c, &Bool8x4Type },
+        std::pair{ "xwy"_c, &Bool8x3Type },
+        std::pair{ "xwyw"_c, &Bool8x4Type },
+        std::pair{ "xwyx"_c, &Bool8x4Type },
+        std::pair{ "xwyy"_c, &Bool8x4Type },
+        std::pair{ "xwyz"_c, &Bool8x4Type },
+        std::pair{ "xwz"_c, &Bool8x3Type },
+        std::pair{ "xwzw"_c, &Bool8x4Type },
+        std::pair{ "xwzx"_c, &Bool8x4Type },
+        std::pair{ "xwzy"_c, &Bool8x4Type },
+        std::pair{ "xwzz"_c, &Bool8x4Type },
+        std::pair{ "xx"_c, &Bool8x2Type },
+        std::pair{ "xxw"_c, &Bool8x3Type },
+        std::pair{ "xxww"_c, &Bool8x4Type },
+        std::pair{ "xxwx"_c, &Bool8x4Type },
+        std::pair{ "xxwy"_c, &Bool8x4Type },
+        std::pair{ "xxwz"_c, &Bool8x4Type },
+        std::pair{ "xxx"_c, &Bool8x3Type },
+        std::pair{ "xxxw"_c, &Bool8x4Type },
+        std::pair{ "xxxx"_c, &Bool8x4Type },
+        std::pair{ "xxxy"_c, &Bool8x4Type },
+        std::pair{ "xxxz"_c, &Bool8x4Type },
+        std::pair{ "xxy"_c, &Bool8x3Type },
+        std::pair{ "xxyw"_c, &Bool8x4Type },
+        std::pair{ "xxyx"_c, &Bool8x4Type },
+        std::pair{ "xxyy"_c, &Bool8x4Type },
+        std::pair{ "xxyz"_c, &Bool8x4Type },
+        std::pair{ "xxz"_c, &Bool8x3Type },
+        std::pair{ "xxzw"_c, &Bool8x4Type },
+        std::pair{ "xxzx"_c, &Bool8x4Type },
+        std::pair{ "xxzy"_c, &Bool8x4Type },
+        std::pair{ "xxzz"_c, &Bool8x4Type },
+        std::pair{ "xy"_c, &Bool8x2Type },
+        std::pair{ "xyw"_c, &Bool8x3Type },
+        std::pair{ "xyww"_c, &Bool8x4Type },
+        std::pair{ "xywx"_c, &Bool8x4Type },
+        std::pair{ "xywy"_c, &Bool8x4Type },
+        std::pair{ "xywz"_c, &Bool8x4Type },
+        std::pair{ "xyx"_c, &Bool8x3Type },
+        std::pair{ "xyxw"_c, &Bool8x4Type },
+        std::pair{ "xyxx"_c, &Bool8x4Type },
+        std::pair{ "xyxy"_c, &Bool8x4Type },
+        std::pair{ "xyxz"_c, &Bool8x4Type },
+        std::pair{ "xyy"_c, &Bool8x3Type },
+        std::pair{ "xyyw"_c, &Bool8x4Type },
+        std::pair{ "xyyx"_c, &Bool8x4Type },
+        std::pair{ "xyyy"_c, &Bool8x4Type },
+        std::pair{ "xyyz"_c, &Bool8x4Type },
+        std::pair{ "xyz"_c, &Bool8x3Type },
+        std::pair{ "xyzw"_c, &Bool8x4Type },
+        std::pair{ "xyzx"_c, &Bool8x4Type },
+        std::pair{ "xyzy"_c, &Bool8x4Type },
+        std::pair{ "xyzz"_c, &Bool8x4Type },
+        std::pair{ "xz"_c, &Bool8x2Type },
+        std::pair{ "xzw"_c, &Bool8x3Type },
+        std::pair{ "xzww"_c, &Bool8x4Type },
+        std::pair{ "xzwx"_c, &Bool8x4Type },
+        std::pair{ "xzwy"_c, &Bool8x4Type },
+        std::pair{ "xzwz"_c, &Bool8x4Type },
+        std::pair{ "xzx"_c, &Bool8x3Type },
+        std::pair{ "xzxw"_c, &Bool8x4Type },
+        std::pair{ "xzxx"_c, &Bool8x4Type },
+        std::pair{ "xzxy"_c, &Bool8x4Type },
+        std::pair{ "xzxz"_c, &Bool8x4Type },
+        std::pair{ "xzy"_c, &Bool8x3Type },
+        std::pair{ "xzyw"_c, &Bool8x4Type },
+        std::pair{ "xzyx"_c, &Bool8x4Type },
+        std::pair{ "xzyy"_c, &Bool8x4Type },
+        std::pair{ "xzyz"_c, &Bool8x4Type },
+        std::pair{ "xzz"_c, &Bool8x3Type },
+        std::pair{ "xzzw"_c, &Bool8x4Type },
+        std::pair{ "xzzx"_c, &Bool8x4Type },
+        std::pair{ "xzzy"_c, &Bool8x4Type },
+        std::pair{ "xzzz"_c, &Bool8x4Type },
+        std::pair{ "y"_c, &Bool8Type },
+        std::pair{ "yw"_c, &Bool8x2Type },
+        std::pair{ "yww"_c, &Bool8x3Type },
+        std::pair{ "ywww"_c, &Bool8x4Type },
+        std::pair{ "ywwx"_c, &Bool8x4Type },
+        std::pair{ "ywwy"_c, &Bool8x4Type },
+        std::pair{ "ywwz"_c, &Bool8x4Type },
+        std::pair{ "ywx"_c, &Bool8x3Type },
+        std::pair{ "ywxw"_c, &Bool8x4Type },
+        std::pair{ "ywxx"_c, &Bool8x4Type },
+        std::pair{ "ywxy"_c, &Bool8x4Type },
+        std::pair{ "ywxz"_c, &Bool8x4Type },
+        std::pair{ "ywy"_c, &Bool8x3Type },
+        std::pair{ "ywyw"_c, &Bool8x4Type },
+        std::pair{ "ywyx"_c, &Bool8x4Type },
+        std::pair{ "ywyy"_c, &Bool8x4Type },
+        std::pair{ "ywyz"_c, &Bool8x4Type },
+        std::pair{ "ywz"_c, &Bool8x3Type },
+        std::pair{ "ywzw"_c, &Bool8x4Type },
+        std::pair{ "ywzx"_c, &Bool8x4Type },
+        std::pair{ "ywzy"_c, &Bool8x4Type },
+        std::pair{ "ywzz"_c, &Bool8x4Type },
+        std::pair{ "yx"_c, &Bool8x2Type },
+        std::pair{ "yxw"_c, &Bool8x3Type },
+        std::pair{ "yxww"_c, &Bool8x4Type },
+        std::pair{ "yxwx"_c, &Bool8x4Type },
+        std::pair{ "yxwy"_c, &Bool8x4Type },
+        std::pair{ "yxwz"_c, &Bool8x4Type },
+        std::pair{ "yxx"_c, &Bool8x3Type },
+        std::pair{ "yxxw"_c, &Bool8x4Type },
+        std::pair{ "yxxx"_c, &Bool8x4Type },
+        std::pair{ "yxxy"_c, &Bool8x4Type },
+        std::pair{ "yxxz"_c, &Bool8x4Type },
+        std::pair{ "yxy"_c, &Bool8x3Type },
+        std::pair{ "yxyw"_c, &Bool8x4Type },
+        std::pair{ "yxyx"_c, &Bool8x4Type },
+        std::pair{ "yxyy"_c, &Bool8x4Type },
+        std::pair{ "yxyz"_c, &Bool8x4Type },
+        std::pair{ "yxz"_c, &Bool8x3Type },
+        std::pair{ "yxzw"_c, &Bool8x4Type },
+        std::pair{ "yxzx"_c, &Bool8x4Type },
+        std::pair{ "yxzy"_c, &Bool8x4Type },
+        std::pair{ "yxzz"_c, &Bool8x4Type },
+        std::pair{ "yy"_c, &Bool8x2Type },
+        std::pair{ "yyw"_c, &Bool8x3Type },
+        std::pair{ "yyww"_c, &Bool8x4Type },
+        std::pair{ "yywx"_c, &Bool8x4Type },
+        std::pair{ "yywy"_c, &Bool8x4Type },
+        std::pair{ "yywz"_c, &Bool8x4Type },
+        std::pair{ "yyx"_c, &Bool8x3Type },
+        std::pair{ "yyxw"_c, &Bool8x4Type },
+        std::pair{ "yyxx"_c, &Bool8x4Type },
+        std::pair{ "yyxy"_c, &Bool8x4Type },
+        std::pair{ "yyxz"_c, &Bool8x4Type },
+        std::pair{ "yyy"_c, &Bool8x3Type },
+        std::pair{ "yyyw"_c, &Bool8x4Type },
+        std::pair{ "yyyx"_c, &Bool8x4Type },
+        std::pair{ "yyyy"_c, &Bool8x4Type },
+        std::pair{ "yyyz"_c, &Bool8x4Type },
+        std::pair{ "yyz"_c, &Bool8x3Type },
+        std::pair{ "yyzw"_c, &Bool8x4Type },
+        std::pair{ "yyzx"_c, &Bool8x4Type },
+        std::pair{ "yyzy"_c, &Bool8x4Type },
+        std::pair{ "yyzz"_c, &Bool8x4Type },
+        std::pair{ "yz"_c, &Bool8x2Type },
+        std::pair{ "yzw"_c, &Bool8x3Type },
+        std::pair{ "yzww"_c, &Bool8x4Type },
+        std::pair{ "yzwx"_c, &Bool8x4Type },
+        std::pair{ "yzwy"_c, &Bool8x4Type },
+        std::pair{ "yzwz"_c, &Bool8x4Type },
+        std::pair{ "yzx"_c, &Bool8x3Type },
+        std::pair{ "yzxw"_c, &Bool8x4Type },
+        std::pair{ "yzxx"_c, &Bool8x4Type },
+        std::pair{ "yzxy"_c, &Bool8x4Type },
+        std::pair{ "yzxz"_c, &Bool8x4Type },
+        std::pair{ "yzy"_c, &Bool8x3Type },
+        std::pair{ "yzyw"_c, &Bool8x4Type },
+        std::pair{ "yzyx"_c, &Bool8x4Type },
+        std::pair{ "yzyy"_c, &Bool8x4Type },
+        std::pair{ "yzyz"_c, &Bool8x4Type },
+        std::pair{ "yzz"_c, &Bool8x3Type },
+        std::pair{ "yzzw"_c, &Bool8x4Type },
+        std::pair{ "yzzx"_c, &Bool8x4Type },
+        std::pair{ "yzzy"_c, &Bool8x4Type },
+        std::pair{ "yzzz"_c, &Bool8x4Type },
+        std::pair{ "z"_c, &Bool8Type },
+        std::pair{ "zw"_c, &Bool8x2Type },
+        std::pair{ "zww"_c, &Bool8x3Type },
+        std::pair{ "zwww"_c, &Bool8x4Type },
+        std::pair{ "zwwx"_c, &Bool8x4Type },
+        std::pair{ "zwwy"_c, &Bool8x4Type },
+        std::pair{ "zwwz"_c, &Bool8x4Type },
+        std::pair{ "zwx"_c, &Bool8x3Type },
+        std::pair{ "zwxw"_c, &Bool8x4Type },
+        std::pair{ "zwxx"_c, &Bool8x4Type },
+        std::pair{ "zwxy"_c, &Bool8x4Type },
+        std::pair{ "zwxz"_c, &Bool8x4Type },
+        std::pair{ "zwy"_c, &Bool8x3Type },
+        std::pair{ "zwyw"_c, &Bool8x4Type },
+        std::pair{ "zwyx"_c, &Bool8x4Type },
+        std::pair{ "zwyy"_c, &Bool8x4Type },
+        std::pair{ "zwyz"_c, &Bool8x4Type },
+        std::pair{ "zwz"_c, &Bool8x3Type },
+        std::pair{ "zwzw"_c, &Bool8x4Type },
+        std::pair{ "zwzx"_c, &Bool8x4Type },
+        std::pair{ "zwzy"_c, &Bool8x4Type },
+        std::pair{ "zwzz"_c, &Bool8x4Type },
+        std::pair{ "zx"_c, &Bool8x2Type },
+        std::pair{ "zxw"_c, &Bool8x3Type },
+        std::pair{ "zxww"_c, &Bool8x4Type },
+        std::pair{ "zxwx"_c, &Bool8x4Type },
+        std::pair{ "zxwy"_c, &Bool8x4Type },
+        std::pair{ "zxwz"_c, &Bool8x4Type },
+        std::pair{ "zxx"_c, &Bool8x3Type },
+        std::pair{ "zxxw"_c, &Bool8x4Type },
+        std::pair{ "zxxx"_c, &Bool8x4Type },
+        std::pair{ "zxxy"_c, &Bool8x4Type },
+        std::pair{ "zxxz"_c, &Bool8x4Type },
+        std::pair{ "zxy"_c, &Bool8x3Type },
+        std::pair{ "zxyw"_c, &Bool8x4Type },
+        std::pair{ "zxyx"_c, &Bool8x4Type },
+        std::pair{ "zxyy"_c, &Bool8x4Type },
+        std::pair{ "zxyz"_c, &Bool8x4Type },
+        std::pair{ "zxz"_c, &Bool8x3Type },
+        std::pair{ "zxzw"_c, &Bool8x4Type },
+        std::pair{ "zxzx"_c, &Bool8x4Type },
+        std::pair{ "zxzy"_c, &Bool8x4Type },
+        std::pair{ "zxzz"_c, &Bool8x4Type },
+        std::pair{ "zy"_c, &Bool8x2Type },
+        std::pair{ "zyw"_c, &Bool8x3Type },
+        std::pair{ "zyww"_c, &Bool8x4Type },
+        std::pair{ "zywx"_c, &Bool8x4Type },
+        std::pair{ "zywy"_c, &Bool8x4Type },
+        std::pair{ "zywz"_c, &Bool8x4Type },
+        std::pair{ "zyx"_c, &Bool8x3Type },
+        std::pair{ "zyxw"_c, &Bool8x4Type },
+        std::pair{ "zyxx"_c, &Bool8x4Type },
+        std::pair{ "zyxy"_c, &Bool8x4Type },
+        std::pair{ "zyxz"_c, &Bool8x4Type },
+        std::pair{ "zyy"_c, &Bool8x3Type },
+        std::pair{ "zyyw"_c, &Bool8x4Type },
+        std::pair{ "zyyx"_c, &Bool8x4Type },
+        std::pair{ "zyyy"_c, &Bool8x4Type },
+        std::pair{ "zyyz"_c, &Bool8x4Type },
+        std::pair{ "zyz"_c, &Bool8x3Type },
+        std::pair{ "zyzw"_c, &Bool8x4Type },
+        std::pair{ "zyzx"_c, &Bool8x4Type },
+        std::pair{ "zyzy"_c, &Bool8x4Type },
+        std::pair{ "zyzz"_c, &Bool8x4Type },
+        std::pair{ "zz"_c, &Bool8x2Type },
+        std::pair{ "zzw"_c, &Bool8x3Type },
+        std::pair{ "zzww"_c, &Bool8x4Type },
+        std::pair{ "zzwx"_c, &Bool8x4Type },
+        std::pair{ "zzwy"_c, &Bool8x4Type },
+        std::pair{ "zzwz"_c, &Bool8x4Type },
+        std::pair{ "zzx"_c, &Bool8x3Type },
+        std::pair{ "zzxw"_c, &Bool8x4Type },
+        std::pair{ "zzxx"_c, &Bool8x4Type },
+        std::pair{ "zzxy"_c, &Bool8x4Type },
+        std::pair{ "zzxz"_c, &Bool8x4Type },
+        std::pair{ "zzy"_c, &Bool8x3Type },
+        std::pair{ "zzyw"_c, &Bool8x4Type },
+        std::pair{ "zzyx"_c, &Bool8x4Type },
+        std::pair{ "zzyy"_c, &Bool8x4Type },
+        std::pair{ "zzyz"_c, &Bool8x4Type },
+        std::pair{ "zzz"_c, &Bool8x3Type },
+        std::pair{ "zzzw"_c, &Bool8x4Type },
+        std::pair{ "zzzx"_c, &Bool8x4Type },
+        std::pair{ "zzzy"_c, &Bool8x4Type },
+        std::pair{ "zzzz"_c, &Bool8x4Type }
     };
 }
 Bool8x4 Bool8x4Type;
@@ -15405,17 +20297,23 @@ Variable Float16x4_ctor3_arg2_Float16x2;
 Function Float16x4_ctor3;
 inline constexpr std::array Float16x4_ctor3_args = { &Float16x4_ctor3_arg0_Float16, &Float16x4_ctor3_arg1_Float16, &Float16x4_ctor3_arg2_Float16x2 };
 
-/// f16x4 with Float16x3, Float16
-Variable Float16x4_ctor4_arg0_Float16x3;
-Variable Float16x4_ctor4_arg1_Float16;
+/// f16x4 with Float16x2, Float16x2
+Variable Float16x4_ctor4_arg0_Float16x2;
+Variable Float16x4_ctor4_arg1_Float16x2;
 Function Float16x4_ctor4;
-inline constexpr std::array Float16x4_ctor4_args = { &Float16x4_ctor4_arg0_Float16x3, &Float16x4_ctor4_arg1_Float16 };
+inline constexpr std::array Float16x4_ctor4_args = { &Float16x4_ctor4_arg0_Float16x2, &Float16x4_ctor4_arg1_Float16x2 };
+
+/// f16x4 with Float16x3, Float16
+Variable Float16x4_ctor5_arg0_Float16x3;
+Variable Float16x4_ctor5_arg1_Float16;
+Function Float16x4_ctor5;
+inline constexpr std::array Float16x4_ctor5_args = { &Float16x4_ctor5_arg0_Float16x3, &Float16x4_ctor5_arg1_Float16 };
 
 /// f16x4 with Float16, Float16x3
-Variable Float16x4_ctor5_arg0_Float16;
-Variable Float16x4_ctor5_arg1_Float16x3;
-Function Float16x4_ctor5;
-inline constexpr std::array Float16x4_ctor5_args = { &Float16x4_ctor5_arg0_Float16, &Float16x4_ctor5_arg1_Float16x3 };
+Variable Float16x4_ctor6_arg0_Float16;
+Variable Float16x4_ctor6_arg1_Float16x3;
+Function Float16x4_ctor6;
+inline constexpr std::array Float16x4_ctor6_args = { &Float16x4_ctor6_arg0_Float16, &Float16x4_ctor6_arg1_Float16x3 };
 
 /// operator[] with Int32
 Variable Float16x4_operator_index_Int32_arg0;
@@ -15543,19 +20441,19 @@ Function Float16x4_operator_scale_Int16;
 inline constexpr std::array Float16x4_operator_scale_Int16_args = { &Float16x4_operator_scale_Int16_arg0 };
 
 /// operator* with Float32x4x2
-Variable Float16x4_operator_mul_Float32x4x2_arg0;
-Function Float16x4_operator_mul_Float32x4x2;
-inline constexpr std::array Float16x4_operator_mul_Float32x4x2_args = { &Float16x4_operator_mul_Float32x4x2_arg0 };
+Variable Float16x4_operator_transform_Float32x4x2_arg0;
+Function Float16x4_operator_transform_Float32x4x2;
+inline constexpr std::array Float16x4_operator_transform_Float32x4x2_args = { &Float16x4_operator_transform_Float32x4x2_arg0 };
 
 /// operator* with Float32x4x3
-Variable Float16x4_operator_mul_Float32x4x3_arg0;
-Function Float16x4_operator_mul_Float32x4x3;
-inline constexpr std::array Float16x4_operator_mul_Float32x4x3_args = { &Float16x4_operator_mul_Float32x4x3_arg0 };
+Variable Float16x4_operator_transform_Float32x4x3_arg0;
+Function Float16x4_operator_transform_Float32x4x3;
+inline constexpr std::array Float16x4_operator_transform_Float32x4x3_args = { &Float16x4_operator_transform_Float32x4x3_arg0 };
 
 /// operator* with Float32x4x4
-Variable Float16x4_operator_mul_Float32x4x4_arg0;
-Function Float16x4_operator_mul_Float32x4x4;
-inline constexpr std::array Float16x4_operator_mul_Float32x4x4_args = { &Float16x4_operator_mul_Float32x4x4_arg0 };
+Variable Float16x4_operator_transform_Float32x4x4_arg0;
+Function Float16x4_operator_transform_Float32x4x4;
+inline constexpr std::array Float16x4_operator_transform_Float32x4x4_args = { &Float16x4_operator_transform_Float32x4x4_arg0 };
 
 Float16x4::Float16x4()
 {
@@ -15750,29 +20648,41 @@ Float16x4::Float16x4()
     Symbol::Resolved(&Float16x4_ctor3_arg2_Float16x2)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&Float16x4_ctor3)->returnTypeSymbol = &Float16x4Type;
 
-    /// f16x4 with Float16x3, Float16
-    Float16x4_ctor4_arg0_Float16x3.name = "_arg0"_c;
-    Float16x4_ctor4_arg0_Float16x3.type = Type::FullType{ Float16x3Type.name };
-    Float16x4_ctor4_arg1_Float16.name = "_arg1"_c;
-    Float16x4_ctor4_arg1_Float16.type = Type::FullType{ Float16Type.name };
+    /// f16x4 with Float16x2, Float16x2
+    Float16x4_ctor4_arg0_Float16x2.name = "_arg0"_c;
+    Float16x4_ctor4_arg0_Float16x2.type = Type::FullType{ Float16x2Type.name };
+    Float16x4_ctor4_arg1_Float16x2.name = "_arg1"_c;
+    Float16x4_ctor4_arg1_Float16x2.type = Type::FullType{ Float16x2Type.name };
     Float16x4_ctor4.name = "f16x4"_c;
     Float16x4_ctor4.returnType = Type::FullType { Float16x4Type.name };
     Float16x4_ctor4.parameters = Float16x4_ctor4_args;
-    Symbol::Resolved(&Float16x4_ctor4_arg0_Float16x3)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&Float16x4_ctor4_arg1_Float16)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&Float16x4_ctor4_arg0_Float16x2)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&Float16x4_ctor4_arg1_Float16x2)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&Float16x4_ctor4)->returnTypeSymbol = &Float16x4Type;
 
-    /// f16x4 with Float16, Float16x3
-    Float16x4_ctor5_arg0_Float16.name = "_arg0"_c;
-    Float16x4_ctor5_arg0_Float16.type = Type::FullType{ Float16Type.name };
-    Float16x4_ctor5_arg1_Float16x3.name = "_arg1"_c;
-    Float16x4_ctor5_arg1_Float16x3.type = Type::FullType{ Float16x3Type.name };
+    /// f16x4 with Float16x3, Float16
+    Float16x4_ctor5_arg0_Float16x3.name = "_arg0"_c;
+    Float16x4_ctor5_arg0_Float16x3.type = Type::FullType{ Float16x3Type.name };
+    Float16x4_ctor5_arg1_Float16.name = "_arg1"_c;
+    Float16x4_ctor5_arg1_Float16.type = Type::FullType{ Float16Type.name };
     Float16x4_ctor5.name = "f16x4"_c;
     Float16x4_ctor5.returnType = Type::FullType { Float16x4Type.name };
     Float16x4_ctor5.parameters = Float16x4_ctor5_args;
-    Symbol::Resolved(&Float16x4_ctor5_arg0_Float16)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Float16x4_ctor5_arg1_Float16x3)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&Float16x4_ctor5_arg0_Float16x3)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&Float16x4_ctor5_arg1_Float16)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x4_ctor5)->returnTypeSymbol = &Float16x4Type;
+
+    /// f16x4 with Float16, Float16x3
+    Float16x4_ctor6_arg0_Float16.name = "_arg0"_c;
+    Float16x4_ctor6_arg0_Float16.type = Type::FullType{ Float16Type.name };
+    Float16x4_ctor6_arg1_Float16x3.name = "_arg1"_c;
+    Float16x4_ctor6_arg1_Float16x3.type = Type::FullType{ Float16x3Type.name };
+    Float16x4_ctor6.name = "f16x4"_c;
+    Float16x4_ctor6.returnType = Type::FullType { Float16x4Type.name };
+    Float16x4_ctor6.parameters = Float16x4_ctor6_args;
+    Symbol::Resolved(&Float16x4_ctor6_arg0_Float16)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&Float16x4_ctor6_arg1_Float16x3)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&Float16x4_ctor6)->returnTypeSymbol = &Float16x4Type;
 
     /// operator[] with Int32
     Float16x4_operator_index_Int32_arg0.name = "_arg0"_c;
@@ -16000,61 +20910,741 @@ Float16x4::Float16x4()
     Symbol::Resolved(&Float16x4_operator_scale_Int16)->returnTypeSymbol = &Float16x4Type;
 
     /// operator* with Float32x4x2
-    Float16x4_operator_mul_Float32x4x2_arg0.name = "_arg0"_c;
-    Float16x4_operator_mul_Float32x4x2_arg0.type = Type::FullType{ Float32x4x2Type.name };
-    Float16x4_operator_mul_Float32x4x2.name = "operator*"_c;
-    Float16x4_operator_mul_Float32x4x2.returnType = Type::FullType { Float16x2Type.name };
-    Float16x4_operator_mul_Float32x4x2.parameters = Float16x4_operator_mul_Float32x4x2_args;
-    Symbol::Resolved(&Float16x4_operator_mul_Float32x4x2_arg0)->typeSymbol = &Float32x4x2Type;
-    Symbol::Resolved(&Float16x4_operator_mul_Float32x4x2)->returnTypeSymbol = &Float16x2Type;
+    Float16x4_operator_transform_Float32x4x2_arg0.name = "_arg0"_c;
+    Float16x4_operator_transform_Float32x4x2_arg0.type = Type::FullType{ Float32x4x2Type.name };
+    Float16x4_operator_transform_Float32x4x2.name = "operator*"_c;
+    Float16x4_operator_transform_Float32x4x2.returnType = Type::FullType { Float16x2Type.name };
+    Float16x4_operator_transform_Float32x4x2.parameters = Float16x4_operator_transform_Float32x4x2_args;
+    Symbol::Resolved(&Float16x4_operator_transform_Float32x4x2_arg0)->typeSymbol = &Float32x4x2Type;
+    Symbol::Resolved(&Float16x4_operator_transform_Float32x4x2)->returnTypeSymbol = &Float16x2Type;
 
     /// operator* with Float32x4x3
-    Float16x4_operator_mul_Float32x4x3_arg0.name = "_arg0"_c;
-    Float16x4_operator_mul_Float32x4x3_arg0.type = Type::FullType{ Float32x4x3Type.name };
-    Float16x4_operator_mul_Float32x4x3.name = "operator*"_c;
-    Float16x4_operator_mul_Float32x4x3.returnType = Type::FullType { Float16x3Type.name };
-    Float16x4_operator_mul_Float32x4x3.parameters = Float16x4_operator_mul_Float32x4x3_args;
-    Symbol::Resolved(&Float16x4_operator_mul_Float32x4x3_arg0)->typeSymbol = &Float32x4x3Type;
-    Symbol::Resolved(&Float16x4_operator_mul_Float32x4x3)->returnTypeSymbol = &Float16x3Type;
+    Float16x4_operator_transform_Float32x4x3_arg0.name = "_arg0"_c;
+    Float16x4_operator_transform_Float32x4x3_arg0.type = Type::FullType{ Float32x4x3Type.name };
+    Float16x4_operator_transform_Float32x4x3.name = "operator*"_c;
+    Float16x4_operator_transform_Float32x4x3.returnType = Type::FullType { Float16x3Type.name };
+    Float16x4_operator_transform_Float32x4x3.parameters = Float16x4_operator_transform_Float32x4x3_args;
+    Symbol::Resolved(&Float16x4_operator_transform_Float32x4x3_arg0)->typeSymbol = &Float32x4x3Type;
+    Symbol::Resolved(&Float16x4_operator_transform_Float32x4x3)->returnTypeSymbol = &Float16x3Type;
 
     /// operator* with Float32x4x4
-    Float16x4_operator_mul_Float32x4x4_arg0.name = "_arg0"_c;
-    Float16x4_operator_mul_Float32x4x4_arg0.type = Type::FullType{ Float32x4x4Type.name };
-    Float16x4_operator_mul_Float32x4x4.name = "operator*"_c;
-    Float16x4_operator_mul_Float32x4x4.returnType = Type::FullType { Float16x4Type.name };
-    Float16x4_operator_mul_Float32x4x4.parameters = Float16x4_operator_mul_Float32x4x4_args;
-    Symbol::Resolved(&Float16x4_operator_mul_Float32x4x4_arg0)->typeSymbol = &Float32x4x4Type;
-    Symbol::Resolved(&Float16x4_operator_mul_Float32x4x4)->returnTypeSymbol = &Float16x4Type;
+    Float16x4_operator_transform_Float32x4x4_arg0.name = "_arg0"_c;
+    Float16x4_operator_transform_Float32x4x4_arg0.type = Type::FullType{ Float32x4x4Type.name };
+    Float16x4_operator_transform_Float32x4x4.name = "operator*"_c;
+    Float16x4_operator_transform_Float32x4x4.returnType = Type::FullType { Float16x4Type.name };
+    Float16x4_operator_transform_Float32x4x4.parameters = Float16x4_operator_transform_Float32x4x4_args;
+    Symbol::Resolved(&Float16x4_operator_transform_Float32x4x4_arg0)->typeSymbol = &Float32x4x4Type;
+    Symbol::Resolved(&Float16x4_operator_transform_Float32x4x4)->returnTypeSymbol = &Float16x4Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 28> { 
-        std::pair{ "operator!=", &Float16x4_operator_neq_Float16x4 },
-        std::pair{ "operator%", &Float16x4_operator_mod_Float16x4 },
-        std::pair{ "operator*", &Float16x4_operator_mul_Float16x4 },
-        std::pair{ "operator*", &Float16x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float16x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x4_operator_scale_UInt32 },
-        std::pair{ "operator*", &Float16x4_operator_scale_UInt16 },
-        std::pair{ "operator*", &Float16x4_operator_scale_Int32 },
-        std::pair{ "operator*", &Float16x4_operator_scale_Int16 },
-        std::pair{ "operator*", &Float16x4_operator_mul_Float32x4x2 },
-        std::pair{ "operator*", &Float16x4_operator_mul_Float32x4x3 },
-        std::pair{ "operator*", &Float16x4_operator_mul_Float32x4x4 },
-        std::pair{ "operator*=", &Float16x4_operator_mulasg_Float16x4 },
-        std::pair{ "operator+", &Float16x4_operator_add_Float16x4 },
-        std::pair{ "operator+=", &Float16x4_operator_addasg_Float16x4 },
-        std::pair{ "operator-", &Float16x4_operator_sub_Float16x4 },
-        std::pair{ "operator-=", &Float16x4_operator_subasg_Float16x4 },
-        std::pair{ "operator/", &Float16x4_operator_div_Float16x4 },
-        std::pair{ "operator/=", &Float16x4_operator_divasg_Float16x4 },
-        std::pair{ "operator<", &Float16x4_operator_lt_Float16x4 },
-        std::pair{ "operator<=", &Float16x4_operator_lte_Float16x4 },
-        std::pair{ "operator==", &Float16x4_operator_eq_Float16x4 },
-        std::pair{ "operator>", &Float16x4_operator_gt_Float16x4 },
-        std::pair{ "operator>=", &Float16x4_operator_gte_Float16x4 },
-        std::pair{ "operator[]", &Float16x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x4_operator_index_UInt16 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 708> { 
+        std::pair{ "a"_c, &Float16Type },
+        std::pair{ "aa"_c, &Float16x2Type },
+        std::pair{ "aaa"_c, &Float16x3Type },
+        std::pair{ "aaaa"_c, &Float16x4Type },
+        std::pair{ "aaab"_c, &Float16x4Type },
+        std::pair{ "aaag"_c, &Float16x4Type },
+        std::pair{ "aaar"_c, &Float16x4Type },
+        std::pair{ "aab"_c, &Float16x3Type },
+        std::pair{ "aaba"_c, &Float16x4Type },
+        std::pair{ "aabb"_c, &Float16x4Type },
+        std::pair{ "aabg"_c, &Float16x4Type },
+        std::pair{ "aabr"_c, &Float16x4Type },
+        std::pair{ "aag"_c, &Float16x3Type },
+        std::pair{ "aaga"_c, &Float16x4Type },
+        std::pair{ "aagb"_c, &Float16x4Type },
+        std::pair{ "aagg"_c, &Float16x4Type },
+        std::pair{ "aagr"_c, &Float16x4Type },
+        std::pair{ "aar"_c, &Float16x3Type },
+        std::pair{ "aara"_c, &Float16x4Type },
+        std::pair{ "aarb"_c, &Float16x4Type },
+        std::pair{ "aarg"_c, &Float16x4Type },
+        std::pair{ "aarr"_c, &Float16x4Type },
+        std::pair{ "ab"_c, &Float16x2Type },
+        std::pair{ "aba"_c, &Float16x3Type },
+        std::pair{ "abaa"_c, &Float16x4Type },
+        std::pair{ "abab"_c, &Float16x4Type },
+        std::pair{ "abag"_c, &Float16x4Type },
+        std::pair{ "abar"_c, &Float16x4Type },
+        std::pair{ "abb"_c, &Float16x3Type },
+        std::pair{ "abba"_c, &Float16x4Type },
+        std::pair{ "abbb"_c, &Float16x4Type },
+        std::pair{ "abbg"_c, &Float16x4Type },
+        std::pair{ "abbr"_c, &Float16x4Type },
+        std::pair{ "abg"_c, &Float16x3Type },
+        std::pair{ "abga"_c, &Float16x4Type },
+        std::pair{ "abgb"_c, &Float16x4Type },
+        std::pair{ "abgg"_c, &Float16x4Type },
+        std::pair{ "abgr"_c, &Float16x4Type },
+        std::pair{ "abr"_c, &Float16x3Type },
+        std::pair{ "abra"_c, &Float16x4Type },
+        std::pair{ "abrb"_c, &Float16x4Type },
+        std::pair{ "abrg"_c, &Float16x4Type },
+        std::pair{ "abrr"_c, &Float16x4Type },
+        std::pair{ "ag"_c, &Float16x2Type },
+        std::pair{ "aga"_c, &Float16x3Type },
+        std::pair{ "agaa"_c, &Float16x4Type },
+        std::pair{ "agab"_c, &Float16x4Type },
+        std::pair{ "agag"_c, &Float16x4Type },
+        std::pair{ "agar"_c, &Float16x4Type },
+        std::pair{ "agb"_c, &Float16x3Type },
+        std::pair{ "agba"_c, &Float16x4Type },
+        std::pair{ "agbb"_c, &Float16x4Type },
+        std::pair{ "agbg"_c, &Float16x4Type },
+        std::pair{ "agbr"_c, &Float16x4Type },
+        std::pair{ "agg"_c, &Float16x3Type },
+        std::pair{ "agga"_c, &Float16x4Type },
+        std::pair{ "aggb"_c, &Float16x4Type },
+        std::pair{ "aggg"_c, &Float16x4Type },
+        std::pair{ "aggr"_c, &Float16x4Type },
+        std::pair{ "agr"_c, &Float16x3Type },
+        std::pair{ "agra"_c, &Float16x4Type },
+        std::pair{ "agrb"_c, &Float16x4Type },
+        std::pair{ "agrg"_c, &Float16x4Type },
+        std::pair{ "agrr"_c, &Float16x4Type },
+        std::pair{ "ar"_c, &Float16x2Type },
+        std::pair{ "ara"_c, &Float16x3Type },
+        std::pair{ "araa"_c, &Float16x4Type },
+        std::pair{ "arab"_c, &Float16x4Type },
+        std::pair{ "arag"_c, &Float16x4Type },
+        std::pair{ "arar"_c, &Float16x4Type },
+        std::pair{ "arb"_c, &Float16x3Type },
+        std::pair{ "arba"_c, &Float16x4Type },
+        std::pair{ "arbb"_c, &Float16x4Type },
+        std::pair{ "arbg"_c, &Float16x4Type },
+        std::pair{ "arbr"_c, &Float16x4Type },
+        std::pair{ "arg"_c, &Float16x3Type },
+        std::pair{ "arga"_c, &Float16x4Type },
+        std::pair{ "argb"_c, &Float16x4Type },
+        std::pair{ "argg"_c, &Float16x4Type },
+        std::pair{ "argr"_c, &Float16x4Type },
+        std::pair{ "arr"_c, &Float16x3Type },
+        std::pair{ "arra"_c, &Float16x4Type },
+        std::pair{ "arrb"_c, &Float16x4Type },
+        std::pair{ "arrg"_c, &Float16x4Type },
+        std::pair{ "arrr"_c, &Float16x4Type },
+        std::pair{ "b"_c, &Float16Type },
+        std::pair{ "ba"_c, &Float16x2Type },
+        std::pair{ "baa"_c, &Float16x3Type },
+        std::pair{ "baaa"_c, &Float16x4Type },
+        std::pair{ "baab"_c, &Float16x4Type },
+        std::pair{ "baag"_c, &Float16x4Type },
+        std::pair{ "baar"_c, &Float16x4Type },
+        std::pair{ "bab"_c, &Float16x3Type },
+        std::pair{ "baba"_c, &Float16x4Type },
+        std::pair{ "babb"_c, &Float16x4Type },
+        std::pair{ "babg"_c, &Float16x4Type },
+        std::pair{ "babr"_c, &Float16x4Type },
+        std::pair{ "bag"_c, &Float16x3Type },
+        std::pair{ "baga"_c, &Float16x4Type },
+        std::pair{ "bagb"_c, &Float16x4Type },
+        std::pair{ "bagg"_c, &Float16x4Type },
+        std::pair{ "bagr"_c, &Float16x4Type },
+        std::pair{ "bar"_c, &Float16x3Type },
+        std::pair{ "bara"_c, &Float16x4Type },
+        std::pair{ "barb"_c, &Float16x4Type },
+        std::pair{ "barg"_c, &Float16x4Type },
+        std::pair{ "barr"_c, &Float16x4Type },
+        std::pair{ "bb"_c, &Float16x2Type },
+        std::pair{ "bba"_c, &Float16x3Type },
+        std::pair{ "bbaa"_c, &Float16x4Type },
+        std::pair{ "bbab"_c, &Float16x4Type },
+        std::pair{ "bbag"_c, &Float16x4Type },
+        std::pair{ "bbar"_c, &Float16x4Type },
+        std::pair{ "bbb"_c, &Float16x3Type },
+        std::pair{ "bbba"_c, &Float16x4Type },
+        std::pair{ "bbbb"_c, &Float16x4Type },
+        std::pair{ "bbbg"_c, &Float16x4Type },
+        std::pair{ "bbbr"_c, &Float16x4Type },
+        std::pair{ "bbg"_c, &Float16x3Type },
+        std::pair{ "bbga"_c, &Float16x4Type },
+        std::pair{ "bbgb"_c, &Float16x4Type },
+        std::pair{ "bbgg"_c, &Float16x4Type },
+        std::pair{ "bbgr"_c, &Float16x4Type },
+        std::pair{ "bbr"_c, &Float16x3Type },
+        std::pair{ "bbra"_c, &Float16x4Type },
+        std::pair{ "bbrb"_c, &Float16x4Type },
+        std::pair{ "bbrg"_c, &Float16x4Type },
+        std::pair{ "bbrr"_c, &Float16x4Type },
+        std::pair{ "bg"_c, &Float16x2Type },
+        std::pair{ "bga"_c, &Float16x3Type },
+        std::pair{ "bgaa"_c, &Float16x4Type },
+        std::pair{ "bgab"_c, &Float16x4Type },
+        std::pair{ "bgag"_c, &Float16x4Type },
+        std::pair{ "bgar"_c, &Float16x4Type },
+        std::pair{ "bgb"_c, &Float16x3Type },
+        std::pair{ "bgba"_c, &Float16x4Type },
+        std::pair{ "bgbb"_c, &Float16x4Type },
+        std::pair{ "bgbg"_c, &Float16x4Type },
+        std::pair{ "bgbr"_c, &Float16x4Type },
+        std::pair{ "bgg"_c, &Float16x3Type },
+        std::pair{ "bgga"_c, &Float16x4Type },
+        std::pair{ "bggb"_c, &Float16x4Type },
+        std::pair{ "bggg"_c, &Float16x4Type },
+        std::pair{ "bggr"_c, &Float16x4Type },
+        std::pair{ "bgr"_c, &Float16x3Type },
+        std::pair{ "bgra"_c, &Float16x4Type },
+        std::pair{ "bgrb"_c, &Float16x4Type },
+        std::pair{ "bgrg"_c, &Float16x4Type },
+        std::pair{ "bgrr"_c, &Float16x4Type },
+        std::pair{ "br"_c, &Float16x2Type },
+        std::pair{ "bra"_c, &Float16x3Type },
+        std::pair{ "braa"_c, &Float16x4Type },
+        std::pair{ "brab"_c, &Float16x4Type },
+        std::pair{ "brag"_c, &Float16x4Type },
+        std::pair{ "brar"_c, &Float16x4Type },
+        std::pair{ "brb"_c, &Float16x3Type },
+        std::pair{ "brba"_c, &Float16x4Type },
+        std::pair{ "brbb"_c, &Float16x4Type },
+        std::pair{ "brbg"_c, &Float16x4Type },
+        std::pair{ "brbr"_c, &Float16x4Type },
+        std::pair{ "brg"_c, &Float16x3Type },
+        std::pair{ "brga"_c, &Float16x4Type },
+        std::pair{ "brgb"_c, &Float16x4Type },
+        std::pair{ "brgg"_c, &Float16x4Type },
+        std::pair{ "brgr"_c, &Float16x4Type },
+        std::pair{ "brr"_c, &Float16x3Type },
+        std::pair{ "brra"_c, &Float16x4Type },
+        std::pair{ "brrb"_c, &Float16x4Type },
+        std::pair{ "brrg"_c, &Float16x4Type },
+        std::pair{ "brrr"_c, &Float16x4Type },
+        std::pair{ "g"_c, &Float16Type },
+        std::pair{ "ga"_c, &Float16x2Type },
+        std::pair{ "gaa"_c, &Float16x3Type },
+        std::pair{ "gaaa"_c, &Float16x4Type },
+        std::pair{ "gaab"_c, &Float16x4Type },
+        std::pair{ "gaag"_c, &Float16x4Type },
+        std::pair{ "gaar"_c, &Float16x4Type },
+        std::pair{ "gab"_c, &Float16x3Type },
+        std::pair{ "gaba"_c, &Float16x4Type },
+        std::pair{ "gabb"_c, &Float16x4Type },
+        std::pair{ "gabg"_c, &Float16x4Type },
+        std::pair{ "gabr"_c, &Float16x4Type },
+        std::pair{ "gag"_c, &Float16x3Type },
+        std::pair{ "gaga"_c, &Float16x4Type },
+        std::pair{ "gagb"_c, &Float16x4Type },
+        std::pair{ "gagg"_c, &Float16x4Type },
+        std::pair{ "gagr"_c, &Float16x4Type },
+        std::pair{ "gar"_c, &Float16x3Type },
+        std::pair{ "gara"_c, &Float16x4Type },
+        std::pair{ "garb"_c, &Float16x4Type },
+        std::pair{ "garg"_c, &Float16x4Type },
+        std::pair{ "garr"_c, &Float16x4Type },
+        std::pair{ "gb"_c, &Float16x2Type },
+        std::pair{ "gba"_c, &Float16x3Type },
+        std::pair{ "gbaa"_c, &Float16x4Type },
+        std::pair{ "gbab"_c, &Float16x4Type },
+        std::pair{ "gbag"_c, &Float16x4Type },
+        std::pair{ "gbar"_c, &Float16x4Type },
+        std::pair{ "gbb"_c, &Float16x3Type },
+        std::pair{ "gbba"_c, &Float16x4Type },
+        std::pair{ "gbbb"_c, &Float16x4Type },
+        std::pair{ "gbbg"_c, &Float16x4Type },
+        std::pair{ "gbbr"_c, &Float16x4Type },
+        std::pair{ "gbg"_c, &Float16x3Type },
+        std::pair{ "gbga"_c, &Float16x4Type },
+        std::pair{ "gbgb"_c, &Float16x4Type },
+        std::pair{ "gbgg"_c, &Float16x4Type },
+        std::pair{ "gbgr"_c, &Float16x4Type },
+        std::pair{ "gbr"_c, &Float16x3Type },
+        std::pair{ "gbra"_c, &Float16x4Type },
+        std::pair{ "gbrb"_c, &Float16x4Type },
+        std::pair{ "gbrg"_c, &Float16x4Type },
+        std::pair{ "gbrr"_c, &Float16x4Type },
+        std::pair{ "gg"_c, &Float16x2Type },
+        std::pair{ "gga"_c, &Float16x3Type },
+        std::pair{ "ggaa"_c, &Float16x4Type },
+        std::pair{ "ggab"_c, &Float16x4Type },
+        std::pair{ "ggag"_c, &Float16x4Type },
+        std::pair{ "ggar"_c, &Float16x4Type },
+        std::pair{ "ggb"_c, &Float16x3Type },
+        std::pair{ "ggba"_c, &Float16x4Type },
+        std::pair{ "ggbb"_c, &Float16x4Type },
+        std::pair{ "ggbg"_c, &Float16x4Type },
+        std::pair{ "ggbr"_c, &Float16x4Type },
+        std::pair{ "ggg"_c, &Float16x3Type },
+        std::pair{ "ggga"_c, &Float16x4Type },
+        std::pair{ "gggb"_c, &Float16x4Type },
+        std::pair{ "gggg"_c, &Float16x4Type },
+        std::pair{ "gggr"_c, &Float16x4Type },
+        std::pair{ "ggr"_c, &Float16x3Type },
+        std::pair{ "ggra"_c, &Float16x4Type },
+        std::pair{ "ggrb"_c, &Float16x4Type },
+        std::pair{ "ggrg"_c, &Float16x4Type },
+        std::pair{ "ggrr"_c, &Float16x4Type },
+        std::pair{ "gr"_c, &Float16x2Type },
+        std::pair{ "gra"_c, &Float16x3Type },
+        std::pair{ "graa"_c, &Float16x4Type },
+        std::pair{ "grab"_c, &Float16x4Type },
+        std::pair{ "grag"_c, &Float16x4Type },
+        std::pair{ "grar"_c, &Float16x4Type },
+        std::pair{ "grb"_c, &Float16x3Type },
+        std::pair{ "grba"_c, &Float16x4Type },
+        std::pair{ "grbb"_c, &Float16x4Type },
+        std::pair{ "grbg"_c, &Float16x4Type },
+        std::pair{ "grbr"_c, &Float16x4Type },
+        std::pair{ "grg"_c, &Float16x3Type },
+        std::pair{ "grga"_c, &Float16x4Type },
+        std::pair{ "grgb"_c, &Float16x4Type },
+        std::pair{ "grgg"_c, &Float16x4Type },
+        std::pair{ "grgr"_c, &Float16x4Type },
+        std::pair{ "grr"_c, &Float16x3Type },
+        std::pair{ "grra"_c, &Float16x4Type },
+        std::pair{ "grrb"_c, &Float16x4Type },
+        std::pair{ "grrg"_c, &Float16x4Type },
+        std::pair{ "grrr"_c, &Float16x4Type },
+        std::pair{ "operator!=(f16x4)"_c, &Float16x4_operator_neq_Float16x4 },
+        std::pair{ "operator%(f16x4)"_c, &Float16x4_operator_mod_Float16x4 },
+        std::pair{ "operator*(f16)"_c, &Float16x4_operator_scale_Float16 },
+        std::pair{ "operator*(f16x4)"_c, &Float16x4_operator_mul_Float16x4 },
+        std::pair{ "operator*(f32)"_c, &Float16x4_operator_scale_Float32 },
+        std::pair{ "operator*(f32x4x2)"_c, &Float16x4_operator_transform_Float32x4x2 },
+        std::pair{ "operator*(f32x4x3)"_c, &Float16x4_operator_transform_Float32x4x3 },
+        std::pair{ "operator*(f32x4x4)"_c, &Float16x4_operator_transform_Float32x4x4 },
+        std::pair{ "operator*(i16)"_c, &Float16x4_operator_scale_Int16 },
+        std::pair{ "operator*(i32)"_c, &Float16x4_operator_scale_Int32 },
+        std::pair{ "operator*(u16)"_c, &Float16x4_operator_scale_UInt16 },
+        std::pair{ "operator*(u32)"_c, &Float16x4_operator_scale_UInt32 },
+        std::pair{ "operator*=(f16x4)"_c, &Float16x4_operator_mulasg_Float16x4 },
+        std::pair{ "operator+(f16x4)"_c, &Float16x4_operator_add_Float16x4 },
+        std::pair{ "operator+=(f16x4)"_c, &Float16x4_operator_addasg_Float16x4 },
+        std::pair{ "operator-(f16x4)"_c, &Float16x4_operator_sub_Float16x4 },
+        std::pair{ "operator-=(f16x4)"_c, &Float16x4_operator_subasg_Float16x4 },
+        std::pair{ "operator/(f16x4)"_c, &Float16x4_operator_div_Float16x4 },
+        std::pair{ "operator/=(f16x4)"_c, &Float16x4_operator_divasg_Float16x4 },
+        std::pair{ "operator<(f16x4)"_c, &Float16x4_operator_lt_Float16x4 },
+        std::pair{ "operator<=(f16x4)"_c, &Float16x4_operator_lte_Float16x4 },
+        std::pair{ "operator==(f16x4)"_c, &Float16x4_operator_eq_Float16x4 },
+        std::pair{ "operator>(f16x4)"_c, &Float16x4_operator_gt_Float16x4 },
+        std::pair{ "operator>=(f16x4)"_c, &Float16x4_operator_gte_Float16x4 },
+        std::pair{ "operator[](i16)"_c, &Float16x4_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &Float16x4_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &Float16x4_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &Float16x4_operator_index_UInt32 },
+        std::pair{ "r"_c, &Float16Type },
+        std::pair{ "ra"_c, &Float16x2Type },
+        std::pair{ "raa"_c, &Float16x3Type },
+        std::pair{ "raaa"_c, &Float16x4Type },
+        std::pair{ "raab"_c, &Float16x4Type },
+        std::pair{ "raag"_c, &Float16x4Type },
+        std::pair{ "raar"_c, &Float16x4Type },
+        std::pair{ "rab"_c, &Float16x3Type },
+        std::pair{ "raba"_c, &Float16x4Type },
+        std::pair{ "rabb"_c, &Float16x4Type },
+        std::pair{ "rabg"_c, &Float16x4Type },
+        std::pair{ "rabr"_c, &Float16x4Type },
+        std::pair{ "rag"_c, &Float16x3Type },
+        std::pair{ "raga"_c, &Float16x4Type },
+        std::pair{ "ragb"_c, &Float16x4Type },
+        std::pair{ "ragg"_c, &Float16x4Type },
+        std::pair{ "ragr"_c, &Float16x4Type },
+        std::pair{ "rar"_c, &Float16x3Type },
+        std::pair{ "rara"_c, &Float16x4Type },
+        std::pair{ "rarb"_c, &Float16x4Type },
+        std::pair{ "rarg"_c, &Float16x4Type },
+        std::pair{ "rarr"_c, &Float16x4Type },
+        std::pair{ "rb"_c, &Float16x2Type },
+        std::pair{ "rba"_c, &Float16x3Type },
+        std::pair{ "rbaa"_c, &Float16x4Type },
+        std::pair{ "rbab"_c, &Float16x4Type },
+        std::pair{ "rbag"_c, &Float16x4Type },
+        std::pair{ "rbar"_c, &Float16x4Type },
+        std::pair{ "rbb"_c, &Float16x3Type },
+        std::pair{ "rbba"_c, &Float16x4Type },
+        std::pair{ "rbbb"_c, &Float16x4Type },
+        std::pair{ "rbbg"_c, &Float16x4Type },
+        std::pair{ "rbbr"_c, &Float16x4Type },
+        std::pair{ "rbg"_c, &Float16x3Type },
+        std::pair{ "rbga"_c, &Float16x4Type },
+        std::pair{ "rbgb"_c, &Float16x4Type },
+        std::pair{ "rbgg"_c, &Float16x4Type },
+        std::pair{ "rbgr"_c, &Float16x4Type },
+        std::pair{ "rbr"_c, &Float16x3Type },
+        std::pair{ "rbra"_c, &Float16x4Type },
+        std::pair{ "rbrb"_c, &Float16x4Type },
+        std::pair{ "rbrg"_c, &Float16x4Type },
+        std::pair{ "rbrr"_c, &Float16x4Type },
+        std::pair{ "rg"_c, &Float16x2Type },
+        std::pair{ "rga"_c, &Float16x3Type },
+        std::pair{ "rgaa"_c, &Float16x4Type },
+        std::pair{ "rgab"_c, &Float16x4Type },
+        std::pair{ "rgag"_c, &Float16x4Type },
+        std::pair{ "rgar"_c, &Float16x4Type },
+        std::pair{ "rgb"_c, &Float16x3Type },
+        std::pair{ "rgba"_c, &Float16x4Type },
+        std::pair{ "rgbb"_c, &Float16x4Type },
+        std::pair{ "rgbg"_c, &Float16x4Type },
+        std::pair{ "rgbr"_c, &Float16x4Type },
+        std::pair{ "rgg"_c, &Float16x3Type },
+        std::pair{ "rgga"_c, &Float16x4Type },
+        std::pair{ "rggb"_c, &Float16x4Type },
+        std::pair{ "rggg"_c, &Float16x4Type },
+        std::pair{ "rggr"_c, &Float16x4Type },
+        std::pair{ "rgr"_c, &Float16x3Type },
+        std::pair{ "rgra"_c, &Float16x4Type },
+        std::pair{ "rgrb"_c, &Float16x4Type },
+        std::pair{ "rgrg"_c, &Float16x4Type },
+        std::pair{ "rgrr"_c, &Float16x4Type },
+        std::pair{ "rr"_c, &Float16x2Type },
+        std::pair{ "rra"_c, &Float16x3Type },
+        std::pair{ "rraa"_c, &Float16x4Type },
+        std::pair{ "rrab"_c, &Float16x4Type },
+        std::pair{ "rrag"_c, &Float16x4Type },
+        std::pair{ "rrar"_c, &Float16x4Type },
+        std::pair{ "rrb"_c, &Float16x3Type },
+        std::pair{ "rrba"_c, &Float16x4Type },
+        std::pair{ "rrbb"_c, &Float16x4Type },
+        std::pair{ "rrbg"_c, &Float16x4Type },
+        std::pair{ "rrbr"_c, &Float16x4Type },
+        std::pair{ "rrg"_c, &Float16x3Type },
+        std::pair{ "rrga"_c, &Float16x4Type },
+        std::pair{ "rrgb"_c, &Float16x4Type },
+        std::pair{ "rrgg"_c, &Float16x4Type },
+        std::pair{ "rrgr"_c, &Float16x4Type },
+        std::pair{ "rrr"_c, &Float16x3Type },
+        std::pair{ "rrra"_c, &Float16x4Type },
+        std::pair{ "rrrb"_c, &Float16x4Type },
+        std::pair{ "rrrg"_c, &Float16x4Type },
+        std::pair{ "rrrr"_c, &Float16x4Type },
+        std::pair{ "w"_c, &Float16Type },
+        std::pair{ "ww"_c, &Float16x2Type },
+        std::pair{ "www"_c, &Float16x3Type },
+        std::pair{ "wwww"_c, &Float16x4Type },
+        std::pair{ "wwwx"_c, &Float16x4Type },
+        std::pair{ "wwwy"_c, &Float16x4Type },
+        std::pair{ "wwwz"_c, &Float16x4Type },
+        std::pair{ "wwx"_c, &Float16x3Type },
+        std::pair{ "wwxw"_c, &Float16x4Type },
+        std::pair{ "wwxx"_c, &Float16x4Type },
+        std::pair{ "wwxy"_c, &Float16x4Type },
+        std::pair{ "wwxz"_c, &Float16x4Type },
+        std::pair{ "wwy"_c, &Float16x3Type },
+        std::pair{ "wwyw"_c, &Float16x4Type },
+        std::pair{ "wwyx"_c, &Float16x4Type },
+        std::pair{ "wwyy"_c, &Float16x4Type },
+        std::pair{ "wwyz"_c, &Float16x4Type },
+        std::pair{ "wwz"_c, &Float16x3Type },
+        std::pair{ "wwzw"_c, &Float16x4Type },
+        std::pair{ "wwzx"_c, &Float16x4Type },
+        std::pair{ "wwzy"_c, &Float16x4Type },
+        std::pair{ "wwzz"_c, &Float16x4Type },
+        std::pair{ "wx"_c, &Float16x2Type },
+        std::pair{ "wxw"_c, &Float16x3Type },
+        std::pair{ "wxww"_c, &Float16x4Type },
+        std::pair{ "wxwx"_c, &Float16x4Type },
+        std::pair{ "wxwy"_c, &Float16x4Type },
+        std::pair{ "wxwz"_c, &Float16x4Type },
+        std::pair{ "wxx"_c, &Float16x3Type },
+        std::pair{ "wxxw"_c, &Float16x4Type },
+        std::pair{ "wxxx"_c, &Float16x4Type },
+        std::pair{ "wxxy"_c, &Float16x4Type },
+        std::pair{ "wxxz"_c, &Float16x4Type },
+        std::pair{ "wxy"_c, &Float16x3Type },
+        std::pair{ "wxyw"_c, &Float16x4Type },
+        std::pair{ "wxyx"_c, &Float16x4Type },
+        std::pair{ "wxyy"_c, &Float16x4Type },
+        std::pair{ "wxyz"_c, &Float16x4Type },
+        std::pair{ "wxz"_c, &Float16x3Type },
+        std::pair{ "wxzw"_c, &Float16x4Type },
+        std::pair{ "wxzx"_c, &Float16x4Type },
+        std::pair{ "wxzy"_c, &Float16x4Type },
+        std::pair{ "wxzz"_c, &Float16x4Type },
+        std::pair{ "wy"_c, &Float16x2Type },
+        std::pair{ "wyw"_c, &Float16x3Type },
+        std::pair{ "wyww"_c, &Float16x4Type },
+        std::pair{ "wywx"_c, &Float16x4Type },
+        std::pair{ "wywy"_c, &Float16x4Type },
+        std::pair{ "wywz"_c, &Float16x4Type },
+        std::pair{ "wyx"_c, &Float16x3Type },
+        std::pair{ "wyxw"_c, &Float16x4Type },
+        std::pair{ "wyxx"_c, &Float16x4Type },
+        std::pair{ "wyxy"_c, &Float16x4Type },
+        std::pair{ "wyxz"_c, &Float16x4Type },
+        std::pair{ "wyy"_c, &Float16x3Type },
+        std::pair{ "wyyw"_c, &Float16x4Type },
+        std::pair{ "wyyx"_c, &Float16x4Type },
+        std::pair{ "wyyy"_c, &Float16x4Type },
+        std::pair{ "wyyz"_c, &Float16x4Type },
+        std::pair{ "wyz"_c, &Float16x3Type },
+        std::pair{ "wyzw"_c, &Float16x4Type },
+        std::pair{ "wyzx"_c, &Float16x4Type },
+        std::pair{ "wyzy"_c, &Float16x4Type },
+        std::pair{ "wyzz"_c, &Float16x4Type },
+        std::pair{ "wz"_c, &Float16x2Type },
+        std::pair{ "wzw"_c, &Float16x3Type },
+        std::pair{ "wzww"_c, &Float16x4Type },
+        std::pair{ "wzwx"_c, &Float16x4Type },
+        std::pair{ "wzwy"_c, &Float16x4Type },
+        std::pair{ "wzwz"_c, &Float16x4Type },
+        std::pair{ "wzx"_c, &Float16x3Type },
+        std::pair{ "wzxw"_c, &Float16x4Type },
+        std::pair{ "wzxx"_c, &Float16x4Type },
+        std::pair{ "wzxy"_c, &Float16x4Type },
+        std::pair{ "wzxz"_c, &Float16x4Type },
+        std::pair{ "wzy"_c, &Float16x3Type },
+        std::pair{ "wzyw"_c, &Float16x4Type },
+        std::pair{ "wzyx"_c, &Float16x4Type },
+        std::pair{ "wzyy"_c, &Float16x4Type },
+        std::pair{ "wzyz"_c, &Float16x4Type },
+        std::pair{ "wzz"_c, &Float16x3Type },
+        std::pair{ "wzzw"_c, &Float16x4Type },
+        std::pair{ "wzzx"_c, &Float16x4Type },
+        std::pair{ "wzzy"_c, &Float16x4Type },
+        std::pair{ "wzzz"_c, &Float16x4Type },
+        std::pair{ "x"_c, &Float16Type },
+        std::pair{ "xw"_c, &Float16x2Type },
+        std::pair{ "xww"_c, &Float16x3Type },
+        std::pair{ "xwww"_c, &Float16x4Type },
+        std::pair{ "xwwx"_c, &Float16x4Type },
+        std::pair{ "xwwy"_c, &Float16x4Type },
+        std::pair{ "xwwz"_c, &Float16x4Type },
+        std::pair{ "xwx"_c, &Float16x3Type },
+        std::pair{ "xwxw"_c, &Float16x4Type },
+        std::pair{ "xwxx"_c, &Float16x4Type },
+        std::pair{ "xwxy"_c, &Float16x4Type },
+        std::pair{ "xwxz"_c, &Float16x4Type },
+        std::pair{ "xwy"_c, &Float16x3Type },
+        std::pair{ "xwyw"_c, &Float16x4Type },
+        std::pair{ "xwyx"_c, &Float16x4Type },
+        std::pair{ "xwyy"_c, &Float16x4Type },
+        std::pair{ "xwyz"_c, &Float16x4Type },
+        std::pair{ "xwz"_c, &Float16x3Type },
+        std::pair{ "xwzw"_c, &Float16x4Type },
+        std::pair{ "xwzx"_c, &Float16x4Type },
+        std::pair{ "xwzy"_c, &Float16x4Type },
+        std::pair{ "xwzz"_c, &Float16x4Type },
+        std::pair{ "xx"_c, &Float16x2Type },
+        std::pair{ "xxw"_c, &Float16x3Type },
+        std::pair{ "xxww"_c, &Float16x4Type },
+        std::pair{ "xxwx"_c, &Float16x4Type },
+        std::pair{ "xxwy"_c, &Float16x4Type },
+        std::pair{ "xxwz"_c, &Float16x4Type },
+        std::pair{ "xxx"_c, &Float16x3Type },
+        std::pair{ "xxxw"_c, &Float16x4Type },
+        std::pair{ "xxxx"_c, &Float16x4Type },
+        std::pair{ "xxxy"_c, &Float16x4Type },
+        std::pair{ "xxxz"_c, &Float16x4Type },
+        std::pair{ "xxy"_c, &Float16x3Type },
+        std::pair{ "xxyw"_c, &Float16x4Type },
+        std::pair{ "xxyx"_c, &Float16x4Type },
+        std::pair{ "xxyy"_c, &Float16x4Type },
+        std::pair{ "xxyz"_c, &Float16x4Type },
+        std::pair{ "xxz"_c, &Float16x3Type },
+        std::pair{ "xxzw"_c, &Float16x4Type },
+        std::pair{ "xxzx"_c, &Float16x4Type },
+        std::pair{ "xxzy"_c, &Float16x4Type },
+        std::pair{ "xxzz"_c, &Float16x4Type },
+        std::pair{ "xy"_c, &Float16x2Type },
+        std::pair{ "xyw"_c, &Float16x3Type },
+        std::pair{ "xyww"_c, &Float16x4Type },
+        std::pair{ "xywx"_c, &Float16x4Type },
+        std::pair{ "xywy"_c, &Float16x4Type },
+        std::pair{ "xywz"_c, &Float16x4Type },
+        std::pair{ "xyx"_c, &Float16x3Type },
+        std::pair{ "xyxw"_c, &Float16x4Type },
+        std::pair{ "xyxx"_c, &Float16x4Type },
+        std::pair{ "xyxy"_c, &Float16x4Type },
+        std::pair{ "xyxz"_c, &Float16x4Type },
+        std::pair{ "xyy"_c, &Float16x3Type },
+        std::pair{ "xyyw"_c, &Float16x4Type },
+        std::pair{ "xyyx"_c, &Float16x4Type },
+        std::pair{ "xyyy"_c, &Float16x4Type },
+        std::pair{ "xyyz"_c, &Float16x4Type },
+        std::pair{ "xyz"_c, &Float16x3Type },
+        std::pair{ "xyzw"_c, &Float16x4Type },
+        std::pair{ "xyzx"_c, &Float16x4Type },
+        std::pair{ "xyzy"_c, &Float16x4Type },
+        std::pair{ "xyzz"_c, &Float16x4Type },
+        std::pair{ "xz"_c, &Float16x2Type },
+        std::pair{ "xzw"_c, &Float16x3Type },
+        std::pair{ "xzww"_c, &Float16x4Type },
+        std::pair{ "xzwx"_c, &Float16x4Type },
+        std::pair{ "xzwy"_c, &Float16x4Type },
+        std::pair{ "xzwz"_c, &Float16x4Type },
+        std::pair{ "xzx"_c, &Float16x3Type },
+        std::pair{ "xzxw"_c, &Float16x4Type },
+        std::pair{ "xzxx"_c, &Float16x4Type },
+        std::pair{ "xzxy"_c, &Float16x4Type },
+        std::pair{ "xzxz"_c, &Float16x4Type },
+        std::pair{ "xzy"_c, &Float16x3Type },
+        std::pair{ "xzyw"_c, &Float16x4Type },
+        std::pair{ "xzyx"_c, &Float16x4Type },
+        std::pair{ "xzyy"_c, &Float16x4Type },
+        std::pair{ "xzyz"_c, &Float16x4Type },
+        std::pair{ "xzz"_c, &Float16x3Type },
+        std::pair{ "xzzw"_c, &Float16x4Type },
+        std::pair{ "xzzx"_c, &Float16x4Type },
+        std::pair{ "xzzy"_c, &Float16x4Type },
+        std::pair{ "xzzz"_c, &Float16x4Type },
+        std::pair{ "y"_c, &Float16Type },
+        std::pair{ "yw"_c, &Float16x2Type },
+        std::pair{ "yww"_c, &Float16x3Type },
+        std::pair{ "ywww"_c, &Float16x4Type },
+        std::pair{ "ywwx"_c, &Float16x4Type },
+        std::pair{ "ywwy"_c, &Float16x4Type },
+        std::pair{ "ywwz"_c, &Float16x4Type },
+        std::pair{ "ywx"_c, &Float16x3Type },
+        std::pair{ "ywxw"_c, &Float16x4Type },
+        std::pair{ "ywxx"_c, &Float16x4Type },
+        std::pair{ "ywxy"_c, &Float16x4Type },
+        std::pair{ "ywxz"_c, &Float16x4Type },
+        std::pair{ "ywy"_c, &Float16x3Type },
+        std::pair{ "ywyw"_c, &Float16x4Type },
+        std::pair{ "ywyx"_c, &Float16x4Type },
+        std::pair{ "ywyy"_c, &Float16x4Type },
+        std::pair{ "ywyz"_c, &Float16x4Type },
+        std::pair{ "ywz"_c, &Float16x3Type },
+        std::pair{ "ywzw"_c, &Float16x4Type },
+        std::pair{ "ywzx"_c, &Float16x4Type },
+        std::pair{ "ywzy"_c, &Float16x4Type },
+        std::pair{ "ywzz"_c, &Float16x4Type },
+        std::pair{ "yx"_c, &Float16x2Type },
+        std::pair{ "yxw"_c, &Float16x3Type },
+        std::pair{ "yxww"_c, &Float16x4Type },
+        std::pair{ "yxwx"_c, &Float16x4Type },
+        std::pair{ "yxwy"_c, &Float16x4Type },
+        std::pair{ "yxwz"_c, &Float16x4Type },
+        std::pair{ "yxx"_c, &Float16x3Type },
+        std::pair{ "yxxw"_c, &Float16x4Type },
+        std::pair{ "yxxx"_c, &Float16x4Type },
+        std::pair{ "yxxy"_c, &Float16x4Type },
+        std::pair{ "yxxz"_c, &Float16x4Type },
+        std::pair{ "yxy"_c, &Float16x3Type },
+        std::pair{ "yxyw"_c, &Float16x4Type },
+        std::pair{ "yxyx"_c, &Float16x4Type },
+        std::pair{ "yxyy"_c, &Float16x4Type },
+        std::pair{ "yxyz"_c, &Float16x4Type },
+        std::pair{ "yxz"_c, &Float16x3Type },
+        std::pair{ "yxzw"_c, &Float16x4Type },
+        std::pair{ "yxzx"_c, &Float16x4Type },
+        std::pair{ "yxzy"_c, &Float16x4Type },
+        std::pair{ "yxzz"_c, &Float16x4Type },
+        std::pair{ "yy"_c, &Float16x2Type },
+        std::pair{ "yyw"_c, &Float16x3Type },
+        std::pair{ "yyww"_c, &Float16x4Type },
+        std::pair{ "yywx"_c, &Float16x4Type },
+        std::pair{ "yywy"_c, &Float16x4Type },
+        std::pair{ "yywz"_c, &Float16x4Type },
+        std::pair{ "yyx"_c, &Float16x3Type },
+        std::pair{ "yyxw"_c, &Float16x4Type },
+        std::pair{ "yyxx"_c, &Float16x4Type },
+        std::pair{ "yyxy"_c, &Float16x4Type },
+        std::pair{ "yyxz"_c, &Float16x4Type },
+        std::pair{ "yyy"_c, &Float16x3Type },
+        std::pair{ "yyyw"_c, &Float16x4Type },
+        std::pair{ "yyyx"_c, &Float16x4Type },
+        std::pair{ "yyyy"_c, &Float16x4Type },
+        std::pair{ "yyyz"_c, &Float16x4Type },
+        std::pair{ "yyz"_c, &Float16x3Type },
+        std::pair{ "yyzw"_c, &Float16x4Type },
+        std::pair{ "yyzx"_c, &Float16x4Type },
+        std::pair{ "yyzy"_c, &Float16x4Type },
+        std::pair{ "yyzz"_c, &Float16x4Type },
+        std::pair{ "yz"_c, &Float16x2Type },
+        std::pair{ "yzw"_c, &Float16x3Type },
+        std::pair{ "yzww"_c, &Float16x4Type },
+        std::pair{ "yzwx"_c, &Float16x4Type },
+        std::pair{ "yzwy"_c, &Float16x4Type },
+        std::pair{ "yzwz"_c, &Float16x4Type },
+        std::pair{ "yzx"_c, &Float16x3Type },
+        std::pair{ "yzxw"_c, &Float16x4Type },
+        std::pair{ "yzxx"_c, &Float16x4Type },
+        std::pair{ "yzxy"_c, &Float16x4Type },
+        std::pair{ "yzxz"_c, &Float16x4Type },
+        std::pair{ "yzy"_c, &Float16x3Type },
+        std::pair{ "yzyw"_c, &Float16x4Type },
+        std::pair{ "yzyx"_c, &Float16x4Type },
+        std::pair{ "yzyy"_c, &Float16x4Type },
+        std::pair{ "yzyz"_c, &Float16x4Type },
+        std::pair{ "yzz"_c, &Float16x3Type },
+        std::pair{ "yzzw"_c, &Float16x4Type },
+        std::pair{ "yzzx"_c, &Float16x4Type },
+        std::pair{ "yzzy"_c, &Float16x4Type },
+        std::pair{ "yzzz"_c, &Float16x4Type },
+        std::pair{ "z"_c, &Float16Type },
+        std::pair{ "zw"_c, &Float16x2Type },
+        std::pair{ "zww"_c, &Float16x3Type },
+        std::pair{ "zwww"_c, &Float16x4Type },
+        std::pair{ "zwwx"_c, &Float16x4Type },
+        std::pair{ "zwwy"_c, &Float16x4Type },
+        std::pair{ "zwwz"_c, &Float16x4Type },
+        std::pair{ "zwx"_c, &Float16x3Type },
+        std::pair{ "zwxw"_c, &Float16x4Type },
+        std::pair{ "zwxx"_c, &Float16x4Type },
+        std::pair{ "zwxy"_c, &Float16x4Type },
+        std::pair{ "zwxz"_c, &Float16x4Type },
+        std::pair{ "zwy"_c, &Float16x3Type },
+        std::pair{ "zwyw"_c, &Float16x4Type },
+        std::pair{ "zwyx"_c, &Float16x4Type },
+        std::pair{ "zwyy"_c, &Float16x4Type },
+        std::pair{ "zwyz"_c, &Float16x4Type },
+        std::pair{ "zwz"_c, &Float16x3Type },
+        std::pair{ "zwzw"_c, &Float16x4Type },
+        std::pair{ "zwzx"_c, &Float16x4Type },
+        std::pair{ "zwzy"_c, &Float16x4Type },
+        std::pair{ "zwzz"_c, &Float16x4Type },
+        std::pair{ "zx"_c, &Float16x2Type },
+        std::pair{ "zxw"_c, &Float16x3Type },
+        std::pair{ "zxww"_c, &Float16x4Type },
+        std::pair{ "zxwx"_c, &Float16x4Type },
+        std::pair{ "zxwy"_c, &Float16x4Type },
+        std::pair{ "zxwz"_c, &Float16x4Type },
+        std::pair{ "zxx"_c, &Float16x3Type },
+        std::pair{ "zxxw"_c, &Float16x4Type },
+        std::pair{ "zxxx"_c, &Float16x4Type },
+        std::pair{ "zxxy"_c, &Float16x4Type },
+        std::pair{ "zxxz"_c, &Float16x4Type },
+        std::pair{ "zxy"_c, &Float16x3Type },
+        std::pair{ "zxyw"_c, &Float16x4Type },
+        std::pair{ "zxyx"_c, &Float16x4Type },
+        std::pair{ "zxyy"_c, &Float16x4Type },
+        std::pair{ "zxyz"_c, &Float16x4Type },
+        std::pair{ "zxz"_c, &Float16x3Type },
+        std::pair{ "zxzw"_c, &Float16x4Type },
+        std::pair{ "zxzx"_c, &Float16x4Type },
+        std::pair{ "zxzy"_c, &Float16x4Type },
+        std::pair{ "zxzz"_c, &Float16x4Type },
+        std::pair{ "zy"_c, &Float16x2Type },
+        std::pair{ "zyw"_c, &Float16x3Type },
+        std::pair{ "zyww"_c, &Float16x4Type },
+        std::pair{ "zywx"_c, &Float16x4Type },
+        std::pair{ "zywy"_c, &Float16x4Type },
+        std::pair{ "zywz"_c, &Float16x4Type },
+        std::pair{ "zyx"_c, &Float16x3Type },
+        std::pair{ "zyxw"_c, &Float16x4Type },
+        std::pair{ "zyxx"_c, &Float16x4Type },
+        std::pair{ "zyxy"_c, &Float16x4Type },
+        std::pair{ "zyxz"_c, &Float16x4Type },
+        std::pair{ "zyy"_c, &Float16x3Type },
+        std::pair{ "zyyw"_c, &Float16x4Type },
+        std::pair{ "zyyx"_c, &Float16x4Type },
+        std::pair{ "zyyy"_c, &Float16x4Type },
+        std::pair{ "zyyz"_c, &Float16x4Type },
+        std::pair{ "zyz"_c, &Float16x3Type },
+        std::pair{ "zyzw"_c, &Float16x4Type },
+        std::pair{ "zyzx"_c, &Float16x4Type },
+        std::pair{ "zyzy"_c, &Float16x4Type },
+        std::pair{ "zyzz"_c, &Float16x4Type },
+        std::pair{ "zz"_c, &Float16x2Type },
+        std::pair{ "zzw"_c, &Float16x3Type },
+        std::pair{ "zzww"_c, &Float16x4Type },
+        std::pair{ "zzwx"_c, &Float16x4Type },
+        std::pair{ "zzwy"_c, &Float16x4Type },
+        std::pair{ "zzwz"_c, &Float16x4Type },
+        std::pair{ "zzx"_c, &Float16x3Type },
+        std::pair{ "zzxw"_c, &Float16x4Type },
+        std::pair{ "zzxx"_c, &Float16x4Type },
+        std::pair{ "zzxy"_c, &Float16x4Type },
+        std::pair{ "zzxz"_c, &Float16x4Type },
+        std::pair{ "zzy"_c, &Float16x3Type },
+        std::pair{ "zzyw"_c, &Float16x4Type },
+        std::pair{ "zzyx"_c, &Float16x4Type },
+        std::pair{ "zzyy"_c, &Float16x4Type },
+        std::pair{ "zzyz"_c, &Float16x4Type },
+        std::pair{ "zzz"_c, &Float16x3Type },
+        std::pair{ "zzzw"_c, &Float16x4Type },
+        std::pair{ "zzzx"_c, &Float16x4Type },
+        std::pair{ "zzzy"_c, &Float16x4Type },
+        std::pair{ "zzzz"_c, &Float16x4Type }
     };
 }
 Float16x4 Float16x4Type;
@@ -16148,17 +21738,23 @@ Variable UInt16x4_ctor3_arg2_UInt16x2;
 Function UInt16x4_ctor3;
 inline constexpr std::array UInt16x4_ctor3_args = { &UInt16x4_ctor3_arg0_UInt16, &UInt16x4_ctor3_arg1_UInt16, &UInt16x4_ctor3_arg2_UInt16x2 };
 
-/// u16x4 with UInt16x3, UInt16
-Variable UInt16x4_ctor4_arg0_UInt16x3;
-Variable UInt16x4_ctor4_arg1_UInt16;
+/// u16x4 with UInt16x2, UInt16x2
+Variable UInt16x4_ctor4_arg0_UInt16x2;
+Variable UInt16x4_ctor4_arg1_UInt16x2;
 Function UInt16x4_ctor4;
-inline constexpr std::array UInt16x4_ctor4_args = { &UInt16x4_ctor4_arg0_UInt16x3, &UInt16x4_ctor4_arg1_UInt16 };
+inline constexpr std::array UInt16x4_ctor4_args = { &UInt16x4_ctor4_arg0_UInt16x2, &UInt16x4_ctor4_arg1_UInt16x2 };
+
+/// u16x4 with UInt16x3, UInt16
+Variable UInt16x4_ctor5_arg0_UInt16x3;
+Variable UInt16x4_ctor5_arg1_UInt16;
+Function UInt16x4_ctor5;
+inline constexpr std::array UInt16x4_ctor5_args = { &UInt16x4_ctor5_arg0_UInt16x3, &UInt16x4_ctor5_arg1_UInt16 };
 
 /// u16x4 with UInt16, UInt16x3
-Variable UInt16x4_ctor5_arg0_UInt16;
-Variable UInt16x4_ctor5_arg1_UInt16x3;
-Function UInt16x4_ctor5;
-inline constexpr std::array UInt16x4_ctor5_args = { &UInt16x4_ctor5_arg0_UInt16, &UInt16x4_ctor5_arg1_UInt16x3 };
+Variable UInt16x4_ctor6_arg0_UInt16;
+Variable UInt16x4_ctor6_arg1_UInt16x3;
+Function UInt16x4_ctor6;
+inline constexpr std::array UInt16x4_ctor6_args = { &UInt16x4_ctor6_arg0_UInt16, &UInt16x4_ctor6_arg1_UInt16x3 };
 
 /// operator[] with Int32
 Variable UInt16x4_operator_index_Int32_arg0;
@@ -16528,29 +22124,41 @@ UInt16x4::UInt16x4()
     Symbol::Resolved(&UInt16x4_ctor3_arg2_UInt16x2)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x4_ctor3)->returnTypeSymbol = &UInt16x4Type;
 
-    /// u16x4 with UInt16x3, UInt16
-    UInt16x4_ctor4_arg0_UInt16x3.name = "_arg0"_c;
-    UInt16x4_ctor4_arg0_UInt16x3.type = Type::FullType{ UInt16x3Type.name };
-    UInt16x4_ctor4_arg1_UInt16.name = "_arg1"_c;
-    UInt16x4_ctor4_arg1_UInt16.type = Type::FullType{ UInt16Type.name };
+    /// u16x4 with UInt16x2, UInt16x2
+    UInt16x4_ctor4_arg0_UInt16x2.name = "_arg0"_c;
+    UInt16x4_ctor4_arg0_UInt16x2.type = Type::FullType{ UInt16x2Type.name };
+    UInt16x4_ctor4_arg1_UInt16x2.name = "_arg1"_c;
+    UInt16x4_ctor4_arg1_UInt16x2.type = Type::FullType{ UInt16x2Type.name };
     UInt16x4_ctor4.name = "u16x4"_c;
     UInt16x4_ctor4.returnType = Type::FullType { UInt16x4Type.name };
     UInt16x4_ctor4.parameters = UInt16x4_ctor4_args;
-    Symbol::Resolved(&UInt16x4_ctor4_arg0_UInt16x3)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&UInt16x4_ctor4_arg1_UInt16)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&UInt16x4_ctor4_arg0_UInt16x2)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&UInt16x4_ctor4_arg1_UInt16x2)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&UInt16x4_ctor4)->returnTypeSymbol = &UInt16x4Type;
 
-    /// u16x4 with UInt16, UInt16x3
-    UInt16x4_ctor5_arg0_UInt16.name = "_arg0"_c;
-    UInt16x4_ctor5_arg0_UInt16.type = Type::FullType{ UInt16Type.name };
-    UInt16x4_ctor5_arg1_UInt16x3.name = "_arg1"_c;
-    UInt16x4_ctor5_arg1_UInt16x3.type = Type::FullType{ UInt16x3Type.name };
+    /// u16x4 with UInt16x3, UInt16
+    UInt16x4_ctor5_arg0_UInt16x3.name = "_arg0"_c;
+    UInt16x4_ctor5_arg0_UInt16x3.type = Type::FullType{ UInt16x3Type.name };
+    UInt16x4_ctor5_arg1_UInt16.name = "_arg1"_c;
+    UInt16x4_ctor5_arg1_UInt16.type = Type::FullType{ UInt16Type.name };
     UInt16x4_ctor5.name = "u16x4"_c;
     UInt16x4_ctor5.returnType = Type::FullType { UInt16x4Type.name };
     UInt16x4_ctor5.parameters = UInt16x4_ctor5_args;
-    Symbol::Resolved(&UInt16x4_ctor5_arg0_UInt16)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&UInt16x4_ctor5_arg1_UInt16x3)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&UInt16x4_ctor5_arg0_UInt16x3)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&UInt16x4_ctor5_arg1_UInt16)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&UInt16x4_ctor5)->returnTypeSymbol = &UInt16x4Type;
+
+    /// u16x4 with UInt16, UInt16x3
+    UInt16x4_ctor6_arg0_UInt16.name = "_arg0"_c;
+    UInt16x4_ctor6_arg0_UInt16.type = Type::FullType{ UInt16Type.name };
+    UInt16x4_ctor6_arg1_UInt16x3.name = "_arg1"_c;
+    UInt16x4_ctor6_arg1_UInt16x3.type = Type::FullType{ UInt16x3Type.name };
+    UInt16x4_ctor6.name = "u16x4"_c;
+    UInt16x4_ctor6.returnType = Type::FullType { UInt16x4Type.name };
+    UInt16x4_ctor6.parameters = UInt16x4_ctor6_args;
+    Symbol::Resolved(&UInt16x4_ctor6_arg0_UInt16)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&UInt16x4_ctor6_arg1_UInt16x3)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&UInt16x4_ctor6)->returnTypeSymbol = &UInt16x4Type;
 
     /// operator[] with Int32
     UInt16x4_operator_index_Int32_arg0.name = "_arg0"_c;
@@ -16867,42 +22475,722 @@ UInt16x4::UInt16x4()
     Symbol::Resolved(&UInt16x4_operator_rhsasg_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&UInt16x4_operator_rhsasg_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 35> { 
-        std::pair{ "operator!=", &UInt16x4_operator_neq_UInt16x4 },
-        std::pair{ "operator%", &UInt16x4_operator_mod_UInt16x4 },
-        std::pair{ "operator&", &UInt16x4_operator_and_UInt16x4 },
-        std::pair{ "operator&=", &UInt16x4_operator_andasg_UInt16x4 },
-        std::pair{ "operator*", &UInt16x4_operator_mul_UInt16x4 },
-        std::pair{ "operator*", &UInt16x4_operator_scale_Float32 },
-        std::pair{ "operator*", &UInt16x4_operator_scale_Float16 },
-        std::pair{ "operator*", &UInt16x4_operator_scale_UInt32 },
-        std::pair{ "operator*", &UInt16x4_operator_scale_UInt16 },
-        std::pair{ "operator*", &UInt16x4_operator_scale_Int32 },
-        std::pair{ "operator*", &UInt16x4_operator_scale_Int16 },
-        std::pair{ "operator*=", &UInt16x4_operator_mulasg_UInt16x4 },
-        std::pair{ "operator+", &UInt16x4_operator_add_UInt16x4 },
-        std::pair{ "operator+=", &UInt16x4_operator_addasg_UInt16x4 },
-        std::pair{ "operator-", &UInt16x4_operator_sub_UInt16x4 },
-        std::pair{ "operator-=", &UInt16x4_operator_subasg_UInt16x4 },
-        std::pair{ "operator/", &UInt16x4_operator_div_UInt16x4 },
-        std::pair{ "operator/=", &UInt16x4_operator_divasg_UInt16x4 },
-        std::pair{ "operator<", &UInt16x4_operator_lt_UInt16x4 },
-        std::pair{ "operator<<", &UInt16x4_operator_lsh_UInt16x4 },
-        std::pair{ "operator<<=", &UInt16x4_operator_lshasg_UInt16x4 },
-        std::pair{ "operator<=", &UInt16x4_operator_lte_UInt16x4 },
-        std::pair{ "operator==", &UInt16x4_operator_eq_UInt16x4 },
-        std::pair{ "operator>", &UInt16x4_operator_gt_UInt16x4 },
-        std::pair{ "operator>=", &UInt16x4_operator_gte_UInt16x4 },
-        std::pair{ "operator>>", &UInt16x4_operator_rsh_UInt16x4 },
-        std::pair{ "operator>>=", &UInt16x4_operator_rhsasg_UInt16x4 },
-        std::pair{ "operator[]", &UInt16x4_operator_index_Int32 },
-        std::pair{ "operator[]", &UInt16x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &UInt16x4_operator_index_Int16 },
-        std::pair{ "operator[]", &UInt16x4_operator_index_UInt16 },
-        std::pair{ "operator^", &UInt16x4_operator_xor_UInt16x4 },
-        std::pair{ "operator^=", &UInt16x4_operator_xorasg_UInt16x4 },
-        std::pair{ "operator|", &UInt16x4_operator_or_UInt16x4 },
-        std::pair{ "operator|=", &UInt16x4_operator_orasg_UInt16x4 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 715> { 
+        std::pair{ "a"_c, &UInt16Type },
+        std::pair{ "aa"_c, &UInt16x2Type },
+        std::pair{ "aaa"_c, &UInt16x3Type },
+        std::pair{ "aaaa"_c, &UInt16x4Type },
+        std::pair{ "aaab"_c, &UInt16x4Type },
+        std::pair{ "aaag"_c, &UInt16x4Type },
+        std::pair{ "aaar"_c, &UInt16x4Type },
+        std::pair{ "aab"_c, &UInt16x3Type },
+        std::pair{ "aaba"_c, &UInt16x4Type },
+        std::pair{ "aabb"_c, &UInt16x4Type },
+        std::pair{ "aabg"_c, &UInt16x4Type },
+        std::pair{ "aabr"_c, &UInt16x4Type },
+        std::pair{ "aag"_c, &UInt16x3Type },
+        std::pair{ "aaga"_c, &UInt16x4Type },
+        std::pair{ "aagb"_c, &UInt16x4Type },
+        std::pair{ "aagg"_c, &UInt16x4Type },
+        std::pair{ "aagr"_c, &UInt16x4Type },
+        std::pair{ "aar"_c, &UInt16x3Type },
+        std::pair{ "aara"_c, &UInt16x4Type },
+        std::pair{ "aarb"_c, &UInt16x4Type },
+        std::pair{ "aarg"_c, &UInt16x4Type },
+        std::pair{ "aarr"_c, &UInt16x4Type },
+        std::pair{ "ab"_c, &UInt16x2Type },
+        std::pair{ "aba"_c, &UInt16x3Type },
+        std::pair{ "abaa"_c, &UInt16x4Type },
+        std::pair{ "abab"_c, &UInt16x4Type },
+        std::pair{ "abag"_c, &UInt16x4Type },
+        std::pair{ "abar"_c, &UInt16x4Type },
+        std::pair{ "abb"_c, &UInt16x3Type },
+        std::pair{ "abba"_c, &UInt16x4Type },
+        std::pair{ "abbb"_c, &UInt16x4Type },
+        std::pair{ "abbg"_c, &UInt16x4Type },
+        std::pair{ "abbr"_c, &UInt16x4Type },
+        std::pair{ "abg"_c, &UInt16x3Type },
+        std::pair{ "abga"_c, &UInt16x4Type },
+        std::pair{ "abgb"_c, &UInt16x4Type },
+        std::pair{ "abgg"_c, &UInt16x4Type },
+        std::pair{ "abgr"_c, &UInt16x4Type },
+        std::pair{ "abr"_c, &UInt16x3Type },
+        std::pair{ "abra"_c, &UInt16x4Type },
+        std::pair{ "abrb"_c, &UInt16x4Type },
+        std::pair{ "abrg"_c, &UInt16x4Type },
+        std::pair{ "abrr"_c, &UInt16x4Type },
+        std::pair{ "ag"_c, &UInt16x2Type },
+        std::pair{ "aga"_c, &UInt16x3Type },
+        std::pair{ "agaa"_c, &UInt16x4Type },
+        std::pair{ "agab"_c, &UInt16x4Type },
+        std::pair{ "agag"_c, &UInt16x4Type },
+        std::pair{ "agar"_c, &UInt16x4Type },
+        std::pair{ "agb"_c, &UInt16x3Type },
+        std::pair{ "agba"_c, &UInt16x4Type },
+        std::pair{ "agbb"_c, &UInt16x4Type },
+        std::pair{ "agbg"_c, &UInt16x4Type },
+        std::pair{ "agbr"_c, &UInt16x4Type },
+        std::pair{ "agg"_c, &UInt16x3Type },
+        std::pair{ "agga"_c, &UInt16x4Type },
+        std::pair{ "aggb"_c, &UInt16x4Type },
+        std::pair{ "aggg"_c, &UInt16x4Type },
+        std::pair{ "aggr"_c, &UInt16x4Type },
+        std::pair{ "agr"_c, &UInt16x3Type },
+        std::pair{ "agra"_c, &UInt16x4Type },
+        std::pair{ "agrb"_c, &UInt16x4Type },
+        std::pair{ "agrg"_c, &UInt16x4Type },
+        std::pair{ "agrr"_c, &UInt16x4Type },
+        std::pair{ "ar"_c, &UInt16x2Type },
+        std::pair{ "ara"_c, &UInt16x3Type },
+        std::pair{ "araa"_c, &UInt16x4Type },
+        std::pair{ "arab"_c, &UInt16x4Type },
+        std::pair{ "arag"_c, &UInt16x4Type },
+        std::pair{ "arar"_c, &UInt16x4Type },
+        std::pair{ "arb"_c, &UInt16x3Type },
+        std::pair{ "arba"_c, &UInt16x4Type },
+        std::pair{ "arbb"_c, &UInt16x4Type },
+        std::pair{ "arbg"_c, &UInt16x4Type },
+        std::pair{ "arbr"_c, &UInt16x4Type },
+        std::pair{ "arg"_c, &UInt16x3Type },
+        std::pair{ "arga"_c, &UInt16x4Type },
+        std::pair{ "argb"_c, &UInt16x4Type },
+        std::pair{ "argg"_c, &UInt16x4Type },
+        std::pair{ "argr"_c, &UInt16x4Type },
+        std::pair{ "arr"_c, &UInt16x3Type },
+        std::pair{ "arra"_c, &UInt16x4Type },
+        std::pair{ "arrb"_c, &UInt16x4Type },
+        std::pair{ "arrg"_c, &UInt16x4Type },
+        std::pair{ "arrr"_c, &UInt16x4Type },
+        std::pair{ "b"_c, &UInt16Type },
+        std::pair{ "ba"_c, &UInt16x2Type },
+        std::pair{ "baa"_c, &UInt16x3Type },
+        std::pair{ "baaa"_c, &UInt16x4Type },
+        std::pair{ "baab"_c, &UInt16x4Type },
+        std::pair{ "baag"_c, &UInt16x4Type },
+        std::pair{ "baar"_c, &UInt16x4Type },
+        std::pair{ "bab"_c, &UInt16x3Type },
+        std::pair{ "baba"_c, &UInt16x4Type },
+        std::pair{ "babb"_c, &UInt16x4Type },
+        std::pair{ "babg"_c, &UInt16x4Type },
+        std::pair{ "babr"_c, &UInt16x4Type },
+        std::pair{ "bag"_c, &UInt16x3Type },
+        std::pair{ "baga"_c, &UInt16x4Type },
+        std::pair{ "bagb"_c, &UInt16x4Type },
+        std::pair{ "bagg"_c, &UInt16x4Type },
+        std::pair{ "bagr"_c, &UInt16x4Type },
+        std::pair{ "bar"_c, &UInt16x3Type },
+        std::pair{ "bara"_c, &UInt16x4Type },
+        std::pair{ "barb"_c, &UInt16x4Type },
+        std::pair{ "barg"_c, &UInt16x4Type },
+        std::pair{ "barr"_c, &UInt16x4Type },
+        std::pair{ "bb"_c, &UInt16x2Type },
+        std::pair{ "bba"_c, &UInt16x3Type },
+        std::pair{ "bbaa"_c, &UInt16x4Type },
+        std::pair{ "bbab"_c, &UInt16x4Type },
+        std::pair{ "bbag"_c, &UInt16x4Type },
+        std::pair{ "bbar"_c, &UInt16x4Type },
+        std::pair{ "bbb"_c, &UInt16x3Type },
+        std::pair{ "bbba"_c, &UInt16x4Type },
+        std::pair{ "bbbb"_c, &UInt16x4Type },
+        std::pair{ "bbbg"_c, &UInt16x4Type },
+        std::pair{ "bbbr"_c, &UInt16x4Type },
+        std::pair{ "bbg"_c, &UInt16x3Type },
+        std::pair{ "bbga"_c, &UInt16x4Type },
+        std::pair{ "bbgb"_c, &UInt16x4Type },
+        std::pair{ "bbgg"_c, &UInt16x4Type },
+        std::pair{ "bbgr"_c, &UInt16x4Type },
+        std::pair{ "bbr"_c, &UInt16x3Type },
+        std::pair{ "bbra"_c, &UInt16x4Type },
+        std::pair{ "bbrb"_c, &UInt16x4Type },
+        std::pair{ "bbrg"_c, &UInt16x4Type },
+        std::pair{ "bbrr"_c, &UInt16x4Type },
+        std::pair{ "bg"_c, &UInt16x2Type },
+        std::pair{ "bga"_c, &UInt16x3Type },
+        std::pair{ "bgaa"_c, &UInt16x4Type },
+        std::pair{ "bgab"_c, &UInt16x4Type },
+        std::pair{ "bgag"_c, &UInt16x4Type },
+        std::pair{ "bgar"_c, &UInt16x4Type },
+        std::pair{ "bgb"_c, &UInt16x3Type },
+        std::pair{ "bgba"_c, &UInt16x4Type },
+        std::pair{ "bgbb"_c, &UInt16x4Type },
+        std::pair{ "bgbg"_c, &UInt16x4Type },
+        std::pair{ "bgbr"_c, &UInt16x4Type },
+        std::pair{ "bgg"_c, &UInt16x3Type },
+        std::pair{ "bgga"_c, &UInt16x4Type },
+        std::pair{ "bggb"_c, &UInt16x4Type },
+        std::pair{ "bggg"_c, &UInt16x4Type },
+        std::pair{ "bggr"_c, &UInt16x4Type },
+        std::pair{ "bgr"_c, &UInt16x3Type },
+        std::pair{ "bgra"_c, &UInt16x4Type },
+        std::pair{ "bgrb"_c, &UInt16x4Type },
+        std::pair{ "bgrg"_c, &UInt16x4Type },
+        std::pair{ "bgrr"_c, &UInt16x4Type },
+        std::pair{ "br"_c, &UInt16x2Type },
+        std::pair{ "bra"_c, &UInt16x3Type },
+        std::pair{ "braa"_c, &UInt16x4Type },
+        std::pair{ "brab"_c, &UInt16x4Type },
+        std::pair{ "brag"_c, &UInt16x4Type },
+        std::pair{ "brar"_c, &UInt16x4Type },
+        std::pair{ "brb"_c, &UInt16x3Type },
+        std::pair{ "brba"_c, &UInt16x4Type },
+        std::pair{ "brbb"_c, &UInt16x4Type },
+        std::pair{ "brbg"_c, &UInt16x4Type },
+        std::pair{ "brbr"_c, &UInt16x4Type },
+        std::pair{ "brg"_c, &UInt16x3Type },
+        std::pair{ "brga"_c, &UInt16x4Type },
+        std::pair{ "brgb"_c, &UInt16x4Type },
+        std::pair{ "brgg"_c, &UInt16x4Type },
+        std::pair{ "brgr"_c, &UInt16x4Type },
+        std::pair{ "brr"_c, &UInt16x3Type },
+        std::pair{ "brra"_c, &UInt16x4Type },
+        std::pair{ "brrb"_c, &UInt16x4Type },
+        std::pair{ "brrg"_c, &UInt16x4Type },
+        std::pair{ "brrr"_c, &UInt16x4Type },
+        std::pair{ "g"_c, &UInt16Type },
+        std::pair{ "ga"_c, &UInt16x2Type },
+        std::pair{ "gaa"_c, &UInt16x3Type },
+        std::pair{ "gaaa"_c, &UInt16x4Type },
+        std::pair{ "gaab"_c, &UInt16x4Type },
+        std::pair{ "gaag"_c, &UInt16x4Type },
+        std::pair{ "gaar"_c, &UInt16x4Type },
+        std::pair{ "gab"_c, &UInt16x3Type },
+        std::pair{ "gaba"_c, &UInt16x4Type },
+        std::pair{ "gabb"_c, &UInt16x4Type },
+        std::pair{ "gabg"_c, &UInt16x4Type },
+        std::pair{ "gabr"_c, &UInt16x4Type },
+        std::pair{ "gag"_c, &UInt16x3Type },
+        std::pair{ "gaga"_c, &UInt16x4Type },
+        std::pair{ "gagb"_c, &UInt16x4Type },
+        std::pair{ "gagg"_c, &UInt16x4Type },
+        std::pair{ "gagr"_c, &UInt16x4Type },
+        std::pair{ "gar"_c, &UInt16x3Type },
+        std::pair{ "gara"_c, &UInt16x4Type },
+        std::pair{ "garb"_c, &UInt16x4Type },
+        std::pair{ "garg"_c, &UInt16x4Type },
+        std::pair{ "garr"_c, &UInt16x4Type },
+        std::pair{ "gb"_c, &UInt16x2Type },
+        std::pair{ "gba"_c, &UInt16x3Type },
+        std::pair{ "gbaa"_c, &UInt16x4Type },
+        std::pair{ "gbab"_c, &UInt16x4Type },
+        std::pair{ "gbag"_c, &UInt16x4Type },
+        std::pair{ "gbar"_c, &UInt16x4Type },
+        std::pair{ "gbb"_c, &UInt16x3Type },
+        std::pair{ "gbba"_c, &UInt16x4Type },
+        std::pair{ "gbbb"_c, &UInt16x4Type },
+        std::pair{ "gbbg"_c, &UInt16x4Type },
+        std::pair{ "gbbr"_c, &UInt16x4Type },
+        std::pair{ "gbg"_c, &UInt16x3Type },
+        std::pair{ "gbga"_c, &UInt16x4Type },
+        std::pair{ "gbgb"_c, &UInt16x4Type },
+        std::pair{ "gbgg"_c, &UInt16x4Type },
+        std::pair{ "gbgr"_c, &UInt16x4Type },
+        std::pair{ "gbr"_c, &UInt16x3Type },
+        std::pair{ "gbra"_c, &UInt16x4Type },
+        std::pair{ "gbrb"_c, &UInt16x4Type },
+        std::pair{ "gbrg"_c, &UInt16x4Type },
+        std::pair{ "gbrr"_c, &UInt16x4Type },
+        std::pair{ "gg"_c, &UInt16x2Type },
+        std::pair{ "gga"_c, &UInt16x3Type },
+        std::pair{ "ggaa"_c, &UInt16x4Type },
+        std::pair{ "ggab"_c, &UInt16x4Type },
+        std::pair{ "ggag"_c, &UInt16x4Type },
+        std::pair{ "ggar"_c, &UInt16x4Type },
+        std::pair{ "ggb"_c, &UInt16x3Type },
+        std::pair{ "ggba"_c, &UInt16x4Type },
+        std::pair{ "ggbb"_c, &UInt16x4Type },
+        std::pair{ "ggbg"_c, &UInt16x4Type },
+        std::pair{ "ggbr"_c, &UInt16x4Type },
+        std::pair{ "ggg"_c, &UInt16x3Type },
+        std::pair{ "ggga"_c, &UInt16x4Type },
+        std::pair{ "gggb"_c, &UInt16x4Type },
+        std::pair{ "gggg"_c, &UInt16x4Type },
+        std::pair{ "gggr"_c, &UInt16x4Type },
+        std::pair{ "ggr"_c, &UInt16x3Type },
+        std::pair{ "ggra"_c, &UInt16x4Type },
+        std::pair{ "ggrb"_c, &UInt16x4Type },
+        std::pair{ "ggrg"_c, &UInt16x4Type },
+        std::pair{ "ggrr"_c, &UInt16x4Type },
+        std::pair{ "gr"_c, &UInt16x2Type },
+        std::pair{ "gra"_c, &UInt16x3Type },
+        std::pair{ "graa"_c, &UInt16x4Type },
+        std::pair{ "grab"_c, &UInt16x4Type },
+        std::pair{ "grag"_c, &UInt16x4Type },
+        std::pair{ "grar"_c, &UInt16x4Type },
+        std::pair{ "grb"_c, &UInt16x3Type },
+        std::pair{ "grba"_c, &UInt16x4Type },
+        std::pair{ "grbb"_c, &UInt16x4Type },
+        std::pair{ "grbg"_c, &UInt16x4Type },
+        std::pair{ "grbr"_c, &UInt16x4Type },
+        std::pair{ "grg"_c, &UInt16x3Type },
+        std::pair{ "grga"_c, &UInt16x4Type },
+        std::pair{ "grgb"_c, &UInt16x4Type },
+        std::pair{ "grgg"_c, &UInt16x4Type },
+        std::pair{ "grgr"_c, &UInt16x4Type },
+        std::pair{ "grr"_c, &UInt16x3Type },
+        std::pair{ "grra"_c, &UInt16x4Type },
+        std::pair{ "grrb"_c, &UInt16x4Type },
+        std::pair{ "grrg"_c, &UInt16x4Type },
+        std::pair{ "grrr"_c, &UInt16x4Type },
+        std::pair{ "operator!=(u16x4)"_c, &UInt16x4_operator_neq_UInt16x4 },
+        std::pair{ "operator%(u16x4)"_c, &UInt16x4_operator_mod_UInt16x4 },
+        std::pair{ "operator&(u16x4)"_c, &UInt16x4_operator_and_UInt16x4 },
+        std::pair{ "operator&=(u16x4)"_c, &UInt16x4_operator_andasg_UInt16x4 },
+        std::pair{ "operator*(f16)"_c, &UInt16x4_operator_scale_Float16 },
+        std::pair{ "operator*(f32)"_c, &UInt16x4_operator_scale_Float32 },
+        std::pair{ "operator*(i16)"_c, &UInt16x4_operator_scale_Int16 },
+        std::pair{ "operator*(i32)"_c, &UInt16x4_operator_scale_Int32 },
+        std::pair{ "operator*(u16)"_c, &UInt16x4_operator_scale_UInt16 },
+        std::pair{ "operator*(u16x4)"_c, &UInt16x4_operator_mul_UInt16x4 },
+        std::pair{ "operator*(u32)"_c, &UInt16x4_operator_scale_UInt32 },
+        std::pair{ "operator*=(u16x4)"_c, &UInt16x4_operator_mulasg_UInt16x4 },
+        std::pair{ "operator+(u16x4)"_c, &UInt16x4_operator_add_UInt16x4 },
+        std::pair{ "operator+=(u16x4)"_c, &UInt16x4_operator_addasg_UInt16x4 },
+        std::pair{ "operator-(u16x4)"_c, &UInt16x4_operator_sub_UInt16x4 },
+        std::pair{ "operator-=(u16x4)"_c, &UInt16x4_operator_subasg_UInt16x4 },
+        std::pair{ "operator/(u16x4)"_c, &UInt16x4_operator_div_UInt16x4 },
+        std::pair{ "operator/=(u16x4)"_c, &UInt16x4_operator_divasg_UInt16x4 },
+        std::pair{ "operator<(u16x4)"_c, &UInt16x4_operator_lt_UInt16x4 },
+        std::pair{ "operator<<(u16x4)"_c, &UInt16x4_operator_lsh_UInt16x4 },
+        std::pair{ "operator<<=(u16x4)"_c, &UInt16x4_operator_lshasg_UInt16x4 },
+        std::pair{ "operator<=(u16x4)"_c, &UInt16x4_operator_lte_UInt16x4 },
+        std::pair{ "operator==(u16x4)"_c, &UInt16x4_operator_eq_UInt16x4 },
+        std::pair{ "operator>(u16x4)"_c, &UInt16x4_operator_gt_UInt16x4 },
+        std::pair{ "operator>=(u16x4)"_c, &UInt16x4_operator_gte_UInt16x4 },
+        std::pair{ "operator>>(u16x4)"_c, &UInt16x4_operator_rsh_UInt16x4 },
+        std::pair{ "operator>>=(u16x4)"_c, &UInt16x4_operator_rhsasg_UInt16x4 },
+        std::pair{ "operator[](i16)"_c, &UInt16x4_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &UInt16x4_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &UInt16x4_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &UInt16x4_operator_index_UInt32 },
+        std::pair{ "operator^(u16x4)"_c, &UInt16x4_operator_xor_UInt16x4 },
+        std::pair{ "operator^=(u16x4)"_c, &UInt16x4_operator_xorasg_UInt16x4 },
+        std::pair{ "operator|(u16x4)"_c, &UInt16x4_operator_or_UInt16x4 },
+        std::pair{ "operator|=(u16x4)"_c, &UInt16x4_operator_orasg_UInt16x4 },
+        std::pair{ "r"_c, &UInt16Type },
+        std::pair{ "ra"_c, &UInt16x2Type },
+        std::pair{ "raa"_c, &UInt16x3Type },
+        std::pair{ "raaa"_c, &UInt16x4Type },
+        std::pair{ "raab"_c, &UInt16x4Type },
+        std::pair{ "raag"_c, &UInt16x4Type },
+        std::pair{ "raar"_c, &UInt16x4Type },
+        std::pair{ "rab"_c, &UInt16x3Type },
+        std::pair{ "raba"_c, &UInt16x4Type },
+        std::pair{ "rabb"_c, &UInt16x4Type },
+        std::pair{ "rabg"_c, &UInt16x4Type },
+        std::pair{ "rabr"_c, &UInt16x4Type },
+        std::pair{ "rag"_c, &UInt16x3Type },
+        std::pair{ "raga"_c, &UInt16x4Type },
+        std::pair{ "ragb"_c, &UInt16x4Type },
+        std::pair{ "ragg"_c, &UInt16x4Type },
+        std::pair{ "ragr"_c, &UInt16x4Type },
+        std::pair{ "rar"_c, &UInt16x3Type },
+        std::pair{ "rara"_c, &UInt16x4Type },
+        std::pair{ "rarb"_c, &UInt16x4Type },
+        std::pair{ "rarg"_c, &UInt16x4Type },
+        std::pair{ "rarr"_c, &UInt16x4Type },
+        std::pair{ "rb"_c, &UInt16x2Type },
+        std::pair{ "rba"_c, &UInt16x3Type },
+        std::pair{ "rbaa"_c, &UInt16x4Type },
+        std::pair{ "rbab"_c, &UInt16x4Type },
+        std::pair{ "rbag"_c, &UInt16x4Type },
+        std::pair{ "rbar"_c, &UInt16x4Type },
+        std::pair{ "rbb"_c, &UInt16x3Type },
+        std::pair{ "rbba"_c, &UInt16x4Type },
+        std::pair{ "rbbb"_c, &UInt16x4Type },
+        std::pair{ "rbbg"_c, &UInt16x4Type },
+        std::pair{ "rbbr"_c, &UInt16x4Type },
+        std::pair{ "rbg"_c, &UInt16x3Type },
+        std::pair{ "rbga"_c, &UInt16x4Type },
+        std::pair{ "rbgb"_c, &UInt16x4Type },
+        std::pair{ "rbgg"_c, &UInt16x4Type },
+        std::pair{ "rbgr"_c, &UInt16x4Type },
+        std::pair{ "rbr"_c, &UInt16x3Type },
+        std::pair{ "rbra"_c, &UInt16x4Type },
+        std::pair{ "rbrb"_c, &UInt16x4Type },
+        std::pair{ "rbrg"_c, &UInt16x4Type },
+        std::pair{ "rbrr"_c, &UInt16x4Type },
+        std::pair{ "rg"_c, &UInt16x2Type },
+        std::pair{ "rga"_c, &UInt16x3Type },
+        std::pair{ "rgaa"_c, &UInt16x4Type },
+        std::pair{ "rgab"_c, &UInt16x4Type },
+        std::pair{ "rgag"_c, &UInt16x4Type },
+        std::pair{ "rgar"_c, &UInt16x4Type },
+        std::pair{ "rgb"_c, &UInt16x3Type },
+        std::pair{ "rgba"_c, &UInt16x4Type },
+        std::pair{ "rgbb"_c, &UInt16x4Type },
+        std::pair{ "rgbg"_c, &UInt16x4Type },
+        std::pair{ "rgbr"_c, &UInt16x4Type },
+        std::pair{ "rgg"_c, &UInt16x3Type },
+        std::pair{ "rgga"_c, &UInt16x4Type },
+        std::pair{ "rggb"_c, &UInt16x4Type },
+        std::pair{ "rggg"_c, &UInt16x4Type },
+        std::pair{ "rggr"_c, &UInt16x4Type },
+        std::pair{ "rgr"_c, &UInt16x3Type },
+        std::pair{ "rgra"_c, &UInt16x4Type },
+        std::pair{ "rgrb"_c, &UInt16x4Type },
+        std::pair{ "rgrg"_c, &UInt16x4Type },
+        std::pair{ "rgrr"_c, &UInt16x4Type },
+        std::pair{ "rr"_c, &UInt16x2Type },
+        std::pair{ "rra"_c, &UInt16x3Type },
+        std::pair{ "rraa"_c, &UInt16x4Type },
+        std::pair{ "rrab"_c, &UInt16x4Type },
+        std::pair{ "rrag"_c, &UInt16x4Type },
+        std::pair{ "rrar"_c, &UInt16x4Type },
+        std::pair{ "rrb"_c, &UInt16x3Type },
+        std::pair{ "rrba"_c, &UInt16x4Type },
+        std::pair{ "rrbb"_c, &UInt16x4Type },
+        std::pair{ "rrbg"_c, &UInt16x4Type },
+        std::pair{ "rrbr"_c, &UInt16x4Type },
+        std::pair{ "rrg"_c, &UInt16x3Type },
+        std::pair{ "rrga"_c, &UInt16x4Type },
+        std::pair{ "rrgb"_c, &UInt16x4Type },
+        std::pair{ "rrgg"_c, &UInt16x4Type },
+        std::pair{ "rrgr"_c, &UInt16x4Type },
+        std::pair{ "rrr"_c, &UInt16x3Type },
+        std::pair{ "rrra"_c, &UInt16x4Type },
+        std::pair{ "rrrb"_c, &UInt16x4Type },
+        std::pair{ "rrrg"_c, &UInt16x4Type },
+        std::pair{ "rrrr"_c, &UInt16x4Type },
+        std::pair{ "w"_c, &UInt16Type },
+        std::pair{ "ww"_c, &UInt16x2Type },
+        std::pair{ "www"_c, &UInt16x3Type },
+        std::pair{ "wwww"_c, &UInt16x4Type },
+        std::pair{ "wwwx"_c, &UInt16x4Type },
+        std::pair{ "wwwy"_c, &UInt16x4Type },
+        std::pair{ "wwwz"_c, &UInt16x4Type },
+        std::pair{ "wwx"_c, &UInt16x3Type },
+        std::pair{ "wwxw"_c, &UInt16x4Type },
+        std::pair{ "wwxx"_c, &UInt16x4Type },
+        std::pair{ "wwxy"_c, &UInt16x4Type },
+        std::pair{ "wwxz"_c, &UInt16x4Type },
+        std::pair{ "wwy"_c, &UInt16x3Type },
+        std::pair{ "wwyw"_c, &UInt16x4Type },
+        std::pair{ "wwyx"_c, &UInt16x4Type },
+        std::pair{ "wwyy"_c, &UInt16x4Type },
+        std::pair{ "wwyz"_c, &UInt16x4Type },
+        std::pair{ "wwz"_c, &UInt16x3Type },
+        std::pair{ "wwzw"_c, &UInt16x4Type },
+        std::pair{ "wwzx"_c, &UInt16x4Type },
+        std::pair{ "wwzy"_c, &UInt16x4Type },
+        std::pair{ "wwzz"_c, &UInt16x4Type },
+        std::pair{ "wx"_c, &UInt16x2Type },
+        std::pair{ "wxw"_c, &UInt16x3Type },
+        std::pair{ "wxww"_c, &UInt16x4Type },
+        std::pair{ "wxwx"_c, &UInt16x4Type },
+        std::pair{ "wxwy"_c, &UInt16x4Type },
+        std::pair{ "wxwz"_c, &UInt16x4Type },
+        std::pair{ "wxx"_c, &UInt16x3Type },
+        std::pair{ "wxxw"_c, &UInt16x4Type },
+        std::pair{ "wxxx"_c, &UInt16x4Type },
+        std::pair{ "wxxy"_c, &UInt16x4Type },
+        std::pair{ "wxxz"_c, &UInt16x4Type },
+        std::pair{ "wxy"_c, &UInt16x3Type },
+        std::pair{ "wxyw"_c, &UInt16x4Type },
+        std::pair{ "wxyx"_c, &UInt16x4Type },
+        std::pair{ "wxyy"_c, &UInt16x4Type },
+        std::pair{ "wxyz"_c, &UInt16x4Type },
+        std::pair{ "wxz"_c, &UInt16x3Type },
+        std::pair{ "wxzw"_c, &UInt16x4Type },
+        std::pair{ "wxzx"_c, &UInt16x4Type },
+        std::pair{ "wxzy"_c, &UInt16x4Type },
+        std::pair{ "wxzz"_c, &UInt16x4Type },
+        std::pair{ "wy"_c, &UInt16x2Type },
+        std::pair{ "wyw"_c, &UInt16x3Type },
+        std::pair{ "wyww"_c, &UInt16x4Type },
+        std::pair{ "wywx"_c, &UInt16x4Type },
+        std::pair{ "wywy"_c, &UInt16x4Type },
+        std::pair{ "wywz"_c, &UInt16x4Type },
+        std::pair{ "wyx"_c, &UInt16x3Type },
+        std::pair{ "wyxw"_c, &UInt16x4Type },
+        std::pair{ "wyxx"_c, &UInt16x4Type },
+        std::pair{ "wyxy"_c, &UInt16x4Type },
+        std::pair{ "wyxz"_c, &UInt16x4Type },
+        std::pair{ "wyy"_c, &UInt16x3Type },
+        std::pair{ "wyyw"_c, &UInt16x4Type },
+        std::pair{ "wyyx"_c, &UInt16x4Type },
+        std::pair{ "wyyy"_c, &UInt16x4Type },
+        std::pair{ "wyyz"_c, &UInt16x4Type },
+        std::pair{ "wyz"_c, &UInt16x3Type },
+        std::pair{ "wyzw"_c, &UInt16x4Type },
+        std::pair{ "wyzx"_c, &UInt16x4Type },
+        std::pair{ "wyzy"_c, &UInt16x4Type },
+        std::pair{ "wyzz"_c, &UInt16x4Type },
+        std::pair{ "wz"_c, &UInt16x2Type },
+        std::pair{ "wzw"_c, &UInt16x3Type },
+        std::pair{ "wzww"_c, &UInt16x4Type },
+        std::pair{ "wzwx"_c, &UInt16x4Type },
+        std::pair{ "wzwy"_c, &UInt16x4Type },
+        std::pair{ "wzwz"_c, &UInt16x4Type },
+        std::pair{ "wzx"_c, &UInt16x3Type },
+        std::pair{ "wzxw"_c, &UInt16x4Type },
+        std::pair{ "wzxx"_c, &UInt16x4Type },
+        std::pair{ "wzxy"_c, &UInt16x4Type },
+        std::pair{ "wzxz"_c, &UInt16x4Type },
+        std::pair{ "wzy"_c, &UInt16x3Type },
+        std::pair{ "wzyw"_c, &UInt16x4Type },
+        std::pair{ "wzyx"_c, &UInt16x4Type },
+        std::pair{ "wzyy"_c, &UInt16x4Type },
+        std::pair{ "wzyz"_c, &UInt16x4Type },
+        std::pair{ "wzz"_c, &UInt16x3Type },
+        std::pair{ "wzzw"_c, &UInt16x4Type },
+        std::pair{ "wzzx"_c, &UInt16x4Type },
+        std::pair{ "wzzy"_c, &UInt16x4Type },
+        std::pair{ "wzzz"_c, &UInt16x4Type },
+        std::pair{ "x"_c, &UInt16Type },
+        std::pair{ "xw"_c, &UInt16x2Type },
+        std::pair{ "xww"_c, &UInt16x3Type },
+        std::pair{ "xwww"_c, &UInt16x4Type },
+        std::pair{ "xwwx"_c, &UInt16x4Type },
+        std::pair{ "xwwy"_c, &UInt16x4Type },
+        std::pair{ "xwwz"_c, &UInt16x4Type },
+        std::pair{ "xwx"_c, &UInt16x3Type },
+        std::pair{ "xwxw"_c, &UInt16x4Type },
+        std::pair{ "xwxx"_c, &UInt16x4Type },
+        std::pair{ "xwxy"_c, &UInt16x4Type },
+        std::pair{ "xwxz"_c, &UInt16x4Type },
+        std::pair{ "xwy"_c, &UInt16x3Type },
+        std::pair{ "xwyw"_c, &UInt16x4Type },
+        std::pair{ "xwyx"_c, &UInt16x4Type },
+        std::pair{ "xwyy"_c, &UInt16x4Type },
+        std::pair{ "xwyz"_c, &UInt16x4Type },
+        std::pair{ "xwz"_c, &UInt16x3Type },
+        std::pair{ "xwzw"_c, &UInt16x4Type },
+        std::pair{ "xwzx"_c, &UInt16x4Type },
+        std::pair{ "xwzy"_c, &UInt16x4Type },
+        std::pair{ "xwzz"_c, &UInt16x4Type },
+        std::pair{ "xx"_c, &UInt16x2Type },
+        std::pair{ "xxw"_c, &UInt16x3Type },
+        std::pair{ "xxww"_c, &UInt16x4Type },
+        std::pair{ "xxwx"_c, &UInt16x4Type },
+        std::pair{ "xxwy"_c, &UInt16x4Type },
+        std::pair{ "xxwz"_c, &UInt16x4Type },
+        std::pair{ "xxx"_c, &UInt16x3Type },
+        std::pair{ "xxxw"_c, &UInt16x4Type },
+        std::pair{ "xxxx"_c, &UInt16x4Type },
+        std::pair{ "xxxy"_c, &UInt16x4Type },
+        std::pair{ "xxxz"_c, &UInt16x4Type },
+        std::pair{ "xxy"_c, &UInt16x3Type },
+        std::pair{ "xxyw"_c, &UInt16x4Type },
+        std::pair{ "xxyx"_c, &UInt16x4Type },
+        std::pair{ "xxyy"_c, &UInt16x4Type },
+        std::pair{ "xxyz"_c, &UInt16x4Type },
+        std::pair{ "xxz"_c, &UInt16x3Type },
+        std::pair{ "xxzw"_c, &UInt16x4Type },
+        std::pair{ "xxzx"_c, &UInt16x4Type },
+        std::pair{ "xxzy"_c, &UInt16x4Type },
+        std::pair{ "xxzz"_c, &UInt16x4Type },
+        std::pair{ "xy"_c, &UInt16x2Type },
+        std::pair{ "xyw"_c, &UInt16x3Type },
+        std::pair{ "xyww"_c, &UInt16x4Type },
+        std::pair{ "xywx"_c, &UInt16x4Type },
+        std::pair{ "xywy"_c, &UInt16x4Type },
+        std::pair{ "xywz"_c, &UInt16x4Type },
+        std::pair{ "xyx"_c, &UInt16x3Type },
+        std::pair{ "xyxw"_c, &UInt16x4Type },
+        std::pair{ "xyxx"_c, &UInt16x4Type },
+        std::pair{ "xyxy"_c, &UInt16x4Type },
+        std::pair{ "xyxz"_c, &UInt16x4Type },
+        std::pair{ "xyy"_c, &UInt16x3Type },
+        std::pair{ "xyyw"_c, &UInt16x4Type },
+        std::pair{ "xyyx"_c, &UInt16x4Type },
+        std::pair{ "xyyy"_c, &UInt16x4Type },
+        std::pair{ "xyyz"_c, &UInt16x4Type },
+        std::pair{ "xyz"_c, &UInt16x3Type },
+        std::pair{ "xyzw"_c, &UInt16x4Type },
+        std::pair{ "xyzx"_c, &UInt16x4Type },
+        std::pair{ "xyzy"_c, &UInt16x4Type },
+        std::pair{ "xyzz"_c, &UInt16x4Type },
+        std::pair{ "xz"_c, &UInt16x2Type },
+        std::pair{ "xzw"_c, &UInt16x3Type },
+        std::pair{ "xzww"_c, &UInt16x4Type },
+        std::pair{ "xzwx"_c, &UInt16x4Type },
+        std::pair{ "xzwy"_c, &UInt16x4Type },
+        std::pair{ "xzwz"_c, &UInt16x4Type },
+        std::pair{ "xzx"_c, &UInt16x3Type },
+        std::pair{ "xzxw"_c, &UInt16x4Type },
+        std::pair{ "xzxx"_c, &UInt16x4Type },
+        std::pair{ "xzxy"_c, &UInt16x4Type },
+        std::pair{ "xzxz"_c, &UInt16x4Type },
+        std::pair{ "xzy"_c, &UInt16x3Type },
+        std::pair{ "xzyw"_c, &UInt16x4Type },
+        std::pair{ "xzyx"_c, &UInt16x4Type },
+        std::pair{ "xzyy"_c, &UInt16x4Type },
+        std::pair{ "xzyz"_c, &UInt16x4Type },
+        std::pair{ "xzz"_c, &UInt16x3Type },
+        std::pair{ "xzzw"_c, &UInt16x4Type },
+        std::pair{ "xzzx"_c, &UInt16x4Type },
+        std::pair{ "xzzy"_c, &UInt16x4Type },
+        std::pair{ "xzzz"_c, &UInt16x4Type },
+        std::pair{ "y"_c, &UInt16Type },
+        std::pair{ "yw"_c, &UInt16x2Type },
+        std::pair{ "yww"_c, &UInt16x3Type },
+        std::pair{ "ywww"_c, &UInt16x4Type },
+        std::pair{ "ywwx"_c, &UInt16x4Type },
+        std::pair{ "ywwy"_c, &UInt16x4Type },
+        std::pair{ "ywwz"_c, &UInt16x4Type },
+        std::pair{ "ywx"_c, &UInt16x3Type },
+        std::pair{ "ywxw"_c, &UInt16x4Type },
+        std::pair{ "ywxx"_c, &UInt16x4Type },
+        std::pair{ "ywxy"_c, &UInt16x4Type },
+        std::pair{ "ywxz"_c, &UInt16x4Type },
+        std::pair{ "ywy"_c, &UInt16x3Type },
+        std::pair{ "ywyw"_c, &UInt16x4Type },
+        std::pair{ "ywyx"_c, &UInt16x4Type },
+        std::pair{ "ywyy"_c, &UInt16x4Type },
+        std::pair{ "ywyz"_c, &UInt16x4Type },
+        std::pair{ "ywz"_c, &UInt16x3Type },
+        std::pair{ "ywzw"_c, &UInt16x4Type },
+        std::pair{ "ywzx"_c, &UInt16x4Type },
+        std::pair{ "ywzy"_c, &UInt16x4Type },
+        std::pair{ "ywzz"_c, &UInt16x4Type },
+        std::pair{ "yx"_c, &UInt16x2Type },
+        std::pair{ "yxw"_c, &UInt16x3Type },
+        std::pair{ "yxww"_c, &UInt16x4Type },
+        std::pair{ "yxwx"_c, &UInt16x4Type },
+        std::pair{ "yxwy"_c, &UInt16x4Type },
+        std::pair{ "yxwz"_c, &UInt16x4Type },
+        std::pair{ "yxx"_c, &UInt16x3Type },
+        std::pair{ "yxxw"_c, &UInt16x4Type },
+        std::pair{ "yxxx"_c, &UInt16x4Type },
+        std::pair{ "yxxy"_c, &UInt16x4Type },
+        std::pair{ "yxxz"_c, &UInt16x4Type },
+        std::pair{ "yxy"_c, &UInt16x3Type },
+        std::pair{ "yxyw"_c, &UInt16x4Type },
+        std::pair{ "yxyx"_c, &UInt16x4Type },
+        std::pair{ "yxyy"_c, &UInt16x4Type },
+        std::pair{ "yxyz"_c, &UInt16x4Type },
+        std::pair{ "yxz"_c, &UInt16x3Type },
+        std::pair{ "yxzw"_c, &UInt16x4Type },
+        std::pair{ "yxzx"_c, &UInt16x4Type },
+        std::pair{ "yxzy"_c, &UInt16x4Type },
+        std::pair{ "yxzz"_c, &UInt16x4Type },
+        std::pair{ "yy"_c, &UInt16x2Type },
+        std::pair{ "yyw"_c, &UInt16x3Type },
+        std::pair{ "yyww"_c, &UInt16x4Type },
+        std::pair{ "yywx"_c, &UInt16x4Type },
+        std::pair{ "yywy"_c, &UInt16x4Type },
+        std::pair{ "yywz"_c, &UInt16x4Type },
+        std::pair{ "yyx"_c, &UInt16x3Type },
+        std::pair{ "yyxw"_c, &UInt16x4Type },
+        std::pair{ "yyxx"_c, &UInt16x4Type },
+        std::pair{ "yyxy"_c, &UInt16x4Type },
+        std::pair{ "yyxz"_c, &UInt16x4Type },
+        std::pair{ "yyy"_c, &UInt16x3Type },
+        std::pair{ "yyyw"_c, &UInt16x4Type },
+        std::pair{ "yyyx"_c, &UInt16x4Type },
+        std::pair{ "yyyy"_c, &UInt16x4Type },
+        std::pair{ "yyyz"_c, &UInt16x4Type },
+        std::pair{ "yyz"_c, &UInt16x3Type },
+        std::pair{ "yyzw"_c, &UInt16x4Type },
+        std::pair{ "yyzx"_c, &UInt16x4Type },
+        std::pair{ "yyzy"_c, &UInt16x4Type },
+        std::pair{ "yyzz"_c, &UInt16x4Type },
+        std::pair{ "yz"_c, &UInt16x2Type },
+        std::pair{ "yzw"_c, &UInt16x3Type },
+        std::pair{ "yzww"_c, &UInt16x4Type },
+        std::pair{ "yzwx"_c, &UInt16x4Type },
+        std::pair{ "yzwy"_c, &UInt16x4Type },
+        std::pair{ "yzwz"_c, &UInt16x4Type },
+        std::pair{ "yzx"_c, &UInt16x3Type },
+        std::pair{ "yzxw"_c, &UInt16x4Type },
+        std::pair{ "yzxx"_c, &UInt16x4Type },
+        std::pair{ "yzxy"_c, &UInt16x4Type },
+        std::pair{ "yzxz"_c, &UInt16x4Type },
+        std::pair{ "yzy"_c, &UInt16x3Type },
+        std::pair{ "yzyw"_c, &UInt16x4Type },
+        std::pair{ "yzyx"_c, &UInt16x4Type },
+        std::pair{ "yzyy"_c, &UInt16x4Type },
+        std::pair{ "yzyz"_c, &UInt16x4Type },
+        std::pair{ "yzz"_c, &UInt16x3Type },
+        std::pair{ "yzzw"_c, &UInt16x4Type },
+        std::pair{ "yzzx"_c, &UInt16x4Type },
+        std::pair{ "yzzy"_c, &UInt16x4Type },
+        std::pair{ "yzzz"_c, &UInt16x4Type },
+        std::pair{ "z"_c, &UInt16Type },
+        std::pair{ "zw"_c, &UInt16x2Type },
+        std::pair{ "zww"_c, &UInt16x3Type },
+        std::pair{ "zwww"_c, &UInt16x4Type },
+        std::pair{ "zwwx"_c, &UInt16x4Type },
+        std::pair{ "zwwy"_c, &UInt16x4Type },
+        std::pair{ "zwwz"_c, &UInt16x4Type },
+        std::pair{ "zwx"_c, &UInt16x3Type },
+        std::pair{ "zwxw"_c, &UInt16x4Type },
+        std::pair{ "zwxx"_c, &UInt16x4Type },
+        std::pair{ "zwxy"_c, &UInt16x4Type },
+        std::pair{ "zwxz"_c, &UInt16x4Type },
+        std::pair{ "zwy"_c, &UInt16x3Type },
+        std::pair{ "zwyw"_c, &UInt16x4Type },
+        std::pair{ "zwyx"_c, &UInt16x4Type },
+        std::pair{ "zwyy"_c, &UInt16x4Type },
+        std::pair{ "zwyz"_c, &UInt16x4Type },
+        std::pair{ "zwz"_c, &UInt16x3Type },
+        std::pair{ "zwzw"_c, &UInt16x4Type },
+        std::pair{ "zwzx"_c, &UInt16x4Type },
+        std::pair{ "zwzy"_c, &UInt16x4Type },
+        std::pair{ "zwzz"_c, &UInt16x4Type },
+        std::pair{ "zx"_c, &UInt16x2Type },
+        std::pair{ "zxw"_c, &UInt16x3Type },
+        std::pair{ "zxww"_c, &UInt16x4Type },
+        std::pair{ "zxwx"_c, &UInt16x4Type },
+        std::pair{ "zxwy"_c, &UInt16x4Type },
+        std::pair{ "zxwz"_c, &UInt16x4Type },
+        std::pair{ "zxx"_c, &UInt16x3Type },
+        std::pair{ "zxxw"_c, &UInt16x4Type },
+        std::pair{ "zxxx"_c, &UInt16x4Type },
+        std::pair{ "zxxy"_c, &UInt16x4Type },
+        std::pair{ "zxxz"_c, &UInt16x4Type },
+        std::pair{ "zxy"_c, &UInt16x3Type },
+        std::pair{ "zxyw"_c, &UInt16x4Type },
+        std::pair{ "zxyx"_c, &UInt16x4Type },
+        std::pair{ "zxyy"_c, &UInt16x4Type },
+        std::pair{ "zxyz"_c, &UInt16x4Type },
+        std::pair{ "zxz"_c, &UInt16x3Type },
+        std::pair{ "zxzw"_c, &UInt16x4Type },
+        std::pair{ "zxzx"_c, &UInt16x4Type },
+        std::pair{ "zxzy"_c, &UInt16x4Type },
+        std::pair{ "zxzz"_c, &UInt16x4Type },
+        std::pair{ "zy"_c, &UInt16x2Type },
+        std::pair{ "zyw"_c, &UInt16x3Type },
+        std::pair{ "zyww"_c, &UInt16x4Type },
+        std::pair{ "zywx"_c, &UInt16x4Type },
+        std::pair{ "zywy"_c, &UInt16x4Type },
+        std::pair{ "zywz"_c, &UInt16x4Type },
+        std::pair{ "zyx"_c, &UInt16x3Type },
+        std::pair{ "zyxw"_c, &UInt16x4Type },
+        std::pair{ "zyxx"_c, &UInt16x4Type },
+        std::pair{ "zyxy"_c, &UInt16x4Type },
+        std::pair{ "zyxz"_c, &UInt16x4Type },
+        std::pair{ "zyy"_c, &UInt16x3Type },
+        std::pair{ "zyyw"_c, &UInt16x4Type },
+        std::pair{ "zyyx"_c, &UInt16x4Type },
+        std::pair{ "zyyy"_c, &UInt16x4Type },
+        std::pair{ "zyyz"_c, &UInt16x4Type },
+        std::pair{ "zyz"_c, &UInt16x3Type },
+        std::pair{ "zyzw"_c, &UInt16x4Type },
+        std::pair{ "zyzx"_c, &UInt16x4Type },
+        std::pair{ "zyzy"_c, &UInt16x4Type },
+        std::pair{ "zyzz"_c, &UInt16x4Type },
+        std::pair{ "zz"_c, &UInt16x2Type },
+        std::pair{ "zzw"_c, &UInt16x3Type },
+        std::pair{ "zzww"_c, &UInt16x4Type },
+        std::pair{ "zzwx"_c, &UInt16x4Type },
+        std::pair{ "zzwy"_c, &UInt16x4Type },
+        std::pair{ "zzwz"_c, &UInt16x4Type },
+        std::pair{ "zzx"_c, &UInt16x3Type },
+        std::pair{ "zzxw"_c, &UInt16x4Type },
+        std::pair{ "zzxx"_c, &UInt16x4Type },
+        std::pair{ "zzxy"_c, &UInt16x4Type },
+        std::pair{ "zzxz"_c, &UInt16x4Type },
+        std::pair{ "zzy"_c, &UInt16x3Type },
+        std::pair{ "zzyw"_c, &UInt16x4Type },
+        std::pair{ "zzyx"_c, &UInt16x4Type },
+        std::pair{ "zzyy"_c, &UInt16x4Type },
+        std::pair{ "zzyz"_c, &UInt16x4Type },
+        std::pair{ "zzz"_c, &UInt16x3Type },
+        std::pair{ "zzzw"_c, &UInt16x4Type },
+        std::pair{ "zzzx"_c, &UInt16x4Type },
+        std::pair{ "zzzy"_c, &UInt16x4Type },
+        std::pair{ "zzzz"_c, &UInt16x4Type }
     };
 }
 UInt16x4 UInt16x4Type;
@@ -16996,17 +23284,23 @@ Variable Int16x4_ctor3_arg2_Int16x2;
 Function Int16x4_ctor3;
 inline constexpr std::array Int16x4_ctor3_args = { &Int16x4_ctor3_arg0_Int16, &Int16x4_ctor3_arg1_Int16, &Int16x4_ctor3_arg2_Int16x2 };
 
-/// i16x4 with Int16x3, Int16
-Variable Int16x4_ctor4_arg0_Int16x3;
-Variable Int16x4_ctor4_arg1_Int16;
+/// i16x4 with Int16x2, Int16x2
+Variable Int16x4_ctor4_arg0_Int16x2;
+Variable Int16x4_ctor4_arg1_Int16x2;
 Function Int16x4_ctor4;
-inline constexpr std::array Int16x4_ctor4_args = { &Int16x4_ctor4_arg0_Int16x3, &Int16x4_ctor4_arg1_Int16 };
+inline constexpr std::array Int16x4_ctor4_args = { &Int16x4_ctor4_arg0_Int16x2, &Int16x4_ctor4_arg1_Int16x2 };
+
+/// i16x4 with Int16x3, Int16
+Variable Int16x4_ctor5_arg0_Int16x3;
+Variable Int16x4_ctor5_arg1_Int16;
+Function Int16x4_ctor5;
+inline constexpr std::array Int16x4_ctor5_args = { &Int16x4_ctor5_arg0_Int16x3, &Int16x4_ctor5_arg1_Int16 };
 
 /// i16x4 with Int16, Int16x3
-Variable Int16x4_ctor5_arg0_Int16;
-Variable Int16x4_ctor5_arg1_Int16x3;
-Function Int16x4_ctor5;
-inline constexpr std::array Int16x4_ctor5_args = { &Int16x4_ctor5_arg0_Int16, &Int16x4_ctor5_arg1_Int16x3 };
+Variable Int16x4_ctor6_arg0_Int16;
+Variable Int16x4_ctor6_arg1_Int16x3;
+Function Int16x4_ctor6;
+inline constexpr std::array Int16x4_ctor6_args = { &Int16x4_ctor6_arg0_Int16, &Int16x4_ctor6_arg1_Int16x3 };
 
 /// operator[] with Int32
 Variable Int16x4_operator_index_Int32_arg0;
@@ -17376,29 +23670,41 @@ Int16x4::Int16x4()
     Symbol::Resolved(&Int16x4_ctor3_arg2_Int16x2)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x4_ctor3)->returnTypeSymbol = &Int16x4Type;
 
-    /// i16x4 with Int16x3, Int16
-    Int16x4_ctor4_arg0_Int16x3.name = "_arg0"_c;
-    Int16x4_ctor4_arg0_Int16x3.type = Type::FullType{ Int16x3Type.name };
-    Int16x4_ctor4_arg1_Int16.name = "_arg1"_c;
-    Int16x4_ctor4_arg1_Int16.type = Type::FullType{ Int16Type.name };
+    /// i16x4 with Int16x2, Int16x2
+    Int16x4_ctor4_arg0_Int16x2.name = "_arg0"_c;
+    Int16x4_ctor4_arg0_Int16x2.type = Type::FullType{ Int16x2Type.name };
+    Int16x4_ctor4_arg1_Int16x2.name = "_arg1"_c;
+    Int16x4_ctor4_arg1_Int16x2.type = Type::FullType{ Int16x2Type.name };
     Int16x4_ctor4.name = "i16x4"_c;
     Int16x4_ctor4.returnType = Type::FullType { Int16x4Type.name };
     Int16x4_ctor4.parameters = Int16x4_ctor4_args;
-    Symbol::Resolved(&Int16x4_ctor4_arg0_Int16x3)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&Int16x4_ctor4_arg1_Int16)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&Int16x4_ctor4_arg0_Int16x2)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&Int16x4_ctor4_arg1_Int16x2)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&Int16x4_ctor4)->returnTypeSymbol = &Int16x4Type;
 
-    /// i16x4 with Int16, Int16x3
-    Int16x4_ctor5_arg0_Int16.name = "_arg0"_c;
-    Int16x4_ctor5_arg0_Int16.type = Type::FullType{ Int16Type.name };
-    Int16x4_ctor5_arg1_Int16x3.name = "_arg1"_c;
-    Int16x4_ctor5_arg1_Int16x3.type = Type::FullType{ Int16x3Type.name };
+    /// i16x4 with Int16x3, Int16
+    Int16x4_ctor5_arg0_Int16x3.name = "_arg0"_c;
+    Int16x4_ctor5_arg0_Int16x3.type = Type::FullType{ Int16x3Type.name };
+    Int16x4_ctor5_arg1_Int16.name = "_arg1"_c;
+    Int16x4_ctor5_arg1_Int16.type = Type::FullType{ Int16Type.name };
     Int16x4_ctor5.name = "i16x4"_c;
     Int16x4_ctor5.returnType = Type::FullType { Int16x4Type.name };
     Int16x4_ctor5.parameters = Int16x4_ctor5_args;
-    Symbol::Resolved(&Int16x4_ctor5_arg0_Int16)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Int16x4_ctor5_arg1_Int16x3)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&Int16x4_ctor5_arg0_Int16x3)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&Int16x4_ctor5_arg1_Int16)->typeSymbol = &Int16Type;
     Symbol::Resolved(&Int16x4_ctor5)->returnTypeSymbol = &Int16x4Type;
+
+    /// i16x4 with Int16, Int16x3
+    Int16x4_ctor6_arg0_Int16.name = "_arg0"_c;
+    Int16x4_ctor6_arg0_Int16.type = Type::FullType{ Int16Type.name };
+    Int16x4_ctor6_arg1_Int16x3.name = "_arg1"_c;
+    Int16x4_ctor6_arg1_Int16x3.type = Type::FullType{ Int16x3Type.name };
+    Int16x4_ctor6.name = "i16x4"_c;
+    Int16x4_ctor6.returnType = Type::FullType { Int16x4Type.name };
+    Int16x4_ctor6.parameters = Int16x4_ctor6_args;
+    Symbol::Resolved(&Int16x4_ctor6_arg0_Int16)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&Int16x4_ctor6_arg1_Int16x3)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&Int16x4_ctor6)->returnTypeSymbol = &Int16x4Type;
 
     /// operator[] with Int32
     Int16x4_operator_index_Int32_arg0.name = "_arg0"_c;
@@ -17715,42 +24021,722 @@ Int16x4::Int16x4()
     Symbol::Resolved(&Int16x4_operator_rhsasg_Int16x4_arg0)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&Int16x4_operator_rhsasg_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 35> { 
-        std::pair{ "operator!=", &Int16x4_operator_neq_Int16x4 },
-        std::pair{ "operator%", &Int16x4_operator_mod_Int16x4 },
-        std::pair{ "operator&", &Int16x4_operator_and_Int16x4 },
-        std::pair{ "operator&=", &Int16x4_operator_andasg_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_mul_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int16 },
-        std::pair{ "operator*=", &Int16x4_operator_mulasg_Int16x4 },
-        std::pair{ "operator+", &Int16x4_operator_add_Int16x4 },
-        std::pair{ "operator+=", &Int16x4_operator_addasg_Int16x4 },
-        std::pair{ "operator-", &Int16x4_operator_sub_Int16x4 },
-        std::pair{ "operator-=", &Int16x4_operator_subasg_Int16x4 },
-        std::pair{ "operator/", &Int16x4_operator_div_Int16x4 },
-        std::pair{ "operator/=", &Int16x4_operator_divasg_Int16x4 },
-        std::pair{ "operator<", &Int16x4_operator_lt_Int16x4 },
-        std::pair{ "operator<<", &Int16x4_operator_lsh_Int16x4 },
-        std::pair{ "operator<<=", &Int16x4_operator_lshasg_Int16x4 },
-        std::pair{ "operator<=", &Int16x4_operator_lte_Int16x4 },
-        std::pair{ "operator==", &Int16x4_operator_eq_Int16x4 },
-        std::pair{ "operator>", &Int16x4_operator_gt_Int16x4 },
-        std::pair{ "operator>=", &Int16x4_operator_gte_Int16x4 },
-        std::pair{ "operator>>", &Int16x4_operator_rsh_Int16x4 },
-        std::pair{ "operator>>=", &Int16x4_operator_rhsasg_Int16x4 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt16 },
-        std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
-        std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
-        std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 715> { 
+        std::pair{ "a"_c, &Int16Type },
+        std::pair{ "aa"_c, &Int16x2Type },
+        std::pair{ "aaa"_c, &Int16x3Type },
+        std::pair{ "aaaa"_c, &Int16x4Type },
+        std::pair{ "aaab"_c, &Int16x4Type },
+        std::pair{ "aaag"_c, &Int16x4Type },
+        std::pair{ "aaar"_c, &Int16x4Type },
+        std::pair{ "aab"_c, &Int16x3Type },
+        std::pair{ "aaba"_c, &Int16x4Type },
+        std::pair{ "aabb"_c, &Int16x4Type },
+        std::pair{ "aabg"_c, &Int16x4Type },
+        std::pair{ "aabr"_c, &Int16x4Type },
+        std::pair{ "aag"_c, &Int16x3Type },
+        std::pair{ "aaga"_c, &Int16x4Type },
+        std::pair{ "aagb"_c, &Int16x4Type },
+        std::pair{ "aagg"_c, &Int16x4Type },
+        std::pair{ "aagr"_c, &Int16x4Type },
+        std::pair{ "aar"_c, &Int16x3Type },
+        std::pair{ "aara"_c, &Int16x4Type },
+        std::pair{ "aarb"_c, &Int16x4Type },
+        std::pair{ "aarg"_c, &Int16x4Type },
+        std::pair{ "aarr"_c, &Int16x4Type },
+        std::pair{ "ab"_c, &Int16x2Type },
+        std::pair{ "aba"_c, &Int16x3Type },
+        std::pair{ "abaa"_c, &Int16x4Type },
+        std::pair{ "abab"_c, &Int16x4Type },
+        std::pair{ "abag"_c, &Int16x4Type },
+        std::pair{ "abar"_c, &Int16x4Type },
+        std::pair{ "abb"_c, &Int16x3Type },
+        std::pair{ "abba"_c, &Int16x4Type },
+        std::pair{ "abbb"_c, &Int16x4Type },
+        std::pair{ "abbg"_c, &Int16x4Type },
+        std::pair{ "abbr"_c, &Int16x4Type },
+        std::pair{ "abg"_c, &Int16x3Type },
+        std::pair{ "abga"_c, &Int16x4Type },
+        std::pair{ "abgb"_c, &Int16x4Type },
+        std::pair{ "abgg"_c, &Int16x4Type },
+        std::pair{ "abgr"_c, &Int16x4Type },
+        std::pair{ "abr"_c, &Int16x3Type },
+        std::pair{ "abra"_c, &Int16x4Type },
+        std::pair{ "abrb"_c, &Int16x4Type },
+        std::pair{ "abrg"_c, &Int16x4Type },
+        std::pair{ "abrr"_c, &Int16x4Type },
+        std::pair{ "ag"_c, &Int16x2Type },
+        std::pair{ "aga"_c, &Int16x3Type },
+        std::pair{ "agaa"_c, &Int16x4Type },
+        std::pair{ "agab"_c, &Int16x4Type },
+        std::pair{ "agag"_c, &Int16x4Type },
+        std::pair{ "agar"_c, &Int16x4Type },
+        std::pair{ "agb"_c, &Int16x3Type },
+        std::pair{ "agba"_c, &Int16x4Type },
+        std::pair{ "agbb"_c, &Int16x4Type },
+        std::pair{ "agbg"_c, &Int16x4Type },
+        std::pair{ "agbr"_c, &Int16x4Type },
+        std::pair{ "agg"_c, &Int16x3Type },
+        std::pair{ "agga"_c, &Int16x4Type },
+        std::pair{ "aggb"_c, &Int16x4Type },
+        std::pair{ "aggg"_c, &Int16x4Type },
+        std::pair{ "aggr"_c, &Int16x4Type },
+        std::pair{ "agr"_c, &Int16x3Type },
+        std::pair{ "agra"_c, &Int16x4Type },
+        std::pair{ "agrb"_c, &Int16x4Type },
+        std::pair{ "agrg"_c, &Int16x4Type },
+        std::pair{ "agrr"_c, &Int16x4Type },
+        std::pair{ "ar"_c, &Int16x2Type },
+        std::pair{ "ara"_c, &Int16x3Type },
+        std::pair{ "araa"_c, &Int16x4Type },
+        std::pair{ "arab"_c, &Int16x4Type },
+        std::pair{ "arag"_c, &Int16x4Type },
+        std::pair{ "arar"_c, &Int16x4Type },
+        std::pair{ "arb"_c, &Int16x3Type },
+        std::pair{ "arba"_c, &Int16x4Type },
+        std::pair{ "arbb"_c, &Int16x4Type },
+        std::pair{ "arbg"_c, &Int16x4Type },
+        std::pair{ "arbr"_c, &Int16x4Type },
+        std::pair{ "arg"_c, &Int16x3Type },
+        std::pair{ "arga"_c, &Int16x4Type },
+        std::pair{ "argb"_c, &Int16x4Type },
+        std::pair{ "argg"_c, &Int16x4Type },
+        std::pair{ "argr"_c, &Int16x4Type },
+        std::pair{ "arr"_c, &Int16x3Type },
+        std::pair{ "arra"_c, &Int16x4Type },
+        std::pair{ "arrb"_c, &Int16x4Type },
+        std::pair{ "arrg"_c, &Int16x4Type },
+        std::pair{ "arrr"_c, &Int16x4Type },
+        std::pair{ "b"_c, &Int16Type },
+        std::pair{ "ba"_c, &Int16x2Type },
+        std::pair{ "baa"_c, &Int16x3Type },
+        std::pair{ "baaa"_c, &Int16x4Type },
+        std::pair{ "baab"_c, &Int16x4Type },
+        std::pair{ "baag"_c, &Int16x4Type },
+        std::pair{ "baar"_c, &Int16x4Type },
+        std::pair{ "bab"_c, &Int16x3Type },
+        std::pair{ "baba"_c, &Int16x4Type },
+        std::pair{ "babb"_c, &Int16x4Type },
+        std::pair{ "babg"_c, &Int16x4Type },
+        std::pair{ "babr"_c, &Int16x4Type },
+        std::pair{ "bag"_c, &Int16x3Type },
+        std::pair{ "baga"_c, &Int16x4Type },
+        std::pair{ "bagb"_c, &Int16x4Type },
+        std::pair{ "bagg"_c, &Int16x4Type },
+        std::pair{ "bagr"_c, &Int16x4Type },
+        std::pair{ "bar"_c, &Int16x3Type },
+        std::pair{ "bara"_c, &Int16x4Type },
+        std::pair{ "barb"_c, &Int16x4Type },
+        std::pair{ "barg"_c, &Int16x4Type },
+        std::pair{ "barr"_c, &Int16x4Type },
+        std::pair{ "bb"_c, &Int16x2Type },
+        std::pair{ "bba"_c, &Int16x3Type },
+        std::pair{ "bbaa"_c, &Int16x4Type },
+        std::pair{ "bbab"_c, &Int16x4Type },
+        std::pair{ "bbag"_c, &Int16x4Type },
+        std::pair{ "bbar"_c, &Int16x4Type },
+        std::pair{ "bbb"_c, &Int16x3Type },
+        std::pair{ "bbba"_c, &Int16x4Type },
+        std::pair{ "bbbb"_c, &Int16x4Type },
+        std::pair{ "bbbg"_c, &Int16x4Type },
+        std::pair{ "bbbr"_c, &Int16x4Type },
+        std::pair{ "bbg"_c, &Int16x3Type },
+        std::pair{ "bbga"_c, &Int16x4Type },
+        std::pair{ "bbgb"_c, &Int16x4Type },
+        std::pair{ "bbgg"_c, &Int16x4Type },
+        std::pair{ "bbgr"_c, &Int16x4Type },
+        std::pair{ "bbr"_c, &Int16x3Type },
+        std::pair{ "bbra"_c, &Int16x4Type },
+        std::pair{ "bbrb"_c, &Int16x4Type },
+        std::pair{ "bbrg"_c, &Int16x4Type },
+        std::pair{ "bbrr"_c, &Int16x4Type },
+        std::pair{ "bg"_c, &Int16x2Type },
+        std::pair{ "bga"_c, &Int16x3Type },
+        std::pair{ "bgaa"_c, &Int16x4Type },
+        std::pair{ "bgab"_c, &Int16x4Type },
+        std::pair{ "bgag"_c, &Int16x4Type },
+        std::pair{ "bgar"_c, &Int16x4Type },
+        std::pair{ "bgb"_c, &Int16x3Type },
+        std::pair{ "bgba"_c, &Int16x4Type },
+        std::pair{ "bgbb"_c, &Int16x4Type },
+        std::pair{ "bgbg"_c, &Int16x4Type },
+        std::pair{ "bgbr"_c, &Int16x4Type },
+        std::pair{ "bgg"_c, &Int16x3Type },
+        std::pair{ "bgga"_c, &Int16x4Type },
+        std::pair{ "bggb"_c, &Int16x4Type },
+        std::pair{ "bggg"_c, &Int16x4Type },
+        std::pair{ "bggr"_c, &Int16x4Type },
+        std::pair{ "bgr"_c, &Int16x3Type },
+        std::pair{ "bgra"_c, &Int16x4Type },
+        std::pair{ "bgrb"_c, &Int16x4Type },
+        std::pair{ "bgrg"_c, &Int16x4Type },
+        std::pair{ "bgrr"_c, &Int16x4Type },
+        std::pair{ "br"_c, &Int16x2Type },
+        std::pair{ "bra"_c, &Int16x3Type },
+        std::pair{ "braa"_c, &Int16x4Type },
+        std::pair{ "brab"_c, &Int16x4Type },
+        std::pair{ "brag"_c, &Int16x4Type },
+        std::pair{ "brar"_c, &Int16x4Type },
+        std::pair{ "brb"_c, &Int16x3Type },
+        std::pair{ "brba"_c, &Int16x4Type },
+        std::pair{ "brbb"_c, &Int16x4Type },
+        std::pair{ "brbg"_c, &Int16x4Type },
+        std::pair{ "brbr"_c, &Int16x4Type },
+        std::pair{ "brg"_c, &Int16x3Type },
+        std::pair{ "brga"_c, &Int16x4Type },
+        std::pair{ "brgb"_c, &Int16x4Type },
+        std::pair{ "brgg"_c, &Int16x4Type },
+        std::pair{ "brgr"_c, &Int16x4Type },
+        std::pair{ "brr"_c, &Int16x3Type },
+        std::pair{ "brra"_c, &Int16x4Type },
+        std::pair{ "brrb"_c, &Int16x4Type },
+        std::pair{ "brrg"_c, &Int16x4Type },
+        std::pair{ "brrr"_c, &Int16x4Type },
+        std::pair{ "g"_c, &Int16Type },
+        std::pair{ "ga"_c, &Int16x2Type },
+        std::pair{ "gaa"_c, &Int16x3Type },
+        std::pair{ "gaaa"_c, &Int16x4Type },
+        std::pair{ "gaab"_c, &Int16x4Type },
+        std::pair{ "gaag"_c, &Int16x4Type },
+        std::pair{ "gaar"_c, &Int16x4Type },
+        std::pair{ "gab"_c, &Int16x3Type },
+        std::pair{ "gaba"_c, &Int16x4Type },
+        std::pair{ "gabb"_c, &Int16x4Type },
+        std::pair{ "gabg"_c, &Int16x4Type },
+        std::pair{ "gabr"_c, &Int16x4Type },
+        std::pair{ "gag"_c, &Int16x3Type },
+        std::pair{ "gaga"_c, &Int16x4Type },
+        std::pair{ "gagb"_c, &Int16x4Type },
+        std::pair{ "gagg"_c, &Int16x4Type },
+        std::pair{ "gagr"_c, &Int16x4Type },
+        std::pair{ "gar"_c, &Int16x3Type },
+        std::pair{ "gara"_c, &Int16x4Type },
+        std::pair{ "garb"_c, &Int16x4Type },
+        std::pair{ "garg"_c, &Int16x4Type },
+        std::pair{ "garr"_c, &Int16x4Type },
+        std::pair{ "gb"_c, &Int16x2Type },
+        std::pair{ "gba"_c, &Int16x3Type },
+        std::pair{ "gbaa"_c, &Int16x4Type },
+        std::pair{ "gbab"_c, &Int16x4Type },
+        std::pair{ "gbag"_c, &Int16x4Type },
+        std::pair{ "gbar"_c, &Int16x4Type },
+        std::pair{ "gbb"_c, &Int16x3Type },
+        std::pair{ "gbba"_c, &Int16x4Type },
+        std::pair{ "gbbb"_c, &Int16x4Type },
+        std::pair{ "gbbg"_c, &Int16x4Type },
+        std::pair{ "gbbr"_c, &Int16x4Type },
+        std::pair{ "gbg"_c, &Int16x3Type },
+        std::pair{ "gbga"_c, &Int16x4Type },
+        std::pair{ "gbgb"_c, &Int16x4Type },
+        std::pair{ "gbgg"_c, &Int16x4Type },
+        std::pair{ "gbgr"_c, &Int16x4Type },
+        std::pair{ "gbr"_c, &Int16x3Type },
+        std::pair{ "gbra"_c, &Int16x4Type },
+        std::pair{ "gbrb"_c, &Int16x4Type },
+        std::pair{ "gbrg"_c, &Int16x4Type },
+        std::pair{ "gbrr"_c, &Int16x4Type },
+        std::pair{ "gg"_c, &Int16x2Type },
+        std::pair{ "gga"_c, &Int16x3Type },
+        std::pair{ "ggaa"_c, &Int16x4Type },
+        std::pair{ "ggab"_c, &Int16x4Type },
+        std::pair{ "ggag"_c, &Int16x4Type },
+        std::pair{ "ggar"_c, &Int16x4Type },
+        std::pair{ "ggb"_c, &Int16x3Type },
+        std::pair{ "ggba"_c, &Int16x4Type },
+        std::pair{ "ggbb"_c, &Int16x4Type },
+        std::pair{ "ggbg"_c, &Int16x4Type },
+        std::pair{ "ggbr"_c, &Int16x4Type },
+        std::pair{ "ggg"_c, &Int16x3Type },
+        std::pair{ "ggga"_c, &Int16x4Type },
+        std::pair{ "gggb"_c, &Int16x4Type },
+        std::pair{ "gggg"_c, &Int16x4Type },
+        std::pair{ "gggr"_c, &Int16x4Type },
+        std::pair{ "ggr"_c, &Int16x3Type },
+        std::pair{ "ggra"_c, &Int16x4Type },
+        std::pair{ "ggrb"_c, &Int16x4Type },
+        std::pair{ "ggrg"_c, &Int16x4Type },
+        std::pair{ "ggrr"_c, &Int16x4Type },
+        std::pair{ "gr"_c, &Int16x2Type },
+        std::pair{ "gra"_c, &Int16x3Type },
+        std::pair{ "graa"_c, &Int16x4Type },
+        std::pair{ "grab"_c, &Int16x4Type },
+        std::pair{ "grag"_c, &Int16x4Type },
+        std::pair{ "grar"_c, &Int16x4Type },
+        std::pair{ "grb"_c, &Int16x3Type },
+        std::pair{ "grba"_c, &Int16x4Type },
+        std::pair{ "grbb"_c, &Int16x4Type },
+        std::pair{ "grbg"_c, &Int16x4Type },
+        std::pair{ "grbr"_c, &Int16x4Type },
+        std::pair{ "grg"_c, &Int16x3Type },
+        std::pair{ "grga"_c, &Int16x4Type },
+        std::pair{ "grgb"_c, &Int16x4Type },
+        std::pair{ "grgg"_c, &Int16x4Type },
+        std::pair{ "grgr"_c, &Int16x4Type },
+        std::pair{ "grr"_c, &Int16x3Type },
+        std::pair{ "grra"_c, &Int16x4Type },
+        std::pair{ "grrb"_c, &Int16x4Type },
+        std::pair{ "grrg"_c, &Int16x4Type },
+        std::pair{ "grrr"_c, &Int16x4Type },
+        std::pair{ "operator!=(i16x4)"_c, &Int16x4_operator_neq_Int16x4 },
+        std::pair{ "operator%(i16x4)"_c, &Int16x4_operator_mod_Int16x4 },
+        std::pair{ "operator&(i16x4)"_c, &Int16x4_operator_and_Int16x4 },
+        std::pair{ "operator&=(i16x4)"_c, &Int16x4_operator_andasg_Int16x4 },
+        std::pair{ "operator*(f16)"_c, &Int16x4_operator_scale_Float16 },
+        std::pair{ "operator*(f32)"_c, &Int16x4_operator_scale_Float32 },
+        std::pair{ "operator*(i16)"_c, &Int16x4_operator_scale_Int16 },
+        std::pair{ "operator*(i16x4)"_c, &Int16x4_operator_mul_Int16x4 },
+        std::pair{ "operator*(i32)"_c, &Int16x4_operator_scale_Int32 },
+        std::pair{ "operator*(u16)"_c, &Int16x4_operator_scale_UInt16 },
+        std::pair{ "operator*(u32)"_c, &Int16x4_operator_scale_UInt32 },
+        std::pair{ "operator*=(i16x4)"_c, &Int16x4_operator_mulasg_Int16x4 },
+        std::pair{ "operator+(i16x4)"_c, &Int16x4_operator_add_Int16x4 },
+        std::pair{ "operator+=(i16x4)"_c, &Int16x4_operator_addasg_Int16x4 },
+        std::pair{ "operator-(i16x4)"_c, &Int16x4_operator_sub_Int16x4 },
+        std::pair{ "operator-=(i16x4)"_c, &Int16x4_operator_subasg_Int16x4 },
+        std::pair{ "operator/(i16x4)"_c, &Int16x4_operator_div_Int16x4 },
+        std::pair{ "operator/=(i16x4)"_c, &Int16x4_operator_divasg_Int16x4 },
+        std::pair{ "operator<(i16x4)"_c, &Int16x4_operator_lt_Int16x4 },
+        std::pair{ "operator<<(i16x4)"_c, &Int16x4_operator_lsh_Int16x4 },
+        std::pair{ "operator<<=(i16x4)"_c, &Int16x4_operator_lshasg_Int16x4 },
+        std::pair{ "operator<=(i16x4)"_c, &Int16x4_operator_lte_Int16x4 },
+        std::pair{ "operator==(i16x4)"_c, &Int16x4_operator_eq_Int16x4 },
+        std::pair{ "operator>(i16x4)"_c, &Int16x4_operator_gt_Int16x4 },
+        std::pair{ "operator>=(i16x4)"_c, &Int16x4_operator_gte_Int16x4 },
+        std::pair{ "operator>>(i16x4)"_c, &Int16x4_operator_rsh_Int16x4 },
+        std::pair{ "operator>>=(i16x4)"_c, &Int16x4_operator_rhsasg_Int16x4 },
+        std::pair{ "operator[](i16)"_c, &Int16x4_operator_index_Int16 },
+        std::pair{ "operator[](i32)"_c, &Int16x4_operator_index_Int32 },
+        std::pair{ "operator[](u16)"_c, &Int16x4_operator_index_UInt16 },
+        std::pair{ "operator[](u32)"_c, &Int16x4_operator_index_UInt32 },
+        std::pair{ "operator^(i16x4)"_c, &Int16x4_operator_xor_Int16x4 },
+        std::pair{ "operator^=(i16x4)"_c, &Int16x4_operator_xorasg_Int16x4 },
+        std::pair{ "operator|(i16x4)"_c, &Int16x4_operator_or_Int16x4 },
+        std::pair{ "operator|=(i16x4)"_c, &Int16x4_operator_orasg_Int16x4 },
+        std::pair{ "r"_c, &Int16Type },
+        std::pair{ "ra"_c, &Int16x2Type },
+        std::pair{ "raa"_c, &Int16x3Type },
+        std::pair{ "raaa"_c, &Int16x4Type },
+        std::pair{ "raab"_c, &Int16x4Type },
+        std::pair{ "raag"_c, &Int16x4Type },
+        std::pair{ "raar"_c, &Int16x4Type },
+        std::pair{ "rab"_c, &Int16x3Type },
+        std::pair{ "raba"_c, &Int16x4Type },
+        std::pair{ "rabb"_c, &Int16x4Type },
+        std::pair{ "rabg"_c, &Int16x4Type },
+        std::pair{ "rabr"_c, &Int16x4Type },
+        std::pair{ "rag"_c, &Int16x3Type },
+        std::pair{ "raga"_c, &Int16x4Type },
+        std::pair{ "ragb"_c, &Int16x4Type },
+        std::pair{ "ragg"_c, &Int16x4Type },
+        std::pair{ "ragr"_c, &Int16x4Type },
+        std::pair{ "rar"_c, &Int16x3Type },
+        std::pair{ "rara"_c, &Int16x4Type },
+        std::pair{ "rarb"_c, &Int16x4Type },
+        std::pair{ "rarg"_c, &Int16x4Type },
+        std::pair{ "rarr"_c, &Int16x4Type },
+        std::pair{ "rb"_c, &Int16x2Type },
+        std::pair{ "rba"_c, &Int16x3Type },
+        std::pair{ "rbaa"_c, &Int16x4Type },
+        std::pair{ "rbab"_c, &Int16x4Type },
+        std::pair{ "rbag"_c, &Int16x4Type },
+        std::pair{ "rbar"_c, &Int16x4Type },
+        std::pair{ "rbb"_c, &Int16x3Type },
+        std::pair{ "rbba"_c, &Int16x4Type },
+        std::pair{ "rbbb"_c, &Int16x4Type },
+        std::pair{ "rbbg"_c, &Int16x4Type },
+        std::pair{ "rbbr"_c, &Int16x4Type },
+        std::pair{ "rbg"_c, &Int16x3Type },
+        std::pair{ "rbga"_c, &Int16x4Type },
+        std::pair{ "rbgb"_c, &Int16x4Type },
+        std::pair{ "rbgg"_c, &Int16x4Type },
+        std::pair{ "rbgr"_c, &Int16x4Type },
+        std::pair{ "rbr"_c, &Int16x3Type },
+        std::pair{ "rbra"_c, &Int16x4Type },
+        std::pair{ "rbrb"_c, &Int16x4Type },
+        std::pair{ "rbrg"_c, &Int16x4Type },
+        std::pair{ "rbrr"_c, &Int16x4Type },
+        std::pair{ "rg"_c, &Int16x2Type },
+        std::pair{ "rga"_c, &Int16x3Type },
+        std::pair{ "rgaa"_c, &Int16x4Type },
+        std::pair{ "rgab"_c, &Int16x4Type },
+        std::pair{ "rgag"_c, &Int16x4Type },
+        std::pair{ "rgar"_c, &Int16x4Type },
+        std::pair{ "rgb"_c, &Int16x3Type },
+        std::pair{ "rgba"_c, &Int16x4Type },
+        std::pair{ "rgbb"_c, &Int16x4Type },
+        std::pair{ "rgbg"_c, &Int16x4Type },
+        std::pair{ "rgbr"_c, &Int16x4Type },
+        std::pair{ "rgg"_c, &Int16x3Type },
+        std::pair{ "rgga"_c, &Int16x4Type },
+        std::pair{ "rggb"_c, &Int16x4Type },
+        std::pair{ "rggg"_c, &Int16x4Type },
+        std::pair{ "rggr"_c, &Int16x4Type },
+        std::pair{ "rgr"_c, &Int16x3Type },
+        std::pair{ "rgra"_c, &Int16x4Type },
+        std::pair{ "rgrb"_c, &Int16x4Type },
+        std::pair{ "rgrg"_c, &Int16x4Type },
+        std::pair{ "rgrr"_c, &Int16x4Type },
+        std::pair{ "rr"_c, &Int16x2Type },
+        std::pair{ "rra"_c, &Int16x3Type },
+        std::pair{ "rraa"_c, &Int16x4Type },
+        std::pair{ "rrab"_c, &Int16x4Type },
+        std::pair{ "rrag"_c, &Int16x4Type },
+        std::pair{ "rrar"_c, &Int16x4Type },
+        std::pair{ "rrb"_c, &Int16x3Type },
+        std::pair{ "rrba"_c, &Int16x4Type },
+        std::pair{ "rrbb"_c, &Int16x4Type },
+        std::pair{ "rrbg"_c, &Int16x4Type },
+        std::pair{ "rrbr"_c, &Int16x4Type },
+        std::pair{ "rrg"_c, &Int16x3Type },
+        std::pair{ "rrga"_c, &Int16x4Type },
+        std::pair{ "rrgb"_c, &Int16x4Type },
+        std::pair{ "rrgg"_c, &Int16x4Type },
+        std::pair{ "rrgr"_c, &Int16x4Type },
+        std::pair{ "rrr"_c, &Int16x3Type },
+        std::pair{ "rrra"_c, &Int16x4Type },
+        std::pair{ "rrrb"_c, &Int16x4Type },
+        std::pair{ "rrrg"_c, &Int16x4Type },
+        std::pair{ "rrrr"_c, &Int16x4Type },
+        std::pair{ "w"_c, &Int16Type },
+        std::pair{ "ww"_c, &Int16x2Type },
+        std::pair{ "www"_c, &Int16x3Type },
+        std::pair{ "wwww"_c, &Int16x4Type },
+        std::pair{ "wwwx"_c, &Int16x4Type },
+        std::pair{ "wwwy"_c, &Int16x4Type },
+        std::pair{ "wwwz"_c, &Int16x4Type },
+        std::pair{ "wwx"_c, &Int16x3Type },
+        std::pair{ "wwxw"_c, &Int16x4Type },
+        std::pair{ "wwxx"_c, &Int16x4Type },
+        std::pair{ "wwxy"_c, &Int16x4Type },
+        std::pair{ "wwxz"_c, &Int16x4Type },
+        std::pair{ "wwy"_c, &Int16x3Type },
+        std::pair{ "wwyw"_c, &Int16x4Type },
+        std::pair{ "wwyx"_c, &Int16x4Type },
+        std::pair{ "wwyy"_c, &Int16x4Type },
+        std::pair{ "wwyz"_c, &Int16x4Type },
+        std::pair{ "wwz"_c, &Int16x3Type },
+        std::pair{ "wwzw"_c, &Int16x4Type },
+        std::pair{ "wwzx"_c, &Int16x4Type },
+        std::pair{ "wwzy"_c, &Int16x4Type },
+        std::pair{ "wwzz"_c, &Int16x4Type },
+        std::pair{ "wx"_c, &Int16x2Type },
+        std::pair{ "wxw"_c, &Int16x3Type },
+        std::pair{ "wxww"_c, &Int16x4Type },
+        std::pair{ "wxwx"_c, &Int16x4Type },
+        std::pair{ "wxwy"_c, &Int16x4Type },
+        std::pair{ "wxwz"_c, &Int16x4Type },
+        std::pair{ "wxx"_c, &Int16x3Type },
+        std::pair{ "wxxw"_c, &Int16x4Type },
+        std::pair{ "wxxx"_c, &Int16x4Type },
+        std::pair{ "wxxy"_c, &Int16x4Type },
+        std::pair{ "wxxz"_c, &Int16x4Type },
+        std::pair{ "wxy"_c, &Int16x3Type },
+        std::pair{ "wxyw"_c, &Int16x4Type },
+        std::pair{ "wxyx"_c, &Int16x4Type },
+        std::pair{ "wxyy"_c, &Int16x4Type },
+        std::pair{ "wxyz"_c, &Int16x4Type },
+        std::pair{ "wxz"_c, &Int16x3Type },
+        std::pair{ "wxzw"_c, &Int16x4Type },
+        std::pair{ "wxzx"_c, &Int16x4Type },
+        std::pair{ "wxzy"_c, &Int16x4Type },
+        std::pair{ "wxzz"_c, &Int16x4Type },
+        std::pair{ "wy"_c, &Int16x2Type },
+        std::pair{ "wyw"_c, &Int16x3Type },
+        std::pair{ "wyww"_c, &Int16x4Type },
+        std::pair{ "wywx"_c, &Int16x4Type },
+        std::pair{ "wywy"_c, &Int16x4Type },
+        std::pair{ "wywz"_c, &Int16x4Type },
+        std::pair{ "wyx"_c, &Int16x3Type },
+        std::pair{ "wyxw"_c, &Int16x4Type },
+        std::pair{ "wyxx"_c, &Int16x4Type },
+        std::pair{ "wyxy"_c, &Int16x4Type },
+        std::pair{ "wyxz"_c, &Int16x4Type },
+        std::pair{ "wyy"_c, &Int16x3Type },
+        std::pair{ "wyyw"_c, &Int16x4Type },
+        std::pair{ "wyyx"_c, &Int16x4Type },
+        std::pair{ "wyyy"_c, &Int16x4Type },
+        std::pair{ "wyyz"_c, &Int16x4Type },
+        std::pair{ "wyz"_c, &Int16x3Type },
+        std::pair{ "wyzw"_c, &Int16x4Type },
+        std::pair{ "wyzx"_c, &Int16x4Type },
+        std::pair{ "wyzy"_c, &Int16x4Type },
+        std::pair{ "wyzz"_c, &Int16x4Type },
+        std::pair{ "wz"_c, &Int16x2Type },
+        std::pair{ "wzw"_c, &Int16x3Type },
+        std::pair{ "wzww"_c, &Int16x4Type },
+        std::pair{ "wzwx"_c, &Int16x4Type },
+        std::pair{ "wzwy"_c, &Int16x4Type },
+        std::pair{ "wzwz"_c, &Int16x4Type },
+        std::pair{ "wzx"_c, &Int16x3Type },
+        std::pair{ "wzxw"_c, &Int16x4Type },
+        std::pair{ "wzxx"_c, &Int16x4Type },
+        std::pair{ "wzxy"_c, &Int16x4Type },
+        std::pair{ "wzxz"_c, &Int16x4Type },
+        std::pair{ "wzy"_c, &Int16x3Type },
+        std::pair{ "wzyw"_c, &Int16x4Type },
+        std::pair{ "wzyx"_c, &Int16x4Type },
+        std::pair{ "wzyy"_c, &Int16x4Type },
+        std::pair{ "wzyz"_c, &Int16x4Type },
+        std::pair{ "wzz"_c, &Int16x3Type },
+        std::pair{ "wzzw"_c, &Int16x4Type },
+        std::pair{ "wzzx"_c, &Int16x4Type },
+        std::pair{ "wzzy"_c, &Int16x4Type },
+        std::pair{ "wzzz"_c, &Int16x4Type },
+        std::pair{ "x"_c, &Int16Type },
+        std::pair{ "xw"_c, &Int16x2Type },
+        std::pair{ "xww"_c, &Int16x3Type },
+        std::pair{ "xwww"_c, &Int16x4Type },
+        std::pair{ "xwwx"_c, &Int16x4Type },
+        std::pair{ "xwwy"_c, &Int16x4Type },
+        std::pair{ "xwwz"_c, &Int16x4Type },
+        std::pair{ "xwx"_c, &Int16x3Type },
+        std::pair{ "xwxw"_c, &Int16x4Type },
+        std::pair{ "xwxx"_c, &Int16x4Type },
+        std::pair{ "xwxy"_c, &Int16x4Type },
+        std::pair{ "xwxz"_c, &Int16x4Type },
+        std::pair{ "xwy"_c, &Int16x3Type },
+        std::pair{ "xwyw"_c, &Int16x4Type },
+        std::pair{ "xwyx"_c, &Int16x4Type },
+        std::pair{ "xwyy"_c, &Int16x4Type },
+        std::pair{ "xwyz"_c, &Int16x4Type },
+        std::pair{ "xwz"_c, &Int16x3Type },
+        std::pair{ "xwzw"_c, &Int16x4Type },
+        std::pair{ "xwzx"_c, &Int16x4Type },
+        std::pair{ "xwzy"_c, &Int16x4Type },
+        std::pair{ "xwzz"_c, &Int16x4Type },
+        std::pair{ "xx"_c, &Int16x2Type },
+        std::pair{ "xxw"_c, &Int16x3Type },
+        std::pair{ "xxww"_c, &Int16x4Type },
+        std::pair{ "xxwx"_c, &Int16x4Type },
+        std::pair{ "xxwy"_c, &Int16x4Type },
+        std::pair{ "xxwz"_c, &Int16x4Type },
+        std::pair{ "xxx"_c, &Int16x3Type },
+        std::pair{ "xxxw"_c, &Int16x4Type },
+        std::pair{ "xxxx"_c, &Int16x4Type },
+        std::pair{ "xxxy"_c, &Int16x4Type },
+        std::pair{ "xxxz"_c, &Int16x4Type },
+        std::pair{ "xxy"_c, &Int16x3Type },
+        std::pair{ "xxyw"_c, &Int16x4Type },
+        std::pair{ "xxyx"_c, &Int16x4Type },
+        std::pair{ "xxyy"_c, &Int16x4Type },
+        std::pair{ "xxyz"_c, &Int16x4Type },
+        std::pair{ "xxz"_c, &Int16x3Type },
+        std::pair{ "xxzw"_c, &Int16x4Type },
+        std::pair{ "xxzx"_c, &Int16x4Type },
+        std::pair{ "xxzy"_c, &Int16x4Type },
+        std::pair{ "xxzz"_c, &Int16x4Type },
+        std::pair{ "xy"_c, &Int16x2Type },
+        std::pair{ "xyw"_c, &Int16x3Type },
+        std::pair{ "xyww"_c, &Int16x4Type },
+        std::pair{ "xywx"_c, &Int16x4Type },
+        std::pair{ "xywy"_c, &Int16x4Type },
+        std::pair{ "xywz"_c, &Int16x4Type },
+        std::pair{ "xyx"_c, &Int16x3Type },
+        std::pair{ "xyxw"_c, &Int16x4Type },
+        std::pair{ "xyxx"_c, &Int16x4Type },
+        std::pair{ "xyxy"_c, &Int16x4Type },
+        std::pair{ "xyxz"_c, &Int16x4Type },
+        std::pair{ "xyy"_c, &Int16x3Type },
+        std::pair{ "xyyw"_c, &Int16x4Type },
+        std::pair{ "xyyx"_c, &Int16x4Type },
+        std::pair{ "xyyy"_c, &Int16x4Type },
+        std::pair{ "xyyz"_c, &Int16x4Type },
+        std::pair{ "xyz"_c, &Int16x3Type },
+        std::pair{ "xyzw"_c, &Int16x4Type },
+        std::pair{ "xyzx"_c, &Int16x4Type },
+        std::pair{ "xyzy"_c, &Int16x4Type },
+        std::pair{ "xyzz"_c, &Int16x4Type },
+        std::pair{ "xz"_c, &Int16x2Type },
+        std::pair{ "xzw"_c, &Int16x3Type },
+        std::pair{ "xzww"_c, &Int16x4Type },
+        std::pair{ "xzwx"_c, &Int16x4Type },
+        std::pair{ "xzwy"_c, &Int16x4Type },
+        std::pair{ "xzwz"_c, &Int16x4Type },
+        std::pair{ "xzx"_c, &Int16x3Type },
+        std::pair{ "xzxw"_c, &Int16x4Type },
+        std::pair{ "xzxx"_c, &Int16x4Type },
+        std::pair{ "xzxy"_c, &Int16x4Type },
+        std::pair{ "xzxz"_c, &Int16x4Type },
+        std::pair{ "xzy"_c, &Int16x3Type },
+        std::pair{ "xzyw"_c, &Int16x4Type },
+        std::pair{ "xzyx"_c, &Int16x4Type },
+        std::pair{ "xzyy"_c, &Int16x4Type },
+        std::pair{ "xzyz"_c, &Int16x4Type },
+        std::pair{ "xzz"_c, &Int16x3Type },
+        std::pair{ "xzzw"_c, &Int16x4Type },
+        std::pair{ "xzzx"_c, &Int16x4Type },
+        std::pair{ "xzzy"_c, &Int16x4Type },
+        std::pair{ "xzzz"_c, &Int16x4Type },
+        std::pair{ "y"_c, &Int16Type },
+        std::pair{ "yw"_c, &Int16x2Type },
+        std::pair{ "yww"_c, &Int16x3Type },
+        std::pair{ "ywww"_c, &Int16x4Type },
+        std::pair{ "ywwx"_c, &Int16x4Type },
+        std::pair{ "ywwy"_c, &Int16x4Type },
+        std::pair{ "ywwz"_c, &Int16x4Type },
+        std::pair{ "ywx"_c, &Int16x3Type },
+        std::pair{ "ywxw"_c, &Int16x4Type },
+        std::pair{ "ywxx"_c, &Int16x4Type },
+        std::pair{ "ywxy"_c, &Int16x4Type },
+        std::pair{ "ywxz"_c, &Int16x4Type },
+        std::pair{ "ywy"_c, &Int16x3Type },
+        std::pair{ "ywyw"_c, &Int16x4Type },
+        std::pair{ "ywyx"_c, &Int16x4Type },
+        std::pair{ "ywyy"_c, &Int16x4Type },
+        std::pair{ "ywyz"_c, &Int16x4Type },
+        std::pair{ "ywz"_c, &Int16x3Type },
+        std::pair{ "ywzw"_c, &Int16x4Type },
+        std::pair{ "ywzx"_c, &Int16x4Type },
+        std::pair{ "ywzy"_c, &Int16x4Type },
+        std::pair{ "ywzz"_c, &Int16x4Type },
+        std::pair{ "yx"_c, &Int16x2Type },
+        std::pair{ "yxw"_c, &Int16x3Type },
+        std::pair{ "yxww"_c, &Int16x4Type },
+        std::pair{ "yxwx"_c, &Int16x4Type },
+        std::pair{ "yxwy"_c, &Int16x4Type },
+        std::pair{ "yxwz"_c, &Int16x4Type },
+        std::pair{ "yxx"_c, &Int16x3Type },
+        std::pair{ "yxxw"_c, &Int16x4Type },
+        std::pair{ "yxxx"_c, &Int16x4Type },
+        std::pair{ "yxxy"_c, &Int16x4Type },
+        std::pair{ "yxxz"_c, &Int16x4Type },
+        std::pair{ "yxy"_c, &Int16x3Type },
+        std::pair{ "yxyw"_c, &Int16x4Type },
+        std::pair{ "yxyx"_c, &Int16x4Type },
+        std::pair{ "yxyy"_c, &Int16x4Type },
+        std::pair{ "yxyz"_c, &Int16x4Type },
+        std::pair{ "yxz"_c, &Int16x3Type },
+        std::pair{ "yxzw"_c, &Int16x4Type },
+        std::pair{ "yxzx"_c, &Int16x4Type },
+        std::pair{ "yxzy"_c, &Int16x4Type },
+        std::pair{ "yxzz"_c, &Int16x4Type },
+        std::pair{ "yy"_c, &Int16x2Type },
+        std::pair{ "yyw"_c, &Int16x3Type },
+        std::pair{ "yyww"_c, &Int16x4Type },
+        std::pair{ "yywx"_c, &Int16x4Type },
+        std::pair{ "yywy"_c, &Int16x4Type },
+        std::pair{ "yywz"_c, &Int16x4Type },
+        std::pair{ "yyx"_c, &Int16x3Type },
+        std::pair{ "yyxw"_c, &Int16x4Type },
+        std::pair{ "yyxx"_c, &Int16x4Type },
+        std::pair{ "yyxy"_c, &Int16x4Type },
+        std::pair{ "yyxz"_c, &Int16x4Type },
+        std::pair{ "yyy"_c, &Int16x3Type },
+        std::pair{ "yyyw"_c, &Int16x4Type },
+        std::pair{ "yyyx"_c, &Int16x4Type },
+        std::pair{ "yyyy"_c, &Int16x4Type },
+        std::pair{ "yyyz"_c, &Int16x4Type },
+        std::pair{ "yyz"_c, &Int16x3Type },
+        std::pair{ "yyzw"_c, &Int16x4Type },
+        std::pair{ "yyzx"_c, &Int16x4Type },
+        std::pair{ "yyzy"_c, &Int16x4Type },
+        std::pair{ "yyzz"_c, &Int16x4Type },
+        std::pair{ "yz"_c, &Int16x2Type },
+        std::pair{ "yzw"_c, &Int16x3Type },
+        std::pair{ "yzww"_c, &Int16x4Type },
+        std::pair{ "yzwx"_c, &Int16x4Type },
+        std::pair{ "yzwy"_c, &Int16x4Type },
+        std::pair{ "yzwz"_c, &Int16x4Type },
+        std::pair{ "yzx"_c, &Int16x3Type },
+        std::pair{ "yzxw"_c, &Int16x4Type },
+        std::pair{ "yzxx"_c, &Int16x4Type },
+        std::pair{ "yzxy"_c, &Int16x4Type },
+        std::pair{ "yzxz"_c, &Int16x4Type },
+        std::pair{ "yzy"_c, &Int16x3Type },
+        std::pair{ "yzyw"_c, &Int16x4Type },
+        std::pair{ "yzyx"_c, &Int16x4Type },
+        std::pair{ "yzyy"_c, &Int16x4Type },
+        std::pair{ "yzyz"_c, &Int16x4Type },
+        std::pair{ "yzz"_c, &Int16x3Type },
+        std::pair{ "yzzw"_c, &Int16x4Type },
+        std::pair{ "yzzx"_c, &Int16x4Type },
+        std::pair{ "yzzy"_c, &Int16x4Type },
+        std::pair{ "yzzz"_c, &Int16x4Type },
+        std::pair{ "z"_c, &Int16Type },
+        std::pair{ "zw"_c, &Int16x2Type },
+        std::pair{ "zww"_c, &Int16x3Type },
+        std::pair{ "zwww"_c, &Int16x4Type },
+        std::pair{ "zwwx"_c, &Int16x4Type },
+        std::pair{ "zwwy"_c, &Int16x4Type },
+        std::pair{ "zwwz"_c, &Int16x4Type },
+        std::pair{ "zwx"_c, &Int16x3Type },
+        std::pair{ "zwxw"_c, &Int16x4Type },
+        std::pair{ "zwxx"_c, &Int16x4Type },
+        std::pair{ "zwxy"_c, &Int16x4Type },
+        std::pair{ "zwxz"_c, &Int16x4Type },
+        std::pair{ "zwy"_c, &Int16x3Type },
+        std::pair{ "zwyw"_c, &Int16x4Type },
+        std::pair{ "zwyx"_c, &Int16x4Type },
+        std::pair{ "zwyy"_c, &Int16x4Type },
+        std::pair{ "zwyz"_c, &Int16x4Type },
+        std::pair{ "zwz"_c, &Int16x3Type },
+        std::pair{ "zwzw"_c, &Int16x4Type },
+        std::pair{ "zwzx"_c, &Int16x4Type },
+        std::pair{ "zwzy"_c, &Int16x4Type },
+        std::pair{ "zwzz"_c, &Int16x4Type },
+        std::pair{ "zx"_c, &Int16x2Type },
+        std::pair{ "zxw"_c, &Int16x3Type },
+        std::pair{ "zxww"_c, &Int16x4Type },
+        std::pair{ "zxwx"_c, &Int16x4Type },
+        std::pair{ "zxwy"_c, &Int16x4Type },
+        std::pair{ "zxwz"_c, &Int16x4Type },
+        std::pair{ "zxx"_c, &Int16x3Type },
+        std::pair{ "zxxw"_c, &Int16x4Type },
+        std::pair{ "zxxx"_c, &Int16x4Type },
+        std::pair{ "zxxy"_c, &Int16x4Type },
+        std::pair{ "zxxz"_c, &Int16x4Type },
+        std::pair{ "zxy"_c, &Int16x3Type },
+        std::pair{ "zxyw"_c, &Int16x4Type },
+        std::pair{ "zxyx"_c, &Int16x4Type },
+        std::pair{ "zxyy"_c, &Int16x4Type },
+        std::pair{ "zxyz"_c, &Int16x4Type },
+        std::pair{ "zxz"_c, &Int16x3Type },
+        std::pair{ "zxzw"_c, &Int16x4Type },
+        std::pair{ "zxzx"_c, &Int16x4Type },
+        std::pair{ "zxzy"_c, &Int16x4Type },
+        std::pair{ "zxzz"_c, &Int16x4Type },
+        std::pair{ "zy"_c, &Int16x2Type },
+        std::pair{ "zyw"_c, &Int16x3Type },
+        std::pair{ "zyww"_c, &Int16x4Type },
+        std::pair{ "zywx"_c, &Int16x4Type },
+        std::pair{ "zywy"_c, &Int16x4Type },
+        std::pair{ "zywz"_c, &Int16x4Type },
+        std::pair{ "zyx"_c, &Int16x3Type },
+        std::pair{ "zyxw"_c, &Int16x4Type },
+        std::pair{ "zyxx"_c, &Int16x4Type },
+        std::pair{ "zyxy"_c, &Int16x4Type },
+        std::pair{ "zyxz"_c, &Int16x4Type },
+        std::pair{ "zyy"_c, &Int16x3Type },
+        std::pair{ "zyyw"_c, &Int16x4Type },
+        std::pair{ "zyyx"_c, &Int16x4Type },
+        std::pair{ "zyyy"_c, &Int16x4Type },
+        std::pair{ "zyyz"_c, &Int16x4Type },
+        std::pair{ "zyz"_c, &Int16x3Type },
+        std::pair{ "zyzw"_c, &Int16x4Type },
+        std::pair{ "zyzx"_c, &Int16x4Type },
+        std::pair{ "zyzy"_c, &Int16x4Type },
+        std::pair{ "zyzz"_c, &Int16x4Type },
+        std::pair{ "zz"_c, &Int16x2Type },
+        std::pair{ "zzw"_c, &Int16x3Type },
+        std::pair{ "zzww"_c, &Int16x4Type },
+        std::pair{ "zzwx"_c, &Int16x4Type },
+        std::pair{ "zzwy"_c, &Int16x4Type },
+        std::pair{ "zzwz"_c, &Int16x4Type },
+        std::pair{ "zzx"_c, &Int16x3Type },
+        std::pair{ "zzxw"_c, &Int16x4Type },
+        std::pair{ "zzxx"_c, &Int16x4Type },
+        std::pair{ "zzxy"_c, &Int16x4Type },
+        std::pair{ "zzxz"_c, &Int16x4Type },
+        std::pair{ "zzy"_c, &Int16x3Type },
+        std::pair{ "zzyw"_c, &Int16x4Type },
+        std::pair{ "zzyx"_c, &Int16x4Type },
+        std::pair{ "zzyy"_c, &Int16x4Type },
+        std::pair{ "zzyz"_c, &Int16x4Type },
+        std::pair{ "zzz"_c, &Int16x3Type },
+        std::pair{ "zzzw"_c, &Int16x4Type },
+        std::pair{ "zzzx"_c, &Int16x4Type },
+        std::pair{ "zzzy"_c, &Int16x4Type },
+        std::pair{ "zzzz"_c, &Int16x4Type }
     };
 }
 Int16x4 Int16x4Type;
@@ -17792,6 +24778,11 @@ Variable Float32x2x2_operator_index_UInt16_arg0;
 Function Float32x2x2_operator_index_UInt16;
 inline constexpr std::array Float32x2x2_operator_index_UInt16_args = { &Float32x2x2_operator_index_UInt16_arg0 };
 
+/// operator* with Float32x2
+Variable Float32x2x2_transform_Float32x2_vec;
+Function Float32x2x2_transform_Float32x2;
+inline constexpr std::array Float32x2x2_transform_Float32x2_args = { &Float32x2x2_transform_Float32x2_vec };
+
 /// operator+ with Float32x2x2
 Variable Float32x2x2_operator_add_Float32x2x2_arg0;
 Function Float32x2x2_operator_add_Float32x2x2;
@@ -17829,10 +24820,10 @@ inline constexpr std::array Float32x2x2_operator_scale_Float32_args = { &Float32
 
 Float32x2x2::Float32x2x2()
 {
-    this->name = "f32"_c;
+    this->name = "f32x2x2"_c;
     this->columnSize = 2;
     this->rowSize = 2;
-    this->byteSize = 16;
+    this->byteSize = 8;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float32;
     this->builtin = true;
@@ -17908,6 +24899,15 @@ Float32x2x2::Float32x2x2()
     Symbol::Resolved(&Float32x2x2_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float32x2x2_operator_index_UInt16)->returnTypeSymbol = &Float32x2Type;
 
+    /// operator* with Float32x2
+    Float32x2x2_transform_Float32x2_vec.name = "vec"_c;
+    Float32x2x2_transform_Float32x2_vec.type = Type::FullType{ Float32x2Type.name };
+    Float32x2x2_transform_Float32x2.name = "operator*"_c;
+    Float32x2x2_transform_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    Float32x2x2_transform_Float32x2.parameters = Float32x2x2_transform_Float32x2_args;
+    Symbol::Resolved(&Float32x2x2_transform_Float32x2_vec)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&Float32x2x2_transform_Float32x2)->returnTypeSymbol = &Float32x2Type;
+
     /// operator+ with Float32x2x2
     Float32x2x2_operator_add_Float32x2x2_arg0.name = "_arg0"_c;
     Float32x2x2_operator_add_Float32x2x2_arg0.type = Type::FullType{ Float32x2x2Type.name };
@@ -17971,53 +24971,19 @@ Float32x2x2::Float32x2x2()
     Symbol::Resolved(&Float32x2x2_operator_scale_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x2x2_operator_scale_Float32)->returnTypeSymbol = &Float32x2x2Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 46> { 
-        std::pair{ "operator!=", &Int16x4_operator_neq_Int16x4 },
-        std::pair{ "operator%", &Int16x4_operator_mod_Int16x4 },
-        std::pair{ "operator&", &Int16x4_operator_and_Int16x4 },
-        std::pair{ "operator&=", &Int16x4_operator_andasg_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_mul_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int16 },
-        std::pair{ "operator*", &Float32x2x2_operator_mul_Float32x2x2 },
-        std::pair{ "operator*", &Float32x2x2_operator_scale_Float32 },
-        std::pair{ "operator*=", &Int16x4_operator_mulasg_Int16x4 },
-        std::pair{ "operator*=", &Float32x2x2_operator_mulasg_Float32x2x2 },
-        std::pair{ "operator+", &Int16x4_operator_add_Int16x4 },
-        std::pair{ "operator+", &Float32x2x2_operator_add_Float32x2x2 },
-        std::pair{ "operator+=", &Int16x4_operator_addasg_Int16x4 },
-        std::pair{ "operator+=", &Float32x2x2_operator_addasg_Float32x2x2 },
-        std::pair{ "operator-", &Int16x4_operator_sub_Int16x4 },
-        std::pair{ "operator-", &Float32x2x2_operator_sub_Float32x2x2 },
-        std::pair{ "operator-=", &Int16x4_operator_subasg_Int16x4 },
-        std::pair{ "operator-=", &Float32x2x2_operator_subasg_Float32x2x2 },
-        std::pair{ "operator/", &Int16x4_operator_div_Int16x4 },
-        std::pair{ "operator/=", &Int16x4_operator_divasg_Int16x4 },
-        std::pair{ "operator<", &Int16x4_operator_lt_Int16x4 },
-        std::pair{ "operator<<", &Int16x4_operator_lsh_Int16x4 },
-        std::pair{ "operator<<=", &Int16x4_operator_lshasg_Int16x4 },
-        std::pair{ "operator<=", &Int16x4_operator_lte_Int16x4 },
-        std::pair{ "operator==", &Int16x4_operator_eq_Int16x4 },
-        std::pair{ "operator>", &Int16x4_operator_gt_Int16x4 },
-        std::pair{ "operator>=", &Int16x4_operator_gte_Int16x4 },
-        std::pair{ "operator>>", &Int16x4_operator_rsh_Int16x4 },
-        std::pair{ "operator>>=", &Int16x4_operator_rhsasg_Int16x4 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt16 },
-        std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
-        std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
-        std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 12> { 
+        std::pair{ "operator*(f32)"_c, &Float32x2x2_operator_scale_Float32 },
+        std::pair{ "operator*(f32x2)"_c, &Float32x2x2_transform_Float32x2 },
+        std::pair{ "operator*(f32x2x2)"_c, &Float32x2x2_operator_mul_Float32x2x2 },
+        std::pair{ "operator*=(f32x2x2)"_c, &Float32x2x2_operator_mulasg_Float32x2x2 },
+        std::pair{ "operator+(f32x2x2)"_c, &Float32x2x2_operator_add_Float32x2x2 },
+        std::pair{ "operator+=(f32x2x2)"_c, &Float32x2x2_operator_addasg_Float32x2x2 },
+        std::pair{ "operator-(f32x2x2)"_c, &Float32x2x2_operator_sub_Float32x2x2 },
+        std::pair{ "operator-=(f32x2x2)"_c, &Float32x2x2_operator_subasg_Float32x2x2 },
+        std::pair{ "operator[]"_c, &Float32x2x2_operator_index_Int32 },
+        std::pair{ "operator[]"_c, &Float32x2x2_operator_index_UInt32 },
+        std::pair{ "operator[]"_c, &Float32x2x2_operator_index_Int16 },
+        std::pair{ "operator[]"_c, &Float32x2x2_operator_index_UInt16 }
     };
 }
 Float32x2x2 Float32x2x2Type;
@@ -18061,6 +25027,11 @@ Variable Float32x2x3_operator_index_UInt16_arg0;
 Function Float32x2x3_operator_index_UInt16;
 inline constexpr std::array Float32x2x3_operator_index_UInt16_args = { &Float32x2x3_operator_index_UInt16_arg0 };
 
+/// operator* with Float32x2
+Variable Float32x2x3_transform_Float32x3_vec;
+Function Float32x2x3_transform_Float32x3;
+inline constexpr std::array Float32x2x3_transform_Float32x3_args = { &Float32x2x3_transform_Float32x3_vec };
+
 /// operator+ with Float32x2x3
 Variable Float32x2x3_operator_add_Float32x2x3_arg0;
 Function Float32x2x3_operator_add_Float32x2x3;
@@ -18098,10 +25069,10 @@ inline constexpr std::array Float32x2x3_operator_scale_Float32_args = { &Float32
 
 Float32x2x3::Float32x2x3()
 {
-    this->name = "f32"_c;
+    this->name = "f32x2x3"_c;
     this->columnSize = 3;
     this->rowSize = 2;
-    this->byteSize = 24;
+    this->byteSize = 12;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float32;
     this->builtin = true;
@@ -18183,6 +25154,15 @@ Float32x2x3::Float32x2x3()
     Symbol::Resolved(&Float32x2x3_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float32x2x3_operator_index_UInt16)->returnTypeSymbol = &Float32x3Type;
 
+    /// operator* with Float32x2
+    Float32x2x3_transform_Float32x3_vec.name = "vec"_c;
+    Float32x2x3_transform_Float32x3_vec.type = Type::FullType{ Float32x2Type.name };
+    Float32x2x3_transform_Float32x3.name = "operator*"_c;
+    Float32x2x3_transform_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    Float32x2x3_transform_Float32x3.parameters = Float32x2x3_transform_Float32x3_args;
+    Symbol::Resolved(&Float32x2x3_transform_Float32x3_vec)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&Float32x2x3_transform_Float32x3)->returnTypeSymbol = &Float32x3Type;
+
     /// operator+ with Float32x2x3
     Float32x2x3_operator_add_Float32x2x3_arg0.name = "_arg0"_c;
     Float32x2x3_operator_add_Float32x2x3_arg0.type = Type::FullType{ Float32x2x3Type.name };
@@ -18246,64 +25226,19 @@ Float32x2x3::Float32x2x3()
     Symbol::Resolved(&Float32x2x3_operator_scale_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x2x3_operator_scale_Float32)->returnTypeSymbol = &Float32x2x3Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 57> { 
-        std::pair{ "operator!=", &Int16x4_operator_neq_Int16x4 },
-        std::pair{ "operator%", &Int16x4_operator_mod_Int16x4 },
-        std::pair{ "operator&", &Int16x4_operator_and_Int16x4 },
-        std::pair{ "operator&=", &Int16x4_operator_andasg_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_mul_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int16 },
-        std::pair{ "operator*", &Float32x2x2_operator_mul_Float32x2x2 },
-        std::pair{ "operator*", &Float32x2x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x3_operator_mul_Float32x2x3 },
-        std::pair{ "operator*", &Float32x2x3_operator_scale_Float32 },
-        std::pair{ "operator*=", &Int16x4_operator_mulasg_Int16x4 },
-        std::pair{ "operator*=", &Float32x2x2_operator_mulasg_Float32x2x2 },
-        std::pair{ "operator*=", &Float32x2x3_operator_mulasg_Float32x2x3 },
-        std::pair{ "operator+", &Int16x4_operator_add_Int16x4 },
-        std::pair{ "operator+", &Float32x2x2_operator_add_Float32x2x2 },
-        std::pair{ "operator+", &Float32x2x3_operator_add_Float32x2x3 },
-        std::pair{ "operator+=", &Int16x4_operator_addasg_Int16x4 },
-        std::pair{ "operator+=", &Float32x2x2_operator_addasg_Float32x2x2 },
-        std::pair{ "operator+=", &Float32x2x3_operator_addasg_Float32x2x3 },
-        std::pair{ "operator-", &Int16x4_operator_sub_Int16x4 },
-        std::pair{ "operator-", &Float32x2x2_operator_sub_Float32x2x2 },
-        std::pair{ "operator-", &Float32x2x3_operator_sub_Float32x2x3 },
-        std::pair{ "operator-=", &Int16x4_operator_subasg_Int16x4 },
-        std::pair{ "operator-=", &Float32x2x2_operator_subasg_Float32x2x2 },
-        std::pair{ "operator-=", &Float32x2x3_operator_subasg_Float32x2x3 },
-        std::pair{ "operator/", &Int16x4_operator_div_Int16x4 },
-        std::pair{ "operator/=", &Int16x4_operator_divasg_Int16x4 },
-        std::pair{ "operator<", &Int16x4_operator_lt_Int16x4 },
-        std::pair{ "operator<<", &Int16x4_operator_lsh_Int16x4 },
-        std::pair{ "operator<<=", &Int16x4_operator_lshasg_Int16x4 },
-        std::pair{ "operator<=", &Int16x4_operator_lte_Int16x4 },
-        std::pair{ "operator==", &Int16x4_operator_eq_Int16x4 },
-        std::pair{ "operator>", &Int16x4_operator_gt_Int16x4 },
-        std::pair{ "operator>=", &Int16x4_operator_gte_Int16x4 },
-        std::pair{ "operator>>", &Int16x4_operator_rsh_Int16x4 },
-        std::pair{ "operator>>=", &Int16x4_operator_rhsasg_Int16x4 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt16 },
-        std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
-        std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
-        std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 12> { 
+        std::pair{ "operator*(f32)"_c, &Float32x2x3_operator_scale_Float32 },
+        std::pair{ "operator*(f32x2)"_c, &Float32x2x3_transform_Float32x3 },
+        std::pair{ "operator*(f32x2x3)"_c, &Float32x2x3_operator_mul_Float32x2x3 },
+        std::pair{ "operator*=(f32x2x3)"_c, &Float32x2x3_operator_mulasg_Float32x2x3 },
+        std::pair{ "operator+(f32x2x3)"_c, &Float32x2x3_operator_add_Float32x2x3 },
+        std::pair{ "operator+=(f32x2x3)"_c, &Float32x2x3_operator_addasg_Float32x2x3 },
+        std::pair{ "operator-(f32x2x3)"_c, &Float32x2x3_operator_sub_Float32x2x3 },
+        std::pair{ "operator-=(f32x2x3)"_c, &Float32x2x3_operator_subasg_Float32x2x3 },
+        std::pair{ "operator[]"_c, &Float32x2x3_operator_index_Int32 },
+        std::pair{ "operator[]"_c, &Float32x2x3_operator_index_UInt32 },
+        std::pair{ "operator[]"_c, &Float32x2x3_operator_index_Int16 },
+        std::pair{ "operator[]"_c, &Float32x2x3_operator_index_UInt16 }
     };
 }
 Float32x2x3 Float32x2x3Type;
@@ -18349,6 +25284,11 @@ Variable Float32x2x4_operator_index_UInt16_arg0;
 Function Float32x2x4_operator_index_UInt16;
 inline constexpr std::array Float32x2x4_operator_index_UInt16_args = { &Float32x2x4_operator_index_UInt16_arg0 };
 
+/// operator* with Float32x2
+Variable Float32x2x4_transform_Float32x4_vec;
+Function Float32x2x4_transform_Float32x4;
+inline constexpr std::array Float32x2x4_transform_Float32x4_args = { &Float32x2x4_transform_Float32x4_vec };
+
 /// operator+ with Float32x2x4
 Variable Float32x2x4_operator_add_Float32x2x4_arg0;
 Function Float32x2x4_operator_add_Float32x2x4;
@@ -18386,10 +25326,10 @@ inline constexpr std::array Float32x2x4_operator_scale_Float32_args = { &Float32
 
 Float32x2x4::Float32x2x4()
 {
-    this->name = "f32"_c;
+    this->name = "f32x2x4"_c;
     this->columnSize = 4;
     this->rowSize = 2;
-    this->byteSize = 32;
+    this->byteSize = 16;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float32;
     this->builtin = true;
@@ -18477,6 +25417,15 @@ Float32x2x4::Float32x2x4()
     Symbol::Resolved(&Float32x2x4_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float32x2x4_operator_index_UInt16)->returnTypeSymbol = &Float32x4Type;
 
+    /// operator* with Float32x2
+    Float32x2x4_transform_Float32x4_vec.name = "vec"_c;
+    Float32x2x4_transform_Float32x4_vec.type = Type::FullType{ Float32x2Type.name };
+    Float32x2x4_transform_Float32x4.name = "operator*"_c;
+    Float32x2x4_transform_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    Float32x2x4_transform_Float32x4.parameters = Float32x2x4_transform_Float32x4_args;
+    Symbol::Resolved(&Float32x2x4_transform_Float32x4_vec)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&Float32x2x4_transform_Float32x4)->returnTypeSymbol = &Float32x4Type;
+
     /// operator+ with Float32x2x4
     Float32x2x4_operator_add_Float32x2x4_arg0.name = "_arg0"_c;
     Float32x2x4_operator_add_Float32x2x4_arg0.type = Type::FullType{ Float32x2x4Type.name };
@@ -18540,75 +25489,19 @@ Float32x2x4::Float32x2x4()
     Symbol::Resolved(&Float32x2x4_operator_scale_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x2x4_operator_scale_Float32)->returnTypeSymbol = &Float32x2x4Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 68> { 
-        std::pair{ "operator!=", &Int16x4_operator_neq_Int16x4 },
-        std::pair{ "operator%", &Int16x4_operator_mod_Int16x4 },
-        std::pair{ "operator&", &Int16x4_operator_and_Int16x4 },
-        std::pair{ "operator&=", &Int16x4_operator_andasg_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_mul_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int16 },
-        std::pair{ "operator*", &Float32x2x2_operator_mul_Float32x2x2 },
-        std::pair{ "operator*", &Float32x2x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x3_operator_mul_Float32x2x3 },
-        std::pair{ "operator*", &Float32x2x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x4_operator_mul_Float32x2x4 },
-        std::pair{ "operator*", &Float32x2x4_operator_scale_Float32 },
-        std::pair{ "operator*=", &Int16x4_operator_mulasg_Int16x4 },
-        std::pair{ "operator*=", &Float32x2x2_operator_mulasg_Float32x2x2 },
-        std::pair{ "operator*=", &Float32x2x3_operator_mulasg_Float32x2x3 },
-        std::pair{ "operator*=", &Float32x2x4_operator_mulasg_Float32x2x4 },
-        std::pair{ "operator+", &Int16x4_operator_add_Int16x4 },
-        std::pair{ "operator+", &Float32x2x2_operator_add_Float32x2x2 },
-        std::pair{ "operator+", &Float32x2x3_operator_add_Float32x2x3 },
-        std::pair{ "operator+", &Float32x2x4_operator_add_Float32x2x4 },
-        std::pair{ "operator+=", &Int16x4_operator_addasg_Int16x4 },
-        std::pair{ "operator+=", &Float32x2x2_operator_addasg_Float32x2x2 },
-        std::pair{ "operator+=", &Float32x2x3_operator_addasg_Float32x2x3 },
-        std::pair{ "operator+=", &Float32x2x4_operator_addasg_Float32x2x4 },
-        std::pair{ "operator-", &Int16x4_operator_sub_Int16x4 },
-        std::pair{ "operator-", &Float32x2x2_operator_sub_Float32x2x2 },
-        std::pair{ "operator-", &Float32x2x3_operator_sub_Float32x2x3 },
-        std::pair{ "operator-", &Float32x2x4_operator_sub_Float32x2x4 },
-        std::pair{ "operator-=", &Int16x4_operator_subasg_Int16x4 },
-        std::pair{ "operator-=", &Float32x2x2_operator_subasg_Float32x2x2 },
-        std::pair{ "operator-=", &Float32x2x3_operator_subasg_Float32x2x3 },
-        std::pair{ "operator-=", &Float32x2x4_operator_subasg_Float32x2x4 },
-        std::pair{ "operator/", &Int16x4_operator_div_Int16x4 },
-        std::pair{ "operator/=", &Int16x4_operator_divasg_Int16x4 },
-        std::pair{ "operator<", &Int16x4_operator_lt_Int16x4 },
-        std::pair{ "operator<<", &Int16x4_operator_lsh_Int16x4 },
-        std::pair{ "operator<<=", &Int16x4_operator_lshasg_Int16x4 },
-        std::pair{ "operator<=", &Int16x4_operator_lte_Int16x4 },
-        std::pair{ "operator==", &Int16x4_operator_eq_Int16x4 },
-        std::pair{ "operator>", &Int16x4_operator_gt_Int16x4 },
-        std::pair{ "operator>=", &Int16x4_operator_gte_Int16x4 },
-        std::pair{ "operator>>", &Int16x4_operator_rsh_Int16x4 },
-        std::pair{ "operator>>=", &Int16x4_operator_rhsasg_Int16x4 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt16 },
-        std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
-        std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
-        std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 12> { 
+        std::pair{ "operator*(f32)"_c, &Float32x2x4_operator_scale_Float32 },
+        std::pair{ "operator*(f32x2)"_c, &Float32x2x4_transform_Float32x4 },
+        std::pair{ "operator*(f32x2x4)"_c, &Float32x2x4_operator_mul_Float32x2x4 },
+        std::pair{ "operator*=(f32x2x4)"_c, &Float32x2x4_operator_mulasg_Float32x2x4 },
+        std::pair{ "operator+(f32x2x4)"_c, &Float32x2x4_operator_add_Float32x2x4 },
+        std::pair{ "operator+=(f32x2x4)"_c, &Float32x2x4_operator_addasg_Float32x2x4 },
+        std::pair{ "operator-(f32x2x4)"_c, &Float32x2x4_operator_sub_Float32x2x4 },
+        std::pair{ "operator-=(f32x2x4)"_c, &Float32x2x4_operator_subasg_Float32x2x4 },
+        std::pair{ "operator[]"_c, &Float32x2x4_operator_index_Int32 },
+        std::pair{ "operator[]"_c, &Float32x2x4_operator_index_UInt32 },
+        std::pair{ "operator[]"_c, &Float32x2x4_operator_index_Int16 },
+        std::pair{ "operator[]"_c, &Float32x2x4_operator_index_UInt16 }
     };
 }
 Float32x2x4 Float32x2x4Type;
@@ -18653,6 +25546,11 @@ Variable Float32x3x2_operator_index_UInt16_arg0;
 Function Float32x3x2_operator_index_UInt16;
 inline constexpr std::array Float32x3x2_operator_index_UInt16_args = { &Float32x3x2_operator_index_UInt16_arg0 };
 
+/// operator* with Float32x3
+Variable Float32x3x2_transform_Float32x2_vec;
+Function Float32x3x2_transform_Float32x2;
+inline constexpr std::array Float32x3x2_transform_Float32x2_args = { &Float32x3x2_transform_Float32x2_vec };
+
 /// operator+ with Float32x3x2
 Variable Float32x3x2_operator_add_Float32x3x2_arg0;
 Function Float32x3x2_operator_add_Float32x3x2;
@@ -18690,10 +25588,10 @@ inline constexpr std::array Float32x3x2_operator_scale_Float32_args = { &Float32
 
 Float32x3x2::Float32x3x2()
 {
-    this->name = "f32"_c;
+    this->name = "f32x3x2"_c;
     this->columnSize = 2;
     this->rowSize = 3;
-    this->byteSize = 24;
+    this->byteSize = 8;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float32;
     this->builtin = true;
@@ -18778,6 +25676,15 @@ Float32x3x2::Float32x3x2()
     Symbol::Resolved(&Float32x3x2_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float32x3x2_operator_index_UInt16)->returnTypeSymbol = &Float32x2Type;
 
+    /// operator* with Float32x3
+    Float32x3x2_transform_Float32x2_vec.name = "vec"_c;
+    Float32x3x2_transform_Float32x2_vec.type = Type::FullType{ Float32x3Type.name };
+    Float32x3x2_transform_Float32x2.name = "operator*"_c;
+    Float32x3x2_transform_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    Float32x3x2_transform_Float32x2.parameters = Float32x3x2_transform_Float32x2_args;
+    Symbol::Resolved(&Float32x3x2_transform_Float32x2_vec)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&Float32x3x2_transform_Float32x2)->returnTypeSymbol = &Float32x2Type;
+
     /// operator+ with Float32x3x2
     Float32x3x2_operator_add_Float32x3x2_arg0.name = "_arg0"_c;
     Float32x3x2_operator_add_Float32x3x2_arg0.type = Type::FullType{ Float32x3x2Type.name };
@@ -18841,86 +25748,19 @@ Float32x3x2::Float32x3x2()
     Symbol::Resolved(&Float32x3x2_operator_scale_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x3x2_operator_scale_Float32)->returnTypeSymbol = &Float32x3x2Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 79> { 
-        std::pair{ "operator!=", &Int16x4_operator_neq_Int16x4 },
-        std::pair{ "operator%", &Int16x4_operator_mod_Int16x4 },
-        std::pair{ "operator&", &Int16x4_operator_and_Int16x4 },
-        std::pair{ "operator&=", &Int16x4_operator_andasg_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_mul_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int16 },
-        std::pair{ "operator*", &Float32x2x2_operator_mul_Float32x2x2 },
-        std::pair{ "operator*", &Float32x2x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x3_operator_mul_Float32x2x3 },
-        std::pair{ "operator*", &Float32x2x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x4_operator_mul_Float32x2x4 },
-        std::pair{ "operator*", &Float32x2x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x2_operator_mul_Float32x3x2 },
-        std::pair{ "operator*", &Float32x3x2_operator_scale_Float32 },
-        std::pair{ "operator*=", &Int16x4_operator_mulasg_Int16x4 },
-        std::pair{ "operator*=", &Float32x2x2_operator_mulasg_Float32x2x2 },
-        std::pair{ "operator*=", &Float32x2x3_operator_mulasg_Float32x2x3 },
-        std::pair{ "operator*=", &Float32x2x4_operator_mulasg_Float32x2x4 },
-        std::pair{ "operator*=", &Float32x3x2_operator_mulasg_Float32x3x2 },
-        std::pair{ "operator+", &Int16x4_operator_add_Int16x4 },
-        std::pair{ "operator+", &Float32x2x2_operator_add_Float32x2x2 },
-        std::pair{ "operator+", &Float32x2x3_operator_add_Float32x2x3 },
-        std::pair{ "operator+", &Float32x2x4_operator_add_Float32x2x4 },
-        std::pair{ "operator+", &Float32x3x2_operator_add_Float32x3x2 },
-        std::pair{ "operator+=", &Int16x4_operator_addasg_Int16x4 },
-        std::pair{ "operator+=", &Float32x2x2_operator_addasg_Float32x2x2 },
-        std::pair{ "operator+=", &Float32x2x3_operator_addasg_Float32x2x3 },
-        std::pair{ "operator+=", &Float32x2x4_operator_addasg_Float32x2x4 },
-        std::pair{ "operator+=", &Float32x3x2_operator_addasg_Float32x3x2 },
-        std::pair{ "operator-", &Int16x4_operator_sub_Int16x4 },
-        std::pair{ "operator-", &Float32x2x2_operator_sub_Float32x2x2 },
-        std::pair{ "operator-", &Float32x2x3_operator_sub_Float32x2x3 },
-        std::pair{ "operator-", &Float32x2x4_operator_sub_Float32x2x4 },
-        std::pair{ "operator-", &Float32x3x2_operator_sub_Float32x3x2 },
-        std::pair{ "operator-=", &Int16x4_operator_subasg_Int16x4 },
-        std::pair{ "operator-=", &Float32x2x2_operator_subasg_Float32x2x2 },
-        std::pair{ "operator-=", &Float32x2x3_operator_subasg_Float32x2x3 },
-        std::pair{ "operator-=", &Float32x2x4_operator_subasg_Float32x2x4 },
-        std::pair{ "operator-=", &Float32x3x2_operator_subasg_Float32x3x2 },
-        std::pair{ "operator/", &Int16x4_operator_div_Int16x4 },
-        std::pair{ "operator/=", &Int16x4_operator_divasg_Int16x4 },
-        std::pair{ "operator<", &Int16x4_operator_lt_Int16x4 },
-        std::pair{ "operator<<", &Int16x4_operator_lsh_Int16x4 },
-        std::pair{ "operator<<=", &Int16x4_operator_lshasg_Int16x4 },
-        std::pair{ "operator<=", &Int16x4_operator_lte_Int16x4 },
-        std::pair{ "operator==", &Int16x4_operator_eq_Int16x4 },
-        std::pair{ "operator>", &Int16x4_operator_gt_Int16x4 },
-        std::pair{ "operator>=", &Int16x4_operator_gte_Int16x4 },
-        std::pair{ "operator>>", &Int16x4_operator_rsh_Int16x4 },
-        std::pair{ "operator>>=", &Int16x4_operator_rhsasg_Int16x4 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt16 },
-        std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
-        std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
-        std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 12> { 
+        std::pair{ "operator*(f32)"_c, &Float32x3x2_operator_scale_Float32 },
+        std::pair{ "operator*(f32x3)"_c, &Float32x3x2_transform_Float32x2 },
+        std::pair{ "operator*(f32x3x2)"_c, &Float32x3x2_operator_mul_Float32x3x2 },
+        std::pair{ "operator*=(f32x3x2)"_c, &Float32x3x2_operator_mulasg_Float32x3x2 },
+        std::pair{ "operator+(f32x3x2)"_c, &Float32x3x2_operator_add_Float32x3x2 },
+        std::pair{ "operator+=(f32x3x2)"_c, &Float32x3x2_operator_addasg_Float32x3x2 },
+        std::pair{ "operator-(f32x3x2)"_c, &Float32x3x2_operator_sub_Float32x3x2 },
+        std::pair{ "operator-=(f32x3x2)"_c, &Float32x3x2_operator_subasg_Float32x3x2 },
+        std::pair{ "operator[]"_c, &Float32x3x2_operator_index_Int32 },
+        std::pair{ "operator[]"_c, &Float32x3x2_operator_index_UInt32 },
+        std::pair{ "operator[]"_c, &Float32x3x2_operator_index_Int16 },
+        std::pair{ "operator[]"_c, &Float32x3x2_operator_index_UInt16 }
     };
 }
 Float32x3x2 Float32x3x2Type;
@@ -18968,6 +25808,11 @@ Variable Float32x3x3_operator_index_UInt16_arg0;
 Function Float32x3x3_operator_index_UInt16;
 inline constexpr std::array Float32x3x3_operator_index_UInt16_args = { &Float32x3x3_operator_index_UInt16_arg0 };
 
+/// operator* with Float32x3
+Variable Float32x3x3_transform_Float32x3_vec;
+Function Float32x3x3_transform_Float32x3;
+inline constexpr std::array Float32x3x3_transform_Float32x3_args = { &Float32x3x3_transform_Float32x3_vec };
+
 /// operator+ with Float32x3x3
 Variable Float32x3x3_operator_add_Float32x3x3_arg0;
 Function Float32x3x3_operator_add_Float32x3x3;
@@ -19005,10 +25850,10 @@ inline constexpr std::array Float32x3x3_operator_scale_Float32_args = { &Float32
 
 Float32x3x3::Float32x3x3()
 {
-    this->name = "f32"_c;
+    this->name = "f32x3x3"_c;
     this->columnSize = 3;
     this->rowSize = 3;
-    this->byteSize = 36;
+    this->byteSize = 12;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float32;
     this->builtin = true;
@@ -19102,6 +25947,15 @@ Float32x3x3::Float32x3x3()
     Symbol::Resolved(&Float32x3x3_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float32x3x3_operator_index_UInt16)->returnTypeSymbol = &Float32x3Type;
 
+    /// operator* with Float32x3
+    Float32x3x3_transform_Float32x3_vec.name = "vec"_c;
+    Float32x3x3_transform_Float32x3_vec.type = Type::FullType{ Float32x3Type.name };
+    Float32x3x3_transform_Float32x3.name = "operator*"_c;
+    Float32x3x3_transform_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    Float32x3x3_transform_Float32x3.parameters = Float32x3x3_transform_Float32x3_args;
+    Symbol::Resolved(&Float32x3x3_transform_Float32x3_vec)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&Float32x3x3_transform_Float32x3)->returnTypeSymbol = &Float32x3Type;
+
     /// operator+ with Float32x3x3
     Float32x3x3_operator_add_Float32x3x3_arg0.name = "_arg0"_c;
     Float32x3x3_operator_add_Float32x3x3_arg0.type = Type::FullType{ Float32x3x3Type.name };
@@ -19165,97 +26019,19 @@ Float32x3x3::Float32x3x3()
     Symbol::Resolved(&Float32x3x3_operator_scale_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x3x3_operator_scale_Float32)->returnTypeSymbol = &Float32x3x3Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 90> { 
-        std::pair{ "operator!=", &Int16x4_operator_neq_Int16x4 },
-        std::pair{ "operator%", &Int16x4_operator_mod_Int16x4 },
-        std::pair{ "operator&", &Int16x4_operator_and_Int16x4 },
-        std::pair{ "operator&=", &Int16x4_operator_andasg_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_mul_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int16 },
-        std::pair{ "operator*", &Float32x2x2_operator_mul_Float32x2x2 },
-        std::pair{ "operator*", &Float32x2x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x3_operator_mul_Float32x2x3 },
-        std::pair{ "operator*", &Float32x2x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x4_operator_mul_Float32x2x4 },
-        std::pair{ "operator*", &Float32x2x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x2_operator_mul_Float32x3x2 },
-        std::pair{ "operator*", &Float32x3x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x3_operator_mul_Float32x3x3 },
-        std::pair{ "operator*", &Float32x3x3_operator_scale_Float32 },
-        std::pair{ "operator*=", &Int16x4_operator_mulasg_Int16x4 },
-        std::pair{ "operator*=", &Float32x2x2_operator_mulasg_Float32x2x2 },
-        std::pair{ "operator*=", &Float32x2x3_operator_mulasg_Float32x2x3 },
-        std::pair{ "operator*=", &Float32x2x4_operator_mulasg_Float32x2x4 },
-        std::pair{ "operator*=", &Float32x3x2_operator_mulasg_Float32x3x2 },
-        std::pair{ "operator*=", &Float32x3x3_operator_mulasg_Float32x3x3 },
-        std::pair{ "operator+", &Int16x4_operator_add_Int16x4 },
-        std::pair{ "operator+", &Float32x2x2_operator_add_Float32x2x2 },
-        std::pair{ "operator+", &Float32x2x3_operator_add_Float32x2x3 },
-        std::pair{ "operator+", &Float32x2x4_operator_add_Float32x2x4 },
-        std::pair{ "operator+", &Float32x3x2_operator_add_Float32x3x2 },
-        std::pair{ "operator+", &Float32x3x3_operator_add_Float32x3x3 },
-        std::pair{ "operator+=", &Int16x4_operator_addasg_Int16x4 },
-        std::pair{ "operator+=", &Float32x2x2_operator_addasg_Float32x2x2 },
-        std::pair{ "operator+=", &Float32x2x3_operator_addasg_Float32x2x3 },
-        std::pair{ "operator+=", &Float32x2x4_operator_addasg_Float32x2x4 },
-        std::pair{ "operator+=", &Float32x3x2_operator_addasg_Float32x3x2 },
-        std::pair{ "operator+=", &Float32x3x3_operator_addasg_Float32x3x3 },
-        std::pair{ "operator-", &Int16x4_operator_sub_Int16x4 },
-        std::pair{ "operator-", &Float32x2x2_operator_sub_Float32x2x2 },
-        std::pair{ "operator-", &Float32x2x3_operator_sub_Float32x2x3 },
-        std::pair{ "operator-", &Float32x2x4_operator_sub_Float32x2x4 },
-        std::pair{ "operator-", &Float32x3x2_operator_sub_Float32x3x2 },
-        std::pair{ "operator-", &Float32x3x3_operator_sub_Float32x3x3 },
-        std::pair{ "operator-=", &Int16x4_operator_subasg_Int16x4 },
-        std::pair{ "operator-=", &Float32x2x2_operator_subasg_Float32x2x2 },
-        std::pair{ "operator-=", &Float32x2x3_operator_subasg_Float32x2x3 },
-        std::pair{ "operator-=", &Float32x2x4_operator_subasg_Float32x2x4 },
-        std::pair{ "operator-=", &Float32x3x2_operator_subasg_Float32x3x2 },
-        std::pair{ "operator-=", &Float32x3x3_operator_subasg_Float32x3x3 },
-        std::pair{ "operator/", &Int16x4_operator_div_Int16x4 },
-        std::pair{ "operator/=", &Int16x4_operator_divasg_Int16x4 },
-        std::pair{ "operator<", &Int16x4_operator_lt_Int16x4 },
-        std::pair{ "operator<<", &Int16x4_operator_lsh_Int16x4 },
-        std::pair{ "operator<<=", &Int16x4_operator_lshasg_Int16x4 },
-        std::pair{ "operator<=", &Int16x4_operator_lte_Int16x4 },
-        std::pair{ "operator==", &Int16x4_operator_eq_Int16x4 },
-        std::pair{ "operator>", &Int16x4_operator_gt_Int16x4 },
-        std::pair{ "operator>=", &Int16x4_operator_gte_Int16x4 },
-        std::pair{ "operator>>", &Int16x4_operator_rsh_Int16x4 },
-        std::pair{ "operator>>=", &Int16x4_operator_rhsasg_Int16x4 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt16 },
-        std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
-        std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
-        std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 12> { 
+        std::pair{ "operator*(f32)"_c, &Float32x3x3_operator_scale_Float32 },
+        std::pair{ "operator*(f32x3)"_c, &Float32x3x3_transform_Float32x3 },
+        std::pair{ "operator*(f32x3x3)"_c, &Float32x3x3_operator_mul_Float32x3x3 },
+        std::pair{ "operator*=(f32x3x3)"_c, &Float32x3x3_operator_mulasg_Float32x3x3 },
+        std::pair{ "operator+(f32x3x3)"_c, &Float32x3x3_operator_add_Float32x3x3 },
+        std::pair{ "operator+=(f32x3x3)"_c, &Float32x3x3_operator_addasg_Float32x3x3 },
+        std::pair{ "operator-(f32x3x3)"_c, &Float32x3x3_operator_sub_Float32x3x3 },
+        std::pair{ "operator-=(f32x3x3)"_c, &Float32x3x3_operator_subasg_Float32x3x3 },
+        std::pair{ "operator[]"_c, &Float32x3x3_operator_index_Int32 },
+        std::pair{ "operator[]"_c, &Float32x3x3_operator_index_UInt32 },
+        std::pair{ "operator[]"_c, &Float32x3x3_operator_index_Int16 },
+        std::pair{ "operator[]"_c, &Float32x3x3_operator_index_UInt16 }
     };
 }
 Float32x3x3 Float32x3x3Type;
@@ -19306,6 +26082,11 @@ Variable Float32x3x4_operator_index_UInt16_arg0;
 Function Float32x3x4_operator_index_UInt16;
 inline constexpr std::array Float32x3x4_operator_index_UInt16_args = { &Float32x3x4_operator_index_UInt16_arg0 };
 
+/// operator* with Float32x3
+Variable Float32x3x4_transform_Float32x4_vec;
+Function Float32x3x4_transform_Float32x4;
+inline constexpr std::array Float32x3x4_transform_Float32x4_args = { &Float32x3x4_transform_Float32x4_vec };
+
 /// operator+ with Float32x3x4
 Variable Float32x3x4_operator_add_Float32x3x4_arg0;
 Function Float32x3x4_operator_add_Float32x3x4;
@@ -19343,10 +26124,10 @@ inline constexpr std::array Float32x3x4_operator_scale_Float32_args = { &Float32
 
 Float32x3x4::Float32x3x4()
 {
-    this->name = "f32"_c;
+    this->name = "f32x3x4"_c;
     this->columnSize = 4;
     this->rowSize = 3;
-    this->byteSize = 48;
+    this->byteSize = 16;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float32;
     this->builtin = true;
@@ -19449,6 +26230,15 @@ Float32x3x4::Float32x3x4()
     Symbol::Resolved(&Float32x3x4_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float32x3x4_operator_index_UInt16)->returnTypeSymbol = &Float32x4Type;
 
+    /// operator* with Float32x3
+    Float32x3x4_transform_Float32x4_vec.name = "vec"_c;
+    Float32x3x4_transform_Float32x4_vec.type = Type::FullType{ Float32x3Type.name };
+    Float32x3x4_transform_Float32x4.name = "operator*"_c;
+    Float32x3x4_transform_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    Float32x3x4_transform_Float32x4.parameters = Float32x3x4_transform_Float32x4_args;
+    Symbol::Resolved(&Float32x3x4_transform_Float32x4_vec)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&Float32x3x4_transform_Float32x4)->returnTypeSymbol = &Float32x4Type;
+
     /// operator+ with Float32x3x4
     Float32x3x4_operator_add_Float32x3x4_arg0.name = "_arg0"_c;
     Float32x3x4_operator_add_Float32x3x4_arg0.type = Type::FullType{ Float32x3x4Type.name };
@@ -19512,108 +26302,19 @@ Float32x3x4::Float32x3x4()
     Symbol::Resolved(&Float32x3x4_operator_scale_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x3x4_operator_scale_Float32)->returnTypeSymbol = &Float32x3x4Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 101> { 
-        std::pair{ "operator!=", &Int16x4_operator_neq_Int16x4 },
-        std::pair{ "operator%", &Int16x4_operator_mod_Int16x4 },
-        std::pair{ "operator&", &Int16x4_operator_and_Int16x4 },
-        std::pair{ "operator&=", &Int16x4_operator_andasg_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_mul_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int16 },
-        std::pair{ "operator*", &Float32x2x2_operator_mul_Float32x2x2 },
-        std::pair{ "operator*", &Float32x2x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x3_operator_mul_Float32x2x3 },
-        std::pair{ "operator*", &Float32x2x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x4_operator_mul_Float32x2x4 },
-        std::pair{ "operator*", &Float32x2x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x2_operator_mul_Float32x3x2 },
-        std::pair{ "operator*", &Float32x3x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x3_operator_mul_Float32x3x3 },
-        std::pair{ "operator*", &Float32x3x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x4_operator_mul_Float32x3x4 },
-        std::pair{ "operator*", &Float32x3x4_operator_scale_Float32 },
-        std::pair{ "operator*=", &Int16x4_operator_mulasg_Int16x4 },
-        std::pair{ "operator*=", &Float32x2x2_operator_mulasg_Float32x2x2 },
-        std::pair{ "operator*=", &Float32x2x3_operator_mulasg_Float32x2x3 },
-        std::pair{ "operator*=", &Float32x2x4_operator_mulasg_Float32x2x4 },
-        std::pair{ "operator*=", &Float32x3x2_operator_mulasg_Float32x3x2 },
-        std::pair{ "operator*=", &Float32x3x3_operator_mulasg_Float32x3x3 },
-        std::pair{ "operator*=", &Float32x3x4_operator_mulasg_Float32x3x4 },
-        std::pair{ "operator+", &Int16x4_operator_add_Int16x4 },
-        std::pair{ "operator+", &Float32x2x2_operator_add_Float32x2x2 },
-        std::pair{ "operator+", &Float32x2x3_operator_add_Float32x2x3 },
-        std::pair{ "operator+", &Float32x2x4_operator_add_Float32x2x4 },
-        std::pair{ "operator+", &Float32x3x2_operator_add_Float32x3x2 },
-        std::pair{ "operator+", &Float32x3x3_operator_add_Float32x3x3 },
-        std::pair{ "operator+", &Float32x3x4_operator_add_Float32x3x4 },
-        std::pair{ "operator+=", &Int16x4_operator_addasg_Int16x4 },
-        std::pair{ "operator+=", &Float32x2x2_operator_addasg_Float32x2x2 },
-        std::pair{ "operator+=", &Float32x2x3_operator_addasg_Float32x2x3 },
-        std::pair{ "operator+=", &Float32x2x4_operator_addasg_Float32x2x4 },
-        std::pair{ "operator+=", &Float32x3x2_operator_addasg_Float32x3x2 },
-        std::pair{ "operator+=", &Float32x3x3_operator_addasg_Float32x3x3 },
-        std::pair{ "operator+=", &Float32x3x4_operator_addasg_Float32x3x4 },
-        std::pair{ "operator-", &Int16x4_operator_sub_Int16x4 },
-        std::pair{ "operator-", &Float32x2x2_operator_sub_Float32x2x2 },
-        std::pair{ "operator-", &Float32x2x3_operator_sub_Float32x2x3 },
-        std::pair{ "operator-", &Float32x2x4_operator_sub_Float32x2x4 },
-        std::pair{ "operator-", &Float32x3x2_operator_sub_Float32x3x2 },
-        std::pair{ "operator-", &Float32x3x3_operator_sub_Float32x3x3 },
-        std::pair{ "operator-", &Float32x3x4_operator_sub_Float32x3x4 },
-        std::pair{ "operator-=", &Int16x4_operator_subasg_Int16x4 },
-        std::pair{ "operator-=", &Float32x2x2_operator_subasg_Float32x2x2 },
-        std::pair{ "operator-=", &Float32x2x3_operator_subasg_Float32x2x3 },
-        std::pair{ "operator-=", &Float32x2x4_operator_subasg_Float32x2x4 },
-        std::pair{ "operator-=", &Float32x3x2_operator_subasg_Float32x3x2 },
-        std::pair{ "operator-=", &Float32x3x3_operator_subasg_Float32x3x3 },
-        std::pair{ "operator-=", &Float32x3x4_operator_subasg_Float32x3x4 },
-        std::pair{ "operator/", &Int16x4_operator_div_Int16x4 },
-        std::pair{ "operator/=", &Int16x4_operator_divasg_Int16x4 },
-        std::pair{ "operator<", &Int16x4_operator_lt_Int16x4 },
-        std::pair{ "operator<<", &Int16x4_operator_lsh_Int16x4 },
-        std::pair{ "operator<<=", &Int16x4_operator_lshasg_Int16x4 },
-        std::pair{ "operator<=", &Int16x4_operator_lte_Int16x4 },
-        std::pair{ "operator==", &Int16x4_operator_eq_Int16x4 },
-        std::pair{ "operator>", &Int16x4_operator_gt_Int16x4 },
-        std::pair{ "operator>=", &Int16x4_operator_gte_Int16x4 },
-        std::pair{ "operator>>", &Int16x4_operator_rsh_Int16x4 },
-        std::pair{ "operator>>=", &Int16x4_operator_rhsasg_Int16x4 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_UInt16 },
-        std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
-        std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
-        std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 12> { 
+        std::pair{ "operator*(f32)"_c, &Float32x3x4_operator_scale_Float32 },
+        std::pair{ "operator*(f32x3)"_c, &Float32x3x4_transform_Float32x4 },
+        std::pair{ "operator*(f32x3x4)"_c, &Float32x3x4_operator_mul_Float32x3x4 },
+        std::pair{ "operator*=(f32x3x4)"_c, &Float32x3x4_operator_mulasg_Float32x3x4 },
+        std::pair{ "operator+(f32x3x4)"_c, &Float32x3x4_operator_add_Float32x3x4 },
+        std::pair{ "operator+=(f32x3x4)"_c, &Float32x3x4_operator_addasg_Float32x3x4 },
+        std::pair{ "operator-(f32x3x4)"_c, &Float32x3x4_operator_sub_Float32x3x4 },
+        std::pair{ "operator-=(f32x3x4)"_c, &Float32x3x4_operator_subasg_Float32x3x4 },
+        std::pair{ "operator[]"_c, &Float32x3x4_operator_index_Int32 },
+        std::pair{ "operator[]"_c, &Float32x3x4_operator_index_UInt32 },
+        std::pair{ "operator[]"_c, &Float32x3x4_operator_index_Int16 },
+        std::pair{ "operator[]"_c, &Float32x3x4_operator_index_UInt16 }
     };
 }
 Float32x3x4 Float32x3x4Type;
@@ -19661,6 +26362,11 @@ Variable Float32x4x2_operator_index_UInt16_arg0;
 Function Float32x4x2_operator_index_UInt16;
 inline constexpr std::array Float32x4x2_operator_index_UInt16_args = { &Float32x4x2_operator_index_UInt16_arg0 };
 
+/// operator* with Float32x4
+Variable Float32x4x2_transform_Float32x2_vec;
+Function Float32x4x2_transform_Float32x2;
+inline constexpr std::array Float32x4x2_transform_Float32x2_args = { &Float32x4x2_transform_Float32x2_vec };
+
 /// operator+ with Float32x4x2
 Variable Float32x4x2_operator_add_Float32x4x2_arg0;
 Function Float32x4x2_operator_add_Float32x4x2;
@@ -19698,10 +26404,10 @@ inline constexpr std::array Float32x4x2_operator_scale_Float32_args = { &Float32
 
 Float32x4x2::Float32x4x2()
 {
-    this->name = "f32"_c;
+    this->name = "f32x4x2"_c;
     this->columnSize = 2;
     this->rowSize = 4;
-    this->byteSize = 32;
+    this->byteSize = 8;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float32;
     this->builtin = true;
@@ -19795,6 +26501,15 @@ Float32x4x2::Float32x4x2()
     Symbol::Resolved(&Float32x4x2_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float32x4x2_operator_index_UInt16)->returnTypeSymbol = &Float32x2Type;
 
+    /// operator* with Float32x4
+    Float32x4x2_transform_Float32x2_vec.name = "vec"_c;
+    Float32x4x2_transform_Float32x2_vec.type = Type::FullType{ Float32x4Type.name };
+    Float32x4x2_transform_Float32x2.name = "operator*"_c;
+    Float32x4x2_transform_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    Float32x4x2_transform_Float32x2.parameters = Float32x4x2_transform_Float32x2_args;
+    Symbol::Resolved(&Float32x4x2_transform_Float32x2_vec)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&Float32x4x2_transform_Float32x2)->returnTypeSymbol = &Float32x2Type;
+
     /// operator+ with Float32x4x2
     Float32x4x2_operator_add_Float32x4x2_arg0.name = "_arg0"_c;
     Float32x4x2_operator_add_Float32x4x2_arg0.type = Type::FullType{ Float32x4x2Type.name };
@@ -19858,119 +26573,19 @@ Float32x4x2::Float32x4x2()
     Symbol::Resolved(&Float32x4x2_operator_scale_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x4x2_operator_scale_Float32)->returnTypeSymbol = &Float32x4x2Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 112> { 
-        std::pair{ "operator!=", &Int16x4_operator_neq_Int16x4 },
-        std::pair{ "operator%", &Int16x4_operator_mod_Int16x4 },
-        std::pair{ "operator&", &Int16x4_operator_and_Int16x4 },
-        std::pair{ "operator&=", &Int16x4_operator_andasg_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_mul_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int16 },
-        std::pair{ "operator*", &Float32x2x2_operator_mul_Float32x2x2 },
-        std::pair{ "operator*", &Float32x2x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x3_operator_mul_Float32x2x3 },
-        std::pair{ "operator*", &Float32x2x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x4_operator_mul_Float32x2x4 },
-        std::pair{ "operator*", &Float32x2x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x2_operator_mul_Float32x3x2 },
-        std::pair{ "operator*", &Float32x3x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x3_operator_mul_Float32x3x3 },
-        std::pair{ "operator*", &Float32x3x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x4_operator_mul_Float32x3x4 },
-        std::pair{ "operator*", &Float32x3x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x2_operator_mul_Float32x4x2 },
-        std::pair{ "operator*", &Float32x4x2_operator_scale_Float32 },
-        std::pair{ "operator*=", &Int16x4_operator_mulasg_Int16x4 },
-        std::pair{ "operator*=", &Float32x2x2_operator_mulasg_Float32x2x2 },
-        std::pair{ "operator*=", &Float32x2x3_operator_mulasg_Float32x2x3 },
-        std::pair{ "operator*=", &Float32x2x4_operator_mulasg_Float32x2x4 },
-        std::pair{ "operator*=", &Float32x3x2_operator_mulasg_Float32x3x2 },
-        std::pair{ "operator*=", &Float32x3x3_operator_mulasg_Float32x3x3 },
-        std::pair{ "operator*=", &Float32x3x4_operator_mulasg_Float32x3x4 },
-        std::pair{ "operator*=", &Float32x4x2_operator_mulasg_Float32x4x2 },
-        std::pair{ "operator+", &Int16x4_operator_add_Int16x4 },
-        std::pair{ "operator+", &Float32x2x2_operator_add_Float32x2x2 },
-        std::pair{ "operator+", &Float32x2x3_operator_add_Float32x2x3 },
-        std::pair{ "operator+", &Float32x2x4_operator_add_Float32x2x4 },
-        std::pair{ "operator+", &Float32x3x2_operator_add_Float32x3x2 },
-        std::pair{ "operator+", &Float32x3x3_operator_add_Float32x3x3 },
-        std::pair{ "operator+", &Float32x3x4_operator_add_Float32x3x4 },
-        std::pair{ "operator+", &Float32x4x2_operator_add_Float32x4x2 },
-        std::pair{ "operator+=", &Int16x4_operator_addasg_Int16x4 },
-        std::pair{ "operator+=", &Float32x2x2_operator_addasg_Float32x2x2 },
-        std::pair{ "operator+=", &Float32x2x3_operator_addasg_Float32x2x3 },
-        std::pair{ "operator+=", &Float32x2x4_operator_addasg_Float32x2x4 },
-        std::pair{ "operator+=", &Float32x3x2_operator_addasg_Float32x3x2 },
-        std::pair{ "operator+=", &Float32x3x3_operator_addasg_Float32x3x3 },
-        std::pair{ "operator+=", &Float32x3x4_operator_addasg_Float32x3x4 },
-        std::pair{ "operator+=", &Float32x4x2_operator_addasg_Float32x4x2 },
-        std::pair{ "operator-", &Int16x4_operator_sub_Int16x4 },
-        std::pair{ "operator-", &Float32x2x2_operator_sub_Float32x2x2 },
-        std::pair{ "operator-", &Float32x2x3_operator_sub_Float32x2x3 },
-        std::pair{ "operator-", &Float32x2x4_operator_sub_Float32x2x4 },
-        std::pair{ "operator-", &Float32x3x2_operator_sub_Float32x3x2 },
-        std::pair{ "operator-", &Float32x3x3_operator_sub_Float32x3x3 },
-        std::pair{ "operator-", &Float32x3x4_operator_sub_Float32x3x4 },
-        std::pair{ "operator-", &Float32x4x2_operator_sub_Float32x4x2 },
-        std::pair{ "operator-=", &Int16x4_operator_subasg_Int16x4 },
-        std::pair{ "operator-=", &Float32x2x2_operator_subasg_Float32x2x2 },
-        std::pair{ "operator-=", &Float32x2x3_operator_subasg_Float32x2x3 },
-        std::pair{ "operator-=", &Float32x2x4_operator_subasg_Float32x2x4 },
-        std::pair{ "operator-=", &Float32x3x2_operator_subasg_Float32x3x2 },
-        std::pair{ "operator-=", &Float32x3x3_operator_subasg_Float32x3x3 },
-        std::pair{ "operator-=", &Float32x3x4_operator_subasg_Float32x3x4 },
-        std::pair{ "operator-=", &Float32x4x2_operator_subasg_Float32x4x2 },
-        std::pair{ "operator/", &Int16x4_operator_div_Int16x4 },
-        std::pair{ "operator/=", &Int16x4_operator_divasg_Int16x4 },
-        std::pair{ "operator<", &Int16x4_operator_lt_Int16x4 },
-        std::pair{ "operator<<", &Int16x4_operator_lsh_Int16x4 },
-        std::pair{ "operator<<=", &Int16x4_operator_lshasg_Int16x4 },
-        std::pair{ "operator<=", &Int16x4_operator_lte_Int16x4 },
-        std::pair{ "operator==", &Int16x4_operator_eq_Int16x4 },
-        std::pair{ "operator>", &Int16x4_operator_gt_Int16x4 },
-        std::pair{ "operator>=", &Int16x4_operator_gte_Int16x4 },
-        std::pair{ "operator>>", &Int16x4_operator_rsh_Int16x4 },
-        std::pair{ "operator>>=", &Int16x4_operator_rhsasg_Int16x4 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_UInt16 },
-        std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
-        std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
-        std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 12> { 
+        std::pair{ "operator*(f32)"_c, &Float32x4x2_operator_scale_Float32 },
+        std::pair{ "operator*(f32x4)"_c, &Float32x4x2_transform_Float32x2 },
+        std::pair{ "operator*(f32x4x2)"_c, &Float32x4x2_operator_mul_Float32x4x2 },
+        std::pair{ "operator*=(f32x4x2)"_c, &Float32x4x2_operator_mulasg_Float32x4x2 },
+        std::pair{ "operator+(f32x4x2)"_c, &Float32x4x2_operator_add_Float32x4x2 },
+        std::pair{ "operator+=(f32x4x2)"_c, &Float32x4x2_operator_addasg_Float32x4x2 },
+        std::pair{ "operator-(f32x4x2)"_c, &Float32x4x2_operator_sub_Float32x4x2 },
+        std::pair{ "operator-=(f32x4x2)"_c, &Float32x4x2_operator_subasg_Float32x4x2 },
+        std::pair{ "operator[]"_c, &Float32x4x2_operator_index_Int32 },
+        std::pair{ "operator[]"_c, &Float32x4x2_operator_index_UInt32 },
+        std::pair{ "operator[]"_c, &Float32x4x2_operator_index_Int16 },
+        std::pair{ "operator[]"_c, &Float32x4x2_operator_index_UInt16 }
     };
 }
 Float32x4x2 Float32x4x2Type;
@@ -20022,6 +26637,11 @@ Variable Float32x4x3_operator_index_UInt16_arg0;
 Function Float32x4x3_operator_index_UInt16;
 inline constexpr std::array Float32x4x3_operator_index_UInt16_args = { &Float32x4x3_operator_index_UInt16_arg0 };
 
+/// operator* with Float32x4
+Variable Float32x4x3_transform_Float32x3_vec;
+Function Float32x4x3_transform_Float32x3;
+inline constexpr std::array Float32x4x3_transform_Float32x3_args = { &Float32x4x3_transform_Float32x3_vec };
+
 /// operator+ with Float32x4x3
 Variable Float32x4x3_operator_add_Float32x4x3_arg0;
 Function Float32x4x3_operator_add_Float32x4x3;
@@ -20059,10 +26679,10 @@ inline constexpr std::array Float32x4x3_operator_scale_Float32_args = { &Float32
 
 Float32x4x3::Float32x4x3()
 {
-    this->name = "f32"_c;
+    this->name = "f32x4x3"_c;
     this->columnSize = 3;
     this->rowSize = 4;
-    this->byteSize = 48;
+    this->byteSize = 12;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float32;
     this->builtin = true;
@@ -20168,6 +26788,15 @@ Float32x4x3::Float32x4x3()
     Symbol::Resolved(&Float32x4x3_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float32x4x3_operator_index_UInt16)->returnTypeSymbol = &Float32x3Type;
 
+    /// operator* with Float32x4
+    Float32x4x3_transform_Float32x3_vec.name = "vec"_c;
+    Float32x4x3_transform_Float32x3_vec.type = Type::FullType{ Float32x4Type.name };
+    Float32x4x3_transform_Float32x3.name = "operator*"_c;
+    Float32x4x3_transform_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    Float32x4x3_transform_Float32x3.parameters = Float32x4x3_transform_Float32x3_args;
+    Symbol::Resolved(&Float32x4x3_transform_Float32x3_vec)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&Float32x4x3_transform_Float32x3)->returnTypeSymbol = &Float32x3Type;
+
     /// operator+ with Float32x4x3
     Float32x4x3_operator_add_Float32x4x3_arg0.name = "_arg0"_c;
     Float32x4x3_operator_add_Float32x4x3_arg0.type = Type::FullType{ Float32x4x3Type.name };
@@ -20231,130 +26860,19 @@ Float32x4x3::Float32x4x3()
     Symbol::Resolved(&Float32x4x3_operator_scale_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x4x3_operator_scale_Float32)->returnTypeSymbol = &Float32x4x3Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 123> { 
-        std::pair{ "operator!=", &Int16x4_operator_neq_Int16x4 },
-        std::pair{ "operator%", &Int16x4_operator_mod_Int16x4 },
-        std::pair{ "operator&", &Int16x4_operator_and_Int16x4 },
-        std::pair{ "operator&=", &Int16x4_operator_andasg_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_mul_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int16 },
-        std::pair{ "operator*", &Float32x2x2_operator_mul_Float32x2x2 },
-        std::pair{ "operator*", &Float32x2x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x3_operator_mul_Float32x2x3 },
-        std::pair{ "operator*", &Float32x2x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x4_operator_mul_Float32x2x4 },
-        std::pair{ "operator*", &Float32x2x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x2_operator_mul_Float32x3x2 },
-        std::pair{ "operator*", &Float32x3x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x3_operator_mul_Float32x3x3 },
-        std::pair{ "operator*", &Float32x3x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x4_operator_mul_Float32x3x4 },
-        std::pair{ "operator*", &Float32x3x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x2_operator_mul_Float32x4x2 },
-        std::pair{ "operator*", &Float32x4x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x3_operator_mul_Float32x4x3 },
-        std::pair{ "operator*", &Float32x4x3_operator_scale_Float32 },
-        std::pair{ "operator*=", &Int16x4_operator_mulasg_Int16x4 },
-        std::pair{ "operator*=", &Float32x2x2_operator_mulasg_Float32x2x2 },
-        std::pair{ "operator*=", &Float32x2x3_operator_mulasg_Float32x2x3 },
-        std::pair{ "operator*=", &Float32x2x4_operator_mulasg_Float32x2x4 },
-        std::pair{ "operator*=", &Float32x3x2_operator_mulasg_Float32x3x2 },
-        std::pair{ "operator*=", &Float32x3x3_operator_mulasg_Float32x3x3 },
-        std::pair{ "operator*=", &Float32x3x4_operator_mulasg_Float32x3x4 },
-        std::pair{ "operator*=", &Float32x4x2_operator_mulasg_Float32x4x2 },
-        std::pair{ "operator*=", &Float32x4x3_operator_mulasg_Float32x4x3 },
-        std::pair{ "operator+", &Int16x4_operator_add_Int16x4 },
-        std::pair{ "operator+", &Float32x2x2_operator_add_Float32x2x2 },
-        std::pair{ "operator+", &Float32x2x3_operator_add_Float32x2x3 },
-        std::pair{ "operator+", &Float32x2x4_operator_add_Float32x2x4 },
-        std::pair{ "operator+", &Float32x3x2_operator_add_Float32x3x2 },
-        std::pair{ "operator+", &Float32x3x3_operator_add_Float32x3x3 },
-        std::pair{ "operator+", &Float32x3x4_operator_add_Float32x3x4 },
-        std::pair{ "operator+", &Float32x4x2_operator_add_Float32x4x2 },
-        std::pair{ "operator+", &Float32x4x3_operator_add_Float32x4x3 },
-        std::pair{ "operator+=", &Int16x4_operator_addasg_Int16x4 },
-        std::pair{ "operator+=", &Float32x2x2_operator_addasg_Float32x2x2 },
-        std::pair{ "operator+=", &Float32x2x3_operator_addasg_Float32x2x3 },
-        std::pair{ "operator+=", &Float32x2x4_operator_addasg_Float32x2x4 },
-        std::pair{ "operator+=", &Float32x3x2_operator_addasg_Float32x3x2 },
-        std::pair{ "operator+=", &Float32x3x3_operator_addasg_Float32x3x3 },
-        std::pair{ "operator+=", &Float32x3x4_operator_addasg_Float32x3x4 },
-        std::pair{ "operator+=", &Float32x4x2_operator_addasg_Float32x4x2 },
-        std::pair{ "operator+=", &Float32x4x3_operator_addasg_Float32x4x3 },
-        std::pair{ "operator-", &Int16x4_operator_sub_Int16x4 },
-        std::pair{ "operator-", &Float32x2x2_operator_sub_Float32x2x2 },
-        std::pair{ "operator-", &Float32x2x3_operator_sub_Float32x2x3 },
-        std::pair{ "operator-", &Float32x2x4_operator_sub_Float32x2x4 },
-        std::pair{ "operator-", &Float32x3x2_operator_sub_Float32x3x2 },
-        std::pair{ "operator-", &Float32x3x3_operator_sub_Float32x3x3 },
-        std::pair{ "operator-", &Float32x3x4_operator_sub_Float32x3x4 },
-        std::pair{ "operator-", &Float32x4x2_operator_sub_Float32x4x2 },
-        std::pair{ "operator-", &Float32x4x3_operator_sub_Float32x4x3 },
-        std::pair{ "operator-=", &Int16x4_operator_subasg_Int16x4 },
-        std::pair{ "operator-=", &Float32x2x2_operator_subasg_Float32x2x2 },
-        std::pair{ "operator-=", &Float32x2x3_operator_subasg_Float32x2x3 },
-        std::pair{ "operator-=", &Float32x2x4_operator_subasg_Float32x2x4 },
-        std::pair{ "operator-=", &Float32x3x2_operator_subasg_Float32x3x2 },
-        std::pair{ "operator-=", &Float32x3x3_operator_subasg_Float32x3x3 },
-        std::pair{ "operator-=", &Float32x3x4_operator_subasg_Float32x3x4 },
-        std::pair{ "operator-=", &Float32x4x2_operator_subasg_Float32x4x2 },
-        std::pair{ "operator-=", &Float32x4x3_operator_subasg_Float32x4x3 },
-        std::pair{ "operator/", &Int16x4_operator_div_Int16x4 },
-        std::pair{ "operator/=", &Int16x4_operator_divasg_Int16x4 },
-        std::pair{ "operator<", &Int16x4_operator_lt_Int16x4 },
-        std::pair{ "operator<<", &Int16x4_operator_lsh_Int16x4 },
-        std::pair{ "operator<<=", &Int16x4_operator_lshasg_Int16x4 },
-        std::pair{ "operator<=", &Int16x4_operator_lte_Int16x4 },
-        std::pair{ "operator==", &Int16x4_operator_eq_Int16x4 },
-        std::pair{ "operator>", &Int16x4_operator_gt_Int16x4 },
-        std::pair{ "operator>=", &Int16x4_operator_gte_Int16x4 },
-        std::pair{ "operator>>", &Int16x4_operator_rsh_Int16x4 },
-        std::pair{ "operator>>=", &Int16x4_operator_rhsasg_Int16x4 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_UInt16 },
-        std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
-        std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
-        std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 12> { 
+        std::pair{ "operator*(f32)"_c, &Float32x4x3_operator_scale_Float32 },
+        std::pair{ "operator*(f32x4)"_c, &Float32x4x3_transform_Float32x3 },
+        std::pair{ "operator*(f32x4x3)"_c, &Float32x4x3_operator_mul_Float32x4x3 },
+        std::pair{ "operator*=(f32x4x3)"_c, &Float32x4x3_operator_mulasg_Float32x4x3 },
+        std::pair{ "operator+(f32x4x3)"_c, &Float32x4x3_operator_add_Float32x4x3 },
+        std::pair{ "operator+=(f32x4x3)"_c, &Float32x4x3_operator_addasg_Float32x4x3 },
+        std::pair{ "operator-(f32x4x3)"_c, &Float32x4x3_operator_sub_Float32x4x3 },
+        std::pair{ "operator-=(f32x4x3)"_c, &Float32x4x3_operator_subasg_Float32x4x3 },
+        std::pair{ "operator[]"_c, &Float32x4x3_operator_index_Int32 },
+        std::pair{ "operator[]"_c, &Float32x4x3_operator_index_UInt32 },
+        std::pair{ "operator[]"_c, &Float32x4x3_operator_index_Int16 },
+        std::pair{ "operator[]"_c, &Float32x4x3_operator_index_UInt16 }
     };
 }
 Float32x4x3 Float32x4x3Type;
@@ -20410,6 +26928,11 @@ Variable Float32x4x4_operator_index_UInt16_arg0;
 Function Float32x4x4_operator_index_UInt16;
 inline constexpr std::array Float32x4x4_operator_index_UInt16_args = { &Float32x4x4_operator_index_UInt16_arg0 };
 
+/// operator* with Float32x4
+Variable Float32x4x4_transform_Float32x4_vec;
+Function Float32x4x4_transform_Float32x4;
+inline constexpr std::array Float32x4x4_transform_Float32x4_args = { &Float32x4x4_transform_Float32x4_vec };
+
 /// operator+ with Float32x4x4
 Variable Float32x4x4_operator_add_Float32x4x4_arg0;
 Function Float32x4x4_operator_add_Float32x4x4;
@@ -20447,10 +26970,10 @@ inline constexpr std::array Float32x4x4_operator_scale_Float32_args = { &Float32
 
 Float32x4x4::Float32x4x4()
 {
-    this->name = "f32"_c;
+    this->name = "f32x4x4"_c;
     this->columnSize = 4;
     this->rowSize = 4;
-    this->byteSize = 64;
+    this->byteSize = 16;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float32;
     this->builtin = true;
@@ -20568,6 +27091,15 @@ Float32x4x4::Float32x4x4()
     Symbol::Resolved(&Float32x4x4_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float32x4x4_operator_index_UInt16)->returnTypeSymbol = &Float32x4Type;
 
+    /// operator* with Float32x4
+    Float32x4x4_transform_Float32x4_vec.name = "vec"_c;
+    Float32x4x4_transform_Float32x4_vec.type = Type::FullType{ Float32x4Type.name };
+    Float32x4x4_transform_Float32x4.name = "operator*"_c;
+    Float32x4x4_transform_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    Float32x4x4_transform_Float32x4.parameters = Float32x4x4_transform_Float32x4_args;
+    Symbol::Resolved(&Float32x4x4_transform_Float32x4_vec)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&Float32x4x4_transform_Float32x4)->returnTypeSymbol = &Float32x4Type;
+
     /// operator+ with Float32x4x4
     Float32x4x4_operator_add_Float32x4x4_arg0.name = "_arg0"_c;
     Float32x4x4_operator_add_Float32x4x4_arg0.type = Type::FullType{ Float32x4x4Type.name };
@@ -20631,141 +27163,19 @@ Float32x4x4::Float32x4x4()
     Symbol::Resolved(&Float32x4x4_operator_scale_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x4x4_operator_scale_Float32)->returnTypeSymbol = &Float32x4x4Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 134> { 
-        std::pair{ "operator!=", &Int16x4_operator_neq_Int16x4 },
-        std::pair{ "operator%", &Int16x4_operator_mod_Int16x4 },
-        std::pair{ "operator&", &Int16x4_operator_and_Int16x4 },
-        std::pair{ "operator&=", &Int16x4_operator_andasg_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_mul_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int16 },
-        std::pair{ "operator*", &Float32x2x2_operator_mul_Float32x2x2 },
-        std::pair{ "operator*", &Float32x2x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x3_operator_mul_Float32x2x3 },
-        std::pair{ "operator*", &Float32x2x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x4_operator_mul_Float32x2x4 },
-        std::pair{ "operator*", &Float32x2x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x2_operator_mul_Float32x3x2 },
-        std::pair{ "operator*", &Float32x3x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x3_operator_mul_Float32x3x3 },
-        std::pair{ "operator*", &Float32x3x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x4_operator_mul_Float32x3x4 },
-        std::pair{ "operator*", &Float32x3x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x2_operator_mul_Float32x4x2 },
-        std::pair{ "operator*", &Float32x4x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x3_operator_mul_Float32x4x3 },
-        std::pair{ "operator*", &Float32x4x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x4_operator_mul_Float32x4x4 },
-        std::pair{ "operator*", &Float32x4x4_operator_scale_Float32 },
-        std::pair{ "operator*=", &Int16x4_operator_mulasg_Int16x4 },
-        std::pair{ "operator*=", &Float32x2x2_operator_mulasg_Float32x2x2 },
-        std::pair{ "operator*=", &Float32x2x3_operator_mulasg_Float32x2x3 },
-        std::pair{ "operator*=", &Float32x2x4_operator_mulasg_Float32x2x4 },
-        std::pair{ "operator*=", &Float32x3x2_operator_mulasg_Float32x3x2 },
-        std::pair{ "operator*=", &Float32x3x3_operator_mulasg_Float32x3x3 },
-        std::pair{ "operator*=", &Float32x3x4_operator_mulasg_Float32x3x4 },
-        std::pair{ "operator*=", &Float32x4x2_operator_mulasg_Float32x4x2 },
-        std::pair{ "operator*=", &Float32x4x3_operator_mulasg_Float32x4x3 },
-        std::pair{ "operator*=", &Float32x4x4_operator_mulasg_Float32x4x4 },
-        std::pair{ "operator+", &Int16x4_operator_add_Int16x4 },
-        std::pair{ "operator+", &Float32x2x2_operator_add_Float32x2x2 },
-        std::pair{ "operator+", &Float32x2x3_operator_add_Float32x2x3 },
-        std::pair{ "operator+", &Float32x2x4_operator_add_Float32x2x4 },
-        std::pair{ "operator+", &Float32x3x2_operator_add_Float32x3x2 },
-        std::pair{ "operator+", &Float32x3x3_operator_add_Float32x3x3 },
-        std::pair{ "operator+", &Float32x3x4_operator_add_Float32x3x4 },
-        std::pair{ "operator+", &Float32x4x2_operator_add_Float32x4x2 },
-        std::pair{ "operator+", &Float32x4x3_operator_add_Float32x4x3 },
-        std::pair{ "operator+", &Float32x4x4_operator_add_Float32x4x4 },
-        std::pair{ "operator+=", &Int16x4_operator_addasg_Int16x4 },
-        std::pair{ "operator+=", &Float32x2x2_operator_addasg_Float32x2x2 },
-        std::pair{ "operator+=", &Float32x2x3_operator_addasg_Float32x2x3 },
-        std::pair{ "operator+=", &Float32x2x4_operator_addasg_Float32x2x4 },
-        std::pair{ "operator+=", &Float32x3x2_operator_addasg_Float32x3x2 },
-        std::pair{ "operator+=", &Float32x3x3_operator_addasg_Float32x3x3 },
-        std::pair{ "operator+=", &Float32x3x4_operator_addasg_Float32x3x4 },
-        std::pair{ "operator+=", &Float32x4x2_operator_addasg_Float32x4x2 },
-        std::pair{ "operator+=", &Float32x4x3_operator_addasg_Float32x4x3 },
-        std::pair{ "operator+=", &Float32x4x4_operator_addasg_Float32x4x4 },
-        std::pair{ "operator-", &Int16x4_operator_sub_Int16x4 },
-        std::pair{ "operator-", &Float32x2x2_operator_sub_Float32x2x2 },
-        std::pair{ "operator-", &Float32x2x3_operator_sub_Float32x2x3 },
-        std::pair{ "operator-", &Float32x2x4_operator_sub_Float32x2x4 },
-        std::pair{ "operator-", &Float32x3x2_operator_sub_Float32x3x2 },
-        std::pair{ "operator-", &Float32x3x3_operator_sub_Float32x3x3 },
-        std::pair{ "operator-", &Float32x3x4_operator_sub_Float32x3x4 },
-        std::pair{ "operator-", &Float32x4x2_operator_sub_Float32x4x2 },
-        std::pair{ "operator-", &Float32x4x3_operator_sub_Float32x4x3 },
-        std::pair{ "operator-", &Float32x4x4_operator_sub_Float32x4x4 },
-        std::pair{ "operator-=", &Int16x4_operator_subasg_Int16x4 },
-        std::pair{ "operator-=", &Float32x2x2_operator_subasg_Float32x2x2 },
-        std::pair{ "operator-=", &Float32x2x3_operator_subasg_Float32x2x3 },
-        std::pair{ "operator-=", &Float32x2x4_operator_subasg_Float32x2x4 },
-        std::pair{ "operator-=", &Float32x3x2_operator_subasg_Float32x3x2 },
-        std::pair{ "operator-=", &Float32x3x3_operator_subasg_Float32x3x3 },
-        std::pair{ "operator-=", &Float32x3x4_operator_subasg_Float32x3x4 },
-        std::pair{ "operator-=", &Float32x4x2_operator_subasg_Float32x4x2 },
-        std::pair{ "operator-=", &Float32x4x3_operator_subasg_Float32x4x3 },
-        std::pair{ "operator-=", &Float32x4x4_operator_subasg_Float32x4x4 },
-        std::pair{ "operator/", &Int16x4_operator_div_Int16x4 },
-        std::pair{ "operator/=", &Int16x4_operator_divasg_Int16x4 },
-        std::pair{ "operator<", &Int16x4_operator_lt_Int16x4 },
-        std::pair{ "operator<<", &Int16x4_operator_lsh_Int16x4 },
-        std::pair{ "operator<<=", &Int16x4_operator_lshasg_Int16x4 },
-        std::pair{ "operator<=", &Int16x4_operator_lte_Int16x4 },
-        std::pair{ "operator==", &Int16x4_operator_eq_Int16x4 },
-        std::pair{ "operator>", &Int16x4_operator_gt_Int16x4 },
-        std::pair{ "operator>=", &Int16x4_operator_gte_Int16x4 },
-        std::pair{ "operator>>", &Int16x4_operator_rsh_Int16x4 },
-        std::pair{ "operator>>=", &Int16x4_operator_rhsasg_Int16x4 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_UInt16 },
-        std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
-        std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
-        std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 12> { 
+        std::pair{ "operator*(f32)"_c, &Float32x4x4_operator_scale_Float32 },
+        std::pair{ "operator*(f32x4)"_c, &Float32x4x4_transform_Float32x4 },
+        std::pair{ "operator*(f32x4x4)"_c, &Float32x4x4_operator_mul_Float32x4x4 },
+        std::pair{ "operator*=(f32x4x4)"_c, &Float32x4x4_operator_mulasg_Float32x4x4 },
+        std::pair{ "operator+(f32x4x4)"_c, &Float32x4x4_operator_add_Float32x4x4 },
+        std::pair{ "operator+=(f32x4x4)"_c, &Float32x4x4_operator_addasg_Float32x4x4 },
+        std::pair{ "operator-(f32x4x4)"_c, &Float32x4x4_operator_sub_Float32x4x4 },
+        std::pair{ "operator-=(f32x4x4)"_c, &Float32x4x4_operator_subasg_Float32x4x4 },
+        std::pair{ "operator[]"_c, &Float32x4x4_operator_index_Int32 },
+        std::pair{ "operator[]"_c, &Float32x4x4_operator_index_UInt32 },
+        std::pair{ "operator[]"_c, &Float32x4x4_operator_index_Int16 },
+        std::pair{ "operator[]"_c, &Float32x4x4_operator_index_UInt16 }
     };
 }
 Float32x4x4 Float32x4x4Type;
@@ -20807,6 +27217,11 @@ Variable Float16x2x2_operator_index_UInt16_arg0;
 Function Float16x2x2_operator_index_UInt16;
 inline constexpr std::array Float16x2x2_operator_index_UInt16_args = { &Float16x2x2_operator_index_UInt16_arg0 };
 
+/// operator* with Float16x2
+Variable Float16x2x2_transform_Float16x2_vec;
+Function Float16x2x2_transform_Float16x2;
+inline constexpr std::array Float16x2x2_transform_Float16x2_args = { &Float16x2x2_transform_Float16x2_vec };
+
 /// operator+ with Float16x2x2
 Variable Float16x2x2_operator_add_Float16x2x2_arg0;
 Function Float16x2x2_operator_add_Float16x2x2;
@@ -20844,10 +27259,10 @@ inline constexpr std::array Float16x2x2_operator_scale_Float16_args = { &Float16
 
 Float16x2x2::Float16x2x2()
 {
-    this->name = "f16"_c;
+    this->name = "f16x2x2"_c;
     this->columnSize = 2;
     this->rowSize = 2;
-    this->byteSize = 8;
+    this->byteSize = 4;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float16;
     this->builtin = true;
@@ -20923,6 +27338,15 @@ Float16x2x2::Float16x2x2()
     Symbol::Resolved(&Float16x2x2_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float16x2x2_operator_index_UInt16)->returnTypeSymbol = &Float16x2Type;
 
+    /// operator* with Float16x2
+    Float16x2x2_transform_Float16x2_vec.name = "vec"_c;
+    Float16x2x2_transform_Float16x2_vec.type = Type::FullType{ Float16x2Type.name };
+    Float16x2x2_transform_Float16x2.name = "operator*"_c;
+    Float16x2x2_transform_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    Float16x2x2_transform_Float16x2.parameters = Float16x2x2_transform_Float16x2_args;
+    Symbol::Resolved(&Float16x2x2_transform_Float16x2_vec)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&Float16x2x2_transform_Float16x2)->returnTypeSymbol = &Float16x2Type;
+
     /// operator+ with Float16x2x2
     Float16x2x2_operator_add_Float16x2x2_arg0.name = "_arg0"_c;
     Float16x2x2_operator_add_Float16x2x2_arg0.type = Type::FullType{ Float16x2x2Type.name };
@@ -20986,152 +27410,19 @@ Float16x2x2::Float16x2x2()
     Symbol::Resolved(&Float16x2x2_operator_scale_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x2x2_operator_scale_Float16)->returnTypeSymbol = &Float16x2x2Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 145> { 
-        std::pair{ "operator!=", &Int16x4_operator_neq_Int16x4 },
-        std::pair{ "operator%", &Int16x4_operator_mod_Int16x4 },
-        std::pair{ "operator&", &Int16x4_operator_and_Int16x4 },
-        std::pair{ "operator&=", &Int16x4_operator_andasg_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_mul_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int16 },
-        std::pair{ "operator*", &Float32x2x2_operator_mul_Float32x2x2 },
-        std::pair{ "operator*", &Float32x2x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x3_operator_mul_Float32x2x3 },
-        std::pair{ "operator*", &Float32x2x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x4_operator_mul_Float32x2x4 },
-        std::pair{ "operator*", &Float32x2x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x2_operator_mul_Float32x3x2 },
-        std::pair{ "operator*", &Float32x3x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x3_operator_mul_Float32x3x3 },
-        std::pair{ "operator*", &Float32x3x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x4_operator_mul_Float32x3x4 },
-        std::pair{ "operator*", &Float32x3x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x2_operator_mul_Float32x4x2 },
-        std::pair{ "operator*", &Float32x4x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x3_operator_mul_Float32x4x3 },
-        std::pair{ "operator*", &Float32x4x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x4_operator_mul_Float32x4x4 },
-        std::pair{ "operator*", &Float32x4x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float16x2x2_operator_mul_Float16x2x2 },
-        std::pair{ "operator*", &Float16x2x2_operator_scale_Float16 },
-        std::pair{ "operator*=", &Int16x4_operator_mulasg_Int16x4 },
-        std::pair{ "operator*=", &Float32x2x2_operator_mulasg_Float32x2x2 },
-        std::pair{ "operator*=", &Float32x2x3_operator_mulasg_Float32x2x3 },
-        std::pair{ "operator*=", &Float32x2x4_operator_mulasg_Float32x2x4 },
-        std::pair{ "operator*=", &Float32x3x2_operator_mulasg_Float32x3x2 },
-        std::pair{ "operator*=", &Float32x3x3_operator_mulasg_Float32x3x3 },
-        std::pair{ "operator*=", &Float32x3x4_operator_mulasg_Float32x3x4 },
-        std::pair{ "operator*=", &Float32x4x2_operator_mulasg_Float32x4x2 },
-        std::pair{ "operator*=", &Float32x4x3_operator_mulasg_Float32x4x3 },
-        std::pair{ "operator*=", &Float32x4x4_operator_mulasg_Float32x4x4 },
-        std::pair{ "operator*=", &Float16x2x2_operator_mulasg_Float16x2x2 },
-        std::pair{ "operator+", &Int16x4_operator_add_Int16x4 },
-        std::pair{ "operator+", &Float32x2x2_operator_add_Float32x2x2 },
-        std::pair{ "operator+", &Float32x2x3_operator_add_Float32x2x3 },
-        std::pair{ "operator+", &Float32x2x4_operator_add_Float32x2x4 },
-        std::pair{ "operator+", &Float32x3x2_operator_add_Float32x3x2 },
-        std::pair{ "operator+", &Float32x3x3_operator_add_Float32x3x3 },
-        std::pair{ "operator+", &Float32x3x4_operator_add_Float32x3x4 },
-        std::pair{ "operator+", &Float32x4x2_operator_add_Float32x4x2 },
-        std::pair{ "operator+", &Float32x4x3_operator_add_Float32x4x3 },
-        std::pair{ "operator+", &Float32x4x4_operator_add_Float32x4x4 },
-        std::pair{ "operator+", &Float16x2x2_operator_add_Float16x2x2 },
-        std::pair{ "operator+=", &Int16x4_operator_addasg_Int16x4 },
-        std::pair{ "operator+=", &Float32x2x2_operator_addasg_Float32x2x2 },
-        std::pair{ "operator+=", &Float32x2x3_operator_addasg_Float32x2x3 },
-        std::pair{ "operator+=", &Float32x2x4_operator_addasg_Float32x2x4 },
-        std::pair{ "operator+=", &Float32x3x2_operator_addasg_Float32x3x2 },
-        std::pair{ "operator+=", &Float32x3x3_operator_addasg_Float32x3x3 },
-        std::pair{ "operator+=", &Float32x3x4_operator_addasg_Float32x3x4 },
-        std::pair{ "operator+=", &Float32x4x2_operator_addasg_Float32x4x2 },
-        std::pair{ "operator+=", &Float32x4x3_operator_addasg_Float32x4x3 },
-        std::pair{ "operator+=", &Float32x4x4_operator_addasg_Float32x4x4 },
-        std::pair{ "operator+=", &Float16x2x2_operator_addasg_Float16x2x2 },
-        std::pair{ "operator-", &Int16x4_operator_sub_Int16x4 },
-        std::pair{ "operator-", &Float32x2x2_operator_sub_Float32x2x2 },
-        std::pair{ "operator-", &Float32x2x3_operator_sub_Float32x2x3 },
-        std::pair{ "operator-", &Float32x2x4_operator_sub_Float32x2x4 },
-        std::pair{ "operator-", &Float32x3x2_operator_sub_Float32x3x2 },
-        std::pair{ "operator-", &Float32x3x3_operator_sub_Float32x3x3 },
-        std::pair{ "operator-", &Float32x3x4_operator_sub_Float32x3x4 },
-        std::pair{ "operator-", &Float32x4x2_operator_sub_Float32x4x2 },
-        std::pair{ "operator-", &Float32x4x3_operator_sub_Float32x4x3 },
-        std::pair{ "operator-", &Float32x4x4_operator_sub_Float32x4x4 },
-        std::pair{ "operator-", &Float16x2x2_operator_sub_Float16x2x2 },
-        std::pair{ "operator-=", &Int16x4_operator_subasg_Int16x4 },
-        std::pair{ "operator-=", &Float32x2x2_operator_subasg_Float32x2x2 },
-        std::pair{ "operator-=", &Float32x2x3_operator_subasg_Float32x2x3 },
-        std::pair{ "operator-=", &Float32x2x4_operator_subasg_Float32x2x4 },
-        std::pair{ "operator-=", &Float32x3x2_operator_subasg_Float32x3x2 },
-        std::pair{ "operator-=", &Float32x3x3_operator_subasg_Float32x3x3 },
-        std::pair{ "operator-=", &Float32x3x4_operator_subasg_Float32x3x4 },
-        std::pair{ "operator-=", &Float32x4x2_operator_subasg_Float32x4x2 },
-        std::pair{ "operator-=", &Float32x4x3_operator_subasg_Float32x4x3 },
-        std::pair{ "operator-=", &Float32x4x4_operator_subasg_Float32x4x4 },
-        std::pair{ "operator-=", &Float16x2x2_operator_subasg_Float16x2x2 },
-        std::pair{ "operator/", &Int16x4_operator_div_Int16x4 },
-        std::pair{ "operator/=", &Int16x4_operator_divasg_Int16x4 },
-        std::pair{ "operator<", &Int16x4_operator_lt_Int16x4 },
-        std::pair{ "operator<<", &Int16x4_operator_lsh_Int16x4 },
-        std::pair{ "operator<<=", &Int16x4_operator_lshasg_Int16x4 },
-        std::pair{ "operator<=", &Int16x4_operator_lte_Int16x4 },
-        std::pair{ "operator==", &Int16x4_operator_eq_Int16x4 },
-        std::pair{ "operator>", &Int16x4_operator_gt_Int16x4 },
-        std::pair{ "operator>=", &Int16x4_operator_gte_Int16x4 },
-        std::pair{ "operator>>", &Int16x4_operator_rsh_Int16x4 },
-        std::pair{ "operator>>=", &Int16x4_operator_rhsasg_Int16x4 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_UInt16 },
-        std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
-        std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
-        std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 12> { 
+        std::pair{ "operator*(f16)"_c, &Float16x2x2_operator_scale_Float16 },
+        std::pair{ "operator*(f16x2)"_c, &Float16x2x2_transform_Float16x2 },
+        std::pair{ "operator*(f16x2x2)"_c, &Float16x2x2_operator_mul_Float16x2x2 },
+        std::pair{ "operator*=(f16x2x2)"_c, &Float16x2x2_operator_mulasg_Float16x2x2 },
+        std::pair{ "operator+(f16x2x2)"_c, &Float16x2x2_operator_add_Float16x2x2 },
+        std::pair{ "operator+=(f16x2x2)"_c, &Float16x2x2_operator_addasg_Float16x2x2 },
+        std::pair{ "operator-(f16x2x2)"_c, &Float16x2x2_operator_sub_Float16x2x2 },
+        std::pair{ "operator-=(f16x2x2)"_c, &Float16x2x2_operator_subasg_Float16x2x2 },
+        std::pair{ "operator[]"_c, &Float16x2x2_operator_index_Int32 },
+        std::pair{ "operator[]"_c, &Float16x2x2_operator_index_UInt32 },
+        std::pair{ "operator[]"_c, &Float16x2x2_operator_index_Int16 },
+        std::pair{ "operator[]"_c, &Float16x2x2_operator_index_UInt16 }
     };
 }
 Float16x2x2 Float16x2x2Type;
@@ -21175,6 +27466,11 @@ Variable Float16x2x3_operator_index_UInt16_arg0;
 Function Float16x2x3_operator_index_UInt16;
 inline constexpr std::array Float16x2x3_operator_index_UInt16_args = { &Float16x2x3_operator_index_UInt16_arg0 };
 
+/// operator* with Float16x2
+Variable Float16x2x3_transform_Float16x3_vec;
+Function Float16x2x3_transform_Float16x3;
+inline constexpr std::array Float16x2x3_transform_Float16x3_args = { &Float16x2x3_transform_Float16x3_vec };
+
 /// operator+ with Float16x2x3
 Variable Float16x2x3_operator_add_Float16x2x3_arg0;
 Function Float16x2x3_operator_add_Float16x2x3;
@@ -21212,10 +27508,10 @@ inline constexpr std::array Float16x2x3_operator_scale_Float16_args = { &Float16
 
 Float16x2x3::Float16x2x3()
 {
-    this->name = "f16"_c;
+    this->name = "f16x2x3"_c;
     this->columnSize = 3;
     this->rowSize = 2;
-    this->byteSize = 12;
+    this->byteSize = 6;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float16;
     this->builtin = true;
@@ -21297,6 +27593,15 @@ Float16x2x3::Float16x2x3()
     Symbol::Resolved(&Float16x2x3_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float16x2x3_operator_index_UInt16)->returnTypeSymbol = &Float16x3Type;
 
+    /// operator* with Float16x2
+    Float16x2x3_transform_Float16x3_vec.name = "vec"_c;
+    Float16x2x3_transform_Float16x3_vec.type = Type::FullType{ Float16x2Type.name };
+    Float16x2x3_transform_Float16x3.name = "operator*"_c;
+    Float16x2x3_transform_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    Float16x2x3_transform_Float16x3.parameters = Float16x2x3_transform_Float16x3_args;
+    Symbol::Resolved(&Float16x2x3_transform_Float16x3_vec)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&Float16x2x3_transform_Float16x3)->returnTypeSymbol = &Float16x3Type;
+
     /// operator+ with Float16x2x3
     Float16x2x3_operator_add_Float16x2x3_arg0.name = "_arg0"_c;
     Float16x2x3_operator_add_Float16x2x3_arg0.type = Type::FullType{ Float16x2x3Type.name };
@@ -21360,163 +27665,19 @@ Float16x2x3::Float16x2x3()
     Symbol::Resolved(&Float16x2x3_operator_scale_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x2x3_operator_scale_Float16)->returnTypeSymbol = &Float16x2x3Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 156> { 
-        std::pair{ "operator!=", &Int16x4_operator_neq_Int16x4 },
-        std::pair{ "operator%", &Int16x4_operator_mod_Int16x4 },
-        std::pair{ "operator&", &Int16x4_operator_and_Int16x4 },
-        std::pair{ "operator&=", &Int16x4_operator_andasg_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_mul_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int16 },
-        std::pair{ "operator*", &Float32x2x2_operator_mul_Float32x2x2 },
-        std::pair{ "operator*", &Float32x2x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x3_operator_mul_Float32x2x3 },
-        std::pair{ "operator*", &Float32x2x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x4_operator_mul_Float32x2x4 },
-        std::pair{ "operator*", &Float32x2x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x2_operator_mul_Float32x3x2 },
-        std::pair{ "operator*", &Float32x3x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x3_operator_mul_Float32x3x3 },
-        std::pair{ "operator*", &Float32x3x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x4_operator_mul_Float32x3x4 },
-        std::pair{ "operator*", &Float32x3x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x2_operator_mul_Float32x4x2 },
-        std::pair{ "operator*", &Float32x4x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x3_operator_mul_Float32x4x3 },
-        std::pair{ "operator*", &Float32x4x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x4_operator_mul_Float32x4x4 },
-        std::pair{ "operator*", &Float32x4x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float16x2x2_operator_mul_Float16x2x2 },
-        std::pair{ "operator*", &Float16x2x2_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x2x3_operator_mul_Float16x2x3 },
-        std::pair{ "operator*", &Float16x2x3_operator_scale_Float16 },
-        std::pair{ "operator*=", &Int16x4_operator_mulasg_Int16x4 },
-        std::pair{ "operator*=", &Float32x2x2_operator_mulasg_Float32x2x2 },
-        std::pair{ "operator*=", &Float32x2x3_operator_mulasg_Float32x2x3 },
-        std::pair{ "operator*=", &Float32x2x4_operator_mulasg_Float32x2x4 },
-        std::pair{ "operator*=", &Float32x3x2_operator_mulasg_Float32x3x2 },
-        std::pair{ "operator*=", &Float32x3x3_operator_mulasg_Float32x3x3 },
-        std::pair{ "operator*=", &Float32x3x4_operator_mulasg_Float32x3x4 },
-        std::pair{ "operator*=", &Float32x4x2_operator_mulasg_Float32x4x2 },
-        std::pair{ "operator*=", &Float32x4x3_operator_mulasg_Float32x4x3 },
-        std::pair{ "operator*=", &Float32x4x4_operator_mulasg_Float32x4x4 },
-        std::pair{ "operator*=", &Float16x2x2_operator_mulasg_Float16x2x2 },
-        std::pair{ "operator*=", &Float16x2x3_operator_mulasg_Float16x2x3 },
-        std::pair{ "operator+", &Int16x4_operator_add_Int16x4 },
-        std::pair{ "operator+", &Float32x2x2_operator_add_Float32x2x2 },
-        std::pair{ "operator+", &Float32x2x3_operator_add_Float32x2x3 },
-        std::pair{ "operator+", &Float32x2x4_operator_add_Float32x2x4 },
-        std::pair{ "operator+", &Float32x3x2_operator_add_Float32x3x2 },
-        std::pair{ "operator+", &Float32x3x3_operator_add_Float32x3x3 },
-        std::pair{ "operator+", &Float32x3x4_operator_add_Float32x3x4 },
-        std::pair{ "operator+", &Float32x4x2_operator_add_Float32x4x2 },
-        std::pair{ "operator+", &Float32x4x3_operator_add_Float32x4x3 },
-        std::pair{ "operator+", &Float32x4x4_operator_add_Float32x4x4 },
-        std::pair{ "operator+", &Float16x2x2_operator_add_Float16x2x2 },
-        std::pair{ "operator+", &Float16x2x3_operator_add_Float16x2x3 },
-        std::pair{ "operator+=", &Int16x4_operator_addasg_Int16x4 },
-        std::pair{ "operator+=", &Float32x2x2_operator_addasg_Float32x2x2 },
-        std::pair{ "operator+=", &Float32x2x3_operator_addasg_Float32x2x3 },
-        std::pair{ "operator+=", &Float32x2x4_operator_addasg_Float32x2x4 },
-        std::pair{ "operator+=", &Float32x3x2_operator_addasg_Float32x3x2 },
-        std::pair{ "operator+=", &Float32x3x3_operator_addasg_Float32x3x3 },
-        std::pair{ "operator+=", &Float32x3x4_operator_addasg_Float32x3x4 },
-        std::pair{ "operator+=", &Float32x4x2_operator_addasg_Float32x4x2 },
-        std::pair{ "operator+=", &Float32x4x3_operator_addasg_Float32x4x3 },
-        std::pair{ "operator+=", &Float32x4x4_operator_addasg_Float32x4x4 },
-        std::pair{ "operator+=", &Float16x2x2_operator_addasg_Float16x2x2 },
-        std::pair{ "operator+=", &Float16x2x3_operator_addasg_Float16x2x3 },
-        std::pair{ "operator-", &Int16x4_operator_sub_Int16x4 },
-        std::pair{ "operator-", &Float32x2x2_operator_sub_Float32x2x2 },
-        std::pair{ "operator-", &Float32x2x3_operator_sub_Float32x2x3 },
-        std::pair{ "operator-", &Float32x2x4_operator_sub_Float32x2x4 },
-        std::pair{ "operator-", &Float32x3x2_operator_sub_Float32x3x2 },
-        std::pair{ "operator-", &Float32x3x3_operator_sub_Float32x3x3 },
-        std::pair{ "operator-", &Float32x3x4_operator_sub_Float32x3x4 },
-        std::pair{ "operator-", &Float32x4x2_operator_sub_Float32x4x2 },
-        std::pair{ "operator-", &Float32x4x3_operator_sub_Float32x4x3 },
-        std::pair{ "operator-", &Float32x4x4_operator_sub_Float32x4x4 },
-        std::pair{ "operator-", &Float16x2x2_operator_sub_Float16x2x2 },
-        std::pair{ "operator-", &Float16x2x3_operator_sub_Float16x2x3 },
-        std::pair{ "operator-=", &Int16x4_operator_subasg_Int16x4 },
-        std::pair{ "operator-=", &Float32x2x2_operator_subasg_Float32x2x2 },
-        std::pair{ "operator-=", &Float32x2x3_operator_subasg_Float32x2x3 },
-        std::pair{ "operator-=", &Float32x2x4_operator_subasg_Float32x2x4 },
-        std::pair{ "operator-=", &Float32x3x2_operator_subasg_Float32x3x2 },
-        std::pair{ "operator-=", &Float32x3x3_operator_subasg_Float32x3x3 },
-        std::pair{ "operator-=", &Float32x3x4_operator_subasg_Float32x3x4 },
-        std::pair{ "operator-=", &Float32x4x2_operator_subasg_Float32x4x2 },
-        std::pair{ "operator-=", &Float32x4x3_operator_subasg_Float32x4x3 },
-        std::pair{ "operator-=", &Float32x4x4_operator_subasg_Float32x4x4 },
-        std::pair{ "operator-=", &Float16x2x2_operator_subasg_Float16x2x2 },
-        std::pair{ "operator-=", &Float16x2x3_operator_subasg_Float16x2x3 },
-        std::pair{ "operator/", &Int16x4_operator_div_Int16x4 },
-        std::pair{ "operator/=", &Int16x4_operator_divasg_Int16x4 },
-        std::pair{ "operator<", &Int16x4_operator_lt_Int16x4 },
-        std::pair{ "operator<<", &Int16x4_operator_lsh_Int16x4 },
-        std::pair{ "operator<<=", &Int16x4_operator_lshasg_Int16x4 },
-        std::pair{ "operator<=", &Int16x4_operator_lte_Int16x4 },
-        std::pair{ "operator==", &Int16x4_operator_eq_Int16x4 },
-        std::pair{ "operator>", &Int16x4_operator_gt_Int16x4 },
-        std::pair{ "operator>=", &Int16x4_operator_gte_Int16x4 },
-        std::pair{ "operator>>", &Int16x4_operator_rsh_Int16x4 },
-        std::pair{ "operator>>=", &Int16x4_operator_rhsasg_Int16x4 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_UInt16 },
-        std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
-        std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
-        std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 12> { 
+        std::pair{ "operator*(f16)"_c, &Float16x2x3_operator_scale_Float16 },
+        std::pair{ "operator*(f16x2)"_c, &Float16x2x3_transform_Float16x3 },
+        std::pair{ "operator*(f16x2x3)"_c, &Float16x2x3_operator_mul_Float16x2x3 },
+        std::pair{ "operator*=(f16x2x3)"_c, &Float16x2x3_operator_mulasg_Float16x2x3 },
+        std::pair{ "operator+(f16x2x3)"_c, &Float16x2x3_operator_add_Float16x2x3 },
+        std::pair{ "operator+=(f16x2x3)"_c, &Float16x2x3_operator_addasg_Float16x2x3 },
+        std::pair{ "operator-(f16x2x3)"_c, &Float16x2x3_operator_sub_Float16x2x3 },
+        std::pair{ "operator-=(f16x2x3)"_c, &Float16x2x3_operator_subasg_Float16x2x3 },
+        std::pair{ "operator[]"_c, &Float16x2x3_operator_index_Int32 },
+        std::pair{ "operator[]"_c, &Float16x2x3_operator_index_UInt32 },
+        std::pair{ "operator[]"_c, &Float16x2x3_operator_index_Int16 },
+        std::pair{ "operator[]"_c, &Float16x2x3_operator_index_UInt16 }
     };
 }
 Float16x2x3 Float16x2x3Type;
@@ -21562,6 +27723,11 @@ Variable Float16x2x4_operator_index_UInt16_arg0;
 Function Float16x2x4_operator_index_UInt16;
 inline constexpr std::array Float16x2x4_operator_index_UInt16_args = { &Float16x2x4_operator_index_UInt16_arg0 };
 
+/// operator* with Float16x2
+Variable Float16x2x4_transform_Float16x4_vec;
+Function Float16x2x4_transform_Float16x4;
+inline constexpr std::array Float16x2x4_transform_Float16x4_args = { &Float16x2x4_transform_Float16x4_vec };
+
 /// operator+ with Float16x2x4
 Variable Float16x2x4_operator_add_Float16x2x4_arg0;
 Function Float16x2x4_operator_add_Float16x2x4;
@@ -21599,10 +27765,10 @@ inline constexpr std::array Float16x2x4_operator_scale_Float16_args = { &Float16
 
 Float16x2x4::Float16x2x4()
 {
-    this->name = "f16"_c;
+    this->name = "f16x2x4"_c;
     this->columnSize = 4;
     this->rowSize = 2;
-    this->byteSize = 16;
+    this->byteSize = 8;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float16;
     this->builtin = true;
@@ -21690,6 +27856,15 @@ Float16x2x4::Float16x2x4()
     Symbol::Resolved(&Float16x2x4_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float16x2x4_operator_index_UInt16)->returnTypeSymbol = &Float16x4Type;
 
+    /// operator* with Float16x2
+    Float16x2x4_transform_Float16x4_vec.name = "vec"_c;
+    Float16x2x4_transform_Float16x4_vec.type = Type::FullType{ Float16x2Type.name };
+    Float16x2x4_transform_Float16x4.name = "operator*"_c;
+    Float16x2x4_transform_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    Float16x2x4_transform_Float16x4.parameters = Float16x2x4_transform_Float16x4_args;
+    Symbol::Resolved(&Float16x2x4_transform_Float16x4_vec)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&Float16x2x4_transform_Float16x4)->returnTypeSymbol = &Float16x4Type;
+
     /// operator+ with Float16x2x4
     Float16x2x4_operator_add_Float16x2x4_arg0.name = "_arg0"_c;
     Float16x2x4_operator_add_Float16x2x4_arg0.type = Type::FullType{ Float16x2x4Type.name };
@@ -21753,174 +27928,19 @@ Float16x2x4::Float16x2x4()
     Symbol::Resolved(&Float16x2x4_operator_scale_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x2x4_operator_scale_Float16)->returnTypeSymbol = &Float16x2x4Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 167> { 
-        std::pair{ "operator!=", &Int16x4_operator_neq_Int16x4 },
-        std::pair{ "operator%", &Int16x4_operator_mod_Int16x4 },
-        std::pair{ "operator&", &Int16x4_operator_and_Int16x4 },
-        std::pair{ "operator&=", &Int16x4_operator_andasg_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_mul_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int16 },
-        std::pair{ "operator*", &Float32x2x2_operator_mul_Float32x2x2 },
-        std::pair{ "operator*", &Float32x2x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x3_operator_mul_Float32x2x3 },
-        std::pair{ "operator*", &Float32x2x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x4_operator_mul_Float32x2x4 },
-        std::pair{ "operator*", &Float32x2x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x2_operator_mul_Float32x3x2 },
-        std::pair{ "operator*", &Float32x3x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x3_operator_mul_Float32x3x3 },
-        std::pair{ "operator*", &Float32x3x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x4_operator_mul_Float32x3x4 },
-        std::pair{ "operator*", &Float32x3x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x2_operator_mul_Float32x4x2 },
-        std::pair{ "operator*", &Float32x4x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x3_operator_mul_Float32x4x3 },
-        std::pair{ "operator*", &Float32x4x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x4_operator_mul_Float32x4x4 },
-        std::pair{ "operator*", &Float32x4x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float16x2x2_operator_mul_Float16x2x2 },
-        std::pair{ "operator*", &Float16x2x2_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x2x3_operator_mul_Float16x2x3 },
-        std::pair{ "operator*", &Float16x2x3_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x2x4_operator_mul_Float16x2x4 },
-        std::pair{ "operator*", &Float16x2x4_operator_scale_Float16 },
-        std::pair{ "operator*=", &Int16x4_operator_mulasg_Int16x4 },
-        std::pair{ "operator*=", &Float32x2x2_operator_mulasg_Float32x2x2 },
-        std::pair{ "operator*=", &Float32x2x3_operator_mulasg_Float32x2x3 },
-        std::pair{ "operator*=", &Float32x2x4_operator_mulasg_Float32x2x4 },
-        std::pair{ "operator*=", &Float32x3x2_operator_mulasg_Float32x3x2 },
-        std::pair{ "operator*=", &Float32x3x3_operator_mulasg_Float32x3x3 },
-        std::pair{ "operator*=", &Float32x3x4_operator_mulasg_Float32x3x4 },
-        std::pair{ "operator*=", &Float32x4x2_operator_mulasg_Float32x4x2 },
-        std::pair{ "operator*=", &Float32x4x3_operator_mulasg_Float32x4x3 },
-        std::pair{ "operator*=", &Float32x4x4_operator_mulasg_Float32x4x4 },
-        std::pair{ "operator*=", &Float16x2x2_operator_mulasg_Float16x2x2 },
-        std::pair{ "operator*=", &Float16x2x3_operator_mulasg_Float16x2x3 },
-        std::pair{ "operator*=", &Float16x2x4_operator_mulasg_Float16x2x4 },
-        std::pair{ "operator+", &Int16x4_operator_add_Int16x4 },
-        std::pair{ "operator+", &Float32x2x2_operator_add_Float32x2x2 },
-        std::pair{ "operator+", &Float32x2x3_operator_add_Float32x2x3 },
-        std::pair{ "operator+", &Float32x2x4_operator_add_Float32x2x4 },
-        std::pair{ "operator+", &Float32x3x2_operator_add_Float32x3x2 },
-        std::pair{ "operator+", &Float32x3x3_operator_add_Float32x3x3 },
-        std::pair{ "operator+", &Float32x3x4_operator_add_Float32x3x4 },
-        std::pair{ "operator+", &Float32x4x2_operator_add_Float32x4x2 },
-        std::pair{ "operator+", &Float32x4x3_operator_add_Float32x4x3 },
-        std::pair{ "operator+", &Float32x4x4_operator_add_Float32x4x4 },
-        std::pair{ "operator+", &Float16x2x2_operator_add_Float16x2x2 },
-        std::pair{ "operator+", &Float16x2x3_operator_add_Float16x2x3 },
-        std::pair{ "operator+", &Float16x2x4_operator_add_Float16x2x4 },
-        std::pair{ "operator+=", &Int16x4_operator_addasg_Int16x4 },
-        std::pair{ "operator+=", &Float32x2x2_operator_addasg_Float32x2x2 },
-        std::pair{ "operator+=", &Float32x2x3_operator_addasg_Float32x2x3 },
-        std::pair{ "operator+=", &Float32x2x4_operator_addasg_Float32x2x4 },
-        std::pair{ "operator+=", &Float32x3x2_operator_addasg_Float32x3x2 },
-        std::pair{ "operator+=", &Float32x3x3_operator_addasg_Float32x3x3 },
-        std::pair{ "operator+=", &Float32x3x4_operator_addasg_Float32x3x4 },
-        std::pair{ "operator+=", &Float32x4x2_operator_addasg_Float32x4x2 },
-        std::pair{ "operator+=", &Float32x4x3_operator_addasg_Float32x4x3 },
-        std::pair{ "operator+=", &Float32x4x4_operator_addasg_Float32x4x4 },
-        std::pair{ "operator+=", &Float16x2x2_operator_addasg_Float16x2x2 },
-        std::pair{ "operator+=", &Float16x2x3_operator_addasg_Float16x2x3 },
-        std::pair{ "operator+=", &Float16x2x4_operator_addasg_Float16x2x4 },
-        std::pair{ "operator-", &Int16x4_operator_sub_Int16x4 },
-        std::pair{ "operator-", &Float32x2x2_operator_sub_Float32x2x2 },
-        std::pair{ "operator-", &Float32x2x3_operator_sub_Float32x2x3 },
-        std::pair{ "operator-", &Float32x2x4_operator_sub_Float32x2x4 },
-        std::pair{ "operator-", &Float32x3x2_operator_sub_Float32x3x2 },
-        std::pair{ "operator-", &Float32x3x3_operator_sub_Float32x3x3 },
-        std::pair{ "operator-", &Float32x3x4_operator_sub_Float32x3x4 },
-        std::pair{ "operator-", &Float32x4x2_operator_sub_Float32x4x2 },
-        std::pair{ "operator-", &Float32x4x3_operator_sub_Float32x4x3 },
-        std::pair{ "operator-", &Float32x4x4_operator_sub_Float32x4x4 },
-        std::pair{ "operator-", &Float16x2x2_operator_sub_Float16x2x2 },
-        std::pair{ "operator-", &Float16x2x3_operator_sub_Float16x2x3 },
-        std::pair{ "operator-", &Float16x2x4_operator_sub_Float16x2x4 },
-        std::pair{ "operator-=", &Int16x4_operator_subasg_Int16x4 },
-        std::pair{ "operator-=", &Float32x2x2_operator_subasg_Float32x2x2 },
-        std::pair{ "operator-=", &Float32x2x3_operator_subasg_Float32x2x3 },
-        std::pair{ "operator-=", &Float32x2x4_operator_subasg_Float32x2x4 },
-        std::pair{ "operator-=", &Float32x3x2_operator_subasg_Float32x3x2 },
-        std::pair{ "operator-=", &Float32x3x3_operator_subasg_Float32x3x3 },
-        std::pair{ "operator-=", &Float32x3x4_operator_subasg_Float32x3x4 },
-        std::pair{ "operator-=", &Float32x4x2_operator_subasg_Float32x4x2 },
-        std::pair{ "operator-=", &Float32x4x3_operator_subasg_Float32x4x3 },
-        std::pair{ "operator-=", &Float32x4x4_operator_subasg_Float32x4x4 },
-        std::pair{ "operator-=", &Float16x2x2_operator_subasg_Float16x2x2 },
-        std::pair{ "operator-=", &Float16x2x3_operator_subasg_Float16x2x3 },
-        std::pair{ "operator-=", &Float16x2x4_operator_subasg_Float16x2x4 },
-        std::pair{ "operator/", &Int16x4_operator_div_Int16x4 },
-        std::pair{ "operator/=", &Int16x4_operator_divasg_Int16x4 },
-        std::pair{ "operator<", &Int16x4_operator_lt_Int16x4 },
-        std::pair{ "operator<<", &Int16x4_operator_lsh_Int16x4 },
-        std::pair{ "operator<<=", &Int16x4_operator_lshasg_Int16x4 },
-        std::pair{ "operator<=", &Int16x4_operator_lte_Int16x4 },
-        std::pair{ "operator==", &Int16x4_operator_eq_Int16x4 },
-        std::pair{ "operator>", &Int16x4_operator_gt_Int16x4 },
-        std::pair{ "operator>=", &Int16x4_operator_gte_Int16x4 },
-        std::pair{ "operator>>", &Int16x4_operator_rsh_Int16x4 },
-        std::pair{ "operator>>=", &Int16x4_operator_rhsasg_Int16x4 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_UInt16 },
-        std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
-        std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
-        std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 12> { 
+        std::pair{ "operator*(f16)"_c, &Float16x2x4_operator_scale_Float16 },
+        std::pair{ "operator*(f16x2)"_c, &Float16x2x4_transform_Float16x4 },
+        std::pair{ "operator*(f16x2x4)"_c, &Float16x2x4_operator_mul_Float16x2x4 },
+        std::pair{ "operator*=(f16x2x4)"_c, &Float16x2x4_operator_mulasg_Float16x2x4 },
+        std::pair{ "operator+(f16x2x4)"_c, &Float16x2x4_operator_add_Float16x2x4 },
+        std::pair{ "operator+=(f16x2x4)"_c, &Float16x2x4_operator_addasg_Float16x2x4 },
+        std::pair{ "operator-(f16x2x4)"_c, &Float16x2x4_operator_sub_Float16x2x4 },
+        std::pair{ "operator-=(f16x2x4)"_c, &Float16x2x4_operator_subasg_Float16x2x4 },
+        std::pair{ "operator[]"_c, &Float16x2x4_operator_index_Int32 },
+        std::pair{ "operator[]"_c, &Float16x2x4_operator_index_UInt32 },
+        std::pair{ "operator[]"_c, &Float16x2x4_operator_index_Int16 },
+        std::pair{ "operator[]"_c, &Float16x2x4_operator_index_UInt16 }
     };
 }
 Float16x2x4 Float16x2x4Type;
@@ -21965,6 +27985,11 @@ Variable Float16x3x2_operator_index_UInt16_arg0;
 Function Float16x3x2_operator_index_UInt16;
 inline constexpr std::array Float16x3x2_operator_index_UInt16_args = { &Float16x3x2_operator_index_UInt16_arg0 };
 
+/// operator* with Float16x3
+Variable Float16x3x2_transform_Float16x2_vec;
+Function Float16x3x2_transform_Float16x2;
+inline constexpr std::array Float16x3x2_transform_Float16x2_args = { &Float16x3x2_transform_Float16x2_vec };
+
 /// operator+ with Float16x3x2
 Variable Float16x3x2_operator_add_Float16x3x2_arg0;
 Function Float16x3x2_operator_add_Float16x3x2;
@@ -22002,10 +28027,10 @@ inline constexpr std::array Float16x3x2_operator_scale_Float16_args = { &Float16
 
 Float16x3x2::Float16x3x2()
 {
-    this->name = "f16"_c;
+    this->name = "f16x3x2"_c;
     this->columnSize = 2;
     this->rowSize = 3;
-    this->byteSize = 12;
+    this->byteSize = 4;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float16;
     this->builtin = true;
@@ -22090,6 +28115,15 @@ Float16x3x2::Float16x3x2()
     Symbol::Resolved(&Float16x3x2_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float16x3x2_operator_index_UInt16)->returnTypeSymbol = &Float16x2Type;
 
+    /// operator* with Float16x3
+    Float16x3x2_transform_Float16x2_vec.name = "vec"_c;
+    Float16x3x2_transform_Float16x2_vec.type = Type::FullType{ Float16x3Type.name };
+    Float16x3x2_transform_Float16x2.name = "operator*"_c;
+    Float16x3x2_transform_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    Float16x3x2_transform_Float16x2.parameters = Float16x3x2_transform_Float16x2_args;
+    Symbol::Resolved(&Float16x3x2_transform_Float16x2_vec)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&Float16x3x2_transform_Float16x2)->returnTypeSymbol = &Float16x2Type;
+
     /// operator+ with Float16x3x2
     Float16x3x2_operator_add_Float16x3x2_arg0.name = "_arg0"_c;
     Float16x3x2_operator_add_Float16x3x2_arg0.type = Type::FullType{ Float16x3x2Type.name };
@@ -22153,185 +28187,19 @@ Float16x3x2::Float16x3x2()
     Symbol::Resolved(&Float16x3x2_operator_scale_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x3x2_operator_scale_Float16)->returnTypeSymbol = &Float16x3x2Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 178> { 
-        std::pair{ "operator!=", &Int16x4_operator_neq_Int16x4 },
-        std::pair{ "operator%", &Int16x4_operator_mod_Int16x4 },
-        std::pair{ "operator&", &Int16x4_operator_and_Int16x4 },
-        std::pair{ "operator&=", &Int16x4_operator_andasg_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_mul_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int16 },
-        std::pair{ "operator*", &Float32x2x2_operator_mul_Float32x2x2 },
-        std::pair{ "operator*", &Float32x2x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x3_operator_mul_Float32x2x3 },
-        std::pair{ "operator*", &Float32x2x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x4_operator_mul_Float32x2x4 },
-        std::pair{ "operator*", &Float32x2x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x2_operator_mul_Float32x3x2 },
-        std::pair{ "operator*", &Float32x3x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x3_operator_mul_Float32x3x3 },
-        std::pair{ "operator*", &Float32x3x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x4_operator_mul_Float32x3x4 },
-        std::pair{ "operator*", &Float32x3x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x2_operator_mul_Float32x4x2 },
-        std::pair{ "operator*", &Float32x4x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x3_operator_mul_Float32x4x3 },
-        std::pair{ "operator*", &Float32x4x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x4_operator_mul_Float32x4x4 },
-        std::pair{ "operator*", &Float32x4x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float16x2x2_operator_mul_Float16x2x2 },
-        std::pair{ "operator*", &Float16x2x2_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x2x3_operator_mul_Float16x2x3 },
-        std::pair{ "operator*", &Float16x2x3_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x2x4_operator_mul_Float16x2x4 },
-        std::pair{ "operator*", &Float16x2x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x3x2_operator_mul_Float16x3x2 },
-        std::pair{ "operator*", &Float16x3x2_operator_scale_Float16 },
-        std::pair{ "operator*=", &Int16x4_operator_mulasg_Int16x4 },
-        std::pair{ "operator*=", &Float32x2x2_operator_mulasg_Float32x2x2 },
-        std::pair{ "operator*=", &Float32x2x3_operator_mulasg_Float32x2x3 },
-        std::pair{ "operator*=", &Float32x2x4_operator_mulasg_Float32x2x4 },
-        std::pair{ "operator*=", &Float32x3x2_operator_mulasg_Float32x3x2 },
-        std::pair{ "operator*=", &Float32x3x3_operator_mulasg_Float32x3x3 },
-        std::pair{ "operator*=", &Float32x3x4_operator_mulasg_Float32x3x4 },
-        std::pair{ "operator*=", &Float32x4x2_operator_mulasg_Float32x4x2 },
-        std::pair{ "operator*=", &Float32x4x3_operator_mulasg_Float32x4x3 },
-        std::pair{ "operator*=", &Float32x4x4_operator_mulasg_Float32x4x4 },
-        std::pair{ "operator*=", &Float16x2x2_operator_mulasg_Float16x2x2 },
-        std::pair{ "operator*=", &Float16x2x3_operator_mulasg_Float16x2x3 },
-        std::pair{ "operator*=", &Float16x2x4_operator_mulasg_Float16x2x4 },
-        std::pair{ "operator*=", &Float16x3x2_operator_mulasg_Float16x3x2 },
-        std::pair{ "operator+", &Int16x4_operator_add_Int16x4 },
-        std::pair{ "operator+", &Float32x2x2_operator_add_Float32x2x2 },
-        std::pair{ "operator+", &Float32x2x3_operator_add_Float32x2x3 },
-        std::pair{ "operator+", &Float32x2x4_operator_add_Float32x2x4 },
-        std::pair{ "operator+", &Float32x3x2_operator_add_Float32x3x2 },
-        std::pair{ "operator+", &Float32x3x3_operator_add_Float32x3x3 },
-        std::pair{ "operator+", &Float32x3x4_operator_add_Float32x3x4 },
-        std::pair{ "operator+", &Float32x4x2_operator_add_Float32x4x2 },
-        std::pair{ "operator+", &Float32x4x3_operator_add_Float32x4x3 },
-        std::pair{ "operator+", &Float32x4x4_operator_add_Float32x4x4 },
-        std::pair{ "operator+", &Float16x2x2_operator_add_Float16x2x2 },
-        std::pair{ "operator+", &Float16x2x3_operator_add_Float16x2x3 },
-        std::pair{ "operator+", &Float16x2x4_operator_add_Float16x2x4 },
-        std::pair{ "operator+", &Float16x3x2_operator_add_Float16x3x2 },
-        std::pair{ "operator+=", &Int16x4_operator_addasg_Int16x4 },
-        std::pair{ "operator+=", &Float32x2x2_operator_addasg_Float32x2x2 },
-        std::pair{ "operator+=", &Float32x2x3_operator_addasg_Float32x2x3 },
-        std::pair{ "operator+=", &Float32x2x4_operator_addasg_Float32x2x4 },
-        std::pair{ "operator+=", &Float32x3x2_operator_addasg_Float32x3x2 },
-        std::pair{ "operator+=", &Float32x3x3_operator_addasg_Float32x3x3 },
-        std::pair{ "operator+=", &Float32x3x4_operator_addasg_Float32x3x4 },
-        std::pair{ "operator+=", &Float32x4x2_operator_addasg_Float32x4x2 },
-        std::pair{ "operator+=", &Float32x4x3_operator_addasg_Float32x4x3 },
-        std::pair{ "operator+=", &Float32x4x4_operator_addasg_Float32x4x4 },
-        std::pair{ "operator+=", &Float16x2x2_operator_addasg_Float16x2x2 },
-        std::pair{ "operator+=", &Float16x2x3_operator_addasg_Float16x2x3 },
-        std::pair{ "operator+=", &Float16x2x4_operator_addasg_Float16x2x4 },
-        std::pair{ "operator+=", &Float16x3x2_operator_addasg_Float16x3x2 },
-        std::pair{ "operator-", &Int16x4_operator_sub_Int16x4 },
-        std::pair{ "operator-", &Float32x2x2_operator_sub_Float32x2x2 },
-        std::pair{ "operator-", &Float32x2x3_operator_sub_Float32x2x3 },
-        std::pair{ "operator-", &Float32x2x4_operator_sub_Float32x2x4 },
-        std::pair{ "operator-", &Float32x3x2_operator_sub_Float32x3x2 },
-        std::pair{ "operator-", &Float32x3x3_operator_sub_Float32x3x3 },
-        std::pair{ "operator-", &Float32x3x4_operator_sub_Float32x3x4 },
-        std::pair{ "operator-", &Float32x4x2_operator_sub_Float32x4x2 },
-        std::pair{ "operator-", &Float32x4x3_operator_sub_Float32x4x3 },
-        std::pair{ "operator-", &Float32x4x4_operator_sub_Float32x4x4 },
-        std::pair{ "operator-", &Float16x2x2_operator_sub_Float16x2x2 },
-        std::pair{ "operator-", &Float16x2x3_operator_sub_Float16x2x3 },
-        std::pair{ "operator-", &Float16x2x4_operator_sub_Float16x2x4 },
-        std::pair{ "operator-", &Float16x3x2_operator_sub_Float16x3x2 },
-        std::pair{ "operator-=", &Int16x4_operator_subasg_Int16x4 },
-        std::pair{ "operator-=", &Float32x2x2_operator_subasg_Float32x2x2 },
-        std::pair{ "operator-=", &Float32x2x3_operator_subasg_Float32x2x3 },
-        std::pair{ "operator-=", &Float32x2x4_operator_subasg_Float32x2x4 },
-        std::pair{ "operator-=", &Float32x3x2_operator_subasg_Float32x3x2 },
-        std::pair{ "operator-=", &Float32x3x3_operator_subasg_Float32x3x3 },
-        std::pair{ "operator-=", &Float32x3x4_operator_subasg_Float32x3x4 },
-        std::pair{ "operator-=", &Float32x4x2_operator_subasg_Float32x4x2 },
-        std::pair{ "operator-=", &Float32x4x3_operator_subasg_Float32x4x3 },
-        std::pair{ "operator-=", &Float32x4x4_operator_subasg_Float32x4x4 },
-        std::pair{ "operator-=", &Float16x2x2_operator_subasg_Float16x2x2 },
-        std::pair{ "operator-=", &Float16x2x3_operator_subasg_Float16x2x3 },
-        std::pair{ "operator-=", &Float16x2x4_operator_subasg_Float16x2x4 },
-        std::pair{ "operator-=", &Float16x3x2_operator_subasg_Float16x3x2 },
-        std::pair{ "operator/", &Int16x4_operator_div_Int16x4 },
-        std::pair{ "operator/=", &Int16x4_operator_divasg_Int16x4 },
-        std::pair{ "operator<", &Int16x4_operator_lt_Int16x4 },
-        std::pair{ "operator<<", &Int16x4_operator_lsh_Int16x4 },
-        std::pair{ "operator<<=", &Int16x4_operator_lshasg_Int16x4 },
-        std::pair{ "operator<=", &Int16x4_operator_lte_Int16x4 },
-        std::pair{ "operator==", &Int16x4_operator_eq_Int16x4 },
-        std::pair{ "operator>", &Int16x4_operator_gt_Int16x4 },
-        std::pair{ "operator>=", &Int16x4_operator_gte_Int16x4 },
-        std::pair{ "operator>>", &Int16x4_operator_rsh_Int16x4 },
-        std::pair{ "operator>>=", &Int16x4_operator_rhsasg_Int16x4 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x3x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x3x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x3x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x3x2_operator_index_UInt16 },
-        std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
-        std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
-        std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 12> { 
+        std::pair{ "operator*(f16)"_c, &Float16x3x2_operator_scale_Float16 },
+        std::pair{ "operator*(f16x3)"_c, &Float16x3x2_transform_Float16x2 },
+        std::pair{ "operator*(f16x3x2)"_c, &Float16x3x2_operator_mul_Float16x3x2 },
+        std::pair{ "operator*=(f16x3x2)"_c, &Float16x3x2_operator_mulasg_Float16x3x2 },
+        std::pair{ "operator+(f16x3x2)"_c, &Float16x3x2_operator_add_Float16x3x2 },
+        std::pair{ "operator+=(f16x3x2)"_c, &Float16x3x2_operator_addasg_Float16x3x2 },
+        std::pair{ "operator-(f16x3x2)"_c, &Float16x3x2_operator_sub_Float16x3x2 },
+        std::pair{ "operator-=(f16x3x2)"_c, &Float16x3x2_operator_subasg_Float16x3x2 },
+        std::pair{ "operator[]"_c, &Float16x3x2_operator_index_Int32 },
+        std::pair{ "operator[]"_c, &Float16x3x2_operator_index_UInt32 },
+        std::pair{ "operator[]"_c, &Float16x3x2_operator_index_Int16 },
+        std::pair{ "operator[]"_c, &Float16x3x2_operator_index_UInt16 }
     };
 }
 Float16x3x2 Float16x3x2Type;
@@ -22379,6 +28247,11 @@ Variable Float16x3x3_operator_index_UInt16_arg0;
 Function Float16x3x3_operator_index_UInt16;
 inline constexpr std::array Float16x3x3_operator_index_UInt16_args = { &Float16x3x3_operator_index_UInt16_arg0 };
 
+/// operator* with Float16x3
+Variable Float16x3x3_transform_Float16x3_vec;
+Function Float16x3x3_transform_Float16x3;
+inline constexpr std::array Float16x3x3_transform_Float16x3_args = { &Float16x3x3_transform_Float16x3_vec };
+
 /// operator+ with Float16x3x3
 Variable Float16x3x3_operator_add_Float16x3x3_arg0;
 Function Float16x3x3_operator_add_Float16x3x3;
@@ -22416,10 +28289,10 @@ inline constexpr std::array Float16x3x3_operator_scale_Float16_args = { &Float16
 
 Float16x3x3::Float16x3x3()
 {
-    this->name = "f16"_c;
+    this->name = "f16x3x3"_c;
     this->columnSize = 3;
     this->rowSize = 3;
-    this->byteSize = 18;
+    this->byteSize = 6;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float16;
     this->builtin = true;
@@ -22513,6 +28386,15 @@ Float16x3x3::Float16x3x3()
     Symbol::Resolved(&Float16x3x3_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float16x3x3_operator_index_UInt16)->returnTypeSymbol = &Float16x3Type;
 
+    /// operator* with Float16x3
+    Float16x3x3_transform_Float16x3_vec.name = "vec"_c;
+    Float16x3x3_transform_Float16x3_vec.type = Type::FullType{ Float16x3Type.name };
+    Float16x3x3_transform_Float16x3.name = "operator*"_c;
+    Float16x3x3_transform_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    Float16x3x3_transform_Float16x3.parameters = Float16x3x3_transform_Float16x3_args;
+    Symbol::Resolved(&Float16x3x3_transform_Float16x3_vec)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&Float16x3x3_transform_Float16x3)->returnTypeSymbol = &Float16x3Type;
+
     /// operator+ with Float16x3x3
     Float16x3x3_operator_add_Float16x3x3_arg0.name = "_arg0"_c;
     Float16x3x3_operator_add_Float16x3x3_arg0.type = Type::FullType{ Float16x3x3Type.name };
@@ -22576,196 +28458,19 @@ Float16x3x3::Float16x3x3()
     Symbol::Resolved(&Float16x3x3_operator_scale_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x3x3_operator_scale_Float16)->returnTypeSymbol = &Float16x3x3Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 189> { 
-        std::pair{ "operator!=", &Int16x4_operator_neq_Int16x4 },
-        std::pair{ "operator%", &Int16x4_operator_mod_Int16x4 },
-        std::pair{ "operator&", &Int16x4_operator_and_Int16x4 },
-        std::pair{ "operator&=", &Int16x4_operator_andasg_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_mul_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int16 },
-        std::pair{ "operator*", &Float32x2x2_operator_mul_Float32x2x2 },
-        std::pair{ "operator*", &Float32x2x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x3_operator_mul_Float32x2x3 },
-        std::pair{ "operator*", &Float32x2x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x4_operator_mul_Float32x2x4 },
-        std::pair{ "operator*", &Float32x2x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x2_operator_mul_Float32x3x2 },
-        std::pair{ "operator*", &Float32x3x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x3_operator_mul_Float32x3x3 },
-        std::pair{ "operator*", &Float32x3x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x4_operator_mul_Float32x3x4 },
-        std::pair{ "operator*", &Float32x3x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x2_operator_mul_Float32x4x2 },
-        std::pair{ "operator*", &Float32x4x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x3_operator_mul_Float32x4x3 },
-        std::pair{ "operator*", &Float32x4x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x4_operator_mul_Float32x4x4 },
-        std::pair{ "operator*", &Float32x4x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float16x2x2_operator_mul_Float16x2x2 },
-        std::pair{ "operator*", &Float16x2x2_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x2x3_operator_mul_Float16x2x3 },
-        std::pair{ "operator*", &Float16x2x3_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x2x4_operator_mul_Float16x2x4 },
-        std::pair{ "operator*", &Float16x2x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x3x2_operator_mul_Float16x3x2 },
-        std::pair{ "operator*", &Float16x3x2_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x3x3_operator_mul_Float16x3x3 },
-        std::pair{ "operator*", &Float16x3x3_operator_scale_Float16 },
-        std::pair{ "operator*=", &Int16x4_operator_mulasg_Int16x4 },
-        std::pair{ "operator*=", &Float32x2x2_operator_mulasg_Float32x2x2 },
-        std::pair{ "operator*=", &Float32x2x3_operator_mulasg_Float32x2x3 },
-        std::pair{ "operator*=", &Float32x2x4_operator_mulasg_Float32x2x4 },
-        std::pair{ "operator*=", &Float32x3x2_operator_mulasg_Float32x3x2 },
-        std::pair{ "operator*=", &Float32x3x3_operator_mulasg_Float32x3x3 },
-        std::pair{ "operator*=", &Float32x3x4_operator_mulasg_Float32x3x4 },
-        std::pair{ "operator*=", &Float32x4x2_operator_mulasg_Float32x4x2 },
-        std::pair{ "operator*=", &Float32x4x3_operator_mulasg_Float32x4x3 },
-        std::pair{ "operator*=", &Float32x4x4_operator_mulasg_Float32x4x4 },
-        std::pair{ "operator*=", &Float16x2x2_operator_mulasg_Float16x2x2 },
-        std::pair{ "operator*=", &Float16x2x3_operator_mulasg_Float16x2x3 },
-        std::pair{ "operator*=", &Float16x2x4_operator_mulasg_Float16x2x4 },
-        std::pair{ "operator*=", &Float16x3x2_operator_mulasg_Float16x3x2 },
-        std::pair{ "operator*=", &Float16x3x3_operator_mulasg_Float16x3x3 },
-        std::pair{ "operator+", &Int16x4_operator_add_Int16x4 },
-        std::pair{ "operator+", &Float32x2x2_operator_add_Float32x2x2 },
-        std::pair{ "operator+", &Float32x2x3_operator_add_Float32x2x3 },
-        std::pair{ "operator+", &Float32x2x4_operator_add_Float32x2x4 },
-        std::pair{ "operator+", &Float32x3x2_operator_add_Float32x3x2 },
-        std::pair{ "operator+", &Float32x3x3_operator_add_Float32x3x3 },
-        std::pair{ "operator+", &Float32x3x4_operator_add_Float32x3x4 },
-        std::pair{ "operator+", &Float32x4x2_operator_add_Float32x4x2 },
-        std::pair{ "operator+", &Float32x4x3_operator_add_Float32x4x3 },
-        std::pair{ "operator+", &Float32x4x4_operator_add_Float32x4x4 },
-        std::pair{ "operator+", &Float16x2x2_operator_add_Float16x2x2 },
-        std::pair{ "operator+", &Float16x2x3_operator_add_Float16x2x3 },
-        std::pair{ "operator+", &Float16x2x4_operator_add_Float16x2x4 },
-        std::pair{ "operator+", &Float16x3x2_operator_add_Float16x3x2 },
-        std::pair{ "operator+", &Float16x3x3_operator_add_Float16x3x3 },
-        std::pair{ "operator+=", &Int16x4_operator_addasg_Int16x4 },
-        std::pair{ "operator+=", &Float32x2x2_operator_addasg_Float32x2x2 },
-        std::pair{ "operator+=", &Float32x2x3_operator_addasg_Float32x2x3 },
-        std::pair{ "operator+=", &Float32x2x4_operator_addasg_Float32x2x4 },
-        std::pair{ "operator+=", &Float32x3x2_operator_addasg_Float32x3x2 },
-        std::pair{ "operator+=", &Float32x3x3_operator_addasg_Float32x3x3 },
-        std::pair{ "operator+=", &Float32x3x4_operator_addasg_Float32x3x4 },
-        std::pair{ "operator+=", &Float32x4x2_operator_addasg_Float32x4x2 },
-        std::pair{ "operator+=", &Float32x4x3_operator_addasg_Float32x4x3 },
-        std::pair{ "operator+=", &Float32x4x4_operator_addasg_Float32x4x4 },
-        std::pair{ "operator+=", &Float16x2x2_operator_addasg_Float16x2x2 },
-        std::pair{ "operator+=", &Float16x2x3_operator_addasg_Float16x2x3 },
-        std::pair{ "operator+=", &Float16x2x4_operator_addasg_Float16x2x4 },
-        std::pair{ "operator+=", &Float16x3x2_operator_addasg_Float16x3x2 },
-        std::pair{ "operator+=", &Float16x3x3_operator_addasg_Float16x3x3 },
-        std::pair{ "operator-", &Int16x4_operator_sub_Int16x4 },
-        std::pair{ "operator-", &Float32x2x2_operator_sub_Float32x2x2 },
-        std::pair{ "operator-", &Float32x2x3_operator_sub_Float32x2x3 },
-        std::pair{ "operator-", &Float32x2x4_operator_sub_Float32x2x4 },
-        std::pair{ "operator-", &Float32x3x2_operator_sub_Float32x3x2 },
-        std::pair{ "operator-", &Float32x3x3_operator_sub_Float32x3x3 },
-        std::pair{ "operator-", &Float32x3x4_operator_sub_Float32x3x4 },
-        std::pair{ "operator-", &Float32x4x2_operator_sub_Float32x4x2 },
-        std::pair{ "operator-", &Float32x4x3_operator_sub_Float32x4x3 },
-        std::pair{ "operator-", &Float32x4x4_operator_sub_Float32x4x4 },
-        std::pair{ "operator-", &Float16x2x2_operator_sub_Float16x2x2 },
-        std::pair{ "operator-", &Float16x2x3_operator_sub_Float16x2x3 },
-        std::pair{ "operator-", &Float16x2x4_operator_sub_Float16x2x4 },
-        std::pair{ "operator-", &Float16x3x2_operator_sub_Float16x3x2 },
-        std::pair{ "operator-", &Float16x3x3_operator_sub_Float16x3x3 },
-        std::pair{ "operator-=", &Int16x4_operator_subasg_Int16x4 },
-        std::pair{ "operator-=", &Float32x2x2_operator_subasg_Float32x2x2 },
-        std::pair{ "operator-=", &Float32x2x3_operator_subasg_Float32x2x3 },
-        std::pair{ "operator-=", &Float32x2x4_operator_subasg_Float32x2x4 },
-        std::pair{ "operator-=", &Float32x3x2_operator_subasg_Float32x3x2 },
-        std::pair{ "operator-=", &Float32x3x3_operator_subasg_Float32x3x3 },
-        std::pair{ "operator-=", &Float32x3x4_operator_subasg_Float32x3x4 },
-        std::pair{ "operator-=", &Float32x4x2_operator_subasg_Float32x4x2 },
-        std::pair{ "operator-=", &Float32x4x3_operator_subasg_Float32x4x3 },
-        std::pair{ "operator-=", &Float32x4x4_operator_subasg_Float32x4x4 },
-        std::pair{ "operator-=", &Float16x2x2_operator_subasg_Float16x2x2 },
-        std::pair{ "operator-=", &Float16x2x3_operator_subasg_Float16x2x3 },
-        std::pair{ "operator-=", &Float16x2x4_operator_subasg_Float16x2x4 },
-        std::pair{ "operator-=", &Float16x3x2_operator_subasg_Float16x3x2 },
-        std::pair{ "operator-=", &Float16x3x3_operator_subasg_Float16x3x3 },
-        std::pair{ "operator/", &Int16x4_operator_div_Int16x4 },
-        std::pair{ "operator/=", &Int16x4_operator_divasg_Int16x4 },
-        std::pair{ "operator<", &Int16x4_operator_lt_Int16x4 },
-        std::pair{ "operator<<", &Int16x4_operator_lsh_Int16x4 },
-        std::pair{ "operator<<=", &Int16x4_operator_lshasg_Int16x4 },
-        std::pair{ "operator<=", &Int16x4_operator_lte_Int16x4 },
-        std::pair{ "operator==", &Int16x4_operator_eq_Int16x4 },
-        std::pair{ "operator>", &Int16x4_operator_gt_Int16x4 },
-        std::pair{ "operator>=", &Int16x4_operator_gte_Int16x4 },
-        std::pair{ "operator>>", &Int16x4_operator_rsh_Int16x4 },
-        std::pair{ "operator>>=", &Int16x4_operator_rhsasg_Int16x4 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x3x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x3x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x3x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x3x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x3x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x3x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x3x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x3x3_operator_index_UInt16 },
-        std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
-        std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
-        std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 12> { 
+        std::pair{ "operator*(f16)"_c, &Float16x3x3_operator_scale_Float16 },
+        std::pair{ "operator*(f16x3)"_c, &Float16x3x3_transform_Float16x3 },
+        std::pair{ "operator*(f16x3x3)"_c, &Float16x3x3_operator_mul_Float16x3x3 },
+        std::pair{ "operator*=(f16x3x3)"_c, &Float16x3x3_operator_mulasg_Float16x3x3 },
+        std::pair{ "operator+(f16x3x3)"_c, &Float16x3x3_operator_add_Float16x3x3 },
+        std::pair{ "operator+=(f16x3x3)"_c, &Float16x3x3_operator_addasg_Float16x3x3 },
+        std::pair{ "operator-(f16x3x3)"_c, &Float16x3x3_operator_sub_Float16x3x3 },
+        std::pair{ "operator-=(f16x3x3)"_c, &Float16x3x3_operator_subasg_Float16x3x3 },
+        std::pair{ "operator[]"_c, &Float16x3x3_operator_index_Int32 },
+        std::pair{ "operator[]"_c, &Float16x3x3_operator_index_UInt32 },
+        std::pair{ "operator[]"_c, &Float16x3x3_operator_index_Int16 },
+        std::pair{ "operator[]"_c, &Float16x3x3_operator_index_UInt16 }
     };
 }
 Float16x3x3 Float16x3x3Type;
@@ -22816,6 +28521,11 @@ Variable Float16x3x4_operator_index_UInt16_arg0;
 Function Float16x3x4_operator_index_UInt16;
 inline constexpr std::array Float16x3x4_operator_index_UInt16_args = { &Float16x3x4_operator_index_UInt16_arg0 };
 
+/// operator* with Float16x3
+Variable Float16x3x4_transform_Float16x4_vec;
+Function Float16x3x4_transform_Float16x4;
+inline constexpr std::array Float16x3x4_transform_Float16x4_args = { &Float16x3x4_transform_Float16x4_vec };
+
 /// operator+ with Float16x3x4
 Variable Float16x3x4_operator_add_Float16x3x4_arg0;
 Function Float16x3x4_operator_add_Float16x3x4;
@@ -22853,10 +28563,10 @@ inline constexpr std::array Float16x3x4_operator_scale_Float16_args = { &Float16
 
 Float16x3x4::Float16x3x4()
 {
-    this->name = "f16"_c;
+    this->name = "f16x3x4"_c;
     this->columnSize = 4;
     this->rowSize = 3;
-    this->byteSize = 24;
+    this->byteSize = 8;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float16;
     this->builtin = true;
@@ -22959,6 +28669,15 @@ Float16x3x4::Float16x3x4()
     Symbol::Resolved(&Float16x3x4_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float16x3x4_operator_index_UInt16)->returnTypeSymbol = &Float16x4Type;
 
+    /// operator* with Float16x3
+    Float16x3x4_transform_Float16x4_vec.name = "vec"_c;
+    Float16x3x4_transform_Float16x4_vec.type = Type::FullType{ Float16x3Type.name };
+    Float16x3x4_transform_Float16x4.name = "operator*"_c;
+    Float16x3x4_transform_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    Float16x3x4_transform_Float16x4.parameters = Float16x3x4_transform_Float16x4_args;
+    Symbol::Resolved(&Float16x3x4_transform_Float16x4_vec)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&Float16x3x4_transform_Float16x4)->returnTypeSymbol = &Float16x4Type;
+
     /// operator+ with Float16x3x4
     Float16x3x4_operator_add_Float16x3x4_arg0.name = "_arg0"_c;
     Float16x3x4_operator_add_Float16x3x4_arg0.type = Type::FullType{ Float16x3x4Type.name };
@@ -23022,207 +28741,19 @@ Float16x3x4::Float16x3x4()
     Symbol::Resolved(&Float16x3x4_operator_scale_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x3x4_operator_scale_Float16)->returnTypeSymbol = &Float16x3x4Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 200> { 
-        std::pair{ "operator!=", &Int16x4_operator_neq_Int16x4 },
-        std::pair{ "operator%", &Int16x4_operator_mod_Int16x4 },
-        std::pair{ "operator&", &Int16x4_operator_and_Int16x4 },
-        std::pair{ "operator&=", &Int16x4_operator_andasg_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_mul_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int16 },
-        std::pair{ "operator*", &Float32x2x2_operator_mul_Float32x2x2 },
-        std::pair{ "operator*", &Float32x2x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x3_operator_mul_Float32x2x3 },
-        std::pair{ "operator*", &Float32x2x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x4_operator_mul_Float32x2x4 },
-        std::pair{ "operator*", &Float32x2x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x2_operator_mul_Float32x3x2 },
-        std::pair{ "operator*", &Float32x3x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x3_operator_mul_Float32x3x3 },
-        std::pair{ "operator*", &Float32x3x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x4_operator_mul_Float32x3x4 },
-        std::pair{ "operator*", &Float32x3x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x2_operator_mul_Float32x4x2 },
-        std::pair{ "operator*", &Float32x4x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x3_operator_mul_Float32x4x3 },
-        std::pair{ "operator*", &Float32x4x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x4_operator_mul_Float32x4x4 },
-        std::pair{ "operator*", &Float32x4x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float16x2x2_operator_mul_Float16x2x2 },
-        std::pair{ "operator*", &Float16x2x2_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x2x3_operator_mul_Float16x2x3 },
-        std::pair{ "operator*", &Float16x2x3_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x2x4_operator_mul_Float16x2x4 },
-        std::pair{ "operator*", &Float16x2x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x3x2_operator_mul_Float16x3x2 },
-        std::pair{ "operator*", &Float16x3x2_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x3x3_operator_mul_Float16x3x3 },
-        std::pair{ "operator*", &Float16x3x3_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x3x4_operator_mul_Float16x3x4 },
-        std::pair{ "operator*", &Float16x3x4_operator_scale_Float16 },
-        std::pair{ "operator*=", &Int16x4_operator_mulasg_Int16x4 },
-        std::pair{ "operator*=", &Float32x2x2_operator_mulasg_Float32x2x2 },
-        std::pair{ "operator*=", &Float32x2x3_operator_mulasg_Float32x2x3 },
-        std::pair{ "operator*=", &Float32x2x4_operator_mulasg_Float32x2x4 },
-        std::pair{ "operator*=", &Float32x3x2_operator_mulasg_Float32x3x2 },
-        std::pair{ "operator*=", &Float32x3x3_operator_mulasg_Float32x3x3 },
-        std::pair{ "operator*=", &Float32x3x4_operator_mulasg_Float32x3x4 },
-        std::pair{ "operator*=", &Float32x4x2_operator_mulasg_Float32x4x2 },
-        std::pair{ "operator*=", &Float32x4x3_operator_mulasg_Float32x4x3 },
-        std::pair{ "operator*=", &Float32x4x4_operator_mulasg_Float32x4x4 },
-        std::pair{ "operator*=", &Float16x2x2_operator_mulasg_Float16x2x2 },
-        std::pair{ "operator*=", &Float16x2x3_operator_mulasg_Float16x2x3 },
-        std::pair{ "operator*=", &Float16x2x4_operator_mulasg_Float16x2x4 },
-        std::pair{ "operator*=", &Float16x3x2_operator_mulasg_Float16x3x2 },
-        std::pair{ "operator*=", &Float16x3x3_operator_mulasg_Float16x3x3 },
-        std::pair{ "operator*=", &Float16x3x4_operator_mulasg_Float16x3x4 },
-        std::pair{ "operator+", &Int16x4_operator_add_Int16x4 },
-        std::pair{ "operator+", &Float32x2x2_operator_add_Float32x2x2 },
-        std::pair{ "operator+", &Float32x2x3_operator_add_Float32x2x3 },
-        std::pair{ "operator+", &Float32x2x4_operator_add_Float32x2x4 },
-        std::pair{ "operator+", &Float32x3x2_operator_add_Float32x3x2 },
-        std::pair{ "operator+", &Float32x3x3_operator_add_Float32x3x3 },
-        std::pair{ "operator+", &Float32x3x4_operator_add_Float32x3x4 },
-        std::pair{ "operator+", &Float32x4x2_operator_add_Float32x4x2 },
-        std::pair{ "operator+", &Float32x4x3_operator_add_Float32x4x3 },
-        std::pair{ "operator+", &Float32x4x4_operator_add_Float32x4x4 },
-        std::pair{ "operator+", &Float16x2x2_operator_add_Float16x2x2 },
-        std::pair{ "operator+", &Float16x2x3_operator_add_Float16x2x3 },
-        std::pair{ "operator+", &Float16x2x4_operator_add_Float16x2x4 },
-        std::pair{ "operator+", &Float16x3x2_operator_add_Float16x3x2 },
-        std::pair{ "operator+", &Float16x3x3_operator_add_Float16x3x3 },
-        std::pair{ "operator+", &Float16x3x4_operator_add_Float16x3x4 },
-        std::pair{ "operator+=", &Int16x4_operator_addasg_Int16x4 },
-        std::pair{ "operator+=", &Float32x2x2_operator_addasg_Float32x2x2 },
-        std::pair{ "operator+=", &Float32x2x3_operator_addasg_Float32x2x3 },
-        std::pair{ "operator+=", &Float32x2x4_operator_addasg_Float32x2x4 },
-        std::pair{ "operator+=", &Float32x3x2_operator_addasg_Float32x3x2 },
-        std::pair{ "operator+=", &Float32x3x3_operator_addasg_Float32x3x3 },
-        std::pair{ "operator+=", &Float32x3x4_operator_addasg_Float32x3x4 },
-        std::pair{ "operator+=", &Float32x4x2_operator_addasg_Float32x4x2 },
-        std::pair{ "operator+=", &Float32x4x3_operator_addasg_Float32x4x3 },
-        std::pair{ "operator+=", &Float32x4x4_operator_addasg_Float32x4x4 },
-        std::pair{ "operator+=", &Float16x2x2_operator_addasg_Float16x2x2 },
-        std::pair{ "operator+=", &Float16x2x3_operator_addasg_Float16x2x3 },
-        std::pair{ "operator+=", &Float16x2x4_operator_addasg_Float16x2x4 },
-        std::pair{ "operator+=", &Float16x3x2_operator_addasg_Float16x3x2 },
-        std::pair{ "operator+=", &Float16x3x3_operator_addasg_Float16x3x3 },
-        std::pair{ "operator+=", &Float16x3x4_operator_addasg_Float16x3x4 },
-        std::pair{ "operator-", &Int16x4_operator_sub_Int16x4 },
-        std::pair{ "operator-", &Float32x2x2_operator_sub_Float32x2x2 },
-        std::pair{ "operator-", &Float32x2x3_operator_sub_Float32x2x3 },
-        std::pair{ "operator-", &Float32x2x4_operator_sub_Float32x2x4 },
-        std::pair{ "operator-", &Float32x3x2_operator_sub_Float32x3x2 },
-        std::pair{ "operator-", &Float32x3x3_operator_sub_Float32x3x3 },
-        std::pair{ "operator-", &Float32x3x4_operator_sub_Float32x3x4 },
-        std::pair{ "operator-", &Float32x4x2_operator_sub_Float32x4x2 },
-        std::pair{ "operator-", &Float32x4x3_operator_sub_Float32x4x3 },
-        std::pair{ "operator-", &Float32x4x4_operator_sub_Float32x4x4 },
-        std::pair{ "operator-", &Float16x2x2_operator_sub_Float16x2x2 },
-        std::pair{ "operator-", &Float16x2x3_operator_sub_Float16x2x3 },
-        std::pair{ "operator-", &Float16x2x4_operator_sub_Float16x2x4 },
-        std::pair{ "operator-", &Float16x3x2_operator_sub_Float16x3x2 },
-        std::pair{ "operator-", &Float16x3x3_operator_sub_Float16x3x3 },
-        std::pair{ "operator-", &Float16x3x4_operator_sub_Float16x3x4 },
-        std::pair{ "operator-=", &Int16x4_operator_subasg_Int16x4 },
-        std::pair{ "operator-=", &Float32x2x2_operator_subasg_Float32x2x2 },
-        std::pair{ "operator-=", &Float32x2x3_operator_subasg_Float32x2x3 },
-        std::pair{ "operator-=", &Float32x2x4_operator_subasg_Float32x2x4 },
-        std::pair{ "operator-=", &Float32x3x2_operator_subasg_Float32x3x2 },
-        std::pair{ "operator-=", &Float32x3x3_operator_subasg_Float32x3x3 },
-        std::pair{ "operator-=", &Float32x3x4_operator_subasg_Float32x3x4 },
-        std::pair{ "operator-=", &Float32x4x2_operator_subasg_Float32x4x2 },
-        std::pair{ "operator-=", &Float32x4x3_operator_subasg_Float32x4x3 },
-        std::pair{ "operator-=", &Float32x4x4_operator_subasg_Float32x4x4 },
-        std::pair{ "operator-=", &Float16x2x2_operator_subasg_Float16x2x2 },
-        std::pair{ "operator-=", &Float16x2x3_operator_subasg_Float16x2x3 },
-        std::pair{ "operator-=", &Float16x2x4_operator_subasg_Float16x2x4 },
-        std::pair{ "operator-=", &Float16x3x2_operator_subasg_Float16x3x2 },
-        std::pair{ "operator-=", &Float16x3x3_operator_subasg_Float16x3x3 },
-        std::pair{ "operator-=", &Float16x3x4_operator_subasg_Float16x3x4 },
-        std::pair{ "operator/", &Int16x4_operator_div_Int16x4 },
-        std::pair{ "operator/=", &Int16x4_operator_divasg_Int16x4 },
-        std::pair{ "operator<", &Int16x4_operator_lt_Int16x4 },
-        std::pair{ "operator<<", &Int16x4_operator_lsh_Int16x4 },
-        std::pair{ "operator<<=", &Int16x4_operator_lshasg_Int16x4 },
-        std::pair{ "operator<=", &Int16x4_operator_lte_Int16x4 },
-        std::pair{ "operator==", &Int16x4_operator_eq_Int16x4 },
-        std::pair{ "operator>", &Int16x4_operator_gt_Int16x4 },
-        std::pair{ "operator>=", &Int16x4_operator_gte_Int16x4 },
-        std::pair{ "operator>>", &Int16x4_operator_rsh_Int16x4 },
-        std::pair{ "operator>>=", &Int16x4_operator_rhsasg_Int16x4 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x3x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x3x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x3x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x3x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x3x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x3x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x3x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x3x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x3x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x3x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x3x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x3x4_operator_index_UInt16 },
-        std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
-        std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
-        std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 12> { 
+        std::pair{ "operator*(f16)"_c, &Float16x3x4_operator_scale_Float16 },
+        std::pair{ "operator*(f16x3)"_c, &Float16x3x4_transform_Float16x4 },
+        std::pair{ "operator*(f16x3x4)"_c, &Float16x3x4_operator_mul_Float16x3x4 },
+        std::pair{ "operator*=(f16x3x4)"_c, &Float16x3x4_operator_mulasg_Float16x3x4 },
+        std::pair{ "operator+(f16x3x4)"_c, &Float16x3x4_operator_add_Float16x3x4 },
+        std::pair{ "operator+=(f16x3x4)"_c, &Float16x3x4_operator_addasg_Float16x3x4 },
+        std::pair{ "operator-(f16x3x4)"_c, &Float16x3x4_operator_sub_Float16x3x4 },
+        std::pair{ "operator-=(f16x3x4)"_c, &Float16x3x4_operator_subasg_Float16x3x4 },
+        std::pair{ "operator[]"_c, &Float16x3x4_operator_index_Int32 },
+        std::pair{ "operator[]"_c, &Float16x3x4_operator_index_UInt32 },
+        std::pair{ "operator[]"_c, &Float16x3x4_operator_index_Int16 },
+        std::pair{ "operator[]"_c, &Float16x3x4_operator_index_UInt16 }
     };
 }
 Float16x3x4 Float16x3x4Type;
@@ -23270,6 +28801,11 @@ Variable Float16x4x2_operator_index_UInt16_arg0;
 Function Float16x4x2_operator_index_UInt16;
 inline constexpr std::array Float16x4x2_operator_index_UInt16_args = { &Float16x4x2_operator_index_UInt16_arg0 };
 
+/// operator* with Float16x4
+Variable Float16x4x2_transform_Float16x2_vec;
+Function Float16x4x2_transform_Float16x2;
+inline constexpr std::array Float16x4x2_transform_Float16x2_args = { &Float16x4x2_transform_Float16x2_vec };
+
 /// operator+ with Float16x4x2
 Variable Float16x4x2_operator_add_Float16x4x2_arg0;
 Function Float16x4x2_operator_add_Float16x4x2;
@@ -23307,10 +28843,10 @@ inline constexpr std::array Float16x4x2_operator_scale_Float16_args = { &Float16
 
 Float16x4x2::Float16x4x2()
 {
-    this->name = "f16"_c;
+    this->name = "f16x4x2"_c;
     this->columnSize = 2;
     this->rowSize = 4;
-    this->byteSize = 16;
+    this->byteSize = 4;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float16;
     this->builtin = true;
@@ -23404,6 +28940,15 @@ Float16x4x2::Float16x4x2()
     Symbol::Resolved(&Float16x4x2_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float16x4x2_operator_index_UInt16)->returnTypeSymbol = &Float16x2Type;
 
+    /// operator* with Float16x4
+    Float16x4x2_transform_Float16x2_vec.name = "vec"_c;
+    Float16x4x2_transform_Float16x2_vec.type = Type::FullType{ Float16x4Type.name };
+    Float16x4x2_transform_Float16x2.name = "operator*"_c;
+    Float16x4x2_transform_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    Float16x4x2_transform_Float16x2.parameters = Float16x4x2_transform_Float16x2_args;
+    Symbol::Resolved(&Float16x4x2_transform_Float16x2_vec)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&Float16x4x2_transform_Float16x2)->returnTypeSymbol = &Float16x2Type;
+
     /// operator+ with Float16x4x2
     Float16x4x2_operator_add_Float16x4x2_arg0.name = "_arg0"_c;
     Float16x4x2_operator_add_Float16x4x2_arg0.type = Type::FullType{ Float16x4x2Type.name };
@@ -23467,218 +29012,19 @@ Float16x4x2::Float16x4x2()
     Symbol::Resolved(&Float16x4x2_operator_scale_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x4x2_operator_scale_Float16)->returnTypeSymbol = &Float16x4x2Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 211> { 
-        std::pair{ "operator!=", &Int16x4_operator_neq_Int16x4 },
-        std::pair{ "operator%", &Int16x4_operator_mod_Int16x4 },
-        std::pair{ "operator&", &Int16x4_operator_and_Int16x4 },
-        std::pair{ "operator&=", &Int16x4_operator_andasg_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_mul_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int16 },
-        std::pair{ "operator*", &Float32x2x2_operator_mul_Float32x2x2 },
-        std::pair{ "operator*", &Float32x2x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x3_operator_mul_Float32x2x3 },
-        std::pair{ "operator*", &Float32x2x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x4_operator_mul_Float32x2x4 },
-        std::pair{ "operator*", &Float32x2x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x2_operator_mul_Float32x3x2 },
-        std::pair{ "operator*", &Float32x3x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x3_operator_mul_Float32x3x3 },
-        std::pair{ "operator*", &Float32x3x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x4_operator_mul_Float32x3x4 },
-        std::pair{ "operator*", &Float32x3x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x2_operator_mul_Float32x4x2 },
-        std::pair{ "operator*", &Float32x4x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x3_operator_mul_Float32x4x3 },
-        std::pair{ "operator*", &Float32x4x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x4_operator_mul_Float32x4x4 },
-        std::pair{ "operator*", &Float32x4x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float16x2x2_operator_mul_Float16x2x2 },
-        std::pair{ "operator*", &Float16x2x2_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x2x3_operator_mul_Float16x2x3 },
-        std::pair{ "operator*", &Float16x2x3_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x2x4_operator_mul_Float16x2x4 },
-        std::pair{ "operator*", &Float16x2x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x3x2_operator_mul_Float16x3x2 },
-        std::pair{ "operator*", &Float16x3x2_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x3x3_operator_mul_Float16x3x3 },
-        std::pair{ "operator*", &Float16x3x3_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x3x4_operator_mul_Float16x3x4 },
-        std::pair{ "operator*", &Float16x3x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x4x2_operator_mul_Float16x4x2 },
-        std::pair{ "operator*", &Float16x4x2_operator_scale_Float16 },
-        std::pair{ "operator*=", &Int16x4_operator_mulasg_Int16x4 },
-        std::pair{ "operator*=", &Float32x2x2_operator_mulasg_Float32x2x2 },
-        std::pair{ "operator*=", &Float32x2x3_operator_mulasg_Float32x2x3 },
-        std::pair{ "operator*=", &Float32x2x4_operator_mulasg_Float32x2x4 },
-        std::pair{ "operator*=", &Float32x3x2_operator_mulasg_Float32x3x2 },
-        std::pair{ "operator*=", &Float32x3x3_operator_mulasg_Float32x3x3 },
-        std::pair{ "operator*=", &Float32x3x4_operator_mulasg_Float32x3x4 },
-        std::pair{ "operator*=", &Float32x4x2_operator_mulasg_Float32x4x2 },
-        std::pair{ "operator*=", &Float32x4x3_operator_mulasg_Float32x4x3 },
-        std::pair{ "operator*=", &Float32x4x4_operator_mulasg_Float32x4x4 },
-        std::pair{ "operator*=", &Float16x2x2_operator_mulasg_Float16x2x2 },
-        std::pair{ "operator*=", &Float16x2x3_operator_mulasg_Float16x2x3 },
-        std::pair{ "operator*=", &Float16x2x4_operator_mulasg_Float16x2x4 },
-        std::pair{ "operator*=", &Float16x3x2_operator_mulasg_Float16x3x2 },
-        std::pair{ "operator*=", &Float16x3x3_operator_mulasg_Float16x3x3 },
-        std::pair{ "operator*=", &Float16x3x4_operator_mulasg_Float16x3x4 },
-        std::pair{ "operator*=", &Float16x4x2_operator_mulasg_Float16x4x2 },
-        std::pair{ "operator+", &Int16x4_operator_add_Int16x4 },
-        std::pair{ "operator+", &Float32x2x2_operator_add_Float32x2x2 },
-        std::pair{ "operator+", &Float32x2x3_operator_add_Float32x2x3 },
-        std::pair{ "operator+", &Float32x2x4_operator_add_Float32x2x4 },
-        std::pair{ "operator+", &Float32x3x2_operator_add_Float32x3x2 },
-        std::pair{ "operator+", &Float32x3x3_operator_add_Float32x3x3 },
-        std::pair{ "operator+", &Float32x3x4_operator_add_Float32x3x4 },
-        std::pair{ "operator+", &Float32x4x2_operator_add_Float32x4x2 },
-        std::pair{ "operator+", &Float32x4x3_operator_add_Float32x4x3 },
-        std::pair{ "operator+", &Float32x4x4_operator_add_Float32x4x4 },
-        std::pair{ "operator+", &Float16x2x2_operator_add_Float16x2x2 },
-        std::pair{ "operator+", &Float16x2x3_operator_add_Float16x2x3 },
-        std::pair{ "operator+", &Float16x2x4_operator_add_Float16x2x4 },
-        std::pair{ "operator+", &Float16x3x2_operator_add_Float16x3x2 },
-        std::pair{ "operator+", &Float16x3x3_operator_add_Float16x3x3 },
-        std::pair{ "operator+", &Float16x3x4_operator_add_Float16x3x4 },
-        std::pair{ "operator+", &Float16x4x2_operator_add_Float16x4x2 },
-        std::pair{ "operator+=", &Int16x4_operator_addasg_Int16x4 },
-        std::pair{ "operator+=", &Float32x2x2_operator_addasg_Float32x2x2 },
-        std::pair{ "operator+=", &Float32x2x3_operator_addasg_Float32x2x3 },
-        std::pair{ "operator+=", &Float32x2x4_operator_addasg_Float32x2x4 },
-        std::pair{ "operator+=", &Float32x3x2_operator_addasg_Float32x3x2 },
-        std::pair{ "operator+=", &Float32x3x3_operator_addasg_Float32x3x3 },
-        std::pair{ "operator+=", &Float32x3x4_operator_addasg_Float32x3x4 },
-        std::pair{ "operator+=", &Float32x4x2_operator_addasg_Float32x4x2 },
-        std::pair{ "operator+=", &Float32x4x3_operator_addasg_Float32x4x3 },
-        std::pair{ "operator+=", &Float32x4x4_operator_addasg_Float32x4x4 },
-        std::pair{ "operator+=", &Float16x2x2_operator_addasg_Float16x2x2 },
-        std::pair{ "operator+=", &Float16x2x3_operator_addasg_Float16x2x3 },
-        std::pair{ "operator+=", &Float16x2x4_operator_addasg_Float16x2x4 },
-        std::pair{ "operator+=", &Float16x3x2_operator_addasg_Float16x3x2 },
-        std::pair{ "operator+=", &Float16x3x3_operator_addasg_Float16x3x3 },
-        std::pair{ "operator+=", &Float16x3x4_operator_addasg_Float16x3x4 },
-        std::pair{ "operator+=", &Float16x4x2_operator_addasg_Float16x4x2 },
-        std::pair{ "operator-", &Int16x4_operator_sub_Int16x4 },
-        std::pair{ "operator-", &Float32x2x2_operator_sub_Float32x2x2 },
-        std::pair{ "operator-", &Float32x2x3_operator_sub_Float32x2x3 },
-        std::pair{ "operator-", &Float32x2x4_operator_sub_Float32x2x4 },
-        std::pair{ "operator-", &Float32x3x2_operator_sub_Float32x3x2 },
-        std::pair{ "operator-", &Float32x3x3_operator_sub_Float32x3x3 },
-        std::pair{ "operator-", &Float32x3x4_operator_sub_Float32x3x4 },
-        std::pair{ "operator-", &Float32x4x2_operator_sub_Float32x4x2 },
-        std::pair{ "operator-", &Float32x4x3_operator_sub_Float32x4x3 },
-        std::pair{ "operator-", &Float32x4x4_operator_sub_Float32x4x4 },
-        std::pair{ "operator-", &Float16x2x2_operator_sub_Float16x2x2 },
-        std::pair{ "operator-", &Float16x2x3_operator_sub_Float16x2x3 },
-        std::pair{ "operator-", &Float16x2x4_operator_sub_Float16x2x4 },
-        std::pair{ "operator-", &Float16x3x2_operator_sub_Float16x3x2 },
-        std::pair{ "operator-", &Float16x3x3_operator_sub_Float16x3x3 },
-        std::pair{ "operator-", &Float16x3x4_operator_sub_Float16x3x4 },
-        std::pair{ "operator-", &Float16x4x2_operator_sub_Float16x4x2 },
-        std::pair{ "operator-=", &Int16x4_operator_subasg_Int16x4 },
-        std::pair{ "operator-=", &Float32x2x2_operator_subasg_Float32x2x2 },
-        std::pair{ "operator-=", &Float32x2x3_operator_subasg_Float32x2x3 },
-        std::pair{ "operator-=", &Float32x2x4_operator_subasg_Float32x2x4 },
-        std::pair{ "operator-=", &Float32x3x2_operator_subasg_Float32x3x2 },
-        std::pair{ "operator-=", &Float32x3x3_operator_subasg_Float32x3x3 },
-        std::pair{ "operator-=", &Float32x3x4_operator_subasg_Float32x3x4 },
-        std::pair{ "operator-=", &Float32x4x2_operator_subasg_Float32x4x2 },
-        std::pair{ "operator-=", &Float32x4x3_operator_subasg_Float32x4x3 },
-        std::pair{ "operator-=", &Float32x4x4_operator_subasg_Float32x4x4 },
-        std::pair{ "operator-=", &Float16x2x2_operator_subasg_Float16x2x2 },
-        std::pair{ "operator-=", &Float16x2x3_operator_subasg_Float16x2x3 },
-        std::pair{ "operator-=", &Float16x2x4_operator_subasg_Float16x2x4 },
-        std::pair{ "operator-=", &Float16x3x2_operator_subasg_Float16x3x2 },
-        std::pair{ "operator-=", &Float16x3x3_operator_subasg_Float16x3x3 },
-        std::pair{ "operator-=", &Float16x3x4_operator_subasg_Float16x3x4 },
-        std::pair{ "operator-=", &Float16x4x2_operator_subasg_Float16x4x2 },
-        std::pair{ "operator/", &Int16x4_operator_div_Int16x4 },
-        std::pair{ "operator/=", &Int16x4_operator_divasg_Int16x4 },
-        std::pair{ "operator<", &Int16x4_operator_lt_Int16x4 },
-        std::pair{ "operator<<", &Int16x4_operator_lsh_Int16x4 },
-        std::pair{ "operator<<=", &Int16x4_operator_lshasg_Int16x4 },
-        std::pair{ "operator<=", &Int16x4_operator_lte_Int16x4 },
-        std::pair{ "operator==", &Int16x4_operator_eq_Int16x4 },
-        std::pair{ "operator>", &Int16x4_operator_gt_Int16x4 },
-        std::pair{ "operator>=", &Int16x4_operator_gte_Int16x4 },
-        std::pair{ "operator>>", &Int16x4_operator_rsh_Int16x4 },
-        std::pair{ "operator>>=", &Int16x4_operator_rhsasg_Int16x4 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x3x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x3x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x3x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x3x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x3x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x3x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x3x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x3x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x3x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x3x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x3x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x3x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x4x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x4x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x4x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x4x2_operator_index_UInt16 },
-        std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
-        std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
-        std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 12> { 
+        std::pair{ "operator*(f16)"_c, &Float16x4x2_operator_scale_Float16 },
+        std::pair{ "operator*(f16x4)"_c, &Float16x4x2_transform_Float16x2 },
+        std::pair{ "operator*(f16x4x2)"_c, &Float16x4x2_operator_mul_Float16x4x2 },
+        std::pair{ "operator*=(f16x4x2)"_c, &Float16x4x2_operator_mulasg_Float16x4x2 },
+        std::pair{ "operator+(f16x4x2)"_c, &Float16x4x2_operator_add_Float16x4x2 },
+        std::pair{ "operator+=(f16x4x2)"_c, &Float16x4x2_operator_addasg_Float16x4x2 },
+        std::pair{ "operator-(f16x4x2)"_c, &Float16x4x2_operator_sub_Float16x4x2 },
+        std::pair{ "operator-=(f16x4x2)"_c, &Float16x4x2_operator_subasg_Float16x4x2 },
+        std::pair{ "operator[]"_c, &Float16x4x2_operator_index_Int32 },
+        std::pair{ "operator[]"_c, &Float16x4x2_operator_index_UInt32 },
+        std::pair{ "operator[]"_c, &Float16x4x2_operator_index_Int16 },
+        std::pair{ "operator[]"_c, &Float16x4x2_operator_index_UInt16 }
     };
 }
 Float16x4x2 Float16x4x2Type;
@@ -23730,6 +29076,11 @@ Variable Float16x4x3_operator_index_UInt16_arg0;
 Function Float16x4x3_operator_index_UInt16;
 inline constexpr std::array Float16x4x3_operator_index_UInt16_args = { &Float16x4x3_operator_index_UInt16_arg0 };
 
+/// operator* with Float16x4
+Variable Float16x4x3_transform_Float16x3_vec;
+Function Float16x4x3_transform_Float16x3;
+inline constexpr std::array Float16x4x3_transform_Float16x3_args = { &Float16x4x3_transform_Float16x3_vec };
+
 /// operator+ with Float16x4x3
 Variable Float16x4x3_operator_add_Float16x4x3_arg0;
 Function Float16x4x3_operator_add_Float16x4x3;
@@ -23767,10 +29118,10 @@ inline constexpr std::array Float16x4x3_operator_scale_Float16_args = { &Float16
 
 Float16x4x3::Float16x4x3()
 {
-    this->name = "f16"_c;
+    this->name = "f16x4x3"_c;
     this->columnSize = 3;
     this->rowSize = 4;
-    this->byteSize = 24;
+    this->byteSize = 6;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float16;
     this->builtin = true;
@@ -23876,6 +29227,15 @@ Float16x4x3::Float16x4x3()
     Symbol::Resolved(&Float16x4x3_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float16x4x3_operator_index_UInt16)->returnTypeSymbol = &Float16x3Type;
 
+    /// operator* with Float16x4
+    Float16x4x3_transform_Float16x3_vec.name = "vec"_c;
+    Float16x4x3_transform_Float16x3_vec.type = Type::FullType{ Float16x4Type.name };
+    Float16x4x3_transform_Float16x3.name = "operator*"_c;
+    Float16x4x3_transform_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    Float16x4x3_transform_Float16x3.parameters = Float16x4x3_transform_Float16x3_args;
+    Symbol::Resolved(&Float16x4x3_transform_Float16x3_vec)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&Float16x4x3_transform_Float16x3)->returnTypeSymbol = &Float16x3Type;
+
     /// operator+ with Float16x4x3
     Float16x4x3_operator_add_Float16x4x3_arg0.name = "_arg0"_c;
     Float16x4x3_operator_add_Float16x4x3_arg0.type = Type::FullType{ Float16x4x3Type.name };
@@ -23939,229 +29299,19 @@ Float16x4x3::Float16x4x3()
     Symbol::Resolved(&Float16x4x3_operator_scale_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x4x3_operator_scale_Float16)->returnTypeSymbol = &Float16x4x3Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 222> { 
-        std::pair{ "operator!=", &Int16x4_operator_neq_Int16x4 },
-        std::pair{ "operator%", &Int16x4_operator_mod_Int16x4 },
-        std::pair{ "operator&", &Int16x4_operator_and_Int16x4 },
-        std::pair{ "operator&=", &Int16x4_operator_andasg_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_mul_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int16 },
-        std::pair{ "operator*", &Float32x2x2_operator_mul_Float32x2x2 },
-        std::pair{ "operator*", &Float32x2x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x3_operator_mul_Float32x2x3 },
-        std::pair{ "operator*", &Float32x2x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x4_operator_mul_Float32x2x4 },
-        std::pair{ "operator*", &Float32x2x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x2_operator_mul_Float32x3x2 },
-        std::pair{ "operator*", &Float32x3x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x3_operator_mul_Float32x3x3 },
-        std::pair{ "operator*", &Float32x3x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x4_operator_mul_Float32x3x4 },
-        std::pair{ "operator*", &Float32x3x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x2_operator_mul_Float32x4x2 },
-        std::pair{ "operator*", &Float32x4x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x3_operator_mul_Float32x4x3 },
-        std::pair{ "operator*", &Float32x4x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x4_operator_mul_Float32x4x4 },
-        std::pair{ "operator*", &Float32x4x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float16x2x2_operator_mul_Float16x2x2 },
-        std::pair{ "operator*", &Float16x2x2_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x2x3_operator_mul_Float16x2x3 },
-        std::pair{ "operator*", &Float16x2x3_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x2x4_operator_mul_Float16x2x4 },
-        std::pair{ "operator*", &Float16x2x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x3x2_operator_mul_Float16x3x2 },
-        std::pair{ "operator*", &Float16x3x2_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x3x3_operator_mul_Float16x3x3 },
-        std::pair{ "operator*", &Float16x3x3_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x3x4_operator_mul_Float16x3x4 },
-        std::pair{ "operator*", &Float16x3x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x4x2_operator_mul_Float16x4x2 },
-        std::pair{ "operator*", &Float16x4x2_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x4x3_operator_mul_Float16x4x3 },
-        std::pair{ "operator*", &Float16x4x3_operator_scale_Float16 },
-        std::pair{ "operator*=", &Int16x4_operator_mulasg_Int16x4 },
-        std::pair{ "operator*=", &Float32x2x2_operator_mulasg_Float32x2x2 },
-        std::pair{ "operator*=", &Float32x2x3_operator_mulasg_Float32x2x3 },
-        std::pair{ "operator*=", &Float32x2x4_operator_mulasg_Float32x2x4 },
-        std::pair{ "operator*=", &Float32x3x2_operator_mulasg_Float32x3x2 },
-        std::pair{ "operator*=", &Float32x3x3_operator_mulasg_Float32x3x3 },
-        std::pair{ "operator*=", &Float32x3x4_operator_mulasg_Float32x3x4 },
-        std::pair{ "operator*=", &Float32x4x2_operator_mulasg_Float32x4x2 },
-        std::pair{ "operator*=", &Float32x4x3_operator_mulasg_Float32x4x3 },
-        std::pair{ "operator*=", &Float32x4x4_operator_mulasg_Float32x4x4 },
-        std::pair{ "operator*=", &Float16x2x2_operator_mulasg_Float16x2x2 },
-        std::pair{ "operator*=", &Float16x2x3_operator_mulasg_Float16x2x3 },
-        std::pair{ "operator*=", &Float16x2x4_operator_mulasg_Float16x2x4 },
-        std::pair{ "operator*=", &Float16x3x2_operator_mulasg_Float16x3x2 },
-        std::pair{ "operator*=", &Float16x3x3_operator_mulasg_Float16x3x3 },
-        std::pair{ "operator*=", &Float16x3x4_operator_mulasg_Float16x3x4 },
-        std::pair{ "operator*=", &Float16x4x2_operator_mulasg_Float16x4x2 },
-        std::pair{ "operator*=", &Float16x4x3_operator_mulasg_Float16x4x3 },
-        std::pair{ "operator+", &Int16x4_operator_add_Int16x4 },
-        std::pair{ "operator+", &Float32x2x2_operator_add_Float32x2x2 },
-        std::pair{ "operator+", &Float32x2x3_operator_add_Float32x2x3 },
-        std::pair{ "operator+", &Float32x2x4_operator_add_Float32x2x4 },
-        std::pair{ "operator+", &Float32x3x2_operator_add_Float32x3x2 },
-        std::pair{ "operator+", &Float32x3x3_operator_add_Float32x3x3 },
-        std::pair{ "operator+", &Float32x3x4_operator_add_Float32x3x4 },
-        std::pair{ "operator+", &Float32x4x2_operator_add_Float32x4x2 },
-        std::pair{ "operator+", &Float32x4x3_operator_add_Float32x4x3 },
-        std::pair{ "operator+", &Float32x4x4_operator_add_Float32x4x4 },
-        std::pair{ "operator+", &Float16x2x2_operator_add_Float16x2x2 },
-        std::pair{ "operator+", &Float16x2x3_operator_add_Float16x2x3 },
-        std::pair{ "operator+", &Float16x2x4_operator_add_Float16x2x4 },
-        std::pair{ "operator+", &Float16x3x2_operator_add_Float16x3x2 },
-        std::pair{ "operator+", &Float16x3x3_operator_add_Float16x3x3 },
-        std::pair{ "operator+", &Float16x3x4_operator_add_Float16x3x4 },
-        std::pair{ "operator+", &Float16x4x2_operator_add_Float16x4x2 },
-        std::pair{ "operator+", &Float16x4x3_operator_add_Float16x4x3 },
-        std::pair{ "operator+=", &Int16x4_operator_addasg_Int16x4 },
-        std::pair{ "operator+=", &Float32x2x2_operator_addasg_Float32x2x2 },
-        std::pair{ "operator+=", &Float32x2x3_operator_addasg_Float32x2x3 },
-        std::pair{ "operator+=", &Float32x2x4_operator_addasg_Float32x2x4 },
-        std::pair{ "operator+=", &Float32x3x2_operator_addasg_Float32x3x2 },
-        std::pair{ "operator+=", &Float32x3x3_operator_addasg_Float32x3x3 },
-        std::pair{ "operator+=", &Float32x3x4_operator_addasg_Float32x3x4 },
-        std::pair{ "operator+=", &Float32x4x2_operator_addasg_Float32x4x2 },
-        std::pair{ "operator+=", &Float32x4x3_operator_addasg_Float32x4x3 },
-        std::pair{ "operator+=", &Float32x4x4_operator_addasg_Float32x4x4 },
-        std::pair{ "operator+=", &Float16x2x2_operator_addasg_Float16x2x2 },
-        std::pair{ "operator+=", &Float16x2x3_operator_addasg_Float16x2x3 },
-        std::pair{ "operator+=", &Float16x2x4_operator_addasg_Float16x2x4 },
-        std::pair{ "operator+=", &Float16x3x2_operator_addasg_Float16x3x2 },
-        std::pair{ "operator+=", &Float16x3x3_operator_addasg_Float16x3x3 },
-        std::pair{ "operator+=", &Float16x3x4_operator_addasg_Float16x3x4 },
-        std::pair{ "operator+=", &Float16x4x2_operator_addasg_Float16x4x2 },
-        std::pair{ "operator+=", &Float16x4x3_operator_addasg_Float16x4x3 },
-        std::pair{ "operator-", &Int16x4_operator_sub_Int16x4 },
-        std::pair{ "operator-", &Float32x2x2_operator_sub_Float32x2x2 },
-        std::pair{ "operator-", &Float32x2x3_operator_sub_Float32x2x3 },
-        std::pair{ "operator-", &Float32x2x4_operator_sub_Float32x2x4 },
-        std::pair{ "operator-", &Float32x3x2_operator_sub_Float32x3x2 },
-        std::pair{ "operator-", &Float32x3x3_operator_sub_Float32x3x3 },
-        std::pair{ "operator-", &Float32x3x4_operator_sub_Float32x3x4 },
-        std::pair{ "operator-", &Float32x4x2_operator_sub_Float32x4x2 },
-        std::pair{ "operator-", &Float32x4x3_operator_sub_Float32x4x3 },
-        std::pair{ "operator-", &Float32x4x4_operator_sub_Float32x4x4 },
-        std::pair{ "operator-", &Float16x2x2_operator_sub_Float16x2x2 },
-        std::pair{ "operator-", &Float16x2x3_operator_sub_Float16x2x3 },
-        std::pair{ "operator-", &Float16x2x4_operator_sub_Float16x2x4 },
-        std::pair{ "operator-", &Float16x3x2_operator_sub_Float16x3x2 },
-        std::pair{ "operator-", &Float16x3x3_operator_sub_Float16x3x3 },
-        std::pair{ "operator-", &Float16x3x4_operator_sub_Float16x3x4 },
-        std::pair{ "operator-", &Float16x4x2_operator_sub_Float16x4x2 },
-        std::pair{ "operator-", &Float16x4x3_operator_sub_Float16x4x3 },
-        std::pair{ "operator-=", &Int16x4_operator_subasg_Int16x4 },
-        std::pair{ "operator-=", &Float32x2x2_operator_subasg_Float32x2x2 },
-        std::pair{ "operator-=", &Float32x2x3_operator_subasg_Float32x2x3 },
-        std::pair{ "operator-=", &Float32x2x4_operator_subasg_Float32x2x4 },
-        std::pair{ "operator-=", &Float32x3x2_operator_subasg_Float32x3x2 },
-        std::pair{ "operator-=", &Float32x3x3_operator_subasg_Float32x3x3 },
-        std::pair{ "operator-=", &Float32x3x4_operator_subasg_Float32x3x4 },
-        std::pair{ "operator-=", &Float32x4x2_operator_subasg_Float32x4x2 },
-        std::pair{ "operator-=", &Float32x4x3_operator_subasg_Float32x4x3 },
-        std::pair{ "operator-=", &Float32x4x4_operator_subasg_Float32x4x4 },
-        std::pair{ "operator-=", &Float16x2x2_operator_subasg_Float16x2x2 },
-        std::pair{ "operator-=", &Float16x2x3_operator_subasg_Float16x2x3 },
-        std::pair{ "operator-=", &Float16x2x4_operator_subasg_Float16x2x4 },
-        std::pair{ "operator-=", &Float16x3x2_operator_subasg_Float16x3x2 },
-        std::pair{ "operator-=", &Float16x3x3_operator_subasg_Float16x3x3 },
-        std::pair{ "operator-=", &Float16x3x4_operator_subasg_Float16x3x4 },
-        std::pair{ "operator-=", &Float16x4x2_operator_subasg_Float16x4x2 },
-        std::pair{ "operator-=", &Float16x4x3_operator_subasg_Float16x4x3 },
-        std::pair{ "operator/", &Int16x4_operator_div_Int16x4 },
-        std::pair{ "operator/=", &Int16x4_operator_divasg_Int16x4 },
-        std::pair{ "operator<", &Int16x4_operator_lt_Int16x4 },
-        std::pair{ "operator<<", &Int16x4_operator_lsh_Int16x4 },
-        std::pair{ "operator<<=", &Int16x4_operator_lshasg_Int16x4 },
-        std::pair{ "operator<=", &Int16x4_operator_lte_Int16x4 },
-        std::pair{ "operator==", &Int16x4_operator_eq_Int16x4 },
-        std::pair{ "operator>", &Int16x4_operator_gt_Int16x4 },
-        std::pair{ "operator>=", &Int16x4_operator_gte_Int16x4 },
-        std::pair{ "operator>>", &Int16x4_operator_rsh_Int16x4 },
-        std::pair{ "operator>>=", &Int16x4_operator_rhsasg_Int16x4 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x3x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x3x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x3x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x3x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x3x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x3x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x3x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x3x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x3x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x3x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x3x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x3x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x4x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x4x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x4x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x4x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x4x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x4x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x4x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x4x3_operator_index_UInt16 },
-        std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
-        std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
-        std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 12> { 
+        std::pair{ "operator*(f16)"_c, &Float16x4x3_operator_scale_Float16 },
+        std::pair{ "operator*(f16x4)"_c, &Float16x4x3_transform_Float16x3 },
+        std::pair{ "operator*(f16x4x3)"_c, &Float16x4x3_operator_mul_Float16x4x3 },
+        std::pair{ "operator*=(f16x4x3)"_c, &Float16x4x3_operator_mulasg_Float16x4x3 },
+        std::pair{ "operator+(f16x4x3)"_c, &Float16x4x3_operator_add_Float16x4x3 },
+        std::pair{ "operator+=(f16x4x3)"_c, &Float16x4x3_operator_addasg_Float16x4x3 },
+        std::pair{ "operator-(f16x4x3)"_c, &Float16x4x3_operator_sub_Float16x4x3 },
+        std::pair{ "operator-=(f16x4x3)"_c, &Float16x4x3_operator_subasg_Float16x4x3 },
+        std::pair{ "operator[]"_c, &Float16x4x3_operator_index_Int32 },
+        std::pair{ "operator[]"_c, &Float16x4x3_operator_index_UInt32 },
+        std::pair{ "operator[]"_c, &Float16x4x3_operator_index_Int16 },
+        std::pair{ "operator[]"_c, &Float16x4x3_operator_index_UInt16 }
     };
 }
 Float16x4x3 Float16x4x3Type;
@@ -24217,6 +29367,11 @@ Variable Float16x4x4_operator_index_UInt16_arg0;
 Function Float16x4x4_operator_index_UInt16;
 inline constexpr std::array Float16x4x4_operator_index_UInt16_args = { &Float16x4x4_operator_index_UInt16_arg0 };
 
+/// operator* with Float16x4
+Variable Float16x4x4_transform_Float16x4_vec;
+Function Float16x4x4_transform_Float16x4;
+inline constexpr std::array Float16x4x4_transform_Float16x4_args = { &Float16x4x4_transform_Float16x4_vec };
+
 /// operator+ with Float16x4x4
 Variable Float16x4x4_operator_add_Float16x4x4_arg0;
 Function Float16x4x4_operator_add_Float16x4x4;
@@ -24254,10 +29409,10 @@ inline constexpr std::array Float16x4x4_operator_scale_Float16_args = { &Float16
 
 Float16x4x4::Float16x4x4()
 {
-    this->name = "f16"_c;
+    this->name = "f16x4x4"_c;
     this->columnSize = 4;
     this->rowSize = 4;
-    this->byteSize = 32;
+    this->byteSize = 8;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float16;
     this->builtin = true;
@@ -24375,6 +29530,15 @@ Float16x4x4::Float16x4x4()
     Symbol::Resolved(&Float16x4x4_operator_index_UInt16_arg0)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&Float16x4x4_operator_index_UInt16)->returnTypeSymbol = &Float16x4Type;
 
+    /// operator* with Float16x4
+    Float16x4x4_transform_Float16x4_vec.name = "vec"_c;
+    Float16x4x4_transform_Float16x4_vec.type = Type::FullType{ Float16x4Type.name };
+    Float16x4x4_transform_Float16x4.name = "operator*"_c;
+    Float16x4x4_transform_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    Float16x4x4_transform_Float16x4.parameters = Float16x4x4_transform_Float16x4_args;
+    Symbol::Resolved(&Float16x4x4_transform_Float16x4_vec)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&Float16x4x4_transform_Float16x4)->returnTypeSymbol = &Float16x4Type;
+
     /// operator+ with Float16x4x4
     Float16x4x4_operator_add_Float16x4x4_arg0.name = "_arg0"_c;
     Float16x4x4_operator_add_Float16x4x4_arg0.type = Type::FullType{ Float16x4x4Type.name };
@@ -24438,240 +29602,19 @@ Float16x4x4::Float16x4x4()
     Symbol::Resolved(&Float16x4x4_operator_scale_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x4x4_operator_scale_Float16)->returnTypeSymbol = &Float16x4x4Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 233> { 
-        std::pair{ "operator!=", &Int16x4_operator_neq_Int16x4 },
-        std::pair{ "operator%", &Int16x4_operator_mod_Int16x4 },
-        std::pair{ "operator&", &Int16x4_operator_and_Int16x4 },
-        std::pair{ "operator&=", &Int16x4_operator_andasg_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_mul_Int16x4 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_UInt16 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int32 },
-        std::pair{ "operator*", &Int16x4_operator_scale_Int16 },
-        std::pair{ "operator*", &Float32x2x2_operator_mul_Float32x2x2 },
-        std::pair{ "operator*", &Float32x2x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x3_operator_mul_Float32x2x3 },
-        std::pair{ "operator*", &Float32x2x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x2x4_operator_mul_Float32x2x4 },
-        std::pair{ "operator*", &Float32x2x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x2_operator_mul_Float32x3x2 },
-        std::pair{ "operator*", &Float32x3x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x3_operator_mul_Float32x3x3 },
-        std::pair{ "operator*", &Float32x3x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x3x4_operator_mul_Float32x3x4 },
-        std::pair{ "operator*", &Float32x3x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x2_operator_mul_Float32x4x2 },
-        std::pair{ "operator*", &Float32x4x2_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x3_operator_mul_Float32x4x3 },
-        std::pair{ "operator*", &Float32x4x3_operator_scale_Float32 },
-        std::pair{ "operator*", &Float32x4x4_operator_mul_Float32x4x4 },
-        std::pair{ "operator*", &Float32x4x4_operator_scale_Float32 },
-        std::pair{ "operator*", &Float16x2x2_operator_mul_Float16x2x2 },
-        std::pair{ "operator*", &Float16x2x2_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x2x3_operator_mul_Float16x2x3 },
-        std::pair{ "operator*", &Float16x2x3_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x2x4_operator_mul_Float16x2x4 },
-        std::pair{ "operator*", &Float16x2x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x3x2_operator_mul_Float16x3x2 },
-        std::pair{ "operator*", &Float16x3x2_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x3x3_operator_mul_Float16x3x3 },
-        std::pair{ "operator*", &Float16x3x3_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x3x4_operator_mul_Float16x3x4 },
-        std::pair{ "operator*", &Float16x3x4_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x4x2_operator_mul_Float16x4x2 },
-        std::pair{ "operator*", &Float16x4x2_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x4x3_operator_mul_Float16x4x3 },
-        std::pair{ "operator*", &Float16x4x3_operator_scale_Float16 },
-        std::pair{ "operator*", &Float16x4x4_operator_mul_Float16x4x4 },
-        std::pair{ "operator*", &Float16x4x4_operator_scale_Float16 },
-        std::pair{ "operator*=", &Int16x4_operator_mulasg_Int16x4 },
-        std::pair{ "operator*=", &Float32x2x2_operator_mulasg_Float32x2x2 },
-        std::pair{ "operator*=", &Float32x2x3_operator_mulasg_Float32x2x3 },
-        std::pair{ "operator*=", &Float32x2x4_operator_mulasg_Float32x2x4 },
-        std::pair{ "operator*=", &Float32x3x2_operator_mulasg_Float32x3x2 },
-        std::pair{ "operator*=", &Float32x3x3_operator_mulasg_Float32x3x3 },
-        std::pair{ "operator*=", &Float32x3x4_operator_mulasg_Float32x3x4 },
-        std::pair{ "operator*=", &Float32x4x2_operator_mulasg_Float32x4x2 },
-        std::pair{ "operator*=", &Float32x4x3_operator_mulasg_Float32x4x3 },
-        std::pair{ "operator*=", &Float32x4x4_operator_mulasg_Float32x4x4 },
-        std::pair{ "operator*=", &Float16x2x2_operator_mulasg_Float16x2x2 },
-        std::pair{ "operator*=", &Float16x2x3_operator_mulasg_Float16x2x3 },
-        std::pair{ "operator*=", &Float16x2x4_operator_mulasg_Float16x2x4 },
-        std::pair{ "operator*=", &Float16x3x2_operator_mulasg_Float16x3x2 },
-        std::pair{ "operator*=", &Float16x3x3_operator_mulasg_Float16x3x3 },
-        std::pair{ "operator*=", &Float16x3x4_operator_mulasg_Float16x3x4 },
-        std::pair{ "operator*=", &Float16x4x2_operator_mulasg_Float16x4x2 },
-        std::pair{ "operator*=", &Float16x4x3_operator_mulasg_Float16x4x3 },
-        std::pair{ "operator*=", &Float16x4x4_operator_mulasg_Float16x4x4 },
-        std::pair{ "operator+", &Int16x4_operator_add_Int16x4 },
-        std::pair{ "operator+", &Float32x2x2_operator_add_Float32x2x2 },
-        std::pair{ "operator+", &Float32x2x3_operator_add_Float32x2x3 },
-        std::pair{ "operator+", &Float32x2x4_operator_add_Float32x2x4 },
-        std::pair{ "operator+", &Float32x3x2_operator_add_Float32x3x2 },
-        std::pair{ "operator+", &Float32x3x3_operator_add_Float32x3x3 },
-        std::pair{ "operator+", &Float32x3x4_operator_add_Float32x3x4 },
-        std::pair{ "operator+", &Float32x4x2_operator_add_Float32x4x2 },
-        std::pair{ "operator+", &Float32x4x3_operator_add_Float32x4x3 },
-        std::pair{ "operator+", &Float32x4x4_operator_add_Float32x4x4 },
-        std::pair{ "operator+", &Float16x2x2_operator_add_Float16x2x2 },
-        std::pair{ "operator+", &Float16x2x3_operator_add_Float16x2x3 },
-        std::pair{ "operator+", &Float16x2x4_operator_add_Float16x2x4 },
-        std::pair{ "operator+", &Float16x3x2_operator_add_Float16x3x2 },
-        std::pair{ "operator+", &Float16x3x3_operator_add_Float16x3x3 },
-        std::pair{ "operator+", &Float16x3x4_operator_add_Float16x3x4 },
-        std::pair{ "operator+", &Float16x4x2_operator_add_Float16x4x2 },
-        std::pair{ "operator+", &Float16x4x3_operator_add_Float16x4x3 },
-        std::pair{ "operator+", &Float16x4x4_operator_add_Float16x4x4 },
-        std::pair{ "operator+=", &Int16x4_operator_addasg_Int16x4 },
-        std::pair{ "operator+=", &Float32x2x2_operator_addasg_Float32x2x2 },
-        std::pair{ "operator+=", &Float32x2x3_operator_addasg_Float32x2x3 },
-        std::pair{ "operator+=", &Float32x2x4_operator_addasg_Float32x2x4 },
-        std::pair{ "operator+=", &Float32x3x2_operator_addasg_Float32x3x2 },
-        std::pair{ "operator+=", &Float32x3x3_operator_addasg_Float32x3x3 },
-        std::pair{ "operator+=", &Float32x3x4_operator_addasg_Float32x3x4 },
-        std::pair{ "operator+=", &Float32x4x2_operator_addasg_Float32x4x2 },
-        std::pair{ "operator+=", &Float32x4x3_operator_addasg_Float32x4x3 },
-        std::pair{ "operator+=", &Float32x4x4_operator_addasg_Float32x4x4 },
-        std::pair{ "operator+=", &Float16x2x2_operator_addasg_Float16x2x2 },
-        std::pair{ "operator+=", &Float16x2x3_operator_addasg_Float16x2x3 },
-        std::pair{ "operator+=", &Float16x2x4_operator_addasg_Float16x2x4 },
-        std::pair{ "operator+=", &Float16x3x2_operator_addasg_Float16x3x2 },
-        std::pair{ "operator+=", &Float16x3x3_operator_addasg_Float16x3x3 },
-        std::pair{ "operator+=", &Float16x3x4_operator_addasg_Float16x3x4 },
-        std::pair{ "operator+=", &Float16x4x2_operator_addasg_Float16x4x2 },
-        std::pair{ "operator+=", &Float16x4x3_operator_addasg_Float16x4x3 },
-        std::pair{ "operator+=", &Float16x4x4_operator_addasg_Float16x4x4 },
-        std::pair{ "operator-", &Int16x4_operator_sub_Int16x4 },
-        std::pair{ "operator-", &Float32x2x2_operator_sub_Float32x2x2 },
-        std::pair{ "operator-", &Float32x2x3_operator_sub_Float32x2x3 },
-        std::pair{ "operator-", &Float32x2x4_operator_sub_Float32x2x4 },
-        std::pair{ "operator-", &Float32x3x2_operator_sub_Float32x3x2 },
-        std::pair{ "operator-", &Float32x3x3_operator_sub_Float32x3x3 },
-        std::pair{ "operator-", &Float32x3x4_operator_sub_Float32x3x4 },
-        std::pair{ "operator-", &Float32x4x2_operator_sub_Float32x4x2 },
-        std::pair{ "operator-", &Float32x4x3_operator_sub_Float32x4x3 },
-        std::pair{ "operator-", &Float32x4x4_operator_sub_Float32x4x4 },
-        std::pair{ "operator-", &Float16x2x2_operator_sub_Float16x2x2 },
-        std::pair{ "operator-", &Float16x2x3_operator_sub_Float16x2x3 },
-        std::pair{ "operator-", &Float16x2x4_operator_sub_Float16x2x4 },
-        std::pair{ "operator-", &Float16x3x2_operator_sub_Float16x3x2 },
-        std::pair{ "operator-", &Float16x3x3_operator_sub_Float16x3x3 },
-        std::pair{ "operator-", &Float16x3x4_operator_sub_Float16x3x4 },
-        std::pair{ "operator-", &Float16x4x2_operator_sub_Float16x4x2 },
-        std::pair{ "operator-", &Float16x4x3_operator_sub_Float16x4x3 },
-        std::pair{ "operator-", &Float16x4x4_operator_sub_Float16x4x4 },
-        std::pair{ "operator-=", &Int16x4_operator_subasg_Int16x4 },
-        std::pair{ "operator-=", &Float32x2x2_operator_subasg_Float32x2x2 },
-        std::pair{ "operator-=", &Float32x2x3_operator_subasg_Float32x2x3 },
-        std::pair{ "operator-=", &Float32x2x4_operator_subasg_Float32x2x4 },
-        std::pair{ "operator-=", &Float32x3x2_operator_subasg_Float32x3x2 },
-        std::pair{ "operator-=", &Float32x3x3_operator_subasg_Float32x3x3 },
-        std::pair{ "operator-=", &Float32x3x4_operator_subasg_Float32x3x4 },
-        std::pair{ "operator-=", &Float32x4x2_operator_subasg_Float32x4x2 },
-        std::pair{ "operator-=", &Float32x4x3_operator_subasg_Float32x4x3 },
-        std::pair{ "operator-=", &Float32x4x4_operator_subasg_Float32x4x4 },
-        std::pair{ "operator-=", &Float16x2x2_operator_subasg_Float16x2x2 },
-        std::pair{ "operator-=", &Float16x2x3_operator_subasg_Float16x2x3 },
-        std::pair{ "operator-=", &Float16x2x4_operator_subasg_Float16x2x4 },
-        std::pair{ "operator-=", &Float16x3x2_operator_subasg_Float16x3x2 },
-        std::pair{ "operator-=", &Float16x3x3_operator_subasg_Float16x3x3 },
-        std::pair{ "operator-=", &Float16x3x4_operator_subasg_Float16x3x4 },
-        std::pair{ "operator-=", &Float16x4x2_operator_subasg_Float16x4x2 },
-        std::pair{ "operator-=", &Float16x4x3_operator_subasg_Float16x4x3 },
-        std::pair{ "operator-=", &Float16x4x4_operator_subasg_Float16x4x4 },
-        std::pair{ "operator/", &Int16x4_operator_div_Int16x4 },
-        std::pair{ "operator/=", &Int16x4_operator_divasg_Int16x4 },
-        std::pair{ "operator<", &Int16x4_operator_lt_Int16x4 },
-        std::pair{ "operator<<", &Int16x4_operator_lsh_Int16x4 },
-        std::pair{ "operator<<=", &Int16x4_operator_lshasg_Int16x4 },
-        std::pair{ "operator<=", &Int16x4_operator_lte_Int16x4 },
-        std::pair{ "operator==", &Int16x4_operator_eq_Int16x4 },
-        std::pair{ "operator>", &Int16x4_operator_gt_Int16x4 },
-        std::pair{ "operator>=", &Int16x4_operator_gte_Int16x4 },
-        std::pair{ "operator>>", &Int16x4_operator_rsh_Int16x4 },
-        std::pair{ "operator>>=", &Int16x4_operator_rhsasg_Int16x4 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Int16x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Int16x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x2x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x3x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float32x4x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x2x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x2x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x2x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x3x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x3x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x3x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x3x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x3x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x3x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x3x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x3x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x3x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x3x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x3x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x3x4_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x4x2_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x4x2_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x4x2_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x4x2_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x4x3_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x4x3_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x4x3_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x4x3_operator_index_UInt16 },
-        std::pair{ "operator[]", &Float16x4x4_operator_index_Int32 },
-        std::pair{ "operator[]", &Float16x4x4_operator_index_UInt32 },
-        std::pair{ "operator[]", &Float16x4x4_operator_index_Int16 },
-        std::pair{ "operator[]", &Float16x4x4_operator_index_UInt16 },
-        std::pair{ "operator^", &Int16x4_operator_xor_Int16x4 },
-        std::pair{ "operator^=", &Int16x4_operator_xorasg_Int16x4 },
-        std::pair{ "operator|", &Int16x4_operator_or_Int16x4 },
-        std::pair{ "operator|=", &Int16x4_operator_orasg_Int16x4 }
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 12> { 
+        std::pair{ "operator*(f16)"_c, &Float16x4x4_operator_scale_Float16 },
+        std::pair{ "operator*(f16x4)"_c, &Float16x4x4_transform_Float16x4 },
+        std::pair{ "operator*(f16x4x4)"_c, &Float16x4x4_operator_mul_Float16x4x4 },
+        std::pair{ "operator*=(f16x4x4)"_c, &Float16x4x4_operator_mulasg_Float16x4x4 },
+        std::pair{ "operator+(f16x4x4)"_c, &Float16x4x4_operator_add_Float16x4x4 },
+        std::pair{ "operator+=(f16x4x4)"_c, &Float16x4x4_operator_addasg_Float16x4x4 },
+        std::pair{ "operator-(f16x4x4)"_c, &Float16x4x4_operator_sub_Float16x4x4 },
+        std::pair{ "operator-=(f16x4x4)"_c, &Float16x4x4_operator_subasg_Float16x4x4 },
+        std::pair{ "operator[]"_c, &Float16x4x4_operator_index_Int32 },
+        std::pair{ "operator[]"_c, &Float16x4x4_operator_index_UInt32 },
+        std::pair{ "operator[]"_c, &Float16x4x4_operator_index_Int16 },
+        std::pair{ "operator[]"_c, &Float16x4x4_operator_index_UInt16 }
     };
 }
 Float16x4x4 Float16x4x4Type;
@@ -24858,7 +29801,38 @@ CompareMode::CompareMode()
     CompareModeNever.type = Type::FullType{ CompareModeType.name, true };
     CompareModeNever.underlyingType = Type::FullType{ UInt32Type.name };
     Symbol::Resolved(&CompareModeNever)->type = this;
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 8> {
+    auto enumResolved = Symbol::Resolved(this);
+    this->fromUnderlyingType.name = this->name;
+    this->fromUnderlyingType.returnType = Type::FullType{{ this->name }};
+    this->fromUnderlyingType.compileTime = true;
+    this->fromUnderlyingType.constructorType = this;
+    this->fromUnderlyingType.parameters = { &this->fromUnderlyingTypeArg };
+    this->fromUnderlyingTypeArg.name = "arg"_c;
+    this->fromUnderlyingTypeArg.type = this->type;
+    Symbol::Resolved(&this->fromUnderlyingTypeArg)->typeSymbol = enumResolved->typeSymbol;
+    Symbol::Resolved(&this->fromUnderlyingType)->returnTypeSymbol = this;
+    this->toUnderlyingType.name = this->type.name;
+    this->toUnderlyingType.returnType = this->type;
+    this->toUnderlyingType.compileTime = true;
+    this->toUnderlyingType.constructorType = this;
+    this->toUnderlyingType.parameters = { &this->toUnderlyingTypeArg };
+    this->toUnderlyingTypeArg.name = "arg"_c;
+    this->toUnderlyingTypeArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->toUnderlyingTypeArg)->typeSymbol = this;
+    Symbol::Resolved(&this->toUnderlyingType)->returnTypeSymbol = enumResolved->typeSymbol;
+    this->eqOp.name = "operator=="_c;
+    this->eqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->eqOpArg.name = "rhs"_c;
+    this->eqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->eqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->eqOp)->returnTypeSymbol = &Bool8Type;
+    this->neqOp.name = "operator!="_c;
+    this->neqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->neqOpArg.name = "rhs"_c;
+    this->neqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->neqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->neqOp)->returnTypeSymbol = &Bool8Type;
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 10> {
         std::pair{ "Always"_c, &CompareModeAlways },
         std::pair{ "Equal"_c, &CompareModeEqual },
         std::pair{ "Greater"_c, &CompareModeGreater },
@@ -24866,7 +29840,9 @@ CompareMode::CompareMode()
         std::pair{ "Less"_c, &CompareModeLess },
         std::pair{ "LessEqual"_c, &CompareModeLessEqual },
         std::pair{ "Never"_c, &CompareModeNever },
-        std::pair{ "NotEqual"_c, &CompareModeNotEqual }
+        std::pair{ "NotEqual"_c, &CompareModeNotEqual },
+        std::pair{ "operator!="_c, &CompareModeType.neqOp },
+        std::pair{ "operator=="_c, &CompareModeType.eqOp }
     };
 };
 CompareMode CompareModeType;
@@ -24920,7 +29896,38 @@ StencilOp::StencilOp()
     StencilOpDecrementWrap.type = Type::FullType{ StencilOpType.name, true };
     StencilOpDecrementWrap.underlyingType = Type::FullType{ UInt32Type.name };
     Symbol::Resolved(&StencilOpDecrementWrap)->type = this;
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 8> {
+    auto enumResolved = Symbol::Resolved(this);
+    this->fromUnderlyingType.name = this->name;
+    this->fromUnderlyingType.returnType = Type::FullType{{ this->name }};
+    this->fromUnderlyingType.compileTime = true;
+    this->fromUnderlyingType.constructorType = this;
+    this->fromUnderlyingType.parameters = { &this->fromUnderlyingTypeArg };
+    this->fromUnderlyingTypeArg.name = "arg"_c;
+    this->fromUnderlyingTypeArg.type = this->type;
+    Symbol::Resolved(&this->fromUnderlyingTypeArg)->typeSymbol = enumResolved->typeSymbol;
+    Symbol::Resolved(&this->fromUnderlyingType)->returnTypeSymbol = this;
+    this->toUnderlyingType.name = this->type.name;
+    this->toUnderlyingType.returnType = this->type;
+    this->toUnderlyingType.compileTime = true;
+    this->toUnderlyingType.constructorType = this;
+    this->toUnderlyingType.parameters = { &this->toUnderlyingTypeArg };
+    this->toUnderlyingTypeArg.name = "arg"_c;
+    this->toUnderlyingTypeArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->toUnderlyingTypeArg)->typeSymbol = this;
+    Symbol::Resolved(&this->toUnderlyingType)->returnTypeSymbol = enumResolved->typeSymbol;
+    this->eqOp.name = "operator=="_c;
+    this->eqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->eqOpArg.name = "rhs"_c;
+    this->eqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->eqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->eqOp)->returnTypeSymbol = &Bool8Type;
+    this->neqOp.name = "operator!="_c;
+    this->neqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->neqOpArg.name = "rhs"_c;
+    this->neqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->neqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->neqOp)->returnTypeSymbol = &Bool8Type;
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 10> {
         std::pair{ "Decrement"_c, &StencilOpDecrement },
         std::pair{ "DecrementWrap"_c, &StencilOpDecrementWrap },
         std::pair{ "Increment"_c, &StencilOpIncrement },
@@ -24928,7 +29935,9 @@ StencilOp::StencilOp()
         std::pair{ "Invert"_c, &StencilOpInvert },
         std::pair{ "Keep"_c, &StencilOpKeep },
         std::pair{ "Replace"_c, &StencilOpReplace },
-        std::pair{ "Zero"_c, &StencilOpZero }
+        std::pair{ "Zero"_c, &StencilOpZero },
+        std::pair{ "operator!="_c, &StencilOpType.neqOp },
+        std::pair{ "operator=="_c, &StencilOpType.eqOp }
     };
 };
 StencilOp StencilOpType;
@@ -24972,13 +29981,46 @@ ExecutionScope::ExecutionScope()
     ExecutionScopeQueue.type = Type::FullType{ ExecutionScopeType.name, true };
     ExecutionScopeQueue.underlyingType = Type::FullType{ UInt32Type.name };
     Symbol::Resolved(&ExecutionScopeQueue)->type = this;
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 6> {
+    auto enumResolved = Symbol::Resolved(this);
+    this->fromUnderlyingType.name = this->name;
+    this->fromUnderlyingType.returnType = Type::FullType{{ this->name }};
+    this->fromUnderlyingType.compileTime = true;
+    this->fromUnderlyingType.constructorType = this;
+    this->fromUnderlyingType.parameters = { &this->fromUnderlyingTypeArg };
+    this->fromUnderlyingTypeArg.name = "arg"_c;
+    this->fromUnderlyingTypeArg.type = this->type;
+    Symbol::Resolved(&this->fromUnderlyingTypeArg)->typeSymbol = enumResolved->typeSymbol;
+    Symbol::Resolved(&this->fromUnderlyingType)->returnTypeSymbol = this;
+    this->toUnderlyingType.name = this->type.name;
+    this->toUnderlyingType.returnType = this->type;
+    this->toUnderlyingType.compileTime = true;
+    this->toUnderlyingType.constructorType = this;
+    this->toUnderlyingType.parameters = { &this->toUnderlyingTypeArg };
+    this->toUnderlyingTypeArg.name = "arg"_c;
+    this->toUnderlyingTypeArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->toUnderlyingTypeArg)->typeSymbol = this;
+    Symbol::Resolved(&this->toUnderlyingType)->returnTypeSymbol = enumResolved->typeSymbol;
+    this->eqOp.name = "operator=="_c;
+    this->eqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->eqOpArg.name = "rhs"_c;
+    this->eqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->eqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->eqOp)->returnTypeSymbol = &Bool8Type;
+    this->neqOp.name = "operator!="_c;
+    this->neqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->neqOpArg.name = "rhs"_c;
+    this->neqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->neqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->neqOp)->returnTypeSymbol = &Bool8Type;
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 8> {
         std::pair{ "Device"_c, &ExecutionScopeDevice },
         std::pair{ "Global"_c, &ExecutionScopeGlobal },
         std::pair{ "Invocation"_c, &ExecutionScopeInvocation },
         std::pair{ "Queue"_c, &ExecutionScopeQueue },
         std::pair{ "Subgroup"_c, &ExecutionScopeSubgroup },
-        std::pair{ "Workgroup"_c, &ExecutionScopeWorkgroup }
+        std::pair{ "Workgroup"_c, &ExecutionScopeWorkgroup },
+        std::pair{ "operator!="_c, &ExecutionScopeType.neqOp },
+        std::pair{ "operator=="_c, &ExecutionScopeType.eqOp }
     };
 };
 ExecutionScope ExecutionScopeType;
@@ -25017,12 +30059,45 @@ MemorySemantics::MemorySemantics()
     MemorySemanticsRelaxed.type = Type::FullType{ MemorySemanticsType.name, true };
     MemorySemanticsRelaxed.underlyingType = Type::FullType{ UInt32Type.name };
     Symbol::Resolved(&MemorySemanticsRelaxed)->type = this;
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 5> {
+    auto enumResolved = Symbol::Resolved(this);
+    this->fromUnderlyingType.name = this->name;
+    this->fromUnderlyingType.returnType = Type::FullType{{ this->name }};
+    this->fromUnderlyingType.compileTime = true;
+    this->fromUnderlyingType.constructorType = this;
+    this->fromUnderlyingType.parameters = { &this->fromUnderlyingTypeArg };
+    this->fromUnderlyingTypeArg.name = "arg"_c;
+    this->fromUnderlyingTypeArg.type = this->type;
+    Symbol::Resolved(&this->fromUnderlyingTypeArg)->typeSymbol = enumResolved->typeSymbol;
+    Symbol::Resolved(&this->fromUnderlyingType)->returnTypeSymbol = this;
+    this->toUnderlyingType.name = this->type.name;
+    this->toUnderlyingType.returnType = this->type;
+    this->toUnderlyingType.compileTime = true;
+    this->toUnderlyingType.constructorType = this;
+    this->toUnderlyingType.parameters = { &this->toUnderlyingTypeArg };
+    this->toUnderlyingTypeArg.name = "arg"_c;
+    this->toUnderlyingTypeArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->toUnderlyingTypeArg)->typeSymbol = this;
+    Symbol::Resolved(&this->toUnderlyingType)->returnTypeSymbol = enumResolved->typeSymbol;
+    this->eqOp.name = "operator=="_c;
+    this->eqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->eqOpArg.name = "rhs"_c;
+    this->eqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->eqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->eqOp)->returnTypeSymbol = &Bool8Type;
+    this->neqOp.name = "operator!="_c;
+    this->neqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->neqOpArg.name = "rhs"_c;
+    this->neqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->neqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->neqOp)->returnTypeSymbol = &Bool8Type;
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 7> {
         std::pair{ "Acquire"_c, &MemorySemanticsAcquire },
         std::pair{ "AcquireRelease"_c, &MemorySemanticsAcquireRelease },
         std::pair{ "Relaxed"_c, &MemorySemanticsRelaxed },
         std::pair{ "Release"_c, &MemorySemanticsRelease },
-        std::pair{ "SequentiallyConsistent"_c, &MemorySemanticsSequentiallyConsistent }
+        std::pair{ "SequentiallyConsistent"_c, &MemorySemanticsSequentiallyConsistent },
+        std::pair{ "operator!="_c, &MemorySemanticsType.neqOp },
+        std::pair{ "operator=="_c, &MemorySemanticsType.eqOp }
     };
 };
 MemorySemantics MemorySemanticsType;
@@ -25039,22 +30114,55 @@ PolygonMode::PolygonMode()
     this->baseType = TypeCode::UInt;
     this->type.literal = true;
     this->builtin = true;
-    PolygonModeFill.value = 1;
+    PolygonModeFill.value = 0x0;
     PolygonModeFill.type = Type::FullType{ PolygonModeType.name, true };
     PolygonModeFill.underlyingType = Type::FullType{ UInt32Type.name };
     Symbol::Resolved(&PolygonModeFill)->type = this;
-    PolygonModeLine.value = 2;
+    PolygonModeLine.value = 0x1;
     PolygonModeLine.type = Type::FullType{ PolygonModeType.name, true };
     PolygonModeLine.underlyingType = Type::FullType{ UInt32Type.name };
     Symbol::Resolved(&PolygonModeLine)->type = this;
-    PolygonModePoint.value = 4;
+    PolygonModePoint.value = 0x2;
     PolygonModePoint.type = Type::FullType{ PolygonModeType.name, true };
     PolygonModePoint.underlyingType = Type::FullType{ UInt32Type.name };
     Symbol::Resolved(&PolygonModePoint)->type = this;
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 3> {
+    auto enumResolved = Symbol::Resolved(this);
+    this->fromUnderlyingType.name = this->name;
+    this->fromUnderlyingType.returnType = Type::FullType{{ this->name }};
+    this->fromUnderlyingType.compileTime = true;
+    this->fromUnderlyingType.constructorType = this;
+    this->fromUnderlyingType.parameters = { &this->fromUnderlyingTypeArg };
+    this->fromUnderlyingTypeArg.name = "arg"_c;
+    this->fromUnderlyingTypeArg.type = this->type;
+    Symbol::Resolved(&this->fromUnderlyingTypeArg)->typeSymbol = enumResolved->typeSymbol;
+    Symbol::Resolved(&this->fromUnderlyingType)->returnTypeSymbol = this;
+    this->toUnderlyingType.name = this->type.name;
+    this->toUnderlyingType.returnType = this->type;
+    this->toUnderlyingType.compileTime = true;
+    this->toUnderlyingType.constructorType = this;
+    this->toUnderlyingType.parameters = { &this->toUnderlyingTypeArg };
+    this->toUnderlyingTypeArg.name = "arg"_c;
+    this->toUnderlyingTypeArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->toUnderlyingTypeArg)->typeSymbol = this;
+    Symbol::Resolved(&this->toUnderlyingType)->returnTypeSymbol = enumResolved->typeSymbol;
+    this->eqOp.name = "operator=="_c;
+    this->eqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->eqOpArg.name = "rhs"_c;
+    this->eqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->eqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->eqOp)->returnTypeSymbol = &Bool8Type;
+    this->neqOp.name = "operator!="_c;
+    this->neqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->neqOpArg.name = "rhs"_c;
+    this->neqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->neqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->neqOp)->returnTypeSymbol = &Bool8Type;
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 5> {
         std::pair{ "Fill"_c, &PolygonModeFill },
         std::pair{ "Line"_c, &PolygonModeLine },
-        std::pair{ "Point"_c, &PolygonModePoint }
+        std::pair{ "Point"_c, &PolygonModePoint },
+        std::pair{ "operator!="_c, &PolygonModeType.neqOp },
+        std::pair{ "operator=="_c, &PolygonModeType.eqOp }
     };
 };
 PolygonMode PolygonModeType;
@@ -25076,23 +30184,56 @@ CullMode::CullMode()
     CullModeNone.type = Type::FullType{ CullModeType.name, true };
     CullModeNone.underlyingType = Type::FullType{ UInt32Type.name };
     Symbol::Resolved(&CullModeNone)->type = this;
-    CullModeFront.value = 1;
+    CullModeFront.value = 0x1;
     CullModeFront.type = Type::FullType{ CullModeType.name, true };
     CullModeFront.underlyingType = Type::FullType{ UInt32Type.name };
     Symbol::Resolved(&CullModeFront)->type = this;
-    CullModeBack.value = 2;
+    CullModeBack.value = 0x2;
     CullModeBack.type = Type::FullType{ CullModeType.name, true };
     CullModeBack.underlyingType = Type::FullType{ UInt32Type.name };
     Symbol::Resolved(&CullModeBack)->type = this;
-    CullModeFrontAndBack.value = 3;
+    CullModeFrontAndBack.value = 0x3;
     CullModeFrontAndBack.type = Type::FullType{ CullModeType.name, true };
     CullModeFrontAndBack.underlyingType = Type::FullType{ UInt32Type.name };
     Symbol::Resolved(&CullModeFrontAndBack)->type = this;
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 4> {
+    auto enumResolved = Symbol::Resolved(this);
+    this->fromUnderlyingType.name = this->name;
+    this->fromUnderlyingType.returnType = Type::FullType{{ this->name }};
+    this->fromUnderlyingType.compileTime = true;
+    this->fromUnderlyingType.constructorType = this;
+    this->fromUnderlyingType.parameters = { &this->fromUnderlyingTypeArg };
+    this->fromUnderlyingTypeArg.name = "arg"_c;
+    this->fromUnderlyingTypeArg.type = this->type;
+    Symbol::Resolved(&this->fromUnderlyingTypeArg)->typeSymbol = enumResolved->typeSymbol;
+    Symbol::Resolved(&this->fromUnderlyingType)->returnTypeSymbol = this;
+    this->toUnderlyingType.name = this->type.name;
+    this->toUnderlyingType.returnType = this->type;
+    this->toUnderlyingType.compileTime = true;
+    this->toUnderlyingType.constructorType = this;
+    this->toUnderlyingType.parameters = { &this->toUnderlyingTypeArg };
+    this->toUnderlyingTypeArg.name = "arg"_c;
+    this->toUnderlyingTypeArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->toUnderlyingTypeArg)->typeSymbol = this;
+    Symbol::Resolved(&this->toUnderlyingType)->returnTypeSymbol = enumResolved->typeSymbol;
+    this->eqOp.name = "operator=="_c;
+    this->eqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->eqOpArg.name = "rhs"_c;
+    this->eqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->eqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->eqOp)->returnTypeSymbol = &Bool8Type;
+    this->neqOp.name = "operator!="_c;
+    this->neqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->neqOpArg.name = "rhs"_c;
+    this->neqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->neqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->neqOp)->returnTypeSymbol = &Bool8Type;
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 6> {
         std::pair{ "Back"_c, &CullModeBack },
         std::pair{ "Front"_c, &CullModeFront },
         std::pair{ "FrontAndBack"_c, &CullModeFrontAndBack },
-        std::pair{ "None"_c, &CullModeNone }
+        std::pair{ "None"_c, &CullModeNone },
+        std::pair{ "operator!="_c, &CullModeType.neqOp },
+        std::pair{ "operator=="_c, &CullModeType.eqOp }
     };
 };
 CullMode CullModeType;
@@ -25112,13 +30253,46 @@ WindingOrder::WindingOrder()
     WindingOrderClockwise.type = Type::FullType{ WindingOrderType.name, true };
     WindingOrderClockwise.underlyingType = Type::FullType{ UInt32Type.name };
     Symbol::Resolved(&WindingOrderClockwise)->type = this;
-    WindingOrderCounterClockwise.value = 1;
+    WindingOrderCounterClockwise.value = 0x1;
     WindingOrderCounterClockwise.type = Type::FullType{ WindingOrderType.name, true };
     WindingOrderCounterClockwise.underlyingType = Type::FullType{ UInt32Type.name };
     Symbol::Resolved(&WindingOrderCounterClockwise)->type = this;
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 2> {
+    auto enumResolved = Symbol::Resolved(this);
+    this->fromUnderlyingType.name = this->name;
+    this->fromUnderlyingType.returnType = Type::FullType{{ this->name }};
+    this->fromUnderlyingType.compileTime = true;
+    this->fromUnderlyingType.constructorType = this;
+    this->fromUnderlyingType.parameters = { &this->fromUnderlyingTypeArg };
+    this->fromUnderlyingTypeArg.name = "arg"_c;
+    this->fromUnderlyingTypeArg.type = this->type;
+    Symbol::Resolved(&this->fromUnderlyingTypeArg)->typeSymbol = enumResolved->typeSymbol;
+    Symbol::Resolved(&this->fromUnderlyingType)->returnTypeSymbol = this;
+    this->toUnderlyingType.name = this->type.name;
+    this->toUnderlyingType.returnType = this->type;
+    this->toUnderlyingType.compileTime = true;
+    this->toUnderlyingType.constructorType = this;
+    this->toUnderlyingType.parameters = { &this->toUnderlyingTypeArg };
+    this->toUnderlyingTypeArg.name = "arg"_c;
+    this->toUnderlyingTypeArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->toUnderlyingTypeArg)->typeSymbol = this;
+    Symbol::Resolved(&this->toUnderlyingType)->returnTypeSymbol = enumResolved->typeSymbol;
+    this->eqOp.name = "operator=="_c;
+    this->eqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->eqOpArg.name = "rhs"_c;
+    this->eqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->eqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->eqOp)->returnTypeSymbol = &Bool8Type;
+    this->neqOp.name = "operator!="_c;
+    this->neqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->neqOpArg.name = "rhs"_c;
+    this->neqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->neqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->neqOp)->returnTypeSymbol = &Bool8Type;
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 4> {
         std::pair{ "Clockwise"_c, &WindingOrderClockwise },
-        std::pair{ "CounterClockwise"_c, &WindingOrderCounterClockwise }
+        std::pair{ "CounterClockwise"_c, &WindingOrderCounterClockwise },
+        std::pair{ "operator!="_c, &WindingOrderType.neqOp },
+        std::pair{ "operator=="_c, &WindingOrderType.eqOp }
     };
 };
 WindingOrder WindingOrderType;
@@ -25212,7 +30386,38 @@ LogicOp::LogicOp()
     LogicOpXor.type = Type::FullType{ LogicOpType.name, true };
     LogicOpXor.underlyingType = Type::FullType{ UInt32Type.name };
     Symbol::Resolved(&LogicOpXor)->type = this;
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 16> {
+    auto enumResolved = Symbol::Resolved(this);
+    this->fromUnderlyingType.name = this->name;
+    this->fromUnderlyingType.returnType = Type::FullType{{ this->name }};
+    this->fromUnderlyingType.compileTime = true;
+    this->fromUnderlyingType.constructorType = this;
+    this->fromUnderlyingType.parameters = { &this->fromUnderlyingTypeArg };
+    this->fromUnderlyingTypeArg.name = "arg"_c;
+    this->fromUnderlyingTypeArg.type = this->type;
+    Symbol::Resolved(&this->fromUnderlyingTypeArg)->typeSymbol = enumResolved->typeSymbol;
+    Symbol::Resolved(&this->fromUnderlyingType)->returnTypeSymbol = this;
+    this->toUnderlyingType.name = this->type.name;
+    this->toUnderlyingType.returnType = this->type;
+    this->toUnderlyingType.compileTime = true;
+    this->toUnderlyingType.constructorType = this;
+    this->toUnderlyingType.parameters = { &this->toUnderlyingTypeArg };
+    this->toUnderlyingTypeArg.name = "arg"_c;
+    this->toUnderlyingTypeArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->toUnderlyingTypeArg)->typeSymbol = this;
+    Symbol::Resolved(&this->toUnderlyingType)->returnTypeSymbol = enumResolved->typeSymbol;
+    this->eqOp.name = "operator=="_c;
+    this->eqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->eqOpArg.name = "rhs"_c;
+    this->eqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->eqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->eqOp)->returnTypeSymbol = &Bool8Type;
+    this->neqOp.name = "operator!="_c;
+    this->neqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->neqOpArg.name = "rhs"_c;
+    this->neqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->neqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->neqOp)->returnTypeSymbol = &Bool8Type;
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 18> {
         std::pair{ "And"_c, &LogicOpAnd },
         std::pair{ "AndInverted"_c, &LogicOpAndInverted },
         std::pair{ "AndReverse"_c, &LogicOpAndReverse },
@@ -25228,7 +30433,9 @@ LogicOp::LogicOp()
         std::pair{ "OrInverted"_c, &LogicOpOrInverted },
         std::pair{ "OrReverse"_c, &LogicOpOrReverse },
         std::pair{ "Set"_c, &LogicOpSet },
-        std::pair{ "Xor"_c, &LogicOpXor }
+        std::pair{ "Xor"_c, &LogicOpXor },
+        std::pair{ "operator!="_c, &LogicOpType.neqOp },
+        std::pair{ "operator=="_c, &LogicOpType.eqOp }
     };
 };
 LogicOp LogicOpType;
@@ -25312,7 +30519,38 @@ BlendFactor::BlendFactor()
     BlendFactorOneMinusConstantAlpha.type = Type::FullType{ BlendFactorType.name, true };
     BlendFactorOneMinusConstantAlpha.underlyingType = Type::FullType{ UInt32Type.name };
     Symbol::Resolved(&BlendFactorOneMinusConstantAlpha)->type = this;
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 14> {
+    auto enumResolved = Symbol::Resolved(this);
+    this->fromUnderlyingType.name = this->name;
+    this->fromUnderlyingType.returnType = Type::FullType{{ this->name }};
+    this->fromUnderlyingType.compileTime = true;
+    this->fromUnderlyingType.constructorType = this;
+    this->fromUnderlyingType.parameters = { &this->fromUnderlyingTypeArg };
+    this->fromUnderlyingTypeArg.name = "arg"_c;
+    this->fromUnderlyingTypeArg.type = this->type;
+    Symbol::Resolved(&this->fromUnderlyingTypeArg)->typeSymbol = enumResolved->typeSymbol;
+    Symbol::Resolved(&this->fromUnderlyingType)->returnTypeSymbol = this;
+    this->toUnderlyingType.name = this->type.name;
+    this->toUnderlyingType.returnType = this->type;
+    this->toUnderlyingType.compileTime = true;
+    this->toUnderlyingType.constructorType = this;
+    this->toUnderlyingType.parameters = { &this->toUnderlyingTypeArg };
+    this->toUnderlyingTypeArg.name = "arg"_c;
+    this->toUnderlyingTypeArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->toUnderlyingTypeArg)->typeSymbol = this;
+    Symbol::Resolved(&this->toUnderlyingType)->returnTypeSymbol = enumResolved->typeSymbol;
+    this->eqOp.name = "operator=="_c;
+    this->eqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->eqOpArg.name = "rhs"_c;
+    this->eqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->eqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->eqOp)->returnTypeSymbol = &Bool8Type;
+    this->neqOp.name = "operator!="_c;
+    this->neqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->neqOpArg.name = "rhs"_c;
+    this->neqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->neqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->neqOp)->returnTypeSymbol = &Bool8Type;
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 16> {
         std::pair{ "ConstantAlpha"_c, &BlendFactorConstantAlpha },
         std::pair{ "ConstantColor"_c, &BlendFactorConstantColor },
         std::pair{ "DestinationAlpha"_c, &BlendFactorDestinationAlpha },
@@ -25326,7 +30564,9 @@ BlendFactor::BlendFactor()
         std::pair{ "OneMinusSourceColor"_c, &BlendFactorOneMinusSourceColor },
         std::pair{ "SourceAlpha"_c, &BlendFactorSourceAlpha },
         std::pair{ "SourceColor"_c, &BlendFactorSourceColor },
-        std::pair{ "Zero"_c, &BlendFactorZero }
+        std::pair{ "Zero"_c, &BlendFactorZero },
+        std::pair{ "operator!="_c, &BlendFactorType.neqOp },
+        std::pair{ "operator=="_c, &BlendFactorType.eqOp }
     };
 };
 BlendFactor BlendFactorType;
@@ -25365,12 +30605,45 @@ BlendOperation::BlendOperation()
     BlendOperationMax.type = Type::FullType{ BlendOperationType.name, true };
     BlendOperationMax.underlyingType = Type::FullType{ UInt32Type.name };
     Symbol::Resolved(&BlendOperationMax)->type = this;
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 5> {
+    auto enumResolved = Symbol::Resolved(this);
+    this->fromUnderlyingType.name = this->name;
+    this->fromUnderlyingType.returnType = Type::FullType{{ this->name }};
+    this->fromUnderlyingType.compileTime = true;
+    this->fromUnderlyingType.constructorType = this;
+    this->fromUnderlyingType.parameters = { &this->fromUnderlyingTypeArg };
+    this->fromUnderlyingTypeArg.name = "arg"_c;
+    this->fromUnderlyingTypeArg.type = this->type;
+    Symbol::Resolved(&this->fromUnderlyingTypeArg)->typeSymbol = enumResolved->typeSymbol;
+    Symbol::Resolved(&this->fromUnderlyingType)->returnTypeSymbol = this;
+    this->toUnderlyingType.name = this->type.name;
+    this->toUnderlyingType.returnType = this->type;
+    this->toUnderlyingType.compileTime = true;
+    this->toUnderlyingType.constructorType = this;
+    this->toUnderlyingType.parameters = { &this->toUnderlyingTypeArg };
+    this->toUnderlyingTypeArg.name = "arg"_c;
+    this->toUnderlyingTypeArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->toUnderlyingTypeArg)->typeSymbol = this;
+    Symbol::Resolved(&this->toUnderlyingType)->returnTypeSymbol = enumResolved->typeSymbol;
+    this->eqOp.name = "operator=="_c;
+    this->eqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->eqOpArg.name = "rhs"_c;
+    this->eqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->eqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->eqOp)->returnTypeSymbol = &Bool8Type;
+    this->neqOp.name = "operator!="_c;
+    this->neqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->neqOpArg.name = "rhs"_c;
+    this->neqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->neqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->neqOp)->returnTypeSymbol = &Bool8Type;
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 7> {
         std::pair{ "Add"_c, &BlendOperationAdd },
         std::pair{ "Max"_c, &BlendOperationMax },
         std::pair{ "Min"_c, &BlendOperationMin },
         std::pair{ "ReverseSubtract"_c, &BlendOperationReverseSubtract },
-        std::pair{ "Subtract"_c, &BlendOperationSubtract }
+        std::pair{ "Subtract"_c, &BlendOperationSubtract },
+        std::pair{ "operator!="_c, &BlendOperationType.neqOp },
+        std::pair{ "operator=="_c, &BlendOperationType.eqOp }
     };
 };
 BlendOperation BlendOperationType;
@@ -25393,28 +30666,61 @@ BlendColorMask::BlendColorMask()
     BlendColorMaskNone.type = Type::FullType{ BlendColorMaskType.name, true };
     BlendColorMaskNone.underlyingType = Type::FullType{ UInt32Type.name };
     Symbol::Resolved(&BlendColorMaskNone)->type = this;
-    BlendColorMaskR.value = 1;
+    BlendColorMaskR.value = 0x1;
     BlendColorMaskR.type = Type::FullType{ BlendColorMaskType.name, true };
     BlendColorMaskR.underlyingType = Type::FullType{ UInt32Type.name };
     Symbol::Resolved(&BlendColorMaskR)->type = this;
-    BlendColorMaskRG.value = 3;
+    BlendColorMaskRG.value = 0x2;
     BlendColorMaskRG.type = Type::FullType{ BlendColorMaskType.name, true };
     BlendColorMaskRG.underlyingType = Type::FullType{ UInt32Type.name };
     Symbol::Resolved(&BlendColorMaskRG)->type = this;
-    BlendColorMaskRGB.value = 7;
+    BlendColorMaskRGB.value = 0x3;
     BlendColorMaskRGB.type = Type::FullType{ BlendColorMaskType.name, true };
     BlendColorMaskRGB.underlyingType = Type::FullType{ UInt32Type.name };
     Symbol::Resolved(&BlendColorMaskRGB)->type = this;
-    BlendColorMaskRGBA.value = 15;
+    BlendColorMaskRGBA.value = 0x4;
     BlendColorMaskRGBA.type = Type::FullType{ BlendColorMaskType.name, true };
     BlendColorMaskRGBA.underlyingType = Type::FullType{ UInt32Type.name };
     Symbol::Resolved(&BlendColorMaskRGBA)->type = this;
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 5> {
+    auto enumResolved = Symbol::Resolved(this);
+    this->fromUnderlyingType.name = this->name;
+    this->fromUnderlyingType.returnType = Type::FullType{{ this->name }};
+    this->fromUnderlyingType.compileTime = true;
+    this->fromUnderlyingType.constructorType = this;
+    this->fromUnderlyingType.parameters = { &this->fromUnderlyingTypeArg };
+    this->fromUnderlyingTypeArg.name = "arg"_c;
+    this->fromUnderlyingTypeArg.type = this->type;
+    Symbol::Resolved(&this->fromUnderlyingTypeArg)->typeSymbol = enumResolved->typeSymbol;
+    Symbol::Resolved(&this->fromUnderlyingType)->returnTypeSymbol = this;
+    this->toUnderlyingType.name = this->type.name;
+    this->toUnderlyingType.returnType = this->type;
+    this->toUnderlyingType.compileTime = true;
+    this->toUnderlyingType.constructorType = this;
+    this->toUnderlyingType.parameters = { &this->toUnderlyingTypeArg };
+    this->toUnderlyingTypeArg.name = "arg"_c;
+    this->toUnderlyingTypeArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->toUnderlyingTypeArg)->typeSymbol = this;
+    Symbol::Resolved(&this->toUnderlyingType)->returnTypeSymbol = enumResolved->typeSymbol;
+    this->eqOp.name = "operator=="_c;
+    this->eqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->eqOpArg.name = "rhs"_c;
+    this->eqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->eqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->eqOp)->returnTypeSymbol = &Bool8Type;
+    this->neqOp.name = "operator!="_c;
+    this->neqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->neqOpArg.name = "rhs"_c;
+    this->neqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->neqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->neqOp)->returnTypeSymbol = &Bool8Type;
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 7> {
         std::pair{ "None"_c, &BlendColorMaskNone },
         std::pair{ "R"_c, &BlendColorMaskR },
         std::pair{ "RG"_c, &BlendColorMaskRG },
         std::pair{ "RGB"_c, &BlendColorMaskRGB },
-        std::pair{ "RGBA"_c, &BlendColorMaskRGBA }
+        std::pair{ "RGBA"_c, &BlendColorMaskRGBA },
+        std::pair{ "operator!="_c, &BlendColorMaskType.neqOp },
+        std::pair{ "operator=="_c, &BlendColorMaskType.eqOp }
     };
 };
 BlendColorMask BlendColorMaskType;
@@ -25478,7 +30784,38 @@ FilterMode::FilterMode()
     FilterModeMinPointMagLinearMipPoint.type = Type::FullType{ FilterModeType.name, true };
     FilterModeMinPointMagLinearMipPoint.underlyingType = Type::FullType{ UInt32Type.name };
     Symbol::Resolved(&FilterModeMinPointMagLinearMipPoint)->type = this;
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 10> {
+    auto enumResolved = Symbol::Resolved(this);
+    this->fromUnderlyingType.name = this->name;
+    this->fromUnderlyingType.returnType = Type::FullType{{ this->name }};
+    this->fromUnderlyingType.compileTime = true;
+    this->fromUnderlyingType.constructorType = this;
+    this->fromUnderlyingType.parameters = { &this->fromUnderlyingTypeArg };
+    this->fromUnderlyingTypeArg.name = "arg"_c;
+    this->fromUnderlyingTypeArg.type = this->type;
+    Symbol::Resolved(&this->fromUnderlyingTypeArg)->typeSymbol = enumResolved->typeSymbol;
+    Symbol::Resolved(&this->fromUnderlyingType)->returnTypeSymbol = this;
+    this->toUnderlyingType.name = this->type.name;
+    this->toUnderlyingType.returnType = this->type;
+    this->toUnderlyingType.compileTime = true;
+    this->toUnderlyingType.constructorType = this;
+    this->toUnderlyingType.parameters = { &this->toUnderlyingTypeArg };
+    this->toUnderlyingTypeArg.name = "arg"_c;
+    this->toUnderlyingTypeArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->toUnderlyingTypeArg)->typeSymbol = this;
+    Symbol::Resolved(&this->toUnderlyingType)->returnTypeSymbol = enumResolved->typeSymbol;
+    this->eqOp.name = "operator=="_c;
+    this->eqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->eqOpArg.name = "rhs"_c;
+    this->eqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->eqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->eqOp)->returnTypeSymbol = &Bool8Type;
+    this->neqOp.name = "operator!="_c;
+    this->neqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->neqOpArg.name = "rhs"_c;
+    this->neqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->neqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->neqOp)->returnTypeSymbol = &Bool8Type;
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 12> {
         std::pair{ "Linear"_c, &FilterModeLinear },
         std::pair{ "MinLinearMagMipPoint"_c, &FilterModeMinLinearMagMipPoint },
         std::pair{ "MinLinearMagPointMipLinear"_c, &FilterModeMinLinearMagPointMipLinear },
@@ -25488,7 +30825,9 @@ FilterMode::FilterMode()
         std::pair{ "MinMagPointMipLinear"_c, &FilterModeMinMagPointMipLinear },
         std::pair{ "MinPointMagLinearMipPoint"_c, &FilterModeMinPointMagLinearMipPoint },
         std::pair{ "MinPointMagMipLinear"_c, &FilterModeMinPointMagMipLinear },
-        std::pair{ "Point"_c, &FilterModePoint }
+        std::pair{ "Point"_c, &FilterModePoint },
+        std::pair{ "operator!="_c, &FilterModeType.neqOp },
+        std::pair{ "operator=="_c, &FilterModeType.eqOp }
     };
 };
 FilterMode FilterModeType;
@@ -25522,11 +30861,44 @@ AddressMode::AddressMode()
     AddressModeBorder.type = Type::FullType{ AddressModeType.name, true };
     AddressModeBorder.underlyingType = Type::FullType{ UInt32Type.name };
     Symbol::Resolved(&AddressModeBorder)->type = this;
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 4> {
+    auto enumResolved = Symbol::Resolved(this);
+    this->fromUnderlyingType.name = this->name;
+    this->fromUnderlyingType.returnType = Type::FullType{{ this->name }};
+    this->fromUnderlyingType.compileTime = true;
+    this->fromUnderlyingType.constructorType = this;
+    this->fromUnderlyingType.parameters = { &this->fromUnderlyingTypeArg };
+    this->fromUnderlyingTypeArg.name = "arg"_c;
+    this->fromUnderlyingTypeArg.type = this->type;
+    Symbol::Resolved(&this->fromUnderlyingTypeArg)->typeSymbol = enumResolved->typeSymbol;
+    Symbol::Resolved(&this->fromUnderlyingType)->returnTypeSymbol = this;
+    this->toUnderlyingType.name = this->type.name;
+    this->toUnderlyingType.returnType = this->type;
+    this->toUnderlyingType.compileTime = true;
+    this->toUnderlyingType.constructorType = this;
+    this->toUnderlyingType.parameters = { &this->toUnderlyingTypeArg };
+    this->toUnderlyingTypeArg.name = "arg"_c;
+    this->toUnderlyingTypeArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->toUnderlyingTypeArg)->typeSymbol = this;
+    Symbol::Resolved(&this->toUnderlyingType)->returnTypeSymbol = enumResolved->typeSymbol;
+    this->eqOp.name = "operator=="_c;
+    this->eqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->eqOpArg.name = "rhs"_c;
+    this->eqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->eqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->eqOp)->returnTypeSymbol = &Bool8Type;
+    this->neqOp.name = "operator!="_c;
+    this->neqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->neqOpArg.name = "rhs"_c;
+    this->neqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->neqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->neqOp)->returnTypeSymbol = &Bool8Type;
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 6> {
         std::pair{ "Border"_c, &AddressModeBorder },
         std::pair{ "Clamp"_c, &AddressModeClamp },
         std::pair{ "Mirror"_c, &AddressModeMirror },
-        std::pair{ "Repeat"_c, &AddressModeRepeat }
+        std::pair{ "Repeat"_c, &AddressModeRepeat },
+        std::pair{ "operator!="_c, &AddressModeType.neqOp },
+        std::pair{ "operator=="_c, &AddressModeType.eqOp }
     };
 };
 AddressMode AddressModeType;
@@ -25555,10 +30927,43 @@ BorderColor::BorderColor()
     BorderColorWhite.type = Type::FullType{ BorderColorType.name, true };
     BorderColorWhite.underlyingType = Type::FullType{ UInt32Type.name };
     Symbol::Resolved(&BorderColorWhite)->type = this;
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 3> {
+    auto enumResolved = Symbol::Resolved(this);
+    this->fromUnderlyingType.name = this->name;
+    this->fromUnderlyingType.returnType = Type::FullType{{ this->name }};
+    this->fromUnderlyingType.compileTime = true;
+    this->fromUnderlyingType.constructorType = this;
+    this->fromUnderlyingType.parameters = { &this->fromUnderlyingTypeArg };
+    this->fromUnderlyingTypeArg.name = "arg"_c;
+    this->fromUnderlyingTypeArg.type = this->type;
+    Symbol::Resolved(&this->fromUnderlyingTypeArg)->typeSymbol = enumResolved->typeSymbol;
+    Symbol::Resolved(&this->fromUnderlyingType)->returnTypeSymbol = this;
+    this->toUnderlyingType.name = this->type.name;
+    this->toUnderlyingType.returnType = this->type;
+    this->toUnderlyingType.compileTime = true;
+    this->toUnderlyingType.constructorType = this;
+    this->toUnderlyingType.parameters = { &this->toUnderlyingTypeArg };
+    this->toUnderlyingTypeArg.name = "arg"_c;
+    this->toUnderlyingTypeArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->toUnderlyingTypeArg)->typeSymbol = this;
+    Symbol::Resolved(&this->toUnderlyingType)->returnTypeSymbol = enumResolved->typeSymbol;
+    this->eqOp.name = "operator=="_c;
+    this->eqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->eqOpArg.name = "rhs"_c;
+    this->eqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->eqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->eqOp)->returnTypeSymbol = &Bool8Type;
+    this->neqOp.name = "operator!="_c;
+    this->neqOp.returnType = Type::FullType{{ "Bool8"_c }};
+    this->neqOpArg.name = "rhs"_c;
+    this->neqOpArg.type = Type::FullType{{ this->name }};
+    Symbol::Resolved(&this->neqOpArg)->typeSymbol = this;
+    Symbol::Resolved(&this->neqOp)->returnTypeSymbol = &Bool8Type;
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 5> {
         std::pair{ "Black"_c, &BorderColorBlack },
         std::pair{ "Transparent"_c, &BorderColorTransparent },
-        std::pair{ "White"_c, &BorderColorWhite }
+        std::pair{ "White"_c, &BorderColorWhite },
+        std::pair{ "operator!="_c, &BorderColorType.neqOp },
+        std::pair{ "operator=="_c, &BorderColorType.eqOp }
     };
 };
 BorderColor BorderColorType;

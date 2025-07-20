@@ -2270,6 +2270,11 @@ SPIRVResult SPIRV_Float32x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
 
+SPIRVResult SPIRV_Float32x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+}
+
 SPIRVResult SPIRV_UInt32x4_convert_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return ConverterTable[TypeConversionTable::UInt32ToFloat32](c, g, 4, args[0]);
@@ -2367,6 +2372,11 @@ SPIRVResult SPIRV_UInt32x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t 
 }
 
 SPIRVResult SPIRV_UInt32x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+}
+
+SPIRVResult SPIRV_UInt32x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
@@ -2472,6 +2482,11 @@ SPIRVResult SPIRV_Int32x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t r
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
 
+SPIRVResult SPIRV_Int32x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+}
+
 SPIRVResult SPIRV_Bool8x4_convert_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return ConverterTable[TypeConversionTable::Bool8ToUInt32](c, g, 4, args[0]);
@@ -2546,6 +2561,11 @@ SPIRVResult SPIRV_Bool8x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t r
 }
 
 SPIRVResult SPIRV_Bool8x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+}
+
+SPIRVResult SPIRV_Bool8x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
@@ -2651,6 +2671,11 @@ SPIRVResult SPIRV_Float16x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
 
+SPIRVResult SPIRV_Float16x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+}
+
 SPIRVResult SPIRV_UInt16x4_convert_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return ConverterTable[TypeConversionTable::UInt16ToFloat32](c, g, 4, args[0]);
@@ -2752,6 +2777,11 @@ SPIRVResult SPIRV_UInt16x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t 
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
 
+SPIRVResult SPIRV_UInt16x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+}
+
 SPIRVResult SPIRV_Int16x4_convert_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return ConverterTable[TypeConversionTable::Int16ToFloat32](c, g, 4, args[0]);
@@ -2849,6 +2879,11 @@ SPIRVResult SPIRV_Int16x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t r
 }
 
 SPIRVResult SPIRV_Int16x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+}
+
+SPIRVResult SPIRV_Int16x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
 }
@@ -4509,7 +4544,7 @@ SPIRVResult SPIRV_Float32x2_operator_scale_Int16(const Compiler* c, SPIRVGenerat
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x2_operator_mul_Float32x2x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x2_operator_transform_Float32x2x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -4517,7 +4552,7 @@ SPIRVResult SPIRV_Float32x2_operator_mul_Float32x2x2(const Compiler* c, SPIRVGen
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x2_operator_mul_Float32x2x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x2_operator_transform_Float32x2x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -4525,7 +4560,7 @@ SPIRVResult SPIRV_Float32x2_operator_mul_Float32x2x3(const Compiler* c, SPIRVGen
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x2_operator_mul_Float32x2x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x2_operator_transform_Float32x2x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -5437,7 +5472,7 @@ SPIRVResult SPIRV_Float16x2_operator_scale_Int16(const Compiler* c, SPIRVGenerat
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x2_operator_mul_Float32x2x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x2_operator_transform_Float32x2x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -5445,7 +5480,7 @@ SPIRVResult SPIRV_Float16x2_operator_mul_Float32x2x2(const Compiler* c, SPIRVGen
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x2_operator_mul_Float32x2x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x2_operator_transform_Float32x2x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -5453,7 +5488,7 @@ SPIRVResult SPIRV_Float16x2_operator_mul_Float32x2x3(const Compiler* c, SPIRVGen
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x2_operator_mul_Float32x2x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x2_operator_transform_Float32x2x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -6281,7 +6316,7 @@ SPIRVResult SPIRV_Float32x3_operator_scale_Int16(const Compiler* c, SPIRVGenerat
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x3_operator_mul_Float32x3x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x3_operator_transform_Float32x3x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -6289,7 +6324,7 @@ SPIRVResult SPIRV_Float32x3_operator_mul_Float32x3x2(const Compiler* c, SPIRVGen
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x3_operator_mul_Float32x3x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x3_operator_transform_Float32x3x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -6297,7 +6332,7 @@ SPIRVResult SPIRV_Float32x3_operator_mul_Float32x3x3(const Compiler* c, SPIRVGen
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x3_operator_mul_Float32x3x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x3_operator_transform_Float32x3x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -7209,7 +7244,7 @@ SPIRVResult SPIRV_Float16x3_operator_scale_Int16(const Compiler* c, SPIRVGenerat
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x3_operator_mul_Float32x3x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x3_operator_transform_Float32x3x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -7217,7 +7252,7 @@ SPIRVResult SPIRV_Float16x3_operator_mul_Float32x3x2(const Compiler* c, SPIRVGen
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x3_operator_mul_Float32x3x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x3_operator_transform_Float32x3x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -7225,7 +7260,7 @@ SPIRVResult SPIRV_Float16x3_operator_mul_Float32x3x3(const Compiler* c, SPIRVGen
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x3_operator_mul_Float32x3x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x3_operator_transform_Float32x3x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -8053,7 +8088,7 @@ SPIRVResult SPIRV_Float32x4_operator_scale_Int16(const Compiler* c, SPIRVGenerat
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x4_operator_mul_Float32x4x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x4_operator_transform_Float32x4x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -8061,7 +8096,7 @@ SPIRVResult SPIRV_Float32x4_operator_mul_Float32x4x2(const Compiler* c, SPIRVGen
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x4_operator_mul_Float32x4x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x4_operator_transform_Float32x4x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -8069,7 +8104,7 @@ SPIRVResult SPIRV_Float32x4_operator_mul_Float32x4x3(const Compiler* c, SPIRVGen
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float32x4_operator_mul_Float32x4x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float32x4_operator_transform_Float32x4x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -8981,7 +9016,7 @@ SPIRVResult SPIRV_Float16x4_operator_scale_Int16(const Compiler* c, SPIRVGenerat
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x4_operator_mul_Float32x4x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x4_operator_transform_Float32x4x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -8989,7 +9024,7 @@ SPIRVResult SPIRV_Float16x4_operator_mul_Float32x4x2(const Compiler* c, SPIRVGen
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x4_operator_mul_Float32x4x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x4_operator_transform_Float32x4x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -8997,7 +9032,7 @@ SPIRVResult SPIRV_Float16x4_operator_mul_Float32x4x3(const Compiler* c, SPIRVGen
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_Float16x4_operator_mul_Float32x4x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_Float16x4_operator_transform_Float32x4x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
@@ -9657,6 +9692,14 @@ SPIRVResult SPIRV_Float32x2x2_operator_index_UInt16(const Compiler* c, SPIRVGene
     return ret;
 }
 
+SPIRVResult SPIRV_Float32x2x2_transform_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpMatrixTimesVector, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    return SPIRVResult(ret, returnType, true);
+}
+
 SPIRVResult SPIRV_Float32x2x2_operator_add_Float32x2x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
@@ -9799,6 +9842,14 @@ SPIRVResult SPIRV_Float32x2x3_operator_index_UInt16(const Compiler* c, SPIRVGene
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
+}
+
+SPIRVResult SPIRV_Float32x2x3_transform_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpMatrixTimesVector, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_Float32x2x3_operator_add_Float32x2x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -9945,6 +9996,14 @@ SPIRVResult SPIRV_Float32x2x4_operator_index_UInt16(const Compiler* c, SPIRVGene
     return ret;
 }
 
+SPIRVResult SPIRV_Float32x2x4_transform_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpMatrixTimesVector, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    return SPIRVResult(ret, returnType, true);
+}
+
 SPIRVResult SPIRV_Float32x2x4_operator_add_Float32x2x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
@@ -10087,6 +10146,14 @@ SPIRVResult SPIRV_Float32x3x2_operator_index_UInt16(const Compiler* c, SPIRVGene
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
+}
+
+SPIRVResult SPIRV_Float32x3x2_transform_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpMatrixTimesVector, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_Float32x3x2_operator_add_Float32x3x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -10233,6 +10300,14 @@ SPIRVResult SPIRV_Float32x3x3_operator_index_UInt16(const Compiler* c, SPIRVGene
     return ret;
 }
 
+SPIRVResult SPIRV_Float32x3x3_transform_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpMatrixTimesVector, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    return SPIRVResult(ret, returnType, true);
+}
+
 SPIRVResult SPIRV_Float32x3x3_operator_add_Float32x3x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
@@ -10375,6 +10450,14 @@ SPIRVResult SPIRV_Float32x3x4_operator_index_UInt16(const Compiler* c, SPIRVGene
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
+}
+
+SPIRVResult SPIRV_Float32x3x4_transform_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpMatrixTimesVector, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_Float32x3x4_operator_add_Float32x3x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -10521,6 +10604,14 @@ SPIRVResult SPIRV_Float32x4x2_operator_index_UInt16(const Compiler* c, SPIRVGene
     return ret;
 }
 
+SPIRVResult SPIRV_Float32x4x2_transform_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpMatrixTimesVector, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    return SPIRVResult(ret, returnType, true);
+}
+
 SPIRVResult SPIRV_Float32x4x2_operator_add_Float32x4x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
@@ -10663,6 +10754,14 @@ SPIRVResult SPIRV_Float32x4x3_operator_index_UInt16(const Compiler* c, SPIRVGene
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
+}
+
+SPIRVResult SPIRV_Float32x4x3_transform_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpMatrixTimesVector, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_Float32x4x3_operator_add_Float32x4x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -10809,6 +10908,14 @@ SPIRVResult SPIRV_Float32x4x4_operator_index_UInt16(const Compiler* c, SPIRVGene
     return ret;
 }
 
+SPIRVResult SPIRV_Float32x4x4_transform_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpMatrixTimesVector, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    return SPIRVResult(ret, returnType, true);
+}
+
 SPIRVResult SPIRV_Float32x4x4_operator_add_Float32x4x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
@@ -10951,6 +11058,14 @@ SPIRVResult SPIRV_Float16x2x2_operator_index_UInt16(const Compiler* c, SPIRVGene
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
+}
+
+SPIRVResult SPIRV_Float16x2x2_transform_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpMatrixTimesVector, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_Float16x2x2_operator_add_Float16x2x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -11097,6 +11212,14 @@ SPIRVResult SPIRV_Float16x2x3_operator_index_UInt16(const Compiler* c, SPIRVGene
     return ret;
 }
 
+SPIRVResult SPIRV_Float16x2x3_transform_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpMatrixTimesVector, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    return SPIRVResult(ret, returnType, true);
+}
+
 SPIRVResult SPIRV_Float16x2x3_operator_add_Float16x2x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
@@ -11239,6 +11362,14 @@ SPIRVResult SPIRV_Float16x2x4_operator_index_UInt16(const Compiler* c, SPIRVGene
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
+}
+
+SPIRVResult SPIRV_Float16x2x4_transform_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpMatrixTimesVector, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_Float16x2x4_operator_add_Float16x2x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -11385,6 +11516,14 @@ SPIRVResult SPIRV_Float16x3x2_operator_index_UInt16(const Compiler* c, SPIRVGene
     return ret;
 }
 
+SPIRVResult SPIRV_Float16x3x2_transform_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpMatrixTimesVector, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    return SPIRVResult(ret, returnType, true);
+}
+
 SPIRVResult SPIRV_Float16x3x2_operator_add_Float16x3x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
@@ -11527,6 +11666,14 @@ SPIRVResult SPIRV_Float16x3x3_operator_index_UInt16(const Compiler* c, SPIRVGene
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
+}
+
+SPIRVResult SPIRV_Float16x3x3_transform_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpMatrixTimesVector, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_Float16x3x3_operator_add_Float16x3x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -11673,6 +11820,14 @@ SPIRVResult SPIRV_Float16x3x4_operator_index_UInt16(const Compiler* c, SPIRVGene
     return ret;
 }
 
+SPIRVResult SPIRV_Float16x3x4_transform_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpMatrixTimesVector, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    return SPIRVResult(ret, returnType, true);
+}
+
 SPIRVResult SPIRV_Float16x3x4_operator_add_Float16x3x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
@@ -11815,6 +11970,14 @@ SPIRVResult SPIRV_Float16x4x2_operator_index_UInt16(const Compiler* c, SPIRVGene
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
+}
+
+SPIRVResult SPIRV_Float16x4x2_transform_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpMatrixTimesVector, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_Float16x4x2_operator_add_Float16x4x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -11961,6 +12124,14 @@ SPIRVResult SPIRV_Float16x4x3_operator_index_UInt16(const Compiler* c, SPIRVGene
     return ret;
 }
 
+SPIRVResult SPIRV_Float16x4x3_transform_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpMatrixTimesVector, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    return SPIRVResult(ret, returnType, true);
+}
+
 SPIRVResult SPIRV_Float16x4x3_operator_add_Float16x4x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
@@ -12103,6 +12274,14 @@ SPIRVResult SPIRV_Float16x4x4_operator_index_UInt16(const Compiler* c, SPIRVGene
     ret.scope = args[0].scope;
     ret.isValue = false;
     return ret;
+}
+
+SPIRVResult SPIRV_Float16x4x4_transform_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpMatrixTimesVector, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_Float16x4x4_operator_add_Float16x4x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -23628,9 +23807,9 @@ std::pair{ &Float32x2_operator_scale_UInt32, &SPIRV_Float32x2_operator_scale_UIn
 std::pair{ &Float32x2_operator_scale_UInt16, &SPIRV_Float32x2_operator_scale_UInt16 },
 std::pair{ &Float32x2_operator_scale_Int32, &SPIRV_Float32x2_operator_scale_Int32 },
 std::pair{ &Float32x2_operator_scale_Int16, &SPIRV_Float32x2_operator_scale_Int16 },
-std::pair{ &Float32x2_operator_mul_Float32x2x2, &SPIRV_Float32x2_operator_mul_Float32x2x2 },
-std::pair{ &Float32x2_operator_mul_Float32x2x3, &SPIRV_Float32x2_operator_mul_Float32x2x3 },
-std::pair{ &Float32x2_operator_mul_Float32x2x4, &SPIRV_Float32x2_operator_mul_Float32x2x4 },
+std::pair{ &Float32x2_operator_transform_Float32x2x2, &SPIRV_Float32x2_operator_transform_Float32x2x2 },
+std::pair{ &Float32x2_operator_transform_Float32x2x3, &SPIRV_Float32x2_operator_transform_Float32x2x3 },
+std::pair{ &Float32x2_operator_transform_Float32x2x4, &SPIRV_Float32x2_operator_transform_Float32x2x4 },
 std::pair{ &UInt32x2_convert_Float32x2, &SPIRV_UInt32x2_convert_Float32x2 },
 std::pair{ &UInt32x2_splat_Float32, &SPIRV_UInt32x2_splat_Float32 },
 std::pair{ &UInt32x2_convert_UInt32x2, &SPIRV_UInt32x2_convert_UInt32x2 },
@@ -23782,9 +23961,9 @@ std::pair{ &Float16x2_operator_scale_UInt32, &SPIRV_Float16x2_operator_scale_UIn
 std::pair{ &Float16x2_operator_scale_UInt16, &SPIRV_Float16x2_operator_scale_UInt16 },
 std::pair{ &Float16x2_operator_scale_Int32, &SPIRV_Float16x2_operator_scale_Int32 },
 std::pair{ &Float16x2_operator_scale_Int16, &SPIRV_Float16x2_operator_scale_Int16 },
-std::pair{ &Float16x2_operator_mul_Float32x2x2, &SPIRV_Float16x2_operator_mul_Float32x2x2 },
-std::pair{ &Float16x2_operator_mul_Float32x2x3, &SPIRV_Float16x2_operator_mul_Float32x2x3 },
-std::pair{ &Float16x2_operator_mul_Float32x2x4, &SPIRV_Float16x2_operator_mul_Float32x2x4 },
+std::pair{ &Float16x2_operator_transform_Float32x2x2, &SPIRV_Float16x2_operator_transform_Float32x2x2 },
+std::pair{ &Float16x2_operator_transform_Float32x2x3, &SPIRV_Float16x2_operator_transform_Float32x2x3 },
+std::pair{ &Float16x2_operator_transform_Float32x2x4, &SPIRV_Float16x2_operator_transform_Float32x2x4 },
 std::pair{ &UInt16x2_convert_Float32x2, &SPIRV_UInt16x2_convert_Float32x2 },
 std::pair{ &UInt16x2_splat_Float32, &SPIRV_UInt16x2_splat_Float32 },
 std::pair{ &UInt16x2_convert_UInt32x2, &SPIRV_UInt16x2_convert_UInt32x2 },
@@ -23921,9 +24100,9 @@ std::pair{ &Float32x3_operator_scale_UInt32, &SPIRV_Float32x3_operator_scale_UIn
 std::pair{ &Float32x3_operator_scale_UInt16, &SPIRV_Float32x3_operator_scale_UInt16 },
 std::pair{ &Float32x3_operator_scale_Int32, &SPIRV_Float32x3_operator_scale_Int32 },
 std::pair{ &Float32x3_operator_scale_Int16, &SPIRV_Float32x3_operator_scale_Int16 },
-std::pair{ &Float32x3_operator_mul_Float32x3x2, &SPIRV_Float32x3_operator_mul_Float32x3x2 },
-std::pair{ &Float32x3_operator_mul_Float32x3x3, &SPIRV_Float32x3_operator_mul_Float32x3x3 },
-std::pair{ &Float32x3_operator_mul_Float32x3x4, &SPIRV_Float32x3_operator_mul_Float32x3x4 },
+std::pair{ &Float32x3_operator_transform_Float32x3x2, &SPIRV_Float32x3_operator_transform_Float32x3x2 },
+std::pair{ &Float32x3_operator_transform_Float32x3x3, &SPIRV_Float32x3_operator_transform_Float32x3x3 },
+std::pair{ &Float32x3_operator_transform_Float32x3x4, &SPIRV_Float32x3_operator_transform_Float32x3x4 },
 std::pair{ &UInt32x3_convert_Float32x3, &SPIRV_UInt32x3_convert_Float32x3 },
 std::pair{ &UInt32x3_splat_Float32, &SPIRV_UInt32x3_splat_Float32 },
 std::pair{ &UInt32x3_convert_UInt32x3, &SPIRV_UInt32x3_convert_UInt32x3 },
@@ -24083,9 +24262,9 @@ std::pair{ &Float16x3_operator_scale_UInt32, &SPIRV_Float16x3_operator_scale_UIn
 std::pair{ &Float16x3_operator_scale_UInt16, &SPIRV_Float16x3_operator_scale_UInt16 },
 std::pair{ &Float16x3_operator_scale_Int32, &SPIRV_Float16x3_operator_scale_Int32 },
 std::pair{ &Float16x3_operator_scale_Int16, &SPIRV_Float16x3_operator_scale_Int16 },
-std::pair{ &Float16x3_operator_mul_Float32x3x2, &SPIRV_Float16x3_operator_mul_Float32x3x2 },
-std::pair{ &Float16x3_operator_mul_Float32x3x3, &SPIRV_Float16x3_operator_mul_Float32x3x3 },
-std::pair{ &Float16x3_operator_mul_Float32x3x4, &SPIRV_Float16x3_operator_mul_Float32x3x4 },
+std::pair{ &Float16x3_operator_transform_Float32x3x2, &SPIRV_Float16x3_operator_transform_Float32x3x2 },
+std::pair{ &Float16x3_operator_transform_Float32x3x3, &SPIRV_Float16x3_operator_transform_Float32x3x3 },
+std::pair{ &Float16x3_operator_transform_Float32x3x4, &SPIRV_Float16x3_operator_transform_Float32x3x4 },
 std::pair{ &UInt16x3_convert_Float32x3, &SPIRV_UInt16x3_convert_Float32x3 },
 std::pair{ &UInt16x3_splat_Float32, &SPIRV_UInt16x3_splat_Float32 },
 std::pair{ &UInt16x3_convert_UInt32x3, &SPIRV_UInt16x3_convert_UInt32x3 },
@@ -24204,6 +24383,7 @@ std::pair{ &Float32x4_ctor2, &SPIRV_Float32x4_ctor2 },
 std::pair{ &Float32x4_ctor3, &SPIRV_Float32x4_ctor3 },
 std::pair{ &Float32x4_ctor4, &SPIRV_Float32x4_ctor4 },
 std::pair{ &Float32x4_ctor5, &SPIRV_Float32x4_ctor5 },
+std::pair{ &Float32x4_ctor6, &SPIRV_Float32x4_ctor6 },
 std::pair{ &Float32x4_operator_index_Int32, &SPIRV_Float32x4_operator_index_Int32 },
 std::pair{ &Float32x4_operator_index_UInt32, &SPIRV_Float32x4_operator_index_UInt32 },
 std::pair{ &Float32x4_operator_index_Int16, &SPIRV_Float32x4_operator_index_Int16 },
@@ -24229,9 +24409,9 @@ std::pair{ &Float32x4_operator_scale_UInt32, &SPIRV_Float32x4_operator_scale_UIn
 std::pair{ &Float32x4_operator_scale_UInt16, &SPIRV_Float32x4_operator_scale_UInt16 },
 std::pair{ &Float32x4_operator_scale_Int32, &SPIRV_Float32x4_operator_scale_Int32 },
 std::pair{ &Float32x4_operator_scale_Int16, &SPIRV_Float32x4_operator_scale_Int16 },
-std::pair{ &Float32x4_operator_mul_Float32x4x2, &SPIRV_Float32x4_operator_mul_Float32x4x2 },
-std::pair{ &Float32x4_operator_mul_Float32x4x3, &SPIRV_Float32x4_operator_mul_Float32x4x3 },
-std::pair{ &Float32x4_operator_mul_Float32x4x4, &SPIRV_Float32x4_operator_mul_Float32x4x4 },
+std::pair{ &Float32x4_operator_transform_Float32x4x2, &SPIRV_Float32x4_operator_transform_Float32x4x2 },
+std::pair{ &Float32x4_operator_transform_Float32x4x3, &SPIRV_Float32x4_operator_transform_Float32x4x3 },
+std::pair{ &Float32x4_operator_transform_Float32x4x4, &SPIRV_Float32x4_operator_transform_Float32x4x4 },
 std::pair{ &UInt32x4_convert_Float32x4, &SPIRV_UInt32x4_convert_Float32x4 },
 std::pair{ &UInt32x4_splat_Float32, &SPIRV_UInt32x4_splat_Float32 },
 std::pair{ &UInt32x4_convert_UInt32x4, &SPIRV_UInt32x4_convert_UInt32x4 },
@@ -24250,6 +24430,7 @@ std::pair{ &UInt32x4_ctor2, &SPIRV_UInt32x4_ctor2 },
 std::pair{ &UInt32x4_ctor3, &SPIRV_UInt32x4_ctor3 },
 std::pair{ &UInt32x4_ctor4, &SPIRV_UInt32x4_ctor4 },
 std::pair{ &UInt32x4_ctor5, &SPIRV_UInt32x4_ctor5 },
+std::pair{ &UInt32x4_ctor6, &SPIRV_UInt32x4_ctor6 },
 std::pair{ &UInt32x4_operator_index_Int32, &SPIRV_UInt32x4_operator_index_Int32 },
 std::pair{ &UInt32x4_operator_index_UInt32, &SPIRV_UInt32x4_operator_index_UInt32 },
 std::pair{ &UInt32x4_operator_index_Int16, &SPIRV_UInt32x4_operator_index_Int16 },
@@ -24303,6 +24484,7 @@ std::pair{ &Int32x4_ctor2, &SPIRV_Int32x4_ctor2 },
 std::pair{ &Int32x4_ctor3, &SPIRV_Int32x4_ctor3 },
 std::pair{ &Int32x4_ctor4, &SPIRV_Int32x4_ctor4 },
 std::pair{ &Int32x4_ctor5, &SPIRV_Int32x4_ctor5 },
+std::pair{ &Int32x4_ctor6, &SPIRV_Int32x4_ctor6 },
 std::pair{ &Int32x4_operator_index_Int32, &SPIRV_Int32x4_operator_index_Int32 },
 std::pair{ &Int32x4_operator_index_UInt32, &SPIRV_Int32x4_operator_index_UInt32 },
 std::pair{ &Int32x4_operator_index_Int16, &SPIRV_Int32x4_operator_index_Int16 },
@@ -24352,6 +24534,7 @@ std::pair{ &Bool8x4_ctor2, &SPIRV_Bool8x4_ctor2 },
 std::pair{ &Bool8x4_ctor3, &SPIRV_Bool8x4_ctor3 },
 std::pair{ &Bool8x4_ctor4, &SPIRV_Bool8x4_ctor4 },
 std::pair{ &Bool8x4_ctor5, &SPIRV_Bool8x4_ctor5 },
+std::pair{ &Bool8x4_ctor6, &SPIRV_Bool8x4_ctor6 },
 std::pair{ &Bool8x4_operator_index_Int32, &SPIRV_Bool8x4_operator_index_Int32 },
 std::pair{ &Bool8x4_operator_index_UInt32, &SPIRV_Bool8x4_operator_index_UInt32 },
 std::pair{ &Bool8x4_operator_index_Int16, &SPIRV_Bool8x4_operator_index_Int16 },
@@ -24378,6 +24561,7 @@ std::pair{ &Float16x4_ctor2, &SPIRV_Float16x4_ctor2 },
 std::pair{ &Float16x4_ctor3, &SPIRV_Float16x4_ctor3 },
 std::pair{ &Float16x4_ctor4, &SPIRV_Float16x4_ctor4 },
 std::pair{ &Float16x4_ctor5, &SPIRV_Float16x4_ctor5 },
+std::pair{ &Float16x4_ctor6, &SPIRV_Float16x4_ctor6 },
 std::pair{ &Float16x4_operator_index_Int32, &SPIRV_Float16x4_operator_index_Int32 },
 std::pair{ &Float16x4_operator_index_UInt32, &SPIRV_Float16x4_operator_index_UInt32 },
 std::pair{ &Float16x4_operator_index_Int16, &SPIRV_Float16x4_operator_index_Int16 },
@@ -24403,9 +24587,9 @@ std::pair{ &Float16x4_operator_scale_UInt32, &SPIRV_Float16x4_operator_scale_UIn
 std::pair{ &Float16x4_operator_scale_UInt16, &SPIRV_Float16x4_operator_scale_UInt16 },
 std::pair{ &Float16x4_operator_scale_Int32, &SPIRV_Float16x4_operator_scale_Int32 },
 std::pair{ &Float16x4_operator_scale_Int16, &SPIRV_Float16x4_operator_scale_Int16 },
-std::pair{ &Float16x4_operator_mul_Float32x4x2, &SPIRV_Float16x4_operator_mul_Float32x4x2 },
-std::pair{ &Float16x4_operator_mul_Float32x4x3, &SPIRV_Float16x4_operator_mul_Float32x4x3 },
-std::pair{ &Float16x4_operator_mul_Float32x4x4, &SPIRV_Float16x4_operator_mul_Float32x4x4 },
+std::pair{ &Float16x4_operator_transform_Float32x4x2, &SPIRV_Float16x4_operator_transform_Float32x4x2 },
+std::pair{ &Float16x4_operator_transform_Float32x4x3, &SPIRV_Float16x4_operator_transform_Float32x4x3 },
+std::pair{ &Float16x4_operator_transform_Float32x4x4, &SPIRV_Float16x4_operator_transform_Float32x4x4 },
 std::pair{ &UInt16x4_convert_Float32x4, &SPIRV_UInt16x4_convert_Float32x4 },
 std::pair{ &UInt16x4_splat_Float32, &SPIRV_UInt16x4_splat_Float32 },
 std::pair{ &UInt16x4_convert_UInt32x4, &SPIRV_UInt16x4_convert_UInt32x4 },
@@ -24424,6 +24608,7 @@ std::pair{ &UInt16x4_ctor2, &SPIRV_UInt16x4_ctor2 },
 std::pair{ &UInt16x4_ctor3, &SPIRV_UInt16x4_ctor3 },
 std::pair{ &UInt16x4_ctor4, &SPIRV_UInt16x4_ctor4 },
 std::pair{ &UInt16x4_ctor5, &SPIRV_UInt16x4_ctor5 },
+std::pair{ &UInt16x4_ctor6, &SPIRV_UInt16x4_ctor6 },
 std::pair{ &UInt16x4_operator_index_Int32, &SPIRV_UInt16x4_operator_index_Int32 },
 std::pair{ &UInt16x4_operator_index_UInt32, &SPIRV_UInt16x4_operator_index_UInt32 },
 std::pair{ &UInt16x4_operator_index_Int16, &SPIRV_UInt16x4_operator_index_Int16 },
@@ -24477,6 +24662,7 @@ std::pair{ &Int16x4_ctor2, &SPIRV_Int16x4_ctor2 },
 std::pair{ &Int16x4_ctor3, &SPIRV_Int16x4_ctor3 },
 std::pair{ &Int16x4_ctor4, &SPIRV_Int16x4_ctor4 },
 std::pair{ &Int16x4_ctor5, &SPIRV_Int16x4_ctor5 },
+std::pair{ &Int16x4_ctor6, &SPIRV_Int16x4_ctor6 },
 std::pair{ &Int16x4_operator_index_Int32, &SPIRV_Int16x4_operator_index_Int32 },
 std::pair{ &Int16x4_operator_index_UInt32, &SPIRV_Int16x4_operator_index_UInt32 },
 std::pair{ &Int16x4_operator_index_Int16, &SPIRV_Int16x4_operator_index_Int16 },
@@ -24516,6 +24702,7 @@ std::pair{ &Float32x2x2_operator_index_Int32, &SPIRV_Float32x2x2_operator_index_
 std::pair{ &Float32x2x2_operator_index_UInt32, &SPIRV_Float32x2x2_operator_index_UInt32 },
 std::pair{ &Float32x2x2_operator_index_Int16, &SPIRV_Float32x2x2_operator_index_Int16 },
 std::pair{ &Float32x2x2_operator_index_UInt16, &SPIRV_Float32x2x2_operator_index_UInt16 },
+std::pair{ &Float32x2x2_transform_Float32x2, &SPIRV_Float32x2x2_transform_Float32x2 },
 std::pair{ &Float32x2x2_operator_add_Float32x2x2, &SPIRV_Float32x2x2_operator_add_Float32x2x2 },
 std::pair{ &Float32x2x2_operator_sub_Float32x2x2, &SPIRV_Float32x2x2_operator_sub_Float32x2x2 },
 std::pair{ &Float32x2x2_operator_mul_Float32x2x2, &SPIRV_Float32x2x2_operator_mul_Float32x2x2 },
@@ -24527,6 +24714,7 @@ std::pair{ &Float32x2x3_operator_index_Int32, &SPIRV_Float32x2x3_operator_index_
 std::pair{ &Float32x2x3_operator_index_UInt32, &SPIRV_Float32x2x3_operator_index_UInt32 },
 std::pair{ &Float32x2x3_operator_index_Int16, &SPIRV_Float32x2x3_operator_index_Int16 },
 std::pair{ &Float32x2x3_operator_index_UInt16, &SPIRV_Float32x2x3_operator_index_UInt16 },
+std::pair{ &Float32x2x3_transform_Float32x3, &SPIRV_Float32x2x3_transform_Float32x3 },
 std::pair{ &Float32x2x3_operator_add_Float32x2x3, &SPIRV_Float32x2x3_operator_add_Float32x2x3 },
 std::pair{ &Float32x2x3_operator_sub_Float32x2x3, &SPIRV_Float32x2x3_operator_sub_Float32x2x3 },
 std::pair{ &Float32x2x3_operator_mul_Float32x2x3, &SPIRV_Float32x2x3_operator_mul_Float32x2x3 },
@@ -24538,6 +24726,7 @@ std::pair{ &Float32x2x4_operator_index_Int32, &SPIRV_Float32x2x4_operator_index_
 std::pair{ &Float32x2x4_operator_index_UInt32, &SPIRV_Float32x2x4_operator_index_UInt32 },
 std::pair{ &Float32x2x4_operator_index_Int16, &SPIRV_Float32x2x4_operator_index_Int16 },
 std::pair{ &Float32x2x4_operator_index_UInt16, &SPIRV_Float32x2x4_operator_index_UInt16 },
+std::pair{ &Float32x2x4_transform_Float32x4, &SPIRV_Float32x2x4_transform_Float32x4 },
 std::pair{ &Float32x2x4_operator_add_Float32x2x4, &SPIRV_Float32x2x4_operator_add_Float32x2x4 },
 std::pair{ &Float32x2x4_operator_sub_Float32x2x4, &SPIRV_Float32x2x4_operator_sub_Float32x2x4 },
 std::pair{ &Float32x2x4_operator_mul_Float32x2x4, &SPIRV_Float32x2x4_operator_mul_Float32x2x4 },
@@ -24549,6 +24738,7 @@ std::pair{ &Float32x3x2_operator_index_Int32, &SPIRV_Float32x3x2_operator_index_
 std::pair{ &Float32x3x2_operator_index_UInt32, &SPIRV_Float32x3x2_operator_index_UInt32 },
 std::pair{ &Float32x3x2_operator_index_Int16, &SPIRV_Float32x3x2_operator_index_Int16 },
 std::pair{ &Float32x3x2_operator_index_UInt16, &SPIRV_Float32x3x2_operator_index_UInt16 },
+std::pair{ &Float32x3x2_transform_Float32x2, &SPIRV_Float32x3x2_transform_Float32x2 },
 std::pair{ &Float32x3x2_operator_add_Float32x3x2, &SPIRV_Float32x3x2_operator_add_Float32x3x2 },
 std::pair{ &Float32x3x2_operator_sub_Float32x3x2, &SPIRV_Float32x3x2_operator_sub_Float32x3x2 },
 std::pair{ &Float32x3x2_operator_mul_Float32x3x2, &SPIRV_Float32x3x2_operator_mul_Float32x3x2 },
@@ -24560,6 +24750,7 @@ std::pair{ &Float32x3x3_operator_index_Int32, &SPIRV_Float32x3x3_operator_index_
 std::pair{ &Float32x3x3_operator_index_UInt32, &SPIRV_Float32x3x3_operator_index_UInt32 },
 std::pair{ &Float32x3x3_operator_index_Int16, &SPIRV_Float32x3x3_operator_index_Int16 },
 std::pair{ &Float32x3x3_operator_index_UInt16, &SPIRV_Float32x3x3_operator_index_UInt16 },
+std::pair{ &Float32x3x3_transform_Float32x3, &SPIRV_Float32x3x3_transform_Float32x3 },
 std::pair{ &Float32x3x3_operator_add_Float32x3x3, &SPIRV_Float32x3x3_operator_add_Float32x3x3 },
 std::pair{ &Float32x3x3_operator_sub_Float32x3x3, &SPIRV_Float32x3x3_operator_sub_Float32x3x3 },
 std::pair{ &Float32x3x3_operator_mul_Float32x3x3, &SPIRV_Float32x3x3_operator_mul_Float32x3x3 },
@@ -24571,6 +24762,7 @@ std::pair{ &Float32x3x4_operator_index_Int32, &SPIRV_Float32x3x4_operator_index_
 std::pair{ &Float32x3x4_operator_index_UInt32, &SPIRV_Float32x3x4_operator_index_UInt32 },
 std::pair{ &Float32x3x4_operator_index_Int16, &SPIRV_Float32x3x4_operator_index_Int16 },
 std::pair{ &Float32x3x4_operator_index_UInt16, &SPIRV_Float32x3x4_operator_index_UInt16 },
+std::pair{ &Float32x3x4_transform_Float32x4, &SPIRV_Float32x3x4_transform_Float32x4 },
 std::pair{ &Float32x3x4_operator_add_Float32x3x4, &SPIRV_Float32x3x4_operator_add_Float32x3x4 },
 std::pair{ &Float32x3x4_operator_sub_Float32x3x4, &SPIRV_Float32x3x4_operator_sub_Float32x3x4 },
 std::pair{ &Float32x3x4_operator_mul_Float32x3x4, &SPIRV_Float32x3x4_operator_mul_Float32x3x4 },
@@ -24582,6 +24774,7 @@ std::pair{ &Float32x4x2_operator_index_Int32, &SPIRV_Float32x4x2_operator_index_
 std::pair{ &Float32x4x2_operator_index_UInt32, &SPIRV_Float32x4x2_operator_index_UInt32 },
 std::pair{ &Float32x4x2_operator_index_Int16, &SPIRV_Float32x4x2_operator_index_Int16 },
 std::pair{ &Float32x4x2_operator_index_UInt16, &SPIRV_Float32x4x2_operator_index_UInt16 },
+std::pair{ &Float32x4x2_transform_Float32x2, &SPIRV_Float32x4x2_transform_Float32x2 },
 std::pair{ &Float32x4x2_operator_add_Float32x4x2, &SPIRV_Float32x4x2_operator_add_Float32x4x2 },
 std::pair{ &Float32x4x2_operator_sub_Float32x4x2, &SPIRV_Float32x4x2_operator_sub_Float32x4x2 },
 std::pair{ &Float32x4x2_operator_mul_Float32x4x2, &SPIRV_Float32x4x2_operator_mul_Float32x4x2 },
@@ -24593,6 +24786,7 @@ std::pair{ &Float32x4x3_operator_index_Int32, &SPIRV_Float32x4x3_operator_index_
 std::pair{ &Float32x4x3_operator_index_UInt32, &SPIRV_Float32x4x3_operator_index_UInt32 },
 std::pair{ &Float32x4x3_operator_index_Int16, &SPIRV_Float32x4x3_operator_index_Int16 },
 std::pair{ &Float32x4x3_operator_index_UInt16, &SPIRV_Float32x4x3_operator_index_UInt16 },
+std::pair{ &Float32x4x3_transform_Float32x3, &SPIRV_Float32x4x3_transform_Float32x3 },
 std::pair{ &Float32x4x3_operator_add_Float32x4x3, &SPIRV_Float32x4x3_operator_add_Float32x4x3 },
 std::pair{ &Float32x4x3_operator_sub_Float32x4x3, &SPIRV_Float32x4x3_operator_sub_Float32x4x3 },
 std::pair{ &Float32x4x3_operator_mul_Float32x4x3, &SPIRV_Float32x4x3_operator_mul_Float32x4x3 },
@@ -24604,6 +24798,7 @@ std::pair{ &Float32x4x4_operator_index_Int32, &SPIRV_Float32x4x4_operator_index_
 std::pair{ &Float32x4x4_operator_index_UInt32, &SPIRV_Float32x4x4_operator_index_UInt32 },
 std::pair{ &Float32x4x4_operator_index_Int16, &SPIRV_Float32x4x4_operator_index_Int16 },
 std::pair{ &Float32x4x4_operator_index_UInt16, &SPIRV_Float32x4x4_operator_index_UInt16 },
+std::pair{ &Float32x4x4_transform_Float32x4, &SPIRV_Float32x4x4_transform_Float32x4 },
 std::pair{ &Float32x4x4_operator_add_Float32x4x4, &SPIRV_Float32x4x4_operator_add_Float32x4x4 },
 std::pair{ &Float32x4x4_operator_sub_Float32x4x4, &SPIRV_Float32x4x4_operator_sub_Float32x4x4 },
 std::pair{ &Float32x4x4_operator_mul_Float32x4x4, &SPIRV_Float32x4x4_operator_mul_Float32x4x4 },
@@ -24615,6 +24810,7 @@ std::pair{ &Float16x2x2_operator_index_Int32, &SPIRV_Float16x2x2_operator_index_
 std::pair{ &Float16x2x2_operator_index_UInt32, &SPIRV_Float16x2x2_operator_index_UInt32 },
 std::pair{ &Float16x2x2_operator_index_Int16, &SPIRV_Float16x2x2_operator_index_Int16 },
 std::pair{ &Float16x2x2_operator_index_UInt16, &SPIRV_Float16x2x2_operator_index_UInt16 },
+std::pair{ &Float16x2x2_transform_Float16x2, &SPIRV_Float16x2x2_transform_Float16x2 },
 std::pair{ &Float16x2x2_operator_add_Float16x2x2, &SPIRV_Float16x2x2_operator_add_Float16x2x2 },
 std::pair{ &Float16x2x2_operator_sub_Float16x2x2, &SPIRV_Float16x2x2_operator_sub_Float16x2x2 },
 std::pair{ &Float16x2x2_operator_mul_Float16x2x2, &SPIRV_Float16x2x2_operator_mul_Float16x2x2 },
@@ -24626,6 +24822,7 @@ std::pair{ &Float16x2x3_operator_index_Int32, &SPIRV_Float16x2x3_operator_index_
 std::pair{ &Float16x2x3_operator_index_UInt32, &SPIRV_Float16x2x3_operator_index_UInt32 },
 std::pair{ &Float16x2x3_operator_index_Int16, &SPIRV_Float16x2x3_operator_index_Int16 },
 std::pair{ &Float16x2x3_operator_index_UInt16, &SPIRV_Float16x2x3_operator_index_UInt16 },
+std::pair{ &Float16x2x3_transform_Float16x3, &SPIRV_Float16x2x3_transform_Float16x3 },
 std::pair{ &Float16x2x3_operator_add_Float16x2x3, &SPIRV_Float16x2x3_operator_add_Float16x2x3 },
 std::pair{ &Float16x2x3_operator_sub_Float16x2x3, &SPIRV_Float16x2x3_operator_sub_Float16x2x3 },
 std::pair{ &Float16x2x3_operator_mul_Float16x2x3, &SPIRV_Float16x2x3_operator_mul_Float16x2x3 },
@@ -24637,6 +24834,7 @@ std::pair{ &Float16x2x4_operator_index_Int32, &SPIRV_Float16x2x4_operator_index_
 std::pair{ &Float16x2x4_operator_index_UInt32, &SPIRV_Float16x2x4_operator_index_UInt32 },
 std::pair{ &Float16x2x4_operator_index_Int16, &SPIRV_Float16x2x4_operator_index_Int16 },
 std::pair{ &Float16x2x4_operator_index_UInt16, &SPIRV_Float16x2x4_operator_index_UInt16 },
+std::pair{ &Float16x2x4_transform_Float16x4, &SPIRV_Float16x2x4_transform_Float16x4 },
 std::pair{ &Float16x2x4_operator_add_Float16x2x4, &SPIRV_Float16x2x4_operator_add_Float16x2x4 },
 std::pair{ &Float16x2x4_operator_sub_Float16x2x4, &SPIRV_Float16x2x4_operator_sub_Float16x2x4 },
 std::pair{ &Float16x2x4_operator_mul_Float16x2x4, &SPIRV_Float16x2x4_operator_mul_Float16x2x4 },
@@ -24648,6 +24846,7 @@ std::pair{ &Float16x3x2_operator_index_Int32, &SPIRV_Float16x3x2_operator_index_
 std::pair{ &Float16x3x2_operator_index_UInt32, &SPIRV_Float16x3x2_operator_index_UInt32 },
 std::pair{ &Float16x3x2_operator_index_Int16, &SPIRV_Float16x3x2_operator_index_Int16 },
 std::pair{ &Float16x3x2_operator_index_UInt16, &SPIRV_Float16x3x2_operator_index_UInt16 },
+std::pair{ &Float16x3x2_transform_Float16x2, &SPIRV_Float16x3x2_transform_Float16x2 },
 std::pair{ &Float16x3x2_operator_add_Float16x3x2, &SPIRV_Float16x3x2_operator_add_Float16x3x2 },
 std::pair{ &Float16x3x2_operator_sub_Float16x3x2, &SPIRV_Float16x3x2_operator_sub_Float16x3x2 },
 std::pair{ &Float16x3x2_operator_mul_Float16x3x2, &SPIRV_Float16x3x2_operator_mul_Float16x3x2 },
@@ -24659,6 +24858,7 @@ std::pair{ &Float16x3x3_operator_index_Int32, &SPIRV_Float16x3x3_operator_index_
 std::pair{ &Float16x3x3_operator_index_UInt32, &SPIRV_Float16x3x3_operator_index_UInt32 },
 std::pair{ &Float16x3x3_operator_index_Int16, &SPIRV_Float16x3x3_operator_index_Int16 },
 std::pair{ &Float16x3x3_operator_index_UInt16, &SPIRV_Float16x3x3_operator_index_UInt16 },
+std::pair{ &Float16x3x3_transform_Float16x3, &SPIRV_Float16x3x3_transform_Float16x3 },
 std::pair{ &Float16x3x3_operator_add_Float16x3x3, &SPIRV_Float16x3x3_operator_add_Float16x3x3 },
 std::pair{ &Float16x3x3_operator_sub_Float16x3x3, &SPIRV_Float16x3x3_operator_sub_Float16x3x3 },
 std::pair{ &Float16x3x3_operator_mul_Float16x3x3, &SPIRV_Float16x3x3_operator_mul_Float16x3x3 },
@@ -24670,6 +24870,7 @@ std::pair{ &Float16x3x4_operator_index_Int32, &SPIRV_Float16x3x4_operator_index_
 std::pair{ &Float16x3x4_operator_index_UInt32, &SPIRV_Float16x3x4_operator_index_UInt32 },
 std::pair{ &Float16x3x4_operator_index_Int16, &SPIRV_Float16x3x4_operator_index_Int16 },
 std::pair{ &Float16x3x4_operator_index_UInt16, &SPIRV_Float16x3x4_operator_index_UInt16 },
+std::pair{ &Float16x3x4_transform_Float16x4, &SPIRV_Float16x3x4_transform_Float16x4 },
 std::pair{ &Float16x3x4_operator_add_Float16x3x4, &SPIRV_Float16x3x4_operator_add_Float16x3x4 },
 std::pair{ &Float16x3x4_operator_sub_Float16x3x4, &SPIRV_Float16x3x4_operator_sub_Float16x3x4 },
 std::pair{ &Float16x3x4_operator_mul_Float16x3x4, &SPIRV_Float16x3x4_operator_mul_Float16x3x4 },
@@ -24681,6 +24882,7 @@ std::pair{ &Float16x4x2_operator_index_Int32, &SPIRV_Float16x4x2_operator_index_
 std::pair{ &Float16x4x2_operator_index_UInt32, &SPIRV_Float16x4x2_operator_index_UInt32 },
 std::pair{ &Float16x4x2_operator_index_Int16, &SPIRV_Float16x4x2_operator_index_Int16 },
 std::pair{ &Float16x4x2_operator_index_UInt16, &SPIRV_Float16x4x2_operator_index_UInt16 },
+std::pair{ &Float16x4x2_transform_Float16x2, &SPIRV_Float16x4x2_transform_Float16x2 },
 std::pair{ &Float16x4x2_operator_add_Float16x4x2, &SPIRV_Float16x4x2_operator_add_Float16x4x2 },
 std::pair{ &Float16x4x2_operator_sub_Float16x4x2, &SPIRV_Float16x4x2_operator_sub_Float16x4x2 },
 std::pair{ &Float16x4x2_operator_mul_Float16x4x2, &SPIRV_Float16x4x2_operator_mul_Float16x4x2 },
@@ -24692,6 +24894,7 @@ std::pair{ &Float16x4x3_operator_index_Int32, &SPIRV_Float16x4x3_operator_index_
 std::pair{ &Float16x4x3_operator_index_UInt32, &SPIRV_Float16x4x3_operator_index_UInt32 },
 std::pair{ &Float16x4x3_operator_index_Int16, &SPIRV_Float16x4x3_operator_index_Int16 },
 std::pair{ &Float16x4x3_operator_index_UInt16, &SPIRV_Float16x4x3_operator_index_UInt16 },
+std::pair{ &Float16x4x3_transform_Float16x3, &SPIRV_Float16x4x3_transform_Float16x3 },
 std::pair{ &Float16x4x3_operator_add_Float16x4x3, &SPIRV_Float16x4x3_operator_add_Float16x4x3 },
 std::pair{ &Float16x4x3_operator_sub_Float16x4x3, &SPIRV_Float16x4x3_operator_sub_Float16x4x3 },
 std::pair{ &Float16x4x3_operator_mul_Float16x4x3, &SPIRV_Float16x4x3_operator_mul_Float16x4x3 },
@@ -24703,6 +24906,7 @@ std::pair{ &Float16x4x4_operator_index_Int32, &SPIRV_Float16x4x4_operator_index_
 std::pair{ &Float16x4x4_operator_index_UInt32, &SPIRV_Float16x4x4_operator_index_UInt32 },
 std::pair{ &Float16x4x4_operator_index_Int16, &SPIRV_Float16x4x4_operator_index_Int16 },
 std::pair{ &Float16x4x4_operator_index_UInt16, &SPIRV_Float16x4x4_operator_index_UInt16 },
+std::pair{ &Float16x4x4_transform_Float16x4, &SPIRV_Float16x4x4_transform_Float16x4 },
 std::pair{ &Float16x4x4_operator_add_Float16x4x4, &SPIRV_Float16x4x4_operator_add_Float16x4x4 },
 std::pair{ &Float16x4x4_operator_sub_Float16x4x4, &SPIRV_Float16x4x4_operator_sub_Float16x4x4 },
 std::pair{ &Float16x4x4_operator_mul_Float16x4x4, &SPIRV_Float16x4x4_operator_mul_Float16x4x4 },

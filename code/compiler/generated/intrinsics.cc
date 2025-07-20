@@ -1224,289 +1224,289 @@ Variable distance_Float16x4_p1;
 Function distance_Float16x4;
 inline constexpr std::array distance_Float16x4_args = { &distance_Float16x4_p0, &distance_Float16x4_p1 };
 
-/// distance with Float32, Float32
+/// min with Float32, Float32
 Variable min_Float32_x;
 Variable min_Float32_y;
 Function min_Float32;
 inline constexpr std::array min_Float32_args = { &min_Float32_x, &min_Float32_y };
 
-/// distance with Float32x2, Float32x2
+/// min with Float32x2, Float32x2
 Variable min_Float32x2_x;
 Variable min_Float32x2_y;
 Function min_Float32x2;
 inline constexpr std::array min_Float32x2_args = { &min_Float32x2_x, &min_Float32x2_y };
 
-/// distance with Float32x3, Float32x3
+/// min with Float32x3, Float32x3
 Variable min_Float32x3_x;
 Variable min_Float32x3_y;
 Function min_Float32x3;
 inline constexpr std::array min_Float32x3_args = { &min_Float32x3_x, &min_Float32x3_y };
 
-/// distance with Float32x4, Float32x4
+/// min with Float32x4, Float32x4
 Variable min_Float32x4_x;
 Variable min_Float32x4_y;
 Function min_Float32x4;
 inline constexpr std::array min_Float32x4_args = { &min_Float32x4_x, &min_Float32x4_y };
 
-/// distance with Float16, Float16
+/// min with Float16, Float16
 Variable min_Float16_x;
 Variable min_Float16_y;
 Function min_Float16;
 inline constexpr std::array min_Float16_args = { &min_Float16_x, &min_Float16_y };
 
-/// distance with Float16x2, Float16x2
+/// min with Float16x2, Float16x2
 Variable min_Float16x2_x;
 Variable min_Float16x2_y;
 Function min_Float16x2;
 inline constexpr std::array min_Float16x2_args = { &min_Float16x2_x, &min_Float16x2_y };
 
-/// distance with Float16x3, Float16x3
+/// min with Float16x3, Float16x3
 Variable min_Float16x3_x;
 Variable min_Float16x3_y;
 Function min_Float16x3;
 inline constexpr std::array min_Float16x3_args = { &min_Float16x3_x, &min_Float16x3_y };
 
-/// distance with Float16x4, Float16x4
+/// min with Float16x4, Float16x4
 Variable min_Float16x4_x;
 Variable min_Float16x4_y;
 Function min_Float16x4;
 inline constexpr std::array min_Float16x4_args = { &min_Float16x4_x, &min_Float16x4_y };
 
-/// distance with Int32, Int32
+/// min with Int32, Int32
 Variable min_Int32_x;
 Variable min_Int32_y;
 Function min_Int32;
 inline constexpr std::array min_Int32_args = { &min_Int32_x, &min_Int32_y };
 
-/// distance with Int32x2, Int32x2
+/// min with Int32x2, Int32x2
 Variable min_Int32x2_x;
 Variable min_Int32x2_y;
 Function min_Int32x2;
 inline constexpr std::array min_Int32x2_args = { &min_Int32x2_x, &min_Int32x2_y };
 
-/// distance with Int32x3, Int32x3
+/// min with Int32x3, Int32x3
 Variable min_Int32x3_x;
 Variable min_Int32x3_y;
 Function min_Int32x3;
 inline constexpr std::array min_Int32x3_args = { &min_Int32x3_x, &min_Int32x3_y };
 
-/// distance with Int32x4, Int32x4
+/// min with Int32x4, Int32x4
 Variable min_Int32x4_x;
 Variable min_Int32x4_y;
 Function min_Int32x4;
 inline constexpr std::array min_Int32x4_args = { &min_Int32x4_x, &min_Int32x4_y };
 
-/// distance with Int16, Int16
+/// min with Int16, Int16
 Variable min_Int16_x;
 Variable min_Int16_y;
 Function min_Int16;
 inline constexpr std::array min_Int16_args = { &min_Int16_x, &min_Int16_y };
 
-/// distance with Int16x2, Int16x2
+/// min with Int16x2, Int16x2
 Variable min_Int16x2_x;
 Variable min_Int16x2_y;
 Function min_Int16x2;
 inline constexpr std::array min_Int16x2_args = { &min_Int16x2_x, &min_Int16x2_y };
 
-/// distance with Int16x3, Int16x3
+/// min with Int16x3, Int16x3
 Variable min_Int16x3_x;
 Variable min_Int16x3_y;
 Function min_Int16x3;
 inline constexpr std::array min_Int16x3_args = { &min_Int16x3_x, &min_Int16x3_y };
 
-/// distance with Int16x4, Int16x4
+/// min with Int16x4, Int16x4
 Variable min_Int16x4_x;
 Variable min_Int16x4_y;
 Function min_Int16x4;
 inline constexpr std::array min_Int16x4_args = { &min_Int16x4_x, &min_Int16x4_y };
 
-/// distance with UInt32, UInt32
+/// min with UInt32, UInt32
 Variable min_UInt32_x;
 Variable min_UInt32_y;
 Function min_UInt32;
 inline constexpr std::array min_UInt32_args = { &min_UInt32_x, &min_UInt32_y };
 
-/// distance with UInt32x2, UInt32x2
+/// min with UInt32x2, UInt32x2
 Variable min_UInt32x2_x;
 Variable min_UInt32x2_y;
 Function min_UInt32x2;
 inline constexpr std::array min_UInt32x2_args = { &min_UInt32x2_x, &min_UInt32x2_y };
 
-/// distance with UInt32x3, UInt32x3
+/// min with UInt32x3, UInt32x3
 Variable min_UInt32x3_x;
 Variable min_UInt32x3_y;
 Function min_UInt32x3;
 inline constexpr std::array min_UInt32x3_args = { &min_UInt32x3_x, &min_UInt32x3_y };
 
-/// distance with UInt32x4, UInt32x4
+/// min with UInt32x4, UInt32x4
 Variable min_UInt32x4_x;
 Variable min_UInt32x4_y;
 Function min_UInt32x4;
 inline constexpr std::array min_UInt32x4_args = { &min_UInt32x4_x, &min_UInt32x4_y };
 
-/// distance with UInt16, UInt16
+/// min with UInt16, UInt16
 Variable min_UInt16_x;
 Variable min_UInt16_y;
 Function min_UInt16;
 inline constexpr std::array min_UInt16_args = { &min_UInt16_x, &min_UInt16_y };
 
-/// distance with UInt16x2, UInt16x2
+/// min with UInt16x2, UInt16x2
 Variable min_UInt16x2_x;
 Variable min_UInt16x2_y;
 Function min_UInt16x2;
 inline constexpr std::array min_UInt16x2_args = { &min_UInt16x2_x, &min_UInt16x2_y };
 
-/// distance with UInt16x3, UInt16x3
+/// min with UInt16x3, UInt16x3
 Variable min_UInt16x3_x;
 Variable min_UInt16x3_y;
 Function min_UInt16x3;
 inline constexpr std::array min_UInt16x3_args = { &min_UInt16x3_x, &min_UInt16x3_y };
 
-/// distance with UInt16x4, UInt16x4
+/// min with UInt16x4, UInt16x4
 Variable min_UInt16x4_x;
 Variable min_UInt16x4_y;
 Function min_UInt16x4;
 inline constexpr std::array min_UInt16x4_args = { &min_UInt16x4_x, &min_UInt16x4_y };
 
-/// distance with Float32, Float32
+/// max with Float32, Float32
 Variable max_Float32_x;
 Variable max_Float32_y;
 Function max_Float32;
 inline constexpr std::array max_Float32_args = { &max_Float32_x, &max_Float32_y };
 
-/// distance with Float32x2, Float32x2
+/// max with Float32x2, Float32x2
 Variable max_Float32x2_x;
 Variable max_Float32x2_y;
 Function max_Float32x2;
 inline constexpr std::array max_Float32x2_args = { &max_Float32x2_x, &max_Float32x2_y };
 
-/// distance with Float32x3, Float32x3
+/// max with Float32x3, Float32x3
 Variable max_Float32x3_x;
 Variable max_Float32x3_y;
 Function max_Float32x3;
 inline constexpr std::array max_Float32x3_args = { &max_Float32x3_x, &max_Float32x3_y };
 
-/// distance with Float32x4, Float32x4
+/// max with Float32x4, Float32x4
 Variable max_Float32x4_x;
 Variable max_Float32x4_y;
 Function max_Float32x4;
 inline constexpr std::array max_Float32x4_args = { &max_Float32x4_x, &max_Float32x4_y };
 
-/// distance with Float16, Float16
+/// max with Float16, Float16
 Variable max_Float16_x;
 Variable max_Float16_y;
 Function max_Float16;
 inline constexpr std::array max_Float16_args = { &max_Float16_x, &max_Float16_y };
 
-/// distance with Float16x2, Float16x2
+/// max with Float16x2, Float16x2
 Variable max_Float16x2_x;
 Variable max_Float16x2_y;
 Function max_Float16x2;
 inline constexpr std::array max_Float16x2_args = { &max_Float16x2_x, &max_Float16x2_y };
 
-/// distance with Float16x3, Float16x3
+/// max with Float16x3, Float16x3
 Variable max_Float16x3_x;
 Variable max_Float16x3_y;
 Function max_Float16x3;
 inline constexpr std::array max_Float16x3_args = { &max_Float16x3_x, &max_Float16x3_y };
 
-/// distance with Float16x4, Float16x4
+/// max with Float16x4, Float16x4
 Variable max_Float16x4_x;
 Variable max_Float16x4_y;
 Function max_Float16x4;
 inline constexpr std::array max_Float16x4_args = { &max_Float16x4_x, &max_Float16x4_y };
 
-/// distance with Int32, Int32
+/// max with Int32, Int32
 Variable max_Int32_x;
 Variable max_Int32_y;
 Function max_Int32;
 inline constexpr std::array max_Int32_args = { &max_Int32_x, &max_Int32_y };
 
-/// distance with Int32x2, Int32x2
+/// max with Int32x2, Int32x2
 Variable max_Int32x2_x;
 Variable max_Int32x2_y;
 Function max_Int32x2;
 inline constexpr std::array max_Int32x2_args = { &max_Int32x2_x, &max_Int32x2_y };
 
-/// distance with Int32x3, Int32x3
+/// max with Int32x3, Int32x3
 Variable max_Int32x3_x;
 Variable max_Int32x3_y;
 Function max_Int32x3;
 inline constexpr std::array max_Int32x3_args = { &max_Int32x3_x, &max_Int32x3_y };
 
-/// distance with Int32x4, Int32x4
+/// max with Int32x4, Int32x4
 Variable max_Int32x4_x;
 Variable max_Int32x4_y;
 Function max_Int32x4;
 inline constexpr std::array max_Int32x4_args = { &max_Int32x4_x, &max_Int32x4_y };
 
-/// distance with Int16, Int16
+/// max with Int16, Int16
 Variable max_Int16_x;
 Variable max_Int16_y;
 Function max_Int16;
 inline constexpr std::array max_Int16_args = { &max_Int16_x, &max_Int16_y };
 
-/// distance with Int16x2, Int16x2
+/// max with Int16x2, Int16x2
 Variable max_Int16x2_x;
 Variable max_Int16x2_y;
 Function max_Int16x2;
 inline constexpr std::array max_Int16x2_args = { &max_Int16x2_x, &max_Int16x2_y };
 
-/// distance with Int16x3, Int16x3
+/// max with Int16x3, Int16x3
 Variable max_Int16x3_x;
 Variable max_Int16x3_y;
 Function max_Int16x3;
 inline constexpr std::array max_Int16x3_args = { &max_Int16x3_x, &max_Int16x3_y };
 
-/// distance with Int16x4, Int16x4
+/// max with Int16x4, Int16x4
 Variable max_Int16x4_x;
 Variable max_Int16x4_y;
 Function max_Int16x4;
 inline constexpr std::array max_Int16x4_args = { &max_Int16x4_x, &max_Int16x4_y };
 
-/// distance with UInt32, UInt32
+/// max with UInt32, UInt32
 Variable max_UInt32_x;
 Variable max_UInt32_y;
 Function max_UInt32;
 inline constexpr std::array max_UInt32_args = { &max_UInt32_x, &max_UInt32_y };
 
-/// distance with UInt32x2, UInt32x2
+/// max with UInt32x2, UInt32x2
 Variable max_UInt32x2_x;
 Variable max_UInt32x2_y;
 Function max_UInt32x2;
 inline constexpr std::array max_UInt32x2_args = { &max_UInt32x2_x, &max_UInt32x2_y };
 
-/// distance with UInt32x3, UInt32x3
+/// max with UInt32x3, UInt32x3
 Variable max_UInt32x3_x;
 Variable max_UInt32x3_y;
 Function max_UInt32x3;
 inline constexpr std::array max_UInt32x3_args = { &max_UInt32x3_x, &max_UInt32x3_y };
 
-/// distance with UInt32x4, UInt32x4
+/// max with UInt32x4, UInt32x4
 Variable max_UInt32x4_x;
 Variable max_UInt32x4_y;
 Function max_UInt32x4;
 inline constexpr std::array max_UInt32x4_args = { &max_UInt32x4_x, &max_UInt32x4_y };
 
-/// distance with UInt16, UInt16
+/// max with UInt16, UInt16
 Variable max_UInt16_x;
 Variable max_UInt16_y;
 Function max_UInt16;
 inline constexpr std::array max_UInt16_args = { &max_UInt16_x, &max_UInt16_y };
 
-/// distance with UInt16x2, UInt16x2
+/// max with UInt16x2, UInt16x2
 Variable max_UInt16x2_x;
 Variable max_UInt16x2_y;
 Function max_UInt16x2;
 inline constexpr std::array max_UInt16x2_args = { &max_UInt16x2_x, &max_UInt16x2_y };
 
-/// distance with UInt16x3, UInt16x3
+/// max with UInt16x3, UInt16x3
 Variable max_UInt16x3_x;
 Variable max_UInt16x3_y;
 Function max_UInt16x3;
 inline constexpr std::array max_UInt16x3_args = { &max_UInt16x3_x, &max_UInt16x3_y };
 
-/// distance with UInt16x4, UInt16x4
+/// max with UInt16x4, UInt16x4
 Variable max_UInt16x4_x;
 Variable max_UInt16x4_y;
 Function max_UInt16x4;
@@ -9586,576 +9586,576 @@ void SetupIntrinsics()
     Symbol::Resolved(&distance_Float16x4_p1)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&distance_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
-    /// distance with Float32, Float32
+    /// min with Float32, Float32
     min_Float32_x.name = "x"_c;
     min_Float32_x.type = Type::FullType{ Float32Type.name };
     min_Float32_y.name = "y"_c;
     min_Float32_y.type = Type::FullType{ Float32Type.name };
-    min_Float32.name = "distance"_c;
+    min_Float32.name = "min"_c;
     min_Float32.returnType = Type::FullType { Float32Type.name };
     min_Float32.parameters = min_Float32_args;
     Symbol::Resolved(&min_Float32_x)->typeSymbol = &Float32Type;
     Symbol::Resolved(&min_Float32_y)->typeSymbol = &Float32Type;
     Symbol::Resolved(&min_Float32)->returnTypeSymbol = &Float32Type;
 
-    /// distance with Float32x2, Float32x2
+    /// min with Float32x2, Float32x2
     min_Float32x2_x.name = "x"_c;
     min_Float32x2_x.type = Type::FullType{ Float32x2Type.name };
     min_Float32x2_y.name = "y"_c;
     min_Float32x2_y.type = Type::FullType{ Float32x2Type.name };
-    min_Float32x2.name = "distance"_c;
+    min_Float32x2.name = "min"_c;
     min_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     min_Float32x2.parameters = min_Float32x2_args;
     Symbol::Resolved(&min_Float32x2_x)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&min_Float32x2_y)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&min_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
-    /// distance with Float32x3, Float32x3
+    /// min with Float32x3, Float32x3
     min_Float32x3_x.name = "x"_c;
     min_Float32x3_x.type = Type::FullType{ Float32x3Type.name };
     min_Float32x3_y.name = "y"_c;
     min_Float32x3_y.type = Type::FullType{ Float32x3Type.name };
-    min_Float32x3.name = "distance"_c;
+    min_Float32x3.name = "min"_c;
     min_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     min_Float32x3.parameters = min_Float32x3_args;
     Symbol::Resolved(&min_Float32x3_x)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&min_Float32x3_y)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&min_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
-    /// distance with Float32x4, Float32x4
+    /// min with Float32x4, Float32x4
     min_Float32x4_x.name = "x"_c;
     min_Float32x4_x.type = Type::FullType{ Float32x4Type.name };
     min_Float32x4_y.name = "y"_c;
     min_Float32x4_y.type = Type::FullType{ Float32x4Type.name };
-    min_Float32x4.name = "distance"_c;
+    min_Float32x4.name = "min"_c;
     min_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     min_Float32x4.parameters = min_Float32x4_args;
     Symbol::Resolved(&min_Float32x4_x)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&min_Float32x4_y)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&min_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
-    /// distance with Float16, Float16
+    /// min with Float16, Float16
     min_Float16_x.name = "x"_c;
     min_Float16_x.type = Type::FullType{ Float16Type.name };
     min_Float16_y.name = "y"_c;
     min_Float16_y.type = Type::FullType{ Float16Type.name };
-    min_Float16.name = "distance"_c;
+    min_Float16.name = "min"_c;
     min_Float16.returnType = Type::FullType { Float16Type.name };
     min_Float16.parameters = min_Float16_args;
     Symbol::Resolved(&min_Float16_x)->typeSymbol = &Float16Type;
     Symbol::Resolved(&min_Float16_y)->typeSymbol = &Float16Type;
     Symbol::Resolved(&min_Float16)->returnTypeSymbol = &Float16Type;
 
-    /// distance with Float16x2, Float16x2
+    /// min with Float16x2, Float16x2
     min_Float16x2_x.name = "x"_c;
     min_Float16x2_x.type = Type::FullType{ Float16x2Type.name };
     min_Float16x2_y.name = "y"_c;
     min_Float16x2_y.type = Type::FullType{ Float16x2Type.name };
-    min_Float16x2.name = "distance"_c;
+    min_Float16x2.name = "min"_c;
     min_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     min_Float16x2.parameters = min_Float16x2_args;
     Symbol::Resolved(&min_Float16x2_x)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&min_Float16x2_y)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&min_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
-    /// distance with Float16x3, Float16x3
+    /// min with Float16x3, Float16x3
     min_Float16x3_x.name = "x"_c;
     min_Float16x3_x.type = Type::FullType{ Float16x3Type.name };
     min_Float16x3_y.name = "y"_c;
     min_Float16x3_y.type = Type::FullType{ Float16x3Type.name };
-    min_Float16x3.name = "distance"_c;
+    min_Float16x3.name = "min"_c;
     min_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     min_Float16x3.parameters = min_Float16x3_args;
     Symbol::Resolved(&min_Float16x3_x)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&min_Float16x3_y)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&min_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
-    /// distance with Float16x4, Float16x4
+    /// min with Float16x4, Float16x4
     min_Float16x4_x.name = "x"_c;
     min_Float16x4_x.type = Type::FullType{ Float16x4Type.name };
     min_Float16x4_y.name = "y"_c;
     min_Float16x4_y.type = Type::FullType{ Float16x4Type.name };
-    min_Float16x4.name = "distance"_c;
+    min_Float16x4.name = "min"_c;
     min_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     min_Float16x4.parameters = min_Float16x4_args;
     Symbol::Resolved(&min_Float16x4_x)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&min_Float16x4_y)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&min_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
-    /// distance with Int32, Int32
+    /// min with Int32, Int32
     min_Int32_x.name = "x"_c;
     min_Int32_x.type = Type::FullType{ Int32Type.name };
     min_Int32_y.name = "y"_c;
     min_Int32_y.type = Type::FullType{ Int32Type.name };
-    min_Int32.name = "distance"_c;
+    min_Int32.name = "min"_c;
     min_Int32.returnType = Type::FullType { Int32Type.name };
     min_Int32.parameters = min_Int32_args;
     Symbol::Resolved(&min_Int32_x)->typeSymbol = &Int32Type;
     Symbol::Resolved(&min_Int32_y)->typeSymbol = &Int32Type;
     Symbol::Resolved(&min_Int32)->returnTypeSymbol = &Int32Type;
 
-    /// distance with Int32x2, Int32x2
+    /// min with Int32x2, Int32x2
     min_Int32x2_x.name = "x"_c;
     min_Int32x2_x.type = Type::FullType{ Int32x2Type.name };
     min_Int32x2_y.name = "y"_c;
     min_Int32x2_y.type = Type::FullType{ Int32x2Type.name };
-    min_Int32x2.name = "distance"_c;
+    min_Int32x2.name = "min"_c;
     min_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     min_Int32x2.parameters = min_Int32x2_args;
     Symbol::Resolved(&min_Int32x2_x)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&min_Int32x2_y)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&min_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
-    /// distance with Int32x3, Int32x3
+    /// min with Int32x3, Int32x3
     min_Int32x3_x.name = "x"_c;
     min_Int32x3_x.type = Type::FullType{ Int32x3Type.name };
     min_Int32x3_y.name = "y"_c;
     min_Int32x3_y.type = Type::FullType{ Int32x3Type.name };
-    min_Int32x3.name = "distance"_c;
+    min_Int32x3.name = "min"_c;
     min_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     min_Int32x3.parameters = min_Int32x3_args;
     Symbol::Resolved(&min_Int32x3_x)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&min_Int32x3_y)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&min_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
-    /// distance with Int32x4, Int32x4
+    /// min with Int32x4, Int32x4
     min_Int32x4_x.name = "x"_c;
     min_Int32x4_x.type = Type::FullType{ Int32x4Type.name };
     min_Int32x4_y.name = "y"_c;
     min_Int32x4_y.type = Type::FullType{ Int32x4Type.name };
-    min_Int32x4.name = "distance"_c;
+    min_Int32x4.name = "min"_c;
     min_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     min_Int32x4.parameters = min_Int32x4_args;
     Symbol::Resolved(&min_Int32x4_x)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&min_Int32x4_y)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&min_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
-    /// distance with Int16, Int16
+    /// min with Int16, Int16
     min_Int16_x.name = "x"_c;
     min_Int16_x.type = Type::FullType{ Int16Type.name };
     min_Int16_y.name = "y"_c;
     min_Int16_y.type = Type::FullType{ Int16Type.name };
-    min_Int16.name = "distance"_c;
+    min_Int16.name = "min"_c;
     min_Int16.returnType = Type::FullType { Int16Type.name };
     min_Int16.parameters = min_Int16_args;
     Symbol::Resolved(&min_Int16_x)->typeSymbol = &Int16Type;
     Symbol::Resolved(&min_Int16_y)->typeSymbol = &Int16Type;
     Symbol::Resolved(&min_Int16)->returnTypeSymbol = &Int16Type;
 
-    /// distance with Int16x2, Int16x2
+    /// min with Int16x2, Int16x2
     min_Int16x2_x.name = "x"_c;
     min_Int16x2_x.type = Type::FullType{ Int16x2Type.name };
     min_Int16x2_y.name = "y"_c;
     min_Int16x2_y.type = Type::FullType{ Int16x2Type.name };
-    min_Int16x2.name = "distance"_c;
+    min_Int16x2.name = "min"_c;
     min_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     min_Int16x2.parameters = min_Int16x2_args;
     Symbol::Resolved(&min_Int16x2_x)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&min_Int16x2_y)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&min_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
-    /// distance with Int16x3, Int16x3
+    /// min with Int16x3, Int16x3
     min_Int16x3_x.name = "x"_c;
     min_Int16x3_x.type = Type::FullType{ Int16x3Type.name };
     min_Int16x3_y.name = "y"_c;
     min_Int16x3_y.type = Type::FullType{ Int16x3Type.name };
-    min_Int16x3.name = "distance"_c;
+    min_Int16x3.name = "min"_c;
     min_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     min_Int16x3.parameters = min_Int16x3_args;
     Symbol::Resolved(&min_Int16x3_x)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&min_Int16x3_y)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&min_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
-    /// distance with Int16x4, Int16x4
+    /// min with Int16x4, Int16x4
     min_Int16x4_x.name = "x"_c;
     min_Int16x4_x.type = Type::FullType{ Int16x4Type.name };
     min_Int16x4_y.name = "y"_c;
     min_Int16x4_y.type = Type::FullType{ Int16x4Type.name };
-    min_Int16x4.name = "distance"_c;
+    min_Int16x4.name = "min"_c;
     min_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     min_Int16x4.parameters = min_Int16x4_args;
     Symbol::Resolved(&min_Int16x4_x)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&min_Int16x4_y)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&min_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
-    /// distance with UInt32, UInt32
+    /// min with UInt32, UInt32
     min_UInt32_x.name = "x"_c;
     min_UInt32_x.type = Type::FullType{ UInt32Type.name };
     min_UInt32_y.name = "y"_c;
     min_UInt32_y.type = Type::FullType{ UInt32Type.name };
-    min_UInt32.name = "distance"_c;
+    min_UInt32.name = "min"_c;
     min_UInt32.returnType = Type::FullType { UInt32Type.name };
     min_UInt32.parameters = min_UInt32_args;
     Symbol::Resolved(&min_UInt32_x)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&min_UInt32_y)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&min_UInt32)->returnTypeSymbol = &UInt32Type;
 
-    /// distance with UInt32x2, UInt32x2
+    /// min with UInt32x2, UInt32x2
     min_UInt32x2_x.name = "x"_c;
     min_UInt32x2_x.type = Type::FullType{ UInt32x2Type.name };
     min_UInt32x2_y.name = "y"_c;
     min_UInt32x2_y.type = Type::FullType{ UInt32x2Type.name };
-    min_UInt32x2.name = "distance"_c;
+    min_UInt32x2.name = "min"_c;
     min_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
     min_UInt32x2.parameters = min_UInt32x2_args;
     Symbol::Resolved(&min_UInt32x2_x)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&min_UInt32x2_y)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&min_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
-    /// distance with UInt32x3, UInt32x3
+    /// min with UInt32x3, UInt32x3
     min_UInt32x3_x.name = "x"_c;
     min_UInt32x3_x.type = Type::FullType{ UInt32x3Type.name };
     min_UInt32x3_y.name = "y"_c;
     min_UInt32x3_y.type = Type::FullType{ UInt32x3Type.name };
-    min_UInt32x3.name = "distance"_c;
+    min_UInt32x3.name = "min"_c;
     min_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
     min_UInt32x3.parameters = min_UInt32x3_args;
     Symbol::Resolved(&min_UInt32x3_x)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&min_UInt32x3_y)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&min_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
-    /// distance with UInt32x4, UInt32x4
+    /// min with UInt32x4, UInt32x4
     min_UInt32x4_x.name = "x"_c;
     min_UInt32x4_x.type = Type::FullType{ UInt32x4Type.name };
     min_UInt32x4_y.name = "y"_c;
     min_UInt32x4_y.type = Type::FullType{ UInt32x4Type.name };
-    min_UInt32x4.name = "distance"_c;
+    min_UInt32x4.name = "min"_c;
     min_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
     min_UInt32x4.parameters = min_UInt32x4_args;
     Symbol::Resolved(&min_UInt32x4_x)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&min_UInt32x4_y)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&min_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
-    /// distance with UInt16, UInt16
+    /// min with UInt16, UInt16
     min_UInt16_x.name = "x"_c;
     min_UInt16_x.type = Type::FullType{ UInt16Type.name };
     min_UInt16_y.name = "y"_c;
     min_UInt16_y.type = Type::FullType{ UInt16Type.name };
-    min_UInt16.name = "distance"_c;
+    min_UInt16.name = "min"_c;
     min_UInt16.returnType = Type::FullType { UInt16Type.name };
     min_UInt16.parameters = min_UInt16_args;
     Symbol::Resolved(&min_UInt16_x)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&min_UInt16_y)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&min_UInt16)->returnTypeSymbol = &UInt16Type;
 
-    /// distance with UInt16x2, UInt16x2
+    /// min with UInt16x2, UInt16x2
     min_UInt16x2_x.name = "x"_c;
     min_UInt16x2_x.type = Type::FullType{ UInt16x2Type.name };
     min_UInt16x2_y.name = "y"_c;
     min_UInt16x2_y.type = Type::FullType{ UInt16x2Type.name };
-    min_UInt16x2.name = "distance"_c;
+    min_UInt16x2.name = "min"_c;
     min_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
     min_UInt16x2.parameters = min_UInt16x2_args;
     Symbol::Resolved(&min_UInt16x2_x)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&min_UInt16x2_y)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&min_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
-    /// distance with UInt16x3, UInt16x3
+    /// min with UInt16x3, UInt16x3
     min_UInt16x3_x.name = "x"_c;
     min_UInt16x3_x.type = Type::FullType{ UInt16x3Type.name };
     min_UInt16x3_y.name = "y"_c;
     min_UInt16x3_y.type = Type::FullType{ UInt16x3Type.name };
-    min_UInt16x3.name = "distance"_c;
+    min_UInt16x3.name = "min"_c;
     min_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
     min_UInt16x3.parameters = min_UInt16x3_args;
     Symbol::Resolved(&min_UInt16x3_x)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&min_UInt16x3_y)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&min_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
-    /// distance with UInt16x4, UInt16x4
+    /// min with UInt16x4, UInt16x4
     min_UInt16x4_x.name = "x"_c;
     min_UInt16x4_x.type = Type::FullType{ UInt16x4Type.name };
     min_UInt16x4_y.name = "y"_c;
     min_UInt16x4_y.type = Type::FullType{ UInt16x4Type.name };
-    min_UInt16x4.name = "distance"_c;
+    min_UInt16x4.name = "min"_c;
     min_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
     min_UInt16x4.parameters = min_UInt16x4_args;
     Symbol::Resolved(&min_UInt16x4_x)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&min_UInt16x4_y)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&min_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
-    /// distance with Float32, Float32
+    /// max with Float32, Float32
     max_Float32_x.name = "x"_c;
     max_Float32_x.type = Type::FullType{ Float32Type.name };
     max_Float32_y.name = "y"_c;
     max_Float32_y.type = Type::FullType{ Float32Type.name };
-    max_Float32.name = "distance"_c;
+    max_Float32.name = "max"_c;
     max_Float32.returnType = Type::FullType { Float32Type.name };
     max_Float32.parameters = max_Float32_args;
     Symbol::Resolved(&max_Float32_x)->typeSymbol = &Float32Type;
     Symbol::Resolved(&max_Float32_y)->typeSymbol = &Float32Type;
     Symbol::Resolved(&max_Float32)->returnTypeSymbol = &Float32Type;
 
-    /// distance with Float32x2, Float32x2
+    /// max with Float32x2, Float32x2
     max_Float32x2_x.name = "x"_c;
     max_Float32x2_x.type = Type::FullType{ Float32x2Type.name };
     max_Float32x2_y.name = "y"_c;
     max_Float32x2_y.type = Type::FullType{ Float32x2Type.name };
-    max_Float32x2.name = "distance"_c;
+    max_Float32x2.name = "max"_c;
     max_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     max_Float32x2.parameters = max_Float32x2_args;
     Symbol::Resolved(&max_Float32x2_x)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&max_Float32x2_y)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&max_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
-    /// distance with Float32x3, Float32x3
+    /// max with Float32x3, Float32x3
     max_Float32x3_x.name = "x"_c;
     max_Float32x3_x.type = Type::FullType{ Float32x3Type.name };
     max_Float32x3_y.name = "y"_c;
     max_Float32x3_y.type = Type::FullType{ Float32x3Type.name };
-    max_Float32x3.name = "distance"_c;
+    max_Float32x3.name = "max"_c;
     max_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     max_Float32x3.parameters = max_Float32x3_args;
     Symbol::Resolved(&max_Float32x3_x)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&max_Float32x3_y)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&max_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
-    /// distance with Float32x4, Float32x4
+    /// max with Float32x4, Float32x4
     max_Float32x4_x.name = "x"_c;
     max_Float32x4_x.type = Type::FullType{ Float32x4Type.name };
     max_Float32x4_y.name = "y"_c;
     max_Float32x4_y.type = Type::FullType{ Float32x4Type.name };
-    max_Float32x4.name = "distance"_c;
+    max_Float32x4.name = "max"_c;
     max_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     max_Float32x4.parameters = max_Float32x4_args;
     Symbol::Resolved(&max_Float32x4_x)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&max_Float32x4_y)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&max_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
-    /// distance with Float16, Float16
+    /// max with Float16, Float16
     max_Float16_x.name = "x"_c;
     max_Float16_x.type = Type::FullType{ Float16Type.name };
     max_Float16_y.name = "y"_c;
     max_Float16_y.type = Type::FullType{ Float16Type.name };
-    max_Float16.name = "distance"_c;
+    max_Float16.name = "max"_c;
     max_Float16.returnType = Type::FullType { Float16Type.name };
     max_Float16.parameters = max_Float16_args;
     Symbol::Resolved(&max_Float16_x)->typeSymbol = &Float16Type;
     Symbol::Resolved(&max_Float16_y)->typeSymbol = &Float16Type;
     Symbol::Resolved(&max_Float16)->returnTypeSymbol = &Float16Type;
 
-    /// distance with Float16x2, Float16x2
+    /// max with Float16x2, Float16x2
     max_Float16x2_x.name = "x"_c;
     max_Float16x2_x.type = Type::FullType{ Float16x2Type.name };
     max_Float16x2_y.name = "y"_c;
     max_Float16x2_y.type = Type::FullType{ Float16x2Type.name };
-    max_Float16x2.name = "distance"_c;
+    max_Float16x2.name = "max"_c;
     max_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     max_Float16x2.parameters = max_Float16x2_args;
     Symbol::Resolved(&max_Float16x2_x)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&max_Float16x2_y)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&max_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
-    /// distance with Float16x3, Float16x3
+    /// max with Float16x3, Float16x3
     max_Float16x3_x.name = "x"_c;
     max_Float16x3_x.type = Type::FullType{ Float16x3Type.name };
     max_Float16x3_y.name = "y"_c;
     max_Float16x3_y.type = Type::FullType{ Float16x3Type.name };
-    max_Float16x3.name = "distance"_c;
+    max_Float16x3.name = "max"_c;
     max_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     max_Float16x3.parameters = max_Float16x3_args;
     Symbol::Resolved(&max_Float16x3_x)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&max_Float16x3_y)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&max_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
-    /// distance with Float16x4, Float16x4
+    /// max with Float16x4, Float16x4
     max_Float16x4_x.name = "x"_c;
     max_Float16x4_x.type = Type::FullType{ Float16x4Type.name };
     max_Float16x4_y.name = "y"_c;
     max_Float16x4_y.type = Type::FullType{ Float16x4Type.name };
-    max_Float16x4.name = "distance"_c;
+    max_Float16x4.name = "max"_c;
     max_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     max_Float16x4.parameters = max_Float16x4_args;
     Symbol::Resolved(&max_Float16x4_x)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&max_Float16x4_y)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&max_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
-    /// distance with Int32, Int32
+    /// max with Int32, Int32
     max_Int32_x.name = "x"_c;
     max_Int32_x.type = Type::FullType{ Int32Type.name };
     max_Int32_y.name = "y"_c;
     max_Int32_y.type = Type::FullType{ Int32Type.name };
-    max_Int32.name = "distance"_c;
+    max_Int32.name = "max"_c;
     max_Int32.returnType = Type::FullType { Int32Type.name };
     max_Int32.parameters = max_Int32_args;
     Symbol::Resolved(&max_Int32_x)->typeSymbol = &Int32Type;
     Symbol::Resolved(&max_Int32_y)->typeSymbol = &Int32Type;
     Symbol::Resolved(&max_Int32)->returnTypeSymbol = &Int32Type;
 
-    /// distance with Int32x2, Int32x2
+    /// max with Int32x2, Int32x2
     max_Int32x2_x.name = "x"_c;
     max_Int32x2_x.type = Type::FullType{ Int32x2Type.name };
     max_Int32x2_y.name = "y"_c;
     max_Int32x2_y.type = Type::FullType{ Int32x2Type.name };
-    max_Int32x2.name = "distance"_c;
+    max_Int32x2.name = "max"_c;
     max_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     max_Int32x2.parameters = max_Int32x2_args;
     Symbol::Resolved(&max_Int32x2_x)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&max_Int32x2_y)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&max_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
-    /// distance with Int32x3, Int32x3
+    /// max with Int32x3, Int32x3
     max_Int32x3_x.name = "x"_c;
     max_Int32x3_x.type = Type::FullType{ Int32x3Type.name };
     max_Int32x3_y.name = "y"_c;
     max_Int32x3_y.type = Type::FullType{ Int32x3Type.name };
-    max_Int32x3.name = "distance"_c;
+    max_Int32x3.name = "max"_c;
     max_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     max_Int32x3.parameters = max_Int32x3_args;
     Symbol::Resolved(&max_Int32x3_x)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&max_Int32x3_y)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&max_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
-    /// distance with Int32x4, Int32x4
+    /// max with Int32x4, Int32x4
     max_Int32x4_x.name = "x"_c;
     max_Int32x4_x.type = Type::FullType{ Int32x4Type.name };
     max_Int32x4_y.name = "y"_c;
     max_Int32x4_y.type = Type::FullType{ Int32x4Type.name };
-    max_Int32x4.name = "distance"_c;
+    max_Int32x4.name = "max"_c;
     max_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     max_Int32x4.parameters = max_Int32x4_args;
     Symbol::Resolved(&max_Int32x4_x)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&max_Int32x4_y)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&max_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
-    /// distance with Int16, Int16
+    /// max with Int16, Int16
     max_Int16_x.name = "x"_c;
     max_Int16_x.type = Type::FullType{ Int16Type.name };
     max_Int16_y.name = "y"_c;
     max_Int16_y.type = Type::FullType{ Int16Type.name };
-    max_Int16.name = "distance"_c;
+    max_Int16.name = "max"_c;
     max_Int16.returnType = Type::FullType { Int16Type.name };
     max_Int16.parameters = max_Int16_args;
     Symbol::Resolved(&max_Int16_x)->typeSymbol = &Int16Type;
     Symbol::Resolved(&max_Int16_y)->typeSymbol = &Int16Type;
     Symbol::Resolved(&max_Int16)->returnTypeSymbol = &Int16Type;
 
-    /// distance with Int16x2, Int16x2
+    /// max with Int16x2, Int16x2
     max_Int16x2_x.name = "x"_c;
     max_Int16x2_x.type = Type::FullType{ Int16x2Type.name };
     max_Int16x2_y.name = "y"_c;
     max_Int16x2_y.type = Type::FullType{ Int16x2Type.name };
-    max_Int16x2.name = "distance"_c;
+    max_Int16x2.name = "max"_c;
     max_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     max_Int16x2.parameters = max_Int16x2_args;
     Symbol::Resolved(&max_Int16x2_x)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&max_Int16x2_y)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&max_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
-    /// distance with Int16x3, Int16x3
+    /// max with Int16x3, Int16x3
     max_Int16x3_x.name = "x"_c;
     max_Int16x3_x.type = Type::FullType{ Int16x3Type.name };
     max_Int16x3_y.name = "y"_c;
     max_Int16x3_y.type = Type::FullType{ Int16x3Type.name };
-    max_Int16x3.name = "distance"_c;
+    max_Int16x3.name = "max"_c;
     max_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     max_Int16x3.parameters = max_Int16x3_args;
     Symbol::Resolved(&max_Int16x3_x)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&max_Int16x3_y)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&max_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
-    /// distance with Int16x4, Int16x4
+    /// max with Int16x4, Int16x4
     max_Int16x4_x.name = "x"_c;
     max_Int16x4_x.type = Type::FullType{ Int16x4Type.name };
     max_Int16x4_y.name = "y"_c;
     max_Int16x4_y.type = Type::FullType{ Int16x4Type.name };
-    max_Int16x4.name = "distance"_c;
+    max_Int16x4.name = "max"_c;
     max_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     max_Int16x4.parameters = max_Int16x4_args;
     Symbol::Resolved(&max_Int16x4_x)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&max_Int16x4_y)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&max_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
-    /// distance with UInt32, UInt32
+    /// max with UInt32, UInt32
     max_UInt32_x.name = "x"_c;
     max_UInt32_x.type = Type::FullType{ UInt32Type.name };
     max_UInt32_y.name = "y"_c;
     max_UInt32_y.type = Type::FullType{ UInt32Type.name };
-    max_UInt32.name = "distance"_c;
+    max_UInt32.name = "max"_c;
     max_UInt32.returnType = Type::FullType { UInt32Type.name };
     max_UInt32.parameters = max_UInt32_args;
     Symbol::Resolved(&max_UInt32_x)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&max_UInt32_y)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&max_UInt32)->returnTypeSymbol = &UInt32Type;
 
-    /// distance with UInt32x2, UInt32x2
+    /// max with UInt32x2, UInt32x2
     max_UInt32x2_x.name = "x"_c;
     max_UInt32x2_x.type = Type::FullType{ UInt32x2Type.name };
     max_UInt32x2_y.name = "y"_c;
     max_UInt32x2_y.type = Type::FullType{ UInt32x2Type.name };
-    max_UInt32x2.name = "distance"_c;
+    max_UInt32x2.name = "max"_c;
     max_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
     max_UInt32x2.parameters = max_UInt32x2_args;
     Symbol::Resolved(&max_UInt32x2_x)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&max_UInt32x2_y)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&max_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
-    /// distance with UInt32x3, UInt32x3
+    /// max with UInt32x3, UInt32x3
     max_UInt32x3_x.name = "x"_c;
     max_UInt32x3_x.type = Type::FullType{ UInt32x3Type.name };
     max_UInt32x3_y.name = "y"_c;
     max_UInt32x3_y.type = Type::FullType{ UInt32x3Type.name };
-    max_UInt32x3.name = "distance"_c;
+    max_UInt32x3.name = "max"_c;
     max_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
     max_UInt32x3.parameters = max_UInt32x3_args;
     Symbol::Resolved(&max_UInt32x3_x)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&max_UInt32x3_y)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&max_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
-    /// distance with UInt32x4, UInt32x4
+    /// max with UInt32x4, UInt32x4
     max_UInt32x4_x.name = "x"_c;
     max_UInt32x4_x.type = Type::FullType{ UInt32x4Type.name };
     max_UInt32x4_y.name = "y"_c;
     max_UInt32x4_y.type = Type::FullType{ UInt32x4Type.name };
-    max_UInt32x4.name = "distance"_c;
+    max_UInt32x4.name = "max"_c;
     max_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
     max_UInt32x4.parameters = max_UInt32x4_args;
     Symbol::Resolved(&max_UInt32x4_x)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&max_UInt32x4_y)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&max_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
-    /// distance with UInt16, UInt16
+    /// max with UInt16, UInt16
     max_UInt16_x.name = "x"_c;
     max_UInt16_x.type = Type::FullType{ UInt16Type.name };
     max_UInt16_y.name = "y"_c;
     max_UInt16_y.type = Type::FullType{ UInt16Type.name };
-    max_UInt16.name = "distance"_c;
+    max_UInt16.name = "max"_c;
     max_UInt16.returnType = Type::FullType { UInt16Type.name };
     max_UInt16.parameters = max_UInt16_args;
     Symbol::Resolved(&max_UInt16_x)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&max_UInt16_y)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&max_UInt16)->returnTypeSymbol = &UInt16Type;
 
-    /// distance with UInt16x2, UInt16x2
+    /// max with UInt16x2, UInt16x2
     max_UInt16x2_x.name = "x"_c;
     max_UInt16x2_x.type = Type::FullType{ UInt16x2Type.name };
     max_UInt16x2_y.name = "y"_c;
     max_UInt16x2_y.type = Type::FullType{ UInt16x2Type.name };
-    max_UInt16x2.name = "distance"_c;
+    max_UInt16x2.name = "max"_c;
     max_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
     max_UInt16x2.parameters = max_UInt16x2_args;
     Symbol::Resolved(&max_UInt16x2_x)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&max_UInt16x2_y)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&max_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
-    /// distance with UInt16x3, UInt16x3
+    /// max with UInt16x3, UInt16x3
     max_UInt16x3_x.name = "x"_c;
     max_UInt16x3_x.type = Type::FullType{ UInt16x3Type.name };
     max_UInt16x3_y.name = "y"_c;
     max_UInt16x3_y.type = Type::FullType{ UInt16x3Type.name };
-    max_UInt16x3.name = "distance"_c;
+    max_UInt16x3.name = "max"_c;
     max_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
     max_UInt16x3.parameters = max_UInt16x3_args;
     Symbol::Resolved(&max_UInt16x3_x)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&max_UInt16x3_y)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&max_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
-    /// distance with UInt16x4, UInt16x4
+    /// max with UInt16x4, UInt16x4
     max_UInt16x4_x.name = "x"_c;
     max_UInt16x4_x.type = Type::FullType{ UInt16x4Type.name };
     max_UInt16x4_y.name = "y"_c;
     max_UInt16x4_y.type = Type::FullType{ UInt16x4Type.name };
-    max_UInt16x4.name = "distance"_c;
+    max_UInt16x4.name = "max"_c;
     max_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
     max_UInt16x4.parameters = max_UInt16x4_args;
     Symbol::Resolved(&max_UInt16x4_x)->typeSymbol = &UInt16x4Type;

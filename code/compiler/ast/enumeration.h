@@ -23,6 +23,7 @@ struct Enumeration : public Type
     FixedArray<Symbol::Location> labelLocations;
     Type::FullType type;
     bool builtin = false;
+    Variable fromUnderlyingTypeArg, toUnderlyingTypeArg, eqOpArg, neqOpArg;
     Function fromUnderlyingType, toUnderlyingType, eqOp, neqOp;
 
     struct __Resolved : public Type::__Resolved

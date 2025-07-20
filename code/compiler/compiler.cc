@@ -229,6 +229,7 @@ Compiler::Setup(const Compiler::Language& lang, Options options)
 
         this->intrinsicScope->symbolLookup = DefaultIntrinsics;
 
+        this->ignoreReservedWords = true;
         this->shaderSwitches[ProgramInstance::__Resolved::EntryType::VertexShader].name = "gplIsVertexShader";
         this->shaderSwitches[ProgramInstance::__Resolved::EntryType::HullShader].name = "gplIsHullShader";
         this->shaderSwitches[ProgramInstance::__Resolved::EntryType::DomainShader].name = "gplIsDomainShader";
@@ -316,6 +317,8 @@ Compiler::Setup(Options options)
             this->performanceTimer.Print("Static Intrinsic Setup");
         
         this->intrinsicScope->symbolLookup = DefaultIntrinsics;
+        
+        this->ignoreReservedWords = true;
         
         this->shaderSwitches[ProgramInstance::__Resolved::EntryType::VertexShader].name = "gplIsVertexShader";
         this->shaderSwitches[ProgramInstance::__Resolved::EntryType::HullShader].name = "gplIsHullShader";
