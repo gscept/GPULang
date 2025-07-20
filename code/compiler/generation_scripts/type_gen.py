@@ -287,7 +287,8 @@ def generate_types():
     
     spirv_intrinsics.write(spirv_type_construction[0:-2])
     spirv_intrinsics.write('\n\n')
-    spirv_intrinsics.write('constexpr StaticMap ConverterTable = std::array{\n')
+    spirv_intrinsics.write('using SPIRVConversionFunction = SPIRVResult (*)(const Compiler*, SPIRVGenerator*, uint32_t, SPIRVResult);\n')
+    spirv_intrinsics.write(f'constexpr StaticMap<TypeConversionTable, SPIRVConversionFunction, {len(spirv_type_converter_list)}> ConverterTable = {{\n')
     spirv_intrinsics.write(",\n".join(spirv_type_converter_list))
     spirv_intrinsics.write('\n};\n\n')
 
@@ -352,6 +353,13 @@ def generate_types():
     #spirv_intrinsics.write('constexpr StaticMap default_intrinsics = std::array{\n')
     
 
+    class IntrinsicPair:
+        def __init__(self, decl_name, api_name):
+            self.decl_name = decl_name
+            self.api_name = api_name
+
+    def IntrinsicSortKey(item):
+        return item.api_name
     intrinsic_list = []
 
     ### Built-in data types (Float, Int, UInt, Bool and their vector/matrix variants)
@@ -361,8 +369,8 @@ def generate_types():
     header_file.write("//       DO NOT MODIFY!!!\n")
     header_file.write("//-------------------------------------------------\n")
     header_file.write('#include "ast/types/type.h"\n')
-    header_file.write('#include "ast/variable.h"\n')
-    header_file.write('#include "ast/function.h"\n')
+    #header_file.write('#include "ast/variable.h"\n')
+    #header_file.write('#include "ast/function.h"\n')
     header_file.write('#include "ast/enumeration.h"\n')
     header_file.write('#include "ast/expressions/intexpression.h"\n')
     header_file.write('#include "ast/expressions/enumexpression.h"\n')
@@ -409,7 +417,7 @@ def generate_types():
             self.documentation = documentation
 
         def declaration(self):
-            if self.parameters.__len__() > 0:
+            if len(self.parameters) > 0:
                 return_string = f'/// {self.api_name} with {", ".join([param.type_name for param in self.parameters])}\n'
             else:
                 return_string = f'/// {self.api_name}\n'
@@ -420,20 +428,20 @@ def generate_types():
             return return_string
 
         def definition(self):
-            if self.parameters.__len__() > 0:
+            if len(self.parameters) > 0:
                 return_string = f'/// {self.api_name} with {", ".join([param.type_name for param in self.parameters])}\n'
             else:
                 return_string = f'/// {self.api_name}\n'
             for param in self.parameters:
                 return_string += f'Variable {param.decl_name};\n'
             return_string += f'Function {self.decl_name};\n'
-            if self.parameters.__len__() > 0:
+            if len(self.parameters) > 0:
                 return_string += f'inline constexpr std::array {self.decl_name}_args = {{ {", ".join([f"&{param.decl_name}" for param in self.parameters])} }};\n'
             return_string += '\n'
             return return_string
 
         def setup(self):
-            if self.parameters.__len__() > 0:
+            if len(self.parameters) > 0:
                 return_string = f'    /// {self.api_name} with {", ".join([param.type_name for param in self.parameters])}\n'
             else:
                 return_string = f'    /// {self.api_name}\n'
@@ -448,7 +456,7 @@ def generate_types():
                 return_string += f'    {self.decl_name}.documentation = "{self.documentation}"_c;\n'
             return_string += f'    {self.decl_name}.name = "{self.api_name}"_c;\n'
             return_string += f'    {self.decl_name}.returnType = Type::FullType {{ {self.return_type}Type.name }};\n'
-            if self.parameters.__len__() > 0:
+            if len(self.parameters) > 0:
                 return_string += f'    {self.decl_name}.parameters = {self.decl_name}_args;\n'
             for param in self.parameters:
                 return_string += f'    Symbol::Resolved(&{param.decl_name})->typeSymbol = &{param.type_name}Type;\n'
@@ -460,10 +468,16 @@ def generate_types():
             return return_string
 
         def pair(self):
-            return f'    std::pair{{ "{self.api_name}"_c, &{self.decl_name} }}'
+            return IntrinsicPair(
+                decl_name=self.decl_name,
+                api_name=self.api_name
+            )
         
         def constructor_pair(self):
-            return f'    std::pair{{ "{self.api_name}({",".join([data_type_mapping[param.type_name] for param in self.parameters])})"_c, &{self.decl_name} }}'
+            return IntrinsicPair(
+                decl_name=self.decl_name,
+                api_name=f'{self.api_name}({",".join([data_type_mapping[param.type_name] for param in self.parameters])})'
+            )
 
     declaration_string = ""
     definition_string = ""
@@ -482,7 +496,7 @@ def generate_types():
             declaration_string += '};\n'
             declaration_string += f'extern {type_name} {type_name}Type;\n\n'
 
-            intrinsic_list.append(f'    std::pair{{ "{data_type_name}"_c, &{type_name}Type }}')
+            intrinsic_list.append(IntrinsicPair(decl_name=f'{type_name}Type', api_name=data_type_name))
             namer.names.append(NamerEntry(type_name, data_type_name))
             setup_string = ""
             list_string = []
@@ -821,7 +835,7 @@ def generate_types():
                         spirv_code += spirv_intrinsic(function_name, spirv_function)
             definition_string += f'{type_name}::{type_name}()\n'
             definition_string += '{\n'
-            definition_string += f'    this->name = "{data_type_mapping[type_name]}";\n'
+            definition_string += f'    this->name = "{data_type_mapping[type_name]}"_c;\n'
             definition_string += f'    this->columnSize = {size};\n'
             definition_string += f'    this->rowSize = 1;\n'
             definition_string += f'    this->byteSize = {trunc((bits * size) / 8)};\n'
@@ -830,9 +844,10 @@ def generate_types():
             definition_string += f'    this->builtin = true;\n'
             definition_string += f'\n'
             definition_string += f'{setup_string}'
-            definition_string += f'    this->scope.symbolLookup = StaticMap {{ std::array{{\n'
-            definition_string += f'{",\n".join(list_string)}\n'
-            definition_string += f'    }} }};\n'
+            list_string.sort(key=IntrinsicSortKey)
+            definition_string += f'    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, {len(list_string)}> {{ \n'
+            definition_string += ',\n'.join(f'        std::pair{{ \"{item.api_name}\", &{item.decl_name} }}' for item in list_string)
+            definition_string += f'    }};\n'
             definition_string += '}\n'
             definition_string += f'{type_name} {type_name}Type;\n\n'
 
@@ -857,7 +872,7 @@ def generate_types():
 
                 type_name = f'{type}x{row_size}x{column_size}'
                 data_type_name = f'{data_type_mapping[type]}x{row_size}x{column_size}'
-                intrinsic_list.append(f'    std::pair{{ "{data_type_name}"_c, &{type_name}Type }}')
+                intrinsic_list.append(IntrinsicPair(decl_name=f'{type_name}Type', api_name=data_type_name))
                 namer.names.append(NamerEntry(type_name, data_type_name))
             
                 setup_string = ""
@@ -1021,7 +1036,7 @@ def generate_types():
 
                 definition_string += f'{type_name}::{type_name}()\n'
                 definition_string += '{\n'
-                definition_string += f'    this->name = "{data_type_mapping[type]}";\n'
+                definition_string += f'    this->name = "{data_type_mapping[type]}"_c;\n'
                 definition_string += f'    this->columnSize = {column_size};\n'
                 definition_string += f'    this->rowSize = {row_size};\n'
                 definition_string += f'    this->byteSize = {trunc((bits * row_size * column_size) / 8)};\n'
@@ -1030,9 +1045,10 @@ def generate_types():
                 definition_string += '    this->builtin = true;\n'
                 definition_string += '\n'
                 definition_string += f'{setup_string}'
-                definition_string += f'    this->scope.symbolLookup = StaticMap {{ std::array<std::pair<ConstantString, Symbol*>, {list_string.__len__()}> {{\n'
-                definition_string += f'{",\n".join(list_string)}\n'
-                definition_string += f'    }} }};\n'
+                list_string.sort(key=IntrinsicSortKey)
+                definition_string += f'    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, {len(list_string)}> {{ \n'
+                definition_string += ',\n'.join(f'        std::pair{{ "{item.api_name}", &{item.decl_name} }}' for item in list_string)
+                definition_string += f'    }};\n'
                 definition_string += '}\n'
                 definition_string += f'{type_name} {type_name}Type;\n\n'
 
@@ -1057,7 +1073,7 @@ def generate_types():
             class_def += '{\n'
             name = self.name[0].lower() + self.name[1:]
             namer.names.append(NamerEntry(self.name, name))
-            class_def += f'    this->name = "{name}";\n'
+            class_def += f'    this->name = "{name}"_c;\n'
             if self.category:
                 class_def += f'    this->category = Type::{self.category};\n'
             if self.baseType:
@@ -1146,7 +1162,7 @@ def generate_types():
                 defn += f'EnumExpression {self.name}{member.name};\n'
             defn += f'{self.name}::{self.name}()\n'
             defn += '{\n'
-            defn += f'    this->name = "{self.name}";\n'
+            defn += f'    this->name = "{self.name}"_c;\n'
             defn += '    this->category = Type::EnumCategory;\n'
             defn += f'    this->type = Type::FullType{{ {self.type_name}Type.name }};\n'
             defn += f'    Symbol::Resolved(this)->typeSymbol = &{self.type_name}Type;\n'
@@ -1160,10 +1176,12 @@ def generate_types():
                 defn += f'    {self.name}{member.name}.underlyingType = Type::FullType{{ {self.type_name}Type.name }};\n'
                 defn += f'    Symbol::Resolved(&{self.name}{member.name})->type = this;\n'
 
-            defn += f'    this->scope.symbolLookup = StaticMap {{ std::array<std::pair<ConstantString, Symbol*>, {self.members.__len__()}>{{\n'
-            for member in self.members:
-                defn += f'        std::pair{{ "{member.name}"_c, &{self.name}{member.name} }},\n'
-            defn += '    }};\n'
+            def MemberSortKey(member):
+                return member.name
+            self.members.sort(key=MemberSortKey)
+            defn += f'    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, {len(self.members)}> {{\n'
+            defn += ',\n'.join(f'        std::pair{{ "{member.name}"_c, &{self.name}{member.name} }}' for member in self.members)
+            defn += '\n    };\n'
             defn += '};\n'
             defn += f'{self.name} {self.name}Type;\n\n'
 
@@ -1422,7 +1440,7 @@ def generate_types():
 
             defn += f'{self.name}::{self.name}()\n'
             defn += '{\n'
-            defn += f'    this->name = "{self.name}";\n'
+            defn += f'    this->name = "{self.name}"_c;\n'
             defn += '    this->builtin = true;\n'
             for member in self.members:
                 defn += f'    {self.name}{member.name}.name = "{member.name}"_c;\n'
@@ -1432,10 +1450,12 @@ def generate_types():
                     defn += f'    {self.name}{member.name}.type = Type::FullType{{ {member.data_type}Type.name }};\n'
                 defn += f'    Symbol::Resolved(&{self.name}{member.name})->typeSymbol = &{member.data_type}Type;\n\n'
 
-            defn += '    this->scope.symbolLookup = StaticMap { std::array{\n'
-            for member in self.members:
-                defn += f'        std::pair{{ "{member.name}"_c, &{self.name}{member.name} }},\n'
-            defn += '    }};\n'
+            def MemberSortKey(member):
+                return member.name
+            self.members.sort(key=MemberSortKey)
+            defn += f'    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, {len(self.members)}>{{\n'
+            defn += ',\n'.join(f'        std::pair{{ "{member.name}"_c, &{self.name}{member.name} }}' for member in self.members)
+            defn += '\n    };\n'
             defn += '};\n'
             defn += f'{self.name} {self.name}Type;\n\n'
 
@@ -1541,10 +1561,36 @@ def generate_types():
     definition_string += state.definition()
 
     source_file.write(namer.definition())
+    source_file.write('} // namespace GPULang\n\n')
+
+    source_file.write('#include "compiler.h"\n')
+    source_file.write('namespace GPULang \n{\n')
+
+    source_file.write("Compiler::Timer StaticTypeTimer;\n")
+    source_file.write('struct StaticTypeTimerStart\n')
+    source_file.write('{\n')
+    source_file.write('    StaticTypeTimerStart()\n')
+    source_file.write('    {\n')
+    source_file.write('        StaticTypeTimer.Start();\n')
+    source_file.write('    }\n')
+    source_file.write('};\n')
+    source_file.write('StaticTypeTimerStart StaticTypeTimerStartInstance;\n\n')
+
+    
     header_file.write(declaration_string[0:-1] + '\n')
     header_file.write("\n")
     source_file.write(definition_string[0:-1] + '\n')
     source_file.write("\n")
+
+    source_file.write('struct StaticTypeTimerStop\n')
+    source_file.write('{\n')
+    source_file.write('    StaticTypeTimerStop()\n')
+    source_file.write('    {\n')
+    source_file.write('        StaticTypeTimer.Stop();\n')
+    source_file.write('        StaticTypeTimer.Print("Static Type Setup");\n')
+    source_file.write('    }\n')
+    source_file.write('};\n')
+    source_file.write('StaticTypeTimerStop StaticTypeTimerStopInstance;\n\n')
 
     header_file.write('} // namespace GPULang\n\n')
     source_file.write('} // namespace GPULang\n\n')
@@ -1584,9 +1630,21 @@ def generate_types():
     intrinsics_source.write('#include "ast/function.h"\n')
     intrinsics_source.write('#include "ast/variable.h"\n')
     intrinsics_source.write('#include "types.h"\n')
+    intrinsics_source.write('#include "compiler.h"\n')
 
     intrinsics_source.write('namespace GPULang\n')
     intrinsics_source.write('{\n')
+
+    intrinsics_source.write("Compiler::Timer StaticIntrinsicTimer;\n")
+    intrinsics_source.write('struct StaticIntrinsicTimerStart\n')
+    intrinsics_source.write('{\n')
+    intrinsics_source.write('    StaticIntrinsicTimerStart()\n')
+    intrinsics_source.write('    {\n')
+    intrinsics_source.write('        StaticIntrinsicTimer.Start();\n')
+    intrinsics_source.write('    }\n')
+    intrinsics_source.write('};\n')
+    intrinsics_source.write('StaticIntrinsicTimerStart StaticIntrinsicTimerStartInstance;\n\n')
+
 
     intrinsic_decls = ''
     intrinsic_defs = ''
@@ -3606,9 +3664,11 @@ def generate_types():
     #spirv_intrinsics.write('} // namespace GPULang\n\n')
     
     intrinsics_header.write(intrinsic_decls)
+    intrinsics_header.write('void SetupIntrinsics();\n\n')
 
-    intrinsics_header.write(f'inline constexpr StaticMap DefaultIntrinsics = std::array<std::pair<ConstantString, Symbol*>, {intrinsic_list.__len__()}> {{\n')
-    intrinsics_header.write(',\n'.join(intrinsic_list))
+    intrinsic_list.sort(key=IntrinsicSortKey)
+    intrinsics_header.write(f'inline constexpr StaticMap<ConstantString, Symbol*, {len(intrinsic_list)}> DefaultIntrinsics = {{\n')
+    intrinsics_header.write(',\n'.join(f'    std::pair{{ "{i.api_name}", &{i.decl_name} }} /* {n} */' for n, i in enumerate(intrinsic_list)))
     intrinsics_header.write('\n};\n\n')
     intrinsics_header.write('} // namespace GPULang\n\n')
 
@@ -3618,6 +3678,17 @@ def generate_types():
     intrinsics_source.write('{\n')
     intrinsics_source.write(intrinsic_setup)
     intrinsics_source.write('}\n')
+
+    intrinsics_source.write('struct StaticIntrinsicTimerStop\n')
+    intrinsics_source.write('{\n')
+    intrinsics_source.write('    StaticIntrinsicTimerStop()\n')
+    intrinsics_source.write('    {\n')
+    intrinsics_source.write('        StaticIntrinsicTimer.Stop();\n')
+    intrinsics_source.write('        StaticIntrinsicTimer.Print("Static Intrinsic Alloc");\n')
+    intrinsics_source.write('    }\n')
+    intrinsics_source.write('};\n')
+    intrinsics_source.write('StaticIntrinsicTimerStop StaticIntrinsicTimerStopInstance;\n\n')
+
     intrinsics_source.write('} // namespace GPULang\n')
 
 

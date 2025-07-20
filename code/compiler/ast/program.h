@@ -110,23 +110,23 @@ struct ProgramInstance : public Symbol
 
 constexpr StaticMap programInstanceEntryTypeLookup =
 std::array{
-    std::pair{ ConstantString("VertexShader"), ProgramInstance::__Resolved::VertexShader }
-    , std::pair{ ConstantString("HullShader"), ProgramInstance::__Resolved::HullShader }
-    , std::pair{ ConstantString("TessellationControlShader"), ProgramInstance::__Resolved::HullShader }
-    , std::pair{ ConstantString("DomainShader"), ProgramInstance::__Resolved::DomainShader }
-    , std::pair{ ConstantString("TessellationEvaluationShader"), ProgramInstance::__Resolved::DomainShader }
-    , std::pair{ ConstantString("GeometryShader"), ProgramInstance::__Resolved::GeometryShader }
-    , std::pair{ ConstantString("PixelShader"), ProgramInstance::__Resolved::PixelShader }
-    , std::pair{ ConstantString("ComputeShader"), ProgramInstance::__Resolved::ComputeShader }
-    , std::pair{ ConstantString("TaskShader"), ProgramInstance::__Resolved::TaskShader }
-    , std::pair{ ConstantString("MeshShader"), ProgramInstance::__Resolved::MeshShader }
-    , std::pair{ ConstantString("RayGenerationShader"), ProgramInstance::__Resolved::RayGenerationShader }
-    , std::pair{ ConstantString("RayMissShader"), ProgramInstance::__Resolved::RayMissShader }
-    , std::pair{ ConstantString("RayClosestHitShader"), ProgramInstance::__Resolved::RayClosestHitShader }
-    , std::pair{ ConstantString("RayAnyHitShader"), ProgramInstance::__Resolved::RayAnyHitShader }
-    , std::pair{ ConstantString("RayIntersectionShader"), ProgramInstance::__Resolved::RayIntersectionShader }
-    , std::pair{ ConstantString("RayCallableShader"), ProgramInstance::__Resolved::RayCallableShader }
-    , std::pair{ ConstantString("RenderState"), ProgramInstance::__Resolved::RenderState }
+    std::pair{ "VertexShader"_c, ProgramInstance::__Resolved::VertexShader }
+    , std::pair{ "HullShader"_c, ProgramInstance::__Resolved::HullShader }
+    , std::pair{ "TessellationControlShader"_c, ProgramInstance::__Resolved::HullShader }
+    , std::pair{ "DomainShader"_c, ProgramInstance::__Resolved::DomainShader }
+    , std::pair{ "TessellationEvaluationShader"_c, ProgramInstance::__Resolved::DomainShader }
+    , std::pair{ "GeometryShader"_c, ProgramInstance::__Resolved::GeometryShader }
+    , std::pair{ "PixelShader"_c, ProgramInstance::__Resolved::PixelShader }
+    , std::pair{ "ComputeShader"_c, ProgramInstance::__Resolved::ComputeShader }
+    , std::pair{ "TaskShader"_c, ProgramInstance::__Resolved::TaskShader }
+    , std::pair{ "MeshShader"_c, ProgramInstance::__Resolved::MeshShader }
+    , std::pair{ "RayGenerationShader"_c, ProgramInstance::__Resolved::RayGenerationShader }
+    , std::pair{ "RayMissShader"_c, ProgramInstance::__Resolved::RayMissShader }
+    , std::pair{ "RayClosestHitShader"_c, ProgramInstance::__Resolved::RayClosestHitShader }
+    , std::pair{ "RayAnyHitShader"_c, ProgramInstance::__Resolved::RayAnyHitShader }
+    , std::pair{ "RayIntersectionShader"_c, ProgramInstance::__Resolved::RayIntersectionShader }
+    , std::pair{ "RayCallableShader"_c, ProgramInstance::__Resolved::RayCallableShader }
+    , std::pair{ "RenderState"_c, ProgramInstance::__Resolved::RenderState }
 };
 
 

@@ -12,10 +12,7 @@ namespace GPULang
 Variable::Variable()
 {
     this->symbolType = VariableType;
-    if (SYMBOL_STATIC_ALLOC)
-        this->resolved = StaticAlloc<Variable::__Resolved>();
-    else
-        this->resolved = Alloc<Variable::__Resolved>();
+    this->resolved = &this->variableResolved;
     this->type = Type::FullType{ ConstantString("") };
     this->valueExpression = nullptr;
 

@@ -22,10 +22,7 @@ namespace GPULang
 Function::Function()
 {
     this->symbolType = FunctionType;
-    if (SYMBOL_STATIC_ALLOC)
-        this->resolved = StaticAlloc<Function::__Resolved>();
-    else
-        this->resolved = Alloc<Function::__Resolved>();
+    this->resolved = &this->functionResolved;
     this->hasBody = false;
     this->compileTime = false;
     this->ast = nullptr;

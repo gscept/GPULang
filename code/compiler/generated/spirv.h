@@ -777,7 +777,8 @@ SPIRVResult SPIRV_Int16ToUInt16(const Compiler* c, SPIRVGenerator* g, uint32_t v
     }
 }
 
-constexpr StaticMap ConverterTable = std::array{
+using SPIRVConversionFunction = SPIRVResult (*)(const Compiler*, SPIRVGenerator*, uint32_t, SPIRVResult);
+constexpr StaticMap<TypeConversionTable, SPIRVConversionFunction, 38> ConverterTable = {
     std::pair{ TypeConversionTable::Float32ToUInt32, &SPIRV_Float32ToUInt32 },
     std::pair{ TypeConversionTable::Float32ToInt32, &SPIRV_Float32ToInt32 },
     std::pair{ TypeConversionTable::Float32ToFloat16, &SPIRV_Float32ToFloat16 },

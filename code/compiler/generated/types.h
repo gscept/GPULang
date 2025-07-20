@@ -4,8 +4,6 @@
 //       DO NOT MODIFY!!!
 //-------------------------------------------------
 #include "ast/types/type.h"
-#include "ast/variable.h"
-#include "ast/function.h"
 #include "ast/enumeration.h"
 #include "ast/expressions/intexpression.h"
 #include "ast/expressions/enumexpression.h"

@@ -5,8 +5,19 @@
 #include "ast/function.h"
 #include "ast/variable.h"
 #include "types.h"
+#include "compiler.h"
 namespace GPULang
 {
+Compiler::Timer StaticIntrinsicTimer;
+struct StaticIntrinsicTimerStart
+{
+    StaticIntrinsicTimerStart()
+    {
+        StaticIntrinsicTimer.Start();
+    }
+};
+StaticIntrinsicTimerStart StaticIntrinsicTimerStartInstance;
+
 /// acos with Float32
 Variable acos_Float32_arg;
 Function acos_Float32;
@@ -23743,4 +23754,14 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasProjCompareOffset_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
 }
+struct StaticIntrinsicTimerStop
+{
+    StaticIntrinsicTimerStop()
+    {
+        StaticIntrinsicTimer.Stop();
+        StaticIntrinsicTimer.Print("Static Intrinsic Setup");
+    }
+};
+StaticIntrinsicTimerStop StaticIntrinsicTimerStopInstance;
+
 } // namespace GPULang

@@ -220,6 +220,12 @@ Compiler::Setup(const Compiler::Language& lang, Options options)
 
         // push global scope for all the builtins
         this->PushScope(this->intrinsicScope);
+        
+        this->performanceTimer.Start();
+        SetupIntrinsics();
+        this->performanceTimer.Stop();
+        if (this->options.emitTimings)
+            this->performanceTimer.Print("Static Intrinsic Setup");
 
         this->intrinsicScope->symbolLookup = DefaultIntrinsics;
 
@@ -290,8 +296,6 @@ Compiler::Setup(Options options)
     
     //this->staticSetupThread = CreateThread(GPULang::ThreadInfo{ .stackSize = 16_MB }, [this]()
     {
-        
-        
         //MakeAllocatorCurrent(&StaticAllocator);
         
         // Allocate main scopes
@@ -305,10 +309,13 @@ Compiler::Setup(Options options)
         // push global scope for all the builtins
         this->PushScope(this->intrinsicScope);
         
-        this->intrinsicScope->symbolLookup = DefaultIntrinsics;
-      
+        this->performanceTimer.Start();
+        SetupIntrinsics();
+        this->performanceTimer.Stop();
         if (this->options.emitTimings)
-            this->performanceTimer.Print("Static setup intrinsics");
+            this->performanceTimer.Print("Static Intrinsic Setup");
+        
+        this->intrinsicScope->symbolLookup = DefaultIntrinsics;
         
         this->shaderSwitches[ProgramInstance::__Resolved::EntryType::VertexShader].name = "gplIsVertexShader";
         this->shaderSwitches[ProgramInstance::__Resolved::EntryType::HullShader].name = "gplIsHullShader";
@@ -384,7 +391,6 @@ void
 Compiler::EndStaticSymbolSetup()
 {
     this->staticSymbolSetup = false;
-    this->intrinsicScope->symbolLookup.EndBulkAdd();
 }
 
 //------------------------------------------------------------------------------

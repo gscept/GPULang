@@ -96,7 +96,7 @@ struct Variable : public Symbol
 
         ShaderUsage visibilityBits;
         bool builtin = false;
-    };
+    } variableResolved;
     __Resolved* thisResolved;
 };
 

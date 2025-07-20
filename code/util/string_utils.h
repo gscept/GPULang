@@ -59,22 +59,26 @@ struct ConstantString
     
     constexpr bool operator<(const ConstantString& rhs) const
     {
-        for (size_t i = 0; i < this->size && i < rhs.size; i++)
+        size_t minSize = (this->size < rhs.size) ? this->size : rhs.size;
+
+        for (size_t i = 0; i < minSize; i++)
         {
             if (this->buf[i] < rhs.buf[i]) return true;
             if (this->buf[i] > rhs.buf[i]) return false;
         }
         return this->size < rhs.size;
-        //return std::strcmp(this->buf, rhs.buf) < 0;
+       
     }
     
     constexpr bool operator==(const ConstantString& rhs) const
     {
+        if (this->size != rhs.size)
+            return false;
         for (size_t i = 0; i < this->size && i < rhs.size; i++)
         {
             if (this->buf[i] != rhs.buf[i]) return false;
         }
-        return this->size == rhs.size;
+        return true;
     }
     
     constexpr const char* c_str() const
