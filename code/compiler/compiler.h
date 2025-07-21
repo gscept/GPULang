@@ -469,17 +469,12 @@ Compiler::GetType(const Type::FullType& type) const
         {
             map = &scope->symbolLookup;
         }
-        auto it = map->Find(str);
-        if (it != map->end())
+        auto range = map->FindRange(str);
+        for (auto it = range.first; it != range.second; it++)
         {
             sym = it->second;
-            while (sym->name == str)
-            {
-                if (sym->symbolType == Symbol::SymbolType::TypeType || sym->symbolType == Symbol::SymbolType::StructureType || sym->symbolType == Symbol::SymbolType::EnumerationType)
-                    return static_cast<Type*>(sym);
-                it++;
-                sym = it->second;
-            }
+            if (sym->symbolType == Symbol::SymbolType::TypeType || sym->symbolType == Symbol::SymbolType::StructureType || sym->symbolType == Symbol::SymbolType::EnumerationType)
+                return static_cast<Type*>(sym);
         }
         scopeIter++;
     }

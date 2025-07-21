@@ -89,9 +89,11 @@ CallExpression::Resolve(Compiler* compiler)
     struct Candidate
     {
         Function* function;
-        bool needsConversion;
-        bool simpleConversion;
+        bool needsConversion = false;
+        bool simpleConversion = false;
         std::vector<Function*> argumentConversionFunctions;
+        uint16_t numConversionsNeeded = 0;
+        uint16_t numExpansionsNeeded = 0; // Number of arguments that match
     };
     if (symbol == nullptr)
     {
@@ -112,8 +114,6 @@ CallExpression::Resolve(Compiler* compiler)
                 {
                     Function* ctorFun = static_cast<Function*>(ctor);
                     Candidate candidate;
-                    candidate.needsConversion = false;
-                    candidate.simpleConversion = false;
                     candidate.function = ctorFun;
 
                     if (ctorFun->parameters.size == this->thisResolved->argTypes.size())
@@ -139,8 +139,15 @@ CallExpression::Resolve(Compiler* compiler)
                                     break;
                                 }
                                 candidate.needsConversion = true;
-                                if (paramResolved->typeSymbol->columnSize == this->thisResolved->argTypes[i]->columnSize)
-                                    candidate.simpleConversion = true;
+                                
+                                if (paramResolved->typeSymbol->columnSize != this->thisResolved->argTypes[i]->columnSize)
+                                {
+                                    candidate.numExpansionsNeeded += 1; // More expensive conversion
+                                    if (paramResolved->typeSymbol->baseType != this->thisResolved->argTypes[i]->baseType)
+                                        candidate.numConversionsNeeded += 1; // needs both expansion and conversion
+                                }
+                                else
+                                    candidate.numConversionsNeeded += 1;
                                 candidate.argumentConversionFunctions.push_back(static_cast<Function*>(componentConversionSymbol));
                             }
                             else
@@ -162,8 +169,6 @@ CallExpression::Resolve(Compiler* compiler)
                 Function* fun = static_cast<Function*>(functionSymbol);
                 Candidate candidate;
                 candidate.function = fun;
-                candidate.needsConversion = false;
-                candidate.simpleConversion = false;
 
                 if (fun->parameters.size == this->thisResolved->argTypes.size())
                 {
@@ -187,9 +192,15 @@ CallExpression::Resolve(Compiler* compiler)
                             {
                                 break;
                             }
-                            candidate.needsConversion = true;
-                            if (paramResolved->typeSymbol->columnSize == this->thisResolved->argTypes[i]->columnSize)
-                                candidate.simpleConversion = true;
+                            
+                            if (paramResolved->typeSymbol->columnSize != this->thisResolved->argTypes[i]->columnSize)
+                            {
+                                candidate.numExpansionsNeeded += 1;
+                                if (paramResolved->typeSymbol->baseType != this->thisResolved->argTypes[i]->baseType)
+                                    candidate.numConversionsNeeded += 1; // needs both expansion and conversion
+                            }
+                            else
+                                candidate.numConversionsNeeded += 1;
                             candidate.argumentConversionFunctions.push_back(static_cast<Function*>(componentConversionSymbol));
                         }
                         else
@@ -228,10 +239,18 @@ CallExpression::Resolve(Compiler* compiler)
         }
         else
         {
+            // Sort based on how many conversions are needed, where the one with the least appears first
+            std::sort(candidates.begin(), candidates.end(), [](const Candidate& a, const Candidate& b)
+            {
+                return a.argumentConversionFunctions.size() < b.argumentConversionFunctions.size();
+            });
+                    
             std::vector<Candidate> ambiguousCalls;
             for (auto& candidate : candidates)
             {
-                if (!candidate.needsConversion)
+                // No conversions needed, just go ahead and use directly
+                // Candidates without conversions will appear first in the sorted list
+                if (candidate.argumentConversionFunctions.empty())
                 {
                     this->thisResolved->function = candidate.function;
                     this->thisResolved->returnType = this->thisResolved->function->returnType;
@@ -240,8 +259,10 @@ CallExpression::Resolve(Compiler* compiler)
                     ambiguousCalls.clear();
                     break;
                 }
-                else if (candidate.simpleConversion)
+                else if (candidate.numConversionsNeeded == 0)
                 {
+                    // Functions that need conversion usually truncate or reinterpret values, so are less likely to be the correct one
+                    // Picking a function that does only expansion makes a lot more sense, so this one is a preferred candidate
                     this->thisResolved->function = candidate.function;
                     this->thisResolved->returnType = this->thisResolved->function->returnType;
                     this->thisResolved->retType = compiler->GetType(this->thisResolved->returnType);
@@ -252,8 +273,10 @@ CallExpression::Resolve(Compiler* compiler)
                 }
                 else
                 {
+                    // Ambigious call, needs conversion, not expansion
                     ambiguousCalls.push_back(candidate);
                 }
+                
             }
             if (ambiguousCalls.size() > 1)
             {
@@ -265,6 +288,7 @@ CallExpression::Resolve(Compiler* compiler)
                 else
                 {
                     std::string fmt = Format("Ambiguous call %s, could be:", callSignature.c_str());
+                    ambiguousCalls.resize(min(ambiguousCalls.size(), 10)); // Limit to 10 candidates
                     for (auto& candidate : ambiguousCalls)
                     {
                         fmt.append(Format("\n    %s", Symbol::Resolved(candidate.function)->signature.c_str()));
@@ -351,7 +375,7 @@ CallExpression::Resolve(Compiler* compiler)
             Variable* var = thisResolved->function->parameters.buf[i];
             Variable::__Resolved* varRes = Symbol::Resolved(var);
             Type::FullType argType = this->thisResolved->argumentTypes[i];
-            if (varRes->type.literal && !argType.literal)
+            if (var->type.literal && !argType.literal)
             {
                 compiler->Error(Format("Function %s expects argument %s to be literal", this->thisResolved->function->name.c_str(), var->name.c_str()), this);;
                 return false;

@@ -78,7 +78,6 @@ struct Variable : public Symbol
 
         /// type here is the fully qualified (pointer and array) type
         Type* typeSymbol = nullptr;
-        Type::FullType type;
 
         static const uint8_t NOT_BOUND = 0xF;
         uint32_t group;          // resource group

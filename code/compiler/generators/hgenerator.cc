@@ -268,15 +268,15 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
             }
 
             std::string arraySize = "";
-            for (int i = 0; i < varResolved->type.modifierValues.size(); i++)
+            for (int i = 0; i < var->type.modifierValues.size(); i++)
             {
-                if (varResolved->type.modifiers[i] == Type::FullType::Modifier::Array)
+                if (var->type.modifiers[i] == Type::FullType::Modifier::Array)
                 {
                     uint32_t size = 0;
-                    if (varResolved->type.modifierValues[i] != nullptr)
+                    if (var->type.modifierValues[i] != nullptr)
                     {
                         ValueUnion val;
-                        varResolved->type.modifierValues[i]->EvalValue(val);
+                        var->type.modifierValues[i]->EvalValue(val);
                         val.Store(size);
                     }
                     if (size > 0)
@@ -321,7 +321,7 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
                 {
                     ptrdiff_t diff = std::distance(modIt, var->type.modifiers.rend()) - 1;
                     ValueUnion val;
-                    if (varResolved->type.modifierValues[diff]->EvalValue(val))
+                    if (var->type.modifierValues[diff]->EvalValue(val))
                     {
                         arrayType = Format("[%d]%s", val.ui[0], arrayType.buf);
                     }
@@ -336,7 +336,7 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
             // if element padding, we need to split the array into elements where each element is padded
             if (varResolved->elementPadding > 0)
             {
-                for (int i = 0; i < varResolved->type.modifierValues.size(); i++)
+                for (int i = 0; i < var->type.modifierValues.size(); i++)
                 {
                     // don't pad the first element
                     if (i > 0)
@@ -346,10 +346,10 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
                             writer.WriteLine("unsigned int : 32;");
                     }
                     uint32_t size = 0;
-                    if (varResolved->type.modifierValues[i] != nullptr)
+                    if (var->type.modifierValues[i] != nullptr)
                     {
                         ValueUnion val;
-                        varResolved->type.modifierValues[i]->EvalValue(val);
+                        var->type.modifierValues[i]->EvalValue(val);
                         val.Store(size);
                     }
                     writer.Write(Format("%s %s_%d%s;", type.buf, var->name.c_str(), i, arrayType.buf));
@@ -410,7 +410,7 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
                 {
                     ptrdiff_t diff = std::distance(modIt, var->type.modifiers.rend()) - 1;
                     ValueUnion val;
-                    if (varResolved->type.modifierValues[diff]->EvalValue(val))
+                    if (var->type.modifierValues[diff]->EvalValue(val))
                     {
                         arrayType = Format("[%d]%s", val.ui[0], arrayType.buf);
                     }

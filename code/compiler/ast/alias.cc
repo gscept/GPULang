@@ -23,7 +23,7 @@ Alias::Alias()
 bool 
 Alias::Resolve(Compiler* compiler)
 {
-    Symbol* sym = compiler->GetSymbol(this->type);
+    Symbol* sym = compiler->GetType(Type::FullType{this->type});
     if (sym == nullptr)
     {
         compiler->UnrecognizedTypeError(TransientString(this->type), this);

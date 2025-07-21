@@ -927,7 +927,7 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
                     else
                         ret += " ";
                 }
-                ret += res->type.ToString().c_str();
+                ret += var->type.ToString().c_str();
             
                 if (var->valueExpression != nullptr)
                 {
@@ -938,7 +938,8 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
                 ret += "\n\n";
                 if (sym->location.line != -1)
                     ret += GPULang::Format("Declared in %s line %d\n", sym->location.file.c_str(), sym->location.line);
-                ret += sym->documentation.c_str();
+                if (sym->documentation.buf != nullptr)
+                    ret += sym->documentation.c_str();
                 ret += "\n";
             }
             else if (lookup.flags.typeLookup)
@@ -952,13 +953,14 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
                         ret += " ";
                 }
                 ret += GPULang::Format("%s : ", var->name.c_str());
-                ret += res->type.ToString().c_str();
-                ret += sym->documentation.c_str();
+                ret += var->type.ToString().c_str();
+                if (sym->documentation.buf != nullptr)
+                    ret += sym->documentation.c_str();
                 ret += "\n";
             }
             else
             {
-                ret += res->type.ToString().c_str();
+                ret += var->type.ToString().c_str();
             }
             break;
         }
@@ -979,7 +981,8 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
                 ret += "\n\n";
                 if (sym->location.line != -1)
                     ret += GPULang::Format("Declared in %s line %d\n", sym->location.file.c_str(), sym->location.line);
-                ret += sym->documentation.c_str();
+                if (sym->documentation.buf != nullptr)
+                    ret += sym->documentation.c_str();
                 ret += "\n";
             }
             else
@@ -1038,12 +1041,13 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
                 for (auto param : res->function->parameters)
                 {
                     const GPULang::Variable::__Resolved* paramRes = GPULang::Symbol::Resolved(param);
-                    ret += GPULang::Format("%s : %s", param->name.c_str(), paramRes->type.ToString(true).c_str());
+                    ret += GPULang::Format("%s : %s", param->name.c_str(), param->type.ToString(true).c_str());
                     if (param != res->function->parameters.back())
                         ret += ", ";
                 }
                 ret += GPULang::Format(") %s\n\n", res->function->returnType.ToString().c_str());
-                ret += res->function->documentation.c_str();
+                if (res->function->documentation.buf != nullptr)
+                    ret += res->function->documentation.c_str();
                 ret += "\n";
             }
             break;
@@ -1086,7 +1090,8 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
                 ret += "\n\n";
                 if (sym->location.line != -1)
                     ret += GPULang::Format("Declared in %s line %d\n", sym->location.file.c_str(), sym->location.line);
-                ret += sym->documentation.c_str();
+                if (sym->documentation.buf != nullptr)
+                    ret += sym->documentation.c_str();
                 ret += "\n";
             }
             else if (lookup.flags.typeLookup)
@@ -1101,7 +1106,9 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
                 }
                 ret += GPULang::Format("%s : ", state->name.c_str());
 
-                ret += sym->documentation.c_str();
+                if (sym->documentation.buf != nullptr)
+                    ret += sym->documentation.c_str();
+                
                 ret += "\n";
             }
             for (auto mem : res->typeSymbol->scope.symbolLookup)
@@ -1573,8 +1580,8 @@ main(int argc, const char** argv)
                                 }
                                 case GPULang::Symbol::SymbolType::VariableType:
                                 {
-                                    auto fun = static_cast<GPULang::Variable*>(sym);
-                                    auto res = GPULang::Symbol::Resolved(fun);
+                                    auto var = static_cast<GPULang::Variable*>(sym);
+                                    auto res = GPULang::Symbol::Resolved(var);
                                     if (completionType == LookupType::Member)
                                     {
                                         const char* memberEnd = forward_identifier_search(begin+1, eol);
@@ -1590,7 +1597,7 @@ main(int argc, const char** argv)
                                     }
                                     else
                                     {
-                                        items.push_back(lsp::CompletionItem{ .label = sym->name.c_str(), .labelDetails = lsp::CompletionItemLabelDetails{.description = res->type.name.c_str()}, .commitCharacters = {{"."}} });
+                                        items.push_back(lsp::CompletionItem{ .label = sym->name.c_str(), .labelDetails = lsp::CompletionItemLabelDetails{.description = var->type.name.c_str()}, .commitCharacters = {{"."}} });
                                     }
                                     break;
                                 }

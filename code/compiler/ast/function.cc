@@ -88,8 +88,9 @@ Function::MatchOverload(Compiler* compiler, const std::vector<Symbol*>& function
         ret = sym;
         for (size_t i = 0; i < args.size() && ret != nullptr; i++)
         {
-            Variable::__Resolved* paramResolved = Symbol::Resolved(fun->parameters.buf[i]);
-            if (args[i] != paramResolved->type)
+            Variable* param = fun->parameters.buf[i];
+            Variable::__Resolved* paramResolved = Symbol::Resolved(param);
+            if (args[i] != param->type)
             {
                 if (allowImplicitConversion)
                 {

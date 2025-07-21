@@ -175,6 +175,10 @@ extern Function UInt32_convert_Float32;
 extern Variable UInt32_convert_Int32_arg0;
 extern Function UInt32_convert_Int32;
 
+/// u32 with Bool8
+extern Variable UInt32_convert_Bool8_arg0;
+extern Function UInt32_convert_Bool8;
+
 /// u32 with Float16
 extern Variable UInt32_convert_Float16_arg0;
 extern Function UInt32_convert_Float16;
@@ -320,6 +324,10 @@ extern Function Int32_convert_Float32;
 /// i32 with UInt32
 extern Variable Int32_convert_UInt32_arg0;
 extern Function Int32_convert_UInt32;
+
+/// i32 with Bool8
+extern Variable Int32_convert_Bool8_arg0;
+extern Function Int32_convert_Bool8;
 
 /// i32 with Float16
 extern Variable Int32_convert_Float16_arg0;
@@ -635,6 +643,10 @@ extern Function UInt16_convert_UInt32;
 extern Variable UInt16_convert_Int32_arg0;
 extern Function UInt16_convert_Int32;
 
+/// u16 with Bool8
+extern Variable UInt16_convert_Bool8_arg0;
+extern Function UInt16_convert_Bool8;
+
 /// u16 with Float16
 extern Variable UInt16_convert_Float16_arg0;
 extern Function UInt16_convert_Float16;
@@ -780,6 +792,10 @@ extern Function Int16_convert_UInt32;
 /// i16 with Int32
 extern Variable Int16_convert_Int32_arg0;
 extern Function Int16_convert_Int32;
+
+/// i16 with Bool8
+extern Variable Int16_convert_Bool8_arg0;
+extern Function Int16_convert_Bool8;
 
 /// i16 with Float16
 extern Variable Int16_convert_Float16_arg0;
@@ -943,13 +959,25 @@ extern Function Float32x2_splat_Int32;
 extern Variable Float32x2_convert_Float16x2_arg0;
 extern Function Float32x2_convert_Float16x2;
 
+/// f32x2 with Float16
+extern Variable Float32x2_splat_Float16_arg0;
+extern Function Float32x2_splat_Float16;
+
 /// f32x2 with UInt16x2
 extern Variable Float32x2_convert_UInt16x2_arg0;
 extern Function Float32x2_convert_UInt16x2;
 
+/// f32x2 with UInt16
+extern Variable Float32x2_splat_UInt16_arg0;
+extern Function Float32x2_splat_UInt16;
+
 /// f32x2 with Int16x2
 extern Variable Float32x2_convert_Int16x2_arg0;
 extern Function Float32x2_convert_Int16x2;
+
+/// f32x2 with Int16
+extern Variable Float32x2_splat_Int16_arg0;
+extern Function Float32x2_splat_Int16;
 
 /// f32x2 with Float32, Float32
 extern Variable Float32x2_ctor0_arg0_Float32;
@@ -1098,17 +1126,37 @@ extern Function UInt32x2_convert_Int32x2;
 extern Variable UInt32x2_splat_Int32_arg0;
 extern Function UInt32x2_splat_Int32;
 
+/// u32x2 with Bool8x2
+extern Variable UInt32x2_convert_Bool8x2_arg0;
+extern Function UInt32x2_convert_Bool8x2;
+
+/// u32x2 with Bool8
+extern Variable UInt32x2_splat_Bool8_arg0;
+extern Function UInt32x2_splat_Bool8;
+
 /// u32x2 with Float16x2
 extern Variable UInt32x2_convert_Float16x2_arg0;
 extern Function UInt32x2_convert_Float16x2;
+
+/// u32x2 with Float16
+extern Variable UInt32x2_splat_Float16_arg0;
+extern Function UInt32x2_splat_Float16;
 
 /// u32x2 with UInt16x2
 extern Variable UInt32x2_convert_UInt16x2_arg0;
 extern Function UInt32x2_convert_UInt16x2;
 
+/// u32x2 with UInt16
+extern Variable UInt32x2_splat_UInt16_arg0;
+extern Function UInt32x2_splat_UInt16;
+
 /// u32x2 with Int16x2
 extern Variable UInt32x2_convert_Int16x2_arg0;
 extern Function UInt32x2_convert_Int16x2;
+
+/// u32x2 with Int16
+extern Variable UInt32x2_splat_Int16_arg0;
+extern Function UInt32x2_splat_Int16;
 
 /// u32x2 with UInt32, UInt32
 extern Variable UInt32x2_ctor0_arg0_UInt32;
@@ -1285,17 +1333,37 @@ extern Function Int32x2_convert_Int32x2;
 extern Variable Int32x2_splat_Int32_arg0;
 extern Function Int32x2_splat_Int32;
 
+/// i32x2 with Bool8x2
+extern Variable Int32x2_convert_Bool8x2_arg0;
+extern Function Int32x2_convert_Bool8x2;
+
+/// i32x2 with Bool8
+extern Variable Int32x2_splat_Bool8_arg0;
+extern Function Int32x2_splat_Bool8;
+
 /// i32x2 with Float16x2
 extern Variable Int32x2_convert_Float16x2_arg0;
 extern Function Int32x2_convert_Float16x2;
+
+/// i32x2 with Float16
+extern Variable Int32x2_splat_Float16_arg0;
+extern Function Int32x2_splat_Float16;
 
 /// i32x2 with UInt16x2
 extern Variable Int32x2_convert_UInt16x2_arg0;
 extern Function Int32x2_convert_UInt16x2;
 
+/// i32x2 with UInt16
+extern Variable Int32x2_splat_UInt16_arg0;
+extern Function Int32x2_splat_UInt16;
+
 /// i32x2 with Int16x2
 extern Variable Int32x2_convert_Int16x2_arg0;
 extern Function Int32x2_convert_Int16x2;
+
+/// i32x2 with Int16
+extern Variable Int32x2_splat_Int16_arg0;
+extern Function Int32x2_splat_Int16;
 
 /// i32x2 with Int32, Int32
 extern Variable Int32x2_ctor0_arg0_Int32;
@@ -1452,17 +1520,41 @@ extern Bool8x2 Bool8x2Type;
 extern Variable Bool8x2_convert_UInt32x2_arg0;
 extern Function Bool8x2_convert_UInt32x2;
 
+/// b8x2 with UInt32
+extern Variable Bool8x2_splat_UInt32_arg0;
+extern Function Bool8x2_splat_UInt32;
+
 /// b8x2 with Int32x2
 extern Variable Bool8x2_convert_Int32x2_arg0;
 extern Function Bool8x2_convert_Int32x2;
+
+/// b8x2 with Int32
+extern Variable Bool8x2_splat_Int32_arg0;
+extern Function Bool8x2_splat_Int32;
+
+/// b8x2 with Bool8x2
+extern Variable Bool8x2_convert_Bool8x2_arg0;
+extern Function Bool8x2_convert_Bool8x2;
+
+/// b8x2 with Bool8
+extern Variable Bool8x2_splat_Bool8_arg0;
+extern Function Bool8x2_splat_Bool8;
 
 /// b8x2 with UInt16x2
 extern Variable Bool8x2_convert_UInt16x2_arg0;
 extern Function Bool8x2_convert_UInt16x2;
 
+/// b8x2 with UInt16
+extern Variable Bool8x2_splat_UInt16_arg0;
+extern Function Bool8x2_splat_UInt16;
+
 /// b8x2 with Int16x2
 extern Variable Bool8x2_convert_Int16x2_arg0;
 extern Function Bool8x2_convert_Int16x2;
+
+/// b8x2 with Int16
+extern Variable Bool8x2_splat_Int16_arg0;
+extern Function Bool8x2_splat_Int16;
 
 /// b8x2 with Bool8, Bool8
 extern Variable Bool8x2_ctor0_arg0_Bool8;
@@ -1511,13 +1603,25 @@ extern Float16x2 Float16x2Type;
 extern Variable Float16x2_convert_Float32x2_arg0;
 extern Function Float16x2_convert_Float32x2;
 
+/// f16x2 with Float32
+extern Variable Float16x2_splat_Float32_arg0;
+extern Function Float16x2_splat_Float32;
+
 /// f16x2 with UInt32x2
 extern Variable Float16x2_convert_UInt32x2_arg0;
 extern Function Float16x2_convert_UInt32x2;
 
+/// f16x2 with UInt32
+extern Variable Float16x2_splat_UInt32_arg0;
+extern Function Float16x2_splat_UInt32;
+
 /// f16x2 with Int32x2
 extern Variable Float16x2_convert_Int32x2_arg0;
 extern Function Float16x2_convert_Int32x2;
+
+/// f16x2 with Int32
+extern Variable Float16x2_splat_Int32_arg0;
+extern Function Float16x2_splat_Int32;
 
 /// f16x2 with Float16x2
 extern Variable Float16x2_convert_Float16x2_arg0;
@@ -1670,13 +1774,33 @@ extern UInt16x2 UInt16x2Type;
 extern Variable UInt16x2_convert_Float32x2_arg0;
 extern Function UInt16x2_convert_Float32x2;
 
+/// u16x2 with Float32
+extern Variable UInt16x2_splat_Float32_arg0;
+extern Function UInt16x2_splat_Float32;
+
 /// u16x2 with UInt32x2
 extern Variable UInt16x2_convert_UInt32x2_arg0;
 extern Function UInt16x2_convert_UInt32x2;
 
+/// u16x2 with UInt32
+extern Variable UInt16x2_splat_UInt32_arg0;
+extern Function UInt16x2_splat_UInt32;
+
 /// u16x2 with Int32x2
 extern Variable UInt16x2_convert_Int32x2_arg0;
 extern Function UInt16x2_convert_Int32x2;
+
+/// u16x2 with Int32
+extern Variable UInt16x2_splat_Int32_arg0;
+extern Function UInt16x2_splat_Int32;
+
+/// u16x2 with Bool8x2
+extern Variable UInt16x2_convert_Bool8x2_arg0;
+extern Function UInt16x2_convert_Bool8x2;
+
+/// u16x2 with Bool8
+extern Variable UInt16x2_splat_Bool8_arg0;
+extern Function UInt16x2_splat_Bool8;
 
 /// u16x2 with Float16x2
 extern Variable UInt16x2_convert_Float16x2_arg0;
@@ -1857,13 +1981,33 @@ extern Int16x2 Int16x2Type;
 extern Variable Int16x2_convert_Float32x2_arg0;
 extern Function Int16x2_convert_Float32x2;
 
+/// i16x2 with Float32
+extern Variable Int16x2_splat_Float32_arg0;
+extern Function Int16x2_splat_Float32;
+
 /// i16x2 with UInt32x2
 extern Variable Int16x2_convert_UInt32x2_arg0;
 extern Function Int16x2_convert_UInt32x2;
 
+/// i16x2 with UInt32
+extern Variable Int16x2_splat_UInt32_arg0;
+extern Function Int16x2_splat_UInt32;
+
 /// i16x2 with Int32x2
 extern Variable Int16x2_convert_Int32x2_arg0;
 extern Function Int16x2_convert_Int32x2;
+
+/// i16x2 with Int32
+extern Variable Int16x2_splat_Int32_arg0;
+extern Function Int16x2_splat_Int32;
+
+/// i16x2 with Bool8x2
+extern Variable Int16x2_convert_Bool8x2_arg0;
+extern Function Int16x2_convert_Bool8x2;
+
+/// i16x2 with Bool8
+extern Variable Int16x2_splat_Bool8_arg0;
+extern Function Int16x2_splat_Bool8;
 
 /// i16x2 with Float16x2
 extern Variable Int16x2_convert_Float16x2_arg0;
@@ -2068,13 +2212,25 @@ extern Function Float32x3_splat_Int32;
 extern Variable Float32x3_convert_Float16x3_arg0;
 extern Function Float32x3_convert_Float16x3;
 
+/// f32x3 with Float16
+extern Variable Float32x3_splat_Float16_arg0;
+extern Function Float32x3_splat_Float16;
+
 /// f32x3 with UInt16x3
 extern Variable Float32x3_convert_UInt16x3_arg0;
 extern Function Float32x3_convert_UInt16x3;
 
+/// f32x3 with UInt16
+extern Variable Float32x3_splat_UInt16_arg0;
+extern Function Float32x3_splat_UInt16;
+
 /// f32x3 with Int16x3
 extern Variable Float32x3_convert_Int16x3_arg0;
 extern Function Float32x3_convert_Int16x3;
+
+/// f32x3 with Int16
+extern Variable Float32x3_splat_Int16_arg0;
+extern Function Float32x3_splat_Int16;
 
 /// f32x3 with Float32, Float32, Float32
 extern Variable Float32x3_ctor0_arg0_Float32;
@@ -2234,17 +2390,37 @@ extern Function UInt32x3_convert_Int32x3;
 extern Variable UInt32x3_splat_Int32_arg0;
 extern Function UInt32x3_splat_Int32;
 
+/// u32x3 with Bool8x3
+extern Variable UInt32x3_convert_Bool8x3_arg0;
+extern Function UInt32x3_convert_Bool8x3;
+
+/// u32x3 with Bool8
+extern Variable UInt32x3_splat_Bool8_arg0;
+extern Function UInt32x3_splat_Bool8;
+
 /// u32x3 with Float16x3
 extern Variable UInt32x3_convert_Float16x3_arg0;
 extern Function UInt32x3_convert_Float16x3;
+
+/// u32x3 with Float16
+extern Variable UInt32x3_splat_Float16_arg0;
+extern Function UInt32x3_splat_Float16;
 
 /// u32x3 with UInt16x3
 extern Variable UInt32x3_convert_UInt16x3_arg0;
 extern Function UInt32x3_convert_UInt16x3;
 
+/// u32x3 with UInt16
+extern Variable UInt32x3_splat_UInt16_arg0;
+extern Function UInt32x3_splat_UInt16;
+
 /// u32x3 with Int16x3
 extern Variable UInt32x3_convert_Int16x3_arg0;
 extern Function UInt32x3_convert_Int16x3;
+
+/// u32x3 with Int16
+extern Variable UInt32x3_splat_Int16_arg0;
+extern Function UInt32x3_splat_Int16;
 
 /// u32x3 with UInt32, UInt32, UInt32
 extern Variable UInt32x3_ctor0_arg0_UInt32;
@@ -2432,17 +2608,37 @@ extern Function Int32x3_convert_Int32x3;
 extern Variable Int32x3_splat_Int32_arg0;
 extern Function Int32x3_splat_Int32;
 
+/// i32x3 with Bool8x3
+extern Variable Int32x3_convert_Bool8x3_arg0;
+extern Function Int32x3_convert_Bool8x3;
+
+/// i32x3 with Bool8
+extern Variable Int32x3_splat_Bool8_arg0;
+extern Function Int32x3_splat_Bool8;
+
 /// i32x3 with Float16x3
 extern Variable Int32x3_convert_Float16x3_arg0;
 extern Function Int32x3_convert_Float16x3;
+
+/// i32x3 with Float16
+extern Variable Int32x3_splat_Float16_arg0;
+extern Function Int32x3_splat_Float16;
 
 /// i32x3 with UInt16x3
 extern Variable Int32x3_convert_UInt16x3_arg0;
 extern Function Int32x3_convert_UInt16x3;
 
+/// i32x3 with UInt16
+extern Variable Int32x3_splat_UInt16_arg0;
+extern Function Int32x3_splat_UInt16;
+
 /// i32x3 with Int16x3
 extern Variable Int32x3_convert_Int16x3_arg0;
 extern Function Int32x3_convert_Int16x3;
+
+/// i32x3 with Int16
+extern Variable Int32x3_splat_Int16_arg0;
+extern Function Int32x3_splat_Int16;
 
 /// i32x3 with Int32, Int32, Int32
 extern Variable Int32x3_ctor0_arg0_Int32;
@@ -2610,17 +2806,41 @@ extern Bool8x3 Bool8x3Type;
 extern Variable Bool8x3_convert_UInt32x3_arg0;
 extern Function Bool8x3_convert_UInt32x3;
 
+/// b8x3 with UInt32
+extern Variable Bool8x3_splat_UInt32_arg0;
+extern Function Bool8x3_splat_UInt32;
+
 /// b8x3 with Int32x3
 extern Variable Bool8x3_convert_Int32x3_arg0;
 extern Function Bool8x3_convert_Int32x3;
+
+/// b8x3 with Int32
+extern Variable Bool8x3_splat_Int32_arg0;
+extern Function Bool8x3_splat_Int32;
+
+/// b8x3 with Bool8x3
+extern Variable Bool8x3_convert_Bool8x3_arg0;
+extern Function Bool8x3_convert_Bool8x3;
+
+/// b8x3 with Bool8
+extern Variable Bool8x3_splat_Bool8_arg0;
+extern Function Bool8x3_splat_Bool8;
 
 /// b8x3 with UInt16x3
 extern Variable Bool8x3_convert_UInt16x3_arg0;
 extern Function Bool8x3_convert_UInt16x3;
 
+/// b8x3 with UInt16
+extern Variable Bool8x3_splat_UInt16_arg0;
+extern Function Bool8x3_splat_UInt16;
+
 /// b8x3 with Int16x3
 extern Variable Bool8x3_convert_Int16x3_arg0;
 extern Function Bool8x3_convert_Int16x3;
+
+/// b8x3 with Int16
+extern Variable Bool8x3_splat_Int16_arg0;
+extern Function Bool8x3_splat_Int16;
 
 /// b8x3 with Bool8, Bool8, Bool8
 extern Variable Bool8x3_ctor0_arg0_Bool8;
@@ -2680,13 +2900,25 @@ extern Float16x3 Float16x3Type;
 extern Variable Float16x3_convert_Float32x3_arg0;
 extern Function Float16x3_convert_Float32x3;
 
+/// f16x3 with Float32
+extern Variable Float16x3_splat_Float32_arg0;
+extern Function Float16x3_splat_Float32;
+
 /// f16x3 with UInt32x3
 extern Variable Float16x3_convert_UInt32x3_arg0;
 extern Function Float16x3_convert_UInt32x3;
 
+/// f16x3 with UInt32
+extern Variable Float16x3_splat_UInt32_arg0;
+extern Function Float16x3_splat_UInt32;
+
 /// f16x3 with Int32x3
 extern Variable Float16x3_convert_Int32x3_arg0;
 extern Function Float16x3_convert_Int32x3;
+
+/// f16x3 with Int32
+extern Variable Float16x3_splat_Int32_arg0;
+extern Function Float16x3_splat_Int32;
 
 /// f16x3 with Float16x3
 extern Variable Float16x3_convert_Float16x3_arg0;
@@ -2850,13 +3082,33 @@ extern UInt16x3 UInt16x3Type;
 extern Variable UInt16x3_convert_Float32x3_arg0;
 extern Function UInt16x3_convert_Float32x3;
 
+/// u16x3 with Float32
+extern Variable UInt16x3_splat_Float32_arg0;
+extern Function UInt16x3_splat_Float32;
+
 /// u16x3 with UInt32x3
 extern Variable UInt16x3_convert_UInt32x3_arg0;
 extern Function UInt16x3_convert_UInt32x3;
 
+/// u16x3 with UInt32
+extern Variable UInt16x3_splat_UInt32_arg0;
+extern Function UInt16x3_splat_UInt32;
+
 /// u16x3 with Int32x3
 extern Variable UInt16x3_convert_Int32x3_arg0;
 extern Function UInt16x3_convert_Int32x3;
+
+/// u16x3 with Int32
+extern Variable UInt16x3_splat_Int32_arg0;
+extern Function UInt16x3_splat_Int32;
+
+/// u16x3 with Bool8x3
+extern Variable UInt16x3_convert_Bool8x3_arg0;
+extern Function UInt16x3_convert_Bool8x3;
+
+/// u16x3 with Bool8
+extern Variable UInt16x3_splat_Bool8_arg0;
+extern Function UInt16x3_splat_Bool8;
 
 /// u16x3 with Float16x3
 extern Variable UInt16x3_convert_Float16x3_arg0;
@@ -3048,13 +3300,33 @@ extern Int16x3 Int16x3Type;
 extern Variable Int16x3_convert_Float32x3_arg0;
 extern Function Int16x3_convert_Float32x3;
 
+/// i16x3 with Float32
+extern Variable Int16x3_splat_Float32_arg0;
+extern Function Int16x3_splat_Float32;
+
 /// i16x3 with UInt32x3
 extern Variable Int16x3_convert_UInt32x3_arg0;
 extern Function Int16x3_convert_UInt32x3;
 
+/// i16x3 with UInt32
+extern Variable Int16x3_splat_UInt32_arg0;
+extern Function Int16x3_splat_UInt32;
+
 /// i16x3 with Int32x3
 extern Variable Int16x3_convert_Int32x3_arg0;
 extern Function Int16x3_convert_Int32x3;
+
+/// i16x3 with Int32
+extern Variable Int16x3_splat_Int32_arg0;
+extern Function Int16x3_splat_Int32;
+
+/// i16x3 with Bool8x3
+extern Variable Int16x3_convert_Bool8x3_arg0;
+extern Function Int16x3_convert_Bool8x3;
+
+/// i16x3 with Bool8
+extern Variable Int16x3_splat_Bool8_arg0;
+extern Function Int16x3_splat_Bool8;
 
 /// i16x3 with Float16x3
 extern Variable Int16x3_convert_Float16x3_arg0;
@@ -3270,13 +3542,25 @@ extern Function Float32x4_splat_Int32;
 extern Variable Float32x4_convert_Float16x4_arg0;
 extern Function Float32x4_convert_Float16x4;
 
+/// f32x4 with Float16
+extern Variable Float32x4_splat_Float16_arg0;
+extern Function Float32x4_splat_Float16;
+
 /// f32x4 with UInt16x4
 extern Variable Float32x4_convert_UInt16x4_arg0;
 extern Function Float32x4_convert_UInt16x4;
 
+/// f32x4 with UInt16
+extern Variable Float32x4_splat_UInt16_arg0;
+extern Function Float32x4_splat_UInt16;
+
 /// f32x4 with Int16x4
 extern Variable Float32x4_convert_Int16x4_arg0;
 extern Function Float32x4_convert_Int16x4;
+
+/// f32x4 with Int16
+extern Variable Float32x4_splat_Int16_arg0;
+extern Function Float32x4_splat_Int16;
 
 /// f32x4 with Float32, Float32, Float32, Float32
 extern Variable Float32x4_ctor0_arg0_Float32;
@@ -3460,17 +3744,37 @@ extern Function UInt32x4_convert_Int32x4;
 extern Variable UInt32x4_splat_Int32_arg0;
 extern Function UInt32x4_splat_Int32;
 
+/// u32x4 with Bool8x4
+extern Variable UInt32x4_convert_Bool8x4_arg0;
+extern Function UInt32x4_convert_Bool8x4;
+
+/// u32x4 with Bool8
+extern Variable UInt32x4_splat_Bool8_arg0;
+extern Function UInt32x4_splat_Bool8;
+
 /// u32x4 with Float16x4
 extern Variable UInt32x4_convert_Float16x4_arg0;
 extern Function UInt32x4_convert_Float16x4;
+
+/// u32x4 with Float16
+extern Variable UInt32x4_splat_Float16_arg0;
+extern Function UInt32x4_splat_Float16;
 
 /// u32x4 with UInt16x4
 extern Variable UInt32x4_convert_UInt16x4_arg0;
 extern Function UInt32x4_convert_UInt16x4;
 
+/// u32x4 with UInt16
+extern Variable UInt32x4_splat_UInt16_arg0;
+extern Function UInt32x4_splat_UInt16;
+
 /// u32x4 with Int16x4
 extern Variable UInt32x4_convert_Int16x4_arg0;
 extern Function UInt32x4_convert_Int16x4;
+
+/// u32x4 with Int16
+extern Variable UInt32x4_splat_Int16_arg0;
+extern Function UInt32x4_splat_Int16;
 
 /// u32x4 with UInt32, UInt32, UInt32, UInt32
 extern Variable UInt32x4_ctor0_arg0_UInt32;
@@ -3682,17 +3986,37 @@ extern Function Int32x4_convert_Int32x4;
 extern Variable Int32x4_splat_Int32_arg0;
 extern Function Int32x4_splat_Int32;
 
+/// i32x4 with Bool8x4
+extern Variable Int32x4_convert_Bool8x4_arg0;
+extern Function Int32x4_convert_Bool8x4;
+
+/// i32x4 with Bool8
+extern Variable Int32x4_splat_Bool8_arg0;
+extern Function Int32x4_splat_Bool8;
+
 /// i32x4 with Float16x4
 extern Variable Int32x4_convert_Float16x4_arg0;
 extern Function Int32x4_convert_Float16x4;
+
+/// i32x4 with Float16
+extern Variable Int32x4_splat_Float16_arg0;
+extern Function Int32x4_splat_Float16;
 
 /// i32x4 with UInt16x4
 extern Variable Int32x4_convert_UInt16x4_arg0;
 extern Function Int32x4_convert_UInt16x4;
 
+/// i32x4 with UInt16
+extern Variable Int32x4_splat_UInt16_arg0;
+extern Function Int32x4_splat_UInt16;
+
 /// i32x4 with Int16x4
 extern Variable Int32x4_convert_Int16x4_arg0;
 extern Function Int32x4_convert_Int16x4;
+
+/// i32x4 with Int16
+extern Variable Int32x4_splat_Int16_arg0;
+extern Function Int32x4_splat_Int16;
 
 /// i32x4 with Int32, Int32, Int32, Int32
 extern Variable Int32x4_ctor0_arg0_Int32;
@@ -3884,17 +4208,41 @@ extern Bool8x4 Bool8x4Type;
 extern Variable Bool8x4_convert_UInt32x4_arg0;
 extern Function Bool8x4_convert_UInt32x4;
 
+/// b8x4 with UInt32
+extern Variable Bool8x4_splat_UInt32_arg0;
+extern Function Bool8x4_splat_UInt32;
+
 /// b8x4 with Int32x4
 extern Variable Bool8x4_convert_Int32x4_arg0;
 extern Function Bool8x4_convert_Int32x4;
+
+/// b8x4 with Int32
+extern Variable Bool8x4_splat_Int32_arg0;
+extern Function Bool8x4_splat_Int32;
+
+/// b8x4 with Bool8x4
+extern Variable Bool8x4_convert_Bool8x4_arg0;
+extern Function Bool8x4_convert_Bool8x4;
+
+/// b8x4 with Bool8
+extern Variable Bool8x4_splat_Bool8_arg0;
+extern Function Bool8x4_splat_Bool8;
 
 /// b8x4 with UInt16x4
 extern Variable Bool8x4_convert_UInt16x4_arg0;
 extern Function Bool8x4_convert_UInt16x4;
 
+/// b8x4 with UInt16
+extern Variable Bool8x4_splat_UInt16_arg0;
+extern Function Bool8x4_splat_UInt16;
+
 /// b8x4 with Int16x4
 extern Variable Bool8x4_convert_Int16x4_arg0;
 extern Function Bool8x4_convert_Int16x4;
+
+/// b8x4 with Int16
+extern Variable Bool8x4_splat_Int16_arg0;
+extern Function Bool8x4_splat_Int16;
 
 /// b8x4 with Bool8, Bool8, Bool8, Bool8
 extern Variable Bool8x4_ctor0_arg0_Bool8;
@@ -3978,13 +4326,25 @@ extern Float16x4 Float16x4Type;
 extern Variable Float16x4_convert_Float32x4_arg0;
 extern Function Float16x4_convert_Float32x4;
 
+/// f16x4 with Float32
+extern Variable Float16x4_splat_Float32_arg0;
+extern Function Float16x4_splat_Float32;
+
 /// f16x4 with UInt32x4
 extern Variable Float16x4_convert_UInt32x4_arg0;
 extern Function Float16x4_convert_UInt32x4;
 
+/// f16x4 with UInt32
+extern Variable Float16x4_splat_UInt32_arg0;
+extern Function Float16x4_splat_UInt32;
+
 /// f16x4 with Int32x4
 extern Variable Float16x4_convert_Int32x4_arg0;
 extern Function Float16x4_convert_Int32x4;
+
+/// f16x4 with Int32
+extern Variable Float16x4_splat_Int32_arg0;
+extern Function Float16x4_splat_Int32;
 
 /// f16x4 with Float16x4
 extern Variable Float16x4_convert_Float16x4_arg0;
@@ -4172,13 +4532,33 @@ extern UInt16x4 UInt16x4Type;
 extern Variable UInt16x4_convert_Float32x4_arg0;
 extern Function UInt16x4_convert_Float32x4;
 
+/// u16x4 with Float32
+extern Variable UInt16x4_splat_Float32_arg0;
+extern Function UInt16x4_splat_Float32;
+
 /// u16x4 with UInt32x4
 extern Variable UInt16x4_convert_UInt32x4_arg0;
 extern Function UInt16x4_convert_UInt32x4;
 
+/// u16x4 with UInt32
+extern Variable UInt16x4_splat_UInt32_arg0;
+extern Function UInt16x4_splat_UInt32;
+
 /// u16x4 with Int32x4
 extern Variable UInt16x4_convert_Int32x4_arg0;
 extern Function UInt16x4_convert_Int32x4;
+
+/// u16x4 with Int32
+extern Variable UInt16x4_splat_Int32_arg0;
+extern Function UInt16x4_splat_Int32;
+
+/// u16x4 with Bool8x4
+extern Variable UInt16x4_convert_Bool8x4_arg0;
+extern Function UInt16x4_convert_Bool8x4;
+
+/// u16x4 with Bool8
+extern Variable UInt16x4_splat_Bool8_arg0;
+extern Function UInt16x4_splat_Bool8;
 
 /// u16x4 with Float16x4
 extern Variable UInt16x4_convert_Float16x4_arg0;
@@ -4394,13 +4774,33 @@ extern Int16x4 Int16x4Type;
 extern Variable Int16x4_convert_Float32x4_arg0;
 extern Function Int16x4_convert_Float32x4;
 
+/// i16x4 with Float32
+extern Variable Int16x4_splat_Float32_arg0;
+extern Function Int16x4_splat_Float32;
+
 /// i16x4 with UInt32x4
 extern Variable Int16x4_convert_UInt32x4_arg0;
 extern Function Int16x4_convert_UInt32x4;
 
+/// i16x4 with UInt32
+extern Variable Int16x4_splat_UInt32_arg0;
+extern Function Int16x4_splat_UInt32;
+
 /// i16x4 with Int32x4
 extern Variable Int16x4_convert_Int32x4_arg0;
 extern Function Int16x4_convert_Int32x4;
+
+/// i16x4 with Int32
+extern Variable Int16x4_splat_Int32_arg0;
+extern Function Int16x4_splat_Int32;
+
+/// i16x4 with Bool8x4
+extern Variable Int16x4_convert_Bool8x4_arg0;
+extern Function Int16x4_convert_Bool8x4;
+
+/// i16x4 with Bool8
+extern Variable Int16x4_splat_Bool8_arg0;
+extern Function Int16x4_splat_Bool8;
 
 /// i16x4 with Float16x4
 extern Variable Int16x4_convert_Float16x4_arg0;
@@ -6106,16 +6506,16 @@ extern PolygonMode PolygonModeType;
 extern EnumExpression PolygonModeFill;
 extern EnumExpression PolygonModeLine;
 extern EnumExpression PolygonModePoint;
-struct CullMode : public Enumeration
+struct CullFace : public Enumeration
 {
-    CullMode();
+    CullFace();
 };
-extern CullMode CullModeType;
+extern CullFace CullFaceType;
 
-extern EnumExpression CullModeNone;
-extern EnumExpression CullModeFront;
-extern EnumExpression CullModeBack;
-extern EnumExpression CullModeFrontAndBack;
+extern EnumExpression CullFaceNone;
+extern EnumExpression CullFaceFront;
+extern EnumExpression CullFaceBack;
+extern EnumExpression CullFaceFrontAndBack;
 struct WindingOrder : public Enumeration
 {
     WindingOrder();
@@ -6195,6 +6595,7 @@ struct FilterMode : public Enumeration
 extern FilterMode FilterModeType;
 
 extern EnumExpression FilterModePoint;
+extern EnumExpression FilterModeNearest;
 extern EnumExpression FilterModeLinear;
 extern EnumExpression FilterModeMinMagMipmapLinear;
 extern EnumExpression FilterModeMinMagLinearMipPoint;
@@ -6214,15 +6615,15 @@ extern EnumExpression AddressModeRepeat;
 extern EnumExpression AddressModeMirror;
 extern EnumExpression AddressModeClamp;
 extern EnumExpression AddressModeBorder;
-struct BorderColor : public Enumeration
+struct Color : public Enumeration
 {
-    BorderColor();
+    Color();
 };
-extern BorderColor BorderColorType;
+extern Color ColorType;
 
-extern EnumExpression BorderColorTransparent;
-extern EnumExpression BorderColorBlack;
-extern EnumExpression BorderColorWhite;
+extern EnumExpression ColorTransparent;
+extern EnumExpression ColorBlack;
+extern EnumExpression ColorWhite;
 extern Variable StencilStateFail;
 extern Variable StencilStatePass;
 extern Variable StencilStateDepthFail;
@@ -6249,7 +6650,7 @@ extern Variable RenderStateDepthBoundsMin;
 extern Variable RenderStateDepthBoundsMax;
 extern Variable RenderStateNoRasterization;
 extern Variable RenderStatePolygonMode;
-extern Variable RenderStateCullMode;
+extern Variable RenderStateCull;
 extern Variable RenderStateWindingOrder;
 extern Variable RenderStateStencilEnabled;
 extern Variable RenderStateStencilFront;
@@ -6293,7 +6694,7 @@ extern Variable SamplerStateCompareEnabled;
 extern Variable SamplerStateCompareFunction;
 extern Variable SamplerStateMinLod;
 extern Variable SamplerStateMaxLod;
-extern Variable SamplerStateBorderColor;
+extern Variable SamplerStateBorder;
 extern Variable SamplerStateUnnormalizedSamplingEnabled;
 struct SamplerState : public Type
 {

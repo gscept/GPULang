@@ -1358,13 +1358,13 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
                     varOutput.structureOffset = resolved->structureOffset;
                     varOutput.arraySizesCount = 0;
                     varOutput.arraySizesOffset = dynamicDataBlob.iterator;
-                    for (size_t i = 0; i < resolved->type.modifiers.size(); i++)
+                    for (size_t i = 0; i < var->type.modifiers.size(); i++)
                     {
-                        if (resolved->type.modifiers[i] == Type::FullType::Modifier::Array && resolved->type.modifierValues[i] != nullptr)
+                        if (var->type.modifiers[i] == Type::FullType::Modifier::Array && var->type.modifierValues[i] != nullptr)
                         {
                             varOutput.arraySizesCount++;
                             ValueUnion size;
-                            resolved->type.modifierValues[i]->EvalValue(size);
+                            var->type.modifierValues[i]->EvalValue(size);
                             dynamicDataBlob.Write(size.ui);
                         }
                     }
@@ -1403,13 +1403,13 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             output.structureOffset = resolved->structureOffset;
             output.arraySizesCount = 0;
             output.arraySizesOffset = dynamicDataBlob.iterator;
-            for (size_t i = 0; i < resolved->type.modifiers.size(); i++)
+            for (size_t i = 0; i < var->type.modifiers.size(); i++)
             {
-                if (resolved->type.modifiers[i] == Type::FullType::Modifier::Array && resolved->type.modifierValues[i] != nullptr)
+                if (var->type.modifiers[i] == Type::FullType::Modifier::Array && var->type.modifierValues[i] != nullptr)
                 {
                     output.arraySizesCount++;
                     ValueUnion size;
-                    resolved->type.modifierValues[i]->EvalValue(size);
+                    var->type.modifierValues[i]->EvalValue(size);
                     dynamicDataBlob.Write(size.ui);
                 }
             }
@@ -1422,7 +1422,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             else
                 output.bindingScope = Serialization::BindingScope::Resource;
 
-            if (resolved->type.IsMutable())
+            if (var->type.IsMutable())
             {
                 if (resolved->typeSymbol->category == Type::Category::UserTypeCategory)
                     output.bindingType = Serialization::BindingType::MutableBuffer;
@@ -1434,7 +1434,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
                 if (resolved->typeSymbol->category == Type::Category::UserTypeCategory)
                     output.bindingType = Serialization::BindingType::Buffer;
                 else if (resolved->typeSymbol->category == Type::Category::TextureCategory)
-                    if (resolved->type.sampled)
+                    if (var->type.sampled)
                         output.bindingType = Serialization::BindingType::SampledImage;
                     else
                         output.bindingType = Serialization::BindingType::Image;
@@ -1452,8 +1452,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             output.structTypeNameOffset = 0;
             if (output.bindingType == Serialization::BindingType::Buffer || output.bindingType == Serialization::BindingType::MutableBuffer)
             {
-                output.structTypeNameLength = resolved->type.name.len;
-                output.structTypeNameOffset = dynamicDataBlob.WriteString(resolved->type.name.c_str(), resolved->type.name.len);
+                output.structTypeNameLength = var->type.name.len;
+                output.structTypeNameOffset = dynamicDataBlob.WriteString(var->type.name.c_str(), var->type.name.len);
             }
             size_t offset = output.annotationsOffset;
             for (const Annotation* annot : var->annotations)

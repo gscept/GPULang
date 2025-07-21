@@ -147,6 +147,7 @@ def generate_types():
         "PixelCacheMS": "pixelCacheMS",
         "Sampler": "sampler",
         "AccelerationStructure": "accelerationStructure",
+        "Void" : "void",
     }
 
     bit_operator_names = ['or', 'and', 'xor', 'lsh', 'rsh']
@@ -490,6 +491,7 @@ def generate_types():
             if self.documentation:
                 return_string += f'    {self.decl_name}.documentation = "{self.documentation}"_c;\n'
             return_string += f'    {self.decl_name}.name = "{self.api_name}"_c;\n'
+            
             if self.compile_time:
                 return_string += f'    {self.decl_name}.compileTime = true;\n'
             return_string += f'    {self.decl_name}.returnType = Type::FullType {{ {self.return_type}Type.name }};\n'
@@ -500,6 +502,21 @@ def generate_types():
                 if param.uniform:
                     return_string += f'    Symbol::Resolved(&{param.decl_name})->storage = Storage::Uniform;\n'
 
+            return_type = self.return_type;
+            if return_type in data_type_mapping:
+                return_type = data_type_mapping[return_type]
+            args = []
+            argsWithNames = []
+            for param in self.parameters:
+                if param.type_name in data_type_mapping:
+                    args.append(data_type_mapping[param.type_name])
+                    argsWithNames.append(f'{param.api_name} : {data_type_mapping[param.type_name]}')
+                else:
+                    args.append(param.type_name)
+                    argsWithNames.append(f'{param.api_name} : {param.type_name}')
+            return_string += f'    Symbol::Resolved(&{self.decl_name})->signature = "{return_type} {self.api_name}({",".join(args)})"_c;\n'
+            return_string += f'    Symbol::Resolved(&{self.decl_name})->name = "{self.api_name}({",".join(args)})"_c;\n'
+            return_string += f'    Symbol::Resolved(&{self.decl_name})->nameWithVarNames = "{self.api_name}({",".join(argsWithNames)})"_c;\n'
             return_string += f'    Symbol::Resolved(&{self.decl_name})->returnTypeSymbol = &{self.return_type}Type;\n'
             return_string += '\n'
             return return_string
@@ -551,8 +568,6 @@ def generate_types():
 
         def declaration(self):
             type_declaration = ''
-            #for swizzle in self.swizzles:
-            #    type_declaration += f'extern Variable {self.name}_{swizzle};\n'
             type_declaration += f'struct {self.name} : public Type\n'
             type_declaration += '{\n'
             type_declaration += f'    {self.name}();\n'
@@ -569,8 +584,6 @@ def generate_types():
                 lookup_list.append(IntrinsicPair(decl_name=f'{swizzle_type}Type', api_name=f'{swizzle}'))
             lookup_list.sort(key=IntrinsicSortKey)
             type_definition = ''
-            #for swizzle in self.swizzles:
-            #    type_definition += f'Variable {self.name}_{swizzle};\n'
             type_definition += f'{self.name}::{self.name}()\n'
             type_definition += '{\n'
             type_definition += f'    this->name = "{data_type_mapping[self.name]}"_c;\n'
@@ -580,14 +593,6 @@ def generate_types():
             type_definition += f'    this->category = Type::ScalarCategory;\n'
             type_definition += f'    this->baseType = TypeCode::{self.base_type};\n'
             type_definition += f'    this->builtin = true;\n'
-            #for swizzle in self.swizzles:
-            #    type_definition += f'    {self.name}_{swizzle}.name = "{swizzle}"_c;\n'
-            #    if len(swizzle) > 1:
-            #        swizzle_type = f'{self.base_type}x{len(swizzle)}'
-            #    else:
-            #        swizzle_type = self.name
-            #    type_definition += f'    {self.name}_{swizzle}.type = Type::FullType{{ {swizzle_type}Type.name }};\n'
-            #    type_definition += f'    Symbol::Resolved(&{self.name}_{swizzle})->typeSymbol = &{swizzle_type}Type;\n\n'
             type_definition += f'\n'
             type_definition += f'{setup_string}'
             type_definition += f'    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, {len(list_string)}> {{ \n'
@@ -620,13 +625,16 @@ def generate_types():
 
             # Conversions
             for type2 in types:
-                if type2 == 'Bool8' and type != 'Bool8':
+
+                # Generate conversions from UInt to Bool
+                if (type != 'Bool8' and type.startswith('Float')) and type2 == 'Bool8':
                     continue
 
                 if size == 1 and type2 == type:
                     continue
 
-                if type == 'Bool8' and not (type2.startswith('Int') or type2.startswith('UInt')):
+                # Don't allow conversion from bool to float types
+                if type == 'Bool8' and type2.startswith('Float'):
                     continue
 
                 if size == 1:
@@ -652,7 +660,6 @@ def generate_types():
                 definition_string += fun.definition()
                 setup_string += fun.setup()
 
-                intrinsic_list.append(fun.pair())
                 intrinsic_list.append(fun.typed_pair())
                 intrinsic_list.append(fun.pair())
                 if type == type2:
@@ -665,8 +672,8 @@ def generate_types():
 
                     bit_width1 = bit_width_mapping[type]
                     bit_width2 = bit_width_mapping[type2]
-                    if bit_width1 != bit_width2:
-                        continue
+                    #if type2 != 'Bool8' and bit_width1 != bit_width2:
+                    #    continue
 
                     fun = Function(
                         decl_name=function_name,
@@ -680,7 +687,6 @@ def generate_types():
                     definition_string += fun.definition()
                     setup_string += fun.setup()
 
-                    intrinsic_list.append(fun.pair())
                     intrinsic_list.append(fun.typed_pair())
                     intrinsic_list.append(fun.pair())
                     spirv_function = '    SPIRVResult val = args[0];\n'
@@ -738,7 +744,6 @@ def generate_types():
                 definition_string += fun.definition()
                 setup_string += fun.setup()
 
-                intrinsic_list.append(fun.pair())
                 intrinsic_list.append(fun.typed_pair())
                 intrinsic_list.append(fun.pair())
                 spirv_function = f'    return GenerateCompositeSPIRV(c, g, returnType, {{{", ".join([f"args[{idx}]" for idx, arg in enumerate(args)])}}});\n'
@@ -1247,6 +1252,7 @@ def generate_types():
             name = self.name[0].lower() + self.name[1:]
             namer.names.append(NamerEntry(self.name, name))
             class_def += f'    this->name = "{name}"_c;\n'
+            #class_def += f'    this->symbolTyope = "Symbol::SymbolType::TypeType"_c;\n'
             if self.category:
                 class_def += f'    this->category = Type::{self.category};\n'
             if self.baseType:
@@ -1356,11 +1362,14 @@ def generate_types():
             defn += '    this->type.literal = true;\n'
             defn += '    this->builtin = true;\n'
 
+            value = 0
             for i, member in enumerate(self.members):
-                defn += f'    {self.name}{member.decl_name}.value = {member.value if member.value else hex(i)};\n'
+                value = member.value if member.value is not None else value 
+                defn += f'    {self.name}{member.decl_name}.value = {hex(value)};\n'
                 defn += f'    {self.name}{member.decl_name}.type = Type::FullType{{ {self.name}Type.name, true }};\n'
                 defn += f'    {self.name}{member.decl_name}.underlyingType = Type::FullType{{ {self.type_name}Type.name }};\n'
                 defn += f'    Symbol::Resolved(&{self.name}{member.decl_name})->type = this;\n'
+                value = value + 1
 
             defn += '    auto enumResolved = Symbol::Resolved(this);\n'
 
@@ -1501,7 +1510,7 @@ def generate_types():
     intrinsic_list += enum.pairs()
 
     enum = Enumeration(
-        name = 'CullMode',
+        name = 'CullFace',
         type_name = 'UInt32',
         members=[
             EnumMember("None"),
@@ -1611,6 +1620,7 @@ def generate_types():
         type_name = 'UInt32',
         members=[
             EnumMember("Point"),
+            EnumMember("Nearest", value = 0),
             EnumMember("Linear"),
             EnumMember("MinMagMipmapLinear"),
             EnumMember("MinMagLinearMipPoint"),
@@ -1641,7 +1651,7 @@ def generate_types():
     intrinsic_list += enum.pairs()
 
     enum = Enumeration(
-        name = 'BorderColor',
+        name = 'Color',
         type_name = 'UInt32',
         members=[
             EnumMember("Transparent"),
@@ -1686,7 +1696,7 @@ def generate_types():
 
             defn += f'{self.name}::{self.name}()\n'
             defn += '{\n'
-            defn += f'    this->name = "{self.name}"_c;\n'
+            defn += f'    this->name = "{self.name[0].lower() + self.name[1:]}"_c;\n'
             defn += '    this->builtin = true;\n'
             for member in self.members:
                 defn += f'    {self.name}{member.name}.name = "{member.name}"_c;\n'
@@ -1738,7 +1748,7 @@ def generate_types():
             StateMember('DepthBoundsMax', 'Float32'),
             StateMember('NoRasterization', 'Bool8'),
             StateMember('PolygonMode', 'PolygonMode'),
-            StateMember('CullMode', 'CullMode'),
+            StateMember('Cull', 'CullFace'),
             StateMember('WindingOrder', 'WindingOrder'),
             StateMember('StencilEnabled', 'Bool8'),
             StateMember('StencilFront', 'StencilState'),
@@ -1776,7 +1786,7 @@ def generate_types():
             StateMember('CompareFunction', 'CompareMode'),
             StateMember('MinLod', 'Float32'),
             StateMember('MaxLod', 'Float32'),
-            StateMember('BorderColor', 'BorderColor'),
+            StateMember('Border', 'Color'),
             StateMember('UnnormalizedSamplingEnabled', 'Bool8')
         ]
     )
@@ -2462,7 +2472,7 @@ def generate_types():
                     api_name = intrinsic,
                     return_type = type1,
                     parameters = [
-                        Variable(decl_name = argument_name, api_name = "val", type_name=type)
+                        Variable(decl_name = argument_name, api_name = "val", type_name=type2)
                     ]
                 )
                 intrinsic_decls += fun.declaration()
@@ -2490,7 +2500,7 @@ def generate_types():
                     api_name = intrinsic,
                     return_type = type1,
                     parameters = [
-                        Variable(decl_name = argument_name, api_name = "val", type_name=type)
+                        Variable(decl_name = argument_name, api_name = "val", type_name=type2)
                     ]
                 )
                 intrinsic_decls += fun.declaration()
@@ -2653,7 +2663,7 @@ def generate_types():
         argument_name = f'{function_name}_arg'
         fun = Function( 
             decl_name = function_name,
-            api_name = f'vertexExport{intrinsic}',
+            api_name = f'vertex{intrinsic}',
             return_type = 'Void',
             parameters = [
                 Variable(decl_name = argument_name, api_name = "val", type_name=type)
@@ -3641,7 +3651,7 @@ def generate_types():
             fun = Function( 
                 decl_name = function_name,
                 api_name = f'texture{intrinsic}',
-                return_type = type,
+                return_type = 'Float32x2',
                 parameters = args + [
                     Variable(decl_name = coordinate_argument_name, api_name = "coordinate", type_name=coordinate_type)
                 ]
@@ -3677,7 +3687,7 @@ def generate_types():
             fun = Function( 
                 decl_name = function_name,
                 api_name = f'texture{intrinsic}',
-                return_type = type,
+                return_type = 'Float32x4' if not hasStore else 'Void',
                 parameters = [
                     Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True, mutable=True),
                     Variable(decl_name = coordinate_argument_name, api_name = "coordinate", type_name=coordinate_type)
@@ -3692,11 +3702,6 @@ def generate_types():
                 fun.parameters.append(
                     Variable(decl_name = f'{function_name}_value', api_name = "value", type_name='Float32x4')
                 )
-
-            if not hasStore:
-                fun.return_type = type
-            else:
-                fun.return_type = 'Void'
 
             intrinsic_decls += fun.declaration()
             intrinsic_defs += fun.definition()
@@ -3743,7 +3748,7 @@ def generate_types():
             fun = Function( 
                 decl_name = function_name,
                 api_name = f'texture{intrinsic}',
-                return_type = type,
+                return_type = 'Float32x4',
                 parameters = [
                     Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True),
                     Variable(decl_name = coordinate_argument_name, api_name = "coordinate", type_name=texture_denormalized_index_types[type]),
@@ -3790,7 +3795,7 @@ def generate_types():
                 fun = Function( 
                     decl_name = function_name,
                     api_name = f'texture{intrinsic}',
-                    return_type = type,
+                    return_type = 'Float32x4',
                     parameters = args + [
                         Variable(decl_name = coordinate_argument_name, api_name = "coordinate", type_name=texture_denormalized_index_types[type]),
                         Variable(decl_name = component_argument_name, api_name = "component", type_name='Int32')
@@ -3890,7 +3895,7 @@ def generate_types():
                             fun = Function( 
                                 decl_name = function_name,
                                 api_name = f'texture{intrinsic}{lod}{proj}{comp}{offset}',
-                                return_type = 'Float32x4',
+                                return_type = 'Float32x4' if not comp else 'Float32',
                                 parameters = args + [
                                     Variable(decl_name = coordinate_argument_name, api_name = "coordinate", type_name=coordinate_type),
                                 ]

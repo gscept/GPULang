@@ -56,7 +56,6 @@ void
 Variable::SetupAsBuiltinParameter()
 {
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(this->resolved);
-    varResolved->type = this->type;
     varResolved->accessBits.flags.readAccess = true; // Implicitly set read access to true
     varResolved->byteSize = varResolved->typeSymbol->byteSize;
     varResolved->storage = Storage::Default;
