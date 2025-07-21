@@ -2103,6 +2103,8 @@ GPULangValidateFile(const std::string& file, const std::vector<std::string>& def
         result.mainScope = compiler.mainScope;
         if (compiler.diagnostics.size > 0)
             result.diagnostics = compiler.diagnostics;
+        if (diagnostics.size > 0)
+            result.diagnostics.Append(diagnostics);
         
         // convert error list to string
         if (compiler.messages.size != 0 && !compiler.options.quiet)
@@ -2239,6 +2241,9 @@ GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPUL
         result.mainScope = compiler.mainScope;
         if (compiler.diagnostics.size > 0)
             result.diagnostics = compiler.diagnostics;
+        if (diagnostics.size > 0)
+            result.diagnostics.Append(diagnostics);
+
         
         // convert error list to string
         if (compiler.messages.size != 0 && !compiler.options.quiet)
@@ -2258,7 +2263,7 @@ GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPUL
         if (options.emitTimings)
             timer.TotalTime();
         
-        return res;
+        return  ;
     }
 fail:
     result.diagnostics.Append(diagnostics);

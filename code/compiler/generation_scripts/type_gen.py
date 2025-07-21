@@ -628,10 +628,6 @@ def generate_types():
             # Conversions
             for type2 in types:
 
-                # Generate conversions from UInt to Bool
-                #if type != 'Bool8' and type2 == 'Bool8':
-                #    continue
-
                 if size == 1 and type2 == type:
                     continue
 
