@@ -1560,7 +1560,10 @@ main(int argc, const char** argv)
                                 {
                                     auto fun = static_cast<GPULang::Function*>(sym);
                                     auto res = GPULang::Symbol::Resolved(fun);
-                                    items.push_back(lsp::CompletionItem{ .label = res->name.c_str(), .insertText = sym->name.c_str(), .commitCharacters = {{"("}} });
+                                    if (res->name.buf != nullptr)
+                                    {
+                                        items.push_back(lsp::CompletionItem{ .label = res->name.c_str(), .insertText = sym->name.c_str(), .commitCharacters = {{"("}} });
+                                    }
                                     break;
                                 }
                                 case GPULang::Symbol::SymbolType::EnumerationType:

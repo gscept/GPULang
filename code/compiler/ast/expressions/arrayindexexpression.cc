@@ -66,7 +66,7 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
     // If there are no modifiers, then we check for an array access operator for the type
     if (thisResolved->returnFullType.modifiers.empty())
     {
-        Type* type = static_cast<Type*>(compiler->GetSymbol(thisResolved->returnFullType.name));
+        Type* type = static_cast<Type*>(compiler->GetType(thisResolved->returnFullType));
         TStr lookup = TStr("operator[](", thisResolved->rightFullType.name, ")");
         auto it = type->scope.symbolLookup.Find(lookup);
         if (it == type->scope.symbolLookup.end())

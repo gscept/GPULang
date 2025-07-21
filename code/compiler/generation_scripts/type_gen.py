@@ -233,10 +233,10 @@ def generate_types():
                 width2 = bit_width_mapping[type2]
 
                 if type1.startswith('Bool'):
-                    if type2.startswith('Int') or type2.startswith('UInt'):
-                        spirv_conversion_prep = f'            SPIRVResult trueValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::{type2}(1));\n'
-                        spirv_conversion_prep += f'            SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::{type2}(0));\n'
-                        type_conversions.append(TypeConverter(f'{type1}To{type2}', type2, data_type_mapping[type1], 'OpSelect', spirv_conversion_prep, 'trueValue, falseValue'))
+                    #if type2.startswith('Int') or type2.startswith('UInt'):
+                    spirv_conversion_prep = f'            SPIRVResult trueValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::{type2}(1));\n'
+                    spirv_conversion_prep += f'            SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::{type2}(0));\n'
+                    type_conversions.append(TypeConverter(f'{type1}To{type2}', type2, data_type_mapping[type1], 'OpSelect', spirv_conversion_prep, 'trueValue, falseValue'))
                 else:    
                     if not type2.startswith('Bool'):
                         spirv_conversion_prep = ''
@@ -303,16 +303,18 @@ def generate_types():
         spirv_type_construction += f'        if (vectorSize > 1)\n'
         spirv_type_construction += f'            type = GeneratePODTypeSPIRV(c, g, TypeCode::{converter.target}, vectorSize);\n'
         spirv_type_construction += f'        else\n'
+        spirv_type_construction += f'        {{\n'
         spirv_type_construction += f'            type = GeneratePODTypeSPIRV(c, g, TypeCode::{converter.target});\n'
         if not converter.spirv_conversion_arguments:
-            spirv_type_construction += f'        value = LoadValueSPIRV(c, g, value);\n'
+            spirv_type_construction += f'            value = LoadValueSPIRV(c, g, value);\n'
         if converter.spirv_conversion_prep:
             spirv_type_construction += converter.spirv_conversion_prep
         if not converter.spirv_conversion_arguments:
-            spirv_type_construction += f'        uint32_t res = g->writer->MappedInstruction({converter.spirv_conversion_function}, SPVWriter::Section::LocalFunction, type, value);\n'
+            spirv_type_construction += f'            uint32_t res = g->writer->MappedInstruction({converter.spirv_conversion_function}, SPVWriter::Section::LocalFunction, type, value);\n'
         else:
-            spirv_type_construction += f'        uint32_t res = g->writer->MappedInstruction({converter.spirv_conversion_function}, SPVWriter::Section::LocalFunction, type, value, {converter.spirv_conversion_arguments});\n'
-        spirv_type_construction += f'        return SPIRVResult(res, type, true);\n'
+            spirv_type_construction += f'            uint32_t res = g->writer->MappedInstruction({converter.spirv_conversion_function}, SPVWriter::Section::LocalFunction, type, value, {converter.spirv_conversion_arguments});\n'
+        spirv_type_construction += f'            return SPIRVResult(res, type, true);\n'
+        spirv_type_construction += f'        }}\n'
         spirv_type_construction += f'    }}\n'
         spirv_type_construction += f'}}\n\n'
         spirv_type_converter_list.append(f'    std::pair{{ TypeConversionTable::{converter.enum}, &SPIRV_{converter.enum} }}')
@@ -429,7 +431,7 @@ def generate_types():
         spirv_intrinsic_code += '{\n'
         spirv_intrinsic_code += f'{arg}'
         spirv_intrinsic_code += '}\n\n'
-        spirv_intrinsic_list.append(f'std::pair{{ &{fun}, &SPIRV_{fun} }}')
+        spirv_intrinsic_list.append(f'    std::pair{{ &{fun}, &SPIRV_{fun} }}')
         return spirv_intrinsic_code
 
     class Variable():
@@ -627,8 +629,8 @@ def generate_types():
             for type2 in types:
 
                 # Generate conversions from UInt to Bool
-                if (type != 'Bool8' and type.startswith('Float')) and type2 == 'Bool8':
-                    continue
+                #if type != 'Bool8' and type2 == 'Bool8':
+                #    continue
 
                 if size == 1 and type2 == type:
                     continue
@@ -644,8 +646,8 @@ def generate_types():
                     type_name2 = f'{type2}x{size}'
                     data_type_name2 = f'{data_type_mapping[type2]}x{size}'
 
-                function_name = f'{type_name}_convert_{type_name2}'
-                arg_name = f'{type_name}_convert_{type_name2}_arg0'
+                function_name = f'{type_name}_from_{type_name2}'
+                arg_name = f'{type_name}_from_{type_name2}_arg0'
 
                 fun = Function(
                     decl_name=function_name,
@@ -653,7 +655,7 @@ def generate_types():
                     return_type=type_name,
                     compile_time=True,
                     parameters=[Variable(decl_name=arg_name, api_name='val', type_name=type_name2)],
-                    documentation=f'Convert {data_type_name2} to {data_type_name}'
+                    documentation=f'Convert from {data_type_name2} to {data_type_name}'
                 )
 
                 declaration_string += fun.declaration()
@@ -665,7 +667,7 @@ def generate_types():
                 if type == type2:
                     spirv_type_construction += spirv_intrinsic(function_name, '    return args[0];\n')
                 else:
-                    spirv_type_construction += spirv_intrinsic(function_name, f'    return ConverterTable[TypeConversionTable::{type}To{type2}](c, g, {size}, args[0]);\n')
+                    spirv_type_construction += spirv_intrinsic(function_name, f'    return ConverterTable[TypeConversionTable::{type2}To{type}](c, g, {size}, args[0]);\n')
                 if size > 1:
                     function_name = f'{type_name}_splat_{type2}'
                     arg_name = f'{type_name}_splat_{type2}_arg0'
@@ -717,7 +719,7 @@ def generate_types():
                 spirv_function += "            return loadedArg;\n"
                 spirv_function += "        }\n"
                 if type != type2:
-                    spirv_function += f'    loadedArg = GenerateConversionSPIRV(c, g, TypeConversionTable::{type}To{type2}, {size}, loadedArg);\n'
+                    spirv_function += f'    loadedArg = GenerateConversionSPIRV(c, g, TypeConversionTable::{type2}To{type}, {size}, loadedArg);\n'
                 spirv_function += '    return loadedArg;\n'
 
                 fun = Function(
@@ -1622,7 +1624,7 @@ def generate_types():
             EnumMember("Point"),
             EnumMember("Nearest", value = 0),
             EnumMember("Linear"),
-            EnumMember("MinMagMipmapLinear"),
+            EnumMember("MinMagMipLinear"),
             EnumMember("MinMagLinearMipPoint"),
             EnumMember("MinLinearMagMipPoint"),
             EnumMember("MinMagMipPoint"),
@@ -1739,7 +1741,7 @@ def generate_types():
             StateMember('DepthTestEnabled', 'Bool8'),
             StateMember('DepthWriteEnabled', 'Bool8'),
             StateMember('DepthBiasEnabled', 'Bool8'),
-            StateMember('DepthBiasConstantFactor', 'Float32'),
+            StateMember('DepthBiasFactor', 'Float32'),
             StateMember('DepthBiasClamp', 'Float32'),
             StateMember('DepthBiasSlopeFactor', 'Float32'),
             StateMember('DepthTestFunction', 'CompareMode'),
@@ -1750,6 +1752,7 @@ def generate_types():
             StateMember('PolygonMode', 'PolygonMode'),
             StateMember('Cull', 'CullFace'),
             StateMember('WindingOrder', 'WindingOrder'),
+            StateMember('ScissorEnabled', 'Bool8'),
             StateMember('StencilEnabled', 'Bool8'),
             StateMember('StencilFront', 'StencilState'),
             StateMember('StencilBack', 'StencilState'),
@@ -2580,15 +2583,15 @@ def generate_types():
 
 
     # Builtin value getters
-    vertex_value_builtins = ['OutputLayer', 'OutputViewport', 'Index', 'InstanceIndex', 'BaseIndex', 'BaseInstanceIndex', 'DrawIndex']
+    vertex_value_builtins = ['GetOutputLayer', 'GetOutputViewport', 'GetIndex', 'GetInstanceIndex', 'GetBaseIndex', 'GetBaseInstanceIndex', 'GetDrawIndex']
     vertex_value_builtins_spirv = ['Layer', 'ViewportIndex', 'VertexId', 'InstanceId', 'BaseVertex', 'BaseInstance', 'DrawIndex']
     for builtin, spirv_builtin in zip(vertex_value_builtins, vertex_value_builtins_spirv):
         intrinsic = builtin
-        function_name = f'VertexGet{intrinsic}'
+        function_name = f'Vertex{intrinsic}'
 
         fun = Function( 
             decl_name = function_name,
-            api_name = intrinsic,
+            api_name = f'vertex{intrinsic}',
             return_type = 'UInt32',
             parameters = [
             ]
@@ -2617,17 +2620,17 @@ def generate_types():
         spirv_code += spirv_intrinsic(function_name, spirv_function)
 
     unsigned_types = ['UInt16', 'UInt32']
-    vertex_value_builtins = ['OutputLayer', 'OutputViewport']
+    vertex_value_builtins = ['SetOutputLayer', 'SetOutputViewport']
     vertex_value_builtins_spirv = ['Layer', 'ViewportIndex']
     for builtin, spirv_builtin in zip(vertex_value_builtins, vertex_value_builtins_spirv):
         for type in unsigned_types:
             intrinsic = builtin
-            function_name = f'VertexSet{intrinsic}_{type}'
+            function_name = f'Vertex{intrinsic}_{type}'
             argument_name = f'{function_name}_arg'
 
             fun = Function( 
                 decl_name = function_name,
-                api_name = intrinsic,
+                api_name = f'vertex{intrinsic}',
                 return_type = 'Void',
                 parameters = [
                     Variable(decl_name = argument_name, api_name = "val", type_name=type)

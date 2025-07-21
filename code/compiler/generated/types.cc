@@ -90,29 +90,34 @@ struct StaticTypeTimerStart
 StaticTypeTimerStart StaticTypeTimerStartInstance;
 
 /// f32 with UInt32
-Variable Float32_convert_UInt32_arg0;
-Function Float32_convert_UInt32;
-inline constexpr std::array Float32_convert_UInt32_args = { &Float32_convert_UInt32_arg0 };
+Variable Float32_from_UInt32_arg0;
+Function Float32_from_UInt32;
+inline constexpr std::array Float32_from_UInt32_args = { &Float32_from_UInt32_arg0 };
 
 /// f32 with Int32
-Variable Float32_convert_Int32_arg0;
-Function Float32_convert_Int32;
-inline constexpr std::array Float32_convert_Int32_args = { &Float32_convert_Int32_arg0 };
+Variable Float32_from_Int32_arg0;
+Function Float32_from_Int32;
+inline constexpr std::array Float32_from_Int32_args = { &Float32_from_Int32_arg0 };
+
+/// f32 with Bool8
+Variable Float32_from_Bool8_arg0;
+Function Float32_from_Bool8;
+inline constexpr std::array Float32_from_Bool8_args = { &Float32_from_Bool8_arg0 };
 
 /// f32 with Float16
-Variable Float32_convert_Float16_arg0;
-Function Float32_convert_Float16;
-inline constexpr std::array Float32_convert_Float16_args = { &Float32_convert_Float16_arg0 };
+Variable Float32_from_Float16_arg0;
+Function Float32_from_Float16;
+inline constexpr std::array Float32_from_Float16_args = { &Float32_from_Float16_arg0 };
 
 /// f32 with UInt16
-Variable Float32_convert_UInt16_arg0;
-Function Float32_convert_UInt16;
-inline constexpr std::array Float32_convert_UInt16_args = { &Float32_convert_UInt16_arg0 };
+Variable Float32_from_UInt16_arg0;
+Function Float32_from_UInt16;
+inline constexpr std::array Float32_from_UInt16_args = { &Float32_from_UInt16_arg0 };
 
 /// f32 with Int16
-Variable Float32_convert_Int16_arg0;
-Function Float32_convert_Int16;
-inline constexpr std::array Float32_convert_Int16_args = { &Float32_convert_Int16_arg0 };
+Variable Float32_from_Int16_arg0;
+Function Float32_from_Int16;
+inline constexpr std::array Float32_from_Int16_args = { &Float32_from_Int16_arg0 };
 
 /// f32 with Float32
 Variable Float32_ctor0_arg0_Float32;
@@ -225,74 +230,88 @@ Float32::Float32()
     this->builtin = true;
 
     /// f32 with UInt32
-    Float32_convert_UInt32_arg0.name = "val"_c;
-    Float32_convert_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
-    Float32_convert_UInt32.documentation = "Convert u32 to f32"_c;
-    Float32_convert_UInt32.name = "f32"_c;
-    Float32_convert_UInt32.compileTime = true;
-    Float32_convert_UInt32.returnType = Type::FullType { Float32Type.name };
-    Float32_convert_UInt32.parameters = Float32_convert_UInt32_args;
-    Symbol::Resolved(&Float32_convert_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float32_convert_UInt32)->signature = "f32 f32(u32)"_c;
-    Symbol::Resolved(&Float32_convert_UInt32)->name = "f32(u32)"_c;
-    Symbol::Resolved(&Float32_convert_UInt32)->nameWithVarNames = "f32(val : u32)"_c;
-    Symbol::Resolved(&Float32_convert_UInt32)->returnTypeSymbol = &Float32Type;
+    Float32_from_UInt32_arg0.name = "val"_c;
+    Float32_from_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    Float32_from_UInt32.documentation = "Convert from u32 to f32"_c;
+    Float32_from_UInt32.name = "f32"_c;
+    Float32_from_UInt32.compileTime = true;
+    Float32_from_UInt32.returnType = Type::FullType { Float32Type.name };
+    Float32_from_UInt32.parameters = Float32_from_UInt32_args;
+    Symbol::Resolved(&Float32_from_UInt32_arg0)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&Float32_from_UInt32)->signature = "f32 f32(u32)"_c;
+    Symbol::Resolved(&Float32_from_UInt32)->name = "f32(u32)"_c;
+    Symbol::Resolved(&Float32_from_UInt32)->nameWithVarNames = "f32(val : u32)"_c;
+    Symbol::Resolved(&Float32_from_UInt32)->returnTypeSymbol = &Float32Type;
 
     /// f32 with Int32
-    Float32_convert_Int32_arg0.name = "val"_c;
-    Float32_convert_Int32_arg0.type = Type::FullType{ Int32Type.name };
-    Float32_convert_Int32.documentation = "Convert i32 to f32"_c;
-    Float32_convert_Int32.name = "f32"_c;
-    Float32_convert_Int32.compileTime = true;
-    Float32_convert_Int32.returnType = Type::FullType { Float32Type.name };
-    Float32_convert_Int32.parameters = Float32_convert_Int32_args;
-    Symbol::Resolved(&Float32_convert_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float32_convert_Int32)->signature = "f32 f32(i32)"_c;
-    Symbol::Resolved(&Float32_convert_Int32)->name = "f32(i32)"_c;
-    Symbol::Resolved(&Float32_convert_Int32)->nameWithVarNames = "f32(val : i32)"_c;
-    Symbol::Resolved(&Float32_convert_Int32)->returnTypeSymbol = &Float32Type;
+    Float32_from_Int32_arg0.name = "val"_c;
+    Float32_from_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    Float32_from_Int32.documentation = "Convert from i32 to f32"_c;
+    Float32_from_Int32.name = "f32"_c;
+    Float32_from_Int32.compileTime = true;
+    Float32_from_Int32.returnType = Type::FullType { Float32Type.name };
+    Float32_from_Int32.parameters = Float32_from_Int32_args;
+    Symbol::Resolved(&Float32_from_Int32_arg0)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&Float32_from_Int32)->signature = "f32 f32(i32)"_c;
+    Symbol::Resolved(&Float32_from_Int32)->name = "f32(i32)"_c;
+    Symbol::Resolved(&Float32_from_Int32)->nameWithVarNames = "f32(val : i32)"_c;
+    Symbol::Resolved(&Float32_from_Int32)->returnTypeSymbol = &Float32Type;
+
+    /// f32 with Bool8
+    Float32_from_Bool8_arg0.name = "val"_c;
+    Float32_from_Bool8_arg0.type = Type::FullType{ Bool8Type.name };
+    Float32_from_Bool8.documentation = "Convert from b8 to f32"_c;
+    Float32_from_Bool8.name = "f32"_c;
+    Float32_from_Bool8.compileTime = true;
+    Float32_from_Bool8.returnType = Type::FullType { Float32Type.name };
+    Float32_from_Bool8.parameters = Float32_from_Bool8_args;
+    Symbol::Resolved(&Float32_from_Bool8_arg0)->typeSymbol = &Bool8Type;
+    Symbol::Resolved(&Float32_from_Bool8)->signature = "f32 f32(b8)"_c;
+    Symbol::Resolved(&Float32_from_Bool8)->name = "f32(b8)"_c;
+    Symbol::Resolved(&Float32_from_Bool8)->nameWithVarNames = "f32(val : b8)"_c;
+    Symbol::Resolved(&Float32_from_Bool8)->returnTypeSymbol = &Float32Type;
 
     /// f32 with Float16
-    Float32_convert_Float16_arg0.name = "val"_c;
-    Float32_convert_Float16_arg0.type = Type::FullType{ Float16Type.name };
-    Float32_convert_Float16.documentation = "Convert f16 to f32"_c;
-    Float32_convert_Float16.name = "f32"_c;
-    Float32_convert_Float16.compileTime = true;
-    Float32_convert_Float16.returnType = Type::FullType { Float32Type.name };
-    Float32_convert_Float16.parameters = Float32_convert_Float16_args;
-    Symbol::Resolved(&Float32_convert_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Float32_convert_Float16)->signature = "f32 f32(f16)"_c;
-    Symbol::Resolved(&Float32_convert_Float16)->name = "f32(f16)"_c;
-    Symbol::Resolved(&Float32_convert_Float16)->nameWithVarNames = "f32(val : f16)"_c;
-    Symbol::Resolved(&Float32_convert_Float16)->returnTypeSymbol = &Float32Type;
+    Float32_from_Float16_arg0.name = "val"_c;
+    Float32_from_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    Float32_from_Float16.documentation = "Convert from f16 to f32"_c;
+    Float32_from_Float16.name = "f32"_c;
+    Float32_from_Float16.compileTime = true;
+    Float32_from_Float16.returnType = Type::FullType { Float32Type.name };
+    Float32_from_Float16.parameters = Float32_from_Float16_args;
+    Symbol::Resolved(&Float32_from_Float16_arg0)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&Float32_from_Float16)->signature = "f32 f32(f16)"_c;
+    Symbol::Resolved(&Float32_from_Float16)->name = "f32(f16)"_c;
+    Symbol::Resolved(&Float32_from_Float16)->nameWithVarNames = "f32(val : f16)"_c;
+    Symbol::Resolved(&Float32_from_Float16)->returnTypeSymbol = &Float32Type;
 
     /// f32 with UInt16
-    Float32_convert_UInt16_arg0.name = "val"_c;
-    Float32_convert_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
-    Float32_convert_UInt16.documentation = "Convert u16 to f32"_c;
-    Float32_convert_UInt16.name = "f32"_c;
-    Float32_convert_UInt16.compileTime = true;
-    Float32_convert_UInt16.returnType = Type::FullType { Float32Type.name };
-    Float32_convert_UInt16.parameters = Float32_convert_UInt16_args;
-    Symbol::Resolved(&Float32_convert_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float32_convert_UInt16)->signature = "f32 f32(u16)"_c;
-    Symbol::Resolved(&Float32_convert_UInt16)->name = "f32(u16)"_c;
-    Symbol::Resolved(&Float32_convert_UInt16)->nameWithVarNames = "f32(val : u16)"_c;
-    Symbol::Resolved(&Float32_convert_UInt16)->returnTypeSymbol = &Float32Type;
+    Float32_from_UInt16_arg0.name = "val"_c;
+    Float32_from_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    Float32_from_UInt16.documentation = "Convert from u16 to f32"_c;
+    Float32_from_UInt16.name = "f32"_c;
+    Float32_from_UInt16.compileTime = true;
+    Float32_from_UInt16.returnType = Type::FullType { Float32Type.name };
+    Float32_from_UInt16.parameters = Float32_from_UInt16_args;
+    Symbol::Resolved(&Float32_from_UInt16_arg0)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&Float32_from_UInt16)->signature = "f32 f32(u16)"_c;
+    Symbol::Resolved(&Float32_from_UInt16)->name = "f32(u16)"_c;
+    Symbol::Resolved(&Float32_from_UInt16)->nameWithVarNames = "f32(val : u16)"_c;
+    Symbol::Resolved(&Float32_from_UInt16)->returnTypeSymbol = &Float32Type;
 
     /// f32 with Int16
-    Float32_convert_Int16_arg0.name = "val"_c;
-    Float32_convert_Int16_arg0.type = Type::FullType{ Int16Type.name };
-    Float32_convert_Int16.documentation = "Convert i16 to f32"_c;
-    Float32_convert_Int16.name = "f32"_c;
-    Float32_convert_Int16.compileTime = true;
-    Float32_convert_Int16.returnType = Type::FullType { Float32Type.name };
-    Float32_convert_Int16.parameters = Float32_convert_Int16_args;
-    Symbol::Resolved(&Float32_convert_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float32_convert_Int16)->signature = "f32 f32(i16)"_c;
-    Symbol::Resolved(&Float32_convert_Int16)->name = "f32(i16)"_c;
-    Symbol::Resolved(&Float32_convert_Int16)->nameWithVarNames = "f32(val : i16)"_c;
-    Symbol::Resolved(&Float32_convert_Int16)->returnTypeSymbol = &Float32Type;
+    Float32_from_Int16_arg0.name = "val"_c;
+    Float32_from_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    Float32_from_Int16.documentation = "Convert from i16 to f32"_c;
+    Float32_from_Int16.name = "f32"_c;
+    Float32_from_Int16.compileTime = true;
+    Float32_from_Int16.returnType = Type::FullType { Float32Type.name };
+    Float32_from_Int16.parameters = Float32_from_Int16_args;
+    Symbol::Resolved(&Float32_from_Int16_arg0)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&Float32_from_Int16)->signature = "f32 f32(i16)"_c;
+    Symbol::Resolved(&Float32_from_Int16)->name = "f32(i16)"_c;
+    Symbol::Resolved(&Float32_from_Int16)->nameWithVarNames = "f32(val : i16)"_c;
+    Symbol::Resolved(&Float32_from_Int16)->returnTypeSymbol = &Float32Type;
 
     /// f32 with Float32
     Float32_ctor0_arg0_Float32.name = "_arg0"_c;
@@ -579,34 +598,34 @@ Float32::Float32()
 Float32 Float32Type;
 
 /// u32 with Float32
-Variable UInt32_convert_Float32_arg0;
-Function UInt32_convert_Float32;
-inline constexpr std::array UInt32_convert_Float32_args = { &UInt32_convert_Float32_arg0 };
+Variable UInt32_from_Float32_arg0;
+Function UInt32_from_Float32;
+inline constexpr std::array UInt32_from_Float32_args = { &UInt32_from_Float32_arg0 };
 
 /// u32 with Int32
-Variable UInt32_convert_Int32_arg0;
-Function UInt32_convert_Int32;
-inline constexpr std::array UInt32_convert_Int32_args = { &UInt32_convert_Int32_arg0 };
+Variable UInt32_from_Int32_arg0;
+Function UInt32_from_Int32;
+inline constexpr std::array UInt32_from_Int32_args = { &UInt32_from_Int32_arg0 };
 
 /// u32 with Bool8
-Variable UInt32_convert_Bool8_arg0;
-Function UInt32_convert_Bool8;
-inline constexpr std::array UInt32_convert_Bool8_args = { &UInt32_convert_Bool8_arg0 };
+Variable UInt32_from_Bool8_arg0;
+Function UInt32_from_Bool8;
+inline constexpr std::array UInt32_from_Bool8_args = { &UInt32_from_Bool8_arg0 };
 
 /// u32 with Float16
-Variable UInt32_convert_Float16_arg0;
-Function UInt32_convert_Float16;
-inline constexpr std::array UInt32_convert_Float16_args = { &UInt32_convert_Float16_arg0 };
+Variable UInt32_from_Float16_arg0;
+Function UInt32_from_Float16;
+inline constexpr std::array UInt32_from_Float16_args = { &UInt32_from_Float16_arg0 };
 
 /// u32 with UInt16
-Variable UInt32_convert_UInt16_arg0;
-Function UInt32_convert_UInt16;
-inline constexpr std::array UInt32_convert_UInt16_args = { &UInt32_convert_UInt16_arg0 };
+Variable UInt32_from_UInt16_arg0;
+Function UInt32_from_UInt16;
+inline constexpr std::array UInt32_from_UInt16_args = { &UInt32_from_UInt16_arg0 };
 
 /// u32 with Int16
-Variable UInt32_convert_Int16_arg0;
-Function UInt32_convert_Int16;
-inline constexpr std::array UInt32_convert_Int16_args = { &UInt32_convert_Int16_arg0 };
+Variable UInt32_from_Int16_arg0;
+Function UInt32_from_Int16;
+inline constexpr std::array UInt32_from_Int16_args = { &UInt32_from_Int16_arg0 };
 
 /// u32 with UInt32
 Variable UInt32_ctor0_arg0_UInt32;
@@ -769,88 +788,88 @@ UInt32::UInt32()
     this->builtin = true;
 
     /// u32 with Float32
-    UInt32_convert_Float32_arg0.name = "val"_c;
-    UInt32_convert_Float32_arg0.type = Type::FullType{ Float32Type.name };
-    UInt32_convert_Float32.documentation = "Convert f32 to u32"_c;
-    UInt32_convert_Float32.name = "u32"_c;
-    UInt32_convert_Float32.compileTime = true;
-    UInt32_convert_Float32.returnType = Type::FullType { UInt32Type.name };
-    UInt32_convert_Float32.parameters = UInt32_convert_Float32_args;
-    Symbol::Resolved(&UInt32_convert_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&UInt32_convert_Float32)->signature = "u32 u32(f32)"_c;
-    Symbol::Resolved(&UInt32_convert_Float32)->name = "u32(f32)"_c;
-    Symbol::Resolved(&UInt32_convert_Float32)->nameWithVarNames = "u32(val : f32)"_c;
-    Symbol::Resolved(&UInt32_convert_Float32)->returnTypeSymbol = &UInt32Type;
+    UInt32_from_Float32_arg0.name = "val"_c;
+    UInt32_from_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    UInt32_from_Float32.documentation = "Convert from f32 to u32"_c;
+    UInt32_from_Float32.name = "u32"_c;
+    UInt32_from_Float32.compileTime = true;
+    UInt32_from_Float32.returnType = Type::FullType { UInt32Type.name };
+    UInt32_from_Float32.parameters = UInt32_from_Float32_args;
+    Symbol::Resolved(&UInt32_from_Float32_arg0)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&UInt32_from_Float32)->signature = "u32 u32(f32)"_c;
+    Symbol::Resolved(&UInt32_from_Float32)->name = "u32(f32)"_c;
+    Symbol::Resolved(&UInt32_from_Float32)->nameWithVarNames = "u32(val : f32)"_c;
+    Symbol::Resolved(&UInt32_from_Float32)->returnTypeSymbol = &UInt32Type;
 
     /// u32 with Int32
-    UInt32_convert_Int32_arg0.name = "val"_c;
-    UInt32_convert_Int32_arg0.type = Type::FullType{ Int32Type.name };
-    UInt32_convert_Int32.documentation = "Convert i32 to u32"_c;
-    UInt32_convert_Int32.name = "u32"_c;
-    UInt32_convert_Int32.compileTime = true;
-    UInt32_convert_Int32.returnType = Type::FullType { UInt32Type.name };
-    UInt32_convert_Int32.parameters = UInt32_convert_Int32_args;
-    Symbol::Resolved(&UInt32_convert_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&UInt32_convert_Int32)->signature = "u32 u32(i32)"_c;
-    Symbol::Resolved(&UInt32_convert_Int32)->name = "u32(i32)"_c;
-    Symbol::Resolved(&UInt32_convert_Int32)->nameWithVarNames = "u32(val : i32)"_c;
-    Symbol::Resolved(&UInt32_convert_Int32)->returnTypeSymbol = &UInt32Type;
+    UInt32_from_Int32_arg0.name = "val"_c;
+    UInt32_from_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    UInt32_from_Int32.documentation = "Convert from i32 to u32"_c;
+    UInt32_from_Int32.name = "u32"_c;
+    UInt32_from_Int32.compileTime = true;
+    UInt32_from_Int32.returnType = Type::FullType { UInt32Type.name };
+    UInt32_from_Int32.parameters = UInt32_from_Int32_args;
+    Symbol::Resolved(&UInt32_from_Int32_arg0)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&UInt32_from_Int32)->signature = "u32 u32(i32)"_c;
+    Symbol::Resolved(&UInt32_from_Int32)->name = "u32(i32)"_c;
+    Symbol::Resolved(&UInt32_from_Int32)->nameWithVarNames = "u32(val : i32)"_c;
+    Symbol::Resolved(&UInt32_from_Int32)->returnTypeSymbol = &UInt32Type;
 
     /// u32 with Bool8
-    UInt32_convert_Bool8_arg0.name = "val"_c;
-    UInt32_convert_Bool8_arg0.type = Type::FullType{ Bool8Type.name };
-    UInt32_convert_Bool8.documentation = "Convert b8 to u32"_c;
-    UInt32_convert_Bool8.name = "u32"_c;
-    UInt32_convert_Bool8.compileTime = true;
-    UInt32_convert_Bool8.returnType = Type::FullType { UInt32Type.name };
-    UInt32_convert_Bool8.parameters = UInt32_convert_Bool8_args;
-    Symbol::Resolved(&UInt32_convert_Bool8_arg0)->typeSymbol = &Bool8Type;
-    Symbol::Resolved(&UInt32_convert_Bool8)->signature = "u32 u32(b8)"_c;
-    Symbol::Resolved(&UInt32_convert_Bool8)->name = "u32(b8)"_c;
-    Symbol::Resolved(&UInt32_convert_Bool8)->nameWithVarNames = "u32(val : b8)"_c;
-    Symbol::Resolved(&UInt32_convert_Bool8)->returnTypeSymbol = &UInt32Type;
+    UInt32_from_Bool8_arg0.name = "val"_c;
+    UInt32_from_Bool8_arg0.type = Type::FullType{ Bool8Type.name };
+    UInt32_from_Bool8.documentation = "Convert from b8 to u32"_c;
+    UInt32_from_Bool8.name = "u32"_c;
+    UInt32_from_Bool8.compileTime = true;
+    UInt32_from_Bool8.returnType = Type::FullType { UInt32Type.name };
+    UInt32_from_Bool8.parameters = UInt32_from_Bool8_args;
+    Symbol::Resolved(&UInt32_from_Bool8_arg0)->typeSymbol = &Bool8Type;
+    Symbol::Resolved(&UInt32_from_Bool8)->signature = "u32 u32(b8)"_c;
+    Symbol::Resolved(&UInt32_from_Bool8)->name = "u32(b8)"_c;
+    Symbol::Resolved(&UInt32_from_Bool8)->nameWithVarNames = "u32(val : b8)"_c;
+    Symbol::Resolved(&UInt32_from_Bool8)->returnTypeSymbol = &UInt32Type;
 
     /// u32 with Float16
-    UInt32_convert_Float16_arg0.name = "val"_c;
-    UInt32_convert_Float16_arg0.type = Type::FullType{ Float16Type.name };
-    UInt32_convert_Float16.documentation = "Convert f16 to u32"_c;
-    UInt32_convert_Float16.name = "u32"_c;
-    UInt32_convert_Float16.compileTime = true;
-    UInt32_convert_Float16.returnType = Type::FullType { UInt32Type.name };
-    UInt32_convert_Float16.parameters = UInt32_convert_Float16_args;
-    Symbol::Resolved(&UInt32_convert_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&UInt32_convert_Float16)->signature = "u32 u32(f16)"_c;
-    Symbol::Resolved(&UInt32_convert_Float16)->name = "u32(f16)"_c;
-    Symbol::Resolved(&UInt32_convert_Float16)->nameWithVarNames = "u32(val : f16)"_c;
-    Symbol::Resolved(&UInt32_convert_Float16)->returnTypeSymbol = &UInt32Type;
+    UInt32_from_Float16_arg0.name = "val"_c;
+    UInt32_from_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    UInt32_from_Float16.documentation = "Convert from f16 to u32"_c;
+    UInt32_from_Float16.name = "u32"_c;
+    UInt32_from_Float16.compileTime = true;
+    UInt32_from_Float16.returnType = Type::FullType { UInt32Type.name };
+    UInt32_from_Float16.parameters = UInt32_from_Float16_args;
+    Symbol::Resolved(&UInt32_from_Float16_arg0)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&UInt32_from_Float16)->signature = "u32 u32(f16)"_c;
+    Symbol::Resolved(&UInt32_from_Float16)->name = "u32(f16)"_c;
+    Symbol::Resolved(&UInt32_from_Float16)->nameWithVarNames = "u32(val : f16)"_c;
+    Symbol::Resolved(&UInt32_from_Float16)->returnTypeSymbol = &UInt32Type;
 
     /// u32 with UInt16
-    UInt32_convert_UInt16_arg0.name = "val"_c;
-    UInt32_convert_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
-    UInt32_convert_UInt16.documentation = "Convert u16 to u32"_c;
-    UInt32_convert_UInt16.name = "u32"_c;
-    UInt32_convert_UInt16.compileTime = true;
-    UInt32_convert_UInt16.returnType = Type::FullType { UInt32Type.name };
-    UInt32_convert_UInt16.parameters = UInt32_convert_UInt16_args;
-    Symbol::Resolved(&UInt32_convert_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&UInt32_convert_UInt16)->signature = "u32 u32(u16)"_c;
-    Symbol::Resolved(&UInt32_convert_UInt16)->name = "u32(u16)"_c;
-    Symbol::Resolved(&UInt32_convert_UInt16)->nameWithVarNames = "u32(val : u16)"_c;
-    Symbol::Resolved(&UInt32_convert_UInt16)->returnTypeSymbol = &UInt32Type;
+    UInt32_from_UInt16_arg0.name = "val"_c;
+    UInt32_from_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    UInt32_from_UInt16.documentation = "Convert from u16 to u32"_c;
+    UInt32_from_UInt16.name = "u32"_c;
+    UInt32_from_UInt16.compileTime = true;
+    UInt32_from_UInt16.returnType = Type::FullType { UInt32Type.name };
+    UInt32_from_UInt16.parameters = UInt32_from_UInt16_args;
+    Symbol::Resolved(&UInt32_from_UInt16_arg0)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&UInt32_from_UInt16)->signature = "u32 u32(u16)"_c;
+    Symbol::Resolved(&UInt32_from_UInt16)->name = "u32(u16)"_c;
+    Symbol::Resolved(&UInt32_from_UInt16)->nameWithVarNames = "u32(val : u16)"_c;
+    Symbol::Resolved(&UInt32_from_UInt16)->returnTypeSymbol = &UInt32Type;
 
     /// u32 with Int16
-    UInt32_convert_Int16_arg0.name = "val"_c;
-    UInt32_convert_Int16_arg0.type = Type::FullType{ Int16Type.name };
-    UInt32_convert_Int16.documentation = "Convert i16 to u32"_c;
-    UInt32_convert_Int16.name = "u32"_c;
-    UInt32_convert_Int16.compileTime = true;
-    UInt32_convert_Int16.returnType = Type::FullType { UInt32Type.name };
-    UInt32_convert_Int16.parameters = UInt32_convert_Int16_args;
-    Symbol::Resolved(&UInt32_convert_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&UInt32_convert_Int16)->signature = "u32 u32(i16)"_c;
-    Symbol::Resolved(&UInt32_convert_Int16)->name = "u32(i16)"_c;
-    Symbol::Resolved(&UInt32_convert_Int16)->nameWithVarNames = "u32(val : i16)"_c;
-    Symbol::Resolved(&UInt32_convert_Int16)->returnTypeSymbol = &UInt32Type;
+    UInt32_from_Int16_arg0.name = "val"_c;
+    UInt32_from_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    UInt32_from_Int16.documentation = "Convert from i16 to u32"_c;
+    UInt32_from_Int16.name = "u32"_c;
+    UInt32_from_Int16.compileTime = true;
+    UInt32_from_Int16.returnType = Type::FullType { UInt32Type.name };
+    UInt32_from_Int16.parameters = UInt32_from_Int16_args;
+    Symbol::Resolved(&UInt32_from_Int16_arg0)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&UInt32_from_Int16)->signature = "u32 u32(i16)"_c;
+    Symbol::Resolved(&UInt32_from_Int16)->name = "u32(i16)"_c;
+    Symbol::Resolved(&UInt32_from_Int16)->nameWithVarNames = "u32(val : i16)"_c;
+    Symbol::Resolved(&UInt32_from_Int16)->returnTypeSymbol = &UInt32Type;
 
     /// u32 with UInt32
     UInt32_ctor0_arg0_UInt32.name = "_arg0"_c;
@@ -1277,34 +1296,34 @@ UInt32::UInt32()
 UInt32 UInt32Type;
 
 /// i32 with Float32
-Variable Int32_convert_Float32_arg0;
-Function Int32_convert_Float32;
-inline constexpr std::array Int32_convert_Float32_args = { &Int32_convert_Float32_arg0 };
+Variable Int32_from_Float32_arg0;
+Function Int32_from_Float32;
+inline constexpr std::array Int32_from_Float32_args = { &Int32_from_Float32_arg0 };
 
 /// i32 with UInt32
-Variable Int32_convert_UInt32_arg0;
-Function Int32_convert_UInt32;
-inline constexpr std::array Int32_convert_UInt32_args = { &Int32_convert_UInt32_arg0 };
+Variable Int32_from_UInt32_arg0;
+Function Int32_from_UInt32;
+inline constexpr std::array Int32_from_UInt32_args = { &Int32_from_UInt32_arg0 };
 
 /// i32 with Bool8
-Variable Int32_convert_Bool8_arg0;
-Function Int32_convert_Bool8;
-inline constexpr std::array Int32_convert_Bool8_args = { &Int32_convert_Bool8_arg0 };
+Variable Int32_from_Bool8_arg0;
+Function Int32_from_Bool8;
+inline constexpr std::array Int32_from_Bool8_args = { &Int32_from_Bool8_arg0 };
 
 /// i32 with Float16
-Variable Int32_convert_Float16_arg0;
-Function Int32_convert_Float16;
-inline constexpr std::array Int32_convert_Float16_args = { &Int32_convert_Float16_arg0 };
+Variable Int32_from_Float16_arg0;
+Function Int32_from_Float16;
+inline constexpr std::array Int32_from_Float16_args = { &Int32_from_Float16_arg0 };
 
 /// i32 with UInt16
-Variable Int32_convert_UInt16_arg0;
-Function Int32_convert_UInt16;
-inline constexpr std::array Int32_convert_UInt16_args = { &Int32_convert_UInt16_arg0 };
+Variable Int32_from_UInt16_arg0;
+Function Int32_from_UInt16;
+inline constexpr std::array Int32_from_UInt16_args = { &Int32_from_UInt16_arg0 };
 
 /// i32 with Int16
-Variable Int32_convert_Int16_arg0;
-Function Int32_convert_Int16;
-inline constexpr std::array Int32_convert_Int16_args = { &Int32_convert_Int16_arg0 };
+Variable Int32_from_Int16_arg0;
+Function Int32_from_Int16;
+inline constexpr std::array Int32_from_Int16_args = { &Int32_from_Int16_arg0 };
 
 /// i32 with Int32
 Variable Int32_ctor0_arg0_Int32;
@@ -1467,88 +1486,88 @@ Int32::Int32()
     this->builtin = true;
 
     /// i32 with Float32
-    Int32_convert_Float32_arg0.name = "val"_c;
-    Int32_convert_Float32_arg0.type = Type::FullType{ Float32Type.name };
-    Int32_convert_Float32.documentation = "Convert f32 to i32"_c;
-    Int32_convert_Float32.name = "i32"_c;
-    Int32_convert_Float32.compileTime = true;
-    Int32_convert_Float32.returnType = Type::FullType { Int32Type.name };
-    Int32_convert_Float32.parameters = Int32_convert_Float32_args;
-    Symbol::Resolved(&Int32_convert_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Int32_convert_Float32)->signature = "i32 i32(f32)"_c;
-    Symbol::Resolved(&Int32_convert_Float32)->name = "i32(f32)"_c;
-    Symbol::Resolved(&Int32_convert_Float32)->nameWithVarNames = "i32(val : f32)"_c;
-    Symbol::Resolved(&Int32_convert_Float32)->returnTypeSymbol = &Int32Type;
+    Int32_from_Float32_arg0.name = "val"_c;
+    Int32_from_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    Int32_from_Float32.documentation = "Convert from f32 to i32"_c;
+    Int32_from_Float32.name = "i32"_c;
+    Int32_from_Float32.compileTime = true;
+    Int32_from_Float32.returnType = Type::FullType { Int32Type.name };
+    Int32_from_Float32.parameters = Int32_from_Float32_args;
+    Symbol::Resolved(&Int32_from_Float32_arg0)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&Int32_from_Float32)->signature = "i32 i32(f32)"_c;
+    Symbol::Resolved(&Int32_from_Float32)->name = "i32(f32)"_c;
+    Symbol::Resolved(&Int32_from_Float32)->nameWithVarNames = "i32(val : f32)"_c;
+    Symbol::Resolved(&Int32_from_Float32)->returnTypeSymbol = &Int32Type;
 
     /// i32 with UInt32
-    Int32_convert_UInt32_arg0.name = "val"_c;
-    Int32_convert_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
-    Int32_convert_UInt32.documentation = "Convert u32 to i32"_c;
-    Int32_convert_UInt32.name = "i32"_c;
-    Int32_convert_UInt32.compileTime = true;
-    Int32_convert_UInt32.returnType = Type::FullType { Int32Type.name };
-    Int32_convert_UInt32.parameters = Int32_convert_UInt32_args;
-    Symbol::Resolved(&Int32_convert_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Int32_convert_UInt32)->signature = "i32 i32(u32)"_c;
-    Symbol::Resolved(&Int32_convert_UInt32)->name = "i32(u32)"_c;
-    Symbol::Resolved(&Int32_convert_UInt32)->nameWithVarNames = "i32(val : u32)"_c;
-    Symbol::Resolved(&Int32_convert_UInt32)->returnTypeSymbol = &Int32Type;
+    Int32_from_UInt32_arg0.name = "val"_c;
+    Int32_from_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    Int32_from_UInt32.documentation = "Convert from u32 to i32"_c;
+    Int32_from_UInt32.name = "i32"_c;
+    Int32_from_UInt32.compileTime = true;
+    Int32_from_UInt32.returnType = Type::FullType { Int32Type.name };
+    Int32_from_UInt32.parameters = Int32_from_UInt32_args;
+    Symbol::Resolved(&Int32_from_UInt32_arg0)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&Int32_from_UInt32)->signature = "i32 i32(u32)"_c;
+    Symbol::Resolved(&Int32_from_UInt32)->name = "i32(u32)"_c;
+    Symbol::Resolved(&Int32_from_UInt32)->nameWithVarNames = "i32(val : u32)"_c;
+    Symbol::Resolved(&Int32_from_UInt32)->returnTypeSymbol = &Int32Type;
 
     /// i32 with Bool8
-    Int32_convert_Bool8_arg0.name = "val"_c;
-    Int32_convert_Bool8_arg0.type = Type::FullType{ Bool8Type.name };
-    Int32_convert_Bool8.documentation = "Convert b8 to i32"_c;
-    Int32_convert_Bool8.name = "i32"_c;
-    Int32_convert_Bool8.compileTime = true;
-    Int32_convert_Bool8.returnType = Type::FullType { Int32Type.name };
-    Int32_convert_Bool8.parameters = Int32_convert_Bool8_args;
-    Symbol::Resolved(&Int32_convert_Bool8_arg0)->typeSymbol = &Bool8Type;
-    Symbol::Resolved(&Int32_convert_Bool8)->signature = "i32 i32(b8)"_c;
-    Symbol::Resolved(&Int32_convert_Bool8)->name = "i32(b8)"_c;
-    Symbol::Resolved(&Int32_convert_Bool8)->nameWithVarNames = "i32(val : b8)"_c;
-    Symbol::Resolved(&Int32_convert_Bool8)->returnTypeSymbol = &Int32Type;
+    Int32_from_Bool8_arg0.name = "val"_c;
+    Int32_from_Bool8_arg0.type = Type::FullType{ Bool8Type.name };
+    Int32_from_Bool8.documentation = "Convert from b8 to i32"_c;
+    Int32_from_Bool8.name = "i32"_c;
+    Int32_from_Bool8.compileTime = true;
+    Int32_from_Bool8.returnType = Type::FullType { Int32Type.name };
+    Int32_from_Bool8.parameters = Int32_from_Bool8_args;
+    Symbol::Resolved(&Int32_from_Bool8_arg0)->typeSymbol = &Bool8Type;
+    Symbol::Resolved(&Int32_from_Bool8)->signature = "i32 i32(b8)"_c;
+    Symbol::Resolved(&Int32_from_Bool8)->name = "i32(b8)"_c;
+    Symbol::Resolved(&Int32_from_Bool8)->nameWithVarNames = "i32(val : b8)"_c;
+    Symbol::Resolved(&Int32_from_Bool8)->returnTypeSymbol = &Int32Type;
 
     /// i32 with Float16
-    Int32_convert_Float16_arg0.name = "val"_c;
-    Int32_convert_Float16_arg0.type = Type::FullType{ Float16Type.name };
-    Int32_convert_Float16.documentation = "Convert f16 to i32"_c;
-    Int32_convert_Float16.name = "i32"_c;
-    Int32_convert_Float16.compileTime = true;
-    Int32_convert_Float16.returnType = Type::FullType { Int32Type.name };
-    Int32_convert_Float16.parameters = Int32_convert_Float16_args;
-    Symbol::Resolved(&Int32_convert_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Int32_convert_Float16)->signature = "i32 i32(f16)"_c;
-    Symbol::Resolved(&Int32_convert_Float16)->name = "i32(f16)"_c;
-    Symbol::Resolved(&Int32_convert_Float16)->nameWithVarNames = "i32(val : f16)"_c;
-    Symbol::Resolved(&Int32_convert_Float16)->returnTypeSymbol = &Int32Type;
+    Int32_from_Float16_arg0.name = "val"_c;
+    Int32_from_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    Int32_from_Float16.documentation = "Convert from f16 to i32"_c;
+    Int32_from_Float16.name = "i32"_c;
+    Int32_from_Float16.compileTime = true;
+    Int32_from_Float16.returnType = Type::FullType { Int32Type.name };
+    Int32_from_Float16.parameters = Int32_from_Float16_args;
+    Symbol::Resolved(&Int32_from_Float16_arg0)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&Int32_from_Float16)->signature = "i32 i32(f16)"_c;
+    Symbol::Resolved(&Int32_from_Float16)->name = "i32(f16)"_c;
+    Symbol::Resolved(&Int32_from_Float16)->nameWithVarNames = "i32(val : f16)"_c;
+    Symbol::Resolved(&Int32_from_Float16)->returnTypeSymbol = &Int32Type;
 
     /// i32 with UInt16
-    Int32_convert_UInt16_arg0.name = "val"_c;
-    Int32_convert_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
-    Int32_convert_UInt16.documentation = "Convert u16 to i32"_c;
-    Int32_convert_UInt16.name = "i32"_c;
-    Int32_convert_UInt16.compileTime = true;
-    Int32_convert_UInt16.returnType = Type::FullType { Int32Type.name };
-    Int32_convert_UInt16.parameters = Int32_convert_UInt16_args;
-    Symbol::Resolved(&Int32_convert_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Int32_convert_UInt16)->signature = "i32 i32(u16)"_c;
-    Symbol::Resolved(&Int32_convert_UInt16)->name = "i32(u16)"_c;
-    Symbol::Resolved(&Int32_convert_UInt16)->nameWithVarNames = "i32(val : u16)"_c;
-    Symbol::Resolved(&Int32_convert_UInt16)->returnTypeSymbol = &Int32Type;
+    Int32_from_UInt16_arg0.name = "val"_c;
+    Int32_from_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    Int32_from_UInt16.documentation = "Convert from u16 to i32"_c;
+    Int32_from_UInt16.name = "i32"_c;
+    Int32_from_UInt16.compileTime = true;
+    Int32_from_UInt16.returnType = Type::FullType { Int32Type.name };
+    Int32_from_UInt16.parameters = Int32_from_UInt16_args;
+    Symbol::Resolved(&Int32_from_UInt16_arg0)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&Int32_from_UInt16)->signature = "i32 i32(u16)"_c;
+    Symbol::Resolved(&Int32_from_UInt16)->name = "i32(u16)"_c;
+    Symbol::Resolved(&Int32_from_UInt16)->nameWithVarNames = "i32(val : u16)"_c;
+    Symbol::Resolved(&Int32_from_UInt16)->returnTypeSymbol = &Int32Type;
 
     /// i32 with Int16
-    Int32_convert_Int16_arg0.name = "val"_c;
-    Int32_convert_Int16_arg0.type = Type::FullType{ Int16Type.name };
-    Int32_convert_Int16.documentation = "Convert i16 to i32"_c;
-    Int32_convert_Int16.name = "i32"_c;
-    Int32_convert_Int16.compileTime = true;
-    Int32_convert_Int16.returnType = Type::FullType { Int32Type.name };
-    Int32_convert_Int16.parameters = Int32_convert_Int16_args;
-    Symbol::Resolved(&Int32_convert_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Int32_convert_Int16)->signature = "i32 i32(i16)"_c;
-    Symbol::Resolved(&Int32_convert_Int16)->name = "i32(i16)"_c;
-    Symbol::Resolved(&Int32_convert_Int16)->nameWithVarNames = "i32(val : i16)"_c;
-    Symbol::Resolved(&Int32_convert_Int16)->returnTypeSymbol = &Int32Type;
+    Int32_from_Int16_arg0.name = "val"_c;
+    Int32_from_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    Int32_from_Int16.documentation = "Convert from i16 to i32"_c;
+    Int32_from_Int16.name = "i32"_c;
+    Int32_from_Int16.compileTime = true;
+    Int32_from_Int16.returnType = Type::FullType { Int32Type.name };
+    Int32_from_Int16.parameters = Int32_from_Int16_args;
+    Symbol::Resolved(&Int32_from_Int16_arg0)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&Int32_from_Int16)->signature = "i32 i32(i16)"_c;
+    Symbol::Resolved(&Int32_from_Int16)->name = "i32(i16)"_c;
+    Symbol::Resolved(&Int32_from_Int16)->nameWithVarNames = "i32(val : i16)"_c;
+    Symbol::Resolved(&Int32_from_Int16)->returnTypeSymbol = &Int32Type;
 
     /// i32 with Int32
     Int32_ctor0_arg0_Int32.name = "_arg0"_c;
@@ -1975,24 +1994,24 @@ Int32::Int32()
 Int32 Int32Type;
 
 /// b8 with UInt32
-Variable Bool8_convert_UInt32_arg0;
-Function Bool8_convert_UInt32;
-inline constexpr std::array Bool8_convert_UInt32_args = { &Bool8_convert_UInt32_arg0 };
+Variable Bool8_from_UInt32_arg0;
+Function Bool8_from_UInt32;
+inline constexpr std::array Bool8_from_UInt32_args = { &Bool8_from_UInt32_arg0 };
 
 /// b8 with Int32
-Variable Bool8_convert_Int32_arg0;
-Function Bool8_convert_Int32;
-inline constexpr std::array Bool8_convert_Int32_args = { &Bool8_convert_Int32_arg0 };
+Variable Bool8_from_Int32_arg0;
+Function Bool8_from_Int32;
+inline constexpr std::array Bool8_from_Int32_args = { &Bool8_from_Int32_arg0 };
 
 /// b8 with UInt16
-Variable Bool8_convert_UInt16_arg0;
-Function Bool8_convert_UInt16;
-inline constexpr std::array Bool8_convert_UInt16_args = { &Bool8_convert_UInt16_arg0 };
+Variable Bool8_from_UInt16_arg0;
+Function Bool8_from_UInt16;
+inline constexpr std::array Bool8_from_UInt16_args = { &Bool8_from_UInt16_arg0 };
 
 /// b8 with Int16
-Variable Bool8_convert_Int16_arg0;
-Function Bool8_convert_Int16;
-inline constexpr std::array Bool8_convert_Int16_args = { &Bool8_convert_Int16_arg0 };
+Variable Bool8_from_Int16_arg0;
+Function Bool8_from_Int16;
+inline constexpr std::array Bool8_from_Int16_args = { &Bool8_from_Int16_arg0 };
 
 /// b8 with Bool8
 Variable Bool8_ctor0_arg0_Bool8;
@@ -2050,60 +2069,60 @@ Bool8::Bool8()
     this->builtin = true;
 
     /// b8 with UInt32
-    Bool8_convert_UInt32_arg0.name = "val"_c;
-    Bool8_convert_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
-    Bool8_convert_UInt32.documentation = "Convert u32 to b8"_c;
-    Bool8_convert_UInt32.name = "b8"_c;
-    Bool8_convert_UInt32.compileTime = true;
-    Bool8_convert_UInt32.returnType = Type::FullType { Bool8Type.name };
-    Bool8_convert_UInt32.parameters = Bool8_convert_UInt32_args;
-    Symbol::Resolved(&Bool8_convert_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Bool8_convert_UInt32)->signature = "b8 b8(u32)"_c;
-    Symbol::Resolved(&Bool8_convert_UInt32)->name = "b8(u32)"_c;
-    Symbol::Resolved(&Bool8_convert_UInt32)->nameWithVarNames = "b8(val : u32)"_c;
-    Symbol::Resolved(&Bool8_convert_UInt32)->returnTypeSymbol = &Bool8Type;
+    Bool8_from_UInt32_arg0.name = "val"_c;
+    Bool8_from_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    Bool8_from_UInt32.documentation = "Convert from u32 to b8"_c;
+    Bool8_from_UInt32.name = "b8"_c;
+    Bool8_from_UInt32.compileTime = true;
+    Bool8_from_UInt32.returnType = Type::FullType { Bool8Type.name };
+    Bool8_from_UInt32.parameters = Bool8_from_UInt32_args;
+    Symbol::Resolved(&Bool8_from_UInt32_arg0)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&Bool8_from_UInt32)->signature = "b8 b8(u32)"_c;
+    Symbol::Resolved(&Bool8_from_UInt32)->name = "b8(u32)"_c;
+    Symbol::Resolved(&Bool8_from_UInt32)->nameWithVarNames = "b8(val : u32)"_c;
+    Symbol::Resolved(&Bool8_from_UInt32)->returnTypeSymbol = &Bool8Type;
 
     /// b8 with Int32
-    Bool8_convert_Int32_arg0.name = "val"_c;
-    Bool8_convert_Int32_arg0.type = Type::FullType{ Int32Type.name };
-    Bool8_convert_Int32.documentation = "Convert i32 to b8"_c;
-    Bool8_convert_Int32.name = "b8"_c;
-    Bool8_convert_Int32.compileTime = true;
-    Bool8_convert_Int32.returnType = Type::FullType { Bool8Type.name };
-    Bool8_convert_Int32.parameters = Bool8_convert_Int32_args;
-    Symbol::Resolved(&Bool8_convert_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Bool8_convert_Int32)->signature = "b8 b8(i32)"_c;
-    Symbol::Resolved(&Bool8_convert_Int32)->name = "b8(i32)"_c;
-    Symbol::Resolved(&Bool8_convert_Int32)->nameWithVarNames = "b8(val : i32)"_c;
-    Symbol::Resolved(&Bool8_convert_Int32)->returnTypeSymbol = &Bool8Type;
+    Bool8_from_Int32_arg0.name = "val"_c;
+    Bool8_from_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    Bool8_from_Int32.documentation = "Convert from i32 to b8"_c;
+    Bool8_from_Int32.name = "b8"_c;
+    Bool8_from_Int32.compileTime = true;
+    Bool8_from_Int32.returnType = Type::FullType { Bool8Type.name };
+    Bool8_from_Int32.parameters = Bool8_from_Int32_args;
+    Symbol::Resolved(&Bool8_from_Int32_arg0)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&Bool8_from_Int32)->signature = "b8 b8(i32)"_c;
+    Symbol::Resolved(&Bool8_from_Int32)->name = "b8(i32)"_c;
+    Symbol::Resolved(&Bool8_from_Int32)->nameWithVarNames = "b8(val : i32)"_c;
+    Symbol::Resolved(&Bool8_from_Int32)->returnTypeSymbol = &Bool8Type;
 
     /// b8 with UInt16
-    Bool8_convert_UInt16_arg0.name = "val"_c;
-    Bool8_convert_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
-    Bool8_convert_UInt16.documentation = "Convert u16 to b8"_c;
-    Bool8_convert_UInt16.name = "b8"_c;
-    Bool8_convert_UInt16.compileTime = true;
-    Bool8_convert_UInt16.returnType = Type::FullType { Bool8Type.name };
-    Bool8_convert_UInt16.parameters = Bool8_convert_UInt16_args;
-    Symbol::Resolved(&Bool8_convert_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Bool8_convert_UInt16)->signature = "b8 b8(u16)"_c;
-    Symbol::Resolved(&Bool8_convert_UInt16)->name = "b8(u16)"_c;
-    Symbol::Resolved(&Bool8_convert_UInt16)->nameWithVarNames = "b8(val : u16)"_c;
-    Symbol::Resolved(&Bool8_convert_UInt16)->returnTypeSymbol = &Bool8Type;
+    Bool8_from_UInt16_arg0.name = "val"_c;
+    Bool8_from_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    Bool8_from_UInt16.documentation = "Convert from u16 to b8"_c;
+    Bool8_from_UInt16.name = "b8"_c;
+    Bool8_from_UInt16.compileTime = true;
+    Bool8_from_UInt16.returnType = Type::FullType { Bool8Type.name };
+    Bool8_from_UInt16.parameters = Bool8_from_UInt16_args;
+    Symbol::Resolved(&Bool8_from_UInt16_arg0)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&Bool8_from_UInt16)->signature = "b8 b8(u16)"_c;
+    Symbol::Resolved(&Bool8_from_UInt16)->name = "b8(u16)"_c;
+    Symbol::Resolved(&Bool8_from_UInt16)->nameWithVarNames = "b8(val : u16)"_c;
+    Symbol::Resolved(&Bool8_from_UInt16)->returnTypeSymbol = &Bool8Type;
 
     /// b8 with Int16
-    Bool8_convert_Int16_arg0.name = "val"_c;
-    Bool8_convert_Int16_arg0.type = Type::FullType{ Int16Type.name };
-    Bool8_convert_Int16.documentation = "Convert i16 to b8"_c;
-    Bool8_convert_Int16.name = "b8"_c;
-    Bool8_convert_Int16.compileTime = true;
-    Bool8_convert_Int16.returnType = Type::FullType { Bool8Type.name };
-    Bool8_convert_Int16.parameters = Bool8_convert_Int16_args;
-    Symbol::Resolved(&Bool8_convert_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Bool8_convert_Int16)->signature = "b8 b8(i16)"_c;
-    Symbol::Resolved(&Bool8_convert_Int16)->name = "b8(i16)"_c;
-    Symbol::Resolved(&Bool8_convert_Int16)->nameWithVarNames = "b8(val : i16)"_c;
-    Symbol::Resolved(&Bool8_convert_Int16)->returnTypeSymbol = &Bool8Type;
+    Bool8_from_Int16_arg0.name = "val"_c;
+    Bool8_from_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    Bool8_from_Int16.documentation = "Convert from i16 to b8"_c;
+    Bool8_from_Int16.name = "b8"_c;
+    Bool8_from_Int16.compileTime = true;
+    Bool8_from_Int16.returnType = Type::FullType { Bool8Type.name };
+    Bool8_from_Int16.parameters = Bool8_from_Int16_args;
+    Symbol::Resolved(&Bool8_from_Int16_arg0)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&Bool8_from_Int16)->signature = "b8 b8(i16)"_c;
+    Symbol::Resolved(&Bool8_from_Int16)->name = "b8(i16)"_c;
+    Symbol::Resolved(&Bool8_from_Int16)->nameWithVarNames = "b8(val : i16)"_c;
+    Symbol::Resolved(&Bool8_from_Int16)->returnTypeSymbol = &Bool8Type;
 
     /// b8 with Bool8
     Bool8_ctor0_arg0_Bool8.name = "_arg0"_c;
@@ -2236,29 +2255,34 @@ Bool8::Bool8()
 Bool8 Bool8Type;
 
 /// f16 with Float32
-Variable Float16_convert_Float32_arg0;
-Function Float16_convert_Float32;
-inline constexpr std::array Float16_convert_Float32_args = { &Float16_convert_Float32_arg0 };
+Variable Float16_from_Float32_arg0;
+Function Float16_from_Float32;
+inline constexpr std::array Float16_from_Float32_args = { &Float16_from_Float32_arg0 };
 
 /// f16 with UInt32
-Variable Float16_convert_UInt32_arg0;
-Function Float16_convert_UInt32;
-inline constexpr std::array Float16_convert_UInt32_args = { &Float16_convert_UInt32_arg0 };
+Variable Float16_from_UInt32_arg0;
+Function Float16_from_UInt32;
+inline constexpr std::array Float16_from_UInt32_args = { &Float16_from_UInt32_arg0 };
 
 /// f16 with Int32
-Variable Float16_convert_Int32_arg0;
-Function Float16_convert_Int32;
-inline constexpr std::array Float16_convert_Int32_args = { &Float16_convert_Int32_arg0 };
+Variable Float16_from_Int32_arg0;
+Function Float16_from_Int32;
+inline constexpr std::array Float16_from_Int32_args = { &Float16_from_Int32_arg0 };
+
+/// f16 with Bool8
+Variable Float16_from_Bool8_arg0;
+Function Float16_from_Bool8;
+inline constexpr std::array Float16_from_Bool8_args = { &Float16_from_Bool8_arg0 };
 
 /// f16 with UInt16
-Variable Float16_convert_UInt16_arg0;
-Function Float16_convert_UInt16;
-inline constexpr std::array Float16_convert_UInt16_args = { &Float16_convert_UInt16_arg0 };
+Variable Float16_from_UInt16_arg0;
+Function Float16_from_UInt16;
+inline constexpr std::array Float16_from_UInt16_args = { &Float16_from_UInt16_arg0 };
 
 /// f16 with Int16
-Variable Float16_convert_Int16_arg0;
-Function Float16_convert_Int16;
-inline constexpr std::array Float16_convert_Int16_args = { &Float16_convert_Int16_arg0 };
+Variable Float16_from_Int16_arg0;
+Function Float16_from_Int16;
+inline constexpr std::array Float16_from_Int16_args = { &Float16_from_Int16_arg0 };
 
 /// f16 with Float16
 Variable Float16_ctor0_arg0_Float16;
@@ -2371,74 +2395,88 @@ Float16::Float16()
     this->builtin = true;
 
     /// f16 with Float32
-    Float16_convert_Float32_arg0.name = "val"_c;
-    Float16_convert_Float32_arg0.type = Type::FullType{ Float32Type.name };
-    Float16_convert_Float32.documentation = "Convert f32 to f16"_c;
-    Float16_convert_Float32.name = "f16"_c;
-    Float16_convert_Float32.compileTime = true;
-    Float16_convert_Float32.returnType = Type::FullType { Float16Type.name };
-    Float16_convert_Float32.parameters = Float16_convert_Float32_args;
-    Symbol::Resolved(&Float16_convert_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Float16_convert_Float32)->signature = "f16 f16(f32)"_c;
-    Symbol::Resolved(&Float16_convert_Float32)->name = "f16(f32)"_c;
-    Symbol::Resolved(&Float16_convert_Float32)->nameWithVarNames = "f16(val : f32)"_c;
-    Symbol::Resolved(&Float16_convert_Float32)->returnTypeSymbol = &Float16Type;
+    Float16_from_Float32_arg0.name = "val"_c;
+    Float16_from_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    Float16_from_Float32.documentation = "Convert from f32 to f16"_c;
+    Float16_from_Float32.name = "f16"_c;
+    Float16_from_Float32.compileTime = true;
+    Float16_from_Float32.returnType = Type::FullType { Float16Type.name };
+    Float16_from_Float32.parameters = Float16_from_Float32_args;
+    Symbol::Resolved(&Float16_from_Float32_arg0)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&Float16_from_Float32)->signature = "f16 f16(f32)"_c;
+    Symbol::Resolved(&Float16_from_Float32)->name = "f16(f32)"_c;
+    Symbol::Resolved(&Float16_from_Float32)->nameWithVarNames = "f16(val : f32)"_c;
+    Symbol::Resolved(&Float16_from_Float32)->returnTypeSymbol = &Float16Type;
 
     /// f16 with UInt32
-    Float16_convert_UInt32_arg0.name = "val"_c;
-    Float16_convert_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
-    Float16_convert_UInt32.documentation = "Convert u32 to f16"_c;
-    Float16_convert_UInt32.name = "f16"_c;
-    Float16_convert_UInt32.compileTime = true;
-    Float16_convert_UInt32.returnType = Type::FullType { Float16Type.name };
-    Float16_convert_UInt32.parameters = Float16_convert_UInt32_args;
-    Symbol::Resolved(&Float16_convert_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float16_convert_UInt32)->signature = "f16 f16(u32)"_c;
-    Symbol::Resolved(&Float16_convert_UInt32)->name = "f16(u32)"_c;
-    Symbol::Resolved(&Float16_convert_UInt32)->nameWithVarNames = "f16(val : u32)"_c;
-    Symbol::Resolved(&Float16_convert_UInt32)->returnTypeSymbol = &Float16Type;
+    Float16_from_UInt32_arg0.name = "val"_c;
+    Float16_from_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    Float16_from_UInt32.documentation = "Convert from u32 to f16"_c;
+    Float16_from_UInt32.name = "f16"_c;
+    Float16_from_UInt32.compileTime = true;
+    Float16_from_UInt32.returnType = Type::FullType { Float16Type.name };
+    Float16_from_UInt32.parameters = Float16_from_UInt32_args;
+    Symbol::Resolved(&Float16_from_UInt32_arg0)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&Float16_from_UInt32)->signature = "f16 f16(u32)"_c;
+    Symbol::Resolved(&Float16_from_UInt32)->name = "f16(u32)"_c;
+    Symbol::Resolved(&Float16_from_UInt32)->nameWithVarNames = "f16(val : u32)"_c;
+    Symbol::Resolved(&Float16_from_UInt32)->returnTypeSymbol = &Float16Type;
 
     /// f16 with Int32
-    Float16_convert_Int32_arg0.name = "val"_c;
-    Float16_convert_Int32_arg0.type = Type::FullType{ Int32Type.name };
-    Float16_convert_Int32.documentation = "Convert i32 to f16"_c;
-    Float16_convert_Int32.name = "f16"_c;
-    Float16_convert_Int32.compileTime = true;
-    Float16_convert_Int32.returnType = Type::FullType { Float16Type.name };
-    Float16_convert_Int32.parameters = Float16_convert_Int32_args;
-    Symbol::Resolved(&Float16_convert_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float16_convert_Int32)->signature = "f16 f16(i32)"_c;
-    Symbol::Resolved(&Float16_convert_Int32)->name = "f16(i32)"_c;
-    Symbol::Resolved(&Float16_convert_Int32)->nameWithVarNames = "f16(val : i32)"_c;
-    Symbol::Resolved(&Float16_convert_Int32)->returnTypeSymbol = &Float16Type;
+    Float16_from_Int32_arg0.name = "val"_c;
+    Float16_from_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    Float16_from_Int32.documentation = "Convert from i32 to f16"_c;
+    Float16_from_Int32.name = "f16"_c;
+    Float16_from_Int32.compileTime = true;
+    Float16_from_Int32.returnType = Type::FullType { Float16Type.name };
+    Float16_from_Int32.parameters = Float16_from_Int32_args;
+    Symbol::Resolved(&Float16_from_Int32_arg0)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&Float16_from_Int32)->signature = "f16 f16(i32)"_c;
+    Symbol::Resolved(&Float16_from_Int32)->name = "f16(i32)"_c;
+    Symbol::Resolved(&Float16_from_Int32)->nameWithVarNames = "f16(val : i32)"_c;
+    Symbol::Resolved(&Float16_from_Int32)->returnTypeSymbol = &Float16Type;
+
+    /// f16 with Bool8
+    Float16_from_Bool8_arg0.name = "val"_c;
+    Float16_from_Bool8_arg0.type = Type::FullType{ Bool8Type.name };
+    Float16_from_Bool8.documentation = "Convert from b8 to f16"_c;
+    Float16_from_Bool8.name = "f16"_c;
+    Float16_from_Bool8.compileTime = true;
+    Float16_from_Bool8.returnType = Type::FullType { Float16Type.name };
+    Float16_from_Bool8.parameters = Float16_from_Bool8_args;
+    Symbol::Resolved(&Float16_from_Bool8_arg0)->typeSymbol = &Bool8Type;
+    Symbol::Resolved(&Float16_from_Bool8)->signature = "f16 f16(b8)"_c;
+    Symbol::Resolved(&Float16_from_Bool8)->name = "f16(b8)"_c;
+    Symbol::Resolved(&Float16_from_Bool8)->nameWithVarNames = "f16(val : b8)"_c;
+    Symbol::Resolved(&Float16_from_Bool8)->returnTypeSymbol = &Float16Type;
 
     /// f16 with UInt16
-    Float16_convert_UInt16_arg0.name = "val"_c;
-    Float16_convert_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
-    Float16_convert_UInt16.documentation = "Convert u16 to f16"_c;
-    Float16_convert_UInt16.name = "f16"_c;
-    Float16_convert_UInt16.compileTime = true;
-    Float16_convert_UInt16.returnType = Type::FullType { Float16Type.name };
-    Float16_convert_UInt16.parameters = Float16_convert_UInt16_args;
-    Symbol::Resolved(&Float16_convert_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float16_convert_UInt16)->signature = "f16 f16(u16)"_c;
-    Symbol::Resolved(&Float16_convert_UInt16)->name = "f16(u16)"_c;
-    Symbol::Resolved(&Float16_convert_UInt16)->nameWithVarNames = "f16(val : u16)"_c;
-    Symbol::Resolved(&Float16_convert_UInt16)->returnTypeSymbol = &Float16Type;
+    Float16_from_UInt16_arg0.name = "val"_c;
+    Float16_from_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    Float16_from_UInt16.documentation = "Convert from u16 to f16"_c;
+    Float16_from_UInt16.name = "f16"_c;
+    Float16_from_UInt16.compileTime = true;
+    Float16_from_UInt16.returnType = Type::FullType { Float16Type.name };
+    Float16_from_UInt16.parameters = Float16_from_UInt16_args;
+    Symbol::Resolved(&Float16_from_UInt16_arg0)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&Float16_from_UInt16)->signature = "f16 f16(u16)"_c;
+    Symbol::Resolved(&Float16_from_UInt16)->name = "f16(u16)"_c;
+    Symbol::Resolved(&Float16_from_UInt16)->nameWithVarNames = "f16(val : u16)"_c;
+    Symbol::Resolved(&Float16_from_UInt16)->returnTypeSymbol = &Float16Type;
 
     /// f16 with Int16
-    Float16_convert_Int16_arg0.name = "val"_c;
-    Float16_convert_Int16_arg0.type = Type::FullType{ Int16Type.name };
-    Float16_convert_Int16.documentation = "Convert i16 to f16"_c;
-    Float16_convert_Int16.name = "f16"_c;
-    Float16_convert_Int16.compileTime = true;
-    Float16_convert_Int16.returnType = Type::FullType { Float16Type.name };
-    Float16_convert_Int16.parameters = Float16_convert_Int16_args;
-    Symbol::Resolved(&Float16_convert_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float16_convert_Int16)->signature = "f16 f16(i16)"_c;
-    Symbol::Resolved(&Float16_convert_Int16)->name = "f16(i16)"_c;
-    Symbol::Resolved(&Float16_convert_Int16)->nameWithVarNames = "f16(val : i16)"_c;
-    Symbol::Resolved(&Float16_convert_Int16)->returnTypeSymbol = &Float16Type;
+    Float16_from_Int16_arg0.name = "val"_c;
+    Float16_from_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    Float16_from_Int16.documentation = "Convert from i16 to f16"_c;
+    Float16_from_Int16.name = "f16"_c;
+    Float16_from_Int16.compileTime = true;
+    Float16_from_Int16.returnType = Type::FullType { Float16Type.name };
+    Float16_from_Int16.parameters = Float16_from_Int16_args;
+    Symbol::Resolved(&Float16_from_Int16_arg0)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&Float16_from_Int16)->signature = "f16 f16(i16)"_c;
+    Symbol::Resolved(&Float16_from_Int16)->name = "f16(i16)"_c;
+    Symbol::Resolved(&Float16_from_Int16)->nameWithVarNames = "f16(val : i16)"_c;
+    Symbol::Resolved(&Float16_from_Int16)->returnTypeSymbol = &Float16Type;
 
     /// f16 with Float16
     Float16_ctor0_arg0_Float16.name = "_arg0"_c;
@@ -2725,34 +2763,34 @@ Float16::Float16()
 Float16 Float16Type;
 
 /// u16 with Float32
-Variable UInt16_convert_Float32_arg0;
-Function UInt16_convert_Float32;
-inline constexpr std::array UInt16_convert_Float32_args = { &UInt16_convert_Float32_arg0 };
+Variable UInt16_from_Float32_arg0;
+Function UInt16_from_Float32;
+inline constexpr std::array UInt16_from_Float32_args = { &UInt16_from_Float32_arg0 };
 
 /// u16 with UInt32
-Variable UInt16_convert_UInt32_arg0;
-Function UInt16_convert_UInt32;
-inline constexpr std::array UInt16_convert_UInt32_args = { &UInt16_convert_UInt32_arg0 };
+Variable UInt16_from_UInt32_arg0;
+Function UInt16_from_UInt32;
+inline constexpr std::array UInt16_from_UInt32_args = { &UInt16_from_UInt32_arg0 };
 
 /// u16 with Int32
-Variable UInt16_convert_Int32_arg0;
-Function UInt16_convert_Int32;
-inline constexpr std::array UInt16_convert_Int32_args = { &UInt16_convert_Int32_arg0 };
+Variable UInt16_from_Int32_arg0;
+Function UInt16_from_Int32;
+inline constexpr std::array UInt16_from_Int32_args = { &UInt16_from_Int32_arg0 };
 
 /// u16 with Bool8
-Variable UInt16_convert_Bool8_arg0;
-Function UInt16_convert_Bool8;
-inline constexpr std::array UInt16_convert_Bool8_args = { &UInt16_convert_Bool8_arg0 };
+Variable UInt16_from_Bool8_arg0;
+Function UInt16_from_Bool8;
+inline constexpr std::array UInt16_from_Bool8_args = { &UInt16_from_Bool8_arg0 };
 
 /// u16 with Float16
-Variable UInt16_convert_Float16_arg0;
-Function UInt16_convert_Float16;
-inline constexpr std::array UInt16_convert_Float16_args = { &UInt16_convert_Float16_arg0 };
+Variable UInt16_from_Float16_arg0;
+Function UInt16_from_Float16;
+inline constexpr std::array UInt16_from_Float16_args = { &UInt16_from_Float16_arg0 };
 
 /// u16 with Int16
-Variable UInt16_convert_Int16_arg0;
-Function UInt16_convert_Int16;
-inline constexpr std::array UInt16_convert_Int16_args = { &UInt16_convert_Int16_arg0 };
+Variable UInt16_from_Int16_arg0;
+Function UInt16_from_Int16;
+inline constexpr std::array UInt16_from_Int16_args = { &UInt16_from_Int16_arg0 };
 
 /// u16 with UInt16
 Variable UInt16_ctor0_arg0_UInt16;
@@ -2915,88 +2953,88 @@ UInt16::UInt16()
     this->builtin = true;
 
     /// u16 with Float32
-    UInt16_convert_Float32_arg0.name = "val"_c;
-    UInt16_convert_Float32_arg0.type = Type::FullType{ Float32Type.name };
-    UInt16_convert_Float32.documentation = "Convert f32 to u16"_c;
-    UInt16_convert_Float32.name = "u16"_c;
-    UInt16_convert_Float32.compileTime = true;
-    UInt16_convert_Float32.returnType = Type::FullType { UInt16Type.name };
-    UInt16_convert_Float32.parameters = UInt16_convert_Float32_args;
-    Symbol::Resolved(&UInt16_convert_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&UInt16_convert_Float32)->signature = "u16 u16(f32)"_c;
-    Symbol::Resolved(&UInt16_convert_Float32)->name = "u16(f32)"_c;
-    Symbol::Resolved(&UInt16_convert_Float32)->nameWithVarNames = "u16(val : f32)"_c;
-    Symbol::Resolved(&UInt16_convert_Float32)->returnTypeSymbol = &UInt16Type;
+    UInt16_from_Float32_arg0.name = "val"_c;
+    UInt16_from_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    UInt16_from_Float32.documentation = "Convert from f32 to u16"_c;
+    UInt16_from_Float32.name = "u16"_c;
+    UInt16_from_Float32.compileTime = true;
+    UInt16_from_Float32.returnType = Type::FullType { UInt16Type.name };
+    UInt16_from_Float32.parameters = UInt16_from_Float32_args;
+    Symbol::Resolved(&UInt16_from_Float32_arg0)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&UInt16_from_Float32)->signature = "u16 u16(f32)"_c;
+    Symbol::Resolved(&UInt16_from_Float32)->name = "u16(f32)"_c;
+    Symbol::Resolved(&UInt16_from_Float32)->nameWithVarNames = "u16(val : f32)"_c;
+    Symbol::Resolved(&UInt16_from_Float32)->returnTypeSymbol = &UInt16Type;
 
     /// u16 with UInt32
-    UInt16_convert_UInt32_arg0.name = "val"_c;
-    UInt16_convert_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
-    UInt16_convert_UInt32.documentation = "Convert u32 to u16"_c;
-    UInt16_convert_UInt32.name = "u16"_c;
-    UInt16_convert_UInt32.compileTime = true;
-    UInt16_convert_UInt32.returnType = Type::FullType { UInt16Type.name };
-    UInt16_convert_UInt32.parameters = UInt16_convert_UInt32_args;
-    Symbol::Resolved(&UInt16_convert_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&UInt16_convert_UInt32)->signature = "u16 u16(u32)"_c;
-    Symbol::Resolved(&UInt16_convert_UInt32)->name = "u16(u32)"_c;
-    Symbol::Resolved(&UInt16_convert_UInt32)->nameWithVarNames = "u16(val : u32)"_c;
-    Symbol::Resolved(&UInt16_convert_UInt32)->returnTypeSymbol = &UInt16Type;
+    UInt16_from_UInt32_arg0.name = "val"_c;
+    UInt16_from_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    UInt16_from_UInt32.documentation = "Convert from u32 to u16"_c;
+    UInt16_from_UInt32.name = "u16"_c;
+    UInt16_from_UInt32.compileTime = true;
+    UInt16_from_UInt32.returnType = Type::FullType { UInt16Type.name };
+    UInt16_from_UInt32.parameters = UInt16_from_UInt32_args;
+    Symbol::Resolved(&UInt16_from_UInt32_arg0)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&UInt16_from_UInt32)->signature = "u16 u16(u32)"_c;
+    Symbol::Resolved(&UInt16_from_UInt32)->name = "u16(u32)"_c;
+    Symbol::Resolved(&UInt16_from_UInt32)->nameWithVarNames = "u16(val : u32)"_c;
+    Symbol::Resolved(&UInt16_from_UInt32)->returnTypeSymbol = &UInt16Type;
 
     /// u16 with Int32
-    UInt16_convert_Int32_arg0.name = "val"_c;
-    UInt16_convert_Int32_arg0.type = Type::FullType{ Int32Type.name };
-    UInt16_convert_Int32.documentation = "Convert i32 to u16"_c;
-    UInt16_convert_Int32.name = "u16"_c;
-    UInt16_convert_Int32.compileTime = true;
-    UInt16_convert_Int32.returnType = Type::FullType { UInt16Type.name };
-    UInt16_convert_Int32.parameters = UInt16_convert_Int32_args;
-    Symbol::Resolved(&UInt16_convert_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&UInt16_convert_Int32)->signature = "u16 u16(i32)"_c;
-    Symbol::Resolved(&UInt16_convert_Int32)->name = "u16(i32)"_c;
-    Symbol::Resolved(&UInt16_convert_Int32)->nameWithVarNames = "u16(val : i32)"_c;
-    Symbol::Resolved(&UInt16_convert_Int32)->returnTypeSymbol = &UInt16Type;
+    UInt16_from_Int32_arg0.name = "val"_c;
+    UInt16_from_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    UInt16_from_Int32.documentation = "Convert from i32 to u16"_c;
+    UInt16_from_Int32.name = "u16"_c;
+    UInt16_from_Int32.compileTime = true;
+    UInt16_from_Int32.returnType = Type::FullType { UInt16Type.name };
+    UInt16_from_Int32.parameters = UInt16_from_Int32_args;
+    Symbol::Resolved(&UInt16_from_Int32_arg0)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&UInt16_from_Int32)->signature = "u16 u16(i32)"_c;
+    Symbol::Resolved(&UInt16_from_Int32)->name = "u16(i32)"_c;
+    Symbol::Resolved(&UInt16_from_Int32)->nameWithVarNames = "u16(val : i32)"_c;
+    Symbol::Resolved(&UInt16_from_Int32)->returnTypeSymbol = &UInt16Type;
 
     /// u16 with Bool8
-    UInt16_convert_Bool8_arg0.name = "val"_c;
-    UInt16_convert_Bool8_arg0.type = Type::FullType{ Bool8Type.name };
-    UInt16_convert_Bool8.documentation = "Convert b8 to u16"_c;
-    UInt16_convert_Bool8.name = "u16"_c;
-    UInt16_convert_Bool8.compileTime = true;
-    UInt16_convert_Bool8.returnType = Type::FullType { UInt16Type.name };
-    UInt16_convert_Bool8.parameters = UInt16_convert_Bool8_args;
-    Symbol::Resolved(&UInt16_convert_Bool8_arg0)->typeSymbol = &Bool8Type;
-    Symbol::Resolved(&UInt16_convert_Bool8)->signature = "u16 u16(b8)"_c;
-    Symbol::Resolved(&UInt16_convert_Bool8)->name = "u16(b8)"_c;
-    Symbol::Resolved(&UInt16_convert_Bool8)->nameWithVarNames = "u16(val : b8)"_c;
-    Symbol::Resolved(&UInt16_convert_Bool8)->returnTypeSymbol = &UInt16Type;
+    UInt16_from_Bool8_arg0.name = "val"_c;
+    UInt16_from_Bool8_arg0.type = Type::FullType{ Bool8Type.name };
+    UInt16_from_Bool8.documentation = "Convert from b8 to u16"_c;
+    UInt16_from_Bool8.name = "u16"_c;
+    UInt16_from_Bool8.compileTime = true;
+    UInt16_from_Bool8.returnType = Type::FullType { UInt16Type.name };
+    UInt16_from_Bool8.parameters = UInt16_from_Bool8_args;
+    Symbol::Resolved(&UInt16_from_Bool8_arg0)->typeSymbol = &Bool8Type;
+    Symbol::Resolved(&UInt16_from_Bool8)->signature = "u16 u16(b8)"_c;
+    Symbol::Resolved(&UInt16_from_Bool8)->name = "u16(b8)"_c;
+    Symbol::Resolved(&UInt16_from_Bool8)->nameWithVarNames = "u16(val : b8)"_c;
+    Symbol::Resolved(&UInt16_from_Bool8)->returnTypeSymbol = &UInt16Type;
 
     /// u16 with Float16
-    UInt16_convert_Float16_arg0.name = "val"_c;
-    UInt16_convert_Float16_arg0.type = Type::FullType{ Float16Type.name };
-    UInt16_convert_Float16.documentation = "Convert f16 to u16"_c;
-    UInt16_convert_Float16.name = "u16"_c;
-    UInt16_convert_Float16.compileTime = true;
-    UInt16_convert_Float16.returnType = Type::FullType { UInt16Type.name };
-    UInt16_convert_Float16.parameters = UInt16_convert_Float16_args;
-    Symbol::Resolved(&UInt16_convert_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&UInt16_convert_Float16)->signature = "u16 u16(f16)"_c;
-    Symbol::Resolved(&UInt16_convert_Float16)->name = "u16(f16)"_c;
-    Symbol::Resolved(&UInt16_convert_Float16)->nameWithVarNames = "u16(val : f16)"_c;
-    Symbol::Resolved(&UInt16_convert_Float16)->returnTypeSymbol = &UInt16Type;
+    UInt16_from_Float16_arg0.name = "val"_c;
+    UInt16_from_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    UInt16_from_Float16.documentation = "Convert from f16 to u16"_c;
+    UInt16_from_Float16.name = "u16"_c;
+    UInt16_from_Float16.compileTime = true;
+    UInt16_from_Float16.returnType = Type::FullType { UInt16Type.name };
+    UInt16_from_Float16.parameters = UInt16_from_Float16_args;
+    Symbol::Resolved(&UInt16_from_Float16_arg0)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&UInt16_from_Float16)->signature = "u16 u16(f16)"_c;
+    Symbol::Resolved(&UInt16_from_Float16)->name = "u16(f16)"_c;
+    Symbol::Resolved(&UInt16_from_Float16)->nameWithVarNames = "u16(val : f16)"_c;
+    Symbol::Resolved(&UInt16_from_Float16)->returnTypeSymbol = &UInt16Type;
 
     /// u16 with Int16
-    UInt16_convert_Int16_arg0.name = "val"_c;
-    UInt16_convert_Int16_arg0.type = Type::FullType{ Int16Type.name };
-    UInt16_convert_Int16.documentation = "Convert i16 to u16"_c;
-    UInt16_convert_Int16.name = "u16"_c;
-    UInt16_convert_Int16.compileTime = true;
-    UInt16_convert_Int16.returnType = Type::FullType { UInt16Type.name };
-    UInt16_convert_Int16.parameters = UInt16_convert_Int16_args;
-    Symbol::Resolved(&UInt16_convert_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&UInt16_convert_Int16)->signature = "u16 u16(i16)"_c;
-    Symbol::Resolved(&UInt16_convert_Int16)->name = "u16(i16)"_c;
-    Symbol::Resolved(&UInt16_convert_Int16)->nameWithVarNames = "u16(val : i16)"_c;
-    Symbol::Resolved(&UInt16_convert_Int16)->returnTypeSymbol = &UInt16Type;
+    UInt16_from_Int16_arg0.name = "val"_c;
+    UInt16_from_Int16_arg0.type = Type::FullType{ Int16Type.name };
+    UInt16_from_Int16.documentation = "Convert from i16 to u16"_c;
+    UInt16_from_Int16.name = "u16"_c;
+    UInt16_from_Int16.compileTime = true;
+    UInt16_from_Int16.returnType = Type::FullType { UInt16Type.name };
+    UInt16_from_Int16.parameters = UInt16_from_Int16_args;
+    Symbol::Resolved(&UInt16_from_Int16_arg0)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&UInt16_from_Int16)->signature = "u16 u16(i16)"_c;
+    Symbol::Resolved(&UInt16_from_Int16)->name = "u16(i16)"_c;
+    Symbol::Resolved(&UInt16_from_Int16)->nameWithVarNames = "u16(val : i16)"_c;
+    Symbol::Resolved(&UInt16_from_Int16)->returnTypeSymbol = &UInt16Type;
 
     /// u16 with UInt16
     UInt16_ctor0_arg0_UInt16.name = "_arg0"_c;
@@ -3423,34 +3461,34 @@ UInt16::UInt16()
 UInt16 UInt16Type;
 
 /// i16 with Float32
-Variable Int16_convert_Float32_arg0;
-Function Int16_convert_Float32;
-inline constexpr std::array Int16_convert_Float32_args = { &Int16_convert_Float32_arg0 };
+Variable Int16_from_Float32_arg0;
+Function Int16_from_Float32;
+inline constexpr std::array Int16_from_Float32_args = { &Int16_from_Float32_arg0 };
 
 /// i16 with UInt32
-Variable Int16_convert_UInt32_arg0;
-Function Int16_convert_UInt32;
-inline constexpr std::array Int16_convert_UInt32_args = { &Int16_convert_UInt32_arg0 };
+Variable Int16_from_UInt32_arg0;
+Function Int16_from_UInt32;
+inline constexpr std::array Int16_from_UInt32_args = { &Int16_from_UInt32_arg0 };
 
 /// i16 with Int32
-Variable Int16_convert_Int32_arg0;
-Function Int16_convert_Int32;
-inline constexpr std::array Int16_convert_Int32_args = { &Int16_convert_Int32_arg0 };
+Variable Int16_from_Int32_arg0;
+Function Int16_from_Int32;
+inline constexpr std::array Int16_from_Int32_args = { &Int16_from_Int32_arg0 };
 
 /// i16 with Bool8
-Variable Int16_convert_Bool8_arg0;
-Function Int16_convert_Bool8;
-inline constexpr std::array Int16_convert_Bool8_args = { &Int16_convert_Bool8_arg0 };
+Variable Int16_from_Bool8_arg0;
+Function Int16_from_Bool8;
+inline constexpr std::array Int16_from_Bool8_args = { &Int16_from_Bool8_arg0 };
 
 /// i16 with Float16
-Variable Int16_convert_Float16_arg0;
-Function Int16_convert_Float16;
-inline constexpr std::array Int16_convert_Float16_args = { &Int16_convert_Float16_arg0 };
+Variable Int16_from_Float16_arg0;
+Function Int16_from_Float16;
+inline constexpr std::array Int16_from_Float16_args = { &Int16_from_Float16_arg0 };
 
 /// i16 with UInt16
-Variable Int16_convert_UInt16_arg0;
-Function Int16_convert_UInt16;
-inline constexpr std::array Int16_convert_UInt16_args = { &Int16_convert_UInt16_arg0 };
+Variable Int16_from_UInt16_arg0;
+Function Int16_from_UInt16;
+inline constexpr std::array Int16_from_UInt16_args = { &Int16_from_UInt16_arg0 };
 
 /// i16 with Int16
 Variable Int16_ctor0_arg0_Int16;
@@ -3613,88 +3651,88 @@ Int16::Int16()
     this->builtin = true;
 
     /// i16 with Float32
-    Int16_convert_Float32_arg0.name = "val"_c;
-    Int16_convert_Float32_arg0.type = Type::FullType{ Float32Type.name };
-    Int16_convert_Float32.documentation = "Convert f32 to i16"_c;
-    Int16_convert_Float32.name = "i16"_c;
-    Int16_convert_Float32.compileTime = true;
-    Int16_convert_Float32.returnType = Type::FullType { Int16Type.name };
-    Int16_convert_Float32.parameters = Int16_convert_Float32_args;
-    Symbol::Resolved(&Int16_convert_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Int16_convert_Float32)->signature = "i16 i16(f32)"_c;
-    Symbol::Resolved(&Int16_convert_Float32)->name = "i16(f32)"_c;
-    Symbol::Resolved(&Int16_convert_Float32)->nameWithVarNames = "i16(val : f32)"_c;
-    Symbol::Resolved(&Int16_convert_Float32)->returnTypeSymbol = &Int16Type;
+    Int16_from_Float32_arg0.name = "val"_c;
+    Int16_from_Float32_arg0.type = Type::FullType{ Float32Type.name };
+    Int16_from_Float32.documentation = "Convert from f32 to i16"_c;
+    Int16_from_Float32.name = "i16"_c;
+    Int16_from_Float32.compileTime = true;
+    Int16_from_Float32.returnType = Type::FullType { Int16Type.name };
+    Int16_from_Float32.parameters = Int16_from_Float32_args;
+    Symbol::Resolved(&Int16_from_Float32_arg0)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&Int16_from_Float32)->signature = "i16 i16(f32)"_c;
+    Symbol::Resolved(&Int16_from_Float32)->name = "i16(f32)"_c;
+    Symbol::Resolved(&Int16_from_Float32)->nameWithVarNames = "i16(val : f32)"_c;
+    Symbol::Resolved(&Int16_from_Float32)->returnTypeSymbol = &Int16Type;
 
     /// i16 with UInt32
-    Int16_convert_UInt32_arg0.name = "val"_c;
-    Int16_convert_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
-    Int16_convert_UInt32.documentation = "Convert u32 to i16"_c;
-    Int16_convert_UInt32.name = "i16"_c;
-    Int16_convert_UInt32.compileTime = true;
-    Int16_convert_UInt32.returnType = Type::FullType { Int16Type.name };
-    Int16_convert_UInt32.parameters = Int16_convert_UInt32_args;
-    Symbol::Resolved(&Int16_convert_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Int16_convert_UInt32)->signature = "i16 i16(u32)"_c;
-    Symbol::Resolved(&Int16_convert_UInt32)->name = "i16(u32)"_c;
-    Symbol::Resolved(&Int16_convert_UInt32)->nameWithVarNames = "i16(val : u32)"_c;
-    Symbol::Resolved(&Int16_convert_UInt32)->returnTypeSymbol = &Int16Type;
+    Int16_from_UInt32_arg0.name = "val"_c;
+    Int16_from_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
+    Int16_from_UInt32.documentation = "Convert from u32 to i16"_c;
+    Int16_from_UInt32.name = "i16"_c;
+    Int16_from_UInt32.compileTime = true;
+    Int16_from_UInt32.returnType = Type::FullType { Int16Type.name };
+    Int16_from_UInt32.parameters = Int16_from_UInt32_args;
+    Symbol::Resolved(&Int16_from_UInt32_arg0)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&Int16_from_UInt32)->signature = "i16 i16(u32)"_c;
+    Symbol::Resolved(&Int16_from_UInt32)->name = "i16(u32)"_c;
+    Symbol::Resolved(&Int16_from_UInt32)->nameWithVarNames = "i16(val : u32)"_c;
+    Symbol::Resolved(&Int16_from_UInt32)->returnTypeSymbol = &Int16Type;
 
     /// i16 with Int32
-    Int16_convert_Int32_arg0.name = "val"_c;
-    Int16_convert_Int32_arg0.type = Type::FullType{ Int32Type.name };
-    Int16_convert_Int32.documentation = "Convert i32 to i16"_c;
-    Int16_convert_Int32.name = "i16"_c;
-    Int16_convert_Int32.compileTime = true;
-    Int16_convert_Int32.returnType = Type::FullType { Int16Type.name };
-    Int16_convert_Int32.parameters = Int16_convert_Int32_args;
-    Symbol::Resolved(&Int16_convert_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Int16_convert_Int32)->signature = "i16 i16(i32)"_c;
-    Symbol::Resolved(&Int16_convert_Int32)->name = "i16(i32)"_c;
-    Symbol::Resolved(&Int16_convert_Int32)->nameWithVarNames = "i16(val : i32)"_c;
-    Symbol::Resolved(&Int16_convert_Int32)->returnTypeSymbol = &Int16Type;
+    Int16_from_Int32_arg0.name = "val"_c;
+    Int16_from_Int32_arg0.type = Type::FullType{ Int32Type.name };
+    Int16_from_Int32.documentation = "Convert from i32 to i16"_c;
+    Int16_from_Int32.name = "i16"_c;
+    Int16_from_Int32.compileTime = true;
+    Int16_from_Int32.returnType = Type::FullType { Int16Type.name };
+    Int16_from_Int32.parameters = Int16_from_Int32_args;
+    Symbol::Resolved(&Int16_from_Int32_arg0)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&Int16_from_Int32)->signature = "i16 i16(i32)"_c;
+    Symbol::Resolved(&Int16_from_Int32)->name = "i16(i32)"_c;
+    Symbol::Resolved(&Int16_from_Int32)->nameWithVarNames = "i16(val : i32)"_c;
+    Symbol::Resolved(&Int16_from_Int32)->returnTypeSymbol = &Int16Type;
 
     /// i16 with Bool8
-    Int16_convert_Bool8_arg0.name = "val"_c;
-    Int16_convert_Bool8_arg0.type = Type::FullType{ Bool8Type.name };
-    Int16_convert_Bool8.documentation = "Convert b8 to i16"_c;
-    Int16_convert_Bool8.name = "i16"_c;
-    Int16_convert_Bool8.compileTime = true;
-    Int16_convert_Bool8.returnType = Type::FullType { Int16Type.name };
-    Int16_convert_Bool8.parameters = Int16_convert_Bool8_args;
-    Symbol::Resolved(&Int16_convert_Bool8_arg0)->typeSymbol = &Bool8Type;
-    Symbol::Resolved(&Int16_convert_Bool8)->signature = "i16 i16(b8)"_c;
-    Symbol::Resolved(&Int16_convert_Bool8)->name = "i16(b8)"_c;
-    Symbol::Resolved(&Int16_convert_Bool8)->nameWithVarNames = "i16(val : b8)"_c;
-    Symbol::Resolved(&Int16_convert_Bool8)->returnTypeSymbol = &Int16Type;
+    Int16_from_Bool8_arg0.name = "val"_c;
+    Int16_from_Bool8_arg0.type = Type::FullType{ Bool8Type.name };
+    Int16_from_Bool8.documentation = "Convert from b8 to i16"_c;
+    Int16_from_Bool8.name = "i16"_c;
+    Int16_from_Bool8.compileTime = true;
+    Int16_from_Bool8.returnType = Type::FullType { Int16Type.name };
+    Int16_from_Bool8.parameters = Int16_from_Bool8_args;
+    Symbol::Resolved(&Int16_from_Bool8_arg0)->typeSymbol = &Bool8Type;
+    Symbol::Resolved(&Int16_from_Bool8)->signature = "i16 i16(b8)"_c;
+    Symbol::Resolved(&Int16_from_Bool8)->name = "i16(b8)"_c;
+    Symbol::Resolved(&Int16_from_Bool8)->nameWithVarNames = "i16(val : b8)"_c;
+    Symbol::Resolved(&Int16_from_Bool8)->returnTypeSymbol = &Int16Type;
 
     /// i16 with Float16
-    Int16_convert_Float16_arg0.name = "val"_c;
-    Int16_convert_Float16_arg0.type = Type::FullType{ Float16Type.name };
-    Int16_convert_Float16.documentation = "Convert f16 to i16"_c;
-    Int16_convert_Float16.name = "i16"_c;
-    Int16_convert_Float16.compileTime = true;
-    Int16_convert_Float16.returnType = Type::FullType { Int16Type.name };
-    Int16_convert_Float16.parameters = Int16_convert_Float16_args;
-    Symbol::Resolved(&Int16_convert_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Int16_convert_Float16)->signature = "i16 i16(f16)"_c;
-    Symbol::Resolved(&Int16_convert_Float16)->name = "i16(f16)"_c;
-    Symbol::Resolved(&Int16_convert_Float16)->nameWithVarNames = "i16(val : f16)"_c;
-    Symbol::Resolved(&Int16_convert_Float16)->returnTypeSymbol = &Int16Type;
+    Int16_from_Float16_arg0.name = "val"_c;
+    Int16_from_Float16_arg0.type = Type::FullType{ Float16Type.name };
+    Int16_from_Float16.documentation = "Convert from f16 to i16"_c;
+    Int16_from_Float16.name = "i16"_c;
+    Int16_from_Float16.compileTime = true;
+    Int16_from_Float16.returnType = Type::FullType { Int16Type.name };
+    Int16_from_Float16.parameters = Int16_from_Float16_args;
+    Symbol::Resolved(&Int16_from_Float16_arg0)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&Int16_from_Float16)->signature = "i16 i16(f16)"_c;
+    Symbol::Resolved(&Int16_from_Float16)->name = "i16(f16)"_c;
+    Symbol::Resolved(&Int16_from_Float16)->nameWithVarNames = "i16(val : f16)"_c;
+    Symbol::Resolved(&Int16_from_Float16)->returnTypeSymbol = &Int16Type;
 
     /// i16 with UInt16
-    Int16_convert_UInt16_arg0.name = "val"_c;
-    Int16_convert_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
-    Int16_convert_UInt16.documentation = "Convert u16 to i16"_c;
-    Int16_convert_UInt16.name = "i16"_c;
-    Int16_convert_UInt16.compileTime = true;
-    Int16_convert_UInt16.returnType = Type::FullType { Int16Type.name };
-    Int16_convert_UInt16.parameters = Int16_convert_UInt16_args;
-    Symbol::Resolved(&Int16_convert_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Int16_convert_UInt16)->signature = "i16 i16(u16)"_c;
-    Symbol::Resolved(&Int16_convert_UInt16)->name = "i16(u16)"_c;
-    Symbol::Resolved(&Int16_convert_UInt16)->nameWithVarNames = "i16(val : u16)"_c;
-    Symbol::Resolved(&Int16_convert_UInt16)->returnTypeSymbol = &Int16Type;
+    Int16_from_UInt16_arg0.name = "val"_c;
+    Int16_from_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
+    Int16_from_UInt16.documentation = "Convert from u16 to i16"_c;
+    Int16_from_UInt16.name = "i16"_c;
+    Int16_from_UInt16.compileTime = true;
+    Int16_from_UInt16.returnType = Type::FullType { Int16Type.name };
+    Int16_from_UInt16.parameters = Int16_from_UInt16_args;
+    Symbol::Resolved(&Int16_from_UInt16_arg0)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&Int16_from_UInt16)->signature = "i16 i16(u16)"_c;
+    Symbol::Resolved(&Int16_from_UInt16)->name = "i16(u16)"_c;
+    Symbol::Resolved(&Int16_from_UInt16)->nameWithVarNames = "i16(val : u16)"_c;
+    Symbol::Resolved(&Int16_from_UInt16)->returnTypeSymbol = &Int16Type;
 
     /// i16 with Int16
     Int16_ctor0_arg0_Int16.name = "_arg0"_c;
@@ -4121,9 +4159,9 @@ Int16::Int16()
 Int16 Int16Type;
 
 /// f32x2 with Float32x2
-Variable Float32x2_convert_Float32x2_arg0;
-Function Float32x2_convert_Float32x2;
-inline constexpr std::array Float32x2_convert_Float32x2_args = { &Float32x2_convert_Float32x2_arg0 };
+Variable Float32x2_from_Float32x2_arg0;
+Function Float32x2_from_Float32x2;
+inline constexpr std::array Float32x2_from_Float32x2_args = { &Float32x2_from_Float32x2_arg0 };
 
 /// f32x2 with Float32
 Variable Float32x2_splat_Float32_arg0;
@@ -4131,9 +4169,9 @@ Function Float32x2_splat_Float32;
 inline constexpr std::array Float32x2_splat_Float32_args = { &Float32x2_splat_Float32_arg0 };
 
 /// f32x2 with UInt32x2
-Variable Float32x2_convert_UInt32x2_arg0;
-Function Float32x2_convert_UInt32x2;
-inline constexpr std::array Float32x2_convert_UInt32x2_args = { &Float32x2_convert_UInt32x2_arg0 };
+Variable Float32x2_from_UInt32x2_arg0;
+Function Float32x2_from_UInt32x2;
+inline constexpr std::array Float32x2_from_UInt32x2_args = { &Float32x2_from_UInt32x2_arg0 };
 
 /// f32x2 with UInt32
 Variable Float32x2_splat_UInt32_arg0;
@@ -4141,19 +4179,29 @@ Function Float32x2_splat_UInt32;
 inline constexpr std::array Float32x2_splat_UInt32_args = { &Float32x2_splat_UInt32_arg0 };
 
 /// f32x2 with Int32x2
-Variable Float32x2_convert_Int32x2_arg0;
-Function Float32x2_convert_Int32x2;
-inline constexpr std::array Float32x2_convert_Int32x2_args = { &Float32x2_convert_Int32x2_arg0 };
+Variable Float32x2_from_Int32x2_arg0;
+Function Float32x2_from_Int32x2;
+inline constexpr std::array Float32x2_from_Int32x2_args = { &Float32x2_from_Int32x2_arg0 };
 
 /// f32x2 with Int32
 Variable Float32x2_splat_Int32_arg0;
 Function Float32x2_splat_Int32;
 inline constexpr std::array Float32x2_splat_Int32_args = { &Float32x2_splat_Int32_arg0 };
 
+/// f32x2 with Bool8x2
+Variable Float32x2_from_Bool8x2_arg0;
+Function Float32x2_from_Bool8x2;
+inline constexpr std::array Float32x2_from_Bool8x2_args = { &Float32x2_from_Bool8x2_arg0 };
+
+/// f32x2 with Bool8
+Variable Float32x2_splat_Bool8_arg0;
+Function Float32x2_splat_Bool8;
+inline constexpr std::array Float32x2_splat_Bool8_args = { &Float32x2_splat_Bool8_arg0 };
+
 /// f32x2 with Float16x2
-Variable Float32x2_convert_Float16x2_arg0;
-Function Float32x2_convert_Float16x2;
-inline constexpr std::array Float32x2_convert_Float16x2_args = { &Float32x2_convert_Float16x2_arg0 };
+Variable Float32x2_from_Float16x2_arg0;
+Function Float32x2_from_Float16x2;
+inline constexpr std::array Float32x2_from_Float16x2_args = { &Float32x2_from_Float16x2_arg0 };
 
 /// f32x2 with Float16
 Variable Float32x2_splat_Float16_arg0;
@@ -4161,9 +4209,9 @@ Function Float32x2_splat_Float16;
 inline constexpr std::array Float32x2_splat_Float16_args = { &Float32x2_splat_Float16_arg0 };
 
 /// f32x2 with UInt16x2
-Variable Float32x2_convert_UInt16x2_arg0;
-Function Float32x2_convert_UInt16x2;
-inline constexpr std::array Float32x2_convert_UInt16x2_args = { &Float32x2_convert_UInt16x2_arg0 };
+Variable Float32x2_from_UInt16x2_arg0;
+Function Float32x2_from_UInt16x2;
+inline constexpr std::array Float32x2_from_UInt16x2_args = { &Float32x2_from_UInt16x2_arg0 };
 
 /// f32x2 with UInt16
 Variable Float32x2_splat_UInt16_arg0;
@@ -4171,9 +4219,9 @@ Function Float32x2_splat_UInt16;
 inline constexpr std::array Float32x2_splat_UInt16_args = { &Float32x2_splat_UInt16_arg0 };
 
 /// f32x2 with Int16x2
-Variable Float32x2_convert_Int16x2_arg0;
-Function Float32x2_convert_Int16x2;
-inline constexpr std::array Float32x2_convert_Int16x2_args = { &Float32x2_convert_Int16x2_arg0 };
+Variable Float32x2_from_Int16x2_arg0;
+Function Float32x2_from_Int16x2;
+inline constexpr std::array Float32x2_from_Int16x2_args = { &Float32x2_from_Int16x2_arg0 };
 
 /// f32x2 with Int16
 Variable Float32x2_splat_Int16_arg0;
@@ -4337,18 +4385,18 @@ Float32x2::Float32x2()
     this->builtin = true;
 
     /// f32x2 with Float32x2
-    Float32x2_convert_Float32x2_arg0.name = "val"_c;
-    Float32x2_convert_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
-    Float32x2_convert_Float32x2.documentation = "Convert f32x2 to f32x2"_c;
-    Float32x2_convert_Float32x2.name = "f32x2"_c;
-    Float32x2_convert_Float32x2.compileTime = true;
-    Float32x2_convert_Float32x2.returnType = Type::FullType { Float32x2Type.name };
-    Float32x2_convert_Float32x2.parameters = Float32x2_convert_Float32x2_args;
-    Symbol::Resolved(&Float32x2_convert_Float32x2_arg0)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&Float32x2_convert_Float32x2)->signature = "f32x2 f32x2(f32x2)"_c;
-    Symbol::Resolved(&Float32x2_convert_Float32x2)->name = "f32x2(f32x2)"_c;
-    Symbol::Resolved(&Float32x2_convert_Float32x2)->nameWithVarNames = "f32x2(val : f32x2)"_c;
-    Symbol::Resolved(&Float32x2_convert_Float32x2)->returnTypeSymbol = &Float32x2Type;
+    Float32x2_from_Float32x2_arg0.name = "val"_c;
+    Float32x2_from_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
+    Float32x2_from_Float32x2.documentation = "Convert from f32x2 to f32x2"_c;
+    Float32x2_from_Float32x2.name = "f32x2"_c;
+    Float32x2_from_Float32x2.compileTime = true;
+    Float32x2_from_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    Float32x2_from_Float32x2.parameters = Float32x2_from_Float32x2_args;
+    Symbol::Resolved(&Float32x2_from_Float32x2_arg0)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&Float32x2_from_Float32x2)->signature = "f32x2 f32x2(f32x2)"_c;
+    Symbol::Resolved(&Float32x2_from_Float32x2)->name = "f32x2(f32x2)"_c;
+    Symbol::Resolved(&Float32x2_from_Float32x2)->nameWithVarNames = "f32x2(val : f32x2)"_c;
+    Symbol::Resolved(&Float32x2_from_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
     /// f32x2 with Float32
     Float32x2_splat_Float32_arg0.name = "val"_c;
@@ -4365,18 +4413,18 @@ Float32x2::Float32x2()
     Symbol::Resolved(&Float32x2_splat_Float32)->returnTypeSymbol = &Float32x2Type;
 
     /// f32x2 with UInt32x2
-    Float32x2_convert_UInt32x2_arg0.name = "val"_c;
-    Float32x2_convert_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
-    Float32x2_convert_UInt32x2.documentation = "Convert u32x2 to f32x2"_c;
-    Float32x2_convert_UInt32x2.name = "f32x2"_c;
-    Float32x2_convert_UInt32x2.compileTime = true;
-    Float32x2_convert_UInt32x2.returnType = Type::FullType { Float32x2Type.name };
-    Float32x2_convert_UInt32x2.parameters = Float32x2_convert_UInt32x2_args;
-    Symbol::Resolved(&Float32x2_convert_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
-    Symbol::Resolved(&Float32x2_convert_UInt32x2)->signature = "f32x2 f32x2(u32x2)"_c;
-    Symbol::Resolved(&Float32x2_convert_UInt32x2)->name = "f32x2(u32x2)"_c;
-    Symbol::Resolved(&Float32x2_convert_UInt32x2)->nameWithVarNames = "f32x2(val : u32x2)"_c;
-    Symbol::Resolved(&Float32x2_convert_UInt32x2)->returnTypeSymbol = &Float32x2Type;
+    Float32x2_from_UInt32x2_arg0.name = "val"_c;
+    Float32x2_from_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
+    Float32x2_from_UInt32x2.documentation = "Convert from u32x2 to f32x2"_c;
+    Float32x2_from_UInt32x2.name = "f32x2"_c;
+    Float32x2_from_UInt32x2.compileTime = true;
+    Float32x2_from_UInt32x2.returnType = Type::FullType { Float32x2Type.name };
+    Float32x2_from_UInt32x2.parameters = Float32x2_from_UInt32x2_args;
+    Symbol::Resolved(&Float32x2_from_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&Float32x2_from_UInt32x2)->signature = "f32x2 f32x2(u32x2)"_c;
+    Symbol::Resolved(&Float32x2_from_UInt32x2)->name = "f32x2(u32x2)"_c;
+    Symbol::Resolved(&Float32x2_from_UInt32x2)->nameWithVarNames = "f32x2(val : u32x2)"_c;
+    Symbol::Resolved(&Float32x2_from_UInt32x2)->returnTypeSymbol = &Float32x2Type;
 
     /// f32x2 with UInt32
     Float32x2_splat_UInt32_arg0.name = "val"_c;
@@ -4393,18 +4441,18 @@ Float32x2::Float32x2()
     Symbol::Resolved(&Float32x2_splat_UInt32)->returnTypeSymbol = &Float32x2Type;
 
     /// f32x2 with Int32x2
-    Float32x2_convert_Int32x2_arg0.name = "val"_c;
-    Float32x2_convert_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
-    Float32x2_convert_Int32x2.documentation = "Convert i32x2 to f32x2"_c;
-    Float32x2_convert_Int32x2.name = "f32x2"_c;
-    Float32x2_convert_Int32x2.compileTime = true;
-    Float32x2_convert_Int32x2.returnType = Type::FullType { Float32x2Type.name };
-    Float32x2_convert_Int32x2.parameters = Float32x2_convert_Int32x2_args;
-    Symbol::Resolved(&Float32x2_convert_Int32x2_arg0)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&Float32x2_convert_Int32x2)->signature = "f32x2 f32x2(i32x2)"_c;
-    Symbol::Resolved(&Float32x2_convert_Int32x2)->name = "f32x2(i32x2)"_c;
-    Symbol::Resolved(&Float32x2_convert_Int32x2)->nameWithVarNames = "f32x2(val : i32x2)"_c;
-    Symbol::Resolved(&Float32x2_convert_Int32x2)->returnTypeSymbol = &Float32x2Type;
+    Float32x2_from_Int32x2_arg0.name = "val"_c;
+    Float32x2_from_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
+    Float32x2_from_Int32x2.documentation = "Convert from i32x2 to f32x2"_c;
+    Float32x2_from_Int32x2.name = "f32x2"_c;
+    Float32x2_from_Int32x2.compileTime = true;
+    Float32x2_from_Int32x2.returnType = Type::FullType { Float32x2Type.name };
+    Float32x2_from_Int32x2.parameters = Float32x2_from_Int32x2_args;
+    Symbol::Resolved(&Float32x2_from_Int32x2_arg0)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&Float32x2_from_Int32x2)->signature = "f32x2 f32x2(i32x2)"_c;
+    Symbol::Resolved(&Float32x2_from_Int32x2)->name = "f32x2(i32x2)"_c;
+    Symbol::Resolved(&Float32x2_from_Int32x2)->nameWithVarNames = "f32x2(val : i32x2)"_c;
+    Symbol::Resolved(&Float32x2_from_Int32x2)->returnTypeSymbol = &Float32x2Type;
 
     /// f32x2 with Int32
     Float32x2_splat_Int32_arg0.name = "val"_c;
@@ -4420,19 +4468,47 @@ Float32x2::Float32x2()
     Symbol::Resolved(&Float32x2_splat_Int32)->nameWithVarNames = "f32x2(val : i32)"_c;
     Symbol::Resolved(&Float32x2_splat_Int32)->returnTypeSymbol = &Float32x2Type;
 
+    /// f32x2 with Bool8x2
+    Float32x2_from_Bool8x2_arg0.name = "val"_c;
+    Float32x2_from_Bool8x2_arg0.type = Type::FullType{ Bool8x2Type.name };
+    Float32x2_from_Bool8x2.documentation = "Convert from b8x2 to f32x2"_c;
+    Float32x2_from_Bool8x2.name = "f32x2"_c;
+    Float32x2_from_Bool8x2.compileTime = true;
+    Float32x2_from_Bool8x2.returnType = Type::FullType { Float32x2Type.name };
+    Float32x2_from_Bool8x2.parameters = Float32x2_from_Bool8x2_args;
+    Symbol::Resolved(&Float32x2_from_Bool8x2_arg0)->typeSymbol = &Bool8x2Type;
+    Symbol::Resolved(&Float32x2_from_Bool8x2)->signature = "f32x2 f32x2(b8x2)"_c;
+    Symbol::Resolved(&Float32x2_from_Bool8x2)->name = "f32x2(b8x2)"_c;
+    Symbol::Resolved(&Float32x2_from_Bool8x2)->nameWithVarNames = "f32x2(val : b8x2)"_c;
+    Symbol::Resolved(&Float32x2_from_Bool8x2)->returnTypeSymbol = &Float32x2Type;
+
+    /// f32x2 with Bool8
+    Float32x2_splat_Bool8_arg0.name = "val"_c;
+    Float32x2_splat_Bool8_arg0.type = Type::FullType{ Bool8Type.name };
+    Float32x2_splat_Bool8.documentation = "Splat b8 to f32x2"_c;
+    Float32x2_splat_Bool8.name = "f32x2"_c;
+    Float32x2_splat_Bool8.compileTime = true;
+    Float32x2_splat_Bool8.returnType = Type::FullType { Float32x2Type.name };
+    Float32x2_splat_Bool8.parameters = Float32x2_splat_Bool8_args;
+    Symbol::Resolved(&Float32x2_splat_Bool8_arg0)->typeSymbol = &Bool8Type;
+    Symbol::Resolved(&Float32x2_splat_Bool8)->signature = "f32x2 f32x2(b8)"_c;
+    Symbol::Resolved(&Float32x2_splat_Bool8)->name = "f32x2(b8)"_c;
+    Symbol::Resolved(&Float32x2_splat_Bool8)->nameWithVarNames = "f32x2(val : b8)"_c;
+    Symbol::Resolved(&Float32x2_splat_Bool8)->returnTypeSymbol = &Float32x2Type;
+
     /// f32x2 with Float16x2
-    Float32x2_convert_Float16x2_arg0.name = "val"_c;
-    Float32x2_convert_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
-    Float32x2_convert_Float16x2.documentation = "Convert f16x2 to f32x2"_c;
-    Float32x2_convert_Float16x2.name = "f32x2"_c;
-    Float32x2_convert_Float16x2.compileTime = true;
-    Float32x2_convert_Float16x2.returnType = Type::FullType { Float32x2Type.name };
-    Float32x2_convert_Float16x2.parameters = Float32x2_convert_Float16x2_args;
-    Symbol::Resolved(&Float32x2_convert_Float16x2_arg0)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&Float32x2_convert_Float16x2)->signature = "f32x2 f32x2(f16x2)"_c;
-    Symbol::Resolved(&Float32x2_convert_Float16x2)->name = "f32x2(f16x2)"_c;
-    Symbol::Resolved(&Float32x2_convert_Float16x2)->nameWithVarNames = "f32x2(val : f16x2)"_c;
-    Symbol::Resolved(&Float32x2_convert_Float16x2)->returnTypeSymbol = &Float32x2Type;
+    Float32x2_from_Float16x2_arg0.name = "val"_c;
+    Float32x2_from_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
+    Float32x2_from_Float16x2.documentation = "Convert from f16x2 to f32x2"_c;
+    Float32x2_from_Float16x2.name = "f32x2"_c;
+    Float32x2_from_Float16x2.compileTime = true;
+    Float32x2_from_Float16x2.returnType = Type::FullType { Float32x2Type.name };
+    Float32x2_from_Float16x2.parameters = Float32x2_from_Float16x2_args;
+    Symbol::Resolved(&Float32x2_from_Float16x2_arg0)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&Float32x2_from_Float16x2)->signature = "f32x2 f32x2(f16x2)"_c;
+    Symbol::Resolved(&Float32x2_from_Float16x2)->name = "f32x2(f16x2)"_c;
+    Symbol::Resolved(&Float32x2_from_Float16x2)->nameWithVarNames = "f32x2(val : f16x2)"_c;
+    Symbol::Resolved(&Float32x2_from_Float16x2)->returnTypeSymbol = &Float32x2Type;
 
     /// f32x2 with Float16
     Float32x2_splat_Float16_arg0.name = "val"_c;
@@ -4449,18 +4525,18 @@ Float32x2::Float32x2()
     Symbol::Resolved(&Float32x2_splat_Float16)->returnTypeSymbol = &Float32x2Type;
 
     /// f32x2 with UInt16x2
-    Float32x2_convert_UInt16x2_arg0.name = "val"_c;
-    Float32x2_convert_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
-    Float32x2_convert_UInt16x2.documentation = "Convert u16x2 to f32x2"_c;
-    Float32x2_convert_UInt16x2.name = "f32x2"_c;
-    Float32x2_convert_UInt16x2.compileTime = true;
-    Float32x2_convert_UInt16x2.returnType = Type::FullType { Float32x2Type.name };
-    Float32x2_convert_UInt16x2.parameters = Float32x2_convert_UInt16x2_args;
-    Symbol::Resolved(&Float32x2_convert_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&Float32x2_convert_UInt16x2)->signature = "f32x2 f32x2(u16x2)"_c;
-    Symbol::Resolved(&Float32x2_convert_UInt16x2)->name = "f32x2(u16x2)"_c;
-    Symbol::Resolved(&Float32x2_convert_UInt16x2)->nameWithVarNames = "f32x2(val : u16x2)"_c;
-    Symbol::Resolved(&Float32x2_convert_UInt16x2)->returnTypeSymbol = &Float32x2Type;
+    Float32x2_from_UInt16x2_arg0.name = "val"_c;
+    Float32x2_from_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
+    Float32x2_from_UInt16x2.documentation = "Convert from u16x2 to f32x2"_c;
+    Float32x2_from_UInt16x2.name = "f32x2"_c;
+    Float32x2_from_UInt16x2.compileTime = true;
+    Float32x2_from_UInt16x2.returnType = Type::FullType { Float32x2Type.name };
+    Float32x2_from_UInt16x2.parameters = Float32x2_from_UInt16x2_args;
+    Symbol::Resolved(&Float32x2_from_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&Float32x2_from_UInt16x2)->signature = "f32x2 f32x2(u16x2)"_c;
+    Symbol::Resolved(&Float32x2_from_UInt16x2)->name = "f32x2(u16x2)"_c;
+    Symbol::Resolved(&Float32x2_from_UInt16x2)->nameWithVarNames = "f32x2(val : u16x2)"_c;
+    Symbol::Resolved(&Float32x2_from_UInt16x2)->returnTypeSymbol = &Float32x2Type;
 
     /// f32x2 with UInt16
     Float32x2_splat_UInt16_arg0.name = "val"_c;
@@ -4477,18 +4553,18 @@ Float32x2::Float32x2()
     Symbol::Resolved(&Float32x2_splat_UInt16)->returnTypeSymbol = &Float32x2Type;
 
     /// f32x2 with Int16x2
-    Float32x2_convert_Int16x2_arg0.name = "val"_c;
-    Float32x2_convert_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
-    Float32x2_convert_Int16x2.documentation = "Convert i16x2 to f32x2"_c;
-    Float32x2_convert_Int16x2.name = "f32x2"_c;
-    Float32x2_convert_Int16x2.compileTime = true;
-    Float32x2_convert_Int16x2.returnType = Type::FullType { Float32x2Type.name };
-    Float32x2_convert_Int16x2.parameters = Float32x2_convert_Int16x2_args;
-    Symbol::Resolved(&Float32x2_convert_Int16x2_arg0)->typeSymbol = &Int16x2Type;
-    Symbol::Resolved(&Float32x2_convert_Int16x2)->signature = "f32x2 f32x2(i16x2)"_c;
-    Symbol::Resolved(&Float32x2_convert_Int16x2)->name = "f32x2(i16x2)"_c;
-    Symbol::Resolved(&Float32x2_convert_Int16x2)->nameWithVarNames = "f32x2(val : i16x2)"_c;
-    Symbol::Resolved(&Float32x2_convert_Int16x2)->returnTypeSymbol = &Float32x2Type;
+    Float32x2_from_Int16x2_arg0.name = "val"_c;
+    Float32x2_from_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
+    Float32x2_from_Int16x2.documentation = "Convert from i16x2 to f32x2"_c;
+    Float32x2_from_Int16x2.name = "f32x2"_c;
+    Float32x2_from_Int16x2.compileTime = true;
+    Float32x2_from_Int16x2.returnType = Type::FullType { Float32x2Type.name };
+    Float32x2_from_Int16x2.parameters = Float32x2_from_Int16x2_args;
+    Symbol::Resolved(&Float32x2_from_Int16x2_arg0)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&Float32x2_from_Int16x2)->signature = "f32x2 f32x2(i16x2)"_c;
+    Symbol::Resolved(&Float32x2_from_Int16x2)->name = "f32x2(i16x2)"_c;
+    Symbol::Resolved(&Float32x2_from_Int16x2)->nameWithVarNames = "f32x2(val : i16x2)"_c;
+    Symbol::Resolved(&Float32x2_from_Int16x2)->returnTypeSymbol = &Float32x2Type;
 
     /// f32x2 with Int16
     Float32x2_splat_Int16_arg0.name = "val"_c;
@@ -4978,9 +5054,9 @@ Float32x2::Float32x2()
 Float32x2 Float32x2Type;
 
 /// u32x2 with Float32x2
-Variable UInt32x2_convert_Float32x2_arg0;
-Function UInt32x2_convert_Float32x2;
-inline constexpr std::array UInt32x2_convert_Float32x2_args = { &UInt32x2_convert_Float32x2_arg0 };
+Variable UInt32x2_from_Float32x2_arg0;
+Function UInt32x2_from_Float32x2;
+inline constexpr std::array UInt32x2_from_Float32x2_args = { &UInt32x2_from_Float32x2_arg0 };
 
 /// u32x2 with Float32
 Variable UInt32x2_splat_Float32_arg0;
@@ -4988,9 +5064,9 @@ Function UInt32x2_splat_Float32;
 inline constexpr std::array UInt32x2_splat_Float32_args = { &UInt32x2_splat_Float32_arg0 };
 
 /// u32x2 with UInt32x2
-Variable UInt32x2_convert_UInt32x2_arg0;
-Function UInt32x2_convert_UInt32x2;
-inline constexpr std::array UInt32x2_convert_UInt32x2_args = { &UInt32x2_convert_UInt32x2_arg0 };
+Variable UInt32x2_from_UInt32x2_arg0;
+Function UInt32x2_from_UInt32x2;
+inline constexpr std::array UInt32x2_from_UInt32x2_args = { &UInt32x2_from_UInt32x2_arg0 };
 
 /// u32x2 with UInt32
 Variable UInt32x2_splat_UInt32_arg0;
@@ -4998,9 +5074,9 @@ Function UInt32x2_splat_UInt32;
 inline constexpr std::array UInt32x2_splat_UInt32_args = { &UInt32x2_splat_UInt32_arg0 };
 
 /// u32x2 with Int32x2
-Variable UInt32x2_convert_Int32x2_arg0;
-Function UInt32x2_convert_Int32x2;
-inline constexpr std::array UInt32x2_convert_Int32x2_args = { &UInt32x2_convert_Int32x2_arg0 };
+Variable UInt32x2_from_Int32x2_arg0;
+Function UInt32x2_from_Int32x2;
+inline constexpr std::array UInt32x2_from_Int32x2_args = { &UInt32x2_from_Int32x2_arg0 };
 
 /// u32x2 with Int32
 Variable UInt32x2_splat_Int32_arg0;
@@ -5008,9 +5084,9 @@ Function UInt32x2_splat_Int32;
 inline constexpr std::array UInt32x2_splat_Int32_args = { &UInt32x2_splat_Int32_arg0 };
 
 /// u32x2 with Bool8x2
-Variable UInt32x2_convert_Bool8x2_arg0;
-Function UInt32x2_convert_Bool8x2;
-inline constexpr std::array UInt32x2_convert_Bool8x2_args = { &UInt32x2_convert_Bool8x2_arg0 };
+Variable UInt32x2_from_Bool8x2_arg0;
+Function UInt32x2_from_Bool8x2;
+inline constexpr std::array UInt32x2_from_Bool8x2_args = { &UInt32x2_from_Bool8x2_arg0 };
 
 /// u32x2 with Bool8
 Variable UInt32x2_splat_Bool8_arg0;
@@ -5018,9 +5094,9 @@ Function UInt32x2_splat_Bool8;
 inline constexpr std::array UInt32x2_splat_Bool8_args = { &UInt32x2_splat_Bool8_arg0 };
 
 /// u32x2 with Float16x2
-Variable UInt32x2_convert_Float16x2_arg0;
-Function UInt32x2_convert_Float16x2;
-inline constexpr std::array UInt32x2_convert_Float16x2_args = { &UInt32x2_convert_Float16x2_arg0 };
+Variable UInt32x2_from_Float16x2_arg0;
+Function UInt32x2_from_Float16x2;
+inline constexpr std::array UInt32x2_from_Float16x2_args = { &UInt32x2_from_Float16x2_arg0 };
 
 /// u32x2 with Float16
 Variable UInt32x2_splat_Float16_arg0;
@@ -5028,9 +5104,9 @@ Function UInt32x2_splat_Float16;
 inline constexpr std::array UInt32x2_splat_Float16_args = { &UInt32x2_splat_Float16_arg0 };
 
 /// u32x2 with UInt16x2
-Variable UInt32x2_convert_UInt16x2_arg0;
-Function UInt32x2_convert_UInt16x2;
-inline constexpr std::array UInt32x2_convert_UInt16x2_args = { &UInt32x2_convert_UInt16x2_arg0 };
+Variable UInt32x2_from_UInt16x2_arg0;
+Function UInt32x2_from_UInt16x2;
+inline constexpr std::array UInt32x2_from_UInt16x2_args = { &UInt32x2_from_UInt16x2_arg0 };
 
 /// u32x2 with UInt16
 Variable UInt32x2_splat_UInt16_arg0;
@@ -5038,9 +5114,9 @@ Function UInt32x2_splat_UInt16;
 inline constexpr std::array UInt32x2_splat_UInt16_args = { &UInt32x2_splat_UInt16_arg0 };
 
 /// u32x2 with Int16x2
-Variable UInt32x2_convert_Int16x2_arg0;
-Function UInt32x2_convert_Int16x2;
-inline constexpr std::array UInt32x2_convert_Int16x2_args = { &UInt32x2_convert_Int16x2_arg0 };
+Variable UInt32x2_from_Int16x2_arg0;
+Function UInt32x2_from_Int16x2;
+inline constexpr std::array UInt32x2_from_Int16x2_args = { &UInt32x2_from_Int16x2_arg0 };
 
 /// u32x2 with Int16
 Variable UInt32x2_splat_Int16_arg0;
@@ -5239,18 +5315,18 @@ UInt32x2::UInt32x2()
     this->builtin = true;
 
     /// u32x2 with Float32x2
-    UInt32x2_convert_Float32x2_arg0.name = "val"_c;
-    UInt32x2_convert_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
-    UInt32x2_convert_Float32x2.documentation = "Convert f32x2 to u32x2"_c;
-    UInt32x2_convert_Float32x2.name = "u32x2"_c;
-    UInt32x2_convert_Float32x2.compileTime = true;
-    UInt32x2_convert_Float32x2.returnType = Type::FullType { UInt32x2Type.name };
-    UInt32x2_convert_Float32x2.parameters = UInt32x2_convert_Float32x2_args;
-    Symbol::Resolved(&UInt32x2_convert_Float32x2_arg0)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&UInt32x2_convert_Float32x2)->signature = "u32x2 u32x2(f32x2)"_c;
-    Symbol::Resolved(&UInt32x2_convert_Float32x2)->name = "u32x2(f32x2)"_c;
-    Symbol::Resolved(&UInt32x2_convert_Float32x2)->nameWithVarNames = "u32x2(val : f32x2)"_c;
-    Symbol::Resolved(&UInt32x2_convert_Float32x2)->returnTypeSymbol = &UInt32x2Type;
+    UInt32x2_from_Float32x2_arg0.name = "val"_c;
+    UInt32x2_from_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
+    UInt32x2_from_Float32x2.documentation = "Convert from f32x2 to u32x2"_c;
+    UInt32x2_from_Float32x2.name = "u32x2"_c;
+    UInt32x2_from_Float32x2.compileTime = true;
+    UInt32x2_from_Float32x2.returnType = Type::FullType { UInt32x2Type.name };
+    UInt32x2_from_Float32x2.parameters = UInt32x2_from_Float32x2_args;
+    Symbol::Resolved(&UInt32x2_from_Float32x2_arg0)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&UInt32x2_from_Float32x2)->signature = "u32x2 u32x2(f32x2)"_c;
+    Symbol::Resolved(&UInt32x2_from_Float32x2)->name = "u32x2(f32x2)"_c;
+    Symbol::Resolved(&UInt32x2_from_Float32x2)->nameWithVarNames = "u32x2(val : f32x2)"_c;
+    Symbol::Resolved(&UInt32x2_from_Float32x2)->returnTypeSymbol = &UInt32x2Type;
 
     /// u32x2 with Float32
     UInt32x2_splat_Float32_arg0.name = "val"_c;
@@ -5267,18 +5343,18 @@ UInt32x2::UInt32x2()
     Symbol::Resolved(&UInt32x2_splat_Float32)->returnTypeSymbol = &UInt32x2Type;
 
     /// u32x2 with UInt32x2
-    UInt32x2_convert_UInt32x2_arg0.name = "val"_c;
-    UInt32x2_convert_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
-    UInt32x2_convert_UInt32x2.documentation = "Convert u32x2 to u32x2"_c;
-    UInt32x2_convert_UInt32x2.name = "u32x2"_c;
-    UInt32x2_convert_UInt32x2.compileTime = true;
-    UInt32x2_convert_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
-    UInt32x2_convert_UInt32x2.parameters = UInt32x2_convert_UInt32x2_args;
-    Symbol::Resolved(&UInt32x2_convert_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
-    Symbol::Resolved(&UInt32x2_convert_UInt32x2)->signature = "u32x2 u32x2(u32x2)"_c;
-    Symbol::Resolved(&UInt32x2_convert_UInt32x2)->name = "u32x2(u32x2)"_c;
-    Symbol::Resolved(&UInt32x2_convert_UInt32x2)->nameWithVarNames = "u32x2(val : u32x2)"_c;
-    Symbol::Resolved(&UInt32x2_convert_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
+    UInt32x2_from_UInt32x2_arg0.name = "val"_c;
+    UInt32x2_from_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
+    UInt32x2_from_UInt32x2.documentation = "Convert from u32x2 to u32x2"_c;
+    UInt32x2_from_UInt32x2.name = "u32x2"_c;
+    UInt32x2_from_UInt32x2.compileTime = true;
+    UInt32x2_from_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
+    UInt32x2_from_UInt32x2.parameters = UInt32x2_from_UInt32x2_args;
+    Symbol::Resolved(&UInt32x2_from_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&UInt32x2_from_UInt32x2)->signature = "u32x2 u32x2(u32x2)"_c;
+    Symbol::Resolved(&UInt32x2_from_UInt32x2)->name = "u32x2(u32x2)"_c;
+    Symbol::Resolved(&UInt32x2_from_UInt32x2)->nameWithVarNames = "u32x2(val : u32x2)"_c;
+    Symbol::Resolved(&UInt32x2_from_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
     /// u32x2 with UInt32
     UInt32x2_splat_UInt32_arg0.name = "val"_c;
@@ -5295,18 +5371,18 @@ UInt32x2::UInt32x2()
     Symbol::Resolved(&UInt32x2_splat_UInt32)->returnTypeSymbol = &UInt32x2Type;
 
     /// u32x2 with Int32x2
-    UInt32x2_convert_Int32x2_arg0.name = "val"_c;
-    UInt32x2_convert_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
-    UInt32x2_convert_Int32x2.documentation = "Convert i32x2 to u32x2"_c;
-    UInt32x2_convert_Int32x2.name = "u32x2"_c;
-    UInt32x2_convert_Int32x2.compileTime = true;
-    UInt32x2_convert_Int32x2.returnType = Type::FullType { UInt32x2Type.name };
-    UInt32x2_convert_Int32x2.parameters = UInt32x2_convert_Int32x2_args;
-    Symbol::Resolved(&UInt32x2_convert_Int32x2_arg0)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&UInt32x2_convert_Int32x2)->signature = "u32x2 u32x2(i32x2)"_c;
-    Symbol::Resolved(&UInt32x2_convert_Int32x2)->name = "u32x2(i32x2)"_c;
-    Symbol::Resolved(&UInt32x2_convert_Int32x2)->nameWithVarNames = "u32x2(val : i32x2)"_c;
-    Symbol::Resolved(&UInt32x2_convert_Int32x2)->returnTypeSymbol = &UInt32x2Type;
+    UInt32x2_from_Int32x2_arg0.name = "val"_c;
+    UInt32x2_from_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
+    UInt32x2_from_Int32x2.documentation = "Convert from i32x2 to u32x2"_c;
+    UInt32x2_from_Int32x2.name = "u32x2"_c;
+    UInt32x2_from_Int32x2.compileTime = true;
+    UInt32x2_from_Int32x2.returnType = Type::FullType { UInt32x2Type.name };
+    UInt32x2_from_Int32x2.parameters = UInt32x2_from_Int32x2_args;
+    Symbol::Resolved(&UInt32x2_from_Int32x2_arg0)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&UInt32x2_from_Int32x2)->signature = "u32x2 u32x2(i32x2)"_c;
+    Symbol::Resolved(&UInt32x2_from_Int32x2)->name = "u32x2(i32x2)"_c;
+    Symbol::Resolved(&UInt32x2_from_Int32x2)->nameWithVarNames = "u32x2(val : i32x2)"_c;
+    Symbol::Resolved(&UInt32x2_from_Int32x2)->returnTypeSymbol = &UInt32x2Type;
 
     /// u32x2 with Int32
     UInt32x2_splat_Int32_arg0.name = "val"_c;
@@ -5323,18 +5399,18 @@ UInt32x2::UInt32x2()
     Symbol::Resolved(&UInt32x2_splat_Int32)->returnTypeSymbol = &UInt32x2Type;
 
     /// u32x2 with Bool8x2
-    UInt32x2_convert_Bool8x2_arg0.name = "val"_c;
-    UInt32x2_convert_Bool8x2_arg0.type = Type::FullType{ Bool8x2Type.name };
-    UInt32x2_convert_Bool8x2.documentation = "Convert b8x2 to u32x2"_c;
-    UInt32x2_convert_Bool8x2.name = "u32x2"_c;
-    UInt32x2_convert_Bool8x2.compileTime = true;
-    UInt32x2_convert_Bool8x2.returnType = Type::FullType { UInt32x2Type.name };
-    UInt32x2_convert_Bool8x2.parameters = UInt32x2_convert_Bool8x2_args;
-    Symbol::Resolved(&UInt32x2_convert_Bool8x2_arg0)->typeSymbol = &Bool8x2Type;
-    Symbol::Resolved(&UInt32x2_convert_Bool8x2)->signature = "u32x2 u32x2(b8x2)"_c;
-    Symbol::Resolved(&UInt32x2_convert_Bool8x2)->name = "u32x2(b8x2)"_c;
-    Symbol::Resolved(&UInt32x2_convert_Bool8x2)->nameWithVarNames = "u32x2(val : b8x2)"_c;
-    Symbol::Resolved(&UInt32x2_convert_Bool8x2)->returnTypeSymbol = &UInt32x2Type;
+    UInt32x2_from_Bool8x2_arg0.name = "val"_c;
+    UInt32x2_from_Bool8x2_arg0.type = Type::FullType{ Bool8x2Type.name };
+    UInt32x2_from_Bool8x2.documentation = "Convert from b8x2 to u32x2"_c;
+    UInt32x2_from_Bool8x2.name = "u32x2"_c;
+    UInt32x2_from_Bool8x2.compileTime = true;
+    UInt32x2_from_Bool8x2.returnType = Type::FullType { UInt32x2Type.name };
+    UInt32x2_from_Bool8x2.parameters = UInt32x2_from_Bool8x2_args;
+    Symbol::Resolved(&UInt32x2_from_Bool8x2_arg0)->typeSymbol = &Bool8x2Type;
+    Symbol::Resolved(&UInt32x2_from_Bool8x2)->signature = "u32x2 u32x2(b8x2)"_c;
+    Symbol::Resolved(&UInt32x2_from_Bool8x2)->name = "u32x2(b8x2)"_c;
+    Symbol::Resolved(&UInt32x2_from_Bool8x2)->nameWithVarNames = "u32x2(val : b8x2)"_c;
+    Symbol::Resolved(&UInt32x2_from_Bool8x2)->returnTypeSymbol = &UInt32x2Type;
 
     /// u32x2 with Bool8
     UInt32x2_splat_Bool8_arg0.name = "val"_c;
@@ -5351,18 +5427,18 @@ UInt32x2::UInt32x2()
     Symbol::Resolved(&UInt32x2_splat_Bool8)->returnTypeSymbol = &UInt32x2Type;
 
     /// u32x2 with Float16x2
-    UInt32x2_convert_Float16x2_arg0.name = "val"_c;
-    UInt32x2_convert_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
-    UInt32x2_convert_Float16x2.documentation = "Convert f16x2 to u32x2"_c;
-    UInt32x2_convert_Float16x2.name = "u32x2"_c;
-    UInt32x2_convert_Float16x2.compileTime = true;
-    UInt32x2_convert_Float16x2.returnType = Type::FullType { UInt32x2Type.name };
-    UInt32x2_convert_Float16x2.parameters = UInt32x2_convert_Float16x2_args;
-    Symbol::Resolved(&UInt32x2_convert_Float16x2_arg0)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&UInt32x2_convert_Float16x2)->signature = "u32x2 u32x2(f16x2)"_c;
-    Symbol::Resolved(&UInt32x2_convert_Float16x2)->name = "u32x2(f16x2)"_c;
-    Symbol::Resolved(&UInt32x2_convert_Float16x2)->nameWithVarNames = "u32x2(val : f16x2)"_c;
-    Symbol::Resolved(&UInt32x2_convert_Float16x2)->returnTypeSymbol = &UInt32x2Type;
+    UInt32x2_from_Float16x2_arg0.name = "val"_c;
+    UInt32x2_from_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
+    UInt32x2_from_Float16x2.documentation = "Convert from f16x2 to u32x2"_c;
+    UInt32x2_from_Float16x2.name = "u32x2"_c;
+    UInt32x2_from_Float16x2.compileTime = true;
+    UInt32x2_from_Float16x2.returnType = Type::FullType { UInt32x2Type.name };
+    UInt32x2_from_Float16x2.parameters = UInt32x2_from_Float16x2_args;
+    Symbol::Resolved(&UInt32x2_from_Float16x2_arg0)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&UInt32x2_from_Float16x2)->signature = "u32x2 u32x2(f16x2)"_c;
+    Symbol::Resolved(&UInt32x2_from_Float16x2)->name = "u32x2(f16x2)"_c;
+    Symbol::Resolved(&UInt32x2_from_Float16x2)->nameWithVarNames = "u32x2(val : f16x2)"_c;
+    Symbol::Resolved(&UInt32x2_from_Float16x2)->returnTypeSymbol = &UInt32x2Type;
 
     /// u32x2 with Float16
     UInt32x2_splat_Float16_arg0.name = "val"_c;
@@ -5379,18 +5455,18 @@ UInt32x2::UInt32x2()
     Symbol::Resolved(&UInt32x2_splat_Float16)->returnTypeSymbol = &UInt32x2Type;
 
     /// u32x2 with UInt16x2
-    UInt32x2_convert_UInt16x2_arg0.name = "val"_c;
-    UInt32x2_convert_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
-    UInt32x2_convert_UInt16x2.documentation = "Convert u16x2 to u32x2"_c;
-    UInt32x2_convert_UInt16x2.name = "u32x2"_c;
-    UInt32x2_convert_UInt16x2.compileTime = true;
-    UInt32x2_convert_UInt16x2.returnType = Type::FullType { UInt32x2Type.name };
-    UInt32x2_convert_UInt16x2.parameters = UInt32x2_convert_UInt16x2_args;
-    Symbol::Resolved(&UInt32x2_convert_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&UInt32x2_convert_UInt16x2)->signature = "u32x2 u32x2(u16x2)"_c;
-    Symbol::Resolved(&UInt32x2_convert_UInt16x2)->name = "u32x2(u16x2)"_c;
-    Symbol::Resolved(&UInt32x2_convert_UInt16x2)->nameWithVarNames = "u32x2(val : u16x2)"_c;
-    Symbol::Resolved(&UInt32x2_convert_UInt16x2)->returnTypeSymbol = &UInt32x2Type;
+    UInt32x2_from_UInt16x2_arg0.name = "val"_c;
+    UInt32x2_from_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
+    UInt32x2_from_UInt16x2.documentation = "Convert from u16x2 to u32x2"_c;
+    UInt32x2_from_UInt16x2.name = "u32x2"_c;
+    UInt32x2_from_UInt16x2.compileTime = true;
+    UInt32x2_from_UInt16x2.returnType = Type::FullType { UInt32x2Type.name };
+    UInt32x2_from_UInt16x2.parameters = UInt32x2_from_UInt16x2_args;
+    Symbol::Resolved(&UInt32x2_from_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&UInt32x2_from_UInt16x2)->signature = "u32x2 u32x2(u16x2)"_c;
+    Symbol::Resolved(&UInt32x2_from_UInt16x2)->name = "u32x2(u16x2)"_c;
+    Symbol::Resolved(&UInt32x2_from_UInt16x2)->nameWithVarNames = "u32x2(val : u16x2)"_c;
+    Symbol::Resolved(&UInt32x2_from_UInt16x2)->returnTypeSymbol = &UInt32x2Type;
 
     /// u32x2 with UInt16
     UInt32x2_splat_UInt16_arg0.name = "val"_c;
@@ -5407,18 +5483,18 @@ UInt32x2::UInt32x2()
     Symbol::Resolved(&UInt32x2_splat_UInt16)->returnTypeSymbol = &UInt32x2Type;
 
     /// u32x2 with Int16x2
-    UInt32x2_convert_Int16x2_arg0.name = "val"_c;
-    UInt32x2_convert_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
-    UInt32x2_convert_Int16x2.documentation = "Convert i16x2 to u32x2"_c;
-    UInt32x2_convert_Int16x2.name = "u32x2"_c;
-    UInt32x2_convert_Int16x2.compileTime = true;
-    UInt32x2_convert_Int16x2.returnType = Type::FullType { UInt32x2Type.name };
-    UInt32x2_convert_Int16x2.parameters = UInt32x2_convert_Int16x2_args;
-    Symbol::Resolved(&UInt32x2_convert_Int16x2_arg0)->typeSymbol = &Int16x2Type;
-    Symbol::Resolved(&UInt32x2_convert_Int16x2)->signature = "u32x2 u32x2(i16x2)"_c;
-    Symbol::Resolved(&UInt32x2_convert_Int16x2)->name = "u32x2(i16x2)"_c;
-    Symbol::Resolved(&UInt32x2_convert_Int16x2)->nameWithVarNames = "u32x2(val : i16x2)"_c;
-    Symbol::Resolved(&UInt32x2_convert_Int16x2)->returnTypeSymbol = &UInt32x2Type;
+    UInt32x2_from_Int16x2_arg0.name = "val"_c;
+    UInt32x2_from_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
+    UInt32x2_from_Int16x2.documentation = "Convert from i16x2 to u32x2"_c;
+    UInt32x2_from_Int16x2.name = "u32x2"_c;
+    UInt32x2_from_Int16x2.compileTime = true;
+    UInt32x2_from_Int16x2.returnType = Type::FullType { UInt32x2Type.name };
+    UInt32x2_from_Int16x2.parameters = UInt32x2_from_Int16x2_args;
+    Symbol::Resolved(&UInt32x2_from_Int16x2_arg0)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&UInt32x2_from_Int16x2)->signature = "u32x2 u32x2(i16x2)"_c;
+    Symbol::Resolved(&UInt32x2_from_Int16x2)->name = "u32x2(i16x2)"_c;
+    Symbol::Resolved(&UInt32x2_from_Int16x2)->nameWithVarNames = "u32x2(val : i16x2)"_c;
+    Symbol::Resolved(&UInt32x2_from_Int16x2)->returnTypeSymbol = &UInt32x2Type;
 
     /// u32x2 with Int16
     UInt32x2_splat_Int16_arg0.name = "val"_c;
@@ -6006,9 +6082,9 @@ UInt32x2::UInt32x2()
 UInt32x2 UInt32x2Type;
 
 /// i32x2 with Float32x2
-Variable Int32x2_convert_Float32x2_arg0;
-Function Int32x2_convert_Float32x2;
-inline constexpr std::array Int32x2_convert_Float32x2_args = { &Int32x2_convert_Float32x2_arg0 };
+Variable Int32x2_from_Float32x2_arg0;
+Function Int32x2_from_Float32x2;
+inline constexpr std::array Int32x2_from_Float32x2_args = { &Int32x2_from_Float32x2_arg0 };
 
 /// i32x2 with Float32
 Variable Int32x2_splat_Float32_arg0;
@@ -6016,9 +6092,9 @@ Function Int32x2_splat_Float32;
 inline constexpr std::array Int32x2_splat_Float32_args = { &Int32x2_splat_Float32_arg0 };
 
 /// i32x2 with UInt32x2
-Variable Int32x2_convert_UInt32x2_arg0;
-Function Int32x2_convert_UInt32x2;
-inline constexpr std::array Int32x2_convert_UInt32x2_args = { &Int32x2_convert_UInt32x2_arg0 };
+Variable Int32x2_from_UInt32x2_arg0;
+Function Int32x2_from_UInt32x2;
+inline constexpr std::array Int32x2_from_UInt32x2_args = { &Int32x2_from_UInt32x2_arg0 };
 
 /// i32x2 with UInt32
 Variable Int32x2_splat_UInt32_arg0;
@@ -6026,9 +6102,9 @@ Function Int32x2_splat_UInt32;
 inline constexpr std::array Int32x2_splat_UInt32_args = { &Int32x2_splat_UInt32_arg0 };
 
 /// i32x2 with Int32x2
-Variable Int32x2_convert_Int32x2_arg0;
-Function Int32x2_convert_Int32x2;
-inline constexpr std::array Int32x2_convert_Int32x2_args = { &Int32x2_convert_Int32x2_arg0 };
+Variable Int32x2_from_Int32x2_arg0;
+Function Int32x2_from_Int32x2;
+inline constexpr std::array Int32x2_from_Int32x2_args = { &Int32x2_from_Int32x2_arg0 };
 
 /// i32x2 with Int32
 Variable Int32x2_splat_Int32_arg0;
@@ -6036,9 +6112,9 @@ Function Int32x2_splat_Int32;
 inline constexpr std::array Int32x2_splat_Int32_args = { &Int32x2_splat_Int32_arg0 };
 
 /// i32x2 with Bool8x2
-Variable Int32x2_convert_Bool8x2_arg0;
-Function Int32x2_convert_Bool8x2;
-inline constexpr std::array Int32x2_convert_Bool8x2_args = { &Int32x2_convert_Bool8x2_arg0 };
+Variable Int32x2_from_Bool8x2_arg0;
+Function Int32x2_from_Bool8x2;
+inline constexpr std::array Int32x2_from_Bool8x2_args = { &Int32x2_from_Bool8x2_arg0 };
 
 /// i32x2 with Bool8
 Variable Int32x2_splat_Bool8_arg0;
@@ -6046,9 +6122,9 @@ Function Int32x2_splat_Bool8;
 inline constexpr std::array Int32x2_splat_Bool8_args = { &Int32x2_splat_Bool8_arg0 };
 
 /// i32x2 with Float16x2
-Variable Int32x2_convert_Float16x2_arg0;
-Function Int32x2_convert_Float16x2;
-inline constexpr std::array Int32x2_convert_Float16x2_args = { &Int32x2_convert_Float16x2_arg0 };
+Variable Int32x2_from_Float16x2_arg0;
+Function Int32x2_from_Float16x2;
+inline constexpr std::array Int32x2_from_Float16x2_args = { &Int32x2_from_Float16x2_arg0 };
 
 /// i32x2 with Float16
 Variable Int32x2_splat_Float16_arg0;
@@ -6056,9 +6132,9 @@ Function Int32x2_splat_Float16;
 inline constexpr std::array Int32x2_splat_Float16_args = { &Int32x2_splat_Float16_arg0 };
 
 /// i32x2 with UInt16x2
-Variable Int32x2_convert_UInt16x2_arg0;
-Function Int32x2_convert_UInt16x2;
-inline constexpr std::array Int32x2_convert_UInt16x2_args = { &Int32x2_convert_UInt16x2_arg0 };
+Variable Int32x2_from_UInt16x2_arg0;
+Function Int32x2_from_UInt16x2;
+inline constexpr std::array Int32x2_from_UInt16x2_args = { &Int32x2_from_UInt16x2_arg0 };
 
 /// i32x2 with UInt16
 Variable Int32x2_splat_UInt16_arg0;
@@ -6066,9 +6142,9 @@ Function Int32x2_splat_UInt16;
 inline constexpr std::array Int32x2_splat_UInt16_args = { &Int32x2_splat_UInt16_arg0 };
 
 /// i32x2 with Int16x2
-Variable Int32x2_convert_Int16x2_arg0;
-Function Int32x2_convert_Int16x2;
-inline constexpr std::array Int32x2_convert_Int16x2_args = { &Int32x2_convert_Int16x2_arg0 };
+Variable Int32x2_from_Int16x2_arg0;
+Function Int32x2_from_Int16x2;
+inline constexpr std::array Int32x2_from_Int16x2_args = { &Int32x2_from_Int16x2_arg0 };
 
 /// i32x2 with Int16
 Variable Int32x2_splat_Int16_arg0;
@@ -6267,18 +6343,18 @@ Int32x2::Int32x2()
     this->builtin = true;
 
     /// i32x2 with Float32x2
-    Int32x2_convert_Float32x2_arg0.name = "val"_c;
-    Int32x2_convert_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
-    Int32x2_convert_Float32x2.documentation = "Convert f32x2 to i32x2"_c;
-    Int32x2_convert_Float32x2.name = "i32x2"_c;
-    Int32x2_convert_Float32x2.compileTime = true;
-    Int32x2_convert_Float32x2.returnType = Type::FullType { Int32x2Type.name };
-    Int32x2_convert_Float32x2.parameters = Int32x2_convert_Float32x2_args;
-    Symbol::Resolved(&Int32x2_convert_Float32x2_arg0)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&Int32x2_convert_Float32x2)->signature = "i32x2 i32x2(f32x2)"_c;
-    Symbol::Resolved(&Int32x2_convert_Float32x2)->name = "i32x2(f32x2)"_c;
-    Symbol::Resolved(&Int32x2_convert_Float32x2)->nameWithVarNames = "i32x2(val : f32x2)"_c;
-    Symbol::Resolved(&Int32x2_convert_Float32x2)->returnTypeSymbol = &Int32x2Type;
+    Int32x2_from_Float32x2_arg0.name = "val"_c;
+    Int32x2_from_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
+    Int32x2_from_Float32x2.documentation = "Convert from f32x2 to i32x2"_c;
+    Int32x2_from_Float32x2.name = "i32x2"_c;
+    Int32x2_from_Float32x2.compileTime = true;
+    Int32x2_from_Float32x2.returnType = Type::FullType { Int32x2Type.name };
+    Int32x2_from_Float32x2.parameters = Int32x2_from_Float32x2_args;
+    Symbol::Resolved(&Int32x2_from_Float32x2_arg0)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&Int32x2_from_Float32x2)->signature = "i32x2 i32x2(f32x2)"_c;
+    Symbol::Resolved(&Int32x2_from_Float32x2)->name = "i32x2(f32x2)"_c;
+    Symbol::Resolved(&Int32x2_from_Float32x2)->nameWithVarNames = "i32x2(val : f32x2)"_c;
+    Symbol::Resolved(&Int32x2_from_Float32x2)->returnTypeSymbol = &Int32x2Type;
 
     /// i32x2 with Float32
     Int32x2_splat_Float32_arg0.name = "val"_c;
@@ -6295,18 +6371,18 @@ Int32x2::Int32x2()
     Symbol::Resolved(&Int32x2_splat_Float32)->returnTypeSymbol = &Int32x2Type;
 
     /// i32x2 with UInt32x2
-    Int32x2_convert_UInt32x2_arg0.name = "val"_c;
-    Int32x2_convert_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
-    Int32x2_convert_UInt32x2.documentation = "Convert u32x2 to i32x2"_c;
-    Int32x2_convert_UInt32x2.name = "i32x2"_c;
-    Int32x2_convert_UInt32x2.compileTime = true;
-    Int32x2_convert_UInt32x2.returnType = Type::FullType { Int32x2Type.name };
-    Int32x2_convert_UInt32x2.parameters = Int32x2_convert_UInt32x2_args;
-    Symbol::Resolved(&Int32x2_convert_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
-    Symbol::Resolved(&Int32x2_convert_UInt32x2)->signature = "i32x2 i32x2(u32x2)"_c;
-    Symbol::Resolved(&Int32x2_convert_UInt32x2)->name = "i32x2(u32x2)"_c;
-    Symbol::Resolved(&Int32x2_convert_UInt32x2)->nameWithVarNames = "i32x2(val : u32x2)"_c;
-    Symbol::Resolved(&Int32x2_convert_UInt32x2)->returnTypeSymbol = &Int32x2Type;
+    Int32x2_from_UInt32x2_arg0.name = "val"_c;
+    Int32x2_from_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
+    Int32x2_from_UInt32x2.documentation = "Convert from u32x2 to i32x2"_c;
+    Int32x2_from_UInt32x2.name = "i32x2"_c;
+    Int32x2_from_UInt32x2.compileTime = true;
+    Int32x2_from_UInt32x2.returnType = Type::FullType { Int32x2Type.name };
+    Int32x2_from_UInt32x2.parameters = Int32x2_from_UInt32x2_args;
+    Symbol::Resolved(&Int32x2_from_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&Int32x2_from_UInt32x2)->signature = "i32x2 i32x2(u32x2)"_c;
+    Symbol::Resolved(&Int32x2_from_UInt32x2)->name = "i32x2(u32x2)"_c;
+    Symbol::Resolved(&Int32x2_from_UInt32x2)->nameWithVarNames = "i32x2(val : u32x2)"_c;
+    Symbol::Resolved(&Int32x2_from_UInt32x2)->returnTypeSymbol = &Int32x2Type;
 
     /// i32x2 with UInt32
     Int32x2_splat_UInt32_arg0.name = "val"_c;
@@ -6323,18 +6399,18 @@ Int32x2::Int32x2()
     Symbol::Resolved(&Int32x2_splat_UInt32)->returnTypeSymbol = &Int32x2Type;
 
     /// i32x2 with Int32x2
-    Int32x2_convert_Int32x2_arg0.name = "val"_c;
-    Int32x2_convert_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
-    Int32x2_convert_Int32x2.documentation = "Convert i32x2 to i32x2"_c;
-    Int32x2_convert_Int32x2.name = "i32x2"_c;
-    Int32x2_convert_Int32x2.compileTime = true;
-    Int32x2_convert_Int32x2.returnType = Type::FullType { Int32x2Type.name };
-    Int32x2_convert_Int32x2.parameters = Int32x2_convert_Int32x2_args;
-    Symbol::Resolved(&Int32x2_convert_Int32x2_arg0)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&Int32x2_convert_Int32x2)->signature = "i32x2 i32x2(i32x2)"_c;
-    Symbol::Resolved(&Int32x2_convert_Int32x2)->name = "i32x2(i32x2)"_c;
-    Symbol::Resolved(&Int32x2_convert_Int32x2)->nameWithVarNames = "i32x2(val : i32x2)"_c;
-    Symbol::Resolved(&Int32x2_convert_Int32x2)->returnTypeSymbol = &Int32x2Type;
+    Int32x2_from_Int32x2_arg0.name = "val"_c;
+    Int32x2_from_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
+    Int32x2_from_Int32x2.documentation = "Convert from i32x2 to i32x2"_c;
+    Int32x2_from_Int32x2.name = "i32x2"_c;
+    Int32x2_from_Int32x2.compileTime = true;
+    Int32x2_from_Int32x2.returnType = Type::FullType { Int32x2Type.name };
+    Int32x2_from_Int32x2.parameters = Int32x2_from_Int32x2_args;
+    Symbol::Resolved(&Int32x2_from_Int32x2_arg0)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&Int32x2_from_Int32x2)->signature = "i32x2 i32x2(i32x2)"_c;
+    Symbol::Resolved(&Int32x2_from_Int32x2)->name = "i32x2(i32x2)"_c;
+    Symbol::Resolved(&Int32x2_from_Int32x2)->nameWithVarNames = "i32x2(val : i32x2)"_c;
+    Symbol::Resolved(&Int32x2_from_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
     /// i32x2 with Int32
     Int32x2_splat_Int32_arg0.name = "val"_c;
@@ -6351,18 +6427,18 @@ Int32x2::Int32x2()
     Symbol::Resolved(&Int32x2_splat_Int32)->returnTypeSymbol = &Int32x2Type;
 
     /// i32x2 with Bool8x2
-    Int32x2_convert_Bool8x2_arg0.name = "val"_c;
-    Int32x2_convert_Bool8x2_arg0.type = Type::FullType{ Bool8x2Type.name };
-    Int32x2_convert_Bool8x2.documentation = "Convert b8x2 to i32x2"_c;
-    Int32x2_convert_Bool8x2.name = "i32x2"_c;
-    Int32x2_convert_Bool8x2.compileTime = true;
-    Int32x2_convert_Bool8x2.returnType = Type::FullType { Int32x2Type.name };
-    Int32x2_convert_Bool8x2.parameters = Int32x2_convert_Bool8x2_args;
-    Symbol::Resolved(&Int32x2_convert_Bool8x2_arg0)->typeSymbol = &Bool8x2Type;
-    Symbol::Resolved(&Int32x2_convert_Bool8x2)->signature = "i32x2 i32x2(b8x2)"_c;
-    Symbol::Resolved(&Int32x2_convert_Bool8x2)->name = "i32x2(b8x2)"_c;
-    Symbol::Resolved(&Int32x2_convert_Bool8x2)->nameWithVarNames = "i32x2(val : b8x2)"_c;
-    Symbol::Resolved(&Int32x2_convert_Bool8x2)->returnTypeSymbol = &Int32x2Type;
+    Int32x2_from_Bool8x2_arg0.name = "val"_c;
+    Int32x2_from_Bool8x2_arg0.type = Type::FullType{ Bool8x2Type.name };
+    Int32x2_from_Bool8x2.documentation = "Convert from b8x2 to i32x2"_c;
+    Int32x2_from_Bool8x2.name = "i32x2"_c;
+    Int32x2_from_Bool8x2.compileTime = true;
+    Int32x2_from_Bool8x2.returnType = Type::FullType { Int32x2Type.name };
+    Int32x2_from_Bool8x2.parameters = Int32x2_from_Bool8x2_args;
+    Symbol::Resolved(&Int32x2_from_Bool8x2_arg0)->typeSymbol = &Bool8x2Type;
+    Symbol::Resolved(&Int32x2_from_Bool8x2)->signature = "i32x2 i32x2(b8x2)"_c;
+    Symbol::Resolved(&Int32x2_from_Bool8x2)->name = "i32x2(b8x2)"_c;
+    Symbol::Resolved(&Int32x2_from_Bool8x2)->nameWithVarNames = "i32x2(val : b8x2)"_c;
+    Symbol::Resolved(&Int32x2_from_Bool8x2)->returnTypeSymbol = &Int32x2Type;
 
     /// i32x2 with Bool8
     Int32x2_splat_Bool8_arg0.name = "val"_c;
@@ -6379,18 +6455,18 @@ Int32x2::Int32x2()
     Symbol::Resolved(&Int32x2_splat_Bool8)->returnTypeSymbol = &Int32x2Type;
 
     /// i32x2 with Float16x2
-    Int32x2_convert_Float16x2_arg0.name = "val"_c;
-    Int32x2_convert_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
-    Int32x2_convert_Float16x2.documentation = "Convert f16x2 to i32x2"_c;
-    Int32x2_convert_Float16x2.name = "i32x2"_c;
-    Int32x2_convert_Float16x2.compileTime = true;
-    Int32x2_convert_Float16x2.returnType = Type::FullType { Int32x2Type.name };
-    Int32x2_convert_Float16x2.parameters = Int32x2_convert_Float16x2_args;
-    Symbol::Resolved(&Int32x2_convert_Float16x2_arg0)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&Int32x2_convert_Float16x2)->signature = "i32x2 i32x2(f16x2)"_c;
-    Symbol::Resolved(&Int32x2_convert_Float16x2)->name = "i32x2(f16x2)"_c;
-    Symbol::Resolved(&Int32x2_convert_Float16x2)->nameWithVarNames = "i32x2(val : f16x2)"_c;
-    Symbol::Resolved(&Int32x2_convert_Float16x2)->returnTypeSymbol = &Int32x2Type;
+    Int32x2_from_Float16x2_arg0.name = "val"_c;
+    Int32x2_from_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
+    Int32x2_from_Float16x2.documentation = "Convert from f16x2 to i32x2"_c;
+    Int32x2_from_Float16x2.name = "i32x2"_c;
+    Int32x2_from_Float16x2.compileTime = true;
+    Int32x2_from_Float16x2.returnType = Type::FullType { Int32x2Type.name };
+    Int32x2_from_Float16x2.parameters = Int32x2_from_Float16x2_args;
+    Symbol::Resolved(&Int32x2_from_Float16x2_arg0)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&Int32x2_from_Float16x2)->signature = "i32x2 i32x2(f16x2)"_c;
+    Symbol::Resolved(&Int32x2_from_Float16x2)->name = "i32x2(f16x2)"_c;
+    Symbol::Resolved(&Int32x2_from_Float16x2)->nameWithVarNames = "i32x2(val : f16x2)"_c;
+    Symbol::Resolved(&Int32x2_from_Float16x2)->returnTypeSymbol = &Int32x2Type;
 
     /// i32x2 with Float16
     Int32x2_splat_Float16_arg0.name = "val"_c;
@@ -6407,18 +6483,18 @@ Int32x2::Int32x2()
     Symbol::Resolved(&Int32x2_splat_Float16)->returnTypeSymbol = &Int32x2Type;
 
     /// i32x2 with UInt16x2
-    Int32x2_convert_UInt16x2_arg0.name = "val"_c;
-    Int32x2_convert_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
-    Int32x2_convert_UInt16x2.documentation = "Convert u16x2 to i32x2"_c;
-    Int32x2_convert_UInt16x2.name = "i32x2"_c;
-    Int32x2_convert_UInt16x2.compileTime = true;
-    Int32x2_convert_UInt16x2.returnType = Type::FullType { Int32x2Type.name };
-    Int32x2_convert_UInt16x2.parameters = Int32x2_convert_UInt16x2_args;
-    Symbol::Resolved(&Int32x2_convert_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&Int32x2_convert_UInt16x2)->signature = "i32x2 i32x2(u16x2)"_c;
-    Symbol::Resolved(&Int32x2_convert_UInt16x2)->name = "i32x2(u16x2)"_c;
-    Symbol::Resolved(&Int32x2_convert_UInt16x2)->nameWithVarNames = "i32x2(val : u16x2)"_c;
-    Symbol::Resolved(&Int32x2_convert_UInt16x2)->returnTypeSymbol = &Int32x2Type;
+    Int32x2_from_UInt16x2_arg0.name = "val"_c;
+    Int32x2_from_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
+    Int32x2_from_UInt16x2.documentation = "Convert from u16x2 to i32x2"_c;
+    Int32x2_from_UInt16x2.name = "i32x2"_c;
+    Int32x2_from_UInt16x2.compileTime = true;
+    Int32x2_from_UInt16x2.returnType = Type::FullType { Int32x2Type.name };
+    Int32x2_from_UInt16x2.parameters = Int32x2_from_UInt16x2_args;
+    Symbol::Resolved(&Int32x2_from_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&Int32x2_from_UInt16x2)->signature = "i32x2 i32x2(u16x2)"_c;
+    Symbol::Resolved(&Int32x2_from_UInt16x2)->name = "i32x2(u16x2)"_c;
+    Symbol::Resolved(&Int32x2_from_UInt16x2)->nameWithVarNames = "i32x2(val : u16x2)"_c;
+    Symbol::Resolved(&Int32x2_from_UInt16x2)->returnTypeSymbol = &Int32x2Type;
 
     /// i32x2 with UInt16
     Int32x2_splat_UInt16_arg0.name = "val"_c;
@@ -6435,18 +6511,18 @@ Int32x2::Int32x2()
     Symbol::Resolved(&Int32x2_splat_UInt16)->returnTypeSymbol = &Int32x2Type;
 
     /// i32x2 with Int16x2
-    Int32x2_convert_Int16x2_arg0.name = "val"_c;
-    Int32x2_convert_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
-    Int32x2_convert_Int16x2.documentation = "Convert i16x2 to i32x2"_c;
-    Int32x2_convert_Int16x2.name = "i32x2"_c;
-    Int32x2_convert_Int16x2.compileTime = true;
-    Int32x2_convert_Int16x2.returnType = Type::FullType { Int32x2Type.name };
-    Int32x2_convert_Int16x2.parameters = Int32x2_convert_Int16x2_args;
-    Symbol::Resolved(&Int32x2_convert_Int16x2_arg0)->typeSymbol = &Int16x2Type;
-    Symbol::Resolved(&Int32x2_convert_Int16x2)->signature = "i32x2 i32x2(i16x2)"_c;
-    Symbol::Resolved(&Int32x2_convert_Int16x2)->name = "i32x2(i16x2)"_c;
-    Symbol::Resolved(&Int32x2_convert_Int16x2)->nameWithVarNames = "i32x2(val : i16x2)"_c;
-    Symbol::Resolved(&Int32x2_convert_Int16x2)->returnTypeSymbol = &Int32x2Type;
+    Int32x2_from_Int16x2_arg0.name = "val"_c;
+    Int32x2_from_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
+    Int32x2_from_Int16x2.documentation = "Convert from i16x2 to i32x2"_c;
+    Int32x2_from_Int16x2.name = "i32x2"_c;
+    Int32x2_from_Int16x2.compileTime = true;
+    Int32x2_from_Int16x2.returnType = Type::FullType { Int32x2Type.name };
+    Int32x2_from_Int16x2.parameters = Int32x2_from_Int16x2_args;
+    Symbol::Resolved(&Int32x2_from_Int16x2_arg0)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&Int32x2_from_Int16x2)->signature = "i32x2 i32x2(i16x2)"_c;
+    Symbol::Resolved(&Int32x2_from_Int16x2)->name = "i32x2(i16x2)"_c;
+    Symbol::Resolved(&Int32x2_from_Int16x2)->nameWithVarNames = "i32x2(val : i16x2)"_c;
+    Symbol::Resolved(&Int32x2_from_Int16x2)->returnTypeSymbol = &Int32x2Type;
 
     /// i32x2 with Int16
     Int32x2_splat_Int16_arg0.name = "val"_c;
@@ -7034,9 +7110,9 @@ Int32x2::Int32x2()
 Int32x2 Int32x2Type;
 
 /// b8x2 with UInt32x2
-Variable Bool8x2_convert_UInt32x2_arg0;
-Function Bool8x2_convert_UInt32x2;
-inline constexpr std::array Bool8x2_convert_UInt32x2_args = { &Bool8x2_convert_UInt32x2_arg0 };
+Variable Bool8x2_from_UInt32x2_arg0;
+Function Bool8x2_from_UInt32x2;
+inline constexpr std::array Bool8x2_from_UInt32x2_args = { &Bool8x2_from_UInt32x2_arg0 };
 
 /// b8x2 with UInt32
 Variable Bool8x2_splat_UInt32_arg0;
@@ -7044,9 +7120,9 @@ Function Bool8x2_splat_UInt32;
 inline constexpr std::array Bool8x2_splat_UInt32_args = { &Bool8x2_splat_UInt32_arg0 };
 
 /// b8x2 with Int32x2
-Variable Bool8x2_convert_Int32x2_arg0;
-Function Bool8x2_convert_Int32x2;
-inline constexpr std::array Bool8x2_convert_Int32x2_args = { &Bool8x2_convert_Int32x2_arg0 };
+Variable Bool8x2_from_Int32x2_arg0;
+Function Bool8x2_from_Int32x2;
+inline constexpr std::array Bool8x2_from_Int32x2_args = { &Bool8x2_from_Int32x2_arg0 };
 
 /// b8x2 with Int32
 Variable Bool8x2_splat_Int32_arg0;
@@ -7054,9 +7130,9 @@ Function Bool8x2_splat_Int32;
 inline constexpr std::array Bool8x2_splat_Int32_args = { &Bool8x2_splat_Int32_arg0 };
 
 /// b8x2 with Bool8x2
-Variable Bool8x2_convert_Bool8x2_arg0;
-Function Bool8x2_convert_Bool8x2;
-inline constexpr std::array Bool8x2_convert_Bool8x2_args = { &Bool8x2_convert_Bool8x2_arg0 };
+Variable Bool8x2_from_Bool8x2_arg0;
+Function Bool8x2_from_Bool8x2;
+inline constexpr std::array Bool8x2_from_Bool8x2_args = { &Bool8x2_from_Bool8x2_arg0 };
 
 /// b8x2 with Bool8
 Variable Bool8x2_splat_Bool8_arg0;
@@ -7064,9 +7140,9 @@ Function Bool8x2_splat_Bool8;
 inline constexpr std::array Bool8x2_splat_Bool8_args = { &Bool8x2_splat_Bool8_arg0 };
 
 /// b8x2 with UInt16x2
-Variable Bool8x2_convert_UInt16x2_arg0;
-Function Bool8x2_convert_UInt16x2;
-inline constexpr std::array Bool8x2_convert_UInt16x2_args = { &Bool8x2_convert_UInt16x2_arg0 };
+Variable Bool8x2_from_UInt16x2_arg0;
+Function Bool8x2_from_UInt16x2;
+inline constexpr std::array Bool8x2_from_UInt16x2_args = { &Bool8x2_from_UInt16x2_arg0 };
 
 /// b8x2 with UInt16
 Variable Bool8x2_splat_UInt16_arg0;
@@ -7074,9 +7150,9 @@ Function Bool8x2_splat_UInt16;
 inline constexpr std::array Bool8x2_splat_UInt16_args = { &Bool8x2_splat_UInt16_arg0 };
 
 /// b8x2 with Int16x2
-Variable Bool8x2_convert_Int16x2_arg0;
-Function Bool8x2_convert_Int16x2;
-inline constexpr std::array Bool8x2_convert_Int16x2_args = { &Bool8x2_convert_Int16x2_arg0 };
+Variable Bool8x2_from_Int16x2_arg0;
+Function Bool8x2_from_Int16x2;
+inline constexpr std::array Bool8x2_from_Int16x2_args = { &Bool8x2_from_Int16x2_arg0 };
 
 /// b8x2 with Int16
 Variable Bool8x2_splat_Int16_arg0;
@@ -7140,18 +7216,18 @@ Bool8x2::Bool8x2()
     this->builtin = true;
 
     /// b8x2 with UInt32x2
-    Bool8x2_convert_UInt32x2_arg0.name = "val"_c;
-    Bool8x2_convert_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
-    Bool8x2_convert_UInt32x2.documentation = "Convert u32x2 to b8x2"_c;
-    Bool8x2_convert_UInt32x2.name = "b8x2"_c;
-    Bool8x2_convert_UInt32x2.compileTime = true;
-    Bool8x2_convert_UInt32x2.returnType = Type::FullType { Bool8x2Type.name };
-    Bool8x2_convert_UInt32x2.parameters = Bool8x2_convert_UInt32x2_args;
-    Symbol::Resolved(&Bool8x2_convert_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
-    Symbol::Resolved(&Bool8x2_convert_UInt32x2)->signature = "b8x2 b8x2(u32x2)"_c;
-    Symbol::Resolved(&Bool8x2_convert_UInt32x2)->name = "b8x2(u32x2)"_c;
-    Symbol::Resolved(&Bool8x2_convert_UInt32x2)->nameWithVarNames = "b8x2(val : u32x2)"_c;
-    Symbol::Resolved(&Bool8x2_convert_UInt32x2)->returnTypeSymbol = &Bool8x2Type;
+    Bool8x2_from_UInt32x2_arg0.name = "val"_c;
+    Bool8x2_from_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
+    Bool8x2_from_UInt32x2.documentation = "Convert from u32x2 to b8x2"_c;
+    Bool8x2_from_UInt32x2.name = "b8x2"_c;
+    Bool8x2_from_UInt32x2.compileTime = true;
+    Bool8x2_from_UInt32x2.returnType = Type::FullType { Bool8x2Type.name };
+    Bool8x2_from_UInt32x2.parameters = Bool8x2_from_UInt32x2_args;
+    Symbol::Resolved(&Bool8x2_from_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&Bool8x2_from_UInt32x2)->signature = "b8x2 b8x2(u32x2)"_c;
+    Symbol::Resolved(&Bool8x2_from_UInt32x2)->name = "b8x2(u32x2)"_c;
+    Symbol::Resolved(&Bool8x2_from_UInt32x2)->nameWithVarNames = "b8x2(val : u32x2)"_c;
+    Symbol::Resolved(&Bool8x2_from_UInt32x2)->returnTypeSymbol = &Bool8x2Type;
 
     /// b8x2 with UInt32
     Bool8x2_splat_UInt32_arg0.name = "val"_c;
@@ -7168,18 +7244,18 @@ Bool8x2::Bool8x2()
     Symbol::Resolved(&Bool8x2_splat_UInt32)->returnTypeSymbol = &Bool8x2Type;
 
     /// b8x2 with Int32x2
-    Bool8x2_convert_Int32x2_arg0.name = "val"_c;
-    Bool8x2_convert_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
-    Bool8x2_convert_Int32x2.documentation = "Convert i32x2 to b8x2"_c;
-    Bool8x2_convert_Int32x2.name = "b8x2"_c;
-    Bool8x2_convert_Int32x2.compileTime = true;
-    Bool8x2_convert_Int32x2.returnType = Type::FullType { Bool8x2Type.name };
-    Bool8x2_convert_Int32x2.parameters = Bool8x2_convert_Int32x2_args;
-    Symbol::Resolved(&Bool8x2_convert_Int32x2_arg0)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&Bool8x2_convert_Int32x2)->signature = "b8x2 b8x2(i32x2)"_c;
-    Symbol::Resolved(&Bool8x2_convert_Int32x2)->name = "b8x2(i32x2)"_c;
-    Symbol::Resolved(&Bool8x2_convert_Int32x2)->nameWithVarNames = "b8x2(val : i32x2)"_c;
-    Symbol::Resolved(&Bool8x2_convert_Int32x2)->returnTypeSymbol = &Bool8x2Type;
+    Bool8x2_from_Int32x2_arg0.name = "val"_c;
+    Bool8x2_from_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
+    Bool8x2_from_Int32x2.documentation = "Convert from i32x2 to b8x2"_c;
+    Bool8x2_from_Int32x2.name = "b8x2"_c;
+    Bool8x2_from_Int32x2.compileTime = true;
+    Bool8x2_from_Int32x2.returnType = Type::FullType { Bool8x2Type.name };
+    Bool8x2_from_Int32x2.parameters = Bool8x2_from_Int32x2_args;
+    Symbol::Resolved(&Bool8x2_from_Int32x2_arg0)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&Bool8x2_from_Int32x2)->signature = "b8x2 b8x2(i32x2)"_c;
+    Symbol::Resolved(&Bool8x2_from_Int32x2)->name = "b8x2(i32x2)"_c;
+    Symbol::Resolved(&Bool8x2_from_Int32x2)->nameWithVarNames = "b8x2(val : i32x2)"_c;
+    Symbol::Resolved(&Bool8x2_from_Int32x2)->returnTypeSymbol = &Bool8x2Type;
 
     /// b8x2 with Int32
     Bool8x2_splat_Int32_arg0.name = "val"_c;
@@ -7196,18 +7272,18 @@ Bool8x2::Bool8x2()
     Symbol::Resolved(&Bool8x2_splat_Int32)->returnTypeSymbol = &Bool8x2Type;
 
     /// b8x2 with Bool8x2
-    Bool8x2_convert_Bool8x2_arg0.name = "val"_c;
-    Bool8x2_convert_Bool8x2_arg0.type = Type::FullType{ Bool8x2Type.name };
-    Bool8x2_convert_Bool8x2.documentation = "Convert b8x2 to b8x2"_c;
-    Bool8x2_convert_Bool8x2.name = "b8x2"_c;
-    Bool8x2_convert_Bool8x2.compileTime = true;
-    Bool8x2_convert_Bool8x2.returnType = Type::FullType { Bool8x2Type.name };
-    Bool8x2_convert_Bool8x2.parameters = Bool8x2_convert_Bool8x2_args;
-    Symbol::Resolved(&Bool8x2_convert_Bool8x2_arg0)->typeSymbol = &Bool8x2Type;
-    Symbol::Resolved(&Bool8x2_convert_Bool8x2)->signature = "b8x2 b8x2(b8x2)"_c;
-    Symbol::Resolved(&Bool8x2_convert_Bool8x2)->name = "b8x2(b8x2)"_c;
-    Symbol::Resolved(&Bool8x2_convert_Bool8x2)->nameWithVarNames = "b8x2(val : b8x2)"_c;
-    Symbol::Resolved(&Bool8x2_convert_Bool8x2)->returnTypeSymbol = &Bool8x2Type;
+    Bool8x2_from_Bool8x2_arg0.name = "val"_c;
+    Bool8x2_from_Bool8x2_arg0.type = Type::FullType{ Bool8x2Type.name };
+    Bool8x2_from_Bool8x2.documentation = "Convert from b8x2 to b8x2"_c;
+    Bool8x2_from_Bool8x2.name = "b8x2"_c;
+    Bool8x2_from_Bool8x2.compileTime = true;
+    Bool8x2_from_Bool8x2.returnType = Type::FullType { Bool8x2Type.name };
+    Bool8x2_from_Bool8x2.parameters = Bool8x2_from_Bool8x2_args;
+    Symbol::Resolved(&Bool8x2_from_Bool8x2_arg0)->typeSymbol = &Bool8x2Type;
+    Symbol::Resolved(&Bool8x2_from_Bool8x2)->signature = "b8x2 b8x2(b8x2)"_c;
+    Symbol::Resolved(&Bool8x2_from_Bool8x2)->name = "b8x2(b8x2)"_c;
+    Symbol::Resolved(&Bool8x2_from_Bool8x2)->nameWithVarNames = "b8x2(val : b8x2)"_c;
+    Symbol::Resolved(&Bool8x2_from_Bool8x2)->returnTypeSymbol = &Bool8x2Type;
 
     /// b8x2 with Bool8
     Bool8x2_splat_Bool8_arg0.name = "val"_c;
@@ -7224,18 +7300,18 @@ Bool8x2::Bool8x2()
     Symbol::Resolved(&Bool8x2_splat_Bool8)->returnTypeSymbol = &Bool8x2Type;
 
     /// b8x2 with UInt16x2
-    Bool8x2_convert_UInt16x2_arg0.name = "val"_c;
-    Bool8x2_convert_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
-    Bool8x2_convert_UInt16x2.documentation = "Convert u16x2 to b8x2"_c;
-    Bool8x2_convert_UInt16x2.name = "b8x2"_c;
-    Bool8x2_convert_UInt16x2.compileTime = true;
-    Bool8x2_convert_UInt16x2.returnType = Type::FullType { Bool8x2Type.name };
-    Bool8x2_convert_UInt16x2.parameters = Bool8x2_convert_UInt16x2_args;
-    Symbol::Resolved(&Bool8x2_convert_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&Bool8x2_convert_UInt16x2)->signature = "b8x2 b8x2(u16x2)"_c;
-    Symbol::Resolved(&Bool8x2_convert_UInt16x2)->name = "b8x2(u16x2)"_c;
-    Symbol::Resolved(&Bool8x2_convert_UInt16x2)->nameWithVarNames = "b8x2(val : u16x2)"_c;
-    Symbol::Resolved(&Bool8x2_convert_UInt16x2)->returnTypeSymbol = &Bool8x2Type;
+    Bool8x2_from_UInt16x2_arg0.name = "val"_c;
+    Bool8x2_from_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
+    Bool8x2_from_UInt16x2.documentation = "Convert from u16x2 to b8x2"_c;
+    Bool8x2_from_UInt16x2.name = "b8x2"_c;
+    Bool8x2_from_UInt16x2.compileTime = true;
+    Bool8x2_from_UInt16x2.returnType = Type::FullType { Bool8x2Type.name };
+    Bool8x2_from_UInt16x2.parameters = Bool8x2_from_UInt16x2_args;
+    Symbol::Resolved(&Bool8x2_from_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&Bool8x2_from_UInt16x2)->signature = "b8x2 b8x2(u16x2)"_c;
+    Symbol::Resolved(&Bool8x2_from_UInt16x2)->name = "b8x2(u16x2)"_c;
+    Symbol::Resolved(&Bool8x2_from_UInt16x2)->nameWithVarNames = "b8x2(val : u16x2)"_c;
+    Symbol::Resolved(&Bool8x2_from_UInt16x2)->returnTypeSymbol = &Bool8x2Type;
 
     /// b8x2 with UInt16
     Bool8x2_splat_UInt16_arg0.name = "val"_c;
@@ -7252,18 +7328,18 @@ Bool8x2::Bool8x2()
     Symbol::Resolved(&Bool8x2_splat_UInt16)->returnTypeSymbol = &Bool8x2Type;
 
     /// b8x2 with Int16x2
-    Bool8x2_convert_Int16x2_arg0.name = "val"_c;
-    Bool8x2_convert_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
-    Bool8x2_convert_Int16x2.documentation = "Convert i16x2 to b8x2"_c;
-    Bool8x2_convert_Int16x2.name = "b8x2"_c;
-    Bool8x2_convert_Int16x2.compileTime = true;
-    Bool8x2_convert_Int16x2.returnType = Type::FullType { Bool8x2Type.name };
-    Bool8x2_convert_Int16x2.parameters = Bool8x2_convert_Int16x2_args;
-    Symbol::Resolved(&Bool8x2_convert_Int16x2_arg0)->typeSymbol = &Int16x2Type;
-    Symbol::Resolved(&Bool8x2_convert_Int16x2)->signature = "b8x2 b8x2(i16x2)"_c;
-    Symbol::Resolved(&Bool8x2_convert_Int16x2)->name = "b8x2(i16x2)"_c;
-    Symbol::Resolved(&Bool8x2_convert_Int16x2)->nameWithVarNames = "b8x2(val : i16x2)"_c;
-    Symbol::Resolved(&Bool8x2_convert_Int16x2)->returnTypeSymbol = &Bool8x2Type;
+    Bool8x2_from_Int16x2_arg0.name = "val"_c;
+    Bool8x2_from_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
+    Bool8x2_from_Int16x2.documentation = "Convert from i16x2 to b8x2"_c;
+    Bool8x2_from_Int16x2.name = "b8x2"_c;
+    Bool8x2_from_Int16x2.compileTime = true;
+    Bool8x2_from_Int16x2.returnType = Type::FullType { Bool8x2Type.name };
+    Bool8x2_from_Int16x2.parameters = Bool8x2_from_Int16x2_args;
+    Symbol::Resolved(&Bool8x2_from_Int16x2_arg0)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&Bool8x2_from_Int16x2)->signature = "b8x2 b8x2(i16x2)"_c;
+    Symbol::Resolved(&Bool8x2_from_Int16x2)->name = "b8x2(i16x2)"_c;
+    Symbol::Resolved(&Bool8x2_from_Int16x2)->nameWithVarNames = "b8x2(val : i16x2)"_c;
+    Symbol::Resolved(&Bool8x2_from_Int16x2)->returnTypeSymbol = &Bool8x2Type;
 
     /// b8x2 with Int16
     Bool8x2_splat_Int16_arg0.name = "val"_c;
@@ -7473,9 +7549,9 @@ Bool8x2::Bool8x2()
 Bool8x2 Bool8x2Type;
 
 /// f16x2 with Float32x2
-Variable Float16x2_convert_Float32x2_arg0;
-Function Float16x2_convert_Float32x2;
-inline constexpr std::array Float16x2_convert_Float32x2_args = { &Float16x2_convert_Float32x2_arg0 };
+Variable Float16x2_from_Float32x2_arg0;
+Function Float16x2_from_Float32x2;
+inline constexpr std::array Float16x2_from_Float32x2_args = { &Float16x2_from_Float32x2_arg0 };
 
 /// f16x2 with Float32
 Variable Float16x2_splat_Float32_arg0;
@@ -7483,9 +7559,9 @@ Function Float16x2_splat_Float32;
 inline constexpr std::array Float16x2_splat_Float32_args = { &Float16x2_splat_Float32_arg0 };
 
 /// f16x2 with UInt32x2
-Variable Float16x2_convert_UInt32x2_arg0;
-Function Float16x2_convert_UInt32x2;
-inline constexpr std::array Float16x2_convert_UInt32x2_args = { &Float16x2_convert_UInt32x2_arg0 };
+Variable Float16x2_from_UInt32x2_arg0;
+Function Float16x2_from_UInt32x2;
+inline constexpr std::array Float16x2_from_UInt32x2_args = { &Float16x2_from_UInt32x2_arg0 };
 
 /// f16x2 with UInt32
 Variable Float16x2_splat_UInt32_arg0;
@@ -7493,19 +7569,29 @@ Function Float16x2_splat_UInt32;
 inline constexpr std::array Float16x2_splat_UInt32_args = { &Float16x2_splat_UInt32_arg0 };
 
 /// f16x2 with Int32x2
-Variable Float16x2_convert_Int32x2_arg0;
-Function Float16x2_convert_Int32x2;
-inline constexpr std::array Float16x2_convert_Int32x2_args = { &Float16x2_convert_Int32x2_arg0 };
+Variable Float16x2_from_Int32x2_arg0;
+Function Float16x2_from_Int32x2;
+inline constexpr std::array Float16x2_from_Int32x2_args = { &Float16x2_from_Int32x2_arg0 };
 
 /// f16x2 with Int32
 Variable Float16x2_splat_Int32_arg0;
 Function Float16x2_splat_Int32;
 inline constexpr std::array Float16x2_splat_Int32_args = { &Float16x2_splat_Int32_arg0 };
 
+/// f16x2 with Bool8x2
+Variable Float16x2_from_Bool8x2_arg0;
+Function Float16x2_from_Bool8x2;
+inline constexpr std::array Float16x2_from_Bool8x2_args = { &Float16x2_from_Bool8x2_arg0 };
+
+/// f16x2 with Bool8
+Variable Float16x2_splat_Bool8_arg0;
+Function Float16x2_splat_Bool8;
+inline constexpr std::array Float16x2_splat_Bool8_args = { &Float16x2_splat_Bool8_arg0 };
+
 /// f16x2 with Float16x2
-Variable Float16x2_convert_Float16x2_arg0;
-Function Float16x2_convert_Float16x2;
-inline constexpr std::array Float16x2_convert_Float16x2_args = { &Float16x2_convert_Float16x2_arg0 };
+Variable Float16x2_from_Float16x2_arg0;
+Function Float16x2_from_Float16x2;
+inline constexpr std::array Float16x2_from_Float16x2_args = { &Float16x2_from_Float16x2_arg0 };
 
 /// f16x2 with Float16
 Variable Float16x2_splat_Float16_arg0;
@@ -7513,9 +7599,9 @@ Function Float16x2_splat_Float16;
 inline constexpr std::array Float16x2_splat_Float16_args = { &Float16x2_splat_Float16_arg0 };
 
 /// f16x2 with UInt16x2
-Variable Float16x2_convert_UInt16x2_arg0;
-Function Float16x2_convert_UInt16x2;
-inline constexpr std::array Float16x2_convert_UInt16x2_args = { &Float16x2_convert_UInt16x2_arg0 };
+Variable Float16x2_from_UInt16x2_arg0;
+Function Float16x2_from_UInt16x2;
+inline constexpr std::array Float16x2_from_UInt16x2_args = { &Float16x2_from_UInt16x2_arg0 };
 
 /// f16x2 with UInt16
 Variable Float16x2_splat_UInt16_arg0;
@@ -7523,9 +7609,9 @@ Function Float16x2_splat_UInt16;
 inline constexpr std::array Float16x2_splat_UInt16_args = { &Float16x2_splat_UInt16_arg0 };
 
 /// f16x2 with Int16x2
-Variable Float16x2_convert_Int16x2_arg0;
-Function Float16x2_convert_Int16x2;
-inline constexpr std::array Float16x2_convert_Int16x2_args = { &Float16x2_convert_Int16x2_arg0 };
+Variable Float16x2_from_Int16x2_arg0;
+Function Float16x2_from_Int16x2;
+inline constexpr std::array Float16x2_from_Int16x2_args = { &Float16x2_from_Int16x2_arg0 };
 
 /// f16x2 with Int16
 Variable Float16x2_splat_Int16_arg0;
@@ -7689,18 +7775,18 @@ Float16x2::Float16x2()
     this->builtin = true;
 
     /// f16x2 with Float32x2
-    Float16x2_convert_Float32x2_arg0.name = "val"_c;
-    Float16x2_convert_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
-    Float16x2_convert_Float32x2.documentation = "Convert f32x2 to f16x2"_c;
-    Float16x2_convert_Float32x2.name = "f16x2"_c;
-    Float16x2_convert_Float32x2.compileTime = true;
-    Float16x2_convert_Float32x2.returnType = Type::FullType { Float16x2Type.name };
-    Float16x2_convert_Float32x2.parameters = Float16x2_convert_Float32x2_args;
-    Symbol::Resolved(&Float16x2_convert_Float32x2_arg0)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&Float16x2_convert_Float32x2)->signature = "f16x2 f16x2(f32x2)"_c;
-    Symbol::Resolved(&Float16x2_convert_Float32x2)->name = "f16x2(f32x2)"_c;
-    Symbol::Resolved(&Float16x2_convert_Float32x2)->nameWithVarNames = "f16x2(val : f32x2)"_c;
-    Symbol::Resolved(&Float16x2_convert_Float32x2)->returnTypeSymbol = &Float16x2Type;
+    Float16x2_from_Float32x2_arg0.name = "val"_c;
+    Float16x2_from_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
+    Float16x2_from_Float32x2.documentation = "Convert from f32x2 to f16x2"_c;
+    Float16x2_from_Float32x2.name = "f16x2"_c;
+    Float16x2_from_Float32x2.compileTime = true;
+    Float16x2_from_Float32x2.returnType = Type::FullType { Float16x2Type.name };
+    Float16x2_from_Float32x2.parameters = Float16x2_from_Float32x2_args;
+    Symbol::Resolved(&Float16x2_from_Float32x2_arg0)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&Float16x2_from_Float32x2)->signature = "f16x2 f16x2(f32x2)"_c;
+    Symbol::Resolved(&Float16x2_from_Float32x2)->name = "f16x2(f32x2)"_c;
+    Symbol::Resolved(&Float16x2_from_Float32x2)->nameWithVarNames = "f16x2(val : f32x2)"_c;
+    Symbol::Resolved(&Float16x2_from_Float32x2)->returnTypeSymbol = &Float16x2Type;
 
     /// f16x2 with Float32
     Float16x2_splat_Float32_arg0.name = "val"_c;
@@ -7717,18 +7803,18 @@ Float16x2::Float16x2()
     Symbol::Resolved(&Float16x2_splat_Float32)->returnTypeSymbol = &Float16x2Type;
 
     /// f16x2 with UInt32x2
-    Float16x2_convert_UInt32x2_arg0.name = "val"_c;
-    Float16x2_convert_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
-    Float16x2_convert_UInt32x2.documentation = "Convert u32x2 to f16x2"_c;
-    Float16x2_convert_UInt32x2.name = "f16x2"_c;
-    Float16x2_convert_UInt32x2.compileTime = true;
-    Float16x2_convert_UInt32x2.returnType = Type::FullType { Float16x2Type.name };
-    Float16x2_convert_UInt32x2.parameters = Float16x2_convert_UInt32x2_args;
-    Symbol::Resolved(&Float16x2_convert_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
-    Symbol::Resolved(&Float16x2_convert_UInt32x2)->signature = "f16x2 f16x2(u32x2)"_c;
-    Symbol::Resolved(&Float16x2_convert_UInt32x2)->name = "f16x2(u32x2)"_c;
-    Symbol::Resolved(&Float16x2_convert_UInt32x2)->nameWithVarNames = "f16x2(val : u32x2)"_c;
-    Symbol::Resolved(&Float16x2_convert_UInt32x2)->returnTypeSymbol = &Float16x2Type;
+    Float16x2_from_UInt32x2_arg0.name = "val"_c;
+    Float16x2_from_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
+    Float16x2_from_UInt32x2.documentation = "Convert from u32x2 to f16x2"_c;
+    Float16x2_from_UInt32x2.name = "f16x2"_c;
+    Float16x2_from_UInt32x2.compileTime = true;
+    Float16x2_from_UInt32x2.returnType = Type::FullType { Float16x2Type.name };
+    Float16x2_from_UInt32x2.parameters = Float16x2_from_UInt32x2_args;
+    Symbol::Resolved(&Float16x2_from_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&Float16x2_from_UInt32x2)->signature = "f16x2 f16x2(u32x2)"_c;
+    Symbol::Resolved(&Float16x2_from_UInt32x2)->name = "f16x2(u32x2)"_c;
+    Symbol::Resolved(&Float16x2_from_UInt32x2)->nameWithVarNames = "f16x2(val : u32x2)"_c;
+    Symbol::Resolved(&Float16x2_from_UInt32x2)->returnTypeSymbol = &Float16x2Type;
 
     /// f16x2 with UInt32
     Float16x2_splat_UInt32_arg0.name = "val"_c;
@@ -7745,18 +7831,18 @@ Float16x2::Float16x2()
     Symbol::Resolved(&Float16x2_splat_UInt32)->returnTypeSymbol = &Float16x2Type;
 
     /// f16x2 with Int32x2
-    Float16x2_convert_Int32x2_arg0.name = "val"_c;
-    Float16x2_convert_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
-    Float16x2_convert_Int32x2.documentation = "Convert i32x2 to f16x2"_c;
-    Float16x2_convert_Int32x2.name = "f16x2"_c;
-    Float16x2_convert_Int32x2.compileTime = true;
-    Float16x2_convert_Int32x2.returnType = Type::FullType { Float16x2Type.name };
-    Float16x2_convert_Int32x2.parameters = Float16x2_convert_Int32x2_args;
-    Symbol::Resolved(&Float16x2_convert_Int32x2_arg0)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&Float16x2_convert_Int32x2)->signature = "f16x2 f16x2(i32x2)"_c;
-    Symbol::Resolved(&Float16x2_convert_Int32x2)->name = "f16x2(i32x2)"_c;
-    Symbol::Resolved(&Float16x2_convert_Int32x2)->nameWithVarNames = "f16x2(val : i32x2)"_c;
-    Symbol::Resolved(&Float16x2_convert_Int32x2)->returnTypeSymbol = &Float16x2Type;
+    Float16x2_from_Int32x2_arg0.name = "val"_c;
+    Float16x2_from_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
+    Float16x2_from_Int32x2.documentation = "Convert from i32x2 to f16x2"_c;
+    Float16x2_from_Int32x2.name = "f16x2"_c;
+    Float16x2_from_Int32x2.compileTime = true;
+    Float16x2_from_Int32x2.returnType = Type::FullType { Float16x2Type.name };
+    Float16x2_from_Int32x2.parameters = Float16x2_from_Int32x2_args;
+    Symbol::Resolved(&Float16x2_from_Int32x2_arg0)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&Float16x2_from_Int32x2)->signature = "f16x2 f16x2(i32x2)"_c;
+    Symbol::Resolved(&Float16x2_from_Int32x2)->name = "f16x2(i32x2)"_c;
+    Symbol::Resolved(&Float16x2_from_Int32x2)->nameWithVarNames = "f16x2(val : i32x2)"_c;
+    Symbol::Resolved(&Float16x2_from_Int32x2)->returnTypeSymbol = &Float16x2Type;
 
     /// f16x2 with Int32
     Float16x2_splat_Int32_arg0.name = "val"_c;
@@ -7772,19 +7858,47 @@ Float16x2::Float16x2()
     Symbol::Resolved(&Float16x2_splat_Int32)->nameWithVarNames = "f16x2(val : i32)"_c;
     Symbol::Resolved(&Float16x2_splat_Int32)->returnTypeSymbol = &Float16x2Type;
 
+    /// f16x2 with Bool8x2
+    Float16x2_from_Bool8x2_arg0.name = "val"_c;
+    Float16x2_from_Bool8x2_arg0.type = Type::FullType{ Bool8x2Type.name };
+    Float16x2_from_Bool8x2.documentation = "Convert from b8x2 to f16x2"_c;
+    Float16x2_from_Bool8x2.name = "f16x2"_c;
+    Float16x2_from_Bool8x2.compileTime = true;
+    Float16x2_from_Bool8x2.returnType = Type::FullType { Float16x2Type.name };
+    Float16x2_from_Bool8x2.parameters = Float16x2_from_Bool8x2_args;
+    Symbol::Resolved(&Float16x2_from_Bool8x2_arg0)->typeSymbol = &Bool8x2Type;
+    Symbol::Resolved(&Float16x2_from_Bool8x2)->signature = "f16x2 f16x2(b8x2)"_c;
+    Symbol::Resolved(&Float16x2_from_Bool8x2)->name = "f16x2(b8x2)"_c;
+    Symbol::Resolved(&Float16x2_from_Bool8x2)->nameWithVarNames = "f16x2(val : b8x2)"_c;
+    Symbol::Resolved(&Float16x2_from_Bool8x2)->returnTypeSymbol = &Float16x2Type;
+
+    /// f16x2 with Bool8
+    Float16x2_splat_Bool8_arg0.name = "val"_c;
+    Float16x2_splat_Bool8_arg0.type = Type::FullType{ Bool8Type.name };
+    Float16x2_splat_Bool8.documentation = "Splat b8 to f16x2"_c;
+    Float16x2_splat_Bool8.name = "f16x2"_c;
+    Float16x2_splat_Bool8.compileTime = true;
+    Float16x2_splat_Bool8.returnType = Type::FullType { Float16x2Type.name };
+    Float16x2_splat_Bool8.parameters = Float16x2_splat_Bool8_args;
+    Symbol::Resolved(&Float16x2_splat_Bool8_arg0)->typeSymbol = &Bool8Type;
+    Symbol::Resolved(&Float16x2_splat_Bool8)->signature = "f16x2 f16x2(b8)"_c;
+    Symbol::Resolved(&Float16x2_splat_Bool8)->name = "f16x2(b8)"_c;
+    Symbol::Resolved(&Float16x2_splat_Bool8)->nameWithVarNames = "f16x2(val : b8)"_c;
+    Symbol::Resolved(&Float16x2_splat_Bool8)->returnTypeSymbol = &Float16x2Type;
+
     /// f16x2 with Float16x2
-    Float16x2_convert_Float16x2_arg0.name = "val"_c;
-    Float16x2_convert_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
-    Float16x2_convert_Float16x2.documentation = "Convert f16x2 to f16x2"_c;
-    Float16x2_convert_Float16x2.name = "f16x2"_c;
-    Float16x2_convert_Float16x2.compileTime = true;
-    Float16x2_convert_Float16x2.returnType = Type::FullType { Float16x2Type.name };
-    Float16x2_convert_Float16x2.parameters = Float16x2_convert_Float16x2_args;
-    Symbol::Resolved(&Float16x2_convert_Float16x2_arg0)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&Float16x2_convert_Float16x2)->signature = "f16x2 f16x2(f16x2)"_c;
-    Symbol::Resolved(&Float16x2_convert_Float16x2)->name = "f16x2(f16x2)"_c;
-    Symbol::Resolved(&Float16x2_convert_Float16x2)->nameWithVarNames = "f16x2(val : f16x2)"_c;
-    Symbol::Resolved(&Float16x2_convert_Float16x2)->returnTypeSymbol = &Float16x2Type;
+    Float16x2_from_Float16x2_arg0.name = "val"_c;
+    Float16x2_from_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
+    Float16x2_from_Float16x2.documentation = "Convert from f16x2 to f16x2"_c;
+    Float16x2_from_Float16x2.name = "f16x2"_c;
+    Float16x2_from_Float16x2.compileTime = true;
+    Float16x2_from_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    Float16x2_from_Float16x2.parameters = Float16x2_from_Float16x2_args;
+    Symbol::Resolved(&Float16x2_from_Float16x2_arg0)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&Float16x2_from_Float16x2)->signature = "f16x2 f16x2(f16x2)"_c;
+    Symbol::Resolved(&Float16x2_from_Float16x2)->name = "f16x2(f16x2)"_c;
+    Symbol::Resolved(&Float16x2_from_Float16x2)->nameWithVarNames = "f16x2(val : f16x2)"_c;
+    Symbol::Resolved(&Float16x2_from_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
     /// f16x2 with Float16
     Float16x2_splat_Float16_arg0.name = "val"_c;
@@ -7801,18 +7915,18 @@ Float16x2::Float16x2()
     Symbol::Resolved(&Float16x2_splat_Float16)->returnTypeSymbol = &Float16x2Type;
 
     /// f16x2 with UInt16x2
-    Float16x2_convert_UInt16x2_arg0.name = "val"_c;
-    Float16x2_convert_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
-    Float16x2_convert_UInt16x2.documentation = "Convert u16x2 to f16x2"_c;
-    Float16x2_convert_UInt16x2.name = "f16x2"_c;
-    Float16x2_convert_UInt16x2.compileTime = true;
-    Float16x2_convert_UInt16x2.returnType = Type::FullType { Float16x2Type.name };
-    Float16x2_convert_UInt16x2.parameters = Float16x2_convert_UInt16x2_args;
-    Symbol::Resolved(&Float16x2_convert_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&Float16x2_convert_UInt16x2)->signature = "f16x2 f16x2(u16x2)"_c;
-    Symbol::Resolved(&Float16x2_convert_UInt16x2)->name = "f16x2(u16x2)"_c;
-    Symbol::Resolved(&Float16x2_convert_UInt16x2)->nameWithVarNames = "f16x2(val : u16x2)"_c;
-    Symbol::Resolved(&Float16x2_convert_UInt16x2)->returnTypeSymbol = &Float16x2Type;
+    Float16x2_from_UInt16x2_arg0.name = "val"_c;
+    Float16x2_from_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
+    Float16x2_from_UInt16x2.documentation = "Convert from u16x2 to f16x2"_c;
+    Float16x2_from_UInt16x2.name = "f16x2"_c;
+    Float16x2_from_UInt16x2.compileTime = true;
+    Float16x2_from_UInt16x2.returnType = Type::FullType { Float16x2Type.name };
+    Float16x2_from_UInt16x2.parameters = Float16x2_from_UInt16x2_args;
+    Symbol::Resolved(&Float16x2_from_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&Float16x2_from_UInt16x2)->signature = "f16x2 f16x2(u16x2)"_c;
+    Symbol::Resolved(&Float16x2_from_UInt16x2)->name = "f16x2(u16x2)"_c;
+    Symbol::Resolved(&Float16x2_from_UInt16x2)->nameWithVarNames = "f16x2(val : u16x2)"_c;
+    Symbol::Resolved(&Float16x2_from_UInt16x2)->returnTypeSymbol = &Float16x2Type;
 
     /// f16x2 with UInt16
     Float16x2_splat_UInt16_arg0.name = "val"_c;
@@ -7829,18 +7943,18 @@ Float16x2::Float16x2()
     Symbol::Resolved(&Float16x2_splat_UInt16)->returnTypeSymbol = &Float16x2Type;
 
     /// f16x2 with Int16x2
-    Float16x2_convert_Int16x2_arg0.name = "val"_c;
-    Float16x2_convert_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
-    Float16x2_convert_Int16x2.documentation = "Convert i16x2 to f16x2"_c;
-    Float16x2_convert_Int16x2.name = "f16x2"_c;
-    Float16x2_convert_Int16x2.compileTime = true;
-    Float16x2_convert_Int16x2.returnType = Type::FullType { Float16x2Type.name };
-    Float16x2_convert_Int16x2.parameters = Float16x2_convert_Int16x2_args;
-    Symbol::Resolved(&Float16x2_convert_Int16x2_arg0)->typeSymbol = &Int16x2Type;
-    Symbol::Resolved(&Float16x2_convert_Int16x2)->signature = "f16x2 f16x2(i16x2)"_c;
-    Symbol::Resolved(&Float16x2_convert_Int16x2)->name = "f16x2(i16x2)"_c;
-    Symbol::Resolved(&Float16x2_convert_Int16x2)->nameWithVarNames = "f16x2(val : i16x2)"_c;
-    Symbol::Resolved(&Float16x2_convert_Int16x2)->returnTypeSymbol = &Float16x2Type;
+    Float16x2_from_Int16x2_arg0.name = "val"_c;
+    Float16x2_from_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
+    Float16x2_from_Int16x2.documentation = "Convert from i16x2 to f16x2"_c;
+    Float16x2_from_Int16x2.name = "f16x2"_c;
+    Float16x2_from_Int16x2.compileTime = true;
+    Float16x2_from_Int16x2.returnType = Type::FullType { Float16x2Type.name };
+    Float16x2_from_Int16x2.parameters = Float16x2_from_Int16x2_args;
+    Symbol::Resolved(&Float16x2_from_Int16x2_arg0)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&Float16x2_from_Int16x2)->signature = "f16x2 f16x2(i16x2)"_c;
+    Symbol::Resolved(&Float16x2_from_Int16x2)->name = "f16x2(i16x2)"_c;
+    Symbol::Resolved(&Float16x2_from_Int16x2)->nameWithVarNames = "f16x2(val : i16x2)"_c;
+    Symbol::Resolved(&Float16x2_from_Int16x2)->returnTypeSymbol = &Float16x2Type;
 
     /// f16x2 with Int16
     Float16x2_splat_Int16_arg0.name = "val"_c;
@@ -8330,9 +8444,9 @@ Float16x2::Float16x2()
 Float16x2 Float16x2Type;
 
 /// u16x2 with Float32x2
-Variable UInt16x2_convert_Float32x2_arg0;
-Function UInt16x2_convert_Float32x2;
-inline constexpr std::array UInt16x2_convert_Float32x2_args = { &UInt16x2_convert_Float32x2_arg0 };
+Variable UInt16x2_from_Float32x2_arg0;
+Function UInt16x2_from_Float32x2;
+inline constexpr std::array UInt16x2_from_Float32x2_args = { &UInt16x2_from_Float32x2_arg0 };
 
 /// u16x2 with Float32
 Variable UInt16x2_splat_Float32_arg0;
@@ -8340,9 +8454,9 @@ Function UInt16x2_splat_Float32;
 inline constexpr std::array UInt16x2_splat_Float32_args = { &UInt16x2_splat_Float32_arg0 };
 
 /// u16x2 with UInt32x2
-Variable UInt16x2_convert_UInt32x2_arg0;
-Function UInt16x2_convert_UInt32x2;
-inline constexpr std::array UInt16x2_convert_UInt32x2_args = { &UInt16x2_convert_UInt32x2_arg0 };
+Variable UInt16x2_from_UInt32x2_arg0;
+Function UInt16x2_from_UInt32x2;
+inline constexpr std::array UInt16x2_from_UInt32x2_args = { &UInt16x2_from_UInt32x2_arg0 };
 
 /// u16x2 with UInt32
 Variable UInt16x2_splat_UInt32_arg0;
@@ -8350,9 +8464,9 @@ Function UInt16x2_splat_UInt32;
 inline constexpr std::array UInt16x2_splat_UInt32_args = { &UInt16x2_splat_UInt32_arg0 };
 
 /// u16x2 with Int32x2
-Variable UInt16x2_convert_Int32x2_arg0;
-Function UInt16x2_convert_Int32x2;
-inline constexpr std::array UInt16x2_convert_Int32x2_args = { &UInt16x2_convert_Int32x2_arg0 };
+Variable UInt16x2_from_Int32x2_arg0;
+Function UInt16x2_from_Int32x2;
+inline constexpr std::array UInt16x2_from_Int32x2_args = { &UInt16x2_from_Int32x2_arg0 };
 
 /// u16x2 with Int32
 Variable UInt16x2_splat_Int32_arg0;
@@ -8360,9 +8474,9 @@ Function UInt16x2_splat_Int32;
 inline constexpr std::array UInt16x2_splat_Int32_args = { &UInt16x2_splat_Int32_arg0 };
 
 /// u16x2 with Bool8x2
-Variable UInt16x2_convert_Bool8x2_arg0;
-Function UInt16x2_convert_Bool8x2;
-inline constexpr std::array UInt16x2_convert_Bool8x2_args = { &UInt16x2_convert_Bool8x2_arg0 };
+Variable UInt16x2_from_Bool8x2_arg0;
+Function UInt16x2_from_Bool8x2;
+inline constexpr std::array UInt16x2_from_Bool8x2_args = { &UInt16x2_from_Bool8x2_arg0 };
 
 /// u16x2 with Bool8
 Variable UInt16x2_splat_Bool8_arg0;
@@ -8370,9 +8484,9 @@ Function UInt16x2_splat_Bool8;
 inline constexpr std::array UInt16x2_splat_Bool8_args = { &UInt16x2_splat_Bool8_arg0 };
 
 /// u16x2 with Float16x2
-Variable UInt16x2_convert_Float16x2_arg0;
-Function UInt16x2_convert_Float16x2;
-inline constexpr std::array UInt16x2_convert_Float16x2_args = { &UInt16x2_convert_Float16x2_arg0 };
+Variable UInt16x2_from_Float16x2_arg0;
+Function UInt16x2_from_Float16x2;
+inline constexpr std::array UInt16x2_from_Float16x2_args = { &UInt16x2_from_Float16x2_arg0 };
 
 /// u16x2 with Float16
 Variable UInt16x2_splat_Float16_arg0;
@@ -8380,9 +8494,9 @@ Function UInt16x2_splat_Float16;
 inline constexpr std::array UInt16x2_splat_Float16_args = { &UInt16x2_splat_Float16_arg0 };
 
 /// u16x2 with UInt16x2
-Variable UInt16x2_convert_UInt16x2_arg0;
-Function UInt16x2_convert_UInt16x2;
-inline constexpr std::array UInt16x2_convert_UInt16x2_args = { &UInt16x2_convert_UInt16x2_arg0 };
+Variable UInt16x2_from_UInt16x2_arg0;
+Function UInt16x2_from_UInt16x2;
+inline constexpr std::array UInt16x2_from_UInt16x2_args = { &UInt16x2_from_UInt16x2_arg0 };
 
 /// u16x2 with UInt16
 Variable UInt16x2_splat_UInt16_arg0;
@@ -8390,9 +8504,9 @@ Function UInt16x2_splat_UInt16;
 inline constexpr std::array UInt16x2_splat_UInt16_args = { &UInt16x2_splat_UInt16_arg0 };
 
 /// u16x2 with Int16x2
-Variable UInt16x2_convert_Int16x2_arg0;
-Function UInt16x2_convert_Int16x2;
-inline constexpr std::array UInt16x2_convert_Int16x2_args = { &UInt16x2_convert_Int16x2_arg0 };
+Variable UInt16x2_from_Int16x2_arg0;
+Function UInt16x2_from_Int16x2;
+inline constexpr std::array UInt16x2_from_Int16x2_args = { &UInt16x2_from_Int16x2_arg0 };
 
 /// u16x2 with Int16
 Variable UInt16x2_splat_Int16_arg0;
@@ -8591,18 +8705,18 @@ UInt16x2::UInt16x2()
     this->builtin = true;
 
     /// u16x2 with Float32x2
-    UInt16x2_convert_Float32x2_arg0.name = "val"_c;
-    UInt16x2_convert_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
-    UInt16x2_convert_Float32x2.documentation = "Convert f32x2 to u16x2"_c;
-    UInt16x2_convert_Float32x2.name = "u16x2"_c;
-    UInt16x2_convert_Float32x2.compileTime = true;
-    UInt16x2_convert_Float32x2.returnType = Type::FullType { UInt16x2Type.name };
-    UInt16x2_convert_Float32x2.parameters = UInt16x2_convert_Float32x2_args;
-    Symbol::Resolved(&UInt16x2_convert_Float32x2_arg0)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&UInt16x2_convert_Float32x2)->signature = "u16x2 u16x2(f32x2)"_c;
-    Symbol::Resolved(&UInt16x2_convert_Float32x2)->name = "u16x2(f32x2)"_c;
-    Symbol::Resolved(&UInt16x2_convert_Float32x2)->nameWithVarNames = "u16x2(val : f32x2)"_c;
-    Symbol::Resolved(&UInt16x2_convert_Float32x2)->returnTypeSymbol = &UInt16x2Type;
+    UInt16x2_from_Float32x2_arg0.name = "val"_c;
+    UInt16x2_from_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
+    UInt16x2_from_Float32x2.documentation = "Convert from f32x2 to u16x2"_c;
+    UInt16x2_from_Float32x2.name = "u16x2"_c;
+    UInt16x2_from_Float32x2.compileTime = true;
+    UInt16x2_from_Float32x2.returnType = Type::FullType { UInt16x2Type.name };
+    UInt16x2_from_Float32x2.parameters = UInt16x2_from_Float32x2_args;
+    Symbol::Resolved(&UInt16x2_from_Float32x2_arg0)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&UInt16x2_from_Float32x2)->signature = "u16x2 u16x2(f32x2)"_c;
+    Symbol::Resolved(&UInt16x2_from_Float32x2)->name = "u16x2(f32x2)"_c;
+    Symbol::Resolved(&UInt16x2_from_Float32x2)->nameWithVarNames = "u16x2(val : f32x2)"_c;
+    Symbol::Resolved(&UInt16x2_from_Float32x2)->returnTypeSymbol = &UInt16x2Type;
 
     /// u16x2 with Float32
     UInt16x2_splat_Float32_arg0.name = "val"_c;
@@ -8619,18 +8733,18 @@ UInt16x2::UInt16x2()
     Symbol::Resolved(&UInt16x2_splat_Float32)->returnTypeSymbol = &UInt16x2Type;
 
     /// u16x2 with UInt32x2
-    UInt16x2_convert_UInt32x2_arg0.name = "val"_c;
-    UInt16x2_convert_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
-    UInt16x2_convert_UInt32x2.documentation = "Convert u32x2 to u16x2"_c;
-    UInt16x2_convert_UInt32x2.name = "u16x2"_c;
-    UInt16x2_convert_UInt32x2.compileTime = true;
-    UInt16x2_convert_UInt32x2.returnType = Type::FullType { UInt16x2Type.name };
-    UInt16x2_convert_UInt32x2.parameters = UInt16x2_convert_UInt32x2_args;
-    Symbol::Resolved(&UInt16x2_convert_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
-    Symbol::Resolved(&UInt16x2_convert_UInt32x2)->signature = "u16x2 u16x2(u32x2)"_c;
-    Symbol::Resolved(&UInt16x2_convert_UInt32x2)->name = "u16x2(u32x2)"_c;
-    Symbol::Resolved(&UInt16x2_convert_UInt32x2)->nameWithVarNames = "u16x2(val : u32x2)"_c;
-    Symbol::Resolved(&UInt16x2_convert_UInt32x2)->returnTypeSymbol = &UInt16x2Type;
+    UInt16x2_from_UInt32x2_arg0.name = "val"_c;
+    UInt16x2_from_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
+    UInt16x2_from_UInt32x2.documentation = "Convert from u32x2 to u16x2"_c;
+    UInt16x2_from_UInt32x2.name = "u16x2"_c;
+    UInt16x2_from_UInt32x2.compileTime = true;
+    UInt16x2_from_UInt32x2.returnType = Type::FullType { UInt16x2Type.name };
+    UInt16x2_from_UInt32x2.parameters = UInt16x2_from_UInt32x2_args;
+    Symbol::Resolved(&UInt16x2_from_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&UInt16x2_from_UInt32x2)->signature = "u16x2 u16x2(u32x2)"_c;
+    Symbol::Resolved(&UInt16x2_from_UInt32x2)->name = "u16x2(u32x2)"_c;
+    Symbol::Resolved(&UInt16x2_from_UInt32x2)->nameWithVarNames = "u16x2(val : u32x2)"_c;
+    Symbol::Resolved(&UInt16x2_from_UInt32x2)->returnTypeSymbol = &UInt16x2Type;
 
     /// u16x2 with UInt32
     UInt16x2_splat_UInt32_arg0.name = "val"_c;
@@ -8647,18 +8761,18 @@ UInt16x2::UInt16x2()
     Symbol::Resolved(&UInt16x2_splat_UInt32)->returnTypeSymbol = &UInt16x2Type;
 
     /// u16x2 with Int32x2
-    UInt16x2_convert_Int32x2_arg0.name = "val"_c;
-    UInt16x2_convert_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
-    UInt16x2_convert_Int32x2.documentation = "Convert i32x2 to u16x2"_c;
-    UInt16x2_convert_Int32x2.name = "u16x2"_c;
-    UInt16x2_convert_Int32x2.compileTime = true;
-    UInt16x2_convert_Int32x2.returnType = Type::FullType { UInt16x2Type.name };
-    UInt16x2_convert_Int32x2.parameters = UInt16x2_convert_Int32x2_args;
-    Symbol::Resolved(&UInt16x2_convert_Int32x2_arg0)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&UInt16x2_convert_Int32x2)->signature = "u16x2 u16x2(i32x2)"_c;
-    Symbol::Resolved(&UInt16x2_convert_Int32x2)->name = "u16x2(i32x2)"_c;
-    Symbol::Resolved(&UInt16x2_convert_Int32x2)->nameWithVarNames = "u16x2(val : i32x2)"_c;
-    Symbol::Resolved(&UInt16x2_convert_Int32x2)->returnTypeSymbol = &UInt16x2Type;
+    UInt16x2_from_Int32x2_arg0.name = "val"_c;
+    UInt16x2_from_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
+    UInt16x2_from_Int32x2.documentation = "Convert from i32x2 to u16x2"_c;
+    UInt16x2_from_Int32x2.name = "u16x2"_c;
+    UInt16x2_from_Int32x2.compileTime = true;
+    UInt16x2_from_Int32x2.returnType = Type::FullType { UInt16x2Type.name };
+    UInt16x2_from_Int32x2.parameters = UInt16x2_from_Int32x2_args;
+    Symbol::Resolved(&UInt16x2_from_Int32x2_arg0)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&UInt16x2_from_Int32x2)->signature = "u16x2 u16x2(i32x2)"_c;
+    Symbol::Resolved(&UInt16x2_from_Int32x2)->name = "u16x2(i32x2)"_c;
+    Symbol::Resolved(&UInt16x2_from_Int32x2)->nameWithVarNames = "u16x2(val : i32x2)"_c;
+    Symbol::Resolved(&UInt16x2_from_Int32x2)->returnTypeSymbol = &UInt16x2Type;
 
     /// u16x2 with Int32
     UInt16x2_splat_Int32_arg0.name = "val"_c;
@@ -8675,18 +8789,18 @@ UInt16x2::UInt16x2()
     Symbol::Resolved(&UInt16x2_splat_Int32)->returnTypeSymbol = &UInt16x2Type;
 
     /// u16x2 with Bool8x2
-    UInt16x2_convert_Bool8x2_arg0.name = "val"_c;
-    UInt16x2_convert_Bool8x2_arg0.type = Type::FullType{ Bool8x2Type.name };
-    UInt16x2_convert_Bool8x2.documentation = "Convert b8x2 to u16x2"_c;
-    UInt16x2_convert_Bool8x2.name = "u16x2"_c;
-    UInt16x2_convert_Bool8x2.compileTime = true;
-    UInt16x2_convert_Bool8x2.returnType = Type::FullType { UInt16x2Type.name };
-    UInt16x2_convert_Bool8x2.parameters = UInt16x2_convert_Bool8x2_args;
-    Symbol::Resolved(&UInt16x2_convert_Bool8x2_arg0)->typeSymbol = &Bool8x2Type;
-    Symbol::Resolved(&UInt16x2_convert_Bool8x2)->signature = "u16x2 u16x2(b8x2)"_c;
-    Symbol::Resolved(&UInt16x2_convert_Bool8x2)->name = "u16x2(b8x2)"_c;
-    Symbol::Resolved(&UInt16x2_convert_Bool8x2)->nameWithVarNames = "u16x2(val : b8x2)"_c;
-    Symbol::Resolved(&UInt16x2_convert_Bool8x2)->returnTypeSymbol = &UInt16x2Type;
+    UInt16x2_from_Bool8x2_arg0.name = "val"_c;
+    UInt16x2_from_Bool8x2_arg0.type = Type::FullType{ Bool8x2Type.name };
+    UInt16x2_from_Bool8x2.documentation = "Convert from b8x2 to u16x2"_c;
+    UInt16x2_from_Bool8x2.name = "u16x2"_c;
+    UInt16x2_from_Bool8x2.compileTime = true;
+    UInt16x2_from_Bool8x2.returnType = Type::FullType { UInt16x2Type.name };
+    UInt16x2_from_Bool8x2.parameters = UInt16x2_from_Bool8x2_args;
+    Symbol::Resolved(&UInt16x2_from_Bool8x2_arg0)->typeSymbol = &Bool8x2Type;
+    Symbol::Resolved(&UInt16x2_from_Bool8x2)->signature = "u16x2 u16x2(b8x2)"_c;
+    Symbol::Resolved(&UInt16x2_from_Bool8x2)->name = "u16x2(b8x2)"_c;
+    Symbol::Resolved(&UInt16x2_from_Bool8x2)->nameWithVarNames = "u16x2(val : b8x2)"_c;
+    Symbol::Resolved(&UInt16x2_from_Bool8x2)->returnTypeSymbol = &UInt16x2Type;
 
     /// u16x2 with Bool8
     UInt16x2_splat_Bool8_arg0.name = "val"_c;
@@ -8703,18 +8817,18 @@ UInt16x2::UInt16x2()
     Symbol::Resolved(&UInt16x2_splat_Bool8)->returnTypeSymbol = &UInt16x2Type;
 
     /// u16x2 with Float16x2
-    UInt16x2_convert_Float16x2_arg0.name = "val"_c;
-    UInt16x2_convert_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
-    UInt16x2_convert_Float16x2.documentation = "Convert f16x2 to u16x2"_c;
-    UInt16x2_convert_Float16x2.name = "u16x2"_c;
-    UInt16x2_convert_Float16x2.compileTime = true;
-    UInt16x2_convert_Float16x2.returnType = Type::FullType { UInt16x2Type.name };
-    UInt16x2_convert_Float16x2.parameters = UInt16x2_convert_Float16x2_args;
-    Symbol::Resolved(&UInt16x2_convert_Float16x2_arg0)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&UInt16x2_convert_Float16x2)->signature = "u16x2 u16x2(f16x2)"_c;
-    Symbol::Resolved(&UInt16x2_convert_Float16x2)->name = "u16x2(f16x2)"_c;
-    Symbol::Resolved(&UInt16x2_convert_Float16x2)->nameWithVarNames = "u16x2(val : f16x2)"_c;
-    Symbol::Resolved(&UInt16x2_convert_Float16x2)->returnTypeSymbol = &UInt16x2Type;
+    UInt16x2_from_Float16x2_arg0.name = "val"_c;
+    UInt16x2_from_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
+    UInt16x2_from_Float16x2.documentation = "Convert from f16x2 to u16x2"_c;
+    UInt16x2_from_Float16x2.name = "u16x2"_c;
+    UInt16x2_from_Float16x2.compileTime = true;
+    UInt16x2_from_Float16x2.returnType = Type::FullType { UInt16x2Type.name };
+    UInt16x2_from_Float16x2.parameters = UInt16x2_from_Float16x2_args;
+    Symbol::Resolved(&UInt16x2_from_Float16x2_arg0)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&UInt16x2_from_Float16x2)->signature = "u16x2 u16x2(f16x2)"_c;
+    Symbol::Resolved(&UInt16x2_from_Float16x2)->name = "u16x2(f16x2)"_c;
+    Symbol::Resolved(&UInt16x2_from_Float16x2)->nameWithVarNames = "u16x2(val : f16x2)"_c;
+    Symbol::Resolved(&UInt16x2_from_Float16x2)->returnTypeSymbol = &UInt16x2Type;
 
     /// u16x2 with Float16
     UInt16x2_splat_Float16_arg0.name = "val"_c;
@@ -8731,18 +8845,18 @@ UInt16x2::UInt16x2()
     Symbol::Resolved(&UInt16x2_splat_Float16)->returnTypeSymbol = &UInt16x2Type;
 
     /// u16x2 with UInt16x2
-    UInt16x2_convert_UInt16x2_arg0.name = "val"_c;
-    UInt16x2_convert_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
-    UInt16x2_convert_UInt16x2.documentation = "Convert u16x2 to u16x2"_c;
-    UInt16x2_convert_UInt16x2.name = "u16x2"_c;
-    UInt16x2_convert_UInt16x2.compileTime = true;
-    UInt16x2_convert_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
-    UInt16x2_convert_UInt16x2.parameters = UInt16x2_convert_UInt16x2_args;
-    Symbol::Resolved(&UInt16x2_convert_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&UInt16x2_convert_UInt16x2)->signature = "u16x2 u16x2(u16x2)"_c;
-    Symbol::Resolved(&UInt16x2_convert_UInt16x2)->name = "u16x2(u16x2)"_c;
-    Symbol::Resolved(&UInt16x2_convert_UInt16x2)->nameWithVarNames = "u16x2(val : u16x2)"_c;
-    Symbol::Resolved(&UInt16x2_convert_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
+    UInt16x2_from_UInt16x2_arg0.name = "val"_c;
+    UInt16x2_from_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
+    UInt16x2_from_UInt16x2.documentation = "Convert from u16x2 to u16x2"_c;
+    UInt16x2_from_UInt16x2.name = "u16x2"_c;
+    UInt16x2_from_UInt16x2.compileTime = true;
+    UInt16x2_from_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
+    UInt16x2_from_UInt16x2.parameters = UInt16x2_from_UInt16x2_args;
+    Symbol::Resolved(&UInt16x2_from_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&UInt16x2_from_UInt16x2)->signature = "u16x2 u16x2(u16x2)"_c;
+    Symbol::Resolved(&UInt16x2_from_UInt16x2)->name = "u16x2(u16x2)"_c;
+    Symbol::Resolved(&UInt16x2_from_UInt16x2)->nameWithVarNames = "u16x2(val : u16x2)"_c;
+    Symbol::Resolved(&UInt16x2_from_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
     /// u16x2 with UInt16
     UInt16x2_splat_UInt16_arg0.name = "val"_c;
@@ -8759,18 +8873,18 @@ UInt16x2::UInt16x2()
     Symbol::Resolved(&UInt16x2_splat_UInt16)->returnTypeSymbol = &UInt16x2Type;
 
     /// u16x2 with Int16x2
-    UInt16x2_convert_Int16x2_arg0.name = "val"_c;
-    UInt16x2_convert_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
-    UInt16x2_convert_Int16x2.documentation = "Convert i16x2 to u16x2"_c;
-    UInt16x2_convert_Int16x2.name = "u16x2"_c;
-    UInt16x2_convert_Int16x2.compileTime = true;
-    UInt16x2_convert_Int16x2.returnType = Type::FullType { UInt16x2Type.name };
-    UInt16x2_convert_Int16x2.parameters = UInt16x2_convert_Int16x2_args;
-    Symbol::Resolved(&UInt16x2_convert_Int16x2_arg0)->typeSymbol = &Int16x2Type;
-    Symbol::Resolved(&UInt16x2_convert_Int16x2)->signature = "u16x2 u16x2(i16x2)"_c;
-    Symbol::Resolved(&UInt16x2_convert_Int16x2)->name = "u16x2(i16x2)"_c;
-    Symbol::Resolved(&UInt16x2_convert_Int16x2)->nameWithVarNames = "u16x2(val : i16x2)"_c;
-    Symbol::Resolved(&UInt16x2_convert_Int16x2)->returnTypeSymbol = &UInt16x2Type;
+    UInt16x2_from_Int16x2_arg0.name = "val"_c;
+    UInt16x2_from_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
+    UInt16x2_from_Int16x2.documentation = "Convert from i16x2 to u16x2"_c;
+    UInt16x2_from_Int16x2.name = "u16x2"_c;
+    UInt16x2_from_Int16x2.compileTime = true;
+    UInt16x2_from_Int16x2.returnType = Type::FullType { UInt16x2Type.name };
+    UInt16x2_from_Int16x2.parameters = UInt16x2_from_Int16x2_args;
+    Symbol::Resolved(&UInt16x2_from_Int16x2_arg0)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&UInt16x2_from_Int16x2)->signature = "u16x2 u16x2(i16x2)"_c;
+    Symbol::Resolved(&UInt16x2_from_Int16x2)->name = "u16x2(i16x2)"_c;
+    Symbol::Resolved(&UInt16x2_from_Int16x2)->nameWithVarNames = "u16x2(val : i16x2)"_c;
+    Symbol::Resolved(&UInt16x2_from_Int16x2)->returnTypeSymbol = &UInt16x2Type;
 
     /// u16x2 with Int16
     UInt16x2_splat_Int16_arg0.name = "val"_c;
@@ -9358,9 +9472,9 @@ UInt16x2::UInt16x2()
 UInt16x2 UInt16x2Type;
 
 /// i16x2 with Float32x2
-Variable Int16x2_convert_Float32x2_arg0;
-Function Int16x2_convert_Float32x2;
-inline constexpr std::array Int16x2_convert_Float32x2_args = { &Int16x2_convert_Float32x2_arg0 };
+Variable Int16x2_from_Float32x2_arg0;
+Function Int16x2_from_Float32x2;
+inline constexpr std::array Int16x2_from_Float32x2_args = { &Int16x2_from_Float32x2_arg0 };
 
 /// i16x2 with Float32
 Variable Int16x2_splat_Float32_arg0;
@@ -9368,9 +9482,9 @@ Function Int16x2_splat_Float32;
 inline constexpr std::array Int16x2_splat_Float32_args = { &Int16x2_splat_Float32_arg0 };
 
 /// i16x2 with UInt32x2
-Variable Int16x2_convert_UInt32x2_arg0;
-Function Int16x2_convert_UInt32x2;
-inline constexpr std::array Int16x2_convert_UInt32x2_args = { &Int16x2_convert_UInt32x2_arg0 };
+Variable Int16x2_from_UInt32x2_arg0;
+Function Int16x2_from_UInt32x2;
+inline constexpr std::array Int16x2_from_UInt32x2_args = { &Int16x2_from_UInt32x2_arg0 };
 
 /// i16x2 with UInt32
 Variable Int16x2_splat_UInt32_arg0;
@@ -9378,9 +9492,9 @@ Function Int16x2_splat_UInt32;
 inline constexpr std::array Int16x2_splat_UInt32_args = { &Int16x2_splat_UInt32_arg0 };
 
 /// i16x2 with Int32x2
-Variable Int16x2_convert_Int32x2_arg0;
-Function Int16x2_convert_Int32x2;
-inline constexpr std::array Int16x2_convert_Int32x2_args = { &Int16x2_convert_Int32x2_arg0 };
+Variable Int16x2_from_Int32x2_arg0;
+Function Int16x2_from_Int32x2;
+inline constexpr std::array Int16x2_from_Int32x2_args = { &Int16x2_from_Int32x2_arg0 };
 
 /// i16x2 with Int32
 Variable Int16x2_splat_Int32_arg0;
@@ -9388,9 +9502,9 @@ Function Int16x2_splat_Int32;
 inline constexpr std::array Int16x2_splat_Int32_args = { &Int16x2_splat_Int32_arg0 };
 
 /// i16x2 with Bool8x2
-Variable Int16x2_convert_Bool8x2_arg0;
-Function Int16x2_convert_Bool8x2;
-inline constexpr std::array Int16x2_convert_Bool8x2_args = { &Int16x2_convert_Bool8x2_arg0 };
+Variable Int16x2_from_Bool8x2_arg0;
+Function Int16x2_from_Bool8x2;
+inline constexpr std::array Int16x2_from_Bool8x2_args = { &Int16x2_from_Bool8x2_arg0 };
 
 /// i16x2 with Bool8
 Variable Int16x2_splat_Bool8_arg0;
@@ -9398,9 +9512,9 @@ Function Int16x2_splat_Bool8;
 inline constexpr std::array Int16x2_splat_Bool8_args = { &Int16x2_splat_Bool8_arg0 };
 
 /// i16x2 with Float16x2
-Variable Int16x2_convert_Float16x2_arg0;
-Function Int16x2_convert_Float16x2;
-inline constexpr std::array Int16x2_convert_Float16x2_args = { &Int16x2_convert_Float16x2_arg0 };
+Variable Int16x2_from_Float16x2_arg0;
+Function Int16x2_from_Float16x2;
+inline constexpr std::array Int16x2_from_Float16x2_args = { &Int16x2_from_Float16x2_arg0 };
 
 /// i16x2 with Float16
 Variable Int16x2_splat_Float16_arg0;
@@ -9408,9 +9522,9 @@ Function Int16x2_splat_Float16;
 inline constexpr std::array Int16x2_splat_Float16_args = { &Int16x2_splat_Float16_arg0 };
 
 /// i16x2 with UInt16x2
-Variable Int16x2_convert_UInt16x2_arg0;
-Function Int16x2_convert_UInt16x2;
-inline constexpr std::array Int16x2_convert_UInt16x2_args = { &Int16x2_convert_UInt16x2_arg0 };
+Variable Int16x2_from_UInt16x2_arg0;
+Function Int16x2_from_UInt16x2;
+inline constexpr std::array Int16x2_from_UInt16x2_args = { &Int16x2_from_UInt16x2_arg0 };
 
 /// i16x2 with UInt16
 Variable Int16x2_splat_UInt16_arg0;
@@ -9418,9 +9532,9 @@ Function Int16x2_splat_UInt16;
 inline constexpr std::array Int16x2_splat_UInt16_args = { &Int16x2_splat_UInt16_arg0 };
 
 /// i16x2 with Int16x2
-Variable Int16x2_convert_Int16x2_arg0;
-Function Int16x2_convert_Int16x2;
-inline constexpr std::array Int16x2_convert_Int16x2_args = { &Int16x2_convert_Int16x2_arg0 };
+Variable Int16x2_from_Int16x2_arg0;
+Function Int16x2_from_Int16x2;
+inline constexpr std::array Int16x2_from_Int16x2_args = { &Int16x2_from_Int16x2_arg0 };
 
 /// i16x2 with Int16
 Variable Int16x2_splat_Int16_arg0;
@@ -9619,18 +9733,18 @@ Int16x2::Int16x2()
     this->builtin = true;
 
     /// i16x2 with Float32x2
-    Int16x2_convert_Float32x2_arg0.name = "val"_c;
-    Int16x2_convert_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
-    Int16x2_convert_Float32x2.documentation = "Convert f32x2 to i16x2"_c;
-    Int16x2_convert_Float32x2.name = "i16x2"_c;
-    Int16x2_convert_Float32x2.compileTime = true;
-    Int16x2_convert_Float32x2.returnType = Type::FullType { Int16x2Type.name };
-    Int16x2_convert_Float32x2.parameters = Int16x2_convert_Float32x2_args;
-    Symbol::Resolved(&Int16x2_convert_Float32x2_arg0)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&Int16x2_convert_Float32x2)->signature = "i16x2 i16x2(f32x2)"_c;
-    Symbol::Resolved(&Int16x2_convert_Float32x2)->name = "i16x2(f32x2)"_c;
-    Symbol::Resolved(&Int16x2_convert_Float32x2)->nameWithVarNames = "i16x2(val : f32x2)"_c;
-    Symbol::Resolved(&Int16x2_convert_Float32x2)->returnTypeSymbol = &Int16x2Type;
+    Int16x2_from_Float32x2_arg0.name = "val"_c;
+    Int16x2_from_Float32x2_arg0.type = Type::FullType{ Float32x2Type.name };
+    Int16x2_from_Float32x2.documentation = "Convert from f32x2 to i16x2"_c;
+    Int16x2_from_Float32x2.name = "i16x2"_c;
+    Int16x2_from_Float32x2.compileTime = true;
+    Int16x2_from_Float32x2.returnType = Type::FullType { Int16x2Type.name };
+    Int16x2_from_Float32x2.parameters = Int16x2_from_Float32x2_args;
+    Symbol::Resolved(&Int16x2_from_Float32x2_arg0)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&Int16x2_from_Float32x2)->signature = "i16x2 i16x2(f32x2)"_c;
+    Symbol::Resolved(&Int16x2_from_Float32x2)->name = "i16x2(f32x2)"_c;
+    Symbol::Resolved(&Int16x2_from_Float32x2)->nameWithVarNames = "i16x2(val : f32x2)"_c;
+    Symbol::Resolved(&Int16x2_from_Float32x2)->returnTypeSymbol = &Int16x2Type;
 
     /// i16x2 with Float32
     Int16x2_splat_Float32_arg0.name = "val"_c;
@@ -9647,18 +9761,18 @@ Int16x2::Int16x2()
     Symbol::Resolved(&Int16x2_splat_Float32)->returnTypeSymbol = &Int16x2Type;
 
     /// i16x2 with UInt32x2
-    Int16x2_convert_UInt32x2_arg0.name = "val"_c;
-    Int16x2_convert_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
-    Int16x2_convert_UInt32x2.documentation = "Convert u32x2 to i16x2"_c;
-    Int16x2_convert_UInt32x2.name = "i16x2"_c;
-    Int16x2_convert_UInt32x2.compileTime = true;
-    Int16x2_convert_UInt32x2.returnType = Type::FullType { Int16x2Type.name };
-    Int16x2_convert_UInt32x2.parameters = Int16x2_convert_UInt32x2_args;
-    Symbol::Resolved(&Int16x2_convert_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
-    Symbol::Resolved(&Int16x2_convert_UInt32x2)->signature = "i16x2 i16x2(u32x2)"_c;
-    Symbol::Resolved(&Int16x2_convert_UInt32x2)->name = "i16x2(u32x2)"_c;
-    Symbol::Resolved(&Int16x2_convert_UInt32x2)->nameWithVarNames = "i16x2(val : u32x2)"_c;
-    Symbol::Resolved(&Int16x2_convert_UInt32x2)->returnTypeSymbol = &Int16x2Type;
+    Int16x2_from_UInt32x2_arg0.name = "val"_c;
+    Int16x2_from_UInt32x2_arg0.type = Type::FullType{ UInt32x2Type.name };
+    Int16x2_from_UInt32x2.documentation = "Convert from u32x2 to i16x2"_c;
+    Int16x2_from_UInt32x2.name = "i16x2"_c;
+    Int16x2_from_UInt32x2.compileTime = true;
+    Int16x2_from_UInt32x2.returnType = Type::FullType { Int16x2Type.name };
+    Int16x2_from_UInt32x2.parameters = Int16x2_from_UInt32x2_args;
+    Symbol::Resolved(&Int16x2_from_UInt32x2_arg0)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&Int16x2_from_UInt32x2)->signature = "i16x2 i16x2(u32x2)"_c;
+    Symbol::Resolved(&Int16x2_from_UInt32x2)->name = "i16x2(u32x2)"_c;
+    Symbol::Resolved(&Int16x2_from_UInt32x2)->nameWithVarNames = "i16x2(val : u32x2)"_c;
+    Symbol::Resolved(&Int16x2_from_UInt32x2)->returnTypeSymbol = &Int16x2Type;
 
     /// i16x2 with UInt32
     Int16x2_splat_UInt32_arg0.name = "val"_c;
@@ -9675,18 +9789,18 @@ Int16x2::Int16x2()
     Symbol::Resolved(&Int16x2_splat_UInt32)->returnTypeSymbol = &Int16x2Type;
 
     /// i16x2 with Int32x2
-    Int16x2_convert_Int32x2_arg0.name = "val"_c;
-    Int16x2_convert_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
-    Int16x2_convert_Int32x2.documentation = "Convert i32x2 to i16x2"_c;
-    Int16x2_convert_Int32x2.name = "i16x2"_c;
-    Int16x2_convert_Int32x2.compileTime = true;
-    Int16x2_convert_Int32x2.returnType = Type::FullType { Int16x2Type.name };
-    Int16x2_convert_Int32x2.parameters = Int16x2_convert_Int32x2_args;
-    Symbol::Resolved(&Int16x2_convert_Int32x2_arg0)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&Int16x2_convert_Int32x2)->signature = "i16x2 i16x2(i32x2)"_c;
-    Symbol::Resolved(&Int16x2_convert_Int32x2)->name = "i16x2(i32x2)"_c;
-    Symbol::Resolved(&Int16x2_convert_Int32x2)->nameWithVarNames = "i16x2(val : i32x2)"_c;
-    Symbol::Resolved(&Int16x2_convert_Int32x2)->returnTypeSymbol = &Int16x2Type;
+    Int16x2_from_Int32x2_arg0.name = "val"_c;
+    Int16x2_from_Int32x2_arg0.type = Type::FullType{ Int32x2Type.name };
+    Int16x2_from_Int32x2.documentation = "Convert from i32x2 to i16x2"_c;
+    Int16x2_from_Int32x2.name = "i16x2"_c;
+    Int16x2_from_Int32x2.compileTime = true;
+    Int16x2_from_Int32x2.returnType = Type::FullType { Int16x2Type.name };
+    Int16x2_from_Int32x2.parameters = Int16x2_from_Int32x2_args;
+    Symbol::Resolved(&Int16x2_from_Int32x2_arg0)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&Int16x2_from_Int32x2)->signature = "i16x2 i16x2(i32x2)"_c;
+    Symbol::Resolved(&Int16x2_from_Int32x2)->name = "i16x2(i32x2)"_c;
+    Symbol::Resolved(&Int16x2_from_Int32x2)->nameWithVarNames = "i16x2(val : i32x2)"_c;
+    Symbol::Resolved(&Int16x2_from_Int32x2)->returnTypeSymbol = &Int16x2Type;
 
     /// i16x2 with Int32
     Int16x2_splat_Int32_arg0.name = "val"_c;
@@ -9703,18 +9817,18 @@ Int16x2::Int16x2()
     Symbol::Resolved(&Int16x2_splat_Int32)->returnTypeSymbol = &Int16x2Type;
 
     /// i16x2 with Bool8x2
-    Int16x2_convert_Bool8x2_arg0.name = "val"_c;
-    Int16x2_convert_Bool8x2_arg0.type = Type::FullType{ Bool8x2Type.name };
-    Int16x2_convert_Bool8x2.documentation = "Convert b8x2 to i16x2"_c;
-    Int16x2_convert_Bool8x2.name = "i16x2"_c;
-    Int16x2_convert_Bool8x2.compileTime = true;
-    Int16x2_convert_Bool8x2.returnType = Type::FullType { Int16x2Type.name };
-    Int16x2_convert_Bool8x2.parameters = Int16x2_convert_Bool8x2_args;
-    Symbol::Resolved(&Int16x2_convert_Bool8x2_arg0)->typeSymbol = &Bool8x2Type;
-    Symbol::Resolved(&Int16x2_convert_Bool8x2)->signature = "i16x2 i16x2(b8x2)"_c;
-    Symbol::Resolved(&Int16x2_convert_Bool8x2)->name = "i16x2(b8x2)"_c;
-    Symbol::Resolved(&Int16x2_convert_Bool8x2)->nameWithVarNames = "i16x2(val : b8x2)"_c;
-    Symbol::Resolved(&Int16x2_convert_Bool8x2)->returnTypeSymbol = &Int16x2Type;
+    Int16x2_from_Bool8x2_arg0.name = "val"_c;
+    Int16x2_from_Bool8x2_arg0.type = Type::FullType{ Bool8x2Type.name };
+    Int16x2_from_Bool8x2.documentation = "Convert from b8x2 to i16x2"_c;
+    Int16x2_from_Bool8x2.name = "i16x2"_c;
+    Int16x2_from_Bool8x2.compileTime = true;
+    Int16x2_from_Bool8x2.returnType = Type::FullType { Int16x2Type.name };
+    Int16x2_from_Bool8x2.parameters = Int16x2_from_Bool8x2_args;
+    Symbol::Resolved(&Int16x2_from_Bool8x2_arg0)->typeSymbol = &Bool8x2Type;
+    Symbol::Resolved(&Int16x2_from_Bool8x2)->signature = "i16x2 i16x2(b8x2)"_c;
+    Symbol::Resolved(&Int16x2_from_Bool8x2)->name = "i16x2(b8x2)"_c;
+    Symbol::Resolved(&Int16x2_from_Bool8x2)->nameWithVarNames = "i16x2(val : b8x2)"_c;
+    Symbol::Resolved(&Int16x2_from_Bool8x2)->returnTypeSymbol = &Int16x2Type;
 
     /// i16x2 with Bool8
     Int16x2_splat_Bool8_arg0.name = "val"_c;
@@ -9731,18 +9845,18 @@ Int16x2::Int16x2()
     Symbol::Resolved(&Int16x2_splat_Bool8)->returnTypeSymbol = &Int16x2Type;
 
     /// i16x2 with Float16x2
-    Int16x2_convert_Float16x2_arg0.name = "val"_c;
-    Int16x2_convert_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
-    Int16x2_convert_Float16x2.documentation = "Convert f16x2 to i16x2"_c;
-    Int16x2_convert_Float16x2.name = "i16x2"_c;
-    Int16x2_convert_Float16x2.compileTime = true;
-    Int16x2_convert_Float16x2.returnType = Type::FullType { Int16x2Type.name };
-    Int16x2_convert_Float16x2.parameters = Int16x2_convert_Float16x2_args;
-    Symbol::Resolved(&Int16x2_convert_Float16x2_arg0)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&Int16x2_convert_Float16x2)->signature = "i16x2 i16x2(f16x2)"_c;
-    Symbol::Resolved(&Int16x2_convert_Float16x2)->name = "i16x2(f16x2)"_c;
-    Symbol::Resolved(&Int16x2_convert_Float16x2)->nameWithVarNames = "i16x2(val : f16x2)"_c;
-    Symbol::Resolved(&Int16x2_convert_Float16x2)->returnTypeSymbol = &Int16x2Type;
+    Int16x2_from_Float16x2_arg0.name = "val"_c;
+    Int16x2_from_Float16x2_arg0.type = Type::FullType{ Float16x2Type.name };
+    Int16x2_from_Float16x2.documentation = "Convert from f16x2 to i16x2"_c;
+    Int16x2_from_Float16x2.name = "i16x2"_c;
+    Int16x2_from_Float16x2.compileTime = true;
+    Int16x2_from_Float16x2.returnType = Type::FullType { Int16x2Type.name };
+    Int16x2_from_Float16x2.parameters = Int16x2_from_Float16x2_args;
+    Symbol::Resolved(&Int16x2_from_Float16x2_arg0)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&Int16x2_from_Float16x2)->signature = "i16x2 i16x2(f16x2)"_c;
+    Symbol::Resolved(&Int16x2_from_Float16x2)->name = "i16x2(f16x2)"_c;
+    Symbol::Resolved(&Int16x2_from_Float16x2)->nameWithVarNames = "i16x2(val : f16x2)"_c;
+    Symbol::Resolved(&Int16x2_from_Float16x2)->returnTypeSymbol = &Int16x2Type;
 
     /// i16x2 with Float16
     Int16x2_splat_Float16_arg0.name = "val"_c;
@@ -9759,18 +9873,18 @@ Int16x2::Int16x2()
     Symbol::Resolved(&Int16x2_splat_Float16)->returnTypeSymbol = &Int16x2Type;
 
     /// i16x2 with UInt16x2
-    Int16x2_convert_UInt16x2_arg0.name = "val"_c;
-    Int16x2_convert_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
-    Int16x2_convert_UInt16x2.documentation = "Convert u16x2 to i16x2"_c;
-    Int16x2_convert_UInt16x2.name = "i16x2"_c;
-    Int16x2_convert_UInt16x2.compileTime = true;
-    Int16x2_convert_UInt16x2.returnType = Type::FullType { Int16x2Type.name };
-    Int16x2_convert_UInt16x2.parameters = Int16x2_convert_UInt16x2_args;
-    Symbol::Resolved(&Int16x2_convert_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&Int16x2_convert_UInt16x2)->signature = "i16x2 i16x2(u16x2)"_c;
-    Symbol::Resolved(&Int16x2_convert_UInt16x2)->name = "i16x2(u16x2)"_c;
-    Symbol::Resolved(&Int16x2_convert_UInt16x2)->nameWithVarNames = "i16x2(val : u16x2)"_c;
-    Symbol::Resolved(&Int16x2_convert_UInt16x2)->returnTypeSymbol = &Int16x2Type;
+    Int16x2_from_UInt16x2_arg0.name = "val"_c;
+    Int16x2_from_UInt16x2_arg0.type = Type::FullType{ UInt16x2Type.name };
+    Int16x2_from_UInt16x2.documentation = "Convert from u16x2 to i16x2"_c;
+    Int16x2_from_UInt16x2.name = "i16x2"_c;
+    Int16x2_from_UInt16x2.compileTime = true;
+    Int16x2_from_UInt16x2.returnType = Type::FullType { Int16x2Type.name };
+    Int16x2_from_UInt16x2.parameters = Int16x2_from_UInt16x2_args;
+    Symbol::Resolved(&Int16x2_from_UInt16x2_arg0)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&Int16x2_from_UInt16x2)->signature = "i16x2 i16x2(u16x2)"_c;
+    Symbol::Resolved(&Int16x2_from_UInt16x2)->name = "i16x2(u16x2)"_c;
+    Symbol::Resolved(&Int16x2_from_UInt16x2)->nameWithVarNames = "i16x2(val : u16x2)"_c;
+    Symbol::Resolved(&Int16x2_from_UInt16x2)->returnTypeSymbol = &Int16x2Type;
 
     /// i16x2 with UInt16
     Int16x2_splat_UInt16_arg0.name = "val"_c;
@@ -9787,18 +9901,18 @@ Int16x2::Int16x2()
     Symbol::Resolved(&Int16x2_splat_UInt16)->returnTypeSymbol = &Int16x2Type;
 
     /// i16x2 with Int16x2
-    Int16x2_convert_Int16x2_arg0.name = "val"_c;
-    Int16x2_convert_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
-    Int16x2_convert_Int16x2.documentation = "Convert i16x2 to i16x2"_c;
-    Int16x2_convert_Int16x2.name = "i16x2"_c;
-    Int16x2_convert_Int16x2.compileTime = true;
-    Int16x2_convert_Int16x2.returnType = Type::FullType { Int16x2Type.name };
-    Int16x2_convert_Int16x2.parameters = Int16x2_convert_Int16x2_args;
-    Symbol::Resolved(&Int16x2_convert_Int16x2_arg0)->typeSymbol = &Int16x2Type;
-    Symbol::Resolved(&Int16x2_convert_Int16x2)->signature = "i16x2 i16x2(i16x2)"_c;
-    Symbol::Resolved(&Int16x2_convert_Int16x2)->name = "i16x2(i16x2)"_c;
-    Symbol::Resolved(&Int16x2_convert_Int16x2)->nameWithVarNames = "i16x2(val : i16x2)"_c;
-    Symbol::Resolved(&Int16x2_convert_Int16x2)->returnTypeSymbol = &Int16x2Type;
+    Int16x2_from_Int16x2_arg0.name = "val"_c;
+    Int16x2_from_Int16x2_arg0.type = Type::FullType{ Int16x2Type.name };
+    Int16x2_from_Int16x2.documentation = "Convert from i16x2 to i16x2"_c;
+    Int16x2_from_Int16x2.name = "i16x2"_c;
+    Int16x2_from_Int16x2.compileTime = true;
+    Int16x2_from_Int16x2.returnType = Type::FullType { Int16x2Type.name };
+    Int16x2_from_Int16x2.parameters = Int16x2_from_Int16x2_args;
+    Symbol::Resolved(&Int16x2_from_Int16x2_arg0)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&Int16x2_from_Int16x2)->signature = "i16x2 i16x2(i16x2)"_c;
+    Symbol::Resolved(&Int16x2_from_Int16x2)->name = "i16x2(i16x2)"_c;
+    Symbol::Resolved(&Int16x2_from_Int16x2)->nameWithVarNames = "i16x2(val : i16x2)"_c;
+    Symbol::Resolved(&Int16x2_from_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
     /// i16x2 with Int16
     Int16x2_splat_Int16_arg0.name = "val"_c;
@@ -10386,9 +10500,9 @@ Int16x2::Int16x2()
 Int16x2 Int16x2Type;
 
 /// f32x3 with Float32x3
-Variable Float32x3_convert_Float32x3_arg0;
-Function Float32x3_convert_Float32x3;
-inline constexpr std::array Float32x3_convert_Float32x3_args = { &Float32x3_convert_Float32x3_arg0 };
+Variable Float32x3_from_Float32x3_arg0;
+Function Float32x3_from_Float32x3;
+inline constexpr std::array Float32x3_from_Float32x3_args = { &Float32x3_from_Float32x3_arg0 };
 
 /// f32x3 with Float32
 Variable Float32x3_splat_Float32_arg0;
@@ -10396,9 +10510,9 @@ Function Float32x3_splat_Float32;
 inline constexpr std::array Float32x3_splat_Float32_args = { &Float32x3_splat_Float32_arg0 };
 
 /// f32x3 with UInt32x3
-Variable Float32x3_convert_UInt32x3_arg0;
-Function Float32x3_convert_UInt32x3;
-inline constexpr std::array Float32x3_convert_UInt32x3_args = { &Float32x3_convert_UInt32x3_arg0 };
+Variable Float32x3_from_UInt32x3_arg0;
+Function Float32x3_from_UInt32x3;
+inline constexpr std::array Float32x3_from_UInt32x3_args = { &Float32x3_from_UInt32x3_arg0 };
 
 /// f32x3 with UInt32
 Variable Float32x3_splat_UInt32_arg0;
@@ -10406,19 +10520,29 @@ Function Float32x3_splat_UInt32;
 inline constexpr std::array Float32x3_splat_UInt32_args = { &Float32x3_splat_UInt32_arg0 };
 
 /// f32x3 with Int32x3
-Variable Float32x3_convert_Int32x3_arg0;
-Function Float32x3_convert_Int32x3;
-inline constexpr std::array Float32x3_convert_Int32x3_args = { &Float32x3_convert_Int32x3_arg0 };
+Variable Float32x3_from_Int32x3_arg0;
+Function Float32x3_from_Int32x3;
+inline constexpr std::array Float32x3_from_Int32x3_args = { &Float32x3_from_Int32x3_arg0 };
 
 /// f32x3 with Int32
 Variable Float32x3_splat_Int32_arg0;
 Function Float32x3_splat_Int32;
 inline constexpr std::array Float32x3_splat_Int32_args = { &Float32x3_splat_Int32_arg0 };
 
+/// f32x3 with Bool8x3
+Variable Float32x3_from_Bool8x3_arg0;
+Function Float32x3_from_Bool8x3;
+inline constexpr std::array Float32x3_from_Bool8x3_args = { &Float32x3_from_Bool8x3_arg0 };
+
+/// f32x3 with Bool8
+Variable Float32x3_splat_Bool8_arg0;
+Function Float32x3_splat_Bool8;
+inline constexpr std::array Float32x3_splat_Bool8_args = { &Float32x3_splat_Bool8_arg0 };
+
 /// f32x3 with Float16x3
-Variable Float32x3_convert_Float16x3_arg0;
-Function Float32x3_convert_Float16x3;
-inline constexpr std::array Float32x3_convert_Float16x3_args = { &Float32x3_convert_Float16x3_arg0 };
+Variable Float32x3_from_Float16x3_arg0;
+Function Float32x3_from_Float16x3;
+inline constexpr std::array Float32x3_from_Float16x3_args = { &Float32x3_from_Float16x3_arg0 };
 
 /// f32x3 with Float16
 Variable Float32x3_splat_Float16_arg0;
@@ -10426,9 +10550,9 @@ Function Float32x3_splat_Float16;
 inline constexpr std::array Float32x3_splat_Float16_args = { &Float32x3_splat_Float16_arg0 };
 
 /// f32x3 with UInt16x3
-Variable Float32x3_convert_UInt16x3_arg0;
-Function Float32x3_convert_UInt16x3;
-inline constexpr std::array Float32x3_convert_UInt16x3_args = { &Float32x3_convert_UInt16x3_arg0 };
+Variable Float32x3_from_UInt16x3_arg0;
+Function Float32x3_from_UInt16x3;
+inline constexpr std::array Float32x3_from_UInt16x3_args = { &Float32x3_from_UInt16x3_arg0 };
 
 /// f32x3 with UInt16
 Variable Float32x3_splat_UInt16_arg0;
@@ -10436,9 +10560,9 @@ Function Float32x3_splat_UInt16;
 inline constexpr std::array Float32x3_splat_UInt16_args = { &Float32x3_splat_UInt16_arg0 };
 
 /// f32x3 with Int16x3
-Variable Float32x3_convert_Int16x3_arg0;
-Function Float32x3_convert_Int16x3;
-inline constexpr std::array Float32x3_convert_Int16x3_args = { &Float32x3_convert_Int16x3_arg0 };
+Variable Float32x3_from_Int16x3_arg0;
+Function Float32x3_from_Int16x3;
+inline constexpr std::array Float32x3_from_Int16x3_args = { &Float32x3_from_Int16x3_arg0 };
 
 /// f32x3 with Int16
 Variable Float32x3_splat_Int16_arg0;
@@ -10615,18 +10739,18 @@ Float32x3::Float32x3()
     this->builtin = true;
 
     /// f32x3 with Float32x3
-    Float32x3_convert_Float32x3_arg0.name = "val"_c;
-    Float32x3_convert_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
-    Float32x3_convert_Float32x3.documentation = "Convert f32x3 to f32x3"_c;
-    Float32x3_convert_Float32x3.name = "f32x3"_c;
-    Float32x3_convert_Float32x3.compileTime = true;
-    Float32x3_convert_Float32x3.returnType = Type::FullType { Float32x3Type.name };
-    Float32x3_convert_Float32x3.parameters = Float32x3_convert_Float32x3_args;
-    Symbol::Resolved(&Float32x3_convert_Float32x3_arg0)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&Float32x3_convert_Float32x3)->signature = "f32x3 f32x3(f32x3)"_c;
-    Symbol::Resolved(&Float32x3_convert_Float32x3)->name = "f32x3(f32x3)"_c;
-    Symbol::Resolved(&Float32x3_convert_Float32x3)->nameWithVarNames = "f32x3(val : f32x3)"_c;
-    Symbol::Resolved(&Float32x3_convert_Float32x3)->returnTypeSymbol = &Float32x3Type;
+    Float32x3_from_Float32x3_arg0.name = "val"_c;
+    Float32x3_from_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
+    Float32x3_from_Float32x3.documentation = "Convert from f32x3 to f32x3"_c;
+    Float32x3_from_Float32x3.name = "f32x3"_c;
+    Float32x3_from_Float32x3.compileTime = true;
+    Float32x3_from_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    Float32x3_from_Float32x3.parameters = Float32x3_from_Float32x3_args;
+    Symbol::Resolved(&Float32x3_from_Float32x3_arg0)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&Float32x3_from_Float32x3)->signature = "f32x3 f32x3(f32x3)"_c;
+    Symbol::Resolved(&Float32x3_from_Float32x3)->name = "f32x3(f32x3)"_c;
+    Symbol::Resolved(&Float32x3_from_Float32x3)->nameWithVarNames = "f32x3(val : f32x3)"_c;
+    Symbol::Resolved(&Float32x3_from_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
     /// f32x3 with Float32
     Float32x3_splat_Float32_arg0.name = "val"_c;
@@ -10643,18 +10767,18 @@ Float32x3::Float32x3()
     Symbol::Resolved(&Float32x3_splat_Float32)->returnTypeSymbol = &Float32x3Type;
 
     /// f32x3 with UInt32x3
-    Float32x3_convert_UInt32x3_arg0.name = "val"_c;
-    Float32x3_convert_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
-    Float32x3_convert_UInt32x3.documentation = "Convert u32x3 to f32x3"_c;
-    Float32x3_convert_UInt32x3.name = "f32x3"_c;
-    Float32x3_convert_UInt32x3.compileTime = true;
-    Float32x3_convert_UInt32x3.returnType = Type::FullType { Float32x3Type.name };
-    Float32x3_convert_UInt32x3.parameters = Float32x3_convert_UInt32x3_args;
-    Symbol::Resolved(&Float32x3_convert_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&Float32x3_convert_UInt32x3)->signature = "f32x3 f32x3(u32x3)"_c;
-    Symbol::Resolved(&Float32x3_convert_UInt32x3)->name = "f32x3(u32x3)"_c;
-    Symbol::Resolved(&Float32x3_convert_UInt32x3)->nameWithVarNames = "f32x3(val : u32x3)"_c;
-    Symbol::Resolved(&Float32x3_convert_UInt32x3)->returnTypeSymbol = &Float32x3Type;
+    Float32x3_from_UInt32x3_arg0.name = "val"_c;
+    Float32x3_from_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
+    Float32x3_from_UInt32x3.documentation = "Convert from u32x3 to f32x3"_c;
+    Float32x3_from_UInt32x3.name = "f32x3"_c;
+    Float32x3_from_UInt32x3.compileTime = true;
+    Float32x3_from_UInt32x3.returnType = Type::FullType { Float32x3Type.name };
+    Float32x3_from_UInt32x3.parameters = Float32x3_from_UInt32x3_args;
+    Symbol::Resolved(&Float32x3_from_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&Float32x3_from_UInt32x3)->signature = "f32x3 f32x3(u32x3)"_c;
+    Symbol::Resolved(&Float32x3_from_UInt32x3)->name = "f32x3(u32x3)"_c;
+    Symbol::Resolved(&Float32x3_from_UInt32x3)->nameWithVarNames = "f32x3(val : u32x3)"_c;
+    Symbol::Resolved(&Float32x3_from_UInt32x3)->returnTypeSymbol = &Float32x3Type;
 
     /// f32x3 with UInt32
     Float32x3_splat_UInt32_arg0.name = "val"_c;
@@ -10671,18 +10795,18 @@ Float32x3::Float32x3()
     Symbol::Resolved(&Float32x3_splat_UInt32)->returnTypeSymbol = &Float32x3Type;
 
     /// f32x3 with Int32x3
-    Float32x3_convert_Int32x3_arg0.name = "val"_c;
-    Float32x3_convert_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
-    Float32x3_convert_Int32x3.documentation = "Convert i32x3 to f32x3"_c;
-    Float32x3_convert_Int32x3.name = "f32x3"_c;
-    Float32x3_convert_Int32x3.compileTime = true;
-    Float32x3_convert_Int32x3.returnType = Type::FullType { Float32x3Type.name };
-    Float32x3_convert_Int32x3.parameters = Float32x3_convert_Int32x3_args;
-    Symbol::Resolved(&Float32x3_convert_Int32x3_arg0)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&Float32x3_convert_Int32x3)->signature = "f32x3 f32x3(i32x3)"_c;
-    Symbol::Resolved(&Float32x3_convert_Int32x3)->name = "f32x3(i32x3)"_c;
-    Symbol::Resolved(&Float32x3_convert_Int32x3)->nameWithVarNames = "f32x3(val : i32x3)"_c;
-    Symbol::Resolved(&Float32x3_convert_Int32x3)->returnTypeSymbol = &Float32x3Type;
+    Float32x3_from_Int32x3_arg0.name = "val"_c;
+    Float32x3_from_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
+    Float32x3_from_Int32x3.documentation = "Convert from i32x3 to f32x3"_c;
+    Float32x3_from_Int32x3.name = "f32x3"_c;
+    Float32x3_from_Int32x3.compileTime = true;
+    Float32x3_from_Int32x3.returnType = Type::FullType { Float32x3Type.name };
+    Float32x3_from_Int32x3.parameters = Float32x3_from_Int32x3_args;
+    Symbol::Resolved(&Float32x3_from_Int32x3_arg0)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&Float32x3_from_Int32x3)->signature = "f32x3 f32x3(i32x3)"_c;
+    Symbol::Resolved(&Float32x3_from_Int32x3)->name = "f32x3(i32x3)"_c;
+    Symbol::Resolved(&Float32x3_from_Int32x3)->nameWithVarNames = "f32x3(val : i32x3)"_c;
+    Symbol::Resolved(&Float32x3_from_Int32x3)->returnTypeSymbol = &Float32x3Type;
 
     /// f32x3 with Int32
     Float32x3_splat_Int32_arg0.name = "val"_c;
@@ -10698,19 +10822,47 @@ Float32x3::Float32x3()
     Symbol::Resolved(&Float32x3_splat_Int32)->nameWithVarNames = "f32x3(val : i32)"_c;
     Symbol::Resolved(&Float32x3_splat_Int32)->returnTypeSymbol = &Float32x3Type;
 
+    /// f32x3 with Bool8x3
+    Float32x3_from_Bool8x3_arg0.name = "val"_c;
+    Float32x3_from_Bool8x3_arg0.type = Type::FullType{ Bool8x3Type.name };
+    Float32x3_from_Bool8x3.documentation = "Convert from b8x3 to f32x3"_c;
+    Float32x3_from_Bool8x3.name = "f32x3"_c;
+    Float32x3_from_Bool8x3.compileTime = true;
+    Float32x3_from_Bool8x3.returnType = Type::FullType { Float32x3Type.name };
+    Float32x3_from_Bool8x3.parameters = Float32x3_from_Bool8x3_args;
+    Symbol::Resolved(&Float32x3_from_Bool8x3_arg0)->typeSymbol = &Bool8x3Type;
+    Symbol::Resolved(&Float32x3_from_Bool8x3)->signature = "f32x3 f32x3(b8x3)"_c;
+    Symbol::Resolved(&Float32x3_from_Bool8x3)->name = "f32x3(b8x3)"_c;
+    Symbol::Resolved(&Float32x3_from_Bool8x3)->nameWithVarNames = "f32x3(val : b8x3)"_c;
+    Symbol::Resolved(&Float32x3_from_Bool8x3)->returnTypeSymbol = &Float32x3Type;
+
+    /// f32x3 with Bool8
+    Float32x3_splat_Bool8_arg0.name = "val"_c;
+    Float32x3_splat_Bool8_arg0.type = Type::FullType{ Bool8Type.name };
+    Float32x3_splat_Bool8.documentation = "Splat b8 to f32x3"_c;
+    Float32x3_splat_Bool8.name = "f32x3"_c;
+    Float32x3_splat_Bool8.compileTime = true;
+    Float32x3_splat_Bool8.returnType = Type::FullType { Float32x3Type.name };
+    Float32x3_splat_Bool8.parameters = Float32x3_splat_Bool8_args;
+    Symbol::Resolved(&Float32x3_splat_Bool8_arg0)->typeSymbol = &Bool8Type;
+    Symbol::Resolved(&Float32x3_splat_Bool8)->signature = "f32x3 f32x3(b8)"_c;
+    Symbol::Resolved(&Float32x3_splat_Bool8)->name = "f32x3(b8)"_c;
+    Symbol::Resolved(&Float32x3_splat_Bool8)->nameWithVarNames = "f32x3(val : b8)"_c;
+    Symbol::Resolved(&Float32x3_splat_Bool8)->returnTypeSymbol = &Float32x3Type;
+
     /// f32x3 with Float16x3
-    Float32x3_convert_Float16x3_arg0.name = "val"_c;
-    Float32x3_convert_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
-    Float32x3_convert_Float16x3.documentation = "Convert f16x3 to f32x3"_c;
-    Float32x3_convert_Float16x3.name = "f32x3"_c;
-    Float32x3_convert_Float16x3.compileTime = true;
-    Float32x3_convert_Float16x3.returnType = Type::FullType { Float32x3Type.name };
-    Float32x3_convert_Float16x3.parameters = Float32x3_convert_Float16x3_args;
-    Symbol::Resolved(&Float32x3_convert_Float16x3_arg0)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&Float32x3_convert_Float16x3)->signature = "f32x3 f32x3(f16x3)"_c;
-    Symbol::Resolved(&Float32x3_convert_Float16x3)->name = "f32x3(f16x3)"_c;
-    Symbol::Resolved(&Float32x3_convert_Float16x3)->nameWithVarNames = "f32x3(val : f16x3)"_c;
-    Symbol::Resolved(&Float32x3_convert_Float16x3)->returnTypeSymbol = &Float32x3Type;
+    Float32x3_from_Float16x3_arg0.name = "val"_c;
+    Float32x3_from_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
+    Float32x3_from_Float16x3.documentation = "Convert from f16x3 to f32x3"_c;
+    Float32x3_from_Float16x3.name = "f32x3"_c;
+    Float32x3_from_Float16x3.compileTime = true;
+    Float32x3_from_Float16x3.returnType = Type::FullType { Float32x3Type.name };
+    Float32x3_from_Float16x3.parameters = Float32x3_from_Float16x3_args;
+    Symbol::Resolved(&Float32x3_from_Float16x3_arg0)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&Float32x3_from_Float16x3)->signature = "f32x3 f32x3(f16x3)"_c;
+    Symbol::Resolved(&Float32x3_from_Float16x3)->name = "f32x3(f16x3)"_c;
+    Symbol::Resolved(&Float32x3_from_Float16x3)->nameWithVarNames = "f32x3(val : f16x3)"_c;
+    Symbol::Resolved(&Float32x3_from_Float16x3)->returnTypeSymbol = &Float32x3Type;
 
     /// f32x3 with Float16
     Float32x3_splat_Float16_arg0.name = "val"_c;
@@ -10727,18 +10879,18 @@ Float32x3::Float32x3()
     Symbol::Resolved(&Float32x3_splat_Float16)->returnTypeSymbol = &Float32x3Type;
 
     /// f32x3 with UInt16x3
-    Float32x3_convert_UInt16x3_arg0.name = "val"_c;
-    Float32x3_convert_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
-    Float32x3_convert_UInt16x3.documentation = "Convert u16x3 to f32x3"_c;
-    Float32x3_convert_UInt16x3.name = "f32x3"_c;
-    Float32x3_convert_UInt16x3.compileTime = true;
-    Float32x3_convert_UInt16x3.returnType = Type::FullType { Float32x3Type.name };
-    Float32x3_convert_UInt16x3.parameters = Float32x3_convert_UInt16x3_args;
-    Symbol::Resolved(&Float32x3_convert_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&Float32x3_convert_UInt16x3)->signature = "f32x3 f32x3(u16x3)"_c;
-    Symbol::Resolved(&Float32x3_convert_UInt16x3)->name = "f32x3(u16x3)"_c;
-    Symbol::Resolved(&Float32x3_convert_UInt16x3)->nameWithVarNames = "f32x3(val : u16x3)"_c;
-    Symbol::Resolved(&Float32x3_convert_UInt16x3)->returnTypeSymbol = &Float32x3Type;
+    Float32x3_from_UInt16x3_arg0.name = "val"_c;
+    Float32x3_from_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
+    Float32x3_from_UInt16x3.documentation = "Convert from u16x3 to f32x3"_c;
+    Float32x3_from_UInt16x3.name = "f32x3"_c;
+    Float32x3_from_UInt16x3.compileTime = true;
+    Float32x3_from_UInt16x3.returnType = Type::FullType { Float32x3Type.name };
+    Float32x3_from_UInt16x3.parameters = Float32x3_from_UInt16x3_args;
+    Symbol::Resolved(&Float32x3_from_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&Float32x3_from_UInt16x3)->signature = "f32x3 f32x3(u16x3)"_c;
+    Symbol::Resolved(&Float32x3_from_UInt16x3)->name = "f32x3(u16x3)"_c;
+    Symbol::Resolved(&Float32x3_from_UInt16x3)->nameWithVarNames = "f32x3(val : u16x3)"_c;
+    Symbol::Resolved(&Float32x3_from_UInt16x3)->returnTypeSymbol = &Float32x3Type;
 
     /// f32x3 with UInt16
     Float32x3_splat_UInt16_arg0.name = "val"_c;
@@ -10755,18 +10907,18 @@ Float32x3::Float32x3()
     Symbol::Resolved(&Float32x3_splat_UInt16)->returnTypeSymbol = &Float32x3Type;
 
     /// f32x3 with Int16x3
-    Float32x3_convert_Int16x3_arg0.name = "val"_c;
-    Float32x3_convert_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
-    Float32x3_convert_Int16x3.documentation = "Convert i16x3 to f32x3"_c;
-    Float32x3_convert_Int16x3.name = "f32x3"_c;
-    Float32x3_convert_Int16x3.compileTime = true;
-    Float32x3_convert_Int16x3.returnType = Type::FullType { Float32x3Type.name };
-    Float32x3_convert_Int16x3.parameters = Float32x3_convert_Int16x3_args;
-    Symbol::Resolved(&Float32x3_convert_Int16x3_arg0)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&Float32x3_convert_Int16x3)->signature = "f32x3 f32x3(i16x3)"_c;
-    Symbol::Resolved(&Float32x3_convert_Int16x3)->name = "f32x3(i16x3)"_c;
-    Symbol::Resolved(&Float32x3_convert_Int16x3)->nameWithVarNames = "f32x3(val : i16x3)"_c;
-    Symbol::Resolved(&Float32x3_convert_Int16x3)->returnTypeSymbol = &Float32x3Type;
+    Float32x3_from_Int16x3_arg0.name = "val"_c;
+    Float32x3_from_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
+    Float32x3_from_Int16x3.documentation = "Convert from i16x3 to f32x3"_c;
+    Float32x3_from_Int16x3.name = "f32x3"_c;
+    Float32x3_from_Int16x3.compileTime = true;
+    Float32x3_from_Int16x3.returnType = Type::FullType { Float32x3Type.name };
+    Float32x3_from_Int16x3.parameters = Float32x3_from_Int16x3_args;
+    Symbol::Resolved(&Float32x3_from_Int16x3_arg0)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&Float32x3_from_Int16x3)->signature = "f32x3 f32x3(i16x3)"_c;
+    Symbol::Resolved(&Float32x3_from_Int16x3)->name = "f32x3(i16x3)"_c;
+    Symbol::Resolved(&Float32x3_from_Int16x3)->nameWithVarNames = "f32x3(val : i16x3)"_c;
+    Symbol::Resolved(&Float32x3_from_Int16x3)->returnTypeSymbol = &Float32x3Type;
 
     /// f32x3 with Int16
     Float32x3_splat_Int16_arg0.name = "val"_c;
@@ -11471,9 +11623,9 @@ Float32x3::Float32x3()
 Float32x3 Float32x3Type;
 
 /// u32x3 with Float32x3
-Variable UInt32x3_convert_Float32x3_arg0;
-Function UInt32x3_convert_Float32x3;
-inline constexpr std::array UInt32x3_convert_Float32x3_args = { &UInt32x3_convert_Float32x3_arg0 };
+Variable UInt32x3_from_Float32x3_arg0;
+Function UInt32x3_from_Float32x3;
+inline constexpr std::array UInt32x3_from_Float32x3_args = { &UInt32x3_from_Float32x3_arg0 };
 
 /// u32x3 with Float32
 Variable UInt32x3_splat_Float32_arg0;
@@ -11481,9 +11633,9 @@ Function UInt32x3_splat_Float32;
 inline constexpr std::array UInt32x3_splat_Float32_args = { &UInt32x3_splat_Float32_arg0 };
 
 /// u32x3 with UInt32x3
-Variable UInt32x3_convert_UInt32x3_arg0;
-Function UInt32x3_convert_UInt32x3;
-inline constexpr std::array UInt32x3_convert_UInt32x3_args = { &UInt32x3_convert_UInt32x3_arg0 };
+Variable UInt32x3_from_UInt32x3_arg0;
+Function UInt32x3_from_UInt32x3;
+inline constexpr std::array UInt32x3_from_UInt32x3_args = { &UInt32x3_from_UInt32x3_arg0 };
 
 /// u32x3 with UInt32
 Variable UInt32x3_splat_UInt32_arg0;
@@ -11491,9 +11643,9 @@ Function UInt32x3_splat_UInt32;
 inline constexpr std::array UInt32x3_splat_UInt32_args = { &UInt32x3_splat_UInt32_arg0 };
 
 /// u32x3 with Int32x3
-Variable UInt32x3_convert_Int32x3_arg0;
-Function UInt32x3_convert_Int32x3;
-inline constexpr std::array UInt32x3_convert_Int32x3_args = { &UInt32x3_convert_Int32x3_arg0 };
+Variable UInt32x3_from_Int32x3_arg0;
+Function UInt32x3_from_Int32x3;
+inline constexpr std::array UInt32x3_from_Int32x3_args = { &UInt32x3_from_Int32x3_arg0 };
 
 /// u32x3 with Int32
 Variable UInt32x3_splat_Int32_arg0;
@@ -11501,9 +11653,9 @@ Function UInt32x3_splat_Int32;
 inline constexpr std::array UInt32x3_splat_Int32_args = { &UInt32x3_splat_Int32_arg0 };
 
 /// u32x3 with Bool8x3
-Variable UInt32x3_convert_Bool8x3_arg0;
-Function UInt32x3_convert_Bool8x3;
-inline constexpr std::array UInt32x3_convert_Bool8x3_args = { &UInt32x3_convert_Bool8x3_arg0 };
+Variable UInt32x3_from_Bool8x3_arg0;
+Function UInt32x3_from_Bool8x3;
+inline constexpr std::array UInt32x3_from_Bool8x3_args = { &UInt32x3_from_Bool8x3_arg0 };
 
 /// u32x3 with Bool8
 Variable UInt32x3_splat_Bool8_arg0;
@@ -11511,9 +11663,9 @@ Function UInt32x3_splat_Bool8;
 inline constexpr std::array UInt32x3_splat_Bool8_args = { &UInt32x3_splat_Bool8_arg0 };
 
 /// u32x3 with Float16x3
-Variable UInt32x3_convert_Float16x3_arg0;
-Function UInt32x3_convert_Float16x3;
-inline constexpr std::array UInt32x3_convert_Float16x3_args = { &UInt32x3_convert_Float16x3_arg0 };
+Variable UInt32x3_from_Float16x3_arg0;
+Function UInt32x3_from_Float16x3;
+inline constexpr std::array UInt32x3_from_Float16x3_args = { &UInt32x3_from_Float16x3_arg0 };
 
 /// u32x3 with Float16
 Variable UInt32x3_splat_Float16_arg0;
@@ -11521,9 +11673,9 @@ Function UInt32x3_splat_Float16;
 inline constexpr std::array UInt32x3_splat_Float16_args = { &UInt32x3_splat_Float16_arg0 };
 
 /// u32x3 with UInt16x3
-Variable UInt32x3_convert_UInt16x3_arg0;
-Function UInt32x3_convert_UInt16x3;
-inline constexpr std::array UInt32x3_convert_UInt16x3_args = { &UInt32x3_convert_UInt16x3_arg0 };
+Variable UInt32x3_from_UInt16x3_arg0;
+Function UInt32x3_from_UInt16x3;
+inline constexpr std::array UInt32x3_from_UInt16x3_args = { &UInt32x3_from_UInt16x3_arg0 };
 
 /// u32x3 with UInt16
 Variable UInt32x3_splat_UInt16_arg0;
@@ -11531,9 +11683,9 @@ Function UInt32x3_splat_UInt16;
 inline constexpr std::array UInt32x3_splat_UInt16_args = { &UInt32x3_splat_UInt16_arg0 };
 
 /// u32x3 with Int16x3
-Variable UInt32x3_convert_Int16x3_arg0;
-Function UInt32x3_convert_Int16x3;
-inline constexpr std::array UInt32x3_convert_Int16x3_args = { &UInt32x3_convert_Int16x3_arg0 };
+Variable UInt32x3_from_Int16x3_arg0;
+Function UInt32x3_from_Int16x3;
+inline constexpr std::array UInt32x3_from_Int16x3_args = { &UInt32x3_from_Int16x3_arg0 };
 
 /// u32x3 with Int16
 Variable UInt32x3_splat_Int16_arg0;
@@ -11745,18 +11897,18 @@ UInt32x3::UInt32x3()
     this->builtin = true;
 
     /// u32x3 with Float32x3
-    UInt32x3_convert_Float32x3_arg0.name = "val"_c;
-    UInt32x3_convert_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
-    UInt32x3_convert_Float32x3.documentation = "Convert f32x3 to u32x3"_c;
-    UInt32x3_convert_Float32x3.name = "u32x3"_c;
-    UInt32x3_convert_Float32x3.compileTime = true;
-    UInt32x3_convert_Float32x3.returnType = Type::FullType { UInt32x3Type.name };
-    UInt32x3_convert_Float32x3.parameters = UInt32x3_convert_Float32x3_args;
-    Symbol::Resolved(&UInt32x3_convert_Float32x3_arg0)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&UInt32x3_convert_Float32x3)->signature = "u32x3 u32x3(f32x3)"_c;
-    Symbol::Resolved(&UInt32x3_convert_Float32x3)->name = "u32x3(f32x3)"_c;
-    Symbol::Resolved(&UInt32x3_convert_Float32x3)->nameWithVarNames = "u32x3(val : f32x3)"_c;
-    Symbol::Resolved(&UInt32x3_convert_Float32x3)->returnTypeSymbol = &UInt32x3Type;
+    UInt32x3_from_Float32x3_arg0.name = "val"_c;
+    UInt32x3_from_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
+    UInt32x3_from_Float32x3.documentation = "Convert from f32x3 to u32x3"_c;
+    UInt32x3_from_Float32x3.name = "u32x3"_c;
+    UInt32x3_from_Float32x3.compileTime = true;
+    UInt32x3_from_Float32x3.returnType = Type::FullType { UInt32x3Type.name };
+    UInt32x3_from_Float32x3.parameters = UInt32x3_from_Float32x3_args;
+    Symbol::Resolved(&UInt32x3_from_Float32x3_arg0)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&UInt32x3_from_Float32x3)->signature = "u32x3 u32x3(f32x3)"_c;
+    Symbol::Resolved(&UInt32x3_from_Float32x3)->name = "u32x3(f32x3)"_c;
+    Symbol::Resolved(&UInt32x3_from_Float32x3)->nameWithVarNames = "u32x3(val : f32x3)"_c;
+    Symbol::Resolved(&UInt32x3_from_Float32x3)->returnTypeSymbol = &UInt32x3Type;
 
     /// u32x3 with Float32
     UInt32x3_splat_Float32_arg0.name = "val"_c;
@@ -11773,18 +11925,18 @@ UInt32x3::UInt32x3()
     Symbol::Resolved(&UInt32x3_splat_Float32)->returnTypeSymbol = &UInt32x3Type;
 
     /// u32x3 with UInt32x3
-    UInt32x3_convert_UInt32x3_arg0.name = "val"_c;
-    UInt32x3_convert_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
-    UInt32x3_convert_UInt32x3.documentation = "Convert u32x3 to u32x3"_c;
-    UInt32x3_convert_UInt32x3.name = "u32x3"_c;
-    UInt32x3_convert_UInt32x3.compileTime = true;
-    UInt32x3_convert_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
-    UInt32x3_convert_UInt32x3.parameters = UInt32x3_convert_UInt32x3_args;
-    Symbol::Resolved(&UInt32x3_convert_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&UInt32x3_convert_UInt32x3)->signature = "u32x3 u32x3(u32x3)"_c;
-    Symbol::Resolved(&UInt32x3_convert_UInt32x3)->name = "u32x3(u32x3)"_c;
-    Symbol::Resolved(&UInt32x3_convert_UInt32x3)->nameWithVarNames = "u32x3(val : u32x3)"_c;
-    Symbol::Resolved(&UInt32x3_convert_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
+    UInt32x3_from_UInt32x3_arg0.name = "val"_c;
+    UInt32x3_from_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
+    UInt32x3_from_UInt32x3.documentation = "Convert from u32x3 to u32x3"_c;
+    UInt32x3_from_UInt32x3.name = "u32x3"_c;
+    UInt32x3_from_UInt32x3.compileTime = true;
+    UInt32x3_from_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
+    UInt32x3_from_UInt32x3.parameters = UInt32x3_from_UInt32x3_args;
+    Symbol::Resolved(&UInt32x3_from_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&UInt32x3_from_UInt32x3)->signature = "u32x3 u32x3(u32x3)"_c;
+    Symbol::Resolved(&UInt32x3_from_UInt32x3)->name = "u32x3(u32x3)"_c;
+    Symbol::Resolved(&UInt32x3_from_UInt32x3)->nameWithVarNames = "u32x3(val : u32x3)"_c;
+    Symbol::Resolved(&UInt32x3_from_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
     /// u32x3 with UInt32
     UInt32x3_splat_UInt32_arg0.name = "val"_c;
@@ -11801,18 +11953,18 @@ UInt32x3::UInt32x3()
     Symbol::Resolved(&UInt32x3_splat_UInt32)->returnTypeSymbol = &UInt32x3Type;
 
     /// u32x3 with Int32x3
-    UInt32x3_convert_Int32x3_arg0.name = "val"_c;
-    UInt32x3_convert_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
-    UInt32x3_convert_Int32x3.documentation = "Convert i32x3 to u32x3"_c;
-    UInt32x3_convert_Int32x3.name = "u32x3"_c;
-    UInt32x3_convert_Int32x3.compileTime = true;
-    UInt32x3_convert_Int32x3.returnType = Type::FullType { UInt32x3Type.name };
-    UInt32x3_convert_Int32x3.parameters = UInt32x3_convert_Int32x3_args;
-    Symbol::Resolved(&UInt32x3_convert_Int32x3_arg0)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&UInt32x3_convert_Int32x3)->signature = "u32x3 u32x3(i32x3)"_c;
-    Symbol::Resolved(&UInt32x3_convert_Int32x3)->name = "u32x3(i32x3)"_c;
-    Symbol::Resolved(&UInt32x3_convert_Int32x3)->nameWithVarNames = "u32x3(val : i32x3)"_c;
-    Symbol::Resolved(&UInt32x3_convert_Int32x3)->returnTypeSymbol = &UInt32x3Type;
+    UInt32x3_from_Int32x3_arg0.name = "val"_c;
+    UInt32x3_from_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
+    UInt32x3_from_Int32x3.documentation = "Convert from i32x3 to u32x3"_c;
+    UInt32x3_from_Int32x3.name = "u32x3"_c;
+    UInt32x3_from_Int32x3.compileTime = true;
+    UInt32x3_from_Int32x3.returnType = Type::FullType { UInt32x3Type.name };
+    UInt32x3_from_Int32x3.parameters = UInt32x3_from_Int32x3_args;
+    Symbol::Resolved(&UInt32x3_from_Int32x3_arg0)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&UInt32x3_from_Int32x3)->signature = "u32x3 u32x3(i32x3)"_c;
+    Symbol::Resolved(&UInt32x3_from_Int32x3)->name = "u32x3(i32x3)"_c;
+    Symbol::Resolved(&UInt32x3_from_Int32x3)->nameWithVarNames = "u32x3(val : i32x3)"_c;
+    Symbol::Resolved(&UInt32x3_from_Int32x3)->returnTypeSymbol = &UInt32x3Type;
 
     /// u32x3 with Int32
     UInt32x3_splat_Int32_arg0.name = "val"_c;
@@ -11829,18 +11981,18 @@ UInt32x3::UInt32x3()
     Symbol::Resolved(&UInt32x3_splat_Int32)->returnTypeSymbol = &UInt32x3Type;
 
     /// u32x3 with Bool8x3
-    UInt32x3_convert_Bool8x3_arg0.name = "val"_c;
-    UInt32x3_convert_Bool8x3_arg0.type = Type::FullType{ Bool8x3Type.name };
-    UInt32x3_convert_Bool8x3.documentation = "Convert b8x3 to u32x3"_c;
-    UInt32x3_convert_Bool8x3.name = "u32x3"_c;
-    UInt32x3_convert_Bool8x3.compileTime = true;
-    UInt32x3_convert_Bool8x3.returnType = Type::FullType { UInt32x3Type.name };
-    UInt32x3_convert_Bool8x3.parameters = UInt32x3_convert_Bool8x3_args;
-    Symbol::Resolved(&UInt32x3_convert_Bool8x3_arg0)->typeSymbol = &Bool8x3Type;
-    Symbol::Resolved(&UInt32x3_convert_Bool8x3)->signature = "u32x3 u32x3(b8x3)"_c;
-    Symbol::Resolved(&UInt32x3_convert_Bool8x3)->name = "u32x3(b8x3)"_c;
-    Symbol::Resolved(&UInt32x3_convert_Bool8x3)->nameWithVarNames = "u32x3(val : b8x3)"_c;
-    Symbol::Resolved(&UInt32x3_convert_Bool8x3)->returnTypeSymbol = &UInt32x3Type;
+    UInt32x3_from_Bool8x3_arg0.name = "val"_c;
+    UInt32x3_from_Bool8x3_arg0.type = Type::FullType{ Bool8x3Type.name };
+    UInt32x3_from_Bool8x3.documentation = "Convert from b8x3 to u32x3"_c;
+    UInt32x3_from_Bool8x3.name = "u32x3"_c;
+    UInt32x3_from_Bool8x3.compileTime = true;
+    UInt32x3_from_Bool8x3.returnType = Type::FullType { UInt32x3Type.name };
+    UInt32x3_from_Bool8x3.parameters = UInt32x3_from_Bool8x3_args;
+    Symbol::Resolved(&UInt32x3_from_Bool8x3_arg0)->typeSymbol = &Bool8x3Type;
+    Symbol::Resolved(&UInt32x3_from_Bool8x3)->signature = "u32x3 u32x3(b8x3)"_c;
+    Symbol::Resolved(&UInt32x3_from_Bool8x3)->name = "u32x3(b8x3)"_c;
+    Symbol::Resolved(&UInt32x3_from_Bool8x3)->nameWithVarNames = "u32x3(val : b8x3)"_c;
+    Symbol::Resolved(&UInt32x3_from_Bool8x3)->returnTypeSymbol = &UInt32x3Type;
 
     /// u32x3 with Bool8
     UInt32x3_splat_Bool8_arg0.name = "val"_c;
@@ -11857,18 +12009,18 @@ UInt32x3::UInt32x3()
     Symbol::Resolved(&UInt32x3_splat_Bool8)->returnTypeSymbol = &UInt32x3Type;
 
     /// u32x3 with Float16x3
-    UInt32x3_convert_Float16x3_arg0.name = "val"_c;
-    UInt32x3_convert_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
-    UInt32x3_convert_Float16x3.documentation = "Convert f16x3 to u32x3"_c;
-    UInt32x3_convert_Float16x3.name = "u32x3"_c;
-    UInt32x3_convert_Float16x3.compileTime = true;
-    UInt32x3_convert_Float16x3.returnType = Type::FullType { UInt32x3Type.name };
-    UInt32x3_convert_Float16x3.parameters = UInt32x3_convert_Float16x3_args;
-    Symbol::Resolved(&UInt32x3_convert_Float16x3_arg0)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&UInt32x3_convert_Float16x3)->signature = "u32x3 u32x3(f16x3)"_c;
-    Symbol::Resolved(&UInt32x3_convert_Float16x3)->name = "u32x3(f16x3)"_c;
-    Symbol::Resolved(&UInt32x3_convert_Float16x3)->nameWithVarNames = "u32x3(val : f16x3)"_c;
-    Symbol::Resolved(&UInt32x3_convert_Float16x3)->returnTypeSymbol = &UInt32x3Type;
+    UInt32x3_from_Float16x3_arg0.name = "val"_c;
+    UInt32x3_from_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
+    UInt32x3_from_Float16x3.documentation = "Convert from f16x3 to u32x3"_c;
+    UInt32x3_from_Float16x3.name = "u32x3"_c;
+    UInt32x3_from_Float16x3.compileTime = true;
+    UInt32x3_from_Float16x3.returnType = Type::FullType { UInt32x3Type.name };
+    UInt32x3_from_Float16x3.parameters = UInt32x3_from_Float16x3_args;
+    Symbol::Resolved(&UInt32x3_from_Float16x3_arg0)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&UInt32x3_from_Float16x3)->signature = "u32x3 u32x3(f16x3)"_c;
+    Symbol::Resolved(&UInt32x3_from_Float16x3)->name = "u32x3(f16x3)"_c;
+    Symbol::Resolved(&UInt32x3_from_Float16x3)->nameWithVarNames = "u32x3(val : f16x3)"_c;
+    Symbol::Resolved(&UInt32x3_from_Float16x3)->returnTypeSymbol = &UInt32x3Type;
 
     /// u32x3 with Float16
     UInt32x3_splat_Float16_arg0.name = "val"_c;
@@ -11885,18 +12037,18 @@ UInt32x3::UInt32x3()
     Symbol::Resolved(&UInt32x3_splat_Float16)->returnTypeSymbol = &UInt32x3Type;
 
     /// u32x3 with UInt16x3
-    UInt32x3_convert_UInt16x3_arg0.name = "val"_c;
-    UInt32x3_convert_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
-    UInt32x3_convert_UInt16x3.documentation = "Convert u16x3 to u32x3"_c;
-    UInt32x3_convert_UInt16x3.name = "u32x3"_c;
-    UInt32x3_convert_UInt16x3.compileTime = true;
-    UInt32x3_convert_UInt16x3.returnType = Type::FullType { UInt32x3Type.name };
-    UInt32x3_convert_UInt16x3.parameters = UInt32x3_convert_UInt16x3_args;
-    Symbol::Resolved(&UInt32x3_convert_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&UInt32x3_convert_UInt16x3)->signature = "u32x3 u32x3(u16x3)"_c;
-    Symbol::Resolved(&UInt32x3_convert_UInt16x3)->name = "u32x3(u16x3)"_c;
-    Symbol::Resolved(&UInt32x3_convert_UInt16x3)->nameWithVarNames = "u32x3(val : u16x3)"_c;
-    Symbol::Resolved(&UInt32x3_convert_UInt16x3)->returnTypeSymbol = &UInt32x3Type;
+    UInt32x3_from_UInt16x3_arg0.name = "val"_c;
+    UInt32x3_from_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
+    UInt32x3_from_UInt16x3.documentation = "Convert from u16x3 to u32x3"_c;
+    UInt32x3_from_UInt16x3.name = "u32x3"_c;
+    UInt32x3_from_UInt16x3.compileTime = true;
+    UInt32x3_from_UInt16x3.returnType = Type::FullType { UInt32x3Type.name };
+    UInt32x3_from_UInt16x3.parameters = UInt32x3_from_UInt16x3_args;
+    Symbol::Resolved(&UInt32x3_from_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&UInt32x3_from_UInt16x3)->signature = "u32x3 u32x3(u16x3)"_c;
+    Symbol::Resolved(&UInt32x3_from_UInt16x3)->name = "u32x3(u16x3)"_c;
+    Symbol::Resolved(&UInt32x3_from_UInt16x3)->nameWithVarNames = "u32x3(val : u16x3)"_c;
+    Symbol::Resolved(&UInt32x3_from_UInt16x3)->returnTypeSymbol = &UInt32x3Type;
 
     /// u32x3 with UInt16
     UInt32x3_splat_UInt16_arg0.name = "val"_c;
@@ -11913,18 +12065,18 @@ UInt32x3::UInt32x3()
     Symbol::Resolved(&UInt32x3_splat_UInt16)->returnTypeSymbol = &UInt32x3Type;
 
     /// u32x3 with Int16x3
-    UInt32x3_convert_Int16x3_arg0.name = "val"_c;
-    UInt32x3_convert_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
-    UInt32x3_convert_Int16x3.documentation = "Convert i16x3 to u32x3"_c;
-    UInt32x3_convert_Int16x3.name = "u32x3"_c;
-    UInt32x3_convert_Int16x3.compileTime = true;
-    UInt32x3_convert_Int16x3.returnType = Type::FullType { UInt32x3Type.name };
-    UInt32x3_convert_Int16x3.parameters = UInt32x3_convert_Int16x3_args;
-    Symbol::Resolved(&UInt32x3_convert_Int16x3_arg0)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&UInt32x3_convert_Int16x3)->signature = "u32x3 u32x3(i16x3)"_c;
-    Symbol::Resolved(&UInt32x3_convert_Int16x3)->name = "u32x3(i16x3)"_c;
-    Symbol::Resolved(&UInt32x3_convert_Int16x3)->nameWithVarNames = "u32x3(val : i16x3)"_c;
-    Symbol::Resolved(&UInt32x3_convert_Int16x3)->returnTypeSymbol = &UInt32x3Type;
+    UInt32x3_from_Int16x3_arg0.name = "val"_c;
+    UInt32x3_from_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
+    UInt32x3_from_Int16x3.documentation = "Convert from i16x3 to u32x3"_c;
+    UInt32x3_from_Int16x3.name = "u32x3"_c;
+    UInt32x3_from_Int16x3.compileTime = true;
+    UInt32x3_from_Int16x3.returnType = Type::FullType { UInt32x3Type.name };
+    UInt32x3_from_Int16x3.parameters = UInt32x3_from_Int16x3_args;
+    Symbol::Resolved(&UInt32x3_from_Int16x3_arg0)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&UInt32x3_from_Int16x3)->signature = "u32x3 u32x3(i16x3)"_c;
+    Symbol::Resolved(&UInt32x3_from_Int16x3)->name = "u32x3(i16x3)"_c;
+    Symbol::Resolved(&UInt32x3_from_Int16x3)->nameWithVarNames = "u32x3(val : i16x3)"_c;
+    Symbol::Resolved(&UInt32x3_from_Int16x3)->returnTypeSymbol = &UInt32x3Type;
 
     /// u32x3 with Int16
     UInt32x3_splat_Int16_arg0.name = "val"_c;
@@ -12727,9 +12879,9 @@ UInt32x3::UInt32x3()
 UInt32x3 UInt32x3Type;
 
 /// i32x3 with Float32x3
-Variable Int32x3_convert_Float32x3_arg0;
-Function Int32x3_convert_Float32x3;
-inline constexpr std::array Int32x3_convert_Float32x3_args = { &Int32x3_convert_Float32x3_arg0 };
+Variable Int32x3_from_Float32x3_arg0;
+Function Int32x3_from_Float32x3;
+inline constexpr std::array Int32x3_from_Float32x3_args = { &Int32x3_from_Float32x3_arg0 };
 
 /// i32x3 with Float32
 Variable Int32x3_splat_Float32_arg0;
@@ -12737,9 +12889,9 @@ Function Int32x3_splat_Float32;
 inline constexpr std::array Int32x3_splat_Float32_args = { &Int32x3_splat_Float32_arg0 };
 
 /// i32x3 with UInt32x3
-Variable Int32x3_convert_UInt32x3_arg0;
-Function Int32x3_convert_UInt32x3;
-inline constexpr std::array Int32x3_convert_UInt32x3_args = { &Int32x3_convert_UInt32x3_arg0 };
+Variable Int32x3_from_UInt32x3_arg0;
+Function Int32x3_from_UInt32x3;
+inline constexpr std::array Int32x3_from_UInt32x3_args = { &Int32x3_from_UInt32x3_arg0 };
 
 /// i32x3 with UInt32
 Variable Int32x3_splat_UInt32_arg0;
@@ -12747,9 +12899,9 @@ Function Int32x3_splat_UInt32;
 inline constexpr std::array Int32x3_splat_UInt32_args = { &Int32x3_splat_UInt32_arg0 };
 
 /// i32x3 with Int32x3
-Variable Int32x3_convert_Int32x3_arg0;
-Function Int32x3_convert_Int32x3;
-inline constexpr std::array Int32x3_convert_Int32x3_args = { &Int32x3_convert_Int32x3_arg0 };
+Variable Int32x3_from_Int32x3_arg0;
+Function Int32x3_from_Int32x3;
+inline constexpr std::array Int32x3_from_Int32x3_args = { &Int32x3_from_Int32x3_arg0 };
 
 /// i32x3 with Int32
 Variable Int32x3_splat_Int32_arg0;
@@ -12757,9 +12909,9 @@ Function Int32x3_splat_Int32;
 inline constexpr std::array Int32x3_splat_Int32_args = { &Int32x3_splat_Int32_arg0 };
 
 /// i32x3 with Bool8x3
-Variable Int32x3_convert_Bool8x3_arg0;
-Function Int32x3_convert_Bool8x3;
-inline constexpr std::array Int32x3_convert_Bool8x3_args = { &Int32x3_convert_Bool8x3_arg0 };
+Variable Int32x3_from_Bool8x3_arg0;
+Function Int32x3_from_Bool8x3;
+inline constexpr std::array Int32x3_from_Bool8x3_args = { &Int32x3_from_Bool8x3_arg0 };
 
 /// i32x3 with Bool8
 Variable Int32x3_splat_Bool8_arg0;
@@ -12767,9 +12919,9 @@ Function Int32x3_splat_Bool8;
 inline constexpr std::array Int32x3_splat_Bool8_args = { &Int32x3_splat_Bool8_arg0 };
 
 /// i32x3 with Float16x3
-Variable Int32x3_convert_Float16x3_arg0;
-Function Int32x3_convert_Float16x3;
-inline constexpr std::array Int32x3_convert_Float16x3_args = { &Int32x3_convert_Float16x3_arg0 };
+Variable Int32x3_from_Float16x3_arg0;
+Function Int32x3_from_Float16x3;
+inline constexpr std::array Int32x3_from_Float16x3_args = { &Int32x3_from_Float16x3_arg0 };
 
 /// i32x3 with Float16
 Variable Int32x3_splat_Float16_arg0;
@@ -12777,9 +12929,9 @@ Function Int32x3_splat_Float16;
 inline constexpr std::array Int32x3_splat_Float16_args = { &Int32x3_splat_Float16_arg0 };
 
 /// i32x3 with UInt16x3
-Variable Int32x3_convert_UInt16x3_arg0;
-Function Int32x3_convert_UInt16x3;
-inline constexpr std::array Int32x3_convert_UInt16x3_args = { &Int32x3_convert_UInt16x3_arg0 };
+Variable Int32x3_from_UInt16x3_arg0;
+Function Int32x3_from_UInt16x3;
+inline constexpr std::array Int32x3_from_UInt16x3_args = { &Int32x3_from_UInt16x3_arg0 };
 
 /// i32x3 with UInt16
 Variable Int32x3_splat_UInt16_arg0;
@@ -12787,9 +12939,9 @@ Function Int32x3_splat_UInt16;
 inline constexpr std::array Int32x3_splat_UInt16_args = { &Int32x3_splat_UInt16_arg0 };
 
 /// i32x3 with Int16x3
-Variable Int32x3_convert_Int16x3_arg0;
-Function Int32x3_convert_Int16x3;
-inline constexpr std::array Int32x3_convert_Int16x3_args = { &Int32x3_convert_Int16x3_arg0 };
+Variable Int32x3_from_Int16x3_arg0;
+Function Int32x3_from_Int16x3;
+inline constexpr std::array Int32x3_from_Int16x3_args = { &Int32x3_from_Int16x3_arg0 };
 
 /// i32x3 with Int16
 Variable Int32x3_splat_Int16_arg0;
@@ -13001,18 +13153,18 @@ Int32x3::Int32x3()
     this->builtin = true;
 
     /// i32x3 with Float32x3
-    Int32x3_convert_Float32x3_arg0.name = "val"_c;
-    Int32x3_convert_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
-    Int32x3_convert_Float32x3.documentation = "Convert f32x3 to i32x3"_c;
-    Int32x3_convert_Float32x3.name = "i32x3"_c;
-    Int32x3_convert_Float32x3.compileTime = true;
-    Int32x3_convert_Float32x3.returnType = Type::FullType { Int32x3Type.name };
-    Int32x3_convert_Float32x3.parameters = Int32x3_convert_Float32x3_args;
-    Symbol::Resolved(&Int32x3_convert_Float32x3_arg0)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&Int32x3_convert_Float32x3)->signature = "i32x3 i32x3(f32x3)"_c;
-    Symbol::Resolved(&Int32x3_convert_Float32x3)->name = "i32x3(f32x3)"_c;
-    Symbol::Resolved(&Int32x3_convert_Float32x3)->nameWithVarNames = "i32x3(val : f32x3)"_c;
-    Symbol::Resolved(&Int32x3_convert_Float32x3)->returnTypeSymbol = &Int32x3Type;
+    Int32x3_from_Float32x3_arg0.name = "val"_c;
+    Int32x3_from_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
+    Int32x3_from_Float32x3.documentation = "Convert from f32x3 to i32x3"_c;
+    Int32x3_from_Float32x3.name = "i32x3"_c;
+    Int32x3_from_Float32x3.compileTime = true;
+    Int32x3_from_Float32x3.returnType = Type::FullType { Int32x3Type.name };
+    Int32x3_from_Float32x3.parameters = Int32x3_from_Float32x3_args;
+    Symbol::Resolved(&Int32x3_from_Float32x3_arg0)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&Int32x3_from_Float32x3)->signature = "i32x3 i32x3(f32x3)"_c;
+    Symbol::Resolved(&Int32x3_from_Float32x3)->name = "i32x3(f32x3)"_c;
+    Symbol::Resolved(&Int32x3_from_Float32x3)->nameWithVarNames = "i32x3(val : f32x3)"_c;
+    Symbol::Resolved(&Int32x3_from_Float32x3)->returnTypeSymbol = &Int32x3Type;
 
     /// i32x3 with Float32
     Int32x3_splat_Float32_arg0.name = "val"_c;
@@ -13029,18 +13181,18 @@ Int32x3::Int32x3()
     Symbol::Resolved(&Int32x3_splat_Float32)->returnTypeSymbol = &Int32x3Type;
 
     /// i32x3 with UInt32x3
-    Int32x3_convert_UInt32x3_arg0.name = "val"_c;
-    Int32x3_convert_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
-    Int32x3_convert_UInt32x3.documentation = "Convert u32x3 to i32x3"_c;
-    Int32x3_convert_UInt32x3.name = "i32x3"_c;
-    Int32x3_convert_UInt32x3.compileTime = true;
-    Int32x3_convert_UInt32x3.returnType = Type::FullType { Int32x3Type.name };
-    Int32x3_convert_UInt32x3.parameters = Int32x3_convert_UInt32x3_args;
-    Symbol::Resolved(&Int32x3_convert_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&Int32x3_convert_UInt32x3)->signature = "i32x3 i32x3(u32x3)"_c;
-    Symbol::Resolved(&Int32x3_convert_UInt32x3)->name = "i32x3(u32x3)"_c;
-    Symbol::Resolved(&Int32x3_convert_UInt32x3)->nameWithVarNames = "i32x3(val : u32x3)"_c;
-    Symbol::Resolved(&Int32x3_convert_UInt32x3)->returnTypeSymbol = &Int32x3Type;
+    Int32x3_from_UInt32x3_arg0.name = "val"_c;
+    Int32x3_from_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
+    Int32x3_from_UInt32x3.documentation = "Convert from u32x3 to i32x3"_c;
+    Int32x3_from_UInt32x3.name = "i32x3"_c;
+    Int32x3_from_UInt32x3.compileTime = true;
+    Int32x3_from_UInt32x3.returnType = Type::FullType { Int32x3Type.name };
+    Int32x3_from_UInt32x3.parameters = Int32x3_from_UInt32x3_args;
+    Symbol::Resolved(&Int32x3_from_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&Int32x3_from_UInt32x3)->signature = "i32x3 i32x3(u32x3)"_c;
+    Symbol::Resolved(&Int32x3_from_UInt32x3)->name = "i32x3(u32x3)"_c;
+    Symbol::Resolved(&Int32x3_from_UInt32x3)->nameWithVarNames = "i32x3(val : u32x3)"_c;
+    Symbol::Resolved(&Int32x3_from_UInt32x3)->returnTypeSymbol = &Int32x3Type;
 
     /// i32x3 with UInt32
     Int32x3_splat_UInt32_arg0.name = "val"_c;
@@ -13057,18 +13209,18 @@ Int32x3::Int32x3()
     Symbol::Resolved(&Int32x3_splat_UInt32)->returnTypeSymbol = &Int32x3Type;
 
     /// i32x3 with Int32x3
-    Int32x3_convert_Int32x3_arg0.name = "val"_c;
-    Int32x3_convert_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
-    Int32x3_convert_Int32x3.documentation = "Convert i32x3 to i32x3"_c;
-    Int32x3_convert_Int32x3.name = "i32x3"_c;
-    Int32x3_convert_Int32x3.compileTime = true;
-    Int32x3_convert_Int32x3.returnType = Type::FullType { Int32x3Type.name };
-    Int32x3_convert_Int32x3.parameters = Int32x3_convert_Int32x3_args;
-    Symbol::Resolved(&Int32x3_convert_Int32x3_arg0)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&Int32x3_convert_Int32x3)->signature = "i32x3 i32x3(i32x3)"_c;
-    Symbol::Resolved(&Int32x3_convert_Int32x3)->name = "i32x3(i32x3)"_c;
-    Symbol::Resolved(&Int32x3_convert_Int32x3)->nameWithVarNames = "i32x3(val : i32x3)"_c;
-    Symbol::Resolved(&Int32x3_convert_Int32x3)->returnTypeSymbol = &Int32x3Type;
+    Int32x3_from_Int32x3_arg0.name = "val"_c;
+    Int32x3_from_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
+    Int32x3_from_Int32x3.documentation = "Convert from i32x3 to i32x3"_c;
+    Int32x3_from_Int32x3.name = "i32x3"_c;
+    Int32x3_from_Int32x3.compileTime = true;
+    Int32x3_from_Int32x3.returnType = Type::FullType { Int32x3Type.name };
+    Int32x3_from_Int32x3.parameters = Int32x3_from_Int32x3_args;
+    Symbol::Resolved(&Int32x3_from_Int32x3_arg0)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&Int32x3_from_Int32x3)->signature = "i32x3 i32x3(i32x3)"_c;
+    Symbol::Resolved(&Int32x3_from_Int32x3)->name = "i32x3(i32x3)"_c;
+    Symbol::Resolved(&Int32x3_from_Int32x3)->nameWithVarNames = "i32x3(val : i32x3)"_c;
+    Symbol::Resolved(&Int32x3_from_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
     /// i32x3 with Int32
     Int32x3_splat_Int32_arg0.name = "val"_c;
@@ -13085,18 +13237,18 @@ Int32x3::Int32x3()
     Symbol::Resolved(&Int32x3_splat_Int32)->returnTypeSymbol = &Int32x3Type;
 
     /// i32x3 with Bool8x3
-    Int32x3_convert_Bool8x3_arg0.name = "val"_c;
-    Int32x3_convert_Bool8x3_arg0.type = Type::FullType{ Bool8x3Type.name };
-    Int32x3_convert_Bool8x3.documentation = "Convert b8x3 to i32x3"_c;
-    Int32x3_convert_Bool8x3.name = "i32x3"_c;
-    Int32x3_convert_Bool8x3.compileTime = true;
-    Int32x3_convert_Bool8x3.returnType = Type::FullType { Int32x3Type.name };
-    Int32x3_convert_Bool8x3.parameters = Int32x3_convert_Bool8x3_args;
-    Symbol::Resolved(&Int32x3_convert_Bool8x3_arg0)->typeSymbol = &Bool8x3Type;
-    Symbol::Resolved(&Int32x3_convert_Bool8x3)->signature = "i32x3 i32x3(b8x3)"_c;
-    Symbol::Resolved(&Int32x3_convert_Bool8x3)->name = "i32x3(b8x3)"_c;
-    Symbol::Resolved(&Int32x3_convert_Bool8x3)->nameWithVarNames = "i32x3(val : b8x3)"_c;
-    Symbol::Resolved(&Int32x3_convert_Bool8x3)->returnTypeSymbol = &Int32x3Type;
+    Int32x3_from_Bool8x3_arg0.name = "val"_c;
+    Int32x3_from_Bool8x3_arg0.type = Type::FullType{ Bool8x3Type.name };
+    Int32x3_from_Bool8x3.documentation = "Convert from b8x3 to i32x3"_c;
+    Int32x3_from_Bool8x3.name = "i32x3"_c;
+    Int32x3_from_Bool8x3.compileTime = true;
+    Int32x3_from_Bool8x3.returnType = Type::FullType { Int32x3Type.name };
+    Int32x3_from_Bool8x3.parameters = Int32x3_from_Bool8x3_args;
+    Symbol::Resolved(&Int32x3_from_Bool8x3_arg0)->typeSymbol = &Bool8x3Type;
+    Symbol::Resolved(&Int32x3_from_Bool8x3)->signature = "i32x3 i32x3(b8x3)"_c;
+    Symbol::Resolved(&Int32x3_from_Bool8x3)->name = "i32x3(b8x3)"_c;
+    Symbol::Resolved(&Int32x3_from_Bool8x3)->nameWithVarNames = "i32x3(val : b8x3)"_c;
+    Symbol::Resolved(&Int32x3_from_Bool8x3)->returnTypeSymbol = &Int32x3Type;
 
     /// i32x3 with Bool8
     Int32x3_splat_Bool8_arg0.name = "val"_c;
@@ -13113,18 +13265,18 @@ Int32x3::Int32x3()
     Symbol::Resolved(&Int32x3_splat_Bool8)->returnTypeSymbol = &Int32x3Type;
 
     /// i32x3 with Float16x3
-    Int32x3_convert_Float16x3_arg0.name = "val"_c;
-    Int32x3_convert_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
-    Int32x3_convert_Float16x3.documentation = "Convert f16x3 to i32x3"_c;
-    Int32x3_convert_Float16x3.name = "i32x3"_c;
-    Int32x3_convert_Float16x3.compileTime = true;
-    Int32x3_convert_Float16x3.returnType = Type::FullType { Int32x3Type.name };
-    Int32x3_convert_Float16x3.parameters = Int32x3_convert_Float16x3_args;
-    Symbol::Resolved(&Int32x3_convert_Float16x3_arg0)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&Int32x3_convert_Float16x3)->signature = "i32x3 i32x3(f16x3)"_c;
-    Symbol::Resolved(&Int32x3_convert_Float16x3)->name = "i32x3(f16x3)"_c;
-    Symbol::Resolved(&Int32x3_convert_Float16x3)->nameWithVarNames = "i32x3(val : f16x3)"_c;
-    Symbol::Resolved(&Int32x3_convert_Float16x3)->returnTypeSymbol = &Int32x3Type;
+    Int32x3_from_Float16x3_arg0.name = "val"_c;
+    Int32x3_from_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
+    Int32x3_from_Float16x3.documentation = "Convert from f16x3 to i32x3"_c;
+    Int32x3_from_Float16x3.name = "i32x3"_c;
+    Int32x3_from_Float16x3.compileTime = true;
+    Int32x3_from_Float16x3.returnType = Type::FullType { Int32x3Type.name };
+    Int32x3_from_Float16x3.parameters = Int32x3_from_Float16x3_args;
+    Symbol::Resolved(&Int32x3_from_Float16x3_arg0)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&Int32x3_from_Float16x3)->signature = "i32x3 i32x3(f16x3)"_c;
+    Symbol::Resolved(&Int32x3_from_Float16x3)->name = "i32x3(f16x3)"_c;
+    Symbol::Resolved(&Int32x3_from_Float16x3)->nameWithVarNames = "i32x3(val : f16x3)"_c;
+    Symbol::Resolved(&Int32x3_from_Float16x3)->returnTypeSymbol = &Int32x3Type;
 
     /// i32x3 with Float16
     Int32x3_splat_Float16_arg0.name = "val"_c;
@@ -13141,18 +13293,18 @@ Int32x3::Int32x3()
     Symbol::Resolved(&Int32x3_splat_Float16)->returnTypeSymbol = &Int32x3Type;
 
     /// i32x3 with UInt16x3
-    Int32x3_convert_UInt16x3_arg0.name = "val"_c;
-    Int32x3_convert_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
-    Int32x3_convert_UInt16x3.documentation = "Convert u16x3 to i32x3"_c;
-    Int32x3_convert_UInt16x3.name = "i32x3"_c;
-    Int32x3_convert_UInt16x3.compileTime = true;
-    Int32x3_convert_UInt16x3.returnType = Type::FullType { Int32x3Type.name };
-    Int32x3_convert_UInt16x3.parameters = Int32x3_convert_UInt16x3_args;
-    Symbol::Resolved(&Int32x3_convert_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&Int32x3_convert_UInt16x3)->signature = "i32x3 i32x3(u16x3)"_c;
-    Symbol::Resolved(&Int32x3_convert_UInt16x3)->name = "i32x3(u16x3)"_c;
-    Symbol::Resolved(&Int32x3_convert_UInt16x3)->nameWithVarNames = "i32x3(val : u16x3)"_c;
-    Symbol::Resolved(&Int32x3_convert_UInt16x3)->returnTypeSymbol = &Int32x3Type;
+    Int32x3_from_UInt16x3_arg0.name = "val"_c;
+    Int32x3_from_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
+    Int32x3_from_UInt16x3.documentation = "Convert from u16x3 to i32x3"_c;
+    Int32x3_from_UInt16x3.name = "i32x3"_c;
+    Int32x3_from_UInt16x3.compileTime = true;
+    Int32x3_from_UInt16x3.returnType = Type::FullType { Int32x3Type.name };
+    Int32x3_from_UInt16x3.parameters = Int32x3_from_UInt16x3_args;
+    Symbol::Resolved(&Int32x3_from_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&Int32x3_from_UInt16x3)->signature = "i32x3 i32x3(u16x3)"_c;
+    Symbol::Resolved(&Int32x3_from_UInt16x3)->name = "i32x3(u16x3)"_c;
+    Symbol::Resolved(&Int32x3_from_UInt16x3)->nameWithVarNames = "i32x3(val : u16x3)"_c;
+    Symbol::Resolved(&Int32x3_from_UInt16x3)->returnTypeSymbol = &Int32x3Type;
 
     /// i32x3 with UInt16
     Int32x3_splat_UInt16_arg0.name = "val"_c;
@@ -13169,18 +13321,18 @@ Int32x3::Int32x3()
     Symbol::Resolved(&Int32x3_splat_UInt16)->returnTypeSymbol = &Int32x3Type;
 
     /// i32x3 with Int16x3
-    Int32x3_convert_Int16x3_arg0.name = "val"_c;
-    Int32x3_convert_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
-    Int32x3_convert_Int16x3.documentation = "Convert i16x3 to i32x3"_c;
-    Int32x3_convert_Int16x3.name = "i32x3"_c;
-    Int32x3_convert_Int16x3.compileTime = true;
-    Int32x3_convert_Int16x3.returnType = Type::FullType { Int32x3Type.name };
-    Int32x3_convert_Int16x3.parameters = Int32x3_convert_Int16x3_args;
-    Symbol::Resolved(&Int32x3_convert_Int16x3_arg0)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&Int32x3_convert_Int16x3)->signature = "i32x3 i32x3(i16x3)"_c;
-    Symbol::Resolved(&Int32x3_convert_Int16x3)->name = "i32x3(i16x3)"_c;
-    Symbol::Resolved(&Int32x3_convert_Int16x3)->nameWithVarNames = "i32x3(val : i16x3)"_c;
-    Symbol::Resolved(&Int32x3_convert_Int16x3)->returnTypeSymbol = &Int32x3Type;
+    Int32x3_from_Int16x3_arg0.name = "val"_c;
+    Int32x3_from_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
+    Int32x3_from_Int16x3.documentation = "Convert from i16x3 to i32x3"_c;
+    Int32x3_from_Int16x3.name = "i32x3"_c;
+    Int32x3_from_Int16x3.compileTime = true;
+    Int32x3_from_Int16x3.returnType = Type::FullType { Int32x3Type.name };
+    Int32x3_from_Int16x3.parameters = Int32x3_from_Int16x3_args;
+    Symbol::Resolved(&Int32x3_from_Int16x3_arg0)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&Int32x3_from_Int16x3)->signature = "i32x3 i32x3(i16x3)"_c;
+    Symbol::Resolved(&Int32x3_from_Int16x3)->name = "i32x3(i16x3)"_c;
+    Symbol::Resolved(&Int32x3_from_Int16x3)->nameWithVarNames = "i32x3(val : i16x3)"_c;
+    Symbol::Resolved(&Int32x3_from_Int16x3)->returnTypeSymbol = &Int32x3Type;
 
     /// i32x3 with Int16
     Int32x3_splat_Int16_arg0.name = "val"_c;
@@ -13983,9 +14135,9 @@ Int32x3::Int32x3()
 Int32x3 Int32x3Type;
 
 /// b8x3 with UInt32x3
-Variable Bool8x3_convert_UInt32x3_arg0;
-Function Bool8x3_convert_UInt32x3;
-inline constexpr std::array Bool8x3_convert_UInt32x3_args = { &Bool8x3_convert_UInt32x3_arg0 };
+Variable Bool8x3_from_UInt32x3_arg0;
+Function Bool8x3_from_UInt32x3;
+inline constexpr std::array Bool8x3_from_UInt32x3_args = { &Bool8x3_from_UInt32x3_arg0 };
 
 /// b8x3 with UInt32
 Variable Bool8x3_splat_UInt32_arg0;
@@ -13993,9 +14145,9 @@ Function Bool8x3_splat_UInt32;
 inline constexpr std::array Bool8x3_splat_UInt32_args = { &Bool8x3_splat_UInt32_arg0 };
 
 /// b8x3 with Int32x3
-Variable Bool8x3_convert_Int32x3_arg0;
-Function Bool8x3_convert_Int32x3;
-inline constexpr std::array Bool8x3_convert_Int32x3_args = { &Bool8x3_convert_Int32x3_arg0 };
+Variable Bool8x3_from_Int32x3_arg0;
+Function Bool8x3_from_Int32x3;
+inline constexpr std::array Bool8x3_from_Int32x3_args = { &Bool8x3_from_Int32x3_arg0 };
 
 /// b8x3 with Int32
 Variable Bool8x3_splat_Int32_arg0;
@@ -14003,9 +14155,9 @@ Function Bool8x3_splat_Int32;
 inline constexpr std::array Bool8x3_splat_Int32_args = { &Bool8x3_splat_Int32_arg0 };
 
 /// b8x3 with Bool8x3
-Variable Bool8x3_convert_Bool8x3_arg0;
-Function Bool8x3_convert_Bool8x3;
-inline constexpr std::array Bool8x3_convert_Bool8x3_args = { &Bool8x3_convert_Bool8x3_arg0 };
+Variable Bool8x3_from_Bool8x3_arg0;
+Function Bool8x3_from_Bool8x3;
+inline constexpr std::array Bool8x3_from_Bool8x3_args = { &Bool8x3_from_Bool8x3_arg0 };
 
 /// b8x3 with Bool8
 Variable Bool8x3_splat_Bool8_arg0;
@@ -14013,9 +14165,9 @@ Function Bool8x3_splat_Bool8;
 inline constexpr std::array Bool8x3_splat_Bool8_args = { &Bool8x3_splat_Bool8_arg0 };
 
 /// b8x3 with UInt16x3
-Variable Bool8x3_convert_UInt16x3_arg0;
-Function Bool8x3_convert_UInt16x3;
-inline constexpr std::array Bool8x3_convert_UInt16x3_args = { &Bool8x3_convert_UInt16x3_arg0 };
+Variable Bool8x3_from_UInt16x3_arg0;
+Function Bool8x3_from_UInt16x3;
+inline constexpr std::array Bool8x3_from_UInt16x3_args = { &Bool8x3_from_UInt16x3_arg0 };
 
 /// b8x3 with UInt16
 Variable Bool8x3_splat_UInt16_arg0;
@@ -14023,9 +14175,9 @@ Function Bool8x3_splat_UInt16;
 inline constexpr std::array Bool8x3_splat_UInt16_args = { &Bool8x3_splat_UInt16_arg0 };
 
 /// b8x3 with Int16x3
-Variable Bool8x3_convert_Int16x3_arg0;
-Function Bool8x3_convert_Int16x3;
-inline constexpr std::array Bool8x3_convert_Int16x3_args = { &Bool8x3_convert_Int16x3_arg0 };
+Variable Bool8x3_from_Int16x3_arg0;
+Function Bool8x3_from_Int16x3;
+inline constexpr std::array Bool8x3_from_Int16x3_args = { &Bool8x3_from_Int16x3_arg0 };
 
 /// b8x3 with Int16
 Variable Bool8x3_splat_Int16_arg0;
@@ -14102,18 +14254,18 @@ Bool8x3::Bool8x3()
     this->builtin = true;
 
     /// b8x3 with UInt32x3
-    Bool8x3_convert_UInt32x3_arg0.name = "val"_c;
-    Bool8x3_convert_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
-    Bool8x3_convert_UInt32x3.documentation = "Convert u32x3 to b8x3"_c;
-    Bool8x3_convert_UInt32x3.name = "b8x3"_c;
-    Bool8x3_convert_UInt32x3.compileTime = true;
-    Bool8x3_convert_UInt32x3.returnType = Type::FullType { Bool8x3Type.name };
-    Bool8x3_convert_UInt32x3.parameters = Bool8x3_convert_UInt32x3_args;
-    Symbol::Resolved(&Bool8x3_convert_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&Bool8x3_convert_UInt32x3)->signature = "b8x3 b8x3(u32x3)"_c;
-    Symbol::Resolved(&Bool8x3_convert_UInt32x3)->name = "b8x3(u32x3)"_c;
-    Symbol::Resolved(&Bool8x3_convert_UInt32x3)->nameWithVarNames = "b8x3(val : u32x3)"_c;
-    Symbol::Resolved(&Bool8x3_convert_UInt32x3)->returnTypeSymbol = &Bool8x3Type;
+    Bool8x3_from_UInt32x3_arg0.name = "val"_c;
+    Bool8x3_from_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
+    Bool8x3_from_UInt32x3.documentation = "Convert from u32x3 to b8x3"_c;
+    Bool8x3_from_UInt32x3.name = "b8x3"_c;
+    Bool8x3_from_UInt32x3.compileTime = true;
+    Bool8x3_from_UInt32x3.returnType = Type::FullType { Bool8x3Type.name };
+    Bool8x3_from_UInt32x3.parameters = Bool8x3_from_UInt32x3_args;
+    Symbol::Resolved(&Bool8x3_from_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&Bool8x3_from_UInt32x3)->signature = "b8x3 b8x3(u32x3)"_c;
+    Symbol::Resolved(&Bool8x3_from_UInt32x3)->name = "b8x3(u32x3)"_c;
+    Symbol::Resolved(&Bool8x3_from_UInt32x3)->nameWithVarNames = "b8x3(val : u32x3)"_c;
+    Symbol::Resolved(&Bool8x3_from_UInt32x3)->returnTypeSymbol = &Bool8x3Type;
 
     /// b8x3 with UInt32
     Bool8x3_splat_UInt32_arg0.name = "val"_c;
@@ -14130,18 +14282,18 @@ Bool8x3::Bool8x3()
     Symbol::Resolved(&Bool8x3_splat_UInt32)->returnTypeSymbol = &Bool8x3Type;
 
     /// b8x3 with Int32x3
-    Bool8x3_convert_Int32x3_arg0.name = "val"_c;
-    Bool8x3_convert_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
-    Bool8x3_convert_Int32x3.documentation = "Convert i32x3 to b8x3"_c;
-    Bool8x3_convert_Int32x3.name = "b8x3"_c;
-    Bool8x3_convert_Int32x3.compileTime = true;
-    Bool8x3_convert_Int32x3.returnType = Type::FullType { Bool8x3Type.name };
-    Bool8x3_convert_Int32x3.parameters = Bool8x3_convert_Int32x3_args;
-    Symbol::Resolved(&Bool8x3_convert_Int32x3_arg0)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&Bool8x3_convert_Int32x3)->signature = "b8x3 b8x3(i32x3)"_c;
-    Symbol::Resolved(&Bool8x3_convert_Int32x3)->name = "b8x3(i32x3)"_c;
-    Symbol::Resolved(&Bool8x3_convert_Int32x3)->nameWithVarNames = "b8x3(val : i32x3)"_c;
-    Symbol::Resolved(&Bool8x3_convert_Int32x3)->returnTypeSymbol = &Bool8x3Type;
+    Bool8x3_from_Int32x3_arg0.name = "val"_c;
+    Bool8x3_from_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
+    Bool8x3_from_Int32x3.documentation = "Convert from i32x3 to b8x3"_c;
+    Bool8x3_from_Int32x3.name = "b8x3"_c;
+    Bool8x3_from_Int32x3.compileTime = true;
+    Bool8x3_from_Int32x3.returnType = Type::FullType { Bool8x3Type.name };
+    Bool8x3_from_Int32x3.parameters = Bool8x3_from_Int32x3_args;
+    Symbol::Resolved(&Bool8x3_from_Int32x3_arg0)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&Bool8x3_from_Int32x3)->signature = "b8x3 b8x3(i32x3)"_c;
+    Symbol::Resolved(&Bool8x3_from_Int32x3)->name = "b8x3(i32x3)"_c;
+    Symbol::Resolved(&Bool8x3_from_Int32x3)->nameWithVarNames = "b8x3(val : i32x3)"_c;
+    Symbol::Resolved(&Bool8x3_from_Int32x3)->returnTypeSymbol = &Bool8x3Type;
 
     /// b8x3 with Int32
     Bool8x3_splat_Int32_arg0.name = "val"_c;
@@ -14158,18 +14310,18 @@ Bool8x3::Bool8x3()
     Symbol::Resolved(&Bool8x3_splat_Int32)->returnTypeSymbol = &Bool8x3Type;
 
     /// b8x3 with Bool8x3
-    Bool8x3_convert_Bool8x3_arg0.name = "val"_c;
-    Bool8x3_convert_Bool8x3_arg0.type = Type::FullType{ Bool8x3Type.name };
-    Bool8x3_convert_Bool8x3.documentation = "Convert b8x3 to b8x3"_c;
-    Bool8x3_convert_Bool8x3.name = "b8x3"_c;
-    Bool8x3_convert_Bool8x3.compileTime = true;
-    Bool8x3_convert_Bool8x3.returnType = Type::FullType { Bool8x3Type.name };
-    Bool8x3_convert_Bool8x3.parameters = Bool8x3_convert_Bool8x3_args;
-    Symbol::Resolved(&Bool8x3_convert_Bool8x3_arg0)->typeSymbol = &Bool8x3Type;
-    Symbol::Resolved(&Bool8x3_convert_Bool8x3)->signature = "b8x3 b8x3(b8x3)"_c;
-    Symbol::Resolved(&Bool8x3_convert_Bool8x3)->name = "b8x3(b8x3)"_c;
-    Symbol::Resolved(&Bool8x3_convert_Bool8x3)->nameWithVarNames = "b8x3(val : b8x3)"_c;
-    Symbol::Resolved(&Bool8x3_convert_Bool8x3)->returnTypeSymbol = &Bool8x3Type;
+    Bool8x3_from_Bool8x3_arg0.name = "val"_c;
+    Bool8x3_from_Bool8x3_arg0.type = Type::FullType{ Bool8x3Type.name };
+    Bool8x3_from_Bool8x3.documentation = "Convert from b8x3 to b8x3"_c;
+    Bool8x3_from_Bool8x3.name = "b8x3"_c;
+    Bool8x3_from_Bool8x3.compileTime = true;
+    Bool8x3_from_Bool8x3.returnType = Type::FullType { Bool8x3Type.name };
+    Bool8x3_from_Bool8x3.parameters = Bool8x3_from_Bool8x3_args;
+    Symbol::Resolved(&Bool8x3_from_Bool8x3_arg0)->typeSymbol = &Bool8x3Type;
+    Symbol::Resolved(&Bool8x3_from_Bool8x3)->signature = "b8x3 b8x3(b8x3)"_c;
+    Symbol::Resolved(&Bool8x3_from_Bool8x3)->name = "b8x3(b8x3)"_c;
+    Symbol::Resolved(&Bool8x3_from_Bool8x3)->nameWithVarNames = "b8x3(val : b8x3)"_c;
+    Symbol::Resolved(&Bool8x3_from_Bool8x3)->returnTypeSymbol = &Bool8x3Type;
 
     /// b8x3 with Bool8
     Bool8x3_splat_Bool8_arg0.name = "val"_c;
@@ -14186,18 +14338,18 @@ Bool8x3::Bool8x3()
     Symbol::Resolved(&Bool8x3_splat_Bool8)->returnTypeSymbol = &Bool8x3Type;
 
     /// b8x3 with UInt16x3
-    Bool8x3_convert_UInt16x3_arg0.name = "val"_c;
-    Bool8x3_convert_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
-    Bool8x3_convert_UInt16x3.documentation = "Convert u16x3 to b8x3"_c;
-    Bool8x3_convert_UInt16x3.name = "b8x3"_c;
-    Bool8x3_convert_UInt16x3.compileTime = true;
-    Bool8x3_convert_UInt16x3.returnType = Type::FullType { Bool8x3Type.name };
-    Bool8x3_convert_UInt16x3.parameters = Bool8x3_convert_UInt16x3_args;
-    Symbol::Resolved(&Bool8x3_convert_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&Bool8x3_convert_UInt16x3)->signature = "b8x3 b8x3(u16x3)"_c;
-    Symbol::Resolved(&Bool8x3_convert_UInt16x3)->name = "b8x3(u16x3)"_c;
-    Symbol::Resolved(&Bool8x3_convert_UInt16x3)->nameWithVarNames = "b8x3(val : u16x3)"_c;
-    Symbol::Resolved(&Bool8x3_convert_UInt16x3)->returnTypeSymbol = &Bool8x3Type;
+    Bool8x3_from_UInt16x3_arg0.name = "val"_c;
+    Bool8x3_from_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
+    Bool8x3_from_UInt16x3.documentation = "Convert from u16x3 to b8x3"_c;
+    Bool8x3_from_UInt16x3.name = "b8x3"_c;
+    Bool8x3_from_UInt16x3.compileTime = true;
+    Bool8x3_from_UInt16x3.returnType = Type::FullType { Bool8x3Type.name };
+    Bool8x3_from_UInt16x3.parameters = Bool8x3_from_UInt16x3_args;
+    Symbol::Resolved(&Bool8x3_from_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&Bool8x3_from_UInt16x3)->signature = "b8x3 b8x3(u16x3)"_c;
+    Symbol::Resolved(&Bool8x3_from_UInt16x3)->name = "b8x3(u16x3)"_c;
+    Symbol::Resolved(&Bool8x3_from_UInt16x3)->nameWithVarNames = "b8x3(val : u16x3)"_c;
+    Symbol::Resolved(&Bool8x3_from_UInt16x3)->returnTypeSymbol = &Bool8x3Type;
 
     /// b8x3 with UInt16
     Bool8x3_splat_UInt16_arg0.name = "val"_c;
@@ -14214,18 +14366,18 @@ Bool8x3::Bool8x3()
     Symbol::Resolved(&Bool8x3_splat_UInt16)->returnTypeSymbol = &Bool8x3Type;
 
     /// b8x3 with Int16x3
-    Bool8x3_convert_Int16x3_arg0.name = "val"_c;
-    Bool8x3_convert_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
-    Bool8x3_convert_Int16x3.documentation = "Convert i16x3 to b8x3"_c;
-    Bool8x3_convert_Int16x3.name = "b8x3"_c;
-    Bool8x3_convert_Int16x3.compileTime = true;
-    Bool8x3_convert_Int16x3.returnType = Type::FullType { Bool8x3Type.name };
-    Bool8x3_convert_Int16x3.parameters = Bool8x3_convert_Int16x3_args;
-    Symbol::Resolved(&Bool8x3_convert_Int16x3_arg0)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&Bool8x3_convert_Int16x3)->signature = "b8x3 b8x3(i16x3)"_c;
-    Symbol::Resolved(&Bool8x3_convert_Int16x3)->name = "b8x3(i16x3)"_c;
-    Symbol::Resolved(&Bool8x3_convert_Int16x3)->nameWithVarNames = "b8x3(val : i16x3)"_c;
-    Symbol::Resolved(&Bool8x3_convert_Int16x3)->returnTypeSymbol = &Bool8x3Type;
+    Bool8x3_from_Int16x3_arg0.name = "val"_c;
+    Bool8x3_from_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
+    Bool8x3_from_Int16x3.documentation = "Convert from i16x3 to b8x3"_c;
+    Bool8x3_from_Int16x3.name = "b8x3"_c;
+    Bool8x3_from_Int16x3.compileTime = true;
+    Bool8x3_from_Int16x3.returnType = Type::FullType { Bool8x3Type.name };
+    Bool8x3_from_Int16x3.parameters = Bool8x3_from_Int16x3_args;
+    Symbol::Resolved(&Bool8x3_from_Int16x3_arg0)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&Bool8x3_from_Int16x3)->signature = "b8x3 b8x3(i16x3)"_c;
+    Symbol::Resolved(&Bool8x3_from_Int16x3)->name = "b8x3(i16x3)"_c;
+    Symbol::Resolved(&Bool8x3_from_Int16x3)->nameWithVarNames = "b8x3(val : i16x3)"_c;
+    Symbol::Resolved(&Bool8x3_from_Int16x3)->returnTypeSymbol = &Bool8x3Type;
 
     /// b8x3 with Int16
     Bool8x3_splat_Int16_arg0.name = "val"_c;
@@ -14650,9 +14802,9 @@ Bool8x3::Bool8x3()
 Bool8x3 Bool8x3Type;
 
 /// f16x3 with Float32x3
-Variable Float16x3_convert_Float32x3_arg0;
-Function Float16x3_convert_Float32x3;
-inline constexpr std::array Float16x3_convert_Float32x3_args = { &Float16x3_convert_Float32x3_arg0 };
+Variable Float16x3_from_Float32x3_arg0;
+Function Float16x3_from_Float32x3;
+inline constexpr std::array Float16x3_from_Float32x3_args = { &Float16x3_from_Float32x3_arg0 };
 
 /// f16x3 with Float32
 Variable Float16x3_splat_Float32_arg0;
@@ -14660,9 +14812,9 @@ Function Float16x3_splat_Float32;
 inline constexpr std::array Float16x3_splat_Float32_args = { &Float16x3_splat_Float32_arg0 };
 
 /// f16x3 with UInt32x3
-Variable Float16x3_convert_UInt32x3_arg0;
-Function Float16x3_convert_UInt32x3;
-inline constexpr std::array Float16x3_convert_UInt32x3_args = { &Float16x3_convert_UInt32x3_arg0 };
+Variable Float16x3_from_UInt32x3_arg0;
+Function Float16x3_from_UInt32x3;
+inline constexpr std::array Float16x3_from_UInt32x3_args = { &Float16x3_from_UInt32x3_arg0 };
 
 /// f16x3 with UInt32
 Variable Float16x3_splat_UInt32_arg0;
@@ -14670,19 +14822,29 @@ Function Float16x3_splat_UInt32;
 inline constexpr std::array Float16x3_splat_UInt32_args = { &Float16x3_splat_UInt32_arg0 };
 
 /// f16x3 with Int32x3
-Variable Float16x3_convert_Int32x3_arg0;
-Function Float16x3_convert_Int32x3;
-inline constexpr std::array Float16x3_convert_Int32x3_args = { &Float16x3_convert_Int32x3_arg0 };
+Variable Float16x3_from_Int32x3_arg0;
+Function Float16x3_from_Int32x3;
+inline constexpr std::array Float16x3_from_Int32x3_args = { &Float16x3_from_Int32x3_arg0 };
 
 /// f16x3 with Int32
 Variable Float16x3_splat_Int32_arg0;
 Function Float16x3_splat_Int32;
 inline constexpr std::array Float16x3_splat_Int32_args = { &Float16x3_splat_Int32_arg0 };
 
+/// f16x3 with Bool8x3
+Variable Float16x3_from_Bool8x3_arg0;
+Function Float16x3_from_Bool8x3;
+inline constexpr std::array Float16x3_from_Bool8x3_args = { &Float16x3_from_Bool8x3_arg0 };
+
+/// f16x3 with Bool8
+Variable Float16x3_splat_Bool8_arg0;
+Function Float16x3_splat_Bool8;
+inline constexpr std::array Float16x3_splat_Bool8_args = { &Float16x3_splat_Bool8_arg0 };
+
 /// f16x3 with Float16x3
-Variable Float16x3_convert_Float16x3_arg0;
-Function Float16x3_convert_Float16x3;
-inline constexpr std::array Float16x3_convert_Float16x3_args = { &Float16x3_convert_Float16x3_arg0 };
+Variable Float16x3_from_Float16x3_arg0;
+Function Float16x3_from_Float16x3;
+inline constexpr std::array Float16x3_from_Float16x3_args = { &Float16x3_from_Float16x3_arg0 };
 
 /// f16x3 with Float16
 Variable Float16x3_splat_Float16_arg0;
@@ -14690,9 +14852,9 @@ Function Float16x3_splat_Float16;
 inline constexpr std::array Float16x3_splat_Float16_args = { &Float16x3_splat_Float16_arg0 };
 
 /// f16x3 with UInt16x3
-Variable Float16x3_convert_UInt16x3_arg0;
-Function Float16x3_convert_UInt16x3;
-inline constexpr std::array Float16x3_convert_UInt16x3_args = { &Float16x3_convert_UInt16x3_arg0 };
+Variable Float16x3_from_UInt16x3_arg0;
+Function Float16x3_from_UInt16x3;
+inline constexpr std::array Float16x3_from_UInt16x3_args = { &Float16x3_from_UInt16x3_arg0 };
 
 /// f16x3 with UInt16
 Variable Float16x3_splat_UInt16_arg0;
@@ -14700,9 +14862,9 @@ Function Float16x3_splat_UInt16;
 inline constexpr std::array Float16x3_splat_UInt16_args = { &Float16x3_splat_UInt16_arg0 };
 
 /// f16x3 with Int16x3
-Variable Float16x3_convert_Int16x3_arg0;
-Function Float16x3_convert_Int16x3;
-inline constexpr std::array Float16x3_convert_Int16x3_args = { &Float16x3_convert_Int16x3_arg0 };
+Variable Float16x3_from_Int16x3_arg0;
+Function Float16x3_from_Int16x3;
+inline constexpr std::array Float16x3_from_Int16x3_args = { &Float16x3_from_Int16x3_arg0 };
 
 /// f16x3 with Int16
 Variable Float16x3_splat_Int16_arg0;
@@ -14879,18 +15041,18 @@ Float16x3::Float16x3()
     this->builtin = true;
 
     /// f16x3 with Float32x3
-    Float16x3_convert_Float32x3_arg0.name = "val"_c;
-    Float16x3_convert_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
-    Float16x3_convert_Float32x3.documentation = "Convert f32x3 to f16x3"_c;
-    Float16x3_convert_Float32x3.name = "f16x3"_c;
-    Float16x3_convert_Float32x3.compileTime = true;
-    Float16x3_convert_Float32x3.returnType = Type::FullType { Float16x3Type.name };
-    Float16x3_convert_Float32x3.parameters = Float16x3_convert_Float32x3_args;
-    Symbol::Resolved(&Float16x3_convert_Float32x3_arg0)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&Float16x3_convert_Float32x3)->signature = "f16x3 f16x3(f32x3)"_c;
-    Symbol::Resolved(&Float16x3_convert_Float32x3)->name = "f16x3(f32x3)"_c;
-    Symbol::Resolved(&Float16x3_convert_Float32x3)->nameWithVarNames = "f16x3(val : f32x3)"_c;
-    Symbol::Resolved(&Float16x3_convert_Float32x3)->returnTypeSymbol = &Float16x3Type;
+    Float16x3_from_Float32x3_arg0.name = "val"_c;
+    Float16x3_from_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
+    Float16x3_from_Float32x3.documentation = "Convert from f32x3 to f16x3"_c;
+    Float16x3_from_Float32x3.name = "f16x3"_c;
+    Float16x3_from_Float32x3.compileTime = true;
+    Float16x3_from_Float32x3.returnType = Type::FullType { Float16x3Type.name };
+    Float16x3_from_Float32x3.parameters = Float16x3_from_Float32x3_args;
+    Symbol::Resolved(&Float16x3_from_Float32x3_arg0)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&Float16x3_from_Float32x3)->signature = "f16x3 f16x3(f32x3)"_c;
+    Symbol::Resolved(&Float16x3_from_Float32x3)->name = "f16x3(f32x3)"_c;
+    Symbol::Resolved(&Float16x3_from_Float32x3)->nameWithVarNames = "f16x3(val : f32x3)"_c;
+    Symbol::Resolved(&Float16x3_from_Float32x3)->returnTypeSymbol = &Float16x3Type;
 
     /// f16x3 with Float32
     Float16x3_splat_Float32_arg0.name = "val"_c;
@@ -14907,18 +15069,18 @@ Float16x3::Float16x3()
     Symbol::Resolved(&Float16x3_splat_Float32)->returnTypeSymbol = &Float16x3Type;
 
     /// f16x3 with UInt32x3
-    Float16x3_convert_UInt32x3_arg0.name = "val"_c;
-    Float16x3_convert_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
-    Float16x3_convert_UInt32x3.documentation = "Convert u32x3 to f16x3"_c;
-    Float16x3_convert_UInt32x3.name = "f16x3"_c;
-    Float16x3_convert_UInt32x3.compileTime = true;
-    Float16x3_convert_UInt32x3.returnType = Type::FullType { Float16x3Type.name };
-    Float16x3_convert_UInt32x3.parameters = Float16x3_convert_UInt32x3_args;
-    Symbol::Resolved(&Float16x3_convert_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&Float16x3_convert_UInt32x3)->signature = "f16x3 f16x3(u32x3)"_c;
-    Symbol::Resolved(&Float16x3_convert_UInt32x3)->name = "f16x3(u32x3)"_c;
-    Symbol::Resolved(&Float16x3_convert_UInt32x3)->nameWithVarNames = "f16x3(val : u32x3)"_c;
-    Symbol::Resolved(&Float16x3_convert_UInt32x3)->returnTypeSymbol = &Float16x3Type;
+    Float16x3_from_UInt32x3_arg0.name = "val"_c;
+    Float16x3_from_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
+    Float16x3_from_UInt32x3.documentation = "Convert from u32x3 to f16x3"_c;
+    Float16x3_from_UInt32x3.name = "f16x3"_c;
+    Float16x3_from_UInt32x3.compileTime = true;
+    Float16x3_from_UInt32x3.returnType = Type::FullType { Float16x3Type.name };
+    Float16x3_from_UInt32x3.parameters = Float16x3_from_UInt32x3_args;
+    Symbol::Resolved(&Float16x3_from_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&Float16x3_from_UInt32x3)->signature = "f16x3 f16x3(u32x3)"_c;
+    Symbol::Resolved(&Float16x3_from_UInt32x3)->name = "f16x3(u32x3)"_c;
+    Symbol::Resolved(&Float16x3_from_UInt32x3)->nameWithVarNames = "f16x3(val : u32x3)"_c;
+    Symbol::Resolved(&Float16x3_from_UInt32x3)->returnTypeSymbol = &Float16x3Type;
 
     /// f16x3 with UInt32
     Float16x3_splat_UInt32_arg0.name = "val"_c;
@@ -14935,18 +15097,18 @@ Float16x3::Float16x3()
     Symbol::Resolved(&Float16x3_splat_UInt32)->returnTypeSymbol = &Float16x3Type;
 
     /// f16x3 with Int32x3
-    Float16x3_convert_Int32x3_arg0.name = "val"_c;
-    Float16x3_convert_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
-    Float16x3_convert_Int32x3.documentation = "Convert i32x3 to f16x3"_c;
-    Float16x3_convert_Int32x3.name = "f16x3"_c;
-    Float16x3_convert_Int32x3.compileTime = true;
-    Float16x3_convert_Int32x3.returnType = Type::FullType { Float16x3Type.name };
-    Float16x3_convert_Int32x3.parameters = Float16x3_convert_Int32x3_args;
-    Symbol::Resolved(&Float16x3_convert_Int32x3_arg0)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&Float16x3_convert_Int32x3)->signature = "f16x3 f16x3(i32x3)"_c;
-    Symbol::Resolved(&Float16x3_convert_Int32x3)->name = "f16x3(i32x3)"_c;
-    Symbol::Resolved(&Float16x3_convert_Int32x3)->nameWithVarNames = "f16x3(val : i32x3)"_c;
-    Symbol::Resolved(&Float16x3_convert_Int32x3)->returnTypeSymbol = &Float16x3Type;
+    Float16x3_from_Int32x3_arg0.name = "val"_c;
+    Float16x3_from_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
+    Float16x3_from_Int32x3.documentation = "Convert from i32x3 to f16x3"_c;
+    Float16x3_from_Int32x3.name = "f16x3"_c;
+    Float16x3_from_Int32x3.compileTime = true;
+    Float16x3_from_Int32x3.returnType = Type::FullType { Float16x3Type.name };
+    Float16x3_from_Int32x3.parameters = Float16x3_from_Int32x3_args;
+    Symbol::Resolved(&Float16x3_from_Int32x3_arg0)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&Float16x3_from_Int32x3)->signature = "f16x3 f16x3(i32x3)"_c;
+    Symbol::Resolved(&Float16x3_from_Int32x3)->name = "f16x3(i32x3)"_c;
+    Symbol::Resolved(&Float16x3_from_Int32x3)->nameWithVarNames = "f16x3(val : i32x3)"_c;
+    Symbol::Resolved(&Float16x3_from_Int32x3)->returnTypeSymbol = &Float16x3Type;
 
     /// f16x3 with Int32
     Float16x3_splat_Int32_arg0.name = "val"_c;
@@ -14962,19 +15124,47 @@ Float16x3::Float16x3()
     Symbol::Resolved(&Float16x3_splat_Int32)->nameWithVarNames = "f16x3(val : i32)"_c;
     Symbol::Resolved(&Float16x3_splat_Int32)->returnTypeSymbol = &Float16x3Type;
 
+    /// f16x3 with Bool8x3
+    Float16x3_from_Bool8x3_arg0.name = "val"_c;
+    Float16x3_from_Bool8x3_arg0.type = Type::FullType{ Bool8x3Type.name };
+    Float16x3_from_Bool8x3.documentation = "Convert from b8x3 to f16x3"_c;
+    Float16x3_from_Bool8x3.name = "f16x3"_c;
+    Float16x3_from_Bool8x3.compileTime = true;
+    Float16x3_from_Bool8x3.returnType = Type::FullType { Float16x3Type.name };
+    Float16x3_from_Bool8x3.parameters = Float16x3_from_Bool8x3_args;
+    Symbol::Resolved(&Float16x3_from_Bool8x3_arg0)->typeSymbol = &Bool8x3Type;
+    Symbol::Resolved(&Float16x3_from_Bool8x3)->signature = "f16x3 f16x3(b8x3)"_c;
+    Symbol::Resolved(&Float16x3_from_Bool8x3)->name = "f16x3(b8x3)"_c;
+    Symbol::Resolved(&Float16x3_from_Bool8x3)->nameWithVarNames = "f16x3(val : b8x3)"_c;
+    Symbol::Resolved(&Float16x3_from_Bool8x3)->returnTypeSymbol = &Float16x3Type;
+
+    /// f16x3 with Bool8
+    Float16x3_splat_Bool8_arg0.name = "val"_c;
+    Float16x3_splat_Bool8_arg0.type = Type::FullType{ Bool8Type.name };
+    Float16x3_splat_Bool8.documentation = "Splat b8 to f16x3"_c;
+    Float16x3_splat_Bool8.name = "f16x3"_c;
+    Float16x3_splat_Bool8.compileTime = true;
+    Float16x3_splat_Bool8.returnType = Type::FullType { Float16x3Type.name };
+    Float16x3_splat_Bool8.parameters = Float16x3_splat_Bool8_args;
+    Symbol::Resolved(&Float16x3_splat_Bool8_arg0)->typeSymbol = &Bool8Type;
+    Symbol::Resolved(&Float16x3_splat_Bool8)->signature = "f16x3 f16x3(b8)"_c;
+    Symbol::Resolved(&Float16x3_splat_Bool8)->name = "f16x3(b8)"_c;
+    Symbol::Resolved(&Float16x3_splat_Bool8)->nameWithVarNames = "f16x3(val : b8)"_c;
+    Symbol::Resolved(&Float16x3_splat_Bool8)->returnTypeSymbol = &Float16x3Type;
+
     /// f16x3 with Float16x3
-    Float16x3_convert_Float16x3_arg0.name = "val"_c;
-    Float16x3_convert_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
-    Float16x3_convert_Float16x3.documentation = "Convert f16x3 to f16x3"_c;
-    Float16x3_convert_Float16x3.name = "f16x3"_c;
-    Float16x3_convert_Float16x3.compileTime = true;
-    Float16x3_convert_Float16x3.returnType = Type::FullType { Float16x3Type.name };
-    Float16x3_convert_Float16x3.parameters = Float16x3_convert_Float16x3_args;
-    Symbol::Resolved(&Float16x3_convert_Float16x3_arg0)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&Float16x3_convert_Float16x3)->signature = "f16x3 f16x3(f16x3)"_c;
-    Symbol::Resolved(&Float16x3_convert_Float16x3)->name = "f16x3(f16x3)"_c;
-    Symbol::Resolved(&Float16x3_convert_Float16x3)->nameWithVarNames = "f16x3(val : f16x3)"_c;
-    Symbol::Resolved(&Float16x3_convert_Float16x3)->returnTypeSymbol = &Float16x3Type;
+    Float16x3_from_Float16x3_arg0.name = "val"_c;
+    Float16x3_from_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
+    Float16x3_from_Float16x3.documentation = "Convert from f16x3 to f16x3"_c;
+    Float16x3_from_Float16x3.name = "f16x3"_c;
+    Float16x3_from_Float16x3.compileTime = true;
+    Float16x3_from_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    Float16x3_from_Float16x3.parameters = Float16x3_from_Float16x3_args;
+    Symbol::Resolved(&Float16x3_from_Float16x3_arg0)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&Float16x3_from_Float16x3)->signature = "f16x3 f16x3(f16x3)"_c;
+    Symbol::Resolved(&Float16x3_from_Float16x3)->name = "f16x3(f16x3)"_c;
+    Symbol::Resolved(&Float16x3_from_Float16x3)->nameWithVarNames = "f16x3(val : f16x3)"_c;
+    Symbol::Resolved(&Float16x3_from_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
     /// f16x3 with Float16
     Float16x3_splat_Float16_arg0.name = "val"_c;
@@ -14991,18 +15181,18 @@ Float16x3::Float16x3()
     Symbol::Resolved(&Float16x3_splat_Float16)->returnTypeSymbol = &Float16x3Type;
 
     /// f16x3 with UInt16x3
-    Float16x3_convert_UInt16x3_arg0.name = "val"_c;
-    Float16x3_convert_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
-    Float16x3_convert_UInt16x3.documentation = "Convert u16x3 to f16x3"_c;
-    Float16x3_convert_UInt16x3.name = "f16x3"_c;
-    Float16x3_convert_UInt16x3.compileTime = true;
-    Float16x3_convert_UInt16x3.returnType = Type::FullType { Float16x3Type.name };
-    Float16x3_convert_UInt16x3.parameters = Float16x3_convert_UInt16x3_args;
-    Symbol::Resolved(&Float16x3_convert_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&Float16x3_convert_UInt16x3)->signature = "f16x3 f16x3(u16x3)"_c;
-    Symbol::Resolved(&Float16x3_convert_UInt16x3)->name = "f16x3(u16x3)"_c;
-    Symbol::Resolved(&Float16x3_convert_UInt16x3)->nameWithVarNames = "f16x3(val : u16x3)"_c;
-    Symbol::Resolved(&Float16x3_convert_UInt16x3)->returnTypeSymbol = &Float16x3Type;
+    Float16x3_from_UInt16x3_arg0.name = "val"_c;
+    Float16x3_from_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
+    Float16x3_from_UInt16x3.documentation = "Convert from u16x3 to f16x3"_c;
+    Float16x3_from_UInt16x3.name = "f16x3"_c;
+    Float16x3_from_UInt16x3.compileTime = true;
+    Float16x3_from_UInt16x3.returnType = Type::FullType { Float16x3Type.name };
+    Float16x3_from_UInt16x3.parameters = Float16x3_from_UInt16x3_args;
+    Symbol::Resolved(&Float16x3_from_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&Float16x3_from_UInt16x3)->signature = "f16x3 f16x3(u16x3)"_c;
+    Symbol::Resolved(&Float16x3_from_UInt16x3)->name = "f16x3(u16x3)"_c;
+    Symbol::Resolved(&Float16x3_from_UInt16x3)->nameWithVarNames = "f16x3(val : u16x3)"_c;
+    Symbol::Resolved(&Float16x3_from_UInt16x3)->returnTypeSymbol = &Float16x3Type;
 
     /// f16x3 with UInt16
     Float16x3_splat_UInt16_arg0.name = "val"_c;
@@ -15019,18 +15209,18 @@ Float16x3::Float16x3()
     Symbol::Resolved(&Float16x3_splat_UInt16)->returnTypeSymbol = &Float16x3Type;
 
     /// f16x3 with Int16x3
-    Float16x3_convert_Int16x3_arg0.name = "val"_c;
-    Float16x3_convert_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
-    Float16x3_convert_Int16x3.documentation = "Convert i16x3 to f16x3"_c;
-    Float16x3_convert_Int16x3.name = "f16x3"_c;
-    Float16x3_convert_Int16x3.compileTime = true;
-    Float16x3_convert_Int16x3.returnType = Type::FullType { Float16x3Type.name };
-    Float16x3_convert_Int16x3.parameters = Float16x3_convert_Int16x3_args;
-    Symbol::Resolved(&Float16x3_convert_Int16x3_arg0)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&Float16x3_convert_Int16x3)->signature = "f16x3 f16x3(i16x3)"_c;
-    Symbol::Resolved(&Float16x3_convert_Int16x3)->name = "f16x3(i16x3)"_c;
-    Symbol::Resolved(&Float16x3_convert_Int16x3)->nameWithVarNames = "f16x3(val : i16x3)"_c;
-    Symbol::Resolved(&Float16x3_convert_Int16x3)->returnTypeSymbol = &Float16x3Type;
+    Float16x3_from_Int16x3_arg0.name = "val"_c;
+    Float16x3_from_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
+    Float16x3_from_Int16x3.documentation = "Convert from i16x3 to f16x3"_c;
+    Float16x3_from_Int16x3.name = "f16x3"_c;
+    Float16x3_from_Int16x3.compileTime = true;
+    Float16x3_from_Int16x3.returnType = Type::FullType { Float16x3Type.name };
+    Float16x3_from_Int16x3.parameters = Float16x3_from_Int16x3_args;
+    Symbol::Resolved(&Float16x3_from_Int16x3_arg0)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&Float16x3_from_Int16x3)->signature = "f16x3 f16x3(i16x3)"_c;
+    Symbol::Resolved(&Float16x3_from_Int16x3)->name = "f16x3(i16x3)"_c;
+    Symbol::Resolved(&Float16x3_from_Int16x3)->nameWithVarNames = "f16x3(val : i16x3)"_c;
+    Symbol::Resolved(&Float16x3_from_Int16x3)->returnTypeSymbol = &Float16x3Type;
 
     /// f16x3 with Int16
     Float16x3_splat_Int16_arg0.name = "val"_c;
@@ -15735,9 +15925,9 @@ Float16x3::Float16x3()
 Float16x3 Float16x3Type;
 
 /// u16x3 with Float32x3
-Variable UInt16x3_convert_Float32x3_arg0;
-Function UInt16x3_convert_Float32x3;
-inline constexpr std::array UInt16x3_convert_Float32x3_args = { &UInt16x3_convert_Float32x3_arg0 };
+Variable UInt16x3_from_Float32x3_arg0;
+Function UInt16x3_from_Float32x3;
+inline constexpr std::array UInt16x3_from_Float32x3_args = { &UInt16x3_from_Float32x3_arg0 };
 
 /// u16x3 with Float32
 Variable UInt16x3_splat_Float32_arg0;
@@ -15745,9 +15935,9 @@ Function UInt16x3_splat_Float32;
 inline constexpr std::array UInt16x3_splat_Float32_args = { &UInt16x3_splat_Float32_arg0 };
 
 /// u16x3 with UInt32x3
-Variable UInt16x3_convert_UInt32x3_arg0;
-Function UInt16x3_convert_UInt32x3;
-inline constexpr std::array UInt16x3_convert_UInt32x3_args = { &UInt16x3_convert_UInt32x3_arg0 };
+Variable UInt16x3_from_UInt32x3_arg0;
+Function UInt16x3_from_UInt32x3;
+inline constexpr std::array UInt16x3_from_UInt32x3_args = { &UInt16x3_from_UInt32x3_arg0 };
 
 /// u16x3 with UInt32
 Variable UInt16x3_splat_UInt32_arg0;
@@ -15755,9 +15945,9 @@ Function UInt16x3_splat_UInt32;
 inline constexpr std::array UInt16x3_splat_UInt32_args = { &UInt16x3_splat_UInt32_arg0 };
 
 /// u16x3 with Int32x3
-Variable UInt16x3_convert_Int32x3_arg0;
-Function UInt16x3_convert_Int32x3;
-inline constexpr std::array UInt16x3_convert_Int32x3_args = { &UInt16x3_convert_Int32x3_arg0 };
+Variable UInt16x3_from_Int32x3_arg0;
+Function UInt16x3_from_Int32x3;
+inline constexpr std::array UInt16x3_from_Int32x3_args = { &UInt16x3_from_Int32x3_arg0 };
 
 /// u16x3 with Int32
 Variable UInt16x3_splat_Int32_arg0;
@@ -15765,9 +15955,9 @@ Function UInt16x3_splat_Int32;
 inline constexpr std::array UInt16x3_splat_Int32_args = { &UInt16x3_splat_Int32_arg0 };
 
 /// u16x3 with Bool8x3
-Variable UInt16x3_convert_Bool8x3_arg0;
-Function UInt16x3_convert_Bool8x3;
-inline constexpr std::array UInt16x3_convert_Bool8x3_args = { &UInt16x3_convert_Bool8x3_arg0 };
+Variable UInt16x3_from_Bool8x3_arg0;
+Function UInt16x3_from_Bool8x3;
+inline constexpr std::array UInt16x3_from_Bool8x3_args = { &UInt16x3_from_Bool8x3_arg0 };
 
 /// u16x3 with Bool8
 Variable UInt16x3_splat_Bool8_arg0;
@@ -15775,9 +15965,9 @@ Function UInt16x3_splat_Bool8;
 inline constexpr std::array UInt16x3_splat_Bool8_args = { &UInt16x3_splat_Bool8_arg0 };
 
 /// u16x3 with Float16x3
-Variable UInt16x3_convert_Float16x3_arg0;
-Function UInt16x3_convert_Float16x3;
-inline constexpr std::array UInt16x3_convert_Float16x3_args = { &UInt16x3_convert_Float16x3_arg0 };
+Variable UInt16x3_from_Float16x3_arg0;
+Function UInt16x3_from_Float16x3;
+inline constexpr std::array UInt16x3_from_Float16x3_args = { &UInt16x3_from_Float16x3_arg0 };
 
 /// u16x3 with Float16
 Variable UInt16x3_splat_Float16_arg0;
@@ -15785,9 +15975,9 @@ Function UInt16x3_splat_Float16;
 inline constexpr std::array UInt16x3_splat_Float16_args = { &UInt16x3_splat_Float16_arg0 };
 
 /// u16x3 with UInt16x3
-Variable UInt16x3_convert_UInt16x3_arg0;
-Function UInt16x3_convert_UInt16x3;
-inline constexpr std::array UInt16x3_convert_UInt16x3_args = { &UInt16x3_convert_UInt16x3_arg0 };
+Variable UInt16x3_from_UInt16x3_arg0;
+Function UInt16x3_from_UInt16x3;
+inline constexpr std::array UInt16x3_from_UInt16x3_args = { &UInt16x3_from_UInt16x3_arg0 };
 
 /// u16x3 with UInt16
 Variable UInt16x3_splat_UInt16_arg0;
@@ -15795,9 +15985,9 @@ Function UInt16x3_splat_UInt16;
 inline constexpr std::array UInt16x3_splat_UInt16_args = { &UInt16x3_splat_UInt16_arg0 };
 
 /// u16x3 with Int16x3
-Variable UInt16x3_convert_Int16x3_arg0;
-Function UInt16x3_convert_Int16x3;
-inline constexpr std::array UInt16x3_convert_Int16x3_args = { &UInt16x3_convert_Int16x3_arg0 };
+Variable UInt16x3_from_Int16x3_arg0;
+Function UInt16x3_from_Int16x3;
+inline constexpr std::array UInt16x3_from_Int16x3_args = { &UInt16x3_from_Int16x3_arg0 };
 
 /// u16x3 with Int16
 Variable UInt16x3_splat_Int16_arg0;
@@ -16009,18 +16199,18 @@ UInt16x3::UInt16x3()
     this->builtin = true;
 
     /// u16x3 with Float32x3
-    UInt16x3_convert_Float32x3_arg0.name = "val"_c;
-    UInt16x3_convert_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
-    UInt16x3_convert_Float32x3.documentation = "Convert f32x3 to u16x3"_c;
-    UInt16x3_convert_Float32x3.name = "u16x3"_c;
-    UInt16x3_convert_Float32x3.compileTime = true;
-    UInt16x3_convert_Float32x3.returnType = Type::FullType { UInt16x3Type.name };
-    UInt16x3_convert_Float32x3.parameters = UInt16x3_convert_Float32x3_args;
-    Symbol::Resolved(&UInt16x3_convert_Float32x3_arg0)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&UInt16x3_convert_Float32x3)->signature = "u16x3 u16x3(f32x3)"_c;
-    Symbol::Resolved(&UInt16x3_convert_Float32x3)->name = "u16x3(f32x3)"_c;
-    Symbol::Resolved(&UInt16x3_convert_Float32x3)->nameWithVarNames = "u16x3(val : f32x3)"_c;
-    Symbol::Resolved(&UInt16x3_convert_Float32x3)->returnTypeSymbol = &UInt16x3Type;
+    UInt16x3_from_Float32x3_arg0.name = "val"_c;
+    UInt16x3_from_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
+    UInt16x3_from_Float32x3.documentation = "Convert from f32x3 to u16x3"_c;
+    UInt16x3_from_Float32x3.name = "u16x3"_c;
+    UInt16x3_from_Float32x3.compileTime = true;
+    UInt16x3_from_Float32x3.returnType = Type::FullType { UInt16x3Type.name };
+    UInt16x3_from_Float32x3.parameters = UInt16x3_from_Float32x3_args;
+    Symbol::Resolved(&UInt16x3_from_Float32x3_arg0)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&UInt16x3_from_Float32x3)->signature = "u16x3 u16x3(f32x3)"_c;
+    Symbol::Resolved(&UInt16x3_from_Float32x3)->name = "u16x3(f32x3)"_c;
+    Symbol::Resolved(&UInt16x3_from_Float32x3)->nameWithVarNames = "u16x3(val : f32x3)"_c;
+    Symbol::Resolved(&UInt16x3_from_Float32x3)->returnTypeSymbol = &UInt16x3Type;
 
     /// u16x3 with Float32
     UInt16x3_splat_Float32_arg0.name = "val"_c;
@@ -16037,18 +16227,18 @@ UInt16x3::UInt16x3()
     Symbol::Resolved(&UInt16x3_splat_Float32)->returnTypeSymbol = &UInt16x3Type;
 
     /// u16x3 with UInt32x3
-    UInt16x3_convert_UInt32x3_arg0.name = "val"_c;
-    UInt16x3_convert_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
-    UInt16x3_convert_UInt32x3.documentation = "Convert u32x3 to u16x3"_c;
-    UInt16x3_convert_UInt32x3.name = "u16x3"_c;
-    UInt16x3_convert_UInt32x3.compileTime = true;
-    UInt16x3_convert_UInt32x3.returnType = Type::FullType { UInt16x3Type.name };
-    UInt16x3_convert_UInt32x3.parameters = UInt16x3_convert_UInt32x3_args;
-    Symbol::Resolved(&UInt16x3_convert_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&UInt16x3_convert_UInt32x3)->signature = "u16x3 u16x3(u32x3)"_c;
-    Symbol::Resolved(&UInt16x3_convert_UInt32x3)->name = "u16x3(u32x3)"_c;
-    Symbol::Resolved(&UInt16x3_convert_UInt32x3)->nameWithVarNames = "u16x3(val : u32x3)"_c;
-    Symbol::Resolved(&UInt16x3_convert_UInt32x3)->returnTypeSymbol = &UInt16x3Type;
+    UInt16x3_from_UInt32x3_arg0.name = "val"_c;
+    UInt16x3_from_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
+    UInt16x3_from_UInt32x3.documentation = "Convert from u32x3 to u16x3"_c;
+    UInt16x3_from_UInt32x3.name = "u16x3"_c;
+    UInt16x3_from_UInt32x3.compileTime = true;
+    UInt16x3_from_UInt32x3.returnType = Type::FullType { UInt16x3Type.name };
+    UInt16x3_from_UInt32x3.parameters = UInt16x3_from_UInt32x3_args;
+    Symbol::Resolved(&UInt16x3_from_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&UInt16x3_from_UInt32x3)->signature = "u16x3 u16x3(u32x3)"_c;
+    Symbol::Resolved(&UInt16x3_from_UInt32x3)->name = "u16x3(u32x3)"_c;
+    Symbol::Resolved(&UInt16x3_from_UInt32x3)->nameWithVarNames = "u16x3(val : u32x3)"_c;
+    Symbol::Resolved(&UInt16x3_from_UInt32x3)->returnTypeSymbol = &UInt16x3Type;
 
     /// u16x3 with UInt32
     UInt16x3_splat_UInt32_arg0.name = "val"_c;
@@ -16065,18 +16255,18 @@ UInt16x3::UInt16x3()
     Symbol::Resolved(&UInt16x3_splat_UInt32)->returnTypeSymbol = &UInt16x3Type;
 
     /// u16x3 with Int32x3
-    UInt16x3_convert_Int32x3_arg0.name = "val"_c;
-    UInt16x3_convert_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
-    UInt16x3_convert_Int32x3.documentation = "Convert i32x3 to u16x3"_c;
-    UInt16x3_convert_Int32x3.name = "u16x3"_c;
-    UInt16x3_convert_Int32x3.compileTime = true;
-    UInt16x3_convert_Int32x3.returnType = Type::FullType { UInt16x3Type.name };
-    UInt16x3_convert_Int32x3.parameters = UInt16x3_convert_Int32x3_args;
-    Symbol::Resolved(&UInt16x3_convert_Int32x3_arg0)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&UInt16x3_convert_Int32x3)->signature = "u16x3 u16x3(i32x3)"_c;
-    Symbol::Resolved(&UInt16x3_convert_Int32x3)->name = "u16x3(i32x3)"_c;
-    Symbol::Resolved(&UInt16x3_convert_Int32x3)->nameWithVarNames = "u16x3(val : i32x3)"_c;
-    Symbol::Resolved(&UInt16x3_convert_Int32x3)->returnTypeSymbol = &UInt16x3Type;
+    UInt16x3_from_Int32x3_arg0.name = "val"_c;
+    UInt16x3_from_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
+    UInt16x3_from_Int32x3.documentation = "Convert from i32x3 to u16x3"_c;
+    UInt16x3_from_Int32x3.name = "u16x3"_c;
+    UInt16x3_from_Int32x3.compileTime = true;
+    UInt16x3_from_Int32x3.returnType = Type::FullType { UInt16x3Type.name };
+    UInt16x3_from_Int32x3.parameters = UInt16x3_from_Int32x3_args;
+    Symbol::Resolved(&UInt16x3_from_Int32x3_arg0)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&UInt16x3_from_Int32x3)->signature = "u16x3 u16x3(i32x3)"_c;
+    Symbol::Resolved(&UInt16x3_from_Int32x3)->name = "u16x3(i32x3)"_c;
+    Symbol::Resolved(&UInt16x3_from_Int32x3)->nameWithVarNames = "u16x3(val : i32x3)"_c;
+    Symbol::Resolved(&UInt16x3_from_Int32x3)->returnTypeSymbol = &UInt16x3Type;
 
     /// u16x3 with Int32
     UInt16x3_splat_Int32_arg0.name = "val"_c;
@@ -16093,18 +16283,18 @@ UInt16x3::UInt16x3()
     Symbol::Resolved(&UInt16x3_splat_Int32)->returnTypeSymbol = &UInt16x3Type;
 
     /// u16x3 with Bool8x3
-    UInt16x3_convert_Bool8x3_arg0.name = "val"_c;
-    UInt16x3_convert_Bool8x3_arg0.type = Type::FullType{ Bool8x3Type.name };
-    UInt16x3_convert_Bool8x3.documentation = "Convert b8x3 to u16x3"_c;
-    UInt16x3_convert_Bool8x3.name = "u16x3"_c;
-    UInt16x3_convert_Bool8x3.compileTime = true;
-    UInt16x3_convert_Bool8x3.returnType = Type::FullType { UInt16x3Type.name };
-    UInt16x3_convert_Bool8x3.parameters = UInt16x3_convert_Bool8x3_args;
-    Symbol::Resolved(&UInt16x3_convert_Bool8x3_arg0)->typeSymbol = &Bool8x3Type;
-    Symbol::Resolved(&UInt16x3_convert_Bool8x3)->signature = "u16x3 u16x3(b8x3)"_c;
-    Symbol::Resolved(&UInt16x3_convert_Bool8x3)->name = "u16x3(b8x3)"_c;
-    Symbol::Resolved(&UInt16x3_convert_Bool8x3)->nameWithVarNames = "u16x3(val : b8x3)"_c;
-    Symbol::Resolved(&UInt16x3_convert_Bool8x3)->returnTypeSymbol = &UInt16x3Type;
+    UInt16x3_from_Bool8x3_arg0.name = "val"_c;
+    UInt16x3_from_Bool8x3_arg0.type = Type::FullType{ Bool8x3Type.name };
+    UInt16x3_from_Bool8x3.documentation = "Convert from b8x3 to u16x3"_c;
+    UInt16x3_from_Bool8x3.name = "u16x3"_c;
+    UInt16x3_from_Bool8x3.compileTime = true;
+    UInt16x3_from_Bool8x3.returnType = Type::FullType { UInt16x3Type.name };
+    UInt16x3_from_Bool8x3.parameters = UInt16x3_from_Bool8x3_args;
+    Symbol::Resolved(&UInt16x3_from_Bool8x3_arg0)->typeSymbol = &Bool8x3Type;
+    Symbol::Resolved(&UInt16x3_from_Bool8x3)->signature = "u16x3 u16x3(b8x3)"_c;
+    Symbol::Resolved(&UInt16x3_from_Bool8x3)->name = "u16x3(b8x3)"_c;
+    Symbol::Resolved(&UInt16x3_from_Bool8x3)->nameWithVarNames = "u16x3(val : b8x3)"_c;
+    Symbol::Resolved(&UInt16x3_from_Bool8x3)->returnTypeSymbol = &UInt16x3Type;
 
     /// u16x3 with Bool8
     UInt16x3_splat_Bool8_arg0.name = "val"_c;
@@ -16121,18 +16311,18 @@ UInt16x3::UInt16x3()
     Symbol::Resolved(&UInt16x3_splat_Bool8)->returnTypeSymbol = &UInt16x3Type;
 
     /// u16x3 with Float16x3
-    UInt16x3_convert_Float16x3_arg0.name = "val"_c;
-    UInt16x3_convert_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
-    UInt16x3_convert_Float16x3.documentation = "Convert f16x3 to u16x3"_c;
-    UInt16x3_convert_Float16x3.name = "u16x3"_c;
-    UInt16x3_convert_Float16x3.compileTime = true;
-    UInt16x3_convert_Float16x3.returnType = Type::FullType { UInt16x3Type.name };
-    UInt16x3_convert_Float16x3.parameters = UInt16x3_convert_Float16x3_args;
-    Symbol::Resolved(&UInt16x3_convert_Float16x3_arg0)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&UInt16x3_convert_Float16x3)->signature = "u16x3 u16x3(f16x3)"_c;
-    Symbol::Resolved(&UInt16x3_convert_Float16x3)->name = "u16x3(f16x3)"_c;
-    Symbol::Resolved(&UInt16x3_convert_Float16x3)->nameWithVarNames = "u16x3(val : f16x3)"_c;
-    Symbol::Resolved(&UInt16x3_convert_Float16x3)->returnTypeSymbol = &UInt16x3Type;
+    UInt16x3_from_Float16x3_arg0.name = "val"_c;
+    UInt16x3_from_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
+    UInt16x3_from_Float16x3.documentation = "Convert from f16x3 to u16x3"_c;
+    UInt16x3_from_Float16x3.name = "u16x3"_c;
+    UInt16x3_from_Float16x3.compileTime = true;
+    UInt16x3_from_Float16x3.returnType = Type::FullType { UInt16x3Type.name };
+    UInt16x3_from_Float16x3.parameters = UInt16x3_from_Float16x3_args;
+    Symbol::Resolved(&UInt16x3_from_Float16x3_arg0)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&UInt16x3_from_Float16x3)->signature = "u16x3 u16x3(f16x3)"_c;
+    Symbol::Resolved(&UInt16x3_from_Float16x3)->name = "u16x3(f16x3)"_c;
+    Symbol::Resolved(&UInt16x3_from_Float16x3)->nameWithVarNames = "u16x3(val : f16x3)"_c;
+    Symbol::Resolved(&UInt16x3_from_Float16x3)->returnTypeSymbol = &UInt16x3Type;
 
     /// u16x3 with Float16
     UInt16x3_splat_Float16_arg0.name = "val"_c;
@@ -16149,18 +16339,18 @@ UInt16x3::UInt16x3()
     Symbol::Resolved(&UInt16x3_splat_Float16)->returnTypeSymbol = &UInt16x3Type;
 
     /// u16x3 with UInt16x3
-    UInt16x3_convert_UInt16x3_arg0.name = "val"_c;
-    UInt16x3_convert_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
-    UInt16x3_convert_UInt16x3.documentation = "Convert u16x3 to u16x3"_c;
-    UInt16x3_convert_UInt16x3.name = "u16x3"_c;
-    UInt16x3_convert_UInt16x3.compileTime = true;
-    UInt16x3_convert_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
-    UInt16x3_convert_UInt16x3.parameters = UInt16x3_convert_UInt16x3_args;
-    Symbol::Resolved(&UInt16x3_convert_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&UInt16x3_convert_UInt16x3)->signature = "u16x3 u16x3(u16x3)"_c;
-    Symbol::Resolved(&UInt16x3_convert_UInt16x3)->name = "u16x3(u16x3)"_c;
-    Symbol::Resolved(&UInt16x3_convert_UInt16x3)->nameWithVarNames = "u16x3(val : u16x3)"_c;
-    Symbol::Resolved(&UInt16x3_convert_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
+    UInt16x3_from_UInt16x3_arg0.name = "val"_c;
+    UInt16x3_from_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
+    UInt16x3_from_UInt16x3.documentation = "Convert from u16x3 to u16x3"_c;
+    UInt16x3_from_UInt16x3.name = "u16x3"_c;
+    UInt16x3_from_UInt16x3.compileTime = true;
+    UInt16x3_from_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
+    UInt16x3_from_UInt16x3.parameters = UInt16x3_from_UInt16x3_args;
+    Symbol::Resolved(&UInt16x3_from_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&UInt16x3_from_UInt16x3)->signature = "u16x3 u16x3(u16x3)"_c;
+    Symbol::Resolved(&UInt16x3_from_UInt16x3)->name = "u16x3(u16x3)"_c;
+    Symbol::Resolved(&UInt16x3_from_UInt16x3)->nameWithVarNames = "u16x3(val : u16x3)"_c;
+    Symbol::Resolved(&UInt16x3_from_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
     /// u16x3 with UInt16
     UInt16x3_splat_UInt16_arg0.name = "val"_c;
@@ -16177,18 +16367,18 @@ UInt16x3::UInt16x3()
     Symbol::Resolved(&UInt16x3_splat_UInt16)->returnTypeSymbol = &UInt16x3Type;
 
     /// u16x3 with Int16x3
-    UInt16x3_convert_Int16x3_arg0.name = "val"_c;
-    UInt16x3_convert_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
-    UInt16x3_convert_Int16x3.documentation = "Convert i16x3 to u16x3"_c;
-    UInt16x3_convert_Int16x3.name = "u16x3"_c;
-    UInt16x3_convert_Int16x3.compileTime = true;
-    UInt16x3_convert_Int16x3.returnType = Type::FullType { UInt16x3Type.name };
-    UInt16x3_convert_Int16x3.parameters = UInt16x3_convert_Int16x3_args;
-    Symbol::Resolved(&UInt16x3_convert_Int16x3_arg0)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&UInt16x3_convert_Int16x3)->signature = "u16x3 u16x3(i16x3)"_c;
-    Symbol::Resolved(&UInt16x3_convert_Int16x3)->name = "u16x3(i16x3)"_c;
-    Symbol::Resolved(&UInt16x3_convert_Int16x3)->nameWithVarNames = "u16x3(val : i16x3)"_c;
-    Symbol::Resolved(&UInt16x3_convert_Int16x3)->returnTypeSymbol = &UInt16x3Type;
+    UInt16x3_from_Int16x3_arg0.name = "val"_c;
+    UInt16x3_from_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
+    UInt16x3_from_Int16x3.documentation = "Convert from i16x3 to u16x3"_c;
+    UInt16x3_from_Int16x3.name = "u16x3"_c;
+    UInt16x3_from_Int16x3.compileTime = true;
+    UInt16x3_from_Int16x3.returnType = Type::FullType { UInt16x3Type.name };
+    UInt16x3_from_Int16x3.parameters = UInt16x3_from_Int16x3_args;
+    Symbol::Resolved(&UInt16x3_from_Int16x3_arg0)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&UInt16x3_from_Int16x3)->signature = "u16x3 u16x3(i16x3)"_c;
+    Symbol::Resolved(&UInt16x3_from_Int16x3)->name = "u16x3(i16x3)"_c;
+    Symbol::Resolved(&UInt16x3_from_Int16x3)->nameWithVarNames = "u16x3(val : i16x3)"_c;
+    Symbol::Resolved(&UInt16x3_from_Int16x3)->returnTypeSymbol = &UInt16x3Type;
 
     /// u16x3 with Int16
     UInt16x3_splat_Int16_arg0.name = "val"_c;
@@ -16991,9 +17181,9 @@ UInt16x3::UInt16x3()
 UInt16x3 UInt16x3Type;
 
 /// i16x3 with Float32x3
-Variable Int16x3_convert_Float32x3_arg0;
-Function Int16x3_convert_Float32x3;
-inline constexpr std::array Int16x3_convert_Float32x3_args = { &Int16x3_convert_Float32x3_arg0 };
+Variable Int16x3_from_Float32x3_arg0;
+Function Int16x3_from_Float32x3;
+inline constexpr std::array Int16x3_from_Float32x3_args = { &Int16x3_from_Float32x3_arg0 };
 
 /// i16x3 with Float32
 Variable Int16x3_splat_Float32_arg0;
@@ -17001,9 +17191,9 @@ Function Int16x3_splat_Float32;
 inline constexpr std::array Int16x3_splat_Float32_args = { &Int16x3_splat_Float32_arg0 };
 
 /// i16x3 with UInt32x3
-Variable Int16x3_convert_UInt32x3_arg0;
-Function Int16x3_convert_UInt32x3;
-inline constexpr std::array Int16x3_convert_UInt32x3_args = { &Int16x3_convert_UInt32x3_arg0 };
+Variable Int16x3_from_UInt32x3_arg0;
+Function Int16x3_from_UInt32x3;
+inline constexpr std::array Int16x3_from_UInt32x3_args = { &Int16x3_from_UInt32x3_arg0 };
 
 /// i16x3 with UInt32
 Variable Int16x3_splat_UInt32_arg0;
@@ -17011,9 +17201,9 @@ Function Int16x3_splat_UInt32;
 inline constexpr std::array Int16x3_splat_UInt32_args = { &Int16x3_splat_UInt32_arg0 };
 
 /// i16x3 with Int32x3
-Variable Int16x3_convert_Int32x3_arg0;
-Function Int16x3_convert_Int32x3;
-inline constexpr std::array Int16x3_convert_Int32x3_args = { &Int16x3_convert_Int32x3_arg0 };
+Variable Int16x3_from_Int32x3_arg0;
+Function Int16x3_from_Int32x3;
+inline constexpr std::array Int16x3_from_Int32x3_args = { &Int16x3_from_Int32x3_arg0 };
 
 /// i16x3 with Int32
 Variable Int16x3_splat_Int32_arg0;
@@ -17021,9 +17211,9 @@ Function Int16x3_splat_Int32;
 inline constexpr std::array Int16x3_splat_Int32_args = { &Int16x3_splat_Int32_arg0 };
 
 /// i16x3 with Bool8x3
-Variable Int16x3_convert_Bool8x3_arg0;
-Function Int16x3_convert_Bool8x3;
-inline constexpr std::array Int16x3_convert_Bool8x3_args = { &Int16x3_convert_Bool8x3_arg0 };
+Variable Int16x3_from_Bool8x3_arg0;
+Function Int16x3_from_Bool8x3;
+inline constexpr std::array Int16x3_from_Bool8x3_args = { &Int16x3_from_Bool8x3_arg0 };
 
 /// i16x3 with Bool8
 Variable Int16x3_splat_Bool8_arg0;
@@ -17031,9 +17221,9 @@ Function Int16x3_splat_Bool8;
 inline constexpr std::array Int16x3_splat_Bool8_args = { &Int16x3_splat_Bool8_arg0 };
 
 /// i16x3 with Float16x3
-Variable Int16x3_convert_Float16x3_arg0;
-Function Int16x3_convert_Float16x3;
-inline constexpr std::array Int16x3_convert_Float16x3_args = { &Int16x3_convert_Float16x3_arg0 };
+Variable Int16x3_from_Float16x3_arg0;
+Function Int16x3_from_Float16x3;
+inline constexpr std::array Int16x3_from_Float16x3_args = { &Int16x3_from_Float16x3_arg0 };
 
 /// i16x3 with Float16
 Variable Int16x3_splat_Float16_arg0;
@@ -17041,9 +17231,9 @@ Function Int16x3_splat_Float16;
 inline constexpr std::array Int16x3_splat_Float16_args = { &Int16x3_splat_Float16_arg0 };
 
 /// i16x3 with UInt16x3
-Variable Int16x3_convert_UInt16x3_arg0;
-Function Int16x3_convert_UInt16x3;
-inline constexpr std::array Int16x3_convert_UInt16x3_args = { &Int16x3_convert_UInt16x3_arg0 };
+Variable Int16x3_from_UInt16x3_arg0;
+Function Int16x3_from_UInt16x3;
+inline constexpr std::array Int16x3_from_UInt16x3_args = { &Int16x3_from_UInt16x3_arg0 };
 
 /// i16x3 with UInt16
 Variable Int16x3_splat_UInt16_arg0;
@@ -17051,9 +17241,9 @@ Function Int16x3_splat_UInt16;
 inline constexpr std::array Int16x3_splat_UInt16_args = { &Int16x3_splat_UInt16_arg0 };
 
 /// i16x3 with Int16x3
-Variable Int16x3_convert_Int16x3_arg0;
-Function Int16x3_convert_Int16x3;
-inline constexpr std::array Int16x3_convert_Int16x3_args = { &Int16x3_convert_Int16x3_arg0 };
+Variable Int16x3_from_Int16x3_arg0;
+Function Int16x3_from_Int16x3;
+inline constexpr std::array Int16x3_from_Int16x3_args = { &Int16x3_from_Int16x3_arg0 };
 
 /// i16x3 with Int16
 Variable Int16x3_splat_Int16_arg0;
@@ -17265,18 +17455,18 @@ Int16x3::Int16x3()
     this->builtin = true;
 
     /// i16x3 with Float32x3
-    Int16x3_convert_Float32x3_arg0.name = "val"_c;
-    Int16x3_convert_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
-    Int16x3_convert_Float32x3.documentation = "Convert f32x3 to i16x3"_c;
-    Int16x3_convert_Float32x3.name = "i16x3"_c;
-    Int16x3_convert_Float32x3.compileTime = true;
-    Int16x3_convert_Float32x3.returnType = Type::FullType { Int16x3Type.name };
-    Int16x3_convert_Float32x3.parameters = Int16x3_convert_Float32x3_args;
-    Symbol::Resolved(&Int16x3_convert_Float32x3_arg0)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&Int16x3_convert_Float32x3)->signature = "i16x3 i16x3(f32x3)"_c;
-    Symbol::Resolved(&Int16x3_convert_Float32x3)->name = "i16x3(f32x3)"_c;
-    Symbol::Resolved(&Int16x3_convert_Float32x3)->nameWithVarNames = "i16x3(val : f32x3)"_c;
-    Symbol::Resolved(&Int16x3_convert_Float32x3)->returnTypeSymbol = &Int16x3Type;
+    Int16x3_from_Float32x3_arg0.name = "val"_c;
+    Int16x3_from_Float32x3_arg0.type = Type::FullType{ Float32x3Type.name };
+    Int16x3_from_Float32x3.documentation = "Convert from f32x3 to i16x3"_c;
+    Int16x3_from_Float32x3.name = "i16x3"_c;
+    Int16x3_from_Float32x3.compileTime = true;
+    Int16x3_from_Float32x3.returnType = Type::FullType { Int16x3Type.name };
+    Int16x3_from_Float32x3.parameters = Int16x3_from_Float32x3_args;
+    Symbol::Resolved(&Int16x3_from_Float32x3_arg0)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&Int16x3_from_Float32x3)->signature = "i16x3 i16x3(f32x3)"_c;
+    Symbol::Resolved(&Int16x3_from_Float32x3)->name = "i16x3(f32x3)"_c;
+    Symbol::Resolved(&Int16x3_from_Float32x3)->nameWithVarNames = "i16x3(val : f32x3)"_c;
+    Symbol::Resolved(&Int16x3_from_Float32x3)->returnTypeSymbol = &Int16x3Type;
 
     /// i16x3 with Float32
     Int16x3_splat_Float32_arg0.name = "val"_c;
@@ -17293,18 +17483,18 @@ Int16x3::Int16x3()
     Symbol::Resolved(&Int16x3_splat_Float32)->returnTypeSymbol = &Int16x3Type;
 
     /// i16x3 with UInt32x3
-    Int16x3_convert_UInt32x3_arg0.name = "val"_c;
-    Int16x3_convert_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
-    Int16x3_convert_UInt32x3.documentation = "Convert u32x3 to i16x3"_c;
-    Int16x3_convert_UInt32x3.name = "i16x3"_c;
-    Int16x3_convert_UInt32x3.compileTime = true;
-    Int16x3_convert_UInt32x3.returnType = Type::FullType { Int16x3Type.name };
-    Int16x3_convert_UInt32x3.parameters = Int16x3_convert_UInt32x3_args;
-    Symbol::Resolved(&Int16x3_convert_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&Int16x3_convert_UInt32x3)->signature = "i16x3 i16x3(u32x3)"_c;
-    Symbol::Resolved(&Int16x3_convert_UInt32x3)->name = "i16x3(u32x3)"_c;
-    Symbol::Resolved(&Int16x3_convert_UInt32x3)->nameWithVarNames = "i16x3(val : u32x3)"_c;
-    Symbol::Resolved(&Int16x3_convert_UInt32x3)->returnTypeSymbol = &Int16x3Type;
+    Int16x3_from_UInt32x3_arg0.name = "val"_c;
+    Int16x3_from_UInt32x3_arg0.type = Type::FullType{ UInt32x3Type.name };
+    Int16x3_from_UInt32x3.documentation = "Convert from u32x3 to i16x3"_c;
+    Int16x3_from_UInt32x3.name = "i16x3"_c;
+    Int16x3_from_UInt32x3.compileTime = true;
+    Int16x3_from_UInt32x3.returnType = Type::FullType { Int16x3Type.name };
+    Int16x3_from_UInt32x3.parameters = Int16x3_from_UInt32x3_args;
+    Symbol::Resolved(&Int16x3_from_UInt32x3_arg0)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&Int16x3_from_UInt32x3)->signature = "i16x3 i16x3(u32x3)"_c;
+    Symbol::Resolved(&Int16x3_from_UInt32x3)->name = "i16x3(u32x3)"_c;
+    Symbol::Resolved(&Int16x3_from_UInt32x3)->nameWithVarNames = "i16x3(val : u32x3)"_c;
+    Symbol::Resolved(&Int16x3_from_UInt32x3)->returnTypeSymbol = &Int16x3Type;
 
     /// i16x3 with UInt32
     Int16x3_splat_UInt32_arg0.name = "val"_c;
@@ -17321,18 +17511,18 @@ Int16x3::Int16x3()
     Symbol::Resolved(&Int16x3_splat_UInt32)->returnTypeSymbol = &Int16x3Type;
 
     /// i16x3 with Int32x3
-    Int16x3_convert_Int32x3_arg0.name = "val"_c;
-    Int16x3_convert_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
-    Int16x3_convert_Int32x3.documentation = "Convert i32x3 to i16x3"_c;
-    Int16x3_convert_Int32x3.name = "i16x3"_c;
-    Int16x3_convert_Int32x3.compileTime = true;
-    Int16x3_convert_Int32x3.returnType = Type::FullType { Int16x3Type.name };
-    Int16x3_convert_Int32x3.parameters = Int16x3_convert_Int32x3_args;
-    Symbol::Resolved(&Int16x3_convert_Int32x3_arg0)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&Int16x3_convert_Int32x3)->signature = "i16x3 i16x3(i32x3)"_c;
-    Symbol::Resolved(&Int16x3_convert_Int32x3)->name = "i16x3(i32x3)"_c;
-    Symbol::Resolved(&Int16x3_convert_Int32x3)->nameWithVarNames = "i16x3(val : i32x3)"_c;
-    Symbol::Resolved(&Int16x3_convert_Int32x3)->returnTypeSymbol = &Int16x3Type;
+    Int16x3_from_Int32x3_arg0.name = "val"_c;
+    Int16x3_from_Int32x3_arg0.type = Type::FullType{ Int32x3Type.name };
+    Int16x3_from_Int32x3.documentation = "Convert from i32x3 to i16x3"_c;
+    Int16x3_from_Int32x3.name = "i16x3"_c;
+    Int16x3_from_Int32x3.compileTime = true;
+    Int16x3_from_Int32x3.returnType = Type::FullType { Int16x3Type.name };
+    Int16x3_from_Int32x3.parameters = Int16x3_from_Int32x3_args;
+    Symbol::Resolved(&Int16x3_from_Int32x3_arg0)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&Int16x3_from_Int32x3)->signature = "i16x3 i16x3(i32x3)"_c;
+    Symbol::Resolved(&Int16x3_from_Int32x3)->name = "i16x3(i32x3)"_c;
+    Symbol::Resolved(&Int16x3_from_Int32x3)->nameWithVarNames = "i16x3(val : i32x3)"_c;
+    Symbol::Resolved(&Int16x3_from_Int32x3)->returnTypeSymbol = &Int16x3Type;
 
     /// i16x3 with Int32
     Int16x3_splat_Int32_arg0.name = "val"_c;
@@ -17349,18 +17539,18 @@ Int16x3::Int16x3()
     Symbol::Resolved(&Int16x3_splat_Int32)->returnTypeSymbol = &Int16x3Type;
 
     /// i16x3 with Bool8x3
-    Int16x3_convert_Bool8x3_arg0.name = "val"_c;
-    Int16x3_convert_Bool8x3_arg0.type = Type::FullType{ Bool8x3Type.name };
-    Int16x3_convert_Bool8x3.documentation = "Convert b8x3 to i16x3"_c;
-    Int16x3_convert_Bool8x3.name = "i16x3"_c;
-    Int16x3_convert_Bool8x3.compileTime = true;
-    Int16x3_convert_Bool8x3.returnType = Type::FullType { Int16x3Type.name };
-    Int16x3_convert_Bool8x3.parameters = Int16x3_convert_Bool8x3_args;
-    Symbol::Resolved(&Int16x3_convert_Bool8x3_arg0)->typeSymbol = &Bool8x3Type;
-    Symbol::Resolved(&Int16x3_convert_Bool8x3)->signature = "i16x3 i16x3(b8x3)"_c;
-    Symbol::Resolved(&Int16x3_convert_Bool8x3)->name = "i16x3(b8x3)"_c;
-    Symbol::Resolved(&Int16x3_convert_Bool8x3)->nameWithVarNames = "i16x3(val : b8x3)"_c;
-    Symbol::Resolved(&Int16x3_convert_Bool8x3)->returnTypeSymbol = &Int16x3Type;
+    Int16x3_from_Bool8x3_arg0.name = "val"_c;
+    Int16x3_from_Bool8x3_arg0.type = Type::FullType{ Bool8x3Type.name };
+    Int16x3_from_Bool8x3.documentation = "Convert from b8x3 to i16x3"_c;
+    Int16x3_from_Bool8x3.name = "i16x3"_c;
+    Int16x3_from_Bool8x3.compileTime = true;
+    Int16x3_from_Bool8x3.returnType = Type::FullType { Int16x3Type.name };
+    Int16x3_from_Bool8x3.parameters = Int16x3_from_Bool8x3_args;
+    Symbol::Resolved(&Int16x3_from_Bool8x3_arg0)->typeSymbol = &Bool8x3Type;
+    Symbol::Resolved(&Int16x3_from_Bool8x3)->signature = "i16x3 i16x3(b8x3)"_c;
+    Symbol::Resolved(&Int16x3_from_Bool8x3)->name = "i16x3(b8x3)"_c;
+    Symbol::Resolved(&Int16x3_from_Bool8x3)->nameWithVarNames = "i16x3(val : b8x3)"_c;
+    Symbol::Resolved(&Int16x3_from_Bool8x3)->returnTypeSymbol = &Int16x3Type;
 
     /// i16x3 with Bool8
     Int16x3_splat_Bool8_arg0.name = "val"_c;
@@ -17377,18 +17567,18 @@ Int16x3::Int16x3()
     Symbol::Resolved(&Int16x3_splat_Bool8)->returnTypeSymbol = &Int16x3Type;
 
     /// i16x3 with Float16x3
-    Int16x3_convert_Float16x3_arg0.name = "val"_c;
-    Int16x3_convert_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
-    Int16x3_convert_Float16x3.documentation = "Convert f16x3 to i16x3"_c;
-    Int16x3_convert_Float16x3.name = "i16x3"_c;
-    Int16x3_convert_Float16x3.compileTime = true;
-    Int16x3_convert_Float16x3.returnType = Type::FullType { Int16x3Type.name };
-    Int16x3_convert_Float16x3.parameters = Int16x3_convert_Float16x3_args;
-    Symbol::Resolved(&Int16x3_convert_Float16x3_arg0)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&Int16x3_convert_Float16x3)->signature = "i16x3 i16x3(f16x3)"_c;
-    Symbol::Resolved(&Int16x3_convert_Float16x3)->name = "i16x3(f16x3)"_c;
-    Symbol::Resolved(&Int16x3_convert_Float16x3)->nameWithVarNames = "i16x3(val : f16x3)"_c;
-    Symbol::Resolved(&Int16x3_convert_Float16x3)->returnTypeSymbol = &Int16x3Type;
+    Int16x3_from_Float16x3_arg0.name = "val"_c;
+    Int16x3_from_Float16x3_arg0.type = Type::FullType{ Float16x3Type.name };
+    Int16x3_from_Float16x3.documentation = "Convert from f16x3 to i16x3"_c;
+    Int16x3_from_Float16x3.name = "i16x3"_c;
+    Int16x3_from_Float16x3.compileTime = true;
+    Int16x3_from_Float16x3.returnType = Type::FullType { Int16x3Type.name };
+    Int16x3_from_Float16x3.parameters = Int16x3_from_Float16x3_args;
+    Symbol::Resolved(&Int16x3_from_Float16x3_arg0)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&Int16x3_from_Float16x3)->signature = "i16x3 i16x3(f16x3)"_c;
+    Symbol::Resolved(&Int16x3_from_Float16x3)->name = "i16x3(f16x3)"_c;
+    Symbol::Resolved(&Int16x3_from_Float16x3)->nameWithVarNames = "i16x3(val : f16x3)"_c;
+    Symbol::Resolved(&Int16x3_from_Float16x3)->returnTypeSymbol = &Int16x3Type;
 
     /// i16x3 with Float16
     Int16x3_splat_Float16_arg0.name = "val"_c;
@@ -17405,18 +17595,18 @@ Int16x3::Int16x3()
     Symbol::Resolved(&Int16x3_splat_Float16)->returnTypeSymbol = &Int16x3Type;
 
     /// i16x3 with UInt16x3
-    Int16x3_convert_UInt16x3_arg0.name = "val"_c;
-    Int16x3_convert_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
-    Int16x3_convert_UInt16x3.documentation = "Convert u16x3 to i16x3"_c;
-    Int16x3_convert_UInt16x3.name = "i16x3"_c;
-    Int16x3_convert_UInt16x3.compileTime = true;
-    Int16x3_convert_UInt16x3.returnType = Type::FullType { Int16x3Type.name };
-    Int16x3_convert_UInt16x3.parameters = Int16x3_convert_UInt16x3_args;
-    Symbol::Resolved(&Int16x3_convert_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&Int16x3_convert_UInt16x3)->signature = "i16x3 i16x3(u16x3)"_c;
-    Symbol::Resolved(&Int16x3_convert_UInt16x3)->name = "i16x3(u16x3)"_c;
-    Symbol::Resolved(&Int16x3_convert_UInt16x3)->nameWithVarNames = "i16x3(val : u16x3)"_c;
-    Symbol::Resolved(&Int16x3_convert_UInt16x3)->returnTypeSymbol = &Int16x3Type;
+    Int16x3_from_UInt16x3_arg0.name = "val"_c;
+    Int16x3_from_UInt16x3_arg0.type = Type::FullType{ UInt16x3Type.name };
+    Int16x3_from_UInt16x3.documentation = "Convert from u16x3 to i16x3"_c;
+    Int16x3_from_UInt16x3.name = "i16x3"_c;
+    Int16x3_from_UInt16x3.compileTime = true;
+    Int16x3_from_UInt16x3.returnType = Type::FullType { Int16x3Type.name };
+    Int16x3_from_UInt16x3.parameters = Int16x3_from_UInt16x3_args;
+    Symbol::Resolved(&Int16x3_from_UInt16x3_arg0)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&Int16x3_from_UInt16x3)->signature = "i16x3 i16x3(u16x3)"_c;
+    Symbol::Resolved(&Int16x3_from_UInt16x3)->name = "i16x3(u16x3)"_c;
+    Symbol::Resolved(&Int16x3_from_UInt16x3)->nameWithVarNames = "i16x3(val : u16x3)"_c;
+    Symbol::Resolved(&Int16x3_from_UInt16x3)->returnTypeSymbol = &Int16x3Type;
 
     /// i16x3 with UInt16
     Int16x3_splat_UInt16_arg0.name = "val"_c;
@@ -17433,18 +17623,18 @@ Int16x3::Int16x3()
     Symbol::Resolved(&Int16x3_splat_UInt16)->returnTypeSymbol = &Int16x3Type;
 
     /// i16x3 with Int16x3
-    Int16x3_convert_Int16x3_arg0.name = "val"_c;
-    Int16x3_convert_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
-    Int16x3_convert_Int16x3.documentation = "Convert i16x3 to i16x3"_c;
-    Int16x3_convert_Int16x3.name = "i16x3"_c;
-    Int16x3_convert_Int16x3.compileTime = true;
-    Int16x3_convert_Int16x3.returnType = Type::FullType { Int16x3Type.name };
-    Int16x3_convert_Int16x3.parameters = Int16x3_convert_Int16x3_args;
-    Symbol::Resolved(&Int16x3_convert_Int16x3_arg0)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&Int16x3_convert_Int16x3)->signature = "i16x3 i16x3(i16x3)"_c;
-    Symbol::Resolved(&Int16x3_convert_Int16x3)->name = "i16x3(i16x3)"_c;
-    Symbol::Resolved(&Int16x3_convert_Int16x3)->nameWithVarNames = "i16x3(val : i16x3)"_c;
-    Symbol::Resolved(&Int16x3_convert_Int16x3)->returnTypeSymbol = &Int16x3Type;
+    Int16x3_from_Int16x3_arg0.name = "val"_c;
+    Int16x3_from_Int16x3_arg0.type = Type::FullType{ Int16x3Type.name };
+    Int16x3_from_Int16x3.documentation = "Convert from i16x3 to i16x3"_c;
+    Int16x3_from_Int16x3.name = "i16x3"_c;
+    Int16x3_from_Int16x3.compileTime = true;
+    Int16x3_from_Int16x3.returnType = Type::FullType { Int16x3Type.name };
+    Int16x3_from_Int16x3.parameters = Int16x3_from_Int16x3_args;
+    Symbol::Resolved(&Int16x3_from_Int16x3_arg0)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&Int16x3_from_Int16x3)->signature = "i16x3 i16x3(i16x3)"_c;
+    Symbol::Resolved(&Int16x3_from_Int16x3)->name = "i16x3(i16x3)"_c;
+    Symbol::Resolved(&Int16x3_from_Int16x3)->nameWithVarNames = "i16x3(val : i16x3)"_c;
+    Symbol::Resolved(&Int16x3_from_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
     /// i16x3 with Int16
     Int16x3_splat_Int16_arg0.name = "val"_c;
@@ -18247,9 +18437,9 @@ Int16x3::Int16x3()
 Int16x3 Int16x3Type;
 
 /// f32x4 with Float32x4
-Variable Float32x4_convert_Float32x4_arg0;
-Function Float32x4_convert_Float32x4;
-inline constexpr std::array Float32x4_convert_Float32x4_args = { &Float32x4_convert_Float32x4_arg0 };
+Variable Float32x4_from_Float32x4_arg0;
+Function Float32x4_from_Float32x4;
+inline constexpr std::array Float32x4_from_Float32x4_args = { &Float32x4_from_Float32x4_arg0 };
 
 /// f32x4 with Float32
 Variable Float32x4_splat_Float32_arg0;
@@ -18257,9 +18447,9 @@ Function Float32x4_splat_Float32;
 inline constexpr std::array Float32x4_splat_Float32_args = { &Float32x4_splat_Float32_arg0 };
 
 /// f32x4 with UInt32x4
-Variable Float32x4_convert_UInt32x4_arg0;
-Function Float32x4_convert_UInt32x4;
-inline constexpr std::array Float32x4_convert_UInt32x4_args = { &Float32x4_convert_UInt32x4_arg0 };
+Variable Float32x4_from_UInt32x4_arg0;
+Function Float32x4_from_UInt32x4;
+inline constexpr std::array Float32x4_from_UInt32x4_args = { &Float32x4_from_UInt32x4_arg0 };
 
 /// f32x4 with UInt32
 Variable Float32x4_splat_UInt32_arg0;
@@ -18267,19 +18457,29 @@ Function Float32x4_splat_UInt32;
 inline constexpr std::array Float32x4_splat_UInt32_args = { &Float32x4_splat_UInt32_arg0 };
 
 /// f32x4 with Int32x4
-Variable Float32x4_convert_Int32x4_arg0;
-Function Float32x4_convert_Int32x4;
-inline constexpr std::array Float32x4_convert_Int32x4_args = { &Float32x4_convert_Int32x4_arg0 };
+Variable Float32x4_from_Int32x4_arg0;
+Function Float32x4_from_Int32x4;
+inline constexpr std::array Float32x4_from_Int32x4_args = { &Float32x4_from_Int32x4_arg0 };
 
 /// f32x4 with Int32
 Variable Float32x4_splat_Int32_arg0;
 Function Float32x4_splat_Int32;
 inline constexpr std::array Float32x4_splat_Int32_args = { &Float32x4_splat_Int32_arg0 };
 
+/// f32x4 with Bool8x4
+Variable Float32x4_from_Bool8x4_arg0;
+Function Float32x4_from_Bool8x4;
+inline constexpr std::array Float32x4_from_Bool8x4_args = { &Float32x4_from_Bool8x4_arg0 };
+
+/// f32x4 with Bool8
+Variable Float32x4_splat_Bool8_arg0;
+Function Float32x4_splat_Bool8;
+inline constexpr std::array Float32x4_splat_Bool8_args = { &Float32x4_splat_Bool8_arg0 };
+
 /// f32x4 with Float16x4
-Variable Float32x4_convert_Float16x4_arg0;
-Function Float32x4_convert_Float16x4;
-inline constexpr std::array Float32x4_convert_Float16x4_args = { &Float32x4_convert_Float16x4_arg0 };
+Variable Float32x4_from_Float16x4_arg0;
+Function Float32x4_from_Float16x4;
+inline constexpr std::array Float32x4_from_Float16x4_args = { &Float32x4_from_Float16x4_arg0 };
 
 /// f32x4 with Float16
 Variable Float32x4_splat_Float16_arg0;
@@ -18287,9 +18487,9 @@ Function Float32x4_splat_Float16;
 inline constexpr std::array Float32x4_splat_Float16_args = { &Float32x4_splat_Float16_arg0 };
 
 /// f32x4 with UInt16x4
-Variable Float32x4_convert_UInt16x4_arg0;
-Function Float32x4_convert_UInt16x4;
-inline constexpr std::array Float32x4_convert_UInt16x4_args = { &Float32x4_convert_UInt16x4_arg0 };
+Variable Float32x4_from_UInt16x4_arg0;
+Function Float32x4_from_UInt16x4;
+inline constexpr std::array Float32x4_from_UInt16x4_args = { &Float32x4_from_UInt16x4_arg0 };
 
 /// f32x4 with UInt16
 Variable Float32x4_splat_UInt16_arg0;
@@ -18297,9 +18497,9 @@ Function Float32x4_splat_UInt16;
 inline constexpr std::array Float32x4_splat_UInt16_args = { &Float32x4_splat_UInt16_arg0 };
 
 /// f32x4 with Int16x4
-Variable Float32x4_convert_Int16x4_arg0;
-Function Float32x4_convert_Int16x4;
-inline constexpr std::array Float32x4_convert_Int16x4_args = { &Float32x4_convert_Int16x4_arg0 };
+Variable Float32x4_from_Int16x4_arg0;
+Function Float32x4_from_Int16x4;
+inline constexpr std::array Float32x4_from_Int16x4_args = { &Float32x4_from_Int16x4_arg0 };
 
 /// f32x4 with Int16
 Variable Float32x4_splat_Int16_arg0;
@@ -18504,18 +18704,18 @@ Float32x4::Float32x4()
     this->builtin = true;
 
     /// f32x4 with Float32x4
-    Float32x4_convert_Float32x4_arg0.name = "val"_c;
-    Float32x4_convert_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
-    Float32x4_convert_Float32x4.documentation = "Convert f32x4 to f32x4"_c;
-    Float32x4_convert_Float32x4.name = "f32x4"_c;
-    Float32x4_convert_Float32x4.compileTime = true;
-    Float32x4_convert_Float32x4.returnType = Type::FullType { Float32x4Type.name };
-    Float32x4_convert_Float32x4.parameters = Float32x4_convert_Float32x4_args;
-    Symbol::Resolved(&Float32x4_convert_Float32x4_arg0)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&Float32x4_convert_Float32x4)->signature = "f32x4 f32x4(f32x4)"_c;
-    Symbol::Resolved(&Float32x4_convert_Float32x4)->name = "f32x4(f32x4)"_c;
-    Symbol::Resolved(&Float32x4_convert_Float32x4)->nameWithVarNames = "f32x4(val : f32x4)"_c;
-    Symbol::Resolved(&Float32x4_convert_Float32x4)->returnTypeSymbol = &Float32x4Type;
+    Float32x4_from_Float32x4_arg0.name = "val"_c;
+    Float32x4_from_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
+    Float32x4_from_Float32x4.documentation = "Convert from f32x4 to f32x4"_c;
+    Float32x4_from_Float32x4.name = "f32x4"_c;
+    Float32x4_from_Float32x4.compileTime = true;
+    Float32x4_from_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    Float32x4_from_Float32x4.parameters = Float32x4_from_Float32x4_args;
+    Symbol::Resolved(&Float32x4_from_Float32x4_arg0)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&Float32x4_from_Float32x4)->signature = "f32x4 f32x4(f32x4)"_c;
+    Symbol::Resolved(&Float32x4_from_Float32x4)->name = "f32x4(f32x4)"_c;
+    Symbol::Resolved(&Float32x4_from_Float32x4)->nameWithVarNames = "f32x4(val : f32x4)"_c;
+    Symbol::Resolved(&Float32x4_from_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
     /// f32x4 with Float32
     Float32x4_splat_Float32_arg0.name = "val"_c;
@@ -18532,18 +18732,18 @@ Float32x4::Float32x4()
     Symbol::Resolved(&Float32x4_splat_Float32)->returnTypeSymbol = &Float32x4Type;
 
     /// f32x4 with UInt32x4
-    Float32x4_convert_UInt32x4_arg0.name = "val"_c;
-    Float32x4_convert_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
-    Float32x4_convert_UInt32x4.documentation = "Convert u32x4 to f32x4"_c;
-    Float32x4_convert_UInt32x4.name = "f32x4"_c;
-    Float32x4_convert_UInt32x4.compileTime = true;
-    Float32x4_convert_UInt32x4.returnType = Type::FullType { Float32x4Type.name };
-    Float32x4_convert_UInt32x4.parameters = Float32x4_convert_UInt32x4_args;
-    Symbol::Resolved(&Float32x4_convert_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&Float32x4_convert_UInt32x4)->signature = "f32x4 f32x4(u32x4)"_c;
-    Symbol::Resolved(&Float32x4_convert_UInt32x4)->name = "f32x4(u32x4)"_c;
-    Symbol::Resolved(&Float32x4_convert_UInt32x4)->nameWithVarNames = "f32x4(val : u32x4)"_c;
-    Symbol::Resolved(&Float32x4_convert_UInt32x4)->returnTypeSymbol = &Float32x4Type;
+    Float32x4_from_UInt32x4_arg0.name = "val"_c;
+    Float32x4_from_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
+    Float32x4_from_UInt32x4.documentation = "Convert from u32x4 to f32x4"_c;
+    Float32x4_from_UInt32x4.name = "f32x4"_c;
+    Float32x4_from_UInt32x4.compileTime = true;
+    Float32x4_from_UInt32x4.returnType = Type::FullType { Float32x4Type.name };
+    Float32x4_from_UInt32x4.parameters = Float32x4_from_UInt32x4_args;
+    Symbol::Resolved(&Float32x4_from_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&Float32x4_from_UInt32x4)->signature = "f32x4 f32x4(u32x4)"_c;
+    Symbol::Resolved(&Float32x4_from_UInt32x4)->name = "f32x4(u32x4)"_c;
+    Symbol::Resolved(&Float32x4_from_UInt32x4)->nameWithVarNames = "f32x4(val : u32x4)"_c;
+    Symbol::Resolved(&Float32x4_from_UInt32x4)->returnTypeSymbol = &Float32x4Type;
 
     /// f32x4 with UInt32
     Float32x4_splat_UInt32_arg0.name = "val"_c;
@@ -18560,18 +18760,18 @@ Float32x4::Float32x4()
     Symbol::Resolved(&Float32x4_splat_UInt32)->returnTypeSymbol = &Float32x4Type;
 
     /// f32x4 with Int32x4
-    Float32x4_convert_Int32x4_arg0.name = "val"_c;
-    Float32x4_convert_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
-    Float32x4_convert_Int32x4.documentation = "Convert i32x4 to f32x4"_c;
-    Float32x4_convert_Int32x4.name = "f32x4"_c;
-    Float32x4_convert_Int32x4.compileTime = true;
-    Float32x4_convert_Int32x4.returnType = Type::FullType { Float32x4Type.name };
-    Float32x4_convert_Int32x4.parameters = Float32x4_convert_Int32x4_args;
-    Symbol::Resolved(&Float32x4_convert_Int32x4_arg0)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&Float32x4_convert_Int32x4)->signature = "f32x4 f32x4(i32x4)"_c;
-    Symbol::Resolved(&Float32x4_convert_Int32x4)->name = "f32x4(i32x4)"_c;
-    Symbol::Resolved(&Float32x4_convert_Int32x4)->nameWithVarNames = "f32x4(val : i32x4)"_c;
-    Symbol::Resolved(&Float32x4_convert_Int32x4)->returnTypeSymbol = &Float32x4Type;
+    Float32x4_from_Int32x4_arg0.name = "val"_c;
+    Float32x4_from_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
+    Float32x4_from_Int32x4.documentation = "Convert from i32x4 to f32x4"_c;
+    Float32x4_from_Int32x4.name = "f32x4"_c;
+    Float32x4_from_Int32x4.compileTime = true;
+    Float32x4_from_Int32x4.returnType = Type::FullType { Float32x4Type.name };
+    Float32x4_from_Int32x4.parameters = Float32x4_from_Int32x4_args;
+    Symbol::Resolved(&Float32x4_from_Int32x4_arg0)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&Float32x4_from_Int32x4)->signature = "f32x4 f32x4(i32x4)"_c;
+    Symbol::Resolved(&Float32x4_from_Int32x4)->name = "f32x4(i32x4)"_c;
+    Symbol::Resolved(&Float32x4_from_Int32x4)->nameWithVarNames = "f32x4(val : i32x4)"_c;
+    Symbol::Resolved(&Float32x4_from_Int32x4)->returnTypeSymbol = &Float32x4Type;
 
     /// f32x4 with Int32
     Float32x4_splat_Int32_arg0.name = "val"_c;
@@ -18587,19 +18787,47 @@ Float32x4::Float32x4()
     Symbol::Resolved(&Float32x4_splat_Int32)->nameWithVarNames = "f32x4(val : i32)"_c;
     Symbol::Resolved(&Float32x4_splat_Int32)->returnTypeSymbol = &Float32x4Type;
 
+    /// f32x4 with Bool8x4
+    Float32x4_from_Bool8x4_arg0.name = "val"_c;
+    Float32x4_from_Bool8x4_arg0.type = Type::FullType{ Bool8x4Type.name };
+    Float32x4_from_Bool8x4.documentation = "Convert from b8x4 to f32x4"_c;
+    Float32x4_from_Bool8x4.name = "f32x4"_c;
+    Float32x4_from_Bool8x4.compileTime = true;
+    Float32x4_from_Bool8x4.returnType = Type::FullType { Float32x4Type.name };
+    Float32x4_from_Bool8x4.parameters = Float32x4_from_Bool8x4_args;
+    Symbol::Resolved(&Float32x4_from_Bool8x4_arg0)->typeSymbol = &Bool8x4Type;
+    Symbol::Resolved(&Float32x4_from_Bool8x4)->signature = "f32x4 f32x4(b8x4)"_c;
+    Symbol::Resolved(&Float32x4_from_Bool8x4)->name = "f32x4(b8x4)"_c;
+    Symbol::Resolved(&Float32x4_from_Bool8x4)->nameWithVarNames = "f32x4(val : b8x4)"_c;
+    Symbol::Resolved(&Float32x4_from_Bool8x4)->returnTypeSymbol = &Float32x4Type;
+
+    /// f32x4 with Bool8
+    Float32x4_splat_Bool8_arg0.name = "val"_c;
+    Float32x4_splat_Bool8_arg0.type = Type::FullType{ Bool8Type.name };
+    Float32x4_splat_Bool8.documentation = "Splat b8 to f32x4"_c;
+    Float32x4_splat_Bool8.name = "f32x4"_c;
+    Float32x4_splat_Bool8.compileTime = true;
+    Float32x4_splat_Bool8.returnType = Type::FullType { Float32x4Type.name };
+    Float32x4_splat_Bool8.parameters = Float32x4_splat_Bool8_args;
+    Symbol::Resolved(&Float32x4_splat_Bool8_arg0)->typeSymbol = &Bool8Type;
+    Symbol::Resolved(&Float32x4_splat_Bool8)->signature = "f32x4 f32x4(b8)"_c;
+    Symbol::Resolved(&Float32x4_splat_Bool8)->name = "f32x4(b8)"_c;
+    Symbol::Resolved(&Float32x4_splat_Bool8)->nameWithVarNames = "f32x4(val : b8)"_c;
+    Symbol::Resolved(&Float32x4_splat_Bool8)->returnTypeSymbol = &Float32x4Type;
+
     /// f32x4 with Float16x4
-    Float32x4_convert_Float16x4_arg0.name = "val"_c;
-    Float32x4_convert_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
-    Float32x4_convert_Float16x4.documentation = "Convert f16x4 to f32x4"_c;
-    Float32x4_convert_Float16x4.name = "f32x4"_c;
-    Float32x4_convert_Float16x4.compileTime = true;
-    Float32x4_convert_Float16x4.returnType = Type::FullType { Float32x4Type.name };
-    Float32x4_convert_Float16x4.parameters = Float32x4_convert_Float16x4_args;
-    Symbol::Resolved(&Float32x4_convert_Float16x4_arg0)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&Float32x4_convert_Float16x4)->signature = "f32x4 f32x4(f16x4)"_c;
-    Symbol::Resolved(&Float32x4_convert_Float16x4)->name = "f32x4(f16x4)"_c;
-    Symbol::Resolved(&Float32x4_convert_Float16x4)->nameWithVarNames = "f32x4(val : f16x4)"_c;
-    Symbol::Resolved(&Float32x4_convert_Float16x4)->returnTypeSymbol = &Float32x4Type;
+    Float32x4_from_Float16x4_arg0.name = "val"_c;
+    Float32x4_from_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
+    Float32x4_from_Float16x4.documentation = "Convert from f16x4 to f32x4"_c;
+    Float32x4_from_Float16x4.name = "f32x4"_c;
+    Float32x4_from_Float16x4.compileTime = true;
+    Float32x4_from_Float16x4.returnType = Type::FullType { Float32x4Type.name };
+    Float32x4_from_Float16x4.parameters = Float32x4_from_Float16x4_args;
+    Symbol::Resolved(&Float32x4_from_Float16x4_arg0)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&Float32x4_from_Float16x4)->signature = "f32x4 f32x4(f16x4)"_c;
+    Symbol::Resolved(&Float32x4_from_Float16x4)->name = "f32x4(f16x4)"_c;
+    Symbol::Resolved(&Float32x4_from_Float16x4)->nameWithVarNames = "f32x4(val : f16x4)"_c;
+    Symbol::Resolved(&Float32x4_from_Float16x4)->returnTypeSymbol = &Float32x4Type;
 
     /// f32x4 with Float16
     Float32x4_splat_Float16_arg0.name = "val"_c;
@@ -18616,18 +18844,18 @@ Float32x4::Float32x4()
     Symbol::Resolved(&Float32x4_splat_Float16)->returnTypeSymbol = &Float32x4Type;
 
     /// f32x4 with UInt16x4
-    Float32x4_convert_UInt16x4_arg0.name = "val"_c;
-    Float32x4_convert_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
-    Float32x4_convert_UInt16x4.documentation = "Convert u16x4 to f32x4"_c;
-    Float32x4_convert_UInt16x4.name = "f32x4"_c;
-    Float32x4_convert_UInt16x4.compileTime = true;
-    Float32x4_convert_UInt16x4.returnType = Type::FullType { Float32x4Type.name };
-    Float32x4_convert_UInt16x4.parameters = Float32x4_convert_UInt16x4_args;
-    Symbol::Resolved(&Float32x4_convert_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
-    Symbol::Resolved(&Float32x4_convert_UInt16x4)->signature = "f32x4 f32x4(u16x4)"_c;
-    Symbol::Resolved(&Float32x4_convert_UInt16x4)->name = "f32x4(u16x4)"_c;
-    Symbol::Resolved(&Float32x4_convert_UInt16x4)->nameWithVarNames = "f32x4(val : u16x4)"_c;
-    Symbol::Resolved(&Float32x4_convert_UInt16x4)->returnTypeSymbol = &Float32x4Type;
+    Float32x4_from_UInt16x4_arg0.name = "val"_c;
+    Float32x4_from_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
+    Float32x4_from_UInt16x4.documentation = "Convert from u16x4 to f32x4"_c;
+    Float32x4_from_UInt16x4.name = "f32x4"_c;
+    Float32x4_from_UInt16x4.compileTime = true;
+    Float32x4_from_UInt16x4.returnType = Type::FullType { Float32x4Type.name };
+    Float32x4_from_UInt16x4.parameters = Float32x4_from_UInt16x4_args;
+    Symbol::Resolved(&Float32x4_from_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&Float32x4_from_UInt16x4)->signature = "f32x4 f32x4(u16x4)"_c;
+    Symbol::Resolved(&Float32x4_from_UInt16x4)->name = "f32x4(u16x4)"_c;
+    Symbol::Resolved(&Float32x4_from_UInt16x4)->nameWithVarNames = "f32x4(val : u16x4)"_c;
+    Symbol::Resolved(&Float32x4_from_UInt16x4)->returnTypeSymbol = &Float32x4Type;
 
     /// f32x4 with UInt16
     Float32x4_splat_UInt16_arg0.name = "val"_c;
@@ -18644,18 +18872,18 @@ Float32x4::Float32x4()
     Symbol::Resolved(&Float32x4_splat_UInt16)->returnTypeSymbol = &Float32x4Type;
 
     /// f32x4 with Int16x4
-    Float32x4_convert_Int16x4_arg0.name = "val"_c;
-    Float32x4_convert_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
-    Float32x4_convert_Int16x4.documentation = "Convert i16x4 to f32x4"_c;
-    Float32x4_convert_Int16x4.name = "f32x4"_c;
-    Float32x4_convert_Int16x4.compileTime = true;
-    Float32x4_convert_Int16x4.returnType = Type::FullType { Float32x4Type.name };
-    Float32x4_convert_Int16x4.parameters = Float32x4_convert_Int16x4_args;
-    Symbol::Resolved(&Float32x4_convert_Int16x4_arg0)->typeSymbol = &Int16x4Type;
-    Symbol::Resolved(&Float32x4_convert_Int16x4)->signature = "f32x4 f32x4(i16x4)"_c;
-    Symbol::Resolved(&Float32x4_convert_Int16x4)->name = "f32x4(i16x4)"_c;
-    Symbol::Resolved(&Float32x4_convert_Int16x4)->nameWithVarNames = "f32x4(val : i16x4)"_c;
-    Symbol::Resolved(&Float32x4_convert_Int16x4)->returnTypeSymbol = &Float32x4Type;
+    Float32x4_from_Int16x4_arg0.name = "val"_c;
+    Float32x4_from_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
+    Float32x4_from_Int16x4.documentation = "Convert from i16x4 to f32x4"_c;
+    Float32x4_from_Int16x4.name = "f32x4"_c;
+    Float32x4_from_Int16x4.compileTime = true;
+    Float32x4_from_Int16x4.returnType = Type::FullType { Float32x4Type.name };
+    Float32x4_from_Int16x4.parameters = Float32x4_from_Int16x4_args;
+    Symbol::Resolved(&Float32x4_from_Int16x4_arg0)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&Float32x4_from_Int16x4)->signature = "f32x4 f32x4(i16x4)"_c;
+    Symbol::Resolved(&Float32x4_from_Int16x4)->name = "f32x4(i16x4)"_c;
+    Symbol::Resolved(&Float32x4_from_Int16x4)->nameWithVarNames = "f32x4(val : i16x4)"_c;
+    Symbol::Resolved(&Float32x4_from_Int16x4)->returnTypeSymbol = &Float32x4Type;
 
     /// f32x4 with Int16
     Float32x4_splat_Int16_arg0.name = "val"_c;
@@ -19876,9 +20104,9 @@ Float32x4::Float32x4()
 Float32x4 Float32x4Type;
 
 /// u32x4 with Float32x4
-Variable UInt32x4_convert_Float32x4_arg0;
-Function UInt32x4_convert_Float32x4;
-inline constexpr std::array UInt32x4_convert_Float32x4_args = { &UInt32x4_convert_Float32x4_arg0 };
+Variable UInt32x4_from_Float32x4_arg0;
+Function UInt32x4_from_Float32x4;
+inline constexpr std::array UInt32x4_from_Float32x4_args = { &UInt32x4_from_Float32x4_arg0 };
 
 /// u32x4 with Float32
 Variable UInt32x4_splat_Float32_arg0;
@@ -19886,9 +20114,9 @@ Function UInt32x4_splat_Float32;
 inline constexpr std::array UInt32x4_splat_Float32_args = { &UInt32x4_splat_Float32_arg0 };
 
 /// u32x4 with UInt32x4
-Variable UInt32x4_convert_UInt32x4_arg0;
-Function UInt32x4_convert_UInt32x4;
-inline constexpr std::array UInt32x4_convert_UInt32x4_args = { &UInt32x4_convert_UInt32x4_arg0 };
+Variable UInt32x4_from_UInt32x4_arg0;
+Function UInt32x4_from_UInt32x4;
+inline constexpr std::array UInt32x4_from_UInt32x4_args = { &UInt32x4_from_UInt32x4_arg0 };
 
 /// u32x4 with UInt32
 Variable UInt32x4_splat_UInt32_arg0;
@@ -19896,9 +20124,9 @@ Function UInt32x4_splat_UInt32;
 inline constexpr std::array UInt32x4_splat_UInt32_args = { &UInt32x4_splat_UInt32_arg0 };
 
 /// u32x4 with Int32x4
-Variable UInt32x4_convert_Int32x4_arg0;
-Function UInt32x4_convert_Int32x4;
-inline constexpr std::array UInt32x4_convert_Int32x4_args = { &UInt32x4_convert_Int32x4_arg0 };
+Variable UInt32x4_from_Int32x4_arg0;
+Function UInt32x4_from_Int32x4;
+inline constexpr std::array UInt32x4_from_Int32x4_args = { &UInt32x4_from_Int32x4_arg0 };
 
 /// u32x4 with Int32
 Variable UInt32x4_splat_Int32_arg0;
@@ -19906,9 +20134,9 @@ Function UInt32x4_splat_Int32;
 inline constexpr std::array UInt32x4_splat_Int32_args = { &UInt32x4_splat_Int32_arg0 };
 
 /// u32x4 with Bool8x4
-Variable UInt32x4_convert_Bool8x4_arg0;
-Function UInt32x4_convert_Bool8x4;
-inline constexpr std::array UInt32x4_convert_Bool8x4_args = { &UInt32x4_convert_Bool8x4_arg0 };
+Variable UInt32x4_from_Bool8x4_arg0;
+Function UInt32x4_from_Bool8x4;
+inline constexpr std::array UInt32x4_from_Bool8x4_args = { &UInt32x4_from_Bool8x4_arg0 };
 
 /// u32x4 with Bool8
 Variable UInt32x4_splat_Bool8_arg0;
@@ -19916,9 +20144,9 @@ Function UInt32x4_splat_Bool8;
 inline constexpr std::array UInt32x4_splat_Bool8_args = { &UInt32x4_splat_Bool8_arg0 };
 
 /// u32x4 with Float16x4
-Variable UInt32x4_convert_Float16x4_arg0;
-Function UInt32x4_convert_Float16x4;
-inline constexpr std::array UInt32x4_convert_Float16x4_args = { &UInt32x4_convert_Float16x4_arg0 };
+Variable UInt32x4_from_Float16x4_arg0;
+Function UInt32x4_from_Float16x4;
+inline constexpr std::array UInt32x4_from_Float16x4_args = { &UInt32x4_from_Float16x4_arg0 };
 
 /// u32x4 with Float16
 Variable UInt32x4_splat_Float16_arg0;
@@ -19926,9 +20154,9 @@ Function UInt32x4_splat_Float16;
 inline constexpr std::array UInt32x4_splat_Float16_args = { &UInt32x4_splat_Float16_arg0 };
 
 /// u32x4 with UInt16x4
-Variable UInt32x4_convert_UInt16x4_arg0;
-Function UInt32x4_convert_UInt16x4;
-inline constexpr std::array UInt32x4_convert_UInt16x4_args = { &UInt32x4_convert_UInt16x4_arg0 };
+Variable UInt32x4_from_UInt16x4_arg0;
+Function UInt32x4_from_UInt16x4;
+inline constexpr std::array UInt32x4_from_UInt16x4_args = { &UInt32x4_from_UInt16x4_arg0 };
 
 /// u32x4 with UInt16
 Variable UInt32x4_splat_UInt16_arg0;
@@ -19936,9 +20164,9 @@ Function UInt32x4_splat_UInt16;
 inline constexpr std::array UInt32x4_splat_UInt16_args = { &UInt32x4_splat_UInt16_arg0 };
 
 /// u32x4 with Int16x4
-Variable UInt32x4_convert_Int16x4_arg0;
-Function UInt32x4_convert_Int16x4;
-inline constexpr std::array UInt32x4_convert_Int16x4_args = { &UInt32x4_convert_Int16x4_arg0 };
+Variable UInt32x4_from_Int16x4_arg0;
+Function UInt32x4_from_Int16x4;
+inline constexpr std::array UInt32x4_from_Int16x4_args = { &UInt32x4_from_Int16x4_arg0 };
 
 /// u32x4 with Int16
 Variable UInt32x4_splat_Int16_arg0;
@@ -20178,18 +20406,18 @@ UInt32x4::UInt32x4()
     this->builtin = true;
 
     /// u32x4 with Float32x4
-    UInt32x4_convert_Float32x4_arg0.name = "val"_c;
-    UInt32x4_convert_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
-    UInt32x4_convert_Float32x4.documentation = "Convert f32x4 to u32x4"_c;
-    UInt32x4_convert_Float32x4.name = "u32x4"_c;
-    UInt32x4_convert_Float32x4.compileTime = true;
-    UInt32x4_convert_Float32x4.returnType = Type::FullType { UInt32x4Type.name };
-    UInt32x4_convert_Float32x4.parameters = UInt32x4_convert_Float32x4_args;
-    Symbol::Resolved(&UInt32x4_convert_Float32x4_arg0)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&UInt32x4_convert_Float32x4)->signature = "u32x4 u32x4(f32x4)"_c;
-    Symbol::Resolved(&UInt32x4_convert_Float32x4)->name = "u32x4(f32x4)"_c;
-    Symbol::Resolved(&UInt32x4_convert_Float32x4)->nameWithVarNames = "u32x4(val : f32x4)"_c;
-    Symbol::Resolved(&UInt32x4_convert_Float32x4)->returnTypeSymbol = &UInt32x4Type;
+    UInt32x4_from_Float32x4_arg0.name = "val"_c;
+    UInt32x4_from_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
+    UInt32x4_from_Float32x4.documentation = "Convert from f32x4 to u32x4"_c;
+    UInt32x4_from_Float32x4.name = "u32x4"_c;
+    UInt32x4_from_Float32x4.compileTime = true;
+    UInt32x4_from_Float32x4.returnType = Type::FullType { UInt32x4Type.name };
+    UInt32x4_from_Float32x4.parameters = UInt32x4_from_Float32x4_args;
+    Symbol::Resolved(&UInt32x4_from_Float32x4_arg0)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&UInt32x4_from_Float32x4)->signature = "u32x4 u32x4(f32x4)"_c;
+    Symbol::Resolved(&UInt32x4_from_Float32x4)->name = "u32x4(f32x4)"_c;
+    Symbol::Resolved(&UInt32x4_from_Float32x4)->nameWithVarNames = "u32x4(val : f32x4)"_c;
+    Symbol::Resolved(&UInt32x4_from_Float32x4)->returnTypeSymbol = &UInt32x4Type;
 
     /// u32x4 with Float32
     UInt32x4_splat_Float32_arg0.name = "val"_c;
@@ -20206,18 +20434,18 @@ UInt32x4::UInt32x4()
     Symbol::Resolved(&UInt32x4_splat_Float32)->returnTypeSymbol = &UInt32x4Type;
 
     /// u32x4 with UInt32x4
-    UInt32x4_convert_UInt32x4_arg0.name = "val"_c;
-    UInt32x4_convert_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
-    UInt32x4_convert_UInt32x4.documentation = "Convert u32x4 to u32x4"_c;
-    UInt32x4_convert_UInt32x4.name = "u32x4"_c;
-    UInt32x4_convert_UInt32x4.compileTime = true;
-    UInt32x4_convert_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
-    UInt32x4_convert_UInt32x4.parameters = UInt32x4_convert_UInt32x4_args;
-    Symbol::Resolved(&UInt32x4_convert_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&UInt32x4_convert_UInt32x4)->signature = "u32x4 u32x4(u32x4)"_c;
-    Symbol::Resolved(&UInt32x4_convert_UInt32x4)->name = "u32x4(u32x4)"_c;
-    Symbol::Resolved(&UInt32x4_convert_UInt32x4)->nameWithVarNames = "u32x4(val : u32x4)"_c;
-    Symbol::Resolved(&UInt32x4_convert_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
+    UInt32x4_from_UInt32x4_arg0.name = "val"_c;
+    UInt32x4_from_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
+    UInt32x4_from_UInt32x4.documentation = "Convert from u32x4 to u32x4"_c;
+    UInt32x4_from_UInt32x4.name = "u32x4"_c;
+    UInt32x4_from_UInt32x4.compileTime = true;
+    UInt32x4_from_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
+    UInt32x4_from_UInt32x4.parameters = UInt32x4_from_UInt32x4_args;
+    Symbol::Resolved(&UInt32x4_from_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&UInt32x4_from_UInt32x4)->signature = "u32x4 u32x4(u32x4)"_c;
+    Symbol::Resolved(&UInt32x4_from_UInt32x4)->name = "u32x4(u32x4)"_c;
+    Symbol::Resolved(&UInt32x4_from_UInt32x4)->nameWithVarNames = "u32x4(val : u32x4)"_c;
+    Symbol::Resolved(&UInt32x4_from_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
     /// u32x4 with UInt32
     UInt32x4_splat_UInt32_arg0.name = "val"_c;
@@ -20234,18 +20462,18 @@ UInt32x4::UInt32x4()
     Symbol::Resolved(&UInt32x4_splat_UInt32)->returnTypeSymbol = &UInt32x4Type;
 
     /// u32x4 with Int32x4
-    UInt32x4_convert_Int32x4_arg0.name = "val"_c;
-    UInt32x4_convert_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
-    UInt32x4_convert_Int32x4.documentation = "Convert i32x4 to u32x4"_c;
-    UInt32x4_convert_Int32x4.name = "u32x4"_c;
-    UInt32x4_convert_Int32x4.compileTime = true;
-    UInt32x4_convert_Int32x4.returnType = Type::FullType { UInt32x4Type.name };
-    UInt32x4_convert_Int32x4.parameters = UInt32x4_convert_Int32x4_args;
-    Symbol::Resolved(&UInt32x4_convert_Int32x4_arg0)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&UInt32x4_convert_Int32x4)->signature = "u32x4 u32x4(i32x4)"_c;
-    Symbol::Resolved(&UInt32x4_convert_Int32x4)->name = "u32x4(i32x4)"_c;
-    Symbol::Resolved(&UInt32x4_convert_Int32x4)->nameWithVarNames = "u32x4(val : i32x4)"_c;
-    Symbol::Resolved(&UInt32x4_convert_Int32x4)->returnTypeSymbol = &UInt32x4Type;
+    UInt32x4_from_Int32x4_arg0.name = "val"_c;
+    UInt32x4_from_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
+    UInt32x4_from_Int32x4.documentation = "Convert from i32x4 to u32x4"_c;
+    UInt32x4_from_Int32x4.name = "u32x4"_c;
+    UInt32x4_from_Int32x4.compileTime = true;
+    UInt32x4_from_Int32x4.returnType = Type::FullType { UInt32x4Type.name };
+    UInt32x4_from_Int32x4.parameters = UInt32x4_from_Int32x4_args;
+    Symbol::Resolved(&UInt32x4_from_Int32x4_arg0)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&UInt32x4_from_Int32x4)->signature = "u32x4 u32x4(i32x4)"_c;
+    Symbol::Resolved(&UInt32x4_from_Int32x4)->name = "u32x4(i32x4)"_c;
+    Symbol::Resolved(&UInt32x4_from_Int32x4)->nameWithVarNames = "u32x4(val : i32x4)"_c;
+    Symbol::Resolved(&UInt32x4_from_Int32x4)->returnTypeSymbol = &UInt32x4Type;
 
     /// u32x4 with Int32
     UInt32x4_splat_Int32_arg0.name = "val"_c;
@@ -20262,18 +20490,18 @@ UInt32x4::UInt32x4()
     Symbol::Resolved(&UInt32x4_splat_Int32)->returnTypeSymbol = &UInt32x4Type;
 
     /// u32x4 with Bool8x4
-    UInt32x4_convert_Bool8x4_arg0.name = "val"_c;
-    UInt32x4_convert_Bool8x4_arg0.type = Type::FullType{ Bool8x4Type.name };
-    UInt32x4_convert_Bool8x4.documentation = "Convert b8x4 to u32x4"_c;
-    UInt32x4_convert_Bool8x4.name = "u32x4"_c;
-    UInt32x4_convert_Bool8x4.compileTime = true;
-    UInt32x4_convert_Bool8x4.returnType = Type::FullType { UInt32x4Type.name };
-    UInt32x4_convert_Bool8x4.parameters = UInt32x4_convert_Bool8x4_args;
-    Symbol::Resolved(&UInt32x4_convert_Bool8x4_arg0)->typeSymbol = &Bool8x4Type;
-    Symbol::Resolved(&UInt32x4_convert_Bool8x4)->signature = "u32x4 u32x4(b8x4)"_c;
-    Symbol::Resolved(&UInt32x4_convert_Bool8x4)->name = "u32x4(b8x4)"_c;
-    Symbol::Resolved(&UInt32x4_convert_Bool8x4)->nameWithVarNames = "u32x4(val : b8x4)"_c;
-    Symbol::Resolved(&UInt32x4_convert_Bool8x4)->returnTypeSymbol = &UInt32x4Type;
+    UInt32x4_from_Bool8x4_arg0.name = "val"_c;
+    UInt32x4_from_Bool8x4_arg0.type = Type::FullType{ Bool8x4Type.name };
+    UInt32x4_from_Bool8x4.documentation = "Convert from b8x4 to u32x4"_c;
+    UInt32x4_from_Bool8x4.name = "u32x4"_c;
+    UInt32x4_from_Bool8x4.compileTime = true;
+    UInt32x4_from_Bool8x4.returnType = Type::FullType { UInt32x4Type.name };
+    UInt32x4_from_Bool8x4.parameters = UInt32x4_from_Bool8x4_args;
+    Symbol::Resolved(&UInt32x4_from_Bool8x4_arg0)->typeSymbol = &Bool8x4Type;
+    Symbol::Resolved(&UInt32x4_from_Bool8x4)->signature = "u32x4 u32x4(b8x4)"_c;
+    Symbol::Resolved(&UInt32x4_from_Bool8x4)->name = "u32x4(b8x4)"_c;
+    Symbol::Resolved(&UInt32x4_from_Bool8x4)->nameWithVarNames = "u32x4(val : b8x4)"_c;
+    Symbol::Resolved(&UInt32x4_from_Bool8x4)->returnTypeSymbol = &UInt32x4Type;
 
     /// u32x4 with Bool8
     UInt32x4_splat_Bool8_arg0.name = "val"_c;
@@ -20290,18 +20518,18 @@ UInt32x4::UInt32x4()
     Symbol::Resolved(&UInt32x4_splat_Bool8)->returnTypeSymbol = &UInt32x4Type;
 
     /// u32x4 with Float16x4
-    UInt32x4_convert_Float16x4_arg0.name = "val"_c;
-    UInt32x4_convert_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
-    UInt32x4_convert_Float16x4.documentation = "Convert f16x4 to u32x4"_c;
-    UInt32x4_convert_Float16x4.name = "u32x4"_c;
-    UInt32x4_convert_Float16x4.compileTime = true;
-    UInt32x4_convert_Float16x4.returnType = Type::FullType { UInt32x4Type.name };
-    UInt32x4_convert_Float16x4.parameters = UInt32x4_convert_Float16x4_args;
-    Symbol::Resolved(&UInt32x4_convert_Float16x4_arg0)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&UInt32x4_convert_Float16x4)->signature = "u32x4 u32x4(f16x4)"_c;
-    Symbol::Resolved(&UInt32x4_convert_Float16x4)->name = "u32x4(f16x4)"_c;
-    Symbol::Resolved(&UInt32x4_convert_Float16x4)->nameWithVarNames = "u32x4(val : f16x4)"_c;
-    Symbol::Resolved(&UInt32x4_convert_Float16x4)->returnTypeSymbol = &UInt32x4Type;
+    UInt32x4_from_Float16x4_arg0.name = "val"_c;
+    UInt32x4_from_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
+    UInt32x4_from_Float16x4.documentation = "Convert from f16x4 to u32x4"_c;
+    UInt32x4_from_Float16x4.name = "u32x4"_c;
+    UInt32x4_from_Float16x4.compileTime = true;
+    UInt32x4_from_Float16x4.returnType = Type::FullType { UInt32x4Type.name };
+    UInt32x4_from_Float16x4.parameters = UInt32x4_from_Float16x4_args;
+    Symbol::Resolved(&UInt32x4_from_Float16x4_arg0)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&UInt32x4_from_Float16x4)->signature = "u32x4 u32x4(f16x4)"_c;
+    Symbol::Resolved(&UInt32x4_from_Float16x4)->name = "u32x4(f16x4)"_c;
+    Symbol::Resolved(&UInt32x4_from_Float16x4)->nameWithVarNames = "u32x4(val : f16x4)"_c;
+    Symbol::Resolved(&UInt32x4_from_Float16x4)->returnTypeSymbol = &UInt32x4Type;
 
     /// u32x4 with Float16
     UInt32x4_splat_Float16_arg0.name = "val"_c;
@@ -20318,18 +20546,18 @@ UInt32x4::UInt32x4()
     Symbol::Resolved(&UInt32x4_splat_Float16)->returnTypeSymbol = &UInt32x4Type;
 
     /// u32x4 with UInt16x4
-    UInt32x4_convert_UInt16x4_arg0.name = "val"_c;
-    UInt32x4_convert_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
-    UInt32x4_convert_UInt16x4.documentation = "Convert u16x4 to u32x4"_c;
-    UInt32x4_convert_UInt16x4.name = "u32x4"_c;
-    UInt32x4_convert_UInt16x4.compileTime = true;
-    UInt32x4_convert_UInt16x4.returnType = Type::FullType { UInt32x4Type.name };
-    UInt32x4_convert_UInt16x4.parameters = UInt32x4_convert_UInt16x4_args;
-    Symbol::Resolved(&UInt32x4_convert_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
-    Symbol::Resolved(&UInt32x4_convert_UInt16x4)->signature = "u32x4 u32x4(u16x4)"_c;
-    Symbol::Resolved(&UInt32x4_convert_UInt16x4)->name = "u32x4(u16x4)"_c;
-    Symbol::Resolved(&UInt32x4_convert_UInt16x4)->nameWithVarNames = "u32x4(val : u16x4)"_c;
-    Symbol::Resolved(&UInt32x4_convert_UInt16x4)->returnTypeSymbol = &UInt32x4Type;
+    UInt32x4_from_UInt16x4_arg0.name = "val"_c;
+    UInt32x4_from_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
+    UInt32x4_from_UInt16x4.documentation = "Convert from u16x4 to u32x4"_c;
+    UInt32x4_from_UInt16x4.name = "u32x4"_c;
+    UInt32x4_from_UInt16x4.compileTime = true;
+    UInt32x4_from_UInt16x4.returnType = Type::FullType { UInt32x4Type.name };
+    UInt32x4_from_UInt16x4.parameters = UInt32x4_from_UInt16x4_args;
+    Symbol::Resolved(&UInt32x4_from_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&UInt32x4_from_UInt16x4)->signature = "u32x4 u32x4(u16x4)"_c;
+    Symbol::Resolved(&UInt32x4_from_UInt16x4)->name = "u32x4(u16x4)"_c;
+    Symbol::Resolved(&UInt32x4_from_UInt16x4)->nameWithVarNames = "u32x4(val : u16x4)"_c;
+    Symbol::Resolved(&UInt32x4_from_UInt16x4)->returnTypeSymbol = &UInt32x4Type;
 
     /// u32x4 with UInt16
     UInt32x4_splat_UInt16_arg0.name = "val"_c;
@@ -20346,18 +20574,18 @@ UInt32x4::UInt32x4()
     Symbol::Resolved(&UInt32x4_splat_UInt16)->returnTypeSymbol = &UInt32x4Type;
 
     /// u32x4 with Int16x4
-    UInt32x4_convert_Int16x4_arg0.name = "val"_c;
-    UInt32x4_convert_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
-    UInt32x4_convert_Int16x4.documentation = "Convert i16x4 to u32x4"_c;
-    UInt32x4_convert_Int16x4.name = "u32x4"_c;
-    UInt32x4_convert_Int16x4.compileTime = true;
-    UInt32x4_convert_Int16x4.returnType = Type::FullType { UInt32x4Type.name };
-    UInt32x4_convert_Int16x4.parameters = UInt32x4_convert_Int16x4_args;
-    Symbol::Resolved(&UInt32x4_convert_Int16x4_arg0)->typeSymbol = &Int16x4Type;
-    Symbol::Resolved(&UInt32x4_convert_Int16x4)->signature = "u32x4 u32x4(i16x4)"_c;
-    Symbol::Resolved(&UInt32x4_convert_Int16x4)->name = "u32x4(i16x4)"_c;
-    Symbol::Resolved(&UInt32x4_convert_Int16x4)->nameWithVarNames = "u32x4(val : i16x4)"_c;
-    Symbol::Resolved(&UInt32x4_convert_Int16x4)->returnTypeSymbol = &UInt32x4Type;
+    UInt32x4_from_Int16x4_arg0.name = "val"_c;
+    UInt32x4_from_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
+    UInt32x4_from_Int16x4.documentation = "Convert from i16x4 to u32x4"_c;
+    UInt32x4_from_Int16x4.name = "u32x4"_c;
+    UInt32x4_from_Int16x4.compileTime = true;
+    UInt32x4_from_Int16x4.returnType = Type::FullType { UInt32x4Type.name };
+    UInt32x4_from_Int16x4.parameters = UInt32x4_from_Int16x4_args;
+    Symbol::Resolved(&UInt32x4_from_Int16x4_arg0)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&UInt32x4_from_Int16x4)->signature = "u32x4 u32x4(i16x4)"_c;
+    Symbol::Resolved(&UInt32x4_from_Int16x4)->name = "u32x4(i16x4)"_c;
+    Symbol::Resolved(&UInt32x4_from_Int16x4)->nameWithVarNames = "u32x4(val : i16x4)"_c;
+    Symbol::Resolved(&UInt32x4_from_Int16x4)->returnTypeSymbol = &UInt32x4Type;
 
     /// u32x4 with Int16
     UInt32x4_splat_Int16_arg0.name = "val"_c;
@@ -21676,9 +21904,9 @@ UInt32x4::UInt32x4()
 UInt32x4 UInt32x4Type;
 
 /// i32x4 with Float32x4
-Variable Int32x4_convert_Float32x4_arg0;
-Function Int32x4_convert_Float32x4;
-inline constexpr std::array Int32x4_convert_Float32x4_args = { &Int32x4_convert_Float32x4_arg0 };
+Variable Int32x4_from_Float32x4_arg0;
+Function Int32x4_from_Float32x4;
+inline constexpr std::array Int32x4_from_Float32x4_args = { &Int32x4_from_Float32x4_arg0 };
 
 /// i32x4 with Float32
 Variable Int32x4_splat_Float32_arg0;
@@ -21686,9 +21914,9 @@ Function Int32x4_splat_Float32;
 inline constexpr std::array Int32x4_splat_Float32_args = { &Int32x4_splat_Float32_arg0 };
 
 /// i32x4 with UInt32x4
-Variable Int32x4_convert_UInt32x4_arg0;
-Function Int32x4_convert_UInt32x4;
-inline constexpr std::array Int32x4_convert_UInt32x4_args = { &Int32x4_convert_UInt32x4_arg0 };
+Variable Int32x4_from_UInt32x4_arg0;
+Function Int32x4_from_UInt32x4;
+inline constexpr std::array Int32x4_from_UInt32x4_args = { &Int32x4_from_UInt32x4_arg0 };
 
 /// i32x4 with UInt32
 Variable Int32x4_splat_UInt32_arg0;
@@ -21696,9 +21924,9 @@ Function Int32x4_splat_UInt32;
 inline constexpr std::array Int32x4_splat_UInt32_args = { &Int32x4_splat_UInt32_arg0 };
 
 /// i32x4 with Int32x4
-Variable Int32x4_convert_Int32x4_arg0;
-Function Int32x4_convert_Int32x4;
-inline constexpr std::array Int32x4_convert_Int32x4_args = { &Int32x4_convert_Int32x4_arg0 };
+Variable Int32x4_from_Int32x4_arg0;
+Function Int32x4_from_Int32x4;
+inline constexpr std::array Int32x4_from_Int32x4_args = { &Int32x4_from_Int32x4_arg0 };
 
 /// i32x4 with Int32
 Variable Int32x4_splat_Int32_arg0;
@@ -21706,9 +21934,9 @@ Function Int32x4_splat_Int32;
 inline constexpr std::array Int32x4_splat_Int32_args = { &Int32x4_splat_Int32_arg0 };
 
 /// i32x4 with Bool8x4
-Variable Int32x4_convert_Bool8x4_arg0;
-Function Int32x4_convert_Bool8x4;
-inline constexpr std::array Int32x4_convert_Bool8x4_args = { &Int32x4_convert_Bool8x4_arg0 };
+Variable Int32x4_from_Bool8x4_arg0;
+Function Int32x4_from_Bool8x4;
+inline constexpr std::array Int32x4_from_Bool8x4_args = { &Int32x4_from_Bool8x4_arg0 };
 
 /// i32x4 with Bool8
 Variable Int32x4_splat_Bool8_arg0;
@@ -21716,9 +21944,9 @@ Function Int32x4_splat_Bool8;
 inline constexpr std::array Int32x4_splat_Bool8_args = { &Int32x4_splat_Bool8_arg0 };
 
 /// i32x4 with Float16x4
-Variable Int32x4_convert_Float16x4_arg0;
-Function Int32x4_convert_Float16x4;
-inline constexpr std::array Int32x4_convert_Float16x4_args = { &Int32x4_convert_Float16x4_arg0 };
+Variable Int32x4_from_Float16x4_arg0;
+Function Int32x4_from_Float16x4;
+inline constexpr std::array Int32x4_from_Float16x4_args = { &Int32x4_from_Float16x4_arg0 };
 
 /// i32x4 with Float16
 Variable Int32x4_splat_Float16_arg0;
@@ -21726,9 +21954,9 @@ Function Int32x4_splat_Float16;
 inline constexpr std::array Int32x4_splat_Float16_args = { &Int32x4_splat_Float16_arg0 };
 
 /// i32x4 with UInt16x4
-Variable Int32x4_convert_UInt16x4_arg0;
-Function Int32x4_convert_UInt16x4;
-inline constexpr std::array Int32x4_convert_UInt16x4_args = { &Int32x4_convert_UInt16x4_arg0 };
+Variable Int32x4_from_UInt16x4_arg0;
+Function Int32x4_from_UInt16x4;
+inline constexpr std::array Int32x4_from_UInt16x4_args = { &Int32x4_from_UInt16x4_arg0 };
 
 /// i32x4 with UInt16
 Variable Int32x4_splat_UInt16_arg0;
@@ -21736,9 +21964,9 @@ Function Int32x4_splat_UInt16;
 inline constexpr std::array Int32x4_splat_UInt16_args = { &Int32x4_splat_UInt16_arg0 };
 
 /// i32x4 with Int16x4
-Variable Int32x4_convert_Int16x4_arg0;
-Function Int32x4_convert_Int16x4;
-inline constexpr std::array Int32x4_convert_Int16x4_args = { &Int32x4_convert_Int16x4_arg0 };
+Variable Int32x4_from_Int16x4_arg0;
+Function Int32x4_from_Int16x4;
+inline constexpr std::array Int32x4_from_Int16x4_args = { &Int32x4_from_Int16x4_arg0 };
 
 /// i32x4 with Int16
 Variable Int32x4_splat_Int16_arg0;
@@ -21978,18 +22206,18 @@ Int32x4::Int32x4()
     this->builtin = true;
 
     /// i32x4 with Float32x4
-    Int32x4_convert_Float32x4_arg0.name = "val"_c;
-    Int32x4_convert_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
-    Int32x4_convert_Float32x4.documentation = "Convert f32x4 to i32x4"_c;
-    Int32x4_convert_Float32x4.name = "i32x4"_c;
-    Int32x4_convert_Float32x4.compileTime = true;
-    Int32x4_convert_Float32x4.returnType = Type::FullType { Int32x4Type.name };
-    Int32x4_convert_Float32x4.parameters = Int32x4_convert_Float32x4_args;
-    Symbol::Resolved(&Int32x4_convert_Float32x4_arg0)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&Int32x4_convert_Float32x4)->signature = "i32x4 i32x4(f32x4)"_c;
-    Symbol::Resolved(&Int32x4_convert_Float32x4)->name = "i32x4(f32x4)"_c;
-    Symbol::Resolved(&Int32x4_convert_Float32x4)->nameWithVarNames = "i32x4(val : f32x4)"_c;
-    Symbol::Resolved(&Int32x4_convert_Float32x4)->returnTypeSymbol = &Int32x4Type;
+    Int32x4_from_Float32x4_arg0.name = "val"_c;
+    Int32x4_from_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
+    Int32x4_from_Float32x4.documentation = "Convert from f32x4 to i32x4"_c;
+    Int32x4_from_Float32x4.name = "i32x4"_c;
+    Int32x4_from_Float32x4.compileTime = true;
+    Int32x4_from_Float32x4.returnType = Type::FullType { Int32x4Type.name };
+    Int32x4_from_Float32x4.parameters = Int32x4_from_Float32x4_args;
+    Symbol::Resolved(&Int32x4_from_Float32x4_arg0)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&Int32x4_from_Float32x4)->signature = "i32x4 i32x4(f32x4)"_c;
+    Symbol::Resolved(&Int32x4_from_Float32x4)->name = "i32x4(f32x4)"_c;
+    Symbol::Resolved(&Int32x4_from_Float32x4)->nameWithVarNames = "i32x4(val : f32x4)"_c;
+    Symbol::Resolved(&Int32x4_from_Float32x4)->returnTypeSymbol = &Int32x4Type;
 
     /// i32x4 with Float32
     Int32x4_splat_Float32_arg0.name = "val"_c;
@@ -22006,18 +22234,18 @@ Int32x4::Int32x4()
     Symbol::Resolved(&Int32x4_splat_Float32)->returnTypeSymbol = &Int32x4Type;
 
     /// i32x4 with UInt32x4
-    Int32x4_convert_UInt32x4_arg0.name = "val"_c;
-    Int32x4_convert_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
-    Int32x4_convert_UInt32x4.documentation = "Convert u32x4 to i32x4"_c;
-    Int32x4_convert_UInt32x4.name = "i32x4"_c;
-    Int32x4_convert_UInt32x4.compileTime = true;
-    Int32x4_convert_UInt32x4.returnType = Type::FullType { Int32x4Type.name };
-    Int32x4_convert_UInt32x4.parameters = Int32x4_convert_UInt32x4_args;
-    Symbol::Resolved(&Int32x4_convert_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&Int32x4_convert_UInt32x4)->signature = "i32x4 i32x4(u32x4)"_c;
-    Symbol::Resolved(&Int32x4_convert_UInt32x4)->name = "i32x4(u32x4)"_c;
-    Symbol::Resolved(&Int32x4_convert_UInt32x4)->nameWithVarNames = "i32x4(val : u32x4)"_c;
-    Symbol::Resolved(&Int32x4_convert_UInt32x4)->returnTypeSymbol = &Int32x4Type;
+    Int32x4_from_UInt32x4_arg0.name = "val"_c;
+    Int32x4_from_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
+    Int32x4_from_UInt32x4.documentation = "Convert from u32x4 to i32x4"_c;
+    Int32x4_from_UInt32x4.name = "i32x4"_c;
+    Int32x4_from_UInt32x4.compileTime = true;
+    Int32x4_from_UInt32x4.returnType = Type::FullType { Int32x4Type.name };
+    Int32x4_from_UInt32x4.parameters = Int32x4_from_UInt32x4_args;
+    Symbol::Resolved(&Int32x4_from_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&Int32x4_from_UInt32x4)->signature = "i32x4 i32x4(u32x4)"_c;
+    Symbol::Resolved(&Int32x4_from_UInt32x4)->name = "i32x4(u32x4)"_c;
+    Symbol::Resolved(&Int32x4_from_UInt32x4)->nameWithVarNames = "i32x4(val : u32x4)"_c;
+    Symbol::Resolved(&Int32x4_from_UInt32x4)->returnTypeSymbol = &Int32x4Type;
 
     /// i32x4 with UInt32
     Int32x4_splat_UInt32_arg0.name = "val"_c;
@@ -22034,18 +22262,18 @@ Int32x4::Int32x4()
     Symbol::Resolved(&Int32x4_splat_UInt32)->returnTypeSymbol = &Int32x4Type;
 
     /// i32x4 with Int32x4
-    Int32x4_convert_Int32x4_arg0.name = "val"_c;
-    Int32x4_convert_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
-    Int32x4_convert_Int32x4.documentation = "Convert i32x4 to i32x4"_c;
-    Int32x4_convert_Int32x4.name = "i32x4"_c;
-    Int32x4_convert_Int32x4.compileTime = true;
-    Int32x4_convert_Int32x4.returnType = Type::FullType { Int32x4Type.name };
-    Int32x4_convert_Int32x4.parameters = Int32x4_convert_Int32x4_args;
-    Symbol::Resolved(&Int32x4_convert_Int32x4_arg0)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&Int32x4_convert_Int32x4)->signature = "i32x4 i32x4(i32x4)"_c;
-    Symbol::Resolved(&Int32x4_convert_Int32x4)->name = "i32x4(i32x4)"_c;
-    Symbol::Resolved(&Int32x4_convert_Int32x4)->nameWithVarNames = "i32x4(val : i32x4)"_c;
-    Symbol::Resolved(&Int32x4_convert_Int32x4)->returnTypeSymbol = &Int32x4Type;
+    Int32x4_from_Int32x4_arg0.name = "val"_c;
+    Int32x4_from_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
+    Int32x4_from_Int32x4.documentation = "Convert from i32x4 to i32x4"_c;
+    Int32x4_from_Int32x4.name = "i32x4"_c;
+    Int32x4_from_Int32x4.compileTime = true;
+    Int32x4_from_Int32x4.returnType = Type::FullType { Int32x4Type.name };
+    Int32x4_from_Int32x4.parameters = Int32x4_from_Int32x4_args;
+    Symbol::Resolved(&Int32x4_from_Int32x4_arg0)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&Int32x4_from_Int32x4)->signature = "i32x4 i32x4(i32x4)"_c;
+    Symbol::Resolved(&Int32x4_from_Int32x4)->name = "i32x4(i32x4)"_c;
+    Symbol::Resolved(&Int32x4_from_Int32x4)->nameWithVarNames = "i32x4(val : i32x4)"_c;
+    Symbol::Resolved(&Int32x4_from_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
     /// i32x4 with Int32
     Int32x4_splat_Int32_arg0.name = "val"_c;
@@ -22062,18 +22290,18 @@ Int32x4::Int32x4()
     Symbol::Resolved(&Int32x4_splat_Int32)->returnTypeSymbol = &Int32x4Type;
 
     /// i32x4 with Bool8x4
-    Int32x4_convert_Bool8x4_arg0.name = "val"_c;
-    Int32x4_convert_Bool8x4_arg0.type = Type::FullType{ Bool8x4Type.name };
-    Int32x4_convert_Bool8x4.documentation = "Convert b8x4 to i32x4"_c;
-    Int32x4_convert_Bool8x4.name = "i32x4"_c;
-    Int32x4_convert_Bool8x4.compileTime = true;
-    Int32x4_convert_Bool8x4.returnType = Type::FullType { Int32x4Type.name };
-    Int32x4_convert_Bool8x4.parameters = Int32x4_convert_Bool8x4_args;
-    Symbol::Resolved(&Int32x4_convert_Bool8x4_arg0)->typeSymbol = &Bool8x4Type;
-    Symbol::Resolved(&Int32x4_convert_Bool8x4)->signature = "i32x4 i32x4(b8x4)"_c;
-    Symbol::Resolved(&Int32x4_convert_Bool8x4)->name = "i32x4(b8x4)"_c;
-    Symbol::Resolved(&Int32x4_convert_Bool8x4)->nameWithVarNames = "i32x4(val : b8x4)"_c;
-    Symbol::Resolved(&Int32x4_convert_Bool8x4)->returnTypeSymbol = &Int32x4Type;
+    Int32x4_from_Bool8x4_arg0.name = "val"_c;
+    Int32x4_from_Bool8x4_arg0.type = Type::FullType{ Bool8x4Type.name };
+    Int32x4_from_Bool8x4.documentation = "Convert from b8x4 to i32x4"_c;
+    Int32x4_from_Bool8x4.name = "i32x4"_c;
+    Int32x4_from_Bool8x4.compileTime = true;
+    Int32x4_from_Bool8x4.returnType = Type::FullType { Int32x4Type.name };
+    Int32x4_from_Bool8x4.parameters = Int32x4_from_Bool8x4_args;
+    Symbol::Resolved(&Int32x4_from_Bool8x4_arg0)->typeSymbol = &Bool8x4Type;
+    Symbol::Resolved(&Int32x4_from_Bool8x4)->signature = "i32x4 i32x4(b8x4)"_c;
+    Symbol::Resolved(&Int32x4_from_Bool8x4)->name = "i32x4(b8x4)"_c;
+    Symbol::Resolved(&Int32x4_from_Bool8x4)->nameWithVarNames = "i32x4(val : b8x4)"_c;
+    Symbol::Resolved(&Int32x4_from_Bool8x4)->returnTypeSymbol = &Int32x4Type;
 
     /// i32x4 with Bool8
     Int32x4_splat_Bool8_arg0.name = "val"_c;
@@ -22090,18 +22318,18 @@ Int32x4::Int32x4()
     Symbol::Resolved(&Int32x4_splat_Bool8)->returnTypeSymbol = &Int32x4Type;
 
     /// i32x4 with Float16x4
-    Int32x4_convert_Float16x4_arg0.name = "val"_c;
-    Int32x4_convert_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
-    Int32x4_convert_Float16x4.documentation = "Convert f16x4 to i32x4"_c;
-    Int32x4_convert_Float16x4.name = "i32x4"_c;
-    Int32x4_convert_Float16x4.compileTime = true;
-    Int32x4_convert_Float16x4.returnType = Type::FullType { Int32x4Type.name };
-    Int32x4_convert_Float16x4.parameters = Int32x4_convert_Float16x4_args;
-    Symbol::Resolved(&Int32x4_convert_Float16x4_arg0)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&Int32x4_convert_Float16x4)->signature = "i32x4 i32x4(f16x4)"_c;
-    Symbol::Resolved(&Int32x4_convert_Float16x4)->name = "i32x4(f16x4)"_c;
-    Symbol::Resolved(&Int32x4_convert_Float16x4)->nameWithVarNames = "i32x4(val : f16x4)"_c;
-    Symbol::Resolved(&Int32x4_convert_Float16x4)->returnTypeSymbol = &Int32x4Type;
+    Int32x4_from_Float16x4_arg0.name = "val"_c;
+    Int32x4_from_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
+    Int32x4_from_Float16x4.documentation = "Convert from f16x4 to i32x4"_c;
+    Int32x4_from_Float16x4.name = "i32x4"_c;
+    Int32x4_from_Float16x4.compileTime = true;
+    Int32x4_from_Float16x4.returnType = Type::FullType { Int32x4Type.name };
+    Int32x4_from_Float16x4.parameters = Int32x4_from_Float16x4_args;
+    Symbol::Resolved(&Int32x4_from_Float16x4_arg0)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&Int32x4_from_Float16x4)->signature = "i32x4 i32x4(f16x4)"_c;
+    Symbol::Resolved(&Int32x4_from_Float16x4)->name = "i32x4(f16x4)"_c;
+    Symbol::Resolved(&Int32x4_from_Float16x4)->nameWithVarNames = "i32x4(val : f16x4)"_c;
+    Symbol::Resolved(&Int32x4_from_Float16x4)->returnTypeSymbol = &Int32x4Type;
 
     /// i32x4 with Float16
     Int32x4_splat_Float16_arg0.name = "val"_c;
@@ -22118,18 +22346,18 @@ Int32x4::Int32x4()
     Symbol::Resolved(&Int32x4_splat_Float16)->returnTypeSymbol = &Int32x4Type;
 
     /// i32x4 with UInt16x4
-    Int32x4_convert_UInt16x4_arg0.name = "val"_c;
-    Int32x4_convert_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
-    Int32x4_convert_UInt16x4.documentation = "Convert u16x4 to i32x4"_c;
-    Int32x4_convert_UInt16x4.name = "i32x4"_c;
-    Int32x4_convert_UInt16x4.compileTime = true;
-    Int32x4_convert_UInt16x4.returnType = Type::FullType { Int32x4Type.name };
-    Int32x4_convert_UInt16x4.parameters = Int32x4_convert_UInt16x4_args;
-    Symbol::Resolved(&Int32x4_convert_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
-    Symbol::Resolved(&Int32x4_convert_UInt16x4)->signature = "i32x4 i32x4(u16x4)"_c;
-    Symbol::Resolved(&Int32x4_convert_UInt16x4)->name = "i32x4(u16x4)"_c;
-    Symbol::Resolved(&Int32x4_convert_UInt16x4)->nameWithVarNames = "i32x4(val : u16x4)"_c;
-    Symbol::Resolved(&Int32x4_convert_UInt16x4)->returnTypeSymbol = &Int32x4Type;
+    Int32x4_from_UInt16x4_arg0.name = "val"_c;
+    Int32x4_from_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
+    Int32x4_from_UInt16x4.documentation = "Convert from u16x4 to i32x4"_c;
+    Int32x4_from_UInt16x4.name = "i32x4"_c;
+    Int32x4_from_UInt16x4.compileTime = true;
+    Int32x4_from_UInt16x4.returnType = Type::FullType { Int32x4Type.name };
+    Int32x4_from_UInt16x4.parameters = Int32x4_from_UInt16x4_args;
+    Symbol::Resolved(&Int32x4_from_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&Int32x4_from_UInt16x4)->signature = "i32x4 i32x4(u16x4)"_c;
+    Symbol::Resolved(&Int32x4_from_UInt16x4)->name = "i32x4(u16x4)"_c;
+    Symbol::Resolved(&Int32x4_from_UInt16x4)->nameWithVarNames = "i32x4(val : u16x4)"_c;
+    Symbol::Resolved(&Int32x4_from_UInt16x4)->returnTypeSymbol = &Int32x4Type;
 
     /// i32x4 with UInt16
     Int32x4_splat_UInt16_arg0.name = "val"_c;
@@ -22146,18 +22374,18 @@ Int32x4::Int32x4()
     Symbol::Resolved(&Int32x4_splat_UInt16)->returnTypeSymbol = &Int32x4Type;
 
     /// i32x4 with Int16x4
-    Int32x4_convert_Int16x4_arg0.name = "val"_c;
-    Int32x4_convert_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
-    Int32x4_convert_Int16x4.documentation = "Convert i16x4 to i32x4"_c;
-    Int32x4_convert_Int16x4.name = "i32x4"_c;
-    Int32x4_convert_Int16x4.compileTime = true;
-    Int32x4_convert_Int16x4.returnType = Type::FullType { Int32x4Type.name };
-    Int32x4_convert_Int16x4.parameters = Int32x4_convert_Int16x4_args;
-    Symbol::Resolved(&Int32x4_convert_Int16x4_arg0)->typeSymbol = &Int16x4Type;
-    Symbol::Resolved(&Int32x4_convert_Int16x4)->signature = "i32x4 i32x4(i16x4)"_c;
-    Symbol::Resolved(&Int32x4_convert_Int16x4)->name = "i32x4(i16x4)"_c;
-    Symbol::Resolved(&Int32x4_convert_Int16x4)->nameWithVarNames = "i32x4(val : i16x4)"_c;
-    Symbol::Resolved(&Int32x4_convert_Int16x4)->returnTypeSymbol = &Int32x4Type;
+    Int32x4_from_Int16x4_arg0.name = "val"_c;
+    Int32x4_from_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
+    Int32x4_from_Int16x4.documentation = "Convert from i16x4 to i32x4"_c;
+    Int32x4_from_Int16x4.name = "i32x4"_c;
+    Int32x4_from_Int16x4.compileTime = true;
+    Int32x4_from_Int16x4.returnType = Type::FullType { Int32x4Type.name };
+    Int32x4_from_Int16x4.parameters = Int32x4_from_Int16x4_args;
+    Symbol::Resolved(&Int32x4_from_Int16x4_arg0)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&Int32x4_from_Int16x4)->signature = "i32x4 i32x4(i16x4)"_c;
+    Symbol::Resolved(&Int32x4_from_Int16x4)->name = "i32x4(i16x4)"_c;
+    Symbol::Resolved(&Int32x4_from_Int16x4)->nameWithVarNames = "i32x4(val : i16x4)"_c;
+    Symbol::Resolved(&Int32x4_from_Int16x4)->returnTypeSymbol = &Int32x4Type;
 
     /// i32x4 with Int16
     Int32x4_splat_Int16_arg0.name = "val"_c;
@@ -23476,9 +23704,9 @@ Int32x4::Int32x4()
 Int32x4 Int32x4Type;
 
 /// b8x4 with UInt32x4
-Variable Bool8x4_convert_UInt32x4_arg0;
-Function Bool8x4_convert_UInt32x4;
-inline constexpr std::array Bool8x4_convert_UInt32x4_args = { &Bool8x4_convert_UInt32x4_arg0 };
+Variable Bool8x4_from_UInt32x4_arg0;
+Function Bool8x4_from_UInt32x4;
+inline constexpr std::array Bool8x4_from_UInt32x4_args = { &Bool8x4_from_UInt32x4_arg0 };
 
 /// b8x4 with UInt32
 Variable Bool8x4_splat_UInt32_arg0;
@@ -23486,9 +23714,9 @@ Function Bool8x4_splat_UInt32;
 inline constexpr std::array Bool8x4_splat_UInt32_args = { &Bool8x4_splat_UInt32_arg0 };
 
 /// b8x4 with Int32x4
-Variable Bool8x4_convert_Int32x4_arg0;
-Function Bool8x4_convert_Int32x4;
-inline constexpr std::array Bool8x4_convert_Int32x4_args = { &Bool8x4_convert_Int32x4_arg0 };
+Variable Bool8x4_from_Int32x4_arg0;
+Function Bool8x4_from_Int32x4;
+inline constexpr std::array Bool8x4_from_Int32x4_args = { &Bool8x4_from_Int32x4_arg0 };
 
 /// b8x4 with Int32
 Variable Bool8x4_splat_Int32_arg0;
@@ -23496,9 +23724,9 @@ Function Bool8x4_splat_Int32;
 inline constexpr std::array Bool8x4_splat_Int32_args = { &Bool8x4_splat_Int32_arg0 };
 
 /// b8x4 with Bool8x4
-Variable Bool8x4_convert_Bool8x4_arg0;
-Function Bool8x4_convert_Bool8x4;
-inline constexpr std::array Bool8x4_convert_Bool8x4_args = { &Bool8x4_convert_Bool8x4_arg0 };
+Variable Bool8x4_from_Bool8x4_arg0;
+Function Bool8x4_from_Bool8x4;
+inline constexpr std::array Bool8x4_from_Bool8x4_args = { &Bool8x4_from_Bool8x4_arg0 };
 
 /// b8x4 with Bool8
 Variable Bool8x4_splat_Bool8_arg0;
@@ -23506,9 +23734,9 @@ Function Bool8x4_splat_Bool8;
 inline constexpr std::array Bool8x4_splat_Bool8_args = { &Bool8x4_splat_Bool8_arg0 };
 
 /// b8x4 with UInt16x4
-Variable Bool8x4_convert_UInt16x4_arg0;
-Function Bool8x4_convert_UInt16x4;
-inline constexpr std::array Bool8x4_convert_UInt16x4_args = { &Bool8x4_convert_UInt16x4_arg0 };
+Variable Bool8x4_from_UInt16x4_arg0;
+Function Bool8x4_from_UInt16x4;
+inline constexpr std::array Bool8x4_from_UInt16x4_args = { &Bool8x4_from_UInt16x4_arg0 };
 
 /// b8x4 with UInt16
 Variable Bool8x4_splat_UInt16_arg0;
@@ -23516,9 +23744,9 @@ Function Bool8x4_splat_UInt16;
 inline constexpr std::array Bool8x4_splat_UInt16_args = { &Bool8x4_splat_UInt16_arg0 };
 
 /// b8x4 with Int16x4
-Variable Bool8x4_convert_Int16x4_arg0;
-Function Bool8x4_convert_Int16x4;
-inline constexpr std::array Bool8x4_convert_Int16x4_args = { &Bool8x4_convert_Int16x4_arg0 };
+Variable Bool8x4_from_Int16x4_arg0;
+Function Bool8x4_from_Int16x4;
+inline constexpr std::array Bool8x4_from_Int16x4_args = { &Bool8x4_from_Int16x4_arg0 };
 
 /// b8x4 with Int16
 Variable Bool8x4_splat_Int16_arg0;
@@ -23623,18 +23851,18 @@ Bool8x4::Bool8x4()
     this->builtin = true;
 
     /// b8x4 with UInt32x4
-    Bool8x4_convert_UInt32x4_arg0.name = "val"_c;
-    Bool8x4_convert_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
-    Bool8x4_convert_UInt32x4.documentation = "Convert u32x4 to b8x4"_c;
-    Bool8x4_convert_UInt32x4.name = "b8x4"_c;
-    Bool8x4_convert_UInt32x4.compileTime = true;
-    Bool8x4_convert_UInt32x4.returnType = Type::FullType { Bool8x4Type.name };
-    Bool8x4_convert_UInt32x4.parameters = Bool8x4_convert_UInt32x4_args;
-    Symbol::Resolved(&Bool8x4_convert_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&Bool8x4_convert_UInt32x4)->signature = "b8x4 b8x4(u32x4)"_c;
-    Symbol::Resolved(&Bool8x4_convert_UInt32x4)->name = "b8x4(u32x4)"_c;
-    Symbol::Resolved(&Bool8x4_convert_UInt32x4)->nameWithVarNames = "b8x4(val : u32x4)"_c;
-    Symbol::Resolved(&Bool8x4_convert_UInt32x4)->returnTypeSymbol = &Bool8x4Type;
+    Bool8x4_from_UInt32x4_arg0.name = "val"_c;
+    Bool8x4_from_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
+    Bool8x4_from_UInt32x4.documentation = "Convert from u32x4 to b8x4"_c;
+    Bool8x4_from_UInt32x4.name = "b8x4"_c;
+    Bool8x4_from_UInt32x4.compileTime = true;
+    Bool8x4_from_UInt32x4.returnType = Type::FullType { Bool8x4Type.name };
+    Bool8x4_from_UInt32x4.parameters = Bool8x4_from_UInt32x4_args;
+    Symbol::Resolved(&Bool8x4_from_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&Bool8x4_from_UInt32x4)->signature = "b8x4 b8x4(u32x4)"_c;
+    Symbol::Resolved(&Bool8x4_from_UInt32x4)->name = "b8x4(u32x4)"_c;
+    Symbol::Resolved(&Bool8x4_from_UInt32x4)->nameWithVarNames = "b8x4(val : u32x4)"_c;
+    Symbol::Resolved(&Bool8x4_from_UInt32x4)->returnTypeSymbol = &Bool8x4Type;
 
     /// b8x4 with UInt32
     Bool8x4_splat_UInt32_arg0.name = "val"_c;
@@ -23651,18 +23879,18 @@ Bool8x4::Bool8x4()
     Symbol::Resolved(&Bool8x4_splat_UInt32)->returnTypeSymbol = &Bool8x4Type;
 
     /// b8x4 with Int32x4
-    Bool8x4_convert_Int32x4_arg0.name = "val"_c;
-    Bool8x4_convert_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
-    Bool8x4_convert_Int32x4.documentation = "Convert i32x4 to b8x4"_c;
-    Bool8x4_convert_Int32x4.name = "b8x4"_c;
-    Bool8x4_convert_Int32x4.compileTime = true;
-    Bool8x4_convert_Int32x4.returnType = Type::FullType { Bool8x4Type.name };
-    Bool8x4_convert_Int32x4.parameters = Bool8x4_convert_Int32x4_args;
-    Symbol::Resolved(&Bool8x4_convert_Int32x4_arg0)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&Bool8x4_convert_Int32x4)->signature = "b8x4 b8x4(i32x4)"_c;
-    Symbol::Resolved(&Bool8x4_convert_Int32x4)->name = "b8x4(i32x4)"_c;
-    Symbol::Resolved(&Bool8x4_convert_Int32x4)->nameWithVarNames = "b8x4(val : i32x4)"_c;
-    Symbol::Resolved(&Bool8x4_convert_Int32x4)->returnTypeSymbol = &Bool8x4Type;
+    Bool8x4_from_Int32x4_arg0.name = "val"_c;
+    Bool8x4_from_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
+    Bool8x4_from_Int32x4.documentation = "Convert from i32x4 to b8x4"_c;
+    Bool8x4_from_Int32x4.name = "b8x4"_c;
+    Bool8x4_from_Int32x4.compileTime = true;
+    Bool8x4_from_Int32x4.returnType = Type::FullType { Bool8x4Type.name };
+    Bool8x4_from_Int32x4.parameters = Bool8x4_from_Int32x4_args;
+    Symbol::Resolved(&Bool8x4_from_Int32x4_arg0)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&Bool8x4_from_Int32x4)->signature = "b8x4 b8x4(i32x4)"_c;
+    Symbol::Resolved(&Bool8x4_from_Int32x4)->name = "b8x4(i32x4)"_c;
+    Symbol::Resolved(&Bool8x4_from_Int32x4)->nameWithVarNames = "b8x4(val : i32x4)"_c;
+    Symbol::Resolved(&Bool8x4_from_Int32x4)->returnTypeSymbol = &Bool8x4Type;
 
     /// b8x4 with Int32
     Bool8x4_splat_Int32_arg0.name = "val"_c;
@@ -23679,18 +23907,18 @@ Bool8x4::Bool8x4()
     Symbol::Resolved(&Bool8x4_splat_Int32)->returnTypeSymbol = &Bool8x4Type;
 
     /// b8x4 with Bool8x4
-    Bool8x4_convert_Bool8x4_arg0.name = "val"_c;
-    Bool8x4_convert_Bool8x4_arg0.type = Type::FullType{ Bool8x4Type.name };
-    Bool8x4_convert_Bool8x4.documentation = "Convert b8x4 to b8x4"_c;
-    Bool8x4_convert_Bool8x4.name = "b8x4"_c;
-    Bool8x4_convert_Bool8x4.compileTime = true;
-    Bool8x4_convert_Bool8x4.returnType = Type::FullType { Bool8x4Type.name };
-    Bool8x4_convert_Bool8x4.parameters = Bool8x4_convert_Bool8x4_args;
-    Symbol::Resolved(&Bool8x4_convert_Bool8x4_arg0)->typeSymbol = &Bool8x4Type;
-    Symbol::Resolved(&Bool8x4_convert_Bool8x4)->signature = "b8x4 b8x4(b8x4)"_c;
-    Symbol::Resolved(&Bool8x4_convert_Bool8x4)->name = "b8x4(b8x4)"_c;
-    Symbol::Resolved(&Bool8x4_convert_Bool8x4)->nameWithVarNames = "b8x4(val : b8x4)"_c;
-    Symbol::Resolved(&Bool8x4_convert_Bool8x4)->returnTypeSymbol = &Bool8x4Type;
+    Bool8x4_from_Bool8x4_arg0.name = "val"_c;
+    Bool8x4_from_Bool8x4_arg0.type = Type::FullType{ Bool8x4Type.name };
+    Bool8x4_from_Bool8x4.documentation = "Convert from b8x4 to b8x4"_c;
+    Bool8x4_from_Bool8x4.name = "b8x4"_c;
+    Bool8x4_from_Bool8x4.compileTime = true;
+    Bool8x4_from_Bool8x4.returnType = Type::FullType { Bool8x4Type.name };
+    Bool8x4_from_Bool8x4.parameters = Bool8x4_from_Bool8x4_args;
+    Symbol::Resolved(&Bool8x4_from_Bool8x4_arg0)->typeSymbol = &Bool8x4Type;
+    Symbol::Resolved(&Bool8x4_from_Bool8x4)->signature = "b8x4 b8x4(b8x4)"_c;
+    Symbol::Resolved(&Bool8x4_from_Bool8x4)->name = "b8x4(b8x4)"_c;
+    Symbol::Resolved(&Bool8x4_from_Bool8x4)->nameWithVarNames = "b8x4(val : b8x4)"_c;
+    Symbol::Resolved(&Bool8x4_from_Bool8x4)->returnTypeSymbol = &Bool8x4Type;
 
     /// b8x4 with Bool8
     Bool8x4_splat_Bool8_arg0.name = "val"_c;
@@ -23707,18 +23935,18 @@ Bool8x4::Bool8x4()
     Symbol::Resolved(&Bool8x4_splat_Bool8)->returnTypeSymbol = &Bool8x4Type;
 
     /// b8x4 with UInt16x4
-    Bool8x4_convert_UInt16x4_arg0.name = "val"_c;
-    Bool8x4_convert_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
-    Bool8x4_convert_UInt16x4.documentation = "Convert u16x4 to b8x4"_c;
-    Bool8x4_convert_UInt16x4.name = "b8x4"_c;
-    Bool8x4_convert_UInt16x4.compileTime = true;
-    Bool8x4_convert_UInt16x4.returnType = Type::FullType { Bool8x4Type.name };
-    Bool8x4_convert_UInt16x4.parameters = Bool8x4_convert_UInt16x4_args;
-    Symbol::Resolved(&Bool8x4_convert_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
-    Symbol::Resolved(&Bool8x4_convert_UInt16x4)->signature = "b8x4 b8x4(u16x4)"_c;
-    Symbol::Resolved(&Bool8x4_convert_UInt16x4)->name = "b8x4(u16x4)"_c;
-    Symbol::Resolved(&Bool8x4_convert_UInt16x4)->nameWithVarNames = "b8x4(val : u16x4)"_c;
-    Symbol::Resolved(&Bool8x4_convert_UInt16x4)->returnTypeSymbol = &Bool8x4Type;
+    Bool8x4_from_UInt16x4_arg0.name = "val"_c;
+    Bool8x4_from_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
+    Bool8x4_from_UInt16x4.documentation = "Convert from u16x4 to b8x4"_c;
+    Bool8x4_from_UInt16x4.name = "b8x4"_c;
+    Bool8x4_from_UInt16x4.compileTime = true;
+    Bool8x4_from_UInt16x4.returnType = Type::FullType { Bool8x4Type.name };
+    Bool8x4_from_UInt16x4.parameters = Bool8x4_from_UInt16x4_args;
+    Symbol::Resolved(&Bool8x4_from_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&Bool8x4_from_UInt16x4)->signature = "b8x4 b8x4(u16x4)"_c;
+    Symbol::Resolved(&Bool8x4_from_UInt16x4)->name = "b8x4(u16x4)"_c;
+    Symbol::Resolved(&Bool8x4_from_UInt16x4)->nameWithVarNames = "b8x4(val : u16x4)"_c;
+    Symbol::Resolved(&Bool8x4_from_UInt16x4)->returnTypeSymbol = &Bool8x4Type;
 
     /// b8x4 with UInt16
     Bool8x4_splat_UInt16_arg0.name = "val"_c;
@@ -23735,18 +23963,18 @@ Bool8x4::Bool8x4()
     Symbol::Resolved(&Bool8x4_splat_UInt16)->returnTypeSymbol = &Bool8x4Type;
 
     /// b8x4 with Int16x4
-    Bool8x4_convert_Int16x4_arg0.name = "val"_c;
-    Bool8x4_convert_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
-    Bool8x4_convert_Int16x4.documentation = "Convert i16x4 to b8x4"_c;
-    Bool8x4_convert_Int16x4.name = "b8x4"_c;
-    Bool8x4_convert_Int16x4.compileTime = true;
-    Bool8x4_convert_Int16x4.returnType = Type::FullType { Bool8x4Type.name };
-    Bool8x4_convert_Int16x4.parameters = Bool8x4_convert_Int16x4_args;
-    Symbol::Resolved(&Bool8x4_convert_Int16x4_arg0)->typeSymbol = &Int16x4Type;
-    Symbol::Resolved(&Bool8x4_convert_Int16x4)->signature = "b8x4 b8x4(i16x4)"_c;
-    Symbol::Resolved(&Bool8x4_convert_Int16x4)->name = "b8x4(i16x4)"_c;
-    Symbol::Resolved(&Bool8x4_convert_Int16x4)->nameWithVarNames = "b8x4(val : i16x4)"_c;
-    Symbol::Resolved(&Bool8x4_convert_Int16x4)->returnTypeSymbol = &Bool8x4Type;
+    Bool8x4_from_Int16x4_arg0.name = "val"_c;
+    Bool8x4_from_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
+    Bool8x4_from_Int16x4.documentation = "Convert from i16x4 to b8x4"_c;
+    Bool8x4_from_Int16x4.name = "b8x4"_c;
+    Bool8x4_from_Int16x4.compileTime = true;
+    Bool8x4_from_Int16x4.returnType = Type::FullType { Bool8x4Type.name };
+    Bool8x4_from_Int16x4.parameters = Bool8x4_from_Int16x4_args;
+    Symbol::Resolved(&Bool8x4_from_Int16x4_arg0)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&Bool8x4_from_Int16x4)->signature = "b8x4 b8x4(i16x4)"_c;
+    Symbol::Resolved(&Bool8x4_from_Int16x4)->name = "b8x4(i16x4)"_c;
+    Symbol::Resolved(&Bool8x4_from_Int16x4)->nameWithVarNames = "b8x4(val : i16x4)"_c;
+    Symbol::Resolved(&Bool8x4_from_Int16x4)->returnTypeSymbol = &Bool8x4Type;
 
     /// b8x4 with Int16
     Bool8x4_splat_Int16_arg0.name = "val"_c;
@@ -24687,9 +24915,9 @@ Bool8x4::Bool8x4()
 Bool8x4 Bool8x4Type;
 
 /// f16x4 with Float32x4
-Variable Float16x4_convert_Float32x4_arg0;
-Function Float16x4_convert_Float32x4;
-inline constexpr std::array Float16x4_convert_Float32x4_args = { &Float16x4_convert_Float32x4_arg0 };
+Variable Float16x4_from_Float32x4_arg0;
+Function Float16x4_from_Float32x4;
+inline constexpr std::array Float16x4_from_Float32x4_args = { &Float16x4_from_Float32x4_arg0 };
 
 /// f16x4 with Float32
 Variable Float16x4_splat_Float32_arg0;
@@ -24697,9 +24925,9 @@ Function Float16x4_splat_Float32;
 inline constexpr std::array Float16x4_splat_Float32_args = { &Float16x4_splat_Float32_arg0 };
 
 /// f16x4 with UInt32x4
-Variable Float16x4_convert_UInt32x4_arg0;
-Function Float16x4_convert_UInt32x4;
-inline constexpr std::array Float16x4_convert_UInt32x4_args = { &Float16x4_convert_UInt32x4_arg0 };
+Variable Float16x4_from_UInt32x4_arg0;
+Function Float16x4_from_UInt32x4;
+inline constexpr std::array Float16x4_from_UInt32x4_args = { &Float16x4_from_UInt32x4_arg0 };
 
 /// f16x4 with UInt32
 Variable Float16x4_splat_UInt32_arg0;
@@ -24707,19 +24935,29 @@ Function Float16x4_splat_UInt32;
 inline constexpr std::array Float16x4_splat_UInt32_args = { &Float16x4_splat_UInt32_arg0 };
 
 /// f16x4 with Int32x4
-Variable Float16x4_convert_Int32x4_arg0;
-Function Float16x4_convert_Int32x4;
-inline constexpr std::array Float16x4_convert_Int32x4_args = { &Float16x4_convert_Int32x4_arg0 };
+Variable Float16x4_from_Int32x4_arg0;
+Function Float16x4_from_Int32x4;
+inline constexpr std::array Float16x4_from_Int32x4_args = { &Float16x4_from_Int32x4_arg0 };
 
 /// f16x4 with Int32
 Variable Float16x4_splat_Int32_arg0;
 Function Float16x4_splat_Int32;
 inline constexpr std::array Float16x4_splat_Int32_args = { &Float16x4_splat_Int32_arg0 };
 
+/// f16x4 with Bool8x4
+Variable Float16x4_from_Bool8x4_arg0;
+Function Float16x4_from_Bool8x4;
+inline constexpr std::array Float16x4_from_Bool8x4_args = { &Float16x4_from_Bool8x4_arg0 };
+
+/// f16x4 with Bool8
+Variable Float16x4_splat_Bool8_arg0;
+Function Float16x4_splat_Bool8;
+inline constexpr std::array Float16x4_splat_Bool8_args = { &Float16x4_splat_Bool8_arg0 };
+
 /// f16x4 with Float16x4
-Variable Float16x4_convert_Float16x4_arg0;
-Function Float16x4_convert_Float16x4;
-inline constexpr std::array Float16x4_convert_Float16x4_args = { &Float16x4_convert_Float16x4_arg0 };
+Variable Float16x4_from_Float16x4_arg0;
+Function Float16x4_from_Float16x4;
+inline constexpr std::array Float16x4_from_Float16x4_args = { &Float16x4_from_Float16x4_arg0 };
 
 /// f16x4 with Float16
 Variable Float16x4_splat_Float16_arg0;
@@ -24727,9 +24965,9 @@ Function Float16x4_splat_Float16;
 inline constexpr std::array Float16x4_splat_Float16_args = { &Float16x4_splat_Float16_arg0 };
 
 /// f16x4 with UInt16x4
-Variable Float16x4_convert_UInt16x4_arg0;
-Function Float16x4_convert_UInt16x4;
-inline constexpr std::array Float16x4_convert_UInt16x4_args = { &Float16x4_convert_UInt16x4_arg0 };
+Variable Float16x4_from_UInt16x4_arg0;
+Function Float16x4_from_UInt16x4;
+inline constexpr std::array Float16x4_from_UInt16x4_args = { &Float16x4_from_UInt16x4_arg0 };
 
 /// f16x4 with UInt16
 Variable Float16x4_splat_UInt16_arg0;
@@ -24737,9 +24975,9 @@ Function Float16x4_splat_UInt16;
 inline constexpr std::array Float16x4_splat_UInt16_args = { &Float16x4_splat_UInt16_arg0 };
 
 /// f16x4 with Int16x4
-Variable Float16x4_convert_Int16x4_arg0;
-Function Float16x4_convert_Int16x4;
-inline constexpr std::array Float16x4_convert_Int16x4_args = { &Float16x4_convert_Int16x4_arg0 };
+Variable Float16x4_from_Int16x4_arg0;
+Function Float16x4_from_Int16x4;
+inline constexpr std::array Float16x4_from_Int16x4_args = { &Float16x4_from_Int16x4_arg0 };
 
 /// f16x4 with Int16
 Variable Float16x4_splat_Int16_arg0;
@@ -24944,18 +25182,18 @@ Float16x4::Float16x4()
     this->builtin = true;
 
     /// f16x4 with Float32x4
-    Float16x4_convert_Float32x4_arg0.name = "val"_c;
-    Float16x4_convert_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
-    Float16x4_convert_Float32x4.documentation = "Convert f32x4 to f16x4"_c;
-    Float16x4_convert_Float32x4.name = "f16x4"_c;
-    Float16x4_convert_Float32x4.compileTime = true;
-    Float16x4_convert_Float32x4.returnType = Type::FullType { Float16x4Type.name };
-    Float16x4_convert_Float32x4.parameters = Float16x4_convert_Float32x4_args;
-    Symbol::Resolved(&Float16x4_convert_Float32x4_arg0)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&Float16x4_convert_Float32x4)->signature = "f16x4 f16x4(f32x4)"_c;
-    Symbol::Resolved(&Float16x4_convert_Float32x4)->name = "f16x4(f32x4)"_c;
-    Symbol::Resolved(&Float16x4_convert_Float32x4)->nameWithVarNames = "f16x4(val : f32x4)"_c;
-    Symbol::Resolved(&Float16x4_convert_Float32x4)->returnTypeSymbol = &Float16x4Type;
+    Float16x4_from_Float32x4_arg0.name = "val"_c;
+    Float16x4_from_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
+    Float16x4_from_Float32x4.documentation = "Convert from f32x4 to f16x4"_c;
+    Float16x4_from_Float32x4.name = "f16x4"_c;
+    Float16x4_from_Float32x4.compileTime = true;
+    Float16x4_from_Float32x4.returnType = Type::FullType { Float16x4Type.name };
+    Float16x4_from_Float32x4.parameters = Float16x4_from_Float32x4_args;
+    Symbol::Resolved(&Float16x4_from_Float32x4_arg0)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&Float16x4_from_Float32x4)->signature = "f16x4 f16x4(f32x4)"_c;
+    Symbol::Resolved(&Float16x4_from_Float32x4)->name = "f16x4(f32x4)"_c;
+    Symbol::Resolved(&Float16x4_from_Float32x4)->nameWithVarNames = "f16x4(val : f32x4)"_c;
+    Symbol::Resolved(&Float16x4_from_Float32x4)->returnTypeSymbol = &Float16x4Type;
 
     /// f16x4 with Float32
     Float16x4_splat_Float32_arg0.name = "val"_c;
@@ -24972,18 +25210,18 @@ Float16x4::Float16x4()
     Symbol::Resolved(&Float16x4_splat_Float32)->returnTypeSymbol = &Float16x4Type;
 
     /// f16x4 with UInt32x4
-    Float16x4_convert_UInt32x4_arg0.name = "val"_c;
-    Float16x4_convert_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
-    Float16x4_convert_UInt32x4.documentation = "Convert u32x4 to f16x4"_c;
-    Float16x4_convert_UInt32x4.name = "f16x4"_c;
-    Float16x4_convert_UInt32x4.compileTime = true;
-    Float16x4_convert_UInt32x4.returnType = Type::FullType { Float16x4Type.name };
-    Float16x4_convert_UInt32x4.parameters = Float16x4_convert_UInt32x4_args;
-    Symbol::Resolved(&Float16x4_convert_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&Float16x4_convert_UInt32x4)->signature = "f16x4 f16x4(u32x4)"_c;
-    Symbol::Resolved(&Float16x4_convert_UInt32x4)->name = "f16x4(u32x4)"_c;
-    Symbol::Resolved(&Float16x4_convert_UInt32x4)->nameWithVarNames = "f16x4(val : u32x4)"_c;
-    Symbol::Resolved(&Float16x4_convert_UInt32x4)->returnTypeSymbol = &Float16x4Type;
+    Float16x4_from_UInt32x4_arg0.name = "val"_c;
+    Float16x4_from_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
+    Float16x4_from_UInt32x4.documentation = "Convert from u32x4 to f16x4"_c;
+    Float16x4_from_UInt32x4.name = "f16x4"_c;
+    Float16x4_from_UInt32x4.compileTime = true;
+    Float16x4_from_UInt32x4.returnType = Type::FullType { Float16x4Type.name };
+    Float16x4_from_UInt32x4.parameters = Float16x4_from_UInt32x4_args;
+    Symbol::Resolved(&Float16x4_from_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&Float16x4_from_UInt32x4)->signature = "f16x4 f16x4(u32x4)"_c;
+    Symbol::Resolved(&Float16x4_from_UInt32x4)->name = "f16x4(u32x4)"_c;
+    Symbol::Resolved(&Float16x4_from_UInt32x4)->nameWithVarNames = "f16x4(val : u32x4)"_c;
+    Symbol::Resolved(&Float16x4_from_UInt32x4)->returnTypeSymbol = &Float16x4Type;
 
     /// f16x4 with UInt32
     Float16x4_splat_UInt32_arg0.name = "val"_c;
@@ -25000,18 +25238,18 @@ Float16x4::Float16x4()
     Symbol::Resolved(&Float16x4_splat_UInt32)->returnTypeSymbol = &Float16x4Type;
 
     /// f16x4 with Int32x4
-    Float16x4_convert_Int32x4_arg0.name = "val"_c;
-    Float16x4_convert_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
-    Float16x4_convert_Int32x4.documentation = "Convert i32x4 to f16x4"_c;
-    Float16x4_convert_Int32x4.name = "f16x4"_c;
-    Float16x4_convert_Int32x4.compileTime = true;
-    Float16x4_convert_Int32x4.returnType = Type::FullType { Float16x4Type.name };
-    Float16x4_convert_Int32x4.parameters = Float16x4_convert_Int32x4_args;
-    Symbol::Resolved(&Float16x4_convert_Int32x4_arg0)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&Float16x4_convert_Int32x4)->signature = "f16x4 f16x4(i32x4)"_c;
-    Symbol::Resolved(&Float16x4_convert_Int32x4)->name = "f16x4(i32x4)"_c;
-    Symbol::Resolved(&Float16x4_convert_Int32x4)->nameWithVarNames = "f16x4(val : i32x4)"_c;
-    Symbol::Resolved(&Float16x4_convert_Int32x4)->returnTypeSymbol = &Float16x4Type;
+    Float16x4_from_Int32x4_arg0.name = "val"_c;
+    Float16x4_from_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
+    Float16x4_from_Int32x4.documentation = "Convert from i32x4 to f16x4"_c;
+    Float16x4_from_Int32x4.name = "f16x4"_c;
+    Float16x4_from_Int32x4.compileTime = true;
+    Float16x4_from_Int32x4.returnType = Type::FullType { Float16x4Type.name };
+    Float16x4_from_Int32x4.parameters = Float16x4_from_Int32x4_args;
+    Symbol::Resolved(&Float16x4_from_Int32x4_arg0)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&Float16x4_from_Int32x4)->signature = "f16x4 f16x4(i32x4)"_c;
+    Symbol::Resolved(&Float16x4_from_Int32x4)->name = "f16x4(i32x4)"_c;
+    Symbol::Resolved(&Float16x4_from_Int32x4)->nameWithVarNames = "f16x4(val : i32x4)"_c;
+    Symbol::Resolved(&Float16x4_from_Int32x4)->returnTypeSymbol = &Float16x4Type;
 
     /// f16x4 with Int32
     Float16x4_splat_Int32_arg0.name = "val"_c;
@@ -25027,19 +25265,47 @@ Float16x4::Float16x4()
     Symbol::Resolved(&Float16x4_splat_Int32)->nameWithVarNames = "f16x4(val : i32)"_c;
     Symbol::Resolved(&Float16x4_splat_Int32)->returnTypeSymbol = &Float16x4Type;
 
+    /// f16x4 with Bool8x4
+    Float16x4_from_Bool8x4_arg0.name = "val"_c;
+    Float16x4_from_Bool8x4_arg0.type = Type::FullType{ Bool8x4Type.name };
+    Float16x4_from_Bool8x4.documentation = "Convert from b8x4 to f16x4"_c;
+    Float16x4_from_Bool8x4.name = "f16x4"_c;
+    Float16x4_from_Bool8x4.compileTime = true;
+    Float16x4_from_Bool8x4.returnType = Type::FullType { Float16x4Type.name };
+    Float16x4_from_Bool8x4.parameters = Float16x4_from_Bool8x4_args;
+    Symbol::Resolved(&Float16x4_from_Bool8x4_arg0)->typeSymbol = &Bool8x4Type;
+    Symbol::Resolved(&Float16x4_from_Bool8x4)->signature = "f16x4 f16x4(b8x4)"_c;
+    Symbol::Resolved(&Float16x4_from_Bool8x4)->name = "f16x4(b8x4)"_c;
+    Symbol::Resolved(&Float16x4_from_Bool8x4)->nameWithVarNames = "f16x4(val : b8x4)"_c;
+    Symbol::Resolved(&Float16x4_from_Bool8x4)->returnTypeSymbol = &Float16x4Type;
+
+    /// f16x4 with Bool8
+    Float16x4_splat_Bool8_arg0.name = "val"_c;
+    Float16x4_splat_Bool8_arg0.type = Type::FullType{ Bool8Type.name };
+    Float16x4_splat_Bool8.documentation = "Splat b8 to f16x4"_c;
+    Float16x4_splat_Bool8.name = "f16x4"_c;
+    Float16x4_splat_Bool8.compileTime = true;
+    Float16x4_splat_Bool8.returnType = Type::FullType { Float16x4Type.name };
+    Float16x4_splat_Bool8.parameters = Float16x4_splat_Bool8_args;
+    Symbol::Resolved(&Float16x4_splat_Bool8_arg0)->typeSymbol = &Bool8Type;
+    Symbol::Resolved(&Float16x4_splat_Bool8)->signature = "f16x4 f16x4(b8)"_c;
+    Symbol::Resolved(&Float16x4_splat_Bool8)->name = "f16x4(b8)"_c;
+    Symbol::Resolved(&Float16x4_splat_Bool8)->nameWithVarNames = "f16x4(val : b8)"_c;
+    Symbol::Resolved(&Float16x4_splat_Bool8)->returnTypeSymbol = &Float16x4Type;
+
     /// f16x4 with Float16x4
-    Float16x4_convert_Float16x4_arg0.name = "val"_c;
-    Float16x4_convert_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
-    Float16x4_convert_Float16x4.documentation = "Convert f16x4 to f16x4"_c;
-    Float16x4_convert_Float16x4.name = "f16x4"_c;
-    Float16x4_convert_Float16x4.compileTime = true;
-    Float16x4_convert_Float16x4.returnType = Type::FullType { Float16x4Type.name };
-    Float16x4_convert_Float16x4.parameters = Float16x4_convert_Float16x4_args;
-    Symbol::Resolved(&Float16x4_convert_Float16x4_arg0)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&Float16x4_convert_Float16x4)->signature = "f16x4 f16x4(f16x4)"_c;
-    Symbol::Resolved(&Float16x4_convert_Float16x4)->name = "f16x4(f16x4)"_c;
-    Symbol::Resolved(&Float16x4_convert_Float16x4)->nameWithVarNames = "f16x4(val : f16x4)"_c;
-    Symbol::Resolved(&Float16x4_convert_Float16x4)->returnTypeSymbol = &Float16x4Type;
+    Float16x4_from_Float16x4_arg0.name = "val"_c;
+    Float16x4_from_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
+    Float16x4_from_Float16x4.documentation = "Convert from f16x4 to f16x4"_c;
+    Float16x4_from_Float16x4.name = "f16x4"_c;
+    Float16x4_from_Float16x4.compileTime = true;
+    Float16x4_from_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    Float16x4_from_Float16x4.parameters = Float16x4_from_Float16x4_args;
+    Symbol::Resolved(&Float16x4_from_Float16x4_arg0)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&Float16x4_from_Float16x4)->signature = "f16x4 f16x4(f16x4)"_c;
+    Symbol::Resolved(&Float16x4_from_Float16x4)->name = "f16x4(f16x4)"_c;
+    Symbol::Resolved(&Float16x4_from_Float16x4)->nameWithVarNames = "f16x4(val : f16x4)"_c;
+    Symbol::Resolved(&Float16x4_from_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
     /// f16x4 with Float16
     Float16x4_splat_Float16_arg0.name = "val"_c;
@@ -25056,18 +25322,18 @@ Float16x4::Float16x4()
     Symbol::Resolved(&Float16x4_splat_Float16)->returnTypeSymbol = &Float16x4Type;
 
     /// f16x4 with UInt16x4
-    Float16x4_convert_UInt16x4_arg0.name = "val"_c;
-    Float16x4_convert_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
-    Float16x4_convert_UInt16x4.documentation = "Convert u16x4 to f16x4"_c;
-    Float16x4_convert_UInt16x4.name = "f16x4"_c;
-    Float16x4_convert_UInt16x4.compileTime = true;
-    Float16x4_convert_UInt16x4.returnType = Type::FullType { Float16x4Type.name };
-    Float16x4_convert_UInt16x4.parameters = Float16x4_convert_UInt16x4_args;
-    Symbol::Resolved(&Float16x4_convert_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
-    Symbol::Resolved(&Float16x4_convert_UInt16x4)->signature = "f16x4 f16x4(u16x4)"_c;
-    Symbol::Resolved(&Float16x4_convert_UInt16x4)->name = "f16x4(u16x4)"_c;
-    Symbol::Resolved(&Float16x4_convert_UInt16x4)->nameWithVarNames = "f16x4(val : u16x4)"_c;
-    Symbol::Resolved(&Float16x4_convert_UInt16x4)->returnTypeSymbol = &Float16x4Type;
+    Float16x4_from_UInt16x4_arg0.name = "val"_c;
+    Float16x4_from_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
+    Float16x4_from_UInt16x4.documentation = "Convert from u16x4 to f16x4"_c;
+    Float16x4_from_UInt16x4.name = "f16x4"_c;
+    Float16x4_from_UInt16x4.compileTime = true;
+    Float16x4_from_UInt16x4.returnType = Type::FullType { Float16x4Type.name };
+    Float16x4_from_UInt16x4.parameters = Float16x4_from_UInt16x4_args;
+    Symbol::Resolved(&Float16x4_from_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&Float16x4_from_UInt16x4)->signature = "f16x4 f16x4(u16x4)"_c;
+    Symbol::Resolved(&Float16x4_from_UInt16x4)->name = "f16x4(u16x4)"_c;
+    Symbol::Resolved(&Float16x4_from_UInt16x4)->nameWithVarNames = "f16x4(val : u16x4)"_c;
+    Symbol::Resolved(&Float16x4_from_UInt16x4)->returnTypeSymbol = &Float16x4Type;
 
     /// f16x4 with UInt16
     Float16x4_splat_UInt16_arg0.name = "val"_c;
@@ -25084,18 +25350,18 @@ Float16x4::Float16x4()
     Symbol::Resolved(&Float16x4_splat_UInt16)->returnTypeSymbol = &Float16x4Type;
 
     /// f16x4 with Int16x4
-    Float16x4_convert_Int16x4_arg0.name = "val"_c;
-    Float16x4_convert_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
-    Float16x4_convert_Int16x4.documentation = "Convert i16x4 to f16x4"_c;
-    Float16x4_convert_Int16x4.name = "f16x4"_c;
-    Float16x4_convert_Int16x4.compileTime = true;
-    Float16x4_convert_Int16x4.returnType = Type::FullType { Float16x4Type.name };
-    Float16x4_convert_Int16x4.parameters = Float16x4_convert_Int16x4_args;
-    Symbol::Resolved(&Float16x4_convert_Int16x4_arg0)->typeSymbol = &Int16x4Type;
-    Symbol::Resolved(&Float16x4_convert_Int16x4)->signature = "f16x4 f16x4(i16x4)"_c;
-    Symbol::Resolved(&Float16x4_convert_Int16x4)->name = "f16x4(i16x4)"_c;
-    Symbol::Resolved(&Float16x4_convert_Int16x4)->nameWithVarNames = "f16x4(val : i16x4)"_c;
-    Symbol::Resolved(&Float16x4_convert_Int16x4)->returnTypeSymbol = &Float16x4Type;
+    Float16x4_from_Int16x4_arg0.name = "val"_c;
+    Float16x4_from_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
+    Float16x4_from_Int16x4.documentation = "Convert from i16x4 to f16x4"_c;
+    Float16x4_from_Int16x4.name = "f16x4"_c;
+    Float16x4_from_Int16x4.compileTime = true;
+    Float16x4_from_Int16x4.returnType = Type::FullType { Float16x4Type.name };
+    Float16x4_from_Int16x4.parameters = Float16x4_from_Int16x4_args;
+    Symbol::Resolved(&Float16x4_from_Int16x4_arg0)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&Float16x4_from_Int16x4)->signature = "f16x4 f16x4(i16x4)"_c;
+    Symbol::Resolved(&Float16x4_from_Int16x4)->name = "f16x4(i16x4)"_c;
+    Symbol::Resolved(&Float16x4_from_Int16x4)->nameWithVarNames = "f16x4(val : i16x4)"_c;
+    Symbol::Resolved(&Float16x4_from_Int16x4)->returnTypeSymbol = &Float16x4Type;
 
     /// f16x4 with Int16
     Float16x4_splat_Int16_arg0.name = "val"_c;
@@ -26316,9 +26582,9 @@ Float16x4::Float16x4()
 Float16x4 Float16x4Type;
 
 /// u16x4 with Float32x4
-Variable UInt16x4_convert_Float32x4_arg0;
-Function UInt16x4_convert_Float32x4;
-inline constexpr std::array UInt16x4_convert_Float32x4_args = { &UInt16x4_convert_Float32x4_arg0 };
+Variable UInt16x4_from_Float32x4_arg0;
+Function UInt16x4_from_Float32x4;
+inline constexpr std::array UInt16x4_from_Float32x4_args = { &UInt16x4_from_Float32x4_arg0 };
 
 /// u16x4 with Float32
 Variable UInt16x4_splat_Float32_arg0;
@@ -26326,9 +26592,9 @@ Function UInt16x4_splat_Float32;
 inline constexpr std::array UInt16x4_splat_Float32_args = { &UInt16x4_splat_Float32_arg0 };
 
 /// u16x4 with UInt32x4
-Variable UInt16x4_convert_UInt32x4_arg0;
-Function UInt16x4_convert_UInt32x4;
-inline constexpr std::array UInt16x4_convert_UInt32x4_args = { &UInt16x4_convert_UInt32x4_arg0 };
+Variable UInt16x4_from_UInt32x4_arg0;
+Function UInt16x4_from_UInt32x4;
+inline constexpr std::array UInt16x4_from_UInt32x4_args = { &UInt16x4_from_UInt32x4_arg0 };
 
 /// u16x4 with UInt32
 Variable UInt16x4_splat_UInt32_arg0;
@@ -26336,9 +26602,9 @@ Function UInt16x4_splat_UInt32;
 inline constexpr std::array UInt16x4_splat_UInt32_args = { &UInt16x4_splat_UInt32_arg0 };
 
 /// u16x4 with Int32x4
-Variable UInt16x4_convert_Int32x4_arg0;
-Function UInt16x4_convert_Int32x4;
-inline constexpr std::array UInt16x4_convert_Int32x4_args = { &UInt16x4_convert_Int32x4_arg0 };
+Variable UInt16x4_from_Int32x4_arg0;
+Function UInt16x4_from_Int32x4;
+inline constexpr std::array UInt16x4_from_Int32x4_args = { &UInt16x4_from_Int32x4_arg0 };
 
 /// u16x4 with Int32
 Variable UInt16x4_splat_Int32_arg0;
@@ -26346,9 +26612,9 @@ Function UInt16x4_splat_Int32;
 inline constexpr std::array UInt16x4_splat_Int32_args = { &UInt16x4_splat_Int32_arg0 };
 
 /// u16x4 with Bool8x4
-Variable UInt16x4_convert_Bool8x4_arg0;
-Function UInt16x4_convert_Bool8x4;
-inline constexpr std::array UInt16x4_convert_Bool8x4_args = { &UInt16x4_convert_Bool8x4_arg0 };
+Variable UInt16x4_from_Bool8x4_arg0;
+Function UInt16x4_from_Bool8x4;
+inline constexpr std::array UInt16x4_from_Bool8x4_args = { &UInt16x4_from_Bool8x4_arg0 };
 
 /// u16x4 with Bool8
 Variable UInt16x4_splat_Bool8_arg0;
@@ -26356,9 +26622,9 @@ Function UInt16x4_splat_Bool8;
 inline constexpr std::array UInt16x4_splat_Bool8_args = { &UInt16x4_splat_Bool8_arg0 };
 
 /// u16x4 with Float16x4
-Variable UInt16x4_convert_Float16x4_arg0;
-Function UInt16x4_convert_Float16x4;
-inline constexpr std::array UInt16x4_convert_Float16x4_args = { &UInt16x4_convert_Float16x4_arg0 };
+Variable UInt16x4_from_Float16x4_arg0;
+Function UInt16x4_from_Float16x4;
+inline constexpr std::array UInt16x4_from_Float16x4_args = { &UInt16x4_from_Float16x4_arg0 };
 
 /// u16x4 with Float16
 Variable UInt16x4_splat_Float16_arg0;
@@ -26366,9 +26632,9 @@ Function UInt16x4_splat_Float16;
 inline constexpr std::array UInt16x4_splat_Float16_args = { &UInt16x4_splat_Float16_arg0 };
 
 /// u16x4 with UInt16x4
-Variable UInt16x4_convert_UInt16x4_arg0;
-Function UInt16x4_convert_UInt16x4;
-inline constexpr std::array UInt16x4_convert_UInt16x4_args = { &UInt16x4_convert_UInt16x4_arg0 };
+Variable UInt16x4_from_UInt16x4_arg0;
+Function UInt16x4_from_UInt16x4;
+inline constexpr std::array UInt16x4_from_UInt16x4_args = { &UInt16x4_from_UInt16x4_arg0 };
 
 /// u16x4 with UInt16
 Variable UInt16x4_splat_UInt16_arg0;
@@ -26376,9 +26642,9 @@ Function UInt16x4_splat_UInt16;
 inline constexpr std::array UInt16x4_splat_UInt16_args = { &UInt16x4_splat_UInt16_arg0 };
 
 /// u16x4 with Int16x4
-Variable UInt16x4_convert_Int16x4_arg0;
-Function UInt16x4_convert_Int16x4;
-inline constexpr std::array UInt16x4_convert_Int16x4_args = { &UInt16x4_convert_Int16x4_arg0 };
+Variable UInt16x4_from_Int16x4_arg0;
+Function UInt16x4_from_Int16x4;
+inline constexpr std::array UInt16x4_from_Int16x4_args = { &UInt16x4_from_Int16x4_arg0 };
 
 /// u16x4 with Int16
 Variable UInt16x4_splat_Int16_arg0;
@@ -26618,18 +26884,18 @@ UInt16x4::UInt16x4()
     this->builtin = true;
 
     /// u16x4 with Float32x4
-    UInt16x4_convert_Float32x4_arg0.name = "val"_c;
-    UInt16x4_convert_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
-    UInt16x4_convert_Float32x4.documentation = "Convert f32x4 to u16x4"_c;
-    UInt16x4_convert_Float32x4.name = "u16x4"_c;
-    UInt16x4_convert_Float32x4.compileTime = true;
-    UInt16x4_convert_Float32x4.returnType = Type::FullType { UInt16x4Type.name };
-    UInt16x4_convert_Float32x4.parameters = UInt16x4_convert_Float32x4_args;
-    Symbol::Resolved(&UInt16x4_convert_Float32x4_arg0)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&UInt16x4_convert_Float32x4)->signature = "u16x4 u16x4(f32x4)"_c;
-    Symbol::Resolved(&UInt16x4_convert_Float32x4)->name = "u16x4(f32x4)"_c;
-    Symbol::Resolved(&UInt16x4_convert_Float32x4)->nameWithVarNames = "u16x4(val : f32x4)"_c;
-    Symbol::Resolved(&UInt16x4_convert_Float32x4)->returnTypeSymbol = &UInt16x4Type;
+    UInt16x4_from_Float32x4_arg0.name = "val"_c;
+    UInt16x4_from_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
+    UInt16x4_from_Float32x4.documentation = "Convert from f32x4 to u16x4"_c;
+    UInt16x4_from_Float32x4.name = "u16x4"_c;
+    UInt16x4_from_Float32x4.compileTime = true;
+    UInt16x4_from_Float32x4.returnType = Type::FullType { UInt16x4Type.name };
+    UInt16x4_from_Float32x4.parameters = UInt16x4_from_Float32x4_args;
+    Symbol::Resolved(&UInt16x4_from_Float32x4_arg0)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&UInt16x4_from_Float32x4)->signature = "u16x4 u16x4(f32x4)"_c;
+    Symbol::Resolved(&UInt16x4_from_Float32x4)->name = "u16x4(f32x4)"_c;
+    Symbol::Resolved(&UInt16x4_from_Float32x4)->nameWithVarNames = "u16x4(val : f32x4)"_c;
+    Symbol::Resolved(&UInt16x4_from_Float32x4)->returnTypeSymbol = &UInt16x4Type;
 
     /// u16x4 with Float32
     UInt16x4_splat_Float32_arg0.name = "val"_c;
@@ -26646,18 +26912,18 @@ UInt16x4::UInt16x4()
     Symbol::Resolved(&UInt16x4_splat_Float32)->returnTypeSymbol = &UInt16x4Type;
 
     /// u16x4 with UInt32x4
-    UInt16x4_convert_UInt32x4_arg0.name = "val"_c;
-    UInt16x4_convert_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
-    UInt16x4_convert_UInt32x4.documentation = "Convert u32x4 to u16x4"_c;
-    UInt16x4_convert_UInt32x4.name = "u16x4"_c;
-    UInt16x4_convert_UInt32x4.compileTime = true;
-    UInt16x4_convert_UInt32x4.returnType = Type::FullType { UInt16x4Type.name };
-    UInt16x4_convert_UInt32x4.parameters = UInt16x4_convert_UInt32x4_args;
-    Symbol::Resolved(&UInt16x4_convert_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&UInt16x4_convert_UInt32x4)->signature = "u16x4 u16x4(u32x4)"_c;
-    Symbol::Resolved(&UInt16x4_convert_UInt32x4)->name = "u16x4(u32x4)"_c;
-    Symbol::Resolved(&UInt16x4_convert_UInt32x4)->nameWithVarNames = "u16x4(val : u32x4)"_c;
-    Symbol::Resolved(&UInt16x4_convert_UInt32x4)->returnTypeSymbol = &UInt16x4Type;
+    UInt16x4_from_UInt32x4_arg0.name = "val"_c;
+    UInt16x4_from_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
+    UInt16x4_from_UInt32x4.documentation = "Convert from u32x4 to u16x4"_c;
+    UInt16x4_from_UInt32x4.name = "u16x4"_c;
+    UInt16x4_from_UInt32x4.compileTime = true;
+    UInt16x4_from_UInt32x4.returnType = Type::FullType { UInt16x4Type.name };
+    UInt16x4_from_UInt32x4.parameters = UInt16x4_from_UInt32x4_args;
+    Symbol::Resolved(&UInt16x4_from_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&UInt16x4_from_UInt32x4)->signature = "u16x4 u16x4(u32x4)"_c;
+    Symbol::Resolved(&UInt16x4_from_UInt32x4)->name = "u16x4(u32x4)"_c;
+    Symbol::Resolved(&UInt16x4_from_UInt32x4)->nameWithVarNames = "u16x4(val : u32x4)"_c;
+    Symbol::Resolved(&UInt16x4_from_UInt32x4)->returnTypeSymbol = &UInt16x4Type;
 
     /// u16x4 with UInt32
     UInt16x4_splat_UInt32_arg0.name = "val"_c;
@@ -26674,18 +26940,18 @@ UInt16x4::UInt16x4()
     Symbol::Resolved(&UInt16x4_splat_UInt32)->returnTypeSymbol = &UInt16x4Type;
 
     /// u16x4 with Int32x4
-    UInt16x4_convert_Int32x4_arg0.name = "val"_c;
-    UInt16x4_convert_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
-    UInt16x4_convert_Int32x4.documentation = "Convert i32x4 to u16x4"_c;
-    UInt16x4_convert_Int32x4.name = "u16x4"_c;
-    UInt16x4_convert_Int32x4.compileTime = true;
-    UInt16x4_convert_Int32x4.returnType = Type::FullType { UInt16x4Type.name };
-    UInt16x4_convert_Int32x4.parameters = UInt16x4_convert_Int32x4_args;
-    Symbol::Resolved(&UInt16x4_convert_Int32x4_arg0)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&UInt16x4_convert_Int32x4)->signature = "u16x4 u16x4(i32x4)"_c;
-    Symbol::Resolved(&UInt16x4_convert_Int32x4)->name = "u16x4(i32x4)"_c;
-    Symbol::Resolved(&UInt16x4_convert_Int32x4)->nameWithVarNames = "u16x4(val : i32x4)"_c;
-    Symbol::Resolved(&UInt16x4_convert_Int32x4)->returnTypeSymbol = &UInt16x4Type;
+    UInt16x4_from_Int32x4_arg0.name = "val"_c;
+    UInt16x4_from_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
+    UInt16x4_from_Int32x4.documentation = "Convert from i32x4 to u16x4"_c;
+    UInt16x4_from_Int32x4.name = "u16x4"_c;
+    UInt16x4_from_Int32x4.compileTime = true;
+    UInt16x4_from_Int32x4.returnType = Type::FullType { UInt16x4Type.name };
+    UInt16x4_from_Int32x4.parameters = UInt16x4_from_Int32x4_args;
+    Symbol::Resolved(&UInt16x4_from_Int32x4_arg0)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&UInt16x4_from_Int32x4)->signature = "u16x4 u16x4(i32x4)"_c;
+    Symbol::Resolved(&UInt16x4_from_Int32x4)->name = "u16x4(i32x4)"_c;
+    Symbol::Resolved(&UInt16x4_from_Int32x4)->nameWithVarNames = "u16x4(val : i32x4)"_c;
+    Symbol::Resolved(&UInt16x4_from_Int32x4)->returnTypeSymbol = &UInt16x4Type;
 
     /// u16x4 with Int32
     UInt16x4_splat_Int32_arg0.name = "val"_c;
@@ -26702,18 +26968,18 @@ UInt16x4::UInt16x4()
     Symbol::Resolved(&UInt16x4_splat_Int32)->returnTypeSymbol = &UInt16x4Type;
 
     /// u16x4 with Bool8x4
-    UInt16x4_convert_Bool8x4_arg0.name = "val"_c;
-    UInt16x4_convert_Bool8x4_arg0.type = Type::FullType{ Bool8x4Type.name };
-    UInt16x4_convert_Bool8x4.documentation = "Convert b8x4 to u16x4"_c;
-    UInt16x4_convert_Bool8x4.name = "u16x4"_c;
-    UInt16x4_convert_Bool8x4.compileTime = true;
-    UInt16x4_convert_Bool8x4.returnType = Type::FullType { UInt16x4Type.name };
-    UInt16x4_convert_Bool8x4.parameters = UInt16x4_convert_Bool8x4_args;
-    Symbol::Resolved(&UInt16x4_convert_Bool8x4_arg0)->typeSymbol = &Bool8x4Type;
-    Symbol::Resolved(&UInt16x4_convert_Bool8x4)->signature = "u16x4 u16x4(b8x4)"_c;
-    Symbol::Resolved(&UInt16x4_convert_Bool8x4)->name = "u16x4(b8x4)"_c;
-    Symbol::Resolved(&UInt16x4_convert_Bool8x4)->nameWithVarNames = "u16x4(val : b8x4)"_c;
-    Symbol::Resolved(&UInt16x4_convert_Bool8x4)->returnTypeSymbol = &UInt16x4Type;
+    UInt16x4_from_Bool8x4_arg0.name = "val"_c;
+    UInt16x4_from_Bool8x4_arg0.type = Type::FullType{ Bool8x4Type.name };
+    UInt16x4_from_Bool8x4.documentation = "Convert from b8x4 to u16x4"_c;
+    UInt16x4_from_Bool8x4.name = "u16x4"_c;
+    UInt16x4_from_Bool8x4.compileTime = true;
+    UInt16x4_from_Bool8x4.returnType = Type::FullType { UInt16x4Type.name };
+    UInt16x4_from_Bool8x4.parameters = UInt16x4_from_Bool8x4_args;
+    Symbol::Resolved(&UInt16x4_from_Bool8x4_arg0)->typeSymbol = &Bool8x4Type;
+    Symbol::Resolved(&UInt16x4_from_Bool8x4)->signature = "u16x4 u16x4(b8x4)"_c;
+    Symbol::Resolved(&UInt16x4_from_Bool8x4)->name = "u16x4(b8x4)"_c;
+    Symbol::Resolved(&UInt16x4_from_Bool8x4)->nameWithVarNames = "u16x4(val : b8x4)"_c;
+    Symbol::Resolved(&UInt16x4_from_Bool8x4)->returnTypeSymbol = &UInt16x4Type;
 
     /// u16x4 with Bool8
     UInt16x4_splat_Bool8_arg0.name = "val"_c;
@@ -26730,18 +26996,18 @@ UInt16x4::UInt16x4()
     Symbol::Resolved(&UInt16x4_splat_Bool8)->returnTypeSymbol = &UInt16x4Type;
 
     /// u16x4 with Float16x4
-    UInt16x4_convert_Float16x4_arg0.name = "val"_c;
-    UInt16x4_convert_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
-    UInt16x4_convert_Float16x4.documentation = "Convert f16x4 to u16x4"_c;
-    UInt16x4_convert_Float16x4.name = "u16x4"_c;
-    UInt16x4_convert_Float16x4.compileTime = true;
-    UInt16x4_convert_Float16x4.returnType = Type::FullType { UInt16x4Type.name };
-    UInt16x4_convert_Float16x4.parameters = UInt16x4_convert_Float16x4_args;
-    Symbol::Resolved(&UInt16x4_convert_Float16x4_arg0)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&UInt16x4_convert_Float16x4)->signature = "u16x4 u16x4(f16x4)"_c;
-    Symbol::Resolved(&UInt16x4_convert_Float16x4)->name = "u16x4(f16x4)"_c;
-    Symbol::Resolved(&UInt16x4_convert_Float16x4)->nameWithVarNames = "u16x4(val : f16x4)"_c;
-    Symbol::Resolved(&UInt16x4_convert_Float16x4)->returnTypeSymbol = &UInt16x4Type;
+    UInt16x4_from_Float16x4_arg0.name = "val"_c;
+    UInt16x4_from_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
+    UInt16x4_from_Float16x4.documentation = "Convert from f16x4 to u16x4"_c;
+    UInt16x4_from_Float16x4.name = "u16x4"_c;
+    UInt16x4_from_Float16x4.compileTime = true;
+    UInt16x4_from_Float16x4.returnType = Type::FullType { UInt16x4Type.name };
+    UInt16x4_from_Float16x4.parameters = UInt16x4_from_Float16x4_args;
+    Symbol::Resolved(&UInt16x4_from_Float16x4_arg0)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&UInt16x4_from_Float16x4)->signature = "u16x4 u16x4(f16x4)"_c;
+    Symbol::Resolved(&UInt16x4_from_Float16x4)->name = "u16x4(f16x4)"_c;
+    Symbol::Resolved(&UInt16x4_from_Float16x4)->nameWithVarNames = "u16x4(val : f16x4)"_c;
+    Symbol::Resolved(&UInt16x4_from_Float16x4)->returnTypeSymbol = &UInt16x4Type;
 
     /// u16x4 with Float16
     UInt16x4_splat_Float16_arg0.name = "val"_c;
@@ -26758,18 +27024,18 @@ UInt16x4::UInt16x4()
     Symbol::Resolved(&UInt16x4_splat_Float16)->returnTypeSymbol = &UInt16x4Type;
 
     /// u16x4 with UInt16x4
-    UInt16x4_convert_UInt16x4_arg0.name = "val"_c;
-    UInt16x4_convert_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
-    UInt16x4_convert_UInt16x4.documentation = "Convert u16x4 to u16x4"_c;
-    UInt16x4_convert_UInt16x4.name = "u16x4"_c;
-    UInt16x4_convert_UInt16x4.compileTime = true;
-    UInt16x4_convert_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
-    UInt16x4_convert_UInt16x4.parameters = UInt16x4_convert_UInt16x4_args;
-    Symbol::Resolved(&UInt16x4_convert_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
-    Symbol::Resolved(&UInt16x4_convert_UInt16x4)->signature = "u16x4 u16x4(u16x4)"_c;
-    Symbol::Resolved(&UInt16x4_convert_UInt16x4)->name = "u16x4(u16x4)"_c;
-    Symbol::Resolved(&UInt16x4_convert_UInt16x4)->nameWithVarNames = "u16x4(val : u16x4)"_c;
-    Symbol::Resolved(&UInt16x4_convert_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
+    UInt16x4_from_UInt16x4_arg0.name = "val"_c;
+    UInt16x4_from_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
+    UInt16x4_from_UInt16x4.documentation = "Convert from u16x4 to u16x4"_c;
+    UInt16x4_from_UInt16x4.name = "u16x4"_c;
+    UInt16x4_from_UInt16x4.compileTime = true;
+    UInt16x4_from_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
+    UInt16x4_from_UInt16x4.parameters = UInt16x4_from_UInt16x4_args;
+    Symbol::Resolved(&UInt16x4_from_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&UInt16x4_from_UInt16x4)->signature = "u16x4 u16x4(u16x4)"_c;
+    Symbol::Resolved(&UInt16x4_from_UInt16x4)->name = "u16x4(u16x4)"_c;
+    Symbol::Resolved(&UInt16x4_from_UInt16x4)->nameWithVarNames = "u16x4(val : u16x4)"_c;
+    Symbol::Resolved(&UInt16x4_from_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
     /// u16x4 with UInt16
     UInt16x4_splat_UInt16_arg0.name = "val"_c;
@@ -26786,18 +27052,18 @@ UInt16x4::UInt16x4()
     Symbol::Resolved(&UInt16x4_splat_UInt16)->returnTypeSymbol = &UInt16x4Type;
 
     /// u16x4 with Int16x4
-    UInt16x4_convert_Int16x4_arg0.name = "val"_c;
-    UInt16x4_convert_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
-    UInt16x4_convert_Int16x4.documentation = "Convert i16x4 to u16x4"_c;
-    UInt16x4_convert_Int16x4.name = "u16x4"_c;
-    UInt16x4_convert_Int16x4.compileTime = true;
-    UInt16x4_convert_Int16x4.returnType = Type::FullType { UInt16x4Type.name };
-    UInt16x4_convert_Int16x4.parameters = UInt16x4_convert_Int16x4_args;
-    Symbol::Resolved(&UInt16x4_convert_Int16x4_arg0)->typeSymbol = &Int16x4Type;
-    Symbol::Resolved(&UInt16x4_convert_Int16x4)->signature = "u16x4 u16x4(i16x4)"_c;
-    Symbol::Resolved(&UInt16x4_convert_Int16x4)->name = "u16x4(i16x4)"_c;
-    Symbol::Resolved(&UInt16x4_convert_Int16x4)->nameWithVarNames = "u16x4(val : i16x4)"_c;
-    Symbol::Resolved(&UInt16x4_convert_Int16x4)->returnTypeSymbol = &UInt16x4Type;
+    UInt16x4_from_Int16x4_arg0.name = "val"_c;
+    UInt16x4_from_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
+    UInt16x4_from_Int16x4.documentation = "Convert from i16x4 to u16x4"_c;
+    UInt16x4_from_Int16x4.name = "u16x4"_c;
+    UInt16x4_from_Int16x4.compileTime = true;
+    UInt16x4_from_Int16x4.returnType = Type::FullType { UInt16x4Type.name };
+    UInt16x4_from_Int16x4.parameters = UInt16x4_from_Int16x4_args;
+    Symbol::Resolved(&UInt16x4_from_Int16x4_arg0)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&UInt16x4_from_Int16x4)->signature = "u16x4 u16x4(i16x4)"_c;
+    Symbol::Resolved(&UInt16x4_from_Int16x4)->name = "u16x4(i16x4)"_c;
+    Symbol::Resolved(&UInt16x4_from_Int16x4)->nameWithVarNames = "u16x4(val : i16x4)"_c;
+    Symbol::Resolved(&UInt16x4_from_Int16x4)->returnTypeSymbol = &UInt16x4Type;
 
     /// u16x4 with Int16
     UInt16x4_splat_Int16_arg0.name = "val"_c;
@@ -28116,9 +28382,9 @@ UInt16x4::UInt16x4()
 UInt16x4 UInt16x4Type;
 
 /// i16x4 with Float32x4
-Variable Int16x4_convert_Float32x4_arg0;
-Function Int16x4_convert_Float32x4;
-inline constexpr std::array Int16x4_convert_Float32x4_args = { &Int16x4_convert_Float32x4_arg0 };
+Variable Int16x4_from_Float32x4_arg0;
+Function Int16x4_from_Float32x4;
+inline constexpr std::array Int16x4_from_Float32x4_args = { &Int16x4_from_Float32x4_arg0 };
 
 /// i16x4 with Float32
 Variable Int16x4_splat_Float32_arg0;
@@ -28126,9 +28392,9 @@ Function Int16x4_splat_Float32;
 inline constexpr std::array Int16x4_splat_Float32_args = { &Int16x4_splat_Float32_arg0 };
 
 /// i16x4 with UInt32x4
-Variable Int16x4_convert_UInt32x4_arg0;
-Function Int16x4_convert_UInt32x4;
-inline constexpr std::array Int16x4_convert_UInt32x4_args = { &Int16x4_convert_UInt32x4_arg0 };
+Variable Int16x4_from_UInt32x4_arg0;
+Function Int16x4_from_UInt32x4;
+inline constexpr std::array Int16x4_from_UInt32x4_args = { &Int16x4_from_UInt32x4_arg0 };
 
 /// i16x4 with UInt32
 Variable Int16x4_splat_UInt32_arg0;
@@ -28136,9 +28402,9 @@ Function Int16x4_splat_UInt32;
 inline constexpr std::array Int16x4_splat_UInt32_args = { &Int16x4_splat_UInt32_arg0 };
 
 /// i16x4 with Int32x4
-Variable Int16x4_convert_Int32x4_arg0;
-Function Int16x4_convert_Int32x4;
-inline constexpr std::array Int16x4_convert_Int32x4_args = { &Int16x4_convert_Int32x4_arg0 };
+Variable Int16x4_from_Int32x4_arg0;
+Function Int16x4_from_Int32x4;
+inline constexpr std::array Int16x4_from_Int32x4_args = { &Int16x4_from_Int32x4_arg0 };
 
 /// i16x4 with Int32
 Variable Int16x4_splat_Int32_arg0;
@@ -28146,9 +28412,9 @@ Function Int16x4_splat_Int32;
 inline constexpr std::array Int16x4_splat_Int32_args = { &Int16x4_splat_Int32_arg0 };
 
 /// i16x4 with Bool8x4
-Variable Int16x4_convert_Bool8x4_arg0;
-Function Int16x4_convert_Bool8x4;
-inline constexpr std::array Int16x4_convert_Bool8x4_args = { &Int16x4_convert_Bool8x4_arg0 };
+Variable Int16x4_from_Bool8x4_arg0;
+Function Int16x4_from_Bool8x4;
+inline constexpr std::array Int16x4_from_Bool8x4_args = { &Int16x4_from_Bool8x4_arg0 };
 
 /// i16x4 with Bool8
 Variable Int16x4_splat_Bool8_arg0;
@@ -28156,9 +28422,9 @@ Function Int16x4_splat_Bool8;
 inline constexpr std::array Int16x4_splat_Bool8_args = { &Int16x4_splat_Bool8_arg0 };
 
 /// i16x4 with Float16x4
-Variable Int16x4_convert_Float16x4_arg0;
-Function Int16x4_convert_Float16x4;
-inline constexpr std::array Int16x4_convert_Float16x4_args = { &Int16x4_convert_Float16x4_arg0 };
+Variable Int16x4_from_Float16x4_arg0;
+Function Int16x4_from_Float16x4;
+inline constexpr std::array Int16x4_from_Float16x4_args = { &Int16x4_from_Float16x4_arg0 };
 
 /// i16x4 with Float16
 Variable Int16x4_splat_Float16_arg0;
@@ -28166,9 +28432,9 @@ Function Int16x4_splat_Float16;
 inline constexpr std::array Int16x4_splat_Float16_args = { &Int16x4_splat_Float16_arg0 };
 
 /// i16x4 with UInt16x4
-Variable Int16x4_convert_UInt16x4_arg0;
-Function Int16x4_convert_UInt16x4;
-inline constexpr std::array Int16x4_convert_UInt16x4_args = { &Int16x4_convert_UInt16x4_arg0 };
+Variable Int16x4_from_UInt16x4_arg0;
+Function Int16x4_from_UInt16x4;
+inline constexpr std::array Int16x4_from_UInt16x4_args = { &Int16x4_from_UInt16x4_arg0 };
 
 /// i16x4 with UInt16
 Variable Int16x4_splat_UInt16_arg0;
@@ -28176,9 +28442,9 @@ Function Int16x4_splat_UInt16;
 inline constexpr std::array Int16x4_splat_UInt16_args = { &Int16x4_splat_UInt16_arg0 };
 
 /// i16x4 with Int16x4
-Variable Int16x4_convert_Int16x4_arg0;
-Function Int16x4_convert_Int16x4;
-inline constexpr std::array Int16x4_convert_Int16x4_args = { &Int16x4_convert_Int16x4_arg0 };
+Variable Int16x4_from_Int16x4_arg0;
+Function Int16x4_from_Int16x4;
+inline constexpr std::array Int16x4_from_Int16x4_args = { &Int16x4_from_Int16x4_arg0 };
 
 /// i16x4 with Int16
 Variable Int16x4_splat_Int16_arg0;
@@ -28418,18 +28684,18 @@ Int16x4::Int16x4()
     this->builtin = true;
 
     /// i16x4 with Float32x4
-    Int16x4_convert_Float32x4_arg0.name = "val"_c;
-    Int16x4_convert_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
-    Int16x4_convert_Float32x4.documentation = "Convert f32x4 to i16x4"_c;
-    Int16x4_convert_Float32x4.name = "i16x4"_c;
-    Int16x4_convert_Float32x4.compileTime = true;
-    Int16x4_convert_Float32x4.returnType = Type::FullType { Int16x4Type.name };
-    Int16x4_convert_Float32x4.parameters = Int16x4_convert_Float32x4_args;
-    Symbol::Resolved(&Int16x4_convert_Float32x4_arg0)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&Int16x4_convert_Float32x4)->signature = "i16x4 i16x4(f32x4)"_c;
-    Symbol::Resolved(&Int16x4_convert_Float32x4)->name = "i16x4(f32x4)"_c;
-    Symbol::Resolved(&Int16x4_convert_Float32x4)->nameWithVarNames = "i16x4(val : f32x4)"_c;
-    Symbol::Resolved(&Int16x4_convert_Float32x4)->returnTypeSymbol = &Int16x4Type;
+    Int16x4_from_Float32x4_arg0.name = "val"_c;
+    Int16x4_from_Float32x4_arg0.type = Type::FullType{ Float32x4Type.name };
+    Int16x4_from_Float32x4.documentation = "Convert from f32x4 to i16x4"_c;
+    Int16x4_from_Float32x4.name = "i16x4"_c;
+    Int16x4_from_Float32x4.compileTime = true;
+    Int16x4_from_Float32x4.returnType = Type::FullType { Int16x4Type.name };
+    Int16x4_from_Float32x4.parameters = Int16x4_from_Float32x4_args;
+    Symbol::Resolved(&Int16x4_from_Float32x4_arg0)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&Int16x4_from_Float32x4)->signature = "i16x4 i16x4(f32x4)"_c;
+    Symbol::Resolved(&Int16x4_from_Float32x4)->name = "i16x4(f32x4)"_c;
+    Symbol::Resolved(&Int16x4_from_Float32x4)->nameWithVarNames = "i16x4(val : f32x4)"_c;
+    Symbol::Resolved(&Int16x4_from_Float32x4)->returnTypeSymbol = &Int16x4Type;
 
     /// i16x4 with Float32
     Int16x4_splat_Float32_arg0.name = "val"_c;
@@ -28446,18 +28712,18 @@ Int16x4::Int16x4()
     Symbol::Resolved(&Int16x4_splat_Float32)->returnTypeSymbol = &Int16x4Type;
 
     /// i16x4 with UInt32x4
-    Int16x4_convert_UInt32x4_arg0.name = "val"_c;
-    Int16x4_convert_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
-    Int16x4_convert_UInt32x4.documentation = "Convert u32x4 to i16x4"_c;
-    Int16x4_convert_UInt32x4.name = "i16x4"_c;
-    Int16x4_convert_UInt32x4.compileTime = true;
-    Int16x4_convert_UInt32x4.returnType = Type::FullType { Int16x4Type.name };
-    Int16x4_convert_UInt32x4.parameters = Int16x4_convert_UInt32x4_args;
-    Symbol::Resolved(&Int16x4_convert_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&Int16x4_convert_UInt32x4)->signature = "i16x4 i16x4(u32x4)"_c;
-    Symbol::Resolved(&Int16x4_convert_UInt32x4)->name = "i16x4(u32x4)"_c;
-    Symbol::Resolved(&Int16x4_convert_UInt32x4)->nameWithVarNames = "i16x4(val : u32x4)"_c;
-    Symbol::Resolved(&Int16x4_convert_UInt32x4)->returnTypeSymbol = &Int16x4Type;
+    Int16x4_from_UInt32x4_arg0.name = "val"_c;
+    Int16x4_from_UInt32x4_arg0.type = Type::FullType{ UInt32x4Type.name };
+    Int16x4_from_UInt32x4.documentation = "Convert from u32x4 to i16x4"_c;
+    Int16x4_from_UInt32x4.name = "i16x4"_c;
+    Int16x4_from_UInt32x4.compileTime = true;
+    Int16x4_from_UInt32x4.returnType = Type::FullType { Int16x4Type.name };
+    Int16x4_from_UInt32x4.parameters = Int16x4_from_UInt32x4_args;
+    Symbol::Resolved(&Int16x4_from_UInt32x4_arg0)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&Int16x4_from_UInt32x4)->signature = "i16x4 i16x4(u32x4)"_c;
+    Symbol::Resolved(&Int16x4_from_UInt32x4)->name = "i16x4(u32x4)"_c;
+    Symbol::Resolved(&Int16x4_from_UInt32x4)->nameWithVarNames = "i16x4(val : u32x4)"_c;
+    Symbol::Resolved(&Int16x4_from_UInt32x4)->returnTypeSymbol = &Int16x4Type;
 
     /// i16x4 with UInt32
     Int16x4_splat_UInt32_arg0.name = "val"_c;
@@ -28474,18 +28740,18 @@ Int16x4::Int16x4()
     Symbol::Resolved(&Int16x4_splat_UInt32)->returnTypeSymbol = &Int16x4Type;
 
     /// i16x4 with Int32x4
-    Int16x4_convert_Int32x4_arg0.name = "val"_c;
-    Int16x4_convert_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
-    Int16x4_convert_Int32x4.documentation = "Convert i32x4 to i16x4"_c;
-    Int16x4_convert_Int32x4.name = "i16x4"_c;
-    Int16x4_convert_Int32x4.compileTime = true;
-    Int16x4_convert_Int32x4.returnType = Type::FullType { Int16x4Type.name };
-    Int16x4_convert_Int32x4.parameters = Int16x4_convert_Int32x4_args;
-    Symbol::Resolved(&Int16x4_convert_Int32x4_arg0)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&Int16x4_convert_Int32x4)->signature = "i16x4 i16x4(i32x4)"_c;
-    Symbol::Resolved(&Int16x4_convert_Int32x4)->name = "i16x4(i32x4)"_c;
-    Symbol::Resolved(&Int16x4_convert_Int32x4)->nameWithVarNames = "i16x4(val : i32x4)"_c;
-    Symbol::Resolved(&Int16x4_convert_Int32x4)->returnTypeSymbol = &Int16x4Type;
+    Int16x4_from_Int32x4_arg0.name = "val"_c;
+    Int16x4_from_Int32x4_arg0.type = Type::FullType{ Int32x4Type.name };
+    Int16x4_from_Int32x4.documentation = "Convert from i32x4 to i16x4"_c;
+    Int16x4_from_Int32x4.name = "i16x4"_c;
+    Int16x4_from_Int32x4.compileTime = true;
+    Int16x4_from_Int32x4.returnType = Type::FullType { Int16x4Type.name };
+    Int16x4_from_Int32x4.parameters = Int16x4_from_Int32x4_args;
+    Symbol::Resolved(&Int16x4_from_Int32x4_arg0)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&Int16x4_from_Int32x4)->signature = "i16x4 i16x4(i32x4)"_c;
+    Symbol::Resolved(&Int16x4_from_Int32x4)->name = "i16x4(i32x4)"_c;
+    Symbol::Resolved(&Int16x4_from_Int32x4)->nameWithVarNames = "i16x4(val : i32x4)"_c;
+    Symbol::Resolved(&Int16x4_from_Int32x4)->returnTypeSymbol = &Int16x4Type;
 
     /// i16x4 with Int32
     Int16x4_splat_Int32_arg0.name = "val"_c;
@@ -28502,18 +28768,18 @@ Int16x4::Int16x4()
     Symbol::Resolved(&Int16x4_splat_Int32)->returnTypeSymbol = &Int16x4Type;
 
     /// i16x4 with Bool8x4
-    Int16x4_convert_Bool8x4_arg0.name = "val"_c;
-    Int16x4_convert_Bool8x4_arg0.type = Type::FullType{ Bool8x4Type.name };
-    Int16x4_convert_Bool8x4.documentation = "Convert b8x4 to i16x4"_c;
-    Int16x4_convert_Bool8x4.name = "i16x4"_c;
-    Int16x4_convert_Bool8x4.compileTime = true;
-    Int16x4_convert_Bool8x4.returnType = Type::FullType { Int16x4Type.name };
-    Int16x4_convert_Bool8x4.parameters = Int16x4_convert_Bool8x4_args;
-    Symbol::Resolved(&Int16x4_convert_Bool8x4_arg0)->typeSymbol = &Bool8x4Type;
-    Symbol::Resolved(&Int16x4_convert_Bool8x4)->signature = "i16x4 i16x4(b8x4)"_c;
-    Symbol::Resolved(&Int16x4_convert_Bool8x4)->name = "i16x4(b8x4)"_c;
-    Symbol::Resolved(&Int16x4_convert_Bool8x4)->nameWithVarNames = "i16x4(val : b8x4)"_c;
-    Symbol::Resolved(&Int16x4_convert_Bool8x4)->returnTypeSymbol = &Int16x4Type;
+    Int16x4_from_Bool8x4_arg0.name = "val"_c;
+    Int16x4_from_Bool8x4_arg0.type = Type::FullType{ Bool8x4Type.name };
+    Int16x4_from_Bool8x4.documentation = "Convert from b8x4 to i16x4"_c;
+    Int16x4_from_Bool8x4.name = "i16x4"_c;
+    Int16x4_from_Bool8x4.compileTime = true;
+    Int16x4_from_Bool8x4.returnType = Type::FullType { Int16x4Type.name };
+    Int16x4_from_Bool8x4.parameters = Int16x4_from_Bool8x4_args;
+    Symbol::Resolved(&Int16x4_from_Bool8x4_arg0)->typeSymbol = &Bool8x4Type;
+    Symbol::Resolved(&Int16x4_from_Bool8x4)->signature = "i16x4 i16x4(b8x4)"_c;
+    Symbol::Resolved(&Int16x4_from_Bool8x4)->name = "i16x4(b8x4)"_c;
+    Symbol::Resolved(&Int16x4_from_Bool8x4)->nameWithVarNames = "i16x4(val : b8x4)"_c;
+    Symbol::Resolved(&Int16x4_from_Bool8x4)->returnTypeSymbol = &Int16x4Type;
 
     /// i16x4 with Bool8
     Int16x4_splat_Bool8_arg0.name = "val"_c;
@@ -28530,18 +28796,18 @@ Int16x4::Int16x4()
     Symbol::Resolved(&Int16x4_splat_Bool8)->returnTypeSymbol = &Int16x4Type;
 
     /// i16x4 with Float16x4
-    Int16x4_convert_Float16x4_arg0.name = "val"_c;
-    Int16x4_convert_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
-    Int16x4_convert_Float16x4.documentation = "Convert f16x4 to i16x4"_c;
-    Int16x4_convert_Float16x4.name = "i16x4"_c;
-    Int16x4_convert_Float16x4.compileTime = true;
-    Int16x4_convert_Float16x4.returnType = Type::FullType { Int16x4Type.name };
-    Int16x4_convert_Float16x4.parameters = Int16x4_convert_Float16x4_args;
-    Symbol::Resolved(&Int16x4_convert_Float16x4_arg0)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&Int16x4_convert_Float16x4)->signature = "i16x4 i16x4(f16x4)"_c;
-    Symbol::Resolved(&Int16x4_convert_Float16x4)->name = "i16x4(f16x4)"_c;
-    Symbol::Resolved(&Int16x4_convert_Float16x4)->nameWithVarNames = "i16x4(val : f16x4)"_c;
-    Symbol::Resolved(&Int16x4_convert_Float16x4)->returnTypeSymbol = &Int16x4Type;
+    Int16x4_from_Float16x4_arg0.name = "val"_c;
+    Int16x4_from_Float16x4_arg0.type = Type::FullType{ Float16x4Type.name };
+    Int16x4_from_Float16x4.documentation = "Convert from f16x4 to i16x4"_c;
+    Int16x4_from_Float16x4.name = "i16x4"_c;
+    Int16x4_from_Float16x4.compileTime = true;
+    Int16x4_from_Float16x4.returnType = Type::FullType { Int16x4Type.name };
+    Int16x4_from_Float16x4.parameters = Int16x4_from_Float16x4_args;
+    Symbol::Resolved(&Int16x4_from_Float16x4_arg0)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&Int16x4_from_Float16x4)->signature = "i16x4 i16x4(f16x4)"_c;
+    Symbol::Resolved(&Int16x4_from_Float16x4)->name = "i16x4(f16x4)"_c;
+    Symbol::Resolved(&Int16x4_from_Float16x4)->nameWithVarNames = "i16x4(val : f16x4)"_c;
+    Symbol::Resolved(&Int16x4_from_Float16x4)->returnTypeSymbol = &Int16x4Type;
 
     /// i16x4 with Float16
     Int16x4_splat_Float16_arg0.name = "val"_c;
@@ -28558,18 +28824,18 @@ Int16x4::Int16x4()
     Symbol::Resolved(&Int16x4_splat_Float16)->returnTypeSymbol = &Int16x4Type;
 
     /// i16x4 with UInt16x4
-    Int16x4_convert_UInt16x4_arg0.name = "val"_c;
-    Int16x4_convert_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
-    Int16x4_convert_UInt16x4.documentation = "Convert u16x4 to i16x4"_c;
-    Int16x4_convert_UInt16x4.name = "i16x4"_c;
-    Int16x4_convert_UInt16x4.compileTime = true;
-    Int16x4_convert_UInt16x4.returnType = Type::FullType { Int16x4Type.name };
-    Int16x4_convert_UInt16x4.parameters = Int16x4_convert_UInt16x4_args;
-    Symbol::Resolved(&Int16x4_convert_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
-    Symbol::Resolved(&Int16x4_convert_UInt16x4)->signature = "i16x4 i16x4(u16x4)"_c;
-    Symbol::Resolved(&Int16x4_convert_UInt16x4)->name = "i16x4(u16x4)"_c;
-    Symbol::Resolved(&Int16x4_convert_UInt16x4)->nameWithVarNames = "i16x4(val : u16x4)"_c;
-    Symbol::Resolved(&Int16x4_convert_UInt16x4)->returnTypeSymbol = &Int16x4Type;
+    Int16x4_from_UInt16x4_arg0.name = "val"_c;
+    Int16x4_from_UInt16x4_arg0.type = Type::FullType{ UInt16x4Type.name };
+    Int16x4_from_UInt16x4.documentation = "Convert from u16x4 to i16x4"_c;
+    Int16x4_from_UInt16x4.name = "i16x4"_c;
+    Int16x4_from_UInt16x4.compileTime = true;
+    Int16x4_from_UInt16x4.returnType = Type::FullType { Int16x4Type.name };
+    Int16x4_from_UInt16x4.parameters = Int16x4_from_UInt16x4_args;
+    Symbol::Resolved(&Int16x4_from_UInt16x4_arg0)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&Int16x4_from_UInt16x4)->signature = "i16x4 i16x4(u16x4)"_c;
+    Symbol::Resolved(&Int16x4_from_UInt16x4)->name = "i16x4(u16x4)"_c;
+    Symbol::Resolved(&Int16x4_from_UInt16x4)->nameWithVarNames = "i16x4(val : u16x4)"_c;
+    Symbol::Resolved(&Int16x4_from_UInt16x4)->returnTypeSymbol = &Int16x4Type;
 
     /// i16x4 with UInt16
     Int16x4_splat_UInt16_arg0.name = "val"_c;
@@ -28586,18 +28852,18 @@ Int16x4::Int16x4()
     Symbol::Resolved(&Int16x4_splat_UInt16)->returnTypeSymbol = &Int16x4Type;
 
     /// i16x4 with Int16x4
-    Int16x4_convert_Int16x4_arg0.name = "val"_c;
-    Int16x4_convert_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
-    Int16x4_convert_Int16x4.documentation = "Convert i16x4 to i16x4"_c;
-    Int16x4_convert_Int16x4.name = "i16x4"_c;
-    Int16x4_convert_Int16x4.compileTime = true;
-    Int16x4_convert_Int16x4.returnType = Type::FullType { Int16x4Type.name };
-    Int16x4_convert_Int16x4.parameters = Int16x4_convert_Int16x4_args;
-    Symbol::Resolved(&Int16x4_convert_Int16x4_arg0)->typeSymbol = &Int16x4Type;
-    Symbol::Resolved(&Int16x4_convert_Int16x4)->signature = "i16x4 i16x4(i16x4)"_c;
-    Symbol::Resolved(&Int16x4_convert_Int16x4)->name = "i16x4(i16x4)"_c;
-    Symbol::Resolved(&Int16x4_convert_Int16x4)->nameWithVarNames = "i16x4(val : i16x4)"_c;
-    Symbol::Resolved(&Int16x4_convert_Int16x4)->returnTypeSymbol = &Int16x4Type;
+    Int16x4_from_Int16x4_arg0.name = "val"_c;
+    Int16x4_from_Int16x4_arg0.type = Type::FullType{ Int16x4Type.name };
+    Int16x4_from_Int16x4.documentation = "Convert from i16x4 to i16x4"_c;
+    Int16x4_from_Int16x4.name = "i16x4"_c;
+    Int16x4_from_Int16x4.compileTime = true;
+    Int16x4_from_Int16x4.returnType = Type::FullType { Int16x4Type.name };
+    Int16x4_from_Int16x4.parameters = Int16x4_from_Int16x4_args;
+    Symbol::Resolved(&Int16x4_from_Int16x4_arg0)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&Int16x4_from_Int16x4)->signature = "i16x4 i16x4(i16x4)"_c;
+    Symbol::Resolved(&Int16x4_from_Int16x4)->name = "i16x4(i16x4)"_c;
+    Symbol::Resolved(&Int16x4_from_Int16x4)->nameWithVarNames = "i16x4(val : i16x4)"_c;
+    Symbol::Resolved(&Int16x4_from_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
     /// i16x4 with Int16
     Int16x4_splat_Int16_arg0.name = "val"_c;
@@ -36982,7 +37248,7 @@ BlendColorMask BlendColorMaskType;
 EnumExpression FilterModePoint;
 EnumExpression FilterModeNearest;
 EnumExpression FilterModeLinear;
-EnumExpression FilterModeMinMagMipmapLinear;
+EnumExpression FilterModeMinMagMipLinear;
 EnumExpression FilterModeMinMagLinearMipPoint;
 EnumExpression FilterModeMinLinearMagMipPoint;
 EnumExpression FilterModeMinMagMipPoint;
@@ -37011,10 +37277,10 @@ FilterMode::FilterMode()
     FilterModeLinear.type = Type::FullType{ FilterModeType.name, true };
     FilterModeLinear.underlyingType = Type::FullType{ UInt32Type.name };
     Symbol::Resolved(&FilterModeLinear)->type = this;
-    FilterModeMinMagMipmapLinear.value = 0x2;
-    FilterModeMinMagMipmapLinear.type = Type::FullType{ FilterModeType.name, true };
-    FilterModeMinMagMipmapLinear.underlyingType = Type::FullType{ UInt32Type.name };
-    Symbol::Resolved(&FilterModeMinMagMipmapLinear)->type = this;
+    FilterModeMinMagMipLinear.value = 0x2;
+    FilterModeMinMagMipLinear.type = Type::FullType{ FilterModeType.name, true };
+    FilterModeMinMagMipLinear.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&FilterModeMinMagMipLinear)->type = this;
     FilterModeMinMagLinearMipPoint.value = 0x3;
     FilterModeMinMagLinearMipPoint.type = Type::FullType{ FilterModeType.name, true };
     FilterModeMinMagLinearMipPoint.underlyingType = Type::FullType{ UInt32Type.name };
@@ -37079,8 +37345,8 @@ FilterMode::FilterMode()
         std::pair{ "MinLinearMagMipPoint"_c, &FilterModeMinLinearMagMipPoint },
         std::pair{ "MinLinearMagPointMipLinear"_c, &FilterModeMinLinearMagPointMipLinear },
         std::pair{ "MinMagLinearMipPoint"_c, &FilterModeMinMagLinearMipPoint },
+        std::pair{ "MinMagMipLinear"_c, &FilterModeMinMagMipLinear },
         std::pair{ "MinMagMipPoint"_c, &FilterModeMinMagMipPoint },
-        std::pair{ "MinMagMipmapLinear"_c, &FilterModeMinMagMipmapLinear },
         std::pair{ "MinMagPointMipLinear"_c, &FilterModeMinMagPointMipLinear },
         std::pair{ "MinPointMagLinearMipPoint"_c, &FilterModeMinPointMagLinearMipPoint },
         std::pair{ "MinPointMagMipLinear"_c, &FilterModeMinPointMagMipLinear },
@@ -37283,7 +37549,7 @@ Variable RenderStateDepthClampEnabled;
 Variable RenderStateDepthTestEnabled;
 Variable RenderStateDepthWriteEnabled;
 Variable RenderStateDepthBiasEnabled;
-Variable RenderStateDepthBiasConstantFactor;
+Variable RenderStateDepthBiasFactor;
 Variable RenderStateDepthBiasClamp;
 Variable RenderStateDepthBiasSlopeFactor;
 Variable RenderStateDepthTestFunction;
@@ -37294,6 +37560,7 @@ Variable RenderStateNoRasterization;
 Variable RenderStatePolygonMode;
 Variable RenderStateCull;
 Variable RenderStateWindingOrder;
+Variable RenderStateScissorEnabled;
 Variable RenderStateStencilEnabled;
 Variable RenderStateStencilFront;
 Variable RenderStateStencilBack;
@@ -37335,9 +37602,9 @@ RenderState::RenderState()
     RenderStateDepthBiasEnabled.type = Type::FullType{ Bool8Type.name };
     Symbol::Resolved(&RenderStateDepthBiasEnabled)->typeSymbol = &Bool8Type;
 
-    RenderStateDepthBiasConstantFactor.name = "DepthBiasConstantFactor"_c;
-    RenderStateDepthBiasConstantFactor.type = Type::FullType{ Float32Type.name };
-    Symbol::Resolved(&RenderStateDepthBiasConstantFactor)->typeSymbol = &Float32Type;
+    RenderStateDepthBiasFactor.name = "DepthBiasFactor"_c;
+    RenderStateDepthBiasFactor.type = Type::FullType{ Float32Type.name };
+    Symbol::Resolved(&RenderStateDepthBiasFactor)->typeSymbol = &Float32Type;
 
     RenderStateDepthBiasClamp.name = "DepthBiasClamp"_c;
     RenderStateDepthBiasClamp.type = Type::FullType{ Float32Type.name };
@@ -37378,6 +37645,10 @@ RenderState::RenderState()
     RenderStateWindingOrder.name = "WindingOrder"_c;
     RenderStateWindingOrder.type = Type::FullType{ WindingOrderType.name };
     Symbol::Resolved(&RenderStateWindingOrder)->typeSymbol = &WindingOrderType;
+
+    RenderStateScissorEnabled.name = "ScissorEnabled"_c;
+    RenderStateScissorEnabled.type = Type::FullType{ Bool8Type.name };
+    Symbol::Resolved(&RenderStateScissorEnabled)->typeSymbol = &Bool8Type;
 
     RenderStateStencilEnabled.name = "StencilEnabled"_c;
     RenderStateStencilEnabled.type = Type::FullType{ Bool8Type.name };
@@ -37431,14 +37702,14 @@ RenderState::RenderState()
     RenderStateMask.type = Type::FullType{ BlendColorMaskType.name, {Type::FullType::Modifier::Array}, {&RenderStateMaskArraySize} };
     Symbol::Resolved(&RenderStateMask)->typeSymbol = &BlendColorMaskType;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 28>{
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 29>{
         std::pair{ "AlphaBlendOp"_c, &RenderStateAlphaBlendOp },
         std::pair{ "BlendEnabled"_c, &RenderStateBlendEnabled },
         std::pair{ "ColorBlendOp"_c, &RenderStateColorBlendOp },
         std::pair{ "Cull"_c, &RenderStateCull },
         std::pair{ "DepthBiasClamp"_c, &RenderStateDepthBiasClamp },
-        std::pair{ "DepthBiasConstantFactor"_c, &RenderStateDepthBiasConstantFactor },
         std::pair{ "DepthBiasEnabled"_c, &RenderStateDepthBiasEnabled },
+        std::pair{ "DepthBiasFactor"_c, &RenderStateDepthBiasFactor },
         std::pair{ "DepthBiasSlopeFactor"_c, &RenderStateDepthBiasSlopeFactor },
         std::pair{ "DepthBoundsMax"_c, &RenderStateDepthBoundsMax },
         std::pair{ "DepthBoundsMin"_c, &RenderStateDepthBoundsMin },
@@ -37454,6 +37725,7 @@ RenderState::RenderState()
         std::pair{ "Mask"_c, &RenderStateMask },
         std::pair{ "NoRasterization"_c, &RenderStateNoRasterization },
         std::pair{ "PolygonMode"_c, &RenderStatePolygonMode },
+        std::pair{ "ScissorEnabled"_c, &RenderStateScissorEnabled },
         std::pair{ "SourceAlphaBlend"_c, &RenderStateSourceAlphaBlend },
         std::pair{ "SourceBlend"_c, &RenderStateSourceBlend },
         std::pair{ "StencilBack"_c, &RenderStateStencilBack },

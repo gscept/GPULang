@@ -2586,43 +2586,43 @@ Variable inverse_Float16x4x4_arg;
 Function inverse_Float16x4x4;
 inline constexpr std::array inverse_Float16x4x4_args = { &inverse_Float16x4x4_arg };
 
-/// OutputLayer
+/// vertexGetOutputLayer
 Function VertexGetOutputLayer;
 
-/// OutputViewport
+/// vertexGetOutputViewport
 Function VertexGetOutputViewport;
 
-/// Index
+/// vertexGetIndex
 Function VertexGetIndex;
 
-/// InstanceIndex
+/// vertexGetInstanceIndex
 Function VertexGetInstanceIndex;
 
-/// BaseIndex
+/// vertexGetBaseIndex
 Function VertexGetBaseIndex;
 
-/// BaseInstanceIndex
+/// vertexGetBaseInstanceIndex
 Function VertexGetBaseInstanceIndex;
 
-/// DrawIndex
+/// vertexGetDrawIndex
 Function VertexGetDrawIndex;
 
-/// OutputLayer with UInt16
+/// vertexSetOutputLayer with UInt16
 Variable VertexSetOutputLayer_UInt16_arg;
 Function VertexSetOutputLayer_UInt16;
 inline constexpr std::array VertexSetOutputLayer_UInt16_args = { &VertexSetOutputLayer_UInt16_arg };
 
-/// OutputLayer with UInt32
+/// vertexSetOutputLayer with UInt32
 Variable VertexSetOutputLayer_UInt32_arg;
 Function VertexSetOutputLayer_UInt32;
 inline constexpr std::array VertexSetOutputLayer_UInt32_args = { &VertexSetOutputLayer_UInt32_arg };
 
-/// OutputViewport with UInt16
+/// vertexSetOutputViewport with UInt16
 Variable VertexSetOutputViewport_UInt16_arg;
 Function VertexSetOutputViewport_UInt16;
 inline constexpr std::array VertexSetOutputViewport_UInt16_args = { &VertexSetOutputViewport_UInt16_arg };
 
-/// OutputViewport with UInt32
+/// vertexSetOutputViewport with UInt32
 Variable VertexSetOutputViewport_UInt32_arg;
 Function VertexSetOutputViewport_UInt32;
 inline constexpr std::array VertexSetOutputViewport_UInt32_args = { &VertexSetOutputViewport_UInt32_arg };
@@ -13600,108 +13600,108 @@ void SetupIntrinsics()
     Symbol::Resolved(&inverse_Float16x4x4)->nameWithVarNames = "inverse(val : f16x4x4)"_c;
     Symbol::Resolved(&inverse_Float16x4x4)->returnTypeSymbol = &Float16x4x4Type;
 
-    /// OutputLayer
-    VertexGetOutputLayer.name = "OutputLayer"_c;
+    /// vertexGetOutputLayer
+    VertexGetOutputLayer.name = "vertexGetOutputLayer"_c;
     VertexGetOutputLayer.returnType = Type::FullType { UInt32Type.name };
-    Symbol::Resolved(&VertexGetOutputLayer)->signature = "u32 OutputLayer()"_c;
-    Symbol::Resolved(&VertexGetOutputLayer)->name = "OutputLayer()"_c;
-    Symbol::Resolved(&VertexGetOutputLayer)->nameWithVarNames = "OutputLayer()"_c;
+    Symbol::Resolved(&VertexGetOutputLayer)->signature = "u32 vertexGetOutputLayer()"_c;
+    Symbol::Resolved(&VertexGetOutputLayer)->name = "vertexGetOutputLayer()"_c;
+    Symbol::Resolved(&VertexGetOutputLayer)->nameWithVarNames = "vertexGetOutputLayer()"_c;
     Symbol::Resolved(&VertexGetOutputLayer)->returnTypeSymbol = &UInt32Type;
 
-    /// OutputViewport
-    VertexGetOutputViewport.name = "OutputViewport"_c;
+    /// vertexGetOutputViewport
+    VertexGetOutputViewport.name = "vertexGetOutputViewport"_c;
     VertexGetOutputViewport.returnType = Type::FullType { UInt32Type.name };
-    Symbol::Resolved(&VertexGetOutputViewport)->signature = "u32 OutputViewport()"_c;
-    Symbol::Resolved(&VertexGetOutputViewport)->name = "OutputViewport()"_c;
-    Symbol::Resolved(&VertexGetOutputViewport)->nameWithVarNames = "OutputViewport()"_c;
+    Symbol::Resolved(&VertexGetOutputViewport)->signature = "u32 vertexGetOutputViewport()"_c;
+    Symbol::Resolved(&VertexGetOutputViewport)->name = "vertexGetOutputViewport()"_c;
+    Symbol::Resolved(&VertexGetOutputViewport)->nameWithVarNames = "vertexGetOutputViewport()"_c;
     Symbol::Resolved(&VertexGetOutputViewport)->returnTypeSymbol = &UInt32Type;
 
-    /// Index
-    VertexGetIndex.name = "Index"_c;
+    /// vertexGetIndex
+    VertexGetIndex.name = "vertexGetIndex"_c;
     VertexGetIndex.returnType = Type::FullType { UInt32Type.name };
-    Symbol::Resolved(&VertexGetIndex)->signature = "u32 Index()"_c;
-    Symbol::Resolved(&VertexGetIndex)->name = "Index()"_c;
-    Symbol::Resolved(&VertexGetIndex)->nameWithVarNames = "Index()"_c;
+    Symbol::Resolved(&VertexGetIndex)->signature = "u32 vertexGetIndex()"_c;
+    Symbol::Resolved(&VertexGetIndex)->name = "vertexGetIndex()"_c;
+    Symbol::Resolved(&VertexGetIndex)->nameWithVarNames = "vertexGetIndex()"_c;
     Symbol::Resolved(&VertexGetIndex)->returnTypeSymbol = &UInt32Type;
 
-    /// InstanceIndex
-    VertexGetInstanceIndex.name = "InstanceIndex"_c;
+    /// vertexGetInstanceIndex
+    VertexGetInstanceIndex.name = "vertexGetInstanceIndex"_c;
     VertexGetInstanceIndex.returnType = Type::FullType { UInt32Type.name };
-    Symbol::Resolved(&VertexGetInstanceIndex)->signature = "u32 InstanceIndex()"_c;
-    Symbol::Resolved(&VertexGetInstanceIndex)->name = "InstanceIndex()"_c;
-    Symbol::Resolved(&VertexGetInstanceIndex)->nameWithVarNames = "InstanceIndex()"_c;
+    Symbol::Resolved(&VertexGetInstanceIndex)->signature = "u32 vertexGetInstanceIndex()"_c;
+    Symbol::Resolved(&VertexGetInstanceIndex)->name = "vertexGetInstanceIndex()"_c;
+    Symbol::Resolved(&VertexGetInstanceIndex)->nameWithVarNames = "vertexGetInstanceIndex()"_c;
     Symbol::Resolved(&VertexGetInstanceIndex)->returnTypeSymbol = &UInt32Type;
 
-    /// BaseIndex
-    VertexGetBaseIndex.name = "BaseIndex"_c;
+    /// vertexGetBaseIndex
+    VertexGetBaseIndex.name = "vertexGetBaseIndex"_c;
     VertexGetBaseIndex.returnType = Type::FullType { UInt32Type.name };
-    Symbol::Resolved(&VertexGetBaseIndex)->signature = "u32 BaseIndex()"_c;
-    Symbol::Resolved(&VertexGetBaseIndex)->name = "BaseIndex()"_c;
-    Symbol::Resolved(&VertexGetBaseIndex)->nameWithVarNames = "BaseIndex()"_c;
+    Symbol::Resolved(&VertexGetBaseIndex)->signature = "u32 vertexGetBaseIndex()"_c;
+    Symbol::Resolved(&VertexGetBaseIndex)->name = "vertexGetBaseIndex()"_c;
+    Symbol::Resolved(&VertexGetBaseIndex)->nameWithVarNames = "vertexGetBaseIndex()"_c;
     Symbol::Resolved(&VertexGetBaseIndex)->returnTypeSymbol = &UInt32Type;
 
-    /// BaseInstanceIndex
-    VertexGetBaseInstanceIndex.name = "BaseInstanceIndex"_c;
+    /// vertexGetBaseInstanceIndex
+    VertexGetBaseInstanceIndex.name = "vertexGetBaseInstanceIndex"_c;
     VertexGetBaseInstanceIndex.returnType = Type::FullType { UInt32Type.name };
-    Symbol::Resolved(&VertexGetBaseInstanceIndex)->signature = "u32 BaseInstanceIndex()"_c;
-    Symbol::Resolved(&VertexGetBaseInstanceIndex)->name = "BaseInstanceIndex()"_c;
-    Symbol::Resolved(&VertexGetBaseInstanceIndex)->nameWithVarNames = "BaseInstanceIndex()"_c;
+    Symbol::Resolved(&VertexGetBaseInstanceIndex)->signature = "u32 vertexGetBaseInstanceIndex()"_c;
+    Symbol::Resolved(&VertexGetBaseInstanceIndex)->name = "vertexGetBaseInstanceIndex()"_c;
+    Symbol::Resolved(&VertexGetBaseInstanceIndex)->nameWithVarNames = "vertexGetBaseInstanceIndex()"_c;
     Symbol::Resolved(&VertexGetBaseInstanceIndex)->returnTypeSymbol = &UInt32Type;
 
-    /// DrawIndex
-    VertexGetDrawIndex.name = "DrawIndex"_c;
+    /// vertexGetDrawIndex
+    VertexGetDrawIndex.name = "vertexGetDrawIndex"_c;
     VertexGetDrawIndex.returnType = Type::FullType { UInt32Type.name };
-    Symbol::Resolved(&VertexGetDrawIndex)->signature = "u32 DrawIndex()"_c;
-    Symbol::Resolved(&VertexGetDrawIndex)->name = "DrawIndex()"_c;
-    Symbol::Resolved(&VertexGetDrawIndex)->nameWithVarNames = "DrawIndex()"_c;
+    Symbol::Resolved(&VertexGetDrawIndex)->signature = "u32 vertexGetDrawIndex()"_c;
+    Symbol::Resolved(&VertexGetDrawIndex)->name = "vertexGetDrawIndex()"_c;
+    Symbol::Resolved(&VertexGetDrawIndex)->nameWithVarNames = "vertexGetDrawIndex()"_c;
     Symbol::Resolved(&VertexGetDrawIndex)->returnTypeSymbol = &UInt32Type;
 
-    /// OutputLayer with UInt16
+    /// vertexSetOutputLayer with UInt16
     VertexSetOutputLayer_UInt16_arg.name = "val"_c;
     VertexSetOutputLayer_UInt16_arg.type = Type::FullType{ UInt16Type.name };
-    VertexSetOutputLayer_UInt16.name = "OutputLayer"_c;
+    VertexSetOutputLayer_UInt16.name = "vertexSetOutputLayer"_c;
     VertexSetOutputLayer_UInt16.returnType = Type::FullType { VoidType.name };
     VertexSetOutputLayer_UInt16.parameters = VertexSetOutputLayer_UInt16_args;
     Symbol::Resolved(&VertexSetOutputLayer_UInt16_arg)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&VertexSetOutputLayer_UInt16)->signature = "void OutputLayer(u16)"_c;
-    Symbol::Resolved(&VertexSetOutputLayer_UInt16)->name = "OutputLayer(u16)"_c;
-    Symbol::Resolved(&VertexSetOutputLayer_UInt16)->nameWithVarNames = "OutputLayer(val : u16)"_c;
+    Symbol::Resolved(&VertexSetOutputLayer_UInt16)->signature = "void vertexSetOutputLayer(u16)"_c;
+    Symbol::Resolved(&VertexSetOutputLayer_UInt16)->name = "vertexSetOutputLayer(u16)"_c;
+    Symbol::Resolved(&VertexSetOutputLayer_UInt16)->nameWithVarNames = "vertexSetOutputLayer(val : u16)"_c;
     Symbol::Resolved(&VertexSetOutputLayer_UInt16)->returnTypeSymbol = &VoidType;
 
-    /// OutputLayer with UInt32
+    /// vertexSetOutputLayer with UInt32
     VertexSetOutputLayer_UInt32_arg.name = "val"_c;
     VertexSetOutputLayer_UInt32_arg.type = Type::FullType{ UInt32Type.name };
-    VertexSetOutputLayer_UInt32.name = "OutputLayer"_c;
+    VertexSetOutputLayer_UInt32.name = "vertexSetOutputLayer"_c;
     VertexSetOutputLayer_UInt32.returnType = Type::FullType { VoidType.name };
     VertexSetOutputLayer_UInt32.parameters = VertexSetOutputLayer_UInt32_args;
     Symbol::Resolved(&VertexSetOutputLayer_UInt32_arg)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&VertexSetOutputLayer_UInt32)->signature = "void OutputLayer(u32)"_c;
-    Symbol::Resolved(&VertexSetOutputLayer_UInt32)->name = "OutputLayer(u32)"_c;
-    Symbol::Resolved(&VertexSetOutputLayer_UInt32)->nameWithVarNames = "OutputLayer(val : u32)"_c;
+    Symbol::Resolved(&VertexSetOutputLayer_UInt32)->signature = "void vertexSetOutputLayer(u32)"_c;
+    Symbol::Resolved(&VertexSetOutputLayer_UInt32)->name = "vertexSetOutputLayer(u32)"_c;
+    Symbol::Resolved(&VertexSetOutputLayer_UInt32)->nameWithVarNames = "vertexSetOutputLayer(val : u32)"_c;
     Symbol::Resolved(&VertexSetOutputLayer_UInt32)->returnTypeSymbol = &VoidType;
 
-    /// OutputViewport with UInt16
+    /// vertexSetOutputViewport with UInt16
     VertexSetOutputViewport_UInt16_arg.name = "val"_c;
     VertexSetOutputViewport_UInt16_arg.type = Type::FullType{ UInt16Type.name };
-    VertexSetOutputViewport_UInt16.name = "OutputViewport"_c;
+    VertexSetOutputViewport_UInt16.name = "vertexSetOutputViewport"_c;
     VertexSetOutputViewport_UInt16.returnType = Type::FullType { VoidType.name };
     VertexSetOutputViewport_UInt16.parameters = VertexSetOutputViewport_UInt16_args;
     Symbol::Resolved(&VertexSetOutputViewport_UInt16_arg)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&VertexSetOutputViewport_UInt16)->signature = "void OutputViewport(u16)"_c;
-    Symbol::Resolved(&VertexSetOutputViewport_UInt16)->name = "OutputViewport(u16)"_c;
-    Symbol::Resolved(&VertexSetOutputViewport_UInt16)->nameWithVarNames = "OutputViewport(val : u16)"_c;
+    Symbol::Resolved(&VertexSetOutputViewport_UInt16)->signature = "void vertexSetOutputViewport(u16)"_c;
+    Symbol::Resolved(&VertexSetOutputViewport_UInt16)->name = "vertexSetOutputViewport(u16)"_c;
+    Symbol::Resolved(&VertexSetOutputViewport_UInt16)->nameWithVarNames = "vertexSetOutputViewport(val : u16)"_c;
     Symbol::Resolved(&VertexSetOutputViewport_UInt16)->returnTypeSymbol = &VoidType;
 
-    /// OutputViewport with UInt32
+    /// vertexSetOutputViewport with UInt32
     VertexSetOutputViewport_UInt32_arg.name = "val"_c;
     VertexSetOutputViewport_UInt32_arg.type = Type::FullType{ UInt32Type.name };
-    VertexSetOutputViewport_UInt32.name = "OutputViewport"_c;
+    VertexSetOutputViewport_UInt32.name = "vertexSetOutputViewport"_c;
     VertexSetOutputViewport_UInt32.returnType = Type::FullType { VoidType.name };
     VertexSetOutputViewport_UInt32.parameters = VertexSetOutputViewport_UInt32_args;
     Symbol::Resolved(&VertexSetOutputViewport_UInt32_arg)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&VertexSetOutputViewport_UInt32)->signature = "void OutputViewport(u32)"_c;
-    Symbol::Resolved(&VertexSetOutputViewport_UInt32)->name = "OutputViewport(u32)"_c;
-    Symbol::Resolved(&VertexSetOutputViewport_UInt32)->nameWithVarNames = "OutputViewport(val : u32)"_c;
+    Symbol::Resolved(&VertexSetOutputViewport_UInt32)->signature = "void vertexSetOutputViewport(u32)"_c;
+    Symbol::Resolved(&VertexSetOutputViewport_UInt32)->name = "vertexSetOutputViewport(u32)"_c;
+    Symbol::Resolved(&VertexSetOutputViewport_UInt32)->nameWithVarNames = "vertexSetOutputViewport(val : u32)"_c;
     Symbol::Resolved(&VertexSetOutputViewport_UInt32)->returnTypeSymbol = &VoidType;
 
     /// vertexExportCoordinates with Float32x4

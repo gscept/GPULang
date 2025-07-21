@@ -1079,7 +1079,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
 
     if (funResolved->returnTypeSymbol == nullptr)
     {
-        Type* type = (Type*)compiler->GetSymbol(fun->returnType.name);
+        Type* type = (Type*)compiler->GetType(fun->returnType);
         if (type == nullptr)
         {
             compiler->UnrecognizedTypeError(TransientString(fun->returnType.name), fun);
