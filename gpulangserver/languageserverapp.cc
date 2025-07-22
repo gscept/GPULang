@@ -28,12 +28,15 @@
 #include "ast/expressions/arrayindexexpression.h"
 #include "thread.h"
 
-#if _MSC_VER
+#if __WIN32__
 #include <winsock2.h>
 #include <ws2tcpip.h>
+#define SOCKET HANDLE
 #else
+#include <sys/un.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <unistd.h>
 #define SOCKET int
 #endif
 
@@ -51,49 +54,64 @@ struct Socket
 Socket CreateServerSocket()
 {
     Socket ret;
-#if __WIN32__
-    WSADATA wsaData;
-
-    if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
-        fprintf(stderr, "WSAStartup failed.\n");
-        exit(1);
-    }
-
-    if (LOBYTE(wsaData.wVersion) != 2 ||
-        HIBYTE(wsaData.wVersion) != 2)
-    {
-        fprintf(stderr,"Version 2.2 of Winsock not available.\n");
-        WSACleanup();
-        exit(2);
-    }
-#endif
-        
-    ret.sock = socket(AF_INET, SOCK_STREAM, 0);
-    int yes = 1;
-#if !__WIN32__
-    setsockopt(ret.sock, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes));
-#endif
-
-    struct sockaddr_in server;
-    server.sin_family = AF_INET;
-    server.sin_addr.s_addr = INADDR_ANY;
-    server.sin_port = htons(5007);
-    int res = bind(ret.sock, reinterpret_cast<struct sockaddr*>(&server), sizeof(server));
-    listen(ret.sock, 5);
     
+    
+#if __WIN32__
+    
+    socket_path = "\\.pipe\"
+    ret.sock = CreateNamedPipeA(
+        R"(\\.\pipe\gpulang_socket)",
+        PIPE_ACCESS_DUPLEX,
+        PIPE_TYPE_BYTE | PIPE_READMODE_BYTE | PIPE_WAIT,
+        1,              // max instances
+        65535,    // out buffer size
+        65535,    // in buffer size
+        0,              // default timeout
+        NULL);
+    
+    assert(ret.sock != INVALID_HANDLE_VALUE);
+    
+#else
+    // macOS uses TMPDIR
+    const char* tmp = std::getenv("TMPDIR");
+    
+    // If that fails, fall back to using /tmp
+    if (!tmp) tmp = "/tmp";
+    std::string socket_path = std::string(tmp) + "gpulang_socket";
+    
+    unlink(socket_path.c_str());
+    ret.sock = socket(AF_UNIX, SOCK_STREAM, 0);
+    
+    struct sockaddr_un addr;
+    addr.sun_family = AF_UNIX;
+    std::strncpy(addr.sun_path, socket_path.c_str(), socket_path.size());
+
+    int res = bind(ret.sock, reinterpret_cast<struct sockaddr*>(&addr), sizeof(addr));
+    assert(res == 0);
+    listen(ret.sock, 5);
+#endif
     return ret;
 }
 
 Socket SocketAccept(const Socket& socket)
 {
     Socket ret;
+#if __WIN32__
+    BOOL connected = ConnectNamedPipe(socket.sock, NULL);
+    ret = socket; // On Windows, it's a shared pipe
+#else
     ret.sock = accept(socket.sock, nullptr, nullptr);
+#endif
     return ret;
 }
 
 void SocketClose(const Socket& socket)
 {
+#if __WIN32__
+    CloseHandle(socket.sock);
+#else
     shutdown(socket.sock, 0);
+#endif
 }
 
 class SocketBuffer : public std::basic_streambuf<char>
@@ -105,15 +123,28 @@ public:
 
     std::streamsize xsputn(const char* buf, std::streamsize count)
     {
-        int sent = send(this->sock.sock, buf, count, 0);
+#if __WIN32__
+        DWORD sent;
+        WriteFile(this->sock.sock, buf, count, &sent, nullptr);
         while (sent != count)
-            sent = send(this->sock.sock, buf + sent, count, 0);
+            WriteFile(this->sock.sock, buf + sent, count, &sent, nullptr);
+#else
+        int sent = write(this->sock.sock, buf, count);
+        while (sent != count)
+            sent = write(this->sock.sock, buf + sent, count);
+#endif
         return count;
+
     }
 
     int underflow()
     {
-        int size = recv(this->sock.sock, this->buf, sizeof(buf), 0);
+#if __WIN32__
+        DWORD size;
+        ReadFile(this->sock.sock, this->buf, sizeof(buf), &size, NULL)
+#else
+        int size = read(this->sock.sock, this->buf, sizeof(buf));
+#endif
         this->setg(this->buf, this->buf, this->buf + size);
         this->bytesAvail = size;
         return size;

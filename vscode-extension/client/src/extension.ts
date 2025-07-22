@@ -4,6 +4,8 @@
  * ------------------------------------------------------------------------------------------ */
 
 import * as net from 'net';
+import * as os from 'os';
+import * as path from 'path';
 
 import {
 	LanguageClient,
@@ -23,8 +25,20 @@ export function activate(_: ExtensionContext) {
 		host: "localhost"
 	};
 
+	let socket_file;
+	if (process.platform === 'win32')
+	{
+		socket_file = "\\\\.\\pipe\\gpulang_socket"
+	}
+	else
+	{
+		socket_file = path.join(os.tmpdir(), "gpulang_socket");
+	}
+
+
 	const serverOptions = () => {
-		const socket = net.connect(connectionInfo);
+		const socket = net.createConnection(socket_file);
+		//const socket = net.connect(connectionInfo);
 		const result: StreamInfo = {
 			writer: socket,
 			reader: socket
