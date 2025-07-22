@@ -212,7 +212,7 @@ struct Function : public Symbol
         bool isPrototype;
         
         PinnedSet<Symbol*> visibleSymbols;
-    };
+    } functionResolved;
 };
 
 } // namespace GPULang

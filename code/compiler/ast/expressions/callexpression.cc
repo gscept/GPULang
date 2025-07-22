@@ -89,9 +89,12 @@ CallExpression::Resolve(Compiler* compiler)
     struct Candidate
     {
         Function* function;
-        bool needsConversion;
-        bool simpleConversion;
+        bool needsConversion = false;
+        bool simpleConversion = false;
         std::vector<Function*> argumentConversionFunctions;
+        uint16_t numConversionsNeeded = 0;
+        uint16_t numExpansionsNeeded = 0; // Number of arguments that match
+        uint16_t numTransformationsNeeded = 0; // Number of arguments that match with either conversion or expansion
     };
     if (symbol == nullptr)
     {
@@ -112,8 +115,6 @@ CallExpression::Resolve(Compiler* compiler)
                 {
                     Function* ctorFun = static_cast<Function*>(ctor);
                     Candidate candidate;
-                    candidate.needsConversion = false;
-                    candidate.simpleConversion = false;
                     candidate.function = ctorFun;
 
                     if (ctorFun->parameters.size == this->thisResolved->argTypes.size())
@@ -138,9 +139,15 @@ CallExpression::Resolve(Compiler* compiler)
                                 {
                                     break;
                                 }
-                                candidate.needsConversion = true;
-                                if (paramResolved->typeSymbol->columnSize == this->thisResolved->argTypes[i]->columnSize)
-                                    candidate.simpleConversion = true;
+                                candidate.numTransformationsNeeded++;
+                                if (paramResolved->typeSymbol->columnSize != this->thisResolved->argTypes[i]->columnSize)
+                                {
+                                    candidate.numExpansionsNeeded += 1; // More expensive conversion
+                                    if (paramResolved->typeSymbol->baseType != this->thisResolved->argTypes[i]->baseType)
+                                        candidate.numConversionsNeeded += 1; // needs both expansion and conversion
+                                }
+                                else
+                                    candidate.numConversionsNeeded += 1;
                                 candidate.argumentConversionFunctions.push_back(static_cast<Function*>(componentConversionSymbol));
                             }
                             else
@@ -162,8 +169,6 @@ CallExpression::Resolve(Compiler* compiler)
                 Function* fun = static_cast<Function*>(functionSymbol);
                 Candidate candidate;
                 candidate.function = fun;
-                candidate.needsConversion = false;
-                candidate.simpleConversion = false;
 
                 if (fun->parameters.size == this->thisResolved->argTypes.size())
                 {
@@ -177,9 +182,9 @@ CallExpression::Resolve(Compiler* compiler)
                         if (!IsStorageCompatible(paramResolved->storage, this->thisResolved->argStorages[i]))
                             continue;
                         
-                        if (fun->parameters[i]->type != this->thisResolved->argumentTypes[i])
+                        if (param->type != this->thisResolved->argumentTypes[i])
                         {
-                            std::string conversion = Format("%s(%s)", fun->parameters[i]->type.name.c_str(), this->thisResolved->argTypes[i]->name.c_str());
+                            std::string conversion = Format("%s(%s)", param->type.name.c_str(), this->thisResolved->argTypes[i]->name.c_str());
                             Symbol* componentConversionSymbol = compiler->GetSymbol(conversion);
 
                             // No conversion available for this member, skip to next constructor
@@ -187,9 +192,15 @@ CallExpression::Resolve(Compiler* compiler)
                             {
                                 break;
                             }
-                            candidate.needsConversion = true;
-                            if (paramResolved->typeSymbol->columnSize == this->thisResolved->argTypes[i]->columnSize)
-                                candidate.simpleConversion = true;
+                            candidate.numTransformationsNeeded++;
+                            if (paramResolved->typeSymbol->columnSize != this->thisResolved->argTypes[i]->columnSize)
+                            {
+                                candidate.numExpansionsNeeded += 1;
+                                if (paramResolved->typeSymbol->baseType != this->thisResolved->argTypes[i]->baseType)
+                                    candidate.numConversionsNeeded += 1; // needs both expansion and conversion
+                            }
+                            else
+                                candidate.numConversionsNeeded += 1;
                             candidate.argumentConversionFunctions.push_back(static_cast<Function*>(componentConversionSymbol));
                         }
                         else
@@ -228,68 +239,107 @@ CallExpression::Resolve(Compiler* compiler)
         }
         else
         {
-            std::vector<Candidate> ambiguousCalls;
-            for (auto& candidate : candidates)
+            
+            if (candidates.size() == 1)
             {
-                if (!candidate.needsConversion)
+                const Candidate& candidate = candidates[0];
+                if (candidate.needsConversion && compiler->options.disallowImplicitConversion)
                 {
-                    this->thisResolved->function = candidate.function;
-                    this->thisResolved->returnType = this->thisResolved->function->returnType;
-                    this->thisResolved->retType = compiler->GetType(this->thisResolved->returnType);
-                    std::fill(this->thisResolved->conversions.begin(), this->thisResolved->conversions.end(), nullptr);
-                    ambiguousCalls.clear();
-                    break;
-                }
-                else if (candidate.simpleConversion)
-                {
-                    this->thisResolved->function = candidate.function;
-                    this->thisResolved->returnType = this->thisResolved->function->returnType;
-                    this->thisResolved->retType = compiler->GetType(this->thisResolved->returnType);
-                    assert(this->thisResolved->conversions.size() == candidate.argumentConversionFunctions.size());
-                    this->thisResolved->conversions = candidate.argumentConversionFunctions;
-                    ambiguousCalls.clear();
-                    break;
-                }
-                else
-                {
-                    ambiguousCalls.push_back(candidate);
-                }
-            }
-            if (ambiguousCalls.size() > 1)
-            {
-                if (compiler->options.disallowImplicitConversion)
-                {
-                    compiler->Error(Format("Overload exists for %s but is disallowed. Either disable disallowImplicitConversion or explicitly convert arguments", callSignature.c_str()), this);
+                    compiler->Error(Format("Overload exists for %s but is disallowed because type conversion is needed. Either disable disallowImplicitConversion or explicitly convert arguments", callSignature.c_str()), this);
                     return false;
                 }
-                else
-                {
-                    std::string fmt = Format("Ambiguous call %s, could be:", callSignature.c_str());
-                    for (auto& candidate : ambiguousCalls)
-                    {
-                        fmt.append(Format("\n    %s", Symbol::Resolved(candidate.function)->signature.c_str()));
-                        if (candidate.needsConversion)
-                            fmt.append("\n      using conversions:");
-                        int counter = 0;
-                        for (auto& conv : candidate.argumentConversionFunctions)
-                        {
-                            if (conv != nullptr)
-                                fmt.append(Format("\n          argument %d -> %s", counter, Symbol::Resolved(conv)->name.c_str()));
-                            counter++;
-                        }
-                    }
-                    compiler->Error(fmt, this);
-                    this->thisResolved->function = nullptr;
-                    return false;
-                }
-            }
-            else if (ambiguousCalls.size() == 1)
-            {
-                this->thisResolved->function = ambiguousCalls[0].function;
-                assert(this->thisResolved->conversions.size() ==  ambiguousCalls[0].argumentConversionFunctions.size());
-                this->thisResolved->conversions = ambiguousCalls[0].argumentConversionFunctions;
+                
+                this->thisResolved->function = candidate.function;
                 this->thisResolved->returnType = this->thisResolved->function->returnType;
                 this->thisResolved->retType = compiler->GetType(this->thisResolved->returnType);
+                std::fill(this->thisResolved->conversions.begin(), this->thisResolved->conversions.end(), nullptr);
+            }
+            else
+            {
+                std::vector<Candidate> ambiguousCalls;
+                // Sort based on how many conversions are needed, where the one with the least appears first
+                std::sort(candidates.begin(), candidates.end(), [](const Candidate& a, const Candidate& b)
+                {
+                    return a.numTransformationsNeeded < b.numTransformationsNeeded;
+                });
+                
+                
+                uint32_t minConversion = 0xFFFFFFFF;
+                for (auto& candidate : candidates)
+                {
+                    // No conversions needed, just go ahead and use directly
+                    // Candidates without conversions will appear first in the sorted list
+                    if (candidate.numTransformationsNeeded == 0)
+                    {
+                        this->thisResolved->function = candidate.function;
+                        this->thisResolved->returnType = this->thisResolved->function->returnType;
+                        this->thisResolved->retType = compiler->GetType(this->thisResolved->returnType);
+                        std::fill(this->thisResolved->conversions.begin(), this->thisResolved->conversions.end(), nullptr);
+                        ambiguousCalls.clear();
+                        break;
+                    }
+                    else if (candidate.numConversionsNeeded == 0)
+                    {
+                        // Functions that need conversion usually truncate or reinterpret values, so are less likely to be the correct one
+                        // Picking a function that does only expansion makes a lot more sense, so this one is a preferred candidate
+                        this->thisResolved->function = candidate.function;
+                        this->thisResolved->returnType = this->thisResolved->function->returnType;
+                        this->thisResolved->retType = compiler->GetType(this->thisResolved->returnType);
+                        assert(this->thisResolved->conversions.size() == candidate.argumentConversionFunctions.size());
+                        this->thisResolved->conversions = candidate.argumentConversionFunctions;
+                        ambiguousCalls.clear();
+                        break;
+                    }
+                    else
+                    {
+                        // Ambigious call, check if it's the only candidate with this number of conversions
+                        if (candidate.numTransformationsNeeded > minConversion)
+                            break;
+                        minConversion = min(minConversion, candidate.numTransformationsNeeded);
+                        
+                        // Add to list of ambigious calls
+                        ambiguousCalls.push_back(candidate);
+                    }
+                }
+                
+                // If we have multiple ambiguous calls, we can't reasonably select one, so have to produce an error
+                if (ambiguousCalls.size() > 1)
+                {
+                    if (compiler->options.disallowImplicitConversion)
+                    {
+                        compiler->Error(Format("Overload exists for %s but is disallowed. Either disable disallowImplicitConversion or explicitly convert arguments", callSignature.c_str()), this);
+                        return false;
+                    }
+                    else
+                    {
+                        std::string fmt = Format("Ambiguous call %s, could be:", callSignature.c_str());
+                        ambiguousCalls.resize(min(ambiguousCalls.size(), 10)); // Limit to 10 candidates
+                        for (auto& candidate : ambiguousCalls)
+                        {
+                            fmt.append(Format("\n    %s", Symbol::Resolved(candidate.function)->signature.c_str()));
+                            if (candidate.needsConversion)
+                                fmt.append("\n      using conversions:");
+                            int counter = 0;
+                            for (auto& conv : candidate.argumentConversionFunctions)
+                            {
+                                if (conv != nullptr)
+                                    fmt.append(Format("\n          argument %d -> %s", counter, Symbol::Resolved(conv)->name.c_str()));
+                                counter++;
+                            }
+                        }
+                        compiler->Error(fmt, this);
+                        this->thisResolved->function = nullptr;
+                        return false;
+                    }
+                }
+                else if (ambiguousCalls.size() == 1)
+                {
+                    this->thisResolved->function = ambiguousCalls[0].function;
+                    assert(this->thisResolved->conversions.size() ==  ambiguousCalls[0].argumentConversionFunctions.size());
+                    this->thisResolved->conversions = ambiguousCalls[0].argumentConversionFunctions;
+                    this->thisResolved->returnType = this->thisResolved->function->returnType;
+                    this->thisResolved->retType = compiler->GetType(this->thisResolved->returnType);
+                }
             }
         }
     }
@@ -351,7 +401,7 @@ CallExpression::Resolve(Compiler* compiler)
             Variable* var = thisResolved->function->parameters.buf[i];
             Variable::__Resolved* varRes = Symbol::Resolved(var);
             Type::FullType argType = this->thisResolved->argumentTypes[i];
-            if (varRes->type.literal && !argType.literal)
+            if (var->type.literal && !argType.literal)
             {
                 compiler->Error(Format("Function %s expects argument %s to be literal", this->thisResolved->function->name.c_str(), var->name.c_str()), this);;
                 return false;

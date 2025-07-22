@@ -762,19 +762,19 @@ GenerateVariableGLSL(const Compiler* compiler, Variable* var, std::string& outCo
     if (outputType)
     {
         if (varResolved->typeSymbol->symbolType == Symbol::StructureType)
-            type = varResolved->type.name;
+            type = var->type.name;
         else
-            type = typeToGlslType.Find(varResolved->type.name)->second;
+            type = typeToGlslType.Find(var->type.name)->second;
     }
 
     std::string arrays = "";
-    for (int i = varResolved->type.modifierValues.size() - 1; i >= 0; i--)
+    for (int i = var->type.modifierValues.size() - 1; i >= 0; i--)
     {
         uint32_t size = 0;
-        if (varResolved->type.modifierValues[i] != nullptr)
+        if (var->type.modifierValues[i] != nullptr)
         {
             ValueUnion val;
-            varResolved->type.modifierValues[i]->EvalValue(val);
+            var->type.modifierValues[i]->EvalValue(val);
             val.Store(size);
         }
         if (size > 0)
@@ -1132,7 +1132,7 @@ GenerateAlignedVariables(const Compiler* compiler, Structure* struc, StructureAl
             Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
 
             uint32_t totalArraySize = 1;
-            for (Expression* sizeExpressions : varResolved->type.modifierValues)
+            for (Expression* sizeExpressions : var->type.modifierValues)
             {
                 uint32_t size = 1;
                 if (sizeExpressions != nullptr)
@@ -1219,10 +1219,10 @@ GLSLGenerator::GenerateVariableSPIRV(const Compiler* compiler, const ProgramInst
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
 
     // Abort if struct pointer (because it will be done with GenerateStruct)
-    if (varResolved->type.IsPointer() && varResolved->typeSymbol->category == Type::Category::UserTypeCategory)
+    if (var->type.IsPointer() && varResolved->typeSymbol->category == Type::Category::UserTypeCategory)
         return;
 
-    Type::FullType type = varResolved->type;
+    Type::FullType type = var->type;
     if (varResolved->typeSymbol->symbolType != Symbol::StructureType)
     {
         auto it = typeToGlslType.Find(type.name);
@@ -1235,15 +1235,15 @@ GLSLGenerator::GenerateVariableSPIRV(const Compiler* compiler, const ProgramInst
 
     const FixedString& name = var->name;
     std::string arraySize = "";
-    for (int i = varResolved->type.modifierValues.size()-1; i >= 0; i--)
+    for (int i = var->type.modifierValues.size()-1; i >= 0; i--)
     {
-        if (varResolved->type.modifiers[i] == Type::FullType::Modifier::Pointer)
+        if (var->type.modifiers[i] == Type::FullType::Modifier::Pointer)
             continue;
         uint32_t size = 0;
-        if (varResolved->type.modifierValues[i] != nullptr)
+        if (var->type.modifierValues[i] != nullptr)
         {
             ValueUnion val;
-            varResolved->type.modifierValues[i]->EvalValue(val);
+            var->type.modifierValues[i]->EvalValue(val);
             val.Store(size);
         }
         if (size > 0)
@@ -1290,18 +1290,18 @@ GLSLGenerator::GenerateVariableSPIRV(const Compiler* compiler, const ProgramInst
     {
         
         outCode.append(Format("#line %d %s\n", var->location.line, var->location.file.c_str()));
-        if (varResolved->typeSymbol->category == Type::TextureCategory && varResolved->type.IsMutable())
+        if (varResolved->typeSymbol->category == Type::TextureCategory && var->type.IsMutable())
         {
-            auto glslFormat = imageFormatToGlsl.Find(varResolved->type.imageFormat);
+            auto glslFormat = imageFormatToGlsl.Find(var->type.imageFormat);
             if (glslFormat != imageFormatToGlsl.end())
             {
                 outCode.append(Format("layout(set=%d, binding=%d, %s) ", varResolved->group, varResolved->binding, glslFormat->second.c_str()));
             }
 
             // if integer or unsigned, format variable
-            if (IsImageFormatInteger(varResolved->type.imageFormat))
+            if (IsImageFormatInteger(var->type.imageFormat))
                 type.name = Format("i%s", type.name.c_str());
-            else if (IsImageFormatUnsigned(varResolved->type.imageFormat))
+            else if (IsImageFormatUnsigned(var->type.imageFormat))
                 type.name = Format("u%s", type.name.c_str());
         }
         else

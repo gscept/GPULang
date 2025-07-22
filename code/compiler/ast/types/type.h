@@ -234,8 +234,8 @@ struct Function;
 struct Expression;
 struct Compiler;
 extern Function* activeFunction;
-static ConstantString UNDEFINED_TYPE = "<undefined>";
-static ConstantString FUNCTION_TYPE = "function";
+static constexpr auto UNDEFINED_TYPE = "<undefined>"_c;
+static constexpr auto FUNCTION_TYPE = "functionPtr"_c;
 
 
 struct Type : public Symbol

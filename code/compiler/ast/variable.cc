@@ -12,10 +12,7 @@ namespace GPULang
 Variable::Variable()
 {
     this->symbolType = VariableType;
-    if (SYMBOL_STATIC_ALLOC)
-        this->resolved = StaticAlloc<Variable::__Resolved>();
-    else
-        this->resolved = Alloc<Variable::__Resolved>();
+    this->resolved = &this->variableResolved;
     this->type = Type::FullType{ ConstantString("") };
     this->valueExpression = nullptr;
 
@@ -59,7 +56,6 @@ void
 Variable::SetupAsBuiltinParameter()
 {
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(this->resolved);
-    varResolved->type = this->type;
     varResolved->accessBits.flags.readAccess = true; // Implicitly set read access to true
     varResolved->byteSize = varResolved->typeSymbol->byteSize;
     varResolved->storage = Storage::Default;

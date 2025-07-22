@@ -1177,6 +1177,13 @@ struct StaticMap
         this->size = a.size();
     }
     
+    /// Assumes the list is sorted, the map won't work if it isn't
+    constexpr StaticMap(const std::initializer_list<item>& a)
+    {
+        std::copy(a.begin(), a.end(), this->data.begin());
+        this->size = a.size();
+    }
+    
     const item* Find(const K& key) const
     {
         struct Comp
@@ -1255,9 +1262,9 @@ struct PinnedMap
     void operator=(const StaticMap<K, V, SIZE>& rhs)
     {
         this->data.Grow(SIZE);
-        size_t counter = 0;
         for (auto it : rhs)
-            this->data.data[counter++] = it;
+            this->data.data[this->data.size++] = it;
+        this->searchValid = true;
     }
     
     template<typename U, size_t SIZE>
@@ -1266,9 +1273,9 @@ struct PinnedMap
         static_assert(std::is_assignable<K, U>::value, "No explicit assignment exists between types");
         this->data.Grow(SIZE);
 
-        size_t counter = 0;
         for (auto it : rhs)
-            this->data.data[counter++] = it;
+            this->data.data[this->data.size++] = it;
+        this->searchValid = true;
     }
     
     template<typename U, typename W, size_t SIZE>
@@ -1278,9 +1285,9 @@ struct PinnedMap
         //static_assert(std::is_assignable<V, W>::value, "No explicit assignment exists between value types");
         this->data.Grow(SIZE);
 
-        size_t counter = 0;
         for (auto it : rhs)
-            this->data.data[counter++] = it;
+            this->data.data[this->data.size++] = it;
+        this->searchValid = true;
     }
     
     void Insert(const K& key, const V& value)

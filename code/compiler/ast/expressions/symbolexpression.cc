@@ -57,7 +57,7 @@ SymbolExpression::Resolve(Compiler* compiler)
             Variable* var = static_cast<Variable*>(thisResolved->symbol);
             assert(var->symbolType == Symbol::SymbolType::VariableType);
             auto varResolved = Symbol::Resolved(var);
-            thisResolved->fullType = varResolved->type;
+            thisResolved->fullType = var->type;
             thisResolved->type = varResolved->typeSymbol;
             return true;
         }
@@ -106,13 +106,13 @@ SymbolExpression::Resolve(Compiler* compiler)
         }
         else if (thisResolved->symbol->symbolType == Symbol::RenderStateInstanceType)
         {
-            thisResolved->fullType = Type::FullType{ ConstantString("renderState") };
+            thisResolved->fullType = Type::FullType{ "renderState"_c };
             thisResolved->type = &RenderStateType;
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::SamplerStateInstanceType)
         {
-            thisResolved->fullType = Type::FullType{ ConstantString("sampler") };
+            thisResolved->fullType = Type::FullType{ "sampler"_c };
             thisResolved->fullType.modifiers.push_back(Type::FullType::Modifier::Pointer);
             thisResolved->fullType.modifierValues.push_back(nullptr);
             thisResolved->type = &SamplerType;

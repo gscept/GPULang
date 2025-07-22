@@ -158,7 +158,7 @@ Loader::Load(const char* data, const size_t length)
             deserialized->bindingScope = var->bindingScope;
             deserialized->bindingType = var->bindingType;
 
-            if (deserialized->bindingType == GPULang::BindingType::Buffer || deserialized->bindingType == GPULang::BindingType::MutableBuffer)
+            if (deserialized->bindingType == Serialization::BindingType::Buffer || deserialized->bindingType == Serialization::BindingType::MutableBuffer)
             {
                 std::string structName = Parse<const char>(buf, var->structTypeNameOffset);
                 deserialized->structType = (GPULang::Deserialize::Structure*)this->nameToObject[structName];
@@ -198,8 +198,8 @@ Loader::Load(const char* data, const size_t length)
                 deserializedVar.byteSize = var->byteSize;
                 deserializedVar.name = Parse<const char>(buf, var->nameOffset);
                 deserializedVar.nameLength = var->nameLength;
-                deserializedVar.bindingScope = GPULang::BindingScope::Member;
-                deserializedVar.bindingType = GPULang::BindingType::None;
+                deserializedVar.bindingScope = Serialization::BindingScope::Member;
+                deserializedVar.bindingType = Serialization::BindingType::None;
                 deserializedVar.visibility.bits = 0x0;
                 deserializedVar.structType = nullptr;
             }
@@ -311,7 +311,7 @@ else\
             
             for (size_t i = 0; i < rend->blendStatesCount; i++)
             {
-                deserialized->blendStates[i] = *Parse<GPULang::BlendState>(buf, rend->blendStatesOffset + i * sizeof(BlendState));
+                deserialized->blendStates[i] = *Parse<Serialization::BlendState>(buf, rend->blendStatesOffset + i * sizeof(Serialization::BlendState));
             }
             deserialized->blendConstants[0] = rend->blendConstants[0];
             deserialized->blendConstants[1] = rend->blendConstants[1];

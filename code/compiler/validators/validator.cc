@@ -206,10 +206,10 @@ bool
 Validator::ResolveAlias(Compiler* compiler, Symbol* symbol)
 {
     Alias* alias = static_cast<Alias*>(symbol);
-    Symbol* sym = compiler->GetSymbol(alias->type);
+    Symbol* sym = compiler->GetType(Type::FullType{alias->type});
     if (sym == nullptr)
     {
-        compiler->UnrecognizedSymbolError(alias->type, alias);
+        compiler->UnrecognizedTypeError(alias->type, alias);
         return false;
     }
     return compiler->AddSymbol(alias->name, sym);
@@ -962,16 +962,16 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         Variable::__Resolved* varResolved = Symbol::Resolved(var);
         if (StorageRequiresSignature(varResolved->storage))
         {
-            paramListNamed.Concatenate<true>(StorageToString(varResolved->storage), var->name, ":", varResolved->type.ToString());
-            paramList.Concatenate<true>(StorageToString(varResolved->storage), varResolved->type.ToString());
+            paramListNamed.Concatenate<true>(StorageToString(varResolved->storage), var->name, ":", var->type.ToString());
+            paramList.Concatenate<true>(StorageToString(varResolved->storage), var->type.ToString());
         }
         else
         {
-            paramListNamed.Concatenate<true>(var->name, ":", varResolved->type.ToString());
-            paramList.Append(varResolved->type.ToString());
+            paramListNamed.Concatenate<true>(var->name, ":", var->type.ToString());
+            paramList.Append(var->type.ToString());
         }
 
-        if (varResolved->type.sampled)
+        if (var->type.sampled)
         {
             int i = 5;
         }
@@ -1079,7 +1079,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
 
     if (funResolved->returnTypeSymbol == nullptr)
     {
-        Type* type = (Type*)compiler->GetSymbol(fun->returnType.name);
+        Type* type = (Type*)compiler->GetType(fun->returnType);
         if (type == nullptr)
         {
             compiler->UnrecognizedTypeError(TransientString(fun->returnType.name), fun);
@@ -1247,9 +1247,9 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                     compiler->Error("Constant overrides must be literal values", var);
                     return false;
                 }
-                if (varResolved->type != binExp->rightType)
+                if (var->type != binExp->rightType)
                 {
-                    compiler->Error(Format("Trying to assign a value of type '%s' to a link_defined variable of '%s'", binExp->rightType.ToString().c_str(), varResolved->type.ToString().c_str()), var);
+                    compiler->Error(Format("Trying to assign a value of type '%s' to a link_defined variable of '%s'", binExp->rightType.ToString().c_str(), var->type.ToString().c_str()), var);
                     return false;
                 }
                 progResolved->constVarInitializationOverrides.Insert(var, assignEntry->right);
@@ -1860,7 +1860,7 @@ Validator::ResolveStructure(Compiler* compiler, Symbol* symbol)
                 strucResolved->hasBoolMember = true;
 
             uint32_t arraySize = 0;
-            for (Expression* expr : varResolved->type.modifierValues)
+            for (Expression* expr : var->type.modifierValues)
             {
                 if (expr != nullptr)
                 {
@@ -1949,7 +1949,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             fromUnderlyingType->compileTime = true;
             fromUnderlyingType->constructorType = enumeration;
             Symbol::Resolved(fromUnderlyingType)->returnTypeSymbol = enumeration;
-            Variable* arg = StaticAlloc<Variable>();
+            Variable* arg = &enumeration->fromUnderlyingTypeArg;
             arg->name = arg0;
             arg->type = enumeration->type;
             Symbol::Resolved(arg)->typeSymbol = enumResolved->typeSymbol;
@@ -1964,7 +1964,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             toUnderlyingType->compileTime = true;
             toUnderlyingType->constructorType = enumeration;
             Symbol::Resolved(toUnderlyingType)->returnTypeSymbol = enumResolved->typeSymbol;
-            arg = StaticAlloc<Variable>();
+            arg = &enumeration->toUnderlyingTypeArg;
             arg->name = arg0;
             arg->type = Type::FullType{ enumeration->name };
             Symbol::Resolved(arg)->typeSymbol = enumeration;
@@ -1980,7 +1980,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             comparison->name = eqOp;
             comparison->returnType = Type::FullType{ ConstantString("b8") };
             Symbol::Resolved(comparison)->returnTypeSymbol = &Bool8Type;
-            arg = StaticAlloc<Variable>();
+            arg = &enumeration->eqOpArg;
             arg->name = rhs;
             arg->type = Type::FullType{ enumeration->name };
             Symbol::Resolved(arg)->typeSymbol = enumeration;
@@ -1994,7 +1994,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             comparison->name = neqOp;
             comparison->returnType = Type::FullType{ ConstantString("b8") };
             Symbol::Resolved(comparison)->returnTypeSymbol = &Bool8Type;
-            arg = StaticAlloc<Variable>();
+            arg = &enumeration->neqOpArg;
             arg->name = rhs;
             arg->type = Type::FullType{ enumeration->name };
             Symbol::Resolved(arg)->typeSymbol = enumeration;
@@ -2016,7 +2016,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             fromUnderlyingType->returnType = Type::FullType{ enumeration->name };
             fromUnderlyingType->compileTime = true;
             fromUnderlyingType->constructorType = enumeration;
-            Variable* arg = Alloc<Variable>();
+            Variable* arg = &enumeration->fromUnderlyingTypeArg;
             arg->name = arg0;
             arg->type = enumeration->type;
             parameters.Clear();
@@ -2029,7 +2029,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             toUnderlyingType->returnType = enumeration->type;
             toUnderlyingType->compileTime = true;
             toUnderlyingType->constructorType = enumeration;
-            arg = Alloc<Variable>();
+            arg = &enumeration->toUnderlyingTypeArg;
             arg->name = arg0;
             arg->type = Type::FullType{ enumeration->name };
             parameters.Clear();
@@ -2043,7 +2043,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             Function* comparison = &enumeration->eqOp;
             comparison->name = eqOp;
             comparison->returnType = Type::FullType{ ConstantString("b8") };
-            arg = Alloc<Variable>();
+            arg = &enumeration->eqOpArg;
             arg->name = rhs;
             arg->type = Type::FullType{ enumeration->name };
             parameters.Clear();
@@ -2055,7 +2055,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             comparison = &enumeration->neqOp;
             comparison->name = neqOp;
             comparison->returnType = Type::FullType{ ConstantString("b8") };
-            arg = Alloc<Variable>();
+            arg = &enumeration->neqOpArg;
             arg->name = rhs;
             arg->type = Type::FullType{ enumeration->name };
             parameters.Clear();
@@ -2157,6 +2157,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         expr->Resolve(compiler);
     }
     
+    // Only one exception where the symbol (not resolved) gets changed during validation
     if (var->type.name == UNDEFINED_TYPE)
     {
         if (var->valueExpression != nullptr)
@@ -2182,13 +2183,12 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     }
     Type::FullType::Modifier lastIndirectionModifier = var->type.LastIndirectionModifier();
 
-    varResolved->type = var->type;
     varResolved->accessBits.flags.readAccess = true; // Implicitly set read access to true
     varResolved->byteSize = type->byteSize;
     varResolved->storage = Storage::Default;
     varResolved->parameterBits.bits = 0x0;
 
-    for (Expression* expr : varResolved->type.modifierValues)
+    for (Expression* expr : var->type.modifierValues)
     {
         if (expr != nullptr)
             expr->Resolve(compiler);
@@ -2218,7 +2218,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             return false;
         }
 
-        for (Expression* expr : varResolved->type.modifierValues)
+        for (Expression* expr : var->type.modifierValues)
         {
             uint32_t size = 0;
             if (expr != nullptr)
@@ -2272,7 +2272,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             attr->expression->Resolve(compiler);
         if (allowedAttributesSet == nullptr || (!set_contains(*allowedAttributesSet, attr->name)))
         {
-            compiler->Error(Format("Invalid attribute for variable of type '%s': '%s'", varResolved->type.ToString().c_str(), attr->name.c_str()), symbol);
+            compiler->Error(Format("Invalid attribute for variable of type '%s': '%s'", var->type.ToString().c_str(), attr->name.c_str()), symbol);
             return false;
         }
 
@@ -2312,7 +2312,6 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         {
             varResolved->usageBits.flags.isVar = true;
             var->type.literal = false;
-            varResolved->type.literal = false;
         }
         else if (attr->name == "link_defined")
         {
@@ -2325,7 +2324,6 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
             // Uncheck the literal bit if the variable is link-defined
             var->type.literal = false;
-            varResolved->type.literal = false;
             varResolved->binding = compiler->linkDefineCounter++;
         }
         else if (attr->name == "uniform")
@@ -2336,7 +2334,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 return false;
             }
             varResolved->storage = Storage::Uniform;
-            varResolved->usageBits.flags.isConst = true & !varResolved->type.IsMutable();
+            varResolved->usageBits.flags.isConst = true & !var->type.IsMutable();
         }
         else if (attr->name == "inline")
         {
@@ -2477,7 +2475,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
     if (!compiler->target.supportsPhysicalAddressing)
     {
-        if (varResolved->usageBits.flags.isStructMember && type->category == Type::UserTypeCategory && varResolved->type.IsPointer())
+        if (varResolved->usageBits.flags.isStructMember && type->category == Type::UserTypeCategory && var->type.IsPointer())
         {
             if (!compiler->target.supportsPhysicalBufferAddresses)
             {
@@ -2487,7 +2485,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         }
         else
         {
-            if (type->category == Type::UserTypeCategory && varResolved->storage != Storage::InlineUniform && varResolved->storage != Storage::Uniform && varResolved->type.IsPointer())
+            if (type->category == Type::UserTypeCategory && varResolved->storage != Storage::InlineUniform && varResolved->storage != Storage::Uniform && var->type.IsPointer())
             {
                 compiler->Error(Format("Type may not be pointer if target language ('%s') does not support physical addressing", compiler->target.name.c_str()), var);
                 return false;
@@ -2499,7 +2497,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     {
         uint16_t numArrays = 0;
         uint16_t numPointers = 0;
-        for (Type::FullType::Modifier mod : varResolved->type.modifiers)
+        for (Type::FullType::Modifier mod : var->type.modifiers)
         {
             if (mod == Type::FullType::Modifier::Array)
                 numArrays++;
@@ -2655,7 +2653,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     }
 
     // Check that the type can be mutable
-    if (varResolved->type.IsMutable())
+    if (var->type.IsMutable())
     {
         varResolved->accessBits.flags.writeAccess = true;
         if (type->category == Type::SamplerCategory)
@@ -2674,7 +2672,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     // validate types on both sides of the assignment
     if (var->valueExpression != nullptr)
     {
-        Type::FullType lhs = varResolved->type;
+        Type::FullType lhs = var->type;
         lhs.literal = false; // Disable literal on variables even if the rhs type is literal
         Type::FullType rhs;
         if (!var->valueExpression->EvalType(rhs))
@@ -2739,13 +2737,13 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
 
         // Okay, so now when we're done, we'll copy over the modifier values from rhs to lhs
-        varResolved->type.modifierValues = rhs.modifierValues;
+        var->type.modifierValues = rhs.modifierValues;
     }
 
     // check if image formats have been resolved
     if (type->category == Type::TextureCategory
-        && varResolved->type.mut
-        && (varResolved->type.imageFormat == InvalidImageFormat || varResolved->type.imageFormat == Unknown)
+        && var->type.mut
+        && (var->type.imageFormat == InvalidImageFormat || var->type.imageFormat == Unknown)
         && !varResolved->usageBits.flags.isParameter)
     {
         compiler->Error(Format("Texture type must provide a format qualifier because it's marked as 'mutable'"), var);
@@ -2870,7 +2868,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             // If the structure is packed, we need to inflate it to adhere to alignment rules
             if (currentStrucResolved->packMembers || currentStrucResolved->hasBoolMember)
             {
-                const char* bufferType = varResolved->type.IsMutable() ? "MutableBuffer" : "Buffer";
+                const char* bufferType = var->type.IsMutable() ? "MutableBuffer" : "Buffer";
                 std::string structName = Format("gpl%s_%s", bufferType, var->name.c_str());
                 if (currentStrucResolved->packMembers && compiler->options.warnOnImplicitBufferPadding)
                     compiler->Warning(Format("'%s' of packed type '%s' with 'uniform' storage uses a generated struct '%s' with fixed alignment of each member", var->name.c_str(), var->type.ToString().c_str(), structName.c_str(), var->type.name.c_str()), var);
@@ -2893,12 +2891,10 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                         generatedVar->name = var->name;
                         generatedVar->type = var->type;
                         generatedVarResolved->usageBits = varResolved->usageBits;
-                        generatedVarResolved->type = varResolved->type;
                         generatedVarResolved->typeSymbol = varResolved->typeSymbol;
                         if (generatedVarResolved->typeSymbol->baseType == TypeCode::Bool)
                         {
-                            generatedVar->type.name = "u32";
-                            generatedVarResolved->type.name = "u32";
+                            generatedVar->type.name = "u32"_c;
                             generatedVarResolved->typeSymbol = &UInt32Type;
                         }
                         
@@ -2922,7 +2918,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 generatedStructResolved->byteSize = structSize;
                 generatedStructResolved->packMembers = false;
                 //generatedStructResolved->byteSize = varResolved
-                if (varResolved->type.IsMutable())
+                if (var->type.IsMutable())
                 {
                     generatedStructResolved->usageFlags.flags.isMutableBuffer = true;
                     generatedStruct->baseType = TypeCode::Buffer;
@@ -2941,7 +2937,6 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 newType.sampled = var->type.sampled;
                 var->type = newType;
                 varResolved->typeSymbol = generatedStruct;
-                varResolved->type = newType;
 
 
                 // Insert symbol before this one, avoiding resolving (we assume the struct and members are already valid)
@@ -2950,7 +2945,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 compiler->symbolIterator++;
             }
 
-            if (varResolved->type.IsMutable())
+            if (var->type.IsMutable())
             {
                 if (currentStrucResolved->storageFunction == nullptr)
                 {
@@ -3024,10 +3019,10 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
         case Symbol::AliasType:
         {
             Alias* alias = static_cast<Alias*>(symbol);
-            Symbol* sym = compiler->GetSymbol(alias->type);
+            Symbol* sym = compiler->GetType(Type::FullType{alias->type});
             if (sym == nullptr)
             {
-                compiler->UnrecognizedSymbolError(alias->type, alias);
+                compiler->UnrecognizedTypeError(alias->type, alias);
                 return false;
             }
             return compiler->AddSymbol(alias->name, sym);

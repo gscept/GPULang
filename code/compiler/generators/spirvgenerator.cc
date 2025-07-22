@@ -3286,9 +3286,9 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
         }
         else
         {
-            SPIRVResult::Storage storage = ResolveSPIRVVariableStorage(paramResolved->type, paramResolved->typeSymbol, paramResolved->storage, paramResolved->usageBits);
-            SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, paramResolved->type, paramResolved->typeSymbol, storage);
-            typeArgs.Append(paramResolved->type.ToString());
+            SPIRVResult::Storage storage = ResolveSPIRVVariableStorage(param->type, paramResolved->typeSymbol, paramResolved->storage, paramResolved->usageBits);
+            SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, param->type, paramResolved->typeSymbol, storage);
+            typeArgs.Append(param->type.ToString());
             if (param != func->parameters.back())
                 typeArgs.Append(",");
 
@@ -3310,14 +3310,14 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
         for (auto& param : func->parameters)
         {
             Variable::__Resolved* paramResolved = Symbol::Resolved(param);
-            SPIRVResult::Storage storage = ResolveSPIRVVariableStorage(paramResolved->type, paramResolved->typeSymbol, paramResolved->storage, paramResolved->usageBits);
-            SPIRVResult varType = GenerateTypeSPIRV(compiler, generator, paramResolved->type, paramResolved->typeSymbol, storage);
+            SPIRVResult::Storage storage = ResolveSPIRVVariableStorage(param->type, paramResolved->typeSymbol, paramResolved->storage, paramResolved->usageBits);
+            SPIRVResult varType = GenerateTypeSPIRV(compiler, generator, param->type, paramResolved->typeSymbol, storage);
 
             // If value is not a pointer, generate a copy of the value inside the function
-            if (!paramResolved->type.IsPointer())
+            if (!param->type.IsPointer())
             {
                 uint32_t paramName = MappedInstruction(generator, SPVWriter::Section::Functions, OpFunctionParameter, varType.typeName, SPVComment{param->name.c_str()});
-                TransientString type = paramResolved->type.ToString();
+                TransientString type = param->type.ToString();
                 ConstantString scope = SPIRVResult::ScopeToString(varType.scope);
 
                 TStr argPtrType = TStr::Compact("ptr_", type, "_", scope);
@@ -3412,7 +3412,7 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
             }
             else
             {
-                varType = GenerateTypeSPIRV(compiler, generator, varResolved->type, varResolved->typeSymbol);
+                varType = GenerateTypeSPIRV(compiler, generator, var->type, varResolved->typeSymbol);
             }
             memberTypes.append(Format("%%%d ", varType.typeName));
             memberTypeArray.Append(SPVArg{ varType.typeName });
@@ -3590,9 +3590,9 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
     if (entryRes->visibleSymbols.Find(var) == entryRes->visibleSymbols.end())
         return SPIRVResult::Invalid();
 
-    SPIRVResult::Storage storage = ResolveSPIRVVariableStorage(varResolved->type, varResolved->typeSymbol, varResolved->storage, varResolved->usageBits);
+    SPIRVResult::Storage storage = ResolveSPIRVVariableStorage(var->type, varResolved->typeSymbol, varResolved->storage, varResolved->usageBits);
     
-    SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, varResolved->type, varResolved->typeSymbol, storage, storage == SPIRVResult::Storage::Uniform || storage == SPIRVResult::Storage::StorageBuffer);
+    SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, var->type, varResolved->typeSymbol, storage, storage == SPIRVResult::Storage::Uniform || storage == SPIRVResult::Storage::StorageBuffer);
     //std::string type = varResolved->type.name;
     ConstantString scope = SPIRVResult::ScopeToString(typeName.scope);
 
@@ -3644,9 +3644,9 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
         uint32_t typePtrName = typeName.typeName;
         
         // If anything but void, then the type has to be a pointer
-        if (!varResolved->type.IsPointer())
+        if (!var->type.IsPointer())
         {
-            TStr ptrType = TStr("ptr_", varResolved->type.ToString());
+            TStr ptrType = TStr("ptr_", var->type.ToString());
             typePtrName = AddType(generator, TStr::Compact(ptrType, "_", scope), typeName, OpTypePointer, ScopeToEnum(typeName.scope), SPVArg{ typeName.typeName });
             typeName.parentTypes.push_back(typeName.typeName);
             typeName.typeName = typePtrName;
@@ -3680,7 +3680,7 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
         if (storage == SPIRVResult::Storage::StorageBuffer || storage == SPIRVResult::Storage::Uniform || storage == SPIRVResult::Storage::PushConstant || storage == SPIRVResult::Storage::UniformConstant || storage == SPIRVResult::Storage::Sampler)
         {
             uint32_t structSymbol = GetSymbol(generator, varResolved->typeSymbol->name).value;
-            if (typeName.scope != SPIRVResult::Storage::Sampler && varResolved->type.IsPointer())
+            if (typeName.scope != SPIRVResult::Storage::Sampler && var->type.IsPointer())
             {
                 generator->writer->Decorate(SPVArg(typeName.parentTypes.back()), Decorations::Block);
             }
@@ -3841,7 +3841,7 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
             Variable::__Resolved* varResolved = Symbol::Resolved(var);
 
             // If an argument is a literal, evalute it directly
-            if (!varResolved->type.literal)
+            if (!var->type.literal)
             {
                 if (resolvedCall->argumentTypes[i].literal)
                 {
@@ -3851,7 +3851,7 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
                     val.Expand(varResolved->typeSymbol->columnSize, varResolved->typeSymbol->rowSize);
                     SPIRVResult literalResults[16] = { };
                     uint32_t resultsIterator = 0;
-                    SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, varResolved->type, varResolved->typeSymbol);
+                    SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, var->type, varResolved->typeSymbol);
 
     #define X(Type, type, ty)\
         for (size_t i = 0; i < val.columnSize; i++)\
@@ -4764,7 +4764,7 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
                             {
                                 Variable* var = static_cast<Variable*>(sym.sym);
                                 Variable::__Resolved* varRes = Symbol::Resolved(var);
-                                if (varRes->type.literal && varRes->typeSymbol->columnSize == 1 && varRes->typeSymbol->rowSize == 1)
+                                if (var->type.literal && varRes->typeSymbol->columnSize == 1 && varRes->typeSymbol->rowSize == 1)
                                 {
                                     res = SPIRVResult(0xFFFFFFFF, type.typeName);
                                     res.isValue = true;
@@ -4795,7 +4795,7 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
                                 SPIRVResult index = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(i));
 
                                 // If part of an access chain, generate a pointer version of the type
-                                res = GeneratePointerTypeSPIRV(compiler, generator, varRes->type, varRes->typeSymbol, accessStorage);
+                                res = GeneratePointerTypeSPIRV(compiler, generator, var->type, varRes->typeSymbol, accessStorage);
                                 res.scope = accessStorage;
                                 res.AddAccessChainLink({index});
                                 break;
