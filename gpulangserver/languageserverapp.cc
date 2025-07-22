@@ -1149,9 +1149,12 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
             const auto state = static_cast<const GPULang::RenderStateInstance*>(sym);
             const auto res = GPULang::Symbol::Resolved(state);
             ret += "Render State\n";
-            for (auto mem : res->typeSymbol->scope.symbolLookup)
+            if (res->typeSymbol != nullptr)
             {
-                ret += CreateMarkdown(mem.second, PresentationBits{ {.typeLookup = 1} });
+                for (auto mem : res->typeSymbol->scope.symbolLookup)
+                {
+                    ret += CreateMarkdown(mem.second, PresentationBits{ {.typeLookup = 1} });
+                }
             }
             break;
         }
@@ -1195,9 +1198,12 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
                 
                 ret += "\n";
             }
-            for (auto mem : res->typeSymbol->scope.symbolLookup)
+            if (res->typeSymbol != nullptr)
             {
-                ret += CreateMarkdown(mem.second, PresentationBits{ {.typeLookup = 1} });
+                for (auto mem : res->typeSymbol->scope.symbolLookup)
+                {
+                    ret += CreateMarkdown(mem.second, PresentationBits{ {.typeLookup = 1} });
+                }
             }
             break;
         }
@@ -1206,9 +1212,12 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
             const auto state = static_cast<const GPULang::ProgramInstance*>(sym);
             const auto res = GPULang::Symbol::Resolved(state);
             ret += "Program\n";
-            for (auto mem : res->typeSymbol->scope.symbolLookup)
+            if (res->typeSymbol != nullptr)
             {
-                ret += CreateMarkdown(mem.second, PresentationBits{ {.typeLookup = 1} });
+                for (auto mem : res->typeSymbol->scope.symbolLookup)
+                {
+                    ret += CreateMarkdown(mem.second, PresentationBits{ {.typeLookup = 1} });
+                }
             }
             break;
         }
