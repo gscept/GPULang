@@ -43,24 +43,77 @@
 #include <streambuf>
 #include "memory.h"
 
+struct Socket
+{
+    SOCKET sock;
+};
+
+Socket CreateServerSocket()
+{
+    Socket ret;
+#if __WIN32__
+    WSADATA wsaData;
+
+    if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
+        fprintf(stderr, "WSAStartup failed.\n");
+        exit(1);
+    }
+
+    if (LOBYTE(wsaData.wVersion) != 2 ||
+        HIBYTE(wsaData.wVersion) != 2)
+    {
+        fprintf(stderr,"Version 2.2 of Winsock not available.\n");
+        WSACleanup();
+        exit(2);
+    }
+#endif
+        
+    ret.sock = socket(AF_INET, SOCK_STREAM, 0);
+    int yes = 1;
+#if !__WIN32__
+    setsockopt(ret.sock, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes));
+#endif
+
+    struct sockaddr_in server;
+    server.sin_family = AF_INET;
+    server.sin_addr.s_addr = INADDR_ANY;
+    server.sin_port = htons(5007);
+    int res = bind(ret.sock, reinterpret_cast<struct sockaddr*>(&server), sizeof(server));
+    listen(ret.sock, 5);
+    
+    return ret;
+}
+
+Socket SocketAccept(const Socket& socket)
+{
+    Socket ret;
+    ret.sock = accept(socket.sock, nullptr, nullptr);
+    return ret;
+}
+
+void SocketClose(const Socket& socket)
+{
+    shutdown(socket.sock, 0);
+}
+
 class SocketBuffer : public std::basic_streambuf<char>
 {
 public:
-    SocketBuffer(SOCKET sock) :
+    SocketBuffer(Socket sock) :
         sock(sock)
     {}
 
     std::streamsize xsputn(const char* buf, std::streamsize count)
     {
-        int sent = send(this->sock, buf, count, 0);
+        int sent = send(this->sock.sock, buf, count, 0);
         while (sent != count)
-            sent = send(this->sock, buf + sent, count, 0);
+            sent = send(this->sock.sock, buf + sent, count, 0);
         return count;
     }
 
     int underflow()
     {
-        int size = recv(this->sock, this->buf, sizeof(buf), 0);
+        int size = recv(this->sock.sock, this->buf, sizeof(buf), 0);
         this->setg(this->buf, this->buf, this->buf + size);
         this->bytesAvail = size;
         return size;
@@ -77,7 +130,7 @@ public:
 
     char buf[65535];
     int bytesAvail;
-    SOCKET sock;
+    Socket sock;
 };
 
 union PresentationBits
@@ -1144,40 +1197,7 @@ GPULang::SystemSetup dummy;
 int __cdecl
 main(int argc, const char** argv)
 {
-#if __WIN32__
-    WSADATA wsaData;
-
-    if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
-        fprintf(stderr, "WSAStartup failed.\n");
-        exit(1);
-    }
-
-    if (LOBYTE(wsaData.wVersion) != 2 ||
-        HIBYTE(wsaData.wVersion) != 2)
-    {
-        fprintf(stderr,"Version 2.2 of Winsock not available.\n");
-        WSACleanup();
-        exit(2);
-    }
-#endif
-        
-    SOCKET sock = socket(AF_INET, SOCK_STREAM, 0);
-    int yes = 1;
-#if !__WIN32__
-    setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes));
-#endif
-
-    struct sockaddr_in server;
-    server.sin_family = AF_INET;
-    server.sin_addr.s_addr = INADDR_ANY;
-    server.sin_port = htons(5007);
-    int res = bind(sock, reinterpret_cast<struct sockaddr*>(&server), sizeof(server));
-    while (res != 0)
-    {
-        // Add sleep...
-        res = bind(sock, reinterpret_cast<struct sockaddr*>(&server), sizeof(server));
-    }
-    listen(sock, 5);
+    Socket socket = CreateServerSocket();
 
     printf("GPULang Language Server Version 1.0\n");
     printf("Waiting for clients...\n");
@@ -1185,14 +1205,14 @@ main(int argc, const char** argv)
 
     while (true)
     {
-        SOCKET sockfd = accept(sock, nullptr, nullptr);
+        Socket client = SocketAccept(socket);
 
         std::vector<GPULang::Thread*> threads;
-        GPULang::Thread* clientThread = GPULang::CreateThread(GPULang::ThreadInfo{.stackSize = 8_MB}, [sockfd, &parseContexts]()
+        GPULang::Thread* clientThread = GPULang::CreateThread(GPULang::ThreadInfo{.stackSize = 8_MB}, [client, &parseContexts]()
         {
             printf("Connection established\n");
-            SocketBuffer inputBuffer(sockfd);
-            SocketBuffer outputBuffer(sockfd);
+            SocketBuffer inputBuffer(client);
+            SocketBuffer outputBuffer(client);
             std::istream input(&inputBuffer);
             std::ostream output(&outputBuffer);
             lsp::Connection connection{ input, output };
@@ -1624,7 +1644,7 @@ main(int argc, const char** argv)
                 {
                     printf("%s\n", e.what());
                     running = false;
-                    shutdown(sockfd, 0);
+                    SocketClose(client);
                 }
             }
         });
