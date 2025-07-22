@@ -1626,8 +1626,6 @@ main(int argc, const char** argv)
                     running = false;
                     shutdown(sockfd, 0);
                 }
-                using namespace std::chrono_literals;
-                std::this_thread::sleep_for(1000ms);
             }
         });
         threads.push_back(clientThread);
