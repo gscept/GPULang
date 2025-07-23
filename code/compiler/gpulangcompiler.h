@@ -96,6 +96,5 @@ struct GPULangFile
 
 extern std::vector<std::string> GPULangGenerateDependencies(const std::string& file, const std::vector<std::string>& defines);
 extern bool GPULangCompile(const std::string& file, GPULang::Compiler::Language target, const std::string& output, const std::string& header_output, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangErrorBlob*& errorBuffer);
-extern bool GPULangValidateFile(const std::string& file, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangServerResult& result);
-extern bool GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangServerResult& result);
+extern bool GPULangValidate(GPULangFile*, GPULang::Compiler::Language , const std::vector<std::string>&, GPULang::Compiler::Options, GPULangServerResult&);
 extern GPULangFile* GPULangLoadFile(const std::string_view& path);

@@ -198,6 +198,8 @@ struct TextRange
 
 struct ParseContext
 {
+    GPULang::Compiler::Language lang = GPULang::Compiler::Language::VULKAN_SPIRV;
+    GPULang::Compiler::Options options;
     std::vector<std::string> includePaths;
     struct ParsedFile
     {
@@ -336,10 +338,10 @@ WriteFile(ParseContext::ParsedFile* file, ParseContext* context, const std::stri
     // Pass it to the compiler
     Clear(file->result, file->alloc);
     GPULang::MakeAllocatorCurrent(&file->alloc);
-    GPULang::Compiler::Options options;
+    GPULang::Compiler::Options options = context->options;
     options.emitTimings = true;
 
-    GPULangValidate(file->f, context->includePaths, options, file->result);
+    GPULangValidate(file->f, context->lang, context->includePaths, options, file->result);
 
     // sort symbols on line and starting point
     std::sort(file->result.symbols.begin(), file->result.symbols.end(), [](const GPULang::Symbol* lhs, const GPULang::Symbol* rhs)
@@ -1263,13 +1265,16 @@ main(int argc, const char** argv)
             std::istream input(&inputBuffer);
             std::ostream output(&outputBuffer);
             lsp::Connection connection{ input, output };
+            
+            GPULang::Compiler::Options options;
+            GPULang::Compiler::Language language;
 
             lsp::MessageHandler messageHandler{ connection };
             bool running = true;
             ParseContext* context = nullptr;
 
             messageHandler.requestHandler()
-                .add<lsp::requests::Initialize>([&parseContexts, &context](const lsp::jsonrpc::MessageId& id, lsp::requests::Initialize::Params&& params)
+                .add<lsp::requests::Initialize>([&parseContexts, &context, &options, &language](const lsp::jsonrpc::MessageId& id, lsp::requests::Initialize::Params&& params)
             {
                 lsp::requests::Initialize::Result result;
                 if (params.processId.isNull())
@@ -1282,20 +1287,48 @@ main(int argc, const char** argv)
                     parseContexts[0] = ParseContext{};
                     context = &parseContexts[0];
                 }
-
+                    
                 if (!params.workspaceFolders->isNull())
                 {
                     for (const auto& workspaceFolder : params.workspaceFolders->value())
                     {
                         context->includePaths.push_back("-I" + workspaceFolder.uri.path() + "/");
-                        for (const auto& it : std::filesystem::directory_iterator(workspaceFolder.uri.path()))
-                        {
-                            if (it.is_directory())
-                            {
-                                context->includePaths.push_back("-I" + it.path().string() + "/");
-                            }
-                        }
                     }
+                }
+                 
+                // Use config if provided
+                if (params.initializationOptions.has_value())
+                {
+                    const auto options = params.initializationOptions->object();
+                    const auto root = options.get("root").string();
+                    const auto config = options.get("config").object();
+                    const auto dirs = config.get("include_directories").array();
+                    const auto flags = config.get("flags").array();
+                    
+                                        
+                    for (const auto& dir : dirs)
+                        context->includePaths.push_back("-I" + root + "/" + dir.string() + "/");
+                    
+                    for (const auto& flag : flags)
+                    {
+                        const std::string flagStr = flag.string();
+                        if (flagStr == "SPIRV")
+                            context->lang = GPULang::Compiler::Language::SPIRV;
+                        else if (flagStr == "VULKAN_SPIRV")
+                            context->lang = GPULang::Compiler::Language::VULKAN_SPIRV;
+                        else if (flagStr == "disallowImplicitConversion")
+                            context->options.disallowImplicitConversion = true;
+                        else if (flagStr == "disallowImplicitPromotion")
+                            context->options.disallowImplicitPromotion = true;
+                        else if (flagStr == "profile")
+                            context->options.emitTimings = true;
+                        
+                        
+                    }
+                }
+                else
+                {
+
                 }
 
                 result.capabilities.textDocumentSync = lsp::TextDocumentSyncOptions{ .openClose = true, .change = lsp::TextDocumentSyncKind::Full, .save = true };

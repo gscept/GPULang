@@ -287,13 +287,38 @@ Compiler::Setup(const Compiler::Language& lang, Options options)
 /**
 */
 void
-Compiler::Setup(Options options)
+Compiler::SetupServer(const Compiler::Language& lang,Options options)
 {
     this->options = options;
-    this->target.supportsInlineSamplers = true;
-    this->target.supportsPhysicalBufferAddresses = true;
-    this->target.supportsPhysicalAddressing = false;
-    this->target.supportsGlobalDeviceStorage = false;
+    this->lang = lang;
+    switch (lang)
+    {
+    case Language::GLSL_SPIRV:
+        this->target.name = "GLSL-SPIRV";
+        break;
+    case Language::GLSL:
+        this->target.name = "GLSL";
+        break;
+    case Language::HLSL_SPIRV:
+    case Language::HLSL:
+        this->target.name = "HLSL";
+        break;
+    case Language::SPIRV:
+        this->target.name = "SPIRV";
+        this->target.supportsInlineSamplers = true;
+        this->target.supportsPhysicalBufferAddresses = true;
+        this->target.supportsPhysicalAddressing = true;
+        this->target.supportsGlobalDeviceStorage = true;
+        break;
+    case Language::VULKAN_SPIRV:
+        this->target.name = "VULKAN-SPIRV";
+        this->target.supportsInlineSamplers = true;
+        this->target.supportsPhysicalBufferAddresses = true;
+        this->target.supportsPhysicalAddressing = false;
+        this->target.supportsGlobalDeviceStorage = false;
+        break;
+    }
+    
     
     //this->staticSetupThread = CreateThread(GPULang::ThreadInfo{ .stackSize = 16_MB }, [this]()
     {

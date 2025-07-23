@@ -106,7 +106,7 @@ struct Compiler
     /// setup compiler with target language in generation mode
     void Setup(const Compiler::Language& lang, Options options);
     /// setup compiler for validation (language server) mode
-    void Setup(Options options);
+    void SetupServer(const Compiler::Language& lang, Options options);
     /// Create generator
     Generator* CreateGenerator(const Compiler::Language& lang, Options options);
 

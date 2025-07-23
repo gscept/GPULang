@@ -2015,130 +2015,7 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
     Runs compilation without output
 */
 bool
-GPULangValidateFile(const std::string& file, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangServerResult& result)
-{
-    SetupSystem();
-    bool ret = true;
-    std::string preprocessed;
-
-    GPULang::Compiler::Timer timer;
-    timer.Start();
-
-    PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
-    PinnedArray<GPULang::Diagnostic> diagnostics(0xFFFFFF);
-    GPULangParser::LineStack.clear();
-
-    if (GPULangPreprocessFile(file, defines, preprocessed, preprocessorSymbols, diagnostics))
-    {
-        // get the name of the shader
-        std::locale loc;
-        size_t extension = file.rfind('.');
-        size_t lastFolder = file.rfind('/') + 1;
-        std::string effectName = file.substr(lastFolder, (file.length() - lastFolder) - (file.length() - extension));
-        effectName[0] = std::toupper(effectName[0]);
-        size_t undersc = effectName.find('_');
-        while (undersc != std::string::npos)
-        {
-            effectName[undersc + 1] = std::toupper(effectName[undersc + 1]);
-            effectName = effectName.erase(undersc, 1);
-            undersc = effectName.find('_');
-        }
-
-        // setup preprocessor
-        //parser.preprocess();
-
-        timer.Stop();
-        if (options.emitTimings)
-            timer.Print("Preprocessing");
-
-
-        GPULangLexerErrorHandler lexerErrorHandler;
-        GPULangParserErrorHandler parserErrorHandler;
-        timer.Start();
-
-        ANTLRInputStream input;
-        GPULangLexer lexer(&input);
-        lexer.setTokenFactory(GPULangTokenFactory::DEFAULT);
-        CommonTokenStream tokens(&lexer);
-        GPULangParser parser(&tokens);
-        parser.getInterpreter<antlr4::atn::ParserATNSimulator>()->setPredictionMode(antlr4::atn::PredictionMode::SLL);
-
-        input.load(preprocessed);
-        lexer.setInputStream(&input);
-        lexer.setTokenFactory(GPULangTokenFactory::DEFAULT);
-        lexer.removeErrorListeners();
-        lexer.addErrorListener(&lexerErrorHandler);
-        tokens.setTokenSource(&lexer);
-        parser.setTokenStream(&tokens);
-        parser.removeErrorListeners();
-        parser.addErrorListener(&parserErrorHandler);
-
-        Effect* effect = parser.entry()->returnEffect;
-
-        timer.Stop();
-        if (options.emitTimings)
-            timer.Print("Parsing");
-
-        result.diagnostics.Clear();
-
-        // if we have any lexer or parser error, return early
-        if (lexerErrorHandler.hasError || parserErrorHandler.hasError)
-        {
-            diagnostics.Append(lexerErrorHandler.diagnostics);
-            diagnostics.Append(parserErrorHandler.diagnostics);
-        }
-
-        Compiler compiler;
-        compiler.path = file;
-        compiler.filename = effectName;
-        compiler.Setup(options);
-
-        bool res = compiler.Validate(effect);
-        effect->~Effect();
-
-        result.root = effect;
-        result.symbols = compiler.symbols;
-        result.symbols.Prepend(preprocessorSymbols);
-        result.intrinsicScope = compiler.intrinsicScope;
-        result.mainScope = compiler.mainScope;
-        if (compiler.diagnostics.size > 0)
-            result.diagnostics = compiler.diagnostics;
-        if (diagnostics.size > 0)
-            result.diagnostics.Append(diagnostics);
-        
-        // convert error list to string
-        if (compiler.messages.size != 0 && !compiler.options.quiet)
-        {
-            TransientString err;
-            for (size_t i = 0; i < compiler.messages.size; i++)
-            {
-                if (i > 0)
-                    err.Append("\n");
-                err.Append(compiler.messages[i]);
-            }
-            if (err.size > 0 && compiler.hasErrors)
-                err = "Unhandled internal compiler error";
-            result.messages.Append(FixedString(err));
-        }
-        if (options.emitTimings)
-            timer.TotalTime();
-        
-        return res;
-    }
-fail:
-    result.diagnostics.Append(diagnostics);
-    if (options.emitTimings)
-        timer.TotalTime();
-    
-    return false;
-}
-
-//------------------------------------------------------------------------------
-/**
-    Runs compilation without output
-*/
-bool
-GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangServerResult& result)
+GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangServerResult& result)
 {
     SetupSystem();
     bool ret = true;
@@ -2151,7 +2028,7 @@ GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPUL
     timer.Start();
     
     Compiler compiler;
-    compiler.Setup(options);
+    compiler.SetupServer(target, options);
 
     PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
     PinnedArray<GPULang::Diagnostic> diagnostics(0xFFFFFF);

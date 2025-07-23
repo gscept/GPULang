@@ -6,6 +6,8 @@
 import * as net from 'net';
 import * as os from 'os';
 import * as path from 'path';
+import * as vscode from 'vscode';
+import * as fs from 'fs';
 
 import {
 	LanguageClient,
@@ -19,16 +21,11 @@ let client: LanguageClient;
 
 
 export function activate(_: ExtensionContext) {
-
-	const connectionInfo = {
-		port: 5007,
-		host: "localhost"
-	};
-
+	
 	let socket_file;
 	if (process.platform === 'win32')
 	{
-		socket_file = "\\\\.\\pipe\\gpulang_socket"
+		socket_file = "\\\\.\\pipe\\gpulang_socket";
 	}
 	else
 	{
@@ -47,9 +44,25 @@ export function activate(_: ExtensionContext) {
 	};
 
 	// Options to control the language client
+	const workspaceFolders = vscode.workspace.workspaceFolders;
+
+	const configPath = path.join(workspaceFolders[0].uri.fsPath, 'gpulang_config.json');
+
+	const fd = fs.openSync(configPath, 'r');
+	if (fd) {
+		vscode.window.showInformationMessage(`Using gpulang configuration file: ${configPath}`);
+	} else {
+		vscode.window.showErrorMessage(`Could not find gpulang configuration file: ${configPath}`);
+	}
+
+	const fileData = fs.readFileSync(fd);
 	const clientOptions: LanguageClientOptions = {
 		// Register the server for plain text documents
 		documentSelector: ['gpulang'],
+		initializationOptions: {
+			root : workspaceFolders[0].uri.fsPath,
+			config : JSON.parse(fileData.toString('utf8'))
+		},
 		synchronize: {
 			// Notify the server about file changes to '.gpul files contained in the workspace
 			fileEvents: workspace.createFileSystemWatcher('**/*.{gpul,gpuh}')
