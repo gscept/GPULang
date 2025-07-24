@@ -2184,7 +2184,7 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
         if (options.emitTimings)
             timer.TotalTime();
         
-        return  ;
+        return true;
     }
 fail:
     result.diagnostics.Append(diagnostics);
