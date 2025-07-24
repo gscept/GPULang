@@ -210,7 +210,6 @@ struct ParseContext
         std::string path;
         GPULangFile* f;
 
-        std::vector<std::pair<TextRange, const GPULang::Symbol*>> symbolsByRange;
         std::map<size_t, std::vector<std::tuple<TextRange, PresentationBits, const GPULang::Symbol*>>> symbolsByLine;
         std::map<TextRange, std::vector<const GPULang::Scope*>> scopesByRange;
         std::map<size_t, std::vector<const GPULang::Scope*>> scopesByLine;
@@ -580,7 +579,6 @@ CreateSemanticToken(Context& ctx, const GPULang::Symbol* sym, ParseContext::Pars
     range.stopLine = sym->location.line;
     range.startColumn = sym->location.start;
     range.stopColumn = sym->location.end;
-    file->symbolsByRange.push_back(std::make_pair(range, sym));
     file->symbolsByLine[range.startLine].push_back(std::make_tuple(range, PresentationBits(0x0), sym));
     
     bool deadBranch = !ctx.activeBranchStack[ctx.activeBranchIt];
@@ -676,7 +674,6 @@ CreateSemanticToken(Context& ctx, const GPULang::Symbol* sym, ParseContext::Pars
             range.stopLine = var->typeLocation.line;
             range.startColumn = var->typeLocation.start;
             range.stopColumn = var->typeLocation.end;
-            file->symbolsByRange.push_back(std::make_pair(range, res->typeSymbol));
             file->symbolsByLine[range.startLine].push_back(std::make_tuple(range, PresentationBits{ {.typeLookup = 1} }, res->typeSymbol));
 
             if (var->valueExpression != nullptr)
@@ -712,7 +709,6 @@ CreateSemanticToken(Context& ctx, const GPULang::Symbol* sym, ParseContext::Pars
             range.stopLine = fun->returnTypeLocation.line;
             range.startColumn = fun->returnTypeLocation.start;
             range.stopColumn = fun->returnTypeLocation.end;
-            file->symbolsByRange.push_back(std::make_pair(range, res->returnTypeSymbol));
             file->symbolsByLine[range.startLine].push_back(std::make_tuple(range, PresentationBits{ {.typeLookup = 1} }, res->returnTypeSymbol));
 
             if (fun->ast != nullptr)
@@ -980,7 +976,6 @@ CreateSemanticToken(Context& ctx, const GPULang::Symbol* sym, ParseContext::Pars
                 range.stopLine = sym->location.line;
                 range.startColumn = sym->location.start;
                 range.stopColumn = sym->location.end;
-                file->symbolsByRange.push_back(std::make_pair(range, foundSym));
                 file->symbolsByLine[range.startLine].push_back(std::make_tuple(range, PresentationBits{{.symbolLookup=1}}, foundSym));
             }
             else
@@ -1427,7 +1422,6 @@ main(int argc, const char** argv)
                 if (params.textDocument.uri.path().ends_with("gpul") || params.textDocument.uri.path().ends_with("gpuh"))
                 {
                     ParseContext::ParsedFile* file = ParseFile(params.textDocument.uri.path(), context, messageHandler);
-                    file->symbolsByRange.clear();
                     file->symbolsByLine.clear();
                     file->semanticTokens.clear();
                     Context prev;
@@ -1465,7 +1459,6 @@ main(int argc, const char** argv)
                 if (params.textDocument.uri.path().ends_with("gpul") || params.textDocument.uri.path().ends_with("gpuh"))
                 {
                     ParseContext::ParsedFile* file = ParseFile(params.textDocument.uri.path(), context, messageHandler, true);
-                    file->symbolsByRange.clear();
                     file->symbolsByLine.clear();
                     file->semanticTokens.clear();
                     file->scopesByLine.clear();
@@ -1502,7 +1495,6 @@ main(int argc, const char** argv)
                     if (file != nullptr)
                     {
                         ValidateFile(file, context, std::get<lsp::TextDocumentContentChangeEvent_Text>(params.contentChanges[0]).text, messageHandler);
-                        file->symbolsByRange.clear();
                         file->symbolsByLine.clear();
                         file->scopesByRange.clear();
                         file->scopesByLine.clear();
@@ -1611,26 +1603,28 @@ main(int argc, const char** argv)
                     TextRange inputRange;
                     inputRange.startLine = params.position.line;
                     inputRange.startColumn = params.position.character;
-                    auto it = std::upper_bound(file->symbolsByRange.begin(), file->symbolsByRange.end(), std::make_pair(inputRange, nullptr), [](const std::pair<TextRange, const GPULang::Symbol*>& lhs, const std::pair<TextRange, const GPULang::Symbol*>& rhs)
+                    const auto symbolsOnLine = file->symbolsByLine[params.position.line];
+                    const GPULang::Symbol* sym = nullptr;
+                    for (const auto& [range, bits, lineSym] : symbolsOnLine)
                     {
-                        if (lhs.first.startLine == rhs.first.startLine)
-                            return lhs.first.startColumn < rhs.first.startColumn;
-                        else
-                            return lhs.first.startLine < rhs.first.startLine;
-                    });
-                    if (it != file->symbolsByRange.end() && it->second != nullptr)
+                        if (lineSym->location.start < params.position.character && lineSym->location.end > params.position.character)
+                            sym = lineSym;
+                        else if (lineSym->location.start > params.position.character)
+                            break;
+                    }
+                    if (sym != nullptr)
                     {
                         result = lsp::requests::TextDocument_DocumentHighlight::Result { 
                             { 
                                 lsp::DocumentHighlight{ 
                                     .range = { 
                                         .start = { 
-                                            .line = (uint32_t)it->second->location.line, 
-                                            .character = (uint32_t)it->second->location.start
-                                        }, 
+                                            .line = (uint32_t)sym->location.line,
+                                            .character = (uint32_t)sym->location.start
+                                        },
                                         .end = {
-                                            .line = (uint32_t)it->second->location.line, 
-                                            .character = (uint32_t) + it->second->location.end
+                                            .line = (uint32_t)sym->location.line,
+                                            .character = (uint32_t) sym->location.end
                                         }
                                     },
                                     .kind = lsp::DocumentHighlightKind::Write
@@ -1655,9 +1649,7 @@ main(int argc, const char** argv)
                     for (const auto& [range, bits, lineSym] : symbolsOnLine)
                     {
                         if (lineSym->location.start < params.position.character && lineSym->location.end > params.position.character)
-                        {
                             sym = lineSym;
-                        }
                         else if (lineSym->location.start > params.position.character)
                             break;
                     }
