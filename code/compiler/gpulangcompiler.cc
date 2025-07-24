@@ -1523,7 +1523,7 @@ escape_newline:
             {
                 comment = false;
                 Preprocessor* sym = (Preprocessor*)preprocessorSymbols.back();
-                commentBlockEnd = firstWord + 2;
+                commentBlockEnd = firstWord;
                 sym->contents = std::string_view(commentBlockBegin, commentBlockEnd);
                 commentBlockBegin = nullptr;
                 commentBlockEnd = nullptr;

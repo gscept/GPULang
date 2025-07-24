@@ -295,7 +295,7 @@ Clear(GPULangServerResult& result, GPULang::Allocator& allocator)
 /**
 */
 void
-WriteFile(ParseContext::ParsedFile* file, ParseContext* context, const std::string& contents, lsp::MessageHandler& messageHandler)
+ValidateFile(ParseContext::ParsedFile* file, ParseContext* context, const std::string& contents, lsp::MessageHandler& messageHandler)
 {
     if (!contents.empty())
     {
@@ -352,6 +352,37 @@ WriteFile(ParseContext::ParsedFile* file, ParseContext* context, const std::stri
             return lhs->location.start < rhs->location.start;
         return lhs->location.line < rhs->location.line;
     });
+    
+    GPULang::Preprocessor* pp = nullptr;
+    GPULang::PinnedMap<GPULang::FixedString, GPULang::Preprocessor*> ppPerFileMap(0xFFF);
+    
+    for (auto sym : file->result.symbols)
+    {
+        if (sym->symbolType == GPULang::Symbol::SymbolType::PreprocessorType)
+        {
+            GPULang::Preprocessor* symPp = static_cast<GPULang::Preprocessor*>(sym);
+            if (symPp->type == GPULang::Preprocessor::Comment)
+            {
+                auto it = ppPerFileMap.Find(symPp->location.file);
+                if (it == ppPerFileMap.end())
+                {
+                    ppPerFileMap.Insert(symPp->location.file, symPp);
+                }
+                else
+                    it->second = symPp;
+            }
+        }
+        else
+        {
+            // Assign documentation to symbol from previous preprocessor
+            auto it = ppPerFileMap.Find(sym->location.file);
+            if (it != ppPerFileMap.end() && it->second != nullptr)
+            {
+                sym->documentation = it->second->contents;
+                it->second = nullptr;
+            }
+        }
+    }
 
     std::map<GPULang::FixedString, lsp::notifications::TextDocument_PublishDiagnostics::Params> diagnosticsResults;
     if (file->result.diagnostics.size > 0)
@@ -417,7 +448,7 @@ ParseFile(const std::string path, ParseContext* context, lsp::MessageHandler& me
     }
 
     // Create temporary file for the compiler
-    WriteFile(&it->second, context, "", messageHandler);
+    ValidateFile(&it->second, context, "", messageHandler);
 
     return &it->second;
 };
@@ -980,6 +1011,9 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
     std::string ret = "";
     if (lookup.bits == 0x0 && sym->name.buf != nullptr)
         ret = GPULang::Format("%s\n", sym->name.c_str());
+    
+    if (!lookup.flags.formatted)
+        ret += "```gpulang\n";
 
     switch (sym->symbolType)
     {
@@ -1004,7 +1038,6 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
         {
             const GPULang::Variable* var = static_cast<const GPULang::Variable*>(sym);
             const GPULang::Variable::__Resolved* res = GPULang::Symbol::Resolved(var);
-            ret += "```gpulang\n";
 
             if (lookup.flags.symbolLookup)
             {
@@ -1020,12 +1053,12 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
             
                 if (var->valueExpression != nullptr)
                 {
-                    std::string value = CreateMarkdown(var->valueExpression);
+                    PresentationBits valueBits(lookup);
+                    valueBits.flags.formatted = true;
+                    std::string value = CreateMarkdown(var->valueExpression, valueBits);
                     if (!value.empty())
                         ret += " = " + value;
                 }
-                ret += "\n```\n";
-
             }
             else if (lookup.flags.typeLookup)
             {
@@ -1039,19 +1072,16 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
                 }
                 ret += GPULang::Format("%s : ", var->name.c_str());
                 ret += var->type.ToString().c_str();
-                ret += "\n```\n";
             }
             else
             {
                 ret += var->type.ToString().c_str();
-                ret += "\n```\n";
             }
             break;
         }
         case GPULang::Symbol::SymbolType::FunctionType:
         {
             const GPULang::Function* fun = static_cast<const GPULang::Function*>(sym);
-            ret += "```gpulang\n";
 
             if (lookup.flags.symbolLookup)
             {
@@ -1063,13 +1093,9 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
                     else
                         ret += " ";
                 }
-
-                ret += "\n```\n";
             }
             else
             {
-                ret += "\n```\n";
-
                 const GPULang::Function::__Resolved* res = GPULang::Symbol::Resolved(fun);
                 if (res->isEntryPoint)
                     ret += "Function can be bound to a program\n\n";
@@ -1085,13 +1111,11 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
                 || (lookup.flags.symbolLookup)
                 )
             {
-                ret += "```gpulang\n";
                 ret += "enum\n";
                 for (auto mem : enu->labels)
                 {
                     ret += std::string(mem.c_str()) + "\n";
                 }
-                ret += "\n```\n";
             }
             break;
         }
@@ -1100,14 +1124,14 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
             const GPULang::Structure* struc = static_cast<const GPULang::Structure*>(sym);
             if (lookup.flags.typeLookup)
             {
-                ret += "```gpulang\n";
+                PresentationBits memberBits(lookup);
+                memberBits.flags.formatted = true;
                 ret += "struct\n";
                 for (auto mem : struc->symbols)
                 {
-                    ret += CreateMarkdown(mem, lookup);
+                    ret += CreateMarkdown(mem, memberBits);
                     ret += "\n";
                 }
-                ret += "\n```\n";
             }
             break;
         }
@@ -1124,7 +1148,6 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
             const GPULang::CallExpression::__Resolved* res = GPULang::Symbol::Resolved(call);
             if (res->function != nullptr)
             {
-                ret += "```gpulang\n";
                 const GPULang::Function::__Resolved* funRes = GPULang::Symbol::Resolved(res->function);
                 ret += GPULang::Format("%s(", res->function->name.c_str());
                 for (auto param : res->function->parameters)
@@ -1135,7 +1158,6 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
                         ret += ", ";
                 }
                 ret += GPULang::Format(") %s\n", res->function->returnType.ToString().c_str());
-                ret += "n```\n";
                 lookup.flags.symbolLookup = true;
                 sym = res->function;
             }
@@ -1146,33 +1168,28 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
             const GPULang::SymbolExpression* lookup = static_cast<const GPULang::SymbolExpression*>(sym);
             const GPULang::SymbolExpression::__Resolved* res = GPULang::Symbol::Resolved(lookup);
             if (res->symbol != nullptr)
-                ret += CreateMarkdown(res->symbol, true);
+                ret += CreateMarkdown(res->symbol, PresentationBits{ {.symbolLookup = 1, .formatted = 1} });
             break;
         }
         case GPULang::Symbol::SymbolType::RenderStateInstanceType:
         {
             const auto state = static_cast<const GPULang::RenderStateInstance*>(sym);
             const auto res = GPULang::Symbol::Resolved(state);
-            ret += "```gpulang\n";
             ret += "render_state\n";
             if (res->typeSymbol != nullptr)
             {
                 for (auto mem : res->typeSymbol->scope.symbolLookup)
                 {
-                    ret += CreateMarkdown(mem.second, PresentationBits{ {.typeLookup = 1} });
+                    ret += CreateMarkdown(mem.second, PresentationBits{ {.typeLookup = 1, .formatted = 1} });
                     ret += "\n";
                 }
             }
-            ret += "\n```\n";
-            if (sym->location.line != -1)
-                ret += GPULang::Format("[Declared Here](%s#L%d)\n", sym->location.file.c_str(), sym->location.line);
             break;
         }
         case GPULang::Symbol::SymbolType::SamplerStateInstanceType:
         {
             const auto state = static_cast<const GPULang::SamplerStateInstance*>(sym);
             const auto res = GPULang::Symbol::Resolved(state);
-            ret += "```gpulang\n";
             ret += "sampler_state\n";
             if (lookup.flags.symbolLookup)
             {
@@ -1184,8 +1201,6 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
                     else
                         ret += " ";
                 }
-
-                ret += "```\n";
             }
             else if (lookup.flags.typeLookup)
             {
@@ -1198,17 +1213,14 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
                         ret += " ";
                 }
                 ret += GPULang::Format("%s : ", state->name.c_str());
-                ret += "\n```\n";
-
             }
             if (res->typeSymbol != nullptr)
             {
                 for (auto mem : res->typeSymbol->scope.symbolLookup)
                 {
-                    ret += CreateMarkdown(mem.second, PresentationBits{ {.typeLookup = 1} });
+                    ret += CreateMarkdown(mem.second, PresentationBits{ {.typeLookup = 1, .formatted = 1} });
                     ret += "\n";
                 }
-                ret += "\n```\n";
             }
             break;
         }
@@ -1216,17 +1228,15 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
         {
             const auto state = static_cast<const GPULang::ProgramInstance*>(sym);
             const auto res = GPULang::Symbol::Resolved(state);
-            ret += "```gpulang\n";
             ret += "program\n";
             if (res->typeSymbol != nullptr)
             {
                 for (auto mem : res->typeSymbol->scope.symbolLookup)
                 {
-                    ret += CreateMarkdown(mem.second, PresentationBits{ {.typeLookup = 1} });
+                    ret += CreateMarkdown(mem.second, PresentationBits{ {.typeLookup = 1, .formatted = 1} });
                     ret += "\n";
                 }
             }
-            ret += "\n```\n";
             break;
         }
         case GPULang::Symbol::SymbolType::IntExpressionType:
@@ -1241,6 +1251,9 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
         default:
             return "";
     }
+    
+    if (!lookup.flags.formatted)
+        ret += "\n```\n";
     
     if (lookup.flags.symbolLookup)
     {
@@ -1438,7 +1451,7 @@ main(int argc, const char** argv)
                     ParseContext::ParsedFile* file = GetFile(params.textDocument.uri.path(), context, messageHandler);
                     if (file != nullptr)
                     {
-                        WriteFile(file, context, std::get<lsp::TextDocumentContentChangeEvent_Text>(params.contentChanges[0]).text, messageHandler);
+                        ValidateFile(file, context, std::get<lsp::TextDocumentContentChangeEvent_Text>(params.contentChanges[0]).text, messageHandler);
                         file->symbolsByRange.clear();
                         file->symbolsByLine.clear();
                         file->scopesByRange.clear();
@@ -1450,6 +1463,7 @@ main(int argc, const char** argv)
                         ctx.loc.start = 0;
                         ctx.carry = 0;
                         std::vector<const GPULang::Scope*> scopes{ file->result.intrinsicScope, file->result.mainScope };
+                        GPULang::Preprocessor* pp = nullptr;
                         for (auto sym : file->result.symbols)
                         {
                             if (sym->location.file == file->f->path)
