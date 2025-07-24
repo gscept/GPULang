@@ -1261,7 +1261,7 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
             ret += sym->documentation.c_str();
         
         if (sym->location.line != -1)
-            ret += GPULang::Format("[Declared Here](%s#L%d)\n", sym->location.file.c_str(), sym->location.line);
+            ret += GPULang::Format("[Declared Here](%s#L%d)\n", sym->location.file.c_str(), sym->location.line+1);
     }
     
     return ret;
