@@ -881,7 +881,7 @@ GPULangPreprocess(
             if (fileStack.size > 0)\
             {\
                 level = &fileStack.back();\
-                output.append(Format("#line %d \"%s\"\n", level->lineCounter+1, level->file->path.c_str()));\
+                output.append(Format("\n#line %d \"%s\"\n", level->lineCounter+1, level->file->path.c_str()));\
                 level->lineCounter++;\
             }\
             continue;
@@ -993,7 +993,7 @@ escape_newline:
             // If empty line, just add it and continue
             if (firstWord == eol)
             {
-                output.append(columnIt, eol);
+                output.append("\n");
                 goto next_line;
             }
             if (firstWord[0] == '#') // Directives
@@ -1088,11 +1088,18 @@ escape_newline:
                             fileStack.Append({ inc });
                             level = &fileStack.back();
                             output.append(Format("#line %d \"%s\"\n", level->lineCounter, level->file->path.c_str()));
+                            level->lineCounter -= 1; // Set the counter to -1 to counter the extra line we add ourselves
+                            pp->args = args;
+                            pp->argLocations = argLocs;
+                            goto next_line;
                         }
                         else
                         {
-                            output.append("\n");
-                            //level->lineCounter += inc->lines;
+                            output.append(Format("// include %.*s omitted\n", path.size(), path.data()));
+                            pp->args = args;
+                            pp->argLocations = argLocs;
+                            goto next_line;
+                            // Do nothing
                         }
                     }
                     else
@@ -1185,7 +1192,7 @@ escape_newline:
                     }
                     pp->args = args;
                     pp->argLocations = argLocs;
-                    output.append(Format("#line %d \"%s\"", level->lineCounter, level->file->path.c_str()));
+                    output.append(Format("\n#line %d \"%s\"", level->lineCounter, level->file->path.c_str()));
                 }
                 else if (strncmp(startOfDirective, "undef", 5) == 0)
                 {
@@ -1511,13 +1518,15 @@ escape_newline:
                     pp->contents = std::string_view(firstWord + 2, endOfComment);
                     columnIt = endOfComment + 2;
                     comment = false;
+                    continue;
                 }
                 else
                 {
                     columnIt = firstWord + 2;
                     commentBlockBegin = columnIt;
+                    output.push_back('\n');
+                    goto next_line;
                 }
-                continue;
             }
             else if (comment && firstWord[0] == '*' && firstWord[1] == '/')
             {
@@ -2050,6 +2059,7 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
     {
         // get the name of the shader
         std::locale loc;
+        printf("%s\n\n", preprocessed.c_str());
         
         TransientString nameMangled = file->path;
         char* end = nameMangled.buf + nameMangled.size;
