@@ -643,7 +643,7 @@ def generate_types():
                     data_type_name2 = f'{data_type_mapping[type2]}x{size}'
 
                 function_name = f'{type_name}_from_{type_name2}'
-                arg_name = f'{type_name}_from_{type_name2}_arg0'
+                arg_name = f'{type_name}_from_{type_name2}_arg'
 
                 fun = Function(
                     decl_name=function_name,
@@ -666,7 +666,7 @@ def generate_types():
                     spirv_type_construction += spirv_intrinsic(function_name, f'    return ConverterTable[TypeConversionTable::{type2}To{type}](c, g, {size}, args[0]);\n')
                 if size > 1:
                     function_name = f'{type_name}_splat_{type2}'
-                    arg_name = f'{type_name}_splat_{type2}_arg0'
+                    arg_name = f'{type_name}_splat_{type2}_arg'
 
                     bit_width1 = bit_width_mapping[type]
                     bit_width2 = bit_width_mapping[type2]
@@ -731,7 +731,7 @@ def generate_types():
                     else:
                         arg_type_name = f'{type}x{s}'
                     arg_name = f'{function_name}_arg{arg_idx}_{arg_type_name}'
-                    fun.parameters.append(Variable(decl_name=arg_name, api_name=f'_arg{arg_idx}', type_name=arg_type_name))
+                    fun.parameters.append(Variable(decl_name=arg_name, api_name=f'arg{arg_idx}', type_name=arg_type_name))
                     args.append(arg_name)
                     if s == 1:
                         list_entry_key.append(f'{data_type_mapping[type]}')
@@ -751,12 +751,12 @@ def generate_types():
             spirv_intrinsics.write(spirv_type_construction)
             for name, op, idx_type in zip(index_operator_names, index_operators, index_types):
                 function_name = f'{type_name}_operator_{name}'
-                arg_name = f'{type_name}_operator_{name}_arg0'
+                arg_name = f'{type_name}_operator_{name}_arg'
                 fun = Function(
                     decl_name=function_name,
                     api_name=f'operator{op}',
                     return_type=type,
-                    parameters=[Variable(decl_name=arg_name, api_name='_arg0', type_name=idx_type)],
+                    parameters=[Variable(decl_name=arg_name, api_name='arg', type_name=idx_type)],
                 )
                 declaration_string += fun.declaration()
                 definition_string += fun.definition()
@@ -778,12 +778,12 @@ def generate_types():
             if type == 'Bool8':
                 for name, op in zip(bool_operator_names, bool_operators):
                     function_name = f'{type_name}_operator_{name}_{type_name}'
-                    arg_name = f'{function_name}_arg0'
+                    arg_name = f'{function_name}_arg'
                     fun = Function(
                         decl_name=function_name,
                         api_name=f'operator{op}',
                         return_type=type,
-                        parameters=[Variable(decl_name=arg_name, api_name='_arg0', type_name=type_name)],
+                        parameters=[Variable(decl_name=arg_name, api_name='arg', type_name=type_name)],
                     )
                     declaration_string += fun.declaration()
                     definition_string += fun.definition()
@@ -815,12 +815,12 @@ def generate_types():
                     return_type = type_name
                     for name, op in operator_set:
                         function_name = f'{type_name}_operator_{name}_{type_name}'
-                        arg_name = f'{function_name}_arg0'
+                        arg_name = f'{function_name}_arg'
                         fun = Function(
                             decl_name=function_name,
                             api_name=f'operator{op}',
                             return_type=type_name,
-                            parameters=[Variable(decl_name=arg_name, api_name='_arg0', type_name=type_name)],
+                            parameters=[Variable(decl_name=arg_name, api_name='arg', type_name=type_name)],
                         )
 
                         declaration_string += fun.declaration()
@@ -863,7 +863,7 @@ def generate_types():
 
                 for name, op in zip(comparison_operator_names, comparison_operators):
                     function_name = f'{type_name}_operator_{name}_{type_name}'
-                    arg_name = f'{function_name}_arg0'
+                    arg_name = f'{function_name}_arg'
                     return_type = f'Bool8'
                     if size > 1:
                         return_type = f'Bool8x{size}'
@@ -871,7 +871,7 @@ def generate_types():
                         decl_name=function_name,
                         api_name=f'operator{op}',
                         return_type=return_type,
-                        parameters=[Variable(decl_name=arg_name, api_name='_arg0', type_name=type_name)],
+                        parameters=[Variable(decl_name=arg_name, api_name='arg', type_name=type_name)],
                     )
 
                     declaration_string += fun.declaration()
@@ -919,14 +919,14 @@ def generate_types():
                 if size > 1:
                     for name, op, scale_type in zip(scale_operator_names, scale_operators, scale_operator_types):
                         function_name = f'{type_name}_operator_{name}_{scale_type}'
-                        arg_name = f'{function_name}_arg0'
+                        arg_name = f'{function_name}_arg'
 
 
                         fun = Function(
                             decl_name=function_name,
                             api_name=f'operator{op}',
                             return_type=type_name,
-                            parameters=[Variable(decl_name=arg_name, api_name='_arg0', type_name=scale_type)],
+                            parameters=[Variable(decl_name=arg_name, api_name='arg', type_name=scale_type)],
                         )
                         declaration_string += fun.declaration()
                         definition_string += fun.definition()
@@ -953,13 +953,13 @@ def generate_types():
                     
                     for name, op in zip(vector_matrix_operator_names, vector_matrix_operators):
                         function_name = f'{type_name}_operator_{name}_{compatible_matrix_type}'
-                        arg_name = f'{function_name}_arg0'
+                        arg_name = f'{function_name}_arg'
 
                         fun = Function(
                             decl_name=function_name,
                             api_name=f'operator{op}',
                             return_type=return_type,
-                            parameters=[Variable(decl_name=arg_name, api_name='_arg0', type_name=compatible_matrix_type)],
+                            parameters=[Variable(decl_name=arg_name, api_name='arg', type_name=compatible_matrix_type)],
                         )
                         declaration_string += fun.declaration()
                         definition_string += fun.definition()
@@ -982,12 +982,12 @@ def generate_types():
                 for operator_set in operator_sets:
                     for name, op in operator_set:
                         function_name = f'{type_name}_operator_{name}_{type_name}'
-                        arg_name = f'{function_name}_arg0'
+                        arg_name = f'{function_name}_arg'
                         fun = Function(
                             decl_name=function_name,
                             api_name=f'operator{op}',
                             return_type=type_name,
-                            parameters=[Variable(decl_name=arg_name, api_name='_arg0', type_name=type_name)],
+                            parameters=[Variable(decl_name=arg_name, api_name='arg', type_name=type_name)],
                         )
                         declaration_string += fun.declaration()
                         definition_string += fun.definition()
@@ -1058,7 +1058,7 @@ def generate_types():
                 for arg_index in range(0, row_size):
                     fun.parameters.append(Variable(
                         decl_name=f'{vector_ctor_name}_arg{arg_index}',
-                        api_name=f'_arg{arg_index}',
+                        api_name=f'arg{arg_index}',
                         type_name=f'{type}x{column_size}'
                     ))
 
@@ -1093,7 +1093,7 @@ def generate_types():
                 for arg_index in range(0, column_size * row_size):
                     fun.parameters.append(Variable(
                         decl_name=f'{type_name}_raw_list_arg{arg_index}',
-                        api_name=f'_arg{arg_index}',
+                        api_name=f'arg{arg_index}',
                         type_name=type
                     ))
                 declaration_string += fun.declaration()
@@ -1105,7 +1105,7 @@ def generate_types():
                 vec_type = f'{type}x{column_size}'
                 for name, op, idx_type in zip(index_operator_names, index_operators, index_types):
                     function_name = f'{type_name}_operator_{name}'
-                    arg_name = f'{type_name}_operator_{name}_arg0'
+                    arg_name = f'{type_name}_operator_{name}_arg'
                     fun = Function(
                         decl_name=function_name,
                         api_name=f'operator{op}',
@@ -1159,13 +1159,13 @@ def generate_types():
                 for operator_set in operator_sets:
                     for name, op in operator_set:
                         function_name = f'{type_name}_operator_{name}_{type_name}'
-                        arg_name = f'{function_name}_arg0'
+                        arg_name = f'{function_name}_arg'
 
                         fun = Function(
                             decl_name=function_name,
                             api_name=f'operator{op}',
                             return_type=type_name,
-                            parameters=[Variable(decl_name=arg_name, api_name='_arg0', type_name=type_name)],
+                            parameters=[Variable(decl_name=arg_name, api_name='arg', type_name=type_name)],
                         )
                         declaration_string += fun.declaration()
                         definition_string += fun.definition()
@@ -1206,12 +1206,12 @@ def generate_types():
 
                 op = '*'
                 function_name = f'{type_name}_operator_scale_{type}'
-                arg_name = f'{function_name}_arg0'
+                arg_name = f'{function_name}_arg'
                 fun = Function(
                     decl_name=function_name,
                     api_name=f'operator{op}',
                     return_type=type_name,
-                    parameters=[Variable(decl_name=arg_name, api_name='_arg0', type_name=type)],
+                    parameters=[Variable(decl_name=arg_name, api_name='arg', type_name=type)],
                 )
                 declaration_string += fun.declaration()
                 definition_string += fun.definition()
@@ -1229,10 +1229,11 @@ def generate_types():
                 definition_string += builtin_type.definition(setup_string, list_string)
 
     class Type:
-        def __init__(self, name, category=None, base_type = None):
+        def __init__(self, name, category=None, base_type = None, api_name=None):
             self.name = name
             self.category = category
             self.baseType = base_type
+            self.api_name = api_name
 
         def declaration(self):
             class_decl = ''
@@ -1247,7 +1248,7 @@ def generate_types():
             class_def = ''
             class_def += f'{self.name}::{self.name}()\n'
             class_def += '{\n'
-            name = self.name[0].lower() + self.name[1:]
+            name = self.name[0].lower() + self.name[1:] if self.api_name is None else self.api_name
             namer.names.append(NamerEntry(self.name, name))
             class_def += f'    this->name = "{name}"_c;\n'
             #class_def += f'    this->symbolTyope = "Symbol::SymbolType::TypeType"_c;\n'
@@ -1261,7 +1262,7 @@ def generate_types():
             return class_def
 
         def pair(self):
-            return IntrinsicPair(decl_name=f'{self.name}Type', api_name=self.name[0].lower() + self.name[1:])
+            return IntrinsicPair(decl_name=f'{self.name}Type', api_name=self.name[0].lower() + self.name[1:] if self.api_name is None else self.api_name)
 
     # Texture types
     texture_dimensions = ['1D', '2D', '3D', 'Cube']
@@ -1309,7 +1310,7 @@ def generate_types():
     definition_string += type.definition()
     intrinsic_list.append(type.pair())
 
-    type = Type('FunctionPtr')
+    type = Type('FunctionPtr', api_name='Function')
     declaration_string += type.declaration()
     definition_string += type.definition()
 
@@ -1360,6 +1361,8 @@ def generate_types():
             defn += '    this->type.literal = true;\n'
             defn += '    this->builtin = true;\n'
 
+
+            labels = []
             value = 0
             for i, member in enumerate(self.members):
                 value = member.value if member.value is not None else value 
@@ -1367,7 +1370,10 @@ def generate_types():
                 defn += f'    {self.name}{member.decl_name}.type = Type::FullType{{ {self.name}Type.name, true }};\n'
                 defn += f'    {self.name}{member.decl_name}.underlyingType = Type::FullType{{ {self.type_name}Type.name }};\n'
                 defn += f'    Symbol::Resolved(&{self.name}{member.decl_name})->type = this;\n'
+                labels.append( f'"{member.decl_name if member.api_name is None else member.api_name}"_c' )
                 value = value + 1
+
+            defn += f'    this->labels = std::array{{ {", ".join(labels)} }};\n'
 
             defn += '    auto enumResolved = Symbol::Resolved(this);\n'
 
@@ -1694,7 +1700,7 @@ def generate_types():
 
             defn += f'{self.name}::{self.name}()\n'
             defn += '{\n'
-            defn += f'    this->name = "{self.name[0].lower() + self.name[1:]}"_c;\n'
+            defn += f'    this->name = "{self.name}"_c;\n'
             defn += '    this->builtin = true;\n'
             for member in self.members:
                 defn += f'    {self.name}{member.name}.name = "{member.name}"_c;\n'
@@ -1940,7 +1946,28 @@ def generate_types():
         'Exp2', 'InverseSqrt', 'Log', 'Log2', 'Sin', 'Sinh', 'Sqrt', 'Tan', 'Tanh'
     ]
 
-    for intrinsic, spirv_op in zip(float_only_single_argument_intrinsics, float_only_single_argument_spirv_intrinsics):
+    docs = [
+        'Returns the arc cosine of a value.',
+        'Returns the hyperbolic arc cosine of a value.',
+        'Returns the arc sine of a value.',
+        'Returns the hyperbolic arc sine of a value.',
+        'Returns the arc tangent of a value.',
+        'Returns the hyperbolic arc tangent of a value.',
+        'Returns the cosine of a value.',
+        'Returns the hyperbolic cosine of a value.',
+        'Returns the exponential of a value.',
+        'Returns the base 2 exponential of a value.',
+        'Returns the inverse square root of a value.',
+        'Returns the natural logarithm of a value.',
+        'Returns the base 2 logarithm of a value.',
+        'Returns the sine of a value.',
+        'Returns the hyperbolic sine of a value.',
+        'Returns the square root of a value.',
+        'Returns the tangent of a value.',
+        'Returns the hyperbolic tangent of a value.'
+    ]
+
+    for intrinsic, spirv_op, doc in zip(float_only_single_argument_intrinsics, float_only_single_argument_spirv_intrinsics, docs):
         for type in float_types:
             function_name = f'{intrinsic}_{type}'
             argument_name = f'{function_name}_arg'
@@ -1948,6 +1975,7 @@ def generate_types():
                 decl_name = function_name,
                 api_name = intrinsic,
                 return_type = type,
+                documentation = doc,
                 parameters = [Variable(decl_name = argument_name, api_name = "val", type_name=type)],
                 
             )
@@ -1972,6 +2000,7 @@ def generate_types():
                 decl_name = function_name,
                 api_name = intrinsic,
                 return_type = type,
+                documentation = 'Returns the angle whose tangent is the quotient of the two specified numbers.',
                 parameters = [
                     Variable(decl_name = y_name, api_name = "y", type_name=type),
                     Variable(decl_name = x_name, api_name = "x", type_name=type)
@@ -2000,6 +2029,7 @@ def generate_types():
             decl_name = function_name,
             api_name = intrinsic,
             return_type = type,
+            documentation = 'Returns the result of raising a value to the power of an exponent.',
             parameters = [
                 Variable(decl_name = argument_name, api_name = "val", type_name=type),
                 Variable(decl_name = exponent_name, api_name = "exponent", type_name=type)
@@ -2030,6 +2060,7 @@ def generate_types():
             decl_name = function_name,
             api_name = intrinsic,
             return_type = type,
+            documentation = 'Returns the result of multiplying a value by a multiplier and adding an addend.',
             parameters = [
                 Variable(decl_name = argument_name, api_name = "val", type_name=type),
                 Variable(decl_name = multiplier_name, api_name = "multiplier", type_name=type),
@@ -2061,6 +2092,7 @@ def generate_types():
             decl_name = function_name,
             api_name = intrinsic,
             return_type = base_type_mapping[type],
+            documentation = 'Returns the dot product of two vectors.',
             parameters = [
                 Variable(decl_name = x_name, api_name = "x", type_name=type),
                 Variable(decl_name = y_name, api_name = "y", type_name=type)
@@ -2090,6 +2122,7 @@ def generate_types():
             decl_name = function_name,
             api_name = intrinsic,
             return_type = type,
+            documentation = 'Returns the reflection of a vector through a surface using an incident vector and normal.',
             parameters = [
                 Variable(decl_name = incident_name, api_name = "incident", type_name=type),
                 Variable(decl_name = normal_name, api_name = "normal", type_name=type)
@@ -2119,6 +2152,7 @@ def generate_types():
             decl_name = function_name,
             api_name = intrinsic,
             return_type = type,
+            documentation = 'Returns the refraction of a vector through a surface using an incident vector, normal and an index of refraction.',
             parameters = [
                 Variable(decl_name = incident_name, api_name = "incident", type_name=type),
                 Variable(decl_name = normal_name, api_name = "normal", type_name=type),
@@ -2150,6 +2184,7 @@ def generate_types():
             decl_name = function_name,
             api_name = intrinsic,
             return_type = type,
+            documentation = 'Returns the cross product of two vectors.',
             parameters = [
                 Variable(decl_name = v0_name, api_name = "v0", type_name=type),
                 Variable(decl_name = v1_name, api_name = "v1", type_name=type)
@@ -2170,8 +2205,9 @@ def generate_types():
 
     # Length & Normalize
     ops = ['length', 'normalize']
+    docs = ['Returns the length of the vector.', 'Returns the normalized vector.']
     spirv_ops = ['Length', 'Normalize']
-    for intrinsic, spirv_op in zip(ops, spirv_ops):
+    for intrinsic, spirv_op, doc in zip(ops, spirv_ops, docs):
         for type in float_vec_types:
             function_name = f'{intrinsic}_{type}'
             argument_name = f'{function_name}_arg'
@@ -2180,6 +2216,7 @@ def generate_types():
                 decl_name = function_name,
                 api_name = intrinsic,
                 return_type = type,
+                documentation = doc,
                 parameters = [
                     Variable(decl_name = argument_name, api_name = "val", type_name=type)
                 ]
@@ -2206,6 +2243,7 @@ def generate_types():
             decl_name = function_name,
             api_name = intrinsic,
             return_type = type,
+            documentation = 'Returns the distance between two points.',
             parameters = [
                 Variable(decl_name = p0_name, api_name = "p0", type_name=type),
                 Variable(decl_name = p1_name, api_name = "p1", type_name=type)
@@ -2236,6 +2274,7 @@ def generate_types():
                 decl_name = function_name,
                 api_name = intrinsic,
                 return_type = type,
+                documentation = f'Returns the {intrinsic}imum of x and y.',
                 parameters = [
                     Variable(decl_name = x_name, api_name = "x", type_name=type),
                     Variable(decl_name = y_name, api_name = "y", type_name=type)
@@ -2271,6 +2310,7 @@ def generate_types():
             decl_name = function_name,
             api_name = intrinsic,
             return_type = type,
+            documentation = 'Returns the value clamped between min and max.',
             parameters = [
                 Variable(decl_name = value_name, api_name = "val", type_name=type),
                 Variable(decl_name = min_name, api_name = "min", type_name=type),
@@ -2309,6 +2349,7 @@ def generate_types():
             decl_name = function_name,
             api_name = intrinsic,
             return_type = type,
+            documentation = 'Returns the linear interpolation between a and b by t.',
             parameters = [
                 Variable(decl_name = a_name, api_name = "a", type_name=type),
                 Variable(decl_name = b_name, api_name = "b", type_name=type),
@@ -2340,6 +2381,7 @@ def generate_types():
             decl_name = function_name,
             api_name = intrinsic,
             return_type = type,
+            documentation = 'Returns 0.0 if x < edge, otherwise returns 1.0.',
             parameters = [
                 Variable(decl_name = edge_name, api_name = "edge", type_name=type),
                 Variable(decl_name = x_name, api_name = "x", type_name=type)
@@ -2369,6 +2411,7 @@ def generate_types():
             decl_name = function_name,
             api_name = intrinsic,
             return_type = type,
+            documentation = 'Returns the smoothstep interpolation of the input.',
             parameters = [
                 Variable(decl_name = edge0_name, api_name = "edge0", type_name=type),
                 Variable(decl_name = edge1_name, api_name = "edge1", type_name=type),
@@ -2391,8 +2434,18 @@ def generate_types():
 
     # Ceil, Floor, Fract, Saturate, Trunc, Ddx, Ddy, Fwidth
     ops = ['ceil', 'floor', 'fract', 'saturate', 'trunc', 'ddx', 'ddy', 'fwidth']
+    docs = [
+        'Returns the smallest integer value that is greater than or equal to the input.',
+        'Returns the largest integer value that is less than or equal to the input.',
+        'Returns the fractional part of the input.',
+        'Returns the input clamped to the range [0, 1].',
+        'Returns the integer part of the input, removing any fractional part.',
+        'Returns the derivative of the input with respect to the screen x coordinate.',
+        'Returns the derivative of the input with respect to the screen y coordinate.',
+        'Returns the width of the input, which is the maximum of the absolute values of the derivatives in the screen x and y coordinates.'
+    ]
     spirv_ops = ['Ceil', 'Floor', 'Fract', 'Saturate', 'Trunc', 'DPdx', 'DPdy', 'Fwidth']
-    for intrinsic, spirv_op in zip(ops, spirv_ops):
+    for intrinsic, spirv_op, doc in zip(ops, spirv_ops, docs):
         for type in float_types:
             function_name = f'{intrinsic}_{type}'
             argument_name = f'{function_name}_arg'
@@ -2400,6 +2453,7 @@ def generate_types():
                 decl_name = function_name,
                 api_name = intrinsic,
                 return_type = type,
+                documentation = doc,
                 parameters = [
                     Variable(decl_name = argument_name, api_name = "val", type_name=type)
                 ]
@@ -2429,8 +2483,12 @@ def generate_types():
 
     # Sign and Abs
     ops = ['sign', 'abs']
+    docs = [
+        'Returns the sign of the value.',
+        'Returns the absolute value of the input.'
+    ]
     spirv_ops = ['Sign', 'Abs']
-    for intrinsic, spirv_op in zip(ops, spirv_ops):
+    for intrinsic, spirv_op, doc in zip(ops, spirv_ops, docs):
         for type in signed_types:
             function_name = f'{intrinsic}_{type}'
             argument_name = f'{function_name}_arg'
@@ -2438,6 +2496,7 @@ def generate_types():
                 decl_name = function_name,
                 api_name = intrinsic,
                 return_type = type,
+                documentation = doc,
                 parameters = [
                     Variable(decl_name = argument_name, api_name = "val", type_name=type)
                 ]
@@ -2470,6 +2529,7 @@ def generate_types():
                     decl_name = function_name,
                     api_name = intrinsic,
                     return_type = type1,
+                    documentation = f'Casts value of {type2} to type {type1} without conversion.',
                     parameters = [
                         Variable(decl_name = argument_name, api_name = "val", type_name=type2)
                     ]
@@ -2498,6 +2558,7 @@ def generate_types():
                     decl_name = function_name,
                     api_name = intrinsic,
                     return_type = type1,
+                    documentation = f'Casts value of {type2} to type {type1} without conversion.',
                     parameters = [
                         Variable(decl_name = argument_name, api_name = "val", type_name=type2)
                     ]
@@ -2516,8 +2577,12 @@ def generate_types():
 
     # Any and all
     ops = ['any', 'all']
+    docs = [
+        'Returns true if any component of the vector is non-zero.',
+        'Returns true if all components of the vector are non-zero.'
+    ]
     spirv_op = ['Any', 'All']
-    for intrinsic, spirv_op in zip(ops, spirv_op):
+    for intrinsic, spirv_op, doc in zip(ops, spirv_op, docs):
         for type in bool_types:
             function_name = f'{intrinsic}_{type}'
             argument_name = f'{function_name}_arg'
@@ -2526,6 +2591,7 @@ def generate_types():
                     decl_name = function_name,
                     api_name = intrinsic,
                     return_type = type,
+                    documentation = doc,
                     parameters = [
                         Variable(decl_name = argument_name, api_name = "val", type_name=type)
                     ]
@@ -2543,13 +2609,17 @@ def generate_types():
             spirv_code += spirv_intrinsic(function_name, spirv_function)
 
     ops = ['transpose', 'inverse']
+    docs = [
+        'Returns the transposed matrix.',
+        'Returns the inverse of the matrix.'
+    ]
     matrix_types = []
     for i in range(2, 5):
         for j in range(2, 5):
             matrix_types.append(f'Float32x{i}x{j}')
             matrix_types.append(f'Float16x{i}x{j}')
 
-    for intrinsic in ops:
+    for intrinsic, doc in zip(ops, docs):
         for type in matrix_types:
             function_name = f'{intrinsic}_{type}'
             argument_name = f'{function_name}_arg'
@@ -2558,6 +2628,7 @@ def generate_types():
                 decl_name = function_name,
                 api_name = intrinsic,
                 return_type = type,
+                documentation = doc,
                 parameters = [
                     Variable(decl_name = argument_name, api_name = "val", type_name=type)
                 ]
@@ -2579,9 +2650,18 @@ def generate_types():
 
 
     # Builtin value getters
-    vertex_value_builtins = ['GetOutputLayer', 'GetOutputViewport', 'GetIndex', 'GetInstanceIndex', 'GetBaseIndex', 'GetBaseInstanceIndex', 'GetDrawIndex']
+    intrinsics = ['GetOutputLayer', 'GetOutputViewport', 'GetIndex', 'GetInstanceIndex', 'GetBaseIndex', 'GetBaseInstanceIndex', 'GetDrawIndex']
+    docs = [
+        'Returns the output layer for the current vertex.',
+        'Returns the output viewport for the current vertex.',
+        'Returns the index of the current vertex.',
+        'Returns the instance index of the current vertex.',
+        'Returns the base index of the current vertex.',
+        'Returns the base instance index of the current vertex.',
+        'Returns the draw index of the current vertex.'
+    ]
     vertex_value_builtins_spirv = ['Layer', 'ViewportIndex', 'VertexId', 'InstanceId', 'BaseVertex', 'BaseInstance', 'DrawIndex']
-    for builtin, spirv_builtin in zip(vertex_value_builtins, vertex_value_builtins_spirv):
+    for builtin, spirv_builtin, doc in zip(intrinsics, vertex_value_builtins_spirv, docs):
         intrinsic = builtin
         function_name = f'Vertex{intrinsic}'
 
@@ -2616,9 +2696,13 @@ def generate_types():
         spirv_code += spirv_intrinsic(function_name, spirv_function)
 
     unsigned_types = ['UInt16', 'UInt32']
-    vertex_value_builtins = ['SetOutputLayer', 'SetOutputViewport']
+    intrinsics = ['SetOutputLayer', 'SetOutputViewport']
+    docs = [
+        'Sets the output layer for the current vertex.',
+        'Sets the output viewport for the current vertex.'
+    ]
     vertex_value_builtins_spirv = ['Layer', 'ViewportIndex']
-    for builtin, spirv_builtin in zip(vertex_value_builtins, vertex_value_builtins_spirv):
+    for builtin, spirv_builtin, doc in zip(intrinsics, vertex_value_builtins_spirv, docs):
         for type in unsigned_types:
             intrinsic = builtin
             function_name = f'Vertex{intrinsic}_{type}'
@@ -2628,6 +2712,7 @@ def generate_types():
                 decl_name = function_name,
                 api_name = f'vertex{intrinsic}',
                 return_type = 'Void',
+                documentation = doc,
                 parameters = [
                     Variable(decl_name = argument_name, api_name = "val", type_name=type)
                 ]
@@ -2664,6 +2749,7 @@ def generate_types():
             decl_name = function_name,
             api_name = f'vertex{intrinsic}',
             return_type = 'Void',
+            documentation = 'Exports the value as the vertex position to the rasterizer. This function must be called at least once in a vertex shader. This is the same as the SV_POSITION in HLSL or gl_Position in GLSL.',
             parameters = [
                 Variable(decl_name = argument_name, api_name = "val", type_name=type)
             ]
@@ -2686,10 +2772,14 @@ def generate_types():
         spirv_function += '    return SPIRVResult::Invalid();\n'
         spirv_code += spirv_intrinsic(function_name, spirv_function)
 
-    geometry_export_builtins = ['ExportVertex', 'ExportPrimitive']
+    intrinsics = ['ExportVertex', 'ExportPrimitive']
+    docs = [
+        'Exports the current vertex to the output stream. This function must be called for each vertex in a geometry shader.',
+        'Exports the current primitive to the output stream. This function must be called after all vertices of a primitive have been exported.'
+    ]
     geometry_export_builtins_spirv = ['EmitVertex', 'EndPrimitive']
 
-    for builtin, spirv_builtin in zip(geometry_export_builtins, geometry_export_builtins_spirv):
+    for builtin, spirv_builtin, doc in zip(intrinsics, geometry_export_builtins_spirv, docs):
         intrinsic = builtin
         function_name = f'Geometry{intrinsic}'
         fun = Function( 
@@ -2720,6 +2810,7 @@ def generate_types():
             decl_name = function_name,
             api_name = f'pixel{intrinsic}',
             return_type = type,
+            documentation = 'Returns the post transformation coordinates of the current pixel. xy is the pixel position in non-normalized coordinates, z is the depth in the range [0, 1] or [-1, 1] based on the graphics API.',
             parameters = [
             ]
         )
@@ -2748,6 +2839,7 @@ def generate_types():
         decl_name = function_name,
         api_name = f'pixel{intrinsic}',
         return_type = 'Float32',
+        documentation = 'Returns the depth value for the current pixel',
         parameters = [
         ]
     )
@@ -2775,6 +2867,7 @@ def generate_types():
         decl_name = function_name,
         api_name = f'pixel{intrinsic}',
         return_type = 'Void',
+        documentation = 'Sets the depth value for the current pixel',
         parameters = [
             Variable(decl_name = f'{function_name}_val', api_name = "val", type_name='Float32')
         ]
@@ -2808,6 +2901,7 @@ def generate_types():
                 decl_name = function_name,
                 api_name = f'pixel{intrinsic}',
                 return_type = 'Void',
+                documentation = f'Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable.',
                 parameters = [
                     Variable(decl_name = color_argument_name, api_name = "color", type_name=type),
                     Variable(decl_name = index_argument_name, api_name = "index", type_name=idx, literal=True)
@@ -2833,15 +2927,30 @@ def generate_types():
             spirv_code += spirv_intrinsic(function_name, spirv_function)
 
     # TODO: Hmm maybe these should all be UInt16 considering dispatch sizes can't exceed 65535?????
-    compute_builtin_getters = ['GetLocalThreadIndices', 'GetGlobalThreadIndices', 'GetWorkgroupIndices', 'GetWorkGroupDimensions']
+    intrinsics = ['GetLocalThreadIndices', 'GetGlobalThreadIndices', 'GetWorkgroupIndices', 'GetWorkGroupDimensions']
+    docs = [
+        'Returns the local thread indices within the workgroup',
+        'Returns the global thread indices in the dispatch',
+        'Returns the workgroup indices in the dispatch',
+        'Returns the dimensions of the workgroup in the dispatch'
+    ]
     compute_builtin_getters_spirv = ['LocalInvocationId', 'GlobalInvocationId', 'WorkgroupId', 'WorkgroupSize']
-    for intrinsic, spirv_builtin in zip(compute_builtin_getters, compute_builtin_getters_spirv):
+    for intrinsic, spirv_builtin, doc in zip(intrinsics, compute_builtin_getters_spirv, docs):
         function_name = f'Compute{intrinsic}'
 
+        if intrinsic == 'GetLocalThreadIndices':
+            doc = 'Returns the local thread indices within the workgroup'
+        elif intrinsic == 'GetGlobalThreadIndices':
+            doc = 'Returns the global thread indices in the dispatch'
+        elif intrinsic == 'GetWorkgroupIndices':
+            doc = 'Returns the workgroup indices in the dispatch'
+        elif intrinsic == 'GetWorkGroupDimensions':
+            doc = 'Returns the dimensions of the workgroup in the dispatch'
         fun = Function( 
             decl_name = function_name,
             api_name = f'compute{intrinsic}',
             return_type = 'UInt32x3',
+            documentation = doc,
             parameters = [
             ]
         )
@@ -2870,6 +2979,7 @@ def generate_types():
         decl_name = function_name,
         api_name = f'compute{intrinsic}',
         return_type = 'UInt32',
+        documentation = 'Returns flattened index of the current thread in the workgroup using (x * workgroupSize.y + y) * workgroupSize.x + z',
         parameters = [
         ]
     )
@@ -2929,11 +3039,11 @@ def generate_types():
     subgroup_builtin_masks = ['GetThreadMask', 'GetThreadAndLowerMask', 'GetLowerMask', 'GetThreadAndGreaterMask', 'GetGreaterMask']
     subgroup_builtin_masks_spirv = ['SubgroupEqMask', 'SubgroupLeMask', 'SubgroupLtMask', 'SubgroupGeMask', 'SubgroupGtMask']
     subgroup_builtin_docs = [
-        'Returns a subgroup mask where the current thread is active',
-        'Returns a subgroup mask where the current thread and all lower threads are active',
-        'Returns a subgroup mask where all lower threads are active',
-        'Returns a subgroup mask where the current thread and all greater threads are active',
-        'Returns a subgroup mask where all greater threads are active'
+        'Returns a 128 bit subgroup mask where the current thread is active',
+        'Returns a 128 bit subgroup mask where the current thread and all lower threads are active',
+        'Returns a 128 bit subgroup mask where all lower threads are active',
+        'Returns a 128 bit subgroup mask where the current thread and all greater threads are active',
+        'Returns a 128 bit subgroup mask where all greater threads are active'
     ]
     for intrinsic, spirv_builtin, doc in zip(subgroup_builtin_masks, subgroup_builtin_masks_spirv, subgroup_builtin_docs):
         function_name = f'Subgroup{intrinsic}'
@@ -3013,17 +3123,25 @@ def generate_types():
         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
         spirv_code += spirv_intrinsic(function_name, spirv_function)
 
-    subgroup_ballot_ops = ['Ballot', 'InverseBallot']
-    subgroup_ballot_ops_doc = ['Constructs a subgroup mask within the workgroup where predicate is true', 'Constructs a subgroup mask within the workgroup where predicate is false']
+    intrinsics = ['Ballot', 'InverseBallot']
     subgroup_ballot_ops_spirv = ['GroupNonUniformBallot', 'GroupNonUniformInverseBallot']
-    for intrinsic, doc, spirv in zip(subgroup_ballot_ops, subgroup_ballot_ops_doc, subgroup_ballot_ops_spirv):
+    docs = [
+        'Constructs a 128 bit subgroup thread mask to the value of the predicate argument for each active thread',
+        'Constructs a 128 bit subgroup thread mask to the inverse of the value of the predicate argument for each active thread'
+    ]
+    for intrinsic, doc, spirv in zip(intrinsics, docs, subgroup_ballot_ops_spirv):
         function_name = f'Subgroup{intrinsic}'
         predicate_argument_name = f'{function_name}_predicate'
+
+        if intrinsic == 'Ballot':
+            doc = 'Constructs a 128 bit subgroup thread mask to the value of the predicate argument for each active thread'
+        if intrinsic == 'InverseBallot':
+            doc = 'Constructs a 128 bit subgroup thread mask to the inverse of the value of the predicate argument for each active thread'
         fun = Function( 
             decl_name = function_name,
             api_name = f'subgroup{intrinsic}',
             return_type = 'UInt32x4',
-            documentation = 'Sets the subgroup mask to the value of the predicate argument for each active thread',
+            documentation = doc,
             parameters = [
                 Variable(decl_name = predicate_argument_name, api_name = "predicate", type_name='Bool8')
             ]
@@ -3048,7 +3166,7 @@ def generate_types():
         decl_name = function_name,
         api_name = f'subgroup{intrinsic}',
         return_type = 'UInt32',
-        documentation = 'Returns the number of bits set to 1 in a ballot mask',
+        documentation = 'Returns the number of bits set to 1 in a 128 bit subgroup thread mask',
         parameters = [
             Variable(decl_name = mask_name, api_name = "value", type_name='UInt32x4')
         ]
@@ -3073,7 +3191,7 @@ def generate_types():
         decl_name = function_name,
         api_name = f'subgroup{intrinsic}',
         return_type = 'UInt32',
-        documentation = 'Returns the first one (ctz) in a subgroup thread mask',
+        documentation = 'Returns the first one (ctz) in a 128 bit subgroup thread mask',
         parameters = [
             Variable(decl_name = mask_name, api_name = "value", type_name='UInt32x4')
         ]
@@ -3098,7 +3216,7 @@ def generate_types():
         decl_name = function_name,
         api_name = f'subgroup{intrinsic}',
         return_type = 'UInt32',
-        documentation = 'Returns the last one (clz) in a subgroup thread mask',
+        documentation = 'Returns the last one (clz) in a 128 bit subgroup thread mask',
         parameters = [
             Variable(decl_name = mask_name, api_name = "value", type_name='UInt32x4')
         ]
@@ -3124,7 +3242,7 @@ def generate_types():
         decl_name = function_name,
         api_name = f'subgroup{intrinsic}',
         return_type = 'UInt32',
-        documentation = 'Returns true if bit at index in mask is 1',
+        documentation = 'Extracts a specific bit from a 128 bit subgroup thread mask',
         parameters = [
             Variable(decl_name = mask_name, api_name = "mask", type_name='UInt32x4'),
             Variable(decl_name = index_name, api_name = "index", type_name='UInt32', literal=True)
@@ -3144,17 +3262,24 @@ def generate_types():
     spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
     spirv_code += spirv_intrinsic(function_name, spirv_function)
 
-    subgroup_swap_ops = ['SwapDiagonal', 'SwapVertical', 'SwapHorizontal']
+    intrinsics = ['SwapDiagonal', 'SwapVertical', 'SwapHorizontal']
+    docs = [
+        'Swaps the value at the current thread with the value at the diagonal thread in the subgroup',
+        'Swaps the value at the current thread with the value at the vertical thread in the subgroup',
+        'Swaps the value at the current thread with the value at the horizontal thread in the subgroup'
+    ]
     subgroup_swap_op_directions = [2, 1, 0]
-    for intrinsic, direction in zip(subgroup_swap_ops, subgroup_swap_op_directions):
+    for intrinsic, direction, doc in zip(intrinsics, subgroup_swap_op_directions, docs):
         for type in scalar_types:
             function_name = f'Subgroup{intrinsic}_{type}'
             value_argument_name = f'{function_name}_value'
+
+
             fun = Function( 
                 decl_name = function_name,
                 api_name = f'subgroup{intrinsic}',
                 return_type = type,
-                documentation = 'Returns true if bit at index in mask is 1',
+                documentation = doc,
                 parameters = [
                     Variable(decl_name = value_argument_name, api_name = "value", type_name=type)
                 ]
@@ -3175,20 +3300,31 @@ def generate_types():
 
     # Atomics
     atomic_types = ['UInt32', 'Int32', 'UInt16', 'Int16']
-    atomic_functions_no_value = ['Load', 'Increment', 'Decrement']
+    intrinsics = ['Load', 'Increment', 'Decrement']
     atomic_builtins_spirv = ['OpAtomicLoad', 'OpAtomicIIncrement', 'OpAtomicIDecrement']
+    docs = [
+        'Loads the value at the pointer location with the specified memory semantics',
+        'Increments the value at the pointer location with the specified memory semantics, returns the old value',
+        'Decrements the value at the pointer location with the specified memory semantics, returns the old value'
+    ]
 
     for type in atomic_types:
-        for intrinsic, spirv_builtin in zip(atomic_functions_no_value, atomic_builtins_spirv):
+        for intrinsic, spirv_builtin, doc in zip(intrinsics, atomic_builtins_spirv, docs):
             function_name = f'Atomic{intrinsic}_{type}'
             ptr_argument_name = f'{function_name}_ptr'
             semantics_argument_name = f'{function_name}_semantics'
 
+            if intrinsic == 'Load':
+                doc = 'Loads the value at the pointer location with the specified memory semantics'
+            elif intrinsic == 'Increment':
+                doc = 'Increments the value at the pointer location with the specified memory semantics, returns the old value'
+            elif intrinsic == 'Decrement':
+                doc = 'Decrements the value at the pointer location with the specified memory semantics, returns the old value'
             fun = Function( 
                 decl_name = function_name,
                 api_name = f'atomic{intrinsic}',
                 return_type = type,
-                documentation = 'Returns true if bit at index in mask is 1',
+                documentation = doc,
                 parameters = [
                     Variable(decl_name = ptr_argument_name, api_name = "ptr", type_name=type, pointer=True),
                     Variable(decl_name = semantics_argument_name, api_name = "semantics", type_name='MemorySemantics', literal=True)
@@ -3210,9 +3346,18 @@ def generate_types():
             spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
             spirv_code += spirv_intrinsic(function_name, spirv_function)
 
-    atomic_functions_with_argument = ['Store', 'Exchange', 'Add', 'Subtract', 'And', 'Or', 'Xor']
+    intrinsics = ['Store', 'Exchange', 'Add', 'Subtract', 'And', 'Or', 'Xor']
+    docs = [
+        'Stores the value at the pointer location with the specified memory semantics, returns the old value',
+        'Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value',
+        'Adds the value to the pointer location with the specified memory semantics, returns the old value',
+        'Subtracts the value from the pointer location with the specified memory semantics, returns the old value',
+        'Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value',
+        'Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value',
+        'Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value'
+    ]
     for type in atomic_types:
-        for intrinsic in atomic_functions_with_argument:
+        for intrinsic, doc in zip(intrinsics, docs):
             function_name = f'Atomic{intrinsic}_{type}'
             ptr_argument_name = f'{function_name}_ptr'
             value_argument_name = f'{function_name}_value'
@@ -3222,7 +3367,7 @@ def generate_types():
                 decl_name = function_name,
                 api_name = f'atomic{intrinsic}',
                 return_type = type,
-                documentation = 'Returns true if bit at index in mask is 1',
+                documentation = doc,
                 parameters = [
                     Variable(decl_name = ptr_argument_name, api_name = "ptr", type_name=type, pointer=True),
                     Variable(decl_name = value_argument_name, api_name = "value", type_name=type),
@@ -3257,7 +3402,7 @@ def generate_types():
             decl_name = function_name,
             api_name = f'atomic{intrinsic}',
             return_type = type,
-            documentation = 'Returns true if bit at index in mask is 1',
+            documentation = 'Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value',
             parameters = [
                 Variable(decl_name = ptr_argument_name, api_name = "ptr", type_name=type, pointer=True),
                 Variable(decl_name = value_argument_name, api_name = "value", type_name=type),
@@ -3358,7 +3503,11 @@ def generate_types():
         spirv_code += spirv_intrinsic(function_name, spirv_function)
 
     intrinsics = ['Reverse', 'Count']
-    for intrinsic in intrinsics:
+    docs = [
+        'Reverses the bits in a bitmask',
+        'Counts the number of bits set to 1 in a bitmask'
+    ]
+    for intrinsic, doc in zip(intrinsics, docs):
         for type in types:
             function_name = f'Bit{intrinsic}_{type}'
             base_argument_name = f'{function_name}_base'
@@ -3370,6 +3519,7 @@ def generate_types():
                 decl_name = function_name,
                 api_name = f'bit{intrinsic}',
                 return_type = type,
+                documentation = doc,
                 parameters = [
                     Variable(decl_name = base_argument_name, api_name = "base", type_name=type)
                 ]
@@ -3382,17 +3532,28 @@ def generate_types():
 
             spirv_function = ''
             spirv_function += '    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);\n'
-            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);\n'
+            if intrinsic == 'Count':
+                spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpBitCount, SPVWriter::Section::LocalFunction, returnType, base);\n'
+            elif intrinsic == 'Reverse':
+                spirv_function += '    g->writer->Capability(Capabilities::BitInstructions);\n'
+                spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);\n'
             spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
             spirv_code += spirv_intrinsic(function_name, spirv_function)
 
-    barrier_intrinsics = ['ExecutionBarrier', 'ExecutionBarrierSubgroup', 'ExecutionBarrierWorkgroup']
-    for intrinsic in barrier_intrinsics:
+    intrinsics = ['ExecutionBarrier', 'ExecutionBarrierSubgroup', 'ExecutionBarrierWorkgroup']
+    docs = [
+        'Execution barrier to ensure all threads have reached this point before proceeding',
+        'Execution barrier to ensure all threads in the subgroup have reached this point before proceeding',
+        'Execution barrier to ensure all threads in the workgroup have reached this point before proceeding'
+    ]
+    for intrinsic, doc in zip(intrinsics, docs):
         function_name = f'{intrinsic}'
+
         fun = Function( 
             decl_name = function_name,
             api_name = f'{intrinsic[0].lower() + intrinsic[1:]}',
             return_type = type,
+            documentation = doc,
             parameters = [
             ]
         )
@@ -3422,10 +3583,22 @@ def generate_types():
     for intrinsic in memory_barrier_intrinsics:
         function_name = f'{intrinsic}'
 
+        doc = 'Memory barrier to ensure memory operations are completed before proceeding'
+        if intrinsic.endswith('Buffer'):
+            doc = 'Memory barrier to ensure buffer memory operations are completed before proceeding'
+        elif intrinsic.endswith('Texture'):
+            doc = 'Memory barrier to ensure texture memory operations are completed before proceeding'
+        elif intrinsic.endswith('Atomic'):
+            doc = 'Memory barrier to ensure atomic memory operations are completed before proceeding'
+        elif intrinsic.endswith('Subgroup'):
+            doc = 'Memory barrier to ensure subgroup memory operations are completed before proceeding'
+        elif intrinsic.endswith('Workgroup'):
+            doc = 'Memory barrier to ensure workgroup memory operations are completed before proceeding'
         fun = Function( 
             decl_name = function_name,
             api_name = f'{intrinsic[0].lower() + intrinsic[1:]}',
             return_type = type,
+            documentation = doc,
             parameters = [
             ]
         )
@@ -3525,6 +3698,7 @@ def generate_types():
             decl_name = function_name,
             api_name = f'texture{intrinsic}',
             return_type = return_type,
+            documentation = 'Get the size of a texture',
             parameters = [
                 Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True)
             ]
@@ -3553,6 +3727,7 @@ def generate_types():
             decl_name = function_name,
             api_name = f'texture{intrinsic}',
             return_type = return_type,
+            documentation = 'Get the size of a texture at a specific mip level',
             parameters = [
                 Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True),
                 Variable(decl_name = mip_argument_name, api_name = "mip", type_name='UInt32')
@@ -3581,6 +3756,7 @@ def generate_types():
             decl_name = function_name,
             api_name = f'texture{intrinsic}',
             return_type = type,
+            documentation = 'Get the number of mips in a texture',
             parameters = [
                 Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True),
             ]
@@ -3607,6 +3783,7 @@ def generate_types():
             decl_name = function_name,
             api_name = f'texture{intrinsic}',
             return_type = type,
+            documentation = 'Get the number of samples in a multisampled texture',
             parameters = [
                 Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True),
             ]
@@ -3651,6 +3828,7 @@ def generate_types():
                 decl_name = function_name,
                 api_name = f'texture{intrinsic}',
                 return_type = 'Float32x2',
+                documentation = 'Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur',
                 parameters = args + [
                     Variable(decl_name = coordinate_argument_name, api_name = "coordinate", type_name=coordinate_type)
                 ]
@@ -3683,10 +3861,18 @@ def generate_types():
             texture_argument_name = f'{function_name}_texture'
             coordinate_argument_name = f'{function_name}_coordinate'
 
+            if hasStore:
+                doc = f'Store a single texel without using a sampler value at an absolute non-normalized coordinate'
+            else:
+                doc = f'Load a single texel without using a sampler value at an absolute non-normalized coordinate'
+            if hasMip:
+                doc += ' at a specific mip level'
+
             fun = Function( 
                 decl_name = function_name,
                 api_name = f'texture{intrinsic}',
                 return_type = 'Float32x4' if not hasStore else 'Void',
+                documentation = doc,
                 parameters = [
                     Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True, mutable=True),
                     Variable(decl_name = coordinate_argument_name, api_name = "coordinate", type_name=coordinate_type)
@@ -3744,10 +3930,14 @@ def generate_types():
             coordinate_argument_name = f'{function_name}_coordinate'
             lod_argument_name = f'{function_name}_lod'
 
+            doc = f'Fetch a single texel without using a sampler value at a coordinate'
+            if intrinsic == 'FetchSample':
+                doc += ' at a specific sample index'
             fun = Function( 
                 decl_name = function_name,
                 api_name = f'texture{intrinsic}',
                 return_type = 'Float32x4',
+                documentation = doc,
                 parameters = [
                     Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True),
                     Variable(decl_name = coordinate_argument_name, api_name = "coordinate", type_name=texture_denormalized_index_types[type]),
@@ -3791,10 +3981,14 @@ def generate_types():
                 coordinate_argument_name = f'{function_name}_coordinate'
                 component_argument_name = f'{function_name}_component'
 
+                doc = f'Gather 4 values of a quad at a coordinate where the component is the channel to read'
+                if intrinsic == 'GatherOffset':
+                    doc += ' with an offset applied to the coordinate'
                 fun = Function( 
                     decl_name = function_name,
                     api_name = f'texture{intrinsic}',
                     return_type = 'Float32x4',
+                    documentation = doc,
                     parameters = args + [
                         Variable(decl_name = coordinate_argument_name, api_name = "coordinate", type_name=texture_denormalized_index_types[type]),
                         Variable(decl_name = component_argument_name, api_name = "component", type_name='Int32')
@@ -3833,6 +4027,7 @@ def generate_types():
             decl_name = function_name,
             api_name = f'texture{intrinsic}',
             return_type = type,
+            documentation = 'Load a pixel value from a previous thread',
             parameters = [
                 Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True)
             ]
@@ -3891,10 +4086,25 @@ def generate_types():
                             coordinate_type = texture_float_index_types[type]
                             coordinate_argument_name = f'{function_name}_coordinate'
 
+                            doc = 'Sample a texture at coordinate'
+                            if lod == 'Lod':
+                                doc += ' with explicit level of detail'
+                            elif lod == 'Grad':
+                                doc += ' with explicit gradient'
+                            elif lod == 'Bias':
+                                doc += ' with a mip bias'
+                            if proj == 'Proj':
+                                doc += ' with projection'
+                            if comp == 'Compare':
+                                doc += ' with depth comparison'
+                            if offset == 'Offset':
+                                doc += ' with an offset applied to the coordinate'
+
                             fun = Function( 
                                 decl_name = function_name,
                                 api_name = f'texture{intrinsic}{lod}{proj}{comp}{offset}',
                                 return_type = 'Float32x4' if not comp else 'Float32',
+                                documentation = doc,
                                 parameters = args + [
                                     Variable(decl_name = coordinate_argument_name, api_name = "coordinate", type_name=coordinate_type),
                                 ]

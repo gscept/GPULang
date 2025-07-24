@@ -12,103 +12,6 @@
 #include <unordered_map>
 #include <map>
 
-
-#define STRINGIFY(x) #x
-
-#define __BEGIN_TYPE() TransientArray<Variable*> parameters(32); TransientArray<Symbol*> globals(16); TransientArray<Symbol*> constructors(16); TransientArray<Symbol*> statics(64); TransientArray<Symbol*> swizzles(680);
-
-#define __END_TYPE() this->globals = StaticArray(globals); this->constructors = StaticArray(constructors); this->staticSymbols = StaticArray(statics); this->swizzleSymbols = StaticArray(swizzles);
-
-#define __IMPLEMENT_CTOR_1(method, id, t, argtype)\
-parameters.Clear();\
-method.name = ConstantString(#id);\
-method.returnType = Type::FullType{t##Type.name};\
-method.compileTime = true;\
-method.constructorType = &t##Type;\
-Symbol::Resolved(&method)->returnTypeSymbol = &t##Type;\
-globals.Append(&method);\
-activeFunction = &method;\
-{\
-    Variable* var = StaticAlloc<Variable>(); \
-    var->name = ConstantString("_arg0"); \
-    var->type = Type::FullType{ argtype##Type.name }; \
-    Symbol::Resolved(var)->typeSymbol = &argtype##Type;\
-    parameters.Append(var); \
-    activeFunction->parameters = StaticArray<Variable*>(parameters);\
-}\
-activeFunction->documentation = "Conversion constructor from " #argtype " to " #id;\
-constructors.Append(activeFunction);
-
-#define __IMPLEMENT_CTOR(method, id, type)\
-parameters.Clear();\
-method.name = ConstantString(#id);\
-method.returnType = Type::FullType{type##Type.name};\
-method.compileTime = true;\
-method.constructorType = &type##Type;\
-Symbol::Resolved(&method)->returnTypeSymbol = &type##Type;\
-globals.Append(&method);\
-activeFunction = &method;\
-activeFunction->documentation = "Constructor of " #type;\
-
-#define __IMPLEMENT_FUNCTION_1(method, id, t, argtype)\
-parameters.Clear();\
-method.name = ConstantString(#id);\
-method.returnType = Type::FullType{t##Type.name};\
-Symbol::Resolved(&method)->returnTypeSymbol = &t##Type;\
-statics.Append(&method);\
-activeFunction = &method;\
-{\
-    Variable* var = StaticAlloc<Variable>(); \
-    var->name = ConstantString("_arg0"); \
-    var->type = Type::FullType{ argtype##Type.name }; \
-    Symbol::Resolved(var)->typeSymbol = &argtype##Type;\
-    parameters.Append(var); \
-    activeFunction->parameters = StaticArray<Variable*>(parameters);\
-}
-
-#define __ADD_SWIZZLE(retType, format, ...)\
-{\
-    Variable* swizzleMember = StaticAlloc<Variable>();\
-    swizzleMember->name = StaticString(Format(format, __VA_ARGS__));\
-    swizzleMember->type = Type::FullType{retType##Type.name};\
-    Variable::__Resolved* resolved = Symbol::Resolved(swizzleMember);\
-    resolved->usageBits.flags.isVar = true;\
-    resolved->usageBits.flags.isStructMember = true;\
-    resolved->typeSymbol = &retType##Type;\
-    swizzles.Append(swizzleMember);\
-}
-
-#define __ADD_FUNCTION_PARAM(id, t)\
-{\
-    Variable* var = StaticAlloc<Variable>();\
-    var->name = ConstantString(#id);\
-    var->type = Type::FullType{t##Type.name};\
-    Symbol::Resolved(var)->typeSymbol = &t##Type;\
-    parameters.Append(var);\
-}
-
-#define __ADD_CONSTRUCTOR()\
-activeFunction->parameters = StaticArray<Variable*>(parameters);\
-constructors.Append(activeFunction);
-
-#define __IMPLEMENT_SWIZZLE(type, size, mask)\
-    for (uint8_t x = 0; x < size; x++)\
-    {\
-        __ADD_SWIZZLE(type, "%c", mask[x]);\
-        for (uint8_t y = 0; y < size; y++)\
-        {\
-            __ADD_SWIZZLE(type##2, "%c%c", mask[x], mask[y]);\
-            for (uint8_t z = 0; z < size; z++)\
-            {\
-                __ADD_SWIZZLE(type##3, "%c%c%c", mask[x], mask[y], mask[z]);\
-                for (uint8_t w = 0; w < size; w++)\
-                {\
-                    __ADD_SWIZZLE(type##4, "%c%c%c%c", mask[x], mask[y], mask[z], mask[w]);\
-                }\
-            }\
-        }\
-    }
-
 namespace GPULang
 {
 
@@ -187,7 +90,6 @@ std::array{
 };
 
 
-extern StaticArray<Symbol*> DefaultTypes;
 enum class TypeCode
 {
     InvalidType
@@ -235,7 +137,7 @@ struct Expression;
 struct Compiler;
 extern Function* activeFunction;
 static constexpr auto UNDEFINED_TYPE = "<undefined>"_c;
-static constexpr auto FUNCTION_TYPE = "functionPtr"_c;
+static constexpr auto FUNCTION_TYPE = "Function"_c;
 
 
 struct Type : public Symbol

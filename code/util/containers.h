@@ -12,6 +12,8 @@
 #include <algorithm>
 #include <cmath>
 #include <array>
+#include <type_traits>
+
 
 namespace GPULang
 {
@@ -515,29 +517,24 @@ struct PinnedArray
  Does not need to free its memory.
  */
 extern size_t LeakedStaticArrayBytes;
-template<typename T>
+template<typename T, size_t SIZE>
 struct StaticArray
 {
-    T* buf = nullptr;
-    size_t capacity = 0;
+    T buf[SIZE];
     size_t size = 0;
     
     StaticArray() {}
-
-    StaticArray(const std::initializer_list<T>& list)
+    
+    constexpr StaticArray(const std::array<T, SIZE>& a)
     {
-        if (this->buf != nullptr)
-        {
-            // leak memory
-            LeakedStaticArrayBytes += this->capacity;
-        }
-        this->buf = StaticAllocArray<T>(list.size());
-        this->capacity = list.size();
-        this->size = 0;
-        for (auto& val : list)
-        {
-            this->buf[this->size++] = val;
-        }
+        std::copy(a.begin(), a.end(), this->buf);
+        this->size = a.size();
+    }
+    
+    constexpr StaticArray(const std::initializer_list<T>& list)
+    {
+        std::copy(list.begin(), list.end(), this->buf);
+        this->size = list.size();
     }
     
     StaticArray(const size_t size)
@@ -660,6 +657,9 @@ struct StaticArray
             return this->buf + this->size;
     }
 };
+
+template <typename T, size_t SIZE>
+StaticArray(const std::array<T, SIZE>&) -> StaticArray<T, SIZE>;
 
 //------------------------------------------------------------------------------
 /**
@@ -809,6 +809,21 @@ struct FixedArray
         return *this;
     }
     
+    template<typename U, size_t SIZE>
+    constexpr FixedArray<T>& operator=(const std::array<U, SIZE>& list)
+    {
+        static_assert(std::is_assignable<T, U>::value, "Types must be assignable");
+        
+        this->buf = AllocArray<T>(SIZE);
+        for (size_t i = 0; i < SIZE; i++)
+        {
+            this->buf[i] = list[i];
+        }
+        this->size = SIZE;
+        this->capacity = SIZE;
+        return *this;
+    }
+    
     void operator=(const FixedArray<T>& vec)
     {
         if (this->buf != nullptr)
@@ -849,21 +864,12 @@ struct FixedArray
         vec.size = 0;
     }
     
-    void operator=(const StaticArray<T>& vec)
+    template<size_t SIZE>
+    void operator=(const StaticArray<T, SIZE>& vec)
     {
         this->buf = vec.buf;
         this->size = vec.size;
         this->capacity = vec.size; // intentional to avoid more appending
-    }
-
-    void operator=(StaticArray<T>&& vec)
-    {
-        this->buf = vec.buf;
-        this->size = vec.size;
-        this->capacity = vec.capacity; // intentional to avoid more appending
-        vec.buf = nullptr;
-        vec.capacity = 0;
-        vec.size = 0;
     }
     
     void operator=(const TransientArray<T>& vec)

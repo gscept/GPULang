@@ -1936,134 +1936,62 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
     
     if (enumeration->globals.size == 0)
     {
-        if (enumeration->builtin)
-        {
-            TransientArray<Variable*> parameters(1);
-            TransientArray<Symbol*> generatedFunctions(2);
-            SYMBOL_STATIC_ALLOC = true;
+        TransientArray<Variable*> parameters(1);
+        TransientArray<Symbol*> generatedFunctions(2);
 
-            // Create constructor from type, and to type
-            Function* fromUnderlyingType = &enumeration->fromUnderlyingType;
-            fromUnderlyingType->name = enumeration->name;
-            fromUnderlyingType->returnType = Type::FullType{ enumeration->name };
-            fromUnderlyingType->compileTime = true;
-            fromUnderlyingType->constructorType = enumeration;
-            Symbol::Resolved(fromUnderlyingType)->returnTypeSymbol = enumeration;
-            Variable* arg = &enumeration->fromUnderlyingTypeArg;
-            arg->name = arg0;
-            arg->type = enumeration->type;
-            Symbol::Resolved(arg)->typeSymbol = enumResolved->typeSymbol;
-            parameters.Clear();
-            parameters.Append(arg);
-            fromUnderlyingType->parameters = StaticArray<Variable*>(parameters);
-            generatedFunctions.Append(fromUnderlyingType);
+        // Create constructor from type, and to type
+        Function* fromUnderlyingType = &enumeration->fromUnderlyingType;
+        fromUnderlyingType->name = enumeration->name;
+        fromUnderlyingType->returnType = Type::FullType{ enumeration->name };
+        fromUnderlyingType->compileTime = true;
+        fromUnderlyingType->constructorType = enumeration;
+        Variable* arg = &enumeration->fromUnderlyingTypeArg;
+        arg->name = arg0;
+        arg->type = enumeration->type;
+        parameters.Clear();
+        parameters.Append(arg);
+        fromUnderlyingType->parameters = parameters;
+        generatedFunctions.Append(fromUnderlyingType);
 
-            Function* toUnderlyingType = &enumeration->toUnderlyingType;
-            toUnderlyingType->name = enumeration->type.name;
-            toUnderlyingType->returnType = enumeration->type;
-            toUnderlyingType->compileTime = true;
-            toUnderlyingType->constructorType = enumeration;
-            Symbol::Resolved(toUnderlyingType)->returnTypeSymbol = enumResolved->typeSymbol;
-            arg = &enumeration->toUnderlyingTypeArg;
-            arg->name = arg0;
-            arg->type = Type::FullType{ enumeration->name };
-            Symbol::Resolved(arg)->typeSymbol = enumeration;
-            parameters.Clear();
-            parameters.Append(arg);
-            toUnderlyingType->parameters = StaticArray<Variable*>(parameters);
-            generatedFunctions.Append(toUnderlyingType);
-            
-            enumeration->globals = generatedFunctions;
-            generatedFunctions.Clear();
+        Function* toUnderlyingType = &enumeration->toUnderlyingType;
+        toUnderlyingType->name = enumeration->type.name;
+        toUnderlyingType->returnType = enumeration->type;
+        toUnderlyingType->compileTime = true;
+        toUnderlyingType->constructorType = enumeration;
+        arg = &enumeration->toUnderlyingTypeArg;
+        arg->name = arg0;
+        arg->type = Type::FullType{ enumeration->name };
+        parameters.Clear();
+        parameters.Append(arg);
+        toUnderlyingType->parameters = parameters;
+        generatedFunctions.Append(toUnderlyingType);
+        
+        enumeration->globals = generatedFunctions;
+        generatedFunctions.Clear();
 
-            Function* comparison = &enumeration->eqOp;
-            comparison->name = eqOp;
-            comparison->returnType = Type::FullType{ ConstantString("b8") };
-            Symbol::Resolved(comparison)->returnTypeSymbol = &Bool8Type;
-            arg = &enumeration->eqOpArg;
-            arg->name = rhs;
-            arg->type = Type::FullType{ enumeration->name };
-            Symbol::Resolved(arg)->typeSymbol = enumeration;
-            parameters.Clear();
-            parameters.Append(arg);
-            comparison->parameters = StaticArray<Variable*>(parameters);
-            generatedFunctions.Append(comparison);
-            
+        Function* comparison = &enumeration->eqOp;
+        comparison->name = eqOp;
+        comparison->returnType = Type::FullType{ ConstantString("b8") };
+        arg = &enumeration->eqOpArg;
+        arg->name = rhs;
+        arg->type = Type::FullType{ enumeration->name };
+        parameters.Clear();
+        parameters.Append(arg);
+        comparison->parameters = parameters;
+        generatedFunctions.Append(comparison);
+        
 
-            comparison = &enumeration->neqOp;
-            comparison->name = neqOp;
-            comparison->returnType = Type::FullType{ ConstantString("b8") };
-            Symbol::Resolved(comparison)->returnTypeSymbol = &Bool8Type;
-            arg = &enumeration->neqOpArg;
-            arg->name = rhs;
-            arg->type = Type::FullType{ enumeration->name };
-            Symbol::Resolved(arg)->typeSymbol = enumeration;
-            parameters.Clear();
-            parameters.Append(arg);
-            comparison->parameters = StaticArray<Variable*>(parameters);
-            generatedFunctions.Append(comparison);
-            enumeration->staticSymbols = generatedFunctions;
-            SYMBOL_STATIC_ALLOC = false;
-        }
-        else
-        {
-            TransientArray<Variable*> parameters(1);
-            TransientArray<Symbol*> generatedFunctions(2);
-
-            // Create constructor from type, and to type
-            Function* fromUnderlyingType = &enumeration->fromUnderlyingType;
-            fromUnderlyingType->name = enumeration->name;
-            fromUnderlyingType->returnType = Type::FullType{ enumeration->name };
-            fromUnderlyingType->compileTime = true;
-            fromUnderlyingType->constructorType = enumeration;
-            Variable* arg = &enumeration->fromUnderlyingTypeArg;
-            arg->name = arg0;
-            arg->type = enumeration->type;
-            parameters.Clear();
-            parameters.Append(arg);
-            fromUnderlyingType->parameters = parameters;
-            generatedFunctions.Append(fromUnderlyingType);
-
-            Function* toUnderlyingType = &enumeration->toUnderlyingType;
-            toUnderlyingType->name = enumeration->type.name;
-            toUnderlyingType->returnType = enumeration->type;
-            toUnderlyingType->compileTime = true;
-            toUnderlyingType->constructorType = enumeration;
-            arg = &enumeration->toUnderlyingTypeArg;
-            arg->name = arg0;
-            arg->type = Type::FullType{ enumeration->name };
-            parameters.Clear();
-            parameters.Append(arg);
-            toUnderlyingType->parameters = parameters;
-            generatedFunctions.Append(toUnderlyingType);
-            
-            enumeration->globals = generatedFunctions;
-            generatedFunctions.Clear();
-
-            Function* comparison = &enumeration->eqOp;
-            comparison->name = eqOp;
-            comparison->returnType = Type::FullType{ ConstantString("b8") };
-            arg = &enumeration->eqOpArg;
-            arg->name = rhs;
-            arg->type = Type::FullType{ enumeration->name };
-            parameters.Clear();
-            parameters.Append(arg);
-            comparison->parameters = parameters;
-            generatedFunctions.Append(comparison);
-            
-
-            comparison = &enumeration->neqOp;
-            comparison->name = neqOp;
-            comparison->returnType = Type::FullType{ ConstantString("b8") };
-            arg = &enumeration->neqOpArg;
-            arg->name = rhs;
-            arg->type = Type::FullType{ enumeration->name };
-            parameters.Clear();
-            parameters.Append(arg);
-            comparison->parameters = parameters;
-            generatedFunctions.Append(comparison);
-            enumeration->staticSymbols = generatedFunctions;
-        }
+        comparison = &enumeration->neqOp;
+        comparison->name = neqOp;
+        comparison->returnType = Type::FullType{ ConstantString("b8") };
+        arg = &enumeration->neqOpArg;
+        arg->name = rhs;
+        arg->type = Type::FullType{ enumeration->name };
+        parameters.Clear();
+        parameters.Append(arg);
+        comparison->parameters = parameters;
+        generatedFunctions.Append(comparison);
+        enumeration->staticSymbols = generatedFunctions;
     }
 
     uint32_t nextValue = 0;
@@ -4162,7 +4090,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             
             struct IntrinsicsShaderMask
             {
-                StaticArray<ProgramInstance::__Resolved::EntryType> entries;
+                StaticArray<ProgramInstance::__Resolved::EntryType, ProgramInstance::__Resolved::EntryType::NumProgramEntries> entries;
                 Compiler::State::SideEffects::Masks sideEffect;
                 
                 IntrinsicsShaderMask()
@@ -4235,8 +4163,8 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             static const auto derivativeConditionFunction = [](Compiler* compiler, Expression* expr, const ConstantString& fun)
             {
                 
-                static const StaticArray<ProgramInstance::__Resolved::EntryType> derivativeProducingShaders =
-                {
+                static constexpr StaticArray derivativeProducingShaders =
+                std::array {
                     ProgramInstance::__Resolved::EntryType::VertexShader
                     , ProgramInstance::__Resolved::EntryType::GeometryShader
                     , ProgramInstance::__Resolved::EntryType::HullShader

@@ -26,12 +26,12 @@ TerminateStatement::~TerminateStatement()
         this->returnValue->~Expression();
 }
 
-const StaticArray<ConstantString> terminationTypeLookup =
-{
-    "return",
-    "discard",
-    "ray_ignore",
-    "ray_terminate"
+constexpr StaticArray terminationTypeLookup =
+std::array {
+    "return"_c,
+    "discard"_c,
+    "ray_ignore"_c,
+    "ray_terminate"_c
 };
 //------------------------------------------------------------------------------
 /**

@@ -7303,6 +7303,7 @@ void SetupIntrinsics()
     /// acos with Float32
     acos_Float32_arg.name = "val"_c;
     acos_Float32_arg.type = Type::FullType{ Float32Type.name };
+    acos_Float32.documentation = "Returns the arc cosine of a value."_c;
     acos_Float32.name = "acos"_c;
     acos_Float32.returnType = Type::FullType { Float32Type.name };
     acos_Float32.parameters = acos_Float32_args;
@@ -7315,6 +7316,7 @@ void SetupIntrinsics()
     /// acos with Float32x2
     acos_Float32x2_arg.name = "val"_c;
     acos_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    acos_Float32x2.documentation = "Returns the arc cosine of a value."_c;
     acos_Float32x2.name = "acos"_c;
     acos_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     acos_Float32x2.parameters = acos_Float32x2_args;
@@ -7327,6 +7329,7 @@ void SetupIntrinsics()
     /// acos with Float32x3
     acos_Float32x3_arg.name = "val"_c;
     acos_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    acos_Float32x3.documentation = "Returns the arc cosine of a value."_c;
     acos_Float32x3.name = "acos"_c;
     acos_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     acos_Float32x3.parameters = acos_Float32x3_args;
@@ -7339,6 +7342,7 @@ void SetupIntrinsics()
     /// acos with Float32x4
     acos_Float32x4_arg.name = "val"_c;
     acos_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    acos_Float32x4.documentation = "Returns the arc cosine of a value."_c;
     acos_Float32x4.name = "acos"_c;
     acos_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     acos_Float32x4.parameters = acos_Float32x4_args;
@@ -7351,6 +7355,7 @@ void SetupIntrinsics()
     /// acos with Float16
     acos_Float16_arg.name = "val"_c;
     acos_Float16_arg.type = Type::FullType{ Float16Type.name };
+    acos_Float16.documentation = "Returns the arc cosine of a value."_c;
     acos_Float16.name = "acos"_c;
     acos_Float16.returnType = Type::FullType { Float16Type.name };
     acos_Float16.parameters = acos_Float16_args;
@@ -7363,6 +7368,7 @@ void SetupIntrinsics()
     /// acos with Float16x2
     acos_Float16x2_arg.name = "val"_c;
     acos_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    acos_Float16x2.documentation = "Returns the arc cosine of a value."_c;
     acos_Float16x2.name = "acos"_c;
     acos_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     acos_Float16x2.parameters = acos_Float16x2_args;
@@ -7375,6 +7381,7 @@ void SetupIntrinsics()
     /// acos with Float16x3
     acos_Float16x3_arg.name = "val"_c;
     acos_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    acos_Float16x3.documentation = "Returns the arc cosine of a value."_c;
     acos_Float16x3.name = "acos"_c;
     acos_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     acos_Float16x3.parameters = acos_Float16x3_args;
@@ -7387,6 +7394,7 @@ void SetupIntrinsics()
     /// acos with Float16x4
     acos_Float16x4_arg.name = "val"_c;
     acos_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    acos_Float16x4.documentation = "Returns the arc cosine of a value."_c;
     acos_Float16x4.name = "acos"_c;
     acos_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     acos_Float16x4.parameters = acos_Float16x4_args;
@@ -7399,6 +7407,7 @@ void SetupIntrinsics()
     /// acosh with Float32
     acosh_Float32_arg.name = "val"_c;
     acosh_Float32_arg.type = Type::FullType{ Float32Type.name };
+    acosh_Float32.documentation = "Returns the hyperbolic arc cosine of a value."_c;
     acosh_Float32.name = "acosh"_c;
     acosh_Float32.returnType = Type::FullType { Float32Type.name };
     acosh_Float32.parameters = acosh_Float32_args;
@@ -7411,6 +7420,7 @@ void SetupIntrinsics()
     /// acosh with Float32x2
     acosh_Float32x2_arg.name = "val"_c;
     acosh_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    acosh_Float32x2.documentation = "Returns the hyperbolic arc cosine of a value."_c;
     acosh_Float32x2.name = "acosh"_c;
     acosh_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     acosh_Float32x2.parameters = acosh_Float32x2_args;
@@ -7423,6 +7433,7 @@ void SetupIntrinsics()
     /// acosh with Float32x3
     acosh_Float32x3_arg.name = "val"_c;
     acosh_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    acosh_Float32x3.documentation = "Returns the hyperbolic arc cosine of a value."_c;
     acosh_Float32x3.name = "acosh"_c;
     acosh_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     acosh_Float32x3.parameters = acosh_Float32x3_args;
@@ -7435,6 +7446,7 @@ void SetupIntrinsics()
     /// acosh with Float32x4
     acosh_Float32x4_arg.name = "val"_c;
     acosh_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    acosh_Float32x4.documentation = "Returns the hyperbolic arc cosine of a value."_c;
     acosh_Float32x4.name = "acosh"_c;
     acosh_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     acosh_Float32x4.parameters = acosh_Float32x4_args;
@@ -7447,6 +7459,7 @@ void SetupIntrinsics()
     /// acosh with Float16
     acosh_Float16_arg.name = "val"_c;
     acosh_Float16_arg.type = Type::FullType{ Float16Type.name };
+    acosh_Float16.documentation = "Returns the hyperbolic arc cosine of a value."_c;
     acosh_Float16.name = "acosh"_c;
     acosh_Float16.returnType = Type::FullType { Float16Type.name };
     acosh_Float16.parameters = acosh_Float16_args;
@@ -7459,6 +7472,7 @@ void SetupIntrinsics()
     /// acosh with Float16x2
     acosh_Float16x2_arg.name = "val"_c;
     acosh_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    acosh_Float16x2.documentation = "Returns the hyperbolic arc cosine of a value."_c;
     acosh_Float16x2.name = "acosh"_c;
     acosh_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     acosh_Float16x2.parameters = acosh_Float16x2_args;
@@ -7471,6 +7485,7 @@ void SetupIntrinsics()
     /// acosh with Float16x3
     acosh_Float16x3_arg.name = "val"_c;
     acosh_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    acosh_Float16x3.documentation = "Returns the hyperbolic arc cosine of a value."_c;
     acosh_Float16x3.name = "acosh"_c;
     acosh_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     acosh_Float16x3.parameters = acosh_Float16x3_args;
@@ -7483,6 +7498,7 @@ void SetupIntrinsics()
     /// acosh with Float16x4
     acosh_Float16x4_arg.name = "val"_c;
     acosh_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    acosh_Float16x4.documentation = "Returns the hyperbolic arc cosine of a value."_c;
     acosh_Float16x4.name = "acosh"_c;
     acosh_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     acosh_Float16x4.parameters = acosh_Float16x4_args;
@@ -7495,6 +7511,7 @@ void SetupIntrinsics()
     /// asin with Float32
     asin_Float32_arg.name = "val"_c;
     asin_Float32_arg.type = Type::FullType{ Float32Type.name };
+    asin_Float32.documentation = "Returns the arc sine of a value."_c;
     asin_Float32.name = "asin"_c;
     asin_Float32.returnType = Type::FullType { Float32Type.name };
     asin_Float32.parameters = asin_Float32_args;
@@ -7507,6 +7524,7 @@ void SetupIntrinsics()
     /// asin with Float32x2
     asin_Float32x2_arg.name = "val"_c;
     asin_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    asin_Float32x2.documentation = "Returns the arc sine of a value."_c;
     asin_Float32x2.name = "asin"_c;
     asin_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     asin_Float32x2.parameters = asin_Float32x2_args;
@@ -7519,6 +7537,7 @@ void SetupIntrinsics()
     /// asin with Float32x3
     asin_Float32x3_arg.name = "val"_c;
     asin_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    asin_Float32x3.documentation = "Returns the arc sine of a value."_c;
     asin_Float32x3.name = "asin"_c;
     asin_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     asin_Float32x3.parameters = asin_Float32x3_args;
@@ -7531,6 +7550,7 @@ void SetupIntrinsics()
     /// asin with Float32x4
     asin_Float32x4_arg.name = "val"_c;
     asin_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    asin_Float32x4.documentation = "Returns the arc sine of a value."_c;
     asin_Float32x4.name = "asin"_c;
     asin_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     asin_Float32x4.parameters = asin_Float32x4_args;
@@ -7543,6 +7563,7 @@ void SetupIntrinsics()
     /// asin with Float16
     asin_Float16_arg.name = "val"_c;
     asin_Float16_arg.type = Type::FullType{ Float16Type.name };
+    asin_Float16.documentation = "Returns the arc sine of a value."_c;
     asin_Float16.name = "asin"_c;
     asin_Float16.returnType = Type::FullType { Float16Type.name };
     asin_Float16.parameters = asin_Float16_args;
@@ -7555,6 +7576,7 @@ void SetupIntrinsics()
     /// asin with Float16x2
     asin_Float16x2_arg.name = "val"_c;
     asin_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    asin_Float16x2.documentation = "Returns the arc sine of a value."_c;
     asin_Float16x2.name = "asin"_c;
     asin_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     asin_Float16x2.parameters = asin_Float16x2_args;
@@ -7567,6 +7589,7 @@ void SetupIntrinsics()
     /// asin with Float16x3
     asin_Float16x3_arg.name = "val"_c;
     asin_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    asin_Float16x3.documentation = "Returns the arc sine of a value."_c;
     asin_Float16x3.name = "asin"_c;
     asin_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     asin_Float16x3.parameters = asin_Float16x3_args;
@@ -7579,6 +7602,7 @@ void SetupIntrinsics()
     /// asin with Float16x4
     asin_Float16x4_arg.name = "val"_c;
     asin_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    asin_Float16x4.documentation = "Returns the arc sine of a value."_c;
     asin_Float16x4.name = "asin"_c;
     asin_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     asin_Float16x4.parameters = asin_Float16x4_args;
@@ -7591,6 +7615,7 @@ void SetupIntrinsics()
     /// asinh with Float32
     asinh_Float32_arg.name = "val"_c;
     asinh_Float32_arg.type = Type::FullType{ Float32Type.name };
+    asinh_Float32.documentation = "Returns the hyperbolic arc sine of a value."_c;
     asinh_Float32.name = "asinh"_c;
     asinh_Float32.returnType = Type::FullType { Float32Type.name };
     asinh_Float32.parameters = asinh_Float32_args;
@@ -7603,6 +7628,7 @@ void SetupIntrinsics()
     /// asinh with Float32x2
     asinh_Float32x2_arg.name = "val"_c;
     asinh_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    asinh_Float32x2.documentation = "Returns the hyperbolic arc sine of a value."_c;
     asinh_Float32x2.name = "asinh"_c;
     asinh_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     asinh_Float32x2.parameters = asinh_Float32x2_args;
@@ -7615,6 +7641,7 @@ void SetupIntrinsics()
     /// asinh with Float32x3
     asinh_Float32x3_arg.name = "val"_c;
     asinh_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    asinh_Float32x3.documentation = "Returns the hyperbolic arc sine of a value."_c;
     asinh_Float32x3.name = "asinh"_c;
     asinh_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     asinh_Float32x3.parameters = asinh_Float32x3_args;
@@ -7627,6 +7654,7 @@ void SetupIntrinsics()
     /// asinh with Float32x4
     asinh_Float32x4_arg.name = "val"_c;
     asinh_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    asinh_Float32x4.documentation = "Returns the hyperbolic arc sine of a value."_c;
     asinh_Float32x4.name = "asinh"_c;
     asinh_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     asinh_Float32x4.parameters = asinh_Float32x4_args;
@@ -7639,6 +7667,7 @@ void SetupIntrinsics()
     /// asinh with Float16
     asinh_Float16_arg.name = "val"_c;
     asinh_Float16_arg.type = Type::FullType{ Float16Type.name };
+    asinh_Float16.documentation = "Returns the hyperbolic arc sine of a value."_c;
     asinh_Float16.name = "asinh"_c;
     asinh_Float16.returnType = Type::FullType { Float16Type.name };
     asinh_Float16.parameters = asinh_Float16_args;
@@ -7651,6 +7680,7 @@ void SetupIntrinsics()
     /// asinh with Float16x2
     asinh_Float16x2_arg.name = "val"_c;
     asinh_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    asinh_Float16x2.documentation = "Returns the hyperbolic arc sine of a value."_c;
     asinh_Float16x2.name = "asinh"_c;
     asinh_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     asinh_Float16x2.parameters = asinh_Float16x2_args;
@@ -7663,6 +7693,7 @@ void SetupIntrinsics()
     /// asinh with Float16x3
     asinh_Float16x3_arg.name = "val"_c;
     asinh_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    asinh_Float16x3.documentation = "Returns the hyperbolic arc sine of a value."_c;
     asinh_Float16x3.name = "asinh"_c;
     asinh_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     asinh_Float16x3.parameters = asinh_Float16x3_args;
@@ -7675,6 +7706,7 @@ void SetupIntrinsics()
     /// asinh with Float16x4
     asinh_Float16x4_arg.name = "val"_c;
     asinh_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    asinh_Float16x4.documentation = "Returns the hyperbolic arc sine of a value."_c;
     asinh_Float16x4.name = "asinh"_c;
     asinh_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     asinh_Float16x4.parameters = asinh_Float16x4_args;
@@ -7687,6 +7719,7 @@ void SetupIntrinsics()
     /// atan with Float32
     atan_Float32_arg.name = "val"_c;
     atan_Float32_arg.type = Type::FullType{ Float32Type.name };
+    atan_Float32.documentation = "Returns the arc tangent of a value."_c;
     atan_Float32.name = "atan"_c;
     atan_Float32.returnType = Type::FullType { Float32Type.name };
     atan_Float32.parameters = atan_Float32_args;
@@ -7699,6 +7732,7 @@ void SetupIntrinsics()
     /// atan with Float32x2
     atan_Float32x2_arg.name = "val"_c;
     atan_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    atan_Float32x2.documentation = "Returns the arc tangent of a value."_c;
     atan_Float32x2.name = "atan"_c;
     atan_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     atan_Float32x2.parameters = atan_Float32x2_args;
@@ -7711,6 +7745,7 @@ void SetupIntrinsics()
     /// atan with Float32x3
     atan_Float32x3_arg.name = "val"_c;
     atan_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    atan_Float32x3.documentation = "Returns the arc tangent of a value."_c;
     atan_Float32x3.name = "atan"_c;
     atan_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     atan_Float32x3.parameters = atan_Float32x3_args;
@@ -7723,6 +7758,7 @@ void SetupIntrinsics()
     /// atan with Float32x4
     atan_Float32x4_arg.name = "val"_c;
     atan_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    atan_Float32x4.documentation = "Returns the arc tangent of a value."_c;
     atan_Float32x4.name = "atan"_c;
     atan_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     atan_Float32x4.parameters = atan_Float32x4_args;
@@ -7735,6 +7771,7 @@ void SetupIntrinsics()
     /// atan with Float16
     atan_Float16_arg.name = "val"_c;
     atan_Float16_arg.type = Type::FullType{ Float16Type.name };
+    atan_Float16.documentation = "Returns the arc tangent of a value."_c;
     atan_Float16.name = "atan"_c;
     atan_Float16.returnType = Type::FullType { Float16Type.name };
     atan_Float16.parameters = atan_Float16_args;
@@ -7747,6 +7784,7 @@ void SetupIntrinsics()
     /// atan with Float16x2
     atan_Float16x2_arg.name = "val"_c;
     atan_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    atan_Float16x2.documentation = "Returns the arc tangent of a value."_c;
     atan_Float16x2.name = "atan"_c;
     atan_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     atan_Float16x2.parameters = atan_Float16x2_args;
@@ -7759,6 +7797,7 @@ void SetupIntrinsics()
     /// atan with Float16x3
     atan_Float16x3_arg.name = "val"_c;
     atan_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    atan_Float16x3.documentation = "Returns the arc tangent of a value."_c;
     atan_Float16x3.name = "atan"_c;
     atan_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     atan_Float16x3.parameters = atan_Float16x3_args;
@@ -7771,6 +7810,7 @@ void SetupIntrinsics()
     /// atan with Float16x4
     atan_Float16x4_arg.name = "val"_c;
     atan_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    atan_Float16x4.documentation = "Returns the arc tangent of a value."_c;
     atan_Float16x4.name = "atan"_c;
     atan_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     atan_Float16x4.parameters = atan_Float16x4_args;
@@ -7783,6 +7823,7 @@ void SetupIntrinsics()
     /// atanh with Float32
     atanh_Float32_arg.name = "val"_c;
     atanh_Float32_arg.type = Type::FullType{ Float32Type.name };
+    atanh_Float32.documentation = "Returns the hyperbolic arc tangent of a value."_c;
     atanh_Float32.name = "atanh"_c;
     atanh_Float32.returnType = Type::FullType { Float32Type.name };
     atanh_Float32.parameters = atanh_Float32_args;
@@ -7795,6 +7836,7 @@ void SetupIntrinsics()
     /// atanh with Float32x2
     atanh_Float32x2_arg.name = "val"_c;
     atanh_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    atanh_Float32x2.documentation = "Returns the hyperbolic arc tangent of a value."_c;
     atanh_Float32x2.name = "atanh"_c;
     atanh_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     atanh_Float32x2.parameters = atanh_Float32x2_args;
@@ -7807,6 +7849,7 @@ void SetupIntrinsics()
     /// atanh with Float32x3
     atanh_Float32x3_arg.name = "val"_c;
     atanh_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    atanh_Float32x3.documentation = "Returns the hyperbolic arc tangent of a value."_c;
     atanh_Float32x3.name = "atanh"_c;
     atanh_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     atanh_Float32x3.parameters = atanh_Float32x3_args;
@@ -7819,6 +7862,7 @@ void SetupIntrinsics()
     /// atanh with Float32x4
     atanh_Float32x4_arg.name = "val"_c;
     atanh_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    atanh_Float32x4.documentation = "Returns the hyperbolic arc tangent of a value."_c;
     atanh_Float32x4.name = "atanh"_c;
     atanh_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     atanh_Float32x4.parameters = atanh_Float32x4_args;
@@ -7831,6 +7875,7 @@ void SetupIntrinsics()
     /// atanh with Float16
     atanh_Float16_arg.name = "val"_c;
     atanh_Float16_arg.type = Type::FullType{ Float16Type.name };
+    atanh_Float16.documentation = "Returns the hyperbolic arc tangent of a value."_c;
     atanh_Float16.name = "atanh"_c;
     atanh_Float16.returnType = Type::FullType { Float16Type.name };
     atanh_Float16.parameters = atanh_Float16_args;
@@ -7843,6 +7888,7 @@ void SetupIntrinsics()
     /// atanh with Float16x2
     atanh_Float16x2_arg.name = "val"_c;
     atanh_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    atanh_Float16x2.documentation = "Returns the hyperbolic arc tangent of a value."_c;
     atanh_Float16x2.name = "atanh"_c;
     atanh_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     atanh_Float16x2.parameters = atanh_Float16x2_args;
@@ -7855,6 +7901,7 @@ void SetupIntrinsics()
     /// atanh with Float16x3
     atanh_Float16x3_arg.name = "val"_c;
     atanh_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    atanh_Float16x3.documentation = "Returns the hyperbolic arc tangent of a value."_c;
     atanh_Float16x3.name = "atanh"_c;
     atanh_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     atanh_Float16x3.parameters = atanh_Float16x3_args;
@@ -7867,6 +7914,7 @@ void SetupIntrinsics()
     /// atanh with Float16x4
     atanh_Float16x4_arg.name = "val"_c;
     atanh_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    atanh_Float16x4.documentation = "Returns the hyperbolic arc tangent of a value."_c;
     atanh_Float16x4.name = "atanh"_c;
     atanh_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     atanh_Float16x4.parameters = atanh_Float16x4_args;
@@ -7879,6 +7927,7 @@ void SetupIntrinsics()
     /// cos with Float32
     cos_Float32_arg.name = "val"_c;
     cos_Float32_arg.type = Type::FullType{ Float32Type.name };
+    cos_Float32.documentation = "Returns the cosine of a value."_c;
     cos_Float32.name = "cos"_c;
     cos_Float32.returnType = Type::FullType { Float32Type.name };
     cos_Float32.parameters = cos_Float32_args;
@@ -7891,6 +7940,7 @@ void SetupIntrinsics()
     /// cos with Float32x2
     cos_Float32x2_arg.name = "val"_c;
     cos_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    cos_Float32x2.documentation = "Returns the cosine of a value."_c;
     cos_Float32x2.name = "cos"_c;
     cos_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     cos_Float32x2.parameters = cos_Float32x2_args;
@@ -7903,6 +7953,7 @@ void SetupIntrinsics()
     /// cos with Float32x3
     cos_Float32x3_arg.name = "val"_c;
     cos_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    cos_Float32x3.documentation = "Returns the cosine of a value."_c;
     cos_Float32x3.name = "cos"_c;
     cos_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     cos_Float32x3.parameters = cos_Float32x3_args;
@@ -7915,6 +7966,7 @@ void SetupIntrinsics()
     /// cos with Float32x4
     cos_Float32x4_arg.name = "val"_c;
     cos_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    cos_Float32x4.documentation = "Returns the cosine of a value."_c;
     cos_Float32x4.name = "cos"_c;
     cos_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     cos_Float32x4.parameters = cos_Float32x4_args;
@@ -7927,6 +7979,7 @@ void SetupIntrinsics()
     /// cos with Float16
     cos_Float16_arg.name = "val"_c;
     cos_Float16_arg.type = Type::FullType{ Float16Type.name };
+    cos_Float16.documentation = "Returns the cosine of a value."_c;
     cos_Float16.name = "cos"_c;
     cos_Float16.returnType = Type::FullType { Float16Type.name };
     cos_Float16.parameters = cos_Float16_args;
@@ -7939,6 +7992,7 @@ void SetupIntrinsics()
     /// cos with Float16x2
     cos_Float16x2_arg.name = "val"_c;
     cos_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    cos_Float16x2.documentation = "Returns the cosine of a value."_c;
     cos_Float16x2.name = "cos"_c;
     cos_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     cos_Float16x2.parameters = cos_Float16x2_args;
@@ -7951,6 +8005,7 @@ void SetupIntrinsics()
     /// cos with Float16x3
     cos_Float16x3_arg.name = "val"_c;
     cos_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    cos_Float16x3.documentation = "Returns the cosine of a value."_c;
     cos_Float16x3.name = "cos"_c;
     cos_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     cos_Float16x3.parameters = cos_Float16x3_args;
@@ -7963,6 +8018,7 @@ void SetupIntrinsics()
     /// cos with Float16x4
     cos_Float16x4_arg.name = "val"_c;
     cos_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    cos_Float16x4.documentation = "Returns the cosine of a value."_c;
     cos_Float16x4.name = "cos"_c;
     cos_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     cos_Float16x4.parameters = cos_Float16x4_args;
@@ -7975,6 +8031,7 @@ void SetupIntrinsics()
     /// cosh with Float32
     cosh_Float32_arg.name = "val"_c;
     cosh_Float32_arg.type = Type::FullType{ Float32Type.name };
+    cosh_Float32.documentation = "Returns the hyperbolic cosine of a value."_c;
     cosh_Float32.name = "cosh"_c;
     cosh_Float32.returnType = Type::FullType { Float32Type.name };
     cosh_Float32.parameters = cosh_Float32_args;
@@ -7987,6 +8044,7 @@ void SetupIntrinsics()
     /// cosh with Float32x2
     cosh_Float32x2_arg.name = "val"_c;
     cosh_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    cosh_Float32x2.documentation = "Returns the hyperbolic cosine of a value."_c;
     cosh_Float32x2.name = "cosh"_c;
     cosh_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     cosh_Float32x2.parameters = cosh_Float32x2_args;
@@ -7999,6 +8057,7 @@ void SetupIntrinsics()
     /// cosh with Float32x3
     cosh_Float32x3_arg.name = "val"_c;
     cosh_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    cosh_Float32x3.documentation = "Returns the hyperbolic cosine of a value."_c;
     cosh_Float32x3.name = "cosh"_c;
     cosh_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     cosh_Float32x3.parameters = cosh_Float32x3_args;
@@ -8011,6 +8070,7 @@ void SetupIntrinsics()
     /// cosh with Float32x4
     cosh_Float32x4_arg.name = "val"_c;
     cosh_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    cosh_Float32x4.documentation = "Returns the hyperbolic cosine of a value."_c;
     cosh_Float32x4.name = "cosh"_c;
     cosh_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     cosh_Float32x4.parameters = cosh_Float32x4_args;
@@ -8023,6 +8083,7 @@ void SetupIntrinsics()
     /// cosh with Float16
     cosh_Float16_arg.name = "val"_c;
     cosh_Float16_arg.type = Type::FullType{ Float16Type.name };
+    cosh_Float16.documentation = "Returns the hyperbolic cosine of a value."_c;
     cosh_Float16.name = "cosh"_c;
     cosh_Float16.returnType = Type::FullType { Float16Type.name };
     cosh_Float16.parameters = cosh_Float16_args;
@@ -8035,6 +8096,7 @@ void SetupIntrinsics()
     /// cosh with Float16x2
     cosh_Float16x2_arg.name = "val"_c;
     cosh_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    cosh_Float16x2.documentation = "Returns the hyperbolic cosine of a value."_c;
     cosh_Float16x2.name = "cosh"_c;
     cosh_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     cosh_Float16x2.parameters = cosh_Float16x2_args;
@@ -8047,6 +8109,7 @@ void SetupIntrinsics()
     /// cosh with Float16x3
     cosh_Float16x3_arg.name = "val"_c;
     cosh_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    cosh_Float16x3.documentation = "Returns the hyperbolic cosine of a value."_c;
     cosh_Float16x3.name = "cosh"_c;
     cosh_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     cosh_Float16x3.parameters = cosh_Float16x3_args;
@@ -8059,6 +8122,7 @@ void SetupIntrinsics()
     /// cosh with Float16x4
     cosh_Float16x4_arg.name = "val"_c;
     cosh_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    cosh_Float16x4.documentation = "Returns the hyperbolic cosine of a value."_c;
     cosh_Float16x4.name = "cosh"_c;
     cosh_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     cosh_Float16x4.parameters = cosh_Float16x4_args;
@@ -8071,6 +8135,7 @@ void SetupIntrinsics()
     /// exp with Float32
     exp_Float32_arg.name = "val"_c;
     exp_Float32_arg.type = Type::FullType{ Float32Type.name };
+    exp_Float32.documentation = "Returns the exponential of a value."_c;
     exp_Float32.name = "exp"_c;
     exp_Float32.returnType = Type::FullType { Float32Type.name };
     exp_Float32.parameters = exp_Float32_args;
@@ -8083,6 +8148,7 @@ void SetupIntrinsics()
     /// exp with Float32x2
     exp_Float32x2_arg.name = "val"_c;
     exp_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    exp_Float32x2.documentation = "Returns the exponential of a value."_c;
     exp_Float32x2.name = "exp"_c;
     exp_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     exp_Float32x2.parameters = exp_Float32x2_args;
@@ -8095,6 +8161,7 @@ void SetupIntrinsics()
     /// exp with Float32x3
     exp_Float32x3_arg.name = "val"_c;
     exp_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    exp_Float32x3.documentation = "Returns the exponential of a value."_c;
     exp_Float32x3.name = "exp"_c;
     exp_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     exp_Float32x3.parameters = exp_Float32x3_args;
@@ -8107,6 +8174,7 @@ void SetupIntrinsics()
     /// exp with Float32x4
     exp_Float32x4_arg.name = "val"_c;
     exp_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    exp_Float32x4.documentation = "Returns the exponential of a value."_c;
     exp_Float32x4.name = "exp"_c;
     exp_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     exp_Float32x4.parameters = exp_Float32x4_args;
@@ -8119,6 +8187,7 @@ void SetupIntrinsics()
     /// exp with Float16
     exp_Float16_arg.name = "val"_c;
     exp_Float16_arg.type = Type::FullType{ Float16Type.name };
+    exp_Float16.documentation = "Returns the exponential of a value."_c;
     exp_Float16.name = "exp"_c;
     exp_Float16.returnType = Type::FullType { Float16Type.name };
     exp_Float16.parameters = exp_Float16_args;
@@ -8131,6 +8200,7 @@ void SetupIntrinsics()
     /// exp with Float16x2
     exp_Float16x2_arg.name = "val"_c;
     exp_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    exp_Float16x2.documentation = "Returns the exponential of a value."_c;
     exp_Float16x2.name = "exp"_c;
     exp_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     exp_Float16x2.parameters = exp_Float16x2_args;
@@ -8143,6 +8213,7 @@ void SetupIntrinsics()
     /// exp with Float16x3
     exp_Float16x3_arg.name = "val"_c;
     exp_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    exp_Float16x3.documentation = "Returns the exponential of a value."_c;
     exp_Float16x3.name = "exp"_c;
     exp_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     exp_Float16x3.parameters = exp_Float16x3_args;
@@ -8155,6 +8226,7 @@ void SetupIntrinsics()
     /// exp with Float16x4
     exp_Float16x4_arg.name = "val"_c;
     exp_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    exp_Float16x4.documentation = "Returns the exponential of a value."_c;
     exp_Float16x4.name = "exp"_c;
     exp_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     exp_Float16x4.parameters = exp_Float16x4_args;
@@ -8167,6 +8239,7 @@ void SetupIntrinsics()
     /// exp2 with Float32
     exp2_Float32_arg.name = "val"_c;
     exp2_Float32_arg.type = Type::FullType{ Float32Type.name };
+    exp2_Float32.documentation = "Returns the base 2 exponential of a value."_c;
     exp2_Float32.name = "exp2"_c;
     exp2_Float32.returnType = Type::FullType { Float32Type.name };
     exp2_Float32.parameters = exp2_Float32_args;
@@ -8179,6 +8252,7 @@ void SetupIntrinsics()
     /// exp2 with Float32x2
     exp2_Float32x2_arg.name = "val"_c;
     exp2_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    exp2_Float32x2.documentation = "Returns the base 2 exponential of a value."_c;
     exp2_Float32x2.name = "exp2"_c;
     exp2_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     exp2_Float32x2.parameters = exp2_Float32x2_args;
@@ -8191,6 +8265,7 @@ void SetupIntrinsics()
     /// exp2 with Float32x3
     exp2_Float32x3_arg.name = "val"_c;
     exp2_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    exp2_Float32x3.documentation = "Returns the base 2 exponential of a value."_c;
     exp2_Float32x3.name = "exp2"_c;
     exp2_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     exp2_Float32x3.parameters = exp2_Float32x3_args;
@@ -8203,6 +8278,7 @@ void SetupIntrinsics()
     /// exp2 with Float32x4
     exp2_Float32x4_arg.name = "val"_c;
     exp2_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    exp2_Float32x4.documentation = "Returns the base 2 exponential of a value."_c;
     exp2_Float32x4.name = "exp2"_c;
     exp2_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     exp2_Float32x4.parameters = exp2_Float32x4_args;
@@ -8215,6 +8291,7 @@ void SetupIntrinsics()
     /// exp2 with Float16
     exp2_Float16_arg.name = "val"_c;
     exp2_Float16_arg.type = Type::FullType{ Float16Type.name };
+    exp2_Float16.documentation = "Returns the base 2 exponential of a value."_c;
     exp2_Float16.name = "exp2"_c;
     exp2_Float16.returnType = Type::FullType { Float16Type.name };
     exp2_Float16.parameters = exp2_Float16_args;
@@ -8227,6 +8304,7 @@ void SetupIntrinsics()
     /// exp2 with Float16x2
     exp2_Float16x2_arg.name = "val"_c;
     exp2_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    exp2_Float16x2.documentation = "Returns the base 2 exponential of a value."_c;
     exp2_Float16x2.name = "exp2"_c;
     exp2_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     exp2_Float16x2.parameters = exp2_Float16x2_args;
@@ -8239,6 +8317,7 @@ void SetupIntrinsics()
     /// exp2 with Float16x3
     exp2_Float16x3_arg.name = "val"_c;
     exp2_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    exp2_Float16x3.documentation = "Returns the base 2 exponential of a value."_c;
     exp2_Float16x3.name = "exp2"_c;
     exp2_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     exp2_Float16x3.parameters = exp2_Float16x3_args;
@@ -8251,6 +8330,7 @@ void SetupIntrinsics()
     /// exp2 with Float16x4
     exp2_Float16x4_arg.name = "val"_c;
     exp2_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    exp2_Float16x4.documentation = "Returns the base 2 exponential of a value."_c;
     exp2_Float16x4.name = "exp2"_c;
     exp2_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     exp2_Float16x4.parameters = exp2_Float16x4_args;
@@ -8263,6 +8343,7 @@ void SetupIntrinsics()
     /// invSqrt with Float32
     invSqrt_Float32_arg.name = "val"_c;
     invSqrt_Float32_arg.type = Type::FullType{ Float32Type.name };
+    invSqrt_Float32.documentation = "Returns the inverse square root of a value."_c;
     invSqrt_Float32.name = "invSqrt"_c;
     invSqrt_Float32.returnType = Type::FullType { Float32Type.name };
     invSqrt_Float32.parameters = invSqrt_Float32_args;
@@ -8275,6 +8356,7 @@ void SetupIntrinsics()
     /// invSqrt with Float32x2
     invSqrt_Float32x2_arg.name = "val"_c;
     invSqrt_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    invSqrt_Float32x2.documentation = "Returns the inverse square root of a value."_c;
     invSqrt_Float32x2.name = "invSqrt"_c;
     invSqrt_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     invSqrt_Float32x2.parameters = invSqrt_Float32x2_args;
@@ -8287,6 +8369,7 @@ void SetupIntrinsics()
     /// invSqrt with Float32x3
     invSqrt_Float32x3_arg.name = "val"_c;
     invSqrt_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    invSqrt_Float32x3.documentation = "Returns the inverse square root of a value."_c;
     invSqrt_Float32x3.name = "invSqrt"_c;
     invSqrt_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     invSqrt_Float32x3.parameters = invSqrt_Float32x3_args;
@@ -8299,6 +8382,7 @@ void SetupIntrinsics()
     /// invSqrt with Float32x4
     invSqrt_Float32x4_arg.name = "val"_c;
     invSqrt_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    invSqrt_Float32x4.documentation = "Returns the inverse square root of a value."_c;
     invSqrt_Float32x4.name = "invSqrt"_c;
     invSqrt_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     invSqrt_Float32x4.parameters = invSqrt_Float32x4_args;
@@ -8311,6 +8395,7 @@ void SetupIntrinsics()
     /// invSqrt with Float16
     invSqrt_Float16_arg.name = "val"_c;
     invSqrt_Float16_arg.type = Type::FullType{ Float16Type.name };
+    invSqrt_Float16.documentation = "Returns the inverse square root of a value."_c;
     invSqrt_Float16.name = "invSqrt"_c;
     invSqrt_Float16.returnType = Type::FullType { Float16Type.name };
     invSqrt_Float16.parameters = invSqrt_Float16_args;
@@ -8323,6 +8408,7 @@ void SetupIntrinsics()
     /// invSqrt with Float16x2
     invSqrt_Float16x2_arg.name = "val"_c;
     invSqrt_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    invSqrt_Float16x2.documentation = "Returns the inverse square root of a value."_c;
     invSqrt_Float16x2.name = "invSqrt"_c;
     invSqrt_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     invSqrt_Float16x2.parameters = invSqrt_Float16x2_args;
@@ -8335,6 +8421,7 @@ void SetupIntrinsics()
     /// invSqrt with Float16x3
     invSqrt_Float16x3_arg.name = "val"_c;
     invSqrt_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    invSqrt_Float16x3.documentation = "Returns the inverse square root of a value."_c;
     invSqrt_Float16x3.name = "invSqrt"_c;
     invSqrt_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     invSqrt_Float16x3.parameters = invSqrt_Float16x3_args;
@@ -8347,6 +8434,7 @@ void SetupIntrinsics()
     /// invSqrt with Float16x4
     invSqrt_Float16x4_arg.name = "val"_c;
     invSqrt_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    invSqrt_Float16x4.documentation = "Returns the inverse square root of a value."_c;
     invSqrt_Float16x4.name = "invSqrt"_c;
     invSqrt_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     invSqrt_Float16x4.parameters = invSqrt_Float16x4_args;
@@ -8359,6 +8447,7 @@ void SetupIntrinsics()
     /// log with Float32
     log_Float32_arg.name = "val"_c;
     log_Float32_arg.type = Type::FullType{ Float32Type.name };
+    log_Float32.documentation = "Returns the natural logarithm of a value."_c;
     log_Float32.name = "log"_c;
     log_Float32.returnType = Type::FullType { Float32Type.name };
     log_Float32.parameters = log_Float32_args;
@@ -8371,6 +8460,7 @@ void SetupIntrinsics()
     /// log with Float32x2
     log_Float32x2_arg.name = "val"_c;
     log_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    log_Float32x2.documentation = "Returns the natural logarithm of a value."_c;
     log_Float32x2.name = "log"_c;
     log_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     log_Float32x2.parameters = log_Float32x2_args;
@@ -8383,6 +8473,7 @@ void SetupIntrinsics()
     /// log with Float32x3
     log_Float32x3_arg.name = "val"_c;
     log_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    log_Float32x3.documentation = "Returns the natural logarithm of a value."_c;
     log_Float32x3.name = "log"_c;
     log_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     log_Float32x3.parameters = log_Float32x3_args;
@@ -8395,6 +8486,7 @@ void SetupIntrinsics()
     /// log with Float32x4
     log_Float32x4_arg.name = "val"_c;
     log_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    log_Float32x4.documentation = "Returns the natural logarithm of a value."_c;
     log_Float32x4.name = "log"_c;
     log_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     log_Float32x4.parameters = log_Float32x4_args;
@@ -8407,6 +8499,7 @@ void SetupIntrinsics()
     /// log with Float16
     log_Float16_arg.name = "val"_c;
     log_Float16_arg.type = Type::FullType{ Float16Type.name };
+    log_Float16.documentation = "Returns the natural logarithm of a value."_c;
     log_Float16.name = "log"_c;
     log_Float16.returnType = Type::FullType { Float16Type.name };
     log_Float16.parameters = log_Float16_args;
@@ -8419,6 +8512,7 @@ void SetupIntrinsics()
     /// log with Float16x2
     log_Float16x2_arg.name = "val"_c;
     log_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    log_Float16x2.documentation = "Returns the natural logarithm of a value."_c;
     log_Float16x2.name = "log"_c;
     log_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     log_Float16x2.parameters = log_Float16x2_args;
@@ -8431,6 +8525,7 @@ void SetupIntrinsics()
     /// log with Float16x3
     log_Float16x3_arg.name = "val"_c;
     log_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    log_Float16x3.documentation = "Returns the natural logarithm of a value."_c;
     log_Float16x3.name = "log"_c;
     log_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     log_Float16x3.parameters = log_Float16x3_args;
@@ -8443,6 +8538,7 @@ void SetupIntrinsics()
     /// log with Float16x4
     log_Float16x4_arg.name = "val"_c;
     log_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    log_Float16x4.documentation = "Returns the natural logarithm of a value."_c;
     log_Float16x4.name = "log"_c;
     log_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     log_Float16x4.parameters = log_Float16x4_args;
@@ -8455,6 +8551,7 @@ void SetupIntrinsics()
     /// log2 with Float32
     log2_Float32_arg.name = "val"_c;
     log2_Float32_arg.type = Type::FullType{ Float32Type.name };
+    log2_Float32.documentation = "Returns the base 2 logarithm of a value."_c;
     log2_Float32.name = "log2"_c;
     log2_Float32.returnType = Type::FullType { Float32Type.name };
     log2_Float32.parameters = log2_Float32_args;
@@ -8467,6 +8564,7 @@ void SetupIntrinsics()
     /// log2 with Float32x2
     log2_Float32x2_arg.name = "val"_c;
     log2_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    log2_Float32x2.documentation = "Returns the base 2 logarithm of a value."_c;
     log2_Float32x2.name = "log2"_c;
     log2_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     log2_Float32x2.parameters = log2_Float32x2_args;
@@ -8479,6 +8577,7 @@ void SetupIntrinsics()
     /// log2 with Float32x3
     log2_Float32x3_arg.name = "val"_c;
     log2_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    log2_Float32x3.documentation = "Returns the base 2 logarithm of a value."_c;
     log2_Float32x3.name = "log2"_c;
     log2_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     log2_Float32x3.parameters = log2_Float32x3_args;
@@ -8491,6 +8590,7 @@ void SetupIntrinsics()
     /// log2 with Float32x4
     log2_Float32x4_arg.name = "val"_c;
     log2_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    log2_Float32x4.documentation = "Returns the base 2 logarithm of a value."_c;
     log2_Float32x4.name = "log2"_c;
     log2_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     log2_Float32x4.parameters = log2_Float32x4_args;
@@ -8503,6 +8603,7 @@ void SetupIntrinsics()
     /// log2 with Float16
     log2_Float16_arg.name = "val"_c;
     log2_Float16_arg.type = Type::FullType{ Float16Type.name };
+    log2_Float16.documentation = "Returns the base 2 logarithm of a value."_c;
     log2_Float16.name = "log2"_c;
     log2_Float16.returnType = Type::FullType { Float16Type.name };
     log2_Float16.parameters = log2_Float16_args;
@@ -8515,6 +8616,7 @@ void SetupIntrinsics()
     /// log2 with Float16x2
     log2_Float16x2_arg.name = "val"_c;
     log2_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    log2_Float16x2.documentation = "Returns the base 2 logarithm of a value."_c;
     log2_Float16x2.name = "log2"_c;
     log2_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     log2_Float16x2.parameters = log2_Float16x2_args;
@@ -8527,6 +8629,7 @@ void SetupIntrinsics()
     /// log2 with Float16x3
     log2_Float16x3_arg.name = "val"_c;
     log2_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    log2_Float16x3.documentation = "Returns the base 2 logarithm of a value."_c;
     log2_Float16x3.name = "log2"_c;
     log2_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     log2_Float16x3.parameters = log2_Float16x3_args;
@@ -8539,6 +8642,7 @@ void SetupIntrinsics()
     /// log2 with Float16x4
     log2_Float16x4_arg.name = "val"_c;
     log2_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    log2_Float16x4.documentation = "Returns the base 2 logarithm of a value."_c;
     log2_Float16x4.name = "log2"_c;
     log2_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     log2_Float16x4.parameters = log2_Float16x4_args;
@@ -8551,6 +8655,7 @@ void SetupIntrinsics()
     /// sin with Float32
     sin_Float32_arg.name = "val"_c;
     sin_Float32_arg.type = Type::FullType{ Float32Type.name };
+    sin_Float32.documentation = "Returns the sine of a value."_c;
     sin_Float32.name = "sin"_c;
     sin_Float32.returnType = Type::FullType { Float32Type.name };
     sin_Float32.parameters = sin_Float32_args;
@@ -8563,6 +8668,7 @@ void SetupIntrinsics()
     /// sin with Float32x2
     sin_Float32x2_arg.name = "val"_c;
     sin_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    sin_Float32x2.documentation = "Returns the sine of a value."_c;
     sin_Float32x2.name = "sin"_c;
     sin_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     sin_Float32x2.parameters = sin_Float32x2_args;
@@ -8575,6 +8681,7 @@ void SetupIntrinsics()
     /// sin with Float32x3
     sin_Float32x3_arg.name = "val"_c;
     sin_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    sin_Float32x3.documentation = "Returns the sine of a value."_c;
     sin_Float32x3.name = "sin"_c;
     sin_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     sin_Float32x3.parameters = sin_Float32x3_args;
@@ -8587,6 +8694,7 @@ void SetupIntrinsics()
     /// sin with Float32x4
     sin_Float32x4_arg.name = "val"_c;
     sin_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    sin_Float32x4.documentation = "Returns the sine of a value."_c;
     sin_Float32x4.name = "sin"_c;
     sin_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     sin_Float32x4.parameters = sin_Float32x4_args;
@@ -8599,6 +8707,7 @@ void SetupIntrinsics()
     /// sin with Float16
     sin_Float16_arg.name = "val"_c;
     sin_Float16_arg.type = Type::FullType{ Float16Type.name };
+    sin_Float16.documentation = "Returns the sine of a value."_c;
     sin_Float16.name = "sin"_c;
     sin_Float16.returnType = Type::FullType { Float16Type.name };
     sin_Float16.parameters = sin_Float16_args;
@@ -8611,6 +8720,7 @@ void SetupIntrinsics()
     /// sin with Float16x2
     sin_Float16x2_arg.name = "val"_c;
     sin_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    sin_Float16x2.documentation = "Returns the sine of a value."_c;
     sin_Float16x2.name = "sin"_c;
     sin_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     sin_Float16x2.parameters = sin_Float16x2_args;
@@ -8623,6 +8733,7 @@ void SetupIntrinsics()
     /// sin with Float16x3
     sin_Float16x3_arg.name = "val"_c;
     sin_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    sin_Float16x3.documentation = "Returns the sine of a value."_c;
     sin_Float16x3.name = "sin"_c;
     sin_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     sin_Float16x3.parameters = sin_Float16x3_args;
@@ -8635,6 +8746,7 @@ void SetupIntrinsics()
     /// sin with Float16x4
     sin_Float16x4_arg.name = "val"_c;
     sin_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    sin_Float16x4.documentation = "Returns the sine of a value."_c;
     sin_Float16x4.name = "sin"_c;
     sin_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     sin_Float16x4.parameters = sin_Float16x4_args;
@@ -8647,6 +8759,7 @@ void SetupIntrinsics()
     /// sinh with Float32
     sinh_Float32_arg.name = "val"_c;
     sinh_Float32_arg.type = Type::FullType{ Float32Type.name };
+    sinh_Float32.documentation = "Returns the hyperbolic sine of a value."_c;
     sinh_Float32.name = "sinh"_c;
     sinh_Float32.returnType = Type::FullType { Float32Type.name };
     sinh_Float32.parameters = sinh_Float32_args;
@@ -8659,6 +8772,7 @@ void SetupIntrinsics()
     /// sinh with Float32x2
     sinh_Float32x2_arg.name = "val"_c;
     sinh_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    sinh_Float32x2.documentation = "Returns the hyperbolic sine of a value."_c;
     sinh_Float32x2.name = "sinh"_c;
     sinh_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     sinh_Float32x2.parameters = sinh_Float32x2_args;
@@ -8671,6 +8785,7 @@ void SetupIntrinsics()
     /// sinh with Float32x3
     sinh_Float32x3_arg.name = "val"_c;
     sinh_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    sinh_Float32x3.documentation = "Returns the hyperbolic sine of a value."_c;
     sinh_Float32x3.name = "sinh"_c;
     sinh_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     sinh_Float32x3.parameters = sinh_Float32x3_args;
@@ -8683,6 +8798,7 @@ void SetupIntrinsics()
     /// sinh with Float32x4
     sinh_Float32x4_arg.name = "val"_c;
     sinh_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    sinh_Float32x4.documentation = "Returns the hyperbolic sine of a value."_c;
     sinh_Float32x4.name = "sinh"_c;
     sinh_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     sinh_Float32x4.parameters = sinh_Float32x4_args;
@@ -8695,6 +8811,7 @@ void SetupIntrinsics()
     /// sinh with Float16
     sinh_Float16_arg.name = "val"_c;
     sinh_Float16_arg.type = Type::FullType{ Float16Type.name };
+    sinh_Float16.documentation = "Returns the hyperbolic sine of a value."_c;
     sinh_Float16.name = "sinh"_c;
     sinh_Float16.returnType = Type::FullType { Float16Type.name };
     sinh_Float16.parameters = sinh_Float16_args;
@@ -8707,6 +8824,7 @@ void SetupIntrinsics()
     /// sinh with Float16x2
     sinh_Float16x2_arg.name = "val"_c;
     sinh_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    sinh_Float16x2.documentation = "Returns the hyperbolic sine of a value."_c;
     sinh_Float16x2.name = "sinh"_c;
     sinh_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     sinh_Float16x2.parameters = sinh_Float16x2_args;
@@ -8719,6 +8837,7 @@ void SetupIntrinsics()
     /// sinh with Float16x3
     sinh_Float16x3_arg.name = "val"_c;
     sinh_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    sinh_Float16x3.documentation = "Returns the hyperbolic sine of a value."_c;
     sinh_Float16x3.name = "sinh"_c;
     sinh_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     sinh_Float16x3.parameters = sinh_Float16x3_args;
@@ -8731,6 +8850,7 @@ void SetupIntrinsics()
     /// sinh with Float16x4
     sinh_Float16x4_arg.name = "val"_c;
     sinh_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    sinh_Float16x4.documentation = "Returns the hyperbolic sine of a value."_c;
     sinh_Float16x4.name = "sinh"_c;
     sinh_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     sinh_Float16x4.parameters = sinh_Float16x4_args;
@@ -8743,6 +8863,7 @@ void SetupIntrinsics()
     /// sqrt with Float32
     sqrt_Float32_arg.name = "val"_c;
     sqrt_Float32_arg.type = Type::FullType{ Float32Type.name };
+    sqrt_Float32.documentation = "Returns the square root of a value."_c;
     sqrt_Float32.name = "sqrt"_c;
     sqrt_Float32.returnType = Type::FullType { Float32Type.name };
     sqrt_Float32.parameters = sqrt_Float32_args;
@@ -8755,6 +8876,7 @@ void SetupIntrinsics()
     /// sqrt with Float32x2
     sqrt_Float32x2_arg.name = "val"_c;
     sqrt_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    sqrt_Float32x2.documentation = "Returns the square root of a value."_c;
     sqrt_Float32x2.name = "sqrt"_c;
     sqrt_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     sqrt_Float32x2.parameters = sqrt_Float32x2_args;
@@ -8767,6 +8889,7 @@ void SetupIntrinsics()
     /// sqrt with Float32x3
     sqrt_Float32x3_arg.name = "val"_c;
     sqrt_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    sqrt_Float32x3.documentation = "Returns the square root of a value."_c;
     sqrt_Float32x3.name = "sqrt"_c;
     sqrt_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     sqrt_Float32x3.parameters = sqrt_Float32x3_args;
@@ -8779,6 +8902,7 @@ void SetupIntrinsics()
     /// sqrt with Float32x4
     sqrt_Float32x4_arg.name = "val"_c;
     sqrt_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    sqrt_Float32x4.documentation = "Returns the square root of a value."_c;
     sqrt_Float32x4.name = "sqrt"_c;
     sqrt_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     sqrt_Float32x4.parameters = sqrt_Float32x4_args;
@@ -8791,6 +8915,7 @@ void SetupIntrinsics()
     /// sqrt with Float16
     sqrt_Float16_arg.name = "val"_c;
     sqrt_Float16_arg.type = Type::FullType{ Float16Type.name };
+    sqrt_Float16.documentation = "Returns the square root of a value."_c;
     sqrt_Float16.name = "sqrt"_c;
     sqrt_Float16.returnType = Type::FullType { Float16Type.name };
     sqrt_Float16.parameters = sqrt_Float16_args;
@@ -8803,6 +8928,7 @@ void SetupIntrinsics()
     /// sqrt with Float16x2
     sqrt_Float16x2_arg.name = "val"_c;
     sqrt_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    sqrt_Float16x2.documentation = "Returns the square root of a value."_c;
     sqrt_Float16x2.name = "sqrt"_c;
     sqrt_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     sqrt_Float16x2.parameters = sqrt_Float16x2_args;
@@ -8815,6 +8941,7 @@ void SetupIntrinsics()
     /// sqrt with Float16x3
     sqrt_Float16x3_arg.name = "val"_c;
     sqrt_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    sqrt_Float16x3.documentation = "Returns the square root of a value."_c;
     sqrt_Float16x3.name = "sqrt"_c;
     sqrt_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     sqrt_Float16x3.parameters = sqrt_Float16x3_args;
@@ -8827,6 +8954,7 @@ void SetupIntrinsics()
     /// sqrt with Float16x4
     sqrt_Float16x4_arg.name = "val"_c;
     sqrt_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    sqrt_Float16x4.documentation = "Returns the square root of a value."_c;
     sqrt_Float16x4.name = "sqrt"_c;
     sqrt_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     sqrt_Float16x4.parameters = sqrt_Float16x4_args;
@@ -8839,6 +8967,7 @@ void SetupIntrinsics()
     /// tan with Float32
     tan_Float32_arg.name = "val"_c;
     tan_Float32_arg.type = Type::FullType{ Float32Type.name };
+    tan_Float32.documentation = "Returns the tangent of a value."_c;
     tan_Float32.name = "tan"_c;
     tan_Float32.returnType = Type::FullType { Float32Type.name };
     tan_Float32.parameters = tan_Float32_args;
@@ -8851,6 +8980,7 @@ void SetupIntrinsics()
     /// tan with Float32x2
     tan_Float32x2_arg.name = "val"_c;
     tan_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    tan_Float32x2.documentation = "Returns the tangent of a value."_c;
     tan_Float32x2.name = "tan"_c;
     tan_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     tan_Float32x2.parameters = tan_Float32x2_args;
@@ -8863,6 +8993,7 @@ void SetupIntrinsics()
     /// tan with Float32x3
     tan_Float32x3_arg.name = "val"_c;
     tan_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    tan_Float32x3.documentation = "Returns the tangent of a value."_c;
     tan_Float32x3.name = "tan"_c;
     tan_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     tan_Float32x3.parameters = tan_Float32x3_args;
@@ -8875,6 +9006,7 @@ void SetupIntrinsics()
     /// tan with Float32x4
     tan_Float32x4_arg.name = "val"_c;
     tan_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    tan_Float32x4.documentation = "Returns the tangent of a value."_c;
     tan_Float32x4.name = "tan"_c;
     tan_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     tan_Float32x4.parameters = tan_Float32x4_args;
@@ -8887,6 +9019,7 @@ void SetupIntrinsics()
     /// tan with Float16
     tan_Float16_arg.name = "val"_c;
     tan_Float16_arg.type = Type::FullType{ Float16Type.name };
+    tan_Float16.documentation = "Returns the tangent of a value."_c;
     tan_Float16.name = "tan"_c;
     tan_Float16.returnType = Type::FullType { Float16Type.name };
     tan_Float16.parameters = tan_Float16_args;
@@ -8899,6 +9032,7 @@ void SetupIntrinsics()
     /// tan with Float16x2
     tan_Float16x2_arg.name = "val"_c;
     tan_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    tan_Float16x2.documentation = "Returns the tangent of a value."_c;
     tan_Float16x2.name = "tan"_c;
     tan_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     tan_Float16x2.parameters = tan_Float16x2_args;
@@ -8911,6 +9045,7 @@ void SetupIntrinsics()
     /// tan with Float16x3
     tan_Float16x3_arg.name = "val"_c;
     tan_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    tan_Float16x3.documentation = "Returns the tangent of a value."_c;
     tan_Float16x3.name = "tan"_c;
     tan_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     tan_Float16x3.parameters = tan_Float16x3_args;
@@ -8923,6 +9058,7 @@ void SetupIntrinsics()
     /// tan with Float16x4
     tan_Float16x4_arg.name = "val"_c;
     tan_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    tan_Float16x4.documentation = "Returns the tangent of a value."_c;
     tan_Float16x4.name = "tan"_c;
     tan_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     tan_Float16x4.parameters = tan_Float16x4_args;
@@ -8935,6 +9071,7 @@ void SetupIntrinsics()
     /// tanh with Float32
     tanh_Float32_arg.name = "val"_c;
     tanh_Float32_arg.type = Type::FullType{ Float32Type.name };
+    tanh_Float32.documentation = "Returns the hyperbolic tangent of a value."_c;
     tanh_Float32.name = "tanh"_c;
     tanh_Float32.returnType = Type::FullType { Float32Type.name };
     tanh_Float32.parameters = tanh_Float32_args;
@@ -8947,6 +9084,7 @@ void SetupIntrinsics()
     /// tanh with Float32x2
     tanh_Float32x2_arg.name = "val"_c;
     tanh_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    tanh_Float32x2.documentation = "Returns the hyperbolic tangent of a value."_c;
     tanh_Float32x2.name = "tanh"_c;
     tanh_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     tanh_Float32x2.parameters = tanh_Float32x2_args;
@@ -8959,6 +9097,7 @@ void SetupIntrinsics()
     /// tanh with Float32x3
     tanh_Float32x3_arg.name = "val"_c;
     tanh_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    tanh_Float32x3.documentation = "Returns the hyperbolic tangent of a value."_c;
     tanh_Float32x3.name = "tanh"_c;
     tanh_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     tanh_Float32x3.parameters = tanh_Float32x3_args;
@@ -8971,6 +9110,7 @@ void SetupIntrinsics()
     /// tanh with Float32x4
     tanh_Float32x4_arg.name = "val"_c;
     tanh_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    tanh_Float32x4.documentation = "Returns the hyperbolic tangent of a value."_c;
     tanh_Float32x4.name = "tanh"_c;
     tanh_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     tanh_Float32x4.parameters = tanh_Float32x4_args;
@@ -8983,6 +9123,7 @@ void SetupIntrinsics()
     /// tanh with Float16
     tanh_Float16_arg.name = "val"_c;
     tanh_Float16_arg.type = Type::FullType{ Float16Type.name };
+    tanh_Float16.documentation = "Returns the hyperbolic tangent of a value."_c;
     tanh_Float16.name = "tanh"_c;
     tanh_Float16.returnType = Type::FullType { Float16Type.name };
     tanh_Float16.parameters = tanh_Float16_args;
@@ -8995,6 +9136,7 @@ void SetupIntrinsics()
     /// tanh with Float16x2
     tanh_Float16x2_arg.name = "val"_c;
     tanh_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    tanh_Float16x2.documentation = "Returns the hyperbolic tangent of a value."_c;
     tanh_Float16x2.name = "tanh"_c;
     tanh_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     tanh_Float16x2.parameters = tanh_Float16x2_args;
@@ -9007,6 +9149,7 @@ void SetupIntrinsics()
     /// tanh with Float16x3
     tanh_Float16x3_arg.name = "val"_c;
     tanh_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    tanh_Float16x3.documentation = "Returns the hyperbolic tangent of a value."_c;
     tanh_Float16x3.name = "tanh"_c;
     tanh_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     tanh_Float16x3.parameters = tanh_Float16x3_args;
@@ -9019,6 +9162,7 @@ void SetupIntrinsics()
     /// tanh with Float16x4
     tanh_Float16x4_arg.name = "val"_c;
     tanh_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    tanh_Float16x4.documentation = "Returns the hyperbolic tangent of a value."_c;
     tanh_Float16x4.name = "tanh"_c;
     tanh_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     tanh_Float16x4.parameters = tanh_Float16x4_args;
@@ -9033,6 +9177,7 @@ void SetupIntrinsics()
     atan2_Float32_y.type = Type::FullType{ Float32Type.name };
     atan2_Float32_x.name = "x"_c;
     atan2_Float32_x.type = Type::FullType{ Float32Type.name };
+    atan2_Float32.documentation = "Returns the angle whose tangent is the quotient of the two specified numbers."_c;
     atan2_Float32.name = "tanh"_c;
     atan2_Float32.returnType = Type::FullType { Float32Type.name };
     atan2_Float32.parameters = atan2_Float32_args;
@@ -9048,6 +9193,7 @@ void SetupIntrinsics()
     atan2_Float32x2_y.type = Type::FullType{ Float32x2Type.name };
     atan2_Float32x2_x.name = "x"_c;
     atan2_Float32x2_x.type = Type::FullType{ Float32x2Type.name };
+    atan2_Float32x2.documentation = "Returns the angle whose tangent is the quotient of the two specified numbers."_c;
     atan2_Float32x2.name = "tanh"_c;
     atan2_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     atan2_Float32x2.parameters = atan2_Float32x2_args;
@@ -9063,6 +9209,7 @@ void SetupIntrinsics()
     atan2_Float32x3_y.type = Type::FullType{ Float32x3Type.name };
     atan2_Float32x3_x.name = "x"_c;
     atan2_Float32x3_x.type = Type::FullType{ Float32x3Type.name };
+    atan2_Float32x3.documentation = "Returns the angle whose tangent is the quotient of the two specified numbers."_c;
     atan2_Float32x3.name = "tanh"_c;
     atan2_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     atan2_Float32x3.parameters = atan2_Float32x3_args;
@@ -9078,6 +9225,7 @@ void SetupIntrinsics()
     atan2_Float32x4_y.type = Type::FullType{ Float32x4Type.name };
     atan2_Float32x4_x.name = "x"_c;
     atan2_Float32x4_x.type = Type::FullType{ Float32x4Type.name };
+    atan2_Float32x4.documentation = "Returns the angle whose tangent is the quotient of the two specified numbers."_c;
     atan2_Float32x4.name = "tanh"_c;
     atan2_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     atan2_Float32x4.parameters = atan2_Float32x4_args;
@@ -9093,6 +9241,7 @@ void SetupIntrinsics()
     atan2_Float16_y.type = Type::FullType{ Float16Type.name };
     atan2_Float16_x.name = "x"_c;
     atan2_Float16_x.type = Type::FullType{ Float16Type.name };
+    atan2_Float16.documentation = "Returns the angle whose tangent is the quotient of the two specified numbers."_c;
     atan2_Float16.name = "tanh"_c;
     atan2_Float16.returnType = Type::FullType { Float16Type.name };
     atan2_Float16.parameters = atan2_Float16_args;
@@ -9108,6 +9257,7 @@ void SetupIntrinsics()
     atan2_Float16x2_y.type = Type::FullType{ Float16x2Type.name };
     atan2_Float16x2_x.name = "x"_c;
     atan2_Float16x2_x.type = Type::FullType{ Float16x2Type.name };
+    atan2_Float16x2.documentation = "Returns the angle whose tangent is the quotient of the two specified numbers."_c;
     atan2_Float16x2.name = "tanh"_c;
     atan2_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     atan2_Float16x2.parameters = atan2_Float16x2_args;
@@ -9123,6 +9273,7 @@ void SetupIntrinsics()
     atan2_Float16x3_y.type = Type::FullType{ Float16x3Type.name };
     atan2_Float16x3_x.name = "x"_c;
     atan2_Float16x3_x.type = Type::FullType{ Float16x3Type.name };
+    atan2_Float16x3.documentation = "Returns the angle whose tangent is the quotient of the two specified numbers."_c;
     atan2_Float16x3.name = "tanh"_c;
     atan2_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     atan2_Float16x3.parameters = atan2_Float16x3_args;
@@ -9138,6 +9289,7 @@ void SetupIntrinsics()
     atan2_Float16x4_y.type = Type::FullType{ Float16x4Type.name };
     atan2_Float16x4_x.name = "x"_c;
     atan2_Float16x4_x.type = Type::FullType{ Float16x4Type.name };
+    atan2_Float16x4.documentation = "Returns the angle whose tangent is the quotient of the two specified numbers."_c;
     atan2_Float16x4.name = "tanh"_c;
     atan2_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     atan2_Float16x4.parameters = atan2_Float16x4_args;
@@ -9153,6 +9305,7 @@ void SetupIntrinsics()
     pow_Float32_arg.type = Type::FullType{ Float32Type.name };
     pow_Float32_exp.name = "exponent"_c;
     pow_Float32_exp.type = Type::FullType{ Float32Type.name };
+    pow_Float32.documentation = "Returns the result of raising a value to the power of an exponent."_c;
     pow_Float32.name = "pow"_c;
     pow_Float32.returnType = Type::FullType { Float32Type.name };
     pow_Float32.parameters = pow_Float32_args;
@@ -9168,6 +9321,7 @@ void SetupIntrinsics()
     pow_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     pow_Float32x2_exp.name = "exponent"_c;
     pow_Float32x2_exp.type = Type::FullType{ Float32x2Type.name };
+    pow_Float32x2.documentation = "Returns the result of raising a value to the power of an exponent."_c;
     pow_Float32x2.name = "pow"_c;
     pow_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     pow_Float32x2.parameters = pow_Float32x2_args;
@@ -9183,6 +9337,7 @@ void SetupIntrinsics()
     pow_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     pow_Float32x3_exp.name = "exponent"_c;
     pow_Float32x3_exp.type = Type::FullType{ Float32x3Type.name };
+    pow_Float32x3.documentation = "Returns the result of raising a value to the power of an exponent."_c;
     pow_Float32x3.name = "pow"_c;
     pow_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     pow_Float32x3.parameters = pow_Float32x3_args;
@@ -9198,6 +9353,7 @@ void SetupIntrinsics()
     pow_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     pow_Float32x4_exp.name = "exponent"_c;
     pow_Float32x4_exp.type = Type::FullType{ Float32x4Type.name };
+    pow_Float32x4.documentation = "Returns the result of raising a value to the power of an exponent."_c;
     pow_Float32x4.name = "pow"_c;
     pow_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     pow_Float32x4.parameters = pow_Float32x4_args;
@@ -9213,6 +9369,7 @@ void SetupIntrinsics()
     pow_Float16_arg.type = Type::FullType{ Float16Type.name };
     pow_Float16_exp.name = "exponent"_c;
     pow_Float16_exp.type = Type::FullType{ Float16Type.name };
+    pow_Float16.documentation = "Returns the result of raising a value to the power of an exponent."_c;
     pow_Float16.name = "pow"_c;
     pow_Float16.returnType = Type::FullType { Float16Type.name };
     pow_Float16.parameters = pow_Float16_args;
@@ -9228,6 +9385,7 @@ void SetupIntrinsics()
     pow_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     pow_Float16x2_exp.name = "exponent"_c;
     pow_Float16x2_exp.type = Type::FullType{ Float16x2Type.name };
+    pow_Float16x2.documentation = "Returns the result of raising a value to the power of an exponent."_c;
     pow_Float16x2.name = "pow"_c;
     pow_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     pow_Float16x2.parameters = pow_Float16x2_args;
@@ -9243,6 +9401,7 @@ void SetupIntrinsics()
     pow_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     pow_Float16x3_exp.name = "exponent"_c;
     pow_Float16x3_exp.type = Type::FullType{ Float16x3Type.name };
+    pow_Float16x3.documentation = "Returns the result of raising a value to the power of an exponent."_c;
     pow_Float16x3.name = "pow"_c;
     pow_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     pow_Float16x3.parameters = pow_Float16x3_args;
@@ -9258,6 +9417,7 @@ void SetupIntrinsics()
     pow_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     pow_Float16x4_exp.name = "exponent"_c;
     pow_Float16x4_exp.type = Type::FullType{ Float16x4Type.name };
+    pow_Float16x4.documentation = "Returns the result of raising a value to the power of an exponent."_c;
     pow_Float16x4.name = "pow"_c;
     pow_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     pow_Float16x4.parameters = pow_Float16x4_args;
@@ -9275,6 +9435,7 @@ void SetupIntrinsics()
     mad_Float32_mul.type = Type::FullType{ Float32Type.name };
     mad_Float32_add.name = "addend"_c;
     mad_Float32_add.type = Type::FullType{ Float32Type.name };
+    mad_Float32.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
     mad_Float32.name = "mad"_c;
     mad_Float32.returnType = Type::FullType { Float32Type.name };
     mad_Float32.parameters = mad_Float32_args;
@@ -9293,6 +9454,7 @@ void SetupIntrinsics()
     mad_Float32x2_mul.type = Type::FullType{ Float32x2Type.name };
     mad_Float32x2_add.name = "addend"_c;
     mad_Float32x2_add.type = Type::FullType{ Float32x2Type.name };
+    mad_Float32x2.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
     mad_Float32x2.name = "mad"_c;
     mad_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     mad_Float32x2.parameters = mad_Float32x2_args;
@@ -9311,6 +9473,7 @@ void SetupIntrinsics()
     mad_Float32x3_mul.type = Type::FullType{ Float32x3Type.name };
     mad_Float32x3_add.name = "addend"_c;
     mad_Float32x3_add.type = Type::FullType{ Float32x3Type.name };
+    mad_Float32x3.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
     mad_Float32x3.name = "mad"_c;
     mad_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     mad_Float32x3.parameters = mad_Float32x3_args;
@@ -9329,6 +9492,7 @@ void SetupIntrinsics()
     mad_Float32x4_mul.type = Type::FullType{ Float32x4Type.name };
     mad_Float32x4_add.name = "addend"_c;
     mad_Float32x4_add.type = Type::FullType{ Float32x4Type.name };
+    mad_Float32x4.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
     mad_Float32x4.name = "mad"_c;
     mad_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     mad_Float32x4.parameters = mad_Float32x4_args;
@@ -9347,6 +9511,7 @@ void SetupIntrinsics()
     mad_Float16_mul.type = Type::FullType{ Float16Type.name };
     mad_Float16_add.name = "addend"_c;
     mad_Float16_add.type = Type::FullType{ Float16Type.name };
+    mad_Float16.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
     mad_Float16.name = "mad"_c;
     mad_Float16.returnType = Type::FullType { Float16Type.name };
     mad_Float16.parameters = mad_Float16_args;
@@ -9365,6 +9530,7 @@ void SetupIntrinsics()
     mad_Float16x2_mul.type = Type::FullType{ Float16x2Type.name };
     mad_Float16x2_add.name = "addend"_c;
     mad_Float16x2_add.type = Type::FullType{ Float16x2Type.name };
+    mad_Float16x2.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
     mad_Float16x2.name = "mad"_c;
     mad_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     mad_Float16x2.parameters = mad_Float16x2_args;
@@ -9383,6 +9549,7 @@ void SetupIntrinsics()
     mad_Float16x3_mul.type = Type::FullType{ Float16x3Type.name };
     mad_Float16x3_add.name = "addend"_c;
     mad_Float16x3_add.type = Type::FullType{ Float16x3Type.name };
+    mad_Float16x3.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
     mad_Float16x3.name = "mad"_c;
     mad_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     mad_Float16x3.parameters = mad_Float16x3_args;
@@ -9401,6 +9568,7 @@ void SetupIntrinsics()
     mad_Float16x4_mul.type = Type::FullType{ Float16x4Type.name };
     mad_Float16x4_add.name = "addend"_c;
     mad_Float16x4_add.type = Type::FullType{ Float16x4Type.name };
+    mad_Float16x4.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
     mad_Float16x4.name = "mad"_c;
     mad_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     mad_Float16x4.parameters = mad_Float16x4_args;
@@ -9419,6 +9587,7 @@ void SetupIntrinsics()
     mad_Int32_mul.type = Type::FullType{ Int32Type.name };
     mad_Int32_add.name = "addend"_c;
     mad_Int32_add.type = Type::FullType{ Int32Type.name };
+    mad_Int32.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
     mad_Int32.name = "mad"_c;
     mad_Int32.returnType = Type::FullType { Int32Type.name };
     mad_Int32.parameters = mad_Int32_args;
@@ -9437,6 +9606,7 @@ void SetupIntrinsics()
     mad_Int32x2_mul.type = Type::FullType{ Int32x2Type.name };
     mad_Int32x2_add.name = "addend"_c;
     mad_Int32x2_add.type = Type::FullType{ Int32x2Type.name };
+    mad_Int32x2.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
     mad_Int32x2.name = "mad"_c;
     mad_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     mad_Int32x2.parameters = mad_Int32x2_args;
@@ -9455,6 +9625,7 @@ void SetupIntrinsics()
     mad_Int32x3_mul.type = Type::FullType{ Int32x3Type.name };
     mad_Int32x3_add.name = "addend"_c;
     mad_Int32x3_add.type = Type::FullType{ Int32x3Type.name };
+    mad_Int32x3.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
     mad_Int32x3.name = "mad"_c;
     mad_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     mad_Int32x3.parameters = mad_Int32x3_args;
@@ -9473,6 +9644,7 @@ void SetupIntrinsics()
     mad_Int32x4_mul.type = Type::FullType{ Int32x4Type.name };
     mad_Int32x4_add.name = "addend"_c;
     mad_Int32x4_add.type = Type::FullType{ Int32x4Type.name };
+    mad_Int32x4.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
     mad_Int32x4.name = "mad"_c;
     mad_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     mad_Int32x4.parameters = mad_Int32x4_args;
@@ -9491,6 +9663,7 @@ void SetupIntrinsics()
     mad_Int16_mul.type = Type::FullType{ Int16Type.name };
     mad_Int16_add.name = "addend"_c;
     mad_Int16_add.type = Type::FullType{ Int16Type.name };
+    mad_Int16.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
     mad_Int16.name = "mad"_c;
     mad_Int16.returnType = Type::FullType { Int16Type.name };
     mad_Int16.parameters = mad_Int16_args;
@@ -9509,6 +9682,7 @@ void SetupIntrinsics()
     mad_Int16x2_mul.type = Type::FullType{ Int16x2Type.name };
     mad_Int16x2_add.name = "addend"_c;
     mad_Int16x2_add.type = Type::FullType{ Int16x2Type.name };
+    mad_Int16x2.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
     mad_Int16x2.name = "mad"_c;
     mad_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     mad_Int16x2.parameters = mad_Int16x2_args;
@@ -9527,6 +9701,7 @@ void SetupIntrinsics()
     mad_Int16x3_mul.type = Type::FullType{ Int16x3Type.name };
     mad_Int16x3_add.name = "addend"_c;
     mad_Int16x3_add.type = Type::FullType{ Int16x3Type.name };
+    mad_Int16x3.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
     mad_Int16x3.name = "mad"_c;
     mad_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     mad_Int16x3.parameters = mad_Int16x3_args;
@@ -9545,6 +9720,7 @@ void SetupIntrinsics()
     mad_Int16x4_mul.type = Type::FullType{ Int16x4Type.name };
     mad_Int16x4_add.name = "addend"_c;
     mad_Int16x4_add.type = Type::FullType{ Int16x4Type.name };
+    mad_Int16x4.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
     mad_Int16x4.name = "mad"_c;
     mad_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     mad_Int16x4.parameters = mad_Int16x4_args;
@@ -9563,6 +9739,7 @@ void SetupIntrinsics()
     mad_UInt32_mul.type = Type::FullType{ UInt32Type.name };
     mad_UInt32_add.name = "addend"_c;
     mad_UInt32_add.type = Type::FullType{ UInt32Type.name };
+    mad_UInt32.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
     mad_UInt32.name = "mad"_c;
     mad_UInt32.returnType = Type::FullType { UInt32Type.name };
     mad_UInt32.parameters = mad_UInt32_args;
@@ -9581,6 +9758,7 @@ void SetupIntrinsics()
     mad_UInt32x2_mul.type = Type::FullType{ UInt32x2Type.name };
     mad_UInt32x2_add.name = "addend"_c;
     mad_UInt32x2_add.type = Type::FullType{ UInt32x2Type.name };
+    mad_UInt32x2.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
     mad_UInt32x2.name = "mad"_c;
     mad_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
     mad_UInt32x2.parameters = mad_UInt32x2_args;
@@ -9599,6 +9777,7 @@ void SetupIntrinsics()
     mad_UInt32x3_mul.type = Type::FullType{ UInt32x3Type.name };
     mad_UInt32x3_add.name = "addend"_c;
     mad_UInt32x3_add.type = Type::FullType{ UInt32x3Type.name };
+    mad_UInt32x3.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
     mad_UInt32x3.name = "mad"_c;
     mad_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
     mad_UInt32x3.parameters = mad_UInt32x3_args;
@@ -9617,6 +9796,7 @@ void SetupIntrinsics()
     mad_UInt32x4_mul.type = Type::FullType{ UInt32x4Type.name };
     mad_UInt32x4_add.name = "addend"_c;
     mad_UInt32x4_add.type = Type::FullType{ UInt32x4Type.name };
+    mad_UInt32x4.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
     mad_UInt32x4.name = "mad"_c;
     mad_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
     mad_UInt32x4.parameters = mad_UInt32x4_args;
@@ -9635,6 +9815,7 @@ void SetupIntrinsics()
     mad_UInt16_mul.type = Type::FullType{ UInt16Type.name };
     mad_UInt16_add.name = "addend"_c;
     mad_UInt16_add.type = Type::FullType{ UInt16Type.name };
+    mad_UInt16.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
     mad_UInt16.name = "mad"_c;
     mad_UInt16.returnType = Type::FullType { UInt16Type.name };
     mad_UInt16.parameters = mad_UInt16_args;
@@ -9653,6 +9834,7 @@ void SetupIntrinsics()
     mad_UInt16x2_mul.type = Type::FullType{ UInt16x2Type.name };
     mad_UInt16x2_add.name = "addend"_c;
     mad_UInt16x2_add.type = Type::FullType{ UInt16x2Type.name };
+    mad_UInt16x2.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
     mad_UInt16x2.name = "mad"_c;
     mad_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
     mad_UInt16x2.parameters = mad_UInt16x2_args;
@@ -9671,6 +9853,7 @@ void SetupIntrinsics()
     mad_UInt16x3_mul.type = Type::FullType{ UInt16x3Type.name };
     mad_UInt16x3_add.name = "addend"_c;
     mad_UInt16x3_add.type = Type::FullType{ UInt16x3Type.name };
+    mad_UInt16x3.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
     mad_UInt16x3.name = "mad"_c;
     mad_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
     mad_UInt16x3.parameters = mad_UInt16x3_args;
@@ -9689,6 +9872,7 @@ void SetupIntrinsics()
     mad_UInt16x4_mul.type = Type::FullType{ UInt16x4Type.name };
     mad_UInt16x4_add.name = "addend"_c;
     mad_UInt16x4_add.type = Type::FullType{ UInt16x4Type.name };
+    mad_UInt16x4.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
     mad_UInt16x4.name = "mad"_c;
     mad_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
     mad_UInt16x4.parameters = mad_UInt16x4_args;
@@ -9705,6 +9889,7 @@ void SetupIntrinsics()
     dot_Float32x2_x.type = Type::FullType{ Float32x2Type.name };
     dot_Float32x2_y.name = "y"_c;
     dot_Float32x2_y.type = Type::FullType{ Float32x2Type.name };
+    dot_Float32x2.documentation = "Returns the dot product of two vectors."_c;
     dot_Float32x2.name = "dot"_c;
     dot_Float32x2.returnType = Type::FullType { Float32Type.name };
     dot_Float32x2.parameters = dot_Float32x2_args;
@@ -9720,6 +9905,7 @@ void SetupIntrinsics()
     dot_Float32x3_x.type = Type::FullType{ Float32x3Type.name };
     dot_Float32x3_y.name = "y"_c;
     dot_Float32x3_y.type = Type::FullType{ Float32x3Type.name };
+    dot_Float32x3.documentation = "Returns the dot product of two vectors."_c;
     dot_Float32x3.name = "dot"_c;
     dot_Float32x3.returnType = Type::FullType { Float32Type.name };
     dot_Float32x3.parameters = dot_Float32x3_args;
@@ -9735,6 +9921,7 @@ void SetupIntrinsics()
     dot_Float32x4_x.type = Type::FullType{ Float32x4Type.name };
     dot_Float32x4_y.name = "y"_c;
     dot_Float32x4_y.type = Type::FullType{ Float32x4Type.name };
+    dot_Float32x4.documentation = "Returns the dot product of two vectors."_c;
     dot_Float32x4.name = "dot"_c;
     dot_Float32x4.returnType = Type::FullType { Float32Type.name };
     dot_Float32x4.parameters = dot_Float32x4_args;
@@ -9750,6 +9937,7 @@ void SetupIntrinsics()
     dot_Float16x2_x.type = Type::FullType{ Float16x2Type.name };
     dot_Float16x2_y.name = "y"_c;
     dot_Float16x2_y.type = Type::FullType{ Float16x2Type.name };
+    dot_Float16x2.documentation = "Returns the dot product of two vectors."_c;
     dot_Float16x2.name = "dot"_c;
     dot_Float16x2.returnType = Type::FullType { Float16Type.name };
     dot_Float16x2.parameters = dot_Float16x2_args;
@@ -9765,6 +9953,7 @@ void SetupIntrinsics()
     dot_Float16x3_x.type = Type::FullType{ Float16x3Type.name };
     dot_Float16x3_y.name = "y"_c;
     dot_Float16x3_y.type = Type::FullType{ Float16x3Type.name };
+    dot_Float16x3.documentation = "Returns the dot product of two vectors."_c;
     dot_Float16x3.name = "dot"_c;
     dot_Float16x3.returnType = Type::FullType { Float16Type.name };
     dot_Float16x3.parameters = dot_Float16x3_args;
@@ -9780,6 +9969,7 @@ void SetupIntrinsics()
     dot_Float16x4_x.type = Type::FullType{ Float16x4Type.name };
     dot_Float16x4_y.name = "y"_c;
     dot_Float16x4_y.type = Type::FullType{ Float16x4Type.name };
+    dot_Float16x4.documentation = "Returns the dot product of two vectors."_c;
     dot_Float16x4.name = "dot"_c;
     dot_Float16x4.returnType = Type::FullType { Float16Type.name };
     dot_Float16x4.parameters = dot_Float16x4_args;
@@ -9795,6 +9985,7 @@ void SetupIntrinsics()
     reflect_Float32x2_incident.type = Type::FullType{ Float32x2Type.name };
     reflect_Float32x2_normal.name = "normal"_c;
     reflect_Float32x2_normal.type = Type::FullType{ Float32x2Type.name };
+    reflect_Float32x2.documentation = "Returns the reflection of a vector through a surface using an incident vector and normal."_c;
     reflect_Float32x2.name = "reflect"_c;
     reflect_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     reflect_Float32x2.parameters = reflect_Float32x2_args;
@@ -9810,6 +10001,7 @@ void SetupIntrinsics()
     reflect_Float32x3_incident.type = Type::FullType{ Float32x3Type.name };
     reflect_Float32x3_normal.name = "normal"_c;
     reflect_Float32x3_normal.type = Type::FullType{ Float32x3Type.name };
+    reflect_Float32x3.documentation = "Returns the reflection of a vector through a surface using an incident vector and normal."_c;
     reflect_Float32x3.name = "reflect"_c;
     reflect_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     reflect_Float32x3.parameters = reflect_Float32x3_args;
@@ -9825,6 +10017,7 @@ void SetupIntrinsics()
     reflect_Float32x4_incident.type = Type::FullType{ Float32x4Type.name };
     reflect_Float32x4_normal.name = "normal"_c;
     reflect_Float32x4_normal.type = Type::FullType{ Float32x4Type.name };
+    reflect_Float32x4.documentation = "Returns the reflection of a vector through a surface using an incident vector and normal."_c;
     reflect_Float32x4.name = "reflect"_c;
     reflect_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     reflect_Float32x4.parameters = reflect_Float32x4_args;
@@ -9840,6 +10033,7 @@ void SetupIntrinsics()
     reflect_Float16x2_incident.type = Type::FullType{ Float16x2Type.name };
     reflect_Float16x2_normal.name = "normal"_c;
     reflect_Float16x2_normal.type = Type::FullType{ Float16x2Type.name };
+    reflect_Float16x2.documentation = "Returns the reflection of a vector through a surface using an incident vector and normal."_c;
     reflect_Float16x2.name = "reflect"_c;
     reflect_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     reflect_Float16x2.parameters = reflect_Float16x2_args;
@@ -9855,6 +10049,7 @@ void SetupIntrinsics()
     reflect_Float16x3_incident.type = Type::FullType{ Float16x3Type.name };
     reflect_Float16x3_normal.name = "normal"_c;
     reflect_Float16x3_normal.type = Type::FullType{ Float16x3Type.name };
+    reflect_Float16x3.documentation = "Returns the reflection of a vector through a surface using an incident vector and normal."_c;
     reflect_Float16x3.name = "reflect"_c;
     reflect_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     reflect_Float16x3.parameters = reflect_Float16x3_args;
@@ -9870,6 +10065,7 @@ void SetupIntrinsics()
     reflect_Float16x4_incident.type = Type::FullType{ Float16x4Type.name };
     reflect_Float16x4_normal.name = "normal"_c;
     reflect_Float16x4_normal.type = Type::FullType{ Float16x4Type.name };
+    reflect_Float16x4.documentation = "Returns the reflection of a vector through a surface using an incident vector and normal."_c;
     reflect_Float16x4.name = "reflect"_c;
     reflect_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     reflect_Float16x4.parameters = reflect_Float16x4_args;
@@ -9887,6 +10083,7 @@ void SetupIntrinsics()
     refract_Float32x2_normal.type = Type::FullType{ Float32x2Type.name };
     refract_Float32x2_ior.name = "ior"_c;
     refract_Float32x2_ior.type = Type::FullType{ Float32x2Type.name };
+    refract_Float32x2.documentation = "Returns the refraction of a vector through a surface using an incident vector, normal and an index of refraction."_c;
     refract_Float32x2.name = "refract"_c;
     refract_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     refract_Float32x2.parameters = refract_Float32x2_args;
@@ -9905,6 +10102,7 @@ void SetupIntrinsics()
     refract_Float32x3_normal.type = Type::FullType{ Float32x3Type.name };
     refract_Float32x3_ior.name = "ior"_c;
     refract_Float32x3_ior.type = Type::FullType{ Float32x3Type.name };
+    refract_Float32x3.documentation = "Returns the refraction of a vector through a surface using an incident vector, normal and an index of refraction."_c;
     refract_Float32x3.name = "refract"_c;
     refract_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     refract_Float32x3.parameters = refract_Float32x3_args;
@@ -9923,6 +10121,7 @@ void SetupIntrinsics()
     refract_Float32x4_normal.type = Type::FullType{ Float32x4Type.name };
     refract_Float32x4_ior.name = "ior"_c;
     refract_Float32x4_ior.type = Type::FullType{ Float32x4Type.name };
+    refract_Float32x4.documentation = "Returns the refraction of a vector through a surface using an incident vector, normal and an index of refraction."_c;
     refract_Float32x4.name = "refract"_c;
     refract_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     refract_Float32x4.parameters = refract_Float32x4_args;
@@ -9941,6 +10140,7 @@ void SetupIntrinsics()
     refract_Float16x2_normal.type = Type::FullType{ Float16x2Type.name };
     refract_Float16x2_ior.name = "ior"_c;
     refract_Float16x2_ior.type = Type::FullType{ Float16x2Type.name };
+    refract_Float16x2.documentation = "Returns the refraction of a vector through a surface using an incident vector, normal and an index of refraction."_c;
     refract_Float16x2.name = "refract"_c;
     refract_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     refract_Float16x2.parameters = refract_Float16x2_args;
@@ -9959,6 +10159,7 @@ void SetupIntrinsics()
     refract_Float16x3_normal.type = Type::FullType{ Float16x3Type.name };
     refract_Float16x3_ior.name = "ior"_c;
     refract_Float16x3_ior.type = Type::FullType{ Float16x3Type.name };
+    refract_Float16x3.documentation = "Returns the refraction of a vector through a surface using an incident vector, normal and an index of refraction."_c;
     refract_Float16x3.name = "refract"_c;
     refract_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     refract_Float16x3.parameters = refract_Float16x3_args;
@@ -9977,6 +10178,7 @@ void SetupIntrinsics()
     refract_Float16x4_normal.type = Type::FullType{ Float16x4Type.name };
     refract_Float16x4_ior.name = "ior"_c;
     refract_Float16x4_ior.type = Type::FullType{ Float16x4Type.name };
+    refract_Float16x4.documentation = "Returns the refraction of a vector through a surface using an incident vector, normal and an index of refraction."_c;
     refract_Float16x4.name = "refract"_c;
     refract_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     refract_Float16x4.parameters = refract_Float16x4_args;
@@ -9993,6 +10195,7 @@ void SetupIntrinsics()
     cross_Float32x3_v0.type = Type::FullType{ Float32x3Type.name };
     cross_Float32x3_v1.name = "v1"_c;
     cross_Float32x3_v1.type = Type::FullType{ Float32x3Type.name };
+    cross_Float32x3.documentation = "Returns the cross product of two vectors."_c;
     cross_Float32x3.name = "cross"_c;
     cross_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     cross_Float32x3.parameters = cross_Float32x3_args;
@@ -10008,6 +10211,7 @@ void SetupIntrinsics()
     cross_Float16x3_v0.type = Type::FullType{ Float16x3Type.name };
     cross_Float16x3_v1.name = "v1"_c;
     cross_Float16x3_v1.type = Type::FullType{ Float16x3Type.name };
+    cross_Float16x3.documentation = "Returns the cross product of two vectors."_c;
     cross_Float16x3.name = "cross"_c;
     cross_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     cross_Float16x3.parameters = cross_Float16x3_args;
@@ -10021,6 +10225,7 @@ void SetupIntrinsics()
     /// length with Float32x2
     length_Float32x2_arg.name = "val"_c;
     length_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    length_Float32x2.documentation = "Returns the length of the vector."_c;
     length_Float32x2.name = "length"_c;
     length_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     length_Float32x2.parameters = length_Float32x2_args;
@@ -10033,6 +10238,7 @@ void SetupIntrinsics()
     /// length with Float32x3
     length_Float32x3_arg.name = "val"_c;
     length_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    length_Float32x3.documentation = "Returns the length of the vector."_c;
     length_Float32x3.name = "length"_c;
     length_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     length_Float32x3.parameters = length_Float32x3_args;
@@ -10045,6 +10251,7 @@ void SetupIntrinsics()
     /// length with Float32x4
     length_Float32x4_arg.name = "val"_c;
     length_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    length_Float32x4.documentation = "Returns the length of the vector."_c;
     length_Float32x4.name = "length"_c;
     length_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     length_Float32x4.parameters = length_Float32x4_args;
@@ -10057,6 +10264,7 @@ void SetupIntrinsics()
     /// length with Float16x2
     length_Float16x2_arg.name = "val"_c;
     length_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    length_Float16x2.documentation = "Returns the length of the vector."_c;
     length_Float16x2.name = "length"_c;
     length_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     length_Float16x2.parameters = length_Float16x2_args;
@@ -10069,6 +10277,7 @@ void SetupIntrinsics()
     /// length with Float16x3
     length_Float16x3_arg.name = "val"_c;
     length_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    length_Float16x3.documentation = "Returns the length of the vector."_c;
     length_Float16x3.name = "length"_c;
     length_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     length_Float16x3.parameters = length_Float16x3_args;
@@ -10081,6 +10290,7 @@ void SetupIntrinsics()
     /// length with Float16x4
     length_Float16x4_arg.name = "val"_c;
     length_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    length_Float16x4.documentation = "Returns the length of the vector."_c;
     length_Float16x4.name = "length"_c;
     length_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     length_Float16x4.parameters = length_Float16x4_args;
@@ -10093,6 +10303,7 @@ void SetupIntrinsics()
     /// normalize with Float32x2
     normalize_Float32x2_arg.name = "val"_c;
     normalize_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    normalize_Float32x2.documentation = "Returns the normalized vector."_c;
     normalize_Float32x2.name = "normalize"_c;
     normalize_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     normalize_Float32x2.parameters = normalize_Float32x2_args;
@@ -10105,6 +10316,7 @@ void SetupIntrinsics()
     /// normalize with Float32x3
     normalize_Float32x3_arg.name = "val"_c;
     normalize_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    normalize_Float32x3.documentation = "Returns the normalized vector."_c;
     normalize_Float32x3.name = "normalize"_c;
     normalize_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     normalize_Float32x3.parameters = normalize_Float32x3_args;
@@ -10117,6 +10329,7 @@ void SetupIntrinsics()
     /// normalize with Float32x4
     normalize_Float32x4_arg.name = "val"_c;
     normalize_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    normalize_Float32x4.documentation = "Returns the normalized vector."_c;
     normalize_Float32x4.name = "normalize"_c;
     normalize_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     normalize_Float32x4.parameters = normalize_Float32x4_args;
@@ -10129,6 +10342,7 @@ void SetupIntrinsics()
     /// normalize with Float16x2
     normalize_Float16x2_arg.name = "val"_c;
     normalize_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    normalize_Float16x2.documentation = "Returns the normalized vector."_c;
     normalize_Float16x2.name = "normalize"_c;
     normalize_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     normalize_Float16x2.parameters = normalize_Float16x2_args;
@@ -10141,6 +10355,7 @@ void SetupIntrinsics()
     /// normalize with Float16x3
     normalize_Float16x3_arg.name = "val"_c;
     normalize_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    normalize_Float16x3.documentation = "Returns the normalized vector."_c;
     normalize_Float16x3.name = "normalize"_c;
     normalize_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     normalize_Float16x3.parameters = normalize_Float16x3_args;
@@ -10153,6 +10368,7 @@ void SetupIntrinsics()
     /// normalize with Float16x4
     normalize_Float16x4_arg.name = "val"_c;
     normalize_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    normalize_Float16x4.documentation = "Returns the normalized vector."_c;
     normalize_Float16x4.name = "normalize"_c;
     normalize_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     normalize_Float16x4.parameters = normalize_Float16x4_args;
@@ -10167,6 +10383,7 @@ void SetupIntrinsics()
     distance_Float32x2_p0.type = Type::FullType{ Float32x2Type.name };
     distance_Float32x2_p1.name = "p1"_c;
     distance_Float32x2_p1.type = Type::FullType{ Float32x2Type.name };
+    distance_Float32x2.documentation = "Returns the distance between two points."_c;
     distance_Float32x2.name = "distance"_c;
     distance_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     distance_Float32x2.parameters = distance_Float32x2_args;
@@ -10182,6 +10399,7 @@ void SetupIntrinsics()
     distance_Float32x3_p0.type = Type::FullType{ Float32x3Type.name };
     distance_Float32x3_p1.name = "p1"_c;
     distance_Float32x3_p1.type = Type::FullType{ Float32x3Type.name };
+    distance_Float32x3.documentation = "Returns the distance between two points."_c;
     distance_Float32x3.name = "distance"_c;
     distance_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     distance_Float32x3.parameters = distance_Float32x3_args;
@@ -10197,6 +10415,7 @@ void SetupIntrinsics()
     distance_Float32x4_p0.type = Type::FullType{ Float32x4Type.name };
     distance_Float32x4_p1.name = "p1"_c;
     distance_Float32x4_p1.type = Type::FullType{ Float32x4Type.name };
+    distance_Float32x4.documentation = "Returns the distance between two points."_c;
     distance_Float32x4.name = "distance"_c;
     distance_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     distance_Float32x4.parameters = distance_Float32x4_args;
@@ -10212,6 +10431,7 @@ void SetupIntrinsics()
     distance_Float16x2_p0.type = Type::FullType{ Float16x2Type.name };
     distance_Float16x2_p1.name = "p1"_c;
     distance_Float16x2_p1.type = Type::FullType{ Float16x2Type.name };
+    distance_Float16x2.documentation = "Returns the distance between two points."_c;
     distance_Float16x2.name = "distance"_c;
     distance_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     distance_Float16x2.parameters = distance_Float16x2_args;
@@ -10227,6 +10447,7 @@ void SetupIntrinsics()
     distance_Float16x3_p0.type = Type::FullType{ Float16x3Type.name };
     distance_Float16x3_p1.name = "p1"_c;
     distance_Float16x3_p1.type = Type::FullType{ Float16x3Type.name };
+    distance_Float16x3.documentation = "Returns the distance between two points."_c;
     distance_Float16x3.name = "distance"_c;
     distance_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     distance_Float16x3.parameters = distance_Float16x3_args;
@@ -10242,6 +10463,7 @@ void SetupIntrinsics()
     distance_Float16x4_p0.type = Type::FullType{ Float16x4Type.name };
     distance_Float16x4_p1.name = "p1"_c;
     distance_Float16x4_p1.type = Type::FullType{ Float16x4Type.name };
+    distance_Float16x4.documentation = "Returns the distance between two points."_c;
     distance_Float16x4.name = "distance"_c;
     distance_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     distance_Float16x4.parameters = distance_Float16x4_args;
@@ -10257,6 +10479,7 @@ void SetupIntrinsics()
     min_Float32_x.type = Type::FullType{ Float32Type.name };
     min_Float32_y.name = "y"_c;
     min_Float32_y.type = Type::FullType{ Float32Type.name };
+    min_Float32.documentation = "Returns the minimum of x and y."_c;
     min_Float32.name = "min"_c;
     min_Float32.returnType = Type::FullType { Float32Type.name };
     min_Float32.parameters = min_Float32_args;
@@ -10272,6 +10495,7 @@ void SetupIntrinsics()
     min_Float32x2_x.type = Type::FullType{ Float32x2Type.name };
     min_Float32x2_y.name = "y"_c;
     min_Float32x2_y.type = Type::FullType{ Float32x2Type.name };
+    min_Float32x2.documentation = "Returns the minimum of x and y."_c;
     min_Float32x2.name = "min"_c;
     min_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     min_Float32x2.parameters = min_Float32x2_args;
@@ -10287,6 +10511,7 @@ void SetupIntrinsics()
     min_Float32x3_x.type = Type::FullType{ Float32x3Type.name };
     min_Float32x3_y.name = "y"_c;
     min_Float32x3_y.type = Type::FullType{ Float32x3Type.name };
+    min_Float32x3.documentation = "Returns the minimum of x and y."_c;
     min_Float32x3.name = "min"_c;
     min_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     min_Float32x3.parameters = min_Float32x3_args;
@@ -10302,6 +10527,7 @@ void SetupIntrinsics()
     min_Float32x4_x.type = Type::FullType{ Float32x4Type.name };
     min_Float32x4_y.name = "y"_c;
     min_Float32x4_y.type = Type::FullType{ Float32x4Type.name };
+    min_Float32x4.documentation = "Returns the minimum of x and y."_c;
     min_Float32x4.name = "min"_c;
     min_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     min_Float32x4.parameters = min_Float32x4_args;
@@ -10317,6 +10543,7 @@ void SetupIntrinsics()
     min_Float16_x.type = Type::FullType{ Float16Type.name };
     min_Float16_y.name = "y"_c;
     min_Float16_y.type = Type::FullType{ Float16Type.name };
+    min_Float16.documentation = "Returns the minimum of x and y."_c;
     min_Float16.name = "min"_c;
     min_Float16.returnType = Type::FullType { Float16Type.name };
     min_Float16.parameters = min_Float16_args;
@@ -10332,6 +10559,7 @@ void SetupIntrinsics()
     min_Float16x2_x.type = Type::FullType{ Float16x2Type.name };
     min_Float16x2_y.name = "y"_c;
     min_Float16x2_y.type = Type::FullType{ Float16x2Type.name };
+    min_Float16x2.documentation = "Returns the minimum of x and y."_c;
     min_Float16x2.name = "min"_c;
     min_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     min_Float16x2.parameters = min_Float16x2_args;
@@ -10347,6 +10575,7 @@ void SetupIntrinsics()
     min_Float16x3_x.type = Type::FullType{ Float16x3Type.name };
     min_Float16x3_y.name = "y"_c;
     min_Float16x3_y.type = Type::FullType{ Float16x3Type.name };
+    min_Float16x3.documentation = "Returns the minimum of x and y."_c;
     min_Float16x3.name = "min"_c;
     min_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     min_Float16x3.parameters = min_Float16x3_args;
@@ -10362,6 +10591,7 @@ void SetupIntrinsics()
     min_Float16x4_x.type = Type::FullType{ Float16x4Type.name };
     min_Float16x4_y.name = "y"_c;
     min_Float16x4_y.type = Type::FullType{ Float16x4Type.name };
+    min_Float16x4.documentation = "Returns the minimum of x and y."_c;
     min_Float16x4.name = "min"_c;
     min_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     min_Float16x4.parameters = min_Float16x4_args;
@@ -10377,6 +10607,7 @@ void SetupIntrinsics()
     min_Int32_x.type = Type::FullType{ Int32Type.name };
     min_Int32_y.name = "y"_c;
     min_Int32_y.type = Type::FullType{ Int32Type.name };
+    min_Int32.documentation = "Returns the minimum of x and y."_c;
     min_Int32.name = "min"_c;
     min_Int32.returnType = Type::FullType { Int32Type.name };
     min_Int32.parameters = min_Int32_args;
@@ -10392,6 +10623,7 @@ void SetupIntrinsics()
     min_Int32x2_x.type = Type::FullType{ Int32x2Type.name };
     min_Int32x2_y.name = "y"_c;
     min_Int32x2_y.type = Type::FullType{ Int32x2Type.name };
+    min_Int32x2.documentation = "Returns the minimum of x and y."_c;
     min_Int32x2.name = "min"_c;
     min_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     min_Int32x2.parameters = min_Int32x2_args;
@@ -10407,6 +10639,7 @@ void SetupIntrinsics()
     min_Int32x3_x.type = Type::FullType{ Int32x3Type.name };
     min_Int32x3_y.name = "y"_c;
     min_Int32x3_y.type = Type::FullType{ Int32x3Type.name };
+    min_Int32x3.documentation = "Returns the minimum of x and y."_c;
     min_Int32x3.name = "min"_c;
     min_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     min_Int32x3.parameters = min_Int32x3_args;
@@ -10422,6 +10655,7 @@ void SetupIntrinsics()
     min_Int32x4_x.type = Type::FullType{ Int32x4Type.name };
     min_Int32x4_y.name = "y"_c;
     min_Int32x4_y.type = Type::FullType{ Int32x4Type.name };
+    min_Int32x4.documentation = "Returns the minimum of x and y."_c;
     min_Int32x4.name = "min"_c;
     min_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     min_Int32x4.parameters = min_Int32x4_args;
@@ -10437,6 +10671,7 @@ void SetupIntrinsics()
     min_Int16_x.type = Type::FullType{ Int16Type.name };
     min_Int16_y.name = "y"_c;
     min_Int16_y.type = Type::FullType{ Int16Type.name };
+    min_Int16.documentation = "Returns the minimum of x and y."_c;
     min_Int16.name = "min"_c;
     min_Int16.returnType = Type::FullType { Int16Type.name };
     min_Int16.parameters = min_Int16_args;
@@ -10452,6 +10687,7 @@ void SetupIntrinsics()
     min_Int16x2_x.type = Type::FullType{ Int16x2Type.name };
     min_Int16x2_y.name = "y"_c;
     min_Int16x2_y.type = Type::FullType{ Int16x2Type.name };
+    min_Int16x2.documentation = "Returns the minimum of x and y."_c;
     min_Int16x2.name = "min"_c;
     min_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     min_Int16x2.parameters = min_Int16x2_args;
@@ -10467,6 +10703,7 @@ void SetupIntrinsics()
     min_Int16x3_x.type = Type::FullType{ Int16x3Type.name };
     min_Int16x3_y.name = "y"_c;
     min_Int16x3_y.type = Type::FullType{ Int16x3Type.name };
+    min_Int16x3.documentation = "Returns the minimum of x and y."_c;
     min_Int16x3.name = "min"_c;
     min_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     min_Int16x3.parameters = min_Int16x3_args;
@@ -10482,6 +10719,7 @@ void SetupIntrinsics()
     min_Int16x4_x.type = Type::FullType{ Int16x4Type.name };
     min_Int16x4_y.name = "y"_c;
     min_Int16x4_y.type = Type::FullType{ Int16x4Type.name };
+    min_Int16x4.documentation = "Returns the minimum of x and y."_c;
     min_Int16x4.name = "min"_c;
     min_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     min_Int16x4.parameters = min_Int16x4_args;
@@ -10497,6 +10735,7 @@ void SetupIntrinsics()
     min_UInt32_x.type = Type::FullType{ UInt32Type.name };
     min_UInt32_y.name = "y"_c;
     min_UInt32_y.type = Type::FullType{ UInt32Type.name };
+    min_UInt32.documentation = "Returns the minimum of x and y."_c;
     min_UInt32.name = "min"_c;
     min_UInt32.returnType = Type::FullType { UInt32Type.name };
     min_UInt32.parameters = min_UInt32_args;
@@ -10512,6 +10751,7 @@ void SetupIntrinsics()
     min_UInt32x2_x.type = Type::FullType{ UInt32x2Type.name };
     min_UInt32x2_y.name = "y"_c;
     min_UInt32x2_y.type = Type::FullType{ UInt32x2Type.name };
+    min_UInt32x2.documentation = "Returns the minimum of x and y."_c;
     min_UInt32x2.name = "min"_c;
     min_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
     min_UInt32x2.parameters = min_UInt32x2_args;
@@ -10527,6 +10767,7 @@ void SetupIntrinsics()
     min_UInt32x3_x.type = Type::FullType{ UInt32x3Type.name };
     min_UInt32x3_y.name = "y"_c;
     min_UInt32x3_y.type = Type::FullType{ UInt32x3Type.name };
+    min_UInt32x3.documentation = "Returns the minimum of x and y."_c;
     min_UInt32x3.name = "min"_c;
     min_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
     min_UInt32x3.parameters = min_UInt32x3_args;
@@ -10542,6 +10783,7 @@ void SetupIntrinsics()
     min_UInt32x4_x.type = Type::FullType{ UInt32x4Type.name };
     min_UInt32x4_y.name = "y"_c;
     min_UInt32x4_y.type = Type::FullType{ UInt32x4Type.name };
+    min_UInt32x4.documentation = "Returns the minimum of x and y."_c;
     min_UInt32x4.name = "min"_c;
     min_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
     min_UInt32x4.parameters = min_UInt32x4_args;
@@ -10557,6 +10799,7 @@ void SetupIntrinsics()
     min_UInt16_x.type = Type::FullType{ UInt16Type.name };
     min_UInt16_y.name = "y"_c;
     min_UInt16_y.type = Type::FullType{ UInt16Type.name };
+    min_UInt16.documentation = "Returns the minimum of x and y."_c;
     min_UInt16.name = "min"_c;
     min_UInt16.returnType = Type::FullType { UInt16Type.name };
     min_UInt16.parameters = min_UInt16_args;
@@ -10572,6 +10815,7 @@ void SetupIntrinsics()
     min_UInt16x2_x.type = Type::FullType{ UInt16x2Type.name };
     min_UInt16x2_y.name = "y"_c;
     min_UInt16x2_y.type = Type::FullType{ UInt16x2Type.name };
+    min_UInt16x2.documentation = "Returns the minimum of x and y."_c;
     min_UInt16x2.name = "min"_c;
     min_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
     min_UInt16x2.parameters = min_UInt16x2_args;
@@ -10587,6 +10831,7 @@ void SetupIntrinsics()
     min_UInt16x3_x.type = Type::FullType{ UInt16x3Type.name };
     min_UInt16x3_y.name = "y"_c;
     min_UInt16x3_y.type = Type::FullType{ UInt16x3Type.name };
+    min_UInt16x3.documentation = "Returns the minimum of x and y."_c;
     min_UInt16x3.name = "min"_c;
     min_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
     min_UInt16x3.parameters = min_UInt16x3_args;
@@ -10602,6 +10847,7 @@ void SetupIntrinsics()
     min_UInt16x4_x.type = Type::FullType{ UInt16x4Type.name };
     min_UInt16x4_y.name = "y"_c;
     min_UInt16x4_y.type = Type::FullType{ UInt16x4Type.name };
+    min_UInt16x4.documentation = "Returns the minimum of x and y."_c;
     min_UInt16x4.name = "min"_c;
     min_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
     min_UInt16x4.parameters = min_UInt16x4_args;
@@ -10617,6 +10863,7 @@ void SetupIntrinsics()
     max_Float32_x.type = Type::FullType{ Float32Type.name };
     max_Float32_y.name = "y"_c;
     max_Float32_y.type = Type::FullType{ Float32Type.name };
+    max_Float32.documentation = "Returns the maximum of x and y."_c;
     max_Float32.name = "max"_c;
     max_Float32.returnType = Type::FullType { Float32Type.name };
     max_Float32.parameters = max_Float32_args;
@@ -10632,6 +10879,7 @@ void SetupIntrinsics()
     max_Float32x2_x.type = Type::FullType{ Float32x2Type.name };
     max_Float32x2_y.name = "y"_c;
     max_Float32x2_y.type = Type::FullType{ Float32x2Type.name };
+    max_Float32x2.documentation = "Returns the maximum of x and y."_c;
     max_Float32x2.name = "max"_c;
     max_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     max_Float32x2.parameters = max_Float32x2_args;
@@ -10647,6 +10895,7 @@ void SetupIntrinsics()
     max_Float32x3_x.type = Type::FullType{ Float32x3Type.name };
     max_Float32x3_y.name = "y"_c;
     max_Float32x3_y.type = Type::FullType{ Float32x3Type.name };
+    max_Float32x3.documentation = "Returns the maximum of x and y."_c;
     max_Float32x3.name = "max"_c;
     max_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     max_Float32x3.parameters = max_Float32x3_args;
@@ -10662,6 +10911,7 @@ void SetupIntrinsics()
     max_Float32x4_x.type = Type::FullType{ Float32x4Type.name };
     max_Float32x4_y.name = "y"_c;
     max_Float32x4_y.type = Type::FullType{ Float32x4Type.name };
+    max_Float32x4.documentation = "Returns the maximum of x and y."_c;
     max_Float32x4.name = "max"_c;
     max_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     max_Float32x4.parameters = max_Float32x4_args;
@@ -10677,6 +10927,7 @@ void SetupIntrinsics()
     max_Float16_x.type = Type::FullType{ Float16Type.name };
     max_Float16_y.name = "y"_c;
     max_Float16_y.type = Type::FullType{ Float16Type.name };
+    max_Float16.documentation = "Returns the maximum of x and y."_c;
     max_Float16.name = "max"_c;
     max_Float16.returnType = Type::FullType { Float16Type.name };
     max_Float16.parameters = max_Float16_args;
@@ -10692,6 +10943,7 @@ void SetupIntrinsics()
     max_Float16x2_x.type = Type::FullType{ Float16x2Type.name };
     max_Float16x2_y.name = "y"_c;
     max_Float16x2_y.type = Type::FullType{ Float16x2Type.name };
+    max_Float16x2.documentation = "Returns the maximum of x and y."_c;
     max_Float16x2.name = "max"_c;
     max_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     max_Float16x2.parameters = max_Float16x2_args;
@@ -10707,6 +10959,7 @@ void SetupIntrinsics()
     max_Float16x3_x.type = Type::FullType{ Float16x3Type.name };
     max_Float16x3_y.name = "y"_c;
     max_Float16x3_y.type = Type::FullType{ Float16x3Type.name };
+    max_Float16x3.documentation = "Returns the maximum of x and y."_c;
     max_Float16x3.name = "max"_c;
     max_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     max_Float16x3.parameters = max_Float16x3_args;
@@ -10722,6 +10975,7 @@ void SetupIntrinsics()
     max_Float16x4_x.type = Type::FullType{ Float16x4Type.name };
     max_Float16x4_y.name = "y"_c;
     max_Float16x4_y.type = Type::FullType{ Float16x4Type.name };
+    max_Float16x4.documentation = "Returns the maximum of x and y."_c;
     max_Float16x4.name = "max"_c;
     max_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     max_Float16x4.parameters = max_Float16x4_args;
@@ -10737,6 +10991,7 @@ void SetupIntrinsics()
     max_Int32_x.type = Type::FullType{ Int32Type.name };
     max_Int32_y.name = "y"_c;
     max_Int32_y.type = Type::FullType{ Int32Type.name };
+    max_Int32.documentation = "Returns the maximum of x and y."_c;
     max_Int32.name = "max"_c;
     max_Int32.returnType = Type::FullType { Int32Type.name };
     max_Int32.parameters = max_Int32_args;
@@ -10752,6 +11007,7 @@ void SetupIntrinsics()
     max_Int32x2_x.type = Type::FullType{ Int32x2Type.name };
     max_Int32x2_y.name = "y"_c;
     max_Int32x2_y.type = Type::FullType{ Int32x2Type.name };
+    max_Int32x2.documentation = "Returns the maximum of x and y."_c;
     max_Int32x2.name = "max"_c;
     max_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     max_Int32x2.parameters = max_Int32x2_args;
@@ -10767,6 +11023,7 @@ void SetupIntrinsics()
     max_Int32x3_x.type = Type::FullType{ Int32x3Type.name };
     max_Int32x3_y.name = "y"_c;
     max_Int32x3_y.type = Type::FullType{ Int32x3Type.name };
+    max_Int32x3.documentation = "Returns the maximum of x and y."_c;
     max_Int32x3.name = "max"_c;
     max_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     max_Int32x3.parameters = max_Int32x3_args;
@@ -10782,6 +11039,7 @@ void SetupIntrinsics()
     max_Int32x4_x.type = Type::FullType{ Int32x4Type.name };
     max_Int32x4_y.name = "y"_c;
     max_Int32x4_y.type = Type::FullType{ Int32x4Type.name };
+    max_Int32x4.documentation = "Returns the maximum of x and y."_c;
     max_Int32x4.name = "max"_c;
     max_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     max_Int32x4.parameters = max_Int32x4_args;
@@ -10797,6 +11055,7 @@ void SetupIntrinsics()
     max_Int16_x.type = Type::FullType{ Int16Type.name };
     max_Int16_y.name = "y"_c;
     max_Int16_y.type = Type::FullType{ Int16Type.name };
+    max_Int16.documentation = "Returns the maximum of x and y."_c;
     max_Int16.name = "max"_c;
     max_Int16.returnType = Type::FullType { Int16Type.name };
     max_Int16.parameters = max_Int16_args;
@@ -10812,6 +11071,7 @@ void SetupIntrinsics()
     max_Int16x2_x.type = Type::FullType{ Int16x2Type.name };
     max_Int16x2_y.name = "y"_c;
     max_Int16x2_y.type = Type::FullType{ Int16x2Type.name };
+    max_Int16x2.documentation = "Returns the maximum of x and y."_c;
     max_Int16x2.name = "max"_c;
     max_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     max_Int16x2.parameters = max_Int16x2_args;
@@ -10827,6 +11087,7 @@ void SetupIntrinsics()
     max_Int16x3_x.type = Type::FullType{ Int16x3Type.name };
     max_Int16x3_y.name = "y"_c;
     max_Int16x3_y.type = Type::FullType{ Int16x3Type.name };
+    max_Int16x3.documentation = "Returns the maximum of x and y."_c;
     max_Int16x3.name = "max"_c;
     max_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     max_Int16x3.parameters = max_Int16x3_args;
@@ -10842,6 +11103,7 @@ void SetupIntrinsics()
     max_Int16x4_x.type = Type::FullType{ Int16x4Type.name };
     max_Int16x4_y.name = "y"_c;
     max_Int16x4_y.type = Type::FullType{ Int16x4Type.name };
+    max_Int16x4.documentation = "Returns the maximum of x and y."_c;
     max_Int16x4.name = "max"_c;
     max_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     max_Int16x4.parameters = max_Int16x4_args;
@@ -10857,6 +11119,7 @@ void SetupIntrinsics()
     max_UInt32_x.type = Type::FullType{ UInt32Type.name };
     max_UInt32_y.name = "y"_c;
     max_UInt32_y.type = Type::FullType{ UInt32Type.name };
+    max_UInt32.documentation = "Returns the maximum of x and y."_c;
     max_UInt32.name = "max"_c;
     max_UInt32.returnType = Type::FullType { UInt32Type.name };
     max_UInt32.parameters = max_UInt32_args;
@@ -10872,6 +11135,7 @@ void SetupIntrinsics()
     max_UInt32x2_x.type = Type::FullType{ UInt32x2Type.name };
     max_UInt32x2_y.name = "y"_c;
     max_UInt32x2_y.type = Type::FullType{ UInt32x2Type.name };
+    max_UInt32x2.documentation = "Returns the maximum of x and y."_c;
     max_UInt32x2.name = "max"_c;
     max_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
     max_UInt32x2.parameters = max_UInt32x2_args;
@@ -10887,6 +11151,7 @@ void SetupIntrinsics()
     max_UInt32x3_x.type = Type::FullType{ UInt32x3Type.name };
     max_UInt32x3_y.name = "y"_c;
     max_UInt32x3_y.type = Type::FullType{ UInt32x3Type.name };
+    max_UInt32x3.documentation = "Returns the maximum of x and y."_c;
     max_UInt32x3.name = "max"_c;
     max_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
     max_UInt32x3.parameters = max_UInt32x3_args;
@@ -10902,6 +11167,7 @@ void SetupIntrinsics()
     max_UInt32x4_x.type = Type::FullType{ UInt32x4Type.name };
     max_UInt32x4_y.name = "y"_c;
     max_UInt32x4_y.type = Type::FullType{ UInt32x4Type.name };
+    max_UInt32x4.documentation = "Returns the maximum of x and y."_c;
     max_UInt32x4.name = "max"_c;
     max_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
     max_UInt32x4.parameters = max_UInt32x4_args;
@@ -10917,6 +11183,7 @@ void SetupIntrinsics()
     max_UInt16_x.type = Type::FullType{ UInt16Type.name };
     max_UInt16_y.name = "y"_c;
     max_UInt16_y.type = Type::FullType{ UInt16Type.name };
+    max_UInt16.documentation = "Returns the maximum of x and y."_c;
     max_UInt16.name = "max"_c;
     max_UInt16.returnType = Type::FullType { UInt16Type.name };
     max_UInt16.parameters = max_UInt16_args;
@@ -10932,6 +11199,7 @@ void SetupIntrinsics()
     max_UInt16x2_x.type = Type::FullType{ UInt16x2Type.name };
     max_UInt16x2_y.name = "y"_c;
     max_UInt16x2_y.type = Type::FullType{ UInt16x2Type.name };
+    max_UInt16x2.documentation = "Returns the maximum of x and y."_c;
     max_UInt16x2.name = "max"_c;
     max_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
     max_UInt16x2.parameters = max_UInt16x2_args;
@@ -10947,6 +11215,7 @@ void SetupIntrinsics()
     max_UInt16x3_x.type = Type::FullType{ UInt16x3Type.name };
     max_UInt16x3_y.name = "y"_c;
     max_UInt16x3_y.type = Type::FullType{ UInt16x3Type.name };
+    max_UInt16x3.documentation = "Returns the maximum of x and y."_c;
     max_UInt16x3.name = "max"_c;
     max_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
     max_UInt16x3.parameters = max_UInt16x3_args;
@@ -10962,6 +11231,7 @@ void SetupIntrinsics()
     max_UInt16x4_x.type = Type::FullType{ UInt16x4Type.name };
     max_UInt16x4_y.name = "y"_c;
     max_UInt16x4_y.type = Type::FullType{ UInt16x4Type.name };
+    max_UInt16x4.documentation = "Returns the maximum of x and y."_c;
     max_UInt16x4.name = "max"_c;
     max_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
     max_UInt16x4.parameters = max_UInt16x4_args;
@@ -10979,6 +11249,7 @@ void SetupIntrinsics()
     clamp_Float32_min.type = Type::FullType{ Float32Type.name };
     clamp_Float32_max.name = "max"_c;
     clamp_Float32_max.type = Type::FullType{ Float32Type.name };
+    clamp_Float32.documentation = "Returns the value clamped between min and max."_c;
     clamp_Float32.name = "clamp"_c;
     clamp_Float32.returnType = Type::FullType { Float32Type.name };
     clamp_Float32.parameters = clamp_Float32_args;
@@ -10997,6 +11268,7 @@ void SetupIntrinsics()
     clamp_Float32x2_min.type = Type::FullType{ Float32x2Type.name };
     clamp_Float32x2_max.name = "max"_c;
     clamp_Float32x2_max.type = Type::FullType{ Float32x2Type.name };
+    clamp_Float32x2.documentation = "Returns the value clamped between min and max."_c;
     clamp_Float32x2.name = "clamp"_c;
     clamp_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     clamp_Float32x2.parameters = clamp_Float32x2_args;
@@ -11015,6 +11287,7 @@ void SetupIntrinsics()
     clamp_Float32x3_min.type = Type::FullType{ Float32x3Type.name };
     clamp_Float32x3_max.name = "max"_c;
     clamp_Float32x3_max.type = Type::FullType{ Float32x3Type.name };
+    clamp_Float32x3.documentation = "Returns the value clamped between min and max."_c;
     clamp_Float32x3.name = "clamp"_c;
     clamp_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     clamp_Float32x3.parameters = clamp_Float32x3_args;
@@ -11033,6 +11306,7 @@ void SetupIntrinsics()
     clamp_Float32x4_min.type = Type::FullType{ Float32x4Type.name };
     clamp_Float32x4_max.name = "max"_c;
     clamp_Float32x4_max.type = Type::FullType{ Float32x4Type.name };
+    clamp_Float32x4.documentation = "Returns the value clamped between min and max."_c;
     clamp_Float32x4.name = "clamp"_c;
     clamp_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     clamp_Float32x4.parameters = clamp_Float32x4_args;
@@ -11051,6 +11325,7 @@ void SetupIntrinsics()
     clamp_Float16_min.type = Type::FullType{ Float16Type.name };
     clamp_Float16_max.name = "max"_c;
     clamp_Float16_max.type = Type::FullType{ Float16Type.name };
+    clamp_Float16.documentation = "Returns the value clamped between min and max."_c;
     clamp_Float16.name = "clamp"_c;
     clamp_Float16.returnType = Type::FullType { Float16Type.name };
     clamp_Float16.parameters = clamp_Float16_args;
@@ -11069,6 +11344,7 @@ void SetupIntrinsics()
     clamp_Float16x2_min.type = Type::FullType{ Float16x2Type.name };
     clamp_Float16x2_max.name = "max"_c;
     clamp_Float16x2_max.type = Type::FullType{ Float16x2Type.name };
+    clamp_Float16x2.documentation = "Returns the value clamped between min and max."_c;
     clamp_Float16x2.name = "clamp"_c;
     clamp_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     clamp_Float16x2.parameters = clamp_Float16x2_args;
@@ -11087,6 +11363,7 @@ void SetupIntrinsics()
     clamp_Float16x3_min.type = Type::FullType{ Float16x3Type.name };
     clamp_Float16x3_max.name = "max"_c;
     clamp_Float16x3_max.type = Type::FullType{ Float16x3Type.name };
+    clamp_Float16x3.documentation = "Returns the value clamped between min and max."_c;
     clamp_Float16x3.name = "clamp"_c;
     clamp_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     clamp_Float16x3.parameters = clamp_Float16x3_args;
@@ -11105,6 +11382,7 @@ void SetupIntrinsics()
     clamp_Float16x4_min.type = Type::FullType{ Float16x4Type.name };
     clamp_Float16x4_max.name = "max"_c;
     clamp_Float16x4_max.type = Type::FullType{ Float16x4Type.name };
+    clamp_Float16x4.documentation = "Returns the value clamped between min and max."_c;
     clamp_Float16x4.name = "clamp"_c;
     clamp_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     clamp_Float16x4.parameters = clamp_Float16x4_args;
@@ -11123,6 +11401,7 @@ void SetupIntrinsics()
     clamp_Int32_min.type = Type::FullType{ Int32Type.name };
     clamp_Int32_max.name = "max"_c;
     clamp_Int32_max.type = Type::FullType{ Int32Type.name };
+    clamp_Int32.documentation = "Returns the value clamped between min and max."_c;
     clamp_Int32.name = "clamp"_c;
     clamp_Int32.returnType = Type::FullType { Int32Type.name };
     clamp_Int32.parameters = clamp_Int32_args;
@@ -11141,6 +11420,7 @@ void SetupIntrinsics()
     clamp_Int32x2_min.type = Type::FullType{ Int32x2Type.name };
     clamp_Int32x2_max.name = "max"_c;
     clamp_Int32x2_max.type = Type::FullType{ Int32x2Type.name };
+    clamp_Int32x2.documentation = "Returns the value clamped between min and max."_c;
     clamp_Int32x2.name = "clamp"_c;
     clamp_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     clamp_Int32x2.parameters = clamp_Int32x2_args;
@@ -11159,6 +11439,7 @@ void SetupIntrinsics()
     clamp_Int32x3_min.type = Type::FullType{ Int32x3Type.name };
     clamp_Int32x3_max.name = "max"_c;
     clamp_Int32x3_max.type = Type::FullType{ Int32x3Type.name };
+    clamp_Int32x3.documentation = "Returns the value clamped between min and max."_c;
     clamp_Int32x3.name = "clamp"_c;
     clamp_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     clamp_Int32x3.parameters = clamp_Int32x3_args;
@@ -11177,6 +11458,7 @@ void SetupIntrinsics()
     clamp_Int32x4_min.type = Type::FullType{ Int32x4Type.name };
     clamp_Int32x4_max.name = "max"_c;
     clamp_Int32x4_max.type = Type::FullType{ Int32x4Type.name };
+    clamp_Int32x4.documentation = "Returns the value clamped between min and max."_c;
     clamp_Int32x4.name = "clamp"_c;
     clamp_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     clamp_Int32x4.parameters = clamp_Int32x4_args;
@@ -11195,6 +11477,7 @@ void SetupIntrinsics()
     clamp_Int16_min.type = Type::FullType{ Int16Type.name };
     clamp_Int16_max.name = "max"_c;
     clamp_Int16_max.type = Type::FullType{ Int16Type.name };
+    clamp_Int16.documentation = "Returns the value clamped between min and max."_c;
     clamp_Int16.name = "clamp"_c;
     clamp_Int16.returnType = Type::FullType { Int16Type.name };
     clamp_Int16.parameters = clamp_Int16_args;
@@ -11213,6 +11496,7 @@ void SetupIntrinsics()
     clamp_Int16x2_min.type = Type::FullType{ Int16x2Type.name };
     clamp_Int16x2_max.name = "max"_c;
     clamp_Int16x2_max.type = Type::FullType{ Int16x2Type.name };
+    clamp_Int16x2.documentation = "Returns the value clamped between min and max."_c;
     clamp_Int16x2.name = "clamp"_c;
     clamp_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     clamp_Int16x2.parameters = clamp_Int16x2_args;
@@ -11231,6 +11515,7 @@ void SetupIntrinsics()
     clamp_Int16x3_min.type = Type::FullType{ Int16x3Type.name };
     clamp_Int16x3_max.name = "max"_c;
     clamp_Int16x3_max.type = Type::FullType{ Int16x3Type.name };
+    clamp_Int16x3.documentation = "Returns the value clamped between min and max."_c;
     clamp_Int16x3.name = "clamp"_c;
     clamp_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     clamp_Int16x3.parameters = clamp_Int16x3_args;
@@ -11249,6 +11534,7 @@ void SetupIntrinsics()
     clamp_Int16x4_min.type = Type::FullType{ Int16x4Type.name };
     clamp_Int16x4_max.name = "max"_c;
     clamp_Int16x4_max.type = Type::FullType{ Int16x4Type.name };
+    clamp_Int16x4.documentation = "Returns the value clamped between min and max."_c;
     clamp_Int16x4.name = "clamp"_c;
     clamp_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     clamp_Int16x4.parameters = clamp_Int16x4_args;
@@ -11267,6 +11553,7 @@ void SetupIntrinsics()
     clamp_UInt32_min.type = Type::FullType{ UInt32Type.name };
     clamp_UInt32_max.name = "max"_c;
     clamp_UInt32_max.type = Type::FullType{ UInt32Type.name };
+    clamp_UInt32.documentation = "Returns the value clamped between min and max."_c;
     clamp_UInt32.name = "clamp"_c;
     clamp_UInt32.returnType = Type::FullType { UInt32Type.name };
     clamp_UInt32.parameters = clamp_UInt32_args;
@@ -11285,6 +11572,7 @@ void SetupIntrinsics()
     clamp_UInt32x2_min.type = Type::FullType{ UInt32x2Type.name };
     clamp_UInt32x2_max.name = "max"_c;
     clamp_UInt32x2_max.type = Type::FullType{ UInt32x2Type.name };
+    clamp_UInt32x2.documentation = "Returns the value clamped between min and max."_c;
     clamp_UInt32x2.name = "clamp"_c;
     clamp_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
     clamp_UInt32x2.parameters = clamp_UInt32x2_args;
@@ -11303,6 +11591,7 @@ void SetupIntrinsics()
     clamp_UInt32x3_min.type = Type::FullType{ UInt32x3Type.name };
     clamp_UInt32x3_max.name = "max"_c;
     clamp_UInt32x3_max.type = Type::FullType{ UInt32x3Type.name };
+    clamp_UInt32x3.documentation = "Returns the value clamped between min and max."_c;
     clamp_UInt32x3.name = "clamp"_c;
     clamp_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
     clamp_UInt32x3.parameters = clamp_UInt32x3_args;
@@ -11321,6 +11610,7 @@ void SetupIntrinsics()
     clamp_UInt32x4_min.type = Type::FullType{ UInt32x4Type.name };
     clamp_UInt32x4_max.name = "max"_c;
     clamp_UInt32x4_max.type = Type::FullType{ UInt32x4Type.name };
+    clamp_UInt32x4.documentation = "Returns the value clamped between min and max."_c;
     clamp_UInt32x4.name = "clamp"_c;
     clamp_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
     clamp_UInt32x4.parameters = clamp_UInt32x4_args;
@@ -11339,6 +11629,7 @@ void SetupIntrinsics()
     clamp_UInt16_min.type = Type::FullType{ UInt16Type.name };
     clamp_UInt16_max.name = "max"_c;
     clamp_UInt16_max.type = Type::FullType{ UInt16Type.name };
+    clamp_UInt16.documentation = "Returns the value clamped between min and max."_c;
     clamp_UInt16.name = "clamp"_c;
     clamp_UInt16.returnType = Type::FullType { UInt16Type.name };
     clamp_UInt16.parameters = clamp_UInt16_args;
@@ -11357,6 +11648,7 @@ void SetupIntrinsics()
     clamp_UInt16x2_min.type = Type::FullType{ UInt16x2Type.name };
     clamp_UInt16x2_max.name = "max"_c;
     clamp_UInt16x2_max.type = Type::FullType{ UInt16x2Type.name };
+    clamp_UInt16x2.documentation = "Returns the value clamped between min and max."_c;
     clamp_UInt16x2.name = "clamp"_c;
     clamp_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
     clamp_UInt16x2.parameters = clamp_UInt16x2_args;
@@ -11375,6 +11667,7 @@ void SetupIntrinsics()
     clamp_UInt16x3_min.type = Type::FullType{ UInt16x3Type.name };
     clamp_UInt16x3_max.name = "max"_c;
     clamp_UInt16x3_max.type = Type::FullType{ UInt16x3Type.name };
+    clamp_UInt16x3.documentation = "Returns the value clamped between min and max."_c;
     clamp_UInt16x3.name = "clamp"_c;
     clamp_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
     clamp_UInt16x3.parameters = clamp_UInt16x3_args;
@@ -11393,6 +11686,7 @@ void SetupIntrinsics()
     clamp_UInt16x4_min.type = Type::FullType{ UInt16x4Type.name };
     clamp_UInt16x4_max.name = "max"_c;
     clamp_UInt16x4_max.type = Type::FullType{ UInt16x4Type.name };
+    clamp_UInt16x4.documentation = "Returns the value clamped between min and max."_c;
     clamp_UInt16x4.name = "clamp"_c;
     clamp_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
     clamp_UInt16x4.parameters = clamp_UInt16x4_args;
@@ -11411,6 +11705,7 @@ void SetupIntrinsics()
     lerp_Float32x2_b.type = Type::FullType{ Float32x2Type.name };
     lerp_Float32x2_t.name = "t"_c;
     lerp_Float32x2_t.type = Type::FullType{ Float32x2Type.name };
+    lerp_Float32x2.documentation = "Returns the linear interpolation between a and b by t."_c;
     lerp_Float32x2.name = "lerp"_c;
     lerp_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     lerp_Float32x2.parameters = lerp_Float32x2_args;
@@ -11429,6 +11724,7 @@ void SetupIntrinsics()
     lerp_Float32x3_b.type = Type::FullType{ Float32x3Type.name };
     lerp_Float32x3_t.name = "t"_c;
     lerp_Float32x3_t.type = Type::FullType{ Float32x3Type.name };
+    lerp_Float32x3.documentation = "Returns the linear interpolation between a and b by t."_c;
     lerp_Float32x3.name = "lerp"_c;
     lerp_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     lerp_Float32x3.parameters = lerp_Float32x3_args;
@@ -11447,6 +11743,7 @@ void SetupIntrinsics()
     lerp_Float32x4_b.type = Type::FullType{ Float32x4Type.name };
     lerp_Float32x4_t.name = "t"_c;
     lerp_Float32x4_t.type = Type::FullType{ Float32x4Type.name };
+    lerp_Float32x4.documentation = "Returns the linear interpolation between a and b by t."_c;
     lerp_Float32x4.name = "lerp"_c;
     lerp_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     lerp_Float32x4.parameters = lerp_Float32x4_args;
@@ -11465,6 +11762,7 @@ void SetupIntrinsics()
     lerp_Float16x2_b.type = Type::FullType{ Float16x2Type.name };
     lerp_Float16x2_t.name = "t"_c;
     lerp_Float16x2_t.type = Type::FullType{ Float16x2Type.name };
+    lerp_Float16x2.documentation = "Returns the linear interpolation between a and b by t."_c;
     lerp_Float16x2.name = "lerp"_c;
     lerp_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     lerp_Float16x2.parameters = lerp_Float16x2_args;
@@ -11483,6 +11781,7 @@ void SetupIntrinsics()
     lerp_Float16x3_b.type = Type::FullType{ Float16x3Type.name };
     lerp_Float16x3_t.name = "t"_c;
     lerp_Float16x3_t.type = Type::FullType{ Float16x3Type.name };
+    lerp_Float16x3.documentation = "Returns the linear interpolation between a and b by t."_c;
     lerp_Float16x3.name = "lerp"_c;
     lerp_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     lerp_Float16x3.parameters = lerp_Float16x3_args;
@@ -11501,6 +11800,7 @@ void SetupIntrinsics()
     lerp_Float16x4_b.type = Type::FullType{ Float16x4Type.name };
     lerp_Float16x4_t.name = "t"_c;
     lerp_Float16x4_t.type = Type::FullType{ Float16x4Type.name };
+    lerp_Float16x4.documentation = "Returns the linear interpolation between a and b by t."_c;
     lerp_Float16x4.name = "lerp"_c;
     lerp_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     lerp_Float16x4.parameters = lerp_Float16x4_args;
@@ -11517,6 +11817,7 @@ void SetupIntrinsics()
     step_Float32_edge.type = Type::FullType{ Float32Type.name };
     step_Float32_x.name = "x"_c;
     step_Float32_x.type = Type::FullType{ Float32Type.name };
+    step_Float32.documentation = "Returns 0.0 if x < edge, otherwise returns 1.0."_c;
     step_Float32.name = "step"_c;
     step_Float32.returnType = Type::FullType { Float32Type.name };
     step_Float32.parameters = step_Float32_args;
@@ -11532,6 +11833,7 @@ void SetupIntrinsics()
     step_Float32x2_edge.type = Type::FullType{ Float32x2Type.name };
     step_Float32x2_x.name = "x"_c;
     step_Float32x2_x.type = Type::FullType{ Float32x2Type.name };
+    step_Float32x2.documentation = "Returns 0.0 if x < edge, otherwise returns 1.0."_c;
     step_Float32x2.name = "step"_c;
     step_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     step_Float32x2.parameters = step_Float32x2_args;
@@ -11547,6 +11849,7 @@ void SetupIntrinsics()
     step_Float32x3_edge.type = Type::FullType{ Float32x3Type.name };
     step_Float32x3_x.name = "x"_c;
     step_Float32x3_x.type = Type::FullType{ Float32x3Type.name };
+    step_Float32x3.documentation = "Returns 0.0 if x < edge, otherwise returns 1.0."_c;
     step_Float32x3.name = "step"_c;
     step_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     step_Float32x3.parameters = step_Float32x3_args;
@@ -11562,6 +11865,7 @@ void SetupIntrinsics()
     step_Float32x4_edge.type = Type::FullType{ Float32x4Type.name };
     step_Float32x4_x.name = "x"_c;
     step_Float32x4_x.type = Type::FullType{ Float32x4Type.name };
+    step_Float32x4.documentation = "Returns 0.0 if x < edge, otherwise returns 1.0."_c;
     step_Float32x4.name = "step"_c;
     step_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     step_Float32x4.parameters = step_Float32x4_args;
@@ -11577,6 +11881,7 @@ void SetupIntrinsics()
     step_Float16_edge.type = Type::FullType{ Float16Type.name };
     step_Float16_x.name = "x"_c;
     step_Float16_x.type = Type::FullType{ Float16Type.name };
+    step_Float16.documentation = "Returns 0.0 if x < edge, otherwise returns 1.0."_c;
     step_Float16.name = "step"_c;
     step_Float16.returnType = Type::FullType { Float16Type.name };
     step_Float16.parameters = step_Float16_args;
@@ -11592,6 +11897,7 @@ void SetupIntrinsics()
     step_Float16x2_edge.type = Type::FullType{ Float16x2Type.name };
     step_Float16x2_x.name = "x"_c;
     step_Float16x2_x.type = Type::FullType{ Float16x2Type.name };
+    step_Float16x2.documentation = "Returns 0.0 if x < edge, otherwise returns 1.0."_c;
     step_Float16x2.name = "step"_c;
     step_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     step_Float16x2.parameters = step_Float16x2_args;
@@ -11607,6 +11913,7 @@ void SetupIntrinsics()
     step_Float16x3_edge.type = Type::FullType{ Float16x3Type.name };
     step_Float16x3_x.name = "x"_c;
     step_Float16x3_x.type = Type::FullType{ Float16x3Type.name };
+    step_Float16x3.documentation = "Returns 0.0 if x < edge, otherwise returns 1.0."_c;
     step_Float16x3.name = "step"_c;
     step_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     step_Float16x3.parameters = step_Float16x3_args;
@@ -11622,6 +11929,7 @@ void SetupIntrinsics()
     step_Float16x4_edge.type = Type::FullType{ Float16x4Type.name };
     step_Float16x4_x.name = "x"_c;
     step_Float16x4_x.type = Type::FullType{ Float16x4Type.name };
+    step_Float16x4.documentation = "Returns 0.0 if x < edge, otherwise returns 1.0."_c;
     step_Float16x4.name = "step"_c;
     step_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     step_Float16x4.parameters = step_Float16x4_args;
@@ -11639,6 +11947,7 @@ void SetupIntrinsics()
     smoothstep_Float32_edge1.type = Type::FullType{ Float32Type.name };
     smoothstep_Float32_x.name = "x"_c;
     smoothstep_Float32_x.type = Type::FullType{ Float32Type.name };
+    smoothstep_Float32.documentation = "Returns the smoothstep interpolation of the input."_c;
     smoothstep_Float32.name = "smoothstep"_c;
     smoothstep_Float32.returnType = Type::FullType { Float32Type.name };
     smoothstep_Float32.parameters = smoothstep_Float32_args;
@@ -11657,6 +11966,7 @@ void SetupIntrinsics()
     smoothstep_Float32x2_edge1.type = Type::FullType{ Float32x2Type.name };
     smoothstep_Float32x2_x.name = "x"_c;
     smoothstep_Float32x2_x.type = Type::FullType{ Float32x2Type.name };
+    smoothstep_Float32x2.documentation = "Returns the smoothstep interpolation of the input."_c;
     smoothstep_Float32x2.name = "smoothstep"_c;
     smoothstep_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     smoothstep_Float32x2.parameters = smoothstep_Float32x2_args;
@@ -11675,6 +11985,7 @@ void SetupIntrinsics()
     smoothstep_Float32x3_edge1.type = Type::FullType{ Float32x3Type.name };
     smoothstep_Float32x3_x.name = "x"_c;
     smoothstep_Float32x3_x.type = Type::FullType{ Float32x3Type.name };
+    smoothstep_Float32x3.documentation = "Returns the smoothstep interpolation of the input."_c;
     smoothstep_Float32x3.name = "smoothstep"_c;
     smoothstep_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     smoothstep_Float32x3.parameters = smoothstep_Float32x3_args;
@@ -11693,6 +12004,7 @@ void SetupIntrinsics()
     smoothstep_Float32x4_edge1.type = Type::FullType{ Float32x4Type.name };
     smoothstep_Float32x4_x.name = "x"_c;
     smoothstep_Float32x4_x.type = Type::FullType{ Float32x4Type.name };
+    smoothstep_Float32x4.documentation = "Returns the smoothstep interpolation of the input."_c;
     smoothstep_Float32x4.name = "smoothstep"_c;
     smoothstep_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     smoothstep_Float32x4.parameters = smoothstep_Float32x4_args;
@@ -11711,6 +12023,7 @@ void SetupIntrinsics()
     smoothstep_Float16_edge1.type = Type::FullType{ Float16Type.name };
     smoothstep_Float16_x.name = "x"_c;
     smoothstep_Float16_x.type = Type::FullType{ Float16Type.name };
+    smoothstep_Float16.documentation = "Returns the smoothstep interpolation of the input."_c;
     smoothstep_Float16.name = "smoothstep"_c;
     smoothstep_Float16.returnType = Type::FullType { Float16Type.name };
     smoothstep_Float16.parameters = smoothstep_Float16_args;
@@ -11729,6 +12042,7 @@ void SetupIntrinsics()
     smoothstep_Float16x2_edge1.type = Type::FullType{ Float16x2Type.name };
     smoothstep_Float16x2_x.name = "x"_c;
     smoothstep_Float16x2_x.type = Type::FullType{ Float16x2Type.name };
+    smoothstep_Float16x2.documentation = "Returns the smoothstep interpolation of the input."_c;
     smoothstep_Float16x2.name = "smoothstep"_c;
     smoothstep_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     smoothstep_Float16x2.parameters = smoothstep_Float16x2_args;
@@ -11747,6 +12061,7 @@ void SetupIntrinsics()
     smoothstep_Float16x3_edge1.type = Type::FullType{ Float16x3Type.name };
     smoothstep_Float16x3_x.name = "x"_c;
     smoothstep_Float16x3_x.type = Type::FullType{ Float16x3Type.name };
+    smoothstep_Float16x3.documentation = "Returns the smoothstep interpolation of the input."_c;
     smoothstep_Float16x3.name = "smoothstep"_c;
     smoothstep_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     smoothstep_Float16x3.parameters = smoothstep_Float16x3_args;
@@ -11765,6 +12080,7 @@ void SetupIntrinsics()
     smoothstep_Float16x4_edge1.type = Type::FullType{ Float16x4Type.name };
     smoothstep_Float16x4_x.name = "x"_c;
     smoothstep_Float16x4_x.type = Type::FullType{ Float16x4Type.name };
+    smoothstep_Float16x4.documentation = "Returns the smoothstep interpolation of the input."_c;
     smoothstep_Float16x4.name = "smoothstep"_c;
     smoothstep_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     smoothstep_Float16x4.parameters = smoothstep_Float16x4_args;
@@ -11779,6 +12095,7 @@ void SetupIntrinsics()
     /// ceil with Float32
     ceil_Float32_arg.name = "val"_c;
     ceil_Float32_arg.type = Type::FullType{ Float32Type.name };
+    ceil_Float32.documentation = "Returns the smallest integer value that is greater than or equal to the input."_c;
     ceil_Float32.name = "ceil"_c;
     ceil_Float32.returnType = Type::FullType { Float32Type.name };
     ceil_Float32.parameters = ceil_Float32_args;
@@ -11791,6 +12108,7 @@ void SetupIntrinsics()
     /// ceil with Float32x2
     ceil_Float32x2_arg.name = "val"_c;
     ceil_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    ceil_Float32x2.documentation = "Returns the smallest integer value that is greater than or equal to the input."_c;
     ceil_Float32x2.name = "ceil"_c;
     ceil_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     ceil_Float32x2.parameters = ceil_Float32x2_args;
@@ -11803,6 +12121,7 @@ void SetupIntrinsics()
     /// ceil with Float32x3
     ceil_Float32x3_arg.name = "val"_c;
     ceil_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    ceil_Float32x3.documentation = "Returns the smallest integer value that is greater than or equal to the input."_c;
     ceil_Float32x3.name = "ceil"_c;
     ceil_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     ceil_Float32x3.parameters = ceil_Float32x3_args;
@@ -11815,6 +12134,7 @@ void SetupIntrinsics()
     /// ceil with Float32x4
     ceil_Float32x4_arg.name = "val"_c;
     ceil_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    ceil_Float32x4.documentation = "Returns the smallest integer value that is greater than or equal to the input."_c;
     ceil_Float32x4.name = "ceil"_c;
     ceil_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     ceil_Float32x4.parameters = ceil_Float32x4_args;
@@ -11827,6 +12147,7 @@ void SetupIntrinsics()
     /// ceil with Float16
     ceil_Float16_arg.name = "val"_c;
     ceil_Float16_arg.type = Type::FullType{ Float16Type.name };
+    ceil_Float16.documentation = "Returns the smallest integer value that is greater than or equal to the input."_c;
     ceil_Float16.name = "ceil"_c;
     ceil_Float16.returnType = Type::FullType { Float16Type.name };
     ceil_Float16.parameters = ceil_Float16_args;
@@ -11839,6 +12160,7 @@ void SetupIntrinsics()
     /// ceil with Float16x2
     ceil_Float16x2_arg.name = "val"_c;
     ceil_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    ceil_Float16x2.documentation = "Returns the smallest integer value that is greater than or equal to the input."_c;
     ceil_Float16x2.name = "ceil"_c;
     ceil_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     ceil_Float16x2.parameters = ceil_Float16x2_args;
@@ -11851,6 +12173,7 @@ void SetupIntrinsics()
     /// ceil with Float16x3
     ceil_Float16x3_arg.name = "val"_c;
     ceil_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    ceil_Float16x3.documentation = "Returns the smallest integer value that is greater than or equal to the input."_c;
     ceil_Float16x3.name = "ceil"_c;
     ceil_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     ceil_Float16x3.parameters = ceil_Float16x3_args;
@@ -11863,6 +12186,7 @@ void SetupIntrinsics()
     /// ceil with Float16x4
     ceil_Float16x4_arg.name = "val"_c;
     ceil_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    ceil_Float16x4.documentation = "Returns the smallest integer value that is greater than or equal to the input."_c;
     ceil_Float16x4.name = "ceil"_c;
     ceil_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     ceil_Float16x4.parameters = ceil_Float16x4_args;
@@ -11875,6 +12199,7 @@ void SetupIntrinsics()
     /// floor with Float32
     floor_Float32_arg.name = "val"_c;
     floor_Float32_arg.type = Type::FullType{ Float32Type.name };
+    floor_Float32.documentation = "Returns the largest integer value that is less than or equal to the input."_c;
     floor_Float32.name = "floor"_c;
     floor_Float32.returnType = Type::FullType { Float32Type.name };
     floor_Float32.parameters = floor_Float32_args;
@@ -11887,6 +12212,7 @@ void SetupIntrinsics()
     /// floor with Float32x2
     floor_Float32x2_arg.name = "val"_c;
     floor_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    floor_Float32x2.documentation = "Returns the largest integer value that is less than or equal to the input."_c;
     floor_Float32x2.name = "floor"_c;
     floor_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     floor_Float32x2.parameters = floor_Float32x2_args;
@@ -11899,6 +12225,7 @@ void SetupIntrinsics()
     /// floor with Float32x3
     floor_Float32x3_arg.name = "val"_c;
     floor_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    floor_Float32x3.documentation = "Returns the largest integer value that is less than or equal to the input."_c;
     floor_Float32x3.name = "floor"_c;
     floor_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     floor_Float32x3.parameters = floor_Float32x3_args;
@@ -11911,6 +12238,7 @@ void SetupIntrinsics()
     /// floor with Float32x4
     floor_Float32x4_arg.name = "val"_c;
     floor_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    floor_Float32x4.documentation = "Returns the largest integer value that is less than or equal to the input."_c;
     floor_Float32x4.name = "floor"_c;
     floor_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     floor_Float32x4.parameters = floor_Float32x4_args;
@@ -11923,6 +12251,7 @@ void SetupIntrinsics()
     /// floor with Float16
     floor_Float16_arg.name = "val"_c;
     floor_Float16_arg.type = Type::FullType{ Float16Type.name };
+    floor_Float16.documentation = "Returns the largest integer value that is less than or equal to the input."_c;
     floor_Float16.name = "floor"_c;
     floor_Float16.returnType = Type::FullType { Float16Type.name };
     floor_Float16.parameters = floor_Float16_args;
@@ -11935,6 +12264,7 @@ void SetupIntrinsics()
     /// floor with Float16x2
     floor_Float16x2_arg.name = "val"_c;
     floor_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    floor_Float16x2.documentation = "Returns the largest integer value that is less than or equal to the input."_c;
     floor_Float16x2.name = "floor"_c;
     floor_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     floor_Float16x2.parameters = floor_Float16x2_args;
@@ -11947,6 +12277,7 @@ void SetupIntrinsics()
     /// floor with Float16x3
     floor_Float16x3_arg.name = "val"_c;
     floor_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    floor_Float16x3.documentation = "Returns the largest integer value that is less than or equal to the input."_c;
     floor_Float16x3.name = "floor"_c;
     floor_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     floor_Float16x3.parameters = floor_Float16x3_args;
@@ -11959,6 +12290,7 @@ void SetupIntrinsics()
     /// floor with Float16x4
     floor_Float16x4_arg.name = "val"_c;
     floor_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    floor_Float16x4.documentation = "Returns the largest integer value that is less than or equal to the input."_c;
     floor_Float16x4.name = "floor"_c;
     floor_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     floor_Float16x4.parameters = floor_Float16x4_args;
@@ -11971,6 +12303,7 @@ void SetupIntrinsics()
     /// fract with Float32
     fract_Float32_arg.name = "val"_c;
     fract_Float32_arg.type = Type::FullType{ Float32Type.name };
+    fract_Float32.documentation = "Returns the fractional part of the input."_c;
     fract_Float32.name = "fract"_c;
     fract_Float32.returnType = Type::FullType { Float32Type.name };
     fract_Float32.parameters = fract_Float32_args;
@@ -11983,6 +12316,7 @@ void SetupIntrinsics()
     /// fract with Float32x2
     fract_Float32x2_arg.name = "val"_c;
     fract_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    fract_Float32x2.documentation = "Returns the fractional part of the input."_c;
     fract_Float32x2.name = "fract"_c;
     fract_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     fract_Float32x2.parameters = fract_Float32x2_args;
@@ -11995,6 +12329,7 @@ void SetupIntrinsics()
     /// fract with Float32x3
     fract_Float32x3_arg.name = "val"_c;
     fract_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    fract_Float32x3.documentation = "Returns the fractional part of the input."_c;
     fract_Float32x3.name = "fract"_c;
     fract_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     fract_Float32x3.parameters = fract_Float32x3_args;
@@ -12007,6 +12342,7 @@ void SetupIntrinsics()
     /// fract with Float32x4
     fract_Float32x4_arg.name = "val"_c;
     fract_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    fract_Float32x4.documentation = "Returns the fractional part of the input."_c;
     fract_Float32x4.name = "fract"_c;
     fract_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     fract_Float32x4.parameters = fract_Float32x4_args;
@@ -12019,6 +12355,7 @@ void SetupIntrinsics()
     /// fract with Float16
     fract_Float16_arg.name = "val"_c;
     fract_Float16_arg.type = Type::FullType{ Float16Type.name };
+    fract_Float16.documentation = "Returns the fractional part of the input."_c;
     fract_Float16.name = "fract"_c;
     fract_Float16.returnType = Type::FullType { Float16Type.name };
     fract_Float16.parameters = fract_Float16_args;
@@ -12031,6 +12368,7 @@ void SetupIntrinsics()
     /// fract with Float16x2
     fract_Float16x2_arg.name = "val"_c;
     fract_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    fract_Float16x2.documentation = "Returns the fractional part of the input."_c;
     fract_Float16x2.name = "fract"_c;
     fract_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     fract_Float16x2.parameters = fract_Float16x2_args;
@@ -12043,6 +12381,7 @@ void SetupIntrinsics()
     /// fract with Float16x3
     fract_Float16x3_arg.name = "val"_c;
     fract_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    fract_Float16x3.documentation = "Returns the fractional part of the input."_c;
     fract_Float16x3.name = "fract"_c;
     fract_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     fract_Float16x3.parameters = fract_Float16x3_args;
@@ -12055,6 +12394,7 @@ void SetupIntrinsics()
     /// fract with Float16x4
     fract_Float16x4_arg.name = "val"_c;
     fract_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    fract_Float16x4.documentation = "Returns the fractional part of the input."_c;
     fract_Float16x4.name = "fract"_c;
     fract_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     fract_Float16x4.parameters = fract_Float16x4_args;
@@ -12067,6 +12407,7 @@ void SetupIntrinsics()
     /// saturate with Float32
     saturate_Float32_arg.name = "val"_c;
     saturate_Float32_arg.type = Type::FullType{ Float32Type.name };
+    saturate_Float32.documentation = "Returns the input clamped to the range [0, 1]."_c;
     saturate_Float32.name = "saturate"_c;
     saturate_Float32.returnType = Type::FullType { Float32Type.name };
     saturate_Float32.parameters = saturate_Float32_args;
@@ -12079,6 +12420,7 @@ void SetupIntrinsics()
     /// saturate with Float32x2
     saturate_Float32x2_arg.name = "val"_c;
     saturate_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    saturate_Float32x2.documentation = "Returns the input clamped to the range [0, 1]."_c;
     saturate_Float32x2.name = "saturate"_c;
     saturate_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     saturate_Float32x2.parameters = saturate_Float32x2_args;
@@ -12091,6 +12433,7 @@ void SetupIntrinsics()
     /// saturate with Float32x3
     saturate_Float32x3_arg.name = "val"_c;
     saturate_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    saturate_Float32x3.documentation = "Returns the input clamped to the range [0, 1]."_c;
     saturate_Float32x3.name = "saturate"_c;
     saturate_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     saturate_Float32x3.parameters = saturate_Float32x3_args;
@@ -12103,6 +12446,7 @@ void SetupIntrinsics()
     /// saturate with Float32x4
     saturate_Float32x4_arg.name = "val"_c;
     saturate_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    saturate_Float32x4.documentation = "Returns the input clamped to the range [0, 1]."_c;
     saturate_Float32x4.name = "saturate"_c;
     saturate_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     saturate_Float32x4.parameters = saturate_Float32x4_args;
@@ -12115,6 +12459,7 @@ void SetupIntrinsics()
     /// saturate with Float16
     saturate_Float16_arg.name = "val"_c;
     saturate_Float16_arg.type = Type::FullType{ Float16Type.name };
+    saturate_Float16.documentation = "Returns the input clamped to the range [0, 1]."_c;
     saturate_Float16.name = "saturate"_c;
     saturate_Float16.returnType = Type::FullType { Float16Type.name };
     saturate_Float16.parameters = saturate_Float16_args;
@@ -12127,6 +12472,7 @@ void SetupIntrinsics()
     /// saturate with Float16x2
     saturate_Float16x2_arg.name = "val"_c;
     saturate_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    saturate_Float16x2.documentation = "Returns the input clamped to the range [0, 1]."_c;
     saturate_Float16x2.name = "saturate"_c;
     saturate_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     saturate_Float16x2.parameters = saturate_Float16x2_args;
@@ -12139,6 +12485,7 @@ void SetupIntrinsics()
     /// saturate with Float16x3
     saturate_Float16x3_arg.name = "val"_c;
     saturate_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    saturate_Float16x3.documentation = "Returns the input clamped to the range [0, 1]."_c;
     saturate_Float16x3.name = "saturate"_c;
     saturate_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     saturate_Float16x3.parameters = saturate_Float16x3_args;
@@ -12151,6 +12498,7 @@ void SetupIntrinsics()
     /// saturate with Float16x4
     saturate_Float16x4_arg.name = "val"_c;
     saturate_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    saturate_Float16x4.documentation = "Returns the input clamped to the range [0, 1]."_c;
     saturate_Float16x4.name = "saturate"_c;
     saturate_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     saturate_Float16x4.parameters = saturate_Float16x4_args;
@@ -12163,6 +12511,7 @@ void SetupIntrinsics()
     /// trunc with Float32
     trunc_Float32_arg.name = "val"_c;
     trunc_Float32_arg.type = Type::FullType{ Float32Type.name };
+    trunc_Float32.documentation = "Returns the integer part of the input, removing any fractional part."_c;
     trunc_Float32.name = "trunc"_c;
     trunc_Float32.returnType = Type::FullType { Float32Type.name };
     trunc_Float32.parameters = trunc_Float32_args;
@@ -12175,6 +12524,7 @@ void SetupIntrinsics()
     /// trunc with Float32x2
     trunc_Float32x2_arg.name = "val"_c;
     trunc_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    trunc_Float32x2.documentation = "Returns the integer part of the input, removing any fractional part."_c;
     trunc_Float32x2.name = "trunc"_c;
     trunc_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     trunc_Float32x2.parameters = trunc_Float32x2_args;
@@ -12187,6 +12537,7 @@ void SetupIntrinsics()
     /// trunc with Float32x3
     trunc_Float32x3_arg.name = "val"_c;
     trunc_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    trunc_Float32x3.documentation = "Returns the integer part of the input, removing any fractional part."_c;
     trunc_Float32x3.name = "trunc"_c;
     trunc_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     trunc_Float32x3.parameters = trunc_Float32x3_args;
@@ -12199,6 +12550,7 @@ void SetupIntrinsics()
     /// trunc with Float32x4
     trunc_Float32x4_arg.name = "val"_c;
     trunc_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    trunc_Float32x4.documentation = "Returns the integer part of the input, removing any fractional part."_c;
     trunc_Float32x4.name = "trunc"_c;
     trunc_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     trunc_Float32x4.parameters = trunc_Float32x4_args;
@@ -12211,6 +12563,7 @@ void SetupIntrinsics()
     /// trunc with Float16
     trunc_Float16_arg.name = "val"_c;
     trunc_Float16_arg.type = Type::FullType{ Float16Type.name };
+    trunc_Float16.documentation = "Returns the integer part of the input, removing any fractional part."_c;
     trunc_Float16.name = "trunc"_c;
     trunc_Float16.returnType = Type::FullType { Float16Type.name };
     trunc_Float16.parameters = trunc_Float16_args;
@@ -12223,6 +12576,7 @@ void SetupIntrinsics()
     /// trunc with Float16x2
     trunc_Float16x2_arg.name = "val"_c;
     trunc_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    trunc_Float16x2.documentation = "Returns the integer part of the input, removing any fractional part."_c;
     trunc_Float16x2.name = "trunc"_c;
     trunc_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     trunc_Float16x2.parameters = trunc_Float16x2_args;
@@ -12235,6 +12589,7 @@ void SetupIntrinsics()
     /// trunc with Float16x3
     trunc_Float16x3_arg.name = "val"_c;
     trunc_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    trunc_Float16x3.documentation = "Returns the integer part of the input, removing any fractional part."_c;
     trunc_Float16x3.name = "trunc"_c;
     trunc_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     trunc_Float16x3.parameters = trunc_Float16x3_args;
@@ -12247,6 +12602,7 @@ void SetupIntrinsics()
     /// trunc with Float16x4
     trunc_Float16x4_arg.name = "val"_c;
     trunc_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    trunc_Float16x4.documentation = "Returns the integer part of the input, removing any fractional part."_c;
     trunc_Float16x4.name = "trunc"_c;
     trunc_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     trunc_Float16x4.parameters = trunc_Float16x4_args;
@@ -12259,6 +12615,7 @@ void SetupIntrinsics()
     /// ddx with Float32
     ddx_Float32_arg.name = "val"_c;
     ddx_Float32_arg.type = Type::FullType{ Float32Type.name };
+    ddx_Float32.documentation = "Returns the derivative of the input with respect to the screen x coordinate."_c;
     ddx_Float32.name = "ddx"_c;
     ddx_Float32.returnType = Type::FullType { Float32Type.name };
     ddx_Float32.parameters = ddx_Float32_args;
@@ -12271,6 +12628,7 @@ void SetupIntrinsics()
     /// ddx with Float32x2
     ddx_Float32x2_arg.name = "val"_c;
     ddx_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    ddx_Float32x2.documentation = "Returns the derivative of the input with respect to the screen x coordinate."_c;
     ddx_Float32x2.name = "ddx"_c;
     ddx_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     ddx_Float32x2.parameters = ddx_Float32x2_args;
@@ -12283,6 +12641,7 @@ void SetupIntrinsics()
     /// ddx with Float32x3
     ddx_Float32x3_arg.name = "val"_c;
     ddx_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    ddx_Float32x3.documentation = "Returns the derivative of the input with respect to the screen x coordinate."_c;
     ddx_Float32x3.name = "ddx"_c;
     ddx_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     ddx_Float32x3.parameters = ddx_Float32x3_args;
@@ -12295,6 +12654,7 @@ void SetupIntrinsics()
     /// ddx with Float32x4
     ddx_Float32x4_arg.name = "val"_c;
     ddx_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    ddx_Float32x4.documentation = "Returns the derivative of the input with respect to the screen x coordinate."_c;
     ddx_Float32x4.name = "ddx"_c;
     ddx_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     ddx_Float32x4.parameters = ddx_Float32x4_args;
@@ -12307,6 +12667,7 @@ void SetupIntrinsics()
     /// ddx with Float16
     ddx_Float16_arg.name = "val"_c;
     ddx_Float16_arg.type = Type::FullType{ Float16Type.name };
+    ddx_Float16.documentation = "Returns the derivative of the input with respect to the screen x coordinate."_c;
     ddx_Float16.name = "ddx"_c;
     ddx_Float16.returnType = Type::FullType { Float16Type.name };
     ddx_Float16.parameters = ddx_Float16_args;
@@ -12319,6 +12680,7 @@ void SetupIntrinsics()
     /// ddx with Float16x2
     ddx_Float16x2_arg.name = "val"_c;
     ddx_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    ddx_Float16x2.documentation = "Returns the derivative of the input with respect to the screen x coordinate."_c;
     ddx_Float16x2.name = "ddx"_c;
     ddx_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     ddx_Float16x2.parameters = ddx_Float16x2_args;
@@ -12331,6 +12693,7 @@ void SetupIntrinsics()
     /// ddx with Float16x3
     ddx_Float16x3_arg.name = "val"_c;
     ddx_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    ddx_Float16x3.documentation = "Returns the derivative of the input with respect to the screen x coordinate."_c;
     ddx_Float16x3.name = "ddx"_c;
     ddx_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     ddx_Float16x3.parameters = ddx_Float16x3_args;
@@ -12343,6 +12706,7 @@ void SetupIntrinsics()
     /// ddx with Float16x4
     ddx_Float16x4_arg.name = "val"_c;
     ddx_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    ddx_Float16x4.documentation = "Returns the derivative of the input with respect to the screen x coordinate."_c;
     ddx_Float16x4.name = "ddx"_c;
     ddx_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     ddx_Float16x4.parameters = ddx_Float16x4_args;
@@ -12355,6 +12719,7 @@ void SetupIntrinsics()
     /// ddy with Float32
     ddy_Float32_arg.name = "val"_c;
     ddy_Float32_arg.type = Type::FullType{ Float32Type.name };
+    ddy_Float32.documentation = "Returns the derivative of the input with respect to the screen y coordinate."_c;
     ddy_Float32.name = "ddy"_c;
     ddy_Float32.returnType = Type::FullType { Float32Type.name };
     ddy_Float32.parameters = ddy_Float32_args;
@@ -12367,6 +12732,7 @@ void SetupIntrinsics()
     /// ddy with Float32x2
     ddy_Float32x2_arg.name = "val"_c;
     ddy_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    ddy_Float32x2.documentation = "Returns the derivative of the input with respect to the screen y coordinate."_c;
     ddy_Float32x2.name = "ddy"_c;
     ddy_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     ddy_Float32x2.parameters = ddy_Float32x2_args;
@@ -12379,6 +12745,7 @@ void SetupIntrinsics()
     /// ddy with Float32x3
     ddy_Float32x3_arg.name = "val"_c;
     ddy_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    ddy_Float32x3.documentation = "Returns the derivative of the input with respect to the screen y coordinate."_c;
     ddy_Float32x3.name = "ddy"_c;
     ddy_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     ddy_Float32x3.parameters = ddy_Float32x3_args;
@@ -12391,6 +12758,7 @@ void SetupIntrinsics()
     /// ddy with Float32x4
     ddy_Float32x4_arg.name = "val"_c;
     ddy_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    ddy_Float32x4.documentation = "Returns the derivative of the input with respect to the screen y coordinate."_c;
     ddy_Float32x4.name = "ddy"_c;
     ddy_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     ddy_Float32x4.parameters = ddy_Float32x4_args;
@@ -12403,6 +12771,7 @@ void SetupIntrinsics()
     /// ddy with Float16
     ddy_Float16_arg.name = "val"_c;
     ddy_Float16_arg.type = Type::FullType{ Float16Type.name };
+    ddy_Float16.documentation = "Returns the derivative of the input with respect to the screen y coordinate."_c;
     ddy_Float16.name = "ddy"_c;
     ddy_Float16.returnType = Type::FullType { Float16Type.name };
     ddy_Float16.parameters = ddy_Float16_args;
@@ -12415,6 +12784,7 @@ void SetupIntrinsics()
     /// ddy with Float16x2
     ddy_Float16x2_arg.name = "val"_c;
     ddy_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    ddy_Float16x2.documentation = "Returns the derivative of the input with respect to the screen y coordinate."_c;
     ddy_Float16x2.name = "ddy"_c;
     ddy_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     ddy_Float16x2.parameters = ddy_Float16x2_args;
@@ -12427,6 +12797,7 @@ void SetupIntrinsics()
     /// ddy with Float16x3
     ddy_Float16x3_arg.name = "val"_c;
     ddy_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    ddy_Float16x3.documentation = "Returns the derivative of the input with respect to the screen y coordinate."_c;
     ddy_Float16x3.name = "ddy"_c;
     ddy_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     ddy_Float16x3.parameters = ddy_Float16x3_args;
@@ -12439,6 +12810,7 @@ void SetupIntrinsics()
     /// ddy with Float16x4
     ddy_Float16x4_arg.name = "val"_c;
     ddy_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    ddy_Float16x4.documentation = "Returns the derivative of the input with respect to the screen y coordinate."_c;
     ddy_Float16x4.name = "ddy"_c;
     ddy_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     ddy_Float16x4.parameters = ddy_Float16x4_args;
@@ -12451,6 +12823,7 @@ void SetupIntrinsics()
     /// fwidth with Float32
     fwidth_Float32_arg.name = "val"_c;
     fwidth_Float32_arg.type = Type::FullType{ Float32Type.name };
+    fwidth_Float32.documentation = "Returns the width of the input, which is the maximum of the absolute values of the derivatives in the screen x and y coordinates."_c;
     fwidth_Float32.name = "fwidth"_c;
     fwidth_Float32.returnType = Type::FullType { Float32Type.name };
     fwidth_Float32.parameters = fwidth_Float32_args;
@@ -12463,6 +12836,7 @@ void SetupIntrinsics()
     /// fwidth with Float32x2
     fwidth_Float32x2_arg.name = "val"_c;
     fwidth_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    fwidth_Float32x2.documentation = "Returns the width of the input, which is the maximum of the absolute values of the derivatives in the screen x and y coordinates."_c;
     fwidth_Float32x2.name = "fwidth"_c;
     fwidth_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     fwidth_Float32x2.parameters = fwidth_Float32x2_args;
@@ -12475,6 +12849,7 @@ void SetupIntrinsics()
     /// fwidth with Float32x3
     fwidth_Float32x3_arg.name = "val"_c;
     fwidth_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    fwidth_Float32x3.documentation = "Returns the width of the input, which is the maximum of the absolute values of the derivatives in the screen x and y coordinates."_c;
     fwidth_Float32x3.name = "fwidth"_c;
     fwidth_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     fwidth_Float32x3.parameters = fwidth_Float32x3_args;
@@ -12487,6 +12862,7 @@ void SetupIntrinsics()
     /// fwidth with Float32x4
     fwidth_Float32x4_arg.name = "val"_c;
     fwidth_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    fwidth_Float32x4.documentation = "Returns the width of the input, which is the maximum of the absolute values of the derivatives in the screen x and y coordinates."_c;
     fwidth_Float32x4.name = "fwidth"_c;
     fwidth_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     fwidth_Float32x4.parameters = fwidth_Float32x4_args;
@@ -12499,6 +12875,7 @@ void SetupIntrinsics()
     /// fwidth with Float16
     fwidth_Float16_arg.name = "val"_c;
     fwidth_Float16_arg.type = Type::FullType{ Float16Type.name };
+    fwidth_Float16.documentation = "Returns the width of the input, which is the maximum of the absolute values of the derivatives in the screen x and y coordinates."_c;
     fwidth_Float16.name = "fwidth"_c;
     fwidth_Float16.returnType = Type::FullType { Float16Type.name };
     fwidth_Float16.parameters = fwidth_Float16_args;
@@ -12511,6 +12888,7 @@ void SetupIntrinsics()
     /// fwidth with Float16x2
     fwidth_Float16x2_arg.name = "val"_c;
     fwidth_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    fwidth_Float16x2.documentation = "Returns the width of the input, which is the maximum of the absolute values of the derivatives in the screen x and y coordinates."_c;
     fwidth_Float16x2.name = "fwidth"_c;
     fwidth_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     fwidth_Float16x2.parameters = fwidth_Float16x2_args;
@@ -12523,6 +12901,7 @@ void SetupIntrinsics()
     /// fwidth with Float16x3
     fwidth_Float16x3_arg.name = "val"_c;
     fwidth_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    fwidth_Float16x3.documentation = "Returns the width of the input, which is the maximum of the absolute values of the derivatives in the screen x and y coordinates."_c;
     fwidth_Float16x3.name = "fwidth"_c;
     fwidth_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     fwidth_Float16x3.parameters = fwidth_Float16x3_args;
@@ -12535,6 +12914,7 @@ void SetupIntrinsics()
     /// fwidth with Float16x4
     fwidth_Float16x4_arg.name = "val"_c;
     fwidth_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    fwidth_Float16x4.documentation = "Returns the width of the input, which is the maximum of the absolute values of the derivatives in the screen x and y coordinates."_c;
     fwidth_Float16x4.name = "fwidth"_c;
     fwidth_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     fwidth_Float16x4.parameters = fwidth_Float16x4_args;
@@ -12547,6 +12927,7 @@ void SetupIntrinsics()
     /// sign with Int32
     sign_Int32_arg.name = "val"_c;
     sign_Int32_arg.type = Type::FullType{ Int32Type.name };
+    sign_Int32.documentation = "Returns the sign of the value."_c;
     sign_Int32.name = "sign"_c;
     sign_Int32.returnType = Type::FullType { Int32Type.name };
     sign_Int32.parameters = sign_Int32_args;
@@ -12559,6 +12940,7 @@ void SetupIntrinsics()
     /// sign with Int32x2
     sign_Int32x2_arg.name = "val"_c;
     sign_Int32x2_arg.type = Type::FullType{ Int32x2Type.name };
+    sign_Int32x2.documentation = "Returns the sign of the value."_c;
     sign_Int32x2.name = "sign"_c;
     sign_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     sign_Int32x2.parameters = sign_Int32x2_args;
@@ -12571,6 +12953,7 @@ void SetupIntrinsics()
     /// sign with Int32x3
     sign_Int32x3_arg.name = "val"_c;
     sign_Int32x3_arg.type = Type::FullType{ Int32x3Type.name };
+    sign_Int32x3.documentation = "Returns the sign of the value."_c;
     sign_Int32x3.name = "sign"_c;
     sign_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     sign_Int32x3.parameters = sign_Int32x3_args;
@@ -12583,6 +12966,7 @@ void SetupIntrinsics()
     /// sign with Int32x4
     sign_Int32x4_arg.name = "val"_c;
     sign_Int32x4_arg.type = Type::FullType{ Int32x4Type.name };
+    sign_Int32x4.documentation = "Returns the sign of the value."_c;
     sign_Int32x4.name = "sign"_c;
     sign_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     sign_Int32x4.parameters = sign_Int32x4_args;
@@ -12595,6 +12979,7 @@ void SetupIntrinsics()
     /// sign with Int16
     sign_Int16_arg.name = "val"_c;
     sign_Int16_arg.type = Type::FullType{ Int16Type.name };
+    sign_Int16.documentation = "Returns the sign of the value."_c;
     sign_Int16.name = "sign"_c;
     sign_Int16.returnType = Type::FullType { Int16Type.name };
     sign_Int16.parameters = sign_Int16_args;
@@ -12607,6 +12992,7 @@ void SetupIntrinsics()
     /// sign with Int16x2
     sign_Int16x2_arg.name = "val"_c;
     sign_Int16x2_arg.type = Type::FullType{ Int16x2Type.name };
+    sign_Int16x2.documentation = "Returns the sign of the value."_c;
     sign_Int16x2.name = "sign"_c;
     sign_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     sign_Int16x2.parameters = sign_Int16x2_args;
@@ -12619,6 +13005,7 @@ void SetupIntrinsics()
     /// sign with Int16x3
     sign_Int16x3_arg.name = "val"_c;
     sign_Int16x3_arg.type = Type::FullType{ Int16x3Type.name };
+    sign_Int16x3.documentation = "Returns the sign of the value."_c;
     sign_Int16x3.name = "sign"_c;
     sign_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     sign_Int16x3.parameters = sign_Int16x3_args;
@@ -12631,6 +13018,7 @@ void SetupIntrinsics()
     /// sign with Int16x4
     sign_Int16x4_arg.name = "val"_c;
     sign_Int16x4_arg.type = Type::FullType{ Int16x4Type.name };
+    sign_Int16x4.documentation = "Returns the sign of the value."_c;
     sign_Int16x4.name = "sign"_c;
     sign_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     sign_Int16x4.parameters = sign_Int16x4_args;
@@ -12643,6 +13031,7 @@ void SetupIntrinsics()
     /// sign with Float32
     sign_Float32_arg.name = "val"_c;
     sign_Float32_arg.type = Type::FullType{ Float32Type.name };
+    sign_Float32.documentation = "Returns the sign of the value."_c;
     sign_Float32.name = "sign"_c;
     sign_Float32.returnType = Type::FullType { Float32Type.name };
     sign_Float32.parameters = sign_Float32_args;
@@ -12655,6 +13044,7 @@ void SetupIntrinsics()
     /// sign with Float32x2
     sign_Float32x2_arg.name = "val"_c;
     sign_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    sign_Float32x2.documentation = "Returns the sign of the value."_c;
     sign_Float32x2.name = "sign"_c;
     sign_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     sign_Float32x2.parameters = sign_Float32x2_args;
@@ -12667,6 +13057,7 @@ void SetupIntrinsics()
     /// sign with Float32x3
     sign_Float32x3_arg.name = "val"_c;
     sign_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    sign_Float32x3.documentation = "Returns the sign of the value."_c;
     sign_Float32x3.name = "sign"_c;
     sign_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     sign_Float32x3.parameters = sign_Float32x3_args;
@@ -12679,6 +13070,7 @@ void SetupIntrinsics()
     /// sign with Float32x4
     sign_Float32x4_arg.name = "val"_c;
     sign_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    sign_Float32x4.documentation = "Returns the sign of the value."_c;
     sign_Float32x4.name = "sign"_c;
     sign_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     sign_Float32x4.parameters = sign_Float32x4_args;
@@ -12691,6 +13083,7 @@ void SetupIntrinsics()
     /// sign with Float16
     sign_Float16_arg.name = "val"_c;
     sign_Float16_arg.type = Type::FullType{ Float16Type.name };
+    sign_Float16.documentation = "Returns the sign of the value."_c;
     sign_Float16.name = "sign"_c;
     sign_Float16.returnType = Type::FullType { Float16Type.name };
     sign_Float16.parameters = sign_Float16_args;
@@ -12703,6 +13096,7 @@ void SetupIntrinsics()
     /// sign with Float16x2
     sign_Float16x2_arg.name = "val"_c;
     sign_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    sign_Float16x2.documentation = "Returns the sign of the value."_c;
     sign_Float16x2.name = "sign"_c;
     sign_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     sign_Float16x2.parameters = sign_Float16x2_args;
@@ -12715,6 +13109,7 @@ void SetupIntrinsics()
     /// sign with Float16x3
     sign_Float16x3_arg.name = "val"_c;
     sign_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    sign_Float16x3.documentation = "Returns the sign of the value."_c;
     sign_Float16x3.name = "sign"_c;
     sign_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     sign_Float16x3.parameters = sign_Float16x3_args;
@@ -12727,6 +13122,7 @@ void SetupIntrinsics()
     /// sign with Float16x4
     sign_Float16x4_arg.name = "val"_c;
     sign_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    sign_Float16x4.documentation = "Returns the sign of the value."_c;
     sign_Float16x4.name = "sign"_c;
     sign_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     sign_Float16x4.parameters = sign_Float16x4_args;
@@ -12739,6 +13135,7 @@ void SetupIntrinsics()
     /// abs with Int32
     abs_Int32_arg.name = "val"_c;
     abs_Int32_arg.type = Type::FullType{ Int32Type.name };
+    abs_Int32.documentation = "Returns the absolute value of the input."_c;
     abs_Int32.name = "abs"_c;
     abs_Int32.returnType = Type::FullType { Int32Type.name };
     abs_Int32.parameters = abs_Int32_args;
@@ -12751,6 +13148,7 @@ void SetupIntrinsics()
     /// abs with Int32x2
     abs_Int32x2_arg.name = "val"_c;
     abs_Int32x2_arg.type = Type::FullType{ Int32x2Type.name };
+    abs_Int32x2.documentation = "Returns the absolute value of the input."_c;
     abs_Int32x2.name = "abs"_c;
     abs_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     abs_Int32x2.parameters = abs_Int32x2_args;
@@ -12763,6 +13161,7 @@ void SetupIntrinsics()
     /// abs with Int32x3
     abs_Int32x3_arg.name = "val"_c;
     abs_Int32x3_arg.type = Type::FullType{ Int32x3Type.name };
+    abs_Int32x3.documentation = "Returns the absolute value of the input."_c;
     abs_Int32x3.name = "abs"_c;
     abs_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     abs_Int32x3.parameters = abs_Int32x3_args;
@@ -12775,6 +13174,7 @@ void SetupIntrinsics()
     /// abs with Int32x4
     abs_Int32x4_arg.name = "val"_c;
     abs_Int32x4_arg.type = Type::FullType{ Int32x4Type.name };
+    abs_Int32x4.documentation = "Returns the absolute value of the input."_c;
     abs_Int32x4.name = "abs"_c;
     abs_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     abs_Int32x4.parameters = abs_Int32x4_args;
@@ -12787,6 +13187,7 @@ void SetupIntrinsics()
     /// abs with Int16
     abs_Int16_arg.name = "val"_c;
     abs_Int16_arg.type = Type::FullType{ Int16Type.name };
+    abs_Int16.documentation = "Returns the absolute value of the input."_c;
     abs_Int16.name = "abs"_c;
     abs_Int16.returnType = Type::FullType { Int16Type.name };
     abs_Int16.parameters = abs_Int16_args;
@@ -12799,6 +13200,7 @@ void SetupIntrinsics()
     /// abs with Int16x2
     abs_Int16x2_arg.name = "val"_c;
     abs_Int16x2_arg.type = Type::FullType{ Int16x2Type.name };
+    abs_Int16x2.documentation = "Returns the absolute value of the input."_c;
     abs_Int16x2.name = "abs"_c;
     abs_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     abs_Int16x2.parameters = abs_Int16x2_args;
@@ -12811,6 +13213,7 @@ void SetupIntrinsics()
     /// abs with Int16x3
     abs_Int16x3_arg.name = "val"_c;
     abs_Int16x3_arg.type = Type::FullType{ Int16x3Type.name };
+    abs_Int16x3.documentation = "Returns the absolute value of the input."_c;
     abs_Int16x3.name = "abs"_c;
     abs_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     abs_Int16x3.parameters = abs_Int16x3_args;
@@ -12823,6 +13226,7 @@ void SetupIntrinsics()
     /// abs with Int16x4
     abs_Int16x4_arg.name = "val"_c;
     abs_Int16x4_arg.type = Type::FullType{ Int16x4Type.name };
+    abs_Int16x4.documentation = "Returns the absolute value of the input."_c;
     abs_Int16x4.name = "abs"_c;
     abs_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     abs_Int16x4.parameters = abs_Int16x4_args;
@@ -12835,6 +13239,7 @@ void SetupIntrinsics()
     /// abs with Float32
     abs_Float32_arg.name = "val"_c;
     abs_Float32_arg.type = Type::FullType{ Float32Type.name };
+    abs_Float32.documentation = "Returns the absolute value of the input."_c;
     abs_Float32.name = "abs"_c;
     abs_Float32.returnType = Type::FullType { Float32Type.name };
     abs_Float32.parameters = abs_Float32_args;
@@ -12847,6 +13252,7 @@ void SetupIntrinsics()
     /// abs with Float32x2
     abs_Float32x2_arg.name = "val"_c;
     abs_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
+    abs_Float32x2.documentation = "Returns the absolute value of the input."_c;
     abs_Float32x2.name = "abs"_c;
     abs_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     abs_Float32x2.parameters = abs_Float32x2_args;
@@ -12859,6 +13265,7 @@ void SetupIntrinsics()
     /// abs with Float32x3
     abs_Float32x3_arg.name = "val"_c;
     abs_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
+    abs_Float32x3.documentation = "Returns the absolute value of the input."_c;
     abs_Float32x3.name = "abs"_c;
     abs_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     abs_Float32x3.parameters = abs_Float32x3_args;
@@ -12871,6 +13278,7 @@ void SetupIntrinsics()
     /// abs with Float32x4
     abs_Float32x4_arg.name = "val"_c;
     abs_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    abs_Float32x4.documentation = "Returns the absolute value of the input."_c;
     abs_Float32x4.name = "abs"_c;
     abs_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     abs_Float32x4.parameters = abs_Float32x4_args;
@@ -12883,6 +13291,7 @@ void SetupIntrinsics()
     /// abs with Float16
     abs_Float16_arg.name = "val"_c;
     abs_Float16_arg.type = Type::FullType{ Float16Type.name };
+    abs_Float16.documentation = "Returns the absolute value of the input."_c;
     abs_Float16.name = "abs"_c;
     abs_Float16.returnType = Type::FullType { Float16Type.name };
     abs_Float16.parameters = abs_Float16_args;
@@ -12895,6 +13304,7 @@ void SetupIntrinsics()
     /// abs with Float16x2
     abs_Float16x2_arg.name = "val"_c;
     abs_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
+    abs_Float16x2.documentation = "Returns the absolute value of the input."_c;
     abs_Float16x2.name = "abs"_c;
     abs_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     abs_Float16x2.parameters = abs_Float16x2_args;
@@ -12907,6 +13317,7 @@ void SetupIntrinsics()
     /// abs with Float16x3
     abs_Float16x3_arg.name = "val"_c;
     abs_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
+    abs_Float16x3.documentation = "Returns the absolute value of the input."_c;
     abs_Float16x3.name = "abs"_c;
     abs_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     abs_Float16x3.parameters = abs_Float16x3_args;
@@ -12919,6 +13330,7 @@ void SetupIntrinsics()
     /// abs with Float16x4
     abs_Float16x4_arg.name = "val"_c;
     abs_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    abs_Float16x4.documentation = "Returns the absolute value of the input."_c;
     abs_Float16x4.name = "abs"_c;
     abs_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     abs_Float16x4.parameters = abs_Float16x4_args;
@@ -12931,6 +13343,7 @@ void SetupIntrinsics()
     /// castToF16 with UInt16
     castToF16_UInt16_arg.name = "val"_c;
     castToF16_UInt16_arg.type = Type::FullType{ UInt16Type.name };
+    castToF16_UInt16.documentation = "Casts value of UInt16 to type Float16 without conversion."_c;
     castToF16_UInt16.name = "castToF16"_c;
     castToF16_UInt16.returnType = Type::FullType { Float16Type.name };
     castToF16_UInt16.parameters = castToF16_UInt16_args;
@@ -12943,6 +13356,7 @@ void SetupIntrinsics()
     /// castToF16 with Int16
     castToF16_Int16_arg.name = "val"_c;
     castToF16_Int16_arg.type = Type::FullType{ Int16Type.name };
+    castToF16_Int16.documentation = "Casts value of Int16 to type Float16 without conversion."_c;
     castToF16_Int16.name = "castToF16"_c;
     castToF16_Int16.returnType = Type::FullType { Float16Type.name };
     castToF16_Int16.parameters = castToF16_Int16_args;
@@ -12955,6 +13369,7 @@ void SetupIntrinsics()
     /// castToU16 with Float16
     castToU16_Float16_arg.name = "val"_c;
     castToU16_Float16_arg.type = Type::FullType{ Float16Type.name };
+    castToU16_Float16.documentation = "Casts value of Float16 to type UInt16 without conversion."_c;
     castToU16_Float16.name = "castToU16"_c;
     castToU16_Float16.returnType = Type::FullType { UInt16Type.name };
     castToU16_Float16.parameters = castToU16_Float16_args;
@@ -12967,6 +13382,7 @@ void SetupIntrinsics()
     /// castToU16 with Int16
     castToU16_Int16_arg.name = "val"_c;
     castToU16_Int16_arg.type = Type::FullType{ Int16Type.name };
+    castToU16_Int16.documentation = "Casts value of Int16 to type UInt16 without conversion."_c;
     castToU16_Int16.name = "castToU16"_c;
     castToU16_Int16.returnType = Type::FullType { UInt16Type.name };
     castToU16_Int16.parameters = castToU16_Int16_args;
@@ -12979,6 +13395,7 @@ void SetupIntrinsics()
     /// castToI16 with Float16
     castToI16_Float16_arg.name = "val"_c;
     castToI16_Float16_arg.type = Type::FullType{ Float16Type.name };
+    castToI16_Float16.documentation = "Casts value of Float16 to type Int16 without conversion."_c;
     castToI16_Float16.name = "castToI16"_c;
     castToI16_Float16.returnType = Type::FullType { Int16Type.name };
     castToI16_Float16.parameters = castToI16_Float16_args;
@@ -12991,6 +13408,7 @@ void SetupIntrinsics()
     /// castToI16 with UInt16
     castToI16_UInt16_arg.name = "val"_c;
     castToI16_UInt16_arg.type = Type::FullType{ UInt16Type.name };
+    castToI16_UInt16.documentation = "Casts value of UInt16 to type Int16 without conversion."_c;
     castToI16_UInt16.name = "castToI16"_c;
     castToI16_UInt16.returnType = Type::FullType { Int16Type.name };
     castToI16_UInt16.parameters = castToI16_UInt16_args;
@@ -13003,6 +13421,7 @@ void SetupIntrinsics()
     /// castToF32 with UInt32
     castToF32_UInt32_arg.name = "val"_c;
     castToF32_UInt32_arg.type = Type::FullType{ UInt32Type.name };
+    castToF32_UInt32.documentation = "Casts value of UInt32 to type Float32 without conversion."_c;
     castToF32_UInt32.name = "castToF32"_c;
     castToF32_UInt32.returnType = Type::FullType { Float32Type.name };
     castToF32_UInt32.parameters = castToF32_UInt32_args;
@@ -13015,6 +13434,7 @@ void SetupIntrinsics()
     /// castToF32 with Int32
     castToF32_Int32_arg.name = "val"_c;
     castToF32_Int32_arg.type = Type::FullType{ Int32Type.name };
+    castToF32_Int32.documentation = "Casts value of Int32 to type Float32 without conversion."_c;
     castToF32_Int32.name = "castToF32"_c;
     castToF32_Int32.returnType = Type::FullType { Float32Type.name };
     castToF32_Int32.parameters = castToF32_Int32_args;
@@ -13027,6 +13447,7 @@ void SetupIntrinsics()
     /// castToU32 with Float32
     castToU32_Float32_arg.name = "val"_c;
     castToU32_Float32_arg.type = Type::FullType{ Float32Type.name };
+    castToU32_Float32.documentation = "Casts value of Float32 to type UInt32 without conversion."_c;
     castToU32_Float32.name = "castToU32"_c;
     castToU32_Float32.returnType = Type::FullType { UInt32Type.name };
     castToU32_Float32.parameters = castToU32_Float32_args;
@@ -13039,6 +13460,7 @@ void SetupIntrinsics()
     /// castToU32 with Int32
     castToU32_Int32_arg.name = "val"_c;
     castToU32_Int32_arg.type = Type::FullType{ Int32Type.name };
+    castToU32_Int32.documentation = "Casts value of Int32 to type UInt32 without conversion."_c;
     castToU32_Int32.name = "castToU32"_c;
     castToU32_Int32.returnType = Type::FullType { UInt32Type.name };
     castToU32_Int32.parameters = castToU32_Int32_args;
@@ -13051,6 +13473,7 @@ void SetupIntrinsics()
     /// castToI32 with Float32
     castToI32_Float32_arg.name = "val"_c;
     castToI32_Float32_arg.type = Type::FullType{ Float32Type.name };
+    castToI32_Float32.documentation = "Casts value of Float32 to type Int32 without conversion."_c;
     castToI32_Float32.name = "castToI32"_c;
     castToI32_Float32.returnType = Type::FullType { Int32Type.name };
     castToI32_Float32.parameters = castToI32_Float32_args;
@@ -13063,6 +13486,7 @@ void SetupIntrinsics()
     /// castToI32 with UInt32
     castToI32_UInt32_arg.name = "val"_c;
     castToI32_UInt32_arg.type = Type::FullType{ UInt32Type.name };
+    castToI32_UInt32.documentation = "Casts value of UInt32 to type Int32 without conversion."_c;
     castToI32_UInt32.name = "castToI32"_c;
     castToI32_UInt32.returnType = Type::FullType { Int32Type.name };
     castToI32_UInt32.parameters = castToI32_UInt32_args;
@@ -13075,6 +13499,7 @@ void SetupIntrinsics()
     /// any with Bool8
     any_Bool8_arg.name = "val"_c;
     any_Bool8_arg.type = Type::FullType{ Bool8Type.name };
+    any_Bool8.documentation = "Returns true if any component of the vector is non-zero."_c;
     any_Bool8.name = "any"_c;
     any_Bool8.returnType = Type::FullType { Bool8Type.name };
     any_Bool8.parameters = any_Bool8_args;
@@ -13087,6 +13512,7 @@ void SetupIntrinsics()
     /// any with Bool8x2
     any_Bool8x2_arg.name = "val"_c;
     any_Bool8x2_arg.type = Type::FullType{ Bool8x2Type.name };
+    any_Bool8x2.documentation = "Returns true if any component of the vector is non-zero."_c;
     any_Bool8x2.name = "any"_c;
     any_Bool8x2.returnType = Type::FullType { Bool8x2Type.name };
     any_Bool8x2.parameters = any_Bool8x2_args;
@@ -13099,6 +13525,7 @@ void SetupIntrinsics()
     /// any with Bool8x3
     any_Bool8x3_arg.name = "val"_c;
     any_Bool8x3_arg.type = Type::FullType{ Bool8x3Type.name };
+    any_Bool8x3.documentation = "Returns true if any component of the vector is non-zero."_c;
     any_Bool8x3.name = "any"_c;
     any_Bool8x3.returnType = Type::FullType { Bool8x3Type.name };
     any_Bool8x3.parameters = any_Bool8x3_args;
@@ -13111,6 +13538,7 @@ void SetupIntrinsics()
     /// any with Bool8x4
     any_Bool8x4_arg.name = "val"_c;
     any_Bool8x4_arg.type = Type::FullType{ Bool8x4Type.name };
+    any_Bool8x4.documentation = "Returns true if any component of the vector is non-zero."_c;
     any_Bool8x4.name = "any"_c;
     any_Bool8x4.returnType = Type::FullType { Bool8x4Type.name };
     any_Bool8x4.parameters = any_Bool8x4_args;
@@ -13123,6 +13551,7 @@ void SetupIntrinsics()
     /// all with Bool8
     all_Bool8_arg.name = "val"_c;
     all_Bool8_arg.type = Type::FullType{ Bool8Type.name };
+    all_Bool8.documentation = "Returns true if all components of the vector are non-zero."_c;
     all_Bool8.name = "all"_c;
     all_Bool8.returnType = Type::FullType { Bool8Type.name };
     all_Bool8.parameters = all_Bool8_args;
@@ -13135,6 +13564,7 @@ void SetupIntrinsics()
     /// all with Bool8x2
     all_Bool8x2_arg.name = "val"_c;
     all_Bool8x2_arg.type = Type::FullType{ Bool8x2Type.name };
+    all_Bool8x2.documentation = "Returns true if all components of the vector are non-zero."_c;
     all_Bool8x2.name = "all"_c;
     all_Bool8x2.returnType = Type::FullType { Bool8x2Type.name };
     all_Bool8x2.parameters = all_Bool8x2_args;
@@ -13147,6 +13577,7 @@ void SetupIntrinsics()
     /// all with Bool8x3
     all_Bool8x3_arg.name = "val"_c;
     all_Bool8x3_arg.type = Type::FullType{ Bool8x3Type.name };
+    all_Bool8x3.documentation = "Returns true if all components of the vector are non-zero."_c;
     all_Bool8x3.name = "all"_c;
     all_Bool8x3.returnType = Type::FullType { Bool8x3Type.name };
     all_Bool8x3.parameters = all_Bool8x3_args;
@@ -13159,6 +13590,7 @@ void SetupIntrinsics()
     /// all with Bool8x4
     all_Bool8x4_arg.name = "val"_c;
     all_Bool8x4_arg.type = Type::FullType{ Bool8x4Type.name };
+    all_Bool8x4.documentation = "Returns true if all components of the vector are non-zero."_c;
     all_Bool8x4.name = "all"_c;
     all_Bool8x4.returnType = Type::FullType { Bool8x4Type.name };
     all_Bool8x4.parameters = all_Bool8x4_args;
@@ -13171,6 +13603,7 @@ void SetupIntrinsics()
     /// transpose with Float32x2x2
     transpose_Float32x2x2_arg.name = "val"_c;
     transpose_Float32x2x2_arg.type = Type::FullType{ Float32x2x2Type.name };
+    transpose_Float32x2x2.documentation = "Returns the transposed matrix."_c;
     transpose_Float32x2x2.name = "transpose"_c;
     transpose_Float32x2x2.returnType = Type::FullType { Float32x2x2Type.name };
     transpose_Float32x2x2.parameters = transpose_Float32x2x2_args;
@@ -13183,6 +13616,7 @@ void SetupIntrinsics()
     /// transpose with Float16x2x2
     transpose_Float16x2x2_arg.name = "val"_c;
     transpose_Float16x2x2_arg.type = Type::FullType{ Float16x2x2Type.name };
+    transpose_Float16x2x2.documentation = "Returns the transposed matrix."_c;
     transpose_Float16x2x2.name = "transpose"_c;
     transpose_Float16x2x2.returnType = Type::FullType { Float16x2x2Type.name };
     transpose_Float16x2x2.parameters = transpose_Float16x2x2_args;
@@ -13195,6 +13629,7 @@ void SetupIntrinsics()
     /// transpose with Float32x2x3
     transpose_Float32x2x3_arg.name = "val"_c;
     transpose_Float32x2x3_arg.type = Type::FullType{ Float32x2x3Type.name };
+    transpose_Float32x2x3.documentation = "Returns the transposed matrix."_c;
     transpose_Float32x2x3.name = "transpose"_c;
     transpose_Float32x2x3.returnType = Type::FullType { Float32x2x3Type.name };
     transpose_Float32x2x3.parameters = transpose_Float32x2x3_args;
@@ -13207,6 +13642,7 @@ void SetupIntrinsics()
     /// transpose with Float16x2x3
     transpose_Float16x2x3_arg.name = "val"_c;
     transpose_Float16x2x3_arg.type = Type::FullType{ Float16x2x3Type.name };
+    transpose_Float16x2x3.documentation = "Returns the transposed matrix."_c;
     transpose_Float16x2x3.name = "transpose"_c;
     transpose_Float16x2x3.returnType = Type::FullType { Float16x2x3Type.name };
     transpose_Float16x2x3.parameters = transpose_Float16x2x3_args;
@@ -13219,6 +13655,7 @@ void SetupIntrinsics()
     /// transpose with Float32x2x4
     transpose_Float32x2x4_arg.name = "val"_c;
     transpose_Float32x2x4_arg.type = Type::FullType{ Float32x2x4Type.name };
+    transpose_Float32x2x4.documentation = "Returns the transposed matrix."_c;
     transpose_Float32x2x4.name = "transpose"_c;
     transpose_Float32x2x4.returnType = Type::FullType { Float32x2x4Type.name };
     transpose_Float32x2x4.parameters = transpose_Float32x2x4_args;
@@ -13231,6 +13668,7 @@ void SetupIntrinsics()
     /// transpose with Float16x2x4
     transpose_Float16x2x4_arg.name = "val"_c;
     transpose_Float16x2x4_arg.type = Type::FullType{ Float16x2x4Type.name };
+    transpose_Float16x2x4.documentation = "Returns the transposed matrix."_c;
     transpose_Float16x2x4.name = "transpose"_c;
     transpose_Float16x2x4.returnType = Type::FullType { Float16x2x4Type.name };
     transpose_Float16x2x4.parameters = transpose_Float16x2x4_args;
@@ -13243,6 +13681,7 @@ void SetupIntrinsics()
     /// transpose with Float32x3x2
     transpose_Float32x3x2_arg.name = "val"_c;
     transpose_Float32x3x2_arg.type = Type::FullType{ Float32x3x2Type.name };
+    transpose_Float32x3x2.documentation = "Returns the transposed matrix."_c;
     transpose_Float32x3x2.name = "transpose"_c;
     transpose_Float32x3x2.returnType = Type::FullType { Float32x3x2Type.name };
     transpose_Float32x3x2.parameters = transpose_Float32x3x2_args;
@@ -13255,6 +13694,7 @@ void SetupIntrinsics()
     /// transpose with Float16x3x2
     transpose_Float16x3x2_arg.name = "val"_c;
     transpose_Float16x3x2_arg.type = Type::FullType{ Float16x3x2Type.name };
+    transpose_Float16x3x2.documentation = "Returns the transposed matrix."_c;
     transpose_Float16x3x2.name = "transpose"_c;
     transpose_Float16x3x2.returnType = Type::FullType { Float16x3x2Type.name };
     transpose_Float16x3x2.parameters = transpose_Float16x3x2_args;
@@ -13267,6 +13707,7 @@ void SetupIntrinsics()
     /// transpose with Float32x3x3
     transpose_Float32x3x3_arg.name = "val"_c;
     transpose_Float32x3x3_arg.type = Type::FullType{ Float32x3x3Type.name };
+    transpose_Float32x3x3.documentation = "Returns the transposed matrix."_c;
     transpose_Float32x3x3.name = "transpose"_c;
     transpose_Float32x3x3.returnType = Type::FullType { Float32x3x3Type.name };
     transpose_Float32x3x3.parameters = transpose_Float32x3x3_args;
@@ -13279,6 +13720,7 @@ void SetupIntrinsics()
     /// transpose with Float16x3x3
     transpose_Float16x3x3_arg.name = "val"_c;
     transpose_Float16x3x3_arg.type = Type::FullType{ Float16x3x3Type.name };
+    transpose_Float16x3x3.documentation = "Returns the transposed matrix."_c;
     transpose_Float16x3x3.name = "transpose"_c;
     transpose_Float16x3x3.returnType = Type::FullType { Float16x3x3Type.name };
     transpose_Float16x3x3.parameters = transpose_Float16x3x3_args;
@@ -13291,6 +13733,7 @@ void SetupIntrinsics()
     /// transpose with Float32x3x4
     transpose_Float32x3x4_arg.name = "val"_c;
     transpose_Float32x3x4_arg.type = Type::FullType{ Float32x3x4Type.name };
+    transpose_Float32x3x4.documentation = "Returns the transposed matrix."_c;
     transpose_Float32x3x4.name = "transpose"_c;
     transpose_Float32x3x4.returnType = Type::FullType { Float32x3x4Type.name };
     transpose_Float32x3x4.parameters = transpose_Float32x3x4_args;
@@ -13303,6 +13746,7 @@ void SetupIntrinsics()
     /// transpose with Float16x3x4
     transpose_Float16x3x4_arg.name = "val"_c;
     transpose_Float16x3x4_arg.type = Type::FullType{ Float16x3x4Type.name };
+    transpose_Float16x3x4.documentation = "Returns the transposed matrix."_c;
     transpose_Float16x3x4.name = "transpose"_c;
     transpose_Float16x3x4.returnType = Type::FullType { Float16x3x4Type.name };
     transpose_Float16x3x4.parameters = transpose_Float16x3x4_args;
@@ -13315,6 +13759,7 @@ void SetupIntrinsics()
     /// transpose with Float32x4x2
     transpose_Float32x4x2_arg.name = "val"_c;
     transpose_Float32x4x2_arg.type = Type::FullType{ Float32x4x2Type.name };
+    transpose_Float32x4x2.documentation = "Returns the transposed matrix."_c;
     transpose_Float32x4x2.name = "transpose"_c;
     transpose_Float32x4x2.returnType = Type::FullType { Float32x4x2Type.name };
     transpose_Float32x4x2.parameters = transpose_Float32x4x2_args;
@@ -13327,6 +13772,7 @@ void SetupIntrinsics()
     /// transpose with Float16x4x2
     transpose_Float16x4x2_arg.name = "val"_c;
     transpose_Float16x4x2_arg.type = Type::FullType{ Float16x4x2Type.name };
+    transpose_Float16x4x2.documentation = "Returns the transposed matrix."_c;
     transpose_Float16x4x2.name = "transpose"_c;
     transpose_Float16x4x2.returnType = Type::FullType { Float16x4x2Type.name };
     transpose_Float16x4x2.parameters = transpose_Float16x4x2_args;
@@ -13339,6 +13785,7 @@ void SetupIntrinsics()
     /// transpose with Float32x4x3
     transpose_Float32x4x3_arg.name = "val"_c;
     transpose_Float32x4x3_arg.type = Type::FullType{ Float32x4x3Type.name };
+    transpose_Float32x4x3.documentation = "Returns the transposed matrix."_c;
     transpose_Float32x4x3.name = "transpose"_c;
     transpose_Float32x4x3.returnType = Type::FullType { Float32x4x3Type.name };
     transpose_Float32x4x3.parameters = transpose_Float32x4x3_args;
@@ -13351,6 +13798,7 @@ void SetupIntrinsics()
     /// transpose with Float16x4x3
     transpose_Float16x4x3_arg.name = "val"_c;
     transpose_Float16x4x3_arg.type = Type::FullType{ Float16x4x3Type.name };
+    transpose_Float16x4x3.documentation = "Returns the transposed matrix."_c;
     transpose_Float16x4x3.name = "transpose"_c;
     transpose_Float16x4x3.returnType = Type::FullType { Float16x4x3Type.name };
     transpose_Float16x4x3.parameters = transpose_Float16x4x3_args;
@@ -13363,6 +13811,7 @@ void SetupIntrinsics()
     /// transpose with Float32x4x4
     transpose_Float32x4x4_arg.name = "val"_c;
     transpose_Float32x4x4_arg.type = Type::FullType{ Float32x4x4Type.name };
+    transpose_Float32x4x4.documentation = "Returns the transposed matrix."_c;
     transpose_Float32x4x4.name = "transpose"_c;
     transpose_Float32x4x4.returnType = Type::FullType { Float32x4x4Type.name };
     transpose_Float32x4x4.parameters = transpose_Float32x4x4_args;
@@ -13375,6 +13824,7 @@ void SetupIntrinsics()
     /// transpose with Float16x4x4
     transpose_Float16x4x4_arg.name = "val"_c;
     transpose_Float16x4x4_arg.type = Type::FullType{ Float16x4x4Type.name };
+    transpose_Float16x4x4.documentation = "Returns the transposed matrix."_c;
     transpose_Float16x4x4.name = "transpose"_c;
     transpose_Float16x4x4.returnType = Type::FullType { Float16x4x4Type.name };
     transpose_Float16x4x4.parameters = transpose_Float16x4x4_args;
@@ -13387,6 +13837,7 @@ void SetupIntrinsics()
     /// inverse with Float32x2x2
     inverse_Float32x2x2_arg.name = "val"_c;
     inverse_Float32x2x2_arg.type = Type::FullType{ Float32x2x2Type.name };
+    inverse_Float32x2x2.documentation = "Returns the inverse of the matrix."_c;
     inverse_Float32x2x2.name = "inverse"_c;
     inverse_Float32x2x2.returnType = Type::FullType { Float32x2x2Type.name };
     inverse_Float32x2x2.parameters = inverse_Float32x2x2_args;
@@ -13399,6 +13850,7 @@ void SetupIntrinsics()
     /// inverse with Float16x2x2
     inverse_Float16x2x2_arg.name = "val"_c;
     inverse_Float16x2x2_arg.type = Type::FullType{ Float16x2x2Type.name };
+    inverse_Float16x2x2.documentation = "Returns the inverse of the matrix."_c;
     inverse_Float16x2x2.name = "inverse"_c;
     inverse_Float16x2x2.returnType = Type::FullType { Float16x2x2Type.name };
     inverse_Float16x2x2.parameters = inverse_Float16x2x2_args;
@@ -13411,6 +13863,7 @@ void SetupIntrinsics()
     /// inverse with Float32x2x3
     inverse_Float32x2x3_arg.name = "val"_c;
     inverse_Float32x2x3_arg.type = Type::FullType{ Float32x2x3Type.name };
+    inverse_Float32x2x3.documentation = "Returns the inverse of the matrix."_c;
     inverse_Float32x2x3.name = "inverse"_c;
     inverse_Float32x2x3.returnType = Type::FullType { Float32x2x3Type.name };
     inverse_Float32x2x3.parameters = inverse_Float32x2x3_args;
@@ -13423,6 +13876,7 @@ void SetupIntrinsics()
     /// inverse with Float16x2x3
     inverse_Float16x2x3_arg.name = "val"_c;
     inverse_Float16x2x3_arg.type = Type::FullType{ Float16x2x3Type.name };
+    inverse_Float16x2x3.documentation = "Returns the inverse of the matrix."_c;
     inverse_Float16x2x3.name = "inverse"_c;
     inverse_Float16x2x3.returnType = Type::FullType { Float16x2x3Type.name };
     inverse_Float16x2x3.parameters = inverse_Float16x2x3_args;
@@ -13435,6 +13889,7 @@ void SetupIntrinsics()
     /// inverse with Float32x2x4
     inverse_Float32x2x4_arg.name = "val"_c;
     inverse_Float32x2x4_arg.type = Type::FullType{ Float32x2x4Type.name };
+    inverse_Float32x2x4.documentation = "Returns the inverse of the matrix."_c;
     inverse_Float32x2x4.name = "inverse"_c;
     inverse_Float32x2x4.returnType = Type::FullType { Float32x2x4Type.name };
     inverse_Float32x2x4.parameters = inverse_Float32x2x4_args;
@@ -13447,6 +13902,7 @@ void SetupIntrinsics()
     /// inverse with Float16x2x4
     inverse_Float16x2x4_arg.name = "val"_c;
     inverse_Float16x2x4_arg.type = Type::FullType{ Float16x2x4Type.name };
+    inverse_Float16x2x4.documentation = "Returns the inverse of the matrix."_c;
     inverse_Float16x2x4.name = "inverse"_c;
     inverse_Float16x2x4.returnType = Type::FullType { Float16x2x4Type.name };
     inverse_Float16x2x4.parameters = inverse_Float16x2x4_args;
@@ -13459,6 +13915,7 @@ void SetupIntrinsics()
     /// inverse with Float32x3x2
     inverse_Float32x3x2_arg.name = "val"_c;
     inverse_Float32x3x2_arg.type = Type::FullType{ Float32x3x2Type.name };
+    inverse_Float32x3x2.documentation = "Returns the inverse of the matrix."_c;
     inverse_Float32x3x2.name = "inverse"_c;
     inverse_Float32x3x2.returnType = Type::FullType { Float32x3x2Type.name };
     inverse_Float32x3x2.parameters = inverse_Float32x3x2_args;
@@ -13471,6 +13928,7 @@ void SetupIntrinsics()
     /// inverse with Float16x3x2
     inverse_Float16x3x2_arg.name = "val"_c;
     inverse_Float16x3x2_arg.type = Type::FullType{ Float16x3x2Type.name };
+    inverse_Float16x3x2.documentation = "Returns the inverse of the matrix."_c;
     inverse_Float16x3x2.name = "inverse"_c;
     inverse_Float16x3x2.returnType = Type::FullType { Float16x3x2Type.name };
     inverse_Float16x3x2.parameters = inverse_Float16x3x2_args;
@@ -13483,6 +13941,7 @@ void SetupIntrinsics()
     /// inverse with Float32x3x3
     inverse_Float32x3x3_arg.name = "val"_c;
     inverse_Float32x3x3_arg.type = Type::FullType{ Float32x3x3Type.name };
+    inverse_Float32x3x3.documentation = "Returns the inverse of the matrix."_c;
     inverse_Float32x3x3.name = "inverse"_c;
     inverse_Float32x3x3.returnType = Type::FullType { Float32x3x3Type.name };
     inverse_Float32x3x3.parameters = inverse_Float32x3x3_args;
@@ -13495,6 +13954,7 @@ void SetupIntrinsics()
     /// inverse with Float16x3x3
     inverse_Float16x3x3_arg.name = "val"_c;
     inverse_Float16x3x3_arg.type = Type::FullType{ Float16x3x3Type.name };
+    inverse_Float16x3x3.documentation = "Returns the inverse of the matrix."_c;
     inverse_Float16x3x3.name = "inverse"_c;
     inverse_Float16x3x3.returnType = Type::FullType { Float16x3x3Type.name };
     inverse_Float16x3x3.parameters = inverse_Float16x3x3_args;
@@ -13507,6 +13967,7 @@ void SetupIntrinsics()
     /// inverse with Float32x3x4
     inverse_Float32x3x4_arg.name = "val"_c;
     inverse_Float32x3x4_arg.type = Type::FullType{ Float32x3x4Type.name };
+    inverse_Float32x3x4.documentation = "Returns the inverse of the matrix."_c;
     inverse_Float32x3x4.name = "inverse"_c;
     inverse_Float32x3x4.returnType = Type::FullType { Float32x3x4Type.name };
     inverse_Float32x3x4.parameters = inverse_Float32x3x4_args;
@@ -13519,6 +13980,7 @@ void SetupIntrinsics()
     /// inverse with Float16x3x4
     inverse_Float16x3x4_arg.name = "val"_c;
     inverse_Float16x3x4_arg.type = Type::FullType{ Float16x3x4Type.name };
+    inverse_Float16x3x4.documentation = "Returns the inverse of the matrix."_c;
     inverse_Float16x3x4.name = "inverse"_c;
     inverse_Float16x3x4.returnType = Type::FullType { Float16x3x4Type.name };
     inverse_Float16x3x4.parameters = inverse_Float16x3x4_args;
@@ -13531,6 +13993,7 @@ void SetupIntrinsics()
     /// inverse with Float32x4x2
     inverse_Float32x4x2_arg.name = "val"_c;
     inverse_Float32x4x2_arg.type = Type::FullType{ Float32x4x2Type.name };
+    inverse_Float32x4x2.documentation = "Returns the inverse of the matrix."_c;
     inverse_Float32x4x2.name = "inverse"_c;
     inverse_Float32x4x2.returnType = Type::FullType { Float32x4x2Type.name };
     inverse_Float32x4x2.parameters = inverse_Float32x4x2_args;
@@ -13543,6 +14006,7 @@ void SetupIntrinsics()
     /// inverse with Float16x4x2
     inverse_Float16x4x2_arg.name = "val"_c;
     inverse_Float16x4x2_arg.type = Type::FullType{ Float16x4x2Type.name };
+    inverse_Float16x4x2.documentation = "Returns the inverse of the matrix."_c;
     inverse_Float16x4x2.name = "inverse"_c;
     inverse_Float16x4x2.returnType = Type::FullType { Float16x4x2Type.name };
     inverse_Float16x4x2.parameters = inverse_Float16x4x2_args;
@@ -13555,6 +14019,7 @@ void SetupIntrinsics()
     /// inverse with Float32x4x3
     inverse_Float32x4x3_arg.name = "val"_c;
     inverse_Float32x4x3_arg.type = Type::FullType{ Float32x4x3Type.name };
+    inverse_Float32x4x3.documentation = "Returns the inverse of the matrix."_c;
     inverse_Float32x4x3.name = "inverse"_c;
     inverse_Float32x4x3.returnType = Type::FullType { Float32x4x3Type.name };
     inverse_Float32x4x3.parameters = inverse_Float32x4x3_args;
@@ -13567,6 +14032,7 @@ void SetupIntrinsics()
     /// inverse with Float16x4x3
     inverse_Float16x4x3_arg.name = "val"_c;
     inverse_Float16x4x3_arg.type = Type::FullType{ Float16x4x3Type.name };
+    inverse_Float16x4x3.documentation = "Returns the inverse of the matrix."_c;
     inverse_Float16x4x3.name = "inverse"_c;
     inverse_Float16x4x3.returnType = Type::FullType { Float16x4x3Type.name };
     inverse_Float16x4x3.parameters = inverse_Float16x4x3_args;
@@ -13579,6 +14045,7 @@ void SetupIntrinsics()
     /// inverse with Float32x4x4
     inverse_Float32x4x4_arg.name = "val"_c;
     inverse_Float32x4x4_arg.type = Type::FullType{ Float32x4x4Type.name };
+    inverse_Float32x4x4.documentation = "Returns the inverse of the matrix."_c;
     inverse_Float32x4x4.name = "inverse"_c;
     inverse_Float32x4x4.returnType = Type::FullType { Float32x4x4Type.name };
     inverse_Float32x4x4.parameters = inverse_Float32x4x4_args;
@@ -13591,6 +14058,7 @@ void SetupIntrinsics()
     /// inverse with Float16x4x4
     inverse_Float16x4x4_arg.name = "val"_c;
     inverse_Float16x4x4_arg.type = Type::FullType{ Float16x4x4Type.name };
+    inverse_Float16x4x4.documentation = "Returns the inverse of the matrix."_c;
     inverse_Float16x4x4.name = "inverse"_c;
     inverse_Float16x4x4.returnType = Type::FullType { Float16x4x4Type.name };
     inverse_Float16x4x4.parameters = inverse_Float16x4x4_args;
@@ -13659,6 +14127,7 @@ void SetupIntrinsics()
     /// vertexSetOutputLayer with UInt16
     VertexSetOutputLayer_UInt16_arg.name = "val"_c;
     VertexSetOutputLayer_UInt16_arg.type = Type::FullType{ UInt16Type.name };
+    VertexSetOutputLayer_UInt16.documentation = "Sets the output layer for the current vertex."_c;
     VertexSetOutputLayer_UInt16.name = "vertexSetOutputLayer"_c;
     VertexSetOutputLayer_UInt16.returnType = Type::FullType { VoidType.name };
     VertexSetOutputLayer_UInt16.parameters = VertexSetOutputLayer_UInt16_args;
@@ -13671,6 +14140,7 @@ void SetupIntrinsics()
     /// vertexSetOutputLayer with UInt32
     VertexSetOutputLayer_UInt32_arg.name = "val"_c;
     VertexSetOutputLayer_UInt32_arg.type = Type::FullType{ UInt32Type.name };
+    VertexSetOutputLayer_UInt32.documentation = "Sets the output layer for the current vertex."_c;
     VertexSetOutputLayer_UInt32.name = "vertexSetOutputLayer"_c;
     VertexSetOutputLayer_UInt32.returnType = Type::FullType { VoidType.name };
     VertexSetOutputLayer_UInt32.parameters = VertexSetOutputLayer_UInt32_args;
@@ -13683,6 +14153,7 @@ void SetupIntrinsics()
     /// vertexSetOutputViewport with UInt16
     VertexSetOutputViewport_UInt16_arg.name = "val"_c;
     VertexSetOutputViewport_UInt16_arg.type = Type::FullType{ UInt16Type.name };
+    VertexSetOutputViewport_UInt16.documentation = "Sets the output viewport for the current vertex."_c;
     VertexSetOutputViewport_UInt16.name = "vertexSetOutputViewport"_c;
     VertexSetOutputViewport_UInt16.returnType = Type::FullType { VoidType.name };
     VertexSetOutputViewport_UInt16.parameters = VertexSetOutputViewport_UInt16_args;
@@ -13695,6 +14166,7 @@ void SetupIntrinsics()
     /// vertexSetOutputViewport with UInt32
     VertexSetOutputViewport_UInt32_arg.name = "val"_c;
     VertexSetOutputViewport_UInt32_arg.type = Type::FullType{ UInt32Type.name };
+    VertexSetOutputViewport_UInt32.documentation = "Sets the output viewport for the current vertex."_c;
     VertexSetOutputViewport_UInt32.name = "vertexSetOutputViewport"_c;
     VertexSetOutputViewport_UInt32.returnType = Type::FullType { VoidType.name };
     VertexSetOutputViewport_UInt32.parameters = VertexSetOutputViewport_UInt32_args;
@@ -13707,6 +14179,7 @@ void SetupIntrinsics()
     /// vertexExportCoordinates with Float32x4
     VertexExportCoordinates_Float32x4_arg.name = "val"_c;
     VertexExportCoordinates_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
+    VertexExportCoordinates_Float32x4.documentation = "Exports the value as the vertex position to the rasterizer. This function must be called at least once in a vertex shader. This is the same as the SV_POSITION in HLSL or gl_Position in GLSL."_c;
     VertexExportCoordinates_Float32x4.name = "vertexExportCoordinates"_c;
     VertexExportCoordinates_Float32x4.returnType = Type::FullType { VoidType.name };
     VertexExportCoordinates_Float32x4.parameters = VertexExportCoordinates_Float32x4_args;
@@ -13719,6 +14192,7 @@ void SetupIntrinsics()
     /// vertexExportCoordinates with Float16x4
     VertexExportCoordinates_Float16x4_arg.name = "val"_c;
     VertexExportCoordinates_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
+    VertexExportCoordinates_Float16x4.documentation = "Exports the value as the vertex position to the rasterizer. This function must be called at least once in a vertex shader. This is the same as the SV_POSITION in HLSL or gl_Position in GLSL."_c;
     VertexExportCoordinates_Float16x4.name = "vertexExportCoordinates"_c;
     VertexExportCoordinates_Float16x4.returnType = Type::FullType { VoidType.name };
     VertexExportCoordinates_Float16x4.parameters = VertexExportCoordinates_Float16x4_args;
@@ -13745,6 +14219,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&GeometryExportPrimitive)->returnTypeSymbol = &VoidType;
 
     /// pixelGetCoordinates
+    PixelGetCoordinates_Float32x4.documentation = "Returns the post transformation coordinates of the current pixel. xy is the pixel position in non-normalized coordinates, z is the depth in the range [0, 1] or [-1, 1] based on the graphics API."_c;
     PixelGetCoordinates_Float32x4.name = "pixelGetCoordinates"_c;
     PixelGetCoordinates_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     Symbol::Resolved(&PixelGetCoordinates_Float32x4)->signature = "f32x4 pixelGetCoordinates()"_c;
@@ -13753,6 +14228,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&PixelGetCoordinates_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
     /// pixelGetCoordinates
+    PixelGetCoordinates_Float16x4.documentation = "Returns the post transformation coordinates of the current pixel. xy is the pixel position in non-normalized coordinates, z is the depth in the range [0, 1] or [-1, 1] based on the graphics API."_c;
     PixelGetCoordinates_Float16x4.name = "pixelGetCoordinates"_c;
     PixelGetCoordinates_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     Symbol::Resolved(&PixelGetCoordinates_Float16x4)->signature = "f16x4 pixelGetCoordinates()"_c;
@@ -13761,6 +14237,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&PixelGetCoordinates_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
     /// pixelGetDepth
+    PixelGetDepth.documentation = "Returns the depth value for the current pixel"_c;
     PixelGetDepth.name = "pixelGetDepth"_c;
     PixelGetDepth.returnType = Type::FullType { Float32Type.name };
     Symbol::Resolved(&PixelGetDepth)->signature = "f32 pixelGetDepth()"_c;
@@ -13771,6 +14248,7 @@ void SetupIntrinsics()
     /// pixelSetDepth with Float32
     PixelSetDepth_val.name = "val"_c;
     PixelSetDepth_val.type = Type::FullType{ Float32Type.name };
+    PixelSetDepth.documentation = "Sets the depth value for the current pixel"_c;
     PixelSetDepth.name = "pixelSetDepth"_c;
     PixelSetDepth.returnType = Type::FullType { VoidType.name };
     PixelSetDepth.parameters = PixelSetDepth_args;
@@ -13786,6 +14264,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32_Int32_index.name = "index"_c;
     PixelExportColor_Float32_Int32_index.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Float32_Int32_index.type.literal = true;
+    PixelExportColor_Float32_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float32_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Float32_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32_Int32.parameters = PixelExportColor_Float32_Int32_args;
@@ -13802,6 +14281,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32_UInt32_index.name = "index"_c;
     PixelExportColor_Float32_UInt32_index.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_Float32_UInt32_index.type.literal = true;
+    PixelExportColor_Float32_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float32_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Float32_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32_UInt32.parameters = PixelExportColor_Float32_UInt32_args;
@@ -13818,6 +14298,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32_Int16_index.name = "index"_c;
     PixelExportColor_Float32_Int16_index.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Float32_Int16_index.type.literal = true;
+    PixelExportColor_Float32_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float32_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Float32_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32_Int16.parameters = PixelExportColor_Float32_Int16_args;
@@ -13834,6 +14315,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32_UInt16_index.name = "index"_c;
     PixelExportColor_Float32_UInt16_index.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_Float32_UInt16_index.type.literal = true;
+    PixelExportColor_Float32_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float32_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Float32_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32_UInt16.parameters = PixelExportColor_Float32_UInt16_args;
@@ -13850,6 +14332,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x2_Int32_index.name = "index"_c;
     PixelExportColor_Float32x2_Int32_index.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Float32x2_Int32_index.type.literal = true;
+    PixelExportColor_Float32x2_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float32x2_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Float32x2_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x2_Int32.parameters = PixelExportColor_Float32x2_Int32_args;
@@ -13866,6 +14349,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x2_UInt32_index.name = "index"_c;
     PixelExportColor_Float32x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_Float32x2_UInt32_index.type.literal = true;
+    PixelExportColor_Float32x2_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float32x2_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Float32x2_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x2_UInt32.parameters = PixelExportColor_Float32x2_UInt32_args;
@@ -13882,6 +14366,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x2_Int16_index.name = "index"_c;
     PixelExportColor_Float32x2_Int16_index.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Float32x2_Int16_index.type.literal = true;
+    PixelExportColor_Float32x2_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float32x2_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Float32x2_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x2_Int16.parameters = PixelExportColor_Float32x2_Int16_args;
@@ -13898,6 +14383,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x2_UInt16_index.name = "index"_c;
     PixelExportColor_Float32x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_Float32x2_UInt16_index.type.literal = true;
+    PixelExportColor_Float32x2_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float32x2_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Float32x2_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x2_UInt16.parameters = PixelExportColor_Float32x2_UInt16_args;
@@ -13914,6 +14400,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x3_Int32_index.name = "index"_c;
     PixelExportColor_Float32x3_Int32_index.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Float32x3_Int32_index.type.literal = true;
+    PixelExportColor_Float32x3_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float32x3_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Float32x3_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x3_Int32.parameters = PixelExportColor_Float32x3_Int32_args;
@@ -13930,6 +14417,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x3_UInt32_index.name = "index"_c;
     PixelExportColor_Float32x3_UInt32_index.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_Float32x3_UInt32_index.type.literal = true;
+    PixelExportColor_Float32x3_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float32x3_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Float32x3_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x3_UInt32.parameters = PixelExportColor_Float32x3_UInt32_args;
@@ -13946,6 +14434,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x3_Int16_index.name = "index"_c;
     PixelExportColor_Float32x3_Int16_index.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Float32x3_Int16_index.type.literal = true;
+    PixelExportColor_Float32x3_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float32x3_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Float32x3_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x3_Int16.parameters = PixelExportColor_Float32x3_Int16_args;
@@ -13962,6 +14451,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x3_UInt16_index.name = "index"_c;
     PixelExportColor_Float32x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_Float32x3_UInt16_index.type.literal = true;
+    PixelExportColor_Float32x3_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float32x3_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Float32x3_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x3_UInt16.parameters = PixelExportColor_Float32x3_UInt16_args;
@@ -13978,6 +14468,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x4_Int32_index.name = "index"_c;
     PixelExportColor_Float32x4_Int32_index.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Float32x4_Int32_index.type.literal = true;
+    PixelExportColor_Float32x4_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float32x4_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Float32x4_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x4_Int32.parameters = PixelExportColor_Float32x4_Int32_args;
@@ -13994,6 +14485,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x4_UInt32_index.name = "index"_c;
     PixelExportColor_Float32x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_Float32x4_UInt32_index.type.literal = true;
+    PixelExportColor_Float32x4_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float32x4_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Float32x4_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x4_UInt32.parameters = PixelExportColor_Float32x4_UInt32_args;
@@ -14010,6 +14502,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x4_Int16_index.name = "index"_c;
     PixelExportColor_Float32x4_Int16_index.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Float32x4_Int16_index.type.literal = true;
+    PixelExportColor_Float32x4_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float32x4_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Float32x4_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x4_Int16.parameters = PixelExportColor_Float32x4_Int16_args;
@@ -14026,6 +14519,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x4_UInt16_index.name = "index"_c;
     PixelExportColor_Float32x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_Float32x4_UInt16_index.type.literal = true;
+    PixelExportColor_Float32x4_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float32x4_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Float32x4_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x4_UInt16.parameters = PixelExportColor_Float32x4_UInt16_args;
@@ -14042,6 +14536,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16_Int32_index.name = "index"_c;
     PixelExportColor_Float16_Int32_index.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Float16_Int32_index.type.literal = true;
+    PixelExportColor_Float16_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float16_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Float16_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16_Int32.parameters = PixelExportColor_Float16_Int32_args;
@@ -14058,6 +14553,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16_UInt32_index.name = "index"_c;
     PixelExportColor_Float16_UInt32_index.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_Float16_UInt32_index.type.literal = true;
+    PixelExportColor_Float16_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float16_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Float16_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16_UInt32.parameters = PixelExportColor_Float16_UInt32_args;
@@ -14074,6 +14570,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16_Int16_index.name = "index"_c;
     PixelExportColor_Float16_Int16_index.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Float16_Int16_index.type.literal = true;
+    PixelExportColor_Float16_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float16_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Float16_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16_Int16.parameters = PixelExportColor_Float16_Int16_args;
@@ -14090,6 +14587,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16_UInt16_index.name = "index"_c;
     PixelExportColor_Float16_UInt16_index.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_Float16_UInt16_index.type.literal = true;
+    PixelExportColor_Float16_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float16_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Float16_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16_UInt16.parameters = PixelExportColor_Float16_UInt16_args;
@@ -14106,6 +14604,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x2_Int32_index.name = "index"_c;
     PixelExportColor_Float16x2_Int32_index.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Float16x2_Int32_index.type.literal = true;
+    PixelExportColor_Float16x2_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float16x2_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Float16x2_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x2_Int32.parameters = PixelExportColor_Float16x2_Int32_args;
@@ -14122,6 +14621,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x2_UInt32_index.name = "index"_c;
     PixelExportColor_Float16x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_Float16x2_UInt32_index.type.literal = true;
+    PixelExportColor_Float16x2_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float16x2_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Float16x2_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x2_UInt32.parameters = PixelExportColor_Float16x2_UInt32_args;
@@ -14138,6 +14638,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x2_Int16_index.name = "index"_c;
     PixelExportColor_Float16x2_Int16_index.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Float16x2_Int16_index.type.literal = true;
+    PixelExportColor_Float16x2_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float16x2_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Float16x2_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x2_Int16.parameters = PixelExportColor_Float16x2_Int16_args;
@@ -14154,6 +14655,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x2_UInt16_index.name = "index"_c;
     PixelExportColor_Float16x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_Float16x2_UInt16_index.type.literal = true;
+    PixelExportColor_Float16x2_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float16x2_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Float16x2_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x2_UInt16.parameters = PixelExportColor_Float16x2_UInt16_args;
@@ -14170,6 +14672,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x3_Int32_index.name = "index"_c;
     PixelExportColor_Float16x3_Int32_index.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Float16x3_Int32_index.type.literal = true;
+    PixelExportColor_Float16x3_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float16x3_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Float16x3_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x3_Int32.parameters = PixelExportColor_Float16x3_Int32_args;
@@ -14186,6 +14689,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x3_UInt32_index.name = "index"_c;
     PixelExportColor_Float16x3_UInt32_index.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_Float16x3_UInt32_index.type.literal = true;
+    PixelExportColor_Float16x3_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float16x3_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Float16x3_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x3_UInt32.parameters = PixelExportColor_Float16x3_UInt32_args;
@@ -14202,6 +14706,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x3_Int16_index.name = "index"_c;
     PixelExportColor_Float16x3_Int16_index.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Float16x3_Int16_index.type.literal = true;
+    PixelExportColor_Float16x3_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float16x3_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Float16x3_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x3_Int16.parameters = PixelExportColor_Float16x3_Int16_args;
@@ -14218,6 +14723,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x3_UInt16_index.name = "index"_c;
     PixelExportColor_Float16x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_Float16x3_UInt16_index.type.literal = true;
+    PixelExportColor_Float16x3_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float16x3_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Float16x3_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x3_UInt16.parameters = PixelExportColor_Float16x3_UInt16_args;
@@ -14234,6 +14740,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x4_Int32_index.name = "index"_c;
     PixelExportColor_Float16x4_Int32_index.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Float16x4_Int32_index.type.literal = true;
+    PixelExportColor_Float16x4_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float16x4_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Float16x4_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x4_Int32.parameters = PixelExportColor_Float16x4_Int32_args;
@@ -14250,6 +14757,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x4_UInt32_index.name = "index"_c;
     PixelExportColor_Float16x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_Float16x4_UInt32_index.type.literal = true;
+    PixelExportColor_Float16x4_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float16x4_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Float16x4_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x4_UInt32.parameters = PixelExportColor_Float16x4_UInt32_args;
@@ -14266,6 +14774,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x4_Int16_index.name = "index"_c;
     PixelExportColor_Float16x4_Int16_index.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Float16x4_Int16_index.type.literal = true;
+    PixelExportColor_Float16x4_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float16x4_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Float16x4_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x4_Int16.parameters = PixelExportColor_Float16x4_Int16_args;
@@ -14282,6 +14791,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x4_UInt16_index.name = "index"_c;
     PixelExportColor_Float16x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_Float16x4_UInt16_index.type.literal = true;
+    PixelExportColor_Float16x4_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Float16x4_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Float16x4_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x4_UInt16.parameters = PixelExportColor_Float16x4_UInt16_args;
@@ -14298,6 +14808,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32_Int32_index.name = "index"_c;
     PixelExportColor_Int32_Int32_index.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Int32_Int32_index.type.literal = true;
+    PixelExportColor_Int32_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int32_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Int32_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32_Int32.parameters = PixelExportColor_Int32_Int32_args;
@@ -14314,6 +14825,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32_UInt32_index.name = "index"_c;
     PixelExportColor_Int32_UInt32_index.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_Int32_UInt32_index.type.literal = true;
+    PixelExportColor_Int32_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int32_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Int32_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32_UInt32.parameters = PixelExportColor_Int32_UInt32_args;
@@ -14330,6 +14842,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32_Int16_index.name = "index"_c;
     PixelExportColor_Int32_Int16_index.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Int32_Int16_index.type.literal = true;
+    PixelExportColor_Int32_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int32_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Int32_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32_Int16.parameters = PixelExportColor_Int32_Int16_args;
@@ -14346,6 +14859,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32_UInt16_index.name = "index"_c;
     PixelExportColor_Int32_UInt16_index.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_Int32_UInt16_index.type.literal = true;
+    PixelExportColor_Int32_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int32_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Int32_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32_UInt16.parameters = PixelExportColor_Int32_UInt16_args;
@@ -14362,6 +14876,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x2_Int32_index.name = "index"_c;
     PixelExportColor_Int32x2_Int32_index.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Int32x2_Int32_index.type.literal = true;
+    PixelExportColor_Int32x2_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int32x2_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Int32x2_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x2_Int32.parameters = PixelExportColor_Int32x2_Int32_args;
@@ -14378,6 +14893,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x2_UInt32_index.name = "index"_c;
     PixelExportColor_Int32x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_Int32x2_UInt32_index.type.literal = true;
+    PixelExportColor_Int32x2_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int32x2_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Int32x2_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x2_UInt32.parameters = PixelExportColor_Int32x2_UInt32_args;
@@ -14394,6 +14910,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x2_Int16_index.name = "index"_c;
     PixelExportColor_Int32x2_Int16_index.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Int32x2_Int16_index.type.literal = true;
+    PixelExportColor_Int32x2_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int32x2_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Int32x2_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x2_Int16.parameters = PixelExportColor_Int32x2_Int16_args;
@@ -14410,6 +14927,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x2_UInt16_index.name = "index"_c;
     PixelExportColor_Int32x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_Int32x2_UInt16_index.type.literal = true;
+    PixelExportColor_Int32x2_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int32x2_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Int32x2_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x2_UInt16.parameters = PixelExportColor_Int32x2_UInt16_args;
@@ -14426,6 +14944,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x3_Int32_index.name = "index"_c;
     PixelExportColor_Int32x3_Int32_index.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Int32x3_Int32_index.type.literal = true;
+    PixelExportColor_Int32x3_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int32x3_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Int32x3_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x3_Int32.parameters = PixelExportColor_Int32x3_Int32_args;
@@ -14442,6 +14961,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x3_UInt32_index.name = "index"_c;
     PixelExportColor_Int32x3_UInt32_index.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_Int32x3_UInt32_index.type.literal = true;
+    PixelExportColor_Int32x3_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int32x3_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Int32x3_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x3_UInt32.parameters = PixelExportColor_Int32x3_UInt32_args;
@@ -14458,6 +14978,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x3_Int16_index.name = "index"_c;
     PixelExportColor_Int32x3_Int16_index.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Int32x3_Int16_index.type.literal = true;
+    PixelExportColor_Int32x3_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int32x3_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Int32x3_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x3_Int16.parameters = PixelExportColor_Int32x3_Int16_args;
@@ -14474,6 +14995,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x3_UInt16_index.name = "index"_c;
     PixelExportColor_Int32x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_Int32x3_UInt16_index.type.literal = true;
+    PixelExportColor_Int32x3_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int32x3_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Int32x3_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x3_UInt16.parameters = PixelExportColor_Int32x3_UInt16_args;
@@ -14490,6 +15012,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x4_Int32_index.name = "index"_c;
     PixelExportColor_Int32x4_Int32_index.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Int32x4_Int32_index.type.literal = true;
+    PixelExportColor_Int32x4_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int32x4_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Int32x4_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x4_Int32.parameters = PixelExportColor_Int32x4_Int32_args;
@@ -14506,6 +15029,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x4_UInt32_index.name = "index"_c;
     PixelExportColor_Int32x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_Int32x4_UInt32_index.type.literal = true;
+    PixelExportColor_Int32x4_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int32x4_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Int32x4_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x4_UInt32.parameters = PixelExportColor_Int32x4_UInt32_args;
@@ -14522,6 +15046,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x4_Int16_index.name = "index"_c;
     PixelExportColor_Int32x4_Int16_index.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Int32x4_Int16_index.type.literal = true;
+    PixelExportColor_Int32x4_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int32x4_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Int32x4_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x4_Int16.parameters = PixelExportColor_Int32x4_Int16_args;
@@ -14538,6 +15063,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x4_UInt16_index.name = "index"_c;
     PixelExportColor_Int32x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_Int32x4_UInt16_index.type.literal = true;
+    PixelExportColor_Int32x4_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int32x4_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Int32x4_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x4_UInt16.parameters = PixelExportColor_Int32x4_UInt16_args;
@@ -14554,6 +15080,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16_Int32_index.name = "index"_c;
     PixelExportColor_Int16_Int32_index.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Int16_Int32_index.type.literal = true;
+    PixelExportColor_Int16_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int16_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Int16_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16_Int32.parameters = PixelExportColor_Int16_Int32_args;
@@ -14570,6 +15097,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16_UInt32_index.name = "index"_c;
     PixelExportColor_Int16_UInt32_index.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_Int16_UInt32_index.type.literal = true;
+    PixelExportColor_Int16_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int16_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Int16_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16_UInt32.parameters = PixelExportColor_Int16_UInt32_args;
@@ -14586,6 +15114,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16_Int16_index.name = "index"_c;
     PixelExportColor_Int16_Int16_index.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Int16_Int16_index.type.literal = true;
+    PixelExportColor_Int16_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int16_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Int16_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16_Int16.parameters = PixelExportColor_Int16_Int16_args;
@@ -14602,6 +15131,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16_UInt16_index.name = "index"_c;
     PixelExportColor_Int16_UInt16_index.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_Int16_UInt16_index.type.literal = true;
+    PixelExportColor_Int16_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int16_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Int16_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16_UInt16.parameters = PixelExportColor_Int16_UInt16_args;
@@ -14618,6 +15148,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x2_Int32_index.name = "index"_c;
     PixelExportColor_Int16x2_Int32_index.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Int16x2_Int32_index.type.literal = true;
+    PixelExportColor_Int16x2_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int16x2_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Int16x2_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x2_Int32.parameters = PixelExportColor_Int16x2_Int32_args;
@@ -14634,6 +15165,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x2_UInt32_index.name = "index"_c;
     PixelExportColor_Int16x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_Int16x2_UInt32_index.type.literal = true;
+    PixelExportColor_Int16x2_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int16x2_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Int16x2_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x2_UInt32.parameters = PixelExportColor_Int16x2_UInt32_args;
@@ -14650,6 +15182,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x2_Int16_index.name = "index"_c;
     PixelExportColor_Int16x2_Int16_index.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Int16x2_Int16_index.type.literal = true;
+    PixelExportColor_Int16x2_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int16x2_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Int16x2_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x2_Int16.parameters = PixelExportColor_Int16x2_Int16_args;
@@ -14666,6 +15199,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x2_UInt16_index.name = "index"_c;
     PixelExportColor_Int16x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_Int16x2_UInt16_index.type.literal = true;
+    PixelExportColor_Int16x2_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int16x2_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Int16x2_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x2_UInt16.parameters = PixelExportColor_Int16x2_UInt16_args;
@@ -14682,6 +15216,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x3_Int32_index.name = "index"_c;
     PixelExportColor_Int16x3_Int32_index.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Int16x3_Int32_index.type.literal = true;
+    PixelExportColor_Int16x3_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int16x3_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Int16x3_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x3_Int32.parameters = PixelExportColor_Int16x3_Int32_args;
@@ -14698,6 +15233,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x3_UInt32_index.name = "index"_c;
     PixelExportColor_Int16x3_UInt32_index.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_Int16x3_UInt32_index.type.literal = true;
+    PixelExportColor_Int16x3_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int16x3_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Int16x3_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x3_UInt32.parameters = PixelExportColor_Int16x3_UInt32_args;
@@ -14714,6 +15250,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x3_Int16_index.name = "index"_c;
     PixelExportColor_Int16x3_Int16_index.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Int16x3_Int16_index.type.literal = true;
+    PixelExportColor_Int16x3_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int16x3_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Int16x3_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x3_Int16.parameters = PixelExportColor_Int16x3_Int16_args;
@@ -14730,6 +15267,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x3_UInt16_index.name = "index"_c;
     PixelExportColor_Int16x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_Int16x3_UInt16_index.type.literal = true;
+    PixelExportColor_Int16x3_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int16x3_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Int16x3_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x3_UInt16.parameters = PixelExportColor_Int16x3_UInt16_args;
@@ -14746,6 +15284,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x4_Int32_index.name = "index"_c;
     PixelExportColor_Int16x4_Int32_index.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Int16x4_Int32_index.type.literal = true;
+    PixelExportColor_Int16x4_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int16x4_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Int16x4_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x4_Int32.parameters = PixelExportColor_Int16x4_Int32_args;
@@ -14762,6 +15301,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x4_UInt32_index.name = "index"_c;
     PixelExportColor_Int16x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_Int16x4_UInt32_index.type.literal = true;
+    PixelExportColor_Int16x4_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int16x4_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Int16x4_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x4_UInt32.parameters = PixelExportColor_Int16x4_UInt32_args;
@@ -14778,6 +15318,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x4_Int16_index.name = "index"_c;
     PixelExportColor_Int16x4_Int16_index.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Int16x4_Int16_index.type.literal = true;
+    PixelExportColor_Int16x4_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int16x4_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Int16x4_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x4_Int16.parameters = PixelExportColor_Int16x4_Int16_args;
@@ -14794,6 +15335,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x4_UInt16_index.name = "index"_c;
     PixelExportColor_Int16x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_Int16x4_UInt16_index.type.literal = true;
+    PixelExportColor_Int16x4_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_Int16x4_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Int16x4_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x4_UInt16.parameters = PixelExportColor_Int16x4_UInt16_args;
@@ -14810,6 +15352,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32_Int32_index.name = "index"_c;
     PixelExportColor_UInt32_Int32_index.type = Type::FullType{ Int32Type.name };
     PixelExportColor_UInt32_Int32_index.type.literal = true;
+    PixelExportColor_UInt32_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt32_Int32.name = "pixelExportColor"_c;
     PixelExportColor_UInt32_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32_Int32.parameters = PixelExportColor_UInt32_Int32_args;
@@ -14826,6 +15369,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32_UInt32_index.name = "index"_c;
     PixelExportColor_UInt32_UInt32_index.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_UInt32_UInt32_index.type.literal = true;
+    PixelExportColor_UInt32_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt32_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_UInt32_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32_UInt32.parameters = PixelExportColor_UInt32_UInt32_args;
@@ -14842,6 +15386,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32_Int16_index.name = "index"_c;
     PixelExportColor_UInt32_Int16_index.type = Type::FullType{ Int16Type.name };
     PixelExportColor_UInt32_Int16_index.type.literal = true;
+    PixelExportColor_UInt32_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt32_Int16.name = "pixelExportColor"_c;
     PixelExportColor_UInt32_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32_Int16.parameters = PixelExportColor_UInt32_Int16_args;
@@ -14858,6 +15403,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32_UInt16_index.name = "index"_c;
     PixelExportColor_UInt32_UInt16_index.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_UInt32_UInt16_index.type.literal = true;
+    PixelExportColor_UInt32_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt32_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_UInt32_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32_UInt16.parameters = PixelExportColor_UInt32_UInt16_args;
@@ -14874,6 +15420,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x2_Int32_index.name = "index"_c;
     PixelExportColor_UInt32x2_Int32_index.type = Type::FullType{ Int32Type.name };
     PixelExportColor_UInt32x2_Int32_index.type.literal = true;
+    PixelExportColor_UInt32x2_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt32x2_Int32.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x2_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x2_Int32.parameters = PixelExportColor_UInt32x2_Int32_args;
@@ -14890,6 +15437,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x2_UInt32_index.name = "index"_c;
     PixelExportColor_UInt32x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_UInt32x2_UInt32_index.type.literal = true;
+    PixelExportColor_UInt32x2_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt32x2_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x2_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x2_UInt32.parameters = PixelExportColor_UInt32x2_UInt32_args;
@@ -14906,6 +15454,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x2_Int16_index.name = "index"_c;
     PixelExportColor_UInt32x2_Int16_index.type = Type::FullType{ Int16Type.name };
     PixelExportColor_UInt32x2_Int16_index.type.literal = true;
+    PixelExportColor_UInt32x2_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt32x2_Int16.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x2_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x2_Int16.parameters = PixelExportColor_UInt32x2_Int16_args;
@@ -14922,6 +15471,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x2_UInt16_index.name = "index"_c;
     PixelExportColor_UInt32x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_UInt32x2_UInt16_index.type.literal = true;
+    PixelExportColor_UInt32x2_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt32x2_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x2_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x2_UInt16.parameters = PixelExportColor_UInt32x2_UInt16_args;
@@ -14938,6 +15488,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x3_Int32_index.name = "index"_c;
     PixelExportColor_UInt32x3_Int32_index.type = Type::FullType{ Int32Type.name };
     PixelExportColor_UInt32x3_Int32_index.type.literal = true;
+    PixelExportColor_UInt32x3_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt32x3_Int32.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x3_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x3_Int32.parameters = PixelExportColor_UInt32x3_Int32_args;
@@ -14954,6 +15505,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x3_UInt32_index.name = "index"_c;
     PixelExportColor_UInt32x3_UInt32_index.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_UInt32x3_UInt32_index.type.literal = true;
+    PixelExportColor_UInt32x3_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt32x3_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x3_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x3_UInt32.parameters = PixelExportColor_UInt32x3_UInt32_args;
@@ -14970,6 +15522,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x3_Int16_index.name = "index"_c;
     PixelExportColor_UInt32x3_Int16_index.type = Type::FullType{ Int16Type.name };
     PixelExportColor_UInt32x3_Int16_index.type.literal = true;
+    PixelExportColor_UInt32x3_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt32x3_Int16.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x3_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x3_Int16.parameters = PixelExportColor_UInt32x3_Int16_args;
@@ -14986,6 +15539,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x3_UInt16_index.name = "index"_c;
     PixelExportColor_UInt32x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_UInt32x3_UInt16_index.type.literal = true;
+    PixelExportColor_UInt32x3_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt32x3_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x3_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x3_UInt16.parameters = PixelExportColor_UInt32x3_UInt16_args;
@@ -15002,6 +15556,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x4_Int32_index.name = "index"_c;
     PixelExportColor_UInt32x4_Int32_index.type = Type::FullType{ Int32Type.name };
     PixelExportColor_UInt32x4_Int32_index.type.literal = true;
+    PixelExportColor_UInt32x4_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt32x4_Int32.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x4_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x4_Int32.parameters = PixelExportColor_UInt32x4_Int32_args;
@@ -15018,6 +15573,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x4_UInt32_index.name = "index"_c;
     PixelExportColor_UInt32x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_UInt32x4_UInt32_index.type.literal = true;
+    PixelExportColor_UInt32x4_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt32x4_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x4_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x4_UInt32.parameters = PixelExportColor_UInt32x4_UInt32_args;
@@ -15034,6 +15590,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x4_Int16_index.name = "index"_c;
     PixelExportColor_UInt32x4_Int16_index.type = Type::FullType{ Int16Type.name };
     PixelExportColor_UInt32x4_Int16_index.type.literal = true;
+    PixelExportColor_UInt32x4_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt32x4_Int16.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x4_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x4_Int16.parameters = PixelExportColor_UInt32x4_Int16_args;
@@ -15050,6 +15607,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x4_UInt16_index.name = "index"_c;
     PixelExportColor_UInt32x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_UInt32x4_UInt16_index.type.literal = true;
+    PixelExportColor_UInt32x4_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt32x4_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x4_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x4_UInt16.parameters = PixelExportColor_UInt32x4_UInt16_args;
@@ -15066,6 +15624,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16_Int32_index.name = "index"_c;
     PixelExportColor_UInt16_Int32_index.type = Type::FullType{ Int32Type.name };
     PixelExportColor_UInt16_Int32_index.type.literal = true;
+    PixelExportColor_UInt16_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt16_Int32.name = "pixelExportColor"_c;
     PixelExportColor_UInt16_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16_Int32.parameters = PixelExportColor_UInt16_Int32_args;
@@ -15082,6 +15641,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16_UInt32_index.name = "index"_c;
     PixelExportColor_UInt16_UInt32_index.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_UInt16_UInt32_index.type.literal = true;
+    PixelExportColor_UInt16_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt16_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_UInt16_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16_UInt32.parameters = PixelExportColor_UInt16_UInt32_args;
@@ -15098,6 +15658,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16_Int16_index.name = "index"_c;
     PixelExportColor_UInt16_Int16_index.type = Type::FullType{ Int16Type.name };
     PixelExportColor_UInt16_Int16_index.type.literal = true;
+    PixelExportColor_UInt16_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt16_Int16.name = "pixelExportColor"_c;
     PixelExportColor_UInt16_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16_Int16.parameters = PixelExportColor_UInt16_Int16_args;
@@ -15114,6 +15675,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16_UInt16_index.name = "index"_c;
     PixelExportColor_UInt16_UInt16_index.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_UInt16_UInt16_index.type.literal = true;
+    PixelExportColor_UInt16_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt16_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_UInt16_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16_UInt16.parameters = PixelExportColor_UInt16_UInt16_args;
@@ -15130,6 +15692,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x2_Int32_index.name = "index"_c;
     PixelExportColor_UInt16x2_Int32_index.type = Type::FullType{ Int32Type.name };
     PixelExportColor_UInt16x2_Int32_index.type.literal = true;
+    PixelExportColor_UInt16x2_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt16x2_Int32.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x2_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x2_Int32.parameters = PixelExportColor_UInt16x2_Int32_args;
@@ -15146,6 +15709,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x2_UInt32_index.name = "index"_c;
     PixelExportColor_UInt16x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_UInt16x2_UInt32_index.type.literal = true;
+    PixelExportColor_UInt16x2_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt16x2_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x2_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x2_UInt32.parameters = PixelExportColor_UInt16x2_UInt32_args;
@@ -15162,6 +15726,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x2_Int16_index.name = "index"_c;
     PixelExportColor_UInt16x2_Int16_index.type = Type::FullType{ Int16Type.name };
     PixelExportColor_UInt16x2_Int16_index.type.literal = true;
+    PixelExportColor_UInt16x2_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt16x2_Int16.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x2_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x2_Int16.parameters = PixelExportColor_UInt16x2_Int16_args;
@@ -15178,6 +15743,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x2_UInt16_index.name = "index"_c;
     PixelExportColor_UInt16x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_UInt16x2_UInt16_index.type.literal = true;
+    PixelExportColor_UInt16x2_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt16x2_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x2_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x2_UInt16.parameters = PixelExportColor_UInt16x2_UInt16_args;
@@ -15194,6 +15760,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x3_Int32_index.name = "index"_c;
     PixelExportColor_UInt16x3_Int32_index.type = Type::FullType{ Int32Type.name };
     PixelExportColor_UInt16x3_Int32_index.type.literal = true;
+    PixelExportColor_UInt16x3_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt16x3_Int32.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x3_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x3_Int32.parameters = PixelExportColor_UInt16x3_Int32_args;
@@ -15210,6 +15777,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x3_UInt32_index.name = "index"_c;
     PixelExportColor_UInt16x3_UInt32_index.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_UInt16x3_UInt32_index.type.literal = true;
+    PixelExportColor_UInt16x3_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt16x3_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x3_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x3_UInt32.parameters = PixelExportColor_UInt16x3_UInt32_args;
@@ -15226,6 +15794,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x3_Int16_index.name = "index"_c;
     PixelExportColor_UInt16x3_Int16_index.type = Type::FullType{ Int16Type.name };
     PixelExportColor_UInt16x3_Int16_index.type.literal = true;
+    PixelExportColor_UInt16x3_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt16x3_Int16.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x3_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x3_Int16.parameters = PixelExportColor_UInt16x3_Int16_args;
@@ -15242,6 +15811,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x3_UInt16_index.name = "index"_c;
     PixelExportColor_UInt16x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_UInt16x3_UInt16_index.type.literal = true;
+    PixelExportColor_UInt16x3_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt16x3_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x3_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x3_UInt16.parameters = PixelExportColor_UInt16x3_UInt16_args;
@@ -15258,6 +15828,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x4_Int32_index.name = "index"_c;
     PixelExportColor_UInt16x4_Int32_index.type = Type::FullType{ Int32Type.name };
     PixelExportColor_UInt16x4_Int32_index.type.literal = true;
+    PixelExportColor_UInt16x4_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt16x4_Int32.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x4_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x4_Int32.parameters = PixelExportColor_UInt16x4_Int32_args;
@@ -15274,6 +15845,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x4_UInt32_index.name = "index"_c;
     PixelExportColor_UInt16x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_UInt16x4_UInt32_index.type.literal = true;
+    PixelExportColor_UInt16x4_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt16x4_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x4_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x4_UInt32.parameters = PixelExportColor_UInt16x4_UInt32_args;
@@ -15290,6 +15862,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x4_Int16_index.name = "index"_c;
     PixelExportColor_UInt16x4_Int16_index.type = Type::FullType{ Int16Type.name };
     PixelExportColor_UInt16x4_Int16_index.type.literal = true;
+    PixelExportColor_UInt16x4_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt16x4_Int16.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x4_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x4_Int16.parameters = PixelExportColor_UInt16x4_Int16_args;
@@ -15306,6 +15879,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x4_UInt16_index.name = "index"_c;
     PixelExportColor_UInt16x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_UInt16x4_UInt16_index.type.literal = true;
+    PixelExportColor_UInt16x4_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable."_c;
     PixelExportColor_UInt16x4_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x4_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x4_UInt16.parameters = PixelExportColor_UInt16x4_UInt16_args;
@@ -15317,6 +15891,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&PixelExportColor_UInt16x4_UInt16)->returnTypeSymbol = &VoidType;
 
     /// computeGetLocalThreadIndices
+    ComputeGetLocalThreadIndices.documentation = "Returns the local thread indices within the workgroup"_c;
     ComputeGetLocalThreadIndices.name = "computeGetLocalThreadIndices"_c;
     ComputeGetLocalThreadIndices.returnType = Type::FullType { UInt32x3Type.name };
     Symbol::Resolved(&ComputeGetLocalThreadIndices)->signature = "u32x3 computeGetLocalThreadIndices()"_c;
@@ -15325,6 +15900,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&ComputeGetLocalThreadIndices)->returnTypeSymbol = &UInt32x3Type;
 
     /// computeGetGlobalThreadIndices
+    ComputeGetGlobalThreadIndices.documentation = "Returns the global thread indices in the dispatch"_c;
     ComputeGetGlobalThreadIndices.name = "computeGetGlobalThreadIndices"_c;
     ComputeGetGlobalThreadIndices.returnType = Type::FullType { UInt32x3Type.name };
     Symbol::Resolved(&ComputeGetGlobalThreadIndices)->signature = "u32x3 computeGetGlobalThreadIndices()"_c;
@@ -15333,6 +15909,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&ComputeGetGlobalThreadIndices)->returnTypeSymbol = &UInt32x3Type;
 
     /// computeGetWorkgroupIndices
+    ComputeGetWorkgroupIndices.documentation = "Returns the workgroup indices in the dispatch"_c;
     ComputeGetWorkgroupIndices.name = "computeGetWorkgroupIndices"_c;
     ComputeGetWorkgroupIndices.returnType = Type::FullType { UInt32x3Type.name };
     Symbol::Resolved(&ComputeGetWorkgroupIndices)->signature = "u32x3 computeGetWorkgroupIndices()"_c;
@@ -15341,6 +15918,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&ComputeGetWorkgroupIndices)->returnTypeSymbol = &UInt32x3Type;
 
     /// computeGetWorkGroupDimensions
+    ComputeGetWorkGroupDimensions.documentation = "Returns the dimensions of the workgroup in the dispatch"_c;
     ComputeGetWorkGroupDimensions.name = "computeGetWorkGroupDimensions"_c;
     ComputeGetWorkGroupDimensions.returnType = Type::FullType { UInt32x3Type.name };
     Symbol::Resolved(&ComputeGetWorkGroupDimensions)->signature = "u32x3 computeGetWorkGroupDimensions()"_c;
@@ -15349,6 +15927,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&ComputeGetWorkGroupDimensions)->returnTypeSymbol = &UInt32x3Type;
 
     /// computeGetIndexInWorkgroup
+    ComputeGetIndexInWorkgroup.documentation = "Returns flattened index of the current thread in the workgroup using (x * workgroupSize.y + y) * workgroupSize.x + z"_c;
     ComputeGetIndexInWorkgroup.name = "computeGetIndexInWorkgroup"_c;
     ComputeGetIndexInWorkgroup.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&ComputeGetIndexInWorkgroup)->signature = "u32 computeGetIndexInWorkgroup()"_c;
@@ -15384,7 +15963,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&SubgroupGetNum)->returnTypeSymbol = &UInt32x3Type;
 
     /// subgroupGetThreadMask
-    SubgroupGetThreadMask.documentation = "Returns a subgroup mask where the current thread is active"_c;
+    SubgroupGetThreadMask.documentation = "Returns a 128 bit subgroup mask where the current thread is active"_c;
     SubgroupGetThreadMask.name = "subgroupGetThreadMask"_c;
     SubgroupGetThreadMask.returnType = Type::FullType { UInt32x4Type.name };
     Symbol::Resolved(&SubgroupGetThreadMask)->signature = "u32x4 subgroupGetThreadMask()"_c;
@@ -15393,7 +15972,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&SubgroupGetThreadMask)->returnTypeSymbol = &UInt32x4Type;
 
     /// subgroupGetThreadAndLowerMask
-    SubgroupGetThreadAndLowerMask.documentation = "Returns a subgroup mask where the current thread and all lower threads are active"_c;
+    SubgroupGetThreadAndLowerMask.documentation = "Returns a 128 bit subgroup mask where the current thread and all lower threads are active"_c;
     SubgroupGetThreadAndLowerMask.name = "subgroupGetThreadAndLowerMask"_c;
     SubgroupGetThreadAndLowerMask.returnType = Type::FullType { UInt32x4Type.name };
     Symbol::Resolved(&SubgroupGetThreadAndLowerMask)->signature = "u32x4 subgroupGetThreadAndLowerMask()"_c;
@@ -15402,7 +15981,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&SubgroupGetThreadAndLowerMask)->returnTypeSymbol = &UInt32x4Type;
 
     /// subgroupGetLowerMask
-    SubgroupGetLowerMask.documentation = "Returns a subgroup mask where all lower threads are active"_c;
+    SubgroupGetLowerMask.documentation = "Returns a 128 bit subgroup mask where all lower threads are active"_c;
     SubgroupGetLowerMask.name = "subgroupGetLowerMask"_c;
     SubgroupGetLowerMask.returnType = Type::FullType { UInt32x4Type.name };
     Symbol::Resolved(&SubgroupGetLowerMask)->signature = "u32x4 subgroupGetLowerMask()"_c;
@@ -15411,7 +15990,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&SubgroupGetLowerMask)->returnTypeSymbol = &UInt32x4Type;
 
     /// subgroupGetThreadAndGreaterMask
-    SubgroupGetThreadAndGreaterMask.documentation = "Returns a subgroup mask where the current thread and all greater threads are active"_c;
+    SubgroupGetThreadAndGreaterMask.documentation = "Returns a 128 bit subgroup mask where the current thread and all greater threads are active"_c;
     SubgroupGetThreadAndGreaterMask.name = "subgroupGetThreadAndGreaterMask"_c;
     SubgroupGetThreadAndGreaterMask.returnType = Type::FullType { UInt32x4Type.name };
     Symbol::Resolved(&SubgroupGetThreadAndGreaterMask)->signature = "u32x4 subgroupGetThreadAndGreaterMask()"_c;
@@ -15420,7 +15999,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&SubgroupGetThreadAndGreaterMask)->returnTypeSymbol = &UInt32x4Type;
 
     /// subgroupGetGreaterMask
-    SubgroupGetGreaterMask.documentation = "Returns a subgroup mask where all greater threads are active"_c;
+    SubgroupGetGreaterMask.documentation = "Returns a 128 bit subgroup mask where all greater threads are active"_c;
     SubgroupGetGreaterMask.name = "subgroupGetGreaterMask"_c;
     SubgroupGetGreaterMask.returnType = Type::FullType { UInt32x4Type.name };
     Symbol::Resolved(&SubgroupGetGreaterMask)->signature = "u32x4 subgroupGetGreaterMask()"_c;
@@ -15751,7 +16330,7 @@ void SetupIntrinsics()
     /// subgroupBallot with Bool8
     SubgroupBallot_predicate.name = "predicate"_c;
     SubgroupBallot_predicate.type = Type::FullType{ Bool8Type.name };
-    SubgroupBallot.documentation = "Sets the subgroup mask to the value of the predicate argument for each active thread"_c;
+    SubgroupBallot.documentation = "Constructs a 128 bit subgroup thread mask to the value of the predicate argument for each active thread"_c;
     SubgroupBallot.name = "subgroupBallot"_c;
     SubgroupBallot.returnType = Type::FullType { UInt32x4Type.name };
     SubgroupBallot.parameters = SubgroupBallot_args;
@@ -15764,7 +16343,7 @@ void SetupIntrinsics()
     /// subgroupInverseBallot with Bool8
     SubgroupInverseBallot_predicate.name = "predicate"_c;
     SubgroupInverseBallot_predicate.type = Type::FullType{ Bool8Type.name };
-    SubgroupInverseBallot.documentation = "Sets the subgroup mask to the value of the predicate argument for each active thread"_c;
+    SubgroupInverseBallot.documentation = "Constructs a 128 bit subgroup thread mask to the inverse of the value of the predicate argument for each active thread"_c;
     SubgroupInverseBallot.name = "subgroupInverseBallot"_c;
     SubgroupInverseBallot.returnType = Type::FullType { UInt32x4Type.name };
     SubgroupInverseBallot.parameters = SubgroupInverseBallot_args;
@@ -15777,7 +16356,7 @@ void SetupIntrinsics()
     /// subgroupBallotBitCount with UInt32x4
     SubgroupBallotBitCount_mask.name = "value"_c;
     SubgroupBallotBitCount_mask.type = Type::FullType{ UInt32x4Type.name };
-    SubgroupBallotBitCount.documentation = "Returns the number of bits set to 1 in a ballot mask"_c;
+    SubgroupBallotBitCount.documentation = "Returns the number of bits set to 1 in a 128 bit subgroup thread mask"_c;
     SubgroupBallotBitCount.name = "subgroupBallotBitCount"_c;
     SubgroupBallotBitCount.returnType = Type::FullType { UInt32Type.name };
     SubgroupBallotBitCount.parameters = SubgroupBallotBitCount_args;
@@ -15790,7 +16369,7 @@ void SetupIntrinsics()
     /// subgroupBallotFirstOne with UInt32x4
     SubgroupBallotFirstOne_mask.name = "value"_c;
     SubgroupBallotFirstOne_mask.type = Type::FullType{ UInt32x4Type.name };
-    SubgroupBallotFirstOne.documentation = "Returns the first one (ctz) in a subgroup thread mask"_c;
+    SubgroupBallotFirstOne.documentation = "Returns the first one (ctz) in a 128 bit subgroup thread mask"_c;
     SubgroupBallotFirstOne.name = "subgroupBallotFirstOne"_c;
     SubgroupBallotFirstOne.returnType = Type::FullType { UInt32Type.name };
     SubgroupBallotFirstOne.parameters = SubgroupBallotFirstOne_args;
@@ -15803,7 +16382,7 @@ void SetupIntrinsics()
     /// subgroupBallotLastOne with UInt32x4
     SubgroupBallotLastOne_mask.name = "value"_c;
     SubgroupBallotLastOne_mask.type = Type::FullType{ UInt32x4Type.name };
-    SubgroupBallotLastOne.documentation = "Returns the last one (clz) in a subgroup thread mask"_c;
+    SubgroupBallotLastOne.documentation = "Returns the last one (clz) in a 128 bit subgroup thread mask"_c;
     SubgroupBallotLastOne.name = "subgroupBallotLastOne"_c;
     SubgroupBallotLastOne.returnType = Type::FullType { UInt32Type.name };
     SubgroupBallotLastOne.parameters = SubgroupBallotLastOne_args;
@@ -15819,7 +16398,7 @@ void SetupIntrinsics()
     SubgroupBallotBit_index.name = "index"_c;
     SubgroupBallotBit_index.type = Type::FullType{ UInt32Type.name };
     SubgroupBallotBit_index.type.literal = true;
-    SubgroupBallotBit.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupBallotBit.documentation = "Extracts a specific bit from a 128 bit subgroup thread mask"_c;
     SubgroupBallotBit.name = "subgroupBallotBit"_c;
     SubgroupBallotBit.returnType = Type::FullType { UInt32Type.name };
     SubgroupBallotBit.parameters = SubgroupBallotBit_args;
@@ -15833,7 +16412,7 @@ void SetupIntrinsics()
     /// subgroupSwapDiagonal with Float32
     SubgroupSwapDiagonal_Float32_value.name = "value"_c;
     SubgroupSwapDiagonal_Float32_value.type = Type::FullType{ Float32Type.name };
-    SubgroupSwapDiagonal_Float32.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapDiagonal_Float32.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Float32.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Float32.returnType = Type::FullType { Float32Type.name };
     SubgroupSwapDiagonal_Float32.parameters = SubgroupSwapDiagonal_Float32_args;
@@ -15846,7 +16425,7 @@ void SetupIntrinsics()
     /// subgroupSwapDiagonal with Float32x2
     SubgroupSwapDiagonal_Float32x2_value.name = "value"_c;
     SubgroupSwapDiagonal_Float32x2_value.type = Type::FullType{ Float32x2Type.name };
-    SubgroupSwapDiagonal_Float32x2.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapDiagonal_Float32x2.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Float32x2.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     SubgroupSwapDiagonal_Float32x2.parameters = SubgroupSwapDiagonal_Float32x2_args;
@@ -15859,7 +16438,7 @@ void SetupIntrinsics()
     /// subgroupSwapDiagonal with Float32x3
     SubgroupSwapDiagonal_Float32x3_value.name = "value"_c;
     SubgroupSwapDiagonal_Float32x3_value.type = Type::FullType{ Float32x3Type.name };
-    SubgroupSwapDiagonal_Float32x3.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapDiagonal_Float32x3.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Float32x3.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     SubgroupSwapDiagonal_Float32x3.parameters = SubgroupSwapDiagonal_Float32x3_args;
@@ -15872,7 +16451,7 @@ void SetupIntrinsics()
     /// subgroupSwapDiagonal with Float32x4
     SubgroupSwapDiagonal_Float32x4_value.name = "value"_c;
     SubgroupSwapDiagonal_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
-    SubgroupSwapDiagonal_Float32x4.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapDiagonal_Float32x4.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Float32x4.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     SubgroupSwapDiagonal_Float32x4.parameters = SubgroupSwapDiagonal_Float32x4_args;
@@ -15885,7 +16464,7 @@ void SetupIntrinsics()
     /// subgroupSwapDiagonal with Float16
     SubgroupSwapDiagonal_Float16_value.name = "value"_c;
     SubgroupSwapDiagonal_Float16_value.type = Type::FullType{ Float16Type.name };
-    SubgroupSwapDiagonal_Float16.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapDiagonal_Float16.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Float16.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Float16.returnType = Type::FullType { Float16Type.name };
     SubgroupSwapDiagonal_Float16.parameters = SubgroupSwapDiagonal_Float16_args;
@@ -15898,7 +16477,7 @@ void SetupIntrinsics()
     /// subgroupSwapDiagonal with Float16x2
     SubgroupSwapDiagonal_Float16x2_value.name = "value"_c;
     SubgroupSwapDiagonal_Float16x2_value.type = Type::FullType{ Float16x2Type.name };
-    SubgroupSwapDiagonal_Float16x2.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapDiagonal_Float16x2.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Float16x2.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     SubgroupSwapDiagonal_Float16x2.parameters = SubgroupSwapDiagonal_Float16x2_args;
@@ -15911,7 +16490,7 @@ void SetupIntrinsics()
     /// subgroupSwapDiagonal with Float16x3
     SubgroupSwapDiagonal_Float16x3_value.name = "value"_c;
     SubgroupSwapDiagonal_Float16x3_value.type = Type::FullType{ Float16x3Type.name };
-    SubgroupSwapDiagonal_Float16x3.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapDiagonal_Float16x3.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Float16x3.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     SubgroupSwapDiagonal_Float16x3.parameters = SubgroupSwapDiagonal_Float16x3_args;
@@ -15924,7 +16503,7 @@ void SetupIntrinsics()
     /// subgroupSwapDiagonal with Float16x4
     SubgroupSwapDiagonal_Float16x4_value.name = "value"_c;
     SubgroupSwapDiagonal_Float16x4_value.type = Type::FullType{ Float16x4Type.name };
-    SubgroupSwapDiagonal_Float16x4.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapDiagonal_Float16x4.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Float16x4.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     SubgroupSwapDiagonal_Float16x4.parameters = SubgroupSwapDiagonal_Float16x4_args;
@@ -15937,7 +16516,7 @@ void SetupIntrinsics()
     /// subgroupSwapDiagonal with Int32
     SubgroupSwapDiagonal_Int32_value.name = "value"_c;
     SubgroupSwapDiagonal_Int32_value.type = Type::FullType{ Int32Type.name };
-    SubgroupSwapDiagonal_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapDiagonal_Int32.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Int32.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Int32.returnType = Type::FullType { Int32Type.name };
     SubgroupSwapDiagonal_Int32.parameters = SubgroupSwapDiagonal_Int32_args;
@@ -15950,7 +16529,7 @@ void SetupIntrinsics()
     /// subgroupSwapDiagonal with Int32x2
     SubgroupSwapDiagonal_Int32x2_value.name = "value"_c;
     SubgroupSwapDiagonal_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
-    SubgroupSwapDiagonal_Int32x2.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapDiagonal_Int32x2.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Int32x2.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     SubgroupSwapDiagonal_Int32x2.parameters = SubgroupSwapDiagonal_Int32x2_args;
@@ -15963,7 +16542,7 @@ void SetupIntrinsics()
     /// subgroupSwapDiagonal with Int32x3
     SubgroupSwapDiagonal_Int32x3_value.name = "value"_c;
     SubgroupSwapDiagonal_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
-    SubgroupSwapDiagonal_Int32x3.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapDiagonal_Int32x3.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Int32x3.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     SubgroupSwapDiagonal_Int32x3.parameters = SubgroupSwapDiagonal_Int32x3_args;
@@ -15976,7 +16555,7 @@ void SetupIntrinsics()
     /// subgroupSwapDiagonal with Int32x4
     SubgroupSwapDiagonal_Int32x4_value.name = "value"_c;
     SubgroupSwapDiagonal_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
-    SubgroupSwapDiagonal_Int32x4.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapDiagonal_Int32x4.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Int32x4.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     SubgroupSwapDiagonal_Int32x4.parameters = SubgroupSwapDiagonal_Int32x4_args;
@@ -15989,7 +16568,7 @@ void SetupIntrinsics()
     /// subgroupSwapDiagonal with Int16
     SubgroupSwapDiagonal_Int16_value.name = "value"_c;
     SubgroupSwapDiagonal_Int16_value.type = Type::FullType{ Int16Type.name };
-    SubgroupSwapDiagonal_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapDiagonal_Int16.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Int16.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Int16.returnType = Type::FullType { Int16Type.name };
     SubgroupSwapDiagonal_Int16.parameters = SubgroupSwapDiagonal_Int16_args;
@@ -16002,7 +16581,7 @@ void SetupIntrinsics()
     /// subgroupSwapDiagonal with Int16x2
     SubgroupSwapDiagonal_Int16x2_value.name = "value"_c;
     SubgroupSwapDiagonal_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
-    SubgroupSwapDiagonal_Int16x2.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapDiagonal_Int16x2.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Int16x2.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     SubgroupSwapDiagonal_Int16x2.parameters = SubgroupSwapDiagonal_Int16x2_args;
@@ -16015,7 +16594,7 @@ void SetupIntrinsics()
     /// subgroupSwapDiagonal with Int16x3
     SubgroupSwapDiagonal_Int16x3_value.name = "value"_c;
     SubgroupSwapDiagonal_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
-    SubgroupSwapDiagonal_Int16x3.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapDiagonal_Int16x3.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Int16x3.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     SubgroupSwapDiagonal_Int16x3.parameters = SubgroupSwapDiagonal_Int16x3_args;
@@ -16028,7 +16607,7 @@ void SetupIntrinsics()
     /// subgroupSwapDiagonal with Int16x4
     SubgroupSwapDiagonal_Int16x4_value.name = "value"_c;
     SubgroupSwapDiagonal_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
-    SubgroupSwapDiagonal_Int16x4.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapDiagonal_Int16x4.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_Int16x4.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     SubgroupSwapDiagonal_Int16x4.parameters = SubgroupSwapDiagonal_Int16x4_args;
@@ -16041,7 +16620,7 @@ void SetupIntrinsics()
     /// subgroupSwapDiagonal with UInt32
     SubgroupSwapDiagonal_UInt32_value.name = "value"_c;
     SubgroupSwapDiagonal_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    SubgroupSwapDiagonal_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapDiagonal_UInt32.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_UInt32.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_UInt32.returnType = Type::FullType { UInt32Type.name };
     SubgroupSwapDiagonal_UInt32.parameters = SubgroupSwapDiagonal_UInt32_args;
@@ -16054,7 +16633,7 @@ void SetupIntrinsics()
     /// subgroupSwapDiagonal with UInt32x2
     SubgroupSwapDiagonal_UInt32x2_value.name = "value"_c;
     SubgroupSwapDiagonal_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
-    SubgroupSwapDiagonal_UInt32x2.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapDiagonal_UInt32x2.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_UInt32x2.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
     SubgroupSwapDiagonal_UInt32x2.parameters = SubgroupSwapDiagonal_UInt32x2_args;
@@ -16067,7 +16646,7 @@ void SetupIntrinsics()
     /// subgroupSwapDiagonal with UInt32x3
     SubgroupSwapDiagonal_UInt32x3_value.name = "value"_c;
     SubgroupSwapDiagonal_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
-    SubgroupSwapDiagonal_UInt32x3.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapDiagonal_UInt32x3.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_UInt32x3.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
     SubgroupSwapDiagonal_UInt32x3.parameters = SubgroupSwapDiagonal_UInt32x3_args;
@@ -16080,7 +16659,7 @@ void SetupIntrinsics()
     /// subgroupSwapDiagonal with UInt32x4
     SubgroupSwapDiagonal_UInt32x4_value.name = "value"_c;
     SubgroupSwapDiagonal_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
-    SubgroupSwapDiagonal_UInt32x4.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapDiagonal_UInt32x4.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_UInt32x4.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
     SubgroupSwapDiagonal_UInt32x4.parameters = SubgroupSwapDiagonal_UInt32x4_args;
@@ -16093,7 +16672,7 @@ void SetupIntrinsics()
     /// subgroupSwapDiagonal with UInt16
     SubgroupSwapDiagonal_UInt16_value.name = "value"_c;
     SubgroupSwapDiagonal_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    SubgroupSwapDiagonal_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapDiagonal_UInt16.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_UInt16.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_UInt16.returnType = Type::FullType { UInt16Type.name };
     SubgroupSwapDiagonal_UInt16.parameters = SubgroupSwapDiagonal_UInt16_args;
@@ -16106,7 +16685,7 @@ void SetupIntrinsics()
     /// subgroupSwapDiagonal with UInt16x2
     SubgroupSwapDiagonal_UInt16x2_value.name = "value"_c;
     SubgroupSwapDiagonal_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
-    SubgroupSwapDiagonal_UInt16x2.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapDiagonal_UInt16x2.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_UInt16x2.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
     SubgroupSwapDiagonal_UInt16x2.parameters = SubgroupSwapDiagonal_UInt16x2_args;
@@ -16119,7 +16698,7 @@ void SetupIntrinsics()
     /// subgroupSwapDiagonal with UInt16x3
     SubgroupSwapDiagonal_UInt16x3_value.name = "value"_c;
     SubgroupSwapDiagonal_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
-    SubgroupSwapDiagonal_UInt16x3.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapDiagonal_UInt16x3.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_UInt16x3.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
     SubgroupSwapDiagonal_UInt16x3.parameters = SubgroupSwapDiagonal_UInt16x3_args;
@@ -16132,7 +16711,7 @@ void SetupIntrinsics()
     /// subgroupSwapDiagonal with UInt16x4
     SubgroupSwapDiagonal_UInt16x4_value.name = "value"_c;
     SubgroupSwapDiagonal_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
-    SubgroupSwapDiagonal_UInt16x4.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapDiagonal_UInt16x4.documentation = "Swaps the value at the current thread with the value at the diagonal thread in the subgroup"_c;
     SubgroupSwapDiagonal_UInt16x4.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
     SubgroupSwapDiagonal_UInt16x4.parameters = SubgroupSwapDiagonal_UInt16x4_args;
@@ -16145,7 +16724,7 @@ void SetupIntrinsics()
     /// subgroupSwapVertical with Float32
     SubgroupSwapVertical_Float32_value.name = "value"_c;
     SubgroupSwapVertical_Float32_value.type = Type::FullType{ Float32Type.name };
-    SubgroupSwapVertical_Float32.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapVertical_Float32.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Float32.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Float32.returnType = Type::FullType { Float32Type.name };
     SubgroupSwapVertical_Float32.parameters = SubgroupSwapVertical_Float32_args;
@@ -16158,7 +16737,7 @@ void SetupIntrinsics()
     /// subgroupSwapVertical with Float32x2
     SubgroupSwapVertical_Float32x2_value.name = "value"_c;
     SubgroupSwapVertical_Float32x2_value.type = Type::FullType{ Float32x2Type.name };
-    SubgroupSwapVertical_Float32x2.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapVertical_Float32x2.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Float32x2.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     SubgroupSwapVertical_Float32x2.parameters = SubgroupSwapVertical_Float32x2_args;
@@ -16171,7 +16750,7 @@ void SetupIntrinsics()
     /// subgroupSwapVertical with Float32x3
     SubgroupSwapVertical_Float32x3_value.name = "value"_c;
     SubgroupSwapVertical_Float32x3_value.type = Type::FullType{ Float32x3Type.name };
-    SubgroupSwapVertical_Float32x3.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapVertical_Float32x3.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Float32x3.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     SubgroupSwapVertical_Float32x3.parameters = SubgroupSwapVertical_Float32x3_args;
@@ -16184,7 +16763,7 @@ void SetupIntrinsics()
     /// subgroupSwapVertical with Float32x4
     SubgroupSwapVertical_Float32x4_value.name = "value"_c;
     SubgroupSwapVertical_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
-    SubgroupSwapVertical_Float32x4.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapVertical_Float32x4.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Float32x4.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     SubgroupSwapVertical_Float32x4.parameters = SubgroupSwapVertical_Float32x4_args;
@@ -16197,7 +16776,7 @@ void SetupIntrinsics()
     /// subgroupSwapVertical with Float16
     SubgroupSwapVertical_Float16_value.name = "value"_c;
     SubgroupSwapVertical_Float16_value.type = Type::FullType{ Float16Type.name };
-    SubgroupSwapVertical_Float16.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapVertical_Float16.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Float16.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Float16.returnType = Type::FullType { Float16Type.name };
     SubgroupSwapVertical_Float16.parameters = SubgroupSwapVertical_Float16_args;
@@ -16210,7 +16789,7 @@ void SetupIntrinsics()
     /// subgroupSwapVertical with Float16x2
     SubgroupSwapVertical_Float16x2_value.name = "value"_c;
     SubgroupSwapVertical_Float16x2_value.type = Type::FullType{ Float16x2Type.name };
-    SubgroupSwapVertical_Float16x2.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapVertical_Float16x2.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Float16x2.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     SubgroupSwapVertical_Float16x2.parameters = SubgroupSwapVertical_Float16x2_args;
@@ -16223,7 +16802,7 @@ void SetupIntrinsics()
     /// subgroupSwapVertical with Float16x3
     SubgroupSwapVertical_Float16x3_value.name = "value"_c;
     SubgroupSwapVertical_Float16x3_value.type = Type::FullType{ Float16x3Type.name };
-    SubgroupSwapVertical_Float16x3.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapVertical_Float16x3.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Float16x3.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     SubgroupSwapVertical_Float16x3.parameters = SubgroupSwapVertical_Float16x3_args;
@@ -16236,7 +16815,7 @@ void SetupIntrinsics()
     /// subgroupSwapVertical with Float16x4
     SubgroupSwapVertical_Float16x4_value.name = "value"_c;
     SubgroupSwapVertical_Float16x4_value.type = Type::FullType{ Float16x4Type.name };
-    SubgroupSwapVertical_Float16x4.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapVertical_Float16x4.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Float16x4.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     SubgroupSwapVertical_Float16x4.parameters = SubgroupSwapVertical_Float16x4_args;
@@ -16249,7 +16828,7 @@ void SetupIntrinsics()
     /// subgroupSwapVertical with Int32
     SubgroupSwapVertical_Int32_value.name = "value"_c;
     SubgroupSwapVertical_Int32_value.type = Type::FullType{ Int32Type.name };
-    SubgroupSwapVertical_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapVertical_Int32.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Int32.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Int32.returnType = Type::FullType { Int32Type.name };
     SubgroupSwapVertical_Int32.parameters = SubgroupSwapVertical_Int32_args;
@@ -16262,7 +16841,7 @@ void SetupIntrinsics()
     /// subgroupSwapVertical with Int32x2
     SubgroupSwapVertical_Int32x2_value.name = "value"_c;
     SubgroupSwapVertical_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
-    SubgroupSwapVertical_Int32x2.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapVertical_Int32x2.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Int32x2.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     SubgroupSwapVertical_Int32x2.parameters = SubgroupSwapVertical_Int32x2_args;
@@ -16275,7 +16854,7 @@ void SetupIntrinsics()
     /// subgroupSwapVertical with Int32x3
     SubgroupSwapVertical_Int32x3_value.name = "value"_c;
     SubgroupSwapVertical_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
-    SubgroupSwapVertical_Int32x3.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapVertical_Int32x3.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Int32x3.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     SubgroupSwapVertical_Int32x3.parameters = SubgroupSwapVertical_Int32x3_args;
@@ -16288,7 +16867,7 @@ void SetupIntrinsics()
     /// subgroupSwapVertical with Int32x4
     SubgroupSwapVertical_Int32x4_value.name = "value"_c;
     SubgroupSwapVertical_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
-    SubgroupSwapVertical_Int32x4.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapVertical_Int32x4.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Int32x4.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     SubgroupSwapVertical_Int32x4.parameters = SubgroupSwapVertical_Int32x4_args;
@@ -16301,7 +16880,7 @@ void SetupIntrinsics()
     /// subgroupSwapVertical with Int16
     SubgroupSwapVertical_Int16_value.name = "value"_c;
     SubgroupSwapVertical_Int16_value.type = Type::FullType{ Int16Type.name };
-    SubgroupSwapVertical_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapVertical_Int16.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Int16.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Int16.returnType = Type::FullType { Int16Type.name };
     SubgroupSwapVertical_Int16.parameters = SubgroupSwapVertical_Int16_args;
@@ -16314,7 +16893,7 @@ void SetupIntrinsics()
     /// subgroupSwapVertical with Int16x2
     SubgroupSwapVertical_Int16x2_value.name = "value"_c;
     SubgroupSwapVertical_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
-    SubgroupSwapVertical_Int16x2.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapVertical_Int16x2.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Int16x2.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     SubgroupSwapVertical_Int16x2.parameters = SubgroupSwapVertical_Int16x2_args;
@@ -16327,7 +16906,7 @@ void SetupIntrinsics()
     /// subgroupSwapVertical with Int16x3
     SubgroupSwapVertical_Int16x3_value.name = "value"_c;
     SubgroupSwapVertical_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
-    SubgroupSwapVertical_Int16x3.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapVertical_Int16x3.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Int16x3.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     SubgroupSwapVertical_Int16x3.parameters = SubgroupSwapVertical_Int16x3_args;
@@ -16340,7 +16919,7 @@ void SetupIntrinsics()
     /// subgroupSwapVertical with Int16x4
     SubgroupSwapVertical_Int16x4_value.name = "value"_c;
     SubgroupSwapVertical_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
-    SubgroupSwapVertical_Int16x4.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapVertical_Int16x4.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_Int16x4.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     SubgroupSwapVertical_Int16x4.parameters = SubgroupSwapVertical_Int16x4_args;
@@ -16353,7 +16932,7 @@ void SetupIntrinsics()
     /// subgroupSwapVertical with UInt32
     SubgroupSwapVertical_UInt32_value.name = "value"_c;
     SubgroupSwapVertical_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    SubgroupSwapVertical_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapVertical_UInt32.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_UInt32.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_UInt32.returnType = Type::FullType { UInt32Type.name };
     SubgroupSwapVertical_UInt32.parameters = SubgroupSwapVertical_UInt32_args;
@@ -16366,7 +16945,7 @@ void SetupIntrinsics()
     /// subgroupSwapVertical with UInt32x2
     SubgroupSwapVertical_UInt32x2_value.name = "value"_c;
     SubgroupSwapVertical_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
-    SubgroupSwapVertical_UInt32x2.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapVertical_UInt32x2.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_UInt32x2.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
     SubgroupSwapVertical_UInt32x2.parameters = SubgroupSwapVertical_UInt32x2_args;
@@ -16379,7 +16958,7 @@ void SetupIntrinsics()
     /// subgroupSwapVertical with UInt32x3
     SubgroupSwapVertical_UInt32x3_value.name = "value"_c;
     SubgroupSwapVertical_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
-    SubgroupSwapVertical_UInt32x3.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapVertical_UInt32x3.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_UInt32x3.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
     SubgroupSwapVertical_UInt32x3.parameters = SubgroupSwapVertical_UInt32x3_args;
@@ -16392,7 +16971,7 @@ void SetupIntrinsics()
     /// subgroupSwapVertical with UInt32x4
     SubgroupSwapVertical_UInt32x4_value.name = "value"_c;
     SubgroupSwapVertical_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
-    SubgroupSwapVertical_UInt32x4.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapVertical_UInt32x4.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_UInt32x4.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
     SubgroupSwapVertical_UInt32x4.parameters = SubgroupSwapVertical_UInt32x4_args;
@@ -16405,7 +16984,7 @@ void SetupIntrinsics()
     /// subgroupSwapVertical with UInt16
     SubgroupSwapVertical_UInt16_value.name = "value"_c;
     SubgroupSwapVertical_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    SubgroupSwapVertical_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapVertical_UInt16.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_UInt16.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_UInt16.returnType = Type::FullType { UInt16Type.name };
     SubgroupSwapVertical_UInt16.parameters = SubgroupSwapVertical_UInt16_args;
@@ -16418,7 +16997,7 @@ void SetupIntrinsics()
     /// subgroupSwapVertical with UInt16x2
     SubgroupSwapVertical_UInt16x2_value.name = "value"_c;
     SubgroupSwapVertical_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
-    SubgroupSwapVertical_UInt16x2.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapVertical_UInt16x2.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_UInt16x2.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
     SubgroupSwapVertical_UInt16x2.parameters = SubgroupSwapVertical_UInt16x2_args;
@@ -16431,7 +17010,7 @@ void SetupIntrinsics()
     /// subgroupSwapVertical with UInt16x3
     SubgroupSwapVertical_UInt16x3_value.name = "value"_c;
     SubgroupSwapVertical_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
-    SubgroupSwapVertical_UInt16x3.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapVertical_UInt16x3.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_UInt16x3.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
     SubgroupSwapVertical_UInt16x3.parameters = SubgroupSwapVertical_UInt16x3_args;
@@ -16444,7 +17023,7 @@ void SetupIntrinsics()
     /// subgroupSwapVertical with UInt16x4
     SubgroupSwapVertical_UInt16x4_value.name = "value"_c;
     SubgroupSwapVertical_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
-    SubgroupSwapVertical_UInt16x4.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapVertical_UInt16x4.documentation = "Swaps the value at the current thread with the value at the vertical thread in the subgroup"_c;
     SubgroupSwapVertical_UInt16x4.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
     SubgroupSwapVertical_UInt16x4.parameters = SubgroupSwapVertical_UInt16x4_args;
@@ -16457,7 +17036,7 @@ void SetupIntrinsics()
     /// subgroupSwapHorizontal with Float32
     SubgroupSwapHorizontal_Float32_value.name = "value"_c;
     SubgroupSwapHorizontal_Float32_value.type = Type::FullType{ Float32Type.name };
-    SubgroupSwapHorizontal_Float32.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapHorizontal_Float32.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Float32.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Float32.returnType = Type::FullType { Float32Type.name };
     SubgroupSwapHorizontal_Float32.parameters = SubgroupSwapHorizontal_Float32_args;
@@ -16470,7 +17049,7 @@ void SetupIntrinsics()
     /// subgroupSwapHorizontal with Float32x2
     SubgroupSwapHorizontal_Float32x2_value.name = "value"_c;
     SubgroupSwapHorizontal_Float32x2_value.type = Type::FullType{ Float32x2Type.name };
-    SubgroupSwapHorizontal_Float32x2.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapHorizontal_Float32x2.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Float32x2.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     SubgroupSwapHorizontal_Float32x2.parameters = SubgroupSwapHorizontal_Float32x2_args;
@@ -16483,7 +17062,7 @@ void SetupIntrinsics()
     /// subgroupSwapHorizontal with Float32x3
     SubgroupSwapHorizontal_Float32x3_value.name = "value"_c;
     SubgroupSwapHorizontal_Float32x3_value.type = Type::FullType{ Float32x3Type.name };
-    SubgroupSwapHorizontal_Float32x3.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapHorizontal_Float32x3.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Float32x3.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     SubgroupSwapHorizontal_Float32x3.parameters = SubgroupSwapHorizontal_Float32x3_args;
@@ -16496,7 +17075,7 @@ void SetupIntrinsics()
     /// subgroupSwapHorizontal with Float32x4
     SubgroupSwapHorizontal_Float32x4_value.name = "value"_c;
     SubgroupSwapHorizontal_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
-    SubgroupSwapHorizontal_Float32x4.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapHorizontal_Float32x4.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Float32x4.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     SubgroupSwapHorizontal_Float32x4.parameters = SubgroupSwapHorizontal_Float32x4_args;
@@ -16509,7 +17088,7 @@ void SetupIntrinsics()
     /// subgroupSwapHorizontal with Float16
     SubgroupSwapHorizontal_Float16_value.name = "value"_c;
     SubgroupSwapHorizontal_Float16_value.type = Type::FullType{ Float16Type.name };
-    SubgroupSwapHorizontal_Float16.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapHorizontal_Float16.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Float16.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Float16.returnType = Type::FullType { Float16Type.name };
     SubgroupSwapHorizontal_Float16.parameters = SubgroupSwapHorizontal_Float16_args;
@@ -16522,7 +17101,7 @@ void SetupIntrinsics()
     /// subgroupSwapHorizontal with Float16x2
     SubgroupSwapHorizontal_Float16x2_value.name = "value"_c;
     SubgroupSwapHorizontal_Float16x2_value.type = Type::FullType{ Float16x2Type.name };
-    SubgroupSwapHorizontal_Float16x2.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapHorizontal_Float16x2.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Float16x2.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     SubgroupSwapHorizontal_Float16x2.parameters = SubgroupSwapHorizontal_Float16x2_args;
@@ -16535,7 +17114,7 @@ void SetupIntrinsics()
     /// subgroupSwapHorizontal with Float16x3
     SubgroupSwapHorizontal_Float16x3_value.name = "value"_c;
     SubgroupSwapHorizontal_Float16x3_value.type = Type::FullType{ Float16x3Type.name };
-    SubgroupSwapHorizontal_Float16x3.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapHorizontal_Float16x3.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Float16x3.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     SubgroupSwapHorizontal_Float16x3.parameters = SubgroupSwapHorizontal_Float16x3_args;
@@ -16548,7 +17127,7 @@ void SetupIntrinsics()
     /// subgroupSwapHorizontal with Float16x4
     SubgroupSwapHorizontal_Float16x4_value.name = "value"_c;
     SubgroupSwapHorizontal_Float16x4_value.type = Type::FullType{ Float16x4Type.name };
-    SubgroupSwapHorizontal_Float16x4.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapHorizontal_Float16x4.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Float16x4.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     SubgroupSwapHorizontal_Float16x4.parameters = SubgroupSwapHorizontal_Float16x4_args;
@@ -16561,7 +17140,7 @@ void SetupIntrinsics()
     /// subgroupSwapHorizontal with Int32
     SubgroupSwapHorizontal_Int32_value.name = "value"_c;
     SubgroupSwapHorizontal_Int32_value.type = Type::FullType{ Int32Type.name };
-    SubgroupSwapHorizontal_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapHorizontal_Int32.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Int32.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Int32.returnType = Type::FullType { Int32Type.name };
     SubgroupSwapHorizontal_Int32.parameters = SubgroupSwapHorizontal_Int32_args;
@@ -16574,7 +17153,7 @@ void SetupIntrinsics()
     /// subgroupSwapHorizontal with Int32x2
     SubgroupSwapHorizontal_Int32x2_value.name = "value"_c;
     SubgroupSwapHorizontal_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
-    SubgroupSwapHorizontal_Int32x2.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapHorizontal_Int32x2.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Int32x2.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     SubgroupSwapHorizontal_Int32x2.parameters = SubgroupSwapHorizontal_Int32x2_args;
@@ -16587,7 +17166,7 @@ void SetupIntrinsics()
     /// subgroupSwapHorizontal with Int32x3
     SubgroupSwapHorizontal_Int32x3_value.name = "value"_c;
     SubgroupSwapHorizontal_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
-    SubgroupSwapHorizontal_Int32x3.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapHorizontal_Int32x3.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Int32x3.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     SubgroupSwapHorizontal_Int32x3.parameters = SubgroupSwapHorizontal_Int32x3_args;
@@ -16600,7 +17179,7 @@ void SetupIntrinsics()
     /// subgroupSwapHorizontal with Int32x4
     SubgroupSwapHorizontal_Int32x4_value.name = "value"_c;
     SubgroupSwapHorizontal_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
-    SubgroupSwapHorizontal_Int32x4.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapHorizontal_Int32x4.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Int32x4.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     SubgroupSwapHorizontal_Int32x4.parameters = SubgroupSwapHorizontal_Int32x4_args;
@@ -16613,7 +17192,7 @@ void SetupIntrinsics()
     /// subgroupSwapHorizontal with Int16
     SubgroupSwapHorizontal_Int16_value.name = "value"_c;
     SubgroupSwapHorizontal_Int16_value.type = Type::FullType{ Int16Type.name };
-    SubgroupSwapHorizontal_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapHorizontal_Int16.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Int16.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Int16.returnType = Type::FullType { Int16Type.name };
     SubgroupSwapHorizontal_Int16.parameters = SubgroupSwapHorizontal_Int16_args;
@@ -16626,7 +17205,7 @@ void SetupIntrinsics()
     /// subgroupSwapHorizontal with Int16x2
     SubgroupSwapHorizontal_Int16x2_value.name = "value"_c;
     SubgroupSwapHorizontal_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
-    SubgroupSwapHorizontal_Int16x2.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapHorizontal_Int16x2.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Int16x2.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     SubgroupSwapHorizontal_Int16x2.parameters = SubgroupSwapHorizontal_Int16x2_args;
@@ -16639,7 +17218,7 @@ void SetupIntrinsics()
     /// subgroupSwapHorizontal with Int16x3
     SubgroupSwapHorizontal_Int16x3_value.name = "value"_c;
     SubgroupSwapHorizontal_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
-    SubgroupSwapHorizontal_Int16x3.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapHorizontal_Int16x3.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Int16x3.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     SubgroupSwapHorizontal_Int16x3.parameters = SubgroupSwapHorizontal_Int16x3_args;
@@ -16652,7 +17231,7 @@ void SetupIntrinsics()
     /// subgroupSwapHorizontal with Int16x4
     SubgroupSwapHorizontal_Int16x4_value.name = "value"_c;
     SubgroupSwapHorizontal_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
-    SubgroupSwapHorizontal_Int16x4.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapHorizontal_Int16x4.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_Int16x4.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     SubgroupSwapHorizontal_Int16x4.parameters = SubgroupSwapHorizontal_Int16x4_args;
@@ -16665,7 +17244,7 @@ void SetupIntrinsics()
     /// subgroupSwapHorizontal with UInt32
     SubgroupSwapHorizontal_UInt32_value.name = "value"_c;
     SubgroupSwapHorizontal_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    SubgroupSwapHorizontal_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapHorizontal_UInt32.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_UInt32.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_UInt32.returnType = Type::FullType { UInt32Type.name };
     SubgroupSwapHorizontal_UInt32.parameters = SubgroupSwapHorizontal_UInt32_args;
@@ -16678,7 +17257,7 @@ void SetupIntrinsics()
     /// subgroupSwapHorizontal with UInt32x2
     SubgroupSwapHorizontal_UInt32x2_value.name = "value"_c;
     SubgroupSwapHorizontal_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
-    SubgroupSwapHorizontal_UInt32x2.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapHorizontal_UInt32x2.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_UInt32x2.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
     SubgroupSwapHorizontal_UInt32x2.parameters = SubgroupSwapHorizontal_UInt32x2_args;
@@ -16691,7 +17270,7 @@ void SetupIntrinsics()
     /// subgroupSwapHorizontal with UInt32x3
     SubgroupSwapHorizontal_UInt32x3_value.name = "value"_c;
     SubgroupSwapHorizontal_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
-    SubgroupSwapHorizontal_UInt32x3.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapHorizontal_UInt32x3.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_UInt32x3.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
     SubgroupSwapHorizontal_UInt32x3.parameters = SubgroupSwapHorizontal_UInt32x3_args;
@@ -16704,7 +17283,7 @@ void SetupIntrinsics()
     /// subgroupSwapHorizontal with UInt32x4
     SubgroupSwapHorizontal_UInt32x4_value.name = "value"_c;
     SubgroupSwapHorizontal_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
-    SubgroupSwapHorizontal_UInt32x4.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapHorizontal_UInt32x4.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_UInt32x4.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
     SubgroupSwapHorizontal_UInt32x4.parameters = SubgroupSwapHorizontal_UInt32x4_args;
@@ -16717,7 +17296,7 @@ void SetupIntrinsics()
     /// subgroupSwapHorizontal with UInt16
     SubgroupSwapHorizontal_UInt16_value.name = "value"_c;
     SubgroupSwapHorizontal_UInt16_value.type = Type::FullType{ UInt16Type.name };
-    SubgroupSwapHorizontal_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapHorizontal_UInt16.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_UInt16.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_UInt16.returnType = Type::FullType { UInt16Type.name };
     SubgroupSwapHorizontal_UInt16.parameters = SubgroupSwapHorizontal_UInt16_args;
@@ -16730,7 +17309,7 @@ void SetupIntrinsics()
     /// subgroupSwapHorizontal with UInt16x2
     SubgroupSwapHorizontal_UInt16x2_value.name = "value"_c;
     SubgroupSwapHorizontal_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
-    SubgroupSwapHorizontal_UInt16x2.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapHorizontal_UInt16x2.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_UInt16x2.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
     SubgroupSwapHorizontal_UInt16x2.parameters = SubgroupSwapHorizontal_UInt16x2_args;
@@ -16743,7 +17322,7 @@ void SetupIntrinsics()
     /// subgroupSwapHorizontal with UInt16x3
     SubgroupSwapHorizontal_UInt16x3_value.name = "value"_c;
     SubgroupSwapHorizontal_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
-    SubgroupSwapHorizontal_UInt16x3.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapHorizontal_UInt16x3.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_UInt16x3.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
     SubgroupSwapHorizontal_UInt16x3.parameters = SubgroupSwapHorizontal_UInt16x3_args;
@@ -16756,7 +17335,7 @@ void SetupIntrinsics()
     /// subgroupSwapHorizontal with UInt16x4
     SubgroupSwapHorizontal_UInt16x4_value.name = "value"_c;
     SubgroupSwapHorizontal_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
-    SubgroupSwapHorizontal_UInt16x4.documentation = "Returns true if bit at index in mask is 1"_c;
+    SubgroupSwapHorizontal_UInt16x4.documentation = "Swaps the value at the current thread with the value at the horizontal thread in the subgroup"_c;
     SubgroupSwapHorizontal_UInt16x4.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
     SubgroupSwapHorizontal_UInt16x4.parameters = SubgroupSwapHorizontal_UInt16x4_args;
@@ -16773,7 +17352,7 @@ void SetupIntrinsics()
     AtomicLoad_UInt32_semantics.name = "semantics"_c;
     AtomicLoad_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicLoad_UInt32_semantics.type.literal = true;
-    AtomicLoad_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicLoad_UInt32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_UInt32.name = "atomicLoad"_c;
     AtomicLoad_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicLoad_UInt32.parameters = AtomicLoad_UInt32_args;
@@ -16791,7 +17370,7 @@ void SetupIntrinsics()
     AtomicIncrement_UInt32_semantics.name = "semantics"_c;
     AtomicIncrement_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicIncrement_UInt32_semantics.type.literal = true;
-    AtomicIncrement_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicIncrement_UInt32.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicIncrement_UInt32.name = "atomicIncrement"_c;
     AtomicIncrement_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicIncrement_UInt32.parameters = AtomicIncrement_UInt32_args;
@@ -16809,7 +17388,7 @@ void SetupIntrinsics()
     AtomicDecrement_UInt32_semantics.name = "semantics"_c;
     AtomicDecrement_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicDecrement_UInt32_semantics.type.literal = true;
-    AtomicDecrement_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicDecrement_UInt32.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicDecrement_UInt32.name = "atomicDecrement"_c;
     AtomicDecrement_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicDecrement_UInt32.parameters = AtomicDecrement_UInt32_args;
@@ -16827,7 +17406,7 @@ void SetupIntrinsics()
     AtomicLoad_Int32_semantics.name = "semantics"_c;
     AtomicLoad_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicLoad_Int32_semantics.type.literal = true;
-    AtomicLoad_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicLoad_Int32.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_Int32.name = "atomicLoad"_c;
     AtomicLoad_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicLoad_Int32.parameters = AtomicLoad_Int32_args;
@@ -16845,7 +17424,7 @@ void SetupIntrinsics()
     AtomicIncrement_Int32_semantics.name = "semantics"_c;
     AtomicIncrement_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicIncrement_Int32_semantics.type.literal = true;
-    AtomicIncrement_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicIncrement_Int32.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicIncrement_Int32.name = "atomicIncrement"_c;
     AtomicIncrement_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicIncrement_Int32.parameters = AtomicIncrement_Int32_args;
@@ -16863,7 +17442,7 @@ void SetupIntrinsics()
     AtomicDecrement_Int32_semantics.name = "semantics"_c;
     AtomicDecrement_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicDecrement_Int32_semantics.type.literal = true;
-    AtomicDecrement_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicDecrement_Int32.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicDecrement_Int32.name = "atomicDecrement"_c;
     AtomicDecrement_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicDecrement_Int32.parameters = AtomicDecrement_Int32_args;
@@ -16881,7 +17460,7 @@ void SetupIntrinsics()
     AtomicLoad_UInt16_semantics.name = "semantics"_c;
     AtomicLoad_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicLoad_UInt16_semantics.type.literal = true;
-    AtomicLoad_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicLoad_UInt16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_UInt16.name = "atomicLoad"_c;
     AtomicLoad_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicLoad_UInt16.parameters = AtomicLoad_UInt16_args;
@@ -16899,7 +17478,7 @@ void SetupIntrinsics()
     AtomicIncrement_UInt16_semantics.name = "semantics"_c;
     AtomicIncrement_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicIncrement_UInt16_semantics.type.literal = true;
-    AtomicIncrement_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicIncrement_UInt16.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicIncrement_UInt16.name = "atomicIncrement"_c;
     AtomicIncrement_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicIncrement_UInt16.parameters = AtomicIncrement_UInt16_args;
@@ -16917,7 +17496,7 @@ void SetupIntrinsics()
     AtomicDecrement_UInt16_semantics.name = "semantics"_c;
     AtomicDecrement_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicDecrement_UInt16_semantics.type.literal = true;
-    AtomicDecrement_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicDecrement_UInt16.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicDecrement_UInt16.name = "atomicDecrement"_c;
     AtomicDecrement_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicDecrement_UInt16.parameters = AtomicDecrement_UInt16_args;
@@ -16935,7 +17514,7 @@ void SetupIntrinsics()
     AtomicLoad_Int16_semantics.name = "semantics"_c;
     AtomicLoad_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicLoad_Int16_semantics.type.literal = true;
-    AtomicLoad_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicLoad_Int16.documentation = "Loads the value at the pointer location with the specified memory semantics"_c;
     AtomicLoad_Int16.name = "atomicLoad"_c;
     AtomicLoad_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicLoad_Int16.parameters = AtomicLoad_Int16_args;
@@ -16953,7 +17532,7 @@ void SetupIntrinsics()
     AtomicIncrement_Int16_semantics.name = "semantics"_c;
     AtomicIncrement_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicIncrement_Int16_semantics.type.literal = true;
-    AtomicIncrement_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicIncrement_Int16.documentation = "Increments the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicIncrement_Int16.name = "atomicIncrement"_c;
     AtomicIncrement_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicIncrement_Int16.parameters = AtomicIncrement_Int16_args;
@@ -16971,7 +17550,7 @@ void SetupIntrinsics()
     AtomicDecrement_Int16_semantics.name = "semantics"_c;
     AtomicDecrement_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicDecrement_Int16_semantics.type.literal = true;
-    AtomicDecrement_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicDecrement_Int16.documentation = "Decrements the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicDecrement_Int16.name = "atomicDecrement"_c;
     AtomicDecrement_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicDecrement_Int16.parameters = AtomicDecrement_Int16_args;
@@ -16991,7 +17570,7 @@ void SetupIntrinsics()
     AtomicStore_UInt32_semantics.name = "semantics"_c;
     AtomicStore_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicStore_UInt32_semantics.type.literal = true;
-    AtomicStore_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicStore_UInt32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicStore_UInt32.name = "atomicStore"_c;
     AtomicStore_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicStore_UInt32.parameters = AtomicStore_UInt32_args;
@@ -17012,7 +17591,7 @@ void SetupIntrinsics()
     AtomicExchange_UInt32_semantics.name = "semantics"_c;
     AtomicExchange_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicExchange_UInt32_semantics.type.literal = true;
-    AtomicExchange_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicExchange_UInt32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
     AtomicExchange_UInt32.name = "atomicExchange"_c;
     AtomicExchange_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicExchange_UInt32.parameters = AtomicExchange_UInt32_args;
@@ -17033,7 +17612,7 @@ void SetupIntrinsics()
     AtomicAdd_UInt32_semantics.name = "semantics"_c;
     AtomicAdd_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicAdd_UInt32_semantics.type.literal = true;
-    AtomicAdd_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicAdd_UInt32.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAdd_UInt32.name = "atomicAdd"_c;
     AtomicAdd_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicAdd_UInt32.parameters = AtomicAdd_UInt32_args;
@@ -17054,7 +17633,7 @@ void SetupIntrinsics()
     AtomicSubtract_UInt32_semantics.name = "semantics"_c;
     AtomicSubtract_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicSubtract_UInt32_semantics.type.literal = true;
-    AtomicSubtract_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicSubtract_UInt32.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicSubtract_UInt32.name = "atomicSubtract"_c;
     AtomicSubtract_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicSubtract_UInt32.parameters = AtomicSubtract_UInt32_args;
@@ -17075,7 +17654,7 @@ void SetupIntrinsics()
     AtomicAnd_UInt32_semantics.name = "semantics"_c;
     AtomicAnd_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicAnd_UInt32_semantics.type.literal = true;
-    AtomicAnd_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicAnd_UInt32.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAnd_UInt32.name = "atomicAnd"_c;
     AtomicAnd_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicAnd_UInt32.parameters = AtomicAnd_UInt32_args;
@@ -17096,7 +17675,7 @@ void SetupIntrinsics()
     AtomicOr_UInt32_semantics.name = "semantics"_c;
     AtomicOr_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicOr_UInt32_semantics.type.literal = true;
-    AtomicOr_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicOr_UInt32.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicOr_UInt32.name = "atomicOr"_c;
     AtomicOr_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicOr_UInt32.parameters = AtomicOr_UInt32_args;
@@ -17117,7 +17696,7 @@ void SetupIntrinsics()
     AtomicXor_UInt32_semantics.name = "semantics"_c;
     AtomicXor_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicXor_UInt32_semantics.type.literal = true;
-    AtomicXor_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicXor_UInt32.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicXor_UInt32.name = "atomicXor"_c;
     AtomicXor_UInt32.returnType = Type::FullType { UInt32Type.name };
     AtomicXor_UInt32.parameters = AtomicXor_UInt32_args;
@@ -17138,7 +17717,7 @@ void SetupIntrinsics()
     AtomicStore_Int32_semantics.name = "semantics"_c;
     AtomicStore_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicStore_Int32_semantics.type.literal = true;
-    AtomicStore_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicStore_Int32.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicStore_Int32.name = "atomicStore"_c;
     AtomicStore_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicStore_Int32.parameters = AtomicStore_Int32_args;
@@ -17159,7 +17738,7 @@ void SetupIntrinsics()
     AtomicExchange_Int32_semantics.name = "semantics"_c;
     AtomicExchange_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicExchange_Int32_semantics.type.literal = true;
-    AtomicExchange_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicExchange_Int32.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
     AtomicExchange_Int32.name = "atomicExchange"_c;
     AtomicExchange_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicExchange_Int32.parameters = AtomicExchange_Int32_args;
@@ -17180,7 +17759,7 @@ void SetupIntrinsics()
     AtomicAdd_Int32_semantics.name = "semantics"_c;
     AtomicAdd_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicAdd_Int32_semantics.type.literal = true;
-    AtomicAdd_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicAdd_Int32.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAdd_Int32.name = "atomicAdd"_c;
     AtomicAdd_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicAdd_Int32.parameters = AtomicAdd_Int32_args;
@@ -17201,7 +17780,7 @@ void SetupIntrinsics()
     AtomicSubtract_Int32_semantics.name = "semantics"_c;
     AtomicSubtract_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicSubtract_Int32_semantics.type.literal = true;
-    AtomicSubtract_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicSubtract_Int32.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicSubtract_Int32.name = "atomicSubtract"_c;
     AtomicSubtract_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicSubtract_Int32.parameters = AtomicSubtract_Int32_args;
@@ -17222,7 +17801,7 @@ void SetupIntrinsics()
     AtomicAnd_Int32_semantics.name = "semantics"_c;
     AtomicAnd_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicAnd_Int32_semantics.type.literal = true;
-    AtomicAnd_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicAnd_Int32.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAnd_Int32.name = "atomicAnd"_c;
     AtomicAnd_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicAnd_Int32.parameters = AtomicAnd_Int32_args;
@@ -17243,7 +17822,7 @@ void SetupIntrinsics()
     AtomicOr_Int32_semantics.name = "semantics"_c;
     AtomicOr_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicOr_Int32_semantics.type.literal = true;
-    AtomicOr_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicOr_Int32.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicOr_Int32.name = "atomicOr"_c;
     AtomicOr_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicOr_Int32.parameters = AtomicOr_Int32_args;
@@ -17264,7 +17843,7 @@ void SetupIntrinsics()
     AtomicXor_Int32_semantics.name = "semantics"_c;
     AtomicXor_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicXor_Int32_semantics.type.literal = true;
-    AtomicXor_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicXor_Int32.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicXor_Int32.name = "atomicXor"_c;
     AtomicXor_Int32.returnType = Type::FullType { Int32Type.name };
     AtomicXor_Int32.parameters = AtomicXor_Int32_args;
@@ -17285,7 +17864,7 @@ void SetupIntrinsics()
     AtomicStore_UInt16_semantics.name = "semantics"_c;
     AtomicStore_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicStore_UInt16_semantics.type.literal = true;
-    AtomicStore_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicStore_UInt16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicStore_UInt16.name = "atomicStore"_c;
     AtomicStore_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicStore_UInt16.parameters = AtomicStore_UInt16_args;
@@ -17306,7 +17885,7 @@ void SetupIntrinsics()
     AtomicExchange_UInt16_semantics.name = "semantics"_c;
     AtomicExchange_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicExchange_UInt16_semantics.type.literal = true;
-    AtomicExchange_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicExchange_UInt16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
     AtomicExchange_UInt16.name = "atomicExchange"_c;
     AtomicExchange_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicExchange_UInt16.parameters = AtomicExchange_UInt16_args;
@@ -17327,7 +17906,7 @@ void SetupIntrinsics()
     AtomicAdd_UInt16_semantics.name = "semantics"_c;
     AtomicAdd_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicAdd_UInt16_semantics.type.literal = true;
-    AtomicAdd_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicAdd_UInt16.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAdd_UInt16.name = "atomicAdd"_c;
     AtomicAdd_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicAdd_UInt16.parameters = AtomicAdd_UInt16_args;
@@ -17348,7 +17927,7 @@ void SetupIntrinsics()
     AtomicSubtract_UInt16_semantics.name = "semantics"_c;
     AtomicSubtract_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicSubtract_UInt16_semantics.type.literal = true;
-    AtomicSubtract_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicSubtract_UInt16.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicSubtract_UInt16.name = "atomicSubtract"_c;
     AtomicSubtract_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicSubtract_UInt16.parameters = AtomicSubtract_UInt16_args;
@@ -17369,7 +17948,7 @@ void SetupIntrinsics()
     AtomicAnd_UInt16_semantics.name = "semantics"_c;
     AtomicAnd_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicAnd_UInt16_semantics.type.literal = true;
-    AtomicAnd_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicAnd_UInt16.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAnd_UInt16.name = "atomicAnd"_c;
     AtomicAnd_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicAnd_UInt16.parameters = AtomicAnd_UInt16_args;
@@ -17390,7 +17969,7 @@ void SetupIntrinsics()
     AtomicOr_UInt16_semantics.name = "semantics"_c;
     AtomicOr_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicOr_UInt16_semantics.type.literal = true;
-    AtomicOr_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicOr_UInt16.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicOr_UInt16.name = "atomicOr"_c;
     AtomicOr_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicOr_UInt16.parameters = AtomicOr_UInt16_args;
@@ -17411,7 +17990,7 @@ void SetupIntrinsics()
     AtomicXor_UInt16_semantics.name = "semantics"_c;
     AtomicXor_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicXor_UInt16_semantics.type.literal = true;
-    AtomicXor_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicXor_UInt16.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicXor_UInt16.name = "atomicXor"_c;
     AtomicXor_UInt16.returnType = Type::FullType { UInt16Type.name };
     AtomicXor_UInt16.parameters = AtomicXor_UInt16_args;
@@ -17432,7 +18011,7 @@ void SetupIntrinsics()
     AtomicStore_Int16_semantics.name = "semantics"_c;
     AtomicStore_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicStore_Int16_semantics.type.literal = true;
-    AtomicStore_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicStore_Int16.documentation = "Stores the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicStore_Int16.name = "atomicStore"_c;
     AtomicStore_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicStore_Int16.parameters = AtomicStore_Int16_args;
@@ -17453,7 +18032,7 @@ void SetupIntrinsics()
     AtomicExchange_Int16_semantics.name = "semantics"_c;
     AtomicExchange_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicExchange_Int16_semantics.type.literal = true;
-    AtomicExchange_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicExchange_Int16.documentation = "Exchanges the value at the pointer location with the specified value and memory semantics, returns the old value"_c;
     AtomicExchange_Int16.name = "atomicExchange"_c;
     AtomicExchange_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicExchange_Int16.parameters = AtomicExchange_Int16_args;
@@ -17474,7 +18053,7 @@ void SetupIntrinsics()
     AtomicAdd_Int16_semantics.name = "semantics"_c;
     AtomicAdd_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicAdd_Int16_semantics.type.literal = true;
-    AtomicAdd_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicAdd_Int16.documentation = "Adds the value to the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAdd_Int16.name = "atomicAdd"_c;
     AtomicAdd_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicAdd_Int16.parameters = AtomicAdd_Int16_args;
@@ -17495,7 +18074,7 @@ void SetupIntrinsics()
     AtomicSubtract_Int16_semantics.name = "semantics"_c;
     AtomicSubtract_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicSubtract_Int16_semantics.type.literal = true;
-    AtomicSubtract_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicSubtract_Int16.documentation = "Subtracts the value from the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicSubtract_Int16.name = "atomicSubtract"_c;
     AtomicSubtract_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicSubtract_Int16.parameters = AtomicSubtract_Int16_args;
@@ -17516,7 +18095,7 @@ void SetupIntrinsics()
     AtomicAnd_Int16_semantics.name = "semantics"_c;
     AtomicAnd_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicAnd_Int16_semantics.type.literal = true;
-    AtomicAnd_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicAnd_Int16.documentation = "Performs a bitwise AND operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicAnd_Int16.name = "atomicAnd"_c;
     AtomicAnd_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicAnd_Int16.parameters = AtomicAnd_Int16_args;
@@ -17537,7 +18116,7 @@ void SetupIntrinsics()
     AtomicOr_Int16_semantics.name = "semantics"_c;
     AtomicOr_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicOr_Int16_semantics.type.literal = true;
-    AtomicOr_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicOr_Int16.documentation = "Performs a bitwise OR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicOr_Int16.name = "atomicOr"_c;
     AtomicOr_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicOr_Int16.parameters = AtomicOr_Int16_args;
@@ -17558,7 +18137,7 @@ void SetupIntrinsics()
     AtomicXor_Int16_semantics.name = "semantics"_c;
     AtomicXor_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicXor_Int16_semantics.type.literal = true;
-    AtomicXor_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicXor_Int16.documentation = "Performs a bitwise XOR operation with the value at the pointer location with the specified memory semantics, returns the old value"_c;
     AtomicXor_Int16.name = "atomicXor"_c;
     AtomicXor_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicXor_Int16.parameters = AtomicXor_Int16_args;
@@ -17581,7 +18160,7 @@ void SetupIntrinsics()
     AtomicCompareExchange_UInt32_semantics.name = "semantics"_c;
     AtomicCompareExchange_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicCompareExchange_UInt32_semantics.type.literal = true;
-    AtomicCompareExchange_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicCompareExchange_UInt32.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
     AtomicCompareExchange_UInt32.name = "atomicCompareExchange"_c;
     AtomicCompareExchange_UInt32.returnType = Type::FullType { Int16Type.name };
     AtomicCompareExchange_UInt32.parameters = AtomicCompareExchange_UInt32_args;
@@ -17605,7 +18184,7 @@ void SetupIntrinsics()
     AtomicCompareExchange_Int32_semantics.name = "semantics"_c;
     AtomicCompareExchange_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicCompareExchange_Int32_semantics.type.literal = true;
-    AtomicCompareExchange_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicCompareExchange_Int32.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
     AtomicCompareExchange_Int32.name = "atomicCompareExchange"_c;
     AtomicCompareExchange_Int32.returnType = Type::FullType { Int16Type.name };
     AtomicCompareExchange_Int32.parameters = AtomicCompareExchange_Int32_args;
@@ -17629,7 +18208,7 @@ void SetupIntrinsics()
     AtomicCompareExchange_UInt16_semantics.name = "semantics"_c;
     AtomicCompareExchange_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicCompareExchange_UInt16_semantics.type.literal = true;
-    AtomicCompareExchange_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicCompareExchange_UInt16.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
     AtomicCompareExchange_UInt16.name = "atomicCompareExchange"_c;
     AtomicCompareExchange_UInt16.returnType = Type::FullType { Int16Type.name };
     AtomicCompareExchange_UInt16.parameters = AtomicCompareExchange_UInt16_args;
@@ -17653,7 +18232,7 @@ void SetupIntrinsics()
     AtomicCompareExchange_Int16_semantics.name = "semantics"_c;
     AtomicCompareExchange_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicCompareExchange_Int16_semantics.type.literal = true;
-    AtomicCompareExchange_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
+    AtomicCompareExchange_Int16.documentation = "Compares the value at the pointer location with the comparison, and exchanges it with value if they are identical using the specified memory semantics, always returns the old value"_c;
     AtomicCompareExchange_Int16.name = "atomicCompareExchange"_c;
     AtomicCompareExchange_Int16.returnType = Type::FullType { Int16Type.name };
     AtomicCompareExchange_Int16.parameters = AtomicCompareExchange_Int16_args;
@@ -17789,6 +18368,7 @@ void SetupIntrinsics()
     /// bitReverse with UInt32
     BitReverse_UInt32_base.name = "base"_c;
     BitReverse_UInt32_base.type = Type::FullType{ UInt32Type.name };
+    BitReverse_UInt32.documentation = "Reverses the bits in a bitmask"_c;
     BitReverse_UInt32.name = "bitReverse"_c;
     BitReverse_UInt32.returnType = Type::FullType { UInt32Type.name };
     BitReverse_UInt32.parameters = BitReverse_UInt32_args;
@@ -17801,6 +18381,7 @@ void SetupIntrinsics()
     /// bitReverse with Int32
     BitReverse_Int32_base.name = "base"_c;
     BitReverse_Int32_base.type = Type::FullType{ Int32Type.name };
+    BitReverse_Int32.documentation = "Reverses the bits in a bitmask"_c;
     BitReverse_Int32.name = "bitReverse"_c;
     BitReverse_Int32.returnType = Type::FullType { Int32Type.name };
     BitReverse_Int32.parameters = BitReverse_Int32_args;
@@ -17813,6 +18394,7 @@ void SetupIntrinsics()
     /// bitReverse with UInt16
     BitReverse_UInt16_base.name = "base"_c;
     BitReverse_UInt16_base.type = Type::FullType{ UInt16Type.name };
+    BitReverse_UInt16.documentation = "Reverses the bits in a bitmask"_c;
     BitReverse_UInt16.name = "bitReverse"_c;
     BitReverse_UInt16.returnType = Type::FullType { UInt16Type.name };
     BitReverse_UInt16.parameters = BitReverse_UInt16_args;
@@ -17825,6 +18407,7 @@ void SetupIntrinsics()
     /// bitReverse with Int16
     BitReverse_Int16_base.name = "base"_c;
     BitReverse_Int16_base.type = Type::FullType{ Int16Type.name };
+    BitReverse_Int16.documentation = "Reverses the bits in a bitmask"_c;
     BitReverse_Int16.name = "bitReverse"_c;
     BitReverse_Int16.returnType = Type::FullType { Int16Type.name };
     BitReverse_Int16.parameters = BitReverse_Int16_args;
@@ -17837,6 +18420,7 @@ void SetupIntrinsics()
     /// bitCount with UInt32
     BitCount_UInt32_base.name = "base"_c;
     BitCount_UInt32_base.type = Type::FullType{ UInt32Type.name };
+    BitCount_UInt32.documentation = "Counts the number of bits set to 1 in a bitmask"_c;
     BitCount_UInt32.name = "bitCount"_c;
     BitCount_UInt32.returnType = Type::FullType { UInt32Type.name };
     BitCount_UInt32.parameters = BitCount_UInt32_args;
@@ -17849,6 +18433,7 @@ void SetupIntrinsics()
     /// bitCount with Int32
     BitCount_Int32_base.name = "base"_c;
     BitCount_Int32_base.type = Type::FullType{ Int32Type.name };
+    BitCount_Int32.documentation = "Counts the number of bits set to 1 in a bitmask"_c;
     BitCount_Int32.name = "bitCount"_c;
     BitCount_Int32.returnType = Type::FullType { Int32Type.name };
     BitCount_Int32.parameters = BitCount_Int32_args;
@@ -17861,6 +18446,7 @@ void SetupIntrinsics()
     /// bitCount with UInt16
     BitCount_UInt16_base.name = "base"_c;
     BitCount_UInt16_base.type = Type::FullType{ UInt16Type.name };
+    BitCount_UInt16.documentation = "Counts the number of bits set to 1 in a bitmask"_c;
     BitCount_UInt16.name = "bitCount"_c;
     BitCount_UInt16.returnType = Type::FullType { UInt16Type.name };
     BitCount_UInt16.parameters = BitCount_UInt16_args;
@@ -17873,6 +18459,7 @@ void SetupIntrinsics()
     /// bitCount with Int16
     BitCount_Int16_base.name = "base"_c;
     BitCount_Int16_base.type = Type::FullType{ Int16Type.name };
+    BitCount_Int16.documentation = "Counts the number of bits set to 1 in a bitmask"_c;
     BitCount_Int16.name = "bitCount"_c;
     BitCount_Int16.returnType = Type::FullType { Int16Type.name };
     BitCount_Int16.parameters = BitCount_Int16_args;
@@ -17883,6 +18470,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&BitCount_Int16)->returnTypeSymbol = &Int16Type;
 
     /// executionBarrier
+    ExecutionBarrier.documentation = "Execution barrier to ensure all threads have reached this point before proceeding"_c;
     ExecutionBarrier.name = "executionBarrier"_c;
     ExecutionBarrier.returnType = Type::FullType { Int16Type.name };
     Symbol::Resolved(&ExecutionBarrier)->signature = "i16 executionBarrier()"_c;
@@ -17891,6 +18479,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&ExecutionBarrier)->returnTypeSymbol = &Int16Type;
 
     /// executionBarrierSubgroup
+    ExecutionBarrierSubgroup.documentation = "Execution barrier to ensure all threads in the subgroup have reached this point before proceeding"_c;
     ExecutionBarrierSubgroup.name = "executionBarrierSubgroup"_c;
     ExecutionBarrierSubgroup.returnType = Type::FullType { Int16Type.name };
     Symbol::Resolved(&ExecutionBarrierSubgroup)->signature = "i16 executionBarrierSubgroup()"_c;
@@ -17899,6 +18488,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&ExecutionBarrierSubgroup)->returnTypeSymbol = &Int16Type;
 
     /// executionBarrierWorkgroup
+    ExecutionBarrierWorkgroup.documentation = "Execution barrier to ensure all threads in the workgroup have reached this point before proceeding"_c;
     ExecutionBarrierWorkgroup.name = "executionBarrierWorkgroup"_c;
     ExecutionBarrierWorkgroup.returnType = Type::FullType { Int16Type.name };
     Symbol::Resolved(&ExecutionBarrierWorkgroup)->signature = "i16 executionBarrierWorkgroup()"_c;
@@ -17907,6 +18497,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&ExecutionBarrierWorkgroup)->returnTypeSymbol = &Int16Type;
 
     /// memoryBarrier
+    MemoryBarrier.documentation = "Memory barrier to ensure memory operations are completed before proceeding"_c;
     MemoryBarrier.name = "memoryBarrier"_c;
     MemoryBarrier.returnType = Type::FullType { Int16Type.name };
     Symbol::Resolved(&MemoryBarrier)->signature = "i16 memoryBarrier()"_c;
@@ -17915,6 +18506,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&MemoryBarrier)->returnTypeSymbol = &Int16Type;
 
     /// memoryBarrierBuffer
+    MemoryBarrierBuffer.documentation = "Memory barrier to ensure buffer memory operations are completed before proceeding"_c;
     MemoryBarrierBuffer.name = "memoryBarrierBuffer"_c;
     MemoryBarrierBuffer.returnType = Type::FullType { Int16Type.name };
     Symbol::Resolved(&MemoryBarrierBuffer)->signature = "i16 memoryBarrierBuffer()"_c;
@@ -17923,6 +18515,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&MemoryBarrierBuffer)->returnTypeSymbol = &Int16Type;
 
     /// memoryBarrierTexture
+    MemoryBarrierTexture.documentation = "Memory barrier to ensure texture memory operations are completed before proceeding"_c;
     MemoryBarrierTexture.name = "memoryBarrierTexture"_c;
     MemoryBarrierTexture.returnType = Type::FullType { Int16Type.name };
     Symbol::Resolved(&MemoryBarrierTexture)->signature = "i16 memoryBarrierTexture()"_c;
@@ -17931,6 +18524,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&MemoryBarrierTexture)->returnTypeSymbol = &Int16Type;
 
     /// memoryBarrierAtomic
+    MemoryBarrierAtomic.documentation = "Memory barrier to ensure atomic memory operations are completed before proceeding"_c;
     MemoryBarrierAtomic.name = "memoryBarrierAtomic"_c;
     MemoryBarrierAtomic.returnType = Type::FullType { Int16Type.name };
     Symbol::Resolved(&MemoryBarrierAtomic)->signature = "i16 memoryBarrierAtomic()"_c;
@@ -17939,6 +18533,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&MemoryBarrierAtomic)->returnTypeSymbol = &Int16Type;
 
     /// memoryBarrierSubgroup
+    MemoryBarrierSubgroup.documentation = "Memory barrier to ensure subgroup memory operations are completed before proceeding"_c;
     MemoryBarrierSubgroup.name = "memoryBarrierSubgroup"_c;
     MemoryBarrierSubgroup.returnType = Type::FullType { Int16Type.name };
     Symbol::Resolved(&MemoryBarrierSubgroup)->signature = "i16 memoryBarrierSubgroup()"_c;
@@ -17947,6 +18542,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&MemoryBarrierSubgroup)->returnTypeSymbol = &Int16Type;
 
     /// memoryBarrierWorkgroup
+    MemoryBarrierWorkgroup.documentation = "Memory barrier to ensure workgroup memory operations are completed before proceeding"_c;
     MemoryBarrierWorkgroup.name = "memoryBarrierWorkgroup"_c;
     MemoryBarrierWorkgroup.returnType = Type::FullType { Int16Type.name };
     Symbol::Resolved(&MemoryBarrierWorkgroup)->signature = "i16 memoryBarrierWorkgroup()"_c;
@@ -17958,6 +18554,7 @@ void SetupIntrinsics()
     TextureGetSize_Texture1D_texture.name = "texture"_c;
     TextureGetSize_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureGetSize_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
+    TextureGetSize_Texture1D.documentation = "Get the size of a texture"_c;
     TextureGetSize_Texture1D.name = "textureGetSize"_c;
     TextureGetSize_Texture1D.returnType = Type::FullType { UInt32Type.name };
     TextureGetSize_Texture1D.parameters = TextureGetSize_Texture1D_args;
@@ -17972,6 +18569,7 @@ void SetupIntrinsics()
     TextureGetSize_Texture2D_texture.name = "texture"_c;
     TextureGetSize_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureGetSize_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
+    TextureGetSize_Texture2D.documentation = "Get the size of a texture"_c;
     TextureGetSize_Texture2D.name = "textureGetSize"_c;
     TextureGetSize_Texture2D.returnType = Type::FullType { UInt32x2Type.name };
     TextureGetSize_Texture2D.parameters = TextureGetSize_Texture2D_args;
@@ -17986,6 +18584,7 @@ void SetupIntrinsics()
     TextureGetSize_Texture3D_texture.name = "texture"_c;
     TextureGetSize_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureGetSize_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
+    TextureGetSize_Texture3D.documentation = "Get the size of a texture"_c;
     TextureGetSize_Texture3D.name = "textureGetSize"_c;
     TextureGetSize_Texture3D.returnType = Type::FullType { UInt32x3Type.name };
     TextureGetSize_Texture3D.parameters = TextureGetSize_Texture3D_args;
@@ -18000,6 +18599,7 @@ void SetupIntrinsics()
     TextureGetSize_TextureCube_texture.name = "texture"_c;
     TextureGetSize_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
     TextureGetSize_TextureCube_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
+    TextureGetSize_TextureCube.documentation = "Get the size of a texture"_c;
     TextureGetSize_TextureCube.name = "textureGetSize"_c;
     TextureGetSize_TextureCube.returnType = Type::FullType { UInt32x3Type.name };
     TextureGetSize_TextureCube.parameters = TextureGetSize_TextureCube_args;
@@ -18014,6 +18614,7 @@ void SetupIntrinsics()
     TextureGetSize_Texture1DArray_texture.name = "texture"_c;
     TextureGetSize_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
     TextureGetSize_Texture1DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
+    TextureGetSize_Texture1DArray.documentation = "Get the size of a texture"_c;
     TextureGetSize_Texture1DArray.name = "textureGetSize"_c;
     TextureGetSize_Texture1DArray.returnType = Type::FullType { UInt32x2Type.name };
     TextureGetSize_Texture1DArray.parameters = TextureGetSize_Texture1DArray_args;
@@ -18028,6 +18629,7 @@ void SetupIntrinsics()
     TextureGetSize_Texture2DArray_texture.name = "texture"_c;
     TextureGetSize_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
     TextureGetSize_Texture2DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
+    TextureGetSize_Texture2DArray.documentation = "Get the size of a texture"_c;
     TextureGetSize_Texture2DArray.name = "textureGetSize"_c;
     TextureGetSize_Texture2DArray.returnType = Type::FullType { UInt32x3Type.name };
     TextureGetSize_Texture2DArray.parameters = TextureGetSize_Texture2DArray_args;
@@ -18042,6 +18644,7 @@ void SetupIntrinsics()
     TextureGetSize_TextureCubeArray_texture.name = "texture"_c;
     TextureGetSize_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
     TextureGetSize_TextureCubeArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
+    TextureGetSize_TextureCubeArray.documentation = "Get the size of a texture"_c;
     TextureGetSize_TextureCubeArray.name = "textureGetSize"_c;
     TextureGetSize_TextureCubeArray.returnType = Type::FullType { UInt32x4Type.name };
     TextureGetSize_TextureCubeArray.parameters = TextureGetSize_TextureCubeArray_args;
@@ -18058,6 +18661,7 @@ void SetupIntrinsics()
     TextureGetSizeMip_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSizeMip_Texture1D_mip.name = "mip"_c;
     TextureGetSizeMip_Texture1D_mip.type = Type::FullType{ UInt32Type.name };
+    TextureGetSizeMip_Texture1D.documentation = "Get the size of a texture at a specific mip level"_c;
     TextureGetSizeMip_Texture1D.name = "textureGetSizeMip"_c;
     TextureGetSizeMip_Texture1D.returnType = Type::FullType { UInt32Type.name };
     TextureGetSizeMip_Texture1D.parameters = TextureGetSizeMip_Texture1D_args;
@@ -18075,6 +18679,7 @@ void SetupIntrinsics()
     TextureGetSizeMip_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSizeMip_Texture2D_mip.name = "mip"_c;
     TextureGetSizeMip_Texture2D_mip.type = Type::FullType{ UInt32Type.name };
+    TextureGetSizeMip_Texture2D.documentation = "Get the size of a texture at a specific mip level"_c;
     TextureGetSizeMip_Texture2D.name = "textureGetSizeMip"_c;
     TextureGetSizeMip_Texture2D.returnType = Type::FullType { UInt32x2Type.name };
     TextureGetSizeMip_Texture2D.parameters = TextureGetSizeMip_Texture2D_args;
@@ -18092,6 +18697,7 @@ void SetupIntrinsics()
     TextureGetSizeMip_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSizeMip_Texture3D_mip.name = "mip"_c;
     TextureGetSizeMip_Texture3D_mip.type = Type::FullType{ UInt32Type.name };
+    TextureGetSizeMip_Texture3D.documentation = "Get the size of a texture at a specific mip level"_c;
     TextureGetSizeMip_Texture3D.name = "textureGetSizeMip"_c;
     TextureGetSizeMip_Texture3D.returnType = Type::FullType { UInt32x3Type.name };
     TextureGetSizeMip_Texture3D.parameters = TextureGetSizeMip_Texture3D_args;
@@ -18109,6 +18715,7 @@ void SetupIntrinsics()
     TextureGetSizeMip_TextureCube_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSizeMip_TextureCube_mip.name = "mip"_c;
     TextureGetSizeMip_TextureCube_mip.type = Type::FullType{ UInt32Type.name };
+    TextureGetSizeMip_TextureCube.documentation = "Get the size of a texture at a specific mip level"_c;
     TextureGetSizeMip_TextureCube.name = "textureGetSizeMip"_c;
     TextureGetSizeMip_TextureCube.returnType = Type::FullType { UInt32x3Type.name };
     TextureGetSizeMip_TextureCube.parameters = TextureGetSizeMip_TextureCube_args;
@@ -18126,6 +18733,7 @@ void SetupIntrinsics()
     TextureGetSizeMip_Texture1DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSizeMip_Texture1DArray_mip.name = "mip"_c;
     TextureGetSizeMip_Texture1DArray_mip.type = Type::FullType{ UInt32Type.name };
+    TextureGetSizeMip_Texture1DArray.documentation = "Get the size of a texture at a specific mip level"_c;
     TextureGetSizeMip_Texture1DArray.name = "textureGetSizeMip"_c;
     TextureGetSizeMip_Texture1DArray.returnType = Type::FullType { UInt32x2Type.name };
     TextureGetSizeMip_Texture1DArray.parameters = TextureGetSizeMip_Texture1DArray_args;
@@ -18143,6 +18751,7 @@ void SetupIntrinsics()
     TextureGetSizeMip_Texture2DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSizeMip_Texture2DArray_mip.name = "mip"_c;
     TextureGetSizeMip_Texture2DArray_mip.type = Type::FullType{ UInt32Type.name };
+    TextureGetSizeMip_Texture2DArray.documentation = "Get the size of a texture at a specific mip level"_c;
     TextureGetSizeMip_Texture2DArray.name = "textureGetSizeMip"_c;
     TextureGetSizeMip_Texture2DArray.returnType = Type::FullType { UInt32x3Type.name };
     TextureGetSizeMip_Texture2DArray.parameters = TextureGetSizeMip_Texture2DArray_args;
@@ -18160,6 +18769,7 @@ void SetupIntrinsics()
     TextureGetSizeMip_TextureCubeArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSizeMip_TextureCubeArray_mip.name = "mip"_c;
     TextureGetSizeMip_TextureCubeArray_mip.type = Type::FullType{ UInt32Type.name };
+    TextureGetSizeMip_TextureCubeArray.documentation = "Get the size of a texture at a specific mip level"_c;
     TextureGetSizeMip_TextureCubeArray.name = "textureGetSizeMip"_c;
     TextureGetSizeMip_TextureCubeArray.returnType = Type::FullType { UInt32x4Type.name };
     TextureGetSizeMip_TextureCubeArray.parameters = TextureGetSizeMip_TextureCubeArray_args;
@@ -18175,6 +18785,7 @@ void SetupIntrinsics()
     TextureGetMips_Texture1D_texture.name = "texture"_c;
     TextureGetMips_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureGetMips_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
+    TextureGetMips_Texture1D.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_Texture1D.name = "textureGetMips"_c;
     TextureGetMips_Texture1D.returnType = Type::FullType { Texture1DType.name };
     TextureGetMips_Texture1D.parameters = TextureGetMips_Texture1D_args;
@@ -18189,6 +18800,7 @@ void SetupIntrinsics()
     TextureGetMips_Texture2D_texture.name = "texture"_c;
     TextureGetMips_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
     TextureGetMips_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
+    TextureGetMips_Texture2D.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_Texture2D.name = "textureGetMips"_c;
     TextureGetMips_Texture2D.returnType = Type::FullType { Texture2DType.name };
     TextureGetMips_Texture2D.parameters = TextureGetMips_Texture2D_args;
@@ -18203,6 +18815,7 @@ void SetupIntrinsics()
     TextureGetMips_Texture3D_texture.name = "texture"_c;
     TextureGetMips_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
     TextureGetMips_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
+    TextureGetMips_Texture3D.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_Texture3D.name = "textureGetMips"_c;
     TextureGetMips_Texture3D.returnType = Type::FullType { Texture3DType.name };
     TextureGetMips_Texture3D.parameters = TextureGetMips_Texture3D_args;
@@ -18217,6 +18830,7 @@ void SetupIntrinsics()
     TextureGetMips_TextureCube_texture.name = "texture"_c;
     TextureGetMips_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
     TextureGetMips_TextureCube_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
+    TextureGetMips_TextureCube.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_TextureCube.name = "textureGetMips"_c;
     TextureGetMips_TextureCube.returnType = Type::FullType { TextureCubeType.name };
     TextureGetMips_TextureCube.parameters = TextureGetMips_TextureCube_args;
@@ -18231,6 +18845,7 @@ void SetupIntrinsics()
     TextureGetMips_Texture1DArray_texture.name = "texture"_c;
     TextureGetMips_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
     TextureGetMips_Texture1DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
+    TextureGetMips_Texture1DArray.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_Texture1DArray.name = "textureGetMips"_c;
     TextureGetMips_Texture1DArray.returnType = Type::FullType { Texture1DArrayType.name };
     TextureGetMips_Texture1DArray.parameters = TextureGetMips_Texture1DArray_args;
@@ -18245,6 +18860,7 @@ void SetupIntrinsics()
     TextureGetMips_Texture2DArray_texture.name = "texture"_c;
     TextureGetMips_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
     TextureGetMips_Texture2DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
+    TextureGetMips_Texture2DArray.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_Texture2DArray.name = "textureGetMips"_c;
     TextureGetMips_Texture2DArray.returnType = Type::FullType { Texture2DArrayType.name };
     TextureGetMips_Texture2DArray.parameters = TextureGetMips_Texture2DArray_args;
@@ -18259,6 +18875,7 @@ void SetupIntrinsics()
     TextureGetMips_TextureCubeArray_texture.name = "texture"_c;
     TextureGetMips_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
     TextureGetMips_TextureCubeArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
+    TextureGetMips_TextureCubeArray.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_TextureCubeArray.name = "textureGetMips"_c;
     TextureGetMips_TextureCubeArray.returnType = Type::FullType { TextureCubeArrayType.name };
     TextureGetMips_TextureCubeArray.parameters = TextureGetMips_TextureCubeArray_args;
@@ -18273,6 +18890,7 @@ void SetupIntrinsics()
     TextureGetSamples_Texture2DMS_texture.name = "texture"_c;
     TextureGetSamples_Texture2DMS_texture.type = Type::FullType{ Texture2DMSType.name };
     TextureGetSamples_Texture2DMS_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
+    TextureGetSamples_Texture2DMS.documentation = "Get the number of samples in a multisampled texture"_c;
     TextureGetSamples_Texture2DMS.name = "textureGetSamples"_c;
     TextureGetSamples_Texture2DMS.returnType = Type::FullType { Texture2DMSType.name };
     TextureGetSamples_Texture2DMS.parameters = TextureGetSamples_Texture2DMS_args;
@@ -18287,6 +18905,7 @@ void SetupIntrinsics()
     TextureGetSamples_Texture2DMSArray_texture.name = "texture"_c;
     TextureGetSamples_Texture2DMSArray_texture.type = Type::FullType{ Texture2DMSArrayType.name };
     TextureGetSamples_Texture2DMSArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
+    TextureGetSamples_Texture2DMSArray.documentation = "Get the number of samples in a multisampled texture"_c;
     TextureGetSamples_Texture2DMSArray.name = "textureGetSamples"_c;
     TextureGetSamples_Texture2DMSArray.returnType = Type::FullType { Texture2DMSArrayType.name };
     TextureGetSamples_Texture2DMSArray.parameters = TextureGetSamples_Texture2DMSArray_args;
@@ -18306,6 +18925,7 @@ void SetupIntrinsics()
     TextureGetSampledMip_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSampledMip_Texture1D_coordinate.name = "coordinate"_c;
     TextureGetSampledMip_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
+    TextureGetSampledMip_Texture1D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     TextureGetSampledMip_Texture1D.name = "textureGetSampledMip"_c;
     TextureGetSampledMip_Texture1D.returnType = Type::FullType { Float32x2Type.name };
     TextureGetSampledMip_Texture1D.parameters = TextureGetSampledMip_Texture1D_args;
@@ -18325,6 +18945,7 @@ void SetupIntrinsics()
     SampledTextureGetSampledMip_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     SampledTextureGetSampledMip_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureGetSampledMip_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
+    SampledTextureGetSampledMip_Texture1D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     SampledTextureGetSampledMip_Texture1D.name = "textureGetSampledMip"_c;
     SampledTextureGetSampledMip_Texture1D.returnType = Type::FullType { Float32x2Type.name };
     SampledTextureGetSampledMip_Texture1D.parameters = SampledTextureGetSampledMip_Texture1D_args;
@@ -18345,6 +18966,7 @@ void SetupIntrinsics()
     TextureGetSampledMip_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSampledMip_Texture2D_coordinate.name = "coordinate"_c;
     TextureGetSampledMip_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
+    TextureGetSampledMip_Texture2D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     TextureGetSampledMip_Texture2D.name = "textureGetSampledMip"_c;
     TextureGetSampledMip_Texture2D.returnType = Type::FullType { Float32x2Type.name };
     TextureGetSampledMip_Texture2D.parameters = TextureGetSampledMip_Texture2D_args;
@@ -18364,6 +18986,7 @@ void SetupIntrinsics()
     SampledTextureGetSampledMip_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     SampledTextureGetSampledMip_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureGetSampledMip_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureGetSampledMip_Texture2D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     SampledTextureGetSampledMip_Texture2D.name = "textureGetSampledMip"_c;
     SampledTextureGetSampledMip_Texture2D.returnType = Type::FullType { Float32x2Type.name };
     SampledTextureGetSampledMip_Texture2D.parameters = SampledTextureGetSampledMip_Texture2D_args;
@@ -18384,6 +19007,7 @@ void SetupIntrinsics()
     TextureGetSampledMip_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSampledMip_Texture3D_coordinate.name = "coordinate"_c;
     TextureGetSampledMip_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
+    TextureGetSampledMip_Texture3D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     TextureGetSampledMip_Texture3D.name = "textureGetSampledMip"_c;
     TextureGetSampledMip_Texture3D.returnType = Type::FullType { Float32x2Type.name };
     TextureGetSampledMip_Texture3D.parameters = TextureGetSampledMip_Texture3D_args;
@@ -18403,6 +19027,7 @@ void SetupIntrinsics()
     SampledTextureGetSampledMip_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     SampledTextureGetSampledMip_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureGetSampledMip_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureGetSampledMip_Texture3D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     SampledTextureGetSampledMip_Texture3D.name = "textureGetSampledMip"_c;
     SampledTextureGetSampledMip_Texture3D.returnType = Type::FullType { Float32x2Type.name };
     SampledTextureGetSampledMip_Texture3D.parameters = SampledTextureGetSampledMip_Texture3D_args;
@@ -18423,6 +19048,7 @@ void SetupIntrinsics()
     TextureGetSampledMip_TextureCube_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSampledMip_TextureCube_coordinate.name = "coordinate"_c;
     TextureGetSampledMip_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
+    TextureGetSampledMip_TextureCube.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     TextureGetSampledMip_TextureCube.name = "textureGetSampledMip"_c;
     TextureGetSampledMip_TextureCube.returnType = Type::FullType { Float32x2Type.name };
     TextureGetSampledMip_TextureCube.parameters = TextureGetSampledMip_TextureCube_args;
@@ -18442,6 +19068,7 @@ void SetupIntrinsics()
     SampledTextureGetSampledMip_TextureCube_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     SampledTextureGetSampledMip_TextureCube_coordinate.name = "coordinate"_c;
     SampledTextureGetSampledMip_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureGetSampledMip_TextureCube.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     SampledTextureGetSampledMip_TextureCube.name = "textureGetSampledMip"_c;
     SampledTextureGetSampledMip_TextureCube.returnType = Type::FullType { Float32x2Type.name };
     SampledTextureGetSampledMip_TextureCube.parameters = SampledTextureGetSampledMip_TextureCube_args;
@@ -18462,6 +19089,7 @@ void SetupIntrinsics()
     TextureGetSampledMip_Texture1DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSampledMip_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureGetSampledMip_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
+    TextureGetSampledMip_Texture1DArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     TextureGetSampledMip_Texture1DArray.name = "textureGetSampledMip"_c;
     TextureGetSampledMip_Texture1DArray.returnType = Type::FullType { Float32x2Type.name };
     TextureGetSampledMip_Texture1DArray.parameters = TextureGetSampledMip_Texture1DArray_args;
@@ -18481,6 +19109,7 @@ void SetupIntrinsics()
     SampledTextureGetSampledMip_Texture1DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     SampledTextureGetSampledMip_Texture1DArray_coordinate.name = "coordinate"_c;
     SampledTextureGetSampledMip_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureGetSampledMip_Texture1DArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     SampledTextureGetSampledMip_Texture1DArray.name = "textureGetSampledMip"_c;
     SampledTextureGetSampledMip_Texture1DArray.returnType = Type::FullType { Float32x2Type.name };
     SampledTextureGetSampledMip_Texture1DArray.parameters = SampledTextureGetSampledMip_Texture1DArray_args;
@@ -18501,6 +19130,7 @@ void SetupIntrinsics()
     TextureGetSampledMip_Texture2DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSampledMip_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureGetSampledMip_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
+    TextureGetSampledMip_Texture2DArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     TextureGetSampledMip_Texture2DArray.name = "textureGetSampledMip"_c;
     TextureGetSampledMip_Texture2DArray.returnType = Type::FullType { Float32x2Type.name };
     TextureGetSampledMip_Texture2DArray.parameters = TextureGetSampledMip_Texture2DArray_args;
@@ -18520,6 +19150,7 @@ void SetupIntrinsics()
     SampledTextureGetSampledMip_Texture2DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     SampledTextureGetSampledMip_Texture2DArray_coordinate.name = "coordinate"_c;
     SampledTextureGetSampledMip_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureGetSampledMip_Texture2DArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     SampledTextureGetSampledMip_Texture2DArray.name = "textureGetSampledMip"_c;
     SampledTextureGetSampledMip_Texture2DArray.returnType = Type::FullType { Float32x2Type.name };
     SampledTextureGetSampledMip_Texture2DArray.parameters = SampledTextureGetSampledMip_Texture2DArray_args;
@@ -18540,6 +19171,7 @@ void SetupIntrinsics()
     TextureGetSampledMip_TextureCubeArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureGetSampledMip_TextureCubeArray_coordinate.name = "coordinate"_c;
     TextureGetSampledMip_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
+    TextureGetSampledMip_TextureCubeArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     TextureGetSampledMip_TextureCubeArray.name = "textureGetSampledMip"_c;
     TextureGetSampledMip_TextureCubeArray.returnType = Type::FullType { Float32x2Type.name };
     TextureGetSampledMip_TextureCubeArray.parameters = TextureGetSampledMip_TextureCubeArray_args;
@@ -18559,6 +19191,7 @@ void SetupIntrinsics()
     SampledTextureGetSampledMip_TextureCubeArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     SampledTextureGetSampledMip_TextureCubeArray_coordinate.name = "coordinate"_c;
     SampledTextureGetSampledMip_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
+    SampledTextureGetSampledMip_TextureCubeArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
     SampledTextureGetSampledMip_TextureCubeArray.name = "textureGetSampledMip"_c;
     SampledTextureGetSampledMip_TextureCubeArray.returnType = Type::FullType { Float32x2Type.name };
     SampledTextureGetSampledMip_TextureCubeArray.parameters = SampledTextureGetSampledMip_TextureCubeArray_args;
@@ -18576,6 +19209,7 @@ void SetupIntrinsics()
     TextureLoad_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureLoad_Texture1D_coordinate.name = "coordinate"_c;
     TextureLoad_Texture1D_coordinate.type = Type::FullType{ Int32Type.name };
+    TextureLoad_Texture1D.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
     TextureLoad_Texture1D.name = "textureLoad"_c;
     TextureLoad_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureLoad_Texture1D.parameters = TextureLoad_Texture1D_args;
@@ -18595,6 +19229,7 @@ void SetupIntrinsics()
     TextureLoadMip_Texture1D_coordinate.type = Type::FullType{ Int32Type.name };
     TextureLoadMip_Texture1D_mip.name = "mip"_c;
     TextureLoadMip_Texture1D_mip.type = Type::FullType{ Int32Type.name };
+    TextureLoadMip_Texture1D.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_Texture1D.name = "textureLoadMip"_c;
     TextureLoadMip_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureLoadMip_Texture1D.parameters = TextureLoadMip_Texture1D_args;
@@ -18615,6 +19250,7 @@ void SetupIntrinsics()
     TextureStore_Texture1D_coordinate.type = Type::FullType{ Int32Type.name };
     TextureStore_Texture1D_value.name = "value"_c;
     TextureStore_Texture1D_value.type = Type::FullType{ Float32x4Type.name };
+    TextureStore_Texture1D.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
     TextureStore_Texture1D.name = "textureStore"_c;
     TextureStore_Texture1D.returnType = Type::FullType { VoidType.name };
     TextureStore_Texture1D.parameters = TextureStore_Texture1D_args;
@@ -18637,6 +19273,7 @@ void SetupIntrinsics()
     TextureStoreMip_Texture1D_mip.type = Type::FullType{ Int32Type.name };
     TextureStoreMip_Texture1D_value.name = "value"_c;
     TextureStoreMip_Texture1D_value.type = Type::FullType{ Float32x4Type.name };
+    TextureStoreMip_Texture1D.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_Texture1D.name = "textureStoreMip"_c;
     TextureStoreMip_Texture1D.returnType = Type::FullType { VoidType.name };
     TextureStoreMip_Texture1D.parameters = TextureStoreMip_Texture1D_args;
@@ -18656,6 +19293,7 @@ void SetupIntrinsics()
     TextureLoad_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureLoad_Texture2D_coordinate.name = "coordinate"_c;
     TextureLoad_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureLoad_Texture2D.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
     TextureLoad_Texture2D.name = "textureLoad"_c;
     TextureLoad_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureLoad_Texture2D.parameters = TextureLoad_Texture2D_args;
@@ -18675,6 +19313,7 @@ void SetupIntrinsics()
     TextureLoadMip_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureLoadMip_Texture2D_mip.name = "mip"_c;
     TextureLoadMip_Texture2D_mip.type = Type::FullType{ Int32Type.name };
+    TextureLoadMip_Texture2D.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_Texture2D.name = "textureLoadMip"_c;
     TextureLoadMip_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureLoadMip_Texture2D.parameters = TextureLoadMip_Texture2D_args;
@@ -18695,6 +19334,7 @@ void SetupIntrinsics()
     TextureStore_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureStore_Texture2D_value.name = "value"_c;
     TextureStore_Texture2D_value.type = Type::FullType{ Float32x4Type.name };
+    TextureStore_Texture2D.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
     TextureStore_Texture2D.name = "textureStore"_c;
     TextureStore_Texture2D.returnType = Type::FullType { VoidType.name };
     TextureStore_Texture2D.parameters = TextureStore_Texture2D_args;
@@ -18717,6 +19357,7 @@ void SetupIntrinsics()
     TextureStoreMip_Texture2D_mip.type = Type::FullType{ Int32Type.name };
     TextureStoreMip_Texture2D_value.name = "value"_c;
     TextureStoreMip_Texture2D_value.type = Type::FullType{ Float32x4Type.name };
+    TextureStoreMip_Texture2D.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_Texture2D.name = "textureStoreMip"_c;
     TextureStoreMip_Texture2D.returnType = Type::FullType { VoidType.name };
     TextureStoreMip_Texture2D.parameters = TextureStoreMip_Texture2D_args;
@@ -18736,6 +19377,7 @@ void SetupIntrinsics()
     TextureLoad_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureLoad_Texture3D_coordinate.name = "coordinate"_c;
     TextureLoad_Texture3D_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureLoad_Texture3D.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
     TextureLoad_Texture3D.name = "textureLoad"_c;
     TextureLoad_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureLoad_Texture3D.parameters = TextureLoad_Texture3D_args;
@@ -18755,6 +19397,7 @@ void SetupIntrinsics()
     TextureLoadMip_Texture3D_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureLoadMip_Texture3D_mip.name = "mip"_c;
     TextureLoadMip_Texture3D_mip.type = Type::FullType{ Int32Type.name };
+    TextureLoadMip_Texture3D.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_Texture3D.name = "textureLoadMip"_c;
     TextureLoadMip_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureLoadMip_Texture3D.parameters = TextureLoadMip_Texture3D_args;
@@ -18775,6 +19418,7 @@ void SetupIntrinsics()
     TextureStore_Texture3D_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureStore_Texture3D_value.name = "value"_c;
     TextureStore_Texture3D_value.type = Type::FullType{ Float32x4Type.name };
+    TextureStore_Texture3D.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
     TextureStore_Texture3D.name = "textureStore"_c;
     TextureStore_Texture3D.returnType = Type::FullType { VoidType.name };
     TextureStore_Texture3D.parameters = TextureStore_Texture3D_args;
@@ -18797,6 +19441,7 @@ void SetupIntrinsics()
     TextureStoreMip_Texture3D_mip.type = Type::FullType{ Int32Type.name };
     TextureStoreMip_Texture3D_value.name = "value"_c;
     TextureStoreMip_Texture3D_value.type = Type::FullType{ Float32x4Type.name };
+    TextureStoreMip_Texture3D.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_Texture3D.name = "textureStoreMip"_c;
     TextureStoreMip_Texture3D.returnType = Type::FullType { VoidType.name };
     TextureStoreMip_Texture3D.parameters = TextureStoreMip_Texture3D_args;
@@ -18816,6 +19461,7 @@ void SetupIntrinsics()
     TextureLoad_TextureCube_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureLoad_TextureCube_coordinate.name = "coordinate"_c;
     TextureLoad_TextureCube_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureLoad_TextureCube.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
     TextureLoad_TextureCube.name = "textureLoad"_c;
     TextureLoad_TextureCube.returnType = Type::FullType { Float32x4Type.name };
     TextureLoad_TextureCube.parameters = TextureLoad_TextureCube_args;
@@ -18835,6 +19481,7 @@ void SetupIntrinsics()
     TextureLoadMip_TextureCube_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureLoadMip_TextureCube_mip.name = "mip"_c;
     TextureLoadMip_TextureCube_mip.type = Type::FullType{ Int32Type.name };
+    TextureLoadMip_TextureCube.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_TextureCube.name = "textureLoadMip"_c;
     TextureLoadMip_TextureCube.returnType = Type::FullType { Float32x4Type.name };
     TextureLoadMip_TextureCube.parameters = TextureLoadMip_TextureCube_args;
@@ -18855,6 +19502,7 @@ void SetupIntrinsics()
     TextureStore_TextureCube_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureStore_TextureCube_value.name = "value"_c;
     TextureStore_TextureCube_value.type = Type::FullType{ Float32x4Type.name };
+    TextureStore_TextureCube.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
     TextureStore_TextureCube.name = "textureStore"_c;
     TextureStore_TextureCube.returnType = Type::FullType { VoidType.name };
     TextureStore_TextureCube.parameters = TextureStore_TextureCube_args;
@@ -18877,6 +19525,7 @@ void SetupIntrinsics()
     TextureStoreMip_TextureCube_mip.type = Type::FullType{ Int32Type.name };
     TextureStoreMip_TextureCube_value.name = "value"_c;
     TextureStoreMip_TextureCube_value.type = Type::FullType{ Float32x4Type.name };
+    TextureStoreMip_TextureCube.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_TextureCube.name = "textureStoreMip"_c;
     TextureStoreMip_TextureCube.returnType = Type::FullType { VoidType.name };
     TextureStoreMip_TextureCube.parameters = TextureStoreMip_TextureCube_args;
@@ -18896,6 +19545,7 @@ void SetupIntrinsics()
     TextureLoad_Texture1DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureLoad_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureLoad_Texture1DArray_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureLoad_Texture1DArray.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
     TextureLoad_Texture1DArray.name = "textureLoad"_c;
     TextureLoad_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureLoad_Texture1DArray.parameters = TextureLoad_Texture1DArray_args;
@@ -18915,6 +19565,7 @@ void SetupIntrinsics()
     TextureLoadMip_Texture1DArray_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureLoadMip_Texture1DArray_mip.name = "mip"_c;
     TextureLoadMip_Texture1DArray_mip.type = Type::FullType{ Int32Type.name };
+    TextureLoadMip_Texture1DArray.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_Texture1DArray.name = "textureLoadMip"_c;
     TextureLoadMip_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureLoadMip_Texture1DArray.parameters = TextureLoadMip_Texture1DArray_args;
@@ -18935,6 +19586,7 @@ void SetupIntrinsics()
     TextureStore_Texture1DArray_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureStore_Texture1DArray_value.name = "value"_c;
     TextureStore_Texture1DArray_value.type = Type::FullType{ Float32x4Type.name };
+    TextureStore_Texture1DArray.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
     TextureStore_Texture1DArray.name = "textureStore"_c;
     TextureStore_Texture1DArray.returnType = Type::FullType { VoidType.name };
     TextureStore_Texture1DArray.parameters = TextureStore_Texture1DArray_args;
@@ -18957,6 +19609,7 @@ void SetupIntrinsics()
     TextureStoreMip_Texture1DArray_mip.type = Type::FullType{ Int32Type.name };
     TextureStoreMip_Texture1DArray_value.name = "value"_c;
     TextureStoreMip_Texture1DArray_value.type = Type::FullType{ Float32x4Type.name };
+    TextureStoreMip_Texture1DArray.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_Texture1DArray.name = "textureStoreMip"_c;
     TextureStoreMip_Texture1DArray.returnType = Type::FullType { VoidType.name };
     TextureStoreMip_Texture1DArray.parameters = TextureStoreMip_Texture1DArray_args;
@@ -18976,6 +19629,7 @@ void SetupIntrinsics()
     TextureLoad_Texture2DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureLoad_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureLoad_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureLoad_Texture2DArray.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
     TextureLoad_Texture2DArray.name = "textureLoad"_c;
     TextureLoad_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureLoad_Texture2DArray.parameters = TextureLoad_Texture2DArray_args;
@@ -18995,6 +19649,7 @@ void SetupIntrinsics()
     TextureLoadMip_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureLoadMip_Texture2DArray_mip.name = "mip"_c;
     TextureLoadMip_Texture2DArray_mip.type = Type::FullType{ Int32Type.name };
+    TextureLoadMip_Texture2DArray.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_Texture2DArray.name = "textureLoadMip"_c;
     TextureLoadMip_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureLoadMip_Texture2DArray.parameters = TextureLoadMip_Texture2DArray_args;
@@ -19015,6 +19670,7 @@ void SetupIntrinsics()
     TextureStore_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureStore_Texture2DArray_value.name = "value"_c;
     TextureStore_Texture2DArray_value.type = Type::FullType{ Float32x4Type.name };
+    TextureStore_Texture2DArray.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
     TextureStore_Texture2DArray.name = "textureStore"_c;
     TextureStore_Texture2DArray.returnType = Type::FullType { VoidType.name };
     TextureStore_Texture2DArray.parameters = TextureStore_Texture2DArray_args;
@@ -19037,6 +19693,7 @@ void SetupIntrinsics()
     TextureStoreMip_Texture2DArray_mip.type = Type::FullType{ Int32Type.name };
     TextureStoreMip_Texture2DArray_value.name = "value"_c;
     TextureStoreMip_Texture2DArray_value.type = Type::FullType{ Float32x4Type.name };
+    TextureStoreMip_Texture2DArray.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_Texture2DArray.name = "textureStoreMip"_c;
     TextureStoreMip_Texture2DArray.returnType = Type::FullType { VoidType.name };
     TextureStoreMip_Texture2DArray.parameters = TextureStoreMip_Texture2DArray_args;
@@ -19056,6 +19713,7 @@ void SetupIntrinsics()
     TextureLoad_TextureCubeArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureLoad_TextureCubeArray_coordinate.name = "coordinate"_c;
     TextureLoad_TextureCubeArray_coordinate.type = Type::FullType{ Int32x4Type.name };
+    TextureLoad_TextureCubeArray.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
     TextureLoad_TextureCubeArray.name = "textureLoad"_c;
     TextureLoad_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
     TextureLoad_TextureCubeArray.parameters = TextureLoad_TextureCubeArray_args;
@@ -19075,6 +19733,7 @@ void SetupIntrinsics()
     TextureLoadMip_TextureCubeArray_coordinate.type = Type::FullType{ Int32x4Type.name };
     TextureLoadMip_TextureCubeArray_mip.name = "mip"_c;
     TextureLoadMip_TextureCubeArray_mip.type = Type::FullType{ Int32Type.name };
+    TextureLoadMip_TextureCubeArray.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_TextureCubeArray.name = "textureLoadMip"_c;
     TextureLoadMip_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
     TextureLoadMip_TextureCubeArray.parameters = TextureLoadMip_TextureCubeArray_args;
@@ -19095,6 +19754,7 @@ void SetupIntrinsics()
     TextureStore_TextureCubeArray_coordinate.type = Type::FullType{ Int32x4Type.name };
     TextureStore_TextureCubeArray_value.name = "value"_c;
     TextureStore_TextureCubeArray_value.type = Type::FullType{ Float32x4Type.name };
+    TextureStore_TextureCubeArray.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
     TextureStore_TextureCubeArray.name = "textureStore"_c;
     TextureStore_TextureCubeArray.returnType = Type::FullType { VoidType.name };
     TextureStore_TextureCubeArray.parameters = TextureStore_TextureCubeArray_args;
@@ -19117,6 +19777,7 @@ void SetupIntrinsics()
     TextureStoreMip_TextureCubeArray_mip.type = Type::FullType{ Int32Type.name };
     TextureStoreMip_TextureCubeArray_value.name = "value"_c;
     TextureStoreMip_TextureCubeArray_value.type = Type::FullType{ Float32x4Type.name };
+    TextureStoreMip_TextureCubeArray.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_TextureCubeArray.name = "textureStoreMip"_c;
     TextureStoreMip_TextureCubeArray.returnType = Type::FullType { VoidType.name };
     TextureStoreMip_TextureCubeArray.parameters = TextureStoreMip_TextureCubeArray_args;
@@ -19136,6 +19797,7 @@ void SetupIntrinsics()
     TextureLoad_Texture2DMS_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureLoad_Texture2DMS_coordinate.name = "coordinate"_c;
     TextureLoad_Texture2DMS_coordinate.type = Type::FullType{ Int32x2Type.name };
+    TextureLoad_Texture2DMS.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
     TextureLoad_Texture2DMS.name = "textureLoad"_c;
     TextureLoad_Texture2DMS.returnType = Type::FullType { Float32x4Type.name };
     TextureLoad_Texture2DMS.parameters = TextureLoad_Texture2DMS_args;
@@ -19155,6 +19817,7 @@ void SetupIntrinsics()
     TextureLoadMip_Texture2DMS_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureLoadMip_Texture2DMS_mip.name = "mip"_c;
     TextureLoadMip_Texture2DMS_mip.type = Type::FullType{ Int32Type.name };
+    TextureLoadMip_Texture2DMS.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_Texture2DMS.name = "textureLoadMip"_c;
     TextureLoadMip_Texture2DMS.returnType = Type::FullType { Float32x4Type.name };
     TextureLoadMip_Texture2DMS.parameters = TextureLoadMip_Texture2DMS_args;
@@ -19175,6 +19838,7 @@ void SetupIntrinsics()
     TextureStore_Texture2DMS_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureStore_Texture2DMS_value.name = "value"_c;
     TextureStore_Texture2DMS_value.type = Type::FullType{ Float32x4Type.name };
+    TextureStore_Texture2DMS.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
     TextureStore_Texture2DMS.name = "textureStore"_c;
     TextureStore_Texture2DMS.returnType = Type::FullType { VoidType.name };
     TextureStore_Texture2DMS.parameters = TextureStore_Texture2DMS_args;
@@ -19197,6 +19861,7 @@ void SetupIntrinsics()
     TextureStoreMip_Texture2DMS_mip.type = Type::FullType{ Int32Type.name };
     TextureStoreMip_Texture2DMS_value.name = "value"_c;
     TextureStoreMip_Texture2DMS_value.type = Type::FullType{ Float32x4Type.name };
+    TextureStoreMip_Texture2DMS.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_Texture2DMS.name = "textureStoreMip"_c;
     TextureStoreMip_Texture2DMS.returnType = Type::FullType { VoidType.name };
     TextureStoreMip_Texture2DMS.parameters = TextureStoreMip_Texture2DMS_args;
@@ -19216,6 +19881,7 @@ void SetupIntrinsics()
     TextureLoad_Texture2DMSArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureLoad_Texture2DMSArray_coordinate.name = "coordinate"_c;
     TextureLoad_Texture2DMSArray_coordinate.type = Type::FullType{ Int32x3Type.name };
+    TextureLoad_Texture2DMSArray.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
     TextureLoad_Texture2DMSArray.name = "textureLoad"_c;
     TextureLoad_Texture2DMSArray.returnType = Type::FullType { Float32x4Type.name };
     TextureLoad_Texture2DMSArray.parameters = TextureLoad_Texture2DMSArray_args;
@@ -19235,6 +19901,7 @@ void SetupIntrinsics()
     TextureLoadMip_Texture2DMSArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureLoadMip_Texture2DMSArray_mip.name = "mip"_c;
     TextureLoadMip_Texture2DMSArray_mip.type = Type::FullType{ Int32Type.name };
+    TextureLoadMip_Texture2DMSArray.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureLoadMip_Texture2DMSArray.name = "textureLoadMip"_c;
     TextureLoadMip_Texture2DMSArray.returnType = Type::FullType { Float32x4Type.name };
     TextureLoadMip_Texture2DMSArray.parameters = TextureLoadMip_Texture2DMSArray_args;
@@ -19255,6 +19922,7 @@ void SetupIntrinsics()
     TextureStore_Texture2DMSArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureStore_Texture2DMSArray_value.name = "value"_c;
     TextureStore_Texture2DMSArray_value.type = Type::FullType{ Float32x4Type.name };
+    TextureStore_Texture2DMSArray.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
     TextureStore_Texture2DMSArray.name = "textureStore"_c;
     TextureStore_Texture2DMSArray.returnType = Type::FullType { VoidType.name };
     TextureStore_Texture2DMSArray.parameters = TextureStore_Texture2DMSArray_args;
@@ -19277,6 +19945,7 @@ void SetupIntrinsics()
     TextureStoreMip_Texture2DMSArray_mip.type = Type::FullType{ Int32Type.name };
     TextureStoreMip_Texture2DMSArray_value.name = "value"_c;
     TextureStoreMip_Texture2DMSArray_value.type = Type::FullType{ Float32x4Type.name };
+    TextureStoreMip_Texture2DMSArray.documentation = "Store a single texel without using a sampler value at an absolute non-normalized coordinate at a specific mip level"_c;
     TextureStoreMip_Texture2DMSArray.name = "textureStoreMip"_c;
     TextureStoreMip_Texture2DMSArray.returnType = Type::FullType { VoidType.name };
     TextureStoreMip_Texture2DMSArray.parameters = TextureStoreMip_Texture2DMSArray_args;
@@ -19298,6 +19967,7 @@ void SetupIntrinsics()
     TextureFetch_Texture1D_coordinate.type = Type::FullType{ Int32Type.name };
     TextureFetch_Texture1D_lod.name = "lod"_c;
     TextureFetch_Texture1D_lod.type = Type::FullType{ UInt32Type.name };
+    TextureFetch_Texture1D.documentation = "Fetch a single texel without using a sampler value at a coordinate"_c;
     TextureFetch_Texture1D.name = "textureFetch"_c;
     TextureFetch_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureFetch_Texture1D.parameters = TextureFetch_Texture1D_args;
@@ -19320,6 +19990,7 @@ void SetupIntrinsics()
     TextureFetchSample_Texture1D_lod.type = Type::FullType{ UInt32Type.name };
     TextureFetchSample_Texture1D_sample.name = "sample"_c;
     TextureFetchSample_Texture1D_sample.type = Type::FullType{ UInt32Type.name };
+    TextureFetchSample_Texture1D.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific sample index"_c;
     TextureFetchSample_Texture1D.name = "textureFetchSample"_c;
     TextureFetchSample_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureFetchSample_Texture1D.parameters = TextureFetchSample_Texture1D_args;
@@ -19341,6 +20012,7 @@ void SetupIntrinsics()
     TextureFetch_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureFetch_Texture2D_lod.name = "lod"_c;
     TextureFetch_Texture2D_lod.type = Type::FullType{ UInt32Type.name };
+    TextureFetch_Texture2D.documentation = "Fetch a single texel without using a sampler value at a coordinate"_c;
     TextureFetch_Texture2D.name = "textureFetch"_c;
     TextureFetch_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureFetch_Texture2D.parameters = TextureFetch_Texture2D_args;
@@ -19363,6 +20035,7 @@ void SetupIntrinsics()
     TextureFetchSample_Texture2D_lod.type = Type::FullType{ UInt32Type.name };
     TextureFetchSample_Texture2D_sample.name = "sample"_c;
     TextureFetchSample_Texture2D_sample.type = Type::FullType{ UInt32Type.name };
+    TextureFetchSample_Texture2D.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific sample index"_c;
     TextureFetchSample_Texture2D.name = "textureFetchSample"_c;
     TextureFetchSample_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureFetchSample_Texture2D.parameters = TextureFetchSample_Texture2D_args;
@@ -19384,6 +20057,7 @@ void SetupIntrinsics()
     TextureFetch_Texture3D_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureFetch_Texture3D_lod.name = "lod"_c;
     TextureFetch_Texture3D_lod.type = Type::FullType{ UInt32Type.name };
+    TextureFetch_Texture3D.documentation = "Fetch a single texel without using a sampler value at a coordinate"_c;
     TextureFetch_Texture3D.name = "textureFetch"_c;
     TextureFetch_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureFetch_Texture3D.parameters = TextureFetch_Texture3D_args;
@@ -19406,6 +20080,7 @@ void SetupIntrinsics()
     TextureFetchSample_Texture3D_lod.type = Type::FullType{ UInt32Type.name };
     TextureFetchSample_Texture3D_sample.name = "sample"_c;
     TextureFetchSample_Texture3D_sample.type = Type::FullType{ UInt32Type.name };
+    TextureFetchSample_Texture3D.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific sample index"_c;
     TextureFetchSample_Texture3D.name = "textureFetchSample"_c;
     TextureFetchSample_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureFetchSample_Texture3D.parameters = TextureFetchSample_Texture3D_args;
@@ -19427,6 +20102,7 @@ void SetupIntrinsics()
     TextureFetch_Texture1DArray_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureFetch_Texture1DArray_lod.name = "lod"_c;
     TextureFetch_Texture1DArray_lod.type = Type::FullType{ UInt32Type.name };
+    TextureFetch_Texture1DArray.documentation = "Fetch a single texel without using a sampler value at a coordinate"_c;
     TextureFetch_Texture1DArray.name = "textureFetch"_c;
     TextureFetch_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureFetch_Texture1DArray.parameters = TextureFetch_Texture1DArray_args;
@@ -19449,6 +20125,7 @@ void SetupIntrinsics()
     TextureFetchSample_Texture1DArray_lod.type = Type::FullType{ UInt32Type.name };
     TextureFetchSample_Texture1DArray_sample.name = "sample"_c;
     TextureFetchSample_Texture1DArray_sample.type = Type::FullType{ UInt32Type.name };
+    TextureFetchSample_Texture1DArray.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific sample index"_c;
     TextureFetchSample_Texture1DArray.name = "textureFetchSample"_c;
     TextureFetchSample_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureFetchSample_Texture1DArray.parameters = TextureFetchSample_Texture1DArray_args;
@@ -19470,6 +20147,7 @@ void SetupIntrinsics()
     TextureFetch_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureFetch_Texture2DArray_lod.name = "lod"_c;
     TextureFetch_Texture2DArray_lod.type = Type::FullType{ UInt32Type.name };
+    TextureFetch_Texture2DArray.documentation = "Fetch a single texel without using a sampler value at a coordinate"_c;
     TextureFetch_Texture2DArray.name = "textureFetch"_c;
     TextureFetch_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureFetch_Texture2DArray.parameters = TextureFetch_Texture2DArray_args;
@@ -19492,6 +20170,7 @@ void SetupIntrinsics()
     TextureFetchSample_Texture2DArray_lod.type = Type::FullType{ UInt32Type.name };
     TextureFetchSample_Texture2DArray_sample.name = "sample"_c;
     TextureFetchSample_Texture2DArray_sample.type = Type::FullType{ UInt32Type.name };
+    TextureFetchSample_Texture2DArray.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific sample index"_c;
     TextureFetchSample_Texture2DArray.name = "textureFetchSample"_c;
     TextureFetchSample_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureFetchSample_Texture2DArray.parameters = TextureFetchSample_Texture2DArray_args;
@@ -19513,6 +20192,7 @@ void SetupIntrinsics()
     TextureFetch_Texture2DMS_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureFetch_Texture2DMS_lod.name = "lod"_c;
     TextureFetch_Texture2DMS_lod.type = Type::FullType{ UInt32Type.name };
+    TextureFetch_Texture2DMS.documentation = "Fetch a single texel without using a sampler value at a coordinate"_c;
     TextureFetch_Texture2DMS.name = "textureFetch"_c;
     TextureFetch_Texture2DMS.returnType = Type::FullType { Float32x4Type.name };
     TextureFetch_Texture2DMS.parameters = TextureFetch_Texture2DMS_args;
@@ -19535,6 +20215,7 @@ void SetupIntrinsics()
     TextureFetchSample_Texture2DMS_lod.type = Type::FullType{ UInt32Type.name };
     TextureFetchSample_Texture2DMS_sample.name = "sample"_c;
     TextureFetchSample_Texture2DMS_sample.type = Type::FullType{ UInt32Type.name };
+    TextureFetchSample_Texture2DMS.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific sample index"_c;
     TextureFetchSample_Texture2DMS.name = "textureFetchSample"_c;
     TextureFetchSample_Texture2DMS.returnType = Type::FullType { Float32x4Type.name };
     TextureFetchSample_Texture2DMS.parameters = TextureFetchSample_Texture2DMS_args;
@@ -19556,6 +20237,7 @@ void SetupIntrinsics()
     TextureFetch_Texture2DMSArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureFetch_Texture2DMSArray_lod.name = "lod"_c;
     TextureFetch_Texture2DMSArray_lod.type = Type::FullType{ UInt32Type.name };
+    TextureFetch_Texture2DMSArray.documentation = "Fetch a single texel without using a sampler value at a coordinate"_c;
     TextureFetch_Texture2DMSArray.name = "textureFetch"_c;
     TextureFetch_Texture2DMSArray.returnType = Type::FullType { Float32x4Type.name };
     TextureFetch_Texture2DMSArray.parameters = TextureFetch_Texture2DMSArray_args;
@@ -19578,6 +20260,7 @@ void SetupIntrinsics()
     TextureFetchSample_Texture2DMSArray_lod.type = Type::FullType{ UInt32Type.name };
     TextureFetchSample_Texture2DMSArray_sample.name = "sample"_c;
     TextureFetchSample_Texture2DMSArray_sample.type = Type::FullType{ UInt32Type.name };
+    TextureFetchSample_Texture2DMSArray.documentation = "Fetch a single texel without using a sampler value at a coordinate at a specific sample index"_c;
     TextureFetchSample_Texture2DMSArray.name = "textureFetchSample"_c;
     TextureFetchSample_Texture2DMSArray.returnType = Type::FullType { Float32x4Type.name };
     TextureFetchSample_Texture2DMSArray.parameters = TextureFetchSample_Texture2DMSArray_args;
@@ -19602,6 +20285,7 @@ void SetupIntrinsics()
     TextureGather_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureGather_Texture2D_component.name = "component"_c;
     TextureGather_Texture2D_component.type = Type::FullType{ Int32Type.name };
+    TextureGather_Texture2D.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read"_c;
     TextureGather_Texture2D.name = "textureGather"_c;
     TextureGather_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureGather_Texture2D.parameters = TextureGather_Texture2D_args;
@@ -19624,6 +20308,7 @@ void SetupIntrinsics()
     SampledTextureGather_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
     SampledTextureGather_Texture2D_component.name = "component"_c;
     SampledTextureGather_Texture2D_component.type = Type::FullType{ Int32Type.name };
+    SampledTextureGather_Texture2D.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read"_c;
     SampledTextureGather_Texture2D.name = "textureGather"_c;
     SampledTextureGather_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureGather_Texture2D.parameters = SampledTextureGather_Texture2D_args;
@@ -19649,6 +20334,7 @@ void SetupIntrinsics()
     TextureGatherOffset_Texture2D_component.type = Type::FullType{ Int32Type.name };
     TextureGatherOffset_Texture2D_offset.name = "offset"_c;
     TextureGatherOffset_Texture2D_offset.type = Type::FullType{ UInt32Type.name };
+    TextureGatherOffset_Texture2D.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read with an offset applied to the coordinate"_c;
     TextureGatherOffset_Texture2D.name = "textureGatherOffset"_c;
     TextureGatherOffset_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureGatherOffset_Texture2D.parameters = TextureGatherOffset_Texture2D_args;
@@ -19674,6 +20360,7 @@ void SetupIntrinsics()
     SampledTextureGatherOffset_Texture2D_component.type = Type::FullType{ Int32Type.name };
     SampledTextureGatherOffset_Texture2D_offset.name = "offset"_c;
     SampledTextureGatherOffset_Texture2D_offset.type = Type::FullType{ UInt32Type.name };
+    SampledTextureGatherOffset_Texture2D.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read with an offset applied to the coordinate"_c;
     SampledTextureGatherOffset_Texture2D.name = "textureGatherOffset"_c;
     SampledTextureGatherOffset_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureGatherOffset_Texture2D.parameters = SampledTextureGatherOffset_Texture2D_args;
@@ -19698,6 +20385,7 @@ void SetupIntrinsics()
     TextureGather_TextureCube_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureGather_TextureCube_component.name = "component"_c;
     TextureGather_TextureCube_component.type = Type::FullType{ Int32Type.name };
+    TextureGather_TextureCube.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read"_c;
     TextureGather_TextureCube.name = "textureGather"_c;
     TextureGather_TextureCube.returnType = Type::FullType { Float32x4Type.name };
     TextureGather_TextureCube.parameters = TextureGather_TextureCube_args;
@@ -19720,6 +20408,7 @@ void SetupIntrinsics()
     SampledTextureGather_TextureCube_coordinate.type = Type::FullType{ Int32x3Type.name };
     SampledTextureGather_TextureCube_component.name = "component"_c;
     SampledTextureGather_TextureCube_component.type = Type::FullType{ Int32Type.name };
+    SampledTextureGather_TextureCube.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read"_c;
     SampledTextureGather_TextureCube.name = "textureGather"_c;
     SampledTextureGather_TextureCube.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureGather_TextureCube.parameters = SampledTextureGather_TextureCube_args;
@@ -19745,6 +20434,7 @@ void SetupIntrinsics()
     TextureGatherOffset_TextureCube_component.type = Type::FullType{ Int32Type.name };
     TextureGatherOffset_TextureCube_offset.name = "offset"_c;
     TextureGatherOffset_TextureCube_offset.type = Type::FullType{ UInt32Type.name };
+    TextureGatherOffset_TextureCube.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read with an offset applied to the coordinate"_c;
     TextureGatherOffset_TextureCube.name = "textureGatherOffset"_c;
     TextureGatherOffset_TextureCube.returnType = Type::FullType { Float32x4Type.name };
     TextureGatherOffset_TextureCube.parameters = TextureGatherOffset_TextureCube_args;
@@ -19770,6 +20460,7 @@ void SetupIntrinsics()
     SampledTextureGatherOffset_TextureCube_component.type = Type::FullType{ Int32Type.name };
     SampledTextureGatherOffset_TextureCube_offset.name = "offset"_c;
     SampledTextureGatherOffset_TextureCube_offset.type = Type::FullType{ UInt32Type.name };
+    SampledTextureGatherOffset_TextureCube.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read with an offset applied to the coordinate"_c;
     SampledTextureGatherOffset_TextureCube.name = "textureGatherOffset"_c;
     SampledTextureGatherOffset_TextureCube.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureGatherOffset_TextureCube.parameters = SampledTextureGatherOffset_TextureCube_args;
@@ -19794,6 +20485,7 @@ void SetupIntrinsics()
     TextureGather_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureGather_Texture2DArray_component.name = "component"_c;
     TextureGather_Texture2DArray_component.type = Type::FullType{ Int32Type.name };
+    TextureGather_Texture2DArray.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read"_c;
     TextureGather_Texture2DArray.name = "textureGather"_c;
     TextureGather_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureGather_Texture2DArray.parameters = TextureGather_Texture2DArray_args;
@@ -19816,6 +20508,7 @@ void SetupIntrinsics()
     SampledTextureGather_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     SampledTextureGather_Texture2DArray_component.name = "component"_c;
     SampledTextureGather_Texture2DArray_component.type = Type::FullType{ Int32Type.name };
+    SampledTextureGather_Texture2DArray.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read"_c;
     SampledTextureGather_Texture2DArray.name = "textureGather"_c;
     SampledTextureGather_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureGather_Texture2DArray.parameters = SampledTextureGather_Texture2DArray_args;
@@ -19841,6 +20534,7 @@ void SetupIntrinsics()
     TextureGatherOffset_Texture2DArray_component.type = Type::FullType{ Int32Type.name };
     TextureGatherOffset_Texture2DArray_offset.name = "offset"_c;
     TextureGatherOffset_Texture2DArray_offset.type = Type::FullType{ UInt32Type.name };
+    TextureGatherOffset_Texture2DArray.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read with an offset applied to the coordinate"_c;
     TextureGatherOffset_Texture2DArray.name = "textureGatherOffset"_c;
     TextureGatherOffset_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureGatherOffset_Texture2DArray.parameters = TextureGatherOffset_Texture2DArray_args;
@@ -19866,6 +20560,7 @@ void SetupIntrinsics()
     SampledTextureGatherOffset_Texture2DArray_component.type = Type::FullType{ Int32Type.name };
     SampledTextureGatherOffset_Texture2DArray_offset.name = "offset"_c;
     SampledTextureGatherOffset_Texture2DArray_offset.type = Type::FullType{ UInt32Type.name };
+    SampledTextureGatherOffset_Texture2DArray.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read with an offset applied to the coordinate"_c;
     SampledTextureGatherOffset_Texture2DArray.name = "textureGatherOffset"_c;
     SampledTextureGatherOffset_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureGatherOffset_Texture2DArray.parameters = SampledTextureGatherOffset_Texture2DArray_args;
@@ -19890,6 +20585,7 @@ void SetupIntrinsics()
     TextureGather_TextureCubeArray_coordinate.type = Type::FullType{ Int32x4Type.name };
     TextureGather_TextureCubeArray_component.name = "component"_c;
     TextureGather_TextureCubeArray_component.type = Type::FullType{ Int32Type.name };
+    TextureGather_TextureCubeArray.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read"_c;
     TextureGather_TextureCubeArray.name = "textureGather"_c;
     TextureGather_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
     TextureGather_TextureCubeArray.parameters = TextureGather_TextureCubeArray_args;
@@ -19912,6 +20608,7 @@ void SetupIntrinsics()
     SampledTextureGather_TextureCubeArray_coordinate.type = Type::FullType{ Int32x4Type.name };
     SampledTextureGather_TextureCubeArray_component.name = "component"_c;
     SampledTextureGather_TextureCubeArray_component.type = Type::FullType{ Int32Type.name };
+    SampledTextureGather_TextureCubeArray.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read"_c;
     SampledTextureGather_TextureCubeArray.name = "textureGather"_c;
     SampledTextureGather_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureGather_TextureCubeArray.parameters = SampledTextureGather_TextureCubeArray_args;
@@ -19937,6 +20634,7 @@ void SetupIntrinsics()
     TextureGatherOffset_TextureCubeArray_component.type = Type::FullType{ Int32Type.name };
     TextureGatherOffset_TextureCubeArray_offset.name = "offset"_c;
     TextureGatherOffset_TextureCubeArray_offset.type = Type::FullType{ UInt32Type.name };
+    TextureGatherOffset_TextureCubeArray.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read with an offset applied to the coordinate"_c;
     TextureGatherOffset_TextureCubeArray.name = "textureGatherOffset"_c;
     TextureGatherOffset_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
     TextureGatherOffset_TextureCubeArray.parameters = TextureGatherOffset_TextureCubeArray_args;
@@ -19962,6 +20660,7 @@ void SetupIntrinsics()
     SampledTextureGatherOffset_TextureCubeArray_component.type = Type::FullType{ Int32Type.name };
     SampledTextureGatherOffset_TextureCubeArray_offset.name = "offset"_c;
     SampledTextureGatherOffset_TextureCubeArray_offset.type = Type::FullType{ UInt32Type.name };
+    SampledTextureGatherOffset_TextureCubeArray.documentation = "Gather 4 values of a quad at a coordinate where the component is the channel to read with an offset applied to the coordinate"_c;
     SampledTextureGatherOffset_TextureCubeArray.name = "textureGatherOffset"_c;
     SampledTextureGatherOffset_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureGatherOffset_TextureCubeArray.parameters = SampledTextureGatherOffset_TextureCubeArray_args;
@@ -19979,6 +20678,7 @@ void SetupIntrinsics()
     TexturePixelCacheLoad_PixelCache_texture.name = "texture"_c;
     TexturePixelCacheLoad_PixelCache_texture.type = Type::FullType{ PixelCacheType.name };
     TexturePixelCacheLoad_PixelCache_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
+    TexturePixelCacheLoad_PixelCache.documentation = "Load a pixel value from a previous thread"_c;
     TexturePixelCacheLoad_PixelCache.name = "texturePixelCacheLoad"_c;
     TexturePixelCacheLoad_PixelCache.returnType = Type::FullType { PixelCacheType.name };
     TexturePixelCacheLoad_PixelCache.parameters = TexturePixelCacheLoad_PixelCache_args;
@@ -19995,6 +20695,7 @@ void SetupIntrinsics()
     TexturePixelCacheLoad_PixelCacheMS_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TexturePixelCacheLoad_PixelCacheMS_sample.name = "sample"_c;
     TexturePixelCacheLoad_PixelCacheMS_sample.type = Type::FullType{ UInt32Type.name };
+    TexturePixelCacheLoad_PixelCacheMS.documentation = "Load a pixel value from a previous thread"_c;
     TexturePixelCacheLoad_PixelCacheMS.name = "texturePixelCacheLoad"_c;
     TexturePixelCacheLoad_PixelCacheMS.returnType = Type::FullType { PixelCacheMSType.name };
     TexturePixelCacheLoad_PixelCacheMS.parameters = TexturePixelCacheLoad_PixelCacheMS_args;
@@ -20015,6 +20716,7 @@ void SetupIntrinsics()
     TextureSample_Texture1D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSample_Texture1D_coordinate.name = "coordinate"_c;
     TextureSample_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
+    TextureSample_Texture1D.documentation = "Sample a texture at coordinate"_c;
     TextureSample_Texture1D.name = "textureSample"_c;
     TextureSample_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureSample_Texture1D.parameters = TextureSample_Texture1D_args;
@@ -20034,6 +20736,7 @@ void SetupIntrinsics()
     SampledTextureSample_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     SampledTextureSample_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSample_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
+    SampledTextureSample_Texture1D.documentation = "Sample a texture at coordinate"_c;
     SampledTextureSample_Texture1D.name = "textureSample"_c;
     SampledTextureSample_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSample_Texture1D.parameters = SampledTextureSample_Texture1D_args;
@@ -20054,6 +20757,7 @@ void SetupIntrinsics()
     TextureSample_Texture2D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSample_Texture2D_coordinate.name = "coordinate"_c;
     TextureSample_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
+    TextureSample_Texture2D.documentation = "Sample a texture at coordinate"_c;
     TextureSample_Texture2D.name = "textureSample"_c;
     TextureSample_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureSample_Texture2D.parameters = TextureSample_Texture2D_args;
@@ -20073,6 +20777,7 @@ void SetupIntrinsics()
     SampledTextureSample_Texture2D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     SampledTextureSample_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSample_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSample_Texture2D.documentation = "Sample a texture at coordinate"_c;
     SampledTextureSample_Texture2D.name = "textureSample"_c;
     SampledTextureSample_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSample_Texture2D.parameters = SampledTextureSample_Texture2D_args;
@@ -20093,6 +20798,7 @@ void SetupIntrinsics()
     TextureSample_Texture3D_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSample_Texture3D_coordinate.name = "coordinate"_c;
     TextureSample_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
+    TextureSample_Texture3D.documentation = "Sample a texture at coordinate"_c;
     TextureSample_Texture3D.name = "textureSample"_c;
     TextureSample_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureSample_Texture3D.parameters = TextureSample_Texture3D_args;
@@ -20112,6 +20818,7 @@ void SetupIntrinsics()
     SampledTextureSample_Texture3D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     SampledTextureSample_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSample_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSample_Texture3D.documentation = "Sample a texture at coordinate"_c;
     SampledTextureSample_Texture3D.name = "textureSample"_c;
     SampledTextureSample_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSample_Texture3D.parameters = SampledTextureSample_Texture3D_args;
@@ -20132,6 +20839,7 @@ void SetupIntrinsics()
     TextureSample_TextureCube_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSample_TextureCube_coordinate.name = "coordinate"_c;
     TextureSample_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
+    TextureSample_TextureCube.documentation = "Sample a texture at coordinate"_c;
     TextureSample_TextureCube.name = "textureSample"_c;
     TextureSample_TextureCube.returnType = Type::FullType { Float32x4Type.name };
     TextureSample_TextureCube.parameters = TextureSample_TextureCube_args;
@@ -20151,6 +20859,7 @@ void SetupIntrinsics()
     SampledTextureSample_TextureCube_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     SampledTextureSample_TextureCube_coordinate.name = "coordinate"_c;
     SampledTextureSample_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSample_TextureCube.documentation = "Sample a texture at coordinate"_c;
     SampledTextureSample_TextureCube.name = "textureSample"_c;
     SampledTextureSample_TextureCube.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSample_TextureCube.parameters = SampledTextureSample_TextureCube_args;
@@ -20171,6 +20880,7 @@ void SetupIntrinsics()
     TextureSample_Texture1DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSample_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSample_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
+    TextureSample_Texture1DArray.documentation = "Sample a texture at coordinate"_c;
     TextureSample_Texture1DArray.name = "textureSample"_c;
     TextureSample_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureSample_Texture1DArray.parameters = TextureSample_Texture1DArray_args;
@@ -20190,6 +20900,7 @@ void SetupIntrinsics()
     SampledTextureSample_Texture1DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     SampledTextureSample_Texture1DArray_coordinate.name = "coordinate"_c;
     SampledTextureSample_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSample_Texture1DArray.documentation = "Sample a texture at coordinate"_c;
     SampledTextureSample_Texture1DArray.name = "textureSample"_c;
     SampledTextureSample_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSample_Texture1DArray.parameters = SampledTextureSample_Texture1DArray_args;
@@ -20210,6 +20921,7 @@ void SetupIntrinsics()
     TextureSample_Texture2DArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSample_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSample_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
+    TextureSample_Texture2DArray.documentation = "Sample a texture at coordinate"_c;
     TextureSample_Texture2DArray.name = "textureSample"_c;
     TextureSample_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureSample_Texture2DArray.parameters = TextureSample_Texture2DArray_args;
@@ -20229,6 +20941,7 @@ void SetupIntrinsics()
     SampledTextureSample_Texture2DArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     SampledTextureSample_Texture2DArray_coordinate.name = "coordinate"_c;
     SampledTextureSample_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSample_Texture2DArray.documentation = "Sample a texture at coordinate"_c;
     SampledTextureSample_Texture2DArray.name = "textureSample"_c;
     SampledTextureSample_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSample_Texture2DArray.parameters = SampledTextureSample_Texture2DArray_args;
@@ -20249,6 +20962,7 @@ void SetupIntrinsics()
     TextureSample_TextureCubeArray_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSample_TextureCubeArray_coordinate.name = "coordinate"_c;
     TextureSample_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
+    TextureSample_TextureCubeArray.documentation = "Sample a texture at coordinate"_c;
     TextureSample_TextureCubeArray.name = "textureSample"_c;
     TextureSample_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
     TextureSample_TextureCubeArray.parameters = TextureSample_TextureCubeArray_args;
@@ -20268,6 +20982,7 @@ void SetupIntrinsics()
     SampledTextureSample_TextureCubeArray_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     SampledTextureSample_TextureCubeArray_coordinate.name = "coordinate"_c;
     SampledTextureSample_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
+    SampledTextureSample_TextureCubeArray.documentation = "Sample a texture at coordinate"_c;
     SampledTextureSample_TextureCubeArray.name = "textureSample"_c;
     SampledTextureSample_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSample_TextureCubeArray.parameters = SampledTextureSample_TextureCubeArray_args;
@@ -20290,6 +21005,7 @@ void SetupIntrinsics()
     TextureSampleOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleOffset_Texture1D_offset.name = "offset"_c;
     TextureSampleOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    TextureSampleOffset_Texture1D.documentation = "Sample a texture at coordinate with an offset applied to the coordinate"_c;
     TextureSampleOffset_Texture1D.name = "textureSampleOffset"_c;
     TextureSampleOffset_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleOffset_Texture1D.parameters = TextureSampleOffset_Texture1D_args;
@@ -20312,6 +21028,7 @@ void SetupIntrinsics()
     SampledTextureSampleOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleOffset_Texture1D_offset.name = "offset"_c;
     SampledTextureSampleOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleOffset_Texture1D.documentation = "Sample a texture at coordinate with an offset applied to the coordinate"_c;
     SampledTextureSampleOffset_Texture1D.name = "textureSampleOffset"_c;
     SampledTextureSampleOffset_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleOffset_Texture1D.parameters = SampledTextureSampleOffset_Texture1D_args;
@@ -20335,6 +21052,7 @@ void SetupIntrinsics()
     TextureSampleOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleOffset_Texture2D_offset.name = "offset"_c;
     TextureSampleOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleOffset_Texture2D.documentation = "Sample a texture at coordinate with an offset applied to the coordinate"_c;
     TextureSampleOffset_Texture2D.name = "textureSampleOffset"_c;
     TextureSampleOffset_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleOffset_Texture2D.parameters = TextureSampleOffset_Texture2D_args;
@@ -20357,6 +21075,7 @@ void SetupIntrinsics()
     SampledTextureSampleOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleOffset_Texture2D_offset.name = "offset"_c;
     SampledTextureSampleOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleOffset_Texture2D.documentation = "Sample a texture at coordinate with an offset applied to the coordinate"_c;
     SampledTextureSampleOffset_Texture2D.name = "textureSampleOffset"_c;
     SampledTextureSampleOffset_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleOffset_Texture2D.parameters = SampledTextureSampleOffset_Texture2D_args;
@@ -20380,6 +21099,7 @@ void SetupIntrinsics()
     TextureSampleOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleOffset_Texture3D_offset.name = "offset"_c;
     TextureSampleOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleOffset_Texture3D.documentation = "Sample a texture at coordinate with an offset applied to the coordinate"_c;
     TextureSampleOffset_Texture3D.name = "textureSampleOffset"_c;
     TextureSampleOffset_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleOffset_Texture3D.parameters = TextureSampleOffset_Texture3D_args;
@@ -20402,6 +21122,7 @@ void SetupIntrinsics()
     SampledTextureSampleOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleOffset_Texture3D_offset.name = "offset"_c;
     SampledTextureSampleOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleOffset_Texture3D.documentation = "Sample a texture at coordinate with an offset applied to the coordinate"_c;
     SampledTextureSampleOffset_Texture3D.name = "textureSampleOffset"_c;
     SampledTextureSampleOffset_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleOffset_Texture3D.parameters = SampledTextureSampleOffset_Texture3D_args;
@@ -20425,6 +21146,7 @@ void SetupIntrinsics()
     TextureSampleOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleOffset_Texture1DArray_offset.name = "offset"_c;
     TextureSampleOffset_Texture1DArray_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleOffset_Texture1DArray.documentation = "Sample a texture at coordinate with an offset applied to the coordinate"_c;
     TextureSampleOffset_Texture1DArray.name = "textureSampleOffset"_c;
     TextureSampleOffset_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleOffset_Texture1DArray.parameters = TextureSampleOffset_Texture1DArray_args;
@@ -20447,6 +21169,7 @@ void SetupIntrinsics()
     SampledTextureSampleOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleOffset_Texture1DArray_offset.name = "offset"_c;
     SampledTextureSampleOffset_Texture1DArray_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleOffset_Texture1DArray.documentation = "Sample a texture at coordinate with an offset applied to the coordinate"_c;
     SampledTextureSampleOffset_Texture1DArray.name = "textureSampleOffset"_c;
     SampledTextureSampleOffset_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleOffset_Texture1DArray.parameters = SampledTextureSampleOffset_Texture1DArray_args;
@@ -20470,6 +21193,7 @@ void SetupIntrinsics()
     TextureSampleOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleOffset_Texture2DArray_offset.name = "offset"_c;
     TextureSampleOffset_Texture2DArray_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleOffset_Texture2DArray.documentation = "Sample a texture at coordinate with an offset applied to the coordinate"_c;
     TextureSampleOffset_Texture2DArray.name = "textureSampleOffset"_c;
     TextureSampleOffset_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleOffset_Texture2DArray.parameters = TextureSampleOffset_Texture2DArray_args;
@@ -20492,6 +21216,7 @@ void SetupIntrinsics()
     SampledTextureSampleOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleOffset_Texture2DArray_offset.name = "offset"_c;
     SampledTextureSampleOffset_Texture2DArray_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleOffset_Texture2DArray.documentation = "Sample a texture at coordinate with an offset applied to the coordinate"_c;
     SampledTextureSampleOffset_Texture2DArray.name = "textureSampleOffset"_c;
     SampledTextureSampleOffset_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleOffset_Texture2DArray.parameters = SampledTextureSampleOffset_Texture2DArray_args;
@@ -20515,6 +21240,7 @@ void SetupIntrinsics()
     TextureSampleProj_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleProj_Texture1D_proj.name = "proj"_c;
     TextureSampleProj_Texture1D_proj.type = Type::FullType{ Float32Type.name };
+    TextureSampleProj_Texture1D.documentation = "Sample a texture at coordinate with projection"_c;
     TextureSampleProj_Texture1D.name = "textureSampleProj"_c;
     TextureSampleProj_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleProj_Texture1D.parameters = TextureSampleProj_Texture1D_args;
@@ -20537,6 +21263,7 @@ void SetupIntrinsics()
     SampledTextureSampleProj_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProj_Texture1D_proj.name = "proj"_c;
     SampledTextureSampleProj_Texture1D_proj.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleProj_Texture1D.documentation = "Sample a texture at coordinate with projection"_c;
     SampledTextureSampleProj_Texture1D.name = "textureSampleProj"_c;
     SampledTextureSampleProj_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleProj_Texture1D.parameters = SampledTextureSampleProj_Texture1D_args;
@@ -20560,6 +21287,7 @@ void SetupIntrinsics()
     TextureSampleProj_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleProj_Texture2D_proj.name = "proj"_c;
     TextureSampleProj_Texture2D_proj.type = Type::FullType{ Float32Type.name };
+    TextureSampleProj_Texture2D.documentation = "Sample a texture at coordinate with projection"_c;
     TextureSampleProj_Texture2D.name = "textureSampleProj"_c;
     TextureSampleProj_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleProj_Texture2D.parameters = TextureSampleProj_Texture2D_args;
@@ -20582,6 +21310,7 @@ void SetupIntrinsics()
     SampledTextureSampleProj_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleProj_Texture2D_proj.name = "proj"_c;
     SampledTextureSampleProj_Texture2D_proj.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleProj_Texture2D.documentation = "Sample a texture at coordinate with projection"_c;
     SampledTextureSampleProj_Texture2D.name = "textureSampleProj"_c;
     SampledTextureSampleProj_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleProj_Texture2D.parameters = SampledTextureSampleProj_Texture2D_args;
@@ -20605,6 +21334,7 @@ void SetupIntrinsics()
     TextureSampleProj_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleProj_Texture3D_proj.name = "proj"_c;
     TextureSampleProj_Texture3D_proj.type = Type::FullType{ Float32Type.name };
+    TextureSampleProj_Texture3D.documentation = "Sample a texture at coordinate with projection"_c;
     TextureSampleProj_Texture3D.name = "textureSampleProj"_c;
     TextureSampleProj_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleProj_Texture3D.parameters = TextureSampleProj_Texture3D_args;
@@ -20627,6 +21357,7 @@ void SetupIntrinsics()
     SampledTextureSampleProj_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleProj_Texture3D_proj.name = "proj"_c;
     SampledTextureSampleProj_Texture3D_proj.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleProj_Texture3D.documentation = "Sample a texture at coordinate with projection"_c;
     SampledTextureSampleProj_Texture3D.name = "textureSampleProj"_c;
     SampledTextureSampleProj_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleProj_Texture3D.parameters = SampledTextureSampleProj_Texture3D_args;
@@ -20652,6 +21383,7 @@ void SetupIntrinsics()
     TextureSampleProjOffset_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleProjOffset_Texture1D_offset.name = "offset"_c;
     TextureSampleProjOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    TextureSampleProjOffset_Texture1D.documentation = "Sample a texture at coordinate with projection with an offset applied to the coordinate"_c;
     TextureSampleProjOffset_Texture1D.name = "textureSampleProjOffset"_c;
     TextureSampleProjOffset_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleProjOffset_Texture1D.parameters = TextureSampleProjOffset_Texture1D_args;
@@ -20677,6 +21409,7 @@ void SetupIntrinsics()
     SampledTextureSampleProjOffset_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProjOffset_Texture1D_offset.name = "offset"_c;
     SampledTextureSampleProjOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleProjOffset_Texture1D.documentation = "Sample a texture at coordinate with projection with an offset applied to the coordinate"_c;
     SampledTextureSampleProjOffset_Texture1D.name = "textureSampleProjOffset"_c;
     SampledTextureSampleProjOffset_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleProjOffset_Texture1D.parameters = SampledTextureSampleProjOffset_Texture1D_args;
@@ -20703,6 +21436,7 @@ void SetupIntrinsics()
     TextureSampleProjOffset_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleProjOffset_Texture2D_offset.name = "offset"_c;
     TextureSampleProjOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleProjOffset_Texture2D.documentation = "Sample a texture at coordinate with projection with an offset applied to the coordinate"_c;
     TextureSampleProjOffset_Texture2D.name = "textureSampleProjOffset"_c;
     TextureSampleProjOffset_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleProjOffset_Texture2D.parameters = TextureSampleProjOffset_Texture2D_args;
@@ -20728,6 +21462,7 @@ void SetupIntrinsics()
     SampledTextureSampleProjOffset_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProjOffset_Texture2D_offset.name = "offset"_c;
     SampledTextureSampleProjOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleProjOffset_Texture2D.documentation = "Sample a texture at coordinate with projection with an offset applied to the coordinate"_c;
     SampledTextureSampleProjOffset_Texture2D.name = "textureSampleProjOffset"_c;
     SampledTextureSampleProjOffset_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleProjOffset_Texture2D.parameters = SampledTextureSampleProjOffset_Texture2D_args;
@@ -20754,6 +21489,7 @@ void SetupIntrinsics()
     TextureSampleProjOffset_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleProjOffset_Texture3D_offset.name = "offset"_c;
     TextureSampleProjOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleProjOffset_Texture3D.documentation = "Sample a texture at coordinate with projection with an offset applied to the coordinate"_c;
     TextureSampleProjOffset_Texture3D.name = "textureSampleProjOffset"_c;
     TextureSampleProjOffset_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleProjOffset_Texture3D.parameters = TextureSampleProjOffset_Texture3D_args;
@@ -20779,6 +21515,7 @@ void SetupIntrinsics()
     SampledTextureSampleProjOffset_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProjOffset_Texture3D_offset.name = "offset"_c;
     SampledTextureSampleProjOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleProjOffset_Texture3D.documentation = "Sample a texture at coordinate with projection with an offset applied to the coordinate"_c;
     SampledTextureSampleProjOffset_Texture3D.name = "textureSampleProjOffset"_c;
     SampledTextureSampleProjOffset_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleProjOffset_Texture3D.parameters = SampledTextureSampleProjOffset_Texture3D_args;
@@ -20803,6 +21540,7 @@ void SetupIntrinsics()
     TextureSampleCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleCompare_Texture1D_compare.name = "compare"_c;
     TextureSampleCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleCompare_Texture1D.documentation = "Sample a texture at coordinate with depth comparison"_c;
     TextureSampleCompare_Texture1D.name = "textureSampleCompare"_c;
     TextureSampleCompare_Texture1D.returnType = Type::FullType { Float32Type.name };
     TextureSampleCompare_Texture1D.parameters = TextureSampleCompare_Texture1D_args;
@@ -20825,6 +21563,7 @@ void SetupIntrinsics()
     SampledTextureSampleCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleCompare_Texture1D_compare.name = "compare"_c;
     SampledTextureSampleCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleCompare_Texture1D.documentation = "Sample a texture at coordinate with depth comparison"_c;
     SampledTextureSampleCompare_Texture1D.name = "textureSampleCompare"_c;
     SampledTextureSampleCompare_Texture1D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleCompare_Texture1D.parameters = SampledTextureSampleCompare_Texture1D_args;
@@ -20848,6 +21587,7 @@ void SetupIntrinsics()
     TextureSampleCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleCompare_Texture2D_compare.name = "compare"_c;
     TextureSampleCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleCompare_Texture2D.documentation = "Sample a texture at coordinate with depth comparison"_c;
     TextureSampleCompare_Texture2D.name = "textureSampleCompare"_c;
     TextureSampleCompare_Texture2D.returnType = Type::FullType { Float32Type.name };
     TextureSampleCompare_Texture2D.parameters = TextureSampleCompare_Texture2D_args;
@@ -20870,6 +21610,7 @@ void SetupIntrinsics()
     SampledTextureSampleCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleCompare_Texture2D_compare.name = "compare"_c;
     SampledTextureSampleCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleCompare_Texture2D.documentation = "Sample a texture at coordinate with depth comparison"_c;
     SampledTextureSampleCompare_Texture2D.name = "textureSampleCompare"_c;
     SampledTextureSampleCompare_Texture2D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleCompare_Texture2D.parameters = SampledTextureSampleCompare_Texture2D_args;
@@ -20893,6 +21634,7 @@ void SetupIntrinsics()
     TextureSampleCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleCompare_Texture3D_compare.name = "compare"_c;
     TextureSampleCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleCompare_Texture3D.documentation = "Sample a texture at coordinate with depth comparison"_c;
     TextureSampleCompare_Texture3D.name = "textureSampleCompare"_c;
     TextureSampleCompare_Texture3D.returnType = Type::FullType { Float32Type.name };
     TextureSampleCompare_Texture3D.parameters = TextureSampleCompare_Texture3D_args;
@@ -20915,6 +21657,7 @@ void SetupIntrinsics()
     SampledTextureSampleCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleCompare_Texture3D_compare.name = "compare"_c;
     SampledTextureSampleCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleCompare_Texture3D.documentation = "Sample a texture at coordinate with depth comparison"_c;
     SampledTextureSampleCompare_Texture3D.name = "textureSampleCompare"_c;
     SampledTextureSampleCompare_Texture3D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleCompare_Texture3D.parameters = SampledTextureSampleCompare_Texture3D_args;
@@ -20938,6 +21681,7 @@ void SetupIntrinsics()
     TextureSampleCompare_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleCompare_Texture1DArray_compare.name = "compare"_c;
     TextureSampleCompare_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleCompare_Texture1DArray.documentation = "Sample a texture at coordinate with depth comparison"_c;
     TextureSampleCompare_Texture1DArray.name = "textureSampleCompare"_c;
     TextureSampleCompare_Texture1DArray.returnType = Type::FullType { Float32Type.name };
     TextureSampleCompare_Texture1DArray.parameters = TextureSampleCompare_Texture1DArray_args;
@@ -20960,6 +21704,7 @@ void SetupIntrinsics()
     SampledTextureSampleCompare_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleCompare_Texture1DArray_compare.name = "compare"_c;
     SampledTextureSampleCompare_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleCompare_Texture1DArray.documentation = "Sample a texture at coordinate with depth comparison"_c;
     SampledTextureSampleCompare_Texture1DArray.name = "textureSampleCompare"_c;
     SampledTextureSampleCompare_Texture1DArray.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleCompare_Texture1DArray.parameters = SampledTextureSampleCompare_Texture1DArray_args;
@@ -20983,6 +21728,7 @@ void SetupIntrinsics()
     TextureSampleCompare_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleCompare_Texture2DArray_compare.name = "compare"_c;
     TextureSampleCompare_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleCompare_Texture2DArray.documentation = "Sample a texture at coordinate with depth comparison"_c;
     TextureSampleCompare_Texture2DArray.name = "textureSampleCompare"_c;
     TextureSampleCompare_Texture2DArray.returnType = Type::FullType { Float32Type.name };
     TextureSampleCompare_Texture2DArray.parameters = TextureSampleCompare_Texture2DArray_args;
@@ -21005,6 +21751,7 @@ void SetupIntrinsics()
     SampledTextureSampleCompare_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleCompare_Texture2DArray_compare.name = "compare"_c;
     SampledTextureSampleCompare_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleCompare_Texture2DArray.documentation = "Sample a texture at coordinate with depth comparison"_c;
     SampledTextureSampleCompare_Texture2DArray.name = "textureSampleCompare"_c;
     SampledTextureSampleCompare_Texture2DArray.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleCompare_Texture2DArray.parameters = SampledTextureSampleCompare_Texture2DArray_args;
@@ -21030,6 +21777,7 @@ void SetupIntrinsics()
     TextureSampleCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleCompareOffset_Texture1D_offset.name = "offset"_c;
     TextureSampleCompareOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    TextureSampleCompareOffset_Texture1D.documentation = "Sample a texture at coordinate with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleCompareOffset_Texture1D.name = "textureSampleCompareOffset"_c;
     TextureSampleCompareOffset_Texture1D.returnType = Type::FullType { Float32Type.name };
     TextureSampleCompareOffset_Texture1D.parameters = TextureSampleCompareOffset_Texture1D_args;
@@ -21055,6 +21803,7 @@ void SetupIntrinsics()
     SampledTextureSampleCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleCompareOffset_Texture1D_offset.name = "offset"_c;
     SampledTextureSampleCompareOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleCompareOffset_Texture1D.documentation = "Sample a texture at coordinate with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleCompareOffset_Texture1D.name = "textureSampleCompareOffset"_c;
     SampledTextureSampleCompareOffset_Texture1D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleCompareOffset_Texture1D.parameters = SampledTextureSampleCompareOffset_Texture1D_args;
@@ -21081,6 +21830,7 @@ void SetupIntrinsics()
     TextureSampleCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleCompareOffset_Texture2D_offset.name = "offset"_c;
     TextureSampleCompareOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleCompareOffset_Texture2D.documentation = "Sample a texture at coordinate with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleCompareOffset_Texture2D.name = "textureSampleCompareOffset"_c;
     TextureSampleCompareOffset_Texture2D.returnType = Type::FullType { Float32Type.name };
     TextureSampleCompareOffset_Texture2D.parameters = TextureSampleCompareOffset_Texture2D_args;
@@ -21106,6 +21856,7 @@ void SetupIntrinsics()
     SampledTextureSampleCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleCompareOffset_Texture2D_offset.name = "offset"_c;
     SampledTextureSampleCompareOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleCompareOffset_Texture2D.documentation = "Sample a texture at coordinate with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleCompareOffset_Texture2D.name = "textureSampleCompareOffset"_c;
     SampledTextureSampleCompareOffset_Texture2D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleCompareOffset_Texture2D.parameters = SampledTextureSampleCompareOffset_Texture2D_args;
@@ -21132,6 +21883,7 @@ void SetupIntrinsics()
     TextureSampleCompareOffset_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleCompareOffset_Texture3D_offset.name = "offset"_c;
     TextureSampleCompareOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleCompareOffset_Texture3D.documentation = "Sample a texture at coordinate with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleCompareOffset_Texture3D.name = "textureSampleCompareOffset"_c;
     TextureSampleCompareOffset_Texture3D.returnType = Type::FullType { Float32Type.name };
     TextureSampleCompareOffset_Texture3D.parameters = TextureSampleCompareOffset_Texture3D_args;
@@ -21157,6 +21909,7 @@ void SetupIntrinsics()
     SampledTextureSampleCompareOffset_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleCompareOffset_Texture3D_offset.name = "offset"_c;
     SampledTextureSampleCompareOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleCompareOffset_Texture3D.documentation = "Sample a texture at coordinate with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleCompareOffset_Texture3D.name = "textureSampleCompareOffset"_c;
     SampledTextureSampleCompareOffset_Texture3D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleCompareOffset_Texture3D.parameters = SampledTextureSampleCompareOffset_Texture3D_args;
@@ -21183,6 +21936,7 @@ void SetupIntrinsics()
     TextureSampleCompareOffset_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleCompareOffset_Texture1DArray_offset.name = "offset"_c;
     TextureSampleCompareOffset_Texture1DArray_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleCompareOffset_Texture1DArray.documentation = "Sample a texture at coordinate with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleCompareOffset_Texture1DArray.name = "textureSampleCompareOffset"_c;
     TextureSampleCompareOffset_Texture1DArray.returnType = Type::FullType { Float32Type.name };
     TextureSampleCompareOffset_Texture1DArray.parameters = TextureSampleCompareOffset_Texture1DArray_args;
@@ -21208,6 +21962,7 @@ void SetupIntrinsics()
     SampledTextureSampleCompareOffset_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleCompareOffset_Texture1DArray_offset.name = "offset"_c;
     SampledTextureSampleCompareOffset_Texture1DArray_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleCompareOffset_Texture1DArray.documentation = "Sample a texture at coordinate with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleCompareOffset_Texture1DArray.name = "textureSampleCompareOffset"_c;
     SampledTextureSampleCompareOffset_Texture1DArray.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleCompareOffset_Texture1DArray.parameters = SampledTextureSampleCompareOffset_Texture1DArray_args;
@@ -21234,6 +21989,7 @@ void SetupIntrinsics()
     TextureSampleCompareOffset_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleCompareOffset_Texture2DArray_offset.name = "offset"_c;
     TextureSampleCompareOffset_Texture2DArray_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleCompareOffset_Texture2DArray.documentation = "Sample a texture at coordinate with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleCompareOffset_Texture2DArray.name = "textureSampleCompareOffset"_c;
     TextureSampleCompareOffset_Texture2DArray.returnType = Type::FullType { Float32Type.name };
     TextureSampleCompareOffset_Texture2DArray.parameters = TextureSampleCompareOffset_Texture2DArray_args;
@@ -21259,6 +22015,7 @@ void SetupIntrinsics()
     SampledTextureSampleCompareOffset_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleCompareOffset_Texture2DArray_offset.name = "offset"_c;
     SampledTextureSampleCompareOffset_Texture2DArray_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleCompareOffset_Texture2DArray.documentation = "Sample a texture at coordinate with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleCompareOffset_Texture2DArray.name = "textureSampleCompareOffset"_c;
     SampledTextureSampleCompareOffset_Texture2DArray.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleCompareOffset_Texture2DArray.parameters = SampledTextureSampleCompareOffset_Texture2DArray_args;
@@ -21285,6 +22042,7 @@ void SetupIntrinsics()
     TextureSampleProjCompare_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleProjCompare_Texture1D_compare.name = "compare"_c;
     TextureSampleProjCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleProjCompare_Texture1D.documentation = "Sample a texture at coordinate with projection with depth comparison"_c;
     TextureSampleProjCompare_Texture1D.name = "textureSampleProjCompare"_c;
     TextureSampleProjCompare_Texture1D.returnType = Type::FullType { Float32Type.name };
     TextureSampleProjCompare_Texture1D.parameters = TextureSampleProjCompare_Texture1D_args;
@@ -21310,6 +22068,7 @@ void SetupIntrinsics()
     SampledTextureSampleProjCompare_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProjCompare_Texture1D_compare.name = "compare"_c;
     SampledTextureSampleProjCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleProjCompare_Texture1D.documentation = "Sample a texture at coordinate with projection with depth comparison"_c;
     SampledTextureSampleProjCompare_Texture1D.name = "textureSampleProjCompare"_c;
     SampledTextureSampleProjCompare_Texture1D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleProjCompare_Texture1D.parameters = SampledTextureSampleProjCompare_Texture1D_args;
@@ -21336,6 +22095,7 @@ void SetupIntrinsics()
     TextureSampleProjCompare_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleProjCompare_Texture2D_compare.name = "compare"_c;
     TextureSampleProjCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleProjCompare_Texture2D.documentation = "Sample a texture at coordinate with projection with depth comparison"_c;
     TextureSampleProjCompare_Texture2D.name = "textureSampleProjCompare"_c;
     TextureSampleProjCompare_Texture2D.returnType = Type::FullType { Float32Type.name };
     TextureSampleProjCompare_Texture2D.parameters = TextureSampleProjCompare_Texture2D_args;
@@ -21361,6 +22121,7 @@ void SetupIntrinsics()
     SampledTextureSampleProjCompare_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProjCompare_Texture2D_compare.name = "compare"_c;
     SampledTextureSampleProjCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleProjCompare_Texture2D.documentation = "Sample a texture at coordinate with projection with depth comparison"_c;
     SampledTextureSampleProjCompare_Texture2D.name = "textureSampleProjCompare"_c;
     SampledTextureSampleProjCompare_Texture2D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleProjCompare_Texture2D.parameters = SampledTextureSampleProjCompare_Texture2D_args;
@@ -21387,6 +22148,7 @@ void SetupIntrinsics()
     TextureSampleProjCompare_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleProjCompare_Texture3D_compare.name = "compare"_c;
     TextureSampleProjCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleProjCompare_Texture3D.documentation = "Sample a texture at coordinate with projection with depth comparison"_c;
     TextureSampleProjCompare_Texture3D.name = "textureSampleProjCompare"_c;
     TextureSampleProjCompare_Texture3D.returnType = Type::FullType { Float32Type.name };
     TextureSampleProjCompare_Texture3D.parameters = TextureSampleProjCompare_Texture3D_args;
@@ -21412,6 +22174,7 @@ void SetupIntrinsics()
     SampledTextureSampleProjCompare_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProjCompare_Texture3D_compare.name = "compare"_c;
     SampledTextureSampleProjCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleProjCompare_Texture3D.documentation = "Sample a texture at coordinate with projection with depth comparison"_c;
     SampledTextureSampleProjCompare_Texture3D.name = "textureSampleProjCompare"_c;
     SampledTextureSampleProjCompare_Texture3D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleProjCompare_Texture3D.parameters = SampledTextureSampleProjCompare_Texture3D_args;
@@ -21440,6 +22203,7 @@ void SetupIntrinsics()
     TextureSampleProjCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleProjCompareOffset_Texture1D_offset.name = "offset"_c;
     TextureSampleProjCompareOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    TextureSampleProjCompareOffset_Texture1D.documentation = "Sample a texture at coordinate with projection with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleProjCompareOffset_Texture1D.name = "textureSampleProjCompareOffset"_c;
     TextureSampleProjCompareOffset_Texture1D.returnType = Type::FullType { Float32Type.name };
     TextureSampleProjCompareOffset_Texture1D.parameters = TextureSampleProjCompareOffset_Texture1D_args;
@@ -21468,6 +22232,7 @@ void SetupIntrinsics()
     SampledTextureSampleProjCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProjCompareOffset_Texture1D_offset.name = "offset"_c;
     SampledTextureSampleProjCompareOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleProjCompareOffset_Texture1D.documentation = "Sample a texture at coordinate with projection with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleProjCompareOffset_Texture1D.name = "textureSampleProjCompareOffset"_c;
     SampledTextureSampleProjCompareOffset_Texture1D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleProjCompareOffset_Texture1D.parameters = SampledTextureSampleProjCompareOffset_Texture1D_args;
@@ -21497,6 +22262,7 @@ void SetupIntrinsics()
     TextureSampleProjCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleProjCompareOffset_Texture2D_offset.name = "offset"_c;
     TextureSampleProjCompareOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleProjCompareOffset_Texture2D.documentation = "Sample a texture at coordinate with projection with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleProjCompareOffset_Texture2D.name = "textureSampleProjCompareOffset"_c;
     TextureSampleProjCompareOffset_Texture2D.returnType = Type::FullType { Float32Type.name };
     TextureSampleProjCompareOffset_Texture2D.parameters = TextureSampleProjCompareOffset_Texture2D_args;
@@ -21525,6 +22291,7 @@ void SetupIntrinsics()
     SampledTextureSampleProjCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProjCompareOffset_Texture2D_offset.name = "offset"_c;
     SampledTextureSampleProjCompareOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleProjCompareOffset_Texture2D.documentation = "Sample a texture at coordinate with projection with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleProjCompareOffset_Texture2D.name = "textureSampleProjCompareOffset"_c;
     SampledTextureSampleProjCompareOffset_Texture2D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleProjCompareOffset_Texture2D.parameters = SampledTextureSampleProjCompareOffset_Texture2D_args;
@@ -21554,6 +22321,7 @@ void SetupIntrinsics()
     TextureSampleProjCompareOffset_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleProjCompareOffset_Texture3D_offset.name = "offset"_c;
     TextureSampleProjCompareOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleProjCompareOffset_Texture3D.documentation = "Sample a texture at coordinate with projection with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleProjCompareOffset_Texture3D.name = "textureSampleProjCompareOffset"_c;
     TextureSampleProjCompareOffset_Texture3D.returnType = Type::FullType { Float32Type.name };
     TextureSampleProjCompareOffset_Texture3D.parameters = TextureSampleProjCompareOffset_Texture3D_args;
@@ -21582,6 +22350,7 @@ void SetupIntrinsics()
     SampledTextureSampleProjCompareOffset_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProjCompareOffset_Texture3D_offset.name = "offset"_c;
     SampledTextureSampleProjCompareOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleProjCompareOffset_Texture3D.documentation = "Sample a texture at coordinate with projection with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleProjCompareOffset_Texture3D.name = "textureSampleProjCompareOffset"_c;
     SampledTextureSampleProjCompareOffset_Texture3D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleProjCompareOffset_Texture3D.parameters = SampledTextureSampleProjCompareOffset_Texture3D_args;
@@ -21607,6 +22376,7 @@ void SetupIntrinsics()
     TextureSampleLod_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleLod_Texture1D_lod.name = "lod"_c;
     TextureSampleLod_Texture1D_lod.type = Type::FullType{ Float32Type.name };
+    TextureSampleLod_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail"_c;
     TextureSampleLod_Texture1D.name = "textureSampleLod"_c;
     TextureSampleLod_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleLod_Texture1D.parameters = TextureSampleLod_Texture1D_args;
@@ -21629,6 +22399,7 @@ void SetupIntrinsics()
     SampledTextureSampleLod_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLod_Texture1D_lod.name = "lod"_c;
     SampledTextureSampleLod_Texture1D_lod.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLod_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail"_c;
     SampledTextureSampleLod_Texture1D.name = "textureSampleLod"_c;
     SampledTextureSampleLod_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleLod_Texture1D.parameters = SampledTextureSampleLod_Texture1D_args;
@@ -21652,6 +22423,7 @@ void SetupIntrinsics()
     TextureSampleLod_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleLod_Texture2D_lod.name = "lod"_c;
     TextureSampleLod_Texture2D_lod.type = Type::FullType{ Float32Type.name };
+    TextureSampleLod_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail"_c;
     TextureSampleLod_Texture2D.name = "textureSampleLod"_c;
     TextureSampleLod_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleLod_Texture2D.parameters = TextureSampleLod_Texture2D_args;
@@ -21674,6 +22446,7 @@ void SetupIntrinsics()
     SampledTextureSampleLod_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleLod_Texture2D_lod.name = "lod"_c;
     SampledTextureSampleLod_Texture2D_lod.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLod_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail"_c;
     SampledTextureSampleLod_Texture2D.name = "textureSampleLod"_c;
     SampledTextureSampleLod_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleLod_Texture2D.parameters = SampledTextureSampleLod_Texture2D_args;
@@ -21697,6 +22470,7 @@ void SetupIntrinsics()
     TextureSampleLod_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleLod_Texture3D_lod.name = "lod"_c;
     TextureSampleLod_Texture3D_lod.type = Type::FullType{ Float32Type.name };
+    TextureSampleLod_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail"_c;
     TextureSampleLod_Texture3D.name = "textureSampleLod"_c;
     TextureSampleLod_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleLod_Texture3D.parameters = TextureSampleLod_Texture3D_args;
@@ -21719,6 +22493,7 @@ void SetupIntrinsics()
     SampledTextureSampleLod_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleLod_Texture3D_lod.name = "lod"_c;
     SampledTextureSampleLod_Texture3D_lod.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLod_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail"_c;
     SampledTextureSampleLod_Texture3D.name = "textureSampleLod"_c;
     SampledTextureSampleLod_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleLod_Texture3D.parameters = SampledTextureSampleLod_Texture3D_args;
@@ -21742,6 +22517,7 @@ void SetupIntrinsics()
     TextureSampleLod_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleLod_TextureCube_lod.name = "lod"_c;
     TextureSampleLod_TextureCube_lod.type = Type::FullType{ Float32Type.name };
+    TextureSampleLod_TextureCube.documentation = "Sample a texture at coordinate with explicit level of detail"_c;
     TextureSampleLod_TextureCube.name = "textureSampleLod"_c;
     TextureSampleLod_TextureCube.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleLod_TextureCube.parameters = TextureSampleLod_TextureCube_args;
@@ -21764,6 +22540,7 @@ void SetupIntrinsics()
     SampledTextureSampleLod_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleLod_TextureCube_lod.name = "lod"_c;
     SampledTextureSampleLod_TextureCube_lod.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLod_TextureCube.documentation = "Sample a texture at coordinate with explicit level of detail"_c;
     SampledTextureSampleLod_TextureCube.name = "textureSampleLod"_c;
     SampledTextureSampleLod_TextureCube.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleLod_TextureCube.parameters = SampledTextureSampleLod_TextureCube_args;
@@ -21787,6 +22564,7 @@ void SetupIntrinsics()
     TextureSampleLod_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleLod_Texture1DArray_lod.name = "lod"_c;
     TextureSampleLod_Texture1DArray_lod.type = Type::FullType{ Float32Type.name };
+    TextureSampleLod_Texture1DArray.documentation = "Sample a texture at coordinate with explicit level of detail"_c;
     TextureSampleLod_Texture1DArray.name = "textureSampleLod"_c;
     TextureSampleLod_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleLod_Texture1DArray.parameters = TextureSampleLod_Texture1DArray_args;
@@ -21809,6 +22587,7 @@ void SetupIntrinsics()
     SampledTextureSampleLod_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleLod_Texture1DArray_lod.name = "lod"_c;
     SampledTextureSampleLod_Texture1DArray_lod.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLod_Texture1DArray.documentation = "Sample a texture at coordinate with explicit level of detail"_c;
     SampledTextureSampleLod_Texture1DArray.name = "textureSampleLod"_c;
     SampledTextureSampleLod_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleLod_Texture1DArray.parameters = SampledTextureSampleLod_Texture1DArray_args;
@@ -21832,6 +22611,7 @@ void SetupIntrinsics()
     TextureSampleLod_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleLod_Texture2DArray_lod.name = "lod"_c;
     TextureSampleLod_Texture2DArray_lod.type = Type::FullType{ Float32Type.name };
+    TextureSampleLod_Texture2DArray.documentation = "Sample a texture at coordinate with explicit level of detail"_c;
     TextureSampleLod_Texture2DArray.name = "textureSampleLod"_c;
     TextureSampleLod_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleLod_Texture2DArray.parameters = TextureSampleLod_Texture2DArray_args;
@@ -21854,6 +22634,7 @@ void SetupIntrinsics()
     SampledTextureSampleLod_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleLod_Texture2DArray_lod.name = "lod"_c;
     SampledTextureSampleLod_Texture2DArray_lod.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLod_Texture2DArray.documentation = "Sample a texture at coordinate with explicit level of detail"_c;
     SampledTextureSampleLod_Texture2DArray.name = "textureSampleLod"_c;
     SampledTextureSampleLod_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleLod_Texture2DArray.parameters = SampledTextureSampleLod_Texture2DArray_args;
@@ -21877,6 +22658,7 @@ void SetupIntrinsics()
     TextureSampleLod_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
     TextureSampleLod_TextureCubeArray_lod.name = "lod"_c;
     TextureSampleLod_TextureCubeArray_lod.type = Type::FullType{ Float32Type.name };
+    TextureSampleLod_TextureCubeArray.documentation = "Sample a texture at coordinate with explicit level of detail"_c;
     TextureSampleLod_TextureCubeArray.name = "textureSampleLod"_c;
     TextureSampleLod_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleLod_TextureCubeArray.parameters = TextureSampleLod_TextureCubeArray_args;
@@ -21899,6 +22681,7 @@ void SetupIntrinsics()
     SampledTextureSampleLod_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
     SampledTextureSampleLod_TextureCubeArray_lod.name = "lod"_c;
     SampledTextureSampleLod_TextureCubeArray_lod.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLod_TextureCubeArray.documentation = "Sample a texture at coordinate with explicit level of detail"_c;
     SampledTextureSampleLod_TextureCubeArray.name = "textureSampleLod"_c;
     SampledTextureSampleLod_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleLod_TextureCubeArray.parameters = SampledTextureSampleLod_TextureCubeArray_args;
@@ -21924,6 +22707,7 @@ void SetupIntrinsics()
     TextureSampleLodOffset_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodOffset_Texture1D_offset.name = "offset"_c;
     TextureSampleLodOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodOffset_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail with an offset applied to the coordinate"_c;
     TextureSampleLodOffset_Texture1D.name = "textureSampleLodOffset"_c;
     TextureSampleLodOffset_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleLodOffset_Texture1D.parameters = TextureSampleLodOffset_Texture1D_args;
@@ -21949,6 +22733,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodOffset_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodOffset_Texture1D_offset.name = "offset"_c;
     SampledTextureSampleLodOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodOffset_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail with an offset applied to the coordinate"_c;
     SampledTextureSampleLodOffset_Texture1D.name = "textureSampleLodOffset"_c;
     SampledTextureSampleLodOffset_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleLodOffset_Texture1D.parameters = SampledTextureSampleLodOffset_Texture1D_args;
@@ -21975,6 +22760,7 @@ void SetupIntrinsics()
     TextureSampleLodOffset_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodOffset_Texture2D_offset.name = "offset"_c;
     TextureSampleLodOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleLodOffset_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail with an offset applied to the coordinate"_c;
     TextureSampleLodOffset_Texture2D.name = "textureSampleLodOffset"_c;
     TextureSampleLodOffset_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleLodOffset_Texture2D.parameters = TextureSampleLodOffset_Texture2D_args;
@@ -22000,6 +22786,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodOffset_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodOffset_Texture2D_offset.name = "offset"_c;
     SampledTextureSampleLodOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleLodOffset_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail with an offset applied to the coordinate"_c;
     SampledTextureSampleLodOffset_Texture2D.name = "textureSampleLodOffset"_c;
     SampledTextureSampleLodOffset_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleLodOffset_Texture2D.parameters = SampledTextureSampleLodOffset_Texture2D_args;
@@ -22026,6 +22813,7 @@ void SetupIntrinsics()
     TextureSampleLodOffset_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodOffset_Texture3D_offset.name = "offset"_c;
     TextureSampleLodOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleLodOffset_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail with an offset applied to the coordinate"_c;
     TextureSampleLodOffset_Texture3D.name = "textureSampleLodOffset"_c;
     TextureSampleLodOffset_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleLodOffset_Texture3D.parameters = TextureSampleLodOffset_Texture3D_args;
@@ -22051,6 +22839,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodOffset_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodOffset_Texture3D_offset.name = "offset"_c;
     SampledTextureSampleLodOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleLodOffset_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail with an offset applied to the coordinate"_c;
     SampledTextureSampleLodOffset_Texture3D.name = "textureSampleLodOffset"_c;
     SampledTextureSampleLodOffset_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleLodOffset_Texture3D.parameters = SampledTextureSampleLodOffset_Texture3D_args;
@@ -22077,6 +22866,7 @@ void SetupIntrinsics()
     TextureSampleLodOffset_Texture1DArray_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodOffset_Texture1DArray_offset.name = "offset"_c;
     TextureSampleLodOffset_Texture1DArray_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleLodOffset_Texture1DArray.documentation = "Sample a texture at coordinate with explicit level of detail with an offset applied to the coordinate"_c;
     TextureSampleLodOffset_Texture1DArray.name = "textureSampleLodOffset"_c;
     TextureSampleLodOffset_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleLodOffset_Texture1DArray.parameters = TextureSampleLodOffset_Texture1DArray_args;
@@ -22102,6 +22892,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodOffset_Texture1DArray_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodOffset_Texture1DArray_offset.name = "offset"_c;
     SampledTextureSampleLodOffset_Texture1DArray_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleLodOffset_Texture1DArray.documentation = "Sample a texture at coordinate with explicit level of detail with an offset applied to the coordinate"_c;
     SampledTextureSampleLodOffset_Texture1DArray.name = "textureSampleLodOffset"_c;
     SampledTextureSampleLodOffset_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleLodOffset_Texture1DArray.parameters = SampledTextureSampleLodOffset_Texture1DArray_args;
@@ -22128,6 +22919,7 @@ void SetupIntrinsics()
     TextureSampleLodOffset_Texture2DArray_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodOffset_Texture2DArray_offset.name = "offset"_c;
     TextureSampleLodOffset_Texture2DArray_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleLodOffset_Texture2DArray.documentation = "Sample a texture at coordinate with explicit level of detail with an offset applied to the coordinate"_c;
     TextureSampleLodOffset_Texture2DArray.name = "textureSampleLodOffset"_c;
     TextureSampleLodOffset_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleLodOffset_Texture2DArray.parameters = TextureSampleLodOffset_Texture2DArray_args;
@@ -22153,6 +22945,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodOffset_Texture2DArray_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodOffset_Texture2DArray_offset.name = "offset"_c;
     SampledTextureSampleLodOffset_Texture2DArray_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleLodOffset_Texture2DArray.documentation = "Sample a texture at coordinate with explicit level of detail with an offset applied to the coordinate"_c;
     SampledTextureSampleLodOffset_Texture2DArray.name = "textureSampleLodOffset"_c;
     SampledTextureSampleLodOffset_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleLodOffset_Texture2DArray.parameters = SampledTextureSampleLodOffset_Texture2DArray_args;
@@ -22179,6 +22972,7 @@ void SetupIntrinsics()
     TextureSampleLodProj_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProj_Texture1D_proj.name = "proj"_c;
     TextureSampleLodProj_Texture1D_proj.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodProj_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail with projection"_c;
     TextureSampleLodProj_Texture1D.name = "textureSampleLodProj"_c;
     TextureSampleLodProj_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleLodProj_Texture1D.parameters = TextureSampleLodProj_Texture1D_args;
@@ -22204,6 +22998,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodProj_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProj_Texture1D_proj.name = "proj"_c;
     SampledTextureSampleLodProj_Texture1D_proj.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodProj_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail with projection"_c;
     SampledTextureSampleLodProj_Texture1D.name = "textureSampleLodProj"_c;
     SampledTextureSampleLodProj_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleLodProj_Texture1D.parameters = SampledTextureSampleLodProj_Texture1D_args;
@@ -22230,6 +23025,7 @@ void SetupIntrinsics()
     TextureSampleLodProj_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProj_Texture2D_proj.name = "proj"_c;
     TextureSampleLodProj_Texture2D_proj.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodProj_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail with projection"_c;
     TextureSampleLodProj_Texture2D.name = "textureSampleLodProj"_c;
     TextureSampleLodProj_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleLodProj_Texture2D.parameters = TextureSampleLodProj_Texture2D_args;
@@ -22255,6 +23051,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodProj_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProj_Texture2D_proj.name = "proj"_c;
     SampledTextureSampleLodProj_Texture2D_proj.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodProj_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail with projection"_c;
     SampledTextureSampleLodProj_Texture2D.name = "textureSampleLodProj"_c;
     SampledTextureSampleLodProj_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleLodProj_Texture2D.parameters = SampledTextureSampleLodProj_Texture2D_args;
@@ -22281,6 +23078,7 @@ void SetupIntrinsics()
     TextureSampleLodProj_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProj_Texture3D_proj.name = "proj"_c;
     TextureSampleLodProj_Texture3D_proj.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodProj_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail with projection"_c;
     TextureSampleLodProj_Texture3D.name = "textureSampleLodProj"_c;
     TextureSampleLodProj_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleLodProj_Texture3D.parameters = TextureSampleLodProj_Texture3D_args;
@@ -22306,6 +23104,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodProj_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProj_Texture3D_proj.name = "proj"_c;
     SampledTextureSampleLodProj_Texture3D_proj.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodProj_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail with projection"_c;
     SampledTextureSampleLodProj_Texture3D.name = "textureSampleLodProj"_c;
     SampledTextureSampleLodProj_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleLodProj_Texture3D.parameters = SampledTextureSampleLodProj_Texture3D_args;
@@ -22334,6 +23133,7 @@ void SetupIntrinsics()
     TextureSampleLodProjOffset_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjOffset_Texture1D_offset.name = "offset"_c;
     TextureSampleLodProjOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodProjOffset_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with an offset applied to the coordinate"_c;
     TextureSampleLodProjOffset_Texture1D.name = "textureSampleLodProjOffset"_c;
     TextureSampleLodProjOffset_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleLodProjOffset_Texture1D.parameters = TextureSampleLodProjOffset_Texture1D_args;
@@ -22362,6 +23162,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodProjOffset_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjOffset_Texture1D_offset.name = "offset"_c;
     SampledTextureSampleLodProjOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodProjOffset_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with an offset applied to the coordinate"_c;
     SampledTextureSampleLodProjOffset_Texture1D.name = "textureSampleLodProjOffset"_c;
     SampledTextureSampleLodProjOffset_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleLodProjOffset_Texture1D.parameters = SampledTextureSampleLodProjOffset_Texture1D_args;
@@ -22391,6 +23192,7 @@ void SetupIntrinsics()
     TextureSampleLodProjOffset_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjOffset_Texture2D_offset.name = "offset"_c;
     TextureSampleLodProjOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleLodProjOffset_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with an offset applied to the coordinate"_c;
     TextureSampleLodProjOffset_Texture2D.name = "textureSampleLodProjOffset"_c;
     TextureSampleLodProjOffset_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleLodProjOffset_Texture2D.parameters = TextureSampleLodProjOffset_Texture2D_args;
@@ -22419,6 +23221,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodProjOffset_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjOffset_Texture2D_offset.name = "offset"_c;
     SampledTextureSampleLodProjOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleLodProjOffset_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with an offset applied to the coordinate"_c;
     SampledTextureSampleLodProjOffset_Texture2D.name = "textureSampleLodProjOffset"_c;
     SampledTextureSampleLodProjOffset_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleLodProjOffset_Texture2D.parameters = SampledTextureSampleLodProjOffset_Texture2D_args;
@@ -22448,6 +23251,7 @@ void SetupIntrinsics()
     TextureSampleLodProjOffset_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjOffset_Texture3D_offset.name = "offset"_c;
     TextureSampleLodProjOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleLodProjOffset_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with an offset applied to the coordinate"_c;
     TextureSampleLodProjOffset_Texture3D.name = "textureSampleLodProjOffset"_c;
     TextureSampleLodProjOffset_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleLodProjOffset_Texture3D.parameters = TextureSampleLodProjOffset_Texture3D_args;
@@ -22476,6 +23280,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodProjOffset_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjOffset_Texture3D_offset.name = "offset"_c;
     SampledTextureSampleLodProjOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleLodProjOffset_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with an offset applied to the coordinate"_c;
     SampledTextureSampleLodProjOffset_Texture3D.name = "textureSampleLodProjOffset"_c;
     SampledTextureSampleLodProjOffset_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleLodProjOffset_Texture3D.parameters = SampledTextureSampleLodProjOffset_Texture3D_args;
@@ -22503,6 +23308,7 @@ void SetupIntrinsics()
     TextureSampleLodCompare_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompare_Texture1D_compare.name = "compare"_c;
     TextureSampleLodCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodCompare_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison"_c;
     TextureSampleLodCompare_Texture1D.name = "textureSampleLodCompare"_c;
     TextureSampleLodCompare_Texture1D.returnType = Type::FullType { Float32Type.name };
     TextureSampleLodCompare_Texture1D.parameters = TextureSampleLodCompare_Texture1D_args;
@@ -22528,6 +23334,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodCompare_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompare_Texture1D_compare.name = "compare"_c;
     SampledTextureSampleLodCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodCompare_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison"_c;
     SampledTextureSampleLodCompare_Texture1D.name = "textureSampleLodCompare"_c;
     SampledTextureSampleLodCompare_Texture1D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleLodCompare_Texture1D.parameters = SampledTextureSampleLodCompare_Texture1D_args;
@@ -22554,6 +23361,7 @@ void SetupIntrinsics()
     TextureSampleLodCompare_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompare_Texture2D_compare.name = "compare"_c;
     TextureSampleLodCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodCompare_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison"_c;
     TextureSampleLodCompare_Texture2D.name = "textureSampleLodCompare"_c;
     TextureSampleLodCompare_Texture2D.returnType = Type::FullType { Float32Type.name };
     TextureSampleLodCompare_Texture2D.parameters = TextureSampleLodCompare_Texture2D_args;
@@ -22579,6 +23387,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodCompare_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompare_Texture2D_compare.name = "compare"_c;
     SampledTextureSampleLodCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodCompare_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison"_c;
     SampledTextureSampleLodCompare_Texture2D.name = "textureSampleLodCompare"_c;
     SampledTextureSampleLodCompare_Texture2D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleLodCompare_Texture2D.parameters = SampledTextureSampleLodCompare_Texture2D_args;
@@ -22605,6 +23414,7 @@ void SetupIntrinsics()
     TextureSampleLodCompare_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompare_Texture3D_compare.name = "compare"_c;
     TextureSampleLodCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodCompare_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison"_c;
     TextureSampleLodCompare_Texture3D.name = "textureSampleLodCompare"_c;
     TextureSampleLodCompare_Texture3D.returnType = Type::FullType { Float32Type.name };
     TextureSampleLodCompare_Texture3D.parameters = TextureSampleLodCompare_Texture3D_args;
@@ -22630,6 +23440,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodCompare_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompare_Texture3D_compare.name = "compare"_c;
     SampledTextureSampleLodCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodCompare_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison"_c;
     SampledTextureSampleLodCompare_Texture3D.name = "textureSampleLodCompare"_c;
     SampledTextureSampleLodCompare_Texture3D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleLodCompare_Texture3D.parameters = SampledTextureSampleLodCompare_Texture3D_args;
@@ -22656,6 +23467,7 @@ void SetupIntrinsics()
     TextureSampleLodCompare_Texture1DArray_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompare_Texture1DArray_compare.name = "compare"_c;
     TextureSampleLodCompare_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodCompare_Texture1DArray.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison"_c;
     TextureSampleLodCompare_Texture1DArray.name = "textureSampleLodCompare"_c;
     TextureSampleLodCompare_Texture1DArray.returnType = Type::FullType { Float32Type.name };
     TextureSampleLodCompare_Texture1DArray.parameters = TextureSampleLodCompare_Texture1DArray_args;
@@ -22681,6 +23493,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodCompare_Texture1DArray_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompare_Texture1DArray_compare.name = "compare"_c;
     SampledTextureSampleLodCompare_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodCompare_Texture1DArray.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison"_c;
     SampledTextureSampleLodCompare_Texture1DArray.name = "textureSampleLodCompare"_c;
     SampledTextureSampleLodCompare_Texture1DArray.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleLodCompare_Texture1DArray.parameters = SampledTextureSampleLodCompare_Texture1DArray_args;
@@ -22707,6 +23520,7 @@ void SetupIntrinsics()
     TextureSampleLodCompare_Texture2DArray_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompare_Texture2DArray_compare.name = "compare"_c;
     TextureSampleLodCompare_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodCompare_Texture2DArray.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison"_c;
     TextureSampleLodCompare_Texture2DArray.name = "textureSampleLodCompare"_c;
     TextureSampleLodCompare_Texture2DArray.returnType = Type::FullType { Float32Type.name };
     TextureSampleLodCompare_Texture2DArray.parameters = TextureSampleLodCompare_Texture2DArray_args;
@@ -22732,6 +23546,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodCompare_Texture2DArray_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompare_Texture2DArray_compare.name = "compare"_c;
     SampledTextureSampleLodCompare_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodCompare_Texture2DArray.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison"_c;
     SampledTextureSampleLodCompare_Texture2DArray.name = "textureSampleLodCompare"_c;
     SampledTextureSampleLodCompare_Texture2DArray.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleLodCompare_Texture2DArray.parameters = SampledTextureSampleLodCompare_Texture2DArray_args;
@@ -22760,6 +23575,7 @@ void SetupIntrinsics()
     TextureSampleLodCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompareOffset_Texture1D_offset.name = "offset"_c;
     TextureSampleLodCompareOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodCompareOffset_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleLodCompareOffset_Texture1D.name = "textureSampleLodCompareOffset"_c;
     TextureSampleLodCompareOffset_Texture1D.returnType = Type::FullType { Float32Type.name };
     TextureSampleLodCompareOffset_Texture1D.parameters = TextureSampleLodCompareOffset_Texture1D_args;
@@ -22788,6 +23604,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompareOffset_Texture1D_offset.name = "offset"_c;
     SampledTextureSampleLodCompareOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodCompareOffset_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleLodCompareOffset_Texture1D.name = "textureSampleLodCompareOffset"_c;
     SampledTextureSampleLodCompareOffset_Texture1D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleLodCompareOffset_Texture1D.parameters = SampledTextureSampleLodCompareOffset_Texture1D_args;
@@ -22817,6 +23634,7 @@ void SetupIntrinsics()
     TextureSampleLodCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompareOffset_Texture2D_offset.name = "offset"_c;
     TextureSampleLodCompareOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleLodCompareOffset_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleLodCompareOffset_Texture2D.name = "textureSampleLodCompareOffset"_c;
     TextureSampleLodCompareOffset_Texture2D.returnType = Type::FullType { Float32Type.name };
     TextureSampleLodCompareOffset_Texture2D.parameters = TextureSampleLodCompareOffset_Texture2D_args;
@@ -22845,6 +23663,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompareOffset_Texture2D_offset.name = "offset"_c;
     SampledTextureSampleLodCompareOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleLodCompareOffset_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleLodCompareOffset_Texture2D.name = "textureSampleLodCompareOffset"_c;
     SampledTextureSampleLodCompareOffset_Texture2D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleLodCompareOffset_Texture2D.parameters = SampledTextureSampleLodCompareOffset_Texture2D_args;
@@ -22874,6 +23693,7 @@ void SetupIntrinsics()
     TextureSampleLodCompareOffset_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompareOffset_Texture3D_offset.name = "offset"_c;
     TextureSampleLodCompareOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleLodCompareOffset_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleLodCompareOffset_Texture3D.name = "textureSampleLodCompareOffset"_c;
     TextureSampleLodCompareOffset_Texture3D.returnType = Type::FullType { Float32Type.name };
     TextureSampleLodCompareOffset_Texture3D.parameters = TextureSampleLodCompareOffset_Texture3D_args;
@@ -22902,6 +23722,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodCompareOffset_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompareOffset_Texture3D_offset.name = "offset"_c;
     SampledTextureSampleLodCompareOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleLodCompareOffset_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleLodCompareOffset_Texture3D.name = "textureSampleLodCompareOffset"_c;
     SampledTextureSampleLodCompareOffset_Texture3D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleLodCompareOffset_Texture3D.parameters = SampledTextureSampleLodCompareOffset_Texture3D_args;
@@ -22931,6 +23752,7 @@ void SetupIntrinsics()
     TextureSampleLodCompareOffset_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompareOffset_Texture1DArray_offset.name = "offset"_c;
     TextureSampleLodCompareOffset_Texture1DArray_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleLodCompareOffset_Texture1DArray.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleLodCompareOffset_Texture1DArray.name = "textureSampleLodCompareOffset"_c;
     TextureSampleLodCompareOffset_Texture1DArray.returnType = Type::FullType { Float32Type.name };
     TextureSampleLodCompareOffset_Texture1DArray.parameters = TextureSampleLodCompareOffset_Texture1DArray_args;
@@ -22959,6 +23781,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodCompareOffset_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompareOffset_Texture1DArray_offset.name = "offset"_c;
     SampledTextureSampleLodCompareOffset_Texture1DArray_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleLodCompareOffset_Texture1DArray.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleLodCompareOffset_Texture1DArray.name = "textureSampleLodCompareOffset"_c;
     SampledTextureSampleLodCompareOffset_Texture1DArray.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleLodCompareOffset_Texture1DArray.parameters = SampledTextureSampleLodCompareOffset_Texture1DArray_args;
@@ -22988,6 +23811,7 @@ void SetupIntrinsics()
     TextureSampleLodCompareOffset_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompareOffset_Texture2DArray_offset.name = "offset"_c;
     TextureSampleLodCompareOffset_Texture2DArray_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleLodCompareOffset_Texture2DArray.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleLodCompareOffset_Texture2DArray.name = "textureSampleLodCompareOffset"_c;
     TextureSampleLodCompareOffset_Texture2DArray.returnType = Type::FullType { Float32Type.name };
     TextureSampleLodCompareOffset_Texture2DArray.parameters = TextureSampleLodCompareOffset_Texture2DArray_args;
@@ -23016,6 +23840,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodCompareOffset_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompareOffset_Texture2DArray_offset.name = "offset"_c;
     SampledTextureSampleLodCompareOffset_Texture2DArray_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleLodCompareOffset_Texture2DArray.documentation = "Sample a texture at coordinate with explicit level of detail with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleLodCompareOffset_Texture2DArray.name = "textureSampleLodCompareOffset"_c;
     SampledTextureSampleLodCompareOffset_Texture2DArray.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleLodCompareOffset_Texture2DArray.parameters = SampledTextureSampleLodCompareOffset_Texture2DArray_args;
@@ -23045,6 +23870,7 @@ void SetupIntrinsics()
     TextureSampleLodProjCompare_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompare_Texture1D_compare.name = "compare"_c;
     TextureSampleLodProjCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodProjCompare_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with depth comparison"_c;
     TextureSampleLodProjCompare_Texture1D.name = "textureSampleLodProjCompare"_c;
     TextureSampleLodProjCompare_Texture1D.returnType = Type::FullType { Float32Type.name };
     TextureSampleLodProjCompare_Texture1D.parameters = TextureSampleLodProjCompare_Texture1D_args;
@@ -23073,6 +23899,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodProjCompare_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompare_Texture1D_compare.name = "compare"_c;
     SampledTextureSampleLodProjCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodProjCompare_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with depth comparison"_c;
     SampledTextureSampleLodProjCompare_Texture1D.name = "textureSampleLodProjCompare"_c;
     SampledTextureSampleLodProjCompare_Texture1D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleLodProjCompare_Texture1D.parameters = SampledTextureSampleLodProjCompare_Texture1D_args;
@@ -23102,6 +23929,7 @@ void SetupIntrinsics()
     TextureSampleLodProjCompare_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompare_Texture2D_compare.name = "compare"_c;
     TextureSampleLodProjCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodProjCompare_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with depth comparison"_c;
     TextureSampleLodProjCompare_Texture2D.name = "textureSampleLodProjCompare"_c;
     TextureSampleLodProjCompare_Texture2D.returnType = Type::FullType { Float32Type.name };
     TextureSampleLodProjCompare_Texture2D.parameters = TextureSampleLodProjCompare_Texture2D_args;
@@ -23130,6 +23958,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodProjCompare_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompare_Texture2D_compare.name = "compare"_c;
     SampledTextureSampleLodProjCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodProjCompare_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with depth comparison"_c;
     SampledTextureSampleLodProjCompare_Texture2D.name = "textureSampleLodProjCompare"_c;
     SampledTextureSampleLodProjCompare_Texture2D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleLodProjCompare_Texture2D.parameters = SampledTextureSampleLodProjCompare_Texture2D_args;
@@ -23159,6 +23988,7 @@ void SetupIntrinsics()
     TextureSampleLodProjCompare_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompare_Texture3D_compare.name = "compare"_c;
     TextureSampleLodProjCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodProjCompare_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with depth comparison"_c;
     TextureSampleLodProjCompare_Texture3D.name = "textureSampleLodProjCompare"_c;
     TextureSampleLodProjCompare_Texture3D.returnType = Type::FullType { Float32Type.name };
     TextureSampleLodProjCompare_Texture3D.parameters = TextureSampleLodProjCompare_Texture3D_args;
@@ -23187,6 +24017,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodProjCompare_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompare_Texture3D_compare.name = "compare"_c;
     SampledTextureSampleLodProjCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodProjCompare_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with depth comparison"_c;
     SampledTextureSampleLodProjCompare_Texture3D.name = "textureSampleLodProjCompare"_c;
     SampledTextureSampleLodProjCompare_Texture3D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleLodProjCompare_Texture3D.parameters = SampledTextureSampleLodProjCompare_Texture3D_args;
@@ -23218,6 +24049,7 @@ void SetupIntrinsics()
     TextureSampleLodProjCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompareOffset_Texture1D_offset.name = "offset"_c;
     TextureSampleLodProjCompareOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    TextureSampleLodProjCompareOffset_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleLodProjCompareOffset_Texture1D.name = "textureSampleLodProjCompareOffset"_c;
     TextureSampleLodProjCompareOffset_Texture1D.returnType = Type::FullType { Float32Type.name };
     TextureSampleLodProjCompareOffset_Texture1D.parameters = TextureSampleLodProjCompareOffset_Texture1D_args;
@@ -23249,6 +24081,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodProjCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompareOffset_Texture1D_offset.name = "offset"_c;
     SampledTextureSampleLodProjCompareOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleLodProjCompareOffset_Texture1D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleLodProjCompareOffset_Texture1D.name = "textureSampleLodProjCompareOffset"_c;
     SampledTextureSampleLodProjCompareOffset_Texture1D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleLodProjCompareOffset_Texture1D.parameters = SampledTextureSampleLodProjCompareOffset_Texture1D_args;
@@ -23281,6 +24114,7 @@ void SetupIntrinsics()
     TextureSampleLodProjCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompareOffset_Texture2D_offset.name = "offset"_c;
     TextureSampleLodProjCompareOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleLodProjCompareOffset_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleLodProjCompareOffset_Texture2D.name = "textureSampleLodProjCompareOffset"_c;
     TextureSampleLodProjCompareOffset_Texture2D.returnType = Type::FullType { Float32Type.name };
     TextureSampleLodProjCompareOffset_Texture2D.parameters = TextureSampleLodProjCompareOffset_Texture2D_args;
@@ -23312,6 +24146,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodProjCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompareOffset_Texture2D_offset.name = "offset"_c;
     SampledTextureSampleLodProjCompareOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleLodProjCompareOffset_Texture2D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleLodProjCompareOffset_Texture2D.name = "textureSampleLodProjCompareOffset"_c;
     SampledTextureSampleLodProjCompareOffset_Texture2D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleLodProjCompareOffset_Texture2D.parameters = SampledTextureSampleLodProjCompareOffset_Texture2D_args;
@@ -23344,6 +24179,7 @@ void SetupIntrinsics()
     TextureSampleLodProjCompareOffset_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompareOffset_Texture3D_offset.name = "offset"_c;
     TextureSampleLodProjCompareOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleLodProjCompareOffset_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleLodProjCompareOffset_Texture3D.name = "textureSampleLodProjCompareOffset"_c;
     TextureSampleLodProjCompareOffset_Texture3D.returnType = Type::FullType { Float32Type.name };
     TextureSampleLodProjCompareOffset_Texture3D.parameters = TextureSampleLodProjCompareOffset_Texture3D_args;
@@ -23375,6 +24211,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodProjCompareOffset_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompareOffset_Texture3D_offset.name = "offset"_c;
     SampledTextureSampleLodProjCompareOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleLodProjCompareOffset_Texture3D.documentation = "Sample a texture at coordinate with explicit level of detail with projection with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleLodProjCompareOffset_Texture3D.name = "textureSampleLodProjCompareOffset"_c;
     SampledTextureSampleLodProjCompareOffset_Texture3D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleLodProjCompareOffset_Texture3D.parameters = SampledTextureSampleLodProjCompareOffset_Texture3D_args;
@@ -23403,6 +24240,7 @@ void SetupIntrinsics()
     TextureSampleGrad_Texture1D_grad_x.type = Type::FullType{ Float32Type.name };
     TextureSampleGrad_Texture1D_grad_y.name = "grad_y"_c;
     TextureSampleGrad_Texture1D_grad_y.type = Type::FullType{ Float32Type.name };
+    TextureSampleGrad_Texture1D.documentation = "Sample a texture at coordinate with explicit gradient"_c;
     TextureSampleGrad_Texture1D.name = "textureSampleGrad"_c;
     TextureSampleGrad_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleGrad_Texture1D.parameters = TextureSampleGrad_Texture1D_args;
@@ -23428,6 +24266,7 @@ void SetupIntrinsics()
     SampledTextureSampleGrad_Texture1D_grad_x.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGrad_Texture1D_grad_y.name = "grad_y"_c;
     SampledTextureSampleGrad_Texture1D_grad_y.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleGrad_Texture1D.documentation = "Sample a texture at coordinate with explicit gradient"_c;
     SampledTextureSampleGrad_Texture1D.name = "textureSampleGrad"_c;
     SampledTextureSampleGrad_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleGrad_Texture1D.parameters = SampledTextureSampleGrad_Texture1D_args;
@@ -23454,6 +24293,7 @@ void SetupIntrinsics()
     TextureSampleGrad_Texture2D_grad_x.type = Type::FullType{ Float32x2Type.name };
     TextureSampleGrad_Texture2D_grad_y.name = "grad_y"_c;
     TextureSampleGrad_Texture2D_grad_y.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleGrad_Texture2D.documentation = "Sample a texture at coordinate with explicit gradient"_c;
     TextureSampleGrad_Texture2D.name = "textureSampleGrad"_c;
     TextureSampleGrad_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleGrad_Texture2D.parameters = TextureSampleGrad_Texture2D_args;
@@ -23479,6 +24319,7 @@ void SetupIntrinsics()
     SampledTextureSampleGrad_Texture2D_grad_x.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleGrad_Texture2D_grad_y.name = "grad_y"_c;
     SampledTextureSampleGrad_Texture2D_grad_y.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleGrad_Texture2D.documentation = "Sample a texture at coordinate with explicit gradient"_c;
     SampledTextureSampleGrad_Texture2D.name = "textureSampleGrad"_c;
     SampledTextureSampleGrad_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleGrad_Texture2D.parameters = SampledTextureSampleGrad_Texture2D_args;
@@ -23505,6 +24346,7 @@ void SetupIntrinsics()
     TextureSampleGrad_Texture3D_grad_x.type = Type::FullType{ Float32x3Type.name };
     TextureSampleGrad_Texture3D_grad_y.name = "grad_y"_c;
     TextureSampleGrad_Texture3D_grad_y.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleGrad_Texture3D.documentation = "Sample a texture at coordinate with explicit gradient"_c;
     TextureSampleGrad_Texture3D.name = "textureSampleGrad"_c;
     TextureSampleGrad_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleGrad_Texture3D.parameters = TextureSampleGrad_Texture3D_args;
@@ -23530,6 +24372,7 @@ void SetupIntrinsics()
     SampledTextureSampleGrad_Texture3D_grad_x.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleGrad_Texture3D_grad_y.name = "grad_y"_c;
     SampledTextureSampleGrad_Texture3D_grad_y.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleGrad_Texture3D.documentation = "Sample a texture at coordinate with explicit gradient"_c;
     SampledTextureSampleGrad_Texture3D.name = "textureSampleGrad"_c;
     SampledTextureSampleGrad_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleGrad_Texture3D.parameters = SampledTextureSampleGrad_Texture3D_args;
@@ -23556,6 +24399,7 @@ void SetupIntrinsics()
     TextureSampleGrad_TextureCube_grad_x.type = Type::FullType{ Float32x3Type.name };
     TextureSampleGrad_TextureCube_grad_y.name = "grad_y"_c;
     TextureSampleGrad_TextureCube_grad_y.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleGrad_TextureCube.documentation = "Sample a texture at coordinate with explicit gradient"_c;
     TextureSampleGrad_TextureCube.name = "textureSampleGrad"_c;
     TextureSampleGrad_TextureCube.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleGrad_TextureCube.parameters = TextureSampleGrad_TextureCube_args;
@@ -23581,6 +24425,7 @@ void SetupIntrinsics()
     SampledTextureSampleGrad_TextureCube_grad_x.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleGrad_TextureCube_grad_y.name = "grad_y"_c;
     SampledTextureSampleGrad_TextureCube_grad_y.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleGrad_TextureCube.documentation = "Sample a texture at coordinate with explicit gradient"_c;
     SampledTextureSampleGrad_TextureCube.name = "textureSampleGrad"_c;
     SampledTextureSampleGrad_TextureCube.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleGrad_TextureCube.parameters = SampledTextureSampleGrad_TextureCube_args;
@@ -23607,6 +24452,7 @@ void SetupIntrinsics()
     TextureSampleGrad_Texture1DArray_grad_x.type = Type::FullType{ Float32x2Type.name };
     TextureSampleGrad_Texture1DArray_grad_y.name = "grad_y"_c;
     TextureSampleGrad_Texture1DArray_grad_y.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleGrad_Texture1DArray.documentation = "Sample a texture at coordinate with explicit gradient"_c;
     TextureSampleGrad_Texture1DArray.name = "textureSampleGrad"_c;
     TextureSampleGrad_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleGrad_Texture1DArray.parameters = TextureSampleGrad_Texture1DArray_args;
@@ -23632,6 +24478,7 @@ void SetupIntrinsics()
     SampledTextureSampleGrad_Texture1DArray_grad_x.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleGrad_Texture1DArray_grad_y.name = "grad_y"_c;
     SampledTextureSampleGrad_Texture1DArray_grad_y.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleGrad_Texture1DArray.documentation = "Sample a texture at coordinate with explicit gradient"_c;
     SampledTextureSampleGrad_Texture1DArray.name = "textureSampleGrad"_c;
     SampledTextureSampleGrad_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleGrad_Texture1DArray.parameters = SampledTextureSampleGrad_Texture1DArray_args;
@@ -23658,6 +24505,7 @@ void SetupIntrinsics()
     TextureSampleGrad_Texture2DArray_grad_x.type = Type::FullType{ Float32x3Type.name };
     TextureSampleGrad_Texture2DArray_grad_y.name = "grad_y"_c;
     TextureSampleGrad_Texture2DArray_grad_y.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleGrad_Texture2DArray.documentation = "Sample a texture at coordinate with explicit gradient"_c;
     TextureSampleGrad_Texture2DArray.name = "textureSampleGrad"_c;
     TextureSampleGrad_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleGrad_Texture2DArray.parameters = TextureSampleGrad_Texture2DArray_args;
@@ -23683,6 +24531,7 @@ void SetupIntrinsics()
     SampledTextureSampleGrad_Texture2DArray_grad_x.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleGrad_Texture2DArray_grad_y.name = "grad_y"_c;
     SampledTextureSampleGrad_Texture2DArray_grad_y.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleGrad_Texture2DArray.documentation = "Sample a texture at coordinate with explicit gradient"_c;
     SampledTextureSampleGrad_Texture2DArray.name = "textureSampleGrad"_c;
     SampledTextureSampleGrad_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleGrad_Texture2DArray.parameters = SampledTextureSampleGrad_Texture2DArray_args;
@@ -23709,6 +24558,7 @@ void SetupIntrinsics()
     TextureSampleGrad_TextureCubeArray_grad_x.type = Type::FullType{ Float32x4Type.name };
     TextureSampleGrad_TextureCubeArray_grad_y.name = "grad_y"_c;
     TextureSampleGrad_TextureCubeArray_grad_y.type = Type::FullType{ Float32x4Type.name };
+    TextureSampleGrad_TextureCubeArray.documentation = "Sample a texture at coordinate with explicit gradient"_c;
     TextureSampleGrad_TextureCubeArray.name = "textureSampleGrad"_c;
     TextureSampleGrad_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleGrad_TextureCubeArray.parameters = TextureSampleGrad_TextureCubeArray_args;
@@ -23734,6 +24584,7 @@ void SetupIntrinsics()
     SampledTextureSampleGrad_TextureCubeArray_grad_x.type = Type::FullType{ Float32x4Type.name };
     SampledTextureSampleGrad_TextureCubeArray_grad_y.name = "grad_y"_c;
     SampledTextureSampleGrad_TextureCubeArray_grad_y.type = Type::FullType{ Float32x4Type.name };
+    SampledTextureSampleGrad_TextureCubeArray.documentation = "Sample a texture at coordinate with explicit gradient"_c;
     SampledTextureSampleGrad_TextureCubeArray.name = "textureSampleGrad"_c;
     SampledTextureSampleGrad_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleGrad_TextureCubeArray.parameters = SampledTextureSampleGrad_TextureCubeArray_args;
@@ -23762,6 +24613,7 @@ void SetupIntrinsics()
     TextureSampleGradOffset_Texture1D_grad_y.type = Type::FullType{ Float32Type.name };
     TextureSampleGradOffset_Texture1D_offset.name = "offset"_c;
     TextureSampleGradOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    TextureSampleGradOffset_Texture1D.documentation = "Sample a texture at coordinate with explicit gradient with an offset applied to the coordinate"_c;
     TextureSampleGradOffset_Texture1D.name = "textureSampleGradOffset"_c;
     TextureSampleGradOffset_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleGradOffset_Texture1D.parameters = TextureSampleGradOffset_Texture1D_args;
@@ -23790,6 +24642,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradOffset_Texture1D_grad_y.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradOffset_Texture1D_offset.name = "offset"_c;
     SampledTextureSampleGradOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleGradOffset_Texture1D.documentation = "Sample a texture at coordinate with explicit gradient with an offset applied to the coordinate"_c;
     SampledTextureSampleGradOffset_Texture1D.name = "textureSampleGradOffset"_c;
     SampledTextureSampleGradOffset_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleGradOffset_Texture1D.parameters = SampledTextureSampleGradOffset_Texture1D_args;
@@ -23819,6 +24672,7 @@ void SetupIntrinsics()
     TextureSampleGradOffset_Texture2D_grad_y.type = Type::FullType{ Float32x2Type.name };
     TextureSampleGradOffset_Texture2D_offset.name = "offset"_c;
     TextureSampleGradOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleGradOffset_Texture2D.documentation = "Sample a texture at coordinate with explicit gradient with an offset applied to the coordinate"_c;
     TextureSampleGradOffset_Texture2D.name = "textureSampleGradOffset"_c;
     TextureSampleGradOffset_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleGradOffset_Texture2D.parameters = TextureSampleGradOffset_Texture2D_args;
@@ -23847,6 +24701,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradOffset_Texture2D_grad_y.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleGradOffset_Texture2D_offset.name = "offset"_c;
     SampledTextureSampleGradOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleGradOffset_Texture2D.documentation = "Sample a texture at coordinate with explicit gradient with an offset applied to the coordinate"_c;
     SampledTextureSampleGradOffset_Texture2D.name = "textureSampleGradOffset"_c;
     SampledTextureSampleGradOffset_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleGradOffset_Texture2D.parameters = SampledTextureSampleGradOffset_Texture2D_args;
@@ -23876,6 +24731,7 @@ void SetupIntrinsics()
     TextureSampleGradOffset_Texture3D_grad_y.type = Type::FullType{ Float32x3Type.name };
     TextureSampleGradOffset_Texture3D_offset.name = "offset"_c;
     TextureSampleGradOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleGradOffset_Texture3D.documentation = "Sample a texture at coordinate with explicit gradient with an offset applied to the coordinate"_c;
     TextureSampleGradOffset_Texture3D.name = "textureSampleGradOffset"_c;
     TextureSampleGradOffset_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleGradOffset_Texture3D.parameters = TextureSampleGradOffset_Texture3D_args;
@@ -23904,6 +24760,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradOffset_Texture3D_grad_y.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleGradOffset_Texture3D_offset.name = "offset"_c;
     SampledTextureSampleGradOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleGradOffset_Texture3D.documentation = "Sample a texture at coordinate with explicit gradient with an offset applied to the coordinate"_c;
     SampledTextureSampleGradOffset_Texture3D.name = "textureSampleGradOffset"_c;
     SampledTextureSampleGradOffset_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleGradOffset_Texture3D.parameters = SampledTextureSampleGradOffset_Texture3D_args;
@@ -23933,6 +24790,7 @@ void SetupIntrinsics()
     TextureSampleGradOffset_Texture1DArray_grad_y.type = Type::FullType{ Float32x2Type.name };
     TextureSampleGradOffset_Texture1DArray_offset.name = "offset"_c;
     TextureSampleGradOffset_Texture1DArray_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleGradOffset_Texture1DArray.documentation = "Sample a texture at coordinate with explicit gradient with an offset applied to the coordinate"_c;
     TextureSampleGradOffset_Texture1DArray.name = "textureSampleGradOffset"_c;
     TextureSampleGradOffset_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleGradOffset_Texture1DArray.parameters = TextureSampleGradOffset_Texture1DArray_args;
@@ -23961,6 +24819,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradOffset_Texture1DArray_grad_y.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleGradOffset_Texture1DArray_offset.name = "offset"_c;
     SampledTextureSampleGradOffset_Texture1DArray_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleGradOffset_Texture1DArray.documentation = "Sample a texture at coordinate with explicit gradient with an offset applied to the coordinate"_c;
     SampledTextureSampleGradOffset_Texture1DArray.name = "textureSampleGradOffset"_c;
     SampledTextureSampleGradOffset_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleGradOffset_Texture1DArray.parameters = SampledTextureSampleGradOffset_Texture1DArray_args;
@@ -23990,6 +24849,7 @@ void SetupIntrinsics()
     TextureSampleGradOffset_Texture2DArray_grad_y.type = Type::FullType{ Float32x3Type.name };
     TextureSampleGradOffset_Texture2DArray_offset.name = "offset"_c;
     TextureSampleGradOffset_Texture2DArray_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleGradOffset_Texture2DArray.documentation = "Sample a texture at coordinate with explicit gradient with an offset applied to the coordinate"_c;
     TextureSampleGradOffset_Texture2DArray.name = "textureSampleGradOffset"_c;
     TextureSampleGradOffset_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleGradOffset_Texture2DArray.parameters = TextureSampleGradOffset_Texture2DArray_args;
@@ -24018,6 +24878,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradOffset_Texture2DArray_grad_y.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleGradOffset_Texture2DArray_offset.name = "offset"_c;
     SampledTextureSampleGradOffset_Texture2DArray_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleGradOffset_Texture2DArray.documentation = "Sample a texture at coordinate with explicit gradient with an offset applied to the coordinate"_c;
     SampledTextureSampleGradOffset_Texture2DArray.name = "textureSampleGradOffset"_c;
     SampledTextureSampleGradOffset_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleGradOffset_Texture2DArray.parameters = SampledTextureSampleGradOffset_Texture2DArray_args;
@@ -24047,6 +24908,7 @@ void SetupIntrinsics()
     TextureSampleGradProj_Texture1D_grad_y.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProj_Texture1D_proj.name = "proj"_c;
     TextureSampleGradProj_Texture1D_proj.type = Type::FullType{ Float32Type.name };
+    TextureSampleGradProj_Texture1D.documentation = "Sample a texture at coordinate with explicit gradient with projection"_c;
     TextureSampleGradProj_Texture1D.name = "textureSampleGradProj"_c;
     TextureSampleGradProj_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleGradProj_Texture1D.parameters = TextureSampleGradProj_Texture1D_args;
@@ -24075,6 +24937,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradProj_Texture1D_grad_y.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProj_Texture1D_proj.name = "proj"_c;
     SampledTextureSampleGradProj_Texture1D_proj.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleGradProj_Texture1D.documentation = "Sample a texture at coordinate with explicit gradient with projection"_c;
     SampledTextureSampleGradProj_Texture1D.name = "textureSampleGradProj"_c;
     SampledTextureSampleGradProj_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleGradProj_Texture1D.parameters = SampledTextureSampleGradProj_Texture1D_args;
@@ -24104,6 +24967,7 @@ void SetupIntrinsics()
     TextureSampleGradProj_Texture2D_grad_y.type = Type::FullType{ Float32x2Type.name };
     TextureSampleGradProj_Texture2D_proj.name = "proj"_c;
     TextureSampleGradProj_Texture2D_proj.type = Type::FullType{ Float32Type.name };
+    TextureSampleGradProj_Texture2D.documentation = "Sample a texture at coordinate with explicit gradient with projection"_c;
     TextureSampleGradProj_Texture2D.name = "textureSampleGradProj"_c;
     TextureSampleGradProj_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleGradProj_Texture2D.parameters = TextureSampleGradProj_Texture2D_args;
@@ -24132,6 +24996,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradProj_Texture2D_grad_y.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleGradProj_Texture2D_proj.name = "proj"_c;
     SampledTextureSampleGradProj_Texture2D_proj.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleGradProj_Texture2D.documentation = "Sample a texture at coordinate with explicit gradient with projection"_c;
     SampledTextureSampleGradProj_Texture2D.name = "textureSampleGradProj"_c;
     SampledTextureSampleGradProj_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleGradProj_Texture2D.parameters = SampledTextureSampleGradProj_Texture2D_args;
@@ -24161,6 +25026,7 @@ void SetupIntrinsics()
     TextureSampleGradProj_Texture3D_grad_y.type = Type::FullType{ Float32x3Type.name };
     TextureSampleGradProj_Texture3D_proj.name = "proj"_c;
     TextureSampleGradProj_Texture3D_proj.type = Type::FullType{ Float32Type.name };
+    TextureSampleGradProj_Texture3D.documentation = "Sample a texture at coordinate with explicit gradient with projection"_c;
     TextureSampleGradProj_Texture3D.name = "textureSampleGradProj"_c;
     TextureSampleGradProj_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleGradProj_Texture3D.parameters = TextureSampleGradProj_Texture3D_args;
@@ -24189,6 +25055,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradProj_Texture3D_grad_y.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleGradProj_Texture3D_proj.name = "proj"_c;
     SampledTextureSampleGradProj_Texture3D_proj.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleGradProj_Texture3D.documentation = "Sample a texture at coordinate with explicit gradient with projection"_c;
     SampledTextureSampleGradProj_Texture3D.name = "textureSampleGradProj"_c;
     SampledTextureSampleGradProj_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleGradProj_Texture3D.parameters = SampledTextureSampleGradProj_Texture3D_args;
@@ -24220,6 +25087,7 @@ void SetupIntrinsics()
     TextureSampleGradProjOffset_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProjOffset_Texture1D_offset.name = "offset"_c;
     TextureSampleGradProjOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    TextureSampleGradProjOffset_Texture1D.documentation = "Sample a texture at coordinate with explicit gradient with projection with an offset applied to the coordinate"_c;
     TextureSampleGradProjOffset_Texture1D.name = "textureSampleGradProjOffset"_c;
     TextureSampleGradProjOffset_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleGradProjOffset_Texture1D.parameters = TextureSampleGradProjOffset_Texture1D_args;
@@ -24251,6 +25119,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradProjOffset_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProjOffset_Texture1D_offset.name = "offset"_c;
     SampledTextureSampleGradProjOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleGradProjOffset_Texture1D.documentation = "Sample a texture at coordinate with explicit gradient with projection with an offset applied to the coordinate"_c;
     SampledTextureSampleGradProjOffset_Texture1D.name = "textureSampleGradProjOffset"_c;
     SampledTextureSampleGradProjOffset_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleGradProjOffset_Texture1D.parameters = SampledTextureSampleGradProjOffset_Texture1D_args;
@@ -24283,6 +25152,7 @@ void SetupIntrinsics()
     TextureSampleGradProjOffset_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProjOffset_Texture2D_offset.name = "offset"_c;
     TextureSampleGradProjOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleGradProjOffset_Texture2D.documentation = "Sample a texture at coordinate with explicit gradient with projection with an offset applied to the coordinate"_c;
     TextureSampleGradProjOffset_Texture2D.name = "textureSampleGradProjOffset"_c;
     TextureSampleGradProjOffset_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleGradProjOffset_Texture2D.parameters = TextureSampleGradProjOffset_Texture2D_args;
@@ -24314,6 +25184,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradProjOffset_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProjOffset_Texture2D_offset.name = "offset"_c;
     SampledTextureSampleGradProjOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleGradProjOffset_Texture2D.documentation = "Sample a texture at coordinate with explicit gradient with projection with an offset applied to the coordinate"_c;
     SampledTextureSampleGradProjOffset_Texture2D.name = "textureSampleGradProjOffset"_c;
     SampledTextureSampleGradProjOffset_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleGradProjOffset_Texture2D.parameters = SampledTextureSampleGradProjOffset_Texture2D_args;
@@ -24346,6 +25217,7 @@ void SetupIntrinsics()
     TextureSampleGradProjOffset_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProjOffset_Texture3D_offset.name = "offset"_c;
     TextureSampleGradProjOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleGradProjOffset_Texture3D.documentation = "Sample a texture at coordinate with explicit gradient with projection with an offset applied to the coordinate"_c;
     TextureSampleGradProjOffset_Texture3D.name = "textureSampleGradProjOffset"_c;
     TextureSampleGradProjOffset_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleGradProjOffset_Texture3D.parameters = TextureSampleGradProjOffset_Texture3D_args;
@@ -24377,6 +25249,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradProjOffset_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProjOffset_Texture3D_offset.name = "offset"_c;
     SampledTextureSampleGradProjOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleGradProjOffset_Texture3D.documentation = "Sample a texture at coordinate with explicit gradient with projection with an offset applied to the coordinate"_c;
     SampledTextureSampleGradProjOffset_Texture3D.name = "textureSampleGradProjOffset"_c;
     SampledTextureSampleGradProjOffset_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleGradProjOffset_Texture3D.parameters = SampledTextureSampleGradProjOffset_Texture3D_args;
@@ -24407,6 +25280,7 @@ void SetupIntrinsics()
     TextureSampleGradCompare_Texture1D_grad_y.type = Type::FullType{ Float32Type.name };
     TextureSampleGradCompare_Texture1D_compare.name = "compare"_c;
     TextureSampleGradCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleGradCompare_Texture1D.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison"_c;
     TextureSampleGradCompare_Texture1D.name = "textureSampleGradCompare"_c;
     TextureSampleGradCompare_Texture1D.returnType = Type::FullType { Float32Type.name };
     TextureSampleGradCompare_Texture1D.parameters = TextureSampleGradCompare_Texture1D_args;
@@ -24435,6 +25309,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradCompare_Texture1D_grad_y.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradCompare_Texture1D_compare.name = "compare"_c;
     SampledTextureSampleGradCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleGradCompare_Texture1D.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison"_c;
     SampledTextureSampleGradCompare_Texture1D.name = "textureSampleGradCompare"_c;
     SampledTextureSampleGradCompare_Texture1D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleGradCompare_Texture1D.parameters = SampledTextureSampleGradCompare_Texture1D_args;
@@ -24464,6 +25339,7 @@ void SetupIntrinsics()
     TextureSampleGradCompare_Texture2D_grad_y.type = Type::FullType{ Float32x2Type.name };
     TextureSampleGradCompare_Texture2D_compare.name = "compare"_c;
     TextureSampleGradCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleGradCompare_Texture2D.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison"_c;
     TextureSampleGradCompare_Texture2D.name = "textureSampleGradCompare"_c;
     TextureSampleGradCompare_Texture2D.returnType = Type::FullType { Float32Type.name };
     TextureSampleGradCompare_Texture2D.parameters = TextureSampleGradCompare_Texture2D_args;
@@ -24492,6 +25368,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradCompare_Texture2D_grad_y.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleGradCompare_Texture2D_compare.name = "compare"_c;
     SampledTextureSampleGradCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleGradCompare_Texture2D.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison"_c;
     SampledTextureSampleGradCompare_Texture2D.name = "textureSampleGradCompare"_c;
     SampledTextureSampleGradCompare_Texture2D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleGradCompare_Texture2D.parameters = SampledTextureSampleGradCompare_Texture2D_args;
@@ -24521,6 +25398,7 @@ void SetupIntrinsics()
     TextureSampleGradCompare_Texture3D_grad_y.type = Type::FullType{ Float32x3Type.name };
     TextureSampleGradCompare_Texture3D_compare.name = "compare"_c;
     TextureSampleGradCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleGradCompare_Texture3D.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison"_c;
     TextureSampleGradCompare_Texture3D.name = "textureSampleGradCompare"_c;
     TextureSampleGradCompare_Texture3D.returnType = Type::FullType { Float32Type.name };
     TextureSampleGradCompare_Texture3D.parameters = TextureSampleGradCompare_Texture3D_args;
@@ -24549,6 +25427,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradCompare_Texture3D_grad_y.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleGradCompare_Texture3D_compare.name = "compare"_c;
     SampledTextureSampleGradCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleGradCompare_Texture3D.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison"_c;
     SampledTextureSampleGradCompare_Texture3D.name = "textureSampleGradCompare"_c;
     SampledTextureSampleGradCompare_Texture3D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleGradCompare_Texture3D.parameters = SampledTextureSampleGradCompare_Texture3D_args;
@@ -24578,6 +25457,7 @@ void SetupIntrinsics()
     TextureSampleGradCompare_Texture1DArray_grad_y.type = Type::FullType{ Float32x2Type.name };
     TextureSampleGradCompare_Texture1DArray_compare.name = "compare"_c;
     TextureSampleGradCompare_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleGradCompare_Texture1DArray.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison"_c;
     TextureSampleGradCompare_Texture1DArray.name = "textureSampleGradCompare"_c;
     TextureSampleGradCompare_Texture1DArray.returnType = Type::FullType { Float32Type.name };
     TextureSampleGradCompare_Texture1DArray.parameters = TextureSampleGradCompare_Texture1DArray_args;
@@ -24606,6 +25486,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradCompare_Texture1DArray_grad_y.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleGradCompare_Texture1DArray_compare.name = "compare"_c;
     SampledTextureSampleGradCompare_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleGradCompare_Texture1DArray.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison"_c;
     SampledTextureSampleGradCompare_Texture1DArray.name = "textureSampleGradCompare"_c;
     SampledTextureSampleGradCompare_Texture1DArray.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleGradCompare_Texture1DArray.parameters = SampledTextureSampleGradCompare_Texture1DArray_args;
@@ -24635,6 +25516,7 @@ void SetupIntrinsics()
     TextureSampleGradCompare_Texture2DArray_grad_y.type = Type::FullType{ Float32x3Type.name };
     TextureSampleGradCompare_Texture2DArray_compare.name = "compare"_c;
     TextureSampleGradCompare_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleGradCompare_Texture2DArray.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison"_c;
     TextureSampleGradCompare_Texture2DArray.name = "textureSampleGradCompare"_c;
     TextureSampleGradCompare_Texture2DArray.returnType = Type::FullType { Float32Type.name };
     TextureSampleGradCompare_Texture2DArray.parameters = TextureSampleGradCompare_Texture2DArray_args;
@@ -24663,6 +25545,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradCompare_Texture2DArray_grad_y.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleGradCompare_Texture2DArray_compare.name = "compare"_c;
     SampledTextureSampleGradCompare_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleGradCompare_Texture2DArray.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison"_c;
     SampledTextureSampleGradCompare_Texture2DArray.name = "textureSampleGradCompare"_c;
     SampledTextureSampleGradCompare_Texture2DArray.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleGradCompare_Texture2DArray.parameters = SampledTextureSampleGradCompare_Texture2DArray_args;
@@ -24694,6 +25577,7 @@ void SetupIntrinsics()
     TextureSampleGradCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleGradCompareOffset_Texture1D_offset.name = "offset"_c;
     TextureSampleGradCompareOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    TextureSampleGradCompareOffset_Texture1D.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleGradCompareOffset_Texture1D.name = "textureSampleGradCompareOffset"_c;
     TextureSampleGradCompareOffset_Texture1D.returnType = Type::FullType { Float32Type.name };
     TextureSampleGradCompareOffset_Texture1D.parameters = TextureSampleGradCompareOffset_Texture1D_args;
@@ -24725,6 +25609,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradCompareOffset_Texture1D_offset.name = "offset"_c;
     SampledTextureSampleGradCompareOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleGradCompareOffset_Texture1D.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleGradCompareOffset_Texture1D.name = "textureSampleGradCompareOffset"_c;
     SampledTextureSampleGradCompareOffset_Texture1D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleGradCompareOffset_Texture1D.parameters = SampledTextureSampleGradCompareOffset_Texture1D_args;
@@ -24757,6 +25642,7 @@ void SetupIntrinsics()
     TextureSampleGradCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleGradCompareOffset_Texture2D_offset.name = "offset"_c;
     TextureSampleGradCompareOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleGradCompareOffset_Texture2D.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleGradCompareOffset_Texture2D.name = "textureSampleGradCompareOffset"_c;
     TextureSampleGradCompareOffset_Texture2D.returnType = Type::FullType { Float32Type.name };
     TextureSampleGradCompareOffset_Texture2D.parameters = TextureSampleGradCompareOffset_Texture2D_args;
@@ -24788,6 +25674,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradCompareOffset_Texture2D_offset.name = "offset"_c;
     SampledTextureSampleGradCompareOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleGradCompareOffset_Texture2D.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleGradCompareOffset_Texture2D.name = "textureSampleGradCompareOffset"_c;
     SampledTextureSampleGradCompareOffset_Texture2D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleGradCompareOffset_Texture2D.parameters = SampledTextureSampleGradCompareOffset_Texture2D_args;
@@ -24820,6 +25707,7 @@ void SetupIntrinsics()
     TextureSampleGradCompareOffset_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleGradCompareOffset_Texture3D_offset.name = "offset"_c;
     TextureSampleGradCompareOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleGradCompareOffset_Texture3D.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleGradCompareOffset_Texture3D.name = "textureSampleGradCompareOffset"_c;
     TextureSampleGradCompareOffset_Texture3D.returnType = Type::FullType { Float32Type.name };
     TextureSampleGradCompareOffset_Texture3D.parameters = TextureSampleGradCompareOffset_Texture3D_args;
@@ -24851,6 +25739,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradCompareOffset_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradCompareOffset_Texture3D_offset.name = "offset"_c;
     SampledTextureSampleGradCompareOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleGradCompareOffset_Texture3D.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleGradCompareOffset_Texture3D.name = "textureSampleGradCompareOffset"_c;
     SampledTextureSampleGradCompareOffset_Texture3D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleGradCompareOffset_Texture3D.parameters = SampledTextureSampleGradCompareOffset_Texture3D_args;
@@ -24883,6 +25772,7 @@ void SetupIntrinsics()
     TextureSampleGradCompareOffset_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleGradCompareOffset_Texture1DArray_offset.name = "offset"_c;
     TextureSampleGradCompareOffset_Texture1DArray_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleGradCompareOffset_Texture1DArray.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleGradCompareOffset_Texture1DArray.name = "textureSampleGradCompareOffset"_c;
     TextureSampleGradCompareOffset_Texture1DArray.returnType = Type::FullType { Float32Type.name };
     TextureSampleGradCompareOffset_Texture1DArray.parameters = TextureSampleGradCompareOffset_Texture1DArray_args;
@@ -24914,6 +25804,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradCompareOffset_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradCompareOffset_Texture1DArray_offset.name = "offset"_c;
     SampledTextureSampleGradCompareOffset_Texture1DArray_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleGradCompareOffset_Texture1DArray.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleGradCompareOffset_Texture1DArray.name = "textureSampleGradCompareOffset"_c;
     SampledTextureSampleGradCompareOffset_Texture1DArray.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleGradCompareOffset_Texture1DArray.parameters = SampledTextureSampleGradCompareOffset_Texture1DArray_args;
@@ -24946,6 +25837,7 @@ void SetupIntrinsics()
     TextureSampleGradCompareOffset_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleGradCompareOffset_Texture2DArray_offset.name = "offset"_c;
     TextureSampleGradCompareOffset_Texture2DArray_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleGradCompareOffset_Texture2DArray.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleGradCompareOffset_Texture2DArray.name = "textureSampleGradCompareOffset"_c;
     TextureSampleGradCompareOffset_Texture2DArray.returnType = Type::FullType { Float32Type.name };
     TextureSampleGradCompareOffset_Texture2DArray.parameters = TextureSampleGradCompareOffset_Texture2DArray_args;
@@ -24977,6 +25869,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradCompareOffset_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradCompareOffset_Texture2DArray_offset.name = "offset"_c;
     SampledTextureSampleGradCompareOffset_Texture2DArray_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleGradCompareOffset_Texture2DArray.documentation = "Sample a texture at coordinate with explicit gradient with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleGradCompareOffset_Texture2DArray.name = "textureSampleGradCompareOffset"_c;
     SampledTextureSampleGradCompareOffset_Texture2DArray.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleGradCompareOffset_Texture2DArray.parameters = SampledTextureSampleGradCompareOffset_Texture2DArray_args;
@@ -25009,6 +25902,7 @@ void SetupIntrinsics()
     TextureSampleGradProjCompare_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProjCompare_Texture1D_compare.name = "compare"_c;
     TextureSampleGradProjCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleGradProjCompare_Texture1D.documentation = "Sample a texture at coordinate with explicit gradient with projection with depth comparison"_c;
     TextureSampleGradProjCompare_Texture1D.name = "textureSampleGradProjCompare"_c;
     TextureSampleGradProjCompare_Texture1D.returnType = Type::FullType { Float32Type.name };
     TextureSampleGradProjCompare_Texture1D.parameters = TextureSampleGradProjCompare_Texture1D_args;
@@ -25040,6 +25934,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradProjCompare_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProjCompare_Texture1D_compare.name = "compare"_c;
     SampledTextureSampleGradProjCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleGradProjCompare_Texture1D.documentation = "Sample a texture at coordinate with explicit gradient with projection with depth comparison"_c;
     SampledTextureSampleGradProjCompare_Texture1D.name = "textureSampleGradProjCompare"_c;
     SampledTextureSampleGradProjCompare_Texture1D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleGradProjCompare_Texture1D.parameters = SampledTextureSampleGradProjCompare_Texture1D_args;
@@ -25072,6 +25967,7 @@ void SetupIntrinsics()
     TextureSampleGradProjCompare_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProjCompare_Texture2D_compare.name = "compare"_c;
     TextureSampleGradProjCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleGradProjCompare_Texture2D.documentation = "Sample a texture at coordinate with explicit gradient with projection with depth comparison"_c;
     TextureSampleGradProjCompare_Texture2D.name = "textureSampleGradProjCompare"_c;
     TextureSampleGradProjCompare_Texture2D.returnType = Type::FullType { Float32Type.name };
     TextureSampleGradProjCompare_Texture2D.parameters = TextureSampleGradProjCompare_Texture2D_args;
@@ -25103,6 +25999,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradProjCompare_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProjCompare_Texture2D_compare.name = "compare"_c;
     SampledTextureSampleGradProjCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleGradProjCompare_Texture2D.documentation = "Sample a texture at coordinate with explicit gradient with projection with depth comparison"_c;
     SampledTextureSampleGradProjCompare_Texture2D.name = "textureSampleGradProjCompare"_c;
     SampledTextureSampleGradProjCompare_Texture2D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleGradProjCompare_Texture2D.parameters = SampledTextureSampleGradProjCompare_Texture2D_args;
@@ -25135,6 +26032,7 @@ void SetupIntrinsics()
     TextureSampleGradProjCompare_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProjCompare_Texture3D_compare.name = "compare"_c;
     TextureSampleGradProjCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleGradProjCompare_Texture3D.documentation = "Sample a texture at coordinate with explicit gradient with projection with depth comparison"_c;
     TextureSampleGradProjCompare_Texture3D.name = "textureSampleGradProjCompare"_c;
     TextureSampleGradProjCompare_Texture3D.returnType = Type::FullType { Float32Type.name };
     TextureSampleGradProjCompare_Texture3D.parameters = TextureSampleGradProjCompare_Texture3D_args;
@@ -25166,6 +26064,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradProjCompare_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProjCompare_Texture3D_compare.name = "compare"_c;
     SampledTextureSampleGradProjCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleGradProjCompare_Texture3D.documentation = "Sample a texture at coordinate with explicit gradient with projection with depth comparison"_c;
     SampledTextureSampleGradProjCompare_Texture3D.name = "textureSampleGradProjCompare"_c;
     SampledTextureSampleGradProjCompare_Texture3D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleGradProjCompare_Texture3D.parameters = SampledTextureSampleGradProjCompare_Texture3D_args;
@@ -25200,6 +26099,7 @@ void SetupIntrinsics()
     TextureSampleGradProjCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProjCompareOffset_Texture1D_offset.name = "offset"_c;
     TextureSampleGradProjCompareOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    TextureSampleGradProjCompareOffset_Texture1D.documentation = "Sample a texture at coordinate with explicit gradient with projection with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleGradProjCompareOffset_Texture1D.name = "textureSampleGradProjCompareOffset"_c;
     TextureSampleGradProjCompareOffset_Texture1D.returnType = Type::FullType { Float32Type.name };
     TextureSampleGradProjCompareOffset_Texture1D.parameters = TextureSampleGradProjCompareOffset_Texture1D_args;
@@ -25234,6 +26134,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradProjCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProjCompareOffset_Texture1D_offset.name = "offset"_c;
     SampledTextureSampleGradProjCompareOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleGradProjCompareOffset_Texture1D.documentation = "Sample a texture at coordinate with explicit gradient with projection with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleGradProjCompareOffset_Texture1D.name = "textureSampleGradProjCompareOffset"_c;
     SampledTextureSampleGradProjCompareOffset_Texture1D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleGradProjCompareOffset_Texture1D.parameters = SampledTextureSampleGradProjCompareOffset_Texture1D_args;
@@ -25269,6 +26170,7 @@ void SetupIntrinsics()
     TextureSampleGradProjCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProjCompareOffset_Texture2D_offset.name = "offset"_c;
     TextureSampleGradProjCompareOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleGradProjCompareOffset_Texture2D.documentation = "Sample a texture at coordinate with explicit gradient with projection with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleGradProjCompareOffset_Texture2D.name = "textureSampleGradProjCompareOffset"_c;
     TextureSampleGradProjCompareOffset_Texture2D.returnType = Type::FullType { Float32Type.name };
     TextureSampleGradProjCompareOffset_Texture2D.parameters = TextureSampleGradProjCompareOffset_Texture2D_args;
@@ -25303,6 +26205,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradProjCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProjCompareOffset_Texture2D_offset.name = "offset"_c;
     SampledTextureSampleGradProjCompareOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleGradProjCompareOffset_Texture2D.documentation = "Sample a texture at coordinate with explicit gradient with projection with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleGradProjCompareOffset_Texture2D.name = "textureSampleGradProjCompareOffset"_c;
     SampledTextureSampleGradProjCompareOffset_Texture2D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleGradProjCompareOffset_Texture2D.parameters = SampledTextureSampleGradProjCompareOffset_Texture2D_args;
@@ -25338,6 +26241,7 @@ void SetupIntrinsics()
     TextureSampleGradProjCompareOffset_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProjCompareOffset_Texture3D_offset.name = "offset"_c;
     TextureSampleGradProjCompareOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleGradProjCompareOffset_Texture3D.documentation = "Sample a texture at coordinate with explicit gradient with projection with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleGradProjCompareOffset_Texture3D.name = "textureSampleGradProjCompareOffset"_c;
     TextureSampleGradProjCompareOffset_Texture3D.returnType = Type::FullType { Float32Type.name };
     TextureSampleGradProjCompareOffset_Texture3D.parameters = TextureSampleGradProjCompareOffset_Texture3D_args;
@@ -25372,6 +26276,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradProjCompareOffset_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProjCompareOffset_Texture3D_offset.name = "offset"_c;
     SampledTextureSampleGradProjCompareOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleGradProjCompareOffset_Texture3D.documentation = "Sample a texture at coordinate with explicit gradient with projection with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleGradProjCompareOffset_Texture3D.name = "textureSampleGradProjCompareOffset"_c;
     SampledTextureSampleGradProjCompareOffset_Texture3D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleGradProjCompareOffset_Texture3D.parameters = SampledTextureSampleGradProjCompareOffset_Texture3D_args;
@@ -25399,6 +26304,7 @@ void SetupIntrinsics()
     TextureSampleBias_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleBias_Texture1D_bias.name = "bias"_c;
     TextureSampleBias_Texture1D_bias.type = Type::FullType{ Float32Type.name };
+    TextureSampleBias_Texture1D.documentation = "Sample a texture at coordinate with a mip bias"_c;
     TextureSampleBias_Texture1D.name = "textureSampleBias"_c;
     TextureSampleBias_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleBias_Texture1D.parameters = TextureSampleBias_Texture1D_args;
@@ -25421,6 +26327,7 @@ void SetupIntrinsics()
     SampledTextureSampleBias_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBias_Texture1D_bias.name = "bias"_c;
     SampledTextureSampleBias_Texture1D_bias.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBias_Texture1D.documentation = "Sample a texture at coordinate with a mip bias"_c;
     SampledTextureSampleBias_Texture1D.name = "textureSampleBias"_c;
     SampledTextureSampleBias_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleBias_Texture1D.parameters = SampledTextureSampleBias_Texture1D_args;
@@ -25444,6 +26351,7 @@ void SetupIntrinsics()
     TextureSampleBias_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleBias_Texture2D_bias.name = "bias"_c;
     TextureSampleBias_Texture2D_bias.type = Type::FullType{ Float32Type.name };
+    TextureSampleBias_Texture2D.documentation = "Sample a texture at coordinate with a mip bias"_c;
     TextureSampleBias_Texture2D.name = "textureSampleBias"_c;
     TextureSampleBias_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleBias_Texture2D.parameters = TextureSampleBias_Texture2D_args;
@@ -25466,6 +26374,7 @@ void SetupIntrinsics()
     SampledTextureSampleBias_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleBias_Texture2D_bias.name = "bias"_c;
     SampledTextureSampleBias_Texture2D_bias.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBias_Texture2D.documentation = "Sample a texture at coordinate with a mip bias"_c;
     SampledTextureSampleBias_Texture2D.name = "textureSampleBias"_c;
     SampledTextureSampleBias_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleBias_Texture2D.parameters = SampledTextureSampleBias_Texture2D_args;
@@ -25489,6 +26398,7 @@ void SetupIntrinsics()
     TextureSampleBias_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleBias_Texture3D_bias.name = "bias"_c;
     TextureSampleBias_Texture3D_bias.type = Type::FullType{ Float32Type.name };
+    TextureSampleBias_Texture3D.documentation = "Sample a texture at coordinate with a mip bias"_c;
     TextureSampleBias_Texture3D.name = "textureSampleBias"_c;
     TextureSampleBias_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleBias_Texture3D.parameters = TextureSampleBias_Texture3D_args;
@@ -25511,6 +26421,7 @@ void SetupIntrinsics()
     SampledTextureSampleBias_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleBias_Texture3D_bias.name = "bias"_c;
     SampledTextureSampleBias_Texture3D_bias.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBias_Texture3D.documentation = "Sample a texture at coordinate with a mip bias"_c;
     SampledTextureSampleBias_Texture3D.name = "textureSampleBias"_c;
     SampledTextureSampleBias_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleBias_Texture3D.parameters = SampledTextureSampleBias_Texture3D_args;
@@ -25534,6 +26445,7 @@ void SetupIntrinsics()
     TextureSampleBias_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleBias_TextureCube_bias.name = "bias"_c;
     TextureSampleBias_TextureCube_bias.type = Type::FullType{ Float32Type.name };
+    TextureSampleBias_TextureCube.documentation = "Sample a texture at coordinate with a mip bias"_c;
     TextureSampleBias_TextureCube.name = "textureSampleBias"_c;
     TextureSampleBias_TextureCube.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleBias_TextureCube.parameters = TextureSampleBias_TextureCube_args;
@@ -25556,6 +26468,7 @@ void SetupIntrinsics()
     SampledTextureSampleBias_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleBias_TextureCube_bias.name = "bias"_c;
     SampledTextureSampleBias_TextureCube_bias.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBias_TextureCube.documentation = "Sample a texture at coordinate with a mip bias"_c;
     SampledTextureSampleBias_TextureCube.name = "textureSampleBias"_c;
     SampledTextureSampleBias_TextureCube.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleBias_TextureCube.parameters = SampledTextureSampleBias_TextureCube_args;
@@ -25579,6 +26492,7 @@ void SetupIntrinsics()
     TextureSampleBias_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleBias_Texture1DArray_bias.name = "bias"_c;
     TextureSampleBias_Texture1DArray_bias.type = Type::FullType{ Float32Type.name };
+    TextureSampleBias_Texture1DArray.documentation = "Sample a texture at coordinate with a mip bias"_c;
     TextureSampleBias_Texture1DArray.name = "textureSampleBias"_c;
     TextureSampleBias_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleBias_Texture1DArray.parameters = TextureSampleBias_Texture1DArray_args;
@@ -25601,6 +26515,7 @@ void SetupIntrinsics()
     SampledTextureSampleBias_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleBias_Texture1DArray_bias.name = "bias"_c;
     SampledTextureSampleBias_Texture1DArray_bias.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBias_Texture1DArray.documentation = "Sample a texture at coordinate with a mip bias"_c;
     SampledTextureSampleBias_Texture1DArray.name = "textureSampleBias"_c;
     SampledTextureSampleBias_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleBias_Texture1DArray.parameters = SampledTextureSampleBias_Texture1DArray_args;
@@ -25624,6 +26539,7 @@ void SetupIntrinsics()
     TextureSampleBias_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleBias_Texture2DArray_bias.name = "bias"_c;
     TextureSampleBias_Texture2DArray_bias.type = Type::FullType{ Float32Type.name };
+    TextureSampleBias_Texture2DArray.documentation = "Sample a texture at coordinate with a mip bias"_c;
     TextureSampleBias_Texture2DArray.name = "textureSampleBias"_c;
     TextureSampleBias_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleBias_Texture2DArray.parameters = TextureSampleBias_Texture2DArray_args;
@@ -25646,6 +26562,7 @@ void SetupIntrinsics()
     SampledTextureSampleBias_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleBias_Texture2DArray_bias.name = "bias"_c;
     SampledTextureSampleBias_Texture2DArray_bias.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBias_Texture2DArray.documentation = "Sample a texture at coordinate with a mip bias"_c;
     SampledTextureSampleBias_Texture2DArray.name = "textureSampleBias"_c;
     SampledTextureSampleBias_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleBias_Texture2DArray.parameters = SampledTextureSampleBias_Texture2DArray_args;
@@ -25669,6 +26586,7 @@ void SetupIntrinsics()
     TextureSampleBias_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
     TextureSampleBias_TextureCubeArray_bias.name = "bias"_c;
     TextureSampleBias_TextureCubeArray_bias.type = Type::FullType{ Float32Type.name };
+    TextureSampleBias_TextureCubeArray.documentation = "Sample a texture at coordinate with a mip bias"_c;
     TextureSampleBias_TextureCubeArray.name = "textureSampleBias"_c;
     TextureSampleBias_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleBias_TextureCubeArray.parameters = TextureSampleBias_TextureCubeArray_args;
@@ -25691,6 +26609,7 @@ void SetupIntrinsics()
     SampledTextureSampleBias_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
     SampledTextureSampleBias_TextureCubeArray_bias.name = "bias"_c;
     SampledTextureSampleBias_TextureCubeArray_bias.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBias_TextureCubeArray.documentation = "Sample a texture at coordinate with a mip bias"_c;
     SampledTextureSampleBias_TextureCubeArray.name = "textureSampleBias"_c;
     SampledTextureSampleBias_TextureCubeArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleBias_TextureCubeArray.parameters = SampledTextureSampleBias_TextureCubeArray_args;
@@ -25716,6 +26635,7 @@ void SetupIntrinsics()
     TextureSampleBiasOffset_Texture1D_bias.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasOffset_Texture1D_offset.name = "offset"_c;
     TextureSampleBiasOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasOffset_Texture1D.documentation = "Sample a texture at coordinate with a mip bias with an offset applied to the coordinate"_c;
     TextureSampleBiasOffset_Texture1D.name = "textureSampleBiasOffset"_c;
     TextureSampleBiasOffset_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleBiasOffset_Texture1D.parameters = TextureSampleBiasOffset_Texture1D_args;
@@ -25741,6 +26661,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasOffset_Texture1D_bias.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasOffset_Texture1D_offset.name = "offset"_c;
     SampledTextureSampleBiasOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasOffset_Texture1D.documentation = "Sample a texture at coordinate with a mip bias with an offset applied to the coordinate"_c;
     SampledTextureSampleBiasOffset_Texture1D.name = "textureSampleBiasOffset"_c;
     SampledTextureSampleBiasOffset_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleBiasOffset_Texture1D.parameters = SampledTextureSampleBiasOffset_Texture1D_args;
@@ -25767,6 +26688,7 @@ void SetupIntrinsics()
     TextureSampleBiasOffset_Texture2D_bias.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasOffset_Texture2D_offset.name = "offset"_c;
     TextureSampleBiasOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleBiasOffset_Texture2D.documentation = "Sample a texture at coordinate with a mip bias with an offset applied to the coordinate"_c;
     TextureSampleBiasOffset_Texture2D.name = "textureSampleBiasOffset"_c;
     TextureSampleBiasOffset_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleBiasOffset_Texture2D.parameters = TextureSampleBiasOffset_Texture2D_args;
@@ -25792,6 +26714,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasOffset_Texture2D_bias.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasOffset_Texture2D_offset.name = "offset"_c;
     SampledTextureSampleBiasOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleBiasOffset_Texture2D.documentation = "Sample a texture at coordinate with a mip bias with an offset applied to the coordinate"_c;
     SampledTextureSampleBiasOffset_Texture2D.name = "textureSampleBiasOffset"_c;
     SampledTextureSampleBiasOffset_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleBiasOffset_Texture2D.parameters = SampledTextureSampleBiasOffset_Texture2D_args;
@@ -25818,6 +26741,7 @@ void SetupIntrinsics()
     TextureSampleBiasOffset_Texture3D_bias.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasOffset_Texture3D_offset.name = "offset"_c;
     TextureSampleBiasOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleBiasOffset_Texture3D.documentation = "Sample a texture at coordinate with a mip bias with an offset applied to the coordinate"_c;
     TextureSampleBiasOffset_Texture3D.name = "textureSampleBiasOffset"_c;
     TextureSampleBiasOffset_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleBiasOffset_Texture3D.parameters = TextureSampleBiasOffset_Texture3D_args;
@@ -25843,6 +26767,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasOffset_Texture3D_bias.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasOffset_Texture3D_offset.name = "offset"_c;
     SampledTextureSampleBiasOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleBiasOffset_Texture3D.documentation = "Sample a texture at coordinate with a mip bias with an offset applied to the coordinate"_c;
     SampledTextureSampleBiasOffset_Texture3D.name = "textureSampleBiasOffset"_c;
     SampledTextureSampleBiasOffset_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleBiasOffset_Texture3D.parameters = SampledTextureSampleBiasOffset_Texture3D_args;
@@ -25869,6 +26794,7 @@ void SetupIntrinsics()
     TextureSampleBiasOffset_Texture1DArray_bias.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasOffset_Texture1DArray_offset.name = "offset"_c;
     TextureSampleBiasOffset_Texture1DArray_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleBiasOffset_Texture1DArray.documentation = "Sample a texture at coordinate with a mip bias with an offset applied to the coordinate"_c;
     TextureSampleBiasOffset_Texture1DArray.name = "textureSampleBiasOffset"_c;
     TextureSampleBiasOffset_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleBiasOffset_Texture1DArray.parameters = TextureSampleBiasOffset_Texture1DArray_args;
@@ -25894,6 +26820,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasOffset_Texture1DArray_bias.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasOffset_Texture1DArray_offset.name = "offset"_c;
     SampledTextureSampleBiasOffset_Texture1DArray_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleBiasOffset_Texture1DArray.documentation = "Sample a texture at coordinate with a mip bias with an offset applied to the coordinate"_c;
     SampledTextureSampleBiasOffset_Texture1DArray.name = "textureSampleBiasOffset"_c;
     SampledTextureSampleBiasOffset_Texture1DArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleBiasOffset_Texture1DArray.parameters = SampledTextureSampleBiasOffset_Texture1DArray_args;
@@ -25920,6 +26847,7 @@ void SetupIntrinsics()
     TextureSampleBiasOffset_Texture2DArray_bias.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasOffset_Texture2DArray_offset.name = "offset"_c;
     TextureSampleBiasOffset_Texture2DArray_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleBiasOffset_Texture2DArray.documentation = "Sample a texture at coordinate with a mip bias with an offset applied to the coordinate"_c;
     TextureSampleBiasOffset_Texture2DArray.name = "textureSampleBiasOffset"_c;
     TextureSampleBiasOffset_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleBiasOffset_Texture2DArray.parameters = TextureSampleBiasOffset_Texture2DArray_args;
@@ -25945,6 +26873,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasOffset_Texture2DArray_bias.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasOffset_Texture2DArray_offset.name = "offset"_c;
     SampledTextureSampleBiasOffset_Texture2DArray_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleBiasOffset_Texture2DArray.documentation = "Sample a texture at coordinate with a mip bias with an offset applied to the coordinate"_c;
     SampledTextureSampleBiasOffset_Texture2DArray.name = "textureSampleBiasOffset"_c;
     SampledTextureSampleBiasOffset_Texture2DArray.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleBiasOffset_Texture2DArray.parameters = SampledTextureSampleBiasOffset_Texture2DArray_args;
@@ -25971,6 +26900,7 @@ void SetupIntrinsics()
     TextureSampleBiasProj_Texture1D_bias.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProj_Texture1D_proj.name = "proj"_c;
     TextureSampleBiasProj_Texture1D_proj.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProj_Texture1D.documentation = "Sample a texture at coordinate with a mip bias with projection"_c;
     TextureSampleBiasProj_Texture1D.name = "textureSampleBiasProj"_c;
     TextureSampleBiasProj_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleBiasProj_Texture1D.parameters = TextureSampleBiasProj_Texture1D_args;
@@ -25996,6 +26926,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasProj_Texture1D_bias.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProj_Texture1D_proj.name = "proj"_c;
     SampledTextureSampleBiasProj_Texture1D_proj.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProj_Texture1D.documentation = "Sample a texture at coordinate with a mip bias with projection"_c;
     SampledTextureSampleBiasProj_Texture1D.name = "textureSampleBiasProj"_c;
     SampledTextureSampleBiasProj_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleBiasProj_Texture1D.parameters = SampledTextureSampleBiasProj_Texture1D_args;
@@ -26022,6 +26953,7 @@ void SetupIntrinsics()
     TextureSampleBiasProj_Texture2D_bias.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProj_Texture2D_proj.name = "proj"_c;
     TextureSampleBiasProj_Texture2D_proj.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProj_Texture2D.documentation = "Sample a texture at coordinate with a mip bias with projection"_c;
     TextureSampleBiasProj_Texture2D.name = "textureSampleBiasProj"_c;
     TextureSampleBiasProj_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleBiasProj_Texture2D.parameters = TextureSampleBiasProj_Texture2D_args;
@@ -26047,6 +26979,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasProj_Texture2D_bias.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProj_Texture2D_proj.name = "proj"_c;
     SampledTextureSampleBiasProj_Texture2D_proj.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProj_Texture2D.documentation = "Sample a texture at coordinate with a mip bias with projection"_c;
     SampledTextureSampleBiasProj_Texture2D.name = "textureSampleBiasProj"_c;
     SampledTextureSampleBiasProj_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleBiasProj_Texture2D.parameters = SampledTextureSampleBiasProj_Texture2D_args;
@@ -26073,6 +27006,7 @@ void SetupIntrinsics()
     TextureSampleBiasProj_Texture3D_bias.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProj_Texture3D_proj.name = "proj"_c;
     TextureSampleBiasProj_Texture3D_proj.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProj_Texture3D.documentation = "Sample a texture at coordinate with a mip bias with projection"_c;
     TextureSampleBiasProj_Texture3D.name = "textureSampleBiasProj"_c;
     TextureSampleBiasProj_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleBiasProj_Texture3D.parameters = TextureSampleBiasProj_Texture3D_args;
@@ -26098,6 +27032,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasProj_Texture3D_bias.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProj_Texture3D_proj.name = "proj"_c;
     SampledTextureSampleBiasProj_Texture3D_proj.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProj_Texture3D.documentation = "Sample a texture at coordinate with a mip bias with projection"_c;
     SampledTextureSampleBiasProj_Texture3D.name = "textureSampleBiasProj"_c;
     SampledTextureSampleBiasProj_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleBiasProj_Texture3D.parameters = SampledTextureSampleBiasProj_Texture3D_args;
@@ -26126,6 +27061,7 @@ void SetupIntrinsics()
     TextureSampleBiasProjOffset_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProjOffset_Texture1D_offset.name = "offset"_c;
     TextureSampleBiasProjOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProjOffset_Texture1D.documentation = "Sample a texture at coordinate with a mip bias with projection with an offset applied to the coordinate"_c;
     TextureSampleBiasProjOffset_Texture1D.name = "textureSampleBiasProjOffset"_c;
     TextureSampleBiasProjOffset_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleBiasProjOffset_Texture1D.parameters = TextureSampleBiasProjOffset_Texture1D_args;
@@ -26154,6 +27090,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasProjOffset_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProjOffset_Texture1D_offset.name = "offset"_c;
     SampledTextureSampleBiasProjOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProjOffset_Texture1D.documentation = "Sample a texture at coordinate with a mip bias with projection with an offset applied to the coordinate"_c;
     SampledTextureSampleBiasProjOffset_Texture1D.name = "textureSampleBiasProjOffset"_c;
     SampledTextureSampleBiasProjOffset_Texture1D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleBiasProjOffset_Texture1D.parameters = SampledTextureSampleBiasProjOffset_Texture1D_args;
@@ -26183,6 +27120,7 @@ void SetupIntrinsics()
     TextureSampleBiasProjOffset_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProjOffset_Texture2D_offset.name = "offset"_c;
     TextureSampleBiasProjOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleBiasProjOffset_Texture2D.documentation = "Sample a texture at coordinate with a mip bias with projection with an offset applied to the coordinate"_c;
     TextureSampleBiasProjOffset_Texture2D.name = "textureSampleBiasProjOffset"_c;
     TextureSampleBiasProjOffset_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleBiasProjOffset_Texture2D.parameters = TextureSampleBiasProjOffset_Texture2D_args;
@@ -26211,6 +27149,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasProjOffset_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProjOffset_Texture2D_offset.name = "offset"_c;
     SampledTextureSampleBiasProjOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleBiasProjOffset_Texture2D.documentation = "Sample a texture at coordinate with a mip bias with projection with an offset applied to the coordinate"_c;
     SampledTextureSampleBiasProjOffset_Texture2D.name = "textureSampleBiasProjOffset"_c;
     SampledTextureSampleBiasProjOffset_Texture2D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleBiasProjOffset_Texture2D.parameters = SampledTextureSampleBiasProjOffset_Texture2D_args;
@@ -26240,6 +27179,7 @@ void SetupIntrinsics()
     TextureSampleBiasProjOffset_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProjOffset_Texture3D_offset.name = "offset"_c;
     TextureSampleBiasProjOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleBiasProjOffset_Texture3D.documentation = "Sample a texture at coordinate with a mip bias with projection with an offset applied to the coordinate"_c;
     TextureSampleBiasProjOffset_Texture3D.name = "textureSampleBiasProjOffset"_c;
     TextureSampleBiasProjOffset_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     TextureSampleBiasProjOffset_Texture3D.parameters = TextureSampleBiasProjOffset_Texture3D_args;
@@ -26268,6 +27208,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasProjOffset_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProjOffset_Texture3D_offset.name = "offset"_c;
     SampledTextureSampleBiasProjOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleBiasProjOffset_Texture3D.documentation = "Sample a texture at coordinate with a mip bias with projection with an offset applied to the coordinate"_c;
     SampledTextureSampleBiasProjOffset_Texture3D.name = "textureSampleBiasProjOffset"_c;
     SampledTextureSampleBiasProjOffset_Texture3D.returnType = Type::FullType { Float32x4Type.name };
     SampledTextureSampleBiasProjOffset_Texture3D.parameters = SampledTextureSampleBiasProjOffset_Texture3D_args;
@@ -26295,6 +27236,7 @@ void SetupIntrinsics()
     TextureSampleBiasCompare_Texture1D_bias.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasCompare_Texture1D_compare.name = "compare"_c;
     TextureSampleBiasCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasCompare_Texture1D.documentation = "Sample a texture at coordinate with a mip bias with depth comparison"_c;
     TextureSampleBiasCompare_Texture1D.name = "textureSampleBiasCompare"_c;
     TextureSampleBiasCompare_Texture1D.returnType = Type::FullType { Float32Type.name };
     TextureSampleBiasCompare_Texture1D.parameters = TextureSampleBiasCompare_Texture1D_args;
@@ -26320,6 +27262,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasCompare_Texture1D_bias.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasCompare_Texture1D_compare.name = "compare"_c;
     SampledTextureSampleBiasCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasCompare_Texture1D.documentation = "Sample a texture at coordinate with a mip bias with depth comparison"_c;
     SampledTextureSampleBiasCompare_Texture1D.name = "textureSampleBiasCompare"_c;
     SampledTextureSampleBiasCompare_Texture1D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleBiasCompare_Texture1D.parameters = SampledTextureSampleBiasCompare_Texture1D_args;
@@ -26346,6 +27289,7 @@ void SetupIntrinsics()
     TextureSampleBiasCompare_Texture2D_bias.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasCompare_Texture2D_compare.name = "compare"_c;
     TextureSampleBiasCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasCompare_Texture2D.documentation = "Sample a texture at coordinate with a mip bias with depth comparison"_c;
     TextureSampleBiasCompare_Texture2D.name = "textureSampleBiasCompare"_c;
     TextureSampleBiasCompare_Texture2D.returnType = Type::FullType { Float32Type.name };
     TextureSampleBiasCompare_Texture2D.parameters = TextureSampleBiasCompare_Texture2D_args;
@@ -26371,6 +27315,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasCompare_Texture2D_bias.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasCompare_Texture2D_compare.name = "compare"_c;
     SampledTextureSampleBiasCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasCompare_Texture2D.documentation = "Sample a texture at coordinate with a mip bias with depth comparison"_c;
     SampledTextureSampleBiasCompare_Texture2D.name = "textureSampleBiasCompare"_c;
     SampledTextureSampleBiasCompare_Texture2D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleBiasCompare_Texture2D.parameters = SampledTextureSampleBiasCompare_Texture2D_args;
@@ -26397,6 +27342,7 @@ void SetupIntrinsics()
     TextureSampleBiasCompare_Texture3D_bias.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasCompare_Texture3D_compare.name = "compare"_c;
     TextureSampleBiasCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasCompare_Texture3D.documentation = "Sample a texture at coordinate with a mip bias with depth comparison"_c;
     TextureSampleBiasCompare_Texture3D.name = "textureSampleBiasCompare"_c;
     TextureSampleBiasCompare_Texture3D.returnType = Type::FullType { Float32Type.name };
     TextureSampleBiasCompare_Texture3D.parameters = TextureSampleBiasCompare_Texture3D_args;
@@ -26422,6 +27368,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasCompare_Texture3D_bias.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasCompare_Texture3D_compare.name = "compare"_c;
     SampledTextureSampleBiasCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasCompare_Texture3D.documentation = "Sample a texture at coordinate with a mip bias with depth comparison"_c;
     SampledTextureSampleBiasCompare_Texture3D.name = "textureSampleBiasCompare"_c;
     SampledTextureSampleBiasCompare_Texture3D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleBiasCompare_Texture3D.parameters = SampledTextureSampleBiasCompare_Texture3D_args;
@@ -26448,6 +27395,7 @@ void SetupIntrinsics()
     TextureSampleBiasCompare_Texture1DArray_bias.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasCompare_Texture1DArray_compare.name = "compare"_c;
     TextureSampleBiasCompare_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasCompare_Texture1DArray.documentation = "Sample a texture at coordinate with a mip bias with depth comparison"_c;
     TextureSampleBiasCompare_Texture1DArray.name = "textureSampleBiasCompare"_c;
     TextureSampleBiasCompare_Texture1DArray.returnType = Type::FullType { Float32Type.name };
     TextureSampleBiasCompare_Texture1DArray.parameters = TextureSampleBiasCompare_Texture1DArray_args;
@@ -26473,6 +27421,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasCompare_Texture1DArray_bias.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasCompare_Texture1DArray_compare.name = "compare"_c;
     SampledTextureSampleBiasCompare_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasCompare_Texture1DArray.documentation = "Sample a texture at coordinate with a mip bias with depth comparison"_c;
     SampledTextureSampleBiasCompare_Texture1DArray.name = "textureSampleBiasCompare"_c;
     SampledTextureSampleBiasCompare_Texture1DArray.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleBiasCompare_Texture1DArray.parameters = SampledTextureSampleBiasCompare_Texture1DArray_args;
@@ -26499,6 +27448,7 @@ void SetupIntrinsics()
     TextureSampleBiasCompare_Texture2DArray_bias.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasCompare_Texture2DArray_compare.name = "compare"_c;
     TextureSampleBiasCompare_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasCompare_Texture2DArray.documentation = "Sample a texture at coordinate with a mip bias with depth comparison"_c;
     TextureSampleBiasCompare_Texture2DArray.name = "textureSampleBiasCompare"_c;
     TextureSampleBiasCompare_Texture2DArray.returnType = Type::FullType { Float32Type.name };
     TextureSampleBiasCompare_Texture2DArray.parameters = TextureSampleBiasCompare_Texture2DArray_args;
@@ -26524,6 +27474,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasCompare_Texture2DArray_bias.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasCompare_Texture2DArray_compare.name = "compare"_c;
     SampledTextureSampleBiasCompare_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasCompare_Texture2DArray.documentation = "Sample a texture at coordinate with a mip bias with depth comparison"_c;
     SampledTextureSampleBiasCompare_Texture2DArray.name = "textureSampleBiasCompare"_c;
     SampledTextureSampleBiasCompare_Texture2DArray.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleBiasCompare_Texture2DArray.parameters = SampledTextureSampleBiasCompare_Texture2DArray_args;
@@ -26552,6 +27503,7 @@ void SetupIntrinsics()
     TextureSampleBiasCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasCompareOffset_Texture1D_offset.name = "offset"_c;
     TextureSampleBiasCompareOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasCompareOffset_Texture1D.documentation = "Sample a texture at coordinate with a mip bias with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleBiasCompareOffset_Texture1D.name = "textureSampleBiasCompareOffset"_c;
     TextureSampleBiasCompareOffset_Texture1D.returnType = Type::FullType { Float32Type.name };
     TextureSampleBiasCompareOffset_Texture1D.parameters = TextureSampleBiasCompareOffset_Texture1D_args;
@@ -26580,6 +27532,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasCompareOffset_Texture1D_offset.name = "offset"_c;
     SampledTextureSampleBiasCompareOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture1D.documentation = "Sample a texture at coordinate with a mip bias with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleBiasCompareOffset_Texture1D.name = "textureSampleBiasCompareOffset"_c;
     SampledTextureSampleBiasCompareOffset_Texture1D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleBiasCompareOffset_Texture1D.parameters = SampledTextureSampleBiasCompareOffset_Texture1D_args;
@@ -26609,6 +27562,7 @@ void SetupIntrinsics()
     TextureSampleBiasCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasCompareOffset_Texture2D_offset.name = "offset"_c;
     TextureSampleBiasCompareOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleBiasCompareOffset_Texture2D.documentation = "Sample a texture at coordinate with a mip bias with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleBiasCompareOffset_Texture2D.name = "textureSampleBiasCompareOffset"_c;
     TextureSampleBiasCompareOffset_Texture2D.returnType = Type::FullType { Float32Type.name };
     TextureSampleBiasCompareOffset_Texture2D.parameters = TextureSampleBiasCompareOffset_Texture2D_args;
@@ -26637,6 +27591,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasCompareOffset_Texture2D_offset.name = "offset"_c;
     SampledTextureSampleBiasCompareOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture2D.documentation = "Sample a texture at coordinate with a mip bias with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleBiasCompareOffset_Texture2D.name = "textureSampleBiasCompareOffset"_c;
     SampledTextureSampleBiasCompareOffset_Texture2D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleBiasCompareOffset_Texture2D.parameters = SampledTextureSampleBiasCompareOffset_Texture2D_args;
@@ -26666,6 +27621,7 @@ void SetupIntrinsics()
     TextureSampleBiasCompareOffset_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasCompareOffset_Texture3D_offset.name = "offset"_c;
     TextureSampleBiasCompareOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleBiasCompareOffset_Texture3D.documentation = "Sample a texture at coordinate with a mip bias with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleBiasCompareOffset_Texture3D.name = "textureSampleBiasCompareOffset"_c;
     TextureSampleBiasCompareOffset_Texture3D.returnType = Type::FullType { Float32Type.name };
     TextureSampleBiasCompareOffset_Texture3D.parameters = TextureSampleBiasCompareOffset_Texture3D_args;
@@ -26694,6 +27650,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasCompareOffset_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasCompareOffset_Texture3D_offset.name = "offset"_c;
     SampledTextureSampleBiasCompareOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture3D.documentation = "Sample a texture at coordinate with a mip bias with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleBiasCompareOffset_Texture3D.name = "textureSampleBiasCompareOffset"_c;
     SampledTextureSampleBiasCompareOffset_Texture3D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleBiasCompareOffset_Texture3D.parameters = SampledTextureSampleBiasCompareOffset_Texture3D_args;
@@ -26723,6 +27680,7 @@ void SetupIntrinsics()
     TextureSampleBiasCompareOffset_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasCompareOffset_Texture1DArray_offset.name = "offset"_c;
     TextureSampleBiasCompareOffset_Texture1DArray_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleBiasCompareOffset_Texture1DArray.documentation = "Sample a texture at coordinate with a mip bias with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleBiasCompareOffset_Texture1DArray.name = "textureSampleBiasCompareOffset"_c;
     TextureSampleBiasCompareOffset_Texture1DArray.returnType = Type::FullType { Float32Type.name };
     TextureSampleBiasCompareOffset_Texture1DArray.parameters = TextureSampleBiasCompareOffset_Texture1DArray_args;
@@ -26751,6 +27709,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasCompareOffset_Texture1DArray_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasCompareOffset_Texture1DArray_offset.name = "offset"_c;
     SampledTextureSampleBiasCompareOffset_Texture1DArray_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture1DArray.documentation = "Sample a texture at coordinate with a mip bias with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleBiasCompareOffset_Texture1DArray.name = "textureSampleBiasCompareOffset"_c;
     SampledTextureSampleBiasCompareOffset_Texture1DArray.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleBiasCompareOffset_Texture1DArray.parameters = SampledTextureSampleBiasCompareOffset_Texture1DArray_args;
@@ -26780,6 +27739,7 @@ void SetupIntrinsics()
     TextureSampleBiasCompareOffset_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasCompareOffset_Texture2DArray_offset.name = "offset"_c;
     TextureSampleBiasCompareOffset_Texture2DArray_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleBiasCompareOffset_Texture2DArray.documentation = "Sample a texture at coordinate with a mip bias with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleBiasCompareOffset_Texture2DArray.name = "textureSampleBiasCompareOffset"_c;
     TextureSampleBiasCompareOffset_Texture2DArray.returnType = Type::FullType { Float32Type.name };
     TextureSampleBiasCompareOffset_Texture2DArray.parameters = TextureSampleBiasCompareOffset_Texture2DArray_args;
@@ -26808,6 +27768,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasCompareOffset_Texture2DArray_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasCompareOffset_Texture2DArray_offset.name = "offset"_c;
     SampledTextureSampleBiasCompareOffset_Texture2DArray_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleBiasCompareOffset_Texture2DArray.documentation = "Sample a texture at coordinate with a mip bias with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleBiasCompareOffset_Texture2DArray.name = "textureSampleBiasCompareOffset"_c;
     SampledTextureSampleBiasCompareOffset_Texture2DArray.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleBiasCompareOffset_Texture2DArray.parameters = SampledTextureSampleBiasCompareOffset_Texture2DArray_args;
@@ -26837,6 +27798,7 @@ void SetupIntrinsics()
     TextureSampleBiasProjCompare_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProjCompare_Texture1D_compare.name = "compare"_c;
     TextureSampleBiasProjCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProjCompare_Texture1D.documentation = "Sample a texture at coordinate with a mip bias with projection with depth comparison"_c;
     TextureSampleBiasProjCompare_Texture1D.name = "textureSampleBiasProjCompare"_c;
     TextureSampleBiasProjCompare_Texture1D.returnType = Type::FullType { Float32Type.name };
     TextureSampleBiasProjCompare_Texture1D.parameters = TextureSampleBiasProjCompare_Texture1D_args;
@@ -26865,6 +27827,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasProjCompare_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProjCompare_Texture1D_compare.name = "compare"_c;
     SampledTextureSampleBiasProjCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProjCompare_Texture1D.documentation = "Sample a texture at coordinate with a mip bias with projection with depth comparison"_c;
     SampledTextureSampleBiasProjCompare_Texture1D.name = "textureSampleBiasProjCompare"_c;
     SampledTextureSampleBiasProjCompare_Texture1D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleBiasProjCompare_Texture1D.parameters = SampledTextureSampleBiasProjCompare_Texture1D_args;
@@ -26894,6 +27857,7 @@ void SetupIntrinsics()
     TextureSampleBiasProjCompare_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProjCompare_Texture2D_compare.name = "compare"_c;
     TextureSampleBiasProjCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProjCompare_Texture2D.documentation = "Sample a texture at coordinate with a mip bias with projection with depth comparison"_c;
     TextureSampleBiasProjCompare_Texture2D.name = "textureSampleBiasProjCompare"_c;
     TextureSampleBiasProjCompare_Texture2D.returnType = Type::FullType { Float32Type.name };
     TextureSampleBiasProjCompare_Texture2D.parameters = TextureSampleBiasProjCompare_Texture2D_args;
@@ -26922,6 +27886,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasProjCompare_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProjCompare_Texture2D_compare.name = "compare"_c;
     SampledTextureSampleBiasProjCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProjCompare_Texture2D.documentation = "Sample a texture at coordinate with a mip bias with projection with depth comparison"_c;
     SampledTextureSampleBiasProjCompare_Texture2D.name = "textureSampleBiasProjCompare"_c;
     SampledTextureSampleBiasProjCompare_Texture2D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleBiasProjCompare_Texture2D.parameters = SampledTextureSampleBiasProjCompare_Texture2D_args;
@@ -26951,6 +27916,7 @@ void SetupIntrinsics()
     TextureSampleBiasProjCompare_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProjCompare_Texture3D_compare.name = "compare"_c;
     TextureSampleBiasProjCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProjCompare_Texture3D.documentation = "Sample a texture at coordinate with a mip bias with projection with depth comparison"_c;
     TextureSampleBiasProjCompare_Texture3D.name = "textureSampleBiasProjCompare"_c;
     TextureSampleBiasProjCompare_Texture3D.returnType = Type::FullType { Float32Type.name };
     TextureSampleBiasProjCompare_Texture3D.parameters = TextureSampleBiasProjCompare_Texture3D_args;
@@ -26979,6 +27945,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasProjCompare_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProjCompare_Texture3D_compare.name = "compare"_c;
     SampledTextureSampleBiasProjCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProjCompare_Texture3D.documentation = "Sample a texture at coordinate with a mip bias with projection with depth comparison"_c;
     SampledTextureSampleBiasProjCompare_Texture3D.name = "textureSampleBiasProjCompare"_c;
     SampledTextureSampleBiasProjCompare_Texture3D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleBiasProjCompare_Texture3D.parameters = SampledTextureSampleBiasProjCompare_Texture3D_args;
@@ -27010,6 +27977,7 @@ void SetupIntrinsics()
     TextureSampleBiasProjCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProjCompareOffset_Texture1D_offset.name = "offset"_c;
     TextureSampleBiasProjCompareOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    TextureSampleBiasProjCompareOffset_Texture1D.documentation = "Sample a texture at coordinate with a mip bias with projection with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleBiasProjCompareOffset_Texture1D.name = "textureSampleBiasProjCompareOffset"_c;
     TextureSampleBiasProjCompareOffset_Texture1D.returnType = Type::FullType { Float32Type.name };
     TextureSampleBiasProjCompareOffset_Texture1D.parameters = TextureSampleBiasProjCompareOffset_Texture1D_args;
@@ -27041,6 +28009,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasProjCompareOffset_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProjCompareOffset_Texture1D_offset.name = "offset"_c;
     SampledTextureSampleBiasProjCompareOffset_Texture1D_offset.type = Type::FullType{ Float32Type.name };
+    SampledTextureSampleBiasProjCompareOffset_Texture1D.documentation = "Sample a texture at coordinate with a mip bias with projection with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleBiasProjCompareOffset_Texture1D.name = "textureSampleBiasProjCompareOffset"_c;
     SampledTextureSampleBiasProjCompareOffset_Texture1D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleBiasProjCompareOffset_Texture1D.parameters = SampledTextureSampleBiasProjCompareOffset_Texture1D_args;
@@ -27073,6 +28042,7 @@ void SetupIntrinsics()
     TextureSampleBiasProjCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProjCompareOffset_Texture2D_offset.name = "offset"_c;
     TextureSampleBiasProjCompareOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleBiasProjCompareOffset_Texture2D.documentation = "Sample a texture at coordinate with a mip bias with projection with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleBiasProjCompareOffset_Texture2D.name = "textureSampleBiasProjCompareOffset"_c;
     TextureSampleBiasProjCompareOffset_Texture2D.returnType = Type::FullType { Float32Type.name };
     TextureSampleBiasProjCompareOffset_Texture2D.parameters = TextureSampleBiasProjCompareOffset_Texture2D_args;
@@ -27104,6 +28074,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasProjCompareOffset_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProjCompareOffset_Texture2D_offset.name = "offset"_c;
     SampledTextureSampleBiasProjCompareOffset_Texture2D_offset.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleBiasProjCompareOffset_Texture2D.documentation = "Sample a texture at coordinate with a mip bias with projection with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleBiasProjCompareOffset_Texture2D.name = "textureSampleBiasProjCompareOffset"_c;
     SampledTextureSampleBiasProjCompareOffset_Texture2D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleBiasProjCompareOffset_Texture2D.parameters = SampledTextureSampleBiasProjCompareOffset_Texture2D_args;
@@ -27136,6 +28107,7 @@ void SetupIntrinsics()
     TextureSampleBiasProjCompareOffset_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProjCompareOffset_Texture3D_offset.name = "offset"_c;
     TextureSampleBiasProjCompareOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    TextureSampleBiasProjCompareOffset_Texture3D.documentation = "Sample a texture at coordinate with a mip bias with projection with depth comparison with an offset applied to the coordinate"_c;
     TextureSampleBiasProjCompareOffset_Texture3D.name = "textureSampleBiasProjCompareOffset"_c;
     TextureSampleBiasProjCompareOffset_Texture3D.returnType = Type::FullType { Float32Type.name };
     TextureSampleBiasProjCompareOffset_Texture3D.parameters = TextureSampleBiasProjCompareOffset_Texture3D_args;
@@ -27167,6 +28139,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasProjCompareOffset_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProjCompareOffset_Texture3D_offset.name = "offset"_c;
     SampledTextureSampleBiasProjCompareOffset_Texture3D_offset.type = Type::FullType{ Float32x3Type.name };
+    SampledTextureSampleBiasProjCompareOffset_Texture3D.documentation = "Sample a texture at coordinate with a mip bias with projection with depth comparison with an offset applied to the coordinate"_c;
     SampledTextureSampleBiasProjCompareOffset_Texture3D.name = "textureSampleBiasProjCompareOffset"_c;
     SampledTextureSampleBiasProjCompareOffset_Texture3D.returnType = Type::FullType { Float32Type.name };
     SampledTextureSampleBiasProjCompareOffset_Texture3D.parameters = SampledTextureSampleBiasProjCompareOffset_Texture3D_args;

@@ -20,6 +20,7 @@
 #include "ast/program.h"
 #include "ast/structure.h"
 #include "ast/variable.h"
+#include "ast/preprocessor.h"
 #include "generated/types.h"
 #include "generated/intrinsics.h"
 #include "thread.h"
@@ -897,19 +898,21 @@ Compiler::Validate(Effect* root)
     this->PushScope(this->mainScope);
 
     // resolves parser state and runs validation
+    Symbol* prevPP = nullptr;
     for (this->symbolIterator = 0; this->symbolIterator < this->symbols.size; this->symbolIterator++)
     {
-        if (this->symbols[this->symbolIterator] == nullptr)
+        Symbol* sym = this->symbols.data[this->symbolIterator];
+        if (sym == nullptr)
         {
             this->symbols.size = this->symbolIterator-2;
             return false;
         }
-        ret &= this->validator->Resolve(this, this->symbols.data[this->symbolIterator]);
+        ret &= this->validator->Resolve(this, sym);
         if (this->hasErrors)
             break;
 
-        if (this->symbols.data[this->symbolIterator]->symbolType == Symbol::SymbolType::ProgramInstanceType)
-            programs.push_back((Program*)this->symbols.data[this->symbolIterator]);
+        if (sym->symbolType == Symbol::SymbolType::ProgramInstanceType)
+            programs.push_back((Program*)sym);
     }
 
     this->performanceTimer.Stop();

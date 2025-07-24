@@ -106,7 +106,7 @@ SymbolExpression::Resolve(Compiler* compiler)
         }
         else if (thisResolved->symbol->symbolType == Symbol::RenderStateInstanceType)
         {
-            thisResolved->fullType = Type::FullType{ "renderState"_c };
+            thisResolved->fullType = Type::FullType{ "RenderState"_c };
             thisResolved->type = &RenderStateType;
             return true;
         }

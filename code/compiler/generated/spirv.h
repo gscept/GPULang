@@ -19514,6 +19514,7 @@ SPIRVResult SPIRV_BitExtract_Int16(const Compiler* c, SPIRVGenerator* g, uint32_
 SPIRVResult SPIRV_BitReverse_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Capability(Capabilities::BitInstructions);
     uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
     return SPIRVResult(ret, returnType, true);
 }
@@ -19521,6 +19522,7 @@ SPIRVResult SPIRV_BitReverse_UInt32(const Compiler* c, SPIRVGenerator* g, uint32
 SPIRVResult SPIRV_BitReverse_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Capability(Capabilities::BitInstructions);
     uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
     return SPIRVResult(ret, returnType, true);
 }
@@ -19528,6 +19530,7 @@ SPIRVResult SPIRV_BitReverse_Int32(const Compiler* c, SPIRVGenerator* g, uint32_
 SPIRVResult SPIRV_BitReverse_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Capability(Capabilities::BitInstructions);
     uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
     return SPIRVResult(ret, returnType, true);
 }
@@ -19535,6 +19538,7 @@ SPIRVResult SPIRV_BitReverse_UInt16(const Compiler* c, SPIRVGenerator* g, uint32
 SPIRVResult SPIRV_BitReverse_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Capability(Capabilities::BitInstructions);
     uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
     return SPIRVResult(ret, returnType, true);
 }
@@ -19542,28 +19546,28 @@ SPIRVResult SPIRV_BitReverse_Int16(const Compiler* c, SPIRVGenerator* g, uint32_
 SPIRVResult SPIRV_BitCount_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    uint32_t ret = g->writer->MappedInstruction(OpBitCount, SPVWriter::Section::LocalFunction, returnType, base);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_BitCount_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    uint32_t ret = g->writer->MappedInstruction(OpBitCount, SPVWriter::Section::LocalFunction, returnType, base);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_BitCount_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    uint32_t ret = g->writer->MappedInstruction(OpBitCount, SPVWriter::Section::LocalFunction, returnType, base);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_BitCount_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    uint32_t ret = g->writer->MappedInstruction(OpBitCount, SPVWriter::Section::LocalFunction, returnType, base);
     return SPIRVResult(ret, returnType, true);
 }
 

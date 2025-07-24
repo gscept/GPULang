@@ -191,14 +191,11 @@ Type::GetSymbols(const TransientString& str)
 //------------------------------------------------------------------------------
 /**
 */
-StaticArray<Symbol*> DefaultTypes;
 void
 Type::SetupDefaultTypes()
 {
     SYMBOL_STATIC_ALLOC = true;
-    __BEGIN_TYPES__
 
-    DefaultTypes = StaticArray(types);
     SYMBOL_STATIC_ALLOC = false;
 }
 

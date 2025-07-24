@@ -511,6 +511,7 @@ SPV_ENUM(Int64ImageEXT, 5016)
 SPV_ENUM(ComputeDerivativeGroupLinearKHR, 5350)
 SPV_ENUM(ComputeDerivativeGroupQuadsKHR, 5288)
 SPV_ENUM(PhysicalStorageBufferAddresses, 5347)
+SPV_ENUM(BitInstructions, 6025)
 }
 
 namespace AddressingModels

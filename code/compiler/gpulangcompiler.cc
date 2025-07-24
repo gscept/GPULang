@@ -885,6 +885,9 @@ GPULangPreprocess(
                 level->lineCounter++;\
             }\
             continue;
+    
+    const char* commentBlockBegin = nullptr;
+    const char* commentBlockEnd = nullptr;
     while (fileStack.size > 0)
     {
         // Find next unescaped \n
@@ -981,7 +984,8 @@ escape_newline:
         const char* eol = &(*(lineEndIt - 1)) + 1;
         const char* columnIt = lineBegin;
         const char* prevColumnIt = columnIt;
-        do 
+        
+        do
         {
             // Find beginning of first non-WS character
             const char* firstWord = wordStart(columnIt, eol);
@@ -1485,6 +1489,8 @@ escape_newline:
                 pp->type = Preprocessor::Comment;
                 SETUP_PP2(pp, firstWord, eol)
                 pp->location.end = lineEndIt - lineIt;
+                
+                pp->contents = std::string_view(firstWord + 2, eol);
 
                 output.append(columnIt, firstWord);
                 output.push_back('\n');
@@ -1502,19 +1508,28 @@ escape_newline:
                 if (endOfComment != eol)
                 {
                     pp->location.end = endOfComment + 2 - lineBegin;
+                    pp->contents = std::string_view(firstWord + 2, endOfComment);
                     columnIt = endOfComment + 2;
                     comment = false;
                 }
                 else
+                {
                     columnIt = firstWord + 2;
+                    commentBlockBegin = columnIt;
+                }
                 continue;
             }
             else if (comment && firstWord[0] == '*' && firstWord[1] == '/')
             {
                 comment = false;
-                auto pp = Alloc<Preprocessor>();
-                pp->type = Preprocessor::Comment;
-                SETUP_PP2(pp, columnIt, firstWord+2)
+                Preprocessor* sym = (Preprocessor*)preprocessorSymbols.back();
+                commentBlockEnd = firstWord + 2;
+                sym->contents = std::string_view(commentBlockBegin, commentBlockEnd);
+                commentBlockBegin = nullptr;
+                commentBlockEnd = nullptr;
+                //auto pp = Alloc<Preprocessor>();
+                //pp->type = Preprocessor::Comment;
+                //SETUP_PP2(pp, columnIt, firstWord+2)
                 columnIt = firstWord + 2;
                 continue;
             }
@@ -1752,9 +1767,6 @@ escape_newline:
              
             if (comment)
             {
-                auto pp = Alloc<Preprocessor>();
-                pp->type = Preprocessor::Comment;
-                SETUP_PP2(pp, lineBegin, eol)
                 output.append("\n");
                 goto next_line;
             }
@@ -2103,6 +2115,8 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
         {
             diagnostics.Append(lexerErrorHandler.diagnostics);
             diagnostics.Append(parserErrorHandler.diagnostics);
+            result.diagnostics.Append(diagnostics);
+            return false;
         }
 
         compiler.path = file->path;
