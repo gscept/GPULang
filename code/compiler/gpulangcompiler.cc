@@ -1020,7 +1020,7 @@ escape_newline:
                         const std::string_view path = std::string_view(startOfPath + 1, endOfPath - 1);
                         SETUP_ARG2(pp, path, startOfPath, endOfPath);
                         
-                        auto resolvePath = [](const std::string_view& path, const FixedArray<std::string_view>& searchPaths, PinnedSet<TransientString>& resolvedPaths) -> TransientString
+                        auto resolvePath = [](const std::string_view& path, const GPULang::FixedString& currentFilePath, const FixedArray<std::string_view>& searchPaths, PinnedSet<TransientString>& resolvedPaths) -> TransientString
                         {
                             auto it = resolvedPaths.Find(path);
                             if (it != resolvedPaths.end())
@@ -1035,6 +1035,27 @@ escape_newline:
                                 }
                                 else
                                 {
+                                    // First check the folder the file is currently in
+                                    const char* lastSlash = strrchr(currentFilePath.c_str(), '/');
+                                    if (lastSlash != nullptr)
+                                    {
+                                        std::string_view fileFolder(currentFilePath.c_str(), lastSlash + 1);
+                                        TStr fullPath = TStr::Compact(fileFolder, path);
+                                        auto it = resolvedPaths.Find(fullPath);
+                                        if (it != resolvedPaths.end())
+                                            return fullPath;
+                                        else
+                                        {
+                                            struct stat sb;
+                                            if (stat(fullPath.Data(), &sb) == 0)
+                                            {
+                                                resolvedPaths.Insert(fullPath);
+                                                return fullPath;
+                                            }
+                                        }
+                                    }
+                                    
+                                    // If the file still isn't found, try the search paths
                                     for (auto& searchPath : searchPaths)
                                     {
                                         TStr fullPath = TStr::Compact(searchPath, path);
@@ -1057,7 +1078,7 @@ escape_newline:
                         };
 
                         GPULangFile* inc = nullptr;
-                        TransientString fullPath = resolvePath(path, searchPaths, resolvedPaths);
+                        TransientString fullPath = resolvePath(path, file->path, searchPaths, resolvedPaths);
                         auto fileIt = fileMap.Find(fullPath);
                         if (fileIt == fileMap.end())
                         {
@@ -2059,7 +2080,6 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
     {
         // get the name of the shader
         std::locale loc;
-        printf("%s\n\n", preprocessed.c_str());
         
         TransientString nameMangled = file->path;
         char* end = nameMangled.buf + nameMangled.size;
