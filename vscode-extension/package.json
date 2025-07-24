@@ -67,6 +67,9 @@
 				"configuration": "./language-configuration.json"
 			}
 		],
+		  "semanticTokenModifiers": [
+			{ "id": "unused", "description": "Unused code" }
+		],
 		"grammars": [
 			{
 				"language": "gpulang",

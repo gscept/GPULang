@@ -168,9 +168,9 @@ union PresentationBits
 {
     struct Flags
     {
-        uint32_t symbolLookup : 1; // Presentation is according to a symbol being looked up
-        uint32_t typeLookup : 1;   // Presentation is akin to a type being looked up
-        uint32_t formatted : 1;    // Text is already formatted
+        uint32_t symbolLookup : 1 = 0; // Presentation is according to a symbol being looked up
+        uint32_t typeLookup : 1 = 0;   // Presentation is akin to a type being looked up
+        uint32_t formatted : 1 = 0;    // Text is already formatted
     } flags;
     uint32_t bits;
 
@@ -496,7 +496,8 @@ lsp::SemanticTokensLegend legend{
             "static",
             "deprecated",
             "documentation",
-            "defaultLibrary"
+            "defaultLibrary",
+            "unused"
     }
 };
 
@@ -528,6 +529,7 @@ enum class SemanticModifierMapping : uint32_t {
     , Depreacted = 0x10
     , Documentation = 0x20
     , DefaultLibrary = 0x40
+    , Dead = 0x80
 };
 
 SemanticModifierMapping operator|(const SemanticModifierMapping lhs, const SemanticModifierMapping rhs)
@@ -582,7 +584,7 @@ CreateSemanticToken(Context& ctx, const GPULang::Symbol* sym, ParseContext::Pars
     file->symbolsByLine[range.startLine].push_back(std::make_tuple(range, PresentationBits(0x0), sym));
     
     bool deadBranch = !ctx.activeBranchStack[ctx.activeBranchIt];
-    SemanticModifierMapping dead = deadBranch ? SemanticModifierMapping::Depreacted : SemanticModifierMapping::None;
+    SemanticModifierMapping dead = deadBranch ? SemanticModifierMapping::Dead : SemanticModifierMapping::None;
     
     auto annotationSemanticToken = [](const GPULang::Annotation* annot, Context& prevLoc, ParseContext::ParsedFile* file, std::vector<uint32_t>& result, std::vector<const GPULang::Scope*>& scopes)
     {
@@ -1009,8 +1011,6 @@ std::string
 CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
 {
     std::string ret = "";
-    if (lookup.bits == 0x0 && sym->name.buf != nullptr)
-        ret = GPULang::Format("%s\n", sym->name.c_str());
     
     if (!lookup.flags.formatted)
         ret += "```gpulang\n";
@@ -1041,24 +1041,19 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
 
             if (lookup.flags.symbolLookup)
             {
-                for (auto attr : var->attributes)
+                if (var->attributes.size > 0)
                 {
-                    ret += GPULang::Format("%s", attr->name.c_str());
-                    if (attr->expression != nullptr)
-                        ret += GPULang::Format("(%s) ", attr->expression->EvalString().c_str());
-                    else
-                        ret += " ";
+                    for (auto attr : var->attributes)
+                    {
+                        ret += GPULang::Format("%s", attr->name.c_str());
+                        if (attr->expression != nullptr)
+                            ret += GPULang::Format("(%s) ", attr->expression->EvalString().c_str());
+                        else
+                            ret += " ";
+                    }
+                    ret += ": ";
                 }
                 ret += var->type.ToString().c_str();
-            
-                if (var->valueExpression != nullptr)
-                {
-                    PresentationBits valueBits(lookup);
-                    valueBits.flags.formatted = true;
-                    std::string value = CreateMarkdown(var->valueExpression, valueBits);
-                    if (!value.empty())
-                        ret += " = " + value;
-                }
             }
             else if (lookup.flags.typeLookup)
             {
@@ -1085,6 +1080,7 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
 
             if (lookup.flags.symbolLookup)
             {
+                ret += "function\n";
                 for (auto attr : fun->attributes)
                 {
                     ret += GPULang::Format("%s", attr->name.c_str());
@@ -1142,6 +1138,19 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
                 ret += CreateMarkdown(expr, lookup);
             break;
         }
+        case GPULang::Symbol::SymbolType::ArrayIndexExpressionType:
+        {
+            const auto expr = static_cast<const GPULang::ArrayIndexExpression*>(sym);
+            ret += CreateMarkdown(expr->left, lookup);
+            ret += CreateMarkdown(expr->right, lookup);
+        }
+        case GPULang::Symbol::SymbolType::AccessExpressionType:
+        {
+            const auto expr = static_cast<const GPULang::AccessExpression*>(sym);
+            ret += CreateMarkdown(expr->left, lookup);
+            ret += ".";
+            ret += CreateMarkdown(expr->right, lookup);
+        }
         case GPULang::Symbol::SymbolType::CallExpressionType:
         {
             const GPULang::CallExpression* call = static_cast<const GPULang::CallExpression*>(sym);
@@ -1165,10 +1174,16 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
         }
         case GPULang::Symbol::SymbolType::SymbolExpressionType:
         {
-            const GPULang::SymbolExpression* lookup = static_cast<const GPULang::SymbolExpression*>(sym);
-            const GPULang::SymbolExpression::__Resolved* res = GPULang::Symbol::Resolved(lookup);
+            const GPULang::SymbolExpression* symbol = static_cast<const GPULang::SymbolExpression*>(sym);
+            const GPULang::SymbolExpression::__Resolved* res = GPULang::Symbol::Resolved(symbol);
             if (res->symbol != nullptr)
-                ret += CreateMarkdown(res->symbol, PresentationBits{ {.symbolLookup = 1, .formatted = 1} });
+            {
+                if (lookup.flags.symbolLookup)
+                    ret += CreateMarkdown(res->symbol, PresentationBits{ {.symbolLookup = 1, .formatted = 1} });
+                else
+                    ret += symbol->symbol.c_str();
+            }
+            
             break;
         }
         case GPULang::Symbol::SymbolType::RenderStateInstanceType:
@@ -1178,10 +1193,24 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
             ret += "render_state\n";
             if (res->typeSymbol != nullptr)
             {
-                for (auto mem : res->typeSymbol->scope.symbolLookup)
+                if (lookup.flags.symbolLookup)
                 {
-                    ret += CreateMarkdown(mem.second, PresentationBits{ {.typeLookup = 1, .formatted = 1} });
-                    ret += "\n";
+                    for (auto entry : state->entries)
+                    {
+                        const auto expr = static_cast<GPULang::BinaryExpression*>(entry);
+                        ret += CreateMarkdown(expr->left, PresentationBits{ {.typeLookup = 1, .formatted = 1}});
+                        ret += " = ";
+                        ret += CreateMarkdown(expr->right, PresentationBits{ { .formatted = 1}});
+                        ret += "\n";
+                    }
+                }
+                else
+                {
+                    for (auto mem : res->typeSymbol->scope.symbolLookup)
+                    {
+                        ret += CreateMarkdown(mem.second, PresentationBits{ {.typeLookup = 1, .formatted = 1} });
+                        ret += "\n";
+                    }
                 }
             }
             break;
@@ -1216,10 +1245,24 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
             }
             if (res->typeSymbol != nullptr)
             {
-                for (auto mem : res->typeSymbol->scope.symbolLookup)
+                if (lookup.flags.symbolLookup)
                 {
-                    ret += CreateMarkdown(mem.second, PresentationBits{ {.typeLookup = 1, .formatted = 1} });
-                    ret += "\n";
+                    for (auto entry : state->entries)
+                    {
+                        const auto expr = static_cast<GPULang::BinaryExpression*>(entry);
+                        ret += CreateMarkdown(expr->left, PresentationBits{ {.typeLookup = 1, .formatted = 1}});
+                        ret += " = ";
+                        ret += CreateMarkdown(expr->right, PresentationBits{ { .formatted = 1}});
+                        ret += "\n";
+                    }
+                }
+                else
+                {
+                    for (auto mem : res->typeSymbol->scope.symbolLookup)
+                    {
+                        ret += CreateMarkdown(mem.second, PresentationBits{ {.typeLookup = 1, .formatted = 1} });
+                        ret += "\n";
+                    }
                 }
             }
             break;
