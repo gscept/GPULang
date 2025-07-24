@@ -2749,7 +2749,7 @@ def generate_types():
             decl_name = function_name,
             api_name = f'vertex{intrinsic}',
             return_type = 'Void',
-            documentation = 'Exports the value as the vertex position to the rasterizer. This function must be called at least once in a vertex shader. This is the same as the SV_POSITION in HLSL or gl_Position in GLSL.',
+            documentation = 'Exports the value as the vertex position to the rasterizer. This function must be called at least once in a vertex shader. This is the same as the `SV_POSITION` in HLSL or `gl_Position` in GLSL.',
             parameters = [
                 Variable(decl_name = argument_name, api_name = "val", type_name=type)
             ]
@@ -2901,7 +2901,7 @@ def generate_types():
                 decl_name = function_name,
                 api_name = f'pixel{intrinsic}',
                 return_type = 'Void',
-                documentation = f'Exports a color value to the framebuffer output at index. This is the same as writing to SV_TARGET<index> in HLSL or to a GLSL layout(location = <index>) out variable.',
+                documentation = f'Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable.',
                 parameters = [
                     Variable(decl_name = color_argument_name, api_name = "color", type_name=type),
                     Variable(decl_name = index_argument_name, api_name = "index", type_name=idx, literal=True)
