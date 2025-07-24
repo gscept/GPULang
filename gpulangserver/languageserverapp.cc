@@ -1142,7 +1142,10 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
         {
             const auto expr = static_cast<const GPULang::ArrayIndexExpression*>(sym);
             ret += CreateMarkdown(expr->left, lookup);
+            ret += "[";
             ret += CreateMarkdown(expr->right, lookup);
+            ret += "]";
+            break;
         }
         case GPULang::Symbol::SymbolType::AccessExpressionType:
         {
@@ -1150,6 +1153,7 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
             ret += CreateMarkdown(expr->left, lookup);
             ret += ".";
             ret += CreateMarkdown(expr->right, lookup);
+            break;
         }
         case GPULang::Symbol::SymbolType::CallExpressionType:
         {
@@ -1301,7 +1305,10 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
     if (lookup.flags.symbolLookup)
     {
         if (sym->documentation.buf != nullptr)
+        {
             ret += sym->documentation.c_str();
+            ret += "\n";
+        }
         
         if (sym->location.line != -1)
             ret += GPULang::Format("[Declared Here](%s#L%d)\n", sym->location.file.c_str(), sym->location.line+1);
@@ -1406,8 +1413,8 @@ main(int argc, const char** argv)
                 result.capabilities.workspace = lsp::ServerCapabilitiesWorkspace{ .workspaceFolders = lsp::WorkspaceFoldersServerCapabilities{ .supported = true } };
                 result.capabilities.documentHighlightProvider = lsp::DocumentHighlightOptions{ .workDoneProgress = true };
                 result.capabilities.referencesProvider = lsp::ReferenceOptions{ .workDoneProgress = true };
-                result.capabilities.declarationProvider = lsp::DeclarationOptions{ .workDoneProgress = true };
-                //result.capabilities.definitionProvider = lsp::DefinitionOptions{ .workDoneProgress = true };
+                //result.capabilities.declarationProvider = lsp::DeclarationOptions{ .workDoneProgress = true };
+                result.capabilities.definitionProvider = lsp::DefinitionOptions{ .workDoneProgress = true };
                 result.capabilities.semanticTokensProvider = lsp::SemanticTokensOptions{ .legend = legend, .range = false, .full = true };
                 result.capabilities.hoverProvider = lsp::HoverOptions{ .workDoneProgress = true };
                 result.capabilities.completionProvider = lsp::CompletionOptions{ .workDoneProgress = true, .triggerCharacters = { { "." } }, .allCommitCharacters = { { ";" } }, .resolveProvider = false, .completionItem = lsp::CompletionOptionsCompletionItem{ true } };
@@ -1633,6 +1640,57 @@ main(int argc, const char** argv)
                     }
                 }
                 return result;
+            })
+                .add<lsp::requests::TextDocument_Definition>([&context, &messageHandler](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_Definition::Params&& params)
+            {
+                    lsp::requests::TextDocument_Definition::Result result;
+                    const std::string& path = params.textDocument.uri.path();
+                    ParseContext::ParsedFile* file = GetFile(path, context, messageHandler);
+                    
+                    TextRange inputRange;
+                    inputRange.startLine = params.position.line;
+                    inputRange.startColumn = params.position.character;
+                    const auto symbolsOnLine = file->symbolsByLine[params.position.line];
+                    const GPULang::Symbol* sym = nullptr;
+                    for (const auto& [range, bits, lineSym] : symbolsOnLine)
+                    {
+                        if (lineSym->location.start < params.position.character && lineSym->location.end > params.position.character)
+                        {
+                            sym = lineSym;
+                        }
+                        else if (lineSym->location.start > params.position.character)
+                            break;
+                    }
+                    if (sym != nullptr)
+                    {
+                        if (sym->symbolType == GPULang::Symbol::SymbolType::SymbolExpressionType)
+                        {
+                            const auto expr = static_cast<const GPULang::SymbolExpression*>(sym);
+                            GPULang::Symbol* symbol = GPULang::Symbol::Resolved(expr)->symbol;
+                            
+                            lsp::DefinitionLink link;
+                            link.targetUri = symbol->location.file.c_str();
+                            lsp::Range range;
+                            range.start.line = symbol->location.line;
+                            range.start.character = symbol->location.start;
+                            range.end.line = symbol->location.line;
+                            range.end.character = symbol->location.end;
+                            link.targetRange = range;
+                            link.targetSelectionRange = range;
+                            result = std::vector{ link };
+                        }
+                        else
+                        {
+                            lsp::Range sourceRange;
+                            sourceRange.start.line = sym->location.line;
+                            sourceRange.start.character = sym->location.start;
+                            sourceRange.end.line = sym->location.line;
+                            sourceRange.end.character = sym->location.end;
+                            lsp::Definition def = lsp::Location{ .uri = sym->location.file.c_str(), .range = sourceRange };
+                            result = def;
+                        }
+                    }
+                    return result;
             })
                 .add<lsp::requests::TextDocument_Completion>([&context, &messageHandler](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_Completion::Params&& params)
             {
