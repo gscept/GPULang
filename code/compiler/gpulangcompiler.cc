@@ -1078,7 +1078,7 @@ escape_newline:
                         };
 
                         GPULangFile* inc = nullptr;
-                        TransientString fullPath = resolvePath(path, file->path, searchPaths, resolvedPaths);
+                        TransientString fullPath = resolvePath(path, level->file->path, searchPaths, resolvedPaths);
                         auto fileIt = fileMap.Find(fullPath);
                         if (fileIt == fileMap.end())
                         {
