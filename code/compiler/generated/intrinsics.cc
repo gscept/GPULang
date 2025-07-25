@@ -23033,7 +23033,7 @@ void SetupIntrinsics()
     /// castToF16 with UInt16
     castToF16_UInt16_arg.name = "val"_c;
     castToF16_UInt16_arg.type = Type::FullType{ UInt16Type.name };
-    castToF16_UInt16.documentation = "Casts value of UInt16 to type Float16 without conversion."_c;
+    castToF16_UInt16.documentation = "Casts to type Float16 without conversion."_c;
     castToF16_UInt16.name = "castToF16"_c;
     castToF16_UInt16.returnType = Type::FullType { Float16Type.name };
     castToF16_UInt16.parameters = castToF16_UInt16_args;
@@ -23046,7 +23046,7 @@ void SetupIntrinsics()
     /// castToF16 with Int16
     castToF16_Int16_arg.name = "val"_c;
     castToF16_Int16_arg.type = Type::FullType{ Int16Type.name };
-    castToF16_Int16.documentation = "Casts value of Int16 to type Float16 without conversion."_c;
+    castToF16_Int16.documentation = "Casts to type Float16 without conversion."_c;
     castToF16_Int16.name = "castToF16"_c;
     castToF16_Int16.returnType = Type::FullType { Float16Type.name };
     castToF16_Int16.parameters = castToF16_Int16_args;
@@ -23059,7 +23059,7 @@ void SetupIntrinsics()
     /// castToU16 with Float16
     castToU16_Float16_arg.name = "val"_c;
     castToU16_Float16_arg.type = Type::FullType{ Float16Type.name };
-    castToU16_Float16.documentation = "Casts value of Float16 to type UInt16 without conversion."_c;
+    castToU16_Float16.documentation = "Casts to type UInt16 without conversion."_c;
     castToU16_Float16.name = "castToU16"_c;
     castToU16_Float16.returnType = Type::FullType { UInt16Type.name };
     castToU16_Float16.parameters = castToU16_Float16_args;
@@ -23072,7 +23072,7 @@ void SetupIntrinsics()
     /// castToU16 with Int16
     castToU16_Int16_arg.name = "val"_c;
     castToU16_Int16_arg.type = Type::FullType{ Int16Type.name };
-    castToU16_Int16.documentation = "Casts value of Int16 to type UInt16 without conversion."_c;
+    castToU16_Int16.documentation = "Casts to type UInt16 without conversion."_c;
     castToU16_Int16.name = "castToU16"_c;
     castToU16_Int16.returnType = Type::FullType { UInt16Type.name };
     castToU16_Int16.parameters = castToU16_Int16_args;
@@ -23085,7 +23085,7 @@ void SetupIntrinsics()
     /// castToI16 with Float16
     castToI16_Float16_arg.name = "val"_c;
     castToI16_Float16_arg.type = Type::FullType{ Float16Type.name };
-    castToI16_Float16.documentation = "Casts value of Float16 to type Int16 without conversion."_c;
+    castToI16_Float16.documentation = "Casts to type Int16 without conversion."_c;
     castToI16_Float16.name = "castToI16"_c;
     castToI16_Float16.returnType = Type::FullType { Int16Type.name };
     castToI16_Float16.parameters = castToI16_Float16_args;
@@ -23098,7 +23098,7 @@ void SetupIntrinsics()
     /// castToI16 with UInt16
     castToI16_UInt16_arg.name = "val"_c;
     castToI16_UInt16_arg.type = Type::FullType{ UInt16Type.name };
-    castToI16_UInt16.documentation = "Casts value of UInt16 to type Int16 without conversion."_c;
+    castToI16_UInt16.documentation = "Casts to type Int16 without conversion."_c;
     castToI16_UInt16.name = "castToI16"_c;
     castToI16_UInt16.returnType = Type::FullType { Int16Type.name };
     castToI16_UInt16.parameters = castToI16_UInt16_args;
@@ -23111,7 +23111,7 @@ void SetupIntrinsics()
     /// castToF32 with UInt32
     castToF32_UInt32_arg.name = "val"_c;
     castToF32_UInt32_arg.type = Type::FullType{ UInt32Type.name };
-    castToF32_UInt32.documentation = "Casts value of UInt32 to type Float32 without conversion."_c;
+    castToF32_UInt32.documentation = "Casts to type Float32 without conversion."_c;
     castToF32_UInt32.name = "castToF32"_c;
     castToF32_UInt32.returnType = Type::FullType { Float32Type.name };
     castToF32_UInt32.parameters = castToF32_UInt32_args;
@@ -23124,7 +23124,7 @@ void SetupIntrinsics()
     /// castToF32 with Int32
     castToF32_Int32_arg.name = "val"_c;
     castToF32_Int32_arg.type = Type::FullType{ Int32Type.name };
-    castToF32_Int32.documentation = "Casts value of Int32 to type Float32 without conversion."_c;
+    castToF32_Int32.documentation = "Casts to type Float32 without conversion."_c;
     castToF32_Int32.name = "castToF32"_c;
     castToF32_Int32.returnType = Type::FullType { Float32Type.name };
     castToF32_Int32.parameters = castToF32_Int32_args;
@@ -23137,7 +23137,7 @@ void SetupIntrinsics()
     /// castToU32 with Float32
     castToU32_Float32_arg.name = "val"_c;
     castToU32_Float32_arg.type = Type::FullType{ Float32Type.name };
-    castToU32_Float32.documentation = "Casts value of Float32 to type UInt32 without conversion."_c;
+    castToU32_Float32.documentation = "Casts to type UInt32 without conversion."_c;
     castToU32_Float32.name = "castToU32"_c;
     castToU32_Float32.returnType = Type::FullType { UInt32Type.name };
     castToU32_Float32.parameters = castToU32_Float32_args;
@@ -23150,7 +23150,7 @@ void SetupIntrinsics()
     /// castToU32 with Int32
     castToU32_Int32_arg.name = "val"_c;
     castToU32_Int32_arg.type = Type::FullType{ Int32Type.name };
-    castToU32_Int32.documentation = "Casts value of Int32 to type UInt32 without conversion."_c;
+    castToU32_Int32.documentation = "Casts to type UInt32 without conversion."_c;
     castToU32_Int32.name = "castToU32"_c;
     castToU32_Int32.returnType = Type::FullType { UInt32Type.name };
     castToU32_Int32.parameters = castToU32_Int32_args;
@@ -23163,7 +23163,7 @@ void SetupIntrinsics()
     /// castToI32 with Float32
     castToI32_Float32_arg.name = "val"_c;
     castToI32_Float32_arg.type = Type::FullType{ Float32Type.name };
-    castToI32_Float32.documentation = "Casts value of Float32 to type Int32 without conversion."_c;
+    castToI32_Float32.documentation = "Casts to type Int32 without conversion."_c;
     castToI32_Float32.name = "castToI32"_c;
     castToI32_Float32.returnType = Type::FullType { Int32Type.name };
     castToI32_Float32.parameters = castToI32_Float32_args;
@@ -23176,7 +23176,7 @@ void SetupIntrinsics()
     /// castToI32 with UInt32
     castToI32_UInt32_arg.name = "val"_c;
     castToI32_UInt32_arg.type = Type::FullType{ UInt32Type.name };
-    castToI32_UInt32.documentation = "Casts value of UInt32 to type Int32 without conversion."_c;
+    castToI32_UInt32.documentation = "Casts to type Int32 without conversion."_c;
     castToI32_UInt32.name = "castToI32"_c;
     castToI32_UInt32.returnType = Type::FullType { Int32Type.name };
     castToI32_UInt32.parameters = castToI32_UInt32_args;
@@ -28171,83 +28171,83 @@ void SetupIntrinsics()
     /// executionBarrier
     ExecutionBarrier.documentation = "Execution barrier to ensure all threads have reached this point before proceeding"_c;
     ExecutionBarrier.name = "executionBarrier"_c;
-    ExecutionBarrier.returnType = Type::FullType { Int16Type.name };
-    Symbol::Resolved(&ExecutionBarrier)->signature = "i16 executionBarrier()"_c;
+    ExecutionBarrier.returnType = Type::FullType { VoidType.name };
+    Symbol::Resolved(&ExecutionBarrier)->signature = "void executionBarrier()"_c;
     Symbol::Resolved(&ExecutionBarrier)->name = "executionBarrier()"_c;
     Symbol::Resolved(&ExecutionBarrier)->nameWithVarNames = "executionBarrier()"_c;
-    Symbol::Resolved(&ExecutionBarrier)->returnTypeSymbol = &Int16Type;
+    Symbol::Resolved(&ExecutionBarrier)->returnTypeSymbol = &VoidType;
 
     /// executionBarrierSubgroup
     ExecutionBarrierSubgroup.documentation = "Execution barrier to ensure all threads in the subgroup have reached this point before proceeding"_c;
     ExecutionBarrierSubgroup.name = "executionBarrierSubgroup"_c;
-    ExecutionBarrierSubgroup.returnType = Type::FullType { Int16Type.name };
-    Symbol::Resolved(&ExecutionBarrierSubgroup)->signature = "i16 executionBarrierSubgroup()"_c;
+    ExecutionBarrierSubgroup.returnType = Type::FullType { VoidType.name };
+    Symbol::Resolved(&ExecutionBarrierSubgroup)->signature = "void executionBarrierSubgroup()"_c;
     Symbol::Resolved(&ExecutionBarrierSubgroup)->name = "executionBarrierSubgroup()"_c;
     Symbol::Resolved(&ExecutionBarrierSubgroup)->nameWithVarNames = "executionBarrierSubgroup()"_c;
-    Symbol::Resolved(&ExecutionBarrierSubgroup)->returnTypeSymbol = &Int16Type;
+    Symbol::Resolved(&ExecutionBarrierSubgroup)->returnTypeSymbol = &VoidType;
 
     /// executionBarrierWorkgroup
     ExecutionBarrierWorkgroup.documentation = "Execution barrier to ensure all threads in the workgroup have reached this point before proceeding"_c;
     ExecutionBarrierWorkgroup.name = "executionBarrierWorkgroup"_c;
-    ExecutionBarrierWorkgroup.returnType = Type::FullType { Int16Type.name };
-    Symbol::Resolved(&ExecutionBarrierWorkgroup)->signature = "i16 executionBarrierWorkgroup()"_c;
+    ExecutionBarrierWorkgroup.returnType = Type::FullType { VoidType.name };
+    Symbol::Resolved(&ExecutionBarrierWorkgroup)->signature = "void executionBarrierWorkgroup()"_c;
     Symbol::Resolved(&ExecutionBarrierWorkgroup)->name = "executionBarrierWorkgroup()"_c;
     Symbol::Resolved(&ExecutionBarrierWorkgroup)->nameWithVarNames = "executionBarrierWorkgroup()"_c;
-    Symbol::Resolved(&ExecutionBarrierWorkgroup)->returnTypeSymbol = &Int16Type;
+    Symbol::Resolved(&ExecutionBarrierWorkgroup)->returnTypeSymbol = &VoidType;
 
     /// memoryBarrier
     MemoryBarrier.documentation = "Memory barrier to ensure memory operations are completed before proceeding"_c;
     MemoryBarrier.name = "memoryBarrier"_c;
-    MemoryBarrier.returnType = Type::FullType { Int16Type.name };
-    Symbol::Resolved(&MemoryBarrier)->signature = "i16 memoryBarrier()"_c;
+    MemoryBarrier.returnType = Type::FullType { VoidType.name };
+    Symbol::Resolved(&MemoryBarrier)->signature = "void memoryBarrier()"_c;
     Symbol::Resolved(&MemoryBarrier)->name = "memoryBarrier()"_c;
     Symbol::Resolved(&MemoryBarrier)->nameWithVarNames = "memoryBarrier()"_c;
-    Symbol::Resolved(&MemoryBarrier)->returnTypeSymbol = &Int16Type;
+    Symbol::Resolved(&MemoryBarrier)->returnTypeSymbol = &VoidType;
 
     /// memoryBarrierBuffer
     MemoryBarrierBuffer.documentation = "Memory barrier to ensure buffer memory operations are completed before proceeding"_c;
     MemoryBarrierBuffer.name = "memoryBarrierBuffer"_c;
-    MemoryBarrierBuffer.returnType = Type::FullType { Int16Type.name };
-    Symbol::Resolved(&MemoryBarrierBuffer)->signature = "i16 memoryBarrierBuffer()"_c;
+    MemoryBarrierBuffer.returnType = Type::FullType { VoidType.name };
+    Symbol::Resolved(&MemoryBarrierBuffer)->signature = "void memoryBarrierBuffer()"_c;
     Symbol::Resolved(&MemoryBarrierBuffer)->name = "memoryBarrierBuffer()"_c;
     Symbol::Resolved(&MemoryBarrierBuffer)->nameWithVarNames = "memoryBarrierBuffer()"_c;
-    Symbol::Resolved(&MemoryBarrierBuffer)->returnTypeSymbol = &Int16Type;
+    Symbol::Resolved(&MemoryBarrierBuffer)->returnTypeSymbol = &VoidType;
 
     /// memoryBarrierTexture
     MemoryBarrierTexture.documentation = "Memory barrier to ensure texture memory operations are completed before proceeding"_c;
     MemoryBarrierTexture.name = "memoryBarrierTexture"_c;
-    MemoryBarrierTexture.returnType = Type::FullType { Int16Type.name };
-    Symbol::Resolved(&MemoryBarrierTexture)->signature = "i16 memoryBarrierTexture()"_c;
+    MemoryBarrierTexture.returnType = Type::FullType { VoidType.name };
+    Symbol::Resolved(&MemoryBarrierTexture)->signature = "void memoryBarrierTexture()"_c;
     Symbol::Resolved(&MemoryBarrierTexture)->name = "memoryBarrierTexture()"_c;
     Symbol::Resolved(&MemoryBarrierTexture)->nameWithVarNames = "memoryBarrierTexture()"_c;
-    Symbol::Resolved(&MemoryBarrierTexture)->returnTypeSymbol = &Int16Type;
+    Symbol::Resolved(&MemoryBarrierTexture)->returnTypeSymbol = &VoidType;
 
     /// memoryBarrierAtomic
     MemoryBarrierAtomic.documentation = "Memory barrier to ensure atomic memory operations are completed before proceeding"_c;
     MemoryBarrierAtomic.name = "memoryBarrierAtomic"_c;
-    MemoryBarrierAtomic.returnType = Type::FullType { Int16Type.name };
-    Symbol::Resolved(&MemoryBarrierAtomic)->signature = "i16 memoryBarrierAtomic()"_c;
+    MemoryBarrierAtomic.returnType = Type::FullType { VoidType.name };
+    Symbol::Resolved(&MemoryBarrierAtomic)->signature = "void memoryBarrierAtomic()"_c;
     Symbol::Resolved(&MemoryBarrierAtomic)->name = "memoryBarrierAtomic()"_c;
     Symbol::Resolved(&MemoryBarrierAtomic)->nameWithVarNames = "memoryBarrierAtomic()"_c;
-    Symbol::Resolved(&MemoryBarrierAtomic)->returnTypeSymbol = &Int16Type;
+    Symbol::Resolved(&MemoryBarrierAtomic)->returnTypeSymbol = &VoidType;
 
     /// memoryBarrierSubgroup
     MemoryBarrierSubgroup.documentation = "Memory barrier to ensure subgroup memory operations are completed before proceeding"_c;
     MemoryBarrierSubgroup.name = "memoryBarrierSubgroup"_c;
-    MemoryBarrierSubgroup.returnType = Type::FullType { Int16Type.name };
-    Symbol::Resolved(&MemoryBarrierSubgroup)->signature = "i16 memoryBarrierSubgroup()"_c;
+    MemoryBarrierSubgroup.returnType = Type::FullType { VoidType.name };
+    Symbol::Resolved(&MemoryBarrierSubgroup)->signature = "void memoryBarrierSubgroup()"_c;
     Symbol::Resolved(&MemoryBarrierSubgroup)->name = "memoryBarrierSubgroup()"_c;
     Symbol::Resolved(&MemoryBarrierSubgroup)->nameWithVarNames = "memoryBarrierSubgroup()"_c;
-    Symbol::Resolved(&MemoryBarrierSubgroup)->returnTypeSymbol = &Int16Type;
+    Symbol::Resolved(&MemoryBarrierSubgroup)->returnTypeSymbol = &VoidType;
 
     /// memoryBarrierWorkgroup
     MemoryBarrierWorkgroup.documentation = "Memory barrier to ensure workgroup memory operations are completed before proceeding"_c;
     MemoryBarrierWorkgroup.name = "memoryBarrierWorkgroup"_c;
-    MemoryBarrierWorkgroup.returnType = Type::FullType { Int16Type.name };
-    Symbol::Resolved(&MemoryBarrierWorkgroup)->signature = "i16 memoryBarrierWorkgroup()"_c;
+    MemoryBarrierWorkgroup.returnType = Type::FullType { VoidType.name };
+    Symbol::Resolved(&MemoryBarrierWorkgroup)->signature = "void memoryBarrierWorkgroup()"_c;
     Symbol::Resolved(&MemoryBarrierWorkgroup)->name = "memoryBarrierWorkgroup()"_c;
     Symbol::Resolved(&MemoryBarrierWorkgroup)->nameWithVarNames = "memoryBarrierWorkgroup()"_c;
-    Symbol::Resolved(&MemoryBarrierWorkgroup)->returnTypeSymbol = &Int16Type;
+    Symbol::Resolved(&MemoryBarrierWorkgroup)->returnTypeSymbol = &VoidType;
 
     /// textureGetSize with Texture1D
     TextureGetSize_Texture1D_texture.name = "texture"_c;

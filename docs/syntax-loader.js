@@ -170,7 +170,7 @@ function createGPULangPrismLanguage(syntaxData) {
             },
             'type': {
                 pattern: new RegExp(`\\b(?:${syntaxData.types.join('|')})\\b`),
-                alias: 'class-name'
+                alias: 'type'
             },
             'annotation': {
                 pattern: /@\w+/,

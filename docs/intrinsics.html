@@ -94,8 +94,15 @@
         /* Intrinsics Grid */
         .intrinsics-grid {
             display: grid;
+            grid-template-columns: 1fr;
             gap: 2rem;
             margin-bottom: 4rem;
+        }
+
+        @media (min-width: 800px) {
+            .intrinsics-grid {
+                grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            }
         }
 
         .intrinsic-name {
@@ -225,7 +232,9 @@
             padding: 1.5rem;
             z-index: 100;
             overflow-y: auto;
+            overflow-x: hidden;
             transition: all 0.3s ease;
+            word-wrap: break-word;
         }
 
         .toc-container.hidden {
@@ -318,6 +327,9 @@
             transition: color 0.3s ease;
             display: block;
             padding: 0.2rem 0;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
         }
 
         .toc-link:hover {
@@ -356,7 +368,7 @@
             }
 
             .content-wrapper {
-                margin-left: 0;
+                margin-left: 0 !important;
             }
         }
 
@@ -367,6 +379,27 @@
 
             .content-wrapper {
                 margin-left: 270px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .content-wrapper {
+                margin-left: 0 !important;
+            }
+            
+            .toc-container {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .intrinsics-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .controls {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -785,6 +818,69 @@
             return div.innerHTML;
         }
 
+        // Calculate Levenshtein distance between two strings
+        function levenshteinDistance(str1, str2) {
+            const matrix = [];
+            
+            // Create matrix
+            for (let i = 0; i <= str2.length; i++) {
+                matrix[i] = [i];
+            }
+            
+            for (let j = 0; j <= str1.length; j++) {
+                matrix[0][j] = j;
+            }
+            
+            // Fill matrix
+            for (let i = 1; i <= str2.length; i++) {
+                for (let j = 1; j <= str1.length; j++) {
+                    if (str2.charAt(i - 1) === str1.charAt(j - 1)) {
+                        matrix[i][j] = matrix[i - 1][j - 1];
+                    } else {
+                        matrix[i][j] = Math.min(
+                            matrix[i - 1][j - 1] + 1, // substitution
+                            matrix[i][j - 1] + 1,     // insertion
+                            matrix[i - 1][j] + 1      // deletion
+                        );
+                    }
+                }
+            }
+            
+            return matrix[str2.length][str1.length];
+        }
+
+        // Calculate relevance score for search results
+        function calculateRelevanceScore(intrinsic, searchTerm) {
+            if (!searchTerm) return 0;
+            
+            const name = intrinsic.name.toLowerCase();
+            const doc = intrinsic.documentation ? intrinsic.documentation.toLowerCase() : '';
+            const search = searchTerm.toLowerCase();
+            
+            // Exact match gets highest score
+            if (name === search) return 1000;
+            
+            // Starts with search term gets high score
+            if (name.startsWith(search)) return 900;
+            
+            // Contains search term gets good score
+            if (name.includes(search)) return 800;
+            
+            // Calculate Levenshtein distance for name
+            const nameDistance = levenshteinDistance(search, name);
+            const maxLength = Math.max(search.length, name.length);
+            const nameSimilarity = 1 - (nameDistance / maxLength);
+            
+            // Documentation match gets lower score
+            let docScore = 0;
+            if (doc.includes(search)) {
+                docScore = 200;
+            }
+            
+            // Combine scores (name similarity weighted higher)
+            return (nameSimilarity * 700) + docScore;
+        }
+
         // Filter intrinsics based on search and target
         function filterIntrinsics() {
             const searchTerm = document.getElementById('searchBox').value.toLowerCase();
@@ -793,7 +889,7 @@
                 // Text search
                 const matchesSearch = searchTerm === '' || 
                     intrinsic.name.toLowerCase().includes(searchTerm) ||
-                    intrinsic.documentation.toLowerCase().includes(searchTerm);
+                    (intrinsic.documentation != null && intrinsic.documentation.toLowerCase().includes(searchTerm));
 
                 // Target filter
                 let matchesTarget = currentTargetFilter === 'all';
@@ -811,6 +907,18 @@
 
                 return matchesSearch && matchesTarget;
             });
+
+            // Sort by relevance if there's a search term
+            if (searchTerm.trim() !== '') {
+                filteredIntrinsics.sort((a, b) => {
+                    const scoreA = calculateRelevanceScore(a, searchTerm);
+                    const scoreB = calculateRelevanceScore(b, searchTerm);
+                    return scoreB - scoreA; // Higher scores first
+                });
+            } else {
+                // Sort alphabetically when no search term
+                filteredIntrinsics.sort((a, b) => a.name.localeCompare(b.name));
+            }
 
             displayIntrinsics(filteredIntrinsics);
         }

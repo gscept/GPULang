@@ -34,7 +34,15 @@ html {
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+    background: 
+        repeating-linear-gradient(
+            135deg,
+            #0f0f23 0px,
+            #1a1a2e 150px,
+            #16213e 300px,
+            #1a1a2e 450px,
+            #0f0f23 600px
+        );
     color: #ffffff;
     line-height: 1.6;
     overflow-x: hidden;
@@ -143,6 +151,16 @@ nav {
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
+    overflow: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.intrinsic-card {
+    /* Ensure intrinsic cards handle overflow properly */
+    min-width: 0; /* Allow flex items to shrink */
+    max-width: 100%;
+    padding: 1.5rem; /* Reduced from default 2rem */
 }
 
 .feature-card:hover, .doc-card:hover, .intrinsic-card:hover {
@@ -239,6 +257,23 @@ code {
     font-size: 0.9rem;
 }
 
+/* Intrinsic card specific code styling */
+.intrinsic-card pre {
+    overflow-x: auto;
+    max-width: 100%;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    padding: 1rem; /* Reduced from default 2rem */
+    margin: 0.5rem 0; /* Reduced margin */
+}
+
+.intrinsic-card code {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
 /* Custom syntax highlighting colors for GPULang */
 .token.keyword {
     color: #c678dd;
@@ -270,8 +305,9 @@ code {
 }
 
 .token.comment {
-    color: #5c6370;
+    color: #a855f7;
     font-style: italic;
+    opacity: 0.8;
 }
 
 .token.number {

@@ -445,13 +445,14 @@ def generate_types():
             self.literal = literal
 
     class Function():
-        def __init__(self, decl_name, api_name, return_type, parameters, documentation=None, compile_time=False):
+        def __init__(self, decl_name, api_name, return_type, parameters, documentation=None, compile_time=False, is_constructor=False):
             self.decl_name = decl_name
             self.api_name = api_name
             self.return_type = return_type
             self.parameters = parameters
             self.documentation = documentation
             self.compile_time = compile_time
+            self.is_constructor = is_constructor
 
         def declaration(self):
             if len(self.parameters) > 0:
@@ -658,8 +659,9 @@ def generate_types():
                     return_type=type_name,
                     compile_time=True,
                     parameters=[Variable(decl_name=arg_name, api_name='val', type_name=type_name2)],
-                    documentation=f'Convert from {data_type_name2} to {data_type_name}'
-                )
+                    documentation=f'Convert from {data_type_name2} to {data_type_name}',
+                    is_constructor=True
+                )   
                 functions.append(fun)
                 if type == type2:
                     spirv_type_construction += spirv_intrinsic(function_name, '    return args[0];\n')
@@ -680,7 +682,8 @@ def generate_types():
                         return_type=type_name,
                         parameters=[Variable(decl_name=arg_name, api_name='val', type_name=type2)],
                         compile_time=True,
-                        documentation=f'Splat {data_type_mapping[type2]} to {data_type_name}'
+                        documentation=f'Splat {data_type_mapping[type2]} to {data_type_name}',
+                        is_constructor=True
                     )                    
                     functions.append(fun)
 
@@ -720,7 +723,8 @@ def generate_types():
                     api_name = f'{data_type_mapping[type_name]}',
                     return_type = type_name,
                     compile_time = True,
-                    parameters = []
+                    parameters = [],
+                    is_constructor=True
                 )
 
                 for arg_idx, s in enumerate(comb):
@@ -741,8 +745,8 @@ def generate_types():
                 spirv_function = f'    return GenerateCompositeSPIRV(c, g, returnType, {{{", ".join([f"args[{idx}]" for idx, arg in enumerate(args)])}}});\n'
                 spirv_type_construction += spirv_intrinsic(function_name, spirv_function)
 
-
             spirv_intrinsics.write(spirv_type_construction)
+            
             for name, op, idx_type in zip(index_operator_names, index_operators, index_types):
                 function_name = f'{type_name}_operator_{name}'
                 arg_name = f'{type_name}_operator_{name}_arg'
@@ -1024,7 +1028,8 @@ def generate_types():
                     api_name=f'{data_type_name}',
                     return_type=type_name,
                     compile_time = True,
-                    parameters=[]
+                    parameters=[],
+                    is_constructor=True
                 )
 
                 for arg_index in range(0, row_size):
@@ -1040,7 +1045,8 @@ def generate_types():
                     api_name=f'{data_type_name}',
                     return_type=type_name,
                     compile_time=True,
-                    parameters=[]
+                    parameters=[],
+                    is_constructor=True
                 )
                 functions.append(fun)
 
@@ -1049,7 +1055,8 @@ def generate_types():
                     api_name=f'{data_type_name}',
                     return_type=type_name,
                     compile_time=True,
-                    parameters=[]
+                    parameters=[],
+                    is_constructor=True
                 )
                 for arg_index in range(0, column_size * row_size):
                     fun.parameters.append(Variable(
@@ -2382,7 +2389,7 @@ def generate_types():
                     decl_name = function_name,
                     api_name = intrinsic,
                     return_type = type1,
-                    documentation = f'Casts value of {type2} to type {type1} without conversion.',
+                    documentation = f'Casts to type {type1} without conversion.',
                     parameters = [
                         Variable(decl_name = argument_name, api_name = "val", type_name=type2)
                     ]
@@ -2407,7 +2414,7 @@ def generate_types():
                     decl_name = function_name,
                     api_name = intrinsic,
                     return_type = type1,
-                    documentation = f'Casts value of {type2} to type {type1} without conversion.',
+                    documentation = f'Casts to type {type1} without conversion.',
                     parameters = [
                         Variable(decl_name = argument_name, api_name = "val", type_name=type2)
                     ]
@@ -2874,6 +2881,7 @@ def generate_types():
         decl_name = function_name,
         api_name = f'subgroup{intrinsic}',
         return_type = 'UInt32',
+        documentation= 'Returns the ID of the first active thread in the subgroup. If no threads are active, returns 0.',
         parameters = [
         ]
     )
@@ -3288,7 +3296,7 @@ def generate_types():
         fun = Function( 
             decl_name = function_name,
             api_name = f'{intrinsic[0].lower() + intrinsic[1:]}',
-            return_type = type,
+            return_type = 'Void',
             documentation = doc,
             parameters = [
             ]
@@ -3329,7 +3337,7 @@ def generate_types():
         fun = Function( 
             decl_name = function_name,
             api_name = f'{intrinsic[0].lower() + intrinsic[1:]}',
-            return_type = type,
+            return_type = 'Void',
             documentation = doc,
             parameters = [
             ]
@@ -3911,11 +3919,14 @@ def generate_types():
         intrinsic_setup += fun.setup()
         intrinsic_list.append(fun.typed_pair())
         intrinsic_list.append(fun.pair())
-        web_intrinsic = web_intrinsic_set.get(fun.api_name)
-        if web_intrinsic is not None:
-            web_intrinsic.overload.append(fun)
-        else:
-            web_intrinsic_set[fun.api_name] = WebIntrinsic(fun.api_name, fun)
+        if not fun.is_constructor:
+            web_intrinsic = web_intrinsic_set.get(fun.api_name)
+            if web_intrinsic is not None:
+                web_intrinsic.overload.append(fun)
+            else:
+                web_intrinsic_set[fun.api_name] = WebIntrinsic(fun.api_name, fun)
+
+    web_intrinsic_set = dict(sorted(web_intrinsic_set.items(), key=lambda item: item[1].name))
 
     for key, value in web_intrinsic_set.items():
         web_types['builtin_functions'].append(key)
