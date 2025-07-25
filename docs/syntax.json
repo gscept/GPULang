@@ -125,31 +125,5 @@
         "barrier",
         "workgroupBarrier",
         "storageBarrier"
-    ],
-    "annotations": [
-        "@location",
-        "@binding",
-        "@group",
-        "@builtin",
-        "@interpolate",
-        "@invariant",
-        "@vertex",
-        "@fragment",
-        "@compute",
-        "@workgroup_size",
-        "@early_depth_test",
-        "@Mask",
-        "@Override",
-        "@Export"
-    ],
-    "operators": [
-        "+", "-", "*", "/", "%",
-        "=", "+=", "-=", "*=", "/=", "%=",
-        "==", "!=", "<", ">", "<=", ">=",
-        "&&", "||", "!",
-        "&", "|", "^", "~", "<<", ">>",
-        "++", "--",
-        "?", ":",
-        ".", "->", "::"
     ]
 }
