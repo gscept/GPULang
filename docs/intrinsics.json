@@ -1,0 +1,234 @@
+[
+    {
+        "name": "textureSample",
+        "documentation": "Samples a texture at the specified coordinates using the given sampler. Returns the sampled color value as a 4-component vector.",
+        "target_support": [1, 1, 1, 1],
+        "overloads": [
+            {
+                "signature": "textureSample(texture: texture2D, sampler: sampler_state, uv: f32x2) -> f32x4"
+            },
+            {
+                "signature": "textureSample(texture: textureCube, sampler: sampler_state, direction: f32x3) -> f32x4"
+            },
+            {
+                "signature": "textureSample(texture: texture3D, sampler: sampler_state, uvw: f32x3) -> f32x4"
+            }
+        ]
+    },
+    {
+        "name": "textureSampleLod",
+        "documentation": "Samples a texture at the specified coordinates with an explicit level-of-detail (LOD). Useful for sampling specific mipmap levels.",
+        "target_support": [1, 1, 1, 1],
+        "overloads": [
+            {
+                "signature": "textureSampleLod(texture: texture2D, sampler: sampler_state, uv: f32x2, lod: f32) -> f32x4"
+            },
+            {
+                "signature": "textureSampleLod(texture: textureCube, sampler: sampler_state, direction: f32x3, lod: f32) -> f32x4"
+            }
+        ]
+    },
+    {
+        "name": "textureLoad",
+        "documentation": "Loads a texel from a texture at the specified integer coordinates without filtering. Useful for accessing raw texture data.",
+        "target_support": [1, 1, 1, 1],
+        "overloads": [
+            {
+                "signature": "textureLoad(texture: texture2D, coords: i32x2, lod: i32) -> f32x4"
+            },
+            {
+                "signature": "textureLoad(texture: texture2DMS, coords: i32x2, sample: i32) -> f32x4"
+            }
+        ]
+    },
+    {
+        "name": "normalize",
+        "documentation": "Returns a vector in the same direction as the input vector but with unit length. Essential for lighting calculations and vector operations.",
+        "target_support": [1, 1, 1, 1],
+        "overloads": [
+            {
+                "signature": "normalize(v: f32x2) -> f32x2"
+            },
+            {
+                "signature": "normalize(v: f32x3) -> f32x3"
+            },
+            {
+                "signature": "normalize(v: f32x4) -> f32x4"
+            }
+        ]
+    },
+    {
+        "name": "dot",
+        "documentation": "Computes the dot product of two vectors. Returns a scalar value representing the cosine of the angle between the vectors multiplied by their magnitudes.",
+        "target_support": [1, 1, 1, 1],
+        "overloads": [
+            {
+                "signature": "dot(a: f32x2, b: f32x2) -> f32"
+            },
+            {
+                "signature": "dot(a: f32x3, b: f32x3) -> f32"
+            },
+            {
+                "signature": "dot(a: f32x4, b: f32x4) -> f32"
+            }
+        ]
+    },
+    {
+        "name": "cross",
+        "documentation": "Computes the cross product of two 3D vectors. Returns a vector perpendicular to both input vectors, useful for calculating surface normals.",
+        "target_support": [1, 1, 1, 1],
+        "overloads": [
+            {
+                "signature": "cross(a: f32x3, b: f32x3) -> f32x3"
+            }
+        ]
+    },
+    {
+        "name": "reflect",
+        "documentation": "Reflects a vector off a surface with the specified normal. Commonly used for reflection calculations in lighting and mirror effects.",
+        "target_support": [1, 1, 1, 1],
+        "overloads": [
+            {
+                "signature": "reflect(incident: f32x3, normal: f32x3) -> f32x3"
+            }
+        ]
+    },
+    {
+        "name": "refract",
+        "documentation": "Refracts a vector through a surface with the given normal and index of refraction ratio. Used for realistic glass and water effects.",
+        "target_support": [1, 1, 1, 1],
+        "overloads": [
+            {
+                "signature": "refract(incident: f32x3, normal: f32x3, eta: f32) -> f32x3"
+            }
+        ]
+    },
+    {
+        "name": "length",
+        "documentation": "Returns the Euclidean length (magnitude) of a vector. Useful for distance calculations and vector normalization checks.",
+        "target_support": [1, 1, 1, 1],
+        "overloads": [
+            {
+                "signature": "length(v: f32x2) -> f32"
+            },
+            {
+                "signature": "length(v: f32x3) -> f32"
+            },
+            {
+                "signature": "length(v: f32x4) -> f32"
+            }
+        ]
+    },
+    {
+        "name": "distance",
+        "documentation": "Returns the distance between two points represented as vectors. Equivalent to length(a - b).",
+        "target_support": [1, 1, 1, 1],
+        "overloads": [
+            {
+                "signature": "distance(a: f32x2, b: f32x2) -> f32"
+            },
+            {
+                "signature": "distance(a: f32x3, b: f32x3) -> f32"
+            },
+            {
+                "signature": "distance(a: f32x4, b: f32x4) -> f32"
+            }
+        ]
+    },
+    {
+        "name": "mix",
+        "documentation": "Performs linear interpolation between two values. Returns a * (1 - t) + b * t. Essential for smooth transitions and blending operations.",
+        "target_support": [1, 1, 1, 1],
+        "overloads": [
+            {
+                "signature": "mix(a: f32, b: f32, t: f32) -> f32"
+            },
+            {
+                "signature": "mix(a: f32x2, b: f32x2, t: f32) -> f32x2"
+            },
+            {
+                "signature": "mix(a: f32x3, b: f32x3, t: f32) -> f32x3"
+            },
+            {
+                "signature": "mix(a: f32x4, b: f32x4, t: f32) -> f32x4"
+            }
+        ]
+    },
+    {
+        "name": "clamp",
+        "documentation": "Constrains a value to lie between two bounds. Returns min if x < min, max if x > max, otherwise x.",
+        "target_support": [1, 1, 1, 1],
+        "overloads": [
+            {
+                "signature": "clamp(x: f32, min: f32, max: f32) -> f32"
+            },
+            {
+                "signature": "clamp(x: f32x2, min: f32x2, max: f32x2) -> f32x2"
+            },
+            {
+                "signature": "clamp(x: f32x3, min: f32x3, max: f32x3) -> f32x3"
+            },
+            {
+                "signature": "clamp(x: f32x4, min: f32x4, max: f32x4) -> f32x4"
+            }
+        ]
+    },
+    {
+        "name": "smoothstep",
+        "documentation": "Performs smooth Hermite interpolation between 0 and 1 when edge0 < x < edge1. Returns 0 if x <= edge0, 1 if x >= edge1.",
+        "target_support": [1, 1, 1, 1],
+        "overloads": [
+            {
+                "signature": "smoothstep(edge0: f32, edge1: f32, x: f32) -> f32"
+            },
+            {
+                "signature": "smoothstep(edge0: f32x2, edge1: f32x2, x: f32x2) -> f32x2"
+            },
+            {
+                "signature": "smoothstep(edge0: f32x3, edge1: f32x3, x: f32x3) -> f32x3"
+            }
+        ]
+    },
+    {
+        "name": "step",
+        "documentation": "Generates a step function by comparing x to edge. Returns 0.0 if x < edge, otherwise 1.0.",
+        "target_support": [1, 1, 1, 1],
+        "overloads": [
+            {
+                "signature": "step(edge: f32, x: f32) -> f32"
+            },
+            {
+                "signature": "step(edge: f32x2, x: f32x2) -> f32x2"
+            },
+            {
+                "signature": "step(edge: f32x3, x: f32x3) -> f32x3"
+            }
+        ]
+    },
+    {
+        "name": "atomicAdd",
+        "documentation": "Atomically adds a value to a memory location and returns the original value. Essential for thread-safe operations in compute shaders.",
+        "target_support": [1, 1, 0, 0],
+        "overloads": [
+            {
+                "signature": "atomicAdd(mem: *atomic<i32>, value: i32) -> i32"
+            },
+            {
+                "signature": "atomicAdd(mem: *atomic<u32>, value: u32) -> u32"
+            }
+        ]
+    },
+    {
+        "name": "atomicCompareExchange",
+        "documentation": "Atomically compares a value with the contents of a memory location and, if they match, stores a new value. Returns the original value.",
+        "target_support": [1, 1, 0, 0],
+        "overloads": [
+            {
+                "signature": "atomicCompareExchange(mem: *atomic<i32>, compare: i32, value: i32) -> i32"
+            },
+            {
+                "signature": "atomicCompareExchange(mem: *atomic<u32>, compare: u32, value: u32) -> u32"
+            }
+        ]
+    }
+]

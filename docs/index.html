@@ -387,7 +387,7 @@
                 <li><a href="#examples">Examples</a></li>
                 <li><a href="#community">Community</a></li>
             </ul>
-            <a href="#download" class="cta-button">Get Started</a>
+            <a href="intrinsics.html" class="cta-button">Get Started</a>
         </nav>
     </header>
 
@@ -398,8 +398,8 @@
                     <h1>GPULang</h1>
                     <p>A programming language designed for GPU computing and shader development. Write powerful, efficient code that runs blazingly fast on graphics hardware.</p>
                     <div class="hero-buttons">
-                        <a href="#download" class="btn-primary">
-                            <i class="fas fa-download"></i> Download Now
+                        <a href="intrinsics.html" class="btn-primary">
+                            <i class="fas fa-rocket"></i> Get Started
                         </a>
                         <a href="#examples" class="btn-secondary">
                             <i class="fas fa-code"></i> View Examples
@@ -547,29 +547,6 @@ program Render
             </div>
         </section>
 
-        <section class="performance">
-            <div class="container">
-                <h2 class="section-title">Exceptional Performance</h2>
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <span class="stat-number">10x</span>
-                        <div class="stat-label">Faster Compilation</div>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">99%</span>
-                        <div class="stat-label">GPU Utilization</div>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">50%</span>
-                        <div class="stat-label">Less Code</div>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">Zero</span>
-                        <div class="stat-label">Runtime Overhead</div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
     <footer>
@@ -631,10 +608,10 @@ program Render
                 pattern: /"(?:\\.|[^\\"\r\n])*"/,
                 greedy: true
             },
-            'keyword': /\b(?:struct|uniform|sampler_state|render_state|entry_point|program|binding|in|out|const|if|else|while|for|return|discard|void|f32|f32x2|f32x3|f32x4|u32|i32|bool)\b/,
+            'keyword': /\b(?:struct|uniform|sampler_state|render_state|entry_point|program|binding|in|out|const|if|else|while|for|return|discard)\b/,
             'function': /\b(?:textureSample|vertexExportCoordinates|pixelExportColor|EncodeHDR|BillboardVS|BillboardPS)\b/,
             'variable': /\b[a-zA-Z_]\w*\b/,
-            'type': /\b(?:f32|f32x2|f32x3|f32x4|u32|i32|bool)\b/,
+            'builtin': /\b(?:f32|f32x2|f32x4x4|f32x3|f32x4|u32|i32|bool|texture2D)\b/,
             'variable': /\b(?:VertexShader|PixelShader|RenderState)\b/,
             'annotation': /@\w+/,
             'number': /\b0x[\da-f]+\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[+-]?\d+)?[fl]?\b/i,

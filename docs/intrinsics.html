@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPULang Intrinsics - Built-in Functions Reference</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #c084fc, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #c084fc;
+        }
+
+        .back-button {
+            background: linear-gradient(45deg, #c084fc, #f472b6);
+            color: #0f0f23;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(192, 132, 252, 0.3);
+        }
+
+        /* Main Content */
+        main {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .page-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffffff, #c084fc, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            font-size: 1.3rem;
+            color: #b0b0b0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Search and Filter */
+        .controls {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 3rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            background: rgba(0, 0, 0, 0.3);
+            color: #ffffff;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #c084fc;
+        }
+
+        .search-box::placeholder {
+            color: #888;
+        }
+
+        .filter-section {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-label {
+            color: #c084fc;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .target-filter {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .target-chip {
+            padding: 0.5rem 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            background: transparent;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .target-chip.active {
+            background: linear-gradient(45deg, #c084fc, #f472b6);
+            color: #0f0f23;
+            border-color: transparent;
+        }
+
+        .target-chip:hover:not(.active) {
+            border-color: #c084fc;
+            background: rgba(192, 132, 252, 0.1);
+        }
+
+        /* Intrinsics Grid */
+        .intrinsics-grid {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .intrinsic-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .intrinsic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(192, 132, 252, 0.2);
+            border-color: rgba(192, 132, 252, 0.3);
+        }
+
+        .intrinsic-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #c084fc;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .intrinsic-icon {
+            color: #f472b6;
+        }
+
+        .intrinsic-description {
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .overloads-section {
+            margin-top: 1.5rem;
+        }
+
+        .overloads-title {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .overload-item {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .overload-item pre {
+            margin: 0;
+            padding: 0.6rem;
+            background: rgba(0, 0, 0, 0.4) !important;
+            border-radius: 8px;
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .overload-item code {
+            font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* Custom syntax highlighting colors for GPULang */
+        .token.keyword {
+            color: #c678dd;
+            font-weight: bold;
+        }
+
+        .token.builtin,
+        .token.type {
+            color: #e06c75;
+        }
+
+        .token.function,
+        .token.builtin-function {
+            color: #61afef;
+        }
+
+        .token.class-name,
+        .token.builtin-variable {
+            color: #e5c07b;
+        }
+
+        .token.constant,
+        .token.builtin-constant {
+            color: #d19a66;
+        }
+
+        .token.string {
+            color: #98c379;
+        }
+
+        .token.comment {
+            color: #5c6370;
+            font-style: italic;
+        }
+
+        .token.number {
+            color: #d19a66;
+        }
+
+        .token.operator {
+            color: #56b6c2;
+        }
+
+        .token.punctuation {
+            color: #abb2bf;
+        }
+
+        .token.annotation,
+        .token.important {
+            color: #f472b6;
+            font-weight: bold;
+        }
+
+        .target-support {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .target-badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .target-supported {
+            background: linear-gradient(45deg, #00ff88, #00d4ff);
+            color: #0f0f23;
+        }
+
+        .target-unsupported {
+            background: rgba(255, 95, 87, 0.2);
+            color: #ff5f57;
+            border: 1px solid rgba(255, 95, 87, 0.3);
+        }
+
+        /* Loading and Error States */
+        .loading {
+            text-align: center;
+            padding: 4rem 0;
+            color: #b0b0b0;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(192, 132, 252, 0.3);
+            border-top: 3px solid #c084fc;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            text-align: center;
+            padding: 4rem 0;
+            color: #ff5f57;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 4rem 0;
+            color: #b0b0b0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .filter-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .target-filter {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">GPULang</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#docs">Documentation</a></li>
+                <li><a href="#examples">Examples</a></li>
+                <li><a href="#community">Community</a></li>
+            </ul>
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">Built-in Functions</h1>
+                <p class="page-subtitle">
+                    Comprehensive reference for all GPULang intrinsic functions and their target platform support
+                </p>
+            </div>
+
+            <div class="controls">
+                <input 
+                    type="text" 
+                    id="searchBox" 
+                    class="search-box" 
+                    placeholder="Search intrinsics by name or description..."
+                >
+                
+                <div class="filter-section">
+                    <span class="filter-label">Filter by target:</span>
+                    <div class="target-filter" id="targetFilter">
+                        <button class="target-chip active" data-target="all">All</button>
+                        <button class="target-chip" data-target="vulkan">Vulkan</button>
+                        <button class="target-chip" data-target="directx">DirectX</button>
+                        <button class="target-chip" data-target="metal">Metal</button>
+                        <button class="target-chip" data-target="webgpu">WebGPU</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="intrinsicsContainer">
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                    <p>Loading intrinsics...</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script>
+        // Target platform mapping
+        const targetNames = {
+            0: 'Vulkan',
+            1: 'DirectX',
+            2: 'Metal',
+            3: 'WebGPU'
+        };
+
+        let allIntrinsics = [];
+        let filteredIntrinsics = [];
+        let currentTargetFilter = 'all';
+        let syntaxData = null;
+
+        // Load syntax data and create custom Prism language
+        async function loadSyntaxData() {
+            try {
+                console.log('Attempting to load syntax.json...');
+                const response = await fetch('syntax.json');
+                console.log('Fetch response status:', response.status);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                syntaxData = await response.json();
+                console.log('Syntax data loaded successfully:', syntaxData);
+                createGPULangPrismLanguage();
+            } catch (error) {
+                console.error('Error loading syntax data:', error);
+                console.log('Falling back to embedded syntax data...');
+                // Fallback to embedded syntax data
+                syntaxData = {
+                    "keywords": [
+                        "struct", "uniform", "sampler_state", "render_state", "entry_point", "program", 
+                        "binding", "in", "out", "const", "if", "else", "while", "for", "return", 
+                        "discard", "void", "let", "var", "function"
+                    ],
+                    "types": [
+                        "f32", "f32x2", "f32x3", "f32x4", "f32x2x2", "f32x3x3", "f32x4x4",
+                        "i32", "i32x2", "i32x3", "i32x4", "u32", "u32x2", "u32x3", "u32x4",
+                        "bool", "texture1D", "texture2D", "texture3D", "textureCube", "sampler", "atomic"
+                    ],
+                    "builtin_functions": [
+                        "textureSample", "textureSampleLod", "textureLoad", "normalize", "dot", "cross",
+                        "reflect", "refract", "length", "distance", "mix", "clamp", "smoothstep", "step",
+                        "atomicAdd", "atomicCompareExchange", "floor", "ceil", "abs", "min", "max"
+                    ],
+                    "builtin_variables": [
+                        "ViewConstants", "ObjectUniforms", "VertexShader", "PixelShader", "RenderState"
+                    ],
+                    "builtin_constants": [
+                        "CullFace", "None", "BlendFactor", "CompareFunction"
+                    ],
+                    "annotations": [
+                        "@location", "@binding", "@builtin", "@Mask"
+                    ],
+                    "operators": ["+", "-", "*", "/", "=", "==", "!=", "<", ">", "<=", ">=", "&&", "||", "!"]
+                };
+                console.log('Using embedded syntax data');
+                createGPULangPrismLanguage();
+            }
+        }
+
+        // Create dynamic Prism language definition from loaded syntax data
+        function createGPULangPrismLanguage() {
+            console.log('Creating GPULang Prism language...');
+            
+            if (!syntaxData) {
+                console.warn('No syntax data available, using basic highlighting');
+                createBasicGPULangPrismLanguage();
+                return;
+            }
+
+            console.log('Syntax data available, creating dynamic language definition');
+
+            // Create regex patterns from the loaded data
+            const keywordPattern = new RegExp(`\\b(?:${syntaxData.keywords.join('|')})\\b`);
+            const typePattern = new RegExp(`\\b(?:${syntaxData.types.join('|')})\\b`);
+            const builtinFunctionPattern = new RegExp(`\\b(?:${syntaxData.builtin_functions.join('|')})\\b`);
+            const builtinVariablePattern = new RegExp(`\\b(?:${syntaxData.builtin_variables.join('|')})\\b`);
+            const builtinConstantPattern = new RegExp(`\\b(?:${syntaxData.builtin_constants.join('|')})\\b`);
+            const annotationPattern = new RegExp(`(?:${syntaxData.annotations.map(a => a.replace('@', '\\@')).join('|')})\\w*`);
+
+            // Define the GPULang language for Prism
+            Prism.languages.gpulang = {
+                'comment': [
+                    {
+                        pattern: /(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/,
+                        lookbehind: true,
+                        greedy: true
+                    },
+                    {
+                        pattern: /(^|[^\\:])\/\/.*/,
+                        lookbehind: true,
+                        greedy: true
+                    }
+                ],
+                'string': {
+                    pattern: /"(?:\\.|[^\\"\r\n])*"/,
+                    greedy: true
+                },
+                'annotation': {
+                    pattern: annotationPattern,
+                    alias: 'important'
+                },
+                'keyword': keywordPattern,
+                'builtin-function': {
+                    pattern: builtinFunctionPattern,
+                    alias: 'function'
+                },
+                'builtin-variable': {
+                    pattern: builtinVariablePattern,
+                    alias: 'class-name'
+                },
+                'builtin-constant': {
+                    pattern: builtinConstantPattern,
+                    alias: 'constant'
+                },
+                'type': {
+                    pattern: typePattern,
+                    alias: 'builtin'
+                },
+                'number': /\b0x[\da-f]+\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[+-]?\d+)?[fl]?\b/i,
+                'operator': new RegExp(syntaxData.operators.map(op => 
+                    op.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+                ).join('|')),
+                'punctuation': /[{}[\];(),.:]/
+            };
+
+            // Register alternative names
+            Prism.languages.gpul = Prism.languages.gpulang;
+            console.log('GPULang Prism language created successfully');
+        }
+
+        // Fallback basic syntax highlighting
+        function createBasicGPULangPrismLanguage() {
+            Prism.languages.gpulang = {
+                'comment': [
+                    {
+                        pattern: /(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/,
+                        lookbehind: true,
+                        greedy: true
+                    },
+                    {
+                        pattern: /(^|[^\\:])\/\/.*/,
+                        lookbehind: true,
+                        greedy: true
+                    }
+                ],
+                'string': {
+                    pattern: /"(?:\\.|[^\\"\r\n])*"/,
+                    greedy: true
+                },
+                'keyword': /\b(?:struct|uniform|sampler_state|render_state|entry_point|program|binding|in|out|const|if|else|while|for|return|discard|void|let)\b/,
+                'builtin': /\b(?:f32|f32x2|f32x3|f32x4|i32|u32|bool|texture2D|textureCube)\b/,
+                'function': /\b(?:textureSample|normalize|dot|cross|length|mix|clamp)\b/,
+                'annotation': /@\w+/,
+                'number': /\b0x[\da-f]+\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[+-]?\d+)?[fl]?\b/i,
+                'operator': /[+\-*\/=<>!&|^%]+/,
+                'punctuation': /[{}[\];(),.:]/
+            };
+
+            Prism.languages.gpul = Prism.languages.gpulang;
+        }
+
+        // Load and display intrinsics
+        async function loadIntrinsics() {
+            try {
+                console.log('Starting to load data...');
+                
+                // Load both syntax data and intrinsics data
+                await loadSyntaxData();
+                console.log('Syntax data loading completed');
+                
+                console.log('Loading intrinsics.json...');
+                const response = await fetch('intrinsics.json');
+                console.log('Intrinsics fetch response status:', response.status);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                allIntrinsics = await response.json();
+                console.log('Intrinsics data loaded, count:', allIntrinsics.length);
+                
+                filteredIntrinsics = [...allIntrinsics];
+                displayIntrinsics(filteredIntrinsics);
+            } catch (error) {
+                console.error('Error loading intrinsics:', error);
+                showError('Failed to load intrinsics data. Please check that intrinsics.json exists and the page is served over HTTP/HTTPS.');
+            }
+        }
+
+        // Display intrinsics in the grid
+        function displayIntrinsics(intrinsics) {
+            const container = document.getElementById('intrinsicsContainer');
+            
+            if (intrinsics.length === 0) {
+                container.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                        <h3>No intrinsics found</h3>
+                        <p>Try adjusting your search or filter criteria.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const intrinsicsHTML = intrinsics.map(intrinsic => {
+                // Create target support badges for the intrinsic
+                const targetSupport = intrinsic.target_support.map((support, index) => {
+                    const targetName = targetNames[index];
+                    const isSupported = support === 1;
+                    return `
+                        <span class="target-badge ${isSupported ? 'target-supported' : 'target-unsupported'}">
+                            ${targetName}
+                        </span>
+                    `;
+                }).join('');
+
+                const overloadsHTML = intrinsic.overloads.map(overload => {
+                    return `
+                        <div class="overload-item">
+                            <pre><code class="language-gpulang">${escapeHtml(overload.signature)}</code></pre>
+                        </div>
+                    `;
+                }).join('');
+
+                return `
+                    <div class="intrinsic-card">
+                        <div class="intrinsic-name">
+                            <i class="fas fa-function intrinsic-icon"></i>
+                            ${escapeHtml(intrinsic.name)}
+                        </div>
+                        <div class="intrinsic-description">
+                            ${escapeHtml(intrinsic.documentation)}
+                        </div>
+                        <div class="target-support" style="margin-bottom: 1.5rem;">
+                            ${targetSupport}
+                        </div>
+                        <div class="overloads-section">
+                            <div class="overloads-title">
+                                <i class="fas fa-code"></i>
+                                Overloads (${intrinsic.overloads.length})
+                            </div>
+                            ${overloadsHTML}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = `<div class="intrinsics-grid">${intrinsicsHTML}</div>`;
+            
+            // Apply syntax highlighting to all code blocks
+            Prism.highlightAll();
+        }
+
+        // Show error message
+        function showError(message) {
+            const container = document.getElementById('intrinsicsContainer');
+            container.innerHTML = `
+                <div class="error">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <h3>Error Loading Data</h3>
+                    <p>${escapeHtml(message)}</p>
+                </div>
+            `;
+        }
+
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Filter intrinsics based on search and target
+        function filterIntrinsics() {
+            const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+            
+            filteredIntrinsics = allIntrinsics.filter(intrinsic => {
+                // Text search
+                const matchesSearch = searchTerm === '' || 
+                    intrinsic.name.toLowerCase().includes(searchTerm) ||
+                    intrinsic.documentation.toLowerCase().includes(searchTerm);
+
+                // Target filter
+                let matchesTarget = currentTargetFilter === 'all';
+                if (!matchesTarget && currentTargetFilter !== 'all') {
+                    const targetIndex = {
+                        'vulkan': 0,
+                        'directx': 1,
+                        'metal': 2,
+                        'webgpu': 3
+                    }[currentTargetFilter];
+
+                    // Check target support at the intrinsic level
+                    matchesTarget = intrinsic.target_support[targetIndex] === 1;
+                }
+
+                return matchesSearch && matchesTarget;
+            });
+
+            displayIntrinsics(filteredIntrinsics);
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load intrinsics data
+            loadIntrinsics();
+
+            // Search functionality
+            const searchBox = document.getElementById('searchBox');
+            searchBox.addEventListener('input', filterIntrinsics);
+
+            // Target filter functionality
+            const targetFilter = document.getElementById('targetFilter');
+            targetFilter.addEventListener('click', function(e) {
+                if (e.target.classList.contains('target-chip')) {
+                    // Update active state
+                    targetFilter.querySelectorAll('.target-chip').forEach(chip => {
+                        chip.classList.remove('active');
+                    });
+                    e.target.classList.add('active');
+
+                    // Update filter and re-filter
+                    currentTargetFilter = e.target.dataset.target;
+                    filterIntrinsics();
+                }
+            });
+
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.background = 'rgba(15, 15, 35, 0.98)';
+                } else {
+                    header.style.background = 'rgba(15, 15, 35, 0.95)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
