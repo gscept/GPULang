@@ -4,91 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GPULang Documentation</title>
+    <link href="styles.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
-            color: #ffffff;
-            line-height: 1.6;
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(15, 15, 35, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #c084fc, #f472b6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: #c084fc;
-        }
-
-        .back-button {
-            background: linear-gradient(45deg, #c084fc, #f472b6);
-            color: #0f0f23;
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 50px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .back-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(192, 132, 252, 0.3);
-        }
-
-        /* Main Content */
+        /* Main Content - Page Specific */
         .main-content {
             padding-top: 120px;
             padding-bottom: 4rem;
@@ -100,68 +19,12 @@
             margin-bottom: 4rem;
         }
 
-        .page-title {
-            font-size: 3.5rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #ffffff, #c084fc, #f472b6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .page-subtitle {
-            font-size: 1.3rem;
-            color: #b0b0b0;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
         /* Documentation Grid */
         .docs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
-        }
-
-        .doc-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2.5rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .doc-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(192, 132, 252, 0.2);
-            border-color: rgba(192, 132, 252, 0.3);
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .doc-icon {
-            font-size: 3rem;
-            color: #c084fc;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .doc-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: #ffffff;
-        }
-
-        .doc-card p {
-            color: #b0b0b0;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
         }
 
         .doc-meta {
@@ -240,14 +103,6 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .page-title {
-                font-size: 2.5rem;
-            }
-            
             .docs-grid {
                 grid-template-columns: 1fr;
             }

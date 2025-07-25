@@ -1,5 +1,6 @@
 
 import os
+import json
 from math import trunc
 
 os.makedirs('../generated', exist_ok=True)
@@ -608,7 +609,7 @@ def generate_types():
     functions = []
     type_list = []
     web_types = {
-        "keywords": ["const", "var", "uniform", "mutable", "sampled", "literal", "in", "out", "return", "break", "discard", "ray_ignore", "for", "while", "if", "else", "switch", "case", "struct", "enum", "generate", "#include", "#pragma"],
+        "keywords": ["const", "var", "uniform", "mutable", "sampled", "literal", "in", "out", "return", "break", "discard", "ray_ignore", "for", "while", "if", "else", "switch", "case", "struct", "render_state", "sampler_state", "program", "entry_point", "binding", "group", "enum", "generate", "#include", "#pragma"],
         "types": [],
         "builtin_functions": [],
     }
@@ -624,7 +625,7 @@ def generate_types():
             spirv_type_construction = ''
             builtin_type = ScalarType(name=type_name, base_type=type, column_size=size, row_size=1)
             declaration_string += builtin_type.declaration()
-            web_types["types"].append(data_type_name)
+            web_types['types'].append(data_type_name)
 
             intrinsic_list.append(IntrinsicPair(decl_name=f'{type_name}Type', api_name=data_type_name))
             namer.names.append(NamerEntry(type_name, data_type_name))
@@ -1010,12 +1011,11 @@ def generate_types():
                 data_type_name = f'{data_type_mapping[type]}x{row_size}x{column_size}'
                 intrinsic_list.append(IntrinsicPair(decl_name=f'{type_name}Type', api_name=data_type_name))
                 namer.names.append(NamerEntry(type_name, data_type_name))
-            
+                web_types['types'].append(data_type_name)
                 setup_string = ""
                 
                 builtin_type = ScalarType(name=type_name, base_type=type, column_size=column_size, row_size=row_size)
                 declaration_string += builtin_type.declaration()
-                web_types["types"].append(data_type_name)
 
                 vector_ctor_name = f'{type_name}_{type}_{column_size}_ctor'
 
@@ -1221,51 +1221,42 @@ def generate_types():
     texture_array = ['Array', 'Array', '', 'Array']
     for dim, ms, array in zip(texture_dimensions, texture_multisampling, texture_array):
 
-        type = Type(f'Texture{dim}', 'TextureCategory', f'Texture{dim}')
-        web_types["types"].append(type.web_type())
+        type = Type(f'Texture{dim}', 'TextureCategory', f'Texture{dim}', f'texture{dim}')
         type_list.append(type)
 
         if ms : 
-            type = Type(f'Texture{dim}MS', 'TextureCategory', f'Texture{dim}')
-            web_types["types"].append(type.web_type())
+            type = Type(f'Texture{dim}MS', 'TextureCategory', f'Texture{dim}', f'texture{dim}MS')
             type_list.append(type)
 
             if array:
-                type = Type(f'Texture{dim}MSArray', 'TextureCategory', f'Texture{dim}')
+                type = Type(f'Texture{dim}MSArray', 'TextureCategory', f'Texture{dim}', f'texture{dim}MSArray')
                 type_list.append(type)
-                web_types["types"].append(type.web_type())
 
         if array:
-            type = Type(f'Texture{dim}Array', 'TextureCategory', f'Texture{dim}')
+            type = Type(f'Texture{dim}Array', 'TextureCategory', f'Texture{dim}', f'texture{dim}Array')
             type_list.append(type)
-            web_types["types"].append(type.web_type())
             
 
     # Pixel cache types
 
-    type = Type('PixelCache', 'PixelCacheCategory', 'PixelCache')
+    type = Type('PixelCache', 'PixelCacheCategory', 'PixelCache', 'pixelCache')
     type_list.append(type)
-    web_types["types"].append(type.web_type())
 
-    type = Type('PixelCacheMS', 'PixelCacheCategory', 'PixelCache')
+    type = Type('PixelCacheMS', 'PixelCacheCategory', 'PixelCacheMS', 'pixelCacheMS')
     type_list.append(type)
-    web_types["types"].append(type.web_type())
 
-    type = Type('Sampler', 'SamplerCategory', 'Sampler')
+    type = Type('Sampler', 'SamplerCategory', 'Sampler', 'sampler')
     type_list.append(type)
-    web_types["types"].append(type.web_type())
 
     type = Type('FunctionPtr', api_name='Function')
     type_list.append(type)
     # Don't add function to the web docs
 
-    type = Type('AccelerationStructure', 'AccelerationStructureCategory', 'AccelerationStructure')
+    type = Type('AccelerationStructure', 'AccelerationStructureCategory', 'AccelerationStructure', 'accelerationStructure')
     type_list.append(type)
-    web_types["types"].append(type.web_type())
 
     type = Type('Void', 'VoidCategory', 'Void')
     type_list.append(type)
-    web_types["types"].append(type.web_type())
 
     class EnumMember:
         def __init__(self, decl_name, api_name=None, value=None):
@@ -1396,7 +1387,6 @@ def generate_types():
         ]
     )
     enums.append(enum)
-    web_types["types"].append(enum.web_type())
 
     enum = Enumeration(
         name = "StencilOp",
@@ -1413,7 +1403,6 @@ def generate_types():
         ]
     )
     enums.append(enum)
-    web_types["types"].append(enum.web_type())
 
     enum = Enumeration(
         name = 'ExecutionScope',
@@ -1428,7 +1417,6 @@ def generate_types():
         ]
     )
     enums.append(enum)
-    web_types["types"].append(enum.web_type())
 
     enum = Enumeration(
         name = 'MemorySemantics',
@@ -1442,7 +1430,6 @@ def generate_types():
         ]
     )
     enums.append(enum)
-    web_types["types"].append(enum.web_type())
 
     enum = Enumeration(
         name = 'PolygonMode',
@@ -1454,7 +1441,6 @@ def generate_types():
         ]
     )
     enums.append(enum)
-    web_types["types"].append(enum.web_type())
 
     enum = Enumeration(
         name = 'CullFace',
@@ -1467,7 +1453,6 @@ def generate_types():
         ]
     )
     enums.append(enum)
-    web_types["types"].append(enum.web_type())
 
     enum = Enumeration(
         name = 'WindingOrder',
@@ -1478,7 +1463,6 @@ def generate_types():
         ]
     )
     enums.append(enum)
-    web_types["types"].append(enum.web_type())
 
     enum = Enumeration(
         name = 'LogicOp',
@@ -1503,7 +1487,6 @@ def generate_types():
         ]
     )
     enums.append(enum)
-    web_types["types"].append(enum.web_type())
 
     enum = Enumeration(
         name = 'BlendFactor',
@@ -1526,7 +1509,6 @@ def generate_types():
         ]
     )
     enums.append(enum)
-    web_types["types"].append(enum.web_type())
 
     enum = Enumeration(
         name = 'BlendOperation',
@@ -1540,7 +1522,6 @@ def generate_types():
         ]
     )
     enums.append(enum)
-    web_types["types"].append(enum.web_type())
 
     enum = Enumeration(
         name = 'BlendColorMask',
@@ -1554,7 +1535,6 @@ def generate_types():
         ]
     )
     enums.append(enum)
-    web_types["types"].append(enum.web_type())
 
     enum = Enumeration(
         name = 'FilterMode',
@@ -1574,7 +1554,6 @@ def generate_types():
         ]
     )
     enums.append(enum)
-    web_types["types"].append(enum.web_type())
 
     enum = Enumeration(
         name = 'AddressMode',
@@ -1587,7 +1566,6 @@ def generate_types():
         ]
     )
     enums.append(enum)
-    web_types["types"].append(enum.web_type())
 
     enum = Enumeration(
         name = 'Color',
@@ -1599,7 +1577,6 @@ def generate_types():
         ]
     )
     enums.append(enum)
-    web_types["types"].append(enum.web_type())
 
     class StateMember:
         def __init__(self, name, data_type, array_size=1):
@@ -1672,7 +1649,6 @@ def generate_types():
         ]
     )
     states.append(state)
-    web_types["types"].append(state.web_type())
 
     state = State(
         name = 'RenderState',
@@ -1709,7 +1685,6 @@ def generate_types():
         ]
     )
     states.append(state)
-    web_types["types"].append(state.web_type())
 
     state = State(
         name = 'SamplerState',
@@ -1734,7 +1709,6 @@ def generate_types():
         ]
     )
     states.append(state)
-    web_types["types"].append(state.web_type())
 
     state = State(
         name = 'Program',
@@ -1757,7 +1731,6 @@ def generate_types():
         ]
     )
     states.append(state)
-    web_types["types"].append(state.web_type())
 
     source_file.write(namer.definition())
     source_file.write('} // namespace GPULang\n\n')
@@ -1779,15 +1752,18 @@ def generate_types():
         declaration_string += type.declaration()
         definition_string += type.definition()
         intrinsic_list.append(type.pair())
+        web_types['types'].append(type.api_name if type.api_name is not None else type.name)
 
     for enum in enums:
         declaration_string += enum.declaration()
         definition_string += enum.definition()
         intrinsic_list.extend(enum.pairs())
+        web_types['types'].append(enum.name)
 
     for state in states:
         declaration_string += state.declaration()
         definition_string += state.definition()
+        web_types['types'].append(state.name)
         
     header_file.write(declaration_string[0:-1] + '\n')
     header_file.write("\n")
@@ -2530,8 +2506,10 @@ def generate_types():
             decl_name = function_name,
             api_name = f'vertex{intrinsic}',
             return_type = 'UInt32',
+            documentation = doc,
             parameters = [
-            ]
+            ],
+            
         )
         functions.append(fun)
 
@@ -2635,6 +2613,7 @@ def generate_types():
             decl_name = function_name,
             api_name = f'geometry{intrinsic}',
             return_type = 'Void',
+            documentation=doc,
             parameters = [
             ]
         )
@@ -3919,12 +3898,55 @@ def generate_types():
     intrinsic_decls = ''
     intrinsic_defs = ''
     intrinsic_setup = ''
+    class WebIntrinsic:
+        def __init__(self, name, initial_function):
+            self.name = name
+            self.overload = [initial_function]
+
+    web_intrinsic_list = []
+    web_intrinsic_set = dict()
     for fun in functions:
         intrinsic_decls += fun.declaration()
         intrinsic_defs += fun.definition()
         intrinsic_setup += fun.setup()
         intrinsic_list.append(fun.typed_pair())
         intrinsic_list.append(fun.pair())
+        web_intrinsic = web_intrinsic_set.get(fun.api_name)
+        if web_intrinsic is not None:
+            web_intrinsic.overload.append(fun)
+        else:
+            web_intrinsic_set[fun.api_name] = WebIntrinsic(fun.api_name, fun)
+
+    for key, value in web_intrinsic_set.items():
+        web_types['builtin_functions'].append(key)
+        overloads = []
+        for overload in value.overload:
+            params = []
+            for param in overload.parameters:
+                param_string = ''
+                if param.uniform:
+                    param_string += 'uniform '
+                if param.pointer:
+                    param_string += '*'
+                if param.literal:
+                    param_string += 'literal '
+                if param.mutable:
+                    param_string += 'mutable '
+                if param.sampled:
+                    param_string += 'sampled '
+                
+                if param.type_name in data_type_mapping:
+                    param_string += data_type_mapping[param.type_name]
+                else:
+                    param_string += param.type_name
+                params.append(param_string)
+            overloads.append({ "signature": f'{overload.api_name}({", ".join(params)}) {data_type_mapping[overload.return_type]}' })
+        web_intrinsic_list.append({
+            "name": key,
+            "documentation": value.overload[0].documentation,
+            "target_support": [1,1,1,1],
+            "overloads": overloads
+        })
     intrinsics_header.write(intrinsic_decls)
     intrinsics_header.write('void SetupIntrinsics();\n\n')
 
@@ -3955,7 +3977,13 @@ def generate_types():
 
     intrinsics_source.write('} // namespace GPULang\n')
 
+    web_syntax = open('../../../docs/syntax.json', 'w')
+    web_syntax.write(json.dumps(web_types, indent=4))
+    web_syntax.close()
 
+    web_intrinsics = open('../../../docs/intrinsics.json', 'w')
+    web_intrinsics.write(json.dumps(web_intrinsic_list, indent=4))
+    web_intrinsics.close()
 
 
 generate_types()

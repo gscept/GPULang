@@ -26528,7 +26528,7 @@ PixelCacheMS::PixelCacheMS()
 {
     this->name = "pixelCacheMS"_c;
     this->category = Type::PixelCacheCategory;
-    this->baseType = TypeCode::PixelCache;
+    this->baseType = TypeCode::PixelCacheMS;
     this->builtin = true;
 };
 PixelCacheMS PixelCacheMSType;

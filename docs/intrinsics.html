@@ -4,89 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GPULang Intrinsics - Built-in Functions Reference</title>
+    <link href="styles.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
-            color: #ffffff;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(15, 15, 35, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #c084fc, #f472b6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none;
-        }        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: #c084fc;
-        }
-
-        .back-button {
-            background: linear-gradient(45deg, #c084fc, #f472b6);
-            color: #0f0f23;
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 50px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .back-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(192, 132, 252, 0.3);
-        }
-
-        /* Main Content */
+        /* Main Content - Page Specific */
         main {
             padding-top: 120px;
             min-height: 100vh;
@@ -95,23 +17,6 @@
         .page-header {
             text-align: center;
             padding: 4rem 0;
-        }
-
-        .page-title {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: bold;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #ffffff, #c084fc, #f472b6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .page-subtitle {
-            font-size: 1.3rem;
-            color: #b0b0b0;
-            max-width: 600px;
-            margin: 0 auto;
         }
 
         /* Search and Filter */
@@ -193,21 +98,6 @@
             margin-bottom: 4rem;
         }
 
-        .intrinsic-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .intrinsic-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(192, 132, 252, 0.2);
-            border-color: rgba(192, 132, 252, 0.3);
-        }
-
         .intrinsic-name {
             font-size: 1.8rem;
             font-weight: bold;
@@ -239,82 +129,61 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0.5rem;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .overloads-title:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .overloads-toggle {
+            margin-left: auto;
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+            transform: rotate(-90deg);
+        }
+
+        .overloads-toggle.expanded {
+            transform: rotate(0deg);
+        }
+
+        .overloads-content {
+            transition: all 0.3s ease;
+            overflow: hidden;
+            max-height: 0;
+            margin-bottom: 0;
+        }
+
+        .overloads-content.expanded {
+            max-height: none;
+            margin-bottom: 1rem;
         }
 
         .overload-item {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 0;
             margin-bottom: 0.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
         }
 
         .overload-item pre {
             margin: 0;
-            padding: 0.6rem;
-            background: rgba(0, 0, 0, 0.4) !important;
+            padding: 0.8rem;
+            background: transparent !important;
             border-radius: 8px;
             overflow-x: auto;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: none;
         }
 
         .overload-item code {
             font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
             font-size: 0.9rem;
             line-height: 1.4;
-        }
-
-        /* Custom syntax highlighting colors for GPULang */
-        .token.keyword {
-            color: #c678dd;
-            font-weight: bold;
-        }
-
-        .token.builtin,
-        .token.type {
-            color: #e06c75;
-        }
-
-        .token.function,
-        .token.builtin-function {
-            color: #61afef;
-        }
-
-        .token.class-name,
-        .token.builtin-variable {
-            color: #e5c07b;
-        }
-
-        .token.constant,
-        .token.builtin-constant {
-            color: #d19a66;
-        }
-
-        .token.string {
-            color: #98c379;
-        }
-
-        .token.comment {
-            color: #5c6370;
-            font-style: italic;
-        }
-
-        .token.number {
-            color: #d19a66;
-        }
-
-        .token.operator {
-            color: #56b6c2;
-        }
-
-        .token.punctuation {
-            color: #abb2bf;
-        }
-
-        .token.annotation,
-        .token.important {
-            color: #f472b6;
-            font-weight: bold;
         }
 
         .target-support {
@@ -341,46 +210,138 @@
             border: 1px solid rgba(255, 95, 87, 0.3);
         }
 
-        /* Loading and Error States */
-        .loading {
-            text-align: center;
-            padding: 4rem 0;
+        /* Table of Contents */
+        .toc-container {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 280px;
+            max-height: 70vh;
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            z-index: 100;
+            overflow-y: auto;
+            transition: all 0.3s ease;
+        }
+
+        .toc-container.hidden {
+            transform: translateY(-50%) translateX(-100%);
+            opacity: 0;
+        }
+
+        /* Custom scrollbar styling for TOC - Thinner than site-wide */
+        .toc-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .toc-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+        }
+
+        .toc-container::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #c084fc, #f472b6);
+            border-radius: 3px;
+            transition: background 0.3s ease;
+        }
+
+        .toc-container::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #a855f7, #ec4899);
+        }
+
+        /* Firefox scrollbar styling for TOC */
+        .toc-container {
+            scrollbar-width: thin;
+            scrollbar-color: #c084fc rgba(255, 255, 255, 0.05);
+        }
+
+        .toc-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .toc-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #c084fc;
+        }
+
+        .toc-toggle {
+            background: none;
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 0.25rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .toc-toggle:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .toc-category {
+            margin-bottom: 1rem;
+        }
+
+        .toc-category-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #f472b6;
+            margin-bottom: 0.5rem;
+            padding: 0.3rem 0;
+            border-bottom: 1px solid rgba(244, 114, 182, 0.2);
+        }
+
+        .toc-items {
+            list-style: none;
+            margin-left: 0.5rem;
+        }
+
+        .toc-item {
+            margin-bottom: 0.3rem;
+        }
+
+        .toc-link {
             color: #b0b0b0;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+            display: block;
+            padding: 0.2rem 0;
         }
 
-        .loading-spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(192, 132, 252, 0.3);
-            border-top: 3px solid #c084fc;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1rem;
+        .toc-link:hover {
+            color: #c084fc;
+            text-decoration: none;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .toc-link.active {
+            color: #c084fc;
+            font-weight: 600;
         }
 
-        .error {
-            text-align: center;
-            padding: 4rem 0;
-            color: #ff5f57;
+        /* Content wrapper for TOC functionality */
+        .content-wrapper {
+            margin-left: 320px;
+            transition: margin-left 0.3s ease;
         }
 
-        .no-results {
-            text-align: center;
-            padding: 4rem 0;
-            color: #b0b0b0;
+        .content-wrapper.toc-hidden {
+            margin-left: 0;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
             .filter-section {
                 flex-direction: column;
                 align-items: flex-start;
@@ -388,6 +349,24 @@
             
             .target-filter {
                 width: 100%;
+            }
+
+            .toc-container {
+                display: none;
+            }
+
+            .content-wrapper {
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 1400px) {
+            .toc-container {
+                width: 250px;
+            }
+
+            .content-wrapper {
+                margin-left: 270px;
             }
         }
     </style>
@@ -409,13 +388,27 @@
     </header>
 
     <main>
-        <div class="container">
-            <div class="page-header">
-                <h1 class="page-title">Built-in Functions</h1>
-                <p class="page-subtitle">
-                    Comprehensive reference for all GPULang intrinsic functions and their target platform support
-                </p>
+        <!-- Table of Contents -->
+        <div class="toc-container" id="tocContainer">
+            <div class="toc-header">
+                <span class="toc-title">Functions</span>
+                <button class="toc-toggle" id="tocToggle" aria-label="Toggle table of contents">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
+            <div id="tocContent">
+                <!-- TOC will be populated dynamically -->
+            </div>
+        </div>
+
+        <div class="content-wrapper" id="contentWrapper">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">Built-in Functions</h1>
+                    <p class="page-subtitle">
+                        Comprehensive reference for all GPULang intrinsic functions and their target platform support
+                    </p>
+                </div>
 
             <div class="controls">
                 <input 
@@ -447,170 +440,200 @@
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="syntax-loader.js"></script>
     <script>
         // Target platform mapping
-        const targetNames = {
-            0: 'Vulkan',
-            1: 'DirectX',
-            2: 'Metal',
-            3: 'WebGPU'
-        };
+        const targetNames = [
+            'Vulkan',
+            'DirectX', 
+            'Metal',
+            'WebGPU'
+        ];
 
         let allIntrinsics = [];
         let filteredIntrinsics = [];
         let currentTargetFilter = 'all';
-        let syntaxData = null;
+        let categorizedIntrinsics = {};
 
-        // Load syntax data and create custom Prism language
-        async function loadSyntaxData() {
-            try {
-                console.log('Attempting to load syntax.json...');
-                const response = await fetch('syntax.json');
-                console.log('Fetch response status:', response.status);
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                
-                syntaxData = await response.json();
-                console.log('Syntax data loaded successfully:', syntaxData);
-                createGPULangPrismLanguage();
-            } catch (error) {
-                console.error('Error loading syntax data:', error);
-                console.log('Falling back to embedded syntax data...');
-                // Fallback to embedded syntax data
-                syntaxData = {
-                    "keywords": [
-                        "struct", "uniform", "sampler_state", "render_state", "entry_point", "program", 
-                        "binding", "in", "out", "const", "if", "else", "while", "for", "return", 
-                        "discard", "void", "let", "var", "function"
-                    ],
-                    "types": [
-                        "f32", "f32x2", "f32x3", "f32x4", "f32x2x2", "f32x3x3", "f32x4x4",
-                        "i32", "i32x2", "i32x3", "i32x4", "u32", "u32x2", "u32x3", "u32x4",
-                        "bool", "texture1D", "texture2D", "texture3D", "textureCube", "sampler", "atomic"
-                    ],
-                    "builtin_functions": [
-                        "textureSample", "textureSampleLod", "textureLoad", "normalize", "dot", "cross",
-                        "reflect", "refract", "length", "distance", "mix", "clamp", "smoothstep", "step",
-                        "atomicAdd", "atomicCompareExchange", "floor", "ceil", "abs", "min", "max"
-                    ],
-                    "builtin_variables": [
-                        "ViewConstants", "ObjectUniforms", "VertexShader", "PixelShader", "RenderState"
-                    ],
-                    "builtin_constants": [
-                        "CullFace", "None", "BlendFactor", "CompareFunction"
-                    ],
-                    "annotations": [
-                        "@location", "@binding", "@builtin", "@Mask"
-                    ],
-                    "operators": ["+", "-", "*", "/", "=", "==", "!=", "<", ">", "<=", ">=", "&&", "||", "!"]
-                };
-                console.log('Using embedded syntax data');
-                createGPULangPrismLanguage();
-            }
-        }
-
-        // Create dynamic Prism language definition from loaded syntax data
-        function createGPULangPrismLanguage() {
-            console.log('Creating GPULang Prism language...');
+        // Categorize intrinsics based on their name patterns
+        function categorizeIntrinsics(intrinsics) {
+            const categories = {};
+            const typeConstructors = new Set();
             
-            if (!syntaxData) {
-                console.warn('No syntax data available, using basic highlighting');
-                createBasicGPULangPrismLanguage();
-                return;
+            // Get type constructors from syntax data if available
+            const syntaxData = typeof getSyntaxData === 'function' ? getSyntaxData() : null;
+            if (syntaxData && syntaxData.types) {
+                syntaxData.types.forEach(type => typeConstructors.add(type));
             }
 
-            console.log('Syntax data available, creating dynamic language definition');
+            intrinsics.forEach(intrinsic => {
+                const name = intrinsic.name;
+                let category = 'Other';
 
-            // Create regex patterns from the loaded data
-            const keywordPattern = new RegExp(`\\b(?:${syntaxData.keywords.join('|')})\\b`);
-            const typePattern = new RegExp(`\\b(?:${syntaxData.types.join('|')})\\b`);
-            const builtinFunctionPattern = new RegExp(`\\b(?:${syntaxData.builtin_functions.join('|')})\\b`);
-            const builtinVariablePattern = new RegExp(`\\b(?:${syntaxData.builtin_variables.join('|')})\\b`);
-            const builtinConstantPattern = new RegExp(`\\b(?:${syntaxData.builtin_constants.join('|')})\\b`);
-            const annotationPattern = new RegExp(`(?:${syntaxData.annotations.map(a => a.replace('@', '\\@')).join('|')})\\w*`);
-
-            // Define the GPULang language for Prism
-            Prism.languages.gpulang = {
-                'comment': [
-                    {
-                        pattern: /(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/,
-                        lookbehind: true,
-                        greedy: true
-                    },
-                    {
-                        pattern: /(^|[^\\:])\/\/.*/,
-                        lookbehind: true,
-                        greedy: true
+                // Check if it's a type constructor
+                if (typeConstructors.has(name)) {
+                    category = 'Constructors';
+                } else {
+                    // Categorize by prefix
+                    const prefixes = [
+                        'vertex', 'pixel', 'geometry', 'compute', 'subgroup',
+                        'texture', 'atomic', 'memory', 'execution', 'bit'
+                    ];
+                    
+                    for (const prefix of prefixes) {
+                        if (name.toLowerCase().startsWith(prefix.toLowerCase())) {
+                            category = prefix.charAt(0).toUpperCase() + prefix.slice(1);
+                            break;
+                        }
                     }
-                ],
-                'string': {
-                    pattern: /"(?:\\.|[^\\"\r\n])*"/,
-                    greedy: true
-                },
-                'annotation': {
-                    pattern: annotationPattern,
-                    alias: 'important'
-                },
-                'keyword': keywordPattern,
-                'builtin-function': {
-                    pattern: builtinFunctionPattern,
-                    alias: 'function'
-                },
-                'builtin-variable': {
-                    pattern: builtinVariablePattern,
-                    alias: 'class-name'
-                },
-                'builtin-constant': {
-                    pattern: builtinConstantPattern,
-                    alias: 'constant'
-                },
-                'type': {
-                    pattern: typePattern,
-                    alias: 'builtin'
-                },
-                'number': /\b0x[\da-f]+\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[+-]?\d+)?[fl]?\b/i,
-                'operator': new RegExp(syntaxData.operators.map(op => 
-                    op.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-                ).join('|')),
-                'punctuation': /[{}[\];(),.:]/
-            };
+                    
+                    // Special cases for math functions
+                    const mathFunctions = [
+                        'acos', 'acosh', 'asin', 'asinh', 'atan', 'atanh',
+                        'cos', 'cosh', 'sin', 'sinh', 'tan', 'tanh',
+                        'exp', 'exp2', 'log', 'log2', 'sqrt', 'invSqrt',
+                        'pow', 'mad', 'dot', 'cross', 'reflect', 'refract',
+                        'length', 'normalize', 'distance', 'min', 'max',
+                        'clamp', 'lerp', 'mix', 'step', 'smoothstep',
+                        'ceil', 'floor', 'fract', 'saturate', 'trunc',
+                        'ddx', 'ddy', 'fwidth', 'sign', 'abs', 'any', 'all',
+                        'transpose', 'inverse'
+                    ];
+                    
+                    if (mathFunctions.includes(name.toLowerCase()) && category === 'Other') {
+                        category = 'Math';
+                    }
+                    
+                    // Cast functions
+                    if (name.toLowerCase().startsWith('castto') && category === 'Other') {
+                        category = 'Conversion';
+                    }
+                }
 
-            // Register alternative names
-            Prism.languages.gpul = Prism.languages.gpulang;
-            console.log('GPULang Prism language created successfully');
+                if (!categories[category]) {
+                    categories[category] = [];
+                }
+                categories[category].push(intrinsic);
+            });
+
+            // Sort categories and functions within each category
+            const sortedCategories = {};
+            const categoryOrder = ['Constructors', 'Math', 'Vertex', 'Pixel', 'Geometry', 'Compute', 'Subgroup', 'Texture', 'Atomic', 'Memory', 'Execution', 'Bit', 'Conversion', 'Other'];
+            
+            categoryOrder.forEach(cat => {
+                if (categories[cat]) {
+                    sortedCategories[cat] = categories[cat].sort((a, b) => a.name.localeCompare(b.name));
+                }
+            });
+
+            return sortedCategories;
         }
 
-        // Fallback basic syntax highlighting
-        function createBasicGPULangPrismLanguage() {
-            Prism.languages.gpulang = {
-                'comment': [
-                    {
-                        pattern: /(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/,
-                        lookbehind: true,
-                        greedy: true
-                    },
-                    {
-                        pattern: /(^|[^\\:])\/\/.*/,
-                        lookbehind: true,
-                        greedy: true
-                    }
-                ],
-                'string': {
-                    pattern: /"(?:\\.|[^\\"\r\n])*"/,
-                    greedy: true
-                },
-                'keyword': /\b(?:struct|uniform|sampler_state|render_state|entry_point|program|binding|in|out|const|if|else|while|for|return|discard|void|let)\b/,
-                'builtin': /\b(?:f32|f32x2|f32x3|f32x4|i32|u32|bool|texture2D|textureCube)\b/,
-                'function': /\b(?:textureSample|normalize|dot|cross|length|mix|clamp)\b/,
-                'annotation': /@\w+/,
-                'number': /\b0x[\da-f]+\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[+-]?\d+)?[fl]?\b/i,
-                'operator': /[+\-*\/=<>!&|^%]+/,
-                'punctuation': /[{}[\];(),.:]/
-            };
+        // Generate Table of Contents
+        function generateTOC(categorizedIntrinsics) {
+            const tocContent = document.getElementById('tocContent');
+            if (!tocContent) return;
 
-            Prism.languages.gpul = Prism.languages.gpulang;
+            let html = '';
+            
+            Object.entries(categorizedIntrinsics).forEach(([category, intrinsics]) => {
+                html += `
+                    <div class="toc-category">
+                        <div class="toc-category-title">${category}</div>
+                        <ul class="toc-items">
+                `;
+                
+                intrinsics.forEach(intrinsic => {
+                    const anchorId = `intrinsic-${intrinsic.name.toLowerCase()}`;
+                    html += `
+                        <li class="toc-item">
+                            <a href="#${anchorId}" class="toc-link" data-target="${anchorId}">
+                                ${intrinsic.name}
+                            </a>
+                        </li>
+                    `;
+                });
+                
+                html += `
+                        </ul>
+                    </div>
+                `;
+            });
+
+            tocContent.innerHTML = html;
+
+            // Add click handlers for smooth scrolling
+            tocContent.querySelectorAll('.toc-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('data-target');
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        // Calculate offset to account for fixed header
+                        const headerHeight = 120; // Fixed header height
+                        const elementPosition = targetElement.offsetTop;
+                        const offsetPosition = elementPosition - headerHeight;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update active link
+                        tocContent.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active'));
+                        this.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        // TOC toggle functionality
+        function initTOC() {
+            const tocContainer = document.getElementById('tocContainer');
+            const tocToggle = document.getElementById('tocToggle');
+            const contentWrapper = document.getElementById('contentWrapper');
+
+            if (tocToggle && tocContainer && contentWrapper) {
+                // Remove any existing event listeners to prevent duplicates
+                tocToggle.replaceWith(tocToggle.cloneNode(true));
+                const newTocToggle = document.getElementById('tocToggle');
+                
+                newTocToggle.addEventListener('click', function() {
+                    const isHidden = tocContainer.classList.contains('hidden');
+                    
+                    if (isHidden) {
+                        tocContainer.classList.remove('hidden');
+                        contentWrapper.classList.remove('toc-hidden');
+                        this.innerHTML = '<i class="fas fa-times"></i>';
+                    } else {
+                        tocContainer.classList.add('hidden');
+                        contentWrapper.classList.add('toc-hidden');
+                        this.innerHTML = '<i class="fas fa-list"></i>';
+                    }
+                });
+            }
+
+            // Initialize scroll observer only once
+            if (!window.tocScrollObserver) {
+                window.tocScrollObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const id = entry.target.id;
+                            const tocLinks = document.querySelectorAll('.toc-link');
+                            tocLinks.forEach(link => {
+                                link.classList.toggle('active', link.getAttribute('data-target') === id);
+                            });
+                        }
+                    });
+                }, {
+                    rootMargin: '-120px 0px -50% 0px' // Account for fixed header
+                });
+
+                // Observe all intrinsic cards
+                document.querySelectorAll('.intrinsic-card').forEach(card => {
+                    window.tocScrollObserver.observe(card);
+                });
+            }
         }
 
         // Load and display intrinsics
@@ -630,7 +653,18 @@
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 
-                allIntrinsics = await response.json();
+                const jsonData = await response.json();
+                console.log('Raw JSON data type:', Array.isArray(jsonData) ? 'array' : 'object');
+                
+                // Handle both array format and object format
+                if (Array.isArray(jsonData)) {
+                    allIntrinsics = jsonData;
+                } else if (jsonData.intrinsics) {
+                    allIntrinsics = jsonData.intrinsics;
+                } else {
+                    throw new Error('Invalid JSON format: expected array or object with intrinsics property');
+                }
+                
                 console.log('Intrinsics data loaded, count:', allIntrinsics.length);
                 
                 filteredIntrinsics = [...allIntrinsics];
@@ -656,7 +690,13 @@
                 return;
             }
 
+            // Generate and update TOC
+            categorizedIntrinsics = categorizeIntrinsics(intrinsics);
+            generateTOC(categorizedIntrinsics);
+
             const intrinsicsHTML = intrinsics.map(intrinsic => {
+                const anchorId = `intrinsic-${intrinsic.name.toLowerCase()}`;
+                
                 // Create target support badges for the intrinsic
                 const targetSupport = intrinsic.target_support.map((support, index) => {
                     const targetName = targetNames[index];
@@ -668,16 +708,40 @@
                     `;
                 }).join('');
 
-                const overloadsHTML = intrinsic.overloads.map(overload => {
-                    return `
-                        <div class="overload-item">
-                            <pre><code class="language-gpulang">${escapeHtml(overload.signature)}</code></pre>
+                // Only show overloads section if there are multiple overloads
+                let overloadsSection = '';
+                if (intrinsic.overloads && intrinsic.overloads.length > 1) {
+                    const overloadsHTML = intrinsic.overloads.map(overload => {
+                        return `
+                            <div class="overload-item">
+                                <pre><code class="language-gpulang">${escapeHtml(overload.signature)}</code></pre>
+                            </div>
+                        `;
+                    }).join('');
+
+                    overloadsSection = `
+                        <div class="overloads-section">
+                            <div class="overloads-title" onclick="toggleOverloads(this)">
+                                Overloads (${intrinsic.overloads.length})
+                                <i class="fas fa-chevron-down overloads-toggle"></i>
+                            </div>
+                            <div class="overloads-content">
+                                ${overloadsHTML}
+                            </div>
                         </div>
                     `;
-                }).join('');
+                }
+                else if (intrinsic.overloads && intrinsic.overloads.length === 1)
+                {
+                    overloadsSection = `
+                            <div class="overload-item">
+                                <pre><code class="language-gpulang">${escapeHtml(intrinsic.overloads[0].signature)}</code></pre>
+                            </div>
+                        `;
+                }
 
                 return `
-                    <div class="intrinsic-card">
+                    <div class="intrinsic-card" id="${anchorId}">
                         <div class="intrinsic-name">
                             <i class="fas fa-function intrinsic-icon"></i>
                             ${escapeHtml(intrinsic.name)}
@@ -688,13 +752,7 @@
                         <div class="target-support" style="margin-bottom: 1.5rem;">
                             ${targetSupport}
                         </div>
-                        <div class="overloads-section">
-                            <div class="overloads-title">
-                                <i class="fas fa-code"></i>
-                                Overloads (${intrinsic.overloads.length})
-                            </div>
-                            ${overloadsHTML}
-                        </div>
+                        ${overloadsSection}
                     </div>
                 `;
             }).join('');
@@ -703,6 +761,9 @@
             
             // Apply syntax highlighting to all code blocks
             Prism.highlightAll();
+            
+            // Initialize TOC functionality after content is loaded
+            setTimeout(initTOC, 100);
         }
 
         // Show error message
@@ -789,6 +850,15 @@
                 }
             });
         });
+
+        // Toggle overloads visibility
+        function toggleOverloads(titleElement) {
+            const toggleIcon = titleElement.querySelector('.overloads-toggle');
+            const content = titleElement.nextElementSibling;
+            
+            toggleIcon.classList.toggle('expanded');
+            content.classList.toggle('expanded');
+        }
     </script>
 </body>
 </html>

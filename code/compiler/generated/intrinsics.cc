@@ -23759,6 +23759,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&inverse_Float16x4x4)->returnTypeSymbol = &Float16x4x4Type;
 
     /// vertexGetOutputLayer
+    VertexGetOutputLayer.documentation = "Returns the output layer for the current vertex."_c;
     VertexGetOutputLayer.name = "vertexGetOutputLayer"_c;
     VertexGetOutputLayer.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetOutputLayer)->signature = "u32 vertexGetOutputLayer()"_c;
@@ -23767,6 +23768,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&VertexGetOutputLayer)->returnTypeSymbol = &UInt32Type;
 
     /// vertexGetOutputViewport
+    VertexGetOutputViewport.documentation = "Returns the output viewport for the current vertex."_c;
     VertexGetOutputViewport.name = "vertexGetOutputViewport"_c;
     VertexGetOutputViewport.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetOutputViewport)->signature = "u32 vertexGetOutputViewport()"_c;
@@ -23775,6 +23777,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&VertexGetOutputViewport)->returnTypeSymbol = &UInt32Type;
 
     /// vertexGetIndex
+    VertexGetIndex.documentation = "Returns the index of the current vertex."_c;
     VertexGetIndex.name = "vertexGetIndex"_c;
     VertexGetIndex.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetIndex)->signature = "u32 vertexGetIndex()"_c;
@@ -23783,6 +23786,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&VertexGetIndex)->returnTypeSymbol = &UInt32Type;
 
     /// vertexGetInstanceIndex
+    VertexGetInstanceIndex.documentation = "Returns the instance index of the current vertex."_c;
     VertexGetInstanceIndex.name = "vertexGetInstanceIndex"_c;
     VertexGetInstanceIndex.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetInstanceIndex)->signature = "u32 vertexGetInstanceIndex()"_c;
@@ -23791,6 +23795,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&VertexGetInstanceIndex)->returnTypeSymbol = &UInt32Type;
 
     /// vertexGetBaseIndex
+    VertexGetBaseIndex.documentation = "Returns the base index of the current vertex."_c;
     VertexGetBaseIndex.name = "vertexGetBaseIndex"_c;
     VertexGetBaseIndex.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetBaseIndex)->signature = "u32 vertexGetBaseIndex()"_c;
@@ -23799,6 +23804,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&VertexGetBaseIndex)->returnTypeSymbol = &UInt32Type;
 
     /// vertexGetBaseInstanceIndex
+    VertexGetBaseInstanceIndex.documentation = "Returns the base instance index of the current vertex."_c;
     VertexGetBaseInstanceIndex.name = "vertexGetBaseInstanceIndex"_c;
     VertexGetBaseInstanceIndex.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetBaseInstanceIndex)->signature = "u32 vertexGetBaseInstanceIndex()"_c;
@@ -23807,6 +23813,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&VertexGetBaseInstanceIndex)->returnTypeSymbol = &UInt32Type;
 
     /// vertexGetDrawIndex
+    VertexGetDrawIndex.documentation = "Returns the draw index of the current vertex."_c;
     VertexGetDrawIndex.name = "vertexGetDrawIndex"_c;
     VertexGetDrawIndex.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetDrawIndex)->signature = "u32 vertexGetDrawIndex()"_c;
@@ -23893,6 +23900,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&VertexExportCoordinates_Float16x4)->returnTypeSymbol = &VoidType;
 
     /// geometryExportVertex
+    GeometryExportVertex.documentation = "Exports the current vertex to the output stream. This function must be called for each vertex in a geometry shader."_c;
     GeometryExportVertex.name = "geometryExportVertex"_c;
     GeometryExportVertex.returnType = Type::FullType { VoidType.name };
     Symbol::Resolved(&GeometryExportVertex)->signature = "void geometryExportVertex()"_c;
@@ -23901,6 +23909,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&GeometryExportVertex)->returnTypeSymbol = &VoidType;
 
     /// geometryExportPrimitive
+    GeometryExportPrimitive.documentation = "Exports the current primitive to the output stream. This function must be called after all vertices of a primitive have been exported."_c;
     GeometryExportPrimitive.name = "geometryExportPrimitive"_c;
     GeometryExportPrimitive.returnType = Type::FullType { VoidType.name };
     Symbol::Resolved(&GeometryExportPrimitive)->signature = "void geometryExportPrimitive()"_c;
