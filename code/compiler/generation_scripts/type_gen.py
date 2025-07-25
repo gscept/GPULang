@@ -303,18 +303,16 @@ def generate_types():
         spirv_type_construction += f'        if (vectorSize > 1)\n'
         spirv_type_construction += f'            type = GeneratePODTypeSPIRV(c, g, TypeCode::{converter.target}, vectorSize);\n'
         spirv_type_construction += f'        else\n'
-        spirv_type_construction += f'        {{\n'
         spirv_type_construction += f'            type = GeneratePODTypeSPIRV(c, g, TypeCode::{converter.target});\n'
         if not converter.spirv_conversion_arguments:
-            spirv_type_construction += f'            value = LoadValueSPIRV(c, g, value);\n'
+            spirv_type_construction += f'        value = LoadValueSPIRV(c, g, value);\n'
         if converter.spirv_conversion_prep:
             spirv_type_construction += converter.spirv_conversion_prep
         if not converter.spirv_conversion_arguments:
-            spirv_type_construction += f'            uint32_t res = g->writer->MappedInstruction({converter.spirv_conversion_function}, SPVWriter::Section::LocalFunction, type, value);\n'
+            spirv_type_construction += f'        uint32_t res = g->writer->MappedInstruction({converter.spirv_conversion_function}, SPVWriter::Section::LocalFunction, type, value);\n'
         else:
-            spirv_type_construction += f'            uint32_t res = g->writer->MappedInstruction({converter.spirv_conversion_function}, SPVWriter::Section::LocalFunction, type, value, {converter.spirv_conversion_arguments});\n'
-        spirv_type_construction += f'            return SPIRVResult(res, type, true);\n'
-        spirv_type_construction += f'        }}\n'
+            spirv_type_construction += f'        uint32_t res = g->writer->MappedInstruction({converter.spirv_conversion_function}, SPVWriter::Section::LocalFunction, type, value, {converter.spirv_conversion_arguments});\n'
+        spirv_type_construction += f'        return SPIRVResult(res, type, true);\n'
         spirv_type_construction += f'    }}\n'
         spirv_type_construction += f'}}\n\n'
         spirv_type_converter_list.append(f'    std::pair{{ TypeConversionTable::{converter.enum}, &SPIRV_{converter.enum} }}')

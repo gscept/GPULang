@@ -26,12 +26,10 @@ SPIRVResult SPIRV_Float32ToUInt32(const Compiler* c, SPIRVGenerator* g, uint32_t
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpConvertFToU, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpConvertFToU, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -48,12 +46,10 @@ SPIRVResult SPIRV_Float32ToInt32(const Compiler* c, SPIRVGenerator* g, uint32_t 
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Int32);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpConvertFToS, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpConvertFToS, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -70,12 +66,10 @@ SPIRVResult SPIRV_Float32ToFloat16(const Compiler* c, SPIRVGenerator* g, uint32_
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Float16);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpFConvert, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpFConvert, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -92,12 +86,10 @@ SPIRVResult SPIRV_Float32ToUInt16(const Compiler* c, SPIRVGenerator* g, uint32_t
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpConvertFToU, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpConvertFToU, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -114,12 +106,10 @@ SPIRVResult SPIRV_Float32ToInt16(const Compiler* c, SPIRVGenerator* g, uint32_t 
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Int16);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpConvertFToS, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpConvertFToS, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -136,12 +126,10 @@ SPIRVResult SPIRV_UInt32ToFloat32(const Compiler* c, SPIRVGenerator* g, uint32_t
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Float32);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpConvertUToF, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpConvertUToF, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -158,12 +146,10 @@ SPIRVResult SPIRV_UInt32ToInt32(const Compiler* c, SPIRVGenerator* g, uint32_t v
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Int32);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpBitcast, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpBitcast, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -180,12 +166,10 @@ SPIRVResult SPIRV_UInt32ToBool8(const Compiler* c, SPIRVGenerator* g, uint32_t v
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Bool8, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Bool8);
             SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt32(0));
-            uint32_t res = g->writer->MappedInstruction(OpINotEqual, SPVWriter::Section::LocalFunction, type, value, falseValue);
-            return SPIRVResult(res, type, true);
-        }
+        uint32_t res = g->writer->MappedInstruction(OpINotEqual, SPVWriter::Section::LocalFunction, type, value, falseValue);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -202,12 +186,10 @@ SPIRVResult SPIRV_UInt32ToFloat16(const Compiler* c, SPIRVGenerator* g, uint32_t
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Float16);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpConvertUToF, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpConvertUToF, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -224,12 +206,10 @@ SPIRVResult SPIRV_UInt32ToUInt16(const Compiler* c, SPIRVGenerator* g, uint32_t 
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpUConvert, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpUConvert, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -246,12 +226,10 @@ SPIRVResult SPIRV_UInt32ToInt16(const Compiler* c, SPIRVGenerator* g, uint32_t v
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Int16);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpBitcast, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpBitcast, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -268,12 +246,10 @@ SPIRVResult SPIRV_Int32ToFloat32(const Compiler* c, SPIRVGenerator* g, uint32_t 
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Float32);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpConvertSToF, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpConvertSToF, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -290,12 +266,10 @@ SPIRVResult SPIRV_Int32ToUInt32(const Compiler* c, SPIRVGenerator* g, uint32_t v
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpBitcast, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpBitcast, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -312,12 +286,10 @@ SPIRVResult SPIRV_Int32ToBool8(const Compiler* c, SPIRVGenerator* g, uint32_t ve
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Bool8, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Bool8);
             SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
-            uint32_t res = g->writer->MappedInstruction(OpINotEqual, SPVWriter::Section::LocalFunction, type, value, falseValue);
-            return SPIRVResult(res, type, true);
-        }
+        uint32_t res = g->writer->MappedInstruction(OpINotEqual, SPVWriter::Section::LocalFunction, type, value, falseValue);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -334,12 +306,10 @@ SPIRVResult SPIRV_Int32ToFloat16(const Compiler* c, SPIRVGenerator* g, uint32_t 
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Float16);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpConvertSToF, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpConvertSToF, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -356,12 +326,10 @@ SPIRVResult SPIRV_Int32ToUInt16(const Compiler* c, SPIRVGenerator* g, uint32_t v
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpBitcast, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpBitcast, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -378,12 +346,10 @@ SPIRVResult SPIRV_Int32ToInt16(const Compiler* c, SPIRVGenerator* g, uint32_t ve
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Int16);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpSConvert, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpSConvert, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -400,13 +366,11 @@ SPIRVResult SPIRV_Bool8ToFloat32(const Compiler* c, SPIRVGenerator* g, uint32_t 
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Float32);
             SPIRVResult trueValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float32(1));
             SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float32(0));
-            uint32_t res = g->writer->MappedInstruction(OpSelect, SPVWriter::Section::LocalFunction, type, value, trueValue, falseValue);
-            return SPIRVResult(res, type, true);
-        }
+        uint32_t res = g->writer->MappedInstruction(OpSelect, SPVWriter::Section::LocalFunction, type, value, trueValue, falseValue);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -423,13 +387,11 @@ SPIRVResult SPIRV_Bool8ToUInt32(const Compiler* c, SPIRVGenerator* g, uint32_t v
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32);
             SPIRVResult trueValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt32(1));
             SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt32(0));
-            uint32_t res = g->writer->MappedInstruction(OpSelect, SPVWriter::Section::LocalFunction, type, value, trueValue, falseValue);
-            return SPIRVResult(res, type, true);
-        }
+        uint32_t res = g->writer->MappedInstruction(OpSelect, SPVWriter::Section::LocalFunction, type, value, trueValue, falseValue);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -446,13 +408,11 @@ SPIRVResult SPIRV_Bool8ToInt32(const Compiler* c, SPIRVGenerator* g, uint32_t ve
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Int32);
             SPIRVResult trueValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(1));
             SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0));
-            uint32_t res = g->writer->MappedInstruction(OpSelect, SPVWriter::Section::LocalFunction, type, value, trueValue, falseValue);
-            return SPIRVResult(res, type, true);
-        }
+        uint32_t res = g->writer->MappedInstruction(OpSelect, SPVWriter::Section::LocalFunction, type, value, trueValue, falseValue);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -469,13 +429,11 @@ SPIRVResult SPIRV_Bool8ToFloat16(const Compiler* c, SPIRVGenerator* g, uint32_t 
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Float16);
             SPIRVResult trueValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float16(1));
             SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float16(0));
-            uint32_t res = g->writer->MappedInstruction(OpSelect, SPVWriter::Section::LocalFunction, type, value, trueValue, falseValue);
-            return SPIRVResult(res, type, true);
-        }
+        uint32_t res = g->writer->MappedInstruction(OpSelect, SPVWriter::Section::LocalFunction, type, value, trueValue, falseValue);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -492,13 +450,11 @@ SPIRVResult SPIRV_Bool8ToUInt16(const Compiler* c, SPIRVGenerator* g, uint32_t v
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16);
             SPIRVResult trueValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt16(1));
             SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt16(0));
-            uint32_t res = g->writer->MappedInstruction(OpSelect, SPVWriter::Section::LocalFunction, type, value, trueValue, falseValue);
-            return SPIRVResult(res, type, true);
-        }
+        uint32_t res = g->writer->MappedInstruction(OpSelect, SPVWriter::Section::LocalFunction, type, value, trueValue, falseValue);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -515,13 +471,11 @@ SPIRVResult SPIRV_Bool8ToInt16(const Compiler* c, SPIRVGenerator* g, uint32_t ve
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Int16);
             SPIRVResult trueValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int16(1));
             SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int16(0));
-            uint32_t res = g->writer->MappedInstruction(OpSelect, SPVWriter::Section::LocalFunction, type, value, trueValue, falseValue);
-            return SPIRVResult(res, type, true);
-        }
+        uint32_t res = g->writer->MappedInstruction(OpSelect, SPVWriter::Section::LocalFunction, type, value, trueValue, falseValue);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -538,12 +492,10 @@ SPIRVResult SPIRV_Float16ToFloat32(const Compiler* c, SPIRVGenerator* g, uint32_
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Float32);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpFConvert, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpFConvert, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -560,12 +512,10 @@ SPIRVResult SPIRV_Float16ToUInt32(const Compiler* c, SPIRVGenerator* g, uint32_t
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpConvertFToU, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpConvertFToU, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -582,12 +532,10 @@ SPIRVResult SPIRV_Float16ToInt32(const Compiler* c, SPIRVGenerator* g, uint32_t 
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Int32);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpConvertFToS, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpConvertFToS, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -604,12 +552,10 @@ SPIRVResult SPIRV_Float16ToUInt16(const Compiler* c, SPIRVGenerator* g, uint32_t
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpConvertFToU, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpConvertFToU, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -626,12 +572,10 @@ SPIRVResult SPIRV_Float16ToInt16(const Compiler* c, SPIRVGenerator* g, uint32_t 
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Int16);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpConvertFToS, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpConvertFToS, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -648,12 +592,10 @@ SPIRVResult SPIRV_UInt16ToFloat32(const Compiler* c, SPIRVGenerator* g, uint32_t
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Float32);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpConvertUToF, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpConvertUToF, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -670,12 +612,10 @@ SPIRVResult SPIRV_UInt16ToUInt32(const Compiler* c, SPIRVGenerator* g, uint32_t 
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpUConvert, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpUConvert, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -692,12 +632,10 @@ SPIRVResult SPIRV_UInt16ToInt32(const Compiler* c, SPIRVGenerator* g, uint32_t v
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Int32);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpBitcast, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpBitcast, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -714,12 +652,10 @@ SPIRVResult SPIRV_UInt16ToBool8(const Compiler* c, SPIRVGenerator* g, uint32_t v
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Bool8, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Bool8);
             SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt16(0));
-            uint32_t res = g->writer->MappedInstruction(OpINotEqual, SPVWriter::Section::LocalFunction, type, value, falseValue);
-            return SPIRVResult(res, type, true);
-        }
+        uint32_t res = g->writer->MappedInstruction(OpINotEqual, SPVWriter::Section::LocalFunction, type, value, falseValue);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -736,12 +672,10 @@ SPIRVResult SPIRV_UInt16ToFloat16(const Compiler* c, SPIRVGenerator* g, uint32_t
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Float16);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpConvertUToF, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpConvertUToF, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -758,12 +692,10 @@ SPIRVResult SPIRV_UInt16ToInt16(const Compiler* c, SPIRVGenerator* g, uint32_t v
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Int16);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpBitcast, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpBitcast, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -780,12 +712,10 @@ SPIRVResult SPIRV_Int16ToFloat32(const Compiler* c, SPIRVGenerator* g, uint32_t 
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Float32);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpConvertSToF, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpConvertSToF, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -802,12 +732,10 @@ SPIRVResult SPIRV_Int16ToUInt32(const Compiler* c, SPIRVGenerator* g, uint32_t v
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpBitcast, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpBitcast, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -824,12 +752,10 @@ SPIRVResult SPIRV_Int16ToInt32(const Compiler* c, SPIRVGenerator* g, uint32_t ve
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Int32);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpSConvert, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpSConvert, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -846,12 +772,10 @@ SPIRVResult SPIRV_Int16ToBool8(const Compiler* c, SPIRVGenerator* g, uint32_t ve
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Bool8, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Bool8);
             SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int16(0));
-            uint32_t res = g->writer->MappedInstruction(OpINotEqual, SPVWriter::Section::LocalFunction, type, value, falseValue);
-            return SPIRVResult(res, type, true);
-        }
+        uint32_t res = g->writer->MappedInstruction(OpINotEqual, SPVWriter::Section::LocalFunction, type, value, falseValue);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -868,12 +792,10 @@ SPIRVResult SPIRV_Int16ToFloat16(const Compiler* c, SPIRVGenerator* g, uint32_t 
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::Float16);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpConvertSToF, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpConvertSToF, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 
@@ -890,12 +812,10 @@ SPIRVResult SPIRV_Int16ToUInt16(const Compiler* c, SPIRVGenerator* g, uint32_t v
         if (vectorSize > 1)
             type = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, vectorSize);
         else
-        {
             type = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16);
-            value = LoadValueSPIRV(c, g, value);
-            uint32_t res = g->writer->MappedInstruction(OpBitcast, SPVWriter::Section::LocalFunction, type, value);
-            return SPIRVResult(res, type, true);
-        }
+        value = LoadValueSPIRV(c, g, value);
+        uint32_t res = g->writer->MappedInstruction(OpBitcast, SPVWriter::Section::LocalFunction, type, value);
+        return SPIRVResult(res, type, true);
     }
 }
 

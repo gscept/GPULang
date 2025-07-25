@@ -58,7 +58,7 @@ Socket CreateServerSocket()
     
 #if __WIN32__
     
-    socket_path = "\\.pipe\"
+    socket_path = "\\.pipe\";
     ret.sock = CreateNamedPipeA(
         R"(\\.\pipe\gpulang_socket)",
         PIPE_ACCESS_DUPLEX,
@@ -141,7 +141,7 @@ public:
     {
 #if __WIN32__
         DWORD size;
-        ReadFile(this->sock.sock, this->buf, sizeof(buf), &size, NULL)
+        ReadFile(this->sock.sock, this->buf, sizeof(buf), &size, NULL);
 #else
         int size = read(this->sock.sock, this->buf, sizeof(buf));
 #endif
