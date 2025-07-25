@@ -77,14 +77,14 @@ Socket CreateServerSocket()
     
     // If that fails, fall back to using /tmp
     if (!tmp) tmp = "/tmp";
-    std::string socket_path = std::string(tmp) + "gpulang_socket";
+    GPULang::TransientString socket_path = GPULang::TransientString(tmp, "gpulang_socket");
     
     unlink(socket_path.c_str());
     ret.sock = socket(AF_UNIX, SOCK_STREAM, 0);
     
     struct sockaddr_un addr;
     addr.sun_family = AF_UNIX;
-    std::strncpy(addr.sun_path, socket_path.c_str(), socket_path.size());
+    std::strncpy(addr.sun_path, socket_path.c_str(), socket_path.size);
 
     int res = bind(ret.sock, reinterpret_cast<struct sockaddr*>(&addr), sizeof(addr));
     assert(res == 0);
