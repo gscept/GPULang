@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPULang Documentation</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #c084fc, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #c084fc;
+        }
+
+        .back-button {
+            background: linear-gradient(45deg, #c084fc, #f472b6);
+            color: #0f0f23;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(192, 132, 252, 0.3);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding-top: 120px;
+            padding-bottom: 4rem;
+            min-height: 100vh;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffffff, #c084fc, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            font-size: 1.3rem;
+            color: #b0b0b0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Documentation Grid */
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .doc-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .doc-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(192, 132, 252, 0.2);
+            border-color: rgba(192, 132, 252, 0.3);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .doc-icon {
+            font-size: 3rem;
+            color: #c084fc;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .doc-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .doc-card p {
+            color: #b0b0b0;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .doc-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .status-badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .status-complete {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+
+        .status-wip {
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+        }
+
+        .status-external {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+        }
+
+        /* Quick Links Section */
+        .quick-links {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .quick-links h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .quick-link {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            text-decoration: none;
+            color: #b0b0b0;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .quick-link:hover {
+            background: rgba(192, 132, 252, 0.1);
+            color: #c084fc;
+            text-decoration: none;
+        }
+
+        .quick-link i {
+            display: block;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .docs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .doc-card {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">GPULang</a>
+            <ul class="nav-links">
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="docs.html">Documentation</a></li>
+                <li><a href="index.html#examples">Examples</a></li>
+                <li><a href="#community">Community</a></li>
+            </ul>
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">Documentation</h1>
+                <p class="page-subtitle">
+                    Everything you need to master GPULang - from basic syntax to advanced GPU programming techniques
+                </p>
+            </div>
+
+            <div class="docs-grid">
+                <a href="#" class="doc-card" onclick="alert('Coming soon! This section is under development.')">
+                    <i class="fas fa-code doc-icon"></i>
+                    <h3>Language Syntax</h3>
+                    <p>Learn the fundamentals of GPULang syntax, including data types, control structures, functions, and modern language features that make GPU programming more accessible.</p>
+                    <div class="doc-meta">
+                        <span class="status-badge status-wip">Work in Progress</span>
+                        <span><i class="fas fa-clock"></i> ~15 min read</span>
+                    </div>
+                </a>
+
+                <a href="intrinsics.html" class="doc-card">
+                    <i class="fas fa-function doc-icon"></i>
+                    <h3>Built-in Functions</h3>
+                    <p>Comprehensive reference for all GPULang intrinsic functions, including mathematical operations, texture sampling, and GPU-specific utilities with platform support details.</p>
+                    <div class="doc-meta">
+                        <span class="status-badge status-complete">Complete</span>
+                        <span><i class="fas fa-book"></i> Reference</span>
+                    </div>
+                </a>
+
+                <a href="#" class="doc-card" onclick="alert('Coming soon! This section is under development.')">
+                    <i class="fas fa-search doc-icon"></i>
+                    <h3>Shader Reflection</h3>
+                    <p>Understand how GPULang provides both static and dynamic shader reflection capabilities, enabling runtime introspection of your compiled shaders.</p>
+                    <div class="doc-meta">
+                        <span class="status-badge status-wip">Work in Progress</span>
+                        <span><i class="fas fa-clock"></i> ~10 min read</span>
+                    </div>
+                </a>
+
+                <a href="https://marketplace.visualstudio.com/items?itemName=gustavsterbrant.gpulang" target="_blank" class="doc-card">
+                    <i class="fas fa-puzzle-piece doc-icon"></i>
+                    <h3>VS Code Extension</h3>
+                    <p>Get the official GPULang extension for Visual Studio Code with syntax highlighting, IntelliSense, error checking, and integrated compiler support.</p>
+                    <div class="doc-meta">
+                        <span class="status-badge status-external">External Link</span>
+                        <span><i class="fas fa-external-link-alt"></i> VS Code Marketplace</span>
+                    </div>
+                </a>
+
+                <a href="#" class="doc-card" onclick="alert('Coming soon! This section is under development.')">
+                    <i class="fas fa-cogs doc-icon"></i>
+                    <h3>Compiler Reference</h3>
+                    <p>Deep dive into the GPULang compiler, including command-line options, optimization settings, target platforms, and integration with build systems.</p>
+                    <div class="doc-meta">
+                        <span class="status-badge status-wip">Work in Progress</span>
+                        <span><i class="fas fa-clock"></i> ~20 min read</span>
+                    </div>
+                </a>
+
+                <a href="#" class="doc-card" onclick="alert('Coming soon! This section is under development.')">
+                    <i class="fas fa-gamepad doc-icon"></i>
+                    <h3>Game Development Guide</h3>
+                    <p>Learn how to integrate GPULang into your game engine, manage shader pipelines, and optimize rendering performance for real-time applications.</p>
+                    <div class="doc-meta">
+                        <span class="status-badge status-wip">Work in Progress</span>
+                        <span><i class="fas fa-clock"></i> ~30 min read</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="quick-links">
+                <h3>Quick Links</h3>
+                <div class="links-grid">
+                    <a href="#" class="quick-link" onclick="alert('Coming soon!')">
+                        <i class="fas fa-download"></i>
+                        Download Compiler
+                    </a>
+                    <a href="#" class="quick-link" onclick="alert('Coming soon!')">
+                        <i class="fab fa-github"></i>
+                        GitHub Repository
+                    </a>
+                    <a href="#" class="quick-link" onclick="alert('Coming soon!')">
+                        <i class="fas fa-comments"></i>
+                        Community Forum
+                    </a>
+                    <a href="#" class="quick-link" onclick="alert('Coming soon!')">
+                        <i class="fab fa-discord"></i>
+                        Discord Server
+                    </a>
+                    <a href="#" class="quick-link" onclick="alert('Coming soon!')">
+                        <i class="fas fa-bug"></i>
+                        Report Issues
+                    </a>
+                    <a href="#" class="quick-link" onclick="alert('Coming soon!')">
+                        <i class="fas fa-rocket"></i>
+                        Getting Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(15, 15, 35, 0.98)';
+            } else {
+                header.style.background = 'rgba(15, 15, 35, 0.95)';
+            }
+        });
+
+        // Handle external links
+        document.querySelectorAll('a[target="_blank"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Let the browser handle the external link naturally
+            });
+        });
+    </script>
+</body>
+</html>
