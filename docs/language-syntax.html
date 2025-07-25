@@ -518,7 +518,6 @@ render_state MyRenderState
 };
 
 // Program combining shaders
-@Mask("Opaque")
 program StandardShading
 {
     VertexShader = VertexMain;
@@ -532,16 +531,21 @@ program StandardShading
                 <div class="code-example">
                     <div class="code-container">
                         <pre><code class="language-gpulang">// Compute shader entry point
+local_size(i32x3(8, 8, 1))
 entry_point
-ComputeMain(
-    in WorkgroupSize(8, 8, 1)
-) void
+ComputeMain() void
 {
-    u32x2 id = computeGetGlobalID().xy;
+    const id = computeGetGlobalThreadIndices().xy;
     
     // Compute logic here
     outputTexture[id] = inputTexture[id] * 2.0f;
-}</code></pre>
+}
+
+// Program combining shaders
+program Compute
+{
+    ComputeShader = ComputeMain;
+};</code></pre>
                     </div>
                 </div>
             </section>
@@ -550,26 +554,23 @@ ComputeMain(
                 <h2>Advanced Features</h2>
                 
                 <h3>Annotations</h3>
-                <p>GPULang supports annotations for additional metadata:</p>
+                <p>GPULang supports annotations for additional metadata which can be retrieved at runtime:</p>
                 <div class="code-example">
                     <div class="code-container">
                         <pre><code class="language-gpulang">// Annotations for program variants
-@Mask("Static", "Skinned") 
+@Features("Static") 
 program VariantShader
 {
     VertexShader = VertexMain;
     PixelShader = PixelMain;
 };
 
-// Parameter annotations
-entry_point
-AnnotatedShader(
-    @Location(0) in position : f32x3,
-    @Location(1) in uv : f32x2
-) void
+struct ShaderParams
 {
-    // Shader logic
-}</code></pre>
+    @Edit("Slider") BaseColor : f32x3;
+};
+uniform Params : *ShaderParams;
+</code></pre>
                     </div>
                 </div>
 
@@ -579,24 +580,14 @@ AnnotatedShader(
                         <pre><code class="language-gpulang">// Sampler state definition
 sampler_state LinearSampler
 {
-    Filter = Filter.Linear;
-    AddressU = TextureAddressMode.Clamp;
-    AddressV = TextureAddressMode.Clamp;
-    BorderColor = f32x4(0.0f, 0.0f, 0.0f, 1.0f);
+    Filter = FilterMode.Linear;
+    AddressU = AddressMode.Clamp;
+    AddressV = AddressMode.Clamp;
+    Border = Color.Black;
 };</code></pre>
                     </div>
                 </div>
 
-                <h3>Memory Qualifiers</h3>
-                <div class="code-example">
-                    <div class="code-container">
-                        <pre><code class="language-gpulang">// Different memory access patterns
-uniform ConstantBuffer : *ConstantData;    // Uniform memory
-rw_buffer VertexBuffer : *f32x3;          // Read-write buffer
-texture2D DiffuseMap;                     // Texture memory
-rw_texture2D OutputTexture;               // Read-write texture</code></pre>
-                    </div>
-                </div>
             </section>
         </div>
     </main>
