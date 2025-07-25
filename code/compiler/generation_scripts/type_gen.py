@@ -595,8 +595,8 @@ def generate_types():
             type_definition += f'    this->builtin = true;\n'
             type_definition += f'\n'
             type_definition += f'{setup_string}'
-            type_definition += f'    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, {len(list_string)}> {{ \n'
-            type_definition += ',\n'.join(f'        std::pair{{ "{item.api_name}"_c, &{item.decl_name} }}' for item in list_string)
+            type_definition += f'    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, {len(lookup_list)}> {{ \n'
+            type_definition += ',\n'.join(f'        std::pair{{ "{item.api_name}"_c, &{item.decl_name} }}' for item in lookup_list)
             type_definition += f'\n    }};\n'
             type_definition += '}\n'
             type_definition += f'{type_name} {type_name}Type;\n\n'
@@ -605,6 +605,13 @@ def generate_types():
 
     declaration_string = ""
     definition_string = ""
+    functions = []
+    type_list = []
+    web_types = {
+        "keywords": ["const", "var", "uniform", "mutable", "sampled", "literal", "in", "out", "return", "break", "discard", "ray_ignore", "for", "while", "if", "else", "switch", "case", "struct", "enum", "generate", "#include", "#pragma"],
+        "types": [],
+        "builtin_functions": [],
+    }
     for size in range(1, 5):
         for type in types:
             if size == 1:
@@ -617,11 +624,12 @@ def generate_types():
             spirv_type_construction = ''
             builtin_type = ScalarType(name=type_name, base_type=type, column_size=size, row_size=1)
             declaration_string += builtin_type.declaration()
+            web_types["types"].append(data_type_name)
 
             intrinsic_list.append(IntrinsicPair(decl_name=f'{type_name}Type', api_name=data_type_name))
             namer.names.append(NamerEntry(type_name, data_type_name))
             setup_string = ""
-            list_string = []
+            member_functions = []
 
             # Conversions
             for type2 in types:
@@ -651,13 +659,7 @@ def generate_types():
                     parameters=[Variable(decl_name=arg_name, api_name='val', type_name=type_name2)],
                     documentation=f'Convert from {data_type_name2} to {data_type_name}'
                 )
-
-                declaration_string += fun.declaration()
-                definition_string += fun.definition()
-                setup_string += fun.setup()
-
-                intrinsic_list.append(fun.typed_pair())
-                intrinsic_list.append(fun.pair())
+                functions.append(fun)
                 if type == type2:
                     spirv_type_construction += spirv_intrinsic(function_name, '    return args[0];\n')
                 else:
@@ -678,13 +680,9 @@ def generate_types():
                         parameters=[Variable(decl_name=arg_name, api_name='val', type_name=type2)],
                         compile_time=True,
                         documentation=f'Splat {data_type_mapping[type2]} to {data_type_name}'
-                    )
-                    declaration_string += fun.declaration()
-                    definition_string += fun.definition()
-                    setup_string += fun.setup()
+                    )                    
+                    functions.append(fun)
 
-                    intrinsic_list.append(fun.typed_pair())
-                    intrinsic_list.append(fun.pair())
                     spirv_function = '    SPIRVResult val = args[0];\n'
                     if type != type2:
                         spirv_function += f'    val = ConverterTable[TypeConversionTable::{type2}To{type}](c, g, 1, val);\n'
@@ -723,6 +721,7 @@ def generate_types():
                     compile_time = True,
                     parameters = []
                 )
+
                 for arg_idx, s in enumerate(comb):
                     if s == 1:
                         arg_type_name = type
@@ -736,12 +735,8 @@ def generate_types():
                     else:
                         list_entry_key.append(f'{data_type_mapping[type]}x{s}')
 
-                declaration_string += fun.declaration()
-                definition_string += fun.definition()
-                setup_string += fun.setup()
+                functions.append(fun)
 
-                intrinsic_list.append(fun.typed_pair())
-                intrinsic_list.append(fun.pair())
                 spirv_function = f'    return GenerateCompositeSPIRV(c, g, returnType, {{{", ".join([f"args[{idx}]" for idx, arg in enumerate(args)])}}});\n'
                 spirv_type_construction += spirv_intrinsic(function_name, spirv_function)
 
@@ -756,11 +751,7 @@ def generate_types():
                     return_type=type,
                     parameters=[Variable(decl_name=arg_name, api_name='arg', type_name=idx_type)],
                 )
-                declaration_string += fun.declaration()
-                definition_string += fun.definition()
-                setup_string += fun.setup()
-                list_string.append(fun.pair())
-                list_string.append(fun.typed_pair())
+                member_functions.append(fun)
 
                 spirv_function =  f'    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, {function_name}.returnType, &{type}Type, args[0].scope);\n'
                 spirv_function += '    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);\n'
@@ -783,11 +774,7 @@ def generate_types():
                         return_type=type,
                         parameters=[Variable(decl_name=arg_name, api_name='arg', type_name=type_name)],
                     )
-                    declaration_string += fun.declaration()
-                    definition_string += fun.definition()
-                    setup_string += fun.setup()
-                    list_string.append(fun.pair())
-                    list_string.append(fun.typed_pair())
+                    member_functions.append(fun)
 
                     spirv_function =  ''
                     spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
@@ -820,12 +807,7 @@ def generate_types():
                             return_type=type_name,
                             parameters=[Variable(decl_name=arg_name, api_name='arg', type_name=type_name)],
                         )
-
-                        declaration_string += fun.declaration()
-                        definition_string += fun.definition()
-                        setup_string += fun.setup()
-                        list_string.append(fun.pair())
-                        list_string.append(fun.typed_pair())
+                        member_functions.append(fun)
 
                         spirv_function = ''
                         spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
@@ -871,12 +853,7 @@ def generate_types():
                         return_type=return_type,
                         parameters=[Variable(decl_name=arg_name, api_name='arg', type_name=type_name)],
                     )
-
-                    declaration_string += fun.declaration()
-                    definition_string += fun.definition()
-                    setup_string += fun.setup()
-                    list_string.append(fun.pair())
-                    list_string.append(fun.typed_pair())
+                    member_functions.append(fun)
 
                     spirv_function = ''
                     spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
@@ -926,11 +903,7 @@ def generate_types():
                             return_type=type_name,
                             parameters=[Variable(decl_name=arg_name, api_name='arg', type_name=scale_type)],
                         )
-                        declaration_string += fun.declaration()
-                        definition_string += fun.definition()
-                        setup_string += fun.setup()
-                        list_string.append(fun.pair())
-                        list_string.append(fun.typed_pair())
+                        member_functions.append(fun)
 
                         spirv_function = ''
                         spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
@@ -959,11 +932,7 @@ def generate_types():
                             return_type=return_type,
                             parameters=[Variable(decl_name=arg_name, api_name='arg', type_name=compatible_matrix_type)],
                         )
-                        declaration_string += fun.declaration()
-                        definition_string += fun.definition()
-                        setup_string += fun.setup()
-                        list_string.append(fun.pair())
-                        list_string.append(fun.typed_pair())
+                        member_functions.append(fun)
 
                         spirv_function = ''
                         spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
@@ -987,11 +956,7 @@ def generate_types():
                             return_type=type_name,
                             parameters=[Variable(decl_name=arg_name, api_name='arg', type_name=type_name)],
                         )
-                        declaration_string += fun.declaration()
-                        definition_string += fun.definition()
-                        setup_string += fun.setup()
-                        list_string.append(fun.pair())
-                        list_string.append(fun.typed_pair())
+                        member_functions.append(fun)
 
                         if op == '&':
                             spirv_op = 'OpBitwiseAnd'
@@ -1010,7 +975,15 @@ def generate_types():
                         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
                         spirv_code += spirv_intrinsic(function_name, spirv_function)
 
-            definition_string += builtin_type.definition(setup_string, list_string)
+
+            pair_list = []
+            for fun in member_functions:
+                pair_list.append(fun.pair())
+                pair_list.append(fun.typed_pair())
+                declaration_string += fun.declaration()
+                definition_string += fun.definition()
+                setup_string += fun.setup()
+            definition_string += builtin_type.definition(setup_string, pair_list)
 
     # Matrix types
     matrix_types = ['Float32', 'Float16']
@@ -1032,7 +1005,7 @@ def generate_types():
         for row_size in range(2, 5):
             for column_size in range(2, 5):
 
-                list_string = []
+                member_functions = []
                 type_name = f'{type}x{row_size}x{column_size}'
                 data_type_name = f'{data_type_mapping[type]}x{row_size}x{column_size}'
                 intrinsic_list.append(IntrinsicPair(decl_name=f'{type_name}Type', api_name=data_type_name))
@@ -1042,6 +1015,7 @@ def generate_types():
                 
                 builtin_type = ScalarType(name=type_name, base_type=type, column_size=column_size, row_size=row_size)
                 declaration_string += builtin_type.declaration()
+                web_types["types"].append(data_type_name)
 
                 vector_ctor_name = f'{type_name}_{type}_{column_size}_ctor'
 
@@ -1059,13 +1033,7 @@ def generate_types():
                         api_name=f'arg{arg_index}',
                         type_name=f'{type}x{column_size}'
                     ))
-
-                declaration_string += fun.declaration()
-                definition_string += fun.definition()
-                setup_string += fun.setup()
-                intrinsic_list.append(fun.pair())
-                intrinsic_list.append(fun.typed_pair())
-                
+                functions.append(fun)
 
                 fun = Function(
                     decl_name=f'{type_name}_identity',
@@ -1074,12 +1042,7 @@ def generate_types():
                     compile_time=True,
                     parameters=[]
                 )
-
-                declaration_string += fun.declaration()
-                definition_string += fun.definition()
-                setup_string += fun.setup()
-                intrinsic_list.append(fun.pair())
-                intrinsic_list.append(fun.typed_pair())
+                functions.append(fun)
 
                 fun = Function(
                     decl_name=f'{type_name}_raw_list',
@@ -1094,11 +1057,7 @@ def generate_types():
                         api_name=f'arg{arg_index}',
                         type_name=type
                     ))
-                declaration_string += fun.declaration()
-                definition_string += fun.definition()
-                setup_string += fun.setup()
-                intrinsic_list.append(fun.pair())
-                intrinsic_list.append(fun.typed_pair())
+                functions.append(fun)
 
                 vec_type = f'{type}x{column_size}'
                 for name, op, idx_type in zip(index_operator_names, index_operators, index_types):
@@ -1110,11 +1069,7 @@ def generate_types():
                         return_type=vec_type,
                         parameters=[Variable(decl_name=arg_name, api_name='idx', type_name=idx_type)],
                     )
-                    declaration_string += fun.declaration()
-                    definition_string += fun.definition()
-                    setup_string += fun.setup()
-                    list_string.append(fun.pair())
-                    list_string.append(fun.typed_pair())
+                    member_functions.append(fun)
 
                     spirv_function =  f'    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, {function_name}.returnType, &{type}Type, args[0].scope);\n'
                     spirv_function += '    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);\n'
@@ -1137,11 +1092,7 @@ def generate_types():
                         return_type=f'{type}x{column_size}',
                         parameters=[Variable(decl_name=arg_name, api_name='vec', type_name=f'{type}x{row_size}')],
                     )
-                    declaration_string += fun.declaration()
-                    definition_string += fun.definition()
-                    setup_string += fun.setup()
-                    list_string.append(fun.pair())
-                    list_string.append(fun.typed_pair())
+                    member_functions.append(fun)
 
                     spirv_function = ''
                     spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
@@ -1165,11 +1116,7 @@ def generate_types():
                             return_type=type_name,
                             parameters=[Variable(decl_name=arg_name, api_name='arg', type_name=type_name)],
                         )
-                        declaration_string += fun.declaration()
-                        definition_string += fun.definition()
-                        setup_string += fun.setup()
-                        list_string.append(fun.pair())
-                        list_string.append(fun.typed_pair())
+                        member_functions.append(fun)
 
                         spirv_function = ''
                         spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
@@ -1211,11 +1158,7 @@ def generate_types():
                     return_type=type_name,
                     parameters=[Variable(decl_name=arg_name, api_name='arg', type_name=type)],
                 )
-                declaration_string += fun.declaration()
-                definition_string += fun.definition()
-                setup_string += fun.setup()
-                list_string.append(fun.pair())
-                list_string.append(fun.typed_pair())
+                member_functions.append(fun)
 
                 spirv_function = ''
                 spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
@@ -1224,7 +1167,14 @@ def generate_types():
                 spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
                 spirv_code += spirv_intrinsic(function_name, spirv_function)
 
-                definition_string += builtin_type.definition(setup_string, list_string)
+                pair_list = []
+                for fun in member_functions:
+                    pair_list.append(fun.pair())
+                    pair_list.append(fun.typed_pair())
+                    declaration_string += fun.declaration()
+                    definition_string += fun.definition()
+                    setup_string += fun.setup()
+                definition_string += builtin_type.definition(setup_string, pair_list)
 
     class Type:
         def __init__(self, name, category=None, base_type = None, api_name=None):
@@ -1261,6 +1211,9 @@ def generate_types():
 
         def pair(self):
             return IntrinsicPair(decl_name=f'{self.name}Type', api_name=self.name[0].lower() + self.name[1:] if self.api_name is None else self.api_name)
+        
+        def web_type(self):
+            return self.name
 
     # Texture types
     texture_dimensions = ['1D', '2D', '3D', 'Cube']
@@ -1269,58 +1222,50 @@ def generate_types():
     for dim, ms, array in zip(texture_dimensions, texture_multisampling, texture_array):
 
         type = Type(f'Texture{dim}', 'TextureCategory', f'Texture{dim}')
-        declaration_string += type.declaration()
-        definition_string += type.definition()
-        intrinsic_list.append(type.pair())
+        web_types["types"].append(type.web_type())
+        type_list.append(type)
 
         if ms : 
             type = Type(f'Texture{dim}MS', 'TextureCategory', f'Texture{dim}')
-            declaration_string += type.declaration()
-            definition_string += type.definition()
-            intrinsic_list.append(type.pair())
+            web_types["types"].append(type.web_type())
+            type_list.append(type)
 
             if array:
                 type = Type(f'Texture{dim}MSArray', 'TextureCategory', f'Texture{dim}')
-                declaration_string += type.declaration()
-                definition_string += type.definition()
-                intrinsic_list.append(type.pair())
+                type_list.append(type)
+                web_types["types"].append(type.web_type())
 
         if array:
             type = Type(f'Texture{dim}Array', 'TextureCategory', f'Texture{dim}')
-            declaration_string += type.declaration()
-            definition_string += type.definition()
-            intrinsic_list.append(type.pair())
+            type_list.append(type)
+            web_types["types"].append(type.web_type())
+            
 
     # Pixel cache types
 
     type = Type('PixelCache', 'PixelCacheCategory', 'PixelCache')
-    declaration_string += type.declaration()
-    definition_string += type.definition()
-    intrinsic_list.append(type.pair())
+    type_list.append(type)
+    web_types["types"].append(type.web_type())
 
     type = Type('PixelCacheMS', 'PixelCacheCategory', 'PixelCache')
-    declaration_string += type.declaration()
-    definition_string += type.definition()
-    intrinsic_list.append(type.pair())
+    type_list.append(type)
+    web_types["types"].append(type.web_type())
 
     type = Type('Sampler', 'SamplerCategory', 'Sampler')
-    declaration_string += type.declaration()
-    definition_string += type.definition()
-    intrinsic_list.append(type.pair())
+    type_list.append(type)
+    web_types["types"].append(type.web_type())
 
     type = Type('FunctionPtr', api_name='Function')
-    declaration_string += type.declaration()
-    definition_string += type.definition()
+    type_list.append(type)
+    # Don't add function to the web docs
 
     type = Type('AccelerationStructure', 'AccelerationStructureCategory', 'AccelerationStructure')
-    declaration_string += type.declaration()
-    definition_string += type.definition()
-    intrinsic_list.append(type.pair())
+    type_list.append(type)
+    web_types["types"].append(type.web_type())
 
     type = Type('Void', 'VoidCategory', 'Void')
-    declaration_string += type.declaration()
-    definition_string += type.definition()
-    intrinsic_list.append(type.pair())
+    type_list.append(type)
+    web_types["types"].append(type.web_type())
 
     class EnumMember:
         def __init__(self, decl_name, api_name=None, value=None):
@@ -1430,6 +1375,11 @@ def generate_types():
                 # We could add the underlying type name pair here without argument so it shows up in overload suggestions, like below
                 # IntrinsicPair(decl_name=f'{self.name}Type.fromUnderlyingType', api_name={data_type_mapping[self.type_name]})
             ]
+        
+        def web_type(self):
+            return self.name;
+
+    enums = []
 
     enum = Enumeration(
         name = "CompareMode",
@@ -1445,9 +1395,8 @@ def generate_types():
             EnumMember("Never")
         ]
     )
-    declaration_string += enum.declaration()
-    definition_string += enum.definition()
-    intrinsic_list += enum.pairs()
+    enums.append(enum)
+    web_types["types"].append(enum.web_type())
 
     enum = Enumeration(
         name = "StencilOp",
@@ -1463,9 +1412,8 @@ def generate_types():
             EnumMember("DecrementWrap")
         ]
     )
-    declaration_string += enum.declaration()
-    definition_string += enum.definition()
-    intrinsic_list += enum.pairs()
+    enums.append(enum)
+    web_types["types"].append(enum.web_type())
 
     enum = Enumeration(
         name = 'ExecutionScope',
@@ -1479,9 +1427,8 @@ def generate_types():
             EnumMember("Queue")
         ]
     )
-    declaration_string += enum.declaration()
-    definition_string += enum.definition()
-    intrinsic_list += enum.pairs()
+    enums.append(enum)
+    web_types["types"].append(enum.web_type())
 
     enum = Enumeration(
         name = 'MemorySemantics',
@@ -1494,9 +1441,8 @@ def generate_types():
             EnumMember(decl_name="Relaxed", value=0x10)
         ]
     )
-    declaration_string += enum.declaration()
-    definition_string += enum.definition()
-    intrinsic_list += enum.pairs()
+    enums.append(enum)
+    web_types["types"].append(enum.web_type())
 
     enum = Enumeration(
         name = 'PolygonMode',
@@ -1507,9 +1453,8 @@ def generate_types():
             EnumMember("Point")
         ]
     )
-    declaration_string += enum.declaration()
-    definition_string += enum.definition()
-    intrinsic_list += enum.pairs()
+    enums.append(enum)
+    web_types["types"].append(enum.web_type())
 
     enum = Enumeration(
         name = 'CullFace',
@@ -1521,9 +1466,8 @@ def generate_types():
             EnumMember("FrontAndBack")
         ]
     )
-    declaration_string += enum.declaration()
-    definition_string += enum.definition()
-    intrinsic_list += enum.pairs()
+    enums.append(enum)
+    web_types["types"].append(enum.web_type())
 
     enum = Enumeration(
         name = 'WindingOrder',
@@ -1533,9 +1477,8 @@ def generate_types():
             EnumMember("CounterClockwise")
         ]
     )
-    declaration_string += enum.declaration()
-    definition_string += enum.definition()
-    intrinsic_list += enum.pairs()
+    enums.append(enum)
+    web_types["types"].append(enum.web_type())
 
     enum = Enumeration(
         name = 'LogicOp',
@@ -1559,9 +1502,8 @@ def generate_types():
             EnumMember("Xor")
         ]
     )
-    declaration_string += enum.declaration()
-    definition_string += enum.definition()
-    intrinsic_list += enum.pairs()
+    enums.append(enum)
+    web_types["types"].append(enum.web_type())
 
     enum = Enumeration(
         name = 'BlendFactor',
@@ -1583,9 +1525,8 @@ def generate_types():
             EnumMember("OneMinusConstantAlpha")
         ]
     )
-    declaration_string += enum.declaration()
-    definition_string += enum.definition()
-    intrinsic_list += enum.pairs()
+    enums.append(enum)
+    web_types["types"].append(enum.web_type())
 
     enum = Enumeration(
         name = 'BlendOperation',
@@ -1598,9 +1539,8 @@ def generate_types():
             EnumMember("Max")
         ]
     )
-    declaration_string += enum.declaration()
-    definition_string += enum.definition()
-    intrinsic_list += enum.pairs()
+    enums.append(enum)
+    web_types["types"].append(enum.web_type())
 
     enum = Enumeration(
         name = 'BlendColorMask',
@@ -1613,9 +1553,8 @@ def generate_types():
             EnumMember("RGBA")
         ]
     )
-    declaration_string += enum.declaration()
-    definition_string += enum.definition()
-    intrinsic_list += enum.pairs()
+    enums.append(enum)
+    web_types["types"].append(enum.web_type())
 
     enum = Enumeration(
         name = 'FilterMode',
@@ -1634,9 +1573,8 @@ def generate_types():
             EnumMember("MinPointMagLinearMipPoint")
         ]
     )
-    declaration_string += enum.declaration()
-    definition_string += enum.definition()
-    intrinsic_list += enum.pairs()
+    enums.append(enum)
+    web_types["types"].append(enum.web_type())
 
     enum = Enumeration(
         name = 'AddressMode',
@@ -1648,9 +1586,8 @@ def generate_types():
             EnumMember("Border")
         ]
     )
-    declaration_string += enum.declaration()
-    definition_string += enum.definition()
-    intrinsic_list += enum.pairs()
+    enums.append(enum)
+    web_types["types"].append(enum.web_type())
 
     enum = Enumeration(
         name = 'Color',
@@ -1661,9 +1598,8 @@ def generate_types():
             EnumMember("White")
         ]
     )
-    declaration_string += enum.declaration()
-    definition_string += enum.definition()
-    intrinsic_list += enum.pairs()
+    enums.append(enum)
+    web_types["types"].append(enum.web_type())
 
     class StateMember:
         def __init__(self, name, data_type, array_size=1):
@@ -1718,7 +1654,11 @@ def generate_types():
             defn += f'{self.name} {self.name}Type;\n\n'
 
             return defn
+        
+        def web_type(self):
+            return self.name
 
+    states = []
     state = State(
         name = 'StencilState',
         members=[
@@ -1731,8 +1671,8 @@ def generate_types():
             StateMember('Reference', 'UInt32')
         ]
     )
-    declaration_string += state.declaration()
-    definition_string += state.definition()
+    states.append(state)
+    web_types["types"].append(state.web_type())
 
     state = State(
         name = 'RenderState',
@@ -1768,8 +1708,8 @@ def generate_types():
             StateMember('Mask', 'BlendColorMask', 8)
         ]
     )
-    declaration_string += state.declaration()
-    definition_string += state.definition()
+    states.append(state)
+    web_types["types"].append(state.web_type())
 
     state = State(
         name = 'SamplerState',
@@ -1793,8 +1733,8 @@ def generate_types():
             StateMember('UnnormalizedSamplingEnabled', 'Bool8')
         ]
     )
-    declaration_string += state.declaration()
-    definition_string += state.definition()
+    states.append(state)
+    web_types["types"].append(state.web_type())
 
     state = State(
         name = 'Program',
@@ -1816,8 +1756,8 @@ def generate_types():
             StateMember('RenderState', 'RenderState')
         ]
     )
-    declaration_string += state.declaration()
-    definition_string += state.definition()
+    states.append(state)
+    web_types["types"].append(state.web_type())
 
     source_file.write(namer.definition())
     source_file.write('} // namespace GPULang\n\n')
@@ -1835,7 +1775,20 @@ def generate_types():
     source_file.write('};\n')
     source_file.write('StaticTypeTimerStart StaticTypeTimerStartInstance;\n\n')
 
-    
+    for type in type_list:
+        declaration_string += type.declaration()
+        definition_string += type.definition()
+        intrinsic_list.append(type.pair())
+
+    for enum in enums:
+        declaration_string += enum.declaration()
+        definition_string += enum.definition()
+        intrinsic_list.extend(enum.pairs())
+
+    for state in states:
+        declaration_string += state.declaration()
+        definition_string += state.definition()
+        
     header_file.write(declaration_string[0:-1] + '\n')
     header_file.write("\n")
     source_file.write(definition_string[0:-1] + '\n')
@@ -1928,12 +1881,6 @@ def generate_types():
     intrinsics_source.write('};\n')
     intrinsics_source.write('StaticIntrinsicTimerStart StaticIntrinsicTimerStartInstance;\n\n')
 
-
-    intrinsic_decls = ''
-    intrinsic_defs = ''
-    intrinsic_setup = ''
-
-
     float_only_single_argument_intrinsics = [
         'acos', 'acosh', 'asin', 'asinh', 'atan', 'atanh', 'cos', 'cosh', 'exp',
         'exp2', 'invSqrt', 'log', 'log2', 'sin', 'sinh', 'sqrt', 'tan', 'tanh'
@@ -1977,11 +1924,7 @@ def generate_types():
                 parameters = [Variable(decl_name = argument_name, api_name = "val", type_name=type)],
                 
             )
-            intrinsic_decls += fun.declaration()
-            intrinsic_defs += fun.definition()
-            intrinsic_setup += fun.setup()
-            intrinsic_list.append(fun.pair())
-            intrinsic_list.append(fun.typed_pair())
+            functions.append(fun)
 
             spirv_function = ''
             spirv_function += '    SPIRVResult arg = LoadValueSPIRV(c, g, args[0]);\n'
@@ -1995,20 +1938,16 @@ def generate_types():
         y_name = f'atan2_{type}_y'
         x_name = f'atan2_{type}_x'
         fun = Function(
-                decl_name = function_name,
-                api_name = intrinsic,
-                return_type = type,
-                documentation = 'Returns the angle whose tangent is the quotient of the two specified numbers.',
-                parameters = [
-                    Variable(decl_name = y_name, api_name = "y", type_name=type),
-                    Variable(decl_name = x_name, api_name = "x", type_name=type)
-                ]
-            )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.pair())
-        intrinsic_list.append(fun.typed_pair())
+            decl_name = function_name,
+            api_name = intrinsic,
+            return_type = type,
+            documentation = 'Returns the angle whose tangent is the quotient of the two specified numbers.',
+            parameters = [
+                Variable(decl_name = y_name, api_name = "y", type_name=type),
+                Variable(decl_name = x_name, api_name = "x", type_name=type)
+            ]
+        )
+        functions.append(fun)
 
         spirv_function = ''
         spirv_function += '    SPIRVResult y = LoadValueSPIRV(c, g, args[0]);\n'
@@ -2033,11 +1972,7 @@ def generate_types():
                 Variable(decl_name = exponent_name, api_name = "exponent", type_name=type)
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.pair())
-        intrinsic_list.append(fun.typed_pair())
+        functions.append(fun)
 
         spirv_function = ''
         spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'
@@ -2065,11 +2000,7 @@ def generate_types():
                 Variable(decl_name = addend_name, api_name = "addend", type_name=type)
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.pair())
-        intrinsic_list.append(fun.typed_pair())
+        functions.append(fun)
 
         spirv_function = ''
         spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'
@@ -2096,11 +2027,7 @@ def generate_types():
                 Variable(decl_name = y_name, api_name = "y", type_name=type)
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.pair())
-        intrinsic_list.append(fun.typed_pair())
+        functions.append(fun)
 
         spirv_function = ''
         spirv_function += '    SPIRVResult x = LoadValueSPIRV(c, g, args[0]);\n'
@@ -2126,11 +2053,7 @@ def generate_types():
                 Variable(decl_name = normal_name, api_name = "normal", type_name=type)
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.pair())
-        intrinsic_list.append(fun.typed_pair())
+        functions.append(fun)
 
         spirv_function = ''
         spirv_function += '    SPIRVResult incident = LoadValueSPIRV(c, g, args[0]);\n'
@@ -2157,11 +2080,7 @@ def generate_types():
                 Variable(decl_name = ior_name, api_name = "ior", type_name=type)
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.pair())
-        intrinsic_list.append(fun.typed_pair())
+        functions.append(fun)
 
         spirv_function = ''
         spirv_function += '    SPIRVResult incident = LoadValueSPIRV(c, g, args[0]);\n'
@@ -2188,11 +2107,7 @@ def generate_types():
                 Variable(decl_name = v1_name, api_name = "v1", type_name=type)
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.typed_pair())
-        intrinsic_list.append(fun.pair())
+        functions.append(fun)
 
         spirv_function = ''
         spirv_function += '    SPIRVResult x = LoadValueSPIRV(c, g, args[0]);\n'
@@ -2219,11 +2134,7 @@ def generate_types():
                     Variable(decl_name = argument_name, api_name = "val", type_name=type)
                 ]
             )
-            intrinsic_decls += fun.declaration()
-            intrinsic_defs += fun.definition()
-            intrinsic_setup += fun.setup()
-            intrinsic_list.append(fun.typed_pair())
-            intrinsic_list.append(fun.pair())
+            functions.append(fun)
 
             spirv_function = ''
             spirv_function += '    SPIRVResult vec = LoadValueSPIRV(c, g, args[0]);\n'    
@@ -2247,11 +2158,7 @@ def generate_types():
                 Variable(decl_name = p1_name, api_name = "p1", type_name=type)
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.typed_pair())
-        intrinsic_list.append(fun.pair())
+        functions.append(fun)
 
         spirv_function = ''
         spirv_function += '    SPIRVResult v0 = LoadValueSPIRV(c, g, args[0]);\n'    
@@ -2278,11 +2185,7 @@ def generate_types():
                     Variable(decl_name = y_name, api_name = "y", type_name=type)
                 ]
             )
-            intrinsic_decls += fun.declaration()
-            intrinsic_defs += fun.definition()
-            intrinsic_setup += fun.setup()
-            intrinsic_list.append(fun.typed_pair())
-            intrinsic_list.append(fun.pair())
+            functions.append(fun)
 
             if  type.startswith('Float'):
                 spirv_op_type = 'F'
@@ -2315,11 +2218,7 @@ def generate_types():
                 Variable(decl_name = max_name, api_name = "max", type_name=type)
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.typed_pair())
-        intrinsic_list.append(fun.pair())
+        functions.append(fun)
    
         if  type.startswith('Float'):
             spirv_op_type = 'F'
@@ -2354,11 +2253,7 @@ def generate_types():
                 Variable(decl_name = t_name, api_name = "t", type_name=type)
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.typed_pair())
-        intrinsic_list.append(fun.pair())
+        functions.append(fun)
 
         spirv_function = ''
         spirv_function += '    SPIRVResult a = LoadValueSPIRV(c, g, args[0]);\n'    
@@ -2385,11 +2280,7 @@ def generate_types():
                 Variable(decl_name = x_name, api_name = "x", type_name=type)
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.typed_pair())
-        intrinsic_list.append(fun.pair())
+        functions.append(fun)
 
         spirv_function = ''
         spirv_function += '    SPIRVResult edge = LoadValueSPIRV(c, g, args[0]);\n'    
@@ -2416,11 +2307,7 @@ def generate_types():
                 Variable(decl_name = x_name, api_name = "x", type_name=type)
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.typed_pair())
-        intrinsic_list.append(fun.pair())
+        functions.append(fun)
     
         spirv_function = ''
         spirv_function += '    SPIRVResult edge0 = LoadValueSPIRV(c, g, args[0]);\n'    
@@ -2456,11 +2343,7 @@ def generate_types():
                     Variable(decl_name = argument_name, api_name = "val", type_name=type)
                 ]
             )
-            intrinsic_decls += fun.declaration()
-            intrinsic_defs += fun.definition()
-            intrinsic_setup += fun.setup()
-            intrinsic_list.append(fun.typed_pair())
-            intrinsic_list.append(fun.pair())
+            functions.append(fun)
 
             spirv_function = ''
             spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n' 
@@ -2499,11 +2382,7 @@ def generate_types():
                     Variable(decl_name = argument_name, api_name = "val", type_name=type)
                 ]
             )
-            intrinsic_decls += fun.declaration()
-            intrinsic_defs += fun.definition()
-            intrinsic_setup += fun.setup()
-            intrinsic_list.append(fun.typed_pair())
-            intrinsic_list.append(fun.pair())
+            functions.append(fun)
 
             if  type.startswith('Float'):
                 spirv_op_type = 'F'
@@ -2532,11 +2411,7 @@ def generate_types():
                         Variable(decl_name = argument_name, api_name = "val", type_name=type2)
                     ]
                 )
-                intrinsic_decls += fun.declaration()
-                intrinsic_defs += fun.definition()
-                intrinsic_setup += fun.setup()
-                intrinsic_list.append(fun.typed_pair())
-                intrinsic_list.append(fun.pair())
+                functions.append(fun)
 
                 spirv_function = ''
                 spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
@@ -2561,11 +2436,7 @@ def generate_types():
                         Variable(decl_name = argument_name, api_name = "val", type_name=type2)
                     ]
                 )
-                intrinsic_decls += fun.declaration()
-                intrinsic_defs += fun.definition()
-                intrinsic_setup += fun.setup()
-                intrinsic_list.append(fun.typed_pair())
-                intrinsic_list.append(fun.pair())
+                functions.append(fun)
 
                 spirv_function = ''
                 spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
@@ -2586,19 +2457,15 @@ def generate_types():
             argument_name = f'{function_name}_arg'
 
             fun = Function( 
-                    decl_name = function_name,
-                    api_name = intrinsic,
-                    return_type = type,
-                    documentation = doc,
-                    parameters = [
-                        Variable(decl_name = argument_name, api_name = "val", type_name=type)
-                    ]
-                )
-            intrinsic_decls += fun.declaration()
-            intrinsic_defs += fun.definition()
-            intrinsic_setup += fun.setup()
-            intrinsic_list.append(fun.typed_pair())
-            intrinsic_list.append(fun.pair())
+                decl_name = function_name,
+                api_name = intrinsic,
+                return_type = type,
+                documentation = doc,
+                parameters = [
+                    Variable(decl_name = argument_name, api_name = "val", type_name=type)
+                ]
+            )
+            functions.append(fun)
 
             spirv_function = ''
             spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
@@ -2631,11 +2498,7 @@ def generate_types():
                     Variable(decl_name = argument_name, api_name = "val", type_name=type)
                 ]
             )
-            intrinsic_decls += fun.declaration()
-            intrinsic_defs += fun.definition()
-            intrinsic_setup += fun.setup()
-            intrinsic_list.append(fun.typed_pair())
-            intrinsic_list.append(fun.pair())
+            functions.append(fun)
             
             spirv_function = ''
             spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
@@ -2670,11 +2533,7 @@ def generate_types():
             parameters = [
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.typed_pair())
-        intrinsic_list.append(fun.pair())
+        functions.append(fun)
 
         spirv_function = ''
         if builtin == 'OutputLayer':
@@ -2715,11 +2574,7 @@ def generate_types():
                     Variable(decl_name = argument_name, api_name = "val", type_name=type)
                 ]
             )
-            intrinsic_decls += fun.declaration()
-            intrinsic_defs += fun.definition()
-            intrinsic_setup += fun.setup()
-            intrinsic_list.append(fun.typed_pair())
-            intrinsic_list.append(fun.pair())
+            functions.append(fun)
 
             spirv_function = '' 
             if builtin == 'OutputLayer':
@@ -2752,11 +2607,7 @@ def generate_types():
                 Variable(decl_name = argument_name, api_name = "val", type_name=type)
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.typed_pair())
-        intrinsic_list.append(fun.pair())
+        functions.append(fun)
 
         spirv_function = ''
         spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
@@ -2787,11 +2638,7 @@ def generate_types():
             parameters = [
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.typed_pair())
-        intrinsic_list.append(fun.pair())
+        functions.append(fun)
 
         spirv_function = ''
         spirv_function += '    g->writer->Capability(Capabilities::Geometry);\n'
@@ -2812,11 +2659,7 @@ def generate_types():
             parameters = [
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.typed_pair())
-        intrinsic_list.append(fun.pair())
+        functions.append(fun)
 
         spirv_function = ''
         spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
@@ -2841,11 +2684,7 @@ def generate_types():
         parameters = [
         ]
     )
-    intrinsic_decls += fun.declaration()
-    intrinsic_defs += fun.definition()
-    intrinsic_setup += fun.setup()
-    intrinsic_list.append(fun.typed_pair())
-    intrinsic_list.append(fun.pair())
+    functions.append(fun)
 
     spirv_function = ''
     spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
@@ -2870,11 +2709,7 @@ def generate_types():
             Variable(decl_name = f'{function_name}_val', api_name = "val", type_name='Float32')
         ]
     )
-    intrinsic_decls += fun.declaration()
-    intrinsic_defs += fun.definition()
-    intrinsic_setup += fun.setup()
-    intrinsic_list.append(fun.typed_pair())
-    intrinsic_list.append(fun.pair())
+    functions.append(fun)
 
     spirv_function = ''
     spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
@@ -2905,11 +2740,7 @@ def generate_types():
                     Variable(decl_name = index_argument_name, api_name = "index", type_name=idx, literal=True)
                 ]
             )
-            intrinsic_decls += fun.declaration()
-            intrinsic_defs += fun.definition()
-            intrinsic_setup += fun.setup()
-            intrinsic_list.append(fun.typed_pair())
-            intrinsic_list.append(fun.pair())
+            functions.append(fun)
 
             spirv_function = ''
             spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
@@ -2952,11 +2783,7 @@ def generate_types():
             parameters = [
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.typed_pair())
-        intrinsic_list.append(fun.pair())
+        functions.append(fun)
 
         spirv_function = ''
         spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);\n'
@@ -2981,11 +2808,7 @@ def generate_types():
         parameters = [
         ]
     )
-    intrinsic_decls += fun.declaration()
-    intrinsic_defs += fun.definition()
-    intrinsic_setup += fun.setup()
-    intrinsic_list.append(fun.typed_pair())
-    intrinsic_list.append(fun.pair())
+    functions.append(fun)
 
     spirv_function = ''
     spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);\n'
@@ -3016,11 +2839,7 @@ def generate_types():
             parameters = [
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.typed_pair())
-        intrinsic_list.append(fun.pair())
+        functions.append(fun)
 
         spirv_function = ''
         spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniform);\n'
@@ -3054,11 +2873,7 @@ def generate_types():
             parameters = [
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.typed_pair())
-        intrinsic_list.append(fun.pair())
+        functions.append(fun)
 
         spirv_function = ''
         spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniform);\n'
@@ -3083,11 +2898,7 @@ def generate_types():
         parameters = [
         ]
     )
-    intrinsic_decls += fun.declaration()
-    intrinsic_defs += fun.definition()
-    intrinsic_setup += fun.setup()
-    intrinsic_list.append(fun.typed_pair())
-    intrinsic_list.append(fun.pair())
+    functions.append(fun)
 
     spirv_function = ''
     spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniform);\n'
@@ -3108,11 +2919,7 @@ def generate_types():
                 Variable(decl_name = value_argument_name, api_name = "value", type_name=type)
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.typed_pair())
-        intrinsic_list.append(fun.pair())
+        functions.append(fun)
 
         spirv_function = ''
         spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformBallot);\n'
@@ -3144,11 +2951,7 @@ def generate_types():
                 Variable(decl_name = predicate_argument_name, api_name = "predicate", type_name='Bool8')
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.typed_pair())
-        intrinsic_list.append(fun.pair())
+        functions.append(fun)
 
         spirv_function = ''
         spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformBallot);\n'
@@ -3169,11 +2972,7 @@ def generate_types():
             Variable(decl_name = mask_name, api_name = "value", type_name='UInt32x4')
         ]
     )
-    intrinsic_decls += fun.declaration()
-    intrinsic_defs += fun.definition()
-    intrinsic_setup += fun.setup()
-    intrinsic_list.append(fun.typed_pair())
-    intrinsic_list.append(fun.pair())
+    functions.append(fun)
 
     spirv_function = ''
     spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformBallot);\n'
@@ -3194,11 +2993,7 @@ def generate_types():
             Variable(decl_name = mask_name, api_name = "value", type_name='UInt32x4')
         ]
     )
-    intrinsic_decls += fun.declaration()
-    intrinsic_defs += fun.definition()
-    intrinsic_setup += fun.setup()
-    intrinsic_list.append(fun.typed_pair())
-    intrinsic_list.append(fun.pair())
+    functions.append(fun)
 
     spirv_function = ''
     spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformBallot);\n'
@@ -3219,11 +3014,7 @@ def generate_types():
             Variable(decl_name = mask_name, api_name = "value", type_name='UInt32x4')
         ]
     )
-    intrinsic_decls += fun.declaration()
-    intrinsic_defs += fun.definition()
-    intrinsic_setup += fun.setup()
-    intrinsic_list.append(fun.typed_pair())
-    intrinsic_list.append(fun.pair())
+    functions.append(fun)
 
     spirv_function = ''
     spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformBallot);\n'
@@ -3246,11 +3037,7 @@ def generate_types():
             Variable(decl_name = index_name, api_name = "index", type_name='UInt32', literal=True)
         ]
     )
-    intrinsic_decls += fun.declaration()
-    intrinsic_defs += fun.definition()
-    intrinsic_setup += fun.setup()
-    intrinsic_list.append(fun.typed_pair())
-    intrinsic_list.append(fun.pair())
+    functions.append(fun)
 
     spirv_function = ''
     spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformBallot);\n'
@@ -3282,11 +3069,7 @@ def generate_types():
                     Variable(decl_name = value_argument_name, api_name = "value", type_name=type)
                 ]
             )
-            intrinsic_decls += fun.declaration()
-            intrinsic_defs += fun.definition()
-            intrinsic_setup += fun.setup()
-            intrinsic_list.append(fun.typed_pair())
-            intrinsic_list.append(fun.pair())
+            functions.append(fun)
 
             spirv_function = ''
             spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformQuad);\n'
@@ -3328,11 +3111,7 @@ def generate_types():
                     Variable(decl_name = semantics_argument_name, api_name = "semantics", type_name='MemorySemantics', literal=True)
                 ]
             )
-            intrinsic_decls += fun.declaration()
-            intrinsic_defs += fun.definition()
-            intrinsic_setup += fun.setup()
-            intrinsic_list.append(fun.typed_pair())
-            intrinsic_list.append(fun.pair())
+            functions.append(fun)
 
             spirv_function = ''
             spirv_function += '    uint32_t scope = ScopeToAtomicScope(args[0].scope);\n'
@@ -3372,11 +3151,7 @@ def generate_types():
                     Variable(decl_name = semantics_argument_name, api_name = "semantics", type_name='MemorySemantics', literal=True)
                 ]
             )
-            intrinsic_decls += fun.declaration()
-            intrinsic_defs += fun.definition()
-            intrinsic_setup += fun.setup()
-            intrinsic_list.append(fun.typed_pair())
-            intrinsic_list.append(fun.pair())
+            functions.append(fun)
 
             spirv_function = ''
             spirv_function += '    uint32_t scope = ScopeToAtomicScope(args[0].scope);\n'
@@ -3408,11 +3183,7 @@ def generate_types():
                 Variable(decl_name = semantics_argument_name, api_name = "semantics", type_name='MemorySemantics', literal=True)
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.typed_pair())
-        intrinsic_list.append(fun.pair())
+        functions.append(fun)
 
         spirv_function = ''
         spirv_function += '    uint32_t scope = ScopeToAtomicScope(args[0].scope);\n'
@@ -3446,11 +3217,7 @@ def generate_types():
                 Variable(decl_name = count_argument_name, api_name = "count", type_name=type)
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.typed_pair())
-        intrinsic_list.append(fun.pair())
+        functions.append(fun)
 
         spirv_function = ''
         spirv_function += '    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);\n'
@@ -3482,11 +3249,7 @@ def generate_types():
                 Variable(decl_name = count_argument_name, api_name = "count", type_name=type)
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.typed_pair())
-        intrinsic_list.append(fun.pair())
+        functions.append(fun)
 
         if type.startswith('UInt'):
             spirv_op = "OpBitFieldUExtract"
@@ -3522,11 +3285,7 @@ def generate_types():
                     Variable(decl_name = base_argument_name, api_name = "base", type_name=type)
                 ]
             )
-            intrinsic_decls += fun.declaration()
-            intrinsic_defs += fun.definition()
-            intrinsic_setup += fun.setup()
-            intrinsic_list.append(fun.typed_pair())
-            intrinsic_list.append(fun.pair())
+            functions.append(fun)
 
             spirv_function = ''
             spirv_function += '    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);\n'
@@ -3555,11 +3314,7 @@ def generate_types():
             parameters = [
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.typed_pair())
-        intrinsic_list.append(fun.pair())
+        functions.append(fun)
 
         if intrinsic.endswith('Subgroup'):
             scope = '3'
@@ -3600,11 +3355,7 @@ def generate_types():
             parameters = [
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.typed_pair())
-        intrinsic_list.append(fun.pair())
+        functions.append(fun)
 
         if intrinsic.endswith('Buffer'):
             scope = '2'
@@ -3701,11 +3452,7 @@ def generate_types():
                 Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True)
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.typed_pair())
-        intrinsic_list.append(fun.pair())
+        functions.append(fun)
 
         spirv_function = ''
         spirv_function += '    g->writer->Capability(Capabilities::ImageQuery);\n'
@@ -3731,11 +3478,7 @@ def generate_types():
                 Variable(decl_name = mip_argument_name, api_name = "mip", type_name='UInt32')
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.typed_pair())
-        intrinsic_list.append(fun.pair())
+        functions.append(fun)
 
         spirv_function = ''
         spirv_function += '    g->writer->Capability(Capabilities::ImageQuery);\n'
@@ -3759,11 +3502,7 @@ def generate_types():
                 Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True),
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.typed_pair())
-        intrinsic_list.append(fun.pair())
+        functions.append(fun)
 
         spirv_function = ''
         spirv_function += '    g->writer->Capability(Capabilities::ImageQuery);\n'
@@ -3786,11 +3525,7 @@ def generate_types():
                 Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True),
             ]
         )
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.typed_pair())
-        intrinsic_list.append(fun.pair())
+        functions.append(fun)
 
         spirv_function = ''
         spirv_function += '    g->writer->Capability(Capabilities::ImageQuery);\n'
@@ -3831,11 +3566,7 @@ def generate_types():
                     Variable(decl_name = coordinate_argument_name, api_name = "coordinate", type_name=coordinate_type)
                 ]
             )
-            intrinsic_decls += fun.declaration()
-            intrinsic_defs += fun.definition()
-            intrinsic_setup += fun.setup()
-            intrinsic_list.append(fun.typed_pair())
-            intrinsic_list.append(fun.pair())
+            functions.append(fun)
 
             spirv_function = ''
             if prefix: # Prefix here is merely 'Sampled'
@@ -3886,11 +3617,7 @@ def generate_types():
                     Variable(decl_name = f'{function_name}_value', api_name = "value", type_name='Float32x4')
                 )
 
-            intrinsic_decls += fun.declaration()
-            intrinsic_defs += fun.definition()
-            intrinsic_setup += fun.setup()
-            intrinsic_list.append(fun.typed_pair())
-            intrinsic_list.append(fun.pair())
+            functions.append(fun)
 
             spirv_function = ''
             spirv_function += '    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);\n'
@@ -3947,11 +3674,7 @@ def generate_types():
                     Variable(decl_name = f'{function_name}_sample', api_name = "sample", type_name='UInt32')
                 )
 
-            intrinsic_decls += fun.declaration()
-            intrinsic_defs += fun.definition()
-            intrinsic_setup += fun.setup()
-            intrinsic_list.append(fun.typed_pair())
-            intrinsic_list.append(fun.pair())
+            functions.append(fun)
 
             spirv_function = ''
             spirv_function += '    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);\n'
@@ -3997,11 +3720,7 @@ def generate_types():
                         Variable(decl_name = f'{function_name}_offset', api_name = "offset", type_name='UInt32')
                     )
 
-                intrinsic_decls += fun.declaration()
-                intrinsic_defs += fun.definition()
-                intrinsic_setup += fun.setup()
-                intrinsic_list.append(fun.typed_pair())
-                intrinsic_list.append(fun.pair())
+                functions.append(fun)
 
                 spirv_function = ''
                 spirv_function += '    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);\n'
@@ -4036,11 +3755,7 @@ def generate_types():
                 Variable(decl_name = f'{function_name}_sample', api_name = "sample", type_name='UInt32')
             )
 
-        intrinsic_decls += fun.declaration()
-        intrinsic_defs += fun.definition()
-        intrinsic_setup += fun.setup()
-        intrinsic_list.append(fun.typed_pair())
-        intrinsic_list.append(fun.pair())
+        functions.append(fun)
         
         spirv_function = ''
         spirv_function += '    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);\n'
@@ -4133,11 +3848,7 @@ def generate_types():
                                     Variable(decl_name = f'{function_name}_offset', api_name = "offset", type_name=coordinate_type)
                                 )
                          
-                            intrinsic_decls += fun.declaration()
-                            intrinsic_defs += fun.definition()
-                            intrinsic_setup += fun.setup()
-                            intrinsic_list.append(fun.typed_pair())
-                            intrinsic_list.append(fun.pair())
+                            functions.append(fun)
 
                             spirv_function = ''
                             spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
@@ -4205,9 +3916,20 @@ def generate_types():
     spirv_intrinsics.write('\n};\n')
     #spirv_intrinsics.write('} // namespace GPULang\n\n')
     
+    intrinsic_decls = ''
+    intrinsic_defs = ''
+    intrinsic_setup = ''
+    for fun in functions:
+        intrinsic_decls += fun.declaration()
+        intrinsic_defs += fun.definition()
+        intrinsic_setup += fun.setup()
+        intrinsic_list.append(fun.typed_pair())
+        intrinsic_list.append(fun.pair())
     intrinsics_header.write(intrinsic_decls)
     intrinsics_header.write('void SetupIntrinsics();\n\n')
 
+    
+    
     intrinsic_list.sort(key=IntrinsicSortKey)
     intrinsics_header.write(f'inline constexpr StaticMap<ConstantString, Symbol*, {len(intrinsic_list)}> DefaultIntrinsics = {{\n')
     intrinsics_header.write(',\n'.join(f'    std::pair{{ "{i.api_name}", &{i.decl_name} }} /* {n} */' for n, i in enumerate(intrinsic_list)))

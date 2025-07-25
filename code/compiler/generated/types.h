@@ -61,34 +61,6 @@ struct Float32 : public Type
 };
 extern Float32 Float32Type;
 
-/// f32 with UInt32
-extern Variable Float32_from_UInt32_arg;
-extern Function Float32_from_UInt32;
-
-/// f32 with Int32
-extern Variable Float32_from_Int32_arg;
-extern Function Float32_from_Int32;
-
-/// f32 with Bool8
-extern Variable Float32_from_Bool8_arg;
-extern Function Float32_from_Bool8;
-
-/// f32 with Float16
-extern Variable Float32_from_Float16_arg;
-extern Function Float32_from_Float16;
-
-/// f32 with UInt16
-extern Variable Float32_from_UInt16_arg;
-extern Function Float32_from_UInt16;
-
-/// f32 with Int16
-extern Variable Float32_from_Int16_arg;
-extern Function Float32_from_Int16;
-
-/// f32 with Float32
-extern Variable Float32_ctor0_arg0_Float32;
-extern Function Float32_ctor0;
-
 /// operator[] with Int32
 extern Variable Float32_operator_index_Int32_arg;
 extern Function Float32_operator_index_Int32;
@@ -170,34 +142,6 @@ struct UInt32 : public Type
     UInt32();
 };
 extern UInt32 UInt32Type;
-
-/// u32 with Float32
-extern Variable UInt32_from_Float32_arg;
-extern Function UInt32_from_Float32;
-
-/// u32 with Int32
-extern Variable UInt32_from_Int32_arg;
-extern Function UInt32_from_Int32;
-
-/// u32 with Bool8
-extern Variable UInt32_from_Bool8_arg;
-extern Function UInt32_from_Bool8;
-
-/// u32 with Float16
-extern Variable UInt32_from_Float16_arg;
-extern Function UInt32_from_Float16;
-
-/// u32 with UInt16
-extern Variable UInt32_from_UInt16_arg;
-extern Function UInt32_from_UInt16;
-
-/// u32 with Int16
-extern Variable UInt32_from_Int16_arg;
-extern Function UInt32_from_Int16;
-
-/// u32 with UInt32
-extern Variable UInt32_ctor0_arg0_UInt32;
-extern Function UInt32_ctor0;
 
 /// operator[] with Int32
 extern Variable UInt32_operator_index_Int32_arg;
@@ -321,34 +265,6 @@ struct Int32 : public Type
 };
 extern Int32 Int32Type;
 
-/// i32 with Float32
-extern Variable Int32_from_Float32_arg;
-extern Function Int32_from_Float32;
-
-/// i32 with UInt32
-extern Variable Int32_from_UInt32_arg;
-extern Function Int32_from_UInt32;
-
-/// i32 with Bool8
-extern Variable Int32_from_Bool8_arg;
-extern Function Int32_from_Bool8;
-
-/// i32 with Float16
-extern Variable Int32_from_Float16_arg;
-extern Function Int32_from_Float16;
-
-/// i32 with UInt16
-extern Variable Int32_from_UInt16_arg;
-extern Function Int32_from_UInt16;
-
-/// i32 with Int16
-extern Variable Int32_from_Int16_arg;
-extern Function Int32_from_Int16;
-
-/// i32 with Int32
-extern Variable Int32_ctor0_arg0_Int32;
-extern Function Int32_ctor0;
-
 /// operator[] with Int32
 extern Variable Int32_operator_index_Int32_arg;
 extern Function Int32_operator_index_Int32;
@@ -471,26 +387,6 @@ struct Bool8 : public Type
 };
 extern Bool8 Bool8Type;
 
-/// b8 with UInt32
-extern Variable Bool8_from_UInt32_arg;
-extern Function Bool8_from_UInt32;
-
-/// b8 with Int32
-extern Variable Bool8_from_Int32_arg;
-extern Function Bool8_from_Int32;
-
-/// b8 with UInt16
-extern Variable Bool8_from_UInt16_arg;
-extern Function Bool8_from_UInt16;
-
-/// b8 with Int16
-extern Variable Bool8_from_Int16_arg;
-extern Function Bool8_from_Int16;
-
-/// b8 with Bool8
-extern Variable Bool8_ctor0_arg0_Bool8;
-extern Function Bool8_ctor0;
-
 /// operator[] with Int32
 extern Variable Bool8_operator_index_Int32_arg;
 extern Function Bool8_operator_index_Int32;
@@ -528,34 +424,6 @@ struct Float16 : public Type
     Float16();
 };
 extern Float16 Float16Type;
-
-/// f16 with Float32
-extern Variable Float16_from_Float32_arg;
-extern Function Float16_from_Float32;
-
-/// f16 with UInt32
-extern Variable Float16_from_UInt32_arg;
-extern Function Float16_from_UInt32;
-
-/// f16 with Int32
-extern Variable Float16_from_Int32_arg;
-extern Function Float16_from_Int32;
-
-/// f16 with Bool8
-extern Variable Float16_from_Bool8_arg;
-extern Function Float16_from_Bool8;
-
-/// f16 with UInt16
-extern Variable Float16_from_UInt16_arg;
-extern Function Float16_from_UInt16;
-
-/// f16 with Int16
-extern Variable Float16_from_Int16_arg;
-extern Function Float16_from_Int16;
-
-/// f16 with Float16
-extern Variable Float16_ctor0_arg0_Float16;
-extern Function Float16_ctor0;
 
 /// operator[] with Int32
 extern Variable Float16_operator_index_Int32_arg;
@@ -638,34 +506,6 @@ struct UInt16 : public Type
     UInt16();
 };
 extern UInt16 UInt16Type;
-
-/// u16 with Float32
-extern Variable UInt16_from_Float32_arg;
-extern Function UInt16_from_Float32;
-
-/// u16 with UInt32
-extern Variable UInt16_from_UInt32_arg;
-extern Function UInt16_from_UInt32;
-
-/// u16 with Int32
-extern Variable UInt16_from_Int32_arg;
-extern Function UInt16_from_Int32;
-
-/// u16 with Bool8
-extern Variable UInt16_from_Bool8_arg;
-extern Function UInt16_from_Bool8;
-
-/// u16 with Float16
-extern Variable UInt16_from_Float16_arg;
-extern Function UInt16_from_Float16;
-
-/// u16 with Int16
-extern Variable UInt16_from_Int16_arg;
-extern Function UInt16_from_Int16;
-
-/// u16 with UInt16
-extern Variable UInt16_ctor0_arg0_UInt16;
-extern Function UInt16_ctor0;
 
 /// operator[] with Int32
 extern Variable UInt16_operator_index_Int32_arg;
@@ -789,34 +629,6 @@ struct Int16 : public Type
 };
 extern Int16 Int16Type;
 
-/// i16 with Float32
-extern Variable Int16_from_Float32_arg;
-extern Function Int16_from_Float32;
-
-/// i16 with UInt32
-extern Variable Int16_from_UInt32_arg;
-extern Function Int16_from_UInt32;
-
-/// i16 with Int32
-extern Variable Int16_from_Int32_arg;
-extern Function Int16_from_Int32;
-
-/// i16 with Bool8
-extern Variable Int16_from_Bool8_arg;
-extern Function Int16_from_Bool8;
-
-/// i16 with Float16
-extern Variable Int16_from_Float16_arg;
-extern Function Int16_from_Float16;
-
-/// i16 with UInt16
-extern Variable Int16_from_UInt16_arg;
-extern Function Int16_from_UInt16;
-
-/// i16 with Int16
-extern Variable Int16_ctor0_arg0_Int16;
-extern Function Int16_ctor0;
-
 /// operator[] with Int32
 extern Variable Int16_operator_index_Int32_arg;
 extern Function Int16_operator_index_Int32;
@@ -939,67 +751,6 @@ struct Float32x2 : public Type
 };
 extern Float32x2 Float32x2Type;
 
-/// f32x2 with Float32x2
-extern Variable Float32x2_from_Float32x2_arg;
-extern Function Float32x2_from_Float32x2;
-
-/// f32x2 with Float32
-extern Variable Float32x2_splat_Float32_arg;
-extern Function Float32x2_splat_Float32;
-
-/// f32x2 with UInt32x2
-extern Variable Float32x2_from_UInt32x2_arg;
-extern Function Float32x2_from_UInt32x2;
-
-/// f32x2 with UInt32
-extern Variable Float32x2_splat_UInt32_arg;
-extern Function Float32x2_splat_UInt32;
-
-/// f32x2 with Int32x2
-extern Variable Float32x2_from_Int32x2_arg;
-extern Function Float32x2_from_Int32x2;
-
-/// f32x2 with Int32
-extern Variable Float32x2_splat_Int32_arg;
-extern Function Float32x2_splat_Int32;
-
-/// f32x2 with Bool8x2
-extern Variable Float32x2_from_Bool8x2_arg;
-extern Function Float32x2_from_Bool8x2;
-
-/// f32x2 with Bool8
-extern Variable Float32x2_splat_Bool8_arg;
-extern Function Float32x2_splat_Bool8;
-
-/// f32x2 with Float16x2
-extern Variable Float32x2_from_Float16x2_arg;
-extern Function Float32x2_from_Float16x2;
-
-/// f32x2 with Float16
-extern Variable Float32x2_splat_Float16_arg;
-extern Function Float32x2_splat_Float16;
-
-/// f32x2 with UInt16x2
-extern Variable Float32x2_from_UInt16x2_arg;
-extern Function Float32x2_from_UInt16x2;
-
-/// f32x2 with UInt16
-extern Variable Float32x2_splat_UInt16_arg;
-extern Function Float32x2_splat_UInt16;
-
-/// f32x2 with Int16x2
-extern Variable Float32x2_from_Int16x2_arg;
-extern Function Float32x2_from_Int16x2;
-
-/// f32x2 with Int16
-extern Variable Float32x2_splat_Int16_arg;
-extern Function Float32x2_splat_Int16;
-
-/// f32x2 with Float32, Float32
-extern Variable Float32x2_ctor0_arg0_Float32;
-extern Variable Float32x2_ctor0_arg1_Float32;
-extern Function Float32x2_ctor0;
-
 /// operator[] with Int32
 extern Variable Float32x2_operator_index_Int32_arg;
 extern Function Float32x2_operator_index_Int32;
@@ -1117,67 +868,6 @@ struct UInt32x2 : public Type
     UInt32x2();
 };
 extern UInt32x2 UInt32x2Type;
-
-/// u32x2 with Float32x2
-extern Variable UInt32x2_from_Float32x2_arg;
-extern Function UInt32x2_from_Float32x2;
-
-/// u32x2 with Float32
-extern Variable UInt32x2_splat_Float32_arg;
-extern Function UInt32x2_splat_Float32;
-
-/// u32x2 with UInt32x2
-extern Variable UInt32x2_from_UInt32x2_arg;
-extern Function UInt32x2_from_UInt32x2;
-
-/// u32x2 with UInt32
-extern Variable UInt32x2_splat_UInt32_arg;
-extern Function UInt32x2_splat_UInt32;
-
-/// u32x2 with Int32x2
-extern Variable UInt32x2_from_Int32x2_arg;
-extern Function UInt32x2_from_Int32x2;
-
-/// u32x2 with Int32
-extern Variable UInt32x2_splat_Int32_arg;
-extern Function UInt32x2_splat_Int32;
-
-/// u32x2 with Bool8x2
-extern Variable UInt32x2_from_Bool8x2_arg;
-extern Function UInt32x2_from_Bool8x2;
-
-/// u32x2 with Bool8
-extern Variable UInt32x2_splat_Bool8_arg;
-extern Function UInt32x2_splat_Bool8;
-
-/// u32x2 with Float16x2
-extern Variable UInt32x2_from_Float16x2_arg;
-extern Function UInt32x2_from_Float16x2;
-
-/// u32x2 with Float16
-extern Variable UInt32x2_splat_Float16_arg;
-extern Function UInt32x2_splat_Float16;
-
-/// u32x2 with UInt16x2
-extern Variable UInt32x2_from_UInt16x2_arg;
-extern Function UInt32x2_from_UInt16x2;
-
-/// u32x2 with UInt16
-extern Variable UInt32x2_splat_UInt16_arg;
-extern Function UInt32x2_splat_UInt16;
-
-/// u32x2 with Int16x2
-extern Variable UInt32x2_from_Int16x2_arg;
-extern Function UInt32x2_from_Int16x2;
-
-/// u32x2 with Int16
-extern Variable UInt32x2_splat_Int16_arg;
-extern Function UInt32x2_splat_Int16;
-
-/// u32x2 with UInt32, UInt32
-extern Variable UInt32x2_ctor0_arg0_UInt32;
-extern Variable UInt32x2_ctor0_arg1_UInt32;
-extern Function UInt32x2_ctor0;
 
 /// operator[] with Int32
 extern Variable UInt32x2_operator_index_Int32_arg;
@@ -1325,67 +1015,6 @@ struct Int32x2 : public Type
 };
 extern Int32x2 Int32x2Type;
 
-/// i32x2 with Float32x2
-extern Variable Int32x2_from_Float32x2_arg;
-extern Function Int32x2_from_Float32x2;
-
-/// i32x2 with Float32
-extern Variable Int32x2_splat_Float32_arg;
-extern Function Int32x2_splat_Float32;
-
-/// i32x2 with UInt32x2
-extern Variable Int32x2_from_UInt32x2_arg;
-extern Function Int32x2_from_UInt32x2;
-
-/// i32x2 with UInt32
-extern Variable Int32x2_splat_UInt32_arg;
-extern Function Int32x2_splat_UInt32;
-
-/// i32x2 with Int32x2
-extern Variable Int32x2_from_Int32x2_arg;
-extern Function Int32x2_from_Int32x2;
-
-/// i32x2 with Int32
-extern Variable Int32x2_splat_Int32_arg;
-extern Function Int32x2_splat_Int32;
-
-/// i32x2 with Bool8x2
-extern Variable Int32x2_from_Bool8x2_arg;
-extern Function Int32x2_from_Bool8x2;
-
-/// i32x2 with Bool8
-extern Variable Int32x2_splat_Bool8_arg;
-extern Function Int32x2_splat_Bool8;
-
-/// i32x2 with Float16x2
-extern Variable Int32x2_from_Float16x2_arg;
-extern Function Int32x2_from_Float16x2;
-
-/// i32x2 with Float16
-extern Variable Int32x2_splat_Float16_arg;
-extern Function Int32x2_splat_Float16;
-
-/// i32x2 with UInt16x2
-extern Variable Int32x2_from_UInt16x2_arg;
-extern Function Int32x2_from_UInt16x2;
-
-/// i32x2 with UInt16
-extern Variable Int32x2_splat_UInt16_arg;
-extern Function Int32x2_splat_UInt16;
-
-/// i32x2 with Int16x2
-extern Variable Int32x2_from_Int16x2_arg;
-extern Function Int32x2_from_Int16x2;
-
-/// i32x2 with Int16
-extern Variable Int32x2_splat_Int16_arg;
-extern Function Int32x2_splat_Int16;
-
-/// i32x2 with Int32, Int32
-extern Variable Int32x2_ctor0_arg0_Int32;
-extern Variable Int32x2_ctor0_arg1_Int32;
-extern Function Int32x2_ctor0;
-
 /// operator[] with Int32
 extern Variable Int32x2_operator_index_Int32_arg;
 extern Function Int32x2_operator_index_Int32;
@@ -1532,51 +1161,6 @@ struct Bool8x2 : public Type
 };
 extern Bool8x2 Bool8x2Type;
 
-/// b8x2 with UInt32x2
-extern Variable Bool8x2_from_UInt32x2_arg;
-extern Function Bool8x2_from_UInt32x2;
-
-/// b8x2 with UInt32
-extern Variable Bool8x2_splat_UInt32_arg;
-extern Function Bool8x2_splat_UInt32;
-
-/// b8x2 with Int32x2
-extern Variable Bool8x2_from_Int32x2_arg;
-extern Function Bool8x2_from_Int32x2;
-
-/// b8x2 with Int32
-extern Variable Bool8x2_splat_Int32_arg;
-extern Function Bool8x2_splat_Int32;
-
-/// b8x2 with Bool8x2
-extern Variable Bool8x2_from_Bool8x2_arg;
-extern Function Bool8x2_from_Bool8x2;
-
-/// b8x2 with Bool8
-extern Variable Bool8x2_splat_Bool8_arg;
-extern Function Bool8x2_splat_Bool8;
-
-/// b8x2 with UInt16x2
-extern Variable Bool8x2_from_UInt16x2_arg;
-extern Function Bool8x2_from_UInt16x2;
-
-/// b8x2 with UInt16
-extern Variable Bool8x2_splat_UInt16_arg;
-extern Function Bool8x2_splat_UInt16;
-
-/// b8x2 with Int16x2
-extern Variable Bool8x2_from_Int16x2_arg;
-extern Function Bool8x2_from_Int16x2;
-
-/// b8x2 with Int16
-extern Variable Bool8x2_splat_Int16_arg;
-extern Function Bool8x2_splat_Int16;
-
-/// b8x2 with Bool8, Bool8
-extern Variable Bool8x2_ctor0_arg0_Bool8;
-extern Variable Bool8x2_ctor0_arg1_Bool8;
-extern Function Bool8x2_ctor0;
-
 /// operator[] with Int32
 extern Variable Bool8x2_operator_index_Int32_arg;
 extern Function Bool8x2_operator_index_Int32;
@@ -1614,67 +1198,6 @@ struct Float16x2 : public Type
     Float16x2();
 };
 extern Float16x2 Float16x2Type;
-
-/// f16x2 with Float32x2
-extern Variable Float16x2_from_Float32x2_arg;
-extern Function Float16x2_from_Float32x2;
-
-/// f16x2 with Float32
-extern Variable Float16x2_splat_Float32_arg;
-extern Function Float16x2_splat_Float32;
-
-/// f16x2 with UInt32x2
-extern Variable Float16x2_from_UInt32x2_arg;
-extern Function Float16x2_from_UInt32x2;
-
-/// f16x2 with UInt32
-extern Variable Float16x2_splat_UInt32_arg;
-extern Function Float16x2_splat_UInt32;
-
-/// f16x2 with Int32x2
-extern Variable Float16x2_from_Int32x2_arg;
-extern Function Float16x2_from_Int32x2;
-
-/// f16x2 with Int32
-extern Variable Float16x2_splat_Int32_arg;
-extern Function Float16x2_splat_Int32;
-
-/// f16x2 with Bool8x2
-extern Variable Float16x2_from_Bool8x2_arg;
-extern Function Float16x2_from_Bool8x2;
-
-/// f16x2 with Bool8
-extern Variable Float16x2_splat_Bool8_arg;
-extern Function Float16x2_splat_Bool8;
-
-/// f16x2 with Float16x2
-extern Variable Float16x2_from_Float16x2_arg;
-extern Function Float16x2_from_Float16x2;
-
-/// f16x2 with Float16
-extern Variable Float16x2_splat_Float16_arg;
-extern Function Float16x2_splat_Float16;
-
-/// f16x2 with UInt16x2
-extern Variable Float16x2_from_UInt16x2_arg;
-extern Function Float16x2_from_UInt16x2;
-
-/// f16x2 with UInt16
-extern Variable Float16x2_splat_UInt16_arg;
-extern Function Float16x2_splat_UInt16;
-
-/// f16x2 with Int16x2
-extern Variable Float16x2_from_Int16x2_arg;
-extern Function Float16x2_from_Int16x2;
-
-/// f16x2 with Int16
-extern Variable Float16x2_splat_Int16_arg;
-extern Function Float16x2_splat_Int16;
-
-/// f16x2 with Float16, Float16
-extern Variable Float16x2_ctor0_arg0_Float16;
-extern Variable Float16x2_ctor0_arg1_Float16;
-extern Function Float16x2_ctor0;
 
 /// operator[] with Int32
 extern Variable Float16x2_operator_index_Int32_arg;
@@ -1793,67 +1316,6 @@ struct UInt16x2 : public Type
     UInt16x2();
 };
 extern UInt16x2 UInt16x2Type;
-
-/// u16x2 with Float32x2
-extern Variable UInt16x2_from_Float32x2_arg;
-extern Function UInt16x2_from_Float32x2;
-
-/// u16x2 with Float32
-extern Variable UInt16x2_splat_Float32_arg;
-extern Function UInt16x2_splat_Float32;
-
-/// u16x2 with UInt32x2
-extern Variable UInt16x2_from_UInt32x2_arg;
-extern Function UInt16x2_from_UInt32x2;
-
-/// u16x2 with UInt32
-extern Variable UInt16x2_splat_UInt32_arg;
-extern Function UInt16x2_splat_UInt32;
-
-/// u16x2 with Int32x2
-extern Variable UInt16x2_from_Int32x2_arg;
-extern Function UInt16x2_from_Int32x2;
-
-/// u16x2 with Int32
-extern Variable UInt16x2_splat_Int32_arg;
-extern Function UInt16x2_splat_Int32;
-
-/// u16x2 with Bool8x2
-extern Variable UInt16x2_from_Bool8x2_arg;
-extern Function UInt16x2_from_Bool8x2;
-
-/// u16x2 with Bool8
-extern Variable UInt16x2_splat_Bool8_arg;
-extern Function UInt16x2_splat_Bool8;
-
-/// u16x2 with Float16x2
-extern Variable UInt16x2_from_Float16x2_arg;
-extern Function UInt16x2_from_Float16x2;
-
-/// u16x2 with Float16
-extern Variable UInt16x2_splat_Float16_arg;
-extern Function UInt16x2_splat_Float16;
-
-/// u16x2 with UInt16x2
-extern Variable UInt16x2_from_UInt16x2_arg;
-extern Function UInt16x2_from_UInt16x2;
-
-/// u16x2 with UInt16
-extern Variable UInt16x2_splat_UInt16_arg;
-extern Function UInt16x2_splat_UInt16;
-
-/// u16x2 with Int16x2
-extern Variable UInt16x2_from_Int16x2_arg;
-extern Function UInt16x2_from_Int16x2;
-
-/// u16x2 with Int16
-extern Variable UInt16x2_splat_Int16_arg;
-extern Function UInt16x2_splat_Int16;
-
-/// u16x2 with UInt16, UInt16
-extern Variable UInt16x2_ctor0_arg0_UInt16;
-extern Variable UInt16x2_ctor0_arg1_UInt16;
-extern Function UInt16x2_ctor0;
 
 /// operator[] with Int32
 extern Variable UInt16x2_operator_index_Int32_arg;
@@ -2001,67 +1463,6 @@ struct Int16x2 : public Type
 };
 extern Int16x2 Int16x2Type;
 
-/// i16x2 with Float32x2
-extern Variable Int16x2_from_Float32x2_arg;
-extern Function Int16x2_from_Float32x2;
-
-/// i16x2 with Float32
-extern Variable Int16x2_splat_Float32_arg;
-extern Function Int16x2_splat_Float32;
-
-/// i16x2 with UInt32x2
-extern Variable Int16x2_from_UInt32x2_arg;
-extern Function Int16x2_from_UInt32x2;
-
-/// i16x2 with UInt32
-extern Variable Int16x2_splat_UInt32_arg;
-extern Function Int16x2_splat_UInt32;
-
-/// i16x2 with Int32x2
-extern Variable Int16x2_from_Int32x2_arg;
-extern Function Int16x2_from_Int32x2;
-
-/// i16x2 with Int32
-extern Variable Int16x2_splat_Int32_arg;
-extern Function Int16x2_splat_Int32;
-
-/// i16x2 with Bool8x2
-extern Variable Int16x2_from_Bool8x2_arg;
-extern Function Int16x2_from_Bool8x2;
-
-/// i16x2 with Bool8
-extern Variable Int16x2_splat_Bool8_arg;
-extern Function Int16x2_splat_Bool8;
-
-/// i16x2 with Float16x2
-extern Variable Int16x2_from_Float16x2_arg;
-extern Function Int16x2_from_Float16x2;
-
-/// i16x2 with Float16
-extern Variable Int16x2_splat_Float16_arg;
-extern Function Int16x2_splat_Float16;
-
-/// i16x2 with UInt16x2
-extern Variable Int16x2_from_UInt16x2_arg;
-extern Function Int16x2_from_UInt16x2;
-
-/// i16x2 with UInt16
-extern Variable Int16x2_splat_UInt16_arg;
-extern Function Int16x2_splat_UInt16;
-
-/// i16x2 with Int16x2
-extern Variable Int16x2_from_Int16x2_arg;
-extern Function Int16x2_from_Int16x2;
-
-/// i16x2 with Int16
-extern Variable Int16x2_splat_Int16_arg;
-extern Function Int16x2_splat_Int16;
-
-/// i16x2 with Int16, Int16
-extern Variable Int16x2_ctor0_arg0_Int16;
-extern Variable Int16x2_ctor0_arg1_Int16;
-extern Function Int16x2_ctor0;
-
 /// operator[] with Int32
 extern Variable Int16x2_operator_index_Int32_arg;
 extern Function Int16x2_operator_index_Int32;
@@ -2208,78 +1609,6 @@ struct Float32x3 : public Type
 };
 extern Float32x3 Float32x3Type;
 
-/// f32x3 with Float32x3
-extern Variable Float32x3_from_Float32x3_arg;
-extern Function Float32x3_from_Float32x3;
-
-/// f32x3 with Float32
-extern Variable Float32x3_splat_Float32_arg;
-extern Function Float32x3_splat_Float32;
-
-/// f32x3 with UInt32x3
-extern Variable Float32x3_from_UInt32x3_arg;
-extern Function Float32x3_from_UInt32x3;
-
-/// f32x3 with UInt32
-extern Variable Float32x3_splat_UInt32_arg;
-extern Function Float32x3_splat_UInt32;
-
-/// f32x3 with Int32x3
-extern Variable Float32x3_from_Int32x3_arg;
-extern Function Float32x3_from_Int32x3;
-
-/// f32x3 with Int32
-extern Variable Float32x3_splat_Int32_arg;
-extern Function Float32x3_splat_Int32;
-
-/// f32x3 with Bool8x3
-extern Variable Float32x3_from_Bool8x3_arg;
-extern Function Float32x3_from_Bool8x3;
-
-/// f32x3 with Bool8
-extern Variable Float32x3_splat_Bool8_arg;
-extern Function Float32x3_splat_Bool8;
-
-/// f32x3 with Float16x3
-extern Variable Float32x3_from_Float16x3_arg;
-extern Function Float32x3_from_Float16x3;
-
-/// f32x3 with Float16
-extern Variable Float32x3_splat_Float16_arg;
-extern Function Float32x3_splat_Float16;
-
-/// f32x3 with UInt16x3
-extern Variable Float32x3_from_UInt16x3_arg;
-extern Function Float32x3_from_UInt16x3;
-
-/// f32x3 with UInt16
-extern Variable Float32x3_splat_UInt16_arg;
-extern Function Float32x3_splat_UInt16;
-
-/// f32x3 with Int16x3
-extern Variable Float32x3_from_Int16x3_arg;
-extern Function Float32x3_from_Int16x3;
-
-/// f32x3 with Int16
-extern Variable Float32x3_splat_Int16_arg;
-extern Function Float32x3_splat_Int16;
-
-/// f32x3 with Float32, Float32, Float32
-extern Variable Float32x3_ctor0_arg0_Float32;
-extern Variable Float32x3_ctor0_arg1_Float32;
-extern Variable Float32x3_ctor0_arg2_Float32;
-extern Function Float32x3_ctor0;
-
-/// f32x3 with Float32x2, Float32
-extern Variable Float32x3_ctor1_arg0_Float32x2;
-extern Variable Float32x3_ctor1_arg1_Float32;
-extern Function Float32x3_ctor1;
-
-/// f32x3 with Float32, Float32x2
-extern Variable Float32x3_ctor2_arg0_Float32;
-extern Variable Float32x3_ctor2_arg1_Float32x2;
-extern Function Float32x3_ctor2;
-
 /// operator[] with Int32
 extern Variable Float32x3_operator_index_Int32_arg;
 extern Function Float32x3_operator_index_Int32;
@@ -2397,78 +1726,6 @@ struct UInt32x3 : public Type
     UInt32x3();
 };
 extern UInt32x3 UInt32x3Type;
-
-/// u32x3 with Float32x3
-extern Variable UInt32x3_from_Float32x3_arg;
-extern Function UInt32x3_from_Float32x3;
-
-/// u32x3 with Float32
-extern Variable UInt32x3_splat_Float32_arg;
-extern Function UInt32x3_splat_Float32;
-
-/// u32x3 with UInt32x3
-extern Variable UInt32x3_from_UInt32x3_arg;
-extern Function UInt32x3_from_UInt32x3;
-
-/// u32x3 with UInt32
-extern Variable UInt32x3_splat_UInt32_arg;
-extern Function UInt32x3_splat_UInt32;
-
-/// u32x3 with Int32x3
-extern Variable UInt32x3_from_Int32x3_arg;
-extern Function UInt32x3_from_Int32x3;
-
-/// u32x3 with Int32
-extern Variable UInt32x3_splat_Int32_arg;
-extern Function UInt32x3_splat_Int32;
-
-/// u32x3 with Bool8x3
-extern Variable UInt32x3_from_Bool8x3_arg;
-extern Function UInt32x3_from_Bool8x3;
-
-/// u32x3 with Bool8
-extern Variable UInt32x3_splat_Bool8_arg;
-extern Function UInt32x3_splat_Bool8;
-
-/// u32x3 with Float16x3
-extern Variable UInt32x3_from_Float16x3_arg;
-extern Function UInt32x3_from_Float16x3;
-
-/// u32x3 with Float16
-extern Variable UInt32x3_splat_Float16_arg;
-extern Function UInt32x3_splat_Float16;
-
-/// u32x3 with UInt16x3
-extern Variable UInt32x3_from_UInt16x3_arg;
-extern Function UInt32x3_from_UInt16x3;
-
-/// u32x3 with UInt16
-extern Variable UInt32x3_splat_UInt16_arg;
-extern Function UInt32x3_splat_UInt16;
-
-/// u32x3 with Int16x3
-extern Variable UInt32x3_from_Int16x3_arg;
-extern Function UInt32x3_from_Int16x3;
-
-/// u32x3 with Int16
-extern Variable UInt32x3_splat_Int16_arg;
-extern Function UInt32x3_splat_Int16;
-
-/// u32x3 with UInt32, UInt32, UInt32
-extern Variable UInt32x3_ctor0_arg0_UInt32;
-extern Variable UInt32x3_ctor0_arg1_UInt32;
-extern Variable UInt32x3_ctor0_arg2_UInt32;
-extern Function UInt32x3_ctor0;
-
-/// u32x3 with UInt32x2, UInt32
-extern Variable UInt32x3_ctor1_arg0_UInt32x2;
-extern Variable UInt32x3_ctor1_arg1_UInt32;
-extern Function UInt32x3_ctor1;
-
-/// u32x3 with UInt32, UInt32x2
-extern Variable UInt32x3_ctor2_arg0_UInt32;
-extern Variable UInt32x3_ctor2_arg1_UInt32x2;
-extern Function UInt32x3_ctor2;
 
 /// operator[] with Int32
 extern Variable UInt32x3_operator_index_Int32_arg;
@@ -2616,78 +1873,6 @@ struct Int32x3 : public Type
 };
 extern Int32x3 Int32x3Type;
 
-/// i32x3 with Float32x3
-extern Variable Int32x3_from_Float32x3_arg;
-extern Function Int32x3_from_Float32x3;
-
-/// i32x3 with Float32
-extern Variable Int32x3_splat_Float32_arg;
-extern Function Int32x3_splat_Float32;
-
-/// i32x3 with UInt32x3
-extern Variable Int32x3_from_UInt32x3_arg;
-extern Function Int32x3_from_UInt32x3;
-
-/// i32x3 with UInt32
-extern Variable Int32x3_splat_UInt32_arg;
-extern Function Int32x3_splat_UInt32;
-
-/// i32x3 with Int32x3
-extern Variable Int32x3_from_Int32x3_arg;
-extern Function Int32x3_from_Int32x3;
-
-/// i32x3 with Int32
-extern Variable Int32x3_splat_Int32_arg;
-extern Function Int32x3_splat_Int32;
-
-/// i32x3 with Bool8x3
-extern Variable Int32x3_from_Bool8x3_arg;
-extern Function Int32x3_from_Bool8x3;
-
-/// i32x3 with Bool8
-extern Variable Int32x3_splat_Bool8_arg;
-extern Function Int32x3_splat_Bool8;
-
-/// i32x3 with Float16x3
-extern Variable Int32x3_from_Float16x3_arg;
-extern Function Int32x3_from_Float16x3;
-
-/// i32x3 with Float16
-extern Variable Int32x3_splat_Float16_arg;
-extern Function Int32x3_splat_Float16;
-
-/// i32x3 with UInt16x3
-extern Variable Int32x3_from_UInt16x3_arg;
-extern Function Int32x3_from_UInt16x3;
-
-/// i32x3 with UInt16
-extern Variable Int32x3_splat_UInt16_arg;
-extern Function Int32x3_splat_UInt16;
-
-/// i32x3 with Int16x3
-extern Variable Int32x3_from_Int16x3_arg;
-extern Function Int32x3_from_Int16x3;
-
-/// i32x3 with Int16
-extern Variable Int32x3_splat_Int16_arg;
-extern Function Int32x3_splat_Int16;
-
-/// i32x3 with Int32, Int32, Int32
-extern Variable Int32x3_ctor0_arg0_Int32;
-extern Variable Int32x3_ctor0_arg1_Int32;
-extern Variable Int32x3_ctor0_arg2_Int32;
-extern Function Int32x3_ctor0;
-
-/// i32x3 with Int32x2, Int32
-extern Variable Int32x3_ctor1_arg0_Int32x2;
-extern Variable Int32x3_ctor1_arg1_Int32;
-extern Function Int32x3_ctor1;
-
-/// i32x3 with Int32, Int32x2
-extern Variable Int32x3_ctor2_arg0_Int32;
-extern Variable Int32x3_ctor2_arg1_Int32x2;
-extern Function Int32x3_ctor2;
-
 /// operator[] with Int32
 extern Variable Int32x3_operator_index_Int32_arg;
 extern Function Int32x3_operator_index_Int32;
@@ -2834,62 +2019,6 @@ struct Bool8x3 : public Type
 };
 extern Bool8x3 Bool8x3Type;
 
-/// b8x3 with UInt32x3
-extern Variable Bool8x3_from_UInt32x3_arg;
-extern Function Bool8x3_from_UInt32x3;
-
-/// b8x3 with UInt32
-extern Variable Bool8x3_splat_UInt32_arg;
-extern Function Bool8x3_splat_UInt32;
-
-/// b8x3 with Int32x3
-extern Variable Bool8x3_from_Int32x3_arg;
-extern Function Bool8x3_from_Int32x3;
-
-/// b8x3 with Int32
-extern Variable Bool8x3_splat_Int32_arg;
-extern Function Bool8x3_splat_Int32;
-
-/// b8x3 with Bool8x3
-extern Variable Bool8x3_from_Bool8x3_arg;
-extern Function Bool8x3_from_Bool8x3;
-
-/// b8x3 with Bool8
-extern Variable Bool8x3_splat_Bool8_arg;
-extern Function Bool8x3_splat_Bool8;
-
-/// b8x3 with UInt16x3
-extern Variable Bool8x3_from_UInt16x3_arg;
-extern Function Bool8x3_from_UInt16x3;
-
-/// b8x3 with UInt16
-extern Variable Bool8x3_splat_UInt16_arg;
-extern Function Bool8x3_splat_UInt16;
-
-/// b8x3 with Int16x3
-extern Variable Bool8x3_from_Int16x3_arg;
-extern Function Bool8x3_from_Int16x3;
-
-/// b8x3 with Int16
-extern Variable Bool8x3_splat_Int16_arg;
-extern Function Bool8x3_splat_Int16;
-
-/// b8x3 with Bool8, Bool8, Bool8
-extern Variable Bool8x3_ctor0_arg0_Bool8;
-extern Variable Bool8x3_ctor0_arg1_Bool8;
-extern Variable Bool8x3_ctor0_arg2_Bool8;
-extern Function Bool8x3_ctor0;
-
-/// b8x3 with Bool8x2, Bool8
-extern Variable Bool8x3_ctor1_arg0_Bool8x2;
-extern Variable Bool8x3_ctor1_arg1_Bool8;
-extern Function Bool8x3_ctor1;
-
-/// b8x3 with Bool8, Bool8x2
-extern Variable Bool8x3_ctor2_arg0_Bool8;
-extern Variable Bool8x3_ctor2_arg1_Bool8x2;
-extern Function Bool8x3_ctor2;
-
 /// operator[] with Int32
 extern Variable Bool8x3_operator_index_Int32_arg;
 extern Function Bool8x3_operator_index_Int32;
@@ -2927,78 +2056,6 @@ struct Float16x3 : public Type
     Float16x3();
 };
 extern Float16x3 Float16x3Type;
-
-/// f16x3 with Float32x3
-extern Variable Float16x3_from_Float32x3_arg;
-extern Function Float16x3_from_Float32x3;
-
-/// f16x3 with Float32
-extern Variable Float16x3_splat_Float32_arg;
-extern Function Float16x3_splat_Float32;
-
-/// f16x3 with UInt32x3
-extern Variable Float16x3_from_UInt32x3_arg;
-extern Function Float16x3_from_UInt32x3;
-
-/// f16x3 with UInt32
-extern Variable Float16x3_splat_UInt32_arg;
-extern Function Float16x3_splat_UInt32;
-
-/// f16x3 with Int32x3
-extern Variable Float16x3_from_Int32x3_arg;
-extern Function Float16x3_from_Int32x3;
-
-/// f16x3 with Int32
-extern Variable Float16x3_splat_Int32_arg;
-extern Function Float16x3_splat_Int32;
-
-/// f16x3 with Bool8x3
-extern Variable Float16x3_from_Bool8x3_arg;
-extern Function Float16x3_from_Bool8x3;
-
-/// f16x3 with Bool8
-extern Variable Float16x3_splat_Bool8_arg;
-extern Function Float16x3_splat_Bool8;
-
-/// f16x3 with Float16x3
-extern Variable Float16x3_from_Float16x3_arg;
-extern Function Float16x3_from_Float16x3;
-
-/// f16x3 with Float16
-extern Variable Float16x3_splat_Float16_arg;
-extern Function Float16x3_splat_Float16;
-
-/// f16x3 with UInt16x3
-extern Variable Float16x3_from_UInt16x3_arg;
-extern Function Float16x3_from_UInt16x3;
-
-/// f16x3 with UInt16
-extern Variable Float16x3_splat_UInt16_arg;
-extern Function Float16x3_splat_UInt16;
-
-/// f16x3 with Int16x3
-extern Variable Float16x3_from_Int16x3_arg;
-extern Function Float16x3_from_Int16x3;
-
-/// f16x3 with Int16
-extern Variable Float16x3_splat_Int16_arg;
-extern Function Float16x3_splat_Int16;
-
-/// f16x3 with Float16, Float16, Float16
-extern Variable Float16x3_ctor0_arg0_Float16;
-extern Variable Float16x3_ctor0_arg1_Float16;
-extern Variable Float16x3_ctor0_arg2_Float16;
-extern Function Float16x3_ctor0;
-
-/// f16x3 with Float16x2, Float16
-extern Variable Float16x3_ctor1_arg0_Float16x2;
-extern Variable Float16x3_ctor1_arg1_Float16;
-extern Function Float16x3_ctor1;
-
-/// f16x3 with Float16, Float16x2
-extern Variable Float16x3_ctor2_arg0_Float16;
-extern Variable Float16x3_ctor2_arg1_Float16x2;
-extern Function Float16x3_ctor2;
 
 /// operator[] with Int32
 extern Variable Float16x3_operator_index_Int32_arg;
@@ -3117,78 +2174,6 @@ struct UInt16x3 : public Type
     UInt16x3();
 };
 extern UInt16x3 UInt16x3Type;
-
-/// u16x3 with Float32x3
-extern Variable UInt16x3_from_Float32x3_arg;
-extern Function UInt16x3_from_Float32x3;
-
-/// u16x3 with Float32
-extern Variable UInt16x3_splat_Float32_arg;
-extern Function UInt16x3_splat_Float32;
-
-/// u16x3 with UInt32x3
-extern Variable UInt16x3_from_UInt32x3_arg;
-extern Function UInt16x3_from_UInt32x3;
-
-/// u16x3 with UInt32
-extern Variable UInt16x3_splat_UInt32_arg;
-extern Function UInt16x3_splat_UInt32;
-
-/// u16x3 with Int32x3
-extern Variable UInt16x3_from_Int32x3_arg;
-extern Function UInt16x3_from_Int32x3;
-
-/// u16x3 with Int32
-extern Variable UInt16x3_splat_Int32_arg;
-extern Function UInt16x3_splat_Int32;
-
-/// u16x3 with Bool8x3
-extern Variable UInt16x3_from_Bool8x3_arg;
-extern Function UInt16x3_from_Bool8x3;
-
-/// u16x3 with Bool8
-extern Variable UInt16x3_splat_Bool8_arg;
-extern Function UInt16x3_splat_Bool8;
-
-/// u16x3 with Float16x3
-extern Variable UInt16x3_from_Float16x3_arg;
-extern Function UInt16x3_from_Float16x3;
-
-/// u16x3 with Float16
-extern Variable UInt16x3_splat_Float16_arg;
-extern Function UInt16x3_splat_Float16;
-
-/// u16x3 with UInt16x3
-extern Variable UInt16x3_from_UInt16x3_arg;
-extern Function UInt16x3_from_UInt16x3;
-
-/// u16x3 with UInt16
-extern Variable UInt16x3_splat_UInt16_arg;
-extern Function UInt16x3_splat_UInt16;
-
-/// u16x3 with Int16x3
-extern Variable UInt16x3_from_Int16x3_arg;
-extern Function UInt16x3_from_Int16x3;
-
-/// u16x3 with Int16
-extern Variable UInt16x3_splat_Int16_arg;
-extern Function UInt16x3_splat_Int16;
-
-/// u16x3 with UInt16, UInt16, UInt16
-extern Variable UInt16x3_ctor0_arg0_UInt16;
-extern Variable UInt16x3_ctor0_arg1_UInt16;
-extern Variable UInt16x3_ctor0_arg2_UInt16;
-extern Function UInt16x3_ctor0;
-
-/// u16x3 with UInt16x2, UInt16
-extern Variable UInt16x3_ctor1_arg0_UInt16x2;
-extern Variable UInt16x3_ctor1_arg1_UInt16;
-extern Function UInt16x3_ctor1;
-
-/// u16x3 with UInt16, UInt16x2
-extern Variable UInt16x3_ctor2_arg0_UInt16;
-extern Variable UInt16x3_ctor2_arg1_UInt16x2;
-extern Function UInt16x3_ctor2;
 
 /// operator[] with Int32
 extern Variable UInt16x3_operator_index_Int32_arg;
@@ -3336,78 +2321,6 @@ struct Int16x3 : public Type
 };
 extern Int16x3 Int16x3Type;
 
-/// i16x3 with Float32x3
-extern Variable Int16x3_from_Float32x3_arg;
-extern Function Int16x3_from_Float32x3;
-
-/// i16x3 with Float32
-extern Variable Int16x3_splat_Float32_arg;
-extern Function Int16x3_splat_Float32;
-
-/// i16x3 with UInt32x3
-extern Variable Int16x3_from_UInt32x3_arg;
-extern Function Int16x3_from_UInt32x3;
-
-/// i16x3 with UInt32
-extern Variable Int16x3_splat_UInt32_arg;
-extern Function Int16x3_splat_UInt32;
-
-/// i16x3 with Int32x3
-extern Variable Int16x3_from_Int32x3_arg;
-extern Function Int16x3_from_Int32x3;
-
-/// i16x3 with Int32
-extern Variable Int16x3_splat_Int32_arg;
-extern Function Int16x3_splat_Int32;
-
-/// i16x3 with Bool8x3
-extern Variable Int16x3_from_Bool8x3_arg;
-extern Function Int16x3_from_Bool8x3;
-
-/// i16x3 with Bool8
-extern Variable Int16x3_splat_Bool8_arg;
-extern Function Int16x3_splat_Bool8;
-
-/// i16x3 with Float16x3
-extern Variable Int16x3_from_Float16x3_arg;
-extern Function Int16x3_from_Float16x3;
-
-/// i16x3 with Float16
-extern Variable Int16x3_splat_Float16_arg;
-extern Function Int16x3_splat_Float16;
-
-/// i16x3 with UInt16x3
-extern Variable Int16x3_from_UInt16x3_arg;
-extern Function Int16x3_from_UInt16x3;
-
-/// i16x3 with UInt16
-extern Variable Int16x3_splat_UInt16_arg;
-extern Function Int16x3_splat_UInt16;
-
-/// i16x3 with Int16x3
-extern Variable Int16x3_from_Int16x3_arg;
-extern Function Int16x3_from_Int16x3;
-
-/// i16x3 with Int16
-extern Variable Int16x3_splat_Int16_arg;
-extern Function Int16x3_splat_Int16;
-
-/// i16x3 with Int16, Int16, Int16
-extern Variable Int16x3_ctor0_arg0_Int16;
-extern Variable Int16x3_ctor0_arg1_Int16;
-extern Variable Int16x3_ctor0_arg2_Int16;
-extern Function Int16x3_ctor0;
-
-/// i16x3 with Int16x2, Int16
-extern Variable Int16x3_ctor1_arg0_Int16x2;
-extern Variable Int16x3_ctor1_arg1_Int16;
-extern Function Int16x3_ctor1;
-
-/// i16x3 with Int16, Int16x2
-extern Variable Int16x3_ctor2_arg0_Int16;
-extern Variable Int16x3_ctor2_arg1_Int16x2;
-extern Function Int16x3_ctor2;
-
 /// operator[] with Int32
 extern Variable Int16x3_operator_index_Int32_arg;
 extern Function Int16x3_operator_index_Int32;
@@ -3554,102 +2467,6 @@ struct Float32x4 : public Type
 };
 extern Float32x4 Float32x4Type;
 
-/// f32x4 with Float32x4
-extern Variable Float32x4_from_Float32x4_arg;
-extern Function Float32x4_from_Float32x4;
-
-/// f32x4 with Float32
-extern Variable Float32x4_splat_Float32_arg;
-extern Function Float32x4_splat_Float32;
-
-/// f32x4 with UInt32x4
-extern Variable Float32x4_from_UInt32x4_arg;
-extern Function Float32x4_from_UInt32x4;
-
-/// f32x4 with UInt32
-extern Variable Float32x4_splat_UInt32_arg;
-extern Function Float32x4_splat_UInt32;
-
-/// f32x4 with Int32x4
-extern Variable Float32x4_from_Int32x4_arg;
-extern Function Float32x4_from_Int32x4;
-
-/// f32x4 with Int32
-extern Variable Float32x4_splat_Int32_arg;
-extern Function Float32x4_splat_Int32;
-
-/// f32x4 with Bool8x4
-extern Variable Float32x4_from_Bool8x4_arg;
-extern Function Float32x4_from_Bool8x4;
-
-/// f32x4 with Bool8
-extern Variable Float32x4_splat_Bool8_arg;
-extern Function Float32x4_splat_Bool8;
-
-/// f32x4 with Float16x4
-extern Variable Float32x4_from_Float16x4_arg;
-extern Function Float32x4_from_Float16x4;
-
-/// f32x4 with Float16
-extern Variable Float32x4_splat_Float16_arg;
-extern Function Float32x4_splat_Float16;
-
-/// f32x4 with UInt16x4
-extern Variable Float32x4_from_UInt16x4_arg;
-extern Function Float32x4_from_UInt16x4;
-
-/// f32x4 with UInt16
-extern Variable Float32x4_splat_UInt16_arg;
-extern Function Float32x4_splat_UInt16;
-
-/// f32x4 with Int16x4
-extern Variable Float32x4_from_Int16x4_arg;
-extern Function Float32x4_from_Int16x4;
-
-/// f32x4 with Int16
-extern Variable Float32x4_splat_Int16_arg;
-extern Function Float32x4_splat_Int16;
-
-/// f32x4 with Float32, Float32, Float32, Float32
-extern Variable Float32x4_ctor0_arg0_Float32;
-extern Variable Float32x4_ctor0_arg1_Float32;
-extern Variable Float32x4_ctor0_arg2_Float32;
-extern Variable Float32x4_ctor0_arg3_Float32;
-extern Function Float32x4_ctor0;
-
-/// f32x4 with Float32x2, Float32, Float32
-extern Variable Float32x4_ctor1_arg0_Float32x2;
-extern Variable Float32x4_ctor1_arg1_Float32;
-extern Variable Float32x4_ctor1_arg2_Float32;
-extern Function Float32x4_ctor1;
-
-/// f32x4 with Float32, Float32x2, Float32
-extern Variable Float32x4_ctor2_arg0_Float32;
-extern Variable Float32x4_ctor2_arg1_Float32x2;
-extern Variable Float32x4_ctor2_arg2_Float32;
-extern Function Float32x4_ctor2;
-
-/// f32x4 with Float32, Float32, Float32x2
-extern Variable Float32x4_ctor3_arg0_Float32;
-extern Variable Float32x4_ctor3_arg1_Float32;
-extern Variable Float32x4_ctor3_arg2_Float32x2;
-extern Function Float32x4_ctor3;
-
-/// f32x4 with Float32x2, Float32x2
-extern Variable Float32x4_ctor4_arg0_Float32x2;
-extern Variable Float32x4_ctor4_arg1_Float32x2;
-extern Function Float32x4_ctor4;
-
-/// f32x4 with Float32x3, Float32
-extern Variable Float32x4_ctor5_arg0_Float32x3;
-extern Variable Float32x4_ctor5_arg1_Float32;
-extern Function Float32x4_ctor5;
-
-/// f32x4 with Float32, Float32x3
-extern Variable Float32x4_ctor6_arg0_Float32;
-extern Variable Float32x4_ctor6_arg1_Float32x3;
-extern Function Float32x4_ctor6;
-
 /// operator[] with Int32
 extern Variable Float32x4_operator_index_Int32_arg;
 extern Function Float32x4_operator_index_Int32;
@@ -3767,102 +2584,6 @@ struct UInt32x4 : public Type
     UInt32x4();
 };
 extern UInt32x4 UInt32x4Type;
-
-/// u32x4 with Float32x4
-extern Variable UInt32x4_from_Float32x4_arg;
-extern Function UInt32x4_from_Float32x4;
-
-/// u32x4 with Float32
-extern Variable UInt32x4_splat_Float32_arg;
-extern Function UInt32x4_splat_Float32;
-
-/// u32x4 with UInt32x4
-extern Variable UInt32x4_from_UInt32x4_arg;
-extern Function UInt32x4_from_UInt32x4;
-
-/// u32x4 with UInt32
-extern Variable UInt32x4_splat_UInt32_arg;
-extern Function UInt32x4_splat_UInt32;
-
-/// u32x4 with Int32x4
-extern Variable UInt32x4_from_Int32x4_arg;
-extern Function UInt32x4_from_Int32x4;
-
-/// u32x4 with Int32
-extern Variable UInt32x4_splat_Int32_arg;
-extern Function UInt32x4_splat_Int32;
-
-/// u32x4 with Bool8x4
-extern Variable UInt32x4_from_Bool8x4_arg;
-extern Function UInt32x4_from_Bool8x4;
-
-/// u32x4 with Bool8
-extern Variable UInt32x4_splat_Bool8_arg;
-extern Function UInt32x4_splat_Bool8;
-
-/// u32x4 with Float16x4
-extern Variable UInt32x4_from_Float16x4_arg;
-extern Function UInt32x4_from_Float16x4;
-
-/// u32x4 with Float16
-extern Variable UInt32x4_splat_Float16_arg;
-extern Function UInt32x4_splat_Float16;
-
-/// u32x4 with UInt16x4
-extern Variable UInt32x4_from_UInt16x4_arg;
-extern Function UInt32x4_from_UInt16x4;
-
-/// u32x4 with UInt16
-extern Variable UInt32x4_splat_UInt16_arg;
-extern Function UInt32x4_splat_UInt16;
-
-/// u32x4 with Int16x4
-extern Variable UInt32x4_from_Int16x4_arg;
-extern Function UInt32x4_from_Int16x4;
-
-/// u32x4 with Int16
-extern Variable UInt32x4_splat_Int16_arg;
-extern Function UInt32x4_splat_Int16;
-
-/// u32x4 with UInt32, UInt32, UInt32, UInt32
-extern Variable UInt32x4_ctor0_arg0_UInt32;
-extern Variable UInt32x4_ctor0_arg1_UInt32;
-extern Variable UInt32x4_ctor0_arg2_UInt32;
-extern Variable UInt32x4_ctor0_arg3_UInt32;
-extern Function UInt32x4_ctor0;
-
-/// u32x4 with UInt32x2, UInt32, UInt32
-extern Variable UInt32x4_ctor1_arg0_UInt32x2;
-extern Variable UInt32x4_ctor1_arg1_UInt32;
-extern Variable UInt32x4_ctor1_arg2_UInt32;
-extern Function UInt32x4_ctor1;
-
-/// u32x4 with UInt32, UInt32x2, UInt32
-extern Variable UInt32x4_ctor2_arg0_UInt32;
-extern Variable UInt32x4_ctor2_arg1_UInt32x2;
-extern Variable UInt32x4_ctor2_arg2_UInt32;
-extern Function UInt32x4_ctor2;
-
-/// u32x4 with UInt32, UInt32, UInt32x2
-extern Variable UInt32x4_ctor3_arg0_UInt32;
-extern Variable UInt32x4_ctor3_arg1_UInt32;
-extern Variable UInt32x4_ctor3_arg2_UInt32x2;
-extern Function UInt32x4_ctor3;
-
-/// u32x4 with UInt32x2, UInt32x2
-extern Variable UInt32x4_ctor4_arg0_UInt32x2;
-extern Variable UInt32x4_ctor4_arg1_UInt32x2;
-extern Function UInt32x4_ctor4;
-
-/// u32x4 with UInt32x3, UInt32
-extern Variable UInt32x4_ctor5_arg0_UInt32x3;
-extern Variable UInt32x4_ctor5_arg1_UInt32;
-extern Function UInt32x4_ctor5;
-
-/// u32x4 with UInt32, UInt32x3
-extern Variable UInt32x4_ctor6_arg0_UInt32;
-extern Variable UInt32x4_ctor6_arg1_UInt32x3;
-extern Function UInt32x4_ctor6;
 
 /// operator[] with Int32
 extern Variable UInt32x4_operator_index_Int32_arg;
@@ -4010,102 +2731,6 @@ struct Int32x4 : public Type
 };
 extern Int32x4 Int32x4Type;
 
-/// i32x4 with Float32x4
-extern Variable Int32x4_from_Float32x4_arg;
-extern Function Int32x4_from_Float32x4;
-
-/// i32x4 with Float32
-extern Variable Int32x4_splat_Float32_arg;
-extern Function Int32x4_splat_Float32;
-
-/// i32x4 with UInt32x4
-extern Variable Int32x4_from_UInt32x4_arg;
-extern Function Int32x4_from_UInt32x4;
-
-/// i32x4 with UInt32
-extern Variable Int32x4_splat_UInt32_arg;
-extern Function Int32x4_splat_UInt32;
-
-/// i32x4 with Int32x4
-extern Variable Int32x4_from_Int32x4_arg;
-extern Function Int32x4_from_Int32x4;
-
-/// i32x4 with Int32
-extern Variable Int32x4_splat_Int32_arg;
-extern Function Int32x4_splat_Int32;
-
-/// i32x4 with Bool8x4
-extern Variable Int32x4_from_Bool8x4_arg;
-extern Function Int32x4_from_Bool8x4;
-
-/// i32x4 with Bool8
-extern Variable Int32x4_splat_Bool8_arg;
-extern Function Int32x4_splat_Bool8;
-
-/// i32x4 with Float16x4
-extern Variable Int32x4_from_Float16x4_arg;
-extern Function Int32x4_from_Float16x4;
-
-/// i32x4 with Float16
-extern Variable Int32x4_splat_Float16_arg;
-extern Function Int32x4_splat_Float16;
-
-/// i32x4 with UInt16x4
-extern Variable Int32x4_from_UInt16x4_arg;
-extern Function Int32x4_from_UInt16x4;
-
-/// i32x4 with UInt16
-extern Variable Int32x4_splat_UInt16_arg;
-extern Function Int32x4_splat_UInt16;
-
-/// i32x4 with Int16x4
-extern Variable Int32x4_from_Int16x4_arg;
-extern Function Int32x4_from_Int16x4;
-
-/// i32x4 with Int16
-extern Variable Int32x4_splat_Int16_arg;
-extern Function Int32x4_splat_Int16;
-
-/// i32x4 with Int32, Int32, Int32, Int32
-extern Variable Int32x4_ctor0_arg0_Int32;
-extern Variable Int32x4_ctor0_arg1_Int32;
-extern Variable Int32x4_ctor0_arg2_Int32;
-extern Variable Int32x4_ctor0_arg3_Int32;
-extern Function Int32x4_ctor0;
-
-/// i32x4 with Int32x2, Int32, Int32
-extern Variable Int32x4_ctor1_arg0_Int32x2;
-extern Variable Int32x4_ctor1_arg1_Int32;
-extern Variable Int32x4_ctor1_arg2_Int32;
-extern Function Int32x4_ctor1;
-
-/// i32x4 with Int32, Int32x2, Int32
-extern Variable Int32x4_ctor2_arg0_Int32;
-extern Variable Int32x4_ctor2_arg1_Int32x2;
-extern Variable Int32x4_ctor2_arg2_Int32;
-extern Function Int32x4_ctor2;
-
-/// i32x4 with Int32, Int32, Int32x2
-extern Variable Int32x4_ctor3_arg0_Int32;
-extern Variable Int32x4_ctor3_arg1_Int32;
-extern Variable Int32x4_ctor3_arg2_Int32x2;
-extern Function Int32x4_ctor3;
-
-/// i32x4 with Int32x2, Int32x2
-extern Variable Int32x4_ctor4_arg0_Int32x2;
-extern Variable Int32x4_ctor4_arg1_Int32x2;
-extern Function Int32x4_ctor4;
-
-/// i32x4 with Int32x3, Int32
-extern Variable Int32x4_ctor5_arg0_Int32x3;
-extern Variable Int32x4_ctor5_arg1_Int32;
-extern Function Int32x4_ctor5;
-
-/// i32x4 with Int32, Int32x3
-extern Variable Int32x4_ctor6_arg0_Int32;
-extern Variable Int32x4_ctor6_arg1_Int32x3;
-extern Function Int32x4_ctor6;
-
 /// operator[] with Int32
 extern Variable Int32x4_operator_index_Int32_arg;
 extern Function Int32x4_operator_index_Int32;
@@ -4252,86 +2877,6 @@ struct Bool8x4 : public Type
 };
 extern Bool8x4 Bool8x4Type;
 
-/// b8x4 with UInt32x4
-extern Variable Bool8x4_from_UInt32x4_arg;
-extern Function Bool8x4_from_UInt32x4;
-
-/// b8x4 with UInt32
-extern Variable Bool8x4_splat_UInt32_arg;
-extern Function Bool8x4_splat_UInt32;
-
-/// b8x4 with Int32x4
-extern Variable Bool8x4_from_Int32x4_arg;
-extern Function Bool8x4_from_Int32x4;
-
-/// b8x4 with Int32
-extern Variable Bool8x4_splat_Int32_arg;
-extern Function Bool8x4_splat_Int32;
-
-/// b8x4 with Bool8x4
-extern Variable Bool8x4_from_Bool8x4_arg;
-extern Function Bool8x4_from_Bool8x4;
-
-/// b8x4 with Bool8
-extern Variable Bool8x4_splat_Bool8_arg;
-extern Function Bool8x4_splat_Bool8;
-
-/// b8x4 with UInt16x4
-extern Variable Bool8x4_from_UInt16x4_arg;
-extern Function Bool8x4_from_UInt16x4;
-
-/// b8x4 with UInt16
-extern Variable Bool8x4_splat_UInt16_arg;
-extern Function Bool8x4_splat_UInt16;
-
-/// b8x4 with Int16x4
-extern Variable Bool8x4_from_Int16x4_arg;
-extern Function Bool8x4_from_Int16x4;
-
-/// b8x4 with Int16
-extern Variable Bool8x4_splat_Int16_arg;
-extern Function Bool8x4_splat_Int16;
-
-/// b8x4 with Bool8, Bool8, Bool8, Bool8
-extern Variable Bool8x4_ctor0_arg0_Bool8;
-extern Variable Bool8x4_ctor0_arg1_Bool8;
-extern Variable Bool8x4_ctor0_arg2_Bool8;
-extern Variable Bool8x4_ctor0_arg3_Bool8;
-extern Function Bool8x4_ctor0;
-
-/// b8x4 with Bool8x2, Bool8, Bool8
-extern Variable Bool8x4_ctor1_arg0_Bool8x2;
-extern Variable Bool8x4_ctor1_arg1_Bool8;
-extern Variable Bool8x4_ctor1_arg2_Bool8;
-extern Function Bool8x4_ctor1;
-
-/// b8x4 with Bool8, Bool8x2, Bool8
-extern Variable Bool8x4_ctor2_arg0_Bool8;
-extern Variable Bool8x4_ctor2_arg1_Bool8x2;
-extern Variable Bool8x4_ctor2_arg2_Bool8;
-extern Function Bool8x4_ctor2;
-
-/// b8x4 with Bool8, Bool8, Bool8x2
-extern Variable Bool8x4_ctor3_arg0_Bool8;
-extern Variable Bool8x4_ctor3_arg1_Bool8;
-extern Variable Bool8x4_ctor3_arg2_Bool8x2;
-extern Function Bool8x4_ctor3;
-
-/// b8x4 with Bool8x2, Bool8x2
-extern Variable Bool8x4_ctor4_arg0_Bool8x2;
-extern Variable Bool8x4_ctor4_arg1_Bool8x2;
-extern Function Bool8x4_ctor4;
-
-/// b8x4 with Bool8x3, Bool8
-extern Variable Bool8x4_ctor5_arg0_Bool8x3;
-extern Variable Bool8x4_ctor5_arg1_Bool8;
-extern Function Bool8x4_ctor5;
-
-/// b8x4 with Bool8, Bool8x3
-extern Variable Bool8x4_ctor6_arg0_Bool8;
-extern Variable Bool8x4_ctor6_arg1_Bool8x3;
-extern Function Bool8x4_ctor6;
-
 /// operator[] with Int32
 extern Variable Bool8x4_operator_index_Int32_arg;
 extern Function Bool8x4_operator_index_Int32;
@@ -4369,102 +2914,6 @@ struct Float16x4 : public Type
     Float16x4();
 };
 extern Float16x4 Float16x4Type;
-
-/// f16x4 with Float32x4
-extern Variable Float16x4_from_Float32x4_arg;
-extern Function Float16x4_from_Float32x4;
-
-/// f16x4 with Float32
-extern Variable Float16x4_splat_Float32_arg;
-extern Function Float16x4_splat_Float32;
-
-/// f16x4 with UInt32x4
-extern Variable Float16x4_from_UInt32x4_arg;
-extern Function Float16x4_from_UInt32x4;
-
-/// f16x4 with UInt32
-extern Variable Float16x4_splat_UInt32_arg;
-extern Function Float16x4_splat_UInt32;
-
-/// f16x4 with Int32x4
-extern Variable Float16x4_from_Int32x4_arg;
-extern Function Float16x4_from_Int32x4;
-
-/// f16x4 with Int32
-extern Variable Float16x4_splat_Int32_arg;
-extern Function Float16x4_splat_Int32;
-
-/// f16x4 with Bool8x4
-extern Variable Float16x4_from_Bool8x4_arg;
-extern Function Float16x4_from_Bool8x4;
-
-/// f16x4 with Bool8
-extern Variable Float16x4_splat_Bool8_arg;
-extern Function Float16x4_splat_Bool8;
-
-/// f16x4 with Float16x4
-extern Variable Float16x4_from_Float16x4_arg;
-extern Function Float16x4_from_Float16x4;
-
-/// f16x4 with Float16
-extern Variable Float16x4_splat_Float16_arg;
-extern Function Float16x4_splat_Float16;
-
-/// f16x4 with UInt16x4
-extern Variable Float16x4_from_UInt16x4_arg;
-extern Function Float16x4_from_UInt16x4;
-
-/// f16x4 with UInt16
-extern Variable Float16x4_splat_UInt16_arg;
-extern Function Float16x4_splat_UInt16;
-
-/// f16x4 with Int16x4
-extern Variable Float16x4_from_Int16x4_arg;
-extern Function Float16x4_from_Int16x4;
-
-/// f16x4 with Int16
-extern Variable Float16x4_splat_Int16_arg;
-extern Function Float16x4_splat_Int16;
-
-/// f16x4 with Float16, Float16, Float16, Float16
-extern Variable Float16x4_ctor0_arg0_Float16;
-extern Variable Float16x4_ctor0_arg1_Float16;
-extern Variable Float16x4_ctor0_arg2_Float16;
-extern Variable Float16x4_ctor0_arg3_Float16;
-extern Function Float16x4_ctor0;
-
-/// f16x4 with Float16x2, Float16, Float16
-extern Variable Float16x4_ctor1_arg0_Float16x2;
-extern Variable Float16x4_ctor1_arg1_Float16;
-extern Variable Float16x4_ctor1_arg2_Float16;
-extern Function Float16x4_ctor1;
-
-/// f16x4 with Float16, Float16x2, Float16
-extern Variable Float16x4_ctor2_arg0_Float16;
-extern Variable Float16x4_ctor2_arg1_Float16x2;
-extern Variable Float16x4_ctor2_arg2_Float16;
-extern Function Float16x4_ctor2;
-
-/// f16x4 with Float16, Float16, Float16x2
-extern Variable Float16x4_ctor3_arg0_Float16;
-extern Variable Float16x4_ctor3_arg1_Float16;
-extern Variable Float16x4_ctor3_arg2_Float16x2;
-extern Function Float16x4_ctor3;
-
-/// f16x4 with Float16x2, Float16x2
-extern Variable Float16x4_ctor4_arg0_Float16x2;
-extern Variable Float16x4_ctor4_arg1_Float16x2;
-extern Function Float16x4_ctor4;
-
-/// f16x4 with Float16x3, Float16
-extern Variable Float16x4_ctor5_arg0_Float16x3;
-extern Variable Float16x4_ctor5_arg1_Float16;
-extern Function Float16x4_ctor5;
-
-/// f16x4 with Float16, Float16x3
-extern Variable Float16x4_ctor6_arg0_Float16;
-extern Variable Float16x4_ctor6_arg1_Float16x3;
-extern Function Float16x4_ctor6;
 
 /// operator[] with Int32
 extern Variable Float16x4_operator_index_Int32_arg;
@@ -4583,102 +3032,6 @@ struct UInt16x4 : public Type
     UInt16x4();
 };
 extern UInt16x4 UInt16x4Type;
-
-/// u16x4 with Float32x4
-extern Variable UInt16x4_from_Float32x4_arg;
-extern Function UInt16x4_from_Float32x4;
-
-/// u16x4 with Float32
-extern Variable UInt16x4_splat_Float32_arg;
-extern Function UInt16x4_splat_Float32;
-
-/// u16x4 with UInt32x4
-extern Variable UInt16x4_from_UInt32x4_arg;
-extern Function UInt16x4_from_UInt32x4;
-
-/// u16x4 with UInt32
-extern Variable UInt16x4_splat_UInt32_arg;
-extern Function UInt16x4_splat_UInt32;
-
-/// u16x4 with Int32x4
-extern Variable UInt16x4_from_Int32x4_arg;
-extern Function UInt16x4_from_Int32x4;
-
-/// u16x4 with Int32
-extern Variable UInt16x4_splat_Int32_arg;
-extern Function UInt16x4_splat_Int32;
-
-/// u16x4 with Bool8x4
-extern Variable UInt16x4_from_Bool8x4_arg;
-extern Function UInt16x4_from_Bool8x4;
-
-/// u16x4 with Bool8
-extern Variable UInt16x4_splat_Bool8_arg;
-extern Function UInt16x4_splat_Bool8;
-
-/// u16x4 with Float16x4
-extern Variable UInt16x4_from_Float16x4_arg;
-extern Function UInt16x4_from_Float16x4;
-
-/// u16x4 with Float16
-extern Variable UInt16x4_splat_Float16_arg;
-extern Function UInt16x4_splat_Float16;
-
-/// u16x4 with UInt16x4
-extern Variable UInt16x4_from_UInt16x4_arg;
-extern Function UInt16x4_from_UInt16x4;
-
-/// u16x4 with UInt16
-extern Variable UInt16x4_splat_UInt16_arg;
-extern Function UInt16x4_splat_UInt16;
-
-/// u16x4 with Int16x4
-extern Variable UInt16x4_from_Int16x4_arg;
-extern Function UInt16x4_from_Int16x4;
-
-/// u16x4 with Int16
-extern Variable UInt16x4_splat_Int16_arg;
-extern Function UInt16x4_splat_Int16;
-
-/// u16x4 with UInt16, UInt16, UInt16, UInt16
-extern Variable UInt16x4_ctor0_arg0_UInt16;
-extern Variable UInt16x4_ctor0_arg1_UInt16;
-extern Variable UInt16x4_ctor0_arg2_UInt16;
-extern Variable UInt16x4_ctor0_arg3_UInt16;
-extern Function UInt16x4_ctor0;
-
-/// u16x4 with UInt16x2, UInt16, UInt16
-extern Variable UInt16x4_ctor1_arg0_UInt16x2;
-extern Variable UInt16x4_ctor1_arg1_UInt16;
-extern Variable UInt16x4_ctor1_arg2_UInt16;
-extern Function UInt16x4_ctor1;
-
-/// u16x4 with UInt16, UInt16x2, UInt16
-extern Variable UInt16x4_ctor2_arg0_UInt16;
-extern Variable UInt16x4_ctor2_arg1_UInt16x2;
-extern Variable UInt16x4_ctor2_arg2_UInt16;
-extern Function UInt16x4_ctor2;
-
-/// u16x4 with UInt16, UInt16, UInt16x2
-extern Variable UInt16x4_ctor3_arg0_UInt16;
-extern Variable UInt16x4_ctor3_arg1_UInt16;
-extern Variable UInt16x4_ctor3_arg2_UInt16x2;
-extern Function UInt16x4_ctor3;
-
-/// u16x4 with UInt16x2, UInt16x2
-extern Variable UInt16x4_ctor4_arg0_UInt16x2;
-extern Variable UInt16x4_ctor4_arg1_UInt16x2;
-extern Function UInt16x4_ctor4;
-
-/// u16x4 with UInt16x3, UInt16
-extern Variable UInt16x4_ctor5_arg0_UInt16x3;
-extern Variable UInt16x4_ctor5_arg1_UInt16;
-extern Function UInt16x4_ctor5;
-
-/// u16x4 with UInt16, UInt16x3
-extern Variable UInt16x4_ctor6_arg0_UInt16;
-extern Variable UInt16x4_ctor6_arg1_UInt16x3;
-extern Function UInt16x4_ctor6;
 
 /// operator[] with Int32
 extern Variable UInt16x4_operator_index_Int32_arg;
@@ -4826,102 +3179,6 @@ struct Int16x4 : public Type
 };
 extern Int16x4 Int16x4Type;
 
-/// i16x4 with Float32x4
-extern Variable Int16x4_from_Float32x4_arg;
-extern Function Int16x4_from_Float32x4;
-
-/// i16x4 with Float32
-extern Variable Int16x4_splat_Float32_arg;
-extern Function Int16x4_splat_Float32;
-
-/// i16x4 with UInt32x4
-extern Variable Int16x4_from_UInt32x4_arg;
-extern Function Int16x4_from_UInt32x4;
-
-/// i16x4 with UInt32
-extern Variable Int16x4_splat_UInt32_arg;
-extern Function Int16x4_splat_UInt32;
-
-/// i16x4 with Int32x4
-extern Variable Int16x4_from_Int32x4_arg;
-extern Function Int16x4_from_Int32x4;
-
-/// i16x4 with Int32
-extern Variable Int16x4_splat_Int32_arg;
-extern Function Int16x4_splat_Int32;
-
-/// i16x4 with Bool8x4
-extern Variable Int16x4_from_Bool8x4_arg;
-extern Function Int16x4_from_Bool8x4;
-
-/// i16x4 with Bool8
-extern Variable Int16x4_splat_Bool8_arg;
-extern Function Int16x4_splat_Bool8;
-
-/// i16x4 with Float16x4
-extern Variable Int16x4_from_Float16x4_arg;
-extern Function Int16x4_from_Float16x4;
-
-/// i16x4 with Float16
-extern Variable Int16x4_splat_Float16_arg;
-extern Function Int16x4_splat_Float16;
-
-/// i16x4 with UInt16x4
-extern Variable Int16x4_from_UInt16x4_arg;
-extern Function Int16x4_from_UInt16x4;
-
-/// i16x4 with UInt16
-extern Variable Int16x4_splat_UInt16_arg;
-extern Function Int16x4_splat_UInt16;
-
-/// i16x4 with Int16x4
-extern Variable Int16x4_from_Int16x4_arg;
-extern Function Int16x4_from_Int16x4;
-
-/// i16x4 with Int16
-extern Variable Int16x4_splat_Int16_arg;
-extern Function Int16x4_splat_Int16;
-
-/// i16x4 with Int16, Int16, Int16, Int16
-extern Variable Int16x4_ctor0_arg0_Int16;
-extern Variable Int16x4_ctor0_arg1_Int16;
-extern Variable Int16x4_ctor0_arg2_Int16;
-extern Variable Int16x4_ctor0_arg3_Int16;
-extern Function Int16x4_ctor0;
-
-/// i16x4 with Int16x2, Int16, Int16
-extern Variable Int16x4_ctor1_arg0_Int16x2;
-extern Variable Int16x4_ctor1_arg1_Int16;
-extern Variable Int16x4_ctor1_arg2_Int16;
-extern Function Int16x4_ctor1;
-
-/// i16x4 with Int16, Int16x2, Int16
-extern Variable Int16x4_ctor2_arg0_Int16;
-extern Variable Int16x4_ctor2_arg1_Int16x2;
-extern Variable Int16x4_ctor2_arg2_Int16;
-extern Function Int16x4_ctor2;
-
-/// i16x4 with Int16, Int16, Int16x2
-extern Variable Int16x4_ctor3_arg0_Int16;
-extern Variable Int16x4_ctor3_arg1_Int16;
-extern Variable Int16x4_ctor3_arg2_Int16x2;
-extern Function Int16x4_ctor3;
-
-/// i16x4 with Int16x2, Int16x2
-extern Variable Int16x4_ctor4_arg0_Int16x2;
-extern Variable Int16x4_ctor4_arg1_Int16x2;
-extern Function Int16x4_ctor4;
-
-/// i16x4 with Int16x3, Int16
-extern Variable Int16x4_ctor5_arg0_Int16x3;
-extern Variable Int16x4_ctor5_arg1_Int16;
-extern Function Int16x4_ctor5;
-
-/// i16x4 with Int16, Int16x3
-extern Variable Int16x4_ctor6_arg0_Int16;
-extern Variable Int16x4_ctor6_arg1_Int16x3;
-extern Function Int16x4_ctor6;
-
 /// operator[] with Int32
 extern Variable Int16x4_operator_index_Int32_arg;
 extern Function Int16x4_operator_index_Int32;
@@ -5068,21 +3325,6 @@ struct Float32x2x2 : public Type
 };
 extern Float32x2x2 Float32x2x2Type;
 
-/// f32x2x2 with Float32x2, Float32x2
-extern Variable Float32x2x2_Float32_2_ctor_arg0;
-extern Variable Float32x2x2_Float32_2_ctor_arg1;
-extern Function Float32x2x2_Float32_2_ctor;
-
-/// f32x2x2
-extern Function Float32x2x2_identity;
-
-/// f32x2x2 with Float32, Float32, Float32, Float32
-extern Variable Float32x2x2_raw_list_arg0;
-extern Variable Float32x2x2_raw_list_arg1;
-extern Variable Float32x2x2_raw_list_arg2;
-extern Variable Float32x2x2_raw_list_arg3;
-extern Function Float32x2x2_raw_list;
-
 /// operator[] with Int32
 extern Variable Float32x2x2_operator_index_Int32_arg;
 extern Function Float32x2x2_operator_index_Int32;
@@ -5136,23 +3378,6 @@ struct Float32x2x3 : public Type
     Float32x2x3();
 };
 extern Float32x2x3 Float32x2x3Type;
-
-/// f32x2x3 with Float32x3, Float32x3
-extern Variable Float32x2x3_Float32_3_ctor_arg0;
-extern Variable Float32x2x3_Float32_3_ctor_arg1;
-extern Function Float32x2x3_Float32_3_ctor;
-
-/// f32x2x3
-extern Function Float32x2x3_identity;
-
-/// f32x2x3 with Float32, Float32, Float32, Float32, Float32, Float32
-extern Variable Float32x2x3_raw_list_arg0;
-extern Variable Float32x2x3_raw_list_arg1;
-extern Variable Float32x2x3_raw_list_arg2;
-extern Variable Float32x2x3_raw_list_arg3;
-extern Variable Float32x2x3_raw_list_arg4;
-extern Variable Float32x2x3_raw_list_arg5;
-extern Function Float32x2x3_raw_list;
 
 /// operator[] with Int32
 extern Variable Float32x2x3_operator_index_Int32_arg;
@@ -5208,25 +3433,6 @@ struct Float32x2x4 : public Type
 };
 extern Float32x2x4 Float32x2x4Type;
 
-/// f32x2x4 with Float32x4, Float32x4
-extern Variable Float32x2x4_Float32_4_ctor_arg0;
-extern Variable Float32x2x4_Float32_4_ctor_arg1;
-extern Function Float32x2x4_Float32_4_ctor;
-
-/// f32x2x4
-extern Function Float32x2x4_identity;
-
-/// f32x2x4 with Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32
-extern Variable Float32x2x4_raw_list_arg0;
-extern Variable Float32x2x4_raw_list_arg1;
-extern Variable Float32x2x4_raw_list_arg2;
-extern Variable Float32x2x4_raw_list_arg3;
-extern Variable Float32x2x4_raw_list_arg4;
-extern Variable Float32x2x4_raw_list_arg5;
-extern Variable Float32x2x4_raw_list_arg6;
-extern Variable Float32x2x4_raw_list_arg7;
-extern Function Float32x2x4_raw_list;
-
 /// operator[] with Int32
 extern Variable Float32x2x4_operator_index_Int32_arg;
 extern Function Float32x2x4_operator_index_Int32;
@@ -5280,24 +3486,6 @@ struct Float32x3x2 : public Type
     Float32x3x2();
 };
 extern Float32x3x2 Float32x3x2Type;
-
-/// f32x3x2 with Float32x2, Float32x2, Float32x2
-extern Variable Float32x3x2_Float32_2_ctor_arg0;
-extern Variable Float32x3x2_Float32_2_ctor_arg1;
-extern Variable Float32x3x2_Float32_2_ctor_arg2;
-extern Function Float32x3x2_Float32_2_ctor;
-
-/// f32x3x2
-extern Function Float32x3x2_identity;
-
-/// f32x3x2 with Float32, Float32, Float32, Float32, Float32, Float32
-extern Variable Float32x3x2_raw_list_arg0;
-extern Variable Float32x3x2_raw_list_arg1;
-extern Variable Float32x3x2_raw_list_arg2;
-extern Variable Float32x3x2_raw_list_arg3;
-extern Variable Float32x3x2_raw_list_arg4;
-extern Variable Float32x3x2_raw_list_arg5;
-extern Function Float32x3x2_raw_list;
 
 /// operator[] with Int32
 extern Variable Float32x3x2_operator_index_Int32_arg;
@@ -5353,27 +3541,6 @@ struct Float32x3x3 : public Type
 };
 extern Float32x3x3 Float32x3x3Type;
 
-/// f32x3x3 with Float32x3, Float32x3, Float32x3
-extern Variable Float32x3x3_Float32_3_ctor_arg0;
-extern Variable Float32x3x3_Float32_3_ctor_arg1;
-extern Variable Float32x3x3_Float32_3_ctor_arg2;
-extern Function Float32x3x3_Float32_3_ctor;
-
-/// f32x3x3
-extern Function Float32x3x3_identity;
-
-/// f32x3x3 with Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32
-extern Variable Float32x3x3_raw_list_arg0;
-extern Variable Float32x3x3_raw_list_arg1;
-extern Variable Float32x3x3_raw_list_arg2;
-extern Variable Float32x3x3_raw_list_arg3;
-extern Variable Float32x3x3_raw_list_arg4;
-extern Variable Float32x3x3_raw_list_arg5;
-extern Variable Float32x3x3_raw_list_arg6;
-extern Variable Float32x3x3_raw_list_arg7;
-extern Variable Float32x3x3_raw_list_arg8;
-extern Function Float32x3x3_raw_list;
-
 /// operator[] with Int32
 extern Variable Float32x3x3_operator_index_Int32_arg;
 extern Function Float32x3x3_operator_index_Int32;
@@ -5427,30 +3594,6 @@ struct Float32x3x4 : public Type
     Float32x3x4();
 };
 extern Float32x3x4 Float32x3x4Type;
-
-/// f32x3x4 with Float32x4, Float32x4, Float32x4
-extern Variable Float32x3x4_Float32_4_ctor_arg0;
-extern Variable Float32x3x4_Float32_4_ctor_arg1;
-extern Variable Float32x3x4_Float32_4_ctor_arg2;
-extern Function Float32x3x4_Float32_4_ctor;
-
-/// f32x3x4
-extern Function Float32x3x4_identity;
-
-/// f32x3x4 with Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32
-extern Variable Float32x3x4_raw_list_arg0;
-extern Variable Float32x3x4_raw_list_arg1;
-extern Variable Float32x3x4_raw_list_arg2;
-extern Variable Float32x3x4_raw_list_arg3;
-extern Variable Float32x3x4_raw_list_arg4;
-extern Variable Float32x3x4_raw_list_arg5;
-extern Variable Float32x3x4_raw_list_arg6;
-extern Variable Float32x3x4_raw_list_arg7;
-extern Variable Float32x3x4_raw_list_arg8;
-extern Variable Float32x3x4_raw_list_arg9;
-extern Variable Float32x3x4_raw_list_arg10;
-extern Variable Float32x3x4_raw_list_arg11;
-extern Function Float32x3x4_raw_list;
 
 /// operator[] with Int32
 extern Variable Float32x3x4_operator_index_Int32_arg;
@@ -5506,27 +3649,6 @@ struct Float32x4x2 : public Type
 };
 extern Float32x4x2 Float32x4x2Type;
 
-/// f32x4x2 with Float32x2, Float32x2, Float32x2, Float32x2
-extern Variable Float32x4x2_Float32_2_ctor_arg0;
-extern Variable Float32x4x2_Float32_2_ctor_arg1;
-extern Variable Float32x4x2_Float32_2_ctor_arg2;
-extern Variable Float32x4x2_Float32_2_ctor_arg3;
-extern Function Float32x4x2_Float32_2_ctor;
-
-/// f32x4x2
-extern Function Float32x4x2_identity;
-
-/// f32x4x2 with Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32
-extern Variable Float32x4x2_raw_list_arg0;
-extern Variable Float32x4x2_raw_list_arg1;
-extern Variable Float32x4x2_raw_list_arg2;
-extern Variable Float32x4x2_raw_list_arg3;
-extern Variable Float32x4x2_raw_list_arg4;
-extern Variable Float32x4x2_raw_list_arg5;
-extern Variable Float32x4x2_raw_list_arg6;
-extern Variable Float32x4x2_raw_list_arg7;
-extern Function Float32x4x2_raw_list;
-
 /// operator[] with Int32
 extern Variable Float32x4x2_operator_index_Int32_arg;
 extern Function Float32x4x2_operator_index_Int32;
@@ -5580,31 +3702,6 @@ struct Float32x4x3 : public Type
     Float32x4x3();
 };
 extern Float32x4x3 Float32x4x3Type;
-
-/// f32x4x3 with Float32x3, Float32x3, Float32x3, Float32x3
-extern Variable Float32x4x3_Float32_3_ctor_arg0;
-extern Variable Float32x4x3_Float32_3_ctor_arg1;
-extern Variable Float32x4x3_Float32_3_ctor_arg2;
-extern Variable Float32x4x3_Float32_3_ctor_arg3;
-extern Function Float32x4x3_Float32_3_ctor;
-
-/// f32x4x3
-extern Function Float32x4x3_identity;
-
-/// f32x4x3 with Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32
-extern Variable Float32x4x3_raw_list_arg0;
-extern Variable Float32x4x3_raw_list_arg1;
-extern Variable Float32x4x3_raw_list_arg2;
-extern Variable Float32x4x3_raw_list_arg3;
-extern Variable Float32x4x3_raw_list_arg4;
-extern Variable Float32x4x3_raw_list_arg5;
-extern Variable Float32x4x3_raw_list_arg6;
-extern Variable Float32x4x3_raw_list_arg7;
-extern Variable Float32x4x3_raw_list_arg8;
-extern Variable Float32x4x3_raw_list_arg9;
-extern Variable Float32x4x3_raw_list_arg10;
-extern Variable Float32x4x3_raw_list_arg11;
-extern Function Float32x4x3_raw_list;
 
 /// operator[] with Int32
 extern Variable Float32x4x3_operator_index_Int32_arg;
@@ -5660,35 +3757,6 @@ struct Float32x4x4 : public Type
 };
 extern Float32x4x4 Float32x4x4Type;
 
-/// f32x4x4 with Float32x4, Float32x4, Float32x4, Float32x4
-extern Variable Float32x4x4_Float32_4_ctor_arg0;
-extern Variable Float32x4x4_Float32_4_ctor_arg1;
-extern Variable Float32x4x4_Float32_4_ctor_arg2;
-extern Variable Float32x4x4_Float32_4_ctor_arg3;
-extern Function Float32x4x4_Float32_4_ctor;
-
-/// f32x4x4
-extern Function Float32x4x4_identity;
-
-/// f32x4x4 with Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32
-extern Variable Float32x4x4_raw_list_arg0;
-extern Variable Float32x4x4_raw_list_arg1;
-extern Variable Float32x4x4_raw_list_arg2;
-extern Variable Float32x4x4_raw_list_arg3;
-extern Variable Float32x4x4_raw_list_arg4;
-extern Variable Float32x4x4_raw_list_arg5;
-extern Variable Float32x4x4_raw_list_arg6;
-extern Variable Float32x4x4_raw_list_arg7;
-extern Variable Float32x4x4_raw_list_arg8;
-extern Variable Float32x4x4_raw_list_arg9;
-extern Variable Float32x4x4_raw_list_arg10;
-extern Variable Float32x4x4_raw_list_arg11;
-extern Variable Float32x4x4_raw_list_arg12;
-extern Variable Float32x4x4_raw_list_arg13;
-extern Variable Float32x4x4_raw_list_arg14;
-extern Variable Float32x4x4_raw_list_arg15;
-extern Function Float32x4x4_raw_list;
-
 /// operator[] with Int32
 extern Variable Float32x4x4_operator_index_Int32_arg;
 extern Function Float32x4x4_operator_index_Int32;
@@ -5742,21 +3810,6 @@ struct Float16x2x2 : public Type
     Float16x2x2();
 };
 extern Float16x2x2 Float16x2x2Type;
-
-/// f16x2x2 with Float16x2, Float16x2
-extern Variable Float16x2x2_Float16_2_ctor_arg0;
-extern Variable Float16x2x2_Float16_2_ctor_arg1;
-extern Function Float16x2x2_Float16_2_ctor;
-
-/// f16x2x2
-extern Function Float16x2x2_identity;
-
-/// f16x2x2 with Float16, Float16, Float16, Float16
-extern Variable Float16x2x2_raw_list_arg0;
-extern Variable Float16x2x2_raw_list_arg1;
-extern Variable Float16x2x2_raw_list_arg2;
-extern Variable Float16x2x2_raw_list_arg3;
-extern Function Float16x2x2_raw_list;
 
 /// operator[] with Int32
 extern Variable Float16x2x2_operator_index_Int32_arg;
@@ -5812,23 +3865,6 @@ struct Float16x2x3 : public Type
 };
 extern Float16x2x3 Float16x2x3Type;
 
-/// f16x2x3 with Float16x3, Float16x3
-extern Variable Float16x2x3_Float16_3_ctor_arg0;
-extern Variable Float16x2x3_Float16_3_ctor_arg1;
-extern Function Float16x2x3_Float16_3_ctor;
-
-/// f16x2x3
-extern Function Float16x2x3_identity;
-
-/// f16x2x3 with Float16, Float16, Float16, Float16, Float16, Float16
-extern Variable Float16x2x3_raw_list_arg0;
-extern Variable Float16x2x3_raw_list_arg1;
-extern Variable Float16x2x3_raw_list_arg2;
-extern Variable Float16x2x3_raw_list_arg3;
-extern Variable Float16x2x3_raw_list_arg4;
-extern Variable Float16x2x3_raw_list_arg5;
-extern Function Float16x2x3_raw_list;
-
 /// operator[] with Int32
 extern Variable Float16x2x3_operator_index_Int32_arg;
 extern Function Float16x2x3_operator_index_Int32;
@@ -5882,25 +3918,6 @@ struct Float16x2x4 : public Type
     Float16x2x4();
 };
 extern Float16x2x4 Float16x2x4Type;
-
-/// f16x2x4 with Float16x4, Float16x4
-extern Variable Float16x2x4_Float16_4_ctor_arg0;
-extern Variable Float16x2x4_Float16_4_ctor_arg1;
-extern Function Float16x2x4_Float16_4_ctor;
-
-/// f16x2x4
-extern Function Float16x2x4_identity;
-
-/// f16x2x4 with Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16
-extern Variable Float16x2x4_raw_list_arg0;
-extern Variable Float16x2x4_raw_list_arg1;
-extern Variable Float16x2x4_raw_list_arg2;
-extern Variable Float16x2x4_raw_list_arg3;
-extern Variable Float16x2x4_raw_list_arg4;
-extern Variable Float16x2x4_raw_list_arg5;
-extern Variable Float16x2x4_raw_list_arg6;
-extern Variable Float16x2x4_raw_list_arg7;
-extern Function Float16x2x4_raw_list;
 
 /// operator[] with Int32
 extern Variable Float16x2x4_operator_index_Int32_arg;
@@ -5956,24 +3973,6 @@ struct Float16x3x2 : public Type
 };
 extern Float16x3x2 Float16x3x2Type;
 
-/// f16x3x2 with Float16x2, Float16x2, Float16x2
-extern Variable Float16x3x2_Float16_2_ctor_arg0;
-extern Variable Float16x3x2_Float16_2_ctor_arg1;
-extern Variable Float16x3x2_Float16_2_ctor_arg2;
-extern Function Float16x3x2_Float16_2_ctor;
-
-/// f16x3x2
-extern Function Float16x3x2_identity;
-
-/// f16x3x2 with Float16, Float16, Float16, Float16, Float16, Float16
-extern Variable Float16x3x2_raw_list_arg0;
-extern Variable Float16x3x2_raw_list_arg1;
-extern Variable Float16x3x2_raw_list_arg2;
-extern Variable Float16x3x2_raw_list_arg3;
-extern Variable Float16x3x2_raw_list_arg4;
-extern Variable Float16x3x2_raw_list_arg5;
-extern Function Float16x3x2_raw_list;
-
 /// operator[] with Int32
 extern Variable Float16x3x2_operator_index_Int32_arg;
 extern Function Float16x3x2_operator_index_Int32;
@@ -6027,27 +4026,6 @@ struct Float16x3x3 : public Type
     Float16x3x3();
 };
 extern Float16x3x3 Float16x3x3Type;
-
-/// f16x3x3 with Float16x3, Float16x3, Float16x3
-extern Variable Float16x3x3_Float16_3_ctor_arg0;
-extern Variable Float16x3x3_Float16_3_ctor_arg1;
-extern Variable Float16x3x3_Float16_3_ctor_arg2;
-extern Function Float16x3x3_Float16_3_ctor;
-
-/// f16x3x3
-extern Function Float16x3x3_identity;
-
-/// f16x3x3 with Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16
-extern Variable Float16x3x3_raw_list_arg0;
-extern Variable Float16x3x3_raw_list_arg1;
-extern Variable Float16x3x3_raw_list_arg2;
-extern Variable Float16x3x3_raw_list_arg3;
-extern Variable Float16x3x3_raw_list_arg4;
-extern Variable Float16x3x3_raw_list_arg5;
-extern Variable Float16x3x3_raw_list_arg6;
-extern Variable Float16x3x3_raw_list_arg7;
-extern Variable Float16x3x3_raw_list_arg8;
-extern Function Float16x3x3_raw_list;
 
 /// operator[] with Int32
 extern Variable Float16x3x3_operator_index_Int32_arg;
@@ -6103,30 +4081,6 @@ struct Float16x3x4 : public Type
 };
 extern Float16x3x4 Float16x3x4Type;
 
-/// f16x3x4 with Float16x4, Float16x4, Float16x4
-extern Variable Float16x3x4_Float16_4_ctor_arg0;
-extern Variable Float16x3x4_Float16_4_ctor_arg1;
-extern Variable Float16x3x4_Float16_4_ctor_arg2;
-extern Function Float16x3x4_Float16_4_ctor;
-
-/// f16x3x4
-extern Function Float16x3x4_identity;
-
-/// f16x3x4 with Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16
-extern Variable Float16x3x4_raw_list_arg0;
-extern Variable Float16x3x4_raw_list_arg1;
-extern Variable Float16x3x4_raw_list_arg2;
-extern Variable Float16x3x4_raw_list_arg3;
-extern Variable Float16x3x4_raw_list_arg4;
-extern Variable Float16x3x4_raw_list_arg5;
-extern Variable Float16x3x4_raw_list_arg6;
-extern Variable Float16x3x4_raw_list_arg7;
-extern Variable Float16x3x4_raw_list_arg8;
-extern Variable Float16x3x4_raw_list_arg9;
-extern Variable Float16x3x4_raw_list_arg10;
-extern Variable Float16x3x4_raw_list_arg11;
-extern Function Float16x3x4_raw_list;
-
 /// operator[] with Int32
 extern Variable Float16x3x4_operator_index_Int32_arg;
 extern Function Float16x3x4_operator_index_Int32;
@@ -6180,27 +4134,6 @@ struct Float16x4x2 : public Type
     Float16x4x2();
 };
 extern Float16x4x2 Float16x4x2Type;
-
-/// f16x4x2 with Float16x2, Float16x2, Float16x2, Float16x2
-extern Variable Float16x4x2_Float16_2_ctor_arg0;
-extern Variable Float16x4x2_Float16_2_ctor_arg1;
-extern Variable Float16x4x2_Float16_2_ctor_arg2;
-extern Variable Float16x4x2_Float16_2_ctor_arg3;
-extern Function Float16x4x2_Float16_2_ctor;
-
-/// f16x4x2
-extern Function Float16x4x2_identity;
-
-/// f16x4x2 with Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16
-extern Variable Float16x4x2_raw_list_arg0;
-extern Variable Float16x4x2_raw_list_arg1;
-extern Variable Float16x4x2_raw_list_arg2;
-extern Variable Float16x4x2_raw_list_arg3;
-extern Variable Float16x4x2_raw_list_arg4;
-extern Variable Float16x4x2_raw_list_arg5;
-extern Variable Float16x4x2_raw_list_arg6;
-extern Variable Float16x4x2_raw_list_arg7;
-extern Function Float16x4x2_raw_list;
 
 /// operator[] with Int32
 extern Variable Float16x4x2_operator_index_Int32_arg;
@@ -6256,31 +4189,6 @@ struct Float16x4x3 : public Type
 };
 extern Float16x4x3 Float16x4x3Type;
 
-/// f16x4x3 with Float16x3, Float16x3, Float16x3, Float16x3
-extern Variable Float16x4x3_Float16_3_ctor_arg0;
-extern Variable Float16x4x3_Float16_3_ctor_arg1;
-extern Variable Float16x4x3_Float16_3_ctor_arg2;
-extern Variable Float16x4x3_Float16_3_ctor_arg3;
-extern Function Float16x4x3_Float16_3_ctor;
-
-/// f16x4x3
-extern Function Float16x4x3_identity;
-
-/// f16x4x3 with Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16
-extern Variable Float16x4x3_raw_list_arg0;
-extern Variable Float16x4x3_raw_list_arg1;
-extern Variable Float16x4x3_raw_list_arg2;
-extern Variable Float16x4x3_raw_list_arg3;
-extern Variable Float16x4x3_raw_list_arg4;
-extern Variable Float16x4x3_raw_list_arg5;
-extern Variable Float16x4x3_raw_list_arg6;
-extern Variable Float16x4x3_raw_list_arg7;
-extern Variable Float16x4x3_raw_list_arg8;
-extern Variable Float16x4x3_raw_list_arg9;
-extern Variable Float16x4x3_raw_list_arg10;
-extern Variable Float16x4x3_raw_list_arg11;
-extern Function Float16x4x3_raw_list;
-
 /// operator[] with Int32
 extern Variable Float16x4x3_operator_index_Int32_arg;
 extern Function Float16x4x3_operator_index_Int32;
@@ -6334,35 +4242,6 @@ struct Float16x4x4 : public Type
     Float16x4x4();
 };
 extern Float16x4x4 Float16x4x4Type;
-
-/// f16x4x4 with Float16x4, Float16x4, Float16x4, Float16x4
-extern Variable Float16x4x4_Float16_4_ctor_arg0;
-extern Variable Float16x4x4_Float16_4_ctor_arg1;
-extern Variable Float16x4x4_Float16_4_ctor_arg2;
-extern Variable Float16x4x4_Float16_4_ctor_arg3;
-extern Function Float16x4x4_Float16_4_ctor;
-
-/// f16x4x4
-extern Function Float16x4x4_identity;
-
-/// f16x4x4 with Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16
-extern Variable Float16x4x4_raw_list_arg0;
-extern Variable Float16x4x4_raw_list_arg1;
-extern Variable Float16x4x4_raw_list_arg2;
-extern Variable Float16x4x4_raw_list_arg3;
-extern Variable Float16x4x4_raw_list_arg4;
-extern Variable Float16x4x4_raw_list_arg5;
-extern Variable Float16x4x4_raw_list_arg6;
-extern Variable Float16x4x4_raw_list_arg7;
-extern Variable Float16x4x4_raw_list_arg8;
-extern Variable Float16x4x4_raw_list_arg9;
-extern Variable Float16x4x4_raw_list_arg10;
-extern Variable Float16x4x4_raw_list_arg11;
-extern Variable Float16x4x4_raw_list_arg12;
-extern Variable Float16x4x4_raw_list_arg13;
-extern Variable Float16x4x4_raw_list_arg14;
-extern Variable Float16x4x4_raw_list_arg15;
-extern Function Float16x4x4_raw_list;
 
 /// operator[] with Int32
 extern Variable Float16x4x4_operator_index_Int32_arg;
