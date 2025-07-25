@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shader Reflection - GPULang Documentation</title>
+    <link href="styles.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Main Content - Page Specific */
+        main {
+            padding-top: 120px;
+            padding-bottom: 4rem;
+            min-height: 100vh;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .content-section h2 {
+            color: #c084fc;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .content-section h3 {
+            color: #f472b6;
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .content-section p {
+            color: #b0b0b0;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .content-section ul,
+        .content-section ol {
+            color: #b0b0b0;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+
+        .content-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Code Examples */
+        .code-example {
+            margin: 2rem 0;
+        }
+
+        .code-example-title {
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .code-container {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .code-header {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .code-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot.red { background: #ff5f57; }
+        .dot.yellow { background: #ffbd2e; }
+        .dot.green { background: #28ca42; }
+
+        .code-container pre {
+            margin: 0;
+            padding: 1.5rem;
+            overflow-x: auto;
+        }
+
+        .code-container code {
+            font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Comparison Grid */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .comparison-item {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .comparison-item h4 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .comparison-item .icon {
+            color: #c084fc;
+        }
+
+        /* Feature List */
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list .check {
+            color: #22c55e;
+        }
+
+        .feature-list .cross {
+            color: #ef4444;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .info-box.warning {
+            background: rgba(251, 191, 36, 0.1);
+            border-color: rgba(251, 191, 36, 0.3);
+        }
+
+        .info-box.tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-color: rgba(34, 197, 94, 0.3);
+        }
+
+        .info-box-title {
+            color: #3b82f6;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-box.warning .info-box-title {
+            color: #fbbf24;
+        }
+
+        .info-box.tip .info-box-title {
+            color: #22c55e;
+        }
+
+        .info-box-content {
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .content-nav {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(15, 15, 35, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1rem;
+            max-width: 200px;
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .content-nav h4 {
+            color: #c084fc;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .content-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .content-nav li {
+            margin-bottom: 0.3rem;
+        }
+
+        .content-nav a {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .content-nav a:hover {
+            color: #c084fc;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .content-nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content-section {
+                padding: 1.5rem;
+            }
+            
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">GPULang</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="docs.html">Documentation</a></li>
+                <li><a href="index.html#examples">Examples</a></li>
+                <li><a href="#community">Community</a></li>
+            </ul>
+            <a href="docs.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Docs
+            </a>
+        </nav>
+    </header>
+
+    <!-- Content Navigation -->
+    <nav class="content-nav">
+        <h4>On This Page</h4>
+        <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#static">Static Reflection</a></li>
+            <li><a href="#dynamic">Dynamic Reflection</a></li>
+            <li><a href="#comparison">Comparison</a></li>
+            <li><a href="#usage">Usage Examples</a></li>
+            <li><a href="#integration">Integration</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">Shader Reflection</h1>
+                <p class="page-subtitle">
+                    Understand static and dynamic shader reflection capabilities in GPULang
+                </p>
+            </div>
+
+            <section id="overview" class="content-section">
+                <h2>Overview</h2>
+                <p>
+                    GPULang provides comprehensive shader reflection capabilities that allow you to introspect
+                    your compiled shaders at both compile-time and runtime. This enables automatic resource
+                    binding, pipeline creation, and dynamic shader management.
+                </p>
+
+                <div class="info-box">
+                    <div class="info-box-title">
+                        <i class="fas fa-lightbulb"></i>
+                        What is Shader Reflection?
+                    </div>
+                    <div class="info-box-content">
+                        Shader reflection is the ability to examine a shader's interface - its inputs, outputs, 
+                        uniform variables, textures, and other resources - either at compile time or runtime. 
+                        This metadata is essential for binding resources correctly and creating graphics pipelines.
+                    </div>
+                </div>
+
+                <h3>Key Benefits</h3>
+                <ul>
+                    <li><strong>Automatic Resource Binding:</strong> Eliminate manual binding point management</li>
+                    <li><strong>Pipeline Validation:</strong> Ensure shader stages are compatible before runtime</li>
+                    <li><strong>Dynamic Loading:</strong> Load and use shaders without hardcoded interfaces</li>
+                    <li><strong>Tool Integration:</strong> Enable shader editors and debugging tools</li>
+                    <li><strong>Performance Optimization:</strong> Pre-compute resource layouts at compile time</li>
+                </ul>
+            </section>
+
+            <section id="static" class="content-section">
+                <h2>Static Reflection</h2>
+                <p>
+                    Static reflection generates C/C++ header files at compile time, providing compile-time
+                    type safety and zero-runtime overhead for shader interfaces.
+                </p>
+
+                <h3>Generated Header Structure</h3>
+                <div class="code-example">
+                    <div class="code-example-title">Example Shader</div>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <div class="code-dots">
+                                <div class="dot red"></div>
+                                <div class="dot yellow"></div>
+                                <div class="dot green"></div>
+                            </div>
+                            <span>lighting.gpul</span>
+                        </div>
+                        <pre><code class="language-gpulang">struct MaterialData
+{
+    Albedo : f32x3;
+    Roughness : f32;
+    Metallic : f32;
+};
+
+uniform MaterialBuffer : *MaterialData;
+uniform DiffuseTexture : *texture2D;
+uniform NormalTexture : *texture2D;
+
+sampler_state LinearSampler {};
+
+entry_point
+LightingVS(
+    binding(0) in position : f32x3,
+    binding(1) in normal : f32x3,
+    binding(2) in uv : f32x2,
+    out worldPos : f32x4,
+    out worldNormal : f32x3,
+    out texCoords : f32x2
+) void
+{
+    // Vertex shader implementation
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="code-example">
+                    <div class="code-example-title">Generated Header (lighting_reflection.h)</div>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <div class="code-dots">
+                                <div class="dot red"></div>
+                                <div class="dot yellow"></div>
+                                <div class="dot green"></div>
+                            </div>
+                            <span>lighting_reflection.h</span>
+                        </div>
+                        <pre><code class="language-cpp">// Auto-generated by GPULang compiler
+#pragma once
+
+namespace Shaders::Lighting {
+    
+    // Uniform buffer structures
+    struct MaterialData {
+        float albedo[3];
+        float roughness;
+        float metallic;
+        char _padding[12]; // Alignment padding
+    };
+    
+    // Resource binding information
+    enum class BindingPoints {
+        MaterialBuffer = 0,
+        DiffuseTexture = 1,
+        NormalTexture = 2,
+        LinearSampler = 3
+    };
+    
+    // Vertex input layout
+    struct VertexInput {
+        static constexpr uint32_t PositionBinding = 0;
+        static constexpr uint32_t NormalBinding = 1;
+        static constexpr uint32_t UVBinding = 2;
+    };
+    
+    // Pipeline interface
+    class Interface {
+    public:
+        void BindMaterialBuffer(const MaterialData& data);
+        void BindTexture(BindingPoints point, TextureHandle texture);
+        void SetVertexBuffer(uint32_t binding, BufferHandle buffer);
+    };
+    
+}</code></pre>
+                    </div>
+                </div>
+
+                <h3>Compile-Time Features</h3>
+                <ul>
+                    <li><strong>Type Safety:</strong> Matching C++ structures for uniform buffers</li>
+                    <li><strong>Binding Points:</strong> Automatic enumeration of all resource bindings</li>
+                    <li><strong>Memory Layout:</strong> Correct padding and alignment information</li>
+                    <li><strong>Interface Classes:</strong> Type-safe binding methods</li>
+                    <li><strong>Documentation:</strong> Comments with original shader information</li>
+                </ul>
+
+                <div class="info-box tip">
+                    <div class="info-box-title">
+                        <i class="fas fa-check-circle"></i>
+                        Best Practice
+                    </div>
+                    <div class="info-box-content">
+                        Use static reflection for production applications where performance is critical
+                        and shader interfaces are stable. The compile-time validation catches errors early
+                        and eliminates runtime overhead.
+                    </div>
+                </div>
+            </section>
+
+            <section id="dynamic" class="content-section">
+                <h2>Dynamic Reflection</h2>
+                <p>
+                    Dynamic reflection generates binary metadata that can be queried at runtime,
+                    enabling flexible shader loading and dynamic resource management.
+                </p>
+
+                <h3>Runtime Reflection Data</h3>
+                <div class="code-example">
+                    <div class="code-example-title">Dynamic Reflection API</div>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <div class="code-dots">
+                                <div class="dot red"></div>
+                                <div class="dot yellow"></div>
+                                <div class="dot green"></div>
+                            </div>
+                            <span>reflection_usage.cpp</span>
+                        </div>
+                        <pre><code class="language-cpp">// Load shader with reflection data
+GPULang::Shader shader = GPULang::LoadShader("lighting.gpulbin");
+const GPULang::ReflectionData& reflection = shader.GetReflection();
+
+// Query uniform buffers
+for (const auto& uniformBuffer : reflection.GetUniformBuffers()) {
+    std::cout << "Buffer: " << uniformBuffer.name 
+              << " Binding: " << uniformBuffer.binding
+              << " Size: " << uniformBuffer.size << std::endl;
+    
+    // Query buffer members
+    for (const auto& member : uniformBuffer.members) {
+        std::cout << "  Member: " << member.name 
+                  << " Offset: " << member.offset
+                  << " Type: " << member.type << std::endl;
+    }
+}
+
+// Query textures and samplers
+for (const auto& texture : reflection.GetTextures()) {
+    std::cout << "Texture: " << texture.name 
+              << " Binding: " << texture.binding
+              << " Type: " << texture.textureType << std::endl;
+}
+
+// Query vertex inputs
+for (const auto& input : reflection.GetVertexInputs()) {
+    std::cout << "Input: " << input.name 
+              << " Location: " << input.location
+              << " Format: " << input.format << std::endl;
+}</code></pre>
+                    </div>
+                </div>
+
+                <h3>Reflection Data Structure</h3>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-cpp">// Reflection data structures
+struct ReflectionData {
+    std::vector&lt;UniformBuffer&gt; uniformBuffers;
+    std::vector&lt;Texture&gt; textures;
+    std::vector&lt;Sampler&gt; samplers;
+    std::vector&lt;VertexInput&gt; vertexInputs;
+    std::vector&lt;FragmentOutput&gt; fragmentOutputs;
+    
+    // Query methods
+    const UniformBuffer* FindUniformBuffer(const std::string& name) const;
+    const Texture* FindTexture(const std::string& name) const;
+    bool IsCompatible(const ReflectionData& other) const;
+};
+
+struct UniformBuffer {
+    std::string name;
+    uint32_t binding;
+    uint32_t size;
+    std::vector&lt;BufferMember&gt; members;
+};
+
+struct BufferMember {
+    std::string name;
+    uint32_t offset;
+    uint32_t size;
+    DataType type;
+    uint32_t arraySize;
+};</code></pre>
+                    </div>
+                </div>
+
+                <h3>Runtime Features</h3>
+                <ul>
+                    <li><strong>Dynamic Discovery:</strong> Query shader interfaces without prior knowledge</li>
+                    <li><strong>Compatibility Checking:</strong> Validate shader stage compatibility at runtime</li>
+                    <li><strong>Resource Enumeration:</strong> Discover all required resources automatically</li>
+                    <li><strong>Type Information:</strong> Full type metadata for all shader variables</li>
+                    <li><strong>Pipeline Generation:</strong> Create graphics pipelines dynamically</li>
+                </ul>
+            </section>
+
+            <section id="comparison" class="content-section">
+                <h2>Static vs Dynamic Reflection</h2>
+                
+                <div class="comparison-grid">
+                    <div class="comparison-item">
+                        <h4><i class="fas fa-code icon"></i>Static Reflection</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check check"></i>Compile-time type safety</li>
+                            <li><i class="fas fa-check check"></i>Zero runtime overhead</li>
+                            <li><i class="fas fa-check check"></i>C++ integration</li>
+                            <li><i class="fas fa-check check"></i>Early error detection</li>
+                            <li><i class="fas fa-times cross"></i>Requires recompilation</li>
+                            <li><i class="fas fa-times cross"></i>Less flexible</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-item">
+                        <h4><i class="fas fa-cogs icon"></i>Dynamic Reflection</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check check"></i>Runtime flexibility</li>
+                            <li><i class="fas fa-check check"></i>Hot reloading support</li>
+                            <li><i class="fas fa-check check"></i>Dynamic shader loading</li>
+                            <li><i class="fas fa-check check"></i>Tool integration</li>
+                            <li><i class="fas fa-times cross"></i>Runtime overhead</li>
+                            <li><i class="fas fa-times cross"></i>Runtime error detection</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">
+                        <i class="fas fa-info-circle"></i>
+                        Choosing the Right Approach
+                    </div>
+                    <div class="info-box-content">
+                        <strong>Use Static Reflection when:</strong> You have stable shader interfaces, need maximum performance, 
+                        or want compile-time validation.<br><br>
+                        <strong>Use Dynamic Reflection when:</strong> You need runtime flexibility, hot reloading, 
+                        dynamic shader loading, or are building shader tools/editors.
+                    </div>
+                </div>
+            </section>
+
+            <section id="usage" class="content-section">
+                <h2>Usage Examples</h2>
+
+                <h3>Automatic Pipeline Creation</h3>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-cpp">// Create graphics pipeline from reflection data
+class PipelineBuilder {
+public:
+    static GraphicsPipeline CreateFromReflection(
+        const Shader& vertexShader,
+        const Shader& fragmentShader) 
+    {
+        const auto& vsReflection = vertexShader.GetReflection();
+        const auto& fsReflection = fragmentShader.GetReflection();
+        
+        // Validate compatibility
+        if (!vsReflection.IsCompatible(fsReflection)) {
+            throw std::runtime_error("Incompatible shader stages");
+        }
+        
+        // Create vertex input layout
+        VertexInputLayout layout;
+        for (const auto& input : vsReflection.GetVertexInputs()) {
+            layout.AddAttribute(input.location, input.format, input.offset);
+        }
+        
+        // Create descriptor set layout
+        DescriptorSetLayout descriptorLayout;
+        for (const auto& buffer : vsReflection.GetUniformBuffers()) {
+            descriptorLayout.AddUniformBuffer(buffer.binding, buffer.size);
+        }
+        for (const auto& texture : fsReflection.GetTextures()) {
+            descriptorLayout.AddTexture(texture.binding, texture.textureType);
+        }
+        
+        return GraphicsPipeline::Create(layout, descriptorLayout, 
+                                      vertexShader, fragmentShader);
+    }
+};</code></pre>
+                    </div>
+                </div>
+
+                <h3>Resource Binding Automation</h3>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-cpp">// Automatic resource binding system
+class ShaderResourceBinder {
+private:
+    std::unordered_map&lt;std::string, BufferHandle&gt; uniformBuffers;
+    std::unordered_map&lt;std::string, TextureHandle&gt; textures;
+    
+public:
+    void BindShader(const Shader& shader) {
+        const auto& reflection = shader.GetReflection();
+        
+        // Bind uniform buffers
+        for (const auto& buffer : reflection.GetUniformBuffers()) {
+            auto it = uniformBuffers.find(buffer.name);
+            if (it != uniformBuffers.end()) {
+                BindUniformBuffer(buffer.binding, it->second);
+            }
+        }
+        
+        // Bind textures
+        for (const auto& texture : reflection.GetTextures()) {
+            auto it = textures.find(texture.name);
+            if (it != textures.end()) {
+                BindTexture(texture.binding, it->second);
+            }
+        }
+    }
+    
+    void RegisterResource(const std::string& name, BufferHandle buffer) {
+        uniformBuffers[name] = buffer;
+    }
+    
+    void RegisterResource(const std::string& name, TextureHandle texture) {
+        textures[name] = texture;
+    }
+};</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="integration" class="content-section">
+                <h2>Integration with Game Engines</h2>
+
+                <h3>Engine Integration Pattern</h3>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-cpp">// Game engine shader system integration
+class ShaderSystem {
+private:
+    std::unordered_map&lt;std::string, Shader&gt; loadedShaders;
+    std::unordered_map&lt;std::string, GraphicsPipeline&gt; pipelines;
+    
+public:
+    void LoadShader(const std::string& path) {
+        auto shader = GPULang::LoadShader(path);
+        loadedShaders[path] = std::move(shader);
+        
+        // Register with material system
+        MaterialSystem::RegisterShaderInterface(
+            path, shader.GetReflection()
+        );
+    }
+    
+    void CreateMaterial(const std::string& shaderPath) {
+        const auto& shader = loadedShaders[shaderPath];
+        const auto& reflection = shader.GetReflection();
+        
+        // Create material template from reflection
+        MaterialTemplate materialTemplate;
+        for (const auto& buffer : reflection.GetUniformBuffers()) {
+            materialTemplate.AddParameter(buffer.name, buffer.type);
+        }
+        for (const auto& texture : reflection.GetTextures()) {
+            materialTemplate.AddTextureSlot(texture.name, texture.textureType);
+        }
+        
+        MaterialSystem::RegisterTemplate(shaderPath, materialTemplate);
+    }
+};</code></pre>
+                    </div>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-title">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Performance Consideration
+                    </div>
+                    <div class="info-box-content">
+                        While dynamic reflection provides flexibility, avoid querying reflection data
+                        in performance-critical paths. Cache reflection information during initialization
+                        and use it to create optimized rendering paths.
+                    </div>
+                </div>
+
+                <h3>Hot Reloading Support</h3>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-cpp">// Hot reloading with dynamic reflection
+class HotReloadManager {
+private:
+    FileWatcher fileWatcher;
+    
+public:
+    void WatchShader(const std::string& path) {
+        fileWatcher.Watch(path, [this, path](const FileEvent& event) {
+            if (event.type == FileEvent::Modified) {
+                ReloadShader(path);
+            }
+        });
+    }
+    
+private:
+    void ReloadShader(const std::string& path) {
+        try {
+            auto newShader = GPULang::LoadShader(path);
+            const auto& newReflection = newShader.GetReflection();
+            
+            // Validate new reflection is compatible
+            const auto& oldReflection = loadedShaders[path].GetReflection();
+            if (newReflection.IsCompatible(oldReflection)) {
+                loadedShaders[path] = std::move(newShader);
+                NotifyShaderReloaded(path);
+            } else {
+                LogError("New shader interface incompatible: " + path);
+            }
+        } catch (const std::exception& e) {
+            LogError("Failed to reload shader: " + path + " - " + e.what());
+        }
+    }
+};</code></pre>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="syntax-loader.js"></script>
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(15, 15, 35, 0.98)';
+            } else {
+                header.style.background = 'rgba(15, 15, 35, 0.95)';
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = 120;
+                    const elementPosition = target.offsetTop;
+                    const offsetPosition = elementPosition - headerHeight;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

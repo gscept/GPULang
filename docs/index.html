@@ -10,11 +10,12 @@
     <style>
         /* Hero Section - Page Specific Styles */
         .hero {
-            min-height: 100vh;
             display: flex;
+            margin-top: 8rem;
             align-items: center;
             position: relative;
             overflow: hidden;
+            padding-bottom: 4rem;
         }
 
         .hero::before {
@@ -74,7 +75,6 @@
         /* Features Section */
         .features {
             padding: 8rem 0;
-            background: rgba(255, 255, 255, 0.02);
         }
 
         .features-grid {
@@ -86,7 +86,7 @@
 
         /* Code Example Section */
         .code-example {
-            padding: 8rem 0;
+            padding: 0rem 0;
         }
 
         /* Footer */
@@ -147,81 +147,22 @@
             <div class="container">
                 <div class="hero-content">
                     <h1>GPULang</h1>
-                    <p>A programming language designed for GPU computing and shader development. Write powerful, efficient code that runs blazingly fast on graphics hardware.</p>
+                    <p>Finally, a user friendly shader programming language</p>
                     <div class="hero-buttons">
+                        <a href="docs.html" class="btn-secondary">
+                            <i class="fas fa-download"></i> Download
+                        </a>
                         <a href="docs.html" class="btn-primary">
                             <i class="fas fa-rocket"></i> Get Started
                         </a>
-                        <a href="#examples" class="btn-secondary">
-                            <i class="fas fa-code"></i> View Examples
-                        </a>
                     </div>
                 </div>
             </div>
         </section>
-
-        <section id="features" class="features">
-            <div class="container">
-                <h2 class="section-title">Why GPULang?</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <h3>Easy to Use</h3>
-                        <p>GPULang can be used directly as a CLI, or integrated into existing workflows with ease. The API to compile or run language server validation is a single API call with minimum setup.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <h3>Lightning Fast</h3>
-                        <p>The compiler is highly optimized to not waste CPU cycles. This means you don't have to waste time waiting for shaders to compile, and can improve iteration times significantly.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h3>Modern Syntax</h3>
-                        <p>Clean, expressive syntax that makes GPU programming accessible while maintaining the power and flexibility needed for complex shaders. Unlike GLSL and HLSL, GPULang supports basic type inference.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-microchip"></i>
-                        </div>
-                        <h3>Native</h3>
-                        <p>GPULang compiles directly to IR targets such as SPIR-V and DXIL. The compiler can also produce a C/C++ header file for static shader reflection, as well as a binary which can be used for dynamic shader reflection.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-puzzle-piece"></i>
-                        </div>
-                        <h3>Cross-Platform</h3>
-                        <p>GPULang and the language server works on Windows, macOS and Linux.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-tools"></i>
-                        </div>
-                        <h3>Rich Tooling</h3>
-                        <p>GPULang comes with a language server which doesn't just provide syntax introspection, but runs the compiler on the server side to ensure every error and warning is captured and reported.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-gamepad"></i>
-                        </div>
-                        <h3>Games</h3>
-                        <p>GPULang is designed to make shaders accessible for games. By assembling your shader stages in code, GPULang can validate and prepare pipeline creation for you, so you don't have to sweat.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <section id="examples" class="code-example">
             <div class="container">
-                <h2 class="section-title">See It In Action</h2>
                 <p style="text-align: center; color: #b0b0b0; font-size: 1.2rem; margin-bottom: 2rem;">
-                    Experience the elegance and power of GPULang with this vertex shader example
+                    Experience the elegance and power of GPULang with this example
                 </p>
                 <div class="code-container">
                     <div class="code-header">
@@ -305,6 +246,65 @@ program Render
             </div>
         </section>
 
+        <section id="features" class="features">
+            <div class="container">
+                <h2 class="section-title">Why GPULang?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Easy to Use</h3>
+                        <p>GPULang can be used directly as a CLI, or integrated into existing workflows with ease. The API to compile or run language server validation is a single API call with minimum setup.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Lightning Fast</h3>
+                        <p>The compiler is highly optimized to not waste CPU cycles. This means you don't have to waste time waiting for shaders to compile, and can improve iteration times significantly.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3>Games</h3>
+                        <p>GPULang is designed to make shaders accessible for game engines. By assembling your shader stages in code, GPULang can validate and prepare pipeline creation for you, so you don't have to sweat.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Modern Syntax</h3>
+                        <p>Clean, expressive syntax that makes GPU programming accessible while maintaining the power and flexibility needed for complex shaders. Unlike GLSL and HLSL, GPULang supports basic type inference.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h3>Native</h3>
+                        <p>GPULang compiles directly to IR targets such as SPIR-V and DXIL. The compiler can also produce a C/C++ header file for static shader reflection, as well as a binary which can be used for dynamic shader reflection.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <h3>Cross-Platform</h3>
+                        <p>GPULang and the language server works on Windows, macOS and Linux.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Rich Tooling</h3>
+                        <p>GPULang comes with a language server which doesn't just provide syntax introspection, but runs the compiler on the server side to ensure every error and warning is captured and reported.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
     </main>
 
     <footer>
@@ -340,7 +340,7 @@ program Render
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 GPULang. Built for the future of GPU computing.</p>
+                <p>&copy; 2025 GPULang.</p>
             </div>
         </div>
     </footer>

@@ -1770,7 +1770,7 @@ def generate_types():
     for state in states:
         declaration_string += state.declaration()
         definition_string += state.definition()
-        web_types['types'].append(state.name)
+        #web_types['types'].append(state.name)
         
     header_file.write(declaration_string[0:-1] + '\n')
     header_file.write("\n")
@@ -3937,6 +3937,8 @@ def generate_types():
                 param_string = ''
                 if param.uniform:
                     param_string += 'uniform '
+
+                param_string += param.api_name + ': '
                 if param.pointer:
                     param_string += '*'
                 if param.literal:
@@ -3945,6 +3947,7 @@ def generate_types():
                     param_string += 'mutable '
                 if param.sampled:
                     param_string += 'sampled '
+                
                 
                 if param.type_name in data_type_mapping:
                     param_string += data_type_mapping[param.type_name]

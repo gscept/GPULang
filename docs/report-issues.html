@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Issues - GPULang</title>
+    <link href="styles.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Main Content - Page Specific */
+        main {
+            padding-top: 120px;
+            padding-bottom: 4rem;
+            min-height: 100vh;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        /* Form Styling */
+        .report-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-label {
+            display: block;
+            color: #c084fc;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .form-label.required::after {
+            content: " *";
+            color: #f472b6;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            color: #ffffff;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #c084fc;
+            box-shadow: 0 0 0 3px rgba(192, 132, 252, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+            line-height: 1.6;
+        }
+
+        .form-textarea.large {
+            min-height: 200px;
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: #888;
+        }
+
+        .form-select {
+            cursor: pointer;
+        }
+
+        .form-select option {
+            background: #1a1a2e;
+            color: #ffffff;
+        }
+
+        /* Issue Type Grid */
+        .issue-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .issue-type {
+            padding: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .issue-type:hover {
+            border-color: #c084fc;
+            background: rgba(192, 132, 252, 0.1);
+        }
+
+        .issue-type.selected {
+            border-color: #c084fc;
+            background: linear-gradient(45deg, rgba(192, 132, 252, 0.2), rgba(244, 114, 182, 0.2));
+        }
+
+        .issue-type input[type="radio"] {
+            display: none;
+        }
+
+        .issue-type-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .issue-type-label {
+            font-size: 0.9rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* Buttons */
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #c084fc, #f472b6);
+            color: #0f0f23;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(192, 132, 252, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #c084fc;
+            border: 2px solid #c084fc;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(192, 132, 252, 0.1);
+        }
+
+        /* Info Box */
+        .info-box {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-box-title {
+            color: #3b82f6;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-box-content {
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .report-form {
+                padding: 2rem;
+                margin: 0 1rem;
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+
+            .issue-types {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">GPULang</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="docs.html">Documentation</a></li>
+                <li><a href="index.html#examples">Examples</a></li>
+                <li><a href="#community">Community</a></li>
+            </ul>
+            <a href="docs.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Docs
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">Report an Issue</h1>
+                <p class="page-subtitle">
+                    Help us improve GPULang by reporting bugs, requesting features, or sharing feedback
+                </p>
+            </div>
+
+            <div class="info-box">
+                <div class="info-box-title">
+                    <i class="fas fa-info-circle"></i>
+                    Before You Submit
+                </div>
+                <div class="info-box-content">
+                    Please check the <a href="https://github.com/gscept/GPULang/issues" target="_blank" style="color: #3b82f6;">existing issues</a> to see if your problem has already been reported. 
+                    For urgent bugs or detailed technical discussions, consider creating an issue directly on GitHub.
+                </div>
+            </div>
+
+            <form class="report-form" id="issueForm">
+                <div class="form-group">
+                    <label class="form-label required">Issue Type</label>
+                    <div class="issue-types">
+                        <label class="issue-type" data-type="bug">
+                            <input type="radio" name="issueType" value="bug" required>
+                            <i class="fas fa-bug issue-type-icon" style="color: #ef4444;"></i>
+                            <span class="issue-type-label">Bug Report</span>
+                        </label>
+                        <label class="issue-type" data-type="feature">
+                            <input type="radio" name="issueType" value="feature" required>
+                            <i class="fas fa-lightbulb issue-type-icon" style="color: #f59e0b;"></i>
+                            <span class="issue-type-label">Feature Request</span>
+                        </label>
+                        <label class="issue-type" data-type="documentation">
+                            <input type="radio" name="issueType" value="documentation" required>
+                            <i class="fas fa-book issue-type-icon" style="color: #3b82f6;"></i>
+                            <span class="issue-type-label">Documentation</span>
+                        </label>
+                        <label class="issue-type" data-type="question">
+                            <input type="radio" name="issueType" value="question" required>
+                            <i class="fas fa-question-circle issue-type-icon" style="color: #8b5cf6;"></i>
+                            <span class="issue-type-label">Question</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="title" class="form-label required">Title</label>
+                    <input 
+                        type="text" 
+                        id="title" 
+                        name="title" 
+                        class="form-input" 
+                        placeholder="Brief description of the issue..."
+                        required
+                        maxlength="100"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="platform" class="form-label">Platform/Target</label>
+                    <select id="platform" name="platform" class="form-select">
+                        <option value="">Select platform (if applicable)</option>
+                        <option value="vulkan">Vulkan</option>
+                        <option value="directx">DirectX</option>
+                        <option value="metal">Metal</option>
+                        <option value="webgpu">WebGPU</option>
+                        <option value="multiple">Multiple Platforms</option>
+                        <option value="compiler">Compiler/General</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="description" class="form-label required">Description</label>
+                    <textarea 
+                        id="description" 
+                        name="description" 
+                        class="form-textarea large" 
+                        placeholder="Please provide a detailed description of the issue, including steps to reproduce if it's a bug..."
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="environment" class="form-label">Environment</label>
+                    <textarea 
+                        id="environment" 
+                        name="environment" 
+                        class="form-textarea" 
+                        placeholder="OS, compiler version, graphics card, etc. (if relevant)"
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="codeExample" class="form-label">Code Example</label>
+                    <textarea 
+                        id="codeExample" 
+                        name="codeExample" 
+                        class="form-textarea" 
+                        placeholder="Paste any relevant GPULang code that demonstrates the issue..."
+                        style="font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;"
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact" class="form-label">Contact (Optional)</label>
+                    <input 
+                        type="email" 
+                        id="contact" 
+                        name="contact" 
+                        class="form-input" 
+                        placeholder="Your email for follow-up (optional)"
+                    >
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fab fa-github"></i>
+                        Create GitHub Issue
+                    </button>
+                    <a href="docs.html" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Docs
+                    </a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        // Issue type selection
+        document.querySelectorAll('.issue-type').forEach(type => {
+            type.addEventListener('click', function() {
+                // Remove selected class from all types
+                document.querySelectorAll('.issue-type').forEach(t => t.classList.remove('selected'));
+                
+                // Add selected class to clicked type
+                this.classList.add('selected');
+                
+                // Check the radio button
+                const radio = this.querySelector('input[type="radio"]');
+                radio.checked = true;
+            });
+        });
+
+        // Form submission
+        document.getElementById('issueForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const issueType = formData.get('issueType');
+            const title = formData.get('title');
+            const platform = formData.get('platform');
+            const description = formData.get('description');
+            const environment = formData.get('environment');
+            const codeExample = formData.get('codeExample');
+            
+            // Create GitHub issue URL with pre-filled data
+            let issueTitle = title;
+            
+            // Add type prefix to title
+            const typePrefix = {
+                'bug': '[Bug]',
+                'feature': '[Feature Request]',
+                'documentation': '[Documentation]',
+                'question': '[Question]'
+            };
+            
+            if (typePrefix[issueType]) {
+                issueTitle = `${typePrefix[issueType]} ${title}`;
+            }
+            
+            // Build issue body
+            let issueBody = `## Description\n${description}\n\n`;
+            
+            if (platform) {
+                issueBody += `## Platform/Target\n${platform}\n\n`;
+            }
+            
+            if (environment) {
+                issueBody += `## Environment\n${environment}\n\n`;
+            }
+            
+            if (codeExample) {
+                issueBody += `## Code Example\n\`\`\`gpulang\n${codeExample}\n\`\`\`\n\n`;
+            }
+            
+            issueBody += `## Additional Context\n_This issue was created using the GPULang documentation site's issue reporter._`;
+            
+            // Create GitHub URL with pre-filled data
+            const githubUrl = `https://github.com/gscept/GPULang/issues/new?title=${encodeURIComponent(issueTitle)}&body=${encodeURIComponent(issueBody)}`;
+            
+            // Open GitHub in new tab
+            window.open(githubUrl, '_blank');
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(15, 15, 35, 0.98)';
+            } else {
+                header.style.background = 'rgba(15, 15, 35, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>

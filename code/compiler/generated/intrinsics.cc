@@ -25707,6 +25707,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&SubgroupGetGreaterMask)->returnTypeSymbol = &UInt32x4Type;
 
     /// subgroupGetFirstActiveThread
+    SubgroupGetFirstActiveThread.documentation = "Returns the ID of the first active thread in the subgroup. If no threads are active, returns 0."_c;
     SubgroupGetFirstActiveThread.name = "subgroupGetFirstActiveThread"_c;
     SubgroupGetFirstActiveThread.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&SubgroupGetFirstActiveThread)->signature = "u32 subgroupGetFirstActiveThread()"_c;

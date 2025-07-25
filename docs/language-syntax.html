@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Syntax - GPULang Documentation</title>
+    <link href="styles.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Main Content - Page Specific */
+        main {
+            padding-top: 120px;
+            padding-bottom: 4rem;
+            min-height: 100vh;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .content-section h2 {
+            color: #c084fc;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .content-section h3 {
+            color: #f472b6;
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .content-section p {
+            color: #b0b0b0;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .content-section ul,
+        .content-section ol {
+            color: #b0b0b0;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+
+        .content-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Code Examples */
+        .code-example {
+            margin: 2rem 0;
+        }
+
+        .code-example-title {
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .code-container {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .code-header {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .code-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot.red { background: #ff5f57; }
+        .dot.yellow { background: #ffbd2e; }
+        .dot.green { background: #28ca42; }
+
+        .code-container pre {
+            margin: 0;
+            padding: 1.5rem;
+            overflow-x: auto;
+        }
+
+        .code-container code {
+            font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-item h4 {
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .feature-item p {
+            color: #b0b0b0;
+            margin: 0;
+        }
+
+        /* Table Styling */
+        .syntax-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .syntax-table th,
+        .syntax-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .syntax-table th {
+            background: rgba(192, 132, 252, 0.2);
+            color: #c084fc;
+            font-weight: 600;
+        }
+
+        .syntax-table td {
+            color: #b0b0b0;
+        }
+
+        .syntax-table td code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            color: #ffffff;
+        }
+
+        /* Navigation */
+        .content-nav {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(15, 15, 35, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1rem;
+            max-width: 200px;
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .content-nav h4 {
+            color: #c084fc;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .content-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .content-nav li {
+            margin-bottom: 0.3rem;
+        }
+
+        .content-nav a {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .content-nav a:hover {
+            color: #c084fc;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .content-nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content-section {
+                padding: 1.5rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">GPULang</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="docs.html">Documentation</a></li>
+                <li><a href="index.html#examples">Examples</a></li>
+                <li><a href="#community">Community</a></li>
+            </ul>
+            <a href="docs.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Docs
+            </a>
+        </nav>
+    </header>
+
+    <!-- Content Navigation -->
+    <nav class="content-nav">
+        <h4>On This Page</h4>
+        <ul>
+            <li><a href="#basics">Language Basics</a></li>
+            <li><a href="#types">Data Types</a></li>
+            <li><a href="#variables">Variables</a></li>
+            <li><a href="#functions">Functions</a></li>
+            <li><a href="#control">Control Flow</a></li>
+            <li><a href="#structs">Structures</a></li>
+            <li><a href="#shaders">Shader Programs</a></li>
+            <li><a href="#advanced">Advanced Features</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">Language Syntax</h1>
+                <p class="page-subtitle">
+                    Learn the fundamentals of GPULang syntax and modern language features
+                </p>
+            </div>
+
+            <section id="basics" class="content-section">
+                <h2>Language Basics</h2>
+                <p>
+                    GPULang is designed to be familiar to developers coming from C/C++ and modern shader languages, 
+                    while introducing improvements that make GPU programming more accessible and expressive.
+                </p>
+
+                <h3>Key Principles</h3>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <h4>Cross-Platform</h4>
+                        <p>Write once, compile to multiple targets including SPIR-V, DXIL, and more.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Program Assembly</h4>
+                        <p>Assemble programs in the shader, allowing for link time validation and trivial runtime pipeline setup.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Type Inference</h4>
+                        <p>GPULang supports basic type inference, reducing verbosity while maintaining clarity.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="types" class="content-section">
+                <h2>Data Types</h2>
+                <p>
+                    GPULang provides a comprehensive set of data types optimized for GPU computation.
+                </p>
+
+                <h3>Scalar Types</h3>
+                <div id="scalarTypesTable">
+                    <p style="color: #888;">Loading types from syntax definition...</p>
+                </div>
+
+                <h3>Vector Types</h3>
+                <p>GPULang supports vector types from 2 to 4 components:</p>
+                <div id="vectorTypesTable">
+                    <p style="color: #888;">Loading vector types...</p>
+                </div>
+
+                <h3>Matrix Types</h3>
+                <p>Matrices are specified as <code>type x rows x columns</code>:</p>
+                <div id="matrixTypesTable">
+                    <p style="color: #888;">Loading matrix types...</p>
+                </div>
+
+                <h3>Texture Types</h3>
+                <p>Various texture types for different dimensionalities and use cases:</p>
+                <div id="textureTypesTable">
+                    <p style="color: #888;">Loading texture types...</p>
+                </div>
+
+                <h3>Special Types</h3>
+                <p>Additional specialized types for specific GPU operations:</p>
+                <div id="specialTypesTable">
+                    <p style="color: #888;">Loading special types...</p>
+                </div>
+            </section>
+
+            <section id="variables" class="content-section">
+                <h2>Variables and Constants</h2>
+                
+                <h3>Variable Declaration</h3>
+                <p>Variables can be declared with explicit types or using type inference:</p>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-gpulang">// Explicit type declaration
+var position : f32x3 = f32x3(0.0f, 1.0f, 0.0f);
+var count : i32 = 42;
+
+// Type inferred from right hand side
+var color = f32x4(1.0f, 0.5f, 0.2f, 1.0f);  // inferred as f32x4
+var isVisible = true;                         // inferred as bool</code></pre>
+                    </div>
+                </div>
+
+                <h3>Constants</h3>
+                <p>Constants are declared using the <code>const</code> keyword:</p>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-gpulang">// Constants
+const PI = 3.14159f;
+const MAX_LIGHTS = 8;
+const DEFAULT_COLOR = f32x4(1.0f, 1.0f, 1.0f, 1.0f);</code></pre>
+                    </div>
+                </div>
+
+                <h3>Uniform Variables</h3>
+                <p>Uniform variables are declared using the <code>uniform</code> keyword. Uniform variables denote an externally provided resource:</p>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-gpulang">// Uniform declarations
+uniform ViewConstants : *View;
+uniform DiffuseTexture : *texture2D;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="functions" class="content-section">
+                <h2>Functions</h2>
+                
+                <h3>Function Declaration</h3>
+                <p>Functions are declared with return type and parameter list:</p>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-gpulang">// Function with multiple parameters
+calculateLighting(position : f32x3, normal : f32x3, lightPos : f32x3) f32x4
+{
+    const lightDir = normalize(lightPos - position);
+    const intensity = max(dot(normal, lightDir), 0.0f);
+    return f32x4(f32x3(intensity), 1.0f);
+}</code></pre>
+                    </div>
+                </div>
+
+                <h3>Entry Points</h3>
+                <p>Shader entry points are declared using the <code>entry_point</code> keyword:</p>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-gpulang">// Vertex shader entry point
+entry_point
+VertexMain(
+    binding(0) in position : f32x3,
+    binding(1) in normal : f32x3,
+    out worldPos : f32x4,
+    out worldNormal : f32x3
+) void
+{
+    worldPos = ViewMatrix * f32x4(position, 1.0f);
+    worldNormal = normalize((ViewMatrix * f32x4(normal, 0.0f)).xyz);
+    vertexExportCoordinates(worldPos);
+}</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="control" class="content-section">
+                <h2>Control Flow</h2>
+                
+                <h3>Conditional Statements</h3>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-gpulang">// If-else statements
+if (alpha < 0.5f) 
+{
+    discard;
+}
+else if (alpha < 0.8f)
+{
+    color.rgb *= 0.5f;
+}
+else
+{
+    color.rgb *= 1.2f;
+}</code></pre>
+                    </div>
+                </div>
+
+                <h3>Loops</h3>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-gpulang">// For loop
+var totalColor = f32x3(0.0f);
+for (var i : i32 = 0; i < MAX_LIGHTS; i++)
+{
+    totalColor += calculateLight(position, lights[i]);
+}
+
+// While loop
+var samples : i32 = 0;
+while (samples < MAX_SAMPLES && quality > threshold)
+{
+    // Sampling logic
+    samples++;
+}</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="structs" class="content-section">
+                <h2>Structures</h2>
+                
+                <h3>Structure Definition</h3>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-gpulang">// Material structure
+struct Material
+{
+    Albedo : f32x3;
+    Roughness : f32;
+    Metallic : f32;
+    Normal : f32x3;
+};
+
+// Light structure
+struct Light
+{
+    Position : f32x3;
+    Tint : f32x3;
+    Intensity : f32;
+    Range : f32;
+};</code></pre>
+                    </div>
+                </div>
+
+                <h3>Using Structures</h3>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-gpulang">// Create and use structures
+Material mat;
+mat.Albedo = f32x3(0.8f, 0.6f, 0.4f);
+mat.Roughness = 0.3f;
+mat.Metallic = 0.0f;
+
+// Structure as function parameter
+calculatePBR(material : Material, light : Light, viewDir : f32x3) f32x3
+{
+    // PBR calculation logic
+    return material.Albedo * light.Tint;
+}</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="shaders" class="content-section">
+                <h2>Shader Programs</h2>
+                
+                <h3>Program Definition</h3>
+                <p>Shader programs combine multiple shader stages:</p>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-gpulang">// Render state definition
+render_state MyRenderState
+{
+    Cull = CullFace.Back;
+    DepthTest = true;
+    DepthWrite = true;
+    Blend = false;
+};
+
+// Program combining shaders
+@Mask("Opaque")
+program StandardShading
+{
+    VertexShader = VertexMain;
+    PixelShader = PixelMain;
+    RenderState = MyRenderState;
+};</code></pre>
+                    </div>
+                </div>
+
+                <h3>Compute Shaders</h3>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-gpulang">// Compute shader entry point
+entry_point
+ComputeMain(
+    in WorkgroupSize(8, 8, 1)
+) void
+{
+    u32x2 id = computeGetGlobalID().xy;
+    
+    // Compute logic here
+    outputTexture[id] = inputTexture[id] * 2.0f;
+}</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="advanced" class="content-section">
+                <h2>Advanced Features</h2>
+                
+                <h3>Annotations</h3>
+                <p>GPULang supports annotations for additional metadata:</p>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-gpulang">// Annotations for program variants
+@Mask("Static", "Skinned") 
+program VariantShader
+{
+    VertexShader = VertexMain;
+    PixelShader = PixelMain;
+};
+
+// Parameter annotations
+entry_point
+AnnotatedShader(
+    @Location(0) in position : f32x3,
+    @Location(1) in uv : f32x2
+) void
+{
+    // Shader logic
+}</code></pre>
+                    </div>
+                </div>
+
+                <h3>Sampler States</h3>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-gpulang">// Sampler state definition
+sampler_state LinearSampler
+{
+    Filter = Filter.Linear;
+    AddressU = TextureAddressMode.Clamp;
+    AddressV = TextureAddressMode.Clamp;
+    BorderColor = f32x4(0.0f, 0.0f, 0.0f, 1.0f);
+};</code></pre>
+                    </div>
+                </div>
+
+                <h3>Memory Qualifiers</h3>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-gpulang">// Different memory access patterns
+uniform ConstantBuffer : *ConstantData;    // Uniform memory
+rw_buffer VertexBuffer : *f32x3;          // Read-write buffer
+texture2D DiffuseMap;                     // Texture memory
+rw_texture2D OutputTexture;               // Read-write texture</code></pre>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="syntax-loader.js"></script>
+    <script>
+        // Type categorization and descriptions
+        const typeDescriptions = {
+            // Scalar types
+            'f32': { description: '32-bit floating point', size: '4 bytes', category: 'scalar' },
+            'f16': { description: '16-bit floating point', size: '2 bytes', category: 'scalar' },
+            'u32': { description: '32-bit unsigned integer', size: '4 bytes', category: 'scalar' },
+            'u16': { description: '16-bit unsigned integer', size: '2 bytes', category: 'scalar' },
+            'i32': { description: '32-bit signed integer', size: '4 bytes', category: 'scalar' },
+            'i16': { description: '16-bit signed integer', size: '2 bytes', category: 'scalar' },
+            'b8': { description: '8-bit boolean', size: '1 byte', category: 'scalar' },
+            
+            // Special types
+            'sampler': { description: 'Texture sampler object', size: 'varies', category: 'special' },
+            'accelerationStructure': { description: 'Ray tracing acceleration structure', size: 'varies', category: 'special' },
+            'Function': { description: 'Function pointer type', size: 'varies', category: 'special' },
+            'Void': { description: 'Void type for functions', size: '0 bytes', category: 'special' },
+            'pixelCache': { description: 'Pixel cache for tile-based rendering', size: 'varies', category: 'special' },
+            'pixelCacheMS': { description: 'Multisampled pixel cache', size: 'varies', category: 'special' }
+        };
+
+        function getTypeDescription(type) {
+            // Check if we have a specific description
+            if (typeDescriptions[type]) {
+                return typeDescriptions[type];
+            }
+            
+            // Pattern matching for vectors
+            const vectorMatch = type.match(/^([a-z0-9]+)x([2-4])$/);
+            if (vectorMatch) {
+                const baseType = vectorMatch[1];
+                const components = vectorMatch[2];
+                const baseDesc = typeDescriptions[baseType];
+                if (baseDesc) {
+                    return {
+                        description: `${components}-component vector of ${baseDesc.description}`,
+                        size: `${components} × ${baseDesc.size}`,
+                        category: 'vector'
+                    };
+                }
+            }
+            
+            // Pattern matching for matrices
+            const matrixMatch = type.match(/^([a-z0-9]+)x([2-4])x([2-4])$/);
+            if (matrixMatch) {
+                const baseType = matrixMatch[1];
+                const rows = matrixMatch[2];
+                const cols = matrixMatch[3];
+                const baseDesc = typeDescriptions[baseType];
+                if (baseDesc) {
+                    return {
+                        description: `${rows}×${cols} matrix of ${baseDesc.description}`,
+                        size: `${rows} × ${cols} × ${baseDesc.size}`,
+                        category: 'matrix'
+                    };
+                }
+            }
+            
+            // Pattern matching for textures
+            if (type.startsWith('texture')) {
+                return {
+                    description: `${type.replace('texture', 'Texture ')} resource`,
+                    size: 'varies',
+                    category: 'texture'
+                };
+            }
+            
+            // Default fallback
+            return {
+                description: 'GPU data type',
+                size: 'varies',
+                category: 'special'
+            };
+        }
+
+        function createTypeTable(types, tableId, showDescriptions = true) {
+            const container = document.getElementById(tableId);
+            if (!container || types.length === 0) {
+                if (container) {
+                    container.innerHTML = '<p style="color: #888;">No types found in this category.</p>';
+                }
+                return;
+            }
+
+            const table = document.createElement('table');
+            table.className = 'syntax-table';
+            
+            const thead = document.createElement('thead');
+            if (showDescriptions) {
+                thead.innerHTML = `
+                    <tr>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Size</th>
+                    </tr>
+                `;
+            } else {
+                thead.innerHTML = `
+                    <tr>
+                        <th>Type</th>
+                    </tr>
+                `;
+            }
+            table.appendChild(thead);
+            
+            const tbody = document.createElement('tbody');
+            types.forEach(type => {
+                const row = document.createElement('tr');
+                if (showDescriptions) {
+                    const desc = getTypeDescription(type);
+                    row.innerHTML = `
+                        <td><code>${type}</code></td>
+                        <td>${desc.description}</td>
+                        <td>${desc.size}</td>
+                    `;
+                } else {
+                    row.innerHTML = `
+                        <td><code>${type}</code></td>
+                    `;
+                }
+                tbody.appendChild(row);
+            });
+            table.appendChild(tbody);
+            
+            container.innerHTML = '';
+            container.appendChild(table);
+        }
+
+        function createVectorExamples(vectorTypes) {
+            const container = document.getElementById('vectorTypesTable');
+            if (!container) return;
+
+            // Create examples for common vector types
+            const examples = [
+                { type: 'f32x2', usage: 'position2D', comment: '2D position' },
+                { type: 'f32x3', usage: 'position3D', comment: '3D position' },
+                { type: 'f32x4', usage: 'color', comment: 'RGBA color' },
+                { type: 'i32x3', usage: 'indices', comment: 'Integer vector' },
+                { type: 'b8x4', usage: 'mask', comment: 'Boolean vector' }
+            ].filter(example => vectorTypes.includes(example.type));
+
+            const codeExample = examples.map(ex => 
+                `${ex.type} ${ex.usage};     // ${ex.comment}`
+            ).join('\n');
+
+            const html = `
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-gpulang">// Vector declarations
+${codeExample}</code></pre>
+                    </div>
+                </div>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        function createMatrixExamples(matrixTypes) {
+            const container = document.getElementById('matrixTypesTable');
+            if (!container) return;
+
+            // Create examples for common matrix types
+            const examples = [
+                { type: 'f32x4x4', usage: 'transform', comment: '4x4 transformation matrix' },
+                { type: 'f32x3x3', usage: 'rotation', comment: '3x3 rotation matrix' },
+                { type: 'f32x2x4', usage: 'projection', comment: '2x4 projection matrix' },
+                { type: 'f16x4x4', usage: 'lightTransform', comment: '4x4 light transformation (half precision)' }
+            ].filter(example => matrixTypes.includes(example.type));
+
+            const codeExample = examples.map(ex => 
+                `${ex.type} ${ex.usage};    // ${ex.comment}`
+            ).join('\n');
+
+            const html = `
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-gpulang">// Matrix declarations
+${codeExample}</code></pre>
+                    </div>
+                </div>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        async function loadTypesFromSyntax() {
+            try {
+                // Wait for syntax data to be loaded by syntax-loader.js
+                await loadSyntaxData();
+                
+                if (!syntaxData || !syntaxData.types) {
+                    throw new Error('No types found in syntax data');
+                }
+
+                const types = syntaxData.types;
+                
+                // Categorize types
+                const scalarTypes = types.filter(type => {
+                    const desc = getTypeDescription(type);
+                    return desc.category === 'scalar';
+                }).sort();
+
+                const vectorTypes = types.filter(type => {
+                    const desc = getTypeDescription(type);
+                    return desc.category === 'vector';
+                }).sort();
+
+                const matrixTypes = types.filter(type => {
+                    const desc = getTypeDescription(type);
+                    return desc.category === 'matrix';
+                }).sort();
+
+                const textureTypes = types.filter(type => {
+                    const desc = getTypeDescription(type);
+                    return desc.category === 'texture';
+                }).sort();
+
+                const specialTypes = types.filter(type => {
+                    const desc = getTypeDescription(type);
+                    return desc.category === 'special';
+                }).sort();
+
+                // Create tables
+                createTypeTable(scalarTypes, 'scalarTypesTable');
+                createVectorExamples(vectorTypes);
+                createMatrixExamples(matrixTypes);
+                createTypeTable(textureTypes, 'textureTypesTable', false);
+                createTypeTable(specialTypes, 'specialTypesTable', false);
+
+                // Apply syntax highlighting to the new code examples
+                if (window.Prism) {
+                    Prism.highlightAll();
+                }
+
+            } catch (error) {
+                console.error('Failed to load types from syntax.json:', error);
+                
+                // Show error message in all containers
+                const containers = [
+                    'scalarTypesTable', 'vectorTypesTable', 'matrixTypesTable', 
+                    'textureTypesTable', 'specialTypesTable'
+                ];
+                
+                containers.forEach(containerId => {
+                    const container = document.getElementById(containerId);
+                    if (container) {
+                        container.innerHTML = '<p style="color: #ef4444;">Failed to load types from syntax definition. Please check that syntax.json is available.</p>';
+                    }
+                });
+            }
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(15, 15, 35, 0.98)';
+            } else {
+                header.style.background = 'rgba(15, 15, 35, 0.95)';
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = 120;
+                    const elementPosition = target.offsetTop;
+                    const offsetPosition = elementPosition - headerHeight;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Load types when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load types after syntax data is available
+            loadTypesFromSyntax();
+        });
+    </script>
+</body>
+</html>

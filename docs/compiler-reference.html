@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compiler Reference - GPULang Documentation</title>
+    <link href="styles.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Main Content - Page Specific */
+        main {
+            padding-top: 120px;
+            padding-bottom: 4rem;
+            min-height: 100vh;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .content-section h2 {
+            color: #c084fc;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .content-section h3 {
+            color: #f472b6;
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .content-section p {
+            color: #b0b0b0;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .content-section ul,
+        .content-section ol {
+            color: #b0b0b0;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+
+        .content-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Command Examples */
+        .command-example {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
+            color: #ffffff;
+            position: relative;
+        }
+
+        .command-example::before {
+            content: '$ ';
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        /* Options Table */
+        .options-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .options-table th,
+        .options-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            vertical-align: top;
+        }
+
+        .options-table th {
+            background: rgba(192, 132, 252, 0.2);
+            color: #c084fc;
+            font-weight: 600;
+        }
+
+        .options-table td {
+            color: #b0b0b0;
+        }
+
+        .options-table td code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            color: #ffffff;
+        }
+
+        .options-table .option-name {
+            color: #ffffff;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+        }
+
+        /* Target Grid */
+        .target-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .target-card {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .target-card:hover {
+            border-color: #c084fc;
+            background: rgba(192, 132, 252, 0.05);
+        }
+
+        .target-card h4 {
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .target-card .icon {
+            color: #c084fc;
+            font-size: 1.2rem;
+        }
+
+        .target-card p {
+            color: #b0b0b0;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Build System Examples */
+        .build-system {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .build-system h4 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .build-system .icon {
+            color: #f472b6;
+        }
+
+        /* Code Examples */
+        .code-example {
+            margin: 2rem 0;
+        }
+
+        .code-example-title {
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .code-container {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .code-header {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .code-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot.red { background: #ff5f57; }
+        .dot.yellow { background: #ffbd2e; }
+        .dot.green { background: #28ca42; }
+
+        .code-container pre {
+            margin: 0;
+            padding: 1.5rem;
+            overflow-x: auto;
+        }
+
+        .code-container code {
+            font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Navigation */
+        .content-nav {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(15, 15, 35, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1rem;
+            max-width: 200px;
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .content-nav h4 {
+            color: #c084fc;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .content-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .content-nav li {
+            margin-bottom: 0.3rem;
+        }
+
+        .content-nav a {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .content-nav a:hover {
+            color: #c084fc;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .content-nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content-section {
+                padding: 1.5rem;
+            }
+            
+            .target-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .options-table {
+                font-size: 0.8rem;
+            }
+            
+            .options-table th,
+            .options-table td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">GPULang</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="docs.html">Documentation</a></li>
+                <li><a href="index.html#examples">Examples</a></li>
+                <li><a href="#community">Community</a></li>
+            </ul>
+            <a href="docs.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Docs
+            </a>
+        </nav>
+    </header>
+
+    <!-- Content Navigation -->
+    <nav class="content-nav">
+        <h4>On This Page</h4>
+        <ul>
+            <li><a href="#installation">Installation</a></li>
+            <li><a href="#basic-usage">Basic Usage</a></li>
+            <li><a href="#options">Command Options</a></li>
+            <li><a href="#targets">Target Platforms</a></li>
+            <li><a href="#optimization">Optimization</a></li>
+            <li><a href="#build-systems">Build Systems</a></li>
+            <li><a href="#api">Compiler API</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">Compiler Reference</h1>
+                <p class="page-subtitle">
+                    Complete guide to the GPULang compiler, command-line options, and build system integration
+                </p>
+            </div>
+
+            <section id="installation" class="content-section">
+                <h2>Installation</h2>
+                <p>
+                    The GPULang compiler can be installed through multiple methods depending on your platform and needs.
+                </p>
+
+                <h3>Download Prebuilt Binaries</h3>
+                <p>Download the latest compiler binaries from the GitHub releases page:</p>
+                <div class="command-example">gpulangc --version</div>
+                
+                <h3>Build from Source</h3>
+                <p>To build the compiler from source, you'll need CMake and a C++17 compatible compiler:</p>
+                <div class="command-example">git clone https://github.com/gscept/GPULang.git</div>
+                <div class="command-example">cd GPULang && mkdir build && cd build</div>
+                <div class="command-example">cmake .. && make -j$(nproc)</div>
+
+                <h3>Package Managers</h3>
+                <p>GPULang will be available through popular package managers:</p>
+                <div class="command-example"># Coming soon
+# vcpkg install gpulang
+# conan install gpulang</div>
+            </section>
+
+            <section id="basic-usage" class="content-section">
+                <h2>Basic Usage</h2>
+                <p>
+                    The GPULang compiler (<code>gpulangc</code>) transforms .gpul source files into target-specific
+                    shader binaries and reflection data.
+                </p>
+
+                <h3>Simple Compilation</h3>
+                <div class="command-example">gpulangc shader.gpul -o output</div>
+                <p>This compiles <code>shader.gpul</code> and outputs the results to <code>output.spv</code> (SPIR-V by default).</p>
+
+                <h3>Multiple Targets</h3>
+                <div class="command-example">gpulangc shader.gpul --target vulkan,directx,metal -o output</div>
+                <p>Generates shader binaries for multiple target platforms simultaneously.</p>
+
+                <h3>With Reflection Data</h3>
+                <div class="command-example">gpulangc shader.gpul --reflection static,dynamic -o output</div>
+                <p>Generates both static (C++ headers) and dynamic (binary metadata) reflection data.</p>
+
+                <h3>Directory Processing</h3>
+                <div class="command-example">gpulangc src/shaders/ --recursive --output-dir build/shaders/</div>
+                <p>Processes all .gpul files in a directory tree and maintains the directory structure in output.</p>
+            </section>
+
+            <section id="options" class="content-section">
+                <h2>Command-Line Options</h2>
+                
+                <h3>Input/Output Options</h3>
+                <table class="options-table">
+                    <thead>
+                        <tr>
+                            <th>Option</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="option-name">-o, --output</td>
+                            <td>Output file path (without extension)</td>
+                            <td><code>-o build/shader</code></td>
+                        </tr>
+                        <tr>
+                            <td class="option-name">--output-dir</td>
+                            <td>Output directory for batch compilation</td>
+                            <td><code>--output-dir build/</code></td>
+                        </tr>
+                        <tr>
+                            <td class="option-name">-I, --include</td>
+                            <td>Add include directory</td>
+                            <td><code>-I include/</code></td>
+                        </tr>
+                        <tr>
+                            <td class="option-name">--recursive</td>
+                            <td>Process directories recursively</td>
+                            <td><code>--recursive</code></td>
+                        </tr>
+                        <tr>
+                            <td class="option-name">--watch</td>
+                            <td>Watch files for changes (development mode)</td>
+                            <td><code>--watch</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Target Platform Options</h3>
+                <table class="options-table">
+                    <thead>
+                        <tr>
+                            <th>Option</th>
+                            <th>Description</th>
+                            <th>Values</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="option-name">--target</td>
+                            <td>Target platform(s)</td>
+                            <td><code>vulkan, directx, metal, webgpu</code></td>
+                        </tr>
+                        <tr>
+                            <td class="option-name">--vulkan-version</td>
+                            <td>Target Vulkan version</td>
+                            <td><code>1.0, 1.1, 1.2, 1.3</code></td>
+                        </tr>
+                        <tr>
+                            <td class="option-name">--directx-version</td>
+                            <td>Target DirectX version</td>
+                            <td><code>11, 12</code></td>
+                        </tr>
+                        <tr>
+                            <td class="option-name">--metal-version</td>
+                            <td>Target Metal version</td>
+                            <td><code>2.0, 2.1, 2.2, 2.3, 2.4</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Optimization Options</h3>
+                <table class="options-table">
+                    <thead>
+                        <tr>
+                            <th>Option</th>
+                            <th>Description</th>
+                            <th>Default</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="option-name">-O0</td>
+                            <td>No optimization (debug builds)</td>
+                            <td>Debug default</td>
+                        </tr>
+                        <tr>
+                            <td class="option-name">-O1</td>
+                            <td>Basic optimizations</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="option-name">-O2</td>
+                            <td>Standard optimizations</td>
+                            <td>Release default</td>
+                        </tr>
+                        <tr>
+                            <td class="option-name">-O3</td>
+                            <td>Aggressive optimizations</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="option-name">--debug</td>
+                            <td>Include debug information</td>
+                            <td>Debug builds</td>
+                        </tr>
+                        <tr>
+                            <td class="option-name">--strip</td>
+                            <td>Strip debug information</td>
+                            <td>Release builds</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Reflection Options</h3>
+                <table class="options-table">
+                    <thead>
+                        <tr>
+                            <th>Option</th>
+                            <th>Description</th>
+                            <th>Output</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="option-name">--reflection static</td>
+                            <td>Generate C++ header files</td>
+                            <td><code>*.h</code></td>
+                        </tr>
+                        <tr>
+                            <td class="option-name">--reflection dynamic</td>
+                            <td>Generate binary reflection data</td>
+                            <td><code>*.refl</code></td>
+                        </tr>
+                        <tr>
+                            <td class="option-name">--reflection json</td>
+                            <td>Generate JSON reflection data</td>
+                            <td><code>*.json</code></td>
+                        </tr>
+                        <tr>
+                            <td class="option-name">--namespace</td>
+                            <td>C++ namespace for static reflection</td>
+                            <td><code>--namespace MyEngine::Shaders</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="targets" class="content-section">
+                <h2>Target Platforms</h2>
+                <p>
+                    GPULang supports compilation to multiple graphics API targets, each with specific
+                    output formats and capabilities.
+                </p>
+
+                <div class="target-grid">
+                    <div class="target-card">
+                        <h4><i class="fab fa-vulkan icon"></i>Vulkan</h4>
+                        <p><strong>Output:</strong> SPIR-V (.spv)<br>
+                        <strong>Versions:</strong> 1.0, 1.1, 1.2, 1.3<br>
+                        <strong>Features:</strong> Full feature set, best performance</p>
+                    </div>
+                    <div class="target-card">
+                        <h4><i class="fab fa-microsoft icon"></i>DirectX</h4>
+                        <p><strong>Output:</strong> DXIL (.dxil), HLSL (.hlsl)<br>
+                        <strong>Versions:</strong> DirectX 11, 12<br>
+                        <strong>Features:</strong> Windows platform, Xbox support</p>
+                    </div>
+                    <div class="target-card">
+                        <h4><i class="fab fa-apple icon"></i>Metal</h4>
+                        <p><strong>Output:</strong> Metal (.metal), AIR (.air)<br>
+                        <strong>Versions:</strong> 2.0 - 2.4<br>
+                        <strong>Features:</strong> Apple platforms, iOS, macOS</p>
+                    </div>
+                    <div class="target-card">
+                        <h4><i class="fas fa-globe icon"></i>WebGPU</h4>
+                        <p><strong>Output:</strong> WGSL (.wgsl)<br>
+                        <strong>Versions:</strong> Current specification<br>
+                        <strong>Features:</strong> Web browsers, cross-platform</p>
+                    </div>
+                </div>
+
+                <h3>Target-Specific Options</h3>
+                <div class="command-example">gpulangc shader.gpul --target vulkan --vulkan-version 1.3 --spirv-extensions VK_KHR_ray_tracing</div>
+                <div class="command-example">gpulangc shader.gpul --target directx --directx-version 12 --shader-model 6.6</div>
+                <div class="command-example">gpulangc shader.gpul --target metal --metal-version 2.4 --ios-deployment-target 14.0</div>
+            </section>
+
+            <section id="optimization" class="content-section">
+                <h2>Optimization Levels</h2>
+                <p>
+                    The GPULang compiler provides multiple optimization levels to balance compilation time
+                    and runtime performance.
+                </p>
+
+                <h3>Optimization Levels</h3>
+                <ul>
+                    <li><strong>-O0 (Debug):</strong> No optimizations, fastest compilation, includes debug info</li>
+                    <li><strong>-O1 (Basic):</strong> Basic optimizations, moderate compilation time</li>
+                    <li><strong>-O2 (Standard):</strong> Standard optimizations, good balance of size and speed</li>
+                    <li><strong>-O3 (Aggressive):</strong> Maximum optimizations, slowest compilation, best performance</li>
+                </ul>
+
+                <h3>Specific Optimization Flags</h3>
+                <table class="options-table">
+                    <thead>
+                        <tr>
+                            <th>Flag</th>
+                            <th>Description</th>
+                            <th>Impact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="option-name">--inline-functions</td>
+                            <td>Inline function calls</td>
+                            <td>Reduces call overhead, increases code size</td>
+                        </tr>
+                        <tr>
+                            <td class="option-name">--unroll-loops</td>
+                            <td>Unroll small loops</td>
+                            <td>Better performance, larger code size</td>
+                        </tr>
+                        <tr>
+                            <td class="option-name">--dead-code-elimination</td>
+                            <td>Remove unused code</td>
+                            <td>Smaller binaries, faster execution</td>
+                        </tr>
+                        <tr>
+                            <td class="option-name">--constant-folding</td>
+                            <td>Evaluate constants at compile time</td>
+                            <td>Faster execution, reduced memory usage</td>
+                        </tr>
+                        <tr>
+                            <td class="option-name">--vectorize</td>
+                            <td>Auto-vectorization of operations</td>
+                            <td>Better GPU utilization</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Debug vs Release Builds</h3>
+                <div class="command-example"># Debug build - fast compilation, debug info
+gpulangc shader.gpul -O0 --debug --target vulkan</div>
+                <div class="command-example"># Release build - optimized for performance
+gpulangc shader.gpul -O2 --strip --target vulkan,directx,metal</div>
+            </section>
+
+            <section id="build-systems" class="content-section">
+                <h2>Build System Integration</h2>
+                <p>
+                    GPULang integrates seamlessly with popular build systems for automated shader compilation
+                    as part of your project build process.
+                </p>
+
+                <div class="build-system">
+                    <h4><i class="fas fa-cog icon"></i>CMake Integration</h4>
+                    <div class="code-example">
+                        <div class="code-container">
+                            <div class="code-header">
+                                <div class="code-dots">
+                                    <div class="dot red"></div>
+                                    <div class="dot yellow"></div>
+                                    <div class="dot green"></div>
+                                </div>
+                                <span>CMakeLists.txt</span>
+                            </div>
+                            <pre><code class="language-cmake"># Find GPULang compiler
+find_program(GPULANGC_EXECUTABLE gpulangc REQUIRED)
+
+# Function to compile shaders
+function(add_shaders target)
+    set(SHADER_OUTPUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/shaders")
+    file(MAKE_DIRECTORY ${SHADER_OUTPUT_DIR})
+    
+    foreach(shader ${ARGN})
+        get_filename_component(shader_name ${shader} NAME_WE)
+        set(output_file "${SHADER_OUTPUT_DIR}/${shader_name}")
+        
+        add_custom_command(
+            OUTPUT ${output_file}.spv ${output_file}.h
+            COMMAND ${GPULANGC_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/${shader}
+                    --target vulkan --reflection static
+                    --output ${output_file}
+            DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/${shader}
+            COMMENT "Compiling shader ${shader}"
+        )
+        
+        list(APPEND shader_outputs ${output_file}.spv ${output_file}.h)
+    endforeach()
+    
+    add_custom_target(${target}_shaders DEPENDS ${shader_outputs})
+    add_dependencies(${target} ${target}_shaders)
+endfunction()
+
+# Usage
+add_executable(my_game main.cpp)
+add_shaders(my_game 
+    shaders/vertex.gpul 
+    shaders/fragment.gpul
+    shaders/compute.gpul
+)</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="build-system">
+                    <h4><i class="fas fa-file-code icon"></i>Makefile Integration</h4>
+                    <div class="code-example">
+                        <div class="code-container">
+                            <div class="code-header">
+                                <div class="code-dots">
+                                    <div class="dot red"></div>
+                                    <div class="dot yellow"></div>
+                                    <div class="dot green"></div>
+                                </div>
+                                <span>Makefile</span>
+                            </div>
+                            <pre><code class="language-makefile"># Shader compilation rules
+SHADER_SRC_DIR := src/shaders
+SHADER_OUT_DIR := build/shaders
+GPULANGC := gpulangc
+
+# Find all .gpul files
+SHADER_SOURCES := $(wildcard $(SHADER_SRC_DIR)/*.gpul)
+SHADER_OUTPUTS := $(patsubst $(SHADER_SRC_DIR)/%.gpul,$(SHADER_OUT_DIR)/%.spv,$(SHADER_SOURCES))
+SHADER_HEADERS := $(patsubst $(SHADER_SRC_DIR)/%.gpul,$(SHADER_OUT_DIR)/%.h,$(SHADER_SOURCES))
+
+# Create output directory
+$(SHADER_OUT_DIR):
+	mkdir -p $(SHADER_OUT_DIR)
+
+# Compile shaders
+$(SHADER_OUT_DIR)/%.spv $(SHADER_OUT_DIR)/%.h: $(SHADER_SRC_DIR)/%.gpul | $(SHADER_OUT_DIR)
+	$(GPULANGC) $< --target vulkan --reflection static --output $(SHADER_OUT_DIR)/$*
+
+# Target to build all shaders
+shaders: $(SHADER_OUTPUTS) $(SHADER_HEADERS)
+
+# Clean shaders
+clean-shaders:
+	rm -rf $(SHADER_OUT_DIR)
+
+# Make shaders a dependency of main target
+all: shaders my_program
+
+.PHONY: shaders clean-shaders</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="build-system">
+                    <h4><i class="fab fa-npm icon"></i>npm/Node.js Integration</h4>
+                    <div class="code-example">
+                        <div class="code-container">
+                            <div class="code-header">
+                                <div class="code-dots">
+                                    <div class="dot red"></div>
+                                    <div class="dot yellow"></div>
+                                    <div class="dot green"></div>
+                                </div>
+                                <span>package.json</span>
+                            </div>
+                            <pre><code class="language-json">{
+  "name": "my-webgpu-app",
+  "scripts": {
+    "build-shaders": "gpulangc src/shaders/ --recursive --target webgpu --output-dir public/shaders/",
+    "watch-shaders": "gpulangc src/shaders/ --recursive --target webgpu --output-dir public/shaders/ --watch",
+    "build": "npm run build-shaders && webpack",
+    "dev": "concurrently \"npm run watch-shaders\" \"webpack-dev-server\""
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Continuous Integration</h3>
+                <div class="code-example">
+                    <div class="code-example-title">GitHub Actions Workflow</div>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <div class="code-dots">
+                                <div class="dot red"></div>
+                                <div class="dot yellow"></div>
+                                <div class="dot green"></div>
+                            </div>
+                            <span>.github/workflows/build.yml</span>
+                        </div>
+                        <pre><code class="language-yaml">name: Build Shaders
+on: [push, pull_request]
+
+jobs:
+  build-shaders:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Install GPULang
+      run: |
+        wget https://github.com/gscept/GPULang/releases/latest/download/gpulangc-linux.tar.gz
+        tar -xzf gpulangc-linux.tar.gz
+        sudo mv gpulangc /usr/local/bin/
+    
+    - name: Compile Shaders
+      run: |
+        gpulangc src/shaders/ --recursive --target vulkan,directx,metal,webgpu --output-dir build/shaders/
+    
+    - name: Upload Shader Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: compiled-shaders
+        path: build/shaders/</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="api" class="content-section">
+                <h2>Compiler API</h2>
+                <p>
+                    For advanced integration scenarios, GPULang provides a C++ API that allows embedding
+                    the compiler directly into your application or tools.
+                </p>
+
+                <h3>Basic API Usage</h3>
+                <div class="code-example">
+                    <div class="code-container">
+                        <div class="code-header">
+                            <div class="code-dots">
+                                <div class="dot red"></div>
+                                <div class="dot yellow"></div>
+                                <div class="dot green"></div>
+                            </div>
+                            <span>compiler_api.cpp</span>
+                        </div>
+                        <pre><code class="language-cpp">#include &lt;GPULang/Compiler.h&gt;
+
+int main() {
+    // Initialize compiler
+    GPULang::Compiler compiler;
+    
+    // Set compilation options
+    GPULang::CompilationOptions options;
+    options.target = GPULang::Target::Vulkan;
+    options.optimizationLevel = GPULang::OptimizationLevel::O2;
+    options.generateReflection = true;
+    options.includeDirectories = {"include/", "shaders/common/"};
+    
+    // Compile shader from file
+    auto result = compiler.CompileFromFile("shader.gpul", options);
+    
+    if (result.success) {
+        // Access compiled bytecode
+        const auto& bytecode = result.bytecode;
+        
+        // Access reflection data
+        const auto& reflection = result.reflection;
+        
+        // Save to file or use directly
+        std::ofstream output("shader.spv", std::ios::binary);
+        output.write(reinterpret_cast&lt;const char*&gt;(bytecode.data()), bytecode.size());
+    } else {
+        // Handle compilation errors
+        for (const auto& error : result.errors) {
+            std::cerr << error.file << ":" << error.line << ": " << error.message << std::endl;
+        }
+    }
+    
+    return 0;
+}</code></pre>
+                    </div>
+                </div>
+
+                <h3>Language Server Integration</h3>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-cpp">// Language server for IDE integration
+class GPULangLanguageServer {
+private:
+    GPULang::Compiler compiler;
+    
+public:
+    // Validate shader without full compilation
+    std::vector&lt;Diagnostic&gt; ValidateShader(const std::string& source) {
+        GPULang::CompilationOptions options;
+        options.validateOnly = true;
+        
+        auto result = compiler.CompileFromString(source, options);
+        
+        std::vector&lt;Diagnostic&gt; diagnostics;
+        for (const auto& error : result.errors) {
+            diagnostics.push_back({
+                .severity = error.severity,
+                .line = error.line,
+                .column = error.column,
+                .message = error.message
+            });
+        }
+        
+        return diagnostics;
+    }
+    
+    // Provide autocomplete suggestions
+    std::vector&lt;CompletionItem&gt; GetCompletions(const std::string& source, int line, int column) {
+        // Query intrinsics and available symbols
+        return compiler.GetCompletions(source, line, column);
+    }
+};</code></pre>
+                    </div>
+                </div>
+
+                <h3>Build Tool Integration</h3>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-cpp">// Custom build tool using the API
+class ShaderBuildTool {
+private:
+    GPULang::Compiler compiler;
+    std::filesystem::path outputDir;
+    
+public:
+    void ProcessDirectory(const std::filesystem::path& inputDir) {
+        for (const auto& entry : std::filesystem::recursive_directory_iterator(inputDir)) {
+            if (entry.path().extension() == ".gpul") {
+                ProcessShader(entry.path());
+            }
+        }
+    }
+    
+private:
+    void ProcessShader(const std::filesystem::path& shaderPath) {
+        GPULang::CompilationOptions options;
+        options.target = GPULang::Target::Multiple; // Compile for all targets
+        options.generateReflection = true;
+        
+        auto result = compiler.CompileFromFile(shaderPath.string(), options);
+        
+        if (result.success) {
+            // Save outputs for each target
+            for (const auto& [target, bytecode] : result.targetOutputs) {
+                auto outputPath = outputDir / shaderPath.stem();
+                outputPath += GetExtensionForTarget(target);
+                
+                std::ofstream output(outputPath, std::ios::binary);
+                output.write(reinterpret_cast&lt;const char*&gt;(bytecode.data()), bytecode.size());
+            }
+            
+            // Save reflection data
+            if (!result.reflection.empty()) {
+                auto reflectionPath = outputDir / shaderPath.stem();
+                reflectionPath += ".refl";
+                
+                std::ofstream reflFile(reflectionPath, std::ios::binary);
+                reflFile.write(reinterpret_cast&lt;const char*&gt;(result.reflection.data()), 
+                             result.reflection.size());
+            }
+        }
+    }
+};</code></pre>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="syntax-loader.js"></script>
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(15, 15, 35, 0.98)';
+            } else {
+                header.style.background = 'rgba(15, 15, 35, 0.95)';
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = 120;
+                    const elementPosition = target.offsetTop;
+                    const offsetPosition = elementPosition - headerHeight;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

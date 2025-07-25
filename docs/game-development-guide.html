@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Development Guide - GPULang Documentation</title>
+    <link href="styles.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Main Content - Page Specific */
+        main {
+            padding-top: 120px;
+            padding-bottom: 4rem;
+            min-height: 100vh;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .content-section h2 {
+            color: #c084fc;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .content-section h3 {
+            color: #f472b6;
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .content-section p {
+            color: #b0b0b0;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .content-section ul,
+        .content-section ol {
+            color: #b0b0b0;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+
+        .content-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Code Examples */
+        .code-example {
+            margin: 2rem 0;
+        }
+
+        .code-example-title {
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .code-container {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .code-header {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .code-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot.red { background: #ff5f57; }
+        .dot.yellow { background: #ffbd2e; }
+        .dot.green { background: #28ca42; }
+
+        .code-container pre {
+            margin: 0;
+            padding: 1.5rem;
+            overflow-x: auto;
+        }
+
+        .code-container code {
+            font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: #c084fc;
+            background: rgba(192, 132, 252, 0.05);
+        }
+
+        .feature-card h4 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-card .icon {
+            color: #c084fc;
+            font-size: 1.2rem;
+        }
+
+        .feature-card p {
+            color: #b0b0b0;
+            margin: 0;
+        }
+
+        /* Best Practices Box */
+        .best-practice {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .best-practice-title {
+            color: #22c55e;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .best-practice-content {
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+
+        /* Warning Box */
+        .warning {
+            background: rgba(251, 191, 36, 0.1);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .warning-title {
+            color: #fbbf24;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .warning-content {
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+
+        /* Performance Tips */
+        .perf-tip {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .perf-tip-title {
+            color: #3b82f6;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .perf-tip-content {
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+
+        /* Architecture Diagram */
+        .architecture-diagram {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .diagram-layer {
+            background: rgba(192, 132, 252, 0.1);
+            border: 1px solid rgba(192, 132, 252, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* Navigation */
+        .content-nav {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(15, 15, 35, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1rem;
+            max-width: 200px;
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .content-nav h4 {
+            color: #c084fc;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .content-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .content-nav li {
+            margin-bottom: 0.3rem;
+        }
+
+        .content-nav a {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .content-nav a:hover {
+            color: #c084fc;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .content-nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content-section {
+                padding: 1.5rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">GPULang</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="docs.html">Documentation</a></li>
+                <li><a href="index.html#examples">Examples</a></li>
+                <li><a href="#community">Community</a></li>
+            </ul>
+            <a href="docs.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Docs
+            </a>
+        </nav>
+    </header>
+
+    <!-- Content Navigation -->
+    <nav class="content-nav">
+        <h4>On This Page</h4>
+        <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#integration">Engine Integration</a></li>
+            <li><a href="#pipeline">Shader Pipeline</a></li>
+            <li><a href="#materials">Material System</a></li>
+            <li><a href="#optimization">Performance</a></li>
+            <li><a href="#debugging">Debugging</a></li>
+            <li><a href="#patterns">Common Patterns</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">Game Development Guide</h1>
+                <p class="page-subtitle">
+                    Learn how to integrate GPULang into your game engine and optimize rendering performance
+                </p>
+            </div>
+
+            <section id="overview" class="content-section">
+                <h2>Overview</h2>
+                <p>
+                    GPULang is designed from the ground up to make shader development in games more efficient
+                    and maintainable. This guide covers integration patterns, performance optimization,
+                    and best practices for using GPULang in real-time rendering applications.
+                </p>
+
+                <h3>Why GPULang for Games?</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4><i class="fas fa-bolt icon"></i>Fast Iteration</h4>
+                        <p>Hot reloading and rapid compilation enables quick shader iteration during development.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4><i class="fas fa-code icon"></i>Shader Variants</h4>
+                        <p>Built-in support for shader variants and permutations reduces code duplication.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4><i class="fas fa-search icon"></i>Reflection</h4>
+                        <p>Automatic resource binding and pipeline creation through reflection data.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4><i class="fas fa-microchip icon"></i>Multi-Platform</h4>
+                        <p>Single codebase targeting Vulkan, DirectX, Metal, and WebGPU simultaneously.</p>
+                    </div>
+                </div>
+
+                <div class="architecture-diagram">
+                    <h3>Game Engine Architecture with GPULang</h3>
+                    <div class="diagram-layer">Game Logic & Rendering</div>
+                    <div class="diagram-layer">Material System & Resource Management</div>
+                    <div class="diagram-layer">GPULang Shader Runtime</div>
+                    <div class="diagram-layer">Graphics API (Vulkan, DirectX, Metal, WebGPU)</div>
+                </div>
+            </section>
+
+            <section id="integration" class="content-section">
+                <h2>Engine Integration</h2>
+                <p>
+                    Integrating GPULang into your game engine involves setting up the compiler, 
+                    implementing a shader system, and establishing a content pipeline.
+                </p>
+
+                <h3>Basic Integration</h3>
+                <div class="code-example">
+                    <div class="code-example-title">Engine Shader System</div>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <div class="code-dots">
+                                <div class="dot red"></div>
+                                <div class="dot yellow"></div>
+                                <div class="dot green"></div>
+                            </div>
+                            <span>shader_system.h</span>
+                        </div>
+                        <pre><code class="language-cpp">#pragma once
+#include &lt;GPULang/Compiler.h&gt;
+#include &lt;unordered_map&gt;
+#include &lt;string&gt;
+
+class ShaderSystem {
+public:
+    struct ShaderHandle {
+        uint32_t id;
+        bool isValid() const { return id != 0; }
+    };
+    
+    struct MaterialTemplate {
+        std::vector&lt;UniformBuffer&gt; uniformBuffers;
+        std::vector&lt;TextureBinding&gt; textures;
+        std::vector&lt;SamplerBinding&gt; samplers;
+    };
+
+private:
+    GPULang::Compiler compiler;
+    std::unordered_map&lt;uint32_t, GPULang::Shader&gt; loadedShaders;
+    std::unordered_map&lt;std::string, MaterialTemplate&gt; materialTemplates;
+    uint32_t nextShaderID = 1;
+
+public:
+    bool Initialize();
+    void Shutdown();
+    
+    // Shader loading and compilation
+    ShaderHandle LoadShader(const std::string& path);
+    ShaderHandle CompileShader(const std::string& source, const std::string& name);
+    void UnloadShader(ShaderHandle handle);
+    
+    // Material system integration
+    MaterialTemplate CreateMaterialTemplate(ShaderHandle shaderHandle);
+    void RegisterMaterialTemplate(const std::string& name, const MaterialTemplate& templ);
+    
+    // Hot reloading support
+    void EnableHotReloading(bool enable);
+    void CheckForChanges();
+    
+    // Reflection data access
+    const GPULang::ReflectionData& GetReflection(ShaderHandle handle) const;
+};</code></pre>
+                    </div>
+                </div>
+
+                <div class="code-example">
+                    <div class="code-example-title">Implementation Example</div>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <div class="code-dots">
+                                <div class="dot red"></div>
+                                <div class="dot yellow"></div>
+                                <div class="dot green"></div>
+                            </div>
+                            <span>shader_system.cpp</span>
+                        </div>
+                        <pre><code class="language-cpp">#include "shader_system.h"
+#include &lt;fstream&gt;
+#include &lt;filesystem&gt;
+
+bool ShaderSystem::Initialize() {
+    // Initialize GPULang compiler with engine-specific settings
+    GPULang::CompilerSettings settings;
+    settings.includeDirectories = {
+        "shaders/common/",
+        "shaders/engine/",
+        "assets/shaders/"
+    };
+    settings.optimizationLevel = GPULang::OptimizationLevel::O2;
+    settings.generateReflection = true;
+    
+    return compiler.Initialize(settings);
+}
+
+ShaderSystem::ShaderHandle ShaderSystem::LoadShader(const std::string& path) {
+    // Check if already loaded
+    auto hash = std::hash&lt;std::string&gt;{}(path);
+    if (loadedShaders.find(hash) != loadedShaders.end()) {
+        return ShaderHandle{hash};
+    }
+    
+    // Compile shader for all target platforms
+    GPULang::CompilationOptions options;
+    options.targets = {
+        GPULang::Target::Vulkan,
+        GPULang::Target::DirectX12,
+        GPULang::Target::Metal
+    };
+    options.generateDebugInfo = IsDebugBuild();
+    
+    auto result = compiler.CompileFromFile(path, options);
+    
+    if (!result.success) {
+        LogError("Failed to compile shader: " + path);
+        for (const auto& error : result.errors) {
+            LogError("  " + error.message);
+        }
+        return ShaderHandle{0};
+    }
+    
+    // Store compiled shader
+    loadedShaders[hash] = std::move(result.shader);
+    
+    // Create material template from reflection data
+    MaterialTemplate materialTemplate = CreateMaterialTemplate(ShaderHandle{hash});
+    materialTemplates[path] = materialTemplate;
+    
+    return ShaderHandle{hash};
+}
+
+MaterialTemplate ShaderSystem::CreateMaterialTemplate(ShaderHandle handle) {
+    const auto& reflection = GetReflection(handle);
+    MaterialTemplate templ;
+    
+    // Extract uniform buffers
+    for (const auto& buffer : reflection.GetUniformBuffers()) {
+        UniformBuffer uniformBuffer;
+        uniformBuffer.name = buffer.name;
+        uniformBuffer.binding = buffer.binding;
+        uniformBuffer.size = buffer.size;
+        
+        // Add buffer members for UI generation
+        for (const auto& member : buffer.members) {
+            uniformBuffer.members.push_back({
+                .name = member.name,
+                .type = member.type,
+                .offset = member.offset,
+                .size = member.size
+            });
+        }
+        
+        templ.uniformBuffers.push_back(uniformBuffer);
+    }
+    
+    // Extract textures and samplers
+    for (const auto& texture : reflection.GetTextures()) {
+        TextureBinding binding;
+        binding.name = texture.name;
+        binding.binding = texture.binding;
+        binding.textureType = texture.textureType;
+        templ.textures.push_back(binding);
+    }
+    
+    return templ;
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="best-practice">
+                    <div class="best-practice-title">
+                        <i class="fas fa-check-circle"></i>
+                        Integration Best Practice
+                    </div>
+                    <div class="best-practice-content">
+                        Create a centralized shader system that manages compilation, caching, and hot reloading.
+                        Use reflection data to automatically generate material templates and reduce manual binding code.
+                        Implement shader variant support early to handle different rendering paths efficiently.
+                    </div>
+                </div>
+            </section>
+
+            <section id="pipeline" class="content-section">
+                <h2>Shader Pipeline Management</h2>
+                <p>
+                    Effective shader pipeline management is crucial for game performance. GPULang's reflection
+                    system enables automatic pipeline creation and validation.
+                </p>
+
+                <h3>Pipeline Creation</h3>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-cpp">class PipelineManager {
+private:
+    std::unordered_map&lt;uint64_t, GraphicsPipeline&gt; pipelineCache;
+    
+public:
+    GraphicsPipeline GetOrCreatePipeline(
+        ShaderHandle vertexShader,
+        ShaderHandle fragmentShader,
+        const RenderState& renderState,
+        const VertexLayout& vertexLayout
+    ) {
+        // Create pipeline hash for caching
+        uint64_t hash = HashPipelineState(vertexShader, fragmentShader, renderState, vertexLayout);
+        
+        auto it = pipelineCache.find(hash);
+        if (it != pipelineCache.end()) {
+            return it->second;
+        }
+        
+        // Get reflection data for validation
+        const auto& vsReflection = shaderSystem.GetReflection(vertexShader);
+        const auto& fsReflection = shaderSystem.GetReflection(fragmentShader);
+        
+        // Validate shader compatibility
+        if (!ValidateShaderCompatibility(vsReflection, fsReflection)) {
+            LogError("Incompatible vertex and fragment shaders");
+            return GraphicsPipeline{};
+        }
+        
+        // Create pipeline descriptor from reflection
+        GraphicsPipelineDesc desc;
+        desc.vertexShader = shaderSystem.GetShader(vertexShader);
+        desc.fragmentShader = shaderSystem.GetShader(fragmentShader);
+        desc.renderState = renderState;
+        
+        // Auto-generate vertex input layout from reflection
+        desc.vertexInputLayout = CreateVertexInputLayout(vsReflection, vertexLayout);
+        
+        // Auto-generate descriptor set layout
+        desc.descriptorSetLayout = CreateDescriptorSetLayout(vsReflection, fsReflection);
+        
+        // Create and cache pipeline
+        GraphicsPipeline pipeline = graphicsDevice.CreateGraphicsPipeline(desc);
+        pipelineCache[hash] = pipeline;
+        
+        return pipeline;
+    }
+    
+private:
+    bool ValidateShaderCompatibility(
+        const GPULang::ReflectionData& vs,
+        const GPULang::ReflectionData& fs
+    ) {
+        // Check that vertex outputs match fragment inputs
+        const auto& vsOutputs = vs.GetVertexOutputs();
+        const auto& fsInputs = fs.GetFragmentInputs();
+        
+        for (const auto& fsInput : fsInputs) {
+            bool found = false;
+            for (const auto& vsOutput : vsOutputs) {
+                if (vsOutput.name == fsInput.name && vsOutput.type == fsInput.type) {
+                    found = true;
+                    break;
+                }
+            }
+            
+            if (!found) {
+                LogError("Fragment input '" + fsInput.name + "' not found in vertex outputs");
+                return false;
+            }
+        }
+        
+        return true;
+    }
+};</code></pre>
+                    </div>
+                </div>
+
+                <h3>Shader Variants</h3>
+                <div class="code-example">
+                    <div class="code-example-title">Variant System</div>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <div class="code-dots">
+                                <div class="dot red"></div>
+                                <div class="dot yellow"></div>
+                                <div class="dot green"></div>
+                            </div>
+                            <span>lighting.gpul</span>
+                        </div>
+                        <pre><code class="language-gpulang">// Shader with multiple variants
+#define VARIANT_MASKS
+
+struct MaterialData
+{
+    Albedo : f32x3;
+    Roughness : f32;
+    Metallic : f32;
+    #ifdef NORMAL_MAPPING
+    Normal : f32x3;
+    #endif
+};
+
+uniform MaterialBuffer : *MaterialData;
+uniform DiffuseTexture : *texture2D;
+
+#ifdef NORMAL_MAPPING
+uniform NormalTexture : *texture2D;
+#endif
+
+#ifdef SHADOW_MAPPING
+uniform ShadowMap : *texture2D;
+uniform ShadowMatrix : f32x4x4;
+#endif
+
+entry_point
+LightingVS(
+    binding(0) in position : f32x3,
+    binding(1) in normal : f32x3,
+    binding(2) in uv : f32x2,
+    #ifdef SKINNING
+    binding(3) in boneIndices : u32x4,
+    binding(4) in boneWeights : f32x4,
+    #endif
+    out worldPos : f32x4,
+    out worldNormal : f32x3,
+    out texCoords : f32x2
+) void
+{
+    f32x4 localPos = f32x4(position, 1.0f);
+    
+    #ifdef SKINNING
+    // Apply bone transformations
+    localPos = ApplySkinning(localPos, boneIndices, boneWeights);
+    #endif
+    
+    worldPos = ModelMatrix * localPos;
+    worldNormal = normalize((ModelMatrix * f32x4(normal, 0.0f)).xyz);
+    texCoords = uv;
+    
+    vertexExportCoordinates(ViewProjectionMatrix * worldPos);
+}
+
+// Define shader variants
+@Mask("Static")
+program StaticLighting
+{
+    VertexShader = LightingVS;
+    PixelShader = LightingPS;
+};
+
+@Mask("Skinned")
+@Define("SKINNING")
+program SkinnedLighting
+{
+    VertexShader = LightingVS;
+    PixelShader = LightingPS;
+};
+
+@Mask("NormalMapped")
+@Define("NORMAL_MAPPING")
+program NormalMappedLighting
+{
+    VertexShader = LightingVS;
+    PixelShader = LightingPS;
+};</code></pre>
+                    </div>
+                </div>
+
+                <div class="perf-tip">
+                    <div class="perf-tip-title">
+                        <i class="fas fa-tachometer-alt"></i>
+                        Performance Tip
+                    </div>
+                    <div class="perf-tip-content">
+                        Use shader variants instead of dynamic branching for major feature differences.
+                        Pre-compile all needed variants at build time to avoid runtime compilation costs.
+                        Cache pipelines aggressively - pipeline creation is expensive on most APIs.
+                    </div>
+                </div>
+            </section>
+
+            <section id="materials" class="content-section">
+                <h2>Material System Integration</h2>
+                <p>
+                    GPULang's reflection system enables automatic material system generation, reducing
+                    the amount of manual binding code and making materials more maintainable.
+                </p>
+
+                <h3>Automatic Material Generation</h3>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-cpp">class MaterialSystem {
+public:
+    struct MaterialInstance {
+        ShaderHandle shader;
+        std::unordered_map&lt;std::string, BufferHandle&gt; uniformBuffers;
+        std::unordered_map&lt;std::string, TextureHandle&gt; textures;
+        std::unordered_map&lt;std::string, SamplerHandle&gt; samplers;
+        
+        // Type-safe parameter setters (generated from reflection)
+        void SetAlbedo(const float3& color);
+        void SetRoughness(float value);
+        void SetDiffuseTexture(TextureHandle texture);
+    };
+    
+    MaterialInstance CreateMaterial(const std::string& shaderPath) {
+        ShaderHandle shader = shaderSystem.LoadShader(shaderPath);
+        const auto& reflection = shaderSystem.GetReflection(shader);
+        
+        MaterialInstance material;
+        material.shader = shader;
+        
+        // Create uniform buffers from reflection
+        for (const auto& buffer : reflection.GetUniformBuffers()) {
+            BufferHandle uniformBuffer = CreateUniformBuffer(buffer.size);
+            material.uniformBuffers[buffer.name] = uniformBuffer;
+        }
+        
+        // Set default textures for texture slots
+        for (const auto& texture : reflection.GetTextures()) {
+            material.textures[texture.name] = GetDefaultTexture(texture.textureType);
+        }
+        
+        return material;
+    }
+    
+    void BindMaterial(const MaterialInstance& material, CommandBuffer& cmd) {
+        // Bind shader
+        cmd.BindShader(shaderSystem.GetShader(material.shader));
+        
+        // Auto-bind resources using reflection data
+        const auto& reflection = shaderSystem.GetReflection(material.shader);
+        
+        for (const auto& buffer : reflection.GetUniformBuffers()) {
+            auto it = material.uniformBuffers.find(buffer.name);
+            if (it != material.uniformBuffers.end()) {
+                cmd.BindUniformBuffer(buffer.binding, it->second);
+            }
+        }
+        
+        for (const auto& texture : reflection.GetTextures()) {
+            auto it = material.textures.find(texture.name);
+            if (it != material.textures.end()) {
+                cmd.BindTexture(texture.binding, it->second);
+            }
+        }
+    }
+};</code></pre>
+                    </div>
+                </div>
+
+                <h3>Material Editor Integration</h3>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-cpp">// Automatic UI generation for material editing
+class MaterialEditor {
+public:
+    void RenderMaterialUI(MaterialInstance& material) {
+        const auto& reflection = shaderSystem.GetReflection(material.shader);
+        
+        ImGui::Begin("Material Properties");
+        
+        for (const auto& buffer : reflection.GetUniformBuffers()) {
+            if (ImGui::CollapsingHeader(buffer.name.c_str())) {
+                RenderBufferUI(material, buffer);
+            }
+        }
+        
+        ImGui::Separator();
+        
+        for (const auto& texture : reflection.GetTextures()) {
+            RenderTextureSlotUI(material, texture);
+        }
+        
+        ImGui::End();
+    }
+    
+private:
+    void RenderBufferUI(MaterialInstance& material, const UniformBufferInfo& buffer) {
+        // Get current buffer data
+        auto bufferData = GetBufferData(material.uniformBuffers[buffer.name]);
+        bool modified = false;
+        
+        for (const auto& member : buffer.members) {
+            void* memberPtr = static_cast&lt;char*&gt;(bufferData) + member.offset;
+            
+            switch (member.type) {
+                case DataType::Float:
+                    modified |= ImGui::SliderFloat(member.name.c_str(), 
+                                                 static_cast&lt;float*&gt;(memberPtr), 0.0f, 1.0f);
+                    break;
+                    
+                case DataType::Float3:
+                    modified |= ImGui::ColorEdit3(member.name.c_str(), 
+                                                static_cast&lt;float*&gt;(memberPtr));
+                    break;
+                    
+                case DataType::Float4:
+                    modified |= ImGui::ColorEdit4(member.name.c_str(), 
+                                                static_cast&lt;float*&gt;(memberPtr));
+                    break;
+                    
+                // Handle other types...
+            }
+        }
+        
+        if (modified) {
+            UpdateBuffer(material.uniformBuffers[buffer.name], bufferData);
+        }
+    }
+};</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="optimization" class="content-section">
+                <h2>Performance Optimization</h2>
+                <p>
+                    Optimizing shader performance in games requires understanding both the GPU architecture
+                    and the specific characteristics of your rendering workload.
+                </p>
+
+                <h3>Compilation Strategies</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4><i class="fas fa-clock icon"></i>Build-Time Compilation</h4>
+                        <p>Pre-compile all shaders during the build process to eliminate runtime compilation overhead.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4><i class="fas fa-layer-group icon"></i>Shader Variants</h4>
+                        <p>Use conditional compilation to create optimized variants for different feature sets.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4><i class="fas fa-memory icon"></i>Pipeline Caching</h4>
+                        <p>Cache compiled pipeline objects to avoid repeated creation costs.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4><i class="fas fa-compress icon"></i>Dead Code Elimination</h4>
+                        <p>Enable aggressive optimizations to remove unused code paths and variables.</p>
+                    </div>
+                </div>
+
+                <h3>Runtime Performance</h3>
+                <div class="code-example">
+                    <div class="code-example-title">Optimized Render Loop</div>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <div class="code-dots">
+                                <div class="dot red"></div>
+                                <div class="dot yellow"></div>
+                                <div class="dot green"></div>
+                            </div>
+                            <span>optimized_renderer.cpp</span>
+                        </div>
+                        <pre><code class="language-cpp">class OptimizedRenderer {
+private:
+    // State tracking to minimize API calls
+    ShaderHandle currentShader = {};
+    MaterialInstance* currentMaterial = nullptr;
+    
+public:
+    void RenderFrame(const RenderQueue& renderQueue) {
+        // Sort render commands to minimize state changes
+        auto sortedCommands = SortRenderCommands(renderQueue);
+        
+        for (const auto& batch : sortedCommands) {
+            // Only change shader if different from current
+            if (batch.shader != currentShader) {
+                BindShader(batch.shader);
+                currentShader = batch.shader;
+                currentMaterial = nullptr; // Force material rebind
+            }
+            
+            // Only bind material if different from current
+            if (batch.material != currentMaterial) {
+                BindMaterialFast(batch.material);
+                currentMaterial = batch.material;
+            }
+            
+            // Render batch
+            RenderMeshBatch(batch.meshes);
+        }
+    }
+    
+private:
+    void BindMaterialFast(MaterialInstance* material) {
+        // Use cached binding information to minimize API calls
+        const auto& bindingCache = GetMaterialBindingCache(material);
+        
+        // Only bind changed resources
+        for (const auto& binding : bindingCache.changedBindings) {
+            switch (binding.type) {
+                case ResourceType::UniformBuffer:
+                    BindUniformBuffer(binding.slot, binding.resource);
+                    break;
+                case ResourceType::Texture:
+                    BindTexture(binding.slot, binding.resource);
+                    break;
+                case ResourceType::Sampler:
+                    BindSampler(binding.slot, binding.resource);
+                    break;
+            }
+        }
+        
+        bindingCache.ClearChangedFlags();
+    }
+    
+    std::vector&lt;RenderBatch&gt; SortRenderCommands(const RenderQueue& queue) {
+        // Sort by: Shader -> Material -> Depth/Distance
+        std::vector&lt;RenderBatch&gt; batches;
+        
+        // Group by shader first
+        std::unordered_map&lt;ShaderHandle, std::vector&lt;RenderCommand&gt;&gt; shaderGroups;
+        for (const auto& cmd : queue.commands) {
+            shaderGroups[cmd.material->shader].push_back(cmd);
+        }
+        
+        // Then group by material within each shader
+        for (auto& [shader, commands] : shaderGroups) {
+            std::unordered_map&lt;MaterialInstance*, std::vector&lt;RenderCommand&gt;&gt; materialGroups;
+            for (const auto& cmd : commands) {
+                materialGroups[cmd.material].push_back(cmd);
+            }
+            
+            // Create batches
+            for (auto& [material, materialCommands] : materialGroups) {
+                batches.push_back({
+                    .shader = shader,
+                    .material = material,
+                    .meshes = ExtractMeshes(materialCommands)
+                });
+            }
+        }
+        
+        return batches;
+    }
+};</code></pre>
+                    </div>
+                </div>
+
+                <div class="perf-tip">
+                    <div class="perf-tip-title">
+                        <i class="fas fa-tachometer-alt"></i>
+                        GPU Performance Tips
+                    </div>
+                    <div class="perf-tip-content">
+                        <strong>Minimize State Changes:</strong> Sort draw calls by shader, then material to reduce pipeline switches.<br>
+                        <strong>Use Uniform Buffer Objects:</strong> Group related uniforms into buffers to reduce individual uniform updates.<br>
+                        <strong>Optimize Texture Access:</strong> Use texture arrays and atlases to reduce texture binding changes.<br>
+                        <strong>Profile GPU Performance:</strong> Use tools like RenderDoc, Nsight Graphics, or Metal Performance Shaders Profiler.
+                    </div>
+                </div>
+            </section>
+
+            <section id="debugging" class="content-section">
+                <h2>Debugging and Profiling</h2>
+                <p>
+                    GPULang provides excellent debugging support through its integration with graphics debuggers
+                    and built-in validation features.
+                </p>
+
+                <h3>Debug Features</h3>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-cpp">// Debug shader compilation and validation
+class ShaderDebugger {
+public:
+    void EnableDebugging() {
+        GPULang::CompilerSettings settings;
+        settings.generateDebugInfo = true;
+        settings.enableValidation = true;
+        settings.warningLevel = GPULang::WarningLevel::All;
+        
+        shaderSystem.UpdateSettings(settings);
+    }
+    
+    void ValidateShaderResources(ShaderHandle shader) {
+        const auto& reflection = shaderSystem.GetReflection(shader);
+        
+        // Check for common issues
+        CheckUniformBufferAlignment(reflection);
+        CheckTextureFormats(reflection);
+        ValidateVertexAttributes(reflection);
+    }
+    
+private:
+    void CheckUniformBufferAlignment(const GPULang::ReflectionData& reflection) {
+        for (const auto& buffer : reflection.GetUniformBuffers()) {
+            for (const auto& member : buffer.members) {
+                if (member.offset % GetAlignmentRequirement(member.type) != 0) {
+                    LogWarning("Uniform '" + member.name + "' may have alignment issues");
+                }
+            }
+        }
+    }
+};</code></pre>
+                    </div>
+                </div>
+
+                <h3>Hot Reloading</h3>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-cpp">// Development-time hot reloading system
+class HotReloadSystem {
+private:
+    std::unordered_map&lt;std::string, std::filesystem::file_time_type&gt; fileTimestamps;
+    std::vector&lt;std::string&gt; watchedFiles;
+    
+public:
+    void WatchShaderFile(const std::string& path) {
+        watchedFiles.push_back(path);
+        fileTimestamps[path] = std::filesystem::last_write_time(path);
+    }
+    
+    void CheckForChanges() {
+        for (const auto& file : watchedFiles) {
+            auto currentTime = std::filesystem::last_write_time(file);
+            
+            if (currentTime != fileTimestamps[file]) {
+                LogInfo("Shader file changed: " + file);
+                ReloadShader(file);
+                fileTimestamps[file] = currentTime;
+            }
+        }
+    }
+    
+private:
+    void ReloadShader(const std::string& path) {
+        try {
+            ShaderHandle newShader = shaderSystem.LoadShader(path);
+            
+            // Update all materials using this shader
+            UpdateMaterialsUsingShader(path, newShader);
+            
+            LogInfo("Successfully reloaded shader: " + path);
+        } catch (const std::exception& e) {
+            LogError("Failed to reload shader: " + path + " - " + e.what());
+        }
+    }
+};</code></pre>
+                    </div>
+                </div>
+
+                <div class="warning">
+                    <div class="warning-title">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Debug Build Considerations
+                    </div>
+                    <div class="warning-content">
+                        Debug builds should enable validation layers and generate debug information for shaders.
+                        However, disable these features in release builds as they can significantly impact performance.
+                        Use conditional compilation or runtime flags to switch between debug and release shader compilation.
+                    </div>
+                </div>
+            </section>
+
+            <section id="patterns" class="content-section">
+                <h2>Common Patterns and Best Practices</h2>
+                <p>
+                    Learn proven patterns for shader organization, resource management, and common
+                    rendering techniques in game development.
+                </p>
+
+                <h3>Shader Organization</h3>
+                <div class="code-example">
+                    <div class="code-example-title">Project Structure</div>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <div class="code-dots">
+                                <div class="dot red"></div>
+                                <div class="dot yellow"></div>
+                                <div class="dot green"></div>
+                            </div>
+                            <span>Directory Structure</span>
+                        </div>
+                        <pre><code class="language-text">shaders/
+├── common/
+│   ├── lighting.gpul           # Shared lighting functions
+│   ├── material_common.gpul    # Common material structures
+│   └── math_utils.gpul         # Math utility functions
+├── terrain/
+│   ├── terrain_vs.gpul         # Terrain vertex shader
+│   └── terrain_ps.gpul         # Terrain pixel shader
+├── characters/
+│   ├── skinned_mesh.gpul       # Skinned character rendering
+│   └── cloth_simulation.gpul   # Cloth physics shader
+├── effects/
+│   ├── particle_system.gpul    # Particle rendering
+│   └── post_processing.gpul    # Post-processing effects
+└── ui/
+    └── ui_rendering.gpul       # UI rendering shaders</code></pre>
+                    </div>
+                </div>
+
+                <h3>Include System</h3>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-gpulang">// Example shader using includes
+#include "common/lighting.gpul"
+#include "common/material_common.gpul"
+
+// Vertex shader for standard lit objects
+entry_point
+StandardLitVS(
+    binding(0) in position : f32x3,
+    binding(1) in normal : f32x3,
+    binding(2) in uv : f32x2,
+    out worldPos : f32x4,
+    out worldNormal : f32x3,
+    out texCoords : f32x2
+) void
+{
+    worldPos = ModelMatrix * f32x4(position, 1.0f);
+    worldNormal = normalize((NormalMatrix * f32x4(normal, 0.0f)).xyz);
+    texCoords = uv;
+    
+    vertexExportCoordinates(ViewProjectionMatrix * worldPos);
+}
+
+// Pixel shader using shared lighting functions
+entry_point
+StandardLitPS(
+    in worldPos : f32x4,
+    in worldNormal : f32x3,
+    in texCoords : f32x2
+) void
+{
+    // Sample material textures
+    f32x4 albedo = textureSample(AlbedoTexture, LinearSampler, texCoords);
+    f32x3 normal = SampleNormalMap(NormalTexture, LinearSampler, texCoords, worldNormal);
+    
+    // Calculate lighting using shared functions
+    f32x3 lightColor = CalculateDirectionalLight(DirectionalLight, worldPos.xyz, normal);
+    lightColor += CalculatePointLights(worldPos.xyz, normal);
+    
+    f32x3 finalColor = albedo.rgb * lightColor;
+    pixelExportColor(f32x4(finalColor, albedo.a), 0);
+}</code></pre>
+                    </div>
+                </div>
+
+                <h3>Resource Management Patterns</h3>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-cpp">// Resource pooling for dynamic materials
+class MaterialPool {
+private:
+    std::vector&lt;MaterialInstance&gt; availableMaterials;
+    std::vector&lt;MaterialInstance&gt; usedMaterials;
+    
+public:
+    MaterialInstance* AcquireMaterial(const std::string& shaderName) {
+        // Try to reuse existing material
+        for (auto it = availableMaterials.begin(); it != availableMaterials.end(); ++it) {
+            if (GetShaderName(it->shader) == shaderName) {
+                usedMaterials.push_back(std::move(*it));
+                availableMaterials.erase(it);
+                return &usedMaterials.back();
+            }
+        }
+        
+        // Create new material if none available
+        MaterialInstance newMaterial = materialSystem.CreateMaterial(shaderName);
+        usedMaterials.push_back(std::move(newMaterial));
+        return &usedMaterials.back();
+    }
+    
+    void ReleaseMaterial(MaterialInstance* material) {
+        auto it = std::find_if(usedMaterials.begin(), usedMaterials.end(),
+                             [material](const MaterialInstance& m) { return &m == material; });
+        
+        if (it != usedMaterials.end()) {
+            availableMaterials.push_back(std::move(*it));
+            usedMaterials.erase(it);
+        }
+    }
+    
+    void Cleanup() {
+        // Return all materials to available pool
+        availableMaterials.insert(availableMaterials.end(),
+                                std::make_move_iterator(usedMaterials.begin()),
+                                std::make_move_iterator(usedMaterials.end()));
+        usedMaterials.clear();
+    }
+};</code></pre>
+                    </div>
+                </div>
+
+                <div class="best-practice">
+                    <div class="best-practice-title">
+                        <i class="fas fa-check-circle"></i>
+                        Architecture Best Practices
+                    </div>
+                    <div class="best-practice-content">
+                        <strong>Separate Concerns:</strong> Keep shader logic, material management, and rendering separate.<br>
+                        <strong>Use Reflection:</strong> Leverage GPULang's reflection for automatic resource binding and validation.<br>
+                        <strong>Plan for Variants:</strong> Design your shader system to handle multiple variants from the start.<br>
+                        <strong>Profile Early:</strong> Set up profiling and debugging tools during development, not after optimization.
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="syntax-loader.js"></script>
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(15, 15, 35, 0.98)';
+            } else {
+                header.style.background = 'rgba(15, 15, 35, 0.95)';
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = 120;
+                    const elementPosition = target.offsetTop;
+                    const offsetPosition = elementPosition - headerHeight;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

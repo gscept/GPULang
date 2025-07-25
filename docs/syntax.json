@@ -105,11 +105,7 @@
         "BlendColorMask",
         "FilterMode",
         "AddressMode",
-        "Color",
-        "StencilState",
-        "RenderState",
-        "SamplerState",
-        "Program"
+        "Color"
     ],
     "builtin_functions": [
         "abs",
