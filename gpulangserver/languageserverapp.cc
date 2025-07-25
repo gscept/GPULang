@@ -58,7 +58,7 @@ Socket CreateServerSocket()
     
 #if __WIN32__
     
-    socket_path = "\\.pipe\";
+    const char* socket_path = "\\.pipe\";
     ret.sock = CreateNamedPipeA(
         R"(\\.\pipe\gpulang_socket)",
         PIPE_ACCESS_DUPLEX,
