@@ -610,7 +610,7 @@ def generate_types():
     functions = []
     type_list = []
     web_types = {
-        "keywords": ["const", "var", "uniform", "mutable", "sampled", "literal", "in", "out", "return", "break", "discard", "ray_ignore", "for", "while", "if", "else", "switch", "case", "struct", "render_state", "sampler_state", "program", "entry_point", "binding", "group", "enum", "generate", "#include", "#pragma"],
+        "keywords": ["const", "var", "uniform", "mutable", "sampled", "literal", "in", "out", "return", "break", "discard", "ray_ignore", "for", "while", "if", "else", "switch", "case", "struct", "render_state", "sampler_state", "program", "entry_point", "binding", "group", "enum", "generate", "#include", "#pragma", "declared", "workgroup", "alias", "true", "false"],
         "types": [],
         "builtin_functions": [],
     }
@@ -1257,12 +1257,11 @@ def generate_types():
 
     type = Type('FunctionPtr', api_name='Function')
     type_list.append(type)
-    # Don't add function to the web docs
 
     type = Type('AccelerationStructure', 'AccelerationStructureCategory', 'AccelerationStructure', 'accelerationStructure')
     type_list.append(type)
 
-    type = Type('Void', 'VoidCategory', 'Void')
+    type = Type('Void', 'VoidCategory', 'Void', 'void')
     type_list.append(type)
 
     class EnumMember:

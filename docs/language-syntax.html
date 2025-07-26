@@ -260,6 +260,7 @@
             <li><a href="#types">Data Types</a></li>
             <li><a href="#variables">Variables</a></li>
             <li><a href="#functions">Functions</a></li>
+            <li><a href="#generate">Generate</a></li>
             <li><a href="#control">Control Flow</a></li>
             <li><a href="#structs">Structures</a></li>
             <li><a href="#shaders">Shader Programs</a></li>
@@ -353,6 +354,15 @@ var isVisible = true;                         // inferred as bool</code></pre>
                     </div>
                 </div>
 
+                <h3>Type Aliasing</h3>
+                <p>Type aliases can be created using the <code>alias</code> keyword:</p>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-gpulang">alias Vec3 as f32x3;
+alias RGBA as f32x4;</code></pre>
+                    </div>
+                </div>
+
                 <h3>Constants</h3>
                 <p>Constants are declared using the <code>const</code> keyword:</p>
                 <div class="code-example">
@@ -379,7 +389,7 @@ uniform DiffuseTexture : *texture2D;</code></pre>
                 <h2>Functions</h2>
                 
                 <h3>Function Declaration</h3>
-                <p>Functions are declared with return type and parameter list:</p>
+                <p>Functions are declared with return type trailing the parameter list:</p>
                 <div class="code-example">
                     <div class="code-container">
                         <pre><code class="language-gpulang">// Function with multiple parameters
@@ -411,8 +421,40 @@ VertexMain(
 }</code></pre>
                     </div>
                 </div>
+                <h3>Shader Attributes</h3>
+                <p>Functions tagged with entry_point can be provided shader attributes. They will activate based per program based on binding point, allowing for the same shader to change its execution mode.</p>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-gpulang">// Compute shader attributes
+threads(i32x3(8, 8, 1))
+entry_point csMain() void {...}
+
+// Pixel shader attributes
+pixel_origin("center")
+entry_point psMain() void {...}</code></pre>
+                    </div>
+                </div>
             </section>
 
+            <section id="generate" class="content-section">
+                <h2>Generate</h2>
+                <p>The <code>generate</code> statement allows for conditional code generation</p>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-gpulang">// Generate a set of functions
+generate
+<
+    if (!declared&ltBlurSize&gt)
+    <
+        const BlurSize = 5;
+    >
+    if (!declared&ltInputComponents&gt)
+    {
+        alias MemType as f32x4;
+    }
+    workgroup SharedMemory : MemType[BlurSize];
+></code></pre>
+            </section>
             <section id="control" class="content-section">
                 <h2>Control Flow</h2>
                 
@@ -451,6 +493,20 @@ while (samples < MAX_SAMPLES && quality > threshold)
 {
     // Sampling logic
     samples++;
+}</code></pre>
+                    </div>
+                </div>
+
+                <h3>Uniform Value Loops</h3>
+                <p>Automatic uniform value loops over threads sharing the same value without the need to write the logic yourself:</p>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-gpulang">const cellIndex = ...;
+for_uniform(cellIndex)
+{
+    // Access cell value uniformly for all threads sharing cellIndex
+    const cellValue = uniformData[cellIndex];
+    // Perform operations with cellValue
 }</code></pre>
                     </div>
                 </div>
@@ -607,12 +663,12 @@ sampler_state LinearSampler
             'b8': { description: '8-bit boolean', size: '1 byte', category: 'scalar' },
             
             // Special types
-            'sampler': { description: 'Texture sampler object', size: 'varies', category: 'special' },
-            'accelerationStructure': { description: 'Ray tracing acceleration structure', size: 'varies', category: 'special' },
-            'Function': { description: 'Function pointer type', size: 'varies', category: 'special' },
-            'Void': { description: 'Void type for functions', size: '0 bytes', category: 'special' },
-            'pixelCache': { description: 'Pixel cache for tile-based rendering', size: 'varies', category: 'special' },
-            'pixelCacheMS': { description: 'Multisampled pixel cache', size: 'varies', category: 'special' }
+            'sampler': { description: 'Texture sampler object', size: 'n/a', category: 'special' },
+            'accelerationStructure': { description: 'Ray tracing acceleration structure', size: '8 bytes', category: 'special' },
+            'Function': { description: 'Function pointer type to use with program binding', size: 'n/a', category: 'special' },
+            'void': { description: 'Nothing', size: '0 bytes', category: 'scalar' },
+            'pixelCache': { description: 'Pixel cache for tile-based rendering', size: 'n/a', category: 'special' },
+            'pixelCacheMS': { description: 'Multisampled pixel cache', size: 'n/a', category: 'special' }
         };
 
         function getTypeDescription(type) {
@@ -655,7 +711,7 @@ sampler_state LinearSampler
             // Pattern matching for textures
             if (type.startsWith('texture')) {
                 return {
-                    description: `${type.replace('texture', 'Texture ')} resource`,
+                    description: `${type.replace('texture', 'Texture')} resource`,
                     size: 'varies',
                     category: 'texture'
                 };
@@ -663,13 +719,13 @@ sampler_state LinearSampler
             
             // Default fallback
             return {
-                description: 'GPU data type',
+                description: 'Built-in enumeration',
                 size: 'varies',
                 category: 'special'
             };
         }
 
-        function createTypeTable(types, tableId, showDescriptions = true) {
+        function createTypeTable(types, tableId, showDescriptions = true, showSizes = true) {
             const container = document.getElementById(tableId);
             if (!container || types.length === 0) {
                 if (container) {
@@ -686,16 +742,11 @@ sampler_state LinearSampler
                 thead.innerHTML = `
                     <tr>
                         <th>Type</th>
-                        <th>Description</th>
-                        <th>Size</th>
+                        ${showDescriptions ? '<th>Description</th>' : ''}
+                        ${showSizes ? '<th>Size</th>' : ''}
                     </tr>
                 `;
-            } else {
-                thead.innerHTML = `
-                    <tr>
-                        <th>Type</th>
-                    </tr>
-                `;
+
             }
             table.appendChild(thead);
             
@@ -706,12 +757,8 @@ sampler_state LinearSampler
                     const desc = getTypeDescription(type);
                     row.innerHTML = `
                         <td><code>${type}</code></td>
-                        <td>${desc.description}</td>
-                        <td>${desc.size}</td>
-                    `;
-                } else {
-                    row.innerHTML = `
-                        <td><code>${type}</code></td>
+                        ${showDescriptions ? `<td>${desc.description}</td>` : ''}
+                        ${showSizes ? `<td>${desc.size}</td>` : ''}
                     `;
                 }
                 tbody.appendChild(row);
@@ -736,7 +783,7 @@ sampler_state LinearSampler
             ].filter(example => vectorTypes.includes(example.type));
 
             const codeExample = examples.map(ex => 
-                `${ex.type} ${ex.usage};     // ${ex.comment}`
+                `var ${ex.usage} : ${ex.type};     // ${ex.comment}`
             ).join('\n');
 
             const html = `
@@ -757,14 +804,14 @@ ${codeExample}</code></pre>
 
             // Create examples for common matrix types
             const examples = [
-                { type: 'f32x4x4', usage: 'transform', comment: '4x4 transformation matrix' },
+                { type: 'f32x4x3', usage: 'transform', comment: '4x3 transformation matrix' },
                 { type: 'f32x3x3', usage: 'rotation', comment: '3x3 rotation matrix' },
-                { type: 'f32x2x4', usage: 'projection', comment: '2x4 projection matrix' },
+                { type: 'f32x4x4', usage: 'projection', comment: '4x4 projection matrix' },
                 { type: 'f16x4x4', usage: 'lightTransform', comment: '4x4 light transformation (half precision)' }
             ].filter(example => matrixTypes.includes(example.type));
 
             const codeExample = examples.map(ex => 
-                `${ex.type} ${ex.usage};    // ${ex.comment}`
+                `var ${ex.usage} : ${ex.type};    // ${ex.comment}`
             ).join('\n');
 
             const html = `
@@ -820,8 +867,8 @@ ${codeExample}</code></pre>
                 createTypeTable(scalarTypes, 'scalarTypesTable');
                 createVectorExamples(vectorTypes);
                 createMatrixExamples(matrixTypes);
-                createTypeTable(textureTypes, 'textureTypesTable', false);
-                createTypeTable(specialTypes, 'specialTypesTable', false);
+                createTypeTable(textureTypes, 'textureTypesTable', true, false);
+                createTypeTable(specialTypes, 'specialTypesTable', true, false);
 
                 // Apply syntax highlighting to the new code examples
                 if (window.Prism) {

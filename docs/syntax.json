@@ -28,7 +28,12 @@
         "enum",
         "generate",
         "#include",
-        "#pragma"
+        "#pragma",
+        "declared",
+        "workgroup",
+        "alias",
+        "true",
+        "false"
     ],
     "types": [
         "f32",
@@ -91,7 +96,7 @@
         "sampler",
         "Function",
         "accelerationStructure",
-        "Void",
+        "void",
         "CompareMode",
         "StencilOp",
         "ExecutionScope",
