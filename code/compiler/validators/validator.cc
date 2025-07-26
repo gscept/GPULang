@@ -101,7 +101,7 @@ static StaticSet<ConstantString> pixelShaderInputQualifiers =
 
 static StaticSet<ConstantString> attributesRequiringEvaluation =
 {
-    "binding", "group", "local_size_x", "local_size_y", "local_size_z", "local_size"
+    "binding", "group", "local_size_x", "local_size_y", "local_size_z", "local_size", "threads_x", "threads_y", "threads_z", "threads"
     , "group_size", "groups_per_workgroup"
     , "input_vertices", "max_output_vertices", "winding"
     , "input_topology", "output_topology", "patch_type", "patch_size", "partition"
@@ -694,7 +694,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         {
             funResolved->isEntryPoint = true;
         }
-        else if (attr->name == "local_size_x")
+        else if (attr->name == "local_size_x" || attr->name == "threads_x")
         {
             if (!attr->expression->EvalValue(val))
             {
@@ -703,7 +703,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
             }
             val.Store(funResolved->executionModifiers.computeShaderWorkGroupSize[0]);
         }
-        else if (attr->name == "local_size_y")
+        else if (attr->name == "local_size_y" || attr->name == "threads_y")
         {
             if (!attr->expression->EvalValue(val))
             {
@@ -712,7 +712,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
             }
             val.Store(funResolved->executionModifiers.computeShaderWorkGroupSize[1]);
         }
-        else if (attr->name == "local_size_z")
+        else if (attr->name == "local_size_z" || attr->name == "threads_z")
         {
             if (!attr->expression->EvalValue(val))
             {
@@ -721,7 +721,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
             }
             val.Store(funResolved->executionModifiers.computeShaderWorkGroupSize[2]);
         }
-        else if (attr->name == "local_size")
+        else if (attr->name == "local_size" || attr->name == "threads")
         {
             if (!attr->expression->EvalValue(val))
             {
