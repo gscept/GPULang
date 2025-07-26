@@ -69,8 +69,8 @@ jobs:
     - name: Telegram
       uses: xinthink/action-telegram@v1.1
       with: 
-        chatId: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-        botToken: ${{ secrets.TELEGRAM_CHAT_ID }}
+        chatId: ${{ secrets.TELEGRAM_CHAT_ID }}
+        botToken: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         jobStatus: ${{ needs.build.result }}
         skipSuccess: false
         
