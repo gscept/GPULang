@@ -98,8 +98,8 @@ GPULangFile*
 GPULangLoadFile(const std::string_view& path)
 {
     GPULangFile* file = nullptr;
-    const char* filePathBuf = TStr(path).Data();
-    FILE* f = fopen(filePathBuf, "rb");
+    TStr pathStr  = TStr(path);
+    FILE* f = fopen(pathStr.Data(), "rb");
     
     if (f != nullptr)
     {
@@ -118,6 +118,7 @@ GPULangLoadFile(const std::string_view& path)
     else
     {
         perror("fopen");
+        printf("%s", pathStr.Data());
     }
     return file;
 }

@@ -40,13 +40,7 @@ Variable::Variable()
 */
 Variable::~Variable()
 {
-    this->CleanupAnnotations();
-    this->CleanupAttributes();
-    if (this->valueExpression != nullptr)
-        this->valueExpression->~Expression();
-    for (auto modifier : this->type.modifierValues)
-        if (modifier != nullptr)
-            modifier->~Expression();
+
 }
 
 //------------------------------------------------------------------------------
