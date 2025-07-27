@@ -35,13 +35,14 @@ html {
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: 
+    
         repeating-linear-gradient(
             135deg,
-            #0f0f23 0px,
-            #1a1a2e 150px,
-            #16213e 300px,
-            #1a1a2e 450px,
-            #0f0f23 600px
+            #141431 0px,
+            #111a2c 300px,
+            #121b39 600px,
+            #111a2c 900px,
+            #141431 1200px
         );
     color: #ffffff;
     line-height: 1.6;
@@ -99,10 +100,10 @@ nav {
     color: #c084fc;
 }
 
-.cta-button, .back-button {
+.cta-button {
     background: linear-gradient(45deg, #c084fc, #f472b6);
     color: #0f0f23;
-    padding: 0.8rem 1.5rem;
+    padding: calc(0.8rem) calc(1.5rem);
     border: none;
     border-radius: 50px;
     font-weight: bold;
@@ -110,9 +111,37 @@ nav {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.cta-button:hover, .back-button:hover {
+.download-button {
+    background: transparent;
+    color: #ffffff;
+    padding: calc(0.8rem - 2px) calc(1.5rem - 2px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(192, 132, 252, 0.3);
+}
+
+.download-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #c084fc;
+    transform: translateY(-2px);
+}
+
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Ensure consistent button sizing in header */
+.header-buttons .cta-button .download-button {
+    padding: calc(0.8rem + 2px) calc(1.5rem + 2px);
 }
 
 /* Typography */
@@ -145,12 +174,12 @@ nav {
 
 /* Cards and Components */
 .feature-card, .doc-card, .intrinsic-card {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.3);
     padding: 2rem;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
+    /*backdrop-filter: blur(10px);*/
     overflow: hidden;
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -160,7 +189,7 @@ nav {
     /* Ensure intrinsic cards handle overflow properly */
     min-width: 0; /* Allow flex items to shrink */
     max-width: 100%;
-    padding: 1.5rem; /* Reduced from default 2rem */
+    padding: 1rem; /* Reduced from default 2rem */
 }
 
 .feature-card:hover, .doc-card:hover, .intrinsic-card:hover {
@@ -403,6 +432,19 @@ code {
         display: none;
     }
     
+    .header-buttons {
+        gap: 0.5rem;
+    }
+    
+    .download-button, .cta-button {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .download-button {
+        margin-right: 0.5rem;
+    }
+    
     .hero-buttons {
         flex-direction: column;
         align-items: center;
@@ -411,5 +453,19 @@ code {
     .btn-primary, .btn-secondary {
         width: 200px;
         text-align: center;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+    .download-button span,
+    .cta-button span {
+        display: none;
+    }
+    
+    .download-button,
+    .cta-button {
+        padding: 0.6rem;
+        min-width: 44px;
     }
 }

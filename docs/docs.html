@@ -75,7 +75,7 @@
 
         .links-grid {
             display: grid;
-            grid-template-columns: repeat(2, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
         }
 
@@ -123,18 +123,23 @@
                 <li><a href="index.html#examples">Examples</a></li>
                 <li><a href="#community">Community</a></li>
             </ul>
-            <a href="index.html" class="back-button">
-                <i class="fas fa-arrow-left"></i> Back to Home
-            </a>
+            <div class="header-buttons">
+                <a href="download.html" class="download-button">
+                    <i class="fas fa-download"></i> <span>Download</span>
+                </a>
+                <a href="index.html" class="cta-button">
+                    <i class="fas fa-arrow-left"></i> <span>Back to Home</span>
+                </a>
+            </div>
         </nav>
     </header>
 
     <main class="main-content">
         <div class="container">
             <div class="page-header">
-                <h1 class="page-title">Documentation</h1>
+                <h1 class="page-title">Get Started</h1>
                 <p class="page-subtitle">
-                    Everything you need to master GPULang - from basic syntax to advanced GPU programming techniques
+                    Everything you need to master GPULang - from basic syntax to build integration
                 </p>
             </div>
 
@@ -203,7 +208,7 @@
             <div class="quick-links">
                 <h3>Quick Links</h3>
                 <div class="links-grid">
-                    <a href="#" class="quick-link" onclick="alert('Coming soon!')">
+                    <a href="download.html" class="quick-link">
                         <i class="fas fa-download"></i>
                         Download GPULang
                     </a>

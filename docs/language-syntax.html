@@ -246,9 +246,14 @@
                 <li><a href="index.html#examples">Examples</a></li>
                 <li><a href="#community">Community</a></li>
             </ul>
-            <a href="docs.html" class="back-button">
-                <i class="fas fa-arrow-left"></i> Back to Docs
-            </a>
+            <div class="header-buttons">
+                <a href="download.html" class="download-button">
+                    <i class="fas fa-download"></i> <span>Download</span>
+                </a>
+                <a href="docs.html" class="cta-button">
+                    <i class="fas fa-arrow-left"></i> <span>Back to Docs</span>
+                </a>
+            </div>
         </nav>
     </header>
 
@@ -354,15 +359,6 @@ var isVisible = true;                         // inferred as bool</code></pre>
                     </div>
                 </div>
 
-                <h3>Type Aliasing</h3>
-                <p>Type aliases can be created using the <code>alias</code> keyword:</p>
-                <div class="code-example">
-                    <div class="code-container">
-                        <pre><code class="language-gpulang">alias Vec3 as f32x3;
-alias RGBA as f32x4;</code></pre>
-                    </div>
-                </div>
-
                 <h3>Constants</h3>
                 <p>Constants are declared using the <code>const</code> keyword:</p>
                 <div class="code-example">
@@ -371,6 +367,15 @@ alias RGBA as f32x4;</code></pre>
 const PI = 3.14159f;
 const MAX_LIGHTS = 8;
 const DEFAULT_COLOR = f32x4(1.0f, 1.0f, 1.0f, 1.0f);</code></pre>
+                    </div>
+                </div>
+
+                <h3>Type Aliasing</h3>
+                <p>Type aliases can be created using the <code>alias</code> keyword:</p>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-gpulang">alias Vec3 as f32x3;
+alias RGBA as f32x4;</code></pre>
                     </div>
                 </div>
 
@@ -498,7 +503,7 @@ while (samples < MAX_SAMPLES && quality > threshold)
                 </div>
 
                 <h3>Uniform Value Loops</h3>
-                <p>Automatic uniform value loops over threads sharing the same value without the need to write the logic yourself:</p>
+                <p>Uniformely looping over threads sharing the same value is built-in to GPULang:</p>
                 <div class="code-example">
                     <div class="code-container">
                         <pre><code class="language-gpulang">const cellIndex = ...;

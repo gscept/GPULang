@@ -172,6 +172,10 @@ function createGPULangPrismLanguage(syntaxData) {
                 pattern: new RegExp(`\\b(?:${syntaxData.types.join('|')})\\b`),
                 alias: 'type'
             },
+            'function:': {
+                pattern: /\b[a-zA-Z_]\w*(?=\s*\()/,
+                alias: 'function'
+            },
             'annotation': {
                 pattern: /@\w+/,
                 alias: 'symbol'

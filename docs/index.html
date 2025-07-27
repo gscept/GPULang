@@ -11,7 +11,7 @@
         /* Hero Section - Page Specific Styles */
         .hero {
             display: flex;
-            margin-top: 8rem;
+            min-height: 100vh;
             align-items: center;
             position: relative;
             overflow: hidden;
@@ -131,14 +131,19 @@
 <body>
     <header>
         <nav class="container">
-            <div class="logo">GPULang</div>
+            <a href="index.html" class="logo">GPULang</a>
             <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
                 <li><a href="docs.html">Documentation</a></li>
                 <li><a href="#examples">Examples</a></li>
                 <li><a href="#community">Community</a></li>
             </ul>
-            <a href="docs.html" class="cta-button">Get Started</a>
+            <div class="header-buttons">
+                <a href="download.html" class="download-button">
+                    <i class="fas fa-download"></i> <span>Download</span>
+                </a>
+                <a href="docs.html" class="cta-button">Get Started</a>
+            </div>
         </nav>
     </header>
 
@@ -149,11 +154,11 @@
                     <h1>GPULang</h1>
                     <p>Finally, a user friendly shader programming language</p>
                     <div class="hero-buttons">
-                        <a href="docs.html" class="btn-secondary">
-                            <i class="fas fa-download"></i> Download
-                        </a>
                         <a href="docs.html" class="btn-primary">
                             <i class="fas fa-rocket"></i> Get Started
+                        </a>
+                        <a href="docs.html" class="btn-secondary">
+                            <i class="fas fa-book"></i> View Docs
                         </a>
                     </div>
                 </div>
@@ -312,30 +317,28 @@ program Render
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Getting Started</h3>
-                    <a href="#download">Download</a>
-                    <a href="#tutorial">Tutorial</a>
-                    <a href="#examples">Examples</a>
-                    <a href="#docs">Documentation</a>
+                    <a href="download.html">Download</a>
+                    <a href="docs.html">Documentation</a>
                 </div>
                 <div class="footer-section">
                     <h3>Community</h3>
-                    <a href="#github">GitHub</a>
+                    <a href="https://github.com/gscept/GPULang">GitHub</a>
                     <a href="#discord">Discord</a>
                     <a href="#forum">Forum</a>
                     <a href="#blog">Blog</a>
                 </div>
                 <div class="footer-section">
                     <h3>Resources</h3>
-                    <a href="#api">API Reference</a>
-                    <a href="#tools">Tools</a>
-                    <a href="#benchmarks">Benchmarks</a>
-                    <a href="#showcase">Showcase</a>
+                    <a href="language-syntax.html">Syntax</a>
+                    <a href="https://marketplace.visualstudio.com/items?itemName=gustavsterbrant.gpulang">VSCode Extension</a>
+                    <a href="compiler-reference.html">Compiler Reference</a>
+                    <a href="intrinsics.html">Intrinsics</a>
                 </div>
                 <div class="footer-section">
                     <h3>Support</h3>
                     <a href="#help">Help Center</a>
                     <a href="#contact">Contact</a>
-                    <a href="#issues">Report Issues</a>
+                    <a href="report-issues.html">Report Issues</a>
                     <a href="#roadmap">Roadmap</a>
                 </div>
             </div>

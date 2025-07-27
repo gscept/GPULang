@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download GPULang - Modern GPU Programming Language</title>
+    <link href="styles.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Download Page Specific Styles */
+        .download-content {
+            padding-top: 120px;
+            padding-bottom: 4rem;
+            min-height: 100vh;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .version-info {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            background: rgba(192, 132, 252, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(192, 132, 252, 0.3);
+        }
+
+        .version-info h2 {
+            color: #c084fc;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .version-info p {
+            color: #b0b0b0;
+            margin: 0;
+        }
+
+        .release-date {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 0.5rem;
+        }
+
+        /* OS Selection Grid */
+        .os-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .os-card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .os-card:hover {
+            border-color: #c084fc;
+            background: rgba(192, 132, 252, 0.05);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(192, 132, 252, 0.2);
+        }
+
+        .os-card.selected {
+            border-color: #c084fc;
+            background: rgba(192, 132, 252, 0.1);
+        }
+
+        .os-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: #c084fc;
+        }
+
+        .os-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .os-requirements {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .download-options {
+            display: none;
+            margin-top: 2rem;
+        }
+
+        .os-card.selected .download-options {
+            display: block;
+        }
+
+        .download-button-primary {
+            background: linear-gradient(45deg, #c084fc, #f472b6);
+            color: #0f0f23;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .download-button-secondary {
+            background: transparent;
+            color: #ffffff;
+            padding: 1rem 2rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .download-button-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(192, 132, 252, 0.4);
+        }
+
+        .download-button-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #c084fc;
+            transform: translateY(-2px);
+        }
+
+        .file-size {
+            display: block;
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 0.5rem;
+        }
+
+        /* Installation Instructions */
+        .install-instructions {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .install-instructions h3 {
+            color: #c084fc;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        .instruction-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .instruction-tab {
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #b0b0b0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .instruction-tab.active {
+            background: rgba(192, 132, 252, 0.2);
+            border-color: #c084fc;
+            color: #ffffff;
+        }
+
+        .instruction-content {
+            display: none;
+        }
+
+        .instruction-content.active {
+            display: block;
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
+            color: #ffffff;
+            overflow-x: auto;
+        }
+
+        .code-block::before {
+            content: '$ ';
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        /* Release Notes */
+        .release-notes {
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .release-notes a {
+            color: #c084fc;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .release-notes a:hover {
+            color: #f472b6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .os-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .os-card {
+                padding: 2rem;
+            }
+            
+            .instruction-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .instruction-tab {
+                width: 200px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">GPULang</a>
+            <ul class="nav-links">
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="docs.html">Documentation</a></li>
+                <li><a href="index.html#examples">Examples</a></li>
+                <li><a href="#community">Community</a></li>
+            </ul>
+            <div class="header-buttons">
+                <a href="#" class="download-button" onclick="alert('You are already on the download page!')">
+                    <i class="fas fa-download"></i> <span>Download</span>
+                </a>
+                <a href="index.html" class="cta-button">
+                    <i class="fas fa-home"></i> <span>Home</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="download-content">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">Download GPULang</h1>
+                <p class="page-subtitle">
+                    Get the latest version of GPULang for your operating system
+                </p>
+            </div>
+
+            <div class="version-info">
+                <h2><i class="fas fa-tag"></i> Latest Version: v1.0.0</h2>
+                <p>The first stable release of GPULang is here! Experience the future of GPU programming.</p>
+                <div class="release-date">Released: January 15, 2025</div>
+            </div>
+
+            <div class="os-grid">
+                <!-- Windows -->
+                <div class="os-card" data-os="windows" onclick="selectOS('windows')">
+                    <div class="os-icon">
+                        <i class="fab fa-windows"></i>
+                    </div>
+                    <h3>Windows</h3>
+                    <div class="os-requirements">
+                        <strong>Requirements:</strong><br>
+                        Windows 10/11 (64-bit)<br>
+                    </div>
+                    <div class="download-options">
+                        <a href="#" class="download-button-primary" onclick="downloadFile('gpulang-v1.0.0-windows-x64.exe')">
+                            <i class="fas fa-download"></i>
+                            Download Installer
+                            <span class="file-size">~45 MB</span>
+                        </a>
+                        <a href="#" class="download-button-secondary" onclick="downloadFile('gpulang-v1.0.0-windows-x64.zip')">
+                            <i class="fas fa-file-archive"></i>
+                            Portable ZIP
+                            <span class="file-size">~38 MB</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- macOS -->
+                <div class="os-card" data-os="macos" onclick="selectOS('macos')">
+                    <div class="os-icon">
+                        <i class="fab fa-apple"></i>
+                    </div>
+                    <h3>macOS</h3>
+                    <div class="os-requirements">
+                        <strong>Requirements:</strong><br>
+                        macOS 12.0+ (Monterey)<br>
+
+                    </div>
+                    <div class="download-options">
+                        <div style="margin-bottom: 1rem;">
+                            <h4 style="color: #ffffff; margin-bottom: 0.5rem; font-size: 1.1rem;">Apple Silicon (M1/M2/M3)</h4>
+                            <a href="#" class="download-button-primary" onclick="downloadFile('gpulang-v1.0.0-macos-arm64.dmg')">
+                                <i class="fas fa-download"></i>
+                                Download DMG (ARM64)
+                                <span class="file-size">~40 MB</span>
+                            </a>
+                            <a href="#" class="download-button-secondary" onclick="downloadFile('gpulang-v1.0.0-macos-arm64.tar.gz')">
+                                <i class="fas fa-file-archive"></i>
+                                TAR.GZ (ARM64)
+                                <span class="file-size">~33 MB</span>
+                            </a>
+                        </div>
+                        <div>
+                            <h4 style="color: #ffffff; margin-bottom: 0.5rem; font-size: 1.1rem;">Intel Macs</h4>
+                            <a href="#" class="download-button-primary" onclick="downloadFile('gpulang-v1.0.0-macos-x64.dmg')">
+                                <i class="fas fa-download"></i>
+                                Download DMG (x64)
+                                <span class="file-size">~42 MB</span>
+                            </a>
+                            <a href="#" class="download-button-secondary" onclick="downloadFile('gpulang-v1.0.0-macos-x64.tar.gz')">
+                                <i class="fas fa-file-archive"></i>
+                                TAR.GZ (x64)
+                                <span class="file-size">~35 MB</span>
+                            </a>
+                        </div>
+                        <div style="margin-top: 1rem; padding: 0.8rem; background: rgba(192, 132, 252, 0.1); border-radius: 8px; font-size: 0.85rem; color: #b0b0b0;">
+                            <i class="fas fa-info-circle" style="color: #c084fc;"></i>
+                            <strong>Not sure which one?</strong> Check "About This Mac" in the Apple menu. If you see "Apple M1", "Apple M2", or "Apple M3", choose Apple Silicon. Otherwise, choose Intel.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Linux -->
+                <div class="os-card" data-os="linux" onclick="selectOS('linux')">
+                    <div class="os-icon">
+                        <i class="fab fa-linux"></i>
+                    </div>
+                    <h3>Linux</h3>
+                    <div class="os-requirements">
+                        <strong>Requirements:</strong><br>
+                        Ubuntu 20.04+ / Fedora 35+<br>
+
+                    </div>
+                    <div class="download-options">
+                        <a href="#" class="download-button-primary" onclick="downloadFile('gpulang-v1.0.0-linux-x64.AppImage')">
+                            <i class="fas fa-download"></i>
+                            Download AppImage
+                            <span class="file-size">~40 MB</span>
+                        </a>
+                        <a href="#" class="download-button-secondary" onclick="downloadFile('gpulang-v1.0.0-linux-x64.tar.gz')">
+                            <i class="fas fa-file-archive"></i>
+                            TAR.GZ Archive
+                            <span class="file-size">~33 MB</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="install-instructions">
+                <h3>Installation Instructions</h3>
+                
+                <div class="instruction-tabs">
+                    <div class="instruction-tab active" onclick="showInstructions('windows')">
+                        <i class="fab fa-windows"></i> Windows
+                    </div>
+                    <div class="instruction-tab" onclick="showInstructions('macos')">
+                        <i class="fab fa-apple"></i> macOS
+                    </div>
+                    <div class="instruction-tab" onclick="showInstructions('linux')">
+                        <i class="fab fa-linux"></i> Linux
+                    </div>
+                </div>
+
+                <div class="instruction-content active" id="instructions-windows">
+                    <h4>Windows Installation</h4>
+                    <p><strong>Option 1: Using the Installer (Recommended)</strong></p>
+                    <ol>
+                        <li>Download the installer (.exe file)</li>
+                        <li>Right-click and "Run as administrator"</li>
+                        <li>Follow the installation wizard</li>
+                        <li>GPULang will be added to your PATH automatically</li>
+                    </ol>
+                    
+                    <p><strong>Option 2: Portable ZIP</strong></p>
+                    <ol>
+                        <li>Download and extract the ZIP file</li>
+                        <li>Add the bin/ directory to your PATH environment variable</li>
+                    </ol>
+                    
+                    <p><strong>Verify Installation:</strong></p>
+                    <div class="code-block">gpulangc --version</div>
+                </div>
+
+                <div class="instruction-content" id="instructions-macos">
+                    <h4>macOS Installation</h4>
+                    
+                    <p><strong>Step 1: Choose Your Architecture</strong></p>
+                    <ul>
+                        <li><strong>Apple Silicon (M1/M2/M3):</strong> Download the ARM64 version for better performance</li>
+                        <li><strong>Intel Macs:</strong> Download the x64 version for Intel-based Macs</li>
+                        <li><strong>Unsure?</strong> Go to Apple Menu → "About This Mac" to check your processor</li>
+                    </ul>
+                    
+                    <p><strong>Option 1: Using the DMG (Recommended)</strong></p>
+                    <ol>
+                        <li>Download the appropriate .dmg file for your Mac architecture</li>
+                        <li>Double-click to mount the disk image</li>
+                        <li>Drag GPULang to your Applications folder</li>
+                        <li>Add /Applications/GPULang.app/Contents/MacOS to your PATH</li>
+                    </ol>
+                    
+                    <p><strong>Option 2: TAR.GZ Archive</strong></p>
+                    <div class="code-block">tar -xzf gpulang-v1.0.0-macos-[architecture].tar.gz</div>
+                    <div class="code-block">sudo mv gpulang /usr/local/bin/</div>
+                    
+                    <p><strong>Architecture Detection (Optional):</strong></p>
+                    <div class="code-block">uname -m</div>
+                    <p style="font-size: 0.9rem; color: #b0b0b0; margin-top: 0.5rem;">
+                        Returns "arm64" for Apple Silicon or "x86_64" for Intel
+                    </p>
+                    
+                    <p><strong>Verify Installation:</strong></p>
+                    <div class="code-block">gpulangc --version</div>
+                </div>
+
+                <div class="instruction-content" id="instructions-linux">
+                    <h4>Linux Installation</h4>
+                    <p><strong>Option 1: AppImage (Recommended)</strong></p>
+                    <ol>
+                        <li>Download the .AppImage file</li>
+                        <li>Make it executable and run:</li>
+                    </ol>
+                    <div class="code-block">chmod +x gpulang-v1.0.0-linux-x64.AppImage</div>
+                    <div class="code-block">./gpulang-v1.0.0-linux-x64.AppImage --install</div>
+                    
+                    <p><strong>Option 2: TAR.GZ Archive</strong></p>
+                    <div class="code-block">tar -xzf gpulang-v1.0.0-linux-x64.tar.gz</div>
+                    <div class="code-block">sudo cp gpulang/bin/* /usr/local/bin/</div>
+                    
+                    <p><strong>Verify Installation:</strong></p>
+                    <div class="code-block">gpulangc --version</div>
+                </div>
+            </div>
+
+            <div class="release-notes">
+                <p>
+                    <a href="https://github.com/gscept/GPULang/releases/tag/v1.0.0" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> View Full Release Notes
+                    </a>
+                    |
+                    <a href="https://github.com/gscept/GPULang/releases" target="_blank">
+                        <i class="fas fa-history"></i> Previous Releases
+                    </a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Auto-detect user's OS and select it
+        function detectOS() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            if (userAgent.includes('win')) {
+                selectOS('windows');
+            } else if (userAgent.includes('mac')) {
+                selectOS('macos');
+            } else if (userAgent.includes('linux')) {
+                selectOS('linux');
+            }
+        }
+
+        function selectOS(os) {
+            // Remove selection from all cards
+            document.querySelectorAll('.os-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Select the clicked card
+            document.querySelector(`[data-os="${os}"]`).classList.add('selected');
+            
+            // Also switch to the corresponding instruction tab
+            showInstructions(os);
+        }
+
+        function showInstructions(os) {
+            // Hide all instruction contents
+            document.querySelectorAll('.instruction-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active from all tabs
+            document.querySelectorAll('.instruction-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected instruction content
+            document.getElementById(`instructions-${os}`).classList.add('active');
+            
+            // Activate corresponding tab
+            document.querySelectorAll('.instruction-tab').forEach(tab => {
+                if (tab.textContent.toLowerCase().includes(os === 'macos' ? 'macos' : os)) {
+                    tab.classList.add('active');
+                }
+            });
+        }
+
+        function downloadFile(filename) {
+            // In a real implementation, this would trigger the actual download
+            alert(`Starting download of ${filename}...\n\nNote: This is a demo. In production, this would download the actual file.`);
+            
+            // You could implement actual download logic here:
+            // window.location.href = `https://releases.gpulang.com/v1.0.0/${filename}`;
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(15, 15, 35, 0.98)';
+            } else {
+                header.style.background = 'rgba(15, 15, 35, 0.95)';
+            }
+        });
+
+        // Auto-detect OS on page load
+        document.addEventListener('DOMContentLoaded', detectOS);
+    </script>
+</body>
+</html>

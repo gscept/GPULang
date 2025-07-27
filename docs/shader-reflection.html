@@ -280,9 +280,14 @@
                 <li><a href="index.html#examples">Examples</a></li>
                 <li><a href="#community">Community</a></li>
             </ul>
-            <a href="docs.html" class="back-button">
-                <i class="fas fa-arrow-left"></i> Back to Docs
-            </a>
+            <div class="header-buttons">
+                <a href="download.html" class="download-button">
+                    <i class="fas fa-download"></i> <span>Download</span>
+                </a>
+                <a href="docs.html" class="cta-button">
+                    <i class="fas fa-arrow-left"></i> <span>Back to Docs</span>
+                </a>
+            </div>
         </nav>
     </header>
 
@@ -684,100 +689,6 @@ public:
     
     void RegisterResource(const std::string& name, TextureHandle texture) {
         textures[name] = texture;
-    }
-};</code></pre>
-                    </div>
-                </div>
-            </section>
-
-            <section id="integration" class="content-section">
-                <h2>Integration with Game Engines</h2>
-
-                <h3>Engine Integration Pattern</h3>
-                <div class="code-example">
-                    <div class="code-container">
-                        <pre><code class="language-cpp">// Game engine shader system integration
-class ShaderSystem {
-private:
-    std::unordered_map&lt;std::string, Shader&gt; loadedShaders;
-    std::unordered_map&lt;std::string, GraphicsPipeline&gt; pipelines;
-    
-public:
-    void LoadShader(const std::string& path) {
-        auto shader = GPULang::LoadShader(path);
-        loadedShaders[path] = std::move(shader);
-        
-        // Register with material system
-        MaterialSystem::RegisterShaderInterface(
-            path, shader.GetReflection()
-        );
-    }
-    
-    void CreateMaterial(const std::string& shaderPath) {
-        const auto& shader = loadedShaders[shaderPath];
-        const auto& reflection = shader.GetReflection();
-        
-        // Create material template from reflection
-        MaterialTemplate materialTemplate;
-        for (const auto& buffer : reflection.GetUniformBuffers()) {
-            materialTemplate.AddParameter(buffer.name, buffer.type);
-        }
-        for (const auto& texture : reflection.GetTextures()) {
-            materialTemplate.AddTextureSlot(texture.name, texture.textureType);
-        }
-        
-        MaterialSystem::RegisterTemplate(shaderPath, materialTemplate);
-    }
-};</code></pre>
-                    </div>
-                </div>
-
-                <div class="info-box warning">
-                    <div class="info-box-title">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        Performance Consideration
-                    </div>
-                    <div class="info-box-content">
-                        While dynamic reflection provides flexibility, avoid querying reflection data
-                        in performance-critical paths. Cache reflection information during initialization
-                        and use it to create optimized rendering paths.
-                    </div>
-                </div>
-
-                <h3>Hot Reloading Support</h3>
-                <div class="code-example">
-                    <div class="code-container">
-                        <pre><code class="language-cpp">// Hot reloading with dynamic reflection
-class HotReloadManager {
-private:
-    FileWatcher fileWatcher;
-    
-public:
-    void WatchShader(const std::string& path) {
-        fileWatcher.Watch(path, [this, path](const FileEvent& event) {
-            if (event.type == FileEvent::Modified) {
-                ReloadShader(path);
-            }
-        });
-    }
-    
-private:
-    void ReloadShader(const std::string& path) {
-        try {
-            auto newShader = GPULang::LoadShader(path);
-            const auto& newReflection = newShader.GetReflection();
-            
-            // Validate new reflection is compatible
-            const auto& oldReflection = loadedShaders[path].GetReflection();
-            if (newReflection.IsCompatible(oldReflection)) {
-                loadedShaders[path] = std::move(newShader);
-                NotifyShaderReloaded(path);
-            } else {
-                LogError("New shader interface incompatible: " + path);
-            }
-        } catch (const std::exception& e) {
-            LogError("Failed to reload shader: " + path + " - " + e.what());
-        }
     }
 };</code></pre>
                     </div>
