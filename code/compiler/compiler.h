@@ -50,11 +50,13 @@ struct Compiler
     enum class Language : uint8_t
     {
         GLSL,
-        GLSL_SPIRV,     // uses GLSL as intermediate to generate SPIRV
         HLSL,
-        HLSL_SPIRV,     // uses HLSL as intermediate to generate SPIRV
-        SPIRV,          // target is pure generic SPIRV
-        VULKAN_SPIRV    // target is SPIRV with the Vulkan subset
+        DXIL,           // target is DXIL
+        SPIRV,          // target is generic SPIRV
+        VULKAN_SPIRV,   // target is SPIRV with the Vulkan subset
+        WEBGPU,         // target is wgsl
+        METAL,          // target is msl
+        METAL_IR        // target is Metal IR (not implemented)
     };
 
     enum class ErrorFormat : uint8_t
@@ -89,8 +91,7 @@ struct Compiler
 
     struct Target
     {
-        Generator* generator;
-        std::string name;
+        FixedString name;
 
         uint8_t supportsPhysicalBufferAddresses : 1;
         uint8_t supportsPhysicalAddressing : 1;

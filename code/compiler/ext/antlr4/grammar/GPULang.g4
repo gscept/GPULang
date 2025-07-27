@@ -194,22 +194,6 @@ effect
     )*?;
 
     
-//preprocessor
-//    returns [Preprocessor* pp]
-//    @init
-//    {
-//        Symbol::Location location;
-//    }
-//    :
-//    '#' (method = IDENTIFIER) { $pp = Alloc<Preprocessor>(); $pp->method = $method.text; $pp->type = Preprocessor::EndIf; }
-//    (
-//        (file = path { $pp->args.push_back($file.val); })                                                                                  { $pp->type = Preprocessor::Include; }    // include
-//        | '(' (arg0 = IDENTIFIER { $pp->args.push_back($arg0.text); } (',' argn = IDENTIFIER { $pp->args.push_back($argn.text); })* )? ')'  { $pp->type = Preprocessor::Macro; }    // macro
-//        | IDENTIFIER                                                                                                                        { $pp->type = Preprocessor::IfDef; }
-//        | line = INTEGERLITERAL p = string
-//    )
-//    ;
-    
     
 linePreprocessorEntry
     @init
