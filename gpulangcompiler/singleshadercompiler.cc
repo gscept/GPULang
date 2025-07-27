@@ -201,19 +201,15 @@ SingleShaderCompiler::CreateDependencies(const std::string& src)
 	std::string file = sp.stem().string();
 	std::string folder = sp.parent_path().string();
 
-	// format destination
-	std::string destFile = fs::absolute(folder + "/" + file + ".dep").string();
-
 	// compile
 	if (!(this->flags & Flags::Quiet))
 	{
-		fprintf(stderr, "[gpulangc] \n Analyzing:\n   %s -> %s\n", src.c_str(), destFile.c_str());	
+        fprintf(stderr, "[gpulangc] \n Analyzing:\n   %s -> %s\n", src.c_str(), this->dstBinary.c_str());
 	}
 
 	std::vector<std::string> defines;
 	std::vector<std::string> flags;
-	std::string define = "-D GLSL";
-	defines.push_back(define);
+	std::string define = "";
 
 	// first include this folder
 	define = "-I" + folder + "/";
@@ -226,15 +222,34 @@ SingleShaderCompiler::CreateDependencies(const std::string& src)
 	}
 
 #pragma warning (disable:4996)
-	FILE * output = fopen(this->dstBinary.c_str(), "w");
-	if(output)
+    FILE * output = fopen(this->dstBinary.c_str(), "w");
+    GPULangFile* sourceFile = GPULangLoadFile(src);
+	if (sourceFile != nullptr && output != nullptr)
 	{
-		std::vector<std::string> deps = GPULangGenerateDependencies(sp.string(), defines);
+        GPULang::Allocator alloc = GPULang::CreateAllocator();
+        GPULang::InitAllocator(&alloc);
+        GPULang::MakeAllocatorCurrent(&alloc);
+        
+        GPULang::PinnedArray<GPULang::Diagnostic> diagnostics(0xFFF);
+        GPULang::FixedArray<GPULang::FixedString> deps = GPULangGenerateDependencies(sourceFile, defines, diagnostics);
+        bool hasError = false;
+        for (const auto& diag : diagnostics)
+        {
+            if (diag.severity == GPULang::Diagnostic::Severity::Error)
+            {
+                printf("Generation dependency failed with: %s", diag.error.c_str());
+                hasError = true;
+            }
+        }
+        if (hasError)
+            return false;
+        
         for(auto str : deps)
         {
 			fprintf(output, "%s;", str.c_str());
         }
-		fclose(output);
+        fclose(output);
+        GPULang::ResetAllocator(&alloc);
 	}
     
     return true;

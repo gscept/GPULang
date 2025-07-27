@@ -98,16 +98,14 @@ GPULangFile*
 GPULangLoadFile(const std::string_view& path)
 {
     GPULangFile* file = nullptr;
-    FILE* f = fopen(TStr(path).Data(), "rb");
+    const char* filePathBuf = TStr(path).Data();
+    FILE* f = fopen(filePathBuf, "rb");
     
     if (f != nullptr)
     {
         file = Alloc<GPULangFile>();
         file->path = path;
-    }
-
-    if (file != nullptr)
-    {
+        
         fseek(f, 0, SEEK_END);
         int size = ftell(f);
 
@@ -117,9 +115,355 @@ GPULangLoadFile(const std::string_view& path)
         fclose(f);
         file->contentSize = size;
     }
-
+    else
+    {
+        perror("fopen");
+    }
     return file;
 }
+
+
+static auto match_mask = [](const char* begin, const char* end, char c) -> uint64_t
+{
+    int len = min(end - begin, 8);
+    if (len < 0)
+        return 255;
+    static const uint64_t masks[] = {
+        0x0000000000000000ULL,
+        0x00000000000000FFULL,
+        0x000000000000FFFFULL,
+        0x0000000000FFFFFFULL,
+        0x00000000FFFFFFFFULL,
+        0x000000FFFFFFFFFFULL,
+        0x0000FFFFFFFFFFFFULL,
+        0x00FFFFFFFFFFFFFFULL,
+        0xFFFFFFFFFFFFFFFFULL
+    };
+    uint64_t mask = masks[len];
+    uint64_t byte_mask = 0x0101010101010101ULL * c;
+    uint64_t* wordPtr = (uint64_t*)begin;
+    uint64_t word = 0x0;
+    memcpy(&word, wordPtr, len);
+    //uint64_t word = *(uint64_t*)begin;
+    uint64_t strMask = (word & mask) ^ byte_mask;
+    return (strMask - 0x0101010101010101ULL) & ~strMask & 0x8080808080808080ULL;
+};
+
+
+
+// Find any char in the given string
+static auto anyCharPos = [](const char* begin, const char* end, const std::initializer_list<char>& list) -> uint8_t
+{
+    uint64_t resultMask = 0x0;
+    for (auto c : list)
+    {
+        resultMask |= match_mask(begin, end, c);
+    }
+    if (resultMask == 0x0) return 255;
+    else return CountLeadingZeroes(resultMask) / 8;
+};
+
+// Find position where none of the characters in list are present
+static auto noCharPos = [](const char* begin, const char* end, const std::initializer_list<char>& list) -> uint8_t
+{
+    uint64_t resultMask = 0x0;
+    for (auto c : list)
+    {
+        resultMask |= match_mask(begin, end, c);;
+    }
+    resultMask = ~resultMask & 0x8080808080808080ULL;
+    if (resultMask == 0x0) return 255;
+    else return CountLeadingZeroes(resultMask) / 8;
+};
+
+static auto charPos = [](const char* begin, const char* end, char c) -> uint8_t
+{
+    uint64_t mask = match_mask(begin, end, c);
+    if (mask == 0x0) return 255;
+    else return CountLeadingZeroes(mask) / 8;
+};
+
+static auto notCharPos = [](const char* begin, const char* end, char c) -> uint8_t
+{
+    uint64_t mask = match_mask(begin, end, c);
+    mask = ~mask & 0x8080808080808080ULL;
+    if (mask == 0x0) return 255;
+    else return CountLeadingZeroes(mask) / 8;
+};
+
+static auto lineEnd = [](const char* begin, const char* end) -> const char*
+{
+    const char* start = begin;
+    while (start < end)
+    {
+        uint8_t crPos = charPos(start, end, '\r');
+        uint8_t nlPos = charPos(start, end, '\n');
+        uint8_t nPos = charPos(start, end, '\0');
+        if (crPos != 255)
+        {
+            const char* offset = start + crPos;
+            if ((offset != (end - 1)) && offset[1] == '\n')
+                return offset + 2;
+            return offset + 1;
+        }
+        else if (nlPos != 255)
+        {
+            return start + nlPos + 1;
+        }
+        else if (nPos != 255)
+        {
+            return start + nPos;
+        }
+        start += 8;
+    }
+    return end;
+};
+
+static auto validateIdentifier = [](const char* begin, const char* end) -> bool
+{
+    if (!GPULangValidIdentifierStart(begin[0]))
+        return false;
+    const char* start = begin+1;
+    while (start != end)
+    {
+        if (!GPULangValidIdentifierChar(start[0]))
+            return false;
+        start++;
+    }
+    return true;
+};
+
+static auto whitespace = [](const char c) -> bool
+{
+    return c == ' ' || c == '\n' || c == '\r' || c == '\t' || c == '\f' || c == '\v';
+};
+
+#define WHITESPACE_CHARS {' ', '\n', '\r', '\t', '\f', '\v'}
+
+static auto wordStart = [](const char* begin, const char* end) -> const char*
+{
+    const char* start = begin;
+    while (start < end)
+    {
+        uint8_t nonWsOffset = noCharPos(start, end, WHITESPACE_CHARS);
+        if (nonWsOffset != 255)
+            return start + nonWsOffset;
+        else
+            start += 8;
+    }
+    return end;
+};
+
+static auto trim = [](const char* begin, const char* end) -> const char*
+{
+    const char* start = begin;
+    while (start < end)
+    {
+        uint8_t nonWsOffset = noCharPos(start, end, { ' ' });
+        if (nonWsOffset != 255)
+            return start + nonWsOffset;
+        else
+            start += 8;
+    }
+    return end;
+};
+
+static auto wordEnd = [](const char* begin, const char* end) -> const char*
+{
+    const char* start = begin;
+    while (start != end)
+    {
+        uint8_t asterixOffset = charPos(start, end, '*');
+        uint8_t slashOffset = charPos(start, end, '/');
+        uint8_t wsOffset = anyCharPos(start, end, WHITESPACE_CHARS);
+        if (asterixOffset != 255)
+        {
+            if (asterixOffset < slashOffset && asterixOffset < wsOffset)
+            {
+                if (start + asterixOffset + 1 < end && start[asterixOffset + 1] == '/')
+                    return start + asterixOffset;
+            }
+            asterixOffset = 255;
+        }
+        
+        if (slashOffset != 255)
+        {
+            if (slashOffset < wsOffset)
+            {
+                if (start + slashOffset + 1 < end && start[slashOffset + 1] == '*')
+                    return start + slashOffset;
+                else if (start + slashOffset + 1 < end && start[slashOffset + 1] == '/')
+                    return start + slashOffset;
+            }
+        }
+        if (wsOffset != 255)
+            return start + wsOffset;
+        
+        start += 8;
+    }
+    return end;
+};
+
+
+static auto wordEndOrParanthesis = [](const char* begin, const char* end) -> const char*
+{
+    const char* start = begin;
+    while (start != end)
+    {
+        if (start[0] == '(')
+            return start;
+        if (whitespace(start[0]))
+            return start;
+        start++;
+    }
+    return end;
+};
+
+static auto commentEnd = [](const char* begin, const char* end) -> const char*
+{
+    const char* start = begin;
+    while (start != end)
+    {
+        if (start[0] == '*')
+            if (start + 1 != end && start[1] == '/')
+                return start;
+        start++;
+    }
+    return end;
+};
+
+static auto nextArg = [](const char* begin, const char* end) -> const char*
+{
+    const char* start = begin;
+    while (start != end)
+    {
+        if (start[0] == ',')
+            return wordStart(start+1, end);
+        if (start[0] == ')')
+            return start;
+        start++;
+    }
+    return end;
+};
+
+
+
+static auto identifierBegin = [](const char* begin, const char* end) -> const char*
+{
+    const char* start = begin;
+    while (start != end)
+    {
+        if (start[0] == '/')
+        {
+            if (start + 1 < end && start[1] == '*')
+                return start;
+            if (start + 1 < end && start[1] == '/')
+                return start;
+        }
+        if (GPULangValidIdentifierStart(start[0]))
+            return start;
+        start++;
+    }
+    return end;
+};
+
+static auto identifierEnd = [](const char* begin, const char* end) -> const char*
+{
+    const char* start = begin;
+    while (start != end)
+    {
+        if (!GPULangValidIdentifierChar(start[0]))
+            return start;
+        start++;
+    }
+    return end;
+};
+
+static auto argListStart = [](const char* begin, const char* end) -> const char*
+{
+    const char* start = begin;
+    while (start < end)
+    {
+        uint8_t pos = charPos(start, end, '(');
+        if (pos == 255)
+            start += 8;
+        else
+            return start + pos + 1;
+    }
+    return end;
+};
+
+static auto argListEnd = [](const char* begin, const char* end) -> const char*
+{
+    const char* start = begin;
+    while (start < end)
+    {
+        uint8_t pos = charPos(start, end, ')');
+        if (pos == 255)
+            start += 8;
+        else
+            return start + pos;
+    }
+    return end;
+};
+
+
+static auto resolvePath = [](const std::string_view& path, const GPULang::FixedString& currentFilePath, const FixedArray<std::string_view>& searchPaths, PinnedSet<TransientString>& resolvedPaths) -> TransientString
+{
+    auto it = resolvedPaths.Find(path);
+    if (it != resolvedPaths.end())
+        return path;
+    else
+    {
+        struct stat sb;
+        if (stat(path.data(), &sb) == 0)
+        {
+            resolvedPaths.Insert(path);
+            return TransientString(path);
+        }
+        else
+        {
+            // First check the folder the file is currently in
+            const char* lastSlash = strrchr(currentFilePath.c_str(), '/');
+            if (lastSlash != nullptr)
+            {
+                std::string_view fileFolder(currentFilePath.c_str(), lastSlash + 1);
+                TStr fullPath = TStr::Compact(fileFolder, path);
+                auto it = resolvedPaths.Find(fullPath);
+                if (it != resolvedPaths.end())
+                    return fullPath;
+                else
+                {
+                    struct stat sb;
+                    if (stat(fullPath.Data(), &sb) == 0)
+                    {
+                        resolvedPaths.Insert(fullPath);
+                        return fullPath;
+                    }
+                }
+            }
+            
+            // If the file still isn't found, try the search paths
+            for (auto& searchPath : searchPaths)
+            {
+                TStr fullPath = TStr::Compact(searchPath, path);
+                auto it = resolvedPaths.Find(fullPath);
+                if (it != resolvedPaths.end())
+                    return fullPath;
+                else
+                {
+                    struct stat sb;
+                    if (stat(fullPath.Data(), &sb) == 0)
+                    {
+                        resolvedPaths.Insert(fullPath);
+                        return fullPath;
+                    }
+                }
+            }
+        }
+    }
+    return TransientString();
+};
 
 //------------------------------------------------------------------------------
 /**
@@ -190,287 +534,6 @@ GPULangPreprocess(
     Macro* macro = nullptr;
     bool comment = false;
     level->lineCounter = 0;
-
-    static auto match_mask = [](const char* begin, const char* end, char c) -> uint64_t
-    {
-        int len = min(end - begin, 8);
-        if (len < 0)
-            return 255;
-        static const uint64_t masks[] = {
-            0x0000000000000000ULL,
-            0x00000000000000FFULL,
-            0x000000000000FFFFULL,
-            0x0000000000FFFFFFULL,
-            0x00000000FFFFFFFFULL,
-            0x000000FFFFFFFFFFULL,
-            0x0000FFFFFFFFFFFFULL,
-            0x00FFFFFFFFFFFFFFULL,
-            0xFFFFFFFFFFFFFFFFULL
-        };
-        uint64_t mask = masks[len];
-        uint64_t byte_mask = 0x0101010101010101ULL * c;
-        uint64_t* wordPtr = (uint64_t*)begin;
-        uint64_t word = 0x0;
-        memcpy(&word, wordPtr, len);
-        //uint64_t word = *(uint64_t*)begin;
-        uint64_t strMask = (word & mask) ^ byte_mask;
-        return (strMask - 0x0101010101010101ULL) & ~strMask & 0x8080808080808080ULL;
-    };
-
-    static auto charPos = [](const char* begin, const char* end, char c) -> uint8_t
-    {
-        uint64_t mask = match_mask(begin, end, c);
-        if (mask == 0x0) return 255;
-        else return CountLeadingZeroes(mask) / 8;
-    };
-    
-    static auto notCharPos = [](const char* begin, const char* end, char c) -> uint8_t
-    {
-        uint64_t mask = match_mask(begin, end, c);
-        mask = ~mask & 0x8080808080808080ULL;
-        if (mask == 0x0) return 255;
-        else return CountLeadingZeroes(mask) / 8;
-    };
-    
-    // Find any char in the given string
-    static auto anyCharPos = [](const char* begin, const char* end, const std::initializer_list<char>& list) -> uint8_t
-    {
-        uint64_t resultMask = 0x0;
-        for (auto c : list)
-        {
-            resultMask |= match_mask(begin, end, c);
-        }
-        if (resultMask == 0x0) return 255;
-        else return CountLeadingZeroes(resultMask) / 8;
-    };
-    
-    // Find position where none of the characters in list are present
-    static auto noCharPos = [](const char* begin, const char* end, const std::initializer_list<char>& list) -> uint8_t
-    {
-        uint64_t resultMask = 0x0;
-        for (auto c : list)
-        {
-            resultMask |= match_mask(begin, end, c);;
-        }
-        resultMask = ~resultMask & 0x8080808080808080ULL;
-        if (resultMask == 0x0) return 255;
-        else return CountLeadingZeroes(resultMask) / 8;
-    };
-
-    static auto validateIdentifier = [](const char* begin, const char* end) -> bool
-    {
-        if (!GPULangValidIdentifierStart(begin[0]))
-            return false;
-        const char* start = begin+1;
-        while (start != end)
-        {
-            if (!GPULangValidIdentifierChar(start[0]))
-                return false;
-            start++;
-        }
-        return true;
-    };
-
-    static auto whitespace = [](const char c) -> bool
-    {
-        return c == ' ' || c == '\n' || c == '\r' || c == '\t' || c == '\f' || c == '\v';
-    };
-    
-#define WHITESPACE_CHARS {' ', '\n', '\r', '\t', '\f', '\v'}
-
-    static auto wordStart = [](const char* begin, const char* end) -> const char*
-    {
-        const char* start = begin;
-        while (start < end)
-        {
-            uint8_t nonWsOffset = noCharPos(start, end, WHITESPACE_CHARS);
-            if (nonWsOffset != 255)
-                return start + nonWsOffset;
-            else
-                start += 8;
-        }
-        return end;
-    };
-
-    static auto trim = [](const char* begin, const char* end) -> const char*
-    {
-        const char* start = begin;
-        while (start < end)
-        {
-            uint8_t nonWsOffset = noCharPos(start, end, { ' ' });
-            if (nonWsOffset != 255)
-                return start + nonWsOffset;
-            else
-                start += 8;
-        }
-        return end;
-    };
-
-    static auto wordEnd = [](const char* begin, const char* end) -> const char*
-    {
-        const char* start = begin;
-        while (start != end)
-        {
-            uint8_t asterixOffset = charPos(start, end, '*');
-            uint8_t slashOffset = charPos(start, end, '/');
-            uint8_t wsOffset = anyCharPos(start, end, WHITESPACE_CHARS);
-            if (asterixOffset != 255)
-            {
-                if (asterixOffset < slashOffset && asterixOffset < wsOffset)
-                {
-                    if (start + asterixOffset + 1 < end && start[asterixOffset + 1] == '/')
-                        return start + asterixOffset;
-                }
-                asterixOffset = 255;
-            }
-            
-            if (slashOffset != 255)
-            {
-                if (slashOffset < wsOffset)
-                {
-                    if (start + slashOffset + 1 < end && start[slashOffset + 1] == '*')
-                        return start + slashOffset;
-                    else if (start + slashOffset + 1 < end && start[slashOffset + 1] == '/')
-                        return start + slashOffset;
-                }
-            }
-            if (wsOffset != 255)
-                return start + wsOffset;
-            
-            start += 8;
-        }
-        return end;
-    };
-
-    
-    static auto wordEndOrParanthesis = [](const char* begin, const char* end) -> const char*
-    {
-        const char* start = begin;
-        while (start != end)
-        {
-            if (start[0] == '(')
-                return start;
-            if (whitespace(start[0]))
-                return start;
-            start++;
-        }
-        return end;
-    };
-
-    static auto commentEnd = [](const char* begin, const char* end) -> const char*
-    {
-        const char* start = begin;
-        while (start != end)
-        {
-            if (start[0] == '*')
-                if (start + 1 != end && start[1] == '/')
-                    return start;
-            start++;
-        }
-        return end;
-    };
-
-    static auto nextArg = [](const char* begin, const char* end) -> const char*
-    {
-        const char* start = begin;
-        while (start != end)
-        {
-            if (start[0] == ',')
-                return wordStart(start+1, end);
-            if (start[0] == ')')
-                return start;
-            start++;
-        }
-        return end;
-    };
-
-    static auto lineEnd = [](const char* begin, const char* end) -> const char*
-    {
-        const char* start = begin;
-        while (start < end)
-        {
-            uint8_t crPos = charPos(start, end, '\r');
-            uint8_t nlPos = charPos(start, end, '\n');
-            uint8_t nPos = charPos(start, end, '\0');
-            if (crPos != 255)
-            {
-                const char* offset = start + crPos;
-                if ((offset != (end - 1)) && offset[1] == '\n')
-                    return offset + 2;
-                return offset + 1;
-            }
-            else if (nlPos != 255)
-            {
-                return start + nlPos + 1;
-            }
-            else if (nPos != 255)
-            {
-                return start + nPos;
-            }
-            start += 8;
-        }
-        return end;
-    };
-
-    
-    static auto identifierBegin = [](const char* begin, const char* end) -> const char*
-    {
-        const char* start = begin;
-        while (start != end)
-        {
-            if (start[0] == '/')
-            {
-                if (start + 1 < end && start[1] == '*')
-                    return start;
-                if (start + 1 < end && start[1] == '/')
-                    return start;
-            }
-            if (GPULangValidIdentifierStart(start[0]))
-                return start;
-            start++;
-        }
-        return end;
-    };
-
-    static auto identifierEnd = [](const char* begin, const char* end) -> const char*
-    {
-        const char* start = begin;
-        while (start != end)
-        {
-            if (!GPULangValidIdentifierChar(start[0]))
-                return start;
-            start++;
-        }
-        return end;
-    };
-
-    static auto argListStart = [](const char* begin, const char* end) -> const char*
-    {
-        const char* start = begin;
-        while (start < end)
-        {
-            uint8_t pos = charPos(start, end, '(');
-            if (pos == 255)
-                start += 8;
-            else
-                return start + pos + 1;
-        }
-        return end;
-    };
-
-    static auto argListEnd = [](const char* begin, const char* end) -> const char*
-    {
-        const char* start = begin;
-        while (start < end)
-        {
-            uint8_t pos = charPos(start, end, ')');
-            if (pos == 255)
-                start += 8;
-            else
-                return start + pos;
-        }
-        return end;
-    };
 
     static std::function<int(const char*, const char*, FileLevel*, PinnedArray<GPULang::Diagnostic>&, const PinnedMap<std::string_view, Macro>&, bool& res)> eval = [](const char* begin, const char* end, FileLevel* level, PinnedArray<GPULang::Diagnostic>& diagnostics, const PinnedMap<std::string_view, Macro>& definitions, bool& res) -> int
     {
@@ -1020,62 +1083,6 @@ escape_newline:
                         const std::string_view path = std::string_view(startOfPath + 1, endOfPath - 1);
                         SETUP_ARG2(pp, path, startOfPath, endOfPath);
                         
-                        auto resolvePath = [](const std::string_view& path, const GPULang::FixedString& currentFilePath, const FixedArray<std::string_view>& searchPaths, PinnedSet<TransientString>& resolvedPaths) -> TransientString
-                        {
-                            auto it = resolvedPaths.Find(path);
-                            if (it != resolvedPaths.end())
-                                return path;
-                            else
-                            {
-                                struct stat sb;
-                                if (stat(path.data(), &sb) == 0)
-                                {
-                                    resolvedPaths.Insert(path);
-                                    return TransientString(path);
-                                }
-                                else
-                                {
-                                    // First check the folder the file is currently in
-                                    const char* lastSlash = strrchr(currentFilePath.c_str(), '/');
-                                    if (lastSlash != nullptr)
-                                    {
-                                        std::string_view fileFolder(currentFilePath.c_str(), lastSlash + 1);
-                                        TStr fullPath = TStr::Compact(fileFolder, path);
-                                        auto it = resolvedPaths.Find(fullPath);
-                                        if (it != resolvedPaths.end())
-                                            return fullPath;
-                                        else
-                                        {
-                                            struct stat sb;
-                                            if (stat(fullPath.Data(), &sb) == 0)
-                                            {
-                                                resolvedPaths.Insert(fullPath);
-                                                return fullPath;
-                                            }
-                                        }
-                                    }
-                                    
-                                    // If the file still isn't found, try the search paths
-                                    for (auto& searchPath : searchPaths)
-                                    {
-                                        TStr fullPath = TStr::Compact(searchPath, path);
-                                        auto it = resolvedPaths.Find(fullPath);
-                                        if (it != resolvedPaths.end())
-                                            return fullPath;
-                                        else
-                                        {
-                                            struct stat sb;
-                                            if (stat(fullPath.Data(), &sb) == 0)
-                                            {
-                                                resolvedPaths.Insert(fullPath);
-                                                return fullPath;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            return TransientString();
-                        };
 
                         GPULangFile* inc = nullptr;
                         TransientString fullPath = resolvePath(path, level->file->path, searchPaths, resolvedPaths);
@@ -1836,58 +1843,233 @@ GPULangPreprocessFile(
 //------------------------------------------------------------------------------
 /**
 */
-std::vector<std::string>
-GPULangGenerateDependencies(const std::string& file, const std::vector<std::string>& defines)
+FixedArray<FixedString>
+GPULangGenerateDependencies(GPULangFile* file, const std::vector<std::string>& defines, PinnedArray<GPULang::Diagnostic>& diagnostics)
 {
-    std::vector<std::string> res;
-
-    const char* constArgs[] =
+    TransientArray<FileLevel> fileStack(128);
+    fileStack.Append({file});
+    TransientArray<std::string_view> searchPaths(128);
+    FileLevel* level = &fileStack.back();
+    
+    for (auto& arg : defines)
     {
-        "",			// first argument is supposed to be application system path, but is omitted since we run mcpp directly
-        "-M"
-    };
-    const unsigned numConstArgs = sizeof(constArgs) / sizeof(char*);
-    const unsigned numTotalArgs = numConstArgs + defines.size() + 1;
-    const char** args = new const char*[numConstArgs + defines.size() + 1];
-    memcpy(args, constArgs, sizeof(constArgs));
-
-    unsigned i;
-    for (i = 0; i < defines.size(); i++)
-    {
-        args[numConstArgs + i] = defines[i].c_str();
-    }
-    args[numTotalArgs - 1] = file.c_str();
-
-    /*
-    // run preprocessing
-    mcpp_use_mem_buffers(1);
-    int result = mcpp_lib_main(numTotalArgs, (char**)args);
-    if (result == 0)
-    {
-        std::string output = mcpp_get_mem_buffer((OUTDEST)0);
-
-        // grah, remove the padding and the Makefile stuff, using std::string...
-        size_t colon = output.find_first_of(':')+1;
-        output = output.substr(colon);
-        size_t newline = output.find_first_of('\n');
-        while (newline != output.npos)
+        std::string_view argView = arg;
+        if (arg[0] == '-')
         {
-            std::string line = output.substr(0, newline);
-            if (!line.empty())
+            if (arg[1] == 'I')
             {
-                while (!line.empty() && (line.front() == ' '))								line = line.substr(1);
-                while (!line.empty() && (line.back() == ' ' || line.back() == '\\'))		line = line.substr(0, line.size() - 1);
-                res.push_back(line);
-                output = output.substr(newline + 1);
-                newline = output.find_first_of('\n');
+                if (searchPaths.Full())
+                {
+                    diagnostics.Append(DIAGNOSTIC("Maximum include paths of 128 hit"));
+                    return false;
+                }
+                searchPaths.Append(argView.substr(2));
             }
-            else
-                break;
         }
     }
-    delete[] args;
-     */
-    return res;
+    
+    // Insert into file map
+    PinnedMap<TransientString, GPULangFile*> fileMap = 0xFFFF;
+    PinnedSet<TransientString> resolvedPaths = 0xFFF;
+    bool comment = false;
+    
+#define POP_FILE() \
+level->file->lines = level->lineCounter;\
+fileStack.size--;\
+if (fileStack.size > 0)\
+{\
+level = &fileStack.back();\
+level->lineCounter++;\
+}\
+continue;
+    
+    while (fileStack.size > 0)
+    {
+        // Find next unescaped \n
+        if (level->it == nullptr || level->it == level->file->contents + level->file->contentSize)
+        {
+            POP_FILE()
+        }
+        const char* endOfFile = level->file->contents + level->file->contentSize;
+        const char* endOfLine = lineEnd(level->it, endOfFile);
+        
+        std::string_view lineSpan(level->it, endOfLine);
+        level->it = endOfLine;
+        
+        int lineEndingLength = 0;
+        if (lineSpan.ends_with("\r\n"))
+            lineEndingLength = 2;
+        else if (lineSpan.ends_with("\r") || lineSpan.ends_with("\n"))
+            lineEndingLength = 1;
+        
+        // Check for valid end of line, meaning the file is corrupt after this point
+        auto charIterator = lineSpan.rbegin();
+        if (lineSpan.length() >= 3 && (charIterator[2] == '\r' || charIterator[2] == '\n'))
+            lineEndingLength = -1;
+        if (lineEndingLength == -1)
+        {
+            //diagnostics.push_back(Diagnostic{ .error = Format("Line is either too long or has corrupt file endings\n%s", lineStr.c_str()), .file = level->path, .line = level->lineCounter });
+            POP_FILE()
+        }
+        
+    escape_newline:
+        
+        if (lineSpan.ends_with("\\\n"))
+        {
+            char* endOfLineMutable = const_cast<char*>(level->it);
+            endOfLineMutable[-1] = ' ';
+            endOfLineMutable[-2] = ' ';
+            const char* startOfNextLine = lineEnd(level->it, level->file->contents + level->file->contentSize);
+            lineSpan = std::string_view(lineSpan.data(), startOfNextLine);
+            level->it = startOfNextLine;
+            level->lineCounter++;
+            goto escape_newline;
+        }
+        else if (lineSpan.ends_with("\\\r\n"))
+        {
+            char* endOfLineMutable = const_cast<char*>(level->it);
+            endOfLineMutable[-1] = ' ';
+            endOfLineMutable[-2] = ' ';
+            endOfLineMutable[-3] = ' ';
+            const char* startOfNextLine = lineEnd(level->it, level->file->contents + level->file->contentSize);
+            lineSpan = std::string_view(lineSpan.data(), startOfNextLine);
+            level->it = startOfNextLine;
+            level->lineCounter++;
+            goto escape_newline;
+        }
+        
+        auto lineIt = lineSpan.cbegin();
+        auto lineEndIt = lineSpan.cend();
+        
+#define SETUP_ARG2(pp, arg, begin, stop)\
+args.Append(arg);\
+Symbol::Location argLoc;\
+argLoc.file = level->file->path;\
+argLoc.line = level->lineCounter;\
+argLoc.start = begin - lineBegin;\
+argLoc.end = stop - lineBegin;\
+argLocs.Append(argLoc);
+        
+        const char* lineBegin = &(*lineIt);
+        const char* eol = &(*(lineEndIt - 1)) + 1;
+        const char* columnIt = lineBegin;
+        const char* prevColumnIt = columnIt;
+        
+        do
+        {
+            // Find beginning of first non-WS character
+            const char* firstWord = wordStart(columnIt, eol);
+            
+            // If empty line, just add it and continue
+            if (firstWord == eol)
+            {
+                break;
+            }
+            
+            if (firstWord[0] == '#') // Directives
+            {
+                firstWord++;
+                const char* startOfDirective = wordStart(firstWord, eol);
+                const char* endOfDirective = wordEnd(firstWord, eol);
+                if (strncmp(startOfDirective, "include", 7) == 0) // Include
+                {
+                    const char* startOfPath = wordStart(endOfDirective, eol);
+                    const char* endOfPath = wordEnd(startOfPath, eol);
+                    
+                    TransientArray<Symbol::Location> argLocs(1);
+                    TransientArray<std::string_view> args(1);
+                    
+                    if ((startOfPath[0] == '"' && endOfPath[-1] == '"')
+                        || (startOfPath[0] == '<' && endOfPath[-1] == '>'))
+                    {
+                        const std::string_view path = std::string_view(startOfPath + 1, endOfPath - 1);
+                        SETUP_ARG2(pp, path, startOfPath, endOfPath);
+                        
+                        GPULangFile* inc = nullptr;
+                        TransientString fullPath = resolvePath(path, level->file->path, searchPaths, resolvedPaths);
+                        auto fileIt = fileMap.Find(fullPath);
+                        if (fileIt == fileMap.end())
+                        {
+                            inc = GPULangLoadFile(fullPath.ToView());
+                            fileMap.Insert(fullPath, inc);
+                        }
+                        else
+                        {
+                            inc = fileIt->second;
+                        }
+                        if (inc == nullptr)
+                        {
+                            diagnostics.Append(DIAGNOSTIC(Format("File not found '%s'", fullPath.ToView())));
+                            goto end;
+                        }
+                        
+                        // Include guarded
+                        if (!inc->consumed)
+                        {
+                            if (fileStack.Full())
+                            {
+                                diagnostics.Append(DIAGNOSTIC("File stack maximum depth of 128 reached"));
+                                goto end;
+                            }
+                            fileStack.Append({ inc });
+                            level = &fileStack.back();
+                            level->lineCounter -= 1; // Set the counter to -1 to counter the extra line we add ourselves
+                            break;
+                        }
+                        else
+                        {
+                            break;
+                            // Do nothing
+                        }
+                    }
+                    else
+                    {
+                        goto end;
+                    }
+                }
+                break;
+            }
+            else if (firstWord[0] == '/' && firstWord[1] == '/')
+            {
+                break;
+            }
+            else if (!comment && firstWord[0] == '/' && firstWord[1] == '*')
+            {
+                comment = true;
+                const char* endOfComment = commentEnd(columnIt, eol);
+                if (endOfComment != eol)
+                {
+                    columnIt = endOfComment + 2;
+                    comment = false;
+                    continue;
+                }
+                else
+                {
+                    columnIt = firstWord + 2;
+                    break;
+                }
+            }
+            else if (comment && firstWord[0] == '*' && firstWord[1] == '/')
+            {
+                comment = false;
+                columnIt = firstWord + 2;
+                continue;
+            }
+            else
+            {
+                // Nothing interesting, move to next line
+                break;
+            }
+            prevColumnIt = columnIt;
+        } while (columnIt != eol);
+    }
+end:
+    TransientArray<FixedString> ret(fileMap.data.size);
+    for (const auto& file : fileMap)
+    {
+        ret.Append(FixedString(file.first));
+    }
+    return FixedArray(ret);
 }
 
 //------------------------------------------------------------------------------
@@ -1936,12 +2118,13 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
     errorBuffer = nullptr;
 
     {
-        GPULang::Compiler::Timer timer;
         
         Compiler compiler;
         compiler.Setup(target, options);
 
+        GPULang::Compiler::Timer timer;
         timer.Start();
+        
         PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
         PinnedArray<GPULang::Diagnostic> diagnostics(0xFFFFFF);
         GPULangParser::LineStack.clear();
@@ -2066,11 +2249,11 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
     result.diagnostics.Invalidate();
     result.messages.Invalidate();
     
-    GPULang::Compiler::Timer timer;
-    timer.Start();
-    
     Compiler compiler;
     compiler.SetupServer(target, options);
+    
+    GPULang::Compiler::Timer timer;
+    timer.Start();
 
     PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
     PinnedArray<GPULang::Diagnostic> diagnostics(0xFFFFFF);
