@@ -1322,14 +1322,13 @@ main(int argc, const char** argv)
     Socket socket = CreateServerSocket();
 
     printf("GPULang Language Server Version 1.0\n");
-    printf("Waiting for clients...\n");
+    printf("Waiting for client...\n");
     std::map<int, ParseContext> parseContexts;
 
-    while (true)
+    //while (true)
     {
         Socket client = SocketAccept(socket);
 
-        std::vector<GPULang::Thread*> threads;
         GPULang::Thread* clientThread = GPULang::CreateThread(GPULang::ThreadInfo{.stackSize = 8_MB}, [client, &parseContexts]()
         {
             printf("Connection established\n");
@@ -1852,8 +1851,9 @@ main(int argc, const char** argv)
                 }
             }
         });
-        threads.push_back(clientThread);
+        GPULang::ThreadJoin(clientThread);
     }
 
+    
     return 0;
 }
