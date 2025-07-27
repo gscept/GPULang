@@ -75,7 +75,7 @@ Socket CreateServerSocket()
     const char* tmp = std::getenv("TMPDIR");
     
     // If that fails, fall back to using /tmp
-    if (!tmp) tmp = "/tmp";
+    if (!tmp) tmp = "/tmp/";
     GPULang::TransientString socket_path = GPULang::TransientString(tmp, "gpulang_socket");
     
     unlink(socket_path.c_str());
