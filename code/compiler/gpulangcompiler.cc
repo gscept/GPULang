@@ -1873,7 +1873,7 @@ GPULangGenerateDependencies(GPULangFile* file, const std::vector<std::string>& d
     PinnedSet<TransientString> resolvedPaths = 0xFFF;
     bool comment = false;
     
-#define POP_FILE() \
+#define POP_FILE_DEP() \
 level->file->lines = level->lineCounter;\
 fileStack.size--;\
 if (fileStack.size > 0)\
@@ -1888,7 +1888,7 @@ continue;
         // Find next unescaped \n
         if (level->it == nullptr || level->it == level->file->contents + level->file->contentSize)
         {
-            POP_FILE()
+            POP_FILE_DEP()
         }
         const char* endOfFile = level->file->contents + level->file->contentSize;
         const char* endOfLine = lineEnd(level->it, endOfFile);
@@ -1909,7 +1909,7 @@ continue;
         if (lineEndingLength == -1)
         {
             //diagnostics.push_back(Diagnostic{ .error = Format("Line is either too long or has corrupt file endings\n%s", lineStr.c_str()), .file = level->path, .line = level->lineCounter });
-            POP_FILE()
+            POP_FILE_DEP()
         }
         
     escape_newline:
@@ -1940,15 +1940,7 @@ continue;
         
         auto lineIt = lineSpan.cbegin();
         auto lineEndIt = lineSpan.cend();
-        
-#define SETUP_ARG2(pp, arg, begin, stop)\
-args.Append(arg);\
-Symbol::Location argLoc;\
-argLoc.file = level->file->path;\
-argLoc.line = level->lineCounter;\
-argLoc.start = begin - lineBegin;\
-argLoc.end = stop - lineBegin;\
-argLocs.Append(argLoc);
+    
         
         const char* lineBegin = &(*lineIt);
         const char* eol = &(*(lineEndIt - 1)) + 1;
