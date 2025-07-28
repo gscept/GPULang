@@ -22,18 +22,17 @@ let client: LanguageClient;
 
 export function activate(_: ExtensionContext) {
 	
-	let socket_file;
-	if (process.platform === 'win32')
-	{
-		socket_file = "\\\\.\\pipe\\gpulang_socket";
-	}
-	else
-	{
-		socket_file = path.join(os.tmpdir(), "gpulang_socket");
-	}
-
 
 	const serverOptions = () => {
+		let socket_file;
+		if (process.platform === 'win32')
+		{
+			socket_file = "\\\\.\\pipe\\gpulang_socket";
+		}
+		else
+		{
+			socket_file = path.join(os.tmpdir(), "gpulang_socket");
+		}
 		const socket = net.createConnection(socket_file);
 		//const socket = net.connect(connectionInfo);
 		const result: StreamInfo = {
@@ -48,11 +47,12 @@ export function activate(_: ExtensionContext) {
 
 	const configPath = path.join(workspaceFolders[0].uri.fsPath, 'gpulang_config.json');
 
-	const fd = fs.openSync(configPath, 'r');
-	if (fd) {
-		vscode.window.showInformationMessage(`Using gpulang configuration file: ${configPath}`);
-	} else {
+	let fd = null;
+	if (fs.existsSync(configPath) === false) {
 		vscode.window.showErrorMessage(`Could not find gpulang configuration file: ${configPath}`);
+	} else {
+		fd = fs.openSync(configPath, 'r');
+		vscode.window.showInformationMessage(`Using gpulang configuration file: ${configPath}`);
 	}
 
 	const fileData = fs.readFileSync(fd);

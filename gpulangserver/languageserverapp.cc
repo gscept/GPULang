@@ -59,7 +59,7 @@ Socket CreateServerSocket()
 #if __WIN32__
     
     ret.sock = CreateNamedPipeA(
-        R"(\\.\pipe\gpulang_socket)",
+        TEXT("\\\\.\\pipe\\gpulang_socket"),
         PIPE_ACCESS_DUPLEX,
         PIPE_TYPE_BYTE | PIPE_READMODE_BYTE | PIPE_WAIT,
         1,              // max instances
