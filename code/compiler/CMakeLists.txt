@@ -20,6 +20,13 @@ target_include_directories(gpulang_compiler PUBLIC
         gpulangcompiler.h
     )
 
+fips_dir(parser)
+    fips_files(
+	lexer.cc
+	lexer.h
+	parser.cc
+	parser.h
+    )
 fips_dir(parser4)
     fips_files(
         GPULangParser.cpp
@@ -145,14 +152,19 @@ fips_dir(generators)
     fips_files(
         generator.cc
         generator.h
-        glslgenerator.cc
-        glslgenerator.h
-        hgenerator.cc
-        hgenerator.h
         hlslgenerator.cc
         hlslgenerator.h
         spirvgenerator.cc
         spirvgenerator.h
+	wgslgenerator.cc
+	wgslgenerator.h
+    )
+fips_dir(generators/reflection)
+    fips_files(
+    	hgenerator.cc
+    	hgenerator.h
+	jsgenerator.cc
+	jsgenerator.h
     )
 fips_dir(validators)
     fips_files(

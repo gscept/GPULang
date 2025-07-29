@@ -6,7 +6,7 @@
     (C) 2021 Individual contributors, see AUTHORS file
 */
 //------------------------------------------------------------------------------
-#include "generator.h"
+#include "generators/generator.h"
 #include "ast/program.h"
 
 namespace GPULang

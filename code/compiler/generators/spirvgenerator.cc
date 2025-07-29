@@ -5750,26 +5750,6 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
 
         this->writer->Header(1, 5, 1, 1, this->writer->counter);
 
-        GrowingString binary;
-        binary.Line("; Entry point", funResolved->name);
-        binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Top]);
-        binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Capabilities]);
-        binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Extensions]);
-        binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::ExtImports]);
-        binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Header]);
-        if (compiler->options.symbols)
-        {
-            binary.Append("\n; Debug\n");
-            binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::DebugStrings]);
-            binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::DebugNames]);
-        }
-        binary.Append("\n; Decorations\n");
-        binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Decorations]);
-        binary.Append("\n; Declarations\n");
-        binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Declarations]);
-        binary.Append("\n; Functions\n");
-        binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Functions]);
-
         std::vector<uint32_t> spvBinary;
         spvBinary.insert(spvBinary.end(), this->writer->binaries[(uint32_t)SPVWriter::Section::Top].begin(), this->writer->binaries[(uint32_t)SPVWriter::Section::Top].end());
         spvBinary.insert(spvBinary.end(), this->writer->binaries[(uint32_t)SPVWriter::Section::Capabilities].begin(), this->writer->binaries[(uint32_t)SPVWriter::Section::Capabilities].end());
@@ -5795,8 +5775,29 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
             res = spvValidate(spvContext, &constBin, &diag);
             if (res != SPV_SUCCESS)
             {
-                spv_diagnostic diag2;
                 this->Error(Format("Internal SPIRV generation error: %s", diag->error));
+                
+                
+                GrowingString binary;
+                binary.Line("; Entry point", funResolved->name);
+                binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Top]);
+                binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Capabilities]);
+                binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Extensions]);
+                binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::ExtImports]);
+                binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Header]);
+                if (compiler->options.symbols)
+                {
+                    binary.Append("\n; Debug\n");
+                    binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::DebugStrings]);
+                    binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::DebugNames]);
+                }
+                binary.Append("\n; Decorations\n");
+                binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Decorations]);
+                binary.Append("\n; Declarations\n");
+                binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Declarations]);
+                binary.Append("\n; Functions\n");
+                binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Functions]);
+                
                 this->Error(std::string(binary.data, binary.size));
                 return false;
             }

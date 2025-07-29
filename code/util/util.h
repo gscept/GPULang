@@ -138,4 +138,22 @@ CountLeadingZeroes(uint64_t word)
     }
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+template <typename T>
+inline constexpr T min(T a, T b)
+{
+    return a < b ? a : b;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+template <typename T, typename T2>
+inline constexpr T min(T a, T2 b)
+{
+    return a < b ? a : b;
+}
+
 } // namespace GPULang

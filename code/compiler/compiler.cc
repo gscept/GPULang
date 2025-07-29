@@ -6,9 +6,8 @@
 #include "ast/program.h"
 #include "validators/validator.h"
 #include "generators/hlslgenerator.h"
-#include "generators/glslgenerator.h"
 #include "generators/spirvgenerator.h"
-#include "generators/hgenerator.h"
+#include "generators/reflection/hgenerator.h"
 #include "util.h"
 #include "ast/expressions/boolexpression.h"
 #include "ast/types/type.h"
@@ -121,7 +120,7 @@ Compiler::Setup(const Compiler::Language& lang, Options options)
     SetupTargetLanguage(lang, this->target);
 
     // if we want other header generators in the future, add here
-    this->headerGenerator = new HGenerator();
+    this->headerGenerator = Alloc<HGenerator>();
 
     this->performanceTimer.Start();
 
@@ -264,9 +263,6 @@ Compiler::CreateGenerator(const Compiler::Language& lang, Options options)
 {
     switch (lang)
     {
-        case Language::GLSL:
-            return Alloc<GLSLGenerator>(GLSLGenerator::OpenGLFeatureSet);
-            break;
         case Language::HLSL:
             return Alloc<HLSLGenerator>();
             break;
@@ -660,14 +656,14 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
     size_t threadByteSize, returnValueByteSize;
     TransientArray<std::thread> threads(programs.size());
     TransientArray<bool> returnValues(programs.size());
-    std::vector<Generator*> generators;
+    TransientArray<Generator*> generators(programs.size());
 
     // Run the code generation per thread
     for (size_t programIndex = 0; programIndex < programs.size(); programIndex++)
     {
         auto program = programs[programIndex];
         Generator* gen = CreateGenerator(this->lang, this->options);
-        generators.push_back(gen);
+        generators.Append(gen);
         new (&threads[programIndex]) std::thread([this, values = returnValues.begin(), program = programs[programIndex], programIndex, gen, &symbols = this->symbols, writeFunction]()
         {
             values[programIndex] = gen->Generate(this, program, symbols, writeFunction);
@@ -699,7 +695,7 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
         this->performanceTimer.Start();
 
         // write magic
-        binaryWriter.WriteInt('AFX3');
+        binaryWriter.WriteInt('AFX3'); // Homage to AnyFX
 
         // run binary output step
         Serialize::DynamicLengthBlob blob;

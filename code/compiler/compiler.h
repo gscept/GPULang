@@ -409,24 +409,6 @@ map_contains(const std::unordered_map<K, T>& map, const K& key)
 /**
 */
 template <typename T>
-inline constexpr T min(T a, T b)
-{
-    return a < b ? a : b;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-template <typename T, typename T2>
-inline constexpr T min(T a, T2 b)
-{
-    return a < b ? a : b;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-template <typename T>
 inline T*
 Compiler::GetSymbol(const FixedString& name) const
 {

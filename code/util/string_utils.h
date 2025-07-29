@@ -1382,26 +1382,60 @@ StringToFourCC(const std::string& str)
     return fourcc;
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+inline uint32_t
+StringToFourCC(const GPULang::TransientString& str)
+{
+    uint32_t fourcc = 0;
+    uint32_t shift = 0;
+    auto it = str.buf + str.size - 1;
+    while (it != str.buf-1)
+    {
+        fourcc |= uint32_t(*it) << shift;
+        shift += 8;
+        it--;
+    }
+    return fourcc;
+}
+
+
 
 } // namespace GPULang
 
 inline bool
 operator<(const std::string_view& lhs, const GPULang::FixedString& rhs)
 {
-    return strcmp(lhs.data(), rhs.buf) < 0;
+    return lhs.compare(rhs.buf) < 0;
 }
 
 inline bool
 operator<(const std::string_view& lhs, const GPULang::ConstantString& rhs)
 {
-    return strcmp(lhs.data(), rhs.buf) < 0;
+    return lhs.compare(rhs.buf) < 0;
 }
 
 inline bool
 operator<(const GPULang::ConstantString& lhs, const std::string_view& rhs)
 {
-    return strcmp(lhs.buf, rhs.data()) < 0;
+    return rhs.compare(lhs.buf) > 0;
 }
+
+inline bool
+operator<(const char lhs, const GPULang::ConstantString& rhs)
+{
+    std::string_view view(&lhs, 1);
+    return view.compare(rhs.buf) < 0;
+}
+
+inline bool
+operator<(const GPULang::ConstantString& lhs, const char rhs)
+{
+    std::string_view view(&rhs, 1);
+    return view.compare(lhs.buf) > 0;
+}
+
 
 inline bool
 operator<(const GPULang::TransientString& lhs, const GPULang::FixedString& rhs)

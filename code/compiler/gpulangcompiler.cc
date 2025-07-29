@@ -11,6 +11,7 @@
 #include "ast/preprocessor.h"
 #include "ast/effect.h"
 #include "memory.h"
+#include "parser/lexer.h"
 
 #include "antlr4-runtime.h"
 #include "antlr4-common.h"
@@ -2292,6 +2293,19 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
         GPULangLexerErrorHandler lexerErrorHandler;
         GPULangParserErrorHandler parserErrorHandler;
         timer.Start();
+        
+        TokenizationResult tokenizationResult = Tokenize(preprocessed);
+        for (const auto& err : tokenizationResult.errors)
+        {
+            printf("Syntax Error: %d:%d, %s\n", err.line, err.pos, err.message.c_str());
+        }
+        
+        GPULang::TokenStream tokenStream(tokenizationResult);
+        ParseResult parseResult = Parse(tokenStream);
+        for (const auto& err : parseResult.errors)
+        {
+            printf("Syntax Error: %d:%d, %s\n", err.line, err.pos, err.message.c_str());
+        }
 
         ANTLRInputStream input;
         GPULangLexer lexer(&input);
