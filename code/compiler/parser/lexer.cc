@@ -10,8 +10,14 @@
 #include "ast/annotation.h"
 #include "ast/attribute.h"
 #include "ast/structure.h"
+#include "ast/enumeration.h"
+#include "ast/samplerstate.h"
+#include "ast/renderstate.h"
+#include "ast/program.h"
+#include "ast/alias.h"
 #include "ast/variable.h"
 #include "ast/function.h"
+#include "ast/generate.h"
 #include "ast/expressions/stringexpression.h"
 #include "ast/expressions/intexpression.h"
 #include "ast/expressions/uintexpression.h"
@@ -25,17 +31,33 @@
 #include "ast/expressions/arrayindexexpression.h"
 #include "ast/expressions/symbolexpression.h"
 #include "ast/expressions/declaredexpression.h"
+#include "ast/statements/breakstatement.h"
+#include "ast/statements/continuestatement.h"
+#include "ast/statements/terminatestatement.h"
+#include "ast/statements/expressionstatement.h"
+#include "ast/statements/forstatement.h"
+#include "ast/statements/ifstatement.h"
+#include "ast/statements/whilestatement.h"
+#include "ast/statements/switchstatement.h"
+#include "ast/statements/scopestatement.h"
 
 namespace GPULang
 {
 StaticMap HardCodedTokens = std::array{
-    std::pair{ "struct"_c, TokenType::Struct }
+    std::pair{ "alias"_c, TokenType::TypeAlias }
+    , std::pair{ "as"_c, TokenType::As }
+    , std::pair{ "struct"_c, TokenType::Struct }
     , std::pair{ "enum"_c, TokenType::Enum }
     , std::pair{ "while"_c, TokenType::While }
+    , std::pair{ "do"_c, TokenType::Do }
+    , std::pair{ "break"_c, TokenType::Break }
+    , std::pair{ "discard"_c, TokenType::Discard }
+    , std::pair{ "ray_ignore"_c, TokenType::RayIgnore }
+    , std::pair{ "ray_terminate"_c, TokenType::RayTerminate }
     , std::pair{ "for"_c, TokenType::For }
     , std::pair{ "if"_c, TokenType::If }
     , std::pair{ "else"_c, TokenType::Else }
-    , std::pair{ "generate"_c, TokenType::Generate }
+    , std::pair{ "generate"_c, TokenType::ConditionalCompile }
     , std::pair{ "declared"_c, TokenType::Declared }
     , std::pair{ "packed"_c, TokenType::Packed }
     , std::pair{ "true"_c, TokenType::Bool }
@@ -124,9 +146,7 @@ StaticMap HardCodedTokens = std::array{
     , std::pair{ "^="_c, TokenType::XorAssign }
     , std::pair{ "++"_c, TokenType::Increment }
     , std::pair{ "--"_c, TokenType::Decrement }
-    , std::pair{ "<"_c, TokenType::LessThan }
     , std::pair{ "<="_c, TokenType::LessThanEqual }
-    , std::pair{ ">"_c, TokenType::GreaterThan }
     , std::pair{ ">="_c, TokenType::GreaterThanEqual }
     , std::pair{ "=="_c, TokenType::Equal }
     , std::pair{ "!="_c, TokenType::NotEqual }
@@ -376,6 +396,8 @@ Tokenize(const std::string& text)
             Token newToken;
             TokenType type = TokenType::Integer;
             const char* begin = it;
+            if (it[1] == 'x')
+                type - TokenType::Hex;
             while (it != end)
             {
                 if (!numberChar(it[0]))
@@ -384,8 +406,17 @@ Tokenize(const std::string& text)
             }
             
             // If decimal point
+            
             if (it[0] == '.')
             {
+                if (type != TokenType::Hex)
+                {
+                    LexerError error;
+                    error.message = "Incorrectly formatted hex number";
+                    error.line = line;
+                    error.pos = it - startOfLine;
+                    ret.errors.Append(error);
+                }
                 if (numberStart(it[1]))
                 {
                     type = TokenType::Double;
@@ -415,7 +446,10 @@ Tokenize(const std::string& text)
             }
             else if (it[0] == 'u' || it[0] == 'U')
             {
-                type = TokenType::UnsignedInteger;
+                if (type == TokenType::Hex)
+                    type = TokenType::UnsignedHex;
+                else
+                    type = TokenType::UnsignedInteger;
                 it++;
             }
         
@@ -693,7 +727,7 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
     else if (precedence == 8)
     {
         res = ParseExpression(stream, ret, res, 9);
-        while (stream.Match(TokenType::LessThan) || stream.Match(TokenType::LessThanEqual) || stream.Match(TokenType::GreaterThan) || stream.Match(TokenType::GreaterThanEqual))
+        while (stream.Match(TokenType::LeftAngle) || stream.Match(TokenType::LessThanEqual) || stream.Match(TokenType::RightAngle) || stream.Match(TokenType::GreaterThanEqual))
         {
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 9);
@@ -830,6 +864,20 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
             res = Alloc<IntExpression>(value);
         }
         else if (stream.Match(TokenType::UnsignedInteger))
+        {
+            const Token& tok = stream.Data(-1);
+            unsigned int value;
+            std::from_chars(tok.text.data(), tok.text.data() + tok.text.size(), value);
+            res = Alloc<UIntExpression>(value);
+        }
+        else if (stream.Match(TokenType::Hex))
+        {
+            const Token& tok = stream.Data(-1);
+            int value;
+            std::from_chars(tok.text.data(), tok.text.data() + tok.text.size(), value);
+            res = Alloc<IntExpression>(value);
+        }
+        else if (stream.Match(TokenType::UnsignedHex))
         {
             const Token& tok = stream.Data(-1);
             unsigned int value;
@@ -1124,6 +1172,43 @@ ParseType(TokenStream& stream, ParseResult& ret, Type::FullType& res)
 //------------------------------------------------------------------------------
 /**
  */
+struct Alias*
+ParseAlias(TokenStream& stream, ParseResult& ret)
+{
+    Alias* res = nullptr;
+    if (!stream.Match(TokenType::TypeAlias))
+    {
+        ret.errors.Append(UnexpectedToken(stream, "alias"));
+        return res;
+    }
+    
+    if (!stream.Match(TokenType::Identifier))
+    {
+        ret.errors.Append(UnexpectedToken(stream, "alias name"));
+        return res;
+    }
+    res = Alloc<Alias>();
+    res->name = stream.Data(-1).text;
+    res->location = LocationFromToken(stream.Data(-1));
+    
+    if (!stream.Match(TokenType::As))
+    {
+        ret.errors.Append(UnexpectedToken(stream, "as"));
+        return res;
+    }
+    
+    if (!stream.Match(TokenType::Identifier))
+    {
+        ret.errors.Append(UnexpectedToken(stream, "alias type"));
+        return res;
+    }
+    res->type = stream.Data(-1).text;
+    
+}
+
+//------------------------------------------------------------------------------
+/**
+ */
 Variable*
 ParseVariable(TokenStream& stream, ParseResult& ret)
 {
@@ -1295,6 +1380,360 @@ ParseFunction(TokenStream& stream, ParseResult& ret)
     return res;
 }
 
+//------------------------------------------------------------------------------
+/**
+ */
+Enumeration*
+ParseEnumeration(TokenStream& stream, ParseResult& ret)
+{
+    Enumeration* res = nullptr;
+    if (!stream.Match(TokenType::Enum))
+    {
+        ret.errors.Append(UnexpectedToken(stream, "enum"));
+        return res;
+    }
+    
+    if (!stream.Match(TokenType::Identifier))
+    {
+        ret.errors.Append(UnexpectedToken(stream, "enum identifier"));
+        return res;
+    }
+    res = Alloc<Enumeration>();
+    const Token& tok = stream.Data(-1);
+    res->name = tok.text;
+    res->location = LocationFromToken(tok);
+    
+    
+    if (stream.Match(TokenType::Colon))
+    {
+        ParseType(stream, ret, res->type);
+    }
+    
+    if (!stream.Match(TokenType::LeftScope))
+    {
+        ret.errors.Append(UnexpectedToken(stream, "{"));
+        return res;
+    }
+    
+    TransientArray<FixedString> labels(256);
+    TransientArray<Symbol::Location> locations(256);
+    TransientArray<Expression*> values(256);
+    while (stream.Match(TokenType::Identifier))
+    {
+        if (labels.Full())
+        {
+            ret.errors.Append(Limit(stream, "enum labels", 256));
+            break;
+        }
+        
+        FixedString label = FixedString(stream.Data(-1).text);
+        Symbol::Location labelLocation = LocationFromToken(stream.Data(-1));
+        Expression* value = nullptr;
+        if (stream.Match(TokenType::Assign))
+        {
+            value = ParseExpression(stream, ret);
+        }
+        
+        labels.Append(label);
+        locations.Append(labelLocation);
+        values.Append(value);
+        
+        if (stream.Match(TokenType::Comma))
+            continue;
+        
+        break;
+    }
+    
+    res->labels = labels;
+    res->labelLocations = locations;
+    res->values = values;
+    
+    if (!stream.Match(TokenType::RightScope))
+    {
+        ret.errors.Append(UnexpectedToken(stream, "}"));
+        return res;
+    }
+    
+    if (!stream.Match(TokenType::SemiColon))
+    {
+        ret.errors.Append(UnexpectedToken(stream, ";"));
+        return res;
+    }
+}
+
+//------------------------------------------------------------------------------
+/**
+ */
+RenderStateInstance*
+ParseRenderState(TokenStream& stream, ParseResult& ret)
+{
+    RenderStateInstance* res = nullptr;
+    if (!stream.Match(TokenType::RenderState))
+    {
+        ret.errors.Append(UnexpectedToken(stream, "render_state"));
+        return res;
+    }
+    
+    if (!stream.Match(TokenType::Identifier))
+    {
+        ret.errors.Append(UnexpectedToken(stream, "render_state name"));
+        return res;
+    }
+    
+    res = Alloc<RenderStateInstance>();
+    
+    TransientArray<Expression*> entries(32);
+    while (Expression* expr = ParseExpression(stream, ret))
+    {
+        if (entries.Full())
+        {
+            ret.errors.Append(Limit(stream, "render_state entries", 32));
+            break;
+        }
+        entries.Append(expr);
+        if (!stream.Match(TokenType::SemiColon))
+        {
+            ret.errors.Append(UnexpectedToken(stream, ";"));
+            return res;
+        }
+    }
+    res->entries = entries;
+    return res;
+}
+
+//------------------------------------------------------------------------------
+/**
+ */
+SamplerStateInstance*
+ParseSamplerState(TokenStream& stream, ParseResult& ret)
+{
+    SamplerStateInstance* res = nullptr;
+    if (!stream.Match(TokenType::SamplerState))
+    {
+        ret.errors.Append(UnexpectedToken(stream, "sampler_state"));
+        return res;
+    }
+    
+    if (!stream.Match(TokenType::Identifier))
+    {
+        ret.errors.Append(UnexpectedToken(stream, "sampler_state name"));
+        return res;
+    }
+    
+    res = Alloc<SamplerStateInstance>();
+    
+    TransientArray<Expression*> entries(32);
+    while (Expression* expr = ParseExpression(stream, ret))
+    {
+        if (entries.Full())
+        {
+            ret.errors.Append(Limit(stream, "sampler_state entries", 32));
+            break;
+        }
+        entries.Append(expr);
+        if (!stream.Match(TokenType::SemiColon))
+        {
+            ret.errors.Append(UnexpectedToken(stream, ";"));
+            return res;
+        }
+    }
+    res->entries = entries;
+    return res;
+}
+
+//------------------------------------------------------------------------------
+/**
+ */
+ProgramInstance*
+ParseProgram(TokenStream& stream, ParseResult& ret)
+{
+    ProgramInstance* res = nullptr;
+    if (!stream.Match(TokenType::Program))
+    {
+        ret.errors.Append(UnexpectedToken(stream, "program"));
+        return res;
+    }
+    
+    if (!stream.Match(TokenType::Identifier))
+    {
+        ret.errors.Append(UnexpectedToken(stream, "program name"));
+        return res;
+    }
+    
+    res = Alloc<ProgramInstance>();
+    
+    TransientArray<Expression*> entries(32);
+    while (Expression* expr = ParseExpression(stream, ret))
+    {
+        if (entries.Full())
+        {
+            ret.errors.Append(Limit(stream, "program entries", 32));
+            break;
+        }
+        entries.Append(expr);
+        if (!stream.Match(TokenType::SemiColon))
+        {
+            ret.errors.Append(UnexpectedToken(stream, ";"));
+            return res;
+        }
+    }
+    res->entries = entries;
+    return res;
+}
+
+//------------------------------------------------------------------------------
+/**
+ */
+Statement*
+ParseGenerateStatement(TokenStream& stream, ParseResult& ret)
+{
+    Statement* res = nullptr;
+
+    if (stream.Match(TokenType::If))
+    {
+        if (!stream.Match(TokenType::LeftAngle))
+        {
+            ret.errors.Append(UnexpectedToken(stream, "<"));
+            return res;
+        }
+        
+        Expression* cond = ParseExpression(stream, ret);
+        if (cond == nullptr)
+            return res;
+        
+        if (!stream.Match(TokenType::RightAngle))
+        {
+            ret.errors.Append(UnexpectedToken(stream, ">"));
+            return res;
+        }
+        
+        Statement* ifBody = ParseStatement(stream, ret);
+        if (ifBody == nullptr)
+            return res;
+        
+        Statement* elseBody = nullptr;
+        if (stream.Match(TokenType::Else))
+        {
+            elseBody = ParseStatement(stream, ret);
+        }
+        
+        res = Alloc<IfStatement>(cond, ifBody, elseBody);
+    }
+    else if (stream.Match(TokenType::LeftAngle))
+    {
+        PinnedArray<Symbol*> contents = 0xFFFFFFFF;
+        std::vector<Expression*> unfinished;
+        while (Statement* stat = ParseStatement(stream, ret))
+            contents.Append(stat);
+        
+        res = Alloc<ScopeStatement>(std::move(contents), unfinished);
+        
+        if (!stream.Match(TokenType::RightAngle))
+        {
+            ret.errors.Append(UnexpectedToken(stream, "}"));
+            return res;
+        }
+    }
+    else
+    {
+        ret.errors.Append(UnexpectedToken(stream, "generate statement or expression"));
+        return res;
+    }
+    
+    return res;
+}
+
+
+//------------------------------------------------------------------------------
+/**
+ */
+Generate*
+ParseGenerate(TokenStream& stream, ParseResult& ret)
+{
+    Generate* res = nullptr;
+    if (!stream.Match(TokenType::ConditionalCompile))
+    {
+        ret.errors.Append(UnexpectedToken(stream, "generate"));
+        return res;
+    }
+    
+    if (!stream.Match(TokenType::LeftAngle))
+    {
+        ret.errors.Append(UnexpectedToken(stream, "<"));
+        return res;
+    }
+    
+    size_t lookAhead = 0;
+    TokenType type = stream.Type(0;)
+    PinnedArray<Symbol*> symbols = 0xFFFFFF;
+    bool loop = true;
+    while (loop)
+    {
+        switch (type)
+        {
+            case TokenType::Const_Storage:
+            case TokenType::Var_Storage:
+            case TokenType::Uniform_Storage:
+            case TokenType::Workgroup_Storage:
+            case TokenType::Inline_Storage:
+            case TokenType::LinkDefined_Storage:
+            {
+                Variable* var = ParseVariable(stream, ret));
+                lookAhead = 0;
+                if (var != nullptr)
+                    symbols.Append(var);
+                else
+                {
+                    loop = false;
+                }
+                break;
+            }
+            case TokenType::TypeAlias:
+            {
+                Alias* alias = ParseAlias(stream, ret);
+                lookAhead = 0;
+                if (alias != nullptr)
+                    symbols.Append(alias);
+                else
+                    loop = false;
+                break;
+            }
+            case TokenType::RightParant:
+            {
+                // Functions end with ) IDENTIFIER
+                if (stream.Type(lookAhead+1) == TokenType::Identifier)
+                {
+                    symbols.Append(ParseFunction(stream, ret));
+                    lookAhead = 0;
+                }
+                else
+                    lookAhead++;
+                break;
+            }
+            case TokenType::If
+            {
+                
+            }
+            case TokenType::RightAngle:
+            {
+                loop = false;
+                break;
+            }
+            default:
+                lookAhead++;
+        }
+    }
+    
+    if (!stream.Match(TokenType::RightAngle))
+    {
+        ret.errors.Append(UnexpectedToken(stream, ">"));
+        return res;
+    }
+    
+    return res;
+}
+
+
 
 //------------------------------------------------------------------------------
 /**
@@ -1302,6 +1741,7 @@ ParseFunction(TokenStream& stream, ParseResult& ret)
 Structure*
 ParseStruct(TokenStream& stream, ParseResult& ret)
 {
+    Structure* res = nullptr;
     TransientArray<Annotation*> annotations(32);
     TransientArray<Attribute*> attributes(1);
     while (auto annot = ParseAnnotation(stream, ret))
@@ -1321,69 +1761,69 @@ ParseStruct(TokenStream& stream, ParseResult& ret)
     if (!stream.Match(TokenType::Struct))
     {
         ret.errors.Append(UnexpectedToken(stream, "struct"));
-        return nullptr;
+        return res;
     }
     if (!stream.Match(TokenType::Identifier))
     {
         ret.errors.Append(UnexpectedToken(stream, "struct identifier"));
-        return nullptr;
+        return res;
     }
-    else
+
+    // Consume the 'struct' and name identifier
+    res = Alloc<Structure>();
+    const Token& tok = stream.Data(-1);
+    res->name = tok.text;
+    res->location = LocationFromToken(tok);
+    
+    res->annotations = annotations;
+    res->attributes = attributes;
+    
+    if (!stream.Match(TokenType::LeftScope))
     {
-        // Consume the 'struct' and name identifier
-        Structure* str = Alloc<Structure>();
-        const Token& tok = stream.Data(-1);
-        str->name = tok.text;
-        str->location = LocationFromToken(tok);
+        ret.errors.Append(UnexpectedToken(stream, "{"));
+        return res;
+    }
+    
+    TransientArray<Symbol*> members(1024);
+    while (stream.Match(TokenType::Identifier))
+    {
+        Variable* var = Alloc<Variable>();
+        var->name = stream.Data(-1).text;
+        var->location = LocationFromToken(stream.Data(-1));
         
-        str->annotations = annotations;
-        str->attributes = attributes;
-        
-        if (!stream.Match(TokenType::LeftScope))
+        if (!stream.Match(TokenType::Colon))
         {
-            ret.errors.Append(UnexpectedToken(stream, "{"));
-            return str;
+            ret.errors.Append(UnexpectedToken(stream, "member type"));
+            break;
         }
         
-        TransientArray<Variable*> members(1024);
-        while (stream.Match(TokenType::Identifier))
+        if (!ParseType(stream, ret, var->type))
         {
-            Variable* var = Alloc<Variable>();
-            var->name = stream.Data(-1).text;
-            var->location = LocationFromToken(stream.Data(-1));
-            
-            if (!stream.Match(TokenType::Colon))
-            {
-                ret.errors.Append(UnexpectedToken(stream, "member type"));
-                return str;
-            }
-            
-            if (!ParseType(stream, ret, var->type))
-            {
-                ret.errors.Append(UnexpectedToken(stream, "type"));
-                return str;
-            }
-            
-            if (!stream.Match(TokenType::SemiColon))
-            {
-                ret.errors.Append(UnexpectedToken(stream, ";"));
-                return str;
-            }
-            members.Append(var);
-        }
-        
-        if (!stream.Match(TokenType::RightScope))
-        {
-            ret.errors.Append(UnexpectedToken(stream, "}"));
-            return str;
+            ret.errors.Append(UnexpectedToken(stream, "type"));
+            break;
         }
         
         if (!stream.Match(TokenType::SemiColon))
         {
             ret.errors.Append(UnexpectedToken(stream, ";"));
-            return str;
+            break;
         }
+        members.Append(var);
     }
+    res->symbols = members;
+    
+    if (!stream.Match(TokenType::RightScope))
+    {
+        ret.errors.Append(UnexpectedToken(stream, "}"));
+        return res;
+    }
+    
+    if (!stream.Match(TokenType::SemiColon))
+    {
+        ret.errors.Append(UnexpectedToken(stream, ";"));
+        return res;
+    }
+
 }
 
 //------------------------------------------------------------------------------
@@ -1393,6 +1833,179 @@ Statement*
 ParseStatement(TokenStream& stream, ParseResult& ret)
 {
     Statement* res = nullptr;
+
+    if (stream.Match(TokenType::Break))
+    {
+        res = Alloc<BreakStatement>();
+    }
+    else if (stream.Match(TokenType::Return))
+    {
+        res = Alloc<TerminateStatement>(ParseExpression(stream, ret), TerminateStatement::TerminationType::Return);
+    }
+    else if (stream.Match(TokenType::Discard))
+    {
+        res = Alloc<TerminateStatement>(nullptr, TerminateStatement::TerminationType::Discard);
+    }
+    else if (stream.Match(TokenType::RayIgnore))
+    {
+        res = Alloc<TerminateStatement>(nullptr, TerminateStatement::TerminationType::RayIgnoreIntersection);
+    }
+    else if (stream.Match(TokenType::RayTerminate))
+    {
+        res = Alloc<TerminateStatement>(nullptr, TerminateStatement::TerminationType::RayTerminate);
+    }
+    else if (stream.Match(TokenType::If))
+    {
+        if (!stream.Match(TokenType::LeftParant))
+        {
+            ret.errors.Append(UnexpectedToken(stream, "("));
+            return res;
+        }
+        
+        Expression* cond = ParseExpression(stream, ret);
+        if (cond == nullptr)
+            return res;
+        
+        if (!stream.Match(TokenType::RightParant))
+        {
+            ret.errors.Append(UnexpectedToken(stream, ")"));
+            return res;
+        }
+        
+        Statement* ifBody = ParseStatement(stream, ret);
+        if (ifBody == nullptr)
+            return res;
+        
+        Statement* elseBody = nullptr;
+        if (stream.Match(TokenType::Else))
+        {
+            elseBody = ParseStatement(stream, ret);
+        }
+        
+        res = Alloc<IfStatement>(cond, ifBody, elseBody);
+    }
+    else if (stream.Match(TokenType::LeftScope))
+    {
+        PinnedArray<Symbol*> contents = 0xFFFFFFFF;
+        std::vector<Expression*> unfinished;
+        while (Statement* stat = ParseStatement(stream, ret))
+            contents.Append(stat);
+        
+        res = Alloc<ScopeStatement>(std::move(contents), unfinished);
+        
+        if (!stream.Match(TokenType::RightScope))
+        {
+            ret.errors.Append(UnexpectedToken(stream, "}"));
+            return res;
+        }
+    }
+    else if (stream.Match(TokenType::For))
+    {
+        if (!stream.Match(TokenType::LeftParant))
+        {
+            ret.errors.Append(UnexpectedToken(stream, "("));
+            return res;
+        }
+        TransientArray<Variable*> variables(32);
+        while (true)
+        {
+            Variable* var = ParseVariable(stream, ret);
+            
+            if (var == nullptr)
+                break;
+            
+            if (!stream.Match(TokenType::Comma))
+                break;
+            
+            if (variables.Full())
+            {
+                ret.errors.Append(Limit(stream, "for loop variables", 32));
+                break;
+            }
+            variables.Append(var);
+        }
+        
+        if (!stream.Match(TokenType::SemiColon))
+        {
+            ret.errors.Append(UnexpectedToken(stream, ";"));
+            return res;
+        }
+        
+        Expression* cond = ParseExpression(stream, ret);
+        if (!stream.Match(TokenType::SemiColon))
+        {
+            ret.errors.Append(UnexpectedToken(stream, ";"));
+            return res;
+        }
+        
+        Expression* postLoop = ParseExpression(stream, ret);
+        if (!stream.Match(TokenType::RightParant))
+        {
+            ret.errors.Append(UnexpectedToken(stream, ")"));
+            return res;
+        }
+        Statement* body = ParseStatement(stream, ret);
+        res = Alloc<ForStatement>(variables, cond, postLoop, body);
+    }
+    else if (stream.Match(TokenType::While))
+    {
+        if (!stream.Match(TokenType::LeftParant))
+        {
+            ret.errors.Append(UnexpectedToken(stream, "("));
+            return res;
+        }
+        Expression* cond = ParseExpression(stream, ret);
+        
+        if (!stream.Match(TokenType::RightParant))
+        {
+            ret.errors.Append(UnexpectedToken(stream, ")"));
+            return res;
+        }
+        Statement* body = ParseStatement(stream, ret);
+        res = Alloc<WhileStatement>(cond, body, false);
+    }
+    else if (stream.Match(TokenType::Do))
+    {
+        Statement* body = ParseStatement(stream, ret);
+        if (!stream.Match(TokenType::While))
+        {
+            ret.errors.Append(UnexpectedToken(stream, "while"));
+            return res;
+        }
+        
+        if (!stream.Match(TokenType::LeftParant))
+        {
+            ret.errors.Append(UnexpectedToken(stream, "("));
+            return res;
+        }
+        Expression* cond = ParseExpression(stream, ret);
+        
+        if (!stream.Match(TokenType::RightParant))
+        {
+            ret.errors.Append(UnexpectedToken(stream, ")"));
+            return res;
+        }
+        res = Alloc<WhileStatement>(cond, body, true);
+    }
+    else
+    {
+        FixedArray<Expression*> exprs = ParseExpressionList(stream, ret);
+        if (exprs.size > 0)
+        {
+            if (!stream.Match(TokenType::SemiColon))
+            {
+                ret.errors.Append(UnexpectedToken(stream, ";"));
+                return res;
+            }
+            
+            res = Alloc<ExpressionStatement>(exprs);
+        }
+        else
+        {
+            ret.errors.Append(UnexpectedToken(stream, "statement or expression"));
+            return res;
+        }
+    }
     
     return res;
 }
@@ -1427,10 +2040,25 @@ Parse(TokenStream& stream)
                 lookAhead = 0;
                 break;
             case TokenType::Enum:
+                ret.ast->symbols.Append(ParseEnumeration(stream, ret));
+                lookAhead = 0;
+                break;
             case TokenType::RenderState:
+                ret.ast->symbols.Append(ParseRenderState(stream, ret));
+                lookAhead = 0;
+                break;
             case TokenType::SamplerState:
+                ret.ast->symbols.Append(ParseSamplerState(stream, ret));
+                lookAhead = 0;
+                break;
             case TokenType::Program:
-            case TokenType::Generate:
+                ret.ast->symbols.Append(ParseProgram(stream, ret));
+                lookAhead = 0;
+                break;
+            case TokenType::ConditionalCompile:
+                ret.ast->symbols.Append(ParseGenerate(stream, ret));
+                lookAhead = 0;
+                break;
             case TokenType::RightParant:
                 // Functions end with ) IDENTIFIER
                 if (stream.Type(lookAhead+1) == TokenType::Identifier)
@@ -1444,7 +2072,7 @@ Parse(TokenStream& stream)
             case TokenType::End:
                 if (lookAhead > 0)
                 {
-                    ret.errors.Append(UnexpectedToken(stream, "one of the following:\n    struct\n    enum\n    variable (const/var/uniform/workgroup)\n    function\n    render_state\n    sampler_state\n    program\n    generate\n\n"));
+                    ret.errors.Append(UnexpectedToken(stream, "one of the following:\n    struct\n    enum\n    variable (const/var/uniform/workgroup/inline/link_defined)\n    function\n    render_state\n    sampler_state\n    program\n    generate\n\n"));
                 }
                 goto end;
             default:

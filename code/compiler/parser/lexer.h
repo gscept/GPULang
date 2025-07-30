@@ -21,14 +21,24 @@ enum TokenType
     , Double
     , Integer
     , UnsignedInteger
+    , Hex
+    , UnsignedHex
     , Bool
+    , TypeAlias
+    , As
     , Struct
     , Enum
     , While
+    , Do
+    , Break
+    , Discard
+    , RayTerminate
+    , RayIgnore
+    , Return
     , For
     , If
     , Else
-    , Generate
+    , ConditionalCompile
     , Declared
     , Packed
     , Const_Storage
