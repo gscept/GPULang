@@ -145,7 +145,7 @@ struct TokenStream
         this->tokenIndex += count;
     }
 
-    TokenType Type(size_t lookAhead = 0)
+    TokenType Type(int64_t lookAhead = 0)
     {
         if (this->tokenIndex + lookAhead > this->tokenTypes.size)
             return TokenType::InvalidToken;
@@ -153,7 +153,7 @@ struct TokenStream
             return this->tokenTypes[this->tokenIndex + lookAhead];
     }
     
-    const Token& Data(size_t lookAhead = 0) const
+    const Token& Data(int64_t lookAhead = 0) const
     {
         static Token InvalidToken = Token();
         if (this->tokenIndex + lookAhead > this->tokens.size)
@@ -162,9 +162,14 @@ struct TokenStream
             return this->tokens[this->tokenIndex + lookAhead];
     }
     
-    bool Match(TokenType type, size_t lookAhead = 0)
+    bool Match(TokenType type)
     {
-        return this->Type(lookAhead) == type;
+        if (this->Type(0) == type)
+        {
+            this->tokenIndex++;
+            return true;
+        }
+        return false;
     }
     
     size_t tokenIndex = 0;

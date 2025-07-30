@@ -509,25 +509,213 @@ ParseExpressionList(TokenStream& stream, ParseResult& ret)
 /**
  */
 Expression*
-ParseExpression(TokenStream& stream, ParseResult& ret, int precedence = 0)
+ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullptr, int precedence = 0)
 {
-    Expression* res = nullptr;
+    Expression* res = prev;
 
     if (precedence == 0)
     {
-        res = ParseExpression(stream, ret, 1);
-        if (stream.Match(TokenType::Increment) || stream.Match(TokenType::Decrement))
+        res = ParseExpression(stream, ret, res, 1);
+        while (stream.Match(TokenType::AddAssign)
+            || stream.Match(TokenType::SubAssign)
+            || stream.Match(TokenType::MulAssign)
+            || stream.Match(TokenType::DivAssign)
+            || stream.Match(TokenType::ModAssign)
+            || stream.Match(TokenType::LeftShiftAssign)
+            || stream.Match(TokenType::RightShiftAssign)
+            || stream.Match(TokenType::AndAssign)
+            || stream.Match(TokenType::OrAssign)
+            || stream.Match(TokenType::XorAssign)
+            || stream.Match(TokenType::Assign)
+            )
         {
-            res = Alloc<UnaryExpression>(StringToFourCC(TransientString(stream.Data(0).text)), false, res);
-            stream.Consume();
+            const Token& tok = stream.Data(-1);
+            Expression* rhs = ParseExpression(stream, ret, res, 1);
+            res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
         }
     }
     else if (precedence == 1)
     {
-        res = ParseExpression(stream, ret, 2);
+        res = ParseExpression(stream, ret, res, 2);
+        while (stream.Match(TokenType::Question))
+        {
+            Expression* true_value = ParseExpression(stream, ret, res, 0);
+            if (stream.Match(TokenType::Colon))
+            {
+                Expression* false_value = ParseExpression(stream, ret, res, 0);
+                res = Alloc<TernaryExpression>(res, true_value, false_value);
+            }
+            else
+            {
+                ret.errors.Append(UnexpectedToken(stream, ":"));
+                return nullptr;
+            }
+        }
+    }
+    else if (precedence == 2)
+    {
+        res = ParseExpression(stream, ret, res, 3);
+        while (stream.Match(TokenType::LogicalOr))
+        {
+            const Token& tok = stream.Data(-1);
+            Expression* rhs = ParseExpression(stream, ret, res, 3);
+            res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
+        }
+    }
+    else if (precedence == 3)
+    {
+        res = ParseExpression(stream, ret, res, 4);
+        while (stream.Match(TokenType::LogicalAnd))
+        {
+            const Token& tok = stream.Data(-1);
+            Expression* rhs = ParseExpression(stream, ret, res, 4);
+            res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
+        }
+    }
+    else if (precedence == 4)
+    {
+        res = ParseExpression(stream, ret, res, 5);
+        while (stream.Match(TokenType::Or))
+        {
+            const Token& tok = stream.Data(-1);
+            Expression* rhs = ParseExpression(stream, ret, res, 5);
+            res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
+        }
+    }
+    else if (precedence == 5)
+    {
+        res = ParseExpression(stream, ret, res, 6);
+        while (stream.Match(TokenType::Xor))
+        {
+            const Token& tok = stream.Data(-1);
+            Expression* rhs = ParseExpression(stream, ret, res, 6);
+            res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
+        }
+    }
+    else if (precedence == 6)
+    {
+        res = ParseExpression(stream, ret, res, 7);
+        while (stream.Match(TokenType::And))
+        {
+            const Token& tok = stream.Data(-1);
+            Expression* rhs = ParseExpression(stream, ret, res, 7);
+            res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
+        }
+    }
+    else if (precedence == 7)
+    {
+        res = ParseExpression(stream, ret, res, 8);
+        while (stream.Match(TokenType::Equal) || stream.Match(TokenType::NotEqual))
+        {
+            const Token& tok = stream.Data(-1);
+            Expression* rhs = ParseExpression(stream, ret, res, 8);
+            res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
+        }
+    }
+    else if (precedence == 8)
+    {
+        res = ParseExpression(stream, ret, res, 9);
+        while (stream.Match(TokenType::LessThan) || stream.Match(TokenType::LessThanEqual) || stream.Match(TokenType::GreaterThan) || stream.Match(TokenType::GreaterThanEqual))
+        {
+            const Token& tok = stream.Data(-1);
+            Expression* rhs = ParseExpression(stream, ret, res, 9);
+            res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
+        }
+    }
+    else if (precedence == 9)
+    {
+        res = ParseExpression(stream, ret, res, 10);
+        while (stream.Match(TokenType::LeftShift) || stream.Match(TokenType::RightShift))
+        {
+            const Token& tok = stream.Data(-1);
+            Expression* rhs = ParseExpression(stream, ret, res, 10);
+            res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
+        }
+    }
+    else if (precedence == 10)
+    {
+        res = ParseExpression(stream, ret, res, 11);
+        while (stream.Match(TokenType::Add) || stream.Match(TokenType::Sub))
+        {
+            const Token& tok = stream.Data(-1);
+            Expression* rhs = ParseExpression(stream, ret, res, 11);
+            res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
+        }
+    }
+    else if (precedence == 11)
+    {
+        res = ParseExpression(stream, ret, res, 12);
+        while (stream.Match(TokenType::Mul) || stream.Match(TokenType::Div) || stream.Match(TokenType::Mod))
+        {
+            const Token& tok = stream.Data(-1);
+            Expression* rhs = ParseExpression(stream, ret, res, 12);
+            res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
+        }
+    }
+    else if (precedence == 12)
+    {
+        if (res != nullptr)
+        {
+            if (stream.Match(TokenType::Sub)
+                || stream.Match(TokenType::Add)
+                || stream.Match(TokenType::Not)
+                || stream.Match(TokenType::Complement)
+                || stream.Match(TokenType::Increment)
+                || stream.Match(TokenType::Decrement)
+                || stream.Match(TokenType::Mul)
+                || stream.Match(TokenType::And)
+            )
+            do {
+                const Token& tok = stream.Data(-1);
+                
+                Expression* rhs = ParseExpression(stream, ret, res, 13);
+                res = Alloc<UnaryExpression>(StringToFourCC(TransientString(tok.text)), true, rhs);
+            } while(stream.Match(TokenType::Sub)
+                    || stream.Match(TokenType::Add)
+                    || stream.Match(TokenType::Not)
+                    || stream.Match(TokenType::Complement)
+                    || stream.Match(TokenType::Increment)
+                    || stream.Match(TokenType::Decrement)
+                    || stream.Match(TokenType::Mul)
+                    || stream.Match(TokenType::And)
+                    );
+            else
+                res = ParseExpression(stream, ret, res, 13);
+        }
+        else
+            res = ParseExpression(stream, ret, res, 13);
+    }
+    else if (precedence == 13)
+    {
+        res = ParseExpression(stream, ret, res, 14);
+        while (stream.Match(TokenType::LeftBracket))
+        {
+            Expression* index = ParseExpression(stream, ret, res, 14);
+            if (stream.Match(TokenType::RightBracket))
+            {
+                res = Alloc<ArrayIndexExpression>(res, index);
+            }
+            else
+            {
+                ret.errors.Append(UnexpectedToken(stream, "]"));
+                return nullptr;
+            }
+        }
+    }
+    else if (precedence == 14)
+    {
+        res = ParseExpression(stream, ret, res, 15);
+        while (stream.Match(TokenType::Dot))
+        {
+            Expression* rhs = ParseExpression(stream, ret, res, 15);
+            res = Alloc<AccessExpression>(res, rhs, false);
+        }
+    }
+    else if (precedence == 15)
+    {
+        res = ParseExpression(stream, ret, res, 16);
         if (stream.Match(TokenType::LeftParant))
         {
-            stream.Consume();
             FixedArray<Expression*> arguments;
             arguments = ParseExpressionList(stream, ret);
             if (stream.Match(TokenType::RightParant))
@@ -542,248 +730,46 @@ ParseExpression(TokenStream& stream, ParseResult& ret, int precedence = 0)
             }
         }
     }
-    else if (precedence == 2)
-    {
-        res = ParseExpression(stream, ret, 3);
-        if (stream.Match(TokenType::Dot))
-        {
-            stream.Consume();
-            Expression* rhs = ParseExpression(stream, ret, 0);
-            res = Alloc<AccessExpression>(res, rhs, false);
-        }
-    }
-    else if (precedence == 3)
-    {
-        res = ParseExpression(stream, ret, 4);
-        if (stream.Match(TokenType::LeftBracket))
-        {
-            stream.Consume();
-            Expression* index = ParseExpression(stream, ret, 0);
-            if (stream.Match(TokenType::RightBracket))
-            {
-                stream.Consume();
-                res = Alloc<ArrayIndexExpression>(res, index);
-            }
-            else
-            {
-                ret.errors.Append(UnexpectedToken(stream, "]"));
-                return nullptr;
-            }
-        }
-    }
-    else if (precedence == 4)
-    {
-        // Right-associative
-        if (stream.Match(TokenType::Sub)
-            || stream.Match(TokenType::Add)
-            || stream.Match(TokenType::Not)
-            || stream.Match(TokenType::Complement)
-            || stream.Match(TokenType::Increment)
-            || stream.Match(TokenType::Decrement)
-            || stream.Match(TokenType::Mul)
-            || stream.Match(TokenType::And)
-            )
-        {
-            Token tok = stream.Data();
-            stream.Consume();
-            
-            Expression* rhs = ParseExpression(stream, ret, 0);
-            res = Alloc<UnaryExpression>(StringToFourCC(TransientString(tok.text)), true, rhs);
-        }
-        else
-            res = ParseExpression(stream, ret, 5);
-            
-    }
-    else if (precedence == 5)
-    {
-        res = ParseExpression(stream, ret, 6);
-        if (stream.Match(TokenType::Mul) || stream.Match(TokenType::Div) || stream.Match(TokenType::Mod))
-        {
-            Token tok = stream.Data();
-            stream.Consume();
-            Expression* rhs = ParseExpression(stream, ret, 0);
-            res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
-        }
-    }
-    else if (precedence == 6)
-    {
-        res = ParseExpression(stream, ret, 7);
-        if (stream.Match(TokenType::Add) || stream.Match(TokenType::Sub))
-        {
-            Token tok = stream.Data();
-            stream.Consume();
-            Expression* rhs = ParseExpression(stream, ret, 0);
-            res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
-        }
-    }
-    else if (precedence == 7)
-    {
-        res = ParseExpression(stream, ret, 8);
-        if (stream.Match(TokenType::LeftShift) || stream.Match(TokenType::RightShift))
-        {
-            Token tok = stream.Data();
-            stream.Consume();
-            Expression* rhs = ParseExpression(stream, ret, 0);
-            res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
-        }
-    }
-    else if (precedence == 8)
-    {
-        res = ParseExpression(stream, ret, 9);
-        if (stream.Match(TokenType::LessThan) || stream.Match(TokenType::LessThanEqual) || stream.Match(TokenType::GreaterThan) || stream.Match(TokenType::GreaterThanEqual))
-        {
-            Token tok = stream.Data();
-            stream.Consume();
-            Expression* rhs = ParseExpression(stream, ret, 0);
-            res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
-        }
-    }
-    else if (precedence == 9)
-    {
-        res = ParseExpression(stream, ret, 10);
-        if (stream.Match(TokenType::Equal) || stream.Match(TokenType::NotEqual))
-        {
-            Token tok = stream.Data();
-            stream.Consume();
-            Expression* rhs = ParseExpression(stream, ret, 0);
-            res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
-        }
-    }
-    else if (precedence == 10)
-    {
-        res = ParseExpression(stream, ret, 11);
-        if (stream.Match(TokenType::And))
-        {
-            Token tok = stream.Data();
-            stream.Consume();
-            Expression* rhs = ParseExpression(stream, ret, 0);
-            res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
-        }
-    }
-    else if (precedence == 11)
-    {
-        res = ParseExpression(stream, ret, 12);
-        if (stream.Match(TokenType::Xor))
-        {
-            Token tok = stream.Data();
-            stream.Consume();
-            Expression* rhs = ParseExpression(stream, ret, 0);
-            res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
-        }
-    }
-    else if (precedence == 12)
-    {
-        res = ParseExpression(stream, ret, 13);
-        if (stream.Match(TokenType::Or))
-        {
-            Token tok = stream.Data();
-            stream.Consume();
-            Expression* rhs = ParseExpression(stream, ret, 0);
-            res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
-        }
-    }
-    else if (precedence == 13)
-    {
-        res = ParseExpression(stream, ret, 14);
-        if (stream.Match(TokenType::LogicalAnd))
-        {
-            Token tok = stream.Data();
-            stream.Consume();
-            Expression* rhs = ParseExpression(stream, ret, 0);
-            res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
-        }
-    }
-    else if (precedence == 14)
-    {
-        res = ParseExpression(stream, ret, 15);
-        if (stream.Match(TokenType::LogicalOr))
-        {
-            Token tok = stream.Data();
-            stream.Consume();
-            Expression* rhs = ParseExpression(stream, ret, 0);
-            res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
-        }
-    }
-    else if (precedence == 15)
-    {
-        res = ParseExpression(stream, ret, 16);
-        if (stream.Match(TokenType::Question))
-        {
-            stream.Consume();
-            Expression* true_value = ParseExpression(stream, ret, 0);
-            if (stream.Match(TokenType::Colon))
-            {
-                stream.Consume();
-                Expression* false_value = ParseExpression(stream, ret, 0);
-                res = Alloc<TernaryExpression>(res, true_value, false_value);
-            }
-            else
-            {
-                ret.errors.Append(UnexpectedToken(stream, ":"));
-                return nullptr;
-            }
-        }
-    }
     else if (precedence == 16)
     {
-        res = ParseExpression(stream, ret, 17);
-        if (stream.Match(TokenType::AddAssign)
-            || stream.Match(TokenType::SubAssign)
-            || stream.Match(TokenType::MulAssign)
-            || stream.Match(TokenType::DivAssign)
-            || stream.Match(TokenType::ModAssign)
-            || stream.Match(TokenType::LeftShiftAssign)
-            || stream.Match(TokenType::RightShiftAssign)
-            || stream.Match(TokenType::AndAssign)
-            || stream.Match(TokenType::OrAssign)
-            || stream.Match(TokenType::XorAssign)
-            || stream.Match(TokenType::Assign)
-            )
+        res = ParseExpression(stream, ret, res, 17);
+        if (stream.Match(TokenType::Increment) || stream.Match(TokenType::Decrement))
         {
-            Token tok = stream.Data();
-            stream.Consume();
-            Expression* rhs = ParseExpression(stream, ret, 0);
-            res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
+            res = Alloc<UnaryExpression>(StringToFourCC(TransientString(stream.Data(-1).text)), false, res);
         }
     }
-    else // Atoms
+    else if (precedence == 17)
     {
         if (stream.Match(TokenType::Quote))
         {
-            const Token& tok = stream.Data(0);
+            const Token& tok = stream.Data(-1);
             res = Alloc<StringExpression>(std::string(tok.text));
-            stream.Consume();
         }
         else if (stream.Match(TokenType::Integer))
         {
-            const Token& tok = stream.Data(0);
+            const Token& tok = stream.Data(-1);
             int value;
             std::from_chars(tok.text.data(), tok.text.data() + tok.text.size(), value);
             res = Alloc<IntExpression>(value);
-            stream.Consume();
         }
         else if (stream.Match(TokenType::UnsignedInteger))
         {
-            const Token& tok = stream.Data(0);
+            const Token& tok = stream.Data(-1);
             unsigned int value;
             std::from_chars(tok.text.data(), tok.text.data() + tok.text.size(), value);
             res = Alloc<UIntExpression>(value);
-            stream.Consume();
         }
         else if (stream.Match(TokenType::Float) || stream.Match(TokenType::Double))
         {
-            const Token& tok = stream.Data(0);
+            const Token& tok = stream.Data(-1);
             res = Alloc<FloatExpression>(std::stof(std::string(tok.text)));
-            stream.Consume();
         }
         else if (stream.Match(TokenType::Bool))
         {
-            res = Alloc<BoolExpression>(stream.Data().text == "true" ? true : false);
-            stream.Consume();
+            res = Alloc<BoolExpression>(stream.Data(-1).text == "true" ? true : false);
         }
         else if (stream.Match(TokenType::LeftParant))
         {
-            stream.Consume();
             res = ParseExpression(stream, ret);
             if (!stream.Match(TokenType::RightParant))
             {
@@ -794,28 +780,23 @@ ParseExpression(TokenStream& stream, ParseResult& ret, int precedence = 0)
         }
         else if (stream.Match(TokenType::Identifier))
         {
-            const Token& tok = stream.Data();
+            const Token& tok = stream.Data(-1);
             res = Alloc<SymbolExpression>(FixedString(tok.text));
-            stream.Consume();
         }
         else if (stream.Match(TokenType::Declared))
         {
-            stream.Consume();
             if (stream.Match(TokenType::LeftAngle))
             {
-                stream.Consume();
                 if (stream.Match(TokenType::Identifier))
                 {
-                    const Token& tok = stream.Data();
+                    const Token& tok = stream.Data(-1);
                     res = Alloc<DeclaredExpression>(FixedString(tok.text));
-                    stream.Consume();
                     
                     if (!stream.Match(TokenType::RightAngle))
                     {
                         ret.errors.Append(UnexpectedToken(stream, ">"));
                         return nullptr;
                     }
-                    stream.Consume();
                 }
                 else
                 {
@@ -829,13 +810,9 @@ ParseExpression(TokenStream& stream, ParseResult& ret, int precedence = 0)
                 return nullptr;
             }
         }
-        else
-        {
-            ret.errors.Append(IncorrectToken(stream));
-            return nullptr;
-        }
     }
     
+    //res = ParseExpression(stream, ret, res, precedence);
     return res;
 }
 
@@ -848,29 +825,49 @@ ParseAnnotation(TokenStream& stream, ParseResult& ret)
     Annotation* res = nullptr;
     if (stream.Match(TokenType::Annot))
     {
-        stream.Consume(); // @
         res = Alloc<Annotation>();
         if (!stream.Match(TokenType::Identifier))
         {
             ret.errors.Append(UnexpectedToken(stream, "annotation identifier"));
             return nullptr;
         }
-        res->name = stream.Data(0).text;
-        res->location = LocationFromToken(stream.Data(0));
+        res->name = stream.Data(-1).text;
+        res->location = LocationFromToken(stream.Data(-1));
         
-        stream.Consume(); // name
         if (!stream.Match(TokenType::LeftParant))
         {
             ret.errors.Append(UnexpectedToken(stream, "("));
             return nullptr;
         }
         
-        stream.Consume();
         res->value = ParseExpression(stream, ret);
         if (!stream.Match(TokenType::RightParant))
         {
             ret.errors.Append(UnexpectedToken(stream, ")"));
             return nullptr;
+        }
+    }
+    return res;
+}
+
+//------------------------------------------------------------------------------
+/**
+ */
+Attribute*
+ParseAttribute(TokenStream& stream, ParseResult& ret)
+{
+    Attribute* res = nullptr;
+    if (stream.Match(TokenType::Identifier))
+    {
+        res = Alloc<Attribute>();
+        if (stream.Match(TokenType::LeftParant))
+        {
+            res->expression = ParseExpression(stream, ret);
+            if (!stream.Match(TokenType::RightParant))
+            {
+                ret.errors.Append(UnexpectedToken(stream, ")"));
+                return nullptr;
+            }
         }
     }
     return res;
@@ -892,11 +889,21 @@ Structure*
 ParseStruct(TokenStream& stream, ParseResult& ret)
 {
     TransientArray<Annotation*> annotations(32);
+    TransientArray<Attribute*> attributes(32);
     while (auto annot = ParseAnnotation(stream, ret))
     {
         annotations.Append(annot);
     }
-    if (!stream.Match(TokenType::Identifier, 1))
+    while (auto attr = ParseAttribute(stream, ret))
+    {
+        attributes.Append(attr);
+    }
+    if (!stream.Match(TokenType::Struct))
+    {
+        ret.errors.Append(UnexpectedToken(stream, "struct"));
+        return nullptr;
+    }
+    if (!stream.Match(TokenType::Identifier))
     {
         ret.errors.Append(UnexpectedToken(stream, "struct identifier"));
         return nullptr;
@@ -904,9 +911,8 @@ ParseStruct(TokenStream& stream, ParseResult& ret)
     else
     {
         // Consume the 'struct' and name identifier
-        stream.Consume(2);
         Structure* str = Alloc<Structure>();
-        const Token& tok = stream.Data(0);
+        const Token& tok = stream.Data(-1);
         str->name = tok.text;
         str->location = LocationFromToken(tok);
         
@@ -915,7 +921,6 @@ ParseStruct(TokenStream& stream, ParseResult& ret)
             ret.errors.Append(UnexpectedToken(stream, "'{'"));
             return str;
         }
-        stream.Consume();
         
         TransientArray<Variable*> members(1024);
         if (!stream.Match(TokenType::Identifier) && !stream.Match(TokenType::Colon))

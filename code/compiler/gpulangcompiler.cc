@@ -2290,8 +2290,7 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
         if (options.emitTimings)
             timer.Print("Preprocessing");
 
-        GPULangLexerErrorHandler lexerErrorHandler;
-        GPULangParserErrorHandler parserErrorHandler;
+
         timer.Start();
         
         TokenizationResult tokenizationResult = Tokenize(preprocessed);
@@ -2300,13 +2299,25 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
             printf("Syntax Error: %d:%d, %s\n", err.line, err.pos, err.message.c_str());
         }
         
+        timer.Stop();
+        if (options.emitTimings)
+            timer.Print("Home made lexer");
+        
+        timer.Start();
         GPULang::TokenStream tokenStream(tokenizationResult);
         ParseResult parseResult = Parse(tokenStream);
         for (const auto& err : parseResult.errors)
         {
             printf("Syntax Error: %d:%d, %s\n", err.line, err.pos, err.message.c_str());
         }
+        timer.Stop();
+        if (options.emitTimings)
+            timer.Print("Home made parser");
+        
+        timer.Start();
 
+        GPULangLexerErrorHandler lexerErrorHandler;
+        GPULangParserErrorHandler parserErrorHandler;
         ANTLRInputStream input;
         GPULangLexer lexer(&input);
         lexer.setTokenFactory(GPULangTokenFactory::DEFAULT);
