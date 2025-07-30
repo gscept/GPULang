@@ -877,10 +877,16 @@ ParseAttribute(TokenStream& stream, ParseResult& ret)
 /**
  */
 Variable*
-ParseVar(TokenStream& stream, ParseResult& ret)
+ParseVariable(TokenStream& stream, ParseResult& ret)
 {
     
 }
+
+//------------------------------------------------------------------------------
+/**
+ */
+Function*
+ParseFunction(TokenStream& stream, ParseResult& ret)
 
 //------------------------------------------------------------------------------
 /**
@@ -955,13 +961,20 @@ Parse(TokenStream& stream)
             case TokenType::Var:
             case TokenType::Uniform:
             case TokenType::Workgroup:
-                ret.ast->symbols.Append(ParseVar(stream, ret));
+                ret.ast->symbols.Append(ParseVariable(stream, ret));
                 break;
             case TokenType::Enum:
             case TokenType::RenderState:
             case TokenType::SamplerState:
             case TokenType::Program:
             case TokenType::Generate:
+            case TokenType::RightParant:
+                // Functions end with ) IDENTIFIER
+                if (stream.Type(lookAhead+1) == TokenType::Identifier)
+                {
+                    ret.ast->symbols.Append(ParseFunction(stream, ret));
+                    break;
+                }
             case TokenType::Identifier: // variables and functions
             default:
                 lookAhead++;
