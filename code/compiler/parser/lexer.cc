@@ -1217,6 +1217,7 @@ ParseParameterAttribute(TokenStream& stream, ParseResult& ret)
         || stream.Match(TokenType::NoInterpolate_Modifier)
         || stream.Match(TokenType::NoPerspective_Modifier)
         || stream.Match(TokenType::Patch_Domain)
+        || stream.Match(TokenType::Binding_Decorator)
         )
     {
         if (stream.Match(TokenType::LeftParant))
@@ -1478,6 +1479,7 @@ ParseFunction(TokenStream& stream, ParseResult& ret)
     {
         attributes.Append(attr);
     }
+    
     if (!stream.Match(TokenType::Identifier))
     {
         ret.errors.Append(UnexpectedToken(stream, "function name"));
@@ -1495,6 +1497,7 @@ ParseFunction(TokenStream& stream, ParseResult& ret)
         return nullptr;
     }
     
+    TransientArray<Variable*> parameters(128);
     while (true)
     {
         TransientArray<Attribute*> paramAttributes(32);
@@ -1522,12 +1525,17 @@ ParseFunction(TokenStream& stream, ParseResult& ret)
         if (!ParseType(stream, ret, var->type))
             return res;
         
+        if (parameters.Full())
+            ret.errors.Append(Limit(stream, "function parameters", 128));
+        parameters.Append(var);
+        
         // If there is a comma, parse the next variable
         if (stream.Match(TokenType::Comma))
             continue;
 
         break;
     }
+    res->parameters = parameters;
     
     // If no comma and parameter is fully parsed, but there is no ), it means invalid argument list
     if (!stream.Match(TokenType::RightParant))
@@ -1881,10 +1889,10 @@ ParseGenerate(TokenStream& stream, ParseResult& ret)
                     return res;
                 break;
             }
-            case TokenType::RightParant:
+            case TokenType::Identifier:
             {
                 // Functions end with ) IDENTIFIER
-                if (stream.Type(lookAhead+1) == TokenType::Identifier)
+                if (stream.Type(lookAhead+1) == TokenType::LeftParant)
                 {
                     Function* fun = ParseFunction(stream, ret);
                     lookAhead = 0;
@@ -2316,9 +2324,15 @@ Parse(TokenStream& stream)
         switch (type)
         {
             case TokenType::Struct:
-                ret.ast->symbols.Append(ParseStruct(stream, ret));
+            {
+                Structure* struc = ParseStruct(stream, ret);
                 lookAhead = 0;
+                if (struc != nullptr)
+                    ret.ast->symbols.Append(struc);
+                else
+                    goto end;
                 break;
+            }
             case TokenType::Directive:
             {
                 stream.Consume();
@@ -2334,39 +2348,81 @@ Parse(TokenStream& stream)
             case TokenType::Workgroup_Storage:
             case TokenType::Inline_Storage:
             case TokenType::LinkDefined_Storage:
-                ret.ast->symbols.Append(ParseVariable(stream, ret));
+            {
+                Variable* var = ParseVariable(stream, ret);
                 lookAhead = 0;
+                if (var != nullptr)
+                    ret.ast->symbols.Append(var);
+                else
+                    goto end;
                 break;
+            }
             case TokenType::Enum:
-                ret.ast->symbols.Append(ParseEnumeration(stream, ret));
+            {
+                Enumeration* enu = ParseEnumeration(stream, ret);
                 lookAhead = 0;
+                if (enu != nullptr)
+                    ret.ast->symbols.Append(enu);
+                else
+                    goto end;
                 break;
+            }
             case TokenType::RenderState:
-                ret.ast->symbols.Append(ParseRenderState(stream, ret));
+            {
+                RenderStateInstance* rend = ParseRenderState(stream, ret);
                 lookAhead = 0;
+                if (rend != nullptr)
+                    ret.ast->symbols.Append(rend);
+                else
+                    goto end;
                 break;
+            }
             case TokenType::SamplerState:
-                ret.ast->symbols.Append(ParseSamplerState(stream, ret));
+            {
+                SamplerStateInstance* samp = ParseSamplerState(stream, ret);
                 lookAhead = 0;
+                if (samp != nullptr)
+                    ret.ast->symbols.Append(samp);
+                else
+                    goto end;
                 break;
+            }
             case TokenType::Program:
-                ret.ast->symbols.Append(ParseProgram(stream, ret));
+            {
+                ProgramInstance* prog = ParseProgram(stream, ret);
                 lookAhead = 0;
+                if (prog != nullptr)
+                    ret.ast->symbols.Append(prog);
+                else
+                    goto end;
+                
                 break;
+            }
             case TokenType::ConditionalCompile:
-                ret.ast->symbols.Append(ParseGenerate(stream, ret));
+            {
+                Generate* sym = ParseGenerate(stream, ret);
                 lookAhead = 0;
+                if (sym != nullptr)
+                    ret.ast->symbols.Append(sym);
+                else
+                    goto end;
+                
                 break;
-            case TokenType::RightParant:
-                // Functions end with ) IDENTIFIER
-                if (stream.Type(lookAhead+1) == TokenType::Identifier)
+            }
+            case TokenType::Identifier:
+            {
+                if (stream.Type(lookAhead+1) == TokenType::LeftParant)
                 {
-                    ret.ast->symbols.Append(ParseFunction(stream, ret));
+                    Function* fun = ParseFunction(stream, ret);
                     lookAhead = 0;
+                    if (fun != nullptr)
+                        ret.ast->symbols.Append(fun);
+                    goto end;
                 }
                 else
                     lookAhead++;
                 break;
+            }
             case TokenType::End:
                 if (lookAhead > 0)
                 {
