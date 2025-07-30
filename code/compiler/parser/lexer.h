@@ -30,12 +30,47 @@ enum TokenType
     , Else
     , Generate
     , Declared
-    , Constant
-    , Var
-    , Uniform
-    , Workgroup
-    , In
-    , Out
+    , Packed
+    , Const_Storage
+    , Var_Storage
+    , Uniform_Storage
+    , Workgroup_Storage
+    , Inline_Storage
+    , LinkDefined_Storage
+    , In_Storage
+    , Out_Storage
+    , RayPayload_Storage
+    , RayHitAttribute_Storage
+    , CallableData_Storage
+    , Volatile_Decorator
+    , Atomic_Decorator
+    , NoRead_Decorator
+    , NonTemporal_Decorator
+    , Binding_Decorator
+    , Group_Decorator
+    , NoInterpolate_Modifier
+    , NoPerspective_Modifier
+    , Patch_Domain
+    , EntryPoint_Attribute
+    , Threads_Attribute
+    , ThreadsX_Attribute
+    , ThreadsY_Attribute
+    , ThreadsZ_Attribute
+    , EarlyDepth_Attribute
+    , DepthLesser_Attribute
+    , DepthGreater_Attribute
+    , SubgroupSize_Attribute
+    , SubgroupsPerWorkgroup_Attribute
+    , InputVertices_Attribute
+    , MaxOutputVertices_Attribute
+    , Winding_Attribute
+    , InputTopology_Attribute
+    , OutputTopology_Attribute
+    , PatchType_Attribute
+    , Partition_Attribute
+    , PixelOrigin_Attribute
+    , DerivativeIndexLinear_Attribute
+    , DerivativeIndexQuad_Attribute
     , Directive
     , Annot
     , Comma

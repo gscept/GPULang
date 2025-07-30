@@ -37,14 +37,53 @@ StaticMap HardCodedTokens = std::array{
     , std::pair{ "else"_c, TokenType::Else }
     , std::pair{ "generate"_c, TokenType::Generate }
     , std::pair{ "declared"_c, TokenType::Declared }
+    , std::pair{ "packed"_c, TokenType::Packed }
     , std::pair{ "true"_c, TokenType::Bool }
     , std::pair{ "false"_c, TokenType::Bool }
-    , std::pair{ "const"_c, TokenType::Constant }
-    , std::pair{ "var"_c, TokenType::Var }
-    , std::pair{ "uniform"_c, TokenType::Uniform }
-    , std::pair{ "workgroup"_c, TokenType::Workgroup }
-    , std::pair{ "in"_c, TokenType::In }
-    , std::pair{ "out"_c, TokenType::Out }
+    , std::pair{ "const"_c, TokenType::Const_Storage }
+    , std::pair{ "var"_c, TokenType::Var_Storage }
+    , std::pair{ "uniform"_c, TokenType::Uniform_Storage }
+    , std::pair{ "workgroup"_c, TokenType::Workgroup_Storage }
+    , std::pair{ "inline"_c, TokenType::Inline_Storage }
+    , std::pair{ "link_defind"_c, TokenType::LinkDefined_Storage }
+    , std::pair{ "in"_c, TokenType::In_Storage }
+    , std::pair{ "out"_c, TokenType::Out_Storage }
+    , std::pair{ "ray_payload"_c, TokenType::RayPayload_Storage }
+    , std::pair{ "ray_hit_attribute"_c, TokenType::RayHitAttribute_Storage }
+    , std::pair{ "ray_callable_data"_c, TokenType::CallableData_Storage }
+    , std::pair{ "volatile"_c, TokenType::Volatile_Decorator }
+    , std::pair{ "atomic"_c, TokenType::Atomic_Decorator }
+    , std::pair{ "no_read"_c, TokenType::NoRead_Decorator }
+    , std::pair{ "non_temporal"_c, TokenType::NonTemporal_Decorator }
+    , std::pair{ "binding"_c, TokenType::Binding_Decorator }
+    , std::pair{ "group"_c, TokenType::Group_Decorator }
+    , std::pair{ "no_interpolate"_c, TokenType::NoInterpolate_Modifier }
+    , std::pair{ "no_perspective"_c, TokenType::NoPerspective_Modifier }
+    , std::pair{ "patch"_c, TokenType::Patch_Domain }
+    , std::pair{ "entry_point"_c, TokenType::EntryPoint_Attribute }
+    , std::pair{ "threads"_c, TokenType::Threads_Attribute }
+    , std::pair{ "threads_x"_c, TokenType::ThreadsX_Attribute }
+    , std::pair{ "threads_y"_c, TokenType::ThreadsY_Attribute }
+    , std::pair{ "threads_z"_c, TokenType::ThreadsZ_Attribute }
+    , std::pair{ "local_size"_c, TokenType::Threads_Attribute }
+    , std::pair{ "local_size_x"_c, TokenType::ThreadsX_Attribute }
+    , std::pair{ "local_size_y"_c, TokenType::ThreadsY_Attribute }
+    , std::pair{ "local_size_z"_c, TokenType::ThreadsZ_Attribute }
+    , std::pair{ "early_depth"_c, TokenType::EarlyDepth_Attribute }
+    , std::pair{ "depth_lesser"_c, TokenType::DepthLesser_Attribute }
+    , std::pair{ "depth_greater"_c, TokenType::DepthGreater_Attribute }
+    , std::pair{ "subgroup_size"_c, TokenType::SubgroupSize_Attribute }
+    , std::pair{ "subgroups_per_workgroup"_c, TokenType::SubgroupsPerWorkgroup_Attribute }
+    , std::pair{ "input_vertices"_c, TokenType::InputVertices_Attribute }
+    , std::pair{ "max_output_vertices"_c, TokenType::MaxOutputVertices_Attribute }
+    , std::pair{ "winding"_c, TokenType::Winding_Attribute }
+    , std::pair{ "input_topology"_c, TokenType::InputTopology_Attribute }
+    , std::pair{ "output_topology"_c, TokenType::OutputTopology_Attribute }
+    , std::pair{ "patch_type"_c, TokenType::PatchType_Attribute }
+    , std::pair{ "partition"_c, TokenType::Partition_Attribute }
+    , std::pair{ "pixel_origin"_c, TokenType::PixelOrigin_Attribute }
+    , std::pair{ "derivative_index_linear"_c, TokenType::DerivativeIndexLinear_Attribute }
+    , std::pair{ "derivative_index_quad"_c, TokenType::DerivativeIndexQuad_Attribute }
     , std::pair{ "#"_c, TokenType::Directive }
     , std::pair{ "@"_c, TokenType::Annot }
     , std::pair{ ","_c, TokenType::Comma }
@@ -892,10 +931,127 @@ ParseAnnotation(TokenStream& stream, ParseResult& ret)
 /**
  */
 Attribute*
-ParseAttribute(TokenStream& stream, ParseResult& ret)
+ParseFunctionAttribute(TokenStream& stream, ParseResult& ret)
 {
     Attribute* res = nullptr;
-    if (stream.Match(TokenType::Identifier))
+    if (
+        stream.Match(TokenType::EntryPoint_Attribute)
+        || stream.Match(TokenType::Threads_Attribute)
+        || stream.Match(TokenType::ThreadsX_Attribute)
+        || stream.Match(TokenType::ThreadsY_Attribute)
+        || stream.Match(TokenType::ThreadsZ_Attribute)
+        || stream.Match(TokenType::EarlyDepth_Attribute)
+        || stream.Match(TokenType::DepthLesser_Attribute)
+        || stream.Match(TokenType::DepthGreater_Attribute)
+        || stream.Match(TokenType::SubgroupSize_Attribute)
+        || stream.Match(TokenType::SubgroupsPerWorkgroup_Attribute)
+        || stream.Match(TokenType::InputVertices_Attribute)
+        || stream.Match(TokenType::MaxOutputVertices_Attribute)
+        || stream.Match(TokenType::Winding_Attribute)
+        || stream.Match(TokenType::InputTopology_Attribute)
+        || stream.Match(TokenType::OutputTopology_Attribute)
+        || stream.Match(TokenType::PatchType_Attribute)
+        || stream.Match(TokenType::Partition_Attribute)
+        || stream.Match(TokenType::PixelOrigin_Attribute)
+        || stream.Match(TokenType::DerivativeIndexLinear_Attribute)
+        || stream.Match(TokenType::DerivativeIndexQuad_Attribute)
+        )
+    {
+        if (stream.Match(TokenType::LeftParant))
+        {
+            Expression* expr = ParseExpression(stream, ret);
+            if (expr == nullptr)
+            {
+                // Unmatch identifier and left paranthesis
+                stream.Unmatch(2);
+                return nullptr;
+            }
+            
+            res = Alloc<Attribute>();
+            res->name = stream.Data(-1).text;
+            res->location = LocationFromToken(stream.Data(-1));
+            res->expression = expr;
+            if (!stream.Match(TokenType::RightParant))
+            {
+                ret.errors.Append(UnexpectedToken(stream, ")"));
+                return nullptr;
+            }
+        }
+        else
+        {
+            res = Alloc<Attribute>();
+            res->name = stream.Data(-1).text;
+            res->location = LocationFromToken(stream.Data(-1));
+        }
+    }
+    return res;
+}
+
+//------------------------------------------------------------------------------
+/**
+ */
+Attribute*
+ParseVariableAttribute(TokenStream& stream, ParseResult& ret)
+{
+    Attribute* res = nullptr;
+    if (
+        stream.Match(TokenType::Binding_Decorator)
+        || stream.Match(TokenType::Group_Decorator)
+        || stream.Match(TokenType::Volatile_Decorator)
+        || stream.Match(TokenType::Atomic_Decorator)
+        || stream.Match(TokenType::NoRead_Decorator)
+        || stream.Match(TokenType::NonTemporal_Decorator)
+        )
+    {
+        if (stream.Match(TokenType::LeftParant))
+        {
+            Expression* expr = ParseExpression(stream, ret);
+            if (expr == nullptr)
+            {
+                // Unmatch identifier and left paranthesis
+                stream.Unmatch(2);
+                return nullptr;
+            }
+            
+            res = Alloc<Attribute>();
+            res->name = stream.Data(-1).text;
+            res->location = LocationFromToken(stream.Data(-1));
+            res->expression = expr;
+            if (!stream.Match(TokenType::RightParant))
+            {
+                ret.errors.Append(UnexpectedToken(stream, ")"));
+                return nullptr;
+            }
+        }
+        else
+        {
+            res = Alloc<Attribute>();
+            res->name = stream.Data(-1).text;
+            res->location = LocationFromToken(stream.Data(-1));
+        }
+    }
+    return res;
+}
+
+//------------------------------------------------------------------------------
+/**
+ */
+Attribute*
+ParseParameterAttribute(TokenStream& stream, ParseResult& ret)
+{
+    Attribute* res = nullptr;
+    if (
+        stream.Match(TokenType::In_Storage)
+        || stream.Match(TokenType::Out_Storage)
+        || stream.Match(TokenType::Uniform_Storage)
+        || stream.Match(TokenType::Workgroup_Storage)
+        || stream.Match(TokenType::RayPayload_Storage)
+        || stream.Match(TokenType::CallableData_Storage)
+        || stream.Match(TokenType::RayHitAttribute_Storage)
+        || stream.Match(TokenType::NoInterpolate_Modifier)
+        || stream.Match(TokenType::NoPerspective_Modifier)
+        || stream.Match(TokenType::Patch_Domain)
+        )
     {
         if (stream.Match(TokenType::LeftParant))
         {
@@ -978,17 +1134,19 @@ ParseVariable(TokenStream& stream, ParseResult& ret)
     {
         annotations.Append(annot);
     }
-    while (auto attr = ParseAttribute(stream, ret))
+    while (auto attr = ParseVariableAttribute(stream, ret))
     {
         attributes.Append(attr);
     }
-    if (!(stream.Match(TokenType::Constant)
-          || stream.Match(TokenType::Var)
-          || stream.Match(TokenType::Workgroup)
-          || stream.Match(TokenType::Uniform)
+    if (!(stream.Match(TokenType::Const_Storage)
+          || stream.Match(TokenType::Var_Storage)
+          || stream.Match(TokenType::Workgroup_Storage)
+          || stream.Match(TokenType::Uniform_Storage)
+          || stream.Match(TokenType::Inline_Storage)
+          || stream.Match(TokenType::LinkDefined_Storage)
         ))
     {
-        ret.errors.Append(UnexpectedToken(stream, "const/var/workgroup/uniform"));
+        ret.errors.Append(UnexpectedToken(stream, "const/var/workgroup/uniform/inline/link_defined"));
         return nullptr;
     }
     
@@ -1054,7 +1212,7 @@ ParseFunction(TokenStream& stream, ParseResult& ret)
     {
         annotations.Append(annot);
     }
-    while (auto attr = ParseAttribute(stream, ret))
+    while (auto attr = ParseFunctionAttribute(stream, ret))
     {
         attributes.Append(attr);
     }
@@ -1078,35 +1236,31 @@ ParseFunction(TokenStream& stream, ParseResult& ret)
     while (true)
     {
         TransientArray<Attribute*> paramAttributes(32);
-        while (auto attr = ParseAttribute(stream, ret))
+        while (auto attr = ParseParameterAttribute(stream, ret))
         {
             paramAttributes.Append(attr);
         }
          
-        if (paramAttributes.size > 0)
+        if (!stream.Match(TokenType::Identifier))
         {
-            Attribute* lastAttr = paramAttributes.back();
-            if (lastAttr->expression != nullptr)
-            {
-                ret.errors.Append(UnexpectedToken(stream, "parameter name"));
-                return nullptr;
-            }
-            
-            paramAttributes.size--;
-            Variable* var = Alloc<Variable>();
-            var->name = lastAttr->name;
-            var->location = lastAttr->location;
-            
-            if (!stream.Match(TokenType::Colon))
-            {
-                ret.errors.Append(UnexpectedToken(stream, "parameter type"));
-                return nullptr;
-            }
-            
-            if (!ParseType(stream, ret, var->type))
-                return res;
+            ret.errors.Append(UnexpectedToken(stream, "parameter name"));
+            return nullptr;
         }
         
+        Variable* var = Alloc<Variable>();
+        var->name = stream.Data(-1).text;
+        var->location = LocationFromToken(stream.Data(-1));
+        
+        if (!stream.Match(TokenType::Colon))
+        {
+            ret.errors.Append(UnexpectedToken(stream, "parameter type"));
+            return nullptr;
+        }
+        
+        if (!ParseType(stream, ret, var->type))
+            return res;
+        
+        // If there is a comma, parse the next variable
         if (stream.Match(TokenType::Comma))
             continue;
 
@@ -1149,15 +1303,21 @@ Structure*
 ParseStruct(TokenStream& stream, ParseResult& ret)
 {
     TransientArray<Annotation*> annotations(32);
-    TransientArray<Attribute*> attributes(32);
+    TransientArray<Attribute*> attributes(1);
     while (auto annot = ParseAnnotation(stream, ret))
     {
         annotations.Append(annot);
     }
-    while (auto attr = ParseAttribute(stream, ret))
+    
+    // Only allowed attribute is 'packed'
+    if (stream.Match(TokenType::Packed))
     {
+        Attribute* attr = Alloc<Attribute>();
+        attr->name = stream.Data(-1).text;
+        attr->location = LocationFromToken(stream.Data(-1));
         attributes.Append(attr);
     }
+    
     if (!stream.Match(TokenType::Struct))
     {
         ret.errors.Append(UnexpectedToken(stream, "struct"));
@@ -1232,7 +1392,9 @@ ParseStruct(TokenStream& stream, ParseResult& ret)
 Statement*
 ParseStatement(TokenStream& stream, ParseResult& ret)
 {
+    Statement* res = nullptr;
     
+    return res;
 }
 
 //------------------------------------------------------------------------------
@@ -1255,10 +1417,12 @@ Parse(TokenStream& stream)
                 ret.ast->symbols.Append(ParseStruct(stream, ret));
                 lookAhead = 0;
                 break;
-            case TokenType::Constant:
-            case TokenType::Var:
-            case TokenType::Uniform:
-            case TokenType::Workgroup:
+            case TokenType::Const_Storage:
+            case TokenType::Var_Storage:
+            case TokenType::Uniform_Storage:
+            case TokenType::Workgroup_Storage:
+            case TokenType::Inline_Storage:
+            case TokenType::LinkDefined_Storage:
                 ret.ast->symbols.Append(ParseVariable(stream, ret));
                 lookAhead = 0;
                 break;
