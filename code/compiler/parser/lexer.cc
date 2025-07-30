@@ -662,6 +662,7 @@ Symbol::Location
 LocationFromToken(const Token& tok)
 {
     Symbol::Location ret;
+    ret.file = tok.path;
     ret.line = tok.startLine;
     ret.start = tok.startChar;
     ret.end = tok.endChar;
