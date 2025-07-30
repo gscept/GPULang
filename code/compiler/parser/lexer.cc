@@ -54,6 +54,7 @@ StaticMap HardCodedTokens = std::array{
     , std::pair{ "discard"_c, TokenType::Discard }
     , std::pair{ "ray_ignore"_c, TokenType::RayIgnore }
     , std::pair{ "ray_terminate"_c, TokenType::RayTerminate }
+    , std::pair{ "return"_c, TokenType::Return }
     , std::pair{ "for"_c, TokenType::For }
     , std::pair{ "if"_c, TokenType::If }
     , std::pair{ "else"_c, TokenType::Else }
@@ -106,6 +107,9 @@ StaticMap HardCodedTokens = std::array{
     , std::pair{ "pixel_origin"_c, TokenType::PixelOrigin_Attribute }
     , std::pair{ "derivative_index_linear"_c, TokenType::DerivativeIndexLinear_Attribute }
     , std::pair{ "derivative_index_quad"_c, TokenType::DerivativeIndexQuad_Attribute }
+    , std::pair{ "mutable"_c, TokenType::Mutable_TypeModifier }
+    , std::pair{ "sampled"_c, TokenType::Sampled_TypeModifier }
+    , std::pair{ "literal"_c, TokenType::Literal_TypeModifier }
     , std::pair{ "#"_c, TokenType::Directive }
     , std::pair{ "@"_c, TokenType::Annot }
     , std::pair{ ","_c, TokenType::Comma }
@@ -159,6 +163,46 @@ StaticMap HardCodedTokens = std::array{
     , std::pair{ "//"_c, TokenType::CommentRow}
     , std::pair{ "/*"_c, TokenType::CommentBlockStart}
     , std::pair{ "*/"_c, TokenType::CommentBlockEnd}
+    , std::pair{ "rgba16"_c, TokenType::Rgba16 }
+    , std::pair{ "rgb10_a2"_c, TokenType::Rgb10_A2 }
+    , std::pair{ "rgba8"_c, TokenType::Rgba8 }
+    , std::pair{ "rg16"_c, TokenType::Rg16 }
+    , std::pair{ "rg8"_c, TokenType::Rg8 }
+    , std::pair{ "r16"_c, TokenType::R16 }
+    , std::pair{ "r8"_c, TokenType::R8 }
+    , std::pair{ "rgba16_snorm"_c, TokenType::Rgba16_Snorm }
+    , std::pair{ "rgba8_snorm"_c, TokenType::Rgba8_Snorm }
+    , std::pair{ "rg16_snorm"_c, TokenType::Rg16_Snorm }
+    , std::pair{ "rg8_snorm"_c, TokenType::Rg8_Snorm }
+    , std::pair{ "r16_snorm"_c, TokenType::R16_Snorm }
+    , std::pair{ "r8_snorm"_c, TokenType::R8_Snorm }
+    , std::pair{ "rgba32f"_c, TokenType::Rgba32F }
+    , std::pair{ "rgba16f"_c, TokenType::Rgba16F }
+    , std::pair{ "rg32f"_c, TokenType::Rg32F }
+    , std::pair{ "rg16f"_c, TokenType::Rg16F }
+    , std::pair{ "r11g11b10f"_c, TokenType::R11G11B10F }
+    , std::pair{ "r32f"_c, TokenType::R32F }
+    , std::pair{ "r16f"_c, TokenType::R16F }
+    , std::pair{ "rga32i"_c, TokenType::Rgba32I }
+    , std::pair{ "rgba16i"_c, TokenType::Rgba16I }
+    , std::pair{ "rgba8i"_c, TokenType::Rgba8I }
+    , std::pair{ "rg32i"_c, TokenType::Rg32I }
+    , std::pair{ "rg16i"_c, TokenType::Rg16I }
+    , std::pair{ "rg8i"_c, TokenType::Rg8I }
+    , std::pair{ "r32i"_c, TokenType::R32I }
+    , std::pair{ "r16i"_c, TokenType::R16I }
+    , std::pair{ "r8i"_c, TokenType::R8I }
+    , std::pair{ "rga32u"_c, TokenType::Rgba32U }
+    , std::pair{ "rgba16u"_c, TokenType::Rgba16U }
+    , std::pair{ "rgb10_a2u"_c, TokenType::Rgb10_A2U }
+    , std::pair{ "rgba8u"_c, TokenType::Rgba8U }
+    , std::pair{ "rg32u"_c, TokenType::Rg32U }
+    , std::pair{ "rg16u"_c, TokenType::Rg16U }
+    , std::pair{ "rg8u"_c, TokenType::Rg8U }
+    , std::pair{ "r32u"_c, TokenType::R32U }
+    , std::pair{ "r16u"_c, TokenType::R16U }
+    , std::pair{ "r8u"_c, TokenType::R8U }
+    , std::pair{ "unknown"_c, TokenType::UnknownFormat }
 };
 
 
@@ -289,7 +333,7 @@ static auto numberChar = [](const char c) -> bool
 /**
  */
 TokenizationResult
-Tokenize(const std::string& text)
+Tokenize(const std::string& text, const FixedString& path)
 {
     printf("%s", text.c_str());
     
@@ -302,6 +346,8 @@ Tokenize(const std::string& text)
     TokenType tokenType = TokenType::InvalidToken;
     uint32_t line = 1;
     uint32_t charPos = 0;
+    
+    FixedString currentPath = path;
     
     bool ignore = false;
     
@@ -376,6 +422,7 @@ Tokenize(const std::string& text)
                 it++;
             }
             Token newToken;
+            newToken.path = currentPath;
             newToken.text = std::string_view(begin, it-begin);
             TokenType type = TokenType::Identifier;
             auto it1 = HardCodedTokens.Find(newToken.text);
@@ -383,6 +430,7 @@ Tokenize(const std::string& text)
             {
                 type = it1->second;
             }
+            
             newToken.startLine = line;
             newToken.endLine = line;
             newToken.startChar = begin - startOfLine;
@@ -394,10 +442,11 @@ Tokenize(const std::string& text)
         else if (numberStart(it[0])) // Capture numbers
         {
             Token newToken;
+            newToken.path = currentPath;
             TokenType type = TokenType::Integer;
             const char* begin = it;
             if (it[1] == 'x')
-                type - TokenType::Hex;
+                type = TokenType::Hex;
             while (it != end)
             {
                 if (!numberChar(it[0]))
@@ -409,9 +458,10 @@ Tokenize(const std::string& text)
             
             if (it[0] == '.')
             {
-                if (type != TokenType::Hex)
+                if (type == TokenType::Hex)
                 {
                     LexerError error;
+                    error.path = currentPath;
                     error.message = "Incorrectly formatted hex number";
                     error.line = line;
                     error.pos = it - startOfLine;
@@ -432,6 +482,7 @@ Tokenize(const std::string& text)
                 {
                     // Bad integer, throw error
                     LexerError error;
+                    error.path = currentPath;
                     error.message = "Incorrectly formatted floating point number";
                     error.line = line;
                     error.pos = it - startOfLine;
@@ -481,6 +532,7 @@ Tokenize(const std::string& text)
             {
                 // End of string never found
                 LexerError error;
+                error.path = currentPath;
                 error.message = "String not closed";
                 error.line = line;
                 error.pos = begin - startOfLine;
@@ -488,6 +540,7 @@ Tokenize(const std::string& text)
             }
             
             Token newToken;
+            newToken.path = currentPath;
             newToken.text = std::string_view(begin+1, it-1); // remove leading and trailing quotes
             newToken.startLine = line;
             newToken.endLine = line;
@@ -500,10 +553,69 @@ Tokenize(const std::string& text)
         else // Non-character words
         {
             Token newToken;
+            newToken.path = currentPath;
             auto it1 = HardCodedTokens.Find(it[0]);
+            
+            // Handle include/line directives
+            if (it1->second == TokenType::Directive)
+            {
+                it = skipWS(it+1, end);
+                if (identifierStart(it[0]))
+                {
+                    const char* begin = it;
+                    while (it != end)
+                    {
+                        if (!identifierChar(it[0]))
+                            break;
+                        it++;
+                    }
+                    
+                    std::string_view dir(begin, it);
+                    if (dir == "line")
+                    {
+                        it = skipWS(it+1, end);
+                        const char* begin = it;
+                        if (numberStart(it[0]))
+                        {
+                            while (it != end)
+                            {
+                                if (!numberChar(it[0]))
+                                    break;
+                                it++;
+                            }
+                        }
+                        std::string_view lineNo(begin, it);
+                        int newLine;
+                        std::from_chars(lineNo.begin(), lineNo.end(), newLine);
+                        line = newLine;
+                        
+                        it = skipWS(it+1, end);
+                        if (it[0] == '\"')
+                        {
+                            const char* begin = it;
+                            it++;
+                            while (it != end)
+                            {
+                                uint8_t eosOffset = findCharPos(it, end, '"');
+                                if (eosOffset != 255)
+                                {
+                                    it += eosOffset + 1;
+                                    break;
+                                }
+                                else
+                                    it += 8;
+                            }
+                            std::string_view path(begin + 1, it - 1);
+                            currentPath = path;
+                        }
+                    }
+                }
+            }
+            
             if (it1 == HardCodedTokens.end())
             {
                 LexerError error;
+                error.path = currentPath;
                 error.message = TStr("Unknown character ", it[0]);
                 error.line = line;
                 error.pos = it - startOfLine;
@@ -562,10 +674,12 @@ LocationFromToken(const Token& tok)
 ParseError
 UnexpectedToken(const TokenStream& stream, const char* expected)
 {
+    const Token& tok = stream.Data(0);
     ParseError error;
-    error.message = TStr("Expected ", expected, " got ", stream.Data(0).text);
-    error.line = stream.Data(0).startLine;
-    error.pos = stream.Data(0).startChar;
+    error.message = TStr("Expected ", expected, ", got ", tok.text);
+    error.path = tok.path;
+    error.line = tok.startLine;
+    error.pos = tok.startChar;
     return error;
 }
 
@@ -575,10 +689,12 @@ UnexpectedToken(const TokenStream& stream, const char* expected)
 ParseError
 IncorrectToken(const TokenStream& stream)
 {
+    const Token& tok = stream.Data(0);
     ParseError error;
-    error.message = TStr("Invalid token ", stream.Data(0).text);
-    error.line = stream.Data(0).startLine;
-    error.pos = stream.Data(0).startChar;
+    error.message = TStr("Invalid token ", tok.text);
+    error.path = tok.path;
+    error.line = tok.startLine;
+    error.pos = tok.startChar;
     return error;
 }
 
@@ -588,10 +704,13 @@ IncorrectToken(const TokenStream& stream)
 ParseError
 Limit(const TokenStream& stream, const char* name, size_t size)
 {
+    const Token& tok = stream.Data(0);
+
     ParseError error;
     error.message = TStr("Limit %s(%d) reached", name, size);
-    error.line = stream.Data(0).startLine;
-    error.pos = stream.Data(0).startChar;
+    error.path = tok.path;
+    error.line = tok.startLine;
+    error.pos = tok.startChar;
     return error;
 }
 
@@ -901,7 +1020,6 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
                 ret.errors.Append(UnexpectedToken(stream, ")"));
                 return nullptr;
             }
-            stream.Consume();
         }
         else if (stream.Match(TokenType::Identifier))
         {
@@ -1159,6 +1277,65 @@ ParseType(TokenStream& stream, ParseResult& ret, Type::FullType& res)
             return false;
         }
     }
+    
+    if (stream.Match(TokenType::Mutable_TypeModifier))
+    {
+        res.mut = true;
+    }
+    if (stream.Match(TokenType::Sampled_TypeModifier))
+    {
+        res.sampled = true;
+    }
+    if (stream.Match(TokenType::Literal_TypeModifier))
+    {
+        res.literal = true;
+    }
+    if (
+        stream.Match(TokenType::Rgba16)
+        || stream.Match(TokenType::Rgb10_A2)
+        || stream.Match(TokenType::Rgba8)
+        || stream.Match(TokenType::Rg16)
+        || stream.Match(TokenType::Rg8)
+        || stream.Match(TokenType::R16)
+        || stream.Match(TokenType::R8)
+        || stream.Match(TokenType::Rgba16_Snorm)
+        || stream.Match(TokenType::Rgba8_Snorm)
+        || stream.Match(TokenType::Rg16_Snorm)
+        || stream.Match(TokenType::Rg8_Snorm)
+        || stream.Match(TokenType::R16_Snorm)
+        || stream.Match(TokenType::R8_Snorm)
+        || stream.Match(TokenType::Rgba32F)
+        || stream.Match(TokenType::Rgba16F)
+        || stream.Match(TokenType::Rg32F)
+        || stream.Match(TokenType::Rg16F)
+        || stream.Match(TokenType::R11G11B10F)
+        || stream.Match(TokenType::R32F)
+        || stream.Match(TokenType::R16F)
+        || stream.Match(TokenType::Rgba32I)
+        || stream.Match(TokenType::Rgba16I)
+        || stream.Match(TokenType::Rgba8I)
+        || stream.Match(TokenType::Rg32I)
+        || stream.Match(TokenType::Rg16I)
+        || stream.Match(TokenType::Rg8I)
+        || stream.Match(TokenType::R32I)
+        || stream.Match(TokenType::R16I)
+        || stream.Match(TokenType::R8I)
+        || stream.Match(TokenType::Rgba32U)
+        || stream.Match(TokenType::Rgba16U)
+        || stream.Match(TokenType::Rgb10_A2U)
+        || stream.Match(TokenType::Rgba8U)
+        || stream.Match(TokenType::Rg32U)
+        || stream.Match(TokenType::Rg16U)
+        || stream.Match(TokenType::Rg8U)
+        || stream.Match(TokenType::R32U)
+        || stream.Match(TokenType::R16U)
+        || stream.Match(TokenType::R8U)
+        || stream.Match(TokenType::UnknownFormat)
+        )
+    {
+        // TODO: Just set the image format here directly
+        res.AddQualifier(FixedString(stream.Data(-1).text));
+    }
     if (!stream.Match(TokenType::Identifier))
     {
         ret.errors.Append(UnexpectedToken(stream, "type"));
@@ -1203,7 +1380,7 @@ ParseAlias(TokenStream& stream, ParseResult& ret)
         return res;
     }
     res->type = stream.Data(-1).text;
-    
+    return res;
 }
 
 //------------------------------------------------------------------------------
@@ -1259,7 +1436,7 @@ ParseVariable(TokenStream& stream, ParseResult& ret)
             return res;
         }
         
-        if (stream.Match(TokenType::Equal))
+        if (stream.Match(TokenType::Assign))
         {
             res->valueExpression = ParseExpression(stream, ret);
         }
@@ -1280,10 +1457,10 @@ ParseVariable(TokenStream& stream, ParseResult& ret)
         ret.errors.Append(UnexpectedToken(stream, ";"));
         return nullptr;
     }
-    
+    return res;
 }
 
-Statement* ParseStatement(TokenStream& stream, ParseResult& ret);
+Statement* ParseScopeStatement(TokenStream& stream, ParseResult& ret);
 //------------------------------------------------------------------------------
 /**
  */
@@ -1362,21 +1539,10 @@ ParseFunction(TokenStream& stream, ParseResult& ret)
     if (!ParseType(stream, ret, res->returnType))
         return res;
     
-    if (!stream.Match(TokenType::LeftScope))
-    {
-        ret.errors.Append(UnexpectedToken(stream, "{"));
-        return res;
-    }
-    
-    res->ast = ParseStatement(stream, ret);
+    res->ast = ParseScopeStatement(stream, ret);
     if (res->ast == nullptr)
         return res;
     
-    if (!stream.Match(TokenType::RightScope))
-    {
-        ret.errors.Append(UnexpectedToken(stream, "}"));
-        return res;
-    }
     return res;
 }
 
@@ -1459,6 +1625,7 @@ ParseEnumeration(TokenStream& stream, ParseResult& ret)
         ret.errors.Append(UnexpectedToken(stream, ";"));
         return res;
     }
+    return res;
 }
 
 //------------------------------------------------------------------------------
@@ -1607,14 +1774,14 @@ ParseGenerateStatement(TokenStream& stream, ParseResult& ret)
             return res;
         }
         
-        Statement* ifBody = ParseStatement(stream, ret);
+        Statement* ifBody = ParseGenerateStatement(stream, ret);
         if (ifBody == nullptr)
             return res;
         
         Statement* elseBody = nullptr;
         if (stream.Match(TokenType::Else))
         {
-            elseBody = ParseStatement(stream, ret);
+            elseBody = ParseGenerateStatement(stream, ret);
         }
         
         res = Alloc<IfStatement>(cond, ifBody, elseBody);
@@ -1623,8 +1790,32 @@ ParseGenerateStatement(TokenStream& stream, ParseResult& ret)
     {
         PinnedArray<Symbol*> contents = 0xFFFFFFFF;
         std::vector<Expression*> unfinished;
-        while (Statement* stat = ParseStatement(stream, ret))
-            contents.Append(stat);
+        
+        while (true)
+        {
+            Statement* stat = ParseGenerateStatement(stream, ret);
+            if (stat != nullptr)
+            {
+                contents.Append(stat);
+                continue;
+            }
+            
+            Variable* var = ParseVariable(stream, ret);
+            if (var != nullptr)
+            {
+                contents.Append(var);
+                continue;
+            }
+            
+            Alias* al = ParseAlias(stream, ret);
+            if (al != nullptr)
+            {
+                contents.Append(al);
+                continue;
+            }
+            
+            break;
+        }
         
         res = Alloc<ScopeStatement>(std::move(contents), unfinished);
         
@@ -1633,11 +1824,6 @@ ParseGenerateStatement(TokenStream& stream, ParseResult& ret)
             ret.errors.Append(UnexpectedToken(stream, "}"));
             return res;
         }
-    }
-    else
-    {
-        ret.errors.Append(UnexpectedToken(stream, "generate statement or expression"));
-        return res;
     }
     
     return res;
@@ -1664,10 +1850,9 @@ ParseGenerate(TokenStream& stream, ParseResult& ret)
     }
     
     size_t lookAhead = 0;
-    TokenType type = stream.Type(0;)
+    TokenType type = stream.Type(0);
     PinnedArray<Symbol*> symbols = 0xFFFFFF;
-    bool loop = true;
-    while (loop)
+    while (true)
     {
         switch (type)
         {
@@ -1678,14 +1863,12 @@ ParseGenerate(TokenStream& stream, ParseResult& ret)
             case TokenType::Inline_Storage:
             case TokenType::LinkDefined_Storage:
             {
-                Variable* var = ParseVariable(stream, ret));
+                Variable* var = ParseVariable(stream, ret);
                 lookAhead = 0;
                 if (var != nullptr)
                     symbols.Append(var);
                 else
-                {
-                    loop = false;
-                }
+                    return res;
                 break;
             }
             case TokenType::TypeAlias:
@@ -1695,7 +1878,7 @@ ParseGenerate(TokenStream& stream, ParseResult& ret)
                 if (alias != nullptr)
                     symbols.Append(alias);
                 else
-                    loop = false;
+                    return res;
                 break;
             }
             case TokenType::RightParant:
@@ -1703,27 +1886,38 @@ ParseGenerate(TokenStream& stream, ParseResult& ret)
                 // Functions end with ) IDENTIFIER
                 if (stream.Type(lookAhead+1) == TokenType::Identifier)
                 {
-                    symbols.Append(ParseFunction(stream, ret));
+                    Function* fun = ParseFunction(stream, ret);
                     lookAhead = 0;
+                    if (fun != nullptr)
+                        symbols.Append(fun);
+                    else
+                        return res;
                 }
                 else
                     lookAhead++;
                 break;
             }
-            case TokenType::If
+            case TokenType::If:
             {
-                
+                Statement* stat = ParseGenerateStatement(stream, ret);
+                lookAhead = 0;
+                if (stat != nullptr)
+                    symbols.Append(stat);
+                else
+                    return res;
+                break;
             }
             case TokenType::RightAngle:
             {
-                loop = false;
-                break;
+                goto end;
             }
             default:
                 lookAhead++;
         }
+        type = stream.Type(lookAhead);
     }
     
+end:
     if (!stream.Match(TokenType::RightAngle))
     {
         ret.errors.Append(UnexpectedToken(stream, ">"));
@@ -1826,6 +2020,79 @@ ParseStruct(TokenStream& stream, ParseResult& ret)
 
 }
 
+Statement* ParseStatement(TokenStream& stream, ParseResult& ret);
+//------------------------------------------------------------------------------
+/**
+ */
+Statement*
+ParseScopeStatement(TokenStream& stream, ParseResult& ret)
+{
+    Statement* res = nullptr;
+    if (stream.Match(TokenType::LeftScope))
+    {
+        PinnedArray<Symbol*> contents = 0xFFFFFFFF;
+        std::vector<Expression*> unfinished;
+        size_t lookAhead = 0;
+        
+        while (true)
+        {
+            TokenType type = stream.Type(lookAhead);
+            switch (type)
+            {
+                case TokenType::Const_Storage:
+                case TokenType::Var_Storage:
+                case TokenType::Uniform_Storage:
+                case TokenType::Workgroup_Storage:
+                case TokenType::Inline_Storage:
+                case TokenType::LinkDefined_Storage:
+                {
+                    Variable* var = ParseVariable(stream, ret);
+                    lookAhead = 0;
+                    if (var != nullptr)
+                        contents.Append(var);
+                    else
+                        return res;
+                    continue;
+                }
+                case TokenType::TypeAlias:
+                {
+                    Alias* alias = ParseAlias(stream, ret);
+                    lookAhead = 0;
+                    if (alias != nullptr)
+                        contents.Append(alias);
+                    else
+                        return res;
+                    continue;
+                }
+                case TokenType::RightScope:
+                    goto end;
+                default:
+                    break;
+            }
+            
+            Statement* stat = ParseStatement(stream, ret);
+            if (stat != nullptr)
+            {
+                lookAhead = 0;
+                contents.Append(stat);
+                continue;
+            }
+            
+            lookAhead++;
+        }
+        
+    end:
+        res = Alloc<ScopeStatement>(std::move(contents), unfinished);
+        
+        if (!stream.Match(TokenType::RightScope))
+        {
+            ret.errors.Append(UnexpectedToken(stream, "}"));
+            return res;
+        }
+    }
+    return res;
+}
+
 //------------------------------------------------------------------------------
 /**
  */
@@ -1837,22 +2104,47 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
     if (stream.Match(TokenType::Break))
     {
         res = Alloc<BreakStatement>();
+        if (!stream.Match(TokenType::SemiColon))
+        {
+            ret.errors.Append(UnexpectedToken(stream, "; after expression"));
+            return res;
+        }
     }
     else if (stream.Match(TokenType::Return))
     {
         res = Alloc<TerminateStatement>(ParseExpression(stream, ret), TerminateStatement::TerminationType::Return);
+        if (!stream.Match(TokenType::SemiColon))
+        {
+            ret.errors.Append(UnexpectedToken(stream, "; after expression"));
+            return res;
+        }
     }
     else if (stream.Match(TokenType::Discard))
     {
         res = Alloc<TerminateStatement>(nullptr, TerminateStatement::TerminationType::Discard);
+        if (!stream.Match(TokenType::SemiColon))
+        {
+            ret.errors.Append(UnexpectedToken(stream, "; after expression"));
+            return res;
+        }
     }
     else if (stream.Match(TokenType::RayIgnore))
     {
         res = Alloc<TerminateStatement>(nullptr, TerminateStatement::TerminationType::RayIgnoreIntersection);
+        if (!stream.Match(TokenType::SemiColon))
+        {
+            ret.errors.Append(UnexpectedToken(stream, "; after expression"));
+            return res;
+        }
     }
     else if (stream.Match(TokenType::RayTerminate))
     {
         res = Alloc<TerminateStatement>(nullptr, TerminateStatement::TerminationType::RayTerminate);
+        if (!stream.Match(TokenType::SemiColon))
+        {
+            ret.errors.Append(UnexpectedToken(stream, "; after expression"));
+            return res;
+        }
     }
     else if (stream.Match(TokenType::If))
     {
@@ -1874,30 +2166,26 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
         
         Statement* ifBody = ParseStatement(stream, ret);
         if (ifBody == nullptr)
+        {
+            ret.errors.Append(UnexpectedToken(stream, "statement"));
             return res;
+        }
         
         Statement* elseBody = nullptr;
         if (stream.Match(TokenType::Else))
         {
             elseBody = ParseStatement(stream, ret);
+            if (elseBody == nullptr)
+            {
+                ret.errors.Append(UnexpectedToken(stream, "statement"));
+                return res;
+            }
         }
         
         res = Alloc<IfStatement>(cond, ifBody, elseBody);
     }
-    else if (stream.Match(TokenType::LeftScope))
+    else if (res = ParseScopeStatement(stream, ret))
     {
-        PinnedArray<Symbol*> contents = 0xFFFFFFFF;
-        std::vector<Expression*> unfinished;
-        while (Statement* stat = ParseStatement(stream, ret))
-            contents.Append(stat);
-        
-        res = Alloc<ScopeStatement>(std::move(contents), unfinished);
-        
-        if (!stream.Match(TokenType::RightScope))
-        {
-            ret.errors.Append(UnexpectedToken(stream, "}"));
-            return res;
-        }
     }
     else if (stream.Match(TokenType::For))
     {
@@ -1986,6 +2274,12 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
             return res;
         }
         res = Alloc<WhileStatement>(cond, body, true);
+        
+        if (!stream.Match(TokenType::SemiColon))
+        {
+            ret.errors.Append(UnexpectedToken(stream, "; after expression"));
+            return res;
+        }
     }
     else
     {
@@ -1994,16 +2288,11 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
         {
             if (!stream.Match(TokenType::SemiColon))
             {
-                ret.errors.Append(UnexpectedToken(stream, ";"));
+                ret.errors.Append(UnexpectedToken(stream, "; after expression"));
                 return res;
             }
             
             res = Alloc<ExpressionStatement>(exprs);
-        }
-        else
-        {
-            ret.errors.Append(UnexpectedToken(stream, "statement or expression"));
-            return res;
         }
     }
     
@@ -2030,6 +2319,15 @@ Parse(TokenStream& stream)
                 ret.ast->symbols.Append(ParseStruct(stream, ret));
                 lookAhead = 0;
                 break;
+            case TokenType::Directive:
+            {
+                stream.Consume();
+                bool a = stream.Match(TokenType::Identifier);
+                bool b = stream.Match(TokenType::Integer);
+                bool c = stream.Match(TokenType::Quote);
+                lookAhead = 0;
+                break;
+            }
             case TokenType::Const_Storage:
             case TokenType::Var_Storage:
             case TokenType::Uniform_Storage:

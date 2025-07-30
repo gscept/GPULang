@@ -12,7 +12,7 @@
 namespace GPULang
 {
 struct Effect;
-enum TokenType
+enum class TokenType
 {
     InvalidToken
     , End
@@ -81,6 +81,9 @@ enum TokenType
     , PixelOrigin_Attribute
     , DerivativeIndexLinear_Attribute
     , DerivativeIndexQuad_Attribute
+    , Mutable_TypeModifier
+    , Sampled_TypeModifier
+    , Literal_TypeModifier
     , Directive
     , Annot
     , Comma
@@ -129,7 +132,6 @@ enum TokenType
     , NotEqual
     , LogicalOr
     , LogicalAnd
-
     , Assign
     , RenderState
     , SamplerState
@@ -137,11 +139,52 @@ enum TokenType
     , CommentRow
     , CommentBlockStart
     , CommentBlockEnd
+    , Rgba16
+    , Rgb10_A2
+    , Rgba8
+    , Rg16
+    , Rg8
+    , R16
+    , R8
+    , Rgba16_Snorm
+    , Rgba8_Snorm
+    , Rg16_Snorm
+    , Rg8_Snorm
+    , R16_Snorm
+    , R8_Snorm
+    , Rgba32F
+    , Rgba16F
+    , Rg32F
+    , Rg16F
+    , R11G11B10F
+    , R32F
+    , R16F
+    , Rgba32I
+    , Rgba16I
+    , Rgba8I
+    , Rg32I
+    , Rg16I
+    , Rg8I
+    , R32I
+    , R16I
+    , R8I
+    , Rgba32U
+    , Rgba16U
+    , Rgb10_A2U
+    , Rgba8U
+    , Rg32U
+    , Rg16U
+    , Rg8U
+    , R32U
+    , R16U
+    , R8U
+    , UnknownFormat
 };
 
 struct Token
 {
     std::string_view text;
+    FixedString path;
     uint32_t startLine, endLine;
     uint32_t startChar, endChar;
 };
@@ -149,6 +192,7 @@ struct Token
 struct LexerError
 {
     GPULang::FixedString message;
+    GPULang::FixedString path;
     uint32_t line;
     uint32_t pos;
 };
@@ -162,11 +206,12 @@ struct TokenizationResult
 };
 
 // Tokenize string
-TokenizationResult Tokenize(const std::string& text);
+TokenizationResult Tokenize(const std::string& text, const FixedString& path);
 
 struct ParseError
 {
     GPULang::FixedString message;
+    GPULang::FixedString path;
     uint32_t line;
     uint32_t pos;
 };

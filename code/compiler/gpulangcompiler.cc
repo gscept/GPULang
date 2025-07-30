@@ -2293,10 +2293,10 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
 
         timer.Start();
         
-        TokenizationResult tokenizationResult = Tokenize(preprocessed);
+        TokenizationResult tokenizationResult = Tokenize(preprocessed, file->path);
         for (const auto& err : tokenizationResult.errors)
         {
-            printf("Syntax Error: %d:%d, %s\n", err.line, err.pos, err.message.c_str());
+            printf("%s(%d:%d): syntax error %s\n", err.path.c_str(), err.line, err.pos, err.message.c_str());
         }
         
         timer.Stop();
@@ -2308,7 +2308,7 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
         ParseResult parseResult = Parse(tokenStream);
         for (const auto& err : parseResult.errors)
         {
-            printf("Syntax Error: %d:%d, %s\n", err.line, err.pos, err.message.c_str());
+            printf("%s(%d:%d) syntax error %s\n", err.path.c_str(), err.line, err.pos, err.message.c_str());
         }
         timer.Stop();
         if (options.emitTimings)
