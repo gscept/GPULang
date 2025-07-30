@@ -241,7 +241,7 @@ Tokenize(const std::string& text)
     const char* tokenStart = nullptr;
     const char* startOfLine = nullptr;
     TokenType tokenType = TokenType::InvalidToken;
-    uint32_t line = 0;
+    uint32_t line = 1;
     uint32_t charPos = 0;
     
     bool ignore = false;
@@ -270,6 +270,14 @@ Tokenize(const std::string& text)
             continue;
         }
         
+        // End early
+        if (it[0] == '\0')
+        {
+            Token newToken;
+            ret.tokens.Append(newToken);
+            ret.tokenTypes.Append(TokenType::End);
+            return ret;
+        }
         
         if (it[0] == '\r')
         {
@@ -454,6 +462,11 @@ Tokenize(const std::string& text)
             continue;
         }
     }
+    
+    // Add end of line
+    Token newToken;
+    ret.tokens.Append(newToken);
+    ret.tokenTypes.Append(TokenType::End);
     return ret;
 }
 
@@ -499,10 +512,36 @@ IncorrectToken(const TokenStream& stream)
 //------------------------------------------------------------------------------
 /**
  */
+ParseError
+Limit(const TokenStream& stream, const char* name, size_t size)
+{
+    ParseError error;
+    error.message = TStr("Limit %s(%d) reached", name, size);
+    error.line = stream.Data(0).startLine;
+    error.pos = stream.Data(0).startChar;
+    return error;
+}
+
+Expression* ParseExpression(TokenStream&, ParseResult&, Expression*, int);
+//------------------------------------------------------------------------------
+/**
+ */
 FixedArray<Expression*>
 ParseExpressionList(TokenStream& stream, ParseResult& ret)
 {
-    
+    TransientArray<Expression*> expressions(256);
+    while (Expression* expr = ParseExpression(stream, ret, nullptr, 0))
+    {
+        if (expressions.Full())
+        {
+            ret.errors.Append(Limit(stream, "expression list length", 256));
+            break;
+        }
+        expressions.Append(expr);
+        if (!stream.Match(TokenType::Comma))
+            break;
+    }
+    return FixedArray<Expression*>(expressions);
 }
 
 //------------------------------------------------------------------------------
@@ -720,7 +759,6 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
             arguments = ParseExpressionList(stream, ret);
             if (stream.Match(TokenType::RightParant))
             {
-                stream.Consume();
                 res = Alloc<CallExpression>(res, std::move(arguments));
             }
             else
@@ -859,15 +897,31 @@ ParseAttribute(TokenStream& stream, ParseResult& ret)
     Attribute* res = nullptr;
     if (stream.Match(TokenType::Identifier))
     {
-        res = Alloc<Attribute>();
         if (stream.Match(TokenType::LeftParant))
         {
-            res->expression = ParseExpression(stream, ret);
+            Expression* expr = ParseExpression(stream, ret);
+            if (expr == nullptr)
+            {
+                // Unmatch identifier and left paranthesis
+                stream.Unmatch(2);
+                return nullptr;
+            }
+            
+            res = Alloc<Attribute>();
+            res->name = stream.Data(-1).text;
+            res->location = LocationFromToken(stream.Data(-1));
+            res->expression = expr;
             if (!stream.Match(TokenType::RightParant))
             {
                 ret.errors.Append(UnexpectedToken(stream, ")"));
                 return nullptr;
             }
+        }
+        else
+        {
+            res = Alloc<Attribute>();
+            res->name = stream.Data(-1).text;
+            res->location = LocationFromToken(stream.Data(-1));
         }
     }
     return res;
@@ -876,17 +930,217 @@ ParseAttribute(TokenStream& stream, ParseResult& ret)
 //------------------------------------------------------------------------------
 /**
  */
-Variable*
-ParseVariable(TokenStream& stream, ParseResult& ret)
+bool
+ParseType(TokenStream& stream, ParseResult& ret, Type::FullType& res)
 {
-    
+    if (stream.Match(TokenType::Mul))
+    {
+        res.AddModifier(Type::FullType::Modifier::Pointer);
+    }
+    else if (stream.Match(TokenType::LeftBracket))
+    {
+        Expression* sizeExpr = ParseExpression(stream, ret);
+        if (sizeExpr != nullptr)
+        {
+            res.AddModifier(Type::FullType::Modifier::Array, sizeExpr);
+        }
+        else
+        {
+            res.AddModifier(Type::FullType::Modifier::Array);
+        }
+        
+        if (!stream.Match(TokenType::RightBracket))
+        {
+            ret.errors.Append(UnexpectedToken(stream, "]"));
+            return false;
+        }
+    }
+    if (!stream.Match(TokenType::Identifier))
+    {
+        ret.errors.Append(UnexpectedToken(stream, "type"));
+        return false;
+    }
+    res.name = stream.Data(-1).text;
+    // TODO: Add location
+    return true;
 }
 
 //------------------------------------------------------------------------------
 /**
  */
+Variable*
+ParseVariable(TokenStream& stream, ParseResult& ret)
+{
+    Variable* res = nullptr;
+    TransientArray<Annotation*> annotations(32);
+    TransientArray<Attribute*> attributes(32);
+    while (auto annot = ParseAnnotation(stream, ret))
+    {
+        annotations.Append(annot);
+    }
+    while (auto attr = ParseAttribute(stream, ret))
+    {
+        attributes.Append(attr);
+    }
+    if (!(stream.Match(TokenType::Constant)
+          || stream.Match(TokenType::Var)
+          || stream.Match(TokenType::Workgroup)
+          || stream.Match(TokenType::Uniform)
+        ))
+    {
+        ret.errors.Append(UnexpectedToken(stream, "const/var/workgroup/uniform"));
+        return nullptr;
+    }
+    
+    Attribute* storage = Alloc<Attribute>();
+    storage->name = stream.Data(-1).text;
+    storage->location = LocationFromToken(stream.Data(-1));
+    storage->expression = nullptr;
+    attributes.Append(storage);
+    
+    if (!stream.Match(TokenType::Identifier))
+    {
+        ret.errors.Append(UnexpectedToken(stream, "variable name"));
+        return nullptr;
+    }
+    res = Alloc<Variable>();
+    res->name = stream.Data(-1).text;
+    res->location = LocationFromToken(stream.Data(-1));
+    res->annotations = annotations;
+    res->attributes = attributes;
+    
+    if (stream.Match(TokenType::Colon))
+    {
+        if (!ParseType(stream, ret, res->type))
+        {
+            return res;
+        }
+        
+        if (stream.Match(TokenType::Equal))
+        {
+            res->valueExpression = ParseExpression(stream, ret);
+        }
+    }
+    else
+    {
+        // If no explicit type is given, we require that the variable is assigned to
+        if (!stream.Match(TokenType::Assign))
+        {
+            ret.errors.Append(UnexpectedToken(stream, "variable type or expression"));
+            return nullptr;
+        }
+        res->valueExpression = ParseExpression(stream, ret);
+    }
+    
+    if (!stream.Match(TokenType::SemiColon))
+    {
+        ret.errors.Append(UnexpectedToken(stream, ";"));
+        return nullptr;
+    }
+    
+}
+
+Statement* ParseStatement(TokenStream& stream, ParseResult& ret);
+//------------------------------------------------------------------------------
+/**
+ */
 Function*
 ParseFunction(TokenStream& stream, ParseResult& ret)
+{
+    Function* res = nullptr;
+    TransientArray<Annotation*> annotations(32);
+    TransientArray<Attribute*> attributes(32);
+    while (auto annot = ParseAnnotation(stream, ret))
+    {
+        annotations.Append(annot);
+    }
+    while (auto attr = ParseAttribute(stream, ret))
+    {
+        attributes.Append(attr);
+    }
+    if (!stream.Match(TokenType::Identifier))
+    {
+        ret.errors.Append(UnexpectedToken(stream, "function name"));
+        return nullptr;
+    }
+    
+    res = Alloc<Function>();
+    res->annotations = annotations;
+    res->attributes = attributes;
+    res->name = stream.Data(-1).text;
+    
+    if (!stream.Match(TokenType::LeftParant))
+    {
+        ret.errors.Append(UnexpectedToken(stream, "("));
+        return nullptr;
+    }
+    
+    while (true)
+    {
+        TransientArray<Attribute*> paramAttributes(32);
+        while (auto attr = ParseAttribute(stream, ret))
+        {
+            paramAttributes.Append(attr);
+        }
+         
+        if (paramAttributes.size > 0)
+        {
+            Attribute* lastAttr = paramAttributes.back();
+            if (lastAttr->expression != nullptr)
+            {
+                ret.errors.Append(UnexpectedToken(stream, "parameter name"));
+                return nullptr;
+            }
+            
+            paramAttributes.size--;
+            Variable* var = Alloc<Variable>();
+            var->name = lastAttr->name;
+            var->location = lastAttr->location;
+            
+            if (!stream.Match(TokenType::Colon))
+            {
+                ret.errors.Append(UnexpectedToken(stream, "parameter type"));
+                return nullptr;
+            }
+            
+            if (!ParseType(stream, ret, var->type))
+                return res;
+        }
+        
+        if (stream.Match(TokenType::Comma))
+            continue;
+
+        break;
+    }
+    
+    // If no comma and parameter is fully parsed, but there is no ), it means invalid argument list
+    if (!stream.Match(TokenType::RightParant))
+    {
+        ret.errors.Append(UnexpectedToken(stream, ")"));
+        return res;
+    }
+    
+    if (!ParseType(stream, ret, res->returnType))
+        return res;
+    
+    if (!stream.Match(TokenType::LeftScope))
+    {
+        ret.errors.Append(UnexpectedToken(stream, "{"));
+        return res;
+    }
+    
+    res->ast = ParseStatement(stream, ret);
+    if (res->ast == nullptr)
+        return res;
+    
+    if (!stream.Match(TokenType::RightScope))
+    {
+        ret.errors.Append(UnexpectedToken(stream, "}"));
+        return res;
+    }
+    return res;
+}
+
 
 //------------------------------------------------------------------------------
 /**
@@ -922,20 +1176,64 @@ ParseStruct(TokenStream& stream, ParseResult& ret)
         str->name = tok.text;
         str->location = LocationFromToken(tok);
         
+        str->annotations = annotations;
+        str->attributes = attributes;
+        
         if (!stream.Match(TokenType::LeftScope))
         {
-            ret.errors.Append(UnexpectedToken(stream, "'{'"));
+            ret.errors.Append(UnexpectedToken(stream, "{"));
             return str;
         }
         
         TransientArray<Variable*> members(1024);
-        if (!stream.Match(TokenType::Identifier) && !stream.Match(TokenType::Colon))
+        while (stream.Match(TokenType::Identifier))
         {
+            Variable* var = Alloc<Variable>();
+            var->name = stream.Data(-1).text;
+            var->location = LocationFromToken(stream.Data(-1));
             
+            if (!stream.Match(TokenType::Colon))
+            {
+                ret.errors.Append(UnexpectedToken(stream, "member type"));
+                return str;
+            }
+            
+            if (!ParseType(stream, ret, var->type))
+            {
+                ret.errors.Append(UnexpectedToken(stream, "type"));
+                return str;
+            }
+            
+            if (!stream.Match(TokenType::SemiColon))
+            {
+                ret.errors.Append(UnexpectedToken(stream, ";"));
+                return str;
+            }
+            members.Append(var);
+        }
+        
+        if (!stream.Match(TokenType::RightScope))
+        {
+            ret.errors.Append(UnexpectedToken(stream, "}"));
+            return str;
+        }
+        
+        if (!stream.Match(TokenType::SemiColon))
+        {
+            ret.errors.Append(UnexpectedToken(stream, ";"));
+            return str;
         }
     }
 }
 
+//------------------------------------------------------------------------------
+/**
+ */
+Statement*
+ParseStatement(TokenStream& stream, ParseResult& ret)
+{
+    
+}
 
 //------------------------------------------------------------------------------
 /**
@@ -949,19 +1247,20 @@ Parse(TokenStream& stream)
     size_t lookAhead = 0;
     while (type != TokenType::InvalidToken)
     {
+        if (ret.errors.size > 0)
+            return ret;
         switch (type)
         {
             case TokenType::Struct:
-                //stream.PushLookBehind(lookAhead);
-                //stream.Consume(lookAhead);
                 ret.ast->symbols.Append(ParseStruct(stream, ret));
-                //stream.PopLookBehind();
+                lookAhead = 0;
                 break;
             case TokenType::Constant:
             case TokenType::Var:
             case TokenType::Uniform:
             case TokenType::Workgroup:
                 ret.ast->symbols.Append(ParseVariable(stream, ret));
+                lookAhead = 0;
                 break;
             case TokenType::Enum:
             case TokenType::RenderState:
@@ -973,15 +1272,24 @@ Parse(TokenStream& stream)
                 if (stream.Type(lookAhead+1) == TokenType::Identifier)
                 {
                     ret.ast->symbols.Append(ParseFunction(stream, ret));
-                    break;
+                    lookAhead = 0;
                 }
-            case TokenType::Identifier: // variables and functions
+                else
+                    lookAhead++;
+                break;
+            case TokenType::End:
+                if (lookAhead > 0)
+                {
+                    ret.errors.Append(UnexpectedToken(stream, "one of the following:\n    struct\n    enum\n    variable (const/var/uniform/workgroup)\n    function\n    render_state\n    sampler_state\n    program\n    generate\n\n"));
+                }
+                goto end;
             default:
                 lookAhead++;
         }
         
         type = stream.Type(lookAhead);
     }
+end:
     
     return ret;
 }

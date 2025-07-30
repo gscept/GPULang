@@ -15,6 +15,7 @@ struct Effect;
 enum TokenType
 {
     InvalidToken
+    , End
     , Identifier
     , Float
     , Double
@@ -170,6 +171,11 @@ struct TokenStream
             return true;
         }
         return false;
+    }
+    
+    void Unmatch(size_t count)
+    {
+        this->tokenIndex -= count;
     }
     
     size_t tokenIndex = 0;
