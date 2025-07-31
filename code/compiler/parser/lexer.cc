@@ -631,7 +631,7 @@ Tokenize(const std::string& text, const FixedString& path)
                         }
                         std::string_view lineNo(begin, it);
                         int newLine;
-                        std::from_chars(lineNo.begin(), lineNo.end(), newLine);
+                        std::from_chars(lineNo.data(), lineNo.data() + lineNo.size(), newLine);
                         line = newLine;
                         
                         it = skipWS(it+1, end);
