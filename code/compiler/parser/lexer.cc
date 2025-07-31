@@ -329,6 +329,13 @@ static auto numberChar = [](const char c) -> bool
     return false;
 };
 
+static auto hexChar = [](const char c) -> bool
+{
+    if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f'))
+        return true;
+    return false;
+};
+
 //------------------------------------------------------------------------------
 /**
  */
@@ -446,62 +453,79 @@ Tokenize(const std::string& text, const FixedString& path)
             TokenType type = TokenType::Integer;
             const char* begin = it;
             if (it[1] == 'x')
+            {
                 type = TokenType::Hex;
-            while (it != end)
-            {
-                if (!numberChar(it[0]))
-                    break;
-                it++;
-            }
-            
-            // If decimal point
-            
-            if (it[0] == '.')
-            {
-                if (type == TokenType::Hex)
+                it += 2;
+                begin += 2; // Skip the 0x bit
+                while (it != end)
                 {
-                    LexerError error;
-                    error.path = currentPath;
-                    error.message = "Incorrectly formatted hex number";
-                    error.line = line;
-                    error.pos = it - startOfLine;
-                    ret.errors.Append(error);
-                }
-                if (numberStart(it[1]))
-                {
-                    type = TokenType::Double;
+                    if (!hexChar(it[0]))
+                        break;
                     it++;
-                    while (it != end)
+                }
+                
+                // Unsigned hex
+                if (it[0] == 'u' || it[0] == 'U')
+                {
+                    type = TokenType::UnsignedHex;
+                    it++;
+                }
+            }
+            else
+            {
+                while (it != end)
+                {
+                    if (!numberChar(it[0]))
+                        break;
+                    it++;
+                }
+                
+                // If decimal point
+                if (it[0] == '.')
+                {
+                    if (type == TokenType::Hex)
                     {
-                        if (!numberChar(it[0]))
-                            break;
+                        LexerError error;
+                        error.path = currentPath;
+                        error.message = "Incorrectly formatted hex number";
+                        error.line = line;
+                        error.pos = it - startOfLine;
+                        ret.errors.Append(error);
+                    }
+                    if (numberStart(it[1]))
+                    {
+                        type = TokenType::Double;
+                        it++;
+                        while (it != end)
+                        {
+                            if (!numberChar(it[0]))
+                                break;
+                            it++;
+                        }
+                    }
+                    else
+                    {
+                        // Bad integer, throw error
+                        LexerError error;
+                        error.path = currentPath;
+                        error.message = "Incorrectly formatted floating point number";
+                        error.line = line;
+                        error.pos = it - startOfLine;
+                        ret.errors.Append(error);
+                    }
+                    
+                    // Floating point (not double)
+                    if (it[0] == 'f' || it[0] == 'F')
+                    {
+                        type = TokenType::Float;
                         it++;
                     }
                 }
-                else
+                else if (it[0] == 'u' || it[0] == 'U')
                 {
-                    // Bad integer, throw error
-                    LexerError error;
-                    error.path = currentPath;
-                    error.message = "Incorrectly formatted floating point number";
-                    error.line = line;
-                    error.pos = it - startOfLine;
-                    ret.errors.Append(error);
-                }
-                // Floating point (not double)
-                if (it[0] == 'f' || it[0] == 'F')
-                {
-                    type = TokenType::Float;
+                    type = TokenType::UnsignedInteger;
                     it++;
                 }
-            }
-            else if (it[0] == 'u' || it[0] == 'U')
-            {
-                if (type == TokenType::Hex)
-                    type = TokenType::UnsignedHex;
-                else
-                    type = TokenType::UnsignedInteger;
-                it++;
             }
         
             newToken.text = std::string_view(begin, it);
@@ -612,6 +636,8 @@ Tokenize(const std::string& text, const FixedString& path)
                 }
             }
             
+            const char* begin = it;
+            it++;
             if (it1 == HardCodedTokens.end())
             {
                 LexerError error;
@@ -624,26 +650,34 @@ Tokenize(const std::string& text, const FixedString& path)
             else
             {
                 // Check for multi character operators
-                std::string_view threeCharOp(it, it+3);
+                std::string_view threeCharOp(begin, it+2);
                 auto it3 = HardCodedTokens.Find(threeCharOp);
                 if (it3 == HardCodedTokens.end())
                 {
-                    std::string_view twoCharOp(it, it+2);
+                    std::string_view twoCharOp(begin, it+1);
                     auto it2 = HardCodedTokens.Find(twoCharOp);
                     if (it2 != HardCodedTokens.end())
+                    {
                         it1 = it2;
+                        it++;
+                    }
                 }
                 else
+                {
                     it1 = it3;
+                    it += 2;
+                }
             }
-            newToken.text = std::string_view(it, it+1);
-            newToken.startLine = line;
-            newToken.endLine = line;
-            newToken.startChar = it - startOfLine;
-            newToken.endChar = it + newToken.text.length() - startOfLine;
-            it += newToken.text.length();
-            ret.tokens.Append(newToken);
-            ret.tokenTypes.Append(it1->second);
+            if (it1 != HardCodedTokens.end())
+            {
+                newToken.text = std::string_view(begin, it);
+                newToken.startLine = line;
+                newToken.endLine = line;
+                newToken.startChar = begin - startOfLine;
+                newToken.endChar = it - startOfLine;
+                ret.tokens.Append(newToken);
+                ret.tokenTypes.Append(it1->second);
+            }
             continue;
         }
     }
@@ -764,6 +798,7 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 1);
             res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
+            res->location = LocationFromToken(tok);
         }
     }
     else if (precedence == 1)
@@ -771,11 +806,13 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
         res = ParseExpression(stream, ret, res, 2);
         while (stream.Match(TokenType::Question))
         {
+            const Token& tok = stream.Data(-1);
             Expression* true_value = ParseExpression(stream, ret, res, 0);
             if (stream.Match(TokenType::Colon))
             {
                 Expression* false_value = ParseExpression(stream, ret, res, 0);
                 res = Alloc<TernaryExpression>(res, true_value, false_value);
+                res->location = LocationFromToken(tok);
             }
             else
             {
@@ -792,6 +829,8 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 3);
             res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
+            res->location = LocationFromToken(tok);
+
         }
     }
     else if (precedence == 3)
@@ -802,6 +841,8 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 4);
             res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
+            res->location = LocationFromToken(tok);
+
         }
     }
     else if (precedence == 4)
@@ -812,6 +853,7 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 5);
             res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
+            res->location = LocationFromToken(tok);
         }
     }
     else if (precedence == 5)
@@ -822,6 +864,7 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 6);
             res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
+            res->location = LocationFromToken(tok);
         }
     }
     else if (precedence == 6)
@@ -832,6 +875,7 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 7);
             res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
+            res->location = LocationFromToken(tok);
         }
     }
     else if (precedence == 7)
@@ -842,6 +886,7 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 8);
             res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
+            res->location = LocationFromToken(tok);
         }
     }
     else if (precedence == 8)
@@ -852,6 +897,7 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 9);
             res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
+            res->location = LocationFromToken(tok);
         }
     }
     else if (precedence == 9)
@@ -862,6 +908,7 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 10);
             res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
+            res->location = LocationFromToken(tok);
         }
     }
     else if (precedence == 10)
@@ -872,6 +919,7 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 11);
             res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
+            res->location = LocationFromToken(tok);
         }
     }
     else if (precedence == 11)
@@ -882,13 +930,27 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 12);
             res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
+            res->location = LocationFromToken(tok);
         }
     }
     else if (precedence == 12)
     {
-        if (res != nullptr)
-        {
-            if (stream.Match(TokenType::Sub)
+        if (stream.Match(TokenType::Sub)
+            || stream.Match(TokenType::Add)
+            || stream.Match(TokenType::Not)
+            || stream.Match(TokenType::Complement)
+            || stream.Match(TokenType::Increment)
+            || stream.Match(TokenType::Decrement)
+            || stream.Match(TokenType::Mul)
+            || stream.Match(TokenType::And)
+        )
+        do {
+            const Token& tok = stream.Data(-1);
+            
+            Expression* rhs = ParseExpression(stream, ret, res, 13);
+            res = Alloc<UnaryExpression>(StringToFourCC(TransientString(tok.text)), true, rhs);
+            res->location = LocationFromToken(tok);
+        } while(stream.Match(TokenType::Sub)
                 || stream.Match(TokenType::Add)
                 || stream.Match(TokenType::Not)
                 || stream.Match(TokenType::Complement)
@@ -896,36 +958,33 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
                 || stream.Match(TokenType::Decrement)
                 || stream.Match(TokenType::Mul)
                 || stream.Match(TokenType::And)
-            )
-            do {
-                const Token& tok = stream.Data(-1);
-                
-                Expression* rhs = ParseExpression(stream, ret, res, 13);
-                res = Alloc<UnaryExpression>(StringToFourCC(TransientString(tok.text)), true, rhs);
-            } while(stream.Match(TokenType::Sub)
-                    || stream.Match(TokenType::Add)
-                    || stream.Match(TokenType::Not)
-                    || stream.Match(TokenType::Complement)
-                    || stream.Match(TokenType::Increment)
-                    || stream.Match(TokenType::Decrement)
-                    || stream.Match(TokenType::Mul)
-                    || stream.Match(TokenType::And)
-                    );
-            else
-                res = ParseExpression(stream, ret, res, 13);
-        }
+                );
         else
             res = ParseExpression(stream, ret, res, 13);
+
     }
     else if (precedence == 13)
     {
         res = ParseExpression(stream, ret, res, 14);
+        while (stream.Match(TokenType::Dot))
+        {
+            const Token& tok = stream.Data(-1);
+            Expression* rhs = ParseExpression(stream, ret, res, 14);
+            res = Alloc<AccessExpression>(res, rhs, false);
+            res->location = LocationFromToken(tok);
+        }
+    }
+    else if (precedence == 14)
+    {
+        res = ParseExpression(stream, ret, res, 15);
         while (stream.Match(TokenType::LeftBracket))
         {
-            Expression* index = ParseExpression(stream, ret, res, 14);
+            const Token& tok = stream.Data(-1);
+            Expression* index = ParseExpression(stream, ret, res, 15);
             if (stream.Match(TokenType::RightBracket))
             {
                 res = Alloc<ArrayIndexExpression>(res, index);
+                res->location = LocationFromToken(tok);
             }
             else
             {
@@ -934,25 +993,18 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
             }
         }
     }
-    else if (precedence == 14)
-    {
-        res = ParseExpression(stream, ret, res, 15);
-        while (stream.Match(TokenType::Dot))
-        {
-            Expression* rhs = ParseExpression(stream, ret, res, 15);
-            res = Alloc<AccessExpression>(res, rhs, false);
-        }
-    }
     else if (precedence == 15)
     {
         res = ParseExpression(stream, ret, res, 16);
         if (stream.Match(TokenType::LeftParant))
         {
+            const Token& tok = stream.Data(-1);
             FixedArray<Expression*> arguments;
             arguments = ParseExpressionList(stream, ret);
             if (stream.Match(TokenType::RightParant))
             {
                 res = Alloc<CallExpression>(res, std::move(arguments));
+                res->location = LocationFromToken(tok);
             }
             else
             {
@@ -966,7 +1018,9 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
         res = ParseExpression(stream, ret, res, 17);
         if (stream.Match(TokenType::Increment) || stream.Match(TokenType::Decrement))
         {
+            const Token& tok = stream.Data(-1);
             res = Alloc<UnaryExpression>(StringToFourCC(TransientString(stream.Data(-1).text)), false, res);
+            res->location = LocationFromToken(tok);
         }
     }
     else if (precedence == 17)
@@ -982,6 +1036,7 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
             int value;
             std::from_chars(tok.text.data(), tok.text.data() + tok.text.size(), value);
             res = Alloc<IntExpression>(value);
+            res->location = LocationFromToken(tok);
         }
         else if (stream.Match(TokenType::UnsignedInteger))
         {
@@ -989,29 +1044,35 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
             unsigned int value;
             std::from_chars(tok.text.data(), tok.text.data() + tok.text.size(), value);
             res = Alloc<UIntExpression>(value);
+            res->location = LocationFromToken(tok);
         }
         else if (stream.Match(TokenType::Hex))
         {
             const Token& tok = stream.Data(-1);
             int value;
-            std::from_chars(tok.text.data(), tok.text.data() + tok.text.size(), value);
+            std::from_chars(tok.text.data(), tok.text.data() + tok.text.size(), value, 16);
             res = Alloc<IntExpression>(value);
+            res->location = LocationFromToken(tok);
         }
         else if (stream.Match(TokenType::UnsignedHex))
         {
             const Token& tok = stream.Data(-1);
             unsigned int value;
-            std::from_chars(tok.text.data(), tok.text.data() + tok.text.size(), value);
+            std::from_chars(tok.text.data(), tok.text.data() + tok.text.size(), value, 16);
             res = Alloc<UIntExpression>(value);
+            res->location = LocationFromToken(tok);
         }
         else if (stream.Match(TokenType::Float) || stream.Match(TokenType::Double))
         {
             const Token& tok = stream.Data(-1);
             res = Alloc<FloatExpression>(std::stof(std::string(tok.text)));
+            res->location = LocationFromToken(tok);
         }
         else if (stream.Match(TokenType::Bool))
         {
-            res = Alloc<BoolExpression>(stream.Data(-1).text == "true" ? true : false);
+            const Token& tok = stream.Data(-1);
+            res = Alloc<BoolExpression>(tok.text == "true" ? true : false);
+            res->location = LocationFromToken(tok);
         }
         else if (stream.Match(TokenType::LeftParant))
         {
@@ -1026,15 +1087,18 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
         {
             const Token& tok = stream.Data(-1);
             res = Alloc<SymbolExpression>(FixedString(tok.text));
+            res->location = LocationFromToken(tok);
         }
         else if (stream.Match(TokenType::Declared))
         {
+            const Token& tok = stream.Data(-1);
             if (stream.Match(TokenType::LeftAngle))
             {
                 if (stream.Match(TokenType::Identifier))
                 {
                     const Token& tok = stream.Data(-1);
                     res = Alloc<DeclaredExpression>(FixedString(tok.text));
+                    res->location = LocationFromToken(tok);
                     
                     if (!stream.Match(TokenType::RightAngle))
                     {
@@ -1451,6 +1515,7 @@ ParseVariable(TokenStream& stream, ParseResult& ret)
             ret.errors.Append(UnexpectedToken(stream, "variable type or expression"));
             return nullptr;
         }
+        res->type = Type::FullType{UNDEFINED_TYPE};
         res->valueExpression = ParseExpression(stream, ret);
     }
     
@@ -1516,6 +1581,7 @@ ParseFunction(TokenStream& stream, ParseResult& ret)
         Variable* var = Alloc<Variable>();
         var->name = stream.Data(-1).text;
         var->location = LocationFromToken(stream.Data(-1));
+        var->attributes = paramAttributes;
         
         if (!stream.Match(TokenType::Colon))
         {
@@ -1757,6 +1823,97 @@ ParseProgram(TokenStream& stream, ParseResult& ret)
     return res;
 }
 
+Statement* ParseGenerateStatement(TokenStream& stream, ParseResult& ret);
+//------------------------------------------------------------------------------
+/**
+ */
+Statement*
+ParseGenerateScopeStatement(TokenStream& stream, ParseResult& ret)
+{
+    Statement* res = nullptr;
+    if (stream.Match(TokenType::LeftAngle))
+    {
+        size_t lookAhead = 0;
+        TokenType type = stream.Type(0);
+        PinnedArray<Symbol*> symbols = 0xFFFFFF;
+        std::vector<Expression*> unfinished;
+        while (true)
+        {
+            switch (type)
+            {
+                case TokenType::Const_Storage:
+                case TokenType::Var_Storage:
+                case TokenType::Uniform_Storage:
+                case TokenType::Workgroup_Storage:
+                case TokenType::Inline_Storage:
+                case TokenType::LinkDefined_Storage:
+                {
+                    Variable* var = ParseVariable(stream, ret);
+                    lookAhead = 0;
+                    if (var != nullptr)
+                        symbols.Append(var);
+                    else
+                        return res;
+                    break;
+                }
+                case TokenType::TypeAlias:
+                {
+                    Alias* alias = ParseAlias(stream, ret);
+                    lookAhead = 0;
+                    if (alias != nullptr)
+                        symbols.Append(alias);
+                    else
+                        return res;
+                    break;
+                }
+                case TokenType::Identifier:
+                {
+                    // Functions end with ) IDENTIFIER
+                    if (stream.Type(lookAhead+1) == TokenType::LeftParant)
+                    {
+                        Function* fun = ParseFunction(stream, ret);
+                        lookAhead = 0;
+                        if (fun != nullptr)
+                            symbols.Append(fun);
+                        else
+                            return res;
+                    }
+                    else
+                        lookAhead++;
+                    break;
+                }
+                case TokenType::If:
+                {
+                    Statement* stat = ParseGenerateStatement(stream, ret);
+                    lookAhead = 0;
+                    if (stat != nullptr)
+                        symbols.Append(stat);
+                    else
+                        return res;
+                    break;
+                }
+                case TokenType::RightAngle:
+                {
+                    goto end;
+                }
+                default:
+                    lookAhead++;
+            }
+            type = stream.Type(lookAhead);
+        }
+    end:
+        
+        res = Alloc<ScopeStatement>(std::move(symbols), unfinished);
+        
+        if (!stream.Match(TokenType::RightAngle))
+        {
+            ret.errors.Append(UnexpectedToken(stream, ">"));
+            return res;
+        }
+    }
+    return res;
+}
+
 //------------------------------------------------------------------------------
 /**
  */
@@ -1767,9 +1924,9 @@ ParseGenerateStatement(TokenStream& stream, ParseResult& ret)
 
     if (stream.Match(TokenType::If))
     {
-        if (!stream.Match(TokenType::LeftAngle))
+        if (!stream.Match(TokenType::LeftParant))
         {
-            ret.errors.Append(UnexpectedToken(stream, "<"));
+            ret.errors.Append(UnexpectedToken(stream, "("));
             return res;
         }
         
@@ -1777,9 +1934,9 @@ ParseGenerateStatement(TokenStream& stream, ParseResult& ret)
         if (cond == nullptr)
             return res;
         
-        if (!stream.Match(TokenType::RightAngle))
+        if (!stream.Match(TokenType::RightParant))
         {
-            ret.errors.Append(UnexpectedToken(stream, ">"));
+            ret.errors.Append(UnexpectedToken(stream, ")"));
             return res;
         }
         
@@ -1795,44 +1952,11 @@ ParseGenerateStatement(TokenStream& stream, ParseResult& ret)
         
         res = Alloc<IfStatement>(cond, ifBody, elseBody);
     }
-    else if (stream.Match(TokenType::LeftAngle))
+    else if (res = ParseGenerateScopeStatement(stream, ret)) {}
+    else
     {
-        PinnedArray<Symbol*> contents = 0xFFFFFFFF;
-        std::vector<Expression*> unfinished;
-        
-        while (true)
-        {
-            Statement* stat = ParseGenerateStatement(stream, ret);
-            if (stat != nullptr)
-            {
-                contents.Append(stat);
-                continue;
-            }
-            
-            Variable* var = ParseVariable(stream, ret);
-            if (var != nullptr)
-            {
-                contents.Append(var);
-                continue;
-            }
-            
-            Alias* al = ParseAlias(stream, ret);
-            if (al != nullptr)
-            {
-                contents.Append(al);
-                continue;
-            }
-            
-            break;
-        }
-        
-        res = Alloc<ScopeStatement>(std::move(contents), unfinished);
-        
-        if (!stream.Match(TokenType::RightAngle))
-        {
-            ret.errors.Append(UnexpectedToken(stream, "}"));
-            return res;
-        }
+        ret.errors.Append(UnexpectedToken(stream, "if statement or generation scope"));
+        return res;
     }
     
     return res;
@@ -1852,91 +1976,23 @@ ParseGenerate(TokenStream& stream, ParseResult& ret)
         return res;
     }
     
-    if (!stream.Match(TokenType::LeftAngle))
+    ScopeStatement* body = (ScopeStatement*)ParseGenerateScopeStatement(stream, ret);
+    if (body == nullptr)
     {
-        ret.errors.Append(UnexpectedToken(stream, "<"));
+        ret.errors.Append(UnexpectedToken(stream, "generate body"));
         return res;
     }
     
-    size_t lookAhead = 0;
-    TokenType type = stream.Type(0);
-    PinnedArray<Symbol*> symbols = 0xFFFFFF;
-    while (true)
-    {
-        switch (type)
-        {
-            case TokenType::Const_Storage:
-            case TokenType::Var_Storage:
-            case TokenType::Uniform_Storage:
-            case TokenType::Workgroup_Storage:
-            case TokenType::Inline_Storage:
-            case TokenType::LinkDefined_Storage:
-            {
-                Variable* var = ParseVariable(stream, ret);
-                lookAhead = 0;
-                if (var != nullptr)
-                    symbols.Append(var);
-                else
-                    return res;
-                break;
-            }
-            case TokenType::TypeAlias:
-            {
-                Alias* alias = ParseAlias(stream, ret);
-                lookAhead = 0;
-                if (alias != nullptr)
-                    symbols.Append(alias);
-                else
-                    return res;
-                break;
-            }
-            case TokenType::Identifier:
-            {
-                // Functions end with ) IDENTIFIER
-                if (stream.Type(lookAhead+1) == TokenType::LeftParant)
-                {
-                    Function* fun = ParseFunction(stream, ret);
-                    lookAhead = 0;
-                    if (fun != nullptr)
-                        symbols.Append(fun);
-                    else
-                        return res;
-                }
-                else
-                    lookAhead++;
-                break;
-            }
-            case TokenType::If:
-            {
-                Statement* stat = ParseGenerateStatement(stream, ret);
-                lookAhead = 0;
-                if (stat != nullptr)
-                    symbols.Append(stat);
-                else
-                    return res;
-                break;
-            }
-            case TokenType::RightAngle:
-            {
-                goto end;
-            }
-            default:
-                lookAhead++;
-        }
-        type = stream.Type(lookAhead);
-    }
+    res = Alloc<Generate>(body->symbols);
     
-end:
-    if (!stream.Match(TokenType::RightAngle))
+    if (!stream.Match(TokenType::SemiColon))
     {
-        ret.errors.Append(UnexpectedToken(stream, ">"));
+        ret.errors.Append(UnexpectedToken(stream, ";"));
         return res;
     }
     
     return res;
 }
-
-
 
 //------------------------------------------------------------------------------
 /**
@@ -1996,7 +2052,7 @@ ParseStruct(TokenStream& stream, ParseResult& ret)
         
         if (!stream.Match(TokenType::Colon))
         {
-            ret.errors.Append(UnexpectedToken(stream, "member type"));
+            ret.errors.Append(UnexpectedToken(stream, ":"));
             break;
         }
         
@@ -2418,7 +2474,8 @@ Parse(TokenStream& stream)
                     lookAhead = 0;
                     if (fun != nullptr)
                         ret.ast->symbols.Append(fun);
-                    goto end;
+                    else
+                        goto end;
                 }
                 else
                     lookAhead++;
