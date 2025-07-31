@@ -257,7 +257,9 @@ struct TokenStream
     {
         if (this->Type(0) == type)
         {
+            this->lastMatched = type;
             this->tokenIndex++;
+            this->current = this->Type(0);
             return true;
         }
         return false;
@@ -268,6 +270,8 @@ struct TokenStream
         this->tokenIndex -= count;
     }
     
+    TokenType lastMatched;
+    TokenType current;
     size_t tokenIndex = 0;
     PinnedArray<TokenType> tokenTypes = 0xFFFFFF;
     PinnedArray<Token> tokens = 0xFFFFFF;

@@ -252,17 +252,20 @@ struct PinnedArray
         this->size = 0;
         this->committedPages = 0;
         this->maxAllocationCount = rhs.maxAllocationCount;
-        this->Grow(rhs.size);
-        if (std::is_trivially_copyable<TYPE>::value)
+        if (rhs.size > 0)
         {
-            memcpy(this->data + this->size, rhs.data, rhs.size * sizeof(TYPE));
-            this->size += rhs.size;
-        }
-        else
-        {
-            for (const auto& elem : rhs)
+            this->Grow(rhs.size);
+            if (std::is_trivially_copyable<TYPE>::value)
             {
-                this->data[this->size++] = elem;
+                memcpy(this->data + this->size, rhs.data, rhs.size * sizeof(TYPE));
+                this->size += rhs.size;
+            }
+            else
+            {
+                for (const auto& elem : rhs)
+                {
+                    this->data[this->size++] = elem;
+                }
             }
         }
     }
@@ -276,17 +279,20 @@ struct PinnedArray
         this->maxAllocationCount = rhs.size * sizeof(TYPE);
         this->committedPages = 0;
         this->capacity = 0;
-        this->Grow(rhs.size);
-        if (std::is_trivially_copyable<TYPE>::value)
+        if (rhs.size > 0)
         {
-            memcpy(this->data + this->size, rhs.ptr, rhs.size * sizeof(TYPE));
-            this->size += rhs.size;
-        }
-        else
-        {
-            for (const auto& elem : rhs)
+            this->Grow(rhs.size);
+            if (std::is_trivially_copyable<TYPE>::value)
             {
-                this->data[this->size++] = elem;
+                memcpy(this->data + this->size, rhs.ptr, rhs.size * sizeof(TYPE));
+                this->size += rhs.size;
+            }
+            else
+            {
+                for (const auto& elem : rhs)
+                {
+                    this->data[this->size++] = elem;
+                }
             }
         }
     }
