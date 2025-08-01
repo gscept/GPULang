@@ -280,11 +280,6 @@ Clear(GPULangServerResult& result, GPULang::Allocator& allocator)
     if (result.mainScope != nullptr)
         result.mainScope->~Scope();
     result.mainScope = nullptr;
-    for (auto* symbol : result.symbols)
-    {
-        if (symbol->symbolType != GPULang::Symbol::SymbolType::InvalidType)
-            symbol->~Symbol();
-    }
     result.symbols.Invalidate();
     GPULang::ResetAllocator(&allocator);
 }
@@ -1404,13 +1399,16 @@ main(int argc, const char** argv)
                         context->options.disallowImplicitPromotion = true;
                     else if (flagStr == "profile")
                         context->options.emitTimings = true;
-                    
-                    
                 }
             }
             else
             {
 
+            }
+
+            for (auto& path : context->includePaths)
+            {
+                std::replace(path.begin(), path.end(), '\\', '/');
             }
 
             result.capabilities.textDocumentSync = lsp::TextDocumentSyncOptions{ .openClose = true, .change = lsp::TextDocumentSyncKind::Full, .save = true };
