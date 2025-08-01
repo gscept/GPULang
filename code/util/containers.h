@@ -112,6 +112,11 @@ private:
         return 1;
     }
 
+    static inline size_t _compute_size(TYPE* elem)
+    {
+        return 1;
+    }
+
     template<typename FOO>
     static inline size_t _compute_size(FOO arg)
     {
@@ -132,23 +137,31 @@ private:
 
     static inline size_t _copy(TYPE* ptr, size_t size, const FixedArray<TYPE>& arr)
     {
-        if (std::is_trivially_copyable<TYPE>::value)
+        if (arr.size > 0)
         {
-            memcpy(ptr + size, arr.buf, sizeof(TYPE) * arr.size);
-            return size + arr.size;
+            if (std::is_trivially_copyable<TYPE>::value)
+            {
+                memcpy(ptr + size, arr.buf, sizeof(TYPE) * arr.size);
+            }
+            else
+            {
+                for (auto& val : arr)
+                    ptr[size++] = val;
+            }
         }
-        else
-        {
-            for (auto& val : arr)
-                ptr[size++] = val;
-            return size;
-        }
+        return arr.size;
     }
 
     static inline size_t _copy(TYPE* ptr, size_t size, const TYPE& val)
     {
         ptr[size++] = val;
-        return size;
+        return 1;
+    }
+
+    static inline size_t _copy(TYPE* ptr, size_t size, TYPE* val)
+    {
+        ptr[size++] = val;
+        return 1;
     }
 
     template<typename FOO>
@@ -1050,12 +1063,13 @@ struct FixedArray
             // leak memory
             LeakedFixedArrayBytes += this->capacity;
         }
+        this->buf = nullptr;
         this->capacity = vec.capacity;
-        this->buf = AllocArray<TYPE>(vec.capacity);
         this->size = 0;
         
         if (vec.size > 0)
         {
+            this->buf = AllocArray<TYPE>(vec.capacity);
             // If mempcy suffices, do it
             if (std::is_trivially_copy_constructible<TYPE>::value)
             {
@@ -1099,11 +1113,12 @@ struct FixedArray
             LeakedFixedArrayBytes += this->capacity;
         }
         this->capacity = vec.size;
-        this->buf = AllocArray<TYPE>(vec.size);
+        this->buf = nullptr;
         this->size = 0;
         
         if (vec.size > 0)
         {
+            this->buf = AllocArray<TYPE>(vec.size);
             // If mempcy suffices, do it
             if (std::is_trivially_copy_constructible<TYPE>::value)
             {
@@ -1136,10 +1151,11 @@ struct FixedArray
             LeakedFixedArrayBytes += this->capacity;
         }
         this->capacity = vec.size;
-        this->buf = AllocArray<TYPE>(vec.size);
-        
+        this->buf = nullptr;
         if (vec.size > 0)
         {
+            this->buf = AllocArray<TYPE>(vec.size);
+
             // Otherwise, run copy constructors for every element
             for (auto& v : vec)
             {
