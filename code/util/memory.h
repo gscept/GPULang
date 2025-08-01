@@ -390,7 +390,7 @@ StaticAllocArray(std::size_t num)
 }
 
 static const size_t ThreadLocalHeapSize = 16_MB;
-extern thread_local char ThreadLocalHeap[];
+extern thread_local char* ThreadLocalHeap;
 extern thread_local void* ThreadLocalHeapPtr;
 
 //------------------------------------------------------------------------------
@@ -400,6 +400,12 @@ template<typename TYPE>
 TYPE* 
 AllocStack(size_t count, size_t& numBytes)
 {
+    // Initialize if not already initialized
+    if (ThreadLocalHeap == nullptr)
+    {
+        ThreadLocalHeap = (char*)malloc(ThreadLocalHeapSize);
+        ThreadLocalHeapPtr = ThreadLocalHeap;
+    }
     const char* HeapStart = (const char*)ThreadLocalHeap;
     const char* HeapEnd = HeapStart + ThreadLocalHeapSize;
     const char* HeapPtr = (const char*)ThreadLocalHeapPtr;

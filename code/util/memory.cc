@@ -158,7 +158,7 @@ void SetupSystem()
 #endif
 }
 
-thread_local char ThreadLocalHeap[ThreadLocalHeapSize];
+thread_local char* ThreadLocalHeap = nullptr;
 thread_local void* ThreadLocalHeapPtr = ThreadLocalHeap;
 thread_local size_t ThreadLocalIterator = 0;
 size_t SystemPageSize;
