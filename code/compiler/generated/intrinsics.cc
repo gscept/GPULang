@@ -6351,78 +6351,104 @@ inline constexpr std::array SubgroupSwapHorizontal_UInt16x4_args = { &SubgroupSw
 
 /// atomicLoad with UInt32, MemorySemantics
 Variable AtomicLoad_UInt32_ptr;
+inline constexpr std::array AtomicLoad_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicLoad_UInt32_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicLoad_UInt32_semantics;
 Function AtomicLoad_UInt32;
 inline constexpr std::array AtomicLoad_UInt32_args = { &AtomicLoad_UInt32_ptr, &AtomicLoad_UInt32_semantics };
 
 /// atomicIncrement with UInt32, MemorySemantics
 Variable AtomicIncrement_UInt32_ptr;
+inline constexpr std::array AtomicIncrement_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicIncrement_UInt32_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicIncrement_UInt32_semantics;
 Function AtomicIncrement_UInt32;
 inline constexpr std::array AtomicIncrement_UInt32_args = { &AtomicIncrement_UInt32_ptr, &AtomicIncrement_UInt32_semantics };
 
 /// atomicDecrement with UInt32, MemorySemantics
 Variable AtomicDecrement_UInt32_ptr;
+inline constexpr std::array AtomicDecrement_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicDecrement_UInt32_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicDecrement_UInt32_semantics;
 Function AtomicDecrement_UInt32;
 inline constexpr std::array AtomicDecrement_UInt32_args = { &AtomicDecrement_UInt32_ptr, &AtomicDecrement_UInt32_semantics };
 
 /// atomicLoad with Int32, MemorySemantics
 Variable AtomicLoad_Int32_ptr;
+inline constexpr std::array AtomicLoad_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicLoad_Int32_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicLoad_Int32_semantics;
 Function AtomicLoad_Int32;
 inline constexpr std::array AtomicLoad_Int32_args = { &AtomicLoad_Int32_ptr, &AtomicLoad_Int32_semantics };
 
 /// atomicIncrement with Int32, MemorySemantics
 Variable AtomicIncrement_Int32_ptr;
+inline constexpr std::array AtomicIncrement_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicIncrement_Int32_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicIncrement_Int32_semantics;
 Function AtomicIncrement_Int32;
 inline constexpr std::array AtomicIncrement_Int32_args = { &AtomicIncrement_Int32_ptr, &AtomicIncrement_Int32_semantics };
 
 /// atomicDecrement with Int32, MemorySemantics
 Variable AtomicDecrement_Int32_ptr;
+inline constexpr std::array AtomicDecrement_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicDecrement_Int32_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicDecrement_Int32_semantics;
 Function AtomicDecrement_Int32;
 inline constexpr std::array AtomicDecrement_Int32_args = { &AtomicDecrement_Int32_ptr, &AtomicDecrement_Int32_semantics };
 
 /// atomicLoad with UInt16, MemorySemantics
 Variable AtomicLoad_UInt16_ptr;
+inline constexpr std::array AtomicLoad_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicLoad_UInt16_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicLoad_UInt16_semantics;
 Function AtomicLoad_UInt16;
 inline constexpr std::array AtomicLoad_UInt16_args = { &AtomicLoad_UInt16_ptr, &AtomicLoad_UInt16_semantics };
 
 /// atomicIncrement with UInt16, MemorySemantics
 Variable AtomicIncrement_UInt16_ptr;
+inline constexpr std::array AtomicIncrement_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicIncrement_UInt16_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicIncrement_UInt16_semantics;
 Function AtomicIncrement_UInt16;
 inline constexpr std::array AtomicIncrement_UInt16_args = { &AtomicIncrement_UInt16_ptr, &AtomicIncrement_UInt16_semantics };
 
 /// atomicDecrement with UInt16, MemorySemantics
 Variable AtomicDecrement_UInt16_ptr;
+inline constexpr std::array AtomicDecrement_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicDecrement_UInt16_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicDecrement_UInt16_semantics;
 Function AtomicDecrement_UInt16;
 inline constexpr std::array AtomicDecrement_UInt16_args = { &AtomicDecrement_UInt16_ptr, &AtomicDecrement_UInt16_semantics };
 
 /// atomicLoad with Int16, MemorySemantics
 Variable AtomicLoad_Int16_ptr;
+inline constexpr std::array AtomicLoad_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicLoad_Int16_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicLoad_Int16_semantics;
 Function AtomicLoad_Int16;
 inline constexpr std::array AtomicLoad_Int16_args = { &AtomicLoad_Int16_ptr, &AtomicLoad_Int16_semantics };
 
 /// atomicIncrement with Int16, MemorySemantics
 Variable AtomicIncrement_Int16_ptr;
+inline constexpr std::array AtomicIncrement_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicIncrement_Int16_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicIncrement_Int16_semantics;
 Function AtomicIncrement_Int16;
 inline constexpr std::array AtomicIncrement_Int16_args = { &AtomicIncrement_Int16_ptr, &AtomicIncrement_Int16_semantics };
 
 /// atomicDecrement with Int16, MemorySemantics
 Variable AtomicDecrement_Int16_ptr;
+inline constexpr std::array AtomicDecrement_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicDecrement_Int16_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicDecrement_Int16_semantics;
 Function AtomicDecrement_Int16;
 inline constexpr std::array AtomicDecrement_Int16_args = { &AtomicDecrement_Int16_ptr, &AtomicDecrement_Int16_semantics };
 
 /// atomicStore with UInt32, UInt32, MemorySemantics
 Variable AtomicStore_UInt32_ptr;
+inline constexpr std::array AtomicStore_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicStore_UInt32_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicStore_UInt32_value;
 Variable AtomicStore_UInt32_semantics;
 Function AtomicStore_UInt32;
@@ -6430,6 +6456,8 @@ inline constexpr std::array AtomicStore_UInt32_args = { &AtomicStore_UInt32_ptr,
 
 /// atomicExchange with UInt32, UInt32, MemorySemantics
 Variable AtomicExchange_UInt32_ptr;
+inline constexpr std::array AtomicExchange_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicExchange_UInt32_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicExchange_UInt32_value;
 Variable AtomicExchange_UInt32_semantics;
 Function AtomicExchange_UInt32;
@@ -6437,6 +6465,8 @@ inline constexpr std::array AtomicExchange_UInt32_args = { &AtomicExchange_UInt3
 
 /// atomicAdd with UInt32, UInt32, MemorySemantics
 Variable AtomicAdd_UInt32_ptr;
+inline constexpr std::array AtomicAdd_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAdd_UInt32_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicAdd_UInt32_value;
 Variable AtomicAdd_UInt32_semantics;
 Function AtomicAdd_UInt32;
@@ -6444,6 +6474,8 @@ inline constexpr std::array AtomicAdd_UInt32_args = { &AtomicAdd_UInt32_ptr, &At
 
 /// atomicSubtract with UInt32, UInt32, MemorySemantics
 Variable AtomicSubtract_UInt32_ptr;
+inline constexpr std::array AtomicSubtract_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicSubtract_UInt32_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicSubtract_UInt32_value;
 Variable AtomicSubtract_UInt32_semantics;
 Function AtomicSubtract_UInt32;
@@ -6451,6 +6483,8 @@ inline constexpr std::array AtomicSubtract_UInt32_args = { &AtomicSubtract_UInt3
 
 /// atomicAnd with UInt32, UInt32, MemorySemantics
 Variable AtomicAnd_UInt32_ptr;
+inline constexpr std::array AtomicAnd_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAnd_UInt32_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicAnd_UInt32_value;
 Variable AtomicAnd_UInt32_semantics;
 Function AtomicAnd_UInt32;
@@ -6458,6 +6492,8 @@ inline constexpr std::array AtomicAnd_UInt32_args = { &AtomicAnd_UInt32_ptr, &At
 
 /// atomicOr with UInt32, UInt32, MemorySemantics
 Variable AtomicOr_UInt32_ptr;
+inline constexpr std::array AtomicOr_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicOr_UInt32_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicOr_UInt32_value;
 Variable AtomicOr_UInt32_semantics;
 Function AtomicOr_UInt32;
@@ -6465,6 +6501,8 @@ inline constexpr std::array AtomicOr_UInt32_args = { &AtomicOr_UInt32_ptr, &Atom
 
 /// atomicXor with UInt32, UInt32, MemorySemantics
 Variable AtomicXor_UInt32_ptr;
+inline constexpr std::array AtomicXor_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicXor_UInt32_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicXor_UInt32_value;
 Variable AtomicXor_UInt32_semantics;
 Function AtomicXor_UInt32;
@@ -6472,6 +6510,8 @@ inline constexpr std::array AtomicXor_UInt32_args = { &AtomicXor_UInt32_ptr, &At
 
 /// atomicStore with Int32, Int32, MemorySemantics
 Variable AtomicStore_Int32_ptr;
+inline constexpr std::array AtomicStore_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicStore_Int32_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicStore_Int32_value;
 Variable AtomicStore_Int32_semantics;
 Function AtomicStore_Int32;
@@ -6479,6 +6519,8 @@ inline constexpr std::array AtomicStore_Int32_args = { &AtomicStore_Int32_ptr, &
 
 /// atomicExchange with Int32, Int32, MemorySemantics
 Variable AtomicExchange_Int32_ptr;
+inline constexpr std::array AtomicExchange_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicExchange_Int32_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicExchange_Int32_value;
 Variable AtomicExchange_Int32_semantics;
 Function AtomicExchange_Int32;
@@ -6486,6 +6528,8 @@ inline constexpr std::array AtomicExchange_Int32_args = { &AtomicExchange_Int32_
 
 /// atomicAdd with Int32, Int32, MemorySemantics
 Variable AtomicAdd_Int32_ptr;
+inline constexpr std::array AtomicAdd_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAdd_Int32_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicAdd_Int32_value;
 Variable AtomicAdd_Int32_semantics;
 Function AtomicAdd_Int32;
@@ -6493,6 +6537,8 @@ inline constexpr std::array AtomicAdd_Int32_args = { &AtomicAdd_Int32_ptr, &Atom
 
 /// atomicSubtract with Int32, Int32, MemorySemantics
 Variable AtomicSubtract_Int32_ptr;
+inline constexpr std::array AtomicSubtract_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicSubtract_Int32_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicSubtract_Int32_value;
 Variable AtomicSubtract_Int32_semantics;
 Function AtomicSubtract_Int32;
@@ -6500,6 +6546,8 @@ inline constexpr std::array AtomicSubtract_Int32_args = { &AtomicSubtract_Int32_
 
 /// atomicAnd with Int32, Int32, MemorySemantics
 Variable AtomicAnd_Int32_ptr;
+inline constexpr std::array AtomicAnd_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAnd_Int32_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicAnd_Int32_value;
 Variable AtomicAnd_Int32_semantics;
 Function AtomicAnd_Int32;
@@ -6507,6 +6555,8 @@ inline constexpr std::array AtomicAnd_Int32_args = { &AtomicAnd_Int32_ptr, &Atom
 
 /// atomicOr with Int32, Int32, MemorySemantics
 Variable AtomicOr_Int32_ptr;
+inline constexpr std::array AtomicOr_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicOr_Int32_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicOr_Int32_value;
 Variable AtomicOr_Int32_semantics;
 Function AtomicOr_Int32;
@@ -6514,6 +6564,8 @@ inline constexpr std::array AtomicOr_Int32_args = { &AtomicOr_Int32_ptr, &Atomic
 
 /// atomicXor with Int32, Int32, MemorySemantics
 Variable AtomicXor_Int32_ptr;
+inline constexpr std::array AtomicXor_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicXor_Int32_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicXor_Int32_value;
 Variable AtomicXor_Int32_semantics;
 Function AtomicXor_Int32;
@@ -6521,6 +6573,8 @@ inline constexpr std::array AtomicXor_Int32_args = { &AtomicXor_Int32_ptr, &Atom
 
 /// atomicStore with UInt16, UInt16, MemorySemantics
 Variable AtomicStore_UInt16_ptr;
+inline constexpr std::array AtomicStore_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicStore_UInt16_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicStore_UInt16_value;
 Variable AtomicStore_UInt16_semantics;
 Function AtomicStore_UInt16;
@@ -6528,6 +6582,8 @@ inline constexpr std::array AtomicStore_UInt16_args = { &AtomicStore_UInt16_ptr,
 
 /// atomicExchange with UInt16, UInt16, MemorySemantics
 Variable AtomicExchange_UInt16_ptr;
+inline constexpr std::array AtomicExchange_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicExchange_UInt16_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicExchange_UInt16_value;
 Variable AtomicExchange_UInt16_semantics;
 Function AtomicExchange_UInt16;
@@ -6535,6 +6591,8 @@ inline constexpr std::array AtomicExchange_UInt16_args = { &AtomicExchange_UInt1
 
 /// atomicAdd with UInt16, UInt16, MemorySemantics
 Variable AtomicAdd_UInt16_ptr;
+inline constexpr std::array AtomicAdd_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAdd_UInt16_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicAdd_UInt16_value;
 Variable AtomicAdd_UInt16_semantics;
 Function AtomicAdd_UInt16;
@@ -6542,6 +6600,8 @@ inline constexpr std::array AtomicAdd_UInt16_args = { &AtomicAdd_UInt16_ptr, &At
 
 /// atomicSubtract with UInt16, UInt16, MemorySemantics
 Variable AtomicSubtract_UInt16_ptr;
+inline constexpr std::array AtomicSubtract_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicSubtract_UInt16_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicSubtract_UInt16_value;
 Variable AtomicSubtract_UInt16_semantics;
 Function AtomicSubtract_UInt16;
@@ -6549,6 +6609,8 @@ inline constexpr std::array AtomicSubtract_UInt16_args = { &AtomicSubtract_UInt1
 
 /// atomicAnd with UInt16, UInt16, MemorySemantics
 Variable AtomicAnd_UInt16_ptr;
+inline constexpr std::array AtomicAnd_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAnd_UInt16_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicAnd_UInt16_value;
 Variable AtomicAnd_UInt16_semantics;
 Function AtomicAnd_UInt16;
@@ -6556,6 +6618,8 @@ inline constexpr std::array AtomicAnd_UInt16_args = { &AtomicAnd_UInt16_ptr, &At
 
 /// atomicOr with UInt16, UInt16, MemorySemantics
 Variable AtomicOr_UInt16_ptr;
+inline constexpr std::array AtomicOr_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicOr_UInt16_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicOr_UInt16_value;
 Variable AtomicOr_UInt16_semantics;
 Function AtomicOr_UInt16;
@@ -6563,6 +6627,8 @@ inline constexpr std::array AtomicOr_UInt16_args = { &AtomicOr_UInt16_ptr, &Atom
 
 /// atomicXor with UInt16, UInt16, MemorySemantics
 Variable AtomicXor_UInt16_ptr;
+inline constexpr std::array AtomicXor_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicXor_UInt16_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicXor_UInt16_value;
 Variable AtomicXor_UInt16_semantics;
 Function AtomicXor_UInt16;
@@ -6570,6 +6636,8 @@ inline constexpr std::array AtomicXor_UInt16_args = { &AtomicXor_UInt16_ptr, &At
 
 /// atomicStore with Int16, Int16, MemorySemantics
 Variable AtomicStore_Int16_ptr;
+inline constexpr std::array AtomicStore_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicStore_Int16_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicStore_Int16_value;
 Variable AtomicStore_Int16_semantics;
 Function AtomicStore_Int16;
@@ -6577,6 +6645,8 @@ inline constexpr std::array AtomicStore_Int16_args = { &AtomicStore_Int16_ptr, &
 
 /// atomicExchange with Int16, Int16, MemorySemantics
 Variable AtomicExchange_Int16_ptr;
+inline constexpr std::array AtomicExchange_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicExchange_Int16_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicExchange_Int16_value;
 Variable AtomicExchange_Int16_semantics;
 Function AtomicExchange_Int16;
@@ -6584,6 +6654,8 @@ inline constexpr std::array AtomicExchange_Int16_args = { &AtomicExchange_Int16_
 
 /// atomicAdd with Int16, Int16, MemorySemantics
 Variable AtomicAdd_Int16_ptr;
+inline constexpr std::array AtomicAdd_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAdd_Int16_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicAdd_Int16_value;
 Variable AtomicAdd_Int16_semantics;
 Function AtomicAdd_Int16;
@@ -6591,6 +6663,8 @@ inline constexpr std::array AtomicAdd_Int16_args = { &AtomicAdd_Int16_ptr, &Atom
 
 /// atomicSubtract with Int16, Int16, MemorySemantics
 Variable AtomicSubtract_Int16_ptr;
+inline constexpr std::array AtomicSubtract_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicSubtract_Int16_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicSubtract_Int16_value;
 Variable AtomicSubtract_Int16_semantics;
 Function AtomicSubtract_Int16;
@@ -6598,6 +6672,8 @@ inline constexpr std::array AtomicSubtract_Int16_args = { &AtomicSubtract_Int16_
 
 /// atomicAnd with Int16, Int16, MemorySemantics
 Variable AtomicAnd_Int16_ptr;
+inline constexpr std::array AtomicAnd_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicAnd_Int16_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicAnd_Int16_value;
 Variable AtomicAnd_Int16_semantics;
 Function AtomicAnd_Int16;
@@ -6605,6 +6681,8 @@ inline constexpr std::array AtomicAnd_Int16_args = { &AtomicAnd_Int16_ptr, &Atom
 
 /// atomicOr with Int16, Int16, MemorySemantics
 Variable AtomicOr_Int16_ptr;
+inline constexpr std::array AtomicOr_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicOr_Int16_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicOr_Int16_value;
 Variable AtomicOr_Int16_semantics;
 Function AtomicOr_Int16;
@@ -6612,6 +6690,8 @@ inline constexpr std::array AtomicOr_Int16_args = { &AtomicOr_Int16_ptr, &Atomic
 
 /// atomicXor with Int16, Int16, MemorySemantics
 Variable AtomicXor_Int16_ptr;
+inline constexpr std::array AtomicXor_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicXor_Int16_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicXor_Int16_value;
 Variable AtomicXor_Int16_semantics;
 Function AtomicXor_Int16;
@@ -6619,6 +6699,8 @@ inline constexpr std::array AtomicXor_Int16_args = { &AtomicXor_Int16_ptr, &Atom
 
 /// atomicCompareExchange with Int16, Int16, Int16, MemorySemantics
 Variable AtomicCompareExchange_UInt32_ptr;
+inline constexpr std::array AtomicCompareExchange_UInt32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicCompareExchange_UInt32_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicCompareExchange_UInt32_value;
 Variable AtomicCompareExchange_UInt32_compare;
 Variable AtomicCompareExchange_UInt32_semantics;
@@ -6627,6 +6709,8 @@ inline constexpr std::array AtomicCompareExchange_UInt32_args = { &AtomicCompare
 
 /// atomicCompareExchange with Int16, Int16, Int16, MemorySemantics
 Variable AtomicCompareExchange_Int32_ptr;
+inline constexpr std::array AtomicCompareExchange_Int32_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicCompareExchange_Int32_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicCompareExchange_Int32_value;
 Variable AtomicCompareExchange_Int32_compare;
 Variable AtomicCompareExchange_Int32_semantics;
@@ -6635,6 +6719,8 @@ inline constexpr std::array AtomicCompareExchange_Int32_args = { &AtomicCompareE
 
 /// atomicCompareExchange with Int16, Int16, Int16, MemorySemantics
 Variable AtomicCompareExchange_UInt16_ptr;
+inline constexpr std::array AtomicCompareExchange_UInt16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicCompareExchange_UInt16_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicCompareExchange_UInt16_value;
 Variable AtomicCompareExchange_UInt16_compare;
 Variable AtomicCompareExchange_UInt16_semantics;
@@ -6643,6 +6729,8 @@ inline constexpr std::array AtomicCompareExchange_UInt16_args = { &AtomicCompare
 
 /// atomicCompareExchange with Int16, Int16, Int16, MemorySemantics
 Variable AtomicCompareExchange_Int16_ptr;
+inline constexpr std::array AtomicCompareExchange_Int16_ptr_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array AtomicCompareExchange_Int16_ptr_modifierValues = {(Expression*)nullptr};
 Variable AtomicCompareExchange_Int16_value;
 Variable AtomicCompareExchange_Int16_compare;
 Variable AtomicCompareExchange_Int16_semantics;
@@ -6762,225 +6850,317 @@ Function MemoryBarrierWorkgroup;
 
 /// textureGetSize with Texture1D
 Variable TextureGetSize_Texture1D_texture;
+inline constexpr std::array TextureGetSize_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSize_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Function TextureGetSize_Texture1D;
 inline constexpr std::array TextureGetSize_Texture1D_args = { &TextureGetSize_Texture1D_texture };
 
 /// textureGetSize with Texture2D
 Variable TextureGetSize_Texture2D_texture;
+inline constexpr std::array TextureGetSize_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSize_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Function TextureGetSize_Texture2D;
 inline constexpr std::array TextureGetSize_Texture2D_args = { &TextureGetSize_Texture2D_texture };
 
 /// textureGetSize with Texture3D
 Variable TextureGetSize_Texture3D_texture;
+inline constexpr std::array TextureGetSize_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSize_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Function TextureGetSize_Texture3D;
 inline constexpr std::array TextureGetSize_Texture3D_args = { &TextureGetSize_Texture3D_texture };
 
 /// textureGetSize with TextureCube
 Variable TextureGetSize_TextureCube_texture;
+inline constexpr std::array TextureGetSize_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSize_TextureCube_texture_modifierValues = {(Expression*)nullptr};
 Function TextureGetSize_TextureCube;
 inline constexpr std::array TextureGetSize_TextureCube_args = { &TextureGetSize_TextureCube_texture };
 
 /// textureGetSize with Texture1DArray
 Variable TextureGetSize_Texture1DArray_texture;
+inline constexpr std::array TextureGetSize_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSize_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Function TextureGetSize_Texture1DArray;
 inline constexpr std::array TextureGetSize_Texture1DArray_args = { &TextureGetSize_Texture1DArray_texture };
 
 /// textureGetSize with Texture2DArray
 Variable TextureGetSize_Texture2DArray_texture;
+inline constexpr std::array TextureGetSize_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSize_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Function TextureGetSize_Texture2DArray;
 inline constexpr std::array TextureGetSize_Texture2DArray_args = { &TextureGetSize_Texture2DArray_texture };
 
 /// textureGetSize with TextureCubeArray
 Variable TextureGetSize_TextureCubeArray_texture;
+inline constexpr std::array TextureGetSize_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSize_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
 Function TextureGetSize_TextureCubeArray;
 inline constexpr std::array TextureGetSize_TextureCubeArray_args = { &TextureGetSize_TextureCubeArray_texture };
 
 /// textureGetSizeMip with Texture1D, UInt32
 Variable TextureGetSizeMip_Texture1D_texture;
+inline constexpr std::array TextureGetSizeMip_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSizeMip_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureGetSizeMip_Texture1D_mip;
 Function TextureGetSizeMip_Texture1D;
 inline constexpr std::array TextureGetSizeMip_Texture1D_args = { &TextureGetSizeMip_Texture1D_texture, &TextureGetSizeMip_Texture1D_mip };
 
 /// textureGetSizeMip with Texture2D, UInt32
 Variable TextureGetSizeMip_Texture2D_texture;
+inline constexpr std::array TextureGetSizeMip_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSizeMip_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureGetSizeMip_Texture2D_mip;
 Function TextureGetSizeMip_Texture2D;
 inline constexpr std::array TextureGetSizeMip_Texture2D_args = { &TextureGetSizeMip_Texture2D_texture, &TextureGetSizeMip_Texture2D_mip };
 
 /// textureGetSizeMip with Texture3D, UInt32
 Variable TextureGetSizeMip_Texture3D_texture;
+inline constexpr std::array TextureGetSizeMip_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSizeMip_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureGetSizeMip_Texture3D_mip;
 Function TextureGetSizeMip_Texture3D;
 inline constexpr std::array TextureGetSizeMip_Texture3D_args = { &TextureGetSizeMip_Texture3D_texture, &TextureGetSizeMip_Texture3D_mip };
 
 /// textureGetSizeMip with TextureCube, UInt32
 Variable TextureGetSizeMip_TextureCube_texture;
+inline constexpr std::array TextureGetSizeMip_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSizeMip_TextureCube_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureGetSizeMip_TextureCube_mip;
 Function TextureGetSizeMip_TextureCube;
 inline constexpr std::array TextureGetSizeMip_TextureCube_args = { &TextureGetSizeMip_TextureCube_texture, &TextureGetSizeMip_TextureCube_mip };
 
 /// textureGetSizeMip with Texture1DArray, UInt32
 Variable TextureGetSizeMip_Texture1DArray_texture;
+inline constexpr std::array TextureGetSizeMip_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSizeMip_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureGetSizeMip_Texture1DArray_mip;
 Function TextureGetSizeMip_Texture1DArray;
 inline constexpr std::array TextureGetSizeMip_Texture1DArray_args = { &TextureGetSizeMip_Texture1DArray_texture, &TextureGetSizeMip_Texture1DArray_mip };
 
 /// textureGetSizeMip with Texture2DArray, UInt32
 Variable TextureGetSizeMip_Texture2DArray_texture;
+inline constexpr std::array TextureGetSizeMip_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSizeMip_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureGetSizeMip_Texture2DArray_mip;
 Function TextureGetSizeMip_Texture2DArray;
 inline constexpr std::array TextureGetSizeMip_Texture2DArray_args = { &TextureGetSizeMip_Texture2DArray_texture, &TextureGetSizeMip_Texture2DArray_mip };
 
 /// textureGetSizeMip with TextureCubeArray, UInt32
 Variable TextureGetSizeMip_TextureCubeArray_texture;
+inline constexpr std::array TextureGetSizeMip_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSizeMip_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureGetSizeMip_TextureCubeArray_mip;
 Function TextureGetSizeMip_TextureCubeArray;
 inline constexpr std::array TextureGetSizeMip_TextureCubeArray_args = { &TextureGetSizeMip_TextureCubeArray_texture, &TextureGetSizeMip_TextureCubeArray_mip };
 
 /// textureGetMips with Texture1D
 Variable TextureGetMips_Texture1D_texture;
+inline constexpr std::array TextureGetMips_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetMips_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Function TextureGetMips_Texture1D;
 inline constexpr std::array TextureGetMips_Texture1D_args = { &TextureGetMips_Texture1D_texture };
 
 /// textureGetMips with Texture2D
 Variable TextureGetMips_Texture2D_texture;
+inline constexpr std::array TextureGetMips_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetMips_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Function TextureGetMips_Texture2D;
 inline constexpr std::array TextureGetMips_Texture2D_args = { &TextureGetMips_Texture2D_texture };
 
 /// textureGetMips with Texture3D
 Variable TextureGetMips_Texture3D_texture;
+inline constexpr std::array TextureGetMips_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetMips_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Function TextureGetMips_Texture3D;
 inline constexpr std::array TextureGetMips_Texture3D_args = { &TextureGetMips_Texture3D_texture };
 
 /// textureGetMips with TextureCube
 Variable TextureGetMips_TextureCube_texture;
+inline constexpr std::array TextureGetMips_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetMips_TextureCube_texture_modifierValues = {(Expression*)nullptr};
 Function TextureGetMips_TextureCube;
 inline constexpr std::array TextureGetMips_TextureCube_args = { &TextureGetMips_TextureCube_texture };
 
 /// textureGetMips with Texture1DArray
 Variable TextureGetMips_Texture1DArray_texture;
+inline constexpr std::array TextureGetMips_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetMips_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Function TextureGetMips_Texture1DArray;
 inline constexpr std::array TextureGetMips_Texture1DArray_args = { &TextureGetMips_Texture1DArray_texture };
 
 /// textureGetMips with Texture2DArray
 Variable TextureGetMips_Texture2DArray_texture;
+inline constexpr std::array TextureGetMips_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetMips_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Function TextureGetMips_Texture2DArray;
 inline constexpr std::array TextureGetMips_Texture2DArray_args = { &TextureGetMips_Texture2DArray_texture };
 
 /// textureGetMips with TextureCubeArray
 Variable TextureGetMips_TextureCubeArray_texture;
+inline constexpr std::array TextureGetMips_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetMips_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
 Function TextureGetMips_TextureCubeArray;
 inline constexpr std::array TextureGetMips_TextureCubeArray_args = { &TextureGetMips_TextureCubeArray_texture };
 
 /// textureGetSamples with Texture2DMS
 Variable TextureGetSamples_Texture2DMS_texture;
+inline constexpr std::array TextureGetSamples_Texture2DMS_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSamples_Texture2DMS_texture_modifierValues = {(Expression*)nullptr};
 Function TextureGetSamples_Texture2DMS;
 inline constexpr std::array TextureGetSamples_Texture2DMS_args = { &TextureGetSamples_Texture2DMS_texture };
 
 /// textureGetSamples with Texture2DMSArray
 Variable TextureGetSamples_Texture2DMSArray_texture;
+inline constexpr std::array TextureGetSamples_Texture2DMSArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSamples_Texture2DMSArray_texture_modifierValues = {(Expression*)nullptr};
 Function TextureGetSamples_Texture2DMSArray;
 inline constexpr std::array TextureGetSamples_Texture2DMSArray_args = { &TextureGetSamples_Texture2DMSArray_texture };
 
 /// textureGetSampledMip with Texture1D, Sampler, Float32
 Variable TextureGetSampledMip_Texture1D_texture;
+inline constexpr std::array TextureGetSampledMip_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSampledMip_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureGetSampledMip_Texture1D_sampler;
+inline constexpr std::array TextureGetSampledMip_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSampledMip_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureGetSampledMip_Texture1D_coordinate;
 Function TextureGetSampledMip_Texture1D;
 inline constexpr std::array TextureGetSampledMip_Texture1D_args = { &TextureGetSampledMip_Texture1D_texture, &TextureGetSampledMip_Texture1D_sampler, &TextureGetSampledMip_Texture1D_coordinate };
 
 /// textureGetSampledMip with SampledTexture1D, Float32
 Variable SampledTextureGetSampledMip_Texture1D_texture;
+inline constexpr std::array SampledTextureGetSampledMip_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureGetSampledMip_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureGetSampledMip_Texture1D_coordinate;
 Function SampledTextureGetSampledMip_Texture1D;
 inline constexpr std::array SampledTextureGetSampledMip_Texture1D_args = { &SampledTextureGetSampledMip_Texture1D_texture, &SampledTextureGetSampledMip_Texture1D_coordinate };
 
 /// textureGetSampledMip with Texture2D, Sampler, Float32x2
 Variable TextureGetSampledMip_Texture2D_texture;
+inline constexpr std::array TextureGetSampledMip_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSampledMip_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureGetSampledMip_Texture2D_sampler;
+inline constexpr std::array TextureGetSampledMip_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSampledMip_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureGetSampledMip_Texture2D_coordinate;
 Function TextureGetSampledMip_Texture2D;
 inline constexpr std::array TextureGetSampledMip_Texture2D_args = { &TextureGetSampledMip_Texture2D_texture, &TextureGetSampledMip_Texture2D_sampler, &TextureGetSampledMip_Texture2D_coordinate };
 
 /// textureGetSampledMip with SampledTexture2D, Float32x2
 Variable SampledTextureGetSampledMip_Texture2D_texture;
+inline constexpr std::array SampledTextureGetSampledMip_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureGetSampledMip_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureGetSampledMip_Texture2D_coordinate;
 Function SampledTextureGetSampledMip_Texture2D;
 inline constexpr std::array SampledTextureGetSampledMip_Texture2D_args = { &SampledTextureGetSampledMip_Texture2D_texture, &SampledTextureGetSampledMip_Texture2D_coordinate };
 
 /// textureGetSampledMip with Texture3D, Sampler, Float32x3
 Variable TextureGetSampledMip_Texture3D_texture;
+inline constexpr std::array TextureGetSampledMip_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSampledMip_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureGetSampledMip_Texture3D_sampler;
+inline constexpr std::array TextureGetSampledMip_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSampledMip_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureGetSampledMip_Texture3D_coordinate;
 Function TextureGetSampledMip_Texture3D;
 inline constexpr std::array TextureGetSampledMip_Texture3D_args = { &TextureGetSampledMip_Texture3D_texture, &TextureGetSampledMip_Texture3D_sampler, &TextureGetSampledMip_Texture3D_coordinate };
 
 /// textureGetSampledMip with SampledTexture3D, Float32x3
 Variable SampledTextureGetSampledMip_Texture3D_texture;
+inline constexpr std::array SampledTextureGetSampledMip_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureGetSampledMip_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureGetSampledMip_Texture3D_coordinate;
 Function SampledTextureGetSampledMip_Texture3D;
 inline constexpr std::array SampledTextureGetSampledMip_Texture3D_args = { &SampledTextureGetSampledMip_Texture3D_texture, &SampledTextureGetSampledMip_Texture3D_coordinate };
 
 /// textureGetSampledMip with TextureCube, Sampler, Float32x3
 Variable TextureGetSampledMip_TextureCube_texture;
+inline constexpr std::array TextureGetSampledMip_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSampledMip_TextureCube_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureGetSampledMip_TextureCube_sampler;
+inline constexpr std::array TextureGetSampledMip_TextureCube_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSampledMip_TextureCube_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureGetSampledMip_TextureCube_coordinate;
 Function TextureGetSampledMip_TextureCube;
 inline constexpr std::array TextureGetSampledMip_TextureCube_args = { &TextureGetSampledMip_TextureCube_texture, &TextureGetSampledMip_TextureCube_sampler, &TextureGetSampledMip_TextureCube_coordinate };
 
 /// textureGetSampledMip with SampledTextureCube, Float32x3
 Variable SampledTextureGetSampledMip_TextureCube_texture;
+inline constexpr std::array SampledTextureGetSampledMip_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureGetSampledMip_TextureCube_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureGetSampledMip_TextureCube_coordinate;
 Function SampledTextureGetSampledMip_TextureCube;
 inline constexpr std::array SampledTextureGetSampledMip_TextureCube_args = { &SampledTextureGetSampledMip_TextureCube_texture, &SampledTextureGetSampledMip_TextureCube_coordinate };
 
 /// textureGetSampledMip with Texture1DArray, Sampler, Float32x2
 Variable TextureGetSampledMip_Texture1DArray_texture;
+inline constexpr std::array TextureGetSampledMip_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSampledMip_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureGetSampledMip_Texture1DArray_sampler;
+inline constexpr std::array TextureGetSampledMip_Texture1DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSampledMip_Texture1DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureGetSampledMip_Texture1DArray_coordinate;
 Function TextureGetSampledMip_Texture1DArray;
 inline constexpr std::array TextureGetSampledMip_Texture1DArray_args = { &TextureGetSampledMip_Texture1DArray_texture, &TextureGetSampledMip_Texture1DArray_sampler, &TextureGetSampledMip_Texture1DArray_coordinate };
 
 /// textureGetSampledMip with SampledTexture1DArray, Float32x2
 Variable SampledTextureGetSampledMip_Texture1DArray_texture;
+inline constexpr std::array SampledTextureGetSampledMip_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureGetSampledMip_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureGetSampledMip_Texture1DArray_coordinate;
 Function SampledTextureGetSampledMip_Texture1DArray;
 inline constexpr std::array SampledTextureGetSampledMip_Texture1DArray_args = { &SampledTextureGetSampledMip_Texture1DArray_texture, &SampledTextureGetSampledMip_Texture1DArray_coordinate };
 
 /// textureGetSampledMip with Texture2DArray, Sampler, Float32x3
 Variable TextureGetSampledMip_Texture2DArray_texture;
+inline constexpr std::array TextureGetSampledMip_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSampledMip_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureGetSampledMip_Texture2DArray_sampler;
+inline constexpr std::array TextureGetSampledMip_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSampledMip_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureGetSampledMip_Texture2DArray_coordinate;
 Function TextureGetSampledMip_Texture2DArray;
 inline constexpr std::array TextureGetSampledMip_Texture2DArray_args = { &TextureGetSampledMip_Texture2DArray_texture, &TextureGetSampledMip_Texture2DArray_sampler, &TextureGetSampledMip_Texture2DArray_coordinate };
 
 /// textureGetSampledMip with SampledTexture2DArray, Float32x3
 Variable SampledTextureGetSampledMip_Texture2DArray_texture;
+inline constexpr std::array SampledTextureGetSampledMip_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureGetSampledMip_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureGetSampledMip_Texture2DArray_coordinate;
 Function SampledTextureGetSampledMip_Texture2DArray;
 inline constexpr std::array SampledTextureGetSampledMip_Texture2DArray_args = { &SampledTextureGetSampledMip_Texture2DArray_texture, &SampledTextureGetSampledMip_Texture2DArray_coordinate };
 
 /// textureGetSampledMip with TextureCubeArray, Sampler, Float32x4
 Variable TextureGetSampledMip_TextureCubeArray_texture;
+inline constexpr std::array TextureGetSampledMip_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSampledMip_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureGetSampledMip_TextureCubeArray_sampler;
+inline constexpr std::array TextureGetSampledMip_TextureCubeArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGetSampledMip_TextureCubeArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureGetSampledMip_TextureCubeArray_coordinate;
 Function TextureGetSampledMip_TextureCubeArray;
 inline constexpr std::array TextureGetSampledMip_TextureCubeArray_args = { &TextureGetSampledMip_TextureCubeArray_texture, &TextureGetSampledMip_TextureCubeArray_sampler, &TextureGetSampledMip_TextureCubeArray_coordinate };
 
 /// textureGetSampledMip with SampledTextureCubeArray, Float32x4
 Variable SampledTextureGetSampledMip_TextureCubeArray_texture;
+inline constexpr std::array SampledTextureGetSampledMip_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureGetSampledMip_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureGetSampledMip_TextureCubeArray_coordinate;
 Function SampledTextureGetSampledMip_TextureCubeArray;
 inline constexpr std::array SampledTextureGetSampledMip_TextureCubeArray_args = { &SampledTextureGetSampledMip_TextureCubeArray_texture, &SampledTextureGetSampledMip_TextureCubeArray_coordinate };
 
 /// textureLoad with Texture1D, Int32
 Variable TextureLoad_Texture1D_texture;
+inline constexpr std::array TextureLoad_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureLoad_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureLoad_Texture1D_coordinate;
 Function TextureLoad_Texture1D;
 inline constexpr std::array TextureLoad_Texture1D_args = { &TextureLoad_Texture1D_texture, &TextureLoad_Texture1D_coordinate };
 
 /// textureLoadMip with Texture1D, Int32, Int32
 Variable TextureLoadMip_Texture1D_texture;
+inline constexpr std::array TextureLoadMip_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureLoadMip_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureLoadMip_Texture1D_coordinate;
 Variable TextureLoadMip_Texture1D_mip;
 Function TextureLoadMip_Texture1D;
@@ -6988,6 +7168,8 @@ inline constexpr std::array TextureLoadMip_Texture1D_args = { &TextureLoadMip_Te
 
 /// textureStore with Texture1D, Int32, Float32x4
 Variable TextureStore_Texture1D_texture;
+inline constexpr std::array TextureStore_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureStore_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureStore_Texture1D_coordinate;
 Variable TextureStore_Texture1D_value;
 Function TextureStore_Texture1D;
@@ -6995,6 +7177,8 @@ inline constexpr std::array TextureStore_Texture1D_args = { &TextureStore_Textur
 
 /// textureStoreMip with Texture1D, Int32, Int32, Float32x4
 Variable TextureStoreMip_Texture1D_texture;
+inline constexpr std::array TextureStoreMip_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureStoreMip_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureStoreMip_Texture1D_coordinate;
 Variable TextureStoreMip_Texture1D_mip;
 Variable TextureStoreMip_Texture1D_value;
@@ -7003,12 +7187,16 @@ inline constexpr std::array TextureStoreMip_Texture1D_args = { &TextureStoreMip_
 
 /// textureLoad with Texture2D, Int32x2
 Variable TextureLoad_Texture2D_texture;
+inline constexpr std::array TextureLoad_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureLoad_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureLoad_Texture2D_coordinate;
 Function TextureLoad_Texture2D;
 inline constexpr std::array TextureLoad_Texture2D_args = { &TextureLoad_Texture2D_texture, &TextureLoad_Texture2D_coordinate };
 
 /// textureLoadMip with Texture2D, Int32x2, Int32
 Variable TextureLoadMip_Texture2D_texture;
+inline constexpr std::array TextureLoadMip_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureLoadMip_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureLoadMip_Texture2D_coordinate;
 Variable TextureLoadMip_Texture2D_mip;
 Function TextureLoadMip_Texture2D;
@@ -7016,6 +7204,8 @@ inline constexpr std::array TextureLoadMip_Texture2D_args = { &TextureLoadMip_Te
 
 /// textureStore with Texture2D, Int32x2, Float32x4
 Variable TextureStore_Texture2D_texture;
+inline constexpr std::array TextureStore_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureStore_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureStore_Texture2D_coordinate;
 Variable TextureStore_Texture2D_value;
 Function TextureStore_Texture2D;
@@ -7023,6 +7213,8 @@ inline constexpr std::array TextureStore_Texture2D_args = { &TextureStore_Textur
 
 /// textureStoreMip with Texture2D, Int32x2, Int32, Float32x4
 Variable TextureStoreMip_Texture2D_texture;
+inline constexpr std::array TextureStoreMip_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureStoreMip_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureStoreMip_Texture2D_coordinate;
 Variable TextureStoreMip_Texture2D_mip;
 Variable TextureStoreMip_Texture2D_value;
@@ -7031,12 +7223,16 @@ inline constexpr std::array TextureStoreMip_Texture2D_args = { &TextureStoreMip_
 
 /// textureLoad with Texture3D, Int32x3
 Variable TextureLoad_Texture3D_texture;
+inline constexpr std::array TextureLoad_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureLoad_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureLoad_Texture3D_coordinate;
 Function TextureLoad_Texture3D;
 inline constexpr std::array TextureLoad_Texture3D_args = { &TextureLoad_Texture3D_texture, &TextureLoad_Texture3D_coordinate };
 
 /// textureLoadMip with Texture3D, Int32x3, Int32
 Variable TextureLoadMip_Texture3D_texture;
+inline constexpr std::array TextureLoadMip_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureLoadMip_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureLoadMip_Texture3D_coordinate;
 Variable TextureLoadMip_Texture3D_mip;
 Function TextureLoadMip_Texture3D;
@@ -7044,6 +7240,8 @@ inline constexpr std::array TextureLoadMip_Texture3D_args = { &TextureLoadMip_Te
 
 /// textureStore with Texture3D, Int32x3, Float32x4
 Variable TextureStore_Texture3D_texture;
+inline constexpr std::array TextureStore_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureStore_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureStore_Texture3D_coordinate;
 Variable TextureStore_Texture3D_value;
 Function TextureStore_Texture3D;
@@ -7051,6 +7249,8 @@ inline constexpr std::array TextureStore_Texture3D_args = { &TextureStore_Textur
 
 /// textureStoreMip with Texture3D, Int32x3, Int32, Float32x4
 Variable TextureStoreMip_Texture3D_texture;
+inline constexpr std::array TextureStoreMip_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureStoreMip_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureStoreMip_Texture3D_coordinate;
 Variable TextureStoreMip_Texture3D_mip;
 Variable TextureStoreMip_Texture3D_value;
@@ -7059,12 +7259,16 @@ inline constexpr std::array TextureStoreMip_Texture3D_args = { &TextureStoreMip_
 
 /// textureLoad with TextureCube, Int32x3
 Variable TextureLoad_TextureCube_texture;
+inline constexpr std::array TextureLoad_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureLoad_TextureCube_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureLoad_TextureCube_coordinate;
 Function TextureLoad_TextureCube;
 inline constexpr std::array TextureLoad_TextureCube_args = { &TextureLoad_TextureCube_texture, &TextureLoad_TextureCube_coordinate };
 
 /// textureLoadMip with TextureCube, Int32x3, Int32
 Variable TextureLoadMip_TextureCube_texture;
+inline constexpr std::array TextureLoadMip_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureLoadMip_TextureCube_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureLoadMip_TextureCube_coordinate;
 Variable TextureLoadMip_TextureCube_mip;
 Function TextureLoadMip_TextureCube;
@@ -7072,6 +7276,8 @@ inline constexpr std::array TextureLoadMip_TextureCube_args = { &TextureLoadMip_
 
 /// textureStore with TextureCube, Int32x3, Float32x4
 Variable TextureStore_TextureCube_texture;
+inline constexpr std::array TextureStore_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureStore_TextureCube_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureStore_TextureCube_coordinate;
 Variable TextureStore_TextureCube_value;
 Function TextureStore_TextureCube;
@@ -7079,6 +7285,8 @@ inline constexpr std::array TextureStore_TextureCube_args = { &TextureStore_Text
 
 /// textureStoreMip with TextureCube, Int32x3, Int32, Float32x4
 Variable TextureStoreMip_TextureCube_texture;
+inline constexpr std::array TextureStoreMip_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureStoreMip_TextureCube_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureStoreMip_TextureCube_coordinate;
 Variable TextureStoreMip_TextureCube_mip;
 Variable TextureStoreMip_TextureCube_value;
@@ -7087,12 +7295,16 @@ inline constexpr std::array TextureStoreMip_TextureCube_args = { &TextureStoreMi
 
 /// textureLoad with Texture1DArray, Int32x2
 Variable TextureLoad_Texture1DArray_texture;
+inline constexpr std::array TextureLoad_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureLoad_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureLoad_Texture1DArray_coordinate;
 Function TextureLoad_Texture1DArray;
 inline constexpr std::array TextureLoad_Texture1DArray_args = { &TextureLoad_Texture1DArray_texture, &TextureLoad_Texture1DArray_coordinate };
 
 /// textureLoadMip with Texture1DArray, Int32x2, Int32
 Variable TextureLoadMip_Texture1DArray_texture;
+inline constexpr std::array TextureLoadMip_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureLoadMip_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureLoadMip_Texture1DArray_coordinate;
 Variable TextureLoadMip_Texture1DArray_mip;
 Function TextureLoadMip_Texture1DArray;
@@ -7100,6 +7312,8 @@ inline constexpr std::array TextureLoadMip_Texture1DArray_args = { &TextureLoadM
 
 /// textureStore with Texture1DArray, Int32x2, Float32x4
 Variable TextureStore_Texture1DArray_texture;
+inline constexpr std::array TextureStore_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureStore_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureStore_Texture1DArray_coordinate;
 Variable TextureStore_Texture1DArray_value;
 Function TextureStore_Texture1DArray;
@@ -7107,6 +7321,8 @@ inline constexpr std::array TextureStore_Texture1DArray_args = { &TextureStore_T
 
 /// textureStoreMip with Texture1DArray, Int32x2, Int32, Float32x4
 Variable TextureStoreMip_Texture1DArray_texture;
+inline constexpr std::array TextureStoreMip_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureStoreMip_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureStoreMip_Texture1DArray_coordinate;
 Variable TextureStoreMip_Texture1DArray_mip;
 Variable TextureStoreMip_Texture1DArray_value;
@@ -7115,12 +7331,16 @@ inline constexpr std::array TextureStoreMip_Texture1DArray_args = { &TextureStor
 
 /// textureLoad with Texture2DArray, Int32x3
 Variable TextureLoad_Texture2DArray_texture;
+inline constexpr std::array TextureLoad_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureLoad_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureLoad_Texture2DArray_coordinate;
 Function TextureLoad_Texture2DArray;
 inline constexpr std::array TextureLoad_Texture2DArray_args = { &TextureLoad_Texture2DArray_texture, &TextureLoad_Texture2DArray_coordinate };
 
 /// textureLoadMip with Texture2DArray, Int32x3, Int32
 Variable TextureLoadMip_Texture2DArray_texture;
+inline constexpr std::array TextureLoadMip_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureLoadMip_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureLoadMip_Texture2DArray_coordinate;
 Variable TextureLoadMip_Texture2DArray_mip;
 Function TextureLoadMip_Texture2DArray;
@@ -7128,6 +7348,8 @@ inline constexpr std::array TextureLoadMip_Texture2DArray_args = { &TextureLoadM
 
 /// textureStore with Texture2DArray, Int32x3, Float32x4
 Variable TextureStore_Texture2DArray_texture;
+inline constexpr std::array TextureStore_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureStore_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureStore_Texture2DArray_coordinate;
 Variable TextureStore_Texture2DArray_value;
 Function TextureStore_Texture2DArray;
@@ -7135,6 +7357,8 @@ inline constexpr std::array TextureStore_Texture2DArray_args = { &TextureStore_T
 
 /// textureStoreMip with Texture2DArray, Int32x3, Int32, Float32x4
 Variable TextureStoreMip_Texture2DArray_texture;
+inline constexpr std::array TextureStoreMip_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureStoreMip_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureStoreMip_Texture2DArray_coordinate;
 Variable TextureStoreMip_Texture2DArray_mip;
 Variable TextureStoreMip_Texture2DArray_value;
@@ -7143,12 +7367,16 @@ inline constexpr std::array TextureStoreMip_Texture2DArray_args = { &TextureStor
 
 /// textureLoad with TextureCubeArray, Int32x4
 Variable TextureLoad_TextureCubeArray_texture;
+inline constexpr std::array TextureLoad_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureLoad_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureLoad_TextureCubeArray_coordinate;
 Function TextureLoad_TextureCubeArray;
 inline constexpr std::array TextureLoad_TextureCubeArray_args = { &TextureLoad_TextureCubeArray_texture, &TextureLoad_TextureCubeArray_coordinate };
 
 /// textureLoadMip with TextureCubeArray, Int32x4, Int32
 Variable TextureLoadMip_TextureCubeArray_texture;
+inline constexpr std::array TextureLoadMip_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureLoadMip_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureLoadMip_TextureCubeArray_coordinate;
 Variable TextureLoadMip_TextureCubeArray_mip;
 Function TextureLoadMip_TextureCubeArray;
@@ -7156,6 +7384,8 @@ inline constexpr std::array TextureLoadMip_TextureCubeArray_args = { &TextureLoa
 
 /// textureStore with TextureCubeArray, Int32x4, Float32x4
 Variable TextureStore_TextureCubeArray_texture;
+inline constexpr std::array TextureStore_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureStore_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureStore_TextureCubeArray_coordinate;
 Variable TextureStore_TextureCubeArray_value;
 Function TextureStore_TextureCubeArray;
@@ -7163,6 +7393,8 @@ inline constexpr std::array TextureStore_TextureCubeArray_args = { &TextureStore
 
 /// textureStoreMip with TextureCubeArray, Int32x4, Int32, Float32x4
 Variable TextureStoreMip_TextureCubeArray_texture;
+inline constexpr std::array TextureStoreMip_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureStoreMip_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureStoreMip_TextureCubeArray_coordinate;
 Variable TextureStoreMip_TextureCubeArray_mip;
 Variable TextureStoreMip_TextureCubeArray_value;
@@ -7171,12 +7403,16 @@ inline constexpr std::array TextureStoreMip_TextureCubeArray_args = { &TextureSt
 
 /// textureLoad with Texture2DMS, Int32x2
 Variable TextureLoad_Texture2DMS_texture;
+inline constexpr std::array TextureLoad_Texture2DMS_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureLoad_Texture2DMS_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureLoad_Texture2DMS_coordinate;
 Function TextureLoad_Texture2DMS;
 inline constexpr std::array TextureLoad_Texture2DMS_args = { &TextureLoad_Texture2DMS_texture, &TextureLoad_Texture2DMS_coordinate };
 
 /// textureLoadMip with Texture2DMS, Int32x2, Int32
 Variable TextureLoadMip_Texture2DMS_texture;
+inline constexpr std::array TextureLoadMip_Texture2DMS_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureLoadMip_Texture2DMS_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureLoadMip_Texture2DMS_coordinate;
 Variable TextureLoadMip_Texture2DMS_mip;
 Function TextureLoadMip_Texture2DMS;
@@ -7184,6 +7420,8 @@ inline constexpr std::array TextureLoadMip_Texture2DMS_args = { &TextureLoadMip_
 
 /// textureStore with Texture2DMS, Int32x2, Float32x4
 Variable TextureStore_Texture2DMS_texture;
+inline constexpr std::array TextureStore_Texture2DMS_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureStore_Texture2DMS_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureStore_Texture2DMS_coordinate;
 Variable TextureStore_Texture2DMS_value;
 Function TextureStore_Texture2DMS;
@@ -7191,6 +7429,8 @@ inline constexpr std::array TextureStore_Texture2DMS_args = { &TextureStore_Text
 
 /// textureStoreMip with Texture2DMS, Int32x2, Int32, Float32x4
 Variable TextureStoreMip_Texture2DMS_texture;
+inline constexpr std::array TextureStoreMip_Texture2DMS_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureStoreMip_Texture2DMS_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureStoreMip_Texture2DMS_coordinate;
 Variable TextureStoreMip_Texture2DMS_mip;
 Variable TextureStoreMip_Texture2DMS_value;
@@ -7199,12 +7439,16 @@ inline constexpr std::array TextureStoreMip_Texture2DMS_args = { &TextureStoreMi
 
 /// textureLoad with Texture2DMSArray, Int32x3
 Variable TextureLoad_Texture2DMSArray_texture;
+inline constexpr std::array TextureLoad_Texture2DMSArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureLoad_Texture2DMSArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureLoad_Texture2DMSArray_coordinate;
 Function TextureLoad_Texture2DMSArray;
 inline constexpr std::array TextureLoad_Texture2DMSArray_args = { &TextureLoad_Texture2DMSArray_texture, &TextureLoad_Texture2DMSArray_coordinate };
 
 /// textureLoadMip with Texture2DMSArray, Int32x3, Int32
 Variable TextureLoadMip_Texture2DMSArray_texture;
+inline constexpr std::array TextureLoadMip_Texture2DMSArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureLoadMip_Texture2DMSArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureLoadMip_Texture2DMSArray_coordinate;
 Variable TextureLoadMip_Texture2DMSArray_mip;
 Function TextureLoadMip_Texture2DMSArray;
@@ -7212,6 +7456,8 @@ inline constexpr std::array TextureLoadMip_Texture2DMSArray_args = { &TextureLoa
 
 /// textureStore with Texture2DMSArray, Int32x3, Float32x4
 Variable TextureStore_Texture2DMSArray_texture;
+inline constexpr std::array TextureStore_Texture2DMSArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureStore_Texture2DMSArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureStore_Texture2DMSArray_coordinate;
 Variable TextureStore_Texture2DMSArray_value;
 Function TextureStore_Texture2DMSArray;
@@ -7219,6 +7465,8 @@ inline constexpr std::array TextureStore_Texture2DMSArray_args = { &TextureStore
 
 /// textureStoreMip with Texture2DMSArray, Int32x3, Int32, Float32x4
 Variable TextureStoreMip_Texture2DMSArray_texture;
+inline constexpr std::array TextureStoreMip_Texture2DMSArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureStoreMip_Texture2DMSArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureStoreMip_Texture2DMSArray_coordinate;
 Variable TextureStoreMip_Texture2DMSArray_mip;
 Variable TextureStoreMip_Texture2DMSArray_value;
@@ -7227,6 +7475,8 @@ inline constexpr std::array TextureStoreMip_Texture2DMSArray_args = { &TextureSt
 
 /// textureFetch with Texture1D, Int32, UInt32
 Variable TextureFetch_Texture1D_texture;
+inline constexpr std::array TextureFetch_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureFetch_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureFetch_Texture1D_coordinate;
 Variable TextureFetch_Texture1D_lod;
 Function TextureFetch_Texture1D;
@@ -7234,6 +7484,8 @@ inline constexpr std::array TextureFetch_Texture1D_args = { &TextureFetch_Textur
 
 /// textureFetchSample with Texture1D, Int32, UInt32, UInt32
 Variable TextureFetchSample_Texture1D_texture;
+inline constexpr std::array TextureFetchSample_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureFetchSample_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureFetchSample_Texture1D_coordinate;
 Variable TextureFetchSample_Texture1D_lod;
 Variable TextureFetchSample_Texture1D_sample;
@@ -7242,6 +7494,8 @@ inline constexpr std::array TextureFetchSample_Texture1D_args = { &TextureFetchS
 
 /// textureFetch with Texture2D, Int32x2, UInt32
 Variable TextureFetch_Texture2D_texture;
+inline constexpr std::array TextureFetch_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureFetch_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureFetch_Texture2D_coordinate;
 Variable TextureFetch_Texture2D_lod;
 Function TextureFetch_Texture2D;
@@ -7249,6 +7503,8 @@ inline constexpr std::array TextureFetch_Texture2D_args = { &TextureFetch_Textur
 
 /// textureFetchSample with Texture2D, Int32x2, UInt32, UInt32
 Variable TextureFetchSample_Texture2D_texture;
+inline constexpr std::array TextureFetchSample_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureFetchSample_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureFetchSample_Texture2D_coordinate;
 Variable TextureFetchSample_Texture2D_lod;
 Variable TextureFetchSample_Texture2D_sample;
@@ -7257,6 +7513,8 @@ inline constexpr std::array TextureFetchSample_Texture2D_args = { &TextureFetchS
 
 /// textureFetch with Texture3D, Int32x3, UInt32
 Variable TextureFetch_Texture3D_texture;
+inline constexpr std::array TextureFetch_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureFetch_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureFetch_Texture3D_coordinate;
 Variable TextureFetch_Texture3D_lod;
 Function TextureFetch_Texture3D;
@@ -7264,6 +7522,8 @@ inline constexpr std::array TextureFetch_Texture3D_args = { &TextureFetch_Textur
 
 /// textureFetchSample with Texture3D, Int32x3, UInt32, UInt32
 Variable TextureFetchSample_Texture3D_texture;
+inline constexpr std::array TextureFetchSample_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureFetchSample_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureFetchSample_Texture3D_coordinate;
 Variable TextureFetchSample_Texture3D_lod;
 Variable TextureFetchSample_Texture3D_sample;
@@ -7272,6 +7532,8 @@ inline constexpr std::array TextureFetchSample_Texture3D_args = { &TextureFetchS
 
 /// textureFetch with Texture1DArray, Int32x2, UInt32
 Variable TextureFetch_Texture1DArray_texture;
+inline constexpr std::array TextureFetch_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureFetch_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureFetch_Texture1DArray_coordinate;
 Variable TextureFetch_Texture1DArray_lod;
 Function TextureFetch_Texture1DArray;
@@ -7279,6 +7541,8 @@ inline constexpr std::array TextureFetch_Texture1DArray_args = { &TextureFetch_T
 
 /// textureFetchSample with Texture1DArray, Int32x2, UInt32, UInt32
 Variable TextureFetchSample_Texture1DArray_texture;
+inline constexpr std::array TextureFetchSample_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureFetchSample_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureFetchSample_Texture1DArray_coordinate;
 Variable TextureFetchSample_Texture1DArray_lod;
 Variable TextureFetchSample_Texture1DArray_sample;
@@ -7287,6 +7551,8 @@ inline constexpr std::array TextureFetchSample_Texture1DArray_args = { &TextureF
 
 /// textureFetch with Texture2DArray, Int32x3, UInt32
 Variable TextureFetch_Texture2DArray_texture;
+inline constexpr std::array TextureFetch_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureFetch_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureFetch_Texture2DArray_coordinate;
 Variable TextureFetch_Texture2DArray_lod;
 Function TextureFetch_Texture2DArray;
@@ -7294,6 +7560,8 @@ inline constexpr std::array TextureFetch_Texture2DArray_args = { &TextureFetch_T
 
 /// textureFetchSample with Texture2DArray, Int32x3, UInt32, UInt32
 Variable TextureFetchSample_Texture2DArray_texture;
+inline constexpr std::array TextureFetchSample_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureFetchSample_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureFetchSample_Texture2DArray_coordinate;
 Variable TextureFetchSample_Texture2DArray_lod;
 Variable TextureFetchSample_Texture2DArray_sample;
@@ -7302,6 +7570,8 @@ inline constexpr std::array TextureFetchSample_Texture2DArray_args = { &TextureF
 
 /// textureFetch with Texture2DMS, Int32x2, UInt32
 Variable TextureFetch_Texture2DMS_texture;
+inline constexpr std::array TextureFetch_Texture2DMS_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureFetch_Texture2DMS_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureFetch_Texture2DMS_coordinate;
 Variable TextureFetch_Texture2DMS_lod;
 Function TextureFetch_Texture2DMS;
@@ -7309,6 +7579,8 @@ inline constexpr std::array TextureFetch_Texture2DMS_args = { &TextureFetch_Text
 
 /// textureFetchSample with Texture2DMS, Int32x2, UInt32, UInt32
 Variable TextureFetchSample_Texture2DMS_texture;
+inline constexpr std::array TextureFetchSample_Texture2DMS_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureFetchSample_Texture2DMS_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureFetchSample_Texture2DMS_coordinate;
 Variable TextureFetchSample_Texture2DMS_lod;
 Variable TextureFetchSample_Texture2DMS_sample;
@@ -7317,6 +7589,8 @@ inline constexpr std::array TextureFetchSample_Texture2DMS_args = { &TextureFetc
 
 /// textureFetch with Texture2DMSArray, Int32x3, UInt32
 Variable TextureFetch_Texture2DMSArray_texture;
+inline constexpr std::array TextureFetch_Texture2DMSArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureFetch_Texture2DMSArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureFetch_Texture2DMSArray_coordinate;
 Variable TextureFetch_Texture2DMSArray_lod;
 Function TextureFetch_Texture2DMSArray;
@@ -7324,6 +7598,8 @@ inline constexpr std::array TextureFetch_Texture2DMSArray_args = { &TextureFetch
 
 /// textureFetchSample with Texture2DMSArray, Int32x3, UInt32, UInt32
 Variable TextureFetchSample_Texture2DMSArray_texture;
+inline constexpr std::array TextureFetchSample_Texture2DMSArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureFetchSample_Texture2DMSArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureFetchSample_Texture2DMSArray_coordinate;
 Variable TextureFetchSample_Texture2DMSArray_lod;
 Variable TextureFetchSample_Texture2DMSArray_sample;
@@ -7332,7 +7608,11 @@ inline constexpr std::array TextureFetchSample_Texture2DMSArray_args = { &Textur
 
 /// textureGather with Texture2D, Sampler, Int32x2, Int32
 Variable TextureGather_Texture2D_texture;
+inline constexpr std::array TextureGather_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGather_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureGather_Texture2D_sampler;
+inline constexpr std::array TextureGather_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGather_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureGather_Texture2D_coordinate;
 Variable TextureGather_Texture2D_component;
 Function TextureGather_Texture2D;
@@ -7340,6 +7620,8 @@ inline constexpr std::array TextureGather_Texture2D_args = { &TextureGather_Text
 
 /// textureGather with SampledTexture2D, Int32x2, Int32
 Variable SampledTextureGather_Texture2D_texture;
+inline constexpr std::array SampledTextureGather_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureGather_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureGather_Texture2D_coordinate;
 Variable SampledTextureGather_Texture2D_component;
 Function SampledTextureGather_Texture2D;
@@ -7347,7 +7629,11 @@ inline constexpr std::array SampledTextureGather_Texture2D_args = { &SampledText
 
 /// textureGatherOffset with Texture2D, Sampler, Int32x2, Int32, UInt32
 Variable TextureGatherOffset_Texture2D_texture;
+inline constexpr std::array TextureGatherOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGatherOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureGatherOffset_Texture2D_sampler;
+inline constexpr std::array TextureGatherOffset_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGatherOffset_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureGatherOffset_Texture2D_coordinate;
 Variable TextureGatherOffset_Texture2D_component;
 Variable TextureGatherOffset_Texture2D_offset;
@@ -7356,6 +7642,8 @@ inline constexpr std::array TextureGatherOffset_Texture2D_args = { &TextureGathe
 
 /// textureGatherOffset with SampledTexture2D, Int32x2, Int32, UInt32
 Variable SampledTextureGatherOffset_Texture2D_texture;
+inline constexpr std::array SampledTextureGatherOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureGatherOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureGatherOffset_Texture2D_coordinate;
 Variable SampledTextureGatherOffset_Texture2D_component;
 Variable SampledTextureGatherOffset_Texture2D_offset;
@@ -7364,7 +7652,11 @@ inline constexpr std::array SampledTextureGatherOffset_Texture2D_args = { &Sampl
 
 /// textureGather with TextureCube, Sampler, Int32x3, Int32
 Variable TextureGather_TextureCube_texture;
+inline constexpr std::array TextureGather_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGather_TextureCube_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureGather_TextureCube_sampler;
+inline constexpr std::array TextureGather_TextureCube_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGather_TextureCube_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureGather_TextureCube_coordinate;
 Variable TextureGather_TextureCube_component;
 Function TextureGather_TextureCube;
@@ -7372,6 +7664,8 @@ inline constexpr std::array TextureGather_TextureCube_args = { &TextureGather_Te
 
 /// textureGather with SampledTextureCube, Int32x3, Int32
 Variable SampledTextureGather_TextureCube_texture;
+inline constexpr std::array SampledTextureGather_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureGather_TextureCube_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureGather_TextureCube_coordinate;
 Variable SampledTextureGather_TextureCube_component;
 Function SampledTextureGather_TextureCube;
@@ -7379,7 +7673,11 @@ inline constexpr std::array SampledTextureGather_TextureCube_args = { &SampledTe
 
 /// textureGatherOffset with TextureCube, Sampler, Int32x3, Int32, UInt32
 Variable TextureGatherOffset_TextureCube_texture;
+inline constexpr std::array TextureGatherOffset_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGatherOffset_TextureCube_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureGatherOffset_TextureCube_sampler;
+inline constexpr std::array TextureGatherOffset_TextureCube_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGatherOffset_TextureCube_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureGatherOffset_TextureCube_coordinate;
 Variable TextureGatherOffset_TextureCube_component;
 Variable TextureGatherOffset_TextureCube_offset;
@@ -7388,6 +7686,8 @@ inline constexpr std::array TextureGatherOffset_TextureCube_args = { &TextureGat
 
 /// textureGatherOffset with SampledTextureCube, Int32x3, Int32, UInt32
 Variable SampledTextureGatherOffset_TextureCube_texture;
+inline constexpr std::array SampledTextureGatherOffset_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureGatherOffset_TextureCube_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureGatherOffset_TextureCube_coordinate;
 Variable SampledTextureGatherOffset_TextureCube_component;
 Variable SampledTextureGatherOffset_TextureCube_offset;
@@ -7396,7 +7696,11 @@ inline constexpr std::array SampledTextureGatherOffset_TextureCube_args = { &Sam
 
 /// textureGather with Texture2DArray, Sampler, Int32x3, Int32
 Variable TextureGather_Texture2DArray_texture;
+inline constexpr std::array TextureGather_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGather_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureGather_Texture2DArray_sampler;
+inline constexpr std::array TextureGather_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGather_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureGather_Texture2DArray_coordinate;
 Variable TextureGather_Texture2DArray_component;
 Function TextureGather_Texture2DArray;
@@ -7404,6 +7708,8 @@ inline constexpr std::array TextureGather_Texture2DArray_args = { &TextureGather
 
 /// textureGather with SampledTexture2DArray, Int32x3, Int32
 Variable SampledTextureGather_Texture2DArray_texture;
+inline constexpr std::array SampledTextureGather_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureGather_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureGather_Texture2DArray_coordinate;
 Variable SampledTextureGather_Texture2DArray_component;
 Function SampledTextureGather_Texture2DArray;
@@ -7411,7 +7717,11 @@ inline constexpr std::array SampledTextureGather_Texture2DArray_args = { &Sample
 
 /// textureGatherOffset with Texture2DArray, Sampler, Int32x3, Int32, UInt32
 Variable TextureGatherOffset_Texture2DArray_texture;
+inline constexpr std::array TextureGatherOffset_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGatherOffset_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureGatherOffset_Texture2DArray_sampler;
+inline constexpr std::array TextureGatherOffset_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGatherOffset_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureGatherOffset_Texture2DArray_coordinate;
 Variable TextureGatherOffset_Texture2DArray_component;
 Variable TextureGatherOffset_Texture2DArray_offset;
@@ -7420,6 +7730,8 @@ inline constexpr std::array TextureGatherOffset_Texture2DArray_args = { &Texture
 
 /// textureGatherOffset with SampledTexture2DArray, Int32x3, Int32, UInt32
 Variable SampledTextureGatherOffset_Texture2DArray_texture;
+inline constexpr std::array SampledTextureGatherOffset_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureGatherOffset_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureGatherOffset_Texture2DArray_coordinate;
 Variable SampledTextureGatherOffset_Texture2DArray_component;
 Variable SampledTextureGatherOffset_Texture2DArray_offset;
@@ -7428,7 +7740,11 @@ inline constexpr std::array SampledTextureGatherOffset_Texture2DArray_args = { &
 
 /// textureGather with TextureCubeArray, Sampler, Int32x4, Int32
 Variable TextureGather_TextureCubeArray_texture;
+inline constexpr std::array TextureGather_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGather_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureGather_TextureCubeArray_sampler;
+inline constexpr std::array TextureGather_TextureCubeArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGather_TextureCubeArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureGather_TextureCubeArray_coordinate;
 Variable TextureGather_TextureCubeArray_component;
 Function TextureGather_TextureCubeArray;
@@ -7436,6 +7752,8 @@ inline constexpr std::array TextureGather_TextureCubeArray_args = { &TextureGath
 
 /// textureGather with SampledTextureCubeArray, Int32x4, Int32
 Variable SampledTextureGather_TextureCubeArray_texture;
+inline constexpr std::array SampledTextureGather_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureGather_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureGather_TextureCubeArray_coordinate;
 Variable SampledTextureGather_TextureCubeArray_component;
 Function SampledTextureGather_TextureCubeArray;
@@ -7443,7 +7761,11 @@ inline constexpr std::array SampledTextureGather_TextureCubeArray_args = { &Samp
 
 /// textureGatherOffset with TextureCubeArray, Sampler, Int32x4, Int32, UInt32
 Variable TextureGatherOffset_TextureCubeArray_texture;
+inline constexpr std::array TextureGatherOffset_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGatherOffset_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureGatherOffset_TextureCubeArray_sampler;
+inline constexpr std::array TextureGatherOffset_TextureCubeArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureGatherOffset_TextureCubeArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureGatherOffset_TextureCubeArray_coordinate;
 Variable TextureGatherOffset_TextureCubeArray_component;
 Variable TextureGatherOffset_TextureCubeArray_offset;
@@ -7452,6 +7774,8 @@ inline constexpr std::array TextureGatherOffset_TextureCubeArray_args = { &Textu
 
 /// textureGatherOffset with SampledTextureCubeArray, Int32x4, Int32, UInt32
 Variable SampledTextureGatherOffset_TextureCubeArray_texture;
+inline constexpr std::array SampledTextureGatherOffset_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureGatherOffset_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureGatherOffset_TextureCubeArray_coordinate;
 Variable SampledTextureGatherOffset_TextureCubeArray_component;
 Variable SampledTextureGatherOffset_TextureCubeArray_offset;
@@ -7460,109 +7784,159 @@ inline constexpr std::array SampledTextureGatherOffset_TextureCubeArray_args = {
 
 /// texturePixelCacheLoad with PixelCache
 Variable TexturePixelCacheLoad_PixelCache_texture;
+inline constexpr std::array TexturePixelCacheLoad_PixelCache_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TexturePixelCacheLoad_PixelCache_texture_modifierValues = {(Expression*)nullptr};
 Function TexturePixelCacheLoad_PixelCache;
 inline constexpr std::array TexturePixelCacheLoad_PixelCache_args = { &TexturePixelCacheLoad_PixelCache_texture };
 
 /// texturePixelCacheLoad with PixelCacheMS, UInt32
 Variable TexturePixelCacheLoad_PixelCacheMS_texture;
+inline constexpr std::array TexturePixelCacheLoad_PixelCacheMS_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TexturePixelCacheLoad_PixelCacheMS_texture_modifierValues = {(Expression*)nullptr};
 Variable TexturePixelCacheLoad_PixelCacheMS_sample;
 Function TexturePixelCacheLoad_PixelCacheMS;
 inline constexpr std::array TexturePixelCacheLoad_PixelCacheMS_args = { &TexturePixelCacheLoad_PixelCacheMS_texture, &TexturePixelCacheLoad_PixelCacheMS_sample };
 
 /// textureSample with Texture1D, Sampler, Float32
 Variable TextureSample_Texture1D_texture;
+inline constexpr std::array TextureSample_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSample_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSample_Texture1D_sampler;
+inline constexpr std::array TextureSample_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSample_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSample_Texture1D_coordinate;
 Function TextureSample_Texture1D;
 inline constexpr std::array TextureSample_Texture1D_args = { &TextureSample_Texture1D_texture, &TextureSample_Texture1D_sampler, &TextureSample_Texture1D_coordinate };
 
 /// textureSample with SampledTexture1D, Float32
 Variable SampledTextureSample_Texture1D_texture;
+inline constexpr std::array SampledTextureSample_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSample_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSample_Texture1D_coordinate;
 Function SampledTextureSample_Texture1D;
 inline constexpr std::array SampledTextureSample_Texture1D_args = { &SampledTextureSample_Texture1D_texture, &SampledTextureSample_Texture1D_coordinate };
 
 /// textureSample with Texture2D, Sampler, Float32x2
 Variable TextureSample_Texture2D_texture;
+inline constexpr std::array TextureSample_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSample_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSample_Texture2D_sampler;
+inline constexpr std::array TextureSample_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSample_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSample_Texture2D_coordinate;
 Function TextureSample_Texture2D;
 inline constexpr std::array TextureSample_Texture2D_args = { &TextureSample_Texture2D_texture, &TextureSample_Texture2D_sampler, &TextureSample_Texture2D_coordinate };
 
 /// textureSample with SampledTexture2D, Float32x2
 Variable SampledTextureSample_Texture2D_texture;
+inline constexpr std::array SampledTextureSample_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSample_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSample_Texture2D_coordinate;
 Function SampledTextureSample_Texture2D;
 inline constexpr std::array SampledTextureSample_Texture2D_args = { &SampledTextureSample_Texture2D_texture, &SampledTextureSample_Texture2D_coordinate };
 
 /// textureSample with Texture3D, Sampler, Float32x3
 Variable TextureSample_Texture3D_texture;
+inline constexpr std::array TextureSample_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSample_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSample_Texture3D_sampler;
+inline constexpr std::array TextureSample_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSample_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSample_Texture3D_coordinate;
 Function TextureSample_Texture3D;
 inline constexpr std::array TextureSample_Texture3D_args = { &TextureSample_Texture3D_texture, &TextureSample_Texture3D_sampler, &TextureSample_Texture3D_coordinate };
 
 /// textureSample with SampledTexture3D, Float32x3
 Variable SampledTextureSample_Texture3D_texture;
+inline constexpr std::array SampledTextureSample_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSample_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSample_Texture3D_coordinate;
 Function SampledTextureSample_Texture3D;
 inline constexpr std::array SampledTextureSample_Texture3D_args = { &SampledTextureSample_Texture3D_texture, &SampledTextureSample_Texture3D_coordinate };
 
 /// textureSample with TextureCube, Sampler, Float32x3
 Variable TextureSample_TextureCube_texture;
+inline constexpr std::array TextureSample_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSample_TextureCube_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSample_TextureCube_sampler;
+inline constexpr std::array TextureSample_TextureCube_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSample_TextureCube_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSample_TextureCube_coordinate;
 Function TextureSample_TextureCube;
 inline constexpr std::array TextureSample_TextureCube_args = { &TextureSample_TextureCube_texture, &TextureSample_TextureCube_sampler, &TextureSample_TextureCube_coordinate };
 
 /// textureSample with SampledTextureCube, Float32x3
 Variable SampledTextureSample_TextureCube_texture;
+inline constexpr std::array SampledTextureSample_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSample_TextureCube_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSample_TextureCube_coordinate;
 Function SampledTextureSample_TextureCube;
 inline constexpr std::array SampledTextureSample_TextureCube_args = { &SampledTextureSample_TextureCube_texture, &SampledTextureSample_TextureCube_coordinate };
 
 /// textureSample with Texture1DArray, Sampler, Float32x2
 Variable TextureSample_Texture1DArray_texture;
+inline constexpr std::array TextureSample_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSample_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSample_Texture1DArray_sampler;
+inline constexpr std::array TextureSample_Texture1DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSample_Texture1DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSample_Texture1DArray_coordinate;
 Function TextureSample_Texture1DArray;
 inline constexpr std::array TextureSample_Texture1DArray_args = { &TextureSample_Texture1DArray_texture, &TextureSample_Texture1DArray_sampler, &TextureSample_Texture1DArray_coordinate };
 
 /// textureSample with SampledTexture1DArray, Float32x2
 Variable SampledTextureSample_Texture1DArray_texture;
+inline constexpr std::array SampledTextureSample_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSample_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSample_Texture1DArray_coordinate;
 Function SampledTextureSample_Texture1DArray;
 inline constexpr std::array SampledTextureSample_Texture1DArray_args = { &SampledTextureSample_Texture1DArray_texture, &SampledTextureSample_Texture1DArray_coordinate };
 
 /// textureSample with Texture2DArray, Sampler, Float32x3
 Variable TextureSample_Texture2DArray_texture;
+inline constexpr std::array TextureSample_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSample_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSample_Texture2DArray_sampler;
+inline constexpr std::array TextureSample_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSample_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSample_Texture2DArray_coordinate;
 Function TextureSample_Texture2DArray;
 inline constexpr std::array TextureSample_Texture2DArray_args = { &TextureSample_Texture2DArray_texture, &TextureSample_Texture2DArray_sampler, &TextureSample_Texture2DArray_coordinate };
 
 /// textureSample with SampledTexture2DArray, Float32x3
 Variable SampledTextureSample_Texture2DArray_texture;
+inline constexpr std::array SampledTextureSample_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSample_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSample_Texture2DArray_coordinate;
 Function SampledTextureSample_Texture2DArray;
 inline constexpr std::array SampledTextureSample_Texture2DArray_args = { &SampledTextureSample_Texture2DArray_texture, &SampledTextureSample_Texture2DArray_coordinate };
 
 /// textureSample with TextureCubeArray, Sampler, Float32x4
 Variable TextureSample_TextureCubeArray_texture;
+inline constexpr std::array TextureSample_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSample_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSample_TextureCubeArray_sampler;
+inline constexpr std::array TextureSample_TextureCubeArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSample_TextureCubeArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSample_TextureCubeArray_coordinate;
 Function TextureSample_TextureCubeArray;
 inline constexpr std::array TextureSample_TextureCubeArray_args = { &TextureSample_TextureCubeArray_texture, &TextureSample_TextureCubeArray_sampler, &TextureSample_TextureCubeArray_coordinate };
 
 /// textureSample with SampledTextureCubeArray, Float32x4
 Variable SampledTextureSample_TextureCubeArray_texture;
+inline constexpr std::array SampledTextureSample_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSample_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSample_TextureCubeArray_coordinate;
 Function SampledTextureSample_TextureCubeArray;
 inline constexpr std::array SampledTextureSample_TextureCubeArray_args = { &SampledTextureSample_TextureCubeArray_texture, &SampledTextureSample_TextureCubeArray_coordinate };
 
 /// textureSampleOffset with Texture1D, Sampler, Float32, Float32
 Variable TextureSampleOffset_Texture1D_texture;
+inline constexpr std::array TextureSampleOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleOffset_Texture1D_sampler;
+inline constexpr std::array TextureSampleOffset_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleOffset_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleOffset_Texture1D_coordinate;
 Variable TextureSampleOffset_Texture1D_offset;
 Function TextureSampleOffset_Texture1D;
@@ -7570,6 +7944,8 @@ inline constexpr std::array TextureSampleOffset_Texture1D_args = { &TextureSampl
 
 /// textureSampleOffset with SampledTexture1D, Float32, Float32
 Variable SampledTextureSampleOffset_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleOffset_Texture1D_coordinate;
 Variable SampledTextureSampleOffset_Texture1D_offset;
 Function SampledTextureSampleOffset_Texture1D;
@@ -7577,7 +7953,11 @@ inline constexpr std::array SampledTextureSampleOffset_Texture1D_args = { &Sampl
 
 /// textureSampleOffset with Texture2D, Sampler, Float32x2, Float32x2
 Variable TextureSampleOffset_Texture2D_texture;
+inline constexpr std::array TextureSampleOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleOffset_Texture2D_sampler;
+inline constexpr std::array TextureSampleOffset_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleOffset_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleOffset_Texture2D_coordinate;
 Variable TextureSampleOffset_Texture2D_offset;
 Function TextureSampleOffset_Texture2D;
@@ -7585,6 +7965,8 @@ inline constexpr std::array TextureSampleOffset_Texture2D_args = { &TextureSampl
 
 /// textureSampleOffset with SampledTexture2D, Float32x2, Float32x2
 Variable SampledTextureSampleOffset_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleOffset_Texture2D_coordinate;
 Variable SampledTextureSampleOffset_Texture2D_offset;
 Function SampledTextureSampleOffset_Texture2D;
@@ -7592,7 +7974,11 @@ inline constexpr std::array SampledTextureSampleOffset_Texture2D_args = { &Sampl
 
 /// textureSampleOffset with Texture3D, Sampler, Float32x3, Float32x3
 Variable TextureSampleOffset_Texture3D_texture;
+inline constexpr std::array TextureSampleOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleOffset_Texture3D_sampler;
+inline constexpr std::array TextureSampleOffset_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleOffset_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleOffset_Texture3D_coordinate;
 Variable TextureSampleOffset_Texture3D_offset;
 Function TextureSampleOffset_Texture3D;
@@ -7600,6 +7986,8 @@ inline constexpr std::array TextureSampleOffset_Texture3D_args = { &TextureSampl
 
 /// textureSampleOffset with SampledTexture3D, Float32x3, Float32x3
 Variable SampledTextureSampleOffset_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleOffset_Texture3D_coordinate;
 Variable SampledTextureSampleOffset_Texture3D_offset;
 Function SampledTextureSampleOffset_Texture3D;
@@ -7607,7 +7995,11 @@ inline constexpr std::array SampledTextureSampleOffset_Texture3D_args = { &Sampl
 
 /// textureSampleOffset with Texture1DArray, Sampler, Float32x2, Float32x2
 Variable TextureSampleOffset_Texture1DArray_texture;
+inline constexpr std::array TextureSampleOffset_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleOffset_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleOffset_Texture1DArray_sampler;
+inline constexpr std::array TextureSampleOffset_Texture1DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleOffset_Texture1DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleOffset_Texture1DArray_coordinate;
 Variable TextureSampleOffset_Texture1DArray_offset;
 Function TextureSampleOffset_Texture1DArray;
@@ -7615,6 +8007,8 @@ inline constexpr std::array TextureSampleOffset_Texture1DArray_args = { &Texture
 
 /// textureSampleOffset with SampledTexture1DArray, Float32x2, Float32x2
 Variable SampledTextureSampleOffset_Texture1DArray_texture;
+inline constexpr std::array SampledTextureSampleOffset_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleOffset_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleOffset_Texture1DArray_coordinate;
 Variable SampledTextureSampleOffset_Texture1DArray_offset;
 Function SampledTextureSampleOffset_Texture1DArray;
@@ -7622,7 +8016,11 @@ inline constexpr std::array SampledTextureSampleOffset_Texture1DArray_args = { &
 
 /// textureSampleOffset with Texture2DArray, Sampler, Float32x3, Float32x3
 Variable TextureSampleOffset_Texture2DArray_texture;
+inline constexpr std::array TextureSampleOffset_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleOffset_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleOffset_Texture2DArray_sampler;
+inline constexpr std::array TextureSampleOffset_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleOffset_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleOffset_Texture2DArray_coordinate;
 Variable TextureSampleOffset_Texture2DArray_offset;
 Function TextureSampleOffset_Texture2DArray;
@@ -7630,6 +8028,8 @@ inline constexpr std::array TextureSampleOffset_Texture2DArray_args = { &Texture
 
 /// textureSampleOffset with SampledTexture2DArray, Float32x3, Float32x3
 Variable SampledTextureSampleOffset_Texture2DArray_texture;
+inline constexpr std::array SampledTextureSampleOffset_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleOffset_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleOffset_Texture2DArray_coordinate;
 Variable SampledTextureSampleOffset_Texture2DArray_offset;
 Function SampledTextureSampleOffset_Texture2DArray;
@@ -7637,7 +8037,11 @@ inline constexpr std::array SampledTextureSampleOffset_Texture2DArray_args = { &
 
 /// textureSampleProj with Texture1D, Sampler, Float32, Float32
 Variable TextureSampleProj_Texture1D_texture;
+inline constexpr std::array TextureSampleProj_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleProj_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleProj_Texture1D_sampler;
+inline constexpr std::array TextureSampleProj_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleProj_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleProj_Texture1D_coordinate;
 Variable TextureSampleProj_Texture1D_proj;
 Function TextureSampleProj_Texture1D;
@@ -7645,6 +8049,8 @@ inline constexpr std::array TextureSampleProj_Texture1D_args = { &TextureSampleP
 
 /// textureSampleProj with SampledTexture1D, Float32, Float32
 Variable SampledTextureSampleProj_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleProj_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleProj_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleProj_Texture1D_coordinate;
 Variable SampledTextureSampleProj_Texture1D_proj;
 Function SampledTextureSampleProj_Texture1D;
@@ -7652,7 +8058,11 @@ inline constexpr std::array SampledTextureSampleProj_Texture1D_args = { &Sampled
 
 /// textureSampleProj with Texture2D, Sampler, Float32x2, Float32
 Variable TextureSampleProj_Texture2D_texture;
+inline constexpr std::array TextureSampleProj_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleProj_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleProj_Texture2D_sampler;
+inline constexpr std::array TextureSampleProj_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleProj_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleProj_Texture2D_coordinate;
 Variable TextureSampleProj_Texture2D_proj;
 Function TextureSampleProj_Texture2D;
@@ -7660,6 +8070,8 @@ inline constexpr std::array TextureSampleProj_Texture2D_args = { &TextureSampleP
 
 /// textureSampleProj with SampledTexture2D, Float32x2, Float32
 Variable SampledTextureSampleProj_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleProj_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleProj_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleProj_Texture2D_coordinate;
 Variable SampledTextureSampleProj_Texture2D_proj;
 Function SampledTextureSampleProj_Texture2D;
@@ -7667,7 +8079,11 @@ inline constexpr std::array SampledTextureSampleProj_Texture2D_args = { &Sampled
 
 /// textureSampleProj with Texture3D, Sampler, Float32x3, Float32
 Variable TextureSampleProj_Texture3D_texture;
+inline constexpr std::array TextureSampleProj_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleProj_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleProj_Texture3D_sampler;
+inline constexpr std::array TextureSampleProj_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleProj_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleProj_Texture3D_coordinate;
 Variable TextureSampleProj_Texture3D_proj;
 Function TextureSampleProj_Texture3D;
@@ -7675,6 +8091,8 @@ inline constexpr std::array TextureSampleProj_Texture3D_args = { &TextureSampleP
 
 /// textureSampleProj with SampledTexture3D, Float32x3, Float32
 Variable SampledTextureSampleProj_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleProj_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleProj_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleProj_Texture3D_coordinate;
 Variable SampledTextureSampleProj_Texture3D_proj;
 Function SampledTextureSampleProj_Texture3D;
@@ -7682,7 +8100,11 @@ inline constexpr std::array SampledTextureSampleProj_Texture3D_args = { &Sampled
 
 /// textureSampleProjOffset with Texture1D, Sampler, Float32, Float32, Float32
 Variable TextureSampleProjOffset_Texture1D_texture;
+inline constexpr std::array TextureSampleProjOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleProjOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleProjOffset_Texture1D_sampler;
+inline constexpr std::array TextureSampleProjOffset_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleProjOffset_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleProjOffset_Texture1D_coordinate;
 Variable TextureSampleProjOffset_Texture1D_proj;
 Variable TextureSampleProjOffset_Texture1D_offset;
@@ -7691,6 +8113,8 @@ inline constexpr std::array TextureSampleProjOffset_Texture1D_args = { &TextureS
 
 /// textureSampleProjOffset with SampledTexture1D, Float32, Float32, Float32
 Variable SampledTextureSampleProjOffset_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleProjOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleProjOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleProjOffset_Texture1D_coordinate;
 Variable SampledTextureSampleProjOffset_Texture1D_proj;
 Variable SampledTextureSampleProjOffset_Texture1D_offset;
@@ -7699,7 +8123,11 @@ inline constexpr std::array SampledTextureSampleProjOffset_Texture1D_args = { &S
 
 /// textureSampleProjOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2
 Variable TextureSampleProjOffset_Texture2D_texture;
+inline constexpr std::array TextureSampleProjOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleProjOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleProjOffset_Texture2D_sampler;
+inline constexpr std::array TextureSampleProjOffset_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleProjOffset_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleProjOffset_Texture2D_coordinate;
 Variable TextureSampleProjOffset_Texture2D_proj;
 Variable TextureSampleProjOffset_Texture2D_offset;
@@ -7708,6 +8136,8 @@ inline constexpr std::array TextureSampleProjOffset_Texture2D_args = { &TextureS
 
 /// textureSampleProjOffset with SampledTexture2D, Float32x2, Float32, Float32x2
 Variable SampledTextureSampleProjOffset_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleProjOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleProjOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleProjOffset_Texture2D_coordinate;
 Variable SampledTextureSampleProjOffset_Texture2D_proj;
 Variable SampledTextureSampleProjOffset_Texture2D_offset;
@@ -7716,7 +8146,11 @@ inline constexpr std::array SampledTextureSampleProjOffset_Texture2D_args = { &S
 
 /// textureSampleProjOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3
 Variable TextureSampleProjOffset_Texture3D_texture;
+inline constexpr std::array TextureSampleProjOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleProjOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleProjOffset_Texture3D_sampler;
+inline constexpr std::array TextureSampleProjOffset_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleProjOffset_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleProjOffset_Texture3D_coordinate;
 Variable TextureSampleProjOffset_Texture3D_proj;
 Variable TextureSampleProjOffset_Texture3D_offset;
@@ -7725,6 +8159,8 @@ inline constexpr std::array TextureSampleProjOffset_Texture3D_args = { &TextureS
 
 /// textureSampleProjOffset with SampledTexture3D, Float32x3, Float32, Float32x3
 Variable SampledTextureSampleProjOffset_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleProjOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleProjOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleProjOffset_Texture3D_coordinate;
 Variable SampledTextureSampleProjOffset_Texture3D_proj;
 Variable SampledTextureSampleProjOffset_Texture3D_offset;
@@ -7733,7 +8169,11 @@ inline constexpr std::array SampledTextureSampleProjOffset_Texture3D_args = { &S
 
 /// textureSampleCompare with Texture1D, Sampler, Float32, Float32
 Variable TextureSampleCompare_Texture1D_texture;
+inline constexpr std::array TextureSampleCompare_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleCompare_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleCompare_Texture1D_sampler;
+inline constexpr std::array TextureSampleCompare_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleCompare_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleCompare_Texture1D_coordinate;
 Variable TextureSampleCompare_Texture1D_compare;
 Function TextureSampleCompare_Texture1D;
@@ -7741,6 +8181,8 @@ inline constexpr std::array TextureSampleCompare_Texture1D_args = { &TextureSamp
 
 /// textureSampleCompare with SampledTexture1D, Float32, Float32
 Variable SampledTextureSampleCompare_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleCompare_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleCompare_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleCompare_Texture1D_coordinate;
 Variable SampledTextureSampleCompare_Texture1D_compare;
 Function SampledTextureSampleCompare_Texture1D;
@@ -7748,7 +8190,11 @@ inline constexpr std::array SampledTextureSampleCompare_Texture1D_args = { &Samp
 
 /// textureSampleCompare with Texture2D, Sampler, Float32x2, Float32
 Variable TextureSampleCompare_Texture2D_texture;
+inline constexpr std::array TextureSampleCompare_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleCompare_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleCompare_Texture2D_sampler;
+inline constexpr std::array TextureSampleCompare_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleCompare_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleCompare_Texture2D_coordinate;
 Variable TextureSampleCompare_Texture2D_compare;
 Function TextureSampleCompare_Texture2D;
@@ -7756,6 +8202,8 @@ inline constexpr std::array TextureSampleCompare_Texture2D_args = { &TextureSamp
 
 /// textureSampleCompare with SampledTexture2D, Float32x2, Float32
 Variable SampledTextureSampleCompare_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleCompare_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleCompare_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleCompare_Texture2D_coordinate;
 Variable SampledTextureSampleCompare_Texture2D_compare;
 Function SampledTextureSampleCompare_Texture2D;
@@ -7763,7 +8211,11 @@ inline constexpr std::array SampledTextureSampleCompare_Texture2D_args = { &Samp
 
 /// textureSampleCompare with Texture3D, Sampler, Float32x3, Float32
 Variable TextureSampleCompare_Texture3D_texture;
+inline constexpr std::array TextureSampleCompare_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleCompare_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleCompare_Texture3D_sampler;
+inline constexpr std::array TextureSampleCompare_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleCompare_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleCompare_Texture3D_coordinate;
 Variable TextureSampleCompare_Texture3D_compare;
 Function TextureSampleCompare_Texture3D;
@@ -7771,6 +8223,8 @@ inline constexpr std::array TextureSampleCompare_Texture3D_args = { &TextureSamp
 
 /// textureSampleCompare with SampledTexture3D, Float32x3, Float32
 Variable SampledTextureSampleCompare_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleCompare_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleCompare_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleCompare_Texture3D_coordinate;
 Variable SampledTextureSampleCompare_Texture3D_compare;
 Function SampledTextureSampleCompare_Texture3D;
@@ -7778,7 +8232,11 @@ inline constexpr std::array SampledTextureSampleCompare_Texture3D_args = { &Samp
 
 /// textureSampleCompare with Texture1DArray, Sampler, Float32x2, Float32
 Variable TextureSampleCompare_Texture1DArray_texture;
+inline constexpr std::array TextureSampleCompare_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleCompare_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleCompare_Texture1DArray_sampler;
+inline constexpr std::array TextureSampleCompare_Texture1DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleCompare_Texture1DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleCompare_Texture1DArray_coordinate;
 Variable TextureSampleCompare_Texture1DArray_compare;
 Function TextureSampleCompare_Texture1DArray;
@@ -7786,6 +8244,8 @@ inline constexpr std::array TextureSampleCompare_Texture1DArray_args = { &Textur
 
 /// textureSampleCompare with SampledTexture1DArray, Float32x2, Float32
 Variable SampledTextureSampleCompare_Texture1DArray_texture;
+inline constexpr std::array SampledTextureSampleCompare_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleCompare_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleCompare_Texture1DArray_coordinate;
 Variable SampledTextureSampleCompare_Texture1DArray_compare;
 Function SampledTextureSampleCompare_Texture1DArray;
@@ -7793,7 +8253,11 @@ inline constexpr std::array SampledTextureSampleCompare_Texture1DArray_args = { 
 
 /// textureSampleCompare with Texture2DArray, Sampler, Float32x3, Float32
 Variable TextureSampleCompare_Texture2DArray_texture;
+inline constexpr std::array TextureSampleCompare_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleCompare_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleCompare_Texture2DArray_sampler;
+inline constexpr std::array TextureSampleCompare_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleCompare_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleCompare_Texture2DArray_coordinate;
 Variable TextureSampleCompare_Texture2DArray_compare;
 Function TextureSampleCompare_Texture2DArray;
@@ -7801,6 +8265,8 @@ inline constexpr std::array TextureSampleCompare_Texture2DArray_args = { &Textur
 
 /// textureSampleCompare with SampledTexture2DArray, Float32x3, Float32
 Variable SampledTextureSampleCompare_Texture2DArray_texture;
+inline constexpr std::array SampledTextureSampleCompare_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleCompare_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleCompare_Texture2DArray_coordinate;
 Variable SampledTextureSampleCompare_Texture2DArray_compare;
 Function SampledTextureSampleCompare_Texture2DArray;
@@ -7808,7 +8274,11 @@ inline constexpr std::array SampledTextureSampleCompare_Texture2DArray_args = { 
 
 /// textureSampleCompareOffset with Texture1D, Sampler, Float32, Float32, Float32
 Variable TextureSampleCompareOffset_Texture1D_texture;
+inline constexpr std::array TextureSampleCompareOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleCompareOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleCompareOffset_Texture1D_sampler;
+inline constexpr std::array TextureSampleCompareOffset_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleCompareOffset_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleCompareOffset_Texture1D_coordinate;
 Variable TextureSampleCompareOffset_Texture1D_compare;
 Variable TextureSampleCompareOffset_Texture1D_offset;
@@ -7817,6 +8287,8 @@ inline constexpr std::array TextureSampleCompareOffset_Texture1D_args = { &Textu
 
 /// textureSampleCompareOffset with SampledTexture1D, Float32, Float32, Float32
 Variable SampledTextureSampleCompareOffset_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleCompareOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleCompareOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleCompareOffset_Texture1D_coordinate;
 Variable SampledTextureSampleCompareOffset_Texture1D_compare;
 Variable SampledTextureSampleCompareOffset_Texture1D_offset;
@@ -7825,7 +8297,11 @@ inline constexpr std::array SampledTextureSampleCompareOffset_Texture1D_args = {
 
 /// textureSampleCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2
 Variable TextureSampleCompareOffset_Texture2D_texture;
+inline constexpr std::array TextureSampleCompareOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleCompareOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleCompareOffset_Texture2D_sampler;
+inline constexpr std::array TextureSampleCompareOffset_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleCompareOffset_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleCompareOffset_Texture2D_coordinate;
 Variable TextureSampleCompareOffset_Texture2D_compare;
 Variable TextureSampleCompareOffset_Texture2D_offset;
@@ -7834,6 +8310,8 @@ inline constexpr std::array TextureSampleCompareOffset_Texture2D_args = { &Textu
 
 /// textureSampleCompareOffset with SampledTexture2D, Float32x2, Float32, Float32x2
 Variable SampledTextureSampleCompareOffset_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleCompareOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleCompareOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleCompareOffset_Texture2D_coordinate;
 Variable SampledTextureSampleCompareOffset_Texture2D_compare;
 Variable SampledTextureSampleCompareOffset_Texture2D_offset;
@@ -7842,7 +8320,11 @@ inline constexpr std::array SampledTextureSampleCompareOffset_Texture2D_args = {
 
 /// textureSampleCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3
 Variable TextureSampleCompareOffset_Texture3D_texture;
+inline constexpr std::array TextureSampleCompareOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleCompareOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleCompareOffset_Texture3D_sampler;
+inline constexpr std::array TextureSampleCompareOffset_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleCompareOffset_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleCompareOffset_Texture3D_coordinate;
 Variable TextureSampleCompareOffset_Texture3D_compare;
 Variable TextureSampleCompareOffset_Texture3D_offset;
@@ -7851,6 +8333,8 @@ inline constexpr std::array TextureSampleCompareOffset_Texture3D_args = { &Textu
 
 /// textureSampleCompareOffset with SampledTexture3D, Float32x3, Float32, Float32x3
 Variable SampledTextureSampleCompareOffset_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleCompareOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleCompareOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleCompareOffset_Texture3D_coordinate;
 Variable SampledTextureSampleCompareOffset_Texture3D_compare;
 Variable SampledTextureSampleCompareOffset_Texture3D_offset;
@@ -7859,7 +8343,11 @@ inline constexpr std::array SampledTextureSampleCompareOffset_Texture3D_args = {
 
 /// textureSampleCompareOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32x2
 Variable TextureSampleCompareOffset_Texture1DArray_texture;
+inline constexpr std::array TextureSampleCompareOffset_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleCompareOffset_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleCompareOffset_Texture1DArray_sampler;
+inline constexpr std::array TextureSampleCompareOffset_Texture1DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleCompareOffset_Texture1DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleCompareOffset_Texture1DArray_coordinate;
 Variable TextureSampleCompareOffset_Texture1DArray_compare;
 Variable TextureSampleCompareOffset_Texture1DArray_offset;
@@ -7868,6 +8356,8 @@ inline constexpr std::array TextureSampleCompareOffset_Texture1DArray_args = { &
 
 /// textureSampleCompareOffset with SampledTexture1DArray, Float32x2, Float32, Float32x2
 Variable SampledTextureSampleCompareOffset_Texture1DArray_texture;
+inline constexpr std::array SampledTextureSampleCompareOffset_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleCompareOffset_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleCompareOffset_Texture1DArray_coordinate;
 Variable SampledTextureSampleCompareOffset_Texture1DArray_compare;
 Variable SampledTextureSampleCompareOffset_Texture1DArray_offset;
@@ -7876,7 +8366,11 @@ inline constexpr std::array SampledTextureSampleCompareOffset_Texture1DArray_arg
 
 /// textureSampleCompareOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32x3
 Variable TextureSampleCompareOffset_Texture2DArray_texture;
+inline constexpr std::array TextureSampleCompareOffset_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleCompareOffset_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleCompareOffset_Texture2DArray_sampler;
+inline constexpr std::array TextureSampleCompareOffset_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleCompareOffset_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleCompareOffset_Texture2DArray_coordinate;
 Variable TextureSampleCompareOffset_Texture2DArray_compare;
 Variable TextureSampleCompareOffset_Texture2DArray_offset;
@@ -7885,6 +8379,8 @@ inline constexpr std::array TextureSampleCompareOffset_Texture2DArray_args = { &
 
 /// textureSampleCompareOffset with SampledTexture2DArray, Float32x3, Float32, Float32x3
 Variable SampledTextureSampleCompareOffset_Texture2DArray_texture;
+inline constexpr std::array SampledTextureSampleCompareOffset_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleCompareOffset_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleCompareOffset_Texture2DArray_coordinate;
 Variable SampledTextureSampleCompareOffset_Texture2DArray_compare;
 Variable SampledTextureSampleCompareOffset_Texture2DArray_offset;
@@ -7893,7 +8389,11 @@ inline constexpr std::array SampledTextureSampleCompareOffset_Texture2DArray_arg
 
 /// textureSampleProjCompare with Texture1D, Sampler, Float32, Float32, Float32
 Variable TextureSampleProjCompare_Texture1D_texture;
+inline constexpr std::array TextureSampleProjCompare_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleProjCompare_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleProjCompare_Texture1D_sampler;
+inline constexpr std::array TextureSampleProjCompare_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleProjCompare_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleProjCompare_Texture1D_coordinate;
 Variable TextureSampleProjCompare_Texture1D_proj;
 Variable TextureSampleProjCompare_Texture1D_compare;
@@ -7902,6 +8402,8 @@ inline constexpr std::array TextureSampleProjCompare_Texture1D_args = { &Texture
 
 /// textureSampleProjCompare with SampledTexture1D, Float32, Float32, Float32
 Variable SampledTextureSampleProjCompare_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleProjCompare_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleProjCompare_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleProjCompare_Texture1D_coordinate;
 Variable SampledTextureSampleProjCompare_Texture1D_proj;
 Variable SampledTextureSampleProjCompare_Texture1D_compare;
@@ -7910,7 +8412,11 @@ inline constexpr std::array SampledTextureSampleProjCompare_Texture1D_args = { &
 
 /// textureSampleProjCompare with Texture2D, Sampler, Float32x2, Float32, Float32
 Variable TextureSampleProjCompare_Texture2D_texture;
+inline constexpr std::array TextureSampleProjCompare_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleProjCompare_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleProjCompare_Texture2D_sampler;
+inline constexpr std::array TextureSampleProjCompare_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleProjCompare_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleProjCompare_Texture2D_coordinate;
 Variable TextureSampleProjCompare_Texture2D_proj;
 Variable TextureSampleProjCompare_Texture2D_compare;
@@ -7919,6 +8425,8 @@ inline constexpr std::array TextureSampleProjCompare_Texture2D_args = { &Texture
 
 /// textureSampleProjCompare with SampledTexture2D, Float32x2, Float32, Float32
 Variable SampledTextureSampleProjCompare_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleProjCompare_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleProjCompare_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleProjCompare_Texture2D_coordinate;
 Variable SampledTextureSampleProjCompare_Texture2D_proj;
 Variable SampledTextureSampleProjCompare_Texture2D_compare;
@@ -7927,7 +8435,11 @@ inline constexpr std::array SampledTextureSampleProjCompare_Texture2D_args = { &
 
 /// textureSampleProjCompare with Texture3D, Sampler, Float32x3, Float32, Float32
 Variable TextureSampleProjCompare_Texture3D_texture;
+inline constexpr std::array TextureSampleProjCompare_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleProjCompare_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleProjCompare_Texture3D_sampler;
+inline constexpr std::array TextureSampleProjCompare_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleProjCompare_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleProjCompare_Texture3D_coordinate;
 Variable TextureSampleProjCompare_Texture3D_proj;
 Variable TextureSampleProjCompare_Texture3D_compare;
@@ -7936,6 +8448,8 @@ inline constexpr std::array TextureSampleProjCompare_Texture3D_args = { &Texture
 
 /// textureSampleProjCompare with SampledTexture3D, Float32x3, Float32, Float32
 Variable SampledTextureSampleProjCompare_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleProjCompare_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleProjCompare_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleProjCompare_Texture3D_coordinate;
 Variable SampledTextureSampleProjCompare_Texture3D_proj;
 Variable SampledTextureSampleProjCompare_Texture3D_compare;
@@ -7944,7 +8458,11 @@ inline constexpr std::array SampledTextureSampleProjCompare_Texture3D_args = { &
 
 /// textureSampleProjCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
 Variable TextureSampleProjCompareOffset_Texture1D_texture;
+inline constexpr std::array TextureSampleProjCompareOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleProjCompareOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleProjCompareOffset_Texture1D_sampler;
+inline constexpr std::array TextureSampleProjCompareOffset_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleProjCompareOffset_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleProjCompareOffset_Texture1D_coordinate;
 Variable TextureSampleProjCompareOffset_Texture1D_proj;
 Variable TextureSampleProjCompareOffset_Texture1D_compare;
@@ -7954,6 +8472,8 @@ inline constexpr std::array TextureSampleProjCompareOffset_Texture1D_args = { &T
 
 /// textureSampleProjCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32
 Variable SampledTextureSampleProjCompareOffset_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleProjCompareOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleProjCompareOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleProjCompareOffset_Texture1D_coordinate;
 Variable SampledTextureSampleProjCompareOffset_Texture1D_proj;
 Variable SampledTextureSampleProjCompareOffset_Texture1D_compare;
@@ -7963,7 +8483,11 @@ inline constexpr std::array SampledTextureSampleProjCompareOffset_Texture1D_args
 
 /// textureSampleProjCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
 Variable TextureSampleProjCompareOffset_Texture2D_texture;
+inline constexpr std::array TextureSampleProjCompareOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleProjCompareOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleProjCompareOffset_Texture2D_sampler;
+inline constexpr std::array TextureSampleProjCompareOffset_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleProjCompareOffset_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleProjCompareOffset_Texture2D_coordinate;
 Variable TextureSampleProjCompareOffset_Texture2D_proj;
 Variable TextureSampleProjCompareOffset_Texture2D_compare;
@@ -7973,6 +8497,8 @@ inline constexpr std::array TextureSampleProjCompareOffset_Texture2D_args = { &T
 
 /// textureSampleProjCompareOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
 Variable SampledTextureSampleProjCompareOffset_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleProjCompareOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleProjCompareOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleProjCompareOffset_Texture2D_coordinate;
 Variable SampledTextureSampleProjCompareOffset_Texture2D_proj;
 Variable SampledTextureSampleProjCompareOffset_Texture2D_compare;
@@ -7982,7 +8508,11 @@ inline constexpr std::array SampledTextureSampleProjCompareOffset_Texture2D_args
 
 /// textureSampleProjCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
 Variable TextureSampleProjCompareOffset_Texture3D_texture;
+inline constexpr std::array TextureSampleProjCompareOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleProjCompareOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleProjCompareOffset_Texture3D_sampler;
+inline constexpr std::array TextureSampleProjCompareOffset_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleProjCompareOffset_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleProjCompareOffset_Texture3D_coordinate;
 Variable TextureSampleProjCompareOffset_Texture3D_proj;
 Variable TextureSampleProjCompareOffset_Texture3D_compare;
@@ -7992,6 +8522,8 @@ inline constexpr std::array TextureSampleProjCompareOffset_Texture3D_args = { &T
 
 /// textureSampleProjCompareOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
 Variable SampledTextureSampleProjCompareOffset_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleProjCompareOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleProjCompareOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleProjCompareOffset_Texture3D_coordinate;
 Variable SampledTextureSampleProjCompareOffset_Texture3D_proj;
 Variable SampledTextureSampleProjCompareOffset_Texture3D_compare;
@@ -8001,7 +8533,11 @@ inline constexpr std::array SampledTextureSampleProjCompareOffset_Texture3D_args
 
 /// textureSampleLod with Texture1D, Sampler, Float32, Float32
 Variable TextureSampleLod_Texture1D_texture;
+inline constexpr std::array TextureSampleLod_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLod_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLod_Texture1D_sampler;
+inline constexpr std::array TextureSampleLod_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLod_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLod_Texture1D_coordinate;
 Variable TextureSampleLod_Texture1D_lod;
 Function TextureSampleLod_Texture1D;
@@ -8009,6 +8545,8 @@ inline constexpr std::array TextureSampleLod_Texture1D_args = { &TextureSampleLo
 
 /// textureSampleLod with SampledTexture1D, Float32, Float32
 Variable SampledTextureSampleLod_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleLod_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLod_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLod_Texture1D_coordinate;
 Variable SampledTextureSampleLod_Texture1D_lod;
 Function SampledTextureSampleLod_Texture1D;
@@ -8016,7 +8554,11 @@ inline constexpr std::array SampledTextureSampleLod_Texture1D_args = { &SampledT
 
 /// textureSampleLod with Texture2D, Sampler, Float32x2, Float32
 Variable TextureSampleLod_Texture2D_texture;
+inline constexpr std::array TextureSampleLod_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLod_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLod_Texture2D_sampler;
+inline constexpr std::array TextureSampleLod_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLod_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLod_Texture2D_coordinate;
 Variable TextureSampleLod_Texture2D_lod;
 Function TextureSampleLod_Texture2D;
@@ -8024,6 +8566,8 @@ inline constexpr std::array TextureSampleLod_Texture2D_args = { &TextureSampleLo
 
 /// textureSampleLod with SampledTexture2D, Float32x2, Float32
 Variable SampledTextureSampleLod_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleLod_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLod_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLod_Texture2D_coordinate;
 Variable SampledTextureSampleLod_Texture2D_lod;
 Function SampledTextureSampleLod_Texture2D;
@@ -8031,7 +8575,11 @@ inline constexpr std::array SampledTextureSampleLod_Texture2D_args = { &SampledT
 
 /// textureSampleLod with Texture3D, Sampler, Float32x3, Float32
 Variable TextureSampleLod_Texture3D_texture;
+inline constexpr std::array TextureSampleLod_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLod_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLod_Texture3D_sampler;
+inline constexpr std::array TextureSampleLod_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLod_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLod_Texture3D_coordinate;
 Variable TextureSampleLod_Texture3D_lod;
 Function TextureSampleLod_Texture3D;
@@ -8039,6 +8587,8 @@ inline constexpr std::array TextureSampleLod_Texture3D_args = { &TextureSampleLo
 
 /// textureSampleLod with SampledTexture3D, Float32x3, Float32
 Variable SampledTextureSampleLod_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleLod_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLod_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLod_Texture3D_coordinate;
 Variable SampledTextureSampleLod_Texture3D_lod;
 Function SampledTextureSampleLod_Texture3D;
@@ -8046,7 +8596,11 @@ inline constexpr std::array SampledTextureSampleLod_Texture3D_args = { &SampledT
 
 /// textureSampleLod with TextureCube, Sampler, Float32x3, Float32
 Variable TextureSampleLod_TextureCube_texture;
+inline constexpr std::array TextureSampleLod_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLod_TextureCube_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLod_TextureCube_sampler;
+inline constexpr std::array TextureSampleLod_TextureCube_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLod_TextureCube_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLod_TextureCube_coordinate;
 Variable TextureSampleLod_TextureCube_lod;
 Function TextureSampleLod_TextureCube;
@@ -8054,6 +8608,8 @@ inline constexpr std::array TextureSampleLod_TextureCube_args = { &TextureSample
 
 /// textureSampleLod with SampledTextureCube, Float32x3, Float32
 Variable SampledTextureSampleLod_TextureCube_texture;
+inline constexpr std::array SampledTextureSampleLod_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLod_TextureCube_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLod_TextureCube_coordinate;
 Variable SampledTextureSampleLod_TextureCube_lod;
 Function SampledTextureSampleLod_TextureCube;
@@ -8061,7 +8617,11 @@ inline constexpr std::array SampledTextureSampleLod_TextureCube_args = { &Sample
 
 /// textureSampleLod with Texture1DArray, Sampler, Float32x2, Float32
 Variable TextureSampleLod_Texture1DArray_texture;
+inline constexpr std::array TextureSampleLod_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLod_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLod_Texture1DArray_sampler;
+inline constexpr std::array TextureSampleLod_Texture1DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLod_Texture1DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLod_Texture1DArray_coordinate;
 Variable TextureSampleLod_Texture1DArray_lod;
 Function TextureSampleLod_Texture1DArray;
@@ -8069,6 +8629,8 @@ inline constexpr std::array TextureSampleLod_Texture1DArray_args = { &TextureSam
 
 /// textureSampleLod with SampledTexture1DArray, Float32x2, Float32
 Variable SampledTextureSampleLod_Texture1DArray_texture;
+inline constexpr std::array SampledTextureSampleLod_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLod_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLod_Texture1DArray_coordinate;
 Variable SampledTextureSampleLod_Texture1DArray_lod;
 Function SampledTextureSampleLod_Texture1DArray;
@@ -8076,7 +8638,11 @@ inline constexpr std::array SampledTextureSampleLod_Texture1DArray_args = { &Sam
 
 /// textureSampleLod with Texture2DArray, Sampler, Float32x3, Float32
 Variable TextureSampleLod_Texture2DArray_texture;
+inline constexpr std::array TextureSampleLod_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLod_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLod_Texture2DArray_sampler;
+inline constexpr std::array TextureSampleLod_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLod_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLod_Texture2DArray_coordinate;
 Variable TextureSampleLod_Texture2DArray_lod;
 Function TextureSampleLod_Texture2DArray;
@@ -8084,6 +8650,8 @@ inline constexpr std::array TextureSampleLod_Texture2DArray_args = { &TextureSam
 
 /// textureSampleLod with SampledTexture2DArray, Float32x3, Float32
 Variable SampledTextureSampleLod_Texture2DArray_texture;
+inline constexpr std::array SampledTextureSampleLod_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLod_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLod_Texture2DArray_coordinate;
 Variable SampledTextureSampleLod_Texture2DArray_lod;
 Function SampledTextureSampleLod_Texture2DArray;
@@ -8091,7 +8659,11 @@ inline constexpr std::array SampledTextureSampleLod_Texture2DArray_args = { &Sam
 
 /// textureSampleLod with TextureCubeArray, Sampler, Float32x4, Float32
 Variable TextureSampleLod_TextureCubeArray_texture;
+inline constexpr std::array TextureSampleLod_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLod_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLod_TextureCubeArray_sampler;
+inline constexpr std::array TextureSampleLod_TextureCubeArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLod_TextureCubeArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLod_TextureCubeArray_coordinate;
 Variable TextureSampleLod_TextureCubeArray_lod;
 Function TextureSampleLod_TextureCubeArray;
@@ -8099,6 +8671,8 @@ inline constexpr std::array TextureSampleLod_TextureCubeArray_args = { &TextureS
 
 /// textureSampleLod with SampledTextureCubeArray, Float32x4, Float32
 Variable SampledTextureSampleLod_TextureCubeArray_texture;
+inline constexpr std::array SampledTextureSampleLod_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLod_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLod_TextureCubeArray_coordinate;
 Variable SampledTextureSampleLod_TextureCubeArray_lod;
 Function SampledTextureSampleLod_TextureCubeArray;
@@ -8106,7 +8680,11 @@ inline constexpr std::array SampledTextureSampleLod_TextureCubeArray_args = { &S
 
 /// textureSampleLodOffset with Texture1D, Sampler, Float32, Float32, Float32
 Variable TextureSampleLodOffset_Texture1D_texture;
+inline constexpr std::array TextureSampleLodOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodOffset_Texture1D_sampler;
+inline constexpr std::array TextureSampleLodOffset_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodOffset_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodOffset_Texture1D_coordinate;
 Variable TextureSampleLodOffset_Texture1D_lod;
 Variable TextureSampleLodOffset_Texture1D_offset;
@@ -8115,6 +8693,8 @@ inline constexpr std::array TextureSampleLodOffset_Texture1D_args = { &TextureSa
 
 /// textureSampleLodOffset with SampledTexture1D, Float32, Float32, Float32
 Variable SampledTextureSampleLodOffset_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleLodOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodOffset_Texture1D_coordinate;
 Variable SampledTextureSampleLodOffset_Texture1D_lod;
 Variable SampledTextureSampleLodOffset_Texture1D_offset;
@@ -8123,7 +8703,11 @@ inline constexpr std::array SampledTextureSampleLodOffset_Texture1D_args = { &Sa
 
 /// textureSampleLodOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2
 Variable TextureSampleLodOffset_Texture2D_texture;
+inline constexpr std::array TextureSampleLodOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodOffset_Texture2D_sampler;
+inline constexpr std::array TextureSampleLodOffset_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodOffset_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodOffset_Texture2D_coordinate;
 Variable TextureSampleLodOffset_Texture2D_lod;
 Variable TextureSampleLodOffset_Texture2D_offset;
@@ -8132,6 +8716,8 @@ inline constexpr std::array TextureSampleLodOffset_Texture2D_args = { &TextureSa
 
 /// textureSampleLodOffset with SampledTexture2D, Float32x2, Float32, Float32x2
 Variable SampledTextureSampleLodOffset_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleLodOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodOffset_Texture2D_coordinate;
 Variable SampledTextureSampleLodOffset_Texture2D_lod;
 Variable SampledTextureSampleLodOffset_Texture2D_offset;
@@ -8140,7 +8726,11 @@ inline constexpr std::array SampledTextureSampleLodOffset_Texture2D_args = { &Sa
 
 /// textureSampleLodOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3
 Variable TextureSampleLodOffset_Texture3D_texture;
+inline constexpr std::array TextureSampleLodOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodOffset_Texture3D_sampler;
+inline constexpr std::array TextureSampleLodOffset_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodOffset_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodOffset_Texture3D_coordinate;
 Variable TextureSampleLodOffset_Texture3D_lod;
 Variable TextureSampleLodOffset_Texture3D_offset;
@@ -8149,6 +8739,8 @@ inline constexpr std::array TextureSampleLodOffset_Texture3D_args = { &TextureSa
 
 /// textureSampleLodOffset with SampledTexture3D, Float32x3, Float32, Float32x3
 Variable SampledTextureSampleLodOffset_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleLodOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodOffset_Texture3D_coordinate;
 Variable SampledTextureSampleLodOffset_Texture3D_lod;
 Variable SampledTextureSampleLodOffset_Texture3D_offset;
@@ -8157,7 +8749,11 @@ inline constexpr std::array SampledTextureSampleLodOffset_Texture3D_args = { &Sa
 
 /// textureSampleLodOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32x2
 Variable TextureSampleLodOffset_Texture1DArray_texture;
+inline constexpr std::array TextureSampleLodOffset_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodOffset_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodOffset_Texture1DArray_sampler;
+inline constexpr std::array TextureSampleLodOffset_Texture1DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodOffset_Texture1DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodOffset_Texture1DArray_coordinate;
 Variable TextureSampleLodOffset_Texture1DArray_lod;
 Variable TextureSampleLodOffset_Texture1DArray_offset;
@@ -8166,6 +8762,8 @@ inline constexpr std::array TextureSampleLodOffset_Texture1DArray_args = { &Text
 
 /// textureSampleLodOffset with SampledTexture1DArray, Float32x2, Float32, Float32x2
 Variable SampledTextureSampleLodOffset_Texture1DArray_texture;
+inline constexpr std::array SampledTextureSampleLodOffset_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodOffset_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodOffset_Texture1DArray_coordinate;
 Variable SampledTextureSampleLodOffset_Texture1DArray_lod;
 Variable SampledTextureSampleLodOffset_Texture1DArray_offset;
@@ -8174,7 +8772,11 @@ inline constexpr std::array SampledTextureSampleLodOffset_Texture1DArray_args = 
 
 /// textureSampleLodOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32x3
 Variable TextureSampleLodOffset_Texture2DArray_texture;
+inline constexpr std::array TextureSampleLodOffset_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodOffset_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodOffset_Texture2DArray_sampler;
+inline constexpr std::array TextureSampleLodOffset_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodOffset_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodOffset_Texture2DArray_coordinate;
 Variable TextureSampleLodOffset_Texture2DArray_lod;
 Variable TextureSampleLodOffset_Texture2DArray_offset;
@@ -8183,6 +8785,8 @@ inline constexpr std::array TextureSampleLodOffset_Texture2DArray_args = { &Text
 
 /// textureSampleLodOffset with SampledTexture2DArray, Float32x3, Float32, Float32x3
 Variable SampledTextureSampleLodOffset_Texture2DArray_texture;
+inline constexpr std::array SampledTextureSampleLodOffset_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodOffset_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodOffset_Texture2DArray_coordinate;
 Variable SampledTextureSampleLodOffset_Texture2DArray_lod;
 Variable SampledTextureSampleLodOffset_Texture2DArray_offset;
@@ -8191,7 +8795,11 @@ inline constexpr std::array SampledTextureSampleLodOffset_Texture2DArray_args = 
 
 /// textureSampleLodProj with Texture1D, Sampler, Float32, Float32, Float32
 Variable TextureSampleLodProj_Texture1D_texture;
+inline constexpr std::array TextureSampleLodProj_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodProj_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProj_Texture1D_sampler;
+inline constexpr std::array TextureSampleLodProj_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodProj_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProj_Texture1D_coordinate;
 Variable TextureSampleLodProj_Texture1D_lod;
 Variable TextureSampleLodProj_Texture1D_proj;
@@ -8200,6 +8808,8 @@ inline constexpr std::array TextureSampleLodProj_Texture1D_args = { &TextureSamp
 
 /// textureSampleLodProj with SampledTexture1D, Float32, Float32, Float32
 Variable SampledTextureSampleLodProj_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleLodProj_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodProj_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodProj_Texture1D_coordinate;
 Variable SampledTextureSampleLodProj_Texture1D_lod;
 Variable SampledTextureSampleLodProj_Texture1D_proj;
@@ -8208,7 +8818,11 @@ inline constexpr std::array SampledTextureSampleLodProj_Texture1D_args = { &Samp
 
 /// textureSampleLodProj with Texture2D, Sampler, Float32x2, Float32, Float32
 Variable TextureSampleLodProj_Texture2D_texture;
+inline constexpr std::array TextureSampleLodProj_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodProj_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProj_Texture2D_sampler;
+inline constexpr std::array TextureSampleLodProj_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodProj_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProj_Texture2D_coordinate;
 Variable TextureSampleLodProj_Texture2D_lod;
 Variable TextureSampleLodProj_Texture2D_proj;
@@ -8217,6 +8831,8 @@ inline constexpr std::array TextureSampleLodProj_Texture2D_args = { &TextureSamp
 
 /// textureSampleLodProj with SampledTexture2D, Float32x2, Float32, Float32
 Variable SampledTextureSampleLodProj_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleLodProj_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodProj_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodProj_Texture2D_coordinate;
 Variable SampledTextureSampleLodProj_Texture2D_lod;
 Variable SampledTextureSampleLodProj_Texture2D_proj;
@@ -8225,7 +8841,11 @@ inline constexpr std::array SampledTextureSampleLodProj_Texture2D_args = { &Samp
 
 /// textureSampleLodProj with Texture3D, Sampler, Float32x3, Float32, Float32
 Variable TextureSampleLodProj_Texture3D_texture;
+inline constexpr std::array TextureSampleLodProj_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodProj_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProj_Texture3D_sampler;
+inline constexpr std::array TextureSampleLodProj_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodProj_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProj_Texture3D_coordinate;
 Variable TextureSampleLodProj_Texture3D_lod;
 Variable TextureSampleLodProj_Texture3D_proj;
@@ -8234,6 +8854,8 @@ inline constexpr std::array TextureSampleLodProj_Texture3D_args = { &TextureSamp
 
 /// textureSampleLodProj with SampledTexture3D, Float32x3, Float32, Float32
 Variable SampledTextureSampleLodProj_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleLodProj_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodProj_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodProj_Texture3D_coordinate;
 Variable SampledTextureSampleLodProj_Texture3D_lod;
 Variable SampledTextureSampleLodProj_Texture3D_proj;
@@ -8242,7 +8864,11 @@ inline constexpr std::array SampledTextureSampleLodProj_Texture3D_args = { &Samp
 
 /// textureSampleLodProjOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
 Variable TextureSampleLodProjOffset_Texture1D_texture;
+inline constexpr std::array TextureSampleLodProjOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodProjOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjOffset_Texture1D_sampler;
+inline constexpr std::array TextureSampleLodProjOffset_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodProjOffset_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjOffset_Texture1D_coordinate;
 Variable TextureSampleLodProjOffset_Texture1D_lod;
 Variable TextureSampleLodProjOffset_Texture1D_proj;
@@ -8252,6 +8878,8 @@ inline constexpr std::array TextureSampleLodProjOffset_Texture1D_args = { &Textu
 
 /// textureSampleLodProjOffset with SampledTexture1D, Float32, Float32, Float32, Float32
 Variable SampledTextureSampleLodProjOffset_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleLodProjOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodProjOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodProjOffset_Texture1D_coordinate;
 Variable SampledTextureSampleLodProjOffset_Texture1D_lod;
 Variable SampledTextureSampleLodProjOffset_Texture1D_proj;
@@ -8261,7 +8889,11 @@ inline constexpr std::array SampledTextureSampleLodProjOffset_Texture1D_args = {
 
 /// textureSampleLodProjOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
 Variable TextureSampleLodProjOffset_Texture2D_texture;
+inline constexpr std::array TextureSampleLodProjOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodProjOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjOffset_Texture2D_sampler;
+inline constexpr std::array TextureSampleLodProjOffset_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodProjOffset_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjOffset_Texture2D_coordinate;
 Variable TextureSampleLodProjOffset_Texture2D_lod;
 Variable TextureSampleLodProjOffset_Texture2D_proj;
@@ -8271,6 +8903,8 @@ inline constexpr std::array TextureSampleLodProjOffset_Texture2D_args = { &Textu
 
 /// textureSampleLodProjOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
 Variable SampledTextureSampleLodProjOffset_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleLodProjOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodProjOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodProjOffset_Texture2D_coordinate;
 Variable SampledTextureSampleLodProjOffset_Texture2D_lod;
 Variable SampledTextureSampleLodProjOffset_Texture2D_proj;
@@ -8280,7 +8914,11 @@ inline constexpr std::array SampledTextureSampleLodProjOffset_Texture2D_args = {
 
 /// textureSampleLodProjOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
 Variable TextureSampleLodProjOffset_Texture3D_texture;
+inline constexpr std::array TextureSampleLodProjOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodProjOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjOffset_Texture3D_sampler;
+inline constexpr std::array TextureSampleLodProjOffset_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodProjOffset_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjOffset_Texture3D_coordinate;
 Variable TextureSampleLodProjOffset_Texture3D_lod;
 Variable TextureSampleLodProjOffset_Texture3D_proj;
@@ -8290,6 +8928,8 @@ inline constexpr std::array TextureSampleLodProjOffset_Texture3D_args = { &Textu
 
 /// textureSampleLodProjOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
 Variable SampledTextureSampleLodProjOffset_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleLodProjOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodProjOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodProjOffset_Texture3D_coordinate;
 Variable SampledTextureSampleLodProjOffset_Texture3D_lod;
 Variable SampledTextureSampleLodProjOffset_Texture3D_proj;
@@ -8299,7 +8939,11 @@ inline constexpr std::array SampledTextureSampleLodProjOffset_Texture3D_args = {
 
 /// textureSampleLodCompare with Texture1D, Sampler, Float32, Float32, Float32
 Variable TextureSampleLodCompare_Texture1D_texture;
+inline constexpr std::array TextureSampleLodCompare_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodCompare_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompare_Texture1D_sampler;
+inline constexpr std::array TextureSampleLodCompare_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodCompare_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompare_Texture1D_coordinate;
 Variable TextureSampleLodCompare_Texture1D_lod;
 Variable TextureSampleLodCompare_Texture1D_compare;
@@ -8308,6 +8952,8 @@ inline constexpr std::array TextureSampleLodCompare_Texture1D_args = { &TextureS
 
 /// textureSampleLodCompare with SampledTexture1D, Float32, Float32, Float32
 Variable SampledTextureSampleLodCompare_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleLodCompare_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodCompare_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodCompare_Texture1D_coordinate;
 Variable SampledTextureSampleLodCompare_Texture1D_lod;
 Variable SampledTextureSampleLodCompare_Texture1D_compare;
@@ -8316,7 +8962,11 @@ inline constexpr std::array SampledTextureSampleLodCompare_Texture1D_args = { &S
 
 /// textureSampleLodCompare with Texture2D, Sampler, Float32x2, Float32, Float32
 Variable TextureSampleLodCompare_Texture2D_texture;
+inline constexpr std::array TextureSampleLodCompare_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodCompare_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompare_Texture2D_sampler;
+inline constexpr std::array TextureSampleLodCompare_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodCompare_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompare_Texture2D_coordinate;
 Variable TextureSampleLodCompare_Texture2D_lod;
 Variable TextureSampleLodCompare_Texture2D_compare;
@@ -8325,6 +8975,8 @@ inline constexpr std::array TextureSampleLodCompare_Texture2D_args = { &TextureS
 
 /// textureSampleLodCompare with SampledTexture2D, Float32x2, Float32, Float32
 Variable SampledTextureSampleLodCompare_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleLodCompare_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodCompare_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodCompare_Texture2D_coordinate;
 Variable SampledTextureSampleLodCompare_Texture2D_lod;
 Variable SampledTextureSampleLodCompare_Texture2D_compare;
@@ -8333,7 +8985,11 @@ inline constexpr std::array SampledTextureSampleLodCompare_Texture2D_args = { &S
 
 /// textureSampleLodCompare with Texture3D, Sampler, Float32x3, Float32, Float32
 Variable TextureSampleLodCompare_Texture3D_texture;
+inline constexpr std::array TextureSampleLodCompare_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodCompare_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompare_Texture3D_sampler;
+inline constexpr std::array TextureSampleLodCompare_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodCompare_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompare_Texture3D_coordinate;
 Variable TextureSampleLodCompare_Texture3D_lod;
 Variable TextureSampleLodCompare_Texture3D_compare;
@@ -8342,6 +8998,8 @@ inline constexpr std::array TextureSampleLodCompare_Texture3D_args = { &TextureS
 
 /// textureSampleLodCompare with SampledTexture3D, Float32x3, Float32, Float32
 Variable SampledTextureSampleLodCompare_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleLodCompare_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodCompare_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodCompare_Texture3D_coordinate;
 Variable SampledTextureSampleLodCompare_Texture3D_lod;
 Variable SampledTextureSampleLodCompare_Texture3D_compare;
@@ -8350,7 +9008,11 @@ inline constexpr std::array SampledTextureSampleLodCompare_Texture3D_args = { &S
 
 /// textureSampleLodCompare with Texture1DArray, Sampler, Float32x2, Float32, Float32
 Variable TextureSampleLodCompare_Texture1DArray_texture;
+inline constexpr std::array TextureSampleLodCompare_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodCompare_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompare_Texture1DArray_sampler;
+inline constexpr std::array TextureSampleLodCompare_Texture1DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodCompare_Texture1DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompare_Texture1DArray_coordinate;
 Variable TextureSampleLodCompare_Texture1DArray_lod;
 Variable TextureSampleLodCompare_Texture1DArray_compare;
@@ -8359,6 +9021,8 @@ inline constexpr std::array TextureSampleLodCompare_Texture1DArray_args = { &Tex
 
 /// textureSampleLodCompare with SampledTexture1DArray, Float32x2, Float32, Float32
 Variable SampledTextureSampleLodCompare_Texture1DArray_texture;
+inline constexpr std::array SampledTextureSampleLodCompare_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodCompare_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodCompare_Texture1DArray_coordinate;
 Variable SampledTextureSampleLodCompare_Texture1DArray_lod;
 Variable SampledTextureSampleLodCompare_Texture1DArray_compare;
@@ -8367,7 +9031,11 @@ inline constexpr std::array SampledTextureSampleLodCompare_Texture1DArray_args =
 
 /// textureSampleLodCompare with Texture2DArray, Sampler, Float32x3, Float32, Float32
 Variable TextureSampleLodCompare_Texture2DArray_texture;
+inline constexpr std::array TextureSampleLodCompare_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodCompare_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompare_Texture2DArray_sampler;
+inline constexpr std::array TextureSampleLodCompare_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodCompare_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompare_Texture2DArray_coordinate;
 Variable TextureSampleLodCompare_Texture2DArray_lod;
 Variable TextureSampleLodCompare_Texture2DArray_compare;
@@ -8376,6 +9044,8 @@ inline constexpr std::array TextureSampleLodCompare_Texture2DArray_args = { &Tex
 
 /// textureSampleLodCompare with SampledTexture2DArray, Float32x3, Float32, Float32
 Variable SampledTextureSampleLodCompare_Texture2DArray_texture;
+inline constexpr std::array SampledTextureSampleLodCompare_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodCompare_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodCompare_Texture2DArray_coordinate;
 Variable SampledTextureSampleLodCompare_Texture2DArray_lod;
 Variable SampledTextureSampleLodCompare_Texture2DArray_compare;
@@ -8384,7 +9054,11 @@ inline constexpr std::array SampledTextureSampleLodCompare_Texture2DArray_args =
 
 /// textureSampleLodCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
 Variable TextureSampleLodCompareOffset_Texture1D_texture;
+inline constexpr std::array TextureSampleLodCompareOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodCompareOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompareOffset_Texture1D_sampler;
+inline constexpr std::array TextureSampleLodCompareOffset_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodCompareOffset_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompareOffset_Texture1D_coordinate;
 Variable TextureSampleLodCompareOffset_Texture1D_lod;
 Variable TextureSampleLodCompareOffset_Texture1D_compare;
@@ -8394,6 +9068,8 @@ inline constexpr std::array TextureSampleLodCompareOffset_Texture1D_args = { &Te
 
 /// textureSampleLodCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32
 Variable SampledTextureSampleLodCompareOffset_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodCompareOffset_Texture1D_coordinate;
 Variable SampledTextureSampleLodCompareOffset_Texture1D_lod;
 Variable SampledTextureSampleLodCompareOffset_Texture1D_compare;
@@ -8403,7 +9079,11 @@ inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture1D_args 
 
 /// textureSampleLodCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
 Variable TextureSampleLodCompareOffset_Texture2D_texture;
+inline constexpr std::array TextureSampleLodCompareOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodCompareOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompareOffset_Texture2D_sampler;
+inline constexpr std::array TextureSampleLodCompareOffset_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodCompareOffset_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompareOffset_Texture2D_coordinate;
 Variable TextureSampleLodCompareOffset_Texture2D_lod;
 Variable TextureSampleLodCompareOffset_Texture2D_compare;
@@ -8413,6 +9093,8 @@ inline constexpr std::array TextureSampleLodCompareOffset_Texture2D_args = { &Te
 
 /// textureSampleLodCompareOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
 Variable SampledTextureSampleLodCompareOffset_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodCompareOffset_Texture2D_coordinate;
 Variable SampledTextureSampleLodCompareOffset_Texture2D_lod;
 Variable SampledTextureSampleLodCompareOffset_Texture2D_compare;
@@ -8422,7 +9104,11 @@ inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture2D_args 
 
 /// textureSampleLodCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
 Variable TextureSampleLodCompareOffset_Texture3D_texture;
+inline constexpr std::array TextureSampleLodCompareOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodCompareOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompareOffset_Texture3D_sampler;
+inline constexpr std::array TextureSampleLodCompareOffset_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodCompareOffset_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompareOffset_Texture3D_coordinate;
 Variable TextureSampleLodCompareOffset_Texture3D_lod;
 Variable TextureSampleLodCompareOffset_Texture3D_compare;
@@ -8432,6 +9118,8 @@ inline constexpr std::array TextureSampleLodCompareOffset_Texture3D_args = { &Te
 
 /// textureSampleLodCompareOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
 Variable SampledTextureSampleLodCompareOffset_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodCompareOffset_Texture3D_coordinate;
 Variable SampledTextureSampleLodCompareOffset_Texture3D_lod;
 Variable SampledTextureSampleLodCompareOffset_Texture3D_compare;
@@ -8441,7 +9129,11 @@ inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture3D_args 
 
 /// textureSampleLodCompareOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32, Float32x2
 Variable TextureSampleLodCompareOffset_Texture1DArray_texture;
+inline constexpr std::array TextureSampleLodCompareOffset_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodCompareOffset_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompareOffset_Texture1DArray_sampler;
+inline constexpr std::array TextureSampleLodCompareOffset_Texture1DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodCompareOffset_Texture1DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompareOffset_Texture1DArray_coordinate;
 Variable TextureSampleLodCompareOffset_Texture1DArray_lod;
 Variable TextureSampleLodCompareOffset_Texture1DArray_compare;
@@ -8451,6 +9143,8 @@ inline constexpr std::array TextureSampleLodCompareOffset_Texture1DArray_args = 
 
 /// textureSampleLodCompareOffset with SampledTexture1DArray, Float32x2, Float32, Float32, Float32x2
 Variable SampledTextureSampleLodCompareOffset_Texture1DArray_texture;
+inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodCompareOffset_Texture1DArray_coordinate;
 Variable SampledTextureSampleLodCompareOffset_Texture1DArray_lod;
 Variable SampledTextureSampleLodCompareOffset_Texture1DArray_compare;
@@ -8460,7 +9154,11 @@ inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture1DArray_
 
 /// textureSampleLodCompareOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32, Float32x3
 Variable TextureSampleLodCompareOffset_Texture2DArray_texture;
+inline constexpr std::array TextureSampleLodCompareOffset_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodCompareOffset_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompareOffset_Texture2DArray_sampler;
+inline constexpr std::array TextureSampleLodCompareOffset_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodCompareOffset_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodCompareOffset_Texture2DArray_coordinate;
 Variable TextureSampleLodCompareOffset_Texture2DArray_lod;
 Variable TextureSampleLodCompareOffset_Texture2DArray_compare;
@@ -8470,6 +9168,8 @@ inline constexpr std::array TextureSampleLodCompareOffset_Texture2DArray_args = 
 
 /// textureSampleLodCompareOffset with SampledTexture2DArray, Float32x3, Float32, Float32, Float32x3
 Variable SampledTextureSampleLodCompareOffset_Texture2DArray_texture;
+inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodCompareOffset_Texture2DArray_coordinate;
 Variable SampledTextureSampleLodCompareOffset_Texture2DArray_lod;
 Variable SampledTextureSampleLodCompareOffset_Texture2DArray_compare;
@@ -8479,7 +9179,11 @@ inline constexpr std::array SampledTextureSampleLodCompareOffset_Texture2DArray_
 
 /// textureSampleLodProjCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32
 Variable TextureSampleLodProjCompare_Texture1D_texture;
+inline constexpr std::array TextureSampleLodProjCompare_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodProjCompare_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjCompare_Texture1D_sampler;
+inline constexpr std::array TextureSampleLodProjCompare_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodProjCompare_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjCompare_Texture1D_coordinate;
 Variable TextureSampleLodProjCompare_Texture1D_lod;
 Variable TextureSampleLodProjCompare_Texture1D_proj;
@@ -8489,6 +9193,8 @@ inline constexpr std::array TextureSampleLodProjCompare_Texture1D_args = { &Text
 
 /// textureSampleLodProjCompare with SampledTexture1D, Float32, Float32, Float32, Float32
 Variable SampledTextureSampleLodProjCompare_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleLodProjCompare_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodProjCompare_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodProjCompare_Texture1D_coordinate;
 Variable SampledTextureSampleLodProjCompare_Texture1D_lod;
 Variable SampledTextureSampleLodProjCompare_Texture1D_proj;
@@ -8498,7 +9204,11 @@ inline constexpr std::array SampledTextureSampleLodProjCompare_Texture1D_args = 
 
 /// textureSampleLodProjCompare with Texture2D, Sampler, Float32x2, Float32, Float32, Float32
 Variable TextureSampleLodProjCompare_Texture2D_texture;
+inline constexpr std::array TextureSampleLodProjCompare_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodProjCompare_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjCompare_Texture2D_sampler;
+inline constexpr std::array TextureSampleLodProjCompare_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodProjCompare_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjCompare_Texture2D_coordinate;
 Variable TextureSampleLodProjCompare_Texture2D_lod;
 Variable TextureSampleLodProjCompare_Texture2D_proj;
@@ -8508,6 +9218,8 @@ inline constexpr std::array TextureSampleLodProjCompare_Texture2D_args = { &Text
 
 /// textureSampleLodProjCompare with SampledTexture2D, Float32x2, Float32, Float32, Float32
 Variable SampledTextureSampleLodProjCompare_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleLodProjCompare_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodProjCompare_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodProjCompare_Texture2D_coordinate;
 Variable SampledTextureSampleLodProjCompare_Texture2D_lod;
 Variable SampledTextureSampleLodProjCompare_Texture2D_proj;
@@ -8517,7 +9229,11 @@ inline constexpr std::array SampledTextureSampleLodProjCompare_Texture2D_args = 
 
 /// textureSampleLodProjCompare with Texture3D, Sampler, Float32x3, Float32, Float32, Float32
 Variable TextureSampleLodProjCompare_Texture3D_texture;
+inline constexpr std::array TextureSampleLodProjCompare_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodProjCompare_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjCompare_Texture3D_sampler;
+inline constexpr std::array TextureSampleLodProjCompare_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodProjCompare_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjCompare_Texture3D_coordinate;
 Variable TextureSampleLodProjCompare_Texture3D_lod;
 Variable TextureSampleLodProjCompare_Texture3D_proj;
@@ -8527,6 +9243,8 @@ inline constexpr std::array TextureSampleLodProjCompare_Texture3D_args = { &Text
 
 /// textureSampleLodProjCompare with SampledTexture3D, Float32x3, Float32, Float32, Float32
 Variable SampledTextureSampleLodProjCompare_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleLodProjCompare_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodProjCompare_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodProjCompare_Texture3D_coordinate;
 Variable SampledTextureSampleLodProjCompare_Texture3D_lod;
 Variable SampledTextureSampleLodProjCompare_Texture3D_proj;
@@ -8536,7 +9254,11 @@ inline constexpr std::array SampledTextureSampleLodProjCompare_Texture3D_args = 
 
 /// textureSampleLodProjCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
 Variable TextureSampleLodProjCompareOffset_Texture1D_texture;
+inline constexpr std::array TextureSampleLodProjCompareOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodProjCompareOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjCompareOffset_Texture1D_sampler;
+inline constexpr std::array TextureSampleLodProjCompareOffset_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodProjCompareOffset_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjCompareOffset_Texture1D_coordinate;
 Variable TextureSampleLodProjCompareOffset_Texture1D_lod;
 Variable TextureSampleLodProjCompareOffset_Texture1D_proj;
@@ -8547,6 +9269,8 @@ inline constexpr std::array TextureSampleLodProjCompareOffset_Texture1D_args = {
 
 /// textureSampleLodProjCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
 Variable SampledTextureSampleLodProjCompareOffset_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleLodProjCompareOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodProjCompareOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodProjCompareOffset_Texture1D_coordinate;
 Variable SampledTextureSampleLodProjCompareOffset_Texture1D_lod;
 Variable SampledTextureSampleLodProjCompareOffset_Texture1D_proj;
@@ -8557,7 +9281,11 @@ inline constexpr std::array SampledTextureSampleLodProjCompareOffset_Texture1D_a
 
 /// textureSampleLodProjCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32, Float32x2
 Variable TextureSampleLodProjCompareOffset_Texture2D_texture;
+inline constexpr std::array TextureSampleLodProjCompareOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodProjCompareOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjCompareOffset_Texture2D_sampler;
+inline constexpr std::array TextureSampleLodProjCompareOffset_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodProjCompareOffset_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjCompareOffset_Texture2D_coordinate;
 Variable TextureSampleLodProjCompareOffset_Texture2D_lod;
 Variable TextureSampleLodProjCompareOffset_Texture2D_proj;
@@ -8568,6 +9296,8 @@ inline constexpr std::array TextureSampleLodProjCompareOffset_Texture2D_args = {
 
 /// textureSampleLodProjCompareOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32, Float32x2
 Variable SampledTextureSampleLodProjCompareOffset_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleLodProjCompareOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodProjCompareOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodProjCompareOffset_Texture2D_coordinate;
 Variable SampledTextureSampleLodProjCompareOffset_Texture2D_lod;
 Variable SampledTextureSampleLodProjCompareOffset_Texture2D_proj;
@@ -8578,7 +9308,11 @@ inline constexpr std::array SampledTextureSampleLodProjCompareOffset_Texture2D_a
 
 /// textureSampleLodProjCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32, Float32x3
 Variable TextureSampleLodProjCompareOffset_Texture3D_texture;
+inline constexpr std::array TextureSampleLodProjCompareOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodProjCompareOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjCompareOffset_Texture3D_sampler;
+inline constexpr std::array TextureSampleLodProjCompareOffset_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleLodProjCompareOffset_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleLodProjCompareOffset_Texture3D_coordinate;
 Variable TextureSampleLodProjCompareOffset_Texture3D_lod;
 Variable TextureSampleLodProjCompareOffset_Texture3D_proj;
@@ -8589,6 +9323,8 @@ inline constexpr std::array TextureSampleLodProjCompareOffset_Texture3D_args = {
 
 /// textureSampleLodProjCompareOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32, Float32x3
 Variable SampledTextureSampleLodProjCompareOffset_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleLodProjCompareOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleLodProjCompareOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleLodProjCompareOffset_Texture3D_coordinate;
 Variable SampledTextureSampleLodProjCompareOffset_Texture3D_lod;
 Variable SampledTextureSampleLodProjCompareOffset_Texture3D_proj;
@@ -8599,7 +9335,11 @@ inline constexpr std::array SampledTextureSampleLodProjCompareOffset_Texture3D_a
 
 /// textureSampleGrad with Texture1D, Sampler, Float32, Float32, Float32
 Variable TextureSampleGrad_Texture1D_texture;
+inline constexpr std::array TextureSampleGrad_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGrad_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGrad_Texture1D_sampler;
+inline constexpr std::array TextureSampleGrad_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGrad_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGrad_Texture1D_coordinate;
 Variable TextureSampleGrad_Texture1D_grad_x;
 Variable TextureSampleGrad_Texture1D_grad_y;
@@ -8608,6 +9348,8 @@ inline constexpr std::array TextureSampleGrad_Texture1D_args = { &TextureSampleG
 
 /// textureSampleGrad with SampledTexture1D, Float32, Float32, Float32
 Variable SampledTextureSampleGrad_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleGrad_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGrad_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGrad_Texture1D_coordinate;
 Variable SampledTextureSampleGrad_Texture1D_grad_x;
 Variable SampledTextureSampleGrad_Texture1D_grad_y;
@@ -8616,7 +9358,11 @@ inline constexpr std::array SampledTextureSampleGrad_Texture1D_args = { &Sampled
 
 /// textureSampleGrad with Texture2D, Sampler, Float32x2, Float32x2, Float32x2
 Variable TextureSampleGrad_Texture2D_texture;
+inline constexpr std::array TextureSampleGrad_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGrad_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGrad_Texture2D_sampler;
+inline constexpr std::array TextureSampleGrad_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGrad_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGrad_Texture2D_coordinate;
 Variable TextureSampleGrad_Texture2D_grad_x;
 Variable TextureSampleGrad_Texture2D_grad_y;
@@ -8625,6 +9371,8 @@ inline constexpr std::array TextureSampleGrad_Texture2D_args = { &TextureSampleG
 
 /// textureSampleGrad with SampledTexture2D, Float32x2, Float32x2, Float32x2
 Variable SampledTextureSampleGrad_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleGrad_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGrad_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGrad_Texture2D_coordinate;
 Variable SampledTextureSampleGrad_Texture2D_grad_x;
 Variable SampledTextureSampleGrad_Texture2D_grad_y;
@@ -8633,7 +9381,11 @@ inline constexpr std::array SampledTextureSampleGrad_Texture2D_args = { &Sampled
 
 /// textureSampleGrad with Texture3D, Sampler, Float32x3, Float32x3, Float32x3
 Variable TextureSampleGrad_Texture3D_texture;
+inline constexpr std::array TextureSampleGrad_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGrad_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGrad_Texture3D_sampler;
+inline constexpr std::array TextureSampleGrad_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGrad_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGrad_Texture3D_coordinate;
 Variable TextureSampleGrad_Texture3D_grad_x;
 Variable TextureSampleGrad_Texture3D_grad_y;
@@ -8642,6 +9394,8 @@ inline constexpr std::array TextureSampleGrad_Texture3D_args = { &TextureSampleG
 
 /// textureSampleGrad with SampledTexture3D, Float32x3, Float32x3, Float32x3
 Variable SampledTextureSampleGrad_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleGrad_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGrad_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGrad_Texture3D_coordinate;
 Variable SampledTextureSampleGrad_Texture3D_grad_x;
 Variable SampledTextureSampleGrad_Texture3D_grad_y;
@@ -8650,7 +9404,11 @@ inline constexpr std::array SampledTextureSampleGrad_Texture3D_args = { &Sampled
 
 /// textureSampleGrad with TextureCube, Sampler, Float32x3, Float32x3, Float32x3
 Variable TextureSampleGrad_TextureCube_texture;
+inline constexpr std::array TextureSampleGrad_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGrad_TextureCube_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGrad_TextureCube_sampler;
+inline constexpr std::array TextureSampleGrad_TextureCube_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGrad_TextureCube_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGrad_TextureCube_coordinate;
 Variable TextureSampleGrad_TextureCube_grad_x;
 Variable TextureSampleGrad_TextureCube_grad_y;
@@ -8659,6 +9417,8 @@ inline constexpr std::array TextureSampleGrad_TextureCube_args = { &TextureSampl
 
 /// textureSampleGrad with SampledTextureCube, Float32x3, Float32x3, Float32x3
 Variable SampledTextureSampleGrad_TextureCube_texture;
+inline constexpr std::array SampledTextureSampleGrad_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGrad_TextureCube_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGrad_TextureCube_coordinate;
 Variable SampledTextureSampleGrad_TextureCube_grad_x;
 Variable SampledTextureSampleGrad_TextureCube_grad_y;
@@ -8667,7 +9427,11 @@ inline constexpr std::array SampledTextureSampleGrad_TextureCube_args = { &Sampl
 
 /// textureSampleGrad with Texture1DArray, Sampler, Float32x2, Float32x2, Float32x2
 Variable TextureSampleGrad_Texture1DArray_texture;
+inline constexpr std::array TextureSampleGrad_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGrad_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGrad_Texture1DArray_sampler;
+inline constexpr std::array TextureSampleGrad_Texture1DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGrad_Texture1DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGrad_Texture1DArray_coordinate;
 Variable TextureSampleGrad_Texture1DArray_grad_x;
 Variable TextureSampleGrad_Texture1DArray_grad_y;
@@ -8676,6 +9440,8 @@ inline constexpr std::array TextureSampleGrad_Texture1DArray_args = { &TextureSa
 
 /// textureSampleGrad with SampledTexture1DArray, Float32x2, Float32x2, Float32x2
 Variable SampledTextureSampleGrad_Texture1DArray_texture;
+inline constexpr std::array SampledTextureSampleGrad_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGrad_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGrad_Texture1DArray_coordinate;
 Variable SampledTextureSampleGrad_Texture1DArray_grad_x;
 Variable SampledTextureSampleGrad_Texture1DArray_grad_y;
@@ -8684,7 +9450,11 @@ inline constexpr std::array SampledTextureSampleGrad_Texture1DArray_args = { &Sa
 
 /// textureSampleGrad with Texture2DArray, Sampler, Float32x3, Float32x3, Float32x3
 Variable TextureSampleGrad_Texture2DArray_texture;
+inline constexpr std::array TextureSampleGrad_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGrad_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGrad_Texture2DArray_sampler;
+inline constexpr std::array TextureSampleGrad_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGrad_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGrad_Texture2DArray_coordinate;
 Variable TextureSampleGrad_Texture2DArray_grad_x;
 Variable TextureSampleGrad_Texture2DArray_grad_y;
@@ -8693,6 +9463,8 @@ inline constexpr std::array TextureSampleGrad_Texture2DArray_args = { &TextureSa
 
 /// textureSampleGrad with SampledTexture2DArray, Float32x3, Float32x3, Float32x3
 Variable SampledTextureSampleGrad_Texture2DArray_texture;
+inline constexpr std::array SampledTextureSampleGrad_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGrad_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGrad_Texture2DArray_coordinate;
 Variable SampledTextureSampleGrad_Texture2DArray_grad_x;
 Variable SampledTextureSampleGrad_Texture2DArray_grad_y;
@@ -8701,7 +9473,11 @@ inline constexpr std::array SampledTextureSampleGrad_Texture2DArray_args = { &Sa
 
 /// textureSampleGrad with TextureCubeArray, Sampler, Float32x4, Float32x4, Float32x4
 Variable TextureSampleGrad_TextureCubeArray_texture;
+inline constexpr std::array TextureSampleGrad_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGrad_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGrad_TextureCubeArray_sampler;
+inline constexpr std::array TextureSampleGrad_TextureCubeArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGrad_TextureCubeArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGrad_TextureCubeArray_coordinate;
 Variable TextureSampleGrad_TextureCubeArray_grad_x;
 Variable TextureSampleGrad_TextureCubeArray_grad_y;
@@ -8710,6 +9486,8 @@ inline constexpr std::array TextureSampleGrad_TextureCubeArray_args = { &Texture
 
 /// textureSampleGrad with SampledTextureCubeArray, Float32x4, Float32x4, Float32x4
 Variable SampledTextureSampleGrad_TextureCubeArray_texture;
+inline constexpr std::array SampledTextureSampleGrad_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGrad_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGrad_TextureCubeArray_coordinate;
 Variable SampledTextureSampleGrad_TextureCubeArray_grad_x;
 Variable SampledTextureSampleGrad_TextureCubeArray_grad_y;
@@ -8718,7 +9496,11 @@ inline constexpr std::array SampledTextureSampleGrad_TextureCubeArray_args = { &
 
 /// textureSampleGradOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
 Variable TextureSampleGradOffset_Texture1D_texture;
+inline constexpr std::array TextureSampleGradOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradOffset_Texture1D_sampler;
+inline constexpr std::array TextureSampleGradOffset_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradOffset_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradOffset_Texture1D_coordinate;
 Variable TextureSampleGradOffset_Texture1D_grad_x;
 Variable TextureSampleGradOffset_Texture1D_grad_y;
@@ -8728,6 +9510,8 @@ inline constexpr std::array TextureSampleGradOffset_Texture1D_args = { &TextureS
 
 /// textureSampleGradOffset with SampledTexture1D, Float32, Float32, Float32, Float32
 Variable SampledTextureSampleGradOffset_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleGradOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradOffset_Texture1D_coordinate;
 Variable SampledTextureSampleGradOffset_Texture1D_grad_x;
 Variable SampledTextureSampleGradOffset_Texture1D_grad_y;
@@ -8737,7 +9521,11 @@ inline constexpr std::array SampledTextureSampleGradOffset_Texture1D_args = { &S
 
 /// textureSampleGradOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32x2
 Variable TextureSampleGradOffset_Texture2D_texture;
+inline constexpr std::array TextureSampleGradOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradOffset_Texture2D_sampler;
+inline constexpr std::array TextureSampleGradOffset_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradOffset_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradOffset_Texture2D_coordinate;
 Variable TextureSampleGradOffset_Texture2D_grad_x;
 Variable TextureSampleGradOffset_Texture2D_grad_y;
@@ -8747,6 +9535,8 @@ inline constexpr std::array TextureSampleGradOffset_Texture2D_args = { &TextureS
 
 /// textureSampleGradOffset with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32x2
 Variable SampledTextureSampleGradOffset_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleGradOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradOffset_Texture2D_coordinate;
 Variable SampledTextureSampleGradOffset_Texture2D_grad_x;
 Variable SampledTextureSampleGradOffset_Texture2D_grad_y;
@@ -8756,7 +9546,11 @@ inline constexpr std::array SampledTextureSampleGradOffset_Texture2D_args = { &S
 
 /// textureSampleGradOffset with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32x3
 Variable TextureSampleGradOffset_Texture3D_texture;
+inline constexpr std::array TextureSampleGradOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradOffset_Texture3D_sampler;
+inline constexpr std::array TextureSampleGradOffset_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradOffset_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradOffset_Texture3D_coordinate;
 Variable TextureSampleGradOffset_Texture3D_grad_x;
 Variable TextureSampleGradOffset_Texture3D_grad_y;
@@ -8766,6 +9560,8 @@ inline constexpr std::array TextureSampleGradOffset_Texture3D_args = { &TextureS
 
 /// textureSampleGradOffset with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32x3
 Variable SampledTextureSampleGradOffset_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleGradOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradOffset_Texture3D_coordinate;
 Variable SampledTextureSampleGradOffset_Texture3D_grad_x;
 Variable SampledTextureSampleGradOffset_Texture3D_grad_y;
@@ -8775,7 +9571,11 @@ inline constexpr std::array SampledTextureSampleGradOffset_Texture3D_args = { &S
 
 /// textureSampleGradOffset with Texture1DArray, Sampler, Float32x2, Float32x2, Float32x2, Float32x2
 Variable TextureSampleGradOffset_Texture1DArray_texture;
+inline constexpr std::array TextureSampleGradOffset_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradOffset_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradOffset_Texture1DArray_sampler;
+inline constexpr std::array TextureSampleGradOffset_Texture1DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradOffset_Texture1DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradOffset_Texture1DArray_coordinate;
 Variable TextureSampleGradOffset_Texture1DArray_grad_x;
 Variable TextureSampleGradOffset_Texture1DArray_grad_y;
@@ -8785,6 +9585,8 @@ inline constexpr std::array TextureSampleGradOffset_Texture1DArray_args = { &Tex
 
 /// textureSampleGradOffset with SampledTexture1DArray, Float32x2, Float32x2, Float32x2, Float32x2
 Variable SampledTextureSampleGradOffset_Texture1DArray_texture;
+inline constexpr std::array SampledTextureSampleGradOffset_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradOffset_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradOffset_Texture1DArray_coordinate;
 Variable SampledTextureSampleGradOffset_Texture1DArray_grad_x;
 Variable SampledTextureSampleGradOffset_Texture1DArray_grad_y;
@@ -8794,7 +9596,11 @@ inline constexpr std::array SampledTextureSampleGradOffset_Texture1DArray_args =
 
 /// textureSampleGradOffset with Texture2DArray, Sampler, Float32x3, Float32x3, Float32x3, Float32x3
 Variable TextureSampleGradOffset_Texture2DArray_texture;
+inline constexpr std::array TextureSampleGradOffset_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradOffset_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradOffset_Texture2DArray_sampler;
+inline constexpr std::array TextureSampleGradOffset_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradOffset_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradOffset_Texture2DArray_coordinate;
 Variable TextureSampleGradOffset_Texture2DArray_grad_x;
 Variable TextureSampleGradOffset_Texture2DArray_grad_y;
@@ -8804,6 +9610,8 @@ inline constexpr std::array TextureSampleGradOffset_Texture2DArray_args = { &Tex
 
 /// textureSampleGradOffset with SampledTexture2DArray, Float32x3, Float32x3, Float32x3, Float32x3
 Variable SampledTextureSampleGradOffset_Texture2DArray_texture;
+inline constexpr std::array SampledTextureSampleGradOffset_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradOffset_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradOffset_Texture2DArray_coordinate;
 Variable SampledTextureSampleGradOffset_Texture2DArray_grad_x;
 Variable SampledTextureSampleGradOffset_Texture2DArray_grad_y;
@@ -8813,7 +9621,11 @@ inline constexpr std::array SampledTextureSampleGradOffset_Texture2DArray_args =
 
 /// textureSampleGradProj with Texture1D, Sampler, Float32, Float32, Float32, Float32
 Variable TextureSampleGradProj_Texture1D_texture;
+inline constexpr std::array TextureSampleGradProj_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradProj_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProj_Texture1D_sampler;
+inline constexpr std::array TextureSampleGradProj_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradProj_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProj_Texture1D_coordinate;
 Variable TextureSampleGradProj_Texture1D_grad_x;
 Variable TextureSampleGradProj_Texture1D_grad_y;
@@ -8823,6 +9635,8 @@ inline constexpr std::array TextureSampleGradProj_Texture1D_args = { &TextureSam
 
 /// textureSampleGradProj with SampledTexture1D, Float32, Float32, Float32, Float32
 Variable SampledTextureSampleGradProj_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleGradProj_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradProj_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradProj_Texture1D_coordinate;
 Variable SampledTextureSampleGradProj_Texture1D_grad_x;
 Variable SampledTextureSampleGradProj_Texture1D_grad_y;
@@ -8832,7 +9646,11 @@ inline constexpr std::array SampledTextureSampleGradProj_Texture1D_args = { &Sam
 
 /// textureSampleGradProj with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32
 Variable TextureSampleGradProj_Texture2D_texture;
+inline constexpr std::array TextureSampleGradProj_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradProj_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProj_Texture2D_sampler;
+inline constexpr std::array TextureSampleGradProj_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradProj_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProj_Texture2D_coordinate;
 Variable TextureSampleGradProj_Texture2D_grad_x;
 Variable TextureSampleGradProj_Texture2D_grad_y;
@@ -8842,6 +9660,8 @@ inline constexpr std::array TextureSampleGradProj_Texture2D_args = { &TextureSam
 
 /// textureSampleGradProj with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32
 Variable SampledTextureSampleGradProj_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleGradProj_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradProj_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradProj_Texture2D_coordinate;
 Variable SampledTextureSampleGradProj_Texture2D_grad_x;
 Variable SampledTextureSampleGradProj_Texture2D_grad_y;
@@ -8851,7 +9671,11 @@ inline constexpr std::array SampledTextureSampleGradProj_Texture2D_args = { &Sam
 
 /// textureSampleGradProj with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32
 Variable TextureSampleGradProj_Texture3D_texture;
+inline constexpr std::array TextureSampleGradProj_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradProj_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProj_Texture3D_sampler;
+inline constexpr std::array TextureSampleGradProj_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradProj_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProj_Texture3D_coordinate;
 Variable TextureSampleGradProj_Texture3D_grad_x;
 Variable TextureSampleGradProj_Texture3D_grad_y;
@@ -8861,6 +9685,8 @@ inline constexpr std::array TextureSampleGradProj_Texture3D_args = { &TextureSam
 
 /// textureSampleGradProj with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32
 Variable SampledTextureSampleGradProj_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleGradProj_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradProj_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradProj_Texture3D_coordinate;
 Variable SampledTextureSampleGradProj_Texture3D_grad_x;
 Variable SampledTextureSampleGradProj_Texture3D_grad_y;
@@ -8870,7 +9696,11 @@ inline constexpr std::array SampledTextureSampleGradProj_Texture3D_args = { &Sam
 
 /// textureSampleGradProjOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
 Variable TextureSampleGradProjOffset_Texture1D_texture;
+inline constexpr std::array TextureSampleGradProjOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradProjOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProjOffset_Texture1D_sampler;
+inline constexpr std::array TextureSampleGradProjOffset_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradProjOffset_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProjOffset_Texture1D_coordinate;
 Variable TextureSampleGradProjOffset_Texture1D_grad_x;
 Variable TextureSampleGradProjOffset_Texture1D_grad_y;
@@ -8881,6 +9711,8 @@ inline constexpr std::array TextureSampleGradProjOffset_Texture1D_args = { &Text
 
 /// textureSampleGradProjOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
 Variable SampledTextureSampleGradProjOffset_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleGradProjOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradProjOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradProjOffset_Texture1D_coordinate;
 Variable SampledTextureSampleGradProjOffset_Texture1D_grad_x;
 Variable SampledTextureSampleGradProjOffset_Texture1D_grad_y;
@@ -8891,7 +9723,11 @@ inline constexpr std::array SampledTextureSampleGradProjOffset_Texture1D_args = 
 
 /// textureSampleGradProjOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32x2
 Variable TextureSampleGradProjOffset_Texture2D_texture;
+inline constexpr std::array TextureSampleGradProjOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradProjOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProjOffset_Texture2D_sampler;
+inline constexpr std::array TextureSampleGradProjOffset_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradProjOffset_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProjOffset_Texture2D_coordinate;
 Variable TextureSampleGradProjOffset_Texture2D_grad_x;
 Variable TextureSampleGradProjOffset_Texture2D_grad_y;
@@ -8902,6 +9738,8 @@ inline constexpr std::array TextureSampleGradProjOffset_Texture2D_args = { &Text
 
 /// textureSampleGradProjOffset with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32, Float32x2
 Variable SampledTextureSampleGradProjOffset_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleGradProjOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradProjOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradProjOffset_Texture2D_coordinate;
 Variable SampledTextureSampleGradProjOffset_Texture2D_grad_x;
 Variable SampledTextureSampleGradProjOffset_Texture2D_grad_y;
@@ -8912,7 +9750,11 @@ inline constexpr std::array SampledTextureSampleGradProjOffset_Texture2D_args = 
 
 /// textureSampleGradProjOffset with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32x3
 Variable TextureSampleGradProjOffset_Texture3D_texture;
+inline constexpr std::array TextureSampleGradProjOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradProjOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProjOffset_Texture3D_sampler;
+inline constexpr std::array TextureSampleGradProjOffset_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradProjOffset_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProjOffset_Texture3D_coordinate;
 Variable TextureSampleGradProjOffset_Texture3D_grad_x;
 Variable TextureSampleGradProjOffset_Texture3D_grad_y;
@@ -8923,6 +9765,8 @@ inline constexpr std::array TextureSampleGradProjOffset_Texture3D_args = { &Text
 
 /// textureSampleGradProjOffset with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32, Float32x3
 Variable SampledTextureSampleGradProjOffset_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleGradProjOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradProjOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradProjOffset_Texture3D_coordinate;
 Variable SampledTextureSampleGradProjOffset_Texture3D_grad_x;
 Variable SampledTextureSampleGradProjOffset_Texture3D_grad_y;
@@ -8933,7 +9777,11 @@ inline constexpr std::array SampledTextureSampleGradProjOffset_Texture3D_args = 
 
 /// textureSampleGradCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32
 Variable TextureSampleGradCompare_Texture1D_texture;
+inline constexpr std::array TextureSampleGradCompare_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradCompare_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompare_Texture1D_sampler;
+inline constexpr std::array TextureSampleGradCompare_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradCompare_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompare_Texture1D_coordinate;
 Variable TextureSampleGradCompare_Texture1D_grad_x;
 Variable TextureSampleGradCompare_Texture1D_grad_y;
@@ -8943,6 +9791,8 @@ inline constexpr std::array TextureSampleGradCompare_Texture1D_args = { &Texture
 
 /// textureSampleGradCompare with SampledTexture1D, Float32, Float32, Float32, Float32
 Variable SampledTextureSampleGradCompare_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleGradCompare_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradCompare_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradCompare_Texture1D_coordinate;
 Variable SampledTextureSampleGradCompare_Texture1D_grad_x;
 Variable SampledTextureSampleGradCompare_Texture1D_grad_y;
@@ -8952,7 +9802,11 @@ inline constexpr std::array SampledTextureSampleGradCompare_Texture1D_args = { &
 
 /// textureSampleGradCompare with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32
 Variable TextureSampleGradCompare_Texture2D_texture;
+inline constexpr std::array TextureSampleGradCompare_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradCompare_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompare_Texture2D_sampler;
+inline constexpr std::array TextureSampleGradCompare_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradCompare_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompare_Texture2D_coordinate;
 Variable TextureSampleGradCompare_Texture2D_grad_x;
 Variable TextureSampleGradCompare_Texture2D_grad_y;
@@ -8962,6 +9816,8 @@ inline constexpr std::array TextureSampleGradCompare_Texture2D_args = { &Texture
 
 /// textureSampleGradCompare with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32
 Variable SampledTextureSampleGradCompare_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleGradCompare_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradCompare_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradCompare_Texture2D_coordinate;
 Variable SampledTextureSampleGradCompare_Texture2D_grad_x;
 Variable SampledTextureSampleGradCompare_Texture2D_grad_y;
@@ -8971,7 +9827,11 @@ inline constexpr std::array SampledTextureSampleGradCompare_Texture2D_args = { &
 
 /// textureSampleGradCompare with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32
 Variable TextureSampleGradCompare_Texture3D_texture;
+inline constexpr std::array TextureSampleGradCompare_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradCompare_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompare_Texture3D_sampler;
+inline constexpr std::array TextureSampleGradCompare_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradCompare_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompare_Texture3D_coordinate;
 Variable TextureSampleGradCompare_Texture3D_grad_x;
 Variable TextureSampleGradCompare_Texture3D_grad_y;
@@ -8981,6 +9841,8 @@ inline constexpr std::array TextureSampleGradCompare_Texture3D_args = { &Texture
 
 /// textureSampleGradCompare with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32
 Variable SampledTextureSampleGradCompare_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleGradCompare_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradCompare_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradCompare_Texture3D_coordinate;
 Variable SampledTextureSampleGradCompare_Texture3D_grad_x;
 Variable SampledTextureSampleGradCompare_Texture3D_grad_y;
@@ -8990,7 +9852,11 @@ inline constexpr std::array SampledTextureSampleGradCompare_Texture3D_args = { &
 
 /// textureSampleGradCompare with Texture1DArray, Sampler, Float32x2, Float32x2, Float32x2, Float32
 Variable TextureSampleGradCompare_Texture1DArray_texture;
+inline constexpr std::array TextureSampleGradCompare_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradCompare_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompare_Texture1DArray_sampler;
+inline constexpr std::array TextureSampleGradCompare_Texture1DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradCompare_Texture1DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompare_Texture1DArray_coordinate;
 Variable TextureSampleGradCompare_Texture1DArray_grad_x;
 Variable TextureSampleGradCompare_Texture1DArray_grad_y;
@@ -9000,6 +9866,8 @@ inline constexpr std::array TextureSampleGradCompare_Texture1DArray_args = { &Te
 
 /// textureSampleGradCompare with SampledTexture1DArray, Float32x2, Float32x2, Float32x2, Float32
 Variable SampledTextureSampleGradCompare_Texture1DArray_texture;
+inline constexpr std::array SampledTextureSampleGradCompare_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradCompare_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradCompare_Texture1DArray_coordinate;
 Variable SampledTextureSampleGradCompare_Texture1DArray_grad_x;
 Variable SampledTextureSampleGradCompare_Texture1DArray_grad_y;
@@ -9009,7 +9877,11 @@ inline constexpr std::array SampledTextureSampleGradCompare_Texture1DArray_args 
 
 /// textureSampleGradCompare with Texture2DArray, Sampler, Float32x3, Float32x3, Float32x3, Float32
 Variable TextureSampleGradCompare_Texture2DArray_texture;
+inline constexpr std::array TextureSampleGradCompare_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradCompare_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompare_Texture2DArray_sampler;
+inline constexpr std::array TextureSampleGradCompare_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradCompare_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompare_Texture2DArray_coordinate;
 Variable TextureSampleGradCompare_Texture2DArray_grad_x;
 Variable TextureSampleGradCompare_Texture2DArray_grad_y;
@@ -9019,6 +9891,8 @@ inline constexpr std::array TextureSampleGradCompare_Texture2DArray_args = { &Te
 
 /// textureSampleGradCompare with SampledTexture2DArray, Float32x3, Float32x3, Float32x3, Float32
 Variable SampledTextureSampleGradCompare_Texture2DArray_texture;
+inline constexpr std::array SampledTextureSampleGradCompare_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradCompare_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradCompare_Texture2DArray_coordinate;
 Variable SampledTextureSampleGradCompare_Texture2DArray_grad_x;
 Variable SampledTextureSampleGradCompare_Texture2DArray_grad_y;
@@ -9028,7 +9902,11 @@ inline constexpr std::array SampledTextureSampleGradCompare_Texture2DArray_args 
 
 /// textureSampleGradCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
 Variable TextureSampleGradCompareOffset_Texture1D_texture;
+inline constexpr std::array TextureSampleGradCompareOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradCompareOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompareOffset_Texture1D_sampler;
+inline constexpr std::array TextureSampleGradCompareOffset_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradCompareOffset_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompareOffset_Texture1D_coordinate;
 Variable TextureSampleGradCompareOffset_Texture1D_grad_x;
 Variable TextureSampleGradCompareOffset_Texture1D_grad_y;
@@ -9039,6 +9917,8 @@ inline constexpr std::array TextureSampleGradCompareOffset_Texture1D_args = { &T
 
 /// textureSampleGradCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
 Variable SampledTextureSampleGradCompareOffset_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradCompareOffset_Texture1D_coordinate;
 Variable SampledTextureSampleGradCompareOffset_Texture1D_grad_x;
 Variable SampledTextureSampleGradCompareOffset_Texture1D_grad_y;
@@ -9049,7 +9929,11 @@ inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture1D_args
 
 /// textureSampleGradCompareOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32x2
 Variable TextureSampleGradCompareOffset_Texture2D_texture;
+inline constexpr std::array TextureSampleGradCompareOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradCompareOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompareOffset_Texture2D_sampler;
+inline constexpr std::array TextureSampleGradCompareOffset_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradCompareOffset_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompareOffset_Texture2D_coordinate;
 Variable TextureSampleGradCompareOffset_Texture2D_grad_x;
 Variable TextureSampleGradCompareOffset_Texture2D_grad_y;
@@ -9060,6 +9944,8 @@ inline constexpr std::array TextureSampleGradCompareOffset_Texture2D_args = { &T
 
 /// textureSampleGradCompareOffset with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32, Float32x2
 Variable SampledTextureSampleGradCompareOffset_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradCompareOffset_Texture2D_coordinate;
 Variable SampledTextureSampleGradCompareOffset_Texture2D_grad_x;
 Variable SampledTextureSampleGradCompareOffset_Texture2D_grad_y;
@@ -9070,7 +9956,11 @@ inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture2D_args
 
 /// textureSampleGradCompareOffset with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32x3
 Variable TextureSampleGradCompareOffset_Texture3D_texture;
+inline constexpr std::array TextureSampleGradCompareOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradCompareOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompareOffset_Texture3D_sampler;
+inline constexpr std::array TextureSampleGradCompareOffset_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradCompareOffset_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompareOffset_Texture3D_coordinate;
 Variable TextureSampleGradCompareOffset_Texture3D_grad_x;
 Variable TextureSampleGradCompareOffset_Texture3D_grad_y;
@@ -9081,6 +9971,8 @@ inline constexpr std::array TextureSampleGradCompareOffset_Texture3D_args = { &T
 
 /// textureSampleGradCompareOffset with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32, Float32x3
 Variable SampledTextureSampleGradCompareOffset_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradCompareOffset_Texture3D_coordinate;
 Variable SampledTextureSampleGradCompareOffset_Texture3D_grad_x;
 Variable SampledTextureSampleGradCompareOffset_Texture3D_grad_y;
@@ -9091,7 +9983,11 @@ inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture3D_args
 
 /// textureSampleGradCompareOffset with Texture1DArray, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32x2
 Variable TextureSampleGradCompareOffset_Texture1DArray_texture;
+inline constexpr std::array TextureSampleGradCompareOffset_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradCompareOffset_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompareOffset_Texture1DArray_sampler;
+inline constexpr std::array TextureSampleGradCompareOffset_Texture1DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradCompareOffset_Texture1DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompareOffset_Texture1DArray_coordinate;
 Variable TextureSampleGradCompareOffset_Texture1DArray_grad_x;
 Variable TextureSampleGradCompareOffset_Texture1DArray_grad_y;
@@ -9102,6 +9998,8 @@ inline constexpr std::array TextureSampleGradCompareOffset_Texture1DArray_args =
 
 /// textureSampleGradCompareOffset with SampledTexture1DArray, Float32x2, Float32x2, Float32x2, Float32, Float32x2
 Variable SampledTextureSampleGradCompareOffset_Texture1DArray_texture;
+inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradCompareOffset_Texture1DArray_coordinate;
 Variable SampledTextureSampleGradCompareOffset_Texture1DArray_grad_x;
 Variable SampledTextureSampleGradCompareOffset_Texture1DArray_grad_y;
@@ -9112,7 +10010,11 @@ inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture1DArray
 
 /// textureSampleGradCompareOffset with Texture2DArray, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32x3
 Variable TextureSampleGradCompareOffset_Texture2DArray_texture;
+inline constexpr std::array TextureSampleGradCompareOffset_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradCompareOffset_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompareOffset_Texture2DArray_sampler;
+inline constexpr std::array TextureSampleGradCompareOffset_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradCompareOffset_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradCompareOffset_Texture2DArray_coordinate;
 Variable TextureSampleGradCompareOffset_Texture2DArray_grad_x;
 Variable TextureSampleGradCompareOffset_Texture2DArray_grad_y;
@@ -9123,6 +10025,8 @@ inline constexpr std::array TextureSampleGradCompareOffset_Texture2DArray_args =
 
 /// textureSampleGradCompareOffset with SampledTexture2DArray, Float32x3, Float32x3, Float32x3, Float32, Float32x3
 Variable SampledTextureSampleGradCompareOffset_Texture2DArray_texture;
+inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradCompareOffset_Texture2DArray_coordinate;
 Variable SampledTextureSampleGradCompareOffset_Texture2DArray_grad_x;
 Variable SampledTextureSampleGradCompareOffset_Texture2DArray_grad_y;
@@ -9133,7 +10037,11 @@ inline constexpr std::array SampledTextureSampleGradCompareOffset_Texture2DArray
 
 /// textureSampleGradProjCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
 Variable TextureSampleGradProjCompare_Texture1D_texture;
+inline constexpr std::array TextureSampleGradProjCompare_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradProjCompare_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProjCompare_Texture1D_sampler;
+inline constexpr std::array TextureSampleGradProjCompare_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradProjCompare_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProjCompare_Texture1D_coordinate;
 Variable TextureSampleGradProjCompare_Texture1D_grad_x;
 Variable TextureSampleGradProjCompare_Texture1D_grad_y;
@@ -9144,6 +10052,8 @@ inline constexpr std::array TextureSampleGradProjCompare_Texture1D_args = { &Tex
 
 /// textureSampleGradProjCompare with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
 Variable SampledTextureSampleGradProjCompare_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleGradProjCompare_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradProjCompare_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradProjCompare_Texture1D_coordinate;
 Variable SampledTextureSampleGradProjCompare_Texture1D_grad_x;
 Variable SampledTextureSampleGradProjCompare_Texture1D_grad_y;
@@ -9154,7 +10064,11 @@ inline constexpr std::array SampledTextureSampleGradProjCompare_Texture1D_args =
 
 /// textureSampleGradProjCompare with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32
 Variable TextureSampleGradProjCompare_Texture2D_texture;
+inline constexpr std::array TextureSampleGradProjCompare_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradProjCompare_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProjCompare_Texture2D_sampler;
+inline constexpr std::array TextureSampleGradProjCompare_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradProjCompare_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProjCompare_Texture2D_coordinate;
 Variable TextureSampleGradProjCompare_Texture2D_grad_x;
 Variable TextureSampleGradProjCompare_Texture2D_grad_y;
@@ -9165,6 +10079,8 @@ inline constexpr std::array TextureSampleGradProjCompare_Texture2D_args = { &Tex
 
 /// textureSampleGradProjCompare with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32, Float32
 Variable SampledTextureSampleGradProjCompare_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleGradProjCompare_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradProjCompare_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradProjCompare_Texture2D_coordinate;
 Variable SampledTextureSampleGradProjCompare_Texture2D_grad_x;
 Variable SampledTextureSampleGradProjCompare_Texture2D_grad_y;
@@ -9175,7 +10091,11 @@ inline constexpr std::array SampledTextureSampleGradProjCompare_Texture2D_args =
 
 /// textureSampleGradProjCompare with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32
 Variable TextureSampleGradProjCompare_Texture3D_texture;
+inline constexpr std::array TextureSampleGradProjCompare_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradProjCompare_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProjCompare_Texture3D_sampler;
+inline constexpr std::array TextureSampleGradProjCompare_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradProjCompare_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProjCompare_Texture3D_coordinate;
 Variable TextureSampleGradProjCompare_Texture3D_grad_x;
 Variable TextureSampleGradProjCompare_Texture3D_grad_y;
@@ -9186,6 +10106,8 @@ inline constexpr std::array TextureSampleGradProjCompare_Texture3D_args = { &Tex
 
 /// textureSampleGradProjCompare with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32, Float32
 Variable SampledTextureSampleGradProjCompare_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleGradProjCompare_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradProjCompare_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradProjCompare_Texture3D_coordinate;
 Variable SampledTextureSampleGradProjCompare_Texture3D_grad_x;
 Variable SampledTextureSampleGradProjCompare_Texture3D_grad_y;
@@ -9196,7 +10118,11 @@ inline constexpr std::array SampledTextureSampleGradProjCompare_Texture3D_args =
 
 /// textureSampleGradProjCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32, Float32
 Variable TextureSampleGradProjCompareOffset_Texture1D_texture;
+inline constexpr std::array TextureSampleGradProjCompareOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradProjCompareOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProjCompareOffset_Texture1D_sampler;
+inline constexpr std::array TextureSampleGradProjCompareOffset_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradProjCompareOffset_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProjCompareOffset_Texture1D_coordinate;
 Variable TextureSampleGradProjCompareOffset_Texture1D_grad_x;
 Variable TextureSampleGradProjCompareOffset_Texture1D_grad_y;
@@ -9208,6 +10134,8 @@ inline constexpr std::array TextureSampleGradProjCompareOffset_Texture1D_args = 
 
 /// textureSampleGradProjCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32, Float32
 Variable SampledTextureSampleGradProjCompareOffset_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleGradProjCompareOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradProjCompareOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradProjCompareOffset_Texture1D_coordinate;
 Variable SampledTextureSampleGradProjCompareOffset_Texture1D_grad_x;
 Variable SampledTextureSampleGradProjCompareOffset_Texture1D_grad_y;
@@ -9219,7 +10147,11 @@ inline constexpr std::array SampledTextureSampleGradProjCompareOffset_Texture1D_
 
 /// textureSampleGradProjCompareOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32, Float32x2
 Variable TextureSampleGradProjCompareOffset_Texture2D_texture;
+inline constexpr std::array TextureSampleGradProjCompareOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradProjCompareOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProjCompareOffset_Texture2D_sampler;
+inline constexpr std::array TextureSampleGradProjCompareOffset_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradProjCompareOffset_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProjCompareOffset_Texture2D_coordinate;
 Variable TextureSampleGradProjCompareOffset_Texture2D_grad_x;
 Variable TextureSampleGradProjCompareOffset_Texture2D_grad_y;
@@ -9231,6 +10163,8 @@ inline constexpr std::array TextureSampleGradProjCompareOffset_Texture2D_args = 
 
 /// textureSampleGradProjCompareOffset with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32, Float32, Float32x2
 Variable SampledTextureSampleGradProjCompareOffset_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleGradProjCompareOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradProjCompareOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradProjCompareOffset_Texture2D_coordinate;
 Variable SampledTextureSampleGradProjCompareOffset_Texture2D_grad_x;
 Variable SampledTextureSampleGradProjCompareOffset_Texture2D_grad_y;
@@ -9242,7 +10176,11 @@ inline constexpr std::array SampledTextureSampleGradProjCompareOffset_Texture2D_
 
 /// textureSampleGradProjCompareOffset with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32, Float32x3
 Variable TextureSampleGradProjCompareOffset_Texture3D_texture;
+inline constexpr std::array TextureSampleGradProjCompareOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradProjCompareOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProjCompareOffset_Texture3D_sampler;
+inline constexpr std::array TextureSampleGradProjCompareOffset_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleGradProjCompareOffset_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleGradProjCompareOffset_Texture3D_coordinate;
 Variable TextureSampleGradProjCompareOffset_Texture3D_grad_x;
 Variable TextureSampleGradProjCompareOffset_Texture3D_grad_y;
@@ -9254,6 +10192,8 @@ inline constexpr std::array TextureSampleGradProjCompareOffset_Texture3D_args = 
 
 /// textureSampleGradProjCompareOffset with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32, Float32, Float32x3
 Variable SampledTextureSampleGradProjCompareOffset_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleGradProjCompareOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleGradProjCompareOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleGradProjCompareOffset_Texture3D_coordinate;
 Variable SampledTextureSampleGradProjCompareOffset_Texture3D_grad_x;
 Variable SampledTextureSampleGradProjCompareOffset_Texture3D_grad_y;
@@ -9265,7 +10205,11 @@ inline constexpr std::array SampledTextureSampleGradProjCompareOffset_Texture3D_
 
 /// textureSampleBias with Texture1D, Sampler, Float32, Float32
 Variable TextureSampleBias_Texture1D_texture;
+inline constexpr std::array TextureSampleBias_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBias_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBias_Texture1D_sampler;
+inline constexpr std::array TextureSampleBias_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBias_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBias_Texture1D_coordinate;
 Variable TextureSampleBias_Texture1D_bias;
 Function TextureSampleBias_Texture1D;
@@ -9273,6 +10217,8 @@ inline constexpr std::array TextureSampleBias_Texture1D_args = { &TextureSampleB
 
 /// textureSampleBias with SampledTexture1D, Float32, Float32
 Variable SampledTextureSampleBias_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleBias_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBias_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBias_Texture1D_coordinate;
 Variable SampledTextureSampleBias_Texture1D_bias;
 Function SampledTextureSampleBias_Texture1D;
@@ -9280,7 +10226,11 @@ inline constexpr std::array SampledTextureSampleBias_Texture1D_args = { &Sampled
 
 /// textureSampleBias with Texture2D, Sampler, Float32x2, Float32
 Variable TextureSampleBias_Texture2D_texture;
+inline constexpr std::array TextureSampleBias_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBias_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBias_Texture2D_sampler;
+inline constexpr std::array TextureSampleBias_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBias_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBias_Texture2D_coordinate;
 Variable TextureSampleBias_Texture2D_bias;
 Function TextureSampleBias_Texture2D;
@@ -9288,6 +10238,8 @@ inline constexpr std::array TextureSampleBias_Texture2D_args = { &TextureSampleB
 
 /// textureSampleBias with SampledTexture2D, Float32x2, Float32
 Variable SampledTextureSampleBias_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleBias_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBias_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBias_Texture2D_coordinate;
 Variable SampledTextureSampleBias_Texture2D_bias;
 Function SampledTextureSampleBias_Texture2D;
@@ -9295,7 +10247,11 @@ inline constexpr std::array SampledTextureSampleBias_Texture2D_args = { &Sampled
 
 /// textureSampleBias with Texture3D, Sampler, Float32x3, Float32
 Variable TextureSampleBias_Texture3D_texture;
+inline constexpr std::array TextureSampleBias_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBias_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBias_Texture3D_sampler;
+inline constexpr std::array TextureSampleBias_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBias_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBias_Texture3D_coordinate;
 Variable TextureSampleBias_Texture3D_bias;
 Function TextureSampleBias_Texture3D;
@@ -9303,6 +10259,8 @@ inline constexpr std::array TextureSampleBias_Texture3D_args = { &TextureSampleB
 
 /// textureSampleBias with SampledTexture3D, Float32x3, Float32
 Variable SampledTextureSampleBias_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleBias_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBias_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBias_Texture3D_coordinate;
 Variable SampledTextureSampleBias_Texture3D_bias;
 Function SampledTextureSampleBias_Texture3D;
@@ -9310,7 +10268,11 @@ inline constexpr std::array SampledTextureSampleBias_Texture3D_args = { &Sampled
 
 /// textureSampleBias with TextureCube, Sampler, Float32x3, Float32
 Variable TextureSampleBias_TextureCube_texture;
+inline constexpr std::array TextureSampleBias_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBias_TextureCube_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBias_TextureCube_sampler;
+inline constexpr std::array TextureSampleBias_TextureCube_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBias_TextureCube_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBias_TextureCube_coordinate;
 Variable TextureSampleBias_TextureCube_bias;
 Function TextureSampleBias_TextureCube;
@@ -9318,6 +10280,8 @@ inline constexpr std::array TextureSampleBias_TextureCube_args = { &TextureSampl
 
 /// textureSampleBias with SampledTextureCube, Float32x3, Float32
 Variable SampledTextureSampleBias_TextureCube_texture;
+inline constexpr std::array SampledTextureSampleBias_TextureCube_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBias_TextureCube_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBias_TextureCube_coordinate;
 Variable SampledTextureSampleBias_TextureCube_bias;
 Function SampledTextureSampleBias_TextureCube;
@@ -9325,7 +10289,11 @@ inline constexpr std::array SampledTextureSampleBias_TextureCube_args = { &Sampl
 
 /// textureSampleBias with Texture1DArray, Sampler, Float32x2, Float32
 Variable TextureSampleBias_Texture1DArray_texture;
+inline constexpr std::array TextureSampleBias_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBias_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBias_Texture1DArray_sampler;
+inline constexpr std::array TextureSampleBias_Texture1DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBias_Texture1DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBias_Texture1DArray_coordinate;
 Variable TextureSampleBias_Texture1DArray_bias;
 Function TextureSampleBias_Texture1DArray;
@@ -9333,6 +10301,8 @@ inline constexpr std::array TextureSampleBias_Texture1DArray_args = { &TextureSa
 
 /// textureSampleBias with SampledTexture1DArray, Float32x2, Float32
 Variable SampledTextureSampleBias_Texture1DArray_texture;
+inline constexpr std::array SampledTextureSampleBias_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBias_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBias_Texture1DArray_coordinate;
 Variable SampledTextureSampleBias_Texture1DArray_bias;
 Function SampledTextureSampleBias_Texture1DArray;
@@ -9340,7 +10310,11 @@ inline constexpr std::array SampledTextureSampleBias_Texture1DArray_args = { &Sa
 
 /// textureSampleBias with Texture2DArray, Sampler, Float32x3, Float32
 Variable TextureSampleBias_Texture2DArray_texture;
+inline constexpr std::array TextureSampleBias_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBias_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBias_Texture2DArray_sampler;
+inline constexpr std::array TextureSampleBias_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBias_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBias_Texture2DArray_coordinate;
 Variable TextureSampleBias_Texture2DArray_bias;
 Function TextureSampleBias_Texture2DArray;
@@ -9348,6 +10322,8 @@ inline constexpr std::array TextureSampleBias_Texture2DArray_args = { &TextureSa
 
 /// textureSampleBias with SampledTexture2DArray, Float32x3, Float32
 Variable SampledTextureSampleBias_Texture2DArray_texture;
+inline constexpr std::array SampledTextureSampleBias_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBias_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBias_Texture2DArray_coordinate;
 Variable SampledTextureSampleBias_Texture2DArray_bias;
 Function SampledTextureSampleBias_Texture2DArray;
@@ -9355,7 +10331,11 @@ inline constexpr std::array SampledTextureSampleBias_Texture2DArray_args = { &Sa
 
 /// textureSampleBias with TextureCubeArray, Sampler, Float32x4, Float32
 Variable TextureSampleBias_TextureCubeArray_texture;
+inline constexpr std::array TextureSampleBias_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBias_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBias_TextureCubeArray_sampler;
+inline constexpr std::array TextureSampleBias_TextureCubeArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBias_TextureCubeArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBias_TextureCubeArray_coordinate;
 Variable TextureSampleBias_TextureCubeArray_bias;
 Function TextureSampleBias_TextureCubeArray;
@@ -9363,6 +10343,8 @@ inline constexpr std::array TextureSampleBias_TextureCubeArray_args = { &Texture
 
 /// textureSampleBias with SampledTextureCubeArray, Float32x4, Float32
 Variable SampledTextureSampleBias_TextureCubeArray_texture;
+inline constexpr std::array SampledTextureSampleBias_TextureCubeArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBias_TextureCubeArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBias_TextureCubeArray_coordinate;
 Variable SampledTextureSampleBias_TextureCubeArray_bias;
 Function SampledTextureSampleBias_TextureCubeArray;
@@ -9370,7 +10352,11 @@ inline constexpr std::array SampledTextureSampleBias_TextureCubeArray_args = { &
 
 /// textureSampleBiasOffset with Texture1D, Sampler, Float32, Float32, Float32
 Variable TextureSampleBiasOffset_Texture1D_texture;
+inline constexpr std::array TextureSampleBiasOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasOffset_Texture1D_sampler;
+inline constexpr std::array TextureSampleBiasOffset_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasOffset_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasOffset_Texture1D_coordinate;
 Variable TextureSampleBiasOffset_Texture1D_bias;
 Variable TextureSampleBiasOffset_Texture1D_offset;
@@ -9379,6 +10365,8 @@ inline constexpr std::array TextureSampleBiasOffset_Texture1D_args = { &TextureS
 
 /// textureSampleBiasOffset with SampledTexture1D, Float32, Float32, Float32
 Variable SampledTextureSampleBiasOffset_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleBiasOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasOffset_Texture1D_coordinate;
 Variable SampledTextureSampleBiasOffset_Texture1D_bias;
 Variable SampledTextureSampleBiasOffset_Texture1D_offset;
@@ -9387,7 +10375,11 @@ inline constexpr std::array SampledTextureSampleBiasOffset_Texture1D_args = { &S
 
 /// textureSampleBiasOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2
 Variable TextureSampleBiasOffset_Texture2D_texture;
+inline constexpr std::array TextureSampleBiasOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasOffset_Texture2D_sampler;
+inline constexpr std::array TextureSampleBiasOffset_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasOffset_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasOffset_Texture2D_coordinate;
 Variable TextureSampleBiasOffset_Texture2D_bias;
 Variable TextureSampleBiasOffset_Texture2D_offset;
@@ -9396,6 +10388,8 @@ inline constexpr std::array TextureSampleBiasOffset_Texture2D_args = { &TextureS
 
 /// textureSampleBiasOffset with SampledTexture2D, Float32x2, Float32, Float32x2
 Variable SampledTextureSampleBiasOffset_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleBiasOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasOffset_Texture2D_coordinate;
 Variable SampledTextureSampleBiasOffset_Texture2D_bias;
 Variable SampledTextureSampleBiasOffset_Texture2D_offset;
@@ -9404,7 +10398,11 @@ inline constexpr std::array SampledTextureSampleBiasOffset_Texture2D_args = { &S
 
 /// textureSampleBiasOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3
 Variable TextureSampleBiasOffset_Texture3D_texture;
+inline constexpr std::array TextureSampleBiasOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasOffset_Texture3D_sampler;
+inline constexpr std::array TextureSampleBiasOffset_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasOffset_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasOffset_Texture3D_coordinate;
 Variable TextureSampleBiasOffset_Texture3D_bias;
 Variable TextureSampleBiasOffset_Texture3D_offset;
@@ -9413,6 +10411,8 @@ inline constexpr std::array TextureSampleBiasOffset_Texture3D_args = { &TextureS
 
 /// textureSampleBiasOffset with SampledTexture3D, Float32x3, Float32, Float32x3
 Variable SampledTextureSampleBiasOffset_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleBiasOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasOffset_Texture3D_coordinate;
 Variable SampledTextureSampleBiasOffset_Texture3D_bias;
 Variable SampledTextureSampleBiasOffset_Texture3D_offset;
@@ -9421,7 +10421,11 @@ inline constexpr std::array SampledTextureSampleBiasOffset_Texture3D_args = { &S
 
 /// textureSampleBiasOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32x2
 Variable TextureSampleBiasOffset_Texture1DArray_texture;
+inline constexpr std::array TextureSampleBiasOffset_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasOffset_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasOffset_Texture1DArray_sampler;
+inline constexpr std::array TextureSampleBiasOffset_Texture1DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasOffset_Texture1DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasOffset_Texture1DArray_coordinate;
 Variable TextureSampleBiasOffset_Texture1DArray_bias;
 Variable TextureSampleBiasOffset_Texture1DArray_offset;
@@ -9430,6 +10434,8 @@ inline constexpr std::array TextureSampleBiasOffset_Texture1DArray_args = { &Tex
 
 /// textureSampleBiasOffset with SampledTexture1DArray, Float32x2, Float32, Float32x2
 Variable SampledTextureSampleBiasOffset_Texture1DArray_texture;
+inline constexpr std::array SampledTextureSampleBiasOffset_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasOffset_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasOffset_Texture1DArray_coordinate;
 Variable SampledTextureSampleBiasOffset_Texture1DArray_bias;
 Variable SampledTextureSampleBiasOffset_Texture1DArray_offset;
@@ -9438,7 +10444,11 @@ inline constexpr std::array SampledTextureSampleBiasOffset_Texture1DArray_args =
 
 /// textureSampleBiasOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32x3
 Variable TextureSampleBiasOffset_Texture2DArray_texture;
+inline constexpr std::array TextureSampleBiasOffset_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasOffset_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasOffset_Texture2DArray_sampler;
+inline constexpr std::array TextureSampleBiasOffset_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasOffset_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasOffset_Texture2DArray_coordinate;
 Variable TextureSampleBiasOffset_Texture2DArray_bias;
 Variable TextureSampleBiasOffset_Texture2DArray_offset;
@@ -9447,6 +10457,8 @@ inline constexpr std::array TextureSampleBiasOffset_Texture2DArray_args = { &Tex
 
 /// textureSampleBiasOffset with SampledTexture2DArray, Float32x3, Float32, Float32x3
 Variable SampledTextureSampleBiasOffset_Texture2DArray_texture;
+inline constexpr std::array SampledTextureSampleBiasOffset_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasOffset_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasOffset_Texture2DArray_coordinate;
 Variable SampledTextureSampleBiasOffset_Texture2DArray_bias;
 Variable SampledTextureSampleBiasOffset_Texture2DArray_offset;
@@ -9455,7 +10467,11 @@ inline constexpr std::array SampledTextureSampleBiasOffset_Texture2DArray_args =
 
 /// textureSampleBiasProj with Texture1D, Sampler, Float32, Float32, Float32
 Variable TextureSampleBiasProj_Texture1D_texture;
+inline constexpr std::array TextureSampleBiasProj_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProj_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasProj_Texture1D_sampler;
+inline constexpr std::array TextureSampleBiasProj_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProj_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasProj_Texture1D_coordinate;
 Variable TextureSampleBiasProj_Texture1D_bias;
 Variable TextureSampleBiasProj_Texture1D_proj;
@@ -9464,6 +10480,8 @@ inline constexpr std::array TextureSampleBiasProj_Texture1D_args = { &TextureSam
 
 /// textureSampleBiasProj with SampledTexture1D, Float32, Float32, Float32
 Variable SampledTextureSampleBiasProj_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleBiasProj_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasProj_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasProj_Texture1D_coordinate;
 Variable SampledTextureSampleBiasProj_Texture1D_bias;
 Variable SampledTextureSampleBiasProj_Texture1D_proj;
@@ -9472,7 +10490,11 @@ inline constexpr std::array SampledTextureSampleBiasProj_Texture1D_args = { &Sam
 
 /// textureSampleBiasProj with Texture2D, Sampler, Float32x2, Float32, Float32
 Variable TextureSampleBiasProj_Texture2D_texture;
+inline constexpr std::array TextureSampleBiasProj_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProj_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasProj_Texture2D_sampler;
+inline constexpr std::array TextureSampleBiasProj_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProj_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasProj_Texture2D_coordinate;
 Variable TextureSampleBiasProj_Texture2D_bias;
 Variable TextureSampleBiasProj_Texture2D_proj;
@@ -9481,6 +10503,8 @@ inline constexpr std::array TextureSampleBiasProj_Texture2D_args = { &TextureSam
 
 /// textureSampleBiasProj with SampledTexture2D, Float32x2, Float32, Float32
 Variable SampledTextureSampleBiasProj_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleBiasProj_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasProj_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasProj_Texture2D_coordinate;
 Variable SampledTextureSampleBiasProj_Texture2D_bias;
 Variable SampledTextureSampleBiasProj_Texture2D_proj;
@@ -9489,7 +10513,11 @@ inline constexpr std::array SampledTextureSampleBiasProj_Texture2D_args = { &Sam
 
 /// textureSampleBiasProj with Texture3D, Sampler, Float32x3, Float32, Float32
 Variable TextureSampleBiasProj_Texture3D_texture;
+inline constexpr std::array TextureSampleBiasProj_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProj_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasProj_Texture3D_sampler;
+inline constexpr std::array TextureSampleBiasProj_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProj_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasProj_Texture3D_coordinate;
 Variable TextureSampleBiasProj_Texture3D_bias;
 Variable TextureSampleBiasProj_Texture3D_proj;
@@ -9498,6 +10526,8 @@ inline constexpr std::array TextureSampleBiasProj_Texture3D_args = { &TextureSam
 
 /// textureSampleBiasProj with SampledTexture3D, Float32x3, Float32, Float32
 Variable SampledTextureSampleBiasProj_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleBiasProj_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasProj_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasProj_Texture3D_coordinate;
 Variable SampledTextureSampleBiasProj_Texture3D_bias;
 Variable SampledTextureSampleBiasProj_Texture3D_proj;
@@ -9506,7 +10536,11 @@ inline constexpr std::array SampledTextureSampleBiasProj_Texture3D_args = { &Sam
 
 /// textureSampleBiasProjOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
 Variable TextureSampleBiasProjOffset_Texture1D_texture;
+inline constexpr std::array TextureSampleBiasProjOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasProjOffset_Texture1D_sampler;
+inline constexpr std::array TextureSampleBiasProjOffset_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjOffset_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasProjOffset_Texture1D_coordinate;
 Variable TextureSampleBiasProjOffset_Texture1D_bias;
 Variable TextureSampleBiasProjOffset_Texture1D_proj;
@@ -9516,6 +10550,8 @@ inline constexpr std::array TextureSampleBiasProjOffset_Texture1D_args = { &Text
 
 /// textureSampleBiasProjOffset with SampledTexture1D, Float32, Float32, Float32, Float32
 Variable SampledTextureSampleBiasProjOffset_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleBiasProjOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasProjOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasProjOffset_Texture1D_coordinate;
 Variable SampledTextureSampleBiasProjOffset_Texture1D_bias;
 Variable SampledTextureSampleBiasProjOffset_Texture1D_proj;
@@ -9525,7 +10561,11 @@ inline constexpr std::array SampledTextureSampleBiasProjOffset_Texture1D_args = 
 
 /// textureSampleBiasProjOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
 Variable TextureSampleBiasProjOffset_Texture2D_texture;
+inline constexpr std::array TextureSampleBiasProjOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasProjOffset_Texture2D_sampler;
+inline constexpr std::array TextureSampleBiasProjOffset_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjOffset_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasProjOffset_Texture2D_coordinate;
 Variable TextureSampleBiasProjOffset_Texture2D_bias;
 Variable TextureSampleBiasProjOffset_Texture2D_proj;
@@ -9535,6 +10575,8 @@ inline constexpr std::array TextureSampleBiasProjOffset_Texture2D_args = { &Text
 
 /// textureSampleBiasProjOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
 Variable SampledTextureSampleBiasProjOffset_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleBiasProjOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasProjOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasProjOffset_Texture2D_coordinate;
 Variable SampledTextureSampleBiasProjOffset_Texture2D_bias;
 Variable SampledTextureSampleBiasProjOffset_Texture2D_proj;
@@ -9544,7 +10586,11 @@ inline constexpr std::array SampledTextureSampleBiasProjOffset_Texture2D_args = 
 
 /// textureSampleBiasProjOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
 Variable TextureSampleBiasProjOffset_Texture3D_texture;
+inline constexpr std::array TextureSampleBiasProjOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasProjOffset_Texture3D_sampler;
+inline constexpr std::array TextureSampleBiasProjOffset_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjOffset_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasProjOffset_Texture3D_coordinate;
 Variable TextureSampleBiasProjOffset_Texture3D_bias;
 Variable TextureSampleBiasProjOffset_Texture3D_proj;
@@ -9554,6 +10600,8 @@ inline constexpr std::array TextureSampleBiasProjOffset_Texture3D_args = { &Text
 
 /// textureSampleBiasProjOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
 Variable SampledTextureSampleBiasProjOffset_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleBiasProjOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasProjOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasProjOffset_Texture3D_coordinate;
 Variable SampledTextureSampleBiasProjOffset_Texture3D_bias;
 Variable SampledTextureSampleBiasProjOffset_Texture3D_proj;
@@ -9563,7 +10611,11 @@ inline constexpr std::array SampledTextureSampleBiasProjOffset_Texture3D_args = 
 
 /// textureSampleBiasCompare with Texture1D, Sampler, Float32, Float32, Float32
 Variable TextureSampleBiasCompare_Texture1D_texture;
+inline constexpr std::array TextureSampleBiasCompare_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompare_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasCompare_Texture1D_sampler;
+inline constexpr std::array TextureSampleBiasCompare_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompare_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasCompare_Texture1D_coordinate;
 Variable TextureSampleBiasCompare_Texture1D_bias;
 Variable TextureSampleBiasCompare_Texture1D_compare;
@@ -9572,6 +10624,8 @@ inline constexpr std::array TextureSampleBiasCompare_Texture1D_args = { &Texture
 
 /// textureSampleBiasCompare with SampledTexture1D, Float32, Float32, Float32
 Variable SampledTextureSampleBiasCompare_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleBiasCompare_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasCompare_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasCompare_Texture1D_coordinate;
 Variable SampledTextureSampleBiasCompare_Texture1D_bias;
 Variable SampledTextureSampleBiasCompare_Texture1D_compare;
@@ -9580,7 +10634,11 @@ inline constexpr std::array SampledTextureSampleBiasCompare_Texture1D_args = { &
 
 /// textureSampleBiasCompare with Texture2D, Sampler, Float32x2, Float32, Float32
 Variable TextureSampleBiasCompare_Texture2D_texture;
+inline constexpr std::array TextureSampleBiasCompare_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompare_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasCompare_Texture2D_sampler;
+inline constexpr std::array TextureSampleBiasCompare_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompare_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasCompare_Texture2D_coordinate;
 Variable TextureSampleBiasCompare_Texture2D_bias;
 Variable TextureSampleBiasCompare_Texture2D_compare;
@@ -9589,6 +10647,8 @@ inline constexpr std::array TextureSampleBiasCompare_Texture2D_args = { &Texture
 
 /// textureSampleBiasCompare with SampledTexture2D, Float32x2, Float32, Float32
 Variable SampledTextureSampleBiasCompare_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleBiasCompare_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasCompare_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasCompare_Texture2D_coordinate;
 Variable SampledTextureSampleBiasCompare_Texture2D_bias;
 Variable SampledTextureSampleBiasCompare_Texture2D_compare;
@@ -9597,7 +10657,11 @@ inline constexpr std::array SampledTextureSampleBiasCompare_Texture2D_args = { &
 
 /// textureSampleBiasCompare with Texture3D, Sampler, Float32x3, Float32, Float32
 Variable TextureSampleBiasCompare_Texture3D_texture;
+inline constexpr std::array TextureSampleBiasCompare_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompare_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasCompare_Texture3D_sampler;
+inline constexpr std::array TextureSampleBiasCompare_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompare_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasCompare_Texture3D_coordinate;
 Variable TextureSampleBiasCompare_Texture3D_bias;
 Variable TextureSampleBiasCompare_Texture3D_compare;
@@ -9606,6 +10670,8 @@ inline constexpr std::array TextureSampleBiasCompare_Texture3D_args = { &Texture
 
 /// textureSampleBiasCompare with SampledTexture3D, Float32x3, Float32, Float32
 Variable SampledTextureSampleBiasCompare_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleBiasCompare_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasCompare_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasCompare_Texture3D_coordinate;
 Variable SampledTextureSampleBiasCompare_Texture3D_bias;
 Variable SampledTextureSampleBiasCompare_Texture3D_compare;
@@ -9614,7 +10680,11 @@ inline constexpr std::array SampledTextureSampleBiasCompare_Texture3D_args = { &
 
 /// textureSampleBiasCompare with Texture1DArray, Sampler, Float32x2, Float32, Float32
 Variable TextureSampleBiasCompare_Texture1DArray_texture;
+inline constexpr std::array TextureSampleBiasCompare_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompare_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasCompare_Texture1DArray_sampler;
+inline constexpr std::array TextureSampleBiasCompare_Texture1DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompare_Texture1DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasCompare_Texture1DArray_coordinate;
 Variable TextureSampleBiasCompare_Texture1DArray_bias;
 Variable TextureSampleBiasCompare_Texture1DArray_compare;
@@ -9623,6 +10693,8 @@ inline constexpr std::array TextureSampleBiasCompare_Texture1DArray_args = { &Te
 
 /// textureSampleBiasCompare with SampledTexture1DArray, Float32x2, Float32, Float32
 Variable SampledTextureSampleBiasCompare_Texture1DArray_texture;
+inline constexpr std::array SampledTextureSampleBiasCompare_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasCompare_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasCompare_Texture1DArray_coordinate;
 Variable SampledTextureSampleBiasCompare_Texture1DArray_bias;
 Variable SampledTextureSampleBiasCompare_Texture1DArray_compare;
@@ -9631,7 +10703,11 @@ inline constexpr std::array SampledTextureSampleBiasCompare_Texture1DArray_args 
 
 /// textureSampleBiasCompare with Texture2DArray, Sampler, Float32x3, Float32, Float32
 Variable TextureSampleBiasCompare_Texture2DArray_texture;
+inline constexpr std::array TextureSampleBiasCompare_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompare_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasCompare_Texture2DArray_sampler;
+inline constexpr std::array TextureSampleBiasCompare_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompare_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasCompare_Texture2DArray_coordinate;
 Variable TextureSampleBiasCompare_Texture2DArray_bias;
 Variable TextureSampleBiasCompare_Texture2DArray_compare;
@@ -9640,6 +10716,8 @@ inline constexpr std::array TextureSampleBiasCompare_Texture2DArray_args = { &Te
 
 /// textureSampleBiasCompare with SampledTexture2DArray, Float32x3, Float32, Float32
 Variable SampledTextureSampleBiasCompare_Texture2DArray_texture;
+inline constexpr std::array SampledTextureSampleBiasCompare_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasCompare_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasCompare_Texture2DArray_coordinate;
 Variable SampledTextureSampleBiasCompare_Texture2DArray_bias;
 Variable SampledTextureSampleBiasCompare_Texture2DArray_compare;
@@ -9648,7 +10726,11 @@ inline constexpr std::array SampledTextureSampleBiasCompare_Texture2DArray_args 
 
 /// textureSampleBiasCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
 Variable TextureSampleBiasCompareOffset_Texture1D_texture;
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasCompareOffset_Texture1D_sampler;
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasCompareOffset_Texture1D_coordinate;
 Variable TextureSampleBiasCompareOffset_Texture1D_bias;
 Variable TextureSampleBiasCompareOffset_Texture1D_compare;
@@ -9658,6 +10740,8 @@ inline constexpr std::array TextureSampleBiasCompareOffset_Texture1D_args = { &T
 
 /// textureSampleBiasCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32
 Variable SampledTextureSampleBiasCompareOffset_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasCompareOffset_Texture1D_coordinate;
 Variable SampledTextureSampleBiasCompareOffset_Texture1D_bias;
 Variable SampledTextureSampleBiasCompareOffset_Texture1D_compare;
@@ -9667,7 +10751,11 @@ inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture1D_args
 
 /// textureSampleBiasCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
 Variable TextureSampleBiasCompareOffset_Texture2D_texture;
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasCompareOffset_Texture2D_sampler;
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasCompareOffset_Texture2D_coordinate;
 Variable TextureSampleBiasCompareOffset_Texture2D_bias;
 Variable TextureSampleBiasCompareOffset_Texture2D_compare;
@@ -9677,6 +10765,8 @@ inline constexpr std::array TextureSampleBiasCompareOffset_Texture2D_args = { &T
 
 /// textureSampleBiasCompareOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
 Variable SampledTextureSampleBiasCompareOffset_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasCompareOffset_Texture2D_coordinate;
 Variable SampledTextureSampleBiasCompareOffset_Texture2D_bias;
 Variable SampledTextureSampleBiasCompareOffset_Texture2D_compare;
@@ -9686,7 +10776,11 @@ inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture2D_args
 
 /// textureSampleBiasCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
 Variable TextureSampleBiasCompareOffset_Texture3D_texture;
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasCompareOffset_Texture3D_sampler;
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasCompareOffset_Texture3D_coordinate;
 Variable TextureSampleBiasCompareOffset_Texture3D_bias;
 Variable TextureSampleBiasCompareOffset_Texture3D_compare;
@@ -9696,6 +10790,8 @@ inline constexpr std::array TextureSampleBiasCompareOffset_Texture3D_args = { &T
 
 /// textureSampleBiasCompareOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
 Variable SampledTextureSampleBiasCompareOffset_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasCompareOffset_Texture3D_coordinate;
 Variable SampledTextureSampleBiasCompareOffset_Texture3D_bias;
 Variable SampledTextureSampleBiasCompareOffset_Texture3D_compare;
@@ -9705,7 +10801,11 @@ inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture3D_args
 
 /// textureSampleBiasCompareOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32, Float32x2
 Variable TextureSampleBiasCompareOffset_Texture1DArray_texture;
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasCompareOffset_Texture1DArray_sampler;
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture1DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture1DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasCompareOffset_Texture1DArray_coordinate;
 Variable TextureSampleBiasCompareOffset_Texture1DArray_bias;
 Variable TextureSampleBiasCompareOffset_Texture1DArray_compare;
@@ -9715,6 +10815,8 @@ inline constexpr std::array TextureSampleBiasCompareOffset_Texture1DArray_args =
 
 /// textureSampleBiasCompareOffset with SampledTexture1DArray, Float32x2, Float32, Float32, Float32x2
 Variable SampledTextureSampleBiasCompareOffset_Texture1DArray_texture;
+inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture1DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture1DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasCompareOffset_Texture1DArray_coordinate;
 Variable SampledTextureSampleBiasCompareOffset_Texture1DArray_bias;
 Variable SampledTextureSampleBiasCompareOffset_Texture1DArray_compare;
@@ -9724,7 +10826,11 @@ inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture1DArray
 
 /// textureSampleBiasCompareOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32, Float32x3
 Variable TextureSampleBiasCompareOffset_Texture2DArray_texture;
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasCompareOffset_Texture2DArray_sampler;
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture2DArray_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasCompareOffset_Texture2DArray_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasCompareOffset_Texture2DArray_coordinate;
 Variable TextureSampleBiasCompareOffset_Texture2DArray_bias;
 Variable TextureSampleBiasCompareOffset_Texture2DArray_compare;
@@ -9734,6 +10840,8 @@ inline constexpr std::array TextureSampleBiasCompareOffset_Texture2DArray_args =
 
 /// textureSampleBiasCompareOffset with SampledTexture2DArray, Float32x3, Float32, Float32, Float32x3
 Variable SampledTextureSampleBiasCompareOffset_Texture2DArray_texture;
+inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture2DArray_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture2DArray_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasCompareOffset_Texture2DArray_coordinate;
 Variable SampledTextureSampleBiasCompareOffset_Texture2DArray_bias;
 Variable SampledTextureSampleBiasCompareOffset_Texture2DArray_compare;
@@ -9743,7 +10851,11 @@ inline constexpr std::array SampledTextureSampleBiasCompareOffset_Texture2DArray
 
 /// textureSampleBiasProjCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32
 Variable TextureSampleBiasProjCompare_Texture1D_texture;
+inline constexpr std::array TextureSampleBiasProjCompare_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjCompare_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasProjCompare_Texture1D_sampler;
+inline constexpr std::array TextureSampleBiasProjCompare_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjCompare_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasProjCompare_Texture1D_coordinate;
 Variable TextureSampleBiasProjCompare_Texture1D_bias;
 Variable TextureSampleBiasProjCompare_Texture1D_proj;
@@ -9753,6 +10865,8 @@ inline constexpr std::array TextureSampleBiasProjCompare_Texture1D_args = { &Tex
 
 /// textureSampleBiasProjCompare with SampledTexture1D, Float32, Float32, Float32, Float32
 Variable SampledTextureSampleBiasProjCompare_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleBiasProjCompare_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasProjCompare_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasProjCompare_Texture1D_coordinate;
 Variable SampledTextureSampleBiasProjCompare_Texture1D_bias;
 Variable SampledTextureSampleBiasProjCompare_Texture1D_proj;
@@ -9762,7 +10876,11 @@ inline constexpr std::array SampledTextureSampleBiasProjCompare_Texture1D_args =
 
 /// textureSampleBiasProjCompare with Texture2D, Sampler, Float32x2, Float32, Float32, Float32
 Variable TextureSampleBiasProjCompare_Texture2D_texture;
+inline constexpr std::array TextureSampleBiasProjCompare_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjCompare_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasProjCompare_Texture2D_sampler;
+inline constexpr std::array TextureSampleBiasProjCompare_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjCompare_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasProjCompare_Texture2D_coordinate;
 Variable TextureSampleBiasProjCompare_Texture2D_bias;
 Variable TextureSampleBiasProjCompare_Texture2D_proj;
@@ -9772,6 +10890,8 @@ inline constexpr std::array TextureSampleBiasProjCompare_Texture2D_args = { &Tex
 
 /// textureSampleBiasProjCompare with SampledTexture2D, Float32x2, Float32, Float32, Float32
 Variable SampledTextureSampleBiasProjCompare_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleBiasProjCompare_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasProjCompare_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasProjCompare_Texture2D_coordinate;
 Variable SampledTextureSampleBiasProjCompare_Texture2D_bias;
 Variable SampledTextureSampleBiasProjCompare_Texture2D_proj;
@@ -9781,7 +10901,11 @@ inline constexpr std::array SampledTextureSampleBiasProjCompare_Texture2D_args =
 
 /// textureSampleBiasProjCompare with Texture3D, Sampler, Float32x3, Float32, Float32, Float32
 Variable TextureSampleBiasProjCompare_Texture3D_texture;
+inline constexpr std::array TextureSampleBiasProjCompare_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjCompare_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasProjCompare_Texture3D_sampler;
+inline constexpr std::array TextureSampleBiasProjCompare_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjCompare_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasProjCompare_Texture3D_coordinate;
 Variable TextureSampleBiasProjCompare_Texture3D_bias;
 Variable TextureSampleBiasProjCompare_Texture3D_proj;
@@ -9791,6 +10915,8 @@ inline constexpr std::array TextureSampleBiasProjCompare_Texture3D_args = { &Tex
 
 /// textureSampleBiasProjCompare with SampledTexture3D, Float32x3, Float32, Float32, Float32
 Variable SampledTextureSampleBiasProjCompare_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleBiasProjCompare_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasProjCompare_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasProjCompare_Texture3D_coordinate;
 Variable SampledTextureSampleBiasProjCompare_Texture3D_bias;
 Variable SampledTextureSampleBiasProjCompare_Texture3D_proj;
@@ -9800,7 +10926,11 @@ inline constexpr std::array SampledTextureSampleBiasProjCompare_Texture3D_args =
 
 /// textureSampleBiasProjCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
 Variable TextureSampleBiasProjCompareOffset_Texture1D_texture;
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasProjCompareOffset_Texture1D_sampler;
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture1D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture1D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasProjCompareOffset_Texture1D_coordinate;
 Variable TextureSampleBiasProjCompareOffset_Texture1D_bias;
 Variable TextureSampleBiasProjCompareOffset_Texture1D_proj;
@@ -9811,6 +10941,8 @@ inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture1D_args = 
 
 /// textureSampleBiasProjCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
 Variable SampledTextureSampleBiasProjCompareOffset_Texture1D_texture;
+inline constexpr std::array SampledTextureSampleBiasProjCompareOffset_Texture1D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasProjCompareOffset_Texture1D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasProjCompareOffset_Texture1D_coordinate;
 Variable SampledTextureSampleBiasProjCompareOffset_Texture1D_bias;
 Variable SampledTextureSampleBiasProjCompareOffset_Texture1D_proj;
@@ -9821,7 +10953,11 @@ inline constexpr std::array SampledTextureSampleBiasProjCompareOffset_Texture1D_
 
 /// textureSampleBiasProjCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32, Float32x2
 Variable TextureSampleBiasProjCompareOffset_Texture2D_texture;
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasProjCompareOffset_Texture2D_sampler;
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture2D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture2D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasProjCompareOffset_Texture2D_coordinate;
 Variable TextureSampleBiasProjCompareOffset_Texture2D_bias;
 Variable TextureSampleBiasProjCompareOffset_Texture2D_proj;
@@ -9832,6 +10968,8 @@ inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture2D_args = 
 
 /// textureSampleBiasProjCompareOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32, Float32x2
 Variable SampledTextureSampleBiasProjCompareOffset_Texture2D_texture;
+inline constexpr std::array SampledTextureSampleBiasProjCompareOffset_Texture2D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasProjCompareOffset_Texture2D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasProjCompareOffset_Texture2D_coordinate;
 Variable SampledTextureSampleBiasProjCompareOffset_Texture2D_bias;
 Variable SampledTextureSampleBiasProjCompareOffset_Texture2D_proj;
@@ -9842,7 +10980,11 @@ inline constexpr std::array SampledTextureSampleBiasProjCompareOffset_Texture2D_
 
 /// textureSampleBiasProjCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32, Float32x3
 Variable TextureSampleBiasProjCompareOffset_Texture3D_texture;
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasProjCompareOffset_Texture3D_sampler;
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture3D_sampler_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture3D_sampler_modifierValues = {(Expression*)nullptr};
 Variable TextureSampleBiasProjCompareOffset_Texture3D_coordinate;
 Variable TextureSampleBiasProjCompareOffset_Texture3D_bias;
 Variable TextureSampleBiasProjCompareOffset_Texture3D_proj;
@@ -9853,6 +10995,8 @@ inline constexpr std::array TextureSampleBiasProjCompareOffset_Texture3D_args = 
 
 /// textureSampleBiasProjCompareOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32, Float32x3
 Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_texture;
+inline constexpr std::array SampledTextureSampleBiasProjCompareOffset_Texture3D_texture_modifiers = {Type::FullType::Modifier::Pointer};
+inline constexpr std::array SampledTextureSampleBiasProjCompareOffset_Texture3D_texture_modifierValues = {(Expression*)nullptr};
 Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_coordinate;
 Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_bias;
 Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_proj;
@@ -27053,8 +28197,8 @@ void SetupIntrinsics()
     /// atomicLoad with UInt32, MemorySemantics
     AtomicLoad_UInt32_ptr.name = "ptr"_c;
     AtomicLoad_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicLoad_UInt32_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicLoad_UInt32_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicLoad_UInt32_ptr.type.modifiers = AtomicLoad_UInt32_ptr_modifiers;
+    AtomicLoad_UInt32_ptr.type.modifierValues = AtomicLoad_UInt32_ptr_modifierValues;
     AtomicLoad_UInt32_semantics.name = "semantics"_c;
     AtomicLoad_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicLoad_UInt32_semantics.type.literal = true;
@@ -27072,8 +28216,8 @@ void SetupIntrinsics()
     /// atomicIncrement with UInt32, MemorySemantics
     AtomicIncrement_UInt32_ptr.name = "ptr"_c;
     AtomicIncrement_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicIncrement_UInt32_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicIncrement_UInt32_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicIncrement_UInt32_ptr.type.modifiers = AtomicIncrement_UInt32_ptr_modifiers;
+    AtomicIncrement_UInt32_ptr.type.modifierValues = AtomicIncrement_UInt32_ptr_modifierValues;
     AtomicIncrement_UInt32_semantics.name = "semantics"_c;
     AtomicIncrement_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicIncrement_UInt32_semantics.type.literal = true;
@@ -27091,8 +28235,8 @@ void SetupIntrinsics()
     /// atomicDecrement with UInt32, MemorySemantics
     AtomicDecrement_UInt32_ptr.name = "ptr"_c;
     AtomicDecrement_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicDecrement_UInt32_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicDecrement_UInt32_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicDecrement_UInt32_ptr.type.modifiers = AtomicDecrement_UInt32_ptr_modifiers;
+    AtomicDecrement_UInt32_ptr.type.modifierValues = AtomicDecrement_UInt32_ptr_modifierValues;
     AtomicDecrement_UInt32_semantics.name = "semantics"_c;
     AtomicDecrement_UInt32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicDecrement_UInt32_semantics.type.literal = true;
@@ -27110,8 +28254,8 @@ void SetupIntrinsics()
     /// atomicLoad with Int32, MemorySemantics
     AtomicLoad_Int32_ptr.name = "ptr"_c;
     AtomicLoad_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicLoad_Int32_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicLoad_Int32_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicLoad_Int32_ptr.type.modifiers = AtomicLoad_Int32_ptr_modifiers;
+    AtomicLoad_Int32_ptr.type.modifierValues = AtomicLoad_Int32_ptr_modifierValues;
     AtomicLoad_Int32_semantics.name = "semantics"_c;
     AtomicLoad_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicLoad_Int32_semantics.type.literal = true;
@@ -27129,8 +28273,8 @@ void SetupIntrinsics()
     /// atomicIncrement with Int32, MemorySemantics
     AtomicIncrement_Int32_ptr.name = "ptr"_c;
     AtomicIncrement_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicIncrement_Int32_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicIncrement_Int32_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicIncrement_Int32_ptr.type.modifiers = AtomicIncrement_Int32_ptr_modifiers;
+    AtomicIncrement_Int32_ptr.type.modifierValues = AtomicIncrement_Int32_ptr_modifierValues;
     AtomicIncrement_Int32_semantics.name = "semantics"_c;
     AtomicIncrement_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicIncrement_Int32_semantics.type.literal = true;
@@ -27148,8 +28292,8 @@ void SetupIntrinsics()
     /// atomicDecrement with Int32, MemorySemantics
     AtomicDecrement_Int32_ptr.name = "ptr"_c;
     AtomicDecrement_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicDecrement_Int32_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicDecrement_Int32_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicDecrement_Int32_ptr.type.modifiers = AtomicDecrement_Int32_ptr_modifiers;
+    AtomicDecrement_Int32_ptr.type.modifierValues = AtomicDecrement_Int32_ptr_modifierValues;
     AtomicDecrement_Int32_semantics.name = "semantics"_c;
     AtomicDecrement_Int32_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicDecrement_Int32_semantics.type.literal = true;
@@ -27167,8 +28311,8 @@ void SetupIntrinsics()
     /// atomicLoad with UInt16, MemorySemantics
     AtomicLoad_UInt16_ptr.name = "ptr"_c;
     AtomicLoad_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicLoad_UInt16_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicLoad_UInt16_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicLoad_UInt16_ptr.type.modifiers = AtomicLoad_UInt16_ptr_modifiers;
+    AtomicLoad_UInt16_ptr.type.modifierValues = AtomicLoad_UInt16_ptr_modifierValues;
     AtomicLoad_UInt16_semantics.name = "semantics"_c;
     AtomicLoad_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicLoad_UInt16_semantics.type.literal = true;
@@ -27186,8 +28330,8 @@ void SetupIntrinsics()
     /// atomicIncrement with UInt16, MemorySemantics
     AtomicIncrement_UInt16_ptr.name = "ptr"_c;
     AtomicIncrement_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicIncrement_UInt16_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicIncrement_UInt16_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicIncrement_UInt16_ptr.type.modifiers = AtomicIncrement_UInt16_ptr_modifiers;
+    AtomicIncrement_UInt16_ptr.type.modifierValues = AtomicIncrement_UInt16_ptr_modifierValues;
     AtomicIncrement_UInt16_semantics.name = "semantics"_c;
     AtomicIncrement_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicIncrement_UInt16_semantics.type.literal = true;
@@ -27205,8 +28349,8 @@ void SetupIntrinsics()
     /// atomicDecrement with UInt16, MemorySemantics
     AtomicDecrement_UInt16_ptr.name = "ptr"_c;
     AtomicDecrement_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicDecrement_UInt16_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicDecrement_UInt16_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicDecrement_UInt16_ptr.type.modifiers = AtomicDecrement_UInt16_ptr_modifiers;
+    AtomicDecrement_UInt16_ptr.type.modifierValues = AtomicDecrement_UInt16_ptr_modifierValues;
     AtomicDecrement_UInt16_semantics.name = "semantics"_c;
     AtomicDecrement_UInt16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicDecrement_UInt16_semantics.type.literal = true;
@@ -27224,8 +28368,8 @@ void SetupIntrinsics()
     /// atomicLoad with Int16, MemorySemantics
     AtomicLoad_Int16_ptr.name = "ptr"_c;
     AtomicLoad_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicLoad_Int16_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicLoad_Int16_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicLoad_Int16_ptr.type.modifiers = AtomicLoad_Int16_ptr_modifiers;
+    AtomicLoad_Int16_ptr.type.modifierValues = AtomicLoad_Int16_ptr_modifierValues;
     AtomicLoad_Int16_semantics.name = "semantics"_c;
     AtomicLoad_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicLoad_Int16_semantics.type.literal = true;
@@ -27243,8 +28387,8 @@ void SetupIntrinsics()
     /// atomicIncrement with Int16, MemorySemantics
     AtomicIncrement_Int16_ptr.name = "ptr"_c;
     AtomicIncrement_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicIncrement_Int16_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicIncrement_Int16_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicIncrement_Int16_ptr.type.modifiers = AtomicIncrement_Int16_ptr_modifiers;
+    AtomicIncrement_Int16_ptr.type.modifierValues = AtomicIncrement_Int16_ptr_modifierValues;
     AtomicIncrement_Int16_semantics.name = "semantics"_c;
     AtomicIncrement_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicIncrement_Int16_semantics.type.literal = true;
@@ -27262,8 +28406,8 @@ void SetupIntrinsics()
     /// atomicDecrement with Int16, MemorySemantics
     AtomicDecrement_Int16_ptr.name = "ptr"_c;
     AtomicDecrement_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicDecrement_Int16_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicDecrement_Int16_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicDecrement_Int16_ptr.type.modifiers = AtomicDecrement_Int16_ptr_modifiers;
+    AtomicDecrement_Int16_ptr.type.modifierValues = AtomicDecrement_Int16_ptr_modifierValues;
     AtomicDecrement_Int16_semantics.name = "semantics"_c;
     AtomicDecrement_Int16_semantics.type = Type::FullType{ MemorySemanticsType.name };
     AtomicDecrement_Int16_semantics.type.literal = true;
@@ -27281,8 +28425,8 @@ void SetupIntrinsics()
     /// atomicStore with UInt32, UInt32, MemorySemantics
     AtomicStore_UInt32_ptr.name = "ptr"_c;
     AtomicStore_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicStore_UInt32_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicStore_UInt32_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicStore_UInt32_ptr.type.modifiers = AtomicStore_UInt32_ptr_modifiers;
+    AtomicStore_UInt32_ptr.type.modifierValues = AtomicStore_UInt32_ptr_modifierValues;
     AtomicStore_UInt32_value.name = "value"_c;
     AtomicStore_UInt32_value.type = Type::FullType{ UInt32Type.name };
     AtomicStore_UInt32_semantics.name = "semantics"_c;
@@ -27303,8 +28447,8 @@ void SetupIntrinsics()
     /// atomicExchange with UInt32, UInt32, MemorySemantics
     AtomicExchange_UInt32_ptr.name = "ptr"_c;
     AtomicExchange_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicExchange_UInt32_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicExchange_UInt32_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicExchange_UInt32_ptr.type.modifiers = AtomicExchange_UInt32_ptr_modifiers;
+    AtomicExchange_UInt32_ptr.type.modifierValues = AtomicExchange_UInt32_ptr_modifierValues;
     AtomicExchange_UInt32_value.name = "value"_c;
     AtomicExchange_UInt32_value.type = Type::FullType{ UInt32Type.name };
     AtomicExchange_UInt32_semantics.name = "semantics"_c;
@@ -27325,8 +28469,8 @@ void SetupIntrinsics()
     /// atomicAdd with UInt32, UInt32, MemorySemantics
     AtomicAdd_UInt32_ptr.name = "ptr"_c;
     AtomicAdd_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicAdd_UInt32_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicAdd_UInt32_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicAdd_UInt32_ptr.type.modifiers = AtomicAdd_UInt32_ptr_modifiers;
+    AtomicAdd_UInt32_ptr.type.modifierValues = AtomicAdd_UInt32_ptr_modifierValues;
     AtomicAdd_UInt32_value.name = "value"_c;
     AtomicAdd_UInt32_value.type = Type::FullType{ UInt32Type.name };
     AtomicAdd_UInt32_semantics.name = "semantics"_c;
@@ -27347,8 +28491,8 @@ void SetupIntrinsics()
     /// atomicSubtract with UInt32, UInt32, MemorySemantics
     AtomicSubtract_UInt32_ptr.name = "ptr"_c;
     AtomicSubtract_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicSubtract_UInt32_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicSubtract_UInt32_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicSubtract_UInt32_ptr.type.modifiers = AtomicSubtract_UInt32_ptr_modifiers;
+    AtomicSubtract_UInt32_ptr.type.modifierValues = AtomicSubtract_UInt32_ptr_modifierValues;
     AtomicSubtract_UInt32_value.name = "value"_c;
     AtomicSubtract_UInt32_value.type = Type::FullType{ UInt32Type.name };
     AtomicSubtract_UInt32_semantics.name = "semantics"_c;
@@ -27369,8 +28513,8 @@ void SetupIntrinsics()
     /// atomicAnd with UInt32, UInt32, MemorySemantics
     AtomicAnd_UInt32_ptr.name = "ptr"_c;
     AtomicAnd_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicAnd_UInt32_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicAnd_UInt32_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicAnd_UInt32_ptr.type.modifiers = AtomicAnd_UInt32_ptr_modifiers;
+    AtomicAnd_UInt32_ptr.type.modifierValues = AtomicAnd_UInt32_ptr_modifierValues;
     AtomicAnd_UInt32_value.name = "value"_c;
     AtomicAnd_UInt32_value.type = Type::FullType{ UInt32Type.name };
     AtomicAnd_UInt32_semantics.name = "semantics"_c;
@@ -27391,8 +28535,8 @@ void SetupIntrinsics()
     /// atomicOr with UInt32, UInt32, MemorySemantics
     AtomicOr_UInt32_ptr.name = "ptr"_c;
     AtomicOr_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicOr_UInt32_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicOr_UInt32_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicOr_UInt32_ptr.type.modifiers = AtomicOr_UInt32_ptr_modifiers;
+    AtomicOr_UInt32_ptr.type.modifierValues = AtomicOr_UInt32_ptr_modifierValues;
     AtomicOr_UInt32_value.name = "value"_c;
     AtomicOr_UInt32_value.type = Type::FullType{ UInt32Type.name };
     AtomicOr_UInt32_semantics.name = "semantics"_c;
@@ -27413,8 +28557,8 @@ void SetupIntrinsics()
     /// atomicXor with UInt32, UInt32, MemorySemantics
     AtomicXor_UInt32_ptr.name = "ptr"_c;
     AtomicXor_UInt32_ptr.type = Type::FullType{ UInt32Type.name };
-    AtomicXor_UInt32_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicXor_UInt32_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicXor_UInt32_ptr.type.modifiers = AtomicXor_UInt32_ptr_modifiers;
+    AtomicXor_UInt32_ptr.type.modifierValues = AtomicXor_UInt32_ptr_modifierValues;
     AtomicXor_UInt32_value.name = "value"_c;
     AtomicXor_UInt32_value.type = Type::FullType{ UInt32Type.name };
     AtomicXor_UInt32_semantics.name = "semantics"_c;
@@ -27435,8 +28579,8 @@ void SetupIntrinsics()
     /// atomicStore with Int32, Int32, MemorySemantics
     AtomicStore_Int32_ptr.name = "ptr"_c;
     AtomicStore_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicStore_Int32_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicStore_Int32_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicStore_Int32_ptr.type.modifiers = AtomicStore_Int32_ptr_modifiers;
+    AtomicStore_Int32_ptr.type.modifierValues = AtomicStore_Int32_ptr_modifierValues;
     AtomicStore_Int32_value.name = "value"_c;
     AtomicStore_Int32_value.type = Type::FullType{ Int32Type.name };
     AtomicStore_Int32_semantics.name = "semantics"_c;
@@ -27457,8 +28601,8 @@ void SetupIntrinsics()
     /// atomicExchange with Int32, Int32, MemorySemantics
     AtomicExchange_Int32_ptr.name = "ptr"_c;
     AtomicExchange_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicExchange_Int32_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicExchange_Int32_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicExchange_Int32_ptr.type.modifiers = AtomicExchange_Int32_ptr_modifiers;
+    AtomicExchange_Int32_ptr.type.modifierValues = AtomicExchange_Int32_ptr_modifierValues;
     AtomicExchange_Int32_value.name = "value"_c;
     AtomicExchange_Int32_value.type = Type::FullType{ Int32Type.name };
     AtomicExchange_Int32_semantics.name = "semantics"_c;
@@ -27479,8 +28623,8 @@ void SetupIntrinsics()
     /// atomicAdd with Int32, Int32, MemorySemantics
     AtomicAdd_Int32_ptr.name = "ptr"_c;
     AtomicAdd_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicAdd_Int32_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicAdd_Int32_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicAdd_Int32_ptr.type.modifiers = AtomicAdd_Int32_ptr_modifiers;
+    AtomicAdd_Int32_ptr.type.modifierValues = AtomicAdd_Int32_ptr_modifierValues;
     AtomicAdd_Int32_value.name = "value"_c;
     AtomicAdd_Int32_value.type = Type::FullType{ Int32Type.name };
     AtomicAdd_Int32_semantics.name = "semantics"_c;
@@ -27501,8 +28645,8 @@ void SetupIntrinsics()
     /// atomicSubtract with Int32, Int32, MemorySemantics
     AtomicSubtract_Int32_ptr.name = "ptr"_c;
     AtomicSubtract_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicSubtract_Int32_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicSubtract_Int32_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicSubtract_Int32_ptr.type.modifiers = AtomicSubtract_Int32_ptr_modifiers;
+    AtomicSubtract_Int32_ptr.type.modifierValues = AtomicSubtract_Int32_ptr_modifierValues;
     AtomicSubtract_Int32_value.name = "value"_c;
     AtomicSubtract_Int32_value.type = Type::FullType{ Int32Type.name };
     AtomicSubtract_Int32_semantics.name = "semantics"_c;
@@ -27523,8 +28667,8 @@ void SetupIntrinsics()
     /// atomicAnd with Int32, Int32, MemorySemantics
     AtomicAnd_Int32_ptr.name = "ptr"_c;
     AtomicAnd_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicAnd_Int32_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicAnd_Int32_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicAnd_Int32_ptr.type.modifiers = AtomicAnd_Int32_ptr_modifiers;
+    AtomicAnd_Int32_ptr.type.modifierValues = AtomicAnd_Int32_ptr_modifierValues;
     AtomicAnd_Int32_value.name = "value"_c;
     AtomicAnd_Int32_value.type = Type::FullType{ Int32Type.name };
     AtomicAnd_Int32_semantics.name = "semantics"_c;
@@ -27545,8 +28689,8 @@ void SetupIntrinsics()
     /// atomicOr with Int32, Int32, MemorySemantics
     AtomicOr_Int32_ptr.name = "ptr"_c;
     AtomicOr_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicOr_Int32_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicOr_Int32_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicOr_Int32_ptr.type.modifiers = AtomicOr_Int32_ptr_modifiers;
+    AtomicOr_Int32_ptr.type.modifierValues = AtomicOr_Int32_ptr_modifierValues;
     AtomicOr_Int32_value.name = "value"_c;
     AtomicOr_Int32_value.type = Type::FullType{ Int32Type.name };
     AtomicOr_Int32_semantics.name = "semantics"_c;
@@ -27567,8 +28711,8 @@ void SetupIntrinsics()
     /// atomicXor with Int32, Int32, MemorySemantics
     AtomicXor_Int32_ptr.name = "ptr"_c;
     AtomicXor_Int32_ptr.type = Type::FullType{ Int32Type.name };
-    AtomicXor_Int32_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicXor_Int32_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicXor_Int32_ptr.type.modifiers = AtomicXor_Int32_ptr_modifiers;
+    AtomicXor_Int32_ptr.type.modifierValues = AtomicXor_Int32_ptr_modifierValues;
     AtomicXor_Int32_value.name = "value"_c;
     AtomicXor_Int32_value.type = Type::FullType{ Int32Type.name };
     AtomicXor_Int32_semantics.name = "semantics"_c;
@@ -27589,8 +28733,8 @@ void SetupIntrinsics()
     /// atomicStore with UInt16, UInt16, MemorySemantics
     AtomicStore_UInt16_ptr.name = "ptr"_c;
     AtomicStore_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicStore_UInt16_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicStore_UInt16_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicStore_UInt16_ptr.type.modifiers = AtomicStore_UInt16_ptr_modifiers;
+    AtomicStore_UInt16_ptr.type.modifierValues = AtomicStore_UInt16_ptr_modifierValues;
     AtomicStore_UInt16_value.name = "value"_c;
     AtomicStore_UInt16_value.type = Type::FullType{ UInt16Type.name };
     AtomicStore_UInt16_semantics.name = "semantics"_c;
@@ -27611,8 +28755,8 @@ void SetupIntrinsics()
     /// atomicExchange with UInt16, UInt16, MemorySemantics
     AtomicExchange_UInt16_ptr.name = "ptr"_c;
     AtomicExchange_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicExchange_UInt16_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicExchange_UInt16_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicExchange_UInt16_ptr.type.modifiers = AtomicExchange_UInt16_ptr_modifiers;
+    AtomicExchange_UInt16_ptr.type.modifierValues = AtomicExchange_UInt16_ptr_modifierValues;
     AtomicExchange_UInt16_value.name = "value"_c;
     AtomicExchange_UInt16_value.type = Type::FullType{ UInt16Type.name };
     AtomicExchange_UInt16_semantics.name = "semantics"_c;
@@ -27633,8 +28777,8 @@ void SetupIntrinsics()
     /// atomicAdd with UInt16, UInt16, MemorySemantics
     AtomicAdd_UInt16_ptr.name = "ptr"_c;
     AtomicAdd_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicAdd_UInt16_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicAdd_UInt16_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicAdd_UInt16_ptr.type.modifiers = AtomicAdd_UInt16_ptr_modifiers;
+    AtomicAdd_UInt16_ptr.type.modifierValues = AtomicAdd_UInt16_ptr_modifierValues;
     AtomicAdd_UInt16_value.name = "value"_c;
     AtomicAdd_UInt16_value.type = Type::FullType{ UInt16Type.name };
     AtomicAdd_UInt16_semantics.name = "semantics"_c;
@@ -27655,8 +28799,8 @@ void SetupIntrinsics()
     /// atomicSubtract with UInt16, UInt16, MemorySemantics
     AtomicSubtract_UInt16_ptr.name = "ptr"_c;
     AtomicSubtract_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicSubtract_UInt16_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicSubtract_UInt16_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicSubtract_UInt16_ptr.type.modifiers = AtomicSubtract_UInt16_ptr_modifiers;
+    AtomicSubtract_UInt16_ptr.type.modifierValues = AtomicSubtract_UInt16_ptr_modifierValues;
     AtomicSubtract_UInt16_value.name = "value"_c;
     AtomicSubtract_UInt16_value.type = Type::FullType{ UInt16Type.name };
     AtomicSubtract_UInt16_semantics.name = "semantics"_c;
@@ -27677,8 +28821,8 @@ void SetupIntrinsics()
     /// atomicAnd with UInt16, UInt16, MemorySemantics
     AtomicAnd_UInt16_ptr.name = "ptr"_c;
     AtomicAnd_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicAnd_UInt16_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicAnd_UInt16_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicAnd_UInt16_ptr.type.modifiers = AtomicAnd_UInt16_ptr_modifiers;
+    AtomicAnd_UInt16_ptr.type.modifierValues = AtomicAnd_UInt16_ptr_modifierValues;
     AtomicAnd_UInt16_value.name = "value"_c;
     AtomicAnd_UInt16_value.type = Type::FullType{ UInt16Type.name };
     AtomicAnd_UInt16_semantics.name = "semantics"_c;
@@ -27699,8 +28843,8 @@ void SetupIntrinsics()
     /// atomicOr with UInt16, UInt16, MemorySemantics
     AtomicOr_UInt16_ptr.name = "ptr"_c;
     AtomicOr_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicOr_UInt16_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicOr_UInt16_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicOr_UInt16_ptr.type.modifiers = AtomicOr_UInt16_ptr_modifiers;
+    AtomicOr_UInt16_ptr.type.modifierValues = AtomicOr_UInt16_ptr_modifierValues;
     AtomicOr_UInt16_value.name = "value"_c;
     AtomicOr_UInt16_value.type = Type::FullType{ UInt16Type.name };
     AtomicOr_UInt16_semantics.name = "semantics"_c;
@@ -27721,8 +28865,8 @@ void SetupIntrinsics()
     /// atomicXor with UInt16, UInt16, MemorySemantics
     AtomicXor_UInt16_ptr.name = "ptr"_c;
     AtomicXor_UInt16_ptr.type = Type::FullType{ UInt16Type.name };
-    AtomicXor_UInt16_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicXor_UInt16_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicXor_UInt16_ptr.type.modifiers = AtomicXor_UInt16_ptr_modifiers;
+    AtomicXor_UInt16_ptr.type.modifierValues = AtomicXor_UInt16_ptr_modifierValues;
     AtomicXor_UInt16_value.name = "value"_c;
     AtomicXor_UInt16_value.type = Type::FullType{ UInt16Type.name };
     AtomicXor_UInt16_semantics.name = "semantics"_c;
@@ -27743,8 +28887,8 @@ void SetupIntrinsics()
     /// atomicStore with Int16, Int16, MemorySemantics
     AtomicStore_Int16_ptr.name = "ptr"_c;
     AtomicStore_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicStore_Int16_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicStore_Int16_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicStore_Int16_ptr.type.modifiers = AtomicStore_Int16_ptr_modifiers;
+    AtomicStore_Int16_ptr.type.modifierValues = AtomicStore_Int16_ptr_modifierValues;
     AtomicStore_Int16_value.name = "value"_c;
     AtomicStore_Int16_value.type = Type::FullType{ Int16Type.name };
     AtomicStore_Int16_semantics.name = "semantics"_c;
@@ -27765,8 +28909,8 @@ void SetupIntrinsics()
     /// atomicExchange with Int16, Int16, MemorySemantics
     AtomicExchange_Int16_ptr.name = "ptr"_c;
     AtomicExchange_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicExchange_Int16_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicExchange_Int16_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicExchange_Int16_ptr.type.modifiers = AtomicExchange_Int16_ptr_modifiers;
+    AtomicExchange_Int16_ptr.type.modifierValues = AtomicExchange_Int16_ptr_modifierValues;
     AtomicExchange_Int16_value.name = "value"_c;
     AtomicExchange_Int16_value.type = Type::FullType{ Int16Type.name };
     AtomicExchange_Int16_semantics.name = "semantics"_c;
@@ -27787,8 +28931,8 @@ void SetupIntrinsics()
     /// atomicAdd with Int16, Int16, MemorySemantics
     AtomicAdd_Int16_ptr.name = "ptr"_c;
     AtomicAdd_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicAdd_Int16_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicAdd_Int16_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicAdd_Int16_ptr.type.modifiers = AtomicAdd_Int16_ptr_modifiers;
+    AtomicAdd_Int16_ptr.type.modifierValues = AtomicAdd_Int16_ptr_modifierValues;
     AtomicAdd_Int16_value.name = "value"_c;
     AtomicAdd_Int16_value.type = Type::FullType{ Int16Type.name };
     AtomicAdd_Int16_semantics.name = "semantics"_c;
@@ -27809,8 +28953,8 @@ void SetupIntrinsics()
     /// atomicSubtract with Int16, Int16, MemorySemantics
     AtomicSubtract_Int16_ptr.name = "ptr"_c;
     AtomicSubtract_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicSubtract_Int16_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicSubtract_Int16_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicSubtract_Int16_ptr.type.modifiers = AtomicSubtract_Int16_ptr_modifiers;
+    AtomicSubtract_Int16_ptr.type.modifierValues = AtomicSubtract_Int16_ptr_modifierValues;
     AtomicSubtract_Int16_value.name = "value"_c;
     AtomicSubtract_Int16_value.type = Type::FullType{ Int16Type.name };
     AtomicSubtract_Int16_semantics.name = "semantics"_c;
@@ -27831,8 +28975,8 @@ void SetupIntrinsics()
     /// atomicAnd with Int16, Int16, MemorySemantics
     AtomicAnd_Int16_ptr.name = "ptr"_c;
     AtomicAnd_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicAnd_Int16_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicAnd_Int16_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicAnd_Int16_ptr.type.modifiers = AtomicAnd_Int16_ptr_modifiers;
+    AtomicAnd_Int16_ptr.type.modifierValues = AtomicAnd_Int16_ptr_modifierValues;
     AtomicAnd_Int16_value.name = "value"_c;
     AtomicAnd_Int16_value.type = Type::FullType{ Int16Type.name };
     AtomicAnd_Int16_semantics.name = "semantics"_c;
@@ -27853,8 +28997,8 @@ void SetupIntrinsics()
     /// atomicOr with Int16, Int16, MemorySemantics
     AtomicOr_Int16_ptr.name = "ptr"_c;
     AtomicOr_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicOr_Int16_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicOr_Int16_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicOr_Int16_ptr.type.modifiers = AtomicOr_Int16_ptr_modifiers;
+    AtomicOr_Int16_ptr.type.modifierValues = AtomicOr_Int16_ptr_modifierValues;
     AtomicOr_Int16_value.name = "value"_c;
     AtomicOr_Int16_value.type = Type::FullType{ Int16Type.name };
     AtomicOr_Int16_semantics.name = "semantics"_c;
@@ -27875,8 +29019,8 @@ void SetupIntrinsics()
     /// atomicXor with Int16, Int16, MemorySemantics
     AtomicXor_Int16_ptr.name = "ptr"_c;
     AtomicXor_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicXor_Int16_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicXor_Int16_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicXor_Int16_ptr.type.modifiers = AtomicXor_Int16_ptr_modifiers;
+    AtomicXor_Int16_ptr.type.modifierValues = AtomicXor_Int16_ptr_modifierValues;
     AtomicXor_Int16_value.name = "value"_c;
     AtomicXor_Int16_value.type = Type::FullType{ Int16Type.name };
     AtomicXor_Int16_semantics.name = "semantics"_c;
@@ -27897,8 +29041,8 @@ void SetupIntrinsics()
     /// atomicCompareExchange with Int16, Int16, Int16, MemorySemantics
     AtomicCompareExchange_UInt32_ptr.name = "ptr"_c;
     AtomicCompareExchange_UInt32_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicCompareExchange_UInt32_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicCompareExchange_UInt32_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicCompareExchange_UInt32_ptr.type.modifiers = AtomicCompareExchange_UInt32_ptr_modifiers;
+    AtomicCompareExchange_UInt32_ptr.type.modifierValues = AtomicCompareExchange_UInt32_ptr_modifierValues;
     AtomicCompareExchange_UInt32_value.name = "value"_c;
     AtomicCompareExchange_UInt32_value.type = Type::FullType{ Int16Type.name };
     AtomicCompareExchange_UInt32_compare.name = "compare"_c;
@@ -27922,8 +29066,8 @@ void SetupIntrinsics()
     /// atomicCompareExchange with Int16, Int16, Int16, MemorySemantics
     AtomicCompareExchange_Int32_ptr.name = "ptr"_c;
     AtomicCompareExchange_Int32_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicCompareExchange_Int32_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicCompareExchange_Int32_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicCompareExchange_Int32_ptr.type.modifiers = AtomicCompareExchange_Int32_ptr_modifiers;
+    AtomicCompareExchange_Int32_ptr.type.modifierValues = AtomicCompareExchange_Int32_ptr_modifierValues;
     AtomicCompareExchange_Int32_value.name = "value"_c;
     AtomicCompareExchange_Int32_value.type = Type::FullType{ Int16Type.name };
     AtomicCompareExchange_Int32_compare.name = "compare"_c;
@@ -27947,8 +29091,8 @@ void SetupIntrinsics()
     /// atomicCompareExchange with Int16, Int16, Int16, MemorySemantics
     AtomicCompareExchange_UInt16_ptr.name = "ptr"_c;
     AtomicCompareExchange_UInt16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicCompareExchange_UInt16_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicCompareExchange_UInt16_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicCompareExchange_UInt16_ptr.type.modifiers = AtomicCompareExchange_UInt16_ptr_modifiers;
+    AtomicCompareExchange_UInt16_ptr.type.modifierValues = AtomicCompareExchange_UInt16_ptr_modifierValues;
     AtomicCompareExchange_UInt16_value.name = "value"_c;
     AtomicCompareExchange_UInt16_value.type = Type::FullType{ Int16Type.name };
     AtomicCompareExchange_UInt16_compare.name = "compare"_c;
@@ -27972,8 +29116,8 @@ void SetupIntrinsics()
     /// atomicCompareExchange with Int16, Int16, Int16, MemorySemantics
     AtomicCompareExchange_Int16_ptr.name = "ptr"_c;
     AtomicCompareExchange_Int16_ptr.type = Type::FullType{ Int16Type.name };
-    AtomicCompareExchange_Int16_ptr.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    AtomicCompareExchange_Int16_ptr.type.modifierValues = std::array{(Expression*)nullptr};
+    AtomicCompareExchange_Int16_ptr.type.modifiers = AtomicCompareExchange_Int16_ptr_modifiers;
+    AtomicCompareExchange_Int16_ptr.type.modifierValues = AtomicCompareExchange_Int16_ptr_modifierValues;
     AtomicCompareExchange_Int16_value.name = "value"_c;
     AtomicCompareExchange_Int16_value.type = Type::FullType{ Int16Type.name };
     AtomicCompareExchange_Int16_compare.name = "compare"_c;
@@ -28302,8 +29446,8 @@ void SetupIntrinsics()
     /// textureGetSize with Texture1D
     TextureGetSize_Texture1D_texture.name = "texture"_c;
     TextureGetSize_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureGetSize_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSize_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSize_Texture1D_texture.type.modifiers = TextureGetSize_Texture1D_texture_modifiers;
+    TextureGetSize_Texture1D_texture.type.modifierValues = TextureGetSize_Texture1D_texture_modifierValues;
     TextureGetSize_Texture1D.documentation = "Get the size of a texture"_c;
     TextureGetSize_Texture1D.name = "textureGetSize"_c;
     TextureGetSize_Texture1D.returnType = Type::FullType { UInt32Type.name };
@@ -28318,8 +29462,8 @@ void SetupIntrinsics()
     /// textureGetSize with Texture2D
     TextureGetSize_Texture2D_texture.name = "texture"_c;
     TextureGetSize_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureGetSize_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSize_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSize_Texture2D_texture.type.modifiers = TextureGetSize_Texture2D_texture_modifiers;
+    TextureGetSize_Texture2D_texture.type.modifierValues = TextureGetSize_Texture2D_texture_modifierValues;
     TextureGetSize_Texture2D.documentation = "Get the size of a texture"_c;
     TextureGetSize_Texture2D.name = "textureGetSize"_c;
     TextureGetSize_Texture2D.returnType = Type::FullType { UInt32x2Type.name };
@@ -28334,8 +29478,8 @@ void SetupIntrinsics()
     /// textureGetSize with Texture3D
     TextureGetSize_Texture3D_texture.name = "texture"_c;
     TextureGetSize_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureGetSize_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSize_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSize_Texture3D_texture.type.modifiers = TextureGetSize_Texture3D_texture_modifiers;
+    TextureGetSize_Texture3D_texture.type.modifierValues = TextureGetSize_Texture3D_texture_modifierValues;
     TextureGetSize_Texture3D.documentation = "Get the size of a texture"_c;
     TextureGetSize_Texture3D.name = "textureGetSize"_c;
     TextureGetSize_Texture3D.returnType = Type::FullType { UInt32x3Type.name };
@@ -28350,8 +29494,8 @@ void SetupIntrinsics()
     /// textureGetSize with TextureCube
     TextureGetSize_TextureCube_texture.name = "texture"_c;
     TextureGetSize_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureGetSize_TextureCube_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSize_TextureCube_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSize_TextureCube_texture.type.modifiers = TextureGetSize_TextureCube_texture_modifiers;
+    TextureGetSize_TextureCube_texture.type.modifierValues = TextureGetSize_TextureCube_texture_modifierValues;
     TextureGetSize_TextureCube.documentation = "Get the size of a texture"_c;
     TextureGetSize_TextureCube.name = "textureGetSize"_c;
     TextureGetSize_TextureCube.returnType = Type::FullType { UInt32x3Type.name };
@@ -28366,8 +29510,8 @@ void SetupIntrinsics()
     /// textureGetSize with Texture1DArray
     TextureGetSize_Texture1DArray_texture.name = "texture"_c;
     TextureGetSize_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureGetSize_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSize_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSize_Texture1DArray_texture.type.modifiers = TextureGetSize_Texture1DArray_texture_modifiers;
+    TextureGetSize_Texture1DArray_texture.type.modifierValues = TextureGetSize_Texture1DArray_texture_modifierValues;
     TextureGetSize_Texture1DArray.documentation = "Get the size of a texture"_c;
     TextureGetSize_Texture1DArray.name = "textureGetSize"_c;
     TextureGetSize_Texture1DArray.returnType = Type::FullType { UInt32x2Type.name };
@@ -28382,8 +29526,8 @@ void SetupIntrinsics()
     /// textureGetSize with Texture2DArray
     TextureGetSize_Texture2DArray_texture.name = "texture"_c;
     TextureGetSize_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureGetSize_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSize_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSize_Texture2DArray_texture.type.modifiers = TextureGetSize_Texture2DArray_texture_modifiers;
+    TextureGetSize_Texture2DArray_texture.type.modifierValues = TextureGetSize_Texture2DArray_texture_modifierValues;
     TextureGetSize_Texture2DArray.documentation = "Get the size of a texture"_c;
     TextureGetSize_Texture2DArray.name = "textureGetSize"_c;
     TextureGetSize_Texture2DArray.returnType = Type::FullType { UInt32x3Type.name };
@@ -28398,8 +29542,8 @@ void SetupIntrinsics()
     /// textureGetSize with TextureCubeArray
     TextureGetSize_TextureCubeArray_texture.name = "texture"_c;
     TextureGetSize_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureGetSize_TextureCubeArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSize_TextureCubeArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSize_TextureCubeArray_texture.type.modifiers = TextureGetSize_TextureCubeArray_texture_modifiers;
+    TextureGetSize_TextureCubeArray_texture.type.modifierValues = TextureGetSize_TextureCubeArray_texture_modifierValues;
     TextureGetSize_TextureCubeArray.documentation = "Get the size of a texture"_c;
     TextureGetSize_TextureCubeArray.name = "textureGetSize"_c;
     TextureGetSize_TextureCubeArray.returnType = Type::FullType { UInt32x4Type.name };
@@ -28414,8 +29558,8 @@ void SetupIntrinsics()
     /// textureGetSizeMip with Texture1D, UInt32
     TextureGetSizeMip_Texture1D_texture.name = "texture"_c;
     TextureGetSizeMip_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureGetSizeMip_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSizeMip_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSizeMip_Texture1D_texture.type.modifiers = TextureGetSizeMip_Texture1D_texture_modifiers;
+    TextureGetSizeMip_Texture1D_texture.type.modifierValues = TextureGetSizeMip_Texture1D_texture_modifierValues;
     TextureGetSizeMip_Texture1D_mip.name = "mip"_c;
     TextureGetSizeMip_Texture1D_mip.type = Type::FullType{ UInt32Type.name };
     TextureGetSizeMip_Texture1D.documentation = "Get the size of a texture at a specific mip level"_c;
@@ -28433,8 +29577,8 @@ void SetupIntrinsics()
     /// textureGetSizeMip with Texture2D, UInt32
     TextureGetSizeMip_Texture2D_texture.name = "texture"_c;
     TextureGetSizeMip_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureGetSizeMip_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSizeMip_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSizeMip_Texture2D_texture.type.modifiers = TextureGetSizeMip_Texture2D_texture_modifiers;
+    TextureGetSizeMip_Texture2D_texture.type.modifierValues = TextureGetSizeMip_Texture2D_texture_modifierValues;
     TextureGetSizeMip_Texture2D_mip.name = "mip"_c;
     TextureGetSizeMip_Texture2D_mip.type = Type::FullType{ UInt32Type.name };
     TextureGetSizeMip_Texture2D.documentation = "Get the size of a texture at a specific mip level"_c;
@@ -28452,8 +29596,8 @@ void SetupIntrinsics()
     /// textureGetSizeMip with Texture3D, UInt32
     TextureGetSizeMip_Texture3D_texture.name = "texture"_c;
     TextureGetSizeMip_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureGetSizeMip_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSizeMip_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSizeMip_Texture3D_texture.type.modifiers = TextureGetSizeMip_Texture3D_texture_modifiers;
+    TextureGetSizeMip_Texture3D_texture.type.modifierValues = TextureGetSizeMip_Texture3D_texture_modifierValues;
     TextureGetSizeMip_Texture3D_mip.name = "mip"_c;
     TextureGetSizeMip_Texture3D_mip.type = Type::FullType{ UInt32Type.name };
     TextureGetSizeMip_Texture3D.documentation = "Get the size of a texture at a specific mip level"_c;
@@ -28471,8 +29615,8 @@ void SetupIntrinsics()
     /// textureGetSizeMip with TextureCube, UInt32
     TextureGetSizeMip_TextureCube_texture.name = "texture"_c;
     TextureGetSizeMip_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureGetSizeMip_TextureCube_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSizeMip_TextureCube_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSizeMip_TextureCube_texture.type.modifiers = TextureGetSizeMip_TextureCube_texture_modifiers;
+    TextureGetSizeMip_TextureCube_texture.type.modifierValues = TextureGetSizeMip_TextureCube_texture_modifierValues;
     TextureGetSizeMip_TextureCube_mip.name = "mip"_c;
     TextureGetSizeMip_TextureCube_mip.type = Type::FullType{ UInt32Type.name };
     TextureGetSizeMip_TextureCube.documentation = "Get the size of a texture at a specific mip level"_c;
@@ -28490,8 +29634,8 @@ void SetupIntrinsics()
     /// textureGetSizeMip with Texture1DArray, UInt32
     TextureGetSizeMip_Texture1DArray_texture.name = "texture"_c;
     TextureGetSizeMip_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureGetSizeMip_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSizeMip_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSizeMip_Texture1DArray_texture.type.modifiers = TextureGetSizeMip_Texture1DArray_texture_modifiers;
+    TextureGetSizeMip_Texture1DArray_texture.type.modifierValues = TextureGetSizeMip_Texture1DArray_texture_modifierValues;
     TextureGetSizeMip_Texture1DArray_mip.name = "mip"_c;
     TextureGetSizeMip_Texture1DArray_mip.type = Type::FullType{ UInt32Type.name };
     TextureGetSizeMip_Texture1DArray.documentation = "Get the size of a texture at a specific mip level"_c;
@@ -28509,8 +29653,8 @@ void SetupIntrinsics()
     /// textureGetSizeMip with Texture2DArray, UInt32
     TextureGetSizeMip_Texture2DArray_texture.name = "texture"_c;
     TextureGetSizeMip_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureGetSizeMip_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSizeMip_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSizeMip_Texture2DArray_texture.type.modifiers = TextureGetSizeMip_Texture2DArray_texture_modifiers;
+    TextureGetSizeMip_Texture2DArray_texture.type.modifierValues = TextureGetSizeMip_Texture2DArray_texture_modifierValues;
     TextureGetSizeMip_Texture2DArray_mip.name = "mip"_c;
     TextureGetSizeMip_Texture2DArray_mip.type = Type::FullType{ UInt32Type.name };
     TextureGetSizeMip_Texture2DArray.documentation = "Get the size of a texture at a specific mip level"_c;
@@ -28528,8 +29672,8 @@ void SetupIntrinsics()
     /// textureGetSizeMip with TextureCubeArray, UInt32
     TextureGetSizeMip_TextureCubeArray_texture.name = "texture"_c;
     TextureGetSizeMip_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureGetSizeMip_TextureCubeArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSizeMip_TextureCubeArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSizeMip_TextureCubeArray_texture.type.modifiers = TextureGetSizeMip_TextureCubeArray_texture_modifiers;
+    TextureGetSizeMip_TextureCubeArray_texture.type.modifierValues = TextureGetSizeMip_TextureCubeArray_texture_modifierValues;
     TextureGetSizeMip_TextureCubeArray_mip.name = "mip"_c;
     TextureGetSizeMip_TextureCubeArray_mip.type = Type::FullType{ UInt32Type.name };
     TextureGetSizeMip_TextureCubeArray.documentation = "Get the size of a texture at a specific mip level"_c;
@@ -28547,8 +29691,8 @@ void SetupIntrinsics()
     /// textureGetMips with Texture1D
     TextureGetMips_Texture1D_texture.name = "texture"_c;
     TextureGetMips_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureGetMips_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetMips_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetMips_Texture1D_texture.type.modifiers = TextureGetMips_Texture1D_texture_modifiers;
+    TextureGetMips_Texture1D_texture.type.modifierValues = TextureGetMips_Texture1D_texture_modifierValues;
     TextureGetMips_Texture1D.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_Texture1D.name = "textureGetMips"_c;
     TextureGetMips_Texture1D.returnType = Type::FullType { Texture1DType.name };
@@ -28563,8 +29707,8 @@ void SetupIntrinsics()
     /// textureGetMips with Texture2D
     TextureGetMips_Texture2D_texture.name = "texture"_c;
     TextureGetMips_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureGetMips_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetMips_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetMips_Texture2D_texture.type.modifiers = TextureGetMips_Texture2D_texture_modifiers;
+    TextureGetMips_Texture2D_texture.type.modifierValues = TextureGetMips_Texture2D_texture_modifierValues;
     TextureGetMips_Texture2D.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_Texture2D.name = "textureGetMips"_c;
     TextureGetMips_Texture2D.returnType = Type::FullType { Texture2DType.name };
@@ -28579,8 +29723,8 @@ void SetupIntrinsics()
     /// textureGetMips with Texture3D
     TextureGetMips_Texture3D_texture.name = "texture"_c;
     TextureGetMips_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureGetMips_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetMips_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetMips_Texture3D_texture.type.modifiers = TextureGetMips_Texture3D_texture_modifiers;
+    TextureGetMips_Texture3D_texture.type.modifierValues = TextureGetMips_Texture3D_texture_modifierValues;
     TextureGetMips_Texture3D.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_Texture3D.name = "textureGetMips"_c;
     TextureGetMips_Texture3D.returnType = Type::FullType { Texture3DType.name };
@@ -28595,8 +29739,8 @@ void SetupIntrinsics()
     /// textureGetMips with TextureCube
     TextureGetMips_TextureCube_texture.name = "texture"_c;
     TextureGetMips_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureGetMips_TextureCube_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetMips_TextureCube_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetMips_TextureCube_texture.type.modifiers = TextureGetMips_TextureCube_texture_modifiers;
+    TextureGetMips_TextureCube_texture.type.modifierValues = TextureGetMips_TextureCube_texture_modifierValues;
     TextureGetMips_TextureCube.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_TextureCube.name = "textureGetMips"_c;
     TextureGetMips_TextureCube.returnType = Type::FullType { TextureCubeType.name };
@@ -28611,8 +29755,8 @@ void SetupIntrinsics()
     /// textureGetMips with Texture1DArray
     TextureGetMips_Texture1DArray_texture.name = "texture"_c;
     TextureGetMips_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureGetMips_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetMips_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetMips_Texture1DArray_texture.type.modifiers = TextureGetMips_Texture1DArray_texture_modifiers;
+    TextureGetMips_Texture1DArray_texture.type.modifierValues = TextureGetMips_Texture1DArray_texture_modifierValues;
     TextureGetMips_Texture1DArray.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_Texture1DArray.name = "textureGetMips"_c;
     TextureGetMips_Texture1DArray.returnType = Type::FullType { Texture1DArrayType.name };
@@ -28627,8 +29771,8 @@ void SetupIntrinsics()
     /// textureGetMips with Texture2DArray
     TextureGetMips_Texture2DArray_texture.name = "texture"_c;
     TextureGetMips_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureGetMips_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetMips_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetMips_Texture2DArray_texture.type.modifiers = TextureGetMips_Texture2DArray_texture_modifiers;
+    TextureGetMips_Texture2DArray_texture.type.modifierValues = TextureGetMips_Texture2DArray_texture_modifierValues;
     TextureGetMips_Texture2DArray.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_Texture2DArray.name = "textureGetMips"_c;
     TextureGetMips_Texture2DArray.returnType = Type::FullType { Texture2DArrayType.name };
@@ -28643,8 +29787,8 @@ void SetupIntrinsics()
     /// textureGetMips with TextureCubeArray
     TextureGetMips_TextureCubeArray_texture.name = "texture"_c;
     TextureGetMips_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureGetMips_TextureCubeArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetMips_TextureCubeArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetMips_TextureCubeArray_texture.type.modifiers = TextureGetMips_TextureCubeArray_texture_modifiers;
+    TextureGetMips_TextureCubeArray_texture.type.modifierValues = TextureGetMips_TextureCubeArray_texture_modifierValues;
     TextureGetMips_TextureCubeArray.documentation = "Get the number of mips in a texture"_c;
     TextureGetMips_TextureCubeArray.name = "textureGetMips"_c;
     TextureGetMips_TextureCubeArray.returnType = Type::FullType { TextureCubeArrayType.name };
@@ -28659,8 +29803,8 @@ void SetupIntrinsics()
     /// textureGetSamples with Texture2DMS
     TextureGetSamples_Texture2DMS_texture.name = "texture"_c;
     TextureGetSamples_Texture2DMS_texture.type = Type::FullType{ Texture2DMSType.name };
-    TextureGetSamples_Texture2DMS_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSamples_Texture2DMS_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSamples_Texture2DMS_texture.type.modifiers = TextureGetSamples_Texture2DMS_texture_modifiers;
+    TextureGetSamples_Texture2DMS_texture.type.modifierValues = TextureGetSamples_Texture2DMS_texture_modifierValues;
     TextureGetSamples_Texture2DMS.documentation = "Get the number of samples in a multisampled texture"_c;
     TextureGetSamples_Texture2DMS.name = "textureGetSamples"_c;
     TextureGetSamples_Texture2DMS.returnType = Type::FullType { Texture2DMSType.name };
@@ -28675,8 +29819,8 @@ void SetupIntrinsics()
     /// textureGetSamples with Texture2DMSArray
     TextureGetSamples_Texture2DMSArray_texture.name = "texture"_c;
     TextureGetSamples_Texture2DMSArray_texture.type = Type::FullType{ Texture2DMSArrayType.name };
-    TextureGetSamples_Texture2DMSArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSamples_Texture2DMSArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSamples_Texture2DMSArray_texture.type.modifiers = TextureGetSamples_Texture2DMSArray_texture_modifiers;
+    TextureGetSamples_Texture2DMSArray_texture.type.modifierValues = TextureGetSamples_Texture2DMSArray_texture_modifierValues;
     TextureGetSamples_Texture2DMSArray.documentation = "Get the number of samples in a multisampled texture"_c;
     TextureGetSamples_Texture2DMSArray.name = "textureGetSamples"_c;
     TextureGetSamples_Texture2DMSArray.returnType = Type::FullType { Texture2DMSArrayType.name };
@@ -28691,12 +29835,12 @@ void SetupIntrinsics()
     /// textureGetSampledMip with Texture1D, Sampler, Float32
     TextureGetSampledMip_Texture1D_texture.name = "texture"_c;
     TextureGetSampledMip_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureGetSampledMip_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSampledMip_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSampledMip_Texture1D_texture.type.modifiers = TextureGetSampledMip_Texture1D_texture_modifiers;
+    TextureGetSampledMip_Texture1D_texture.type.modifierValues = TextureGetSampledMip_Texture1D_texture_modifierValues;
     TextureGetSampledMip_Texture1D_sampler.name = "sampler"_c;
     TextureGetSampledMip_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGetSampledMip_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSampledMip_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSampledMip_Texture1D_sampler.type.modifiers = TextureGetSampledMip_Texture1D_sampler_modifiers;
+    TextureGetSampledMip_Texture1D_sampler.type.modifierValues = TextureGetSampledMip_Texture1D_sampler_modifierValues;
     TextureGetSampledMip_Texture1D_coordinate.name = "coordinate"_c;
     TextureGetSampledMip_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureGetSampledMip_Texture1D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
@@ -28716,8 +29860,8 @@ void SetupIntrinsics()
     /// textureGetSampledMip with SampledTexture1D, Float32
     SampledTextureGetSampledMip_Texture1D_texture.name = "texture"_c;
     SampledTextureGetSampledMip_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureGetSampledMip_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureGetSampledMip_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureGetSampledMip_Texture1D_texture.type.modifiers = SampledTextureGetSampledMip_Texture1D_texture_modifiers;
+    SampledTextureGetSampledMip_Texture1D_texture.type.modifierValues = SampledTextureGetSampledMip_Texture1D_texture_modifierValues;
     SampledTextureGetSampledMip_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureGetSampledMip_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureGetSampledMip_Texture1D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
@@ -28735,12 +29879,12 @@ void SetupIntrinsics()
     /// textureGetSampledMip with Texture2D, Sampler, Float32x2
     TextureGetSampledMip_Texture2D_texture.name = "texture"_c;
     TextureGetSampledMip_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureGetSampledMip_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSampledMip_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSampledMip_Texture2D_texture.type.modifiers = TextureGetSampledMip_Texture2D_texture_modifiers;
+    TextureGetSampledMip_Texture2D_texture.type.modifierValues = TextureGetSampledMip_Texture2D_texture_modifierValues;
     TextureGetSampledMip_Texture2D_sampler.name = "sampler"_c;
     TextureGetSampledMip_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGetSampledMip_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSampledMip_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSampledMip_Texture2D_sampler.type.modifiers = TextureGetSampledMip_Texture2D_sampler_modifiers;
+    TextureGetSampledMip_Texture2D_sampler.type.modifierValues = TextureGetSampledMip_Texture2D_sampler_modifierValues;
     TextureGetSampledMip_Texture2D_coordinate.name = "coordinate"_c;
     TextureGetSampledMip_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureGetSampledMip_Texture2D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
@@ -28760,8 +29904,8 @@ void SetupIntrinsics()
     /// textureGetSampledMip with SampledTexture2D, Float32x2
     SampledTextureGetSampledMip_Texture2D_texture.name = "texture"_c;
     SampledTextureGetSampledMip_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureGetSampledMip_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureGetSampledMip_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureGetSampledMip_Texture2D_texture.type.modifiers = SampledTextureGetSampledMip_Texture2D_texture_modifiers;
+    SampledTextureGetSampledMip_Texture2D_texture.type.modifierValues = SampledTextureGetSampledMip_Texture2D_texture_modifierValues;
     SampledTextureGetSampledMip_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureGetSampledMip_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureGetSampledMip_Texture2D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
@@ -28779,12 +29923,12 @@ void SetupIntrinsics()
     /// textureGetSampledMip with Texture3D, Sampler, Float32x3
     TextureGetSampledMip_Texture3D_texture.name = "texture"_c;
     TextureGetSampledMip_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureGetSampledMip_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSampledMip_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSampledMip_Texture3D_texture.type.modifiers = TextureGetSampledMip_Texture3D_texture_modifiers;
+    TextureGetSampledMip_Texture3D_texture.type.modifierValues = TextureGetSampledMip_Texture3D_texture_modifierValues;
     TextureGetSampledMip_Texture3D_sampler.name = "sampler"_c;
     TextureGetSampledMip_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGetSampledMip_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSampledMip_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSampledMip_Texture3D_sampler.type.modifiers = TextureGetSampledMip_Texture3D_sampler_modifiers;
+    TextureGetSampledMip_Texture3D_sampler.type.modifierValues = TextureGetSampledMip_Texture3D_sampler_modifierValues;
     TextureGetSampledMip_Texture3D_coordinate.name = "coordinate"_c;
     TextureGetSampledMip_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureGetSampledMip_Texture3D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
@@ -28804,8 +29948,8 @@ void SetupIntrinsics()
     /// textureGetSampledMip with SampledTexture3D, Float32x3
     SampledTextureGetSampledMip_Texture3D_texture.name = "texture"_c;
     SampledTextureGetSampledMip_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureGetSampledMip_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureGetSampledMip_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureGetSampledMip_Texture3D_texture.type.modifiers = SampledTextureGetSampledMip_Texture3D_texture_modifiers;
+    SampledTextureGetSampledMip_Texture3D_texture.type.modifierValues = SampledTextureGetSampledMip_Texture3D_texture_modifierValues;
     SampledTextureGetSampledMip_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureGetSampledMip_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureGetSampledMip_Texture3D.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
@@ -28823,12 +29967,12 @@ void SetupIntrinsics()
     /// textureGetSampledMip with TextureCube, Sampler, Float32x3
     TextureGetSampledMip_TextureCube_texture.name = "texture"_c;
     TextureGetSampledMip_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureGetSampledMip_TextureCube_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSampledMip_TextureCube_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSampledMip_TextureCube_texture.type.modifiers = TextureGetSampledMip_TextureCube_texture_modifiers;
+    TextureGetSampledMip_TextureCube_texture.type.modifierValues = TextureGetSampledMip_TextureCube_texture_modifierValues;
     TextureGetSampledMip_TextureCube_sampler.name = "sampler"_c;
     TextureGetSampledMip_TextureCube_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGetSampledMip_TextureCube_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSampledMip_TextureCube_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSampledMip_TextureCube_sampler.type.modifiers = TextureGetSampledMip_TextureCube_sampler_modifiers;
+    TextureGetSampledMip_TextureCube_sampler.type.modifierValues = TextureGetSampledMip_TextureCube_sampler_modifierValues;
     TextureGetSampledMip_TextureCube_coordinate.name = "coordinate"_c;
     TextureGetSampledMip_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureGetSampledMip_TextureCube.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
@@ -28848,8 +29992,8 @@ void SetupIntrinsics()
     /// textureGetSampledMip with SampledTextureCube, Float32x3
     SampledTextureGetSampledMip_TextureCube_texture.name = "texture"_c;
     SampledTextureGetSampledMip_TextureCube_texture.type = Type::FullType{ SampledTextureCubeType.name };
-    SampledTextureGetSampledMip_TextureCube_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureGetSampledMip_TextureCube_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureGetSampledMip_TextureCube_texture.type.modifiers = SampledTextureGetSampledMip_TextureCube_texture_modifiers;
+    SampledTextureGetSampledMip_TextureCube_texture.type.modifierValues = SampledTextureGetSampledMip_TextureCube_texture_modifierValues;
     SampledTextureGetSampledMip_TextureCube_coordinate.name = "coordinate"_c;
     SampledTextureGetSampledMip_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureGetSampledMip_TextureCube.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
@@ -28867,12 +30011,12 @@ void SetupIntrinsics()
     /// textureGetSampledMip with Texture1DArray, Sampler, Float32x2
     TextureGetSampledMip_Texture1DArray_texture.name = "texture"_c;
     TextureGetSampledMip_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureGetSampledMip_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSampledMip_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSampledMip_Texture1DArray_texture.type.modifiers = TextureGetSampledMip_Texture1DArray_texture_modifiers;
+    TextureGetSampledMip_Texture1DArray_texture.type.modifierValues = TextureGetSampledMip_Texture1DArray_texture_modifierValues;
     TextureGetSampledMip_Texture1DArray_sampler.name = "sampler"_c;
     TextureGetSampledMip_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGetSampledMip_Texture1DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSampledMip_Texture1DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSampledMip_Texture1DArray_sampler.type.modifiers = TextureGetSampledMip_Texture1DArray_sampler_modifiers;
+    TextureGetSampledMip_Texture1DArray_sampler.type.modifierValues = TextureGetSampledMip_Texture1DArray_sampler_modifierValues;
     TextureGetSampledMip_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureGetSampledMip_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureGetSampledMip_Texture1DArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
@@ -28892,8 +30036,8 @@ void SetupIntrinsics()
     /// textureGetSampledMip with SampledTexture1DArray, Float32x2
     SampledTextureGetSampledMip_Texture1DArray_texture.name = "texture"_c;
     SampledTextureGetSampledMip_Texture1DArray_texture.type = Type::FullType{ SampledTexture1DArrayType.name };
-    SampledTextureGetSampledMip_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureGetSampledMip_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureGetSampledMip_Texture1DArray_texture.type.modifiers = SampledTextureGetSampledMip_Texture1DArray_texture_modifiers;
+    SampledTextureGetSampledMip_Texture1DArray_texture.type.modifierValues = SampledTextureGetSampledMip_Texture1DArray_texture_modifierValues;
     SampledTextureGetSampledMip_Texture1DArray_coordinate.name = "coordinate"_c;
     SampledTextureGetSampledMip_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureGetSampledMip_Texture1DArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
@@ -28911,12 +30055,12 @@ void SetupIntrinsics()
     /// textureGetSampledMip with Texture2DArray, Sampler, Float32x3
     TextureGetSampledMip_Texture2DArray_texture.name = "texture"_c;
     TextureGetSampledMip_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureGetSampledMip_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSampledMip_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSampledMip_Texture2DArray_texture.type.modifiers = TextureGetSampledMip_Texture2DArray_texture_modifiers;
+    TextureGetSampledMip_Texture2DArray_texture.type.modifierValues = TextureGetSampledMip_Texture2DArray_texture_modifierValues;
     TextureGetSampledMip_Texture2DArray_sampler.name = "sampler"_c;
     TextureGetSampledMip_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGetSampledMip_Texture2DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSampledMip_Texture2DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSampledMip_Texture2DArray_sampler.type.modifiers = TextureGetSampledMip_Texture2DArray_sampler_modifiers;
+    TextureGetSampledMip_Texture2DArray_sampler.type.modifierValues = TextureGetSampledMip_Texture2DArray_sampler_modifierValues;
     TextureGetSampledMip_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureGetSampledMip_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureGetSampledMip_Texture2DArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
@@ -28936,8 +30080,8 @@ void SetupIntrinsics()
     /// textureGetSampledMip with SampledTexture2DArray, Float32x3
     SampledTextureGetSampledMip_Texture2DArray_texture.name = "texture"_c;
     SampledTextureGetSampledMip_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
-    SampledTextureGetSampledMip_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureGetSampledMip_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureGetSampledMip_Texture2DArray_texture.type.modifiers = SampledTextureGetSampledMip_Texture2DArray_texture_modifiers;
+    SampledTextureGetSampledMip_Texture2DArray_texture.type.modifierValues = SampledTextureGetSampledMip_Texture2DArray_texture_modifierValues;
     SampledTextureGetSampledMip_Texture2DArray_coordinate.name = "coordinate"_c;
     SampledTextureGetSampledMip_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureGetSampledMip_Texture2DArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
@@ -28955,12 +30099,12 @@ void SetupIntrinsics()
     /// textureGetSampledMip with TextureCubeArray, Sampler, Float32x4
     TextureGetSampledMip_TextureCubeArray_texture.name = "texture"_c;
     TextureGetSampledMip_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureGetSampledMip_TextureCubeArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSampledMip_TextureCubeArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSampledMip_TextureCubeArray_texture.type.modifiers = TextureGetSampledMip_TextureCubeArray_texture_modifiers;
+    TextureGetSampledMip_TextureCubeArray_texture.type.modifierValues = TextureGetSampledMip_TextureCubeArray_texture_modifierValues;
     TextureGetSampledMip_TextureCubeArray_sampler.name = "sampler"_c;
     TextureGetSampledMip_TextureCubeArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGetSampledMip_TextureCubeArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGetSampledMip_TextureCubeArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGetSampledMip_TextureCubeArray_sampler.type.modifiers = TextureGetSampledMip_TextureCubeArray_sampler_modifiers;
+    TextureGetSampledMip_TextureCubeArray_sampler.type.modifierValues = TextureGetSampledMip_TextureCubeArray_sampler_modifierValues;
     TextureGetSampledMip_TextureCubeArray_coordinate.name = "coordinate"_c;
     TextureGetSampledMip_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
     TextureGetSampledMip_TextureCubeArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
@@ -28980,8 +30124,8 @@ void SetupIntrinsics()
     /// textureGetSampledMip with SampledTextureCubeArray, Float32x4
     SampledTextureGetSampledMip_TextureCubeArray_texture.name = "texture"_c;
     SampledTextureGetSampledMip_TextureCubeArray_texture.type = Type::FullType{ SampledTextureCubeArrayType.name };
-    SampledTextureGetSampledMip_TextureCubeArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureGetSampledMip_TextureCubeArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureGetSampledMip_TextureCubeArray_texture.type.modifiers = SampledTextureGetSampledMip_TextureCubeArray_texture_modifiers;
+    SampledTextureGetSampledMip_TextureCubeArray_texture.type.modifierValues = SampledTextureGetSampledMip_TextureCubeArray_texture_modifierValues;
     SampledTextureGetSampledMip_TextureCubeArray_coordinate.name = "coordinate"_c;
     SampledTextureGetSampledMip_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
     SampledTextureGetSampledMip_TextureCubeArray.documentation = "Get the mip level of a texture at a specific coordinate. The return value is a vector where the first value is the mip level to sample, and the second is the offset relative to the base mip for which the sample would occur"_c;
@@ -28999,8 +30143,8 @@ void SetupIntrinsics()
     /// textureLoad with Texture1D, Int32
     TextureLoad_Texture1D_texture.name = "texture"_c;
     TextureLoad_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureLoad_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureLoad_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureLoad_Texture1D_texture.type.modifiers = TextureLoad_Texture1D_texture_modifiers;
+    TextureLoad_Texture1D_texture.type.modifierValues = TextureLoad_Texture1D_texture_modifierValues;
     TextureLoad_Texture1D_coordinate.name = "coordinate"_c;
     TextureLoad_Texture1D_coordinate.type = Type::FullType{ Int32Type.name };
     TextureLoad_Texture1D.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
@@ -29018,8 +30162,8 @@ void SetupIntrinsics()
     /// textureLoadMip with Texture1D, Int32, Int32
     TextureLoadMip_Texture1D_texture.name = "texture"_c;
     TextureLoadMip_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureLoadMip_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureLoadMip_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureLoadMip_Texture1D_texture.type.modifiers = TextureLoadMip_Texture1D_texture_modifiers;
+    TextureLoadMip_Texture1D_texture.type.modifierValues = TextureLoadMip_Texture1D_texture_modifierValues;
     TextureLoadMip_Texture1D_coordinate.name = "coordinate"_c;
     TextureLoadMip_Texture1D_coordinate.type = Type::FullType{ Int32Type.name };
     TextureLoadMip_Texture1D_mip.name = "mip"_c;
@@ -29040,8 +30184,8 @@ void SetupIntrinsics()
     /// textureStore with Texture1D, Int32, Float32x4
     TextureStore_Texture1D_texture.name = "texture"_c;
     TextureStore_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureStore_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureStore_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureStore_Texture1D_texture.type.modifiers = TextureStore_Texture1D_texture_modifiers;
+    TextureStore_Texture1D_texture.type.modifierValues = TextureStore_Texture1D_texture_modifierValues;
     TextureStore_Texture1D_coordinate.name = "coordinate"_c;
     TextureStore_Texture1D_coordinate.type = Type::FullType{ Int32Type.name };
     TextureStore_Texture1D_value.name = "value"_c;
@@ -29062,8 +30206,8 @@ void SetupIntrinsics()
     /// textureStoreMip with Texture1D, Int32, Int32, Float32x4
     TextureStoreMip_Texture1D_texture.name = "texture"_c;
     TextureStoreMip_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureStoreMip_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureStoreMip_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureStoreMip_Texture1D_texture.type.modifiers = TextureStoreMip_Texture1D_texture_modifiers;
+    TextureStoreMip_Texture1D_texture.type.modifierValues = TextureStoreMip_Texture1D_texture_modifierValues;
     TextureStoreMip_Texture1D_coordinate.name = "coordinate"_c;
     TextureStoreMip_Texture1D_coordinate.type = Type::FullType{ Int32Type.name };
     TextureStoreMip_Texture1D_mip.name = "mip"_c;
@@ -29087,8 +30231,8 @@ void SetupIntrinsics()
     /// textureLoad with Texture2D, Int32x2
     TextureLoad_Texture2D_texture.name = "texture"_c;
     TextureLoad_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureLoad_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureLoad_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureLoad_Texture2D_texture.type.modifiers = TextureLoad_Texture2D_texture_modifiers;
+    TextureLoad_Texture2D_texture.type.modifierValues = TextureLoad_Texture2D_texture_modifierValues;
     TextureLoad_Texture2D_coordinate.name = "coordinate"_c;
     TextureLoad_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureLoad_Texture2D.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
@@ -29106,8 +30250,8 @@ void SetupIntrinsics()
     /// textureLoadMip with Texture2D, Int32x2, Int32
     TextureLoadMip_Texture2D_texture.name = "texture"_c;
     TextureLoadMip_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureLoadMip_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureLoadMip_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureLoadMip_Texture2D_texture.type.modifiers = TextureLoadMip_Texture2D_texture_modifiers;
+    TextureLoadMip_Texture2D_texture.type.modifierValues = TextureLoadMip_Texture2D_texture_modifierValues;
     TextureLoadMip_Texture2D_coordinate.name = "coordinate"_c;
     TextureLoadMip_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureLoadMip_Texture2D_mip.name = "mip"_c;
@@ -29128,8 +30272,8 @@ void SetupIntrinsics()
     /// textureStore with Texture2D, Int32x2, Float32x4
     TextureStore_Texture2D_texture.name = "texture"_c;
     TextureStore_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureStore_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureStore_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureStore_Texture2D_texture.type.modifiers = TextureStore_Texture2D_texture_modifiers;
+    TextureStore_Texture2D_texture.type.modifierValues = TextureStore_Texture2D_texture_modifierValues;
     TextureStore_Texture2D_coordinate.name = "coordinate"_c;
     TextureStore_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureStore_Texture2D_value.name = "value"_c;
@@ -29150,8 +30294,8 @@ void SetupIntrinsics()
     /// textureStoreMip with Texture2D, Int32x2, Int32, Float32x4
     TextureStoreMip_Texture2D_texture.name = "texture"_c;
     TextureStoreMip_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureStoreMip_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureStoreMip_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureStoreMip_Texture2D_texture.type.modifiers = TextureStoreMip_Texture2D_texture_modifiers;
+    TextureStoreMip_Texture2D_texture.type.modifierValues = TextureStoreMip_Texture2D_texture_modifierValues;
     TextureStoreMip_Texture2D_coordinate.name = "coordinate"_c;
     TextureStoreMip_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureStoreMip_Texture2D_mip.name = "mip"_c;
@@ -29175,8 +30319,8 @@ void SetupIntrinsics()
     /// textureLoad with Texture3D, Int32x3
     TextureLoad_Texture3D_texture.name = "texture"_c;
     TextureLoad_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureLoad_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureLoad_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureLoad_Texture3D_texture.type.modifiers = TextureLoad_Texture3D_texture_modifiers;
+    TextureLoad_Texture3D_texture.type.modifierValues = TextureLoad_Texture3D_texture_modifierValues;
     TextureLoad_Texture3D_coordinate.name = "coordinate"_c;
     TextureLoad_Texture3D_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureLoad_Texture3D.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
@@ -29194,8 +30338,8 @@ void SetupIntrinsics()
     /// textureLoadMip with Texture3D, Int32x3, Int32
     TextureLoadMip_Texture3D_texture.name = "texture"_c;
     TextureLoadMip_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureLoadMip_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureLoadMip_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureLoadMip_Texture3D_texture.type.modifiers = TextureLoadMip_Texture3D_texture_modifiers;
+    TextureLoadMip_Texture3D_texture.type.modifierValues = TextureLoadMip_Texture3D_texture_modifierValues;
     TextureLoadMip_Texture3D_coordinate.name = "coordinate"_c;
     TextureLoadMip_Texture3D_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureLoadMip_Texture3D_mip.name = "mip"_c;
@@ -29216,8 +30360,8 @@ void SetupIntrinsics()
     /// textureStore with Texture3D, Int32x3, Float32x4
     TextureStore_Texture3D_texture.name = "texture"_c;
     TextureStore_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureStore_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureStore_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureStore_Texture3D_texture.type.modifiers = TextureStore_Texture3D_texture_modifiers;
+    TextureStore_Texture3D_texture.type.modifierValues = TextureStore_Texture3D_texture_modifierValues;
     TextureStore_Texture3D_coordinate.name = "coordinate"_c;
     TextureStore_Texture3D_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureStore_Texture3D_value.name = "value"_c;
@@ -29238,8 +30382,8 @@ void SetupIntrinsics()
     /// textureStoreMip with Texture3D, Int32x3, Int32, Float32x4
     TextureStoreMip_Texture3D_texture.name = "texture"_c;
     TextureStoreMip_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureStoreMip_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureStoreMip_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureStoreMip_Texture3D_texture.type.modifiers = TextureStoreMip_Texture3D_texture_modifiers;
+    TextureStoreMip_Texture3D_texture.type.modifierValues = TextureStoreMip_Texture3D_texture_modifierValues;
     TextureStoreMip_Texture3D_coordinate.name = "coordinate"_c;
     TextureStoreMip_Texture3D_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureStoreMip_Texture3D_mip.name = "mip"_c;
@@ -29263,8 +30407,8 @@ void SetupIntrinsics()
     /// textureLoad with TextureCube, Int32x3
     TextureLoad_TextureCube_texture.name = "texture"_c;
     TextureLoad_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureLoad_TextureCube_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureLoad_TextureCube_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureLoad_TextureCube_texture.type.modifiers = TextureLoad_TextureCube_texture_modifiers;
+    TextureLoad_TextureCube_texture.type.modifierValues = TextureLoad_TextureCube_texture_modifierValues;
     TextureLoad_TextureCube_coordinate.name = "coordinate"_c;
     TextureLoad_TextureCube_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureLoad_TextureCube.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
@@ -29282,8 +30426,8 @@ void SetupIntrinsics()
     /// textureLoadMip with TextureCube, Int32x3, Int32
     TextureLoadMip_TextureCube_texture.name = "texture"_c;
     TextureLoadMip_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureLoadMip_TextureCube_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureLoadMip_TextureCube_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureLoadMip_TextureCube_texture.type.modifiers = TextureLoadMip_TextureCube_texture_modifiers;
+    TextureLoadMip_TextureCube_texture.type.modifierValues = TextureLoadMip_TextureCube_texture_modifierValues;
     TextureLoadMip_TextureCube_coordinate.name = "coordinate"_c;
     TextureLoadMip_TextureCube_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureLoadMip_TextureCube_mip.name = "mip"_c;
@@ -29304,8 +30448,8 @@ void SetupIntrinsics()
     /// textureStore with TextureCube, Int32x3, Float32x4
     TextureStore_TextureCube_texture.name = "texture"_c;
     TextureStore_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureStore_TextureCube_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureStore_TextureCube_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureStore_TextureCube_texture.type.modifiers = TextureStore_TextureCube_texture_modifiers;
+    TextureStore_TextureCube_texture.type.modifierValues = TextureStore_TextureCube_texture_modifierValues;
     TextureStore_TextureCube_coordinate.name = "coordinate"_c;
     TextureStore_TextureCube_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureStore_TextureCube_value.name = "value"_c;
@@ -29326,8 +30470,8 @@ void SetupIntrinsics()
     /// textureStoreMip with TextureCube, Int32x3, Int32, Float32x4
     TextureStoreMip_TextureCube_texture.name = "texture"_c;
     TextureStoreMip_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureStoreMip_TextureCube_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureStoreMip_TextureCube_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureStoreMip_TextureCube_texture.type.modifiers = TextureStoreMip_TextureCube_texture_modifiers;
+    TextureStoreMip_TextureCube_texture.type.modifierValues = TextureStoreMip_TextureCube_texture_modifierValues;
     TextureStoreMip_TextureCube_coordinate.name = "coordinate"_c;
     TextureStoreMip_TextureCube_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureStoreMip_TextureCube_mip.name = "mip"_c;
@@ -29351,8 +30495,8 @@ void SetupIntrinsics()
     /// textureLoad with Texture1DArray, Int32x2
     TextureLoad_Texture1DArray_texture.name = "texture"_c;
     TextureLoad_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureLoad_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureLoad_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureLoad_Texture1DArray_texture.type.modifiers = TextureLoad_Texture1DArray_texture_modifiers;
+    TextureLoad_Texture1DArray_texture.type.modifierValues = TextureLoad_Texture1DArray_texture_modifierValues;
     TextureLoad_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureLoad_Texture1DArray_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureLoad_Texture1DArray.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
@@ -29370,8 +30514,8 @@ void SetupIntrinsics()
     /// textureLoadMip with Texture1DArray, Int32x2, Int32
     TextureLoadMip_Texture1DArray_texture.name = "texture"_c;
     TextureLoadMip_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureLoadMip_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureLoadMip_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureLoadMip_Texture1DArray_texture.type.modifiers = TextureLoadMip_Texture1DArray_texture_modifiers;
+    TextureLoadMip_Texture1DArray_texture.type.modifierValues = TextureLoadMip_Texture1DArray_texture_modifierValues;
     TextureLoadMip_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureLoadMip_Texture1DArray_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureLoadMip_Texture1DArray_mip.name = "mip"_c;
@@ -29392,8 +30536,8 @@ void SetupIntrinsics()
     /// textureStore with Texture1DArray, Int32x2, Float32x4
     TextureStore_Texture1DArray_texture.name = "texture"_c;
     TextureStore_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureStore_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureStore_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureStore_Texture1DArray_texture.type.modifiers = TextureStore_Texture1DArray_texture_modifiers;
+    TextureStore_Texture1DArray_texture.type.modifierValues = TextureStore_Texture1DArray_texture_modifierValues;
     TextureStore_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureStore_Texture1DArray_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureStore_Texture1DArray_value.name = "value"_c;
@@ -29414,8 +30558,8 @@ void SetupIntrinsics()
     /// textureStoreMip with Texture1DArray, Int32x2, Int32, Float32x4
     TextureStoreMip_Texture1DArray_texture.name = "texture"_c;
     TextureStoreMip_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureStoreMip_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureStoreMip_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureStoreMip_Texture1DArray_texture.type.modifiers = TextureStoreMip_Texture1DArray_texture_modifiers;
+    TextureStoreMip_Texture1DArray_texture.type.modifierValues = TextureStoreMip_Texture1DArray_texture_modifierValues;
     TextureStoreMip_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureStoreMip_Texture1DArray_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureStoreMip_Texture1DArray_mip.name = "mip"_c;
@@ -29439,8 +30583,8 @@ void SetupIntrinsics()
     /// textureLoad with Texture2DArray, Int32x3
     TextureLoad_Texture2DArray_texture.name = "texture"_c;
     TextureLoad_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureLoad_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureLoad_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureLoad_Texture2DArray_texture.type.modifiers = TextureLoad_Texture2DArray_texture_modifiers;
+    TextureLoad_Texture2DArray_texture.type.modifierValues = TextureLoad_Texture2DArray_texture_modifierValues;
     TextureLoad_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureLoad_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureLoad_Texture2DArray.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
@@ -29458,8 +30602,8 @@ void SetupIntrinsics()
     /// textureLoadMip with Texture2DArray, Int32x3, Int32
     TextureLoadMip_Texture2DArray_texture.name = "texture"_c;
     TextureLoadMip_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureLoadMip_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureLoadMip_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureLoadMip_Texture2DArray_texture.type.modifiers = TextureLoadMip_Texture2DArray_texture_modifiers;
+    TextureLoadMip_Texture2DArray_texture.type.modifierValues = TextureLoadMip_Texture2DArray_texture_modifierValues;
     TextureLoadMip_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureLoadMip_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureLoadMip_Texture2DArray_mip.name = "mip"_c;
@@ -29480,8 +30624,8 @@ void SetupIntrinsics()
     /// textureStore with Texture2DArray, Int32x3, Float32x4
     TextureStore_Texture2DArray_texture.name = "texture"_c;
     TextureStore_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureStore_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureStore_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureStore_Texture2DArray_texture.type.modifiers = TextureStore_Texture2DArray_texture_modifiers;
+    TextureStore_Texture2DArray_texture.type.modifierValues = TextureStore_Texture2DArray_texture_modifierValues;
     TextureStore_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureStore_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureStore_Texture2DArray_value.name = "value"_c;
@@ -29502,8 +30646,8 @@ void SetupIntrinsics()
     /// textureStoreMip with Texture2DArray, Int32x3, Int32, Float32x4
     TextureStoreMip_Texture2DArray_texture.name = "texture"_c;
     TextureStoreMip_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureStoreMip_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureStoreMip_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureStoreMip_Texture2DArray_texture.type.modifiers = TextureStoreMip_Texture2DArray_texture_modifiers;
+    TextureStoreMip_Texture2DArray_texture.type.modifierValues = TextureStoreMip_Texture2DArray_texture_modifierValues;
     TextureStoreMip_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureStoreMip_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureStoreMip_Texture2DArray_mip.name = "mip"_c;
@@ -29527,8 +30671,8 @@ void SetupIntrinsics()
     /// textureLoad with TextureCubeArray, Int32x4
     TextureLoad_TextureCubeArray_texture.name = "texture"_c;
     TextureLoad_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureLoad_TextureCubeArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureLoad_TextureCubeArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureLoad_TextureCubeArray_texture.type.modifiers = TextureLoad_TextureCubeArray_texture_modifiers;
+    TextureLoad_TextureCubeArray_texture.type.modifierValues = TextureLoad_TextureCubeArray_texture_modifierValues;
     TextureLoad_TextureCubeArray_coordinate.name = "coordinate"_c;
     TextureLoad_TextureCubeArray_coordinate.type = Type::FullType{ Int32x4Type.name };
     TextureLoad_TextureCubeArray.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
@@ -29546,8 +30690,8 @@ void SetupIntrinsics()
     /// textureLoadMip with TextureCubeArray, Int32x4, Int32
     TextureLoadMip_TextureCubeArray_texture.name = "texture"_c;
     TextureLoadMip_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureLoadMip_TextureCubeArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureLoadMip_TextureCubeArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureLoadMip_TextureCubeArray_texture.type.modifiers = TextureLoadMip_TextureCubeArray_texture_modifiers;
+    TextureLoadMip_TextureCubeArray_texture.type.modifierValues = TextureLoadMip_TextureCubeArray_texture_modifierValues;
     TextureLoadMip_TextureCubeArray_coordinate.name = "coordinate"_c;
     TextureLoadMip_TextureCubeArray_coordinate.type = Type::FullType{ Int32x4Type.name };
     TextureLoadMip_TextureCubeArray_mip.name = "mip"_c;
@@ -29568,8 +30712,8 @@ void SetupIntrinsics()
     /// textureStore with TextureCubeArray, Int32x4, Float32x4
     TextureStore_TextureCubeArray_texture.name = "texture"_c;
     TextureStore_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureStore_TextureCubeArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureStore_TextureCubeArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureStore_TextureCubeArray_texture.type.modifiers = TextureStore_TextureCubeArray_texture_modifiers;
+    TextureStore_TextureCubeArray_texture.type.modifierValues = TextureStore_TextureCubeArray_texture_modifierValues;
     TextureStore_TextureCubeArray_coordinate.name = "coordinate"_c;
     TextureStore_TextureCubeArray_coordinate.type = Type::FullType{ Int32x4Type.name };
     TextureStore_TextureCubeArray_value.name = "value"_c;
@@ -29590,8 +30734,8 @@ void SetupIntrinsics()
     /// textureStoreMip with TextureCubeArray, Int32x4, Int32, Float32x4
     TextureStoreMip_TextureCubeArray_texture.name = "texture"_c;
     TextureStoreMip_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureStoreMip_TextureCubeArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureStoreMip_TextureCubeArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureStoreMip_TextureCubeArray_texture.type.modifiers = TextureStoreMip_TextureCubeArray_texture_modifiers;
+    TextureStoreMip_TextureCubeArray_texture.type.modifierValues = TextureStoreMip_TextureCubeArray_texture_modifierValues;
     TextureStoreMip_TextureCubeArray_coordinate.name = "coordinate"_c;
     TextureStoreMip_TextureCubeArray_coordinate.type = Type::FullType{ Int32x4Type.name };
     TextureStoreMip_TextureCubeArray_mip.name = "mip"_c;
@@ -29615,8 +30759,8 @@ void SetupIntrinsics()
     /// textureLoad with Texture2DMS, Int32x2
     TextureLoad_Texture2DMS_texture.name = "texture"_c;
     TextureLoad_Texture2DMS_texture.type = Type::FullType{ Texture2DMSType.name };
-    TextureLoad_Texture2DMS_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureLoad_Texture2DMS_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureLoad_Texture2DMS_texture.type.modifiers = TextureLoad_Texture2DMS_texture_modifiers;
+    TextureLoad_Texture2DMS_texture.type.modifierValues = TextureLoad_Texture2DMS_texture_modifierValues;
     TextureLoad_Texture2DMS_coordinate.name = "coordinate"_c;
     TextureLoad_Texture2DMS_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureLoad_Texture2DMS.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
@@ -29634,8 +30778,8 @@ void SetupIntrinsics()
     /// textureLoadMip with Texture2DMS, Int32x2, Int32
     TextureLoadMip_Texture2DMS_texture.name = "texture"_c;
     TextureLoadMip_Texture2DMS_texture.type = Type::FullType{ Texture2DMSType.name };
-    TextureLoadMip_Texture2DMS_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureLoadMip_Texture2DMS_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureLoadMip_Texture2DMS_texture.type.modifiers = TextureLoadMip_Texture2DMS_texture_modifiers;
+    TextureLoadMip_Texture2DMS_texture.type.modifierValues = TextureLoadMip_Texture2DMS_texture_modifierValues;
     TextureLoadMip_Texture2DMS_coordinate.name = "coordinate"_c;
     TextureLoadMip_Texture2DMS_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureLoadMip_Texture2DMS_mip.name = "mip"_c;
@@ -29656,8 +30800,8 @@ void SetupIntrinsics()
     /// textureStore with Texture2DMS, Int32x2, Float32x4
     TextureStore_Texture2DMS_texture.name = "texture"_c;
     TextureStore_Texture2DMS_texture.type = Type::FullType{ Texture2DMSType.name };
-    TextureStore_Texture2DMS_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureStore_Texture2DMS_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureStore_Texture2DMS_texture.type.modifiers = TextureStore_Texture2DMS_texture_modifiers;
+    TextureStore_Texture2DMS_texture.type.modifierValues = TextureStore_Texture2DMS_texture_modifierValues;
     TextureStore_Texture2DMS_coordinate.name = "coordinate"_c;
     TextureStore_Texture2DMS_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureStore_Texture2DMS_value.name = "value"_c;
@@ -29678,8 +30822,8 @@ void SetupIntrinsics()
     /// textureStoreMip with Texture2DMS, Int32x2, Int32, Float32x4
     TextureStoreMip_Texture2DMS_texture.name = "texture"_c;
     TextureStoreMip_Texture2DMS_texture.type = Type::FullType{ Texture2DMSType.name };
-    TextureStoreMip_Texture2DMS_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureStoreMip_Texture2DMS_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureStoreMip_Texture2DMS_texture.type.modifiers = TextureStoreMip_Texture2DMS_texture_modifiers;
+    TextureStoreMip_Texture2DMS_texture.type.modifierValues = TextureStoreMip_Texture2DMS_texture_modifierValues;
     TextureStoreMip_Texture2DMS_coordinate.name = "coordinate"_c;
     TextureStoreMip_Texture2DMS_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureStoreMip_Texture2DMS_mip.name = "mip"_c;
@@ -29703,8 +30847,8 @@ void SetupIntrinsics()
     /// textureLoad with Texture2DMSArray, Int32x3
     TextureLoad_Texture2DMSArray_texture.name = "texture"_c;
     TextureLoad_Texture2DMSArray_texture.type = Type::FullType{ Texture2DMSArrayType.name };
-    TextureLoad_Texture2DMSArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureLoad_Texture2DMSArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureLoad_Texture2DMSArray_texture.type.modifiers = TextureLoad_Texture2DMSArray_texture_modifiers;
+    TextureLoad_Texture2DMSArray_texture.type.modifierValues = TextureLoad_Texture2DMSArray_texture_modifierValues;
     TextureLoad_Texture2DMSArray_coordinate.name = "coordinate"_c;
     TextureLoad_Texture2DMSArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureLoad_Texture2DMSArray.documentation = "Load a single texel without using a sampler value at an absolute non-normalized coordinate"_c;
@@ -29722,8 +30866,8 @@ void SetupIntrinsics()
     /// textureLoadMip with Texture2DMSArray, Int32x3, Int32
     TextureLoadMip_Texture2DMSArray_texture.name = "texture"_c;
     TextureLoadMip_Texture2DMSArray_texture.type = Type::FullType{ Texture2DMSArrayType.name };
-    TextureLoadMip_Texture2DMSArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureLoadMip_Texture2DMSArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureLoadMip_Texture2DMSArray_texture.type.modifiers = TextureLoadMip_Texture2DMSArray_texture_modifiers;
+    TextureLoadMip_Texture2DMSArray_texture.type.modifierValues = TextureLoadMip_Texture2DMSArray_texture_modifierValues;
     TextureLoadMip_Texture2DMSArray_coordinate.name = "coordinate"_c;
     TextureLoadMip_Texture2DMSArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureLoadMip_Texture2DMSArray_mip.name = "mip"_c;
@@ -29744,8 +30888,8 @@ void SetupIntrinsics()
     /// textureStore with Texture2DMSArray, Int32x3, Float32x4
     TextureStore_Texture2DMSArray_texture.name = "texture"_c;
     TextureStore_Texture2DMSArray_texture.type = Type::FullType{ Texture2DMSArrayType.name };
-    TextureStore_Texture2DMSArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureStore_Texture2DMSArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureStore_Texture2DMSArray_texture.type.modifiers = TextureStore_Texture2DMSArray_texture_modifiers;
+    TextureStore_Texture2DMSArray_texture.type.modifierValues = TextureStore_Texture2DMSArray_texture_modifierValues;
     TextureStore_Texture2DMSArray_coordinate.name = "coordinate"_c;
     TextureStore_Texture2DMSArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureStore_Texture2DMSArray_value.name = "value"_c;
@@ -29766,8 +30910,8 @@ void SetupIntrinsics()
     /// textureStoreMip with Texture2DMSArray, Int32x3, Int32, Float32x4
     TextureStoreMip_Texture2DMSArray_texture.name = "texture"_c;
     TextureStoreMip_Texture2DMSArray_texture.type = Type::FullType{ Texture2DMSArrayType.name };
-    TextureStoreMip_Texture2DMSArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureStoreMip_Texture2DMSArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureStoreMip_Texture2DMSArray_texture.type.modifiers = TextureStoreMip_Texture2DMSArray_texture_modifiers;
+    TextureStoreMip_Texture2DMSArray_texture.type.modifierValues = TextureStoreMip_Texture2DMSArray_texture_modifierValues;
     TextureStoreMip_Texture2DMSArray_coordinate.name = "coordinate"_c;
     TextureStoreMip_Texture2DMSArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureStoreMip_Texture2DMSArray_mip.name = "mip"_c;
@@ -29791,8 +30935,8 @@ void SetupIntrinsics()
     /// textureFetch with Texture1D, Int32, UInt32
     TextureFetch_Texture1D_texture.name = "texture"_c;
     TextureFetch_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureFetch_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureFetch_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureFetch_Texture1D_texture.type.modifiers = TextureFetch_Texture1D_texture_modifiers;
+    TextureFetch_Texture1D_texture.type.modifierValues = TextureFetch_Texture1D_texture_modifierValues;
     TextureFetch_Texture1D_coordinate.name = "coordinate"_c;
     TextureFetch_Texture1D_coordinate.type = Type::FullType{ Int32Type.name };
     TextureFetch_Texture1D_lod.name = "lod"_c;
@@ -29813,8 +30957,8 @@ void SetupIntrinsics()
     /// textureFetchSample with Texture1D, Int32, UInt32, UInt32
     TextureFetchSample_Texture1D_texture.name = "texture"_c;
     TextureFetchSample_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureFetchSample_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureFetchSample_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureFetchSample_Texture1D_texture.type.modifiers = TextureFetchSample_Texture1D_texture_modifiers;
+    TextureFetchSample_Texture1D_texture.type.modifierValues = TextureFetchSample_Texture1D_texture_modifierValues;
     TextureFetchSample_Texture1D_coordinate.name = "coordinate"_c;
     TextureFetchSample_Texture1D_coordinate.type = Type::FullType{ Int32Type.name };
     TextureFetchSample_Texture1D_lod.name = "lod"_c;
@@ -29838,8 +30982,8 @@ void SetupIntrinsics()
     /// textureFetch with Texture2D, Int32x2, UInt32
     TextureFetch_Texture2D_texture.name = "texture"_c;
     TextureFetch_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureFetch_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureFetch_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureFetch_Texture2D_texture.type.modifiers = TextureFetch_Texture2D_texture_modifiers;
+    TextureFetch_Texture2D_texture.type.modifierValues = TextureFetch_Texture2D_texture_modifierValues;
     TextureFetch_Texture2D_coordinate.name = "coordinate"_c;
     TextureFetch_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureFetch_Texture2D_lod.name = "lod"_c;
@@ -29860,8 +31004,8 @@ void SetupIntrinsics()
     /// textureFetchSample with Texture2D, Int32x2, UInt32, UInt32
     TextureFetchSample_Texture2D_texture.name = "texture"_c;
     TextureFetchSample_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureFetchSample_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureFetchSample_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureFetchSample_Texture2D_texture.type.modifiers = TextureFetchSample_Texture2D_texture_modifiers;
+    TextureFetchSample_Texture2D_texture.type.modifierValues = TextureFetchSample_Texture2D_texture_modifierValues;
     TextureFetchSample_Texture2D_coordinate.name = "coordinate"_c;
     TextureFetchSample_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureFetchSample_Texture2D_lod.name = "lod"_c;
@@ -29885,8 +31029,8 @@ void SetupIntrinsics()
     /// textureFetch with Texture3D, Int32x3, UInt32
     TextureFetch_Texture3D_texture.name = "texture"_c;
     TextureFetch_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureFetch_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureFetch_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureFetch_Texture3D_texture.type.modifiers = TextureFetch_Texture3D_texture_modifiers;
+    TextureFetch_Texture3D_texture.type.modifierValues = TextureFetch_Texture3D_texture_modifierValues;
     TextureFetch_Texture3D_coordinate.name = "coordinate"_c;
     TextureFetch_Texture3D_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureFetch_Texture3D_lod.name = "lod"_c;
@@ -29907,8 +31051,8 @@ void SetupIntrinsics()
     /// textureFetchSample with Texture3D, Int32x3, UInt32, UInt32
     TextureFetchSample_Texture3D_texture.name = "texture"_c;
     TextureFetchSample_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureFetchSample_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureFetchSample_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureFetchSample_Texture3D_texture.type.modifiers = TextureFetchSample_Texture3D_texture_modifiers;
+    TextureFetchSample_Texture3D_texture.type.modifierValues = TextureFetchSample_Texture3D_texture_modifierValues;
     TextureFetchSample_Texture3D_coordinate.name = "coordinate"_c;
     TextureFetchSample_Texture3D_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureFetchSample_Texture3D_lod.name = "lod"_c;
@@ -29932,8 +31076,8 @@ void SetupIntrinsics()
     /// textureFetch with Texture1DArray, Int32x2, UInt32
     TextureFetch_Texture1DArray_texture.name = "texture"_c;
     TextureFetch_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureFetch_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureFetch_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureFetch_Texture1DArray_texture.type.modifiers = TextureFetch_Texture1DArray_texture_modifiers;
+    TextureFetch_Texture1DArray_texture.type.modifierValues = TextureFetch_Texture1DArray_texture_modifierValues;
     TextureFetch_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureFetch_Texture1DArray_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureFetch_Texture1DArray_lod.name = "lod"_c;
@@ -29954,8 +31098,8 @@ void SetupIntrinsics()
     /// textureFetchSample with Texture1DArray, Int32x2, UInt32, UInt32
     TextureFetchSample_Texture1DArray_texture.name = "texture"_c;
     TextureFetchSample_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureFetchSample_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureFetchSample_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureFetchSample_Texture1DArray_texture.type.modifiers = TextureFetchSample_Texture1DArray_texture_modifiers;
+    TextureFetchSample_Texture1DArray_texture.type.modifierValues = TextureFetchSample_Texture1DArray_texture_modifierValues;
     TextureFetchSample_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureFetchSample_Texture1DArray_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureFetchSample_Texture1DArray_lod.name = "lod"_c;
@@ -29979,8 +31123,8 @@ void SetupIntrinsics()
     /// textureFetch with Texture2DArray, Int32x3, UInt32
     TextureFetch_Texture2DArray_texture.name = "texture"_c;
     TextureFetch_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureFetch_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureFetch_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureFetch_Texture2DArray_texture.type.modifiers = TextureFetch_Texture2DArray_texture_modifiers;
+    TextureFetch_Texture2DArray_texture.type.modifierValues = TextureFetch_Texture2DArray_texture_modifierValues;
     TextureFetch_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureFetch_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureFetch_Texture2DArray_lod.name = "lod"_c;
@@ -30001,8 +31145,8 @@ void SetupIntrinsics()
     /// textureFetchSample with Texture2DArray, Int32x3, UInt32, UInt32
     TextureFetchSample_Texture2DArray_texture.name = "texture"_c;
     TextureFetchSample_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureFetchSample_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureFetchSample_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureFetchSample_Texture2DArray_texture.type.modifiers = TextureFetchSample_Texture2DArray_texture_modifiers;
+    TextureFetchSample_Texture2DArray_texture.type.modifierValues = TextureFetchSample_Texture2DArray_texture_modifierValues;
     TextureFetchSample_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureFetchSample_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureFetchSample_Texture2DArray_lod.name = "lod"_c;
@@ -30026,8 +31170,8 @@ void SetupIntrinsics()
     /// textureFetch with Texture2DMS, Int32x2, UInt32
     TextureFetch_Texture2DMS_texture.name = "texture"_c;
     TextureFetch_Texture2DMS_texture.type = Type::FullType{ Texture2DMSType.name };
-    TextureFetch_Texture2DMS_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureFetch_Texture2DMS_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureFetch_Texture2DMS_texture.type.modifiers = TextureFetch_Texture2DMS_texture_modifiers;
+    TextureFetch_Texture2DMS_texture.type.modifierValues = TextureFetch_Texture2DMS_texture_modifierValues;
     TextureFetch_Texture2DMS_coordinate.name = "coordinate"_c;
     TextureFetch_Texture2DMS_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureFetch_Texture2DMS_lod.name = "lod"_c;
@@ -30048,8 +31192,8 @@ void SetupIntrinsics()
     /// textureFetchSample with Texture2DMS, Int32x2, UInt32, UInt32
     TextureFetchSample_Texture2DMS_texture.name = "texture"_c;
     TextureFetchSample_Texture2DMS_texture.type = Type::FullType{ Texture2DMSType.name };
-    TextureFetchSample_Texture2DMS_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureFetchSample_Texture2DMS_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureFetchSample_Texture2DMS_texture.type.modifiers = TextureFetchSample_Texture2DMS_texture_modifiers;
+    TextureFetchSample_Texture2DMS_texture.type.modifierValues = TextureFetchSample_Texture2DMS_texture_modifierValues;
     TextureFetchSample_Texture2DMS_coordinate.name = "coordinate"_c;
     TextureFetchSample_Texture2DMS_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureFetchSample_Texture2DMS_lod.name = "lod"_c;
@@ -30073,8 +31217,8 @@ void SetupIntrinsics()
     /// textureFetch with Texture2DMSArray, Int32x3, UInt32
     TextureFetch_Texture2DMSArray_texture.name = "texture"_c;
     TextureFetch_Texture2DMSArray_texture.type = Type::FullType{ Texture2DMSArrayType.name };
-    TextureFetch_Texture2DMSArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureFetch_Texture2DMSArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureFetch_Texture2DMSArray_texture.type.modifiers = TextureFetch_Texture2DMSArray_texture_modifiers;
+    TextureFetch_Texture2DMSArray_texture.type.modifierValues = TextureFetch_Texture2DMSArray_texture_modifierValues;
     TextureFetch_Texture2DMSArray_coordinate.name = "coordinate"_c;
     TextureFetch_Texture2DMSArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureFetch_Texture2DMSArray_lod.name = "lod"_c;
@@ -30095,8 +31239,8 @@ void SetupIntrinsics()
     /// textureFetchSample with Texture2DMSArray, Int32x3, UInt32, UInt32
     TextureFetchSample_Texture2DMSArray_texture.name = "texture"_c;
     TextureFetchSample_Texture2DMSArray_texture.type = Type::FullType{ Texture2DMSArrayType.name };
-    TextureFetchSample_Texture2DMSArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureFetchSample_Texture2DMSArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureFetchSample_Texture2DMSArray_texture.type.modifiers = TextureFetchSample_Texture2DMSArray_texture_modifiers;
+    TextureFetchSample_Texture2DMSArray_texture.type.modifierValues = TextureFetchSample_Texture2DMSArray_texture_modifierValues;
     TextureFetchSample_Texture2DMSArray_coordinate.name = "coordinate"_c;
     TextureFetchSample_Texture2DMSArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureFetchSample_Texture2DMSArray_lod.name = "lod"_c;
@@ -30120,12 +31264,12 @@ void SetupIntrinsics()
     /// textureGather with Texture2D, Sampler, Int32x2, Int32
     TextureGather_Texture2D_texture.name = "texture"_c;
     TextureGather_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureGather_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGather_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGather_Texture2D_texture.type.modifiers = TextureGather_Texture2D_texture_modifiers;
+    TextureGather_Texture2D_texture.type.modifierValues = TextureGather_Texture2D_texture_modifierValues;
     TextureGather_Texture2D_sampler.name = "sampler"_c;
     TextureGather_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGather_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGather_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGather_Texture2D_sampler.type.modifiers = TextureGather_Texture2D_sampler_modifiers;
+    TextureGather_Texture2D_sampler.type.modifierValues = TextureGather_Texture2D_sampler_modifierValues;
     TextureGather_Texture2D_coordinate.name = "coordinate"_c;
     TextureGather_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureGather_Texture2D_component.name = "component"_c;
@@ -30148,8 +31292,8 @@ void SetupIntrinsics()
     /// textureGather with SampledTexture2D, Int32x2, Int32
     SampledTextureGather_Texture2D_texture.name = "texture"_c;
     SampledTextureGather_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureGather_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureGather_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureGather_Texture2D_texture.type.modifiers = SampledTextureGather_Texture2D_texture_modifiers;
+    SampledTextureGather_Texture2D_texture.type.modifierValues = SampledTextureGather_Texture2D_texture_modifierValues;
     SampledTextureGather_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureGather_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
     SampledTextureGather_Texture2D_component.name = "component"_c;
@@ -30170,12 +31314,12 @@ void SetupIntrinsics()
     /// textureGatherOffset with Texture2D, Sampler, Int32x2, Int32, UInt32
     TextureGatherOffset_Texture2D_texture.name = "texture"_c;
     TextureGatherOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureGatherOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGatherOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGatherOffset_Texture2D_texture.type.modifiers = TextureGatherOffset_Texture2D_texture_modifiers;
+    TextureGatherOffset_Texture2D_texture.type.modifierValues = TextureGatherOffset_Texture2D_texture_modifierValues;
     TextureGatherOffset_Texture2D_sampler.name = "sampler"_c;
     TextureGatherOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGatherOffset_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGatherOffset_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGatherOffset_Texture2D_sampler.type.modifiers = TextureGatherOffset_Texture2D_sampler_modifiers;
+    TextureGatherOffset_Texture2D_sampler.type.modifierValues = TextureGatherOffset_Texture2D_sampler_modifierValues;
     TextureGatherOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureGatherOffset_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
     TextureGatherOffset_Texture2D_component.name = "component"_c;
@@ -30201,8 +31345,8 @@ void SetupIntrinsics()
     /// textureGatherOffset with SampledTexture2D, Int32x2, Int32, UInt32
     SampledTextureGatherOffset_Texture2D_texture.name = "texture"_c;
     SampledTextureGatherOffset_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureGatherOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureGatherOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureGatherOffset_Texture2D_texture.type.modifiers = SampledTextureGatherOffset_Texture2D_texture_modifiers;
+    SampledTextureGatherOffset_Texture2D_texture.type.modifierValues = SampledTextureGatherOffset_Texture2D_texture_modifierValues;
     SampledTextureGatherOffset_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureGatherOffset_Texture2D_coordinate.type = Type::FullType{ Int32x2Type.name };
     SampledTextureGatherOffset_Texture2D_component.name = "component"_c;
@@ -30226,12 +31370,12 @@ void SetupIntrinsics()
     /// textureGather with TextureCube, Sampler, Int32x3, Int32
     TextureGather_TextureCube_texture.name = "texture"_c;
     TextureGather_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureGather_TextureCube_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGather_TextureCube_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGather_TextureCube_texture.type.modifiers = TextureGather_TextureCube_texture_modifiers;
+    TextureGather_TextureCube_texture.type.modifierValues = TextureGather_TextureCube_texture_modifierValues;
     TextureGather_TextureCube_sampler.name = "sampler"_c;
     TextureGather_TextureCube_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGather_TextureCube_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGather_TextureCube_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGather_TextureCube_sampler.type.modifiers = TextureGather_TextureCube_sampler_modifiers;
+    TextureGather_TextureCube_sampler.type.modifierValues = TextureGather_TextureCube_sampler_modifierValues;
     TextureGather_TextureCube_coordinate.name = "coordinate"_c;
     TextureGather_TextureCube_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureGather_TextureCube_component.name = "component"_c;
@@ -30254,8 +31398,8 @@ void SetupIntrinsics()
     /// textureGather with SampledTextureCube, Int32x3, Int32
     SampledTextureGather_TextureCube_texture.name = "texture"_c;
     SampledTextureGather_TextureCube_texture.type = Type::FullType{ SampledTextureCubeType.name };
-    SampledTextureGather_TextureCube_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureGather_TextureCube_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureGather_TextureCube_texture.type.modifiers = SampledTextureGather_TextureCube_texture_modifiers;
+    SampledTextureGather_TextureCube_texture.type.modifierValues = SampledTextureGather_TextureCube_texture_modifierValues;
     SampledTextureGather_TextureCube_coordinate.name = "coordinate"_c;
     SampledTextureGather_TextureCube_coordinate.type = Type::FullType{ Int32x3Type.name };
     SampledTextureGather_TextureCube_component.name = "component"_c;
@@ -30276,12 +31420,12 @@ void SetupIntrinsics()
     /// textureGatherOffset with TextureCube, Sampler, Int32x3, Int32, UInt32
     TextureGatherOffset_TextureCube_texture.name = "texture"_c;
     TextureGatherOffset_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureGatherOffset_TextureCube_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGatherOffset_TextureCube_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGatherOffset_TextureCube_texture.type.modifiers = TextureGatherOffset_TextureCube_texture_modifiers;
+    TextureGatherOffset_TextureCube_texture.type.modifierValues = TextureGatherOffset_TextureCube_texture_modifierValues;
     TextureGatherOffset_TextureCube_sampler.name = "sampler"_c;
     TextureGatherOffset_TextureCube_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGatherOffset_TextureCube_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGatherOffset_TextureCube_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGatherOffset_TextureCube_sampler.type.modifiers = TextureGatherOffset_TextureCube_sampler_modifiers;
+    TextureGatherOffset_TextureCube_sampler.type.modifierValues = TextureGatherOffset_TextureCube_sampler_modifierValues;
     TextureGatherOffset_TextureCube_coordinate.name = "coordinate"_c;
     TextureGatherOffset_TextureCube_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureGatherOffset_TextureCube_component.name = "component"_c;
@@ -30307,8 +31451,8 @@ void SetupIntrinsics()
     /// textureGatherOffset with SampledTextureCube, Int32x3, Int32, UInt32
     SampledTextureGatherOffset_TextureCube_texture.name = "texture"_c;
     SampledTextureGatherOffset_TextureCube_texture.type = Type::FullType{ SampledTextureCubeType.name };
-    SampledTextureGatherOffset_TextureCube_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureGatherOffset_TextureCube_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureGatherOffset_TextureCube_texture.type.modifiers = SampledTextureGatherOffset_TextureCube_texture_modifiers;
+    SampledTextureGatherOffset_TextureCube_texture.type.modifierValues = SampledTextureGatherOffset_TextureCube_texture_modifierValues;
     SampledTextureGatherOffset_TextureCube_coordinate.name = "coordinate"_c;
     SampledTextureGatherOffset_TextureCube_coordinate.type = Type::FullType{ Int32x3Type.name };
     SampledTextureGatherOffset_TextureCube_component.name = "component"_c;
@@ -30332,12 +31476,12 @@ void SetupIntrinsics()
     /// textureGather with Texture2DArray, Sampler, Int32x3, Int32
     TextureGather_Texture2DArray_texture.name = "texture"_c;
     TextureGather_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureGather_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGather_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGather_Texture2DArray_texture.type.modifiers = TextureGather_Texture2DArray_texture_modifiers;
+    TextureGather_Texture2DArray_texture.type.modifierValues = TextureGather_Texture2DArray_texture_modifierValues;
     TextureGather_Texture2DArray_sampler.name = "sampler"_c;
     TextureGather_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGather_Texture2DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGather_Texture2DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGather_Texture2DArray_sampler.type.modifiers = TextureGather_Texture2DArray_sampler_modifiers;
+    TextureGather_Texture2DArray_sampler.type.modifierValues = TextureGather_Texture2DArray_sampler_modifierValues;
     TextureGather_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureGather_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureGather_Texture2DArray_component.name = "component"_c;
@@ -30360,8 +31504,8 @@ void SetupIntrinsics()
     /// textureGather with SampledTexture2DArray, Int32x3, Int32
     SampledTextureGather_Texture2DArray_texture.name = "texture"_c;
     SampledTextureGather_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
-    SampledTextureGather_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureGather_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureGather_Texture2DArray_texture.type.modifiers = SampledTextureGather_Texture2DArray_texture_modifiers;
+    SampledTextureGather_Texture2DArray_texture.type.modifierValues = SampledTextureGather_Texture2DArray_texture_modifierValues;
     SampledTextureGather_Texture2DArray_coordinate.name = "coordinate"_c;
     SampledTextureGather_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     SampledTextureGather_Texture2DArray_component.name = "component"_c;
@@ -30382,12 +31526,12 @@ void SetupIntrinsics()
     /// textureGatherOffset with Texture2DArray, Sampler, Int32x3, Int32, UInt32
     TextureGatherOffset_Texture2DArray_texture.name = "texture"_c;
     TextureGatherOffset_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureGatherOffset_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGatherOffset_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGatherOffset_Texture2DArray_texture.type.modifiers = TextureGatherOffset_Texture2DArray_texture_modifiers;
+    TextureGatherOffset_Texture2DArray_texture.type.modifierValues = TextureGatherOffset_Texture2DArray_texture_modifierValues;
     TextureGatherOffset_Texture2DArray_sampler.name = "sampler"_c;
     TextureGatherOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGatherOffset_Texture2DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGatherOffset_Texture2DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGatherOffset_Texture2DArray_sampler.type.modifiers = TextureGatherOffset_Texture2DArray_sampler_modifiers;
+    TextureGatherOffset_Texture2DArray_sampler.type.modifierValues = TextureGatherOffset_Texture2DArray_sampler_modifierValues;
     TextureGatherOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureGatherOffset_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     TextureGatherOffset_Texture2DArray_component.name = "component"_c;
@@ -30413,8 +31557,8 @@ void SetupIntrinsics()
     /// textureGatherOffset with SampledTexture2DArray, Int32x3, Int32, UInt32
     SampledTextureGatherOffset_Texture2DArray_texture.name = "texture"_c;
     SampledTextureGatherOffset_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
-    SampledTextureGatherOffset_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureGatherOffset_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureGatherOffset_Texture2DArray_texture.type.modifiers = SampledTextureGatherOffset_Texture2DArray_texture_modifiers;
+    SampledTextureGatherOffset_Texture2DArray_texture.type.modifierValues = SampledTextureGatherOffset_Texture2DArray_texture_modifierValues;
     SampledTextureGatherOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     SampledTextureGatherOffset_Texture2DArray_coordinate.type = Type::FullType{ Int32x3Type.name };
     SampledTextureGatherOffset_Texture2DArray_component.name = "component"_c;
@@ -30438,12 +31582,12 @@ void SetupIntrinsics()
     /// textureGather with TextureCubeArray, Sampler, Int32x4, Int32
     TextureGather_TextureCubeArray_texture.name = "texture"_c;
     TextureGather_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureGather_TextureCubeArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGather_TextureCubeArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGather_TextureCubeArray_texture.type.modifiers = TextureGather_TextureCubeArray_texture_modifiers;
+    TextureGather_TextureCubeArray_texture.type.modifierValues = TextureGather_TextureCubeArray_texture_modifierValues;
     TextureGather_TextureCubeArray_sampler.name = "sampler"_c;
     TextureGather_TextureCubeArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGather_TextureCubeArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGather_TextureCubeArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGather_TextureCubeArray_sampler.type.modifiers = TextureGather_TextureCubeArray_sampler_modifiers;
+    TextureGather_TextureCubeArray_sampler.type.modifierValues = TextureGather_TextureCubeArray_sampler_modifierValues;
     TextureGather_TextureCubeArray_coordinate.name = "coordinate"_c;
     TextureGather_TextureCubeArray_coordinate.type = Type::FullType{ Int32x4Type.name };
     TextureGather_TextureCubeArray_component.name = "component"_c;
@@ -30466,8 +31610,8 @@ void SetupIntrinsics()
     /// textureGather with SampledTextureCubeArray, Int32x4, Int32
     SampledTextureGather_TextureCubeArray_texture.name = "texture"_c;
     SampledTextureGather_TextureCubeArray_texture.type = Type::FullType{ SampledTextureCubeArrayType.name };
-    SampledTextureGather_TextureCubeArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureGather_TextureCubeArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureGather_TextureCubeArray_texture.type.modifiers = SampledTextureGather_TextureCubeArray_texture_modifiers;
+    SampledTextureGather_TextureCubeArray_texture.type.modifierValues = SampledTextureGather_TextureCubeArray_texture_modifierValues;
     SampledTextureGather_TextureCubeArray_coordinate.name = "coordinate"_c;
     SampledTextureGather_TextureCubeArray_coordinate.type = Type::FullType{ Int32x4Type.name };
     SampledTextureGather_TextureCubeArray_component.name = "component"_c;
@@ -30488,12 +31632,12 @@ void SetupIntrinsics()
     /// textureGatherOffset with TextureCubeArray, Sampler, Int32x4, Int32, UInt32
     TextureGatherOffset_TextureCubeArray_texture.name = "texture"_c;
     TextureGatherOffset_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureGatherOffset_TextureCubeArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGatherOffset_TextureCubeArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGatherOffset_TextureCubeArray_texture.type.modifiers = TextureGatherOffset_TextureCubeArray_texture_modifiers;
+    TextureGatherOffset_TextureCubeArray_texture.type.modifierValues = TextureGatherOffset_TextureCubeArray_texture_modifierValues;
     TextureGatherOffset_TextureCubeArray_sampler.name = "sampler"_c;
     TextureGatherOffset_TextureCubeArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureGatherOffset_TextureCubeArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureGatherOffset_TextureCubeArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureGatherOffset_TextureCubeArray_sampler.type.modifiers = TextureGatherOffset_TextureCubeArray_sampler_modifiers;
+    TextureGatherOffset_TextureCubeArray_sampler.type.modifierValues = TextureGatherOffset_TextureCubeArray_sampler_modifierValues;
     TextureGatherOffset_TextureCubeArray_coordinate.name = "coordinate"_c;
     TextureGatherOffset_TextureCubeArray_coordinate.type = Type::FullType{ Int32x4Type.name };
     TextureGatherOffset_TextureCubeArray_component.name = "component"_c;
@@ -30519,8 +31663,8 @@ void SetupIntrinsics()
     /// textureGatherOffset with SampledTextureCubeArray, Int32x4, Int32, UInt32
     SampledTextureGatherOffset_TextureCubeArray_texture.name = "texture"_c;
     SampledTextureGatherOffset_TextureCubeArray_texture.type = Type::FullType{ SampledTextureCubeArrayType.name };
-    SampledTextureGatherOffset_TextureCubeArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureGatherOffset_TextureCubeArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureGatherOffset_TextureCubeArray_texture.type.modifiers = SampledTextureGatherOffset_TextureCubeArray_texture_modifiers;
+    SampledTextureGatherOffset_TextureCubeArray_texture.type.modifierValues = SampledTextureGatherOffset_TextureCubeArray_texture_modifierValues;
     SampledTextureGatherOffset_TextureCubeArray_coordinate.name = "coordinate"_c;
     SampledTextureGatherOffset_TextureCubeArray_coordinate.type = Type::FullType{ Int32x4Type.name };
     SampledTextureGatherOffset_TextureCubeArray_component.name = "component"_c;
@@ -30544,8 +31688,8 @@ void SetupIntrinsics()
     /// texturePixelCacheLoad with PixelCache
     TexturePixelCacheLoad_PixelCache_texture.name = "texture"_c;
     TexturePixelCacheLoad_PixelCache_texture.type = Type::FullType{ PixelCacheType.name };
-    TexturePixelCacheLoad_PixelCache_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TexturePixelCacheLoad_PixelCache_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TexturePixelCacheLoad_PixelCache_texture.type.modifiers = TexturePixelCacheLoad_PixelCache_texture_modifiers;
+    TexturePixelCacheLoad_PixelCache_texture.type.modifierValues = TexturePixelCacheLoad_PixelCache_texture_modifierValues;
     TexturePixelCacheLoad_PixelCache.documentation = "Load a pixel value from a previous thread"_c;
     TexturePixelCacheLoad_PixelCache.name = "texturePixelCacheLoad"_c;
     TexturePixelCacheLoad_PixelCache.returnType = Type::FullType { PixelCacheType.name };
@@ -30560,8 +31704,8 @@ void SetupIntrinsics()
     /// texturePixelCacheLoad with PixelCacheMS, UInt32
     TexturePixelCacheLoad_PixelCacheMS_texture.name = "texture"_c;
     TexturePixelCacheLoad_PixelCacheMS_texture.type = Type::FullType{ PixelCacheMSType.name };
-    TexturePixelCacheLoad_PixelCacheMS_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TexturePixelCacheLoad_PixelCacheMS_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TexturePixelCacheLoad_PixelCacheMS_texture.type.modifiers = TexturePixelCacheLoad_PixelCacheMS_texture_modifiers;
+    TexturePixelCacheLoad_PixelCacheMS_texture.type.modifierValues = TexturePixelCacheLoad_PixelCacheMS_texture_modifierValues;
     TexturePixelCacheLoad_PixelCacheMS_sample.name = "sample"_c;
     TexturePixelCacheLoad_PixelCacheMS_sample.type = Type::FullType{ UInt32Type.name };
     TexturePixelCacheLoad_PixelCacheMS.documentation = "Load a pixel value from a previous thread"_c;
@@ -30579,12 +31723,12 @@ void SetupIntrinsics()
     /// textureSample with Texture1D, Sampler, Float32
     TextureSample_Texture1D_texture.name = "texture"_c;
     TextureSample_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSample_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSample_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSample_Texture1D_texture.type.modifiers = TextureSample_Texture1D_texture_modifiers;
+    TextureSample_Texture1D_texture.type.modifierValues = TextureSample_Texture1D_texture_modifierValues;
     TextureSample_Texture1D_sampler.name = "sampler"_c;
     TextureSample_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSample_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSample_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSample_Texture1D_sampler.type.modifiers = TextureSample_Texture1D_sampler_modifiers;
+    TextureSample_Texture1D_sampler.type.modifierValues = TextureSample_Texture1D_sampler_modifierValues;
     TextureSample_Texture1D_coordinate.name = "coordinate"_c;
     TextureSample_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSample_Texture1D.documentation = "Sample a texture at coordinate"_c;
@@ -30604,8 +31748,8 @@ void SetupIntrinsics()
     /// textureSample with SampledTexture1D, Float32
     SampledTextureSample_Texture1D_texture.name = "texture"_c;
     SampledTextureSample_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSample_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSample_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSample_Texture1D_texture.type.modifiers = SampledTextureSample_Texture1D_texture_modifiers;
+    SampledTextureSample_Texture1D_texture.type.modifierValues = SampledTextureSample_Texture1D_texture_modifierValues;
     SampledTextureSample_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSample_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSample_Texture1D.documentation = "Sample a texture at coordinate"_c;
@@ -30623,12 +31767,12 @@ void SetupIntrinsics()
     /// textureSample with Texture2D, Sampler, Float32x2
     TextureSample_Texture2D_texture.name = "texture"_c;
     TextureSample_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSample_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSample_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSample_Texture2D_texture.type.modifiers = TextureSample_Texture2D_texture_modifiers;
+    TextureSample_Texture2D_texture.type.modifierValues = TextureSample_Texture2D_texture_modifierValues;
     TextureSample_Texture2D_sampler.name = "sampler"_c;
     TextureSample_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSample_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSample_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSample_Texture2D_sampler.type.modifiers = TextureSample_Texture2D_sampler_modifiers;
+    TextureSample_Texture2D_sampler.type.modifierValues = TextureSample_Texture2D_sampler_modifierValues;
     TextureSample_Texture2D_coordinate.name = "coordinate"_c;
     TextureSample_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSample_Texture2D.documentation = "Sample a texture at coordinate"_c;
@@ -30648,8 +31792,8 @@ void SetupIntrinsics()
     /// textureSample with SampledTexture2D, Float32x2
     SampledTextureSample_Texture2D_texture.name = "texture"_c;
     SampledTextureSample_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSample_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSample_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSample_Texture2D_texture.type.modifiers = SampledTextureSample_Texture2D_texture_modifiers;
+    SampledTextureSample_Texture2D_texture.type.modifierValues = SampledTextureSample_Texture2D_texture_modifierValues;
     SampledTextureSample_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSample_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSample_Texture2D.documentation = "Sample a texture at coordinate"_c;
@@ -30667,12 +31811,12 @@ void SetupIntrinsics()
     /// textureSample with Texture3D, Sampler, Float32x3
     TextureSample_Texture3D_texture.name = "texture"_c;
     TextureSample_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSample_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSample_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSample_Texture3D_texture.type.modifiers = TextureSample_Texture3D_texture_modifiers;
+    TextureSample_Texture3D_texture.type.modifierValues = TextureSample_Texture3D_texture_modifierValues;
     TextureSample_Texture3D_sampler.name = "sampler"_c;
     TextureSample_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSample_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSample_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSample_Texture3D_sampler.type.modifiers = TextureSample_Texture3D_sampler_modifiers;
+    TextureSample_Texture3D_sampler.type.modifierValues = TextureSample_Texture3D_sampler_modifierValues;
     TextureSample_Texture3D_coordinate.name = "coordinate"_c;
     TextureSample_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSample_Texture3D.documentation = "Sample a texture at coordinate"_c;
@@ -30692,8 +31836,8 @@ void SetupIntrinsics()
     /// textureSample with SampledTexture3D, Float32x3
     SampledTextureSample_Texture3D_texture.name = "texture"_c;
     SampledTextureSample_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSample_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSample_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSample_Texture3D_texture.type.modifiers = SampledTextureSample_Texture3D_texture_modifiers;
+    SampledTextureSample_Texture3D_texture.type.modifierValues = SampledTextureSample_Texture3D_texture_modifierValues;
     SampledTextureSample_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSample_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSample_Texture3D.documentation = "Sample a texture at coordinate"_c;
@@ -30711,12 +31855,12 @@ void SetupIntrinsics()
     /// textureSample with TextureCube, Sampler, Float32x3
     TextureSample_TextureCube_texture.name = "texture"_c;
     TextureSample_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureSample_TextureCube_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSample_TextureCube_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSample_TextureCube_texture.type.modifiers = TextureSample_TextureCube_texture_modifiers;
+    TextureSample_TextureCube_texture.type.modifierValues = TextureSample_TextureCube_texture_modifierValues;
     TextureSample_TextureCube_sampler.name = "sampler"_c;
     TextureSample_TextureCube_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSample_TextureCube_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSample_TextureCube_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSample_TextureCube_sampler.type.modifiers = TextureSample_TextureCube_sampler_modifiers;
+    TextureSample_TextureCube_sampler.type.modifierValues = TextureSample_TextureCube_sampler_modifierValues;
     TextureSample_TextureCube_coordinate.name = "coordinate"_c;
     TextureSample_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSample_TextureCube.documentation = "Sample a texture at coordinate"_c;
@@ -30736,8 +31880,8 @@ void SetupIntrinsics()
     /// textureSample with SampledTextureCube, Float32x3
     SampledTextureSample_TextureCube_texture.name = "texture"_c;
     SampledTextureSample_TextureCube_texture.type = Type::FullType{ SampledTextureCubeType.name };
-    SampledTextureSample_TextureCube_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSample_TextureCube_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSample_TextureCube_texture.type.modifiers = SampledTextureSample_TextureCube_texture_modifiers;
+    SampledTextureSample_TextureCube_texture.type.modifierValues = SampledTextureSample_TextureCube_texture_modifierValues;
     SampledTextureSample_TextureCube_coordinate.name = "coordinate"_c;
     SampledTextureSample_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSample_TextureCube.documentation = "Sample a texture at coordinate"_c;
@@ -30755,12 +31899,12 @@ void SetupIntrinsics()
     /// textureSample with Texture1DArray, Sampler, Float32x2
     TextureSample_Texture1DArray_texture.name = "texture"_c;
     TextureSample_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureSample_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSample_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSample_Texture1DArray_texture.type.modifiers = TextureSample_Texture1DArray_texture_modifiers;
+    TextureSample_Texture1DArray_texture.type.modifierValues = TextureSample_Texture1DArray_texture_modifierValues;
     TextureSample_Texture1DArray_sampler.name = "sampler"_c;
     TextureSample_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSample_Texture1DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSample_Texture1DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSample_Texture1DArray_sampler.type.modifiers = TextureSample_Texture1DArray_sampler_modifiers;
+    TextureSample_Texture1DArray_sampler.type.modifierValues = TextureSample_Texture1DArray_sampler_modifierValues;
     TextureSample_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSample_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSample_Texture1DArray.documentation = "Sample a texture at coordinate"_c;
@@ -30780,8 +31924,8 @@ void SetupIntrinsics()
     /// textureSample with SampledTexture1DArray, Float32x2
     SampledTextureSample_Texture1DArray_texture.name = "texture"_c;
     SampledTextureSample_Texture1DArray_texture.type = Type::FullType{ SampledTexture1DArrayType.name };
-    SampledTextureSample_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSample_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSample_Texture1DArray_texture.type.modifiers = SampledTextureSample_Texture1DArray_texture_modifiers;
+    SampledTextureSample_Texture1DArray_texture.type.modifierValues = SampledTextureSample_Texture1DArray_texture_modifierValues;
     SampledTextureSample_Texture1DArray_coordinate.name = "coordinate"_c;
     SampledTextureSample_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSample_Texture1DArray.documentation = "Sample a texture at coordinate"_c;
@@ -30799,12 +31943,12 @@ void SetupIntrinsics()
     /// textureSample with Texture2DArray, Sampler, Float32x3
     TextureSample_Texture2DArray_texture.name = "texture"_c;
     TextureSample_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureSample_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSample_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSample_Texture2DArray_texture.type.modifiers = TextureSample_Texture2DArray_texture_modifiers;
+    TextureSample_Texture2DArray_texture.type.modifierValues = TextureSample_Texture2DArray_texture_modifierValues;
     TextureSample_Texture2DArray_sampler.name = "sampler"_c;
     TextureSample_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSample_Texture2DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSample_Texture2DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSample_Texture2DArray_sampler.type.modifiers = TextureSample_Texture2DArray_sampler_modifiers;
+    TextureSample_Texture2DArray_sampler.type.modifierValues = TextureSample_Texture2DArray_sampler_modifierValues;
     TextureSample_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSample_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSample_Texture2DArray.documentation = "Sample a texture at coordinate"_c;
@@ -30824,8 +31968,8 @@ void SetupIntrinsics()
     /// textureSample with SampledTexture2DArray, Float32x3
     SampledTextureSample_Texture2DArray_texture.name = "texture"_c;
     SampledTextureSample_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
-    SampledTextureSample_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSample_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSample_Texture2DArray_texture.type.modifiers = SampledTextureSample_Texture2DArray_texture_modifiers;
+    SampledTextureSample_Texture2DArray_texture.type.modifierValues = SampledTextureSample_Texture2DArray_texture_modifierValues;
     SampledTextureSample_Texture2DArray_coordinate.name = "coordinate"_c;
     SampledTextureSample_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSample_Texture2DArray.documentation = "Sample a texture at coordinate"_c;
@@ -30843,12 +31987,12 @@ void SetupIntrinsics()
     /// textureSample with TextureCubeArray, Sampler, Float32x4
     TextureSample_TextureCubeArray_texture.name = "texture"_c;
     TextureSample_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureSample_TextureCubeArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSample_TextureCubeArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSample_TextureCubeArray_texture.type.modifiers = TextureSample_TextureCubeArray_texture_modifiers;
+    TextureSample_TextureCubeArray_texture.type.modifierValues = TextureSample_TextureCubeArray_texture_modifierValues;
     TextureSample_TextureCubeArray_sampler.name = "sampler"_c;
     TextureSample_TextureCubeArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSample_TextureCubeArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSample_TextureCubeArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSample_TextureCubeArray_sampler.type.modifiers = TextureSample_TextureCubeArray_sampler_modifiers;
+    TextureSample_TextureCubeArray_sampler.type.modifierValues = TextureSample_TextureCubeArray_sampler_modifierValues;
     TextureSample_TextureCubeArray_coordinate.name = "coordinate"_c;
     TextureSample_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
     TextureSample_TextureCubeArray.documentation = "Sample a texture at coordinate"_c;
@@ -30868,8 +32012,8 @@ void SetupIntrinsics()
     /// textureSample with SampledTextureCubeArray, Float32x4
     SampledTextureSample_TextureCubeArray_texture.name = "texture"_c;
     SampledTextureSample_TextureCubeArray_texture.type = Type::FullType{ SampledTextureCubeArrayType.name };
-    SampledTextureSample_TextureCubeArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSample_TextureCubeArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSample_TextureCubeArray_texture.type.modifiers = SampledTextureSample_TextureCubeArray_texture_modifiers;
+    SampledTextureSample_TextureCubeArray_texture.type.modifierValues = SampledTextureSample_TextureCubeArray_texture_modifierValues;
     SampledTextureSample_TextureCubeArray_coordinate.name = "coordinate"_c;
     SampledTextureSample_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
     SampledTextureSample_TextureCubeArray.documentation = "Sample a texture at coordinate"_c;
@@ -30887,12 +32031,12 @@ void SetupIntrinsics()
     /// textureSampleOffset with Texture1D, Sampler, Float32, Float32
     TextureSampleOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleOffset_Texture1D_texture.type.modifiers = TextureSampleOffset_Texture1D_texture_modifiers;
+    TextureSampleOffset_Texture1D_texture.type.modifierValues = TextureSampleOffset_Texture1D_texture_modifierValues;
     TextureSampleOffset_Texture1D_sampler.name = "sampler"_c;
     TextureSampleOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleOffset_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleOffset_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleOffset_Texture1D_sampler.type.modifiers = TextureSampleOffset_Texture1D_sampler_modifiers;
+    TextureSampleOffset_Texture1D_sampler.type.modifierValues = TextureSampleOffset_Texture1D_sampler_modifierValues;
     TextureSampleOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleOffset_Texture1D_offset.name = "offset"_c;
@@ -30915,8 +32059,8 @@ void SetupIntrinsics()
     /// textureSampleOffset with SampledTexture1D, Float32, Float32
     SampledTextureSampleOffset_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleOffset_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleOffset_Texture1D_texture.type.modifiers = SampledTextureSampleOffset_Texture1D_texture_modifiers;
+    SampledTextureSampleOffset_Texture1D_texture.type.modifierValues = SampledTextureSampleOffset_Texture1D_texture_modifierValues;
     SampledTextureSampleOffset_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleOffset_Texture1D_offset.name = "offset"_c;
@@ -30937,12 +32081,12 @@ void SetupIntrinsics()
     /// textureSampleOffset with Texture2D, Sampler, Float32x2, Float32x2
     TextureSampleOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleOffset_Texture2D_texture.type.modifiers = TextureSampleOffset_Texture2D_texture_modifiers;
+    TextureSampleOffset_Texture2D_texture.type.modifierValues = TextureSampleOffset_Texture2D_texture_modifierValues;
     TextureSampleOffset_Texture2D_sampler.name = "sampler"_c;
     TextureSampleOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleOffset_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleOffset_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleOffset_Texture2D_sampler.type.modifiers = TextureSampleOffset_Texture2D_sampler_modifiers;
+    TextureSampleOffset_Texture2D_sampler.type.modifierValues = TextureSampleOffset_Texture2D_sampler_modifierValues;
     TextureSampleOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleOffset_Texture2D_offset.name = "offset"_c;
@@ -30965,8 +32109,8 @@ void SetupIntrinsics()
     /// textureSampleOffset with SampledTexture2D, Float32x2, Float32x2
     SampledTextureSampleOffset_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleOffset_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleOffset_Texture2D_texture.type.modifiers = SampledTextureSampleOffset_Texture2D_texture_modifiers;
+    SampledTextureSampleOffset_Texture2D_texture.type.modifierValues = SampledTextureSampleOffset_Texture2D_texture_modifierValues;
     SampledTextureSampleOffset_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleOffset_Texture2D_offset.name = "offset"_c;
@@ -30987,12 +32131,12 @@ void SetupIntrinsics()
     /// textureSampleOffset with Texture3D, Sampler, Float32x3, Float32x3
     TextureSampleOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleOffset_Texture3D_texture.type.modifiers = TextureSampleOffset_Texture3D_texture_modifiers;
+    TextureSampleOffset_Texture3D_texture.type.modifierValues = TextureSampleOffset_Texture3D_texture_modifierValues;
     TextureSampleOffset_Texture3D_sampler.name = "sampler"_c;
     TextureSampleOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleOffset_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleOffset_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleOffset_Texture3D_sampler.type.modifiers = TextureSampleOffset_Texture3D_sampler_modifiers;
+    TextureSampleOffset_Texture3D_sampler.type.modifierValues = TextureSampleOffset_Texture3D_sampler_modifierValues;
     TextureSampleOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleOffset_Texture3D_offset.name = "offset"_c;
@@ -31015,8 +32159,8 @@ void SetupIntrinsics()
     /// textureSampleOffset with SampledTexture3D, Float32x3, Float32x3
     SampledTextureSampleOffset_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleOffset_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleOffset_Texture3D_texture.type.modifiers = SampledTextureSampleOffset_Texture3D_texture_modifiers;
+    SampledTextureSampleOffset_Texture3D_texture.type.modifierValues = SampledTextureSampleOffset_Texture3D_texture_modifierValues;
     SampledTextureSampleOffset_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleOffset_Texture3D_offset.name = "offset"_c;
@@ -31037,12 +32181,12 @@ void SetupIntrinsics()
     /// textureSampleOffset with Texture1DArray, Sampler, Float32x2, Float32x2
     TextureSampleOffset_Texture1DArray_texture.name = "texture"_c;
     TextureSampleOffset_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureSampleOffset_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleOffset_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleOffset_Texture1DArray_texture.type.modifiers = TextureSampleOffset_Texture1DArray_texture_modifiers;
+    TextureSampleOffset_Texture1DArray_texture.type.modifierValues = TextureSampleOffset_Texture1DArray_texture_modifierValues;
     TextureSampleOffset_Texture1DArray_sampler.name = "sampler"_c;
     TextureSampleOffset_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleOffset_Texture1DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleOffset_Texture1DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleOffset_Texture1DArray_sampler.type.modifiers = TextureSampleOffset_Texture1DArray_sampler_modifiers;
+    TextureSampleOffset_Texture1DArray_sampler.type.modifierValues = TextureSampleOffset_Texture1DArray_sampler_modifierValues;
     TextureSampleOffset_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleOffset_Texture1DArray_offset.name = "offset"_c;
@@ -31065,8 +32209,8 @@ void SetupIntrinsics()
     /// textureSampleOffset with SampledTexture1DArray, Float32x2, Float32x2
     SampledTextureSampleOffset_Texture1DArray_texture.name = "texture"_c;
     SampledTextureSampleOffset_Texture1DArray_texture.type = Type::FullType{ SampledTexture1DArrayType.name };
-    SampledTextureSampleOffset_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleOffset_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleOffset_Texture1DArray_texture.type.modifiers = SampledTextureSampleOffset_Texture1DArray_texture_modifiers;
+    SampledTextureSampleOffset_Texture1DArray_texture.type.modifierValues = SampledTextureSampleOffset_Texture1DArray_texture_modifierValues;
     SampledTextureSampleOffset_Texture1DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleOffset_Texture1DArray_offset.name = "offset"_c;
@@ -31087,12 +32231,12 @@ void SetupIntrinsics()
     /// textureSampleOffset with Texture2DArray, Sampler, Float32x3, Float32x3
     TextureSampleOffset_Texture2DArray_texture.name = "texture"_c;
     TextureSampleOffset_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureSampleOffset_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleOffset_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleOffset_Texture2DArray_texture.type.modifiers = TextureSampleOffset_Texture2DArray_texture_modifiers;
+    TextureSampleOffset_Texture2DArray_texture.type.modifierValues = TextureSampleOffset_Texture2DArray_texture_modifierValues;
     TextureSampleOffset_Texture2DArray_sampler.name = "sampler"_c;
     TextureSampleOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleOffset_Texture2DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleOffset_Texture2DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleOffset_Texture2DArray_sampler.type.modifiers = TextureSampleOffset_Texture2DArray_sampler_modifiers;
+    TextureSampleOffset_Texture2DArray_sampler.type.modifierValues = TextureSampleOffset_Texture2DArray_sampler_modifierValues;
     TextureSampleOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleOffset_Texture2DArray_offset.name = "offset"_c;
@@ -31115,8 +32259,8 @@ void SetupIntrinsics()
     /// textureSampleOffset with SampledTexture2DArray, Float32x3, Float32x3
     SampledTextureSampleOffset_Texture2DArray_texture.name = "texture"_c;
     SampledTextureSampleOffset_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
-    SampledTextureSampleOffset_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleOffset_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleOffset_Texture2DArray_texture.type.modifiers = SampledTextureSampleOffset_Texture2DArray_texture_modifiers;
+    SampledTextureSampleOffset_Texture2DArray_texture.type.modifierValues = SampledTextureSampleOffset_Texture2DArray_texture_modifierValues;
     SampledTextureSampleOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleOffset_Texture2DArray_offset.name = "offset"_c;
@@ -31137,12 +32281,12 @@ void SetupIntrinsics()
     /// textureSampleProj with Texture1D, Sampler, Float32, Float32
     TextureSampleProj_Texture1D_texture.name = "texture"_c;
     TextureSampleProj_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleProj_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleProj_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleProj_Texture1D_texture.type.modifiers = TextureSampleProj_Texture1D_texture_modifiers;
+    TextureSampleProj_Texture1D_texture.type.modifierValues = TextureSampleProj_Texture1D_texture_modifierValues;
     TextureSampleProj_Texture1D_sampler.name = "sampler"_c;
     TextureSampleProj_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleProj_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleProj_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleProj_Texture1D_sampler.type.modifiers = TextureSampleProj_Texture1D_sampler_modifiers;
+    TextureSampleProj_Texture1D_sampler.type.modifierValues = TextureSampleProj_Texture1D_sampler_modifierValues;
     TextureSampleProj_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleProj_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleProj_Texture1D_proj.name = "proj"_c;
@@ -31165,8 +32309,8 @@ void SetupIntrinsics()
     /// textureSampleProj with SampledTexture1D, Float32, Float32
     SampledTextureSampleProj_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleProj_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleProj_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleProj_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleProj_Texture1D_texture.type.modifiers = SampledTextureSampleProj_Texture1D_texture_modifiers;
+    SampledTextureSampleProj_Texture1D_texture.type.modifierValues = SampledTextureSampleProj_Texture1D_texture_modifierValues;
     SampledTextureSampleProj_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleProj_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProj_Texture1D_proj.name = "proj"_c;
@@ -31187,12 +32331,12 @@ void SetupIntrinsics()
     /// textureSampleProj with Texture2D, Sampler, Float32x2, Float32
     TextureSampleProj_Texture2D_texture.name = "texture"_c;
     TextureSampleProj_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleProj_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleProj_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleProj_Texture2D_texture.type.modifiers = TextureSampleProj_Texture2D_texture_modifiers;
+    TextureSampleProj_Texture2D_texture.type.modifierValues = TextureSampleProj_Texture2D_texture_modifierValues;
     TextureSampleProj_Texture2D_sampler.name = "sampler"_c;
     TextureSampleProj_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleProj_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleProj_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleProj_Texture2D_sampler.type.modifiers = TextureSampleProj_Texture2D_sampler_modifiers;
+    TextureSampleProj_Texture2D_sampler.type.modifierValues = TextureSampleProj_Texture2D_sampler_modifierValues;
     TextureSampleProj_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleProj_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleProj_Texture2D_proj.name = "proj"_c;
@@ -31215,8 +32359,8 @@ void SetupIntrinsics()
     /// textureSampleProj with SampledTexture2D, Float32x2, Float32
     SampledTextureSampleProj_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleProj_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleProj_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleProj_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleProj_Texture2D_texture.type.modifiers = SampledTextureSampleProj_Texture2D_texture_modifiers;
+    SampledTextureSampleProj_Texture2D_texture.type.modifierValues = SampledTextureSampleProj_Texture2D_texture_modifierValues;
     SampledTextureSampleProj_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleProj_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleProj_Texture2D_proj.name = "proj"_c;
@@ -31237,12 +32381,12 @@ void SetupIntrinsics()
     /// textureSampleProj with Texture3D, Sampler, Float32x3, Float32
     TextureSampleProj_Texture3D_texture.name = "texture"_c;
     TextureSampleProj_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleProj_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleProj_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleProj_Texture3D_texture.type.modifiers = TextureSampleProj_Texture3D_texture_modifiers;
+    TextureSampleProj_Texture3D_texture.type.modifierValues = TextureSampleProj_Texture3D_texture_modifierValues;
     TextureSampleProj_Texture3D_sampler.name = "sampler"_c;
     TextureSampleProj_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleProj_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleProj_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleProj_Texture3D_sampler.type.modifiers = TextureSampleProj_Texture3D_sampler_modifiers;
+    TextureSampleProj_Texture3D_sampler.type.modifierValues = TextureSampleProj_Texture3D_sampler_modifierValues;
     TextureSampleProj_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleProj_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleProj_Texture3D_proj.name = "proj"_c;
@@ -31265,8 +32409,8 @@ void SetupIntrinsics()
     /// textureSampleProj with SampledTexture3D, Float32x3, Float32
     SampledTextureSampleProj_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleProj_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleProj_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleProj_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleProj_Texture3D_texture.type.modifiers = SampledTextureSampleProj_Texture3D_texture_modifiers;
+    SampledTextureSampleProj_Texture3D_texture.type.modifierValues = SampledTextureSampleProj_Texture3D_texture_modifierValues;
     SampledTextureSampleProj_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleProj_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleProj_Texture3D_proj.name = "proj"_c;
@@ -31287,12 +32431,12 @@ void SetupIntrinsics()
     /// textureSampleProjOffset with Texture1D, Sampler, Float32, Float32, Float32
     TextureSampleProjOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleProjOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleProjOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleProjOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleProjOffset_Texture1D_texture.type.modifiers = TextureSampleProjOffset_Texture1D_texture_modifiers;
+    TextureSampleProjOffset_Texture1D_texture.type.modifierValues = TextureSampleProjOffset_Texture1D_texture_modifierValues;
     TextureSampleProjOffset_Texture1D_sampler.name = "sampler"_c;
     TextureSampleProjOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleProjOffset_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleProjOffset_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleProjOffset_Texture1D_sampler.type.modifiers = TextureSampleProjOffset_Texture1D_sampler_modifiers;
+    TextureSampleProjOffset_Texture1D_sampler.type.modifierValues = TextureSampleProjOffset_Texture1D_sampler_modifierValues;
     TextureSampleProjOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleProjOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleProjOffset_Texture1D_proj.name = "proj"_c;
@@ -31318,8 +32462,8 @@ void SetupIntrinsics()
     /// textureSampleProjOffset with SampledTexture1D, Float32, Float32, Float32
     SampledTextureSampleProjOffset_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleProjOffset_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleProjOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleProjOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleProjOffset_Texture1D_texture.type.modifiers = SampledTextureSampleProjOffset_Texture1D_texture_modifiers;
+    SampledTextureSampleProjOffset_Texture1D_texture.type.modifierValues = SampledTextureSampleProjOffset_Texture1D_texture_modifierValues;
     SampledTextureSampleProjOffset_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleProjOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProjOffset_Texture1D_proj.name = "proj"_c;
@@ -31343,12 +32487,12 @@ void SetupIntrinsics()
     /// textureSampleProjOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2
     TextureSampleProjOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleProjOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleProjOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleProjOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleProjOffset_Texture2D_texture.type.modifiers = TextureSampleProjOffset_Texture2D_texture_modifiers;
+    TextureSampleProjOffset_Texture2D_texture.type.modifierValues = TextureSampleProjOffset_Texture2D_texture_modifierValues;
     TextureSampleProjOffset_Texture2D_sampler.name = "sampler"_c;
     TextureSampleProjOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleProjOffset_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleProjOffset_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleProjOffset_Texture2D_sampler.type.modifiers = TextureSampleProjOffset_Texture2D_sampler_modifiers;
+    TextureSampleProjOffset_Texture2D_sampler.type.modifierValues = TextureSampleProjOffset_Texture2D_sampler_modifierValues;
     TextureSampleProjOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleProjOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleProjOffset_Texture2D_proj.name = "proj"_c;
@@ -31374,8 +32518,8 @@ void SetupIntrinsics()
     /// textureSampleProjOffset with SampledTexture2D, Float32x2, Float32, Float32x2
     SampledTextureSampleProjOffset_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleProjOffset_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleProjOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleProjOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleProjOffset_Texture2D_texture.type.modifiers = SampledTextureSampleProjOffset_Texture2D_texture_modifiers;
+    SampledTextureSampleProjOffset_Texture2D_texture.type.modifierValues = SampledTextureSampleProjOffset_Texture2D_texture_modifierValues;
     SampledTextureSampleProjOffset_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleProjOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleProjOffset_Texture2D_proj.name = "proj"_c;
@@ -31399,12 +32543,12 @@ void SetupIntrinsics()
     /// textureSampleProjOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3
     TextureSampleProjOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleProjOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleProjOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleProjOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleProjOffset_Texture3D_texture.type.modifiers = TextureSampleProjOffset_Texture3D_texture_modifiers;
+    TextureSampleProjOffset_Texture3D_texture.type.modifierValues = TextureSampleProjOffset_Texture3D_texture_modifierValues;
     TextureSampleProjOffset_Texture3D_sampler.name = "sampler"_c;
     TextureSampleProjOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleProjOffset_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleProjOffset_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleProjOffset_Texture3D_sampler.type.modifiers = TextureSampleProjOffset_Texture3D_sampler_modifiers;
+    TextureSampleProjOffset_Texture3D_sampler.type.modifierValues = TextureSampleProjOffset_Texture3D_sampler_modifierValues;
     TextureSampleProjOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleProjOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleProjOffset_Texture3D_proj.name = "proj"_c;
@@ -31430,8 +32574,8 @@ void SetupIntrinsics()
     /// textureSampleProjOffset with SampledTexture3D, Float32x3, Float32, Float32x3
     SampledTextureSampleProjOffset_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleProjOffset_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleProjOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleProjOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleProjOffset_Texture3D_texture.type.modifiers = SampledTextureSampleProjOffset_Texture3D_texture_modifiers;
+    SampledTextureSampleProjOffset_Texture3D_texture.type.modifierValues = SampledTextureSampleProjOffset_Texture3D_texture_modifierValues;
     SampledTextureSampleProjOffset_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleProjOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleProjOffset_Texture3D_proj.name = "proj"_c;
@@ -31455,12 +32599,12 @@ void SetupIntrinsics()
     /// textureSampleCompare with Texture1D, Sampler, Float32, Float32
     TextureSampleCompare_Texture1D_texture.name = "texture"_c;
     TextureSampleCompare_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleCompare_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleCompare_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleCompare_Texture1D_texture.type.modifiers = TextureSampleCompare_Texture1D_texture_modifiers;
+    TextureSampleCompare_Texture1D_texture.type.modifierValues = TextureSampleCompare_Texture1D_texture_modifierValues;
     TextureSampleCompare_Texture1D_sampler.name = "sampler"_c;
     TextureSampleCompare_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleCompare_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleCompare_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleCompare_Texture1D_sampler.type.modifiers = TextureSampleCompare_Texture1D_sampler_modifiers;
+    TextureSampleCompare_Texture1D_sampler.type.modifierValues = TextureSampleCompare_Texture1D_sampler_modifierValues;
     TextureSampleCompare_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleCompare_Texture1D_compare.name = "compare"_c;
@@ -31483,8 +32627,8 @@ void SetupIntrinsics()
     /// textureSampleCompare with SampledTexture1D, Float32, Float32
     SampledTextureSampleCompare_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleCompare_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleCompare_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleCompare_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleCompare_Texture1D_texture.type.modifiers = SampledTextureSampleCompare_Texture1D_texture_modifiers;
+    SampledTextureSampleCompare_Texture1D_texture.type.modifierValues = SampledTextureSampleCompare_Texture1D_texture_modifierValues;
     SampledTextureSampleCompare_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleCompare_Texture1D_compare.name = "compare"_c;
@@ -31505,12 +32649,12 @@ void SetupIntrinsics()
     /// textureSampleCompare with Texture2D, Sampler, Float32x2, Float32
     TextureSampleCompare_Texture2D_texture.name = "texture"_c;
     TextureSampleCompare_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleCompare_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleCompare_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleCompare_Texture2D_texture.type.modifiers = TextureSampleCompare_Texture2D_texture_modifiers;
+    TextureSampleCompare_Texture2D_texture.type.modifierValues = TextureSampleCompare_Texture2D_texture_modifierValues;
     TextureSampleCompare_Texture2D_sampler.name = "sampler"_c;
     TextureSampleCompare_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleCompare_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleCompare_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleCompare_Texture2D_sampler.type.modifiers = TextureSampleCompare_Texture2D_sampler_modifiers;
+    TextureSampleCompare_Texture2D_sampler.type.modifierValues = TextureSampleCompare_Texture2D_sampler_modifierValues;
     TextureSampleCompare_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleCompare_Texture2D_compare.name = "compare"_c;
@@ -31533,8 +32677,8 @@ void SetupIntrinsics()
     /// textureSampleCompare with SampledTexture2D, Float32x2, Float32
     SampledTextureSampleCompare_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleCompare_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleCompare_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleCompare_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleCompare_Texture2D_texture.type.modifiers = SampledTextureSampleCompare_Texture2D_texture_modifiers;
+    SampledTextureSampleCompare_Texture2D_texture.type.modifierValues = SampledTextureSampleCompare_Texture2D_texture_modifierValues;
     SampledTextureSampleCompare_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleCompare_Texture2D_compare.name = "compare"_c;
@@ -31555,12 +32699,12 @@ void SetupIntrinsics()
     /// textureSampleCompare with Texture3D, Sampler, Float32x3, Float32
     TextureSampleCompare_Texture3D_texture.name = "texture"_c;
     TextureSampleCompare_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleCompare_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleCompare_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleCompare_Texture3D_texture.type.modifiers = TextureSampleCompare_Texture3D_texture_modifiers;
+    TextureSampleCompare_Texture3D_texture.type.modifierValues = TextureSampleCompare_Texture3D_texture_modifierValues;
     TextureSampleCompare_Texture3D_sampler.name = "sampler"_c;
     TextureSampleCompare_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleCompare_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleCompare_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleCompare_Texture3D_sampler.type.modifiers = TextureSampleCompare_Texture3D_sampler_modifiers;
+    TextureSampleCompare_Texture3D_sampler.type.modifierValues = TextureSampleCompare_Texture3D_sampler_modifierValues;
     TextureSampleCompare_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleCompare_Texture3D_compare.name = "compare"_c;
@@ -31583,8 +32727,8 @@ void SetupIntrinsics()
     /// textureSampleCompare with SampledTexture3D, Float32x3, Float32
     SampledTextureSampleCompare_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleCompare_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleCompare_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleCompare_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleCompare_Texture3D_texture.type.modifiers = SampledTextureSampleCompare_Texture3D_texture_modifiers;
+    SampledTextureSampleCompare_Texture3D_texture.type.modifierValues = SampledTextureSampleCompare_Texture3D_texture_modifierValues;
     SampledTextureSampleCompare_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleCompare_Texture3D_compare.name = "compare"_c;
@@ -31605,12 +32749,12 @@ void SetupIntrinsics()
     /// textureSampleCompare with Texture1DArray, Sampler, Float32x2, Float32
     TextureSampleCompare_Texture1DArray_texture.name = "texture"_c;
     TextureSampleCompare_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureSampleCompare_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleCompare_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleCompare_Texture1DArray_texture.type.modifiers = TextureSampleCompare_Texture1DArray_texture_modifiers;
+    TextureSampleCompare_Texture1DArray_texture.type.modifierValues = TextureSampleCompare_Texture1DArray_texture_modifierValues;
     TextureSampleCompare_Texture1DArray_sampler.name = "sampler"_c;
     TextureSampleCompare_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleCompare_Texture1DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleCompare_Texture1DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleCompare_Texture1DArray_sampler.type.modifiers = TextureSampleCompare_Texture1DArray_sampler_modifiers;
+    TextureSampleCompare_Texture1DArray_sampler.type.modifierValues = TextureSampleCompare_Texture1DArray_sampler_modifierValues;
     TextureSampleCompare_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleCompare_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleCompare_Texture1DArray_compare.name = "compare"_c;
@@ -31633,8 +32777,8 @@ void SetupIntrinsics()
     /// textureSampleCompare with SampledTexture1DArray, Float32x2, Float32
     SampledTextureSampleCompare_Texture1DArray_texture.name = "texture"_c;
     SampledTextureSampleCompare_Texture1DArray_texture.type = Type::FullType{ SampledTexture1DArrayType.name };
-    SampledTextureSampleCompare_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleCompare_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleCompare_Texture1DArray_texture.type.modifiers = SampledTextureSampleCompare_Texture1DArray_texture_modifiers;
+    SampledTextureSampleCompare_Texture1DArray_texture.type.modifierValues = SampledTextureSampleCompare_Texture1DArray_texture_modifierValues;
     SampledTextureSampleCompare_Texture1DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleCompare_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleCompare_Texture1DArray_compare.name = "compare"_c;
@@ -31655,12 +32799,12 @@ void SetupIntrinsics()
     /// textureSampleCompare with Texture2DArray, Sampler, Float32x3, Float32
     TextureSampleCompare_Texture2DArray_texture.name = "texture"_c;
     TextureSampleCompare_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureSampleCompare_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleCompare_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleCompare_Texture2DArray_texture.type.modifiers = TextureSampleCompare_Texture2DArray_texture_modifiers;
+    TextureSampleCompare_Texture2DArray_texture.type.modifierValues = TextureSampleCompare_Texture2DArray_texture_modifierValues;
     TextureSampleCompare_Texture2DArray_sampler.name = "sampler"_c;
     TextureSampleCompare_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleCompare_Texture2DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleCompare_Texture2DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleCompare_Texture2DArray_sampler.type.modifiers = TextureSampleCompare_Texture2DArray_sampler_modifiers;
+    TextureSampleCompare_Texture2DArray_sampler.type.modifierValues = TextureSampleCompare_Texture2DArray_sampler_modifierValues;
     TextureSampleCompare_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleCompare_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleCompare_Texture2DArray_compare.name = "compare"_c;
@@ -31683,8 +32827,8 @@ void SetupIntrinsics()
     /// textureSampleCompare with SampledTexture2DArray, Float32x3, Float32
     SampledTextureSampleCompare_Texture2DArray_texture.name = "texture"_c;
     SampledTextureSampleCompare_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
-    SampledTextureSampleCompare_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleCompare_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleCompare_Texture2DArray_texture.type.modifiers = SampledTextureSampleCompare_Texture2DArray_texture_modifiers;
+    SampledTextureSampleCompare_Texture2DArray_texture.type.modifierValues = SampledTextureSampleCompare_Texture2DArray_texture_modifierValues;
     SampledTextureSampleCompare_Texture2DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleCompare_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleCompare_Texture2DArray_compare.name = "compare"_c;
@@ -31705,12 +32849,12 @@ void SetupIntrinsics()
     /// textureSampleCompareOffset with Texture1D, Sampler, Float32, Float32, Float32
     TextureSampleCompareOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleCompareOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleCompareOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleCompareOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleCompareOffset_Texture1D_texture.type.modifiers = TextureSampleCompareOffset_Texture1D_texture_modifiers;
+    TextureSampleCompareOffset_Texture1D_texture.type.modifierValues = TextureSampleCompareOffset_Texture1D_texture_modifierValues;
     TextureSampleCompareOffset_Texture1D_sampler.name = "sampler"_c;
     TextureSampleCompareOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleCompareOffset_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleCompareOffset_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleCompareOffset_Texture1D_sampler.type.modifiers = TextureSampleCompareOffset_Texture1D_sampler_modifiers;
+    TextureSampleCompareOffset_Texture1D_sampler.type.modifierValues = TextureSampleCompareOffset_Texture1D_sampler_modifierValues;
     TextureSampleCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleCompareOffset_Texture1D_compare.name = "compare"_c;
@@ -31736,8 +32880,8 @@ void SetupIntrinsics()
     /// textureSampleCompareOffset with SampledTexture1D, Float32, Float32, Float32
     SampledTextureSampleCompareOffset_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleCompareOffset_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleCompareOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleCompareOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleCompareOffset_Texture1D_texture.type.modifiers = SampledTextureSampleCompareOffset_Texture1D_texture_modifiers;
+    SampledTextureSampleCompareOffset_Texture1D_texture.type.modifierValues = SampledTextureSampleCompareOffset_Texture1D_texture_modifierValues;
     SampledTextureSampleCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleCompareOffset_Texture1D_compare.name = "compare"_c;
@@ -31761,12 +32905,12 @@ void SetupIntrinsics()
     /// textureSampleCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2
     TextureSampleCompareOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleCompareOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleCompareOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleCompareOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleCompareOffset_Texture2D_texture.type.modifiers = TextureSampleCompareOffset_Texture2D_texture_modifiers;
+    TextureSampleCompareOffset_Texture2D_texture.type.modifierValues = TextureSampleCompareOffset_Texture2D_texture_modifierValues;
     TextureSampleCompareOffset_Texture2D_sampler.name = "sampler"_c;
     TextureSampleCompareOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleCompareOffset_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleCompareOffset_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleCompareOffset_Texture2D_sampler.type.modifiers = TextureSampleCompareOffset_Texture2D_sampler_modifiers;
+    TextureSampleCompareOffset_Texture2D_sampler.type.modifierValues = TextureSampleCompareOffset_Texture2D_sampler_modifierValues;
     TextureSampleCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleCompareOffset_Texture2D_compare.name = "compare"_c;
@@ -31792,8 +32936,8 @@ void SetupIntrinsics()
     /// textureSampleCompareOffset with SampledTexture2D, Float32x2, Float32, Float32x2
     SampledTextureSampleCompareOffset_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleCompareOffset_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleCompareOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleCompareOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleCompareOffset_Texture2D_texture.type.modifiers = SampledTextureSampleCompareOffset_Texture2D_texture_modifiers;
+    SampledTextureSampleCompareOffset_Texture2D_texture.type.modifierValues = SampledTextureSampleCompareOffset_Texture2D_texture_modifierValues;
     SampledTextureSampleCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleCompareOffset_Texture2D_compare.name = "compare"_c;
@@ -31817,12 +32961,12 @@ void SetupIntrinsics()
     /// textureSampleCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3
     TextureSampleCompareOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleCompareOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleCompareOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleCompareOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleCompareOffset_Texture3D_texture.type.modifiers = TextureSampleCompareOffset_Texture3D_texture_modifiers;
+    TextureSampleCompareOffset_Texture3D_texture.type.modifierValues = TextureSampleCompareOffset_Texture3D_texture_modifierValues;
     TextureSampleCompareOffset_Texture3D_sampler.name = "sampler"_c;
     TextureSampleCompareOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleCompareOffset_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleCompareOffset_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleCompareOffset_Texture3D_sampler.type.modifiers = TextureSampleCompareOffset_Texture3D_sampler_modifiers;
+    TextureSampleCompareOffset_Texture3D_sampler.type.modifierValues = TextureSampleCompareOffset_Texture3D_sampler_modifierValues;
     TextureSampleCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleCompareOffset_Texture3D_compare.name = "compare"_c;
@@ -31848,8 +32992,8 @@ void SetupIntrinsics()
     /// textureSampleCompareOffset with SampledTexture3D, Float32x3, Float32, Float32x3
     SampledTextureSampleCompareOffset_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleCompareOffset_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleCompareOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleCompareOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleCompareOffset_Texture3D_texture.type.modifiers = SampledTextureSampleCompareOffset_Texture3D_texture_modifiers;
+    SampledTextureSampleCompareOffset_Texture3D_texture.type.modifierValues = SampledTextureSampleCompareOffset_Texture3D_texture_modifierValues;
     SampledTextureSampleCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleCompareOffset_Texture3D_compare.name = "compare"_c;
@@ -31873,12 +33017,12 @@ void SetupIntrinsics()
     /// textureSampleCompareOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32x2
     TextureSampleCompareOffset_Texture1DArray_texture.name = "texture"_c;
     TextureSampleCompareOffset_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureSampleCompareOffset_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleCompareOffset_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleCompareOffset_Texture1DArray_texture.type.modifiers = TextureSampleCompareOffset_Texture1DArray_texture_modifiers;
+    TextureSampleCompareOffset_Texture1DArray_texture.type.modifierValues = TextureSampleCompareOffset_Texture1DArray_texture_modifierValues;
     TextureSampleCompareOffset_Texture1DArray_sampler.name = "sampler"_c;
     TextureSampleCompareOffset_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleCompareOffset_Texture1DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleCompareOffset_Texture1DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleCompareOffset_Texture1DArray_sampler.type.modifiers = TextureSampleCompareOffset_Texture1DArray_sampler_modifiers;
+    TextureSampleCompareOffset_Texture1DArray_sampler.type.modifierValues = TextureSampleCompareOffset_Texture1DArray_sampler_modifierValues;
     TextureSampleCompareOffset_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleCompareOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleCompareOffset_Texture1DArray_compare.name = "compare"_c;
@@ -31904,8 +33048,8 @@ void SetupIntrinsics()
     /// textureSampleCompareOffset with SampledTexture1DArray, Float32x2, Float32, Float32x2
     SampledTextureSampleCompareOffset_Texture1DArray_texture.name = "texture"_c;
     SampledTextureSampleCompareOffset_Texture1DArray_texture.type = Type::FullType{ SampledTexture1DArrayType.name };
-    SampledTextureSampleCompareOffset_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleCompareOffset_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleCompareOffset_Texture1DArray_texture.type.modifiers = SampledTextureSampleCompareOffset_Texture1DArray_texture_modifiers;
+    SampledTextureSampleCompareOffset_Texture1DArray_texture.type.modifierValues = SampledTextureSampleCompareOffset_Texture1DArray_texture_modifierValues;
     SampledTextureSampleCompareOffset_Texture1DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleCompareOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleCompareOffset_Texture1DArray_compare.name = "compare"_c;
@@ -31929,12 +33073,12 @@ void SetupIntrinsics()
     /// textureSampleCompareOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32x3
     TextureSampleCompareOffset_Texture2DArray_texture.name = "texture"_c;
     TextureSampleCompareOffset_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureSampleCompareOffset_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleCompareOffset_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleCompareOffset_Texture2DArray_texture.type.modifiers = TextureSampleCompareOffset_Texture2DArray_texture_modifiers;
+    TextureSampleCompareOffset_Texture2DArray_texture.type.modifierValues = TextureSampleCompareOffset_Texture2DArray_texture_modifierValues;
     TextureSampleCompareOffset_Texture2DArray_sampler.name = "sampler"_c;
     TextureSampleCompareOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleCompareOffset_Texture2DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleCompareOffset_Texture2DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleCompareOffset_Texture2DArray_sampler.type.modifiers = TextureSampleCompareOffset_Texture2DArray_sampler_modifiers;
+    TextureSampleCompareOffset_Texture2DArray_sampler.type.modifierValues = TextureSampleCompareOffset_Texture2DArray_sampler_modifierValues;
     TextureSampleCompareOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleCompareOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleCompareOffset_Texture2DArray_compare.name = "compare"_c;
@@ -31960,8 +33104,8 @@ void SetupIntrinsics()
     /// textureSampleCompareOffset with SampledTexture2DArray, Float32x3, Float32, Float32x3
     SampledTextureSampleCompareOffset_Texture2DArray_texture.name = "texture"_c;
     SampledTextureSampleCompareOffset_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
-    SampledTextureSampleCompareOffset_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleCompareOffset_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleCompareOffset_Texture2DArray_texture.type.modifiers = SampledTextureSampleCompareOffset_Texture2DArray_texture_modifiers;
+    SampledTextureSampleCompareOffset_Texture2DArray_texture.type.modifierValues = SampledTextureSampleCompareOffset_Texture2DArray_texture_modifierValues;
     SampledTextureSampleCompareOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleCompareOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleCompareOffset_Texture2DArray_compare.name = "compare"_c;
@@ -31985,12 +33129,12 @@ void SetupIntrinsics()
     /// textureSampleProjCompare with Texture1D, Sampler, Float32, Float32, Float32
     TextureSampleProjCompare_Texture1D_texture.name = "texture"_c;
     TextureSampleProjCompare_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleProjCompare_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleProjCompare_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleProjCompare_Texture1D_texture.type.modifiers = TextureSampleProjCompare_Texture1D_texture_modifiers;
+    TextureSampleProjCompare_Texture1D_texture.type.modifierValues = TextureSampleProjCompare_Texture1D_texture_modifierValues;
     TextureSampleProjCompare_Texture1D_sampler.name = "sampler"_c;
     TextureSampleProjCompare_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleProjCompare_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleProjCompare_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleProjCompare_Texture1D_sampler.type.modifiers = TextureSampleProjCompare_Texture1D_sampler_modifiers;
+    TextureSampleProjCompare_Texture1D_sampler.type.modifierValues = TextureSampleProjCompare_Texture1D_sampler_modifierValues;
     TextureSampleProjCompare_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleProjCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleProjCompare_Texture1D_proj.name = "proj"_c;
@@ -32016,8 +33160,8 @@ void SetupIntrinsics()
     /// textureSampleProjCompare with SampledTexture1D, Float32, Float32, Float32
     SampledTextureSampleProjCompare_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleProjCompare_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleProjCompare_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleProjCompare_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleProjCompare_Texture1D_texture.type.modifiers = SampledTextureSampleProjCompare_Texture1D_texture_modifiers;
+    SampledTextureSampleProjCompare_Texture1D_texture.type.modifierValues = SampledTextureSampleProjCompare_Texture1D_texture_modifierValues;
     SampledTextureSampleProjCompare_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleProjCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProjCompare_Texture1D_proj.name = "proj"_c;
@@ -32041,12 +33185,12 @@ void SetupIntrinsics()
     /// textureSampleProjCompare with Texture2D, Sampler, Float32x2, Float32, Float32
     TextureSampleProjCompare_Texture2D_texture.name = "texture"_c;
     TextureSampleProjCompare_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleProjCompare_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleProjCompare_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleProjCompare_Texture2D_texture.type.modifiers = TextureSampleProjCompare_Texture2D_texture_modifiers;
+    TextureSampleProjCompare_Texture2D_texture.type.modifierValues = TextureSampleProjCompare_Texture2D_texture_modifierValues;
     TextureSampleProjCompare_Texture2D_sampler.name = "sampler"_c;
     TextureSampleProjCompare_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleProjCompare_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleProjCompare_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleProjCompare_Texture2D_sampler.type.modifiers = TextureSampleProjCompare_Texture2D_sampler_modifiers;
+    TextureSampleProjCompare_Texture2D_sampler.type.modifierValues = TextureSampleProjCompare_Texture2D_sampler_modifierValues;
     TextureSampleProjCompare_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleProjCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleProjCompare_Texture2D_proj.name = "proj"_c;
@@ -32072,8 +33216,8 @@ void SetupIntrinsics()
     /// textureSampleProjCompare with SampledTexture2D, Float32x2, Float32, Float32
     SampledTextureSampleProjCompare_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleProjCompare_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleProjCompare_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleProjCompare_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleProjCompare_Texture2D_texture.type.modifiers = SampledTextureSampleProjCompare_Texture2D_texture_modifiers;
+    SampledTextureSampleProjCompare_Texture2D_texture.type.modifierValues = SampledTextureSampleProjCompare_Texture2D_texture_modifierValues;
     SampledTextureSampleProjCompare_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleProjCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleProjCompare_Texture2D_proj.name = "proj"_c;
@@ -32097,12 +33241,12 @@ void SetupIntrinsics()
     /// textureSampleProjCompare with Texture3D, Sampler, Float32x3, Float32, Float32
     TextureSampleProjCompare_Texture3D_texture.name = "texture"_c;
     TextureSampleProjCompare_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleProjCompare_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleProjCompare_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleProjCompare_Texture3D_texture.type.modifiers = TextureSampleProjCompare_Texture3D_texture_modifiers;
+    TextureSampleProjCompare_Texture3D_texture.type.modifierValues = TextureSampleProjCompare_Texture3D_texture_modifierValues;
     TextureSampleProjCompare_Texture3D_sampler.name = "sampler"_c;
     TextureSampleProjCompare_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleProjCompare_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleProjCompare_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleProjCompare_Texture3D_sampler.type.modifiers = TextureSampleProjCompare_Texture3D_sampler_modifiers;
+    TextureSampleProjCompare_Texture3D_sampler.type.modifierValues = TextureSampleProjCompare_Texture3D_sampler_modifierValues;
     TextureSampleProjCompare_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleProjCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleProjCompare_Texture3D_proj.name = "proj"_c;
@@ -32128,8 +33272,8 @@ void SetupIntrinsics()
     /// textureSampleProjCompare with SampledTexture3D, Float32x3, Float32, Float32
     SampledTextureSampleProjCompare_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleProjCompare_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleProjCompare_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleProjCompare_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleProjCompare_Texture3D_texture.type.modifiers = SampledTextureSampleProjCompare_Texture3D_texture_modifiers;
+    SampledTextureSampleProjCompare_Texture3D_texture.type.modifierValues = SampledTextureSampleProjCompare_Texture3D_texture_modifierValues;
     SampledTextureSampleProjCompare_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleProjCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleProjCompare_Texture3D_proj.name = "proj"_c;
@@ -32153,12 +33297,12 @@ void SetupIntrinsics()
     /// textureSampleProjCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
     TextureSampleProjCompareOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleProjCompareOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleProjCompareOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleProjCompareOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleProjCompareOffset_Texture1D_texture.type.modifiers = TextureSampleProjCompareOffset_Texture1D_texture_modifiers;
+    TextureSampleProjCompareOffset_Texture1D_texture.type.modifierValues = TextureSampleProjCompareOffset_Texture1D_texture_modifierValues;
     TextureSampleProjCompareOffset_Texture1D_sampler.name = "sampler"_c;
     TextureSampleProjCompareOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleProjCompareOffset_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleProjCompareOffset_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleProjCompareOffset_Texture1D_sampler.type.modifiers = TextureSampleProjCompareOffset_Texture1D_sampler_modifiers;
+    TextureSampleProjCompareOffset_Texture1D_sampler.type.modifierValues = TextureSampleProjCompareOffset_Texture1D_sampler_modifierValues;
     TextureSampleProjCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleProjCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleProjCompareOffset_Texture1D_proj.name = "proj"_c;
@@ -32187,8 +33331,8 @@ void SetupIntrinsics()
     /// textureSampleProjCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32
     SampledTextureSampleProjCompareOffset_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleProjCompareOffset_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleProjCompareOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleProjCompareOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleProjCompareOffset_Texture1D_texture.type.modifiers = SampledTextureSampleProjCompareOffset_Texture1D_texture_modifiers;
+    SampledTextureSampleProjCompareOffset_Texture1D_texture.type.modifierValues = SampledTextureSampleProjCompareOffset_Texture1D_texture_modifierValues;
     SampledTextureSampleProjCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleProjCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProjCompareOffset_Texture1D_proj.name = "proj"_c;
@@ -32215,12 +33359,12 @@ void SetupIntrinsics()
     /// textureSampleProjCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
     TextureSampleProjCompareOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleProjCompareOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleProjCompareOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleProjCompareOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleProjCompareOffset_Texture2D_texture.type.modifiers = TextureSampleProjCompareOffset_Texture2D_texture_modifiers;
+    TextureSampleProjCompareOffset_Texture2D_texture.type.modifierValues = TextureSampleProjCompareOffset_Texture2D_texture_modifierValues;
     TextureSampleProjCompareOffset_Texture2D_sampler.name = "sampler"_c;
     TextureSampleProjCompareOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleProjCompareOffset_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleProjCompareOffset_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleProjCompareOffset_Texture2D_sampler.type.modifiers = TextureSampleProjCompareOffset_Texture2D_sampler_modifiers;
+    TextureSampleProjCompareOffset_Texture2D_sampler.type.modifierValues = TextureSampleProjCompareOffset_Texture2D_sampler_modifierValues;
     TextureSampleProjCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleProjCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleProjCompareOffset_Texture2D_proj.name = "proj"_c;
@@ -32249,8 +33393,8 @@ void SetupIntrinsics()
     /// textureSampleProjCompareOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
     SampledTextureSampleProjCompareOffset_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleProjCompareOffset_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleProjCompareOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleProjCompareOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleProjCompareOffset_Texture2D_texture.type.modifiers = SampledTextureSampleProjCompareOffset_Texture2D_texture_modifiers;
+    SampledTextureSampleProjCompareOffset_Texture2D_texture.type.modifierValues = SampledTextureSampleProjCompareOffset_Texture2D_texture_modifierValues;
     SampledTextureSampleProjCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleProjCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleProjCompareOffset_Texture2D_proj.name = "proj"_c;
@@ -32277,12 +33421,12 @@ void SetupIntrinsics()
     /// textureSampleProjCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
     TextureSampleProjCompareOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleProjCompareOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleProjCompareOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleProjCompareOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleProjCompareOffset_Texture3D_texture.type.modifiers = TextureSampleProjCompareOffset_Texture3D_texture_modifiers;
+    TextureSampleProjCompareOffset_Texture3D_texture.type.modifierValues = TextureSampleProjCompareOffset_Texture3D_texture_modifierValues;
     TextureSampleProjCompareOffset_Texture3D_sampler.name = "sampler"_c;
     TextureSampleProjCompareOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleProjCompareOffset_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleProjCompareOffset_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleProjCompareOffset_Texture3D_sampler.type.modifiers = TextureSampleProjCompareOffset_Texture3D_sampler_modifiers;
+    TextureSampleProjCompareOffset_Texture3D_sampler.type.modifierValues = TextureSampleProjCompareOffset_Texture3D_sampler_modifierValues;
     TextureSampleProjCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleProjCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleProjCompareOffset_Texture3D_proj.name = "proj"_c;
@@ -32311,8 +33455,8 @@ void SetupIntrinsics()
     /// textureSampleProjCompareOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
     SampledTextureSampleProjCompareOffset_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleProjCompareOffset_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleProjCompareOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleProjCompareOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleProjCompareOffset_Texture3D_texture.type.modifiers = SampledTextureSampleProjCompareOffset_Texture3D_texture_modifiers;
+    SampledTextureSampleProjCompareOffset_Texture3D_texture.type.modifierValues = SampledTextureSampleProjCompareOffset_Texture3D_texture_modifierValues;
     SampledTextureSampleProjCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleProjCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleProjCompareOffset_Texture3D_proj.name = "proj"_c;
@@ -32339,12 +33483,12 @@ void SetupIntrinsics()
     /// textureSampleLod with Texture1D, Sampler, Float32, Float32
     TextureSampleLod_Texture1D_texture.name = "texture"_c;
     TextureSampleLod_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleLod_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLod_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLod_Texture1D_texture.type.modifiers = TextureSampleLod_Texture1D_texture_modifiers;
+    TextureSampleLod_Texture1D_texture.type.modifierValues = TextureSampleLod_Texture1D_texture_modifierValues;
     TextureSampleLod_Texture1D_sampler.name = "sampler"_c;
     TextureSampleLod_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLod_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLod_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLod_Texture1D_sampler.type.modifiers = TextureSampleLod_Texture1D_sampler_modifiers;
+    TextureSampleLod_Texture1D_sampler.type.modifierValues = TextureSampleLod_Texture1D_sampler_modifierValues;
     TextureSampleLod_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleLod_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleLod_Texture1D_lod.name = "lod"_c;
@@ -32367,8 +33511,8 @@ void SetupIntrinsics()
     /// textureSampleLod with SampledTexture1D, Float32, Float32
     SampledTextureSampleLod_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleLod_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleLod_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLod_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLod_Texture1D_texture.type.modifiers = SampledTextureSampleLod_Texture1D_texture_modifiers;
+    SampledTextureSampleLod_Texture1D_texture.type.modifierValues = SampledTextureSampleLod_Texture1D_texture_modifierValues;
     SampledTextureSampleLod_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLod_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLod_Texture1D_lod.name = "lod"_c;
@@ -32389,12 +33533,12 @@ void SetupIntrinsics()
     /// textureSampleLod with Texture2D, Sampler, Float32x2, Float32
     TextureSampleLod_Texture2D_texture.name = "texture"_c;
     TextureSampleLod_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleLod_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLod_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLod_Texture2D_texture.type.modifiers = TextureSampleLod_Texture2D_texture_modifiers;
+    TextureSampleLod_Texture2D_texture.type.modifierValues = TextureSampleLod_Texture2D_texture_modifierValues;
     TextureSampleLod_Texture2D_sampler.name = "sampler"_c;
     TextureSampleLod_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLod_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLod_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLod_Texture2D_sampler.type.modifiers = TextureSampleLod_Texture2D_sampler_modifiers;
+    TextureSampleLod_Texture2D_sampler.type.modifierValues = TextureSampleLod_Texture2D_sampler_modifierValues;
     TextureSampleLod_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleLod_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleLod_Texture2D_lod.name = "lod"_c;
@@ -32417,8 +33561,8 @@ void SetupIntrinsics()
     /// textureSampleLod with SampledTexture2D, Float32x2, Float32
     SampledTextureSampleLod_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleLod_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleLod_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLod_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLod_Texture2D_texture.type.modifiers = SampledTextureSampleLod_Texture2D_texture_modifiers;
+    SampledTextureSampleLod_Texture2D_texture.type.modifierValues = SampledTextureSampleLod_Texture2D_texture_modifierValues;
     SampledTextureSampleLod_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLod_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleLod_Texture2D_lod.name = "lod"_c;
@@ -32439,12 +33583,12 @@ void SetupIntrinsics()
     /// textureSampleLod with Texture3D, Sampler, Float32x3, Float32
     TextureSampleLod_Texture3D_texture.name = "texture"_c;
     TextureSampleLod_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleLod_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLod_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLod_Texture3D_texture.type.modifiers = TextureSampleLod_Texture3D_texture_modifiers;
+    TextureSampleLod_Texture3D_texture.type.modifierValues = TextureSampleLod_Texture3D_texture_modifierValues;
     TextureSampleLod_Texture3D_sampler.name = "sampler"_c;
     TextureSampleLod_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLod_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLod_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLod_Texture3D_sampler.type.modifiers = TextureSampleLod_Texture3D_sampler_modifiers;
+    TextureSampleLod_Texture3D_sampler.type.modifierValues = TextureSampleLod_Texture3D_sampler_modifierValues;
     TextureSampleLod_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleLod_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleLod_Texture3D_lod.name = "lod"_c;
@@ -32467,8 +33611,8 @@ void SetupIntrinsics()
     /// textureSampleLod with SampledTexture3D, Float32x3, Float32
     SampledTextureSampleLod_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleLod_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleLod_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLod_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLod_Texture3D_texture.type.modifiers = SampledTextureSampleLod_Texture3D_texture_modifiers;
+    SampledTextureSampleLod_Texture3D_texture.type.modifierValues = SampledTextureSampleLod_Texture3D_texture_modifierValues;
     SampledTextureSampleLod_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLod_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleLod_Texture3D_lod.name = "lod"_c;
@@ -32489,12 +33633,12 @@ void SetupIntrinsics()
     /// textureSampleLod with TextureCube, Sampler, Float32x3, Float32
     TextureSampleLod_TextureCube_texture.name = "texture"_c;
     TextureSampleLod_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureSampleLod_TextureCube_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLod_TextureCube_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLod_TextureCube_texture.type.modifiers = TextureSampleLod_TextureCube_texture_modifiers;
+    TextureSampleLod_TextureCube_texture.type.modifierValues = TextureSampleLod_TextureCube_texture_modifierValues;
     TextureSampleLod_TextureCube_sampler.name = "sampler"_c;
     TextureSampleLod_TextureCube_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLod_TextureCube_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLod_TextureCube_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLod_TextureCube_sampler.type.modifiers = TextureSampleLod_TextureCube_sampler_modifiers;
+    TextureSampleLod_TextureCube_sampler.type.modifierValues = TextureSampleLod_TextureCube_sampler_modifierValues;
     TextureSampleLod_TextureCube_coordinate.name = "coordinate"_c;
     TextureSampleLod_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleLod_TextureCube_lod.name = "lod"_c;
@@ -32517,8 +33661,8 @@ void SetupIntrinsics()
     /// textureSampleLod with SampledTextureCube, Float32x3, Float32
     SampledTextureSampleLod_TextureCube_texture.name = "texture"_c;
     SampledTextureSampleLod_TextureCube_texture.type = Type::FullType{ SampledTextureCubeType.name };
-    SampledTextureSampleLod_TextureCube_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLod_TextureCube_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLod_TextureCube_texture.type.modifiers = SampledTextureSampleLod_TextureCube_texture_modifiers;
+    SampledTextureSampleLod_TextureCube_texture.type.modifierValues = SampledTextureSampleLod_TextureCube_texture_modifierValues;
     SampledTextureSampleLod_TextureCube_coordinate.name = "coordinate"_c;
     SampledTextureSampleLod_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleLod_TextureCube_lod.name = "lod"_c;
@@ -32539,12 +33683,12 @@ void SetupIntrinsics()
     /// textureSampleLod with Texture1DArray, Sampler, Float32x2, Float32
     TextureSampleLod_Texture1DArray_texture.name = "texture"_c;
     TextureSampleLod_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureSampleLod_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLod_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLod_Texture1DArray_texture.type.modifiers = TextureSampleLod_Texture1DArray_texture_modifiers;
+    TextureSampleLod_Texture1DArray_texture.type.modifierValues = TextureSampleLod_Texture1DArray_texture_modifierValues;
     TextureSampleLod_Texture1DArray_sampler.name = "sampler"_c;
     TextureSampleLod_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLod_Texture1DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLod_Texture1DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLod_Texture1DArray_sampler.type.modifiers = TextureSampleLod_Texture1DArray_sampler_modifiers;
+    TextureSampleLod_Texture1DArray_sampler.type.modifierValues = TextureSampleLod_Texture1DArray_sampler_modifierValues;
     TextureSampleLod_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleLod_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleLod_Texture1DArray_lod.name = "lod"_c;
@@ -32567,8 +33711,8 @@ void SetupIntrinsics()
     /// textureSampleLod with SampledTexture1DArray, Float32x2, Float32
     SampledTextureSampleLod_Texture1DArray_texture.name = "texture"_c;
     SampledTextureSampleLod_Texture1DArray_texture.type = Type::FullType{ SampledTexture1DArrayType.name };
-    SampledTextureSampleLod_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLod_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLod_Texture1DArray_texture.type.modifiers = SampledTextureSampleLod_Texture1DArray_texture_modifiers;
+    SampledTextureSampleLod_Texture1DArray_texture.type.modifierValues = SampledTextureSampleLod_Texture1DArray_texture_modifierValues;
     SampledTextureSampleLod_Texture1DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleLod_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleLod_Texture1DArray_lod.name = "lod"_c;
@@ -32589,12 +33733,12 @@ void SetupIntrinsics()
     /// textureSampleLod with Texture2DArray, Sampler, Float32x3, Float32
     TextureSampleLod_Texture2DArray_texture.name = "texture"_c;
     TextureSampleLod_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureSampleLod_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLod_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLod_Texture2DArray_texture.type.modifiers = TextureSampleLod_Texture2DArray_texture_modifiers;
+    TextureSampleLod_Texture2DArray_texture.type.modifierValues = TextureSampleLod_Texture2DArray_texture_modifierValues;
     TextureSampleLod_Texture2DArray_sampler.name = "sampler"_c;
     TextureSampleLod_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLod_Texture2DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLod_Texture2DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLod_Texture2DArray_sampler.type.modifiers = TextureSampleLod_Texture2DArray_sampler_modifiers;
+    TextureSampleLod_Texture2DArray_sampler.type.modifierValues = TextureSampleLod_Texture2DArray_sampler_modifierValues;
     TextureSampleLod_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleLod_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleLod_Texture2DArray_lod.name = "lod"_c;
@@ -32617,8 +33761,8 @@ void SetupIntrinsics()
     /// textureSampleLod with SampledTexture2DArray, Float32x3, Float32
     SampledTextureSampleLod_Texture2DArray_texture.name = "texture"_c;
     SampledTextureSampleLod_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
-    SampledTextureSampleLod_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLod_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLod_Texture2DArray_texture.type.modifiers = SampledTextureSampleLod_Texture2DArray_texture_modifiers;
+    SampledTextureSampleLod_Texture2DArray_texture.type.modifierValues = SampledTextureSampleLod_Texture2DArray_texture_modifierValues;
     SampledTextureSampleLod_Texture2DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleLod_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleLod_Texture2DArray_lod.name = "lod"_c;
@@ -32639,12 +33783,12 @@ void SetupIntrinsics()
     /// textureSampleLod with TextureCubeArray, Sampler, Float32x4, Float32
     TextureSampleLod_TextureCubeArray_texture.name = "texture"_c;
     TextureSampleLod_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureSampleLod_TextureCubeArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLod_TextureCubeArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLod_TextureCubeArray_texture.type.modifiers = TextureSampleLod_TextureCubeArray_texture_modifiers;
+    TextureSampleLod_TextureCubeArray_texture.type.modifierValues = TextureSampleLod_TextureCubeArray_texture_modifierValues;
     TextureSampleLod_TextureCubeArray_sampler.name = "sampler"_c;
     TextureSampleLod_TextureCubeArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLod_TextureCubeArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLod_TextureCubeArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLod_TextureCubeArray_sampler.type.modifiers = TextureSampleLod_TextureCubeArray_sampler_modifiers;
+    TextureSampleLod_TextureCubeArray_sampler.type.modifierValues = TextureSampleLod_TextureCubeArray_sampler_modifierValues;
     TextureSampleLod_TextureCubeArray_coordinate.name = "coordinate"_c;
     TextureSampleLod_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
     TextureSampleLod_TextureCubeArray_lod.name = "lod"_c;
@@ -32667,8 +33811,8 @@ void SetupIntrinsics()
     /// textureSampleLod with SampledTextureCubeArray, Float32x4, Float32
     SampledTextureSampleLod_TextureCubeArray_texture.name = "texture"_c;
     SampledTextureSampleLod_TextureCubeArray_texture.type = Type::FullType{ SampledTextureCubeArrayType.name };
-    SampledTextureSampleLod_TextureCubeArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLod_TextureCubeArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLod_TextureCubeArray_texture.type.modifiers = SampledTextureSampleLod_TextureCubeArray_texture_modifiers;
+    SampledTextureSampleLod_TextureCubeArray_texture.type.modifierValues = SampledTextureSampleLod_TextureCubeArray_texture_modifierValues;
     SampledTextureSampleLod_TextureCubeArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleLod_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
     SampledTextureSampleLod_TextureCubeArray_lod.name = "lod"_c;
@@ -32689,12 +33833,12 @@ void SetupIntrinsics()
     /// textureSampleLodOffset with Texture1D, Sampler, Float32, Float32, Float32
     TextureSampleLodOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleLodOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleLodOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodOffset_Texture1D_texture.type.modifiers = TextureSampleLodOffset_Texture1D_texture_modifiers;
+    TextureSampleLodOffset_Texture1D_texture.type.modifierValues = TextureSampleLodOffset_Texture1D_texture_modifierValues;
     TextureSampleLodOffset_Texture1D_sampler.name = "sampler"_c;
     TextureSampleLodOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodOffset_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodOffset_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodOffset_Texture1D_sampler.type.modifiers = TextureSampleLodOffset_Texture1D_sampler_modifiers;
+    TextureSampleLodOffset_Texture1D_sampler.type.modifierValues = TextureSampleLodOffset_Texture1D_sampler_modifierValues;
     TextureSampleLodOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleLodOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleLodOffset_Texture1D_lod.name = "lod"_c;
@@ -32720,8 +33864,8 @@ void SetupIntrinsics()
     /// textureSampleLodOffset with SampledTexture1D, Float32, Float32, Float32
     SampledTextureSampleLodOffset_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleLodOffset_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleLodOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodOffset_Texture1D_texture.type.modifiers = SampledTextureSampleLodOffset_Texture1D_texture_modifiers;
+    SampledTextureSampleLodOffset_Texture1D_texture.type.modifierValues = SampledTextureSampleLodOffset_Texture1D_texture_modifierValues;
     SampledTextureSampleLodOffset_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodOffset_Texture1D_lod.name = "lod"_c;
@@ -32745,12 +33889,12 @@ void SetupIntrinsics()
     /// textureSampleLodOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2
     TextureSampleLodOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleLodOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleLodOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodOffset_Texture2D_texture.type.modifiers = TextureSampleLodOffset_Texture2D_texture_modifiers;
+    TextureSampleLodOffset_Texture2D_texture.type.modifierValues = TextureSampleLodOffset_Texture2D_texture_modifierValues;
     TextureSampleLodOffset_Texture2D_sampler.name = "sampler"_c;
     TextureSampleLodOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodOffset_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodOffset_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodOffset_Texture2D_sampler.type.modifiers = TextureSampleLodOffset_Texture2D_sampler_modifiers;
+    TextureSampleLodOffset_Texture2D_sampler.type.modifierValues = TextureSampleLodOffset_Texture2D_sampler_modifierValues;
     TextureSampleLodOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleLodOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleLodOffset_Texture2D_lod.name = "lod"_c;
@@ -32776,8 +33920,8 @@ void SetupIntrinsics()
     /// textureSampleLodOffset with SampledTexture2D, Float32x2, Float32, Float32x2
     SampledTextureSampleLodOffset_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleLodOffset_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleLodOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodOffset_Texture2D_texture.type.modifiers = SampledTextureSampleLodOffset_Texture2D_texture_modifiers;
+    SampledTextureSampleLodOffset_Texture2D_texture.type.modifierValues = SampledTextureSampleLodOffset_Texture2D_texture_modifierValues;
     SampledTextureSampleLodOffset_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleLodOffset_Texture2D_lod.name = "lod"_c;
@@ -32801,12 +33945,12 @@ void SetupIntrinsics()
     /// textureSampleLodOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3
     TextureSampleLodOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleLodOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleLodOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodOffset_Texture3D_texture.type.modifiers = TextureSampleLodOffset_Texture3D_texture_modifiers;
+    TextureSampleLodOffset_Texture3D_texture.type.modifierValues = TextureSampleLodOffset_Texture3D_texture_modifierValues;
     TextureSampleLodOffset_Texture3D_sampler.name = "sampler"_c;
     TextureSampleLodOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodOffset_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodOffset_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodOffset_Texture3D_sampler.type.modifiers = TextureSampleLodOffset_Texture3D_sampler_modifiers;
+    TextureSampleLodOffset_Texture3D_sampler.type.modifierValues = TextureSampleLodOffset_Texture3D_sampler_modifierValues;
     TextureSampleLodOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleLodOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleLodOffset_Texture3D_lod.name = "lod"_c;
@@ -32832,8 +33976,8 @@ void SetupIntrinsics()
     /// textureSampleLodOffset with SampledTexture3D, Float32x3, Float32, Float32x3
     SampledTextureSampleLodOffset_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleLodOffset_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleLodOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodOffset_Texture3D_texture.type.modifiers = SampledTextureSampleLodOffset_Texture3D_texture_modifiers;
+    SampledTextureSampleLodOffset_Texture3D_texture.type.modifierValues = SampledTextureSampleLodOffset_Texture3D_texture_modifierValues;
     SampledTextureSampleLodOffset_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleLodOffset_Texture3D_lod.name = "lod"_c;
@@ -32857,12 +34001,12 @@ void SetupIntrinsics()
     /// textureSampleLodOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32x2
     TextureSampleLodOffset_Texture1DArray_texture.name = "texture"_c;
     TextureSampleLodOffset_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureSampleLodOffset_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodOffset_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodOffset_Texture1DArray_texture.type.modifiers = TextureSampleLodOffset_Texture1DArray_texture_modifiers;
+    TextureSampleLodOffset_Texture1DArray_texture.type.modifierValues = TextureSampleLodOffset_Texture1DArray_texture_modifierValues;
     TextureSampleLodOffset_Texture1DArray_sampler.name = "sampler"_c;
     TextureSampleLodOffset_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodOffset_Texture1DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodOffset_Texture1DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodOffset_Texture1DArray_sampler.type.modifiers = TextureSampleLodOffset_Texture1DArray_sampler_modifiers;
+    TextureSampleLodOffset_Texture1DArray_sampler.type.modifierValues = TextureSampleLodOffset_Texture1DArray_sampler_modifierValues;
     TextureSampleLodOffset_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleLodOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleLodOffset_Texture1DArray_lod.name = "lod"_c;
@@ -32888,8 +34032,8 @@ void SetupIntrinsics()
     /// textureSampleLodOffset with SampledTexture1DArray, Float32x2, Float32, Float32x2
     SampledTextureSampleLodOffset_Texture1DArray_texture.name = "texture"_c;
     SampledTextureSampleLodOffset_Texture1DArray_texture.type = Type::FullType{ SampledTexture1DArrayType.name };
-    SampledTextureSampleLodOffset_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodOffset_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodOffset_Texture1DArray_texture.type.modifiers = SampledTextureSampleLodOffset_Texture1DArray_texture_modifiers;
+    SampledTextureSampleLodOffset_Texture1DArray_texture.type.modifierValues = SampledTextureSampleLodOffset_Texture1DArray_texture_modifierValues;
     SampledTextureSampleLodOffset_Texture1DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleLodOffset_Texture1DArray_lod.name = "lod"_c;
@@ -32913,12 +34057,12 @@ void SetupIntrinsics()
     /// textureSampleLodOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32x3
     TextureSampleLodOffset_Texture2DArray_texture.name = "texture"_c;
     TextureSampleLodOffset_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureSampleLodOffset_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodOffset_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodOffset_Texture2DArray_texture.type.modifiers = TextureSampleLodOffset_Texture2DArray_texture_modifiers;
+    TextureSampleLodOffset_Texture2DArray_texture.type.modifierValues = TextureSampleLodOffset_Texture2DArray_texture_modifierValues;
     TextureSampleLodOffset_Texture2DArray_sampler.name = "sampler"_c;
     TextureSampleLodOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodOffset_Texture2DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodOffset_Texture2DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodOffset_Texture2DArray_sampler.type.modifiers = TextureSampleLodOffset_Texture2DArray_sampler_modifiers;
+    TextureSampleLodOffset_Texture2DArray_sampler.type.modifierValues = TextureSampleLodOffset_Texture2DArray_sampler_modifierValues;
     TextureSampleLodOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleLodOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleLodOffset_Texture2DArray_lod.name = "lod"_c;
@@ -32944,8 +34088,8 @@ void SetupIntrinsics()
     /// textureSampleLodOffset with SampledTexture2DArray, Float32x3, Float32, Float32x3
     SampledTextureSampleLodOffset_Texture2DArray_texture.name = "texture"_c;
     SampledTextureSampleLodOffset_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
-    SampledTextureSampleLodOffset_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodOffset_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodOffset_Texture2DArray_texture.type.modifiers = SampledTextureSampleLodOffset_Texture2DArray_texture_modifiers;
+    SampledTextureSampleLodOffset_Texture2DArray_texture.type.modifierValues = SampledTextureSampleLodOffset_Texture2DArray_texture_modifierValues;
     SampledTextureSampleLodOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleLodOffset_Texture2DArray_lod.name = "lod"_c;
@@ -32969,12 +34113,12 @@ void SetupIntrinsics()
     /// textureSampleLodProj with Texture1D, Sampler, Float32, Float32, Float32
     TextureSampleLodProj_Texture1D_texture.name = "texture"_c;
     TextureSampleLodProj_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleLodProj_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodProj_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodProj_Texture1D_texture.type.modifiers = TextureSampleLodProj_Texture1D_texture_modifiers;
+    TextureSampleLodProj_Texture1D_texture.type.modifierValues = TextureSampleLodProj_Texture1D_texture_modifierValues;
     TextureSampleLodProj_Texture1D_sampler.name = "sampler"_c;
     TextureSampleLodProj_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodProj_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodProj_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodProj_Texture1D_sampler.type.modifiers = TextureSampleLodProj_Texture1D_sampler_modifiers;
+    TextureSampleLodProj_Texture1D_sampler.type.modifierValues = TextureSampleLodProj_Texture1D_sampler_modifierValues;
     TextureSampleLodProj_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleLodProj_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProj_Texture1D_lod.name = "lod"_c;
@@ -33000,8 +34144,8 @@ void SetupIntrinsics()
     /// textureSampleLodProj with SampledTexture1D, Float32, Float32, Float32
     SampledTextureSampleLodProj_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleLodProj_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleLodProj_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodProj_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodProj_Texture1D_texture.type.modifiers = SampledTextureSampleLodProj_Texture1D_texture_modifiers;
+    SampledTextureSampleLodProj_Texture1D_texture.type.modifierValues = SampledTextureSampleLodProj_Texture1D_texture_modifierValues;
     SampledTextureSampleLodProj_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodProj_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProj_Texture1D_lod.name = "lod"_c;
@@ -33025,12 +34169,12 @@ void SetupIntrinsics()
     /// textureSampleLodProj with Texture2D, Sampler, Float32x2, Float32, Float32
     TextureSampleLodProj_Texture2D_texture.name = "texture"_c;
     TextureSampleLodProj_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleLodProj_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodProj_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodProj_Texture2D_texture.type.modifiers = TextureSampleLodProj_Texture2D_texture_modifiers;
+    TextureSampleLodProj_Texture2D_texture.type.modifierValues = TextureSampleLodProj_Texture2D_texture_modifierValues;
     TextureSampleLodProj_Texture2D_sampler.name = "sampler"_c;
     TextureSampleLodProj_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodProj_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodProj_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodProj_Texture2D_sampler.type.modifiers = TextureSampleLodProj_Texture2D_sampler_modifiers;
+    TextureSampleLodProj_Texture2D_sampler.type.modifierValues = TextureSampleLodProj_Texture2D_sampler_modifierValues;
     TextureSampleLodProj_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleLodProj_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleLodProj_Texture2D_lod.name = "lod"_c;
@@ -33056,8 +34200,8 @@ void SetupIntrinsics()
     /// textureSampleLodProj with SampledTexture2D, Float32x2, Float32, Float32
     SampledTextureSampleLodProj_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleLodProj_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleLodProj_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodProj_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodProj_Texture2D_texture.type.modifiers = SampledTextureSampleLodProj_Texture2D_texture_modifiers;
+    SampledTextureSampleLodProj_Texture2D_texture.type.modifierValues = SampledTextureSampleLodProj_Texture2D_texture_modifierValues;
     SampledTextureSampleLodProj_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodProj_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleLodProj_Texture2D_lod.name = "lod"_c;
@@ -33081,12 +34225,12 @@ void SetupIntrinsics()
     /// textureSampleLodProj with Texture3D, Sampler, Float32x3, Float32, Float32
     TextureSampleLodProj_Texture3D_texture.name = "texture"_c;
     TextureSampleLodProj_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleLodProj_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodProj_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodProj_Texture3D_texture.type.modifiers = TextureSampleLodProj_Texture3D_texture_modifiers;
+    TextureSampleLodProj_Texture3D_texture.type.modifierValues = TextureSampleLodProj_Texture3D_texture_modifierValues;
     TextureSampleLodProj_Texture3D_sampler.name = "sampler"_c;
     TextureSampleLodProj_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodProj_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodProj_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodProj_Texture3D_sampler.type.modifiers = TextureSampleLodProj_Texture3D_sampler_modifiers;
+    TextureSampleLodProj_Texture3D_sampler.type.modifierValues = TextureSampleLodProj_Texture3D_sampler_modifierValues;
     TextureSampleLodProj_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleLodProj_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleLodProj_Texture3D_lod.name = "lod"_c;
@@ -33112,8 +34256,8 @@ void SetupIntrinsics()
     /// textureSampleLodProj with SampledTexture3D, Float32x3, Float32, Float32
     SampledTextureSampleLodProj_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleLodProj_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleLodProj_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodProj_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodProj_Texture3D_texture.type.modifiers = SampledTextureSampleLodProj_Texture3D_texture_modifiers;
+    SampledTextureSampleLodProj_Texture3D_texture.type.modifierValues = SampledTextureSampleLodProj_Texture3D_texture_modifierValues;
     SampledTextureSampleLodProj_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodProj_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleLodProj_Texture3D_lod.name = "lod"_c;
@@ -33137,12 +34281,12 @@ void SetupIntrinsics()
     /// textureSampleLodProjOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
     TextureSampleLodProjOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleLodProjOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleLodProjOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodProjOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodProjOffset_Texture1D_texture.type.modifiers = TextureSampleLodProjOffset_Texture1D_texture_modifiers;
+    TextureSampleLodProjOffset_Texture1D_texture.type.modifierValues = TextureSampleLodProjOffset_Texture1D_texture_modifierValues;
     TextureSampleLodProjOffset_Texture1D_sampler.name = "sampler"_c;
     TextureSampleLodProjOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodProjOffset_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodProjOffset_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodProjOffset_Texture1D_sampler.type.modifiers = TextureSampleLodProjOffset_Texture1D_sampler_modifiers;
+    TextureSampleLodProjOffset_Texture1D_sampler.type.modifierValues = TextureSampleLodProjOffset_Texture1D_sampler_modifierValues;
     TextureSampleLodProjOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjOffset_Texture1D_lod.name = "lod"_c;
@@ -33171,8 +34315,8 @@ void SetupIntrinsics()
     /// textureSampleLodProjOffset with SampledTexture1D, Float32, Float32, Float32, Float32
     SampledTextureSampleLodProjOffset_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleLodProjOffset_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleLodProjOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodProjOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodProjOffset_Texture1D_texture.type.modifiers = SampledTextureSampleLodProjOffset_Texture1D_texture_modifiers;
+    SampledTextureSampleLodProjOffset_Texture1D_texture.type.modifierValues = SampledTextureSampleLodProjOffset_Texture1D_texture_modifierValues;
     SampledTextureSampleLodProjOffset_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodProjOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjOffset_Texture1D_lod.name = "lod"_c;
@@ -33199,12 +34343,12 @@ void SetupIntrinsics()
     /// textureSampleLodProjOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
     TextureSampleLodProjOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleLodProjOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleLodProjOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodProjOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodProjOffset_Texture2D_texture.type.modifiers = TextureSampleLodProjOffset_Texture2D_texture_modifiers;
+    TextureSampleLodProjOffset_Texture2D_texture.type.modifierValues = TextureSampleLodProjOffset_Texture2D_texture_modifierValues;
     TextureSampleLodProjOffset_Texture2D_sampler.name = "sampler"_c;
     TextureSampleLodProjOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodProjOffset_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodProjOffset_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodProjOffset_Texture2D_sampler.type.modifiers = TextureSampleLodProjOffset_Texture2D_sampler_modifiers;
+    TextureSampleLodProjOffset_Texture2D_sampler.type.modifierValues = TextureSampleLodProjOffset_Texture2D_sampler_modifierValues;
     TextureSampleLodProjOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleLodProjOffset_Texture2D_lod.name = "lod"_c;
@@ -33233,8 +34377,8 @@ void SetupIntrinsics()
     /// textureSampleLodProjOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
     SampledTextureSampleLodProjOffset_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleLodProjOffset_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleLodProjOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodProjOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodProjOffset_Texture2D_texture.type.modifiers = SampledTextureSampleLodProjOffset_Texture2D_texture_modifiers;
+    SampledTextureSampleLodProjOffset_Texture2D_texture.type.modifierValues = SampledTextureSampleLodProjOffset_Texture2D_texture_modifierValues;
     SampledTextureSampleLodProjOffset_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodProjOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleLodProjOffset_Texture2D_lod.name = "lod"_c;
@@ -33261,12 +34405,12 @@ void SetupIntrinsics()
     /// textureSampleLodProjOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
     TextureSampleLodProjOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleLodProjOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleLodProjOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodProjOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodProjOffset_Texture3D_texture.type.modifiers = TextureSampleLodProjOffset_Texture3D_texture_modifiers;
+    TextureSampleLodProjOffset_Texture3D_texture.type.modifierValues = TextureSampleLodProjOffset_Texture3D_texture_modifierValues;
     TextureSampleLodProjOffset_Texture3D_sampler.name = "sampler"_c;
     TextureSampleLodProjOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodProjOffset_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodProjOffset_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodProjOffset_Texture3D_sampler.type.modifiers = TextureSampleLodProjOffset_Texture3D_sampler_modifiers;
+    TextureSampleLodProjOffset_Texture3D_sampler.type.modifierValues = TextureSampleLodProjOffset_Texture3D_sampler_modifierValues;
     TextureSampleLodProjOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleLodProjOffset_Texture3D_lod.name = "lod"_c;
@@ -33295,8 +34439,8 @@ void SetupIntrinsics()
     /// textureSampleLodProjOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
     SampledTextureSampleLodProjOffset_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleLodProjOffset_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleLodProjOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodProjOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodProjOffset_Texture3D_texture.type.modifiers = SampledTextureSampleLodProjOffset_Texture3D_texture_modifiers;
+    SampledTextureSampleLodProjOffset_Texture3D_texture.type.modifierValues = SampledTextureSampleLodProjOffset_Texture3D_texture_modifierValues;
     SampledTextureSampleLodProjOffset_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodProjOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleLodProjOffset_Texture3D_lod.name = "lod"_c;
@@ -33323,12 +34467,12 @@ void SetupIntrinsics()
     /// textureSampleLodCompare with Texture1D, Sampler, Float32, Float32, Float32
     TextureSampleLodCompare_Texture1D_texture.name = "texture"_c;
     TextureSampleLodCompare_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleLodCompare_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodCompare_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodCompare_Texture1D_texture.type.modifiers = TextureSampleLodCompare_Texture1D_texture_modifiers;
+    TextureSampleLodCompare_Texture1D_texture.type.modifierValues = TextureSampleLodCompare_Texture1D_texture_modifierValues;
     TextureSampleLodCompare_Texture1D_sampler.name = "sampler"_c;
     TextureSampleLodCompare_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodCompare_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodCompare_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodCompare_Texture1D_sampler.type.modifiers = TextureSampleLodCompare_Texture1D_sampler_modifiers;
+    TextureSampleLodCompare_Texture1D_sampler.type.modifierValues = TextureSampleLodCompare_Texture1D_sampler_modifierValues;
     TextureSampleLodCompare_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleLodCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompare_Texture1D_lod.name = "lod"_c;
@@ -33354,8 +34498,8 @@ void SetupIntrinsics()
     /// textureSampleLodCompare with SampledTexture1D, Float32, Float32, Float32
     SampledTextureSampleLodCompare_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleLodCompare_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleLodCompare_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodCompare_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodCompare_Texture1D_texture.type.modifiers = SampledTextureSampleLodCompare_Texture1D_texture_modifiers;
+    SampledTextureSampleLodCompare_Texture1D_texture.type.modifierValues = SampledTextureSampleLodCompare_Texture1D_texture_modifierValues;
     SampledTextureSampleLodCompare_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompare_Texture1D_lod.name = "lod"_c;
@@ -33379,12 +34523,12 @@ void SetupIntrinsics()
     /// textureSampleLodCompare with Texture2D, Sampler, Float32x2, Float32, Float32
     TextureSampleLodCompare_Texture2D_texture.name = "texture"_c;
     TextureSampleLodCompare_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleLodCompare_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodCompare_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodCompare_Texture2D_texture.type.modifiers = TextureSampleLodCompare_Texture2D_texture_modifiers;
+    TextureSampleLodCompare_Texture2D_texture.type.modifierValues = TextureSampleLodCompare_Texture2D_texture_modifierValues;
     TextureSampleLodCompare_Texture2D_sampler.name = "sampler"_c;
     TextureSampleLodCompare_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodCompare_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodCompare_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodCompare_Texture2D_sampler.type.modifiers = TextureSampleLodCompare_Texture2D_sampler_modifiers;
+    TextureSampleLodCompare_Texture2D_sampler.type.modifierValues = TextureSampleLodCompare_Texture2D_sampler_modifierValues;
     TextureSampleLodCompare_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleLodCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleLodCompare_Texture2D_lod.name = "lod"_c;
@@ -33410,8 +34554,8 @@ void SetupIntrinsics()
     /// textureSampleLodCompare with SampledTexture2D, Float32x2, Float32, Float32
     SampledTextureSampleLodCompare_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleLodCompare_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleLodCompare_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodCompare_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodCompare_Texture2D_texture.type.modifiers = SampledTextureSampleLodCompare_Texture2D_texture_modifiers;
+    SampledTextureSampleLodCompare_Texture2D_texture.type.modifierValues = SampledTextureSampleLodCompare_Texture2D_texture_modifierValues;
     SampledTextureSampleLodCompare_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleLodCompare_Texture2D_lod.name = "lod"_c;
@@ -33435,12 +34579,12 @@ void SetupIntrinsics()
     /// textureSampleLodCompare with Texture3D, Sampler, Float32x3, Float32, Float32
     TextureSampleLodCompare_Texture3D_texture.name = "texture"_c;
     TextureSampleLodCompare_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleLodCompare_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodCompare_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodCompare_Texture3D_texture.type.modifiers = TextureSampleLodCompare_Texture3D_texture_modifiers;
+    TextureSampleLodCompare_Texture3D_texture.type.modifierValues = TextureSampleLodCompare_Texture3D_texture_modifierValues;
     TextureSampleLodCompare_Texture3D_sampler.name = "sampler"_c;
     TextureSampleLodCompare_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodCompare_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodCompare_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodCompare_Texture3D_sampler.type.modifiers = TextureSampleLodCompare_Texture3D_sampler_modifiers;
+    TextureSampleLodCompare_Texture3D_sampler.type.modifierValues = TextureSampleLodCompare_Texture3D_sampler_modifierValues;
     TextureSampleLodCompare_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleLodCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleLodCompare_Texture3D_lod.name = "lod"_c;
@@ -33466,8 +34610,8 @@ void SetupIntrinsics()
     /// textureSampleLodCompare with SampledTexture3D, Float32x3, Float32, Float32
     SampledTextureSampleLodCompare_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleLodCompare_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleLodCompare_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodCompare_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodCompare_Texture3D_texture.type.modifiers = SampledTextureSampleLodCompare_Texture3D_texture_modifiers;
+    SampledTextureSampleLodCompare_Texture3D_texture.type.modifierValues = SampledTextureSampleLodCompare_Texture3D_texture_modifierValues;
     SampledTextureSampleLodCompare_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleLodCompare_Texture3D_lod.name = "lod"_c;
@@ -33491,12 +34635,12 @@ void SetupIntrinsics()
     /// textureSampleLodCompare with Texture1DArray, Sampler, Float32x2, Float32, Float32
     TextureSampleLodCompare_Texture1DArray_texture.name = "texture"_c;
     TextureSampleLodCompare_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureSampleLodCompare_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodCompare_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodCompare_Texture1DArray_texture.type.modifiers = TextureSampleLodCompare_Texture1DArray_texture_modifiers;
+    TextureSampleLodCompare_Texture1DArray_texture.type.modifierValues = TextureSampleLodCompare_Texture1DArray_texture_modifierValues;
     TextureSampleLodCompare_Texture1DArray_sampler.name = "sampler"_c;
     TextureSampleLodCompare_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodCompare_Texture1DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodCompare_Texture1DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodCompare_Texture1DArray_sampler.type.modifiers = TextureSampleLodCompare_Texture1DArray_sampler_modifiers;
+    TextureSampleLodCompare_Texture1DArray_sampler.type.modifierValues = TextureSampleLodCompare_Texture1DArray_sampler_modifierValues;
     TextureSampleLodCompare_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleLodCompare_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleLodCompare_Texture1DArray_lod.name = "lod"_c;
@@ -33522,8 +34666,8 @@ void SetupIntrinsics()
     /// textureSampleLodCompare with SampledTexture1DArray, Float32x2, Float32, Float32
     SampledTextureSampleLodCompare_Texture1DArray_texture.name = "texture"_c;
     SampledTextureSampleLodCompare_Texture1DArray_texture.type = Type::FullType{ SampledTexture1DArrayType.name };
-    SampledTextureSampleLodCompare_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodCompare_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodCompare_Texture1DArray_texture.type.modifiers = SampledTextureSampleLodCompare_Texture1DArray_texture_modifiers;
+    SampledTextureSampleLodCompare_Texture1DArray_texture.type.modifierValues = SampledTextureSampleLodCompare_Texture1DArray_texture_modifierValues;
     SampledTextureSampleLodCompare_Texture1DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodCompare_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleLodCompare_Texture1DArray_lod.name = "lod"_c;
@@ -33547,12 +34691,12 @@ void SetupIntrinsics()
     /// textureSampleLodCompare with Texture2DArray, Sampler, Float32x3, Float32, Float32
     TextureSampleLodCompare_Texture2DArray_texture.name = "texture"_c;
     TextureSampleLodCompare_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureSampleLodCompare_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodCompare_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodCompare_Texture2DArray_texture.type.modifiers = TextureSampleLodCompare_Texture2DArray_texture_modifiers;
+    TextureSampleLodCompare_Texture2DArray_texture.type.modifierValues = TextureSampleLodCompare_Texture2DArray_texture_modifierValues;
     TextureSampleLodCompare_Texture2DArray_sampler.name = "sampler"_c;
     TextureSampleLodCompare_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodCompare_Texture2DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodCompare_Texture2DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodCompare_Texture2DArray_sampler.type.modifiers = TextureSampleLodCompare_Texture2DArray_sampler_modifiers;
+    TextureSampleLodCompare_Texture2DArray_sampler.type.modifierValues = TextureSampleLodCompare_Texture2DArray_sampler_modifierValues;
     TextureSampleLodCompare_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleLodCompare_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleLodCompare_Texture2DArray_lod.name = "lod"_c;
@@ -33578,8 +34722,8 @@ void SetupIntrinsics()
     /// textureSampleLodCompare with SampledTexture2DArray, Float32x3, Float32, Float32
     SampledTextureSampleLodCompare_Texture2DArray_texture.name = "texture"_c;
     SampledTextureSampleLodCompare_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
-    SampledTextureSampleLodCompare_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodCompare_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodCompare_Texture2DArray_texture.type.modifiers = SampledTextureSampleLodCompare_Texture2DArray_texture_modifiers;
+    SampledTextureSampleLodCompare_Texture2DArray_texture.type.modifierValues = SampledTextureSampleLodCompare_Texture2DArray_texture_modifierValues;
     SampledTextureSampleLodCompare_Texture2DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodCompare_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleLodCompare_Texture2DArray_lod.name = "lod"_c;
@@ -33603,12 +34747,12 @@ void SetupIntrinsics()
     /// textureSampleLodCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
     TextureSampleLodCompareOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleLodCompareOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleLodCompareOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodCompareOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodCompareOffset_Texture1D_texture.type.modifiers = TextureSampleLodCompareOffset_Texture1D_texture_modifiers;
+    TextureSampleLodCompareOffset_Texture1D_texture.type.modifierValues = TextureSampleLodCompareOffset_Texture1D_texture_modifierValues;
     TextureSampleLodCompareOffset_Texture1D_sampler.name = "sampler"_c;
     TextureSampleLodCompareOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodCompareOffset_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodCompareOffset_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodCompareOffset_Texture1D_sampler.type.modifiers = TextureSampleLodCompareOffset_Texture1D_sampler_modifiers;
+    TextureSampleLodCompareOffset_Texture1D_sampler.type.modifierValues = TextureSampleLodCompareOffset_Texture1D_sampler_modifierValues;
     TextureSampleLodCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleLodCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleLodCompareOffset_Texture1D_lod.name = "lod"_c;
@@ -33637,8 +34781,8 @@ void SetupIntrinsics()
     /// textureSampleLodCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32
     SampledTextureSampleLodCompareOffset_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleLodCompareOffset_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleLodCompareOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodCompareOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodCompareOffset_Texture1D_texture.type.modifiers = SampledTextureSampleLodCompareOffset_Texture1D_texture_modifiers;
+    SampledTextureSampleLodCompareOffset_Texture1D_texture.type.modifierValues = SampledTextureSampleLodCompareOffset_Texture1D_texture_modifierValues;
     SampledTextureSampleLodCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodCompareOffset_Texture1D_lod.name = "lod"_c;
@@ -33665,12 +34809,12 @@ void SetupIntrinsics()
     /// textureSampleLodCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
     TextureSampleLodCompareOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleLodCompareOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleLodCompareOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodCompareOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodCompareOffset_Texture2D_texture.type.modifiers = TextureSampleLodCompareOffset_Texture2D_texture_modifiers;
+    TextureSampleLodCompareOffset_Texture2D_texture.type.modifierValues = TextureSampleLodCompareOffset_Texture2D_texture_modifierValues;
     TextureSampleLodCompareOffset_Texture2D_sampler.name = "sampler"_c;
     TextureSampleLodCompareOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodCompareOffset_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodCompareOffset_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodCompareOffset_Texture2D_sampler.type.modifiers = TextureSampleLodCompareOffset_Texture2D_sampler_modifiers;
+    TextureSampleLodCompareOffset_Texture2D_sampler.type.modifierValues = TextureSampleLodCompareOffset_Texture2D_sampler_modifierValues;
     TextureSampleLodCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleLodCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleLodCompareOffset_Texture2D_lod.name = "lod"_c;
@@ -33699,8 +34843,8 @@ void SetupIntrinsics()
     /// textureSampleLodCompareOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
     SampledTextureSampleLodCompareOffset_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleLodCompareOffset_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleLodCompareOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodCompareOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodCompareOffset_Texture2D_texture.type.modifiers = SampledTextureSampleLodCompareOffset_Texture2D_texture_modifiers;
+    SampledTextureSampleLodCompareOffset_Texture2D_texture.type.modifierValues = SampledTextureSampleLodCompareOffset_Texture2D_texture_modifierValues;
     SampledTextureSampleLodCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleLodCompareOffset_Texture2D_lod.name = "lod"_c;
@@ -33727,12 +34871,12 @@ void SetupIntrinsics()
     /// textureSampleLodCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
     TextureSampleLodCompareOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleLodCompareOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleLodCompareOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodCompareOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodCompareOffset_Texture3D_texture.type.modifiers = TextureSampleLodCompareOffset_Texture3D_texture_modifiers;
+    TextureSampleLodCompareOffset_Texture3D_texture.type.modifierValues = TextureSampleLodCompareOffset_Texture3D_texture_modifierValues;
     TextureSampleLodCompareOffset_Texture3D_sampler.name = "sampler"_c;
     TextureSampleLodCompareOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodCompareOffset_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodCompareOffset_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodCompareOffset_Texture3D_sampler.type.modifiers = TextureSampleLodCompareOffset_Texture3D_sampler_modifiers;
+    TextureSampleLodCompareOffset_Texture3D_sampler.type.modifierValues = TextureSampleLodCompareOffset_Texture3D_sampler_modifierValues;
     TextureSampleLodCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleLodCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleLodCompareOffset_Texture3D_lod.name = "lod"_c;
@@ -33761,8 +34905,8 @@ void SetupIntrinsics()
     /// textureSampleLodCompareOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
     SampledTextureSampleLodCompareOffset_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleLodCompareOffset_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleLodCompareOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodCompareOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodCompareOffset_Texture3D_texture.type.modifiers = SampledTextureSampleLodCompareOffset_Texture3D_texture_modifiers;
+    SampledTextureSampleLodCompareOffset_Texture3D_texture.type.modifierValues = SampledTextureSampleLodCompareOffset_Texture3D_texture_modifierValues;
     SampledTextureSampleLodCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleLodCompareOffset_Texture3D_lod.name = "lod"_c;
@@ -33789,12 +34933,12 @@ void SetupIntrinsics()
     /// textureSampleLodCompareOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32, Float32x2
     TextureSampleLodCompareOffset_Texture1DArray_texture.name = "texture"_c;
     TextureSampleLodCompareOffset_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureSampleLodCompareOffset_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodCompareOffset_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodCompareOffset_Texture1DArray_texture.type.modifiers = TextureSampleLodCompareOffset_Texture1DArray_texture_modifiers;
+    TextureSampleLodCompareOffset_Texture1DArray_texture.type.modifierValues = TextureSampleLodCompareOffset_Texture1DArray_texture_modifierValues;
     TextureSampleLodCompareOffset_Texture1DArray_sampler.name = "sampler"_c;
     TextureSampleLodCompareOffset_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodCompareOffset_Texture1DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodCompareOffset_Texture1DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodCompareOffset_Texture1DArray_sampler.type.modifiers = TextureSampleLodCompareOffset_Texture1DArray_sampler_modifiers;
+    TextureSampleLodCompareOffset_Texture1DArray_sampler.type.modifierValues = TextureSampleLodCompareOffset_Texture1DArray_sampler_modifierValues;
     TextureSampleLodCompareOffset_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleLodCompareOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleLodCompareOffset_Texture1DArray_lod.name = "lod"_c;
@@ -33823,8 +34967,8 @@ void SetupIntrinsics()
     /// textureSampleLodCompareOffset with SampledTexture1DArray, Float32x2, Float32, Float32, Float32x2
     SampledTextureSampleLodCompareOffset_Texture1DArray_texture.name = "texture"_c;
     SampledTextureSampleLodCompareOffset_Texture1DArray_texture.type = Type::FullType{ SampledTexture1DArrayType.name };
-    SampledTextureSampleLodCompareOffset_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodCompareOffset_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodCompareOffset_Texture1DArray_texture.type.modifiers = SampledTextureSampleLodCompareOffset_Texture1DArray_texture_modifiers;
+    SampledTextureSampleLodCompareOffset_Texture1DArray_texture.type.modifierValues = SampledTextureSampleLodCompareOffset_Texture1DArray_texture_modifierValues;
     SampledTextureSampleLodCompareOffset_Texture1DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodCompareOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleLodCompareOffset_Texture1DArray_lod.name = "lod"_c;
@@ -33851,12 +34995,12 @@ void SetupIntrinsics()
     /// textureSampleLodCompareOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32, Float32x3
     TextureSampleLodCompareOffset_Texture2DArray_texture.name = "texture"_c;
     TextureSampleLodCompareOffset_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureSampleLodCompareOffset_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodCompareOffset_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodCompareOffset_Texture2DArray_texture.type.modifiers = TextureSampleLodCompareOffset_Texture2DArray_texture_modifiers;
+    TextureSampleLodCompareOffset_Texture2DArray_texture.type.modifierValues = TextureSampleLodCompareOffset_Texture2DArray_texture_modifierValues;
     TextureSampleLodCompareOffset_Texture2DArray_sampler.name = "sampler"_c;
     TextureSampleLodCompareOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodCompareOffset_Texture2DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodCompareOffset_Texture2DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodCompareOffset_Texture2DArray_sampler.type.modifiers = TextureSampleLodCompareOffset_Texture2DArray_sampler_modifiers;
+    TextureSampleLodCompareOffset_Texture2DArray_sampler.type.modifierValues = TextureSampleLodCompareOffset_Texture2DArray_sampler_modifierValues;
     TextureSampleLodCompareOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleLodCompareOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleLodCompareOffset_Texture2DArray_lod.name = "lod"_c;
@@ -33885,8 +35029,8 @@ void SetupIntrinsics()
     /// textureSampleLodCompareOffset with SampledTexture2DArray, Float32x3, Float32, Float32, Float32x3
     SampledTextureSampleLodCompareOffset_Texture2DArray_texture.name = "texture"_c;
     SampledTextureSampleLodCompareOffset_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
-    SampledTextureSampleLodCompareOffset_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodCompareOffset_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodCompareOffset_Texture2DArray_texture.type.modifiers = SampledTextureSampleLodCompareOffset_Texture2DArray_texture_modifiers;
+    SampledTextureSampleLodCompareOffset_Texture2DArray_texture.type.modifierValues = SampledTextureSampleLodCompareOffset_Texture2DArray_texture_modifierValues;
     SampledTextureSampleLodCompareOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodCompareOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleLodCompareOffset_Texture2DArray_lod.name = "lod"_c;
@@ -33913,12 +35057,12 @@ void SetupIntrinsics()
     /// textureSampleLodProjCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32
     TextureSampleLodProjCompare_Texture1D_texture.name = "texture"_c;
     TextureSampleLodProjCompare_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleLodProjCompare_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodProjCompare_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodProjCompare_Texture1D_texture.type.modifiers = TextureSampleLodProjCompare_Texture1D_texture_modifiers;
+    TextureSampleLodProjCompare_Texture1D_texture.type.modifierValues = TextureSampleLodProjCompare_Texture1D_texture_modifierValues;
     TextureSampleLodProjCompare_Texture1D_sampler.name = "sampler"_c;
     TextureSampleLodProjCompare_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodProjCompare_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodProjCompare_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodProjCompare_Texture1D_sampler.type.modifiers = TextureSampleLodProjCompare_Texture1D_sampler_modifiers;
+    TextureSampleLodProjCompare_Texture1D_sampler.type.modifierValues = TextureSampleLodProjCompare_Texture1D_sampler_modifierValues;
     TextureSampleLodProjCompare_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompare_Texture1D_lod.name = "lod"_c;
@@ -33947,8 +35091,8 @@ void SetupIntrinsics()
     /// textureSampleLodProjCompare with SampledTexture1D, Float32, Float32, Float32, Float32
     SampledTextureSampleLodProjCompare_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleLodProjCompare_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleLodProjCompare_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodProjCompare_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodProjCompare_Texture1D_texture.type.modifiers = SampledTextureSampleLodProjCompare_Texture1D_texture_modifiers;
+    SampledTextureSampleLodProjCompare_Texture1D_texture.type.modifierValues = SampledTextureSampleLodProjCompare_Texture1D_texture_modifierValues;
     SampledTextureSampleLodProjCompare_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodProjCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompare_Texture1D_lod.name = "lod"_c;
@@ -33975,12 +35119,12 @@ void SetupIntrinsics()
     /// textureSampleLodProjCompare with Texture2D, Sampler, Float32x2, Float32, Float32, Float32
     TextureSampleLodProjCompare_Texture2D_texture.name = "texture"_c;
     TextureSampleLodProjCompare_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleLodProjCompare_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodProjCompare_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodProjCompare_Texture2D_texture.type.modifiers = TextureSampleLodProjCompare_Texture2D_texture_modifiers;
+    TextureSampleLodProjCompare_Texture2D_texture.type.modifierValues = TextureSampleLodProjCompare_Texture2D_texture_modifierValues;
     TextureSampleLodProjCompare_Texture2D_sampler.name = "sampler"_c;
     TextureSampleLodProjCompare_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodProjCompare_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodProjCompare_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodProjCompare_Texture2D_sampler.type.modifiers = TextureSampleLodProjCompare_Texture2D_sampler_modifiers;
+    TextureSampleLodProjCompare_Texture2D_sampler.type.modifierValues = TextureSampleLodProjCompare_Texture2D_sampler_modifierValues;
     TextureSampleLodProjCompare_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleLodProjCompare_Texture2D_lod.name = "lod"_c;
@@ -34009,8 +35153,8 @@ void SetupIntrinsics()
     /// textureSampleLodProjCompare with SampledTexture2D, Float32x2, Float32, Float32, Float32
     SampledTextureSampleLodProjCompare_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleLodProjCompare_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleLodProjCompare_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodProjCompare_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodProjCompare_Texture2D_texture.type.modifiers = SampledTextureSampleLodProjCompare_Texture2D_texture_modifiers;
+    SampledTextureSampleLodProjCompare_Texture2D_texture.type.modifierValues = SampledTextureSampleLodProjCompare_Texture2D_texture_modifierValues;
     SampledTextureSampleLodProjCompare_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodProjCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleLodProjCompare_Texture2D_lod.name = "lod"_c;
@@ -34037,12 +35181,12 @@ void SetupIntrinsics()
     /// textureSampleLodProjCompare with Texture3D, Sampler, Float32x3, Float32, Float32, Float32
     TextureSampleLodProjCompare_Texture3D_texture.name = "texture"_c;
     TextureSampleLodProjCompare_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleLodProjCompare_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodProjCompare_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodProjCompare_Texture3D_texture.type.modifiers = TextureSampleLodProjCompare_Texture3D_texture_modifiers;
+    TextureSampleLodProjCompare_Texture3D_texture.type.modifierValues = TextureSampleLodProjCompare_Texture3D_texture_modifierValues;
     TextureSampleLodProjCompare_Texture3D_sampler.name = "sampler"_c;
     TextureSampleLodProjCompare_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodProjCompare_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodProjCompare_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodProjCompare_Texture3D_sampler.type.modifiers = TextureSampleLodProjCompare_Texture3D_sampler_modifiers;
+    TextureSampleLodProjCompare_Texture3D_sampler.type.modifierValues = TextureSampleLodProjCompare_Texture3D_sampler_modifierValues;
     TextureSampleLodProjCompare_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleLodProjCompare_Texture3D_lod.name = "lod"_c;
@@ -34071,8 +35215,8 @@ void SetupIntrinsics()
     /// textureSampleLodProjCompare with SampledTexture3D, Float32x3, Float32, Float32, Float32
     SampledTextureSampleLodProjCompare_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleLodProjCompare_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleLodProjCompare_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodProjCompare_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodProjCompare_Texture3D_texture.type.modifiers = SampledTextureSampleLodProjCompare_Texture3D_texture_modifiers;
+    SampledTextureSampleLodProjCompare_Texture3D_texture.type.modifierValues = SampledTextureSampleLodProjCompare_Texture3D_texture_modifierValues;
     SampledTextureSampleLodProjCompare_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodProjCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleLodProjCompare_Texture3D_lod.name = "lod"_c;
@@ -34099,12 +35243,12 @@ void SetupIntrinsics()
     /// textureSampleLodProjCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
     TextureSampleLodProjCompareOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleLodProjCompareOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleLodProjCompareOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodProjCompareOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodProjCompareOffset_Texture1D_texture.type.modifiers = TextureSampleLodProjCompareOffset_Texture1D_texture_modifiers;
+    TextureSampleLodProjCompareOffset_Texture1D_texture.type.modifierValues = TextureSampleLodProjCompareOffset_Texture1D_texture_modifierValues;
     TextureSampleLodProjCompareOffset_Texture1D_sampler.name = "sampler"_c;
     TextureSampleLodProjCompareOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodProjCompareOffset_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodProjCompareOffset_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodProjCompareOffset_Texture1D_sampler.type.modifiers = TextureSampleLodProjCompareOffset_Texture1D_sampler_modifiers;
+    TextureSampleLodProjCompareOffset_Texture1D_sampler.type.modifierValues = TextureSampleLodProjCompareOffset_Texture1D_sampler_modifierValues;
     TextureSampleLodProjCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompareOffset_Texture1D_lod.name = "lod"_c;
@@ -34136,8 +35280,8 @@ void SetupIntrinsics()
     /// textureSampleLodProjCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
     SampledTextureSampleLodProjCompareOffset_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleLodProjCompareOffset_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleLodProjCompareOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodProjCompareOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodProjCompareOffset_Texture1D_texture.type.modifiers = SampledTextureSampleLodProjCompareOffset_Texture1D_texture_modifiers;
+    SampledTextureSampleLodProjCompareOffset_Texture1D_texture.type.modifierValues = SampledTextureSampleLodProjCompareOffset_Texture1D_texture_modifierValues;
     SampledTextureSampleLodProjCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodProjCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompareOffset_Texture1D_lod.name = "lod"_c;
@@ -34167,12 +35311,12 @@ void SetupIntrinsics()
     /// textureSampleLodProjCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32, Float32x2
     TextureSampleLodProjCompareOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleLodProjCompareOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleLodProjCompareOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodProjCompareOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodProjCompareOffset_Texture2D_texture.type.modifiers = TextureSampleLodProjCompareOffset_Texture2D_texture_modifiers;
+    TextureSampleLodProjCompareOffset_Texture2D_texture.type.modifierValues = TextureSampleLodProjCompareOffset_Texture2D_texture_modifierValues;
     TextureSampleLodProjCompareOffset_Texture2D_sampler.name = "sampler"_c;
     TextureSampleLodProjCompareOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodProjCompareOffset_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodProjCompareOffset_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodProjCompareOffset_Texture2D_sampler.type.modifiers = TextureSampleLodProjCompareOffset_Texture2D_sampler_modifiers;
+    TextureSampleLodProjCompareOffset_Texture2D_sampler.type.modifierValues = TextureSampleLodProjCompareOffset_Texture2D_sampler_modifierValues;
     TextureSampleLodProjCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleLodProjCompareOffset_Texture2D_lod.name = "lod"_c;
@@ -34204,8 +35348,8 @@ void SetupIntrinsics()
     /// textureSampleLodProjCompareOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32, Float32x2
     SampledTextureSampleLodProjCompareOffset_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleLodProjCompareOffset_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleLodProjCompareOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodProjCompareOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodProjCompareOffset_Texture2D_texture.type.modifiers = SampledTextureSampleLodProjCompareOffset_Texture2D_texture_modifiers;
+    SampledTextureSampleLodProjCompareOffset_Texture2D_texture.type.modifierValues = SampledTextureSampleLodProjCompareOffset_Texture2D_texture_modifierValues;
     SampledTextureSampleLodProjCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodProjCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleLodProjCompareOffset_Texture2D_lod.name = "lod"_c;
@@ -34235,12 +35379,12 @@ void SetupIntrinsics()
     /// textureSampleLodProjCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32, Float32x3
     TextureSampleLodProjCompareOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleLodProjCompareOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleLodProjCompareOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodProjCompareOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodProjCompareOffset_Texture3D_texture.type.modifiers = TextureSampleLodProjCompareOffset_Texture3D_texture_modifiers;
+    TextureSampleLodProjCompareOffset_Texture3D_texture.type.modifierValues = TextureSampleLodProjCompareOffset_Texture3D_texture_modifierValues;
     TextureSampleLodProjCompareOffset_Texture3D_sampler.name = "sampler"_c;
     TextureSampleLodProjCompareOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodProjCompareOffset_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleLodProjCompareOffset_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleLodProjCompareOffset_Texture3D_sampler.type.modifiers = TextureSampleLodProjCompareOffset_Texture3D_sampler_modifiers;
+    TextureSampleLodProjCompareOffset_Texture3D_sampler.type.modifierValues = TextureSampleLodProjCompareOffset_Texture3D_sampler_modifierValues;
     TextureSampleLodProjCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleLodProjCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleLodProjCompareOffset_Texture3D_lod.name = "lod"_c;
@@ -34272,8 +35416,8 @@ void SetupIntrinsics()
     /// textureSampleLodProjCompareOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32, Float32x3
     SampledTextureSampleLodProjCompareOffset_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleLodProjCompareOffset_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleLodProjCompareOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleLodProjCompareOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleLodProjCompareOffset_Texture3D_texture.type.modifiers = SampledTextureSampleLodProjCompareOffset_Texture3D_texture_modifiers;
+    SampledTextureSampleLodProjCompareOffset_Texture3D_texture.type.modifierValues = SampledTextureSampleLodProjCompareOffset_Texture3D_texture_modifierValues;
     SampledTextureSampleLodProjCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleLodProjCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleLodProjCompareOffset_Texture3D_lod.name = "lod"_c;
@@ -34303,12 +35447,12 @@ void SetupIntrinsics()
     /// textureSampleGrad with Texture1D, Sampler, Float32, Float32, Float32
     TextureSampleGrad_Texture1D_texture.name = "texture"_c;
     TextureSampleGrad_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleGrad_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGrad_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGrad_Texture1D_texture.type.modifiers = TextureSampleGrad_Texture1D_texture_modifiers;
+    TextureSampleGrad_Texture1D_texture.type.modifierValues = TextureSampleGrad_Texture1D_texture_modifierValues;
     TextureSampleGrad_Texture1D_sampler.name = "sampler"_c;
     TextureSampleGrad_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGrad_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGrad_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGrad_Texture1D_sampler.type.modifiers = TextureSampleGrad_Texture1D_sampler_modifiers;
+    TextureSampleGrad_Texture1D_sampler.type.modifierValues = TextureSampleGrad_Texture1D_sampler_modifierValues;
     TextureSampleGrad_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleGrad_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleGrad_Texture1D_grad_x.name = "grad_x"_c;
@@ -34334,8 +35478,8 @@ void SetupIntrinsics()
     /// textureSampleGrad with SampledTexture1D, Float32, Float32, Float32
     SampledTextureSampleGrad_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleGrad_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleGrad_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGrad_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGrad_Texture1D_texture.type.modifiers = SampledTextureSampleGrad_Texture1D_texture_modifiers;
+    SampledTextureSampleGrad_Texture1D_texture.type.modifierValues = SampledTextureSampleGrad_Texture1D_texture_modifierValues;
     SampledTextureSampleGrad_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGrad_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGrad_Texture1D_grad_x.name = "grad_x"_c;
@@ -34359,12 +35503,12 @@ void SetupIntrinsics()
     /// textureSampleGrad with Texture2D, Sampler, Float32x2, Float32x2, Float32x2
     TextureSampleGrad_Texture2D_texture.name = "texture"_c;
     TextureSampleGrad_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleGrad_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGrad_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGrad_Texture2D_texture.type.modifiers = TextureSampleGrad_Texture2D_texture_modifiers;
+    TextureSampleGrad_Texture2D_texture.type.modifierValues = TextureSampleGrad_Texture2D_texture_modifierValues;
     TextureSampleGrad_Texture2D_sampler.name = "sampler"_c;
     TextureSampleGrad_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGrad_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGrad_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGrad_Texture2D_sampler.type.modifiers = TextureSampleGrad_Texture2D_sampler_modifiers;
+    TextureSampleGrad_Texture2D_sampler.type.modifierValues = TextureSampleGrad_Texture2D_sampler_modifierValues;
     TextureSampleGrad_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleGrad_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleGrad_Texture2D_grad_x.name = "grad_x"_c;
@@ -34390,8 +35534,8 @@ void SetupIntrinsics()
     /// textureSampleGrad with SampledTexture2D, Float32x2, Float32x2, Float32x2
     SampledTextureSampleGrad_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleGrad_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleGrad_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGrad_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGrad_Texture2D_texture.type.modifiers = SampledTextureSampleGrad_Texture2D_texture_modifiers;
+    SampledTextureSampleGrad_Texture2D_texture.type.modifierValues = SampledTextureSampleGrad_Texture2D_texture_modifierValues;
     SampledTextureSampleGrad_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGrad_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleGrad_Texture2D_grad_x.name = "grad_x"_c;
@@ -34415,12 +35559,12 @@ void SetupIntrinsics()
     /// textureSampleGrad with Texture3D, Sampler, Float32x3, Float32x3, Float32x3
     TextureSampleGrad_Texture3D_texture.name = "texture"_c;
     TextureSampleGrad_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleGrad_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGrad_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGrad_Texture3D_texture.type.modifiers = TextureSampleGrad_Texture3D_texture_modifiers;
+    TextureSampleGrad_Texture3D_texture.type.modifierValues = TextureSampleGrad_Texture3D_texture_modifierValues;
     TextureSampleGrad_Texture3D_sampler.name = "sampler"_c;
     TextureSampleGrad_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGrad_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGrad_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGrad_Texture3D_sampler.type.modifiers = TextureSampleGrad_Texture3D_sampler_modifiers;
+    TextureSampleGrad_Texture3D_sampler.type.modifierValues = TextureSampleGrad_Texture3D_sampler_modifierValues;
     TextureSampleGrad_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleGrad_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleGrad_Texture3D_grad_x.name = "grad_x"_c;
@@ -34446,8 +35590,8 @@ void SetupIntrinsics()
     /// textureSampleGrad with SampledTexture3D, Float32x3, Float32x3, Float32x3
     SampledTextureSampleGrad_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleGrad_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleGrad_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGrad_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGrad_Texture3D_texture.type.modifiers = SampledTextureSampleGrad_Texture3D_texture_modifiers;
+    SampledTextureSampleGrad_Texture3D_texture.type.modifierValues = SampledTextureSampleGrad_Texture3D_texture_modifierValues;
     SampledTextureSampleGrad_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGrad_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleGrad_Texture3D_grad_x.name = "grad_x"_c;
@@ -34471,12 +35615,12 @@ void SetupIntrinsics()
     /// textureSampleGrad with TextureCube, Sampler, Float32x3, Float32x3, Float32x3
     TextureSampleGrad_TextureCube_texture.name = "texture"_c;
     TextureSampleGrad_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureSampleGrad_TextureCube_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGrad_TextureCube_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGrad_TextureCube_texture.type.modifiers = TextureSampleGrad_TextureCube_texture_modifiers;
+    TextureSampleGrad_TextureCube_texture.type.modifierValues = TextureSampleGrad_TextureCube_texture_modifierValues;
     TextureSampleGrad_TextureCube_sampler.name = "sampler"_c;
     TextureSampleGrad_TextureCube_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGrad_TextureCube_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGrad_TextureCube_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGrad_TextureCube_sampler.type.modifiers = TextureSampleGrad_TextureCube_sampler_modifiers;
+    TextureSampleGrad_TextureCube_sampler.type.modifierValues = TextureSampleGrad_TextureCube_sampler_modifierValues;
     TextureSampleGrad_TextureCube_coordinate.name = "coordinate"_c;
     TextureSampleGrad_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleGrad_TextureCube_grad_x.name = "grad_x"_c;
@@ -34502,8 +35646,8 @@ void SetupIntrinsics()
     /// textureSampleGrad with SampledTextureCube, Float32x3, Float32x3, Float32x3
     SampledTextureSampleGrad_TextureCube_texture.name = "texture"_c;
     SampledTextureSampleGrad_TextureCube_texture.type = Type::FullType{ SampledTextureCubeType.name };
-    SampledTextureSampleGrad_TextureCube_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGrad_TextureCube_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGrad_TextureCube_texture.type.modifiers = SampledTextureSampleGrad_TextureCube_texture_modifiers;
+    SampledTextureSampleGrad_TextureCube_texture.type.modifierValues = SampledTextureSampleGrad_TextureCube_texture_modifierValues;
     SampledTextureSampleGrad_TextureCube_coordinate.name = "coordinate"_c;
     SampledTextureSampleGrad_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleGrad_TextureCube_grad_x.name = "grad_x"_c;
@@ -34527,12 +35671,12 @@ void SetupIntrinsics()
     /// textureSampleGrad with Texture1DArray, Sampler, Float32x2, Float32x2, Float32x2
     TextureSampleGrad_Texture1DArray_texture.name = "texture"_c;
     TextureSampleGrad_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureSampleGrad_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGrad_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGrad_Texture1DArray_texture.type.modifiers = TextureSampleGrad_Texture1DArray_texture_modifiers;
+    TextureSampleGrad_Texture1DArray_texture.type.modifierValues = TextureSampleGrad_Texture1DArray_texture_modifierValues;
     TextureSampleGrad_Texture1DArray_sampler.name = "sampler"_c;
     TextureSampleGrad_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGrad_Texture1DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGrad_Texture1DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGrad_Texture1DArray_sampler.type.modifiers = TextureSampleGrad_Texture1DArray_sampler_modifiers;
+    TextureSampleGrad_Texture1DArray_sampler.type.modifierValues = TextureSampleGrad_Texture1DArray_sampler_modifierValues;
     TextureSampleGrad_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleGrad_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleGrad_Texture1DArray_grad_x.name = "grad_x"_c;
@@ -34558,8 +35702,8 @@ void SetupIntrinsics()
     /// textureSampleGrad with SampledTexture1DArray, Float32x2, Float32x2, Float32x2
     SampledTextureSampleGrad_Texture1DArray_texture.name = "texture"_c;
     SampledTextureSampleGrad_Texture1DArray_texture.type = Type::FullType{ SampledTexture1DArrayType.name };
-    SampledTextureSampleGrad_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGrad_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGrad_Texture1DArray_texture.type.modifiers = SampledTextureSampleGrad_Texture1DArray_texture_modifiers;
+    SampledTextureSampleGrad_Texture1DArray_texture.type.modifierValues = SampledTextureSampleGrad_Texture1DArray_texture_modifierValues;
     SampledTextureSampleGrad_Texture1DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleGrad_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleGrad_Texture1DArray_grad_x.name = "grad_x"_c;
@@ -34583,12 +35727,12 @@ void SetupIntrinsics()
     /// textureSampleGrad with Texture2DArray, Sampler, Float32x3, Float32x3, Float32x3
     TextureSampleGrad_Texture2DArray_texture.name = "texture"_c;
     TextureSampleGrad_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureSampleGrad_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGrad_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGrad_Texture2DArray_texture.type.modifiers = TextureSampleGrad_Texture2DArray_texture_modifiers;
+    TextureSampleGrad_Texture2DArray_texture.type.modifierValues = TextureSampleGrad_Texture2DArray_texture_modifierValues;
     TextureSampleGrad_Texture2DArray_sampler.name = "sampler"_c;
     TextureSampleGrad_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGrad_Texture2DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGrad_Texture2DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGrad_Texture2DArray_sampler.type.modifiers = TextureSampleGrad_Texture2DArray_sampler_modifiers;
+    TextureSampleGrad_Texture2DArray_sampler.type.modifierValues = TextureSampleGrad_Texture2DArray_sampler_modifierValues;
     TextureSampleGrad_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleGrad_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleGrad_Texture2DArray_grad_x.name = "grad_x"_c;
@@ -34614,8 +35758,8 @@ void SetupIntrinsics()
     /// textureSampleGrad with SampledTexture2DArray, Float32x3, Float32x3, Float32x3
     SampledTextureSampleGrad_Texture2DArray_texture.name = "texture"_c;
     SampledTextureSampleGrad_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
-    SampledTextureSampleGrad_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGrad_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGrad_Texture2DArray_texture.type.modifiers = SampledTextureSampleGrad_Texture2DArray_texture_modifiers;
+    SampledTextureSampleGrad_Texture2DArray_texture.type.modifierValues = SampledTextureSampleGrad_Texture2DArray_texture_modifierValues;
     SampledTextureSampleGrad_Texture2DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleGrad_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleGrad_Texture2DArray_grad_x.name = "grad_x"_c;
@@ -34639,12 +35783,12 @@ void SetupIntrinsics()
     /// textureSampleGrad with TextureCubeArray, Sampler, Float32x4, Float32x4, Float32x4
     TextureSampleGrad_TextureCubeArray_texture.name = "texture"_c;
     TextureSampleGrad_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureSampleGrad_TextureCubeArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGrad_TextureCubeArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGrad_TextureCubeArray_texture.type.modifiers = TextureSampleGrad_TextureCubeArray_texture_modifiers;
+    TextureSampleGrad_TextureCubeArray_texture.type.modifierValues = TextureSampleGrad_TextureCubeArray_texture_modifierValues;
     TextureSampleGrad_TextureCubeArray_sampler.name = "sampler"_c;
     TextureSampleGrad_TextureCubeArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGrad_TextureCubeArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGrad_TextureCubeArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGrad_TextureCubeArray_sampler.type.modifiers = TextureSampleGrad_TextureCubeArray_sampler_modifiers;
+    TextureSampleGrad_TextureCubeArray_sampler.type.modifierValues = TextureSampleGrad_TextureCubeArray_sampler_modifierValues;
     TextureSampleGrad_TextureCubeArray_coordinate.name = "coordinate"_c;
     TextureSampleGrad_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
     TextureSampleGrad_TextureCubeArray_grad_x.name = "grad_x"_c;
@@ -34670,8 +35814,8 @@ void SetupIntrinsics()
     /// textureSampleGrad with SampledTextureCubeArray, Float32x4, Float32x4, Float32x4
     SampledTextureSampleGrad_TextureCubeArray_texture.name = "texture"_c;
     SampledTextureSampleGrad_TextureCubeArray_texture.type = Type::FullType{ SampledTextureCubeArrayType.name };
-    SampledTextureSampleGrad_TextureCubeArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGrad_TextureCubeArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGrad_TextureCubeArray_texture.type.modifiers = SampledTextureSampleGrad_TextureCubeArray_texture_modifiers;
+    SampledTextureSampleGrad_TextureCubeArray_texture.type.modifierValues = SampledTextureSampleGrad_TextureCubeArray_texture_modifierValues;
     SampledTextureSampleGrad_TextureCubeArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleGrad_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
     SampledTextureSampleGrad_TextureCubeArray_grad_x.name = "grad_x"_c;
@@ -34695,12 +35839,12 @@ void SetupIntrinsics()
     /// textureSampleGradOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
     TextureSampleGradOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleGradOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleGradOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradOffset_Texture1D_texture.type.modifiers = TextureSampleGradOffset_Texture1D_texture_modifiers;
+    TextureSampleGradOffset_Texture1D_texture.type.modifierValues = TextureSampleGradOffset_Texture1D_texture_modifierValues;
     TextureSampleGradOffset_Texture1D_sampler.name = "sampler"_c;
     TextureSampleGradOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradOffset_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradOffset_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradOffset_Texture1D_sampler.type.modifiers = TextureSampleGradOffset_Texture1D_sampler_modifiers;
+    TextureSampleGradOffset_Texture1D_sampler.type.modifierValues = TextureSampleGradOffset_Texture1D_sampler_modifierValues;
     TextureSampleGradOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleGradOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleGradOffset_Texture1D_grad_x.name = "grad_x"_c;
@@ -34729,8 +35873,8 @@ void SetupIntrinsics()
     /// textureSampleGradOffset with SampledTexture1D, Float32, Float32, Float32, Float32
     SampledTextureSampleGradOffset_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleGradOffset_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleGradOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradOffset_Texture1D_texture.type.modifiers = SampledTextureSampleGradOffset_Texture1D_texture_modifiers;
+    SampledTextureSampleGradOffset_Texture1D_texture.type.modifierValues = SampledTextureSampleGradOffset_Texture1D_texture_modifierValues;
     SampledTextureSampleGradOffset_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradOffset_Texture1D_grad_x.name = "grad_x"_c;
@@ -34757,12 +35901,12 @@ void SetupIntrinsics()
     /// textureSampleGradOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32x2
     TextureSampleGradOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleGradOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleGradOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradOffset_Texture2D_texture.type.modifiers = TextureSampleGradOffset_Texture2D_texture_modifiers;
+    TextureSampleGradOffset_Texture2D_texture.type.modifierValues = TextureSampleGradOffset_Texture2D_texture_modifierValues;
     TextureSampleGradOffset_Texture2D_sampler.name = "sampler"_c;
     TextureSampleGradOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradOffset_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradOffset_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradOffset_Texture2D_sampler.type.modifiers = TextureSampleGradOffset_Texture2D_sampler_modifiers;
+    TextureSampleGradOffset_Texture2D_sampler.type.modifierValues = TextureSampleGradOffset_Texture2D_sampler_modifierValues;
     TextureSampleGradOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleGradOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleGradOffset_Texture2D_grad_x.name = "grad_x"_c;
@@ -34791,8 +35935,8 @@ void SetupIntrinsics()
     /// textureSampleGradOffset with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32x2
     SampledTextureSampleGradOffset_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleGradOffset_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleGradOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradOffset_Texture2D_texture.type.modifiers = SampledTextureSampleGradOffset_Texture2D_texture_modifiers;
+    SampledTextureSampleGradOffset_Texture2D_texture.type.modifierValues = SampledTextureSampleGradOffset_Texture2D_texture_modifierValues;
     SampledTextureSampleGradOffset_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleGradOffset_Texture2D_grad_x.name = "grad_x"_c;
@@ -34819,12 +35963,12 @@ void SetupIntrinsics()
     /// textureSampleGradOffset with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32x3
     TextureSampleGradOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleGradOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleGradOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradOffset_Texture3D_texture.type.modifiers = TextureSampleGradOffset_Texture3D_texture_modifiers;
+    TextureSampleGradOffset_Texture3D_texture.type.modifierValues = TextureSampleGradOffset_Texture3D_texture_modifierValues;
     TextureSampleGradOffset_Texture3D_sampler.name = "sampler"_c;
     TextureSampleGradOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradOffset_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradOffset_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradOffset_Texture3D_sampler.type.modifiers = TextureSampleGradOffset_Texture3D_sampler_modifiers;
+    TextureSampleGradOffset_Texture3D_sampler.type.modifierValues = TextureSampleGradOffset_Texture3D_sampler_modifierValues;
     TextureSampleGradOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleGradOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleGradOffset_Texture3D_grad_x.name = "grad_x"_c;
@@ -34853,8 +35997,8 @@ void SetupIntrinsics()
     /// textureSampleGradOffset with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32x3
     SampledTextureSampleGradOffset_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleGradOffset_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleGradOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradOffset_Texture3D_texture.type.modifiers = SampledTextureSampleGradOffset_Texture3D_texture_modifiers;
+    SampledTextureSampleGradOffset_Texture3D_texture.type.modifierValues = SampledTextureSampleGradOffset_Texture3D_texture_modifierValues;
     SampledTextureSampleGradOffset_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleGradOffset_Texture3D_grad_x.name = "grad_x"_c;
@@ -34881,12 +36025,12 @@ void SetupIntrinsics()
     /// textureSampleGradOffset with Texture1DArray, Sampler, Float32x2, Float32x2, Float32x2, Float32x2
     TextureSampleGradOffset_Texture1DArray_texture.name = "texture"_c;
     TextureSampleGradOffset_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureSampleGradOffset_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradOffset_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradOffset_Texture1DArray_texture.type.modifiers = TextureSampleGradOffset_Texture1DArray_texture_modifiers;
+    TextureSampleGradOffset_Texture1DArray_texture.type.modifierValues = TextureSampleGradOffset_Texture1DArray_texture_modifierValues;
     TextureSampleGradOffset_Texture1DArray_sampler.name = "sampler"_c;
     TextureSampleGradOffset_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradOffset_Texture1DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradOffset_Texture1DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradOffset_Texture1DArray_sampler.type.modifiers = TextureSampleGradOffset_Texture1DArray_sampler_modifiers;
+    TextureSampleGradOffset_Texture1DArray_sampler.type.modifierValues = TextureSampleGradOffset_Texture1DArray_sampler_modifierValues;
     TextureSampleGradOffset_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleGradOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleGradOffset_Texture1DArray_grad_x.name = "grad_x"_c;
@@ -34915,8 +36059,8 @@ void SetupIntrinsics()
     /// textureSampleGradOffset with SampledTexture1DArray, Float32x2, Float32x2, Float32x2, Float32x2
     SampledTextureSampleGradOffset_Texture1DArray_texture.name = "texture"_c;
     SampledTextureSampleGradOffset_Texture1DArray_texture.type = Type::FullType{ SampledTexture1DArrayType.name };
-    SampledTextureSampleGradOffset_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradOffset_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradOffset_Texture1DArray_texture.type.modifiers = SampledTextureSampleGradOffset_Texture1DArray_texture_modifiers;
+    SampledTextureSampleGradOffset_Texture1DArray_texture.type.modifierValues = SampledTextureSampleGradOffset_Texture1DArray_texture_modifierValues;
     SampledTextureSampleGradOffset_Texture1DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleGradOffset_Texture1DArray_grad_x.name = "grad_x"_c;
@@ -34943,12 +36087,12 @@ void SetupIntrinsics()
     /// textureSampleGradOffset with Texture2DArray, Sampler, Float32x3, Float32x3, Float32x3, Float32x3
     TextureSampleGradOffset_Texture2DArray_texture.name = "texture"_c;
     TextureSampleGradOffset_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureSampleGradOffset_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradOffset_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradOffset_Texture2DArray_texture.type.modifiers = TextureSampleGradOffset_Texture2DArray_texture_modifiers;
+    TextureSampleGradOffset_Texture2DArray_texture.type.modifierValues = TextureSampleGradOffset_Texture2DArray_texture_modifierValues;
     TextureSampleGradOffset_Texture2DArray_sampler.name = "sampler"_c;
     TextureSampleGradOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradOffset_Texture2DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradOffset_Texture2DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradOffset_Texture2DArray_sampler.type.modifiers = TextureSampleGradOffset_Texture2DArray_sampler_modifiers;
+    TextureSampleGradOffset_Texture2DArray_sampler.type.modifierValues = TextureSampleGradOffset_Texture2DArray_sampler_modifierValues;
     TextureSampleGradOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleGradOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleGradOffset_Texture2DArray_grad_x.name = "grad_x"_c;
@@ -34977,8 +36121,8 @@ void SetupIntrinsics()
     /// textureSampleGradOffset with SampledTexture2DArray, Float32x3, Float32x3, Float32x3, Float32x3
     SampledTextureSampleGradOffset_Texture2DArray_texture.name = "texture"_c;
     SampledTextureSampleGradOffset_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
-    SampledTextureSampleGradOffset_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradOffset_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradOffset_Texture2DArray_texture.type.modifiers = SampledTextureSampleGradOffset_Texture2DArray_texture_modifiers;
+    SampledTextureSampleGradOffset_Texture2DArray_texture.type.modifierValues = SampledTextureSampleGradOffset_Texture2DArray_texture_modifierValues;
     SampledTextureSampleGradOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleGradOffset_Texture2DArray_grad_x.name = "grad_x"_c;
@@ -35005,12 +36149,12 @@ void SetupIntrinsics()
     /// textureSampleGradProj with Texture1D, Sampler, Float32, Float32, Float32, Float32
     TextureSampleGradProj_Texture1D_texture.name = "texture"_c;
     TextureSampleGradProj_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleGradProj_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradProj_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradProj_Texture1D_texture.type.modifiers = TextureSampleGradProj_Texture1D_texture_modifiers;
+    TextureSampleGradProj_Texture1D_texture.type.modifierValues = TextureSampleGradProj_Texture1D_texture_modifierValues;
     TextureSampleGradProj_Texture1D_sampler.name = "sampler"_c;
     TextureSampleGradProj_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradProj_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradProj_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradProj_Texture1D_sampler.type.modifiers = TextureSampleGradProj_Texture1D_sampler_modifiers;
+    TextureSampleGradProj_Texture1D_sampler.type.modifierValues = TextureSampleGradProj_Texture1D_sampler_modifierValues;
     TextureSampleGradProj_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleGradProj_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProj_Texture1D_grad_x.name = "grad_x"_c;
@@ -35039,8 +36183,8 @@ void SetupIntrinsics()
     /// textureSampleGradProj with SampledTexture1D, Float32, Float32, Float32, Float32
     SampledTextureSampleGradProj_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleGradProj_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleGradProj_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradProj_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradProj_Texture1D_texture.type.modifiers = SampledTextureSampleGradProj_Texture1D_texture_modifiers;
+    SampledTextureSampleGradProj_Texture1D_texture.type.modifierValues = SampledTextureSampleGradProj_Texture1D_texture_modifierValues;
     SampledTextureSampleGradProj_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradProj_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProj_Texture1D_grad_x.name = "grad_x"_c;
@@ -35067,12 +36211,12 @@ void SetupIntrinsics()
     /// textureSampleGradProj with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32
     TextureSampleGradProj_Texture2D_texture.name = "texture"_c;
     TextureSampleGradProj_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleGradProj_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradProj_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradProj_Texture2D_texture.type.modifiers = TextureSampleGradProj_Texture2D_texture_modifiers;
+    TextureSampleGradProj_Texture2D_texture.type.modifierValues = TextureSampleGradProj_Texture2D_texture_modifierValues;
     TextureSampleGradProj_Texture2D_sampler.name = "sampler"_c;
     TextureSampleGradProj_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradProj_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradProj_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradProj_Texture2D_sampler.type.modifiers = TextureSampleGradProj_Texture2D_sampler_modifiers;
+    TextureSampleGradProj_Texture2D_sampler.type.modifierValues = TextureSampleGradProj_Texture2D_sampler_modifierValues;
     TextureSampleGradProj_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleGradProj_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleGradProj_Texture2D_grad_x.name = "grad_x"_c;
@@ -35101,8 +36245,8 @@ void SetupIntrinsics()
     /// textureSampleGradProj with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32
     SampledTextureSampleGradProj_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleGradProj_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleGradProj_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradProj_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradProj_Texture2D_texture.type.modifiers = SampledTextureSampleGradProj_Texture2D_texture_modifiers;
+    SampledTextureSampleGradProj_Texture2D_texture.type.modifierValues = SampledTextureSampleGradProj_Texture2D_texture_modifierValues;
     SampledTextureSampleGradProj_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradProj_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleGradProj_Texture2D_grad_x.name = "grad_x"_c;
@@ -35129,12 +36273,12 @@ void SetupIntrinsics()
     /// textureSampleGradProj with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32
     TextureSampleGradProj_Texture3D_texture.name = "texture"_c;
     TextureSampleGradProj_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleGradProj_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradProj_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradProj_Texture3D_texture.type.modifiers = TextureSampleGradProj_Texture3D_texture_modifiers;
+    TextureSampleGradProj_Texture3D_texture.type.modifierValues = TextureSampleGradProj_Texture3D_texture_modifierValues;
     TextureSampleGradProj_Texture3D_sampler.name = "sampler"_c;
     TextureSampleGradProj_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradProj_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradProj_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradProj_Texture3D_sampler.type.modifiers = TextureSampleGradProj_Texture3D_sampler_modifiers;
+    TextureSampleGradProj_Texture3D_sampler.type.modifierValues = TextureSampleGradProj_Texture3D_sampler_modifierValues;
     TextureSampleGradProj_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleGradProj_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleGradProj_Texture3D_grad_x.name = "grad_x"_c;
@@ -35163,8 +36307,8 @@ void SetupIntrinsics()
     /// textureSampleGradProj with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32
     SampledTextureSampleGradProj_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleGradProj_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleGradProj_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradProj_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradProj_Texture3D_texture.type.modifiers = SampledTextureSampleGradProj_Texture3D_texture_modifiers;
+    SampledTextureSampleGradProj_Texture3D_texture.type.modifierValues = SampledTextureSampleGradProj_Texture3D_texture_modifierValues;
     SampledTextureSampleGradProj_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradProj_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleGradProj_Texture3D_grad_x.name = "grad_x"_c;
@@ -35191,12 +36335,12 @@ void SetupIntrinsics()
     /// textureSampleGradProjOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
     TextureSampleGradProjOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleGradProjOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleGradProjOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradProjOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradProjOffset_Texture1D_texture.type.modifiers = TextureSampleGradProjOffset_Texture1D_texture_modifiers;
+    TextureSampleGradProjOffset_Texture1D_texture.type.modifierValues = TextureSampleGradProjOffset_Texture1D_texture_modifierValues;
     TextureSampleGradProjOffset_Texture1D_sampler.name = "sampler"_c;
     TextureSampleGradProjOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradProjOffset_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradProjOffset_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradProjOffset_Texture1D_sampler.type.modifiers = TextureSampleGradProjOffset_Texture1D_sampler_modifiers;
+    TextureSampleGradProjOffset_Texture1D_sampler.type.modifierValues = TextureSampleGradProjOffset_Texture1D_sampler_modifierValues;
     TextureSampleGradProjOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleGradProjOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProjOffset_Texture1D_grad_x.name = "grad_x"_c;
@@ -35228,8 +36372,8 @@ void SetupIntrinsics()
     /// textureSampleGradProjOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
     SampledTextureSampleGradProjOffset_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleGradProjOffset_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleGradProjOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradProjOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradProjOffset_Texture1D_texture.type.modifiers = SampledTextureSampleGradProjOffset_Texture1D_texture_modifiers;
+    SampledTextureSampleGradProjOffset_Texture1D_texture.type.modifierValues = SampledTextureSampleGradProjOffset_Texture1D_texture_modifierValues;
     SampledTextureSampleGradProjOffset_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradProjOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProjOffset_Texture1D_grad_x.name = "grad_x"_c;
@@ -35259,12 +36403,12 @@ void SetupIntrinsics()
     /// textureSampleGradProjOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32x2
     TextureSampleGradProjOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleGradProjOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleGradProjOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradProjOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradProjOffset_Texture2D_texture.type.modifiers = TextureSampleGradProjOffset_Texture2D_texture_modifiers;
+    TextureSampleGradProjOffset_Texture2D_texture.type.modifierValues = TextureSampleGradProjOffset_Texture2D_texture_modifierValues;
     TextureSampleGradProjOffset_Texture2D_sampler.name = "sampler"_c;
     TextureSampleGradProjOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradProjOffset_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradProjOffset_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradProjOffset_Texture2D_sampler.type.modifiers = TextureSampleGradProjOffset_Texture2D_sampler_modifiers;
+    TextureSampleGradProjOffset_Texture2D_sampler.type.modifierValues = TextureSampleGradProjOffset_Texture2D_sampler_modifierValues;
     TextureSampleGradProjOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleGradProjOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleGradProjOffset_Texture2D_grad_x.name = "grad_x"_c;
@@ -35296,8 +36440,8 @@ void SetupIntrinsics()
     /// textureSampleGradProjOffset with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32, Float32x2
     SampledTextureSampleGradProjOffset_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleGradProjOffset_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleGradProjOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradProjOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradProjOffset_Texture2D_texture.type.modifiers = SampledTextureSampleGradProjOffset_Texture2D_texture_modifiers;
+    SampledTextureSampleGradProjOffset_Texture2D_texture.type.modifierValues = SampledTextureSampleGradProjOffset_Texture2D_texture_modifierValues;
     SampledTextureSampleGradProjOffset_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradProjOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleGradProjOffset_Texture2D_grad_x.name = "grad_x"_c;
@@ -35327,12 +36471,12 @@ void SetupIntrinsics()
     /// textureSampleGradProjOffset with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32x3
     TextureSampleGradProjOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleGradProjOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleGradProjOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradProjOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradProjOffset_Texture3D_texture.type.modifiers = TextureSampleGradProjOffset_Texture3D_texture_modifiers;
+    TextureSampleGradProjOffset_Texture3D_texture.type.modifierValues = TextureSampleGradProjOffset_Texture3D_texture_modifierValues;
     TextureSampleGradProjOffset_Texture3D_sampler.name = "sampler"_c;
     TextureSampleGradProjOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradProjOffset_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradProjOffset_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradProjOffset_Texture3D_sampler.type.modifiers = TextureSampleGradProjOffset_Texture3D_sampler_modifiers;
+    TextureSampleGradProjOffset_Texture3D_sampler.type.modifierValues = TextureSampleGradProjOffset_Texture3D_sampler_modifierValues;
     TextureSampleGradProjOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleGradProjOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleGradProjOffset_Texture3D_grad_x.name = "grad_x"_c;
@@ -35364,8 +36508,8 @@ void SetupIntrinsics()
     /// textureSampleGradProjOffset with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32, Float32x3
     SampledTextureSampleGradProjOffset_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleGradProjOffset_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleGradProjOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradProjOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradProjOffset_Texture3D_texture.type.modifiers = SampledTextureSampleGradProjOffset_Texture3D_texture_modifiers;
+    SampledTextureSampleGradProjOffset_Texture3D_texture.type.modifierValues = SampledTextureSampleGradProjOffset_Texture3D_texture_modifierValues;
     SampledTextureSampleGradProjOffset_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradProjOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleGradProjOffset_Texture3D_grad_x.name = "grad_x"_c;
@@ -35395,12 +36539,12 @@ void SetupIntrinsics()
     /// textureSampleGradCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32
     TextureSampleGradCompare_Texture1D_texture.name = "texture"_c;
     TextureSampleGradCompare_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleGradCompare_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradCompare_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradCompare_Texture1D_texture.type.modifiers = TextureSampleGradCompare_Texture1D_texture_modifiers;
+    TextureSampleGradCompare_Texture1D_texture.type.modifierValues = TextureSampleGradCompare_Texture1D_texture_modifierValues;
     TextureSampleGradCompare_Texture1D_sampler.name = "sampler"_c;
     TextureSampleGradCompare_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradCompare_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradCompare_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradCompare_Texture1D_sampler.type.modifiers = TextureSampleGradCompare_Texture1D_sampler_modifiers;
+    TextureSampleGradCompare_Texture1D_sampler.type.modifierValues = TextureSampleGradCompare_Texture1D_sampler_modifierValues;
     TextureSampleGradCompare_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleGradCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleGradCompare_Texture1D_grad_x.name = "grad_x"_c;
@@ -35429,8 +36573,8 @@ void SetupIntrinsics()
     /// textureSampleGradCompare with SampledTexture1D, Float32, Float32, Float32, Float32
     SampledTextureSampleGradCompare_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleGradCompare_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleGradCompare_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradCompare_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradCompare_Texture1D_texture.type.modifiers = SampledTextureSampleGradCompare_Texture1D_texture_modifiers;
+    SampledTextureSampleGradCompare_Texture1D_texture.type.modifierValues = SampledTextureSampleGradCompare_Texture1D_texture_modifierValues;
     SampledTextureSampleGradCompare_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradCompare_Texture1D_grad_x.name = "grad_x"_c;
@@ -35457,12 +36601,12 @@ void SetupIntrinsics()
     /// textureSampleGradCompare with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32
     TextureSampleGradCompare_Texture2D_texture.name = "texture"_c;
     TextureSampleGradCompare_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleGradCompare_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradCompare_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradCompare_Texture2D_texture.type.modifiers = TextureSampleGradCompare_Texture2D_texture_modifiers;
+    TextureSampleGradCompare_Texture2D_texture.type.modifierValues = TextureSampleGradCompare_Texture2D_texture_modifierValues;
     TextureSampleGradCompare_Texture2D_sampler.name = "sampler"_c;
     TextureSampleGradCompare_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradCompare_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradCompare_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradCompare_Texture2D_sampler.type.modifiers = TextureSampleGradCompare_Texture2D_sampler_modifiers;
+    TextureSampleGradCompare_Texture2D_sampler.type.modifierValues = TextureSampleGradCompare_Texture2D_sampler_modifierValues;
     TextureSampleGradCompare_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleGradCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleGradCompare_Texture2D_grad_x.name = "grad_x"_c;
@@ -35491,8 +36635,8 @@ void SetupIntrinsics()
     /// textureSampleGradCompare with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32
     SampledTextureSampleGradCompare_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleGradCompare_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleGradCompare_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradCompare_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradCompare_Texture2D_texture.type.modifiers = SampledTextureSampleGradCompare_Texture2D_texture_modifiers;
+    SampledTextureSampleGradCompare_Texture2D_texture.type.modifierValues = SampledTextureSampleGradCompare_Texture2D_texture_modifierValues;
     SampledTextureSampleGradCompare_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleGradCompare_Texture2D_grad_x.name = "grad_x"_c;
@@ -35519,12 +36663,12 @@ void SetupIntrinsics()
     /// textureSampleGradCompare with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32
     TextureSampleGradCompare_Texture3D_texture.name = "texture"_c;
     TextureSampleGradCompare_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleGradCompare_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradCompare_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradCompare_Texture3D_texture.type.modifiers = TextureSampleGradCompare_Texture3D_texture_modifiers;
+    TextureSampleGradCompare_Texture3D_texture.type.modifierValues = TextureSampleGradCompare_Texture3D_texture_modifierValues;
     TextureSampleGradCompare_Texture3D_sampler.name = "sampler"_c;
     TextureSampleGradCompare_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradCompare_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradCompare_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradCompare_Texture3D_sampler.type.modifiers = TextureSampleGradCompare_Texture3D_sampler_modifiers;
+    TextureSampleGradCompare_Texture3D_sampler.type.modifierValues = TextureSampleGradCompare_Texture3D_sampler_modifierValues;
     TextureSampleGradCompare_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleGradCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleGradCompare_Texture3D_grad_x.name = "grad_x"_c;
@@ -35553,8 +36697,8 @@ void SetupIntrinsics()
     /// textureSampleGradCompare with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32
     SampledTextureSampleGradCompare_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleGradCompare_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleGradCompare_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradCompare_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradCompare_Texture3D_texture.type.modifiers = SampledTextureSampleGradCompare_Texture3D_texture_modifiers;
+    SampledTextureSampleGradCompare_Texture3D_texture.type.modifierValues = SampledTextureSampleGradCompare_Texture3D_texture_modifierValues;
     SampledTextureSampleGradCompare_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleGradCompare_Texture3D_grad_x.name = "grad_x"_c;
@@ -35581,12 +36725,12 @@ void SetupIntrinsics()
     /// textureSampleGradCompare with Texture1DArray, Sampler, Float32x2, Float32x2, Float32x2, Float32
     TextureSampleGradCompare_Texture1DArray_texture.name = "texture"_c;
     TextureSampleGradCompare_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureSampleGradCompare_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradCompare_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradCompare_Texture1DArray_texture.type.modifiers = TextureSampleGradCompare_Texture1DArray_texture_modifiers;
+    TextureSampleGradCompare_Texture1DArray_texture.type.modifierValues = TextureSampleGradCompare_Texture1DArray_texture_modifierValues;
     TextureSampleGradCompare_Texture1DArray_sampler.name = "sampler"_c;
     TextureSampleGradCompare_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradCompare_Texture1DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradCompare_Texture1DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradCompare_Texture1DArray_sampler.type.modifiers = TextureSampleGradCompare_Texture1DArray_sampler_modifiers;
+    TextureSampleGradCompare_Texture1DArray_sampler.type.modifierValues = TextureSampleGradCompare_Texture1DArray_sampler_modifierValues;
     TextureSampleGradCompare_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleGradCompare_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleGradCompare_Texture1DArray_grad_x.name = "grad_x"_c;
@@ -35615,8 +36759,8 @@ void SetupIntrinsics()
     /// textureSampleGradCompare with SampledTexture1DArray, Float32x2, Float32x2, Float32x2, Float32
     SampledTextureSampleGradCompare_Texture1DArray_texture.name = "texture"_c;
     SampledTextureSampleGradCompare_Texture1DArray_texture.type = Type::FullType{ SampledTexture1DArrayType.name };
-    SampledTextureSampleGradCompare_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradCompare_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradCompare_Texture1DArray_texture.type.modifiers = SampledTextureSampleGradCompare_Texture1DArray_texture_modifiers;
+    SampledTextureSampleGradCompare_Texture1DArray_texture.type.modifierValues = SampledTextureSampleGradCompare_Texture1DArray_texture_modifierValues;
     SampledTextureSampleGradCompare_Texture1DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradCompare_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleGradCompare_Texture1DArray_grad_x.name = "grad_x"_c;
@@ -35643,12 +36787,12 @@ void SetupIntrinsics()
     /// textureSampleGradCompare with Texture2DArray, Sampler, Float32x3, Float32x3, Float32x3, Float32
     TextureSampleGradCompare_Texture2DArray_texture.name = "texture"_c;
     TextureSampleGradCompare_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureSampleGradCompare_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradCompare_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradCompare_Texture2DArray_texture.type.modifiers = TextureSampleGradCompare_Texture2DArray_texture_modifiers;
+    TextureSampleGradCompare_Texture2DArray_texture.type.modifierValues = TextureSampleGradCompare_Texture2DArray_texture_modifierValues;
     TextureSampleGradCompare_Texture2DArray_sampler.name = "sampler"_c;
     TextureSampleGradCompare_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradCompare_Texture2DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradCompare_Texture2DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradCompare_Texture2DArray_sampler.type.modifiers = TextureSampleGradCompare_Texture2DArray_sampler_modifiers;
+    TextureSampleGradCompare_Texture2DArray_sampler.type.modifierValues = TextureSampleGradCompare_Texture2DArray_sampler_modifierValues;
     TextureSampleGradCompare_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleGradCompare_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleGradCompare_Texture2DArray_grad_x.name = "grad_x"_c;
@@ -35677,8 +36821,8 @@ void SetupIntrinsics()
     /// textureSampleGradCompare with SampledTexture2DArray, Float32x3, Float32x3, Float32x3, Float32
     SampledTextureSampleGradCompare_Texture2DArray_texture.name = "texture"_c;
     SampledTextureSampleGradCompare_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
-    SampledTextureSampleGradCompare_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradCompare_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradCompare_Texture2DArray_texture.type.modifiers = SampledTextureSampleGradCompare_Texture2DArray_texture_modifiers;
+    SampledTextureSampleGradCompare_Texture2DArray_texture.type.modifierValues = SampledTextureSampleGradCompare_Texture2DArray_texture_modifierValues;
     SampledTextureSampleGradCompare_Texture2DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradCompare_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleGradCompare_Texture2DArray_grad_x.name = "grad_x"_c;
@@ -35705,12 +36849,12 @@ void SetupIntrinsics()
     /// textureSampleGradCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
     TextureSampleGradCompareOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleGradCompareOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleGradCompareOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradCompareOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradCompareOffset_Texture1D_texture.type.modifiers = TextureSampleGradCompareOffset_Texture1D_texture_modifiers;
+    TextureSampleGradCompareOffset_Texture1D_texture.type.modifierValues = TextureSampleGradCompareOffset_Texture1D_texture_modifierValues;
     TextureSampleGradCompareOffset_Texture1D_sampler.name = "sampler"_c;
     TextureSampleGradCompareOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradCompareOffset_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradCompareOffset_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradCompareOffset_Texture1D_sampler.type.modifiers = TextureSampleGradCompareOffset_Texture1D_sampler_modifiers;
+    TextureSampleGradCompareOffset_Texture1D_sampler.type.modifierValues = TextureSampleGradCompareOffset_Texture1D_sampler_modifierValues;
     TextureSampleGradCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleGradCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleGradCompareOffset_Texture1D_grad_x.name = "grad_x"_c;
@@ -35742,8 +36886,8 @@ void SetupIntrinsics()
     /// textureSampleGradCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
     SampledTextureSampleGradCompareOffset_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleGradCompareOffset_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleGradCompareOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradCompareOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradCompareOffset_Texture1D_texture.type.modifiers = SampledTextureSampleGradCompareOffset_Texture1D_texture_modifiers;
+    SampledTextureSampleGradCompareOffset_Texture1D_texture.type.modifierValues = SampledTextureSampleGradCompareOffset_Texture1D_texture_modifierValues;
     SampledTextureSampleGradCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradCompareOffset_Texture1D_grad_x.name = "grad_x"_c;
@@ -35773,12 +36917,12 @@ void SetupIntrinsics()
     /// textureSampleGradCompareOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32x2
     TextureSampleGradCompareOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleGradCompareOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleGradCompareOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradCompareOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradCompareOffset_Texture2D_texture.type.modifiers = TextureSampleGradCompareOffset_Texture2D_texture_modifiers;
+    TextureSampleGradCompareOffset_Texture2D_texture.type.modifierValues = TextureSampleGradCompareOffset_Texture2D_texture_modifierValues;
     TextureSampleGradCompareOffset_Texture2D_sampler.name = "sampler"_c;
     TextureSampleGradCompareOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradCompareOffset_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradCompareOffset_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradCompareOffset_Texture2D_sampler.type.modifiers = TextureSampleGradCompareOffset_Texture2D_sampler_modifiers;
+    TextureSampleGradCompareOffset_Texture2D_sampler.type.modifierValues = TextureSampleGradCompareOffset_Texture2D_sampler_modifierValues;
     TextureSampleGradCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleGradCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleGradCompareOffset_Texture2D_grad_x.name = "grad_x"_c;
@@ -35810,8 +36954,8 @@ void SetupIntrinsics()
     /// textureSampleGradCompareOffset with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32, Float32x2
     SampledTextureSampleGradCompareOffset_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleGradCompareOffset_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleGradCompareOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradCompareOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradCompareOffset_Texture2D_texture.type.modifiers = SampledTextureSampleGradCompareOffset_Texture2D_texture_modifiers;
+    SampledTextureSampleGradCompareOffset_Texture2D_texture.type.modifierValues = SampledTextureSampleGradCompareOffset_Texture2D_texture_modifierValues;
     SampledTextureSampleGradCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleGradCompareOffset_Texture2D_grad_x.name = "grad_x"_c;
@@ -35841,12 +36985,12 @@ void SetupIntrinsics()
     /// textureSampleGradCompareOffset with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32x3
     TextureSampleGradCompareOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleGradCompareOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleGradCompareOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradCompareOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradCompareOffset_Texture3D_texture.type.modifiers = TextureSampleGradCompareOffset_Texture3D_texture_modifiers;
+    TextureSampleGradCompareOffset_Texture3D_texture.type.modifierValues = TextureSampleGradCompareOffset_Texture3D_texture_modifierValues;
     TextureSampleGradCompareOffset_Texture3D_sampler.name = "sampler"_c;
     TextureSampleGradCompareOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradCompareOffset_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradCompareOffset_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradCompareOffset_Texture3D_sampler.type.modifiers = TextureSampleGradCompareOffset_Texture3D_sampler_modifiers;
+    TextureSampleGradCompareOffset_Texture3D_sampler.type.modifierValues = TextureSampleGradCompareOffset_Texture3D_sampler_modifierValues;
     TextureSampleGradCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleGradCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleGradCompareOffset_Texture3D_grad_x.name = "grad_x"_c;
@@ -35878,8 +37022,8 @@ void SetupIntrinsics()
     /// textureSampleGradCompareOffset with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32, Float32x3
     SampledTextureSampleGradCompareOffset_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleGradCompareOffset_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleGradCompareOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradCompareOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradCompareOffset_Texture3D_texture.type.modifiers = SampledTextureSampleGradCompareOffset_Texture3D_texture_modifiers;
+    SampledTextureSampleGradCompareOffset_Texture3D_texture.type.modifierValues = SampledTextureSampleGradCompareOffset_Texture3D_texture_modifierValues;
     SampledTextureSampleGradCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleGradCompareOffset_Texture3D_grad_x.name = "grad_x"_c;
@@ -35909,12 +37053,12 @@ void SetupIntrinsics()
     /// textureSampleGradCompareOffset with Texture1DArray, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32x2
     TextureSampleGradCompareOffset_Texture1DArray_texture.name = "texture"_c;
     TextureSampleGradCompareOffset_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureSampleGradCompareOffset_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradCompareOffset_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradCompareOffset_Texture1DArray_texture.type.modifiers = TextureSampleGradCompareOffset_Texture1DArray_texture_modifiers;
+    TextureSampleGradCompareOffset_Texture1DArray_texture.type.modifierValues = TextureSampleGradCompareOffset_Texture1DArray_texture_modifierValues;
     TextureSampleGradCompareOffset_Texture1DArray_sampler.name = "sampler"_c;
     TextureSampleGradCompareOffset_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradCompareOffset_Texture1DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradCompareOffset_Texture1DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradCompareOffset_Texture1DArray_sampler.type.modifiers = TextureSampleGradCompareOffset_Texture1DArray_sampler_modifiers;
+    TextureSampleGradCompareOffset_Texture1DArray_sampler.type.modifierValues = TextureSampleGradCompareOffset_Texture1DArray_sampler_modifierValues;
     TextureSampleGradCompareOffset_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleGradCompareOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleGradCompareOffset_Texture1DArray_grad_x.name = "grad_x"_c;
@@ -35946,8 +37090,8 @@ void SetupIntrinsics()
     /// textureSampleGradCompareOffset with SampledTexture1DArray, Float32x2, Float32x2, Float32x2, Float32, Float32x2
     SampledTextureSampleGradCompareOffset_Texture1DArray_texture.name = "texture"_c;
     SampledTextureSampleGradCompareOffset_Texture1DArray_texture.type = Type::FullType{ SampledTexture1DArrayType.name };
-    SampledTextureSampleGradCompareOffset_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradCompareOffset_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradCompareOffset_Texture1DArray_texture.type.modifiers = SampledTextureSampleGradCompareOffset_Texture1DArray_texture_modifiers;
+    SampledTextureSampleGradCompareOffset_Texture1DArray_texture.type.modifierValues = SampledTextureSampleGradCompareOffset_Texture1DArray_texture_modifierValues;
     SampledTextureSampleGradCompareOffset_Texture1DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradCompareOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleGradCompareOffset_Texture1DArray_grad_x.name = "grad_x"_c;
@@ -35977,12 +37121,12 @@ void SetupIntrinsics()
     /// textureSampleGradCompareOffset with Texture2DArray, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32x3
     TextureSampleGradCompareOffset_Texture2DArray_texture.name = "texture"_c;
     TextureSampleGradCompareOffset_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureSampleGradCompareOffset_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradCompareOffset_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradCompareOffset_Texture2DArray_texture.type.modifiers = TextureSampleGradCompareOffset_Texture2DArray_texture_modifiers;
+    TextureSampleGradCompareOffset_Texture2DArray_texture.type.modifierValues = TextureSampleGradCompareOffset_Texture2DArray_texture_modifierValues;
     TextureSampleGradCompareOffset_Texture2DArray_sampler.name = "sampler"_c;
     TextureSampleGradCompareOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradCompareOffset_Texture2DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradCompareOffset_Texture2DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradCompareOffset_Texture2DArray_sampler.type.modifiers = TextureSampleGradCompareOffset_Texture2DArray_sampler_modifiers;
+    TextureSampleGradCompareOffset_Texture2DArray_sampler.type.modifierValues = TextureSampleGradCompareOffset_Texture2DArray_sampler_modifierValues;
     TextureSampleGradCompareOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleGradCompareOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleGradCompareOffset_Texture2DArray_grad_x.name = "grad_x"_c;
@@ -36014,8 +37158,8 @@ void SetupIntrinsics()
     /// textureSampleGradCompareOffset with SampledTexture2DArray, Float32x3, Float32x3, Float32x3, Float32, Float32x3
     SampledTextureSampleGradCompareOffset_Texture2DArray_texture.name = "texture"_c;
     SampledTextureSampleGradCompareOffset_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
-    SampledTextureSampleGradCompareOffset_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradCompareOffset_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradCompareOffset_Texture2DArray_texture.type.modifiers = SampledTextureSampleGradCompareOffset_Texture2DArray_texture_modifiers;
+    SampledTextureSampleGradCompareOffset_Texture2DArray_texture.type.modifierValues = SampledTextureSampleGradCompareOffset_Texture2DArray_texture_modifierValues;
     SampledTextureSampleGradCompareOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradCompareOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleGradCompareOffset_Texture2DArray_grad_x.name = "grad_x"_c;
@@ -36045,12 +37189,12 @@ void SetupIntrinsics()
     /// textureSampleGradProjCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
     TextureSampleGradProjCompare_Texture1D_texture.name = "texture"_c;
     TextureSampleGradProjCompare_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleGradProjCompare_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradProjCompare_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradProjCompare_Texture1D_texture.type.modifiers = TextureSampleGradProjCompare_Texture1D_texture_modifiers;
+    TextureSampleGradProjCompare_Texture1D_texture.type.modifierValues = TextureSampleGradProjCompare_Texture1D_texture_modifierValues;
     TextureSampleGradProjCompare_Texture1D_sampler.name = "sampler"_c;
     TextureSampleGradProjCompare_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradProjCompare_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradProjCompare_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradProjCompare_Texture1D_sampler.type.modifiers = TextureSampleGradProjCompare_Texture1D_sampler_modifiers;
+    TextureSampleGradProjCompare_Texture1D_sampler.type.modifierValues = TextureSampleGradProjCompare_Texture1D_sampler_modifierValues;
     TextureSampleGradProjCompare_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleGradProjCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProjCompare_Texture1D_grad_x.name = "grad_x"_c;
@@ -36082,8 +37226,8 @@ void SetupIntrinsics()
     /// textureSampleGradProjCompare with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
     SampledTextureSampleGradProjCompare_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleGradProjCompare_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleGradProjCompare_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradProjCompare_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradProjCompare_Texture1D_texture.type.modifiers = SampledTextureSampleGradProjCompare_Texture1D_texture_modifiers;
+    SampledTextureSampleGradProjCompare_Texture1D_texture.type.modifierValues = SampledTextureSampleGradProjCompare_Texture1D_texture_modifierValues;
     SampledTextureSampleGradProjCompare_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradProjCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProjCompare_Texture1D_grad_x.name = "grad_x"_c;
@@ -36113,12 +37257,12 @@ void SetupIntrinsics()
     /// textureSampleGradProjCompare with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32
     TextureSampleGradProjCompare_Texture2D_texture.name = "texture"_c;
     TextureSampleGradProjCompare_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleGradProjCompare_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradProjCompare_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradProjCompare_Texture2D_texture.type.modifiers = TextureSampleGradProjCompare_Texture2D_texture_modifiers;
+    TextureSampleGradProjCompare_Texture2D_texture.type.modifierValues = TextureSampleGradProjCompare_Texture2D_texture_modifierValues;
     TextureSampleGradProjCompare_Texture2D_sampler.name = "sampler"_c;
     TextureSampleGradProjCompare_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradProjCompare_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradProjCompare_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradProjCompare_Texture2D_sampler.type.modifiers = TextureSampleGradProjCompare_Texture2D_sampler_modifiers;
+    TextureSampleGradProjCompare_Texture2D_sampler.type.modifierValues = TextureSampleGradProjCompare_Texture2D_sampler_modifierValues;
     TextureSampleGradProjCompare_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleGradProjCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleGradProjCompare_Texture2D_grad_x.name = "grad_x"_c;
@@ -36150,8 +37294,8 @@ void SetupIntrinsics()
     /// textureSampleGradProjCompare with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32, Float32
     SampledTextureSampleGradProjCompare_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleGradProjCompare_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleGradProjCompare_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradProjCompare_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradProjCompare_Texture2D_texture.type.modifiers = SampledTextureSampleGradProjCompare_Texture2D_texture_modifiers;
+    SampledTextureSampleGradProjCompare_Texture2D_texture.type.modifierValues = SampledTextureSampleGradProjCompare_Texture2D_texture_modifierValues;
     SampledTextureSampleGradProjCompare_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradProjCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleGradProjCompare_Texture2D_grad_x.name = "grad_x"_c;
@@ -36181,12 +37325,12 @@ void SetupIntrinsics()
     /// textureSampleGradProjCompare with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32
     TextureSampleGradProjCompare_Texture3D_texture.name = "texture"_c;
     TextureSampleGradProjCompare_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleGradProjCompare_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradProjCompare_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradProjCompare_Texture3D_texture.type.modifiers = TextureSampleGradProjCompare_Texture3D_texture_modifiers;
+    TextureSampleGradProjCompare_Texture3D_texture.type.modifierValues = TextureSampleGradProjCompare_Texture3D_texture_modifierValues;
     TextureSampleGradProjCompare_Texture3D_sampler.name = "sampler"_c;
     TextureSampleGradProjCompare_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradProjCompare_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradProjCompare_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradProjCompare_Texture3D_sampler.type.modifiers = TextureSampleGradProjCompare_Texture3D_sampler_modifiers;
+    TextureSampleGradProjCompare_Texture3D_sampler.type.modifierValues = TextureSampleGradProjCompare_Texture3D_sampler_modifierValues;
     TextureSampleGradProjCompare_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleGradProjCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleGradProjCompare_Texture3D_grad_x.name = "grad_x"_c;
@@ -36218,8 +37362,8 @@ void SetupIntrinsics()
     /// textureSampleGradProjCompare with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32, Float32
     SampledTextureSampleGradProjCompare_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleGradProjCompare_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleGradProjCompare_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradProjCompare_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradProjCompare_Texture3D_texture.type.modifiers = SampledTextureSampleGradProjCompare_Texture3D_texture_modifiers;
+    SampledTextureSampleGradProjCompare_Texture3D_texture.type.modifierValues = SampledTextureSampleGradProjCompare_Texture3D_texture_modifierValues;
     SampledTextureSampleGradProjCompare_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradProjCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleGradProjCompare_Texture3D_grad_x.name = "grad_x"_c;
@@ -36249,12 +37393,12 @@ void SetupIntrinsics()
     /// textureSampleGradProjCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32, Float32
     TextureSampleGradProjCompareOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleGradProjCompareOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleGradProjCompareOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradProjCompareOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradProjCompareOffset_Texture1D_texture.type.modifiers = TextureSampleGradProjCompareOffset_Texture1D_texture_modifiers;
+    TextureSampleGradProjCompareOffset_Texture1D_texture.type.modifierValues = TextureSampleGradProjCompareOffset_Texture1D_texture_modifierValues;
     TextureSampleGradProjCompareOffset_Texture1D_sampler.name = "sampler"_c;
     TextureSampleGradProjCompareOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradProjCompareOffset_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradProjCompareOffset_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradProjCompareOffset_Texture1D_sampler.type.modifiers = TextureSampleGradProjCompareOffset_Texture1D_sampler_modifiers;
+    TextureSampleGradProjCompareOffset_Texture1D_sampler.type.modifierValues = TextureSampleGradProjCompareOffset_Texture1D_sampler_modifierValues;
     TextureSampleGradProjCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleGradProjCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProjCompareOffset_Texture1D_grad_x.name = "grad_x"_c;
@@ -36289,8 +37433,8 @@ void SetupIntrinsics()
     /// textureSampleGradProjCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32, Float32
     SampledTextureSampleGradProjCompareOffset_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleGradProjCompareOffset_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleGradProjCompareOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradProjCompareOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradProjCompareOffset_Texture1D_texture.type.modifiers = SampledTextureSampleGradProjCompareOffset_Texture1D_texture_modifiers;
+    SampledTextureSampleGradProjCompareOffset_Texture1D_texture.type.modifierValues = SampledTextureSampleGradProjCompareOffset_Texture1D_texture_modifierValues;
     SampledTextureSampleGradProjCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradProjCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProjCompareOffset_Texture1D_grad_x.name = "grad_x"_c;
@@ -36323,12 +37467,12 @@ void SetupIntrinsics()
     /// textureSampleGradProjCompareOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32, Float32x2
     TextureSampleGradProjCompareOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleGradProjCompareOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleGradProjCompareOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradProjCompareOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradProjCompareOffset_Texture2D_texture.type.modifiers = TextureSampleGradProjCompareOffset_Texture2D_texture_modifiers;
+    TextureSampleGradProjCompareOffset_Texture2D_texture.type.modifierValues = TextureSampleGradProjCompareOffset_Texture2D_texture_modifierValues;
     TextureSampleGradProjCompareOffset_Texture2D_sampler.name = "sampler"_c;
     TextureSampleGradProjCompareOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradProjCompareOffset_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradProjCompareOffset_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradProjCompareOffset_Texture2D_sampler.type.modifiers = TextureSampleGradProjCompareOffset_Texture2D_sampler_modifiers;
+    TextureSampleGradProjCompareOffset_Texture2D_sampler.type.modifierValues = TextureSampleGradProjCompareOffset_Texture2D_sampler_modifierValues;
     TextureSampleGradProjCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleGradProjCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleGradProjCompareOffset_Texture2D_grad_x.name = "grad_x"_c;
@@ -36363,8 +37507,8 @@ void SetupIntrinsics()
     /// textureSampleGradProjCompareOffset with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32, Float32, Float32x2
     SampledTextureSampleGradProjCompareOffset_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleGradProjCompareOffset_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleGradProjCompareOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradProjCompareOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradProjCompareOffset_Texture2D_texture.type.modifiers = SampledTextureSampleGradProjCompareOffset_Texture2D_texture_modifiers;
+    SampledTextureSampleGradProjCompareOffset_Texture2D_texture.type.modifierValues = SampledTextureSampleGradProjCompareOffset_Texture2D_texture_modifierValues;
     SampledTextureSampleGradProjCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradProjCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleGradProjCompareOffset_Texture2D_grad_x.name = "grad_x"_c;
@@ -36397,12 +37541,12 @@ void SetupIntrinsics()
     /// textureSampleGradProjCompareOffset with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32, Float32x3
     TextureSampleGradProjCompareOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleGradProjCompareOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleGradProjCompareOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradProjCompareOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradProjCompareOffset_Texture3D_texture.type.modifiers = TextureSampleGradProjCompareOffset_Texture3D_texture_modifiers;
+    TextureSampleGradProjCompareOffset_Texture3D_texture.type.modifierValues = TextureSampleGradProjCompareOffset_Texture3D_texture_modifierValues;
     TextureSampleGradProjCompareOffset_Texture3D_sampler.name = "sampler"_c;
     TextureSampleGradProjCompareOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradProjCompareOffset_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleGradProjCompareOffset_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleGradProjCompareOffset_Texture3D_sampler.type.modifiers = TextureSampleGradProjCompareOffset_Texture3D_sampler_modifiers;
+    TextureSampleGradProjCompareOffset_Texture3D_sampler.type.modifierValues = TextureSampleGradProjCompareOffset_Texture3D_sampler_modifierValues;
     TextureSampleGradProjCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleGradProjCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleGradProjCompareOffset_Texture3D_grad_x.name = "grad_x"_c;
@@ -36437,8 +37581,8 @@ void SetupIntrinsics()
     /// textureSampleGradProjCompareOffset with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32, Float32, Float32x3
     SampledTextureSampleGradProjCompareOffset_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleGradProjCompareOffset_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleGradProjCompareOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleGradProjCompareOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleGradProjCompareOffset_Texture3D_texture.type.modifiers = SampledTextureSampleGradProjCompareOffset_Texture3D_texture_modifiers;
+    SampledTextureSampleGradProjCompareOffset_Texture3D_texture.type.modifierValues = SampledTextureSampleGradProjCompareOffset_Texture3D_texture_modifierValues;
     SampledTextureSampleGradProjCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleGradProjCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleGradProjCompareOffset_Texture3D_grad_x.name = "grad_x"_c;
@@ -36471,12 +37615,12 @@ void SetupIntrinsics()
     /// textureSampleBias with Texture1D, Sampler, Float32, Float32
     TextureSampleBias_Texture1D_texture.name = "texture"_c;
     TextureSampleBias_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleBias_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBias_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBias_Texture1D_texture.type.modifiers = TextureSampleBias_Texture1D_texture_modifiers;
+    TextureSampleBias_Texture1D_texture.type.modifierValues = TextureSampleBias_Texture1D_texture_modifierValues;
     TextureSampleBias_Texture1D_sampler.name = "sampler"_c;
     TextureSampleBias_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBias_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBias_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBias_Texture1D_sampler.type.modifiers = TextureSampleBias_Texture1D_sampler_modifiers;
+    TextureSampleBias_Texture1D_sampler.type.modifierValues = TextureSampleBias_Texture1D_sampler_modifierValues;
     TextureSampleBias_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleBias_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleBias_Texture1D_bias.name = "bias"_c;
@@ -36499,8 +37643,8 @@ void SetupIntrinsics()
     /// textureSampleBias with SampledTexture1D, Float32, Float32
     SampledTextureSampleBias_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleBias_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleBias_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBias_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBias_Texture1D_texture.type.modifiers = SampledTextureSampleBias_Texture1D_texture_modifiers;
+    SampledTextureSampleBias_Texture1D_texture.type.modifierValues = SampledTextureSampleBias_Texture1D_texture_modifierValues;
     SampledTextureSampleBias_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleBias_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBias_Texture1D_bias.name = "bias"_c;
@@ -36521,12 +37665,12 @@ void SetupIntrinsics()
     /// textureSampleBias with Texture2D, Sampler, Float32x2, Float32
     TextureSampleBias_Texture2D_texture.name = "texture"_c;
     TextureSampleBias_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleBias_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBias_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBias_Texture2D_texture.type.modifiers = TextureSampleBias_Texture2D_texture_modifiers;
+    TextureSampleBias_Texture2D_texture.type.modifierValues = TextureSampleBias_Texture2D_texture_modifierValues;
     TextureSampleBias_Texture2D_sampler.name = "sampler"_c;
     TextureSampleBias_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBias_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBias_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBias_Texture2D_sampler.type.modifiers = TextureSampleBias_Texture2D_sampler_modifiers;
+    TextureSampleBias_Texture2D_sampler.type.modifierValues = TextureSampleBias_Texture2D_sampler_modifierValues;
     TextureSampleBias_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleBias_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleBias_Texture2D_bias.name = "bias"_c;
@@ -36549,8 +37693,8 @@ void SetupIntrinsics()
     /// textureSampleBias with SampledTexture2D, Float32x2, Float32
     SampledTextureSampleBias_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleBias_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleBias_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBias_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBias_Texture2D_texture.type.modifiers = SampledTextureSampleBias_Texture2D_texture_modifiers;
+    SampledTextureSampleBias_Texture2D_texture.type.modifierValues = SampledTextureSampleBias_Texture2D_texture_modifierValues;
     SampledTextureSampleBias_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleBias_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleBias_Texture2D_bias.name = "bias"_c;
@@ -36571,12 +37715,12 @@ void SetupIntrinsics()
     /// textureSampleBias with Texture3D, Sampler, Float32x3, Float32
     TextureSampleBias_Texture3D_texture.name = "texture"_c;
     TextureSampleBias_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleBias_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBias_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBias_Texture3D_texture.type.modifiers = TextureSampleBias_Texture3D_texture_modifiers;
+    TextureSampleBias_Texture3D_texture.type.modifierValues = TextureSampleBias_Texture3D_texture_modifierValues;
     TextureSampleBias_Texture3D_sampler.name = "sampler"_c;
     TextureSampleBias_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBias_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBias_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBias_Texture3D_sampler.type.modifiers = TextureSampleBias_Texture3D_sampler_modifiers;
+    TextureSampleBias_Texture3D_sampler.type.modifierValues = TextureSampleBias_Texture3D_sampler_modifierValues;
     TextureSampleBias_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleBias_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleBias_Texture3D_bias.name = "bias"_c;
@@ -36599,8 +37743,8 @@ void SetupIntrinsics()
     /// textureSampleBias with SampledTexture3D, Float32x3, Float32
     SampledTextureSampleBias_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleBias_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleBias_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBias_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBias_Texture3D_texture.type.modifiers = SampledTextureSampleBias_Texture3D_texture_modifiers;
+    SampledTextureSampleBias_Texture3D_texture.type.modifierValues = SampledTextureSampleBias_Texture3D_texture_modifierValues;
     SampledTextureSampleBias_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleBias_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleBias_Texture3D_bias.name = "bias"_c;
@@ -36621,12 +37765,12 @@ void SetupIntrinsics()
     /// textureSampleBias with TextureCube, Sampler, Float32x3, Float32
     TextureSampleBias_TextureCube_texture.name = "texture"_c;
     TextureSampleBias_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureSampleBias_TextureCube_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBias_TextureCube_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBias_TextureCube_texture.type.modifiers = TextureSampleBias_TextureCube_texture_modifiers;
+    TextureSampleBias_TextureCube_texture.type.modifierValues = TextureSampleBias_TextureCube_texture_modifierValues;
     TextureSampleBias_TextureCube_sampler.name = "sampler"_c;
     TextureSampleBias_TextureCube_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBias_TextureCube_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBias_TextureCube_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBias_TextureCube_sampler.type.modifiers = TextureSampleBias_TextureCube_sampler_modifiers;
+    TextureSampleBias_TextureCube_sampler.type.modifierValues = TextureSampleBias_TextureCube_sampler_modifierValues;
     TextureSampleBias_TextureCube_coordinate.name = "coordinate"_c;
     TextureSampleBias_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleBias_TextureCube_bias.name = "bias"_c;
@@ -36649,8 +37793,8 @@ void SetupIntrinsics()
     /// textureSampleBias with SampledTextureCube, Float32x3, Float32
     SampledTextureSampleBias_TextureCube_texture.name = "texture"_c;
     SampledTextureSampleBias_TextureCube_texture.type = Type::FullType{ SampledTextureCubeType.name };
-    SampledTextureSampleBias_TextureCube_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBias_TextureCube_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBias_TextureCube_texture.type.modifiers = SampledTextureSampleBias_TextureCube_texture_modifiers;
+    SampledTextureSampleBias_TextureCube_texture.type.modifierValues = SampledTextureSampleBias_TextureCube_texture_modifierValues;
     SampledTextureSampleBias_TextureCube_coordinate.name = "coordinate"_c;
     SampledTextureSampleBias_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleBias_TextureCube_bias.name = "bias"_c;
@@ -36671,12 +37815,12 @@ void SetupIntrinsics()
     /// textureSampleBias with Texture1DArray, Sampler, Float32x2, Float32
     TextureSampleBias_Texture1DArray_texture.name = "texture"_c;
     TextureSampleBias_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureSampleBias_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBias_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBias_Texture1DArray_texture.type.modifiers = TextureSampleBias_Texture1DArray_texture_modifiers;
+    TextureSampleBias_Texture1DArray_texture.type.modifierValues = TextureSampleBias_Texture1DArray_texture_modifierValues;
     TextureSampleBias_Texture1DArray_sampler.name = "sampler"_c;
     TextureSampleBias_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBias_Texture1DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBias_Texture1DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBias_Texture1DArray_sampler.type.modifiers = TextureSampleBias_Texture1DArray_sampler_modifiers;
+    TextureSampleBias_Texture1DArray_sampler.type.modifierValues = TextureSampleBias_Texture1DArray_sampler_modifierValues;
     TextureSampleBias_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleBias_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleBias_Texture1DArray_bias.name = "bias"_c;
@@ -36699,8 +37843,8 @@ void SetupIntrinsics()
     /// textureSampleBias with SampledTexture1DArray, Float32x2, Float32
     SampledTextureSampleBias_Texture1DArray_texture.name = "texture"_c;
     SampledTextureSampleBias_Texture1DArray_texture.type = Type::FullType{ SampledTexture1DArrayType.name };
-    SampledTextureSampleBias_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBias_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBias_Texture1DArray_texture.type.modifiers = SampledTextureSampleBias_Texture1DArray_texture_modifiers;
+    SampledTextureSampleBias_Texture1DArray_texture.type.modifierValues = SampledTextureSampleBias_Texture1DArray_texture_modifierValues;
     SampledTextureSampleBias_Texture1DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleBias_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleBias_Texture1DArray_bias.name = "bias"_c;
@@ -36721,12 +37865,12 @@ void SetupIntrinsics()
     /// textureSampleBias with Texture2DArray, Sampler, Float32x3, Float32
     TextureSampleBias_Texture2DArray_texture.name = "texture"_c;
     TextureSampleBias_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureSampleBias_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBias_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBias_Texture2DArray_texture.type.modifiers = TextureSampleBias_Texture2DArray_texture_modifiers;
+    TextureSampleBias_Texture2DArray_texture.type.modifierValues = TextureSampleBias_Texture2DArray_texture_modifierValues;
     TextureSampleBias_Texture2DArray_sampler.name = "sampler"_c;
     TextureSampleBias_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBias_Texture2DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBias_Texture2DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBias_Texture2DArray_sampler.type.modifiers = TextureSampleBias_Texture2DArray_sampler_modifiers;
+    TextureSampleBias_Texture2DArray_sampler.type.modifierValues = TextureSampleBias_Texture2DArray_sampler_modifierValues;
     TextureSampleBias_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleBias_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleBias_Texture2DArray_bias.name = "bias"_c;
@@ -36749,8 +37893,8 @@ void SetupIntrinsics()
     /// textureSampleBias with SampledTexture2DArray, Float32x3, Float32
     SampledTextureSampleBias_Texture2DArray_texture.name = "texture"_c;
     SampledTextureSampleBias_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
-    SampledTextureSampleBias_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBias_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBias_Texture2DArray_texture.type.modifiers = SampledTextureSampleBias_Texture2DArray_texture_modifiers;
+    SampledTextureSampleBias_Texture2DArray_texture.type.modifierValues = SampledTextureSampleBias_Texture2DArray_texture_modifierValues;
     SampledTextureSampleBias_Texture2DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleBias_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleBias_Texture2DArray_bias.name = "bias"_c;
@@ -36771,12 +37915,12 @@ void SetupIntrinsics()
     /// textureSampleBias with TextureCubeArray, Sampler, Float32x4, Float32
     TextureSampleBias_TextureCubeArray_texture.name = "texture"_c;
     TextureSampleBias_TextureCubeArray_texture.type = Type::FullType{ TextureCubeArrayType.name };
-    TextureSampleBias_TextureCubeArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBias_TextureCubeArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBias_TextureCubeArray_texture.type.modifiers = TextureSampleBias_TextureCubeArray_texture_modifiers;
+    TextureSampleBias_TextureCubeArray_texture.type.modifierValues = TextureSampleBias_TextureCubeArray_texture_modifierValues;
     TextureSampleBias_TextureCubeArray_sampler.name = "sampler"_c;
     TextureSampleBias_TextureCubeArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBias_TextureCubeArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBias_TextureCubeArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBias_TextureCubeArray_sampler.type.modifiers = TextureSampleBias_TextureCubeArray_sampler_modifiers;
+    TextureSampleBias_TextureCubeArray_sampler.type.modifierValues = TextureSampleBias_TextureCubeArray_sampler_modifierValues;
     TextureSampleBias_TextureCubeArray_coordinate.name = "coordinate"_c;
     TextureSampleBias_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
     TextureSampleBias_TextureCubeArray_bias.name = "bias"_c;
@@ -36799,8 +37943,8 @@ void SetupIntrinsics()
     /// textureSampleBias with SampledTextureCubeArray, Float32x4, Float32
     SampledTextureSampleBias_TextureCubeArray_texture.name = "texture"_c;
     SampledTextureSampleBias_TextureCubeArray_texture.type = Type::FullType{ SampledTextureCubeArrayType.name };
-    SampledTextureSampleBias_TextureCubeArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBias_TextureCubeArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBias_TextureCubeArray_texture.type.modifiers = SampledTextureSampleBias_TextureCubeArray_texture_modifiers;
+    SampledTextureSampleBias_TextureCubeArray_texture.type.modifierValues = SampledTextureSampleBias_TextureCubeArray_texture_modifierValues;
     SampledTextureSampleBias_TextureCubeArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleBias_TextureCubeArray_coordinate.type = Type::FullType{ Float32x4Type.name };
     SampledTextureSampleBias_TextureCubeArray_bias.name = "bias"_c;
@@ -36821,12 +37965,12 @@ void SetupIntrinsics()
     /// textureSampleBiasOffset with Texture1D, Sampler, Float32, Float32, Float32
     TextureSampleBiasOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleBiasOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleBiasOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasOffset_Texture1D_texture.type.modifiers = TextureSampleBiasOffset_Texture1D_texture_modifiers;
+    TextureSampleBiasOffset_Texture1D_texture.type.modifierValues = TextureSampleBiasOffset_Texture1D_texture_modifierValues;
     TextureSampleBiasOffset_Texture1D_sampler.name = "sampler"_c;
     TextureSampleBiasOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasOffset_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasOffset_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasOffset_Texture1D_sampler.type.modifiers = TextureSampleBiasOffset_Texture1D_sampler_modifiers;
+    TextureSampleBiasOffset_Texture1D_sampler.type.modifierValues = TextureSampleBiasOffset_Texture1D_sampler_modifierValues;
     TextureSampleBiasOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleBiasOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasOffset_Texture1D_bias.name = "bias"_c;
@@ -36852,8 +37996,8 @@ void SetupIntrinsics()
     /// textureSampleBiasOffset with SampledTexture1D, Float32, Float32, Float32
     SampledTextureSampleBiasOffset_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleBiasOffset_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleBiasOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasOffset_Texture1D_texture.type.modifiers = SampledTextureSampleBiasOffset_Texture1D_texture_modifiers;
+    SampledTextureSampleBiasOffset_Texture1D_texture.type.modifierValues = SampledTextureSampleBiasOffset_Texture1D_texture_modifierValues;
     SampledTextureSampleBiasOffset_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasOffset_Texture1D_bias.name = "bias"_c;
@@ -36877,12 +38021,12 @@ void SetupIntrinsics()
     /// textureSampleBiasOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2
     TextureSampleBiasOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleBiasOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleBiasOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasOffset_Texture2D_texture.type.modifiers = TextureSampleBiasOffset_Texture2D_texture_modifiers;
+    TextureSampleBiasOffset_Texture2D_texture.type.modifierValues = TextureSampleBiasOffset_Texture2D_texture_modifierValues;
     TextureSampleBiasOffset_Texture2D_sampler.name = "sampler"_c;
     TextureSampleBiasOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasOffset_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasOffset_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasOffset_Texture2D_sampler.type.modifiers = TextureSampleBiasOffset_Texture2D_sampler_modifiers;
+    TextureSampleBiasOffset_Texture2D_sampler.type.modifierValues = TextureSampleBiasOffset_Texture2D_sampler_modifierValues;
     TextureSampleBiasOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleBiasOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleBiasOffset_Texture2D_bias.name = "bias"_c;
@@ -36908,8 +38052,8 @@ void SetupIntrinsics()
     /// textureSampleBiasOffset with SampledTexture2D, Float32x2, Float32, Float32x2
     SampledTextureSampleBiasOffset_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleBiasOffset_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleBiasOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasOffset_Texture2D_texture.type.modifiers = SampledTextureSampleBiasOffset_Texture2D_texture_modifiers;
+    SampledTextureSampleBiasOffset_Texture2D_texture.type.modifierValues = SampledTextureSampleBiasOffset_Texture2D_texture_modifierValues;
     SampledTextureSampleBiasOffset_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleBiasOffset_Texture2D_bias.name = "bias"_c;
@@ -36933,12 +38077,12 @@ void SetupIntrinsics()
     /// textureSampleBiasOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3
     TextureSampleBiasOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleBiasOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleBiasOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasOffset_Texture3D_texture.type.modifiers = TextureSampleBiasOffset_Texture3D_texture_modifiers;
+    TextureSampleBiasOffset_Texture3D_texture.type.modifierValues = TextureSampleBiasOffset_Texture3D_texture_modifierValues;
     TextureSampleBiasOffset_Texture3D_sampler.name = "sampler"_c;
     TextureSampleBiasOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasOffset_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasOffset_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasOffset_Texture3D_sampler.type.modifiers = TextureSampleBiasOffset_Texture3D_sampler_modifiers;
+    TextureSampleBiasOffset_Texture3D_sampler.type.modifierValues = TextureSampleBiasOffset_Texture3D_sampler_modifierValues;
     TextureSampleBiasOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleBiasOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleBiasOffset_Texture3D_bias.name = "bias"_c;
@@ -36964,8 +38108,8 @@ void SetupIntrinsics()
     /// textureSampleBiasOffset with SampledTexture3D, Float32x3, Float32, Float32x3
     SampledTextureSampleBiasOffset_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleBiasOffset_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleBiasOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasOffset_Texture3D_texture.type.modifiers = SampledTextureSampleBiasOffset_Texture3D_texture_modifiers;
+    SampledTextureSampleBiasOffset_Texture3D_texture.type.modifierValues = SampledTextureSampleBiasOffset_Texture3D_texture_modifierValues;
     SampledTextureSampleBiasOffset_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleBiasOffset_Texture3D_bias.name = "bias"_c;
@@ -36989,12 +38133,12 @@ void SetupIntrinsics()
     /// textureSampleBiasOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32x2
     TextureSampleBiasOffset_Texture1DArray_texture.name = "texture"_c;
     TextureSampleBiasOffset_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureSampleBiasOffset_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasOffset_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasOffset_Texture1DArray_texture.type.modifiers = TextureSampleBiasOffset_Texture1DArray_texture_modifiers;
+    TextureSampleBiasOffset_Texture1DArray_texture.type.modifierValues = TextureSampleBiasOffset_Texture1DArray_texture_modifierValues;
     TextureSampleBiasOffset_Texture1DArray_sampler.name = "sampler"_c;
     TextureSampleBiasOffset_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasOffset_Texture1DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasOffset_Texture1DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasOffset_Texture1DArray_sampler.type.modifiers = TextureSampleBiasOffset_Texture1DArray_sampler_modifiers;
+    TextureSampleBiasOffset_Texture1DArray_sampler.type.modifierValues = TextureSampleBiasOffset_Texture1DArray_sampler_modifierValues;
     TextureSampleBiasOffset_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleBiasOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleBiasOffset_Texture1DArray_bias.name = "bias"_c;
@@ -37020,8 +38164,8 @@ void SetupIntrinsics()
     /// textureSampleBiasOffset with SampledTexture1DArray, Float32x2, Float32, Float32x2
     SampledTextureSampleBiasOffset_Texture1DArray_texture.name = "texture"_c;
     SampledTextureSampleBiasOffset_Texture1DArray_texture.type = Type::FullType{ SampledTexture1DArrayType.name };
-    SampledTextureSampleBiasOffset_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasOffset_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasOffset_Texture1DArray_texture.type.modifiers = SampledTextureSampleBiasOffset_Texture1DArray_texture_modifiers;
+    SampledTextureSampleBiasOffset_Texture1DArray_texture.type.modifierValues = SampledTextureSampleBiasOffset_Texture1DArray_texture_modifierValues;
     SampledTextureSampleBiasOffset_Texture1DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleBiasOffset_Texture1DArray_bias.name = "bias"_c;
@@ -37045,12 +38189,12 @@ void SetupIntrinsics()
     /// textureSampleBiasOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32x3
     TextureSampleBiasOffset_Texture2DArray_texture.name = "texture"_c;
     TextureSampleBiasOffset_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureSampleBiasOffset_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasOffset_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasOffset_Texture2DArray_texture.type.modifiers = TextureSampleBiasOffset_Texture2DArray_texture_modifiers;
+    TextureSampleBiasOffset_Texture2DArray_texture.type.modifierValues = TextureSampleBiasOffset_Texture2DArray_texture_modifierValues;
     TextureSampleBiasOffset_Texture2DArray_sampler.name = "sampler"_c;
     TextureSampleBiasOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasOffset_Texture2DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasOffset_Texture2DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasOffset_Texture2DArray_sampler.type.modifiers = TextureSampleBiasOffset_Texture2DArray_sampler_modifiers;
+    TextureSampleBiasOffset_Texture2DArray_sampler.type.modifierValues = TextureSampleBiasOffset_Texture2DArray_sampler_modifierValues;
     TextureSampleBiasOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleBiasOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleBiasOffset_Texture2DArray_bias.name = "bias"_c;
@@ -37076,8 +38220,8 @@ void SetupIntrinsics()
     /// textureSampleBiasOffset with SampledTexture2DArray, Float32x3, Float32, Float32x3
     SampledTextureSampleBiasOffset_Texture2DArray_texture.name = "texture"_c;
     SampledTextureSampleBiasOffset_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
-    SampledTextureSampleBiasOffset_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasOffset_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasOffset_Texture2DArray_texture.type.modifiers = SampledTextureSampleBiasOffset_Texture2DArray_texture_modifiers;
+    SampledTextureSampleBiasOffset_Texture2DArray_texture.type.modifierValues = SampledTextureSampleBiasOffset_Texture2DArray_texture_modifierValues;
     SampledTextureSampleBiasOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleBiasOffset_Texture2DArray_bias.name = "bias"_c;
@@ -37101,12 +38245,12 @@ void SetupIntrinsics()
     /// textureSampleBiasProj with Texture1D, Sampler, Float32, Float32, Float32
     TextureSampleBiasProj_Texture1D_texture.name = "texture"_c;
     TextureSampleBiasProj_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleBiasProj_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasProj_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasProj_Texture1D_texture.type.modifiers = TextureSampleBiasProj_Texture1D_texture_modifiers;
+    TextureSampleBiasProj_Texture1D_texture.type.modifierValues = TextureSampleBiasProj_Texture1D_texture_modifierValues;
     TextureSampleBiasProj_Texture1D_sampler.name = "sampler"_c;
     TextureSampleBiasProj_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasProj_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasProj_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasProj_Texture1D_sampler.type.modifiers = TextureSampleBiasProj_Texture1D_sampler_modifiers;
+    TextureSampleBiasProj_Texture1D_sampler.type.modifierValues = TextureSampleBiasProj_Texture1D_sampler_modifierValues;
     TextureSampleBiasProj_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleBiasProj_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProj_Texture1D_bias.name = "bias"_c;
@@ -37132,8 +38276,8 @@ void SetupIntrinsics()
     /// textureSampleBiasProj with SampledTexture1D, Float32, Float32, Float32
     SampledTextureSampleBiasProj_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleBiasProj_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleBiasProj_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasProj_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasProj_Texture1D_texture.type.modifiers = SampledTextureSampleBiasProj_Texture1D_texture_modifiers;
+    SampledTextureSampleBiasProj_Texture1D_texture.type.modifierValues = SampledTextureSampleBiasProj_Texture1D_texture_modifierValues;
     SampledTextureSampleBiasProj_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasProj_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProj_Texture1D_bias.name = "bias"_c;
@@ -37157,12 +38301,12 @@ void SetupIntrinsics()
     /// textureSampleBiasProj with Texture2D, Sampler, Float32x2, Float32, Float32
     TextureSampleBiasProj_Texture2D_texture.name = "texture"_c;
     TextureSampleBiasProj_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleBiasProj_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasProj_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasProj_Texture2D_texture.type.modifiers = TextureSampleBiasProj_Texture2D_texture_modifiers;
+    TextureSampleBiasProj_Texture2D_texture.type.modifierValues = TextureSampleBiasProj_Texture2D_texture_modifierValues;
     TextureSampleBiasProj_Texture2D_sampler.name = "sampler"_c;
     TextureSampleBiasProj_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasProj_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasProj_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasProj_Texture2D_sampler.type.modifiers = TextureSampleBiasProj_Texture2D_sampler_modifiers;
+    TextureSampleBiasProj_Texture2D_sampler.type.modifierValues = TextureSampleBiasProj_Texture2D_sampler_modifierValues;
     TextureSampleBiasProj_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleBiasProj_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleBiasProj_Texture2D_bias.name = "bias"_c;
@@ -37188,8 +38332,8 @@ void SetupIntrinsics()
     /// textureSampleBiasProj with SampledTexture2D, Float32x2, Float32, Float32
     SampledTextureSampleBiasProj_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleBiasProj_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleBiasProj_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasProj_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasProj_Texture2D_texture.type.modifiers = SampledTextureSampleBiasProj_Texture2D_texture_modifiers;
+    SampledTextureSampleBiasProj_Texture2D_texture.type.modifierValues = SampledTextureSampleBiasProj_Texture2D_texture_modifierValues;
     SampledTextureSampleBiasProj_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasProj_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleBiasProj_Texture2D_bias.name = "bias"_c;
@@ -37213,12 +38357,12 @@ void SetupIntrinsics()
     /// textureSampleBiasProj with Texture3D, Sampler, Float32x3, Float32, Float32
     TextureSampleBiasProj_Texture3D_texture.name = "texture"_c;
     TextureSampleBiasProj_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleBiasProj_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasProj_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasProj_Texture3D_texture.type.modifiers = TextureSampleBiasProj_Texture3D_texture_modifiers;
+    TextureSampleBiasProj_Texture3D_texture.type.modifierValues = TextureSampleBiasProj_Texture3D_texture_modifierValues;
     TextureSampleBiasProj_Texture3D_sampler.name = "sampler"_c;
     TextureSampleBiasProj_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasProj_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasProj_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasProj_Texture3D_sampler.type.modifiers = TextureSampleBiasProj_Texture3D_sampler_modifiers;
+    TextureSampleBiasProj_Texture3D_sampler.type.modifierValues = TextureSampleBiasProj_Texture3D_sampler_modifierValues;
     TextureSampleBiasProj_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleBiasProj_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleBiasProj_Texture3D_bias.name = "bias"_c;
@@ -37244,8 +38388,8 @@ void SetupIntrinsics()
     /// textureSampleBiasProj with SampledTexture3D, Float32x3, Float32, Float32
     SampledTextureSampleBiasProj_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleBiasProj_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleBiasProj_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasProj_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasProj_Texture3D_texture.type.modifiers = SampledTextureSampleBiasProj_Texture3D_texture_modifiers;
+    SampledTextureSampleBiasProj_Texture3D_texture.type.modifierValues = SampledTextureSampleBiasProj_Texture3D_texture_modifierValues;
     SampledTextureSampleBiasProj_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasProj_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleBiasProj_Texture3D_bias.name = "bias"_c;
@@ -37269,12 +38413,12 @@ void SetupIntrinsics()
     /// textureSampleBiasProjOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
     TextureSampleBiasProjOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleBiasProjOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleBiasProjOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasProjOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasProjOffset_Texture1D_texture.type.modifiers = TextureSampleBiasProjOffset_Texture1D_texture_modifiers;
+    TextureSampleBiasProjOffset_Texture1D_texture.type.modifierValues = TextureSampleBiasProjOffset_Texture1D_texture_modifierValues;
     TextureSampleBiasProjOffset_Texture1D_sampler.name = "sampler"_c;
     TextureSampleBiasProjOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasProjOffset_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasProjOffset_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasProjOffset_Texture1D_sampler.type.modifiers = TextureSampleBiasProjOffset_Texture1D_sampler_modifiers;
+    TextureSampleBiasProjOffset_Texture1D_sampler.type.modifierValues = TextureSampleBiasProjOffset_Texture1D_sampler_modifierValues;
     TextureSampleBiasProjOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleBiasProjOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProjOffset_Texture1D_bias.name = "bias"_c;
@@ -37303,8 +38447,8 @@ void SetupIntrinsics()
     /// textureSampleBiasProjOffset with SampledTexture1D, Float32, Float32, Float32, Float32
     SampledTextureSampleBiasProjOffset_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleBiasProjOffset_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleBiasProjOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasProjOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasProjOffset_Texture1D_texture.type.modifiers = SampledTextureSampleBiasProjOffset_Texture1D_texture_modifiers;
+    SampledTextureSampleBiasProjOffset_Texture1D_texture.type.modifierValues = SampledTextureSampleBiasProjOffset_Texture1D_texture_modifierValues;
     SampledTextureSampleBiasProjOffset_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasProjOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProjOffset_Texture1D_bias.name = "bias"_c;
@@ -37331,12 +38475,12 @@ void SetupIntrinsics()
     /// textureSampleBiasProjOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
     TextureSampleBiasProjOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleBiasProjOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleBiasProjOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasProjOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasProjOffset_Texture2D_texture.type.modifiers = TextureSampleBiasProjOffset_Texture2D_texture_modifiers;
+    TextureSampleBiasProjOffset_Texture2D_texture.type.modifierValues = TextureSampleBiasProjOffset_Texture2D_texture_modifierValues;
     TextureSampleBiasProjOffset_Texture2D_sampler.name = "sampler"_c;
     TextureSampleBiasProjOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasProjOffset_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasProjOffset_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasProjOffset_Texture2D_sampler.type.modifiers = TextureSampleBiasProjOffset_Texture2D_sampler_modifiers;
+    TextureSampleBiasProjOffset_Texture2D_sampler.type.modifierValues = TextureSampleBiasProjOffset_Texture2D_sampler_modifierValues;
     TextureSampleBiasProjOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleBiasProjOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleBiasProjOffset_Texture2D_bias.name = "bias"_c;
@@ -37365,8 +38509,8 @@ void SetupIntrinsics()
     /// textureSampleBiasProjOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
     SampledTextureSampleBiasProjOffset_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleBiasProjOffset_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleBiasProjOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasProjOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasProjOffset_Texture2D_texture.type.modifiers = SampledTextureSampleBiasProjOffset_Texture2D_texture_modifiers;
+    SampledTextureSampleBiasProjOffset_Texture2D_texture.type.modifierValues = SampledTextureSampleBiasProjOffset_Texture2D_texture_modifierValues;
     SampledTextureSampleBiasProjOffset_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasProjOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleBiasProjOffset_Texture2D_bias.name = "bias"_c;
@@ -37393,12 +38537,12 @@ void SetupIntrinsics()
     /// textureSampleBiasProjOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
     TextureSampleBiasProjOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleBiasProjOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleBiasProjOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasProjOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasProjOffset_Texture3D_texture.type.modifiers = TextureSampleBiasProjOffset_Texture3D_texture_modifiers;
+    TextureSampleBiasProjOffset_Texture3D_texture.type.modifierValues = TextureSampleBiasProjOffset_Texture3D_texture_modifierValues;
     TextureSampleBiasProjOffset_Texture3D_sampler.name = "sampler"_c;
     TextureSampleBiasProjOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasProjOffset_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasProjOffset_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasProjOffset_Texture3D_sampler.type.modifiers = TextureSampleBiasProjOffset_Texture3D_sampler_modifiers;
+    TextureSampleBiasProjOffset_Texture3D_sampler.type.modifierValues = TextureSampleBiasProjOffset_Texture3D_sampler_modifierValues;
     TextureSampleBiasProjOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleBiasProjOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleBiasProjOffset_Texture3D_bias.name = "bias"_c;
@@ -37427,8 +38571,8 @@ void SetupIntrinsics()
     /// textureSampleBiasProjOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
     SampledTextureSampleBiasProjOffset_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleBiasProjOffset_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleBiasProjOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasProjOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasProjOffset_Texture3D_texture.type.modifiers = SampledTextureSampleBiasProjOffset_Texture3D_texture_modifiers;
+    SampledTextureSampleBiasProjOffset_Texture3D_texture.type.modifierValues = SampledTextureSampleBiasProjOffset_Texture3D_texture_modifierValues;
     SampledTextureSampleBiasProjOffset_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasProjOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleBiasProjOffset_Texture3D_bias.name = "bias"_c;
@@ -37455,12 +38599,12 @@ void SetupIntrinsics()
     /// textureSampleBiasCompare with Texture1D, Sampler, Float32, Float32, Float32
     TextureSampleBiasCompare_Texture1D_texture.name = "texture"_c;
     TextureSampleBiasCompare_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleBiasCompare_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasCompare_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasCompare_Texture1D_texture.type.modifiers = TextureSampleBiasCompare_Texture1D_texture_modifiers;
+    TextureSampleBiasCompare_Texture1D_texture.type.modifierValues = TextureSampleBiasCompare_Texture1D_texture_modifierValues;
     TextureSampleBiasCompare_Texture1D_sampler.name = "sampler"_c;
     TextureSampleBiasCompare_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasCompare_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasCompare_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasCompare_Texture1D_sampler.type.modifiers = TextureSampleBiasCompare_Texture1D_sampler_modifiers;
+    TextureSampleBiasCompare_Texture1D_sampler.type.modifierValues = TextureSampleBiasCompare_Texture1D_sampler_modifierValues;
     TextureSampleBiasCompare_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleBiasCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasCompare_Texture1D_bias.name = "bias"_c;
@@ -37486,8 +38630,8 @@ void SetupIntrinsics()
     /// textureSampleBiasCompare with SampledTexture1D, Float32, Float32, Float32
     SampledTextureSampleBiasCompare_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleBiasCompare_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleBiasCompare_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasCompare_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasCompare_Texture1D_texture.type.modifiers = SampledTextureSampleBiasCompare_Texture1D_texture_modifiers;
+    SampledTextureSampleBiasCompare_Texture1D_texture.type.modifierValues = SampledTextureSampleBiasCompare_Texture1D_texture_modifierValues;
     SampledTextureSampleBiasCompare_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasCompare_Texture1D_bias.name = "bias"_c;
@@ -37511,12 +38655,12 @@ void SetupIntrinsics()
     /// textureSampleBiasCompare with Texture2D, Sampler, Float32x2, Float32, Float32
     TextureSampleBiasCompare_Texture2D_texture.name = "texture"_c;
     TextureSampleBiasCompare_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleBiasCompare_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasCompare_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasCompare_Texture2D_texture.type.modifiers = TextureSampleBiasCompare_Texture2D_texture_modifiers;
+    TextureSampleBiasCompare_Texture2D_texture.type.modifierValues = TextureSampleBiasCompare_Texture2D_texture_modifierValues;
     TextureSampleBiasCompare_Texture2D_sampler.name = "sampler"_c;
     TextureSampleBiasCompare_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasCompare_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasCompare_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasCompare_Texture2D_sampler.type.modifiers = TextureSampleBiasCompare_Texture2D_sampler_modifiers;
+    TextureSampleBiasCompare_Texture2D_sampler.type.modifierValues = TextureSampleBiasCompare_Texture2D_sampler_modifierValues;
     TextureSampleBiasCompare_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleBiasCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleBiasCompare_Texture2D_bias.name = "bias"_c;
@@ -37542,8 +38686,8 @@ void SetupIntrinsics()
     /// textureSampleBiasCompare with SampledTexture2D, Float32x2, Float32, Float32
     SampledTextureSampleBiasCompare_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleBiasCompare_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleBiasCompare_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasCompare_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasCompare_Texture2D_texture.type.modifiers = SampledTextureSampleBiasCompare_Texture2D_texture_modifiers;
+    SampledTextureSampleBiasCompare_Texture2D_texture.type.modifierValues = SampledTextureSampleBiasCompare_Texture2D_texture_modifierValues;
     SampledTextureSampleBiasCompare_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleBiasCompare_Texture2D_bias.name = "bias"_c;
@@ -37567,12 +38711,12 @@ void SetupIntrinsics()
     /// textureSampleBiasCompare with Texture3D, Sampler, Float32x3, Float32, Float32
     TextureSampleBiasCompare_Texture3D_texture.name = "texture"_c;
     TextureSampleBiasCompare_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleBiasCompare_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasCompare_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasCompare_Texture3D_texture.type.modifiers = TextureSampleBiasCompare_Texture3D_texture_modifiers;
+    TextureSampleBiasCompare_Texture3D_texture.type.modifierValues = TextureSampleBiasCompare_Texture3D_texture_modifierValues;
     TextureSampleBiasCompare_Texture3D_sampler.name = "sampler"_c;
     TextureSampleBiasCompare_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasCompare_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasCompare_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasCompare_Texture3D_sampler.type.modifiers = TextureSampleBiasCompare_Texture3D_sampler_modifiers;
+    TextureSampleBiasCompare_Texture3D_sampler.type.modifierValues = TextureSampleBiasCompare_Texture3D_sampler_modifierValues;
     TextureSampleBiasCompare_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleBiasCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleBiasCompare_Texture3D_bias.name = "bias"_c;
@@ -37598,8 +38742,8 @@ void SetupIntrinsics()
     /// textureSampleBiasCompare with SampledTexture3D, Float32x3, Float32, Float32
     SampledTextureSampleBiasCompare_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleBiasCompare_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleBiasCompare_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasCompare_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasCompare_Texture3D_texture.type.modifiers = SampledTextureSampleBiasCompare_Texture3D_texture_modifiers;
+    SampledTextureSampleBiasCompare_Texture3D_texture.type.modifierValues = SampledTextureSampleBiasCompare_Texture3D_texture_modifierValues;
     SampledTextureSampleBiasCompare_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleBiasCompare_Texture3D_bias.name = "bias"_c;
@@ -37623,12 +38767,12 @@ void SetupIntrinsics()
     /// textureSampleBiasCompare with Texture1DArray, Sampler, Float32x2, Float32, Float32
     TextureSampleBiasCompare_Texture1DArray_texture.name = "texture"_c;
     TextureSampleBiasCompare_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureSampleBiasCompare_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasCompare_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasCompare_Texture1DArray_texture.type.modifiers = TextureSampleBiasCompare_Texture1DArray_texture_modifiers;
+    TextureSampleBiasCompare_Texture1DArray_texture.type.modifierValues = TextureSampleBiasCompare_Texture1DArray_texture_modifierValues;
     TextureSampleBiasCompare_Texture1DArray_sampler.name = "sampler"_c;
     TextureSampleBiasCompare_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasCompare_Texture1DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasCompare_Texture1DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasCompare_Texture1DArray_sampler.type.modifiers = TextureSampleBiasCompare_Texture1DArray_sampler_modifiers;
+    TextureSampleBiasCompare_Texture1DArray_sampler.type.modifierValues = TextureSampleBiasCompare_Texture1DArray_sampler_modifierValues;
     TextureSampleBiasCompare_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleBiasCompare_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleBiasCompare_Texture1DArray_bias.name = "bias"_c;
@@ -37654,8 +38798,8 @@ void SetupIntrinsics()
     /// textureSampleBiasCompare with SampledTexture1DArray, Float32x2, Float32, Float32
     SampledTextureSampleBiasCompare_Texture1DArray_texture.name = "texture"_c;
     SampledTextureSampleBiasCompare_Texture1DArray_texture.type = Type::FullType{ SampledTexture1DArrayType.name };
-    SampledTextureSampleBiasCompare_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasCompare_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasCompare_Texture1DArray_texture.type.modifiers = SampledTextureSampleBiasCompare_Texture1DArray_texture_modifiers;
+    SampledTextureSampleBiasCompare_Texture1DArray_texture.type.modifierValues = SampledTextureSampleBiasCompare_Texture1DArray_texture_modifierValues;
     SampledTextureSampleBiasCompare_Texture1DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasCompare_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleBiasCompare_Texture1DArray_bias.name = "bias"_c;
@@ -37679,12 +38823,12 @@ void SetupIntrinsics()
     /// textureSampleBiasCompare with Texture2DArray, Sampler, Float32x3, Float32, Float32
     TextureSampleBiasCompare_Texture2DArray_texture.name = "texture"_c;
     TextureSampleBiasCompare_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureSampleBiasCompare_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasCompare_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasCompare_Texture2DArray_texture.type.modifiers = TextureSampleBiasCompare_Texture2DArray_texture_modifiers;
+    TextureSampleBiasCompare_Texture2DArray_texture.type.modifierValues = TextureSampleBiasCompare_Texture2DArray_texture_modifierValues;
     TextureSampleBiasCompare_Texture2DArray_sampler.name = "sampler"_c;
     TextureSampleBiasCompare_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasCompare_Texture2DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasCompare_Texture2DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasCompare_Texture2DArray_sampler.type.modifiers = TextureSampleBiasCompare_Texture2DArray_sampler_modifiers;
+    TextureSampleBiasCompare_Texture2DArray_sampler.type.modifierValues = TextureSampleBiasCompare_Texture2DArray_sampler_modifierValues;
     TextureSampleBiasCompare_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleBiasCompare_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleBiasCompare_Texture2DArray_bias.name = "bias"_c;
@@ -37710,8 +38854,8 @@ void SetupIntrinsics()
     /// textureSampleBiasCompare with SampledTexture2DArray, Float32x3, Float32, Float32
     SampledTextureSampleBiasCompare_Texture2DArray_texture.name = "texture"_c;
     SampledTextureSampleBiasCompare_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
-    SampledTextureSampleBiasCompare_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasCompare_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasCompare_Texture2DArray_texture.type.modifiers = SampledTextureSampleBiasCompare_Texture2DArray_texture_modifiers;
+    SampledTextureSampleBiasCompare_Texture2DArray_texture.type.modifierValues = SampledTextureSampleBiasCompare_Texture2DArray_texture_modifierValues;
     SampledTextureSampleBiasCompare_Texture2DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasCompare_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleBiasCompare_Texture2DArray_bias.name = "bias"_c;
@@ -37735,12 +38879,12 @@ void SetupIntrinsics()
     /// textureSampleBiasCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
     TextureSampleBiasCompareOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleBiasCompareOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleBiasCompareOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasCompareOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasCompareOffset_Texture1D_texture.type.modifiers = TextureSampleBiasCompareOffset_Texture1D_texture_modifiers;
+    TextureSampleBiasCompareOffset_Texture1D_texture.type.modifierValues = TextureSampleBiasCompareOffset_Texture1D_texture_modifierValues;
     TextureSampleBiasCompareOffset_Texture1D_sampler.name = "sampler"_c;
     TextureSampleBiasCompareOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasCompareOffset_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasCompareOffset_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasCompareOffset_Texture1D_sampler.type.modifiers = TextureSampleBiasCompareOffset_Texture1D_sampler_modifiers;
+    TextureSampleBiasCompareOffset_Texture1D_sampler.type.modifierValues = TextureSampleBiasCompareOffset_Texture1D_sampler_modifierValues;
     TextureSampleBiasCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleBiasCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasCompareOffset_Texture1D_bias.name = "bias"_c;
@@ -37769,8 +38913,8 @@ void SetupIntrinsics()
     /// textureSampleBiasCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32
     SampledTextureSampleBiasCompareOffset_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleBiasCompareOffset_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleBiasCompareOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasCompareOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasCompareOffset_Texture1D_texture.type.modifiers = SampledTextureSampleBiasCompareOffset_Texture1D_texture_modifiers;
+    SampledTextureSampleBiasCompareOffset_Texture1D_texture.type.modifierValues = SampledTextureSampleBiasCompareOffset_Texture1D_texture_modifierValues;
     SampledTextureSampleBiasCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasCompareOffset_Texture1D_bias.name = "bias"_c;
@@ -37797,12 +38941,12 @@ void SetupIntrinsics()
     /// textureSampleBiasCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
     TextureSampleBiasCompareOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleBiasCompareOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleBiasCompareOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasCompareOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasCompareOffset_Texture2D_texture.type.modifiers = TextureSampleBiasCompareOffset_Texture2D_texture_modifiers;
+    TextureSampleBiasCompareOffset_Texture2D_texture.type.modifierValues = TextureSampleBiasCompareOffset_Texture2D_texture_modifierValues;
     TextureSampleBiasCompareOffset_Texture2D_sampler.name = "sampler"_c;
     TextureSampleBiasCompareOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasCompareOffset_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasCompareOffset_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasCompareOffset_Texture2D_sampler.type.modifiers = TextureSampleBiasCompareOffset_Texture2D_sampler_modifiers;
+    TextureSampleBiasCompareOffset_Texture2D_sampler.type.modifierValues = TextureSampleBiasCompareOffset_Texture2D_sampler_modifierValues;
     TextureSampleBiasCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleBiasCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleBiasCompareOffset_Texture2D_bias.name = "bias"_c;
@@ -37831,8 +38975,8 @@ void SetupIntrinsics()
     /// textureSampleBiasCompareOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
     SampledTextureSampleBiasCompareOffset_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleBiasCompareOffset_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleBiasCompareOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasCompareOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasCompareOffset_Texture2D_texture.type.modifiers = SampledTextureSampleBiasCompareOffset_Texture2D_texture_modifiers;
+    SampledTextureSampleBiasCompareOffset_Texture2D_texture.type.modifierValues = SampledTextureSampleBiasCompareOffset_Texture2D_texture_modifierValues;
     SampledTextureSampleBiasCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleBiasCompareOffset_Texture2D_bias.name = "bias"_c;
@@ -37859,12 +39003,12 @@ void SetupIntrinsics()
     /// textureSampleBiasCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
     TextureSampleBiasCompareOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleBiasCompareOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleBiasCompareOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasCompareOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasCompareOffset_Texture3D_texture.type.modifiers = TextureSampleBiasCompareOffset_Texture3D_texture_modifiers;
+    TextureSampleBiasCompareOffset_Texture3D_texture.type.modifierValues = TextureSampleBiasCompareOffset_Texture3D_texture_modifierValues;
     TextureSampleBiasCompareOffset_Texture3D_sampler.name = "sampler"_c;
     TextureSampleBiasCompareOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasCompareOffset_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasCompareOffset_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasCompareOffset_Texture3D_sampler.type.modifiers = TextureSampleBiasCompareOffset_Texture3D_sampler_modifiers;
+    TextureSampleBiasCompareOffset_Texture3D_sampler.type.modifierValues = TextureSampleBiasCompareOffset_Texture3D_sampler_modifierValues;
     TextureSampleBiasCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleBiasCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleBiasCompareOffset_Texture3D_bias.name = "bias"_c;
@@ -37893,8 +39037,8 @@ void SetupIntrinsics()
     /// textureSampleBiasCompareOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
     SampledTextureSampleBiasCompareOffset_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleBiasCompareOffset_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleBiasCompareOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasCompareOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasCompareOffset_Texture3D_texture.type.modifiers = SampledTextureSampleBiasCompareOffset_Texture3D_texture_modifiers;
+    SampledTextureSampleBiasCompareOffset_Texture3D_texture.type.modifierValues = SampledTextureSampleBiasCompareOffset_Texture3D_texture_modifierValues;
     SampledTextureSampleBiasCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleBiasCompareOffset_Texture3D_bias.name = "bias"_c;
@@ -37921,12 +39065,12 @@ void SetupIntrinsics()
     /// textureSampleBiasCompareOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32, Float32x2
     TextureSampleBiasCompareOffset_Texture1DArray_texture.name = "texture"_c;
     TextureSampleBiasCompareOffset_Texture1DArray_texture.type = Type::FullType{ Texture1DArrayType.name };
-    TextureSampleBiasCompareOffset_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasCompareOffset_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasCompareOffset_Texture1DArray_texture.type.modifiers = TextureSampleBiasCompareOffset_Texture1DArray_texture_modifiers;
+    TextureSampleBiasCompareOffset_Texture1DArray_texture.type.modifierValues = TextureSampleBiasCompareOffset_Texture1DArray_texture_modifierValues;
     TextureSampleBiasCompareOffset_Texture1DArray_sampler.name = "sampler"_c;
     TextureSampleBiasCompareOffset_Texture1DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasCompareOffset_Texture1DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasCompareOffset_Texture1DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasCompareOffset_Texture1DArray_sampler.type.modifiers = TextureSampleBiasCompareOffset_Texture1DArray_sampler_modifiers;
+    TextureSampleBiasCompareOffset_Texture1DArray_sampler.type.modifierValues = TextureSampleBiasCompareOffset_Texture1DArray_sampler_modifierValues;
     TextureSampleBiasCompareOffset_Texture1DArray_coordinate.name = "coordinate"_c;
     TextureSampleBiasCompareOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleBiasCompareOffset_Texture1DArray_bias.name = "bias"_c;
@@ -37955,8 +39099,8 @@ void SetupIntrinsics()
     /// textureSampleBiasCompareOffset with SampledTexture1DArray, Float32x2, Float32, Float32, Float32x2
     SampledTextureSampleBiasCompareOffset_Texture1DArray_texture.name = "texture"_c;
     SampledTextureSampleBiasCompareOffset_Texture1DArray_texture.type = Type::FullType{ SampledTexture1DArrayType.name };
-    SampledTextureSampleBiasCompareOffset_Texture1DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasCompareOffset_Texture1DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasCompareOffset_Texture1DArray_texture.type.modifiers = SampledTextureSampleBiasCompareOffset_Texture1DArray_texture_modifiers;
+    SampledTextureSampleBiasCompareOffset_Texture1DArray_texture.type.modifierValues = SampledTextureSampleBiasCompareOffset_Texture1DArray_texture_modifierValues;
     SampledTextureSampleBiasCompareOffset_Texture1DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasCompareOffset_Texture1DArray_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleBiasCompareOffset_Texture1DArray_bias.name = "bias"_c;
@@ -37983,12 +39127,12 @@ void SetupIntrinsics()
     /// textureSampleBiasCompareOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32, Float32x3
     TextureSampleBiasCompareOffset_Texture2DArray_texture.name = "texture"_c;
     TextureSampleBiasCompareOffset_Texture2DArray_texture.type = Type::FullType{ Texture2DArrayType.name };
-    TextureSampleBiasCompareOffset_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasCompareOffset_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasCompareOffset_Texture2DArray_texture.type.modifiers = TextureSampleBiasCompareOffset_Texture2DArray_texture_modifiers;
+    TextureSampleBiasCompareOffset_Texture2DArray_texture.type.modifierValues = TextureSampleBiasCompareOffset_Texture2DArray_texture_modifierValues;
     TextureSampleBiasCompareOffset_Texture2DArray_sampler.name = "sampler"_c;
     TextureSampleBiasCompareOffset_Texture2DArray_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasCompareOffset_Texture2DArray_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasCompareOffset_Texture2DArray_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasCompareOffset_Texture2DArray_sampler.type.modifiers = TextureSampleBiasCompareOffset_Texture2DArray_sampler_modifiers;
+    TextureSampleBiasCompareOffset_Texture2DArray_sampler.type.modifierValues = TextureSampleBiasCompareOffset_Texture2DArray_sampler_modifierValues;
     TextureSampleBiasCompareOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     TextureSampleBiasCompareOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleBiasCompareOffset_Texture2DArray_bias.name = "bias"_c;
@@ -38017,8 +39161,8 @@ void SetupIntrinsics()
     /// textureSampleBiasCompareOffset with SampledTexture2DArray, Float32x3, Float32, Float32, Float32x3
     SampledTextureSampleBiasCompareOffset_Texture2DArray_texture.name = "texture"_c;
     SampledTextureSampleBiasCompareOffset_Texture2DArray_texture.type = Type::FullType{ SampledTexture2DArrayType.name };
-    SampledTextureSampleBiasCompareOffset_Texture2DArray_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasCompareOffset_Texture2DArray_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasCompareOffset_Texture2DArray_texture.type.modifiers = SampledTextureSampleBiasCompareOffset_Texture2DArray_texture_modifiers;
+    SampledTextureSampleBiasCompareOffset_Texture2DArray_texture.type.modifierValues = SampledTextureSampleBiasCompareOffset_Texture2DArray_texture_modifierValues;
     SampledTextureSampleBiasCompareOffset_Texture2DArray_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasCompareOffset_Texture2DArray_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleBiasCompareOffset_Texture2DArray_bias.name = "bias"_c;
@@ -38045,12 +39189,12 @@ void SetupIntrinsics()
     /// textureSampleBiasProjCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32
     TextureSampleBiasProjCompare_Texture1D_texture.name = "texture"_c;
     TextureSampleBiasProjCompare_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleBiasProjCompare_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasProjCompare_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasProjCompare_Texture1D_texture.type.modifiers = TextureSampleBiasProjCompare_Texture1D_texture_modifiers;
+    TextureSampleBiasProjCompare_Texture1D_texture.type.modifierValues = TextureSampleBiasProjCompare_Texture1D_texture_modifierValues;
     TextureSampleBiasProjCompare_Texture1D_sampler.name = "sampler"_c;
     TextureSampleBiasProjCompare_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasProjCompare_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasProjCompare_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasProjCompare_Texture1D_sampler.type.modifiers = TextureSampleBiasProjCompare_Texture1D_sampler_modifiers;
+    TextureSampleBiasProjCompare_Texture1D_sampler.type.modifierValues = TextureSampleBiasProjCompare_Texture1D_sampler_modifierValues;
     TextureSampleBiasProjCompare_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleBiasProjCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProjCompare_Texture1D_bias.name = "bias"_c;
@@ -38079,8 +39223,8 @@ void SetupIntrinsics()
     /// textureSampleBiasProjCompare with SampledTexture1D, Float32, Float32, Float32, Float32
     SampledTextureSampleBiasProjCompare_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleBiasProjCompare_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleBiasProjCompare_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasProjCompare_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasProjCompare_Texture1D_texture.type.modifiers = SampledTextureSampleBiasProjCompare_Texture1D_texture_modifiers;
+    SampledTextureSampleBiasProjCompare_Texture1D_texture.type.modifierValues = SampledTextureSampleBiasProjCompare_Texture1D_texture_modifierValues;
     SampledTextureSampleBiasProjCompare_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasProjCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProjCompare_Texture1D_bias.name = "bias"_c;
@@ -38107,12 +39251,12 @@ void SetupIntrinsics()
     /// textureSampleBiasProjCompare with Texture2D, Sampler, Float32x2, Float32, Float32, Float32
     TextureSampleBiasProjCompare_Texture2D_texture.name = "texture"_c;
     TextureSampleBiasProjCompare_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleBiasProjCompare_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasProjCompare_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasProjCompare_Texture2D_texture.type.modifiers = TextureSampleBiasProjCompare_Texture2D_texture_modifiers;
+    TextureSampleBiasProjCompare_Texture2D_texture.type.modifierValues = TextureSampleBiasProjCompare_Texture2D_texture_modifierValues;
     TextureSampleBiasProjCompare_Texture2D_sampler.name = "sampler"_c;
     TextureSampleBiasProjCompare_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasProjCompare_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasProjCompare_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasProjCompare_Texture2D_sampler.type.modifiers = TextureSampleBiasProjCompare_Texture2D_sampler_modifiers;
+    TextureSampleBiasProjCompare_Texture2D_sampler.type.modifierValues = TextureSampleBiasProjCompare_Texture2D_sampler_modifierValues;
     TextureSampleBiasProjCompare_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleBiasProjCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleBiasProjCompare_Texture2D_bias.name = "bias"_c;
@@ -38141,8 +39285,8 @@ void SetupIntrinsics()
     /// textureSampleBiasProjCompare with SampledTexture2D, Float32x2, Float32, Float32, Float32
     SampledTextureSampleBiasProjCompare_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleBiasProjCompare_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleBiasProjCompare_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasProjCompare_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasProjCompare_Texture2D_texture.type.modifiers = SampledTextureSampleBiasProjCompare_Texture2D_texture_modifiers;
+    SampledTextureSampleBiasProjCompare_Texture2D_texture.type.modifierValues = SampledTextureSampleBiasProjCompare_Texture2D_texture_modifierValues;
     SampledTextureSampleBiasProjCompare_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasProjCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleBiasProjCompare_Texture2D_bias.name = "bias"_c;
@@ -38169,12 +39313,12 @@ void SetupIntrinsics()
     /// textureSampleBiasProjCompare with Texture3D, Sampler, Float32x3, Float32, Float32, Float32
     TextureSampleBiasProjCompare_Texture3D_texture.name = "texture"_c;
     TextureSampleBiasProjCompare_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleBiasProjCompare_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasProjCompare_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasProjCompare_Texture3D_texture.type.modifiers = TextureSampleBiasProjCompare_Texture3D_texture_modifiers;
+    TextureSampleBiasProjCompare_Texture3D_texture.type.modifierValues = TextureSampleBiasProjCompare_Texture3D_texture_modifierValues;
     TextureSampleBiasProjCompare_Texture3D_sampler.name = "sampler"_c;
     TextureSampleBiasProjCompare_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasProjCompare_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasProjCompare_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasProjCompare_Texture3D_sampler.type.modifiers = TextureSampleBiasProjCompare_Texture3D_sampler_modifiers;
+    TextureSampleBiasProjCompare_Texture3D_sampler.type.modifierValues = TextureSampleBiasProjCompare_Texture3D_sampler_modifierValues;
     TextureSampleBiasProjCompare_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleBiasProjCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleBiasProjCompare_Texture3D_bias.name = "bias"_c;
@@ -38203,8 +39347,8 @@ void SetupIntrinsics()
     /// textureSampleBiasProjCompare with SampledTexture3D, Float32x3, Float32, Float32, Float32
     SampledTextureSampleBiasProjCompare_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleBiasProjCompare_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleBiasProjCompare_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasProjCompare_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasProjCompare_Texture3D_texture.type.modifiers = SampledTextureSampleBiasProjCompare_Texture3D_texture_modifiers;
+    SampledTextureSampleBiasProjCompare_Texture3D_texture.type.modifierValues = SampledTextureSampleBiasProjCompare_Texture3D_texture_modifierValues;
     SampledTextureSampleBiasProjCompare_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasProjCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleBiasProjCompare_Texture3D_bias.name = "bias"_c;
@@ -38231,12 +39375,12 @@ void SetupIntrinsics()
     /// textureSampleBiasProjCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
     TextureSampleBiasProjCompareOffset_Texture1D_texture.name = "texture"_c;
     TextureSampleBiasProjCompareOffset_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
-    TextureSampleBiasProjCompareOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasProjCompareOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasProjCompareOffset_Texture1D_texture.type.modifiers = TextureSampleBiasProjCompareOffset_Texture1D_texture_modifiers;
+    TextureSampleBiasProjCompareOffset_Texture1D_texture.type.modifierValues = TextureSampleBiasProjCompareOffset_Texture1D_texture_modifierValues;
     TextureSampleBiasProjCompareOffset_Texture1D_sampler.name = "sampler"_c;
     TextureSampleBiasProjCompareOffset_Texture1D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasProjCompareOffset_Texture1D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasProjCompareOffset_Texture1D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasProjCompareOffset_Texture1D_sampler.type.modifiers = TextureSampleBiasProjCompareOffset_Texture1D_sampler_modifiers;
+    TextureSampleBiasProjCompareOffset_Texture1D_sampler.type.modifierValues = TextureSampleBiasProjCompareOffset_Texture1D_sampler_modifierValues;
     TextureSampleBiasProjCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleBiasProjCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProjCompareOffset_Texture1D_bias.name = "bias"_c;
@@ -38268,8 +39412,8 @@ void SetupIntrinsics()
     /// textureSampleBiasProjCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
     SampledTextureSampleBiasProjCompareOffset_Texture1D_texture.name = "texture"_c;
     SampledTextureSampleBiasProjCompareOffset_Texture1D_texture.type = Type::FullType{ SampledTexture1DType.name };
-    SampledTextureSampleBiasProjCompareOffset_Texture1D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasProjCompareOffset_Texture1D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasProjCompareOffset_Texture1D_texture.type.modifiers = SampledTextureSampleBiasProjCompareOffset_Texture1D_texture_modifiers;
+    SampledTextureSampleBiasProjCompareOffset_Texture1D_texture.type.modifierValues = SampledTextureSampleBiasProjCompareOffset_Texture1D_texture_modifierValues;
     SampledTextureSampleBiasProjCompareOffset_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasProjCompareOffset_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProjCompareOffset_Texture1D_bias.name = "bias"_c;
@@ -38299,12 +39443,12 @@ void SetupIntrinsics()
     /// textureSampleBiasProjCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32, Float32x2
     TextureSampleBiasProjCompareOffset_Texture2D_texture.name = "texture"_c;
     TextureSampleBiasProjCompareOffset_Texture2D_texture.type = Type::FullType{ Texture2DType.name };
-    TextureSampleBiasProjCompareOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasProjCompareOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasProjCompareOffset_Texture2D_texture.type.modifiers = TextureSampleBiasProjCompareOffset_Texture2D_texture_modifiers;
+    TextureSampleBiasProjCompareOffset_Texture2D_texture.type.modifierValues = TextureSampleBiasProjCompareOffset_Texture2D_texture_modifierValues;
     TextureSampleBiasProjCompareOffset_Texture2D_sampler.name = "sampler"_c;
     TextureSampleBiasProjCompareOffset_Texture2D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasProjCompareOffset_Texture2D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasProjCompareOffset_Texture2D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasProjCompareOffset_Texture2D_sampler.type.modifiers = TextureSampleBiasProjCompareOffset_Texture2D_sampler_modifiers;
+    TextureSampleBiasProjCompareOffset_Texture2D_sampler.type.modifierValues = TextureSampleBiasProjCompareOffset_Texture2D_sampler_modifierValues;
     TextureSampleBiasProjCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleBiasProjCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleBiasProjCompareOffset_Texture2D_bias.name = "bias"_c;
@@ -38336,8 +39480,8 @@ void SetupIntrinsics()
     /// textureSampleBiasProjCompareOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32, Float32x2
     SampledTextureSampleBiasProjCompareOffset_Texture2D_texture.name = "texture"_c;
     SampledTextureSampleBiasProjCompareOffset_Texture2D_texture.type = Type::FullType{ SampledTexture2DType.name };
-    SampledTextureSampleBiasProjCompareOffset_Texture2D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasProjCompareOffset_Texture2D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasProjCompareOffset_Texture2D_texture.type.modifiers = SampledTextureSampleBiasProjCompareOffset_Texture2D_texture_modifiers;
+    SampledTextureSampleBiasProjCompareOffset_Texture2D_texture.type.modifierValues = SampledTextureSampleBiasProjCompareOffset_Texture2D_texture_modifierValues;
     SampledTextureSampleBiasProjCompareOffset_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasProjCompareOffset_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleBiasProjCompareOffset_Texture2D_bias.name = "bias"_c;
@@ -38367,12 +39511,12 @@ void SetupIntrinsics()
     /// textureSampleBiasProjCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32, Float32x3
     TextureSampleBiasProjCompareOffset_Texture3D_texture.name = "texture"_c;
     TextureSampleBiasProjCompareOffset_Texture3D_texture.type = Type::FullType{ Texture3DType.name };
-    TextureSampleBiasProjCompareOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasProjCompareOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasProjCompareOffset_Texture3D_texture.type.modifiers = TextureSampleBiasProjCompareOffset_Texture3D_texture_modifiers;
+    TextureSampleBiasProjCompareOffset_Texture3D_texture.type.modifierValues = TextureSampleBiasProjCompareOffset_Texture3D_texture_modifierValues;
     TextureSampleBiasProjCompareOffset_Texture3D_sampler.name = "sampler"_c;
     TextureSampleBiasProjCompareOffset_Texture3D_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasProjCompareOffset_Texture3D_sampler.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    TextureSampleBiasProjCompareOffset_Texture3D_sampler.type.modifierValues = std::array{(Expression*)nullptr};
+    TextureSampleBiasProjCompareOffset_Texture3D_sampler.type.modifiers = TextureSampleBiasProjCompareOffset_Texture3D_sampler_modifiers;
+    TextureSampleBiasProjCompareOffset_Texture3D_sampler.type.modifierValues = TextureSampleBiasProjCompareOffset_Texture3D_sampler_modifierValues;
     TextureSampleBiasProjCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleBiasProjCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleBiasProjCompareOffset_Texture3D_bias.name = "bias"_c;
@@ -38404,8 +39548,8 @@ void SetupIntrinsics()
     /// textureSampleBiasProjCompareOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32, Float32x3
     SampledTextureSampleBiasProjCompareOffset_Texture3D_texture.name = "texture"_c;
     SampledTextureSampleBiasProjCompareOffset_Texture3D_texture.type = Type::FullType{ SampledTexture3DType.name };
-    SampledTextureSampleBiasProjCompareOffset_Texture3D_texture.type.modifiers = std::array{Type::FullType::Modifier::Pointer};
-    SampledTextureSampleBiasProjCompareOffset_Texture3D_texture.type.modifierValues = std::array{(Expression*)nullptr};
+    SampledTextureSampleBiasProjCompareOffset_Texture3D_texture.type.modifiers = SampledTextureSampleBiasProjCompareOffset_Texture3D_texture_modifiers;
+    SampledTextureSampleBiasProjCompareOffset_Texture3D_texture.type.modifierValues = SampledTextureSampleBiasProjCompareOffset_Texture3D_texture_modifierValues;
     SampledTextureSampleBiasProjCompareOffset_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleBiasProjCompareOffset_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleBiasProjCompareOffset_Texture3D_bias.name = "bias"_c;

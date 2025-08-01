@@ -73,8 +73,9 @@ ArrayInitializerExpression::Resolve(Compiler* compiler)
     // Append array level first
     thisResolved->fullType.name = inner.name;
     thisResolved->fullType.literal = isLiteral;
+    Expression* size = Alloc<UIntExpression>((uint32_t)this->values.size);
     thisResolved->fullType.modifiers = TransientArray<Type::FullType::Modifier>::Concatenate(thisResolved->fullType.modifiers, Type::FullType::Modifier::Array, inner.modifiers);
-    thisResolved->fullType.modifierValues = TransientArray<Expression*>::Concatenate(thisResolved->fullType.modifierValues, Alloc<UIntExpression>((uint32_t)this->values.size), inner.modifierValues);
+    thisResolved->fullType.modifierValues = TransientArray<Expression*>::Concatenate(thisResolved->fullType.modifierValues, size, inner.modifierValues);
 
     return true;
 }

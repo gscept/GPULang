@@ -480,6 +480,9 @@ def generate_types():
                 return_string = f'/// {self.api_name}\n'
             for param in self.parameters:
                 return_string += f'Variable {param.decl_name};\n'
+                if param.pointer:
+                    return_string += f'inline constexpr std::array {param.decl_name}_modifiers = {{Type::FullType::Modifier::Pointer}};\n'
+                    return_string += f'inline constexpr std::array {param.decl_name}_modifierValues = {{(Expression*)nullptr}};\n'
             return_string += f'Function {self.decl_name};\n'
             if len(self.parameters) > 0:
                 return_string += f'inline constexpr std::array {self.decl_name}_args = {{ {", ".join([f"&{param.decl_name}" for param in self.parameters])} }};\n'
@@ -497,8 +500,8 @@ def generate_types():
                 if param.literal:
                     return_string += f'    {param.decl_name}.type.literal = true;\n'
                 if param.pointer:
-                    return_string += f'    {param.decl_name}.type.modifiers = std::array{{Type::FullType::Modifier::Pointer}};\n'
-                    return_string += f'    {param.decl_name}.type.modifierValues = std::array{{(Expression*)nullptr}};\n'
+                    return_string += f'    {param.decl_name}.type.modifiers = {param.decl_name}_modifiers;\n'
+                    return_string += f'    {param.decl_name}.type.modifierValues = {param.decl_name}_modifierValues;\n'
             if self.documentation:
                 return_string += f'    {self.decl_name}.documentation = "{self.documentation}"_c;\n'
             return_string += f'    {self.decl_name}.name = "{self.api_name}"_c;\n'
