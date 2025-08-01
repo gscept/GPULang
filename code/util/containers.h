@@ -88,7 +88,7 @@ struct TransientArray
 
             if (std::is_trivially_copyable<TYPE>::value)
             {
-                memcpy(this->ptr + offset, arr.buf, sizeof(TYPE) * this->capacity);
+                memcpy(this->ptr, arr.buf + offset, sizeof(TYPE) * this->capacity);
                 this->size = size;
             }
             else
@@ -102,23 +102,25 @@ struct TransientArray
     }
 
 private:
-    static size_t _compute_size(const FixedArray<TYPE>& arr)
+    static inline size_t _compute_size(const FixedArray<TYPE>& arr)
     {
         return arr.size;
     }
 
-    static size_t _compute_size(const TYPE& elem)
+    static inline size_t _compute_size(const TYPE& elem)
     {
         return 1;
     }
 
-    static size_t _compute_size()
+    template<typename FOO>
+    static inline size_t _compute_size(FOO arg)
     {
+        assert(false && "Should never enter");
         return 0;
     }
 
     template<typename... ARGS>
-    static size_t _compute_size(ARGS&& ...args)
+    static inline size_t _compute_size(const ARGS& ...args)
     {
         size_t size = 0;
         ([&]
@@ -128,7 +130,7 @@ private:
         return size;
     }
 
-    static size_t _copy(TYPE* ptr, size_t size, const FixedArray<TYPE>& arr)
+    static inline size_t _copy(TYPE* ptr, size_t size, const FixedArray<TYPE>& arr)
     {
         if (std::is_trivially_copyable<TYPE>::value)
         {
@@ -143,19 +145,21 @@ private:
         }
     }
 
-    static size_t _copy(TYPE* ptr, size_t size, const TYPE& val)
+    static inline size_t _copy(TYPE* ptr, size_t size, const TYPE& val)
     {
         ptr[size++] = val;
         return size;
     }
 
-    static size_t _copy(TYPE* ptr, size_t size)
+    template<typename FOO>
+    static inline size_t _copy(TYPE* ptr, size_t size, FOO arg)
     {
+        assert(false && "Should never enter");
         return 0;
     }
 
     template<typename... ARGS>
-    static size_t _copy(TYPE* ptr, ARGS&&... args)
+    static inline size_t _copy(TYPE* ptr, const ARGS&... args)
     {
         size_t size = 0;
         ([&]
@@ -168,16 +172,16 @@ private:
 public:
 
     template<typename... ARGS>
-    static TransientArray<TYPE> Concatenate(ARGS&&... args)
+    static TransientArray<TYPE> Concatenate(const ARGS&... args)
     {
         TransientArray<TYPE> ret;
-        size_t size = _compute_size(std::forward<ARGS>(args)...);
+        size_t size = _compute_size(std::forward<const ARGS&>(args)...);
         if (size > 0)
         {
             ret.ptr = AllocStack<TYPE>(size, ret.allocatedBytes);
             ret.capacity = size;
 
-            ret.size = _copy(ret.ptr, std::forward<ARGS>(args)...);
+            ret.size = _copy(ret.ptr, std::forward<const ARGS&>(args)...);
         }
         return ret;
     }
