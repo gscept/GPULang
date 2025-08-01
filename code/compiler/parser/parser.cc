@@ -341,9 +341,7 @@ static auto hexChar = [](const char c) -> bool
  */
 TokenizationResult
 Tokenize(const std::string& text, const TransientString& path)
-{
-    printf("%s", text.c_str());
-    
+{   
     TokenizationResult ret;
     
     const char* it = text.data();
@@ -396,7 +394,7 @@ Tokenize(const std::string& text, const TransientString& path)
         {
             if (it[1] == '\n')
             {
-                line += 2;
+                line += 1;
                 it += 2;
                 startOfLine = it;
                 continue;
@@ -2438,7 +2436,9 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
 
     if (stream.Match(TokenType::Break))
     {
+        const Token& tok = stream.Data(-1);
         res = Alloc<BreakStatement>();
+        res->location = LocationFromToken(tok);
         if (!stream.Match(TokenType::SemiColon))
         {
             ret.errors.Append(UnexpectedToken(stream, "; after expression"));
@@ -2447,7 +2447,9 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
     }
     else if (stream.Match(TokenType::Return))
     {
+        const Token& tok = stream.Data(-1);
         res = Alloc<TerminateStatement>(ParseExpression(stream, ret), TerminateStatement::TerminationType::Return);
+        res->location = LocationFromToken(tok);
         if (!stream.Match(TokenType::SemiColon))
         {
             ret.errors.Append(UnexpectedToken(stream, "; after expression"));
@@ -2456,7 +2458,9 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
     }
     else if (stream.Match(TokenType::Discard))
     {
+        const Token& tok = stream.Data(-1);
         res = Alloc<TerminateStatement>(nullptr, TerminateStatement::TerminationType::Discard);
+        res->location = LocationFromToken(tok);
         if (!stream.Match(TokenType::SemiColon))
         {
             ret.errors.Append(UnexpectedToken(stream, "; after expression"));
@@ -2465,7 +2469,9 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
     }
     else if (stream.Match(TokenType::RayIgnore))
     {
+        const Token& tok = stream.Data(-1);
         res = Alloc<TerminateStatement>(nullptr, TerminateStatement::TerminationType::RayIgnoreIntersection);
+        res->location = LocationFromToken(tok);
         if (!stream.Match(TokenType::SemiColon))
         {
             ret.errors.Append(UnexpectedToken(stream, "; after expression"));
@@ -2474,7 +2480,9 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
     }
     else if (stream.Match(TokenType::RayTerminate))
     {
+        const Token& tok = stream.Data(-1);
         res = Alloc<TerminateStatement>(nullptr, TerminateStatement::TerminationType::RayTerminate);
+        res->location = LocationFromToken(tok);
         if (!stream.Match(TokenType::SemiColon))
         {
             ret.errors.Append(UnexpectedToken(stream, "; after expression"));
@@ -2483,6 +2491,7 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
     }
     else if (stream.Match(TokenType::If))
     {
+        const Token& tok = stream.Data(-1);
         if (!stream.Match(TokenType::LeftParant))
         {
             ret.errors.Append(UnexpectedToken(stream, "("));
@@ -2518,12 +2527,14 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
         }
         
         res = Alloc<IfStatement>(cond, ifBody, elseBody);
+        res->location = LocationFromToken(tok);
     }
     else if (res = ParseScopeStatement(stream, ret))
     {
     }
     else if (stream.Match(TokenType::For))
     {
+        const Token& tok = stream.Data(-1);
         if (!stream.Match(TokenType::LeftParant))
         {
             ret.errors.Append(UnexpectedToken(stream, "("));
@@ -2566,9 +2577,11 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
         }
         Statement* body = ParseStatement(stream, ret);
         res = Alloc<ForStatement>(variables, cond, postLoop, body);
+        res->location = LocationFromToken(tok);
     }
     else if (stream.Match(TokenType::While))
     {
+        const Token& tok = stream.Data(-1);
         if (!stream.Match(TokenType::LeftParant))
         {
             ret.errors.Append(UnexpectedToken(stream, "("));
@@ -2583,9 +2596,11 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
         }
         Statement* body = ParseStatement(stream, ret);
         res = Alloc<WhileStatement>(cond, body, false);
+        res->location = LocationFromToken(tok);
     }
     else if (stream.Match(TokenType::Do))
     {
+        const Token& tok = stream.Data(-1);
         Statement* body = ParseStatement(stream, ret);
         if (!stream.Match(TokenType::While))
         {
@@ -2606,6 +2621,7 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
             return res;
         }
         res = Alloc<WhileStatement>(cond, body, true);
+        res->location = LocationFromToken(tok);
         
         if (!stream.Match(TokenType::SemiColon))
         {
