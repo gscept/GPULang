@@ -2145,7 +2145,7 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
             timer.Stop();
             if (options.emitTimings)
             {
-                printf("%lu tokens\n", tokenizationResult.tokens.size);
+                printf("%zu tokens\n", tokenizationResult.tokens.size);
                 timer.Print("Home made lexer");
             }
             
@@ -2277,7 +2277,7 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
         timer.Stop();
         if (options.emitTimings)
         {
-            printf("%lu tokens\n", tokenizationResult.tokens.size);
+            printf("%zu tokens\n", tokenizationResult.tokens.size);
             timer.Print("Home made lexer");
         }
         
