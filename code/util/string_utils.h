@@ -160,7 +160,6 @@ template<typename T>
 inline size_t
 FragmentSize(T arg)
 {
-    //assert(false && "Should never enter");
     assert(false && "Should never enter");
     return 0;
 }
