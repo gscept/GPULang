@@ -144,6 +144,15 @@ def generate_types():
         "Texture3D": "texture3D",
         "TextureCube": "textureCube",
         "TextureCubeArray": "textureCubeArray",
+        "SampledTexture1D": "textureSampled1D",
+        "SampledTexture1DArray": "textureSampled1DArray",
+        "SampledTexture2D": "textureSampled2D",
+        "SampledTexture2DMS": "textureSampled2DMS",
+        "SampledTexture2DArray": "textureSampled2DArray",
+        "SampledTexture2DMSArray": "textureSampled2DMSArray",
+        "SampledTexture3D": "textureSampled3D",
+        "SampledTextureCube": "textureSampledCube",
+        "SampledTextureCubeArray": "textureSampledCubeArray",
         "PixelCache": "pixelCache",
         "PixelCacheMS": "pixelCacheMS",
         "Sampler": "sampler",
@@ -434,14 +443,13 @@ def generate_types():
         return spirv_intrinsic_code
 
     class Variable():
-        def __init__(self, decl_name, api_name, type_name, pointer=False, uniform=False, mutable=False, sampled=False, literal=False):
+        def __init__(self, decl_name, api_name, type_name, pointer=False, uniform=False, mutable=False, literal=False):
             self.decl_name = decl_name
             self.api_name = api_name
             self.type_name = type_name
             self.pointer = pointer
             self.uniform = uniform
             self.mutable = mutable
-            self.sampled = sampled
             self.literal = literal
 
     class Function():
@@ -489,7 +497,8 @@ def generate_types():
                 if param.literal:
                     return_string += f'    {param.decl_name}.type.literal = true;\n'
                 if param.pointer:
-                    return_string += f'    {param.decl_name}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'
+                    return_string += f'    {param.decl_name}.type.modifiers = std::array{{Type::FullType::Modifier::Pointer}};\n'
+                    return_string += f'    {param.decl_name}.type.modifierValues = std::array{{(Expression*)nullptr}};\n'
             if self.documentation:
                 return_string += f'    {self.decl_name}.documentation = "{self.documentation}"_c;\n'
             return_string += f'    {self.decl_name}.name = "{self.api_name}"_c;\n'
@@ -511,14 +520,34 @@ def generate_types():
             argsWithNames = []
             for param in self.parameters:
                 if param.type_name in data_type_mapping:
-                    args.append(data_type_mapping[param.type_name])
-                    argsWithNames.append(f'{param.api_name} : {data_type_mapping[param.type_name]}')
+                    typeString = ''
+                    if param.uniform:
+                        typeString += 'uniform '
+                    if param.pointer:
+                        typeString += '*'
+                    if param.literal:
+                        typeString += 'literal '
+                    if param.mutable:
+                        typeString += 'mutable '
+                    typeString += data_type_mapping[param.type_name]
+                    args.append(typeString)
+                    argsWithNames.append(f'{param.api_name} : {typeString}')
                 else:
-                    args.append(param.type_name)
-                    argsWithNames.append(f'{param.api_name} : {param.type_name}')
+                    typeString = ''
+                    if param.uniform:
+                        typeString += 'uniform '
+                    if param.pointer:
+                        typeString += '*'
+                    if param.literal:
+                        typeString += 'literal '
+                    if param.mutable:
+                        typeString += 'mutable '
+                    typeString += param.type_name
+                    args.append(typeString)
+                    argsWithNames.append(f'{param.api_name} : {typeString}')
             return_string += f'    Symbol::Resolved(&{self.decl_name})->signature = "{return_type} {self.api_name}({",".join(args)})"_c;\n'
             return_string += f'    Symbol::Resolved(&{self.decl_name})->name = "{self.api_name}({",".join(args)})"_c;\n'
-            return_string += f'    Symbol::Resolved(&{self.decl_name})->nameWithVarNames = "{self.api_name}({",".join(argsWithNames)})"_c;\n'
+            return_string += f'    Symbol::Resolved(&{self.decl_name})->nameWithVarNames = "{self.api_name}({", ".join(argsWithNames)})"_c;\n'
             return_string += f'    Symbol::Resolved(&{self.decl_name})->returnTypeSymbol = &{self.return_type}Type;\n'
             return_string += '\n'
             return return_string
@@ -541,8 +570,6 @@ def generate_types():
                     param_string += 'literal '
                 if param.mutable:
                     param_string += 'mutable '
-                if param.sampled:
-                    param_string += 'sampled '
                 
                 if param.type_name in data_type_mapping:
                     param_string += data_type_mapping[param.type_name]
@@ -610,7 +637,7 @@ def generate_types():
     functions = []
     type_list = []
     web_types = {
-        "keywords": ["const", "var", "uniform", "mutable", "sampled", "literal", "in", "out", "return", "break", "discard", "ray_ignore", "for", "while", "if", "else", "switch", "case", "struct", "render_state", "sampler_state", "program", "entry_point", "binding", "group", "enum", "generate", "#include", "#pragma", "declared", "workgroup", "alias", "true", "false"],
+        "keywords": ["const", "var", "uniform", "mutable", "literal", "in", "out", "return", "break", "discard", "ray_ignore", "for", "while", "if", "else", "switch", "case", "struct", "render_state", "sampler_state", "program", "entry_point", "binding", "group", "enum", "generate", "#include", "#pragma", "declared", "workgroup", "alias", "true", "false"],
         "types": [],
         "builtin_functions": [],
     }
@@ -1226,23 +1253,25 @@ def generate_types():
     texture_dimensions = ['1D', '2D', '3D', 'Cube']
     texture_multisampling = ['', 'MS', '', '']
     texture_array = ['Array', 'Array', '', 'Array']
-    for dim, ms, array in zip(texture_dimensions, texture_multisampling, texture_array):
+    combinedSampler = ['', 'Sampled'];
+    for sampled in combinedSampler:
+        for dim, ms, array in zip(texture_dimensions, texture_multisampling, texture_array):
 
-        type = Type(f'Texture{dim}', 'TextureCategory', f'Texture{dim}', f'texture{dim}')
-        type_list.append(type)
-
-        if ms : 
-            type = Type(f'Texture{dim}MS', 'TextureCategory', f'Texture{dim}', f'texture{dim}MS')
+            type = Type(f'{sampled}Texture{dim}', f'{sampled}TextureCategory', f'{sampled}Texture{dim}', f'texture{sampled}{dim}')
             type_list.append(type)
 
-            if array:
-                type = Type(f'Texture{dim}MSArray', 'TextureCategory', f'Texture{dim}', f'texture{dim}MSArray')
+            if ms : 
+                type = Type(f'{sampled}Texture{dim}MS', f'{sampled}TextureCategory', f'{sampled}Texture{dim}', f'texture{sampled}{dim}MS')
                 type_list.append(type)
 
-        if array:
-            type = Type(f'Texture{dim}Array', 'TextureCategory', f'Texture{dim}', f'texture{dim}Array')
-            type_list.append(type)
-            
+                if array:
+                    type = Type(f'{sampled}Texture{dim}MSArray', f'{sampled}TextureCategory', f'{sampled}Texture{dim}', f'texture{sampled}{dim}MSArray')
+                    type_list.append(type)
+
+            if array:
+                type = Type(f'{sampled}Texture{dim}Array', f'{sampled}TextureCategory', f'{sampled}Texture{dim}', f'texture{sampled}{dim}Array')
+                type_list.append(type)
+                
 
     # Pixel cache types
 
@@ -3521,10 +3550,10 @@ def generate_types():
         spirv_code += spirv_intrinsic(function_name, spirv_function)
 
     # Helper function to generate a version of the texture sampling method both for combined texture-samplers and for textures with samplers provided separately.
-    def generate_texture_intrinsic_base(intrinsic):
+    def generate_texture_intrinsic_base(intrinsic, type):
 
         sampled_args = [
-            Variable(decl_name = f'Sampled{intrinsic}_texture', api_name = "texture", type_name=type, pointer=True, uniform=True, sampled=True)
+            Variable(decl_name = f'Sampled{intrinsic}_texture', api_name = "texture", type_name=f'Sampled{type}', pointer=True, uniform=True)
         ]
         base_args = [
             Variable(decl_name = f'{intrinsic}_texture', api_name = "texture", type_name=type, pointer=True, uniform=True),
@@ -3538,7 +3567,7 @@ def generate_types():
         coordinate_type = texture_float_index_types[type]
         base_function_name = f'Texture{intrinsic}_{type}'
 
-        for defs in generate_texture_intrinsic_base(base_function_name):
+        for defs in generate_texture_intrinsic_base(base_function_name, type):
             args, prefix = defs
             function_name = f'{prefix}{base_function_name}'
             coordinate_argument_name = f'{function_name}_coordinate'
@@ -3682,7 +3711,7 @@ def generate_types():
 
         for intrinsic in texture_gather_intrinsics:
             base_function_name = f'Texture{intrinsic}_{type}'
-            for defs in generate_texture_intrinsic_base(base_function_name):
+            for defs in generate_texture_intrinsic_base(base_function_name, type):
                 args, prefix = defs
                 function_name = f'{prefix}{base_function_name}'
                 coordinate_argument_name = f'{function_name}_coordinate'
@@ -3765,7 +3794,7 @@ def generate_types():
                     for type in texture_types_no_ms:
                         base_function_name = f'Texture{intrinsic}{lod}{proj}{comp}{offset}_{type}'
 
-                        for defs in generate_texture_intrinsic_base(base_function_name):
+                        for defs in generate_texture_intrinsic_base(base_function_name, type):
                             args, prefix = defs
 
 
@@ -3936,7 +3965,6 @@ def generate_types():
                 param_string = ''
                 if param.uniform:
                     param_string += 'uniform '
-
                 param_string += param.api_name + ': '
                 if param.pointer:
                     param_string += '*'
@@ -3944,9 +3972,6 @@ def generate_types():
                     param_string += 'literal '
                 if param.mutable:
                     param_string += 'mutable '
-                if param.sampled:
-                    param_string += 'sampled '
-                
                 
                 if param.type_name in data_type_mapping:
                     param_string += data_type_mapping[param.type_name]
@@ -3975,6 +4000,10 @@ def generate_types():
 
     intrinsics_source.write('void SetupIntrinsics()\n')
     intrinsics_source.write('{\n')
+    intrinsics_source.write('    static bool IsSetup = false;\n')
+    intrinsics_source.write('    if (IsSetup)\n')
+    intrinsics_source.write('        return;\n')
+    intrinsics_source.write('    IsSetup = true;\n\n')
     intrinsics_source.write(intrinsic_setup)
     intrinsics_source.write('}\n')
 

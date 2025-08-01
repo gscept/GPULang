@@ -2,15 +2,12 @@
 # GPULang compiler
 #-------------------------------------------------------------------------------
 
-ADD_SUBDIRECTORY(ext/antlr4)
-
 fips_begin_lib(gpulang_compiler)
 
 target_include_directories(gpulang_compiler PUBLIC
     ${CMAKE_CURRENT_BINARY_DIR}
     ${GPULANG_ROOT}/code/util/
     ${GPULANG_ROOT}/code/compiler
-    ${GPULANG_ROOT}/code/compiler/ext/antlr4/src
     )
 
     fips_files(
@@ -22,21 +19,8 @@ target_include_directories(gpulang_compiler PUBLIC
 
 fips_dir(parser)
     fips_files(
-	lexer.cc
-	lexer.h
 	parser.cc
 	parser.h
-    )
-fips_dir(parser4)
-    fips_files(
-        GPULangParser.cpp
-        GPULangParser.h
-        GPULangLexer.cpp
-        GPULangLexer.h
-        gpulangerrorhandlers.cpp
-        gpulangerrorhandlers.h
-        gpulangtoken.cpp
-        gpulangtoken.h
     )
     
 fips_dir(ast)
@@ -181,7 +165,7 @@ fips_dir(generated)
         types.h
     )
 
-fips_deps(gpulang_util antlr4 glslang)
+fips_deps(gpulang_util glslang)
 SET_DEFAULT_OUTPUT(gpulang_compiler)
 
 IF (MSVC11)

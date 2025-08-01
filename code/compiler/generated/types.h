@@ -4345,6 +4345,60 @@ struct TextureCubeArray : public Type
 };
 extern TextureCubeArray TextureCubeArrayType;
 
+struct SampledTexture1D : public Type
+{
+    SampledTexture1D();
+};
+extern SampledTexture1D SampledTexture1DType;
+
+struct SampledTexture1DArray : public Type
+{
+    SampledTexture1DArray();
+};
+extern SampledTexture1DArray SampledTexture1DArrayType;
+
+struct SampledTexture2D : public Type
+{
+    SampledTexture2D();
+};
+extern SampledTexture2D SampledTexture2DType;
+
+struct SampledTexture2DMS : public Type
+{
+    SampledTexture2DMS();
+};
+extern SampledTexture2DMS SampledTexture2DMSType;
+
+struct SampledTexture2DMSArray : public Type
+{
+    SampledTexture2DMSArray();
+};
+extern SampledTexture2DMSArray SampledTexture2DMSArrayType;
+
+struct SampledTexture2DArray : public Type
+{
+    SampledTexture2DArray();
+};
+extern SampledTexture2DArray SampledTexture2DArrayType;
+
+struct SampledTexture3D : public Type
+{
+    SampledTexture3D();
+};
+extern SampledTexture3D SampledTexture3DType;
+
+struct SampledTextureCube : public Type
+{
+    SampledTextureCube();
+};
+extern SampledTextureCube SampledTextureCubeType;
+
+struct SampledTextureCubeArray : public Type
+{
+    SampledTextureCubeArray();
+};
+extern SampledTextureCubeArray SampledTextureCubeArrayType;
+
 struct PixelCache : public Type
 {
     PixelCache();

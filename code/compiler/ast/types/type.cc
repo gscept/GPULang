@@ -434,7 +434,7 @@ TransientString
 Type::FullType::ToString(bool includeLiteral) const
 {
     TransientString base;
-    for (size_t i = 0; i < this->modifiers.size(); i++)
+    for (size_t i = 0; i < this->modifiers.size; i++)
     {
         if (this->modifiers[i] == Modifier::Pointer)
         {
@@ -458,9 +458,7 @@ Type::FullType::ToString(bool includeLiteral) const
         base.Append("literal ");
     if (this->mut)
         base.Append("mutable ");
-    if (this->sampled)
-        base.Append("sampled ");
-    
+
     if (this->swizzleName.len > 0)
         return TransientString(base, this->swizzleName);
     else
@@ -475,11 +473,9 @@ Type::FullType::Assignable(const Type::FullType& rhs) const
 {
     if (this->literal)
         return false;
-    if (this->sampled)
-        return false;
     if (this->modifiers != rhs.modifiers)
         return false;
-    for (size_t i = 0; i < this->modifierValues.size(); i++)
+    for (size_t i = 0; i < this->modifierValues.size; i++)
         if (this->modifierValues[i] != rhs.modifierValues[i])
         {
             uint32_t lhsSize = UINT32_MAX, rhsSize;
@@ -516,11 +512,9 @@ Type::FullType::Constructible(const FullType& rhs) const
 {
     if (this->literal)
         return false;
-    if (this->sampled)
-        return false;
     if (this->modifiers != rhs.modifiers)
         return false;
-    for (size_t i = 0; i < this->modifierValues.size(); i++)
+    for (size_t i = 0; i < this->modifierValues.size; i++)
         if (this->modifierValues[i] != rhs.modifierValues[i])
         {
             uint32_t lhsSize = UINT32_MAX, rhsSize;
@@ -565,11 +559,9 @@ Type::FullType::operator==(const FullType& rhs) const
         return false;
     if (this->mut && !rhs.mut)
         return false;
-    if (this->sampled != rhs.sampled)
-        return false;
     if (this->modifiers != rhs.modifiers)
         return false;
-    for (size_t i = 0; i < this->modifierValues.size(); i++)
+    for (size_t i = 0; i < this->modifierValues.size; i++)
         if (this->modifierValues[i] != rhs.modifierValues[i])
         {
             uint32_t lhsSize, rhsSize;
@@ -601,12 +593,12 @@ Type::FullType::operator==(const FullType& rhs) const
 const bool 
 Type::FullType::IsPointer() const
 {
-    auto it = this->modifiers.crbegin();
-    while (it != this->modifiers.crend())
+    auto it = this->modifiers.rbegin();
+    while (it != this->modifiers.rend())
     {
-        if (*it == Type::FullType::Modifier::Pointer)
+        if (*it.it == Type::FullType::Modifier::Pointer)
             return true;
-        else if (*it == Type::FullType::Modifier::Array)
+        else if (*it.it == Type::FullType::Modifier::Array)
             return false;
         it++;
     }
@@ -628,14 +620,14 @@ Type::FullType::IsMutable() const
 const Type::FullType::Modifier 
 Type::FullType::LastIndirectionModifier() const
 {
-    auto it = this->modifiers.crbegin();
-    while (it != this->modifiers.crend())
+    auto it = this->modifiers.rbegin();
+    while (it != this->modifiers.rend())
     {
-        switch (*it)
+        switch (*it.it)
         {
             case Type::FullType::Modifier::Array:
             case Type::FullType::Modifier::Pointer:
-                return *it;
+                return *it.it;
         }
         it++;
     }

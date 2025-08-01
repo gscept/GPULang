@@ -263,6 +263,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_string; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterString(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitString(this);
+		}
 	}
 
 	public final StringContext string() throws RecognitionException {
@@ -371,6 +379,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_path; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterPath(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitPath(this);
+		}
 	}
 
 	public final PathContext path() throws RecognitionException {
@@ -469,6 +485,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_boolean; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterBoolean(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitBoolean(this);
+		}
 	}
 
 	public final BooleanContext boolean_() throws RecognitionException {
@@ -524,6 +548,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_entry; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterEntry(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitEntry(this);
+		}
 	}
 
 	public final EntryContext entry() throws RecognitionException {
@@ -639,6 +671,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_effect; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterEffect(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitEffect(this);
+		}
 	}
 
 	public final EffectContext effect() throws RecognitionException {
@@ -786,6 +826,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_linePreprocessorEntry; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterLinePreprocessorEntry(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitLinePreprocessorEntry(this);
+		}
 	}
 
 	public final LinePreprocessorEntryContext linePreprocessorEntry() throws RecognitionException {
@@ -831,6 +879,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_alias; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterAlias(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitAlias(this);
+		}
 	}
 
 	public final AliasContext alias() throws RecognitionException {
@@ -857,7 +913,6 @@ public class GPULangParser extends Parser {
 
 			        ((AliasContext)_localctx).sym =  Alloc<Alias>();
 				_localctx.sym->nameLocation = nameLocation;
-				_localctx.sym->typeLocation = typeLocation;
 			        _localctx.sym->name = name;
 			        _localctx.sym->type = type;
 			    
@@ -890,6 +945,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_annotation; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterAnnotation(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitAnnotation(this);
+		}
 	}
 
 	public final AnnotationContext annotation() throws RecognitionException {
@@ -947,6 +1010,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_attribute; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterAttribute(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitAttribute(this);
+		}
 	}
 
 	public final AttributeContext attribute() throws RecognitionException {
@@ -1033,6 +1104,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_typeDeclaration; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterTypeDeclaration(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitTypeDeclaration(this);
+		}
 	}
 
 	public final TypeDeclarationContext typeDeclaration() throws RecognitionException {
@@ -1170,6 +1249,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_generate; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterGenerate(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitGenerate(this);
+		}
 	}
 
 	public final GenerateContext generate() throws RecognitionException {
@@ -1277,6 +1364,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_gen_statement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterGen_statement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitGen_statement(this);
+		}
 	}
 
 	public final Gen_statementContext gen_statement() throws RecognitionException {
@@ -1367,6 +1462,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_gen_scope_statement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterGen_scope_statement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitGen_scope_statement(this);
+		}
 	}
 
 	public final Gen_scope_statementContext gen_scope_statement() throws RecognitionException {
@@ -1480,6 +1583,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_gen_if_statement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterGen_if_statement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitGen_if_statement(this);
+		}
 	}
 
 	public final Gen_if_statementContext gen_if_statement() throws RecognitionException {
@@ -1589,6 +1700,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_variables; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterVariables(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitVariables(this);
+		}
 	}
 
 	public final VariablesContext variables() throws RecognitionException {
@@ -1765,7 +1884,6 @@ public class GPULangParser extends Parser {
 			        {
 			            Variable* var = Alloc<Variable>(); 
 			            var->type = type.type; 
-			            var->typeLocation = type.location;
 			            var->location = locations[i]; 
 			            var->annotations = annotations;
 			            var->attributes = attributes;
@@ -1817,6 +1935,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_structureDeclaration; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterStructureDeclaration(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitStructureDeclaration(this);
+		}
 	}
 
 	public final StructureDeclarationContext structureDeclaration() throws RecognitionException {
@@ -1951,6 +2077,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_structure; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterStructure(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitStructure(this);
+		}
 	}
 
 	public final StructureContext structure() throws RecognitionException {
@@ -1964,7 +2098,6 @@ public class GPULangParser extends Parser {
 		        FixedString instanceName;
 		        Symbol::Location varLocation;
 		        Type::FullType varType;
-		        Symbol::Location varTypeLocation;
 		        Symbol::Location typeRange;
 		        FixedString varName;
 		    
@@ -2038,14 +2171,13 @@ public class GPULangParser extends Parser {
 					}
 					setState(428);
 					((StructureContext)_localctx).varTypeName = match(IDENTIFIER);
-					 if (members.Full()) { throw IndexOutOfBoundsException("Maximum of 1024 struct members reached"); } varType.name = (((StructureContext)_localctx).varTypeName!=null?((StructureContext)_localctx).varTypeName.getText():null); varTypeLocation = EndLocationRange(typeRange); 
+					 if (members.Full()) { throw IndexOutOfBoundsException("Maximum of 1024 struct members reached"); } varType.name = (((StructureContext)_localctx).varTypeName!=null?((StructureContext)_localctx).varTypeName.getText():null); 
 					setState(430);
 					match(SC);
 
 					                Variable* var = Alloc<Variable>(); 
 					                var->type = varType; 
 					                var->location = varLocation; 
-					                var->typeLocation = varTypeLocation;
 					                var->name = varName;
 					                var->valueExpression = nullptr;
 					                members.Append(var);
@@ -2130,6 +2262,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_enumeration; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterEnumeration(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitEnumeration(this);
+		}
 	}
 
 	public final EnumerationContext enumeration() throws RecognitionException {
@@ -2324,6 +2464,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_parameter; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterParameter(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitParameter(this);
+		}
 	}
 
 	public final ParameterContext parameter() throws RecognitionException {
@@ -2396,7 +2544,6 @@ public class GPULangParser extends Parser {
 
 			            ((ParameterContext)_localctx).sym =  Alloc<Variable>(); 
 			            _localctx.sym->type = type.type; 
-			            _localctx.sym->typeLocation = type.location;
 			            _localctx.sym->location = location; 
 			            _localctx.sym->attributes = std::move(attributes);
 			            _localctx.sym->name = name;
@@ -2455,6 +2602,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_functionDeclaration; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterFunctionDeclaration(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitFunctionDeclaration(this);
+		}
 	}
 
 	public final FunctionDeclarationContext functionDeclaration() throws RecognitionException {
@@ -2554,7 +2709,6 @@ public class GPULangParser extends Parser {
 			        _localctx.sym->hasBody = false;
 			        _localctx.sym->location = location;
 			        _localctx.sym->returnType = ((FunctionDeclarationContext)_localctx).returnType.type.type; 
-			        _localctx.sym->returnTypeLocation = ((FunctionDeclarationContext)_localctx).returnType.type.location;
 			        _localctx.sym->name = (((FunctionDeclarationContext)_localctx).name!=null?((FunctionDeclarationContext)_localctx).name.getText():null); 
 			        _localctx.sym->parameters = variables; 
 			        _localctx.sym->attributes = attributes;
@@ -2587,6 +2741,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_function; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterFunction(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitFunction(this);
+		}
 	}
 
 	public final FunctionContext function() throws RecognitionException {
@@ -2622,7 +2784,7 @@ public class GPULangParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ProgramContext extends ParserRuleContext {
-		public Program* sym;
+		public ProgramInstance* sym;
 		public AnnotationContext annotation;
 		public Token name;
 		public ExpressionContext assignment;
@@ -2649,6 +2811,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_program; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterProgram(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitProgram(this);
+		}
 	}
 
 	public final ProgramContext program() throws RecognitionException {
@@ -2680,7 +2850,7 @@ public class GPULangParser extends Parser {
 			}
 			setState(557);
 			match(T__10);
-			 ((ProgramContext)_localctx).sym =  Alloc<Program>(); 
+			 ((ProgramContext)_localctx).sym =  Alloc<ProgramInstance>(); 
 			setState(559);
 			((ProgramContext)_localctx).name = match(IDENTIFIER);
 			 _localctx.sym->location = SetupFile(); 
@@ -2725,7 +2895,7 @@ public class GPULangParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class SamplerContext extends ParserRuleContext {
-		public SamplerState* sym;
+		public SamplerStateInstance* sym;
 		public AnnotationContext annotation;
 		public AttributeContext attribute;
 		public Token name;
@@ -2759,6 +2929,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_sampler; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterSampler(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitSampler(this);
+		}
 	}
 
 	public final SamplerContext sampler() throws RecognitionException {
@@ -2806,7 +2984,7 @@ public class GPULangParser extends Parser {
 			}
 			setState(590);
 			match(T__11);
-			 ((SamplerContext)_localctx).sym =  Alloc<SamplerState>(); _localctx.sym->isImmutable = true; 
+			 ((SamplerContext)_localctx).sym =  Alloc<SamplerStateInstance>(); _localctx.sym->isImmutable = true; 
 			}
 			setState(593);
 			((SamplerContext)_localctx).name = match(IDENTIFIER);
@@ -2873,6 +3051,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_state; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterState(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitState(this);
+		}
 	}
 
 	public final StateContext state() throws RecognitionException {
@@ -2888,7 +3074,7 @@ public class GPULangParser extends Parser {
 			{
 			setState(608);
 			match(T__12);
-			 ((StateContext)_localctx).sym =  Alloc<RenderState>(); 
+			 ((StateContext)_localctx).sym =  Alloc<RenderStateInstance>(); 
 			}
 			setState(611);
 			((StateContext)_localctx).name = match(IDENTIFIER);
@@ -2975,6 +3161,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_statement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitStatement(this);
+		}
 	}
 
 	public final StatementContext statement() throws RecognitionException {
@@ -3112,6 +3306,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_expressionStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterExpressionStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitExpressionStatement(this);
+		}
 	}
 
 	public final ExpressionStatementContext expressionStatement() throws RecognitionException {
@@ -3163,6 +3365,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_ifStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterIfStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitIfStatement(this);
+		}
 	}
 
 	public final IfStatementContext ifStatement() throws RecognitionException {
@@ -3257,6 +3467,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_forStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterForStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitForStatement(this);
+		}
 	}
 
 	public final ForStatementContext forStatement() throws RecognitionException {
@@ -3379,6 +3597,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_forRangeStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterForRangeStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitForRangeStatement(this);
+		}
 	}
 
 	public final ForRangeStatementContext forRangeStatement() throws RecognitionException {
@@ -3444,6 +3670,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_forUniformValueStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterForUniformValueStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitForUniformValueStatement(this);
+		}
 	}
 
 	public final ForUniformValueStatementContext forUniformValueStatement() throws RecognitionException {
@@ -3503,6 +3737,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_whileStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterWhileStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitWhileStatement(this);
+		}
 	}
 
 	public final WhileStatementContext whileStatement() throws RecognitionException {
@@ -3622,6 +3864,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_scopeStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterScopeStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitScopeStatement(this);
+		}
 	}
 
 	public final ScopeStatementContext scopeStatement() throws RecognitionException {
@@ -3719,6 +3969,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_terminateStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterTerminateStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitTerminateStatement(this);
+		}
 	}
 
 	public final TerminateStatementContext terminateStatement() throws RecognitionException {
@@ -3824,6 +4082,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_continueStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterContinueStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitContinueStatement(this);
+		}
 	}
 
 	public final ContinueStatementContext continueStatement() throws RecognitionException {
@@ -3887,6 +4153,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_switchStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterSwitchStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitSwitchStatement(this);
+		}
 	}
 
 	public final SwitchStatementContext switchStatement() throws RecognitionException {
@@ -4000,6 +4274,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_breakStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterBreakStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitBreakStatement(this);
+		}
 	}
 
 	public final BreakStatementContext breakStatement() throws RecognitionException {
@@ -4059,6 +4341,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_expressionList; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterExpressionList(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitExpressionList(this);
+		}
 	}
 
 	public final ExpressionListContext expressionList() throws RecognitionException {
@@ -4191,6 +4481,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_expression; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitExpression(this);
+		}
 	}
 
 	public final ExpressionContext expression() throws RecognitionException {
@@ -4771,6 +5069,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_binaryexpatom; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterBinaryexpatom(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitBinaryexpatom(this);
+		}
 	}
 
 	public final BinaryexpatomContext binaryexpatom() throws RecognitionException {
@@ -4929,6 +5235,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_initializerExpression; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterInitializerExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitInitializerExpression(this);
+		}
 	}
 
 	public final InitializerExpressionContext initializerExpression() throws RecognitionException {
@@ -4993,6 +5307,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_arrayInitializerExpression; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterArrayInitializerExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitArrayInitializerExpression(this);
+		}
 	}
 
 	public final ArrayInitializerExpressionContext arrayInitializerExpression() throws RecognitionException {
@@ -5053,6 +5375,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_floatVecLiteralExpression; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterFloatVecLiteralExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitFloatVecLiteralExpression(this);
+		}
 	}
 
 	public final FloatVecLiteralExpressionContext floatVecLiteralExpression() throws RecognitionException {
@@ -5143,6 +5473,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_doubleVecLiteralExpression; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterDoubleVecLiteralExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitDoubleVecLiteralExpression(this);
+		}
 	}
 
 	public final DoubleVecLiteralExpressionContext doubleVecLiteralExpression() throws RecognitionException {
@@ -5233,6 +5571,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_intVecLiteralExpression; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterIntVecLiteralExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitIntVecLiteralExpression(this);
+		}
 	}
 
 	public final IntVecLiteralExpressionContext intVecLiteralExpression() throws RecognitionException {
@@ -5323,6 +5669,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_uintVecLiteralExpression; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterUintVecLiteralExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitUintVecLiteralExpression(this);
+		}
 	}
 
 	public final UintVecLiteralExpressionContext uintVecLiteralExpression() throws RecognitionException {
@@ -5415,6 +5769,14 @@ public class GPULangParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_booleanVecLiteralExpression; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).enterBooleanVecLiteralExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GPULangListener ) ((GPULangListener)listener).exitBooleanVecLiteralExpression(this);
+		}
 	}
 
 	public final BooleanVecLiteralExpressionContext booleanVecLiteralExpression() throws RecognitionException {

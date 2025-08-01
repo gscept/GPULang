@@ -11,13 +11,7 @@
 #include "ast/preprocessor.h"
 #include "ast/effect.h"
 #include "memory.h"
-#include "parser/lexer.h"
-
-#include "antlr4-runtime.h"
-#include "antlr4-common.h"
-#include "parser4/GPULangLexer.h"
-#include "parser4/GPULangParser.h"
-#include "parser4/gpulangerrorhandlers.h"
+#include "parser/parser.h"
 
 #ifdef __WIN32__
 #define WIN32_LEAN_AND_MEAN
@@ -29,7 +23,6 @@
 #include <sys/stat.h>
 #endif
 
-using namespace antlr4;
 using namespace GPULang;
 
 //------------------------------------------------------------------------------
@@ -532,7 +525,7 @@ GPULangPreprocess(
     }
     output.clear();
     output.reserve(file->contentSize * 1.5f);
-    GPULangParser::LineStack.push_back({0, 0, file->path.c_str()});
+    //GPULangParser::LineStack.push_back({0, 0, file->path.c_str()});
     Macro* macro = nullptr;
     bool comment = false;
     level->lineCounter = 0;
@@ -2112,7 +2105,6 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
     errorBuffer = nullptr;
 
     {
-        
         Compiler compiler;
         compiler.Setup(target, options);
 
@@ -2121,7 +2113,7 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
         
         PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
         PinnedArray<GPULang::Diagnostic> diagnostics(0xFFFFFF);
-        GPULangParser::LineStack.clear();
+        //GPULangParser::LineStack.clear();
         if (GPULangPreprocessFile(file, defines, preprocessed, preprocessorSymbols, diagnostics))
         {
             // get the name of the shader
@@ -2138,50 +2130,35 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
                 undersc = effectName.find('_');
             }
 
-            // setup preprocessor
-            //parser.preprocess();
-
             timer.Stop();
             if (options.emitTimings)
                 timer.Print("Preprocessing");
-
-            GPULangLexerErrorHandler lexerErrorHandler;
-            GPULangParserErrorHandler parserErrorHandler;
+            
             timer.Start();
-
-            ANTLRInputStream input;
-            GPULangLexer lexer(&input);
-            lexer.setTokenFactory(GPULangTokenFactory::DEFAULT);
-            CommonTokenStream tokens(&lexer);
-            GPULangParser parser(&tokens);
-            parser.getInterpreter<antlr4::atn::ParserATNSimulator>()->setPredictionMode(antlr4::atn::PredictionMode::SLL);
-
-            // reload the preprocessed data
-            input.reset();
-            input.load(preprocessed);
-            lexer.setInputStream(&input);
-            lexer.setTokenFactory(GPULangTokenFactory::DEFAULT);
-            lexer.removeErrorListeners();
-            lexer.addErrorListener(&lexerErrorHandler);
-            tokens.setTokenSource(&lexer);
-            parser.setTokenStream(&tokens);
-            parser.removeErrorListeners();
-            parser.addErrorListener(&parserErrorHandler);
-
-            Effect* effect = parser.entry()->returnEffect;
+            
+            TokenizationResult tokenizationResult = Tokenize(preprocessed, TransientString{file.c_str()});
+            for (const auto& err : tokenizationResult.errors)
+            {
+                printf("%s(%d:%d): syntax error %s\n", err.path.c_str(), err.line, err.pos, err.message.c_str());
+            }
+            
             timer.Stop();
             if (options.emitTimings)
-                timer.Print("Parsing");
-
-            // if we have any lexer or parser error, return early
-            if (lexerErrorHandler.hasError || parserErrorHandler.hasError)
             {
-                std::string errorMessage;
-                errorMessage.append(lexerErrorHandler.errorBuffer);
-                errorMessage.append(parserErrorHandler.errorBuffer);
-                errorBuffer = Error(errorMessage);
-                return false;
+                printf("%lu tokens\n", tokenizationResult.tokens.size);
+                timer.Print("Home made lexer");
             }
+            
+            timer.Start();
+            GPULang::TokenStream tokenStream(tokenizationResult);
+            ParseResult parseResult = Parse(tokenStream);
+            for (const auto& err : parseResult.errors)
+            {
+                printf("%s(%d:%d) syntax error %s\n", err.path.c_str(), err.line, err.pos, err.message.c_str());
+            }
+            timer.Stop();
+            if (options.emitTimings)
+                timer.Print("Home made parser");
 
             // setup and run compiler
             BinWriter binaryWriter;
@@ -2194,8 +2171,7 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
             compiler.debugPath = output;
             compiler.debugOutput = true;
 
-            bool res = compiler.Compile(effect, binaryWriter, headerWriter);
-            effect->~Effect();
+            bool res = compiler.Compile(parseResult.ast, binaryWriter, headerWriter);
 
             // convert error list to string
             if (compiler.messages.size != 0 && !compiler.options.quiet)
@@ -2251,7 +2227,7 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
 
     PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
     PinnedArray<GPULang::Diagnostic> diagnostics(0xFFFFFF);
-    GPULangParser::LineStack.clear();
+    //GPULangParser::LineStack.clear();
 
     if (GPULangPreprocess(file, defines, preprocessed, preprocessorSymbols, diagnostics))
     {
@@ -2290,7 +2266,6 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
         if (options.emitTimings)
             timer.Print("Preprocessing");
 
-
         timer.Start();
         
         TokenizationResult tokenizationResult = Tokenize(preprocessed, file->path);
@@ -2301,7 +2276,10 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
         
         timer.Stop();
         if (options.emitTimings)
+        {
+            printf("%lu tokens\n", tokenizationResult.tokens.size);
             timer.Print("Home made lexer");
+        }
         
         timer.Start();
         GPULang::TokenStream tokenStream(tokenizationResult);
@@ -2316,47 +2294,12 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
         
         timer.Start();
 
-        GPULangLexerErrorHandler lexerErrorHandler;
-        GPULangParserErrorHandler parserErrorHandler;
-        ANTLRInputStream input;
-        GPULangLexer lexer(&input);
-        lexer.setTokenFactory(GPULangTokenFactory::DEFAULT);
-        CommonTokenStream tokens(&lexer);
-        GPULangParser parser(&tokens);
-        parser.getInterpreter<antlr4::atn::ParserATNSimulator>()->setPredictionMode(antlr4::atn::PredictionMode::SLL);
-
-        input.load(preprocessed);
-        lexer.setInputStream(&input);
-        lexer.setTokenFactory(GPULangTokenFactory::DEFAULT);
-        lexer.removeErrorListeners();
-        lexer.addErrorListener(&lexerErrorHandler);
-        tokens.setTokenSource(&lexer);
-        parser.setTokenStream(&tokens);
-        parser.removeErrorListeners();
-        parser.addErrorListener(&parserErrorHandler);
-
-        Effect* effect = parser.entry()->returnEffect;
-
-        timer.Stop();
-        if (options.emitTimings)
-            timer.Print("Parsing");
-
-        // if we have any lexer or parser error, return early
-        if (lexerErrorHandler.hasError || parserErrorHandler.hasError)
-        {
-            diagnostics.Append(lexerErrorHandler.diagnostics);
-            diagnostics.Append(parserErrorHandler.diagnostics);
-            result.diagnostics.Append(diagnostics);
-            return false;
-        }
-
         compiler.path = file->path;
         compiler.filename = effectName;
 
-        bool res = compiler.Validate(effect);
-        effect->~Effect();
+        bool res = compiler.Validate(parseResult.ast);
 
-        result.root = effect;
+        result.root = parseResult.ast;
         result.symbols = compiler.symbols;
         result.symbols.Prepend(preprocessorSymbols);
         result.intrinsicScope = compiler.intrinsicScope;

@@ -70,7 +70,8 @@ static StaticSet<ConstantString> bindingQualifiers =
 
 static StaticSet<ConstantString> functionAttributes =
 {
-    "entry_point", "local_size_x", "local_size_y", "local_size_z", "local_size", "early_depth", "depth_greater", "depth_lesser"
+    "entry_point", "local_size_x", "local_size_y", "local_size_z", "local_size", "threads_x", "threads_y", "threads_z", "threads"
+    , "early_depth", "depth_greater", "depth_lesser"
     , "group_size", "groups_per_workgroup"
     , "input_vertices", "max_output_vertices", "winding"
     , "input_topology", "output_topology", "patch_type", "partition"
@@ -969,11 +970,6 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         {
             paramListNamed.Concatenate<true>(var->name, ":", var->type.ToString());
             paramList.Append(var->type.ToString());
-        }
-
-        if (var->type.sampled)
-        {
-            int i = 5;
         }
 
         if (var != fun->parameters.back())
@@ -2862,7 +2858,6 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 newType.modifierValues = var->type.modifierValues;
                 newType.mut = var->type.mut;
                 newType.literal = var->type.literal;
-                newType.sampled = var->type.sampled;
                 var->type = newType;
                 varResolved->typeSymbol = generatedStruct;
 
@@ -2888,16 +2883,17 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     attr->expression = nullptr;
                     arg->attributes = { attr };
                     arg->type = var->type;
-                    arg->type.modifiers.clear();
-                    arg->type.modifierValues.clear();
-                    arg->type.AddModifier(Type::FullType::Modifier::Pointer, nullptr);
+                    arg->type.modifiers.Clear();
+                    arg->type.modifierValues.Clear();
+                    arg->type.modifiers.Append(Type::FullType::Modifier::Pointer);
+                    arg->type.modifierValues.Append(nullptr);
                 
                     Variable* arg2 = Alloc<Variable>();
                     arg2->name = "value";
                     arg2->type = var->type;
-                    arg2->type.modifiers.clear();
-                    arg2->type.modifierValues.clear();
                     arg2->type.mut = false;
+                    arg2->type.modifiers.Clear();
+                    arg2->type.modifierValues.Clear();
                     currentStrucResolved->storageFunction->parameters = { arg, arg2 };
                     this->ResolveFunction(compiler, currentStrucResolved->storageFunction);    
                 }
@@ -2914,9 +2910,10 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     attr->expression = nullptr;
                     arg->attributes = { attr };
                     arg->type = var->type;
-                    arg->type.modifiers.clear();
-                    arg->type.modifierValues.clear();
-                    arg->type.AddModifier(Type::FullType::Modifier::Pointer, nullptr);
+                    arg->type.modifiers.Clear();
+                    arg->type.modifierValues.Clear();
+                    arg->type.modifiers.Append(Type::FullType::Modifier::Pointer);
+                    arg->type.modifierValues.Append(nullptr);
                     
                     currentStrucResolved->loadFunction->parameters = { arg };
                     this->ResolveFunction(compiler, currentStrucResolved->loadFunction);   

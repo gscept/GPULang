@@ -1256,7 +1256,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
                     varOutput.structureOffset = resolved->structureOffset;
                     varOutput.arraySizesCount = 0;
                     varOutput.arraySizesOffset = dynamicDataBlob.iterator;
-                    for (size_t i = 0; i < var->type.modifiers.size(); i++)
+                    for (size_t i = 0; i < var->type.modifiers.size; i++)
                     {
                         if (var->type.modifiers[i] == Type::FullType::Modifier::Array && var->type.modifierValues[i] != nullptr)
                         {
@@ -1301,7 +1301,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             output.structureOffset = resolved->structureOffset;
             output.arraySizesCount = 0;
             output.arraySizesOffset = dynamicDataBlob.iterator;
-            for (size_t i = 0; i < var->type.modifiers.size(); i++)
+            for (size_t i = 0; i < var->type.modifiers.size; i++)
             {
                 if (var->type.modifiers[i] == Type::FullType::Modifier::Array && var->type.modifierValues[i] != nullptr)
                 {
@@ -1331,11 +1331,10 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             {
                 if (resolved->typeSymbol->category == Type::Category::UserTypeCategory)
                     output.bindingType = Serialization::BindingType::Buffer;
-                else if (resolved->typeSymbol->category == Type::Category::TextureCategory)
-                    if (var->type.sampled)
+                else if (resolved->typeSymbol->category == Type::Category::SampledTextureCategory)
                         output.bindingType = Serialization::BindingType::SampledImage;
-                    else
-                        output.bindingType = Serialization::BindingType::Image;
+                else if (resolved->typeSymbol->category == Type::Category::TextureCategory)
+                    output.bindingType = Serialization::BindingType::Image;
                 else if (resolved->typeSymbol->category == Type::Category::SamplerCategory)
                     output.bindingType = Serialization::BindingType::Sampler;
                 else if (resolved->typeSymbol->category == Type::Category::ScalarCategory)

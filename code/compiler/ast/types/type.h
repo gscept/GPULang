@@ -118,6 +118,16 @@ enum class TypeCode
     , Texture2DMSArray
     , Texture3DArray
     , TextureCubeArray
+    , SampledTexture1D
+    , SampledTexture2D
+    , SampledTexture2DMS
+    , SampledTexture3D
+    , SampledTextureCube
+    , SampledTexture1DArray
+    , SampledTexture2DArray
+    , SampledTexture2DMSArray
+    , SampledTexture3DArray
+    , SampledTextureCubeArray
     , PixelCache
     , PixelCacheMS
     , AccelerationStructure
@@ -154,6 +164,7 @@ struct Type : public Symbol
     {
         InvalidCategory,
         TextureCategory,
+        SampledTextureCategory,
         PixelCacheCategory,
         ScalarCategory,
         UserTypeCategory,
@@ -425,7 +436,7 @@ struct Type : public Symbol
         {
         }
         
-        explicit FullType(const ConstantString& type, const std::vector<Modifier>& modifiers, const std::vector<Expression*>& modifierValues)
+        explicit FullType(const ConstantString& type, const TransientArray<Modifier>& modifiers, const TransientArray<Expression*>& modifierValues)
             : name(type)
             , modifiers(modifiers)
             , literal(false)
@@ -433,7 +444,7 @@ struct Type : public Symbol
         {
         }
 
-        explicit FullType(const FixedString& type, const std::vector<Modifier>& modifiers, const std::vector<Expression*>& modifierValues)
+        explicit FullType(const FixedString& type, const TransientArray<Modifier>& modifiers, const TransientArray<Expression*>& modifierValues)
             : name(type)
             , modifiers(modifiers)
             , literal(false)
@@ -441,7 +452,7 @@ struct Type : public Symbol
         {
         }
         
-        explicit FullType(const char* type, const std::vector<Modifier>& modifiers, const std::vector<Expression*>& modifierValues)
+        explicit FullType(const char* type, const TransientArray<Modifier>& modifiers, const TransientArray<Expression*>& modifierValues)
             : name(type)
             , modifiers(modifiers)
             , literal(false)
@@ -449,7 +460,7 @@ struct Type : public Symbol
         {
         }
         
-        explicit FullType(const std::string& type, const std::vector<Modifier>& modifiers, const std::vector<Expression*>& modifierValues)
+        explicit FullType(const std::string& type, const TransientArray<Modifier>& modifiers, const TransientArray<Expression*>& modifierValues)
             : name(type)
             , modifiers(modifiers)
             , literal(false)
@@ -461,53 +472,14 @@ struct Type : public Symbol
         FixedString swizzleName;
         Type::SwizzleMask swizzleMask;
         ImageFormat imageFormat = ImageFormat::Unknown;
+        
+        Symbol::Location modifierLocation, formatLocation, nameLocation;
 
         const FixedString& Name()
         {
             return this->swizzleName.len == 0 ? this->name : this->swizzleName;
         }
-
-        void AddModifier(const Modifier& type, Expression* value = nullptr)
-        {
-            this->modifiers.push_back(type);
-            this->modifierValues.push_back(value);
-
-            switch (type)
-            {
-                case Type::FullType::Modifier::Array:
-                {
-                    if (value == 0)
-                        this->signature.append("[]");
-                    else
-                    {
-                        this->signature.append(Format("[%d]", value));
-                    }
-                    break;
-                }
-                case Type::FullType::Modifier::Pointer:
-                    this->signature.append("*");
-                    break;
-            }
-        }
         
-        void AddQualifier(const FixedString& identifier)
-        {
-            if (identifier == "mutable")
-                this->mut = true;
-            else if (identifier == "literal")
-                this->literal = true;
-            else if (identifier == "sampled")
-                this->sampled = true;
-            else
-            {
-                auto it = StringToFormats.Find(identifier);
-                if (it != StringToFormats.end())
-                    this->imageFormat = it->second;
-                else
-                    this->AddModifier(Modifier::Invalid);
-            }
-        }
-
         void UpdateValue(Expression* value)
         {
             this->modifierValues.back() = value;
@@ -517,12 +489,11 @@ struct Type : public Symbol
         {
             uint8_t literal: 1 = false;
             uint8_t mut: 1 = false;
-            uint8_t sampled: 1 = false;
         };
 
-        std::vector<Modifier> modifiers;
-        std::vector<Expression*> modifierValues;
-        std::string signature;
+
+        PinnedArray<Modifier> modifiers = 0x10;
+        PinnedArray<Expression*> modifierValues = 0x10;
 
         static const uint32_t UNSIZED_ARRAY = 0;
 

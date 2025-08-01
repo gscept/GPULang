@@ -53,14 +53,14 @@ AccessExpression::Resolve(Compiler* compiler)
 
     if (this->deref)
     {
-        if (thisResolved->leftType.modifiers.empty()
+        if (thisResolved->leftType.modifiers.size == 0
             || thisResolved->leftType.modifiers.back() != Type::FullType::Modifier::Pointer)
         {
             compiler->Error(Format("Cannot dereference type '%s', did you mean to use '.' instead?", thisResolved->leftType.ToString().c_str()), this);
             return false;
         }
-        thisResolved->leftType.modifierValues.pop_back();
-        thisResolved->leftType.modifiers.pop_back();
+        thisResolved->leftType.modifiers.RemoveLast();
+        thisResolved->leftType.modifierValues.RemoveLast();
     }
 
     this->left->EvalTypeSymbol(thisResolved->lhsType);
@@ -111,7 +111,7 @@ AccessExpression::Resolve(Compiler* compiler)
         thisResolved->returnType.swizzleMask = swizzle;
         thisResolved->swizzleType = compiler->GetType(thisResolved->returnType);
     }
-    else if (!thisResolved->leftType.modifiers.empty() && thisResolved->leftType.modifiers.front() == Type::FullType::Modifier::Array)
+    else if (thisResolved->leftType.modifiers.size != 0 && thisResolved->leftType.modifiers.front() == Type::FullType::Modifier::Array)
     {
         if (thisResolved->rightSymbol != "length")
         {

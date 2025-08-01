@@ -667,13 +667,25 @@ CreateSemanticToken(Context& ctx, const GPULang::Symbol* sym, ParseContext::Pars
             else
                 InsertSemanticToken(ctx, sym->location, deadBranch ? SemanticTypeMapping::Comment : SemanticTypeMapping::Variable, (uint32_t)(SemanticModifierMapping::Definition | dead), result);
 
-            InsertSemanticToken(ctx, var->typeLocation, deadBranch ? SemanticTypeMapping::Comment : SemanticTypeMapping::Type, (uint32_t)dead, result);
-            TextRange range;
-            range.startLine = var->typeLocation.line;
-            range.stopLine = var->typeLocation.line;
-            range.startColumn = var->typeLocation.start;
-            range.stopColumn = var->typeLocation.end;
-            file->symbolsByLine[range.startLine].push_back(std::make_tuple(range, PresentationBits{ {.typeLookup = 1} }, res->typeSymbol));
+            for (auto& modifier : var->type.modifierValues)
+            {
+                if (modifier != nullptr)
+                    CreateSemanticToken(ctx, modifier, file, result, scopes);
+            }
+            if (var->type.modifierLocation.Valid())
+                InsertSemanticToken(ctx, var->type.modifierLocation, deadBranch ? SemanticTypeMapping::Comment : SemanticTypeMapping::Keyword, (uint32_t)dead, result);
+            if (var->type.formatLocation.Valid())
+                InsertSemanticToken(ctx, var->type.formatLocation, deadBranch ? SemanticTypeMapping::Comment : SemanticTypeMapping::Keyword, (uint32_t)dead, result);
+            if (var->type.nameLocation.Valid())
+            {
+                InsertSemanticToken(ctx, var->type.nameLocation, deadBranch ? SemanticTypeMapping::Comment : SemanticTypeMapping::Type, (uint32_t)dead, result);
+                TextRange range;
+                range.startLine = var->type.nameLocation.line;
+                range.stopLine = var->type.nameLocation.line;
+                range.startColumn = var->type.nameLocation.start;
+                range.stopColumn = var->type.nameLocation.end;
+                file->symbolsByLine[range.startLine].push_back(std::make_tuple(range, PresentationBits{ {.typeLookup = 1} }, res->typeSymbol));
+            }
 
             if (var->valueExpression != nullptr)
                 CreateSemanticToken(ctx, var->valueExpression, file, result, scopes);

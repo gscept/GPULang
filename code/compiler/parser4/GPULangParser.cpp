@@ -1385,7 +1385,6 @@ GPULangParser::AliasContext* GPULangParser::alias() {
 
             antlrcpp::downCast<AliasContext *>(_localctx)->sym =  Alloc<Alias>();
     	_localctx->sym->nameLocation = nameLocation;
-    	_localctx->sym->typeLocation = typeLocation;
             _localctx->sym->name = name;
             _localctx->sym->type = type;
         
@@ -2530,7 +2529,6 @@ GPULangParser::VariablesContext* GPULangParser::variables() {
             {
                 Variable* var = Alloc<Variable>(); 
                 var->type = type.type; 
-                var->typeLocation = type.location;
                 var->location = locations[i]; 
                 var->annotations = annotations;
                 var->attributes = attributes;
@@ -2785,7 +2783,6 @@ GPULangParser::StructureContext* GPULangParser::structure() {
           FixedString instanceName;
           Symbol::Location varLocation;
           Type::FullType varType;
-          Symbol::Location varTypeLocation;
           Symbol::Location typeRange;
           FixedString varName;
       
@@ -2864,14 +2861,13 @@ GPULangParser::StructureContext* GPULangParser::structure() {
           }
           setState(428);
           antlrcpp::downCast<StructureContext *>(_localctx)->varTypeName = match(GPULangParser::IDENTIFIER);
-           if (members.Full()) { throw IndexOutOfBoundsException("Maximum of 1024 struct members reached"); } varType.name = (antlrcpp::downCast<StructureContext *>(_localctx)->varTypeName != nullptr ? antlrcpp::downCast<StructureContext *>(_localctx)->varTypeName->getText() : ""); varTypeLocation = EndLocationRange(typeRange); 
+           if (members.Full()) { throw IndexOutOfBoundsException("Maximum of 1024 struct members reached"); } varType.name = (antlrcpp::downCast<StructureContext *>(_localctx)->varTypeName != nullptr ? antlrcpp::downCast<StructureContext *>(_localctx)->varTypeName->getText() : ""); 
           setState(430);
           match(GPULangParser::SC);
 
                           Variable* var = Alloc<Variable>(); 
                           var->type = varType; 
                           var->location = varLocation; 
-                          var->typeLocation = varTypeLocation;
                           var->name = varName;
                           var->valueExpression = nullptr;
                           members.Append(var);
@@ -3282,7 +3278,6 @@ GPULangParser::ParameterContext* GPULangParser::parameter() {
 
                 antlrcpp::downCast<ParameterContext *>(_localctx)->sym =  Alloc<Variable>(); 
                 _localctx->sym->type = type.type; 
-                _localctx->sym->typeLocation = type.location;
                 _localctx->sym->location = location; 
                 _localctx->sym->attributes = std::move(attributes);
                 _localctx->sym->name = name;
@@ -3471,7 +3466,6 @@ GPULangParser::FunctionDeclarationContext* GPULangParser::functionDeclaration() 
             _localctx->sym->hasBody = false;
             _localctx->sym->location = location;
             _localctx->sym->returnType = antlrcpp::downCast<FunctionDeclarationContext *>(_localctx)->returnType->type.type; 
-            _localctx->sym->returnTypeLocation = antlrcpp::downCast<FunctionDeclarationContext *>(_localctx)->returnType->type.location;
             _localctx->sym->name = (antlrcpp::downCast<FunctionDeclarationContext *>(_localctx)->name != nullptr ? antlrcpp::downCast<FunctionDeclarationContext *>(_localctx)->name->getText() : ""); 
             _localctx->sym->parameters = variables; 
             _localctx->sym->attributes = attributes;

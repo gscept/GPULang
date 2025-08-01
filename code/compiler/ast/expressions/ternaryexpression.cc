@@ -56,7 +56,7 @@ TernaryExpression::Resolve(Compiler* compiler)
     (type3.name != "b8"
         && type3.name != "i32"
         && type3.name != "u32")
-    || !type3.modifiers.empty())
+    || type3.modifiers.size != 0)
     {
         compiler->Error(Format("Condition must evaluate to 'b8', 'i32' or 'u32', but got '%s'", type3.name.c_str()), this);
         return false;

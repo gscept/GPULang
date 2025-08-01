@@ -53,6 +53,28 @@ struct TransientArray
         rhs.allocatedBytes = 0;
     }
     
+    TransientArray(const std::initializer_list<TYPE>& list) noexcept
+    {
+        if (list.size() > 0)
+        {
+            this->ptr = AllocStack<TYPE>(list.size(), this->allocatedBytes);
+            this->capacity = list.size();
+            
+            if (std::is_trivially_copyable<TYPE>::value)
+            {
+                memcpy(this->ptr, list.begin(), sizeof(TYPE) * this->capacity);
+                this->size = list.size();
+            }
+            else
+            {
+                for (auto& val : list)
+                {
+                    this->ptr[this->size++] = val;
+                }
+            }
+        }
+    }
+    
     ~TransientArray()
     {
         if (this->ptr != nullptr)
@@ -147,6 +169,22 @@ struct TransientArray
     }
 };
 
+template <typename T>
+TransientArray(const std::initializer_list<T>&) -> TransientArray<T>;
+
+template<class TYPE, int STACK_SIZE>
+struct _smallvector
+{
+    TYPE* data() { return stackElements; }
+private:
+    TYPE stackElements[STACK_SIZE];
+};
+
+template<class TYPE>
+struct _smallvector<TYPE, 0>
+{
+    TYPE* data() { return nullptr; }
+};
 
 //------------------------------------------------------------------------------
 /**
@@ -178,33 +216,32 @@ struct PinnedArray
     
     PinnedArray(const PinnedArray<TYPE>& rhs)
     {
-        if (this->alloc != nullptr)
-            DeallocVirtual(this->alloc);
         this->alloc = nullptr;
         this->data = nullptr;
         this->maxAllocationCount = rhs.maxAllocationCount;
         this->capacity = 0;
         this->size = 0;
         this->committedPages = 0;
-        this->Grow(rhs.size);
-        if (std::is_trivially_copyable<TYPE>::value)
+        if (rhs.size > 0)
         {
-            memcpy(this->data + this->size, rhs.data, rhs.size * sizeof(TYPE));
-            this->size += rhs.size;
-        }
-        else
-        {
-            for (const auto& elem : rhs)
+            this->Grow(rhs.size);
+            if (std::is_trivially_copyable<TYPE>::value)
             {
-                this->data[this->size++] = elem;
+                memcpy(this->data + this->size, rhs.data, rhs.size * sizeof(TYPE));
+                this->size += rhs.size;
+            }
+            else
+            {
+                for (const auto& elem : rhs)
+                {
+                    this->data[this->size++] = elem;
+                }
             }
         }
     }
     
     PinnedArray(PinnedArray<TYPE>&& rhs)
     {
-        if (this->alloc != nullptr)
-            DeallocVirtual(this->alloc);
         this->alloc = rhs.alloc;
         this->data = rhs.data;
         this->maxAllocationCount = rhs.maxAllocationCount;
@@ -217,6 +254,32 @@ struct PinnedArray
         rhs.size = 0;
         rhs.capacity = 0;
         rhs.committedPages = 0;
+    }
+    
+    PinnedArray(const TransientArray<TYPE>& rhs)
+    {
+        this->alloc = nullptr;
+        this->data = nullptr;
+        this->maxAllocationCount = rhs.size * sizeof(TYPE);
+        this->capacity = 0;
+        this->size = 0;
+        this->committedPages = 0;
+        if (rhs.size > 0)
+        {
+            this->Grow(rhs.size);
+            if (std::is_trivially_copyable<TYPE>::value)
+            {
+                memcpy(this->data + this->size, rhs.ptr, rhs.size * sizeof(TYPE));
+                this->size = rhs.size;
+            }
+            else
+            {
+                for (const auto& elem : rhs)
+                {
+                    this->data[this->size++] = elem;
+                }
+            }
+        }
     }
     
     ~PinnedArray()
@@ -277,15 +340,16 @@ struct PinnedArray
         this->alloc = nullptr;
         this->data = nullptr;
         this->maxAllocationCount = rhs.size * sizeof(TYPE);
-        this->committedPages = 0;
         this->capacity = 0;
+        this->committedPages = 0;
+        this->size = 0;
         if (rhs.size > 0)
         {
             this->Grow(rhs.size);
             if (std::is_trivially_copyable<TYPE>::value)
             {
                 memcpy(this->data + this->size, rhs.ptr, rhs.size * sizeof(TYPE));
-                this->size += rhs.size;
+                this->size = rhs.size;
             }
             else
             {
@@ -295,6 +359,15 @@ struct PinnedArray
                 }
             }
         }
+    }
+    
+    template<size_t SIZE>
+    void operator=(const std::array<TYPE, SIZE>& rhs)
+    {
+        this->data = const_cast<TYPE*>(rhs.data());
+        this->size = SIZE;
+        this->capacity = SIZE;
+        this->maxAllocationCount = SIZE * sizeof(TYPE);
     }
     
     void Grow(size_t numNeededMoreElements)
@@ -413,6 +486,40 @@ struct PinnedArray
         this->size++;
     }
     
+    void RemoveFirst()
+    {
+        memmove(this->data, this->data + 1, (this->size - 1) * sizeof(TYPE));
+        this->size--;
+    }
+    
+    void RemoveLast()
+    {
+        this->size--;
+    }
+    
+    bool operator==(const PinnedArray<TYPE>& rhs) const
+    {
+        bool equal = this->size == rhs.size;
+        if (equal)
+        {
+            for (size_t i = 0; i < this->size; i++)
+            {
+                if (this->data[i] != rhs.data[i])
+                {
+                    equal = false;
+                    break;
+                }
+            }
+        }
+        return equal;
+    }
+    
+    bool operator!=(const PinnedArray<TYPE>& rhs) const
+    {
+        return !(*this == rhs);
+    }
+
+    
     const TYPE& operator[](const size_t index) const
     {
         return this->data[index];
@@ -476,11 +583,23 @@ struct PinnedArray
     struct reverse_iterator
     {
         TYPE* it;
+        using value_type = TYPE;
+        using difference_type = std::ptrdiff_t;
+        using pointer = TYPE*;
+        using reference = TYPE&;
+        using iterator_category = std::input_iterator_tag;
+
         
+        reverse_iterator operator++()
+        {
+            this->it--;
+            return *this;
+        }
         reverse_iterator operator++(int)
         {
-            it--;
-            return *this;
+            reverse_iterator tmp = *this;
+            this->it--;
+            return tmp;
         }
         
         bool operator==(const reverse_iterator& rhs)
@@ -491,6 +610,11 @@ struct PinnedArray
         bool operator!=(const reverse_iterator& rhs)
         {
             return this->it != rhs.it;
+        }
+        
+        TYPE* operator*() const
+        {
+            return this->it;
         }
         
         const TYPE& get()
@@ -508,6 +632,7 @@ struct PinnedArray
     {
         return { &this->data[-1] };
     }
+
     
     size_t maxAllocationCount, committedPages;
     size_t size, capacity;

@@ -105,19 +105,21 @@ UnaryExpression::Resolve(Compiler* compiler)
         }
         case '*':
         {
-            if (type.modifiers.empty() || type.modifiers.front() != Type::FullType::Modifier::Pointer)
+            if (type.modifiers.size == 0 || type.modifiers.front() != Type::FullType::Modifier::Pointer)
             {
                 compiler->Error("Dereferencing is only allowed on a pointer", this);
                 return false;
             }
-            type.modifiers.erase(type.modifiers.begin());
-            type.modifierValues.erase(type.modifierValues.begin());
+            
+            type.modifiers.RemoveFirst();
+            type.modifierValues.RemoveFirst();
             break;
         }
         case '&':
         {
             // Add modifier to type
-            type.AddModifier(Type::FullType::Modifier::Pointer);
+            type.modifiers.Append(Type::FullType::Modifier::Pointer);
+            type.modifierValues.Append(nullptr);
             break;
         }
         case '-':
@@ -127,7 +129,7 @@ UnaryExpression::Resolve(Compiler* compiler)
                 compiler->Error("Unary '-' only allowed on signed types", this);
                 return false;    
             }
-            if (!type.modifiers.empty())
+            if (type.modifiers.size != 0)
             {
                 compiler->Error("Unary '-' only allowed on scalar values", this);
                 return false;

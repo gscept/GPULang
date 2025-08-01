@@ -5678,7 +5678,7 @@ extern Variable TextureGetSampledMip_Texture1D_sampler;
 extern Variable TextureGetSampledMip_Texture1D_coordinate;
 extern Function TextureGetSampledMip_Texture1D;
 
-/// textureGetSampledMip with Texture1D, Float32
+/// textureGetSampledMip with SampledTexture1D, Float32
 extern Variable SampledTextureGetSampledMip_Texture1D_texture;
 extern Variable SampledTextureGetSampledMip_Texture1D_coordinate;
 extern Function SampledTextureGetSampledMip_Texture1D;
@@ -5689,7 +5689,7 @@ extern Variable TextureGetSampledMip_Texture2D_sampler;
 extern Variable TextureGetSampledMip_Texture2D_coordinate;
 extern Function TextureGetSampledMip_Texture2D;
 
-/// textureGetSampledMip with Texture2D, Float32x2
+/// textureGetSampledMip with SampledTexture2D, Float32x2
 extern Variable SampledTextureGetSampledMip_Texture2D_texture;
 extern Variable SampledTextureGetSampledMip_Texture2D_coordinate;
 extern Function SampledTextureGetSampledMip_Texture2D;
@@ -5700,7 +5700,7 @@ extern Variable TextureGetSampledMip_Texture3D_sampler;
 extern Variable TextureGetSampledMip_Texture3D_coordinate;
 extern Function TextureGetSampledMip_Texture3D;
 
-/// textureGetSampledMip with Texture3D, Float32x3
+/// textureGetSampledMip with SampledTexture3D, Float32x3
 extern Variable SampledTextureGetSampledMip_Texture3D_texture;
 extern Variable SampledTextureGetSampledMip_Texture3D_coordinate;
 extern Function SampledTextureGetSampledMip_Texture3D;
@@ -5711,7 +5711,7 @@ extern Variable TextureGetSampledMip_TextureCube_sampler;
 extern Variable TextureGetSampledMip_TextureCube_coordinate;
 extern Function TextureGetSampledMip_TextureCube;
 
-/// textureGetSampledMip with TextureCube, Float32x3
+/// textureGetSampledMip with SampledTextureCube, Float32x3
 extern Variable SampledTextureGetSampledMip_TextureCube_texture;
 extern Variable SampledTextureGetSampledMip_TextureCube_coordinate;
 extern Function SampledTextureGetSampledMip_TextureCube;
@@ -5722,7 +5722,7 @@ extern Variable TextureGetSampledMip_Texture1DArray_sampler;
 extern Variable TextureGetSampledMip_Texture1DArray_coordinate;
 extern Function TextureGetSampledMip_Texture1DArray;
 
-/// textureGetSampledMip with Texture1DArray, Float32x2
+/// textureGetSampledMip with SampledTexture1DArray, Float32x2
 extern Variable SampledTextureGetSampledMip_Texture1DArray_texture;
 extern Variable SampledTextureGetSampledMip_Texture1DArray_coordinate;
 extern Function SampledTextureGetSampledMip_Texture1DArray;
@@ -5733,7 +5733,7 @@ extern Variable TextureGetSampledMip_Texture2DArray_sampler;
 extern Variable TextureGetSampledMip_Texture2DArray_coordinate;
 extern Function TextureGetSampledMip_Texture2DArray;
 
-/// textureGetSampledMip with Texture2DArray, Float32x3
+/// textureGetSampledMip with SampledTexture2DArray, Float32x3
 extern Variable SampledTextureGetSampledMip_Texture2DArray_texture;
 extern Variable SampledTextureGetSampledMip_Texture2DArray_coordinate;
 extern Function SampledTextureGetSampledMip_Texture2DArray;
@@ -5744,7 +5744,7 @@ extern Variable TextureGetSampledMip_TextureCubeArray_sampler;
 extern Variable TextureGetSampledMip_TextureCubeArray_coordinate;
 extern Function TextureGetSampledMip_TextureCubeArray;
 
-/// textureGetSampledMip with TextureCubeArray, Float32x4
+/// textureGetSampledMip with SampledTextureCubeArray, Float32x4
 extern Variable SampledTextureGetSampledMip_TextureCubeArray_texture;
 extern Variable SampledTextureGetSampledMip_TextureCubeArray_coordinate;
 extern Function SampledTextureGetSampledMip_TextureCubeArray;
@@ -6063,7 +6063,7 @@ extern Variable TextureGather_Texture2D_coordinate;
 extern Variable TextureGather_Texture2D_component;
 extern Function TextureGather_Texture2D;
 
-/// textureGather with Texture2D, Int32x2, Int32
+/// textureGather with SampledTexture2D, Int32x2, Int32
 extern Variable SampledTextureGather_Texture2D_texture;
 extern Variable SampledTextureGather_Texture2D_coordinate;
 extern Variable SampledTextureGather_Texture2D_component;
@@ -6077,7 +6077,7 @@ extern Variable TextureGatherOffset_Texture2D_component;
 extern Variable TextureGatherOffset_Texture2D_offset;
 extern Function TextureGatherOffset_Texture2D;
 
-/// textureGatherOffset with Texture2D, Int32x2, Int32, UInt32
+/// textureGatherOffset with SampledTexture2D, Int32x2, Int32, UInt32
 extern Variable SampledTextureGatherOffset_Texture2D_texture;
 extern Variable SampledTextureGatherOffset_Texture2D_coordinate;
 extern Variable SampledTextureGatherOffset_Texture2D_component;
@@ -6091,7 +6091,7 @@ extern Variable TextureGather_TextureCube_coordinate;
 extern Variable TextureGather_TextureCube_component;
 extern Function TextureGather_TextureCube;
 
-/// textureGather with TextureCube, Int32x3, Int32
+/// textureGather with SampledTextureCube, Int32x3, Int32
 extern Variable SampledTextureGather_TextureCube_texture;
 extern Variable SampledTextureGather_TextureCube_coordinate;
 extern Variable SampledTextureGather_TextureCube_component;
@@ -6105,7 +6105,7 @@ extern Variable TextureGatherOffset_TextureCube_component;
 extern Variable TextureGatherOffset_TextureCube_offset;
 extern Function TextureGatherOffset_TextureCube;
 
-/// textureGatherOffset with TextureCube, Int32x3, Int32, UInt32
+/// textureGatherOffset with SampledTextureCube, Int32x3, Int32, UInt32
 extern Variable SampledTextureGatherOffset_TextureCube_texture;
 extern Variable SampledTextureGatherOffset_TextureCube_coordinate;
 extern Variable SampledTextureGatherOffset_TextureCube_component;
@@ -6119,7 +6119,7 @@ extern Variable TextureGather_Texture2DArray_coordinate;
 extern Variable TextureGather_Texture2DArray_component;
 extern Function TextureGather_Texture2DArray;
 
-/// textureGather with Texture2DArray, Int32x3, Int32
+/// textureGather with SampledTexture2DArray, Int32x3, Int32
 extern Variable SampledTextureGather_Texture2DArray_texture;
 extern Variable SampledTextureGather_Texture2DArray_coordinate;
 extern Variable SampledTextureGather_Texture2DArray_component;
@@ -6133,7 +6133,7 @@ extern Variable TextureGatherOffset_Texture2DArray_component;
 extern Variable TextureGatherOffset_Texture2DArray_offset;
 extern Function TextureGatherOffset_Texture2DArray;
 
-/// textureGatherOffset with Texture2DArray, Int32x3, Int32, UInt32
+/// textureGatherOffset with SampledTexture2DArray, Int32x3, Int32, UInt32
 extern Variable SampledTextureGatherOffset_Texture2DArray_texture;
 extern Variable SampledTextureGatherOffset_Texture2DArray_coordinate;
 extern Variable SampledTextureGatherOffset_Texture2DArray_component;
@@ -6147,7 +6147,7 @@ extern Variable TextureGather_TextureCubeArray_coordinate;
 extern Variable TextureGather_TextureCubeArray_component;
 extern Function TextureGather_TextureCubeArray;
 
-/// textureGather with TextureCubeArray, Int32x4, Int32
+/// textureGather with SampledTextureCubeArray, Int32x4, Int32
 extern Variable SampledTextureGather_TextureCubeArray_texture;
 extern Variable SampledTextureGather_TextureCubeArray_coordinate;
 extern Variable SampledTextureGather_TextureCubeArray_component;
@@ -6161,7 +6161,7 @@ extern Variable TextureGatherOffset_TextureCubeArray_component;
 extern Variable TextureGatherOffset_TextureCubeArray_offset;
 extern Function TextureGatherOffset_TextureCubeArray;
 
-/// textureGatherOffset with TextureCubeArray, Int32x4, Int32, UInt32
+/// textureGatherOffset with SampledTextureCubeArray, Int32x4, Int32, UInt32
 extern Variable SampledTextureGatherOffset_TextureCubeArray_texture;
 extern Variable SampledTextureGatherOffset_TextureCubeArray_coordinate;
 extern Variable SampledTextureGatherOffset_TextureCubeArray_component;
@@ -6183,7 +6183,7 @@ extern Variable TextureSample_Texture1D_sampler;
 extern Variable TextureSample_Texture1D_coordinate;
 extern Function TextureSample_Texture1D;
 
-/// textureSample with Texture1D, Float32
+/// textureSample with SampledTexture1D, Float32
 extern Variable SampledTextureSample_Texture1D_texture;
 extern Variable SampledTextureSample_Texture1D_coordinate;
 extern Function SampledTextureSample_Texture1D;
@@ -6194,7 +6194,7 @@ extern Variable TextureSample_Texture2D_sampler;
 extern Variable TextureSample_Texture2D_coordinate;
 extern Function TextureSample_Texture2D;
 
-/// textureSample with Texture2D, Float32x2
+/// textureSample with SampledTexture2D, Float32x2
 extern Variable SampledTextureSample_Texture2D_texture;
 extern Variable SampledTextureSample_Texture2D_coordinate;
 extern Function SampledTextureSample_Texture2D;
@@ -6205,7 +6205,7 @@ extern Variable TextureSample_Texture3D_sampler;
 extern Variable TextureSample_Texture3D_coordinate;
 extern Function TextureSample_Texture3D;
 
-/// textureSample with Texture3D, Float32x3
+/// textureSample with SampledTexture3D, Float32x3
 extern Variable SampledTextureSample_Texture3D_texture;
 extern Variable SampledTextureSample_Texture3D_coordinate;
 extern Function SampledTextureSample_Texture3D;
@@ -6216,7 +6216,7 @@ extern Variable TextureSample_TextureCube_sampler;
 extern Variable TextureSample_TextureCube_coordinate;
 extern Function TextureSample_TextureCube;
 
-/// textureSample with TextureCube, Float32x3
+/// textureSample with SampledTextureCube, Float32x3
 extern Variable SampledTextureSample_TextureCube_texture;
 extern Variable SampledTextureSample_TextureCube_coordinate;
 extern Function SampledTextureSample_TextureCube;
@@ -6227,7 +6227,7 @@ extern Variable TextureSample_Texture1DArray_sampler;
 extern Variable TextureSample_Texture1DArray_coordinate;
 extern Function TextureSample_Texture1DArray;
 
-/// textureSample with Texture1DArray, Float32x2
+/// textureSample with SampledTexture1DArray, Float32x2
 extern Variable SampledTextureSample_Texture1DArray_texture;
 extern Variable SampledTextureSample_Texture1DArray_coordinate;
 extern Function SampledTextureSample_Texture1DArray;
@@ -6238,7 +6238,7 @@ extern Variable TextureSample_Texture2DArray_sampler;
 extern Variable TextureSample_Texture2DArray_coordinate;
 extern Function TextureSample_Texture2DArray;
 
-/// textureSample with Texture2DArray, Float32x3
+/// textureSample with SampledTexture2DArray, Float32x3
 extern Variable SampledTextureSample_Texture2DArray_texture;
 extern Variable SampledTextureSample_Texture2DArray_coordinate;
 extern Function SampledTextureSample_Texture2DArray;
@@ -6249,7 +6249,7 @@ extern Variable TextureSample_TextureCubeArray_sampler;
 extern Variable TextureSample_TextureCubeArray_coordinate;
 extern Function TextureSample_TextureCubeArray;
 
-/// textureSample with TextureCubeArray, Float32x4
+/// textureSample with SampledTextureCubeArray, Float32x4
 extern Variable SampledTextureSample_TextureCubeArray_texture;
 extern Variable SampledTextureSample_TextureCubeArray_coordinate;
 extern Function SampledTextureSample_TextureCubeArray;
@@ -6261,7 +6261,7 @@ extern Variable TextureSampleOffset_Texture1D_coordinate;
 extern Variable TextureSampleOffset_Texture1D_offset;
 extern Function TextureSampleOffset_Texture1D;
 
-/// textureSampleOffset with Texture1D, Float32, Float32
+/// textureSampleOffset with SampledTexture1D, Float32, Float32
 extern Variable SampledTextureSampleOffset_Texture1D_texture;
 extern Variable SampledTextureSampleOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleOffset_Texture1D_offset;
@@ -6274,7 +6274,7 @@ extern Variable TextureSampleOffset_Texture2D_coordinate;
 extern Variable TextureSampleOffset_Texture2D_offset;
 extern Function TextureSampleOffset_Texture2D;
 
-/// textureSampleOffset with Texture2D, Float32x2, Float32x2
+/// textureSampleOffset with SampledTexture2D, Float32x2, Float32x2
 extern Variable SampledTextureSampleOffset_Texture2D_texture;
 extern Variable SampledTextureSampleOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleOffset_Texture2D_offset;
@@ -6287,7 +6287,7 @@ extern Variable TextureSampleOffset_Texture3D_coordinate;
 extern Variable TextureSampleOffset_Texture3D_offset;
 extern Function TextureSampleOffset_Texture3D;
 
-/// textureSampleOffset with Texture3D, Float32x3, Float32x3
+/// textureSampleOffset with SampledTexture3D, Float32x3, Float32x3
 extern Variable SampledTextureSampleOffset_Texture3D_texture;
 extern Variable SampledTextureSampleOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleOffset_Texture3D_offset;
@@ -6300,7 +6300,7 @@ extern Variable TextureSampleOffset_Texture1DArray_coordinate;
 extern Variable TextureSampleOffset_Texture1DArray_offset;
 extern Function TextureSampleOffset_Texture1DArray;
 
-/// textureSampleOffset with Texture1DArray, Float32x2, Float32x2
+/// textureSampleOffset with SampledTexture1DArray, Float32x2, Float32x2
 extern Variable SampledTextureSampleOffset_Texture1DArray_texture;
 extern Variable SampledTextureSampleOffset_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleOffset_Texture1DArray_offset;
@@ -6313,7 +6313,7 @@ extern Variable TextureSampleOffset_Texture2DArray_coordinate;
 extern Variable TextureSampleOffset_Texture2DArray_offset;
 extern Function TextureSampleOffset_Texture2DArray;
 
-/// textureSampleOffset with Texture2DArray, Float32x3, Float32x3
+/// textureSampleOffset with SampledTexture2DArray, Float32x3, Float32x3
 extern Variable SampledTextureSampleOffset_Texture2DArray_texture;
 extern Variable SampledTextureSampleOffset_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleOffset_Texture2DArray_offset;
@@ -6326,7 +6326,7 @@ extern Variable TextureSampleProj_Texture1D_coordinate;
 extern Variable TextureSampleProj_Texture1D_proj;
 extern Function TextureSampleProj_Texture1D;
 
-/// textureSampleProj with Texture1D, Float32, Float32
+/// textureSampleProj with SampledTexture1D, Float32, Float32
 extern Variable SampledTextureSampleProj_Texture1D_texture;
 extern Variable SampledTextureSampleProj_Texture1D_coordinate;
 extern Variable SampledTextureSampleProj_Texture1D_proj;
@@ -6339,7 +6339,7 @@ extern Variable TextureSampleProj_Texture2D_coordinate;
 extern Variable TextureSampleProj_Texture2D_proj;
 extern Function TextureSampleProj_Texture2D;
 
-/// textureSampleProj with Texture2D, Float32x2, Float32
+/// textureSampleProj with SampledTexture2D, Float32x2, Float32
 extern Variable SampledTextureSampleProj_Texture2D_texture;
 extern Variable SampledTextureSampleProj_Texture2D_coordinate;
 extern Variable SampledTextureSampleProj_Texture2D_proj;
@@ -6352,7 +6352,7 @@ extern Variable TextureSampleProj_Texture3D_coordinate;
 extern Variable TextureSampleProj_Texture3D_proj;
 extern Function TextureSampleProj_Texture3D;
 
-/// textureSampleProj with Texture3D, Float32x3, Float32
+/// textureSampleProj with SampledTexture3D, Float32x3, Float32
 extern Variable SampledTextureSampleProj_Texture3D_texture;
 extern Variable SampledTextureSampleProj_Texture3D_coordinate;
 extern Variable SampledTextureSampleProj_Texture3D_proj;
@@ -6366,7 +6366,7 @@ extern Variable TextureSampleProjOffset_Texture1D_proj;
 extern Variable TextureSampleProjOffset_Texture1D_offset;
 extern Function TextureSampleProjOffset_Texture1D;
 
-/// textureSampleProjOffset with Texture1D, Float32, Float32, Float32
+/// textureSampleProjOffset with SampledTexture1D, Float32, Float32, Float32
 extern Variable SampledTextureSampleProjOffset_Texture1D_texture;
 extern Variable SampledTextureSampleProjOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleProjOffset_Texture1D_proj;
@@ -6381,7 +6381,7 @@ extern Variable TextureSampleProjOffset_Texture2D_proj;
 extern Variable TextureSampleProjOffset_Texture2D_offset;
 extern Function TextureSampleProjOffset_Texture2D;
 
-/// textureSampleProjOffset with Texture2D, Float32x2, Float32, Float32x2
+/// textureSampleProjOffset with SampledTexture2D, Float32x2, Float32, Float32x2
 extern Variable SampledTextureSampleProjOffset_Texture2D_texture;
 extern Variable SampledTextureSampleProjOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleProjOffset_Texture2D_proj;
@@ -6396,7 +6396,7 @@ extern Variable TextureSampleProjOffset_Texture3D_proj;
 extern Variable TextureSampleProjOffset_Texture3D_offset;
 extern Function TextureSampleProjOffset_Texture3D;
 
-/// textureSampleProjOffset with Texture3D, Float32x3, Float32, Float32x3
+/// textureSampleProjOffset with SampledTexture3D, Float32x3, Float32, Float32x3
 extern Variable SampledTextureSampleProjOffset_Texture3D_texture;
 extern Variable SampledTextureSampleProjOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleProjOffset_Texture3D_proj;
@@ -6410,7 +6410,7 @@ extern Variable TextureSampleCompare_Texture1D_coordinate;
 extern Variable TextureSampleCompare_Texture1D_compare;
 extern Function TextureSampleCompare_Texture1D;
 
-/// textureSampleCompare with Texture1D, Float32, Float32
+/// textureSampleCompare with SampledTexture1D, Float32, Float32
 extern Variable SampledTextureSampleCompare_Texture1D_texture;
 extern Variable SampledTextureSampleCompare_Texture1D_coordinate;
 extern Variable SampledTextureSampleCompare_Texture1D_compare;
@@ -6423,7 +6423,7 @@ extern Variable TextureSampleCompare_Texture2D_coordinate;
 extern Variable TextureSampleCompare_Texture2D_compare;
 extern Function TextureSampleCompare_Texture2D;
 
-/// textureSampleCompare with Texture2D, Float32x2, Float32
+/// textureSampleCompare with SampledTexture2D, Float32x2, Float32
 extern Variable SampledTextureSampleCompare_Texture2D_texture;
 extern Variable SampledTextureSampleCompare_Texture2D_coordinate;
 extern Variable SampledTextureSampleCompare_Texture2D_compare;
@@ -6436,7 +6436,7 @@ extern Variable TextureSampleCompare_Texture3D_coordinate;
 extern Variable TextureSampleCompare_Texture3D_compare;
 extern Function TextureSampleCompare_Texture3D;
 
-/// textureSampleCompare with Texture3D, Float32x3, Float32
+/// textureSampleCompare with SampledTexture3D, Float32x3, Float32
 extern Variable SampledTextureSampleCompare_Texture3D_texture;
 extern Variable SampledTextureSampleCompare_Texture3D_coordinate;
 extern Variable SampledTextureSampleCompare_Texture3D_compare;
@@ -6449,7 +6449,7 @@ extern Variable TextureSampleCompare_Texture1DArray_coordinate;
 extern Variable TextureSampleCompare_Texture1DArray_compare;
 extern Function TextureSampleCompare_Texture1DArray;
 
-/// textureSampleCompare with Texture1DArray, Float32x2, Float32
+/// textureSampleCompare with SampledTexture1DArray, Float32x2, Float32
 extern Variable SampledTextureSampleCompare_Texture1DArray_texture;
 extern Variable SampledTextureSampleCompare_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleCompare_Texture1DArray_compare;
@@ -6462,7 +6462,7 @@ extern Variable TextureSampleCompare_Texture2DArray_coordinate;
 extern Variable TextureSampleCompare_Texture2DArray_compare;
 extern Function TextureSampleCompare_Texture2DArray;
 
-/// textureSampleCompare with Texture2DArray, Float32x3, Float32
+/// textureSampleCompare with SampledTexture2DArray, Float32x3, Float32
 extern Variable SampledTextureSampleCompare_Texture2DArray_texture;
 extern Variable SampledTextureSampleCompare_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleCompare_Texture2DArray_compare;
@@ -6476,7 +6476,7 @@ extern Variable TextureSampleCompareOffset_Texture1D_compare;
 extern Variable TextureSampleCompareOffset_Texture1D_offset;
 extern Function TextureSampleCompareOffset_Texture1D;
 
-/// textureSampleCompareOffset with Texture1D, Float32, Float32, Float32
+/// textureSampleCompareOffset with SampledTexture1D, Float32, Float32, Float32
 extern Variable SampledTextureSampleCompareOffset_Texture1D_texture;
 extern Variable SampledTextureSampleCompareOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleCompareOffset_Texture1D_compare;
@@ -6491,7 +6491,7 @@ extern Variable TextureSampleCompareOffset_Texture2D_compare;
 extern Variable TextureSampleCompareOffset_Texture2D_offset;
 extern Function TextureSampleCompareOffset_Texture2D;
 
-/// textureSampleCompareOffset with Texture2D, Float32x2, Float32, Float32x2
+/// textureSampleCompareOffset with SampledTexture2D, Float32x2, Float32, Float32x2
 extern Variable SampledTextureSampleCompareOffset_Texture2D_texture;
 extern Variable SampledTextureSampleCompareOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleCompareOffset_Texture2D_compare;
@@ -6506,7 +6506,7 @@ extern Variable TextureSampleCompareOffset_Texture3D_compare;
 extern Variable TextureSampleCompareOffset_Texture3D_offset;
 extern Function TextureSampleCompareOffset_Texture3D;
 
-/// textureSampleCompareOffset with Texture3D, Float32x3, Float32, Float32x3
+/// textureSampleCompareOffset with SampledTexture3D, Float32x3, Float32, Float32x3
 extern Variable SampledTextureSampleCompareOffset_Texture3D_texture;
 extern Variable SampledTextureSampleCompareOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleCompareOffset_Texture3D_compare;
@@ -6521,7 +6521,7 @@ extern Variable TextureSampleCompareOffset_Texture1DArray_compare;
 extern Variable TextureSampleCompareOffset_Texture1DArray_offset;
 extern Function TextureSampleCompareOffset_Texture1DArray;
 
-/// textureSampleCompareOffset with Texture1DArray, Float32x2, Float32, Float32x2
+/// textureSampleCompareOffset with SampledTexture1DArray, Float32x2, Float32, Float32x2
 extern Variable SampledTextureSampleCompareOffset_Texture1DArray_texture;
 extern Variable SampledTextureSampleCompareOffset_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleCompareOffset_Texture1DArray_compare;
@@ -6536,7 +6536,7 @@ extern Variable TextureSampleCompareOffset_Texture2DArray_compare;
 extern Variable TextureSampleCompareOffset_Texture2DArray_offset;
 extern Function TextureSampleCompareOffset_Texture2DArray;
 
-/// textureSampleCompareOffset with Texture2DArray, Float32x3, Float32, Float32x3
+/// textureSampleCompareOffset with SampledTexture2DArray, Float32x3, Float32, Float32x3
 extern Variable SampledTextureSampleCompareOffset_Texture2DArray_texture;
 extern Variable SampledTextureSampleCompareOffset_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleCompareOffset_Texture2DArray_compare;
@@ -6551,7 +6551,7 @@ extern Variable TextureSampleProjCompare_Texture1D_proj;
 extern Variable TextureSampleProjCompare_Texture1D_compare;
 extern Function TextureSampleProjCompare_Texture1D;
 
-/// textureSampleProjCompare with Texture1D, Float32, Float32, Float32
+/// textureSampleProjCompare with SampledTexture1D, Float32, Float32, Float32
 extern Variable SampledTextureSampleProjCompare_Texture1D_texture;
 extern Variable SampledTextureSampleProjCompare_Texture1D_coordinate;
 extern Variable SampledTextureSampleProjCompare_Texture1D_proj;
@@ -6566,7 +6566,7 @@ extern Variable TextureSampleProjCompare_Texture2D_proj;
 extern Variable TextureSampleProjCompare_Texture2D_compare;
 extern Function TextureSampleProjCompare_Texture2D;
 
-/// textureSampleProjCompare with Texture2D, Float32x2, Float32, Float32
+/// textureSampleProjCompare with SampledTexture2D, Float32x2, Float32, Float32
 extern Variable SampledTextureSampleProjCompare_Texture2D_texture;
 extern Variable SampledTextureSampleProjCompare_Texture2D_coordinate;
 extern Variable SampledTextureSampleProjCompare_Texture2D_proj;
@@ -6581,7 +6581,7 @@ extern Variable TextureSampleProjCompare_Texture3D_proj;
 extern Variable TextureSampleProjCompare_Texture3D_compare;
 extern Function TextureSampleProjCompare_Texture3D;
 
-/// textureSampleProjCompare with Texture3D, Float32x3, Float32, Float32
+/// textureSampleProjCompare with SampledTexture3D, Float32x3, Float32, Float32
 extern Variable SampledTextureSampleProjCompare_Texture3D_texture;
 extern Variable SampledTextureSampleProjCompare_Texture3D_coordinate;
 extern Variable SampledTextureSampleProjCompare_Texture3D_proj;
@@ -6597,7 +6597,7 @@ extern Variable TextureSampleProjCompareOffset_Texture1D_compare;
 extern Variable TextureSampleProjCompareOffset_Texture1D_offset;
 extern Function TextureSampleProjCompareOffset_Texture1D;
 
-/// textureSampleProjCompareOffset with Texture1D, Float32, Float32, Float32, Float32
+/// textureSampleProjCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleProjCompareOffset_Texture1D_texture;
 extern Variable SampledTextureSampleProjCompareOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleProjCompareOffset_Texture1D_proj;
@@ -6614,7 +6614,7 @@ extern Variable TextureSampleProjCompareOffset_Texture2D_compare;
 extern Variable TextureSampleProjCompareOffset_Texture2D_offset;
 extern Function TextureSampleProjCompareOffset_Texture2D;
 
-/// textureSampleProjCompareOffset with Texture2D, Float32x2, Float32, Float32, Float32x2
+/// textureSampleProjCompareOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
 extern Variable SampledTextureSampleProjCompareOffset_Texture2D_texture;
 extern Variable SampledTextureSampleProjCompareOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleProjCompareOffset_Texture2D_proj;
@@ -6631,7 +6631,7 @@ extern Variable TextureSampleProjCompareOffset_Texture3D_compare;
 extern Variable TextureSampleProjCompareOffset_Texture3D_offset;
 extern Function TextureSampleProjCompareOffset_Texture3D;
 
-/// textureSampleProjCompareOffset with Texture3D, Float32x3, Float32, Float32, Float32x3
+/// textureSampleProjCompareOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
 extern Variable SampledTextureSampleProjCompareOffset_Texture3D_texture;
 extern Variable SampledTextureSampleProjCompareOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleProjCompareOffset_Texture3D_proj;
@@ -6646,7 +6646,7 @@ extern Variable TextureSampleLod_Texture1D_coordinate;
 extern Variable TextureSampleLod_Texture1D_lod;
 extern Function TextureSampleLod_Texture1D;
 
-/// textureSampleLod with Texture1D, Float32, Float32
+/// textureSampleLod with SampledTexture1D, Float32, Float32
 extern Variable SampledTextureSampleLod_Texture1D_texture;
 extern Variable SampledTextureSampleLod_Texture1D_coordinate;
 extern Variable SampledTextureSampleLod_Texture1D_lod;
@@ -6659,7 +6659,7 @@ extern Variable TextureSampleLod_Texture2D_coordinate;
 extern Variable TextureSampleLod_Texture2D_lod;
 extern Function TextureSampleLod_Texture2D;
 
-/// textureSampleLod with Texture2D, Float32x2, Float32
+/// textureSampleLod with SampledTexture2D, Float32x2, Float32
 extern Variable SampledTextureSampleLod_Texture2D_texture;
 extern Variable SampledTextureSampleLod_Texture2D_coordinate;
 extern Variable SampledTextureSampleLod_Texture2D_lod;
@@ -6672,7 +6672,7 @@ extern Variable TextureSampleLod_Texture3D_coordinate;
 extern Variable TextureSampleLod_Texture3D_lod;
 extern Function TextureSampleLod_Texture3D;
 
-/// textureSampleLod with Texture3D, Float32x3, Float32
+/// textureSampleLod with SampledTexture3D, Float32x3, Float32
 extern Variable SampledTextureSampleLod_Texture3D_texture;
 extern Variable SampledTextureSampleLod_Texture3D_coordinate;
 extern Variable SampledTextureSampleLod_Texture3D_lod;
@@ -6685,7 +6685,7 @@ extern Variable TextureSampleLod_TextureCube_coordinate;
 extern Variable TextureSampleLod_TextureCube_lod;
 extern Function TextureSampleLod_TextureCube;
 
-/// textureSampleLod with TextureCube, Float32x3, Float32
+/// textureSampleLod with SampledTextureCube, Float32x3, Float32
 extern Variable SampledTextureSampleLod_TextureCube_texture;
 extern Variable SampledTextureSampleLod_TextureCube_coordinate;
 extern Variable SampledTextureSampleLod_TextureCube_lod;
@@ -6698,7 +6698,7 @@ extern Variable TextureSampleLod_Texture1DArray_coordinate;
 extern Variable TextureSampleLod_Texture1DArray_lod;
 extern Function TextureSampleLod_Texture1DArray;
 
-/// textureSampleLod with Texture1DArray, Float32x2, Float32
+/// textureSampleLod with SampledTexture1DArray, Float32x2, Float32
 extern Variable SampledTextureSampleLod_Texture1DArray_texture;
 extern Variable SampledTextureSampleLod_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleLod_Texture1DArray_lod;
@@ -6711,7 +6711,7 @@ extern Variable TextureSampleLod_Texture2DArray_coordinate;
 extern Variable TextureSampleLod_Texture2DArray_lod;
 extern Function TextureSampleLod_Texture2DArray;
 
-/// textureSampleLod with Texture2DArray, Float32x3, Float32
+/// textureSampleLod with SampledTexture2DArray, Float32x3, Float32
 extern Variable SampledTextureSampleLod_Texture2DArray_texture;
 extern Variable SampledTextureSampleLod_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleLod_Texture2DArray_lod;
@@ -6724,7 +6724,7 @@ extern Variable TextureSampleLod_TextureCubeArray_coordinate;
 extern Variable TextureSampleLod_TextureCubeArray_lod;
 extern Function TextureSampleLod_TextureCubeArray;
 
-/// textureSampleLod with TextureCubeArray, Float32x4, Float32
+/// textureSampleLod with SampledTextureCubeArray, Float32x4, Float32
 extern Variable SampledTextureSampleLod_TextureCubeArray_texture;
 extern Variable SampledTextureSampleLod_TextureCubeArray_coordinate;
 extern Variable SampledTextureSampleLod_TextureCubeArray_lod;
@@ -6738,7 +6738,7 @@ extern Variable TextureSampleLodOffset_Texture1D_lod;
 extern Variable TextureSampleLodOffset_Texture1D_offset;
 extern Function TextureSampleLodOffset_Texture1D;
 
-/// textureSampleLodOffset with Texture1D, Float32, Float32, Float32
+/// textureSampleLodOffset with SampledTexture1D, Float32, Float32, Float32
 extern Variable SampledTextureSampleLodOffset_Texture1D_texture;
 extern Variable SampledTextureSampleLodOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleLodOffset_Texture1D_lod;
@@ -6753,7 +6753,7 @@ extern Variable TextureSampleLodOffset_Texture2D_lod;
 extern Variable TextureSampleLodOffset_Texture2D_offset;
 extern Function TextureSampleLodOffset_Texture2D;
 
-/// textureSampleLodOffset with Texture2D, Float32x2, Float32, Float32x2
+/// textureSampleLodOffset with SampledTexture2D, Float32x2, Float32, Float32x2
 extern Variable SampledTextureSampleLodOffset_Texture2D_texture;
 extern Variable SampledTextureSampleLodOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleLodOffset_Texture2D_lod;
@@ -6768,7 +6768,7 @@ extern Variable TextureSampleLodOffset_Texture3D_lod;
 extern Variable TextureSampleLodOffset_Texture3D_offset;
 extern Function TextureSampleLodOffset_Texture3D;
 
-/// textureSampleLodOffset with Texture3D, Float32x3, Float32, Float32x3
+/// textureSampleLodOffset with SampledTexture3D, Float32x3, Float32, Float32x3
 extern Variable SampledTextureSampleLodOffset_Texture3D_texture;
 extern Variable SampledTextureSampleLodOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleLodOffset_Texture3D_lod;
@@ -6783,7 +6783,7 @@ extern Variable TextureSampleLodOffset_Texture1DArray_lod;
 extern Variable TextureSampleLodOffset_Texture1DArray_offset;
 extern Function TextureSampleLodOffset_Texture1DArray;
 
-/// textureSampleLodOffset with Texture1DArray, Float32x2, Float32, Float32x2
+/// textureSampleLodOffset with SampledTexture1DArray, Float32x2, Float32, Float32x2
 extern Variable SampledTextureSampleLodOffset_Texture1DArray_texture;
 extern Variable SampledTextureSampleLodOffset_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleLodOffset_Texture1DArray_lod;
@@ -6798,7 +6798,7 @@ extern Variable TextureSampleLodOffset_Texture2DArray_lod;
 extern Variable TextureSampleLodOffset_Texture2DArray_offset;
 extern Function TextureSampleLodOffset_Texture2DArray;
 
-/// textureSampleLodOffset with Texture2DArray, Float32x3, Float32, Float32x3
+/// textureSampleLodOffset with SampledTexture2DArray, Float32x3, Float32, Float32x3
 extern Variable SampledTextureSampleLodOffset_Texture2DArray_texture;
 extern Variable SampledTextureSampleLodOffset_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleLodOffset_Texture2DArray_lod;
@@ -6813,7 +6813,7 @@ extern Variable TextureSampleLodProj_Texture1D_lod;
 extern Variable TextureSampleLodProj_Texture1D_proj;
 extern Function TextureSampleLodProj_Texture1D;
 
-/// textureSampleLodProj with Texture1D, Float32, Float32, Float32
+/// textureSampleLodProj with SampledTexture1D, Float32, Float32, Float32
 extern Variable SampledTextureSampleLodProj_Texture1D_texture;
 extern Variable SampledTextureSampleLodProj_Texture1D_coordinate;
 extern Variable SampledTextureSampleLodProj_Texture1D_lod;
@@ -6828,7 +6828,7 @@ extern Variable TextureSampleLodProj_Texture2D_lod;
 extern Variable TextureSampleLodProj_Texture2D_proj;
 extern Function TextureSampleLodProj_Texture2D;
 
-/// textureSampleLodProj with Texture2D, Float32x2, Float32, Float32
+/// textureSampleLodProj with SampledTexture2D, Float32x2, Float32, Float32
 extern Variable SampledTextureSampleLodProj_Texture2D_texture;
 extern Variable SampledTextureSampleLodProj_Texture2D_coordinate;
 extern Variable SampledTextureSampleLodProj_Texture2D_lod;
@@ -6843,7 +6843,7 @@ extern Variable TextureSampleLodProj_Texture3D_lod;
 extern Variable TextureSampleLodProj_Texture3D_proj;
 extern Function TextureSampleLodProj_Texture3D;
 
-/// textureSampleLodProj with Texture3D, Float32x3, Float32, Float32
+/// textureSampleLodProj with SampledTexture3D, Float32x3, Float32, Float32
 extern Variable SampledTextureSampleLodProj_Texture3D_texture;
 extern Variable SampledTextureSampleLodProj_Texture3D_coordinate;
 extern Variable SampledTextureSampleLodProj_Texture3D_lod;
@@ -6859,7 +6859,7 @@ extern Variable TextureSampleLodProjOffset_Texture1D_proj;
 extern Variable TextureSampleLodProjOffset_Texture1D_offset;
 extern Function TextureSampleLodProjOffset_Texture1D;
 
-/// textureSampleLodProjOffset with Texture1D, Float32, Float32, Float32, Float32
+/// textureSampleLodProjOffset with SampledTexture1D, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleLodProjOffset_Texture1D_texture;
 extern Variable SampledTextureSampleLodProjOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleLodProjOffset_Texture1D_lod;
@@ -6876,7 +6876,7 @@ extern Variable TextureSampleLodProjOffset_Texture2D_proj;
 extern Variable TextureSampleLodProjOffset_Texture2D_offset;
 extern Function TextureSampleLodProjOffset_Texture2D;
 
-/// textureSampleLodProjOffset with Texture2D, Float32x2, Float32, Float32, Float32x2
+/// textureSampleLodProjOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
 extern Variable SampledTextureSampleLodProjOffset_Texture2D_texture;
 extern Variable SampledTextureSampleLodProjOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleLodProjOffset_Texture2D_lod;
@@ -6893,7 +6893,7 @@ extern Variable TextureSampleLodProjOffset_Texture3D_proj;
 extern Variable TextureSampleLodProjOffset_Texture3D_offset;
 extern Function TextureSampleLodProjOffset_Texture3D;
 
-/// textureSampleLodProjOffset with Texture3D, Float32x3, Float32, Float32, Float32x3
+/// textureSampleLodProjOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
 extern Variable SampledTextureSampleLodProjOffset_Texture3D_texture;
 extern Variable SampledTextureSampleLodProjOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleLodProjOffset_Texture3D_lod;
@@ -6909,7 +6909,7 @@ extern Variable TextureSampleLodCompare_Texture1D_lod;
 extern Variable TextureSampleLodCompare_Texture1D_compare;
 extern Function TextureSampleLodCompare_Texture1D;
 
-/// textureSampleLodCompare with Texture1D, Float32, Float32, Float32
+/// textureSampleLodCompare with SampledTexture1D, Float32, Float32, Float32
 extern Variable SampledTextureSampleLodCompare_Texture1D_texture;
 extern Variable SampledTextureSampleLodCompare_Texture1D_coordinate;
 extern Variable SampledTextureSampleLodCompare_Texture1D_lod;
@@ -6924,7 +6924,7 @@ extern Variable TextureSampleLodCompare_Texture2D_lod;
 extern Variable TextureSampleLodCompare_Texture2D_compare;
 extern Function TextureSampleLodCompare_Texture2D;
 
-/// textureSampleLodCompare with Texture2D, Float32x2, Float32, Float32
+/// textureSampleLodCompare with SampledTexture2D, Float32x2, Float32, Float32
 extern Variable SampledTextureSampleLodCompare_Texture2D_texture;
 extern Variable SampledTextureSampleLodCompare_Texture2D_coordinate;
 extern Variable SampledTextureSampleLodCompare_Texture2D_lod;
@@ -6939,7 +6939,7 @@ extern Variable TextureSampleLodCompare_Texture3D_lod;
 extern Variable TextureSampleLodCompare_Texture3D_compare;
 extern Function TextureSampleLodCompare_Texture3D;
 
-/// textureSampleLodCompare with Texture3D, Float32x3, Float32, Float32
+/// textureSampleLodCompare with SampledTexture3D, Float32x3, Float32, Float32
 extern Variable SampledTextureSampleLodCompare_Texture3D_texture;
 extern Variable SampledTextureSampleLodCompare_Texture3D_coordinate;
 extern Variable SampledTextureSampleLodCompare_Texture3D_lod;
@@ -6954,7 +6954,7 @@ extern Variable TextureSampleLodCompare_Texture1DArray_lod;
 extern Variable TextureSampleLodCompare_Texture1DArray_compare;
 extern Function TextureSampleLodCompare_Texture1DArray;
 
-/// textureSampleLodCompare with Texture1DArray, Float32x2, Float32, Float32
+/// textureSampleLodCompare with SampledTexture1DArray, Float32x2, Float32, Float32
 extern Variable SampledTextureSampleLodCompare_Texture1DArray_texture;
 extern Variable SampledTextureSampleLodCompare_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleLodCompare_Texture1DArray_lod;
@@ -6969,7 +6969,7 @@ extern Variable TextureSampleLodCompare_Texture2DArray_lod;
 extern Variable TextureSampleLodCompare_Texture2DArray_compare;
 extern Function TextureSampleLodCompare_Texture2DArray;
 
-/// textureSampleLodCompare with Texture2DArray, Float32x3, Float32, Float32
+/// textureSampleLodCompare with SampledTexture2DArray, Float32x3, Float32, Float32
 extern Variable SampledTextureSampleLodCompare_Texture2DArray_texture;
 extern Variable SampledTextureSampleLodCompare_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleLodCompare_Texture2DArray_lod;
@@ -6985,7 +6985,7 @@ extern Variable TextureSampleLodCompareOffset_Texture1D_compare;
 extern Variable TextureSampleLodCompareOffset_Texture1D_offset;
 extern Function TextureSampleLodCompareOffset_Texture1D;
 
-/// textureSampleLodCompareOffset with Texture1D, Float32, Float32, Float32, Float32
+/// textureSampleLodCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleLodCompareOffset_Texture1D_texture;
 extern Variable SampledTextureSampleLodCompareOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleLodCompareOffset_Texture1D_lod;
@@ -7002,7 +7002,7 @@ extern Variable TextureSampleLodCompareOffset_Texture2D_compare;
 extern Variable TextureSampleLodCompareOffset_Texture2D_offset;
 extern Function TextureSampleLodCompareOffset_Texture2D;
 
-/// textureSampleLodCompareOffset with Texture2D, Float32x2, Float32, Float32, Float32x2
+/// textureSampleLodCompareOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
 extern Variable SampledTextureSampleLodCompareOffset_Texture2D_texture;
 extern Variable SampledTextureSampleLodCompareOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleLodCompareOffset_Texture2D_lod;
@@ -7019,7 +7019,7 @@ extern Variable TextureSampleLodCompareOffset_Texture3D_compare;
 extern Variable TextureSampleLodCompareOffset_Texture3D_offset;
 extern Function TextureSampleLodCompareOffset_Texture3D;
 
-/// textureSampleLodCompareOffset with Texture3D, Float32x3, Float32, Float32, Float32x3
+/// textureSampleLodCompareOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
 extern Variable SampledTextureSampleLodCompareOffset_Texture3D_texture;
 extern Variable SampledTextureSampleLodCompareOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleLodCompareOffset_Texture3D_lod;
@@ -7036,7 +7036,7 @@ extern Variable TextureSampleLodCompareOffset_Texture1DArray_compare;
 extern Variable TextureSampleLodCompareOffset_Texture1DArray_offset;
 extern Function TextureSampleLodCompareOffset_Texture1DArray;
 
-/// textureSampleLodCompareOffset with Texture1DArray, Float32x2, Float32, Float32, Float32x2
+/// textureSampleLodCompareOffset with SampledTexture1DArray, Float32x2, Float32, Float32, Float32x2
 extern Variable SampledTextureSampleLodCompareOffset_Texture1DArray_texture;
 extern Variable SampledTextureSampleLodCompareOffset_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleLodCompareOffset_Texture1DArray_lod;
@@ -7053,7 +7053,7 @@ extern Variable TextureSampleLodCompareOffset_Texture2DArray_compare;
 extern Variable TextureSampleLodCompareOffset_Texture2DArray_offset;
 extern Function TextureSampleLodCompareOffset_Texture2DArray;
 
-/// textureSampleLodCompareOffset with Texture2DArray, Float32x3, Float32, Float32, Float32x3
+/// textureSampleLodCompareOffset with SampledTexture2DArray, Float32x3, Float32, Float32, Float32x3
 extern Variable SampledTextureSampleLodCompareOffset_Texture2DArray_texture;
 extern Variable SampledTextureSampleLodCompareOffset_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleLodCompareOffset_Texture2DArray_lod;
@@ -7070,7 +7070,7 @@ extern Variable TextureSampleLodProjCompare_Texture1D_proj;
 extern Variable TextureSampleLodProjCompare_Texture1D_compare;
 extern Function TextureSampleLodProjCompare_Texture1D;
 
-/// textureSampleLodProjCompare with Texture1D, Float32, Float32, Float32, Float32
+/// textureSampleLodProjCompare with SampledTexture1D, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleLodProjCompare_Texture1D_texture;
 extern Variable SampledTextureSampleLodProjCompare_Texture1D_coordinate;
 extern Variable SampledTextureSampleLodProjCompare_Texture1D_lod;
@@ -7087,7 +7087,7 @@ extern Variable TextureSampleLodProjCompare_Texture2D_proj;
 extern Variable TextureSampleLodProjCompare_Texture2D_compare;
 extern Function TextureSampleLodProjCompare_Texture2D;
 
-/// textureSampleLodProjCompare with Texture2D, Float32x2, Float32, Float32, Float32
+/// textureSampleLodProjCompare with SampledTexture2D, Float32x2, Float32, Float32, Float32
 extern Variable SampledTextureSampleLodProjCompare_Texture2D_texture;
 extern Variable SampledTextureSampleLodProjCompare_Texture2D_coordinate;
 extern Variable SampledTextureSampleLodProjCompare_Texture2D_lod;
@@ -7104,7 +7104,7 @@ extern Variable TextureSampleLodProjCompare_Texture3D_proj;
 extern Variable TextureSampleLodProjCompare_Texture3D_compare;
 extern Function TextureSampleLodProjCompare_Texture3D;
 
-/// textureSampleLodProjCompare with Texture3D, Float32x3, Float32, Float32, Float32
+/// textureSampleLodProjCompare with SampledTexture3D, Float32x3, Float32, Float32, Float32
 extern Variable SampledTextureSampleLodProjCompare_Texture3D_texture;
 extern Variable SampledTextureSampleLodProjCompare_Texture3D_coordinate;
 extern Variable SampledTextureSampleLodProjCompare_Texture3D_lod;
@@ -7122,7 +7122,7 @@ extern Variable TextureSampleLodProjCompareOffset_Texture1D_compare;
 extern Variable TextureSampleLodProjCompareOffset_Texture1D_offset;
 extern Function TextureSampleLodProjCompareOffset_Texture1D;
 
-/// textureSampleLodProjCompareOffset with Texture1D, Float32, Float32, Float32, Float32, Float32
+/// textureSampleLodProjCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture1D_texture;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture1D_lod;
@@ -7141,7 +7141,7 @@ extern Variable TextureSampleLodProjCompareOffset_Texture2D_compare;
 extern Variable TextureSampleLodProjCompareOffset_Texture2D_offset;
 extern Function TextureSampleLodProjCompareOffset_Texture2D;
 
-/// textureSampleLodProjCompareOffset with Texture2D, Float32x2, Float32, Float32, Float32, Float32x2
+/// textureSampleLodProjCompareOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32, Float32x2
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture2D_texture;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture2D_lod;
@@ -7160,7 +7160,7 @@ extern Variable TextureSampleLodProjCompareOffset_Texture3D_compare;
 extern Variable TextureSampleLodProjCompareOffset_Texture3D_offset;
 extern Function TextureSampleLodProjCompareOffset_Texture3D;
 
-/// textureSampleLodProjCompareOffset with Texture3D, Float32x3, Float32, Float32, Float32, Float32x3
+/// textureSampleLodProjCompareOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32, Float32x3
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture3D_texture;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture3D_lod;
@@ -7177,7 +7177,7 @@ extern Variable TextureSampleGrad_Texture1D_grad_x;
 extern Variable TextureSampleGrad_Texture1D_grad_y;
 extern Function TextureSampleGrad_Texture1D;
 
-/// textureSampleGrad with Texture1D, Float32, Float32, Float32
+/// textureSampleGrad with SampledTexture1D, Float32, Float32, Float32
 extern Variable SampledTextureSampleGrad_Texture1D_texture;
 extern Variable SampledTextureSampleGrad_Texture1D_coordinate;
 extern Variable SampledTextureSampleGrad_Texture1D_grad_x;
@@ -7192,7 +7192,7 @@ extern Variable TextureSampleGrad_Texture2D_grad_x;
 extern Variable TextureSampleGrad_Texture2D_grad_y;
 extern Function TextureSampleGrad_Texture2D;
 
-/// textureSampleGrad with Texture2D, Float32x2, Float32x2, Float32x2
+/// textureSampleGrad with SampledTexture2D, Float32x2, Float32x2, Float32x2
 extern Variable SampledTextureSampleGrad_Texture2D_texture;
 extern Variable SampledTextureSampleGrad_Texture2D_coordinate;
 extern Variable SampledTextureSampleGrad_Texture2D_grad_x;
@@ -7207,7 +7207,7 @@ extern Variable TextureSampleGrad_Texture3D_grad_x;
 extern Variable TextureSampleGrad_Texture3D_grad_y;
 extern Function TextureSampleGrad_Texture3D;
 
-/// textureSampleGrad with Texture3D, Float32x3, Float32x3, Float32x3
+/// textureSampleGrad with SampledTexture3D, Float32x3, Float32x3, Float32x3
 extern Variable SampledTextureSampleGrad_Texture3D_texture;
 extern Variable SampledTextureSampleGrad_Texture3D_coordinate;
 extern Variable SampledTextureSampleGrad_Texture3D_grad_x;
@@ -7222,7 +7222,7 @@ extern Variable TextureSampleGrad_TextureCube_grad_x;
 extern Variable TextureSampleGrad_TextureCube_grad_y;
 extern Function TextureSampleGrad_TextureCube;
 
-/// textureSampleGrad with TextureCube, Float32x3, Float32x3, Float32x3
+/// textureSampleGrad with SampledTextureCube, Float32x3, Float32x3, Float32x3
 extern Variable SampledTextureSampleGrad_TextureCube_texture;
 extern Variable SampledTextureSampleGrad_TextureCube_coordinate;
 extern Variable SampledTextureSampleGrad_TextureCube_grad_x;
@@ -7237,7 +7237,7 @@ extern Variable TextureSampleGrad_Texture1DArray_grad_x;
 extern Variable TextureSampleGrad_Texture1DArray_grad_y;
 extern Function TextureSampleGrad_Texture1DArray;
 
-/// textureSampleGrad with Texture1DArray, Float32x2, Float32x2, Float32x2
+/// textureSampleGrad with SampledTexture1DArray, Float32x2, Float32x2, Float32x2
 extern Variable SampledTextureSampleGrad_Texture1DArray_texture;
 extern Variable SampledTextureSampleGrad_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleGrad_Texture1DArray_grad_x;
@@ -7252,7 +7252,7 @@ extern Variable TextureSampleGrad_Texture2DArray_grad_x;
 extern Variable TextureSampleGrad_Texture2DArray_grad_y;
 extern Function TextureSampleGrad_Texture2DArray;
 
-/// textureSampleGrad with Texture2DArray, Float32x3, Float32x3, Float32x3
+/// textureSampleGrad with SampledTexture2DArray, Float32x3, Float32x3, Float32x3
 extern Variable SampledTextureSampleGrad_Texture2DArray_texture;
 extern Variable SampledTextureSampleGrad_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleGrad_Texture2DArray_grad_x;
@@ -7267,7 +7267,7 @@ extern Variable TextureSampleGrad_TextureCubeArray_grad_x;
 extern Variable TextureSampleGrad_TextureCubeArray_grad_y;
 extern Function TextureSampleGrad_TextureCubeArray;
 
-/// textureSampleGrad with TextureCubeArray, Float32x4, Float32x4, Float32x4
+/// textureSampleGrad with SampledTextureCubeArray, Float32x4, Float32x4, Float32x4
 extern Variable SampledTextureSampleGrad_TextureCubeArray_texture;
 extern Variable SampledTextureSampleGrad_TextureCubeArray_coordinate;
 extern Variable SampledTextureSampleGrad_TextureCubeArray_grad_x;
@@ -7283,7 +7283,7 @@ extern Variable TextureSampleGradOffset_Texture1D_grad_y;
 extern Variable TextureSampleGradOffset_Texture1D_offset;
 extern Function TextureSampleGradOffset_Texture1D;
 
-/// textureSampleGradOffset with Texture1D, Float32, Float32, Float32, Float32
+/// textureSampleGradOffset with SampledTexture1D, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleGradOffset_Texture1D_texture;
 extern Variable SampledTextureSampleGradOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleGradOffset_Texture1D_grad_x;
@@ -7300,7 +7300,7 @@ extern Variable TextureSampleGradOffset_Texture2D_grad_y;
 extern Variable TextureSampleGradOffset_Texture2D_offset;
 extern Function TextureSampleGradOffset_Texture2D;
 
-/// textureSampleGradOffset with Texture2D, Float32x2, Float32x2, Float32x2, Float32x2
+/// textureSampleGradOffset with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32x2
 extern Variable SampledTextureSampleGradOffset_Texture2D_texture;
 extern Variable SampledTextureSampleGradOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleGradOffset_Texture2D_grad_x;
@@ -7317,7 +7317,7 @@ extern Variable TextureSampleGradOffset_Texture3D_grad_y;
 extern Variable TextureSampleGradOffset_Texture3D_offset;
 extern Function TextureSampleGradOffset_Texture3D;
 
-/// textureSampleGradOffset with Texture3D, Float32x3, Float32x3, Float32x3, Float32x3
+/// textureSampleGradOffset with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32x3
 extern Variable SampledTextureSampleGradOffset_Texture3D_texture;
 extern Variable SampledTextureSampleGradOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleGradOffset_Texture3D_grad_x;
@@ -7334,7 +7334,7 @@ extern Variable TextureSampleGradOffset_Texture1DArray_grad_y;
 extern Variable TextureSampleGradOffset_Texture1DArray_offset;
 extern Function TextureSampleGradOffset_Texture1DArray;
 
-/// textureSampleGradOffset with Texture1DArray, Float32x2, Float32x2, Float32x2, Float32x2
+/// textureSampleGradOffset with SampledTexture1DArray, Float32x2, Float32x2, Float32x2, Float32x2
 extern Variable SampledTextureSampleGradOffset_Texture1DArray_texture;
 extern Variable SampledTextureSampleGradOffset_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleGradOffset_Texture1DArray_grad_x;
@@ -7351,7 +7351,7 @@ extern Variable TextureSampleGradOffset_Texture2DArray_grad_y;
 extern Variable TextureSampleGradOffset_Texture2DArray_offset;
 extern Function TextureSampleGradOffset_Texture2DArray;
 
-/// textureSampleGradOffset with Texture2DArray, Float32x3, Float32x3, Float32x3, Float32x3
+/// textureSampleGradOffset with SampledTexture2DArray, Float32x3, Float32x3, Float32x3, Float32x3
 extern Variable SampledTextureSampleGradOffset_Texture2DArray_texture;
 extern Variable SampledTextureSampleGradOffset_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleGradOffset_Texture2DArray_grad_x;
@@ -7368,7 +7368,7 @@ extern Variable TextureSampleGradProj_Texture1D_grad_y;
 extern Variable TextureSampleGradProj_Texture1D_proj;
 extern Function TextureSampleGradProj_Texture1D;
 
-/// textureSampleGradProj with Texture1D, Float32, Float32, Float32, Float32
+/// textureSampleGradProj with SampledTexture1D, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleGradProj_Texture1D_texture;
 extern Variable SampledTextureSampleGradProj_Texture1D_coordinate;
 extern Variable SampledTextureSampleGradProj_Texture1D_grad_x;
@@ -7385,7 +7385,7 @@ extern Variable TextureSampleGradProj_Texture2D_grad_y;
 extern Variable TextureSampleGradProj_Texture2D_proj;
 extern Function TextureSampleGradProj_Texture2D;
 
-/// textureSampleGradProj with Texture2D, Float32x2, Float32x2, Float32x2, Float32
+/// textureSampleGradProj with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32
 extern Variable SampledTextureSampleGradProj_Texture2D_texture;
 extern Variable SampledTextureSampleGradProj_Texture2D_coordinate;
 extern Variable SampledTextureSampleGradProj_Texture2D_grad_x;
@@ -7402,7 +7402,7 @@ extern Variable TextureSampleGradProj_Texture3D_grad_y;
 extern Variable TextureSampleGradProj_Texture3D_proj;
 extern Function TextureSampleGradProj_Texture3D;
 
-/// textureSampleGradProj with Texture3D, Float32x3, Float32x3, Float32x3, Float32
+/// textureSampleGradProj with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32
 extern Variable SampledTextureSampleGradProj_Texture3D_texture;
 extern Variable SampledTextureSampleGradProj_Texture3D_coordinate;
 extern Variable SampledTextureSampleGradProj_Texture3D_grad_x;
@@ -7420,7 +7420,7 @@ extern Variable TextureSampleGradProjOffset_Texture1D_proj;
 extern Variable TextureSampleGradProjOffset_Texture1D_offset;
 extern Function TextureSampleGradProjOffset_Texture1D;
 
-/// textureSampleGradProjOffset with Texture1D, Float32, Float32, Float32, Float32, Float32
+/// textureSampleGradProjOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleGradProjOffset_Texture1D_texture;
 extern Variable SampledTextureSampleGradProjOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleGradProjOffset_Texture1D_grad_x;
@@ -7439,7 +7439,7 @@ extern Variable TextureSampleGradProjOffset_Texture2D_proj;
 extern Variable TextureSampleGradProjOffset_Texture2D_offset;
 extern Function TextureSampleGradProjOffset_Texture2D;
 
-/// textureSampleGradProjOffset with Texture2D, Float32x2, Float32x2, Float32x2, Float32, Float32x2
+/// textureSampleGradProjOffset with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32, Float32x2
 extern Variable SampledTextureSampleGradProjOffset_Texture2D_texture;
 extern Variable SampledTextureSampleGradProjOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleGradProjOffset_Texture2D_grad_x;
@@ -7458,7 +7458,7 @@ extern Variable TextureSampleGradProjOffset_Texture3D_proj;
 extern Variable TextureSampleGradProjOffset_Texture3D_offset;
 extern Function TextureSampleGradProjOffset_Texture3D;
 
-/// textureSampleGradProjOffset with Texture3D, Float32x3, Float32x3, Float32x3, Float32, Float32x3
+/// textureSampleGradProjOffset with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32, Float32x3
 extern Variable SampledTextureSampleGradProjOffset_Texture3D_texture;
 extern Variable SampledTextureSampleGradProjOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleGradProjOffset_Texture3D_grad_x;
@@ -7476,7 +7476,7 @@ extern Variable TextureSampleGradCompare_Texture1D_grad_y;
 extern Variable TextureSampleGradCompare_Texture1D_compare;
 extern Function TextureSampleGradCompare_Texture1D;
 
-/// textureSampleGradCompare with Texture1D, Float32, Float32, Float32, Float32
+/// textureSampleGradCompare with SampledTexture1D, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleGradCompare_Texture1D_texture;
 extern Variable SampledTextureSampleGradCompare_Texture1D_coordinate;
 extern Variable SampledTextureSampleGradCompare_Texture1D_grad_x;
@@ -7493,7 +7493,7 @@ extern Variable TextureSampleGradCompare_Texture2D_grad_y;
 extern Variable TextureSampleGradCompare_Texture2D_compare;
 extern Function TextureSampleGradCompare_Texture2D;
 
-/// textureSampleGradCompare with Texture2D, Float32x2, Float32x2, Float32x2, Float32
+/// textureSampleGradCompare with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32
 extern Variable SampledTextureSampleGradCompare_Texture2D_texture;
 extern Variable SampledTextureSampleGradCompare_Texture2D_coordinate;
 extern Variable SampledTextureSampleGradCompare_Texture2D_grad_x;
@@ -7510,7 +7510,7 @@ extern Variable TextureSampleGradCompare_Texture3D_grad_y;
 extern Variable TextureSampleGradCompare_Texture3D_compare;
 extern Function TextureSampleGradCompare_Texture3D;
 
-/// textureSampleGradCompare with Texture3D, Float32x3, Float32x3, Float32x3, Float32
+/// textureSampleGradCompare with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32
 extern Variable SampledTextureSampleGradCompare_Texture3D_texture;
 extern Variable SampledTextureSampleGradCompare_Texture3D_coordinate;
 extern Variable SampledTextureSampleGradCompare_Texture3D_grad_x;
@@ -7527,7 +7527,7 @@ extern Variable TextureSampleGradCompare_Texture1DArray_grad_y;
 extern Variable TextureSampleGradCompare_Texture1DArray_compare;
 extern Function TextureSampleGradCompare_Texture1DArray;
 
-/// textureSampleGradCompare with Texture1DArray, Float32x2, Float32x2, Float32x2, Float32
+/// textureSampleGradCompare with SampledTexture1DArray, Float32x2, Float32x2, Float32x2, Float32
 extern Variable SampledTextureSampleGradCompare_Texture1DArray_texture;
 extern Variable SampledTextureSampleGradCompare_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleGradCompare_Texture1DArray_grad_x;
@@ -7544,7 +7544,7 @@ extern Variable TextureSampleGradCompare_Texture2DArray_grad_y;
 extern Variable TextureSampleGradCompare_Texture2DArray_compare;
 extern Function TextureSampleGradCompare_Texture2DArray;
 
-/// textureSampleGradCompare with Texture2DArray, Float32x3, Float32x3, Float32x3, Float32
+/// textureSampleGradCompare with SampledTexture2DArray, Float32x3, Float32x3, Float32x3, Float32
 extern Variable SampledTextureSampleGradCompare_Texture2DArray_texture;
 extern Variable SampledTextureSampleGradCompare_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleGradCompare_Texture2DArray_grad_x;
@@ -7562,7 +7562,7 @@ extern Variable TextureSampleGradCompareOffset_Texture1D_compare;
 extern Variable TextureSampleGradCompareOffset_Texture1D_offset;
 extern Function TextureSampleGradCompareOffset_Texture1D;
 
-/// textureSampleGradCompareOffset with Texture1D, Float32, Float32, Float32, Float32, Float32
+/// textureSampleGradCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleGradCompareOffset_Texture1D_texture;
 extern Variable SampledTextureSampleGradCompareOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleGradCompareOffset_Texture1D_grad_x;
@@ -7581,7 +7581,7 @@ extern Variable TextureSampleGradCompareOffset_Texture2D_compare;
 extern Variable TextureSampleGradCompareOffset_Texture2D_offset;
 extern Function TextureSampleGradCompareOffset_Texture2D;
 
-/// textureSampleGradCompareOffset with Texture2D, Float32x2, Float32x2, Float32x2, Float32, Float32x2
+/// textureSampleGradCompareOffset with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32, Float32x2
 extern Variable SampledTextureSampleGradCompareOffset_Texture2D_texture;
 extern Variable SampledTextureSampleGradCompareOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleGradCompareOffset_Texture2D_grad_x;
@@ -7600,7 +7600,7 @@ extern Variable TextureSampleGradCompareOffset_Texture3D_compare;
 extern Variable TextureSampleGradCompareOffset_Texture3D_offset;
 extern Function TextureSampleGradCompareOffset_Texture3D;
 
-/// textureSampleGradCompareOffset with Texture3D, Float32x3, Float32x3, Float32x3, Float32, Float32x3
+/// textureSampleGradCompareOffset with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32, Float32x3
 extern Variable SampledTextureSampleGradCompareOffset_Texture3D_texture;
 extern Variable SampledTextureSampleGradCompareOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleGradCompareOffset_Texture3D_grad_x;
@@ -7619,7 +7619,7 @@ extern Variable TextureSampleGradCompareOffset_Texture1DArray_compare;
 extern Variable TextureSampleGradCompareOffset_Texture1DArray_offset;
 extern Function TextureSampleGradCompareOffset_Texture1DArray;
 
-/// textureSampleGradCompareOffset with Texture1DArray, Float32x2, Float32x2, Float32x2, Float32, Float32x2
+/// textureSampleGradCompareOffset with SampledTexture1DArray, Float32x2, Float32x2, Float32x2, Float32, Float32x2
 extern Variable SampledTextureSampleGradCompareOffset_Texture1DArray_texture;
 extern Variable SampledTextureSampleGradCompareOffset_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleGradCompareOffset_Texture1DArray_grad_x;
@@ -7638,7 +7638,7 @@ extern Variable TextureSampleGradCompareOffset_Texture2DArray_compare;
 extern Variable TextureSampleGradCompareOffset_Texture2DArray_offset;
 extern Function TextureSampleGradCompareOffset_Texture2DArray;
 
-/// textureSampleGradCompareOffset with Texture2DArray, Float32x3, Float32x3, Float32x3, Float32, Float32x3
+/// textureSampleGradCompareOffset with SampledTexture2DArray, Float32x3, Float32x3, Float32x3, Float32, Float32x3
 extern Variable SampledTextureSampleGradCompareOffset_Texture2DArray_texture;
 extern Variable SampledTextureSampleGradCompareOffset_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleGradCompareOffset_Texture2DArray_grad_x;
@@ -7657,7 +7657,7 @@ extern Variable TextureSampleGradProjCompare_Texture1D_proj;
 extern Variable TextureSampleGradProjCompare_Texture1D_compare;
 extern Function TextureSampleGradProjCompare_Texture1D;
 
-/// textureSampleGradProjCompare with Texture1D, Float32, Float32, Float32, Float32, Float32
+/// textureSampleGradProjCompare with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleGradProjCompare_Texture1D_texture;
 extern Variable SampledTextureSampleGradProjCompare_Texture1D_coordinate;
 extern Variable SampledTextureSampleGradProjCompare_Texture1D_grad_x;
@@ -7676,7 +7676,7 @@ extern Variable TextureSampleGradProjCompare_Texture2D_proj;
 extern Variable TextureSampleGradProjCompare_Texture2D_compare;
 extern Function TextureSampleGradProjCompare_Texture2D;
 
-/// textureSampleGradProjCompare with Texture2D, Float32x2, Float32x2, Float32x2, Float32, Float32
+/// textureSampleGradProjCompare with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32, Float32
 extern Variable SampledTextureSampleGradProjCompare_Texture2D_texture;
 extern Variable SampledTextureSampleGradProjCompare_Texture2D_coordinate;
 extern Variable SampledTextureSampleGradProjCompare_Texture2D_grad_x;
@@ -7695,7 +7695,7 @@ extern Variable TextureSampleGradProjCompare_Texture3D_proj;
 extern Variable TextureSampleGradProjCompare_Texture3D_compare;
 extern Function TextureSampleGradProjCompare_Texture3D;
 
-/// textureSampleGradProjCompare with Texture3D, Float32x3, Float32x3, Float32x3, Float32, Float32
+/// textureSampleGradProjCompare with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32, Float32
 extern Variable SampledTextureSampleGradProjCompare_Texture3D_texture;
 extern Variable SampledTextureSampleGradProjCompare_Texture3D_coordinate;
 extern Variable SampledTextureSampleGradProjCompare_Texture3D_grad_x;
@@ -7715,7 +7715,7 @@ extern Variable TextureSampleGradProjCompareOffset_Texture1D_compare;
 extern Variable TextureSampleGradProjCompareOffset_Texture1D_offset;
 extern Function TextureSampleGradProjCompareOffset_Texture1D;
 
-/// textureSampleGradProjCompareOffset with Texture1D, Float32, Float32, Float32, Float32, Float32, Float32
+/// textureSampleGradProjCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture1D_texture;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture1D_grad_x;
@@ -7736,7 +7736,7 @@ extern Variable TextureSampleGradProjCompareOffset_Texture2D_compare;
 extern Variable TextureSampleGradProjCompareOffset_Texture2D_offset;
 extern Function TextureSampleGradProjCompareOffset_Texture2D;
 
-/// textureSampleGradProjCompareOffset with Texture2D, Float32x2, Float32x2, Float32x2, Float32, Float32, Float32x2
+/// textureSampleGradProjCompareOffset with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32, Float32, Float32x2
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture2D_texture;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture2D_grad_x;
@@ -7757,7 +7757,7 @@ extern Variable TextureSampleGradProjCompareOffset_Texture3D_compare;
 extern Variable TextureSampleGradProjCompareOffset_Texture3D_offset;
 extern Function TextureSampleGradProjCompareOffset_Texture3D;
 
-/// textureSampleGradProjCompareOffset with Texture3D, Float32x3, Float32x3, Float32x3, Float32, Float32, Float32x3
+/// textureSampleGradProjCompareOffset with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32, Float32, Float32x3
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture3D_texture;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture3D_grad_x;
@@ -7774,7 +7774,7 @@ extern Variable TextureSampleBias_Texture1D_coordinate;
 extern Variable TextureSampleBias_Texture1D_bias;
 extern Function TextureSampleBias_Texture1D;
 
-/// textureSampleBias with Texture1D, Float32, Float32
+/// textureSampleBias with SampledTexture1D, Float32, Float32
 extern Variable SampledTextureSampleBias_Texture1D_texture;
 extern Variable SampledTextureSampleBias_Texture1D_coordinate;
 extern Variable SampledTextureSampleBias_Texture1D_bias;
@@ -7787,7 +7787,7 @@ extern Variable TextureSampleBias_Texture2D_coordinate;
 extern Variable TextureSampleBias_Texture2D_bias;
 extern Function TextureSampleBias_Texture2D;
 
-/// textureSampleBias with Texture2D, Float32x2, Float32
+/// textureSampleBias with SampledTexture2D, Float32x2, Float32
 extern Variable SampledTextureSampleBias_Texture2D_texture;
 extern Variable SampledTextureSampleBias_Texture2D_coordinate;
 extern Variable SampledTextureSampleBias_Texture2D_bias;
@@ -7800,7 +7800,7 @@ extern Variable TextureSampleBias_Texture3D_coordinate;
 extern Variable TextureSampleBias_Texture3D_bias;
 extern Function TextureSampleBias_Texture3D;
 
-/// textureSampleBias with Texture3D, Float32x3, Float32
+/// textureSampleBias with SampledTexture3D, Float32x3, Float32
 extern Variable SampledTextureSampleBias_Texture3D_texture;
 extern Variable SampledTextureSampleBias_Texture3D_coordinate;
 extern Variable SampledTextureSampleBias_Texture3D_bias;
@@ -7813,7 +7813,7 @@ extern Variable TextureSampleBias_TextureCube_coordinate;
 extern Variable TextureSampleBias_TextureCube_bias;
 extern Function TextureSampleBias_TextureCube;
 
-/// textureSampleBias with TextureCube, Float32x3, Float32
+/// textureSampleBias with SampledTextureCube, Float32x3, Float32
 extern Variable SampledTextureSampleBias_TextureCube_texture;
 extern Variable SampledTextureSampleBias_TextureCube_coordinate;
 extern Variable SampledTextureSampleBias_TextureCube_bias;
@@ -7826,7 +7826,7 @@ extern Variable TextureSampleBias_Texture1DArray_coordinate;
 extern Variable TextureSampleBias_Texture1DArray_bias;
 extern Function TextureSampleBias_Texture1DArray;
 
-/// textureSampleBias with Texture1DArray, Float32x2, Float32
+/// textureSampleBias with SampledTexture1DArray, Float32x2, Float32
 extern Variable SampledTextureSampleBias_Texture1DArray_texture;
 extern Variable SampledTextureSampleBias_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleBias_Texture1DArray_bias;
@@ -7839,7 +7839,7 @@ extern Variable TextureSampleBias_Texture2DArray_coordinate;
 extern Variable TextureSampleBias_Texture2DArray_bias;
 extern Function TextureSampleBias_Texture2DArray;
 
-/// textureSampleBias with Texture2DArray, Float32x3, Float32
+/// textureSampleBias with SampledTexture2DArray, Float32x3, Float32
 extern Variable SampledTextureSampleBias_Texture2DArray_texture;
 extern Variable SampledTextureSampleBias_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleBias_Texture2DArray_bias;
@@ -7852,7 +7852,7 @@ extern Variable TextureSampleBias_TextureCubeArray_coordinate;
 extern Variable TextureSampleBias_TextureCubeArray_bias;
 extern Function TextureSampleBias_TextureCubeArray;
 
-/// textureSampleBias with TextureCubeArray, Float32x4, Float32
+/// textureSampleBias with SampledTextureCubeArray, Float32x4, Float32
 extern Variable SampledTextureSampleBias_TextureCubeArray_texture;
 extern Variable SampledTextureSampleBias_TextureCubeArray_coordinate;
 extern Variable SampledTextureSampleBias_TextureCubeArray_bias;
@@ -7866,7 +7866,7 @@ extern Variable TextureSampleBiasOffset_Texture1D_bias;
 extern Variable TextureSampleBiasOffset_Texture1D_offset;
 extern Function TextureSampleBiasOffset_Texture1D;
 
-/// textureSampleBiasOffset with Texture1D, Float32, Float32, Float32
+/// textureSampleBiasOffset with SampledTexture1D, Float32, Float32, Float32
 extern Variable SampledTextureSampleBiasOffset_Texture1D_texture;
 extern Variable SampledTextureSampleBiasOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleBiasOffset_Texture1D_bias;
@@ -7881,7 +7881,7 @@ extern Variable TextureSampleBiasOffset_Texture2D_bias;
 extern Variable TextureSampleBiasOffset_Texture2D_offset;
 extern Function TextureSampleBiasOffset_Texture2D;
 
-/// textureSampleBiasOffset with Texture2D, Float32x2, Float32, Float32x2
+/// textureSampleBiasOffset with SampledTexture2D, Float32x2, Float32, Float32x2
 extern Variable SampledTextureSampleBiasOffset_Texture2D_texture;
 extern Variable SampledTextureSampleBiasOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleBiasOffset_Texture2D_bias;
@@ -7896,7 +7896,7 @@ extern Variable TextureSampleBiasOffset_Texture3D_bias;
 extern Variable TextureSampleBiasOffset_Texture3D_offset;
 extern Function TextureSampleBiasOffset_Texture3D;
 
-/// textureSampleBiasOffset with Texture3D, Float32x3, Float32, Float32x3
+/// textureSampleBiasOffset with SampledTexture3D, Float32x3, Float32, Float32x3
 extern Variable SampledTextureSampleBiasOffset_Texture3D_texture;
 extern Variable SampledTextureSampleBiasOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleBiasOffset_Texture3D_bias;
@@ -7911,7 +7911,7 @@ extern Variable TextureSampleBiasOffset_Texture1DArray_bias;
 extern Variable TextureSampleBiasOffset_Texture1DArray_offset;
 extern Function TextureSampleBiasOffset_Texture1DArray;
 
-/// textureSampleBiasOffset with Texture1DArray, Float32x2, Float32, Float32x2
+/// textureSampleBiasOffset with SampledTexture1DArray, Float32x2, Float32, Float32x2
 extern Variable SampledTextureSampleBiasOffset_Texture1DArray_texture;
 extern Variable SampledTextureSampleBiasOffset_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleBiasOffset_Texture1DArray_bias;
@@ -7926,7 +7926,7 @@ extern Variable TextureSampleBiasOffset_Texture2DArray_bias;
 extern Variable TextureSampleBiasOffset_Texture2DArray_offset;
 extern Function TextureSampleBiasOffset_Texture2DArray;
 
-/// textureSampleBiasOffset with Texture2DArray, Float32x3, Float32, Float32x3
+/// textureSampleBiasOffset with SampledTexture2DArray, Float32x3, Float32, Float32x3
 extern Variable SampledTextureSampleBiasOffset_Texture2DArray_texture;
 extern Variable SampledTextureSampleBiasOffset_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleBiasOffset_Texture2DArray_bias;
@@ -7941,7 +7941,7 @@ extern Variable TextureSampleBiasProj_Texture1D_bias;
 extern Variable TextureSampleBiasProj_Texture1D_proj;
 extern Function TextureSampleBiasProj_Texture1D;
 
-/// textureSampleBiasProj with Texture1D, Float32, Float32, Float32
+/// textureSampleBiasProj with SampledTexture1D, Float32, Float32, Float32
 extern Variable SampledTextureSampleBiasProj_Texture1D_texture;
 extern Variable SampledTextureSampleBiasProj_Texture1D_coordinate;
 extern Variable SampledTextureSampleBiasProj_Texture1D_bias;
@@ -7956,7 +7956,7 @@ extern Variable TextureSampleBiasProj_Texture2D_bias;
 extern Variable TextureSampleBiasProj_Texture2D_proj;
 extern Function TextureSampleBiasProj_Texture2D;
 
-/// textureSampleBiasProj with Texture2D, Float32x2, Float32, Float32
+/// textureSampleBiasProj with SampledTexture2D, Float32x2, Float32, Float32
 extern Variable SampledTextureSampleBiasProj_Texture2D_texture;
 extern Variable SampledTextureSampleBiasProj_Texture2D_coordinate;
 extern Variable SampledTextureSampleBiasProj_Texture2D_bias;
@@ -7971,7 +7971,7 @@ extern Variable TextureSampleBiasProj_Texture3D_bias;
 extern Variable TextureSampleBiasProj_Texture3D_proj;
 extern Function TextureSampleBiasProj_Texture3D;
 
-/// textureSampleBiasProj with Texture3D, Float32x3, Float32, Float32
+/// textureSampleBiasProj with SampledTexture3D, Float32x3, Float32, Float32
 extern Variable SampledTextureSampleBiasProj_Texture3D_texture;
 extern Variable SampledTextureSampleBiasProj_Texture3D_coordinate;
 extern Variable SampledTextureSampleBiasProj_Texture3D_bias;
@@ -7987,7 +7987,7 @@ extern Variable TextureSampleBiasProjOffset_Texture1D_proj;
 extern Variable TextureSampleBiasProjOffset_Texture1D_offset;
 extern Function TextureSampleBiasProjOffset_Texture1D;
 
-/// textureSampleBiasProjOffset with Texture1D, Float32, Float32, Float32, Float32
+/// textureSampleBiasProjOffset with SampledTexture1D, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleBiasProjOffset_Texture1D_texture;
 extern Variable SampledTextureSampleBiasProjOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleBiasProjOffset_Texture1D_bias;
@@ -8004,7 +8004,7 @@ extern Variable TextureSampleBiasProjOffset_Texture2D_proj;
 extern Variable TextureSampleBiasProjOffset_Texture2D_offset;
 extern Function TextureSampleBiasProjOffset_Texture2D;
 
-/// textureSampleBiasProjOffset with Texture2D, Float32x2, Float32, Float32, Float32x2
+/// textureSampleBiasProjOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
 extern Variable SampledTextureSampleBiasProjOffset_Texture2D_texture;
 extern Variable SampledTextureSampleBiasProjOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleBiasProjOffset_Texture2D_bias;
@@ -8021,7 +8021,7 @@ extern Variable TextureSampleBiasProjOffset_Texture3D_proj;
 extern Variable TextureSampleBiasProjOffset_Texture3D_offset;
 extern Function TextureSampleBiasProjOffset_Texture3D;
 
-/// textureSampleBiasProjOffset with Texture3D, Float32x3, Float32, Float32, Float32x3
+/// textureSampleBiasProjOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
 extern Variable SampledTextureSampleBiasProjOffset_Texture3D_texture;
 extern Variable SampledTextureSampleBiasProjOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleBiasProjOffset_Texture3D_bias;
@@ -8037,7 +8037,7 @@ extern Variable TextureSampleBiasCompare_Texture1D_bias;
 extern Variable TextureSampleBiasCompare_Texture1D_compare;
 extern Function TextureSampleBiasCompare_Texture1D;
 
-/// textureSampleBiasCompare with Texture1D, Float32, Float32, Float32
+/// textureSampleBiasCompare with SampledTexture1D, Float32, Float32, Float32
 extern Variable SampledTextureSampleBiasCompare_Texture1D_texture;
 extern Variable SampledTextureSampleBiasCompare_Texture1D_coordinate;
 extern Variable SampledTextureSampleBiasCompare_Texture1D_bias;
@@ -8052,7 +8052,7 @@ extern Variable TextureSampleBiasCompare_Texture2D_bias;
 extern Variable TextureSampleBiasCompare_Texture2D_compare;
 extern Function TextureSampleBiasCompare_Texture2D;
 
-/// textureSampleBiasCompare with Texture2D, Float32x2, Float32, Float32
+/// textureSampleBiasCompare with SampledTexture2D, Float32x2, Float32, Float32
 extern Variable SampledTextureSampleBiasCompare_Texture2D_texture;
 extern Variable SampledTextureSampleBiasCompare_Texture2D_coordinate;
 extern Variable SampledTextureSampleBiasCompare_Texture2D_bias;
@@ -8067,7 +8067,7 @@ extern Variable TextureSampleBiasCompare_Texture3D_bias;
 extern Variable TextureSampleBiasCompare_Texture3D_compare;
 extern Function TextureSampleBiasCompare_Texture3D;
 
-/// textureSampleBiasCompare with Texture3D, Float32x3, Float32, Float32
+/// textureSampleBiasCompare with SampledTexture3D, Float32x3, Float32, Float32
 extern Variable SampledTextureSampleBiasCompare_Texture3D_texture;
 extern Variable SampledTextureSampleBiasCompare_Texture3D_coordinate;
 extern Variable SampledTextureSampleBiasCompare_Texture3D_bias;
@@ -8082,7 +8082,7 @@ extern Variable TextureSampleBiasCompare_Texture1DArray_bias;
 extern Variable TextureSampleBiasCompare_Texture1DArray_compare;
 extern Function TextureSampleBiasCompare_Texture1DArray;
 
-/// textureSampleBiasCompare with Texture1DArray, Float32x2, Float32, Float32
+/// textureSampleBiasCompare with SampledTexture1DArray, Float32x2, Float32, Float32
 extern Variable SampledTextureSampleBiasCompare_Texture1DArray_texture;
 extern Variable SampledTextureSampleBiasCompare_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleBiasCompare_Texture1DArray_bias;
@@ -8097,7 +8097,7 @@ extern Variable TextureSampleBiasCompare_Texture2DArray_bias;
 extern Variable TextureSampleBiasCompare_Texture2DArray_compare;
 extern Function TextureSampleBiasCompare_Texture2DArray;
 
-/// textureSampleBiasCompare with Texture2DArray, Float32x3, Float32, Float32
+/// textureSampleBiasCompare with SampledTexture2DArray, Float32x3, Float32, Float32
 extern Variable SampledTextureSampleBiasCompare_Texture2DArray_texture;
 extern Variable SampledTextureSampleBiasCompare_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleBiasCompare_Texture2DArray_bias;
@@ -8113,7 +8113,7 @@ extern Variable TextureSampleBiasCompareOffset_Texture1D_compare;
 extern Variable TextureSampleBiasCompareOffset_Texture1D_offset;
 extern Function TextureSampleBiasCompareOffset_Texture1D;
 
-/// textureSampleBiasCompareOffset with Texture1D, Float32, Float32, Float32, Float32
+/// textureSampleBiasCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleBiasCompareOffset_Texture1D_texture;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture1D_bias;
@@ -8130,7 +8130,7 @@ extern Variable TextureSampleBiasCompareOffset_Texture2D_compare;
 extern Variable TextureSampleBiasCompareOffset_Texture2D_offset;
 extern Function TextureSampleBiasCompareOffset_Texture2D;
 
-/// textureSampleBiasCompareOffset with Texture2D, Float32x2, Float32, Float32, Float32x2
+/// textureSampleBiasCompareOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
 extern Variable SampledTextureSampleBiasCompareOffset_Texture2D_texture;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture2D_bias;
@@ -8147,7 +8147,7 @@ extern Variable TextureSampleBiasCompareOffset_Texture3D_compare;
 extern Variable TextureSampleBiasCompareOffset_Texture3D_offset;
 extern Function TextureSampleBiasCompareOffset_Texture3D;
 
-/// textureSampleBiasCompareOffset with Texture3D, Float32x3, Float32, Float32, Float32x3
+/// textureSampleBiasCompareOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
 extern Variable SampledTextureSampleBiasCompareOffset_Texture3D_texture;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture3D_bias;
@@ -8164,7 +8164,7 @@ extern Variable TextureSampleBiasCompareOffset_Texture1DArray_compare;
 extern Variable TextureSampleBiasCompareOffset_Texture1DArray_offset;
 extern Function TextureSampleBiasCompareOffset_Texture1DArray;
 
-/// textureSampleBiasCompareOffset with Texture1DArray, Float32x2, Float32, Float32, Float32x2
+/// textureSampleBiasCompareOffset with SampledTexture1DArray, Float32x2, Float32, Float32, Float32x2
 extern Variable SampledTextureSampleBiasCompareOffset_Texture1DArray_texture;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture1DArray_bias;
@@ -8181,7 +8181,7 @@ extern Variable TextureSampleBiasCompareOffset_Texture2DArray_compare;
 extern Variable TextureSampleBiasCompareOffset_Texture2DArray_offset;
 extern Function TextureSampleBiasCompareOffset_Texture2DArray;
 
-/// textureSampleBiasCompareOffset with Texture2DArray, Float32x3, Float32, Float32, Float32x3
+/// textureSampleBiasCompareOffset with SampledTexture2DArray, Float32x3, Float32, Float32, Float32x3
 extern Variable SampledTextureSampleBiasCompareOffset_Texture2DArray_texture;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture2DArray_bias;
@@ -8198,7 +8198,7 @@ extern Variable TextureSampleBiasProjCompare_Texture1D_proj;
 extern Variable TextureSampleBiasProjCompare_Texture1D_compare;
 extern Function TextureSampleBiasProjCompare_Texture1D;
 
-/// textureSampleBiasProjCompare with Texture1D, Float32, Float32, Float32, Float32
+/// textureSampleBiasProjCompare with SampledTexture1D, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleBiasProjCompare_Texture1D_texture;
 extern Variable SampledTextureSampleBiasProjCompare_Texture1D_coordinate;
 extern Variable SampledTextureSampleBiasProjCompare_Texture1D_bias;
@@ -8215,7 +8215,7 @@ extern Variable TextureSampleBiasProjCompare_Texture2D_proj;
 extern Variable TextureSampleBiasProjCompare_Texture2D_compare;
 extern Function TextureSampleBiasProjCompare_Texture2D;
 
-/// textureSampleBiasProjCompare with Texture2D, Float32x2, Float32, Float32, Float32
+/// textureSampleBiasProjCompare with SampledTexture2D, Float32x2, Float32, Float32, Float32
 extern Variable SampledTextureSampleBiasProjCompare_Texture2D_texture;
 extern Variable SampledTextureSampleBiasProjCompare_Texture2D_coordinate;
 extern Variable SampledTextureSampleBiasProjCompare_Texture2D_bias;
@@ -8232,7 +8232,7 @@ extern Variable TextureSampleBiasProjCompare_Texture3D_proj;
 extern Variable TextureSampleBiasProjCompare_Texture3D_compare;
 extern Function TextureSampleBiasProjCompare_Texture3D;
 
-/// textureSampleBiasProjCompare with Texture3D, Float32x3, Float32, Float32, Float32
+/// textureSampleBiasProjCompare with SampledTexture3D, Float32x3, Float32, Float32, Float32
 extern Variable SampledTextureSampleBiasProjCompare_Texture3D_texture;
 extern Variable SampledTextureSampleBiasProjCompare_Texture3D_coordinate;
 extern Variable SampledTextureSampleBiasProjCompare_Texture3D_bias;
@@ -8250,7 +8250,7 @@ extern Variable TextureSampleBiasProjCompareOffset_Texture1D_compare;
 extern Variable TextureSampleBiasProjCompareOffset_Texture1D_offset;
 extern Function TextureSampleBiasProjCompareOffset_Texture1D;
 
-/// textureSampleBiasProjCompareOffset with Texture1D, Float32, Float32, Float32, Float32, Float32
+/// textureSampleBiasProjCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture1D_texture;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture1D_bias;
@@ -8269,7 +8269,7 @@ extern Variable TextureSampleBiasProjCompareOffset_Texture2D_compare;
 extern Variable TextureSampleBiasProjCompareOffset_Texture2D_offset;
 extern Function TextureSampleBiasProjCompareOffset_Texture2D;
 
-/// textureSampleBiasProjCompareOffset with Texture2D, Float32x2, Float32, Float32, Float32, Float32x2
+/// textureSampleBiasProjCompareOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32, Float32x2
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture2D_texture;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture2D_bias;
@@ -8288,7 +8288,7 @@ extern Variable TextureSampleBiasProjCompareOffset_Texture3D_compare;
 extern Variable TextureSampleBiasProjCompareOffset_Texture3D_offset;
 extern Function TextureSampleBiasProjCompareOffset_Texture3D;
 
-/// textureSampleBiasProjCompareOffset with Texture3D, Float32x3, Float32, Float32, Float32, Float32x3
+/// textureSampleBiasProjCompareOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32, Float32x3
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_texture;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_bias;
@@ -8299,7 +8299,7 @@ extern Function SampledTextureSampleBiasProjCompareOffset_Texture3D;
 
 void SetupIntrinsics();
 
-inline constexpr StaticMap<ConstantString, Symbol*, 3309> DefaultIntrinsics = {
+inline constexpr StaticMap<ConstantString, Symbol*, 3318> DefaultIntrinsics = {
     std::pair{ "AddressMode", &AddressModeType } /* 0 */,
     std::pair{ "AddressMode(u32)", &AddressModeType.toUnderlyingType } /* 1 */,
     std::pair{ "BlendColorMask", &BlendColorMaskType } /* 2 */,
@@ -10550,14 +10550,14 @@ inline constexpr StaticMap<ConstantString, Symbol*, 3309> DefaultIntrinsics = {
     std::pair{ "textureGather", &SampledTextureGather_Texture2DArray } /* 2247 */,
     std::pair{ "textureGather", &TextureGather_TextureCubeArray } /* 2248 */,
     std::pair{ "textureGather", &SampledTextureGather_TextureCubeArray } /* 2249 */,
-    std::pair{ "textureGather(uniform *sampled texture2D,i32x2,i32)", &SampledTextureGather_Texture2D } /* 2250 */,
-    std::pair{ "textureGather(uniform *sampled texture2DArray,i32x3,i32)", &SampledTextureGather_Texture2DArray } /* 2251 */,
-    std::pair{ "textureGather(uniform *sampled textureCube,i32x3,i32)", &SampledTextureGather_TextureCube } /* 2252 */,
-    std::pair{ "textureGather(uniform *sampled textureCubeArray,i32x4,i32)", &SampledTextureGather_TextureCubeArray } /* 2253 */,
-    std::pair{ "textureGather(uniform *texture2D,uniform *sampler,i32x2,i32)", &TextureGather_Texture2D } /* 2254 */,
-    std::pair{ "textureGather(uniform *texture2DArray,uniform *sampler,i32x3,i32)", &TextureGather_Texture2DArray } /* 2255 */,
-    std::pair{ "textureGather(uniform *textureCube,uniform *sampler,i32x3,i32)", &TextureGather_TextureCube } /* 2256 */,
-    std::pair{ "textureGather(uniform *textureCubeArray,uniform *sampler,i32x4,i32)", &TextureGather_TextureCubeArray } /* 2257 */,
+    std::pair{ "textureGather(uniform *texture2D,uniform *sampler,i32x2,i32)", &TextureGather_Texture2D } /* 2250 */,
+    std::pair{ "textureGather(uniform *texture2DArray,uniform *sampler,i32x3,i32)", &TextureGather_Texture2DArray } /* 2251 */,
+    std::pair{ "textureGather(uniform *textureCube,uniform *sampler,i32x3,i32)", &TextureGather_TextureCube } /* 2252 */,
+    std::pair{ "textureGather(uniform *textureCubeArray,uniform *sampler,i32x4,i32)", &TextureGather_TextureCubeArray } /* 2253 */,
+    std::pair{ "textureGather(uniform *textureSampled2D,i32x2,i32)", &SampledTextureGather_Texture2D } /* 2254 */,
+    std::pair{ "textureGather(uniform *textureSampled2DArray,i32x3,i32)", &SampledTextureGather_Texture2DArray } /* 2255 */,
+    std::pair{ "textureGather(uniform *textureSampledCube,i32x3,i32)", &SampledTextureGather_TextureCube } /* 2256 */,
+    std::pair{ "textureGather(uniform *textureSampledCubeArray,i32x4,i32)", &SampledTextureGather_TextureCubeArray } /* 2257 */,
     std::pair{ "textureGatherOffset", &TextureGatherOffset_Texture2D } /* 2258 */,
     std::pair{ "textureGatherOffset", &SampledTextureGatherOffset_Texture2D } /* 2259 */,
     std::pair{ "textureGatherOffset", &TextureGatherOffset_TextureCube } /* 2260 */,
@@ -10566,14 +10566,14 @@ inline constexpr StaticMap<ConstantString, Symbol*, 3309> DefaultIntrinsics = {
     std::pair{ "textureGatherOffset", &SampledTextureGatherOffset_Texture2DArray } /* 2263 */,
     std::pair{ "textureGatherOffset", &TextureGatherOffset_TextureCubeArray } /* 2264 */,
     std::pair{ "textureGatherOffset", &SampledTextureGatherOffset_TextureCubeArray } /* 2265 */,
-    std::pair{ "textureGatherOffset(uniform *sampled texture2D,i32x2,i32,u32)", &SampledTextureGatherOffset_Texture2D } /* 2266 */,
-    std::pair{ "textureGatherOffset(uniform *sampled texture2DArray,i32x3,i32,u32)", &SampledTextureGatherOffset_Texture2DArray } /* 2267 */,
-    std::pair{ "textureGatherOffset(uniform *sampled textureCube,i32x3,i32,u32)", &SampledTextureGatherOffset_TextureCube } /* 2268 */,
-    std::pair{ "textureGatherOffset(uniform *sampled textureCubeArray,i32x4,i32,u32)", &SampledTextureGatherOffset_TextureCubeArray } /* 2269 */,
-    std::pair{ "textureGatherOffset(uniform *texture2D,uniform *sampler,i32x2,i32,u32)", &TextureGatherOffset_Texture2D } /* 2270 */,
-    std::pair{ "textureGatherOffset(uniform *texture2DArray,uniform *sampler,i32x3,i32,u32)", &TextureGatherOffset_Texture2DArray } /* 2271 */,
-    std::pair{ "textureGatherOffset(uniform *textureCube,uniform *sampler,i32x3,i32,u32)", &TextureGatherOffset_TextureCube } /* 2272 */,
-    std::pair{ "textureGatherOffset(uniform *textureCubeArray,uniform *sampler,i32x4,i32,u32)", &TextureGatherOffset_TextureCubeArray } /* 2273 */,
+    std::pair{ "textureGatherOffset(uniform *texture2D,uniform *sampler,i32x2,i32,u32)", &TextureGatherOffset_Texture2D } /* 2266 */,
+    std::pair{ "textureGatherOffset(uniform *texture2DArray,uniform *sampler,i32x3,i32,u32)", &TextureGatherOffset_Texture2DArray } /* 2267 */,
+    std::pair{ "textureGatherOffset(uniform *textureCube,uniform *sampler,i32x3,i32,u32)", &TextureGatherOffset_TextureCube } /* 2268 */,
+    std::pair{ "textureGatherOffset(uniform *textureCubeArray,uniform *sampler,i32x4,i32,u32)", &TextureGatherOffset_TextureCubeArray } /* 2269 */,
+    std::pair{ "textureGatherOffset(uniform *textureSampled2D,i32x2,i32,u32)", &SampledTextureGatherOffset_Texture2D } /* 2270 */,
+    std::pair{ "textureGatherOffset(uniform *textureSampled2DArray,i32x3,i32,u32)", &SampledTextureGatherOffset_Texture2DArray } /* 2271 */,
+    std::pair{ "textureGatherOffset(uniform *textureSampledCube,i32x3,i32,u32)", &SampledTextureGatherOffset_TextureCube } /* 2272 */,
+    std::pair{ "textureGatherOffset(uniform *textureSampledCubeArray,i32x4,i32,u32)", &SampledTextureGatherOffset_TextureCubeArray } /* 2273 */,
     std::pair{ "textureGetMips", &TextureGetMips_Texture1D } /* 2274 */,
     std::pair{ "textureGetMips", &TextureGetMips_Texture2D } /* 2275 */,
     std::pair{ "textureGetMips", &TextureGetMips_Texture3D } /* 2276 */,
@@ -10602,20 +10602,20 @@ inline constexpr StaticMap<ConstantString, Symbol*, 3309> DefaultIntrinsics = {
     std::pair{ "textureGetSampledMip", &SampledTextureGetSampledMip_Texture2DArray } /* 2299 */,
     std::pair{ "textureGetSampledMip", &TextureGetSampledMip_TextureCubeArray } /* 2300 */,
     std::pair{ "textureGetSampledMip", &SampledTextureGetSampledMip_TextureCubeArray } /* 2301 */,
-    std::pair{ "textureGetSampledMip(uniform *sampled texture1D,f32)", &SampledTextureGetSampledMip_Texture1D } /* 2302 */,
-    std::pair{ "textureGetSampledMip(uniform *sampled texture1DArray,f32x2)", &SampledTextureGetSampledMip_Texture1DArray } /* 2303 */,
-    std::pair{ "textureGetSampledMip(uniform *sampled texture2D,f32x2)", &SampledTextureGetSampledMip_Texture2D } /* 2304 */,
-    std::pair{ "textureGetSampledMip(uniform *sampled texture2DArray,f32x3)", &SampledTextureGetSampledMip_Texture2DArray } /* 2305 */,
-    std::pair{ "textureGetSampledMip(uniform *sampled texture3D,f32x3)", &SampledTextureGetSampledMip_Texture3D } /* 2306 */,
-    std::pair{ "textureGetSampledMip(uniform *sampled textureCube,f32x3)", &SampledTextureGetSampledMip_TextureCube } /* 2307 */,
-    std::pair{ "textureGetSampledMip(uniform *sampled textureCubeArray,f32x4)", &SampledTextureGetSampledMip_TextureCubeArray } /* 2308 */,
-    std::pair{ "textureGetSampledMip(uniform *texture1D,uniform *sampler,f32)", &TextureGetSampledMip_Texture1D } /* 2309 */,
-    std::pair{ "textureGetSampledMip(uniform *texture1DArray,uniform *sampler,f32x2)", &TextureGetSampledMip_Texture1DArray } /* 2310 */,
-    std::pair{ "textureGetSampledMip(uniform *texture2D,uniform *sampler,f32x2)", &TextureGetSampledMip_Texture2D } /* 2311 */,
-    std::pair{ "textureGetSampledMip(uniform *texture2DArray,uniform *sampler,f32x3)", &TextureGetSampledMip_Texture2DArray } /* 2312 */,
-    std::pair{ "textureGetSampledMip(uniform *texture3D,uniform *sampler,f32x3)", &TextureGetSampledMip_Texture3D } /* 2313 */,
-    std::pair{ "textureGetSampledMip(uniform *textureCube,uniform *sampler,f32x3)", &TextureGetSampledMip_TextureCube } /* 2314 */,
-    std::pair{ "textureGetSampledMip(uniform *textureCubeArray,uniform *sampler,f32x4)", &TextureGetSampledMip_TextureCubeArray } /* 2315 */,
+    std::pair{ "textureGetSampledMip(uniform *texture1D,uniform *sampler,f32)", &TextureGetSampledMip_Texture1D } /* 2302 */,
+    std::pair{ "textureGetSampledMip(uniform *texture1DArray,uniform *sampler,f32x2)", &TextureGetSampledMip_Texture1DArray } /* 2303 */,
+    std::pair{ "textureGetSampledMip(uniform *texture2D,uniform *sampler,f32x2)", &TextureGetSampledMip_Texture2D } /* 2304 */,
+    std::pair{ "textureGetSampledMip(uniform *texture2DArray,uniform *sampler,f32x3)", &TextureGetSampledMip_Texture2DArray } /* 2305 */,
+    std::pair{ "textureGetSampledMip(uniform *texture3D,uniform *sampler,f32x3)", &TextureGetSampledMip_Texture3D } /* 2306 */,
+    std::pair{ "textureGetSampledMip(uniform *textureCube,uniform *sampler,f32x3)", &TextureGetSampledMip_TextureCube } /* 2307 */,
+    std::pair{ "textureGetSampledMip(uniform *textureCubeArray,uniform *sampler,f32x4)", &TextureGetSampledMip_TextureCubeArray } /* 2308 */,
+    std::pair{ "textureGetSampledMip(uniform *textureSampled1D,f32)", &SampledTextureGetSampledMip_Texture1D } /* 2309 */,
+    std::pair{ "textureGetSampledMip(uniform *textureSampled1DArray,f32x2)", &SampledTextureGetSampledMip_Texture1DArray } /* 2310 */,
+    std::pair{ "textureGetSampledMip(uniform *textureSampled2D,f32x2)", &SampledTextureGetSampledMip_Texture2D } /* 2311 */,
+    std::pair{ "textureGetSampledMip(uniform *textureSampled2DArray,f32x3)", &SampledTextureGetSampledMip_Texture2DArray } /* 2312 */,
+    std::pair{ "textureGetSampledMip(uniform *textureSampled3D,f32x3)", &SampledTextureGetSampledMip_Texture3D } /* 2313 */,
+    std::pair{ "textureGetSampledMip(uniform *textureSampledCube,f32x3)", &SampledTextureGetSampledMip_TextureCube } /* 2314 */,
+    std::pair{ "textureGetSampledMip(uniform *textureSampledCubeArray,f32x4)", &SampledTextureGetSampledMip_TextureCubeArray } /* 2315 */,
     std::pair{ "textureGetSamples", &TextureGetSamples_Texture2DMS } /* 2316 */,
     std::pair{ "textureGetSamples", &TextureGetSamples_Texture2DMSArray } /* 2317 */,
     std::pair{ "textureGetSamples(uniform *texture2DMS)", &TextureGetSamples_Texture2DMS } /* 2318 */,
@@ -10702,20 +10702,20 @@ inline constexpr StaticMap<ConstantString, Symbol*, 3309> DefaultIntrinsics = {
     std::pair{ "textureSample", &SampledTextureSample_Texture2DArray } /* 2399 */,
     std::pair{ "textureSample", &TextureSample_TextureCubeArray } /* 2400 */,
     std::pair{ "textureSample", &SampledTextureSample_TextureCubeArray } /* 2401 */,
-    std::pair{ "textureSample(uniform *sampled texture1D,f32)", &SampledTextureSample_Texture1D } /* 2402 */,
-    std::pair{ "textureSample(uniform *sampled texture1DArray,f32x2)", &SampledTextureSample_Texture1DArray } /* 2403 */,
-    std::pair{ "textureSample(uniform *sampled texture2D,f32x2)", &SampledTextureSample_Texture2D } /* 2404 */,
-    std::pair{ "textureSample(uniform *sampled texture2DArray,f32x3)", &SampledTextureSample_Texture2DArray } /* 2405 */,
-    std::pair{ "textureSample(uniform *sampled texture3D,f32x3)", &SampledTextureSample_Texture3D } /* 2406 */,
-    std::pair{ "textureSample(uniform *sampled textureCube,f32x3)", &SampledTextureSample_TextureCube } /* 2407 */,
-    std::pair{ "textureSample(uniform *sampled textureCubeArray,f32x4)", &SampledTextureSample_TextureCubeArray } /* 2408 */,
-    std::pair{ "textureSample(uniform *texture1D,uniform *sampler,f32)", &TextureSample_Texture1D } /* 2409 */,
-    std::pair{ "textureSample(uniform *texture1DArray,uniform *sampler,f32x2)", &TextureSample_Texture1DArray } /* 2410 */,
-    std::pair{ "textureSample(uniform *texture2D,uniform *sampler,f32x2)", &TextureSample_Texture2D } /* 2411 */,
-    std::pair{ "textureSample(uniform *texture2DArray,uniform *sampler,f32x3)", &TextureSample_Texture2DArray } /* 2412 */,
-    std::pair{ "textureSample(uniform *texture3D,uniform *sampler,f32x3)", &TextureSample_Texture3D } /* 2413 */,
-    std::pair{ "textureSample(uniform *textureCube,uniform *sampler,f32x3)", &TextureSample_TextureCube } /* 2414 */,
-    std::pair{ "textureSample(uniform *textureCubeArray,uniform *sampler,f32x4)", &TextureSample_TextureCubeArray } /* 2415 */,
+    std::pair{ "textureSample(uniform *texture1D,uniform *sampler,f32)", &TextureSample_Texture1D } /* 2402 */,
+    std::pair{ "textureSample(uniform *texture1DArray,uniform *sampler,f32x2)", &TextureSample_Texture1DArray } /* 2403 */,
+    std::pair{ "textureSample(uniform *texture2D,uniform *sampler,f32x2)", &TextureSample_Texture2D } /* 2404 */,
+    std::pair{ "textureSample(uniform *texture2DArray,uniform *sampler,f32x3)", &TextureSample_Texture2DArray } /* 2405 */,
+    std::pair{ "textureSample(uniform *texture3D,uniform *sampler,f32x3)", &TextureSample_Texture3D } /* 2406 */,
+    std::pair{ "textureSample(uniform *textureCube,uniform *sampler,f32x3)", &TextureSample_TextureCube } /* 2407 */,
+    std::pair{ "textureSample(uniform *textureCubeArray,uniform *sampler,f32x4)", &TextureSample_TextureCubeArray } /* 2408 */,
+    std::pair{ "textureSample(uniform *textureSampled1D,f32)", &SampledTextureSample_Texture1D } /* 2409 */,
+    std::pair{ "textureSample(uniform *textureSampled1DArray,f32x2)", &SampledTextureSample_Texture1DArray } /* 2410 */,
+    std::pair{ "textureSample(uniform *textureSampled2D,f32x2)", &SampledTextureSample_Texture2D } /* 2411 */,
+    std::pair{ "textureSample(uniform *textureSampled2DArray,f32x3)", &SampledTextureSample_Texture2DArray } /* 2412 */,
+    std::pair{ "textureSample(uniform *textureSampled3D,f32x3)", &SampledTextureSample_Texture3D } /* 2413 */,
+    std::pair{ "textureSample(uniform *textureSampledCube,f32x3)", &SampledTextureSample_TextureCube } /* 2414 */,
+    std::pair{ "textureSample(uniform *textureSampledCubeArray,f32x4)", &SampledTextureSample_TextureCubeArray } /* 2415 */,
     std::pair{ "textureSampleBias", &TextureSampleBias_Texture1D } /* 2416 */,
     std::pair{ "textureSampleBias", &SampledTextureSampleBias_Texture1D } /* 2417 */,
     std::pair{ "textureSampleBias", &TextureSampleBias_Texture2D } /* 2418 */,
@@ -10730,20 +10730,20 @@ inline constexpr StaticMap<ConstantString, Symbol*, 3309> DefaultIntrinsics = {
     std::pair{ "textureSampleBias", &SampledTextureSampleBias_Texture2DArray } /* 2427 */,
     std::pair{ "textureSampleBias", &TextureSampleBias_TextureCubeArray } /* 2428 */,
     std::pair{ "textureSampleBias", &SampledTextureSampleBias_TextureCubeArray } /* 2429 */,
-    std::pair{ "textureSampleBias(uniform *sampled texture1D,f32,f32)", &SampledTextureSampleBias_Texture1D } /* 2430 */,
-    std::pair{ "textureSampleBias(uniform *sampled texture1DArray,f32x2,f32)", &SampledTextureSampleBias_Texture1DArray } /* 2431 */,
-    std::pair{ "textureSampleBias(uniform *sampled texture2D,f32x2,f32)", &SampledTextureSampleBias_Texture2D } /* 2432 */,
-    std::pair{ "textureSampleBias(uniform *sampled texture2DArray,f32x3,f32)", &SampledTextureSampleBias_Texture2DArray } /* 2433 */,
-    std::pair{ "textureSampleBias(uniform *sampled texture3D,f32x3,f32)", &SampledTextureSampleBias_Texture3D } /* 2434 */,
-    std::pair{ "textureSampleBias(uniform *sampled textureCube,f32x3,f32)", &SampledTextureSampleBias_TextureCube } /* 2435 */,
-    std::pair{ "textureSampleBias(uniform *sampled textureCubeArray,f32x4,f32)", &SampledTextureSampleBias_TextureCubeArray } /* 2436 */,
-    std::pair{ "textureSampleBias(uniform *texture1D,uniform *sampler,f32,f32)", &TextureSampleBias_Texture1D } /* 2437 */,
-    std::pair{ "textureSampleBias(uniform *texture1DArray,uniform *sampler,f32x2,f32)", &TextureSampleBias_Texture1DArray } /* 2438 */,
-    std::pair{ "textureSampleBias(uniform *texture2D,uniform *sampler,f32x2,f32)", &TextureSampleBias_Texture2D } /* 2439 */,
-    std::pair{ "textureSampleBias(uniform *texture2DArray,uniform *sampler,f32x3,f32)", &TextureSampleBias_Texture2DArray } /* 2440 */,
-    std::pair{ "textureSampleBias(uniform *texture3D,uniform *sampler,f32x3,f32)", &TextureSampleBias_Texture3D } /* 2441 */,
-    std::pair{ "textureSampleBias(uniform *textureCube,uniform *sampler,f32x3,f32)", &TextureSampleBias_TextureCube } /* 2442 */,
-    std::pair{ "textureSampleBias(uniform *textureCubeArray,uniform *sampler,f32x4,f32)", &TextureSampleBias_TextureCubeArray } /* 2443 */,
+    std::pair{ "textureSampleBias(uniform *texture1D,uniform *sampler,f32,f32)", &TextureSampleBias_Texture1D } /* 2430 */,
+    std::pair{ "textureSampleBias(uniform *texture1DArray,uniform *sampler,f32x2,f32)", &TextureSampleBias_Texture1DArray } /* 2431 */,
+    std::pair{ "textureSampleBias(uniform *texture2D,uniform *sampler,f32x2,f32)", &TextureSampleBias_Texture2D } /* 2432 */,
+    std::pair{ "textureSampleBias(uniform *texture2DArray,uniform *sampler,f32x3,f32)", &TextureSampleBias_Texture2DArray } /* 2433 */,
+    std::pair{ "textureSampleBias(uniform *texture3D,uniform *sampler,f32x3,f32)", &TextureSampleBias_Texture3D } /* 2434 */,
+    std::pair{ "textureSampleBias(uniform *textureCube,uniform *sampler,f32x3,f32)", &TextureSampleBias_TextureCube } /* 2435 */,
+    std::pair{ "textureSampleBias(uniform *textureCubeArray,uniform *sampler,f32x4,f32)", &TextureSampleBias_TextureCubeArray } /* 2436 */,
+    std::pair{ "textureSampleBias(uniform *textureSampled1D,f32,f32)", &SampledTextureSampleBias_Texture1D } /* 2437 */,
+    std::pair{ "textureSampleBias(uniform *textureSampled1DArray,f32x2,f32)", &SampledTextureSampleBias_Texture1DArray } /* 2438 */,
+    std::pair{ "textureSampleBias(uniform *textureSampled2D,f32x2,f32)", &SampledTextureSampleBias_Texture2D } /* 2439 */,
+    std::pair{ "textureSampleBias(uniform *textureSampled2DArray,f32x3,f32)", &SampledTextureSampleBias_Texture2DArray } /* 2440 */,
+    std::pair{ "textureSampleBias(uniform *textureSampled3D,f32x3,f32)", &SampledTextureSampleBias_Texture3D } /* 2441 */,
+    std::pair{ "textureSampleBias(uniform *textureSampledCube,f32x3,f32)", &SampledTextureSampleBias_TextureCube } /* 2442 */,
+    std::pair{ "textureSampleBias(uniform *textureSampledCubeArray,f32x4,f32)", &SampledTextureSampleBias_TextureCubeArray } /* 2443 */,
     std::pair{ "textureSampleBiasCompare", &TextureSampleBiasCompare_Texture1D } /* 2444 */,
     std::pair{ "textureSampleBiasCompare", &SampledTextureSampleBiasCompare_Texture1D } /* 2445 */,
     std::pair{ "textureSampleBiasCompare", &TextureSampleBiasCompare_Texture2D } /* 2446 */,
@@ -10754,16 +10754,16 @@ inline constexpr StaticMap<ConstantString, Symbol*, 3309> DefaultIntrinsics = {
     std::pair{ "textureSampleBiasCompare", &SampledTextureSampleBiasCompare_Texture1DArray } /* 2451 */,
     std::pair{ "textureSampleBiasCompare", &TextureSampleBiasCompare_Texture2DArray } /* 2452 */,
     std::pair{ "textureSampleBiasCompare", &SampledTextureSampleBiasCompare_Texture2DArray } /* 2453 */,
-    std::pair{ "textureSampleBiasCompare(uniform *sampled texture1D,f32,f32,f32)", &SampledTextureSampleBiasCompare_Texture1D } /* 2454 */,
-    std::pair{ "textureSampleBiasCompare(uniform *sampled texture1DArray,f32x2,f32,f32)", &SampledTextureSampleBiasCompare_Texture1DArray } /* 2455 */,
-    std::pair{ "textureSampleBiasCompare(uniform *sampled texture2D,f32x2,f32,f32)", &SampledTextureSampleBiasCompare_Texture2D } /* 2456 */,
-    std::pair{ "textureSampleBiasCompare(uniform *sampled texture2DArray,f32x3,f32,f32)", &SampledTextureSampleBiasCompare_Texture2DArray } /* 2457 */,
-    std::pair{ "textureSampleBiasCompare(uniform *sampled texture3D,f32x3,f32,f32)", &SampledTextureSampleBiasCompare_Texture3D } /* 2458 */,
-    std::pair{ "textureSampleBiasCompare(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleBiasCompare_Texture1D } /* 2459 */,
-    std::pair{ "textureSampleBiasCompare(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32)", &TextureSampleBiasCompare_Texture1DArray } /* 2460 */,
-    std::pair{ "textureSampleBiasCompare(uniform *texture2D,uniform *sampler,f32x2,f32,f32)", &TextureSampleBiasCompare_Texture2D } /* 2461 */,
-    std::pair{ "textureSampleBiasCompare(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32)", &TextureSampleBiasCompare_Texture2DArray } /* 2462 */,
-    std::pair{ "textureSampleBiasCompare(uniform *texture3D,uniform *sampler,f32x3,f32,f32)", &TextureSampleBiasCompare_Texture3D } /* 2463 */,
+    std::pair{ "textureSampleBiasCompare(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleBiasCompare_Texture1D } /* 2454 */,
+    std::pair{ "textureSampleBiasCompare(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32)", &TextureSampleBiasCompare_Texture1DArray } /* 2455 */,
+    std::pair{ "textureSampleBiasCompare(uniform *texture2D,uniform *sampler,f32x2,f32,f32)", &TextureSampleBiasCompare_Texture2D } /* 2456 */,
+    std::pair{ "textureSampleBiasCompare(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32)", &TextureSampleBiasCompare_Texture2DArray } /* 2457 */,
+    std::pair{ "textureSampleBiasCompare(uniform *texture3D,uniform *sampler,f32x3,f32,f32)", &TextureSampleBiasCompare_Texture3D } /* 2458 */,
+    std::pair{ "textureSampleBiasCompare(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleBiasCompare_Texture1D } /* 2459 */,
+    std::pair{ "textureSampleBiasCompare(uniform *textureSampled1DArray,f32x2,f32,f32)", &SampledTextureSampleBiasCompare_Texture1DArray } /* 2460 */,
+    std::pair{ "textureSampleBiasCompare(uniform *textureSampled2D,f32x2,f32,f32)", &SampledTextureSampleBiasCompare_Texture2D } /* 2461 */,
+    std::pair{ "textureSampleBiasCompare(uniform *textureSampled2DArray,f32x3,f32,f32)", &SampledTextureSampleBiasCompare_Texture2DArray } /* 2462 */,
+    std::pair{ "textureSampleBiasCompare(uniform *textureSampled3D,f32x3,f32,f32)", &SampledTextureSampleBiasCompare_Texture3D } /* 2463 */,
     std::pair{ "textureSampleBiasCompareOffset", &TextureSampleBiasCompareOffset_Texture1D } /* 2464 */,
     std::pair{ "textureSampleBiasCompareOffset", &SampledTextureSampleBiasCompareOffset_Texture1D } /* 2465 */,
     std::pair{ "textureSampleBiasCompareOffset", &TextureSampleBiasCompareOffset_Texture2D } /* 2466 */,
@@ -10774,16 +10774,16 @@ inline constexpr StaticMap<ConstantString, Symbol*, 3309> DefaultIntrinsics = {
     std::pair{ "textureSampleBiasCompareOffset", &SampledTextureSampleBiasCompareOffset_Texture1DArray } /* 2471 */,
     std::pair{ "textureSampleBiasCompareOffset", &TextureSampleBiasCompareOffset_Texture2DArray } /* 2472 */,
     std::pair{ "textureSampleBiasCompareOffset", &SampledTextureSampleBiasCompareOffset_Texture2DArray } /* 2473 */,
-    std::pair{ "textureSampleBiasCompareOffset(uniform *sampled texture1D,f32,f32,f32,f32)", &SampledTextureSampleBiasCompareOffset_Texture1D } /* 2474 */,
-    std::pair{ "textureSampleBiasCompareOffset(uniform *sampled texture1DArray,f32x2,f32,f32,f32x2)", &SampledTextureSampleBiasCompareOffset_Texture1DArray } /* 2475 */,
-    std::pair{ "textureSampleBiasCompareOffset(uniform *sampled texture2D,f32x2,f32,f32,f32x2)", &SampledTextureSampleBiasCompareOffset_Texture2D } /* 2476 */,
-    std::pair{ "textureSampleBiasCompareOffset(uniform *sampled texture2DArray,f32x3,f32,f32,f32x3)", &SampledTextureSampleBiasCompareOffset_Texture2DArray } /* 2477 */,
-    std::pair{ "textureSampleBiasCompareOffset(uniform *sampled texture3D,f32x3,f32,f32,f32x3)", &SampledTextureSampleBiasCompareOffset_Texture3D } /* 2478 */,
-    std::pair{ "textureSampleBiasCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleBiasCompareOffset_Texture1D } /* 2479 */,
-    std::pair{ "textureSampleBiasCompareOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleBiasCompareOffset_Texture1DArray } /* 2480 */,
-    std::pair{ "textureSampleBiasCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleBiasCompareOffset_Texture2D } /* 2481 */,
-    std::pair{ "textureSampleBiasCompareOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleBiasCompareOffset_Texture2DArray } /* 2482 */,
-    std::pair{ "textureSampleBiasCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleBiasCompareOffset_Texture3D } /* 2483 */,
+    std::pair{ "textureSampleBiasCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleBiasCompareOffset_Texture1D } /* 2474 */,
+    std::pair{ "textureSampleBiasCompareOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleBiasCompareOffset_Texture1DArray } /* 2475 */,
+    std::pair{ "textureSampleBiasCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleBiasCompareOffset_Texture2D } /* 2476 */,
+    std::pair{ "textureSampleBiasCompareOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleBiasCompareOffset_Texture2DArray } /* 2477 */,
+    std::pair{ "textureSampleBiasCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleBiasCompareOffset_Texture3D } /* 2478 */,
+    std::pair{ "textureSampleBiasCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleBiasCompareOffset_Texture1D } /* 2479 */,
+    std::pair{ "textureSampleBiasCompareOffset(uniform *textureSampled1DArray,f32x2,f32,f32,f32x2)", &SampledTextureSampleBiasCompareOffset_Texture1DArray } /* 2480 */,
+    std::pair{ "textureSampleBiasCompareOffset(uniform *textureSampled2D,f32x2,f32,f32,f32x2)", &SampledTextureSampleBiasCompareOffset_Texture2D } /* 2481 */,
+    std::pair{ "textureSampleBiasCompareOffset(uniform *textureSampled2DArray,f32x3,f32,f32,f32x3)", &SampledTextureSampleBiasCompareOffset_Texture2DArray } /* 2482 */,
+    std::pair{ "textureSampleBiasCompareOffset(uniform *textureSampled3D,f32x3,f32,f32,f32x3)", &SampledTextureSampleBiasCompareOffset_Texture3D } /* 2483 */,
     std::pair{ "textureSampleBiasOffset", &TextureSampleBiasOffset_Texture1D } /* 2484 */,
     std::pair{ "textureSampleBiasOffset", &SampledTextureSampleBiasOffset_Texture1D } /* 2485 */,
     std::pair{ "textureSampleBiasOffset", &TextureSampleBiasOffset_Texture2D } /* 2486 */,
@@ -10794,64 +10794,64 @@ inline constexpr StaticMap<ConstantString, Symbol*, 3309> DefaultIntrinsics = {
     std::pair{ "textureSampleBiasOffset", &SampledTextureSampleBiasOffset_Texture1DArray } /* 2491 */,
     std::pair{ "textureSampleBiasOffset", &TextureSampleBiasOffset_Texture2DArray } /* 2492 */,
     std::pair{ "textureSampleBiasOffset", &SampledTextureSampleBiasOffset_Texture2DArray } /* 2493 */,
-    std::pair{ "textureSampleBiasOffset(uniform *sampled texture1D,f32,f32,f32)", &SampledTextureSampleBiasOffset_Texture1D } /* 2494 */,
-    std::pair{ "textureSampleBiasOffset(uniform *sampled texture1DArray,f32x2,f32,f32x2)", &SampledTextureSampleBiasOffset_Texture1DArray } /* 2495 */,
-    std::pair{ "textureSampleBiasOffset(uniform *sampled texture2D,f32x2,f32,f32x2)", &SampledTextureSampleBiasOffset_Texture2D } /* 2496 */,
-    std::pair{ "textureSampleBiasOffset(uniform *sampled texture2DArray,f32x3,f32,f32x3)", &SampledTextureSampleBiasOffset_Texture2DArray } /* 2497 */,
-    std::pair{ "textureSampleBiasOffset(uniform *sampled texture3D,f32x3,f32,f32x3)", &SampledTextureSampleBiasOffset_Texture3D } /* 2498 */,
-    std::pair{ "textureSampleBiasOffset(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleBiasOffset_Texture1D } /* 2499 */,
-    std::pair{ "textureSampleBiasOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleBiasOffset_Texture1DArray } /* 2500 */,
-    std::pair{ "textureSampleBiasOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleBiasOffset_Texture2D } /* 2501 */,
-    std::pair{ "textureSampleBiasOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleBiasOffset_Texture2DArray } /* 2502 */,
-    std::pair{ "textureSampleBiasOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleBiasOffset_Texture3D } /* 2503 */,
+    std::pair{ "textureSampleBiasOffset(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleBiasOffset_Texture1D } /* 2494 */,
+    std::pair{ "textureSampleBiasOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleBiasOffset_Texture1DArray } /* 2495 */,
+    std::pair{ "textureSampleBiasOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleBiasOffset_Texture2D } /* 2496 */,
+    std::pair{ "textureSampleBiasOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleBiasOffset_Texture2DArray } /* 2497 */,
+    std::pair{ "textureSampleBiasOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleBiasOffset_Texture3D } /* 2498 */,
+    std::pair{ "textureSampleBiasOffset(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleBiasOffset_Texture1D } /* 2499 */,
+    std::pair{ "textureSampleBiasOffset(uniform *textureSampled1DArray,f32x2,f32,f32x2)", &SampledTextureSampleBiasOffset_Texture1DArray } /* 2500 */,
+    std::pair{ "textureSampleBiasOffset(uniform *textureSampled2D,f32x2,f32,f32x2)", &SampledTextureSampleBiasOffset_Texture2D } /* 2501 */,
+    std::pair{ "textureSampleBiasOffset(uniform *textureSampled2DArray,f32x3,f32,f32x3)", &SampledTextureSampleBiasOffset_Texture2DArray } /* 2502 */,
+    std::pair{ "textureSampleBiasOffset(uniform *textureSampled3D,f32x3,f32,f32x3)", &SampledTextureSampleBiasOffset_Texture3D } /* 2503 */,
     std::pair{ "textureSampleBiasProj", &TextureSampleBiasProj_Texture1D } /* 2504 */,
     std::pair{ "textureSampleBiasProj", &SampledTextureSampleBiasProj_Texture1D } /* 2505 */,
     std::pair{ "textureSampleBiasProj", &TextureSampleBiasProj_Texture2D } /* 2506 */,
     std::pair{ "textureSampleBiasProj", &SampledTextureSampleBiasProj_Texture2D } /* 2507 */,
     std::pair{ "textureSampleBiasProj", &TextureSampleBiasProj_Texture3D } /* 2508 */,
     std::pair{ "textureSampleBiasProj", &SampledTextureSampleBiasProj_Texture3D } /* 2509 */,
-    std::pair{ "textureSampleBiasProj(uniform *sampled texture1D,f32,f32,f32)", &SampledTextureSampleBiasProj_Texture1D } /* 2510 */,
-    std::pair{ "textureSampleBiasProj(uniform *sampled texture2D,f32x2,f32,f32)", &SampledTextureSampleBiasProj_Texture2D } /* 2511 */,
-    std::pair{ "textureSampleBiasProj(uniform *sampled texture3D,f32x3,f32,f32)", &SampledTextureSampleBiasProj_Texture3D } /* 2512 */,
-    std::pair{ "textureSampleBiasProj(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleBiasProj_Texture1D } /* 2513 */,
-    std::pair{ "textureSampleBiasProj(uniform *texture2D,uniform *sampler,f32x2,f32,f32)", &TextureSampleBiasProj_Texture2D } /* 2514 */,
-    std::pair{ "textureSampleBiasProj(uniform *texture3D,uniform *sampler,f32x3,f32,f32)", &TextureSampleBiasProj_Texture3D } /* 2515 */,
+    std::pair{ "textureSampleBiasProj(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleBiasProj_Texture1D } /* 2510 */,
+    std::pair{ "textureSampleBiasProj(uniform *texture2D,uniform *sampler,f32x2,f32,f32)", &TextureSampleBiasProj_Texture2D } /* 2511 */,
+    std::pair{ "textureSampleBiasProj(uniform *texture3D,uniform *sampler,f32x3,f32,f32)", &TextureSampleBiasProj_Texture3D } /* 2512 */,
+    std::pair{ "textureSampleBiasProj(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleBiasProj_Texture1D } /* 2513 */,
+    std::pair{ "textureSampleBiasProj(uniform *textureSampled2D,f32x2,f32,f32)", &SampledTextureSampleBiasProj_Texture2D } /* 2514 */,
+    std::pair{ "textureSampleBiasProj(uniform *textureSampled3D,f32x3,f32,f32)", &SampledTextureSampleBiasProj_Texture3D } /* 2515 */,
     std::pair{ "textureSampleBiasProjCompare", &TextureSampleBiasProjCompare_Texture1D } /* 2516 */,
     std::pair{ "textureSampleBiasProjCompare", &SampledTextureSampleBiasProjCompare_Texture1D } /* 2517 */,
     std::pair{ "textureSampleBiasProjCompare", &TextureSampleBiasProjCompare_Texture2D } /* 2518 */,
     std::pair{ "textureSampleBiasProjCompare", &SampledTextureSampleBiasProjCompare_Texture2D } /* 2519 */,
     std::pair{ "textureSampleBiasProjCompare", &TextureSampleBiasProjCompare_Texture3D } /* 2520 */,
     std::pair{ "textureSampleBiasProjCompare", &SampledTextureSampleBiasProjCompare_Texture3D } /* 2521 */,
-    std::pair{ "textureSampleBiasProjCompare(uniform *sampled texture1D,f32,f32,f32,f32)", &SampledTextureSampleBiasProjCompare_Texture1D } /* 2522 */,
-    std::pair{ "textureSampleBiasProjCompare(uniform *sampled texture2D,f32x2,f32,f32,f32)", &SampledTextureSampleBiasProjCompare_Texture2D } /* 2523 */,
-    std::pair{ "textureSampleBiasProjCompare(uniform *sampled texture3D,f32x3,f32,f32,f32)", &SampledTextureSampleBiasProjCompare_Texture3D } /* 2524 */,
-    std::pair{ "textureSampleBiasProjCompare(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleBiasProjCompare_Texture1D } /* 2525 */,
-    std::pair{ "textureSampleBiasProjCompare(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32)", &TextureSampleBiasProjCompare_Texture2D } /* 2526 */,
-    std::pair{ "textureSampleBiasProjCompare(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32)", &TextureSampleBiasProjCompare_Texture3D } /* 2527 */,
+    std::pair{ "textureSampleBiasProjCompare(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleBiasProjCompare_Texture1D } /* 2522 */,
+    std::pair{ "textureSampleBiasProjCompare(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32)", &TextureSampleBiasProjCompare_Texture2D } /* 2523 */,
+    std::pair{ "textureSampleBiasProjCompare(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32)", &TextureSampleBiasProjCompare_Texture3D } /* 2524 */,
+    std::pair{ "textureSampleBiasProjCompare(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleBiasProjCompare_Texture1D } /* 2525 */,
+    std::pair{ "textureSampleBiasProjCompare(uniform *textureSampled2D,f32x2,f32,f32,f32)", &SampledTextureSampleBiasProjCompare_Texture2D } /* 2526 */,
+    std::pair{ "textureSampleBiasProjCompare(uniform *textureSampled3D,f32x3,f32,f32,f32)", &SampledTextureSampleBiasProjCompare_Texture3D } /* 2527 */,
     std::pair{ "textureSampleBiasProjCompareOffset", &TextureSampleBiasProjCompareOffset_Texture1D } /* 2528 */,
     std::pair{ "textureSampleBiasProjCompareOffset", &SampledTextureSampleBiasProjCompareOffset_Texture1D } /* 2529 */,
     std::pair{ "textureSampleBiasProjCompareOffset", &TextureSampleBiasProjCompareOffset_Texture2D } /* 2530 */,
     std::pair{ "textureSampleBiasProjCompareOffset", &SampledTextureSampleBiasProjCompareOffset_Texture2D } /* 2531 */,
     std::pair{ "textureSampleBiasProjCompareOffset", &TextureSampleBiasProjCompareOffset_Texture3D } /* 2532 */,
     std::pair{ "textureSampleBiasProjCompareOffset", &SampledTextureSampleBiasProjCompareOffset_Texture3D } /* 2533 */,
-    std::pair{ "textureSampleBiasProjCompareOffset(uniform *sampled texture1D,f32,f32,f32,f32,f32)", &SampledTextureSampleBiasProjCompareOffset_Texture1D } /* 2534 */,
-    std::pair{ "textureSampleBiasProjCompareOffset(uniform *sampled texture2D,f32x2,f32,f32,f32,f32x2)", &SampledTextureSampleBiasProjCompareOffset_Texture2D } /* 2535 */,
-    std::pair{ "textureSampleBiasProjCompareOffset(uniform *sampled texture3D,f32x3,f32,f32,f32,f32x3)", &SampledTextureSampleBiasProjCompareOffset_Texture3D } /* 2536 */,
-    std::pair{ "textureSampleBiasProjCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)", &TextureSampleBiasProjCompareOffset_Texture1D } /* 2537 */,
-    std::pair{ "textureSampleBiasProjCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32,f32x2)", &TextureSampleBiasProjCompareOffset_Texture2D } /* 2538 */,
-    std::pair{ "textureSampleBiasProjCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32,f32x3)", &TextureSampleBiasProjCompareOffset_Texture3D } /* 2539 */,
+    std::pair{ "textureSampleBiasProjCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)", &TextureSampleBiasProjCompareOffset_Texture1D } /* 2534 */,
+    std::pair{ "textureSampleBiasProjCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32,f32x2)", &TextureSampleBiasProjCompareOffset_Texture2D } /* 2535 */,
+    std::pair{ "textureSampleBiasProjCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32,f32x3)", &TextureSampleBiasProjCompareOffset_Texture3D } /* 2536 */,
+    std::pair{ "textureSampleBiasProjCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32)", &SampledTextureSampleBiasProjCompareOffset_Texture1D } /* 2537 */,
+    std::pair{ "textureSampleBiasProjCompareOffset(uniform *textureSampled2D,f32x2,f32,f32,f32,f32x2)", &SampledTextureSampleBiasProjCompareOffset_Texture2D } /* 2538 */,
+    std::pair{ "textureSampleBiasProjCompareOffset(uniform *textureSampled3D,f32x3,f32,f32,f32,f32x3)", &SampledTextureSampleBiasProjCompareOffset_Texture3D } /* 2539 */,
     std::pair{ "textureSampleBiasProjOffset", &TextureSampleBiasProjOffset_Texture1D } /* 2540 */,
     std::pair{ "textureSampleBiasProjOffset", &SampledTextureSampleBiasProjOffset_Texture1D } /* 2541 */,
     std::pair{ "textureSampleBiasProjOffset", &TextureSampleBiasProjOffset_Texture2D } /* 2542 */,
     std::pair{ "textureSampleBiasProjOffset", &SampledTextureSampleBiasProjOffset_Texture2D } /* 2543 */,
     std::pair{ "textureSampleBiasProjOffset", &TextureSampleBiasProjOffset_Texture3D } /* 2544 */,
     std::pair{ "textureSampleBiasProjOffset", &SampledTextureSampleBiasProjOffset_Texture3D } /* 2545 */,
-    std::pair{ "textureSampleBiasProjOffset(uniform *sampled texture1D,f32,f32,f32,f32)", &SampledTextureSampleBiasProjOffset_Texture1D } /* 2546 */,
-    std::pair{ "textureSampleBiasProjOffset(uniform *sampled texture2D,f32x2,f32,f32,f32x2)", &SampledTextureSampleBiasProjOffset_Texture2D } /* 2547 */,
-    std::pair{ "textureSampleBiasProjOffset(uniform *sampled texture3D,f32x3,f32,f32,f32x3)", &SampledTextureSampleBiasProjOffset_Texture3D } /* 2548 */,
-    std::pair{ "textureSampleBiasProjOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleBiasProjOffset_Texture1D } /* 2549 */,
-    std::pair{ "textureSampleBiasProjOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleBiasProjOffset_Texture2D } /* 2550 */,
-    std::pair{ "textureSampleBiasProjOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleBiasProjOffset_Texture3D } /* 2551 */,
+    std::pair{ "textureSampleBiasProjOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleBiasProjOffset_Texture1D } /* 2546 */,
+    std::pair{ "textureSampleBiasProjOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleBiasProjOffset_Texture2D } /* 2547 */,
+    std::pair{ "textureSampleBiasProjOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleBiasProjOffset_Texture3D } /* 2548 */,
+    std::pair{ "textureSampleBiasProjOffset(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleBiasProjOffset_Texture1D } /* 2549 */,
+    std::pair{ "textureSampleBiasProjOffset(uniform *textureSampled2D,f32x2,f32,f32,f32x2)", &SampledTextureSampleBiasProjOffset_Texture2D } /* 2550 */,
+    std::pair{ "textureSampleBiasProjOffset(uniform *textureSampled3D,f32x3,f32,f32,f32x3)", &SampledTextureSampleBiasProjOffset_Texture3D } /* 2551 */,
     std::pair{ "textureSampleCompare", &TextureSampleCompare_Texture1D } /* 2552 */,
     std::pair{ "textureSampleCompare", &SampledTextureSampleCompare_Texture1D } /* 2553 */,
     std::pair{ "textureSampleCompare", &TextureSampleCompare_Texture2D } /* 2554 */,
@@ -10862,16 +10862,16 @@ inline constexpr StaticMap<ConstantString, Symbol*, 3309> DefaultIntrinsics = {
     std::pair{ "textureSampleCompare", &SampledTextureSampleCompare_Texture1DArray } /* 2559 */,
     std::pair{ "textureSampleCompare", &TextureSampleCompare_Texture2DArray } /* 2560 */,
     std::pair{ "textureSampleCompare", &SampledTextureSampleCompare_Texture2DArray } /* 2561 */,
-    std::pair{ "textureSampleCompare(uniform *sampled texture1D,f32,f32)", &SampledTextureSampleCompare_Texture1D } /* 2562 */,
-    std::pair{ "textureSampleCompare(uniform *sampled texture1DArray,f32x2,f32)", &SampledTextureSampleCompare_Texture1DArray } /* 2563 */,
-    std::pair{ "textureSampleCompare(uniform *sampled texture2D,f32x2,f32)", &SampledTextureSampleCompare_Texture2D } /* 2564 */,
-    std::pair{ "textureSampleCompare(uniform *sampled texture2DArray,f32x3,f32)", &SampledTextureSampleCompare_Texture2DArray } /* 2565 */,
-    std::pair{ "textureSampleCompare(uniform *sampled texture3D,f32x3,f32)", &SampledTextureSampleCompare_Texture3D } /* 2566 */,
-    std::pair{ "textureSampleCompare(uniform *texture1D,uniform *sampler,f32,f32)", &TextureSampleCompare_Texture1D } /* 2567 */,
-    std::pair{ "textureSampleCompare(uniform *texture1DArray,uniform *sampler,f32x2,f32)", &TextureSampleCompare_Texture1DArray } /* 2568 */,
-    std::pair{ "textureSampleCompare(uniform *texture2D,uniform *sampler,f32x2,f32)", &TextureSampleCompare_Texture2D } /* 2569 */,
-    std::pair{ "textureSampleCompare(uniform *texture2DArray,uniform *sampler,f32x3,f32)", &TextureSampleCompare_Texture2DArray } /* 2570 */,
-    std::pair{ "textureSampleCompare(uniform *texture3D,uniform *sampler,f32x3,f32)", &TextureSampleCompare_Texture3D } /* 2571 */,
+    std::pair{ "textureSampleCompare(uniform *texture1D,uniform *sampler,f32,f32)", &TextureSampleCompare_Texture1D } /* 2562 */,
+    std::pair{ "textureSampleCompare(uniform *texture1DArray,uniform *sampler,f32x2,f32)", &TextureSampleCompare_Texture1DArray } /* 2563 */,
+    std::pair{ "textureSampleCompare(uniform *texture2D,uniform *sampler,f32x2,f32)", &TextureSampleCompare_Texture2D } /* 2564 */,
+    std::pair{ "textureSampleCompare(uniform *texture2DArray,uniform *sampler,f32x3,f32)", &TextureSampleCompare_Texture2DArray } /* 2565 */,
+    std::pair{ "textureSampleCompare(uniform *texture3D,uniform *sampler,f32x3,f32)", &TextureSampleCompare_Texture3D } /* 2566 */,
+    std::pair{ "textureSampleCompare(uniform *textureSampled1D,f32,f32)", &SampledTextureSampleCompare_Texture1D } /* 2567 */,
+    std::pair{ "textureSampleCompare(uniform *textureSampled1DArray,f32x2,f32)", &SampledTextureSampleCompare_Texture1DArray } /* 2568 */,
+    std::pair{ "textureSampleCompare(uniform *textureSampled2D,f32x2,f32)", &SampledTextureSampleCompare_Texture2D } /* 2569 */,
+    std::pair{ "textureSampleCompare(uniform *textureSampled2DArray,f32x3,f32)", &SampledTextureSampleCompare_Texture2DArray } /* 2570 */,
+    std::pair{ "textureSampleCompare(uniform *textureSampled3D,f32x3,f32)", &SampledTextureSampleCompare_Texture3D } /* 2571 */,
     std::pair{ "textureSampleCompareOffset", &TextureSampleCompareOffset_Texture1D } /* 2572 */,
     std::pair{ "textureSampleCompareOffset", &SampledTextureSampleCompareOffset_Texture1D } /* 2573 */,
     std::pair{ "textureSampleCompareOffset", &TextureSampleCompareOffset_Texture2D } /* 2574 */,
@@ -10882,16 +10882,16 @@ inline constexpr StaticMap<ConstantString, Symbol*, 3309> DefaultIntrinsics = {
     std::pair{ "textureSampleCompareOffset", &SampledTextureSampleCompareOffset_Texture1DArray } /* 2579 */,
     std::pair{ "textureSampleCompareOffset", &TextureSampleCompareOffset_Texture2DArray } /* 2580 */,
     std::pair{ "textureSampleCompareOffset", &SampledTextureSampleCompareOffset_Texture2DArray } /* 2581 */,
-    std::pair{ "textureSampleCompareOffset(uniform *sampled texture1D,f32,f32,f32)", &SampledTextureSampleCompareOffset_Texture1D } /* 2582 */,
-    std::pair{ "textureSampleCompareOffset(uniform *sampled texture1DArray,f32x2,f32,f32x2)", &SampledTextureSampleCompareOffset_Texture1DArray } /* 2583 */,
-    std::pair{ "textureSampleCompareOffset(uniform *sampled texture2D,f32x2,f32,f32x2)", &SampledTextureSampleCompareOffset_Texture2D } /* 2584 */,
-    std::pair{ "textureSampleCompareOffset(uniform *sampled texture2DArray,f32x3,f32,f32x3)", &SampledTextureSampleCompareOffset_Texture2DArray } /* 2585 */,
-    std::pair{ "textureSampleCompareOffset(uniform *sampled texture3D,f32x3,f32,f32x3)", &SampledTextureSampleCompareOffset_Texture3D } /* 2586 */,
-    std::pair{ "textureSampleCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleCompareOffset_Texture1D } /* 2587 */,
-    std::pair{ "textureSampleCompareOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleCompareOffset_Texture1DArray } /* 2588 */,
-    std::pair{ "textureSampleCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleCompareOffset_Texture2D } /* 2589 */,
-    std::pair{ "textureSampleCompareOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleCompareOffset_Texture2DArray } /* 2590 */,
-    std::pair{ "textureSampleCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleCompareOffset_Texture3D } /* 2591 */,
+    std::pair{ "textureSampleCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleCompareOffset_Texture1D } /* 2582 */,
+    std::pair{ "textureSampleCompareOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleCompareOffset_Texture1DArray } /* 2583 */,
+    std::pair{ "textureSampleCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleCompareOffset_Texture2D } /* 2584 */,
+    std::pair{ "textureSampleCompareOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleCompareOffset_Texture2DArray } /* 2585 */,
+    std::pair{ "textureSampleCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleCompareOffset_Texture3D } /* 2586 */,
+    std::pair{ "textureSampleCompareOffset(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleCompareOffset_Texture1D } /* 2587 */,
+    std::pair{ "textureSampleCompareOffset(uniform *textureSampled1DArray,f32x2,f32,f32x2)", &SampledTextureSampleCompareOffset_Texture1DArray } /* 2588 */,
+    std::pair{ "textureSampleCompareOffset(uniform *textureSampled2D,f32x2,f32,f32x2)", &SampledTextureSampleCompareOffset_Texture2D } /* 2589 */,
+    std::pair{ "textureSampleCompareOffset(uniform *textureSampled2DArray,f32x3,f32,f32x3)", &SampledTextureSampleCompareOffset_Texture2DArray } /* 2590 */,
+    std::pair{ "textureSampleCompareOffset(uniform *textureSampled3D,f32x3,f32,f32x3)", &SampledTextureSampleCompareOffset_Texture3D } /* 2591 */,
     std::pair{ "textureSampleGrad", &TextureSampleGrad_Texture1D } /* 2592 */,
     std::pair{ "textureSampleGrad", &SampledTextureSampleGrad_Texture1D } /* 2593 */,
     std::pair{ "textureSampleGrad", &TextureSampleGrad_Texture2D } /* 2594 */,
@@ -10906,20 +10906,20 @@ inline constexpr StaticMap<ConstantString, Symbol*, 3309> DefaultIntrinsics = {
     std::pair{ "textureSampleGrad", &SampledTextureSampleGrad_Texture2DArray } /* 2603 */,
     std::pair{ "textureSampleGrad", &TextureSampleGrad_TextureCubeArray } /* 2604 */,
     std::pair{ "textureSampleGrad", &SampledTextureSampleGrad_TextureCubeArray } /* 2605 */,
-    std::pair{ "textureSampleGrad(uniform *sampled texture1D,f32,f32,f32)", &SampledTextureSampleGrad_Texture1D } /* 2606 */,
-    std::pair{ "textureSampleGrad(uniform *sampled texture1DArray,f32x2,f32x2,f32x2)", &SampledTextureSampleGrad_Texture1DArray } /* 2607 */,
-    std::pair{ "textureSampleGrad(uniform *sampled texture2D,f32x2,f32x2,f32x2)", &SampledTextureSampleGrad_Texture2D } /* 2608 */,
-    std::pair{ "textureSampleGrad(uniform *sampled texture2DArray,f32x3,f32x3,f32x3)", &SampledTextureSampleGrad_Texture2DArray } /* 2609 */,
-    std::pair{ "textureSampleGrad(uniform *sampled texture3D,f32x3,f32x3,f32x3)", &SampledTextureSampleGrad_Texture3D } /* 2610 */,
-    std::pair{ "textureSampleGrad(uniform *sampled textureCube,f32x3,f32x3,f32x3)", &SampledTextureSampleGrad_TextureCube } /* 2611 */,
-    std::pair{ "textureSampleGrad(uniform *sampled textureCubeArray,f32x4,f32x4,f32x4)", &SampledTextureSampleGrad_TextureCubeArray } /* 2612 */,
-    std::pair{ "textureSampleGrad(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleGrad_Texture1D } /* 2613 */,
-    std::pair{ "textureSampleGrad(uniform *texture1DArray,uniform *sampler,f32x2,f32x2,f32x2)", &TextureSampleGrad_Texture1DArray } /* 2614 */,
-    std::pair{ "textureSampleGrad(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2)", &TextureSampleGrad_Texture2D } /* 2615 */,
-    std::pair{ "textureSampleGrad(uniform *texture2DArray,uniform *sampler,f32x3,f32x3,f32x3)", &TextureSampleGrad_Texture2DArray } /* 2616 */,
-    std::pair{ "textureSampleGrad(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3)", &TextureSampleGrad_Texture3D } /* 2617 */,
-    std::pair{ "textureSampleGrad(uniform *textureCube,uniform *sampler,f32x3,f32x3,f32x3)", &TextureSampleGrad_TextureCube } /* 2618 */,
-    std::pair{ "textureSampleGrad(uniform *textureCubeArray,uniform *sampler,f32x4,f32x4,f32x4)", &TextureSampleGrad_TextureCubeArray } /* 2619 */,
+    std::pair{ "textureSampleGrad(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleGrad_Texture1D } /* 2606 */,
+    std::pair{ "textureSampleGrad(uniform *texture1DArray,uniform *sampler,f32x2,f32x2,f32x2)", &TextureSampleGrad_Texture1DArray } /* 2607 */,
+    std::pair{ "textureSampleGrad(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2)", &TextureSampleGrad_Texture2D } /* 2608 */,
+    std::pair{ "textureSampleGrad(uniform *texture2DArray,uniform *sampler,f32x3,f32x3,f32x3)", &TextureSampleGrad_Texture2DArray } /* 2609 */,
+    std::pair{ "textureSampleGrad(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3)", &TextureSampleGrad_Texture3D } /* 2610 */,
+    std::pair{ "textureSampleGrad(uniform *textureCube,uniform *sampler,f32x3,f32x3,f32x3)", &TextureSampleGrad_TextureCube } /* 2611 */,
+    std::pair{ "textureSampleGrad(uniform *textureCubeArray,uniform *sampler,f32x4,f32x4,f32x4)", &TextureSampleGrad_TextureCubeArray } /* 2612 */,
+    std::pair{ "textureSampleGrad(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleGrad_Texture1D } /* 2613 */,
+    std::pair{ "textureSampleGrad(uniform *textureSampled1DArray,f32x2,f32x2,f32x2)", &SampledTextureSampleGrad_Texture1DArray } /* 2614 */,
+    std::pair{ "textureSampleGrad(uniform *textureSampled2D,f32x2,f32x2,f32x2)", &SampledTextureSampleGrad_Texture2D } /* 2615 */,
+    std::pair{ "textureSampleGrad(uniform *textureSampled2DArray,f32x3,f32x3,f32x3)", &SampledTextureSampleGrad_Texture2DArray } /* 2616 */,
+    std::pair{ "textureSampleGrad(uniform *textureSampled3D,f32x3,f32x3,f32x3)", &SampledTextureSampleGrad_Texture3D } /* 2617 */,
+    std::pair{ "textureSampleGrad(uniform *textureSampledCube,f32x3,f32x3,f32x3)", &SampledTextureSampleGrad_TextureCube } /* 2618 */,
+    std::pair{ "textureSampleGrad(uniform *textureSampledCubeArray,f32x4,f32x4,f32x4)", &SampledTextureSampleGrad_TextureCubeArray } /* 2619 */,
     std::pair{ "textureSampleGradCompare", &TextureSampleGradCompare_Texture1D } /* 2620 */,
     std::pair{ "textureSampleGradCompare", &SampledTextureSampleGradCompare_Texture1D } /* 2621 */,
     std::pair{ "textureSampleGradCompare", &TextureSampleGradCompare_Texture2D } /* 2622 */,
@@ -10930,16 +10930,16 @@ inline constexpr StaticMap<ConstantString, Symbol*, 3309> DefaultIntrinsics = {
     std::pair{ "textureSampleGradCompare", &SampledTextureSampleGradCompare_Texture1DArray } /* 2627 */,
     std::pair{ "textureSampleGradCompare", &TextureSampleGradCompare_Texture2DArray } /* 2628 */,
     std::pair{ "textureSampleGradCompare", &SampledTextureSampleGradCompare_Texture2DArray } /* 2629 */,
-    std::pair{ "textureSampleGradCompare(uniform *sampled texture1D,f32,f32,f32,f32)", &SampledTextureSampleGradCompare_Texture1D } /* 2630 */,
-    std::pair{ "textureSampleGradCompare(uniform *sampled texture1DArray,f32x2,f32x2,f32x2,f32)", &SampledTextureSampleGradCompare_Texture1DArray } /* 2631 */,
-    std::pair{ "textureSampleGradCompare(uniform *sampled texture2D,f32x2,f32x2,f32x2,f32)", &SampledTextureSampleGradCompare_Texture2D } /* 2632 */,
-    std::pair{ "textureSampleGradCompare(uniform *sampled texture2DArray,f32x3,f32x3,f32x3,f32)", &SampledTextureSampleGradCompare_Texture2DArray } /* 2633 */,
-    std::pair{ "textureSampleGradCompare(uniform *sampled texture3D,f32x3,f32x3,f32x3,f32)", &SampledTextureSampleGradCompare_Texture3D } /* 2634 */,
-    std::pair{ "textureSampleGradCompare(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleGradCompare_Texture1D } /* 2635 */,
-    std::pair{ "textureSampleGradCompare(uniform *texture1DArray,uniform *sampler,f32x2,f32x2,f32x2,f32)", &TextureSampleGradCompare_Texture1DArray } /* 2636 */,
-    std::pair{ "textureSampleGradCompare(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32)", &TextureSampleGradCompare_Texture2D } /* 2637 */,
-    std::pair{ "textureSampleGradCompare(uniform *texture2DArray,uniform *sampler,f32x3,f32x3,f32x3,f32)", &TextureSampleGradCompare_Texture2DArray } /* 2638 */,
-    std::pair{ "textureSampleGradCompare(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32)", &TextureSampleGradCompare_Texture3D } /* 2639 */,
+    std::pair{ "textureSampleGradCompare(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleGradCompare_Texture1D } /* 2630 */,
+    std::pair{ "textureSampleGradCompare(uniform *texture1DArray,uniform *sampler,f32x2,f32x2,f32x2,f32)", &TextureSampleGradCompare_Texture1DArray } /* 2631 */,
+    std::pair{ "textureSampleGradCompare(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32)", &TextureSampleGradCompare_Texture2D } /* 2632 */,
+    std::pair{ "textureSampleGradCompare(uniform *texture2DArray,uniform *sampler,f32x3,f32x3,f32x3,f32)", &TextureSampleGradCompare_Texture2DArray } /* 2633 */,
+    std::pair{ "textureSampleGradCompare(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32)", &TextureSampleGradCompare_Texture3D } /* 2634 */,
+    std::pair{ "textureSampleGradCompare(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleGradCompare_Texture1D } /* 2635 */,
+    std::pair{ "textureSampleGradCompare(uniform *textureSampled1DArray,f32x2,f32x2,f32x2,f32)", &SampledTextureSampleGradCompare_Texture1DArray } /* 2636 */,
+    std::pair{ "textureSampleGradCompare(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32)", &SampledTextureSampleGradCompare_Texture2D } /* 2637 */,
+    std::pair{ "textureSampleGradCompare(uniform *textureSampled2DArray,f32x3,f32x3,f32x3,f32)", &SampledTextureSampleGradCompare_Texture2DArray } /* 2638 */,
+    std::pair{ "textureSampleGradCompare(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32)", &SampledTextureSampleGradCompare_Texture3D } /* 2639 */,
     std::pair{ "textureSampleGradCompareOffset", &TextureSampleGradCompareOffset_Texture1D } /* 2640 */,
     std::pair{ "textureSampleGradCompareOffset", &SampledTextureSampleGradCompareOffset_Texture1D } /* 2641 */,
     std::pair{ "textureSampleGradCompareOffset", &TextureSampleGradCompareOffset_Texture2D } /* 2642 */,
@@ -10950,16 +10950,16 @@ inline constexpr StaticMap<ConstantString, Symbol*, 3309> DefaultIntrinsics = {
     std::pair{ "textureSampleGradCompareOffset", &SampledTextureSampleGradCompareOffset_Texture1DArray } /* 2647 */,
     std::pair{ "textureSampleGradCompareOffset", &TextureSampleGradCompareOffset_Texture2DArray } /* 2648 */,
     std::pair{ "textureSampleGradCompareOffset", &SampledTextureSampleGradCompareOffset_Texture2DArray } /* 2649 */,
-    std::pair{ "textureSampleGradCompareOffset(uniform *sampled texture1D,f32,f32,f32,f32,f32)", &SampledTextureSampleGradCompareOffset_Texture1D } /* 2650 */,
-    std::pair{ "textureSampleGradCompareOffset(uniform *sampled texture1DArray,f32x2,f32x2,f32x2,f32,f32x2)", &SampledTextureSampleGradCompareOffset_Texture1DArray } /* 2651 */,
-    std::pair{ "textureSampleGradCompareOffset(uniform *sampled texture2D,f32x2,f32x2,f32x2,f32,f32x2)", &SampledTextureSampleGradCompareOffset_Texture2D } /* 2652 */,
-    std::pair{ "textureSampleGradCompareOffset(uniform *sampled texture2DArray,f32x3,f32x3,f32x3,f32,f32x3)", &SampledTextureSampleGradCompareOffset_Texture2DArray } /* 2653 */,
-    std::pair{ "textureSampleGradCompareOffset(uniform *sampled texture3D,f32x3,f32x3,f32x3,f32,f32x3)", &SampledTextureSampleGradCompareOffset_Texture3D } /* 2654 */,
-    std::pair{ "textureSampleGradCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)", &TextureSampleGradCompareOffset_Texture1D } /* 2655 */,
-    std::pair{ "textureSampleGradCompareOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32x2,f32x2,f32,f32x2)", &TextureSampleGradCompareOffset_Texture1DArray } /* 2656 */,
-    std::pair{ "textureSampleGradCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32,f32x2)", &TextureSampleGradCompareOffset_Texture2D } /* 2657 */,
-    std::pair{ "textureSampleGradCompareOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32x3,f32x3,f32,f32x3)", &TextureSampleGradCompareOffset_Texture2DArray } /* 2658 */,
-    std::pair{ "textureSampleGradCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32,f32x3)", &TextureSampleGradCompareOffset_Texture3D } /* 2659 */,
+    std::pair{ "textureSampleGradCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)", &TextureSampleGradCompareOffset_Texture1D } /* 2650 */,
+    std::pair{ "textureSampleGradCompareOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32x2,f32x2,f32,f32x2)", &TextureSampleGradCompareOffset_Texture1DArray } /* 2651 */,
+    std::pair{ "textureSampleGradCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32,f32x2)", &TextureSampleGradCompareOffset_Texture2D } /* 2652 */,
+    std::pair{ "textureSampleGradCompareOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32x3,f32x3,f32,f32x3)", &TextureSampleGradCompareOffset_Texture2DArray } /* 2653 */,
+    std::pair{ "textureSampleGradCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32,f32x3)", &TextureSampleGradCompareOffset_Texture3D } /* 2654 */,
+    std::pair{ "textureSampleGradCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32)", &SampledTextureSampleGradCompareOffset_Texture1D } /* 2655 */,
+    std::pair{ "textureSampleGradCompareOffset(uniform *textureSampled1DArray,f32x2,f32x2,f32x2,f32,f32x2)", &SampledTextureSampleGradCompareOffset_Texture1DArray } /* 2656 */,
+    std::pair{ "textureSampleGradCompareOffset(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32,f32x2)", &SampledTextureSampleGradCompareOffset_Texture2D } /* 2657 */,
+    std::pair{ "textureSampleGradCompareOffset(uniform *textureSampled2DArray,f32x3,f32x3,f32x3,f32,f32x3)", &SampledTextureSampleGradCompareOffset_Texture2DArray } /* 2658 */,
+    std::pair{ "textureSampleGradCompareOffset(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32,f32x3)", &SampledTextureSampleGradCompareOffset_Texture3D } /* 2659 */,
     std::pair{ "textureSampleGradOffset", &TextureSampleGradOffset_Texture1D } /* 2660 */,
     std::pair{ "textureSampleGradOffset", &SampledTextureSampleGradOffset_Texture1D } /* 2661 */,
     std::pair{ "textureSampleGradOffset", &TextureSampleGradOffset_Texture2D } /* 2662 */,
@@ -10970,64 +10970,64 @@ inline constexpr StaticMap<ConstantString, Symbol*, 3309> DefaultIntrinsics = {
     std::pair{ "textureSampleGradOffset", &SampledTextureSampleGradOffset_Texture1DArray } /* 2667 */,
     std::pair{ "textureSampleGradOffset", &TextureSampleGradOffset_Texture2DArray } /* 2668 */,
     std::pair{ "textureSampleGradOffset", &SampledTextureSampleGradOffset_Texture2DArray } /* 2669 */,
-    std::pair{ "textureSampleGradOffset(uniform *sampled texture1D,f32,f32,f32,f32)", &SampledTextureSampleGradOffset_Texture1D } /* 2670 */,
-    std::pair{ "textureSampleGradOffset(uniform *sampled texture1DArray,f32x2,f32x2,f32x2,f32x2)", &SampledTextureSampleGradOffset_Texture1DArray } /* 2671 */,
-    std::pair{ "textureSampleGradOffset(uniform *sampled texture2D,f32x2,f32x2,f32x2,f32x2)", &SampledTextureSampleGradOffset_Texture2D } /* 2672 */,
-    std::pair{ "textureSampleGradOffset(uniform *sampled texture2DArray,f32x3,f32x3,f32x3,f32x3)", &SampledTextureSampleGradOffset_Texture2DArray } /* 2673 */,
-    std::pair{ "textureSampleGradOffset(uniform *sampled texture3D,f32x3,f32x3,f32x3,f32x3)", &SampledTextureSampleGradOffset_Texture3D } /* 2674 */,
-    std::pair{ "textureSampleGradOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleGradOffset_Texture1D } /* 2675 */,
-    std::pair{ "textureSampleGradOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32x2,f32x2,f32x2)", &TextureSampleGradOffset_Texture1DArray } /* 2676 */,
-    std::pair{ "textureSampleGradOffset(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32x2)", &TextureSampleGradOffset_Texture2D } /* 2677 */,
-    std::pair{ "textureSampleGradOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32x3,f32x3,f32x3)", &TextureSampleGradOffset_Texture2DArray } /* 2678 */,
-    std::pair{ "textureSampleGradOffset(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32x3)", &TextureSampleGradOffset_Texture3D } /* 2679 */,
+    std::pair{ "textureSampleGradOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleGradOffset_Texture1D } /* 2670 */,
+    std::pair{ "textureSampleGradOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32x2,f32x2,f32x2)", &TextureSampleGradOffset_Texture1DArray } /* 2671 */,
+    std::pair{ "textureSampleGradOffset(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32x2)", &TextureSampleGradOffset_Texture2D } /* 2672 */,
+    std::pair{ "textureSampleGradOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32x3,f32x3,f32x3)", &TextureSampleGradOffset_Texture2DArray } /* 2673 */,
+    std::pair{ "textureSampleGradOffset(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32x3)", &TextureSampleGradOffset_Texture3D } /* 2674 */,
+    std::pair{ "textureSampleGradOffset(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleGradOffset_Texture1D } /* 2675 */,
+    std::pair{ "textureSampleGradOffset(uniform *textureSampled1DArray,f32x2,f32x2,f32x2,f32x2)", &SampledTextureSampleGradOffset_Texture1DArray } /* 2676 */,
+    std::pair{ "textureSampleGradOffset(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32x2)", &SampledTextureSampleGradOffset_Texture2D } /* 2677 */,
+    std::pair{ "textureSampleGradOffset(uniform *textureSampled2DArray,f32x3,f32x3,f32x3,f32x3)", &SampledTextureSampleGradOffset_Texture2DArray } /* 2678 */,
+    std::pair{ "textureSampleGradOffset(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32x3)", &SampledTextureSampleGradOffset_Texture3D } /* 2679 */,
     std::pair{ "textureSampleGradProj", &TextureSampleGradProj_Texture1D } /* 2680 */,
     std::pair{ "textureSampleGradProj", &SampledTextureSampleGradProj_Texture1D } /* 2681 */,
     std::pair{ "textureSampleGradProj", &TextureSampleGradProj_Texture2D } /* 2682 */,
     std::pair{ "textureSampleGradProj", &SampledTextureSampleGradProj_Texture2D } /* 2683 */,
     std::pair{ "textureSampleGradProj", &TextureSampleGradProj_Texture3D } /* 2684 */,
     std::pair{ "textureSampleGradProj", &SampledTextureSampleGradProj_Texture3D } /* 2685 */,
-    std::pair{ "textureSampleGradProj(uniform *sampled texture1D,f32,f32,f32,f32)", &SampledTextureSampleGradProj_Texture1D } /* 2686 */,
-    std::pair{ "textureSampleGradProj(uniform *sampled texture2D,f32x2,f32x2,f32x2,f32)", &SampledTextureSampleGradProj_Texture2D } /* 2687 */,
-    std::pair{ "textureSampleGradProj(uniform *sampled texture3D,f32x3,f32x3,f32x3,f32)", &SampledTextureSampleGradProj_Texture3D } /* 2688 */,
-    std::pair{ "textureSampleGradProj(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleGradProj_Texture1D } /* 2689 */,
-    std::pair{ "textureSampleGradProj(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32)", &TextureSampleGradProj_Texture2D } /* 2690 */,
-    std::pair{ "textureSampleGradProj(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32)", &TextureSampleGradProj_Texture3D } /* 2691 */,
+    std::pair{ "textureSampleGradProj(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleGradProj_Texture1D } /* 2686 */,
+    std::pair{ "textureSampleGradProj(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32)", &TextureSampleGradProj_Texture2D } /* 2687 */,
+    std::pair{ "textureSampleGradProj(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32)", &TextureSampleGradProj_Texture3D } /* 2688 */,
+    std::pair{ "textureSampleGradProj(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleGradProj_Texture1D } /* 2689 */,
+    std::pair{ "textureSampleGradProj(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32)", &SampledTextureSampleGradProj_Texture2D } /* 2690 */,
+    std::pair{ "textureSampleGradProj(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32)", &SampledTextureSampleGradProj_Texture3D } /* 2691 */,
     std::pair{ "textureSampleGradProjCompare", &TextureSampleGradProjCompare_Texture1D } /* 2692 */,
     std::pair{ "textureSampleGradProjCompare", &SampledTextureSampleGradProjCompare_Texture1D } /* 2693 */,
     std::pair{ "textureSampleGradProjCompare", &TextureSampleGradProjCompare_Texture2D } /* 2694 */,
     std::pair{ "textureSampleGradProjCompare", &SampledTextureSampleGradProjCompare_Texture2D } /* 2695 */,
     std::pair{ "textureSampleGradProjCompare", &TextureSampleGradProjCompare_Texture3D } /* 2696 */,
     std::pair{ "textureSampleGradProjCompare", &SampledTextureSampleGradProjCompare_Texture3D } /* 2697 */,
-    std::pair{ "textureSampleGradProjCompare(uniform *sampled texture1D,f32,f32,f32,f32,f32)", &SampledTextureSampleGradProjCompare_Texture1D } /* 2698 */,
-    std::pair{ "textureSampleGradProjCompare(uniform *sampled texture2D,f32x2,f32x2,f32x2,f32,f32)", &SampledTextureSampleGradProjCompare_Texture2D } /* 2699 */,
-    std::pair{ "textureSampleGradProjCompare(uniform *sampled texture3D,f32x3,f32x3,f32x3,f32,f32)", &SampledTextureSampleGradProjCompare_Texture3D } /* 2700 */,
-    std::pair{ "textureSampleGradProjCompare(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)", &TextureSampleGradProjCompare_Texture1D } /* 2701 */,
-    std::pair{ "textureSampleGradProjCompare(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32,f32)", &TextureSampleGradProjCompare_Texture2D } /* 2702 */,
-    std::pair{ "textureSampleGradProjCompare(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32,f32)", &TextureSampleGradProjCompare_Texture3D } /* 2703 */,
+    std::pair{ "textureSampleGradProjCompare(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)", &TextureSampleGradProjCompare_Texture1D } /* 2698 */,
+    std::pair{ "textureSampleGradProjCompare(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32,f32)", &TextureSampleGradProjCompare_Texture2D } /* 2699 */,
+    std::pair{ "textureSampleGradProjCompare(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32,f32)", &TextureSampleGradProjCompare_Texture3D } /* 2700 */,
+    std::pair{ "textureSampleGradProjCompare(uniform *textureSampled1D,f32,f32,f32,f32,f32)", &SampledTextureSampleGradProjCompare_Texture1D } /* 2701 */,
+    std::pair{ "textureSampleGradProjCompare(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32,f32)", &SampledTextureSampleGradProjCompare_Texture2D } /* 2702 */,
+    std::pair{ "textureSampleGradProjCompare(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32,f32)", &SampledTextureSampleGradProjCompare_Texture3D } /* 2703 */,
     std::pair{ "textureSampleGradProjCompareOffset", &TextureSampleGradProjCompareOffset_Texture1D } /* 2704 */,
     std::pair{ "textureSampleGradProjCompareOffset", &SampledTextureSampleGradProjCompareOffset_Texture1D } /* 2705 */,
     std::pair{ "textureSampleGradProjCompareOffset", &TextureSampleGradProjCompareOffset_Texture2D } /* 2706 */,
     std::pair{ "textureSampleGradProjCompareOffset", &SampledTextureSampleGradProjCompareOffset_Texture2D } /* 2707 */,
     std::pair{ "textureSampleGradProjCompareOffset", &TextureSampleGradProjCompareOffset_Texture3D } /* 2708 */,
     std::pair{ "textureSampleGradProjCompareOffset", &SampledTextureSampleGradProjCompareOffset_Texture3D } /* 2709 */,
-    std::pair{ "textureSampleGradProjCompareOffset(uniform *sampled texture1D,f32,f32,f32,f32,f32,f32)", &SampledTextureSampleGradProjCompareOffset_Texture1D } /* 2710 */,
-    std::pair{ "textureSampleGradProjCompareOffset(uniform *sampled texture2D,f32x2,f32x2,f32x2,f32,f32,f32x2)", &SampledTextureSampleGradProjCompareOffset_Texture2D } /* 2711 */,
-    std::pair{ "textureSampleGradProjCompareOffset(uniform *sampled texture3D,f32x3,f32x3,f32x3,f32,f32,f32x3)", &SampledTextureSampleGradProjCompareOffset_Texture3D } /* 2712 */,
-    std::pair{ "textureSampleGradProjCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32,f32)", &TextureSampleGradProjCompareOffset_Texture1D } /* 2713 */,
-    std::pair{ "textureSampleGradProjCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32,f32,f32x2)", &TextureSampleGradProjCompareOffset_Texture2D } /* 2714 */,
-    std::pair{ "textureSampleGradProjCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32,f32,f32x3)", &TextureSampleGradProjCompareOffset_Texture3D } /* 2715 */,
+    std::pair{ "textureSampleGradProjCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32,f32)", &TextureSampleGradProjCompareOffset_Texture1D } /* 2710 */,
+    std::pair{ "textureSampleGradProjCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32,f32,f32x2)", &TextureSampleGradProjCompareOffset_Texture2D } /* 2711 */,
+    std::pair{ "textureSampleGradProjCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32,f32,f32x3)", &TextureSampleGradProjCompareOffset_Texture3D } /* 2712 */,
+    std::pair{ "textureSampleGradProjCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32,f32)", &SampledTextureSampleGradProjCompareOffset_Texture1D } /* 2713 */,
+    std::pair{ "textureSampleGradProjCompareOffset(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32,f32,f32x2)", &SampledTextureSampleGradProjCompareOffset_Texture2D } /* 2714 */,
+    std::pair{ "textureSampleGradProjCompareOffset(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32,f32,f32x3)", &SampledTextureSampleGradProjCompareOffset_Texture3D } /* 2715 */,
     std::pair{ "textureSampleGradProjOffset", &TextureSampleGradProjOffset_Texture1D } /* 2716 */,
     std::pair{ "textureSampleGradProjOffset", &SampledTextureSampleGradProjOffset_Texture1D } /* 2717 */,
     std::pair{ "textureSampleGradProjOffset", &TextureSampleGradProjOffset_Texture2D } /* 2718 */,
     std::pair{ "textureSampleGradProjOffset", &SampledTextureSampleGradProjOffset_Texture2D } /* 2719 */,
     std::pair{ "textureSampleGradProjOffset", &TextureSampleGradProjOffset_Texture3D } /* 2720 */,
     std::pair{ "textureSampleGradProjOffset", &SampledTextureSampleGradProjOffset_Texture3D } /* 2721 */,
-    std::pair{ "textureSampleGradProjOffset(uniform *sampled texture1D,f32,f32,f32,f32,f32)", &SampledTextureSampleGradProjOffset_Texture1D } /* 2722 */,
-    std::pair{ "textureSampleGradProjOffset(uniform *sampled texture2D,f32x2,f32x2,f32x2,f32,f32x2)", &SampledTextureSampleGradProjOffset_Texture2D } /* 2723 */,
-    std::pair{ "textureSampleGradProjOffset(uniform *sampled texture3D,f32x3,f32x3,f32x3,f32,f32x3)", &SampledTextureSampleGradProjOffset_Texture3D } /* 2724 */,
-    std::pair{ "textureSampleGradProjOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)", &TextureSampleGradProjOffset_Texture1D } /* 2725 */,
-    std::pair{ "textureSampleGradProjOffset(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32,f32x2)", &TextureSampleGradProjOffset_Texture2D } /* 2726 */,
-    std::pair{ "textureSampleGradProjOffset(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32,f32x3)", &TextureSampleGradProjOffset_Texture3D } /* 2727 */,
+    std::pair{ "textureSampleGradProjOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)", &TextureSampleGradProjOffset_Texture1D } /* 2722 */,
+    std::pair{ "textureSampleGradProjOffset(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32,f32x2)", &TextureSampleGradProjOffset_Texture2D } /* 2723 */,
+    std::pair{ "textureSampleGradProjOffset(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32,f32x3)", &TextureSampleGradProjOffset_Texture3D } /* 2724 */,
+    std::pair{ "textureSampleGradProjOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32)", &SampledTextureSampleGradProjOffset_Texture1D } /* 2725 */,
+    std::pair{ "textureSampleGradProjOffset(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32,f32x2)", &SampledTextureSampleGradProjOffset_Texture2D } /* 2726 */,
+    std::pair{ "textureSampleGradProjOffset(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32,f32x3)", &SampledTextureSampleGradProjOffset_Texture3D } /* 2727 */,
     std::pair{ "textureSampleLod", &TextureSampleLod_Texture1D } /* 2728 */,
     std::pair{ "textureSampleLod", &SampledTextureSampleLod_Texture1D } /* 2729 */,
     std::pair{ "textureSampleLod", &TextureSampleLod_Texture2D } /* 2730 */,
@@ -11042,20 +11042,20 @@ inline constexpr StaticMap<ConstantString, Symbol*, 3309> DefaultIntrinsics = {
     std::pair{ "textureSampleLod", &SampledTextureSampleLod_Texture2DArray } /* 2739 */,
     std::pair{ "textureSampleLod", &TextureSampleLod_TextureCubeArray } /* 2740 */,
     std::pair{ "textureSampleLod", &SampledTextureSampleLod_TextureCubeArray } /* 2741 */,
-    std::pair{ "textureSampleLod(uniform *sampled texture1D,f32,f32)", &SampledTextureSampleLod_Texture1D } /* 2742 */,
-    std::pair{ "textureSampleLod(uniform *sampled texture1DArray,f32x2,f32)", &SampledTextureSampleLod_Texture1DArray } /* 2743 */,
-    std::pair{ "textureSampleLod(uniform *sampled texture2D,f32x2,f32)", &SampledTextureSampleLod_Texture2D } /* 2744 */,
-    std::pair{ "textureSampleLod(uniform *sampled texture2DArray,f32x3,f32)", &SampledTextureSampleLod_Texture2DArray } /* 2745 */,
-    std::pair{ "textureSampleLod(uniform *sampled texture3D,f32x3,f32)", &SampledTextureSampleLod_Texture3D } /* 2746 */,
-    std::pair{ "textureSampleLod(uniform *sampled textureCube,f32x3,f32)", &SampledTextureSampleLod_TextureCube } /* 2747 */,
-    std::pair{ "textureSampleLod(uniform *sampled textureCubeArray,f32x4,f32)", &SampledTextureSampleLod_TextureCubeArray } /* 2748 */,
-    std::pair{ "textureSampleLod(uniform *texture1D,uniform *sampler,f32,f32)", &TextureSampleLod_Texture1D } /* 2749 */,
-    std::pair{ "textureSampleLod(uniform *texture1DArray,uniform *sampler,f32x2,f32)", &TextureSampleLod_Texture1DArray } /* 2750 */,
-    std::pair{ "textureSampleLod(uniform *texture2D,uniform *sampler,f32x2,f32)", &TextureSampleLod_Texture2D } /* 2751 */,
-    std::pair{ "textureSampleLod(uniform *texture2DArray,uniform *sampler,f32x3,f32)", &TextureSampleLod_Texture2DArray } /* 2752 */,
-    std::pair{ "textureSampleLod(uniform *texture3D,uniform *sampler,f32x3,f32)", &TextureSampleLod_Texture3D } /* 2753 */,
-    std::pair{ "textureSampleLod(uniform *textureCube,uniform *sampler,f32x3,f32)", &TextureSampleLod_TextureCube } /* 2754 */,
-    std::pair{ "textureSampleLod(uniform *textureCubeArray,uniform *sampler,f32x4,f32)", &TextureSampleLod_TextureCubeArray } /* 2755 */,
+    std::pair{ "textureSampleLod(uniform *texture1D,uniform *sampler,f32,f32)", &TextureSampleLod_Texture1D } /* 2742 */,
+    std::pair{ "textureSampleLod(uniform *texture1DArray,uniform *sampler,f32x2,f32)", &TextureSampleLod_Texture1DArray } /* 2743 */,
+    std::pair{ "textureSampleLod(uniform *texture2D,uniform *sampler,f32x2,f32)", &TextureSampleLod_Texture2D } /* 2744 */,
+    std::pair{ "textureSampleLod(uniform *texture2DArray,uniform *sampler,f32x3,f32)", &TextureSampleLod_Texture2DArray } /* 2745 */,
+    std::pair{ "textureSampleLod(uniform *texture3D,uniform *sampler,f32x3,f32)", &TextureSampleLod_Texture3D } /* 2746 */,
+    std::pair{ "textureSampleLod(uniform *textureCube,uniform *sampler,f32x3,f32)", &TextureSampleLod_TextureCube } /* 2747 */,
+    std::pair{ "textureSampleLod(uniform *textureCubeArray,uniform *sampler,f32x4,f32)", &TextureSampleLod_TextureCubeArray } /* 2748 */,
+    std::pair{ "textureSampleLod(uniform *textureSampled1D,f32,f32)", &SampledTextureSampleLod_Texture1D } /* 2749 */,
+    std::pair{ "textureSampleLod(uniform *textureSampled1DArray,f32x2,f32)", &SampledTextureSampleLod_Texture1DArray } /* 2750 */,
+    std::pair{ "textureSampleLod(uniform *textureSampled2D,f32x2,f32)", &SampledTextureSampleLod_Texture2D } /* 2751 */,
+    std::pair{ "textureSampleLod(uniform *textureSampled2DArray,f32x3,f32)", &SampledTextureSampleLod_Texture2DArray } /* 2752 */,
+    std::pair{ "textureSampleLod(uniform *textureSampled3D,f32x3,f32)", &SampledTextureSampleLod_Texture3D } /* 2753 */,
+    std::pair{ "textureSampleLod(uniform *textureSampledCube,f32x3,f32)", &SampledTextureSampleLod_TextureCube } /* 2754 */,
+    std::pair{ "textureSampleLod(uniform *textureSampledCubeArray,f32x4,f32)", &SampledTextureSampleLod_TextureCubeArray } /* 2755 */,
     std::pair{ "textureSampleLodCompare", &TextureSampleLodCompare_Texture1D } /* 2756 */,
     std::pair{ "textureSampleLodCompare", &SampledTextureSampleLodCompare_Texture1D } /* 2757 */,
     std::pair{ "textureSampleLodCompare", &TextureSampleLodCompare_Texture2D } /* 2758 */,
@@ -11066,16 +11066,16 @@ inline constexpr StaticMap<ConstantString, Symbol*, 3309> DefaultIntrinsics = {
     std::pair{ "textureSampleLodCompare", &SampledTextureSampleLodCompare_Texture1DArray } /* 2763 */,
     std::pair{ "textureSampleLodCompare", &TextureSampleLodCompare_Texture2DArray } /* 2764 */,
     std::pair{ "textureSampleLodCompare", &SampledTextureSampleLodCompare_Texture2DArray } /* 2765 */,
-    std::pair{ "textureSampleLodCompare(uniform *sampled texture1D,f32,f32,f32)", &SampledTextureSampleLodCompare_Texture1D } /* 2766 */,
-    std::pair{ "textureSampleLodCompare(uniform *sampled texture1DArray,f32x2,f32,f32)", &SampledTextureSampleLodCompare_Texture1DArray } /* 2767 */,
-    std::pair{ "textureSampleLodCompare(uniform *sampled texture2D,f32x2,f32,f32)", &SampledTextureSampleLodCompare_Texture2D } /* 2768 */,
-    std::pair{ "textureSampleLodCompare(uniform *sampled texture2DArray,f32x3,f32,f32)", &SampledTextureSampleLodCompare_Texture2DArray } /* 2769 */,
-    std::pair{ "textureSampleLodCompare(uniform *sampled texture3D,f32x3,f32,f32)", &SampledTextureSampleLodCompare_Texture3D } /* 2770 */,
-    std::pair{ "textureSampleLodCompare(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleLodCompare_Texture1D } /* 2771 */,
-    std::pair{ "textureSampleLodCompare(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32)", &TextureSampleLodCompare_Texture1DArray } /* 2772 */,
-    std::pair{ "textureSampleLodCompare(uniform *texture2D,uniform *sampler,f32x2,f32,f32)", &TextureSampleLodCompare_Texture2D } /* 2773 */,
-    std::pair{ "textureSampleLodCompare(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32)", &TextureSampleLodCompare_Texture2DArray } /* 2774 */,
-    std::pair{ "textureSampleLodCompare(uniform *texture3D,uniform *sampler,f32x3,f32,f32)", &TextureSampleLodCompare_Texture3D } /* 2775 */,
+    std::pair{ "textureSampleLodCompare(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleLodCompare_Texture1D } /* 2766 */,
+    std::pair{ "textureSampleLodCompare(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32)", &TextureSampleLodCompare_Texture1DArray } /* 2767 */,
+    std::pair{ "textureSampleLodCompare(uniform *texture2D,uniform *sampler,f32x2,f32,f32)", &TextureSampleLodCompare_Texture2D } /* 2768 */,
+    std::pair{ "textureSampleLodCompare(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32)", &TextureSampleLodCompare_Texture2DArray } /* 2769 */,
+    std::pair{ "textureSampleLodCompare(uniform *texture3D,uniform *sampler,f32x3,f32,f32)", &TextureSampleLodCompare_Texture3D } /* 2770 */,
+    std::pair{ "textureSampleLodCompare(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleLodCompare_Texture1D } /* 2771 */,
+    std::pair{ "textureSampleLodCompare(uniform *textureSampled1DArray,f32x2,f32,f32)", &SampledTextureSampleLodCompare_Texture1DArray } /* 2772 */,
+    std::pair{ "textureSampleLodCompare(uniform *textureSampled2D,f32x2,f32,f32)", &SampledTextureSampleLodCompare_Texture2D } /* 2773 */,
+    std::pair{ "textureSampleLodCompare(uniform *textureSampled2DArray,f32x3,f32,f32)", &SampledTextureSampleLodCompare_Texture2DArray } /* 2774 */,
+    std::pair{ "textureSampleLodCompare(uniform *textureSampled3D,f32x3,f32,f32)", &SampledTextureSampleLodCompare_Texture3D } /* 2775 */,
     std::pair{ "textureSampleLodCompareOffset", &TextureSampleLodCompareOffset_Texture1D } /* 2776 */,
     std::pair{ "textureSampleLodCompareOffset", &SampledTextureSampleLodCompareOffset_Texture1D } /* 2777 */,
     std::pair{ "textureSampleLodCompareOffset", &TextureSampleLodCompareOffset_Texture2D } /* 2778 */,
@@ -11086,16 +11086,16 @@ inline constexpr StaticMap<ConstantString, Symbol*, 3309> DefaultIntrinsics = {
     std::pair{ "textureSampleLodCompareOffset", &SampledTextureSampleLodCompareOffset_Texture1DArray } /* 2783 */,
     std::pair{ "textureSampleLodCompareOffset", &TextureSampleLodCompareOffset_Texture2DArray } /* 2784 */,
     std::pair{ "textureSampleLodCompareOffset", &SampledTextureSampleLodCompareOffset_Texture2DArray } /* 2785 */,
-    std::pair{ "textureSampleLodCompareOffset(uniform *sampled texture1D,f32,f32,f32,f32)", &SampledTextureSampleLodCompareOffset_Texture1D } /* 2786 */,
-    std::pair{ "textureSampleLodCompareOffset(uniform *sampled texture1DArray,f32x2,f32,f32,f32x2)", &SampledTextureSampleLodCompareOffset_Texture1DArray } /* 2787 */,
-    std::pair{ "textureSampleLodCompareOffset(uniform *sampled texture2D,f32x2,f32,f32,f32x2)", &SampledTextureSampleLodCompareOffset_Texture2D } /* 2788 */,
-    std::pair{ "textureSampleLodCompareOffset(uniform *sampled texture2DArray,f32x3,f32,f32,f32x3)", &SampledTextureSampleLodCompareOffset_Texture2DArray } /* 2789 */,
-    std::pair{ "textureSampleLodCompareOffset(uniform *sampled texture3D,f32x3,f32,f32,f32x3)", &SampledTextureSampleLodCompareOffset_Texture3D } /* 2790 */,
-    std::pair{ "textureSampleLodCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleLodCompareOffset_Texture1D } /* 2791 */,
-    std::pair{ "textureSampleLodCompareOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleLodCompareOffset_Texture1DArray } /* 2792 */,
-    std::pair{ "textureSampleLodCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleLodCompareOffset_Texture2D } /* 2793 */,
-    std::pair{ "textureSampleLodCompareOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleLodCompareOffset_Texture2DArray } /* 2794 */,
-    std::pair{ "textureSampleLodCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleLodCompareOffset_Texture3D } /* 2795 */,
+    std::pair{ "textureSampleLodCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleLodCompareOffset_Texture1D } /* 2786 */,
+    std::pair{ "textureSampleLodCompareOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleLodCompareOffset_Texture1DArray } /* 2787 */,
+    std::pair{ "textureSampleLodCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleLodCompareOffset_Texture2D } /* 2788 */,
+    std::pair{ "textureSampleLodCompareOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleLodCompareOffset_Texture2DArray } /* 2789 */,
+    std::pair{ "textureSampleLodCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleLodCompareOffset_Texture3D } /* 2790 */,
+    std::pair{ "textureSampleLodCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleLodCompareOffset_Texture1D } /* 2791 */,
+    std::pair{ "textureSampleLodCompareOffset(uniform *textureSampled1DArray,f32x2,f32,f32,f32x2)", &SampledTextureSampleLodCompareOffset_Texture1DArray } /* 2792 */,
+    std::pair{ "textureSampleLodCompareOffset(uniform *textureSampled2D,f32x2,f32,f32,f32x2)", &SampledTextureSampleLodCompareOffset_Texture2D } /* 2793 */,
+    std::pair{ "textureSampleLodCompareOffset(uniform *textureSampled2DArray,f32x3,f32,f32,f32x3)", &SampledTextureSampleLodCompareOffset_Texture2DArray } /* 2794 */,
+    std::pair{ "textureSampleLodCompareOffset(uniform *textureSampled3D,f32x3,f32,f32,f32x3)", &SampledTextureSampleLodCompareOffset_Texture3D } /* 2795 */,
     std::pair{ "textureSampleLodOffset", &TextureSampleLodOffset_Texture1D } /* 2796 */,
     std::pair{ "textureSampleLodOffset", &SampledTextureSampleLodOffset_Texture1D } /* 2797 */,
     std::pair{ "textureSampleLodOffset", &TextureSampleLodOffset_Texture2D } /* 2798 */,
@@ -11106,64 +11106,64 @@ inline constexpr StaticMap<ConstantString, Symbol*, 3309> DefaultIntrinsics = {
     std::pair{ "textureSampleLodOffset", &SampledTextureSampleLodOffset_Texture1DArray } /* 2803 */,
     std::pair{ "textureSampleLodOffset", &TextureSampleLodOffset_Texture2DArray } /* 2804 */,
     std::pair{ "textureSampleLodOffset", &SampledTextureSampleLodOffset_Texture2DArray } /* 2805 */,
-    std::pair{ "textureSampleLodOffset(uniform *sampled texture1D,f32,f32,f32)", &SampledTextureSampleLodOffset_Texture1D } /* 2806 */,
-    std::pair{ "textureSampleLodOffset(uniform *sampled texture1DArray,f32x2,f32,f32x2)", &SampledTextureSampleLodOffset_Texture1DArray } /* 2807 */,
-    std::pair{ "textureSampleLodOffset(uniform *sampled texture2D,f32x2,f32,f32x2)", &SampledTextureSampleLodOffset_Texture2D } /* 2808 */,
-    std::pair{ "textureSampleLodOffset(uniform *sampled texture2DArray,f32x3,f32,f32x3)", &SampledTextureSampleLodOffset_Texture2DArray } /* 2809 */,
-    std::pair{ "textureSampleLodOffset(uniform *sampled texture3D,f32x3,f32,f32x3)", &SampledTextureSampleLodOffset_Texture3D } /* 2810 */,
-    std::pair{ "textureSampleLodOffset(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleLodOffset_Texture1D } /* 2811 */,
-    std::pair{ "textureSampleLodOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleLodOffset_Texture1DArray } /* 2812 */,
-    std::pair{ "textureSampleLodOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleLodOffset_Texture2D } /* 2813 */,
-    std::pair{ "textureSampleLodOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleLodOffset_Texture2DArray } /* 2814 */,
-    std::pair{ "textureSampleLodOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleLodOffset_Texture3D } /* 2815 */,
+    std::pair{ "textureSampleLodOffset(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleLodOffset_Texture1D } /* 2806 */,
+    std::pair{ "textureSampleLodOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleLodOffset_Texture1DArray } /* 2807 */,
+    std::pair{ "textureSampleLodOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleLodOffset_Texture2D } /* 2808 */,
+    std::pair{ "textureSampleLodOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleLodOffset_Texture2DArray } /* 2809 */,
+    std::pair{ "textureSampleLodOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleLodOffset_Texture3D } /* 2810 */,
+    std::pair{ "textureSampleLodOffset(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleLodOffset_Texture1D } /* 2811 */,
+    std::pair{ "textureSampleLodOffset(uniform *textureSampled1DArray,f32x2,f32,f32x2)", &SampledTextureSampleLodOffset_Texture1DArray } /* 2812 */,
+    std::pair{ "textureSampleLodOffset(uniform *textureSampled2D,f32x2,f32,f32x2)", &SampledTextureSampleLodOffset_Texture2D } /* 2813 */,
+    std::pair{ "textureSampleLodOffset(uniform *textureSampled2DArray,f32x3,f32,f32x3)", &SampledTextureSampleLodOffset_Texture2DArray } /* 2814 */,
+    std::pair{ "textureSampleLodOffset(uniform *textureSampled3D,f32x3,f32,f32x3)", &SampledTextureSampleLodOffset_Texture3D } /* 2815 */,
     std::pair{ "textureSampleLodProj", &TextureSampleLodProj_Texture1D } /* 2816 */,
     std::pair{ "textureSampleLodProj", &SampledTextureSampleLodProj_Texture1D } /* 2817 */,
     std::pair{ "textureSampleLodProj", &TextureSampleLodProj_Texture2D } /* 2818 */,
     std::pair{ "textureSampleLodProj", &SampledTextureSampleLodProj_Texture2D } /* 2819 */,
     std::pair{ "textureSampleLodProj", &TextureSampleLodProj_Texture3D } /* 2820 */,
     std::pair{ "textureSampleLodProj", &SampledTextureSampleLodProj_Texture3D } /* 2821 */,
-    std::pair{ "textureSampleLodProj(uniform *sampled texture1D,f32,f32,f32)", &SampledTextureSampleLodProj_Texture1D } /* 2822 */,
-    std::pair{ "textureSampleLodProj(uniform *sampled texture2D,f32x2,f32,f32)", &SampledTextureSampleLodProj_Texture2D } /* 2823 */,
-    std::pair{ "textureSampleLodProj(uniform *sampled texture3D,f32x3,f32,f32)", &SampledTextureSampleLodProj_Texture3D } /* 2824 */,
-    std::pair{ "textureSampleLodProj(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleLodProj_Texture1D } /* 2825 */,
-    std::pair{ "textureSampleLodProj(uniform *texture2D,uniform *sampler,f32x2,f32,f32)", &TextureSampleLodProj_Texture2D } /* 2826 */,
-    std::pair{ "textureSampleLodProj(uniform *texture3D,uniform *sampler,f32x3,f32,f32)", &TextureSampleLodProj_Texture3D } /* 2827 */,
+    std::pair{ "textureSampleLodProj(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleLodProj_Texture1D } /* 2822 */,
+    std::pair{ "textureSampleLodProj(uniform *texture2D,uniform *sampler,f32x2,f32,f32)", &TextureSampleLodProj_Texture2D } /* 2823 */,
+    std::pair{ "textureSampleLodProj(uniform *texture3D,uniform *sampler,f32x3,f32,f32)", &TextureSampleLodProj_Texture3D } /* 2824 */,
+    std::pair{ "textureSampleLodProj(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleLodProj_Texture1D } /* 2825 */,
+    std::pair{ "textureSampleLodProj(uniform *textureSampled2D,f32x2,f32,f32)", &SampledTextureSampleLodProj_Texture2D } /* 2826 */,
+    std::pair{ "textureSampleLodProj(uniform *textureSampled3D,f32x3,f32,f32)", &SampledTextureSampleLodProj_Texture3D } /* 2827 */,
     std::pair{ "textureSampleLodProjCompare", &TextureSampleLodProjCompare_Texture1D } /* 2828 */,
     std::pair{ "textureSampleLodProjCompare", &SampledTextureSampleLodProjCompare_Texture1D } /* 2829 */,
     std::pair{ "textureSampleLodProjCompare", &TextureSampleLodProjCompare_Texture2D } /* 2830 */,
     std::pair{ "textureSampleLodProjCompare", &SampledTextureSampleLodProjCompare_Texture2D } /* 2831 */,
     std::pair{ "textureSampleLodProjCompare", &TextureSampleLodProjCompare_Texture3D } /* 2832 */,
     std::pair{ "textureSampleLodProjCompare", &SampledTextureSampleLodProjCompare_Texture3D } /* 2833 */,
-    std::pair{ "textureSampleLodProjCompare(uniform *sampled texture1D,f32,f32,f32,f32)", &SampledTextureSampleLodProjCompare_Texture1D } /* 2834 */,
-    std::pair{ "textureSampleLodProjCompare(uniform *sampled texture2D,f32x2,f32,f32,f32)", &SampledTextureSampleLodProjCompare_Texture2D } /* 2835 */,
-    std::pair{ "textureSampleLodProjCompare(uniform *sampled texture3D,f32x3,f32,f32,f32)", &SampledTextureSampleLodProjCompare_Texture3D } /* 2836 */,
-    std::pair{ "textureSampleLodProjCompare(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleLodProjCompare_Texture1D } /* 2837 */,
-    std::pair{ "textureSampleLodProjCompare(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32)", &TextureSampleLodProjCompare_Texture2D } /* 2838 */,
-    std::pair{ "textureSampleLodProjCompare(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32)", &TextureSampleLodProjCompare_Texture3D } /* 2839 */,
+    std::pair{ "textureSampleLodProjCompare(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleLodProjCompare_Texture1D } /* 2834 */,
+    std::pair{ "textureSampleLodProjCompare(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32)", &TextureSampleLodProjCompare_Texture2D } /* 2835 */,
+    std::pair{ "textureSampleLodProjCompare(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32)", &TextureSampleLodProjCompare_Texture3D } /* 2836 */,
+    std::pair{ "textureSampleLodProjCompare(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleLodProjCompare_Texture1D } /* 2837 */,
+    std::pair{ "textureSampleLodProjCompare(uniform *textureSampled2D,f32x2,f32,f32,f32)", &SampledTextureSampleLodProjCompare_Texture2D } /* 2838 */,
+    std::pair{ "textureSampleLodProjCompare(uniform *textureSampled3D,f32x3,f32,f32,f32)", &SampledTextureSampleLodProjCompare_Texture3D } /* 2839 */,
     std::pair{ "textureSampleLodProjCompareOffset", &TextureSampleLodProjCompareOffset_Texture1D } /* 2840 */,
     std::pair{ "textureSampleLodProjCompareOffset", &SampledTextureSampleLodProjCompareOffset_Texture1D } /* 2841 */,
     std::pair{ "textureSampleLodProjCompareOffset", &TextureSampleLodProjCompareOffset_Texture2D } /* 2842 */,
     std::pair{ "textureSampleLodProjCompareOffset", &SampledTextureSampleLodProjCompareOffset_Texture2D } /* 2843 */,
     std::pair{ "textureSampleLodProjCompareOffset", &TextureSampleLodProjCompareOffset_Texture3D } /* 2844 */,
     std::pair{ "textureSampleLodProjCompareOffset", &SampledTextureSampleLodProjCompareOffset_Texture3D } /* 2845 */,
-    std::pair{ "textureSampleLodProjCompareOffset(uniform *sampled texture1D,f32,f32,f32,f32,f32)", &SampledTextureSampleLodProjCompareOffset_Texture1D } /* 2846 */,
-    std::pair{ "textureSampleLodProjCompareOffset(uniform *sampled texture2D,f32x2,f32,f32,f32,f32x2)", &SampledTextureSampleLodProjCompareOffset_Texture2D } /* 2847 */,
-    std::pair{ "textureSampleLodProjCompareOffset(uniform *sampled texture3D,f32x3,f32,f32,f32,f32x3)", &SampledTextureSampleLodProjCompareOffset_Texture3D } /* 2848 */,
-    std::pair{ "textureSampleLodProjCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)", &TextureSampleLodProjCompareOffset_Texture1D } /* 2849 */,
-    std::pair{ "textureSampleLodProjCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32,f32x2)", &TextureSampleLodProjCompareOffset_Texture2D } /* 2850 */,
-    std::pair{ "textureSampleLodProjCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32,f32x3)", &TextureSampleLodProjCompareOffset_Texture3D } /* 2851 */,
+    std::pair{ "textureSampleLodProjCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)", &TextureSampleLodProjCompareOffset_Texture1D } /* 2846 */,
+    std::pair{ "textureSampleLodProjCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32,f32x2)", &TextureSampleLodProjCompareOffset_Texture2D } /* 2847 */,
+    std::pair{ "textureSampleLodProjCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32,f32x3)", &TextureSampleLodProjCompareOffset_Texture3D } /* 2848 */,
+    std::pair{ "textureSampleLodProjCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32)", &SampledTextureSampleLodProjCompareOffset_Texture1D } /* 2849 */,
+    std::pair{ "textureSampleLodProjCompareOffset(uniform *textureSampled2D,f32x2,f32,f32,f32,f32x2)", &SampledTextureSampleLodProjCompareOffset_Texture2D } /* 2850 */,
+    std::pair{ "textureSampleLodProjCompareOffset(uniform *textureSampled3D,f32x3,f32,f32,f32,f32x3)", &SampledTextureSampleLodProjCompareOffset_Texture3D } /* 2851 */,
     std::pair{ "textureSampleLodProjOffset", &TextureSampleLodProjOffset_Texture1D } /* 2852 */,
     std::pair{ "textureSampleLodProjOffset", &SampledTextureSampleLodProjOffset_Texture1D } /* 2853 */,
     std::pair{ "textureSampleLodProjOffset", &TextureSampleLodProjOffset_Texture2D } /* 2854 */,
     std::pair{ "textureSampleLodProjOffset", &SampledTextureSampleLodProjOffset_Texture2D } /* 2855 */,
     std::pair{ "textureSampleLodProjOffset", &TextureSampleLodProjOffset_Texture3D } /* 2856 */,
     std::pair{ "textureSampleLodProjOffset", &SampledTextureSampleLodProjOffset_Texture3D } /* 2857 */,
-    std::pair{ "textureSampleLodProjOffset(uniform *sampled texture1D,f32,f32,f32,f32)", &SampledTextureSampleLodProjOffset_Texture1D } /* 2858 */,
-    std::pair{ "textureSampleLodProjOffset(uniform *sampled texture2D,f32x2,f32,f32,f32x2)", &SampledTextureSampleLodProjOffset_Texture2D } /* 2859 */,
-    std::pair{ "textureSampleLodProjOffset(uniform *sampled texture3D,f32x3,f32,f32,f32x3)", &SampledTextureSampleLodProjOffset_Texture3D } /* 2860 */,
-    std::pair{ "textureSampleLodProjOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleLodProjOffset_Texture1D } /* 2861 */,
-    std::pair{ "textureSampleLodProjOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleLodProjOffset_Texture2D } /* 2862 */,
-    std::pair{ "textureSampleLodProjOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleLodProjOffset_Texture3D } /* 2863 */,
+    std::pair{ "textureSampleLodProjOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleLodProjOffset_Texture1D } /* 2858 */,
+    std::pair{ "textureSampleLodProjOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleLodProjOffset_Texture2D } /* 2859 */,
+    std::pair{ "textureSampleLodProjOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleLodProjOffset_Texture3D } /* 2860 */,
+    std::pair{ "textureSampleLodProjOffset(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleLodProjOffset_Texture1D } /* 2861 */,
+    std::pair{ "textureSampleLodProjOffset(uniform *textureSampled2D,f32x2,f32,f32,f32x2)", &SampledTextureSampleLodProjOffset_Texture2D } /* 2862 */,
+    std::pair{ "textureSampleLodProjOffset(uniform *textureSampled3D,f32x3,f32,f32,f32x3)", &SampledTextureSampleLodProjOffset_Texture3D } /* 2863 */,
     std::pair{ "textureSampleOffset", &TextureSampleOffset_Texture1D } /* 2864 */,
     std::pair{ "textureSampleOffset", &SampledTextureSampleOffset_Texture1D } /* 2865 */,
     std::pair{ "textureSampleOffset", &TextureSampleOffset_Texture2D } /* 2866 */,
@@ -11174,441 +11174,450 @@ inline constexpr StaticMap<ConstantString, Symbol*, 3309> DefaultIntrinsics = {
     std::pair{ "textureSampleOffset", &SampledTextureSampleOffset_Texture1DArray } /* 2871 */,
     std::pair{ "textureSampleOffset", &TextureSampleOffset_Texture2DArray } /* 2872 */,
     std::pair{ "textureSampleOffset", &SampledTextureSampleOffset_Texture2DArray } /* 2873 */,
-    std::pair{ "textureSampleOffset(uniform *sampled texture1D,f32,f32)", &SampledTextureSampleOffset_Texture1D } /* 2874 */,
-    std::pair{ "textureSampleOffset(uniform *sampled texture1DArray,f32x2,f32x2)", &SampledTextureSampleOffset_Texture1DArray } /* 2875 */,
-    std::pair{ "textureSampleOffset(uniform *sampled texture2D,f32x2,f32x2)", &SampledTextureSampleOffset_Texture2D } /* 2876 */,
-    std::pair{ "textureSampleOffset(uniform *sampled texture2DArray,f32x3,f32x3)", &SampledTextureSampleOffset_Texture2DArray } /* 2877 */,
-    std::pair{ "textureSampleOffset(uniform *sampled texture3D,f32x3,f32x3)", &SampledTextureSampleOffset_Texture3D } /* 2878 */,
-    std::pair{ "textureSampleOffset(uniform *texture1D,uniform *sampler,f32,f32)", &TextureSampleOffset_Texture1D } /* 2879 */,
-    std::pair{ "textureSampleOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32x2)", &TextureSampleOffset_Texture1DArray } /* 2880 */,
-    std::pair{ "textureSampleOffset(uniform *texture2D,uniform *sampler,f32x2,f32x2)", &TextureSampleOffset_Texture2D } /* 2881 */,
-    std::pair{ "textureSampleOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32x3)", &TextureSampleOffset_Texture2DArray } /* 2882 */,
-    std::pair{ "textureSampleOffset(uniform *texture3D,uniform *sampler,f32x3,f32x3)", &TextureSampleOffset_Texture3D } /* 2883 */,
+    std::pair{ "textureSampleOffset(uniform *texture1D,uniform *sampler,f32,f32)", &TextureSampleOffset_Texture1D } /* 2874 */,
+    std::pair{ "textureSampleOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32x2)", &TextureSampleOffset_Texture1DArray } /* 2875 */,
+    std::pair{ "textureSampleOffset(uniform *texture2D,uniform *sampler,f32x2,f32x2)", &TextureSampleOffset_Texture2D } /* 2876 */,
+    std::pair{ "textureSampleOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32x3)", &TextureSampleOffset_Texture2DArray } /* 2877 */,
+    std::pair{ "textureSampleOffset(uniform *texture3D,uniform *sampler,f32x3,f32x3)", &TextureSampleOffset_Texture3D } /* 2878 */,
+    std::pair{ "textureSampleOffset(uniform *textureSampled1D,f32,f32)", &SampledTextureSampleOffset_Texture1D } /* 2879 */,
+    std::pair{ "textureSampleOffset(uniform *textureSampled1DArray,f32x2,f32x2)", &SampledTextureSampleOffset_Texture1DArray } /* 2880 */,
+    std::pair{ "textureSampleOffset(uniform *textureSampled2D,f32x2,f32x2)", &SampledTextureSampleOffset_Texture2D } /* 2881 */,
+    std::pair{ "textureSampleOffset(uniform *textureSampled2DArray,f32x3,f32x3)", &SampledTextureSampleOffset_Texture2DArray } /* 2882 */,
+    std::pair{ "textureSampleOffset(uniform *textureSampled3D,f32x3,f32x3)", &SampledTextureSampleOffset_Texture3D } /* 2883 */,
     std::pair{ "textureSampleProj", &TextureSampleProj_Texture1D } /* 2884 */,
     std::pair{ "textureSampleProj", &SampledTextureSampleProj_Texture1D } /* 2885 */,
     std::pair{ "textureSampleProj", &TextureSampleProj_Texture2D } /* 2886 */,
     std::pair{ "textureSampleProj", &SampledTextureSampleProj_Texture2D } /* 2887 */,
     std::pair{ "textureSampleProj", &TextureSampleProj_Texture3D } /* 2888 */,
     std::pair{ "textureSampleProj", &SampledTextureSampleProj_Texture3D } /* 2889 */,
-    std::pair{ "textureSampleProj(uniform *sampled texture1D,f32,f32)", &SampledTextureSampleProj_Texture1D } /* 2890 */,
-    std::pair{ "textureSampleProj(uniform *sampled texture2D,f32x2,f32)", &SampledTextureSampleProj_Texture2D } /* 2891 */,
-    std::pair{ "textureSampleProj(uniform *sampled texture3D,f32x3,f32)", &SampledTextureSampleProj_Texture3D } /* 2892 */,
-    std::pair{ "textureSampleProj(uniform *texture1D,uniform *sampler,f32,f32)", &TextureSampleProj_Texture1D } /* 2893 */,
-    std::pair{ "textureSampleProj(uniform *texture2D,uniform *sampler,f32x2,f32)", &TextureSampleProj_Texture2D } /* 2894 */,
-    std::pair{ "textureSampleProj(uniform *texture3D,uniform *sampler,f32x3,f32)", &TextureSampleProj_Texture3D } /* 2895 */,
+    std::pair{ "textureSampleProj(uniform *texture1D,uniform *sampler,f32,f32)", &TextureSampleProj_Texture1D } /* 2890 */,
+    std::pair{ "textureSampleProj(uniform *texture2D,uniform *sampler,f32x2,f32)", &TextureSampleProj_Texture2D } /* 2891 */,
+    std::pair{ "textureSampleProj(uniform *texture3D,uniform *sampler,f32x3,f32)", &TextureSampleProj_Texture3D } /* 2892 */,
+    std::pair{ "textureSampleProj(uniform *textureSampled1D,f32,f32)", &SampledTextureSampleProj_Texture1D } /* 2893 */,
+    std::pair{ "textureSampleProj(uniform *textureSampled2D,f32x2,f32)", &SampledTextureSampleProj_Texture2D } /* 2894 */,
+    std::pair{ "textureSampleProj(uniform *textureSampled3D,f32x3,f32)", &SampledTextureSampleProj_Texture3D } /* 2895 */,
     std::pair{ "textureSampleProjCompare", &TextureSampleProjCompare_Texture1D } /* 2896 */,
     std::pair{ "textureSampleProjCompare", &SampledTextureSampleProjCompare_Texture1D } /* 2897 */,
     std::pair{ "textureSampleProjCompare", &TextureSampleProjCompare_Texture2D } /* 2898 */,
     std::pair{ "textureSampleProjCompare", &SampledTextureSampleProjCompare_Texture2D } /* 2899 */,
     std::pair{ "textureSampleProjCompare", &TextureSampleProjCompare_Texture3D } /* 2900 */,
     std::pair{ "textureSampleProjCompare", &SampledTextureSampleProjCompare_Texture3D } /* 2901 */,
-    std::pair{ "textureSampleProjCompare(uniform *sampled texture1D,f32,f32,f32)", &SampledTextureSampleProjCompare_Texture1D } /* 2902 */,
-    std::pair{ "textureSampleProjCompare(uniform *sampled texture2D,f32x2,f32,f32)", &SampledTextureSampleProjCompare_Texture2D } /* 2903 */,
-    std::pair{ "textureSampleProjCompare(uniform *sampled texture3D,f32x3,f32,f32)", &SampledTextureSampleProjCompare_Texture3D } /* 2904 */,
-    std::pair{ "textureSampleProjCompare(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleProjCompare_Texture1D } /* 2905 */,
-    std::pair{ "textureSampleProjCompare(uniform *texture2D,uniform *sampler,f32x2,f32,f32)", &TextureSampleProjCompare_Texture2D } /* 2906 */,
-    std::pair{ "textureSampleProjCompare(uniform *texture3D,uniform *sampler,f32x3,f32,f32)", &TextureSampleProjCompare_Texture3D } /* 2907 */,
+    std::pair{ "textureSampleProjCompare(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleProjCompare_Texture1D } /* 2902 */,
+    std::pair{ "textureSampleProjCompare(uniform *texture2D,uniform *sampler,f32x2,f32,f32)", &TextureSampleProjCompare_Texture2D } /* 2903 */,
+    std::pair{ "textureSampleProjCompare(uniform *texture3D,uniform *sampler,f32x3,f32,f32)", &TextureSampleProjCompare_Texture3D } /* 2904 */,
+    std::pair{ "textureSampleProjCompare(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleProjCompare_Texture1D } /* 2905 */,
+    std::pair{ "textureSampleProjCompare(uniform *textureSampled2D,f32x2,f32,f32)", &SampledTextureSampleProjCompare_Texture2D } /* 2906 */,
+    std::pair{ "textureSampleProjCompare(uniform *textureSampled3D,f32x3,f32,f32)", &SampledTextureSampleProjCompare_Texture3D } /* 2907 */,
     std::pair{ "textureSampleProjCompareOffset", &TextureSampleProjCompareOffset_Texture1D } /* 2908 */,
     std::pair{ "textureSampleProjCompareOffset", &SampledTextureSampleProjCompareOffset_Texture1D } /* 2909 */,
     std::pair{ "textureSampleProjCompareOffset", &TextureSampleProjCompareOffset_Texture2D } /* 2910 */,
     std::pair{ "textureSampleProjCompareOffset", &SampledTextureSampleProjCompareOffset_Texture2D } /* 2911 */,
     std::pair{ "textureSampleProjCompareOffset", &TextureSampleProjCompareOffset_Texture3D } /* 2912 */,
     std::pair{ "textureSampleProjCompareOffset", &SampledTextureSampleProjCompareOffset_Texture3D } /* 2913 */,
-    std::pair{ "textureSampleProjCompareOffset(uniform *sampled texture1D,f32,f32,f32,f32)", &SampledTextureSampleProjCompareOffset_Texture1D } /* 2914 */,
-    std::pair{ "textureSampleProjCompareOffset(uniform *sampled texture2D,f32x2,f32,f32,f32x2)", &SampledTextureSampleProjCompareOffset_Texture2D } /* 2915 */,
-    std::pair{ "textureSampleProjCompareOffset(uniform *sampled texture3D,f32x3,f32,f32,f32x3)", &SampledTextureSampleProjCompareOffset_Texture3D } /* 2916 */,
-    std::pair{ "textureSampleProjCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleProjCompareOffset_Texture1D } /* 2917 */,
-    std::pair{ "textureSampleProjCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleProjCompareOffset_Texture2D } /* 2918 */,
-    std::pair{ "textureSampleProjCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleProjCompareOffset_Texture3D } /* 2919 */,
+    std::pair{ "textureSampleProjCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleProjCompareOffset_Texture1D } /* 2914 */,
+    std::pair{ "textureSampleProjCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleProjCompareOffset_Texture2D } /* 2915 */,
+    std::pair{ "textureSampleProjCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleProjCompareOffset_Texture3D } /* 2916 */,
+    std::pair{ "textureSampleProjCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleProjCompareOffset_Texture1D } /* 2917 */,
+    std::pair{ "textureSampleProjCompareOffset(uniform *textureSampled2D,f32x2,f32,f32,f32x2)", &SampledTextureSampleProjCompareOffset_Texture2D } /* 2918 */,
+    std::pair{ "textureSampleProjCompareOffset(uniform *textureSampled3D,f32x3,f32,f32,f32x3)", &SampledTextureSampleProjCompareOffset_Texture3D } /* 2919 */,
     std::pair{ "textureSampleProjOffset", &TextureSampleProjOffset_Texture1D } /* 2920 */,
     std::pair{ "textureSampleProjOffset", &SampledTextureSampleProjOffset_Texture1D } /* 2921 */,
     std::pair{ "textureSampleProjOffset", &TextureSampleProjOffset_Texture2D } /* 2922 */,
     std::pair{ "textureSampleProjOffset", &SampledTextureSampleProjOffset_Texture2D } /* 2923 */,
     std::pair{ "textureSampleProjOffset", &TextureSampleProjOffset_Texture3D } /* 2924 */,
     std::pair{ "textureSampleProjOffset", &SampledTextureSampleProjOffset_Texture3D } /* 2925 */,
-    std::pair{ "textureSampleProjOffset(uniform *sampled texture1D,f32,f32,f32)", &SampledTextureSampleProjOffset_Texture1D } /* 2926 */,
-    std::pair{ "textureSampleProjOffset(uniform *sampled texture2D,f32x2,f32,f32x2)", &SampledTextureSampleProjOffset_Texture2D } /* 2927 */,
-    std::pair{ "textureSampleProjOffset(uniform *sampled texture3D,f32x3,f32,f32x3)", &SampledTextureSampleProjOffset_Texture3D } /* 2928 */,
-    std::pair{ "textureSampleProjOffset(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleProjOffset_Texture1D } /* 2929 */,
-    std::pair{ "textureSampleProjOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleProjOffset_Texture2D } /* 2930 */,
-    std::pair{ "textureSampleProjOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleProjOffset_Texture3D } /* 2931 */,
-    std::pair{ "textureStore", &TextureStore_Texture1D } /* 2932 */,
-    std::pair{ "textureStore", &TextureStore_Texture2D } /* 2933 */,
-    std::pair{ "textureStore", &TextureStore_Texture3D } /* 2934 */,
-    std::pair{ "textureStore", &TextureStore_TextureCube } /* 2935 */,
-    std::pair{ "textureStore", &TextureStore_Texture1DArray } /* 2936 */,
-    std::pair{ "textureStore", &TextureStore_Texture2DArray } /* 2937 */,
-    std::pair{ "textureStore", &TextureStore_TextureCubeArray } /* 2938 */,
-    std::pair{ "textureStore", &TextureStore_Texture2DMS } /* 2939 */,
-    std::pair{ "textureStore", &TextureStore_Texture2DMSArray } /* 2940 */,
-    std::pair{ "textureStore(uniform *mutable texture1D,i32,f32x4)", &TextureStore_Texture1D } /* 2941 */,
-    std::pair{ "textureStore(uniform *mutable texture1DArray,i32x2,f32x4)", &TextureStore_Texture1DArray } /* 2942 */,
-    std::pair{ "textureStore(uniform *mutable texture2D,i32x2,f32x4)", &TextureStore_Texture2D } /* 2943 */,
-    std::pair{ "textureStore(uniform *mutable texture2DArray,i32x3,f32x4)", &TextureStore_Texture2DArray } /* 2944 */,
-    std::pair{ "textureStore(uniform *mutable texture2DMS,i32x2,f32x4)", &TextureStore_Texture2DMS } /* 2945 */,
-    std::pair{ "textureStore(uniform *mutable texture2DMSArray,i32x3,f32x4)", &TextureStore_Texture2DMSArray } /* 2946 */,
-    std::pair{ "textureStore(uniform *mutable texture3D,i32x3,f32x4)", &TextureStore_Texture3D } /* 2947 */,
-    std::pair{ "textureStore(uniform *mutable textureCube,i32x3,f32x4)", &TextureStore_TextureCube } /* 2948 */,
-    std::pair{ "textureStore(uniform *mutable textureCubeArray,i32x4,f32x4)", &TextureStore_TextureCubeArray } /* 2949 */,
-    std::pair{ "textureStoreMip", &TextureStoreMip_Texture1D } /* 2950 */,
-    std::pair{ "textureStoreMip", &TextureStoreMip_Texture2D } /* 2951 */,
-    std::pair{ "textureStoreMip", &TextureStoreMip_Texture3D } /* 2952 */,
-    std::pair{ "textureStoreMip", &TextureStoreMip_TextureCube } /* 2953 */,
-    std::pair{ "textureStoreMip", &TextureStoreMip_Texture1DArray } /* 2954 */,
-    std::pair{ "textureStoreMip", &TextureStoreMip_Texture2DArray } /* 2955 */,
-    std::pair{ "textureStoreMip", &TextureStoreMip_TextureCubeArray } /* 2956 */,
-    std::pair{ "textureStoreMip", &TextureStoreMip_Texture2DMS } /* 2957 */,
-    std::pair{ "textureStoreMip", &TextureStoreMip_Texture2DMSArray } /* 2958 */,
-    std::pair{ "textureStoreMip(uniform *mutable texture1D,i32,i32,f32x4)", &TextureStoreMip_Texture1D } /* 2959 */,
-    std::pair{ "textureStoreMip(uniform *mutable texture1DArray,i32x2,i32,f32x4)", &TextureStoreMip_Texture1DArray } /* 2960 */,
-    std::pair{ "textureStoreMip(uniform *mutable texture2D,i32x2,i32,f32x4)", &TextureStoreMip_Texture2D } /* 2961 */,
-    std::pair{ "textureStoreMip(uniform *mutable texture2DArray,i32x3,i32,f32x4)", &TextureStoreMip_Texture2DArray } /* 2962 */,
-    std::pair{ "textureStoreMip(uniform *mutable texture2DMS,i32x2,i32,f32x4)", &TextureStoreMip_Texture2DMS } /* 2963 */,
-    std::pair{ "textureStoreMip(uniform *mutable texture2DMSArray,i32x3,i32,f32x4)", &TextureStoreMip_Texture2DMSArray } /* 2964 */,
-    std::pair{ "textureStoreMip(uniform *mutable texture3D,i32x3,i32,f32x4)", &TextureStoreMip_Texture3D } /* 2965 */,
-    std::pair{ "textureStoreMip(uniform *mutable textureCube,i32x3,i32,f32x4)", &TextureStoreMip_TextureCube } /* 2966 */,
-    std::pair{ "textureStoreMip(uniform *mutable textureCubeArray,i32x4,i32,f32x4)", &TextureStoreMip_TextureCubeArray } /* 2967 */,
-    std::pair{ "transpose", &transpose_Float32x2x2 } /* 2968 */,
-    std::pair{ "transpose", &transpose_Float16x2x2 } /* 2969 */,
-    std::pair{ "transpose", &transpose_Float32x2x3 } /* 2970 */,
-    std::pair{ "transpose", &transpose_Float16x2x3 } /* 2971 */,
-    std::pair{ "transpose", &transpose_Float32x2x4 } /* 2972 */,
-    std::pair{ "transpose", &transpose_Float16x2x4 } /* 2973 */,
-    std::pair{ "transpose", &transpose_Float32x3x2 } /* 2974 */,
-    std::pair{ "transpose", &transpose_Float16x3x2 } /* 2975 */,
-    std::pair{ "transpose", &transpose_Float32x3x3 } /* 2976 */,
-    std::pair{ "transpose", &transpose_Float16x3x3 } /* 2977 */,
-    std::pair{ "transpose", &transpose_Float32x3x4 } /* 2978 */,
-    std::pair{ "transpose", &transpose_Float16x3x4 } /* 2979 */,
-    std::pair{ "transpose", &transpose_Float32x4x2 } /* 2980 */,
-    std::pair{ "transpose", &transpose_Float16x4x2 } /* 2981 */,
-    std::pair{ "transpose", &transpose_Float32x4x3 } /* 2982 */,
-    std::pair{ "transpose", &transpose_Float16x4x3 } /* 2983 */,
-    std::pair{ "transpose", &transpose_Float32x4x4 } /* 2984 */,
-    std::pair{ "transpose", &transpose_Float16x4x4 } /* 2985 */,
-    std::pair{ "transpose(f16x2x2)", &transpose_Float16x2x2 } /* 2986 */,
-    std::pair{ "transpose(f16x2x3)", &transpose_Float16x2x3 } /* 2987 */,
-    std::pair{ "transpose(f16x2x4)", &transpose_Float16x2x4 } /* 2988 */,
-    std::pair{ "transpose(f16x3x2)", &transpose_Float16x3x2 } /* 2989 */,
-    std::pair{ "transpose(f16x3x3)", &transpose_Float16x3x3 } /* 2990 */,
-    std::pair{ "transpose(f16x3x4)", &transpose_Float16x3x4 } /* 2991 */,
-    std::pair{ "transpose(f16x4x2)", &transpose_Float16x4x2 } /* 2992 */,
-    std::pair{ "transpose(f16x4x3)", &transpose_Float16x4x3 } /* 2993 */,
-    std::pair{ "transpose(f16x4x4)", &transpose_Float16x4x4 } /* 2994 */,
-    std::pair{ "transpose(f32x2x2)", &transpose_Float32x2x2 } /* 2995 */,
-    std::pair{ "transpose(f32x2x3)", &transpose_Float32x2x3 } /* 2996 */,
-    std::pair{ "transpose(f32x2x4)", &transpose_Float32x2x4 } /* 2997 */,
-    std::pair{ "transpose(f32x3x2)", &transpose_Float32x3x2 } /* 2998 */,
-    std::pair{ "transpose(f32x3x3)", &transpose_Float32x3x3 } /* 2999 */,
-    std::pair{ "transpose(f32x3x4)", &transpose_Float32x3x4 } /* 3000 */,
-    std::pair{ "transpose(f32x4x2)", &transpose_Float32x4x2 } /* 3001 */,
-    std::pair{ "transpose(f32x4x3)", &transpose_Float32x4x3 } /* 3002 */,
-    std::pair{ "transpose(f32x4x4)", &transpose_Float32x4x4 } /* 3003 */,
-    std::pair{ "trunc", &trunc_Float32 } /* 3004 */,
-    std::pair{ "trunc", &trunc_Float32x2 } /* 3005 */,
-    std::pair{ "trunc", &trunc_Float32x3 } /* 3006 */,
-    std::pair{ "trunc", &trunc_Float32x4 } /* 3007 */,
-    std::pair{ "trunc", &trunc_Float16 } /* 3008 */,
-    std::pair{ "trunc", &trunc_Float16x2 } /* 3009 */,
-    std::pair{ "trunc", &trunc_Float16x3 } /* 3010 */,
-    std::pair{ "trunc", &trunc_Float16x4 } /* 3011 */,
-    std::pair{ "trunc(f16)", &trunc_Float16 } /* 3012 */,
-    std::pair{ "trunc(f16x2)", &trunc_Float16x2 } /* 3013 */,
-    std::pair{ "trunc(f16x3)", &trunc_Float16x3 } /* 3014 */,
-    std::pair{ "trunc(f16x4)", &trunc_Float16x4 } /* 3015 */,
-    std::pair{ "trunc(f32)", &trunc_Float32 } /* 3016 */,
-    std::pair{ "trunc(f32x2)", &trunc_Float32x2 } /* 3017 */,
-    std::pair{ "trunc(f32x3)", &trunc_Float32x3 } /* 3018 */,
-    std::pair{ "trunc(f32x4)", &trunc_Float32x4 } /* 3019 */,
-    std::pair{ "u16", &UInt16Type } /* 3020 */,
-    std::pair{ "u16", &UInt16_from_Float32 } /* 3021 */,
-    std::pair{ "u16", &UInt16_from_UInt32 } /* 3022 */,
-    std::pair{ "u16", &UInt16_from_Int32 } /* 3023 */,
-    std::pair{ "u16", &UInt16_from_Bool8 } /* 3024 */,
-    std::pair{ "u16", &UInt16_from_Float16 } /* 3025 */,
-    std::pair{ "u16", &UInt16_from_Int16 } /* 3026 */,
-    std::pair{ "u16", &UInt16_ctor0 } /* 3027 */,
-    std::pair{ "u16(b8)", &UInt16_from_Bool8 } /* 3028 */,
-    std::pair{ "u16(f16)", &UInt16_from_Float16 } /* 3029 */,
-    std::pair{ "u16(f32)", &UInt16_from_Float32 } /* 3030 */,
-    std::pair{ "u16(i16)", &UInt16_from_Int16 } /* 3031 */,
-    std::pair{ "u16(i32)", &UInt16_from_Int32 } /* 3032 */,
-    std::pair{ "u16(u16)", &UInt16_ctor0 } /* 3033 */,
-    std::pair{ "u16(u32)", &UInt16_from_UInt32 } /* 3034 */,
-    std::pair{ "u16x2", &UInt16x2Type } /* 3035 */,
-    std::pair{ "u16x2", &UInt16x2_from_Float32x2 } /* 3036 */,
-    std::pair{ "u16x2", &UInt16x2_splat_Float32 } /* 3037 */,
-    std::pair{ "u16x2", &UInt16x2_from_UInt32x2 } /* 3038 */,
-    std::pair{ "u16x2", &UInt16x2_splat_UInt32 } /* 3039 */,
-    std::pair{ "u16x2", &UInt16x2_from_Int32x2 } /* 3040 */,
-    std::pair{ "u16x2", &UInt16x2_splat_Int32 } /* 3041 */,
-    std::pair{ "u16x2", &UInt16x2_from_Bool8x2 } /* 3042 */,
-    std::pair{ "u16x2", &UInt16x2_splat_Bool8 } /* 3043 */,
-    std::pair{ "u16x2", &UInt16x2_from_Float16x2 } /* 3044 */,
-    std::pair{ "u16x2", &UInt16x2_splat_Float16 } /* 3045 */,
-    std::pair{ "u16x2", &UInt16x2_from_UInt16x2 } /* 3046 */,
-    std::pair{ "u16x2", &UInt16x2_splat_UInt16 } /* 3047 */,
-    std::pair{ "u16x2", &UInt16x2_from_Int16x2 } /* 3048 */,
-    std::pair{ "u16x2", &UInt16x2_splat_Int16 } /* 3049 */,
-    std::pair{ "u16x2", &UInt16x2_ctor0 } /* 3050 */,
-    std::pair{ "u16x2(b8)", &UInt16x2_splat_Bool8 } /* 3051 */,
-    std::pair{ "u16x2(b8x2)", &UInt16x2_from_Bool8x2 } /* 3052 */,
-    std::pair{ "u16x2(f16)", &UInt16x2_splat_Float16 } /* 3053 */,
-    std::pair{ "u16x2(f16x2)", &UInt16x2_from_Float16x2 } /* 3054 */,
-    std::pair{ "u16x2(f32)", &UInt16x2_splat_Float32 } /* 3055 */,
-    std::pair{ "u16x2(f32x2)", &UInt16x2_from_Float32x2 } /* 3056 */,
-    std::pair{ "u16x2(i16)", &UInt16x2_splat_Int16 } /* 3057 */,
-    std::pair{ "u16x2(i16x2)", &UInt16x2_from_Int16x2 } /* 3058 */,
-    std::pair{ "u16x2(i32)", &UInt16x2_splat_Int32 } /* 3059 */,
-    std::pair{ "u16x2(i32x2)", &UInt16x2_from_Int32x2 } /* 3060 */,
-    std::pair{ "u16x2(u16)", &UInt16x2_splat_UInt16 } /* 3061 */,
-    std::pair{ "u16x2(u16,u16)", &UInt16x2_ctor0 } /* 3062 */,
-    std::pair{ "u16x2(u16x2)", &UInt16x2_from_UInt16x2 } /* 3063 */,
-    std::pair{ "u16x2(u32)", &UInt16x2_splat_UInt32 } /* 3064 */,
-    std::pair{ "u16x2(u32x2)", &UInt16x2_from_UInt32x2 } /* 3065 */,
-    std::pair{ "u16x3", &UInt16x3Type } /* 3066 */,
-    std::pair{ "u16x3", &UInt16x3_from_Float32x3 } /* 3067 */,
-    std::pair{ "u16x3", &UInt16x3_splat_Float32 } /* 3068 */,
-    std::pair{ "u16x3", &UInt16x3_from_UInt32x3 } /* 3069 */,
-    std::pair{ "u16x3", &UInt16x3_splat_UInt32 } /* 3070 */,
-    std::pair{ "u16x3", &UInt16x3_from_Int32x3 } /* 3071 */,
-    std::pair{ "u16x3", &UInt16x3_splat_Int32 } /* 3072 */,
-    std::pair{ "u16x3", &UInt16x3_from_Bool8x3 } /* 3073 */,
-    std::pair{ "u16x3", &UInt16x3_splat_Bool8 } /* 3074 */,
-    std::pair{ "u16x3", &UInt16x3_from_Float16x3 } /* 3075 */,
-    std::pair{ "u16x3", &UInt16x3_splat_Float16 } /* 3076 */,
-    std::pair{ "u16x3", &UInt16x3_from_UInt16x3 } /* 3077 */,
-    std::pair{ "u16x3", &UInt16x3_splat_UInt16 } /* 3078 */,
-    std::pair{ "u16x3", &UInt16x3_from_Int16x3 } /* 3079 */,
-    std::pair{ "u16x3", &UInt16x3_splat_Int16 } /* 3080 */,
-    std::pair{ "u16x3", &UInt16x3_ctor0 } /* 3081 */,
-    std::pair{ "u16x3", &UInt16x3_ctor1 } /* 3082 */,
-    std::pair{ "u16x3", &UInt16x3_ctor2 } /* 3083 */,
-    std::pair{ "u16x3(b8)", &UInt16x3_splat_Bool8 } /* 3084 */,
-    std::pair{ "u16x3(b8x3)", &UInt16x3_from_Bool8x3 } /* 3085 */,
-    std::pair{ "u16x3(f16)", &UInt16x3_splat_Float16 } /* 3086 */,
-    std::pair{ "u16x3(f16x3)", &UInt16x3_from_Float16x3 } /* 3087 */,
-    std::pair{ "u16x3(f32)", &UInt16x3_splat_Float32 } /* 3088 */,
-    std::pair{ "u16x3(f32x3)", &UInt16x3_from_Float32x3 } /* 3089 */,
-    std::pair{ "u16x3(i16)", &UInt16x3_splat_Int16 } /* 3090 */,
-    std::pair{ "u16x3(i16x3)", &UInt16x3_from_Int16x3 } /* 3091 */,
-    std::pair{ "u16x3(i32)", &UInt16x3_splat_Int32 } /* 3092 */,
-    std::pair{ "u16x3(i32x3)", &UInt16x3_from_Int32x3 } /* 3093 */,
-    std::pair{ "u16x3(u16)", &UInt16x3_splat_UInt16 } /* 3094 */,
-    std::pair{ "u16x3(u16,u16,u16)", &UInt16x3_ctor0 } /* 3095 */,
-    std::pair{ "u16x3(u16,u16x2)", &UInt16x3_ctor2 } /* 3096 */,
-    std::pair{ "u16x3(u16x2,u16)", &UInt16x3_ctor1 } /* 3097 */,
-    std::pair{ "u16x3(u16x3)", &UInt16x3_from_UInt16x3 } /* 3098 */,
-    std::pair{ "u16x3(u32)", &UInt16x3_splat_UInt32 } /* 3099 */,
-    std::pair{ "u16x3(u32x3)", &UInt16x3_from_UInt32x3 } /* 3100 */,
-    std::pair{ "u16x4", &UInt16x4Type } /* 3101 */,
-    std::pair{ "u16x4", &UInt16x4_from_Float32x4 } /* 3102 */,
-    std::pair{ "u16x4", &UInt16x4_splat_Float32 } /* 3103 */,
-    std::pair{ "u16x4", &UInt16x4_from_UInt32x4 } /* 3104 */,
-    std::pair{ "u16x4", &UInt16x4_splat_UInt32 } /* 3105 */,
-    std::pair{ "u16x4", &UInt16x4_from_Int32x4 } /* 3106 */,
-    std::pair{ "u16x4", &UInt16x4_splat_Int32 } /* 3107 */,
-    std::pair{ "u16x4", &UInt16x4_from_Bool8x4 } /* 3108 */,
-    std::pair{ "u16x4", &UInt16x4_splat_Bool8 } /* 3109 */,
-    std::pair{ "u16x4", &UInt16x4_from_Float16x4 } /* 3110 */,
-    std::pair{ "u16x4", &UInt16x4_splat_Float16 } /* 3111 */,
-    std::pair{ "u16x4", &UInt16x4_from_UInt16x4 } /* 3112 */,
-    std::pair{ "u16x4", &UInt16x4_splat_UInt16 } /* 3113 */,
-    std::pair{ "u16x4", &UInt16x4_from_Int16x4 } /* 3114 */,
-    std::pair{ "u16x4", &UInt16x4_splat_Int16 } /* 3115 */,
-    std::pair{ "u16x4", &UInt16x4_ctor0 } /* 3116 */,
-    std::pair{ "u16x4", &UInt16x4_ctor1 } /* 3117 */,
-    std::pair{ "u16x4", &UInt16x4_ctor2 } /* 3118 */,
-    std::pair{ "u16x4", &UInt16x4_ctor3 } /* 3119 */,
-    std::pair{ "u16x4", &UInt16x4_ctor4 } /* 3120 */,
-    std::pair{ "u16x4", &UInt16x4_ctor5 } /* 3121 */,
-    std::pair{ "u16x4", &UInt16x4_ctor6 } /* 3122 */,
-    std::pair{ "u16x4(b8)", &UInt16x4_splat_Bool8 } /* 3123 */,
-    std::pair{ "u16x4(b8x4)", &UInt16x4_from_Bool8x4 } /* 3124 */,
-    std::pair{ "u16x4(f16)", &UInt16x4_splat_Float16 } /* 3125 */,
-    std::pair{ "u16x4(f16x4)", &UInt16x4_from_Float16x4 } /* 3126 */,
-    std::pair{ "u16x4(f32)", &UInt16x4_splat_Float32 } /* 3127 */,
-    std::pair{ "u16x4(f32x4)", &UInt16x4_from_Float32x4 } /* 3128 */,
-    std::pair{ "u16x4(i16)", &UInt16x4_splat_Int16 } /* 3129 */,
-    std::pair{ "u16x4(i16x4)", &UInt16x4_from_Int16x4 } /* 3130 */,
-    std::pair{ "u16x4(i32)", &UInt16x4_splat_Int32 } /* 3131 */,
-    std::pair{ "u16x4(i32x4)", &UInt16x4_from_Int32x4 } /* 3132 */,
-    std::pair{ "u16x4(u16)", &UInt16x4_splat_UInt16 } /* 3133 */,
-    std::pair{ "u16x4(u16,u16,u16,u16)", &UInt16x4_ctor0 } /* 3134 */,
-    std::pair{ "u16x4(u16,u16,u16x2)", &UInt16x4_ctor3 } /* 3135 */,
-    std::pair{ "u16x4(u16,u16x2,u16)", &UInt16x4_ctor2 } /* 3136 */,
-    std::pair{ "u16x4(u16,u16x3)", &UInt16x4_ctor6 } /* 3137 */,
-    std::pair{ "u16x4(u16x2,u16,u16)", &UInt16x4_ctor1 } /* 3138 */,
-    std::pair{ "u16x4(u16x2,u16x2)", &UInt16x4_ctor4 } /* 3139 */,
-    std::pair{ "u16x4(u16x3,u16)", &UInt16x4_ctor5 } /* 3140 */,
-    std::pair{ "u16x4(u16x4)", &UInt16x4_from_UInt16x4 } /* 3141 */,
-    std::pair{ "u16x4(u32)", &UInt16x4_splat_UInt32 } /* 3142 */,
-    std::pair{ "u16x4(u32x4)", &UInt16x4_from_UInt32x4 } /* 3143 */,
-    std::pair{ "u32", &UInt32Type } /* 3144 */,
-    std::pair{ "u32", &UInt32_from_Float32 } /* 3145 */,
-    std::pair{ "u32", &UInt32_from_Int32 } /* 3146 */,
-    std::pair{ "u32", &UInt32_from_Bool8 } /* 3147 */,
-    std::pair{ "u32", &UInt32_from_Float16 } /* 3148 */,
-    std::pair{ "u32", &UInt32_from_UInt16 } /* 3149 */,
-    std::pair{ "u32", &UInt32_from_Int16 } /* 3150 */,
-    std::pair{ "u32", &UInt32_ctor0 } /* 3151 */,
-    std::pair{ "u32(AddressMode)", &AddressModeType.fromUnderlyingType } /* 3152 */,
-    std::pair{ "u32(BlendColorMask)", &BlendColorMaskType.fromUnderlyingType } /* 3153 */,
-    std::pair{ "u32(BlendFactor)", &BlendFactorType.fromUnderlyingType } /* 3154 */,
-    std::pair{ "u32(BlendOperation)", &BlendOperationType.fromUnderlyingType } /* 3155 */,
-    std::pair{ "u32(Color)", &ColorType.fromUnderlyingType } /* 3156 */,
-    std::pair{ "u32(CompareMode)", &CompareModeType.fromUnderlyingType } /* 3157 */,
-    std::pair{ "u32(CullFace)", &CullFaceType.fromUnderlyingType } /* 3158 */,
-    std::pair{ "u32(ExecutionScope)", &ExecutionScopeType.fromUnderlyingType } /* 3159 */,
-    std::pair{ "u32(FilterMode)", &FilterModeType.fromUnderlyingType } /* 3160 */,
-    std::pair{ "u32(LogicOp)", &LogicOpType.fromUnderlyingType } /* 3161 */,
-    std::pair{ "u32(MemorySemantics)", &MemorySemanticsType.fromUnderlyingType } /* 3162 */,
-    std::pair{ "u32(PolygonMode)", &PolygonModeType.fromUnderlyingType } /* 3163 */,
-    std::pair{ "u32(StencilOp)", &StencilOpType.fromUnderlyingType } /* 3164 */,
-    std::pair{ "u32(WindingOrder)", &WindingOrderType.fromUnderlyingType } /* 3165 */,
-    std::pair{ "u32(b8)", &UInt32_from_Bool8 } /* 3166 */,
-    std::pair{ "u32(f16)", &UInt32_from_Float16 } /* 3167 */,
-    std::pair{ "u32(f32)", &UInt32_from_Float32 } /* 3168 */,
-    std::pair{ "u32(i16)", &UInt32_from_Int16 } /* 3169 */,
-    std::pair{ "u32(i32)", &UInt32_from_Int32 } /* 3170 */,
-    std::pair{ "u32(u16)", &UInt32_from_UInt16 } /* 3171 */,
-    std::pair{ "u32(u32)", &UInt32_ctor0 } /* 3172 */,
-    std::pair{ "u32x2", &UInt32x2Type } /* 3173 */,
-    std::pair{ "u32x2", &UInt32x2_from_Float32x2 } /* 3174 */,
-    std::pair{ "u32x2", &UInt32x2_splat_Float32 } /* 3175 */,
-    std::pair{ "u32x2", &UInt32x2_from_UInt32x2 } /* 3176 */,
-    std::pair{ "u32x2", &UInt32x2_splat_UInt32 } /* 3177 */,
-    std::pair{ "u32x2", &UInt32x2_from_Int32x2 } /* 3178 */,
-    std::pair{ "u32x2", &UInt32x2_splat_Int32 } /* 3179 */,
-    std::pair{ "u32x2", &UInt32x2_from_Bool8x2 } /* 3180 */,
-    std::pair{ "u32x2", &UInt32x2_splat_Bool8 } /* 3181 */,
-    std::pair{ "u32x2", &UInt32x2_from_Float16x2 } /* 3182 */,
-    std::pair{ "u32x2", &UInt32x2_splat_Float16 } /* 3183 */,
-    std::pair{ "u32x2", &UInt32x2_from_UInt16x2 } /* 3184 */,
-    std::pair{ "u32x2", &UInt32x2_splat_UInt16 } /* 3185 */,
-    std::pair{ "u32x2", &UInt32x2_from_Int16x2 } /* 3186 */,
-    std::pair{ "u32x2", &UInt32x2_splat_Int16 } /* 3187 */,
-    std::pair{ "u32x2", &UInt32x2_ctor0 } /* 3188 */,
-    std::pair{ "u32x2(b8)", &UInt32x2_splat_Bool8 } /* 3189 */,
-    std::pair{ "u32x2(b8x2)", &UInt32x2_from_Bool8x2 } /* 3190 */,
-    std::pair{ "u32x2(f16)", &UInt32x2_splat_Float16 } /* 3191 */,
-    std::pair{ "u32x2(f16x2)", &UInt32x2_from_Float16x2 } /* 3192 */,
-    std::pair{ "u32x2(f32)", &UInt32x2_splat_Float32 } /* 3193 */,
-    std::pair{ "u32x2(f32x2)", &UInt32x2_from_Float32x2 } /* 3194 */,
-    std::pair{ "u32x2(i16)", &UInt32x2_splat_Int16 } /* 3195 */,
-    std::pair{ "u32x2(i16x2)", &UInt32x2_from_Int16x2 } /* 3196 */,
-    std::pair{ "u32x2(i32)", &UInt32x2_splat_Int32 } /* 3197 */,
-    std::pair{ "u32x2(i32x2)", &UInt32x2_from_Int32x2 } /* 3198 */,
-    std::pair{ "u32x2(u16)", &UInt32x2_splat_UInt16 } /* 3199 */,
-    std::pair{ "u32x2(u16x2)", &UInt32x2_from_UInt16x2 } /* 3200 */,
-    std::pair{ "u32x2(u32)", &UInt32x2_splat_UInt32 } /* 3201 */,
-    std::pair{ "u32x2(u32,u32)", &UInt32x2_ctor0 } /* 3202 */,
-    std::pair{ "u32x2(u32x2)", &UInt32x2_from_UInt32x2 } /* 3203 */,
-    std::pair{ "u32x3", &UInt32x3Type } /* 3204 */,
-    std::pair{ "u32x3", &UInt32x3_from_Float32x3 } /* 3205 */,
-    std::pair{ "u32x3", &UInt32x3_splat_Float32 } /* 3206 */,
-    std::pair{ "u32x3", &UInt32x3_from_UInt32x3 } /* 3207 */,
-    std::pair{ "u32x3", &UInt32x3_splat_UInt32 } /* 3208 */,
-    std::pair{ "u32x3", &UInt32x3_from_Int32x3 } /* 3209 */,
-    std::pair{ "u32x3", &UInt32x3_splat_Int32 } /* 3210 */,
-    std::pair{ "u32x3", &UInt32x3_from_Bool8x3 } /* 3211 */,
-    std::pair{ "u32x3", &UInt32x3_splat_Bool8 } /* 3212 */,
-    std::pair{ "u32x3", &UInt32x3_from_Float16x3 } /* 3213 */,
-    std::pair{ "u32x3", &UInt32x3_splat_Float16 } /* 3214 */,
-    std::pair{ "u32x3", &UInt32x3_from_UInt16x3 } /* 3215 */,
-    std::pair{ "u32x3", &UInt32x3_splat_UInt16 } /* 3216 */,
-    std::pair{ "u32x3", &UInt32x3_from_Int16x3 } /* 3217 */,
-    std::pair{ "u32x3", &UInt32x3_splat_Int16 } /* 3218 */,
-    std::pair{ "u32x3", &UInt32x3_ctor0 } /* 3219 */,
-    std::pair{ "u32x3", &UInt32x3_ctor1 } /* 3220 */,
-    std::pair{ "u32x3", &UInt32x3_ctor2 } /* 3221 */,
-    std::pair{ "u32x3(b8)", &UInt32x3_splat_Bool8 } /* 3222 */,
-    std::pair{ "u32x3(b8x3)", &UInt32x3_from_Bool8x3 } /* 3223 */,
-    std::pair{ "u32x3(f16)", &UInt32x3_splat_Float16 } /* 3224 */,
-    std::pair{ "u32x3(f16x3)", &UInt32x3_from_Float16x3 } /* 3225 */,
-    std::pair{ "u32x3(f32)", &UInt32x3_splat_Float32 } /* 3226 */,
-    std::pair{ "u32x3(f32x3)", &UInt32x3_from_Float32x3 } /* 3227 */,
-    std::pair{ "u32x3(i16)", &UInt32x3_splat_Int16 } /* 3228 */,
-    std::pair{ "u32x3(i16x3)", &UInt32x3_from_Int16x3 } /* 3229 */,
-    std::pair{ "u32x3(i32)", &UInt32x3_splat_Int32 } /* 3230 */,
-    std::pair{ "u32x3(i32x3)", &UInt32x3_from_Int32x3 } /* 3231 */,
-    std::pair{ "u32x3(u16)", &UInt32x3_splat_UInt16 } /* 3232 */,
-    std::pair{ "u32x3(u16x3)", &UInt32x3_from_UInt16x3 } /* 3233 */,
-    std::pair{ "u32x3(u32)", &UInt32x3_splat_UInt32 } /* 3234 */,
-    std::pair{ "u32x3(u32,u32,u32)", &UInt32x3_ctor0 } /* 3235 */,
-    std::pair{ "u32x3(u32,u32x2)", &UInt32x3_ctor2 } /* 3236 */,
-    std::pair{ "u32x3(u32x2,u32)", &UInt32x3_ctor1 } /* 3237 */,
-    std::pair{ "u32x3(u32x3)", &UInt32x3_from_UInt32x3 } /* 3238 */,
-    std::pair{ "u32x4", &UInt32x4Type } /* 3239 */,
-    std::pair{ "u32x4", &UInt32x4_from_Float32x4 } /* 3240 */,
-    std::pair{ "u32x4", &UInt32x4_splat_Float32 } /* 3241 */,
-    std::pair{ "u32x4", &UInt32x4_from_UInt32x4 } /* 3242 */,
-    std::pair{ "u32x4", &UInt32x4_splat_UInt32 } /* 3243 */,
-    std::pair{ "u32x4", &UInt32x4_from_Int32x4 } /* 3244 */,
-    std::pair{ "u32x4", &UInt32x4_splat_Int32 } /* 3245 */,
-    std::pair{ "u32x4", &UInt32x4_from_Bool8x4 } /* 3246 */,
-    std::pair{ "u32x4", &UInt32x4_splat_Bool8 } /* 3247 */,
-    std::pair{ "u32x4", &UInt32x4_from_Float16x4 } /* 3248 */,
-    std::pair{ "u32x4", &UInt32x4_splat_Float16 } /* 3249 */,
-    std::pair{ "u32x4", &UInt32x4_from_UInt16x4 } /* 3250 */,
-    std::pair{ "u32x4", &UInt32x4_splat_UInt16 } /* 3251 */,
-    std::pair{ "u32x4", &UInt32x4_from_Int16x4 } /* 3252 */,
-    std::pair{ "u32x4", &UInt32x4_splat_Int16 } /* 3253 */,
-    std::pair{ "u32x4", &UInt32x4_ctor0 } /* 3254 */,
-    std::pair{ "u32x4", &UInt32x4_ctor1 } /* 3255 */,
-    std::pair{ "u32x4", &UInt32x4_ctor2 } /* 3256 */,
-    std::pair{ "u32x4", &UInt32x4_ctor3 } /* 3257 */,
-    std::pair{ "u32x4", &UInt32x4_ctor4 } /* 3258 */,
-    std::pair{ "u32x4", &UInt32x4_ctor5 } /* 3259 */,
-    std::pair{ "u32x4", &UInt32x4_ctor6 } /* 3260 */,
-    std::pair{ "u32x4(b8)", &UInt32x4_splat_Bool8 } /* 3261 */,
-    std::pair{ "u32x4(b8x4)", &UInt32x4_from_Bool8x4 } /* 3262 */,
-    std::pair{ "u32x4(f16)", &UInt32x4_splat_Float16 } /* 3263 */,
-    std::pair{ "u32x4(f16x4)", &UInt32x4_from_Float16x4 } /* 3264 */,
-    std::pair{ "u32x4(f32)", &UInt32x4_splat_Float32 } /* 3265 */,
-    std::pair{ "u32x4(f32x4)", &UInt32x4_from_Float32x4 } /* 3266 */,
-    std::pair{ "u32x4(i16)", &UInt32x4_splat_Int16 } /* 3267 */,
-    std::pair{ "u32x4(i16x4)", &UInt32x4_from_Int16x4 } /* 3268 */,
-    std::pair{ "u32x4(i32)", &UInt32x4_splat_Int32 } /* 3269 */,
-    std::pair{ "u32x4(i32x4)", &UInt32x4_from_Int32x4 } /* 3270 */,
-    std::pair{ "u32x4(u16)", &UInt32x4_splat_UInt16 } /* 3271 */,
-    std::pair{ "u32x4(u16x4)", &UInt32x4_from_UInt16x4 } /* 3272 */,
-    std::pair{ "u32x4(u32)", &UInt32x4_splat_UInt32 } /* 3273 */,
-    std::pair{ "u32x4(u32,u32,u32,u32)", &UInt32x4_ctor0 } /* 3274 */,
-    std::pair{ "u32x4(u32,u32,u32x2)", &UInt32x4_ctor3 } /* 3275 */,
-    std::pair{ "u32x4(u32,u32x2,u32)", &UInt32x4_ctor2 } /* 3276 */,
-    std::pair{ "u32x4(u32,u32x3)", &UInt32x4_ctor6 } /* 3277 */,
-    std::pair{ "u32x4(u32x2,u32,u32)", &UInt32x4_ctor1 } /* 3278 */,
-    std::pair{ "u32x4(u32x2,u32x2)", &UInt32x4_ctor4 } /* 3279 */,
-    std::pair{ "u32x4(u32x3,u32)", &UInt32x4_ctor5 } /* 3280 */,
-    std::pair{ "u32x4(u32x4)", &UInt32x4_from_UInt32x4 } /* 3281 */,
-    std::pair{ "vertexExportCoordinates", &VertexExportCoordinates_Float32x4 } /* 3282 */,
-    std::pair{ "vertexExportCoordinates", &VertexExportCoordinates_Float16x4 } /* 3283 */,
-    std::pair{ "vertexExportCoordinates(f16x4)", &VertexExportCoordinates_Float16x4 } /* 3284 */,
-    std::pair{ "vertexExportCoordinates(f32x4)", &VertexExportCoordinates_Float32x4 } /* 3285 */,
-    std::pair{ "vertexGetBaseIndex", &VertexGetBaseIndex } /* 3286 */,
-    std::pair{ "vertexGetBaseIndex()", &VertexGetBaseIndex } /* 3287 */,
-    std::pair{ "vertexGetBaseInstanceIndex", &VertexGetBaseInstanceIndex } /* 3288 */,
-    std::pair{ "vertexGetBaseInstanceIndex()", &VertexGetBaseInstanceIndex } /* 3289 */,
-    std::pair{ "vertexGetDrawIndex", &VertexGetDrawIndex } /* 3290 */,
-    std::pair{ "vertexGetDrawIndex()", &VertexGetDrawIndex } /* 3291 */,
-    std::pair{ "vertexGetIndex", &VertexGetIndex } /* 3292 */,
-    std::pair{ "vertexGetIndex()", &VertexGetIndex } /* 3293 */,
-    std::pair{ "vertexGetInstanceIndex", &VertexGetInstanceIndex } /* 3294 */,
-    std::pair{ "vertexGetInstanceIndex()", &VertexGetInstanceIndex } /* 3295 */,
-    std::pair{ "vertexGetOutputLayer", &VertexGetOutputLayer } /* 3296 */,
-    std::pair{ "vertexGetOutputLayer()", &VertexGetOutputLayer } /* 3297 */,
-    std::pair{ "vertexGetOutputViewport", &VertexGetOutputViewport } /* 3298 */,
-    std::pair{ "vertexGetOutputViewport()", &VertexGetOutputViewport } /* 3299 */,
-    std::pair{ "vertexSetOutputLayer", &VertexSetOutputLayer_UInt16 } /* 3300 */,
-    std::pair{ "vertexSetOutputLayer", &VertexSetOutputLayer_UInt32 } /* 3301 */,
-    std::pair{ "vertexSetOutputLayer(u16)", &VertexSetOutputLayer_UInt16 } /* 3302 */,
-    std::pair{ "vertexSetOutputLayer(u32)", &VertexSetOutputLayer_UInt32 } /* 3303 */,
-    std::pair{ "vertexSetOutputViewport", &VertexSetOutputViewport_UInt16 } /* 3304 */,
-    std::pair{ "vertexSetOutputViewport", &VertexSetOutputViewport_UInt32 } /* 3305 */,
-    std::pair{ "vertexSetOutputViewport(u16)", &VertexSetOutputViewport_UInt16 } /* 3306 */,
-    std::pair{ "vertexSetOutputViewport(u32)", &VertexSetOutputViewport_UInt32 } /* 3307 */,
-    std::pair{ "void", &VoidType } /* 3308 */
+    std::pair{ "textureSampleProjOffset(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleProjOffset_Texture1D } /* 2926 */,
+    std::pair{ "textureSampleProjOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleProjOffset_Texture2D } /* 2927 */,
+    std::pair{ "textureSampleProjOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleProjOffset_Texture3D } /* 2928 */,
+    std::pair{ "textureSampleProjOffset(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleProjOffset_Texture1D } /* 2929 */,
+    std::pair{ "textureSampleProjOffset(uniform *textureSampled2D,f32x2,f32,f32x2)", &SampledTextureSampleProjOffset_Texture2D } /* 2930 */,
+    std::pair{ "textureSampleProjOffset(uniform *textureSampled3D,f32x3,f32,f32x3)", &SampledTextureSampleProjOffset_Texture3D } /* 2931 */,
+    std::pair{ "textureSampled1D", &SampledTexture1DType } /* 2932 */,
+    std::pair{ "textureSampled1DArray", &SampledTexture1DArrayType } /* 2933 */,
+    std::pair{ "textureSampled2D", &SampledTexture2DType } /* 2934 */,
+    std::pair{ "textureSampled2DArray", &SampledTexture2DArrayType } /* 2935 */,
+    std::pair{ "textureSampled2DMS", &SampledTexture2DMSType } /* 2936 */,
+    std::pair{ "textureSampled2DMSArray", &SampledTexture2DMSArrayType } /* 2937 */,
+    std::pair{ "textureSampled3D", &SampledTexture3DType } /* 2938 */,
+    std::pair{ "textureSampledCube", &SampledTextureCubeType } /* 2939 */,
+    std::pair{ "textureSampledCubeArray", &SampledTextureCubeArrayType } /* 2940 */,
+    std::pair{ "textureStore", &TextureStore_Texture1D } /* 2941 */,
+    std::pair{ "textureStore", &TextureStore_Texture2D } /* 2942 */,
+    std::pair{ "textureStore", &TextureStore_Texture3D } /* 2943 */,
+    std::pair{ "textureStore", &TextureStore_TextureCube } /* 2944 */,
+    std::pair{ "textureStore", &TextureStore_Texture1DArray } /* 2945 */,
+    std::pair{ "textureStore", &TextureStore_Texture2DArray } /* 2946 */,
+    std::pair{ "textureStore", &TextureStore_TextureCubeArray } /* 2947 */,
+    std::pair{ "textureStore", &TextureStore_Texture2DMS } /* 2948 */,
+    std::pair{ "textureStore", &TextureStore_Texture2DMSArray } /* 2949 */,
+    std::pair{ "textureStore(uniform *mutable texture1D,i32,f32x4)", &TextureStore_Texture1D } /* 2950 */,
+    std::pair{ "textureStore(uniform *mutable texture1DArray,i32x2,f32x4)", &TextureStore_Texture1DArray } /* 2951 */,
+    std::pair{ "textureStore(uniform *mutable texture2D,i32x2,f32x4)", &TextureStore_Texture2D } /* 2952 */,
+    std::pair{ "textureStore(uniform *mutable texture2DArray,i32x3,f32x4)", &TextureStore_Texture2DArray } /* 2953 */,
+    std::pair{ "textureStore(uniform *mutable texture2DMS,i32x2,f32x4)", &TextureStore_Texture2DMS } /* 2954 */,
+    std::pair{ "textureStore(uniform *mutable texture2DMSArray,i32x3,f32x4)", &TextureStore_Texture2DMSArray } /* 2955 */,
+    std::pair{ "textureStore(uniform *mutable texture3D,i32x3,f32x4)", &TextureStore_Texture3D } /* 2956 */,
+    std::pair{ "textureStore(uniform *mutable textureCube,i32x3,f32x4)", &TextureStore_TextureCube } /* 2957 */,
+    std::pair{ "textureStore(uniform *mutable textureCubeArray,i32x4,f32x4)", &TextureStore_TextureCubeArray } /* 2958 */,
+    std::pair{ "textureStoreMip", &TextureStoreMip_Texture1D } /* 2959 */,
+    std::pair{ "textureStoreMip", &TextureStoreMip_Texture2D } /* 2960 */,
+    std::pair{ "textureStoreMip", &TextureStoreMip_Texture3D } /* 2961 */,
+    std::pair{ "textureStoreMip", &TextureStoreMip_TextureCube } /* 2962 */,
+    std::pair{ "textureStoreMip", &TextureStoreMip_Texture1DArray } /* 2963 */,
+    std::pair{ "textureStoreMip", &TextureStoreMip_Texture2DArray } /* 2964 */,
+    std::pair{ "textureStoreMip", &TextureStoreMip_TextureCubeArray } /* 2965 */,
+    std::pair{ "textureStoreMip", &TextureStoreMip_Texture2DMS } /* 2966 */,
+    std::pair{ "textureStoreMip", &TextureStoreMip_Texture2DMSArray } /* 2967 */,
+    std::pair{ "textureStoreMip(uniform *mutable texture1D,i32,i32,f32x4)", &TextureStoreMip_Texture1D } /* 2968 */,
+    std::pair{ "textureStoreMip(uniform *mutable texture1DArray,i32x2,i32,f32x4)", &TextureStoreMip_Texture1DArray } /* 2969 */,
+    std::pair{ "textureStoreMip(uniform *mutable texture2D,i32x2,i32,f32x4)", &TextureStoreMip_Texture2D } /* 2970 */,
+    std::pair{ "textureStoreMip(uniform *mutable texture2DArray,i32x3,i32,f32x4)", &TextureStoreMip_Texture2DArray } /* 2971 */,
+    std::pair{ "textureStoreMip(uniform *mutable texture2DMS,i32x2,i32,f32x4)", &TextureStoreMip_Texture2DMS } /* 2972 */,
+    std::pair{ "textureStoreMip(uniform *mutable texture2DMSArray,i32x3,i32,f32x4)", &TextureStoreMip_Texture2DMSArray } /* 2973 */,
+    std::pair{ "textureStoreMip(uniform *mutable texture3D,i32x3,i32,f32x4)", &TextureStoreMip_Texture3D } /* 2974 */,
+    std::pair{ "textureStoreMip(uniform *mutable textureCube,i32x3,i32,f32x4)", &TextureStoreMip_TextureCube } /* 2975 */,
+    std::pair{ "textureStoreMip(uniform *mutable textureCubeArray,i32x4,i32,f32x4)", &TextureStoreMip_TextureCubeArray } /* 2976 */,
+    std::pair{ "transpose", &transpose_Float32x2x2 } /* 2977 */,
+    std::pair{ "transpose", &transpose_Float16x2x2 } /* 2978 */,
+    std::pair{ "transpose", &transpose_Float32x2x3 } /* 2979 */,
+    std::pair{ "transpose", &transpose_Float16x2x3 } /* 2980 */,
+    std::pair{ "transpose", &transpose_Float32x2x4 } /* 2981 */,
+    std::pair{ "transpose", &transpose_Float16x2x4 } /* 2982 */,
+    std::pair{ "transpose", &transpose_Float32x3x2 } /* 2983 */,
+    std::pair{ "transpose", &transpose_Float16x3x2 } /* 2984 */,
+    std::pair{ "transpose", &transpose_Float32x3x3 } /* 2985 */,
+    std::pair{ "transpose", &transpose_Float16x3x3 } /* 2986 */,
+    std::pair{ "transpose", &transpose_Float32x3x4 } /* 2987 */,
+    std::pair{ "transpose", &transpose_Float16x3x4 } /* 2988 */,
+    std::pair{ "transpose", &transpose_Float32x4x2 } /* 2989 */,
+    std::pair{ "transpose", &transpose_Float16x4x2 } /* 2990 */,
+    std::pair{ "transpose", &transpose_Float32x4x3 } /* 2991 */,
+    std::pair{ "transpose", &transpose_Float16x4x3 } /* 2992 */,
+    std::pair{ "transpose", &transpose_Float32x4x4 } /* 2993 */,
+    std::pair{ "transpose", &transpose_Float16x4x4 } /* 2994 */,
+    std::pair{ "transpose(f16x2x2)", &transpose_Float16x2x2 } /* 2995 */,
+    std::pair{ "transpose(f16x2x3)", &transpose_Float16x2x3 } /* 2996 */,
+    std::pair{ "transpose(f16x2x4)", &transpose_Float16x2x4 } /* 2997 */,
+    std::pair{ "transpose(f16x3x2)", &transpose_Float16x3x2 } /* 2998 */,
+    std::pair{ "transpose(f16x3x3)", &transpose_Float16x3x3 } /* 2999 */,
+    std::pair{ "transpose(f16x3x4)", &transpose_Float16x3x4 } /* 3000 */,
+    std::pair{ "transpose(f16x4x2)", &transpose_Float16x4x2 } /* 3001 */,
+    std::pair{ "transpose(f16x4x3)", &transpose_Float16x4x3 } /* 3002 */,
+    std::pair{ "transpose(f16x4x4)", &transpose_Float16x4x4 } /* 3003 */,
+    std::pair{ "transpose(f32x2x2)", &transpose_Float32x2x2 } /* 3004 */,
+    std::pair{ "transpose(f32x2x3)", &transpose_Float32x2x3 } /* 3005 */,
+    std::pair{ "transpose(f32x2x4)", &transpose_Float32x2x4 } /* 3006 */,
+    std::pair{ "transpose(f32x3x2)", &transpose_Float32x3x2 } /* 3007 */,
+    std::pair{ "transpose(f32x3x3)", &transpose_Float32x3x3 } /* 3008 */,
+    std::pair{ "transpose(f32x3x4)", &transpose_Float32x3x4 } /* 3009 */,
+    std::pair{ "transpose(f32x4x2)", &transpose_Float32x4x2 } /* 3010 */,
+    std::pair{ "transpose(f32x4x3)", &transpose_Float32x4x3 } /* 3011 */,
+    std::pair{ "transpose(f32x4x4)", &transpose_Float32x4x4 } /* 3012 */,
+    std::pair{ "trunc", &trunc_Float32 } /* 3013 */,
+    std::pair{ "trunc", &trunc_Float32x2 } /* 3014 */,
+    std::pair{ "trunc", &trunc_Float32x3 } /* 3015 */,
+    std::pair{ "trunc", &trunc_Float32x4 } /* 3016 */,
+    std::pair{ "trunc", &trunc_Float16 } /* 3017 */,
+    std::pair{ "trunc", &trunc_Float16x2 } /* 3018 */,
+    std::pair{ "trunc", &trunc_Float16x3 } /* 3019 */,
+    std::pair{ "trunc", &trunc_Float16x4 } /* 3020 */,
+    std::pair{ "trunc(f16)", &trunc_Float16 } /* 3021 */,
+    std::pair{ "trunc(f16x2)", &trunc_Float16x2 } /* 3022 */,
+    std::pair{ "trunc(f16x3)", &trunc_Float16x3 } /* 3023 */,
+    std::pair{ "trunc(f16x4)", &trunc_Float16x4 } /* 3024 */,
+    std::pair{ "trunc(f32)", &trunc_Float32 } /* 3025 */,
+    std::pair{ "trunc(f32x2)", &trunc_Float32x2 } /* 3026 */,
+    std::pair{ "trunc(f32x3)", &trunc_Float32x3 } /* 3027 */,
+    std::pair{ "trunc(f32x4)", &trunc_Float32x4 } /* 3028 */,
+    std::pair{ "u16", &UInt16Type } /* 3029 */,
+    std::pair{ "u16", &UInt16_from_Float32 } /* 3030 */,
+    std::pair{ "u16", &UInt16_from_UInt32 } /* 3031 */,
+    std::pair{ "u16", &UInt16_from_Int32 } /* 3032 */,
+    std::pair{ "u16", &UInt16_from_Bool8 } /* 3033 */,
+    std::pair{ "u16", &UInt16_from_Float16 } /* 3034 */,
+    std::pair{ "u16", &UInt16_from_Int16 } /* 3035 */,
+    std::pair{ "u16", &UInt16_ctor0 } /* 3036 */,
+    std::pair{ "u16(b8)", &UInt16_from_Bool8 } /* 3037 */,
+    std::pair{ "u16(f16)", &UInt16_from_Float16 } /* 3038 */,
+    std::pair{ "u16(f32)", &UInt16_from_Float32 } /* 3039 */,
+    std::pair{ "u16(i16)", &UInt16_from_Int16 } /* 3040 */,
+    std::pair{ "u16(i32)", &UInt16_from_Int32 } /* 3041 */,
+    std::pair{ "u16(u16)", &UInt16_ctor0 } /* 3042 */,
+    std::pair{ "u16(u32)", &UInt16_from_UInt32 } /* 3043 */,
+    std::pair{ "u16x2", &UInt16x2Type } /* 3044 */,
+    std::pair{ "u16x2", &UInt16x2_from_Float32x2 } /* 3045 */,
+    std::pair{ "u16x2", &UInt16x2_splat_Float32 } /* 3046 */,
+    std::pair{ "u16x2", &UInt16x2_from_UInt32x2 } /* 3047 */,
+    std::pair{ "u16x2", &UInt16x2_splat_UInt32 } /* 3048 */,
+    std::pair{ "u16x2", &UInt16x2_from_Int32x2 } /* 3049 */,
+    std::pair{ "u16x2", &UInt16x2_splat_Int32 } /* 3050 */,
+    std::pair{ "u16x2", &UInt16x2_from_Bool8x2 } /* 3051 */,
+    std::pair{ "u16x2", &UInt16x2_splat_Bool8 } /* 3052 */,
+    std::pair{ "u16x2", &UInt16x2_from_Float16x2 } /* 3053 */,
+    std::pair{ "u16x2", &UInt16x2_splat_Float16 } /* 3054 */,
+    std::pair{ "u16x2", &UInt16x2_from_UInt16x2 } /* 3055 */,
+    std::pair{ "u16x2", &UInt16x2_splat_UInt16 } /* 3056 */,
+    std::pair{ "u16x2", &UInt16x2_from_Int16x2 } /* 3057 */,
+    std::pair{ "u16x2", &UInt16x2_splat_Int16 } /* 3058 */,
+    std::pair{ "u16x2", &UInt16x2_ctor0 } /* 3059 */,
+    std::pair{ "u16x2(b8)", &UInt16x2_splat_Bool8 } /* 3060 */,
+    std::pair{ "u16x2(b8x2)", &UInt16x2_from_Bool8x2 } /* 3061 */,
+    std::pair{ "u16x2(f16)", &UInt16x2_splat_Float16 } /* 3062 */,
+    std::pair{ "u16x2(f16x2)", &UInt16x2_from_Float16x2 } /* 3063 */,
+    std::pair{ "u16x2(f32)", &UInt16x2_splat_Float32 } /* 3064 */,
+    std::pair{ "u16x2(f32x2)", &UInt16x2_from_Float32x2 } /* 3065 */,
+    std::pair{ "u16x2(i16)", &UInt16x2_splat_Int16 } /* 3066 */,
+    std::pair{ "u16x2(i16x2)", &UInt16x2_from_Int16x2 } /* 3067 */,
+    std::pair{ "u16x2(i32)", &UInt16x2_splat_Int32 } /* 3068 */,
+    std::pair{ "u16x2(i32x2)", &UInt16x2_from_Int32x2 } /* 3069 */,
+    std::pair{ "u16x2(u16)", &UInt16x2_splat_UInt16 } /* 3070 */,
+    std::pair{ "u16x2(u16,u16)", &UInt16x2_ctor0 } /* 3071 */,
+    std::pair{ "u16x2(u16x2)", &UInt16x2_from_UInt16x2 } /* 3072 */,
+    std::pair{ "u16x2(u32)", &UInt16x2_splat_UInt32 } /* 3073 */,
+    std::pair{ "u16x2(u32x2)", &UInt16x2_from_UInt32x2 } /* 3074 */,
+    std::pair{ "u16x3", &UInt16x3Type } /* 3075 */,
+    std::pair{ "u16x3", &UInt16x3_from_Float32x3 } /* 3076 */,
+    std::pair{ "u16x3", &UInt16x3_splat_Float32 } /* 3077 */,
+    std::pair{ "u16x3", &UInt16x3_from_UInt32x3 } /* 3078 */,
+    std::pair{ "u16x3", &UInt16x3_splat_UInt32 } /* 3079 */,
+    std::pair{ "u16x3", &UInt16x3_from_Int32x3 } /* 3080 */,
+    std::pair{ "u16x3", &UInt16x3_splat_Int32 } /* 3081 */,
+    std::pair{ "u16x3", &UInt16x3_from_Bool8x3 } /* 3082 */,
+    std::pair{ "u16x3", &UInt16x3_splat_Bool8 } /* 3083 */,
+    std::pair{ "u16x3", &UInt16x3_from_Float16x3 } /* 3084 */,
+    std::pair{ "u16x3", &UInt16x3_splat_Float16 } /* 3085 */,
+    std::pair{ "u16x3", &UInt16x3_from_UInt16x3 } /* 3086 */,
+    std::pair{ "u16x3", &UInt16x3_splat_UInt16 } /* 3087 */,
+    std::pair{ "u16x3", &UInt16x3_from_Int16x3 } /* 3088 */,
+    std::pair{ "u16x3", &UInt16x3_splat_Int16 } /* 3089 */,
+    std::pair{ "u16x3", &UInt16x3_ctor0 } /* 3090 */,
+    std::pair{ "u16x3", &UInt16x3_ctor1 } /* 3091 */,
+    std::pair{ "u16x3", &UInt16x3_ctor2 } /* 3092 */,
+    std::pair{ "u16x3(b8)", &UInt16x3_splat_Bool8 } /* 3093 */,
+    std::pair{ "u16x3(b8x3)", &UInt16x3_from_Bool8x3 } /* 3094 */,
+    std::pair{ "u16x3(f16)", &UInt16x3_splat_Float16 } /* 3095 */,
+    std::pair{ "u16x3(f16x3)", &UInt16x3_from_Float16x3 } /* 3096 */,
+    std::pair{ "u16x3(f32)", &UInt16x3_splat_Float32 } /* 3097 */,
+    std::pair{ "u16x3(f32x3)", &UInt16x3_from_Float32x3 } /* 3098 */,
+    std::pair{ "u16x3(i16)", &UInt16x3_splat_Int16 } /* 3099 */,
+    std::pair{ "u16x3(i16x3)", &UInt16x3_from_Int16x3 } /* 3100 */,
+    std::pair{ "u16x3(i32)", &UInt16x3_splat_Int32 } /* 3101 */,
+    std::pair{ "u16x3(i32x3)", &UInt16x3_from_Int32x3 } /* 3102 */,
+    std::pair{ "u16x3(u16)", &UInt16x3_splat_UInt16 } /* 3103 */,
+    std::pair{ "u16x3(u16,u16,u16)", &UInt16x3_ctor0 } /* 3104 */,
+    std::pair{ "u16x3(u16,u16x2)", &UInt16x3_ctor2 } /* 3105 */,
+    std::pair{ "u16x3(u16x2,u16)", &UInt16x3_ctor1 } /* 3106 */,
+    std::pair{ "u16x3(u16x3)", &UInt16x3_from_UInt16x3 } /* 3107 */,
+    std::pair{ "u16x3(u32)", &UInt16x3_splat_UInt32 } /* 3108 */,
+    std::pair{ "u16x3(u32x3)", &UInt16x3_from_UInt32x3 } /* 3109 */,
+    std::pair{ "u16x4", &UInt16x4Type } /* 3110 */,
+    std::pair{ "u16x4", &UInt16x4_from_Float32x4 } /* 3111 */,
+    std::pair{ "u16x4", &UInt16x4_splat_Float32 } /* 3112 */,
+    std::pair{ "u16x4", &UInt16x4_from_UInt32x4 } /* 3113 */,
+    std::pair{ "u16x4", &UInt16x4_splat_UInt32 } /* 3114 */,
+    std::pair{ "u16x4", &UInt16x4_from_Int32x4 } /* 3115 */,
+    std::pair{ "u16x4", &UInt16x4_splat_Int32 } /* 3116 */,
+    std::pair{ "u16x4", &UInt16x4_from_Bool8x4 } /* 3117 */,
+    std::pair{ "u16x4", &UInt16x4_splat_Bool8 } /* 3118 */,
+    std::pair{ "u16x4", &UInt16x4_from_Float16x4 } /* 3119 */,
+    std::pair{ "u16x4", &UInt16x4_splat_Float16 } /* 3120 */,
+    std::pair{ "u16x4", &UInt16x4_from_UInt16x4 } /* 3121 */,
+    std::pair{ "u16x4", &UInt16x4_splat_UInt16 } /* 3122 */,
+    std::pair{ "u16x4", &UInt16x4_from_Int16x4 } /* 3123 */,
+    std::pair{ "u16x4", &UInt16x4_splat_Int16 } /* 3124 */,
+    std::pair{ "u16x4", &UInt16x4_ctor0 } /* 3125 */,
+    std::pair{ "u16x4", &UInt16x4_ctor1 } /* 3126 */,
+    std::pair{ "u16x4", &UInt16x4_ctor2 } /* 3127 */,
+    std::pair{ "u16x4", &UInt16x4_ctor3 } /* 3128 */,
+    std::pair{ "u16x4", &UInt16x4_ctor4 } /* 3129 */,
+    std::pair{ "u16x4", &UInt16x4_ctor5 } /* 3130 */,
+    std::pair{ "u16x4", &UInt16x4_ctor6 } /* 3131 */,
+    std::pair{ "u16x4(b8)", &UInt16x4_splat_Bool8 } /* 3132 */,
+    std::pair{ "u16x4(b8x4)", &UInt16x4_from_Bool8x4 } /* 3133 */,
+    std::pair{ "u16x4(f16)", &UInt16x4_splat_Float16 } /* 3134 */,
+    std::pair{ "u16x4(f16x4)", &UInt16x4_from_Float16x4 } /* 3135 */,
+    std::pair{ "u16x4(f32)", &UInt16x4_splat_Float32 } /* 3136 */,
+    std::pair{ "u16x4(f32x4)", &UInt16x4_from_Float32x4 } /* 3137 */,
+    std::pair{ "u16x4(i16)", &UInt16x4_splat_Int16 } /* 3138 */,
+    std::pair{ "u16x4(i16x4)", &UInt16x4_from_Int16x4 } /* 3139 */,
+    std::pair{ "u16x4(i32)", &UInt16x4_splat_Int32 } /* 3140 */,
+    std::pair{ "u16x4(i32x4)", &UInt16x4_from_Int32x4 } /* 3141 */,
+    std::pair{ "u16x4(u16)", &UInt16x4_splat_UInt16 } /* 3142 */,
+    std::pair{ "u16x4(u16,u16,u16,u16)", &UInt16x4_ctor0 } /* 3143 */,
+    std::pair{ "u16x4(u16,u16,u16x2)", &UInt16x4_ctor3 } /* 3144 */,
+    std::pair{ "u16x4(u16,u16x2,u16)", &UInt16x4_ctor2 } /* 3145 */,
+    std::pair{ "u16x4(u16,u16x3)", &UInt16x4_ctor6 } /* 3146 */,
+    std::pair{ "u16x4(u16x2,u16,u16)", &UInt16x4_ctor1 } /* 3147 */,
+    std::pair{ "u16x4(u16x2,u16x2)", &UInt16x4_ctor4 } /* 3148 */,
+    std::pair{ "u16x4(u16x3,u16)", &UInt16x4_ctor5 } /* 3149 */,
+    std::pair{ "u16x4(u16x4)", &UInt16x4_from_UInt16x4 } /* 3150 */,
+    std::pair{ "u16x4(u32)", &UInt16x4_splat_UInt32 } /* 3151 */,
+    std::pair{ "u16x4(u32x4)", &UInt16x4_from_UInt32x4 } /* 3152 */,
+    std::pair{ "u32", &UInt32Type } /* 3153 */,
+    std::pair{ "u32", &UInt32_from_Float32 } /* 3154 */,
+    std::pair{ "u32", &UInt32_from_Int32 } /* 3155 */,
+    std::pair{ "u32", &UInt32_from_Bool8 } /* 3156 */,
+    std::pair{ "u32", &UInt32_from_Float16 } /* 3157 */,
+    std::pair{ "u32", &UInt32_from_UInt16 } /* 3158 */,
+    std::pair{ "u32", &UInt32_from_Int16 } /* 3159 */,
+    std::pair{ "u32", &UInt32_ctor0 } /* 3160 */,
+    std::pair{ "u32(AddressMode)", &AddressModeType.fromUnderlyingType } /* 3161 */,
+    std::pair{ "u32(BlendColorMask)", &BlendColorMaskType.fromUnderlyingType } /* 3162 */,
+    std::pair{ "u32(BlendFactor)", &BlendFactorType.fromUnderlyingType } /* 3163 */,
+    std::pair{ "u32(BlendOperation)", &BlendOperationType.fromUnderlyingType } /* 3164 */,
+    std::pair{ "u32(Color)", &ColorType.fromUnderlyingType } /* 3165 */,
+    std::pair{ "u32(CompareMode)", &CompareModeType.fromUnderlyingType } /* 3166 */,
+    std::pair{ "u32(CullFace)", &CullFaceType.fromUnderlyingType } /* 3167 */,
+    std::pair{ "u32(ExecutionScope)", &ExecutionScopeType.fromUnderlyingType } /* 3168 */,
+    std::pair{ "u32(FilterMode)", &FilterModeType.fromUnderlyingType } /* 3169 */,
+    std::pair{ "u32(LogicOp)", &LogicOpType.fromUnderlyingType } /* 3170 */,
+    std::pair{ "u32(MemorySemantics)", &MemorySemanticsType.fromUnderlyingType } /* 3171 */,
+    std::pair{ "u32(PolygonMode)", &PolygonModeType.fromUnderlyingType } /* 3172 */,
+    std::pair{ "u32(StencilOp)", &StencilOpType.fromUnderlyingType } /* 3173 */,
+    std::pair{ "u32(WindingOrder)", &WindingOrderType.fromUnderlyingType } /* 3174 */,
+    std::pair{ "u32(b8)", &UInt32_from_Bool8 } /* 3175 */,
+    std::pair{ "u32(f16)", &UInt32_from_Float16 } /* 3176 */,
+    std::pair{ "u32(f32)", &UInt32_from_Float32 } /* 3177 */,
+    std::pair{ "u32(i16)", &UInt32_from_Int16 } /* 3178 */,
+    std::pair{ "u32(i32)", &UInt32_from_Int32 } /* 3179 */,
+    std::pair{ "u32(u16)", &UInt32_from_UInt16 } /* 3180 */,
+    std::pair{ "u32(u32)", &UInt32_ctor0 } /* 3181 */,
+    std::pair{ "u32x2", &UInt32x2Type } /* 3182 */,
+    std::pair{ "u32x2", &UInt32x2_from_Float32x2 } /* 3183 */,
+    std::pair{ "u32x2", &UInt32x2_splat_Float32 } /* 3184 */,
+    std::pair{ "u32x2", &UInt32x2_from_UInt32x2 } /* 3185 */,
+    std::pair{ "u32x2", &UInt32x2_splat_UInt32 } /* 3186 */,
+    std::pair{ "u32x2", &UInt32x2_from_Int32x2 } /* 3187 */,
+    std::pair{ "u32x2", &UInt32x2_splat_Int32 } /* 3188 */,
+    std::pair{ "u32x2", &UInt32x2_from_Bool8x2 } /* 3189 */,
+    std::pair{ "u32x2", &UInt32x2_splat_Bool8 } /* 3190 */,
+    std::pair{ "u32x2", &UInt32x2_from_Float16x2 } /* 3191 */,
+    std::pair{ "u32x2", &UInt32x2_splat_Float16 } /* 3192 */,
+    std::pair{ "u32x2", &UInt32x2_from_UInt16x2 } /* 3193 */,
+    std::pair{ "u32x2", &UInt32x2_splat_UInt16 } /* 3194 */,
+    std::pair{ "u32x2", &UInt32x2_from_Int16x2 } /* 3195 */,
+    std::pair{ "u32x2", &UInt32x2_splat_Int16 } /* 3196 */,
+    std::pair{ "u32x2", &UInt32x2_ctor0 } /* 3197 */,
+    std::pair{ "u32x2(b8)", &UInt32x2_splat_Bool8 } /* 3198 */,
+    std::pair{ "u32x2(b8x2)", &UInt32x2_from_Bool8x2 } /* 3199 */,
+    std::pair{ "u32x2(f16)", &UInt32x2_splat_Float16 } /* 3200 */,
+    std::pair{ "u32x2(f16x2)", &UInt32x2_from_Float16x2 } /* 3201 */,
+    std::pair{ "u32x2(f32)", &UInt32x2_splat_Float32 } /* 3202 */,
+    std::pair{ "u32x2(f32x2)", &UInt32x2_from_Float32x2 } /* 3203 */,
+    std::pair{ "u32x2(i16)", &UInt32x2_splat_Int16 } /* 3204 */,
+    std::pair{ "u32x2(i16x2)", &UInt32x2_from_Int16x2 } /* 3205 */,
+    std::pair{ "u32x2(i32)", &UInt32x2_splat_Int32 } /* 3206 */,
+    std::pair{ "u32x2(i32x2)", &UInt32x2_from_Int32x2 } /* 3207 */,
+    std::pair{ "u32x2(u16)", &UInt32x2_splat_UInt16 } /* 3208 */,
+    std::pair{ "u32x2(u16x2)", &UInt32x2_from_UInt16x2 } /* 3209 */,
+    std::pair{ "u32x2(u32)", &UInt32x2_splat_UInt32 } /* 3210 */,
+    std::pair{ "u32x2(u32,u32)", &UInt32x2_ctor0 } /* 3211 */,
+    std::pair{ "u32x2(u32x2)", &UInt32x2_from_UInt32x2 } /* 3212 */,
+    std::pair{ "u32x3", &UInt32x3Type } /* 3213 */,
+    std::pair{ "u32x3", &UInt32x3_from_Float32x3 } /* 3214 */,
+    std::pair{ "u32x3", &UInt32x3_splat_Float32 } /* 3215 */,
+    std::pair{ "u32x3", &UInt32x3_from_UInt32x3 } /* 3216 */,
+    std::pair{ "u32x3", &UInt32x3_splat_UInt32 } /* 3217 */,
+    std::pair{ "u32x3", &UInt32x3_from_Int32x3 } /* 3218 */,
+    std::pair{ "u32x3", &UInt32x3_splat_Int32 } /* 3219 */,
+    std::pair{ "u32x3", &UInt32x3_from_Bool8x3 } /* 3220 */,
+    std::pair{ "u32x3", &UInt32x3_splat_Bool8 } /* 3221 */,
+    std::pair{ "u32x3", &UInt32x3_from_Float16x3 } /* 3222 */,
+    std::pair{ "u32x3", &UInt32x3_splat_Float16 } /* 3223 */,
+    std::pair{ "u32x3", &UInt32x3_from_UInt16x3 } /* 3224 */,
+    std::pair{ "u32x3", &UInt32x3_splat_UInt16 } /* 3225 */,
+    std::pair{ "u32x3", &UInt32x3_from_Int16x3 } /* 3226 */,
+    std::pair{ "u32x3", &UInt32x3_splat_Int16 } /* 3227 */,
+    std::pair{ "u32x3", &UInt32x3_ctor0 } /* 3228 */,
+    std::pair{ "u32x3", &UInt32x3_ctor1 } /* 3229 */,
+    std::pair{ "u32x3", &UInt32x3_ctor2 } /* 3230 */,
+    std::pair{ "u32x3(b8)", &UInt32x3_splat_Bool8 } /* 3231 */,
+    std::pair{ "u32x3(b8x3)", &UInt32x3_from_Bool8x3 } /* 3232 */,
+    std::pair{ "u32x3(f16)", &UInt32x3_splat_Float16 } /* 3233 */,
+    std::pair{ "u32x3(f16x3)", &UInt32x3_from_Float16x3 } /* 3234 */,
+    std::pair{ "u32x3(f32)", &UInt32x3_splat_Float32 } /* 3235 */,
+    std::pair{ "u32x3(f32x3)", &UInt32x3_from_Float32x3 } /* 3236 */,
+    std::pair{ "u32x3(i16)", &UInt32x3_splat_Int16 } /* 3237 */,
+    std::pair{ "u32x3(i16x3)", &UInt32x3_from_Int16x3 } /* 3238 */,
+    std::pair{ "u32x3(i32)", &UInt32x3_splat_Int32 } /* 3239 */,
+    std::pair{ "u32x3(i32x3)", &UInt32x3_from_Int32x3 } /* 3240 */,
+    std::pair{ "u32x3(u16)", &UInt32x3_splat_UInt16 } /* 3241 */,
+    std::pair{ "u32x3(u16x3)", &UInt32x3_from_UInt16x3 } /* 3242 */,
+    std::pair{ "u32x3(u32)", &UInt32x3_splat_UInt32 } /* 3243 */,
+    std::pair{ "u32x3(u32,u32,u32)", &UInt32x3_ctor0 } /* 3244 */,
+    std::pair{ "u32x3(u32,u32x2)", &UInt32x3_ctor2 } /* 3245 */,
+    std::pair{ "u32x3(u32x2,u32)", &UInt32x3_ctor1 } /* 3246 */,
+    std::pair{ "u32x3(u32x3)", &UInt32x3_from_UInt32x3 } /* 3247 */,
+    std::pair{ "u32x4", &UInt32x4Type } /* 3248 */,
+    std::pair{ "u32x4", &UInt32x4_from_Float32x4 } /* 3249 */,
+    std::pair{ "u32x4", &UInt32x4_splat_Float32 } /* 3250 */,
+    std::pair{ "u32x4", &UInt32x4_from_UInt32x4 } /* 3251 */,
+    std::pair{ "u32x4", &UInt32x4_splat_UInt32 } /* 3252 */,
+    std::pair{ "u32x4", &UInt32x4_from_Int32x4 } /* 3253 */,
+    std::pair{ "u32x4", &UInt32x4_splat_Int32 } /* 3254 */,
+    std::pair{ "u32x4", &UInt32x4_from_Bool8x4 } /* 3255 */,
+    std::pair{ "u32x4", &UInt32x4_splat_Bool8 } /* 3256 */,
+    std::pair{ "u32x4", &UInt32x4_from_Float16x4 } /* 3257 */,
+    std::pair{ "u32x4", &UInt32x4_splat_Float16 } /* 3258 */,
+    std::pair{ "u32x4", &UInt32x4_from_UInt16x4 } /* 3259 */,
+    std::pair{ "u32x4", &UInt32x4_splat_UInt16 } /* 3260 */,
+    std::pair{ "u32x4", &UInt32x4_from_Int16x4 } /* 3261 */,
+    std::pair{ "u32x4", &UInt32x4_splat_Int16 } /* 3262 */,
+    std::pair{ "u32x4", &UInt32x4_ctor0 } /* 3263 */,
+    std::pair{ "u32x4", &UInt32x4_ctor1 } /* 3264 */,
+    std::pair{ "u32x4", &UInt32x4_ctor2 } /* 3265 */,
+    std::pair{ "u32x4", &UInt32x4_ctor3 } /* 3266 */,
+    std::pair{ "u32x4", &UInt32x4_ctor4 } /* 3267 */,
+    std::pair{ "u32x4", &UInt32x4_ctor5 } /* 3268 */,
+    std::pair{ "u32x4", &UInt32x4_ctor6 } /* 3269 */,
+    std::pair{ "u32x4(b8)", &UInt32x4_splat_Bool8 } /* 3270 */,
+    std::pair{ "u32x4(b8x4)", &UInt32x4_from_Bool8x4 } /* 3271 */,
+    std::pair{ "u32x4(f16)", &UInt32x4_splat_Float16 } /* 3272 */,
+    std::pair{ "u32x4(f16x4)", &UInt32x4_from_Float16x4 } /* 3273 */,
+    std::pair{ "u32x4(f32)", &UInt32x4_splat_Float32 } /* 3274 */,
+    std::pair{ "u32x4(f32x4)", &UInt32x4_from_Float32x4 } /* 3275 */,
+    std::pair{ "u32x4(i16)", &UInt32x4_splat_Int16 } /* 3276 */,
+    std::pair{ "u32x4(i16x4)", &UInt32x4_from_Int16x4 } /* 3277 */,
+    std::pair{ "u32x4(i32)", &UInt32x4_splat_Int32 } /* 3278 */,
+    std::pair{ "u32x4(i32x4)", &UInt32x4_from_Int32x4 } /* 3279 */,
+    std::pair{ "u32x4(u16)", &UInt32x4_splat_UInt16 } /* 3280 */,
+    std::pair{ "u32x4(u16x4)", &UInt32x4_from_UInt16x4 } /* 3281 */,
+    std::pair{ "u32x4(u32)", &UInt32x4_splat_UInt32 } /* 3282 */,
+    std::pair{ "u32x4(u32,u32,u32,u32)", &UInt32x4_ctor0 } /* 3283 */,
+    std::pair{ "u32x4(u32,u32,u32x2)", &UInt32x4_ctor3 } /* 3284 */,
+    std::pair{ "u32x4(u32,u32x2,u32)", &UInt32x4_ctor2 } /* 3285 */,
+    std::pair{ "u32x4(u32,u32x3)", &UInt32x4_ctor6 } /* 3286 */,
+    std::pair{ "u32x4(u32x2,u32,u32)", &UInt32x4_ctor1 } /* 3287 */,
+    std::pair{ "u32x4(u32x2,u32x2)", &UInt32x4_ctor4 } /* 3288 */,
+    std::pair{ "u32x4(u32x3,u32)", &UInt32x4_ctor5 } /* 3289 */,
+    std::pair{ "u32x4(u32x4)", &UInt32x4_from_UInt32x4 } /* 3290 */,
+    std::pair{ "vertexExportCoordinates", &VertexExportCoordinates_Float32x4 } /* 3291 */,
+    std::pair{ "vertexExportCoordinates", &VertexExportCoordinates_Float16x4 } /* 3292 */,
+    std::pair{ "vertexExportCoordinates(f16x4)", &VertexExportCoordinates_Float16x4 } /* 3293 */,
+    std::pair{ "vertexExportCoordinates(f32x4)", &VertexExportCoordinates_Float32x4 } /* 3294 */,
+    std::pair{ "vertexGetBaseIndex", &VertexGetBaseIndex } /* 3295 */,
+    std::pair{ "vertexGetBaseIndex()", &VertexGetBaseIndex } /* 3296 */,
+    std::pair{ "vertexGetBaseInstanceIndex", &VertexGetBaseInstanceIndex } /* 3297 */,
+    std::pair{ "vertexGetBaseInstanceIndex()", &VertexGetBaseInstanceIndex } /* 3298 */,
+    std::pair{ "vertexGetDrawIndex", &VertexGetDrawIndex } /* 3299 */,
+    std::pair{ "vertexGetDrawIndex()", &VertexGetDrawIndex } /* 3300 */,
+    std::pair{ "vertexGetIndex", &VertexGetIndex } /* 3301 */,
+    std::pair{ "vertexGetIndex()", &VertexGetIndex } /* 3302 */,
+    std::pair{ "vertexGetInstanceIndex", &VertexGetInstanceIndex } /* 3303 */,
+    std::pair{ "vertexGetInstanceIndex()", &VertexGetInstanceIndex } /* 3304 */,
+    std::pair{ "vertexGetOutputLayer", &VertexGetOutputLayer } /* 3305 */,
+    std::pair{ "vertexGetOutputLayer()", &VertexGetOutputLayer } /* 3306 */,
+    std::pair{ "vertexGetOutputViewport", &VertexGetOutputViewport } /* 3307 */,
+    std::pair{ "vertexGetOutputViewport()", &VertexGetOutputViewport } /* 3308 */,
+    std::pair{ "vertexSetOutputLayer", &VertexSetOutputLayer_UInt16 } /* 3309 */,
+    std::pair{ "vertexSetOutputLayer", &VertexSetOutputLayer_UInt32 } /* 3310 */,
+    std::pair{ "vertexSetOutputLayer(u16)", &VertexSetOutputLayer_UInt16 } /* 3311 */,
+    std::pair{ "vertexSetOutputLayer(u32)", &VertexSetOutputLayer_UInt32 } /* 3312 */,
+    std::pair{ "vertexSetOutputViewport", &VertexSetOutputViewport_UInt16 } /* 3313 */,
+    std::pair{ "vertexSetOutputViewport", &VertexSetOutputViewport_UInt32 } /* 3314 */,
+    std::pair{ "vertexSetOutputViewport(u16)", &VertexSetOutputViewport_UInt16 } /* 3315 */,
+    std::pair{ "vertexSetOutputViewport(u32)", &VertexSetOutputViewport_UInt32 } /* 3316 */,
+    std::pair{ "void", &VoidType } /* 3317 */
 };
 
 } // namespace GPULang

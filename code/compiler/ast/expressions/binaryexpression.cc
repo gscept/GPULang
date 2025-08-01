@@ -66,13 +66,13 @@ BinaryExpression::Resolve(Compiler* compiler)
     this->right->EvalType(this->thisResolved->rightType);
 
     // Disallow binary operators on pointers and arrays
-    if (!thisResolved->leftType.modifiers.empty())
+    if (thisResolved->leftType.modifiers.size != 0)
     {
         compiler->Error(Format("Invalid operator '%c' on type '%s'", this->op, this->thisResolved->leftType.ToString().c_str()), this);
         return false;
     }
     
-    if (!thisResolved->rightType.modifiers.empty())
+    if (thisResolved->rightType.modifiers.size != 0)
     {
         compiler->Error(Format("Invalid operator '%c' on type '%s'", this->op, this->thisResolved->rightType.ToString().c_str()), this);
         return false;

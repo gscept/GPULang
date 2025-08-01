@@ -73,10 +73,10 @@ ArrayInitializerExpression::Resolve(Compiler* compiler)
     // Append array level first
     thisResolved->fullType.name = inner.name;
     thisResolved->fullType.literal = isLiteral;
-    thisResolved->fullType.modifiers.push_back(Type::FullType::Modifier::Array);
-    thisResolved->fullType.modifierValues.push_back(Alloc<UIntExpression>((uint32_t)this->values.size));
-    thisResolved->fullType.modifiers.insert(thisResolved->fullType.modifiers.end(), inner.modifiers.begin(), inner.modifiers.end());
-    thisResolved->fullType.modifierValues.insert(thisResolved->fullType.modifierValues.end(), inner.modifierValues.begin(), inner.modifierValues.end());
+    thisResolved->fullType.modifiers.Append(Type::FullType::Modifier::Array);
+    thisResolved->fullType.modifierValues.Append(Alloc<UIntExpression>((uint32_t)this->values.size));
+    thisResolved->fullType.modifiers.Append(inner.modifiers);
+    thisResolved->fullType.modifierValues.Append(inner.modifierValues);
 
     return true;
 }

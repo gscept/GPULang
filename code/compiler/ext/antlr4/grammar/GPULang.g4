@@ -216,7 +216,6 @@ alias
     {
         $sym = Alloc<Alias>();
 	$sym->nameLocation = nameLocation;
-	$sym->typeLocation = typeLocation;
         $sym->name = name;
         $sym->type = type;
     }
@@ -376,7 +375,6 @@ variables
         {
             Variable* var = Alloc<Variable>(); 
             var->type = type.type; 
-            var->typeLocation = type.location;
             var->location = locations[i]; 
             var->annotations = annotations;
             var->attributes = attributes;
@@ -421,7 +419,6 @@ structure
         FixedString instanceName;
         Symbol::Location varLocation;
         Type::FullType varType;
-        Symbol::Location varTypeLocation;
         Symbol::Location typeRange;
         FixedString varName;
     }:
@@ -435,12 +432,11 @@ structure
                     ( arraySize0 = expression { varType.UpdateValue($arraySize0.tree); } )?  
                 ']'
             )* 
-            varTypeName = IDENTIFIER { if (members.Full()) { throw IndexOutOfBoundsException("Maximum of 1024 struct members reached"); } varType.name = $varTypeName.text; varTypeLocation = EndLocationRange(typeRange); } ';'
+            varTypeName = IDENTIFIER { if (members.Full()) { throw IndexOutOfBoundsException("Maximum of 1024 struct members reached"); } varType.name = $varTypeName.text; } ';'
             {
                 Variable* var = Alloc<Variable>(); 
                 var->type = varType; 
                 var->location = varLocation; 
-                var->typeLocation = varTypeLocation;
                 var->name = varName;
                 var->valueExpression = nullptr;
                 members.Append(var);
@@ -538,7 +534,6 @@ parameter
     {
             $sym = Alloc<Variable>(); 
             $sym->type = type.type; 
-            $sym->typeLocation = type.location;
             $sym->location = location; 
             $sym->attributes = std::move(attributes);
             $sym->name = name;
@@ -566,7 +561,6 @@ functionDeclaration
         $sym->hasBody = false;
         $sym->location = location;
         $sym->returnType = $returnType.type.type; 
-        $sym->returnTypeLocation = $returnType.type.location;
         $sym->name = $name.text; 
         $sym->parameters = variables; 
         $sym->attributes = attributes;

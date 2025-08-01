@@ -26515,6 +26515,87 @@ TextureCubeArray::TextureCubeArray()
 };
 TextureCubeArray TextureCubeArrayType;
 
+SampledTexture1D::SampledTexture1D()
+{
+    this->name = "textureSampled1D"_c;
+    this->category = Type::SampledTextureCategory;
+    this->baseType = TypeCode::SampledTexture1D;
+    this->builtin = true;
+};
+SampledTexture1D SampledTexture1DType;
+
+SampledTexture1DArray::SampledTexture1DArray()
+{
+    this->name = "textureSampled1DArray"_c;
+    this->category = Type::SampledTextureCategory;
+    this->baseType = TypeCode::SampledTexture1D;
+    this->builtin = true;
+};
+SampledTexture1DArray SampledTexture1DArrayType;
+
+SampledTexture2D::SampledTexture2D()
+{
+    this->name = "textureSampled2D"_c;
+    this->category = Type::SampledTextureCategory;
+    this->baseType = TypeCode::SampledTexture2D;
+    this->builtin = true;
+};
+SampledTexture2D SampledTexture2DType;
+
+SampledTexture2DMS::SampledTexture2DMS()
+{
+    this->name = "textureSampled2DMS"_c;
+    this->category = Type::SampledTextureCategory;
+    this->baseType = TypeCode::SampledTexture2D;
+    this->builtin = true;
+};
+SampledTexture2DMS SampledTexture2DMSType;
+
+SampledTexture2DMSArray::SampledTexture2DMSArray()
+{
+    this->name = "textureSampled2DMSArray"_c;
+    this->category = Type::SampledTextureCategory;
+    this->baseType = TypeCode::SampledTexture2D;
+    this->builtin = true;
+};
+SampledTexture2DMSArray SampledTexture2DMSArrayType;
+
+SampledTexture2DArray::SampledTexture2DArray()
+{
+    this->name = "textureSampled2DArray"_c;
+    this->category = Type::SampledTextureCategory;
+    this->baseType = TypeCode::SampledTexture2D;
+    this->builtin = true;
+};
+SampledTexture2DArray SampledTexture2DArrayType;
+
+SampledTexture3D::SampledTexture3D()
+{
+    this->name = "textureSampled3D"_c;
+    this->category = Type::SampledTextureCategory;
+    this->baseType = TypeCode::SampledTexture3D;
+    this->builtin = true;
+};
+SampledTexture3D SampledTexture3DType;
+
+SampledTextureCube::SampledTextureCube()
+{
+    this->name = "textureSampledCube"_c;
+    this->category = Type::SampledTextureCategory;
+    this->baseType = TypeCode::SampledTextureCube;
+    this->builtin = true;
+};
+SampledTextureCube SampledTextureCubeType;
+
+SampledTextureCubeArray::SampledTextureCubeArray()
+{
+    this->name = "textureSampledCubeArray"_c;
+    this->category = Type::SampledTextureCategory;
+    this->baseType = TypeCode::SampledTextureCube;
+    this->builtin = true;
+};
+SampledTextureCubeArray SampledTextureCubeArrayType;
+
 PixelCache::PixelCache()
 {
     this->name = "pixelCache"_c;

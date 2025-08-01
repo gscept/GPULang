@@ -113,8 +113,8 @@ SymbolExpression::Resolve(Compiler* compiler)
         else if (thisResolved->symbol->symbolType == Symbol::SamplerStateInstanceType)
         {
             thisResolved->fullType = Type::FullType{ "sampler"_c };
-            thisResolved->fullType.modifiers.push_back(Type::FullType::Modifier::Pointer);
-            thisResolved->fullType.modifierValues.push_back(nullptr);
+            thisResolved->fullType.modifiers = { Type::FullType::Modifier::Pointer };
+            thisResolved->fullType.modifierValues = { nullptr };
             thisResolved->type = &SamplerType;
             return true;
         }

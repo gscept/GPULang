@@ -24,7 +24,6 @@ struct Variable : public Symbol
 
     
     Type::FullType type;
-    Symbol::Location typeLocation;
     Expression* valueExpression;
     _IMPLEMENT_ANNOTATIONS()
     _IMPLEMENT_ATTRIBUTES()

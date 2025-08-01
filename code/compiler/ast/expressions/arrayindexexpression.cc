@@ -64,7 +64,7 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
     thisResolved->returnFullType = thisResolved->leftFullType;
 
     // If there are no modifiers, then we check for an array access operator for the type
-    if (thisResolved->returnFullType.modifiers.empty())
+    if (thisResolved->returnFullType.modifiers.size == 0)
     {
         Type* type = static_cast<Type*>(compiler->GetType(thisResolved->returnFullType));
         TStr lookup = TStr("operator[](", thisResolved->rightFullType.name, ")");
@@ -95,13 +95,14 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
             compiler->Error(Format("Invalid array access operator '[]' on non-array type"), this);
             return false;
         }
-        thisResolved->returnFullType.modifiers.erase(thisResolved->returnFullType.modifiers.begin());
-        thisResolved->returnFullType.modifierValues.erase(thisResolved->returnFullType.modifierValues.begin());
+        
+        thisResolved->returnFullType.modifiers.RemoveFirst();
+        thisResolved->returnFullType.modifierValues.RemoveFirst();
     }
     
     thisResolved->returnType = compiler->GetType(thisResolved->returnFullType);
 
-    if (!thisResolved->leftFullType.modifierValues.empty())
+    if (thisResolved->leftFullType.modifierValues.size != 0)
     {
         ValueUnion val;
         if (this->right->EvalValue(val) && thisResolved->leftFullType.modifierValues[0] != nullptr)

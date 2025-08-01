@@ -80,8 +80,8 @@ InitializerExpression::Resolve(Compiler* compiler)
     
     // Append array level first
     thisResolved->fullType.name = inner.name;
-    thisResolved->fullType.modifiers.insert(thisResolved->fullType.modifiers.end(), inner.modifiers.begin(), inner.modifiers.end());
-    thisResolved->fullType.modifierValues.insert(thisResolved->fullType.modifierValues.end(), inner.modifierValues.begin(), inner.modifierValues.end());
+    thisResolved->fullType.modifiers.Append(inner.modifiers);
+    thisResolved->fullType.modifierValues.Append(inner.modifierValues);
 
     return true;
 }

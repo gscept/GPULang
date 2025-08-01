@@ -3520,25 +3520,25 @@
                 "signature": "textureGather(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: i32x2, component: i32) f32x4"
             },
             {
-                "signature": "textureGather(uniform texture: *sampled texture2D, coordinate: i32x2, component: i32) f32x4"
+                "signature": "textureGather(uniform texture: *textureSampled2D, coordinate: i32x2, component: i32) f32x4"
             },
             {
                 "signature": "textureGather(uniform texture: *textureCube, uniform sampler: *sampler, coordinate: i32x3, component: i32) f32x4"
             },
             {
-                "signature": "textureGather(uniform texture: *sampled textureCube, coordinate: i32x3, component: i32) f32x4"
+                "signature": "textureGather(uniform texture: *textureSampledCube, coordinate: i32x3, component: i32) f32x4"
             },
             {
                 "signature": "textureGather(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: i32x3, component: i32) f32x4"
             },
             {
-                "signature": "textureGather(uniform texture: *sampled texture2DArray, coordinate: i32x3, component: i32) f32x4"
+                "signature": "textureGather(uniform texture: *textureSampled2DArray, coordinate: i32x3, component: i32) f32x4"
             },
             {
                 "signature": "textureGather(uniform texture: *textureCubeArray, uniform sampler: *sampler, coordinate: i32x4, component: i32) f32x4"
             },
             {
-                "signature": "textureGather(uniform texture: *sampled textureCubeArray, coordinate: i32x4, component: i32) f32x4"
+                "signature": "textureGather(uniform texture: *textureSampledCubeArray, coordinate: i32x4, component: i32) f32x4"
             }
         ]
     },
@@ -3556,25 +3556,25 @@
                 "signature": "textureGatherOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: i32x2, component: i32, offset: u32) f32x4"
             },
             {
-                "signature": "textureGatherOffset(uniform texture: *sampled texture2D, coordinate: i32x2, component: i32, offset: u32) f32x4"
+                "signature": "textureGatherOffset(uniform texture: *textureSampled2D, coordinate: i32x2, component: i32, offset: u32) f32x4"
             },
             {
                 "signature": "textureGatherOffset(uniform texture: *textureCube, uniform sampler: *sampler, coordinate: i32x3, component: i32, offset: u32) f32x4"
             },
             {
-                "signature": "textureGatherOffset(uniform texture: *sampled textureCube, coordinate: i32x3, component: i32, offset: u32) f32x4"
+                "signature": "textureGatherOffset(uniform texture: *textureSampledCube, coordinate: i32x3, component: i32, offset: u32) f32x4"
             },
             {
                 "signature": "textureGatherOffset(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: i32x3, component: i32, offset: u32) f32x4"
             },
             {
-                "signature": "textureGatherOffset(uniform texture: *sampled texture2DArray, coordinate: i32x3, component: i32, offset: u32) f32x4"
+                "signature": "textureGatherOffset(uniform texture: *textureSampled2DArray, coordinate: i32x3, component: i32, offset: u32) f32x4"
             },
             {
                 "signature": "textureGatherOffset(uniform texture: *textureCubeArray, uniform sampler: *sampler, coordinate: i32x4, component: i32, offset: u32) f32x4"
             },
             {
-                "signature": "textureGatherOffset(uniform texture: *sampled textureCubeArray, coordinate: i32x4, component: i32, offset: u32) f32x4"
+                "signature": "textureGatherOffset(uniform texture: *textureSampledCubeArray, coordinate: i32x4, component: i32, offset: u32) f32x4"
             }
         ]
     },
@@ -3625,43 +3625,43 @@
                 "signature": "textureGetSampledMip(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32) f32x2"
             },
             {
-                "signature": "textureGetSampledMip(uniform texture: *sampled texture1D, coordinate: f32) f32x2"
+                "signature": "textureGetSampledMip(uniform texture: *textureSampled1D, coordinate: f32) f32x2"
             },
             {
                 "signature": "textureGetSampledMip(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2) f32x2"
             },
             {
-                "signature": "textureGetSampledMip(uniform texture: *sampled texture2D, coordinate: f32x2) f32x2"
+                "signature": "textureGetSampledMip(uniform texture: *textureSampled2D, coordinate: f32x2) f32x2"
             },
             {
                 "signature": "textureGetSampledMip(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3) f32x2"
             },
             {
-                "signature": "textureGetSampledMip(uniform texture: *sampled texture3D, coordinate: f32x3) f32x2"
+                "signature": "textureGetSampledMip(uniform texture: *textureSampled3D, coordinate: f32x3) f32x2"
             },
             {
                 "signature": "textureGetSampledMip(uniform texture: *textureCube, uniform sampler: *sampler, coordinate: f32x3) f32x2"
             },
             {
-                "signature": "textureGetSampledMip(uniform texture: *sampled textureCube, coordinate: f32x3) f32x2"
+                "signature": "textureGetSampledMip(uniform texture: *textureSampledCube, coordinate: f32x3) f32x2"
             },
             {
                 "signature": "textureGetSampledMip(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2) f32x2"
             },
             {
-                "signature": "textureGetSampledMip(uniform texture: *sampled texture1DArray, coordinate: f32x2) f32x2"
+                "signature": "textureGetSampledMip(uniform texture: *textureSampled1DArray, coordinate: f32x2) f32x2"
             },
             {
                 "signature": "textureGetSampledMip(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3) f32x2"
             },
             {
-                "signature": "textureGetSampledMip(uniform texture: *sampled texture2DArray, coordinate: f32x3) f32x2"
+                "signature": "textureGetSampledMip(uniform texture: *textureSampled2DArray, coordinate: f32x3) f32x2"
             },
             {
                 "signature": "textureGetSampledMip(uniform texture: *textureCubeArray, uniform sampler: *sampler, coordinate: f32x4) f32x2"
             },
             {
-                "signature": "textureGetSampledMip(uniform texture: *sampled textureCubeArray, coordinate: f32x4) f32x2"
+                "signature": "textureGetSampledMip(uniform texture: *textureSampledCubeArray, coordinate: f32x4) f32x2"
             }
         ]
     },
@@ -3859,43 +3859,43 @@
                 "signature": "textureSample(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32) f32x4"
             },
             {
-                "signature": "textureSample(uniform texture: *sampled texture1D, coordinate: f32) f32x4"
+                "signature": "textureSample(uniform texture: *textureSampled1D, coordinate: f32) f32x4"
             },
             {
                 "signature": "textureSample(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2) f32x4"
             },
             {
-                "signature": "textureSample(uniform texture: *sampled texture2D, coordinate: f32x2) f32x4"
+                "signature": "textureSample(uniform texture: *textureSampled2D, coordinate: f32x2) f32x4"
             },
             {
                 "signature": "textureSample(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3) f32x4"
             },
             {
-                "signature": "textureSample(uniform texture: *sampled texture3D, coordinate: f32x3) f32x4"
+                "signature": "textureSample(uniform texture: *textureSampled3D, coordinate: f32x3) f32x4"
             },
             {
                 "signature": "textureSample(uniform texture: *textureCube, uniform sampler: *sampler, coordinate: f32x3) f32x4"
             },
             {
-                "signature": "textureSample(uniform texture: *sampled textureCube, coordinate: f32x3) f32x4"
+                "signature": "textureSample(uniform texture: *textureSampledCube, coordinate: f32x3) f32x4"
             },
             {
                 "signature": "textureSample(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2) f32x4"
             },
             {
-                "signature": "textureSample(uniform texture: *sampled texture1DArray, coordinate: f32x2) f32x4"
+                "signature": "textureSample(uniform texture: *textureSampled1DArray, coordinate: f32x2) f32x4"
             },
             {
                 "signature": "textureSample(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3) f32x4"
             },
             {
-                "signature": "textureSample(uniform texture: *sampled texture2DArray, coordinate: f32x3) f32x4"
+                "signature": "textureSample(uniform texture: *textureSampled2DArray, coordinate: f32x3) f32x4"
             },
             {
                 "signature": "textureSample(uniform texture: *textureCubeArray, uniform sampler: *sampler, coordinate: f32x4) f32x4"
             },
             {
-                "signature": "textureSample(uniform texture: *sampled textureCubeArray, coordinate: f32x4) f32x4"
+                "signature": "textureSample(uniform texture: *textureSampledCubeArray, coordinate: f32x4) f32x4"
             }
         ]
     },
@@ -3913,43 +3913,43 @@
                 "signature": "textureSampleBias(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, bias: f32) f32x4"
             },
             {
-                "signature": "textureSampleBias(uniform texture: *sampled texture1D, coordinate: f32, bias: f32) f32x4"
+                "signature": "textureSampleBias(uniform texture: *textureSampled1D, coordinate: f32, bias: f32) f32x4"
             },
             {
                 "signature": "textureSampleBias(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, bias: f32) f32x4"
             },
             {
-                "signature": "textureSampleBias(uniform texture: *sampled texture2D, coordinate: f32x2, bias: f32) f32x4"
+                "signature": "textureSampleBias(uniform texture: *textureSampled2D, coordinate: f32x2, bias: f32) f32x4"
             },
             {
                 "signature": "textureSampleBias(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, bias: f32) f32x4"
             },
             {
-                "signature": "textureSampleBias(uniform texture: *sampled texture3D, coordinate: f32x3, bias: f32) f32x4"
+                "signature": "textureSampleBias(uniform texture: *textureSampled3D, coordinate: f32x3, bias: f32) f32x4"
             },
             {
                 "signature": "textureSampleBias(uniform texture: *textureCube, uniform sampler: *sampler, coordinate: f32x3, bias: f32) f32x4"
             },
             {
-                "signature": "textureSampleBias(uniform texture: *sampled textureCube, coordinate: f32x3, bias: f32) f32x4"
+                "signature": "textureSampleBias(uniform texture: *textureSampledCube, coordinate: f32x3, bias: f32) f32x4"
             },
             {
                 "signature": "textureSampleBias(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, bias: f32) f32x4"
             },
             {
-                "signature": "textureSampleBias(uniform texture: *sampled texture1DArray, coordinate: f32x2, bias: f32) f32x4"
+                "signature": "textureSampleBias(uniform texture: *textureSampled1DArray, coordinate: f32x2, bias: f32) f32x4"
             },
             {
                 "signature": "textureSampleBias(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, bias: f32) f32x4"
             },
             {
-                "signature": "textureSampleBias(uniform texture: *sampled texture2DArray, coordinate: f32x3, bias: f32) f32x4"
+                "signature": "textureSampleBias(uniform texture: *textureSampled2DArray, coordinate: f32x3, bias: f32) f32x4"
             },
             {
                 "signature": "textureSampleBias(uniform texture: *textureCubeArray, uniform sampler: *sampler, coordinate: f32x4, bias: f32) f32x4"
             },
             {
-                "signature": "textureSampleBias(uniform texture: *sampled textureCubeArray, coordinate: f32x4, bias: f32) f32x4"
+                "signature": "textureSampleBias(uniform texture: *textureSampledCubeArray, coordinate: f32x4, bias: f32) f32x4"
             }
         ]
     },
@@ -3967,31 +3967,31 @@
                 "signature": "textureSampleBiasCompare(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, bias: f32, compare: f32) f32"
             },
             {
-                "signature": "textureSampleBiasCompare(uniform texture: *sampled texture1D, coordinate: f32, bias: f32, compare: f32) f32"
+                "signature": "textureSampleBiasCompare(uniform texture: *textureSampled1D, coordinate: f32, bias: f32, compare: f32) f32"
             },
             {
                 "signature": "textureSampleBiasCompare(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, bias: f32, compare: f32) f32"
             },
             {
-                "signature": "textureSampleBiasCompare(uniform texture: *sampled texture2D, coordinate: f32x2, bias: f32, compare: f32) f32"
+                "signature": "textureSampleBiasCompare(uniform texture: *textureSampled2D, coordinate: f32x2, bias: f32, compare: f32) f32"
             },
             {
                 "signature": "textureSampleBiasCompare(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, bias: f32, compare: f32) f32"
             },
             {
-                "signature": "textureSampleBiasCompare(uniform texture: *sampled texture3D, coordinate: f32x3, bias: f32, compare: f32) f32"
+                "signature": "textureSampleBiasCompare(uniform texture: *textureSampled3D, coordinate: f32x3, bias: f32, compare: f32) f32"
             },
             {
                 "signature": "textureSampleBiasCompare(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, bias: f32, compare: f32) f32"
             },
             {
-                "signature": "textureSampleBiasCompare(uniform texture: *sampled texture1DArray, coordinate: f32x2, bias: f32, compare: f32) f32"
+                "signature": "textureSampleBiasCompare(uniform texture: *textureSampled1DArray, coordinate: f32x2, bias: f32, compare: f32) f32"
             },
             {
                 "signature": "textureSampleBiasCompare(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, bias: f32, compare: f32) f32"
             },
             {
-                "signature": "textureSampleBiasCompare(uniform texture: *sampled texture2DArray, coordinate: f32x3, bias: f32, compare: f32) f32"
+                "signature": "textureSampleBiasCompare(uniform texture: *textureSampled2DArray, coordinate: f32x3, bias: f32, compare: f32) f32"
             }
         ]
     },
@@ -4009,31 +4009,31 @@
                 "signature": "textureSampleBiasCompareOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, bias: f32, compare: f32, offset: f32) f32"
             },
             {
-                "signature": "textureSampleBiasCompareOffset(uniform texture: *sampled texture1D, coordinate: f32, bias: f32, compare: f32, offset: f32) f32"
+                "signature": "textureSampleBiasCompareOffset(uniform texture: *textureSampled1D, coordinate: f32, bias: f32, compare: f32, offset: f32) f32"
             },
             {
                 "signature": "textureSampleBiasCompareOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, bias: f32, compare: f32, offset: f32x2) f32"
             },
             {
-                "signature": "textureSampleBiasCompareOffset(uniform texture: *sampled texture2D, coordinate: f32x2, bias: f32, compare: f32, offset: f32x2) f32"
+                "signature": "textureSampleBiasCompareOffset(uniform texture: *textureSampled2D, coordinate: f32x2, bias: f32, compare: f32, offset: f32x2) f32"
             },
             {
                 "signature": "textureSampleBiasCompareOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, bias: f32, compare: f32, offset: f32x3) f32"
             },
             {
-                "signature": "textureSampleBiasCompareOffset(uniform texture: *sampled texture3D, coordinate: f32x3, bias: f32, compare: f32, offset: f32x3) f32"
+                "signature": "textureSampleBiasCompareOffset(uniform texture: *textureSampled3D, coordinate: f32x3, bias: f32, compare: f32, offset: f32x3) f32"
             },
             {
                 "signature": "textureSampleBiasCompareOffset(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, bias: f32, compare: f32, offset: f32x2) f32"
             },
             {
-                "signature": "textureSampleBiasCompareOffset(uniform texture: *sampled texture1DArray, coordinate: f32x2, bias: f32, compare: f32, offset: f32x2) f32"
+                "signature": "textureSampleBiasCompareOffset(uniform texture: *textureSampled1DArray, coordinate: f32x2, bias: f32, compare: f32, offset: f32x2) f32"
             },
             {
                 "signature": "textureSampleBiasCompareOffset(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, bias: f32, compare: f32, offset: f32x3) f32"
             },
             {
-                "signature": "textureSampleBiasCompareOffset(uniform texture: *sampled texture2DArray, coordinate: f32x3, bias: f32, compare: f32, offset: f32x3) f32"
+                "signature": "textureSampleBiasCompareOffset(uniform texture: *textureSampled2DArray, coordinate: f32x3, bias: f32, compare: f32, offset: f32x3) f32"
             }
         ]
     },
@@ -4051,31 +4051,31 @@
                 "signature": "textureSampleBiasOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, bias: f32, offset: f32) f32x4"
             },
             {
-                "signature": "textureSampleBiasOffset(uniform texture: *sampled texture1D, coordinate: f32, bias: f32, offset: f32) f32x4"
+                "signature": "textureSampleBiasOffset(uniform texture: *textureSampled1D, coordinate: f32, bias: f32, offset: f32) f32x4"
             },
             {
                 "signature": "textureSampleBiasOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, bias: f32, offset: f32x2) f32x4"
             },
             {
-                "signature": "textureSampleBiasOffset(uniform texture: *sampled texture2D, coordinate: f32x2, bias: f32, offset: f32x2) f32x4"
+                "signature": "textureSampleBiasOffset(uniform texture: *textureSampled2D, coordinate: f32x2, bias: f32, offset: f32x2) f32x4"
             },
             {
                 "signature": "textureSampleBiasOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, bias: f32, offset: f32x3) f32x4"
             },
             {
-                "signature": "textureSampleBiasOffset(uniform texture: *sampled texture3D, coordinate: f32x3, bias: f32, offset: f32x3) f32x4"
+                "signature": "textureSampleBiasOffset(uniform texture: *textureSampled3D, coordinate: f32x3, bias: f32, offset: f32x3) f32x4"
             },
             {
                 "signature": "textureSampleBiasOffset(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, bias: f32, offset: f32x2) f32x4"
             },
             {
-                "signature": "textureSampleBiasOffset(uniform texture: *sampled texture1DArray, coordinate: f32x2, bias: f32, offset: f32x2) f32x4"
+                "signature": "textureSampleBiasOffset(uniform texture: *textureSampled1DArray, coordinate: f32x2, bias: f32, offset: f32x2) f32x4"
             },
             {
                 "signature": "textureSampleBiasOffset(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, bias: f32, offset: f32x3) f32x4"
             },
             {
-                "signature": "textureSampleBiasOffset(uniform texture: *sampled texture2DArray, coordinate: f32x3, bias: f32, offset: f32x3) f32x4"
+                "signature": "textureSampleBiasOffset(uniform texture: *textureSampled2DArray, coordinate: f32x3, bias: f32, offset: f32x3) f32x4"
             }
         ]
     },
@@ -4093,19 +4093,19 @@
                 "signature": "textureSampleBiasProj(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, bias: f32, proj: f32) f32x4"
             },
             {
-                "signature": "textureSampleBiasProj(uniform texture: *sampled texture1D, coordinate: f32, bias: f32, proj: f32) f32x4"
+                "signature": "textureSampleBiasProj(uniform texture: *textureSampled1D, coordinate: f32, bias: f32, proj: f32) f32x4"
             },
             {
                 "signature": "textureSampleBiasProj(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, bias: f32, proj: f32) f32x4"
             },
             {
-                "signature": "textureSampleBiasProj(uniform texture: *sampled texture2D, coordinate: f32x2, bias: f32, proj: f32) f32x4"
+                "signature": "textureSampleBiasProj(uniform texture: *textureSampled2D, coordinate: f32x2, bias: f32, proj: f32) f32x4"
             },
             {
                 "signature": "textureSampleBiasProj(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, bias: f32, proj: f32) f32x4"
             },
             {
-                "signature": "textureSampleBiasProj(uniform texture: *sampled texture3D, coordinate: f32x3, bias: f32, proj: f32) f32x4"
+                "signature": "textureSampleBiasProj(uniform texture: *textureSampled3D, coordinate: f32x3, bias: f32, proj: f32) f32x4"
             }
         ]
     },
@@ -4123,19 +4123,19 @@
                 "signature": "textureSampleBiasProjCompare(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, bias: f32, proj: f32, compare: f32) f32"
             },
             {
-                "signature": "textureSampleBiasProjCompare(uniform texture: *sampled texture1D, coordinate: f32, bias: f32, proj: f32, compare: f32) f32"
+                "signature": "textureSampleBiasProjCompare(uniform texture: *textureSampled1D, coordinate: f32, bias: f32, proj: f32, compare: f32) f32"
             },
             {
                 "signature": "textureSampleBiasProjCompare(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, bias: f32, proj: f32, compare: f32) f32"
             },
             {
-                "signature": "textureSampleBiasProjCompare(uniform texture: *sampled texture2D, coordinate: f32x2, bias: f32, proj: f32, compare: f32) f32"
+                "signature": "textureSampleBiasProjCompare(uniform texture: *textureSampled2D, coordinate: f32x2, bias: f32, proj: f32, compare: f32) f32"
             },
             {
                 "signature": "textureSampleBiasProjCompare(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, bias: f32, proj: f32, compare: f32) f32"
             },
             {
-                "signature": "textureSampleBiasProjCompare(uniform texture: *sampled texture3D, coordinate: f32x3, bias: f32, proj: f32, compare: f32) f32"
+                "signature": "textureSampleBiasProjCompare(uniform texture: *textureSampled3D, coordinate: f32x3, bias: f32, proj: f32, compare: f32) f32"
             }
         ]
     },
@@ -4153,19 +4153,19 @@
                 "signature": "textureSampleBiasProjCompareOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, bias: f32, proj: f32, compare: f32, offset: f32) f32"
             },
             {
-                "signature": "textureSampleBiasProjCompareOffset(uniform texture: *sampled texture1D, coordinate: f32, bias: f32, proj: f32, compare: f32, offset: f32) f32"
+                "signature": "textureSampleBiasProjCompareOffset(uniform texture: *textureSampled1D, coordinate: f32, bias: f32, proj: f32, compare: f32, offset: f32) f32"
             },
             {
                 "signature": "textureSampleBiasProjCompareOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, bias: f32, proj: f32, compare: f32, offset: f32x2) f32"
             },
             {
-                "signature": "textureSampleBiasProjCompareOffset(uniform texture: *sampled texture2D, coordinate: f32x2, bias: f32, proj: f32, compare: f32, offset: f32x2) f32"
+                "signature": "textureSampleBiasProjCompareOffset(uniform texture: *textureSampled2D, coordinate: f32x2, bias: f32, proj: f32, compare: f32, offset: f32x2) f32"
             },
             {
                 "signature": "textureSampleBiasProjCompareOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, bias: f32, proj: f32, compare: f32, offset: f32x3) f32"
             },
             {
-                "signature": "textureSampleBiasProjCompareOffset(uniform texture: *sampled texture3D, coordinate: f32x3, bias: f32, proj: f32, compare: f32, offset: f32x3) f32"
+                "signature": "textureSampleBiasProjCompareOffset(uniform texture: *textureSampled3D, coordinate: f32x3, bias: f32, proj: f32, compare: f32, offset: f32x3) f32"
             }
         ]
     },
@@ -4183,19 +4183,19 @@
                 "signature": "textureSampleBiasProjOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, bias: f32, proj: f32, offset: f32) f32x4"
             },
             {
-                "signature": "textureSampleBiasProjOffset(uniform texture: *sampled texture1D, coordinate: f32, bias: f32, proj: f32, offset: f32) f32x4"
+                "signature": "textureSampleBiasProjOffset(uniform texture: *textureSampled1D, coordinate: f32, bias: f32, proj: f32, offset: f32) f32x4"
             },
             {
                 "signature": "textureSampleBiasProjOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, bias: f32, proj: f32, offset: f32x2) f32x4"
             },
             {
-                "signature": "textureSampleBiasProjOffset(uniform texture: *sampled texture2D, coordinate: f32x2, bias: f32, proj: f32, offset: f32x2) f32x4"
+                "signature": "textureSampleBiasProjOffset(uniform texture: *textureSampled2D, coordinate: f32x2, bias: f32, proj: f32, offset: f32x2) f32x4"
             },
             {
                 "signature": "textureSampleBiasProjOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, bias: f32, proj: f32, offset: f32x3) f32x4"
             },
             {
-                "signature": "textureSampleBiasProjOffset(uniform texture: *sampled texture3D, coordinate: f32x3, bias: f32, proj: f32, offset: f32x3) f32x4"
+                "signature": "textureSampleBiasProjOffset(uniform texture: *textureSampled3D, coordinate: f32x3, bias: f32, proj: f32, offset: f32x3) f32x4"
             }
         ]
     },
@@ -4213,31 +4213,31 @@
                 "signature": "textureSampleCompare(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, compare: f32) f32"
             },
             {
-                "signature": "textureSampleCompare(uniform texture: *sampled texture1D, coordinate: f32, compare: f32) f32"
+                "signature": "textureSampleCompare(uniform texture: *textureSampled1D, coordinate: f32, compare: f32) f32"
             },
             {
                 "signature": "textureSampleCompare(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, compare: f32) f32"
             },
             {
-                "signature": "textureSampleCompare(uniform texture: *sampled texture2D, coordinate: f32x2, compare: f32) f32"
+                "signature": "textureSampleCompare(uniform texture: *textureSampled2D, coordinate: f32x2, compare: f32) f32"
             },
             {
                 "signature": "textureSampleCompare(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, compare: f32) f32"
             },
             {
-                "signature": "textureSampleCompare(uniform texture: *sampled texture3D, coordinate: f32x3, compare: f32) f32"
+                "signature": "textureSampleCompare(uniform texture: *textureSampled3D, coordinate: f32x3, compare: f32) f32"
             },
             {
                 "signature": "textureSampleCompare(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, compare: f32) f32"
             },
             {
-                "signature": "textureSampleCompare(uniform texture: *sampled texture1DArray, coordinate: f32x2, compare: f32) f32"
+                "signature": "textureSampleCompare(uniform texture: *textureSampled1DArray, coordinate: f32x2, compare: f32) f32"
             },
             {
                 "signature": "textureSampleCompare(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, compare: f32) f32"
             },
             {
-                "signature": "textureSampleCompare(uniform texture: *sampled texture2DArray, coordinate: f32x3, compare: f32) f32"
+                "signature": "textureSampleCompare(uniform texture: *textureSampled2DArray, coordinate: f32x3, compare: f32) f32"
             }
         ]
     },
@@ -4255,31 +4255,31 @@
                 "signature": "textureSampleCompareOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, compare: f32, offset: f32) f32"
             },
             {
-                "signature": "textureSampleCompareOffset(uniform texture: *sampled texture1D, coordinate: f32, compare: f32, offset: f32) f32"
+                "signature": "textureSampleCompareOffset(uniform texture: *textureSampled1D, coordinate: f32, compare: f32, offset: f32) f32"
             },
             {
                 "signature": "textureSampleCompareOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, compare: f32, offset: f32x2) f32"
             },
             {
-                "signature": "textureSampleCompareOffset(uniform texture: *sampled texture2D, coordinate: f32x2, compare: f32, offset: f32x2) f32"
+                "signature": "textureSampleCompareOffset(uniform texture: *textureSampled2D, coordinate: f32x2, compare: f32, offset: f32x2) f32"
             },
             {
                 "signature": "textureSampleCompareOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, compare: f32, offset: f32x3) f32"
             },
             {
-                "signature": "textureSampleCompareOffset(uniform texture: *sampled texture3D, coordinate: f32x3, compare: f32, offset: f32x3) f32"
+                "signature": "textureSampleCompareOffset(uniform texture: *textureSampled3D, coordinate: f32x3, compare: f32, offset: f32x3) f32"
             },
             {
                 "signature": "textureSampleCompareOffset(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, compare: f32, offset: f32x2) f32"
             },
             {
-                "signature": "textureSampleCompareOffset(uniform texture: *sampled texture1DArray, coordinate: f32x2, compare: f32, offset: f32x2) f32"
+                "signature": "textureSampleCompareOffset(uniform texture: *textureSampled1DArray, coordinate: f32x2, compare: f32, offset: f32x2) f32"
             },
             {
                 "signature": "textureSampleCompareOffset(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, compare: f32, offset: f32x3) f32"
             },
             {
-                "signature": "textureSampleCompareOffset(uniform texture: *sampled texture2DArray, coordinate: f32x3, compare: f32, offset: f32x3) f32"
+                "signature": "textureSampleCompareOffset(uniform texture: *textureSampled2DArray, coordinate: f32x3, compare: f32, offset: f32x3) f32"
             }
         ]
     },
@@ -4297,43 +4297,43 @@
                 "signature": "textureSampleGrad(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, grad_x: f32, grad_y: f32) f32x4"
             },
             {
-                "signature": "textureSampleGrad(uniform texture: *sampled texture1D, coordinate: f32, grad_x: f32, grad_y: f32) f32x4"
+                "signature": "textureSampleGrad(uniform texture: *textureSampled1D, coordinate: f32, grad_x: f32, grad_y: f32) f32x4"
             },
             {
                 "signature": "textureSampleGrad(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2) f32x4"
             },
             {
-                "signature": "textureSampleGrad(uniform texture: *sampled texture2D, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2) f32x4"
+                "signature": "textureSampleGrad(uniform texture: *textureSampled2D, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2) f32x4"
             },
             {
                 "signature": "textureSampleGrad(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3) f32x4"
             },
             {
-                "signature": "textureSampleGrad(uniform texture: *sampled texture3D, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3) f32x4"
+                "signature": "textureSampleGrad(uniform texture: *textureSampled3D, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3) f32x4"
             },
             {
                 "signature": "textureSampleGrad(uniform texture: *textureCube, uniform sampler: *sampler, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3) f32x4"
             },
             {
-                "signature": "textureSampleGrad(uniform texture: *sampled textureCube, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3) f32x4"
+                "signature": "textureSampleGrad(uniform texture: *textureSampledCube, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3) f32x4"
             },
             {
                 "signature": "textureSampleGrad(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2) f32x4"
             },
             {
-                "signature": "textureSampleGrad(uniform texture: *sampled texture1DArray, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2) f32x4"
+                "signature": "textureSampleGrad(uniform texture: *textureSampled1DArray, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2) f32x4"
             },
             {
                 "signature": "textureSampleGrad(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3) f32x4"
             },
             {
-                "signature": "textureSampleGrad(uniform texture: *sampled texture2DArray, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3) f32x4"
+                "signature": "textureSampleGrad(uniform texture: *textureSampled2DArray, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3) f32x4"
             },
             {
                 "signature": "textureSampleGrad(uniform texture: *textureCubeArray, uniform sampler: *sampler, coordinate: f32x4, grad_x: f32x4, grad_y: f32x4) f32x4"
             },
             {
-                "signature": "textureSampleGrad(uniform texture: *sampled textureCubeArray, coordinate: f32x4, grad_x: f32x4, grad_y: f32x4) f32x4"
+                "signature": "textureSampleGrad(uniform texture: *textureSampledCubeArray, coordinate: f32x4, grad_x: f32x4, grad_y: f32x4) f32x4"
             }
         ]
     },
@@ -4351,31 +4351,31 @@
                 "signature": "textureSampleGradCompare(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, grad_x: f32, grad_y: f32, compare: f32) f32"
             },
             {
-                "signature": "textureSampleGradCompare(uniform texture: *sampled texture1D, coordinate: f32, grad_x: f32, grad_y: f32, compare: f32) f32"
+                "signature": "textureSampleGradCompare(uniform texture: *textureSampled1D, coordinate: f32, grad_x: f32, grad_y: f32, compare: f32) f32"
             },
             {
                 "signature": "textureSampleGradCompare(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, compare: f32) f32"
             },
             {
-                "signature": "textureSampleGradCompare(uniform texture: *sampled texture2D, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, compare: f32) f32"
+                "signature": "textureSampleGradCompare(uniform texture: *textureSampled2D, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, compare: f32) f32"
             },
             {
                 "signature": "textureSampleGradCompare(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, compare: f32) f32"
             },
             {
-                "signature": "textureSampleGradCompare(uniform texture: *sampled texture3D, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, compare: f32) f32"
+                "signature": "textureSampleGradCompare(uniform texture: *textureSampled3D, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, compare: f32) f32"
             },
             {
                 "signature": "textureSampleGradCompare(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, compare: f32) f32"
             },
             {
-                "signature": "textureSampleGradCompare(uniform texture: *sampled texture1DArray, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, compare: f32) f32"
+                "signature": "textureSampleGradCompare(uniform texture: *textureSampled1DArray, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, compare: f32) f32"
             },
             {
                 "signature": "textureSampleGradCompare(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, compare: f32) f32"
             },
             {
-                "signature": "textureSampleGradCompare(uniform texture: *sampled texture2DArray, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, compare: f32) f32"
+                "signature": "textureSampleGradCompare(uniform texture: *textureSampled2DArray, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, compare: f32) f32"
             }
         ]
     },
@@ -4393,31 +4393,31 @@
                 "signature": "textureSampleGradCompareOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, grad_x: f32, grad_y: f32, compare: f32, offset: f32) f32"
             },
             {
-                "signature": "textureSampleGradCompareOffset(uniform texture: *sampled texture1D, coordinate: f32, grad_x: f32, grad_y: f32, compare: f32, offset: f32) f32"
+                "signature": "textureSampleGradCompareOffset(uniform texture: *textureSampled1D, coordinate: f32, grad_x: f32, grad_y: f32, compare: f32, offset: f32) f32"
             },
             {
                 "signature": "textureSampleGradCompareOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, compare: f32, offset: f32x2) f32"
             },
             {
-                "signature": "textureSampleGradCompareOffset(uniform texture: *sampled texture2D, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, compare: f32, offset: f32x2) f32"
+                "signature": "textureSampleGradCompareOffset(uniform texture: *textureSampled2D, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, compare: f32, offset: f32x2) f32"
             },
             {
                 "signature": "textureSampleGradCompareOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, compare: f32, offset: f32x3) f32"
             },
             {
-                "signature": "textureSampleGradCompareOffset(uniform texture: *sampled texture3D, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, compare: f32, offset: f32x3) f32"
+                "signature": "textureSampleGradCompareOffset(uniform texture: *textureSampled3D, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, compare: f32, offset: f32x3) f32"
             },
             {
                 "signature": "textureSampleGradCompareOffset(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, compare: f32, offset: f32x2) f32"
             },
             {
-                "signature": "textureSampleGradCompareOffset(uniform texture: *sampled texture1DArray, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, compare: f32, offset: f32x2) f32"
+                "signature": "textureSampleGradCompareOffset(uniform texture: *textureSampled1DArray, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, compare: f32, offset: f32x2) f32"
             },
             {
                 "signature": "textureSampleGradCompareOffset(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, compare: f32, offset: f32x3) f32"
             },
             {
-                "signature": "textureSampleGradCompareOffset(uniform texture: *sampled texture2DArray, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, compare: f32, offset: f32x3) f32"
+                "signature": "textureSampleGradCompareOffset(uniform texture: *textureSampled2DArray, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, compare: f32, offset: f32x3) f32"
             }
         ]
     },
@@ -4435,31 +4435,31 @@
                 "signature": "textureSampleGradOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, grad_x: f32, grad_y: f32, offset: f32) f32x4"
             },
             {
-                "signature": "textureSampleGradOffset(uniform texture: *sampled texture1D, coordinate: f32, grad_x: f32, grad_y: f32, offset: f32) f32x4"
+                "signature": "textureSampleGradOffset(uniform texture: *textureSampled1D, coordinate: f32, grad_x: f32, grad_y: f32, offset: f32) f32x4"
             },
             {
                 "signature": "textureSampleGradOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, offset: f32x2) f32x4"
             },
             {
-                "signature": "textureSampleGradOffset(uniform texture: *sampled texture2D, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, offset: f32x2) f32x4"
+                "signature": "textureSampleGradOffset(uniform texture: *textureSampled2D, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, offset: f32x2) f32x4"
             },
             {
                 "signature": "textureSampleGradOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, offset: f32x3) f32x4"
             },
             {
-                "signature": "textureSampleGradOffset(uniform texture: *sampled texture3D, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, offset: f32x3) f32x4"
+                "signature": "textureSampleGradOffset(uniform texture: *textureSampled3D, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, offset: f32x3) f32x4"
             },
             {
                 "signature": "textureSampleGradOffset(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, offset: f32x2) f32x4"
             },
             {
-                "signature": "textureSampleGradOffset(uniform texture: *sampled texture1DArray, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, offset: f32x2) f32x4"
+                "signature": "textureSampleGradOffset(uniform texture: *textureSampled1DArray, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, offset: f32x2) f32x4"
             },
             {
                 "signature": "textureSampleGradOffset(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, offset: f32x3) f32x4"
             },
             {
-                "signature": "textureSampleGradOffset(uniform texture: *sampled texture2DArray, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, offset: f32x3) f32x4"
+                "signature": "textureSampleGradOffset(uniform texture: *textureSampled2DArray, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, offset: f32x3) f32x4"
             }
         ]
     },
@@ -4477,19 +4477,19 @@
                 "signature": "textureSampleGradProj(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, grad_x: f32, grad_y: f32, proj: f32) f32x4"
             },
             {
-                "signature": "textureSampleGradProj(uniform texture: *sampled texture1D, coordinate: f32, grad_x: f32, grad_y: f32, proj: f32) f32x4"
+                "signature": "textureSampleGradProj(uniform texture: *textureSampled1D, coordinate: f32, grad_x: f32, grad_y: f32, proj: f32) f32x4"
             },
             {
                 "signature": "textureSampleGradProj(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, proj: f32) f32x4"
             },
             {
-                "signature": "textureSampleGradProj(uniform texture: *sampled texture2D, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, proj: f32) f32x4"
+                "signature": "textureSampleGradProj(uniform texture: *textureSampled2D, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, proj: f32) f32x4"
             },
             {
                 "signature": "textureSampleGradProj(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, proj: f32) f32x4"
             },
             {
-                "signature": "textureSampleGradProj(uniform texture: *sampled texture3D, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, proj: f32) f32x4"
+                "signature": "textureSampleGradProj(uniform texture: *textureSampled3D, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, proj: f32) f32x4"
             }
         ]
     },
@@ -4507,19 +4507,19 @@
                 "signature": "textureSampleGradProjCompare(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, grad_x: f32, grad_y: f32, proj: f32, compare: f32) f32"
             },
             {
-                "signature": "textureSampleGradProjCompare(uniform texture: *sampled texture1D, coordinate: f32, grad_x: f32, grad_y: f32, proj: f32, compare: f32) f32"
+                "signature": "textureSampleGradProjCompare(uniform texture: *textureSampled1D, coordinate: f32, grad_x: f32, grad_y: f32, proj: f32, compare: f32) f32"
             },
             {
                 "signature": "textureSampleGradProjCompare(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, proj: f32, compare: f32) f32"
             },
             {
-                "signature": "textureSampleGradProjCompare(uniform texture: *sampled texture2D, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, proj: f32, compare: f32) f32"
+                "signature": "textureSampleGradProjCompare(uniform texture: *textureSampled2D, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, proj: f32, compare: f32) f32"
             },
             {
                 "signature": "textureSampleGradProjCompare(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, proj: f32, compare: f32) f32"
             },
             {
-                "signature": "textureSampleGradProjCompare(uniform texture: *sampled texture3D, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, proj: f32, compare: f32) f32"
+                "signature": "textureSampleGradProjCompare(uniform texture: *textureSampled3D, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, proj: f32, compare: f32) f32"
             }
         ]
     },
@@ -4537,19 +4537,19 @@
                 "signature": "textureSampleGradProjCompareOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, grad_x: f32, grad_y: f32, proj: f32, compare: f32, offset: f32) f32"
             },
             {
-                "signature": "textureSampleGradProjCompareOffset(uniform texture: *sampled texture1D, coordinate: f32, grad_x: f32, grad_y: f32, proj: f32, compare: f32, offset: f32) f32"
+                "signature": "textureSampleGradProjCompareOffset(uniform texture: *textureSampled1D, coordinate: f32, grad_x: f32, grad_y: f32, proj: f32, compare: f32, offset: f32) f32"
             },
             {
                 "signature": "textureSampleGradProjCompareOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, proj: f32, compare: f32, offset: f32x2) f32"
             },
             {
-                "signature": "textureSampleGradProjCompareOffset(uniform texture: *sampled texture2D, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, proj: f32, compare: f32, offset: f32x2) f32"
+                "signature": "textureSampleGradProjCompareOffset(uniform texture: *textureSampled2D, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, proj: f32, compare: f32, offset: f32x2) f32"
             },
             {
                 "signature": "textureSampleGradProjCompareOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, proj: f32, compare: f32, offset: f32x3) f32"
             },
             {
-                "signature": "textureSampleGradProjCompareOffset(uniform texture: *sampled texture3D, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, proj: f32, compare: f32, offset: f32x3) f32"
+                "signature": "textureSampleGradProjCompareOffset(uniform texture: *textureSampled3D, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, proj: f32, compare: f32, offset: f32x3) f32"
             }
         ]
     },
@@ -4567,19 +4567,19 @@
                 "signature": "textureSampleGradProjOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, grad_x: f32, grad_y: f32, proj: f32, offset: f32) f32x4"
             },
             {
-                "signature": "textureSampleGradProjOffset(uniform texture: *sampled texture1D, coordinate: f32, grad_x: f32, grad_y: f32, proj: f32, offset: f32) f32x4"
+                "signature": "textureSampleGradProjOffset(uniform texture: *textureSampled1D, coordinate: f32, grad_x: f32, grad_y: f32, proj: f32, offset: f32) f32x4"
             },
             {
                 "signature": "textureSampleGradProjOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, proj: f32, offset: f32x2) f32x4"
             },
             {
-                "signature": "textureSampleGradProjOffset(uniform texture: *sampled texture2D, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, proj: f32, offset: f32x2) f32x4"
+                "signature": "textureSampleGradProjOffset(uniform texture: *textureSampled2D, coordinate: f32x2, grad_x: f32x2, grad_y: f32x2, proj: f32, offset: f32x2) f32x4"
             },
             {
                 "signature": "textureSampleGradProjOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, proj: f32, offset: f32x3) f32x4"
             },
             {
-                "signature": "textureSampleGradProjOffset(uniform texture: *sampled texture3D, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, proj: f32, offset: f32x3) f32x4"
+                "signature": "textureSampleGradProjOffset(uniform texture: *textureSampled3D, coordinate: f32x3, grad_x: f32x3, grad_y: f32x3, proj: f32, offset: f32x3) f32x4"
             }
         ]
     },
@@ -4597,43 +4597,43 @@
                 "signature": "textureSampleLod(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, lod: f32) f32x4"
             },
             {
-                "signature": "textureSampleLod(uniform texture: *sampled texture1D, coordinate: f32, lod: f32) f32x4"
+                "signature": "textureSampleLod(uniform texture: *textureSampled1D, coordinate: f32, lod: f32) f32x4"
             },
             {
                 "signature": "textureSampleLod(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, lod: f32) f32x4"
             },
             {
-                "signature": "textureSampleLod(uniform texture: *sampled texture2D, coordinate: f32x2, lod: f32) f32x4"
+                "signature": "textureSampleLod(uniform texture: *textureSampled2D, coordinate: f32x2, lod: f32) f32x4"
             },
             {
                 "signature": "textureSampleLod(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, lod: f32) f32x4"
             },
             {
-                "signature": "textureSampleLod(uniform texture: *sampled texture3D, coordinate: f32x3, lod: f32) f32x4"
+                "signature": "textureSampleLod(uniform texture: *textureSampled3D, coordinate: f32x3, lod: f32) f32x4"
             },
             {
                 "signature": "textureSampleLod(uniform texture: *textureCube, uniform sampler: *sampler, coordinate: f32x3, lod: f32) f32x4"
             },
             {
-                "signature": "textureSampleLod(uniform texture: *sampled textureCube, coordinate: f32x3, lod: f32) f32x4"
+                "signature": "textureSampleLod(uniform texture: *textureSampledCube, coordinate: f32x3, lod: f32) f32x4"
             },
             {
                 "signature": "textureSampleLod(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, lod: f32) f32x4"
             },
             {
-                "signature": "textureSampleLod(uniform texture: *sampled texture1DArray, coordinate: f32x2, lod: f32) f32x4"
+                "signature": "textureSampleLod(uniform texture: *textureSampled1DArray, coordinate: f32x2, lod: f32) f32x4"
             },
             {
                 "signature": "textureSampleLod(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, lod: f32) f32x4"
             },
             {
-                "signature": "textureSampleLod(uniform texture: *sampled texture2DArray, coordinate: f32x3, lod: f32) f32x4"
+                "signature": "textureSampleLod(uniform texture: *textureSampled2DArray, coordinate: f32x3, lod: f32) f32x4"
             },
             {
                 "signature": "textureSampleLod(uniform texture: *textureCubeArray, uniform sampler: *sampler, coordinate: f32x4, lod: f32) f32x4"
             },
             {
-                "signature": "textureSampleLod(uniform texture: *sampled textureCubeArray, coordinate: f32x4, lod: f32) f32x4"
+                "signature": "textureSampleLod(uniform texture: *textureSampledCubeArray, coordinate: f32x4, lod: f32) f32x4"
             }
         ]
     },
@@ -4651,31 +4651,31 @@
                 "signature": "textureSampleLodCompare(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, lod: f32, compare: f32) f32"
             },
             {
-                "signature": "textureSampleLodCompare(uniform texture: *sampled texture1D, coordinate: f32, lod: f32, compare: f32) f32"
+                "signature": "textureSampleLodCompare(uniform texture: *textureSampled1D, coordinate: f32, lod: f32, compare: f32) f32"
             },
             {
                 "signature": "textureSampleLodCompare(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, lod: f32, compare: f32) f32"
             },
             {
-                "signature": "textureSampleLodCompare(uniform texture: *sampled texture2D, coordinate: f32x2, lod: f32, compare: f32) f32"
+                "signature": "textureSampleLodCompare(uniform texture: *textureSampled2D, coordinate: f32x2, lod: f32, compare: f32) f32"
             },
             {
                 "signature": "textureSampleLodCompare(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, lod: f32, compare: f32) f32"
             },
             {
-                "signature": "textureSampleLodCompare(uniform texture: *sampled texture3D, coordinate: f32x3, lod: f32, compare: f32) f32"
+                "signature": "textureSampleLodCompare(uniform texture: *textureSampled3D, coordinate: f32x3, lod: f32, compare: f32) f32"
             },
             {
                 "signature": "textureSampleLodCompare(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, lod: f32, compare: f32) f32"
             },
             {
-                "signature": "textureSampleLodCompare(uniform texture: *sampled texture1DArray, coordinate: f32x2, lod: f32, compare: f32) f32"
+                "signature": "textureSampleLodCompare(uniform texture: *textureSampled1DArray, coordinate: f32x2, lod: f32, compare: f32) f32"
             },
             {
                 "signature": "textureSampleLodCompare(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, lod: f32, compare: f32) f32"
             },
             {
-                "signature": "textureSampleLodCompare(uniform texture: *sampled texture2DArray, coordinate: f32x3, lod: f32, compare: f32) f32"
+                "signature": "textureSampleLodCompare(uniform texture: *textureSampled2DArray, coordinate: f32x3, lod: f32, compare: f32) f32"
             }
         ]
     },
@@ -4693,31 +4693,31 @@
                 "signature": "textureSampleLodCompareOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, lod: f32, compare: f32, offset: f32) f32"
             },
             {
-                "signature": "textureSampleLodCompareOffset(uniform texture: *sampled texture1D, coordinate: f32, lod: f32, compare: f32, offset: f32) f32"
+                "signature": "textureSampleLodCompareOffset(uniform texture: *textureSampled1D, coordinate: f32, lod: f32, compare: f32, offset: f32) f32"
             },
             {
                 "signature": "textureSampleLodCompareOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, lod: f32, compare: f32, offset: f32x2) f32"
             },
             {
-                "signature": "textureSampleLodCompareOffset(uniform texture: *sampled texture2D, coordinate: f32x2, lod: f32, compare: f32, offset: f32x2) f32"
+                "signature": "textureSampleLodCompareOffset(uniform texture: *textureSampled2D, coordinate: f32x2, lod: f32, compare: f32, offset: f32x2) f32"
             },
             {
                 "signature": "textureSampleLodCompareOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, lod: f32, compare: f32, offset: f32x3) f32"
             },
             {
-                "signature": "textureSampleLodCompareOffset(uniform texture: *sampled texture3D, coordinate: f32x3, lod: f32, compare: f32, offset: f32x3) f32"
+                "signature": "textureSampleLodCompareOffset(uniform texture: *textureSampled3D, coordinate: f32x3, lod: f32, compare: f32, offset: f32x3) f32"
             },
             {
                 "signature": "textureSampleLodCompareOffset(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, lod: f32, compare: f32, offset: f32x2) f32"
             },
             {
-                "signature": "textureSampleLodCompareOffset(uniform texture: *sampled texture1DArray, coordinate: f32x2, lod: f32, compare: f32, offset: f32x2) f32"
+                "signature": "textureSampleLodCompareOffset(uniform texture: *textureSampled1DArray, coordinate: f32x2, lod: f32, compare: f32, offset: f32x2) f32"
             },
             {
                 "signature": "textureSampleLodCompareOffset(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, lod: f32, compare: f32, offset: f32x3) f32"
             },
             {
-                "signature": "textureSampleLodCompareOffset(uniform texture: *sampled texture2DArray, coordinate: f32x3, lod: f32, compare: f32, offset: f32x3) f32"
+                "signature": "textureSampleLodCompareOffset(uniform texture: *textureSampled2DArray, coordinate: f32x3, lod: f32, compare: f32, offset: f32x3) f32"
             }
         ]
     },
@@ -4735,31 +4735,31 @@
                 "signature": "textureSampleLodOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, lod: f32, offset: f32) f32x4"
             },
             {
-                "signature": "textureSampleLodOffset(uniform texture: *sampled texture1D, coordinate: f32, lod: f32, offset: f32) f32x4"
+                "signature": "textureSampleLodOffset(uniform texture: *textureSampled1D, coordinate: f32, lod: f32, offset: f32) f32x4"
             },
             {
                 "signature": "textureSampleLodOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, lod: f32, offset: f32x2) f32x4"
             },
             {
-                "signature": "textureSampleLodOffset(uniform texture: *sampled texture2D, coordinate: f32x2, lod: f32, offset: f32x2) f32x4"
+                "signature": "textureSampleLodOffset(uniform texture: *textureSampled2D, coordinate: f32x2, lod: f32, offset: f32x2) f32x4"
             },
             {
                 "signature": "textureSampleLodOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, lod: f32, offset: f32x3) f32x4"
             },
             {
-                "signature": "textureSampleLodOffset(uniform texture: *sampled texture3D, coordinate: f32x3, lod: f32, offset: f32x3) f32x4"
+                "signature": "textureSampleLodOffset(uniform texture: *textureSampled3D, coordinate: f32x3, lod: f32, offset: f32x3) f32x4"
             },
             {
                 "signature": "textureSampleLodOffset(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, lod: f32, offset: f32x2) f32x4"
             },
             {
-                "signature": "textureSampleLodOffset(uniform texture: *sampled texture1DArray, coordinate: f32x2, lod: f32, offset: f32x2) f32x4"
+                "signature": "textureSampleLodOffset(uniform texture: *textureSampled1DArray, coordinate: f32x2, lod: f32, offset: f32x2) f32x4"
             },
             {
                 "signature": "textureSampleLodOffset(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, lod: f32, offset: f32x3) f32x4"
             },
             {
-                "signature": "textureSampleLodOffset(uniform texture: *sampled texture2DArray, coordinate: f32x3, lod: f32, offset: f32x3) f32x4"
+                "signature": "textureSampleLodOffset(uniform texture: *textureSampled2DArray, coordinate: f32x3, lod: f32, offset: f32x3) f32x4"
             }
         ]
     },
@@ -4777,19 +4777,19 @@
                 "signature": "textureSampleLodProj(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, lod: f32, proj: f32) f32x4"
             },
             {
-                "signature": "textureSampleLodProj(uniform texture: *sampled texture1D, coordinate: f32, lod: f32, proj: f32) f32x4"
+                "signature": "textureSampleLodProj(uniform texture: *textureSampled1D, coordinate: f32, lod: f32, proj: f32) f32x4"
             },
             {
                 "signature": "textureSampleLodProj(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, lod: f32, proj: f32) f32x4"
             },
             {
-                "signature": "textureSampleLodProj(uniform texture: *sampled texture2D, coordinate: f32x2, lod: f32, proj: f32) f32x4"
+                "signature": "textureSampleLodProj(uniform texture: *textureSampled2D, coordinate: f32x2, lod: f32, proj: f32) f32x4"
             },
             {
                 "signature": "textureSampleLodProj(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, lod: f32, proj: f32) f32x4"
             },
             {
-                "signature": "textureSampleLodProj(uniform texture: *sampled texture3D, coordinate: f32x3, lod: f32, proj: f32) f32x4"
+                "signature": "textureSampleLodProj(uniform texture: *textureSampled3D, coordinate: f32x3, lod: f32, proj: f32) f32x4"
             }
         ]
     },
@@ -4807,19 +4807,19 @@
                 "signature": "textureSampleLodProjCompare(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, lod: f32, proj: f32, compare: f32) f32"
             },
             {
-                "signature": "textureSampleLodProjCompare(uniform texture: *sampled texture1D, coordinate: f32, lod: f32, proj: f32, compare: f32) f32"
+                "signature": "textureSampleLodProjCompare(uniform texture: *textureSampled1D, coordinate: f32, lod: f32, proj: f32, compare: f32) f32"
             },
             {
                 "signature": "textureSampleLodProjCompare(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, lod: f32, proj: f32, compare: f32) f32"
             },
             {
-                "signature": "textureSampleLodProjCompare(uniform texture: *sampled texture2D, coordinate: f32x2, lod: f32, proj: f32, compare: f32) f32"
+                "signature": "textureSampleLodProjCompare(uniform texture: *textureSampled2D, coordinate: f32x2, lod: f32, proj: f32, compare: f32) f32"
             },
             {
                 "signature": "textureSampleLodProjCompare(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, lod: f32, proj: f32, compare: f32) f32"
             },
             {
-                "signature": "textureSampleLodProjCompare(uniform texture: *sampled texture3D, coordinate: f32x3, lod: f32, proj: f32, compare: f32) f32"
+                "signature": "textureSampleLodProjCompare(uniform texture: *textureSampled3D, coordinate: f32x3, lod: f32, proj: f32, compare: f32) f32"
             }
         ]
     },
@@ -4837,19 +4837,19 @@
                 "signature": "textureSampleLodProjCompareOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, lod: f32, proj: f32, compare: f32, offset: f32) f32"
             },
             {
-                "signature": "textureSampleLodProjCompareOffset(uniform texture: *sampled texture1D, coordinate: f32, lod: f32, proj: f32, compare: f32, offset: f32) f32"
+                "signature": "textureSampleLodProjCompareOffset(uniform texture: *textureSampled1D, coordinate: f32, lod: f32, proj: f32, compare: f32, offset: f32) f32"
             },
             {
                 "signature": "textureSampleLodProjCompareOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, lod: f32, proj: f32, compare: f32, offset: f32x2) f32"
             },
             {
-                "signature": "textureSampleLodProjCompareOffset(uniform texture: *sampled texture2D, coordinate: f32x2, lod: f32, proj: f32, compare: f32, offset: f32x2) f32"
+                "signature": "textureSampleLodProjCompareOffset(uniform texture: *textureSampled2D, coordinate: f32x2, lod: f32, proj: f32, compare: f32, offset: f32x2) f32"
             },
             {
                 "signature": "textureSampleLodProjCompareOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, lod: f32, proj: f32, compare: f32, offset: f32x3) f32"
             },
             {
-                "signature": "textureSampleLodProjCompareOffset(uniform texture: *sampled texture3D, coordinate: f32x3, lod: f32, proj: f32, compare: f32, offset: f32x3) f32"
+                "signature": "textureSampleLodProjCompareOffset(uniform texture: *textureSampled3D, coordinate: f32x3, lod: f32, proj: f32, compare: f32, offset: f32x3) f32"
             }
         ]
     },
@@ -4867,19 +4867,19 @@
                 "signature": "textureSampleLodProjOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, lod: f32, proj: f32, offset: f32) f32x4"
             },
             {
-                "signature": "textureSampleLodProjOffset(uniform texture: *sampled texture1D, coordinate: f32, lod: f32, proj: f32, offset: f32) f32x4"
+                "signature": "textureSampleLodProjOffset(uniform texture: *textureSampled1D, coordinate: f32, lod: f32, proj: f32, offset: f32) f32x4"
             },
             {
                 "signature": "textureSampleLodProjOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, lod: f32, proj: f32, offset: f32x2) f32x4"
             },
             {
-                "signature": "textureSampleLodProjOffset(uniform texture: *sampled texture2D, coordinate: f32x2, lod: f32, proj: f32, offset: f32x2) f32x4"
+                "signature": "textureSampleLodProjOffset(uniform texture: *textureSampled2D, coordinate: f32x2, lod: f32, proj: f32, offset: f32x2) f32x4"
             },
             {
                 "signature": "textureSampleLodProjOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, lod: f32, proj: f32, offset: f32x3) f32x4"
             },
             {
-                "signature": "textureSampleLodProjOffset(uniform texture: *sampled texture3D, coordinate: f32x3, lod: f32, proj: f32, offset: f32x3) f32x4"
+                "signature": "textureSampleLodProjOffset(uniform texture: *textureSampled3D, coordinate: f32x3, lod: f32, proj: f32, offset: f32x3) f32x4"
             }
         ]
     },
@@ -4897,31 +4897,31 @@
                 "signature": "textureSampleOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, offset: f32) f32x4"
             },
             {
-                "signature": "textureSampleOffset(uniform texture: *sampled texture1D, coordinate: f32, offset: f32) f32x4"
+                "signature": "textureSampleOffset(uniform texture: *textureSampled1D, coordinate: f32, offset: f32) f32x4"
             },
             {
                 "signature": "textureSampleOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, offset: f32x2) f32x4"
             },
             {
-                "signature": "textureSampleOffset(uniform texture: *sampled texture2D, coordinate: f32x2, offset: f32x2) f32x4"
+                "signature": "textureSampleOffset(uniform texture: *textureSampled2D, coordinate: f32x2, offset: f32x2) f32x4"
             },
             {
                 "signature": "textureSampleOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, offset: f32x3) f32x4"
             },
             {
-                "signature": "textureSampleOffset(uniform texture: *sampled texture3D, coordinate: f32x3, offset: f32x3) f32x4"
+                "signature": "textureSampleOffset(uniform texture: *textureSampled3D, coordinate: f32x3, offset: f32x3) f32x4"
             },
             {
                 "signature": "textureSampleOffset(uniform texture: *texture1DArray, uniform sampler: *sampler, coordinate: f32x2, offset: f32x2) f32x4"
             },
             {
-                "signature": "textureSampleOffset(uniform texture: *sampled texture1DArray, coordinate: f32x2, offset: f32x2) f32x4"
+                "signature": "textureSampleOffset(uniform texture: *textureSampled1DArray, coordinate: f32x2, offset: f32x2) f32x4"
             },
             {
                 "signature": "textureSampleOffset(uniform texture: *texture2DArray, uniform sampler: *sampler, coordinate: f32x3, offset: f32x3) f32x4"
             },
             {
-                "signature": "textureSampleOffset(uniform texture: *sampled texture2DArray, coordinate: f32x3, offset: f32x3) f32x4"
+                "signature": "textureSampleOffset(uniform texture: *textureSampled2DArray, coordinate: f32x3, offset: f32x3) f32x4"
             }
         ]
     },
@@ -4939,19 +4939,19 @@
                 "signature": "textureSampleProj(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, proj: f32) f32x4"
             },
             {
-                "signature": "textureSampleProj(uniform texture: *sampled texture1D, coordinate: f32, proj: f32) f32x4"
+                "signature": "textureSampleProj(uniform texture: *textureSampled1D, coordinate: f32, proj: f32) f32x4"
             },
             {
                 "signature": "textureSampleProj(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, proj: f32) f32x4"
             },
             {
-                "signature": "textureSampleProj(uniform texture: *sampled texture2D, coordinate: f32x2, proj: f32) f32x4"
+                "signature": "textureSampleProj(uniform texture: *textureSampled2D, coordinate: f32x2, proj: f32) f32x4"
             },
             {
                 "signature": "textureSampleProj(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, proj: f32) f32x4"
             },
             {
-                "signature": "textureSampleProj(uniform texture: *sampled texture3D, coordinate: f32x3, proj: f32) f32x4"
+                "signature": "textureSampleProj(uniform texture: *textureSampled3D, coordinate: f32x3, proj: f32) f32x4"
             }
         ]
     },
@@ -4969,19 +4969,19 @@
                 "signature": "textureSampleProjCompare(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, proj: f32, compare: f32) f32"
             },
             {
-                "signature": "textureSampleProjCompare(uniform texture: *sampled texture1D, coordinate: f32, proj: f32, compare: f32) f32"
+                "signature": "textureSampleProjCompare(uniform texture: *textureSampled1D, coordinate: f32, proj: f32, compare: f32) f32"
             },
             {
                 "signature": "textureSampleProjCompare(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, proj: f32, compare: f32) f32"
             },
             {
-                "signature": "textureSampleProjCompare(uniform texture: *sampled texture2D, coordinate: f32x2, proj: f32, compare: f32) f32"
+                "signature": "textureSampleProjCompare(uniform texture: *textureSampled2D, coordinate: f32x2, proj: f32, compare: f32) f32"
             },
             {
                 "signature": "textureSampleProjCompare(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, proj: f32, compare: f32) f32"
             },
             {
-                "signature": "textureSampleProjCompare(uniform texture: *sampled texture3D, coordinate: f32x3, proj: f32, compare: f32) f32"
+                "signature": "textureSampleProjCompare(uniform texture: *textureSampled3D, coordinate: f32x3, proj: f32, compare: f32) f32"
             }
         ]
     },
@@ -4999,19 +4999,19 @@
                 "signature": "textureSampleProjCompareOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, proj: f32, compare: f32, offset: f32) f32"
             },
             {
-                "signature": "textureSampleProjCompareOffset(uniform texture: *sampled texture1D, coordinate: f32, proj: f32, compare: f32, offset: f32) f32"
+                "signature": "textureSampleProjCompareOffset(uniform texture: *textureSampled1D, coordinate: f32, proj: f32, compare: f32, offset: f32) f32"
             },
             {
                 "signature": "textureSampleProjCompareOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, proj: f32, compare: f32, offset: f32x2) f32"
             },
             {
-                "signature": "textureSampleProjCompareOffset(uniform texture: *sampled texture2D, coordinate: f32x2, proj: f32, compare: f32, offset: f32x2) f32"
+                "signature": "textureSampleProjCompareOffset(uniform texture: *textureSampled2D, coordinate: f32x2, proj: f32, compare: f32, offset: f32x2) f32"
             },
             {
                 "signature": "textureSampleProjCompareOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, proj: f32, compare: f32, offset: f32x3) f32"
             },
             {
-                "signature": "textureSampleProjCompareOffset(uniform texture: *sampled texture3D, coordinate: f32x3, proj: f32, compare: f32, offset: f32x3) f32"
+                "signature": "textureSampleProjCompareOffset(uniform texture: *textureSampled3D, coordinate: f32x3, proj: f32, compare: f32, offset: f32x3) f32"
             }
         ]
     },
@@ -5029,19 +5029,19 @@
                 "signature": "textureSampleProjOffset(uniform texture: *texture1D, uniform sampler: *sampler, coordinate: f32, proj: f32, offset: f32) f32x4"
             },
             {
-                "signature": "textureSampleProjOffset(uniform texture: *sampled texture1D, coordinate: f32, proj: f32, offset: f32) f32x4"
+                "signature": "textureSampleProjOffset(uniform texture: *textureSampled1D, coordinate: f32, proj: f32, offset: f32) f32x4"
             },
             {
                 "signature": "textureSampleProjOffset(uniform texture: *texture2D, uniform sampler: *sampler, coordinate: f32x2, proj: f32, offset: f32x2) f32x4"
             },
             {
-                "signature": "textureSampleProjOffset(uniform texture: *sampled texture2D, coordinate: f32x2, proj: f32, offset: f32x2) f32x4"
+                "signature": "textureSampleProjOffset(uniform texture: *textureSampled2D, coordinate: f32x2, proj: f32, offset: f32x2) f32x4"
             },
             {
                 "signature": "textureSampleProjOffset(uniform texture: *texture3D, uniform sampler: *sampler, coordinate: f32x3, proj: f32, offset: f32x3) f32x4"
             },
             {
-                "signature": "textureSampleProjOffset(uniform texture: *sampled texture3D, coordinate: f32x3, proj: f32, offset: f32x3) f32x4"
+                "signature": "textureSampleProjOffset(uniform texture: *textureSampled3D, coordinate: f32x3, proj: f32, offset: f32x3) f32x4"
             }
         ]
     },

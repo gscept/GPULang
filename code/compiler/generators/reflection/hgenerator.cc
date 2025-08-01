@@ -268,7 +268,7 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
             }
 
             std::string arraySize = "";
-            for (int i = 0; i < var->type.modifierValues.size(); i++)
+            for (int i = 0; i < var->type.modifierValues.size; i++)
             {
                 if (var->type.modifiers[i] == Type::FullType::Modifier::Array)
                 {
@@ -315,9 +315,9 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
             auto modIt = var->type.modifiers.rbegin();
             while (modIt != var->type.modifiers.rend())
             {
-                if (*modIt == Type::FullType::Modifier::Pointer)
+                if (*modIt.it == Type::FullType::Modifier::Pointer)
                     type.Append("*");
-                else if (*modIt == Type::FullType::Modifier::Array)
+                else if (*modIt.it == Type::FullType::Modifier::Array)
                 {
                     ptrdiff_t diff = std::distance(modIt, var->type.modifiers.rend()) - 1;
                     ValueUnion val;
@@ -336,7 +336,7 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
             // if element padding, we need to split the array into elements where each element is padded
             if (varResolved->elementPadding > 0)
             {
-                for (int i = 0; i < var->type.modifierValues.size(); i++)
+                for (int i = 0; i < var->type.modifierValues.size; i++)
                 {
                     // don't pad the first element
                     if (i > 0)
@@ -404,9 +404,9 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
             auto modIt = var->type.modifiers.rbegin();
             while (modIt != var->type.modifiers.rend())
             {
-                if (*modIt == Type::FullType::Modifier::Pointer)
+                if (*modIt.it == Type::FullType::Modifier::Pointer)
                     type.Append("*");
-                else if (*modIt == Type::FullType::Modifier::Array)
+                else if (*modIt.it == Type::FullType::Modifier::Array)
                 {
                     ptrdiff_t diff = std::distance(modIt, var->type.modifiers.rend()) - 1;
                     ValueUnion val;

@@ -5,8 +5,7 @@
     
     Basic object representation, contains basic information for an AnyFX symbol.
 
-    Each symbol has a set of parser data and compiler data. Parser data comes from
-    the ANTLR parse of the source code. The other half, compiler data, is data resolved
+    Each symbol has a set of parser data and compiler data. The other half, compiler data, is data resolved
     from the validation and generation step, and includes the unfolded result of expressions,
     flags and such.
     
@@ -95,6 +94,11 @@ struct Symbol
             , start(0)
             , end(0)
         {
+        }
+        
+        bool Valid() const
+        {
+            return this->line != -1;
         }
     };
 

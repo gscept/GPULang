@@ -1958,6 +1958,16 @@ static const std::unordered_map<TypeCode, std::tuple<ConstantString, ImageFormat
     , { TypeCode::Texture2DMSArray, { "texture2DMSArray", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr::Separated("OpTypeImage", SPVArg(type), "2D", depthBits, 1, 1, sampledBits, format); } } }
     , { TypeCode::Texture3DArray, { "texture3DArray", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr::Separated("OpTypeImage", SPVArg(type), "3D", depthBits, 1, 0, sampledBits, format); } } }
     , { TypeCode::TextureCubeArray, { "textureCubeArray", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr::Separated("OpTypeImage", SPVArg(type), "Cube", depthBits, 1, 0, sampledBits, format); } } }
+    , { TypeCode::SampledTexture1D, { "textureSampled1D", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr::Separated("OpTypeImage", SPVArg(type), "1D", depthBits, 0, 0, sampledBits, format); } } }
+    , { TypeCode::SampledTexture2D, { "textureSampled2D", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr::Separated("OpTypeImage", SPVArg(type), "2D", depthBits, 0, 0, sampledBits, format); } } }
+    , { TypeCode::SampledTexture2DMS, { "textureSampled2DMS", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr::Separated("OpTypeImage", SPVArg(type), "2D", depthBits, 0, 1, sampledBits, format); } } }
+    , { TypeCode::SampledTexture3D, { "textureSampled3D", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr::Separated("OpTypeImage", SPVArg(type), "3D", depthBits, 0, 0, sampledBits, format); } } }
+    , { TypeCode::SampledTextureCube, { "textureSampledCube", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr::Separated("OpTypeImage", SPVArg(type), "Cube", depthBits, 0, 0, sampledBits, format); } } }
+    , { TypeCode::SampledTexture1DArray, { "textureSampled1DArray", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr::Separated("OpTypeImage", SPVArg(type), "1D", depthBits, 1, 0, sampledBits, format); } } }
+    , { TypeCode::SampledTexture2DArray, { "textureSampled2DArray", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr::Separated("OpTypeImage", SPVArg(type), "2D", depthBits, 1, 0, sampledBits, format); } } }
+    , { TypeCode::SampledTexture2DMSArray, { "textureSampled2DMSArray", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr::Separated("OpTypeImage", SPVArg(type), "2D", depthBits, 1, 1, sampledBits, format); } } }
+    , { TypeCode::SampledTexture3DArray, { "textureSampled3DArray", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr::Separated("OpTypeImage", SPVArg(type), "3D", depthBits, 1, 0, sampledBits, format); } } }
+    , { TypeCode::SampledTextureCubeArray, { "textureSampledCubeArray", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr::Separated("OpTypeImage", SPVArg(type), "Cube", depthBits, 1, 0, sampledBits, format); } } }
     , { TypeCode::PixelCache, { "pixelCache", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr::Separated("OpTypeImage", SPVArg(type), "SubpassData", 0, 0, 0, 2, "Unknown"); } } }
     , { TypeCode::PixelCacheMS, { "pixelCacheMS", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr::Separated("OpTypeImage", SPVArg(type), "SubpassData", 0, 0, 1, 2, "Unknown"); } } }
     , { TypeCode::Sampler, { "sampler", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr("OpTypeSampler"); } } }
@@ -2207,22 +2217,6 @@ GenerateTypeSPIRV(
     std::tuple<uint32_t, TStr> baseType;
     std::vector<uint32_t> parentType;
 
-    auto reducePointer = [](const Compiler* compiler, Type::FullType& type)
-    {
-        if (!compiler->target.supportsPhysicalAddressing)
-        {
-            for (size_t i = 0; i < type.modifiers.size(); i++)
-            {
-                const Type::FullType::Modifier mod = type.modifiers[i];
-                if (mod == Type::FullType::Modifier::Pointer)
-                {
-                    type.modifiers.erase(type.modifiers.begin() + i);
-                    break;
-                }
-            }
-        }
-    };
-
     if (typeSymbol->category == Type::ScalarCategory || typeSymbol->category == Type::VoidCategory)
     {
         baseType = GenerateBaseTypeSPIRV(compiler, generator, typeSymbol->baseType, typeSymbol->columnSize, typeSymbol->rowSize);
@@ -2240,7 +2234,8 @@ GenerateTypeSPIRV(
         else
             sampleBits = 1;
 
-        if (typeSymbol->baseType == TypeCode::Texture1D || typeSymbol->baseType == TypeCode::Texture1DArray)
+        if (typeSymbol->baseType == TypeCode::Texture1D || typeSymbol->baseType == TypeCode::Texture1DArray
+            || typeSymbol->baseType == TypeCode::SampledTexture1D || typeSymbol->baseType == TypeCode::SampledTexture1DArray)
         {
             generator->writer->Capability(Capabilities::Sampled1D);
         }
@@ -2248,22 +2243,13 @@ GenerateTypeSPIRV(
         auto [spirvFormat, extension, format, cap] = imageFormatToSpirvType[type.imageFormat];
         TStr gpuLangStr = TStr::Compact(spirvFormat, "_", gpulangType, "Sample_", sampleBits, "Depth_", depthBits);
         if (extension.size > 0)
-        {
+        {   
             generator->writer->Capability(cap);
         }
         auto handleGenerator = generators.find(typeSymbol->baseType);
         uint32_t name = handleGenerator->second(generator, gpuLangStr, floatType, depthBits, sampleBits, format);
-        if (type.sampled)
-        {
-            name = AddType(generator, TStr("sampled_", gpuLangStr), OpTypeSampledImage, SPVArg{ name });
-        }
 
         TStr ty = spirvFormatter(floatType, depthBits, sampleBits, spirvFormat.buf);
-        baseType = std::tie(name, gpuLangStr);
-        if (type.sampled)
-        {
-            TStr sampledImageStr = TStr("sampled_", gpuLangStr);
-        }
         baseType = std::tie(name, gpuLangStr);
     }
     else if (typeSymbol->category == Type::PixelCacheCategory)
@@ -2303,7 +2289,7 @@ GenerateTypeSPIRV(
 
     ConstantString scopeString = SPIRVResult::ScopeToString(storage);
     SPVEnum scopeEnum = ScopeToEnum(storage);
-    for (size_t i = 0; i < type.modifiers.size(); i++)
+    for (size_t i = 0; i < type.modifiers.size; i++)
     {
         auto [typeName, gpulangType] = baseType; 
         const Type::FullType::Modifier& mod = type.modifiers[i];
@@ -2557,7 +2543,10 @@ GeneratePointerTypeSPIRV(
 {
     Type::FullType returnPtrType = type;
     if (!type.IsPointer())
-        returnPtrType.AddModifier(Type::FullType::Modifier::Pointer);
+    {
+        returnPtrType.modifiers.Append(Type::FullType::Modifier::Pointer);
+        returnPtrType.modifierValues.Append(nullptr);
+    }
     SPIRVResult returnType = GenerateTypeSPIRV(compiler, generator, returnPtrType, typeSymbol, storage, isInterface);
 
     return returnType;
@@ -3968,7 +3957,7 @@ GenerateArrayIndexExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gene
         uint32_t name = generator->writer->String(expr->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
     }
-    if (leftType.modifiers.empty())
+    if (leftType.modifiers.size == 0)
     {
         Type* type = static_cast<Type*>(compiler->GetSymbol(leftType.name));
 
@@ -4312,7 +4301,7 @@ GenerateAccessExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
         accessExpression->left->EvalType(lhsType);
         Type* lhsSymbol = compiler->GetType(lhsType);
 
-        if (lhsType.modifiers.size() > 0 && lhsType.modifiers.front() == Type::FullType::Modifier::Array)
+        if (lhsType.modifiers.size > 0 && lhsType.modifiers.front() == Type::FullType::Modifier::Array)
         {
             assert(accessExpressionResolved->rightSymbol == "length");
             uint32_t size = 0;
