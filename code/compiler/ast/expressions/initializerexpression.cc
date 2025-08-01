@@ -80,8 +80,8 @@ InitializerExpression::Resolve(Compiler* compiler)
     
     // Append array level first
     thisResolved->fullType.name = inner.name;
-    thisResolved->fullType.modifiers.Append(inner.modifiers);
-    thisResolved->fullType.modifierValues.Append(inner.modifierValues);
+    thisResolved->fullType.modifiers = TransientArray<Type::FullType::Modifier>::Concatenate(thisResolved->fullType.modifiers, inner.modifiers);;
+    thisResolved->fullType.modifierValues = TransientArray<Expression*>::Concatenate(thisResolved->fullType.modifierValues, inner.modifierValues);
 
     return true;
 }

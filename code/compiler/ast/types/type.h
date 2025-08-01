@@ -492,8 +492,8 @@ struct Type : public Symbol
         };
 
 
-        PinnedArray<Modifier> modifiers = 0x10;
-        PinnedArray<Expression*> modifierValues = 0x10;
+        FixedArray<Modifier> modifiers;
+        FixedArray<Expression*> modifierValues;
 
         static const uint32_t UNSIZED_ARRAY = 0;
 

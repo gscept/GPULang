@@ -2883,17 +2883,15 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     attr->expression = nullptr;
                     arg->attributes = { attr };
                     arg->type = var->type;
-                    arg->type.modifiers.Clear();
-                    arg->type.modifierValues.Clear();
-                    arg->type.modifiers.Append(Type::FullType::Modifier::Pointer);
-                    arg->type.modifierValues.Append(nullptr);
+                    arg->type.modifiers = TransientArray<Type::FullType::Modifier>::Concatenate(Type::FullType::Modifier::Pointer);
+                    arg->type.modifierValues = TransientArray<Expression*>::Concatenate((Expression*)nullptr);
                 
                     Variable* arg2 = Alloc<Variable>();
                     arg2->name = "value";
                     arg2->type = var->type;
                     arg2->type.mut = false;
-                    arg2->type.modifiers.Clear();
-                    arg2->type.modifierValues.Clear();
+                    arg2->type.modifiers = TransientArray<Type::FullType::Modifier>();
+                    arg2->type.modifierValues = TransientArray<Expression*>();
                     currentStrucResolved->storageFunction->parameters = { arg, arg2 };
                     this->ResolveFunction(compiler, currentStrucResolved->storageFunction);    
                 }
@@ -2910,10 +2908,8 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     attr->expression = nullptr;
                     arg->attributes = { attr };
                     arg->type = var->type;
-                    arg->type.modifiers.Clear();
-                    arg->type.modifierValues.Clear();
-                    arg->type.modifiers.Append(Type::FullType::Modifier::Pointer);
-                    arg->type.modifierValues.Append(nullptr);
+                    arg->type.modifiers = TransientArray<Type::FullType::Modifier>::Concatenate(Type::FullType::Modifier::Pointer);
+                    arg->type.modifierValues = TransientArray<Expression*>::Concatenate((Expression*)nullptr);
                     
                     currentStrucResolved->loadFunction->parameters = { arg };
                     this->ResolveFunction(compiler, currentStrucResolved->loadFunction);   

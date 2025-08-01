@@ -111,8 +111,8 @@ UnaryExpression::Resolve(Compiler* compiler)
                 return false;
             }
             
-            type.modifiers.RemoveFirst();
-            type.modifierValues.RemoveFirst();
+            type.modifiers = TransientArray(type.modifiers, 1);
+            type.modifierValues = TransientArray(type.modifierValues, 1);
             break;
         }
         case '&':

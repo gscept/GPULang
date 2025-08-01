@@ -59,8 +59,8 @@ AccessExpression::Resolve(Compiler* compiler)
             compiler->Error(Format("Cannot dereference type '%s', did you mean to use '.' instead?", thisResolved->leftType.ToString().c_str()), this);
             return false;
         }
-        thisResolved->leftType.modifiers.RemoveLast();
-        thisResolved->leftType.modifierValues.RemoveLast();
+        thisResolved->leftType.modifiers.size--;
+        thisResolved->leftType.modifierValues.size--;
     }
 
     this->left->EvalTypeSymbol(thisResolved->lhsType);

@@ -96,8 +96,9 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
             return false;
         }
         
-        thisResolved->returnFullType.modifiers.RemoveFirst();
-        thisResolved->returnFullType.modifierValues.RemoveFirst();
+        // Strip first element
+        thisResolved->returnFullType.modifiers = TransientArray(thisResolved->returnFullType.modifiers, 1);
+        thisResolved->returnFullType.modifierValues = TransientArray(thisResolved->returnFullType.modifierValues, 1);
     }
     
     thisResolved->returnType = compiler->GetType(thisResolved->returnFullType);
