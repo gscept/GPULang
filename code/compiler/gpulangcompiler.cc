@@ -2315,16 +2315,16 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
         // convert error list to string
         if (compiler.messages.size != 0 && !compiler.options.quiet)
         {
-            TransientString err;
+            GrowingString err;
             for (size_t i = 0; i < compiler.messages.size; i++)
             {
                 if (i > 0)
                     err.Append("\n");
-                err.Append(compiler.messages[i]);
+                err.Append(compiler.messages[i].ToView());
             }
             if (err.size == 0 && compiler.hasErrors)
-                err = "Unhandled internal compiler error";
-            result.messages.Append(FixedString(err));
+                err.Append("Unhandled internal compiler error");
+            result.messages.Append(FixedString(err.data));
         }
 
 

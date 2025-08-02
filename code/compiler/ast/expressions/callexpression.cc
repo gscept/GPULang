@@ -265,7 +265,8 @@ CallExpression::Resolve(Compiler* compiler)
                 this->thisResolved->function = candidate.function;
                 this->thisResolved->returnType = this->thisResolved->function->returnType;
                 this->thisResolved->retType = compiler->GetType(this->thisResolved->returnType);
-                std::fill(this->thisResolved->conversions.begin(), this->thisResolved->conversions.end(), nullptr);
+                this->thisResolved->conversions = candidate.argumentConversionFunctions;
+                //std::fill(this->thisResolved->conversions.begin(), this->thisResolved->conversions.end(), nullptr);
             }
             else
             {

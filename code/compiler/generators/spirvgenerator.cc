@@ -5765,7 +5765,7 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
             if (res != SPV_SUCCESS)
             {
                 this->Error(Format("Internal SPIRV generation error: %s", diag->error));
-                
+                printf("%s\n", diag->error);
                 
                 GrowingString binary;
                 binary.Line("; Entry point", funResolved->name);
@@ -5787,6 +5787,7 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
                 binary.Append("\n; Functions\n");
                 binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Functions]);
                 
+                printf("%s\n", binary.data);
                 this->Error(std::string(binary.data, binary.size));
                 return false;
             }

@@ -60,7 +60,6 @@ struct ConstantString
     constexpr bool operator<(const ConstantString& rhs) const
     {
         size_t minSize = (this->size < rhs.size) ? this->size : rhs.size;
-
         for (size_t i = 0; i < minSize; i++)
         {
             if (this->buf[i] < rhs.buf[i]) return true;

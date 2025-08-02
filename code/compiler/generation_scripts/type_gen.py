@@ -948,11 +948,14 @@ def generate_types():
 
                         spirv_function = ''
                         spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
-                        if scale_type.startswith('Float'):
+                        if type.startswith('Float'):
                             spirv_function += '    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);\n'
                         else:
                             spirv_function += f'    SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, {size}, args[1]);\n'
-                        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);\n'
+                        if type.startswith('Float'):
+                            spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);\n'
+                        else:
+                            spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);\n'
                         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
                         spirv_code += spirv_intrinsic(function_name, spirv_function)
 
@@ -1862,7 +1865,7 @@ def generate_types():
         'Bool8x4': 'Bool8'
     }
 
-    vector_sizes = {
+    vector_size_mapping = {
         'Float32': 1, 'Float32x2': 2, 'Float32x3': 3, 'Float32x4': 4,
         'Float16': 1, 'Float16x2': 2, 'Float16x3': 3, 'Float16x4': 4,
         'Int32': 1, 'Int32x2': 2, 'Int32x3': 3, 'Int32x4': 4,
@@ -2370,7 +2373,7 @@ def generate_types():
             if intrinsic == 'ddx' or intrinsic == 'ddy' or intrinsic == 'fwidth':
                 spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(Op{spirv_op}, SPVWriter::Section::LocalFunction, returnType, val);\n'
             elif intrinsic == 'saturate':
-                size = vector_sizes[type]
+                size = vector_size_mapping[type]
                 spirv_function += f'    SPIRVResult min = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(0));\n'
                 spirv_function += f'    SPIRVResult max = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(1));\n'
                 if size > 1:
@@ -2479,7 +2482,7 @@ def generate_types():
             fun = Function( 
                 decl_name = function_name,
                 api_name = intrinsic,
-                return_type = type,
+                return_type = f'Bool8',
                 documentation = doc,
                 parameters = [
                     Variable(decl_name = argument_name, api_name = "val", type_name=type)

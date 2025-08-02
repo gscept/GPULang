@@ -24353,39 +24353,39 @@ void SetupIntrinsics()
     any_Bool8x2_arg.type = Type::FullType{ Bool8x2Type.name };
     any_Bool8x2.documentation = "Returns true if any component of the vector is non-zero."_c;
     any_Bool8x2.name = "any"_c;
-    any_Bool8x2.returnType = Type::FullType { Bool8x2Type.name };
+    any_Bool8x2.returnType = Type::FullType { Bool8Type.name };
     any_Bool8x2.parameters = any_Bool8x2_args;
     Symbol::Resolved(&any_Bool8x2_arg)->typeSymbol = &Bool8x2Type;
-    Symbol::Resolved(&any_Bool8x2)->signature = "b8x2 any(b8x2)"_c;
+    Symbol::Resolved(&any_Bool8x2)->signature = "b8 any(b8x2)"_c;
     Symbol::Resolved(&any_Bool8x2)->name = "any(b8x2)"_c;
     Symbol::Resolved(&any_Bool8x2)->nameWithVarNames = "any(val : b8x2)"_c;
-    Symbol::Resolved(&any_Bool8x2)->returnTypeSymbol = &Bool8x2Type;
+    Symbol::Resolved(&any_Bool8x2)->returnTypeSymbol = &Bool8Type;
 
     /// any with Bool8x3
     any_Bool8x3_arg.name = "val"_c;
     any_Bool8x3_arg.type = Type::FullType{ Bool8x3Type.name };
     any_Bool8x3.documentation = "Returns true if any component of the vector is non-zero."_c;
     any_Bool8x3.name = "any"_c;
-    any_Bool8x3.returnType = Type::FullType { Bool8x3Type.name };
+    any_Bool8x3.returnType = Type::FullType { Bool8Type.name };
     any_Bool8x3.parameters = any_Bool8x3_args;
     Symbol::Resolved(&any_Bool8x3_arg)->typeSymbol = &Bool8x3Type;
-    Symbol::Resolved(&any_Bool8x3)->signature = "b8x3 any(b8x3)"_c;
+    Symbol::Resolved(&any_Bool8x3)->signature = "b8 any(b8x3)"_c;
     Symbol::Resolved(&any_Bool8x3)->name = "any(b8x3)"_c;
     Symbol::Resolved(&any_Bool8x3)->nameWithVarNames = "any(val : b8x3)"_c;
-    Symbol::Resolved(&any_Bool8x3)->returnTypeSymbol = &Bool8x3Type;
+    Symbol::Resolved(&any_Bool8x3)->returnTypeSymbol = &Bool8Type;
 
     /// any with Bool8x4
     any_Bool8x4_arg.name = "val"_c;
     any_Bool8x4_arg.type = Type::FullType{ Bool8x4Type.name };
     any_Bool8x4.documentation = "Returns true if any component of the vector is non-zero."_c;
     any_Bool8x4.name = "any"_c;
-    any_Bool8x4.returnType = Type::FullType { Bool8x4Type.name };
+    any_Bool8x4.returnType = Type::FullType { Bool8Type.name };
     any_Bool8x4.parameters = any_Bool8x4_args;
     Symbol::Resolved(&any_Bool8x4_arg)->typeSymbol = &Bool8x4Type;
-    Symbol::Resolved(&any_Bool8x4)->signature = "b8x4 any(b8x4)"_c;
+    Symbol::Resolved(&any_Bool8x4)->signature = "b8 any(b8x4)"_c;
     Symbol::Resolved(&any_Bool8x4)->name = "any(b8x4)"_c;
     Symbol::Resolved(&any_Bool8x4)->nameWithVarNames = "any(val : b8x4)"_c;
-    Symbol::Resolved(&any_Bool8x4)->returnTypeSymbol = &Bool8x4Type;
+    Symbol::Resolved(&any_Bool8x4)->returnTypeSymbol = &Bool8Type;
 
     /// all with Bool8
     all_Bool8_arg.name = "val"_c;
@@ -24405,39 +24405,39 @@ void SetupIntrinsics()
     all_Bool8x2_arg.type = Type::FullType{ Bool8x2Type.name };
     all_Bool8x2.documentation = "Returns true if all components of the vector are non-zero."_c;
     all_Bool8x2.name = "all"_c;
-    all_Bool8x2.returnType = Type::FullType { Bool8x2Type.name };
+    all_Bool8x2.returnType = Type::FullType { Bool8Type.name };
     all_Bool8x2.parameters = all_Bool8x2_args;
     Symbol::Resolved(&all_Bool8x2_arg)->typeSymbol = &Bool8x2Type;
-    Symbol::Resolved(&all_Bool8x2)->signature = "b8x2 all(b8x2)"_c;
+    Symbol::Resolved(&all_Bool8x2)->signature = "b8 all(b8x2)"_c;
     Symbol::Resolved(&all_Bool8x2)->name = "all(b8x2)"_c;
     Symbol::Resolved(&all_Bool8x2)->nameWithVarNames = "all(val : b8x2)"_c;
-    Symbol::Resolved(&all_Bool8x2)->returnTypeSymbol = &Bool8x2Type;
+    Symbol::Resolved(&all_Bool8x2)->returnTypeSymbol = &Bool8Type;
 
     /// all with Bool8x3
     all_Bool8x3_arg.name = "val"_c;
     all_Bool8x3_arg.type = Type::FullType{ Bool8x3Type.name };
     all_Bool8x3.documentation = "Returns true if all components of the vector are non-zero."_c;
     all_Bool8x3.name = "all"_c;
-    all_Bool8x3.returnType = Type::FullType { Bool8x3Type.name };
+    all_Bool8x3.returnType = Type::FullType { Bool8Type.name };
     all_Bool8x3.parameters = all_Bool8x3_args;
     Symbol::Resolved(&all_Bool8x3_arg)->typeSymbol = &Bool8x3Type;
-    Symbol::Resolved(&all_Bool8x3)->signature = "b8x3 all(b8x3)"_c;
+    Symbol::Resolved(&all_Bool8x3)->signature = "b8 all(b8x3)"_c;
     Symbol::Resolved(&all_Bool8x3)->name = "all(b8x3)"_c;
     Symbol::Resolved(&all_Bool8x3)->nameWithVarNames = "all(val : b8x3)"_c;
-    Symbol::Resolved(&all_Bool8x3)->returnTypeSymbol = &Bool8x3Type;
+    Symbol::Resolved(&all_Bool8x3)->returnTypeSymbol = &Bool8Type;
 
     /// all with Bool8x4
     all_Bool8x4_arg.name = "val"_c;
     all_Bool8x4_arg.type = Type::FullType{ Bool8x4Type.name };
     all_Bool8x4.documentation = "Returns true if all components of the vector are non-zero."_c;
     all_Bool8x4.name = "all"_c;
-    all_Bool8x4.returnType = Type::FullType { Bool8x4Type.name };
+    all_Bool8x4.returnType = Type::FullType { Bool8Type.name };
     all_Bool8x4.parameters = all_Bool8x4_args;
     Symbol::Resolved(&all_Bool8x4_arg)->typeSymbol = &Bool8x4Type;
-    Symbol::Resolved(&all_Bool8x4)->signature = "b8x4 all(b8x4)"_c;
+    Symbol::Resolved(&all_Bool8x4)->signature = "b8 all(b8x4)"_c;
     Symbol::Resolved(&all_Bool8x4)->name = "all(b8x4)"_c;
     Symbol::Resolved(&all_Bool8x4)->nameWithVarNames = "all(val : b8x4)"_c;
-    Symbol::Resolved(&all_Bool8x4)->returnTypeSymbol = &Bool8x4Type;
+    Symbol::Resolved(&all_Bool8x4)->returnTypeSymbol = &Bool8Type;
 
     /// transpose with Float32x2x2
     transpose_Float32x2x2_arg.name = "val"_c;
