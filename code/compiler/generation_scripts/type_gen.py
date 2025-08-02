@@ -931,11 +931,17 @@ def generate_types():
                         function_name = f'{type_name}_operator_{name}_{scale_type}'
                         arg_name = f'{function_name}_arg'
 
+                        if bit_width_mapping[type] != bit_width_mapping[scale_type]:
+                            continue
 
+                        if scale_type.startswith('Float'):
+                            scalar_result_type = f'{scale_type}x{size}'
+                        else:
+                            scalar_result_type = type_name
                         fun = Function(
                             decl_name=function_name,
                             api_name=f'operator{op}',
-                            return_type=type_name,
+                            return_type=scalar_result_type,
                             parameters=[Variable(decl_name=arg_name, api_name='arg', type_name=scale_type)],
                         )
                         member_functions.append(fun)
@@ -3346,7 +3352,7 @@ def generate_types():
         spirv_function = ''
         spirv_function += f'    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt({scope}));\n'
         spirv_function += f'    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt({semantics}));\n'
-        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpControlBarrier, SPVWriter::Section::LocalFunction, scopeId, scopeId, semanticsId);\n'
+        spirv_function += f'    g->writer->Instruction(OpControlBarrier, SPVWriter::Section::LocalFunction, scopeId, scopeId, semanticsId);\n'
         spirv_function += '    return SPIRVResult(0xFFFFFFFF, returnType);\n'
         spirv_code += spirv_intrinsic(function_name, spirv_function)
 
@@ -3395,7 +3401,7 @@ def generate_types():
         spirv_function = ''
         spirv_function += f'    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt({scope}));\n'
         spirv_function += f'    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt({semantics}));\n'
-        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, scopeId, semanticsId);\n'
+        spirv_function += f'    g->writer->Instruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, scopeId, semanticsId);\n'
         spirv_function += '    return SPIRVResult(0xFFFFFFFF, returnType);\n'
         spirv_code += spirv_intrinsic(function_name, spirv_function)
 
@@ -3649,10 +3655,11 @@ def generate_types():
                     spirv_function += '    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);\n'
 
             if hasStore:
+                spirv_function += '    uint32_t ret = 0xFFFFFFFF;\n'
                 if hasMip:
-                    spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageWrite, SPVWriter::Section::LocalFunction, returnType, texture, coord, value, ImageOperands::Lod, mip);\n'
+                    spirv_function += f'    g->writer->Instruction(OpImageWrite, SPVWriter::Section::LocalFunction, texture, coord, value, ImageOperands::Lod, mip);\n'
                 else:
-                    spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageWrite, SPVWriter::Section::LocalFunction, returnType, texture, coord, value);\n'
+                    spirv_function += f'    g->writer->Instruction(OpImageWrite, SPVWriter::Section::LocalFunction, texture, coord, value);\n'
             else:
                 if hasMip:
                     spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip);\n'

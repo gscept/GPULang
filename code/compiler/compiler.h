@@ -82,7 +82,9 @@ struct Compiler
 
         uint8_t validate : 1 = 0;
         uint8_t optimize : 1 = 0;
-        uint8_t symbols : 1 = 0;
+        uint8_t debugSymbols : 1 = 0;
+        
+        uint8_t languageServerGeneration : 1 = 0; // if true, compiler will run the backend generation even if it's running the validation only
 
         uint8_t defaultGroupBinding = 0;
 

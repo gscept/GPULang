@@ -3377,7 +3377,7 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
     uint32_t name = 0xFFFFFFFF;
     uint32_t structName = generator->writer->Reserve();
 
-    if (compiler->options.symbols)
+    if (compiler->options.debugSymbols)
         generator->writer->Instruction(OpName, SPVWriter::Section::DebugNames, SPVArg{ structName }, struc->name.c_str());
 
     TransientArray<SPVArg> memberTypeArray(struc->symbols.size);
@@ -3391,7 +3391,7 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
             Variable* var = static_cast<Variable*>(sym);
             Variable::__Resolved* varResolved = Symbol::Resolved(var);
 
-            if (compiler->options.symbols)
+            if (compiler->options.debugSymbols)
                 generator->writer->Instruction(OpMemberName, SPVWriter::Section::DebugNames, SPVArg{ structName }, i, var->name.c_str());
             
             SPIRVResult varType;
@@ -3495,7 +3495,7 @@ GenerateSamplerSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol
         };
         uint32_t name = AddSymbol(generator, sampler->name, SPVWriter::Section::Declarations, OpConstantSampler, samplerType.typeName, addressingTable[(uint32_t)samplerResolved->addressU], samplerResolved->unnormalizedSamplingEnabled ? 0 : 1, filterTable[(uint32_t)samplerResolved->magFilter]);
 
-        if (compiler->options.symbols)
+        if (compiler->options.debugSymbols)
             generator->writer->Instruction(OpName, SPVWriter::Section::DebugNames, SPVArg{ name }, sampler->name.c_str());
         
         return SPIRVResult(name, samplerType.typeName, true, true);
@@ -3506,7 +3506,7 @@ GenerateSamplerSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol
         uint32_t name = AddSymbol(generator, symbol->name, SPVWriter::Section::Declarations, OpVariable, samplerType, ScopeToEnum(samplerType.scope));
         generator->interfaceVariables.Insert(name);
 
-        if (compiler->options.symbols)
+        if (compiler->options.debugSymbols)
             generator->writer->Instruction(OpName, SPVWriter::Section::DebugNames, SPVArg{ name }, sampler->name.c_str());
 
         generator->writer->Decorate(SPVArg(name), Decorations::DescriptorSet, samplerResolved->group);
@@ -3648,13 +3648,13 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
             if (initializer.isConst && isGlobal)
             {
                 name = AddSymbol(generator, var->name, isGlobal ? SPVWriter::Section::Declarations : SPVWriter::Section::VariableDeclarations, OpVariable, typeName, ScopeToEnum(typeName.scope), SPVArg{ initializer.name });
-                if (compiler->options.symbols)
+                if (compiler->options.debugSymbols)
                     generator->writer->Instruction(OpName, SPVWriter::Section::DebugNames, SPVArg{ name }, var->name.c_str());
             }
             else
             {
                 name = AddSymbol(generator, var->name, isGlobal ? SPVWriter::Section::Declarations : SPVWriter::Section::VariableDeclarations, OpVariable, typeName, ScopeToEnum(typeName.scope));
-                if (compiler->options.symbols)
+                if (compiler->options.debugSymbols)
                     generator->writer->Instruction(OpName, SPVWriter::Section::DebugNames, SPVArg{ name }, var->name.c_str());
                 SPIRVResult loaded = LoadValueSPIRV(compiler, generator, initializer);
                 generator->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(name), loaded);
@@ -3663,7 +3663,7 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
         else
         {
             name = AddSymbol(generator, var->name, isGlobal ? SPVWriter::Section::Declarations : SPVWriter::Section::VariableDeclarations, OpVariable, typeName, ScopeToEnum(typeName.scope));
-            if (compiler->options.symbols)
+            if (compiler->options.debugSymbols)
                 generator->writer->Instruction(OpName, SPVWriter::Section::DebugNames, SPVArg{ name }, var->name.c_str());
         }
 
@@ -3733,7 +3733,7 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
         generator->writer->LinkDefinedVariable(var->name, initializer.name);
         generator->writer->Decorate(SPVArg(initializer.name), Decorations::SpecId, varResolved->binding);
 
-        if (compiler->options.symbols)
+        if (compiler->options.debugSymbols)
             generator->writer->Instruction(OpName, SPVWriter::Section::DebugNames, initializer, var->name.c_str());
 
         auto res = SPIRVResult(initializer.name, typeName.typeName);
@@ -3809,7 +3809,7 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
             argList.append(Format("%%%d ", arg.name));
         }
 
-        if (compiler->options.symbols)
+        if (compiler->options.debugSymbols)
         {
             uint32_t name = generator->writer->String(expr->location.file.c_str());
             generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
@@ -3907,7 +3907,7 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
             }
         }
 
-        if (compiler->options.symbols)
+        if (compiler->options.debugSymbols)
         {
             uint32_t name = generator->writer->String(expr->location.file.c_str());
             generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
@@ -3952,7 +3952,7 @@ GenerateArrayIndexExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gene
         indexConstant = LoadValueSPIRV(compiler, generator, indexConstant);
     // Evaluate the index which has to be a literal or constant value that evaluates at compile time
 
-    if (compiler->options.symbols)
+    if (compiler->options.debugSymbols)
     {
         uint32_t name = generator->writer->String(expr->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
@@ -4038,7 +4038,7 @@ GenerateInitializerExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gen
         argList.Append(SPVArg(value.name));
     }
     
-    if (compiler->options.symbols)
+    if (compiler->options.debugSymbols)
     {
         uint32_t name = generator->writer->String(expr->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
@@ -4093,7 +4093,7 @@ GenerateArrayInitializerExpressionSPIRV(const Compiler* compiler, SPIRVGenerator
         argList.Append(SPVArg(res.name));
     }
 
-    if (compiler->options.symbols)
+    if (compiler->options.debugSymbols)
     {
         uint32_t name = generator->writer->String(expr->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
@@ -4139,7 +4139,7 @@ GenerateBinaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
         return GenerateExpressionSPIRV(compiler, generator, binaryExpressionResolved->constValueExpression);
     rightValue = LoadValueSPIRV(compiler, generator, rightValue);
 
-    if (compiler->options.symbols)
+    if (compiler->options.debugSymbols)
     {
         uint32_t name = generator->writer->String(expr->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
@@ -4169,7 +4169,7 @@ GenerateBinaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
         auto it = generator->generatorIntrinsics.find(binaryExpressionResolved->leftConversion);
         if (it == generator->generatorIntrinsics.end())
         {
-            auto it = SPIRVDefaultIntrinsics.Find(binaryExpressionResolved->rightConversion);
+            auto it = SPIRVDefaultIntrinsics.Find(binaryExpressionResolved->leftConversion);
             assert(it != SPIRVDefaultIntrinsics.end());
             leftValue = it->second(compiler, generator, leftConvType.typeName, { leftValue });
         }
@@ -4272,7 +4272,7 @@ GenerateAccessExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
     SPIRVResult lhs = GenerateExpressionSPIRV(compiler, generator, accessExpression->left);
     Type::SwizzleMask swizzle = accessExpressionResolved->swizzleMask;
 
-    if (compiler->options.symbols)
+    if (compiler->options.debugSymbols)
     {
         uint32_t name = generator->writer->String(expr->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
@@ -4394,7 +4394,7 @@ GenerateTernaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generat
     SPIRVResult ifResult = GenerateExpressionSPIRV(compiler, generator, ternaryExpression->ifExpression);
     SPIRVResult elseResult = GenerateExpressionSPIRV(compiler, generator, ternaryExpression->elseExpression);
     
-    if (compiler->options.symbols)
+    if (compiler->options.debugSymbols)
     {
         uint32_t name = generator->writer->String(expr->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
@@ -4477,7 +4477,7 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
 
     SPIRVResult rhs = GenerateExpressionSPIRV(compiler, generator, unaryExpression->expr);
 
-    if (compiler->options.symbols)
+    if (compiler->options.debugSymbols)
     {
         uint32_t name = generator->writer->String(expr->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
@@ -4635,7 +4635,7 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
 SPIRVResult
 GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Expression* expr)
 {
-    if (compiler->options.symbols)
+    if (compiler->options.debugSymbols)
     {
         uint32_t name = generator->writer->String(expr->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
@@ -4901,7 +4901,7 @@ GenerateForStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, F
     else if (stat->unrollCount > 0)
         unroll = Format("PartialCount %d", stat->unrollCount);
 
-    if (compiler->options.symbols)
+    if (compiler->options.debugSymbols)
     {
         uint32_t name = generator->writer->String(stat->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.start);
@@ -4970,7 +4970,7 @@ GenerateIfStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, If
     uint32_t ifLabel = generator->writer->Reserve();
     uint32_t endLabel = generator->writer->Reserve();
 
-    if (compiler->options.symbols)
+    if (compiler->options.debugSymbols)
     {
         uint32_t name = generator->writer->String(stat->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.start);
@@ -5106,7 +5106,7 @@ GenerateSwitchStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator
         caseArgs.Append(val.ui[0]);
     }
 
-    if (compiler->options.symbols)
+    if (compiler->options.debugSymbols)
     {
         uint32_t name = generator->writer->String(stat->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.start);
@@ -5288,7 +5288,7 @@ GenerateWhileStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
 bool
 GenerateStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Statement* stat)
 {    
-    if (compiler->options.symbols)
+    if (compiler->options.debugSymbols)
     {
         uint32_t name = generator->writer->String(stat->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.start);
@@ -5580,7 +5580,7 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
             this->writer->Instruction(OpMemoryModel, SPVWriter::Section::Header, AddressingModels::PhysicalStorageBuffer64, MemoryModels::GLSL450);
         }
 
-        if (compiler->options.symbols)
+        if (compiler->options.debugSymbols)
         {
             TransientString path = compiler->path;
             std::replace(path.buf, path.buf + path.size, '\\', '/');
@@ -5745,7 +5745,7 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
         spvBinary.insert(spvBinary.end(), this->writer->binaries[(uint32_t)SPVWriter::Section::Extensions].begin(), this->writer->binaries[(uint32_t)SPVWriter::Section::Extensions].end());
         spvBinary.insert(spvBinary.end(), this->writer->binaries[(uint32_t)SPVWriter::Section::ExtImports].begin(), this->writer->binaries[(uint32_t)SPVWriter::Section::ExtImports].end());
         spvBinary.insert(spvBinary.end(), this->writer->binaries[(uint32_t)SPVWriter::Section::Header].begin(), this->writer->binaries[(uint32_t)SPVWriter::Section::Header].end());
-        if (compiler->options.symbols)
+        if (compiler->options.debugSymbols)
         {
             spvBinary.insert(spvBinary.end(), this->writer->binaries[(uint32_t)SPVWriter::Section::DebugStrings].begin(), this->writer->binaries[(uint32_t)SPVWriter::Section::DebugStrings].end());
             spvBinary.insert(spvBinary.end(), this->writer->binaries[(uint32_t)SPVWriter::Section::DebugNames].begin(), this->writer->binaries[(uint32_t)SPVWriter::Section::DebugNames].end());
@@ -5774,7 +5774,7 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
                 binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Extensions]);
                 binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::ExtImports]);
                 binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Header]);
-                if (compiler->options.symbols)
+                if (compiler->options.debugSymbols)
                 {
                     binary.Append("\n; Debug\n");
                     binary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::DebugStrings]);

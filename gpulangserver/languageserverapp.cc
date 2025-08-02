@@ -1399,6 +1399,12 @@ main(int argc, const char** argv)
                         context->options.disallowImplicitPromotion = true;
                     else if (flagStr == "profile")
                         context->options.emitTimings = true;
+                    else if (flagStr == "generateBackend")
+                    {
+                        context->options.languageServerGeneration = true;
+                        context->options.validate = true;
+                    }
+                        
                 }
             }
             else

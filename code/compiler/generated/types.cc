@@ -3357,30 +3357,15 @@ Variable Float32x2_operator_scale_Float32_arg;
 Function Float32x2_operator_scale_Float32;
 inline constexpr std::array Float32x2_operator_scale_Float32_args = { &Float32x2_operator_scale_Float32_arg };
 
-/// operator* with Float16
-Variable Float32x2_operator_scale_Float16_arg;
-Function Float32x2_operator_scale_Float16;
-inline constexpr std::array Float32x2_operator_scale_Float16_args = { &Float32x2_operator_scale_Float16_arg };
-
 /// operator* with UInt32
 Variable Float32x2_operator_scale_UInt32_arg;
 Function Float32x2_operator_scale_UInt32;
 inline constexpr std::array Float32x2_operator_scale_UInt32_args = { &Float32x2_operator_scale_UInt32_arg };
 
-/// operator* with UInt16
-Variable Float32x2_operator_scale_UInt16_arg;
-Function Float32x2_operator_scale_UInt16;
-inline constexpr std::array Float32x2_operator_scale_UInt16_args = { &Float32x2_operator_scale_UInt16_arg };
-
 /// operator* with Int32
 Variable Float32x2_operator_scale_Int32_arg;
 Function Float32x2_operator_scale_Int32;
 inline constexpr std::array Float32x2_operator_scale_Int32_args = { &Float32x2_operator_scale_Int32_arg };
-
-/// operator* with Int16
-Variable Float32x2_operator_scale_Int16_arg;
-Function Float32x2_operator_scale_Int16;
-inline constexpr std::array Float32x2_operator_scale_Int16_args = { &Float32x2_operator_scale_Int16_arg };
 
 /// operator* with Float32x2x2
 Variable Float32x2_operator_transform_Float32x2x2_arg;
@@ -3647,18 +3632,6 @@ Float32x2::Float32x2()
     Symbol::Resolved(&Float32x2_operator_scale_Float32)->nameWithVarNames = "operator*(arg : f32)"_c;
     Symbol::Resolved(&Float32x2_operator_scale_Float32)->returnTypeSymbol = &Float32x2Type;
 
-    /// operator* with Float16
-    Float32x2_operator_scale_Float16_arg.name = "arg"_c;
-    Float32x2_operator_scale_Float16_arg.type = Type::FullType{ Float16Type.name };
-    Float32x2_operator_scale_Float16.name = "operator*"_c;
-    Float32x2_operator_scale_Float16.returnType = Type::FullType { Float32x2Type.name };
-    Float32x2_operator_scale_Float16.parameters = Float32x2_operator_scale_Float16_args;
-    Symbol::Resolved(&Float32x2_operator_scale_Float16_arg)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Float32x2_operator_scale_Float16)->signature = "f32x2 operator*(f16)"_c;
-    Symbol::Resolved(&Float32x2_operator_scale_Float16)->name = "operator*(f16)"_c;
-    Symbol::Resolved(&Float32x2_operator_scale_Float16)->nameWithVarNames = "operator*(arg : f16)"_c;
-    Symbol::Resolved(&Float32x2_operator_scale_Float16)->returnTypeSymbol = &Float32x2Type;
-
     /// operator* with UInt32
     Float32x2_operator_scale_UInt32_arg.name = "arg"_c;
     Float32x2_operator_scale_UInt32_arg.type = Type::FullType{ UInt32Type.name };
@@ -3671,18 +3644,6 @@ Float32x2::Float32x2()
     Symbol::Resolved(&Float32x2_operator_scale_UInt32)->nameWithVarNames = "operator*(arg : u32)"_c;
     Symbol::Resolved(&Float32x2_operator_scale_UInt32)->returnTypeSymbol = &Float32x2Type;
 
-    /// operator* with UInt16
-    Float32x2_operator_scale_UInt16_arg.name = "arg"_c;
-    Float32x2_operator_scale_UInt16_arg.type = Type::FullType{ UInt16Type.name };
-    Float32x2_operator_scale_UInt16.name = "operator*"_c;
-    Float32x2_operator_scale_UInt16.returnType = Type::FullType { Float32x2Type.name };
-    Float32x2_operator_scale_UInt16.parameters = Float32x2_operator_scale_UInt16_args;
-    Symbol::Resolved(&Float32x2_operator_scale_UInt16_arg)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float32x2_operator_scale_UInt16)->signature = "f32x2 operator*(u16)"_c;
-    Symbol::Resolved(&Float32x2_operator_scale_UInt16)->name = "operator*(u16)"_c;
-    Symbol::Resolved(&Float32x2_operator_scale_UInt16)->nameWithVarNames = "operator*(arg : u16)"_c;
-    Symbol::Resolved(&Float32x2_operator_scale_UInt16)->returnTypeSymbol = &Float32x2Type;
-
     /// operator* with Int32
     Float32x2_operator_scale_Int32_arg.name = "arg"_c;
     Float32x2_operator_scale_Int32_arg.type = Type::FullType{ Int32Type.name };
@@ -3694,18 +3655,6 @@ Float32x2::Float32x2()
     Symbol::Resolved(&Float32x2_operator_scale_Int32)->name = "operator*(i32)"_c;
     Symbol::Resolved(&Float32x2_operator_scale_Int32)->nameWithVarNames = "operator*(arg : i32)"_c;
     Symbol::Resolved(&Float32x2_operator_scale_Int32)->returnTypeSymbol = &Float32x2Type;
-
-    /// operator* with Int16
-    Float32x2_operator_scale_Int16_arg.name = "arg"_c;
-    Float32x2_operator_scale_Int16_arg.type = Type::FullType{ Int16Type.name };
-    Float32x2_operator_scale_Int16.name = "operator*"_c;
-    Float32x2_operator_scale_Int16.returnType = Type::FullType { Float32x2Type.name };
-    Float32x2_operator_scale_Int16.parameters = Float32x2_operator_scale_Int16_args;
-    Symbol::Resolved(&Float32x2_operator_scale_Int16_arg)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float32x2_operator_scale_Int16)->signature = "f32x2 operator*(i16)"_c;
-    Symbol::Resolved(&Float32x2_operator_scale_Int16)->name = "operator*(i16)"_c;
-    Symbol::Resolved(&Float32x2_operator_scale_Int16)->nameWithVarNames = "operator*(arg : i16)"_c;
-    Symbol::Resolved(&Float32x2_operator_scale_Int16)->returnTypeSymbol = &Float32x2Type;
 
     /// operator* with Float32x2x2
     Float32x2_operator_transform_Float32x2x2_arg.name = "arg"_c;
@@ -3743,7 +3692,7 @@ Float32x2::Float32x2()
     Symbol::Resolved(&Float32x2_operator_transform_Float32x2x4)->nameWithVarNames = "operator*(arg : f32x2x4)"_c;
     Symbol::Resolved(&Float32x2_operator_transform_Float32x2x4)->returnTypeSymbol = &Float32x4Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 116> { 
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 110> { 
         std::pair{ "g"_c, &Float32Type },
         std::pair{ "gg"_c, &Float32x2Type },
         std::pair{ "ggg"_c, &Float32x3Type },
@@ -3765,23 +3714,17 @@ Float32x2::Float32x2()
         std::pair{ "operator%(f32x2)"_c, &Float32x2_operator_mod_Float32x2 },
         std::pair{ "operator*"_c, &Float32x2_operator_mul_Float32x2 },
         std::pair{ "operator*"_c, &Float32x2_operator_scale_Float32 },
-        std::pair{ "operator*"_c, &Float32x2_operator_scale_Float16 },
         std::pair{ "operator*"_c, &Float32x2_operator_scale_UInt32 },
-        std::pair{ "operator*"_c, &Float32x2_operator_scale_UInt16 },
         std::pair{ "operator*"_c, &Float32x2_operator_scale_Int32 },
-        std::pair{ "operator*"_c, &Float32x2_operator_scale_Int16 },
         std::pair{ "operator*"_c, &Float32x2_operator_transform_Float32x2x2 },
         std::pair{ "operator*"_c, &Float32x2_operator_transform_Float32x2x3 },
         std::pair{ "operator*"_c, &Float32x2_operator_transform_Float32x2x4 },
-        std::pair{ "operator*(f16)"_c, &Float32x2_operator_scale_Float16 },
         std::pair{ "operator*(f32)"_c, &Float32x2_operator_scale_Float32 },
         std::pair{ "operator*(f32x2)"_c, &Float32x2_operator_mul_Float32x2 },
         std::pair{ "operator*(f32x2x2)"_c, &Float32x2_operator_transform_Float32x2x2 },
         std::pair{ "operator*(f32x2x3)"_c, &Float32x2_operator_transform_Float32x2x3 },
         std::pair{ "operator*(f32x2x4)"_c, &Float32x2_operator_transform_Float32x2x4 },
-        std::pair{ "operator*(i16)"_c, &Float32x2_operator_scale_Int16 },
         std::pair{ "operator*(i32)"_c, &Float32x2_operator_scale_Int32 },
-        std::pair{ "operator*(u16)"_c, &Float32x2_operator_scale_UInt16 },
         std::pair{ "operator*(u32)"_c, &Float32x2_operator_scale_UInt32 },
         std::pair{ "operator*="_c, &Float32x2_operator_mulasg_Float32x2 },
         std::pair{ "operator*=(f32x2)"_c, &Float32x2_operator_mulasg_Float32x2 },
@@ -3964,30 +3907,15 @@ Variable UInt32x2_operator_scale_Float32_arg;
 Function UInt32x2_operator_scale_Float32;
 inline constexpr std::array UInt32x2_operator_scale_Float32_args = { &UInt32x2_operator_scale_Float32_arg };
 
-/// operator* with Float16
-Variable UInt32x2_operator_scale_Float16_arg;
-Function UInt32x2_operator_scale_Float16;
-inline constexpr std::array UInt32x2_operator_scale_Float16_args = { &UInt32x2_operator_scale_Float16_arg };
-
 /// operator* with UInt32
 Variable UInt32x2_operator_scale_UInt32_arg;
 Function UInt32x2_operator_scale_UInt32;
 inline constexpr std::array UInt32x2_operator_scale_UInt32_args = { &UInt32x2_operator_scale_UInt32_arg };
 
-/// operator* with UInt16
-Variable UInt32x2_operator_scale_UInt16_arg;
-Function UInt32x2_operator_scale_UInt16;
-inline constexpr std::array UInt32x2_operator_scale_UInt16_args = { &UInt32x2_operator_scale_UInt16_arg };
-
 /// operator* with Int32
 Variable UInt32x2_operator_scale_Int32_arg;
 Function UInt32x2_operator_scale_Int32;
 inline constexpr std::array UInt32x2_operator_scale_Int32_args = { &UInt32x2_operator_scale_Int32_arg };
-
-/// operator* with Int16
-Variable UInt32x2_operator_scale_Int16_arg;
-Function UInt32x2_operator_scale_Int16;
-inline constexpr std::array UInt32x2_operator_scale_Int16_args = { &UInt32x2_operator_scale_Int16_arg };
 
 /// operator| with UInt32x2
 Variable UInt32x2_operator_or_UInt32x2_arg;
@@ -4281,25 +4209,13 @@ UInt32x2::UInt32x2()
     UInt32x2_operator_scale_Float32_arg.name = "arg"_c;
     UInt32x2_operator_scale_Float32_arg.type = Type::FullType{ Float32Type.name };
     UInt32x2_operator_scale_Float32.name = "operator*"_c;
-    UInt32x2_operator_scale_Float32.returnType = Type::FullType { UInt32x2Type.name };
+    UInt32x2_operator_scale_Float32.returnType = Type::FullType { Float32x2Type.name };
     UInt32x2_operator_scale_Float32.parameters = UInt32x2_operator_scale_Float32_args;
     Symbol::Resolved(&UInt32x2_operator_scale_Float32_arg)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&UInt32x2_operator_scale_Float32)->signature = "u32x2 operator*(f32)"_c;
+    Symbol::Resolved(&UInt32x2_operator_scale_Float32)->signature = "f32x2 operator*(f32)"_c;
     Symbol::Resolved(&UInt32x2_operator_scale_Float32)->name = "operator*(f32)"_c;
     Symbol::Resolved(&UInt32x2_operator_scale_Float32)->nameWithVarNames = "operator*(arg : f32)"_c;
-    Symbol::Resolved(&UInt32x2_operator_scale_Float32)->returnTypeSymbol = &UInt32x2Type;
-
-    /// operator* with Float16
-    UInt32x2_operator_scale_Float16_arg.name = "arg"_c;
-    UInt32x2_operator_scale_Float16_arg.type = Type::FullType{ Float16Type.name };
-    UInt32x2_operator_scale_Float16.name = "operator*"_c;
-    UInt32x2_operator_scale_Float16.returnType = Type::FullType { UInt32x2Type.name };
-    UInt32x2_operator_scale_Float16.parameters = UInt32x2_operator_scale_Float16_args;
-    Symbol::Resolved(&UInt32x2_operator_scale_Float16_arg)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&UInt32x2_operator_scale_Float16)->signature = "u32x2 operator*(f16)"_c;
-    Symbol::Resolved(&UInt32x2_operator_scale_Float16)->name = "operator*(f16)"_c;
-    Symbol::Resolved(&UInt32x2_operator_scale_Float16)->nameWithVarNames = "operator*(arg : f16)"_c;
-    Symbol::Resolved(&UInt32x2_operator_scale_Float16)->returnTypeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&UInt32x2_operator_scale_Float32)->returnTypeSymbol = &Float32x2Type;
 
     /// operator* with UInt32
     UInt32x2_operator_scale_UInt32_arg.name = "arg"_c;
@@ -4313,18 +4229,6 @@ UInt32x2::UInt32x2()
     Symbol::Resolved(&UInt32x2_operator_scale_UInt32)->nameWithVarNames = "operator*(arg : u32)"_c;
     Symbol::Resolved(&UInt32x2_operator_scale_UInt32)->returnTypeSymbol = &UInt32x2Type;
 
-    /// operator* with UInt16
-    UInt32x2_operator_scale_UInt16_arg.name = "arg"_c;
-    UInt32x2_operator_scale_UInt16_arg.type = Type::FullType{ UInt16Type.name };
-    UInt32x2_operator_scale_UInt16.name = "operator*"_c;
-    UInt32x2_operator_scale_UInt16.returnType = Type::FullType { UInt32x2Type.name };
-    UInt32x2_operator_scale_UInt16.parameters = UInt32x2_operator_scale_UInt16_args;
-    Symbol::Resolved(&UInt32x2_operator_scale_UInt16_arg)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&UInt32x2_operator_scale_UInt16)->signature = "u32x2 operator*(u16)"_c;
-    Symbol::Resolved(&UInt32x2_operator_scale_UInt16)->name = "operator*(u16)"_c;
-    Symbol::Resolved(&UInt32x2_operator_scale_UInt16)->nameWithVarNames = "operator*(arg : u16)"_c;
-    Symbol::Resolved(&UInt32x2_operator_scale_UInt16)->returnTypeSymbol = &UInt32x2Type;
-
     /// operator* with Int32
     UInt32x2_operator_scale_Int32_arg.name = "arg"_c;
     UInt32x2_operator_scale_Int32_arg.type = Type::FullType{ Int32Type.name };
@@ -4336,18 +4240,6 @@ UInt32x2::UInt32x2()
     Symbol::Resolved(&UInt32x2_operator_scale_Int32)->name = "operator*(i32)"_c;
     Symbol::Resolved(&UInt32x2_operator_scale_Int32)->nameWithVarNames = "operator*(arg : i32)"_c;
     Symbol::Resolved(&UInt32x2_operator_scale_Int32)->returnTypeSymbol = &UInt32x2Type;
-
-    /// operator* with Int16
-    UInt32x2_operator_scale_Int16_arg.name = "arg"_c;
-    UInt32x2_operator_scale_Int16_arg.type = Type::FullType{ Int16Type.name };
-    UInt32x2_operator_scale_Int16.name = "operator*"_c;
-    UInt32x2_operator_scale_Int16.returnType = Type::FullType { UInt32x2Type.name };
-    UInt32x2_operator_scale_Int16.parameters = UInt32x2_operator_scale_Int16_args;
-    Symbol::Resolved(&UInt32x2_operator_scale_Int16_arg)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&UInt32x2_operator_scale_Int16)->signature = "u32x2 operator*(i16)"_c;
-    Symbol::Resolved(&UInt32x2_operator_scale_Int16)->name = "operator*(i16)"_c;
-    Symbol::Resolved(&UInt32x2_operator_scale_Int16)->nameWithVarNames = "operator*(arg : i16)"_c;
-    Symbol::Resolved(&UInt32x2_operator_scale_Int16)->returnTypeSymbol = &UInt32x2Type;
 
     /// operator| with UInt32x2
     UInt32x2_operator_or_UInt32x2_arg.name = "arg"_c;
@@ -4469,7 +4361,7 @@ UInt32x2::UInt32x2()
     Symbol::Resolved(&UInt32x2_operator_rhsasg_UInt32x2)->nameWithVarNames = "operator>>=(arg : u32x2)"_c;
     Symbol::Resolved(&UInt32x2_operator_rhsasg_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 130> { 
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 124> { 
         std::pair{ "g"_c, &UInt32Type },
         std::pair{ "gg"_c, &UInt32x2Type },
         std::pair{ "ggg"_c, &UInt32x3Type },
@@ -4495,16 +4387,10 @@ UInt32x2::UInt32x2()
         std::pair{ "operator&=(u32x2)"_c, &UInt32x2_operator_andasg_UInt32x2 },
         std::pair{ "operator*"_c, &UInt32x2_operator_mul_UInt32x2 },
         std::pair{ "operator*"_c, &UInt32x2_operator_scale_Float32 },
-        std::pair{ "operator*"_c, &UInt32x2_operator_scale_Float16 },
         std::pair{ "operator*"_c, &UInt32x2_operator_scale_UInt32 },
-        std::pair{ "operator*"_c, &UInt32x2_operator_scale_UInt16 },
         std::pair{ "operator*"_c, &UInt32x2_operator_scale_Int32 },
-        std::pair{ "operator*"_c, &UInt32x2_operator_scale_Int16 },
-        std::pair{ "operator*(f16)"_c, &UInt32x2_operator_scale_Float16 },
         std::pair{ "operator*(f32)"_c, &UInt32x2_operator_scale_Float32 },
-        std::pair{ "operator*(i16)"_c, &UInt32x2_operator_scale_Int16 },
         std::pair{ "operator*(i32)"_c, &UInt32x2_operator_scale_Int32 },
-        std::pair{ "operator*(u16)"_c, &UInt32x2_operator_scale_UInt16 },
         std::pair{ "operator*(u32)"_c, &UInt32x2_operator_scale_UInt32 },
         std::pair{ "operator*(u32x2)"_c, &UInt32x2_operator_mul_UInt32x2 },
         std::pair{ "operator*="_c, &UInt32x2_operator_mulasg_UInt32x2 },
@@ -4704,30 +4590,15 @@ Variable Int32x2_operator_scale_Float32_arg;
 Function Int32x2_operator_scale_Float32;
 inline constexpr std::array Int32x2_operator_scale_Float32_args = { &Int32x2_operator_scale_Float32_arg };
 
-/// operator* with Float16
-Variable Int32x2_operator_scale_Float16_arg;
-Function Int32x2_operator_scale_Float16;
-inline constexpr std::array Int32x2_operator_scale_Float16_args = { &Int32x2_operator_scale_Float16_arg };
-
 /// operator* with UInt32
 Variable Int32x2_operator_scale_UInt32_arg;
 Function Int32x2_operator_scale_UInt32;
 inline constexpr std::array Int32x2_operator_scale_UInt32_args = { &Int32x2_operator_scale_UInt32_arg };
 
-/// operator* with UInt16
-Variable Int32x2_operator_scale_UInt16_arg;
-Function Int32x2_operator_scale_UInt16;
-inline constexpr std::array Int32x2_operator_scale_UInt16_args = { &Int32x2_operator_scale_UInt16_arg };
-
 /// operator* with Int32
 Variable Int32x2_operator_scale_Int32_arg;
 Function Int32x2_operator_scale_Int32;
 inline constexpr std::array Int32x2_operator_scale_Int32_args = { &Int32x2_operator_scale_Int32_arg };
-
-/// operator* with Int16
-Variable Int32x2_operator_scale_Int16_arg;
-Function Int32x2_operator_scale_Int16;
-inline constexpr std::array Int32x2_operator_scale_Int16_args = { &Int32x2_operator_scale_Int16_arg };
 
 /// operator| with Int32x2
 Variable Int32x2_operator_or_Int32x2_arg;
@@ -5021,25 +4892,13 @@ Int32x2::Int32x2()
     Int32x2_operator_scale_Float32_arg.name = "arg"_c;
     Int32x2_operator_scale_Float32_arg.type = Type::FullType{ Float32Type.name };
     Int32x2_operator_scale_Float32.name = "operator*"_c;
-    Int32x2_operator_scale_Float32.returnType = Type::FullType { Int32x2Type.name };
+    Int32x2_operator_scale_Float32.returnType = Type::FullType { Float32x2Type.name };
     Int32x2_operator_scale_Float32.parameters = Int32x2_operator_scale_Float32_args;
     Symbol::Resolved(&Int32x2_operator_scale_Float32_arg)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Int32x2_operator_scale_Float32)->signature = "i32x2 operator*(f32)"_c;
+    Symbol::Resolved(&Int32x2_operator_scale_Float32)->signature = "f32x2 operator*(f32)"_c;
     Symbol::Resolved(&Int32x2_operator_scale_Float32)->name = "operator*(f32)"_c;
     Symbol::Resolved(&Int32x2_operator_scale_Float32)->nameWithVarNames = "operator*(arg : f32)"_c;
-    Symbol::Resolved(&Int32x2_operator_scale_Float32)->returnTypeSymbol = &Int32x2Type;
-
-    /// operator* with Float16
-    Int32x2_operator_scale_Float16_arg.name = "arg"_c;
-    Int32x2_operator_scale_Float16_arg.type = Type::FullType{ Float16Type.name };
-    Int32x2_operator_scale_Float16.name = "operator*"_c;
-    Int32x2_operator_scale_Float16.returnType = Type::FullType { Int32x2Type.name };
-    Int32x2_operator_scale_Float16.parameters = Int32x2_operator_scale_Float16_args;
-    Symbol::Resolved(&Int32x2_operator_scale_Float16_arg)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Int32x2_operator_scale_Float16)->signature = "i32x2 operator*(f16)"_c;
-    Symbol::Resolved(&Int32x2_operator_scale_Float16)->name = "operator*(f16)"_c;
-    Symbol::Resolved(&Int32x2_operator_scale_Float16)->nameWithVarNames = "operator*(arg : f16)"_c;
-    Symbol::Resolved(&Int32x2_operator_scale_Float16)->returnTypeSymbol = &Int32x2Type;
+    Symbol::Resolved(&Int32x2_operator_scale_Float32)->returnTypeSymbol = &Float32x2Type;
 
     /// operator* with UInt32
     Int32x2_operator_scale_UInt32_arg.name = "arg"_c;
@@ -5053,18 +4912,6 @@ Int32x2::Int32x2()
     Symbol::Resolved(&Int32x2_operator_scale_UInt32)->nameWithVarNames = "operator*(arg : u32)"_c;
     Symbol::Resolved(&Int32x2_operator_scale_UInt32)->returnTypeSymbol = &Int32x2Type;
 
-    /// operator* with UInt16
-    Int32x2_operator_scale_UInt16_arg.name = "arg"_c;
-    Int32x2_operator_scale_UInt16_arg.type = Type::FullType{ UInt16Type.name };
-    Int32x2_operator_scale_UInt16.name = "operator*"_c;
-    Int32x2_operator_scale_UInt16.returnType = Type::FullType { Int32x2Type.name };
-    Int32x2_operator_scale_UInt16.parameters = Int32x2_operator_scale_UInt16_args;
-    Symbol::Resolved(&Int32x2_operator_scale_UInt16_arg)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Int32x2_operator_scale_UInt16)->signature = "i32x2 operator*(u16)"_c;
-    Symbol::Resolved(&Int32x2_operator_scale_UInt16)->name = "operator*(u16)"_c;
-    Symbol::Resolved(&Int32x2_operator_scale_UInt16)->nameWithVarNames = "operator*(arg : u16)"_c;
-    Symbol::Resolved(&Int32x2_operator_scale_UInt16)->returnTypeSymbol = &Int32x2Type;
-
     /// operator* with Int32
     Int32x2_operator_scale_Int32_arg.name = "arg"_c;
     Int32x2_operator_scale_Int32_arg.type = Type::FullType{ Int32Type.name };
@@ -5076,18 +4923,6 @@ Int32x2::Int32x2()
     Symbol::Resolved(&Int32x2_operator_scale_Int32)->name = "operator*(i32)"_c;
     Symbol::Resolved(&Int32x2_operator_scale_Int32)->nameWithVarNames = "operator*(arg : i32)"_c;
     Symbol::Resolved(&Int32x2_operator_scale_Int32)->returnTypeSymbol = &Int32x2Type;
-
-    /// operator* with Int16
-    Int32x2_operator_scale_Int16_arg.name = "arg"_c;
-    Int32x2_operator_scale_Int16_arg.type = Type::FullType{ Int16Type.name };
-    Int32x2_operator_scale_Int16.name = "operator*"_c;
-    Int32x2_operator_scale_Int16.returnType = Type::FullType { Int32x2Type.name };
-    Int32x2_operator_scale_Int16.parameters = Int32x2_operator_scale_Int16_args;
-    Symbol::Resolved(&Int32x2_operator_scale_Int16_arg)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Int32x2_operator_scale_Int16)->signature = "i32x2 operator*(i16)"_c;
-    Symbol::Resolved(&Int32x2_operator_scale_Int16)->name = "operator*(i16)"_c;
-    Symbol::Resolved(&Int32x2_operator_scale_Int16)->nameWithVarNames = "operator*(arg : i16)"_c;
-    Symbol::Resolved(&Int32x2_operator_scale_Int16)->returnTypeSymbol = &Int32x2Type;
 
     /// operator| with Int32x2
     Int32x2_operator_or_Int32x2_arg.name = "arg"_c;
@@ -5209,7 +5044,7 @@ Int32x2::Int32x2()
     Symbol::Resolved(&Int32x2_operator_rhsasg_Int32x2)->nameWithVarNames = "operator>>=(arg : i32x2)"_c;
     Symbol::Resolved(&Int32x2_operator_rhsasg_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 130> { 
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 124> { 
         std::pair{ "g"_c, &Int32Type },
         std::pair{ "gg"_c, &Int32x2Type },
         std::pair{ "ggg"_c, &Int32x3Type },
@@ -5235,17 +5070,11 @@ Int32x2::Int32x2()
         std::pair{ "operator&=(i32x2)"_c, &Int32x2_operator_andasg_Int32x2 },
         std::pair{ "operator*"_c, &Int32x2_operator_mul_Int32x2 },
         std::pair{ "operator*"_c, &Int32x2_operator_scale_Float32 },
-        std::pair{ "operator*"_c, &Int32x2_operator_scale_Float16 },
         std::pair{ "operator*"_c, &Int32x2_operator_scale_UInt32 },
-        std::pair{ "operator*"_c, &Int32x2_operator_scale_UInt16 },
         std::pair{ "operator*"_c, &Int32x2_operator_scale_Int32 },
-        std::pair{ "operator*"_c, &Int32x2_operator_scale_Int16 },
-        std::pair{ "operator*(f16)"_c, &Int32x2_operator_scale_Float16 },
         std::pair{ "operator*(f32)"_c, &Int32x2_operator_scale_Float32 },
-        std::pair{ "operator*(i16)"_c, &Int32x2_operator_scale_Int16 },
         std::pair{ "operator*(i32)"_c, &Int32x2_operator_scale_Int32 },
         std::pair{ "operator*(i32x2)"_c, &Int32x2_operator_mul_Int32x2 },
-        std::pair{ "operator*(u16)"_c, &Int32x2_operator_scale_UInt16 },
         std::pair{ "operator*(u32)"_c, &Int32x2_operator_scale_UInt32 },
         std::pair{ "operator*="_c, &Int32x2_operator_mulasg_Int32x2 },
         std::pair{ "operator*=(i32x2)"_c, &Int32x2_operator_mulasg_Int32x2 },
@@ -5666,30 +5495,15 @@ Variable Float16x2_operator_neq_Float16x2_arg;
 Function Float16x2_operator_neq_Float16x2;
 inline constexpr std::array Float16x2_operator_neq_Float16x2_args = { &Float16x2_operator_neq_Float16x2_arg };
 
-/// operator* with Float32
-Variable Float16x2_operator_scale_Float32_arg;
-Function Float16x2_operator_scale_Float32;
-inline constexpr std::array Float16x2_operator_scale_Float32_args = { &Float16x2_operator_scale_Float32_arg };
-
 /// operator* with Float16
 Variable Float16x2_operator_scale_Float16_arg;
 Function Float16x2_operator_scale_Float16;
 inline constexpr std::array Float16x2_operator_scale_Float16_args = { &Float16x2_operator_scale_Float16_arg };
 
-/// operator* with UInt32
-Variable Float16x2_operator_scale_UInt32_arg;
-Function Float16x2_operator_scale_UInt32;
-inline constexpr std::array Float16x2_operator_scale_UInt32_args = { &Float16x2_operator_scale_UInt32_arg };
-
 /// operator* with UInt16
 Variable Float16x2_operator_scale_UInt16_arg;
 Function Float16x2_operator_scale_UInt16;
 inline constexpr std::array Float16x2_operator_scale_UInt16_args = { &Float16x2_operator_scale_UInt16_arg };
-
-/// operator* with Int32
-Variable Float16x2_operator_scale_Int32_arg;
-Function Float16x2_operator_scale_Int32;
-inline constexpr std::array Float16x2_operator_scale_Int32_args = { &Float16x2_operator_scale_Int32_arg };
 
 /// operator* with Int16
 Variable Float16x2_operator_scale_Int16_arg;
@@ -5949,18 +5763,6 @@ Float16x2::Float16x2()
     Symbol::Resolved(&Float16x2_operator_neq_Float16x2)->nameWithVarNames = "operator!=(arg : f16x2)"_c;
     Symbol::Resolved(&Float16x2_operator_neq_Float16x2)->returnTypeSymbol = &Bool8x2Type;
 
-    /// operator* with Float32
-    Float16x2_operator_scale_Float32_arg.name = "arg"_c;
-    Float16x2_operator_scale_Float32_arg.type = Type::FullType{ Float32Type.name };
-    Float16x2_operator_scale_Float32.name = "operator*"_c;
-    Float16x2_operator_scale_Float32.returnType = Type::FullType { Float16x2Type.name };
-    Float16x2_operator_scale_Float32.parameters = Float16x2_operator_scale_Float32_args;
-    Symbol::Resolved(&Float16x2_operator_scale_Float32_arg)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Float16x2_operator_scale_Float32)->signature = "f16x2 operator*(f32)"_c;
-    Symbol::Resolved(&Float16x2_operator_scale_Float32)->name = "operator*(f32)"_c;
-    Symbol::Resolved(&Float16x2_operator_scale_Float32)->nameWithVarNames = "operator*(arg : f32)"_c;
-    Symbol::Resolved(&Float16x2_operator_scale_Float32)->returnTypeSymbol = &Float16x2Type;
-
     /// operator* with Float16
     Float16x2_operator_scale_Float16_arg.name = "arg"_c;
     Float16x2_operator_scale_Float16_arg.type = Type::FullType{ Float16Type.name };
@@ -5973,18 +5775,6 @@ Float16x2::Float16x2()
     Symbol::Resolved(&Float16x2_operator_scale_Float16)->nameWithVarNames = "operator*(arg : f16)"_c;
     Symbol::Resolved(&Float16x2_operator_scale_Float16)->returnTypeSymbol = &Float16x2Type;
 
-    /// operator* with UInt32
-    Float16x2_operator_scale_UInt32_arg.name = "arg"_c;
-    Float16x2_operator_scale_UInt32_arg.type = Type::FullType{ UInt32Type.name };
-    Float16x2_operator_scale_UInt32.name = "operator*"_c;
-    Float16x2_operator_scale_UInt32.returnType = Type::FullType { Float16x2Type.name };
-    Float16x2_operator_scale_UInt32.parameters = Float16x2_operator_scale_UInt32_args;
-    Symbol::Resolved(&Float16x2_operator_scale_UInt32_arg)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float16x2_operator_scale_UInt32)->signature = "f16x2 operator*(u32)"_c;
-    Symbol::Resolved(&Float16x2_operator_scale_UInt32)->name = "operator*(u32)"_c;
-    Symbol::Resolved(&Float16x2_operator_scale_UInt32)->nameWithVarNames = "operator*(arg : u32)"_c;
-    Symbol::Resolved(&Float16x2_operator_scale_UInt32)->returnTypeSymbol = &Float16x2Type;
-
     /// operator* with UInt16
     Float16x2_operator_scale_UInt16_arg.name = "arg"_c;
     Float16x2_operator_scale_UInt16_arg.type = Type::FullType{ UInt16Type.name };
@@ -5996,18 +5786,6 @@ Float16x2::Float16x2()
     Symbol::Resolved(&Float16x2_operator_scale_UInt16)->name = "operator*(u16)"_c;
     Symbol::Resolved(&Float16x2_operator_scale_UInt16)->nameWithVarNames = "operator*(arg : u16)"_c;
     Symbol::Resolved(&Float16x2_operator_scale_UInt16)->returnTypeSymbol = &Float16x2Type;
-
-    /// operator* with Int32
-    Float16x2_operator_scale_Int32_arg.name = "arg"_c;
-    Float16x2_operator_scale_Int32_arg.type = Type::FullType{ Int32Type.name };
-    Float16x2_operator_scale_Int32.name = "operator*"_c;
-    Float16x2_operator_scale_Int32.returnType = Type::FullType { Float16x2Type.name };
-    Float16x2_operator_scale_Int32.parameters = Float16x2_operator_scale_Int32_args;
-    Symbol::Resolved(&Float16x2_operator_scale_Int32_arg)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float16x2_operator_scale_Int32)->signature = "f16x2 operator*(i32)"_c;
-    Symbol::Resolved(&Float16x2_operator_scale_Int32)->name = "operator*(i32)"_c;
-    Symbol::Resolved(&Float16x2_operator_scale_Int32)->nameWithVarNames = "operator*(arg : i32)"_c;
-    Symbol::Resolved(&Float16x2_operator_scale_Int32)->returnTypeSymbol = &Float16x2Type;
 
     /// operator* with Int16
     Float16x2_operator_scale_Int16_arg.name = "arg"_c;
@@ -6057,7 +5835,7 @@ Float16x2::Float16x2()
     Symbol::Resolved(&Float16x2_operator_transform_Float32x2x4)->nameWithVarNames = "operator*(arg : f32x2x4)"_c;
     Symbol::Resolved(&Float16x2_operator_transform_Float32x2x4)->returnTypeSymbol = &Float16x4Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 116> { 
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 110> { 
         std::pair{ "g"_c, &Float16Type },
         std::pair{ "gg"_c, &Float16x2Type },
         std::pair{ "ggg"_c, &Float16x3Type },
@@ -6078,25 +5856,19 @@ Float16x2::Float16x2()
         std::pair{ "operator%"_c, &Float16x2_operator_mod_Float16x2 },
         std::pair{ "operator%(f16x2)"_c, &Float16x2_operator_mod_Float16x2 },
         std::pair{ "operator*"_c, &Float16x2_operator_mul_Float16x2 },
-        std::pair{ "operator*"_c, &Float16x2_operator_scale_Float32 },
         std::pair{ "operator*"_c, &Float16x2_operator_scale_Float16 },
-        std::pair{ "operator*"_c, &Float16x2_operator_scale_UInt32 },
         std::pair{ "operator*"_c, &Float16x2_operator_scale_UInt16 },
-        std::pair{ "operator*"_c, &Float16x2_operator_scale_Int32 },
         std::pair{ "operator*"_c, &Float16x2_operator_scale_Int16 },
         std::pair{ "operator*"_c, &Float16x2_operator_transform_Float32x2x2 },
         std::pair{ "operator*"_c, &Float16x2_operator_transform_Float32x2x3 },
         std::pair{ "operator*"_c, &Float16x2_operator_transform_Float32x2x4 },
         std::pair{ "operator*(f16)"_c, &Float16x2_operator_scale_Float16 },
         std::pair{ "operator*(f16x2)"_c, &Float16x2_operator_mul_Float16x2 },
-        std::pair{ "operator*(f32)"_c, &Float16x2_operator_scale_Float32 },
         std::pair{ "operator*(f32x2x2)"_c, &Float16x2_operator_transform_Float32x2x2 },
         std::pair{ "operator*(f32x2x3)"_c, &Float16x2_operator_transform_Float32x2x3 },
         std::pair{ "operator*(f32x2x4)"_c, &Float16x2_operator_transform_Float32x2x4 },
         std::pair{ "operator*(i16)"_c, &Float16x2_operator_scale_Int16 },
-        std::pair{ "operator*(i32)"_c, &Float16x2_operator_scale_Int32 },
         std::pair{ "operator*(u16)"_c, &Float16x2_operator_scale_UInt16 },
-        std::pair{ "operator*(u32)"_c, &Float16x2_operator_scale_UInt32 },
         std::pair{ "operator*="_c, &Float16x2_operator_mulasg_Float16x2 },
         std::pair{ "operator*=(f16x2)"_c, &Float16x2_operator_mulasg_Float16x2 },
         std::pair{ "operator+"_c, &Float16x2_operator_add_Float16x2 },
@@ -6273,30 +6045,15 @@ Variable UInt16x2_operator_neq_UInt16x2_arg;
 Function UInt16x2_operator_neq_UInt16x2;
 inline constexpr std::array UInt16x2_operator_neq_UInt16x2_args = { &UInt16x2_operator_neq_UInt16x2_arg };
 
-/// operator* with Float32
-Variable UInt16x2_operator_scale_Float32_arg;
-Function UInt16x2_operator_scale_Float32;
-inline constexpr std::array UInt16x2_operator_scale_Float32_args = { &UInt16x2_operator_scale_Float32_arg };
-
 /// operator* with Float16
 Variable UInt16x2_operator_scale_Float16_arg;
 Function UInt16x2_operator_scale_Float16;
 inline constexpr std::array UInt16x2_operator_scale_Float16_args = { &UInt16x2_operator_scale_Float16_arg };
 
-/// operator* with UInt32
-Variable UInt16x2_operator_scale_UInt32_arg;
-Function UInt16x2_operator_scale_UInt32;
-inline constexpr std::array UInt16x2_operator_scale_UInt32_args = { &UInt16x2_operator_scale_UInt32_arg };
-
 /// operator* with UInt16
 Variable UInt16x2_operator_scale_UInt16_arg;
 Function UInt16x2_operator_scale_UInt16;
 inline constexpr std::array UInt16x2_operator_scale_UInt16_args = { &UInt16x2_operator_scale_UInt16_arg };
-
-/// operator* with Int32
-Variable UInt16x2_operator_scale_Int32_arg;
-Function UInt16x2_operator_scale_Int32;
-inline constexpr std::array UInt16x2_operator_scale_Int32_args = { &UInt16x2_operator_scale_Int32_arg };
 
 /// operator* with Int16
 Variable UInt16x2_operator_scale_Int16_arg;
@@ -6591,41 +6348,17 @@ UInt16x2::UInt16x2()
     Symbol::Resolved(&UInt16x2_operator_neq_UInt16x2)->nameWithVarNames = "operator!=(arg : u16x2)"_c;
     Symbol::Resolved(&UInt16x2_operator_neq_UInt16x2)->returnTypeSymbol = &Bool8x2Type;
 
-    /// operator* with Float32
-    UInt16x2_operator_scale_Float32_arg.name = "arg"_c;
-    UInt16x2_operator_scale_Float32_arg.type = Type::FullType{ Float32Type.name };
-    UInt16x2_operator_scale_Float32.name = "operator*"_c;
-    UInt16x2_operator_scale_Float32.returnType = Type::FullType { UInt16x2Type.name };
-    UInt16x2_operator_scale_Float32.parameters = UInt16x2_operator_scale_Float32_args;
-    Symbol::Resolved(&UInt16x2_operator_scale_Float32_arg)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&UInt16x2_operator_scale_Float32)->signature = "u16x2 operator*(f32)"_c;
-    Symbol::Resolved(&UInt16x2_operator_scale_Float32)->name = "operator*(f32)"_c;
-    Symbol::Resolved(&UInt16x2_operator_scale_Float32)->nameWithVarNames = "operator*(arg : f32)"_c;
-    Symbol::Resolved(&UInt16x2_operator_scale_Float32)->returnTypeSymbol = &UInt16x2Type;
-
     /// operator* with Float16
     UInt16x2_operator_scale_Float16_arg.name = "arg"_c;
     UInt16x2_operator_scale_Float16_arg.type = Type::FullType{ Float16Type.name };
     UInt16x2_operator_scale_Float16.name = "operator*"_c;
-    UInt16x2_operator_scale_Float16.returnType = Type::FullType { UInt16x2Type.name };
+    UInt16x2_operator_scale_Float16.returnType = Type::FullType { Float16x2Type.name };
     UInt16x2_operator_scale_Float16.parameters = UInt16x2_operator_scale_Float16_args;
     Symbol::Resolved(&UInt16x2_operator_scale_Float16_arg)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&UInt16x2_operator_scale_Float16)->signature = "u16x2 operator*(f16)"_c;
+    Symbol::Resolved(&UInt16x2_operator_scale_Float16)->signature = "f16x2 operator*(f16)"_c;
     Symbol::Resolved(&UInt16x2_operator_scale_Float16)->name = "operator*(f16)"_c;
     Symbol::Resolved(&UInt16x2_operator_scale_Float16)->nameWithVarNames = "operator*(arg : f16)"_c;
-    Symbol::Resolved(&UInt16x2_operator_scale_Float16)->returnTypeSymbol = &UInt16x2Type;
-
-    /// operator* with UInt32
-    UInt16x2_operator_scale_UInt32_arg.name = "arg"_c;
-    UInt16x2_operator_scale_UInt32_arg.type = Type::FullType{ UInt32Type.name };
-    UInt16x2_operator_scale_UInt32.name = "operator*"_c;
-    UInt16x2_operator_scale_UInt32.returnType = Type::FullType { UInt16x2Type.name };
-    UInt16x2_operator_scale_UInt32.parameters = UInt16x2_operator_scale_UInt32_args;
-    Symbol::Resolved(&UInt16x2_operator_scale_UInt32_arg)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&UInt16x2_operator_scale_UInt32)->signature = "u16x2 operator*(u32)"_c;
-    Symbol::Resolved(&UInt16x2_operator_scale_UInt32)->name = "operator*(u32)"_c;
-    Symbol::Resolved(&UInt16x2_operator_scale_UInt32)->nameWithVarNames = "operator*(arg : u32)"_c;
-    Symbol::Resolved(&UInt16x2_operator_scale_UInt32)->returnTypeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&UInt16x2_operator_scale_Float16)->returnTypeSymbol = &Float16x2Type;
 
     /// operator* with UInt16
     UInt16x2_operator_scale_UInt16_arg.name = "arg"_c;
@@ -6638,18 +6371,6 @@ UInt16x2::UInt16x2()
     Symbol::Resolved(&UInt16x2_operator_scale_UInt16)->name = "operator*(u16)"_c;
     Symbol::Resolved(&UInt16x2_operator_scale_UInt16)->nameWithVarNames = "operator*(arg : u16)"_c;
     Symbol::Resolved(&UInt16x2_operator_scale_UInt16)->returnTypeSymbol = &UInt16x2Type;
-
-    /// operator* with Int32
-    UInt16x2_operator_scale_Int32_arg.name = "arg"_c;
-    UInt16x2_operator_scale_Int32_arg.type = Type::FullType{ Int32Type.name };
-    UInt16x2_operator_scale_Int32.name = "operator*"_c;
-    UInt16x2_operator_scale_Int32.returnType = Type::FullType { UInt16x2Type.name };
-    UInt16x2_operator_scale_Int32.parameters = UInt16x2_operator_scale_Int32_args;
-    Symbol::Resolved(&UInt16x2_operator_scale_Int32_arg)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&UInt16x2_operator_scale_Int32)->signature = "u16x2 operator*(i32)"_c;
-    Symbol::Resolved(&UInt16x2_operator_scale_Int32)->name = "operator*(i32)"_c;
-    Symbol::Resolved(&UInt16x2_operator_scale_Int32)->nameWithVarNames = "operator*(arg : i32)"_c;
-    Symbol::Resolved(&UInt16x2_operator_scale_Int32)->returnTypeSymbol = &UInt16x2Type;
 
     /// operator* with Int16
     UInt16x2_operator_scale_Int16_arg.name = "arg"_c;
@@ -6783,7 +6504,7 @@ UInt16x2::UInt16x2()
     Symbol::Resolved(&UInt16x2_operator_rhsasg_UInt16x2)->nameWithVarNames = "operator>>=(arg : u16x2)"_c;
     Symbol::Resolved(&UInt16x2_operator_rhsasg_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 130> { 
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 124> { 
         std::pair{ "g"_c, &UInt16Type },
         std::pair{ "gg"_c, &UInt16x2Type },
         std::pair{ "ggg"_c, &UInt16x3Type },
@@ -6808,19 +6529,13 @@ UInt16x2::UInt16x2()
         std::pair{ "operator&="_c, &UInt16x2_operator_andasg_UInt16x2 },
         std::pair{ "operator&=(u16x2)"_c, &UInt16x2_operator_andasg_UInt16x2 },
         std::pair{ "operator*"_c, &UInt16x2_operator_mul_UInt16x2 },
-        std::pair{ "operator*"_c, &UInt16x2_operator_scale_Float32 },
         std::pair{ "operator*"_c, &UInt16x2_operator_scale_Float16 },
-        std::pair{ "operator*"_c, &UInt16x2_operator_scale_UInt32 },
         std::pair{ "operator*"_c, &UInt16x2_operator_scale_UInt16 },
-        std::pair{ "operator*"_c, &UInt16x2_operator_scale_Int32 },
         std::pair{ "operator*"_c, &UInt16x2_operator_scale_Int16 },
         std::pair{ "operator*(f16)"_c, &UInt16x2_operator_scale_Float16 },
-        std::pair{ "operator*(f32)"_c, &UInt16x2_operator_scale_Float32 },
         std::pair{ "operator*(i16)"_c, &UInt16x2_operator_scale_Int16 },
-        std::pair{ "operator*(i32)"_c, &UInt16x2_operator_scale_Int32 },
         std::pair{ "operator*(u16)"_c, &UInt16x2_operator_scale_UInt16 },
         std::pair{ "operator*(u16x2)"_c, &UInt16x2_operator_mul_UInt16x2 },
-        std::pair{ "operator*(u32)"_c, &UInt16x2_operator_scale_UInt32 },
         std::pair{ "operator*="_c, &UInt16x2_operator_mulasg_UInt16x2 },
         std::pair{ "operator*=(u16x2)"_c, &UInt16x2_operator_mulasg_UInt16x2 },
         std::pair{ "operator+"_c, &UInt16x2_operator_add_UInt16x2 },
@@ -7013,30 +6728,15 @@ Variable Int16x2_operator_neq_Int16x2_arg;
 Function Int16x2_operator_neq_Int16x2;
 inline constexpr std::array Int16x2_operator_neq_Int16x2_args = { &Int16x2_operator_neq_Int16x2_arg };
 
-/// operator* with Float32
-Variable Int16x2_operator_scale_Float32_arg;
-Function Int16x2_operator_scale_Float32;
-inline constexpr std::array Int16x2_operator_scale_Float32_args = { &Int16x2_operator_scale_Float32_arg };
-
 /// operator* with Float16
 Variable Int16x2_operator_scale_Float16_arg;
 Function Int16x2_operator_scale_Float16;
 inline constexpr std::array Int16x2_operator_scale_Float16_args = { &Int16x2_operator_scale_Float16_arg };
 
-/// operator* with UInt32
-Variable Int16x2_operator_scale_UInt32_arg;
-Function Int16x2_operator_scale_UInt32;
-inline constexpr std::array Int16x2_operator_scale_UInt32_args = { &Int16x2_operator_scale_UInt32_arg };
-
 /// operator* with UInt16
 Variable Int16x2_operator_scale_UInt16_arg;
 Function Int16x2_operator_scale_UInt16;
 inline constexpr std::array Int16x2_operator_scale_UInt16_args = { &Int16x2_operator_scale_UInt16_arg };
-
-/// operator* with Int32
-Variable Int16x2_operator_scale_Int32_arg;
-Function Int16x2_operator_scale_Int32;
-inline constexpr std::array Int16x2_operator_scale_Int32_args = { &Int16x2_operator_scale_Int32_arg };
 
 /// operator* with Int16
 Variable Int16x2_operator_scale_Int16_arg;
@@ -7331,41 +7031,17 @@ Int16x2::Int16x2()
     Symbol::Resolved(&Int16x2_operator_neq_Int16x2)->nameWithVarNames = "operator!=(arg : i16x2)"_c;
     Symbol::Resolved(&Int16x2_operator_neq_Int16x2)->returnTypeSymbol = &Bool8x2Type;
 
-    /// operator* with Float32
-    Int16x2_operator_scale_Float32_arg.name = "arg"_c;
-    Int16x2_operator_scale_Float32_arg.type = Type::FullType{ Float32Type.name };
-    Int16x2_operator_scale_Float32.name = "operator*"_c;
-    Int16x2_operator_scale_Float32.returnType = Type::FullType { Int16x2Type.name };
-    Int16x2_operator_scale_Float32.parameters = Int16x2_operator_scale_Float32_args;
-    Symbol::Resolved(&Int16x2_operator_scale_Float32_arg)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Int16x2_operator_scale_Float32)->signature = "i16x2 operator*(f32)"_c;
-    Symbol::Resolved(&Int16x2_operator_scale_Float32)->name = "operator*(f32)"_c;
-    Symbol::Resolved(&Int16x2_operator_scale_Float32)->nameWithVarNames = "operator*(arg : f32)"_c;
-    Symbol::Resolved(&Int16x2_operator_scale_Float32)->returnTypeSymbol = &Int16x2Type;
-
     /// operator* with Float16
     Int16x2_operator_scale_Float16_arg.name = "arg"_c;
     Int16x2_operator_scale_Float16_arg.type = Type::FullType{ Float16Type.name };
     Int16x2_operator_scale_Float16.name = "operator*"_c;
-    Int16x2_operator_scale_Float16.returnType = Type::FullType { Int16x2Type.name };
+    Int16x2_operator_scale_Float16.returnType = Type::FullType { Float16x2Type.name };
     Int16x2_operator_scale_Float16.parameters = Int16x2_operator_scale_Float16_args;
     Symbol::Resolved(&Int16x2_operator_scale_Float16_arg)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Int16x2_operator_scale_Float16)->signature = "i16x2 operator*(f16)"_c;
+    Symbol::Resolved(&Int16x2_operator_scale_Float16)->signature = "f16x2 operator*(f16)"_c;
     Symbol::Resolved(&Int16x2_operator_scale_Float16)->name = "operator*(f16)"_c;
     Symbol::Resolved(&Int16x2_operator_scale_Float16)->nameWithVarNames = "operator*(arg : f16)"_c;
-    Symbol::Resolved(&Int16x2_operator_scale_Float16)->returnTypeSymbol = &Int16x2Type;
-
-    /// operator* with UInt32
-    Int16x2_operator_scale_UInt32_arg.name = "arg"_c;
-    Int16x2_operator_scale_UInt32_arg.type = Type::FullType{ UInt32Type.name };
-    Int16x2_operator_scale_UInt32.name = "operator*"_c;
-    Int16x2_operator_scale_UInt32.returnType = Type::FullType { Int16x2Type.name };
-    Int16x2_operator_scale_UInt32.parameters = Int16x2_operator_scale_UInt32_args;
-    Symbol::Resolved(&Int16x2_operator_scale_UInt32_arg)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Int16x2_operator_scale_UInt32)->signature = "i16x2 operator*(u32)"_c;
-    Symbol::Resolved(&Int16x2_operator_scale_UInt32)->name = "operator*(u32)"_c;
-    Symbol::Resolved(&Int16x2_operator_scale_UInt32)->nameWithVarNames = "operator*(arg : u32)"_c;
-    Symbol::Resolved(&Int16x2_operator_scale_UInt32)->returnTypeSymbol = &Int16x2Type;
+    Symbol::Resolved(&Int16x2_operator_scale_Float16)->returnTypeSymbol = &Float16x2Type;
 
     /// operator* with UInt16
     Int16x2_operator_scale_UInt16_arg.name = "arg"_c;
@@ -7378,18 +7054,6 @@ Int16x2::Int16x2()
     Symbol::Resolved(&Int16x2_operator_scale_UInt16)->name = "operator*(u16)"_c;
     Symbol::Resolved(&Int16x2_operator_scale_UInt16)->nameWithVarNames = "operator*(arg : u16)"_c;
     Symbol::Resolved(&Int16x2_operator_scale_UInt16)->returnTypeSymbol = &Int16x2Type;
-
-    /// operator* with Int32
-    Int16x2_operator_scale_Int32_arg.name = "arg"_c;
-    Int16x2_operator_scale_Int32_arg.type = Type::FullType{ Int32Type.name };
-    Int16x2_operator_scale_Int32.name = "operator*"_c;
-    Int16x2_operator_scale_Int32.returnType = Type::FullType { Int16x2Type.name };
-    Int16x2_operator_scale_Int32.parameters = Int16x2_operator_scale_Int32_args;
-    Symbol::Resolved(&Int16x2_operator_scale_Int32_arg)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Int16x2_operator_scale_Int32)->signature = "i16x2 operator*(i32)"_c;
-    Symbol::Resolved(&Int16x2_operator_scale_Int32)->name = "operator*(i32)"_c;
-    Symbol::Resolved(&Int16x2_operator_scale_Int32)->nameWithVarNames = "operator*(arg : i32)"_c;
-    Symbol::Resolved(&Int16x2_operator_scale_Int32)->returnTypeSymbol = &Int16x2Type;
 
     /// operator* with Int16
     Int16x2_operator_scale_Int16_arg.name = "arg"_c;
@@ -7523,7 +7187,7 @@ Int16x2::Int16x2()
     Symbol::Resolved(&Int16x2_operator_rhsasg_Int16x2)->nameWithVarNames = "operator>>=(arg : i16x2)"_c;
     Symbol::Resolved(&Int16x2_operator_rhsasg_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 130> { 
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 124> { 
         std::pair{ "g"_c, &Int16Type },
         std::pair{ "gg"_c, &Int16x2Type },
         std::pair{ "ggg"_c, &Int16x3Type },
@@ -7548,19 +7212,13 @@ Int16x2::Int16x2()
         std::pair{ "operator&="_c, &Int16x2_operator_andasg_Int16x2 },
         std::pair{ "operator&=(i16x2)"_c, &Int16x2_operator_andasg_Int16x2 },
         std::pair{ "operator*"_c, &Int16x2_operator_mul_Int16x2 },
-        std::pair{ "operator*"_c, &Int16x2_operator_scale_Float32 },
         std::pair{ "operator*"_c, &Int16x2_operator_scale_Float16 },
-        std::pair{ "operator*"_c, &Int16x2_operator_scale_UInt32 },
         std::pair{ "operator*"_c, &Int16x2_operator_scale_UInt16 },
-        std::pair{ "operator*"_c, &Int16x2_operator_scale_Int32 },
         std::pair{ "operator*"_c, &Int16x2_operator_scale_Int16 },
         std::pair{ "operator*(f16)"_c, &Int16x2_operator_scale_Float16 },
-        std::pair{ "operator*(f32)"_c, &Int16x2_operator_scale_Float32 },
         std::pair{ "operator*(i16)"_c, &Int16x2_operator_scale_Int16 },
         std::pair{ "operator*(i16x2)"_c, &Int16x2_operator_mul_Int16x2 },
-        std::pair{ "operator*(i32)"_c, &Int16x2_operator_scale_Int32 },
         std::pair{ "operator*(u16)"_c, &Int16x2_operator_scale_UInt16 },
-        std::pair{ "operator*(u32)"_c, &Int16x2_operator_scale_UInt32 },
         std::pair{ "operator*="_c, &Int16x2_operator_mulasg_Int16x2 },
         std::pair{ "operator*=(i16x2)"_c, &Int16x2_operator_mulasg_Int16x2 },
         std::pair{ "operator+"_c, &Int16x2_operator_add_Int16x2 },
@@ -7758,30 +7416,15 @@ Variable Float32x3_operator_scale_Float32_arg;
 Function Float32x3_operator_scale_Float32;
 inline constexpr std::array Float32x3_operator_scale_Float32_args = { &Float32x3_operator_scale_Float32_arg };
 
-/// operator* with Float16
-Variable Float32x3_operator_scale_Float16_arg;
-Function Float32x3_operator_scale_Float16;
-inline constexpr std::array Float32x3_operator_scale_Float16_args = { &Float32x3_operator_scale_Float16_arg };
-
 /// operator* with UInt32
 Variable Float32x3_operator_scale_UInt32_arg;
 Function Float32x3_operator_scale_UInt32;
 inline constexpr std::array Float32x3_operator_scale_UInt32_args = { &Float32x3_operator_scale_UInt32_arg };
 
-/// operator* with UInt16
-Variable Float32x3_operator_scale_UInt16_arg;
-Function Float32x3_operator_scale_UInt16;
-inline constexpr std::array Float32x3_operator_scale_UInt16_args = { &Float32x3_operator_scale_UInt16_arg };
-
 /// operator* with Int32
 Variable Float32x3_operator_scale_Int32_arg;
 Function Float32x3_operator_scale_Int32;
 inline constexpr std::array Float32x3_operator_scale_Int32_args = { &Float32x3_operator_scale_Int32_arg };
-
-/// operator* with Int16
-Variable Float32x3_operator_scale_Int16_arg;
-Function Float32x3_operator_scale_Int16;
-inline constexpr std::array Float32x3_operator_scale_Int16_args = { &Float32x3_operator_scale_Int16_arg };
 
 /// operator* with Float32x3x2
 Variable Float32x3_operator_transform_Float32x3x2_arg;
@@ -8048,18 +7691,6 @@ Float32x3::Float32x3()
     Symbol::Resolved(&Float32x3_operator_scale_Float32)->nameWithVarNames = "operator*(arg : f32)"_c;
     Symbol::Resolved(&Float32x3_operator_scale_Float32)->returnTypeSymbol = &Float32x3Type;
 
-    /// operator* with Float16
-    Float32x3_operator_scale_Float16_arg.name = "arg"_c;
-    Float32x3_operator_scale_Float16_arg.type = Type::FullType{ Float16Type.name };
-    Float32x3_operator_scale_Float16.name = "operator*"_c;
-    Float32x3_operator_scale_Float16.returnType = Type::FullType { Float32x3Type.name };
-    Float32x3_operator_scale_Float16.parameters = Float32x3_operator_scale_Float16_args;
-    Symbol::Resolved(&Float32x3_operator_scale_Float16_arg)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Float32x3_operator_scale_Float16)->signature = "f32x3 operator*(f16)"_c;
-    Symbol::Resolved(&Float32x3_operator_scale_Float16)->name = "operator*(f16)"_c;
-    Symbol::Resolved(&Float32x3_operator_scale_Float16)->nameWithVarNames = "operator*(arg : f16)"_c;
-    Symbol::Resolved(&Float32x3_operator_scale_Float16)->returnTypeSymbol = &Float32x3Type;
-
     /// operator* with UInt32
     Float32x3_operator_scale_UInt32_arg.name = "arg"_c;
     Float32x3_operator_scale_UInt32_arg.type = Type::FullType{ UInt32Type.name };
@@ -8072,18 +7703,6 @@ Float32x3::Float32x3()
     Symbol::Resolved(&Float32x3_operator_scale_UInt32)->nameWithVarNames = "operator*(arg : u32)"_c;
     Symbol::Resolved(&Float32x3_operator_scale_UInt32)->returnTypeSymbol = &Float32x3Type;
 
-    /// operator* with UInt16
-    Float32x3_operator_scale_UInt16_arg.name = "arg"_c;
-    Float32x3_operator_scale_UInt16_arg.type = Type::FullType{ UInt16Type.name };
-    Float32x3_operator_scale_UInt16.name = "operator*"_c;
-    Float32x3_operator_scale_UInt16.returnType = Type::FullType { Float32x3Type.name };
-    Float32x3_operator_scale_UInt16.parameters = Float32x3_operator_scale_UInt16_args;
-    Symbol::Resolved(&Float32x3_operator_scale_UInt16_arg)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float32x3_operator_scale_UInt16)->signature = "f32x3 operator*(u16)"_c;
-    Symbol::Resolved(&Float32x3_operator_scale_UInt16)->name = "operator*(u16)"_c;
-    Symbol::Resolved(&Float32x3_operator_scale_UInt16)->nameWithVarNames = "operator*(arg : u16)"_c;
-    Symbol::Resolved(&Float32x3_operator_scale_UInt16)->returnTypeSymbol = &Float32x3Type;
-
     /// operator* with Int32
     Float32x3_operator_scale_Int32_arg.name = "arg"_c;
     Float32x3_operator_scale_Int32_arg.type = Type::FullType{ Int32Type.name };
@@ -8095,18 +7714,6 @@ Float32x3::Float32x3()
     Symbol::Resolved(&Float32x3_operator_scale_Int32)->name = "operator*(i32)"_c;
     Symbol::Resolved(&Float32x3_operator_scale_Int32)->nameWithVarNames = "operator*(arg : i32)"_c;
     Symbol::Resolved(&Float32x3_operator_scale_Int32)->returnTypeSymbol = &Float32x3Type;
-
-    /// operator* with Int16
-    Float32x3_operator_scale_Int16_arg.name = "arg"_c;
-    Float32x3_operator_scale_Int16_arg.type = Type::FullType{ Int16Type.name };
-    Float32x3_operator_scale_Int16.name = "operator*"_c;
-    Float32x3_operator_scale_Int16.returnType = Type::FullType { Float32x3Type.name };
-    Float32x3_operator_scale_Int16.parameters = Float32x3_operator_scale_Int16_args;
-    Symbol::Resolved(&Float32x3_operator_scale_Int16_arg)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float32x3_operator_scale_Int16)->signature = "f32x3 operator*(i16)"_c;
-    Symbol::Resolved(&Float32x3_operator_scale_Int16)->name = "operator*(i16)"_c;
-    Symbol::Resolved(&Float32x3_operator_scale_Int16)->nameWithVarNames = "operator*(arg : i16)"_c;
-    Symbol::Resolved(&Float32x3_operator_scale_Int16)->returnTypeSymbol = &Float32x3Type;
 
     /// operator* with Float32x3x2
     Float32x3_operator_transform_Float32x3x2_arg.name = "arg"_c;
@@ -8144,7 +7751,7 @@ Float32x3::Float32x3()
     Symbol::Resolved(&Float32x3_operator_transform_Float32x3x4)->nameWithVarNames = "operator*(arg : f32x3x4)"_c;
     Symbol::Resolved(&Float32x3_operator_transform_Float32x3x4)->returnTypeSymbol = &Float32x4Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 296> { 
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 290> { 
         std::pair{ "b"_c, &Float32Type },
         std::pair{ "bb"_c, &Float32x2Type },
         std::pair{ "bbb"_c, &Float32x3Type },
@@ -8231,23 +7838,17 @@ Float32x3::Float32x3()
         std::pair{ "operator%(f32x3)"_c, &Float32x3_operator_mod_Float32x3 },
         std::pair{ "operator*"_c, &Float32x3_operator_mul_Float32x3 },
         std::pair{ "operator*"_c, &Float32x3_operator_scale_Float32 },
-        std::pair{ "operator*"_c, &Float32x3_operator_scale_Float16 },
         std::pair{ "operator*"_c, &Float32x3_operator_scale_UInt32 },
-        std::pair{ "operator*"_c, &Float32x3_operator_scale_UInt16 },
         std::pair{ "operator*"_c, &Float32x3_operator_scale_Int32 },
-        std::pair{ "operator*"_c, &Float32x3_operator_scale_Int16 },
         std::pair{ "operator*"_c, &Float32x3_operator_transform_Float32x3x2 },
         std::pair{ "operator*"_c, &Float32x3_operator_transform_Float32x3x3 },
         std::pair{ "operator*"_c, &Float32x3_operator_transform_Float32x3x4 },
-        std::pair{ "operator*(f16)"_c, &Float32x3_operator_scale_Float16 },
         std::pair{ "operator*(f32)"_c, &Float32x3_operator_scale_Float32 },
         std::pair{ "operator*(f32x3)"_c, &Float32x3_operator_mul_Float32x3 },
         std::pair{ "operator*(f32x3x2)"_c, &Float32x3_operator_transform_Float32x3x2 },
         std::pair{ "operator*(f32x3x3)"_c, &Float32x3_operator_transform_Float32x3x3 },
         std::pair{ "operator*(f32x3x4)"_c, &Float32x3_operator_transform_Float32x3x4 },
-        std::pair{ "operator*(i16)"_c, &Float32x3_operator_scale_Int16 },
         std::pair{ "operator*(i32)"_c, &Float32x3_operator_scale_Int32 },
-        std::pair{ "operator*(u16)"_c, &Float32x3_operator_scale_UInt16 },
         std::pair{ "operator*(u32)"_c, &Float32x3_operator_scale_UInt32 },
         std::pair{ "operator*="_c, &Float32x3_operator_mulasg_Float32x3 },
         std::pair{ "operator*=(f32x3)"_c, &Float32x3_operator_mulasg_Float32x3 },
@@ -8545,30 +8146,15 @@ Variable UInt32x3_operator_scale_Float32_arg;
 Function UInt32x3_operator_scale_Float32;
 inline constexpr std::array UInt32x3_operator_scale_Float32_args = { &UInt32x3_operator_scale_Float32_arg };
 
-/// operator* with Float16
-Variable UInt32x3_operator_scale_Float16_arg;
-Function UInt32x3_operator_scale_Float16;
-inline constexpr std::array UInt32x3_operator_scale_Float16_args = { &UInt32x3_operator_scale_Float16_arg };
-
 /// operator* with UInt32
 Variable UInt32x3_operator_scale_UInt32_arg;
 Function UInt32x3_operator_scale_UInt32;
 inline constexpr std::array UInt32x3_operator_scale_UInt32_args = { &UInt32x3_operator_scale_UInt32_arg };
 
-/// operator* with UInt16
-Variable UInt32x3_operator_scale_UInt16_arg;
-Function UInt32x3_operator_scale_UInt16;
-inline constexpr std::array UInt32x3_operator_scale_UInt16_args = { &UInt32x3_operator_scale_UInt16_arg };
-
 /// operator* with Int32
 Variable UInt32x3_operator_scale_Int32_arg;
 Function UInt32x3_operator_scale_Int32;
 inline constexpr std::array UInt32x3_operator_scale_Int32_args = { &UInt32x3_operator_scale_Int32_arg };
-
-/// operator* with Int16
-Variable UInt32x3_operator_scale_Int16_arg;
-Function UInt32x3_operator_scale_Int16;
-inline constexpr std::array UInt32x3_operator_scale_Int16_args = { &UInt32x3_operator_scale_Int16_arg };
 
 /// operator| with UInt32x3
 Variable UInt32x3_operator_or_UInt32x3_arg;
@@ -8862,25 +8448,13 @@ UInt32x3::UInt32x3()
     UInt32x3_operator_scale_Float32_arg.name = "arg"_c;
     UInt32x3_operator_scale_Float32_arg.type = Type::FullType{ Float32Type.name };
     UInt32x3_operator_scale_Float32.name = "operator*"_c;
-    UInt32x3_operator_scale_Float32.returnType = Type::FullType { UInt32x3Type.name };
+    UInt32x3_operator_scale_Float32.returnType = Type::FullType { Float32x3Type.name };
     UInt32x3_operator_scale_Float32.parameters = UInt32x3_operator_scale_Float32_args;
     Symbol::Resolved(&UInt32x3_operator_scale_Float32_arg)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&UInt32x3_operator_scale_Float32)->signature = "u32x3 operator*(f32)"_c;
+    Symbol::Resolved(&UInt32x3_operator_scale_Float32)->signature = "f32x3 operator*(f32)"_c;
     Symbol::Resolved(&UInt32x3_operator_scale_Float32)->name = "operator*(f32)"_c;
     Symbol::Resolved(&UInt32x3_operator_scale_Float32)->nameWithVarNames = "operator*(arg : f32)"_c;
-    Symbol::Resolved(&UInt32x3_operator_scale_Float32)->returnTypeSymbol = &UInt32x3Type;
-
-    /// operator* with Float16
-    UInt32x3_operator_scale_Float16_arg.name = "arg"_c;
-    UInt32x3_operator_scale_Float16_arg.type = Type::FullType{ Float16Type.name };
-    UInt32x3_operator_scale_Float16.name = "operator*"_c;
-    UInt32x3_operator_scale_Float16.returnType = Type::FullType { UInt32x3Type.name };
-    UInt32x3_operator_scale_Float16.parameters = UInt32x3_operator_scale_Float16_args;
-    Symbol::Resolved(&UInt32x3_operator_scale_Float16_arg)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&UInt32x3_operator_scale_Float16)->signature = "u32x3 operator*(f16)"_c;
-    Symbol::Resolved(&UInt32x3_operator_scale_Float16)->name = "operator*(f16)"_c;
-    Symbol::Resolved(&UInt32x3_operator_scale_Float16)->nameWithVarNames = "operator*(arg : f16)"_c;
-    Symbol::Resolved(&UInt32x3_operator_scale_Float16)->returnTypeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&UInt32x3_operator_scale_Float32)->returnTypeSymbol = &Float32x3Type;
 
     /// operator* with UInt32
     UInt32x3_operator_scale_UInt32_arg.name = "arg"_c;
@@ -8894,18 +8468,6 @@ UInt32x3::UInt32x3()
     Symbol::Resolved(&UInt32x3_operator_scale_UInt32)->nameWithVarNames = "operator*(arg : u32)"_c;
     Symbol::Resolved(&UInt32x3_operator_scale_UInt32)->returnTypeSymbol = &UInt32x3Type;
 
-    /// operator* with UInt16
-    UInt32x3_operator_scale_UInt16_arg.name = "arg"_c;
-    UInt32x3_operator_scale_UInt16_arg.type = Type::FullType{ UInt16Type.name };
-    UInt32x3_operator_scale_UInt16.name = "operator*"_c;
-    UInt32x3_operator_scale_UInt16.returnType = Type::FullType { UInt32x3Type.name };
-    UInt32x3_operator_scale_UInt16.parameters = UInt32x3_operator_scale_UInt16_args;
-    Symbol::Resolved(&UInt32x3_operator_scale_UInt16_arg)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&UInt32x3_operator_scale_UInt16)->signature = "u32x3 operator*(u16)"_c;
-    Symbol::Resolved(&UInt32x3_operator_scale_UInt16)->name = "operator*(u16)"_c;
-    Symbol::Resolved(&UInt32x3_operator_scale_UInt16)->nameWithVarNames = "operator*(arg : u16)"_c;
-    Symbol::Resolved(&UInt32x3_operator_scale_UInt16)->returnTypeSymbol = &UInt32x3Type;
-
     /// operator* with Int32
     UInt32x3_operator_scale_Int32_arg.name = "arg"_c;
     UInt32x3_operator_scale_Int32_arg.type = Type::FullType{ Int32Type.name };
@@ -8917,18 +8479,6 @@ UInt32x3::UInt32x3()
     Symbol::Resolved(&UInt32x3_operator_scale_Int32)->name = "operator*(i32)"_c;
     Symbol::Resolved(&UInt32x3_operator_scale_Int32)->nameWithVarNames = "operator*(arg : i32)"_c;
     Symbol::Resolved(&UInt32x3_operator_scale_Int32)->returnTypeSymbol = &UInt32x3Type;
-
-    /// operator* with Int16
-    UInt32x3_operator_scale_Int16_arg.name = "arg"_c;
-    UInt32x3_operator_scale_Int16_arg.type = Type::FullType{ Int16Type.name };
-    UInt32x3_operator_scale_Int16.name = "operator*"_c;
-    UInt32x3_operator_scale_Int16.returnType = Type::FullType { UInt32x3Type.name };
-    UInt32x3_operator_scale_Int16.parameters = UInt32x3_operator_scale_Int16_args;
-    Symbol::Resolved(&UInt32x3_operator_scale_Int16_arg)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&UInt32x3_operator_scale_Int16)->signature = "u32x3 operator*(i16)"_c;
-    Symbol::Resolved(&UInt32x3_operator_scale_Int16)->name = "operator*(i16)"_c;
-    Symbol::Resolved(&UInt32x3_operator_scale_Int16)->nameWithVarNames = "operator*(arg : i16)"_c;
-    Symbol::Resolved(&UInt32x3_operator_scale_Int16)->returnTypeSymbol = &UInt32x3Type;
 
     /// operator| with UInt32x3
     UInt32x3_operator_or_UInt32x3_arg.name = "arg"_c;
@@ -9050,7 +8600,7 @@ UInt32x3::UInt32x3()
     Symbol::Resolved(&UInt32x3_operator_rhsasg_UInt32x3)->nameWithVarNames = "operator>>=(arg : u32x3)"_c;
     Symbol::Resolved(&UInt32x3_operator_rhsasg_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 310> { 
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 304> { 
         std::pair{ "b"_c, &UInt32Type },
         std::pair{ "bb"_c, &UInt32x2Type },
         std::pair{ "bbb"_c, &UInt32x3Type },
@@ -9141,16 +8691,10 @@ UInt32x3::UInt32x3()
         std::pair{ "operator&=(u32x3)"_c, &UInt32x3_operator_andasg_UInt32x3 },
         std::pair{ "operator*"_c, &UInt32x3_operator_mul_UInt32x3 },
         std::pair{ "operator*"_c, &UInt32x3_operator_scale_Float32 },
-        std::pair{ "operator*"_c, &UInt32x3_operator_scale_Float16 },
         std::pair{ "operator*"_c, &UInt32x3_operator_scale_UInt32 },
-        std::pair{ "operator*"_c, &UInt32x3_operator_scale_UInt16 },
         std::pair{ "operator*"_c, &UInt32x3_operator_scale_Int32 },
-        std::pair{ "operator*"_c, &UInt32x3_operator_scale_Int16 },
-        std::pair{ "operator*(f16)"_c, &UInt32x3_operator_scale_Float16 },
         std::pair{ "operator*(f32)"_c, &UInt32x3_operator_scale_Float32 },
-        std::pair{ "operator*(i16)"_c, &UInt32x3_operator_scale_Int16 },
         std::pair{ "operator*(i32)"_c, &UInt32x3_operator_scale_Int32 },
-        std::pair{ "operator*(u16)"_c, &UInt32x3_operator_scale_UInt16 },
         std::pair{ "operator*(u32)"_c, &UInt32x3_operator_scale_UInt32 },
         std::pair{ "operator*(u32x3)"_c, &UInt32x3_operator_mul_UInt32x3 },
         std::pair{ "operator*="_c, &UInt32x3_operator_mulasg_UInt32x3 },
@@ -9465,30 +9009,15 @@ Variable Int32x3_operator_scale_Float32_arg;
 Function Int32x3_operator_scale_Float32;
 inline constexpr std::array Int32x3_operator_scale_Float32_args = { &Int32x3_operator_scale_Float32_arg };
 
-/// operator* with Float16
-Variable Int32x3_operator_scale_Float16_arg;
-Function Int32x3_operator_scale_Float16;
-inline constexpr std::array Int32x3_operator_scale_Float16_args = { &Int32x3_operator_scale_Float16_arg };
-
 /// operator* with UInt32
 Variable Int32x3_operator_scale_UInt32_arg;
 Function Int32x3_operator_scale_UInt32;
 inline constexpr std::array Int32x3_operator_scale_UInt32_args = { &Int32x3_operator_scale_UInt32_arg };
 
-/// operator* with UInt16
-Variable Int32x3_operator_scale_UInt16_arg;
-Function Int32x3_operator_scale_UInt16;
-inline constexpr std::array Int32x3_operator_scale_UInt16_args = { &Int32x3_operator_scale_UInt16_arg };
-
 /// operator* with Int32
 Variable Int32x3_operator_scale_Int32_arg;
 Function Int32x3_operator_scale_Int32;
 inline constexpr std::array Int32x3_operator_scale_Int32_args = { &Int32x3_operator_scale_Int32_arg };
-
-/// operator* with Int16
-Variable Int32x3_operator_scale_Int16_arg;
-Function Int32x3_operator_scale_Int16;
-inline constexpr std::array Int32x3_operator_scale_Int16_args = { &Int32x3_operator_scale_Int16_arg };
 
 /// operator| with Int32x3
 Variable Int32x3_operator_or_Int32x3_arg;
@@ -9782,25 +9311,13 @@ Int32x3::Int32x3()
     Int32x3_operator_scale_Float32_arg.name = "arg"_c;
     Int32x3_operator_scale_Float32_arg.type = Type::FullType{ Float32Type.name };
     Int32x3_operator_scale_Float32.name = "operator*"_c;
-    Int32x3_operator_scale_Float32.returnType = Type::FullType { Int32x3Type.name };
+    Int32x3_operator_scale_Float32.returnType = Type::FullType { Float32x3Type.name };
     Int32x3_operator_scale_Float32.parameters = Int32x3_operator_scale_Float32_args;
     Symbol::Resolved(&Int32x3_operator_scale_Float32_arg)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Int32x3_operator_scale_Float32)->signature = "i32x3 operator*(f32)"_c;
+    Symbol::Resolved(&Int32x3_operator_scale_Float32)->signature = "f32x3 operator*(f32)"_c;
     Symbol::Resolved(&Int32x3_operator_scale_Float32)->name = "operator*(f32)"_c;
     Symbol::Resolved(&Int32x3_operator_scale_Float32)->nameWithVarNames = "operator*(arg : f32)"_c;
-    Symbol::Resolved(&Int32x3_operator_scale_Float32)->returnTypeSymbol = &Int32x3Type;
-
-    /// operator* with Float16
-    Int32x3_operator_scale_Float16_arg.name = "arg"_c;
-    Int32x3_operator_scale_Float16_arg.type = Type::FullType{ Float16Type.name };
-    Int32x3_operator_scale_Float16.name = "operator*"_c;
-    Int32x3_operator_scale_Float16.returnType = Type::FullType { Int32x3Type.name };
-    Int32x3_operator_scale_Float16.parameters = Int32x3_operator_scale_Float16_args;
-    Symbol::Resolved(&Int32x3_operator_scale_Float16_arg)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Int32x3_operator_scale_Float16)->signature = "i32x3 operator*(f16)"_c;
-    Symbol::Resolved(&Int32x3_operator_scale_Float16)->name = "operator*(f16)"_c;
-    Symbol::Resolved(&Int32x3_operator_scale_Float16)->nameWithVarNames = "operator*(arg : f16)"_c;
-    Symbol::Resolved(&Int32x3_operator_scale_Float16)->returnTypeSymbol = &Int32x3Type;
+    Symbol::Resolved(&Int32x3_operator_scale_Float32)->returnTypeSymbol = &Float32x3Type;
 
     /// operator* with UInt32
     Int32x3_operator_scale_UInt32_arg.name = "arg"_c;
@@ -9814,18 +9331,6 @@ Int32x3::Int32x3()
     Symbol::Resolved(&Int32x3_operator_scale_UInt32)->nameWithVarNames = "operator*(arg : u32)"_c;
     Symbol::Resolved(&Int32x3_operator_scale_UInt32)->returnTypeSymbol = &Int32x3Type;
 
-    /// operator* with UInt16
-    Int32x3_operator_scale_UInt16_arg.name = "arg"_c;
-    Int32x3_operator_scale_UInt16_arg.type = Type::FullType{ UInt16Type.name };
-    Int32x3_operator_scale_UInt16.name = "operator*"_c;
-    Int32x3_operator_scale_UInt16.returnType = Type::FullType { Int32x3Type.name };
-    Int32x3_operator_scale_UInt16.parameters = Int32x3_operator_scale_UInt16_args;
-    Symbol::Resolved(&Int32x3_operator_scale_UInt16_arg)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Int32x3_operator_scale_UInt16)->signature = "i32x3 operator*(u16)"_c;
-    Symbol::Resolved(&Int32x3_operator_scale_UInt16)->name = "operator*(u16)"_c;
-    Symbol::Resolved(&Int32x3_operator_scale_UInt16)->nameWithVarNames = "operator*(arg : u16)"_c;
-    Symbol::Resolved(&Int32x3_operator_scale_UInt16)->returnTypeSymbol = &Int32x3Type;
-
     /// operator* with Int32
     Int32x3_operator_scale_Int32_arg.name = "arg"_c;
     Int32x3_operator_scale_Int32_arg.type = Type::FullType{ Int32Type.name };
@@ -9837,18 +9342,6 @@ Int32x3::Int32x3()
     Symbol::Resolved(&Int32x3_operator_scale_Int32)->name = "operator*(i32)"_c;
     Symbol::Resolved(&Int32x3_operator_scale_Int32)->nameWithVarNames = "operator*(arg : i32)"_c;
     Symbol::Resolved(&Int32x3_operator_scale_Int32)->returnTypeSymbol = &Int32x3Type;
-
-    /// operator* with Int16
-    Int32x3_operator_scale_Int16_arg.name = "arg"_c;
-    Int32x3_operator_scale_Int16_arg.type = Type::FullType{ Int16Type.name };
-    Int32x3_operator_scale_Int16.name = "operator*"_c;
-    Int32x3_operator_scale_Int16.returnType = Type::FullType { Int32x3Type.name };
-    Int32x3_operator_scale_Int16.parameters = Int32x3_operator_scale_Int16_args;
-    Symbol::Resolved(&Int32x3_operator_scale_Int16_arg)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Int32x3_operator_scale_Int16)->signature = "i32x3 operator*(i16)"_c;
-    Symbol::Resolved(&Int32x3_operator_scale_Int16)->name = "operator*(i16)"_c;
-    Symbol::Resolved(&Int32x3_operator_scale_Int16)->nameWithVarNames = "operator*(arg : i16)"_c;
-    Symbol::Resolved(&Int32x3_operator_scale_Int16)->returnTypeSymbol = &Int32x3Type;
 
     /// operator| with Int32x3
     Int32x3_operator_or_Int32x3_arg.name = "arg"_c;
@@ -9970,7 +9463,7 @@ Int32x3::Int32x3()
     Symbol::Resolved(&Int32x3_operator_rhsasg_Int32x3)->nameWithVarNames = "operator>>=(arg : i32x3)"_c;
     Symbol::Resolved(&Int32x3_operator_rhsasg_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 310> { 
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 304> { 
         std::pair{ "b"_c, &Int32Type },
         std::pair{ "bb"_c, &Int32x2Type },
         std::pair{ "bbb"_c, &Int32x3Type },
@@ -10061,17 +9554,11 @@ Int32x3::Int32x3()
         std::pair{ "operator&=(i32x3)"_c, &Int32x3_operator_andasg_Int32x3 },
         std::pair{ "operator*"_c, &Int32x3_operator_mul_Int32x3 },
         std::pair{ "operator*"_c, &Int32x3_operator_scale_Float32 },
-        std::pair{ "operator*"_c, &Int32x3_operator_scale_Float16 },
         std::pair{ "operator*"_c, &Int32x3_operator_scale_UInt32 },
-        std::pair{ "operator*"_c, &Int32x3_operator_scale_UInt16 },
         std::pair{ "operator*"_c, &Int32x3_operator_scale_Int32 },
-        std::pair{ "operator*"_c, &Int32x3_operator_scale_Int16 },
-        std::pair{ "operator*(f16)"_c, &Int32x3_operator_scale_Float16 },
         std::pair{ "operator*(f32)"_c, &Int32x3_operator_scale_Float32 },
-        std::pair{ "operator*(i16)"_c, &Int32x3_operator_scale_Int16 },
         std::pair{ "operator*(i32)"_c, &Int32x3_operator_scale_Int32 },
         std::pair{ "operator*(i32x3)"_c, &Int32x3_operator_mul_Int32x3 },
-        std::pair{ "operator*(u16)"_c, &Int32x3_operator_scale_UInt16 },
         std::pair{ "operator*(u32)"_c, &Int32x3_operator_scale_UInt32 },
         std::pair{ "operator*="_c, &Int32x3_operator_mulasg_Int32x3 },
         std::pair{ "operator*=(i32x3)"_c, &Int32x3_operator_mulasg_Int32x3 },
@@ -10787,30 +10274,15 @@ Variable Float16x3_operator_neq_Float16x3_arg;
 Function Float16x3_operator_neq_Float16x3;
 inline constexpr std::array Float16x3_operator_neq_Float16x3_args = { &Float16x3_operator_neq_Float16x3_arg };
 
-/// operator* with Float32
-Variable Float16x3_operator_scale_Float32_arg;
-Function Float16x3_operator_scale_Float32;
-inline constexpr std::array Float16x3_operator_scale_Float32_args = { &Float16x3_operator_scale_Float32_arg };
-
 /// operator* with Float16
 Variable Float16x3_operator_scale_Float16_arg;
 Function Float16x3_operator_scale_Float16;
 inline constexpr std::array Float16x3_operator_scale_Float16_args = { &Float16x3_operator_scale_Float16_arg };
 
-/// operator* with UInt32
-Variable Float16x3_operator_scale_UInt32_arg;
-Function Float16x3_operator_scale_UInt32;
-inline constexpr std::array Float16x3_operator_scale_UInt32_args = { &Float16x3_operator_scale_UInt32_arg };
-
 /// operator* with UInt16
 Variable Float16x3_operator_scale_UInt16_arg;
 Function Float16x3_operator_scale_UInt16;
 inline constexpr std::array Float16x3_operator_scale_UInt16_args = { &Float16x3_operator_scale_UInt16_arg };
-
-/// operator* with Int32
-Variable Float16x3_operator_scale_Int32_arg;
-Function Float16x3_operator_scale_Int32;
-inline constexpr std::array Float16x3_operator_scale_Int32_args = { &Float16x3_operator_scale_Int32_arg };
 
 /// operator* with Int16
 Variable Float16x3_operator_scale_Int16_arg;
@@ -11070,18 +10542,6 @@ Float16x3::Float16x3()
     Symbol::Resolved(&Float16x3_operator_neq_Float16x3)->nameWithVarNames = "operator!=(arg : f16x3)"_c;
     Symbol::Resolved(&Float16x3_operator_neq_Float16x3)->returnTypeSymbol = &Bool8x3Type;
 
-    /// operator* with Float32
-    Float16x3_operator_scale_Float32_arg.name = "arg"_c;
-    Float16x3_operator_scale_Float32_arg.type = Type::FullType{ Float32Type.name };
-    Float16x3_operator_scale_Float32.name = "operator*"_c;
-    Float16x3_operator_scale_Float32.returnType = Type::FullType { Float16x3Type.name };
-    Float16x3_operator_scale_Float32.parameters = Float16x3_operator_scale_Float32_args;
-    Symbol::Resolved(&Float16x3_operator_scale_Float32_arg)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Float16x3_operator_scale_Float32)->signature = "f16x3 operator*(f32)"_c;
-    Symbol::Resolved(&Float16x3_operator_scale_Float32)->name = "operator*(f32)"_c;
-    Symbol::Resolved(&Float16x3_operator_scale_Float32)->nameWithVarNames = "operator*(arg : f32)"_c;
-    Symbol::Resolved(&Float16x3_operator_scale_Float32)->returnTypeSymbol = &Float16x3Type;
-
     /// operator* with Float16
     Float16x3_operator_scale_Float16_arg.name = "arg"_c;
     Float16x3_operator_scale_Float16_arg.type = Type::FullType{ Float16Type.name };
@@ -11094,18 +10554,6 @@ Float16x3::Float16x3()
     Symbol::Resolved(&Float16x3_operator_scale_Float16)->nameWithVarNames = "operator*(arg : f16)"_c;
     Symbol::Resolved(&Float16x3_operator_scale_Float16)->returnTypeSymbol = &Float16x3Type;
 
-    /// operator* with UInt32
-    Float16x3_operator_scale_UInt32_arg.name = "arg"_c;
-    Float16x3_operator_scale_UInt32_arg.type = Type::FullType{ UInt32Type.name };
-    Float16x3_operator_scale_UInt32.name = "operator*"_c;
-    Float16x3_operator_scale_UInt32.returnType = Type::FullType { Float16x3Type.name };
-    Float16x3_operator_scale_UInt32.parameters = Float16x3_operator_scale_UInt32_args;
-    Symbol::Resolved(&Float16x3_operator_scale_UInt32_arg)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float16x3_operator_scale_UInt32)->signature = "f16x3 operator*(u32)"_c;
-    Symbol::Resolved(&Float16x3_operator_scale_UInt32)->name = "operator*(u32)"_c;
-    Symbol::Resolved(&Float16x3_operator_scale_UInt32)->nameWithVarNames = "operator*(arg : u32)"_c;
-    Symbol::Resolved(&Float16x3_operator_scale_UInt32)->returnTypeSymbol = &Float16x3Type;
-
     /// operator* with UInt16
     Float16x3_operator_scale_UInt16_arg.name = "arg"_c;
     Float16x3_operator_scale_UInt16_arg.type = Type::FullType{ UInt16Type.name };
@@ -11117,18 +10565,6 @@ Float16x3::Float16x3()
     Symbol::Resolved(&Float16x3_operator_scale_UInt16)->name = "operator*(u16)"_c;
     Symbol::Resolved(&Float16x3_operator_scale_UInt16)->nameWithVarNames = "operator*(arg : u16)"_c;
     Symbol::Resolved(&Float16x3_operator_scale_UInt16)->returnTypeSymbol = &Float16x3Type;
-
-    /// operator* with Int32
-    Float16x3_operator_scale_Int32_arg.name = "arg"_c;
-    Float16x3_operator_scale_Int32_arg.type = Type::FullType{ Int32Type.name };
-    Float16x3_operator_scale_Int32.name = "operator*"_c;
-    Float16x3_operator_scale_Int32.returnType = Type::FullType { Float16x3Type.name };
-    Float16x3_operator_scale_Int32.parameters = Float16x3_operator_scale_Int32_args;
-    Symbol::Resolved(&Float16x3_operator_scale_Int32_arg)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float16x3_operator_scale_Int32)->signature = "f16x3 operator*(i32)"_c;
-    Symbol::Resolved(&Float16x3_operator_scale_Int32)->name = "operator*(i32)"_c;
-    Symbol::Resolved(&Float16x3_operator_scale_Int32)->nameWithVarNames = "operator*(arg : i32)"_c;
-    Symbol::Resolved(&Float16x3_operator_scale_Int32)->returnTypeSymbol = &Float16x3Type;
 
     /// operator* with Int16
     Float16x3_operator_scale_Int16_arg.name = "arg"_c;
@@ -11178,7 +10614,7 @@ Float16x3::Float16x3()
     Symbol::Resolved(&Float16x3_operator_transform_Float32x3x4)->nameWithVarNames = "operator*(arg : f32x3x4)"_c;
     Symbol::Resolved(&Float16x3_operator_transform_Float32x3x4)->returnTypeSymbol = &Float16x4Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 296> { 
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 290> { 
         std::pair{ "b"_c, &Float16Type },
         std::pair{ "bb"_c, &Float16x2Type },
         std::pair{ "bbb"_c, &Float16x3Type },
@@ -11264,25 +10700,19 @@ Float16x3::Float16x3()
         std::pair{ "operator%"_c, &Float16x3_operator_mod_Float16x3 },
         std::pair{ "operator%(f16x3)"_c, &Float16x3_operator_mod_Float16x3 },
         std::pair{ "operator*"_c, &Float16x3_operator_mul_Float16x3 },
-        std::pair{ "operator*"_c, &Float16x3_operator_scale_Float32 },
         std::pair{ "operator*"_c, &Float16x3_operator_scale_Float16 },
-        std::pair{ "operator*"_c, &Float16x3_operator_scale_UInt32 },
         std::pair{ "operator*"_c, &Float16x3_operator_scale_UInt16 },
-        std::pair{ "operator*"_c, &Float16x3_operator_scale_Int32 },
         std::pair{ "operator*"_c, &Float16x3_operator_scale_Int16 },
         std::pair{ "operator*"_c, &Float16x3_operator_transform_Float32x3x2 },
         std::pair{ "operator*"_c, &Float16x3_operator_transform_Float32x3x3 },
         std::pair{ "operator*"_c, &Float16x3_operator_transform_Float32x3x4 },
         std::pair{ "operator*(f16)"_c, &Float16x3_operator_scale_Float16 },
         std::pair{ "operator*(f16x3)"_c, &Float16x3_operator_mul_Float16x3 },
-        std::pair{ "operator*(f32)"_c, &Float16x3_operator_scale_Float32 },
         std::pair{ "operator*(f32x3x2)"_c, &Float16x3_operator_transform_Float32x3x2 },
         std::pair{ "operator*(f32x3x3)"_c, &Float16x3_operator_transform_Float32x3x3 },
         std::pair{ "operator*(f32x3x4)"_c, &Float16x3_operator_transform_Float32x3x4 },
         std::pair{ "operator*(i16)"_c, &Float16x3_operator_scale_Int16 },
-        std::pair{ "operator*(i32)"_c, &Float16x3_operator_scale_Int32 },
         std::pair{ "operator*(u16)"_c, &Float16x3_operator_scale_UInt16 },
-        std::pair{ "operator*(u32)"_c, &Float16x3_operator_scale_UInt32 },
         std::pair{ "operator*="_c, &Float16x3_operator_mulasg_Float16x3 },
         std::pair{ "operator*=(f16x3)"_c, &Float16x3_operator_mulasg_Float16x3 },
         std::pair{ "operator+"_c, &Float16x3_operator_add_Float16x3 },
@@ -11574,30 +11004,15 @@ Variable UInt16x3_operator_neq_UInt16x3_arg;
 Function UInt16x3_operator_neq_UInt16x3;
 inline constexpr std::array UInt16x3_operator_neq_UInt16x3_args = { &UInt16x3_operator_neq_UInt16x3_arg };
 
-/// operator* with Float32
-Variable UInt16x3_operator_scale_Float32_arg;
-Function UInt16x3_operator_scale_Float32;
-inline constexpr std::array UInt16x3_operator_scale_Float32_args = { &UInt16x3_operator_scale_Float32_arg };
-
 /// operator* with Float16
 Variable UInt16x3_operator_scale_Float16_arg;
 Function UInt16x3_operator_scale_Float16;
 inline constexpr std::array UInt16x3_operator_scale_Float16_args = { &UInt16x3_operator_scale_Float16_arg };
 
-/// operator* with UInt32
-Variable UInt16x3_operator_scale_UInt32_arg;
-Function UInt16x3_operator_scale_UInt32;
-inline constexpr std::array UInt16x3_operator_scale_UInt32_args = { &UInt16x3_operator_scale_UInt32_arg };
-
 /// operator* with UInt16
 Variable UInt16x3_operator_scale_UInt16_arg;
 Function UInt16x3_operator_scale_UInt16;
 inline constexpr std::array UInt16x3_operator_scale_UInt16_args = { &UInt16x3_operator_scale_UInt16_arg };
-
-/// operator* with Int32
-Variable UInt16x3_operator_scale_Int32_arg;
-Function UInt16x3_operator_scale_Int32;
-inline constexpr std::array UInt16x3_operator_scale_Int32_args = { &UInt16x3_operator_scale_Int32_arg };
 
 /// operator* with Int16
 Variable UInt16x3_operator_scale_Int16_arg;
@@ -11892,41 +11307,17 @@ UInt16x3::UInt16x3()
     Symbol::Resolved(&UInt16x3_operator_neq_UInt16x3)->nameWithVarNames = "operator!=(arg : u16x3)"_c;
     Symbol::Resolved(&UInt16x3_operator_neq_UInt16x3)->returnTypeSymbol = &Bool8x3Type;
 
-    /// operator* with Float32
-    UInt16x3_operator_scale_Float32_arg.name = "arg"_c;
-    UInt16x3_operator_scale_Float32_arg.type = Type::FullType{ Float32Type.name };
-    UInt16x3_operator_scale_Float32.name = "operator*"_c;
-    UInt16x3_operator_scale_Float32.returnType = Type::FullType { UInt16x3Type.name };
-    UInt16x3_operator_scale_Float32.parameters = UInt16x3_operator_scale_Float32_args;
-    Symbol::Resolved(&UInt16x3_operator_scale_Float32_arg)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&UInt16x3_operator_scale_Float32)->signature = "u16x3 operator*(f32)"_c;
-    Symbol::Resolved(&UInt16x3_operator_scale_Float32)->name = "operator*(f32)"_c;
-    Symbol::Resolved(&UInt16x3_operator_scale_Float32)->nameWithVarNames = "operator*(arg : f32)"_c;
-    Symbol::Resolved(&UInt16x3_operator_scale_Float32)->returnTypeSymbol = &UInt16x3Type;
-
     /// operator* with Float16
     UInt16x3_operator_scale_Float16_arg.name = "arg"_c;
     UInt16x3_operator_scale_Float16_arg.type = Type::FullType{ Float16Type.name };
     UInt16x3_operator_scale_Float16.name = "operator*"_c;
-    UInt16x3_operator_scale_Float16.returnType = Type::FullType { UInt16x3Type.name };
+    UInt16x3_operator_scale_Float16.returnType = Type::FullType { Float16x3Type.name };
     UInt16x3_operator_scale_Float16.parameters = UInt16x3_operator_scale_Float16_args;
     Symbol::Resolved(&UInt16x3_operator_scale_Float16_arg)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&UInt16x3_operator_scale_Float16)->signature = "u16x3 operator*(f16)"_c;
+    Symbol::Resolved(&UInt16x3_operator_scale_Float16)->signature = "f16x3 operator*(f16)"_c;
     Symbol::Resolved(&UInt16x3_operator_scale_Float16)->name = "operator*(f16)"_c;
     Symbol::Resolved(&UInt16x3_operator_scale_Float16)->nameWithVarNames = "operator*(arg : f16)"_c;
-    Symbol::Resolved(&UInt16x3_operator_scale_Float16)->returnTypeSymbol = &UInt16x3Type;
-
-    /// operator* with UInt32
-    UInt16x3_operator_scale_UInt32_arg.name = "arg"_c;
-    UInt16x3_operator_scale_UInt32_arg.type = Type::FullType{ UInt32Type.name };
-    UInt16x3_operator_scale_UInt32.name = "operator*"_c;
-    UInt16x3_operator_scale_UInt32.returnType = Type::FullType { UInt16x3Type.name };
-    UInt16x3_operator_scale_UInt32.parameters = UInt16x3_operator_scale_UInt32_args;
-    Symbol::Resolved(&UInt16x3_operator_scale_UInt32_arg)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&UInt16x3_operator_scale_UInt32)->signature = "u16x3 operator*(u32)"_c;
-    Symbol::Resolved(&UInt16x3_operator_scale_UInt32)->name = "operator*(u32)"_c;
-    Symbol::Resolved(&UInt16x3_operator_scale_UInt32)->nameWithVarNames = "operator*(arg : u32)"_c;
-    Symbol::Resolved(&UInt16x3_operator_scale_UInt32)->returnTypeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&UInt16x3_operator_scale_Float16)->returnTypeSymbol = &Float16x3Type;
 
     /// operator* with UInt16
     UInt16x3_operator_scale_UInt16_arg.name = "arg"_c;
@@ -11939,18 +11330,6 @@ UInt16x3::UInt16x3()
     Symbol::Resolved(&UInt16x3_operator_scale_UInt16)->name = "operator*(u16)"_c;
     Symbol::Resolved(&UInt16x3_operator_scale_UInt16)->nameWithVarNames = "operator*(arg : u16)"_c;
     Symbol::Resolved(&UInt16x3_operator_scale_UInt16)->returnTypeSymbol = &UInt16x3Type;
-
-    /// operator* with Int32
-    UInt16x3_operator_scale_Int32_arg.name = "arg"_c;
-    UInt16x3_operator_scale_Int32_arg.type = Type::FullType{ Int32Type.name };
-    UInt16x3_operator_scale_Int32.name = "operator*"_c;
-    UInt16x3_operator_scale_Int32.returnType = Type::FullType { UInt16x3Type.name };
-    UInt16x3_operator_scale_Int32.parameters = UInt16x3_operator_scale_Int32_args;
-    Symbol::Resolved(&UInt16x3_operator_scale_Int32_arg)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&UInt16x3_operator_scale_Int32)->signature = "u16x3 operator*(i32)"_c;
-    Symbol::Resolved(&UInt16x3_operator_scale_Int32)->name = "operator*(i32)"_c;
-    Symbol::Resolved(&UInt16x3_operator_scale_Int32)->nameWithVarNames = "operator*(arg : i32)"_c;
-    Symbol::Resolved(&UInt16x3_operator_scale_Int32)->returnTypeSymbol = &UInt16x3Type;
 
     /// operator* with Int16
     UInt16x3_operator_scale_Int16_arg.name = "arg"_c;
@@ -12084,7 +11463,7 @@ UInt16x3::UInt16x3()
     Symbol::Resolved(&UInt16x3_operator_rhsasg_UInt16x3)->nameWithVarNames = "operator>>=(arg : u16x3)"_c;
     Symbol::Resolved(&UInt16x3_operator_rhsasg_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 310> { 
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 304> { 
         std::pair{ "b"_c, &UInt16Type },
         std::pair{ "bb"_c, &UInt16x2Type },
         std::pair{ "bbb"_c, &UInt16x3Type },
@@ -12174,19 +11553,13 @@ UInt16x3::UInt16x3()
         std::pair{ "operator&="_c, &UInt16x3_operator_andasg_UInt16x3 },
         std::pair{ "operator&=(u16x3)"_c, &UInt16x3_operator_andasg_UInt16x3 },
         std::pair{ "operator*"_c, &UInt16x3_operator_mul_UInt16x3 },
-        std::pair{ "operator*"_c, &UInt16x3_operator_scale_Float32 },
         std::pair{ "operator*"_c, &UInt16x3_operator_scale_Float16 },
-        std::pair{ "operator*"_c, &UInt16x3_operator_scale_UInt32 },
         std::pair{ "operator*"_c, &UInt16x3_operator_scale_UInt16 },
-        std::pair{ "operator*"_c, &UInt16x3_operator_scale_Int32 },
         std::pair{ "operator*"_c, &UInt16x3_operator_scale_Int16 },
         std::pair{ "operator*(f16)"_c, &UInt16x3_operator_scale_Float16 },
-        std::pair{ "operator*(f32)"_c, &UInt16x3_operator_scale_Float32 },
         std::pair{ "operator*(i16)"_c, &UInt16x3_operator_scale_Int16 },
-        std::pair{ "operator*(i32)"_c, &UInt16x3_operator_scale_Int32 },
         std::pair{ "operator*(u16)"_c, &UInt16x3_operator_scale_UInt16 },
         std::pair{ "operator*(u16x3)"_c, &UInt16x3_operator_mul_UInt16x3 },
-        std::pair{ "operator*(u32)"_c, &UInt16x3_operator_scale_UInt32 },
         std::pair{ "operator*="_c, &UInt16x3_operator_mulasg_UInt16x3 },
         std::pair{ "operator*=(u16x3)"_c, &UInt16x3_operator_mulasg_UInt16x3 },
         std::pair{ "operator+"_c, &UInt16x3_operator_add_UInt16x3 },
@@ -12494,30 +11867,15 @@ Variable Int16x3_operator_neq_Int16x3_arg;
 Function Int16x3_operator_neq_Int16x3;
 inline constexpr std::array Int16x3_operator_neq_Int16x3_args = { &Int16x3_operator_neq_Int16x3_arg };
 
-/// operator* with Float32
-Variable Int16x3_operator_scale_Float32_arg;
-Function Int16x3_operator_scale_Float32;
-inline constexpr std::array Int16x3_operator_scale_Float32_args = { &Int16x3_operator_scale_Float32_arg };
-
 /// operator* with Float16
 Variable Int16x3_operator_scale_Float16_arg;
 Function Int16x3_operator_scale_Float16;
 inline constexpr std::array Int16x3_operator_scale_Float16_args = { &Int16x3_operator_scale_Float16_arg };
 
-/// operator* with UInt32
-Variable Int16x3_operator_scale_UInt32_arg;
-Function Int16x3_operator_scale_UInt32;
-inline constexpr std::array Int16x3_operator_scale_UInt32_args = { &Int16x3_operator_scale_UInt32_arg };
-
 /// operator* with UInt16
 Variable Int16x3_operator_scale_UInt16_arg;
 Function Int16x3_operator_scale_UInt16;
 inline constexpr std::array Int16x3_operator_scale_UInt16_args = { &Int16x3_operator_scale_UInt16_arg };
-
-/// operator* with Int32
-Variable Int16x3_operator_scale_Int32_arg;
-Function Int16x3_operator_scale_Int32;
-inline constexpr std::array Int16x3_operator_scale_Int32_args = { &Int16x3_operator_scale_Int32_arg };
 
 /// operator* with Int16
 Variable Int16x3_operator_scale_Int16_arg;
@@ -12812,41 +12170,17 @@ Int16x3::Int16x3()
     Symbol::Resolved(&Int16x3_operator_neq_Int16x3)->nameWithVarNames = "operator!=(arg : i16x3)"_c;
     Symbol::Resolved(&Int16x3_operator_neq_Int16x3)->returnTypeSymbol = &Bool8x3Type;
 
-    /// operator* with Float32
-    Int16x3_operator_scale_Float32_arg.name = "arg"_c;
-    Int16x3_operator_scale_Float32_arg.type = Type::FullType{ Float32Type.name };
-    Int16x3_operator_scale_Float32.name = "operator*"_c;
-    Int16x3_operator_scale_Float32.returnType = Type::FullType { Int16x3Type.name };
-    Int16x3_operator_scale_Float32.parameters = Int16x3_operator_scale_Float32_args;
-    Symbol::Resolved(&Int16x3_operator_scale_Float32_arg)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Int16x3_operator_scale_Float32)->signature = "i16x3 operator*(f32)"_c;
-    Symbol::Resolved(&Int16x3_operator_scale_Float32)->name = "operator*(f32)"_c;
-    Symbol::Resolved(&Int16x3_operator_scale_Float32)->nameWithVarNames = "operator*(arg : f32)"_c;
-    Symbol::Resolved(&Int16x3_operator_scale_Float32)->returnTypeSymbol = &Int16x3Type;
-
     /// operator* with Float16
     Int16x3_operator_scale_Float16_arg.name = "arg"_c;
     Int16x3_operator_scale_Float16_arg.type = Type::FullType{ Float16Type.name };
     Int16x3_operator_scale_Float16.name = "operator*"_c;
-    Int16x3_operator_scale_Float16.returnType = Type::FullType { Int16x3Type.name };
+    Int16x3_operator_scale_Float16.returnType = Type::FullType { Float16x3Type.name };
     Int16x3_operator_scale_Float16.parameters = Int16x3_operator_scale_Float16_args;
     Symbol::Resolved(&Int16x3_operator_scale_Float16_arg)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Int16x3_operator_scale_Float16)->signature = "i16x3 operator*(f16)"_c;
+    Symbol::Resolved(&Int16x3_operator_scale_Float16)->signature = "f16x3 operator*(f16)"_c;
     Symbol::Resolved(&Int16x3_operator_scale_Float16)->name = "operator*(f16)"_c;
     Symbol::Resolved(&Int16x3_operator_scale_Float16)->nameWithVarNames = "operator*(arg : f16)"_c;
-    Symbol::Resolved(&Int16x3_operator_scale_Float16)->returnTypeSymbol = &Int16x3Type;
-
-    /// operator* with UInt32
-    Int16x3_operator_scale_UInt32_arg.name = "arg"_c;
-    Int16x3_operator_scale_UInt32_arg.type = Type::FullType{ UInt32Type.name };
-    Int16x3_operator_scale_UInt32.name = "operator*"_c;
-    Int16x3_operator_scale_UInt32.returnType = Type::FullType { Int16x3Type.name };
-    Int16x3_operator_scale_UInt32.parameters = Int16x3_operator_scale_UInt32_args;
-    Symbol::Resolved(&Int16x3_operator_scale_UInt32_arg)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Int16x3_operator_scale_UInt32)->signature = "i16x3 operator*(u32)"_c;
-    Symbol::Resolved(&Int16x3_operator_scale_UInt32)->name = "operator*(u32)"_c;
-    Symbol::Resolved(&Int16x3_operator_scale_UInt32)->nameWithVarNames = "operator*(arg : u32)"_c;
-    Symbol::Resolved(&Int16x3_operator_scale_UInt32)->returnTypeSymbol = &Int16x3Type;
+    Symbol::Resolved(&Int16x3_operator_scale_Float16)->returnTypeSymbol = &Float16x3Type;
 
     /// operator* with UInt16
     Int16x3_operator_scale_UInt16_arg.name = "arg"_c;
@@ -12859,18 +12193,6 @@ Int16x3::Int16x3()
     Symbol::Resolved(&Int16x3_operator_scale_UInt16)->name = "operator*(u16)"_c;
     Symbol::Resolved(&Int16x3_operator_scale_UInt16)->nameWithVarNames = "operator*(arg : u16)"_c;
     Symbol::Resolved(&Int16x3_operator_scale_UInt16)->returnTypeSymbol = &Int16x3Type;
-
-    /// operator* with Int32
-    Int16x3_operator_scale_Int32_arg.name = "arg"_c;
-    Int16x3_operator_scale_Int32_arg.type = Type::FullType{ Int32Type.name };
-    Int16x3_operator_scale_Int32.name = "operator*"_c;
-    Int16x3_operator_scale_Int32.returnType = Type::FullType { Int16x3Type.name };
-    Int16x3_operator_scale_Int32.parameters = Int16x3_operator_scale_Int32_args;
-    Symbol::Resolved(&Int16x3_operator_scale_Int32_arg)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Int16x3_operator_scale_Int32)->signature = "i16x3 operator*(i32)"_c;
-    Symbol::Resolved(&Int16x3_operator_scale_Int32)->name = "operator*(i32)"_c;
-    Symbol::Resolved(&Int16x3_operator_scale_Int32)->nameWithVarNames = "operator*(arg : i32)"_c;
-    Symbol::Resolved(&Int16x3_operator_scale_Int32)->returnTypeSymbol = &Int16x3Type;
 
     /// operator* with Int16
     Int16x3_operator_scale_Int16_arg.name = "arg"_c;
@@ -13004,7 +12326,7 @@ Int16x3::Int16x3()
     Symbol::Resolved(&Int16x3_operator_rhsasg_Int16x3)->nameWithVarNames = "operator>>=(arg : i16x3)"_c;
     Symbol::Resolved(&Int16x3_operator_rhsasg_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 310> { 
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 304> { 
         std::pair{ "b"_c, &Int16Type },
         std::pair{ "bb"_c, &Int16x2Type },
         std::pair{ "bbb"_c, &Int16x3Type },
@@ -13094,19 +12416,13 @@ Int16x3::Int16x3()
         std::pair{ "operator&="_c, &Int16x3_operator_andasg_Int16x3 },
         std::pair{ "operator&=(i16x3)"_c, &Int16x3_operator_andasg_Int16x3 },
         std::pair{ "operator*"_c, &Int16x3_operator_mul_Int16x3 },
-        std::pair{ "operator*"_c, &Int16x3_operator_scale_Float32 },
         std::pair{ "operator*"_c, &Int16x3_operator_scale_Float16 },
-        std::pair{ "operator*"_c, &Int16x3_operator_scale_UInt32 },
         std::pair{ "operator*"_c, &Int16x3_operator_scale_UInt16 },
-        std::pair{ "operator*"_c, &Int16x3_operator_scale_Int32 },
         std::pair{ "operator*"_c, &Int16x3_operator_scale_Int16 },
         std::pair{ "operator*(f16)"_c, &Int16x3_operator_scale_Float16 },
-        std::pair{ "operator*(f32)"_c, &Int16x3_operator_scale_Float32 },
         std::pair{ "operator*(i16)"_c, &Int16x3_operator_scale_Int16 },
         std::pair{ "operator*(i16x3)"_c, &Int16x3_operator_mul_Int16x3 },
-        std::pair{ "operator*(i32)"_c, &Int16x3_operator_scale_Int32 },
         std::pair{ "operator*(u16)"_c, &Int16x3_operator_scale_UInt16 },
-        std::pair{ "operator*(u32)"_c, &Int16x3_operator_scale_UInt32 },
         std::pair{ "operator*="_c, &Int16x3_operator_mulasg_Int16x3 },
         std::pair{ "operator*=(i16x3)"_c, &Int16x3_operator_mulasg_Int16x3 },
         std::pair{ "operator+"_c, &Int16x3_operator_add_Int16x3 },
@@ -13419,30 +12735,15 @@ Variable Float32x4_operator_scale_Float32_arg;
 Function Float32x4_operator_scale_Float32;
 inline constexpr std::array Float32x4_operator_scale_Float32_args = { &Float32x4_operator_scale_Float32_arg };
 
-/// operator* with Float16
-Variable Float32x4_operator_scale_Float16_arg;
-Function Float32x4_operator_scale_Float16;
-inline constexpr std::array Float32x4_operator_scale_Float16_args = { &Float32x4_operator_scale_Float16_arg };
-
 /// operator* with UInt32
 Variable Float32x4_operator_scale_UInt32_arg;
 Function Float32x4_operator_scale_UInt32;
 inline constexpr std::array Float32x4_operator_scale_UInt32_args = { &Float32x4_operator_scale_UInt32_arg };
 
-/// operator* with UInt16
-Variable Float32x4_operator_scale_UInt16_arg;
-Function Float32x4_operator_scale_UInt16;
-inline constexpr std::array Float32x4_operator_scale_UInt16_args = { &Float32x4_operator_scale_UInt16_arg };
-
 /// operator* with Int32
 Variable Float32x4_operator_scale_Int32_arg;
 Function Float32x4_operator_scale_Int32;
 inline constexpr std::array Float32x4_operator_scale_Int32_args = { &Float32x4_operator_scale_Int32_arg };
-
-/// operator* with Int16
-Variable Float32x4_operator_scale_Int16_arg;
-Function Float32x4_operator_scale_Int16;
-inline constexpr std::array Float32x4_operator_scale_Int16_args = { &Float32x4_operator_scale_Int16_arg };
 
 /// operator* with Float32x4x2
 Variable Float32x4_operator_transform_Float32x4x2_arg;
@@ -13709,18 +13010,6 @@ Float32x4::Float32x4()
     Symbol::Resolved(&Float32x4_operator_scale_Float32)->nameWithVarNames = "operator*(arg : f32)"_c;
     Symbol::Resolved(&Float32x4_operator_scale_Float32)->returnTypeSymbol = &Float32x4Type;
 
-    /// operator* with Float16
-    Float32x4_operator_scale_Float16_arg.name = "arg"_c;
-    Float32x4_operator_scale_Float16_arg.type = Type::FullType{ Float16Type.name };
-    Float32x4_operator_scale_Float16.name = "operator*"_c;
-    Float32x4_operator_scale_Float16.returnType = Type::FullType { Float32x4Type.name };
-    Float32x4_operator_scale_Float16.parameters = Float32x4_operator_scale_Float16_args;
-    Symbol::Resolved(&Float32x4_operator_scale_Float16_arg)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Float32x4_operator_scale_Float16)->signature = "f32x4 operator*(f16)"_c;
-    Symbol::Resolved(&Float32x4_operator_scale_Float16)->name = "operator*(f16)"_c;
-    Symbol::Resolved(&Float32x4_operator_scale_Float16)->nameWithVarNames = "operator*(arg : f16)"_c;
-    Symbol::Resolved(&Float32x4_operator_scale_Float16)->returnTypeSymbol = &Float32x4Type;
-
     /// operator* with UInt32
     Float32x4_operator_scale_UInt32_arg.name = "arg"_c;
     Float32x4_operator_scale_UInt32_arg.type = Type::FullType{ UInt32Type.name };
@@ -13733,18 +13022,6 @@ Float32x4::Float32x4()
     Symbol::Resolved(&Float32x4_operator_scale_UInt32)->nameWithVarNames = "operator*(arg : u32)"_c;
     Symbol::Resolved(&Float32x4_operator_scale_UInt32)->returnTypeSymbol = &Float32x4Type;
 
-    /// operator* with UInt16
-    Float32x4_operator_scale_UInt16_arg.name = "arg"_c;
-    Float32x4_operator_scale_UInt16_arg.type = Type::FullType{ UInt16Type.name };
-    Float32x4_operator_scale_UInt16.name = "operator*"_c;
-    Float32x4_operator_scale_UInt16.returnType = Type::FullType { Float32x4Type.name };
-    Float32x4_operator_scale_UInt16.parameters = Float32x4_operator_scale_UInt16_args;
-    Symbol::Resolved(&Float32x4_operator_scale_UInt16_arg)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float32x4_operator_scale_UInt16)->signature = "f32x4 operator*(u16)"_c;
-    Symbol::Resolved(&Float32x4_operator_scale_UInt16)->name = "operator*(u16)"_c;
-    Symbol::Resolved(&Float32x4_operator_scale_UInt16)->nameWithVarNames = "operator*(arg : u16)"_c;
-    Symbol::Resolved(&Float32x4_operator_scale_UInt16)->returnTypeSymbol = &Float32x4Type;
-
     /// operator* with Int32
     Float32x4_operator_scale_Int32_arg.name = "arg"_c;
     Float32x4_operator_scale_Int32_arg.type = Type::FullType{ Int32Type.name };
@@ -13756,18 +13033,6 @@ Float32x4::Float32x4()
     Symbol::Resolved(&Float32x4_operator_scale_Int32)->name = "operator*(i32)"_c;
     Symbol::Resolved(&Float32x4_operator_scale_Int32)->nameWithVarNames = "operator*(arg : i32)"_c;
     Symbol::Resolved(&Float32x4_operator_scale_Int32)->returnTypeSymbol = &Float32x4Type;
-
-    /// operator* with Int16
-    Float32x4_operator_scale_Int16_arg.name = "arg"_c;
-    Float32x4_operator_scale_Int16_arg.type = Type::FullType{ Int16Type.name };
-    Float32x4_operator_scale_Int16.name = "operator*"_c;
-    Float32x4_operator_scale_Int16.returnType = Type::FullType { Float32x4Type.name };
-    Float32x4_operator_scale_Int16.parameters = Float32x4_operator_scale_Int16_args;
-    Symbol::Resolved(&Float32x4_operator_scale_Int16_arg)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float32x4_operator_scale_Int16)->signature = "f32x4 operator*(i16)"_c;
-    Symbol::Resolved(&Float32x4_operator_scale_Int16)->name = "operator*(i16)"_c;
-    Symbol::Resolved(&Float32x4_operator_scale_Int16)->nameWithVarNames = "operator*(arg : i16)"_c;
-    Symbol::Resolved(&Float32x4_operator_scale_Int16)->returnTypeSymbol = &Float32x4Type;
 
     /// operator* with Float32x4x2
     Float32x4_operator_transform_Float32x4x2_arg.name = "arg"_c;
@@ -13805,7 +13070,7 @@ Float32x4::Float32x4()
     Symbol::Resolved(&Float32x4_operator_transform_Float32x4x4)->nameWithVarNames = "operator*(arg : f32x4x4)"_c;
     Symbol::Resolved(&Float32x4_operator_transform_Float32x4x4)->returnTypeSymbol = &Float32x4Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 736> { 
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 730> { 
         std::pair{ "a"_c, &Float32Type },
         std::pair{ "aa"_c, &Float32x2Type },
         std::pair{ "aaa"_c, &Float32x3Type },
@@ -14067,23 +13332,17 @@ Float32x4::Float32x4()
         std::pair{ "operator%(f32x4)"_c, &Float32x4_operator_mod_Float32x4 },
         std::pair{ "operator*"_c, &Float32x4_operator_mul_Float32x4 },
         std::pair{ "operator*"_c, &Float32x4_operator_scale_Float32 },
-        std::pair{ "operator*"_c, &Float32x4_operator_scale_Float16 },
         std::pair{ "operator*"_c, &Float32x4_operator_scale_UInt32 },
-        std::pair{ "operator*"_c, &Float32x4_operator_scale_UInt16 },
         std::pair{ "operator*"_c, &Float32x4_operator_scale_Int32 },
-        std::pair{ "operator*"_c, &Float32x4_operator_scale_Int16 },
         std::pair{ "operator*"_c, &Float32x4_operator_transform_Float32x4x2 },
         std::pair{ "operator*"_c, &Float32x4_operator_transform_Float32x4x3 },
         std::pair{ "operator*"_c, &Float32x4_operator_transform_Float32x4x4 },
-        std::pair{ "operator*(f16)"_c, &Float32x4_operator_scale_Float16 },
         std::pair{ "operator*(f32)"_c, &Float32x4_operator_scale_Float32 },
         std::pair{ "operator*(f32x4)"_c, &Float32x4_operator_mul_Float32x4 },
         std::pair{ "operator*(f32x4x2)"_c, &Float32x4_operator_transform_Float32x4x2 },
         std::pair{ "operator*(f32x4x3)"_c, &Float32x4_operator_transform_Float32x4x3 },
         std::pair{ "operator*(f32x4x4)"_c, &Float32x4_operator_transform_Float32x4x4 },
-        std::pair{ "operator*(i16)"_c, &Float32x4_operator_scale_Int16 },
         std::pair{ "operator*(i32)"_c, &Float32x4_operator_scale_Int32 },
-        std::pair{ "operator*(u16)"_c, &Float32x4_operator_scale_UInt16 },
         std::pair{ "operator*(u32)"_c, &Float32x4_operator_scale_UInt32 },
         std::pair{ "operator*="_c, &Float32x4_operator_mulasg_Float32x4 },
         std::pair{ "operator*=(f32x4)"_c, &Float32x4_operator_mulasg_Float32x4 },
@@ -14646,30 +13905,15 @@ Variable UInt32x4_operator_scale_Float32_arg;
 Function UInt32x4_operator_scale_Float32;
 inline constexpr std::array UInt32x4_operator_scale_Float32_args = { &UInt32x4_operator_scale_Float32_arg };
 
-/// operator* with Float16
-Variable UInt32x4_operator_scale_Float16_arg;
-Function UInt32x4_operator_scale_Float16;
-inline constexpr std::array UInt32x4_operator_scale_Float16_args = { &UInt32x4_operator_scale_Float16_arg };
-
 /// operator* with UInt32
 Variable UInt32x4_operator_scale_UInt32_arg;
 Function UInt32x4_operator_scale_UInt32;
 inline constexpr std::array UInt32x4_operator_scale_UInt32_args = { &UInt32x4_operator_scale_UInt32_arg };
 
-/// operator* with UInt16
-Variable UInt32x4_operator_scale_UInt16_arg;
-Function UInt32x4_operator_scale_UInt16;
-inline constexpr std::array UInt32x4_operator_scale_UInt16_args = { &UInt32x4_operator_scale_UInt16_arg };
-
 /// operator* with Int32
 Variable UInt32x4_operator_scale_Int32_arg;
 Function UInt32x4_operator_scale_Int32;
 inline constexpr std::array UInt32x4_operator_scale_Int32_args = { &UInt32x4_operator_scale_Int32_arg };
-
-/// operator* with Int16
-Variable UInt32x4_operator_scale_Int16_arg;
-Function UInt32x4_operator_scale_Int16;
-inline constexpr std::array UInt32x4_operator_scale_Int16_args = { &UInt32x4_operator_scale_Int16_arg };
 
 /// operator| with UInt32x4
 Variable UInt32x4_operator_or_UInt32x4_arg;
@@ -14963,25 +14207,13 @@ UInt32x4::UInt32x4()
     UInt32x4_operator_scale_Float32_arg.name = "arg"_c;
     UInt32x4_operator_scale_Float32_arg.type = Type::FullType{ Float32Type.name };
     UInt32x4_operator_scale_Float32.name = "operator*"_c;
-    UInt32x4_operator_scale_Float32.returnType = Type::FullType { UInt32x4Type.name };
+    UInt32x4_operator_scale_Float32.returnType = Type::FullType { Float32x4Type.name };
     UInt32x4_operator_scale_Float32.parameters = UInt32x4_operator_scale_Float32_args;
     Symbol::Resolved(&UInt32x4_operator_scale_Float32_arg)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&UInt32x4_operator_scale_Float32)->signature = "u32x4 operator*(f32)"_c;
+    Symbol::Resolved(&UInt32x4_operator_scale_Float32)->signature = "f32x4 operator*(f32)"_c;
     Symbol::Resolved(&UInt32x4_operator_scale_Float32)->name = "operator*(f32)"_c;
     Symbol::Resolved(&UInt32x4_operator_scale_Float32)->nameWithVarNames = "operator*(arg : f32)"_c;
-    Symbol::Resolved(&UInt32x4_operator_scale_Float32)->returnTypeSymbol = &UInt32x4Type;
-
-    /// operator* with Float16
-    UInt32x4_operator_scale_Float16_arg.name = "arg"_c;
-    UInt32x4_operator_scale_Float16_arg.type = Type::FullType{ Float16Type.name };
-    UInt32x4_operator_scale_Float16.name = "operator*"_c;
-    UInt32x4_operator_scale_Float16.returnType = Type::FullType { UInt32x4Type.name };
-    UInt32x4_operator_scale_Float16.parameters = UInt32x4_operator_scale_Float16_args;
-    Symbol::Resolved(&UInt32x4_operator_scale_Float16_arg)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&UInt32x4_operator_scale_Float16)->signature = "u32x4 operator*(f16)"_c;
-    Symbol::Resolved(&UInt32x4_operator_scale_Float16)->name = "operator*(f16)"_c;
-    Symbol::Resolved(&UInt32x4_operator_scale_Float16)->nameWithVarNames = "operator*(arg : f16)"_c;
-    Symbol::Resolved(&UInt32x4_operator_scale_Float16)->returnTypeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&UInt32x4_operator_scale_Float32)->returnTypeSymbol = &Float32x4Type;
 
     /// operator* with UInt32
     UInt32x4_operator_scale_UInt32_arg.name = "arg"_c;
@@ -14995,18 +14227,6 @@ UInt32x4::UInt32x4()
     Symbol::Resolved(&UInt32x4_operator_scale_UInt32)->nameWithVarNames = "operator*(arg : u32)"_c;
     Symbol::Resolved(&UInt32x4_operator_scale_UInt32)->returnTypeSymbol = &UInt32x4Type;
 
-    /// operator* with UInt16
-    UInt32x4_operator_scale_UInt16_arg.name = "arg"_c;
-    UInt32x4_operator_scale_UInt16_arg.type = Type::FullType{ UInt16Type.name };
-    UInt32x4_operator_scale_UInt16.name = "operator*"_c;
-    UInt32x4_operator_scale_UInt16.returnType = Type::FullType { UInt32x4Type.name };
-    UInt32x4_operator_scale_UInt16.parameters = UInt32x4_operator_scale_UInt16_args;
-    Symbol::Resolved(&UInt32x4_operator_scale_UInt16_arg)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&UInt32x4_operator_scale_UInt16)->signature = "u32x4 operator*(u16)"_c;
-    Symbol::Resolved(&UInt32x4_operator_scale_UInt16)->name = "operator*(u16)"_c;
-    Symbol::Resolved(&UInt32x4_operator_scale_UInt16)->nameWithVarNames = "operator*(arg : u16)"_c;
-    Symbol::Resolved(&UInt32x4_operator_scale_UInt16)->returnTypeSymbol = &UInt32x4Type;
-
     /// operator* with Int32
     UInt32x4_operator_scale_Int32_arg.name = "arg"_c;
     UInt32x4_operator_scale_Int32_arg.type = Type::FullType{ Int32Type.name };
@@ -15018,18 +14238,6 @@ UInt32x4::UInt32x4()
     Symbol::Resolved(&UInt32x4_operator_scale_Int32)->name = "operator*(i32)"_c;
     Symbol::Resolved(&UInt32x4_operator_scale_Int32)->nameWithVarNames = "operator*(arg : i32)"_c;
     Symbol::Resolved(&UInt32x4_operator_scale_Int32)->returnTypeSymbol = &UInt32x4Type;
-
-    /// operator* with Int16
-    UInt32x4_operator_scale_Int16_arg.name = "arg"_c;
-    UInt32x4_operator_scale_Int16_arg.type = Type::FullType{ Int16Type.name };
-    UInt32x4_operator_scale_Int16.name = "operator*"_c;
-    UInt32x4_operator_scale_Int16.returnType = Type::FullType { UInt32x4Type.name };
-    UInt32x4_operator_scale_Int16.parameters = UInt32x4_operator_scale_Int16_args;
-    Symbol::Resolved(&UInt32x4_operator_scale_Int16_arg)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&UInt32x4_operator_scale_Int16)->signature = "u32x4 operator*(i16)"_c;
-    Symbol::Resolved(&UInt32x4_operator_scale_Int16)->name = "operator*(i16)"_c;
-    Symbol::Resolved(&UInt32x4_operator_scale_Int16)->nameWithVarNames = "operator*(arg : i16)"_c;
-    Symbol::Resolved(&UInt32x4_operator_scale_Int16)->returnTypeSymbol = &UInt32x4Type;
 
     /// operator| with UInt32x4
     UInt32x4_operator_or_UInt32x4_arg.name = "arg"_c;
@@ -15151,7 +14359,7 @@ UInt32x4::UInt32x4()
     Symbol::Resolved(&UInt32x4_operator_rhsasg_UInt32x4)->nameWithVarNames = "operator>>=(arg : u32x4)"_c;
     Symbol::Resolved(&UInt32x4_operator_rhsasg_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 750> { 
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 744> { 
         std::pair{ "a"_c, &UInt32Type },
         std::pair{ "aa"_c, &UInt32x2Type },
         std::pair{ "aaa"_c, &UInt32x3Type },
@@ -15417,16 +14625,10 @@ UInt32x4::UInt32x4()
         std::pair{ "operator&=(u32x4)"_c, &UInt32x4_operator_andasg_UInt32x4 },
         std::pair{ "operator*"_c, &UInt32x4_operator_mul_UInt32x4 },
         std::pair{ "operator*"_c, &UInt32x4_operator_scale_Float32 },
-        std::pair{ "operator*"_c, &UInt32x4_operator_scale_Float16 },
         std::pair{ "operator*"_c, &UInt32x4_operator_scale_UInt32 },
-        std::pair{ "operator*"_c, &UInt32x4_operator_scale_UInt16 },
         std::pair{ "operator*"_c, &UInt32x4_operator_scale_Int32 },
-        std::pair{ "operator*"_c, &UInt32x4_operator_scale_Int16 },
-        std::pair{ "operator*(f16)"_c, &UInt32x4_operator_scale_Float16 },
         std::pair{ "operator*(f32)"_c, &UInt32x4_operator_scale_Float32 },
-        std::pair{ "operator*(i16)"_c, &UInt32x4_operator_scale_Int16 },
         std::pair{ "operator*(i32)"_c, &UInt32x4_operator_scale_Int32 },
-        std::pair{ "operator*(u16)"_c, &UInt32x4_operator_scale_UInt16 },
         std::pair{ "operator*(u32)"_c, &UInt32x4_operator_scale_UInt32 },
         std::pair{ "operator*(u32x4)"_c, &UInt32x4_operator_mul_UInt32x4 },
         std::pair{ "operator*="_c, &UInt32x4_operator_mulasg_UInt32x4 },
@@ -16006,30 +15208,15 @@ Variable Int32x4_operator_scale_Float32_arg;
 Function Int32x4_operator_scale_Float32;
 inline constexpr std::array Int32x4_operator_scale_Float32_args = { &Int32x4_operator_scale_Float32_arg };
 
-/// operator* with Float16
-Variable Int32x4_operator_scale_Float16_arg;
-Function Int32x4_operator_scale_Float16;
-inline constexpr std::array Int32x4_operator_scale_Float16_args = { &Int32x4_operator_scale_Float16_arg };
-
 /// operator* with UInt32
 Variable Int32x4_operator_scale_UInt32_arg;
 Function Int32x4_operator_scale_UInt32;
 inline constexpr std::array Int32x4_operator_scale_UInt32_args = { &Int32x4_operator_scale_UInt32_arg };
 
-/// operator* with UInt16
-Variable Int32x4_operator_scale_UInt16_arg;
-Function Int32x4_operator_scale_UInt16;
-inline constexpr std::array Int32x4_operator_scale_UInt16_args = { &Int32x4_operator_scale_UInt16_arg };
-
 /// operator* with Int32
 Variable Int32x4_operator_scale_Int32_arg;
 Function Int32x4_operator_scale_Int32;
 inline constexpr std::array Int32x4_operator_scale_Int32_args = { &Int32x4_operator_scale_Int32_arg };
-
-/// operator* with Int16
-Variable Int32x4_operator_scale_Int16_arg;
-Function Int32x4_operator_scale_Int16;
-inline constexpr std::array Int32x4_operator_scale_Int16_args = { &Int32x4_operator_scale_Int16_arg };
 
 /// operator| with Int32x4
 Variable Int32x4_operator_or_Int32x4_arg;
@@ -16323,25 +15510,13 @@ Int32x4::Int32x4()
     Int32x4_operator_scale_Float32_arg.name = "arg"_c;
     Int32x4_operator_scale_Float32_arg.type = Type::FullType{ Float32Type.name };
     Int32x4_operator_scale_Float32.name = "operator*"_c;
-    Int32x4_operator_scale_Float32.returnType = Type::FullType { Int32x4Type.name };
+    Int32x4_operator_scale_Float32.returnType = Type::FullType { Float32x4Type.name };
     Int32x4_operator_scale_Float32.parameters = Int32x4_operator_scale_Float32_args;
     Symbol::Resolved(&Int32x4_operator_scale_Float32_arg)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Int32x4_operator_scale_Float32)->signature = "i32x4 operator*(f32)"_c;
+    Symbol::Resolved(&Int32x4_operator_scale_Float32)->signature = "f32x4 operator*(f32)"_c;
     Symbol::Resolved(&Int32x4_operator_scale_Float32)->name = "operator*(f32)"_c;
     Symbol::Resolved(&Int32x4_operator_scale_Float32)->nameWithVarNames = "operator*(arg : f32)"_c;
-    Symbol::Resolved(&Int32x4_operator_scale_Float32)->returnTypeSymbol = &Int32x4Type;
-
-    /// operator* with Float16
-    Int32x4_operator_scale_Float16_arg.name = "arg"_c;
-    Int32x4_operator_scale_Float16_arg.type = Type::FullType{ Float16Type.name };
-    Int32x4_operator_scale_Float16.name = "operator*"_c;
-    Int32x4_operator_scale_Float16.returnType = Type::FullType { Int32x4Type.name };
-    Int32x4_operator_scale_Float16.parameters = Int32x4_operator_scale_Float16_args;
-    Symbol::Resolved(&Int32x4_operator_scale_Float16_arg)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Int32x4_operator_scale_Float16)->signature = "i32x4 operator*(f16)"_c;
-    Symbol::Resolved(&Int32x4_operator_scale_Float16)->name = "operator*(f16)"_c;
-    Symbol::Resolved(&Int32x4_operator_scale_Float16)->nameWithVarNames = "operator*(arg : f16)"_c;
-    Symbol::Resolved(&Int32x4_operator_scale_Float16)->returnTypeSymbol = &Int32x4Type;
+    Symbol::Resolved(&Int32x4_operator_scale_Float32)->returnTypeSymbol = &Float32x4Type;
 
     /// operator* with UInt32
     Int32x4_operator_scale_UInt32_arg.name = "arg"_c;
@@ -16355,18 +15530,6 @@ Int32x4::Int32x4()
     Symbol::Resolved(&Int32x4_operator_scale_UInt32)->nameWithVarNames = "operator*(arg : u32)"_c;
     Symbol::Resolved(&Int32x4_operator_scale_UInt32)->returnTypeSymbol = &Int32x4Type;
 
-    /// operator* with UInt16
-    Int32x4_operator_scale_UInt16_arg.name = "arg"_c;
-    Int32x4_operator_scale_UInt16_arg.type = Type::FullType{ UInt16Type.name };
-    Int32x4_operator_scale_UInt16.name = "operator*"_c;
-    Int32x4_operator_scale_UInt16.returnType = Type::FullType { Int32x4Type.name };
-    Int32x4_operator_scale_UInt16.parameters = Int32x4_operator_scale_UInt16_args;
-    Symbol::Resolved(&Int32x4_operator_scale_UInt16_arg)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Int32x4_operator_scale_UInt16)->signature = "i32x4 operator*(u16)"_c;
-    Symbol::Resolved(&Int32x4_operator_scale_UInt16)->name = "operator*(u16)"_c;
-    Symbol::Resolved(&Int32x4_operator_scale_UInt16)->nameWithVarNames = "operator*(arg : u16)"_c;
-    Symbol::Resolved(&Int32x4_operator_scale_UInt16)->returnTypeSymbol = &Int32x4Type;
-
     /// operator* with Int32
     Int32x4_operator_scale_Int32_arg.name = "arg"_c;
     Int32x4_operator_scale_Int32_arg.type = Type::FullType{ Int32Type.name };
@@ -16378,18 +15541,6 @@ Int32x4::Int32x4()
     Symbol::Resolved(&Int32x4_operator_scale_Int32)->name = "operator*(i32)"_c;
     Symbol::Resolved(&Int32x4_operator_scale_Int32)->nameWithVarNames = "operator*(arg : i32)"_c;
     Symbol::Resolved(&Int32x4_operator_scale_Int32)->returnTypeSymbol = &Int32x4Type;
-
-    /// operator* with Int16
-    Int32x4_operator_scale_Int16_arg.name = "arg"_c;
-    Int32x4_operator_scale_Int16_arg.type = Type::FullType{ Int16Type.name };
-    Int32x4_operator_scale_Int16.name = "operator*"_c;
-    Int32x4_operator_scale_Int16.returnType = Type::FullType { Int32x4Type.name };
-    Int32x4_operator_scale_Int16.parameters = Int32x4_operator_scale_Int16_args;
-    Symbol::Resolved(&Int32x4_operator_scale_Int16_arg)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Int32x4_operator_scale_Int16)->signature = "i32x4 operator*(i16)"_c;
-    Symbol::Resolved(&Int32x4_operator_scale_Int16)->name = "operator*(i16)"_c;
-    Symbol::Resolved(&Int32x4_operator_scale_Int16)->nameWithVarNames = "operator*(arg : i16)"_c;
-    Symbol::Resolved(&Int32x4_operator_scale_Int16)->returnTypeSymbol = &Int32x4Type;
 
     /// operator| with Int32x4
     Int32x4_operator_or_Int32x4_arg.name = "arg"_c;
@@ -16511,7 +15662,7 @@ Int32x4::Int32x4()
     Symbol::Resolved(&Int32x4_operator_rhsasg_Int32x4)->nameWithVarNames = "operator>>=(arg : i32x4)"_c;
     Symbol::Resolved(&Int32x4_operator_rhsasg_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 750> { 
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 744> { 
         std::pair{ "a"_c, &Int32Type },
         std::pair{ "aa"_c, &Int32x2Type },
         std::pair{ "aaa"_c, &Int32x3Type },
@@ -16777,17 +15928,11 @@ Int32x4::Int32x4()
         std::pair{ "operator&=(i32x4)"_c, &Int32x4_operator_andasg_Int32x4 },
         std::pair{ "operator*"_c, &Int32x4_operator_mul_Int32x4 },
         std::pair{ "operator*"_c, &Int32x4_operator_scale_Float32 },
-        std::pair{ "operator*"_c, &Int32x4_operator_scale_Float16 },
         std::pair{ "operator*"_c, &Int32x4_operator_scale_UInt32 },
-        std::pair{ "operator*"_c, &Int32x4_operator_scale_UInt16 },
         std::pair{ "operator*"_c, &Int32x4_operator_scale_Int32 },
-        std::pair{ "operator*"_c, &Int32x4_operator_scale_Int16 },
-        std::pair{ "operator*(f16)"_c, &Int32x4_operator_scale_Float16 },
         std::pair{ "operator*(f32)"_c, &Int32x4_operator_scale_Float32 },
-        std::pair{ "operator*(i16)"_c, &Int32x4_operator_scale_Int16 },
         std::pair{ "operator*(i32)"_c, &Int32x4_operator_scale_Int32 },
         std::pair{ "operator*(i32x4)"_c, &Int32x4_operator_mul_Int32x4 },
-        std::pair{ "operator*(u16)"_c, &Int32x4_operator_scale_UInt16 },
         std::pair{ "operator*(u32)"_c, &Int32x4_operator_scale_UInt32 },
         std::pair{ "operator*="_c, &Int32x4_operator_mulasg_Int32x4 },
         std::pair{ "operator*=(i32x4)"_c, &Int32x4_operator_mulasg_Int32x4 },
@@ -18208,30 +17353,15 @@ Variable Float16x4_operator_neq_Float16x4_arg;
 Function Float16x4_operator_neq_Float16x4;
 inline constexpr std::array Float16x4_operator_neq_Float16x4_args = { &Float16x4_operator_neq_Float16x4_arg };
 
-/// operator* with Float32
-Variable Float16x4_operator_scale_Float32_arg;
-Function Float16x4_operator_scale_Float32;
-inline constexpr std::array Float16x4_operator_scale_Float32_args = { &Float16x4_operator_scale_Float32_arg };
-
 /// operator* with Float16
 Variable Float16x4_operator_scale_Float16_arg;
 Function Float16x4_operator_scale_Float16;
 inline constexpr std::array Float16x4_operator_scale_Float16_args = { &Float16x4_operator_scale_Float16_arg };
 
-/// operator* with UInt32
-Variable Float16x4_operator_scale_UInt32_arg;
-Function Float16x4_operator_scale_UInt32;
-inline constexpr std::array Float16x4_operator_scale_UInt32_args = { &Float16x4_operator_scale_UInt32_arg };
-
 /// operator* with UInt16
 Variable Float16x4_operator_scale_UInt16_arg;
 Function Float16x4_operator_scale_UInt16;
 inline constexpr std::array Float16x4_operator_scale_UInt16_args = { &Float16x4_operator_scale_UInt16_arg };
-
-/// operator* with Int32
-Variable Float16x4_operator_scale_Int32_arg;
-Function Float16x4_operator_scale_Int32;
-inline constexpr std::array Float16x4_operator_scale_Int32_args = { &Float16x4_operator_scale_Int32_arg };
 
 /// operator* with Int16
 Variable Float16x4_operator_scale_Int16_arg;
@@ -18491,18 +17621,6 @@ Float16x4::Float16x4()
     Symbol::Resolved(&Float16x4_operator_neq_Float16x4)->nameWithVarNames = "operator!=(arg : f16x4)"_c;
     Symbol::Resolved(&Float16x4_operator_neq_Float16x4)->returnTypeSymbol = &Bool8x4Type;
 
-    /// operator* with Float32
-    Float16x4_operator_scale_Float32_arg.name = "arg"_c;
-    Float16x4_operator_scale_Float32_arg.type = Type::FullType{ Float32Type.name };
-    Float16x4_operator_scale_Float32.name = "operator*"_c;
-    Float16x4_operator_scale_Float32.returnType = Type::FullType { Float16x4Type.name };
-    Float16x4_operator_scale_Float32.parameters = Float16x4_operator_scale_Float32_args;
-    Symbol::Resolved(&Float16x4_operator_scale_Float32_arg)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Float16x4_operator_scale_Float32)->signature = "f16x4 operator*(f32)"_c;
-    Symbol::Resolved(&Float16x4_operator_scale_Float32)->name = "operator*(f32)"_c;
-    Symbol::Resolved(&Float16x4_operator_scale_Float32)->nameWithVarNames = "operator*(arg : f32)"_c;
-    Symbol::Resolved(&Float16x4_operator_scale_Float32)->returnTypeSymbol = &Float16x4Type;
-
     /// operator* with Float16
     Float16x4_operator_scale_Float16_arg.name = "arg"_c;
     Float16x4_operator_scale_Float16_arg.type = Type::FullType{ Float16Type.name };
@@ -18515,18 +17633,6 @@ Float16x4::Float16x4()
     Symbol::Resolved(&Float16x4_operator_scale_Float16)->nameWithVarNames = "operator*(arg : f16)"_c;
     Symbol::Resolved(&Float16x4_operator_scale_Float16)->returnTypeSymbol = &Float16x4Type;
 
-    /// operator* with UInt32
-    Float16x4_operator_scale_UInt32_arg.name = "arg"_c;
-    Float16x4_operator_scale_UInt32_arg.type = Type::FullType{ UInt32Type.name };
-    Float16x4_operator_scale_UInt32.name = "operator*"_c;
-    Float16x4_operator_scale_UInt32.returnType = Type::FullType { Float16x4Type.name };
-    Float16x4_operator_scale_UInt32.parameters = Float16x4_operator_scale_UInt32_args;
-    Symbol::Resolved(&Float16x4_operator_scale_UInt32_arg)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float16x4_operator_scale_UInt32)->signature = "f16x4 operator*(u32)"_c;
-    Symbol::Resolved(&Float16x4_operator_scale_UInt32)->name = "operator*(u32)"_c;
-    Symbol::Resolved(&Float16x4_operator_scale_UInt32)->nameWithVarNames = "operator*(arg : u32)"_c;
-    Symbol::Resolved(&Float16x4_operator_scale_UInt32)->returnTypeSymbol = &Float16x4Type;
-
     /// operator* with UInt16
     Float16x4_operator_scale_UInt16_arg.name = "arg"_c;
     Float16x4_operator_scale_UInt16_arg.type = Type::FullType{ UInt16Type.name };
@@ -18538,18 +17644,6 @@ Float16x4::Float16x4()
     Symbol::Resolved(&Float16x4_operator_scale_UInt16)->name = "operator*(u16)"_c;
     Symbol::Resolved(&Float16x4_operator_scale_UInt16)->nameWithVarNames = "operator*(arg : u16)"_c;
     Symbol::Resolved(&Float16x4_operator_scale_UInt16)->returnTypeSymbol = &Float16x4Type;
-
-    /// operator* with Int32
-    Float16x4_operator_scale_Int32_arg.name = "arg"_c;
-    Float16x4_operator_scale_Int32_arg.type = Type::FullType{ Int32Type.name };
-    Float16x4_operator_scale_Int32.name = "operator*"_c;
-    Float16x4_operator_scale_Int32.returnType = Type::FullType { Float16x4Type.name };
-    Float16x4_operator_scale_Int32.parameters = Float16x4_operator_scale_Int32_args;
-    Symbol::Resolved(&Float16x4_operator_scale_Int32_arg)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float16x4_operator_scale_Int32)->signature = "f16x4 operator*(i32)"_c;
-    Symbol::Resolved(&Float16x4_operator_scale_Int32)->name = "operator*(i32)"_c;
-    Symbol::Resolved(&Float16x4_operator_scale_Int32)->nameWithVarNames = "operator*(arg : i32)"_c;
-    Symbol::Resolved(&Float16x4_operator_scale_Int32)->returnTypeSymbol = &Float16x4Type;
 
     /// operator* with Int16
     Float16x4_operator_scale_Int16_arg.name = "arg"_c;
@@ -18599,7 +17693,7 @@ Float16x4::Float16x4()
     Symbol::Resolved(&Float16x4_operator_transform_Float32x4x4)->nameWithVarNames = "operator*(arg : f32x4x4)"_c;
     Symbol::Resolved(&Float16x4_operator_transform_Float32x4x4)->returnTypeSymbol = &Float16x4Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 736> { 
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 730> { 
         std::pair{ "a"_c, &Float16Type },
         std::pair{ "aa"_c, &Float16x2Type },
         std::pair{ "aaa"_c, &Float16x3Type },
@@ -18860,25 +17954,19 @@ Float16x4::Float16x4()
         std::pair{ "operator%"_c, &Float16x4_operator_mod_Float16x4 },
         std::pair{ "operator%(f16x4)"_c, &Float16x4_operator_mod_Float16x4 },
         std::pair{ "operator*"_c, &Float16x4_operator_mul_Float16x4 },
-        std::pair{ "operator*"_c, &Float16x4_operator_scale_Float32 },
         std::pair{ "operator*"_c, &Float16x4_operator_scale_Float16 },
-        std::pair{ "operator*"_c, &Float16x4_operator_scale_UInt32 },
         std::pair{ "operator*"_c, &Float16x4_operator_scale_UInt16 },
-        std::pair{ "operator*"_c, &Float16x4_operator_scale_Int32 },
         std::pair{ "operator*"_c, &Float16x4_operator_scale_Int16 },
         std::pair{ "operator*"_c, &Float16x4_operator_transform_Float32x4x2 },
         std::pair{ "operator*"_c, &Float16x4_operator_transform_Float32x4x3 },
         std::pair{ "operator*"_c, &Float16x4_operator_transform_Float32x4x4 },
         std::pair{ "operator*(f16)"_c, &Float16x4_operator_scale_Float16 },
         std::pair{ "operator*(f16x4)"_c, &Float16x4_operator_mul_Float16x4 },
-        std::pair{ "operator*(f32)"_c, &Float16x4_operator_scale_Float32 },
         std::pair{ "operator*(f32x4x2)"_c, &Float16x4_operator_transform_Float32x4x2 },
         std::pair{ "operator*(f32x4x3)"_c, &Float16x4_operator_transform_Float32x4x3 },
         std::pair{ "operator*(f32x4x4)"_c, &Float16x4_operator_transform_Float32x4x4 },
         std::pair{ "operator*(i16)"_c, &Float16x4_operator_scale_Int16 },
-        std::pair{ "operator*(i32)"_c, &Float16x4_operator_scale_Int32 },
         std::pair{ "operator*(u16)"_c, &Float16x4_operator_scale_UInt16 },
-        std::pair{ "operator*(u32)"_c, &Float16x4_operator_scale_UInt32 },
         std::pair{ "operator*="_c, &Float16x4_operator_mulasg_Float16x4 },
         std::pair{ "operator*=(f16x4)"_c, &Float16x4_operator_mulasg_Float16x4 },
         std::pair{ "operator+"_c, &Float16x4_operator_add_Float16x4 },
@@ -19435,30 +18523,15 @@ Variable UInt16x4_operator_neq_UInt16x4_arg;
 Function UInt16x4_operator_neq_UInt16x4;
 inline constexpr std::array UInt16x4_operator_neq_UInt16x4_args = { &UInt16x4_operator_neq_UInt16x4_arg };
 
-/// operator* with Float32
-Variable UInt16x4_operator_scale_Float32_arg;
-Function UInt16x4_operator_scale_Float32;
-inline constexpr std::array UInt16x4_operator_scale_Float32_args = { &UInt16x4_operator_scale_Float32_arg };
-
 /// operator* with Float16
 Variable UInt16x4_operator_scale_Float16_arg;
 Function UInt16x4_operator_scale_Float16;
 inline constexpr std::array UInt16x4_operator_scale_Float16_args = { &UInt16x4_operator_scale_Float16_arg };
 
-/// operator* with UInt32
-Variable UInt16x4_operator_scale_UInt32_arg;
-Function UInt16x4_operator_scale_UInt32;
-inline constexpr std::array UInt16x4_operator_scale_UInt32_args = { &UInt16x4_operator_scale_UInt32_arg };
-
 /// operator* with UInt16
 Variable UInt16x4_operator_scale_UInt16_arg;
 Function UInt16x4_operator_scale_UInt16;
 inline constexpr std::array UInt16x4_operator_scale_UInt16_args = { &UInt16x4_operator_scale_UInt16_arg };
-
-/// operator* with Int32
-Variable UInt16x4_operator_scale_Int32_arg;
-Function UInt16x4_operator_scale_Int32;
-inline constexpr std::array UInt16x4_operator_scale_Int32_args = { &UInt16x4_operator_scale_Int32_arg };
 
 /// operator* with Int16
 Variable UInt16x4_operator_scale_Int16_arg;
@@ -19753,41 +18826,17 @@ UInt16x4::UInt16x4()
     Symbol::Resolved(&UInt16x4_operator_neq_UInt16x4)->nameWithVarNames = "operator!=(arg : u16x4)"_c;
     Symbol::Resolved(&UInt16x4_operator_neq_UInt16x4)->returnTypeSymbol = &Bool8x4Type;
 
-    /// operator* with Float32
-    UInt16x4_operator_scale_Float32_arg.name = "arg"_c;
-    UInt16x4_operator_scale_Float32_arg.type = Type::FullType{ Float32Type.name };
-    UInt16x4_operator_scale_Float32.name = "operator*"_c;
-    UInt16x4_operator_scale_Float32.returnType = Type::FullType { UInt16x4Type.name };
-    UInt16x4_operator_scale_Float32.parameters = UInt16x4_operator_scale_Float32_args;
-    Symbol::Resolved(&UInt16x4_operator_scale_Float32_arg)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&UInt16x4_operator_scale_Float32)->signature = "u16x4 operator*(f32)"_c;
-    Symbol::Resolved(&UInt16x4_operator_scale_Float32)->name = "operator*(f32)"_c;
-    Symbol::Resolved(&UInt16x4_operator_scale_Float32)->nameWithVarNames = "operator*(arg : f32)"_c;
-    Symbol::Resolved(&UInt16x4_operator_scale_Float32)->returnTypeSymbol = &UInt16x4Type;
-
     /// operator* with Float16
     UInt16x4_operator_scale_Float16_arg.name = "arg"_c;
     UInt16x4_operator_scale_Float16_arg.type = Type::FullType{ Float16Type.name };
     UInt16x4_operator_scale_Float16.name = "operator*"_c;
-    UInt16x4_operator_scale_Float16.returnType = Type::FullType { UInt16x4Type.name };
+    UInt16x4_operator_scale_Float16.returnType = Type::FullType { Float16x4Type.name };
     UInt16x4_operator_scale_Float16.parameters = UInt16x4_operator_scale_Float16_args;
     Symbol::Resolved(&UInt16x4_operator_scale_Float16_arg)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&UInt16x4_operator_scale_Float16)->signature = "u16x4 operator*(f16)"_c;
+    Symbol::Resolved(&UInt16x4_operator_scale_Float16)->signature = "f16x4 operator*(f16)"_c;
     Symbol::Resolved(&UInt16x4_operator_scale_Float16)->name = "operator*(f16)"_c;
     Symbol::Resolved(&UInt16x4_operator_scale_Float16)->nameWithVarNames = "operator*(arg : f16)"_c;
-    Symbol::Resolved(&UInt16x4_operator_scale_Float16)->returnTypeSymbol = &UInt16x4Type;
-
-    /// operator* with UInt32
-    UInt16x4_operator_scale_UInt32_arg.name = "arg"_c;
-    UInt16x4_operator_scale_UInt32_arg.type = Type::FullType{ UInt32Type.name };
-    UInt16x4_operator_scale_UInt32.name = "operator*"_c;
-    UInt16x4_operator_scale_UInt32.returnType = Type::FullType { UInt16x4Type.name };
-    UInt16x4_operator_scale_UInt32.parameters = UInt16x4_operator_scale_UInt32_args;
-    Symbol::Resolved(&UInt16x4_operator_scale_UInt32_arg)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&UInt16x4_operator_scale_UInt32)->signature = "u16x4 operator*(u32)"_c;
-    Symbol::Resolved(&UInt16x4_operator_scale_UInt32)->name = "operator*(u32)"_c;
-    Symbol::Resolved(&UInt16x4_operator_scale_UInt32)->nameWithVarNames = "operator*(arg : u32)"_c;
-    Symbol::Resolved(&UInt16x4_operator_scale_UInt32)->returnTypeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&UInt16x4_operator_scale_Float16)->returnTypeSymbol = &Float16x4Type;
 
     /// operator* with UInt16
     UInt16x4_operator_scale_UInt16_arg.name = "arg"_c;
@@ -19800,18 +18849,6 @@ UInt16x4::UInt16x4()
     Symbol::Resolved(&UInt16x4_operator_scale_UInt16)->name = "operator*(u16)"_c;
     Symbol::Resolved(&UInt16x4_operator_scale_UInt16)->nameWithVarNames = "operator*(arg : u16)"_c;
     Symbol::Resolved(&UInt16x4_operator_scale_UInt16)->returnTypeSymbol = &UInt16x4Type;
-
-    /// operator* with Int32
-    UInt16x4_operator_scale_Int32_arg.name = "arg"_c;
-    UInt16x4_operator_scale_Int32_arg.type = Type::FullType{ Int32Type.name };
-    UInt16x4_operator_scale_Int32.name = "operator*"_c;
-    UInt16x4_operator_scale_Int32.returnType = Type::FullType { UInt16x4Type.name };
-    UInt16x4_operator_scale_Int32.parameters = UInt16x4_operator_scale_Int32_args;
-    Symbol::Resolved(&UInt16x4_operator_scale_Int32_arg)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&UInt16x4_operator_scale_Int32)->signature = "u16x4 operator*(i32)"_c;
-    Symbol::Resolved(&UInt16x4_operator_scale_Int32)->name = "operator*(i32)"_c;
-    Symbol::Resolved(&UInt16x4_operator_scale_Int32)->nameWithVarNames = "operator*(arg : i32)"_c;
-    Symbol::Resolved(&UInt16x4_operator_scale_Int32)->returnTypeSymbol = &UInt16x4Type;
 
     /// operator* with Int16
     UInt16x4_operator_scale_Int16_arg.name = "arg"_c;
@@ -19945,7 +18982,7 @@ UInt16x4::UInt16x4()
     Symbol::Resolved(&UInt16x4_operator_rhsasg_UInt16x4)->nameWithVarNames = "operator>>=(arg : u16x4)"_c;
     Symbol::Resolved(&UInt16x4_operator_rhsasg_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 750> { 
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 744> { 
         std::pair{ "a"_c, &UInt16Type },
         std::pair{ "aa"_c, &UInt16x2Type },
         std::pair{ "aaa"_c, &UInt16x3Type },
@@ -20210,19 +19247,13 @@ UInt16x4::UInt16x4()
         std::pair{ "operator&="_c, &UInt16x4_operator_andasg_UInt16x4 },
         std::pair{ "operator&=(u16x4)"_c, &UInt16x4_operator_andasg_UInt16x4 },
         std::pair{ "operator*"_c, &UInt16x4_operator_mul_UInt16x4 },
-        std::pair{ "operator*"_c, &UInt16x4_operator_scale_Float32 },
         std::pair{ "operator*"_c, &UInt16x4_operator_scale_Float16 },
-        std::pair{ "operator*"_c, &UInt16x4_operator_scale_UInt32 },
         std::pair{ "operator*"_c, &UInt16x4_operator_scale_UInt16 },
-        std::pair{ "operator*"_c, &UInt16x4_operator_scale_Int32 },
         std::pair{ "operator*"_c, &UInt16x4_operator_scale_Int16 },
         std::pair{ "operator*(f16)"_c, &UInt16x4_operator_scale_Float16 },
-        std::pair{ "operator*(f32)"_c, &UInt16x4_operator_scale_Float32 },
         std::pair{ "operator*(i16)"_c, &UInt16x4_operator_scale_Int16 },
-        std::pair{ "operator*(i32)"_c, &UInt16x4_operator_scale_Int32 },
         std::pair{ "operator*(u16)"_c, &UInt16x4_operator_scale_UInt16 },
         std::pair{ "operator*(u16x4)"_c, &UInt16x4_operator_mul_UInt16x4 },
-        std::pair{ "operator*(u32)"_c, &UInt16x4_operator_scale_UInt32 },
         std::pair{ "operator*="_c, &UInt16x4_operator_mulasg_UInt16x4 },
         std::pair{ "operator*=(u16x4)"_c, &UInt16x4_operator_mulasg_UInt16x4 },
         std::pair{ "operator+"_c, &UInt16x4_operator_add_UInt16x4 },
@@ -20795,30 +19826,15 @@ Variable Int16x4_operator_neq_Int16x4_arg;
 Function Int16x4_operator_neq_Int16x4;
 inline constexpr std::array Int16x4_operator_neq_Int16x4_args = { &Int16x4_operator_neq_Int16x4_arg };
 
-/// operator* with Float32
-Variable Int16x4_operator_scale_Float32_arg;
-Function Int16x4_operator_scale_Float32;
-inline constexpr std::array Int16x4_operator_scale_Float32_args = { &Int16x4_operator_scale_Float32_arg };
-
 /// operator* with Float16
 Variable Int16x4_operator_scale_Float16_arg;
 Function Int16x4_operator_scale_Float16;
 inline constexpr std::array Int16x4_operator_scale_Float16_args = { &Int16x4_operator_scale_Float16_arg };
 
-/// operator* with UInt32
-Variable Int16x4_operator_scale_UInt32_arg;
-Function Int16x4_operator_scale_UInt32;
-inline constexpr std::array Int16x4_operator_scale_UInt32_args = { &Int16x4_operator_scale_UInt32_arg };
-
 /// operator* with UInt16
 Variable Int16x4_operator_scale_UInt16_arg;
 Function Int16x4_operator_scale_UInt16;
 inline constexpr std::array Int16x4_operator_scale_UInt16_args = { &Int16x4_operator_scale_UInt16_arg };
-
-/// operator* with Int32
-Variable Int16x4_operator_scale_Int32_arg;
-Function Int16x4_operator_scale_Int32;
-inline constexpr std::array Int16x4_operator_scale_Int32_args = { &Int16x4_operator_scale_Int32_arg };
 
 /// operator* with Int16
 Variable Int16x4_operator_scale_Int16_arg;
@@ -21113,41 +20129,17 @@ Int16x4::Int16x4()
     Symbol::Resolved(&Int16x4_operator_neq_Int16x4)->nameWithVarNames = "operator!=(arg : i16x4)"_c;
     Symbol::Resolved(&Int16x4_operator_neq_Int16x4)->returnTypeSymbol = &Bool8x4Type;
 
-    /// operator* with Float32
-    Int16x4_operator_scale_Float32_arg.name = "arg"_c;
-    Int16x4_operator_scale_Float32_arg.type = Type::FullType{ Float32Type.name };
-    Int16x4_operator_scale_Float32.name = "operator*"_c;
-    Int16x4_operator_scale_Float32.returnType = Type::FullType { Int16x4Type.name };
-    Int16x4_operator_scale_Float32.parameters = Int16x4_operator_scale_Float32_args;
-    Symbol::Resolved(&Int16x4_operator_scale_Float32_arg)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Int16x4_operator_scale_Float32)->signature = "i16x4 operator*(f32)"_c;
-    Symbol::Resolved(&Int16x4_operator_scale_Float32)->name = "operator*(f32)"_c;
-    Symbol::Resolved(&Int16x4_operator_scale_Float32)->nameWithVarNames = "operator*(arg : f32)"_c;
-    Symbol::Resolved(&Int16x4_operator_scale_Float32)->returnTypeSymbol = &Int16x4Type;
-
     /// operator* with Float16
     Int16x4_operator_scale_Float16_arg.name = "arg"_c;
     Int16x4_operator_scale_Float16_arg.type = Type::FullType{ Float16Type.name };
     Int16x4_operator_scale_Float16.name = "operator*"_c;
-    Int16x4_operator_scale_Float16.returnType = Type::FullType { Int16x4Type.name };
+    Int16x4_operator_scale_Float16.returnType = Type::FullType { Float16x4Type.name };
     Int16x4_operator_scale_Float16.parameters = Int16x4_operator_scale_Float16_args;
     Symbol::Resolved(&Int16x4_operator_scale_Float16_arg)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Int16x4_operator_scale_Float16)->signature = "i16x4 operator*(f16)"_c;
+    Symbol::Resolved(&Int16x4_operator_scale_Float16)->signature = "f16x4 operator*(f16)"_c;
     Symbol::Resolved(&Int16x4_operator_scale_Float16)->name = "operator*(f16)"_c;
     Symbol::Resolved(&Int16x4_operator_scale_Float16)->nameWithVarNames = "operator*(arg : f16)"_c;
-    Symbol::Resolved(&Int16x4_operator_scale_Float16)->returnTypeSymbol = &Int16x4Type;
-
-    /// operator* with UInt32
-    Int16x4_operator_scale_UInt32_arg.name = "arg"_c;
-    Int16x4_operator_scale_UInt32_arg.type = Type::FullType{ UInt32Type.name };
-    Int16x4_operator_scale_UInt32.name = "operator*"_c;
-    Int16x4_operator_scale_UInt32.returnType = Type::FullType { Int16x4Type.name };
-    Int16x4_operator_scale_UInt32.parameters = Int16x4_operator_scale_UInt32_args;
-    Symbol::Resolved(&Int16x4_operator_scale_UInt32_arg)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Int16x4_operator_scale_UInt32)->signature = "i16x4 operator*(u32)"_c;
-    Symbol::Resolved(&Int16x4_operator_scale_UInt32)->name = "operator*(u32)"_c;
-    Symbol::Resolved(&Int16x4_operator_scale_UInt32)->nameWithVarNames = "operator*(arg : u32)"_c;
-    Symbol::Resolved(&Int16x4_operator_scale_UInt32)->returnTypeSymbol = &Int16x4Type;
+    Symbol::Resolved(&Int16x4_operator_scale_Float16)->returnTypeSymbol = &Float16x4Type;
 
     /// operator* with UInt16
     Int16x4_operator_scale_UInt16_arg.name = "arg"_c;
@@ -21160,18 +20152,6 @@ Int16x4::Int16x4()
     Symbol::Resolved(&Int16x4_operator_scale_UInt16)->name = "operator*(u16)"_c;
     Symbol::Resolved(&Int16x4_operator_scale_UInt16)->nameWithVarNames = "operator*(arg : u16)"_c;
     Symbol::Resolved(&Int16x4_operator_scale_UInt16)->returnTypeSymbol = &Int16x4Type;
-
-    /// operator* with Int32
-    Int16x4_operator_scale_Int32_arg.name = "arg"_c;
-    Int16x4_operator_scale_Int32_arg.type = Type::FullType{ Int32Type.name };
-    Int16x4_operator_scale_Int32.name = "operator*"_c;
-    Int16x4_operator_scale_Int32.returnType = Type::FullType { Int16x4Type.name };
-    Int16x4_operator_scale_Int32.parameters = Int16x4_operator_scale_Int32_args;
-    Symbol::Resolved(&Int16x4_operator_scale_Int32_arg)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Int16x4_operator_scale_Int32)->signature = "i16x4 operator*(i32)"_c;
-    Symbol::Resolved(&Int16x4_operator_scale_Int32)->name = "operator*(i32)"_c;
-    Symbol::Resolved(&Int16x4_operator_scale_Int32)->nameWithVarNames = "operator*(arg : i32)"_c;
-    Symbol::Resolved(&Int16x4_operator_scale_Int32)->returnTypeSymbol = &Int16x4Type;
 
     /// operator* with Int16
     Int16x4_operator_scale_Int16_arg.name = "arg"_c;
@@ -21305,7 +20285,7 @@ Int16x4::Int16x4()
     Symbol::Resolved(&Int16x4_operator_rhsasg_Int16x4)->nameWithVarNames = "operator>>=(arg : i16x4)"_c;
     Symbol::Resolved(&Int16x4_operator_rhsasg_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
-    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 750> { 
+    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 744> { 
         std::pair{ "a"_c, &Int16Type },
         std::pair{ "aa"_c, &Int16x2Type },
         std::pair{ "aaa"_c, &Int16x3Type },
@@ -21570,19 +20550,13 @@ Int16x4::Int16x4()
         std::pair{ "operator&="_c, &Int16x4_operator_andasg_Int16x4 },
         std::pair{ "operator&=(i16x4)"_c, &Int16x4_operator_andasg_Int16x4 },
         std::pair{ "operator*"_c, &Int16x4_operator_mul_Int16x4 },
-        std::pair{ "operator*"_c, &Int16x4_operator_scale_Float32 },
         std::pair{ "operator*"_c, &Int16x4_operator_scale_Float16 },
-        std::pair{ "operator*"_c, &Int16x4_operator_scale_UInt32 },
         std::pair{ "operator*"_c, &Int16x4_operator_scale_UInt16 },
-        std::pair{ "operator*"_c, &Int16x4_operator_scale_Int32 },
         std::pair{ "operator*"_c, &Int16x4_operator_scale_Int16 },
         std::pair{ "operator*(f16)"_c, &Int16x4_operator_scale_Float16 },
-        std::pair{ "operator*(f32)"_c, &Int16x4_operator_scale_Float32 },
         std::pair{ "operator*(i16)"_c, &Int16x4_operator_scale_Int16 },
         std::pair{ "operator*(i16x4)"_c, &Int16x4_operator_mul_Int16x4 },
-        std::pair{ "operator*(i32)"_c, &Int16x4_operator_scale_Int32 },
         std::pair{ "operator*(u16)"_c, &Int16x4_operator_scale_UInt16 },
-        std::pair{ "operator*(u32)"_c, &Int16x4_operator_scale_UInt32 },
         std::pair{ "operator*="_c, &Int16x4_operator_mulasg_Int16x4 },
         std::pair{ "operator*=(i16x4)"_c, &Int16x4_operator_mulasg_Int16x4 },
         std::pair{ "operator+"_c, &Int16x4_operator_add_Int16x4 },

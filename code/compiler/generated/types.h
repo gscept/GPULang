@@ -831,25 +831,13 @@ extern Function Float32x2_operator_neq_Float32x2;
 extern Variable Float32x2_operator_scale_Float32_arg;
 extern Function Float32x2_operator_scale_Float32;
 
-/// operator* with Float16
-extern Variable Float32x2_operator_scale_Float16_arg;
-extern Function Float32x2_operator_scale_Float16;
-
 /// operator* with UInt32
 extern Variable Float32x2_operator_scale_UInt32_arg;
 extern Function Float32x2_operator_scale_UInt32;
 
-/// operator* with UInt16
-extern Variable Float32x2_operator_scale_UInt16_arg;
-extern Function Float32x2_operator_scale_UInt16;
-
 /// operator* with Int32
 extern Variable Float32x2_operator_scale_Int32_arg;
 extern Function Float32x2_operator_scale_Int32;
-
-/// operator* with Int16
-extern Variable Float32x2_operator_scale_Int16_arg;
-extern Function Float32x2_operator_scale_Int16;
 
 /// operator* with Float32x2x2
 extern Variable Float32x2_operator_transform_Float32x2x2_arg;
@@ -949,25 +937,13 @@ extern Function UInt32x2_operator_neq_UInt32x2;
 extern Variable UInt32x2_operator_scale_Float32_arg;
 extern Function UInt32x2_operator_scale_Float32;
 
-/// operator* with Float16
-extern Variable UInt32x2_operator_scale_Float16_arg;
-extern Function UInt32x2_operator_scale_Float16;
-
 /// operator* with UInt32
 extern Variable UInt32x2_operator_scale_UInt32_arg;
 extern Function UInt32x2_operator_scale_UInt32;
 
-/// operator* with UInt16
-extern Variable UInt32x2_operator_scale_UInt16_arg;
-extern Function UInt32x2_operator_scale_UInt16;
-
 /// operator* with Int32
 extern Variable UInt32x2_operator_scale_Int32_arg;
 extern Function UInt32x2_operator_scale_Int32;
-
-/// operator* with Int16
-extern Variable UInt32x2_operator_scale_Int16_arg;
-extern Function UInt32x2_operator_scale_Int16;
 
 /// operator| with UInt32x2
 extern Variable UInt32x2_operator_or_UInt32x2_arg;
@@ -1095,25 +1071,13 @@ extern Function Int32x2_operator_neq_Int32x2;
 extern Variable Int32x2_operator_scale_Float32_arg;
 extern Function Int32x2_operator_scale_Float32;
 
-/// operator* with Float16
-extern Variable Int32x2_operator_scale_Float16_arg;
-extern Function Int32x2_operator_scale_Float16;
-
 /// operator* with UInt32
 extern Variable Int32x2_operator_scale_UInt32_arg;
 extern Function Int32x2_operator_scale_UInt32;
 
-/// operator* with UInt16
-extern Variable Int32x2_operator_scale_UInt16_arg;
-extern Function Int32x2_operator_scale_UInt16;
-
 /// operator* with Int32
 extern Variable Int32x2_operator_scale_Int32_arg;
 extern Function Int32x2_operator_scale_Int32;
-
-/// operator* with Int16
-extern Variable Int32x2_operator_scale_Int16_arg;
-extern Function Int32x2_operator_scale_Int16;
 
 /// operator| with Int32x2
 extern Variable Int32x2_operator_or_Int32x2_arg;
@@ -1275,25 +1239,13 @@ extern Function Float16x2_operator_eq_Float16x2;
 extern Variable Float16x2_operator_neq_Float16x2_arg;
 extern Function Float16x2_operator_neq_Float16x2;
 
-/// operator* with Float32
-extern Variable Float16x2_operator_scale_Float32_arg;
-extern Function Float16x2_operator_scale_Float32;
-
 /// operator* with Float16
 extern Variable Float16x2_operator_scale_Float16_arg;
 extern Function Float16x2_operator_scale_Float16;
 
-/// operator* with UInt32
-extern Variable Float16x2_operator_scale_UInt32_arg;
-extern Function Float16x2_operator_scale_UInt32;
-
 /// operator* with UInt16
 extern Variable Float16x2_operator_scale_UInt16_arg;
 extern Function Float16x2_operator_scale_UInt16;
-
-/// operator* with Int32
-extern Variable Float16x2_operator_scale_Int32_arg;
-extern Function Float16x2_operator_scale_Int32;
 
 /// operator* with Int16
 extern Variable Float16x2_operator_scale_Int16_arg;
@@ -1393,25 +1345,13 @@ extern Function UInt16x2_operator_eq_UInt16x2;
 extern Variable UInt16x2_operator_neq_UInt16x2_arg;
 extern Function UInt16x2_operator_neq_UInt16x2;
 
-/// operator* with Float32
-extern Variable UInt16x2_operator_scale_Float32_arg;
-extern Function UInt16x2_operator_scale_Float32;
-
 /// operator* with Float16
 extern Variable UInt16x2_operator_scale_Float16_arg;
 extern Function UInt16x2_operator_scale_Float16;
 
-/// operator* with UInt32
-extern Variable UInt16x2_operator_scale_UInt32_arg;
-extern Function UInt16x2_operator_scale_UInt32;
-
 /// operator* with UInt16
 extern Variable UInt16x2_operator_scale_UInt16_arg;
 extern Function UInt16x2_operator_scale_UInt16;
-
-/// operator* with Int32
-extern Variable UInt16x2_operator_scale_Int32_arg;
-extern Function UInt16x2_operator_scale_Int32;
 
 /// operator* with Int16
 extern Variable UInt16x2_operator_scale_Int16_arg;
@@ -1539,25 +1479,13 @@ extern Function Int16x2_operator_eq_Int16x2;
 extern Variable Int16x2_operator_neq_Int16x2_arg;
 extern Function Int16x2_operator_neq_Int16x2;
 
-/// operator* with Float32
-extern Variable Int16x2_operator_scale_Float32_arg;
-extern Function Int16x2_operator_scale_Float32;
-
 /// operator* with Float16
 extern Variable Int16x2_operator_scale_Float16_arg;
 extern Function Int16x2_operator_scale_Float16;
 
-/// operator* with UInt32
-extern Variable Int16x2_operator_scale_UInt32_arg;
-extern Function Int16x2_operator_scale_UInt32;
-
 /// operator* with UInt16
 extern Variable Int16x2_operator_scale_UInt16_arg;
 extern Function Int16x2_operator_scale_UInt16;
-
-/// operator* with Int32
-extern Variable Int16x2_operator_scale_Int32_arg;
-extern Function Int16x2_operator_scale_Int32;
 
 /// operator* with Int16
 extern Variable Int16x2_operator_scale_Int16_arg;
@@ -1689,25 +1617,13 @@ extern Function Float32x3_operator_neq_Float32x3;
 extern Variable Float32x3_operator_scale_Float32_arg;
 extern Function Float32x3_operator_scale_Float32;
 
-/// operator* with Float16
-extern Variable Float32x3_operator_scale_Float16_arg;
-extern Function Float32x3_operator_scale_Float16;
-
 /// operator* with UInt32
 extern Variable Float32x3_operator_scale_UInt32_arg;
 extern Function Float32x3_operator_scale_UInt32;
 
-/// operator* with UInt16
-extern Variable Float32x3_operator_scale_UInt16_arg;
-extern Function Float32x3_operator_scale_UInt16;
-
 /// operator* with Int32
 extern Variable Float32x3_operator_scale_Int32_arg;
 extern Function Float32x3_operator_scale_Int32;
-
-/// operator* with Int16
-extern Variable Float32x3_operator_scale_Int16_arg;
-extern Function Float32x3_operator_scale_Int16;
 
 /// operator* with Float32x3x2
 extern Variable Float32x3_operator_transform_Float32x3x2_arg;
@@ -1807,25 +1723,13 @@ extern Function UInt32x3_operator_neq_UInt32x3;
 extern Variable UInt32x3_operator_scale_Float32_arg;
 extern Function UInt32x3_operator_scale_Float32;
 
-/// operator* with Float16
-extern Variable UInt32x3_operator_scale_Float16_arg;
-extern Function UInt32x3_operator_scale_Float16;
-
 /// operator* with UInt32
 extern Variable UInt32x3_operator_scale_UInt32_arg;
 extern Function UInt32x3_operator_scale_UInt32;
 
-/// operator* with UInt16
-extern Variable UInt32x3_operator_scale_UInt16_arg;
-extern Function UInt32x3_operator_scale_UInt16;
-
 /// operator* with Int32
 extern Variable UInt32x3_operator_scale_Int32_arg;
 extern Function UInt32x3_operator_scale_Int32;
-
-/// operator* with Int16
-extern Variable UInt32x3_operator_scale_Int16_arg;
-extern Function UInt32x3_operator_scale_Int16;
 
 /// operator| with UInt32x3
 extern Variable UInt32x3_operator_or_UInt32x3_arg;
@@ -1953,25 +1857,13 @@ extern Function Int32x3_operator_neq_Int32x3;
 extern Variable Int32x3_operator_scale_Float32_arg;
 extern Function Int32x3_operator_scale_Float32;
 
-/// operator* with Float16
-extern Variable Int32x3_operator_scale_Float16_arg;
-extern Function Int32x3_operator_scale_Float16;
-
 /// operator* with UInt32
 extern Variable Int32x3_operator_scale_UInt32_arg;
 extern Function Int32x3_operator_scale_UInt32;
 
-/// operator* with UInt16
-extern Variable Int32x3_operator_scale_UInt16_arg;
-extern Function Int32x3_operator_scale_UInt16;
-
 /// operator* with Int32
 extern Variable Int32x3_operator_scale_Int32_arg;
 extern Function Int32x3_operator_scale_Int32;
-
-/// operator* with Int16
-extern Variable Int32x3_operator_scale_Int16_arg;
-extern Function Int32x3_operator_scale_Int16;
 
 /// operator| with Int32x3
 extern Variable Int32x3_operator_or_Int32x3_arg;
@@ -2133,25 +2025,13 @@ extern Function Float16x3_operator_eq_Float16x3;
 extern Variable Float16x3_operator_neq_Float16x3_arg;
 extern Function Float16x3_operator_neq_Float16x3;
 
-/// operator* with Float32
-extern Variable Float16x3_operator_scale_Float32_arg;
-extern Function Float16x3_operator_scale_Float32;
-
 /// operator* with Float16
 extern Variable Float16x3_operator_scale_Float16_arg;
 extern Function Float16x3_operator_scale_Float16;
 
-/// operator* with UInt32
-extern Variable Float16x3_operator_scale_UInt32_arg;
-extern Function Float16x3_operator_scale_UInt32;
-
 /// operator* with UInt16
 extern Variable Float16x3_operator_scale_UInt16_arg;
 extern Function Float16x3_operator_scale_UInt16;
-
-/// operator* with Int32
-extern Variable Float16x3_operator_scale_Int32_arg;
-extern Function Float16x3_operator_scale_Int32;
 
 /// operator* with Int16
 extern Variable Float16x3_operator_scale_Int16_arg;
@@ -2251,25 +2131,13 @@ extern Function UInt16x3_operator_eq_UInt16x3;
 extern Variable UInt16x3_operator_neq_UInt16x3_arg;
 extern Function UInt16x3_operator_neq_UInt16x3;
 
-/// operator* with Float32
-extern Variable UInt16x3_operator_scale_Float32_arg;
-extern Function UInt16x3_operator_scale_Float32;
-
 /// operator* with Float16
 extern Variable UInt16x3_operator_scale_Float16_arg;
 extern Function UInt16x3_operator_scale_Float16;
 
-/// operator* with UInt32
-extern Variable UInt16x3_operator_scale_UInt32_arg;
-extern Function UInt16x3_operator_scale_UInt32;
-
 /// operator* with UInt16
 extern Variable UInt16x3_operator_scale_UInt16_arg;
 extern Function UInt16x3_operator_scale_UInt16;
-
-/// operator* with Int32
-extern Variable UInt16x3_operator_scale_Int32_arg;
-extern Function UInt16x3_operator_scale_Int32;
 
 /// operator* with Int16
 extern Variable UInt16x3_operator_scale_Int16_arg;
@@ -2397,25 +2265,13 @@ extern Function Int16x3_operator_eq_Int16x3;
 extern Variable Int16x3_operator_neq_Int16x3_arg;
 extern Function Int16x3_operator_neq_Int16x3;
 
-/// operator* with Float32
-extern Variable Int16x3_operator_scale_Float32_arg;
-extern Function Int16x3_operator_scale_Float32;
-
 /// operator* with Float16
 extern Variable Int16x3_operator_scale_Float16_arg;
 extern Function Int16x3_operator_scale_Float16;
 
-/// operator* with UInt32
-extern Variable Int16x3_operator_scale_UInt32_arg;
-extern Function Int16x3_operator_scale_UInt32;
-
 /// operator* with UInt16
 extern Variable Int16x3_operator_scale_UInt16_arg;
 extern Function Int16x3_operator_scale_UInt16;
-
-/// operator* with Int32
-extern Variable Int16x3_operator_scale_Int32_arg;
-extern Function Int16x3_operator_scale_Int32;
 
 /// operator* with Int16
 extern Variable Int16x3_operator_scale_Int16_arg;
@@ -2547,25 +2403,13 @@ extern Function Float32x4_operator_neq_Float32x4;
 extern Variable Float32x4_operator_scale_Float32_arg;
 extern Function Float32x4_operator_scale_Float32;
 
-/// operator* with Float16
-extern Variable Float32x4_operator_scale_Float16_arg;
-extern Function Float32x4_operator_scale_Float16;
-
 /// operator* with UInt32
 extern Variable Float32x4_operator_scale_UInt32_arg;
 extern Function Float32x4_operator_scale_UInt32;
 
-/// operator* with UInt16
-extern Variable Float32x4_operator_scale_UInt16_arg;
-extern Function Float32x4_operator_scale_UInt16;
-
 /// operator* with Int32
 extern Variable Float32x4_operator_scale_Int32_arg;
 extern Function Float32x4_operator_scale_Int32;
-
-/// operator* with Int16
-extern Variable Float32x4_operator_scale_Int16_arg;
-extern Function Float32x4_operator_scale_Int16;
 
 /// operator* with Float32x4x2
 extern Variable Float32x4_operator_transform_Float32x4x2_arg;
@@ -2665,25 +2509,13 @@ extern Function UInt32x4_operator_neq_UInt32x4;
 extern Variable UInt32x4_operator_scale_Float32_arg;
 extern Function UInt32x4_operator_scale_Float32;
 
-/// operator* with Float16
-extern Variable UInt32x4_operator_scale_Float16_arg;
-extern Function UInt32x4_operator_scale_Float16;
-
 /// operator* with UInt32
 extern Variable UInt32x4_operator_scale_UInt32_arg;
 extern Function UInt32x4_operator_scale_UInt32;
 
-/// operator* with UInt16
-extern Variable UInt32x4_operator_scale_UInt16_arg;
-extern Function UInt32x4_operator_scale_UInt16;
-
 /// operator* with Int32
 extern Variable UInt32x4_operator_scale_Int32_arg;
 extern Function UInt32x4_operator_scale_Int32;
-
-/// operator* with Int16
-extern Variable UInt32x4_operator_scale_Int16_arg;
-extern Function UInt32x4_operator_scale_Int16;
 
 /// operator| with UInt32x4
 extern Variable UInt32x4_operator_or_UInt32x4_arg;
@@ -2811,25 +2643,13 @@ extern Function Int32x4_operator_neq_Int32x4;
 extern Variable Int32x4_operator_scale_Float32_arg;
 extern Function Int32x4_operator_scale_Float32;
 
-/// operator* with Float16
-extern Variable Int32x4_operator_scale_Float16_arg;
-extern Function Int32x4_operator_scale_Float16;
-
 /// operator* with UInt32
 extern Variable Int32x4_operator_scale_UInt32_arg;
 extern Function Int32x4_operator_scale_UInt32;
 
-/// operator* with UInt16
-extern Variable Int32x4_operator_scale_UInt16_arg;
-extern Function Int32x4_operator_scale_UInt16;
-
 /// operator* with Int32
 extern Variable Int32x4_operator_scale_Int32_arg;
 extern Function Int32x4_operator_scale_Int32;
-
-/// operator* with Int16
-extern Variable Int32x4_operator_scale_Int16_arg;
-extern Function Int32x4_operator_scale_Int16;
 
 /// operator| with Int32x4
 extern Variable Int32x4_operator_or_Int32x4_arg;
@@ -2991,25 +2811,13 @@ extern Function Float16x4_operator_eq_Float16x4;
 extern Variable Float16x4_operator_neq_Float16x4_arg;
 extern Function Float16x4_operator_neq_Float16x4;
 
-/// operator* with Float32
-extern Variable Float16x4_operator_scale_Float32_arg;
-extern Function Float16x4_operator_scale_Float32;
-
 /// operator* with Float16
 extern Variable Float16x4_operator_scale_Float16_arg;
 extern Function Float16x4_operator_scale_Float16;
 
-/// operator* with UInt32
-extern Variable Float16x4_operator_scale_UInt32_arg;
-extern Function Float16x4_operator_scale_UInt32;
-
 /// operator* with UInt16
 extern Variable Float16x4_operator_scale_UInt16_arg;
 extern Function Float16x4_operator_scale_UInt16;
-
-/// operator* with Int32
-extern Variable Float16x4_operator_scale_Int32_arg;
-extern Function Float16x4_operator_scale_Int32;
 
 /// operator* with Int16
 extern Variable Float16x4_operator_scale_Int16_arg;
@@ -3109,25 +2917,13 @@ extern Function UInt16x4_operator_eq_UInt16x4;
 extern Variable UInt16x4_operator_neq_UInt16x4_arg;
 extern Function UInt16x4_operator_neq_UInt16x4;
 
-/// operator* with Float32
-extern Variable UInt16x4_operator_scale_Float32_arg;
-extern Function UInt16x4_operator_scale_Float32;
-
 /// operator* with Float16
 extern Variable UInt16x4_operator_scale_Float16_arg;
 extern Function UInt16x4_operator_scale_Float16;
 
-/// operator* with UInt32
-extern Variable UInt16x4_operator_scale_UInt32_arg;
-extern Function UInt16x4_operator_scale_UInt32;
-
 /// operator* with UInt16
 extern Variable UInt16x4_operator_scale_UInt16_arg;
 extern Function UInt16x4_operator_scale_UInt16;
-
-/// operator* with Int32
-extern Variable UInt16x4_operator_scale_Int32_arg;
-extern Function UInt16x4_operator_scale_Int32;
 
 /// operator* with Int16
 extern Variable UInt16x4_operator_scale_Int16_arg;
@@ -3255,25 +3051,13 @@ extern Function Int16x4_operator_eq_Int16x4;
 extern Variable Int16x4_operator_neq_Int16x4_arg;
 extern Function Int16x4_operator_neq_Int16x4;
 
-/// operator* with Float32
-extern Variable Int16x4_operator_scale_Float32_arg;
-extern Function Int16x4_operator_scale_Float32;
-
 /// operator* with Float16
 extern Variable Int16x4_operator_scale_Float16_arg;
 extern Function Int16x4_operator_scale_Float16;
 
-/// operator* with UInt32
-extern Variable Int16x4_operator_scale_UInt32_arg;
-extern Function Int16x4_operator_scale_UInt32;
-
 /// operator* with UInt16
 extern Variable Int16x4_operator_scale_UInt16_arg;
 extern Function Int16x4_operator_scale_UInt16;
-
-/// operator* with Int32
-extern Variable Int16x4_operator_scale_Int32_arg;
-extern Function Int16x4_operator_scale_Int32;
 
 /// operator* with Int16
 extern Variable Int16x4_operator_scale_Int16_arg;

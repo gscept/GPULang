@@ -762,7 +762,7 @@ Compiler::Validate(Effect* root)
 
     this->performanceTimer.Start();
 
-    std::vector<Program*> programs;
+    std::vector<ProgramInstance*> programs;
     
     // push a new scope for all the parsed symbols
     this->PushScope(this->mainScope);
@@ -782,7 +782,7 @@ Compiler::Validate(Effect* root)
             break;
 
         if (sym->symbolType == Symbol::SymbolType::ProgramInstanceType)
-            programs.push_back((Program*)sym);
+            programs.push_back((ProgramInstance*)sym);
     }
 
     this->performanceTimer.Stop();
@@ -793,6 +793,59 @@ Compiler::Validate(Effect* root)
 
     if (this->options.emitTimings)
         this->performanceTimer.Print("Type checking");
+    
+    if (this->options.languageServerGeneration)
+    {
+        // setup potential debug output stream
+        std::function<void(const std::string&, const std::string&)> writeFunction = nullptr;
+        if (this->debugOutput)
+        {
+            writeFunction = [this](const std::string& name, const std::string& code)
+            {
+                TextWriter outputStream;
+                outputStream.SetPath(this->debugPath + "/" + name);
+                if (outputStream.Open())
+                {
+                    outputStream.WriteString(code);
+                    outputStream.Close();
+                }
+            };
+        }
+        this->performanceTimer.Start();
+        
+        uint32_t numAvailableThreads = std::thread::hardware_concurrency();
+        size_t threadByteSize, returnValueByteSize;
+        TransientArray<std::thread> threads(programs.size());
+        TransientArray<bool> returnValues(programs.size());
+        TransientArray<Generator*> generators(programs.size());
+        
+        // Run the code generation per thread
+        for (size_t programIndex = 0; programIndex < programs.size(); programIndex++)
+        {
+            auto program = programs[programIndex];
+            Generator* gen = CreateGenerator(this->lang, this->options);
+            generators.Append(gen);
+            new (&threads[programIndex]) std::thread([this, values = returnValues.begin(), program, programIndex, gen, &symbols = this->symbols, writeFunction]()
+            {
+                values[programIndex] = gen->Generate(this, program, symbols, writeFunction);
+            });
+        }
+        
+        for (size_t programIndex = 0; programIndex < programs.size(); programIndex++)
+        {
+            threads[programIndex].join();
+            if (!returnValues[programIndex])
+            {
+                this->messages.Append(generators[programIndex]->messages);
+            }
+            ret &= returnValues[programIndex];
+        }
+        
+        this->performanceTimer.Stop();
+        
+        if (this->options.emitTimings)
+            this->performanceTimer.Print("Code generation");
+    }
 
     return true;
 }
