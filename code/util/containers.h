@@ -44,6 +44,29 @@ struct TransientArray
         }
     }
     
+    TransientArray(const TransientArray& rhs) noexcept
+    {
+        if (rhs.size != 0)
+        {
+            this->ptr = AllocStack<TYPE>(rhs.size, this->allocatedBytes);
+            this->capacity = rhs.size;
+            
+            if (std::is_trivially_copyable<TYPE>::value)
+            {
+                memcpy(this->ptr, rhs.ptr, sizeof(TYPE) * this->capacity);
+                this->size = rhs.size;
+            }
+            else
+            {
+                for (auto& val : rhs)
+                {
+                    this->ptr[this->size++] = val;
+                }
+            }
+        }
+    }
+    
+    /*
     TransientArray(TransientArray&& rhs) noexcept
     {
         this->ptr = rhs.ptr;
@@ -55,6 +78,7 @@ struct TransientArray
         rhs.capacity = 0;
         rhs.allocatedBytes = 0;
     }
+     */
     
     TransientArray(const std::initializer_list<TYPE>& list) noexcept
     {
@@ -202,7 +226,7 @@ public:
     ~TransientArray()
     {
         if (this->ptr != nullptr)
-            DeallocStack(this->capacity, this->ptr, this->allocatedBytes);
+            DeallocStack(this->capacity, this->size, this->ptr, this->allocatedBytes);
         this->ptr = nullptr;
         this->capacity = 0;
         this->size = 0;
@@ -224,6 +248,13 @@ public:
     {
         assert(this->size + 1 <= this->capacity);
         this->ptr[this->size++] = t;
+    }
+    
+    void Append(TYPE&& t)
+    {
+        assert(this->size + 1 <= this->capacity);
+        this->ptr[this->size++] = std::forward<TYPE>(t);
+        t = TYPE();
     }
     
     const TYPE& operator[](const size_t index) const
@@ -907,9 +938,11 @@ extern size_t LeakedFixedArrayBytes;
 template<typename TYPE>
 struct FixedArray
 {
+    static constexpr size_t STACK_SIZE = 4;
     TYPE* buf = nullptr;
-    size_t capacity = 0;
+    size_t capacity = STACK_SIZE;
     size_t size = 0;
+    _smallvector<TYPE, STACK_SIZE> smallBuffer;
     
     FixedArray() {}
 
@@ -920,8 +953,12 @@ struct FixedArray
             // leak memory
             LeakedFixedArrayBytes += this->capacity;
         }
-        this->buf = AllocArray<TYPE>(list.size());
-        this->capacity = list.size();
+        this->buf = this->smallBuffer.data();
+        if (list.size() > STACK_SIZE)
+        {
+            this->buf = AllocArray<TYPE>(list.size());
+            this->capacity = list.size();
+        }
         this->size = 0;
         for (auto& val : list)
         {
@@ -939,11 +976,15 @@ struct FixedArray
     
     FixedArray(const TYPE* begin, const TYPE* end)
     {
+        this->buf = this->smallBuffer.data();
         size_t repeat = end - begin;
         if (repeat != 0)
         {
-            this->buf = AllocArray<TYPE>(repeat);
-            this->capacity = repeat;
+            if (repeat > STACK_SIZE)
+            {
+                this->buf = AllocArray<TYPE>(repeat);
+                this->capacity = repeat;
+            }
             const TYPE* it = begin;
             size_t i = 0;
             while (it != begin)
@@ -962,9 +1003,14 @@ struct FixedArray
             // leak memory
             LeakedFixedArrayBytes += this->capacity;
         }
-        this->capacity = size;
+        this->buf = this->smallBuffer.data();
+        if (size > STACK_SIZE)
+        {
+            this->buf = AllocArray<TYPE>(size);
+            this->capacity = size;
+        }
+        
         this->size = 0;
-        this->buf = AllocArray<TYPE>(size);
     }
     
     FixedArray(const std::vector<TYPE>& vec)
@@ -974,11 +1020,14 @@ struct FixedArray
             // leak memory
             LeakedFixedArrayBytes += this->capacity;
         }
-        this->capacity = vec.size();
-        this->buf = AllocArray<TYPE>(vec.size());
-        
+        this->buf = this->smallBuffer.data();
         if (!vec.empty())
         {
+            if (vec.size() > STACK_SIZE)
+            {
+                this->capacity = vec.size();
+                this->buf = AllocArray<TYPE>(vec.size());
+            }
             // If mempcy suffices, do it
             if (std::is_trivially_copy_constructible<TYPE>::value)
             {
@@ -1003,11 +1052,23 @@ struct FixedArray
             // leak memory
             LeakedFixedArrayBytes += this->capacity;
         }
-        this->capacity = rhs.capacity;
-        this->size = rhs.size;
-        this->buf = rhs.buf;
-        rhs.buf = nullptr;
-        rhs.capacity = 0;
+        if (rhs.buf == rhs.smallBuffer.data())
+        {
+            this->buf = this->smallBuffer.data();
+            this->capacity = STACK_SIZE;
+            this->size = rhs.size;
+            memcpy(this->buf, rhs.buf, rhs.size * sizeof(TYPE));
+            rhs.buf = rhs.smallBuffer.data();
+            rhs.capacity = STACK_SIZE;
+        }
+        else
+        {
+            this->buf = rhs.buf;
+            this->capacity = rhs.capacity;
+            this->size = rhs.size;
+            rhs.buf = nullptr;
+            rhs.capacity = 0;
+        }
         rhs.size = 0;
     }
     
@@ -1023,8 +1084,13 @@ struct FixedArray
             // leak memory
             LeakedFixedArrayBytes += this->capacity;
         }
-        this->buf = AllocArray<TYPE>(list.size());
-        this->capacity = list.size();
+        this->capacity = STACK_SIZE;
+        this->buf = this->smallBuffer.data();
+        if (list.size() > STACK_SIZE)
+        {
+            this->buf = AllocArray<TYPE>(list.size());
+            this->capacity = list.size();
+        }
         this->size = 0;
         for (auto& val : list)
         {
@@ -1045,14 +1111,19 @@ struct FixedArray
     constexpr FixedArray<TYPE>& operator=(const std::array<U, SIZE>& list)
     {
         static_assert(std::is_assignable<TYPE, U>::value, "Types must be assignable");
-        
-        this->buf = AllocArray<TYPE>(SIZE);
+        this->capacity = STACK_SIZE;
+        this->buf = this->smallBuffer.data();
+        if (SIZE > STACK_SIZE)
+        {
+            this->buf = AllocArray<TYPE>(SIZE);
+            this->capacity = SIZE;
+        }
         for (size_t i = 0; i < SIZE; i++)
         {
             this->buf[i] = list[i];
         }
         this->size = SIZE;
-        this->capacity = SIZE;
+        
         return *this;
     }
     
@@ -1063,13 +1134,17 @@ struct FixedArray
             // leak memory
             LeakedFixedArrayBytes += this->capacity;
         }
-        this->buf = nullptr;
-        this->capacity = vec.capacity;
+        this->capacity = STACK_SIZE;
+        this->buf = this->smallBuffer.data();
         this->size = 0;
         
         if (vec.size > 0)
         {
-            this->buf = AllocArray<TYPE>(vec.capacity);
+            if (vec.size > STACK_SIZE)
+            {
+                this->buf = AllocArray<TYPE>(vec.capacity);
+                this->capacity = vec.capacity;
+            }
             // If mempcy suffices, do it
             if (std::is_trivially_copy_constructible<TYPE>::value)
             {
@@ -1089,11 +1164,23 @@ struct FixedArray
 
     void operator=(FixedArray<TYPE>&& vec)
     {
-        this->buf = vec.buf;
-        this->capacity = vec.capacity;
-        this->size = vec.size;
-        vec.buf = nullptr;
-        vec.capacity = 0;
+        if (vec.buf == vec.smallBuffer.data())
+        {
+            this->buf = this->smallBuffer.data();
+            this->capacity = STACK_SIZE;
+            this->size = vec.size;
+            memcpy(this->buf, vec.buf, vec.size * sizeof(TYPE));
+            vec.buf = vec.smallBuffer.data();
+            vec.capacity = STACK_SIZE;
+        }
+        else
+        {
+            this->buf = vec.buf;
+            this->capacity = vec.capacity;
+            this->size = vec.size;
+            vec.buf = nullptr;
+            vec.capacity = 0;
+        }
         vec.size = 0;
     }
     
@@ -1112,13 +1199,18 @@ struct FixedArray
             // leak memory
             LeakedFixedArrayBytes += this->capacity;
         }
-        this->capacity = vec.size;
-        this->buf = nullptr;
+        
+        this->capacity = STACK_SIZE;
+        this->buf = this->smallBuffer.data();
         this->size = 0;
         
         if (vec.size > 0)
         {
-            this->buf = AllocArray<TYPE>(vec.size);
+            if (vec.size > STACK_SIZE)
+            {
+                this->buf = AllocArray<TYPE>(vec.size);
+                this->capacity = vec.size;
+            }
             // If mempcy suffices, do it
             if (std::is_trivially_copy_constructible<TYPE>::value)
             {
@@ -1150,11 +1242,16 @@ struct FixedArray
             // leak memory
             LeakedFixedArrayBytes += this->capacity;
         }
-        this->capacity = vec.size;
-        this->buf = nullptr;
+        
+        this->capacity = STACK_SIZE;
+        this->buf = this->smallBuffer.data();
         if (vec.size > 0)
         {
-            this->buf = AllocArray<TYPE>(vec.size);
+            if (vec.size > STACK_SIZE)
+            {
+                this->buf = AllocArray<TYPE>(vec.size);
+                this->capacity = vec.size;
+            }
 
             // Otherwise, run copy constructors for every element
             for (auto& v : vec)
@@ -1166,36 +1263,10 @@ struct FixedArray
     
     ~FixedArray()
     {
-        if (this->buf != nullptr)
+        if (this->buf != this->smallBuffer.data())
         {
             // leak memory
             LeakedFixedArrayBytes += this->capacity;
-        }
-    }
-    
-    void Append(const TYPE& t)
-    {
-        assert(this->size < this->capacity);
-        this->buf[this->size++] = t;
-    }
-    
-    // Allow stack allocated arrays to insert themselves, given enough space is available
-    void Append(const TransientArray<TYPE>& vec)
-    {
-        assert(this->size + vec.size < this->capacity);
-        // If mempcy suffices, do it
-        if (std::is_trivially_copy_constructible<TYPE>::value)
-        {
-            this->size = vec.size();
-            memcpy(this->buf, vec.data(), vec.size() * sizeof(TYPE));
-        }
-        else
-        {
-            // Otherwise, run copy constructors for every element
-            for (auto& v : vec)
-            {
-                this->buf[this->size++] = v;
-            }
         }
     }
     

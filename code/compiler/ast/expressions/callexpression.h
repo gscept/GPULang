@@ -49,10 +49,10 @@ struct CallExpression : public Expression
 
         Function* function;
 
-        std::vector<Type::FullType> argumentTypes;
-        std::vector<Type*> argTypes;
-        std::vector<Storage> argStorages;
-        std::vector<Function*> conversions;
+        FixedArray<Type::FullType> argumentTypes;
+        FixedArray<Type*> argTypes;
+        FixedArray<Storage> argStorages;
+        FixedArray<Function*> conversions;
     };
     __Resolved* thisResolved;
 };

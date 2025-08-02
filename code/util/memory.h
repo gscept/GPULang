@@ -429,16 +429,16 @@ AllocStack(size_t count, size_t& numBytes)
 */
 template<typename TYPE>
 void 
-DeallocStack(size_t count, TYPE* buf, size_t numBytes)
+DeallocStack(size_t count, size_t size, TYPE* buf, size_t numBytes)
 {
+    if (!std::is_trivially_destructible<TYPE>::value)
+    {
+        for (size_t i = size-1; i != SIZE_T_MAX; i--)
+            (buf + i)->~TYPE();
+    }
     const char* HeapPtr = (const char*)ThreadLocalHeapPtr;
     TYPE* topPtr = (TYPE*)(HeapPtr - count * sizeof(TYPE));
     assert(topPtr == buf);
-    if (!std::is_trivially_destructible<TYPE>::value)
-    {
-        for (size_t i = 0; i < count; i++)
-            (buf + i)->~TYPE();
-    }
     ThreadLocalHeapPtr = (void*)(HeapPtr - numBytes);
 }
 

@@ -2544,8 +2544,8 @@ GeneratePointerTypeSPIRV(
     Type::FullType returnPtrType = type;
     if (!type.IsPointer())
     {
-        returnPtrType.modifiers.Append(Type::FullType::Modifier::Pointer);
-        returnPtrType.modifierValues.Append(nullptr);
+        returnPtrType.modifiers = TransientArray<Type::FullType::Modifier>::Concatenate(returnPtrType.modifiers, Type::FullType::Modifier::Pointer);
+        returnPtrType.modifierValues = TransientArray<Expression*>::Concatenate(returnPtrType.modifierValues, (Expression*)nullptr);
     }
     SPIRVResult returnType = GenerateTypeSPIRV(compiler, generator, returnPtrType, typeSymbol, storage, isInterface);
 
@@ -3767,7 +3767,7 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
 
 
         // If the conversions list is non empty, it means we have to convert every argument
-        bool argumentsNeedsConversion = !resolvedCall->conversions.empty();
+        bool argumentsNeedsConversion = resolvedCall->conversions.size != 0;
         
         // Create arg list from argument expressions
         std::string argList = "";

@@ -118,8 +118,8 @@ UnaryExpression::Resolve(Compiler* compiler)
         case '&':
         {
             // Add modifier to type
-            type.modifiers.Append(Type::FullType::Modifier::Pointer);
-            type.modifierValues.Append(nullptr);
+            type.modifiers = TransientArray<Type::FullType::Modifier>::Concatenate(type.modifiers, Type::FullType::Modifier::Pointer);
+            type.modifierValues = TransientArray<Expression*>::Concatenate(type.modifierValues, (Expression*)nullptr);
             break;
         }
         case '-':

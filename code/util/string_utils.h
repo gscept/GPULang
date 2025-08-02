@@ -532,7 +532,7 @@ struct TransientString
         } (), ...);
 
         this->buf[this->size] = '\0';
-        DeallocStack(numArgs, subStringLengths, numBytes);
+        DeallocStack(numArgs, numArgs, subStringLengths, numBytes);
     }
     
     bool operator==(const char* buf) const
@@ -810,7 +810,7 @@ struct GrowingString
         this->data[this->size] = '\n';
         this->data[this->size + 1] = '\0';
         this->size += 1;
-        DeallocStack(numArgs, subStringLengths, numBytes);
+        DeallocStack(numArgs, numArgs, subStringLengths, numBytes);
     }
 
     template<typename ...ARGS>
@@ -853,7 +853,7 @@ struct GrowingString
         this->data[this->size] = '\n';
         this->data[this->size + 1] = '\0';
         this->size += 1;
-        DeallocStack(numArgs, subStringLengths, numBytes);
+        DeallocStack(numArgs, numArgs, subStringLengths, numBytes);
     }
 
     void Append(const char* str)
@@ -1224,27 +1224,78 @@ struct FixedString
 
     bool operator<(const FixedString& rhs) const
     {
-        return strcmp(this->buf, rhs.buf) < 0;
+        size_t min_size = this->len < rhs.len ? this->len : rhs.len;
+        for (size_t i = 0; i < min_size; i++)
+        {
+            char lhs_char = this->buf[i];
+            char rhs_char = rhs.buf[i];
+                
+            if (lhs_char != rhs_char)
+                return lhs_char < rhs_char;
+        }
+        return this->len < rhs.len;
     }
 
     bool operator<(const std::string_view& rhs) const
     {
-        return strcmp(this->buf, rhs.data()) < 0;
+        size_t min_size = this->len < rhs.length() ? this->len : rhs.length();
+        for (size_t i = 0; i < min_size; i++)
+        {
+            char lhs_char = this->buf[i];
+            char rhs_char = rhs.data()[i];
+                
+            if (lhs_char != rhs_char)
+                return lhs_char < rhs_char;
+        }
+        return this->len < rhs.length();
     }
 
     bool operator==(const FixedString& rhs) const
     {
-        return strcmp(this->buf, rhs.buf) == 0;
+        if (this->len != rhs.len)
+            return false;
+        
+        for (size_t i = 0; i < this->len; i++)
+        {
+            char lhs_char = this->buf[i];
+            char rhs_char = rhs.buf[i];
+                
+            if (lhs_char != rhs_char)
+                return false;
+        }
+        return true;
     }
 
     bool operator==(const ConstantString& rhs) const
     {
-        return strcmp(this->buf, rhs.buf) == 0;
+        if (this->len != rhs.size)
+            return false;
+        
+        for (size_t i = 0; i < this->len; i++)
+        {
+            char lhs_char = this->buf[i];
+            char rhs_char = rhs.buf[i];
+                
+            if (lhs_char != rhs_char)
+                return false;
+        }
+        return true;
     }
 
     bool operator==(const std::string& rhs) const
     {
-        return rhs.compare(0, this->len, this->buf) == 0;
+        if (this->len != rhs.size())
+            return false;
+        
+        for (size_t i = 0; i < this->len; i++)
+        {
+            char lhs_char = this->buf[i];
+            char rhs_char = rhs.data()[i];
+                
+            if (lhs_char != rhs_char)
+                return false;
+        }
+        return true;
     }
     
     bool StartsWith(const char* str) const

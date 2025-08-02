@@ -2299,6 +2299,8 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
 
         bool res = compiler.Validate(parseResult.ast);
 
+        if (options.emitTimings)
+            timer.TotalTime();
         result.root = parseResult.ast;
         result.symbols = compiler.symbols;
         result.symbols.Prepend(preprocessorSymbols);
@@ -2325,8 +2327,7 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
             result.messages.Append(FixedString(err));
         }
 
-        if (options.emitTimings)
-            timer.TotalTime();
+
         
         return true;
     }

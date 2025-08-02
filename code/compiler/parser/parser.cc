@@ -835,14 +835,9 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
             res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
             res->location = LocationFromToken(tok);
         }
-    }
-    else if (precedence == 1)
-    {
-        res = ParseExpression(stream, ret, res, 2);
-        
-        // Right associative ternary
-        if (stream.Match(TokenType::Question))
+        else if (stream.Match(TokenType::Question))
         {
+            // Right associative ternary
             const Token& tok = stream.Data(-1);
             Expression* true_value = ParseExpression(stream, ret, res, 0);
             if (stream.Match(TokenType::Colon))
@@ -858,10 +853,22 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
             }
         }
     }
+    else if (precedence == 1)
+    {
+        res = ParseExpression(stream, ret, res, 2);
+        while (stream.Match(TokenType::LogicalOr))
+        {
+            const Token& tok = stream.Data(-1);
+            Expression* rhs = ParseExpression(stream, ret, res, 2);
+            res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
+            res->location = LocationFromToken(tok);
+
+        }
+    }
     else if (precedence == 2)
     {
         res = ParseExpression(stream, ret, res, 3);
-        while (stream.Match(TokenType::LogicalOr))
+        while (stream.Match(TokenType::LogicalAnd))
         {
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 3);
@@ -873,19 +880,18 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
     else if (precedence == 3)
     {
         res = ParseExpression(stream, ret, res, 4);
-        while (stream.Match(TokenType::LogicalAnd))
+        while (stream.Match(TokenType::Or))
         {
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 4);
             res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
             res->location = LocationFromToken(tok);
-
         }
     }
     else if (precedence == 4)
     {
         res = ParseExpression(stream, ret, res, 5);
-        while (stream.Match(TokenType::Or))
+        while (stream.Match(TokenType::Xor))
         {
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 5);
@@ -896,7 +902,7 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
     else if (precedence == 5)
     {
         res = ParseExpression(stream, ret, res, 6);
-        while (stream.Match(TokenType::Xor))
+        while (stream.Match(TokenType::And))
         {
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 6);
@@ -907,7 +913,7 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
     else if (precedence == 6)
     {
         res = ParseExpression(stream, ret, res, 7);
-        while (stream.Match(TokenType::And))
+        while (stream.Match(TokenType::Equal) || stream.Match(TokenType::NotEqual))
         {
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 7);
@@ -918,7 +924,7 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
     else if (precedence == 7)
     {
         res = ParseExpression(stream, ret, res, 8);
-        while (stream.Match(TokenType::Equal) || stream.Match(TokenType::NotEqual))
+        while (stream.Match(TokenType::LeftAngle) || stream.Match(TokenType::LessThanEqual) || stream.Match(TokenType::RightAngle) || stream.Match(TokenType::GreaterThanEqual))
         {
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 8);
@@ -929,7 +935,7 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
     else if (precedence == 8)
     {
         res = ParseExpression(stream, ret, res, 9);
-        while (stream.Match(TokenType::LeftAngle) || stream.Match(TokenType::LessThanEqual) || stream.Match(TokenType::RightAngle) || stream.Match(TokenType::GreaterThanEqual))
+        while (stream.Match(TokenType::LeftShift) || stream.Match(TokenType::RightShift))
         {
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 9);
@@ -940,7 +946,7 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
     else if (precedence == 9)
     {
         res = ParseExpression(stream, ret, res, 10);
-        while (stream.Match(TokenType::LeftShift) || stream.Match(TokenType::RightShift))
+        while (stream.Match(TokenType::Add) || stream.Match(TokenType::Sub))
         {
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 10);
@@ -951,7 +957,7 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
     else if (precedence == 10)
     {
         res = ParseExpression(stream, ret, res, 11);
-        while (stream.Match(TokenType::Add) || stream.Match(TokenType::Sub))
+        while (stream.Match(TokenType::Mul) || stream.Match(TokenType::Div) || stream.Match(TokenType::Mod))
         {
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 11);
@@ -960,17 +966,6 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
         }
     }
     else if (precedence == 11)
-    {
-        res = ParseExpression(stream, ret, res, 12);
-        while (stream.Match(TokenType::Mul) || stream.Match(TokenType::Div) || stream.Match(TokenType::Mod))
-        {
-            const Token& tok = stream.Data(-1);
-            Expression* rhs = ParseExpression(stream, ret, res, 12);
-            res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
-            res->location = LocationFromToken(tok);
-        }
-    }
-    else if (precedence == 12)
     {
         // Right-associative unary operators
         if (stream.Match(TokenType::Sub)
@@ -990,71 +985,64 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
             res->location = LocationFromToken(tok);
         }
         else
-            res = ParseExpression(stream, ret, res, 13);
+            res = ParseExpression(stream, ret, res, 12);
 
     }
-    else if (precedence == 13)
+    else if (precedence == 12)
     {
-        res = ParseExpression(stream, ret, res, 14);
-        while (stream.Match(TokenType::Dot))
+        res = ParseExpression(stream, ret, res, 13);
+        while (true)
         {
-            const Token& tok = stream.Data(-1);
-            Expression* rhs = ParseExpression(stream, ret, res, 14);
-            res = Alloc<AccessExpression>(res, rhs, false);
-            res->location = LocationFromToken(tok);
-        }
-    }
-    else if (precedence == 14)
-    {
-        res = ParseExpression(stream, ret, res, 15);
-        while (stream.Match(TokenType::LeftBracket))
-        {
-            const Token& tok = stream.Data(-1);
-            Expression* index = ParseExpression(stream, ret, res, 0);
-            if (stream.Match(TokenType::RightBracket))
+            if (stream.Match(TokenType::Dot))
             {
-                res = Alloc<ArrayIndexExpression>(res, index);
+                const Token& tok = stream.Data(-1);
+                Expression* rhs = ParseExpression(stream, ret, res, 13);
+                res = Alloc<AccessExpression>(res, rhs, false);
+                res->location = LocationFromToken(tok);
+            }
+            else if (stream.Match(TokenType::LeftBracket))
+            {
+                const Token& tok = stream.Data(-1);
+                Expression* index = ParseExpression(stream, ret, res, 0);
+                if (stream.Match(TokenType::RightBracket))
+                {
+                    res = Alloc<ArrayIndexExpression>(res, index);
+                    res->location = LocationFromToken(tok);
+                }
+                else
+                {
+                    ret.errors.Append(UnexpectedToken(stream, "]"));
+                    return nullptr;
+                }
+            }
+            else if (stream.Match(TokenType::LeftParant))
+            {
+                const Token& tok = stream.Data(-1);
+                FixedArray<Expression*> arguments;
+                arguments = ParseExpressionList(stream, ret);
+                if (stream.Match(TokenType::RightParant))
+                {
+                    Symbol::Location prev = res->location;
+                    res = Alloc<CallExpression>(res, std::move(arguments));
+                    res->location = prev;
+                }
+                else
+                {
+                    ret.errors.Append(UnexpectedToken(stream, ")"));
+                    return nullptr;
+                }
+            }
+            else if (stream.Match(TokenType::Increment) || stream.Match(TokenType::Decrement))
+            {
+                const Token& tok = stream.Data(-1);
+                res = Alloc<UnaryExpression>(StringToFourCC(TransientString(stream.Data(-1).text)), false, res);
                 res->location = LocationFromToken(tok);
             }
             else
-            {
-                ret.errors.Append(UnexpectedToken(stream, "]"));
-                return nullptr;
-            }
+                break;
         }
     }
-    else if (precedence == 15)
-    {
-        res = ParseExpression(stream, ret, res, 16);
-        if (stream.Match(TokenType::LeftParant))
-        {
-            const Token& tok = stream.Data(-1);
-            FixedArray<Expression*> arguments;
-            arguments = ParseExpressionList(stream, ret);
-            if (stream.Match(TokenType::RightParant))
-            {
-                Symbol::Location prev = res->location;
-                res = Alloc<CallExpression>(res, std::move(arguments));
-                res->location = prev;
-            }
-            else
-            {
-                ret.errors.Append(UnexpectedToken(stream, ")"));
-                return nullptr;
-            }
-        }
-    }
-    else if (precedence == 16)
-    {
-        res = ParseExpression(stream, ret, res, 17);
-        if (stream.Match(TokenType::Increment) || stream.Match(TokenType::Decrement))
-        {
-            const Token& tok = stream.Data(-1);
-            res = Alloc<UnaryExpression>(StringToFourCC(TransientString(stream.Data(-1).text)), false, res);
-            res->location = LocationFromToken(tok);
-        }
-    }
-    else if (precedence == 17)
+    else if (precedence == 13)
     {
         if (stream.Match(TokenType::LeftBracket))
         {

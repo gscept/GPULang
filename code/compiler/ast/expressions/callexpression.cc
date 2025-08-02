@@ -50,6 +50,12 @@ CallExpression::Resolve(Compiler* compiler)
 
     bool argumentsLiteral = true;
     TransientString argList = "";
+    this->thisResolved->argStorages = FixedArray<Storage>(this->args.size);
+    this->thisResolved->argumentTypes = FixedArray<Type::FullType>(this->args.size);
+    this->thisResolved->argTypes = FixedArray<Type*>(this->args.size);
+    TransientArray<Storage> storages(this->args.size);
+    TransientArray<Type::FullType> argFullTypes(this->args.size);
+    TransientArray<Type*> argTypeSymbols(this->args.size);
     for (Expression* expr : this->args)
     {
         if (!expr->Resolve(compiler))
@@ -69,9 +75,9 @@ CallExpression::Resolve(Compiler* compiler)
             return false;
         }
         argumentsLiteral &= fullType.literal;
-        this->thisResolved->argStorages.push_back(storage);
-        this->thisResolved->argumentTypes.push_back(fullType);
-        this->thisResolved->argTypes.push_back(type);
+        storages.Append(storage);
+        argFullTypes.Append(fullType);
+        argTypeSymbols.Append(type);
         if (StorageRequiresSignature(storage))
             argList.Concatenate<true>(StorageToString(storage), fullType.ToString());
         else
@@ -80,11 +86,16 @@ CallExpression::Resolve(Compiler* compiler)
         if (expr != this->args.back())
             argList.Append(",");
     }
+    this->thisResolved->argStorages = storages;
+    this->thisResolved->argumentTypes = argFullTypes;
+    this->thisResolved->argTypes = argTypeSymbols;
     auto callSignature = TransientString(this->thisResolved->functionSymbol, "(", argList, ")");
     Symbol* symbol = compiler->GetSymbol(callSignature);
 
-    this->thisResolved->conversions.resize(this->thisResolved->argTypes.size());
+    this->thisResolved->conversions = FixedArray<Function*>(this->thisResolved->argTypes.size);
+    this->thisResolved->conversions.size = this->thisResolved->argTypes.size;
     std::fill(this->thisResolved->conversions.begin(), this->thisResolved->conversions.end(), nullptr);
+    
 
     struct Candidate
     {
@@ -105,7 +116,7 @@ CallExpression::Resolve(Compiler* compiler)
             compiler->UnrecognizedSymbolError(callSignature, this);
             return false;
         }
-        std::vector<Candidate> candidates;
+        TransientArray<Candidate> candidates(functionSymbols.size());
         for (auto functionSymbol : functionSymbols)
         {
             if (functionSymbol->symbolType == Type::SymbolType::TypeType)
@@ -115,9 +126,10 @@ CallExpression::Resolve(Compiler* compiler)
                 {
                     Function* ctorFun = static_cast<Function*>(ctor);
                     Candidate candidate;
+                    candidate.argumentConversionFunctions.reserve(this->args.size);
                     candidate.function = ctorFun;
 
-                    if (ctorFun->parameters.size == this->thisResolved->argTypes.size())
+                    if (ctorFun->parameters.size == this->thisResolved->argTypes.size)
                     {
                         uint32_t numMatches = 0;
                         for (size_t i = 0; i < ctorFun->parameters.size; i++)
@@ -159,7 +171,7 @@ CallExpression::Resolve(Compiler* compiler)
                         }
                         if (numMatches == ctorFun->parameters.size)
                         {
-                            candidates.push_back(candidate);
+                            candidates.Append(std::move(candidate));
                         }
                     }
                 }
@@ -168,9 +180,10 @@ CallExpression::Resolve(Compiler* compiler)
             {
                 Function* fun = static_cast<Function*>(functionSymbol);
                 Candidate candidate;
+                candidate.argumentConversionFunctions.reserve(this->args.size);
                 candidate.function = fun;
 
-                if (fun->parameters.size == this->thisResolved->argTypes.size())
+                if (fun->parameters.size == this->thisResolved->argTypes.size)
                 {
                     uint32_t numMatches = 0;
                     for (size_t i = 0; i < fun->parameters.size; i++)
@@ -212,13 +225,13 @@ CallExpression::Resolve(Compiler* compiler)
                     }
                     if (numMatches == fun->parameters.size)
                     {
-                        candidates.push_back(candidate);
+                        candidates.Append(std::move(candidate));
                     }
                 }
             }
         }
 
-        if (candidates.empty())
+        if (candidates.size == 0)
         {
             std::string potentialHints;
             for (auto& hint : functionSymbols)
@@ -240,7 +253,7 @@ CallExpression::Resolve(Compiler* compiler)
         else
         {
             
-            if (candidates.size() == 1)
+            if (candidates.size == 1)
             {
                 const Candidate& candidate = candidates[0];
                 if (candidate.needsConversion && compiler->options.disallowImplicitConversion)
@@ -285,7 +298,7 @@ CallExpression::Resolve(Compiler* compiler)
                         this->thisResolved->function = candidate.function;
                         this->thisResolved->returnType = this->thisResolved->function->returnType;
                         this->thisResolved->retType = compiler->GetType(this->thisResolved->returnType);
-                        assert(this->thisResolved->conversions.size() == candidate.argumentConversionFunctions.size());
+                        assert(this->thisResolved->conversions.size == candidate.argumentConversionFunctions.size());
                         this->thisResolved->conversions = candidate.argumentConversionFunctions;
                         ambiguousCalls.clear();
                         break;
@@ -335,7 +348,7 @@ CallExpression::Resolve(Compiler* compiler)
                 else if (ambiguousCalls.size() == 1)
                 {
                     this->thisResolved->function = ambiguousCalls[0].function;
-                    assert(this->thisResolved->conversions.size() ==  ambiguousCalls[0].argumentConversionFunctions.size());
+                    assert(this->thisResolved->conversions.size ==  ambiguousCalls[0].argumentConversionFunctions.size());
                     this->thisResolved->conversions = ambiguousCalls[0].argumentConversionFunctions;
                     this->thisResolved->returnType = this->thisResolved->function->returnType;
                     this->thisResolved->retType = compiler->GetType(this->thisResolved->returnType);
