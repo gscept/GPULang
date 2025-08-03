@@ -11,6 +11,7 @@
 #include <set>
 #include <string>
 #include <utility>
+#include <chrono>
 #include "ast/symbol.h"
 #include "ast/effect.h"
 #include "ast/types/type.h"
@@ -281,35 +282,35 @@ struct Compiler
 
     struct Timer
     {
-        clock_t start, delta;
-        float duration;
+        std::chrono::high_resolution_clock::time_point start, delta;
+        std::chrono::duration<double, std::milli> duration;
         
-        clock_t creation;
+        std::chrono::high_resolution_clock::time_point creation;
         
         Timer()
         {
-            this->creation = clock();
+            this->creation = std::chrono::high_resolution_clock::now();
         }
 
         void Start()
         {
-            this->start = clock();
+            this->start = std::chrono::high_resolution_clock::now();
         }
 
         void Stop()
         {
-            this->duration = (clock() - this->start) * 1000 / float(CLOCKS_PER_SEC);
+            this->duration = std::chrono::high_resolution_clock::now() - this->start;
         }
 
         void Print(const std::string& message)
         {
-            printf("%s took %.2f ms\n", message.c_str(), this->duration);
+            printf("%s took %.2f ms\n", message.c_str(), this->duration.count());
         }
         
         void TotalTime()
         {
-            float duration = (clock() - this->creation) * 1000 / float(CLOCKS_PER_SEC);
-            printf("Total time %.2f ms\n\n", duration);
+            std::chrono::duration<double, std::milli> duration = std::chrono::high_resolution_clock::now() - this->creation;
+            printf("Total time %.2f ms\n\n", duration.count());
         }
     } performanceTimer;
 };
