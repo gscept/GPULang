@@ -28,6 +28,8 @@ struct AccessExpression : public Expression
     bool EvalType(Type::FullType& out) const override;
     /// eval type symbol
     bool EvalTypeSymbol(Type*& out) const override;
+    /// eval unswizzle type symbol
+    bool EvalUnswizzledTypeSymbol(Type*& out) const;
     /// eval symbol
     bool EvalSymbol(FixedString& out) const override;
     /// Evaluate value

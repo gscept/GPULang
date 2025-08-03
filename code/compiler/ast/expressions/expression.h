@@ -312,6 +312,8 @@ struct Expression : public Symbol
     virtual bool EvalType(Type::FullType& out) const;
     /// eval type symbol
     virtual bool EvalTypeSymbol(Type*& out) const;
+    /// eval unswizzle type symbol
+    virtual bool EvalUnswizzledTypeSymbol(Type*& out) const;
     /// eval symbol
     virtual bool EvalSymbol(FixedString& out) const;
     /// Evaluate value

@@ -142,6 +142,16 @@ Expression::EvalTypeSymbol(Type*& out) const
     return false;
 }
 
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+Expression::EvalUnswizzledTypeSymbol(Type*& out) const
+{
+    return EvalTypeSymbol(out);
+}
+
 //------------------------------------------------------------------------------
 /**
 */

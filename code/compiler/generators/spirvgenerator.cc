@@ -4129,6 +4129,7 @@ GenerateBinaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
     binaryExpression->left->EvalType(leftType);
     binaryExpression->right->EvalType(rightType);
 
+    
     Type* lhsType = binaryExpressionResolved->lhsType;
     Type* rhsType = binaryExpressionResolved->rhsType;
 
@@ -4208,10 +4209,12 @@ GenerateBinaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
         // If left value has a swizzle mask, then swizzle the RIGHT hand value before storing
         if (leftValue.swizzleMask != Type::SwizzleMask())
         {
+            Type* vectorType;
+            binaryExpression->left->EvalUnswizzledTypeSymbol(vectorType);
+            
             // Get the unswizzled type and generate a SPIRV type for it.
             // Storing to a swizzle value requires an OpStore of the same size, so we are going to shuffle
             // the vector of the right hand side such that it has the same amount of components and the left hand side
-            Type* vectorType = compiler->GetSymbol<Type>(leftType.name);
             SPIRVResult vectorTypeName = GenerateTypeSPIRV(compiler, generator, leftType, vectorType);
 
             // Setup a binding table
