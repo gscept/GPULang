@@ -24,24 +24,11 @@
 #include "serialize.h"
 #include "ast/renderstate.h"
 
+struct GPULangDiagnostic;
 namespace GPULang
 {
 
 struct Thread;
-struct Diagnostic
-{
-    enum Severity
-    {
-        Error,
-        Warning,
-        Info
-    };
-    FixedString error;
-    FixedString file;
-    Severity severity = Severity::Error;
-    int line, column, length;
-};
-
 struct Type;
 struct Scope;
 struct Generate;
@@ -214,7 +201,7 @@ struct Compiler
     FixedString path;
     std::string filename;
     std::vector<std::string> defines;
-    PinnedArray<Diagnostic> diagnostics = 0xFFFFFF;
+    PinnedArray<GPULangDiagnostic> diagnostics = 0xFFFFFF;
     PinnedArray<FixedString> messages = 0xFFF;
     bool hasErrors;
 

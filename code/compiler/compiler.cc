@@ -22,6 +22,7 @@
 #include "ast/preprocessor.h"
 #include "generated/types.h"
 #include "generated/intrinsics.h"
+#include "gpulangcompiler.h"
 #include "thread.h"
 #include <thread>
 
@@ -874,14 +875,14 @@ Compiler::Error(const TransientString& msg, const FixedString& file, int line, i
         err.Format(InternalErrorStrings[(uint8_t)this->options.errorFormat], msg.c_str());
         this->messages.Append(FixedString(err));
 
-        this->diagnostics.Append(Diagnostic{ .error = FixedString(msg), .file = file, .line = line, .column = column, .length = length });
+        this->diagnostics.Append(GPULangDiagnostic{ .error = FixedString(msg), .file = file, .line = line, .column = column, .length = length });
     }
     else
     {
         TransientString err;
         err.Format(ErrorStrings[(uint8_t)this->options.errorFormat], file.c_str(), line, column, msg.c_str());
         this->messages.Append(err.c_str());
-        this->diagnostics.Append(Diagnostic{ .error = FixedString(msg), .file = file, .line = line, .column = column, .length = length });
+        this->diagnostics.Append(GPULangDiagnostic{ .error = FixedString(msg), .file = file, .line = line, .column = column, .length = length });
     }
     this->hasErrors = true;
 }

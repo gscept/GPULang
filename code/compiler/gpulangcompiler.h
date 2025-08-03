@@ -30,6 +30,20 @@ struct GPULangErrorBlob
 	}
 };
 
+struct GPULangDiagnostic
+{
+    enum Severity
+    {
+        Error,
+        Warning,
+        Info
+    };
+    GPULang::FixedString error;
+    GPULang::FixedString file;
+    Severity severity = Severity::Error;
+    int line, column, length;
+};
+
 
 static auto GPULangValidIdentifierStart = [](const char c) -> bool
 {
@@ -52,7 +66,7 @@ struct GPULangServerResult
 	GPULang::PinnedArray<GPULang::Symbol*> symbols;
 	GPULang::Scope* intrinsicScope = nullptr, *mainScope = nullptr;
     GPULang::PinnedMap<std::string, GPULang::Symbol*> lookup;
-    GPULang::PinnedArray<GPULang::Diagnostic> diagnostics = 0xFFF;
+    GPULang::PinnedArray<GPULangDiagnostic> diagnostics = 0xFFF;
 	GPULang::PinnedArray<GPULang::FixedString> messages = 0xFF;
 };
 
@@ -94,7 +108,7 @@ struct GPULangFile
 
 };
 
-extern GPULang::FixedArray<GPULang::FixedString> GPULangGenerateDependencies(GPULangFile*, const std::vector<std::string>&, GPULang::PinnedArray<GPULang::Diagnostic>&);
+extern GPULang::FixedArray<GPULang::FixedString> GPULangGenerateDependencies(GPULangFile*, const std::vector<std::string>&, GPULang::PinnedArray<GPULangDiagnostic>&);
 extern bool GPULangCompile(const std::string& file, GPULang::Compiler::Language target, const std::string& output, const std::string& header_output, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangErrorBlob*& errorBuffer);
 extern bool GPULangValidate(GPULangFile*, GPULang::Compiler::Language , const std::vector<std::string>&, GPULang::Compiler::Options, GPULangServerResult&);
 extern GPULangFile* GPULangLoadFile(const std::string_view& path);

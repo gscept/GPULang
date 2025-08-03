@@ -4,6 +4,7 @@
 //------------------------------------------------------------------------------
 #include "parser.h"
 #include "util.h"
+#include "gpulangcompiler.h"
 #include <charconv>  // for std::from_chars
 
 #include "ast/effect.h"
@@ -44,6 +45,72 @@
 
 namespace GPULang
 {
+static const uint32_t NUMERIC_CHARACTER = 0x1; // [0..9]
+static const uint32_t HEX_NUMERIC_CHARACTER = 0x2; // [0..9|a..f|A..F]
+static const uint32_t IDENTIFIER_START_CHARACTER = 0x4; // [a..z|A...Z|_]
+static const uint32_t IDENTIFIER_CONTD_CHARACTER = 0x8; // [a..z|A...Z|_|0..9]
+static const uint32_t SPECIAL_CHARACTER = 0x10; // [.,;:(){}[]<>+-*/%&|^=!~?@#\\]
+static const uint32_t OPERATOR_CHARACTER = 0x20; // [.,(){}[]<>+-*/%&|^=!~]
+static const uint32_t WHITESPACE_CHARACTER = 0x40; // [ \t\r\f\v]
+static const uint32_t EOL_CHARACTER = 0x80;
+
+
+static uint32_t CharacterClassTable[256] = {};
+struct CharacterClassInitializer
+{
+    CharacterClassInitializer()
+    {
+        for (char c = 'a'; c <= 'z'; ++c)
+            CharacterClassTable[c] = IDENTIFIER_START_CHARACTER | IDENTIFIER_CONTD_CHARACTER;
+        for (char c = 'A'; c <= 'Z'; ++c)
+            CharacterClassTable[c] = IDENTIFIER_START_CHARACTER | IDENTIFIER_CONTD_CHARACTER;
+        CharacterClassTable['_'] = IDENTIFIER_START_CHARACTER | IDENTIFIER_CONTD_CHARACTER;
+        for (char c = 'a'; c <= 'f'; ++c)
+            CharacterClassTable[c] |= HEX_NUMERIC_CHARACTER;
+        for (char c = 'A'; c <= 'F'; ++c)
+            CharacterClassTable[c] |= HEX_NUMERIC_CHARACTER;
+        
+        for (char c = '0'; c <= '9'; ++c)
+            CharacterClassTable[c] = HEX_NUMERIC_CHARACTER | NUMERIC_CHARACTER | IDENTIFIER_CONTD_CHARACTER;
+        
+        CharacterClassTable['#'] = SPECIAL_CHARACTER;
+        CharacterClassTable['@'] = SPECIAL_CHARACTER;
+        CharacterClassTable[','] = SPECIAL_CHARACTER;
+        CharacterClassTable[':'] = SPECIAL_CHARACTER;
+        CharacterClassTable[';'] = SPECIAL_CHARACTER;
+        CharacterClassTable['('] = SPECIAL_CHARACTER;
+        CharacterClassTable[')'] = SPECIAL_CHARACTER;
+        CharacterClassTable['{'] = SPECIAL_CHARACTER;
+        CharacterClassTable['}'] = SPECIAL_CHARACTER;
+        CharacterClassTable['['] = SPECIAL_CHARACTER;
+        CharacterClassTable[']'] = SPECIAL_CHARACTER;
+        CharacterClassTable['<'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
+        CharacterClassTable['>'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
+        CharacterClassTable['"'] = SPECIAL_CHARACTER;
+        CharacterClassTable['.'] = SPECIAL_CHARACTER;
+        CharacterClassTable['+'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
+        CharacterClassTable['-'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
+        CharacterClassTable['*'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
+        CharacterClassTable['/'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
+        CharacterClassTable['%'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
+        CharacterClassTable['|'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
+        CharacterClassTable['&'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
+        CharacterClassTable['^'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
+        CharacterClassTable['!'] = SPECIAL_CHARACTER;
+        CharacterClassTable['~'] = SPECIAL_CHARACTER;
+        CharacterClassTable['?'] = SPECIAL_CHARACTER;
+        CharacterClassTable['='] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
+        
+        CharacterClassTable[' '] = WHITESPACE_CHARACTER;
+        CharacterClassTable['\t'] = WHITESPACE_CHARACTER;
+        CharacterClassTable['\f'] = WHITESPACE_CHARACTER;
+        CharacterClassTable['\v'] = WHITESPACE_CHARACTER;
+        
+        CharacterClassTable['\r'] = EOL_CHARACTER | WHITESPACE_CHARACTER;
+        CharacterClassTable['\n'] = EOL_CHARACTER | WHITESPACE_CHARACTER;
+    }
+} CharacterTableInitializer;
+
 StaticMap HardCodedTokens = std::array{
     std::pair{ "alias"_c, TokenType::TypeAlias }
     , std::pair{ "as"_c, TokenType::As }
@@ -136,6 +203,7 @@ StaticMap HardCodedTokens = std::array{
     , std::pair{ "!"_c, TokenType::Not }
     , std::pair{ "~"_c, TokenType::Complement }
     , std::pair{ "?"_c, TokenType::Question }
+    , std::pair{ "="_c, TokenType::Assign }
     , std::pair{ "<<"_c, TokenType::LeftShift }
     , std::pair{ ">>"_c, TokenType::RightShift }
     , std::pair{ "+="_c, TokenType::AddAssign }
@@ -156,7 +224,6 @@ StaticMap HardCodedTokens = std::array{
     , std::pair{ "!="_c, TokenType::NotEqual }
     , std::pair{ "||"_c, TokenType::LogicalOr }
     , std::pair{ "&&"_c, TokenType::LogicalAnd }
-    , std::pair{ "="_c, TokenType::Assign }
     , std::pair{ "render_state"_c, TokenType::RenderState }
     , std::pair{ "sampler_state"_c, TokenType::SamplerState }
     , std::pair{ "program"_c, TokenType::Program }
@@ -303,37 +370,27 @@ static auto lineEnd = [](const char* begin, const char* end) -> const char*
 
 static auto identifierStart = [](const char c) -> bool
 {
-    if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c == '_'))
-        return true;
-    return false;
+    return (CharacterClassTable[c] & IDENTIFIER_START_CHARACTER) == IDENTIFIER_START_CHARACTER;
 };
 
 static auto identifierChar = [](const char c) -> bool
 {
-    if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') || (c == '_'))
-        return true;
-    return false;
+    return (CharacterClassTable[c] & IDENTIFIER_CONTD_CHARACTER) == IDENTIFIER_CONTD_CHARACTER;
 };
 
 static auto numberStart = [](const char c) -> bool
 {
-    if (c >= '0' && c <= '9')
-        return true;
-    return false;
+    return (CharacterClassTable[c] & NUMERIC_CHARACTER) == NUMERIC_CHARACTER;
 };
 
 static auto numberChar = [](const char c) -> bool
 {
-    if (c >= '0' && c <= '9')
-        return true;
-    return false;
+    return (CharacterClassTable[c] & NUMERIC_CHARACTER) == NUMERIC_CHARACTER;
 };
 
 static auto hexChar = [](const char c) -> bool
 {
-    if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f'))
-        return true;
-    return false;
+    return (CharacterClassTable[c] & HEX_NUMERIC_CHARACTER) == HEX_NUMERIC_CHARACTER;
 };
 
 //------------------------------------------------------------------------------
@@ -484,12 +541,13 @@ Tokenize(const std::string& text, const TransientString& path)
                 {
                     if (type == TokenType::Hex)
                     {
-                        LexerError error;
-                        error.path = currentPath;
-                        error.message = "Incorrectly formatted hex number";
-                        error.line = line;
-                        error.pos = it - startOfLine;
-                        ret.errors.Append(error);
+                        GPULangDiagnostic diagnostic;
+                        diagnostic.file = currentPath;
+                        diagnostic.error = "Incorrectly formatted hex number";
+                        diagnostic.line = line;
+                        diagnostic.column = it - startOfLine;
+                        diagnostic.length = 1;
+                        ret.errors.Append(diagnostic);
                     }
                     it++;
                     if (numberStart(it[0]))
@@ -514,12 +572,13 @@ Tokenize(const std::string& text, const TransientString& path)
                         it++;
                     if (!numberStart(it[0]))
                     {
-                        LexerError error;
-                        error.path = currentPath;
-                        error.message = "Incorrectly formatted exponent";
-                        error.line = line;
-                        error.pos = it - startOfLine;
-                        ret.errors.Append(error);
+                        GPULangDiagnostic diagnostic;
+                        diagnostic.file = currentPath;
+                        diagnostic.error = "Incorrectly formatted exponent";
+                        diagnostic.line = line;
+                        diagnostic.column = it - startOfLine;
+                        diagnostic.length = 1;
+                        ret.errors.Append(diagnostic);
                     }
                     else
                     {
@@ -572,13 +631,13 @@ Tokenize(const std::string& text, const TransientString& path)
             }
             if (it == end)
             {
-                // End of string never found
-                LexerError error;
-                error.path = currentPath;
-                error.message = "String not closed";
-                error.line = line;
-                error.pos = begin - startOfLine;
-                ret.errors.Append(error);
+                GPULangDiagnostic diagnostic;
+                diagnostic.file = currentPath;
+                diagnostic.error = "String not closed";
+                diagnostic.line = line;
+                diagnostic.column = it - startOfLine;
+                diagnostic.length = 1;
+                ret.errors.Append(diagnostic);
             }
             
             Token newToken;
@@ -594,12 +653,8 @@ Tokenize(const std::string& text, const TransientString& path)
         }
         else // Non-character words
         {
-            Token newToken;
-            newToken.path = currentPath;
-            auto it1 = HardCodedTokens.Find(it[0]);
-            
             // Handle include/line directives
-            if (it1->second == TokenType::Directive)
+            if (it[0] == '#')
             {
                 it = skipWS(it+1, end);
                 if (identifierStart(it[0]))
@@ -652,50 +707,47 @@ Tokenize(const std::string& text, const TransientString& path)
                         }
                     }
                 }
+                line--;
+                continue; // Ignore the directive
             }
             
             const char* begin = it;
-            it++;
-            if (it1 == HardCodedTokens.end())
+            if ((CharacterClassTable[it[0]] & OPERATOR_CHARACTER) == OPERATOR_CHARACTER)
             {
-                LexerError error;
-                error.path = currentPath;
-                error.message = TStr("Unknown character ", it[0]);
-                error.line = line;
-                error.pos = it - startOfLine;
-                ret.errors.Append(error);
+                it++;
+                while (it != end)
+                {
+                    if ((CharacterClassTable[it[0]] & OPERATOR_CHARACTER) != OPERATOR_CHARACTER)
+                        break;
+                    it++;
+                }
             }
             else
             {
-                // Check for multi character operators
-                std::string_view threeCharOp(begin, it+2);
-                auto it3 = HardCodedTokens.Find(threeCharOp);
-                if (it3 == HardCodedTokens.end())
-                {
-                    std::string_view twoCharOp(begin, it+1);
-                    auto it2 = HardCodedTokens.Find(twoCharOp);
-                    if (it2 != HardCodedTokens.end())
-                    {
-                        it1 = it2;
-                        it++;
-                    }
-                }
-                else
-                {
-                    it1 = it3;
-                    it += 2;
-                }
+                it++;
             }
-            if (it1 != HardCodedTokens.end())
+            std::string_view tokenText(begin, it);
+            auto it1 = HardCodedTokens.Find(tokenText);
+            if (it1 == HardCodedTokens.end())
             {
-                newToken.text = std::string_view(begin, it);
-                newToken.startLine = line;
-                newToken.endLine = line;
-                newToken.startChar = begin - startOfLine;
-                newToken.endChar = it - startOfLine;
-                ret.tokens.Append(newToken);
-                ret.tokenTypes.Append(it1->second);
+                GPULangDiagnostic diagnostic;
+                diagnostic.file = currentPath;
+                diagnostic.error = TStr("Unknown character sequence ", tokenText);
+                diagnostic.line = line;
+                diagnostic.column = it - startOfLine;
+                diagnostic.length = it - begin;
+                ret.errors.Append(diagnostic);
             }
+            Token newToken;
+            newToken.path = currentPath;
+            newToken.text = tokenText;
+            newToken.startLine = line;
+            newToken.endLine = line;
+            newToken.startChar = begin - startOfLine;
+            newToken.endChar = it - startOfLine;
+            ret.tokens.Append(newToken);
+            ret.tokenTypes.Append(it1->second);
+            
             continue;
         }
     }
@@ -724,62 +776,73 @@ LocationFromToken(const Token& tok)
 //------------------------------------------------------------------------------
 /**
  */
-ParseError
+GPULangDiagnostic
 UnexpectedToken(const TokenStream& stream, const char* expected)
 {
     const Token& tok = stream.Data(0);
-    ParseError error;
-    error.message = TStr("Expected ", expected, ", got ", tok.text);
-    error.path = tok.path;
-    error.line = tok.startLine;
-    error.pos = tok.startChar;
-    return error;
+    
+    GPULangDiagnostic diagnostic;
+    diagnostic.severity = GPULangDiagnostic::Severity::Error;
+    diagnostic.error = TStr("Expected ", expected, ", got ", tok.text);
+    diagnostic.file = tok.path;
+    diagnostic.line = tok.startLine;
+    diagnostic.column = tok.startChar;
+    diagnostic.length = tok.endChar - tok.startChar;
+    return diagnostic;
 }
 
 //------------------------------------------------------------------------------
 /**
  */
-ParseError
+GPULangDiagnostic
 IncorrectToken(const TokenStream& stream)
 {
     const Token& tok = stream.Data(0);
-    ParseError error;
-    error.message = TStr("Invalid token ", tok.text);
-    error.path = tok.path;
-    error.line = tok.startLine;
-    error.pos = tok.startChar;
-    return error;
+    
+    GPULangDiagnostic diagnostic;
+    diagnostic.severity = GPULangDiagnostic::Severity::Error;
+    diagnostic.error = TStr("Invalid token ", tok.text);
+    diagnostic.file = tok.path;
+    diagnostic.line = tok.startLine;
+    diagnostic.column = tok.startChar;
+    diagnostic.length = tok.endChar - tok.startChar;
+    return diagnostic;
 }
 
 //------------------------------------------------------------------------------
 /**
  */
-ParseError
+GPULangDiagnostic
 Unsupported(const TokenStream& stream, const char* unexpected, const char* symbol)
 {
     const Token& tok = stream.Data(0);
-    ParseError error;
-    error.message = TStr("%s not supported for %s", unexpected, symbol);
-    error.path = tok.path;
-    error.line = tok.startLine;
-    error.pos = tok.startChar;
-    return error;
+    
+    GPULangDiagnostic diagnostic;
+    diagnostic.severity = GPULangDiagnostic::Severity::Error;
+    diagnostic.error = TStr("%s not supported for %s", unexpected, symbol);
+    diagnostic.file = tok.path;
+    diagnostic.line = tok.startLine;
+    diagnostic.column = tok.startChar;
+    diagnostic.length = tok.endChar - tok.startChar;
+    return diagnostic;
 }
 
 //------------------------------------------------------------------------------
 /**
  */
-ParseError
+GPULangDiagnostic
 Limit(const TokenStream& stream, const char* name, size_t size)
 {
     const Token& tok = stream.Data(0);
 
-    ParseError error;
-    error.message = TStr("Limit %s(%d) reached", name, size);
-    error.path = tok.path;
-    error.line = tok.startLine;
-    error.pos = tok.startChar;
-    return error;
+    GPULangDiagnostic diagnostic;
+    diagnostic.severity = GPULangDiagnostic::Severity::Error;
+    diagnostic.error = TStr("Limit %s(%d) reached", name, size);
+    diagnostic.file = tok.path;
+    diagnostic.line = tok.startLine;
+    diagnostic.column = tok.startChar;
+    diagnostic.length = tok.endChar - tok.startChar;
+    return diagnostic;
 }
 
 Expression* ParseExpression(TokenStream&, ParseResult&, Expression*, int);
@@ -1678,22 +1741,26 @@ ParseVariables(TokenStream& stream, ParseResult& ret)
         if (values.size > vars.size)
         {
             const Token& tok = stream.Data(0);
-            ParseError error;
-            error.message = TStr("Expected a variable (%d) for for each value (%d)", vars.size, values.size);
-            error.path = tok.path;
-            error.line = tok.startLine;
-            error.pos = tok.startChar;
-            ret.errors.Append(error);
+            
+            GPULangDiagnostic diagnostic;
+            diagnostic.file = tok.path;
+            diagnostic.error = TStr("Expected a variable (%d) for for each value (%d)", vars.size, values.size);
+            diagnostic.line = tok.startLine;
+            diagnostic.column = tok.startChar;
+            diagnostic.length = tok.endChar - tok.startChar;
+            ret.errors.Append(diagnostic);
         }
         else if (values.size < vars.size)
         {
             const Token& tok = stream.Data(0);
-            ParseError error;
-            error.message = TStr("Expected a value (%d) for for each variable (%d)", values.size, vars.size);
-            error.path = tok.path;
-            error.line = tok.startLine;
-            error.pos = tok.startChar;
-            ret.errors.Append(error);
+            
+            GPULangDiagnostic diagnostic;
+            diagnostic.file = tok.path;
+            diagnostic.error = TStr("Expected a value (%d) for for each variable (%d)", values.size, vars.size);
+            diagnostic.line = tok.startLine;
+            diagnostic.column = tok.startChar;
+            diagnostic.length = tok.endChar - tok.startChar;
+            ret.errors.Append(diagnostic);
         }
     }
     

@@ -469,12 +469,12 @@ GPULangPreprocess(
     , const std::vector<std::string>& defines
     , std::string& output
     , PinnedArray<GPULang::Symbol*>& preprocessorSymbols
-    , PinnedArray<GPULang::Diagnostic>& diagnostics
+    , PinnedArray<GPULangDiagnostic>& diagnostics
 )
 {
 
 #define DIAGNOSTIC(message)\
-        GPULang::Diagnostic{.error = FixedString(message), .file = level->file->path, .line = level->lineCounter }
+    GPULangDiagnostic{.error = FixedString(message), .file = level->file->path, .line = level->lineCounter }
 
     bool ret = true;
     struct Macro
@@ -530,7 +530,7 @@ GPULangPreprocess(
     bool comment = false;
     level->lineCounter = 0;
 
-    static std::function<int(const char*, const char*, FileLevel*, PinnedArray<GPULang::Diagnostic>&, const PinnedMap<std::string_view, Macro>&, bool& res)> eval = [](const char* begin, const char* end, FileLevel* level, PinnedArray<GPULang::Diagnostic>& diagnostics, const PinnedMap<std::string_view, Macro>& definitions, bool& res) -> int
+    static std::function<int(const char*, const char*, FileLevel*, PinnedArray<GPULangDiagnostic>&, const PinnedMap<std::string_view, Macro>&, bool& res)> eval = [](const char* begin, const char* end, FileLevel* level, PinnedArray<GPULangDiagnostic>& diagnostics, const PinnedMap<std::string_view, Macro>& definitions, bool& res) -> int
     {
         struct Token
         {
@@ -1481,7 +1481,7 @@ escape_newline:
                     SETUP_PP2(pp, firstWord-1, endOfDirective)
                     if (ifStack.size == 0)
                     {
-                        diagnostics.Append(GPULang::Diagnostic{ .error = "Invalid #endif, missing matching #if/#ifdef/#ifndef", .file = level->file->path, .line = level->lineCounter });
+                        diagnostics.Append(GPULangDiagnostic{ .error = "Invalid #endif, missing matching #if/#ifdef/#ifndef", .file = level->file->path, .line = level->lineCounter });
                         ret = false;
                         goto end;
                     }
@@ -1505,7 +1505,7 @@ escape_newline:
                     }
                     else
                     {
-                        diagnostics.Append(GPULang::Diagnostic{ .error = FixedString(Format("Unknown #pragma '%s'", command.data())), .file = level->file->path, .line = level->lineCounter });
+                        diagnostics.Append(GPULangDiagnostic{ .error = FixedString(Format("Unknown #pragma '%s'", command.data())), .file = level->file->path, .line = level->lineCounter });
                         ret = false;
                         goto end;
                     }
@@ -1585,7 +1585,7 @@ escape_newline:
                         pp->type = Preprocessor::Call;
                         SETUP_PP2(pp, startOfWord, endOfWord)
                         
-                        static std::function<const char*(const char*, const char*, const Macro*, GrowingString&, const PinnedMap<std::string_view, Macro>&, FileLevel*, PinnedArray<GPULang::Diagnostic>&)> expandMacro = [&endOfFile](const char* beginOfCall, const char* eol, const Macro* macro, GrowingString& expanded, const PinnedMap<std::string_view, Macro>& definitions, FileLevel* level, PinnedArray<GPULang::Diagnostic>& diagnostics) -> const char*
+                        static std::function<const char*(const char*, const char*, const Macro*, GrowingString&, const PinnedMap<std::string_view, Macro>&, FileLevel*, PinnedArray<GPULangDiagnostic>&)> expandMacro = [&endOfFile](const char* beginOfCall, const char* eol, const Macro* macro, GrowingString& expanded, const PinnedMap<std::string_view, Macro>& definitions, FileLevel* level, PinnedArray<GPULangDiagnostic>& diagnostics) -> const char*
                         {
                             StackMap<std::string_view, std::string_view> argumentMap(32);
                             TransientArray<TransientString> args(32);
@@ -1824,7 +1824,7 @@ GPULangPreprocessFile(
     , const std::vector<std::string>& defines
     , std::string& output
     , PinnedArray<GPULang::Symbol*>& preprocessorSymbols
-    , PinnedArray<GPULang::Diagnostic>& diagnostics
+    , PinnedArray<GPULangDiagnostic>& diagnostics
 )
 {
     std::string escaped = FixBackslashes(path);
@@ -1839,7 +1839,7 @@ GPULangPreprocessFile(
 /**
 */
 FixedArray<FixedString>
-GPULangGenerateDependencies(GPULangFile* file, const std::vector<std::string>& defines, PinnedArray<GPULang::Diagnostic>& diagnostics)
+GPULangGenerateDependencies(GPULangFile* file, const std::vector<std::string>& defines, PinnedArray<GPULangDiagnostic>& diagnostics)
 {
     TransientArray<FileLevel> fileStack(128);
     fileStack.Append({file});
@@ -2112,7 +2112,7 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
         timer.Start();
         
         PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
-        PinnedArray<GPULang::Diagnostic> diagnostics(0xFFFFFF);
+        PinnedArray<GPULangDiagnostic> diagnostics(0xFFFFFF);
         //GPULangParser::LineStack.clear();
         if (GPULangPreprocessFile(file, defines, preprocessed, preprocessorSymbols, diagnostics))
         {
@@ -2139,7 +2139,7 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
             TokenizationResult tokenizationResult = Tokenize(preprocessed, TransientString{file.c_str()});
             for (const auto& err : tokenizationResult.errors)
             {
-                printf("%s(%d:%d): syntax error %s\n", err.path.c_str(), err.line, err.pos, err.message.c_str());
+                printf("%s(%d:%d): syntax error %s\n", err.file.c_str(), err.line, err.column, err.error.c_str());
             }
             
             timer.Stop();
@@ -2154,7 +2154,7 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
             ParseResult parseResult = Parse(tokenStream);
             for (const auto& err : parseResult.errors)
             {
-                printf("%s(%d:%d) syntax error %s\n", err.path.c_str(), err.line, err.pos, err.message.c_str());
+                printf("%s(%d:%d) syntax error %s\n", err.file.c_str(), err.line, err.column, err.error.c_str());
             }
             timer.Stop();
             if (options.emitTimings)
@@ -2226,7 +2226,7 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
     timer.Start();
 
     PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
-    PinnedArray<GPULang::Diagnostic> diagnostics(0xFFFFFF);
+    PinnedArray<GPULangDiagnostic> diagnostics(0xFFFFFF);
     //GPULangParser::LineStack.clear();
 
     if (GPULangPreprocess(file, defines, preprocessed, preprocessorSymbols, diagnostics))
@@ -2271,7 +2271,8 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
         TokenizationResult tokenizationResult = Tokenize(preprocessed, file->path);
         for (const auto& err : tokenizationResult.errors)
         {
-            printf("%s(%d:%d): syntax error %s\n", err.path.c_str(), err.line, err.pos, err.message.c_str());
+            result.diagnostics.Append(err);
+            return false;
         }
         
         timer.Stop();
@@ -2286,7 +2287,8 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
         ParseResult parseResult = Parse(tokenStream);
         for (const auto& err : parseResult.errors)
         {
-            printf("%s(%d:%d) syntax error %s\n", err.path.c_str(), err.line, err.pos, err.message.c_str());
+            result.diagnostics.Append(err);
+            return false;
         }
         timer.Stop();
         if (options.emitTimings)

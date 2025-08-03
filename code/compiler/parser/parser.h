@@ -9,6 +9,7 @@
 #include "string_utils.h"
 #include "containers.h"
 
+struct GPULangDiagnostic;
 namespace GPULang
 {
 struct Effect;
@@ -188,37 +189,20 @@ struct Token
     uint32_t startChar, endChar;
 };
 
-struct LexerError
-{
-    GPULang::FixedString message;
-    GPULang::FixedString path;
-    uint32_t line;
-    uint32_t pos;
-};
-
-
 struct TokenizationResult
 {
     PinnedArray<TokenType> tokenTypes = 0xFFFFFF;
     PinnedArray<Token> tokens = 0xFFFFFF;
-    PinnedArray<LexerError> errors = 0xFFFF;
+    PinnedArray<GPULangDiagnostic> errors = 0xFFFF;
 };
 
 // Tokenize string
 TokenizationResult Tokenize(const std::string& text, const TransientString& path);
 
-struct ParseError
-{
-    GPULang::FixedString message;
-    GPULang::FixedString path;
-    uint32_t line;
-    uint32_t pos;
-};
-
 struct ParseResult
 {
     Effect* ast;
-    PinnedArray<ParseError> errors = 0xFFFF;
+    PinnedArray<GPULangDiagnostic> errors = 0xFFFF;
 };
 
 struct TokenStream
