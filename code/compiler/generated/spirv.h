@@ -16010,7 +16010,7 @@ SPIRVResult SPIRV_PixelSetDepth(const Compiler* c, SPIRVGenerator* g, uint32_t r
 {
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Input"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelSetDepth"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::FragDepth);
     g->interfaceVariables.Insert(ret);
@@ -16022,9 +16022,9 @@ SPIRVResult SPIRV_PixelSetDepth(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_PixelExportColor_Float32_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16036,9 +16036,9 @@ SPIRVResult SPIRV_PixelExportColor_Float32_Int32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_PixelExportColor_Float32_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16050,9 +16050,9 @@ SPIRVResult SPIRV_PixelExportColor_Float32_UInt32(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_Float32_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16064,9 +16064,9 @@ SPIRVResult SPIRV_PixelExportColor_Float32_Int16(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_PixelExportColor_Float32_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16078,9 +16078,9 @@ SPIRVResult SPIRV_PixelExportColor_Float32_UInt16(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_Float32x2_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x2_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x2_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16092,9 +16092,9 @@ SPIRVResult SPIRV_PixelExportColor_Float32x2_Int32(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_PixelExportColor_Float32x2_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x2_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x2_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16106,9 +16106,9 @@ SPIRVResult SPIRV_PixelExportColor_Float32x2_UInt32(const Compiler* c, SPIRVGene
 SPIRVResult SPIRV_PixelExportColor_Float32x2_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x2_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x2_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16120,9 +16120,9 @@ SPIRVResult SPIRV_PixelExportColor_Float32x2_Int16(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_PixelExportColor_Float32x2_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x2_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x2_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16134,9 +16134,9 @@ SPIRVResult SPIRV_PixelExportColor_Float32x2_UInt16(const Compiler* c, SPIRVGene
 SPIRVResult SPIRV_PixelExportColor_Float32x3_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x3_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x3_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16148,9 +16148,9 @@ SPIRVResult SPIRV_PixelExportColor_Float32x3_Int32(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_PixelExportColor_Float32x3_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x3_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x3_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16162,9 +16162,9 @@ SPIRVResult SPIRV_PixelExportColor_Float32x3_UInt32(const Compiler* c, SPIRVGene
 SPIRVResult SPIRV_PixelExportColor_Float32x3_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x3_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x3_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16176,9 +16176,9 @@ SPIRVResult SPIRV_PixelExportColor_Float32x3_Int16(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_PixelExportColor_Float32x3_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x3_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x3_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16191,8 +16191,8 @@ SPIRVResult SPIRV_PixelExportColor_Float32x4_Int32(const Compiler* c, SPIRVGener
 {
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x4_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x4_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16205,8 +16205,8 @@ SPIRVResult SPIRV_PixelExportColor_Float32x4_UInt32(const Compiler* c, SPIRVGene
 {
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x4_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x4_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16219,8 +16219,8 @@ SPIRVResult SPIRV_PixelExportColor_Float32x4_Int16(const Compiler* c, SPIRVGener
 {
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x4_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x4_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16233,8 +16233,8 @@ SPIRVResult SPIRV_PixelExportColor_Float32x4_UInt16(const Compiler* c, SPIRVGene
 {
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x4_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x4_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16246,9 +16246,9 @@ SPIRVResult SPIRV_PixelExportColor_Float32x4_UInt16(const Compiler* c, SPIRVGene
 SPIRVResult SPIRV_PixelExportColor_Float16_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16260,9 +16260,9 @@ SPIRVResult SPIRV_PixelExportColor_Float16_Int32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_PixelExportColor_Float16_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16274,9 +16274,9 @@ SPIRVResult SPIRV_PixelExportColor_Float16_UInt32(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_Float16_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16288,9 +16288,9 @@ SPIRVResult SPIRV_PixelExportColor_Float16_Int16(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_PixelExportColor_Float16_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16302,9 +16302,9 @@ SPIRVResult SPIRV_PixelExportColor_Float16_UInt16(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_Float16x2_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x2_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 2);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x2_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16316,9 +16316,9 @@ SPIRVResult SPIRV_PixelExportColor_Float16x2_Int32(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_PixelExportColor_Float16x2_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x2_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 2);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x2_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16330,9 +16330,9 @@ SPIRVResult SPIRV_PixelExportColor_Float16x2_UInt32(const Compiler* c, SPIRVGene
 SPIRVResult SPIRV_PixelExportColor_Float16x2_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x2_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 2);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x2_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16344,9 +16344,9 @@ SPIRVResult SPIRV_PixelExportColor_Float16x2_Int16(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_PixelExportColor_Float16x2_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x2_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 2);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x2_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16358,9 +16358,9 @@ SPIRVResult SPIRV_PixelExportColor_Float16x2_UInt16(const Compiler* c, SPIRVGene
 SPIRVResult SPIRV_PixelExportColor_Float16x3_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x3_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x3_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16372,9 +16372,9 @@ SPIRVResult SPIRV_PixelExportColor_Float16x3_Int32(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_PixelExportColor_Float16x3_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x3_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x3_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16386,9 +16386,9 @@ SPIRVResult SPIRV_PixelExportColor_Float16x3_UInt32(const Compiler* c, SPIRVGene
 SPIRVResult SPIRV_PixelExportColor_Float16x3_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x3_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x3_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16400,9 +16400,9 @@ SPIRVResult SPIRV_PixelExportColor_Float16x3_Int16(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_PixelExportColor_Float16x3_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x3_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x3_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16414,9 +16414,9 @@ SPIRVResult SPIRV_PixelExportColor_Float16x3_UInt16(const Compiler* c, SPIRVGene
 SPIRVResult SPIRV_PixelExportColor_Float16x4_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x4_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x4_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16428,9 +16428,9 @@ SPIRVResult SPIRV_PixelExportColor_Float16x4_Int32(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_PixelExportColor_Float16x4_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x4_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x4_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16442,9 +16442,9 @@ SPIRVResult SPIRV_PixelExportColor_Float16x4_UInt32(const Compiler* c, SPIRVGene
 SPIRVResult SPIRV_PixelExportColor_Float16x4_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x4_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x4_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16456,9 +16456,9 @@ SPIRVResult SPIRV_PixelExportColor_Float16x4_Int16(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_PixelExportColor_Float16x4_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x4_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float16, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x4_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16470,9 +16470,9 @@ SPIRVResult SPIRV_PixelExportColor_Float16x4_UInt16(const Compiler* c, SPIRVGene
 SPIRVResult SPIRV_PixelExportColor_Int32_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16484,9 +16484,9 @@ SPIRVResult SPIRV_PixelExportColor_Int32_Int32(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_PixelExportColor_Int32_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16498,9 +16498,9 @@ SPIRVResult SPIRV_PixelExportColor_Int32_UInt32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_PixelExportColor_Int32_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16512,9 +16512,9 @@ SPIRVResult SPIRV_PixelExportColor_Int32_Int16(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_PixelExportColor_Int32_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16526,9 +16526,9 @@ SPIRVResult SPIRV_PixelExportColor_Int32_UInt16(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_PixelExportColor_Int32x2_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x2_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 2);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x2_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16540,9 +16540,9 @@ SPIRVResult SPIRV_PixelExportColor_Int32x2_Int32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_PixelExportColor_Int32x2_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x2_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 2);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x2_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16554,9 +16554,9 @@ SPIRVResult SPIRV_PixelExportColor_Int32x2_UInt32(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_Int32x2_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x2_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 2);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x2_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16568,9 +16568,9 @@ SPIRVResult SPIRV_PixelExportColor_Int32x2_Int16(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_PixelExportColor_Int32x2_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x2_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 2);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x2_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16582,9 +16582,9 @@ SPIRVResult SPIRV_PixelExportColor_Int32x2_UInt16(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_Int32x3_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x3_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x3_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16596,9 +16596,9 @@ SPIRVResult SPIRV_PixelExportColor_Int32x3_Int32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_PixelExportColor_Int32x3_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x3_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x3_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16610,9 +16610,9 @@ SPIRVResult SPIRV_PixelExportColor_Int32x3_UInt32(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_Int32x3_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x3_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x3_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16624,9 +16624,9 @@ SPIRVResult SPIRV_PixelExportColor_Int32x3_Int16(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_PixelExportColor_Int32x3_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x3_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x3_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16638,9 +16638,9 @@ SPIRVResult SPIRV_PixelExportColor_Int32x3_UInt16(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_Int32x4_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x4_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x4_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16652,9 +16652,9 @@ SPIRVResult SPIRV_PixelExportColor_Int32x4_Int32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_PixelExportColor_Int32x4_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x4_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x4_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16666,9 +16666,9 @@ SPIRVResult SPIRV_PixelExportColor_Int32x4_UInt32(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_Int32x4_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x4_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x4_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16680,9 +16680,9 @@ SPIRVResult SPIRV_PixelExportColor_Int32x4_Int16(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_PixelExportColor_Int32x4_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x4_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x4_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16694,9 +16694,9 @@ SPIRVResult SPIRV_PixelExportColor_Int32x4_UInt16(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_Int16_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16708,9 +16708,9 @@ SPIRVResult SPIRV_PixelExportColor_Int16_Int32(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_PixelExportColor_Int16_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16722,9 +16722,9 @@ SPIRVResult SPIRV_PixelExportColor_Int16_UInt32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_PixelExportColor_Int16_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16736,9 +16736,9 @@ SPIRVResult SPIRV_PixelExportColor_Int16_Int16(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_PixelExportColor_Int16_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16750,9 +16750,9 @@ SPIRVResult SPIRV_PixelExportColor_Int16_UInt16(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_PixelExportColor_Int16x2_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x2_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 2);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x2_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16764,9 +16764,9 @@ SPIRVResult SPIRV_PixelExportColor_Int16x2_Int32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_PixelExportColor_Int16x2_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x2_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 2);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x2_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16778,9 +16778,9 @@ SPIRVResult SPIRV_PixelExportColor_Int16x2_UInt32(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_Int16x2_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x2_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 2);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x2_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16792,9 +16792,9 @@ SPIRVResult SPIRV_PixelExportColor_Int16x2_Int16(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_PixelExportColor_Int16x2_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x2_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 2);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x2_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16806,9 +16806,9 @@ SPIRVResult SPIRV_PixelExportColor_Int16x2_UInt16(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_Int16x3_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x3_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x3_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16820,9 +16820,9 @@ SPIRVResult SPIRV_PixelExportColor_Int16x3_Int32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_PixelExportColor_Int16x3_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x3_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x3_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16834,9 +16834,9 @@ SPIRVResult SPIRV_PixelExportColor_Int16x3_UInt32(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_Int16x3_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x3_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x3_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16848,9 +16848,9 @@ SPIRVResult SPIRV_PixelExportColor_Int16x3_Int16(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_PixelExportColor_Int16x3_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x3_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x3_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16862,9 +16862,9 @@ SPIRVResult SPIRV_PixelExportColor_Int16x3_UInt16(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_Int16x4_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x4_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x4_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16876,9 +16876,9 @@ SPIRVResult SPIRV_PixelExportColor_Int16x4_Int32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_PixelExportColor_Int16x4_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x4_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x4_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16890,9 +16890,9 @@ SPIRVResult SPIRV_PixelExportColor_Int16x4_UInt32(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_Int16x4_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x4_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x4_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16904,9 +16904,9 @@ SPIRVResult SPIRV_PixelExportColor_Int16x4_Int16(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_PixelExportColor_Int16x4_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x4_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Int16, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_i16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x4_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16918,9 +16918,9 @@ SPIRVResult SPIRV_PixelExportColor_Int16x4_UInt16(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_UInt32_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16932,9 +16932,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt32_Int32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_PixelExportColor_UInt32_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16946,9 +16946,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt32_UInt32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_PixelExportColor_UInt32_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16960,9 +16960,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt32_Int16(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_PixelExportColor_UInt32_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16974,9 +16974,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt32_UInt16(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_PixelExportColor_UInt32x2_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x2_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 2);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x2_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -16988,9 +16988,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x2_Int32(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_UInt32x2_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x2_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 2);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x2_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17002,9 +17002,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x2_UInt32(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_PixelExportColor_UInt32x2_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x2_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 2);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x2_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17016,9 +17016,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x2_Int16(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_UInt32x2_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x2_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 2);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x2_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17030,9 +17030,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x2_UInt16(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_PixelExportColor_UInt32x3_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x3_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x3_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17044,9 +17044,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x3_Int32(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_UInt32x3_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x3_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x3_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17058,9 +17058,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x3_UInt32(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_PixelExportColor_UInt32x3_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x3_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x3_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17072,9 +17072,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x3_Int16(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_UInt32x3_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x3_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x3_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17086,9 +17086,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x3_UInt16(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_PixelExportColor_UInt32x4_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x4_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x4_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17100,9 +17100,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x4_Int32(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_UInt32x4_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x4_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x4_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17114,9 +17114,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x4_UInt32(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_PixelExportColor_UInt32x4_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x4_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x4_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17128,9 +17128,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x4_Int16(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_UInt32x4_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x4_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x4_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17142,9 +17142,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt32x4_UInt16(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_PixelExportColor_UInt16_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17156,9 +17156,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt16_Int32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_PixelExportColor_UInt16_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17170,9 +17170,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt16_UInt32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_PixelExportColor_UInt16_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17184,9 +17184,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt16_Int16(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_PixelExportColor_UInt16_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17198,9 +17198,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt16_UInt16(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_PixelExportColor_UInt16x2_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x2_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 2);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x2_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17212,9 +17212,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x2_Int32(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_UInt16x2_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x2_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 2);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x2_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17226,9 +17226,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x2_UInt32(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_PixelExportColor_UInt16x2_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x2_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 2);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x2_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17240,9 +17240,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x2_Int16(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_UInt16x2_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x2_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 2);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x2_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17254,9 +17254,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x2_UInt16(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_PixelExportColor_UInt16x3_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x3_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x3_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17268,9 +17268,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x3_Int32(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_UInt16x3_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x3_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x3_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17282,9 +17282,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x3_UInt32(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_PixelExportColor_UInt16x3_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x3_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x3_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17296,9 +17296,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x3_Int16(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_UInt16x3_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x3_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x3_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x3_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17310,9 +17310,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x3_UInt16(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_PixelExportColor_UInt16x4_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x4_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x4_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17324,9 +17324,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x4_Int32(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_UInt16x4_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x4_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x4_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17338,9 +17338,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x4_UInt32(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_PixelExportColor_UInt16x4_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x4_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x4_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);
@@ -17352,9 +17352,9 @@ SPIRVResult SPIRV_PixelExportColor_UInt16x4_Int16(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_PixelExportColor_UInt16x4_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
-    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
-    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
-    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x4_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt16, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u16x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x4_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);
     g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
     g->interfaceVariables.Insert(ret);

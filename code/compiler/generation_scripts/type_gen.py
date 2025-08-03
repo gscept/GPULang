@@ -1842,24 +1842,31 @@ def generate_types():
     bool_types = ['Bool8', 'Bool8x2', 'Bool8x3', 'Bool8x4']
 
     base_type_mapping = {
+        'Float32': 'Float32',
         'Float32x2': 'Float32',
         'Float32x3': 'Float32',
         'Float32x4': 'Float32',
+        'Float16': 'Float16',
         'Float16x2': 'Float16',
         'Float16x3': 'Float16',
         'Float16x4': 'Float16',
+        'Int32': 'Int32',
         'Int32x2': 'Int32',
         'Int32x3': 'Int32',
         'Int32x4': 'Int32',
+        'Int16': 'Int16',
         'Int16x2': 'Int16',
         'Int16x3': 'Int16',
         'Int16x4': 'Int16',
+        'UInt32': 'UInt32',
         'UInt32x2': 'UInt32',
         'UInt32x3': 'UInt32',
         'UInt32x4': 'UInt32',
+        'UInt16': 'UInt16',
         'UInt16x2': 'UInt16',
         'UInt16x3': 'UInt16',
         'UInt16x4': 'UInt16',
+        'Bool8': 'Bool8',
         'Bool8x2': 'Bool8',
         'Bool8x3': 'Bool8',
         'Bool8x4': 'Bool8'
@@ -2740,7 +2747,7 @@ def generate_types():
     spirv_function = ''
     spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
     spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);\n'
-    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Input"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
+    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
     spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
     spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
@@ -2770,9 +2777,9 @@ def generate_types():
 
             spirv_function = ''
             spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
-            spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);\n'
-            spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
-            spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
+            spirv_function += f'    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::{base_type_mapping[type]}, {vector_size_mapping[type]});\n'
+            spirv_function += f'    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_{data_type_mapping[type]}_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
+            spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
             spirv_function += '    g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);\n'
             spirv_function += '    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);\n'
             spirv_function += '    g->interfaceVariables.Insert(ret);\n'
