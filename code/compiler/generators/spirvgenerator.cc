@@ -112,6 +112,16 @@ struct SPVEnum
         this->str = rhs.str;
         this->c = rhs.c;
     }
+    
+    bool operator==(const SPVEnum& rhs) const
+    {
+        return this->c == rhs.c;
+    }
+    
+    bool operator!=(const SPVEnum& rhs) const
+    {
+        return this->c != rhs.c;
+    }
 };
 
 bool operator<(const SPVEnum& lhs, const SPVEnum& rhs)

@@ -539,6 +539,7 @@ struct TransientString
         return strcmp(this->buf, buf) == 0;
     }
 
+
     template<typename T, typename U>
     void Append(T arg, U argN) {}
 
@@ -687,6 +688,16 @@ struct TransientString
     bool operator<(const TransientString& rhs) const
     {
         return strcmp(this->buf, rhs.buf) < 0;
+    }
+    
+    bool operator==(const TransientString& rhs) const
+    {
+        return strcmp(this->buf, rhs.buf) == 0;
+    }
+    
+    bool operator!=(const TransientString& rhs) const
+    {
+        return strcmp(this->buf, rhs.buf) != 0;
     }
 
     bool operator==(const ConstantString& rhs) const

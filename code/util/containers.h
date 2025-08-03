@@ -1978,13 +1978,29 @@ struct PinnedSet
     void Insert(const K& key)
     {
         assert(this->searchValid);
-        if (this->Find(key) == this->end())
+        if (this->searchValid)
+        {
+            struct Comp
+            {
+                bool operator()(const K& key, const K& item) { return key < item; }
+            };
+            auto it = std::lower_bound(this->data.begin(), this->data.end(), key, Comp{});
+            if (it != this->data.end())
+            {
+                if (*it != key)
+                {
+                    this->data.Grow(1);
+                    memmove(it+1, it, (this->data.end() - it) * sizeof(K));
+                    *it = key;
+                    this->data.size++;
+                }
+            }
+            else
+                this->data.Append(key);
+        }
+        else
         {
             this->data.Append(key);
-            if (this->searchValid)
-            {
-                this->Sort();
-            }
         }
     }
     
