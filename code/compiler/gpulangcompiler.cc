@@ -2292,8 +2292,6 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
         if (options.emitTimings)
             timer.Print("Home made parser");
         
-        timer.Start();
-
         compiler.path = file->path;
         compiler.filename = effectName;
 
