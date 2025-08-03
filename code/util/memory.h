@@ -15,6 +15,7 @@
 #include <mutex>
 #include <type_traits>
 #include <memory>
+#include <limits>
 
 
 extern bool SYMBOL_STATIC_ALLOC;
