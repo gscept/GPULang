@@ -230,12 +230,12 @@ SingleShaderCompiler::CreateDependencies(const std::string& src)
         GPULang::InitAllocator(&alloc);
         GPULang::MakeAllocatorCurrent(&alloc);
         
-        GPULang::PinnedArray<GPULang::Diagnostic> diagnostics(0xFFF);
+        GPULang::PinnedArray<GPULangDiagnostic> diagnostics(0xFFF);
         GPULang::FixedArray<GPULang::FixedString> deps = GPULangGenerateDependencies(sourceFile, defines, diagnostics);
         bool hasError = false;
         for (const auto& diag : diagnostics)
         {
-            if (diag.severity == GPULang::Diagnostic::Severity::Error)
+            if (diag.severity == GPULangDiagnostic::Severity::Error)
             {
                 printf("Generation dependency failed with: %s", diag.error.c_str());
                 hasError = true;

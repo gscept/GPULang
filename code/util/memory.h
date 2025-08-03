@@ -434,7 +434,7 @@ DeallocStack(size_t count, size_t size, TYPE* buf, size_t numBytes)
 {
     if (!std::is_trivially_destructible<TYPE>::value)
     {
-        for (size_t i = size-1; i != SIZE_T_MAX; i--)
+        for (size_t i = size-1; i != std::numeric_limits<size_t>::max(); i--)
             (buf + i)->~TYPE();
     }
     const char* HeapPtr = (const char*)ThreadLocalHeapPtr;
