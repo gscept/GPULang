@@ -19087,7 +19087,7 @@ SPIRVResult SPIRV_MemoryBarrier(const Compiler* c, SPIRVGenerator* g, uint32_t r
 {
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x40 | 0x80 | 0x100 | 0x200 | 0x400 | 0x800));
-    g->writer->Instruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, scopeId, semanticsId);
+    g->writer->Instruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, semanticsId);
     return SPIRVResult(0xFFFFFFFF, returnType);
 }
 
@@ -19095,7 +19095,7 @@ SPIRVResult SPIRV_MemoryBarrierBuffer(const Compiler* c, SPIRVGenerator* g, uint
 {
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x40));
-    g->writer->Instruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, scopeId, semanticsId);
+    g->writer->Instruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, semanticsId);
     return SPIRVResult(0xFFFFFFFF, returnType);
 }
 
@@ -19103,7 +19103,7 @@ SPIRVResult SPIRV_MemoryBarrierTexture(const Compiler* c, SPIRVGenerator* g, uin
 {
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x800));
-    g->writer->Instruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, scopeId, semanticsId);
+    g->writer->Instruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, semanticsId);
     return SPIRVResult(0xFFFFFFFF, returnType);
 }
 
@@ -19111,7 +19111,7 @@ SPIRVResult SPIRV_MemoryBarrierAtomic(const Compiler* c, SPIRVGenerator* g, uint
 {
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x400));
-    g->writer->Instruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, scopeId, semanticsId);
+    g->writer->Instruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, semanticsId);
     return SPIRVResult(0xFFFFFFFF, returnType);
 }
 
@@ -19119,7 +19119,7 @@ SPIRVResult SPIRV_MemoryBarrierSubgroup(const Compiler* c, SPIRVGenerator* g, ui
 {
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(3));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x80));
-    g->writer->Instruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, scopeId, semanticsId);
+    g->writer->Instruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, semanticsId);
     return SPIRVResult(0xFFFFFFFF, returnType);
 }
 
@@ -19127,7 +19127,7 @@ SPIRVResult SPIRV_MemoryBarrierWorkgroup(const Compiler* c, SPIRVGenerator* g, u
 {
     SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
     SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x100));
-    g->writer->Instruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, scopeId, semanticsId);
+    g->writer->Instruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, semanticsId);
     return SPIRVResult(0xFFFFFFFF, returnType);
 }
 

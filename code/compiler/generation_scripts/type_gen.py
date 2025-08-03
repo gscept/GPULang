@@ -3411,7 +3411,7 @@ def generate_types():
         spirv_function = ''
         spirv_function += f'    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt({scope}));\n'
         spirv_function += f'    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt({semantics}));\n'
-        spirv_function += f'    g->writer->Instruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, scopeId, semanticsId);\n'
+        spirv_function += f'    g->writer->Instruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, semanticsId);\n'
         spirv_function += '    return SPIRVResult(0xFFFFFFFF, returnType);\n'
         spirv_code += spirv_intrinsic(function_name, spirv_function)
 
