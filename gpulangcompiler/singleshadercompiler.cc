@@ -143,7 +143,7 @@ SingleShaderCompiler::CompileSPIRV(const std::string& src)
 	options.optimize = this->flags & Flags::Optimize ? 1 : 0;
 	options.emitTimings = this->flags & Flags::Profile ? 1 : 0;
 	options.validate = this->flags & Flags::Validate ? 1 : 0;
-	options.symbols = this->flags & Flags::Symbols ? 1 : 0;
+    options.debugSymbols = this->flags & Flags::Symbols ? 1 : 0;
 	options.errorFormat = GPULang::Compiler::ErrorFormat::MSVC;
 	options.defaultGroupBinding = this->defaultGroup;
 
