@@ -463,12 +463,14 @@ Tokenize(const std::string& text, const TransientString& path)
                 startOfLine = it;
                 continue;
             }
+            ret.lineCount++;
         }
         else if (it[0] == '\n')
         {
             line += 1;
             it += 1;
             startOfLine = it;
+            ret.lineCount++;
             continue;
         }
         else if (it[0] == '\0')
@@ -707,6 +709,16 @@ Tokenize(const std::string& text, const TransientString& path)
                         }
                     }
                 }
+                else
+                {
+                    GPULangDiagnostic diagnostic;
+                    diagnostic.file = currentPath;
+                    diagnostic.error = TStr("Invalid directive ", it[0]);
+                    diagnostic.line = line;
+                    diagnostic.column = it - startOfLine;
+                    diagnostic.length = 1;
+                    ret.errors.Append(diagnostic);
+                }
                 line--;
                 continue; // Ignore the directive
             }
@@ -732,7 +744,7 @@ Tokenize(const std::string& text, const TransientString& path)
             {
                 GPULangDiagnostic diagnostic;
                 diagnostic.file = currentPath;
-                diagnostic.error = TStr("Unknown character sequence ", tokenText);
+                diagnostic.error = TStr("Invalid character sequence ", tokenText);
                 diagnostic.line = line;
                 diagnostic.column = it - startOfLine;
                 diagnostic.length = it - begin;
@@ -783,7 +795,7 @@ UnexpectedToken(const TokenStream& stream, const char* expected)
     
     GPULangDiagnostic diagnostic;
     diagnostic.severity = GPULangDiagnostic::Severity::Error;
-    diagnostic.error = TStr("Expected ", expected, ", got ", tok.text);
+    diagnostic.error = TStr("Expected ", expected);
     diagnostic.file = tok.path;
     diagnostic.line = tok.startLine;
     diagnostic.column = tok.startChar;
@@ -1457,162 +1469,202 @@ ParseType(TokenStream& stream, ParseResult& ret, Type::FullType& res)
     {
         case TokenType::Rgba16:
             res.imageFormat = ImageFormat::Rgba16;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::Rgb10_A2:
             res.imageFormat = ImageFormat::Rgb10_A2;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::Rgba8:
             res.imageFormat = ImageFormat::Rgba8;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::Rg16:
             res.imageFormat = ImageFormat::Rg16;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::Rg8:
             res.imageFormat = ImageFormat::Rg8;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::R16:
             res.imageFormat = ImageFormat::R16;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::R8:
             res.imageFormat = ImageFormat::R8;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::Rgba16_Snorm:
             res.imageFormat = ImageFormat::Rgba16_Snorm;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::Rgba8_Snorm:
             res.imageFormat = ImageFormat::Rgba8_Snorm;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::Rg16_Snorm:
             res.imageFormat = ImageFormat::Rg16_Snorm;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::Rg8_Snorm:
             res.imageFormat = ImageFormat::Rg8_Snorm;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::R16_Snorm:
             res.imageFormat = ImageFormat::R16_Snorm;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::R8_Snorm:
             res.imageFormat = ImageFormat::R8_Snorm;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::Rgba32F:
             res.imageFormat = ImageFormat::Rgba32F;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::Rgba16F:
             res.imageFormat = ImageFormat::Rgba16F;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::Rg32F:
             res.imageFormat = ImageFormat::Rg32F;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::Rg16F:
             res.imageFormat = ImageFormat::Rg16F;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::R11G11B10F:
             res.imageFormat = ImageFormat::R11G11B10F;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::R32F:
             res.imageFormat = ImageFormat::R32F;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::R16F:
             res.imageFormat = ImageFormat::R16F;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::Rgba32I:
             res.imageFormat = ImageFormat::Rgba32I;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::Rgba16I:
             res.imageFormat = ImageFormat::Rgba16I;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::Rgba8I:
             res.imageFormat = ImageFormat::Rgba8I;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::Rg32I:
             res.imageFormat = ImageFormat::Rg32I;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::Rg16I:
             res.imageFormat = ImageFormat::Rg16I;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::Rg8I:
             res.imageFormat = ImageFormat::Rg8I;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::R32I:
             res.imageFormat = ImageFormat::R32I;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::R16I:
             res.imageFormat = ImageFormat::R16I;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::R8I:
             res.imageFormat = ImageFormat::R8I;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::Rgba32U:
             res.imageFormat = ImageFormat::Rgba32U;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::Rgba16U:
             res.imageFormat = ImageFormat::Rgba16U;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::Rgb10_A2U:
             res.imageFormat = ImageFormat::Rgb10_A2U;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::Rgba8U:
             res.imageFormat = ImageFormat::Rgba8U;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::Rg32U:
             res.imageFormat = ImageFormat::Rg32U;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::Rg16U:
             res.imageFormat = ImageFormat::Rg16U;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::Rg8U:
             res.imageFormat = ImageFormat::Rg8U;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::R32U:
             res.imageFormat = ImageFormat::R32U;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::R16U:
             res.imageFormat = ImageFormat::R16U;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::R8U:
             res.imageFormat = ImageFormat::R8U;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
         case TokenType::UnknownFormat:
             res.imageFormat = ImageFormat::Unknown;
+            res.formatLocation = LocationFromToken(stream.Data());
             stream.Consume();
             break;
     }

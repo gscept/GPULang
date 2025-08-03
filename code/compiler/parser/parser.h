@@ -186,7 +186,7 @@ struct Token
     std::string_view text;
     FixedString path;
     uint32_t startLine, endLine;
-    uint32_t startChar, endChar;
+    uint16_t startChar, endChar;
 };
 
 struct TokenizationResult
@@ -194,6 +194,7 @@ struct TokenizationResult
     PinnedArray<TokenType> tokenTypes = 0xFFFFFF;
     PinnedArray<Token> tokens = 0xFFFFFF;
     PinnedArray<GPULangDiagnostic> errors = 0xFFFF;
+    size_t lineCount = 0;
 };
 
 // Tokenize string
@@ -236,13 +237,11 @@ struct TokenStream
             return this->tokens[this->tokenIndex + lookAhead];
     }
     
-    bool Match(TokenType type)
+    inline bool Match(TokenType type)
     {
         if (this->Type(0) == type)
         {
-            this->lastMatched = type;
             this->tokenIndex++;
-            this->current = this->Type(0);
             return true;
         }
         return false;
@@ -253,8 +252,6 @@ struct TokenStream
         this->tokenIndex -= count;
     }
     
-    TokenType lastMatched;
-    TokenType current;
     size_t tokenIndex = 0;
     PinnedArray<TokenType> tokenTypes = 0xFFFFFF;
     PinnedArray<Token> tokens = 0xFFFFFF;
