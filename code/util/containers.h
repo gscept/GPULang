@@ -583,7 +583,7 @@ struct PinnedArray
     void Erase(TYPE* it)
     {
         assert(it >= this->data && it <= this->data + this->size);
-        memmove(it, it + 1, this->size - (this->data + this->size - it));
+        memmove(it, it + 1, (this->end() - it) * sizeof(TYPE));
     }
     
     void Prepend(const PinnedArray<TYPE>& elements)
@@ -1679,10 +1679,27 @@ struct PinnedMap
     
     void Insert(const K& key, const V& value)
     {
-        this->data.Append(std::make_pair(key, value));
         if (this->searchValid)
         {
-            this->Sort();
+            struct Comp
+            {
+                bool operator()(const K& key, const item& item) { return key < item.first; }
+                bool operator()(const item& item, const K& key) { return item.first < key; }
+            };
+            auto it = std::lower_bound(this->data.begin(), this->data.end(), key, Comp{});
+            if (it != this->data.end())
+            {
+                this->data.Grow(1);
+                memmove(it+1, it, (this->data.end() - it) * sizeof(item));
+                *it = std::make_pair(key, value);
+                this->data.size++;
+            }
+            else
+                this->data.Append(std::make_pair(key, value));
+        }
+        else
+        {
+            this->data.Append(std::make_pair(key, value));
         }
     }
     
