@@ -400,7 +400,10 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
             auto it = typeToHeaderType.Find(type.ToView());
             if (it != typeToHeaderType.end())
                 type = it->second.c_str();
-            TStr arrayType = typeToArraySize.Find(var->type.name)->second.c_str();
+            auto arrayTypeIt = typeToArraySize.Find(var->type.name);
+            TStr arrayType;
+            if (arrayTypeIt != typeToArraySize.end())
+                arrayType = arrayTypeIt->second.c_str();
             auto modIt = var->type.modifiers.rbegin();
             while (modIt != var->type.modifiers.rend())
             {
