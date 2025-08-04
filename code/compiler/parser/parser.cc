@@ -455,6 +455,7 @@ Tokenize(const std::string& text, const TransientString& path)
                 line += 1;
                 it += 2;
                 startOfLine = it;
+                ret.lineCount++;
                 continue;
             }
             else
@@ -462,9 +463,9 @@ Tokenize(const std::string& text, const TransientString& path)
                 line += 1;
                 it += 1;
                 startOfLine = it;
+                ret.lineCount++;
                 continue;
             }
-            ret.lineCount++;
         }
         else if (it[0] == '\n')
         {
