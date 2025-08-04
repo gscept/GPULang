@@ -689,6 +689,11 @@ struct TransientString
     {
         return strcmp(this->buf, rhs.buf) < 0;
     }
+
+    bool operator<(const std::string_view &rhs) const
+    {
+        return rhs.compare(this->buf) > 0;
+    }
     
     bool operator==(const TransientString& rhs) const
     {
@@ -977,86 +982,6 @@ struct GrowingString
     }
 };
 
-struct StaticString
-{
-    StaticString()
-        : buf(nullptr)
-        , len(0)
-    {
-    }
-
-    StaticString(const char* buf)
-    {
-        size_t len = strlen(buf) + 1;
-        this->buf = StaticAllocArray<char>(len);
-        this->len = len - 1;
-        memcpy(this->buf, buf, len - 1);
-        this->buf[this->len] = '\0';
-    }
-
-    explicit StaticString(const std::string& str)
-    {
-        size_t len = str.length() + 1;
-        this->buf = StaticAllocArray<char>(len);
-        this->len = len - 1;
-        memcpy(this->buf, str.data(), len - 1);
-        this->buf[this->len] = '\0';
-    }
-
-    explicit StaticString(const StaticString& rhs)
-    {
-        this->buf = rhs.buf;
-        this->len = rhs.len;
-    }
-
-    void operator=(const StaticString& rhs)
-    {
-        this->buf = rhs.buf;
-        this->len = rhs.len;
-    }
-
-    StaticString(StaticString&& rhs) noexcept
-    {
-        this->buf = rhs.buf;
-        this->len = rhs.len;
-        rhs.buf = nullptr;
-        rhs.len = 0;
-    }
-
-    void operator=(StaticString&& rhs) noexcept
-    {
-        this->buf = rhs.buf;
-        this->len = rhs.len;
-        rhs.buf = nullptr;
-        rhs.len = 0;
-    }
-
-    bool operator==(const char* cmp) const
-    {
-        return strcmp(this->buf, cmp) == 0;
-    }
-
-    bool operator<(const StaticString& rhs) const
-    {
-        return strcmp(this->buf, rhs.buf) < 0;
-    }
-
-    bool operator<(const std::string_view& rhs) const
-    {
-        return strcmp(this->buf, rhs.data()) < 0;
-    }
-
-    bool operator==(const StaticString& rhs) const
-    {
-        return strcmp(this->buf, rhs.buf) == 0;
-    }
-
-    const char* c_str() const { return this->buf; }
-
-    char* buf;
-    size_t len;
-};
-
 struct FixedString
 {
     FixedString()
@@ -1109,23 +1034,11 @@ struct FixedString
         memcpy(this->buf, str.data(), len - 1);
         this->buf[this->len] = '\0';
     }
-
-    explicit FixedString(const StaticString& str)
-    {
-        this->buf = str.buf;
-        this->len = str.len;
-    }
     
     explicit FixedString(const ConstantString& str)
     {
         this->buf = const_cast<char*>(str.buf);
         this->len = str.size;
-    }
-
-    void operator=(const StaticString& rhs) noexcept
-    {
-        this->buf = rhs.buf;
-        this->len = rhs.len;
     }
 
     FixedString(const FixedString& rhs)
@@ -1344,14 +1257,6 @@ struct FixedString
         return strncmp(this->buf, str.data(), str.length()) == 0;
     }
 
-    operator StaticString() const
-    {
-        StaticString ret;
-        ret.buf = this->buf;
-        ret.len = this->len;
-        return ret;
-    }
-
     const char* c_str() const { return this->buf; }
     
     std::string_view ToView() const { return std::string_view(this->buf, this->len); }
@@ -1464,17 +1369,6 @@ StringToFourCC(const GPULang::TransientString& str)
 
 } // namespace GPULang
 
-inline bool
-operator<(const std::string_view& lhs, const GPULang::FixedString& rhs)
-{
-    return lhs.compare(rhs.buf) < 0;
-}
-
-inline bool
-operator<(const std::string_view& lhs, const GPULang::ConstantString& rhs)
-{
-    return lhs.compare(rhs.buf) < 0;
-}
 
 inline bool
 operator<(const GPULang::ConstantString& lhs, const std::string_view& rhs)
@@ -1504,37 +1398,13 @@ operator<(const GPULang::TransientString& lhs, const GPULang::FixedString& rhs)
 }
 
 inline bool
+operator<(const GPULang::TransientString& lhs, const GPULang::ConstantString& rhs)
+{
+    return strcmp(lhs.buf, rhs.buf) < 0;
+}
+
+inline bool
 operator<(const GPULang::FixedString& lhs, const GPULang::TransientString& rhs)
-{
-    return strcmp(lhs.buf, rhs.buf) < 0;
-}
-
-inline bool
-operator<(const GPULang::TransientString& lhs, const GPULang::StaticString& rhs)
-{
-    return strcmp(lhs.buf, rhs.buf) < 0;
-}
-
-inline bool
-operator<(const GPULang::StaticString& lhs, const GPULang::TransientString& rhs)
-{
-    return strcmp(lhs.buf, rhs.buf) < 0;
-}
-
-inline bool
-operator<(const GPULang::FixedString& lhs, const GPULang::StaticString& rhs)
-{
-    return strcmp(lhs.buf, rhs.buf) < 0;
-}
-
-inline bool
-operator<(const GPULang::StaticString& lhs, const GPULang::FixedString& rhs)
-{
-    return strcmp(lhs.buf, rhs.buf) < 0;
-}
-
-inline bool
-operator<(const GPULang::FixedString& lhs, const GPULang::ConstantString& rhs)
 {
     return strcmp(lhs.buf, rhs.buf) < 0;
 }
@@ -1546,36 +1416,40 @@ operator<(const GPULang::ConstantString& lhs, const GPULang::FixedString& rhs)
 }
 
 inline bool
-operator<(const GPULang::TransientString& lhs, const GPULang::ConstantString& rhs)
-{
-    return strcmp(lhs.buf, rhs.buf) < 0;
-}
-
-inline bool
 operator<(const GPULang::ConstantString& lhs, const GPULang::TransientString& rhs)
 {
     return strcmp(lhs.buf, rhs.buf) < 0;
 }
 
+
 inline bool
-operator<(const std::string_view& lhs, const GPULang::StaticString& rhs)
+operator<(const GPULang::FixedString& lhs, const GPULang::ConstantString& rhs)
 {
-    return strcmp(lhs.data(), rhs.buf) < 0;
+    return strcmp(lhs.buf, rhs.buf) < 0;
+}
+
+inline bool
+operator<(const std::string_view& lhs, const GPULang::TransientString& rhs)
+{
+    return lhs.compare(rhs.buf) < 0;
+}
+
+inline bool
+operator<(const std::string_view& lhs, const GPULang::FixedString& rhs)
+{
+    return lhs.compare(rhs.buf) < 0;
+}
+
+inline bool
+operator<(const std::string_view& lhs, const GPULang::ConstantString& rhs)
+{
+    return lhs.compare(rhs.buf) < 0;
 }
 
 template<>
 struct std::hash<GPULang::FixedString>
 {
     std::size_t operator()(const GPULang::FixedString& str) const noexcept
-    {
-        return std::hash<std::string_view>{}(std::string_view(str.buf, str.buf + str.len));
-    }
-};
-
-template<>
-struct std::hash<GPULang::StaticString>
-{
-    std::size_t operator()(const GPULang::StaticString& str) const noexcept
     {
         return std::hash<std::string_view>{}(std::string_view(str.buf, str.buf + str.len));
     }

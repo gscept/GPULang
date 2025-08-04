@@ -2104,10 +2104,10 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
     std::string preprocessed;
     errorBuffer = nullptr;
 
-    {
-        Compiler compiler;
-        compiler.Setup(target, options);
+    Compiler compiler;
+    compiler.Setup(target, options);
 
+    {
         GPULang::Compiler::Timer timer;
         timer.Start();
         

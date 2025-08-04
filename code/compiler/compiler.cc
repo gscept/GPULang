@@ -65,7 +65,7 @@ Compiler::Compiler()
 */
 Compiler::~Compiler()
 {
-    this->validator->~Validator();
+    //this->validator->~Validator();
 }
 
 

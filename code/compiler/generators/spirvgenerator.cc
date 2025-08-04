@@ -1053,21 +1053,23 @@ struct SPVWriter
     template<typename ...ARGS>
     void Decorate(SPVArg symbol, SPVEnum decoration, const ARGS&... args)
     {
-        std::string key = TStr(symbol.arg, "_", decoration.str, std::forward<const ARGS&>(args)...).ToString();
+        auto key = TStr(symbol.arg, "_", decoration.str, std::forward<const ARGS&>(args)...);
         if (this->decorations.Find(key) == this->decorations.end())
         {
             this->Instruction(OpDecorate, Section::Decorations, symbol, decoration, std::forward<const ARGS&>(args)...);
-            this->decorations.Insert(key);
+            this->decorations.Insert(FixedString(key));
         }
     }
 
     uint32_t String(const char* str)
     {
-        auto it = this->strings.Find(str);
+        TStr string(str);
+        auto it = this->strings.Find(string);
         if (it == this->strings.end())
         {
-            uint32_t ret = this->MappedInstruction(OpString, SPVWriter::Section::DebugStrings, str); 
-            this->strings.Insert(str, ret);
+            FixedString finalStr(string);
+            uint32_t ret = this->MappedInstruction(OpString, SPVWriter::Section::DebugStrings, finalStr);
+            this->strings.Insert(finalStr, ret);
             return ret;
         }
         else
@@ -1422,6 +1424,26 @@ struct SPVWriter
         }
     }
 
+    template<>
+    void Append(const FixedString& str)
+    {
+        size_t len = str.len + 1;
+        size_t lenInWords = std::ceil(len / 4.0f);
+        uint32_t* strAsWords = (uint32_t*)str.buf;
+
+        for (size_t i = 0; i < lenInWords; i++)
+        {
+            this->binaries[(uint32_t)this->section].push_back(strAsWords[i]);
+        }
+        char* lastInt = (char*)&this->binaries[(uint32_t)this->section].back();
+        lastInt[3] = '\0';
+
+        if (this->outputText)
+        {
+            this->texts[(uint32_t)this->section].Append(TStr::Compact(" \"", str, "\"").ToString());
+        }
+    }
+
     template<int SIZE>
     void Append(const char (&str)[SIZE])
     {
@@ -1720,8 +1742,8 @@ struct SPVWriter
     PinnedMap<const char*, uint32_t> imports = 0xFFF;
     PinnedSet<SPVEnum> capabilities = 0xFFF;
     PinnedSet<SPVEnum> extensions = 0xFFF;
-    PinnedSet<std::string> decorations = 0xFFF;
-    PinnedMap<std::string, uint32_t> strings = 0xFFFF;
+    PinnedSet<FixedString> decorations = 0xFFF;
+    PinnedMap<FixedString, uint32_t> strings = 0xFFFF;
 };
 
 template<typename ...ARGS>

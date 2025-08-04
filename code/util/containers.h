@@ -2046,6 +2046,20 @@ struct PinnedSet
         auto [beginRange, endRange] = it;
         return beginRange == endRange ? this->end() : beginRange;
     }
+
+    template<typename U>
+    const K* Find(const U& key) const
+    {
+        struct Comp
+        {
+            bool operator()(const U& key, const K& item) { return key < item; }
+            bool operator()(const K& item, const U& key) { return item < key; }
+        };
+        auto it = std::equal_range(this->data.begin(), this->data.end(), key, Comp{});
+
+        auto [beginRange, endRange] = it;
+        return beginRange == endRange ? this->end() : beginRange;
+    }
     
     size_t size()
     {

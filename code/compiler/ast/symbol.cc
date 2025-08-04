@@ -23,8 +23,8 @@ Symbol::Symbol() :
 */
 Symbol::~Symbol()
 {
-    if (this->resolved != nullptr)
-        this->resolved->~__Resolved();
+    //if (this->resolved != nullptr)
+    //    this->resolved->~__Resolved();
 }
 
 //------------------------------------------------------------------------------
