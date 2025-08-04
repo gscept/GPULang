@@ -952,7 +952,7 @@ SPIRVResult SPIRV_Float32_from_Int16(const Compiler* c, SPIRVGenerator* g, uint3
 
 SPIRVResult SPIRV_Float32_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0]});
+    return args[0];
 }
 
 SPIRVResult SPIRV_Float32_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -1159,7 +1159,7 @@ SPIRVResult SPIRV_UInt32_from_Int16(const Compiler* c, SPIRVGenerator* g, uint32
 
 SPIRVResult SPIRV_UInt32_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0]});
+    return args[0];
 }
 
 SPIRVResult SPIRV_UInt32_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -1446,7 +1446,7 @@ SPIRVResult SPIRV_Int32_from_Int16(const Compiler* c, SPIRVGenerator* g, uint32_
 
 SPIRVResult SPIRV_Int32_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0]});
+    return args[0];
 }
 
 SPIRVResult SPIRV_Int32_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -1723,7 +1723,7 @@ SPIRVResult SPIRV_Bool8_from_Int16(const Compiler* c, SPIRVGenerator* g, uint32_
 
 SPIRVResult SPIRV_Bool8_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0]});
+    return args[0];
 }
 
 SPIRVResult SPIRV_Bool8_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -1842,7 +1842,7 @@ SPIRVResult SPIRV_Float16_from_Int16(const Compiler* c, SPIRVGenerator* g, uint3
 
 SPIRVResult SPIRV_Float16_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0]});
+    return args[0];
 }
 
 SPIRVResult SPIRV_Float16_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -2049,7 +2049,7 @@ SPIRVResult SPIRV_UInt16_from_Int16(const Compiler* c, SPIRVGenerator* g, uint32
 
 SPIRVResult SPIRV_UInt16_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0]});
+    return args[0];
 }
 
 SPIRVResult SPIRV_UInt16_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -2336,7 +2336,7 @@ SPIRVResult SPIRV_Int16_from_UInt16(const Compiler* c, SPIRVGenerator* g, uint32
 
 SPIRVResult SPIRV_Int16_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0]});
+    return args[0];
 }
 
 SPIRVResult SPIRV_Int16_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -2676,7 +2676,7 @@ SPIRVResult SPIRV_Float32x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, ui
 
 SPIRVResult SPIRV_Float32x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Float32x2_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -2984,7 +2984,7 @@ SPIRVResult SPIRV_UInt32x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, uin
 
 SPIRVResult SPIRV_UInt32x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_UInt32x2_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -3348,7 +3348,7 @@ SPIRVResult SPIRV_Int32x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
 
 SPIRVResult SPIRV_Int32x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Int32x2_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -3688,7 +3688,7 @@ SPIRVResult SPIRV_Bool8x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
 
 SPIRVResult SPIRV_Bool8x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Bool8x2_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -3860,7 +3860,7 @@ SPIRVResult SPIRV_Float16x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, ui
 
 SPIRVResult SPIRV_Float16x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Float16x2_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -4168,7 +4168,7 @@ SPIRVResult SPIRV_UInt16x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, uin
 
 SPIRVResult SPIRV_UInt16x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_UInt16x2_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -4532,7 +4532,7 @@ SPIRVResult SPIRV_Int16x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
 
 SPIRVResult SPIRV_Int16x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Int16x2_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -4896,17 +4896,17 @@ SPIRVResult SPIRV_Float32x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, ui
 
 SPIRVResult SPIRV_Float32x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Float32x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Float32x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Float32x3_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -5214,17 +5214,17 @@ SPIRVResult SPIRV_UInt32x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, uin
 
 SPIRVResult SPIRV_UInt32x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_UInt32x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_UInt32x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_UInt32x3_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -5588,17 +5588,17 @@ SPIRVResult SPIRV_Int32x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
 
 SPIRVResult SPIRV_Int32x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Int32x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Int32x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Int32x3_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -5938,17 +5938,17 @@ SPIRVResult SPIRV_Bool8x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
 
 SPIRVResult SPIRV_Bool8x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Bool8x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Bool8x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Bool8x3_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -6120,17 +6120,17 @@ SPIRVResult SPIRV_Float16x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, ui
 
 SPIRVResult SPIRV_Float16x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Float16x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Float16x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Float16x3_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -6438,17 +6438,17 @@ SPIRVResult SPIRV_UInt16x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, uin
 
 SPIRVResult SPIRV_UInt16x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_UInt16x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_UInt16x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_UInt16x3_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -6812,17 +6812,17 @@ SPIRVResult SPIRV_Int16x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
 
 SPIRVResult SPIRV_Int16x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Int16x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Int16x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Int16x3_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -7186,37 +7186,37 @@ SPIRVResult SPIRV_Float32x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, ui
 
 SPIRVResult SPIRV_Float32x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2], args[3]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Float32x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Float32x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Float32x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Float32x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Float32x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Float32x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Float32x4_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -7524,37 +7524,37 @@ SPIRVResult SPIRV_UInt32x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, uin
 
 SPIRVResult SPIRV_UInt32x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2], args[3]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_UInt32x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_UInt32x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_UInt32x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_UInt32x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_UInt32x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_UInt32x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_UInt32x4_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -7918,37 +7918,37 @@ SPIRVResult SPIRV_Int32x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
 
 SPIRVResult SPIRV_Int32x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2], args[3]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Int32x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Int32x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Int32x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Int32x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Int32x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Int32x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Int32x4_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -8288,37 +8288,37 @@ SPIRVResult SPIRV_Bool8x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
 
 SPIRVResult SPIRV_Bool8x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2], args[3]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Bool8x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Bool8x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Bool8x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Bool8x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Bool8x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Bool8x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Bool8x4_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -8490,37 +8490,37 @@ SPIRVResult SPIRV_Float16x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, ui
 
 SPIRVResult SPIRV_Float16x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2], args[3]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Float16x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Float16x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Float16x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Float16x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Float16x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Float16x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Float16x4_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -8828,37 +8828,37 @@ SPIRVResult SPIRV_UInt16x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, uin
 
 SPIRVResult SPIRV_UInt16x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2], args[3]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_UInt16x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_UInt16x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_UInt16x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_UInt16x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_UInt16x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_UInt16x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_UInt16x4_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -9222,37 +9222,37 @@ SPIRVResult SPIRV_Int16x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
 
 SPIRVResult SPIRV_Int16x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2], args[3]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Int16x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Int16x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Int16x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1], args[2]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Int16x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Int16x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Int16x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    return GenerateCompositeSPIRV(c, g, returnType, {args[0], args[1]});
+    return GenerateCompositeSPIRV(c, g, returnType, args);
 }
 
 SPIRVResult SPIRV_Int16x4_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)

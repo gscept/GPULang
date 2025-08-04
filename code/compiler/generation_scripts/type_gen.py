@@ -790,8 +790,10 @@ def generate_types():
                     else:
                         list_entry_key.append(f'{data_type_mapping[type]}x{s}')
 
-
-                spirv_function = f'    return GenerateCompositeSPIRV(c, g, returnType, {{{", ".join([f"args[{idx}]" for idx, arg in enumerate(args)])}}});\n'
+                if size > 1:
+                    spirv_function = f'    return GenerateCompositeSPIRV(c, g, returnType, args);\n'
+                else:
+                    spirv_function = f'    return args[0];\n'
                 spirv_type_construction += spirv_intrinsic(function_name, spirv_function)
                 fun.spirv = spirv_function
                 functions.append(fun)
