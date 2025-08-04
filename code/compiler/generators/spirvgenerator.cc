@@ -1117,7 +1117,7 @@ struct SPVWriter
         this->binaries[(uint32_t)section].push_back(c);
 
         if (this->outputText)
-            this->texts[(uint32_t)section].Append(TStr::Separated(SPVArg(c), "=", op.str, SPVArg(type)).ToString());
+            this->texts[(uint32_t)section].Append(TStr::Separated(SPVArg(c), "=", op.str, SPVArg(type)));
 
         (Append(args), ...);
 
@@ -1162,7 +1162,7 @@ struct SPVWriter
         this->binaries[(uint32_t)section].push_back(c);
 
         if (this->outputText)
-            this->texts[(uint32_t)section].Append(TStr::Separated(SPVArg(c), "=", op.str).ToString());
+            this->texts[(uint32_t)section].Append(TStr::Separated(SPVArg(c), "=", op.str));
 
         (Append(args), ...);
 
@@ -1270,7 +1270,7 @@ struct SPVWriter
         this->binaries[(uint32_t)section].push_back(id);
 
         if (this->outputText)
-            this->texts[(uint32_t)section].Append(TStr::Separated(SPVArg{id}, "=", op.str).ToString());
+            this->texts[(uint32_t)section].Append(TStr::Separated(SPVArg{id}, "=", op.str));
 
         (Append(args), ...);
 
@@ -1319,7 +1319,7 @@ struct SPVWriter
         this->binaries[(uint32_t)section].push_back(id);
 
         if (this->outputText)
-            this->texts[(uint32_t)section].Append(TStr::Separated(SPVArg{ id }, "=", op.str).ToString());
+            this->texts[(uint32_t)section].Append(TStr::Separated(SPVArg{ id }, "=", op.str));
 
         (Append(args), ...);
 
@@ -1420,7 +1420,7 @@ struct SPVWriter
         
         if (this->outputText)
         {
-            this->texts[(uint32_t)this->section].Append(TStr::Compact(" \"", str, "\"").ToString());
+            this->texts[(uint32_t)this->section].Append(TStr::Compact(" \"", str, "\""));
         }
     }
 
@@ -1440,7 +1440,7 @@ struct SPVWriter
 
         if (this->outputText)
         {
-            this->texts[(uint32_t)this->section].Append(TStr::Compact(" \"", str, "\"").ToString());
+            this->texts[(uint32_t)this->section].Append(TStr::Compact(" \"", str, "\""));
         }
     }
 
@@ -1457,7 +1457,7 @@ struct SPVWriter
         
         if (this->outputText)
         {
-            this->texts[(uint32_t)this->section].Append(TStr::Compact(" \"", str, "\"").ToString());
+            this->texts[(uint32_t)this->section].Append(TStr::Compact(" \"", str, "\""));
         }
     }
 
