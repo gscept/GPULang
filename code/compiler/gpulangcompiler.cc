@@ -2137,28 +2137,36 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
             timer.Start();
             
             TokenizationResult tokenizationResult = Tokenize(preprocessed, TransientString{file.c_str()});
-            for (const auto& err : tokenizationResult.errors)
+            if (tokenizationResult.errors.size > 0)
             {
-                printf("%s(%d:%d): syntax error %s\n", err.file.c_str(), err.line, err.column, err.error.c_str());
+                std::string str;
+                for (const auto& err : tokenizationResult.errors)
+                {
+                    str += Format("%s(%d:%d): %s\n", err.file.c_str(), err.line, err.column, err.error.c_str());
+                }
+                errorBuffer = Error(str);
+                return false;
             }
-            
+
+            GPULang::TokenStream tokenStream(tokenizationResult);
+            ParseResult parseResult = Parse(tokenStream);
+            if (parseResult.errors.size > 0)
+            {
+                std::string str;
+                for (const auto& err : parseResult.errors)
+                {
+                    str += Format("%s(%d:%d): %s\n", err.file.c_str(), err.line, err.column, err.error.c_str());
+                }
+                errorBuffer = Error(str);
+            }
+
             timer.Stop();
             if (options.emitTimings)
             {
                 printf("%zu tokens\n", tokenizationResult.tokens.size);
-                timer.Print("Home made lexer");
+                printf("%zu lines\n", tokenizationResult.lineCount);
+                timer.Print("Parsing");
             }
-            
-            timer.Start();
-            GPULang::TokenStream tokenStream(tokenizationResult);
-            ParseResult parseResult = Parse(tokenStream);
-            for (const auto& err : parseResult.errors)
-            {
-                printf("%s(%d:%d) syntax error %s\n", err.file.c_str(), err.line, err.column, err.error.c_str());
-            }
-            timer.Stop();
-            if (options.emitTimings)
-                timer.Print("Home made parser");
 
             // setup and run compiler
             BinWriter binaryWriter;
