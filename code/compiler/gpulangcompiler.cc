@@ -2158,6 +2158,7 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
                     str += Format("%s(%d:%d): %s\n", err.file.c_str(), err.line, err.column, err.error.c_str());
                 }
                 errorBuffer = Error(str);
+                return false;
             }
 
             timer.Stop();
