@@ -435,6 +435,7 @@ Tokenize(const std::string& text, const TransientString& path)
         {
             it = lineEnd(it, end);
             line += 1;
+            ret.lineCount++;
             continue;
         }
         

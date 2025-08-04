@@ -7,1145 +7,1422 @@ namespace GPULang
 /// f32 with UInt32
 extern Variable Float32_from_UInt32_arg;
 extern Function Float32_from_UInt32;
+inline constexpr auto Float32_from_UInt32_backend_index = 0u;
 
 /// f32 with Int32
 extern Variable Float32_from_Int32_arg;
 extern Function Float32_from_Int32;
+inline constexpr auto Float32_from_Int32_backend_index = 1u;
 
 /// f32 with Bool8
 extern Variable Float32_from_Bool8_arg;
 extern Function Float32_from_Bool8;
+inline constexpr auto Float32_from_Bool8_backend_index = 2u;
 
 /// f32 with Float16
 extern Variable Float32_from_Float16_arg;
 extern Function Float32_from_Float16;
+inline constexpr auto Float32_from_Float16_backend_index = 3u;
 
 /// f32 with UInt16
 extern Variable Float32_from_UInt16_arg;
 extern Function Float32_from_UInt16;
+inline constexpr auto Float32_from_UInt16_backend_index = 4u;
 
 /// f32 with Int16
 extern Variable Float32_from_Int16_arg;
 extern Function Float32_from_Int16;
+inline constexpr auto Float32_from_Int16_backend_index = 5u;
 
 /// f32 with Float32
 extern Variable Float32_ctor0_arg0_Float32;
 extern Function Float32_ctor0;
+inline constexpr auto Float32_ctor0_backend_index = 6u;
 
 /// u32 with Float32
 extern Variable UInt32_from_Float32_arg;
 extern Function UInt32_from_Float32;
+inline constexpr auto UInt32_from_Float32_backend_index = 26u;
 
 /// u32 with Int32
 extern Variable UInt32_from_Int32_arg;
 extern Function UInt32_from_Int32;
+inline constexpr auto UInt32_from_Int32_backend_index = 27u;
 
 /// u32 with Bool8
 extern Variable UInt32_from_Bool8_arg;
 extern Function UInt32_from_Bool8;
+inline constexpr auto UInt32_from_Bool8_backend_index = 28u;
 
 /// u32 with Float16
 extern Variable UInt32_from_Float16_arg;
 extern Function UInt32_from_Float16;
+inline constexpr auto UInt32_from_Float16_backend_index = 29u;
 
 /// u32 with UInt16
 extern Variable UInt32_from_UInt16_arg;
 extern Function UInt32_from_UInt16;
+inline constexpr auto UInt32_from_UInt16_backend_index = 30u;
 
 /// u32 with Int16
 extern Variable UInt32_from_Int16_arg;
 extern Function UInt32_from_Int16;
+inline constexpr auto UInt32_from_Int16_backend_index = 31u;
 
 /// u32 with UInt32
 extern Variable UInt32_ctor0_arg0_UInt32;
 extern Function UInt32_ctor0;
+inline constexpr auto UInt32_ctor0_backend_index = 32u;
 
 /// i32 with Float32
 extern Variable Int32_from_Float32_arg;
 extern Function Int32_from_Float32;
+inline constexpr auto Int32_from_Float32_backend_index = 62u;
 
 /// i32 with UInt32
 extern Variable Int32_from_UInt32_arg;
 extern Function Int32_from_UInt32;
+inline constexpr auto Int32_from_UInt32_backend_index = 63u;
 
 /// i32 with Bool8
 extern Variable Int32_from_Bool8_arg;
 extern Function Int32_from_Bool8;
+inline constexpr auto Int32_from_Bool8_backend_index = 64u;
 
 /// i32 with Float16
 extern Variable Int32_from_Float16_arg;
 extern Function Int32_from_Float16;
+inline constexpr auto Int32_from_Float16_backend_index = 65u;
 
 /// i32 with UInt16
 extern Variable Int32_from_UInt16_arg;
 extern Function Int32_from_UInt16;
+inline constexpr auto Int32_from_UInt16_backend_index = 66u;
 
 /// i32 with Int16
 extern Variable Int32_from_Int16_arg;
 extern Function Int32_from_Int16;
+inline constexpr auto Int32_from_Int16_backend_index = 67u;
 
 /// i32 with Int32
 extern Variable Int32_ctor0_arg0_Int32;
 extern Function Int32_ctor0;
+inline constexpr auto Int32_ctor0_backend_index = 68u;
 
 /// b8 with UInt32
 extern Variable Bool8_from_UInt32_arg;
 extern Function Bool8_from_UInt32;
+inline constexpr auto Bool8_from_UInt32_backend_index = 98u;
 
 /// b8 with Int32
 extern Variable Bool8_from_Int32_arg;
 extern Function Bool8_from_Int32;
+inline constexpr auto Bool8_from_Int32_backend_index = 99u;
 
 /// b8 with UInt16
 extern Variable Bool8_from_UInt16_arg;
 extern Function Bool8_from_UInt16;
+inline constexpr auto Bool8_from_UInt16_backend_index = 100u;
 
 /// b8 with Int16
 extern Variable Bool8_from_Int16_arg;
 extern Function Bool8_from_Int16;
+inline constexpr auto Bool8_from_Int16_backend_index = 101u;
 
 /// b8 with Bool8
 extern Variable Bool8_ctor0_arg0_Bool8;
 extern Function Bool8_ctor0;
+inline constexpr auto Bool8_ctor0_backend_index = 102u;
 
 /// f16 with Float32
 extern Variable Float16_from_Float32_arg;
 extern Function Float16_from_Float32;
+inline constexpr auto Float16_from_Float32_backend_index = 111u;
 
 /// f16 with UInt32
 extern Variable Float16_from_UInt32_arg;
 extern Function Float16_from_UInt32;
+inline constexpr auto Float16_from_UInt32_backend_index = 112u;
 
 /// f16 with Int32
 extern Variable Float16_from_Int32_arg;
 extern Function Float16_from_Int32;
+inline constexpr auto Float16_from_Int32_backend_index = 113u;
 
 /// f16 with Bool8
 extern Variable Float16_from_Bool8_arg;
 extern Function Float16_from_Bool8;
+inline constexpr auto Float16_from_Bool8_backend_index = 114u;
 
 /// f16 with UInt16
 extern Variable Float16_from_UInt16_arg;
 extern Function Float16_from_UInt16;
+inline constexpr auto Float16_from_UInt16_backend_index = 115u;
 
 /// f16 with Int16
 extern Variable Float16_from_Int16_arg;
 extern Function Float16_from_Int16;
+inline constexpr auto Float16_from_Int16_backend_index = 116u;
 
 /// f16 with Float16
 extern Variable Float16_ctor0_arg0_Float16;
 extern Function Float16_ctor0;
+inline constexpr auto Float16_ctor0_backend_index = 117u;
 
 /// u16 with Float32
 extern Variable UInt16_from_Float32_arg;
 extern Function UInt16_from_Float32;
+inline constexpr auto UInt16_from_Float32_backend_index = 137u;
 
 /// u16 with UInt32
 extern Variable UInt16_from_UInt32_arg;
 extern Function UInt16_from_UInt32;
+inline constexpr auto UInt16_from_UInt32_backend_index = 138u;
 
 /// u16 with Int32
 extern Variable UInt16_from_Int32_arg;
 extern Function UInt16_from_Int32;
+inline constexpr auto UInt16_from_Int32_backend_index = 139u;
 
 /// u16 with Bool8
 extern Variable UInt16_from_Bool8_arg;
 extern Function UInt16_from_Bool8;
+inline constexpr auto UInt16_from_Bool8_backend_index = 140u;
 
 /// u16 with Float16
 extern Variable UInt16_from_Float16_arg;
 extern Function UInt16_from_Float16;
+inline constexpr auto UInt16_from_Float16_backend_index = 141u;
 
 /// u16 with Int16
 extern Variable UInt16_from_Int16_arg;
 extern Function UInt16_from_Int16;
+inline constexpr auto UInt16_from_Int16_backend_index = 142u;
 
 /// u16 with UInt16
 extern Variable UInt16_ctor0_arg0_UInt16;
 extern Function UInt16_ctor0;
+inline constexpr auto UInt16_ctor0_backend_index = 143u;
 
 /// i16 with Float32
 extern Variable Int16_from_Float32_arg;
 extern Function Int16_from_Float32;
+inline constexpr auto Int16_from_Float32_backend_index = 173u;
 
 /// i16 with UInt32
 extern Variable Int16_from_UInt32_arg;
 extern Function Int16_from_UInt32;
+inline constexpr auto Int16_from_UInt32_backend_index = 174u;
 
 /// i16 with Int32
 extern Variable Int16_from_Int32_arg;
 extern Function Int16_from_Int32;
+inline constexpr auto Int16_from_Int32_backend_index = 175u;
 
 /// i16 with Bool8
 extern Variable Int16_from_Bool8_arg;
 extern Function Int16_from_Bool8;
+inline constexpr auto Int16_from_Bool8_backend_index = 176u;
 
 /// i16 with Float16
 extern Variable Int16_from_Float16_arg;
 extern Function Int16_from_Float16;
+inline constexpr auto Int16_from_Float16_backend_index = 177u;
 
 /// i16 with UInt16
 extern Variable Int16_from_UInt16_arg;
 extern Function Int16_from_UInt16;
+inline constexpr auto Int16_from_UInt16_backend_index = 178u;
 
 /// i16 with Int16
 extern Variable Int16_ctor0_arg0_Int16;
 extern Function Int16_ctor0;
+inline constexpr auto Int16_ctor0_backend_index = 179u;
 
 /// f32x2 with Float32x2
 extern Variable Float32x2_from_Float32x2_arg;
 extern Function Float32x2_from_Float32x2;
+inline constexpr auto Float32x2_from_Float32x2_backend_index = 209u;
 
 /// f32x2 with Float32
 extern Variable Float32x2_splat_Float32_arg;
 extern Function Float32x2_splat_Float32;
+inline constexpr auto Float32x2_splat_Float32_backend_index = 210u;
 
 /// f32x2 with UInt32x2
 extern Variable Float32x2_from_UInt32x2_arg;
 extern Function Float32x2_from_UInt32x2;
+inline constexpr auto Float32x2_from_UInt32x2_backend_index = 211u;
 
 /// f32x2 with UInt32
 extern Variable Float32x2_splat_UInt32_arg;
 extern Function Float32x2_splat_UInt32;
+inline constexpr auto Float32x2_splat_UInt32_backend_index = 212u;
 
 /// f32x2 with Int32x2
 extern Variable Float32x2_from_Int32x2_arg;
 extern Function Float32x2_from_Int32x2;
+inline constexpr auto Float32x2_from_Int32x2_backend_index = 213u;
 
 /// f32x2 with Int32
 extern Variable Float32x2_splat_Int32_arg;
 extern Function Float32x2_splat_Int32;
+inline constexpr auto Float32x2_splat_Int32_backend_index = 214u;
 
 /// f32x2 with Bool8x2
 extern Variable Float32x2_from_Bool8x2_arg;
 extern Function Float32x2_from_Bool8x2;
+inline constexpr auto Float32x2_from_Bool8x2_backend_index = 215u;
 
 /// f32x2 with Bool8
 extern Variable Float32x2_splat_Bool8_arg;
 extern Function Float32x2_splat_Bool8;
+inline constexpr auto Float32x2_splat_Bool8_backend_index = 216u;
 
 /// f32x2 with Float16x2
 extern Variable Float32x2_from_Float16x2_arg;
 extern Function Float32x2_from_Float16x2;
+inline constexpr auto Float32x2_from_Float16x2_backend_index = 217u;
 
 /// f32x2 with Float16
 extern Variable Float32x2_splat_Float16_arg;
 extern Function Float32x2_splat_Float16;
+inline constexpr auto Float32x2_splat_Float16_backend_index = 218u;
 
 /// f32x2 with UInt16x2
 extern Variable Float32x2_from_UInt16x2_arg;
 extern Function Float32x2_from_UInt16x2;
+inline constexpr auto Float32x2_from_UInt16x2_backend_index = 219u;
 
 /// f32x2 with UInt16
 extern Variable Float32x2_splat_UInt16_arg;
 extern Function Float32x2_splat_UInt16;
+inline constexpr auto Float32x2_splat_UInt16_backend_index = 220u;
 
 /// f32x2 with Int16x2
 extern Variable Float32x2_from_Int16x2_arg;
 extern Function Float32x2_from_Int16x2;
+inline constexpr auto Float32x2_from_Int16x2_backend_index = 221u;
 
 /// f32x2 with Int16
 extern Variable Float32x2_splat_Int16_arg;
 extern Function Float32x2_splat_Int16;
+inline constexpr auto Float32x2_splat_Int16_backend_index = 222u;
 
 /// f32x2 with Float32, Float32
 extern Variable Float32x2_ctor0_arg0_Float32;
 extern Variable Float32x2_ctor0_arg1_Float32;
 extern Function Float32x2_ctor0;
+inline constexpr auto Float32x2_ctor0_backend_index = 223u;
 
 /// u32x2 with Float32x2
 extern Variable UInt32x2_from_Float32x2_arg;
 extern Function UInt32x2_from_Float32x2;
+inline constexpr auto UInt32x2_from_Float32x2_backend_index = 249u;
 
 /// u32x2 with Float32
 extern Variable UInt32x2_splat_Float32_arg;
 extern Function UInt32x2_splat_Float32;
+inline constexpr auto UInt32x2_splat_Float32_backend_index = 250u;
 
 /// u32x2 with UInt32x2
 extern Variable UInt32x2_from_UInt32x2_arg;
 extern Function UInt32x2_from_UInt32x2;
+inline constexpr auto UInt32x2_from_UInt32x2_backend_index = 251u;
 
 /// u32x2 with UInt32
 extern Variable UInt32x2_splat_UInt32_arg;
 extern Function UInt32x2_splat_UInt32;
+inline constexpr auto UInt32x2_splat_UInt32_backend_index = 252u;
 
 /// u32x2 with Int32x2
 extern Variable UInt32x2_from_Int32x2_arg;
 extern Function UInt32x2_from_Int32x2;
+inline constexpr auto UInt32x2_from_Int32x2_backend_index = 253u;
 
 /// u32x2 with Int32
 extern Variable UInt32x2_splat_Int32_arg;
 extern Function UInt32x2_splat_Int32;
+inline constexpr auto UInt32x2_splat_Int32_backend_index = 254u;
 
 /// u32x2 with Bool8x2
 extern Variable UInt32x2_from_Bool8x2_arg;
 extern Function UInt32x2_from_Bool8x2;
+inline constexpr auto UInt32x2_from_Bool8x2_backend_index = 255u;
 
 /// u32x2 with Bool8
 extern Variable UInt32x2_splat_Bool8_arg;
 extern Function UInt32x2_splat_Bool8;
+inline constexpr auto UInt32x2_splat_Bool8_backend_index = 256u;
 
 /// u32x2 with Float16x2
 extern Variable UInt32x2_from_Float16x2_arg;
 extern Function UInt32x2_from_Float16x2;
+inline constexpr auto UInt32x2_from_Float16x2_backend_index = 257u;
 
 /// u32x2 with Float16
 extern Variable UInt32x2_splat_Float16_arg;
 extern Function UInt32x2_splat_Float16;
+inline constexpr auto UInt32x2_splat_Float16_backend_index = 258u;
 
 /// u32x2 with UInt16x2
 extern Variable UInt32x2_from_UInt16x2_arg;
 extern Function UInt32x2_from_UInt16x2;
+inline constexpr auto UInt32x2_from_UInt16x2_backend_index = 259u;
 
 /// u32x2 with UInt16
 extern Variable UInt32x2_splat_UInt16_arg;
 extern Function UInt32x2_splat_UInt16;
+inline constexpr auto UInt32x2_splat_UInt16_backend_index = 260u;
 
 /// u32x2 with Int16x2
 extern Variable UInt32x2_from_Int16x2_arg;
 extern Function UInt32x2_from_Int16x2;
+inline constexpr auto UInt32x2_from_Int16x2_backend_index = 261u;
 
 /// u32x2 with Int16
 extern Variable UInt32x2_splat_Int16_arg;
 extern Function UInt32x2_splat_Int16;
+inline constexpr auto UInt32x2_splat_Int16_backend_index = 262u;
 
 /// u32x2 with UInt32, UInt32
 extern Variable UInt32x2_ctor0_arg0_UInt32;
 extern Variable UInt32x2_ctor0_arg1_UInt32;
 extern Function UInt32x2_ctor0;
+inline constexpr auto UInt32x2_ctor0_backend_index = 263u;
 
 /// i32x2 with Float32x2
 extern Variable Int32x2_from_Float32x2_arg;
 extern Function Int32x2_from_Float32x2;
+inline constexpr auto Int32x2_from_Float32x2_backend_index = 296u;
 
 /// i32x2 with Float32
 extern Variable Int32x2_splat_Float32_arg;
 extern Function Int32x2_splat_Float32;
+inline constexpr auto Int32x2_splat_Float32_backend_index = 297u;
 
 /// i32x2 with UInt32x2
 extern Variable Int32x2_from_UInt32x2_arg;
 extern Function Int32x2_from_UInt32x2;
+inline constexpr auto Int32x2_from_UInt32x2_backend_index = 298u;
 
 /// i32x2 with UInt32
 extern Variable Int32x2_splat_UInt32_arg;
 extern Function Int32x2_splat_UInt32;
+inline constexpr auto Int32x2_splat_UInt32_backend_index = 299u;
 
 /// i32x2 with Int32x2
 extern Variable Int32x2_from_Int32x2_arg;
 extern Function Int32x2_from_Int32x2;
+inline constexpr auto Int32x2_from_Int32x2_backend_index = 300u;
 
 /// i32x2 with Int32
 extern Variable Int32x2_splat_Int32_arg;
 extern Function Int32x2_splat_Int32;
+inline constexpr auto Int32x2_splat_Int32_backend_index = 301u;
 
 /// i32x2 with Bool8x2
 extern Variable Int32x2_from_Bool8x2_arg;
 extern Function Int32x2_from_Bool8x2;
+inline constexpr auto Int32x2_from_Bool8x2_backend_index = 302u;
 
 /// i32x2 with Bool8
 extern Variable Int32x2_splat_Bool8_arg;
 extern Function Int32x2_splat_Bool8;
+inline constexpr auto Int32x2_splat_Bool8_backend_index = 303u;
 
 /// i32x2 with Float16x2
 extern Variable Int32x2_from_Float16x2_arg;
 extern Function Int32x2_from_Float16x2;
+inline constexpr auto Int32x2_from_Float16x2_backend_index = 304u;
 
 /// i32x2 with Float16
 extern Variable Int32x2_splat_Float16_arg;
 extern Function Int32x2_splat_Float16;
+inline constexpr auto Int32x2_splat_Float16_backend_index = 305u;
 
 /// i32x2 with UInt16x2
 extern Variable Int32x2_from_UInt16x2_arg;
 extern Function Int32x2_from_UInt16x2;
+inline constexpr auto Int32x2_from_UInt16x2_backend_index = 306u;
 
 /// i32x2 with UInt16
 extern Variable Int32x2_splat_UInt16_arg;
 extern Function Int32x2_splat_UInt16;
+inline constexpr auto Int32x2_splat_UInt16_backend_index = 307u;
 
 /// i32x2 with Int16x2
 extern Variable Int32x2_from_Int16x2_arg;
 extern Function Int32x2_from_Int16x2;
+inline constexpr auto Int32x2_from_Int16x2_backend_index = 308u;
 
 /// i32x2 with Int16
 extern Variable Int32x2_splat_Int16_arg;
 extern Function Int32x2_splat_Int16;
+inline constexpr auto Int32x2_splat_Int16_backend_index = 309u;
 
 /// i32x2 with Int32, Int32
 extern Variable Int32x2_ctor0_arg0_Int32;
 extern Variable Int32x2_ctor0_arg1_Int32;
 extern Function Int32x2_ctor0;
+inline constexpr auto Int32x2_ctor0_backend_index = 310u;
 
 /// b8x2 with UInt32x2
 extern Variable Bool8x2_from_UInt32x2_arg;
 extern Function Bool8x2_from_UInt32x2;
+inline constexpr auto Bool8x2_from_UInt32x2_backend_index = 343u;
 
 /// b8x2 with UInt32
 extern Variable Bool8x2_splat_UInt32_arg;
 extern Function Bool8x2_splat_UInt32;
+inline constexpr auto Bool8x2_splat_UInt32_backend_index = 344u;
 
 /// b8x2 with Int32x2
 extern Variable Bool8x2_from_Int32x2_arg;
 extern Function Bool8x2_from_Int32x2;
+inline constexpr auto Bool8x2_from_Int32x2_backend_index = 345u;
 
 /// b8x2 with Int32
 extern Variable Bool8x2_splat_Int32_arg;
 extern Function Bool8x2_splat_Int32;
+inline constexpr auto Bool8x2_splat_Int32_backend_index = 346u;
 
 /// b8x2 with Bool8x2
 extern Variable Bool8x2_from_Bool8x2_arg;
 extern Function Bool8x2_from_Bool8x2;
+inline constexpr auto Bool8x2_from_Bool8x2_backend_index = 347u;
 
 /// b8x2 with Bool8
 extern Variable Bool8x2_splat_Bool8_arg;
 extern Function Bool8x2_splat_Bool8;
+inline constexpr auto Bool8x2_splat_Bool8_backend_index = 348u;
 
 /// b8x2 with UInt16x2
 extern Variable Bool8x2_from_UInt16x2_arg;
 extern Function Bool8x2_from_UInt16x2;
+inline constexpr auto Bool8x2_from_UInt16x2_backend_index = 349u;
 
 /// b8x2 with UInt16
 extern Variable Bool8x2_splat_UInt16_arg;
 extern Function Bool8x2_splat_UInt16;
+inline constexpr auto Bool8x2_splat_UInt16_backend_index = 350u;
 
 /// b8x2 with Int16x2
 extern Variable Bool8x2_from_Int16x2_arg;
 extern Function Bool8x2_from_Int16x2;
+inline constexpr auto Bool8x2_from_Int16x2_backend_index = 351u;
 
 /// b8x2 with Int16
 extern Variable Bool8x2_splat_Int16_arg;
 extern Function Bool8x2_splat_Int16;
+inline constexpr auto Bool8x2_splat_Int16_backend_index = 352u;
 
 /// b8x2 with Bool8, Bool8
 extern Variable Bool8x2_ctor0_arg0_Bool8;
 extern Variable Bool8x2_ctor0_arg1_Bool8;
 extern Function Bool8x2_ctor0;
+inline constexpr auto Bool8x2_ctor0_backend_index = 353u;
 
 /// f16x2 with Float32x2
 extern Variable Float16x2_from_Float32x2_arg;
 extern Function Float16x2_from_Float32x2;
+inline constexpr auto Float16x2_from_Float32x2_backend_index = 362u;
 
 /// f16x2 with Float32
 extern Variable Float16x2_splat_Float32_arg;
 extern Function Float16x2_splat_Float32;
+inline constexpr auto Float16x2_splat_Float32_backend_index = 363u;
 
 /// f16x2 with UInt32x2
 extern Variable Float16x2_from_UInt32x2_arg;
 extern Function Float16x2_from_UInt32x2;
+inline constexpr auto Float16x2_from_UInt32x2_backend_index = 364u;
 
 /// f16x2 with UInt32
 extern Variable Float16x2_splat_UInt32_arg;
 extern Function Float16x2_splat_UInt32;
+inline constexpr auto Float16x2_splat_UInt32_backend_index = 365u;
 
 /// f16x2 with Int32x2
 extern Variable Float16x2_from_Int32x2_arg;
 extern Function Float16x2_from_Int32x2;
+inline constexpr auto Float16x2_from_Int32x2_backend_index = 366u;
 
 /// f16x2 with Int32
 extern Variable Float16x2_splat_Int32_arg;
 extern Function Float16x2_splat_Int32;
+inline constexpr auto Float16x2_splat_Int32_backend_index = 367u;
 
 /// f16x2 with Bool8x2
 extern Variable Float16x2_from_Bool8x2_arg;
 extern Function Float16x2_from_Bool8x2;
+inline constexpr auto Float16x2_from_Bool8x2_backend_index = 368u;
 
 /// f16x2 with Bool8
 extern Variable Float16x2_splat_Bool8_arg;
 extern Function Float16x2_splat_Bool8;
+inline constexpr auto Float16x2_splat_Bool8_backend_index = 369u;
 
 /// f16x2 with Float16x2
 extern Variable Float16x2_from_Float16x2_arg;
 extern Function Float16x2_from_Float16x2;
+inline constexpr auto Float16x2_from_Float16x2_backend_index = 370u;
 
 /// f16x2 with Float16
 extern Variable Float16x2_splat_Float16_arg;
 extern Function Float16x2_splat_Float16;
+inline constexpr auto Float16x2_splat_Float16_backend_index = 371u;
 
 /// f16x2 with UInt16x2
 extern Variable Float16x2_from_UInt16x2_arg;
 extern Function Float16x2_from_UInt16x2;
+inline constexpr auto Float16x2_from_UInt16x2_backend_index = 372u;
 
 /// f16x2 with UInt16
 extern Variable Float16x2_splat_UInt16_arg;
 extern Function Float16x2_splat_UInt16;
+inline constexpr auto Float16x2_splat_UInt16_backend_index = 373u;
 
 /// f16x2 with Int16x2
 extern Variable Float16x2_from_Int16x2_arg;
 extern Function Float16x2_from_Int16x2;
+inline constexpr auto Float16x2_from_Int16x2_backend_index = 374u;
 
 /// f16x2 with Int16
 extern Variable Float16x2_splat_Int16_arg;
 extern Function Float16x2_splat_Int16;
+inline constexpr auto Float16x2_splat_Int16_backend_index = 375u;
 
 /// f16x2 with Float16, Float16
 extern Variable Float16x2_ctor0_arg0_Float16;
 extern Variable Float16x2_ctor0_arg1_Float16;
 extern Function Float16x2_ctor0;
+inline constexpr auto Float16x2_ctor0_backend_index = 376u;
 
 /// u16x2 with Float32x2
 extern Variable UInt16x2_from_Float32x2_arg;
 extern Function UInt16x2_from_Float32x2;
+inline constexpr auto UInt16x2_from_Float32x2_backend_index = 402u;
 
 /// u16x2 with Float32
 extern Variable UInt16x2_splat_Float32_arg;
 extern Function UInt16x2_splat_Float32;
+inline constexpr auto UInt16x2_splat_Float32_backend_index = 403u;
 
 /// u16x2 with UInt32x2
 extern Variable UInt16x2_from_UInt32x2_arg;
 extern Function UInt16x2_from_UInt32x2;
+inline constexpr auto UInt16x2_from_UInt32x2_backend_index = 404u;
 
 /// u16x2 with UInt32
 extern Variable UInt16x2_splat_UInt32_arg;
 extern Function UInt16x2_splat_UInt32;
+inline constexpr auto UInt16x2_splat_UInt32_backend_index = 405u;
 
 /// u16x2 with Int32x2
 extern Variable UInt16x2_from_Int32x2_arg;
 extern Function UInt16x2_from_Int32x2;
+inline constexpr auto UInt16x2_from_Int32x2_backend_index = 406u;
 
 /// u16x2 with Int32
 extern Variable UInt16x2_splat_Int32_arg;
 extern Function UInt16x2_splat_Int32;
+inline constexpr auto UInt16x2_splat_Int32_backend_index = 407u;
 
 /// u16x2 with Bool8x2
 extern Variable UInt16x2_from_Bool8x2_arg;
 extern Function UInt16x2_from_Bool8x2;
+inline constexpr auto UInt16x2_from_Bool8x2_backend_index = 408u;
 
 /// u16x2 with Bool8
 extern Variable UInt16x2_splat_Bool8_arg;
 extern Function UInt16x2_splat_Bool8;
+inline constexpr auto UInt16x2_splat_Bool8_backend_index = 409u;
 
 /// u16x2 with Float16x2
 extern Variable UInt16x2_from_Float16x2_arg;
 extern Function UInt16x2_from_Float16x2;
+inline constexpr auto UInt16x2_from_Float16x2_backend_index = 410u;
 
 /// u16x2 with Float16
 extern Variable UInt16x2_splat_Float16_arg;
 extern Function UInt16x2_splat_Float16;
+inline constexpr auto UInt16x2_splat_Float16_backend_index = 411u;
 
 /// u16x2 with UInt16x2
 extern Variable UInt16x2_from_UInt16x2_arg;
 extern Function UInt16x2_from_UInt16x2;
+inline constexpr auto UInt16x2_from_UInt16x2_backend_index = 412u;
 
 /// u16x2 with UInt16
 extern Variable UInt16x2_splat_UInt16_arg;
 extern Function UInt16x2_splat_UInt16;
+inline constexpr auto UInt16x2_splat_UInt16_backend_index = 413u;
 
 /// u16x2 with Int16x2
 extern Variable UInt16x2_from_Int16x2_arg;
 extern Function UInt16x2_from_Int16x2;
+inline constexpr auto UInt16x2_from_Int16x2_backend_index = 414u;
 
 /// u16x2 with Int16
 extern Variable UInt16x2_splat_Int16_arg;
 extern Function UInt16x2_splat_Int16;
+inline constexpr auto UInt16x2_splat_Int16_backend_index = 415u;
 
 /// u16x2 with UInt16, UInt16
 extern Variable UInt16x2_ctor0_arg0_UInt16;
 extern Variable UInt16x2_ctor0_arg1_UInt16;
 extern Function UInt16x2_ctor0;
+inline constexpr auto UInt16x2_ctor0_backend_index = 416u;
 
 /// i16x2 with Float32x2
 extern Variable Int16x2_from_Float32x2_arg;
 extern Function Int16x2_from_Float32x2;
+inline constexpr auto Int16x2_from_Float32x2_backend_index = 449u;
 
 /// i16x2 with Float32
 extern Variable Int16x2_splat_Float32_arg;
 extern Function Int16x2_splat_Float32;
+inline constexpr auto Int16x2_splat_Float32_backend_index = 450u;
 
 /// i16x2 with UInt32x2
 extern Variable Int16x2_from_UInt32x2_arg;
 extern Function Int16x2_from_UInt32x2;
+inline constexpr auto Int16x2_from_UInt32x2_backend_index = 451u;
 
 /// i16x2 with UInt32
 extern Variable Int16x2_splat_UInt32_arg;
 extern Function Int16x2_splat_UInt32;
+inline constexpr auto Int16x2_splat_UInt32_backend_index = 452u;
 
 /// i16x2 with Int32x2
 extern Variable Int16x2_from_Int32x2_arg;
 extern Function Int16x2_from_Int32x2;
+inline constexpr auto Int16x2_from_Int32x2_backend_index = 453u;
 
 /// i16x2 with Int32
 extern Variable Int16x2_splat_Int32_arg;
 extern Function Int16x2_splat_Int32;
+inline constexpr auto Int16x2_splat_Int32_backend_index = 454u;
 
 /// i16x2 with Bool8x2
 extern Variable Int16x2_from_Bool8x2_arg;
 extern Function Int16x2_from_Bool8x2;
+inline constexpr auto Int16x2_from_Bool8x2_backend_index = 455u;
 
 /// i16x2 with Bool8
 extern Variable Int16x2_splat_Bool8_arg;
 extern Function Int16x2_splat_Bool8;
+inline constexpr auto Int16x2_splat_Bool8_backend_index = 456u;
 
 /// i16x2 with Float16x2
 extern Variable Int16x2_from_Float16x2_arg;
 extern Function Int16x2_from_Float16x2;
+inline constexpr auto Int16x2_from_Float16x2_backend_index = 457u;
 
 /// i16x2 with Float16
 extern Variable Int16x2_splat_Float16_arg;
 extern Function Int16x2_splat_Float16;
+inline constexpr auto Int16x2_splat_Float16_backend_index = 458u;
 
 /// i16x2 with UInt16x2
 extern Variable Int16x2_from_UInt16x2_arg;
 extern Function Int16x2_from_UInt16x2;
+inline constexpr auto Int16x2_from_UInt16x2_backend_index = 459u;
 
 /// i16x2 with UInt16
 extern Variable Int16x2_splat_UInt16_arg;
 extern Function Int16x2_splat_UInt16;
+inline constexpr auto Int16x2_splat_UInt16_backend_index = 460u;
 
 /// i16x2 with Int16x2
 extern Variable Int16x2_from_Int16x2_arg;
 extern Function Int16x2_from_Int16x2;
+inline constexpr auto Int16x2_from_Int16x2_backend_index = 461u;
 
 /// i16x2 with Int16
 extern Variable Int16x2_splat_Int16_arg;
 extern Function Int16x2_splat_Int16;
+inline constexpr auto Int16x2_splat_Int16_backend_index = 462u;
 
 /// i16x2 with Int16, Int16
 extern Variable Int16x2_ctor0_arg0_Int16;
 extern Variable Int16x2_ctor0_arg1_Int16;
 extern Function Int16x2_ctor0;
+inline constexpr auto Int16x2_ctor0_backend_index = 463u;
 
 /// f32x3 with Float32x3
 extern Variable Float32x3_from_Float32x3_arg;
 extern Function Float32x3_from_Float32x3;
+inline constexpr auto Float32x3_from_Float32x3_backend_index = 496u;
 
 /// f32x3 with Float32
 extern Variable Float32x3_splat_Float32_arg;
 extern Function Float32x3_splat_Float32;
+inline constexpr auto Float32x3_splat_Float32_backend_index = 497u;
 
 /// f32x3 with UInt32x3
 extern Variable Float32x3_from_UInt32x3_arg;
 extern Function Float32x3_from_UInt32x3;
+inline constexpr auto Float32x3_from_UInt32x3_backend_index = 498u;
 
 /// f32x3 with UInt32
 extern Variable Float32x3_splat_UInt32_arg;
 extern Function Float32x3_splat_UInt32;
+inline constexpr auto Float32x3_splat_UInt32_backend_index = 499u;
 
 /// f32x3 with Int32x3
 extern Variable Float32x3_from_Int32x3_arg;
 extern Function Float32x3_from_Int32x3;
+inline constexpr auto Float32x3_from_Int32x3_backend_index = 500u;
 
 /// f32x3 with Int32
 extern Variable Float32x3_splat_Int32_arg;
 extern Function Float32x3_splat_Int32;
+inline constexpr auto Float32x3_splat_Int32_backend_index = 501u;
 
 /// f32x3 with Bool8x3
 extern Variable Float32x3_from_Bool8x3_arg;
 extern Function Float32x3_from_Bool8x3;
+inline constexpr auto Float32x3_from_Bool8x3_backend_index = 502u;
 
 /// f32x3 with Bool8
 extern Variable Float32x3_splat_Bool8_arg;
 extern Function Float32x3_splat_Bool8;
+inline constexpr auto Float32x3_splat_Bool8_backend_index = 503u;
 
 /// f32x3 with Float16x3
 extern Variable Float32x3_from_Float16x3_arg;
 extern Function Float32x3_from_Float16x3;
+inline constexpr auto Float32x3_from_Float16x3_backend_index = 504u;
 
 /// f32x3 with Float16
 extern Variable Float32x3_splat_Float16_arg;
 extern Function Float32x3_splat_Float16;
+inline constexpr auto Float32x3_splat_Float16_backend_index = 505u;
 
 /// f32x3 with UInt16x3
 extern Variable Float32x3_from_UInt16x3_arg;
 extern Function Float32x3_from_UInt16x3;
+inline constexpr auto Float32x3_from_UInt16x3_backend_index = 506u;
 
 /// f32x3 with UInt16
 extern Variable Float32x3_splat_UInt16_arg;
 extern Function Float32x3_splat_UInt16;
+inline constexpr auto Float32x3_splat_UInt16_backend_index = 507u;
 
 /// f32x3 with Int16x3
 extern Variable Float32x3_from_Int16x3_arg;
 extern Function Float32x3_from_Int16x3;
+inline constexpr auto Float32x3_from_Int16x3_backend_index = 508u;
 
 /// f32x3 with Int16
 extern Variable Float32x3_splat_Int16_arg;
 extern Function Float32x3_splat_Int16;
+inline constexpr auto Float32x3_splat_Int16_backend_index = 509u;
 
 /// f32x3 with Float32, Float32, Float32
 extern Variable Float32x3_ctor0_arg0_Float32;
 extern Variable Float32x3_ctor0_arg1_Float32;
 extern Variable Float32x3_ctor0_arg2_Float32;
 extern Function Float32x3_ctor0;
+inline constexpr auto Float32x3_ctor0_backend_index = 510u;
 
 /// f32x3 with Float32x2, Float32
 extern Variable Float32x3_ctor1_arg0_Float32x2;
 extern Variable Float32x3_ctor1_arg1_Float32;
 extern Function Float32x3_ctor1;
+inline constexpr auto Float32x3_ctor1_backend_index = 511u;
 
 /// f32x3 with Float32, Float32x2
 extern Variable Float32x3_ctor2_arg0_Float32;
 extern Variable Float32x3_ctor2_arg1_Float32x2;
 extern Function Float32x3_ctor2;
+inline constexpr auto Float32x3_ctor2_backend_index = 512u;
 
 /// u32x3 with Float32x3
 extern Variable UInt32x3_from_Float32x3_arg;
 extern Function UInt32x3_from_Float32x3;
+inline constexpr auto UInt32x3_from_Float32x3_backend_index = 538u;
 
 /// u32x3 with Float32
 extern Variable UInt32x3_splat_Float32_arg;
 extern Function UInt32x3_splat_Float32;
+inline constexpr auto UInt32x3_splat_Float32_backend_index = 539u;
 
 /// u32x3 with UInt32x3
 extern Variable UInt32x3_from_UInt32x3_arg;
 extern Function UInt32x3_from_UInt32x3;
+inline constexpr auto UInt32x3_from_UInt32x3_backend_index = 540u;
 
 /// u32x3 with UInt32
 extern Variable UInt32x3_splat_UInt32_arg;
 extern Function UInt32x3_splat_UInt32;
+inline constexpr auto UInt32x3_splat_UInt32_backend_index = 541u;
 
 /// u32x3 with Int32x3
 extern Variable UInt32x3_from_Int32x3_arg;
 extern Function UInt32x3_from_Int32x3;
+inline constexpr auto UInt32x3_from_Int32x3_backend_index = 542u;
 
 /// u32x3 with Int32
 extern Variable UInt32x3_splat_Int32_arg;
 extern Function UInt32x3_splat_Int32;
+inline constexpr auto UInt32x3_splat_Int32_backend_index = 543u;
 
 /// u32x3 with Bool8x3
 extern Variable UInt32x3_from_Bool8x3_arg;
 extern Function UInt32x3_from_Bool8x3;
+inline constexpr auto UInt32x3_from_Bool8x3_backend_index = 544u;
 
 /// u32x3 with Bool8
 extern Variable UInt32x3_splat_Bool8_arg;
 extern Function UInt32x3_splat_Bool8;
+inline constexpr auto UInt32x3_splat_Bool8_backend_index = 545u;
 
 /// u32x3 with Float16x3
 extern Variable UInt32x3_from_Float16x3_arg;
 extern Function UInt32x3_from_Float16x3;
+inline constexpr auto UInt32x3_from_Float16x3_backend_index = 546u;
 
 /// u32x3 with Float16
 extern Variable UInt32x3_splat_Float16_arg;
 extern Function UInt32x3_splat_Float16;
+inline constexpr auto UInt32x3_splat_Float16_backend_index = 547u;
 
 /// u32x3 with UInt16x3
 extern Variable UInt32x3_from_UInt16x3_arg;
 extern Function UInt32x3_from_UInt16x3;
+inline constexpr auto UInt32x3_from_UInt16x3_backend_index = 548u;
 
 /// u32x3 with UInt16
 extern Variable UInt32x3_splat_UInt16_arg;
 extern Function UInt32x3_splat_UInt16;
+inline constexpr auto UInt32x3_splat_UInt16_backend_index = 549u;
 
 /// u32x3 with Int16x3
 extern Variable UInt32x3_from_Int16x3_arg;
 extern Function UInt32x3_from_Int16x3;
+inline constexpr auto UInt32x3_from_Int16x3_backend_index = 550u;
 
 /// u32x3 with Int16
 extern Variable UInt32x3_splat_Int16_arg;
 extern Function UInt32x3_splat_Int16;
+inline constexpr auto UInt32x3_splat_Int16_backend_index = 551u;
 
 /// u32x3 with UInt32, UInt32, UInt32
 extern Variable UInt32x3_ctor0_arg0_UInt32;
 extern Variable UInt32x3_ctor0_arg1_UInt32;
 extern Variable UInt32x3_ctor0_arg2_UInt32;
 extern Function UInt32x3_ctor0;
+inline constexpr auto UInt32x3_ctor0_backend_index = 552u;
 
 /// u32x3 with UInt32x2, UInt32
 extern Variable UInt32x3_ctor1_arg0_UInt32x2;
 extern Variable UInt32x3_ctor1_arg1_UInt32;
 extern Function UInt32x3_ctor1;
+inline constexpr auto UInt32x3_ctor1_backend_index = 553u;
 
 /// u32x3 with UInt32, UInt32x2
 extern Variable UInt32x3_ctor2_arg0_UInt32;
 extern Variable UInt32x3_ctor2_arg1_UInt32x2;
 extern Function UInt32x3_ctor2;
+inline constexpr auto UInt32x3_ctor2_backend_index = 554u;
 
 /// i32x3 with Float32x3
 extern Variable Int32x3_from_Float32x3_arg;
 extern Function Int32x3_from_Float32x3;
+inline constexpr auto Int32x3_from_Float32x3_backend_index = 587u;
 
 /// i32x3 with Float32
 extern Variable Int32x3_splat_Float32_arg;
 extern Function Int32x3_splat_Float32;
+inline constexpr auto Int32x3_splat_Float32_backend_index = 588u;
 
 /// i32x3 with UInt32x3
 extern Variable Int32x3_from_UInt32x3_arg;
 extern Function Int32x3_from_UInt32x3;
+inline constexpr auto Int32x3_from_UInt32x3_backend_index = 589u;
 
 /// i32x3 with UInt32
 extern Variable Int32x3_splat_UInt32_arg;
 extern Function Int32x3_splat_UInt32;
+inline constexpr auto Int32x3_splat_UInt32_backend_index = 590u;
 
 /// i32x3 with Int32x3
 extern Variable Int32x3_from_Int32x3_arg;
 extern Function Int32x3_from_Int32x3;
+inline constexpr auto Int32x3_from_Int32x3_backend_index = 591u;
 
 /// i32x3 with Int32
 extern Variable Int32x3_splat_Int32_arg;
 extern Function Int32x3_splat_Int32;
+inline constexpr auto Int32x3_splat_Int32_backend_index = 592u;
 
 /// i32x3 with Bool8x3
 extern Variable Int32x3_from_Bool8x3_arg;
 extern Function Int32x3_from_Bool8x3;
+inline constexpr auto Int32x3_from_Bool8x3_backend_index = 593u;
 
 /// i32x3 with Bool8
 extern Variable Int32x3_splat_Bool8_arg;
 extern Function Int32x3_splat_Bool8;
+inline constexpr auto Int32x3_splat_Bool8_backend_index = 594u;
 
 /// i32x3 with Float16x3
 extern Variable Int32x3_from_Float16x3_arg;
 extern Function Int32x3_from_Float16x3;
+inline constexpr auto Int32x3_from_Float16x3_backend_index = 595u;
 
 /// i32x3 with Float16
 extern Variable Int32x3_splat_Float16_arg;
 extern Function Int32x3_splat_Float16;
+inline constexpr auto Int32x3_splat_Float16_backend_index = 596u;
 
 /// i32x3 with UInt16x3
 extern Variable Int32x3_from_UInt16x3_arg;
 extern Function Int32x3_from_UInt16x3;
+inline constexpr auto Int32x3_from_UInt16x3_backend_index = 597u;
 
 /// i32x3 with UInt16
 extern Variable Int32x3_splat_UInt16_arg;
 extern Function Int32x3_splat_UInt16;
+inline constexpr auto Int32x3_splat_UInt16_backend_index = 598u;
 
 /// i32x3 with Int16x3
 extern Variable Int32x3_from_Int16x3_arg;
 extern Function Int32x3_from_Int16x3;
+inline constexpr auto Int32x3_from_Int16x3_backend_index = 599u;
 
 /// i32x3 with Int16
 extern Variable Int32x3_splat_Int16_arg;
 extern Function Int32x3_splat_Int16;
+inline constexpr auto Int32x3_splat_Int16_backend_index = 600u;
 
 /// i32x3 with Int32, Int32, Int32
 extern Variable Int32x3_ctor0_arg0_Int32;
 extern Variable Int32x3_ctor0_arg1_Int32;
 extern Variable Int32x3_ctor0_arg2_Int32;
 extern Function Int32x3_ctor0;
+inline constexpr auto Int32x3_ctor0_backend_index = 601u;
 
 /// i32x3 with Int32x2, Int32
 extern Variable Int32x3_ctor1_arg0_Int32x2;
 extern Variable Int32x3_ctor1_arg1_Int32;
 extern Function Int32x3_ctor1;
+inline constexpr auto Int32x3_ctor1_backend_index = 602u;
 
 /// i32x3 with Int32, Int32x2
 extern Variable Int32x3_ctor2_arg0_Int32;
 extern Variable Int32x3_ctor2_arg1_Int32x2;
 extern Function Int32x3_ctor2;
+inline constexpr auto Int32x3_ctor2_backend_index = 603u;
 
 /// b8x3 with UInt32x3
 extern Variable Bool8x3_from_UInt32x3_arg;
 extern Function Bool8x3_from_UInt32x3;
+inline constexpr auto Bool8x3_from_UInt32x3_backend_index = 636u;
 
 /// b8x3 with UInt32
 extern Variable Bool8x3_splat_UInt32_arg;
 extern Function Bool8x3_splat_UInt32;
+inline constexpr auto Bool8x3_splat_UInt32_backend_index = 637u;
 
 /// b8x3 with Int32x3
 extern Variable Bool8x3_from_Int32x3_arg;
 extern Function Bool8x3_from_Int32x3;
+inline constexpr auto Bool8x3_from_Int32x3_backend_index = 638u;
 
 /// b8x3 with Int32
 extern Variable Bool8x3_splat_Int32_arg;
 extern Function Bool8x3_splat_Int32;
+inline constexpr auto Bool8x3_splat_Int32_backend_index = 639u;
 
 /// b8x3 with Bool8x3
 extern Variable Bool8x3_from_Bool8x3_arg;
 extern Function Bool8x3_from_Bool8x3;
+inline constexpr auto Bool8x3_from_Bool8x3_backend_index = 640u;
 
 /// b8x3 with Bool8
 extern Variable Bool8x3_splat_Bool8_arg;
 extern Function Bool8x3_splat_Bool8;
+inline constexpr auto Bool8x3_splat_Bool8_backend_index = 641u;
 
 /// b8x3 with UInt16x3
 extern Variable Bool8x3_from_UInt16x3_arg;
 extern Function Bool8x3_from_UInt16x3;
+inline constexpr auto Bool8x3_from_UInt16x3_backend_index = 642u;
 
 /// b8x3 with UInt16
 extern Variable Bool8x3_splat_UInt16_arg;
 extern Function Bool8x3_splat_UInt16;
+inline constexpr auto Bool8x3_splat_UInt16_backend_index = 643u;
 
 /// b8x3 with Int16x3
 extern Variable Bool8x3_from_Int16x3_arg;
 extern Function Bool8x3_from_Int16x3;
+inline constexpr auto Bool8x3_from_Int16x3_backend_index = 644u;
 
 /// b8x3 with Int16
 extern Variable Bool8x3_splat_Int16_arg;
 extern Function Bool8x3_splat_Int16;
+inline constexpr auto Bool8x3_splat_Int16_backend_index = 645u;
 
 /// b8x3 with Bool8, Bool8, Bool8
 extern Variable Bool8x3_ctor0_arg0_Bool8;
 extern Variable Bool8x3_ctor0_arg1_Bool8;
 extern Variable Bool8x3_ctor0_arg2_Bool8;
 extern Function Bool8x3_ctor0;
+inline constexpr auto Bool8x3_ctor0_backend_index = 646u;
 
 /// b8x3 with Bool8x2, Bool8
 extern Variable Bool8x3_ctor1_arg0_Bool8x2;
 extern Variable Bool8x3_ctor1_arg1_Bool8;
 extern Function Bool8x3_ctor1;
+inline constexpr auto Bool8x3_ctor1_backend_index = 647u;
 
 /// b8x3 with Bool8, Bool8x2
 extern Variable Bool8x3_ctor2_arg0_Bool8;
 extern Variable Bool8x3_ctor2_arg1_Bool8x2;
 extern Function Bool8x3_ctor2;
+inline constexpr auto Bool8x3_ctor2_backend_index = 648u;
 
 /// f16x3 with Float32x3
 extern Variable Float16x3_from_Float32x3_arg;
 extern Function Float16x3_from_Float32x3;
+inline constexpr auto Float16x3_from_Float32x3_backend_index = 657u;
 
 /// f16x3 with Float32
 extern Variable Float16x3_splat_Float32_arg;
 extern Function Float16x3_splat_Float32;
+inline constexpr auto Float16x3_splat_Float32_backend_index = 658u;
 
 /// f16x3 with UInt32x3
 extern Variable Float16x3_from_UInt32x3_arg;
 extern Function Float16x3_from_UInt32x3;
+inline constexpr auto Float16x3_from_UInt32x3_backend_index = 659u;
 
 /// f16x3 with UInt32
 extern Variable Float16x3_splat_UInt32_arg;
 extern Function Float16x3_splat_UInt32;
+inline constexpr auto Float16x3_splat_UInt32_backend_index = 660u;
 
 /// f16x3 with Int32x3
 extern Variable Float16x3_from_Int32x3_arg;
 extern Function Float16x3_from_Int32x3;
+inline constexpr auto Float16x3_from_Int32x3_backend_index = 661u;
 
 /// f16x3 with Int32
 extern Variable Float16x3_splat_Int32_arg;
 extern Function Float16x3_splat_Int32;
+inline constexpr auto Float16x3_splat_Int32_backend_index = 662u;
 
 /// f16x3 with Bool8x3
 extern Variable Float16x3_from_Bool8x3_arg;
 extern Function Float16x3_from_Bool8x3;
+inline constexpr auto Float16x3_from_Bool8x3_backend_index = 663u;
 
 /// f16x3 with Bool8
 extern Variable Float16x3_splat_Bool8_arg;
 extern Function Float16x3_splat_Bool8;
+inline constexpr auto Float16x3_splat_Bool8_backend_index = 664u;
 
 /// f16x3 with Float16x3
 extern Variable Float16x3_from_Float16x3_arg;
 extern Function Float16x3_from_Float16x3;
+inline constexpr auto Float16x3_from_Float16x3_backend_index = 665u;
 
 /// f16x3 with Float16
 extern Variable Float16x3_splat_Float16_arg;
 extern Function Float16x3_splat_Float16;
+inline constexpr auto Float16x3_splat_Float16_backend_index = 666u;
 
 /// f16x3 with UInt16x3
 extern Variable Float16x3_from_UInt16x3_arg;
 extern Function Float16x3_from_UInt16x3;
+inline constexpr auto Float16x3_from_UInt16x3_backend_index = 667u;
 
 /// f16x3 with UInt16
 extern Variable Float16x3_splat_UInt16_arg;
 extern Function Float16x3_splat_UInt16;
+inline constexpr auto Float16x3_splat_UInt16_backend_index = 668u;
 
 /// f16x3 with Int16x3
 extern Variable Float16x3_from_Int16x3_arg;
 extern Function Float16x3_from_Int16x3;
+inline constexpr auto Float16x3_from_Int16x3_backend_index = 669u;
 
 /// f16x3 with Int16
 extern Variable Float16x3_splat_Int16_arg;
 extern Function Float16x3_splat_Int16;
+inline constexpr auto Float16x3_splat_Int16_backend_index = 670u;
 
 /// f16x3 with Float16, Float16, Float16
 extern Variable Float16x3_ctor0_arg0_Float16;
 extern Variable Float16x3_ctor0_arg1_Float16;
 extern Variable Float16x3_ctor0_arg2_Float16;
 extern Function Float16x3_ctor0;
+inline constexpr auto Float16x3_ctor0_backend_index = 671u;
 
 /// f16x3 with Float16x2, Float16
 extern Variable Float16x3_ctor1_arg0_Float16x2;
 extern Variable Float16x3_ctor1_arg1_Float16;
 extern Function Float16x3_ctor1;
+inline constexpr auto Float16x3_ctor1_backend_index = 672u;
 
 /// f16x3 with Float16, Float16x2
 extern Variable Float16x3_ctor2_arg0_Float16;
 extern Variable Float16x3_ctor2_arg1_Float16x2;
 extern Function Float16x3_ctor2;
+inline constexpr auto Float16x3_ctor2_backend_index = 673u;
 
 /// u16x3 with Float32x3
 extern Variable UInt16x3_from_Float32x3_arg;
 extern Function UInt16x3_from_Float32x3;
+inline constexpr auto UInt16x3_from_Float32x3_backend_index = 699u;
 
 /// u16x3 with Float32
 extern Variable UInt16x3_splat_Float32_arg;
 extern Function UInt16x3_splat_Float32;
+inline constexpr auto UInt16x3_splat_Float32_backend_index = 700u;
 
 /// u16x3 with UInt32x3
 extern Variable UInt16x3_from_UInt32x3_arg;
 extern Function UInt16x3_from_UInt32x3;
+inline constexpr auto UInt16x3_from_UInt32x3_backend_index = 701u;
 
 /// u16x3 with UInt32
 extern Variable UInt16x3_splat_UInt32_arg;
 extern Function UInt16x3_splat_UInt32;
+inline constexpr auto UInt16x3_splat_UInt32_backend_index = 702u;
 
 /// u16x3 with Int32x3
 extern Variable UInt16x3_from_Int32x3_arg;
 extern Function UInt16x3_from_Int32x3;
+inline constexpr auto UInt16x3_from_Int32x3_backend_index = 703u;
 
 /// u16x3 with Int32
 extern Variable UInt16x3_splat_Int32_arg;
 extern Function UInt16x3_splat_Int32;
+inline constexpr auto UInt16x3_splat_Int32_backend_index = 704u;
 
 /// u16x3 with Bool8x3
 extern Variable UInt16x3_from_Bool8x3_arg;
 extern Function UInt16x3_from_Bool8x3;
+inline constexpr auto UInt16x3_from_Bool8x3_backend_index = 705u;
 
 /// u16x3 with Bool8
 extern Variable UInt16x3_splat_Bool8_arg;
 extern Function UInt16x3_splat_Bool8;
+inline constexpr auto UInt16x3_splat_Bool8_backend_index = 706u;
 
 /// u16x3 with Float16x3
 extern Variable UInt16x3_from_Float16x3_arg;
 extern Function UInt16x3_from_Float16x3;
+inline constexpr auto UInt16x3_from_Float16x3_backend_index = 707u;
 
 /// u16x3 with Float16
 extern Variable UInt16x3_splat_Float16_arg;
 extern Function UInt16x3_splat_Float16;
+inline constexpr auto UInt16x3_splat_Float16_backend_index = 708u;
 
 /// u16x3 with UInt16x3
 extern Variable UInt16x3_from_UInt16x3_arg;
 extern Function UInt16x3_from_UInt16x3;
+inline constexpr auto UInt16x3_from_UInt16x3_backend_index = 709u;
 
 /// u16x3 with UInt16
 extern Variable UInt16x3_splat_UInt16_arg;
 extern Function UInt16x3_splat_UInt16;
+inline constexpr auto UInt16x3_splat_UInt16_backend_index = 710u;
 
 /// u16x3 with Int16x3
 extern Variable UInt16x3_from_Int16x3_arg;
 extern Function UInt16x3_from_Int16x3;
+inline constexpr auto UInt16x3_from_Int16x3_backend_index = 711u;
 
 /// u16x3 with Int16
 extern Variable UInt16x3_splat_Int16_arg;
 extern Function UInt16x3_splat_Int16;
+inline constexpr auto UInt16x3_splat_Int16_backend_index = 712u;
 
 /// u16x3 with UInt16, UInt16, UInt16
 extern Variable UInt16x3_ctor0_arg0_UInt16;
 extern Variable UInt16x3_ctor0_arg1_UInt16;
 extern Variable UInt16x3_ctor0_arg2_UInt16;
 extern Function UInt16x3_ctor0;
+inline constexpr auto UInt16x3_ctor0_backend_index = 713u;
 
 /// u16x3 with UInt16x2, UInt16
 extern Variable UInt16x3_ctor1_arg0_UInt16x2;
 extern Variable UInt16x3_ctor1_arg1_UInt16;
 extern Function UInt16x3_ctor1;
+inline constexpr auto UInt16x3_ctor1_backend_index = 714u;
 
 /// u16x3 with UInt16, UInt16x2
 extern Variable UInt16x3_ctor2_arg0_UInt16;
 extern Variable UInt16x3_ctor2_arg1_UInt16x2;
 extern Function UInt16x3_ctor2;
+inline constexpr auto UInt16x3_ctor2_backend_index = 715u;
 
 /// i16x3 with Float32x3
 extern Variable Int16x3_from_Float32x3_arg;
 extern Function Int16x3_from_Float32x3;
+inline constexpr auto Int16x3_from_Float32x3_backend_index = 748u;
 
 /// i16x3 with Float32
 extern Variable Int16x3_splat_Float32_arg;
 extern Function Int16x3_splat_Float32;
+inline constexpr auto Int16x3_splat_Float32_backend_index = 749u;
 
 /// i16x3 with UInt32x3
 extern Variable Int16x3_from_UInt32x3_arg;
 extern Function Int16x3_from_UInt32x3;
+inline constexpr auto Int16x3_from_UInt32x3_backend_index = 750u;
 
 /// i16x3 with UInt32
 extern Variable Int16x3_splat_UInt32_arg;
 extern Function Int16x3_splat_UInt32;
+inline constexpr auto Int16x3_splat_UInt32_backend_index = 751u;
 
 /// i16x3 with Int32x3
 extern Variable Int16x3_from_Int32x3_arg;
 extern Function Int16x3_from_Int32x3;
+inline constexpr auto Int16x3_from_Int32x3_backend_index = 752u;
 
 /// i16x3 with Int32
 extern Variable Int16x3_splat_Int32_arg;
 extern Function Int16x3_splat_Int32;
+inline constexpr auto Int16x3_splat_Int32_backend_index = 753u;
 
 /// i16x3 with Bool8x3
 extern Variable Int16x3_from_Bool8x3_arg;
 extern Function Int16x3_from_Bool8x3;
+inline constexpr auto Int16x3_from_Bool8x3_backend_index = 754u;
 
 /// i16x3 with Bool8
 extern Variable Int16x3_splat_Bool8_arg;
 extern Function Int16x3_splat_Bool8;
+inline constexpr auto Int16x3_splat_Bool8_backend_index = 755u;
 
 /// i16x3 with Float16x3
 extern Variable Int16x3_from_Float16x3_arg;
 extern Function Int16x3_from_Float16x3;
+inline constexpr auto Int16x3_from_Float16x3_backend_index = 756u;
 
 /// i16x3 with Float16
 extern Variable Int16x3_splat_Float16_arg;
 extern Function Int16x3_splat_Float16;
+inline constexpr auto Int16x3_splat_Float16_backend_index = 757u;
 
 /// i16x3 with UInt16x3
 extern Variable Int16x3_from_UInt16x3_arg;
 extern Function Int16x3_from_UInt16x3;
+inline constexpr auto Int16x3_from_UInt16x3_backend_index = 758u;
 
 /// i16x3 with UInt16
 extern Variable Int16x3_splat_UInt16_arg;
 extern Function Int16x3_splat_UInt16;
+inline constexpr auto Int16x3_splat_UInt16_backend_index = 759u;
 
 /// i16x3 with Int16x3
 extern Variable Int16x3_from_Int16x3_arg;
 extern Function Int16x3_from_Int16x3;
+inline constexpr auto Int16x3_from_Int16x3_backend_index = 760u;
 
 /// i16x3 with Int16
 extern Variable Int16x3_splat_Int16_arg;
 extern Function Int16x3_splat_Int16;
+inline constexpr auto Int16x3_splat_Int16_backend_index = 761u;
 
 /// i16x3 with Int16, Int16, Int16
 extern Variable Int16x3_ctor0_arg0_Int16;
 extern Variable Int16x3_ctor0_arg1_Int16;
 extern Variable Int16x3_ctor0_arg2_Int16;
 extern Function Int16x3_ctor0;
+inline constexpr auto Int16x3_ctor0_backend_index = 762u;
 
 /// i16x3 with Int16x2, Int16
 extern Variable Int16x3_ctor1_arg0_Int16x2;
 extern Variable Int16x3_ctor1_arg1_Int16;
 extern Function Int16x3_ctor1;
+inline constexpr auto Int16x3_ctor1_backend_index = 763u;
 
 /// i16x3 with Int16, Int16x2
 extern Variable Int16x3_ctor2_arg0_Int16;
 extern Variable Int16x3_ctor2_arg1_Int16x2;
 extern Function Int16x3_ctor2;
+inline constexpr auto Int16x3_ctor2_backend_index = 764u;
 
 /// f32x4 with Float32x4
 extern Variable Float32x4_from_Float32x4_arg;
 extern Function Float32x4_from_Float32x4;
+inline constexpr auto Float32x4_from_Float32x4_backend_index = 797u;
 
 /// f32x4 with Float32
 extern Variable Float32x4_splat_Float32_arg;
 extern Function Float32x4_splat_Float32;
+inline constexpr auto Float32x4_splat_Float32_backend_index = 798u;
 
 /// f32x4 with UInt32x4
 extern Variable Float32x4_from_UInt32x4_arg;
 extern Function Float32x4_from_UInt32x4;
+inline constexpr auto Float32x4_from_UInt32x4_backend_index = 799u;
 
 /// f32x4 with UInt32
 extern Variable Float32x4_splat_UInt32_arg;
 extern Function Float32x4_splat_UInt32;
+inline constexpr auto Float32x4_splat_UInt32_backend_index = 800u;
 
 /// f32x4 with Int32x4
 extern Variable Float32x4_from_Int32x4_arg;
 extern Function Float32x4_from_Int32x4;
+inline constexpr auto Float32x4_from_Int32x4_backend_index = 801u;
 
 /// f32x4 with Int32
 extern Variable Float32x4_splat_Int32_arg;
 extern Function Float32x4_splat_Int32;
+inline constexpr auto Float32x4_splat_Int32_backend_index = 802u;
 
 /// f32x4 with Bool8x4
 extern Variable Float32x4_from_Bool8x4_arg;
 extern Function Float32x4_from_Bool8x4;
+inline constexpr auto Float32x4_from_Bool8x4_backend_index = 803u;
 
 /// f32x4 with Bool8
 extern Variable Float32x4_splat_Bool8_arg;
 extern Function Float32x4_splat_Bool8;
+inline constexpr auto Float32x4_splat_Bool8_backend_index = 804u;
 
 /// f32x4 with Float16x4
 extern Variable Float32x4_from_Float16x4_arg;
 extern Function Float32x4_from_Float16x4;
+inline constexpr auto Float32x4_from_Float16x4_backend_index = 805u;
 
 /// f32x4 with Float16
 extern Variable Float32x4_splat_Float16_arg;
 extern Function Float32x4_splat_Float16;
+inline constexpr auto Float32x4_splat_Float16_backend_index = 806u;
 
 /// f32x4 with UInt16x4
 extern Variable Float32x4_from_UInt16x4_arg;
 extern Function Float32x4_from_UInt16x4;
+inline constexpr auto Float32x4_from_UInt16x4_backend_index = 807u;
 
 /// f32x4 with UInt16
 extern Variable Float32x4_splat_UInt16_arg;
 extern Function Float32x4_splat_UInt16;
+inline constexpr auto Float32x4_splat_UInt16_backend_index = 808u;
 
 /// f32x4 with Int16x4
 extern Variable Float32x4_from_Int16x4_arg;
 extern Function Float32x4_from_Int16x4;
+inline constexpr auto Float32x4_from_Int16x4_backend_index = 809u;
 
 /// f32x4 with Int16
 extern Variable Float32x4_splat_Int16_arg;
 extern Function Float32x4_splat_Int16;
+inline constexpr auto Float32x4_splat_Int16_backend_index = 810u;
 
 /// f32x4 with Float32, Float32, Float32, Float32
 extern Variable Float32x4_ctor0_arg0_Float32;
@@ -1153,95 +1430,116 @@ extern Variable Float32x4_ctor0_arg1_Float32;
 extern Variable Float32x4_ctor0_arg2_Float32;
 extern Variable Float32x4_ctor0_arg3_Float32;
 extern Function Float32x4_ctor0;
+inline constexpr auto Float32x4_ctor0_backend_index = 811u;
 
 /// f32x4 with Float32x2, Float32, Float32
 extern Variable Float32x4_ctor1_arg0_Float32x2;
 extern Variable Float32x4_ctor1_arg1_Float32;
 extern Variable Float32x4_ctor1_arg2_Float32;
 extern Function Float32x4_ctor1;
+inline constexpr auto Float32x4_ctor1_backend_index = 812u;
 
 /// f32x4 with Float32, Float32x2, Float32
 extern Variable Float32x4_ctor2_arg0_Float32;
 extern Variable Float32x4_ctor2_arg1_Float32x2;
 extern Variable Float32x4_ctor2_arg2_Float32;
 extern Function Float32x4_ctor2;
+inline constexpr auto Float32x4_ctor2_backend_index = 813u;
 
 /// f32x4 with Float32, Float32, Float32x2
 extern Variable Float32x4_ctor3_arg0_Float32;
 extern Variable Float32x4_ctor3_arg1_Float32;
 extern Variable Float32x4_ctor3_arg2_Float32x2;
 extern Function Float32x4_ctor3;
+inline constexpr auto Float32x4_ctor3_backend_index = 814u;
 
 /// f32x4 with Float32x2, Float32x2
 extern Variable Float32x4_ctor4_arg0_Float32x2;
 extern Variable Float32x4_ctor4_arg1_Float32x2;
 extern Function Float32x4_ctor4;
+inline constexpr auto Float32x4_ctor4_backend_index = 815u;
 
 /// f32x4 with Float32x3, Float32
 extern Variable Float32x4_ctor5_arg0_Float32x3;
 extern Variable Float32x4_ctor5_arg1_Float32;
 extern Function Float32x4_ctor5;
+inline constexpr auto Float32x4_ctor5_backend_index = 816u;
 
 /// f32x4 with Float32, Float32x3
 extern Variable Float32x4_ctor6_arg0_Float32;
 extern Variable Float32x4_ctor6_arg1_Float32x3;
 extern Function Float32x4_ctor6;
+inline constexpr auto Float32x4_ctor6_backend_index = 817u;
 
 /// u32x4 with Float32x4
 extern Variable UInt32x4_from_Float32x4_arg;
 extern Function UInt32x4_from_Float32x4;
+inline constexpr auto UInt32x4_from_Float32x4_backend_index = 843u;
 
 /// u32x4 with Float32
 extern Variable UInt32x4_splat_Float32_arg;
 extern Function UInt32x4_splat_Float32;
+inline constexpr auto UInt32x4_splat_Float32_backend_index = 844u;
 
 /// u32x4 with UInt32x4
 extern Variable UInt32x4_from_UInt32x4_arg;
 extern Function UInt32x4_from_UInt32x4;
+inline constexpr auto UInt32x4_from_UInt32x4_backend_index = 845u;
 
 /// u32x4 with UInt32
 extern Variable UInt32x4_splat_UInt32_arg;
 extern Function UInt32x4_splat_UInt32;
+inline constexpr auto UInt32x4_splat_UInt32_backend_index = 846u;
 
 /// u32x4 with Int32x4
 extern Variable UInt32x4_from_Int32x4_arg;
 extern Function UInt32x4_from_Int32x4;
+inline constexpr auto UInt32x4_from_Int32x4_backend_index = 847u;
 
 /// u32x4 with Int32
 extern Variable UInt32x4_splat_Int32_arg;
 extern Function UInt32x4_splat_Int32;
+inline constexpr auto UInt32x4_splat_Int32_backend_index = 848u;
 
 /// u32x4 with Bool8x4
 extern Variable UInt32x4_from_Bool8x4_arg;
 extern Function UInt32x4_from_Bool8x4;
+inline constexpr auto UInt32x4_from_Bool8x4_backend_index = 849u;
 
 /// u32x4 with Bool8
 extern Variable UInt32x4_splat_Bool8_arg;
 extern Function UInt32x4_splat_Bool8;
+inline constexpr auto UInt32x4_splat_Bool8_backend_index = 850u;
 
 /// u32x4 with Float16x4
 extern Variable UInt32x4_from_Float16x4_arg;
 extern Function UInt32x4_from_Float16x4;
+inline constexpr auto UInt32x4_from_Float16x4_backend_index = 851u;
 
 /// u32x4 with Float16
 extern Variable UInt32x4_splat_Float16_arg;
 extern Function UInt32x4_splat_Float16;
+inline constexpr auto UInt32x4_splat_Float16_backend_index = 852u;
 
 /// u32x4 with UInt16x4
 extern Variable UInt32x4_from_UInt16x4_arg;
 extern Function UInt32x4_from_UInt16x4;
+inline constexpr auto UInt32x4_from_UInt16x4_backend_index = 853u;
 
 /// u32x4 with UInt16
 extern Variable UInt32x4_splat_UInt16_arg;
 extern Function UInt32x4_splat_UInt16;
+inline constexpr auto UInt32x4_splat_UInt16_backend_index = 854u;
 
 /// u32x4 with Int16x4
 extern Variable UInt32x4_from_Int16x4_arg;
 extern Function UInt32x4_from_Int16x4;
+inline constexpr auto UInt32x4_from_Int16x4_backend_index = 855u;
 
 /// u32x4 with Int16
 extern Variable UInt32x4_splat_Int16_arg;
 extern Function UInt32x4_splat_Int16;
+inline constexpr auto UInt32x4_splat_Int16_backend_index = 856u;
 
 /// u32x4 with UInt32, UInt32, UInt32, UInt32
 extern Variable UInt32x4_ctor0_arg0_UInt32;
@@ -1249,95 +1547,116 @@ extern Variable UInt32x4_ctor0_arg1_UInt32;
 extern Variable UInt32x4_ctor0_arg2_UInt32;
 extern Variable UInt32x4_ctor0_arg3_UInt32;
 extern Function UInt32x4_ctor0;
+inline constexpr auto UInt32x4_ctor0_backend_index = 857u;
 
 /// u32x4 with UInt32x2, UInt32, UInt32
 extern Variable UInt32x4_ctor1_arg0_UInt32x2;
 extern Variable UInt32x4_ctor1_arg1_UInt32;
 extern Variable UInt32x4_ctor1_arg2_UInt32;
 extern Function UInt32x4_ctor1;
+inline constexpr auto UInt32x4_ctor1_backend_index = 858u;
 
 /// u32x4 with UInt32, UInt32x2, UInt32
 extern Variable UInt32x4_ctor2_arg0_UInt32;
 extern Variable UInt32x4_ctor2_arg1_UInt32x2;
 extern Variable UInt32x4_ctor2_arg2_UInt32;
 extern Function UInt32x4_ctor2;
+inline constexpr auto UInt32x4_ctor2_backend_index = 859u;
 
 /// u32x4 with UInt32, UInt32, UInt32x2
 extern Variable UInt32x4_ctor3_arg0_UInt32;
 extern Variable UInt32x4_ctor3_arg1_UInt32;
 extern Variable UInt32x4_ctor3_arg2_UInt32x2;
 extern Function UInt32x4_ctor3;
+inline constexpr auto UInt32x4_ctor3_backend_index = 860u;
 
 /// u32x4 with UInt32x2, UInt32x2
 extern Variable UInt32x4_ctor4_arg0_UInt32x2;
 extern Variable UInt32x4_ctor4_arg1_UInt32x2;
 extern Function UInt32x4_ctor4;
+inline constexpr auto UInt32x4_ctor4_backend_index = 861u;
 
 /// u32x4 with UInt32x3, UInt32
 extern Variable UInt32x4_ctor5_arg0_UInt32x3;
 extern Variable UInt32x4_ctor5_arg1_UInt32;
 extern Function UInt32x4_ctor5;
+inline constexpr auto UInt32x4_ctor5_backend_index = 862u;
 
 /// u32x4 with UInt32, UInt32x3
 extern Variable UInt32x4_ctor6_arg0_UInt32;
 extern Variable UInt32x4_ctor6_arg1_UInt32x3;
 extern Function UInt32x4_ctor6;
+inline constexpr auto UInt32x4_ctor6_backend_index = 863u;
 
 /// i32x4 with Float32x4
 extern Variable Int32x4_from_Float32x4_arg;
 extern Function Int32x4_from_Float32x4;
+inline constexpr auto Int32x4_from_Float32x4_backend_index = 896u;
 
 /// i32x4 with Float32
 extern Variable Int32x4_splat_Float32_arg;
 extern Function Int32x4_splat_Float32;
+inline constexpr auto Int32x4_splat_Float32_backend_index = 897u;
 
 /// i32x4 with UInt32x4
 extern Variable Int32x4_from_UInt32x4_arg;
 extern Function Int32x4_from_UInt32x4;
+inline constexpr auto Int32x4_from_UInt32x4_backend_index = 898u;
 
 /// i32x4 with UInt32
 extern Variable Int32x4_splat_UInt32_arg;
 extern Function Int32x4_splat_UInt32;
+inline constexpr auto Int32x4_splat_UInt32_backend_index = 899u;
 
 /// i32x4 with Int32x4
 extern Variable Int32x4_from_Int32x4_arg;
 extern Function Int32x4_from_Int32x4;
+inline constexpr auto Int32x4_from_Int32x4_backend_index = 900u;
 
 /// i32x4 with Int32
 extern Variable Int32x4_splat_Int32_arg;
 extern Function Int32x4_splat_Int32;
+inline constexpr auto Int32x4_splat_Int32_backend_index = 901u;
 
 /// i32x4 with Bool8x4
 extern Variable Int32x4_from_Bool8x4_arg;
 extern Function Int32x4_from_Bool8x4;
+inline constexpr auto Int32x4_from_Bool8x4_backend_index = 902u;
 
 /// i32x4 with Bool8
 extern Variable Int32x4_splat_Bool8_arg;
 extern Function Int32x4_splat_Bool8;
+inline constexpr auto Int32x4_splat_Bool8_backend_index = 903u;
 
 /// i32x4 with Float16x4
 extern Variable Int32x4_from_Float16x4_arg;
 extern Function Int32x4_from_Float16x4;
+inline constexpr auto Int32x4_from_Float16x4_backend_index = 904u;
 
 /// i32x4 with Float16
 extern Variable Int32x4_splat_Float16_arg;
 extern Function Int32x4_splat_Float16;
+inline constexpr auto Int32x4_splat_Float16_backend_index = 905u;
 
 /// i32x4 with UInt16x4
 extern Variable Int32x4_from_UInt16x4_arg;
 extern Function Int32x4_from_UInt16x4;
+inline constexpr auto Int32x4_from_UInt16x4_backend_index = 906u;
 
 /// i32x4 with UInt16
 extern Variable Int32x4_splat_UInt16_arg;
 extern Function Int32x4_splat_UInt16;
+inline constexpr auto Int32x4_splat_UInt16_backend_index = 907u;
 
 /// i32x4 with Int16x4
 extern Variable Int32x4_from_Int16x4_arg;
 extern Function Int32x4_from_Int16x4;
+inline constexpr auto Int32x4_from_Int16x4_backend_index = 908u;
 
 /// i32x4 with Int16
 extern Variable Int32x4_splat_Int16_arg;
 extern Function Int32x4_splat_Int16;
+inline constexpr auto Int32x4_splat_Int16_backend_index = 909u;
 
 /// i32x4 with Int32, Int32, Int32, Int32
 extern Variable Int32x4_ctor0_arg0_Int32;
@@ -1345,79 +1664,96 @@ extern Variable Int32x4_ctor0_arg1_Int32;
 extern Variable Int32x4_ctor0_arg2_Int32;
 extern Variable Int32x4_ctor0_arg3_Int32;
 extern Function Int32x4_ctor0;
+inline constexpr auto Int32x4_ctor0_backend_index = 910u;
 
 /// i32x4 with Int32x2, Int32, Int32
 extern Variable Int32x4_ctor1_arg0_Int32x2;
 extern Variable Int32x4_ctor1_arg1_Int32;
 extern Variable Int32x4_ctor1_arg2_Int32;
 extern Function Int32x4_ctor1;
+inline constexpr auto Int32x4_ctor1_backend_index = 911u;
 
 /// i32x4 with Int32, Int32x2, Int32
 extern Variable Int32x4_ctor2_arg0_Int32;
 extern Variable Int32x4_ctor2_arg1_Int32x2;
 extern Variable Int32x4_ctor2_arg2_Int32;
 extern Function Int32x4_ctor2;
+inline constexpr auto Int32x4_ctor2_backend_index = 912u;
 
 /// i32x4 with Int32, Int32, Int32x2
 extern Variable Int32x4_ctor3_arg0_Int32;
 extern Variable Int32x4_ctor3_arg1_Int32;
 extern Variable Int32x4_ctor3_arg2_Int32x2;
 extern Function Int32x4_ctor3;
+inline constexpr auto Int32x4_ctor3_backend_index = 913u;
 
 /// i32x4 with Int32x2, Int32x2
 extern Variable Int32x4_ctor4_arg0_Int32x2;
 extern Variable Int32x4_ctor4_arg1_Int32x2;
 extern Function Int32x4_ctor4;
+inline constexpr auto Int32x4_ctor4_backend_index = 914u;
 
 /// i32x4 with Int32x3, Int32
 extern Variable Int32x4_ctor5_arg0_Int32x3;
 extern Variable Int32x4_ctor5_arg1_Int32;
 extern Function Int32x4_ctor5;
+inline constexpr auto Int32x4_ctor5_backend_index = 915u;
 
 /// i32x4 with Int32, Int32x3
 extern Variable Int32x4_ctor6_arg0_Int32;
 extern Variable Int32x4_ctor6_arg1_Int32x3;
 extern Function Int32x4_ctor6;
+inline constexpr auto Int32x4_ctor6_backend_index = 916u;
 
 /// b8x4 with UInt32x4
 extern Variable Bool8x4_from_UInt32x4_arg;
 extern Function Bool8x4_from_UInt32x4;
+inline constexpr auto Bool8x4_from_UInt32x4_backend_index = 949u;
 
 /// b8x4 with UInt32
 extern Variable Bool8x4_splat_UInt32_arg;
 extern Function Bool8x4_splat_UInt32;
+inline constexpr auto Bool8x4_splat_UInt32_backend_index = 950u;
 
 /// b8x4 with Int32x4
 extern Variable Bool8x4_from_Int32x4_arg;
 extern Function Bool8x4_from_Int32x4;
+inline constexpr auto Bool8x4_from_Int32x4_backend_index = 951u;
 
 /// b8x4 with Int32
 extern Variable Bool8x4_splat_Int32_arg;
 extern Function Bool8x4_splat_Int32;
+inline constexpr auto Bool8x4_splat_Int32_backend_index = 952u;
 
 /// b8x4 with Bool8x4
 extern Variable Bool8x4_from_Bool8x4_arg;
 extern Function Bool8x4_from_Bool8x4;
+inline constexpr auto Bool8x4_from_Bool8x4_backend_index = 953u;
 
 /// b8x4 with Bool8
 extern Variable Bool8x4_splat_Bool8_arg;
 extern Function Bool8x4_splat_Bool8;
+inline constexpr auto Bool8x4_splat_Bool8_backend_index = 954u;
 
 /// b8x4 with UInt16x4
 extern Variable Bool8x4_from_UInt16x4_arg;
 extern Function Bool8x4_from_UInt16x4;
+inline constexpr auto Bool8x4_from_UInt16x4_backend_index = 955u;
 
 /// b8x4 with UInt16
 extern Variable Bool8x4_splat_UInt16_arg;
 extern Function Bool8x4_splat_UInt16;
+inline constexpr auto Bool8x4_splat_UInt16_backend_index = 956u;
 
 /// b8x4 with Int16x4
 extern Variable Bool8x4_from_Int16x4_arg;
 extern Function Bool8x4_from_Int16x4;
+inline constexpr auto Bool8x4_from_Int16x4_backend_index = 957u;
 
 /// b8x4 with Int16
 extern Variable Bool8x4_splat_Int16_arg;
 extern Function Bool8x4_splat_Int16;
+inline constexpr auto Bool8x4_splat_Int16_backend_index = 958u;
 
 /// b8x4 with Bool8, Bool8, Bool8, Bool8
 extern Variable Bool8x4_ctor0_arg0_Bool8;
@@ -1425,95 +1761,116 @@ extern Variable Bool8x4_ctor0_arg1_Bool8;
 extern Variable Bool8x4_ctor0_arg2_Bool8;
 extern Variable Bool8x4_ctor0_arg3_Bool8;
 extern Function Bool8x4_ctor0;
+inline constexpr auto Bool8x4_ctor0_backend_index = 959u;
 
 /// b8x4 with Bool8x2, Bool8, Bool8
 extern Variable Bool8x4_ctor1_arg0_Bool8x2;
 extern Variable Bool8x4_ctor1_arg1_Bool8;
 extern Variable Bool8x4_ctor1_arg2_Bool8;
 extern Function Bool8x4_ctor1;
+inline constexpr auto Bool8x4_ctor1_backend_index = 960u;
 
 /// b8x4 with Bool8, Bool8x2, Bool8
 extern Variable Bool8x4_ctor2_arg0_Bool8;
 extern Variable Bool8x4_ctor2_arg1_Bool8x2;
 extern Variable Bool8x4_ctor2_arg2_Bool8;
 extern Function Bool8x4_ctor2;
+inline constexpr auto Bool8x4_ctor2_backend_index = 961u;
 
 /// b8x4 with Bool8, Bool8, Bool8x2
 extern Variable Bool8x4_ctor3_arg0_Bool8;
 extern Variable Bool8x4_ctor3_arg1_Bool8;
 extern Variable Bool8x4_ctor3_arg2_Bool8x2;
 extern Function Bool8x4_ctor3;
+inline constexpr auto Bool8x4_ctor3_backend_index = 962u;
 
 /// b8x4 with Bool8x2, Bool8x2
 extern Variable Bool8x4_ctor4_arg0_Bool8x2;
 extern Variable Bool8x4_ctor4_arg1_Bool8x2;
 extern Function Bool8x4_ctor4;
+inline constexpr auto Bool8x4_ctor4_backend_index = 963u;
 
 /// b8x4 with Bool8x3, Bool8
 extern Variable Bool8x4_ctor5_arg0_Bool8x3;
 extern Variable Bool8x4_ctor5_arg1_Bool8;
 extern Function Bool8x4_ctor5;
+inline constexpr auto Bool8x4_ctor5_backend_index = 964u;
 
 /// b8x4 with Bool8, Bool8x3
 extern Variable Bool8x4_ctor6_arg0_Bool8;
 extern Variable Bool8x4_ctor6_arg1_Bool8x3;
 extern Function Bool8x4_ctor6;
+inline constexpr auto Bool8x4_ctor6_backend_index = 965u;
 
 /// f16x4 with Float32x4
 extern Variable Float16x4_from_Float32x4_arg;
 extern Function Float16x4_from_Float32x4;
+inline constexpr auto Float16x4_from_Float32x4_backend_index = 974u;
 
 /// f16x4 with Float32
 extern Variable Float16x4_splat_Float32_arg;
 extern Function Float16x4_splat_Float32;
+inline constexpr auto Float16x4_splat_Float32_backend_index = 975u;
 
 /// f16x4 with UInt32x4
 extern Variable Float16x4_from_UInt32x4_arg;
 extern Function Float16x4_from_UInt32x4;
+inline constexpr auto Float16x4_from_UInt32x4_backend_index = 976u;
 
 /// f16x4 with UInt32
 extern Variable Float16x4_splat_UInt32_arg;
 extern Function Float16x4_splat_UInt32;
+inline constexpr auto Float16x4_splat_UInt32_backend_index = 977u;
 
 /// f16x4 with Int32x4
 extern Variable Float16x4_from_Int32x4_arg;
 extern Function Float16x4_from_Int32x4;
+inline constexpr auto Float16x4_from_Int32x4_backend_index = 978u;
 
 /// f16x4 with Int32
 extern Variable Float16x4_splat_Int32_arg;
 extern Function Float16x4_splat_Int32;
+inline constexpr auto Float16x4_splat_Int32_backend_index = 979u;
 
 /// f16x4 with Bool8x4
 extern Variable Float16x4_from_Bool8x4_arg;
 extern Function Float16x4_from_Bool8x4;
+inline constexpr auto Float16x4_from_Bool8x4_backend_index = 980u;
 
 /// f16x4 with Bool8
 extern Variable Float16x4_splat_Bool8_arg;
 extern Function Float16x4_splat_Bool8;
+inline constexpr auto Float16x4_splat_Bool8_backend_index = 981u;
 
 /// f16x4 with Float16x4
 extern Variable Float16x4_from_Float16x4_arg;
 extern Function Float16x4_from_Float16x4;
+inline constexpr auto Float16x4_from_Float16x4_backend_index = 982u;
 
 /// f16x4 with Float16
 extern Variable Float16x4_splat_Float16_arg;
 extern Function Float16x4_splat_Float16;
+inline constexpr auto Float16x4_splat_Float16_backend_index = 983u;
 
 /// f16x4 with UInt16x4
 extern Variable Float16x4_from_UInt16x4_arg;
 extern Function Float16x4_from_UInt16x4;
+inline constexpr auto Float16x4_from_UInt16x4_backend_index = 984u;
 
 /// f16x4 with UInt16
 extern Variable Float16x4_splat_UInt16_arg;
 extern Function Float16x4_splat_UInt16;
+inline constexpr auto Float16x4_splat_UInt16_backend_index = 985u;
 
 /// f16x4 with Int16x4
 extern Variable Float16x4_from_Int16x4_arg;
 extern Function Float16x4_from_Int16x4;
+inline constexpr auto Float16x4_from_Int16x4_backend_index = 986u;
 
 /// f16x4 with Int16
 extern Variable Float16x4_splat_Int16_arg;
 extern Function Float16x4_splat_Int16;
+inline constexpr auto Float16x4_splat_Int16_backend_index = 987u;
 
 /// f16x4 with Float16, Float16, Float16, Float16
 extern Variable Float16x4_ctor0_arg0_Float16;
@@ -1521,95 +1878,116 @@ extern Variable Float16x4_ctor0_arg1_Float16;
 extern Variable Float16x4_ctor0_arg2_Float16;
 extern Variable Float16x4_ctor0_arg3_Float16;
 extern Function Float16x4_ctor0;
+inline constexpr auto Float16x4_ctor0_backend_index = 988u;
 
 /// f16x4 with Float16x2, Float16, Float16
 extern Variable Float16x4_ctor1_arg0_Float16x2;
 extern Variable Float16x4_ctor1_arg1_Float16;
 extern Variable Float16x4_ctor1_arg2_Float16;
 extern Function Float16x4_ctor1;
+inline constexpr auto Float16x4_ctor1_backend_index = 989u;
 
 /// f16x4 with Float16, Float16x2, Float16
 extern Variable Float16x4_ctor2_arg0_Float16;
 extern Variable Float16x4_ctor2_arg1_Float16x2;
 extern Variable Float16x4_ctor2_arg2_Float16;
 extern Function Float16x4_ctor2;
+inline constexpr auto Float16x4_ctor2_backend_index = 990u;
 
 /// f16x4 with Float16, Float16, Float16x2
 extern Variable Float16x4_ctor3_arg0_Float16;
 extern Variable Float16x4_ctor3_arg1_Float16;
 extern Variable Float16x4_ctor3_arg2_Float16x2;
 extern Function Float16x4_ctor3;
+inline constexpr auto Float16x4_ctor3_backend_index = 991u;
 
 /// f16x4 with Float16x2, Float16x2
 extern Variable Float16x4_ctor4_arg0_Float16x2;
 extern Variable Float16x4_ctor4_arg1_Float16x2;
 extern Function Float16x4_ctor4;
+inline constexpr auto Float16x4_ctor4_backend_index = 992u;
 
 /// f16x4 with Float16x3, Float16
 extern Variable Float16x4_ctor5_arg0_Float16x3;
 extern Variable Float16x4_ctor5_arg1_Float16;
 extern Function Float16x4_ctor5;
+inline constexpr auto Float16x4_ctor5_backend_index = 993u;
 
 /// f16x4 with Float16, Float16x3
 extern Variable Float16x4_ctor6_arg0_Float16;
 extern Variable Float16x4_ctor6_arg1_Float16x3;
 extern Function Float16x4_ctor6;
+inline constexpr auto Float16x4_ctor6_backend_index = 994u;
 
 /// u16x4 with Float32x4
 extern Variable UInt16x4_from_Float32x4_arg;
 extern Function UInt16x4_from_Float32x4;
+inline constexpr auto UInt16x4_from_Float32x4_backend_index = 1020u;
 
 /// u16x4 with Float32
 extern Variable UInt16x4_splat_Float32_arg;
 extern Function UInt16x4_splat_Float32;
+inline constexpr auto UInt16x4_splat_Float32_backend_index = 1021u;
 
 /// u16x4 with UInt32x4
 extern Variable UInt16x4_from_UInt32x4_arg;
 extern Function UInt16x4_from_UInt32x4;
+inline constexpr auto UInt16x4_from_UInt32x4_backend_index = 1022u;
 
 /// u16x4 with UInt32
 extern Variable UInt16x4_splat_UInt32_arg;
 extern Function UInt16x4_splat_UInt32;
+inline constexpr auto UInt16x4_splat_UInt32_backend_index = 1023u;
 
 /// u16x4 with Int32x4
 extern Variable UInt16x4_from_Int32x4_arg;
 extern Function UInt16x4_from_Int32x4;
+inline constexpr auto UInt16x4_from_Int32x4_backend_index = 1024u;
 
 /// u16x4 with Int32
 extern Variable UInt16x4_splat_Int32_arg;
 extern Function UInt16x4_splat_Int32;
+inline constexpr auto UInt16x4_splat_Int32_backend_index = 1025u;
 
 /// u16x4 with Bool8x4
 extern Variable UInt16x4_from_Bool8x4_arg;
 extern Function UInt16x4_from_Bool8x4;
+inline constexpr auto UInt16x4_from_Bool8x4_backend_index = 1026u;
 
 /// u16x4 with Bool8
 extern Variable UInt16x4_splat_Bool8_arg;
 extern Function UInt16x4_splat_Bool8;
+inline constexpr auto UInt16x4_splat_Bool8_backend_index = 1027u;
 
 /// u16x4 with Float16x4
 extern Variable UInt16x4_from_Float16x4_arg;
 extern Function UInt16x4_from_Float16x4;
+inline constexpr auto UInt16x4_from_Float16x4_backend_index = 1028u;
 
 /// u16x4 with Float16
 extern Variable UInt16x4_splat_Float16_arg;
 extern Function UInt16x4_splat_Float16;
+inline constexpr auto UInt16x4_splat_Float16_backend_index = 1029u;
 
 /// u16x4 with UInt16x4
 extern Variable UInt16x4_from_UInt16x4_arg;
 extern Function UInt16x4_from_UInt16x4;
+inline constexpr auto UInt16x4_from_UInt16x4_backend_index = 1030u;
 
 /// u16x4 with UInt16
 extern Variable UInt16x4_splat_UInt16_arg;
 extern Function UInt16x4_splat_UInt16;
+inline constexpr auto UInt16x4_splat_UInt16_backend_index = 1031u;
 
 /// u16x4 with Int16x4
 extern Variable UInt16x4_from_Int16x4_arg;
 extern Function UInt16x4_from_Int16x4;
+inline constexpr auto UInt16x4_from_Int16x4_backend_index = 1032u;
 
 /// u16x4 with Int16
 extern Variable UInt16x4_splat_Int16_arg;
 extern Function UInt16x4_splat_Int16;
+inline constexpr auto UInt16x4_splat_Int16_backend_index = 1033u;
 
 /// u16x4 with UInt16, UInt16, UInt16, UInt16
 extern Variable UInt16x4_ctor0_arg0_UInt16;
@@ -1617,95 +1995,116 @@ extern Variable UInt16x4_ctor0_arg1_UInt16;
 extern Variable UInt16x4_ctor0_arg2_UInt16;
 extern Variable UInt16x4_ctor0_arg3_UInt16;
 extern Function UInt16x4_ctor0;
+inline constexpr auto UInt16x4_ctor0_backend_index = 1034u;
 
 /// u16x4 with UInt16x2, UInt16, UInt16
 extern Variable UInt16x4_ctor1_arg0_UInt16x2;
 extern Variable UInt16x4_ctor1_arg1_UInt16;
 extern Variable UInt16x4_ctor1_arg2_UInt16;
 extern Function UInt16x4_ctor1;
+inline constexpr auto UInt16x4_ctor1_backend_index = 1035u;
 
 /// u16x4 with UInt16, UInt16x2, UInt16
 extern Variable UInt16x4_ctor2_arg0_UInt16;
 extern Variable UInt16x4_ctor2_arg1_UInt16x2;
 extern Variable UInt16x4_ctor2_arg2_UInt16;
 extern Function UInt16x4_ctor2;
+inline constexpr auto UInt16x4_ctor2_backend_index = 1036u;
 
 /// u16x4 with UInt16, UInt16, UInt16x2
 extern Variable UInt16x4_ctor3_arg0_UInt16;
 extern Variable UInt16x4_ctor3_arg1_UInt16;
 extern Variable UInt16x4_ctor3_arg2_UInt16x2;
 extern Function UInt16x4_ctor3;
+inline constexpr auto UInt16x4_ctor3_backend_index = 1037u;
 
 /// u16x4 with UInt16x2, UInt16x2
 extern Variable UInt16x4_ctor4_arg0_UInt16x2;
 extern Variable UInt16x4_ctor4_arg1_UInt16x2;
 extern Function UInt16x4_ctor4;
+inline constexpr auto UInt16x4_ctor4_backend_index = 1038u;
 
 /// u16x4 with UInt16x3, UInt16
 extern Variable UInt16x4_ctor5_arg0_UInt16x3;
 extern Variable UInt16x4_ctor5_arg1_UInt16;
 extern Function UInt16x4_ctor5;
+inline constexpr auto UInt16x4_ctor5_backend_index = 1039u;
 
 /// u16x4 with UInt16, UInt16x3
 extern Variable UInt16x4_ctor6_arg0_UInt16;
 extern Variable UInt16x4_ctor6_arg1_UInt16x3;
 extern Function UInt16x4_ctor6;
+inline constexpr auto UInt16x4_ctor6_backend_index = 1040u;
 
 /// i16x4 with Float32x4
 extern Variable Int16x4_from_Float32x4_arg;
 extern Function Int16x4_from_Float32x4;
+inline constexpr auto Int16x4_from_Float32x4_backend_index = 1073u;
 
 /// i16x4 with Float32
 extern Variable Int16x4_splat_Float32_arg;
 extern Function Int16x4_splat_Float32;
+inline constexpr auto Int16x4_splat_Float32_backend_index = 1074u;
 
 /// i16x4 with UInt32x4
 extern Variable Int16x4_from_UInt32x4_arg;
 extern Function Int16x4_from_UInt32x4;
+inline constexpr auto Int16x4_from_UInt32x4_backend_index = 1075u;
 
 /// i16x4 with UInt32
 extern Variable Int16x4_splat_UInt32_arg;
 extern Function Int16x4_splat_UInt32;
+inline constexpr auto Int16x4_splat_UInt32_backend_index = 1076u;
 
 /// i16x4 with Int32x4
 extern Variable Int16x4_from_Int32x4_arg;
 extern Function Int16x4_from_Int32x4;
+inline constexpr auto Int16x4_from_Int32x4_backend_index = 1077u;
 
 /// i16x4 with Int32
 extern Variable Int16x4_splat_Int32_arg;
 extern Function Int16x4_splat_Int32;
+inline constexpr auto Int16x4_splat_Int32_backend_index = 1078u;
 
 /// i16x4 with Bool8x4
 extern Variable Int16x4_from_Bool8x4_arg;
 extern Function Int16x4_from_Bool8x4;
+inline constexpr auto Int16x4_from_Bool8x4_backend_index = 1079u;
 
 /// i16x4 with Bool8
 extern Variable Int16x4_splat_Bool8_arg;
 extern Function Int16x4_splat_Bool8;
+inline constexpr auto Int16x4_splat_Bool8_backend_index = 1080u;
 
 /// i16x4 with Float16x4
 extern Variable Int16x4_from_Float16x4_arg;
 extern Function Int16x4_from_Float16x4;
+inline constexpr auto Int16x4_from_Float16x4_backend_index = 1081u;
 
 /// i16x4 with Float16
 extern Variable Int16x4_splat_Float16_arg;
 extern Function Int16x4_splat_Float16;
+inline constexpr auto Int16x4_splat_Float16_backend_index = 1082u;
 
 /// i16x4 with UInt16x4
 extern Variable Int16x4_from_UInt16x4_arg;
 extern Function Int16x4_from_UInt16x4;
+inline constexpr auto Int16x4_from_UInt16x4_backend_index = 1083u;
 
 /// i16x4 with UInt16
 extern Variable Int16x4_splat_UInt16_arg;
 extern Function Int16x4_splat_UInt16;
+inline constexpr auto Int16x4_splat_UInt16_backend_index = 1084u;
 
 /// i16x4 with Int16x4
 extern Variable Int16x4_from_Int16x4_arg;
 extern Function Int16x4_from_Int16x4;
+inline constexpr auto Int16x4_from_Int16x4_backend_index = 1085u;
 
 /// i16x4 with Int16
 extern Variable Int16x4_splat_Int16_arg;
 extern Function Int16x4_splat_Int16;
+inline constexpr auto Int16x4_splat_Int16_backend_index = 1086u;
 
 /// i16x4 with Int16, Int16, Int16, Int16
 extern Variable Int16x4_ctor0_arg0_Int16;
@@ -1713,47 +2112,56 @@ extern Variable Int16x4_ctor0_arg1_Int16;
 extern Variable Int16x4_ctor0_arg2_Int16;
 extern Variable Int16x4_ctor0_arg3_Int16;
 extern Function Int16x4_ctor0;
+inline constexpr auto Int16x4_ctor0_backend_index = 1087u;
 
 /// i16x4 with Int16x2, Int16, Int16
 extern Variable Int16x4_ctor1_arg0_Int16x2;
 extern Variable Int16x4_ctor1_arg1_Int16;
 extern Variable Int16x4_ctor1_arg2_Int16;
 extern Function Int16x4_ctor1;
+inline constexpr auto Int16x4_ctor1_backend_index = 1088u;
 
 /// i16x4 with Int16, Int16x2, Int16
 extern Variable Int16x4_ctor2_arg0_Int16;
 extern Variable Int16x4_ctor2_arg1_Int16x2;
 extern Variable Int16x4_ctor2_arg2_Int16;
 extern Function Int16x4_ctor2;
+inline constexpr auto Int16x4_ctor2_backend_index = 1089u;
 
 /// i16x4 with Int16, Int16, Int16x2
 extern Variable Int16x4_ctor3_arg0_Int16;
 extern Variable Int16x4_ctor3_arg1_Int16;
 extern Variable Int16x4_ctor3_arg2_Int16x2;
 extern Function Int16x4_ctor3;
+inline constexpr auto Int16x4_ctor3_backend_index = 1090u;
 
 /// i16x4 with Int16x2, Int16x2
 extern Variable Int16x4_ctor4_arg0_Int16x2;
 extern Variable Int16x4_ctor4_arg1_Int16x2;
 extern Function Int16x4_ctor4;
+inline constexpr auto Int16x4_ctor4_backend_index = 1091u;
 
 /// i16x4 with Int16x3, Int16
 extern Variable Int16x4_ctor5_arg0_Int16x3;
 extern Variable Int16x4_ctor5_arg1_Int16;
 extern Function Int16x4_ctor5;
+inline constexpr auto Int16x4_ctor5_backend_index = 1092u;
 
 /// i16x4 with Int16, Int16x3
 extern Variable Int16x4_ctor6_arg0_Int16;
 extern Variable Int16x4_ctor6_arg1_Int16x3;
 extern Function Int16x4_ctor6;
+inline constexpr auto Int16x4_ctor6_backend_index = 1093u;
 
 /// f32x2x2 with Float32x2, Float32x2
 extern Variable Float32x2x2_Float32_2_ctor_arg0;
 extern Variable Float32x2x2_Float32_2_ctor_arg1;
 extern Function Float32x2x2_Float32_2_ctor;
+inline constexpr auto Float32x2x2_Float32_2_ctor_backend_index = 1126u;
 
 /// f32x2x2
 extern Function Float32x2x2_identity;
+inline constexpr auto Float32x2x2_identity_backend_index = 1127u;
 
 /// f32x2x2 with Float32, Float32, Float32, Float32
 extern Variable Float32x2x2_raw_list_arg0;
@@ -1761,51 +2169,14 @@ extern Variable Float32x2x2_raw_list_arg1;
 extern Variable Float32x2x2_raw_list_arg2;
 extern Variable Float32x2x2_raw_list_arg3;
 extern Function Float32x2x2_raw_list;
-
-/// f32x2x3 with Float32x3, Float32x3
-extern Variable Float32x2x3_Float32_3_ctor_arg0;
-extern Variable Float32x2x3_Float32_3_ctor_arg1;
-extern Function Float32x2x3_Float32_3_ctor;
-
-/// f32x2x3
-extern Function Float32x2x3_identity;
-
-/// f32x2x3 with Float32, Float32, Float32, Float32, Float32, Float32
-extern Variable Float32x2x3_raw_list_arg0;
-extern Variable Float32x2x3_raw_list_arg1;
-extern Variable Float32x2x3_raw_list_arg2;
-extern Variable Float32x2x3_raw_list_arg3;
-extern Variable Float32x2x3_raw_list_arg4;
-extern Variable Float32x2x3_raw_list_arg5;
-extern Function Float32x2x3_raw_list;
-
-/// f32x2x4 with Float32x4, Float32x4
-extern Variable Float32x2x4_Float32_4_ctor_arg0;
-extern Variable Float32x2x4_Float32_4_ctor_arg1;
-extern Function Float32x2x4_Float32_4_ctor;
-
-/// f32x2x4
-extern Function Float32x2x4_identity;
-
-/// f32x2x4 with Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32
-extern Variable Float32x2x4_raw_list_arg0;
-extern Variable Float32x2x4_raw_list_arg1;
-extern Variable Float32x2x4_raw_list_arg2;
-extern Variable Float32x2x4_raw_list_arg3;
-extern Variable Float32x2x4_raw_list_arg4;
-extern Variable Float32x2x4_raw_list_arg5;
-extern Variable Float32x2x4_raw_list_arg6;
-extern Variable Float32x2x4_raw_list_arg7;
-extern Function Float32x2x4_raw_list;
+inline constexpr auto Float32x2x2_raw_list_backend_index = 1128u;
 
 /// f32x3x2 with Float32x2, Float32x2, Float32x2
 extern Variable Float32x3x2_Float32_2_ctor_arg0;
 extern Variable Float32x3x2_Float32_2_ctor_arg1;
 extern Variable Float32x3x2_Float32_2_ctor_arg2;
 extern Function Float32x3x2_Float32_2_ctor;
-
-/// f32x3x2
-extern Function Float32x3x2_identity;
+inline constexpr auto Float32x3x2_Float32_2_ctor_backend_index = 1141u;
 
 /// f32x3x2 with Float32, Float32, Float32, Float32, Float32, Float32
 extern Variable Float32x3x2_raw_list_arg0;
@@ -1815,15 +2186,54 @@ extern Variable Float32x3x2_raw_list_arg3;
 extern Variable Float32x3x2_raw_list_arg4;
 extern Variable Float32x3x2_raw_list_arg5;
 extern Function Float32x3x2_raw_list;
+inline constexpr auto Float32x3x2_raw_list_backend_index = 1142u;
+
+/// f32x4x2 with Float32x2, Float32x2, Float32x2, Float32x2
+extern Variable Float32x4x2_Float32_2_ctor_arg0;
+extern Variable Float32x4x2_Float32_2_ctor_arg1;
+extern Variable Float32x4x2_Float32_2_ctor_arg2;
+extern Variable Float32x4x2_Float32_2_ctor_arg3;
+extern Function Float32x4x2_Float32_2_ctor;
+inline constexpr auto Float32x4x2_Float32_2_ctor_backend_index = 1155u;
+
+/// f32x4x2 with Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32
+extern Variable Float32x4x2_raw_list_arg0;
+extern Variable Float32x4x2_raw_list_arg1;
+extern Variable Float32x4x2_raw_list_arg2;
+extern Variable Float32x4x2_raw_list_arg3;
+extern Variable Float32x4x2_raw_list_arg4;
+extern Variable Float32x4x2_raw_list_arg5;
+extern Variable Float32x4x2_raw_list_arg6;
+extern Variable Float32x4x2_raw_list_arg7;
+extern Function Float32x4x2_raw_list;
+inline constexpr auto Float32x4x2_raw_list_backend_index = 1156u;
+
+/// f32x2x3 with Float32x3, Float32x3
+extern Variable Float32x2x3_Float32_3_ctor_arg0;
+extern Variable Float32x2x3_Float32_3_ctor_arg1;
+extern Function Float32x2x3_Float32_3_ctor;
+inline constexpr auto Float32x2x3_Float32_3_ctor_backend_index = 1169u;
+
+/// f32x2x3 with Float32, Float32, Float32, Float32, Float32, Float32
+extern Variable Float32x2x3_raw_list_arg0;
+extern Variable Float32x2x3_raw_list_arg1;
+extern Variable Float32x2x3_raw_list_arg2;
+extern Variable Float32x2x3_raw_list_arg3;
+extern Variable Float32x2x3_raw_list_arg4;
+extern Variable Float32x2x3_raw_list_arg5;
+extern Function Float32x2x3_raw_list;
+inline constexpr auto Float32x2x3_raw_list_backend_index = 1170u;
 
 /// f32x3x3 with Float32x3, Float32x3, Float32x3
 extern Variable Float32x3x3_Float32_3_ctor_arg0;
 extern Variable Float32x3x3_Float32_3_ctor_arg1;
 extern Variable Float32x3x3_Float32_3_ctor_arg2;
 extern Function Float32x3x3_Float32_3_ctor;
+inline constexpr auto Float32x3x3_Float32_3_ctor_backend_index = 1183u;
 
 /// f32x3x3
 extern Function Float32x3x3_identity;
+inline constexpr auto Float32x3x3_identity_backend_index = 1184u;
 
 /// f32x3x3 with Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32
 extern Variable Float32x3x3_raw_list_arg0;
@@ -1836,51 +2246,7 @@ extern Variable Float32x3x3_raw_list_arg6;
 extern Variable Float32x3x3_raw_list_arg7;
 extern Variable Float32x3x3_raw_list_arg8;
 extern Function Float32x3x3_raw_list;
-
-/// f32x3x4 with Float32x4, Float32x4, Float32x4
-extern Variable Float32x3x4_Float32_4_ctor_arg0;
-extern Variable Float32x3x4_Float32_4_ctor_arg1;
-extern Variable Float32x3x4_Float32_4_ctor_arg2;
-extern Function Float32x3x4_Float32_4_ctor;
-
-/// f32x3x4
-extern Function Float32x3x4_identity;
-
-/// f32x3x4 with Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32
-extern Variable Float32x3x4_raw_list_arg0;
-extern Variable Float32x3x4_raw_list_arg1;
-extern Variable Float32x3x4_raw_list_arg2;
-extern Variable Float32x3x4_raw_list_arg3;
-extern Variable Float32x3x4_raw_list_arg4;
-extern Variable Float32x3x4_raw_list_arg5;
-extern Variable Float32x3x4_raw_list_arg6;
-extern Variable Float32x3x4_raw_list_arg7;
-extern Variable Float32x3x4_raw_list_arg8;
-extern Variable Float32x3x4_raw_list_arg9;
-extern Variable Float32x3x4_raw_list_arg10;
-extern Variable Float32x3x4_raw_list_arg11;
-extern Function Float32x3x4_raw_list;
-
-/// f32x4x2 with Float32x2, Float32x2, Float32x2, Float32x2
-extern Variable Float32x4x2_Float32_2_ctor_arg0;
-extern Variable Float32x4x2_Float32_2_ctor_arg1;
-extern Variable Float32x4x2_Float32_2_ctor_arg2;
-extern Variable Float32x4x2_Float32_2_ctor_arg3;
-extern Function Float32x4x2_Float32_2_ctor;
-
-/// f32x4x2
-extern Function Float32x4x2_identity;
-
-/// f32x4x2 with Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32
-extern Variable Float32x4x2_raw_list_arg0;
-extern Variable Float32x4x2_raw_list_arg1;
-extern Variable Float32x4x2_raw_list_arg2;
-extern Variable Float32x4x2_raw_list_arg3;
-extern Variable Float32x4x2_raw_list_arg4;
-extern Variable Float32x4x2_raw_list_arg5;
-extern Variable Float32x4x2_raw_list_arg6;
-extern Variable Float32x4x2_raw_list_arg7;
-extern Function Float32x4x2_raw_list;
+inline constexpr auto Float32x3x3_raw_list_backend_index = 1185u;
 
 /// f32x4x3 with Float32x3, Float32x3, Float32x3, Float32x3
 extern Variable Float32x4x3_Float32_3_ctor_arg0;
@@ -1888,9 +2254,7 @@ extern Variable Float32x4x3_Float32_3_ctor_arg1;
 extern Variable Float32x4x3_Float32_3_ctor_arg2;
 extern Variable Float32x4x3_Float32_3_ctor_arg3;
 extern Function Float32x4x3_Float32_3_ctor;
-
-/// f32x4x3
-extern Function Float32x4x3_identity;
+inline constexpr auto Float32x4x3_Float32_3_ctor_backend_index = 1198u;
 
 /// f32x4x3 with Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32
 extern Variable Float32x4x3_raw_list_arg0;
@@ -1906,6 +2270,48 @@ extern Variable Float32x4x3_raw_list_arg9;
 extern Variable Float32x4x3_raw_list_arg10;
 extern Variable Float32x4x3_raw_list_arg11;
 extern Function Float32x4x3_raw_list;
+inline constexpr auto Float32x4x3_raw_list_backend_index = 1199u;
+
+/// f32x2x4 with Float32x4, Float32x4
+extern Variable Float32x2x4_Float32_4_ctor_arg0;
+extern Variable Float32x2x4_Float32_4_ctor_arg1;
+extern Function Float32x2x4_Float32_4_ctor;
+inline constexpr auto Float32x2x4_Float32_4_ctor_backend_index = 1212u;
+
+/// f32x2x4 with Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32
+extern Variable Float32x2x4_raw_list_arg0;
+extern Variable Float32x2x4_raw_list_arg1;
+extern Variable Float32x2x4_raw_list_arg2;
+extern Variable Float32x2x4_raw_list_arg3;
+extern Variable Float32x2x4_raw_list_arg4;
+extern Variable Float32x2x4_raw_list_arg5;
+extern Variable Float32x2x4_raw_list_arg6;
+extern Variable Float32x2x4_raw_list_arg7;
+extern Function Float32x2x4_raw_list;
+inline constexpr auto Float32x2x4_raw_list_backend_index = 1213u;
+
+/// f32x3x4 with Float32x4, Float32x4, Float32x4
+extern Variable Float32x3x4_Float32_4_ctor_arg0;
+extern Variable Float32x3x4_Float32_4_ctor_arg1;
+extern Variable Float32x3x4_Float32_4_ctor_arg2;
+extern Function Float32x3x4_Float32_4_ctor;
+inline constexpr auto Float32x3x4_Float32_4_ctor_backend_index = 1226u;
+
+/// f32x3x4 with Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32
+extern Variable Float32x3x4_raw_list_arg0;
+extern Variable Float32x3x4_raw_list_arg1;
+extern Variable Float32x3x4_raw_list_arg2;
+extern Variable Float32x3x4_raw_list_arg3;
+extern Variable Float32x3x4_raw_list_arg4;
+extern Variable Float32x3x4_raw_list_arg5;
+extern Variable Float32x3x4_raw_list_arg6;
+extern Variable Float32x3x4_raw_list_arg7;
+extern Variable Float32x3x4_raw_list_arg8;
+extern Variable Float32x3x4_raw_list_arg9;
+extern Variable Float32x3x4_raw_list_arg10;
+extern Variable Float32x3x4_raw_list_arg11;
+extern Function Float32x3x4_raw_list;
+inline constexpr auto Float32x3x4_raw_list_backend_index = 1227u;
 
 /// f32x4x4 with Float32x4, Float32x4, Float32x4, Float32x4
 extern Variable Float32x4x4_Float32_4_ctor_arg0;
@@ -1913,9 +2319,11 @@ extern Variable Float32x4x4_Float32_4_ctor_arg1;
 extern Variable Float32x4x4_Float32_4_ctor_arg2;
 extern Variable Float32x4x4_Float32_4_ctor_arg3;
 extern Function Float32x4x4_Float32_4_ctor;
+inline constexpr auto Float32x4x4_Float32_4_ctor_backend_index = 1240u;
 
 /// f32x4x4
 extern Function Float32x4x4_identity;
+inline constexpr auto Float32x4x4_identity_backend_index = 1241u;
 
 /// f32x4x4 with Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32
 extern Variable Float32x4x4_raw_list_arg0;
@@ -1935,14 +2343,17 @@ extern Variable Float32x4x4_raw_list_arg13;
 extern Variable Float32x4x4_raw_list_arg14;
 extern Variable Float32x4x4_raw_list_arg15;
 extern Function Float32x4x4_raw_list;
+inline constexpr auto Float32x4x4_raw_list_backend_index = 1242u;
 
 /// f16x2x2 with Float16x2, Float16x2
 extern Variable Float16x2x2_Float16_2_ctor_arg0;
 extern Variable Float16x2x2_Float16_2_ctor_arg1;
 extern Function Float16x2x2_Float16_2_ctor;
+inline constexpr auto Float16x2x2_Float16_2_ctor_backend_index = 1255u;
 
 /// f16x2x2
 extern Function Float16x2x2_identity;
+inline constexpr auto Float16x2x2_identity_backend_index = 1256u;
 
 /// f16x2x2 with Float16, Float16, Float16, Float16
 extern Variable Float16x2x2_raw_list_arg0;
@@ -1950,51 +2361,14 @@ extern Variable Float16x2x2_raw_list_arg1;
 extern Variable Float16x2x2_raw_list_arg2;
 extern Variable Float16x2x2_raw_list_arg3;
 extern Function Float16x2x2_raw_list;
-
-/// f16x2x3 with Float16x3, Float16x3
-extern Variable Float16x2x3_Float16_3_ctor_arg0;
-extern Variable Float16x2x3_Float16_3_ctor_arg1;
-extern Function Float16x2x3_Float16_3_ctor;
-
-/// f16x2x3
-extern Function Float16x2x3_identity;
-
-/// f16x2x3 with Float16, Float16, Float16, Float16, Float16, Float16
-extern Variable Float16x2x3_raw_list_arg0;
-extern Variable Float16x2x3_raw_list_arg1;
-extern Variable Float16x2x3_raw_list_arg2;
-extern Variable Float16x2x3_raw_list_arg3;
-extern Variable Float16x2x3_raw_list_arg4;
-extern Variable Float16x2x3_raw_list_arg5;
-extern Function Float16x2x3_raw_list;
-
-/// f16x2x4 with Float16x4, Float16x4
-extern Variable Float16x2x4_Float16_4_ctor_arg0;
-extern Variable Float16x2x4_Float16_4_ctor_arg1;
-extern Function Float16x2x4_Float16_4_ctor;
-
-/// f16x2x4
-extern Function Float16x2x4_identity;
-
-/// f16x2x4 with Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16
-extern Variable Float16x2x4_raw_list_arg0;
-extern Variable Float16x2x4_raw_list_arg1;
-extern Variable Float16x2x4_raw_list_arg2;
-extern Variable Float16x2x4_raw_list_arg3;
-extern Variable Float16x2x4_raw_list_arg4;
-extern Variable Float16x2x4_raw_list_arg5;
-extern Variable Float16x2x4_raw_list_arg6;
-extern Variable Float16x2x4_raw_list_arg7;
-extern Function Float16x2x4_raw_list;
+inline constexpr auto Float16x2x2_raw_list_backend_index = 1257u;
 
 /// f16x3x2 with Float16x2, Float16x2, Float16x2
 extern Variable Float16x3x2_Float16_2_ctor_arg0;
 extern Variable Float16x3x2_Float16_2_ctor_arg1;
 extern Variable Float16x3x2_Float16_2_ctor_arg2;
 extern Function Float16x3x2_Float16_2_ctor;
-
-/// f16x3x2
-extern Function Float16x3x2_identity;
+inline constexpr auto Float16x3x2_Float16_2_ctor_backend_index = 1270u;
 
 /// f16x3x2 with Float16, Float16, Float16, Float16, Float16, Float16
 extern Variable Float16x3x2_raw_list_arg0;
@@ -2004,15 +2378,54 @@ extern Variable Float16x3x2_raw_list_arg3;
 extern Variable Float16x3x2_raw_list_arg4;
 extern Variable Float16x3x2_raw_list_arg5;
 extern Function Float16x3x2_raw_list;
+inline constexpr auto Float16x3x2_raw_list_backend_index = 1271u;
+
+/// f16x4x2 with Float16x2, Float16x2, Float16x2, Float16x2
+extern Variable Float16x4x2_Float16_2_ctor_arg0;
+extern Variable Float16x4x2_Float16_2_ctor_arg1;
+extern Variable Float16x4x2_Float16_2_ctor_arg2;
+extern Variable Float16x4x2_Float16_2_ctor_arg3;
+extern Function Float16x4x2_Float16_2_ctor;
+inline constexpr auto Float16x4x2_Float16_2_ctor_backend_index = 1284u;
+
+/// f16x4x2 with Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16
+extern Variable Float16x4x2_raw_list_arg0;
+extern Variable Float16x4x2_raw_list_arg1;
+extern Variable Float16x4x2_raw_list_arg2;
+extern Variable Float16x4x2_raw_list_arg3;
+extern Variable Float16x4x2_raw_list_arg4;
+extern Variable Float16x4x2_raw_list_arg5;
+extern Variable Float16x4x2_raw_list_arg6;
+extern Variable Float16x4x2_raw_list_arg7;
+extern Function Float16x4x2_raw_list;
+inline constexpr auto Float16x4x2_raw_list_backend_index = 1285u;
+
+/// f16x2x3 with Float16x3, Float16x3
+extern Variable Float16x2x3_Float16_3_ctor_arg0;
+extern Variable Float16x2x3_Float16_3_ctor_arg1;
+extern Function Float16x2x3_Float16_3_ctor;
+inline constexpr auto Float16x2x3_Float16_3_ctor_backend_index = 1298u;
+
+/// f16x2x3 with Float16, Float16, Float16, Float16, Float16, Float16
+extern Variable Float16x2x3_raw_list_arg0;
+extern Variable Float16x2x3_raw_list_arg1;
+extern Variable Float16x2x3_raw_list_arg2;
+extern Variable Float16x2x3_raw_list_arg3;
+extern Variable Float16x2x3_raw_list_arg4;
+extern Variable Float16x2x3_raw_list_arg5;
+extern Function Float16x2x3_raw_list;
+inline constexpr auto Float16x2x3_raw_list_backend_index = 1299u;
 
 /// f16x3x3 with Float16x3, Float16x3, Float16x3
 extern Variable Float16x3x3_Float16_3_ctor_arg0;
 extern Variable Float16x3x3_Float16_3_ctor_arg1;
 extern Variable Float16x3x3_Float16_3_ctor_arg2;
 extern Function Float16x3x3_Float16_3_ctor;
+inline constexpr auto Float16x3x3_Float16_3_ctor_backend_index = 1312u;
 
 /// f16x3x3
 extern Function Float16x3x3_identity;
+inline constexpr auto Float16x3x3_identity_backend_index = 1313u;
 
 /// f16x3x3 with Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16
 extern Variable Float16x3x3_raw_list_arg0;
@@ -2025,51 +2438,7 @@ extern Variable Float16x3x3_raw_list_arg6;
 extern Variable Float16x3x3_raw_list_arg7;
 extern Variable Float16x3x3_raw_list_arg8;
 extern Function Float16x3x3_raw_list;
-
-/// f16x3x4 with Float16x4, Float16x4, Float16x4
-extern Variable Float16x3x4_Float16_4_ctor_arg0;
-extern Variable Float16x3x4_Float16_4_ctor_arg1;
-extern Variable Float16x3x4_Float16_4_ctor_arg2;
-extern Function Float16x3x4_Float16_4_ctor;
-
-/// f16x3x4
-extern Function Float16x3x4_identity;
-
-/// f16x3x4 with Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16
-extern Variable Float16x3x4_raw_list_arg0;
-extern Variable Float16x3x4_raw_list_arg1;
-extern Variable Float16x3x4_raw_list_arg2;
-extern Variable Float16x3x4_raw_list_arg3;
-extern Variable Float16x3x4_raw_list_arg4;
-extern Variable Float16x3x4_raw_list_arg5;
-extern Variable Float16x3x4_raw_list_arg6;
-extern Variable Float16x3x4_raw_list_arg7;
-extern Variable Float16x3x4_raw_list_arg8;
-extern Variable Float16x3x4_raw_list_arg9;
-extern Variable Float16x3x4_raw_list_arg10;
-extern Variable Float16x3x4_raw_list_arg11;
-extern Function Float16x3x4_raw_list;
-
-/// f16x4x2 with Float16x2, Float16x2, Float16x2, Float16x2
-extern Variable Float16x4x2_Float16_2_ctor_arg0;
-extern Variable Float16x4x2_Float16_2_ctor_arg1;
-extern Variable Float16x4x2_Float16_2_ctor_arg2;
-extern Variable Float16x4x2_Float16_2_ctor_arg3;
-extern Function Float16x4x2_Float16_2_ctor;
-
-/// f16x4x2
-extern Function Float16x4x2_identity;
-
-/// f16x4x2 with Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16
-extern Variable Float16x4x2_raw_list_arg0;
-extern Variable Float16x4x2_raw_list_arg1;
-extern Variable Float16x4x2_raw_list_arg2;
-extern Variable Float16x4x2_raw_list_arg3;
-extern Variable Float16x4x2_raw_list_arg4;
-extern Variable Float16x4x2_raw_list_arg5;
-extern Variable Float16x4x2_raw_list_arg6;
-extern Variable Float16x4x2_raw_list_arg7;
-extern Function Float16x4x2_raw_list;
+inline constexpr auto Float16x3x3_raw_list_backend_index = 1314u;
 
 /// f16x4x3 with Float16x3, Float16x3, Float16x3, Float16x3
 extern Variable Float16x4x3_Float16_3_ctor_arg0;
@@ -2077,9 +2446,7 @@ extern Variable Float16x4x3_Float16_3_ctor_arg1;
 extern Variable Float16x4x3_Float16_3_ctor_arg2;
 extern Variable Float16x4x3_Float16_3_ctor_arg3;
 extern Function Float16x4x3_Float16_3_ctor;
-
-/// f16x4x3
-extern Function Float16x4x3_identity;
+inline constexpr auto Float16x4x3_Float16_3_ctor_backend_index = 1327u;
 
 /// f16x4x3 with Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16
 extern Variable Float16x4x3_raw_list_arg0;
@@ -2095,6 +2462,48 @@ extern Variable Float16x4x3_raw_list_arg9;
 extern Variable Float16x4x3_raw_list_arg10;
 extern Variable Float16x4x3_raw_list_arg11;
 extern Function Float16x4x3_raw_list;
+inline constexpr auto Float16x4x3_raw_list_backend_index = 1328u;
+
+/// f16x2x4 with Float16x4, Float16x4
+extern Variable Float16x2x4_Float16_4_ctor_arg0;
+extern Variable Float16x2x4_Float16_4_ctor_arg1;
+extern Function Float16x2x4_Float16_4_ctor;
+inline constexpr auto Float16x2x4_Float16_4_ctor_backend_index = 1341u;
+
+/// f16x2x4 with Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16
+extern Variable Float16x2x4_raw_list_arg0;
+extern Variable Float16x2x4_raw_list_arg1;
+extern Variable Float16x2x4_raw_list_arg2;
+extern Variable Float16x2x4_raw_list_arg3;
+extern Variable Float16x2x4_raw_list_arg4;
+extern Variable Float16x2x4_raw_list_arg5;
+extern Variable Float16x2x4_raw_list_arg6;
+extern Variable Float16x2x4_raw_list_arg7;
+extern Function Float16x2x4_raw_list;
+inline constexpr auto Float16x2x4_raw_list_backend_index = 1342u;
+
+/// f16x3x4 with Float16x4, Float16x4, Float16x4
+extern Variable Float16x3x4_Float16_4_ctor_arg0;
+extern Variable Float16x3x4_Float16_4_ctor_arg1;
+extern Variable Float16x3x4_Float16_4_ctor_arg2;
+extern Function Float16x3x4_Float16_4_ctor;
+inline constexpr auto Float16x3x4_Float16_4_ctor_backend_index = 1355u;
+
+/// f16x3x4 with Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16
+extern Variable Float16x3x4_raw_list_arg0;
+extern Variable Float16x3x4_raw_list_arg1;
+extern Variable Float16x3x4_raw_list_arg2;
+extern Variable Float16x3x4_raw_list_arg3;
+extern Variable Float16x3x4_raw_list_arg4;
+extern Variable Float16x3x4_raw_list_arg5;
+extern Variable Float16x3x4_raw_list_arg6;
+extern Variable Float16x3x4_raw_list_arg7;
+extern Variable Float16x3x4_raw_list_arg8;
+extern Variable Float16x3x4_raw_list_arg9;
+extern Variable Float16x3x4_raw_list_arg10;
+extern Variable Float16x3x4_raw_list_arg11;
+extern Function Float16x3x4_raw_list;
+inline constexpr auto Float16x3x4_raw_list_backend_index = 1356u;
 
 /// f16x4x4 with Float16x4, Float16x4, Float16x4, Float16x4
 extern Variable Float16x4x4_Float16_4_ctor_arg0;
@@ -2102,9 +2511,11 @@ extern Variable Float16x4x4_Float16_4_ctor_arg1;
 extern Variable Float16x4x4_Float16_4_ctor_arg2;
 extern Variable Float16x4x4_Float16_4_ctor_arg3;
 extern Function Float16x4x4_Float16_4_ctor;
+inline constexpr auto Float16x4x4_Float16_4_ctor_backend_index = 1369u;
 
 /// f16x4x4
 extern Function Float16x4x4_identity;
+inline constexpr auto Float16x4x4_identity_backend_index = 1370u;
 
 /// f16x4x4 with Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16, Float16
 extern Variable Float16x4x4_raw_list_arg0;
@@ -2124,3329 +2535,4069 @@ extern Variable Float16x4x4_raw_list_arg13;
 extern Variable Float16x4x4_raw_list_arg14;
 extern Variable Float16x4x4_raw_list_arg15;
 extern Function Float16x4x4_raw_list;
+inline constexpr auto Float16x4x4_raw_list_backend_index = 1371u;
 
 /// acos with Float32
 extern Variable acos_Float32_arg;
 extern Function acos_Float32;
+inline constexpr auto acos_Float32_backend_index = 1384u;
 
 /// acos with Float32x2
 extern Variable acos_Float32x2_arg;
 extern Function acos_Float32x2;
+inline constexpr auto acos_Float32x2_backend_index = 1385u;
 
 /// acos with Float32x3
 extern Variable acos_Float32x3_arg;
 extern Function acos_Float32x3;
+inline constexpr auto acos_Float32x3_backend_index = 1386u;
 
 /// acos with Float32x4
 extern Variable acos_Float32x4_arg;
 extern Function acos_Float32x4;
+inline constexpr auto acos_Float32x4_backend_index = 1387u;
 
 /// acos with Float16
 extern Variable acos_Float16_arg;
 extern Function acos_Float16;
+inline constexpr auto acos_Float16_backend_index = 1388u;
 
 /// acos with Float16x2
 extern Variable acos_Float16x2_arg;
 extern Function acos_Float16x2;
+inline constexpr auto acos_Float16x2_backend_index = 1389u;
 
 /// acos with Float16x3
 extern Variable acos_Float16x3_arg;
 extern Function acos_Float16x3;
+inline constexpr auto acos_Float16x3_backend_index = 1390u;
 
 /// acos with Float16x4
 extern Variable acos_Float16x4_arg;
 extern Function acos_Float16x4;
+inline constexpr auto acos_Float16x4_backend_index = 1391u;
 
 /// acosh with Float32
 extern Variable acosh_Float32_arg;
 extern Function acosh_Float32;
+inline constexpr auto acosh_Float32_backend_index = 1392u;
 
 /// acosh with Float32x2
 extern Variable acosh_Float32x2_arg;
 extern Function acosh_Float32x2;
+inline constexpr auto acosh_Float32x2_backend_index = 1393u;
 
 /// acosh with Float32x3
 extern Variable acosh_Float32x3_arg;
 extern Function acosh_Float32x3;
+inline constexpr auto acosh_Float32x3_backend_index = 1394u;
 
 /// acosh with Float32x4
 extern Variable acosh_Float32x4_arg;
 extern Function acosh_Float32x4;
+inline constexpr auto acosh_Float32x4_backend_index = 1395u;
 
 /// acosh with Float16
 extern Variable acosh_Float16_arg;
 extern Function acosh_Float16;
+inline constexpr auto acosh_Float16_backend_index = 1396u;
 
 /// acosh with Float16x2
 extern Variable acosh_Float16x2_arg;
 extern Function acosh_Float16x2;
+inline constexpr auto acosh_Float16x2_backend_index = 1397u;
 
 /// acosh with Float16x3
 extern Variable acosh_Float16x3_arg;
 extern Function acosh_Float16x3;
+inline constexpr auto acosh_Float16x3_backend_index = 1398u;
 
 /// acosh with Float16x4
 extern Variable acosh_Float16x4_arg;
 extern Function acosh_Float16x4;
+inline constexpr auto acosh_Float16x4_backend_index = 1399u;
 
 /// asin with Float32
 extern Variable asin_Float32_arg;
 extern Function asin_Float32;
+inline constexpr auto asin_Float32_backend_index = 1400u;
 
 /// asin with Float32x2
 extern Variable asin_Float32x2_arg;
 extern Function asin_Float32x2;
+inline constexpr auto asin_Float32x2_backend_index = 1401u;
 
 /// asin with Float32x3
 extern Variable asin_Float32x3_arg;
 extern Function asin_Float32x3;
+inline constexpr auto asin_Float32x3_backend_index = 1402u;
 
 /// asin with Float32x4
 extern Variable asin_Float32x4_arg;
 extern Function asin_Float32x4;
+inline constexpr auto asin_Float32x4_backend_index = 1403u;
 
 /// asin with Float16
 extern Variable asin_Float16_arg;
 extern Function asin_Float16;
+inline constexpr auto asin_Float16_backend_index = 1404u;
 
 /// asin with Float16x2
 extern Variable asin_Float16x2_arg;
 extern Function asin_Float16x2;
+inline constexpr auto asin_Float16x2_backend_index = 1405u;
 
 /// asin with Float16x3
 extern Variable asin_Float16x3_arg;
 extern Function asin_Float16x3;
+inline constexpr auto asin_Float16x3_backend_index = 1406u;
 
 /// asin with Float16x4
 extern Variable asin_Float16x4_arg;
 extern Function asin_Float16x4;
+inline constexpr auto asin_Float16x4_backend_index = 1407u;
 
 /// asinh with Float32
 extern Variable asinh_Float32_arg;
 extern Function asinh_Float32;
+inline constexpr auto asinh_Float32_backend_index = 1408u;
 
 /// asinh with Float32x2
 extern Variable asinh_Float32x2_arg;
 extern Function asinh_Float32x2;
+inline constexpr auto asinh_Float32x2_backend_index = 1409u;
 
 /// asinh with Float32x3
 extern Variable asinh_Float32x3_arg;
 extern Function asinh_Float32x3;
+inline constexpr auto asinh_Float32x3_backend_index = 1410u;
 
 /// asinh with Float32x4
 extern Variable asinh_Float32x4_arg;
 extern Function asinh_Float32x4;
+inline constexpr auto asinh_Float32x4_backend_index = 1411u;
 
 /// asinh with Float16
 extern Variable asinh_Float16_arg;
 extern Function asinh_Float16;
+inline constexpr auto asinh_Float16_backend_index = 1412u;
 
 /// asinh with Float16x2
 extern Variable asinh_Float16x2_arg;
 extern Function asinh_Float16x2;
+inline constexpr auto asinh_Float16x2_backend_index = 1413u;
 
 /// asinh with Float16x3
 extern Variable asinh_Float16x3_arg;
 extern Function asinh_Float16x3;
+inline constexpr auto asinh_Float16x3_backend_index = 1414u;
 
 /// asinh with Float16x4
 extern Variable asinh_Float16x4_arg;
 extern Function asinh_Float16x4;
+inline constexpr auto asinh_Float16x4_backend_index = 1415u;
 
 /// atan with Float32
 extern Variable atan_Float32_arg;
 extern Function atan_Float32;
+inline constexpr auto atan_Float32_backend_index = 1416u;
 
 /// atan with Float32x2
 extern Variable atan_Float32x2_arg;
 extern Function atan_Float32x2;
+inline constexpr auto atan_Float32x2_backend_index = 1417u;
 
 /// atan with Float32x3
 extern Variable atan_Float32x3_arg;
 extern Function atan_Float32x3;
+inline constexpr auto atan_Float32x3_backend_index = 1418u;
 
 /// atan with Float32x4
 extern Variable atan_Float32x4_arg;
 extern Function atan_Float32x4;
+inline constexpr auto atan_Float32x4_backend_index = 1419u;
 
 /// atan with Float16
 extern Variable atan_Float16_arg;
 extern Function atan_Float16;
+inline constexpr auto atan_Float16_backend_index = 1420u;
 
 /// atan with Float16x2
 extern Variable atan_Float16x2_arg;
 extern Function atan_Float16x2;
+inline constexpr auto atan_Float16x2_backend_index = 1421u;
 
 /// atan with Float16x3
 extern Variable atan_Float16x3_arg;
 extern Function atan_Float16x3;
+inline constexpr auto atan_Float16x3_backend_index = 1422u;
 
 /// atan with Float16x4
 extern Variable atan_Float16x4_arg;
 extern Function atan_Float16x4;
+inline constexpr auto atan_Float16x4_backend_index = 1423u;
 
 /// atanh with Float32
 extern Variable atanh_Float32_arg;
 extern Function atanh_Float32;
+inline constexpr auto atanh_Float32_backend_index = 1424u;
 
 /// atanh with Float32x2
 extern Variable atanh_Float32x2_arg;
 extern Function atanh_Float32x2;
+inline constexpr auto atanh_Float32x2_backend_index = 1425u;
 
 /// atanh with Float32x3
 extern Variable atanh_Float32x3_arg;
 extern Function atanh_Float32x3;
+inline constexpr auto atanh_Float32x3_backend_index = 1426u;
 
 /// atanh with Float32x4
 extern Variable atanh_Float32x4_arg;
 extern Function atanh_Float32x4;
+inline constexpr auto atanh_Float32x4_backend_index = 1427u;
 
 /// atanh with Float16
 extern Variable atanh_Float16_arg;
 extern Function atanh_Float16;
+inline constexpr auto atanh_Float16_backend_index = 1428u;
 
 /// atanh with Float16x2
 extern Variable atanh_Float16x2_arg;
 extern Function atanh_Float16x2;
+inline constexpr auto atanh_Float16x2_backend_index = 1429u;
 
 /// atanh with Float16x3
 extern Variable atanh_Float16x3_arg;
 extern Function atanh_Float16x3;
+inline constexpr auto atanh_Float16x3_backend_index = 1430u;
 
 /// atanh with Float16x4
 extern Variable atanh_Float16x4_arg;
 extern Function atanh_Float16x4;
+inline constexpr auto atanh_Float16x4_backend_index = 1431u;
 
 /// cos with Float32
 extern Variable cos_Float32_arg;
 extern Function cos_Float32;
+inline constexpr auto cos_Float32_backend_index = 1432u;
 
 /// cos with Float32x2
 extern Variable cos_Float32x2_arg;
 extern Function cos_Float32x2;
+inline constexpr auto cos_Float32x2_backend_index = 1433u;
 
 /// cos with Float32x3
 extern Variable cos_Float32x3_arg;
 extern Function cos_Float32x3;
+inline constexpr auto cos_Float32x3_backend_index = 1434u;
 
 /// cos with Float32x4
 extern Variable cos_Float32x4_arg;
 extern Function cos_Float32x4;
+inline constexpr auto cos_Float32x4_backend_index = 1435u;
 
 /// cos with Float16
 extern Variable cos_Float16_arg;
 extern Function cos_Float16;
+inline constexpr auto cos_Float16_backend_index = 1436u;
 
 /// cos with Float16x2
 extern Variable cos_Float16x2_arg;
 extern Function cos_Float16x2;
+inline constexpr auto cos_Float16x2_backend_index = 1437u;
 
 /// cos with Float16x3
 extern Variable cos_Float16x3_arg;
 extern Function cos_Float16x3;
+inline constexpr auto cos_Float16x3_backend_index = 1438u;
 
 /// cos with Float16x4
 extern Variable cos_Float16x4_arg;
 extern Function cos_Float16x4;
+inline constexpr auto cos_Float16x4_backend_index = 1439u;
 
 /// cosh with Float32
 extern Variable cosh_Float32_arg;
 extern Function cosh_Float32;
+inline constexpr auto cosh_Float32_backend_index = 1440u;
 
 /// cosh with Float32x2
 extern Variable cosh_Float32x2_arg;
 extern Function cosh_Float32x2;
+inline constexpr auto cosh_Float32x2_backend_index = 1441u;
 
 /// cosh with Float32x3
 extern Variable cosh_Float32x3_arg;
 extern Function cosh_Float32x3;
+inline constexpr auto cosh_Float32x3_backend_index = 1442u;
 
 /// cosh with Float32x4
 extern Variable cosh_Float32x4_arg;
 extern Function cosh_Float32x4;
+inline constexpr auto cosh_Float32x4_backend_index = 1443u;
 
 /// cosh with Float16
 extern Variable cosh_Float16_arg;
 extern Function cosh_Float16;
+inline constexpr auto cosh_Float16_backend_index = 1444u;
 
 /// cosh with Float16x2
 extern Variable cosh_Float16x2_arg;
 extern Function cosh_Float16x2;
+inline constexpr auto cosh_Float16x2_backend_index = 1445u;
 
 /// cosh with Float16x3
 extern Variable cosh_Float16x3_arg;
 extern Function cosh_Float16x3;
+inline constexpr auto cosh_Float16x3_backend_index = 1446u;
 
 /// cosh with Float16x4
 extern Variable cosh_Float16x4_arg;
 extern Function cosh_Float16x4;
+inline constexpr auto cosh_Float16x4_backend_index = 1447u;
 
 /// exp with Float32
 extern Variable exp_Float32_arg;
 extern Function exp_Float32;
+inline constexpr auto exp_Float32_backend_index = 1448u;
 
 /// exp with Float32x2
 extern Variable exp_Float32x2_arg;
 extern Function exp_Float32x2;
+inline constexpr auto exp_Float32x2_backend_index = 1449u;
 
 /// exp with Float32x3
 extern Variable exp_Float32x3_arg;
 extern Function exp_Float32x3;
+inline constexpr auto exp_Float32x3_backend_index = 1450u;
 
 /// exp with Float32x4
 extern Variable exp_Float32x4_arg;
 extern Function exp_Float32x4;
+inline constexpr auto exp_Float32x4_backend_index = 1451u;
 
 /// exp with Float16
 extern Variable exp_Float16_arg;
 extern Function exp_Float16;
+inline constexpr auto exp_Float16_backend_index = 1452u;
 
 /// exp with Float16x2
 extern Variable exp_Float16x2_arg;
 extern Function exp_Float16x2;
+inline constexpr auto exp_Float16x2_backend_index = 1453u;
 
 /// exp with Float16x3
 extern Variable exp_Float16x3_arg;
 extern Function exp_Float16x3;
+inline constexpr auto exp_Float16x3_backend_index = 1454u;
 
 /// exp with Float16x4
 extern Variable exp_Float16x4_arg;
 extern Function exp_Float16x4;
+inline constexpr auto exp_Float16x4_backend_index = 1455u;
 
 /// exp2 with Float32
 extern Variable exp2_Float32_arg;
 extern Function exp2_Float32;
+inline constexpr auto exp2_Float32_backend_index = 1456u;
 
 /// exp2 with Float32x2
 extern Variable exp2_Float32x2_arg;
 extern Function exp2_Float32x2;
+inline constexpr auto exp2_Float32x2_backend_index = 1457u;
 
 /// exp2 with Float32x3
 extern Variable exp2_Float32x3_arg;
 extern Function exp2_Float32x3;
+inline constexpr auto exp2_Float32x3_backend_index = 1458u;
 
 /// exp2 with Float32x4
 extern Variable exp2_Float32x4_arg;
 extern Function exp2_Float32x4;
+inline constexpr auto exp2_Float32x4_backend_index = 1459u;
 
 /// exp2 with Float16
 extern Variable exp2_Float16_arg;
 extern Function exp2_Float16;
+inline constexpr auto exp2_Float16_backend_index = 1460u;
 
 /// exp2 with Float16x2
 extern Variable exp2_Float16x2_arg;
 extern Function exp2_Float16x2;
+inline constexpr auto exp2_Float16x2_backend_index = 1461u;
 
 /// exp2 with Float16x3
 extern Variable exp2_Float16x3_arg;
 extern Function exp2_Float16x3;
+inline constexpr auto exp2_Float16x3_backend_index = 1462u;
 
 /// exp2 with Float16x4
 extern Variable exp2_Float16x4_arg;
 extern Function exp2_Float16x4;
+inline constexpr auto exp2_Float16x4_backend_index = 1463u;
 
 /// invSqrt with Float32
 extern Variable invSqrt_Float32_arg;
 extern Function invSqrt_Float32;
+inline constexpr auto invSqrt_Float32_backend_index = 1464u;
 
 /// invSqrt with Float32x2
 extern Variable invSqrt_Float32x2_arg;
 extern Function invSqrt_Float32x2;
+inline constexpr auto invSqrt_Float32x2_backend_index = 1465u;
 
 /// invSqrt with Float32x3
 extern Variable invSqrt_Float32x3_arg;
 extern Function invSqrt_Float32x3;
+inline constexpr auto invSqrt_Float32x3_backend_index = 1466u;
 
 /// invSqrt with Float32x4
 extern Variable invSqrt_Float32x4_arg;
 extern Function invSqrt_Float32x4;
+inline constexpr auto invSqrt_Float32x4_backend_index = 1467u;
 
 /// invSqrt with Float16
 extern Variable invSqrt_Float16_arg;
 extern Function invSqrt_Float16;
+inline constexpr auto invSqrt_Float16_backend_index = 1468u;
 
 /// invSqrt with Float16x2
 extern Variable invSqrt_Float16x2_arg;
 extern Function invSqrt_Float16x2;
+inline constexpr auto invSqrt_Float16x2_backend_index = 1469u;
 
 /// invSqrt with Float16x3
 extern Variable invSqrt_Float16x3_arg;
 extern Function invSqrt_Float16x3;
+inline constexpr auto invSqrt_Float16x3_backend_index = 1470u;
 
 /// invSqrt with Float16x4
 extern Variable invSqrt_Float16x4_arg;
 extern Function invSqrt_Float16x4;
+inline constexpr auto invSqrt_Float16x4_backend_index = 1471u;
 
 /// log with Float32
 extern Variable log_Float32_arg;
 extern Function log_Float32;
+inline constexpr auto log_Float32_backend_index = 1472u;
 
 /// log with Float32x2
 extern Variable log_Float32x2_arg;
 extern Function log_Float32x2;
+inline constexpr auto log_Float32x2_backend_index = 1473u;
 
 /// log with Float32x3
 extern Variable log_Float32x3_arg;
 extern Function log_Float32x3;
+inline constexpr auto log_Float32x3_backend_index = 1474u;
 
 /// log with Float32x4
 extern Variable log_Float32x4_arg;
 extern Function log_Float32x4;
+inline constexpr auto log_Float32x4_backend_index = 1475u;
 
 /// log with Float16
 extern Variable log_Float16_arg;
 extern Function log_Float16;
+inline constexpr auto log_Float16_backend_index = 1476u;
 
 /// log with Float16x2
 extern Variable log_Float16x2_arg;
 extern Function log_Float16x2;
+inline constexpr auto log_Float16x2_backend_index = 1477u;
 
 /// log with Float16x3
 extern Variable log_Float16x3_arg;
 extern Function log_Float16x3;
+inline constexpr auto log_Float16x3_backend_index = 1478u;
 
 /// log with Float16x4
 extern Variable log_Float16x4_arg;
 extern Function log_Float16x4;
+inline constexpr auto log_Float16x4_backend_index = 1479u;
 
 /// log2 with Float32
 extern Variable log2_Float32_arg;
 extern Function log2_Float32;
+inline constexpr auto log2_Float32_backend_index = 1480u;
 
 /// log2 with Float32x2
 extern Variable log2_Float32x2_arg;
 extern Function log2_Float32x2;
+inline constexpr auto log2_Float32x2_backend_index = 1481u;
 
 /// log2 with Float32x3
 extern Variable log2_Float32x3_arg;
 extern Function log2_Float32x3;
+inline constexpr auto log2_Float32x3_backend_index = 1482u;
 
 /// log2 with Float32x4
 extern Variable log2_Float32x4_arg;
 extern Function log2_Float32x4;
+inline constexpr auto log2_Float32x4_backend_index = 1483u;
 
 /// log2 with Float16
 extern Variable log2_Float16_arg;
 extern Function log2_Float16;
+inline constexpr auto log2_Float16_backend_index = 1484u;
 
 /// log2 with Float16x2
 extern Variable log2_Float16x2_arg;
 extern Function log2_Float16x2;
+inline constexpr auto log2_Float16x2_backend_index = 1485u;
 
 /// log2 with Float16x3
 extern Variable log2_Float16x3_arg;
 extern Function log2_Float16x3;
+inline constexpr auto log2_Float16x3_backend_index = 1486u;
 
 /// log2 with Float16x4
 extern Variable log2_Float16x4_arg;
 extern Function log2_Float16x4;
+inline constexpr auto log2_Float16x4_backend_index = 1487u;
 
 /// sin with Float32
 extern Variable sin_Float32_arg;
 extern Function sin_Float32;
+inline constexpr auto sin_Float32_backend_index = 1488u;
 
 /// sin with Float32x2
 extern Variable sin_Float32x2_arg;
 extern Function sin_Float32x2;
+inline constexpr auto sin_Float32x2_backend_index = 1489u;
 
 /// sin with Float32x3
 extern Variable sin_Float32x3_arg;
 extern Function sin_Float32x3;
+inline constexpr auto sin_Float32x3_backend_index = 1490u;
 
 /// sin with Float32x4
 extern Variable sin_Float32x4_arg;
 extern Function sin_Float32x4;
+inline constexpr auto sin_Float32x4_backend_index = 1491u;
 
 /// sin with Float16
 extern Variable sin_Float16_arg;
 extern Function sin_Float16;
+inline constexpr auto sin_Float16_backend_index = 1492u;
 
 /// sin with Float16x2
 extern Variable sin_Float16x2_arg;
 extern Function sin_Float16x2;
+inline constexpr auto sin_Float16x2_backend_index = 1493u;
 
 /// sin with Float16x3
 extern Variable sin_Float16x3_arg;
 extern Function sin_Float16x3;
+inline constexpr auto sin_Float16x3_backend_index = 1494u;
 
 /// sin with Float16x4
 extern Variable sin_Float16x4_arg;
 extern Function sin_Float16x4;
+inline constexpr auto sin_Float16x4_backend_index = 1495u;
 
 /// sinh with Float32
 extern Variable sinh_Float32_arg;
 extern Function sinh_Float32;
+inline constexpr auto sinh_Float32_backend_index = 1496u;
 
 /// sinh with Float32x2
 extern Variable sinh_Float32x2_arg;
 extern Function sinh_Float32x2;
+inline constexpr auto sinh_Float32x2_backend_index = 1497u;
 
 /// sinh with Float32x3
 extern Variable sinh_Float32x3_arg;
 extern Function sinh_Float32x3;
+inline constexpr auto sinh_Float32x3_backend_index = 1498u;
 
 /// sinh with Float32x4
 extern Variable sinh_Float32x4_arg;
 extern Function sinh_Float32x4;
+inline constexpr auto sinh_Float32x4_backend_index = 1499u;
 
 /// sinh with Float16
 extern Variable sinh_Float16_arg;
 extern Function sinh_Float16;
+inline constexpr auto sinh_Float16_backend_index = 1500u;
 
 /// sinh with Float16x2
 extern Variable sinh_Float16x2_arg;
 extern Function sinh_Float16x2;
+inline constexpr auto sinh_Float16x2_backend_index = 1501u;
 
 /// sinh with Float16x3
 extern Variable sinh_Float16x3_arg;
 extern Function sinh_Float16x3;
+inline constexpr auto sinh_Float16x3_backend_index = 1502u;
 
 /// sinh with Float16x4
 extern Variable sinh_Float16x4_arg;
 extern Function sinh_Float16x4;
+inline constexpr auto sinh_Float16x4_backend_index = 1503u;
 
 /// sqrt with Float32
 extern Variable sqrt_Float32_arg;
 extern Function sqrt_Float32;
+inline constexpr auto sqrt_Float32_backend_index = 1504u;
 
 /// sqrt with Float32x2
 extern Variable sqrt_Float32x2_arg;
 extern Function sqrt_Float32x2;
+inline constexpr auto sqrt_Float32x2_backend_index = 1505u;
 
 /// sqrt with Float32x3
 extern Variable sqrt_Float32x3_arg;
 extern Function sqrt_Float32x3;
+inline constexpr auto sqrt_Float32x3_backend_index = 1506u;
 
 /// sqrt with Float32x4
 extern Variable sqrt_Float32x4_arg;
 extern Function sqrt_Float32x4;
+inline constexpr auto sqrt_Float32x4_backend_index = 1507u;
 
 /// sqrt with Float16
 extern Variable sqrt_Float16_arg;
 extern Function sqrt_Float16;
+inline constexpr auto sqrt_Float16_backend_index = 1508u;
 
 /// sqrt with Float16x2
 extern Variable sqrt_Float16x2_arg;
 extern Function sqrt_Float16x2;
+inline constexpr auto sqrt_Float16x2_backend_index = 1509u;
 
 /// sqrt with Float16x3
 extern Variable sqrt_Float16x3_arg;
 extern Function sqrt_Float16x3;
+inline constexpr auto sqrt_Float16x3_backend_index = 1510u;
 
 /// sqrt with Float16x4
 extern Variable sqrt_Float16x4_arg;
 extern Function sqrt_Float16x4;
+inline constexpr auto sqrt_Float16x4_backend_index = 1511u;
 
 /// tan with Float32
 extern Variable tan_Float32_arg;
 extern Function tan_Float32;
+inline constexpr auto tan_Float32_backend_index = 1512u;
 
 /// tan with Float32x2
 extern Variable tan_Float32x2_arg;
 extern Function tan_Float32x2;
+inline constexpr auto tan_Float32x2_backend_index = 1513u;
 
 /// tan with Float32x3
 extern Variable tan_Float32x3_arg;
 extern Function tan_Float32x3;
+inline constexpr auto tan_Float32x3_backend_index = 1514u;
 
 /// tan with Float32x4
 extern Variable tan_Float32x4_arg;
 extern Function tan_Float32x4;
+inline constexpr auto tan_Float32x4_backend_index = 1515u;
 
 /// tan with Float16
 extern Variable tan_Float16_arg;
 extern Function tan_Float16;
+inline constexpr auto tan_Float16_backend_index = 1516u;
 
 /// tan with Float16x2
 extern Variable tan_Float16x2_arg;
 extern Function tan_Float16x2;
+inline constexpr auto tan_Float16x2_backend_index = 1517u;
 
 /// tan with Float16x3
 extern Variable tan_Float16x3_arg;
 extern Function tan_Float16x3;
+inline constexpr auto tan_Float16x3_backend_index = 1518u;
 
 /// tan with Float16x4
 extern Variable tan_Float16x4_arg;
 extern Function tan_Float16x4;
+inline constexpr auto tan_Float16x4_backend_index = 1519u;
 
 /// tanh with Float32
 extern Variable tanh_Float32_arg;
 extern Function tanh_Float32;
+inline constexpr auto tanh_Float32_backend_index = 1520u;
 
 /// tanh with Float32x2
 extern Variable tanh_Float32x2_arg;
 extern Function tanh_Float32x2;
+inline constexpr auto tanh_Float32x2_backend_index = 1521u;
 
 /// tanh with Float32x3
 extern Variable tanh_Float32x3_arg;
 extern Function tanh_Float32x3;
+inline constexpr auto tanh_Float32x3_backend_index = 1522u;
 
 /// tanh with Float32x4
 extern Variable tanh_Float32x4_arg;
 extern Function tanh_Float32x4;
+inline constexpr auto tanh_Float32x4_backend_index = 1523u;
 
 /// tanh with Float16
 extern Variable tanh_Float16_arg;
 extern Function tanh_Float16;
+inline constexpr auto tanh_Float16_backend_index = 1524u;
 
 /// tanh with Float16x2
 extern Variable tanh_Float16x2_arg;
 extern Function tanh_Float16x2;
+inline constexpr auto tanh_Float16x2_backend_index = 1525u;
 
 /// tanh with Float16x3
 extern Variable tanh_Float16x3_arg;
 extern Function tanh_Float16x3;
+inline constexpr auto tanh_Float16x3_backend_index = 1526u;
 
 /// tanh with Float16x4
 extern Variable tanh_Float16x4_arg;
 extern Function tanh_Float16x4;
+inline constexpr auto tanh_Float16x4_backend_index = 1527u;
 
 /// tanh with Float32, Float32
 extern Variable atan2_Float32_y;
 extern Variable atan2_Float32_x;
 extern Function atan2_Float32;
+inline constexpr auto atan2_Float32_backend_index = 1528u;
 
 /// tanh with Float32x2, Float32x2
 extern Variable atan2_Float32x2_y;
 extern Variable atan2_Float32x2_x;
 extern Function atan2_Float32x2;
+inline constexpr auto atan2_Float32x2_backend_index = 1529u;
 
 /// tanh with Float32x3, Float32x3
 extern Variable atan2_Float32x3_y;
 extern Variable atan2_Float32x3_x;
 extern Function atan2_Float32x3;
+inline constexpr auto atan2_Float32x3_backend_index = 1530u;
 
 /// tanh with Float32x4, Float32x4
 extern Variable atan2_Float32x4_y;
 extern Variable atan2_Float32x4_x;
 extern Function atan2_Float32x4;
+inline constexpr auto atan2_Float32x4_backend_index = 1531u;
 
 /// tanh with Float16, Float16
 extern Variable atan2_Float16_y;
 extern Variable atan2_Float16_x;
 extern Function atan2_Float16;
+inline constexpr auto atan2_Float16_backend_index = 1532u;
 
 /// tanh with Float16x2, Float16x2
 extern Variable atan2_Float16x2_y;
 extern Variable atan2_Float16x2_x;
 extern Function atan2_Float16x2;
+inline constexpr auto atan2_Float16x2_backend_index = 1533u;
 
 /// tanh with Float16x3, Float16x3
 extern Variable atan2_Float16x3_y;
 extern Variable atan2_Float16x3_x;
 extern Function atan2_Float16x3;
+inline constexpr auto atan2_Float16x3_backend_index = 1534u;
 
 /// tanh with Float16x4, Float16x4
 extern Variable atan2_Float16x4_y;
 extern Variable atan2_Float16x4_x;
 extern Function atan2_Float16x4;
+inline constexpr auto atan2_Float16x4_backend_index = 1535u;
 
 /// pow with Float32, Float32
 extern Variable pow_Float32_arg;
 extern Variable pow_Float32_exp;
 extern Function pow_Float32;
+inline constexpr auto pow_Float32_backend_index = 1536u;
 
 /// pow with Float32x2, Float32x2
 extern Variable pow_Float32x2_arg;
 extern Variable pow_Float32x2_exp;
 extern Function pow_Float32x2;
+inline constexpr auto pow_Float32x2_backend_index = 1537u;
 
 /// pow with Float32x3, Float32x3
 extern Variable pow_Float32x3_arg;
 extern Variable pow_Float32x3_exp;
 extern Function pow_Float32x3;
+inline constexpr auto pow_Float32x3_backend_index = 1538u;
 
 /// pow with Float32x4, Float32x4
 extern Variable pow_Float32x4_arg;
 extern Variable pow_Float32x4_exp;
 extern Function pow_Float32x4;
+inline constexpr auto pow_Float32x4_backend_index = 1539u;
 
 /// pow with Float16, Float16
 extern Variable pow_Float16_arg;
 extern Variable pow_Float16_exp;
 extern Function pow_Float16;
+inline constexpr auto pow_Float16_backend_index = 1540u;
 
 /// pow with Float16x2, Float16x2
 extern Variable pow_Float16x2_arg;
 extern Variable pow_Float16x2_exp;
 extern Function pow_Float16x2;
+inline constexpr auto pow_Float16x2_backend_index = 1541u;
 
 /// pow with Float16x3, Float16x3
 extern Variable pow_Float16x3_arg;
 extern Variable pow_Float16x3_exp;
 extern Function pow_Float16x3;
+inline constexpr auto pow_Float16x3_backend_index = 1542u;
 
 /// pow with Float16x4, Float16x4
 extern Variable pow_Float16x4_arg;
 extern Variable pow_Float16x4_exp;
 extern Function pow_Float16x4;
+inline constexpr auto pow_Float16x4_backend_index = 1543u;
 
 /// mad with Float32, Float32, Float32
 extern Variable mad_Float32_arg;
 extern Variable mad_Float32_mul;
 extern Variable mad_Float32_add;
 extern Function mad_Float32;
+inline constexpr auto mad_Float32_backend_index = 1544u;
 
 /// mad with Float32x2, Float32x2, Float32x2
 extern Variable mad_Float32x2_arg;
 extern Variable mad_Float32x2_mul;
 extern Variable mad_Float32x2_add;
 extern Function mad_Float32x2;
+inline constexpr auto mad_Float32x2_backend_index = 1545u;
 
 /// mad with Float32x3, Float32x3, Float32x3
 extern Variable mad_Float32x3_arg;
 extern Variable mad_Float32x3_mul;
 extern Variable mad_Float32x3_add;
 extern Function mad_Float32x3;
+inline constexpr auto mad_Float32x3_backend_index = 1546u;
 
 /// mad with Float32x4, Float32x4, Float32x4
 extern Variable mad_Float32x4_arg;
 extern Variable mad_Float32x4_mul;
 extern Variable mad_Float32x4_add;
 extern Function mad_Float32x4;
+inline constexpr auto mad_Float32x4_backend_index = 1547u;
 
 /// mad with Float16, Float16, Float16
 extern Variable mad_Float16_arg;
 extern Variable mad_Float16_mul;
 extern Variable mad_Float16_add;
 extern Function mad_Float16;
+inline constexpr auto mad_Float16_backend_index = 1548u;
 
 /// mad with Float16x2, Float16x2, Float16x2
 extern Variable mad_Float16x2_arg;
 extern Variable mad_Float16x2_mul;
 extern Variable mad_Float16x2_add;
 extern Function mad_Float16x2;
+inline constexpr auto mad_Float16x2_backend_index = 1549u;
 
 /// mad with Float16x3, Float16x3, Float16x3
 extern Variable mad_Float16x3_arg;
 extern Variable mad_Float16x3_mul;
 extern Variable mad_Float16x3_add;
 extern Function mad_Float16x3;
+inline constexpr auto mad_Float16x3_backend_index = 1550u;
 
 /// mad with Float16x4, Float16x4, Float16x4
 extern Variable mad_Float16x4_arg;
 extern Variable mad_Float16x4_mul;
 extern Variable mad_Float16x4_add;
 extern Function mad_Float16x4;
+inline constexpr auto mad_Float16x4_backend_index = 1551u;
 
 /// mad with Int32, Int32, Int32
 extern Variable mad_Int32_arg;
 extern Variable mad_Int32_mul;
 extern Variable mad_Int32_add;
 extern Function mad_Int32;
+inline constexpr auto mad_Int32_backend_index = 1552u;
 
 /// mad with Int32x2, Int32x2, Int32x2
 extern Variable mad_Int32x2_arg;
 extern Variable mad_Int32x2_mul;
 extern Variable mad_Int32x2_add;
 extern Function mad_Int32x2;
+inline constexpr auto mad_Int32x2_backend_index = 1553u;
 
 /// mad with Int32x3, Int32x3, Int32x3
 extern Variable mad_Int32x3_arg;
 extern Variable mad_Int32x3_mul;
 extern Variable mad_Int32x3_add;
 extern Function mad_Int32x3;
+inline constexpr auto mad_Int32x3_backend_index = 1554u;
 
 /// mad with Int32x4, Int32x4, Int32x4
 extern Variable mad_Int32x4_arg;
 extern Variable mad_Int32x4_mul;
 extern Variable mad_Int32x4_add;
 extern Function mad_Int32x4;
+inline constexpr auto mad_Int32x4_backend_index = 1555u;
 
 /// mad with Int16, Int16, Int16
 extern Variable mad_Int16_arg;
 extern Variable mad_Int16_mul;
 extern Variable mad_Int16_add;
 extern Function mad_Int16;
+inline constexpr auto mad_Int16_backend_index = 1556u;
 
 /// mad with Int16x2, Int16x2, Int16x2
 extern Variable mad_Int16x2_arg;
 extern Variable mad_Int16x2_mul;
 extern Variable mad_Int16x2_add;
 extern Function mad_Int16x2;
+inline constexpr auto mad_Int16x2_backend_index = 1557u;
 
 /// mad with Int16x3, Int16x3, Int16x3
 extern Variable mad_Int16x3_arg;
 extern Variable mad_Int16x3_mul;
 extern Variable mad_Int16x3_add;
 extern Function mad_Int16x3;
+inline constexpr auto mad_Int16x3_backend_index = 1558u;
 
 /// mad with Int16x4, Int16x4, Int16x4
 extern Variable mad_Int16x4_arg;
 extern Variable mad_Int16x4_mul;
 extern Variable mad_Int16x4_add;
 extern Function mad_Int16x4;
+inline constexpr auto mad_Int16x4_backend_index = 1559u;
 
 /// mad with UInt32, UInt32, UInt32
 extern Variable mad_UInt32_arg;
 extern Variable mad_UInt32_mul;
 extern Variable mad_UInt32_add;
 extern Function mad_UInt32;
+inline constexpr auto mad_UInt32_backend_index = 1560u;
 
 /// mad with UInt32x2, UInt32x2, UInt32x2
 extern Variable mad_UInt32x2_arg;
 extern Variable mad_UInt32x2_mul;
 extern Variable mad_UInt32x2_add;
 extern Function mad_UInt32x2;
+inline constexpr auto mad_UInt32x2_backend_index = 1561u;
 
 /// mad with UInt32x3, UInt32x3, UInt32x3
 extern Variable mad_UInt32x3_arg;
 extern Variable mad_UInt32x3_mul;
 extern Variable mad_UInt32x3_add;
 extern Function mad_UInt32x3;
+inline constexpr auto mad_UInt32x3_backend_index = 1562u;
 
 /// mad with UInt32x4, UInt32x4, UInt32x4
 extern Variable mad_UInt32x4_arg;
 extern Variable mad_UInt32x4_mul;
 extern Variable mad_UInt32x4_add;
 extern Function mad_UInt32x4;
+inline constexpr auto mad_UInt32x4_backend_index = 1563u;
 
 /// mad with UInt16, UInt16, UInt16
 extern Variable mad_UInt16_arg;
 extern Variable mad_UInt16_mul;
 extern Variable mad_UInt16_add;
 extern Function mad_UInt16;
+inline constexpr auto mad_UInt16_backend_index = 1564u;
 
 /// mad with UInt16x2, UInt16x2, UInt16x2
 extern Variable mad_UInt16x2_arg;
 extern Variable mad_UInt16x2_mul;
 extern Variable mad_UInt16x2_add;
 extern Function mad_UInt16x2;
+inline constexpr auto mad_UInt16x2_backend_index = 1565u;
 
 /// mad with UInt16x3, UInt16x3, UInt16x3
 extern Variable mad_UInt16x3_arg;
 extern Variable mad_UInt16x3_mul;
 extern Variable mad_UInt16x3_add;
 extern Function mad_UInt16x3;
+inline constexpr auto mad_UInt16x3_backend_index = 1566u;
 
 /// mad with UInt16x4, UInt16x4, UInt16x4
 extern Variable mad_UInt16x4_arg;
 extern Variable mad_UInt16x4_mul;
 extern Variable mad_UInt16x4_add;
 extern Function mad_UInt16x4;
+inline constexpr auto mad_UInt16x4_backend_index = 1567u;
 
 /// dot with Float32x2, Float32x2
 extern Variable dot_Float32x2_x;
 extern Variable dot_Float32x2_y;
 extern Function dot_Float32x2;
+inline constexpr auto dot_Float32x2_backend_index = 1568u;
 
 /// dot with Float32x3, Float32x3
 extern Variable dot_Float32x3_x;
 extern Variable dot_Float32x3_y;
 extern Function dot_Float32x3;
+inline constexpr auto dot_Float32x3_backend_index = 1569u;
 
 /// dot with Float32x4, Float32x4
 extern Variable dot_Float32x4_x;
 extern Variable dot_Float32x4_y;
 extern Function dot_Float32x4;
+inline constexpr auto dot_Float32x4_backend_index = 1570u;
 
 /// dot with Float16x2, Float16x2
 extern Variable dot_Float16x2_x;
 extern Variable dot_Float16x2_y;
 extern Function dot_Float16x2;
+inline constexpr auto dot_Float16x2_backend_index = 1571u;
 
 /// dot with Float16x3, Float16x3
 extern Variable dot_Float16x3_x;
 extern Variable dot_Float16x3_y;
 extern Function dot_Float16x3;
+inline constexpr auto dot_Float16x3_backend_index = 1572u;
 
 /// dot with Float16x4, Float16x4
 extern Variable dot_Float16x4_x;
 extern Variable dot_Float16x4_y;
 extern Function dot_Float16x4;
+inline constexpr auto dot_Float16x4_backend_index = 1573u;
 
 /// reflect with Float32x2, Float32x2
 extern Variable reflect_Float32x2_incident;
 extern Variable reflect_Float32x2_normal;
 extern Function reflect_Float32x2;
+inline constexpr auto reflect_Float32x2_backend_index = 1574u;
 
 /// reflect with Float32x3, Float32x3
 extern Variable reflect_Float32x3_incident;
 extern Variable reflect_Float32x3_normal;
 extern Function reflect_Float32x3;
+inline constexpr auto reflect_Float32x3_backend_index = 1575u;
 
 /// reflect with Float32x4, Float32x4
 extern Variable reflect_Float32x4_incident;
 extern Variable reflect_Float32x4_normal;
 extern Function reflect_Float32x4;
+inline constexpr auto reflect_Float32x4_backend_index = 1576u;
 
 /// reflect with Float16x2, Float16x2
 extern Variable reflect_Float16x2_incident;
 extern Variable reflect_Float16x2_normal;
 extern Function reflect_Float16x2;
+inline constexpr auto reflect_Float16x2_backend_index = 1577u;
 
 /// reflect with Float16x3, Float16x3
 extern Variable reflect_Float16x3_incident;
 extern Variable reflect_Float16x3_normal;
 extern Function reflect_Float16x3;
+inline constexpr auto reflect_Float16x3_backend_index = 1578u;
 
 /// reflect with Float16x4, Float16x4
 extern Variable reflect_Float16x4_incident;
 extern Variable reflect_Float16x4_normal;
 extern Function reflect_Float16x4;
+inline constexpr auto reflect_Float16x4_backend_index = 1579u;
 
 /// refract with Float32x2, Float32x2, Float32x2
 extern Variable refract_Float32x2_incident;
 extern Variable refract_Float32x2_normal;
 extern Variable refract_Float32x2_ior;
 extern Function refract_Float32x2;
+inline constexpr auto refract_Float32x2_backend_index = 1580u;
 
 /// refract with Float32x3, Float32x3, Float32x3
 extern Variable refract_Float32x3_incident;
 extern Variable refract_Float32x3_normal;
 extern Variable refract_Float32x3_ior;
 extern Function refract_Float32x3;
+inline constexpr auto refract_Float32x3_backend_index = 1581u;
 
 /// refract with Float32x4, Float32x4, Float32x4
 extern Variable refract_Float32x4_incident;
 extern Variable refract_Float32x4_normal;
 extern Variable refract_Float32x4_ior;
 extern Function refract_Float32x4;
+inline constexpr auto refract_Float32x4_backend_index = 1582u;
 
 /// refract with Float16x2, Float16x2, Float16x2
 extern Variable refract_Float16x2_incident;
 extern Variable refract_Float16x2_normal;
 extern Variable refract_Float16x2_ior;
 extern Function refract_Float16x2;
+inline constexpr auto refract_Float16x2_backend_index = 1583u;
 
 /// refract with Float16x3, Float16x3, Float16x3
 extern Variable refract_Float16x3_incident;
 extern Variable refract_Float16x3_normal;
 extern Variable refract_Float16x3_ior;
 extern Function refract_Float16x3;
+inline constexpr auto refract_Float16x3_backend_index = 1584u;
 
 /// refract with Float16x4, Float16x4, Float16x4
 extern Variable refract_Float16x4_incident;
 extern Variable refract_Float16x4_normal;
 extern Variable refract_Float16x4_ior;
 extern Function refract_Float16x4;
+inline constexpr auto refract_Float16x4_backend_index = 1585u;
 
 /// cross with Float32x3, Float32x3
 extern Variable cross_Float32x3_v0;
 extern Variable cross_Float32x3_v1;
 extern Function cross_Float32x3;
+inline constexpr auto cross_Float32x3_backend_index = 1586u;
 
 /// cross with Float16x3, Float16x3
 extern Variable cross_Float16x3_v0;
 extern Variable cross_Float16x3_v1;
 extern Function cross_Float16x3;
+inline constexpr auto cross_Float16x3_backend_index = 1587u;
 
 /// length with Float32x2
 extern Variable length_Float32x2_arg;
 extern Function length_Float32x2;
+inline constexpr auto length_Float32x2_backend_index = 1588u;
 
 /// length with Float32x3
 extern Variable length_Float32x3_arg;
 extern Function length_Float32x3;
+inline constexpr auto length_Float32x3_backend_index = 1589u;
 
 /// length with Float32x4
 extern Variable length_Float32x4_arg;
 extern Function length_Float32x4;
+inline constexpr auto length_Float32x4_backend_index = 1590u;
 
 /// length with Float16x2
 extern Variable length_Float16x2_arg;
 extern Function length_Float16x2;
+inline constexpr auto length_Float16x2_backend_index = 1591u;
 
 /// length with Float16x3
 extern Variable length_Float16x3_arg;
 extern Function length_Float16x3;
+inline constexpr auto length_Float16x3_backend_index = 1592u;
 
 /// length with Float16x4
 extern Variable length_Float16x4_arg;
 extern Function length_Float16x4;
+inline constexpr auto length_Float16x4_backend_index = 1593u;
 
 /// normalize with Float32x2
 extern Variable normalize_Float32x2_arg;
 extern Function normalize_Float32x2;
+inline constexpr auto normalize_Float32x2_backend_index = 1594u;
 
 /// normalize with Float32x3
 extern Variable normalize_Float32x3_arg;
 extern Function normalize_Float32x3;
+inline constexpr auto normalize_Float32x3_backend_index = 1595u;
 
 /// normalize with Float32x4
 extern Variable normalize_Float32x4_arg;
 extern Function normalize_Float32x4;
+inline constexpr auto normalize_Float32x4_backend_index = 1596u;
 
 /// normalize with Float16x2
 extern Variable normalize_Float16x2_arg;
 extern Function normalize_Float16x2;
+inline constexpr auto normalize_Float16x2_backend_index = 1597u;
 
 /// normalize with Float16x3
 extern Variable normalize_Float16x3_arg;
 extern Function normalize_Float16x3;
+inline constexpr auto normalize_Float16x3_backend_index = 1598u;
 
 /// normalize with Float16x4
 extern Variable normalize_Float16x4_arg;
 extern Function normalize_Float16x4;
+inline constexpr auto normalize_Float16x4_backend_index = 1599u;
 
 /// distance with Float32x2, Float32x2
 extern Variable distance_Float32x2_p0;
 extern Variable distance_Float32x2_p1;
 extern Function distance_Float32x2;
+inline constexpr auto distance_Float32x2_backend_index = 1600u;
 
 /// distance with Float32x3, Float32x3
 extern Variable distance_Float32x3_p0;
 extern Variable distance_Float32x3_p1;
 extern Function distance_Float32x3;
+inline constexpr auto distance_Float32x3_backend_index = 1601u;
 
 /// distance with Float32x4, Float32x4
 extern Variable distance_Float32x4_p0;
 extern Variable distance_Float32x4_p1;
 extern Function distance_Float32x4;
+inline constexpr auto distance_Float32x4_backend_index = 1602u;
 
 /// distance with Float16x2, Float16x2
 extern Variable distance_Float16x2_p0;
 extern Variable distance_Float16x2_p1;
 extern Function distance_Float16x2;
+inline constexpr auto distance_Float16x2_backend_index = 1603u;
 
 /// distance with Float16x3, Float16x3
 extern Variable distance_Float16x3_p0;
 extern Variable distance_Float16x3_p1;
 extern Function distance_Float16x3;
+inline constexpr auto distance_Float16x3_backend_index = 1604u;
 
 /// distance with Float16x4, Float16x4
 extern Variable distance_Float16x4_p0;
 extern Variable distance_Float16x4_p1;
 extern Function distance_Float16x4;
+inline constexpr auto distance_Float16x4_backend_index = 1605u;
 
 /// min with Float32, Float32
 extern Variable min_Float32_x;
 extern Variable min_Float32_y;
 extern Function min_Float32;
+inline constexpr auto min_Float32_backend_index = 1606u;
 
 /// min with Float32x2, Float32x2
 extern Variable min_Float32x2_x;
 extern Variable min_Float32x2_y;
 extern Function min_Float32x2;
+inline constexpr auto min_Float32x2_backend_index = 1607u;
 
 /// min with Float32x3, Float32x3
 extern Variable min_Float32x3_x;
 extern Variable min_Float32x3_y;
 extern Function min_Float32x3;
+inline constexpr auto min_Float32x3_backend_index = 1608u;
 
 /// min with Float32x4, Float32x4
 extern Variable min_Float32x4_x;
 extern Variable min_Float32x4_y;
 extern Function min_Float32x4;
+inline constexpr auto min_Float32x4_backend_index = 1609u;
 
 /// min with Float16, Float16
 extern Variable min_Float16_x;
 extern Variable min_Float16_y;
 extern Function min_Float16;
+inline constexpr auto min_Float16_backend_index = 1610u;
 
 /// min with Float16x2, Float16x2
 extern Variable min_Float16x2_x;
 extern Variable min_Float16x2_y;
 extern Function min_Float16x2;
+inline constexpr auto min_Float16x2_backend_index = 1611u;
 
 /// min with Float16x3, Float16x3
 extern Variable min_Float16x3_x;
 extern Variable min_Float16x3_y;
 extern Function min_Float16x3;
+inline constexpr auto min_Float16x3_backend_index = 1612u;
 
 /// min with Float16x4, Float16x4
 extern Variable min_Float16x4_x;
 extern Variable min_Float16x4_y;
 extern Function min_Float16x4;
+inline constexpr auto min_Float16x4_backend_index = 1613u;
 
 /// min with Int32, Int32
 extern Variable min_Int32_x;
 extern Variable min_Int32_y;
 extern Function min_Int32;
+inline constexpr auto min_Int32_backend_index = 1614u;
 
 /// min with Int32x2, Int32x2
 extern Variable min_Int32x2_x;
 extern Variable min_Int32x2_y;
 extern Function min_Int32x2;
+inline constexpr auto min_Int32x2_backend_index = 1615u;
 
 /// min with Int32x3, Int32x3
 extern Variable min_Int32x3_x;
 extern Variable min_Int32x3_y;
 extern Function min_Int32x3;
+inline constexpr auto min_Int32x3_backend_index = 1616u;
 
 /// min with Int32x4, Int32x4
 extern Variable min_Int32x4_x;
 extern Variable min_Int32x4_y;
 extern Function min_Int32x4;
+inline constexpr auto min_Int32x4_backend_index = 1617u;
 
 /// min with Int16, Int16
 extern Variable min_Int16_x;
 extern Variable min_Int16_y;
 extern Function min_Int16;
+inline constexpr auto min_Int16_backend_index = 1618u;
 
 /// min with Int16x2, Int16x2
 extern Variable min_Int16x2_x;
 extern Variable min_Int16x2_y;
 extern Function min_Int16x2;
+inline constexpr auto min_Int16x2_backend_index = 1619u;
 
 /// min with Int16x3, Int16x3
 extern Variable min_Int16x3_x;
 extern Variable min_Int16x3_y;
 extern Function min_Int16x3;
+inline constexpr auto min_Int16x3_backend_index = 1620u;
 
 /// min with Int16x4, Int16x4
 extern Variable min_Int16x4_x;
 extern Variable min_Int16x4_y;
 extern Function min_Int16x4;
+inline constexpr auto min_Int16x4_backend_index = 1621u;
 
 /// min with UInt32, UInt32
 extern Variable min_UInt32_x;
 extern Variable min_UInt32_y;
 extern Function min_UInt32;
+inline constexpr auto min_UInt32_backend_index = 1622u;
 
 /// min with UInt32x2, UInt32x2
 extern Variable min_UInt32x2_x;
 extern Variable min_UInt32x2_y;
 extern Function min_UInt32x2;
+inline constexpr auto min_UInt32x2_backend_index = 1623u;
 
 /// min with UInt32x3, UInt32x3
 extern Variable min_UInt32x3_x;
 extern Variable min_UInt32x3_y;
 extern Function min_UInt32x3;
+inline constexpr auto min_UInt32x3_backend_index = 1624u;
 
 /// min with UInt32x4, UInt32x4
 extern Variable min_UInt32x4_x;
 extern Variable min_UInt32x4_y;
 extern Function min_UInt32x4;
+inline constexpr auto min_UInt32x4_backend_index = 1625u;
 
 /// min with UInt16, UInt16
 extern Variable min_UInt16_x;
 extern Variable min_UInt16_y;
 extern Function min_UInt16;
+inline constexpr auto min_UInt16_backend_index = 1626u;
 
 /// min with UInt16x2, UInt16x2
 extern Variable min_UInt16x2_x;
 extern Variable min_UInt16x2_y;
 extern Function min_UInt16x2;
+inline constexpr auto min_UInt16x2_backend_index = 1627u;
 
 /// min with UInt16x3, UInt16x3
 extern Variable min_UInt16x3_x;
 extern Variable min_UInt16x3_y;
 extern Function min_UInt16x3;
+inline constexpr auto min_UInt16x3_backend_index = 1628u;
 
 /// min with UInt16x4, UInt16x4
 extern Variable min_UInt16x4_x;
 extern Variable min_UInt16x4_y;
 extern Function min_UInt16x4;
+inline constexpr auto min_UInt16x4_backend_index = 1629u;
 
 /// max with Float32, Float32
 extern Variable max_Float32_x;
 extern Variable max_Float32_y;
 extern Function max_Float32;
+inline constexpr auto max_Float32_backend_index = 1630u;
 
 /// max with Float32x2, Float32x2
 extern Variable max_Float32x2_x;
 extern Variable max_Float32x2_y;
 extern Function max_Float32x2;
+inline constexpr auto max_Float32x2_backend_index = 1631u;
 
 /// max with Float32x3, Float32x3
 extern Variable max_Float32x3_x;
 extern Variable max_Float32x3_y;
 extern Function max_Float32x3;
+inline constexpr auto max_Float32x3_backend_index = 1632u;
 
 /// max with Float32x4, Float32x4
 extern Variable max_Float32x4_x;
 extern Variable max_Float32x4_y;
 extern Function max_Float32x4;
+inline constexpr auto max_Float32x4_backend_index = 1633u;
 
 /// max with Float16, Float16
 extern Variable max_Float16_x;
 extern Variable max_Float16_y;
 extern Function max_Float16;
+inline constexpr auto max_Float16_backend_index = 1634u;
 
 /// max with Float16x2, Float16x2
 extern Variable max_Float16x2_x;
 extern Variable max_Float16x2_y;
 extern Function max_Float16x2;
+inline constexpr auto max_Float16x2_backend_index = 1635u;
 
 /// max with Float16x3, Float16x3
 extern Variable max_Float16x3_x;
 extern Variable max_Float16x3_y;
 extern Function max_Float16x3;
+inline constexpr auto max_Float16x3_backend_index = 1636u;
 
 /// max with Float16x4, Float16x4
 extern Variable max_Float16x4_x;
 extern Variable max_Float16x4_y;
 extern Function max_Float16x4;
+inline constexpr auto max_Float16x4_backend_index = 1637u;
 
 /// max with Int32, Int32
 extern Variable max_Int32_x;
 extern Variable max_Int32_y;
 extern Function max_Int32;
+inline constexpr auto max_Int32_backend_index = 1638u;
 
 /// max with Int32x2, Int32x2
 extern Variable max_Int32x2_x;
 extern Variable max_Int32x2_y;
 extern Function max_Int32x2;
+inline constexpr auto max_Int32x2_backend_index = 1639u;
 
 /// max with Int32x3, Int32x3
 extern Variable max_Int32x3_x;
 extern Variable max_Int32x3_y;
 extern Function max_Int32x3;
+inline constexpr auto max_Int32x3_backend_index = 1640u;
 
 /// max with Int32x4, Int32x4
 extern Variable max_Int32x4_x;
 extern Variable max_Int32x4_y;
 extern Function max_Int32x4;
+inline constexpr auto max_Int32x4_backend_index = 1641u;
 
 /// max with Int16, Int16
 extern Variable max_Int16_x;
 extern Variable max_Int16_y;
 extern Function max_Int16;
+inline constexpr auto max_Int16_backend_index = 1642u;
 
 /// max with Int16x2, Int16x2
 extern Variable max_Int16x2_x;
 extern Variable max_Int16x2_y;
 extern Function max_Int16x2;
+inline constexpr auto max_Int16x2_backend_index = 1643u;
 
 /// max with Int16x3, Int16x3
 extern Variable max_Int16x3_x;
 extern Variable max_Int16x3_y;
 extern Function max_Int16x3;
+inline constexpr auto max_Int16x3_backend_index = 1644u;
 
 /// max with Int16x4, Int16x4
 extern Variable max_Int16x4_x;
 extern Variable max_Int16x4_y;
 extern Function max_Int16x4;
+inline constexpr auto max_Int16x4_backend_index = 1645u;
 
 /// max with UInt32, UInt32
 extern Variable max_UInt32_x;
 extern Variable max_UInt32_y;
 extern Function max_UInt32;
+inline constexpr auto max_UInt32_backend_index = 1646u;
 
 /// max with UInt32x2, UInt32x2
 extern Variable max_UInt32x2_x;
 extern Variable max_UInt32x2_y;
 extern Function max_UInt32x2;
+inline constexpr auto max_UInt32x2_backend_index = 1647u;
 
 /// max with UInt32x3, UInt32x3
 extern Variable max_UInt32x3_x;
 extern Variable max_UInt32x3_y;
 extern Function max_UInt32x3;
+inline constexpr auto max_UInt32x3_backend_index = 1648u;
 
 /// max with UInt32x4, UInt32x4
 extern Variable max_UInt32x4_x;
 extern Variable max_UInt32x4_y;
 extern Function max_UInt32x4;
+inline constexpr auto max_UInt32x4_backend_index = 1649u;
 
 /// max with UInt16, UInt16
 extern Variable max_UInt16_x;
 extern Variable max_UInt16_y;
 extern Function max_UInt16;
+inline constexpr auto max_UInt16_backend_index = 1650u;
 
 /// max with UInt16x2, UInt16x2
 extern Variable max_UInt16x2_x;
 extern Variable max_UInt16x2_y;
 extern Function max_UInt16x2;
+inline constexpr auto max_UInt16x2_backend_index = 1651u;
 
 /// max with UInt16x3, UInt16x3
 extern Variable max_UInt16x3_x;
 extern Variable max_UInt16x3_y;
 extern Function max_UInt16x3;
+inline constexpr auto max_UInt16x3_backend_index = 1652u;
 
 /// max with UInt16x4, UInt16x4
 extern Variable max_UInt16x4_x;
 extern Variable max_UInt16x4_y;
 extern Function max_UInt16x4;
+inline constexpr auto max_UInt16x4_backend_index = 1653u;
 
 /// clamp with Float32, Float32, Float32
 extern Variable clamp_Float32_val;
 extern Variable clamp_Float32_min;
 extern Variable clamp_Float32_max;
 extern Function clamp_Float32;
+inline constexpr auto clamp_Float32_backend_index = 1654u;
 
 /// clamp with Float32x2, Float32x2, Float32x2
 extern Variable clamp_Float32x2_val;
 extern Variable clamp_Float32x2_min;
 extern Variable clamp_Float32x2_max;
 extern Function clamp_Float32x2;
+inline constexpr auto clamp_Float32x2_backend_index = 1655u;
 
 /// clamp with Float32x3, Float32x3, Float32x3
 extern Variable clamp_Float32x3_val;
 extern Variable clamp_Float32x3_min;
 extern Variable clamp_Float32x3_max;
 extern Function clamp_Float32x3;
+inline constexpr auto clamp_Float32x3_backend_index = 1656u;
 
 /// clamp with Float32x4, Float32x4, Float32x4
 extern Variable clamp_Float32x4_val;
 extern Variable clamp_Float32x4_min;
 extern Variable clamp_Float32x4_max;
 extern Function clamp_Float32x4;
+inline constexpr auto clamp_Float32x4_backend_index = 1657u;
 
 /// clamp with Float16, Float16, Float16
 extern Variable clamp_Float16_val;
 extern Variable clamp_Float16_min;
 extern Variable clamp_Float16_max;
 extern Function clamp_Float16;
+inline constexpr auto clamp_Float16_backend_index = 1658u;
 
 /// clamp with Float16x2, Float16x2, Float16x2
 extern Variable clamp_Float16x2_val;
 extern Variable clamp_Float16x2_min;
 extern Variable clamp_Float16x2_max;
 extern Function clamp_Float16x2;
+inline constexpr auto clamp_Float16x2_backend_index = 1659u;
 
 /// clamp with Float16x3, Float16x3, Float16x3
 extern Variable clamp_Float16x3_val;
 extern Variable clamp_Float16x3_min;
 extern Variable clamp_Float16x3_max;
 extern Function clamp_Float16x3;
+inline constexpr auto clamp_Float16x3_backend_index = 1660u;
 
 /// clamp with Float16x4, Float16x4, Float16x4
 extern Variable clamp_Float16x4_val;
 extern Variable clamp_Float16x4_min;
 extern Variable clamp_Float16x4_max;
 extern Function clamp_Float16x4;
+inline constexpr auto clamp_Float16x4_backend_index = 1661u;
 
 /// clamp with Int32, Int32, Int32
 extern Variable clamp_Int32_val;
 extern Variable clamp_Int32_min;
 extern Variable clamp_Int32_max;
 extern Function clamp_Int32;
+inline constexpr auto clamp_Int32_backend_index = 1662u;
 
 /// clamp with Int32x2, Int32x2, Int32x2
 extern Variable clamp_Int32x2_val;
 extern Variable clamp_Int32x2_min;
 extern Variable clamp_Int32x2_max;
 extern Function clamp_Int32x2;
+inline constexpr auto clamp_Int32x2_backend_index = 1663u;
 
 /// clamp with Int32x3, Int32x3, Int32x3
 extern Variable clamp_Int32x3_val;
 extern Variable clamp_Int32x3_min;
 extern Variable clamp_Int32x3_max;
 extern Function clamp_Int32x3;
+inline constexpr auto clamp_Int32x3_backend_index = 1664u;
 
 /// clamp with Int32x4, Int32x4, Int32x4
 extern Variable clamp_Int32x4_val;
 extern Variable clamp_Int32x4_min;
 extern Variable clamp_Int32x4_max;
 extern Function clamp_Int32x4;
+inline constexpr auto clamp_Int32x4_backend_index = 1665u;
 
 /// clamp with Int16, Int16, Int16
 extern Variable clamp_Int16_val;
 extern Variable clamp_Int16_min;
 extern Variable clamp_Int16_max;
 extern Function clamp_Int16;
+inline constexpr auto clamp_Int16_backend_index = 1666u;
 
 /// clamp with Int16x2, Int16x2, Int16x2
 extern Variable clamp_Int16x2_val;
 extern Variable clamp_Int16x2_min;
 extern Variable clamp_Int16x2_max;
 extern Function clamp_Int16x2;
+inline constexpr auto clamp_Int16x2_backend_index = 1667u;
 
 /// clamp with Int16x3, Int16x3, Int16x3
 extern Variable clamp_Int16x3_val;
 extern Variable clamp_Int16x3_min;
 extern Variable clamp_Int16x3_max;
 extern Function clamp_Int16x3;
+inline constexpr auto clamp_Int16x3_backend_index = 1668u;
 
 /// clamp with Int16x4, Int16x4, Int16x4
 extern Variable clamp_Int16x4_val;
 extern Variable clamp_Int16x4_min;
 extern Variable clamp_Int16x4_max;
 extern Function clamp_Int16x4;
+inline constexpr auto clamp_Int16x4_backend_index = 1669u;
 
 /// clamp with UInt32, UInt32, UInt32
 extern Variable clamp_UInt32_val;
 extern Variable clamp_UInt32_min;
 extern Variable clamp_UInt32_max;
 extern Function clamp_UInt32;
+inline constexpr auto clamp_UInt32_backend_index = 1670u;
 
 /// clamp with UInt32x2, UInt32x2, UInt32x2
 extern Variable clamp_UInt32x2_val;
 extern Variable clamp_UInt32x2_min;
 extern Variable clamp_UInt32x2_max;
 extern Function clamp_UInt32x2;
+inline constexpr auto clamp_UInt32x2_backend_index = 1671u;
 
 /// clamp with UInt32x3, UInt32x3, UInt32x3
 extern Variable clamp_UInt32x3_val;
 extern Variable clamp_UInt32x3_min;
 extern Variable clamp_UInt32x3_max;
 extern Function clamp_UInt32x3;
+inline constexpr auto clamp_UInt32x3_backend_index = 1672u;
 
 /// clamp with UInt32x4, UInt32x4, UInt32x4
 extern Variable clamp_UInt32x4_val;
 extern Variable clamp_UInt32x4_min;
 extern Variable clamp_UInt32x4_max;
 extern Function clamp_UInt32x4;
+inline constexpr auto clamp_UInt32x4_backend_index = 1673u;
 
 /// clamp with UInt16, UInt16, UInt16
 extern Variable clamp_UInt16_val;
 extern Variable clamp_UInt16_min;
 extern Variable clamp_UInt16_max;
 extern Function clamp_UInt16;
+inline constexpr auto clamp_UInt16_backend_index = 1674u;
 
 /// clamp with UInt16x2, UInt16x2, UInt16x2
 extern Variable clamp_UInt16x2_val;
 extern Variable clamp_UInt16x2_min;
 extern Variable clamp_UInt16x2_max;
 extern Function clamp_UInt16x2;
+inline constexpr auto clamp_UInt16x2_backend_index = 1675u;
 
 /// clamp with UInt16x3, UInt16x3, UInt16x3
 extern Variable clamp_UInt16x3_val;
 extern Variable clamp_UInt16x3_min;
 extern Variable clamp_UInt16x3_max;
 extern Function clamp_UInt16x3;
+inline constexpr auto clamp_UInt16x3_backend_index = 1676u;
 
 /// clamp with UInt16x4, UInt16x4, UInt16x4
 extern Variable clamp_UInt16x4_val;
 extern Variable clamp_UInt16x4_min;
 extern Variable clamp_UInt16x4_max;
 extern Function clamp_UInt16x4;
+inline constexpr auto clamp_UInt16x4_backend_index = 1677u;
 
 /// lerp with Float32x2, Float32x2, Float32x2
 extern Variable lerp_Float32x2_a;
 extern Variable lerp_Float32x2_b;
 extern Variable lerp_Float32x2_t;
 extern Function lerp_Float32x2;
+inline constexpr auto lerp_Float32x2_backend_index = 1678u;
 
 /// lerp with Float32x3, Float32x3, Float32x3
 extern Variable lerp_Float32x3_a;
 extern Variable lerp_Float32x3_b;
 extern Variable lerp_Float32x3_t;
 extern Function lerp_Float32x3;
+inline constexpr auto lerp_Float32x3_backend_index = 1679u;
 
 /// lerp with Float32x4, Float32x4, Float32x4
 extern Variable lerp_Float32x4_a;
 extern Variable lerp_Float32x4_b;
 extern Variable lerp_Float32x4_t;
 extern Function lerp_Float32x4;
+inline constexpr auto lerp_Float32x4_backend_index = 1680u;
 
 /// lerp with Float16x2, Float16x2, Float16x2
 extern Variable lerp_Float16x2_a;
 extern Variable lerp_Float16x2_b;
 extern Variable lerp_Float16x2_t;
 extern Function lerp_Float16x2;
+inline constexpr auto lerp_Float16x2_backend_index = 1681u;
 
 /// lerp with Float16x3, Float16x3, Float16x3
 extern Variable lerp_Float16x3_a;
 extern Variable lerp_Float16x3_b;
 extern Variable lerp_Float16x3_t;
 extern Function lerp_Float16x3;
+inline constexpr auto lerp_Float16x3_backend_index = 1682u;
 
 /// lerp with Float16x4, Float16x4, Float16x4
 extern Variable lerp_Float16x4_a;
 extern Variable lerp_Float16x4_b;
 extern Variable lerp_Float16x4_t;
 extern Function lerp_Float16x4;
+inline constexpr auto lerp_Float16x4_backend_index = 1683u;
 
 /// step with Float32, Float32
 extern Variable step_Float32_edge;
 extern Variable step_Float32_x;
 extern Function step_Float32;
+inline constexpr auto step_Float32_backend_index = 1684u;
 
 /// step with Float32x2, Float32x2
 extern Variable step_Float32x2_edge;
 extern Variable step_Float32x2_x;
 extern Function step_Float32x2;
+inline constexpr auto step_Float32x2_backend_index = 1685u;
 
 /// step with Float32x3, Float32x3
 extern Variable step_Float32x3_edge;
 extern Variable step_Float32x3_x;
 extern Function step_Float32x3;
+inline constexpr auto step_Float32x3_backend_index = 1686u;
 
 /// step with Float32x4, Float32x4
 extern Variable step_Float32x4_edge;
 extern Variable step_Float32x4_x;
 extern Function step_Float32x4;
+inline constexpr auto step_Float32x4_backend_index = 1687u;
 
 /// step with Float16, Float16
 extern Variable step_Float16_edge;
 extern Variable step_Float16_x;
 extern Function step_Float16;
+inline constexpr auto step_Float16_backend_index = 1688u;
 
 /// step with Float16x2, Float16x2
 extern Variable step_Float16x2_edge;
 extern Variable step_Float16x2_x;
 extern Function step_Float16x2;
+inline constexpr auto step_Float16x2_backend_index = 1689u;
 
 /// step with Float16x3, Float16x3
 extern Variable step_Float16x3_edge;
 extern Variable step_Float16x3_x;
 extern Function step_Float16x3;
+inline constexpr auto step_Float16x3_backend_index = 1690u;
 
 /// step with Float16x4, Float16x4
 extern Variable step_Float16x4_edge;
 extern Variable step_Float16x4_x;
 extern Function step_Float16x4;
+inline constexpr auto step_Float16x4_backend_index = 1691u;
 
 /// smoothstep with Float32, Float32, Float32
 extern Variable smoothstep_Float32_edge0;
 extern Variable smoothstep_Float32_edge1;
 extern Variable smoothstep_Float32_x;
 extern Function smoothstep_Float32;
+inline constexpr auto smoothstep_Float32_backend_index = 1692u;
 
 /// smoothstep with Float32x2, Float32x2, Float32x2
 extern Variable smoothstep_Float32x2_edge0;
 extern Variable smoothstep_Float32x2_edge1;
 extern Variable smoothstep_Float32x2_x;
 extern Function smoothstep_Float32x2;
+inline constexpr auto smoothstep_Float32x2_backend_index = 1693u;
 
 /// smoothstep with Float32x3, Float32x3, Float32x3
 extern Variable smoothstep_Float32x3_edge0;
 extern Variable smoothstep_Float32x3_edge1;
 extern Variable smoothstep_Float32x3_x;
 extern Function smoothstep_Float32x3;
+inline constexpr auto smoothstep_Float32x3_backend_index = 1694u;
 
 /// smoothstep with Float32x4, Float32x4, Float32x4
 extern Variable smoothstep_Float32x4_edge0;
 extern Variable smoothstep_Float32x4_edge1;
 extern Variable smoothstep_Float32x4_x;
 extern Function smoothstep_Float32x4;
+inline constexpr auto smoothstep_Float32x4_backend_index = 1695u;
 
 /// smoothstep with Float16, Float16, Float16
 extern Variable smoothstep_Float16_edge0;
 extern Variable smoothstep_Float16_edge1;
 extern Variable smoothstep_Float16_x;
 extern Function smoothstep_Float16;
+inline constexpr auto smoothstep_Float16_backend_index = 1696u;
 
 /// smoothstep with Float16x2, Float16x2, Float16x2
 extern Variable smoothstep_Float16x2_edge0;
 extern Variable smoothstep_Float16x2_edge1;
 extern Variable smoothstep_Float16x2_x;
 extern Function smoothstep_Float16x2;
+inline constexpr auto smoothstep_Float16x2_backend_index = 1697u;
 
 /// smoothstep with Float16x3, Float16x3, Float16x3
 extern Variable smoothstep_Float16x3_edge0;
 extern Variable smoothstep_Float16x3_edge1;
 extern Variable smoothstep_Float16x3_x;
 extern Function smoothstep_Float16x3;
+inline constexpr auto smoothstep_Float16x3_backend_index = 1698u;
 
 /// smoothstep with Float16x4, Float16x4, Float16x4
 extern Variable smoothstep_Float16x4_edge0;
 extern Variable smoothstep_Float16x4_edge1;
 extern Variable smoothstep_Float16x4_x;
 extern Function smoothstep_Float16x4;
+inline constexpr auto smoothstep_Float16x4_backend_index = 1699u;
 
 /// ceil with Float32
 extern Variable ceil_Float32_arg;
 extern Function ceil_Float32;
+inline constexpr auto ceil_Float32_backend_index = 1700u;
 
 /// ceil with Float32x2
 extern Variable ceil_Float32x2_arg;
 extern Function ceil_Float32x2;
+inline constexpr auto ceil_Float32x2_backend_index = 1701u;
 
 /// ceil with Float32x3
 extern Variable ceil_Float32x3_arg;
 extern Function ceil_Float32x3;
+inline constexpr auto ceil_Float32x3_backend_index = 1702u;
 
 /// ceil with Float32x4
 extern Variable ceil_Float32x4_arg;
 extern Function ceil_Float32x4;
+inline constexpr auto ceil_Float32x4_backend_index = 1703u;
 
 /// ceil with Float16
 extern Variable ceil_Float16_arg;
 extern Function ceil_Float16;
+inline constexpr auto ceil_Float16_backend_index = 1704u;
 
 /// ceil with Float16x2
 extern Variable ceil_Float16x2_arg;
 extern Function ceil_Float16x2;
+inline constexpr auto ceil_Float16x2_backend_index = 1705u;
 
 /// ceil with Float16x3
 extern Variable ceil_Float16x3_arg;
 extern Function ceil_Float16x3;
+inline constexpr auto ceil_Float16x3_backend_index = 1706u;
 
 /// ceil with Float16x4
 extern Variable ceil_Float16x4_arg;
 extern Function ceil_Float16x4;
+inline constexpr auto ceil_Float16x4_backend_index = 1707u;
 
 /// floor with Float32
 extern Variable floor_Float32_arg;
 extern Function floor_Float32;
+inline constexpr auto floor_Float32_backend_index = 1708u;
 
 /// floor with Float32x2
 extern Variable floor_Float32x2_arg;
 extern Function floor_Float32x2;
+inline constexpr auto floor_Float32x2_backend_index = 1709u;
 
 /// floor with Float32x3
 extern Variable floor_Float32x3_arg;
 extern Function floor_Float32x3;
+inline constexpr auto floor_Float32x3_backend_index = 1710u;
 
 /// floor with Float32x4
 extern Variable floor_Float32x4_arg;
 extern Function floor_Float32x4;
+inline constexpr auto floor_Float32x4_backend_index = 1711u;
 
 /// floor with Float16
 extern Variable floor_Float16_arg;
 extern Function floor_Float16;
+inline constexpr auto floor_Float16_backend_index = 1712u;
 
 /// floor with Float16x2
 extern Variable floor_Float16x2_arg;
 extern Function floor_Float16x2;
+inline constexpr auto floor_Float16x2_backend_index = 1713u;
 
 /// floor with Float16x3
 extern Variable floor_Float16x3_arg;
 extern Function floor_Float16x3;
+inline constexpr auto floor_Float16x3_backend_index = 1714u;
 
 /// floor with Float16x4
 extern Variable floor_Float16x4_arg;
 extern Function floor_Float16x4;
+inline constexpr auto floor_Float16x4_backend_index = 1715u;
 
 /// fract with Float32
 extern Variable fract_Float32_arg;
 extern Function fract_Float32;
+inline constexpr auto fract_Float32_backend_index = 1716u;
 
 /// fract with Float32x2
 extern Variable fract_Float32x2_arg;
 extern Function fract_Float32x2;
+inline constexpr auto fract_Float32x2_backend_index = 1717u;
 
 /// fract with Float32x3
 extern Variable fract_Float32x3_arg;
 extern Function fract_Float32x3;
+inline constexpr auto fract_Float32x3_backend_index = 1718u;
 
 /// fract with Float32x4
 extern Variable fract_Float32x4_arg;
 extern Function fract_Float32x4;
+inline constexpr auto fract_Float32x4_backend_index = 1719u;
 
 /// fract with Float16
 extern Variable fract_Float16_arg;
 extern Function fract_Float16;
+inline constexpr auto fract_Float16_backend_index = 1720u;
 
 /// fract with Float16x2
 extern Variable fract_Float16x2_arg;
 extern Function fract_Float16x2;
+inline constexpr auto fract_Float16x2_backend_index = 1721u;
 
 /// fract with Float16x3
 extern Variable fract_Float16x3_arg;
 extern Function fract_Float16x3;
+inline constexpr auto fract_Float16x3_backend_index = 1722u;
 
 /// fract with Float16x4
 extern Variable fract_Float16x4_arg;
 extern Function fract_Float16x4;
+inline constexpr auto fract_Float16x4_backend_index = 1723u;
 
 /// saturate with Float32
 extern Variable saturate_Float32_arg;
 extern Function saturate_Float32;
+inline constexpr auto saturate_Float32_backend_index = 1724u;
 
 /// saturate with Float32x2
 extern Variable saturate_Float32x2_arg;
 extern Function saturate_Float32x2;
+inline constexpr auto saturate_Float32x2_backend_index = 1725u;
 
 /// saturate with Float32x3
 extern Variable saturate_Float32x3_arg;
 extern Function saturate_Float32x3;
+inline constexpr auto saturate_Float32x3_backend_index = 1726u;
 
 /// saturate with Float32x4
 extern Variable saturate_Float32x4_arg;
 extern Function saturate_Float32x4;
+inline constexpr auto saturate_Float32x4_backend_index = 1727u;
 
 /// saturate with Float16
 extern Variable saturate_Float16_arg;
 extern Function saturate_Float16;
+inline constexpr auto saturate_Float16_backend_index = 1728u;
 
 /// saturate with Float16x2
 extern Variable saturate_Float16x2_arg;
 extern Function saturate_Float16x2;
+inline constexpr auto saturate_Float16x2_backend_index = 1729u;
 
 /// saturate with Float16x3
 extern Variable saturate_Float16x3_arg;
 extern Function saturate_Float16x3;
+inline constexpr auto saturate_Float16x3_backend_index = 1730u;
 
 /// saturate with Float16x4
 extern Variable saturate_Float16x4_arg;
 extern Function saturate_Float16x4;
+inline constexpr auto saturate_Float16x4_backend_index = 1731u;
 
 /// trunc with Float32
 extern Variable trunc_Float32_arg;
 extern Function trunc_Float32;
+inline constexpr auto trunc_Float32_backend_index = 1732u;
 
 /// trunc with Float32x2
 extern Variable trunc_Float32x2_arg;
 extern Function trunc_Float32x2;
+inline constexpr auto trunc_Float32x2_backend_index = 1733u;
 
 /// trunc with Float32x3
 extern Variable trunc_Float32x3_arg;
 extern Function trunc_Float32x3;
+inline constexpr auto trunc_Float32x3_backend_index = 1734u;
 
 /// trunc with Float32x4
 extern Variable trunc_Float32x4_arg;
 extern Function trunc_Float32x4;
+inline constexpr auto trunc_Float32x4_backend_index = 1735u;
 
 /// trunc with Float16
 extern Variable trunc_Float16_arg;
 extern Function trunc_Float16;
+inline constexpr auto trunc_Float16_backend_index = 1736u;
 
 /// trunc with Float16x2
 extern Variable trunc_Float16x2_arg;
 extern Function trunc_Float16x2;
+inline constexpr auto trunc_Float16x2_backend_index = 1737u;
 
 /// trunc with Float16x3
 extern Variable trunc_Float16x3_arg;
 extern Function trunc_Float16x3;
+inline constexpr auto trunc_Float16x3_backend_index = 1738u;
 
 /// trunc with Float16x4
 extern Variable trunc_Float16x4_arg;
 extern Function trunc_Float16x4;
+inline constexpr auto trunc_Float16x4_backend_index = 1739u;
 
 /// ddx with Float32
 extern Variable ddx_Float32_arg;
 extern Function ddx_Float32;
+inline constexpr auto ddx_Float32_backend_index = 1740u;
 
 /// ddx with Float32x2
 extern Variable ddx_Float32x2_arg;
 extern Function ddx_Float32x2;
+inline constexpr auto ddx_Float32x2_backend_index = 1741u;
 
 /// ddx with Float32x3
 extern Variable ddx_Float32x3_arg;
 extern Function ddx_Float32x3;
+inline constexpr auto ddx_Float32x3_backend_index = 1742u;
 
 /// ddx with Float32x4
 extern Variable ddx_Float32x4_arg;
 extern Function ddx_Float32x4;
+inline constexpr auto ddx_Float32x4_backend_index = 1743u;
 
 /// ddx with Float16
 extern Variable ddx_Float16_arg;
 extern Function ddx_Float16;
+inline constexpr auto ddx_Float16_backend_index = 1744u;
 
 /// ddx with Float16x2
 extern Variable ddx_Float16x2_arg;
 extern Function ddx_Float16x2;
+inline constexpr auto ddx_Float16x2_backend_index = 1745u;
 
 /// ddx with Float16x3
 extern Variable ddx_Float16x3_arg;
 extern Function ddx_Float16x3;
+inline constexpr auto ddx_Float16x3_backend_index = 1746u;
 
 /// ddx with Float16x4
 extern Variable ddx_Float16x4_arg;
 extern Function ddx_Float16x4;
+inline constexpr auto ddx_Float16x4_backend_index = 1747u;
 
 /// ddy with Float32
 extern Variable ddy_Float32_arg;
 extern Function ddy_Float32;
+inline constexpr auto ddy_Float32_backend_index = 1748u;
 
 /// ddy with Float32x2
 extern Variable ddy_Float32x2_arg;
 extern Function ddy_Float32x2;
+inline constexpr auto ddy_Float32x2_backend_index = 1749u;
 
 /// ddy with Float32x3
 extern Variable ddy_Float32x3_arg;
 extern Function ddy_Float32x3;
+inline constexpr auto ddy_Float32x3_backend_index = 1750u;
 
 /// ddy with Float32x4
 extern Variable ddy_Float32x4_arg;
 extern Function ddy_Float32x4;
+inline constexpr auto ddy_Float32x4_backend_index = 1751u;
 
 /// ddy with Float16
 extern Variable ddy_Float16_arg;
 extern Function ddy_Float16;
+inline constexpr auto ddy_Float16_backend_index = 1752u;
 
 /// ddy with Float16x2
 extern Variable ddy_Float16x2_arg;
 extern Function ddy_Float16x2;
+inline constexpr auto ddy_Float16x2_backend_index = 1753u;
 
 /// ddy with Float16x3
 extern Variable ddy_Float16x3_arg;
 extern Function ddy_Float16x3;
+inline constexpr auto ddy_Float16x3_backend_index = 1754u;
 
 /// ddy with Float16x4
 extern Variable ddy_Float16x4_arg;
 extern Function ddy_Float16x4;
+inline constexpr auto ddy_Float16x4_backend_index = 1755u;
 
 /// fwidth with Float32
 extern Variable fwidth_Float32_arg;
 extern Function fwidth_Float32;
+inline constexpr auto fwidth_Float32_backend_index = 1756u;
 
 /// fwidth with Float32x2
 extern Variable fwidth_Float32x2_arg;
 extern Function fwidth_Float32x2;
+inline constexpr auto fwidth_Float32x2_backend_index = 1757u;
 
 /// fwidth with Float32x3
 extern Variable fwidth_Float32x3_arg;
 extern Function fwidth_Float32x3;
+inline constexpr auto fwidth_Float32x3_backend_index = 1758u;
 
 /// fwidth with Float32x4
 extern Variable fwidth_Float32x4_arg;
 extern Function fwidth_Float32x4;
+inline constexpr auto fwidth_Float32x4_backend_index = 1759u;
 
 /// fwidth with Float16
 extern Variable fwidth_Float16_arg;
 extern Function fwidth_Float16;
+inline constexpr auto fwidth_Float16_backend_index = 1760u;
 
 /// fwidth with Float16x2
 extern Variable fwidth_Float16x2_arg;
 extern Function fwidth_Float16x2;
+inline constexpr auto fwidth_Float16x2_backend_index = 1761u;
 
 /// fwidth with Float16x3
 extern Variable fwidth_Float16x3_arg;
 extern Function fwidth_Float16x3;
+inline constexpr auto fwidth_Float16x3_backend_index = 1762u;
 
 /// fwidth with Float16x4
 extern Variable fwidth_Float16x4_arg;
 extern Function fwidth_Float16x4;
+inline constexpr auto fwidth_Float16x4_backend_index = 1763u;
 
 /// sign with Int32
 extern Variable sign_Int32_arg;
 extern Function sign_Int32;
+inline constexpr auto sign_Int32_backend_index = 1764u;
 
 /// sign with Int32x2
 extern Variable sign_Int32x2_arg;
 extern Function sign_Int32x2;
+inline constexpr auto sign_Int32x2_backend_index = 1765u;
 
 /// sign with Int32x3
 extern Variable sign_Int32x3_arg;
 extern Function sign_Int32x3;
+inline constexpr auto sign_Int32x3_backend_index = 1766u;
 
 /// sign with Int32x4
 extern Variable sign_Int32x4_arg;
 extern Function sign_Int32x4;
+inline constexpr auto sign_Int32x4_backend_index = 1767u;
 
 /// sign with Int16
 extern Variable sign_Int16_arg;
 extern Function sign_Int16;
+inline constexpr auto sign_Int16_backend_index = 1768u;
 
 /// sign with Int16x2
 extern Variable sign_Int16x2_arg;
 extern Function sign_Int16x2;
+inline constexpr auto sign_Int16x2_backend_index = 1769u;
 
 /// sign with Int16x3
 extern Variable sign_Int16x3_arg;
 extern Function sign_Int16x3;
+inline constexpr auto sign_Int16x3_backend_index = 1770u;
 
 /// sign with Int16x4
 extern Variable sign_Int16x4_arg;
 extern Function sign_Int16x4;
+inline constexpr auto sign_Int16x4_backend_index = 1771u;
 
 /// sign with Float32
 extern Variable sign_Float32_arg;
 extern Function sign_Float32;
+inline constexpr auto sign_Float32_backend_index = 1772u;
 
 /// sign with Float32x2
 extern Variable sign_Float32x2_arg;
 extern Function sign_Float32x2;
+inline constexpr auto sign_Float32x2_backend_index = 1773u;
 
 /// sign with Float32x3
 extern Variable sign_Float32x3_arg;
 extern Function sign_Float32x3;
+inline constexpr auto sign_Float32x3_backend_index = 1774u;
 
 /// sign with Float32x4
 extern Variable sign_Float32x4_arg;
 extern Function sign_Float32x4;
+inline constexpr auto sign_Float32x4_backend_index = 1775u;
 
 /// sign with Float16
 extern Variable sign_Float16_arg;
 extern Function sign_Float16;
+inline constexpr auto sign_Float16_backend_index = 1776u;
 
 /// sign with Float16x2
 extern Variable sign_Float16x2_arg;
 extern Function sign_Float16x2;
+inline constexpr auto sign_Float16x2_backend_index = 1777u;
 
 /// sign with Float16x3
 extern Variable sign_Float16x3_arg;
 extern Function sign_Float16x3;
+inline constexpr auto sign_Float16x3_backend_index = 1778u;
 
 /// sign with Float16x4
 extern Variable sign_Float16x4_arg;
 extern Function sign_Float16x4;
+inline constexpr auto sign_Float16x4_backend_index = 1779u;
 
 /// abs with Int32
 extern Variable abs_Int32_arg;
 extern Function abs_Int32;
+inline constexpr auto abs_Int32_backend_index = 1780u;
 
 /// abs with Int32x2
 extern Variable abs_Int32x2_arg;
 extern Function abs_Int32x2;
+inline constexpr auto abs_Int32x2_backend_index = 1781u;
 
 /// abs with Int32x3
 extern Variable abs_Int32x3_arg;
 extern Function abs_Int32x3;
+inline constexpr auto abs_Int32x3_backend_index = 1782u;
 
 /// abs with Int32x4
 extern Variable abs_Int32x4_arg;
 extern Function abs_Int32x4;
+inline constexpr auto abs_Int32x4_backend_index = 1783u;
 
 /// abs with Int16
 extern Variable abs_Int16_arg;
 extern Function abs_Int16;
+inline constexpr auto abs_Int16_backend_index = 1784u;
 
 /// abs with Int16x2
 extern Variable abs_Int16x2_arg;
 extern Function abs_Int16x2;
+inline constexpr auto abs_Int16x2_backend_index = 1785u;
 
 /// abs with Int16x3
 extern Variable abs_Int16x3_arg;
 extern Function abs_Int16x3;
+inline constexpr auto abs_Int16x3_backend_index = 1786u;
 
 /// abs with Int16x4
 extern Variable abs_Int16x4_arg;
 extern Function abs_Int16x4;
+inline constexpr auto abs_Int16x4_backend_index = 1787u;
 
 /// abs with Float32
 extern Variable abs_Float32_arg;
 extern Function abs_Float32;
+inline constexpr auto abs_Float32_backend_index = 1788u;
 
 /// abs with Float32x2
 extern Variable abs_Float32x2_arg;
 extern Function abs_Float32x2;
+inline constexpr auto abs_Float32x2_backend_index = 1789u;
 
 /// abs with Float32x3
 extern Variable abs_Float32x3_arg;
 extern Function abs_Float32x3;
+inline constexpr auto abs_Float32x3_backend_index = 1790u;
 
 /// abs with Float32x4
 extern Variable abs_Float32x4_arg;
 extern Function abs_Float32x4;
+inline constexpr auto abs_Float32x4_backend_index = 1791u;
 
 /// abs with Float16
 extern Variable abs_Float16_arg;
 extern Function abs_Float16;
+inline constexpr auto abs_Float16_backend_index = 1792u;
 
 /// abs with Float16x2
 extern Variable abs_Float16x2_arg;
 extern Function abs_Float16x2;
+inline constexpr auto abs_Float16x2_backend_index = 1793u;
 
 /// abs with Float16x3
 extern Variable abs_Float16x3_arg;
 extern Function abs_Float16x3;
+inline constexpr auto abs_Float16x3_backend_index = 1794u;
 
 /// abs with Float16x4
 extern Variable abs_Float16x4_arg;
 extern Function abs_Float16x4;
+inline constexpr auto abs_Float16x4_backend_index = 1795u;
 
 /// castToF16 with UInt16
 extern Variable castToF16_UInt16_arg;
 extern Function castToF16_UInt16;
+inline constexpr auto castToF16_UInt16_backend_index = 1796u;
 
 /// castToF16 with Int16
 extern Variable castToF16_Int16_arg;
 extern Function castToF16_Int16;
+inline constexpr auto castToF16_Int16_backend_index = 1797u;
 
 /// castToU16 with Float16
 extern Variable castToU16_Float16_arg;
 extern Function castToU16_Float16;
+inline constexpr auto castToU16_Float16_backend_index = 1798u;
 
 /// castToU16 with Int16
 extern Variable castToU16_Int16_arg;
 extern Function castToU16_Int16;
+inline constexpr auto castToU16_Int16_backend_index = 1799u;
 
 /// castToI16 with Float16
 extern Variable castToI16_Float16_arg;
 extern Function castToI16_Float16;
+inline constexpr auto castToI16_Float16_backend_index = 1800u;
 
 /// castToI16 with UInt16
 extern Variable castToI16_UInt16_arg;
 extern Function castToI16_UInt16;
+inline constexpr auto castToI16_UInt16_backend_index = 1801u;
 
 /// castToF32 with UInt32
 extern Variable castToF32_UInt32_arg;
 extern Function castToF32_UInt32;
+inline constexpr auto castToF32_UInt32_backend_index = 1802u;
 
 /// castToF32 with Int32
 extern Variable castToF32_Int32_arg;
 extern Function castToF32_Int32;
+inline constexpr auto castToF32_Int32_backend_index = 1803u;
 
 /// castToU32 with Float32
 extern Variable castToU32_Float32_arg;
 extern Function castToU32_Float32;
+inline constexpr auto castToU32_Float32_backend_index = 1804u;
 
 /// castToU32 with Int32
 extern Variable castToU32_Int32_arg;
 extern Function castToU32_Int32;
+inline constexpr auto castToU32_Int32_backend_index = 1805u;
 
 /// castToI32 with Float32
 extern Variable castToI32_Float32_arg;
 extern Function castToI32_Float32;
+inline constexpr auto castToI32_Float32_backend_index = 1806u;
 
 /// castToI32 with UInt32
 extern Variable castToI32_UInt32_arg;
 extern Function castToI32_UInt32;
+inline constexpr auto castToI32_UInt32_backend_index = 1807u;
 
 /// any with Bool8
 extern Variable any_Bool8_arg;
 extern Function any_Bool8;
+inline constexpr auto any_Bool8_backend_index = 1808u;
 
 /// any with Bool8x2
 extern Variable any_Bool8x2_arg;
 extern Function any_Bool8x2;
+inline constexpr auto any_Bool8x2_backend_index = 1809u;
 
 /// any with Bool8x3
 extern Variable any_Bool8x3_arg;
 extern Function any_Bool8x3;
+inline constexpr auto any_Bool8x3_backend_index = 1810u;
 
 /// any with Bool8x4
 extern Variable any_Bool8x4_arg;
 extern Function any_Bool8x4;
+inline constexpr auto any_Bool8x4_backend_index = 1811u;
 
 /// all with Bool8
 extern Variable all_Bool8_arg;
 extern Function all_Bool8;
+inline constexpr auto all_Bool8_backend_index = 1812u;
 
 /// all with Bool8x2
 extern Variable all_Bool8x2_arg;
 extern Function all_Bool8x2;
+inline constexpr auto all_Bool8x2_backend_index = 1813u;
 
 /// all with Bool8x3
 extern Variable all_Bool8x3_arg;
 extern Function all_Bool8x3;
+inline constexpr auto all_Bool8x3_backend_index = 1814u;
 
 /// all with Bool8x4
 extern Variable all_Bool8x4_arg;
 extern Function all_Bool8x4;
+inline constexpr auto all_Bool8x4_backend_index = 1815u;
 
 /// transpose with Float32x2x2
 extern Variable transpose_Float32x2x2_arg;
 extern Function transpose_Float32x2x2;
+inline constexpr auto transpose_Float32x2x2_backend_index = 1816u;
 
 /// transpose with Float16x2x2
 extern Variable transpose_Float16x2x2_arg;
 extern Function transpose_Float16x2x2;
+inline constexpr auto transpose_Float16x2x2_backend_index = 1817u;
 
 /// transpose with Float32x2x3
 extern Variable transpose_Float32x2x3_arg;
 extern Function transpose_Float32x2x3;
+inline constexpr auto transpose_Float32x2x3_backend_index = 1818u;
 
 /// transpose with Float16x2x3
 extern Variable transpose_Float16x2x3_arg;
 extern Function transpose_Float16x2x3;
+inline constexpr auto transpose_Float16x2x3_backend_index = 1819u;
 
 /// transpose with Float32x2x4
 extern Variable transpose_Float32x2x4_arg;
 extern Function transpose_Float32x2x4;
+inline constexpr auto transpose_Float32x2x4_backend_index = 1820u;
 
 /// transpose with Float16x2x4
 extern Variable transpose_Float16x2x4_arg;
 extern Function transpose_Float16x2x4;
+inline constexpr auto transpose_Float16x2x4_backend_index = 1821u;
 
 /// transpose with Float32x3x2
 extern Variable transpose_Float32x3x2_arg;
 extern Function transpose_Float32x3x2;
+inline constexpr auto transpose_Float32x3x2_backend_index = 1822u;
 
 /// transpose with Float16x3x2
 extern Variable transpose_Float16x3x2_arg;
 extern Function transpose_Float16x3x2;
+inline constexpr auto transpose_Float16x3x2_backend_index = 1823u;
 
 /// transpose with Float32x3x3
 extern Variable transpose_Float32x3x3_arg;
 extern Function transpose_Float32x3x3;
+inline constexpr auto transpose_Float32x3x3_backend_index = 1824u;
 
 /// transpose with Float16x3x3
 extern Variable transpose_Float16x3x3_arg;
 extern Function transpose_Float16x3x3;
+inline constexpr auto transpose_Float16x3x3_backend_index = 1825u;
 
 /// transpose with Float32x3x4
 extern Variable transpose_Float32x3x4_arg;
 extern Function transpose_Float32x3x4;
+inline constexpr auto transpose_Float32x3x4_backend_index = 1826u;
 
 /// transpose with Float16x3x4
 extern Variable transpose_Float16x3x4_arg;
 extern Function transpose_Float16x3x4;
+inline constexpr auto transpose_Float16x3x4_backend_index = 1827u;
 
 /// transpose with Float32x4x2
 extern Variable transpose_Float32x4x2_arg;
 extern Function transpose_Float32x4x2;
+inline constexpr auto transpose_Float32x4x2_backend_index = 1828u;
 
 /// transpose with Float16x4x2
 extern Variable transpose_Float16x4x2_arg;
 extern Function transpose_Float16x4x2;
+inline constexpr auto transpose_Float16x4x2_backend_index = 1829u;
 
 /// transpose with Float32x4x3
 extern Variable transpose_Float32x4x3_arg;
 extern Function transpose_Float32x4x3;
+inline constexpr auto transpose_Float32x4x3_backend_index = 1830u;
 
 /// transpose with Float16x4x3
 extern Variable transpose_Float16x4x3_arg;
 extern Function transpose_Float16x4x3;
+inline constexpr auto transpose_Float16x4x3_backend_index = 1831u;
 
 /// transpose with Float32x4x4
 extern Variable transpose_Float32x4x4_arg;
 extern Function transpose_Float32x4x4;
+inline constexpr auto transpose_Float32x4x4_backend_index = 1832u;
 
 /// transpose with Float16x4x4
 extern Variable transpose_Float16x4x4_arg;
 extern Function transpose_Float16x4x4;
+inline constexpr auto transpose_Float16x4x4_backend_index = 1833u;
 
 /// inverse with Float32x2x2
 extern Variable inverse_Float32x2x2_arg;
 extern Function inverse_Float32x2x2;
+inline constexpr auto inverse_Float32x2x2_backend_index = 1834u;
 
 /// inverse with Float16x2x2
 extern Variable inverse_Float16x2x2_arg;
 extern Function inverse_Float16x2x2;
+inline constexpr auto inverse_Float16x2x2_backend_index = 1835u;
 
 /// inverse with Float32x2x3
 extern Variable inverse_Float32x2x3_arg;
 extern Function inverse_Float32x2x3;
+inline constexpr auto inverse_Float32x2x3_backend_index = 1836u;
 
 /// inverse with Float16x2x3
 extern Variable inverse_Float16x2x3_arg;
 extern Function inverse_Float16x2x3;
+inline constexpr auto inverse_Float16x2x3_backend_index = 1837u;
 
 /// inverse with Float32x2x4
 extern Variable inverse_Float32x2x4_arg;
 extern Function inverse_Float32x2x4;
+inline constexpr auto inverse_Float32x2x4_backend_index = 1838u;
 
 /// inverse with Float16x2x4
 extern Variable inverse_Float16x2x4_arg;
 extern Function inverse_Float16x2x4;
+inline constexpr auto inverse_Float16x2x4_backend_index = 1839u;
 
 /// inverse with Float32x3x2
 extern Variable inverse_Float32x3x2_arg;
 extern Function inverse_Float32x3x2;
+inline constexpr auto inverse_Float32x3x2_backend_index = 1840u;
 
 /// inverse with Float16x3x2
 extern Variable inverse_Float16x3x2_arg;
 extern Function inverse_Float16x3x2;
+inline constexpr auto inverse_Float16x3x2_backend_index = 1841u;
 
 /// inverse with Float32x3x3
 extern Variable inverse_Float32x3x3_arg;
 extern Function inverse_Float32x3x3;
+inline constexpr auto inverse_Float32x3x3_backend_index = 1842u;
 
 /// inverse with Float16x3x3
 extern Variable inverse_Float16x3x3_arg;
 extern Function inverse_Float16x3x3;
+inline constexpr auto inverse_Float16x3x3_backend_index = 1843u;
 
 /// inverse with Float32x3x4
 extern Variable inverse_Float32x3x4_arg;
 extern Function inverse_Float32x3x4;
+inline constexpr auto inverse_Float32x3x4_backend_index = 1844u;
 
 /// inverse with Float16x3x4
 extern Variable inverse_Float16x3x4_arg;
 extern Function inverse_Float16x3x4;
+inline constexpr auto inverse_Float16x3x4_backend_index = 1845u;
 
 /// inverse with Float32x4x2
 extern Variable inverse_Float32x4x2_arg;
 extern Function inverse_Float32x4x2;
+inline constexpr auto inverse_Float32x4x2_backend_index = 1846u;
 
 /// inverse with Float16x4x2
 extern Variable inverse_Float16x4x2_arg;
 extern Function inverse_Float16x4x2;
+inline constexpr auto inverse_Float16x4x2_backend_index = 1847u;
 
 /// inverse with Float32x4x3
 extern Variable inverse_Float32x4x3_arg;
 extern Function inverse_Float32x4x3;
+inline constexpr auto inverse_Float32x4x3_backend_index = 1848u;
 
 /// inverse with Float16x4x3
 extern Variable inverse_Float16x4x3_arg;
 extern Function inverse_Float16x4x3;
+inline constexpr auto inverse_Float16x4x3_backend_index = 1849u;
 
 /// inverse with Float32x4x4
 extern Variable inverse_Float32x4x4_arg;
 extern Function inverse_Float32x4x4;
+inline constexpr auto inverse_Float32x4x4_backend_index = 1850u;
 
 /// inverse with Float16x4x4
 extern Variable inverse_Float16x4x4_arg;
 extern Function inverse_Float16x4x4;
+inline constexpr auto inverse_Float16x4x4_backend_index = 1851u;
 
 /// vertexGetOutputLayer
 extern Function VertexGetOutputLayer;
+inline constexpr auto VertexGetOutputLayer_backend_index = 1852u;
 
 /// vertexGetOutputViewport
 extern Function VertexGetOutputViewport;
+inline constexpr auto VertexGetOutputViewport_backend_index = 1853u;
 
 /// vertexGetIndex
 extern Function VertexGetIndex;
+inline constexpr auto VertexGetIndex_backend_index = 1854u;
 
 /// vertexGetInstanceIndex
 extern Function VertexGetInstanceIndex;
+inline constexpr auto VertexGetInstanceIndex_backend_index = 1855u;
 
 /// vertexGetBaseIndex
 extern Function VertexGetBaseIndex;
+inline constexpr auto VertexGetBaseIndex_backend_index = 1856u;
 
 /// vertexGetBaseInstanceIndex
 extern Function VertexGetBaseInstanceIndex;
+inline constexpr auto VertexGetBaseInstanceIndex_backend_index = 1857u;
 
 /// vertexGetDrawIndex
 extern Function VertexGetDrawIndex;
+inline constexpr auto VertexGetDrawIndex_backend_index = 1858u;
 
 /// vertexSetOutputLayer with UInt16
 extern Variable VertexSetOutputLayer_UInt16_arg;
 extern Function VertexSetOutputLayer_UInt16;
+inline constexpr auto VertexSetOutputLayer_UInt16_backend_index = 1859u;
 
 /// vertexSetOutputLayer with UInt32
 extern Variable VertexSetOutputLayer_UInt32_arg;
 extern Function VertexSetOutputLayer_UInt32;
+inline constexpr auto VertexSetOutputLayer_UInt32_backend_index = 1860u;
 
 /// vertexSetOutputViewport with UInt16
 extern Variable VertexSetOutputViewport_UInt16_arg;
 extern Function VertexSetOutputViewport_UInt16;
+inline constexpr auto VertexSetOutputViewport_UInt16_backend_index = 1861u;
 
 /// vertexSetOutputViewport with UInt32
 extern Variable VertexSetOutputViewport_UInt32_arg;
 extern Function VertexSetOutputViewport_UInt32;
+inline constexpr auto VertexSetOutputViewport_UInt32_backend_index = 1862u;
 
 /// vertexExportCoordinates with Float32x4
 extern Variable VertexExportCoordinates_Float32x4_arg;
 extern Function VertexExportCoordinates_Float32x4;
+inline constexpr auto VertexExportCoordinates_Float32x4_backend_index = 1863u;
 
 /// vertexExportCoordinates with Float16x4
 extern Variable VertexExportCoordinates_Float16x4_arg;
 extern Function VertexExportCoordinates_Float16x4;
+inline constexpr auto VertexExportCoordinates_Float16x4_backend_index = 1864u;
 
 /// geometryExportVertex
 extern Function GeometryExportVertex;
+inline constexpr auto GeometryExportVertex_backend_index = 1865u;
 
 /// geometryExportPrimitive
 extern Function GeometryExportPrimitive;
+inline constexpr auto GeometryExportPrimitive_backend_index = 1866u;
 
 /// pixelGetCoordinates
 extern Function PixelGetCoordinates_Float32x4;
+inline constexpr auto PixelGetCoordinates_Float32x4_backend_index = 1867u;
 
 /// pixelGetCoordinates
 extern Function PixelGetCoordinates_Float16x4;
+inline constexpr auto PixelGetCoordinates_Float16x4_backend_index = 1868u;
 
 /// pixelGetDepth
 extern Function PixelGetDepth;
+inline constexpr auto PixelGetDepth_backend_index = 1869u;
 
 /// pixelSetDepth with Float32
 extern Variable PixelSetDepth_val;
 extern Function PixelSetDepth;
+inline constexpr auto PixelSetDepth_backend_index = 1870u;
 
 /// pixelExportColor with Float32, Int32
 extern Variable PixelExportColor_Float32_Int32_color;
 extern Variable PixelExportColor_Float32_Int32_index;
 extern Function PixelExportColor_Float32_Int32;
+inline constexpr auto PixelExportColor_Float32_Int32_backend_index = 1871u;
 
 /// pixelExportColor with Float32, UInt32
 extern Variable PixelExportColor_Float32_UInt32_color;
 extern Variable PixelExportColor_Float32_UInt32_index;
 extern Function PixelExportColor_Float32_UInt32;
+inline constexpr auto PixelExportColor_Float32_UInt32_backend_index = 1872u;
 
 /// pixelExportColor with Float32, Int16
 extern Variable PixelExportColor_Float32_Int16_color;
 extern Variable PixelExportColor_Float32_Int16_index;
 extern Function PixelExportColor_Float32_Int16;
+inline constexpr auto PixelExportColor_Float32_Int16_backend_index = 1873u;
 
 /// pixelExportColor with Float32, UInt16
 extern Variable PixelExportColor_Float32_UInt16_color;
 extern Variable PixelExportColor_Float32_UInt16_index;
 extern Function PixelExportColor_Float32_UInt16;
+inline constexpr auto PixelExportColor_Float32_UInt16_backend_index = 1874u;
 
 /// pixelExportColor with Float32x2, Int32
 extern Variable PixelExportColor_Float32x2_Int32_color;
 extern Variable PixelExportColor_Float32x2_Int32_index;
 extern Function PixelExportColor_Float32x2_Int32;
+inline constexpr auto PixelExportColor_Float32x2_Int32_backend_index = 1875u;
 
 /// pixelExportColor with Float32x2, UInt32
 extern Variable PixelExportColor_Float32x2_UInt32_color;
 extern Variable PixelExportColor_Float32x2_UInt32_index;
 extern Function PixelExportColor_Float32x2_UInt32;
+inline constexpr auto PixelExportColor_Float32x2_UInt32_backend_index = 1876u;
 
 /// pixelExportColor with Float32x2, Int16
 extern Variable PixelExportColor_Float32x2_Int16_color;
 extern Variable PixelExportColor_Float32x2_Int16_index;
 extern Function PixelExportColor_Float32x2_Int16;
+inline constexpr auto PixelExportColor_Float32x2_Int16_backend_index = 1877u;
 
 /// pixelExportColor with Float32x2, UInt16
 extern Variable PixelExportColor_Float32x2_UInt16_color;
 extern Variable PixelExportColor_Float32x2_UInt16_index;
 extern Function PixelExportColor_Float32x2_UInt16;
+inline constexpr auto PixelExportColor_Float32x2_UInt16_backend_index = 1878u;
 
 /// pixelExportColor with Float32x3, Int32
 extern Variable PixelExportColor_Float32x3_Int32_color;
 extern Variable PixelExportColor_Float32x3_Int32_index;
 extern Function PixelExportColor_Float32x3_Int32;
+inline constexpr auto PixelExportColor_Float32x3_Int32_backend_index = 1879u;
 
 /// pixelExportColor with Float32x3, UInt32
 extern Variable PixelExportColor_Float32x3_UInt32_color;
 extern Variable PixelExportColor_Float32x3_UInt32_index;
 extern Function PixelExportColor_Float32x3_UInt32;
+inline constexpr auto PixelExportColor_Float32x3_UInt32_backend_index = 1880u;
 
 /// pixelExportColor with Float32x3, Int16
 extern Variable PixelExportColor_Float32x3_Int16_color;
 extern Variable PixelExportColor_Float32x3_Int16_index;
 extern Function PixelExportColor_Float32x3_Int16;
+inline constexpr auto PixelExportColor_Float32x3_Int16_backend_index = 1881u;
 
 /// pixelExportColor with Float32x3, UInt16
 extern Variable PixelExportColor_Float32x3_UInt16_color;
 extern Variable PixelExportColor_Float32x3_UInt16_index;
 extern Function PixelExportColor_Float32x3_UInt16;
+inline constexpr auto PixelExportColor_Float32x3_UInt16_backend_index = 1882u;
 
 /// pixelExportColor with Float32x4, Int32
 extern Variable PixelExportColor_Float32x4_Int32_color;
 extern Variable PixelExportColor_Float32x4_Int32_index;
 extern Function PixelExportColor_Float32x4_Int32;
+inline constexpr auto PixelExportColor_Float32x4_Int32_backend_index = 1883u;
 
 /// pixelExportColor with Float32x4, UInt32
 extern Variable PixelExportColor_Float32x4_UInt32_color;
 extern Variable PixelExportColor_Float32x4_UInt32_index;
 extern Function PixelExportColor_Float32x4_UInt32;
+inline constexpr auto PixelExportColor_Float32x4_UInt32_backend_index = 1884u;
 
 /// pixelExportColor with Float32x4, Int16
 extern Variable PixelExportColor_Float32x4_Int16_color;
 extern Variable PixelExportColor_Float32x4_Int16_index;
 extern Function PixelExportColor_Float32x4_Int16;
+inline constexpr auto PixelExportColor_Float32x4_Int16_backend_index = 1885u;
 
 /// pixelExportColor with Float32x4, UInt16
 extern Variable PixelExportColor_Float32x4_UInt16_color;
 extern Variable PixelExportColor_Float32x4_UInt16_index;
 extern Function PixelExportColor_Float32x4_UInt16;
+inline constexpr auto PixelExportColor_Float32x4_UInt16_backend_index = 1886u;
 
 /// pixelExportColor with Float16, Int32
 extern Variable PixelExportColor_Float16_Int32_color;
 extern Variable PixelExportColor_Float16_Int32_index;
 extern Function PixelExportColor_Float16_Int32;
+inline constexpr auto PixelExportColor_Float16_Int32_backend_index = 1887u;
 
 /// pixelExportColor with Float16, UInt32
 extern Variable PixelExportColor_Float16_UInt32_color;
 extern Variable PixelExportColor_Float16_UInt32_index;
 extern Function PixelExportColor_Float16_UInt32;
+inline constexpr auto PixelExportColor_Float16_UInt32_backend_index = 1888u;
 
 /// pixelExportColor with Float16, Int16
 extern Variable PixelExportColor_Float16_Int16_color;
 extern Variable PixelExportColor_Float16_Int16_index;
 extern Function PixelExportColor_Float16_Int16;
+inline constexpr auto PixelExportColor_Float16_Int16_backend_index = 1889u;
 
 /// pixelExportColor with Float16, UInt16
 extern Variable PixelExportColor_Float16_UInt16_color;
 extern Variable PixelExportColor_Float16_UInt16_index;
 extern Function PixelExportColor_Float16_UInt16;
+inline constexpr auto PixelExportColor_Float16_UInt16_backend_index = 1890u;
 
 /// pixelExportColor with Float16x2, Int32
 extern Variable PixelExportColor_Float16x2_Int32_color;
 extern Variable PixelExportColor_Float16x2_Int32_index;
 extern Function PixelExportColor_Float16x2_Int32;
+inline constexpr auto PixelExportColor_Float16x2_Int32_backend_index = 1891u;
 
 /// pixelExportColor with Float16x2, UInt32
 extern Variable PixelExportColor_Float16x2_UInt32_color;
 extern Variable PixelExportColor_Float16x2_UInt32_index;
 extern Function PixelExportColor_Float16x2_UInt32;
+inline constexpr auto PixelExportColor_Float16x2_UInt32_backend_index = 1892u;
 
 /// pixelExportColor with Float16x2, Int16
 extern Variable PixelExportColor_Float16x2_Int16_color;
 extern Variable PixelExportColor_Float16x2_Int16_index;
 extern Function PixelExportColor_Float16x2_Int16;
+inline constexpr auto PixelExportColor_Float16x2_Int16_backend_index = 1893u;
 
 /// pixelExportColor with Float16x2, UInt16
 extern Variable PixelExportColor_Float16x2_UInt16_color;
 extern Variable PixelExportColor_Float16x2_UInt16_index;
 extern Function PixelExportColor_Float16x2_UInt16;
+inline constexpr auto PixelExportColor_Float16x2_UInt16_backend_index = 1894u;
 
 /// pixelExportColor with Float16x3, Int32
 extern Variable PixelExportColor_Float16x3_Int32_color;
 extern Variable PixelExportColor_Float16x3_Int32_index;
 extern Function PixelExportColor_Float16x3_Int32;
+inline constexpr auto PixelExportColor_Float16x3_Int32_backend_index = 1895u;
 
 /// pixelExportColor with Float16x3, UInt32
 extern Variable PixelExportColor_Float16x3_UInt32_color;
 extern Variable PixelExportColor_Float16x3_UInt32_index;
 extern Function PixelExportColor_Float16x3_UInt32;
+inline constexpr auto PixelExportColor_Float16x3_UInt32_backend_index = 1896u;
 
 /// pixelExportColor with Float16x3, Int16
 extern Variable PixelExportColor_Float16x3_Int16_color;
 extern Variable PixelExportColor_Float16x3_Int16_index;
 extern Function PixelExportColor_Float16x3_Int16;
+inline constexpr auto PixelExportColor_Float16x3_Int16_backend_index = 1897u;
 
 /// pixelExportColor with Float16x3, UInt16
 extern Variable PixelExportColor_Float16x3_UInt16_color;
 extern Variable PixelExportColor_Float16x3_UInt16_index;
 extern Function PixelExportColor_Float16x3_UInt16;
+inline constexpr auto PixelExportColor_Float16x3_UInt16_backend_index = 1898u;
 
 /// pixelExportColor with Float16x4, Int32
 extern Variable PixelExportColor_Float16x4_Int32_color;
 extern Variable PixelExportColor_Float16x4_Int32_index;
 extern Function PixelExportColor_Float16x4_Int32;
+inline constexpr auto PixelExportColor_Float16x4_Int32_backend_index = 1899u;
 
 /// pixelExportColor with Float16x4, UInt32
 extern Variable PixelExportColor_Float16x4_UInt32_color;
 extern Variable PixelExportColor_Float16x4_UInt32_index;
 extern Function PixelExportColor_Float16x4_UInt32;
+inline constexpr auto PixelExportColor_Float16x4_UInt32_backend_index = 1900u;
 
 /// pixelExportColor with Float16x4, Int16
 extern Variable PixelExportColor_Float16x4_Int16_color;
 extern Variable PixelExportColor_Float16x4_Int16_index;
 extern Function PixelExportColor_Float16x4_Int16;
+inline constexpr auto PixelExportColor_Float16x4_Int16_backend_index = 1901u;
 
 /// pixelExportColor with Float16x4, UInt16
 extern Variable PixelExportColor_Float16x4_UInt16_color;
 extern Variable PixelExportColor_Float16x4_UInt16_index;
 extern Function PixelExportColor_Float16x4_UInt16;
+inline constexpr auto PixelExportColor_Float16x4_UInt16_backend_index = 1902u;
 
 /// pixelExportColor with Int32, Int32
 extern Variable PixelExportColor_Int32_Int32_color;
 extern Variable PixelExportColor_Int32_Int32_index;
 extern Function PixelExportColor_Int32_Int32;
+inline constexpr auto PixelExportColor_Int32_Int32_backend_index = 1903u;
 
 /// pixelExportColor with Int32, UInt32
 extern Variable PixelExportColor_Int32_UInt32_color;
 extern Variable PixelExportColor_Int32_UInt32_index;
 extern Function PixelExportColor_Int32_UInt32;
+inline constexpr auto PixelExportColor_Int32_UInt32_backend_index = 1904u;
 
 /// pixelExportColor with Int32, Int16
 extern Variable PixelExportColor_Int32_Int16_color;
 extern Variable PixelExportColor_Int32_Int16_index;
 extern Function PixelExportColor_Int32_Int16;
+inline constexpr auto PixelExportColor_Int32_Int16_backend_index = 1905u;
 
 /// pixelExportColor with Int32, UInt16
 extern Variable PixelExportColor_Int32_UInt16_color;
 extern Variable PixelExportColor_Int32_UInt16_index;
 extern Function PixelExportColor_Int32_UInt16;
+inline constexpr auto PixelExportColor_Int32_UInt16_backend_index = 1906u;
 
 /// pixelExportColor with Int32x2, Int32
 extern Variable PixelExportColor_Int32x2_Int32_color;
 extern Variable PixelExportColor_Int32x2_Int32_index;
 extern Function PixelExportColor_Int32x2_Int32;
+inline constexpr auto PixelExportColor_Int32x2_Int32_backend_index = 1907u;
 
 /// pixelExportColor with Int32x2, UInt32
 extern Variable PixelExportColor_Int32x2_UInt32_color;
 extern Variable PixelExportColor_Int32x2_UInt32_index;
 extern Function PixelExportColor_Int32x2_UInt32;
+inline constexpr auto PixelExportColor_Int32x2_UInt32_backend_index = 1908u;
 
 /// pixelExportColor with Int32x2, Int16
 extern Variable PixelExportColor_Int32x2_Int16_color;
 extern Variable PixelExportColor_Int32x2_Int16_index;
 extern Function PixelExportColor_Int32x2_Int16;
+inline constexpr auto PixelExportColor_Int32x2_Int16_backend_index = 1909u;
 
 /// pixelExportColor with Int32x2, UInt16
 extern Variable PixelExportColor_Int32x2_UInt16_color;
 extern Variable PixelExportColor_Int32x2_UInt16_index;
 extern Function PixelExportColor_Int32x2_UInt16;
+inline constexpr auto PixelExportColor_Int32x2_UInt16_backend_index = 1910u;
 
 /// pixelExportColor with Int32x3, Int32
 extern Variable PixelExportColor_Int32x3_Int32_color;
 extern Variable PixelExportColor_Int32x3_Int32_index;
 extern Function PixelExportColor_Int32x3_Int32;
+inline constexpr auto PixelExportColor_Int32x3_Int32_backend_index = 1911u;
 
 /// pixelExportColor with Int32x3, UInt32
 extern Variable PixelExportColor_Int32x3_UInt32_color;
 extern Variable PixelExportColor_Int32x3_UInt32_index;
 extern Function PixelExportColor_Int32x3_UInt32;
+inline constexpr auto PixelExportColor_Int32x3_UInt32_backend_index = 1912u;
 
 /// pixelExportColor with Int32x3, Int16
 extern Variable PixelExportColor_Int32x3_Int16_color;
 extern Variable PixelExportColor_Int32x3_Int16_index;
 extern Function PixelExportColor_Int32x3_Int16;
+inline constexpr auto PixelExportColor_Int32x3_Int16_backend_index = 1913u;
 
 /// pixelExportColor with Int32x3, UInt16
 extern Variable PixelExportColor_Int32x3_UInt16_color;
 extern Variable PixelExportColor_Int32x3_UInt16_index;
 extern Function PixelExportColor_Int32x3_UInt16;
+inline constexpr auto PixelExportColor_Int32x3_UInt16_backend_index = 1914u;
 
 /// pixelExportColor with Int32x4, Int32
 extern Variable PixelExportColor_Int32x4_Int32_color;
 extern Variable PixelExportColor_Int32x4_Int32_index;
 extern Function PixelExportColor_Int32x4_Int32;
+inline constexpr auto PixelExportColor_Int32x4_Int32_backend_index = 1915u;
 
 /// pixelExportColor with Int32x4, UInt32
 extern Variable PixelExportColor_Int32x4_UInt32_color;
 extern Variable PixelExportColor_Int32x4_UInt32_index;
 extern Function PixelExportColor_Int32x4_UInt32;
+inline constexpr auto PixelExportColor_Int32x4_UInt32_backend_index = 1916u;
 
 /// pixelExportColor with Int32x4, Int16
 extern Variable PixelExportColor_Int32x4_Int16_color;
 extern Variable PixelExportColor_Int32x4_Int16_index;
 extern Function PixelExportColor_Int32x4_Int16;
+inline constexpr auto PixelExportColor_Int32x4_Int16_backend_index = 1917u;
 
 /// pixelExportColor with Int32x4, UInt16
 extern Variable PixelExportColor_Int32x4_UInt16_color;
 extern Variable PixelExportColor_Int32x4_UInt16_index;
 extern Function PixelExportColor_Int32x4_UInt16;
+inline constexpr auto PixelExportColor_Int32x4_UInt16_backend_index = 1918u;
 
 /// pixelExportColor with Int16, Int32
 extern Variable PixelExportColor_Int16_Int32_color;
 extern Variable PixelExportColor_Int16_Int32_index;
 extern Function PixelExportColor_Int16_Int32;
+inline constexpr auto PixelExportColor_Int16_Int32_backend_index = 1919u;
 
 /// pixelExportColor with Int16, UInt32
 extern Variable PixelExportColor_Int16_UInt32_color;
 extern Variable PixelExportColor_Int16_UInt32_index;
 extern Function PixelExportColor_Int16_UInt32;
+inline constexpr auto PixelExportColor_Int16_UInt32_backend_index = 1920u;
 
 /// pixelExportColor with Int16, Int16
 extern Variable PixelExportColor_Int16_Int16_color;
 extern Variable PixelExportColor_Int16_Int16_index;
 extern Function PixelExportColor_Int16_Int16;
+inline constexpr auto PixelExportColor_Int16_Int16_backend_index = 1921u;
 
 /// pixelExportColor with Int16, UInt16
 extern Variable PixelExportColor_Int16_UInt16_color;
 extern Variable PixelExportColor_Int16_UInt16_index;
 extern Function PixelExportColor_Int16_UInt16;
+inline constexpr auto PixelExportColor_Int16_UInt16_backend_index = 1922u;
 
 /// pixelExportColor with Int16x2, Int32
 extern Variable PixelExportColor_Int16x2_Int32_color;
 extern Variable PixelExportColor_Int16x2_Int32_index;
 extern Function PixelExportColor_Int16x2_Int32;
+inline constexpr auto PixelExportColor_Int16x2_Int32_backend_index = 1923u;
 
 /// pixelExportColor with Int16x2, UInt32
 extern Variable PixelExportColor_Int16x2_UInt32_color;
 extern Variable PixelExportColor_Int16x2_UInt32_index;
 extern Function PixelExportColor_Int16x2_UInt32;
+inline constexpr auto PixelExportColor_Int16x2_UInt32_backend_index = 1924u;
 
 /// pixelExportColor with Int16x2, Int16
 extern Variable PixelExportColor_Int16x2_Int16_color;
 extern Variable PixelExportColor_Int16x2_Int16_index;
 extern Function PixelExportColor_Int16x2_Int16;
+inline constexpr auto PixelExportColor_Int16x2_Int16_backend_index = 1925u;
 
 /// pixelExportColor with Int16x2, UInt16
 extern Variable PixelExportColor_Int16x2_UInt16_color;
 extern Variable PixelExportColor_Int16x2_UInt16_index;
 extern Function PixelExportColor_Int16x2_UInt16;
+inline constexpr auto PixelExportColor_Int16x2_UInt16_backend_index = 1926u;
 
 /// pixelExportColor with Int16x3, Int32
 extern Variable PixelExportColor_Int16x3_Int32_color;
 extern Variable PixelExportColor_Int16x3_Int32_index;
 extern Function PixelExportColor_Int16x3_Int32;
+inline constexpr auto PixelExportColor_Int16x3_Int32_backend_index = 1927u;
 
 /// pixelExportColor with Int16x3, UInt32
 extern Variable PixelExportColor_Int16x3_UInt32_color;
 extern Variable PixelExportColor_Int16x3_UInt32_index;
 extern Function PixelExportColor_Int16x3_UInt32;
+inline constexpr auto PixelExportColor_Int16x3_UInt32_backend_index = 1928u;
 
 /// pixelExportColor with Int16x3, Int16
 extern Variable PixelExportColor_Int16x3_Int16_color;
 extern Variable PixelExportColor_Int16x3_Int16_index;
 extern Function PixelExportColor_Int16x3_Int16;
+inline constexpr auto PixelExportColor_Int16x3_Int16_backend_index = 1929u;
 
 /// pixelExportColor with Int16x3, UInt16
 extern Variable PixelExportColor_Int16x3_UInt16_color;
 extern Variable PixelExportColor_Int16x3_UInt16_index;
 extern Function PixelExportColor_Int16x3_UInt16;
+inline constexpr auto PixelExportColor_Int16x3_UInt16_backend_index = 1930u;
 
 /// pixelExportColor with Int16x4, Int32
 extern Variable PixelExportColor_Int16x4_Int32_color;
 extern Variable PixelExportColor_Int16x4_Int32_index;
 extern Function PixelExportColor_Int16x4_Int32;
+inline constexpr auto PixelExportColor_Int16x4_Int32_backend_index = 1931u;
 
 /// pixelExportColor with Int16x4, UInt32
 extern Variable PixelExportColor_Int16x4_UInt32_color;
 extern Variable PixelExportColor_Int16x4_UInt32_index;
 extern Function PixelExportColor_Int16x4_UInt32;
+inline constexpr auto PixelExportColor_Int16x4_UInt32_backend_index = 1932u;
 
 /// pixelExportColor with Int16x4, Int16
 extern Variable PixelExportColor_Int16x4_Int16_color;
 extern Variable PixelExportColor_Int16x4_Int16_index;
 extern Function PixelExportColor_Int16x4_Int16;
+inline constexpr auto PixelExportColor_Int16x4_Int16_backend_index = 1933u;
 
 /// pixelExportColor with Int16x4, UInt16
 extern Variable PixelExportColor_Int16x4_UInt16_color;
 extern Variable PixelExportColor_Int16x4_UInt16_index;
 extern Function PixelExportColor_Int16x4_UInt16;
+inline constexpr auto PixelExportColor_Int16x4_UInt16_backend_index = 1934u;
 
 /// pixelExportColor with UInt32, Int32
 extern Variable PixelExportColor_UInt32_Int32_color;
 extern Variable PixelExportColor_UInt32_Int32_index;
 extern Function PixelExportColor_UInt32_Int32;
+inline constexpr auto PixelExportColor_UInt32_Int32_backend_index = 1935u;
 
 /// pixelExportColor with UInt32, UInt32
 extern Variable PixelExportColor_UInt32_UInt32_color;
 extern Variable PixelExportColor_UInt32_UInt32_index;
 extern Function PixelExportColor_UInt32_UInt32;
+inline constexpr auto PixelExportColor_UInt32_UInt32_backend_index = 1936u;
 
 /// pixelExportColor with UInt32, Int16
 extern Variable PixelExportColor_UInt32_Int16_color;
 extern Variable PixelExportColor_UInt32_Int16_index;
 extern Function PixelExportColor_UInt32_Int16;
+inline constexpr auto PixelExportColor_UInt32_Int16_backend_index = 1937u;
 
 /// pixelExportColor with UInt32, UInt16
 extern Variable PixelExportColor_UInt32_UInt16_color;
 extern Variable PixelExportColor_UInt32_UInt16_index;
 extern Function PixelExportColor_UInt32_UInt16;
+inline constexpr auto PixelExportColor_UInt32_UInt16_backend_index = 1938u;
 
 /// pixelExportColor with UInt32x2, Int32
 extern Variable PixelExportColor_UInt32x2_Int32_color;
 extern Variable PixelExportColor_UInt32x2_Int32_index;
 extern Function PixelExportColor_UInt32x2_Int32;
+inline constexpr auto PixelExportColor_UInt32x2_Int32_backend_index = 1939u;
 
 /// pixelExportColor with UInt32x2, UInt32
 extern Variable PixelExportColor_UInt32x2_UInt32_color;
 extern Variable PixelExportColor_UInt32x2_UInt32_index;
 extern Function PixelExportColor_UInt32x2_UInt32;
+inline constexpr auto PixelExportColor_UInt32x2_UInt32_backend_index = 1940u;
 
 /// pixelExportColor with UInt32x2, Int16
 extern Variable PixelExportColor_UInt32x2_Int16_color;
 extern Variable PixelExportColor_UInt32x2_Int16_index;
 extern Function PixelExportColor_UInt32x2_Int16;
+inline constexpr auto PixelExportColor_UInt32x2_Int16_backend_index = 1941u;
 
 /// pixelExportColor with UInt32x2, UInt16
 extern Variable PixelExportColor_UInt32x2_UInt16_color;
 extern Variable PixelExportColor_UInt32x2_UInt16_index;
 extern Function PixelExportColor_UInt32x2_UInt16;
+inline constexpr auto PixelExportColor_UInt32x2_UInt16_backend_index = 1942u;
 
 /// pixelExportColor with UInt32x3, Int32
 extern Variable PixelExportColor_UInt32x3_Int32_color;
 extern Variable PixelExportColor_UInt32x3_Int32_index;
 extern Function PixelExportColor_UInt32x3_Int32;
+inline constexpr auto PixelExportColor_UInt32x3_Int32_backend_index = 1943u;
 
 /// pixelExportColor with UInt32x3, UInt32
 extern Variable PixelExportColor_UInt32x3_UInt32_color;
 extern Variable PixelExportColor_UInt32x3_UInt32_index;
 extern Function PixelExportColor_UInt32x3_UInt32;
+inline constexpr auto PixelExportColor_UInt32x3_UInt32_backend_index = 1944u;
 
 /// pixelExportColor with UInt32x3, Int16
 extern Variable PixelExportColor_UInt32x3_Int16_color;
 extern Variable PixelExportColor_UInt32x3_Int16_index;
 extern Function PixelExportColor_UInt32x3_Int16;
+inline constexpr auto PixelExportColor_UInt32x3_Int16_backend_index = 1945u;
 
 /// pixelExportColor with UInt32x3, UInt16
 extern Variable PixelExportColor_UInt32x3_UInt16_color;
 extern Variable PixelExportColor_UInt32x3_UInt16_index;
 extern Function PixelExportColor_UInt32x3_UInt16;
+inline constexpr auto PixelExportColor_UInt32x3_UInt16_backend_index = 1946u;
 
 /// pixelExportColor with UInt32x4, Int32
 extern Variable PixelExportColor_UInt32x4_Int32_color;
 extern Variable PixelExportColor_UInt32x4_Int32_index;
 extern Function PixelExportColor_UInt32x4_Int32;
+inline constexpr auto PixelExportColor_UInt32x4_Int32_backend_index = 1947u;
 
 /// pixelExportColor with UInt32x4, UInt32
 extern Variable PixelExportColor_UInt32x4_UInt32_color;
 extern Variable PixelExportColor_UInt32x4_UInt32_index;
 extern Function PixelExportColor_UInt32x4_UInt32;
+inline constexpr auto PixelExportColor_UInt32x4_UInt32_backend_index = 1948u;
 
 /// pixelExportColor with UInt32x4, Int16
 extern Variable PixelExportColor_UInt32x4_Int16_color;
 extern Variable PixelExportColor_UInt32x4_Int16_index;
 extern Function PixelExportColor_UInt32x4_Int16;
+inline constexpr auto PixelExportColor_UInt32x4_Int16_backend_index = 1949u;
 
 /// pixelExportColor with UInt32x4, UInt16
 extern Variable PixelExportColor_UInt32x4_UInt16_color;
 extern Variable PixelExportColor_UInt32x4_UInt16_index;
 extern Function PixelExportColor_UInt32x4_UInt16;
+inline constexpr auto PixelExportColor_UInt32x4_UInt16_backend_index = 1950u;
 
 /// pixelExportColor with UInt16, Int32
 extern Variable PixelExportColor_UInt16_Int32_color;
 extern Variable PixelExportColor_UInt16_Int32_index;
 extern Function PixelExportColor_UInt16_Int32;
+inline constexpr auto PixelExportColor_UInt16_Int32_backend_index = 1951u;
 
 /// pixelExportColor with UInt16, UInt32
 extern Variable PixelExportColor_UInt16_UInt32_color;
 extern Variable PixelExportColor_UInt16_UInt32_index;
 extern Function PixelExportColor_UInt16_UInt32;
+inline constexpr auto PixelExportColor_UInt16_UInt32_backend_index = 1952u;
 
 /// pixelExportColor with UInt16, Int16
 extern Variable PixelExportColor_UInt16_Int16_color;
 extern Variable PixelExportColor_UInt16_Int16_index;
 extern Function PixelExportColor_UInt16_Int16;
+inline constexpr auto PixelExportColor_UInt16_Int16_backend_index = 1953u;
 
 /// pixelExportColor with UInt16, UInt16
 extern Variable PixelExportColor_UInt16_UInt16_color;
 extern Variable PixelExportColor_UInt16_UInt16_index;
 extern Function PixelExportColor_UInt16_UInt16;
+inline constexpr auto PixelExportColor_UInt16_UInt16_backend_index = 1954u;
 
 /// pixelExportColor with UInt16x2, Int32
 extern Variable PixelExportColor_UInt16x2_Int32_color;
 extern Variable PixelExportColor_UInt16x2_Int32_index;
 extern Function PixelExportColor_UInt16x2_Int32;
+inline constexpr auto PixelExportColor_UInt16x2_Int32_backend_index = 1955u;
 
 /// pixelExportColor with UInt16x2, UInt32
 extern Variable PixelExportColor_UInt16x2_UInt32_color;
 extern Variable PixelExportColor_UInt16x2_UInt32_index;
 extern Function PixelExportColor_UInt16x2_UInt32;
+inline constexpr auto PixelExportColor_UInt16x2_UInt32_backend_index = 1956u;
 
 /// pixelExportColor with UInt16x2, Int16
 extern Variable PixelExportColor_UInt16x2_Int16_color;
 extern Variable PixelExportColor_UInt16x2_Int16_index;
 extern Function PixelExportColor_UInt16x2_Int16;
+inline constexpr auto PixelExportColor_UInt16x2_Int16_backend_index = 1957u;
 
 /// pixelExportColor with UInt16x2, UInt16
 extern Variable PixelExportColor_UInt16x2_UInt16_color;
 extern Variable PixelExportColor_UInt16x2_UInt16_index;
 extern Function PixelExportColor_UInt16x2_UInt16;
+inline constexpr auto PixelExportColor_UInt16x2_UInt16_backend_index = 1958u;
 
 /// pixelExportColor with UInt16x3, Int32
 extern Variable PixelExportColor_UInt16x3_Int32_color;
 extern Variable PixelExportColor_UInt16x3_Int32_index;
 extern Function PixelExportColor_UInt16x3_Int32;
+inline constexpr auto PixelExportColor_UInt16x3_Int32_backend_index = 1959u;
 
 /// pixelExportColor with UInt16x3, UInt32
 extern Variable PixelExportColor_UInt16x3_UInt32_color;
 extern Variable PixelExportColor_UInt16x3_UInt32_index;
 extern Function PixelExportColor_UInt16x3_UInt32;
+inline constexpr auto PixelExportColor_UInt16x3_UInt32_backend_index = 1960u;
 
 /// pixelExportColor with UInt16x3, Int16
 extern Variable PixelExportColor_UInt16x3_Int16_color;
 extern Variable PixelExportColor_UInt16x3_Int16_index;
 extern Function PixelExportColor_UInt16x3_Int16;
+inline constexpr auto PixelExportColor_UInt16x3_Int16_backend_index = 1961u;
 
 /// pixelExportColor with UInt16x3, UInt16
 extern Variable PixelExportColor_UInt16x3_UInt16_color;
 extern Variable PixelExportColor_UInt16x3_UInt16_index;
 extern Function PixelExportColor_UInt16x3_UInt16;
+inline constexpr auto PixelExportColor_UInt16x3_UInt16_backend_index = 1962u;
 
 /// pixelExportColor with UInt16x4, Int32
 extern Variable PixelExportColor_UInt16x4_Int32_color;
 extern Variable PixelExportColor_UInt16x4_Int32_index;
 extern Function PixelExportColor_UInt16x4_Int32;
+inline constexpr auto PixelExportColor_UInt16x4_Int32_backend_index = 1963u;
 
 /// pixelExportColor with UInt16x4, UInt32
 extern Variable PixelExportColor_UInt16x4_UInt32_color;
 extern Variable PixelExportColor_UInt16x4_UInt32_index;
 extern Function PixelExportColor_UInt16x4_UInt32;
+inline constexpr auto PixelExportColor_UInt16x4_UInt32_backend_index = 1964u;
 
 /// pixelExportColor with UInt16x4, Int16
 extern Variable PixelExportColor_UInt16x4_Int16_color;
 extern Variable PixelExportColor_UInt16x4_Int16_index;
 extern Function PixelExportColor_UInt16x4_Int16;
+inline constexpr auto PixelExportColor_UInt16x4_Int16_backend_index = 1965u;
 
 /// pixelExportColor with UInt16x4, UInt16
 extern Variable PixelExportColor_UInt16x4_UInt16_color;
 extern Variable PixelExportColor_UInt16x4_UInt16_index;
 extern Function PixelExportColor_UInt16x4_UInt16;
+inline constexpr auto PixelExportColor_UInt16x4_UInt16_backend_index = 1966u;
 
 /// computeGetLocalThreadIndices
 extern Function ComputeGetLocalThreadIndices;
+inline constexpr auto ComputeGetLocalThreadIndices_backend_index = 1967u;
 
 /// computeGetGlobalThreadIndices
 extern Function ComputeGetGlobalThreadIndices;
+inline constexpr auto ComputeGetGlobalThreadIndices_backend_index = 1968u;
 
 /// computeGetWorkgroupIndices
 extern Function ComputeGetWorkgroupIndices;
+inline constexpr auto ComputeGetWorkgroupIndices_backend_index = 1969u;
 
 /// computeGetWorkGroupDimensions
 extern Function ComputeGetWorkGroupDimensions;
+inline constexpr auto ComputeGetWorkGroupDimensions_backend_index = 1970u;
 
 /// computeGetIndexInWorkgroup
 extern Function ComputeGetIndexInWorkgroup;
+inline constexpr auto ComputeGetIndexInWorkgroup_backend_index = 1971u;
 
 /// subgroupGetId
 extern Function SubgroupGetId;
+inline constexpr auto SubgroupGetId_backend_index = 1972u;
 
 /// subgroupGetSize
 extern Function SubgroupGetSize;
+inline constexpr auto SubgroupGetSize_backend_index = 1973u;
 
 /// subgroupGetNum
 extern Function SubgroupGetNum;
+inline constexpr auto SubgroupGetNum_backend_index = 1974u;
 
 /// subgroupGetThreadMask
 extern Function SubgroupGetThreadMask;
+inline constexpr auto SubgroupGetThreadMask_backend_index = 1975u;
 
 /// subgroupGetThreadAndLowerMask
 extern Function SubgroupGetThreadAndLowerMask;
+inline constexpr auto SubgroupGetThreadAndLowerMask_backend_index = 1976u;
 
 /// subgroupGetLowerMask
 extern Function SubgroupGetLowerMask;
+inline constexpr auto SubgroupGetLowerMask_backend_index = 1977u;
 
 /// subgroupGetThreadAndGreaterMask
 extern Function SubgroupGetThreadAndGreaterMask;
+inline constexpr auto SubgroupGetThreadAndGreaterMask_backend_index = 1978u;
 
 /// subgroupGetGreaterMask
 extern Function SubgroupGetGreaterMask;
+inline constexpr auto SubgroupGetGreaterMask_backend_index = 1979u;
 
 /// subgroupGetFirstActiveThread
 extern Function SubgroupGetFirstActiveThread;
+inline constexpr auto SubgroupGetFirstActiveThread_backend_index = 1980u;
 
 /// subgroupBroadcastFirstActiveThread with Float32
 extern Variable SubgroupBroadcastFirstActiveThread_Float32_value;
 extern Function SubgroupBroadcastFirstActiveThread_Float32;
+inline constexpr auto SubgroupBroadcastFirstActiveThread_Float32_backend_index = 1981u;
 
 /// subgroupBroadcastFirstActiveThread with Float32x2
 extern Variable SubgroupBroadcastFirstActiveThread_Float32x2_value;
 extern Function SubgroupBroadcastFirstActiveThread_Float32x2;
+inline constexpr auto SubgroupBroadcastFirstActiveThread_Float32x2_backend_index = 1982u;
 
 /// subgroupBroadcastFirstActiveThread with Float32x3
 extern Variable SubgroupBroadcastFirstActiveThread_Float32x3_value;
 extern Function SubgroupBroadcastFirstActiveThread_Float32x3;
+inline constexpr auto SubgroupBroadcastFirstActiveThread_Float32x3_backend_index = 1983u;
 
 /// subgroupBroadcastFirstActiveThread with Float32x4
 extern Variable SubgroupBroadcastFirstActiveThread_Float32x4_value;
 extern Function SubgroupBroadcastFirstActiveThread_Float32x4;
+inline constexpr auto SubgroupBroadcastFirstActiveThread_Float32x4_backend_index = 1984u;
 
 /// subgroupBroadcastFirstActiveThread with Float16
 extern Variable SubgroupBroadcastFirstActiveThread_Float16_value;
 extern Function SubgroupBroadcastFirstActiveThread_Float16;
+inline constexpr auto SubgroupBroadcastFirstActiveThread_Float16_backend_index = 1985u;
 
 /// subgroupBroadcastFirstActiveThread with Float16x2
 extern Variable SubgroupBroadcastFirstActiveThread_Float16x2_value;
 extern Function SubgroupBroadcastFirstActiveThread_Float16x2;
+inline constexpr auto SubgroupBroadcastFirstActiveThread_Float16x2_backend_index = 1986u;
 
 /// subgroupBroadcastFirstActiveThread with Float16x3
 extern Variable SubgroupBroadcastFirstActiveThread_Float16x3_value;
 extern Function SubgroupBroadcastFirstActiveThread_Float16x3;
+inline constexpr auto SubgroupBroadcastFirstActiveThread_Float16x3_backend_index = 1987u;
 
 /// subgroupBroadcastFirstActiveThread with Float16x4
 extern Variable SubgroupBroadcastFirstActiveThread_Float16x4_value;
 extern Function SubgroupBroadcastFirstActiveThread_Float16x4;
+inline constexpr auto SubgroupBroadcastFirstActiveThread_Float16x4_backend_index = 1988u;
 
 /// subgroupBroadcastFirstActiveThread with Int32
 extern Variable SubgroupBroadcastFirstActiveThread_Int32_value;
 extern Function SubgroupBroadcastFirstActiveThread_Int32;
+inline constexpr auto SubgroupBroadcastFirstActiveThread_Int32_backend_index = 1989u;
 
 /// subgroupBroadcastFirstActiveThread with Int32x2
 extern Variable SubgroupBroadcastFirstActiveThread_Int32x2_value;
 extern Function SubgroupBroadcastFirstActiveThread_Int32x2;
+inline constexpr auto SubgroupBroadcastFirstActiveThread_Int32x2_backend_index = 1990u;
 
 /// subgroupBroadcastFirstActiveThread with Int32x3
 extern Variable SubgroupBroadcastFirstActiveThread_Int32x3_value;
 extern Function SubgroupBroadcastFirstActiveThread_Int32x3;
+inline constexpr auto SubgroupBroadcastFirstActiveThread_Int32x3_backend_index = 1991u;
 
 /// subgroupBroadcastFirstActiveThread with Int32x4
 extern Variable SubgroupBroadcastFirstActiveThread_Int32x4_value;
 extern Function SubgroupBroadcastFirstActiveThread_Int32x4;
+inline constexpr auto SubgroupBroadcastFirstActiveThread_Int32x4_backend_index = 1992u;
 
 /// subgroupBroadcastFirstActiveThread with Int16
 extern Variable SubgroupBroadcastFirstActiveThread_Int16_value;
 extern Function SubgroupBroadcastFirstActiveThread_Int16;
+inline constexpr auto SubgroupBroadcastFirstActiveThread_Int16_backend_index = 1993u;
 
 /// subgroupBroadcastFirstActiveThread with Int16x2
 extern Variable SubgroupBroadcastFirstActiveThread_Int16x2_value;
 extern Function SubgroupBroadcastFirstActiveThread_Int16x2;
+inline constexpr auto SubgroupBroadcastFirstActiveThread_Int16x2_backend_index = 1994u;
 
 /// subgroupBroadcastFirstActiveThread with Int16x3
 extern Variable SubgroupBroadcastFirstActiveThread_Int16x3_value;
 extern Function SubgroupBroadcastFirstActiveThread_Int16x3;
+inline constexpr auto SubgroupBroadcastFirstActiveThread_Int16x3_backend_index = 1995u;
 
 /// subgroupBroadcastFirstActiveThread with Int16x4
 extern Variable SubgroupBroadcastFirstActiveThread_Int16x4_value;
 extern Function SubgroupBroadcastFirstActiveThread_Int16x4;
+inline constexpr auto SubgroupBroadcastFirstActiveThread_Int16x4_backend_index = 1996u;
 
 /// subgroupBroadcastFirstActiveThread with UInt32
 extern Variable SubgroupBroadcastFirstActiveThread_UInt32_value;
 extern Function SubgroupBroadcastFirstActiveThread_UInt32;
+inline constexpr auto SubgroupBroadcastFirstActiveThread_UInt32_backend_index = 1997u;
 
 /// subgroupBroadcastFirstActiveThread with UInt32x2
 extern Variable SubgroupBroadcastFirstActiveThread_UInt32x2_value;
 extern Function SubgroupBroadcastFirstActiveThread_UInt32x2;
+inline constexpr auto SubgroupBroadcastFirstActiveThread_UInt32x2_backend_index = 1998u;
 
 /// subgroupBroadcastFirstActiveThread with UInt32x3
 extern Variable SubgroupBroadcastFirstActiveThread_UInt32x3_value;
 extern Function SubgroupBroadcastFirstActiveThread_UInt32x3;
+inline constexpr auto SubgroupBroadcastFirstActiveThread_UInt32x3_backend_index = 1999u;
 
 /// subgroupBroadcastFirstActiveThread with UInt32x4
 extern Variable SubgroupBroadcastFirstActiveThread_UInt32x4_value;
 extern Function SubgroupBroadcastFirstActiveThread_UInt32x4;
+inline constexpr auto SubgroupBroadcastFirstActiveThread_UInt32x4_backend_index = 2000u;
 
 /// subgroupBroadcastFirstActiveThread with UInt16
 extern Variable SubgroupBroadcastFirstActiveThread_UInt16_value;
 extern Function SubgroupBroadcastFirstActiveThread_UInt16;
+inline constexpr auto SubgroupBroadcastFirstActiveThread_UInt16_backend_index = 2001u;
 
 /// subgroupBroadcastFirstActiveThread with UInt16x2
 extern Variable SubgroupBroadcastFirstActiveThread_UInt16x2_value;
 extern Function SubgroupBroadcastFirstActiveThread_UInt16x2;
+inline constexpr auto SubgroupBroadcastFirstActiveThread_UInt16x2_backend_index = 2002u;
 
 /// subgroupBroadcastFirstActiveThread with UInt16x3
 extern Variable SubgroupBroadcastFirstActiveThread_UInt16x3_value;
 extern Function SubgroupBroadcastFirstActiveThread_UInt16x3;
+inline constexpr auto SubgroupBroadcastFirstActiveThread_UInt16x3_backend_index = 2003u;
 
 /// subgroupBroadcastFirstActiveThread with UInt16x4
 extern Variable SubgroupBroadcastFirstActiveThread_UInt16x4_value;
 extern Function SubgroupBroadcastFirstActiveThread_UInt16x4;
+inline constexpr auto SubgroupBroadcastFirstActiveThread_UInt16x4_backend_index = 2004u;
 
 /// subgroupBallot with Bool8
 extern Variable SubgroupBallot_predicate;
 extern Function SubgroupBallot;
+inline constexpr auto SubgroupBallot_backend_index = 2005u;
 
 /// subgroupInverseBallot with Bool8
 extern Variable SubgroupInverseBallot_predicate;
 extern Function SubgroupInverseBallot;
+inline constexpr auto SubgroupInverseBallot_backend_index = 2006u;
 
 /// subgroupBallotBitCount with UInt32x4
 extern Variable SubgroupBallotBitCount_mask;
 extern Function SubgroupBallotBitCount;
+inline constexpr auto SubgroupBallotBitCount_backend_index = 2007u;
 
 /// subgroupBallotFirstOne with UInt32x4
 extern Variable SubgroupBallotFirstOne_mask;
 extern Function SubgroupBallotFirstOne;
+inline constexpr auto SubgroupBallotFirstOne_backend_index = 2008u;
 
 /// subgroupBallotLastOne with UInt32x4
 extern Variable SubgroupBallotLastOne_mask;
 extern Function SubgroupBallotLastOne;
+inline constexpr auto SubgroupBallotLastOne_backend_index = 2009u;
 
 /// subgroupBallotBit with UInt32x4, UInt32
 extern Variable SubgroupBallotBit_mask;
 extern Variable SubgroupBallotBit_index;
 extern Function SubgroupBallotBit;
+inline constexpr auto SubgroupBallotBit_backend_index = 2010u;
 
 /// subgroupSwapDiagonal with Float32
 extern Variable SubgroupSwapDiagonal_Float32_value;
 extern Function SubgroupSwapDiagonal_Float32;
+inline constexpr auto SubgroupSwapDiagonal_Float32_backend_index = 2011u;
 
 /// subgroupSwapDiagonal with Float32x2
 extern Variable SubgroupSwapDiagonal_Float32x2_value;
 extern Function SubgroupSwapDiagonal_Float32x2;
+inline constexpr auto SubgroupSwapDiagonal_Float32x2_backend_index = 2012u;
 
 /// subgroupSwapDiagonal with Float32x3
 extern Variable SubgroupSwapDiagonal_Float32x3_value;
 extern Function SubgroupSwapDiagonal_Float32x3;
+inline constexpr auto SubgroupSwapDiagonal_Float32x3_backend_index = 2013u;
 
 /// subgroupSwapDiagonal with Float32x4
 extern Variable SubgroupSwapDiagonal_Float32x4_value;
 extern Function SubgroupSwapDiagonal_Float32x4;
+inline constexpr auto SubgroupSwapDiagonal_Float32x4_backend_index = 2014u;
 
 /// subgroupSwapDiagonal with Float16
 extern Variable SubgroupSwapDiagonal_Float16_value;
 extern Function SubgroupSwapDiagonal_Float16;
+inline constexpr auto SubgroupSwapDiagonal_Float16_backend_index = 2015u;
 
 /// subgroupSwapDiagonal with Float16x2
 extern Variable SubgroupSwapDiagonal_Float16x2_value;
 extern Function SubgroupSwapDiagonal_Float16x2;
+inline constexpr auto SubgroupSwapDiagonal_Float16x2_backend_index = 2016u;
 
 /// subgroupSwapDiagonal with Float16x3
 extern Variable SubgroupSwapDiagonal_Float16x3_value;
 extern Function SubgroupSwapDiagonal_Float16x3;
+inline constexpr auto SubgroupSwapDiagonal_Float16x3_backend_index = 2017u;
 
 /// subgroupSwapDiagonal with Float16x4
 extern Variable SubgroupSwapDiagonal_Float16x4_value;
 extern Function SubgroupSwapDiagonal_Float16x4;
+inline constexpr auto SubgroupSwapDiagonal_Float16x4_backend_index = 2018u;
 
 /// subgroupSwapDiagonal with Int32
 extern Variable SubgroupSwapDiagonal_Int32_value;
 extern Function SubgroupSwapDiagonal_Int32;
+inline constexpr auto SubgroupSwapDiagonal_Int32_backend_index = 2019u;
 
 /// subgroupSwapDiagonal with Int32x2
 extern Variable SubgroupSwapDiagonal_Int32x2_value;
 extern Function SubgroupSwapDiagonal_Int32x2;
+inline constexpr auto SubgroupSwapDiagonal_Int32x2_backend_index = 2020u;
 
 /// subgroupSwapDiagonal with Int32x3
 extern Variable SubgroupSwapDiagonal_Int32x3_value;
 extern Function SubgroupSwapDiagonal_Int32x3;
+inline constexpr auto SubgroupSwapDiagonal_Int32x3_backend_index = 2021u;
 
 /// subgroupSwapDiagonal with Int32x4
 extern Variable SubgroupSwapDiagonal_Int32x4_value;
 extern Function SubgroupSwapDiagonal_Int32x4;
+inline constexpr auto SubgroupSwapDiagonal_Int32x4_backend_index = 2022u;
 
 /// subgroupSwapDiagonal with Int16
 extern Variable SubgroupSwapDiagonal_Int16_value;
 extern Function SubgroupSwapDiagonal_Int16;
+inline constexpr auto SubgroupSwapDiagonal_Int16_backend_index = 2023u;
 
 /// subgroupSwapDiagonal with Int16x2
 extern Variable SubgroupSwapDiagonal_Int16x2_value;
 extern Function SubgroupSwapDiagonal_Int16x2;
+inline constexpr auto SubgroupSwapDiagonal_Int16x2_backend_index = 2024u;
 
 /// subgroupSwapDiagonal with Int16x3
 extern Variable SubgroupSwapDiagonal_Int16x3_value;
 extern Function SubgroupSwapDiagonal_Int16x3;
+inline constexpr auto SubgroupSwapDiagonal_Int16x3_backend_index = 2025u;
 
 /// subgroupSwapDiagonal with Int16x4
 extern Variable SubgroupSwapDiagonal_Int16x4_value;
 extern Function SubgroupSwapDiagonal_Int16x4;
+inline constexpr auto SubgroupSwapDiagonal_Int16x4_backend_index = 2026u;
 
 /// subgroupSwapDiagonal with UInt32
 extern Variable SubgroupSwapDiagonal_UInt32_value;
 extern Function SubgroupSwapDiagonal_UInt32;
+inline constexpr auto SubgroupSwapDiagonal_UInt32_backend_index = 2027u;
 
 /// subgroupSwapDiagonal with UInt32x2
 extern Variable SubgroupSwapDiagonal_UInt32x2_value;
 extern Function SubgroupSwapDiagonal_UInt32x2;
+inline constexpr auto SubgroupSwapDiagonal_UInt32x2_backend_index = 2028u;
 
 /// subgroupSwapDiagonal with UInt32x3
 extern Variable SubgroupSwapDiagonal_UInt32x3_value;
 extern Function SubgroupSwapDiagonal_UInt32x3;
+inline constexpr auto SubgroupSwapDiagonal_UInt32x3_backend_index = 2029u;
 
 /// subgroupSwapDiagonal with UInt32x4
 extern Variable SubgroupSwapDiagonal_UInt32x4_value;
 extern Function SubgroupSwapDiagonal_UInt32x4;
+inline constexpr auto SubgroupSwapDiagonal_UInt32x4_backend_index = 2030u;
 
 /// subgroupSwapDiagonal with UInt16
 extern Variable SubgroupSwapDiagonal_UInt16_value;
 extern Function SubgroupSwapDiagonal_UInt16;
+inline constexpr auto SubgroupSwapDiagonal_UInt16_backend_index = 2031u;
 
 /// subgroupSwapDiagonal with UInt16x2
 extern Variable SubgroupSwapDiagonal_UInt16x2_value;
 extern Function SubgroupSwapDiagonal_UInt16x2;
+inline constexpr auto SubgroupSwapDiagonal_UInt16x2_backend_index = 2032u;
 
 /// subgroupSwapDiagonal with UInt16x3
 extern Variable SubgroupSwapDiagonal_UInt16x3_value;
 extern Function SubgroupSwapDiagonal_UInt16x3;
+inline constexpr auto SubgroupSwapDiagonal_UInt16x3_backend_index = 2033u;
 
 /// subgroupSwapDiagonal with UInt16x4
 extern Variable SubgroupSwapDiagonal_UInt16x4_value;
 extern Function SubgroupSwapDiagonal_UInt16x4;
+inline constexpr auto SubgroupSwapDiagonal_UInt16x4_backend_index = 2034u;
 
 /// subgroupSwapVertical with Float32
 extern Variable SubgroupSwapVertical_Float32_value;
 extern Function SubgroupSwapVertical_Float32;
+inline constexpr auto SubgroupSwapVertical_Float32_backend_index = 2035u;
 
 /// subgroupSwapVertical with Float32x2
 extern Variable SubgroupSwapVertical_Float32x2_value;
 extern Function SubgroupSwapVertical_Float32x2;
+inline constexpr auto SubgroupSwapVertical_Float32x2_backend_index = 2036u;
 
 /// subgroupSwapVertical with Float32x3
 extern Variable SubgroupSwapVertical_Float32x3_value;
 extern Function SubgroupSwapVertical_Float32x3;
+inline constexpr auto SubgroupSwapVertical_Float32x3_backend_index = 2037u;
 
 /// subgroupSwapVertical with Float32x4
 extern Variable SubgroupSwapVertical_Float32x4_value;
 extern Function SubgroupSwapVertical_Float32x4;
+inline constexpr auto SubgroupSwapVertical_Float32x4_backend_index = 2038u;
 
 /// subgroupSwapVertical with Float16
 extern Variable SubgroupSwapVertical_Float16_value;
 extern Function SubgroupSwapVertical_Float16;
+inline constexpr auto SubgroupSwapVertical_Float16_backend_index = 2039u;
 
 /// subgroupSwapVertical with Float16x2
 extern Variable SubgroupSwapVertical_Float16x2_value;
 extern Function SubgroupSwapVertical_Float16x2;
+inline constexpr auto SubgroupSwapVertical_Float16x2_backend_index = 2040u;
 
 /// subgroupSwapVertical with Float16x3
 extern Variable SubgroupSwapVertical_Float16x3_value;
 extern Function SubgroupSwapVertical_Float16x3;
+inline constexpr auto SubgroupSwapVertical_Float16x3_backend_index = 2041u;
 
 /// subgroupSwapVertical with Float16x4
 extern Variable SubgroupSwapVertical_Float16x4_value;
 extern Function SubgroupSwapVertical_Float16x4;
+inline constexpr auto SubgroupSwapVertical_Float16x4_backend_index = 2042u;
 
 /// subgroupSwapVertical with Int32
 extern Variable SubgroupSwapVertical_Int32_value;
 extern Function SubgroupSwapVertical_Int32;
+inline constexpr auto SubgroupSwapVertical_Int32_backend_index = 2043u;
 
 /// subgroupSwapVertical with Int32x2
 extern Variable SubgroupSwapVertical_Int32x2_value;
 extern Function SubgroupSwapVertical_Int32x2;
+inline constexpr auto SubgroupSwapVertical_Int32x2_backend_index = 2044u;
 
 /// subgroupSwapVertical with Int32x3
 extern Variable SubgroupSwapVertical_Int32x3_value;
 extern Function SubgroupSwapVertical_Int32x3;
+inline constexpr auto SubgroupSwapVertical_Int32x3_backend_index = 2045u;
 
 /// subgroupSwapVertical with Int32x4
 extern Variable SubgroupSwapVertical_Int32x4_value;
 extern Function SubgroupSwapVertical_Int32x4;
+inline constexpr auto SubgroupSwapVertical_Int32x4_backend_index = 2046u;
 
 /// subgroupSwapVertical with Int16
 extern Variable SubgroupSwapVertical_Int16_value;
 extern Function SubgroupSwapVertical_Int16;
+inline constexpr auto SubgroupSwapVertical_Int16_backend_index = 2047u;
 
 /// subgroupSwapVertical with Int16x2
 extern Variable SubgroupSwapVertical_Int16x2_value;
 extern Function SubgroupSwapVertical_Int16x2;
+inline constexpr auto SubgroupSwapVertical_Int16x2_backend_index = 2048u;
 
 /// subgroupSwapVertical with Int16x3
 extern Variable SubgroupSwapVertical_Int16x3_value;
 extern Function SubgroupSwapVertical_Int16x3;
+inline constexpr auto SubgroupSwapVertical_Int16x3_backend_index = 2049u;
 
 /// subgroupSwapVertical with Int16x4
 extern Variable SubgroupSwapVertical_Int16x4_value;
 extern Function SubgroupSwapVertical_Int16x4;
+inline constexpr auto SubgroupSwapVertical_Int16x4_backend_index = 2050u;
 
 /// subgroupSwapVertical with UInt32
 extern Variable SubgroupSwapVertical_UInt32_value;
 extern Function SubgroupSwapVertical_UInt32;
+inline constexpr auto SubgroupSwapVertical_UInt32_backend_index = 2051u;
 
 /// subgroupSwapVertical with UInt32x2
 extern Variable SubgroupSwapVertical_UInt32x2_value;
 extern Function SubgroupSwapVertical_UInt32x2;
+inline constexpr auto SubgroupSwapVertical_UInt32x2_backend_index = 2052u;
 
 /// subgroupSwapVertical with UInt32x3
 extern Variable SubgroupSwapVertical_UInt32x3_value;
 extern Function SubgroupSwapVertical_UInt32x3;
+inline constexpr auto SubgroupSwapVertical_UInt32x3_backend_index = 2053u;
 
 /// subgroupSwapVertical with UInt32x4
 extern Variable SubgroupSwapVertical_UInt32x4_value;
 extern Function SubgroupSwapVertical_UInt32x4;
+inline constexpr auto SubgroupSwapVertical_UInt32x4_backend_index = 2054u;
 
 /// subgroupSwapVertical with UInt16
 extern Variable SubgroupSwapVertical_UInt16_value;
 extern Function SubgroupSwapVertical_UInt16;
+inline constexpr auto SubgroupSwapVertical_UInt16_backend_index = 2055u;
 
 /// subgroupSwapVertical with UInt16x2
 extern Variable SubgroupSwapVertical_UInt16x2_value;
 extern Function SubgroupSwapVertical_UInt16x2;
+inline constexpr auto SubgroupSwapVertical_UInt16x2_backend_index = 2056u;
 
 /// subgroupSwapVertical with UInt16x3
 extern Variable SubgroupSwapVertical_UInt16x3_value;
 extern Function SubgroupSwapVertical_UInt16x3;
+inline constexpr auto SubgroupSwapVertical_UInt16x3_backend_index = 2057u;
 
 /// subgroupSwapVertical with UInt16x4
 extern Variable SubgroupSwapVertical_UInt16x4_value;
 extern Function SubgroupSwapVertical_UInt16x4;
+inline constexpr auto SubgroupSwapVertical_UInt16x4_backend_index = 2058u;
 
 /// subgroupSwapHorizontal with Float32
 extern Variable SubgroupSwapHorizontal_Float32_value;
 extern Function SubgroupSwapHorizontal_Float32;
+inline constexpr auto SubgroupSwapHorizontal_Float32_backend_index = 2059u;
 
 /// subgroupSwapHorizontal with Float32x2
 extern Variable SubgroupSwapHorizontal_Float32x2_value;
 extern Function SubgroupSwapHorizontal_Float32x2;
+inline constexpr auto SubgroupSwapHorizontal_Float32x2_backend_index = 2060u;
 
 /// subgroupSwapHorizontal with Float32x3
 extern Variable SubgroupSwapHorizontal_Float32x3_value;
 extern Function SubgroupSwapHorizontal_Float32x3;
+inline constexpr auto SubgroupSwapHorizontal_Float32x3_backend_index = 2061u;
 
 /// subgroupSwapHorizontal with Float32x4
 extern Variable SubgroupSwapHorizontal_Float32x4_value;
 extern Function SubgroupSwapHorizontal_Float32x4;
+inline constexpr auto SubgroupSwapHorizontal_Float32x4_backend_index = 2062u;
 
 /// subgroupSwapHorizontal with Float16
 extern Variable SubgroupSwapHorizontal_Float16_value;
 extern Function SubgroupSwapHorizontal_Float16;
+inline constexpr auto SubgroupSwapHorizontal_Float16_backend_index = 2063u;
 
 /// subgroupSwapHorizontal with Float16x2
 extern Variable SubgroupSwapHorizontal_Float16x2_value;
 extern Function SubgroupSwapHorizontal_Float16x2;
+inline constexpr auto SubgroupSwapHorizontal_Float16x2_backend_index = 2064u;
 
 /// subgroupSwapHorizontal with Float16x3
 extern Variable SubgroupSwapHorizontal_Float16x3_value;
 extern Function SubgroupSwapHorizontal_Float16x3;
+inline constexpr auto SubgroupSwapHorizontal_Float16x3_backend_index = 2065u;
 
 /// subgroupSwapHorizontal with Float16x4
 extern Variable SubgroupSwapHorizontal_Float16x4_value;
 extern Function SubgroupSwapHorizontal_Float16x4;
+inline constexpr auto SubgroupSwapHorizontal_Float16x4_backend_index = 2066u;
 
 /// subgroupSwapHorizontal with Int32
 extern Variable SubgroupSwapHorizontal_Int32_value;
 extern Function SubgroupSwapHorizontal_Int32;
+inline constexpr auto SubgroupSwapHorizontal_Int32_backend_index = 2067u;
 
 /// subgroupSwapHorizontal with Int32x2
 extern Variable SubgroupSwapHorizontal_Int32x2_value;
 extern Function SubgroupSwapHorizontal_Int32x2;
+inline constexpr auto SubgroupSwapHorizontal_Int32x2_backend_index = 2068u;
 
 /// subgroupSwapHorizontal with Int32x3
 extern Variable SubgroupSwapHorizontal_Int32x3_value;
 extern Function SubgroupSwapHorizontal_Int32x3;
+inline constexpr auto SubgroupSwapHorizontal_Int32x3_backend_index = 2069u;
 
 /// subgroupSwapHorizontal with Int32x4
 extern Variable SubgroupSwapHorizontal_Int32x4_value;
 extern Function SubgroupSwapHorizontal_Int32x4;
+inline constexpr auto SubgroupSwapHorizontal_Int32x4_backend_index = 2070u;
 
 /// subgroupSwapHorizontal with Int16
 extern Variable SubgroupSwapHorizontal_Int16_value;
 extern Function SubgroupSwapHorizontal_Int16;
+inline constexpr auto SubgroupSwapHorizontal_Int16_backend_index = 2071u;
 
 /// subgroupSwapHorizontal with Int16x2
 extern Variable SubgroupSwapHorizontal_Int16x2_value;
 extern Function SubgroupSwapHorizontal_Int16x2;
+inline constexpr auto SubgroupSwapHorizontal_Int16x2_backend_index = 2072u;
 
 /// subgroupSwapHorizontal with Int16x3
 extern Variable SubgroupSwapHorizontal_Int16x3_value;
 extern Function SubgroupSwapHorizontal_Int16x3;
+inline constexpr auto SubgroupSwapHorizontal_Int16x3_backend_index = 2073u;
 
 /// subgroupSwapHorizontal with Int16x4
 extern Variable SubgroupSwapHorizontal_Int16x4_value;
 extern Function SubgroupSwapHorizontal_Int16x4;
+inline constexpr auto SubgroupSwapHorizontal_Int16x4_backend_index = 2074u;
 
 /// subgroupSwapHorizontal with UInt32
 extern Variable SubgroupSwapHorizontal_UInt32_value;
 extern Function SubgroupSwapHorizontal_UInt32;
+inline constexpr auto SubgroupSwapHorizontal_UInt32_backend_index = 2075u;
 
 /// subgroupSwapHorizontal with UInt32x2
 extern Variable SubgroupSwapHorizontal_UInt32x2_value;
 extern Function SubgroupSwapHorizontal_UInt32x2;
+inline constexpr auto SubgroupSwapHorizontal_UInt32x2_backend_index = 2076u;
 
 /// subgroupSwapHorizontal with UInt32x3
 extern Variable SubgroupSwapHorizontal_UInt32x3_value;
 extern Function SubgroupSwapHorizontal_UInt32x3;
+inline constexpr auto SubgroupSwapHorizontal_UInt32x3_backend_index = 2077u;
 
 /// subgroupSwapHorizontal with UInt32x4
 extern Variable SubgroupSwapHorizontal_UInt32x4_value;
 extern Function SubgroupSwapHorizontal_UInt32x4;
+inline constexpr auto SubgroupSwapHorizontal_UInt32x4_backend_index = 2078u;
 
 /// subgroupSwapHorizontal with UInt16
 extern Variable SubgroupSwapHorizontal_UInt16_value;
 extern Function SubgroupSwapHorizontal_UInt16;
+inline constexpr auto SubgroupSwapHorizontal_UInt16_backend_index = 2079u;
 
 /// subgroupSwapHorizontal with UInt16x2
 extern Variable SubgroupSwapHorizontal_UInt16x2_value;
 extern Function SubgroupSwapHorizontal_UInt16x2;
+inline constexpr auto SubgroupSwapHorizontal_UInt16x2_backend_index = 2080u;
 
 /// subgroupSwapHorizontal with UInt16x3
 extern Variable SubgroupSwapHorizontal_UInt16x3_value;
 extern Function SubgroupSwapHorizontal_UInt16x3;
+inline constexpr auto SubgroupSwapHorizontal_UInt16x3_backend_index = 2081u;
 
 /// subgroupSwapHorizontal with UInt16x4
 extern Variable SubgroupSwapHorizontal_UInt16x4_value;
 extern Function SubgroupSwapHorizontal_UInt16x4;
+inline constexpr auto SubgroupSwapHorizontal_UInt16x4_backend_index = 2082u;
 
 /// atomicLoad with UInt32, MemorySemantics
 extern Variable AtomicLoad_UInt32_ptr;
 extern Variable AtomicLoad_UInt32_semantics;
 extern Function AtomicLoad_UInt32;
+inline constexpr auto AtomicLoad_UInt32_backend_index = 2083u;
 
 /// atomicIncrement with UInt32, MemorySemantics
 extern Variable AtomicIncrement_UInt32_ptr;
 extern Variable AtomicIncrement_UInt32_semantics;
 extern Function AtomicIncrement_UInt32;
+inline constexpr auto AtomicIncrement_UInt32_backend_index = 2084u;
 
 /// atomicDecrement with UInt32, MemorySemantics
 extern Variable AtomicDecrement_UInt32_ptr;
 extern Variable AtomicDecrement_UInt32_semantics;
 extern Function AtomicDecrement_UInt32;
+inline constexpr auto AtomicDecrement_UInt32_backend_index = 2085u;
 
 /// atomicLoad with Int32, MemorySemantics
 extern Variable AtomicLoad_Int32_ptr;
 extern Variable AtomicLoad_Int32_semantics;
 extern Function AtomicLoad_Int32;
+inline constexpr auto AtomicLoad_Int32_backend_index = 2086u;
 
 /// atomicIncrement with Int32, MemorySemantics
 extern Variable AtomicIncrement_Int32_ptr;
 extern Variable AtomicIncrement_Int32_semantics;
 extern Function AtomicIncrement_Int32;
+inline constexpr auto AtomicIncrement_Int32_backend_index = 2087u;
 
 /// atomicDecrement with Int32, MemorySemantics
 extern Variable AtomicDecrement_Int32_ptr;
 extern Variable AtomicDecrement_Int32_semantics;
 extern Function AtomicDecrement_Int32;
+inline constexpr auto AtomicDecrement_Int32_backend_index = 2088u;
 
 /// atomicLoad with UInt16, MemorySemantics
 extern Variable AtomicLoad_UInt16_ptr;
 extern Variable AtomicLoad_UInt16_semantics;
 extern Function AtomicLoad_UInt16;
+inline constexpr auto AtomicLoad_UInt16_backend_index = 2089u;
 
 /// atomicIncrement with UInt16, MemorySemantics
 extern Variable AtomicIncrement_UInt16_ptr;
 extern Variable AtomicIncrement_UInt16_semantics;
 extern Function AtomicIncrement_UInt16;
+inline constexpr auto AtomicIncrement_UInt16_backend_index = 2090u;
 
 /// atomicDecrement with UInt16, MemorySemantics
 extern Variable AtomicDecrement_UInt16_ptr;
 extern Variable AtomicDecrement_UInt16_semantics;
 extern Function AtomicDecrement_UInt16;
+inline constexpr auto AtomicDecrement_UInt16_backend_index = 2091u;
 
 /// atomicLoad with Int16, MemorySemantics
 extern Variable AtomicLoad_Int16_ptr;
 extern Variable AtomicLoad_Int16_semantics;
 extern Function AtomicLoad_Int16;
+inline constexpr auto AtomicLoad_Int16_backend_index = 2092u;
 
 /// atomicIncrement with Int16, MemorySemantics
 extern Variable AtomicIncrement_Int16_ptr;
 extern Variable AtomicIncrement_Int16_semantics;
 extern Function AtomicIncrement_Int16;
+inline constexpr auto AtomicIncrement_Int16_backend_index = 2093u;
 
 /// atomicDecrement with Int16, MemorySemantics
 extern Variable AtomicDecrement_Int16_ptr;
 extern Variable AtomicDecrement_Int16_semantics;
 extern Function AtomicDecrement_Int16;
+inline constexpr auto AtomicDecrement_Int16_backend_index = 2094u;
 
 /// atomicStore with UInt32, UInt32, MemorySemantics
 extern Variable AtomicStore_UInt32_ptr;
 extern Variable AtomicStore_UInt32_value;
 extern Variable AtomicStore_UInt32_semantics;
 extern Function AtomicStore_UInt32;
+inline constexpr auto AtomicStore_UInt32_backend_index = 2095u;
 
 /// atomicExchange with UInt32, UInt32, MemorySemantics
 extern Variable AtomicExchange_UInt32_ptr;
 extern Variable AtomicExchange_UInt32_value;
 extern Variable AtomicExchange_UInt32_semantics;
 extern Function AtomicExchange_UInt32;
+inline constexpr auto AtomicExchange_UInt32_backend_index = 2096u;
 
 /// atomicAdd with UInt32, UInt32, MemorySemantics
 extern Variable AtomicAdd_UInt32_ptr;
 extern Variable AtomicAdd_UInt32_value;
 extern Variable AtomicAdd_UInt32_semantics;
 extern Function AtomicAdd_UInt32;
+inline constexpr auto AtomicAdd_UInt32_backend_index = 2097u;
 
 /// atomicSubtract with UInt32, UInt32, MemorySemantics
 extern Variable AtomicSubtract_UInt32_ptr;
 extern Variable AtomicSubtract_UInt32_value;
 extern Variable AtomicSubtract_UInt32_semantics;
 extern Function AtomicSubtract_UInt32;
+inline constexpr auto AtomicSubtract_UInt32_backend_index = 2098u;
 
 /// atomicAnd with UInt32, UInt32, MemorySemantics
 extern Variable AtomicAnd_UInt32_ptr;
 extern Variable AtomicAnd_UInt32_value;
 extern Variable AtomicAnd_UInt32_semantics;
 extern Function AtomicAnd_UInt32;
+inline constexpr auto AtomicAnd_UInt32_backend_index = 2099u;
 
 /// atomicOr with UInt32, UInt32, MemorySemantics
 extern Variable AtomicOr_UInt32_ptr;
 extern Variable AtomicOr_UInt32_value;
 extern Variable AtomicOr_UInt32_semantics;
 extern Function AtomicOr_UInt32;
+inline constexpr auto AtomicOr_UInt32_backend_index = 2100u;
 
 /// atomicXor with UInt32, UInt32, MemorySemantics
 extern Variable AtomicXor_UInt32_ptr;
 extern Variable AtomicXor_UInt32_value;
 extern Variable AtomicXor_UInt32_semantics;
 extern Function AtomicXor_UInt32;
+inline constexpr auto AtomicXor_UInt32_backend_index = 2101u;
 
 /// atomicStore with Int32, Int32, MemorySemantics
 extern Variable AtomicStore_Int32_ptr;
 extern Variable AtomicStore_Int32_value;
 extern Variable AtomicStore_Int32_semantics;
 extern Function AtomicStore_Int32;
+inline constexpr auto AtomicStore_Int32_backend_index = 2102u;
 
 /// atomicExchange with Int32, Int32, MemorySemantics
 extern Variable AtomicExchange_Int32_ptr;
 extern Variable AtomicExchange_Int32_value;
 extern Variable AtomicExchange_Int32_semantics;
 extern Function AtomicExchange_Int32;
+inline constexpr auto AtomicExchange_Int32_backend_index = 2103u;
 
 /// atomicAdd with Int32, Int32, MemorySemantics
 extern Variable AtomicAdd_Int32_ptr;
 extern Variable AtomicAdd_Int32_value;
 extern Variable AtomicAdd_Int32_semantics;
 extern Function AtomicAdd_Int32;
+inline constexpr auto AtomicAdd_Int32_backend_index = 2104u;
 
 /// atomicSubtract with Int32, Int32, MemorySemantics
 extern Variable AtomicSubtract_Int32_ptr;
 extern Variable AtomicSubtract_Int32_value;
 extern Variable AtomicSubtract_Int32_semantics;
 extern Function AtomicSubtract_Int32;
+inline constexpr auto AtomicSubtract_Int32_backend_index = 2105u;
 
 /// atomicAnd with Int32, Int32, MemorySemantics
 extern Variable AtomicAnd_Int32_ptr;
 extern Variable AtomicAnd_Int32_value;
 extern Variable AtomicAnd_Int32_semantics;
 extern Function AtomicAnd_Int32;
+inline constexpr auto AtomicAnd_Int32_backend_index = 2106u;
 
 /// atomicOr with Int32, Int32, MemorySemantics
 extern Variable AtomicOr_Int32_ptr;
 extern Variable AtomicOr_Int32_value;
 extern Variable AtomicOr_Int32_semantics;
 extern Function AtomicOr_Int32;
+inline constexpr auto AtomicOr_Int32_backend_index = 2107u;
 
 /// atomicXor with Int32, Int32, MemorySemantics
 extern Variable AtomicXor_Int32_ptr;
 extern Variable AtomicXor_Int32_value;
 extern Variable AtomicXor_Int32_semantics;
 extern Function AtomicXor_Int32;
+inline constexpr auto AtomicXor_Int32_backend_index = 2108u;
 
 /// atomicStore with UInt16, UInt16, MemorySemantics
 extern Variable AtomicStore_UInt16_ptr;
 extern Variable AtomicStore_UInt16_value;
 extern Variable AtomicStore_UInt16_semantics;
 extern Function AtomicStore_UInt16;
+inline constexpr auto AtomicStore_UInt16_backend_index = 2109u;
 
 /// atomicExchange with UInt16, UInt16, MemorySemantics
 extern Variable AtomicExchange_UInt16_ptr;
 extern Variable AtomicExchange_UInt16_value;
 extern Variable AtomicExchange_UInt16_semantics;
 extern Function AtomicExchange_UInt16;
+inline constexpr auto AtomicExchange_UInt16_backend_index = 2110u;
 
 /// atomicAdd with UInt16, UInt16, MemorySemantics
 extern Variable AtomicAdd_UInt16_ptr;
 extern Variable AtomicAdd_UInt16_value;
 extern Variable AtomicAdd_UInt16_semantics;
 extern Function AtomicAdd_UInt16;
+inline constexpr auto AtomicAdd_UInt16_backend_index = 2111u;
 
 /// atomicSubtract with UInt16, UInt16, MemorySemantics
 extern Variable AtomicSubtract_UInt16_ptr;
 extern Variable AtomicSubtract_UInt16_value;
 extern Variable AtomicSubtract_UInt16_semantics;
 extern Function AtomicSubtract_UInt16;
+inline constexpr auto AtomicSubtract_UInt16_backend_index = 2112u;
 
 /// atomicAnd with UInt16, UInt16, MemorySemantics
 extern Variable AtomicAnd_UInt16_ptr;
 extern Variable AtomicAnd_UInt16_value;
 extern Variable AtomicAnd_UInt16_semantics;
 extern Function AtomicAnd_UInt16;
+inline constexpr auto AtomicAnd_UInt16_backend_index = 2113u;
 
 /// atomicOr with UInt16, UInt16, MemorySemantics
 extern Variable AtomicOr_UInt16_ptr;
 extern Variable AtomicOr_UInt16_value;
 extern Variable AtomicOr_UInt16_semantics;
 extern Function AtomicOr_UInt16;
+inline constexpr auto AtomicOr_UInt16_backend_index = 2114u;
 
 /// atomicXor with UInt16, UInt16, MemorySemantics
 extern Variable AtomicXor_UInt16_ptr;
 extern Variable AtomicXor_UInt16_value;
 extern Variable AtomicXor_UInt16_semantics;
 extern Function AtomicXor_UInt16;
+inline constexpr auto AtomicXor_UInt16_backend_index = 2115u;
 
 /// atomicStore with Int16, Int16, MemorySemantics
 extern Variable AtomicStore_Int16_ptr;
 extern Variable AtomicStore_Int16_value;
 extern Variable AtomicStore_Int16_semantics;
 extern Function AtomicStore_Int16;
+inline constexpr auto AtomicStore_Int16_backend_index = 2116u;
 
 /// atomicExchange with Int16, Int16, MemorySemantics
 extern Variable AtomicExchange_Int16_ptr;
 extern Variable AtomicExchange_Int16_value;
 extern Variable AtomicExchange_Int16_semantics;
 extern Function AtomicExchange_Int16;
+inline constexpr auto AtomicExchange_Int16_backend_index = 2117u;
 
 /// atomicAdd with Int16, Int16, MemorySemantics
 extern Variable AtomicAdd_Int16_ptr;
 extern Variable AtomicAdd_Int16_value;
 extern Variable AtomicAdd_Int16_semantics;
 extern Function AtomicAdd_Int16;
+inline constexpr auto AtomicAdd_Int16_backend_index = 2118u;
 
 /// atomicSubtract with Int16, Int16, MemorySemantics
 extern Variable AtomicSubtract_Int16_ptr;
 extern Variable AtomicSubtract_Int16_value;
 extern Variable AtomicSubtract_Int16_semantics;
 extern Function AtomicSubtract_Int16;
+inline constexpr auto AtomicSubtract_Int16_backend_index = 2119u;
 
 /// atomicAnd with Int16, Int16, MemorySemantics
 extern Variable AtomicAnd_Int16_ptr;
 extern Variable AtomicAnd_Int16_value;
 extern Variable AtomicAnd_Int16_semantics;
 extern Function AtomicAnd_Int16;
+inline constexpr auto AtomicAnd_Int16_backend_index = 2120u;
 
 /// atomicOr with Int16, Int16, MemorySemantics
 extern Variable AtomicOr_Int16_ptr;
 extern Variable AtomicOr_Int16_value;
 extern Variable AtomicOr_Int16_semantics;
 extern Function AtomicOr_Int16;
+inline constexpr auto AtomicOr_Int16_backend_index = 2121u;
 
 /// atomicXor with Int16, Int16, MemorySemantics
 extern Variable AtomicXor_Int16_ptr;
 extern Variable AtomicXor_Int16_value;
 extern Variable AtomicXor_Int16_semantics;
 extern Function AtomicXor_Int16;
+inline constexpr auto AtomicXor_Int16_backend_index = 2122u;
 
 /// atomicCompareExchange with Int16, Int16, Int16, MemorySemantics
 extern Variable AtomicCompareExchange_UInt32_ptr;
@@ -5454,6 +6605,7 @@ extern Variable AtomicCompareExchange_UInt32_value;
 extern Variable AtomicCompareExchange_UInt32_compare;
 extern Variable AtomicCompareExchange_UInt32_semantics;
 extern Function AtomicCompareExchange_UInt32;
+inline constexpr auto AtomicCompareExchange_UInt32_backend_index = 2123u;
 
 /// atomicCompareExchange with Int16, Int16, Int16, MemorySemantics
 extern Variable AtomicCompareExchange_Int32_ptr;
@@ -5461,6 +6613,7 @@ extern Variable AtomicCompareExchange_Int32_value;
 extern Variable AtomicCompareExchange_Int32_compare;
 extern Variable AtomicCompareExchange_Int32_semantics;
 extern Function AtomicCompareExchange_Int32;
+inline constexpr auto AtomicCompareExchange_Int32_backend_index = 2124u;
 
 /// atomicCompareExchange with Int16, Int16, Int16, MemorySemantics
 extern Variable AtomicCompareExchange_UInt16_ptr;
@@ -5468,6 +6621,7 @@ extern Variable AtomicCompareExchange_UInt16_value;
 extern Variable AtomicCompareExchange_UInt16_compare;
 extern Variable AtomicCompareExchange_UInt16_semantics;
 extern Function AtomicCompareExchange_UInt16;
+inline constexpr auto AtomicCompareExchange_UInt16_backend_index = 2125u;
 
 /// atomicCompareExchange with Int16, Int16, Int16, MemorySemantics
 extern Variable AtomicCompareExchange_Int16_ptr;
@@ -5475,6 +6629,7 @@ extern Variable AtomicCompareExchange_Int16_value;
 extern Variable AtomicCompareExchange_Int16_compare;
 extern Variable AtomicCompareExchange_Int16_semantics;
 extern Function AtomicCompareExchange_Int16;
+inline constexpr auto AtomicCompareExchange_Int16_backend_index = 2126u;
 
 /// bitInsert with UInt16, UInt16, UInt16, UInt16
 extern Variable BitInsert_UInt16_base;
@@ -5482,6 +6637,7 @@ extern Variable BitInsert_UInt16_value;
 extern Variable BitInsert_UInt16_offset;
 extern Variable BitInsert_UInt16_count;
 extern Function BitInsert_UInt16;
+inline constexpr auto BitInsert_UInt16_backend_index = 2127u;
 
 /// bitInsert with UInt32, UInt32, UInt32, UInt32
 extern Variable BitInsert_UInt32_base;
@@ -5489,282 +6645,344 @@ extern Variable BitInsert_UInt32_value;
 extern Variable BitInsert_UInt32_offset;
 extern Variable BitInsert_UInt32_count;
 extern Function BitInsert_UInt32;
+inline constexpr auto BitInsert_UInt32_backend_index = 2128u;
 
 /// bitExtract with UInt32, UInt32, UInt32
 extern Variable BitExtract_UInt32_base;
 extern Variable BitExtract_UInt32_offset;
 extern Variable BitExtract_UInt32_count;
 extern Function BitExtract_UInt32;
+inline constexpr auto BitExtract_UInt32_backend_index = 2129u;
 
 /// bitExtract with Int32, Int32, Int32
 extern Variable BitExtract_Int32_base;
 extern Variable BitExtract_Int32_offset;
 extern Variable BitExtract_Int32_count;
 extern Function BitExtract_Int32;
+inline constexpr auto BitExtract_Int32_backend_index = 2130u;
 
 /// bitExtract with UInt16, UInt16, UInt16
 extern Variable BitExtract_UInt16_base;
 extern Variable BitExtract_UInt16_offset;
 extern Variable BitExtract_UInt16_count;
 extern Function BitExtract_UInt16;
+inline constexpr auto BitExtract_UInt16_backend_index = 2131u;
 
 /// bitExtract with Int16, Int16, Int16
 extern Variable BitExtract_Int16_base;
 extern Variable BitExtract_Int16_offset;
 extern Variable BitExtract_Int16_count;
 extern Function BitExtract_Int16;
+inline constexpr auto BitExtract_Int16_backend_index = 2132u;
 
 /// bitReverse with UInt32
 extern Variable BitReverse_UInt32_base;
 extern Function BitReverse_UInt32;
+inline constexpr auto BitReverse_UInt32_backend_index = 2133u;
 
 /// bitReverse with Int32
 extern Variable BitReverse_Int32_base;
 extern Function BitReverse_Int32;
+inline constexpr auto BitReverse_Int32_backend_index = 2134u;
 
 /// bitReverse with UInt16
 extern Variable BitReverse_UInt16_base;
 extern Function BitReverse_UInt16;
+inline constexpr auto BitReverse_UInt16_backend_index = 2135u;
 
 /// bitReverse with Int16
 extern Variable BitReverse_Int16_base;
 extern Function BitReverse_Int16;
+inline constexpr auto BitReverse_Int16_backend_index = 2136u;
 
 /// bitCount with UInt32
 extern Variable BitCount_UInt32_base;
 extern Function BitCount_UInt32;
+inline constexpr auto BitCount_UInt32_backend_index = 2137u;
 
 /// bitCount with Int32
 extern Variable BitCount_Int32_base;
 extern Function BitCount_Int32;
+inline constexpr auto BitCount_Int32_backend_index = 2138u;
 
 /// bitCount with UInt16
 extern Variable BitCount_UInt16_base;
 extern Function BitCount_UInt16;
+inline constexpr auto BitCount_UInt16_backend_index = 2139u;
 
 /// bitCount with Int16
 extern Variable BitCount_Int16_base;
 extern Function BitCount_Int16;
+inline constexpr auto BitCount_Int16_backend_index = 2140u;
 
 /// executionBarrier
 extern Function ExecutionBarrier;
+inline constexpr auto ExecutionBarrier_backend_index = 2141u;
 
 /// executionBarrierSubgroup
 extern Function ExecutionBarrierSubgroup;
+inline constexpr auto ExecutionBarrierSubgroup_backend_index = 2142u;
 
 /// executionBarrierWorkgroup
 extern Function ExecutionBarrierWorkgroup;
+inline constexpr auto ExecutionBarrierWorkgroup_backend_index = 2143u;
 
 /// memoryBarrier
 extern Function MemoryBarrier;
+inline constexpr auto MemoryBarrier_backend_index = 2144u;
 
 /// memoryBarrierBuffer
 extern Function MemoryBarrierBuffer;
+inline constexpr auto MemoryBarrierBuffer_backend_index = 2145u;
 
 /// memoryBarrierTexture
 extern Function MemoryBarrierTexture;
+inline constexpr auto MemoryBarrierTexture_backend_index = 2146u;
 
 /// memoryBarrierAtomic
 extern Function MemoryBarrierAtomic;
+inline constexpr auto MemoryBarrierAtomic_backend_index = 2147u;
 
 /// memoryBarrierSubgroup
 extern Function MemoryBarrierSubgroup;
+inline constexpr auto MemoryBarrierSubgroup_backend_index = 2148u;
 
 /// memoryBarrierWorkgroup
 extern Function MemoryBarrierWorkgroup;
+inline constexpr auto MemoryBarrierWorkgroup_backend_index = 2149u;
 
 /// textureGetSize with Texture1D
 extern Variable TextureGetSize_Texture1D_texture;
 extern Function TextureGetSize_Texture1D;
+inline constexpr auto TextureGetSize_Texture1D_backend_index = 2150u;
 
 /// textureGetSize with Texture2D
 extern Variable TextureGetSize_Texture2D_texture;
 extern Function TextureGetSize_Texture2D;
+inline constexpr auto TextureGetSize_Texture2D_backend_index = 2151u;
 
 /// textureGetSize with Texture3D
 extern Variable TextureGetSize_Texture3D_texture;
 extern Function TextureGetSize_Texture3D;
+inline constexpr auto TextureGetSize_Texture3D_backend_index = 2152u;
 
 /// textureGetSize with TextureCube
 extern Variable TextureGetSize_TextureCube_texture;
 extern Function TextureGetSize_TextureCube;
+inline constexpr auto TextureGetSize_TextureCube_backend_index = 2153u;
 
 /// textureGetSize with Texture1DArray
 extern Variable TextureGetSize_Texture1DArray_texture;
 extern Function TextureGetSize_Texture1DArray;
+inline constexpr auto TextureGetSize_Texture1DArray_backend_index = 2154u;
 
 /// textureGetSize with Texture2DArray
 extern Variable TextureGetSize_Texture2DArray_texture;
 extern Function TextureGetSize_Texture2DArray;
+inline constexpr auto TextureGetSize_Texture2DArray_backend_index = 2155u;
 
 /// textureGetSize with TextureCubeArray
 extern Variable TextureGetSize_TextureCubeArray_texture;
 extern Function TextureGetSize_TextureCubeArray;
+inline constexpr auto TextureGetSize_TextureCubeArray_backend_index = 2156u;
 
 /// textureGetSizeMip with Texture1D, UInt32
 extern Variable TextureGetSizeMip_Texture1D_texture;
 extern Variable TextureGetSizeMip_Texture1D_mip;
 extern Function TextureGetSizeMip_Texture1D;
+inline constexpr auto TextureGetSizeMip_Texture1D_backend_index = 2157u;
 
 /// textureGetSizeMip with Texture2D, UInt32
 extern Variable TextureGetSizeMip_Texture2D_texture;
 extern Variable TextureGetSizeMip_Texture2D_mip;
 extern Function TextureGetSizeMip_Texture2D;
+inline constexpr auto TextureGetSizeMip_Texture2D_backend_index = 2158u;
 
 /// textureGetSizeMip with Texture3D, UInt32
 extern Variable TextureGetSizeMip_Texture3D_texture;
 extern Variable TextureGetSizeMip_Texture3D_mip;
 extern Function TextureGetSizeMip_Texture3D;
+inline constexpr auto TextureGetSizeMip_Texture3D_backend_index = 2159u;
 
 /// textureGetSizeMip with TextureCube, UInt32
 extern Variable TextureGetSizeMip_TextureCube_texture;
 extern Variable TextureGetSizeMip_TextureCube_mip;
 extern Function TextureGetSizeMip_TextureCube;
+inline constexpr auto TextureGetSizeMip_TextureCube_backend_index = 2160u;
 
 /// textureGetSizeMip with Texture1DArray, UInt32
 extern Variable TextureGetSizeMip_Texture1DArray_texture;
 extern Variable TextureGetSizeMip_Texture1DArray_mip;
 extern Function TextureGetSizeMip_Texture1DArray;
+inline constexpr auto TextureGetSizeMip_Texture1DArray_backend_index = 2161u;
 
 /// textureGetSizeMip with Texture2DArray, UInt32
 extern Variable TextureGetSizeMip_Texture2DArray_texture;
 extern Variable TextureGetSizeMip_Texture2DArray_mip;
 extern Function TextureGetSizeMip_Texture2DArray;
+inline constexpr auto TextureGetSizeMip_Texture2DArray_backend_index = 2162u;
 
 /// textureGetSizeMip with TextureCubeArray, UInt32
 extern Variable TextureGetSizeMip_TextureCubeArray_texture;
 extern Variable TextureGetSizeMip_TextureCubeArray_mip;
 extern Function TextureGetSizeMip_TextureCubeArray;
+inline constexpr auto TextureGetSizeMip_TextureCubeArray_backend_index = 2163u;
 
 /// textureGetMips with Texture1D
 extern Variable TextureGetMips_Texture1D_texture;
 extern Function TextureGetMips_Texture1D;
+inline constexpr auto TextureGetMips_Texture1D_backend_index = 2164u;
 
 /// textureGetMips with Texture2D
 extern Variable TextureGetMips_Texture2D_texture;
 extern Function TextureGetMips_Texture2D;
+inline constexpr auto TextureGetMips_Texture2D_backend_index = 2165u;
 
 /// textureGetMips with Texture3D
 extern Variable TextureGetMips_Texture3D_texture;
 extern Function TextureGetMips_Texture3D;
+inline constexpr auto TextureGetMips_Texture3D_backend_index = 2166u;
 
 /// textureGetMips with TextureCube
 extern Variable TextureGetMips_TextureCube_texture;
 extern Function TextureGetMips_TextureCube;
+inline constexpr auto TextureGetMips_TextureCube_backend_index = 2167u;
 
 /// textureGetMips with Texture1DArray
 extern Variable TextureGetMips_Texture1DArray_texture;
 extern Function TextureGetMips_Texture1DArray;
+inline constexpr auto TextureGetMips_Texture1DArray_backend_index = 2168u;
 
 /// textureGetMips with Texture2DArray
 extern Variable TextureGetMips_Texture2DArray_texture;
 extern Function TextureGetMips_Texture2DArray;
+inline constexpr auto TextureGetMips_Texture2DArray_backend_index = 2169u;
 
 /// textureGetMips with TextureCubeArray
 extern Variable TextureGetMips_TextureCubeArray_texture;
 extern Function TextureGetMips_TextureCubeArray;
+inline constexpr auto TextureGetMips_TextureCubeArray_backend_index = 2170u;
 
 /// textureGetSamples with Texture2DMS
 extern Variable TextureGetSamples_Texture2DMS_texture;
 extern Function TextureGetSamples_Texture2DMS;
+inline constexpr auto TextureGetSamples_Texture2DMS_backend_index = 2171u;
 
 /// textureGetSamples with Texture2DMSArray
 extern Variable TextureGetSamples_Texture2DMSArray_texture;
 extern Function TextureGetSamples_Texture2DMSArray;
+inline constexpr auto TextureGetSamples_Texture2DMSArray_backend_index = 2172u;
 
 /// textureGetSampledMip with Texture1D, Sampler, Float32
 extern Variable TextureGetSampledMip_Texture1D_texture;
 extern Variable TextureGetSampledMip_Texture1D_sampler;
 extern Variable TextureGetSampledMip_Texture1D_coordinate;
 extern Function TextureGetSampledMip_Texture1D;
+inline constexpr auto TextureGetSampledMip_Texture1D_backend_index = 2173u;
 
 /// textureGetSampledMip with SampledTexture1D, Float32
 extern Variable SampledTextureGetSampledMip_Texture1D_texture;
 extern Variable SampledTextureGetSampledMip_Texture1D_coordinate;
 extern Function SampledTextureGetSampledMip_Texture1D;
+inline constexpr auto SampledTextureGetSampledMip_Texture1D_backend_index = 2174u;
 
 /// textureGetSampledMip with Texture2D, Sampler, Float32x2
 extern Variable TextureGetSampledMip_Texture2D_texture;
 extern Variable TextureGetSampledMip_Texture2D_sampler;
 extern Variable TextureGetSampledMip_Texture2D_coordinate;
 extern Function TextureGetSampledMip_Texture2D;
+inline constexpr auto TextureGetSampledMip_Texture2D_backend_index = 2175u;
 
 /// textureGetSampledMip with SampledTexture2D, Float32x2
 extern Variable SampledTextureGetSampledMip_Texture2D_texture;
 extern Variable SampledTextureGetSampledMip_Texture2D_coordinate;
 extern Function SampledTextureGetSampledMip_Texture2D;
+inline constexpr auto SampledTextureGetSampledMip_Texture2D_backend_index = 2176u;
 
 /// textureGetSampledMip with Texture3D, Sampler, Float32x3
 extern Variable TextureGetSampledMip_Texture3D_texture;
 extern Variable TextureGetSampledMip_Texture3D_sampler;
 extern Variable TextureGetSampledMip_Texture3D_coordinate;
 extern Function TextureGetSampledMip_Texture3D;
+inline constexpr auto TextureGetSampledMip_Texture3D_backend_index = 2177u;
 
 /// textureGetSampledMip with SampledTexture3D, Float32x3
 extern Variable SampledTextureGetSampledMip_Texture3D_texture;
 extern Variable SampledTextureGetSampledMip_Texture3D_coordinate;
 extern Function SampledTextureGetSampledMip_Texture3D;
+inline constexpr auto SampledTextureGetSampledMip_Texture3D_backend_index = 2178u;
 
 /// textureGetSampledMip with TextureCube, Sampler, Float32x3
 extern Variable TextureGetSampledMip_TextureCube_texture;
 extern Variable TextureGetSampledMip_TextureCube_sampler;
 extern Variable TextureGetSampledMip_TextureCube_coordinate;
 extern Function TextureGetSampledMip_TextureCube;
+inline constexpr auto TextureGetSampledMip_TextureCube_backend_index = 2179u;
 
 /// textureGetSampledMip with SampledTextureCube, Float32x3
 extern Variable SampledTextureGetSampledMip_TextureCube_texture;
 extern Variable SampledTextureGetSampledMip_TextureCube_coordinate;
 extern Function SampledTextureGetSampledMip_TextureCube;
+inline constexpr auto SampledTextureGetSampledMip_TextureCube_backend_index = 2180u;
 
 /// textureGetSampledMip with Texture1DArray, Sampler, Float32x2
 extern Variable TextureGetSampledMip_Texture1DArray_texture;
 extern Variable TextureGetSampledMip_Texture1DArray_sampler;
 extern Variable TextureGetSampledMip_Texture1DArray_coordinate;
 extern Function TextureGetSampledMip_Texture1DArray;
+inline constexpr auto TextureGetSampledMip_Texture1DArray_backend_index = 2181u;
 
 /// textureGetSampledMip with SampledTexture1DArray, Float32x2
 extern Variable SampledTextureGetSampledMip_Texture1DArray_texture;
 extern Variable SampledTextureGetSampledMip_Texture1DArray_coordinate;
 extern Function SampledTextureGetSampledMip_Texture1DArray;
+inline constexpr auto SampledTextureGetSampledMip_Texture1DArray_backend_index = 2182u;
 
 /// textureGetSampledMip with Texture2DArray, Sampler, Float32x3
 extern Variable TextureGetSampledMip_Texture2DArray_texture;
 extern Variable TextureGetSampledMip_Texture2DArray_sampler;
 extern Variable TextureGetSampledMip_Texture2DArray_coordinate;
 extern Function TextureGetSampledMip_Texture2DArray;
+inline constexpr auto TextureGetSampledMip_Texture2DArray_backend_index = 2183u;
 
 /// textureGetSampledMip with SampledTexture2DArray, Float32x3
 extern Variable SampledTextureGetSampledMip_Texture2DArray_texture;
 extern Variable SampledTextureGetSampledMip_Texture2DArray_coordinate;
 extern Function SampledTextureGetSampledMip_Texture2DArray;
+inline constexpr auto SampledTextureGetSampledMip_Texture2DArray_backend_index = 2184u;
 
 /// textureGetSampledMip with TextureCubeArray, Sampler, Float32x4
 extern Variable TextureGetSampledMip_TextureCubeArray_texture;
 extern Variable TextureGetSampledMip_TextureCubeArray_sampler;
 extern Variable TextureGetSampledMip_TextureCubeArray_coordinate;
 extern Function TextureGetSampledMip_TextureCubeArray;
+inline constexpr auto TextureGetSampledMip_TextureCubeArray_backend_index = 2185u;
 
 /// textureGetSampledMip with SampledTextureCubeArray, Float32x4
 extern Variable SampledTextureGetSampledMip_TextureCubeArray_texture;
 extern Variable SampledTextureGetSampledMip_TextureCubeArray_coordinate;
 extern Function SampledTextureGetSampledMip_TextureCubeArray;
+inline constexpr auto SampledTextureGetSampledMip_TextureCubeArray_backend_index = 2186u;
 
 /// textureLoad with Texture1D, Int32
 extern Variable TextureLoad_Texture1D_texture;
 extern Variable TextureLoad_Texture1D_coordinate;
 extern Function TextureLoad_Texture1D;
+inline constexpr auto TextureLoad_Texture1D_backend_index = 2187u;
 
 /// textureLoadMip with Texture1D, Int32, Int32
 extern Variable TextureLoadMip_Texture1D_texture;
 extern Variable TextureLoadMip_Texture1D_coordinate;
 extern Variable TextureLoadMip_Texture1D_mip;
 extern Function TextureLoadMip_Texture1D;
+inline constexpr auto TextureLoadMip_Texture1D_backend_index = 2188u;
 
 /// textureStore with Texture1D, Int32, Float32x4
 extern Variable TextureStore_Texture1D_texture;
 extern Variable TextureStore_Texture1D_coordinate;
 extern Variable TextureStore_Texture1D_value;
 extern Function TextureStore_Texture1D;
+inline constexpr auto TextureStore_Texture1D_backend_index = 2189u;
 
 /// textureStoreMip with Texture1D, Int32, Int32, Float32x4
 extern Variable TextureStoreMip_Texture1D_texture;
@@ -5772,23 +6990,27 @@ extern Variable TextureStoreMip_Texture1D_coordinate;
 extern Variable TextureStoreMip_Texture1D_mip;
 extern Variable TextureStoreMip_Texture1D_value;
 extern Function TextureStoreMip_Texture1D;
+inline constexpr auto TextureStoreMip_Texture1D_backend_index = 2190u;
 
 /// textureLoad with Texture2D, Int32x2
 extern Variable TextureLoad_Texture2D_texture;
 extern Variable TextureLoad_Texture2D_coordinate;
 extern Function TextureLoad_Texture2D;
+inline constexpr auto TextureLoad_Texture2D_backend_index = 2191u;
 
 /// textureLoadMip with Texture2D, Int32x2, Int32
 extern Variable TextureLoadMip_Texture2D_texture;
 extern Variable TextureLoadMip_Texture2D_coordinate;
 extern Variable TextureLoadMip_Texture2D_mip;
 extern Function TextureLoadMip_Texture2D;
+inline constexpr auto TextureLoadMip_Texture2D_backend_index = 2192u;
 
 /// textureStore with Texture2D, Int32x2, Float32x4
 extern Variable TextureStore_Texture2D_texture;
 extern Variable TextureStore_Texture2D_coordinate;
 extern Variable TextureStore_Texture2D_value;
 extern Function TextureStore_Texture2D;
+inline constexpr auto TextureStore_Texture2D_backend_index = 2193u;
 
 /// textureStoreMip with Texture2D, Int32x2, Int32, Float32x4
 extern Variable TextureStoreMip_Texture2D_texture;
@@ -5796,23 +7018,27 @@ extern Variable TextureStoreMip_Texture2D_coordinate;
 extern Variable TextureStoreMip_Texture2D_mip;
 extern Variable TextureStoreMip_Texture2D_value;
 extern Function TextureStoreMip_Texture2D;
+inline constexpr auto TextureStoreMip_Texture2D_backend_index = 2194u;
 
 /// textureLoad with Texture3D, Int32x3
 extern Variable TextureLoad_Texture3D_texture;
 extern Variable TextureLoad_Texture3D_coordinate;
 extern Function TextureLoad_Texture3D;
+inline constexpr auto TextureLoad_Texture3D_backend_index = 2195u;
 
 /// textureLoadMip with Texture3D, Int32x3, Int32
 extern Variable TextureLoadMip_Texture3D_texture;
 extern Variable TextureLoadMip_Texture3D_coordinate;
 extern Variable TextureLoadMip_Texture3D_mip;
 extern Function TextureLoadMip_Texture3D;
+inline constexpr auto TextureLoadMip_Texture3D_backend_index = 2196u;
 
 /// textureStore with Texture3D, Int32x3, Float32x4
 extern Variable TextureStore_Texture3D_texture;
 extern Variable TextureStore_Texture3D_coordinate;
 extern Variable TextureStore_Texture3D_value;
 extern Function TextureStore_Texture3D;
+inline constexpr auto TextureStore_Texture3D_backend_index = 2197u;
 
 /// textureStoreMip with Texture3D, Int32x3, Int32, Float32x4
 extern Variable TextureStoreMip_Texture3D_texture;
@@ -5820,23 +7046,27 @@ extern Variable TextureStoreMip_Texture3D_coordinate;
 extern Variable TextureStoreMip_Texture3D_mip;
 extern Variable TextureStoreMip_Texture3D_value;
 extern Function TextureStoreMip_Texture3D;
+inline constexpr auto TextureStoreMip_Texture3D_backend_index = 2198u;
 
 /// textureLoad with TextureCube, Int32x3
 extern Variable TextureLoad_TextureCube_texture;
 extern Variable TextureLoad_TextureCube_coordinate;
 extern Function TextureLoad_TextureCube;
+inline constexpr auto TextureLoad_TextureCube_backend_index = 2199u;
 
 /// textureLoadMip with TextureCube, Int32x3, Int32
 extern Variable TextureLoadMip_TextureCube_texture;
 extern Variable TextureLoadMip_TextureCube_coordinate;
 extern Variable TextureLoadMip_TextureCube_mip;
 extern Function TextureLoadMip_TextureCube;
+inline constexpr auto TextureLoadMip_TextureCube_backend_index = 2200u;
 
 /// textureStore with TextureCube, Int32x3, Float32x4
 extern Variable TextureStore_TextureCube_texture;
 extern Variable TextureStore_TextureCube_coordinate;
 extern Variable TextureStore_TextureCube_value;
 extern Function TextureStore_TextureCube;
+inline constexpr auto TextureStore_TextureCube_backend_index = 2201u;
 
 /// textureStoreMip with TextureCube, Int32x3, Int32, Float32x4
 extern Variable TextureStoreMip_TextureCube_texture;
@@ -5844,23 +7074,27 @@ extern Variable TextureStoreMip_TextureCube_coordinate;
 extern Variable TextureStoreMip_TextureCube_mip;
 extern Variable TextureStoreMip_TextureCube_value;
 extern Function TextureStoreMip_TextureCube;
+inline constexpr auto TextureStoreMip_TextureCube_backend_index = 2202u;
 
 /// textureLoad with Texture1DArray, Int32x2
 extern Variable TextureLoad_Texture1DArray_texture;
 extern Variable TextureLoad_Texture1DArray_coordinate;
 extern Function TextureLoad_Texture1DArray;
+inline constexpr auto TextureLoad_Texture1DArray_backend_index = 2203u;
 
 /// textureLoadMip with Texture1DArray, Int32x2, Int32
 extern Variable TextureLoadMip_Texture1DArray_texture;
 extern Variable TextureLoadMip_Texture1DArray_coordinate;
 extern Variable TextureLoadMip_Texture1DArray_mip;
 extern Function TextureLoadMip_Texture1DArray;
+inline constexpr auto TextureLoadMip_Texture1DArray_backend_index = 2204u;
 
 /// textureStore with Texture1DArray, Int32x2, Float32x4
 extern Variable TextureStore_Texture1DArray_texture;
 extern Variable TextureStore_Texture1DArray_coordinate;
 extern Variable TextureStore_Texture1DArray_value;
 extern Function TextureStore_Texture1DArray;
+inline constexpr auto TextureStore_Texture1DArray_backend_index = 2205u;
 
 /// textureStoreMip with Texture1DArray, Int32x2, Int32, Float32x4
 extern Variable TextureStoreMip_Texture1DArray_texture;
@@ -5868,23 +7102,27 @@ extern Variable TextureStoreMip_Texture1DArray_coordinate;
 extern Variable TextureStoreMip_Texture1DArray_mip;
 extern Variable TextureStoreMip_Texture1DArray_value;
 extern Function TextureStoreMip_Texture1DArray;
+inline constexpr auto TextureStoreMip_Texture1DArray_backend_index = 2206u;
 
 /// textureLoad with Texture2DArray, Int32x3
 extern Variable TextureLoad_Texture2DArray_texture;
 extern Variable TextureLoad_Texture2DArray_coordinate;
 extern Function TextureLoad_Texture2DArray;
+inline constexpr auto TextureLoad_Texture2DArray_backend_index = 2207u;
 
 /// textureLoadMip with Texture2DArray, Int32x3, Int32
 extern Variable TextureLoadMip_Texture2DArray_texture;
 extern Variable TextureLoadMip_Texture2DArray_coordinate;
 extern Variable TextureLoadMip_Texture2DArray_mip;
 extern Function TextureLoadMip_Texture2DArray;
+inline constexpr auto TextureLoadMip_Texture2DArray_backend_index = 2208u;
 
 /// textureStore with Texture2DArray, Int32x3, Float32x4
 extern Variable TextureStore_Texture2DArray_texture;
 extern Variable TextureStore_Texture2DArray_coordinate;
 extern Variable TextureStore_Texture2DArray_value;
 extern Function TextureStore_Texture2DArray;
+inline constexpr auto TextureStore_Texture2DArray_backend_index = 2209u;
 
 /// textureStoreMip with Texture2DArray, Int32x3, Int32, Float32x4
 extern Variable TextureStoreMip_Texture2DArray_texture;
@@ -5892,23 +7130,27 @@ extern Variable TextureStoreMip_Texture2DArray_coordinate;
 extern Variable TextureStoreMip_Texture2DArray_mip;
 extern Variable TextureStoreMip_Texture2DArray_value;
 extern Function TextureStoreMip_Texture2DArray;
+inline constexpr auto TextureStoreMip_Texture2DArray_backend_index = 2210u;
 
 /// textureLoad with TextureCubeArray, Int32x4
 extern Variable TextureLoad_TextureCubeArray_texture;
 extern Variable TextureLoad_TextureCubeArray_coordinate;
 extern Function TextureLoad_TextureCubeArray;
+inline constexpr auto TextureLoad_TextureCubeArray_backend_index = 2211u;
 
 /// textureLoadMip with TextureCubeArray, Int32x4, Int32
 extern Variable TextureLoadMip_TextureCubeArray_texture;
 extern Variable TextureLoadMip_TextureCubeArray_coordinate;
 extern Variable TextureLoadMip_TextureCubeArray_mip;
 extern Function TextureLoadMip_TextureCubeArray;
+inline constexpr auto TextureLoadMip_TextureCubeArray_backend_index = 2212u;
 
 /// textureStore with TextureCubeArray, Int32x4, Float32x4
 extern Variable TextureStore_TextureCubeArray_texture;
 extern Variable TextureStore_TextureCubeArray_coordinate;
 extern Variable TextureStore_TextureCubeArray_value;
 extern Function TextureStore_TextureCubeArray;
+inline constexpr auto TextureStore_TextureCubeArray_backend_index = 2213u;
 
 /// textureStoreMip with TextureCubeArray, Int32x4, Int32, Float32x4
 extern Variable TextureStoreMip_TextureCubeArray_texture;
@@ -5916,23 +7158,27 @@ extern Variable TextureStoreMip_TextureCubeArray_coordinate;
 extern Variable TextureStoreMip_TextureCubeArray_mip;
 extern Variable TextureStoreMip_TextureCubeArray_value;
 extern Function TextureStoreMip_TextureCubeArray;
+inline constexpr auto TextureStoreMip_TextureCubeArray_backend_index = 2214u;
 
 /// textureLoad with Texture2DMS, Int32x2
 extern Variable TextureLoad_Texture2DMS_texture;
 extern Variable TextureLoad_Texture2DMS_coordinate;
 extern Function TextureLoad_Texture2DMS;
+inline constexpr auto TextureLoad_Texture2DMS_backend_index = 2215u;
 
 /// textureLoadMip with Texture2DMS, Int32x2, Int32
 extern Variable TextureLoadMip_Texture2DMS_texture;
 extern Variable TextureLoadMip_Texture2DMS_coordinate;
 extern Variable TextureLoadMip_Texture2DMS_mip;
 extern Function TextureLoadMip_Texture2DMS;
+inline constexpr auto TextureLoadMip_Texture2DMS_backend_index = 2216u;
 
 /// textureStore with Texture2DMS, Int32x2, Float32x4
 extern Variable TextureStore_Texture2DMS_texture;
 extern Variable TextureStore_Texture2DMS_coordinate;
 extern Variable TextureStore_Texture2DMS_value;
 extern Function TextureStore_Texture2DMS;
+inline constexpr auto TextureStore_Texture2DMS_backend_index = 2217u;
 
 /// textureStoreMip with Texture2DMS, Int32x2, Int32, Float32x4
 extern Variable TextureStoreMip_Texture2DMS_texture;
@@ -5940,23 +7186,27 @@ extern Variable TextureStoreMip_Texture2DMS_coordinate;
 extern Variable TextureStoreMip_Texture2DMS_mip;
 extern Variable TextureStoreMip_Texture2DMS_value;
 extern Function TextureStoreMip_Texture2DMS;
+inline constexpr auto TextureStoreMip_Texture2DMS_backend_index = 2218u;
 
 /// textureLoad with Texture2DMSArray, Int32x3
 extern Variable TextureLoad_Texture2DMSArray_texture;
 extern Variable TextureLoad_Texture2DMSArray_coordinate;
 extern Function TextureLoad_Texture2DMSArray;
+inline constexpr auto TextureLoad_Texture2DMSArray_backend_index = 2219u;
 
 /// textureLoadMip with Texture2DMSArray, Int32x3, Int32
 extern Variable TextureLoadMip_Texture2DMSArray_texture;
 extern Variable TextureLoadMip_Texture2DMSArray_coordinate;
 extern Variable TextureLoadMip_Texture2DMSArray_mip;
 extern Function TextureLoadMip_Texture2DMSArray;
+inline constexpr auto TextureLoadMip_Texture2DMSArray_backend_index = 2220u;
 
 /// textureStore with Texture2DMSArray, Int32x3, Float32x4
 extern Variable TextureStore_Texture2DMSArray_texture;
 extern Variable TextureStore_Texture2DMSArray_coordinate;
 extern Variable TextureStore_Texture2DMSArray_value;
 extern Function TextureStore_Texture2DMSArray;
+inline constexpr auto TextureStore_Texture2DMSArray_backend_index = 2221u;
 
 /// textureStoreMip with Texture2DMSArray, Int32x3, Int32, Float32x4
 extern Variable TextureStoreMip_Texture2DMSArray_texture;
@@ -5964,12 +7214,14 @@ extern Variable TextureStoreMip_Texture2DMSArray_coordinate;
 extern Variable TextureStoreMip_Texture2DMSArray_mip;
 extern Variable TextureStoreMip_Texture2DMSArray_value;
 extern Function TextureStoreMip_Texture2DMSArray;
+inline constexpr auto TextureStoreMip_Texture2DMSArray_backend_index = 2222u;
 
 /// textureFetch with Texture1D, Int32, UInt32
 extern Variable TextureFetch_Texture1D_texture;
 extern Variable TextureFetch_Texture1D_coordinate;
 extern Variable TextureFetch_Texture1D_lod;
 extern Function TextureFetch_Texture1D;
+inline constexpr auto TextureFetch_Texture1D_backend_index = 2223u;
 
 /// textureFetchSample with Texture1D, Int32, UInt32, UInt32
 extern Variable TextureFetchSample_Texture1D_texture;
@@ -5977,12 +7229,14 @@ extern Variable TextureFetchSample_Texture1D_coordinate;
 extern Variable TextureFetchSample_Texture1D_lod;
 extern Variable TextureFetchSample_Texture1D_sample;
 extern Function TextureFetchSample_Texture1D;
+inline constexpr auto TextureFetchSample_Texture1D_backend_index = 2224u;
 
 /// textureFetch with Texture2D, Int32x2, UInt32
 extern Variable TextureFetch_Texture2D_texture;
 extern Variable TextureFetch_Texture2D_coordinate;
 extern Variable TextureFetch_Texture2D_lod;
 extern Function TextureFetch_Texture2D;
+inline constexpr auto TextureFetch_Texture2D_backend_index = 2225u;
 
 /// textureFetchSample with Texture2D, Int32x2, UInt32, UInt32
 extern Variable TextureFetchSample_Texture2D_texture;
@@ -5990,12 +7244,14 @@ extern Variable TextureFetchSample_Texture2D_coordinate;
 extern Variable TextureFetchSample_Texture2D_lod;
 extern Variable TextureFetchSample_Texture2D_sample;
 extern Function TextureFetchSample_Texture2D;
+inline constexpr auto TextureFetchSample_Texture2D_backend_index = 2226u;
 
 /// textureFetch with Texture3D, Int32x3, UInt32
 extern Variable TextureFetch_Texture3D_texture;
 extern Variable TextureFetch_Texture3D_coordinate;
 extern Variable TextureFetch_Texture3D_lod;
 extern Function TextureFetch_Texture3D;
+inline constexpr auto TextureFetch_Texture3D_backend_index = 2227u;
 
 /// textureFetchSample with Texture3D, Int32x3, UInt32, UInt32
 extern Variable TextureFetchSample_Texture3D_texture;
@@ -6003,12 +7259,14 @@ extern Variable TextureFetchSample_Texture3D_coordinate;
 extern Variable TextureFetchSample_Texture3D_lod;
 extern Variable TextureFetchSample_Texture3D_sample;
 extern Function TextureFetchSample_Texture3D;
+inline constexpr auto TextureFetchSample_Texture3D_backend_index = 2228u;
 
 /// textureFetch with Texture1DArray, Int32x2, UInt32
 extern Variable TextureFetch_Texture1DArray_texture;
 extern Variable TextureFetch_Texture1DArray_coordinate;
 extern Variable TextureFetch_Texture1DArray_lod;
 extern Function TextureFetch_Texture1DArray;
+inline constexpr auto TextureFetch_Texture1DArray_backend_index = 2229u;
 
 /// textureFetchSample with Texture1DArray, Int32x2, UInt32, UInt32
 extern Variable TextureFetchSample_Texture1DArray_texture;
@@ -6016,12 +7274,14 @@ extern Variable TextureFetchSample_Texture1DArray_coordinate;
 extern Variable TextureFetchSample_Texture1DArray_lod;
 extern Variable TextureFetchSample_Texture1DArray_sample;
 extern Function TextureFetchSample_Texture1DArray;
+inline constexpr auto TextureFetchSample_Texture1DArray_backend_index = 2230u;
 
 /// textureFetch with Texture2DArray, Int32x3, UInt32
 extern Variable TextureFetch_Texture2DArray_texture;
 extern Variable TextureFetch_Texture2DArray_coordinate;
 extern Variable TextureFetch_Texture2DArray_lod;
 extern Function TextureFetch_Texture2DArray;
+inline constexpr auto TextureFetch_Texture2DArray_backend_index = 2231u;
 
 /// textureFetchSample with Texture2DArray, Int32x3, UInt32, UInt32
 extern Variable TextureFetchSample_Texture2DArray_texture;
@@ -6029,12 +7289,14 @@ extern Variable TextureFetchSample_Texture2DArray_coordinate;
 extern Variable TextureFetchSample_Texture2DArray_lod;
 extern Variable TextureFetchSample_Texture2DArray_sample;
 extern Function TextureFetchSample_Texture2DArray;
+inline constexpr auto TextureFetchSample_Texture2DArray_backend_index = 2232u;
 
 /// textureFetch with Texture2DMS, Int32x2, UInt32
 extern Variable TextureFetch_Texture2DMS_texture;
 extern Variable TextureFetch_Texture2DMS_coordinate;
 extern Variable TextureFetch_Texture2DMS_lod;
 extern Function TextureFetch_Texture2DMS;
+inline constexpr auto TextureFetch_Texture2DMS_backend_index = 2233u;
 
 /// textureFetchSample with Texture2DMS, Int32x2, UInt32, UInt32
 extern Variable TextureFetchSample_Texture2DMS_texture;
@@ -6042,12 +7304,14 @@ extern Variable TextureFetchSample_Texture2DMS_coordinate;
 extern Variable TextureFetchSample_Texture2DMS_lod;
 extern Variable TextureFetchSample_Texture2DMS_sample;
 extern Function TextureFetchSample_Texture2DMS;
+inline constexpr auto TextureFetchSample_Texture2DMS_backend_index = 2234u;
 
 /// textureFetch with Texture2DMSArray, Int32x3, UInt32
 extern Variable TextureFetch_Texture2DMSArray_texture;
 extern Variable TextureFetch_Texture2DMSArray_coordinate;
 extern Variable TextureFetch_Texture2DMSArray_lod;
 extern Function TextureFetch_Texture2DMSArray;
+inline constexpr auto TextureFetch_Texture2DMSArray_backend_index = 2235u;
 
 /// textureFetchSample with Texture2DMSArray, Int32x3, UInt32, UInt32
 extern Variable TextureFetchSample_Texture2DMSArray_texture;
@@ -6055,6 +7319,7 @@ extern Variable TextureFetchSample_Texture2DMSArray_coordinate;
 extern Variable TextureFetchSample_Texture2DMSArray_lod;
 extern Variable TextureFetchSample_Texture2DMSArray_sample;
 extern Function TextureFetchSample_Texture2DMSArray;
+inline constexpr auto TextureFetchSample_Texture2DMSArray_backend_index = 2236u;
 
 /// textureGather with Texture2D, Sampler, Int32x2, Int32
 extern Variable TextureGather_Texture2D_texture;
@@ -6062,12 +7327,14 @@ extern Variable TextureGather_Texture2D_sampler;
 extern Variable TextureGather_Texture2D_coordinate;
 extern Variable TextureGather_Texture2D_component;
 extern Function TextureGather_Texture2D;
+inline constexpr auto TextureGather_Texture2D_backend_index = 2237u;
 
 /// textureGather with SampledTexture2D, Int32x2, Int32
 extern Variable SampledTextureGather_Texture2D_texture;
 extern Variable SampledTextureGather_Texture2D_coordinate;
 extern Variable SampledTextureGather_Texture2D_component;
 extern Function SampledTextureGather_Texture2D;
+inline constexpr auto SampledTextureGather_Texture2D_backend_index = 2238u;
 
 /// textureGatherOffset with Texture2D, Sampler, Int32x2, Int32, UInt32
 extern Variable TextureGatherOffset_Texture2D_texture;
@@ -6076,6 +7343,7 @@ extern Variable TextureGatherOffset_Texture2D_coordinate;
 extern Variable TextureGatherOffset_Texture2D_component;
 extern Variable TextureGatherOffset_Texture2D_offset;
 extern Function TextureGatherOffset_Texture2D;
+inline constexpr auto TextureGatherOffset_Texture2D_backend_index = 2239u;
 
 /// textureGatherOffset with SampledTexture2D, Int32x2, Int32, UInt32
 extern Variable SampledTextureGatherOffset_Texture2D_texture;
@@ -6083,6 +7351,7 @@ extern Variable SampledTextureGatherOffset_Texture2D_coordinate;
 extern Variable SampledTextureGatherOffset_Texture2D_component;
 extern Variable SampledTextureGatherOffset_Texture2D_offset;
 extern Function SampledTextureGatherOffset_Texture2D;
+inline constexpr auto SampledTextureGatherOffset_Texture2D_backend_index = 2240u;
 
 /// textureGather with TextureCube, Sampler, Int32x3, Int32
 extern Variable TextureGather_TextureCube_texture;
@@ -6090,12 +7359,14 @@ extern Variable TextureGather_TextureCube_sampler;
 extern Variable TextureGather_TextureCube_coordinate;
 extern Variable TextureGather_TextureCube_component;
 extern Function TextureGather_TextureCube;
+inline constexpr auto TextureGather_TextureCube_backend_index = 2241u;
 
 /// textureGather with SampledTextureCube, Int32x3, Int32
 extern Variable SampledTextureGather_TextureCube_texture;
 extern Variable SampledTextureGather_TextureCube_coordinate;
 extern Variable SampledTextureGather_TextureCube_component;
 extern Function SampledTextureGather_TextureCube;
+inline constexpr auto SampledTextureGather_TextureCube_backend_index = 2242u;
 
 /// textureGatherOffset with TextureCube, Sampler, Int32x3, Int32, UInt32
 extern Variable TextureGatherOffset_TextureCube_texture;
@@ -6104,6 +7375,7 @@ extern Variable TextureGatherOffset_TextureCube_coordinate;
 extern Variable TextureGatherOffset_TextureCube_component;
 extern Variable TextureGatherOffset_TextureCube_offset;
 extern Function TextureGatherOffset_TextureCube;
+inline constexpr auto TextureGatherOffset_TextureCube_backend_index = 2243u;
 
 /// textureGatherOffset with SampledTextureCube, Int32x3, Int32, UInt32
 extern Variable SampledTextureGatherOffset_TextureCube_texture;
@@ -6111,6 +7383,7 @@ extern Variable SampledTextureGatherOffset_TextureCube_coordinate;
 extern Variable SampledTextureGatherOffset_TextureCube_component;
 extern Variable SampledTextureGatherOffset_TextureCube_offset;
 extern Function SampledTextureGatherOffset_TextureCube;
+inline constexpr auto SampledTextureGatherOffset_TextureCube_backend_index = 2244u;
 
 /// textureGather with Texture2DArray, Sampler, Int32x3, Int32
 extern Variable TextureGather_Texture2DArray_texture;
@@ -6118,12 +7391,14 @@ extern Variable TextureGather_Texture2DArray_sampler;
 extern Variable TextureGather_Texture2DArray_coordinate;
 extern Variable TextureGather_Texture2DArray_component;
 extern Function TextureGather_Texture2DArray;
+inline constexpr auto TextureGather_Texture2DArray_backend_index = 2245u;
 
 /// textureGather with SampledTexture2DArray, Int32x3, Int32
 extern Variable SampledTextureGather_Texture2DArray_texture;
 extern Variable SampledTextureGather_Texture2DArray_coordinate;
 extern Variable SampledTextureGather_Texture2DArray_component;
 extern Function SampledTextureGather_Texture2DArray;
+inline constexpr auto SampledTextureGather_Texture2DArray_backend_index = 2246u;
 
 /// textureGatherOffset with Texture2DArray, Sampler, Int32x3, Int32, UInt32
 extern Variable TextureGatherOffset_Texture2DArray_texture;
@@ -6132,6 +7407,7 @@ extern Variable TextureGatherOffset_Texture2DArray_coordinate;
 extern Variable TextureGatherOffset_Texture2DArray_component;
 extern Variable TextureGatherOffset_Texture2DArray_offset;
 extern Function TextureGatherOffset_Texture2DArray;
+inline constexpr auto TextureGatherOffset_Texture2DArray_backend_index = 2247u;
 
 /// textureGatherOffset with SampledTexture2DArray, Int32x3, Int32, UInt32
 extern Variable SampledTextureGatherOffset_Texture2DArray_texture;
@@ -6139,6 +7415,7 @@ extern Variable SampledTextureGatherOffset_Texture2DArray_coordinate;
 extern Variable SampledTextureGatherOffset_Texture2DArray_component;
 extern Variable SampledTextureGatherOffset_Texture2DArray_offset;
 extern Function SampledTextureGatherOffset_Texture2DArray;
+inline constexpr auto SampledTextureGatherOffset_Texture2DArray_backend_index = 2248u;
 
 /// textureGather with TextureCubeArray, Sampler, Int32x4, Int32
 extern Variable TextureGather_TextureCubeArray_texture;
@@ -6146,12 +7423,14 @@ extern Variable TextureGather_TextureCubeArray_sampler;
 extern Variable TextureGather_TextureCubeArray_coordinate;
 extern Variable TextureGather_TextureCubeArray_component;
 extern Function TextureGather_TextureCubeArray;
+inline constexpr auto TextureGather_TextureCubeArray_backend_index = 2249u;
 
 /// textureGather with SampledTextureCubeArray, Int32x4, Int32
 extern Variable SampledTextureGather_TextureCubeArray_texture;
 extern Variable SampledTextureGather_TextureCubeArray_coordinate;
 extern Variable SampledTextureGather_TextureCubeArray_component;
 extern Function SampledTextureGather_TextureCubeArray;
+inline constexpr auto SampledTextureGather_TextureCubeArray_backend_index = 2250u;
 
 /// textureGatherOffset with TextureCubeArray, Sampler, Int32x4, Int32, UInt32
 extern Variable TextureGatherOffset_TextureCubeArray_texture;
@@ -6160,6 +7439,7 @@ extern Variable TextureGatherOffset_TextureCubeArray_coordinate;
 extern Variable TextureGatherOffset_TextureCubeArray_component;
 extern Variable TextureGatherOffset_TextureCubeArray_offset;
 extern Function TextureGatherOffset_TextureCubeArray;
+inline constexpr auto TextureGatherOffset_TextureCubeArray_backend_index = 2251u;
 
 /// textureGatherOffset with SampledTextureCubeArray, Int32x4, Int32, UInt32
 extern Variable SampledTextureGatherOffset_TextureCubeArray_texture;
@@ -6167,92 +7447,109 @@ extern Variable SampledTextureGatherOffset_TextureCubeArray_coordinate;
 extern Variable SampledTextureGatherOffset_TextureCubeArray_component;
 extern Variable SampledTextureGatherOffset_TextureCubeArray_offset;
 extern Function SampledTextureGatherOffset_TextureCubeArray;
+inline constexpr auto SampledTextureGatherOffset_TextureCubeArray_backend_index = 2252u;
 
 /// texturePixelCacheLoad with PixelCache
 extern Variable TexturePixelCacheLoad_PixelCache_texture;
 extern Function TexturePixelCacheLoad_PixelCache;
+inline constexpr auto TexturePixelCacheLoad_PixelCache_backend_index = 2253u;
 
 /// texturePixelCacheLoad with PixelCacheMS, UInt32
 extern Variable TexturePixelCacheLoad_PixelCacheMS_texture;
 extern Variable TexturePixelCacheLoad_PixelCacheMS_sample;
 extern Function TexturePixelCacheLoad_PixelCacheMS;
+inline constexpr auto TexturePixelCacheLoad_PixelCacheMS_backend_index = 2254u;
 
 /// textureSample with Texture1D, Sampler, Float32
 extern Variable TextureSample_Texture1D_texture;
 extern Variable TextureSample_Texture1D_sampler;
 extern Variable TextureSample_Texture1D_coordinate;
 extern Function TextureSample_Texture1D;
+inline constexpr auto TextureSample_Texture1D_backend_index = 2255u;
 
 /// textureSample with SampledTexture1D, Float32
 extern Variable SampledTextureSample_Texture1D_texture;
 extern Variable SampledTextureSample_Texture1D_coordinate;
 extern Function SampledTextureSample_Texture1D;
+inline constexpr auto SampledTextureSample_Texture1D_backend_index = 2256u;
 
 /// textureSample with Texture2D, Sampler, Float32x2
 extern Variable TextureSample_Texture2D_texture;
 extern Variable TextureSample_Texture2D_sampler;
 extern Variable TextureSample_Texture2D_coordinate;
 extern Function TextureSample_Texture2D;
+inline constexpr auto TextureSample_Texture2D_backend_index = 2257u;
 
 /// textureSample with SampledTexture2D, Float32x2
 extern Variable SampledTextureSample_Texture2D_texture;
 extern Variable SampledTextureSample_Texture2D_coordinate;
 extern Function SampledTextureSample_Texture2D;
+inline constexpr auto SampledTextureSample_Texture2D_backend_index = 2258u;
 
 /// textureSample with Texture3D, Sampler, Float32x3
 extern Variable TextureSample_Texture3D_texture;
 extern Variable TextureSample_Texture3D_sampler;
 extern Variable TextureSample_Texture3D_coordinate;
 extern Function TextureSample_Texture3D;
+inline constexpr auto TextureSample_Texture3D_backend_index = 2259u;
 
 /// textureSample with SampledTexture3D, Float32x3
 extern Variable SampledTextureSample_Texture3D_texture;
 extern Variable SampledTextureSample_Texture3D_coordinate;
 extern Function SampledTextureSample_Texture3D;
+inline constexpr auto SampledTextureSample_Texture3D_backend_index = 2260u;
 
 /// textureSample with TextureCube, Sampler, Float32x3
 extern Variable TextureSample_TextureCube_texture;
 extern Variable TextureSample_TextureCube_sampler;
 extern Variable TextureSample_TextureCube_coordinate;
 extern Function TextureSample_TextureCube;
+inline constexpr auto TextureSample_TextureCube_backend_index = 2261u;
 
 /// textureSample with SampledTextureCube, Float32x3
 extern Variable SampledTextureSample_TextureCube_texture;
 extern Variable SampledTextureSample_TextureCube_coordinate;
 extern Function SampledTextureSample_TextureCube;
+inline constexpr auto SampledTextureSample_TextureCube_backend_index = 2262u;
 
 /// textureSample with Texture1DArray, Sampler, Float32x2
 extern Variable TextureSample_Texture1DArray_texture;
 extern Variable TextureSample_Texture1DArray_sampler;
 extern Variable TextureSample_Texture1DArray_coordinate;
 extern Function TextureSample_Texture1DArray;
+inline constexpr auto TextureSample_Texture1DArray_backend_index = 2263u;
 
 /// textureSample with SampledTexture1DArray, Float32x2
 extern Variable SampledTextureSample_Texture1DArray_texture;
 extern Variable SampledTextureSample_Texture1DArray_coordinate;
 extern Function SampledTextureSample_Texture1DArray;
+inline constexpr auto SampledTextureSample_Texture1DArray_backend_index = 2264u;
 
 /// textureSample with Texture2DArray, Sampler, Float32x3
 extern Variable TextureSample_Texture2DArray_texture;
 extern Variable TextureSample_Texture2DArray_sampler;
 extern Variable TextureSample_Texture2DArray_coordinate;
 extern Function TextureSample_Texture2DArray;
+inline constexpr auto TextureSample_Texture2DArray_backend_index = 2265u;
 
 /// textureSample with SampledTexture2DArray, Float32x3
 extern Variable SampledTextureSample_Texture2DArray_texture;
 extern Variable SampledTextureSample_Texture2DArray_coordinate;
 extern Function SampledTextureSample_Texture2DArray;
+inline constexpr auto SampledTextureSample_Texture2DArray_backend_index = 2266u;
 
 /// textureSample with TextureCubeArray, Sampler, Float32x4
 extern Variable TextureSample_TextureCubeArray_texture;
 extern Variable TextureSample_TextureCubeArray_sampler;
 extern Variable TextureSample_TextureCubeArray_coordinate;
 extern Function TextureSample_TextureCubeArray;
+inline constexpr auto TextureSample_TextureCubeArray_backend_index = 2267u;
 
 /// textureSample with SampledTextureCubeArray, Float32x4
 extern Variable SampledTextureSample_TextureCubeArray_texture;
 extern Variable SampledTextureSample_TextureCubeArray_coordinate;
 extern Function SampledTextureSample_TextureCubeArray;
+inline constexpr auto SampledTextureSample_TextureCubeArray_backend_index = 2268u;
 
 /// textureSampleOffset with Texture1D, Sampler, Float32, Float32
 extern Variable TextureSampleOffset_Texture1D_texture;
@@ -6260,12 +7557,14 @@ extern Variable TextureSampleOffset_Texture1D_sampler;
 extern Variable TextureSampleOffset_Texture1D_coordinate;
 extern Variable TextureSampleOffset_Texture1D_offset;
 extern Function TextureSampleOffset_Texture1D;
+inline constexpr auto TextureSampleOffset_Texture1D_backend_index = 2269u;
 
 /// textureSampleOffset with SampledTexture1D, Float32, Float32
 extern Variable SampledTextureSampleOffset_Texture1D_texture;
 extern Variable SampledTextureSampleOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleOffset_Texture1D_offset;
 extern Function SampledTextureSampleOffset_Texture1D;
+inline constexpr auto SampledTextureSampleOffset_Texture1D_backend_index = 2270u;
 
 /// textureSampleOffset with Texture2D, Sampler, Float32x2, Float32x2
 extern Variable TextureSampleOffset_Texture2D_texture;
@@ -6273,12 +7572,14 @@ extern Variable TextureSampleOffset_Texture2D_sampler;
 extern Variable TextureSampleOffset_Texture2D_coordinate;
 extern Variable TextureSampleOffset_Texture2D_offset;
 extern Function TextureSampleOffset_Texture2D;
+inline constexpr auto TextureSampleOffset_Texture2D_backend_index = 2271u;
 
 /// textureSampleOffset with SampledTexture2D, Float32x2, Float32x2
 extern Variable SampledTextureSampleOffset_Texture2D_texture;
 extern Variable SampledTextureSampleOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleOffset_Texture2D_offset;
 extern Function SampledTextureSampleOffset_Texture2D;
+inline constexpr auto SampledTextureSampleOffset_Texture2D_backend_index = 2272u;
 
 /// textureSampleOffset with Texture3D, Sampler, Float32x3, Float32x3
 extern Variable TextureSampleOffset_Texture3D_texture;
@@ -6286,12 +7587,14 @@ extern Variable TextureSampleOffset_Texture3D_sampler;
 extern Variable TextureSampleOffset_Texture3D_coordinate;
 extern Variable TextureSampleOffset_Texture3D_offset;
 extern Function TextureSampleOffset_Texture3D;
+inline constexpr auto TextureSampleOffset_Texture3D_backend_index = 2273u;
 
 /// textureSampleOffset with SampledTexture3D, Float32x3, Float32x3
 extern Variable SampledTextureSampleOffset_Texture3D_texture;
 extern Variable SampledTextureSampleOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleOffset_Texture3D_offset;
 extern Function SampledTextureSampleOffset_Texture3D;
+inline constexpr auto SampledTextureSampleOffset_Texture3D_backend_index = 2274u;
 
 /// textureSampleOffset with Texture1DArray, Sampler, Float32x2, Float32x2
 extern Variable TextureSampleOffset_Texture1DArray_texture;
@@ -6299,12 +7602,14 @@ extern Variable TextureSampleOffset_Texture1DArray_sampler;
 extern Variable TextureSampleOffset_Texture1DArray_coordinate;
 extern Variable TextureSampleOffset_Texture1DArray_offset;
 extern Function TextureSampleOffset_Texture1DArray;
+inline constexpr auto TextureSampleOffset_Texture1DArray_backend_index = 2275u;
 
 /// textureSampleOffset with SampledTexture1DArray, Float32x2, Float32x2
 extern Variable SampledTextureSampleOffset_Texture1DArray_texture;
 extern Variable SampledTextureSampleOffset_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleOffset_Texture1DArray_offset;
 extern Function SampledTextureSampleOffset_Texture1DArray;
+inline constexpr auto SampledTextureSampleOffset_Texture1DArray_backend_index = 2276u;
 
 /// textureSampleOffset with Texture2DArray, Sampler, Float32x3, Float32x3
 extern Variable TextureSampleOffset_Texture2DArray_texture;
@@ -6312,12 +7617,14 @@ extern Variable TextureSampleOffset_Texture2DArray_sampler;
 extern Variable TextureSampleOffset_Texture2DArray_coordinate;
 extern Variable TextureSampleOffset_Texture2DArray_offset;
 extern Function TextureSampleOffset_Texture2DArray;
+inline constexpr auto TextureSampleOffset_Texture2DArray_backend_index = 2277u;
 
 /// textureSampleOffset with SampledTexture2DArray, Float32x3, Float32x3
 extern Variable SampledTextureSampleOffset_Texture2DArray_texture;
 extern Variable SampledTextureSampleOffset_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleOffset_Texture2DArray_offset;
 extern Function SampledTextureSampleOffset_Texture2DArray;
+inline constexpr auto SampledTextureSampleOffset_Texture2DArray_backend_index = 2278u;
 
 /// textureSampleProj with Texture1D, Sampler, Float32, Float32
 extern Variable TextureSampleProj_Texture1D_texture;
@@ -6325,12 +7632,14 @@ extern Variable TextureSampleProj_Texture1D_sampler;
 extern Variable TextureSampleProj_Texture1D_coordinate;
 extern Variable TextureSampleProj_Texture1D_proj;
 extern Function TextureSampleProj_Texture1D;
+inline constexpr auto TextureSampleProj_Texture1D_backend_index = 2279u;
 
 /// textureSampleProj with SampledTexture1D, Float32, Float32
 extern Variable SampledTextureSampleProj_Texture1D_texture;
 extern Variable SampledTextureSampleProj_Texture1D_coordinate;
 extern Variable SampledTextureSampleProj_Texture1D_proj;
 extern Function SampledTextureSampleProj_Texture1D;
+inline constexpr auto SampledTextureSampleProj_Texture1D_backend_index = 2280u;
 
 /// textureSampleProj with Texture2D, Sampler, Float32x2, Float32
 extern Variable TextureSampleProj_Texture2D_texture;
@@ -6338,12 +7647,14 @@ extern Variable TextureSampleProj_Texture2D_sampler;
 extern Variable TextureSampleProj_Texture2D_coordinate;
 extern Variable TextureSampleProj_Texture2D_proj;
 extern Function TextureSampleProj_Texture2D;
+inline constexpr auto TextureSampleProj_Texture2D_backend_index = 2281u;
 
 /// textureSampleProj with SampledTexture2D, Float32x2, Float32
 extern Variable SampledTextureSampleProj_Texture2D_texture;
 extern Variable SampledTextureSampleProj_Texture2D_coordinate;
 extern Variable SampledTextureSampleProj_Texture2D_proj;
 extern Function SampledTextureSampleProj_Texture2D;
+inline constexpr auto SampledTextureSampleProj_Texture2D_backend_index = 2282u;
 
 /// textureSampleProj with Texture3D, Sampler, Float32x3, Float32
 extern Variable TextureSampleProj_Texture3D_texture;
@@ -6351,12 +7662,14 @@ extern Variable TextureSampleProj_Texture3D_sampler;
 extern Variable TextureSampleProj_Texture3D_coordinate;
 extern Variable TextureSampleProj_Texture3D_proj;
 extern Function TextureSampleProj_Texture3D;
+inline constexpr auto TextureSampleProj_Texture3D_backend_index = 2283u;
 
 /// textureSampleProj with SampledTexture3D, Float32x3, Float32
 extern Variable SampledTextureSampleProj_Texture3D_texture;
 extern Variable SampledTextureSampleProj_Texture3D_coordinate;
 extern Variable SampledTextureSampleProj_Texture3D_proj;
 extern Function SampledTextureSampleProj_Texture3D;
+inline constexpr auto SampledTextureSampleProj_Texture3D_backend_index = 2284u;
 
 /// textureSampleProjOffset with Texture1D, Sampler, Float32, Float32, Float32
 extern Variable TextureSampleProjOffset_Texture1D_texture;
@@ -6365,6 +7678,7 @@ extern Variable TextureSampleProjOffset_Texture1D_coordinate;
 extern Variable TextureSampleProjOffset_Texture1D_proj;
 extern Variable TextureSampleProjOffset_Texture1D_offset;
 extern Function TextureSampleProjOffset_Texture1D;
+inline constexpr auto TextureSampleProjOffset_Texture1D_backend_index = 2285u;
 
 /// textureSampleProjOffset with SampledTexture1D, Float32, Float32, Float32
 extern Variable SampledTextureSampleProjOffset_Texture1D_texture;
@@ -6372,6 +7686,7 @@ extern Variable SampledTextureSampleProjOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleProjOffset_Texture1D_proj;
 extern Variable SampledTextureSampleProjOffset_Texture1D_offset;
 extern Function SampledTextureSampleProjOffset_Texture1D;
+inline constexpr auto SampledTextureSampleProjOffset_Texture1D_backend_index = 2286u;
 
 /// textureSampleProjOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2
 extern Variable TextureSampleProjOffset_Texture2D_texture;
@@ -6380,6 +7695,7 @@ extern Variable TextureSampleProjOffset_Texture2D_coordinate;
 extern Variable TextureSampleProjOffset_Texture2D_proj;
 extern Variable TextureSampleProjOffset_Texture2D_offset;
 extern Function TextureSampleProjOffset_Texture2D;
+inline constexpr auto TextureSampleProjOffset_Texture2D_backend_index = 2287u;
 
 /// textureSampleProjOffset with SampledTexture2D, Float32x2, Float32, Float32x2
 extern Variable SampledTextureSampleProjOffset_Texture2D_texture;
@@ -6387,6 +7703,7 @@ extern Variable SampledTextureSampleProjOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleProjOffset_Texture2D_proj;
 extern Variable SampledTextureSampleProjOffset_Texture2D_offset;
 extern Function SampledTextureSampleProjOffset_Texture2D;
+inline constexpr auto SampledTextureSampleProjOffset_Texture2D_backend_index = 2288u;
 
 /// textureSampleProjOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3
 extern Variable TextureSampleProjOffset_Texture3D_texture;
@@ -6395,6 +7712,7 @@ extern Variable TextureSampleProjOffset_Texture3D_coordinate;
 extern Variable TextureSampleProjOffset_Texture3D_proj;
 extern Variable TextureSampleProjOffset_Texture3D_offset;
 extern Function TextureSampleProjOffset_Texture3D;
+inline constexpr auto TextureSampleProjOffset_Texture3D_backend_index = 2289u;
 
 /// textureSampleProjOffset with SampledTexture3D, Float32x3, Float32, Float32x3
 extern Variable SampledTextureSampleProjOffset_Texture3D_texture;
@@ -6402,6 +7720,7 @@ extern Variable SampledTextureSampleProjOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleProjOffset_Texture3D_proj;
 extern Variable SampledTextureSampleProjOffset_Texture3D_offset;
 extern Function SampledTextureSampleProjOffset_Texture3D;
+inline constexpr auto SampledTextureSampleProjOffset_Texture3D_backend_index = 2290u;
 
 /// textureSampleCompare with Texture1D, Sampler, Float32, Float32
 extern Variable TextureSampleCompare_Texture1D_texture;
@@ -6409,12 +7728,14 @@ extern Variable TextureSampleCompare_Texture1D_sampler;
 extern Variable TextureSampleCompare_Texture1D_coordinate;
 extern Variable TextureSampleCompare_Texture1D_compare;
 extern Function TextureSampleCompare_Texture1D;
+inline constexpr auto TextureSampleCompare_Texture1D_backend_index = 2291u;
 
 /// textureSampleCompare with SampledTexture1D, Float32, Float32
 extern Variable SampledTextureSampleCompare_Texture1D_texture;
 extern Variable SampledTextureSampleCompare_Texture1D_coordinate;
 extern Variable SampledTextureSampleCompare_Texture1D_compare;
 extern Function SampledTextureSampleCompare_Texture1D;
+inline constexpr auto SampledTextureSampleCompare_Texture1D_backend_index = 2292u;
 
 /// textureSampleCompare with Texture2D, Sampler, Float32x2, Float32
 extern Variable TextureSampleCompare_Texture2D_texture;
@@ -6422,12 +7743,14 @@ extern Variable TextureSampleCompare_Texture2D_sampler;
 extern Variable TextureSampleCompare_Texture2D_coordinate;
 extern Variable TextureSampleCompare_Texture2D_compare;
 extern Function TextureSampleCompare_Texture2D;
+inline constexpr auto TextureSampleCompare_Texture2D_backend_index = 2293u;
 
 /// textureSampleCompare with SampledTexture2D, Float32x2, Float32
 extern Variable SampledTextureSampleCompare_Texture2D_texture;
 extern Variable SampledTextureSampleCompare_Texture2D_coordinate;
 extern Variable SampledTextureSampleCompare_Texture2D_compare;
 extern Function SampledTextureSampleCompare_Texture2D;
+inline constexpr auto SampledTextureSampleCompare_Texture2D_backend_index = 2294u;
 
 /// textureSampleCompare with Texture3D, Sampler, Float32x3, Float32
 extern Variable TextureSampleCompare_Texture3D_texture;
@@ -6435,12 +7758,14 @@ extern Variable TextureSampleCompare_Texture3D_sampler;
 extern Variable TextureSampleCompare_Texture3D_coordinate;
 extern Variable TextureSampleCompare_Texture3D_compare;
 extern Function TextureSampleCompare_Texture3D;
+inline constexpr auto TextureSampleCompare_Texture3D_backend_index = 2295u;
 
 /// textureSampleCompare with SampledTexture3D, Float32x3, Float32
 extern Variable SampledTextureSampleCompare_Texture3D_texture;
 extern Variable SampledTextureSampleCompare_Texture3D_coordinate;
 extern Variable SampledTextureSampleCompare_Texture3D_compare;
 extern Function SampledTextureSampleCompare_Texture3D;
+inline constexpr auto SampledTextureSampleCompare_Texture3D_backend_index = 2296u;
 
 /// textureSampleCompare with Texture1DArray, Sampler, Float32x2, Float32
 extern Variable TextureSampleCompare_Texture1DArray_texture;
@@ -6448,12 +7773,14 @@ extern Variable TextureSampleCompare_Texture1DArray_sampler;
 extern Variable TextureSampleCompare_Texture1DArray_coordinate;
 extern Variable TextureSampleCompare_Texture1DArray_compare;
 extern Function TextureSampleCompare_Texture1DArray;
+inline constexpr auto TextureSampleCompare_Texture1DArray_backend_index = 2297u;
 
 /// textureSampleCompare with SampledTexture1DArray, Float32x2, Float32
 extern Variable SampledTextureSampleCompare_Texture1DArray_texture;
 extern Variable SampledTextureSampleCompare_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleCompare_Texture1DArray_compare;
 extern Function SampledTextureSampleCompare_Texture1DArray;
+inline constexpr auto SampledTextureSampleCompare_Texture1DArray_backend_index = 2298u;
 
 /// textureSampleCompare with Texture2DArray, Sampler, Float32x3, Float32
 extern Variable TextureSampleCompare_Texture2DArray_texture;
@@ -6461,12 +7788,14 @@ extern Variable TextureSampleCompare_Texture2DArray_sampler;
 extern Variable TextureSampleCompare_Texture2DArray_coordinate;
 extern Variable TextureSampleCompare_Texture2DArray_compare;
 extern Function TextureSampleCompare_Texture2DArray;
+inline constexpr auto TextureSampleCompare_Texture2DArray_backend_index = 2299u;
 
 /// textureSampleCompare with SampledTexture2DArray, Float32x3, Float32
 extern Variable SampledTextureSampleCompare_Texture2DArray_texture;
 extern Variable SampledTextureSampleCompare_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleCompare_Texture2DArray_compare;
 extern Function SampledTextureSampleCompare_Texture2DArray;
+inline constexpr auto SampledTextureSampleCompare_Texture2DArray_backend_index = 2300u;
 
 /// textureSampleCompareOffset with Texture1D, Sampler, Float32, Float32, Float32
 extern Variable TextureSampleCompareOffset_Texture1D_texture;
@@ -6475,6 +7804,7 @@ extern Variable TextureSampleCompareOffset_Texture1D_coordinate;
 extern Variable TextureSampleCompareOffset_Texture1D_compare;
 extern Variable TextureSampleCompareOffset_Texture1D_offset;
 extern Function TextureSampleCompareOffset_Texture1D;
+inline constexpr auto TextureSampleCompareOffset_Texture1D_backend_index = 2301u;
 
 /// textureSampleCompareOffset with SampledTexture1D, Float32, Float32, Float32
 extern Variable SampledTextureSampleCompareOffset_Texture1D_texture;
@@ -6482,6 +7812,7 @@ extern Variable SampledTextureSampleCompareOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleCompareOffset_Texture1D_compare;
 extern Variable SampledTextureSampleCompareOffset_Texture1D_offset;
 extern Function SampledTextureSampleCompareOffset_Texture1D;
+inline constexpr auto SampledTextureSampleCompareOffset_Texture1D_backend_index = 2302u;
 
 /// textureSampleCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2
 extern Variable TextureSampleCompareOffset_Texture2D_texture;
@@ -6490,6 +7821,7 @@ extern Variable TextureSampleCompareOffset_Texture2D_coordinate;
 extern Variable TextureSampleCompareOffset_Texture2D_compare;
 extern Variable TextureSampleCompareOffset_Texture2D_offset;
 extern Function TextureSampleCompareOffset_Texture2D;
+inline constexpr auto TextureSampleCompareOffset_Texture2D_backend_index = 2303u;
 
 /// textureSampleCompareOffset with SampledTexture2D, Float32x2, Float32, Float32x2
 extern Variable SampledTextureSampleCompareOffset_Texture2D_texture;
@@ -6497,6 +7829,7 @@ extern Variable SampledTextureSampleCompareOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleCompareOffset_Texture2D_compare;
 extern Variable SampledTextureSampleCompareOffset_Texture2D_offset;
 extern Function SampledTextureSampleCompareOffset_Texture2D;
+inline constexpr auto SampledTextureSampleCompareOffset_Texture2D_backend_index = 2304u;
 
 /// textureSampleCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3
 extern Variable TextureSampleCompareOffset_Texture3D_texture;
@@ -6505,6 +7838,7 @@ extern Variable TextureSampleCompareOffset_Texture3D_coordinate;
 extern Variable TextureSampleCompareOffset_Texture3D_compare;
 extern Variable TextureSampleCompareOffset_Texture3D_offset;
 extern Function TextureSampleCompareOffset_Texture3D;
+inline constexpr auto TextureSampleCompareOffset_Texture3D_backend_index = 2305u;
 
 /// textureSampleCompareOffset with SampledTexture3D, Float32x3, Float32, Float32x3
 extern Variable SampledTextureSampleCompareOffset_Texture3D_texture;
@@ -6512,6 +7846,7 @@ extern Variable SampledTextureSampleCompareOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleCompareOffset_Texture3D_compare;
 extern Variable SampledTextureSampleCompareOffset_Texture3D_offset;
 extern Function SampledTextureSampleCompareOffset_Texture3D;
+inline constexpr auto SampledTextureSampleCompareOffset_Texture3D_backend_index = 2306u;
 
 /// textureSampleCompareOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32x2
 extern Variable TextureSampleCompareOffset_Texture1DArray_texture;
@@ -6520,6 +7855,7 @@ extern Variable TextureSampleCompareOffset_Texture1DArray_coordinate;
 extern Variable TextureSampleCompareOffset_Texture1DArray_compare;
 extern Variable TextureSampleCompareOffset_Texture1DArray_offset;
 extern Function TextureSampleCompareOffset_Texture1DArray;
+inline constexpr auto TextureSampleCompareOffset_Texture1DArray_backend_index = 2307u;
 
 /// textureSampleCompareOffset with SampledTexture1DArray, Float32x2, Float32, Float32x2
 extern Variable SampledTextureSampleCompareOffset_Texture1DArray_texture;
@@ -6527,6 +7863,7 @@ extern Variable SampledTextureSampleCompareOffset_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleCompareOffset_Texture1DArray_compare;
 extern Variable SampledTextureSampleCompareOffset_Texture1DArray_offset;
 extern Function SampledTextureSampleCompareOffset_Texture1DArray;
+inline constexpr auto SampledTextureSampleCompareOffset_Texture1DArray_backend_index = 2308u;
 
 /// textureSampleCompareOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32x3
 extern Variable TextureSampleCompareOffset_Texture2DArray_texture;
@@ -6535,6 +7872,7 @@ extern Variable TextureSampleCompareOffset_Texture2DArray_coordinate;
 extern Variable TextureSampleCompareOffset_Texture2DArray_compare;
 extern Variable TextureSampleCompareOffset_Texture2DArray_offset;
 extern Function TextureSampleCompareOffset_Texture2DArray;
+inline constexpr auto TextureSampleCompareOffset_Texture2DArray_backend_index = 2309u;
 
 /// textureSampleCompareOffset with SampledTexture2DArray, Float32x3, Float32, Float32x3
 extern Variable SampledTextureSampleCompareOffset_Texture2DArray_texture;
@@ -6542,6 +7880,7 @@ extern Variable SampledTextureSampleCompareOffset_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleCompareOffset_Texture2DArray_compare;
 extern Variable SampledTextureSampleCompareOffset_Texture2DArray_offset;
 extern Function SampledTextureSampleCompareOffset_Texture2DArray;
+inline constexpr auto SampledTextureSampleCompareOffset_Texture2DArray_backend_index = 2310u;
 
 /// textureSampleProjCompare with Texture1D, Sampler, Float32, Float32, Float32
 extern Variable TextureSampleProjCompare_Texture1D_texture;
@@ -6550,6 +7889,7 @@ extern Variable TextureSampleProjCompare_Texture1D_coordinate;
 extern Variable TextureSampleProjCompare_Texture1D_proj;
 extern Variable TextureSampleProjCompare_Texture1D_compare;
 extern Function TextureSampleProjCompare_Texture1D;
+inline constexpr auto TextureSampleProjCompare_Texture1D_backend_index = 2311u;
 
 /// textureSampleProjCompare with SampledTexture1D, Float32, Float32, Float32
 extern Variable SampledTextureSampleProjCompare_Texture1D_texture;
@@ -6557,6 +7897,7 @@ extern Variable SampledTextureSampleProjCompare_Texture1D_coordinate;
 extern Variable SampledTextureSampleProjCompare_Texture1D_proj;
 extern Variable SampledTextureSampleProjCompare_Texture1D_compare;
 extern Function SampledTextureSampleProjCompare_Texture1D;
+inline constexpr auto SampledTextureSampleProjCompare_Texture1D_backend_index = 2312u;
 
 /// textureSampleProjCompare with Texture2D, Sampler, Float32x2, Float32, Float32
 extern Variable TextureSampleProjCompare_Texture2D_texture;
@@ -6565,6 +7906,7 @@ extern Variable TextureSampleProjCompare_Texture2D_coordinate;
 extern Variable TextureSampleProjCompare_Texture2D_proj;
 extern Variable TextureSampleProjCompare_Texture2D_compare;
 extern Function TextureSampleProjCompare_Texture2D;
+inline constexpr auto TextureSampleProjCompare_Texture2D_backend_index = 2313u;
 
 /// textureSampleProjCompare with SampledTexture2D, Float32x2, Float32, Float32
 extern Variable SampledTextureSampleProjCompare_Texture2D_texture;
@@ -6572,6 +7914,7 @@ extern Variable SampledTextureSampleProjCompare_Texture2D_coordinate;
 extern Variable SampledTextureSampleProjCompare_Texture2D_proj;
 extern Variable SampledTextureSampleProjCompare_Texture2D_compare;
 extern Function SampledTextureSampleProjCompare_Texture2D;
+inline constexpr auto SampledTextureSampleProjCompare_Texture2D_backend_index = 2314u;
 
 /// textureSampleProjCompare with Texture3D, Sampler, Float32x3, Float32, Float32
 extern Variable TextureSampleProjCompare_Texture3D_texture;
@@ -6580,6 +7923,7 @@ extern Variable TextureSampleProjCompare_Texture3D_coordinate;
 extern Variable TextureSampleProjCompare_Texture3D_proj;
 extern Variable TextureSampleProjCompare_Texture3D_compare;
 extern Function TextureSampleProjCompare_Texture3D;
+inline constexpr auto TextureSampleProjCompare_Texture3D_backend_index = 2315u;
 
 /// textureSampleProjCompare with SampledTexture3D, Float32x3, Float32, Float32
 extern Variable SampledTextureSampleProjCompare_Texture3D_texture;
@@ -6587,6 +7931,7 @@ extern Variable SampledTextureSampleProjCompare_Texture3D_coordinate;
 extern Variable SampledTextureSampleProjCompare_Texture3D_proj;
 extern Variable SampledTextureSampleProjCompare_Texture3D_compare;
 extern Function SampledTextureSampleProjCompare_Texture3D;
+inline constexpr auto SampledTextureSampleProjCompare_Texture3D_backend_index = 2316u;
 
 /// textureSampleProjCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
 extern Variable TextureSampleProjCompareOffset_Texture1D_texture;
@@ -6596,6 +7941,7 @@ extern Variable TextureSampleProjCompareOffset_Texture1D_proj;
 extern Variable TextureSampleProjCompareOffset_Texture1D_compare;
 extern Variable TextureSampleProjCompareOffset_Texture1D_offset;
 extern Function TextureSampleProjCompareOffset_Texture1D;
+inline constexpr auto TextureSampleProjCompareOffset_Texture1D_backend_index = 2317u;
 
 /// textureSampleProjCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleProjCompareOffset_Texture1D_texture;
@@ -6604,6 +7950,7 @@ extern Variable SampledTextureSampleProjCompareOffset_Texture1D_proj;
 extern Variable SampledTextureSampleProjCompareOffset_Texture1D_compare;
 extern Variable SampledTextureSampleProjCompareOffset_Texture1D_offset;
 extern Function SampledTextureSampleProjCompareOffset_Texture1D;
+inline constexpr auto SampledTextureSampleProjCompareOffset_Texture1D_backend_index = 2318u;
 
 /// textureSampleProjCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
 extern Variable TextureSampleProjCompareOffset_Texture2D_texture;
@@ -6613,6 +7960,7 @@ extern Variable TextureSampleProjCompareOffset_Texture2D_proj;
 extern Variable TextureSampleProjCompareOffset_Texture2D_compare;
 extern Variable TextureSampleProjCompareOffset_Texture2D_offset;
 extern Function TextureSampleProjCompareOffset_Texture2D;
+inline constexpr auto TextureSampleProjCompareOffset_Texture2D_backend_index = 2319u;
 
 /// textureSampleProjCompareOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
 extern Variable SampledTextureSampleProjCompareOffset_Texture2D_texture;
@@ -6621,6 +7969,7 @@ extern Variable SampledTextureSampleProjCompareOffset_Texture2D_proj;
 extern Variable SampledTextureSampleProjCompareOffset_Texture2D_compare;
 extern Variable SampledTextureSampleProjCompareOffset_Texture2D_offset;
 extern Function SampledTextureSampleProjCompareOffset_Texture2D;
+inline constexpr auto SampledTextureSampleProjCompareOffset_Texture2D_backend_index = 2320u;
 
 /// textureSampleProjCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
 extern Variable TextureSampleProjCompareOffset_Texture3D_texture;
@@ -6630,6 +7979,7 @@ extern Variable TextureSampleProjCompareOffset_Texture3D_proj;
 extern Variable TextureSampleProjCompareOffset_Texture3D_compare;
 extern Variable TextureSampleProjCompareOffset_Texture3D_offset;
 extern Function TextureSampleProjCompareOffset_Texture3D;
+inline constexpr auto TextureSampleProjCompareOffset_Texture3D_backend_index = 2321u;
 
 /// textureSampleProjCompareOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
 extern Variable SampledTextureSampleProjCompareOffset_Texture3D_texture;
@@ -6638,6 +7988,7 @@ extern Variable SampledTextureSampleProjCompareOffset_Texture3D_proj;
 extern Variable SampledTextureSampleProjCompareOffset_Texture3D_compare;
 extern Variable SampledTextureSampleProjCompareOffset_Texture3D_offset;
 extern Function SampledTextureSampleProjCompareOffset_Texture3D;
+inline constexpr auto SampledTextureSampleProjCompareOffset_Texture3D_backend_index = 2322u;
 
 /// textureSampleLod with Texture1D, Sampler, Float32, Float32
 extern Variable TextureSampleLod_Texture1D_texture;
@@ -6645,12 +7996,14 @@ extern Variable TextureSampleLod_Texture1D_sampler;
 extern Variable TextureSampleLod_Texture1D_coordinate;
 extern Variable TextureSampleLod_Texture1D_lod;
 extern Function TextureSampleLod_Texture1D;
+inline constexpr auto TextureSampleLod_Texture1D_backend_index = 2323u;
 
 /// textureSampleLod with SampledTexture1D, Float32, Float32
 extern Variable SampledTextureSampleLod_Texture1D_texture;
 extern Variable SampledTextureSampleLod_Texture1D_coordinate;
 extern Variable SampledTextureSampleLod_Texture1D_lod;
 extern Function SampledTextureSampleLod_Texture1D;
+inline constexpr auto SampledTextureSampleLod_Texture1D_backend_index = 2324u;
 
 /// textureSampleLod with Texture2D, Sampler, Float32x2, Float32
 extern Variable TextureSampleLod_Texture2D_texture;
@@ -6658,12 +8011,14 @@ extern Variable TextureSampleLod_Texture2D_sampler;
 extern Variable TextureSampleLod_Texture2D_coordinate;
 extern Variable TextureSampleLod_Texture2D_lod;
 extern Function TextureSampleLod_Texture2D;
+inline constexpr auto TextureSampleLod_Texture2D_backend_index = 2325u;
 
 /// textureSampleLod with SampledTexture2D, Float32x2, Float32
 extern Variable SampledTextureSampleLod_Texture2D_texture;
 extern Variable SampledTextureSampleLod_Texture2D_coordinate;
 extern Variable SampledTextureSampleLod_Texture2D_lod;
 extern Function SampledTextureSampleLod_Texture2D;
+inline constexpr auto SampledTextureSampleLod_Texture2D_backend_index = 2326u;
 
 /// textureSampleLod with Texture3D, Sampler, Float32x3, Float32
 extern Variable TextureSampleLod_Texture3D_texture;
@@ -6671,12 +8026,14 @@ extern Variable TextureSampleLod_Texture3D_sampler;
 extern Variable TextureSampleLod_Texture3D_coordinate;
 extern Variable TextureSampleLod_Texture3D_lod;
 extern Function TextureSampleLod_Texture3D;
+inline constexpr auto TextureSampleLod_Texture3D_backend_index = 2327u;
 
 /// textureSampleLod with SampledTexture3D, Float32x3, Float32
 extern Variable SampledTextureSampleLod_Texture3D_texture;
 extern Variable SampledTextureSampleLod_Texture3D_coordinate;
 extern Variable SampledTextureSampleLod_Texture3D_lod;
 extern Function SampledTextureSampleLod_Texture3D;
+inline constexpr auto SampledTextureSampleLod_Texture3D_backend_index = 2328u;
 
 /// textureSampleLod with TextureCube, Sampler, Float32x3, Float32
 extern Variable TextureSampleLod_TextureCube_texture;
@@ -6684,12 +8041,14 @@ extern Variable TextureSampleLod_TextureCube_sampler;
 extern Variable TextureSampleLod_TextureCube_coordinate;
 extern Variable TextureSampleLod_TextureCube_lod;
 extern Function TextureSampleLod_TextureCube;
+inline constexpr auto TextureSampleLod_TextureCube_backend_index = 2329u;
 
 /// textureSampleLod with SampledTextureCube, Float32x3, Float32
 extern Variable SampledTextureSampleLod_TextureCube_texture;
 extern Variable SampledTextureSampleLod_TextureCube_coordinate;
 extern Variable SampledTextureSampleLod_TextureCube_lod;
 extern Function SampledTextureSampleLod_TextureCube;
+inline constexpr auto SampledTextureSampleLod_TextureCube_backend_index = 2330u;
 
 /// textureSampleLod with Texture1DArray, Sampler, Float32x2, Float32
 extern Variable TextureSampleLod_Texture1DArray_texture;
@@ -6697,12 +8056,14 @@ extern Variable TextureSampleLod_Texture1DArray_sampler;
 extern Variable TextureSampleLod_Texture1DArray_coordinate;
 extern Variable TextureSampleLod_Texture1DArray_lod;
 extern Function TextureSampleLod_Texture1DArray;
+inline constexpr auto TextureSampleLod_Texture1DArray_backend_index = 2331u;
 
 /// textureSampleLod with SampledTexture1DArray, Float32x2, Float32
 extern Variable SampledTextureSampleLod_Texture1DArray_texture;
 extern Variable SampledTextureSampleLod_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleLod_Texture1DArray_lod;
 extern Function SampledTextureSampleLod_Texture1DArray;
+inline constexpr auto SampledTextureSampleLod_Texture1DArray_backend_index = 2332u;
 
 /// textureSampleLod with Texture2DArray, Sampler, Float32x3, Float32
 extern Variable TextureSampleLod_Texture2DArray_texture;
@@ -6710,12 +8071,14 @@ extern Variable TextureSampleLod_Texture2DArray_sampler;
 extern Variable TextureSampleLod_Texture2DArray_coordinate;
 extern Variable TextureSampleLod_Texture2DArray_lod;
 extern Function TextureSampleLod_Texture2DArray;
+inline constexpr auto TextureSampleLod_Texture2DArray_backend_index = 2333u;
 
 /// textureSampleLod with SampledTexture2DArray, Float32x3, Float32
 extern Variable SampledTextureSampleLod_Texture2DArray_texture;
 extern Variable SampledTextureSampleLod_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleLod_Texture2DArray_lod;
 extern Function SampledTextureSampleLod_Texture2DArray;
+inline constexpr auto SampledTextureSampleLod_Texture2DArray_backend_index = 2334u;
 
 /// textureSampleLod with TextureCubeArray, Sampler, Float32x4, Float32
 extern Variable TextureSampleLod_TextureCubeArray_texture;
@@ -6723,12 +8086,14 @@ extern Variable TextureSampleLod_TextureCubeArray_sampler;
 extern Variable TextureSampleLod_TextureCubeArray_coordinate;
 extern Variable TextureSampleLod_TextureCubeArray_lod;
 extern Function TextureSampleLod_TextureCubeArray;
+inline constexpr auto TextureSampleLod_TextureCubeArray_backend_index = 2335u;
 
 /// textureSampleLod with SampledTextureCubeArray, Float32x4, Float32
 extern Variable SampledTextureSampleLod_TextureCubeArray_texture;
 extern Variable SampledTextureSampleLod_TextureCubeArray_coordinate;
 extern Variable SampledTextureSampleLod_TextureCubeArray_lod;
 extern Function SampledTextureSampleLod_TextureCubeArray;
+inline constexpr auto SampledTextureSampleLod_TextureCubeArray_backend_index = 2336u;
 
 /// textureSampleLodOffset with Texture1D, Sampler, Float32, Float32, Float32
 extern Variable TextureSampleLodOffset_Texture1D_texture;
@@ -6737,6 +8102,7 @@ extern Variable TextureSampleLodOffset_Texture1D_coordinate;
 extern Variable TextureSampleLodOffset_Texture1D_lod;
 extern Variable TextureSampleLodOffset_Texture1D_offset;
 extern Function TextureSampleLodOffset_Texture1D;
+inline constexpr auto TextureSampleLodOffset_Texture1D_backend_index = 2337u;
 
 /// textureSampleLodOffset with SampledTexture1D, Float32, Float32, Float32
 extern Variable SampledTextureSampleLodOffset_Texture1D_texture;
@@ -6744,6 +8110,7 @@ extern Variable SampledTextureSampleLodOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleLodOffset_Texture1D_lod;
 extern Variable SampledTextureSampleLodOffset_Texture1D_offset;
 extern Function SampledTextureSampleLodOffset_Texture1D;
+inline constexpr auto SampledTextureSampleLodOffset_Texture1D_backend_index = 2338u;
 
 /// textureSampleLodOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2
 extern Variable TextureSampleLodOffset_Texture2D_texture;
@@ -6752,6 +8119,7 @@ extern Variable TextureSampleLodOffset_Texture2D_coordinate;
 extern Variable TextureSampleLodOffset_Texture2D_lod;
 extern Variable TextureSampleLodOffset_Texture2D_offset;
 extern Function TextureSampleLodOffset_Texture2D;
+inline constexpr auto TextureSampleLodOffset_Texture2D_backend_index = 2339u;
 
 /// textureSampleLodOffset with SampledTexture2D, Float32x2, Float32, Float32x2
 extern Variable SampledTextureSampleLodOffset_Texture2D_texture;
@@ -6759,6 +8127,7 @@ extern Variable SampledTextureSampleLodOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleLodOffset_Texture2D_lod;
 extern Variable SampledTextureSampleLodOffset_Texture2D_offset;
 extern Function SampledTextureSampleLodOffset_Texture2D;
+inline constexpr auto SampledTextureSampleLodOffset_Texture2D_backend_index = 2340u;
 
 /// textureSampleLodOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3
 extern Variable TextureSampleLodOffset_Texture3D_texture;
@@ -6767,6 +8136,7 @@ extern Variable TextureSampleLodOffset_Texture3D_coordinate;
 extern Variable TextureSampleLodOffset_Texture3D_lod;
 extern Variable TextureSampleLodOffset_Texture3D_offset;
 extern Function TextureSampleLodOffset_Texture3D;
+inline constexpr auto TextureSampleLodOffset_Texture3D_backend_index = 2341u;
 
 /// textureSampleLodOffset with SampledTexture3D, Float32x3, Float32, Float32x3
 extern Variable SampledTextureSampleLodOffset_Texture3D_texture;
@@ -6774,6 +8144,7 @@ extern Variable SampledTextureSampleLodOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleLodOffset_Texture3D_lod;
 extern Variable SampledTextureSampleLodOffset_Texture3D_offset;
 extern Function SampledTextureSampleLodOffset_Texture3D;
+inline constexpr auto SampledTextureSampleLodOffset_Texture3D_backend_index = 2342u;
 
 /// textureSampleLodOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32x2
 extern Variable TextureSampleLodOffset_Texture1DArray_texture;
@@ -6782,6 +8153,7 @@ extern Variable TextureSampleLodOffset_Texture1DArray_coordinate;
 extern Variable TextureSampleLodOffset_Texture1DArray_lod;
 extern Variable TextureSampleLodOffset_Texture1DArray_offset;
 extern Function TextureSampleLodOffset_Texture1DArray;
+inline constexpr auto TextureSampleLodOffset_Texture1DArray_backend_index = 2343u;
 
 /// textureSampleLodOffset with SampledTexture1DArray, Float32x2, Float32, Float32x2
 extern Variable SampledTextureSampleLodOffset_Texture1DArray_texture;
@@ -6789,6 +8161,7 @@ extern Variable SampledTextureSampleLodOffset_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleLodOffset_Texture1DArray_lod;
 extern Variable SampledTextureSampleLodOffset_Texture1DArray_offset;
 extern Function SampledTextureSampleLodOffset_Texture1DArray;
+inline constexpr auto SampledTextureSampleLodOffset_Texture1DArray_backend_index = 2344u;
 
 /// textureSampleLodOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32x3
 extern Variable TextureSampleLodOffset_Texture2DArray_texture;
@@ -6797,6 +8170,7 @@ extern Variable TextureSampleLodOffset_Texture2DArray_coordinate;
 extern Variable TextureSampleLodOffset_Texture2DArray_lod;
 extern Variable TextureSampleLodOffset_Texture2DArray_offset;
 extern Function TextureSampleLodOffset_Texture2DArray;
+inline constexpr auto TextureSampleLodOffset_Texture2DArray_backend_index = 2345u;
 
 /// textureSampleLodOffset with SampledTexture2DArray, Float32x3, Float32, Float32x3
 extern Variable SampledTextureSampleLodOffset_Texture2DArray_texture;
@@ -6804,6 +8178,7 @@ extern Variable SampledTextureSampleLodOffset_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleLodOffset_Texture2DArray_lod;
 extern Variable SampledTextureSampleLodOffset_Texture2DArray_offset;
 extern Function SampledTextureSampleLodOffset_Texture2DArray;
+inline constexpr auto SampledTextureSampleLodOffset_Texture2DArray_backend_index = 2346u;
 
 /// textureSampleLodProj with Texture1D, Sampler, Float32, Float32, Float32
 extern Variable TextureSampleLodProj_Texture1D_texture;
@@ -6812,6 +8187,7 @@ extern Variable TextureSampleLodProj_Texture1D_coordinate;
 extern Variable TextureSampleLodProj_Texture1D_lod;
 extern Variable TextureSampleLodProj_Texture1D_proj;
 extern Function TextureSampleLodProj_Texture1D;
+inline constexpr auto TextureSampleLodProj_Texture1D_backend_index = 2347u;
 
 /// textureSampleLodProj with SampledTexture1D, Float32, Float32, Float32
 extern Variable SampledTextureSampleLodProj_Texture1D_texture;
@@ -6819,6 +8195,7 @@ extern Variable SampledTextureSampleLodProj_Texture1D_coordinate;
 extern Variable SampledTextureSampleLodProj_Texture1D_lod;
 extern Variable SampledTextureSampleLodProj_Texture1D_proj;
 extern Function SampledTextureSampleLodProj_Texture1D;
+inline constexpr auto SampledTextureSampleLodProj_Texture1D_backend_index = 2348u;
 
 /// textureSampleLodProj with Texture2D, Sampler, Float32x2, Float32, Float32
 extern Variable TextureSampleLodProj_Texture2D_texture;
@@ -6827,6 +8204,7 @@ extern Variable TextureSampleLodProj_Texture2D_coordinate;
 extern Variable TextureSampleLodProj_Texture2D_lod;
 extern Variable TextureSampleLodProj_Texture2D_proj;
 extern Function TextureSampleLodProj_Texture2D;
+inline constexpr auto TextureSampleLodProj_Texture2D_backend_index = 2349u;
 
 /// textureSampleLodProj with SampledTexture2D, Float32x2, Float32, Float32
 extern Variable SampledTextureSampleLodProj_Texture2D_texture;
@@ -6834,6 +8212,7 @@ extern Variable SampledTextureSampleLodProj_Texture2D_coordinate;
 extern Variable SampledTextureSampleLodProj_Texture2D_lod;
 extern Variable SampledTextureSampleLodProj_Texture2D_proj;
 extern Function SampledTextureSampleLodProj_Texture2D;
+inline constexpr auto SampledTextureSampleLodProj_Texture2D_backend_index = 2350u;
 
 /// textureSampleLodProj with Texture3D, Sampler, Float32x3, Float32, Float32
 extern Variable TextureSampleLodProj_Texture3D_texture;
@@ -6842,6 +8221,7 @@ extern Variable TextureSampleLodProj_Texture3D_coordinate;
 extern Variable TextureSampleLodProj_Texture3D_lod;
 extern Variable TextureSampleLodProj_Texture3D_proj;
 extern Function TextureSampleLodProj_Texture3D;
+inline constexpr auto TextureSampleLodProj_Texture3D_backend_index = 2351u;
 
 /// textureSampleLodProj with SampledTexture3D, Float32x3, Float32, Float32
 extern Variable SampledTextureSampleLodProj_Texture3D_texture;
@@ -6849,6 +8229,7 @@ extern Variable SampledTextureSampleLodProj_Texture3D_coordinate;
 extern Variable SampledTextureSampleLodProj_Texture3D_lod;
 extern Variable SampledTextureSampleLodProj_Texture3D_proj;
 extern Function SampledTextureSampleLodProj_Texture3D;
+inline constexpr auto SampledTextureSampleLodProj_Texture3D_backend_index = 2352u;
 
 /// textureSampleLodProjOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
 extern Variable TextureSampleLodProjOffset_Texture1D_texture;
@@ -6858,6 +8239,7 @@ extern Variable TextureSampleLodProjOffset_Texture1D_lod;
 extern Variable TextureSampleLodProjOffset_Texture1D_proj;
 extern Variable TextureSampleLodProjOffset_Texture1D_offset;
 extern Function TextureSampleLodProjOffset_Texture1D;
+inline constexpr auto TextureSampleLodProjOffset_Texture1D_backend_index = 2353u;
 
 /// textureSampleLodProjOffset with SampledTexture1D, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleLodProjOffset_Texture1D_texture;
@@ -6866,6 +8248,7 @@ extern Variable SampledTextureSampleLodProjOffset_Texture1D_lod;
 extern Variable SampledTextureSampleLodProjOffset_Texture1D_proj;
 extern Variable SampledTextureSampleLodProjOffset_Texture1D_offset;
 extern Function SampledTextureSampleLodProjOffset_Texture1D;
+inline constexpr auto SampledTextureSampleLodProjOffset_Texture1D_backend_index = 2354u;
 
 /// textureSampleLodProjOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
 extern Variable TextureSampleLodProjOffset_Texture2D_texture;
@@ -6875,6 +8258,7 @@ extern Variable TextureSampleLodProjOffset_Texture2D_lod;
 extern Variable TextureSampleLodProjOffset_Texture2D_proj;
 extern Variable TextureSampleLodProjOffset_Texture2D_offset;
 extern Function TextureSampleLodProjOffset_Texture2D;
+inline constexpr auto TextureSampleLodProjOffset_Texture2D_backend_index = 2355u;
 
 /// textureSampleLodProjOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
 extern Variable SampledTextureSampleLodProjOffset_Texture2D_texture;
@@ -6883,6 +8267,7 @@ extern Variable SampledTextureSampleLodProjOffset_Texture2D_lod;
 extern Variable SampledTextureSampleLodProjOffset_Texture2D_proj;
 extern Variable SampledTextureSampleLodProjOffset_Texture2D_offset;
 extern Function SampledTextureSampleLodProjOffset_Texture2D;
+inline constexpr auto SampledTextureSampleLodProjOffset_Texture2D_backend_index = 2356u;
 
 /// textureSampleLodProjOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
 extern Variable TextureSampleLodProjOffset_Texture3D_texture;
@@ -6892,6 +8277,7 @@ extern Variable TextureSampleLodProjOffset_Texture3D_lod;
 extern Variable TextureSampleLodProjOffset_Texture3D_proj;
 extern Variable TextureSampleLodProjOffset_Texture3D_offset;
 extern Function TextureSampleLodProjOffset_Texture3D;
+inline constexpr auto TextureSampleLodProjOffset_Texture3D_backend_index = 2357u;
 
 /// textureSampleLodProjOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
 extern Variable SampledTextureSampleLodProjOffset_Texture3D_texture;
@@ -6900,6 +8286,7 @@ extern Variable SampledTextureSampleLodProjOffset_Texture3D_lod;
 extern Variable SampledTextureSampleLodProjOffset_Texture3D_proj;
 extern Variable SampledTextureSampleLodProjOffset_Texture3D_offset;
 extern Function SampledTextureSampleLodProjOffset_Texture3D;
+inline constexpr auto SampledTextureSampleLodProjOffset_Texture3D_backend_index = 2358u;
 
 /// textureSampleLodCompare with Texture1D, Sampler, Float32, Float32, Float32
 extern Variable TextureSampleLodCompare_Texture1D_texture;
@@ -6908,6 +8295,7 @@ extern Variable TextureSampleLodCompare_Texture1D_coordinate;
 extern Variable TextureSampleLodCompare_Texture1D_lod;
 extern Variable TextureSampleLodCompare_Texture1D_compare;
 extern Function TextureSampleLodCompare_Texture1D;
+inline constexpr auto TextureSampleLodCompare_Texture1D_backend_index = 2359u;
 
 /// textureSampleLodCompare with SampledTexture1D, Float32, Float32, Float32
 extern Variable SampledTextureSampleLodCompare_Texture1D_texture;
@@ -6915,6 +8303,7 @@ extern Variable SampledTextureSampleLodCompare_Texture1D_coordinate;
 extern Variable SampledTextureSampleLodCompare_Texture1D_lod;
 extern Variable SampledTextureSampleLodCompare_Texture1D_compare;
 extern Function SampledTextureSampleLodCompare_Texture1D;
+inline constexpr auto SampledTextureSampleLodCompare_Texture1D_backend_index = 2360u;
 
 /// textureSampleLodCompare with Texture2D, Sampler, Float32x2, Float32, Float32
 extern Variable TextureSampleLodCompare_Texture2D_texture;
@@ -6923,6 +8312,7 @@ extern Variable TextureSampleLodCompare_Texture2D_coordinate;
 extern Variable TextureSampleLodCompare_Texture2D_lod;
 extern Variable TextureSampleLodCompare_Texture2D_compare;
 extern Function TextureSampleLodCompare_Texture2D;
+inline constexpr auto TextureSampleLodCompare_Texture2D_backend_index = 2361u;
 
 /// textureSampleLodCompare with SampledTexture2D, Float32x2, Float32, Float32
 extern Variable SampledTextureSampleLodCompare_Texture2D_texture;
@@ -6930,6 +8320,7 @@ extern Variable SampledTextureSampleLodCompare_Texture2D_coordinate;
 extern Variable SampledTextureSampleLodCompare_Texture2D_lod;
 extern Variable SampledTextureSampleLodCompare_Texture2D_compare;
 extern Function SampledTextureSampleLodCompare_Texture2D;
+inline constexpr auto SampledTextureSampleLodCompare_Texture2D_backend_index = 2362u;
 
 /// textureSampleLodCompare with Texture3D, Sampler, Float32x3, Float32, Float32
 extern Variable TextureSampleLodCompare_Texture3D_texture;
@@ -6938,6 +8329,7 @@ extern Variable TextureSampleLodCompare_Texture3D_coordinate;
 extern Variable TextureSampleLodCompare_Texture3D_lod;
 extern Variable TextureSampleLodCompare_Texture3D_compare;
 extern Function TextureSampleLodCompare_Texture3D;
+inline constexpr auto TextureSampleLodCompare_Texture3D_backend_index = 2363u;
 
 /// textureSampleLodCompare with SampledTexture3D, Float32x3, Float32, Float32
 extern Variable SampledTextureSampleLodCompare_Texture3D_texture;
@@ -6945,6 +8337,7 @@ extern Variable SampledTextureSampleLodCompare_Texture3D_coordinate;
 extern Variable SampledTextureSampleLodCompare_Texture3D_lod;
 extern Variable SampledTextureSampleLodCompare_Texture3D_compare;
 extern Function SampledTextureSampleLodCompare_Texture3D;
+inline constexpr auto SampledTextureSampleLodCompare_Texture3D_backend_index = 2364u;
 
 /// textureSampleLodCompare with Texture1DArray, Sampler, Float32x2, Float32, Float32
 extern Variable TextureSampleLodCompare_Texture1DArray_texture;
@@ -6953,6 +8346,7 @@ extern Variable TextureSampleLodCompare_Texture1DArray_coordinate;
 extern Variable TextureSampleLodCompare_Texture1DArray_lod;
 extern Variable TextureSampleLodCompare_Texture1DArray_compare;
 extern Function TextureSampleLodCompare_Texture1DArray;
+inline constexpr auto TextureSampleLodCompare_Texture1DArray_backend_index = 2365u;
 
 /// textureSampleLodCompare with SampledTexture1DArray, Float32x2, Float32, Float32
 extern Variable SampledTextureSampleLodCompare_Texture1DArray_texture;
@@ -6960,6 +8354,7 @@ extern Variable SampledTextureSampleLodCompare_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleLodCompare_Texture1DArray_lod;
 extern Variable SampledTextureSampleLodCompare_Texture1DArray_compare;
 extern Function SampledTextureSampleLodCompare_Texture1DArray;
+inline constexpr auto SampledTextureSampleLodCompare_Texture1DArray_backend_index = 2366u;
 
 /// textureSampleLodCompare with Texture2DArray, Sampler, Float32x3, Float32, Float32
 extern Variable TextureSampleLodCompare_Texture2DArray_texture;
@@ -6968,6 +8363,7 @@ extern Variable TextureSampleLodCompare_Texture2DArray_coordinate;
 extern Variable TextureSampleLodCompare_Texture2DArray_lod;
 extern Variable TextureSampleLodCompare_Texture2DArray_compare;
 extern Function TextureSampleLodCompare_Texture2DArray;
+inline constexpr auto TextureSampleLodCompare_Texture2DArray_backend_index = 2367u;
 
 /// textureSampleLodCompare with SampledTexture2DArray, Float32x3, Float32, Float32
 extern Variable SampledTextureSampleLodCompare_Texture2DArray_texture;
@@ -6975,6 +8371,7 @@ extern Variable SampledTextureSampleLodCompare_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleLodCompare_Texture2DArray_lod;
 extern Variable SampledTextureSampleLodCompare_Texture2DArray_compare;
 extern Function SampledTextureSampleLodCompare_Texture2DArray;
+inline constexpr auto SampledTextureSampleLodCompare_Texture2DArray_backend_index = 2368u;
 
 /// textureSampleLodCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
 extern Variable TextureSampleLodCompareOffset_Texture1D_texture;
@@ -6984,6 +8381,7 @@ extern Variable TextureSampleLodCompareOffset_Texture1D_lod;
 extern Variable TextureSampleLodCompareOffset_Texture1D_compare;
 extern Variable TextureSampleLodCompareOffset_Texture1D_offset;
 extern Function TextureSampleLodCompareOffset_Texture1D;
+inline constexpr auto TextureSampleLodCompareOffset_Texture1D_backend_index = 2369u;
 
 /// textureSampleLodCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleLodCompareOffset_Texture1D_texture;
@@ -6992,6 +8390,7 @@ extern Variable SampledTextureSampleLodCompareOffset_Texture1D_lod;
 extern Variable SampledTextureSampleLodCompareOffset_Texture1D_compare;
 extern Variable SampledTextureSampleLodCompareOffset_Texture1D_offset;
 extern Function SampledTextureSampleLodCompareOffset_Texture1D;
+inline constexpr auto SampledTextureSampleLodCompareOffset_Texture1D_backend_index = 2370u;
 
 /// textureSampleLodCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
 extern Variable TextureSampleLodCompareOffset_Texture2D_texture;
@@ -7001,6 +8400,7 @@ extern Variable TextureSampleLodCompareOffset_Texture2D_lod;
 extern Variable TextureSampleLodCompareOffset_Texture2D_compare;
 extern Variable TextureSampleLodCompareOffset_Texture2D_offset;
 extern Function TextureSampleLodCompareOffset_Texture2D;
+inline constexpr auto TextureSampleLodCompareOffset_Texture2D_backend_index = 2371u;
 
 /// textureSampleLodCompareOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
 extern Variable SampledTextureSampleLodCompareOffset_Texture2D_texture;
@@ -7009,6 +8409,7 @@ extern Variable SampledTextureSampleLodCompareOffset_Texture2D_lod;
 extern Variable SampledTextureSampleLodCompareOffset_Texture2D_compare;
 extern Variable SampledTextureSampleLodCompareOffset_Texture2D_offset;
 extern Function SampledTextureSampleLodCompareOffset_Texture2D;
+inline constexpr auto SampledTextureSampleLodCompareOffset_Texture2D_backend_index = 2372u;
 
 /// textureSampleLodCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
 extern Variable TextureSampleLodCompareOffset_Texture3D_texture;
@@ -7018,6 +8419,7 @@ extern Variable TextureSampleLodCompareOffset_Texture3D_lod;
 extern Variable TextureSampleLodCompareOffset_Texture3D_compare;
 extern Variable TextureSampleLodCompareOffset_Texture3D_offset;
 extern Function TextureSampleLodCompareOffset_Texture3D;
+inline constexpr auto TextureSampleLodCompareOffset_Texture3D_backend_index = 2373u;
 
 /// textureSampleLodCompareOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
 extern Variable SampledTextureSampleLodCompareOffset_Texture3D_texture;
@@ -7026,6 +8428,7 @@ extern Variable SampledTextureSampleLodCompareOffset_Texture3D_lod;
 extern Variable SampledTextureSampleLodCompareOffset_Texture3D_compare;
 extern Variable SampledTextureSampleLodCompareOffset_Texture3D_offset;
 extern Function SampledTextureSampleLodCompareOffset_Texture3D;
+inline constexpr auto SampledTextureSampleLodCompareOffset_Texture3D_backend_index = 2374u;
 
 /// textureSampleLodCompareOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32, Float32x2
 extern Variable TextureSampleLodCompareOffset_Texture1DArray_texture;
@@ -7035,6 +8438,7 @@ extern Variable TextureSampleLodCompareOffset_Texture1DArray_lod;
 extern Variable TextureSampleLodCompareOffset_Texture1DArray_compare;
 extern Variable TextureSampleLodCompareOffset_Texture1DArray_offset;
 extern Function TextureSampleLodCompareOffset_Texture1DArray;
+inline constexpr auto TextureSampleLodCompareOffset_Texture1DArray_backend_index = 2375u;
 
 /// textureSampleLodCompareOffset with SampledTexture1DArray, Float32x2, Float32, Float32, Float32x2
 extern Variable SampledTextureSampleLodCompareOffset_Texture1DArray_texture;
@@ -7043,6 +8447,7 @@ extern Variable SampledTextureSampleLodCompareOffset_Texture1DArray_lod;
 extern Variable SampledTextureSampleLodCompareOffset_Texture1DArray_compare;
 extern Variable SampledTextureSampleLodCompareOffset_Texture1DArray_offset;
 extern Function SampledTextureSampleLodCompareOffset_Texture1DArray;
+inline constexpr auto SampledTextureSampleLodCompareOffset_Texture1DArray_backend_index = 2376u;
 
 /// textureSampleLodCompareOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32, Float32x3
 extern Variable TextureSampleLodCompareOffset_Texture2DArray_texture;
@@ -7052,6 +8457,7 @@ extern Variable TextureSampleLodCompareOffset_Texture2DArray_lod;
 extern Variable TextureSampleLodCompareOffset_Texture2DArray_compare;
 extern Variable TextureSampleLodCompareOffset_Texture2DArray_offset;
 extern Function TextureSampleLodCompareOffset_Texture2DArray;
+inline constexpr auto TextureSampleLodCompareOffset_Texture2DArray_backend_index = 2377u;
 
 /// textureSampleLodCompareOffset with SampledTexture2DArray, Float32x3, Float32, Float32, Float32x3
 extern Variable SampledTextureSampleLodCompareOffset_Texture2DArray_texture;
@@ -7060,6 +8466,7 @@ extern Variable SampledTextureSampleLodCompareOffset_Texture2DArray_lod;
 extern Variable SampledTextureSampleLodCompareOffset_Texture2DArray_compare;
 extern Variable SampledTextureSampleLodCompareOffset_Texture2DArray_offset;
 extern Function SampledTextureSampleLodCompareOffset_Texture2DArray;
+inline constexpr auto SampledTextureSampleLodCompareOffset_Texture2DArray_backend_index = 2378u;
 
 /// textureSampleLodProjCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32
 extern Variable TextureSampleLodProjCompare_Texture1D_texture;
@@ -7069,6 +8476,7 @@ extern Variable TextureSampleLodProjCompare_Texture1D_lod;
 extern Variable TextureSampleLodProjCompare_Texture1D_proj;
 extern Variable TextureSampleLodProjCompare_Texture1D_compare;
 extern Function TextureSampleLodProjCompare_Texture1D;
+inline constexpr auto TextureSampleLodProjCompare_Texture1D_backend_index = 2379u;
 
 /// textureSampleLodProjCompare with SampledTexture1D, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleLodProjCompare_Texture1D_texture;
@@ -7077,6 +8485,7 @@ extern Variable SampledTextureSampleLodProjCompare_Texture1D_lod;
 extern Variable SampledTextureSampleLodProjCompare_Texture1D_proj;
 extern Variable SampledTextureSampleLodProjCompare_Texture1D_compare;
 extern Function SampledTextureSampleLodProjCompare_Texture1D;
+inline constexpr auto SampledTextureSampleLodProjCompare_Texture1D_backend_index = 2380u;
 
 /// textureSampleLodProjCompare with Texture2D, Sampler, Float32x2, Float32, Float32, Float32
 extern Variable TextureSampleLodProjCompare_Texture2D_texture;
@@ -7086,6 +8495,7 @@ extern Variable TextureSampleLodProjCompare_Texture2D_lod;
 extern Variable TextureSampleLodProjCompare_Texture2D_proj;
 extern Variable TextureSampleLodProjCompare_Texture2D_compare;
 extern Function TextureSampleLodProjCompare_Texture2D;
+inline constexpr auto TextureSampleLodProjCompare_Texture2D_backend_index = 2381u;
 
 /// textureSampleLodProjCompare with SampledTexture2D, Float32x2, Float32, Float32, Float32
 extern Variable SampledTextureSampleLodProjCompare_Texture2D_texture;
@@ -7094,6 +8504,7 @@ extern Variable SampledTextureSampleLodProjCompare_Texture2D_lod;
 extern Variable SampledTextureSampleLodProjCompare_Texture2D_proj;
 extern Variable SampledTextureSampleLodProjCompare_Texture2D_compare;
 extern Function SampledTextureSampleLodProjCompare_Texture2D;
+inline constexpr auto SampledTextureSampleLodProjCompare_Texture2D_backend_index = 2382u;
 
 /// textureSampleLodProjCompare with Texture3D, Sampler, Float32x3, Float32, Float32, Float32
 extern Variable TextureSampleLodProjCompare_Texture3D_texture;
@@ -7103,6 +8514,7 @@ extern Variable TextureSampleLodProjCompare_Texture3D_lod;
 extern Variable TextureSampleLodProjCompare_Texture3D_proj;
 extern Variable TextureSampleLodProjCompare_Texture3D_compare;
 extern Function TextureSampleLodProjCompare_Texture3D;
+inline constexpr auto TextureSampleLodProjCompare_Texture3D_backend_index = 2383u;
 
 /// textureSampleLodProjCompare with SampledTexture3D, Float32x3, Float32, Float32, Float32
 extern Variable SampledTextureSampleLodProjCompare_Texture3D_texture;
@@ -7111,6 +8523,7 @@ extern Variable SampledTextureSampleLodProjCompare_Texture3D_lod;
 extern Variable SampledTextureSampleLodProjCompare_Texture3D_proj;
 extern Variable SampledTextureSampleLodProjCompare_Texture3D_compare;
 extern Function SampledTextureSampleLodProjCompare_Texture3D;
+inline constexpr auto SampledTextureSampleLodProjCompare_Texture3D_backend_index = 2384u;
 
 /// textureSampleLodProjCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
 extern Variable TextureSampleLodProjCompareOffset_Texture1D_texture;
@@ -7121,6 +8534,7 @@ extern Variable TextureSampleLodProjCompareOffset_Texture1D_proj;
 extern Variable TextureSampleLodProjCompareOffset_Texture1D_compare;
 extern Variable TextureSampleLodProjCompareOffset_Texture1D_offset;
 extern Function TextureSampleLodProjCompareOffset_Texture1D;
+inline constexpr auto TextureSampleLodProjCompareOffset_Texture1D_backend_index = 2385u;
 
 /// textureSampleLodProjCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture1D_texture;
@@ -7130,6 +8544,7 @@ extern Variable SampledTextureSampleLodProjCompareOffset_Texture1D_proj;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture1D_compare;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture1D_offset;
 extern Function SampledTextureSampleLodProjCompareOffset_Texture1D;
+inline constexpr auto SampledTextureSampleLodProjCompareOffset_Texture1D_backend_index = 2386u;
 
 /// textureSampleLodProjCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32, Float32x2
 extern Variable TextureSampleLodProjCompareOffset_Texture2D_texture;
@@ -7140,6 +8555,7 @@ extern Variable TextureSampleLodProjCompareOffset_Texture2D_proj;
 extern Variable TextureSampleLodProjCompareOffset_Texture2D_compare;
 extern Variable TextureSampleLodProjCompareOffset_Texture2D_offset;
 extern Function TextureSampleLodProjCompareOffset_Texture2D;
+inline constexpr auto TextureSampleLodProjCompareOffset_Texture2D_backend_index = 2387u;
 
 /// textureSampleLodProjCompareOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32, Float32x2
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture2D_texture;
@@ -7149,6 +8565,7 @@ extern Variable SampledTextureSampleLodProjCompareOffset_Texture2D_proj;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture2D_compare;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture2D_offset;
 extern Function SampledTextureSampleLodProjCompareOffset_Texture2D;
+inline constexpr auto SampledTextureSampleLodProjCompareOffset_Texture2D_backend_index = 2388u;
 
 /// textureSampleLodProjCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32, Float32x3
 extern Variable TextureSampleLodProjCompareOffset_Texture3D_texture;
@@ -7159,6 +8576,7 @@ extern Variable TextureSampleLodProjCompareOffset_Texture3D_proj;
 extern Variable TextureSampleLodProjCompareOffset_Texture3D_compare;
 extern Variable TextureSampleLodProjCompareOffset_Texture3D_offset;
 extern Function TextureSampleLodProjCompareOffset_Texture3D;
+inline constexpr auto TextureSampleLodProjCompareOffset_Texture3D_backend_index = 2389u;
 
 /// textureSampleLodProjCompareOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32, Float32x3
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture3D_texture;
@@ -7168,6 +8586,7 @@ extern Variable SampledTextureSampleLodProjCompareOffset_Texture3D_proj;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture3D_compare;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture3D_offset;
 extern Function SampledTextureSampleLodProjCompareOffset_Texture3D;
+inline constexpr auto SampledTextureSampleLodProjCompareOffset_Texture3D_backend_index = 2390u;
 
 /// textureSampleGrad with Texture1D, Sampler, Float32, Float32, Float32
 extern Variable TextureSampleGrad_Texture1D_texture;
@@ -7176,6 +8595,7 @@ extern Variable TextureSampleGrad_Texture1D_coordinate;
 extern Variable TextureSampleGrad_Texture1D_grad_x;
 extern Variable TextureSampleGrad_Texture1D_grad_y;
 extern Function TextureSampleGrad_Texture1D;
+inline constexpr auto TextureSampleGrad_Texture1D_backend_index = 2391u;
 
 /// textureSampleGrad with SampledTexture1D, Float32, Float32, Float32
 extern Variable SampledTextureSampleGrad_Texture1D_texture;
@@ -7183,6 +8603,7 @@ extern Variable SampledTextureSampleGrad_Texture1D_coordinate;
 extern Variable SampledTextureSampleGrad_Texture1D_grad_x;
 extern Variable SampledTextureSampleGrad_Texture1D_grad_y;
 extern Function SampledTextureSampleGrad_Texture1D;
+inline constexpr auto SampledTextureSampleGrad_Texture1D_backend_index = 2392u;
 
 /// textureSampleGrad with Texture2D, Sampler, Float32x2, Float32x2, Float32x2
 extern Variable TextureSampleGrad_Texture2D_texture;
@@ -7191,6 +8612,7 @@ extern Variable TextureSampleGrad_Texture2D_coordinate;
 extern Variable TextureSampleGrad_Texture2D_grad_x;
 extern Variable TextureSampleGrad_Texture2D_grad_y;
 extern Function TextureSampleGrad_Texture2D;
+inline constexpr auto TextureSampleGrad_Texture2D_backend_index = 2393u;
 
 /// textureSampleGrad with SampledTexture2D, Float32x2, Float32x2, Float32x2
 extern Variable SampledTextureSampleGrad_Texture2D_texture;
@@ -7198,6 +8620,7 @@ extern Variable SampledTextureSampleGrad_Texture2D_coordinate;
 extern Variable SampledTextureSampleGrad_Texture2D_grad_x;
 extern Variable SampledTextureSampleGrad_Texture2D_grad_y;
 extern Function SampledTextureSampleGrad_Texture2D;
+inline constexpr auto SampledTextureSampleGrad_Texture2D_backend_index = 2394u;
 
 /// textureSampleGrad with Texture3D, Sampler, Float32x3, Float32x3, Float32x3
 extern Variable TextureSampleGrad_Texture3D_texture;
@@ -7206,6 +8629,7 @@ extern Variable TextureSampleGrad_Texture3D_coordinate;
 extern Variable TextureSampleGrad_Texture3D_grad_x;
 extern Variable TextureSampleGrad_Texture3D_grad_y;
 extern Function TextureSampleGrad_Texture3D;
+inline constexpr auto TextureSampleGrad_Texture3D_backend_index = 2395u;
 
 /// textureSampleGrad with SampledTexture3D, Float32x3, Float32x3, Float32x3
 extern Variable SampledTextureSampleGrad_Texture3D_texture;
@@ -7213,6 +8637,7 @@ extern Variable SampledTextureSampleGrad_Texture3D_coordinate;
 extern Variable SampledTextureSampleGrad_Texture3D_grad_x;
 extern Variable SampledTextureSampleGrad_Texture3D_grad_y;
 extern Function SampledTextureSampleGrad_Texture3D;
+inline constexpr auto SampledTextureSampleGrad_Texture3D_backend_index = 2396u;
 
 /// textureSampleGrad with TextureCube, Sampler, Float32x3, Float32x3, Float32x3
 extern Variable TextureSampleGrad_TextureCube_texture;
@@ -7221,6 +8646,7 @@ extern Variable TextureSampleGrad_TextureCube_coordinate;
 extern Variable TextureSampleGrad_TextureCube_grad_x;
 extern Variable TextureSampleGrad_TextureCube_grad_y;
 extern Function TextureSampleGrad_TextureCube;
+inline constexpr auto TextureSampleGrad_TextureCube_backend_index = 2397u;
 
 /// textureSampleGrad with SampledTextureCube, Float32x3, Float32x3, Float32x3
 extern Variable SampledTextureSampleGrad_TextureCube_texture;
@@ -7228,6 +8654,7 @@ extern Variable SampledTextureSampleGrad_TextureCube_coordinate;
 extern Variable SampledTextureSampleGrad_TextureCube_grad_x;
 extern Variable SampledTextureSampleGrad_TextureCube_grad_y;
 extern Function SampledTextureSampleGrad_TextureCube;
+inline constexpr auto SampledTextureSampleGrad_TextureCube_backend_index = 2398u;
 
 /// textureSampleGrad with Texture1DArray, Sampler, Float32x2, Float32x2, Float32x2
 extern Variable TextureSampleGrad_Texture1DArray_texture;
@@ -7236,6 +8663,7 @@ extern Variable TextureSampleGrad_Texture1DArray_coordinate;
 extern Variable TextureSampleGrad_Texture1DArray_grad_x;
 extern Variable TextureSampleGrad_Texture1DArray_grad_y;
 extern Function TextureSampleGrad_Texture1DArray;
+inline constexpr auto TextureSampleGrad_Texture1DArray_backend_index = 2399u;
 
 /// textureSampleGrad with SampledTexture1DArray, Float32x2, Float32x2, Float32x2
 extern Variable SampledTextureSampleGrad_Texture1DArray_texture;
@@ -7243,6 +8671,7 @@ extern Variable SampledTextureSampleGrad_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleGrad_Texture1DArray_grad_x;
 extern Variable SampledTextureSampleGrad_Texture1DArray_grad_y;
 extern Function SampledTextureSampleGrad_Texture1DArray;
+inline constexpr auto SampledTextureSampleGrad_Texture1DArray_backend_index = 2400u;
 
 /// textureSampleGrad with Texture2DArray, Sampler, Float32x3, Float32x3, Float32x3
 extern Variable TextureSampleGrad_Texture2DArray_texture;
@@ -7251,6 +8680,7 @@ extern Variable TextureSampleGrad_Texture2DArray_coordinate;
 extern Variable TextureSampleGrad_Texture2DArray_grad_x;
 extern Variable TextureSampleGrad_Texture2DArray_grad_y;
 extern Function TextureSampleGrad_Texture2DArray;
+inline constexpr auto TextureSampleGrad_Texture2DArray_backend_index = 2401u;
 
 /// textureSampleGrad with SampledTexture2DArray, Float32x3, Float32x3, Float32x3
 extern Variable SampledTextureSampleGrad_Texture2DArray_texture;
@@ -7258,6 +8688,7 @@ extern Variable SampledTextureSampleGrad_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleGrad_Texture2DArray_grad_x;
 extern Variable SampledTextureSampleGrad_Texture2DArray_grad_y;
 extern Function SampledTextureSampleGrad_Texture2DArray;
+inline constexpr auto SampledTextureSampleGrad_Texture2DArray_backend_index = 2402u;
 
 /// textureSampleGrad with TextureCubeArray, Sampler, Float32x4, Float32x4, Float32x4
 extern Variable TextureSampleGrad_TextureCubeArray_texture;
@@ -7266,6 +8697,7 @@ extern Variable TextureSampleGrad_TextureCubeArray_coordinate;
 extern Variable TextureSampleGrad_TextureCubeArray_grad_x;
 extern Variable TextureSampleGrad_TextureCubeArray_grad_y;
 extern Function TextureSampleGrad_TextureCubeArray;
+inline constexpr auto TextureSampleGrad_TextureCubeArray_backend_index = 2403u;
 
 /// textureSampleGrad with SampledTextureCubeArray, Float32x4, Float32x4, Float32x4
 extern Variable SampledTextureSampleGrad_TextureCubeArray_texture;
@@ -7273,6 +8705,7 @@ extern Variable SampledTextureSampleGrad_TextureCubeArray_coordinate;
 extern Variable SampledTextureSampleGrad_TextureCubeArray_grad_x;
 extern Variable SampledTextureSampleGrad_TextureCubeArray_grad_y;
 extern Function SampledTextureSampleGrad_TextureCubeArray;
+inline constexpr auto SampledTextureSampleGrad_TextureCubeArray_backend_index = 2404u;
 
 /// textureSampleGradOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
 extern Variable TextureSampleGradOffset_Texture1D_texture;
@@ -7282,6 +8715,7 @@ extern Variable TextureSampleGradOffset_Texture1D_grad_x;
 extern Variable TextureSampleGradOffset_Texture1D_grad_y;
 extern Variable TextureSampleGradOffset_Texture1D_offset;
 extern Function TextureSampleGradOffset_Texture1D;
+inline constexpr auto TextureSampleGradOffset_Texture1D_backend_index = 2405u;
 
 /// textureSampleGradOffset with SampledTexture1D, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleGradOffset_Texture1D_texture;
@@ -7290,6 +8724,7 @@ extern Variable SampledTextureSampleGradOffset_Texture1D_grad_x;
 extern Variable SampledTextureSampleGradOffset_Texture1D_grad_y;
 extern Variable SampledTextureSampleGradOffset_Texture1D_offset;
 extern Function SampledTextureSampleGradOffset_Texture1D;
+inline constexpr auto SampledTextureSampleGradOffset_Texture1D_backend_index = 2406u;
 
 /// textureSampleGradOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32x2
 extern Variable TextureSampleGradOffset_Texture2D_texture;
@@ -7299,6 +8734,7 @@ extern Variable TextureSampleGradOffset_Texture2D_grad_x;
 extern Variable TextureSampleGradOffset_Texture2D_grad_y;
 extern Variable TextureSampleGradOffset_Texture2D_offset;
 extern Function TextureSampleGradOffset_Texture2D;
+inline constexpr auto TextureSampleGradOffset_Texture2D_backend_index = 2407u;
 
 /// textureSampleGradOffset with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32x2
 extern Variable SampledTextureSampleGradOffset_Texture2D_texture;
@@ -7307,6 +8743,7 @@ extern Variable SampledTextureSampleGradOffset_Texture2D_grad_x;
 extern Variable SampledTextureSampleGradOffset_Texture2D_grad_y;
 extern Variable SampledTextureSampleGradOffset_Texture2D_offset;
 extern Function SampledTextureSampleGradOffset_Texture2D;
+inline constexpr auto SampledTextureSampleGradOffset_Texture2D_backend_index = 2408u;
 
 /// textureSampleGradOffset with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32x3
 extern Variable TextureSampleGradOffset_Texture3D_texture;
@@ -7316,6 +8753,7 @@ extern Variable TextureSampleGradOffset_Texture3D_grad_x;
 extern Variable TextureSampleGradOffset_Texture3D_grad_y;
 extern Variable TextureSampleGradOffset_Texture3D_offset;
 extern Function TextureSampleGradOffset_Texture3D;
+inline constexpr auto TextureSampleGradOffset_Texture3D_backend_index = 2409u;
 
 /// textureSampleGradOffset with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32x3
 extern Variable SampledTextureSampleGradOffset_Texture3D_texture;
@@ -7324,6 +8762,7 @@ extern Variable SampledTextureSampleGradOffset_Texture3D_grad_x;
 extern Variable SampledTextureSampleGradOffset_Texture3D_grad_y;
 extern Variable SampledTextureSampleGradOffset_Texture3D_offset;
 extern Function SampledTextureSampleGradOffset_Texture3D;
+inline constexpr auto SampledTextureSampleGradOffset_Texture3D_backend_index = 2410u;
 
 /// textureSampleGradOffset with Texture1DArray, Sampler, Float32x2, Float32x2, Float32x2, Float32x2
 extern Variable TextureSampleGradOffset_Texture1DArray_texture;
@@ -7333,6 +8772,7 @@ extern Variable TextureSampleGradOffset_Texture1DArray_grad_x;
 extern Variable TextureSampleGradOffset_Texture1DArray_grad_y;
 extern Variable TextureSampleGradOffset_Texture1DArray_offset;
 extern Function TextureSampleGradOffset_Texture1DArray;
+inline constexpr auto TextureSampleGradOffset_Texture1DArray_backend_index = 2411u;
 
 /// textureSampleGradOffset with SampledTexture1DArray, Float32x2, Float32x2, Float32x2, Float32x2
 extern Variable SampledTextureSampleGradOffset_Texture1DArray_texture;
@@ -7341,6 +8781,7 @@ extern Variable SampledTextureSampleGradOffset_Texture1DArray_grad_x;
 extern Variable SampledTextureSampleGradOffset_Texture1DArray_grad_y;
 extern Variable SampledTextureSampleGradOffset_Texture1DArray_offset;
 extern Function SampledTextureSampleGradOffset_Texture1DArray;
+inline constexpr auto SampledTextureSampleGradOffset_Texture1DArray_backend_index = 2412u;
 
 /// textureSampleGradOffset with Texture2DArray, Sampler, Float32x3, Float32x3, Float32x3, Float32x3
 extern Variable TextureSampleGradOffset_Texture2DArray_texture;
@@ -7350,6 +8791,7 @@ extern Variable TextureSampleGradOffset_Texture2DArray_grad_x;
 extern Variable TextureSampleGradOffset_Texture2DArray_grad_y;
 extern Variable TextureSampleGradOffset_Texture2DArray_offset;
 extern Function TextureSampleGradOffset_Texture2DArray;
+inline constexpr auto TextureSampleGradOffset_Texture2DArray_backend_index = 2413u;
 
 /// textureSampleGradOffset with SampledTexture2DArray, Float32x3, Float32x3, Float32x3, Float32x3
 extern Variable SampledTextureSampleGradOffset_Texture2DArray_texture;
@@ -7358,6 +8800,7 @@ extern Variable SampledTextureSampleGradOffset_Texture2DArray_grad_x;
 extern Variable SampledTextureSampleGradOffset_Texture2DArray_grad_y;
 extern Variable SampledTextureSampleGradOffset_Texture2DArray_offset;
 extern Function SampledTextureSampleGradOffset_Texture2DArray;
+inline constexpr auto SampledTextureSampleGradOffset_Texture2DArray_backend_index = 2414u;
 
 /// textureSampleGradProj with Texture1D, Sampler, Float32, Float32, Float32, Float32
 extern Variable TextureSampleGradProj_Texture1D_texture;
@@ -7367,6 +8810,7 @@ extern Variable TextureSampleGradProj_Texture1D_grad_x;
 extern Variable TextureSampleGradProj_Texture1D_grad_y;
 extern Variable TextureSampleGradProj_Texture1D_proj;
 extern Function TextureSampleGradProj_Texture1D;
+inline constexpr auto TextureSampleGradProj_Texture1D_backend_index = 2415u;
 
 /// textureSampleGradProj with SampledTexture1D, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleGradProj_Texture1D_texture;
@@ -7375,6 +8819,7 @@ extern Variable SampledTextureSampleGradProj_Texture1D_grad_x;
 extern Variable SampledTextureSampleGradProj_Texture1D_grad_y;
 extern Variable SampledTextureSampleGradProj_Texture1D_proj;
 extern Function SampledTextureSampleGradProj_Texture1D;
+inline constexpr auto SampledTextureSampleGradProj_Texture1D_backend_index = 2416u;
 
 /// textureSampleGradProj with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32
 extern Variable TextureSampleGradProj_Texture2D_texture;
@@ -7384,6 +8829,7 @@ extern Variable TextureSampleGradProj_Texture2D_grad_x;
 extern Variable TextureSampleGradProj_Texture2D_grad_y;
 extern Variable TextureSampleGradProj_Texture2D_proj;
 extern Function TextureSampleGradProj_Texture2D;
+inline constexpr auto TextureSampleGradProj_Texture2D_backend_index = 2417u;
 
 /// textureSampleGradProj with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32
 extern Variable SampledTextureSampleGradProj_Texture2D_texture;
@@ -7392,6 +8838,7 @@ extern Variable SampledTextureSampleGradProj_Texture2D_grad_x;
 extern Variable SampledTextureSampleGradProj_Texture2D_grad_y;
 extern Variable SampledTextureSampleGradProj_Texture2D_proj;
 extern Function SampledTextureSampleGradProj_Texture2D;
+inline constexpr auto SampledTextureSampleGradProj_Texture2D_backend_index = 2418u;
 
 /// textureSampleGradProj with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32
 extern Variable TextureSampleGradProj_Texture3D_texture;
@@ -7401,6 +8848,7 @@ extern Variable TextureSampleGradProj_Texture3D_grad_x;
 extern Variable TextureSampleGradProj_Texture3D_grad_y;
 extern Variable TextureSampleGradProj_Texture3D_proj;
 extern Function TextureSampleGradProj_Texture3D;
+inline constexpr auto TextureSampleGradProj_Texture3D_backend_index = 2419u;
 
 /// textureSampleGradProj with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32
 extern Variable SampledTextureSampleGradProj_Texture3D_texture;
@@ -7409,6 +8857,7 @@ extern Variable SampledTextureSampleGradProj_Texture3D_grad_x;
 extern Variable SampledTextureSampleGradProj_Texture3D_grad_y;
 extern Variable SampledTextureSampleGradProj_Texture3D_proj;
 extern Function SampledTextureSampleGradProj_Texture3D;
+inline constexpr auto SampledTextureSampleGradProj_Texture3D_backend_index = 2420u;
 
 /// textureSampleGradProjOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
 extern Variable TextureSampleGradProjOffset_Texture1D_texture;
@@ -7419,6 +8868,7 @@ extern Variable TextureSampleGradProjOffset_Texture1D_grad_y;
 extern Variable TextureSampleGradProjOffset_Texture1D_proj;
 extern Variable TextureSampleGradProjOffset_Texture1D_offset;
 extern Function TextureSampleGradProjOffset_Texture1D;
+inline constexpr auto TextureSampleGradProjOffset_Texture1D_backend_index = 2421u;
 
 /// textureSampleGradProjOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleGradProjOffset_Texture1D_texture;
@@ -7428,6 +8878,7 @@ extern Variable SampledTextureSampleGradProjOffset_Texture1D_grad_y;
 extern Variable SampledTextureSampleGradProjOffset_Texture1D_proj;
 extern Variable SampledTextureSampleGradProjOffset_Texture1D_offset;
 extern Function SampledTextureSampleGradProjOffset_Texture1D;
+inline constexpr auto SampledTextureSampleGradProjOffset_Texture1D_backend_index = 2422u;
 
 /// textureSampleGradProjOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32x2
 extern Variable TextureSampleGradProjOffset_Texture2D_texture;
@@ -7438,6 +8889,7 @@ extern Variable TextureSampleGradProjOffset_Texture2D_grad_y;
 extern Variable TextureSampleGradProjOffset_Texture2D_proj;
 extern Variable TextureSampleGradProjOffset_Texture2D_offset;
 extern Function TextureSampleGradProjOffset_Texture2D;
+inline constexpr auto TextureSampleGradProjOffset_Texture2D_backend_index = 2423u;
 
 /// textureSampleGradProjOffset with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32, Float32x2
 extern Variable SampledTextureSampleGradProjOffset_Texture2D_texture;
@@ -7447,6 +8899,7 @@ extern Variable SampledTextureSampleGradProjOffset_Texture2D_grad_y;
 extern Variable SampledTextureSampleGradProjOffset_Texture2D_proj;
 extern Variable SampledTextureSampleGradProjOffset_Texture2D_offset;
 extern Function SampledTextureSampleGradProjOffset_Texture2D;
+inline constexpr auto SampledTextureSampleGradProjOffset_Texture2D_backend_index = 2424u;
 
 /// textureSampleGradProjOffset with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32x3
 extern Variable TextureSampleGradProjOffset_Texture3D_texture;
@@ -7457,6 +8910,7 @@ extern Variable TextureSampleGradProjOffset_Texture3D_grad_y;
 extern Variable TextureSampleGradProjOffset_Texture3D_proj;
 extern Variable TextureSampleGradProjOffset_Texture3D_offset;
 extern Function TextureSampleGradProjOffset_Texture3D;
+inline constexpr auto TextureSampleGradProjOffset_Texture3D_backend_index = 2425u;
 
 /// textureSampleGradProjOffset with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32, Float32x3
 extern Variable SampledTextureSampleGradProjOffset_Texture3D_texture;
@@ -7466,6 +8920,7 @@ extern Variable SampledTextureSampleGradProjOffset_Texture3D_grad_y;
 extern Variable SampledTextureSampleGradProjOffset_Texture3D_proj;
 extern Variable SampledTextureSampleGradProjOffset_Texture3D_offset;
 extern Function SampledTextureSampleGradProjOffset_Texture3D;
+inline constexpr auto SampledTextureSampleGradProjOffset_Texture3D_backend_index = 2426u;
 
 /// textureSampleGradCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32
 extern Variable TextureSampleGradCompare_Texture1D_texture;
@@ -7475,6 +8930,7 @@ extern Variable TextureSampleGradCompare_Texture1D_grad_x;
 extern Variable TextureSampleGradCompare_Texture1D_grad_y;
 extern Variable TextureSampleGradCompare_Texture1D_compare;
 extern Function TextureSampleGradCompare_Texture1D;
+inline constexpr auto TextureSampleGradCompare_Texture1D_backend_index = 2427u;
 
 /// textureSampleGradCompare with SampledTexture1D, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleGradCompare_Texture1D_texture;
@@ -7483,6 +8939,7 @@ extern Variable SampledTextureSampleGradCompare_Texture1D_grad_x;
 extern Variable SampledTextureSampleGradCompare_Texture1D_grad_y;
 extern Variable SampledTextureSampleGradCompare_Texture1D_compare;
 extern Function SampledTextureSampleGradCompare_Texture1D;
+inline constexpr auto SampledTextureSampleGradCompare_Texture1D_backend_index = 2428u;
 
 /// textureSampleGradCompare with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32
 extern Variable TextureSampleGradCompare_Texture2D_texture;
@@ -7492,6 +8949,7 @@ extern Variable TextureSampleGradCompare_Texture2D_grad_x;
 extern Variable TextureSampleGradCompare_Texture2D_grad_y;
 extern Variable TextureSampleGradCompare_Texture2D_compare;
 extern Function TextureSampleGradCompare_Texture2D;
+inline constexpr auto TextureSampleGradCompare_Texture2D_backend_index = 2429u;
 
 /// textureSampleGradCompare with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32
 extern Variable SampledTextureSampleGradCompare_Texture2D_texture;
@@ -7500,6 +8958,7 @@ extern Variable SampledTextureSampleGradCompare_Texture2D_grad_x;
 extern Variable SampledTextureSampleGradCompare_Texture2D_grad_y;
 extern Variable SampledTextureSampleGradCompare_Texture2D_compare;
 extern Function SampledTextureSampleGradCompare_Texture2D;
+inline constexpr auto SampledTextureSampleGradCompare_Texture2D_backend_index = 2430u;
 
 /// textureSampleGradCompare with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32
 extern Variable TextureSampleGradCompare_Texture3D_texture;
@@ -7509,6 +8968,7 @@ extern Variable TextureSampleGradCompare_Texture3D_grad_x;
 extern Variable TextureSampleGradCompare_Texture3D_grad_y;
 extern Variable TextureSampleGradCompare_Texture3D_compare;
 extern Function TextureSampleGradCompare_Texture3D;
+inline constexpr auto TextureSampleGradCompare_Texture3D_backend_index = 2431u;
 
 /// textureSampleGradCompare with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32
 extern Variable SampledTextureSampleGradCompare_Texture3D_texture;
@@ -7517,6 +8977,7 @@ extern Variable SampledTextureSampleGradCompare_Texture3D_grad_x;
 extern Variable SampledTextureSampleGradCompare_Texture3D_grad_y;
 extern Variable SampledTextureSampleGradCompare_Texture3D_compare;
 extern Function SampledTextureSampleGradCompare_Texture3D;
+inline constexpr auto SampledTextureSampleGradCompare_Texture3D_backend_index = 2432u;
 
 /// textureSampleGradCompare with Texture1DArray, Sampler, Float32x2, Float32x2, Float32x2, Float32
 extern Variable TextureSampleGradCompare_Texture1DArray_texture;
@@ -7526,6 +8987,7 @@ extern Variable TextureSampleGradCompare_Texture1DArray_grad_x;
 extern Variable TextureSampleGradCompare_Texture1DArray_grad_y;
 extern Variable TextureSampleGradCompare_Texture1DArray_compare;
 extern Function TextureSampleGradCompare_Texture1DArray;
+inline constexpr auto TextureSampleGradCompare_Texture1DArray_backend_index = 2433u;
 
 /// textureSampleGradCompare with SampledTexture1DArray, Float32x2, Float32x2, Float32x2, Float32
 extern Variable SampledTextureSampleGradCompare_Texture1DArray_texture;
@@ -7534,6 +8996,7 @@ extern Variable SampledTextureSampleGradCompare_Texture1DArray_grad_x;
 extern Variable SampledTextureSampleGradCompare_Texture1DArray_grad_y;
 extern Variable SampledTextureSampleGradCompare_Texture1DArray_compare;
 extern Function SampledTextureSampleGradCompare_Texture1DArray;
+inline constexpr auto SampledTextureSampleGradCompare_Texture1DArray_backend_index = 2434u;
 
 /// textureSampleGradCompare with Texture2DArray, Sampler, Float32x3, Float32x3, Float32x3, Float32
 extern Variable TextureSampleGradCompare_Texture2DArray_texture;
@@ -7543,6 +9006,7 @@ extern Variable TextureSampleGradCompare_Texture2DArray_grad_x;
 extern Variable TextureSampleGradCompare_Texture2DArray_grad_y;
 extern Variable TextureSampleGradCompare_Texture2DArray_compare;
 extern Function TextureSampleGradCompare_Texture2DArray;
+inline constexpr auto TextureSampleGradCompare_Texture2DArray_backend_index = 2435u;
 
 /// textureSampleGradCompare with SampledTexture2DArray, Float32x3, Float32x3, Float32x3, Float32
 extern Variable SampledTextureSampleGradCompare_Texture2DArray_texture;
@@ -7551,6 +9015,7 @@ extern Variable SampledTextureSampleGradCompare_Texture2DArray_grad_x;
 extern Variable SampledTextureSampleGradCompare_Texture2DArray_grad_y;
 extern Variable SampledTextureSampleGradCompare_Texture2DArray_compare;
 extern Function SampledTextureSampleGradCompare_Texture2DArray;
+inline constexpr auto SampledTextureSampleGradCompare_Texture2DArray_backend_index = 2436u;
 
 /// textureSampleGradCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
 extern Variable TextureSampleGradCompareOffset_Texture1D_texture;
@@ -7561,6 +9026,7 @@ extern Variable TextureSampleGradCompareOffset_Texture1D_grad_y;
 extern Variable TextureSampleGradCompareOffset_Texture1D_compare;
 extern Variable TextureSampleGradCompareOffset_Texture1D_offset;
 extern Function TextureSampleGradCompareOffset_Texture1D;
+inline constexpr auto TextureSampleGradCompareOffset_Texture1D_backend_index = 2437u;
 
 /// textureSampleGradCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleGradCompareOffset_Texture1D_texture;
@@ -7570,6 +9036,7 @@ extern Variable SampledTextureSampleGradCompareOffset_Texture1D_grad_y;
 extern Variable SampledTextureSampleGradCompareOffset_Texture1D_compare;
 extern Variable SampledTextureSampleGradCompareOffset_Texture1D_offset;
 extern Function SampledTextureSampleGradCompareOffset_Texture1D;
+inline constexpr auto SampledTextureSampleGradCompareOffset_Texture1D_backend_index = 2438u;
 
 /// textureSampleGradCompareOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32x2
 extern Variable TextureSampleGradCompareOffset_Texture2D_texture;
@@ -7580,6 +9047,7 @@ extern Variable TextureSampleGradCompareOffset_Texture2D_grad_y;
 extern Variable TextureSampleGradCompareOffset_Texture2D_compare;
 extern Variable TextureSampleGradCompareOffset_Texture2D_offset;
 extern Function TextureSampleGradCompareOffset_Texture2D;
+inline constexpr auto TextureSampleGradCompareOffset_Texture2D_backend_index = 2439u;
 
 /// textureSampleGradCompareOffset with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32, Float32x2
 extern Variable SampledTextureSampleGradCompareOffset_Texture2D_texture;
@@ -7589,6 +9057,7 @@ extern Variable SampledTextureSampleGradCompareOffset_Texture2D_grad_y;
 extern Variable SampledTextureSampleGradCompareOffset_Texture2D_compare;
 extern Variable SampledTextureSampleGradCompareOffset_Texture2D_offset;
 extern Function SampledTextureSampleGradCompareOffset_Texture2D;
+inline constexpr auto SampledTextureSampleGradCompareOffset_Texture2D_backend_index = 2440u;
 
 /// textureSampleGradCompareOffset with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32x3
 extern Variable TextureSampleGradCompareOffset_Texture3D_texture;
@@ -7599,6 +9068,7 @@ extern Variable TextureSampleGradCompareOffset_Texture3D_grad_y;
 extern Variable TextureSampleGradCompareOffset_Texture3D_compare;
 extern Variable TextureSampleGradCompareOffset_Texture3D_offset;
 extern Function TextureSampleGradCompareOffset_Texture3D;
+inline constexpr auto TextureSampleGradCompareOffset_Texture3D_backend_index = 2441u;
 
 /// textureSampleGradCompareOffset with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32, Float32x3
 extern Variable SampledTextureSampleGradCompareOffset_Texture3D_texture;
@@ -7608,6 +9078,7 @@ extern Variable SampledTextureSampleGradCompareOffset_Texture3D_grad_y;
 extern Variable SampledTextureSampleGradCompareOffset_Texture3D_compare;
 extern Variable SampledTextureSampleGradCompareOffset_Texture3D_offset;
 extern Function SampledTextureSampleGradCompareOffset_Texture3D;
+inline constexpr auto SampledTextureSampleGradCompareOffset_Texture3D_backend_index = 2442u;
 
 /// textureSampleGradCompareOffset with Texture1DArray, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32x2
 extern Variable TextureSampleGradCompareOffset_Texture1DArray_texture;
@@ -7618,6 +9089,7 @@ extern Variable TextureSampleGradCompareOffset_Texture1DArray_grad_y;
 extern Variable TextureSampleGradCompareOffset_Texture1DArray_compare;
 extern Variable TextureSampleGradCompareOffset_Texture1DArray_offset;
 extern Function TextureSampleGradCompareOffset_Texture1DArray;
+inline constexpr auto TextureSampleGradCompareOffset_Texture1DArray_backend_index = 2443u;
 
 /// textureSampleGradCompareOffset with SampledTexture1DArray, Float32x2, Float32x2, Float32x2, Float32, Float32x2
 extern Variable SampledTextureSampleGradCompareOffset_Texture1DArray_texture;
@@ -7627,6 +9099,7 @@ extern Variable SampledTextureSampleGradCompareOffset_Texture1DArray_grad_y;
 extern Variable SampledTextureSampleGradCompareOffset_Texture1DArray_compare;
 extern Variable SampledTextureSampleGradCompareOffset_Texture1DArray_offset;
 extern Function SampledTextureSampleGradCompareOffset_Texture1DArray;
+inline constexpr auto SampledTextureSampleGradCompareOffset_Texture1DArray_backend_index = 2444u;
 
 /// textureSampleGradCompareOffset with Texture2DArray, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32x3
 extern Variable TextureSampleGradCompareOffset_Texture2DArray_texture;
@@ -7637,6 +9110,7 @@ extern Variable TextureSampleGradCompareOffset_Texture2DArray_grad_y;
 extern Variable TextureSampleGradCompareOffset_Texture2DArray_compare;
 extern Variable TextureSampleGradCompareOffset_Texture2DArray_offset;
 extern Function TextureSampleGradCompareOffset_Texture2DArray;
+inline constexpr auto TextureSampleGradCompareOffset_Texture2DArray_backend_index = 2445u;
 
 /// textureSampleGradCompareOffset with SampledTexture2DArray, Float32x3, Float32x3, Float32x3, Float32, Float32x3
 extern Variable SampledTextureSampleGradCompareOffset_Texture2DArray_texture;
@@ -7646,6 +9120,7 @@ extern Variable SampledTextureSampleGradCompareOffset_Texture2DArray_grad_y;
 extern Variable SampledTextureSampleGradCompareOffset_Texture2DArray_compare;
 extern Variable SampledTextureSampleGradCompareOffset_Texture2DArray_offset;
 extern Function SampledTextureSampleGradCompareOffset_Texture2DArray;
+inline constexpr auto SampledTextureSampleGradCompareOffset_Texture2DArray_backend_index = 2446u;
 
 /// textureSampleGradProjCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
 extern Variable TextureSampleGradProjCompare_Texture1D_texture;
@@ -7656,6 +9131,7 @@ extern Variable TextureSampleGradProjCompare_Texture1D_grad_y;
 extern Variable TextureSampleGradProjCompare_Texture1D_proj;
 extern Variable TextureSampleGradProjCompare_Texture1D_compare;
 extern Function TextureSampleGradProjCompare_Texture1D;
+inline constexpr auto TextureSampleGradProjCompare_Texture1D_backend_index = 2447u;
 
 /// textureSampleGradProjCompare with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleGradProjCompare_Texture1D_texture;
@@ -7665,6 +9141,7 @@ extern Variable SampledTextureSampleGradProjCompare_Texture1D_grad_y;
 extern Variable SampledTextureSampleGradProjCompare_Texture1D_proj;
 extern Variable SampledTextureSampleGradProjCompare_Texture1D_compare;
 extern Function SampledTextureSampleGradProjCompare_Texture1D;
+inline constexpr auto SampledTextureSampleGradProjCompare_Texture1D_backend_index = 2448u;
 
 /// textureSampleGradProjCompare with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32
 extern Variable TextureSampleGradProjCompare_Texture2D_texture;
@@ -7675,6 +9152,7 @@ extern Variable TextureSampleGradProjCompare_Texture2D_grad_y;
 extern Variable TextureSampleGradProjCompare_Texture2D_proj;
 extern Variable TextureSampleGradProjCompare_Texture2D_compare;
 extern Function TextureSampleGradProjCompare_Texture2D;
+inline constexpr auto TextureSampleGradProjCompare_Texture2D_backend_index = 2449u;
 
 /// textureSampleGradProjCompare with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32, Float32
 extern Variable SampledTextureSampleGradProjCompare_Texture2D_texture;
@@ -7684,6 +9162,7 @@ extern Variable SampledTextureSampleGradProjCompare_Texture2D_grad_y;
 extern Variable SampledTextureSampleGradProjCompare_Texture2D_proj;
 extern Variable SampledTextureSampleGradProjCompare_Texture2D_compare;
 extern Function SampledTextureSampleGradProjCompare_Texture2D;
+inline constexpr auto SampledTextureSampleGradProjCompare_Texture2D_backend_index = 2450u;
 
 /// textureSampleGradProjCompare with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32
 extern Variable TextureSampleGradProjCompare_Texture3D_texture;
@@ -7694,6 +9173,7 @@ extern Variable TextureSampleGradProjCompare_Texture3D_grad_y;
 extern Variable TextureSampleGradProjCompare_Texture3D_proj;
 extern Variable TextureSampleGradProjCompare_Texture3D_compare;
 extern Function TextureSampleGradProjCompare_Texture3D;
+inline constexpr auto TextureSampleGradProjCompare_Texture3D_backend_index = 2451u;
 
 /// textureSampleGradProjCompare with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32, Float32
 extern Variable SampledTextureSampleGradProjCompare_Texture3D_texture;
@@ -7703,6 +9183,7 @@ extern Variable SampledTextureSampleGradProjCompare_Texture3D_grad_y;
 extern Variable SampledTextureSampleGradProjCompare_Texture3D_proj;
 extern Variable SampledTextureSampleGradProjCompare_Texture3D_compare;
 extern Function SampledTextureSampleGradProjCompare_Texture3D;
+inline constexpr auto SampledTextureSampleGradProjCompare_Texture3D_backend_index = 2452u;
 
 /// textureSampleGradProjCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32, Float32
 extern Variable TextureSampleGradProjCompareOffset_Texture1D_texture;
@@ -7714,6 +9195,7 @@ extern Variable TextureSampleGradProjCompareOffset_Texture1D_proj;
 extern Variable TextureSampleGradProjCompareOffset_Texture1D_compare;
 extern Variable TextureSampleGradProjCompareOffset_Texture1D_offset;
 extern Function TextureSampleGradProjCompareOffset_Texture1D;
+inline constexpr auto TextureSampleGradProjCompareOffset_Texture1D_backend_index = 2453u;
 
 /// textureSampleGradProjCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture1D_texture;
@@ -7724,6 +9206,7 @@ extern Variable SampledTextureSampleGradProjCompareOffset_Texture1D_proj;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture1D_compare;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture1D_offset;
 extern Function SampledTextureSampleGradProjCompareOffset_Texture1D;
+inline constexpr auto SampledTextureSampleGradProjCompareOffset_Texture1D_backend_index = 2454u;
 
 /// textureSampleGradProjCompareOffset with Texture2D, Sampler, Float32x2, Float32x2, Float32x2, Float32, Float32, Float32x2
 extern Variable TextureSampleGradProjCompareOffset_Texture2D_texture;
@@ -7735,6 +9218,7 @@ extern Variable TextureSampleGradProjCompareOffset_Texture2D_proj;
 extern Variable TextureSampleGradProjCompareOffset_Texture2D_compare;
 extern Variable TextureSampleGradProjCompareOffset_Texture2D_offset;
 extern Function TextureSampleGradProjCompareOffset_Texture2D;
+inline constexpr auto TextureSampleGradProjCompareOffset_Texture2D_backend_index = 2455u;
 
 /// textureSampleGradProjCompareOffset with SampledTexture2D, Float32x2, Float32x2, Float32x2, Float32, Float32, Float32x2
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture2D_texture;
@@ -7745,6 +9229,7 @@ extern Variable SampledTextureSampleGradProjCompareOffset_Texture2D_proj;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture2D_compare;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture2D_offset;
 extern Function SampledTextureSampleGradProjCompareOffset_Texture2D;
+inline constexpr auto SampledTextureSampleGradProjCompareOffset_Texture2D_backend_index = 2456u;
 
 /// textureSampleGradProjCompareOffset with Texture3D, Sampler, Float32x3, Float32x3, Float32x3, Float32, Float32, Float32x3
 extern Variable TextureSampleGradProjCompareOffset_Texture3D_texture;
@@ -7756,6 +9241,7 @@ extern Variable TextureSampleGradProjCompareOffset_Texture3D_proj;
 extern Variable TextureSampleGradProjCompareOffset_Texture3D_compare;
 extern Variable TextureSampleGradProjCompareOffset_Texture3D_offset;
 extern Function TextureSampleGradProjCompareOffset_Texture3D;
+inline constexpr auto TextureSampleGradProjCompareOffset_Texture3D_backend_index = 2457u;
 
 /// textureSampleGradProjCompareOffset with SampledTexture3D, Float32x3, Float32x3, Float32x3, Float32, Float32, Float32x3
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture3D_texture;
@@ -7766,6 +9252,7 @@ extern Variable SampledTextureSampleGradProjCompareOffset_Texture3D_proj;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture3D_compare;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture3D_offset;
 extern Function SampledTextureSampleGradProjCompareOffset_Texture3D;
+inline constexpr auto SampledTextureSampleGradProjCompareOffset_Texture3D_backend_index = 2458u;
 
 /// textureSampleBias with Texture1D, Sampler, Float32, Float32
 extern Variable TextureSampleBias_Texture1D_texture;
@@ -7773,12 +9260,14 @@ extern Variable TextureSampleBias_Texture1D_sampler;
 extern Variable TextureSampleBias_Texture1D_coordinate;
 extern Variable TextureSampleBias_Texture1D_bias;
 extern Function TextureSampleBias_Texture1D;
+inline constexpr auto TextureSampleBias_Texture1D_backend_index = 2459u;
 
 /// textureSampleBias with SampledTexture1D, Float32, Float32
 extern Variable SampledTextureSampleBias_Texture1D_texture;
 extern Variable SampledTextureSampleBias_Texture1D_coordinate;
 extern Variable SampledTextureSampleBias_Texture1D_bias;
 extern Function SampledTextureSampleBias_Texture1D;
+inline constexpr auto SampledTextureSampleBias_Texture1D_backend_index = 2460u;
 
 /// textureSampleBias with Texture2D, Sampler, Float32x2, Float32
 extern Variable TextureSampleBias_Texture2D_texture;
@@ -7786,12 +9275,14 @@ extern Variable TextureSampleBias_Texture2D_sampler;
 extern Variable TextureSampleBias_Texture2D_coordinate;
 extern Variable TextureSampleBias_Texture2D_bias;
 extern Function TextureSampleBias_Texture2D;
+inline constexpr auto TextureSampleBias_Texture2D_backend_index = 2461u;
 
 /// textureSampleBias with SampledTexture2D, Float32x2, Float32
 extern Variable SampledTextureSampleBias_Texture2D_texture;
 extern Variable SampledTextureSampleBias_Texture2D_coordinate;
 extern Variable SampledTextureSampleBias_Texture2D_bias;
 extern Function SampledTextureSampleBias_Texture2D;
+inline constexpr auto SampledTextureSampleBias_Texture2D_backend_index = 2462u;
 
 /// textureSampleBias with Texture3D, Sampler, Float32x3, Float32
 extern Variable TextureSampleBias_Texture3D_texture;
@@ -7799,12 +9290,14 @@ extern Variable TextureSampleBias_Texture3D_sampler;
 extern Variable TextureSampleBias_Texture3D_coordinate;
 extern Variable TextureSampleBias_Texture3D_bias;
 extern Function TextureSampleBias_Texture3D;
+inline constexpr auto TextureSampleBias_Texture3D_backend_index = 2463u;
 
 /// textureSampleBias with SampledTexture3D, Float32x3, Float32
 extern Variable SampledTextureSampleBias_Texture3D_texture;
 extern Variable SampledTextureSampleBias_Texture3D_coordinate;
 extern Variable SampledTextureSampleBias_Texture3D_bias;
 extern Function SampledTextureSampleBias_Texture3D;
+inline constexpr auto SampledTextureSampleBias_Texture3D_backend_index = 2464u;
 
 /// textureSampleBias with TextureCube, Sampler, Float32x3, Float32
 extern Variable TextureSampleBias_TextureCube_texture;
@@ -7812,12 +9305,14 @@ extern Variable TextureSampleBias_TextureCube_sampler;
 extern Variable TextureSampleBias_TextureCube_coordinate;
 extern Variable TextureSampleBias_TextureCube_bias;
 extern Function TextureSampleBias_TextureCube;
+inline constexpr auto TextureSampleBias_TextureCube_backend_index = 2465u;
 
 /// textureSampleBias with SampledTextureCube, Float32x3, Float32
 extern Variable SampledTextureSampleBias_TextureCube_texture;
 extern Variable SampledTextureSampleBias_TextureCube_coordinate;
 extern Variable SampledTextureSampleBias_TextureCube_bias;
 extern Function SampledTextureSampleBias_TextureCube;
+inline constexpr auto SampledTextureSampleBias_TextureCube_backend_index = 2466u;
 
 /// textureSampleBias with Texture1DArray, Sampler, Float32x2, Float32
 extern Variable TextureSampleBias_Texture1DArray_texture;
@@ -7825,12 +9320,14 @@ extern Variable TextureSampleBias_Texture1DArray_sampler;
 extern Variable TextureSampleBias_Texture1DArray_coordinate;
 extern Variable TextureSampleBias_Texture1DArray_bias;
 extern Function TextureSampleBias_Texture1DArray;
+inline constexpr auto TextureSampleBias_Texture1DArray_backend_index = 2467u;
 
 /// textureSampleBias with SampledTexture1DArray, Float32x2, Float32
 extern Variable SampledTextureSampleBias_Texture1DArray_texture;
 extern Variable SampledTextureSampleBias_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleBias_Texture1DArray_bias;
 extern Function SampledTextureSampleBias_Texture1DArray;
+inline constexpr auto SampledTextureSampleBias_Texture1DArray_backend_index = 2468u;
 
 /// textureSampleBias with Texture2DArray, Sampler, Float32x3, Float32
 extern Variable TextureSampleBias_Texture2DArray_texture;
@@ -7838,12 +9335,14 @@ extern Variable TextureSampleBias_Texture2DArray_sampler;
 extern Variable TextureSampleBias_Texture2DArray_coordinate;
 extern Variable TextureSampleBias_Texture2DArray_bias;
 extern Function TextureSampleBias_Texture2DArray;
+inline constexpr auto TextureSampleBias_Texture2DArray_backend_index = 2469u;
 
 /// textureSampleBias with SampledTexture2DArray, Float32x3, Float32
 extern Variable SampledTextureSampleBias_Texture2DArray_texture;
 extern Variable SampledTextureSampleBias_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleBias_Texture2DArray_bias;
 extern Function SampledTextureSampleBias_Texture2DArray;
+inline constexpr auto SampledTextureSampleBias_Texture2DArray_backend_index = 2470u;
 
 /// textureSampleBias with TextureCubeArray, Sampler, Float32x4, Float32
 extern Variable TextureSampleBias_TextureCubeArray_texture;
@@ -7851,12 +9350,14 @@ extern Variable TextureSampleBias_TextureCubeArray_sampler;
 extern Variable TextureSampleBias_TextureCubeArray_coordinate;
 extern Variable TextureSampleBias_TextureCubeArray_bias;
 extern Function TextureSampleBias_TextureCubeArray;
+inline constexpr auto TextureSampleBias_TextureCubeArray_backend_index = 2471u;
 
 /// textureSampleBias with SampledTextureCubeArray, Float32x4, Float32
 extern Variable SampledTextureSampleBias_TextureCubeArray_texture;
 extern Variable SampledTextureSampleBias_TextureCubeArray_coordinate;
 extern Variable SampledTextureSampleBias_TextureCubeArray_bias;
 extern Function SampledTextureSampleBias_TextureCubeArray;
+inline constexpr auto SampledTextureSampleBias_TextureCubeArray_backend_index = 2472u;
 
 /// textureSampleBiasOffset with Texture1D, Sampler, Float32, Float32, Float32
 extern Variable TextureSampleBiasOffset_Texture1D_texture;
@@ -7865,6 +9366,7 @@ extern Variable TextureSampleBiasOffset_Texture1D_coordinate;
 extern Variable TextureSampleBiasOffset_Texture1D_bias;
 extern Variable TextureSampleBiasOffset_Texture1D_offset;
 extern Function TextureSampleBiasOffset_Texture1D;
+inline constexpr auto TextureSampleBiasOffset_Texture1D_backend_index = 2473u;
 
 /// textureSampleBiasOffset with SampledTexture1D, Float32, Float32, Float32
 extern Variable SampledTextureSampleBiasOffset_Texture1D_texture;
@@ -7872,6 +9374,7 @@ extern Variable SampledTextureSampleBiasOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleBiasOffset_Texture1D_bias;
 extern Variable SampledTextureSampleBiasOffset_Texture1D_offset;
 extern Function SampledTextureSampleBiasOffset_Texture1D;
+inline constexpr auto SampledTextureSampleBiasOffset_Texture1D_backend_index = 2474u;
 
 /// textureSampleBiasOffset with Texture2D, Sampler, Float32x2, Float32, Float32x2
 extern Variable TextureSampleBiasOffset_Texture2D_texture;
@@ -7880,6 +9383,7 @@ extern Variable TextureSampleBiasOffset_Texture2D_coordinate;
 extern Variable TextureSampleBiasOffset_Texture2D_bias;
 extern Variable TextureSampleBiasOffset_Texture2D_offset;
 extern Function TextureSampleBiasOffset_Texture2D;
+inline constexpr auto TextureSampleBiasOffset_Texture2D_backend_index = 2475u;
 
 /// textureSampleBiasOffset with SampledTexture2D, Float32x2, Float32, Float32x2
 extern Variable SampledTextureSampleBiasOffset_Texture2D_texture;
@@ -7887,6 +9391,7 @@ extern Variable SampledTextureSampleBiasOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleBiasOffset_Texture2D_bias;
 extern Variable SampledTextureSampleBiasOffset_Texture2D_offset;
 extern Function SampledTextureSampleBiasOffset_Texture2D;
+inline constexpr auto SampledTextureSampleBiasOffset_Texture2D_backend_index = 2476u;
 
 /// textureSampleBiasOffset with Texture3D, Sampler, Float32x3, Float32, Float32x3
 extern Variable TextureSampleBiasOffset_Texture3D_texture;
@@ -7895,6 +9400,7 @@ extern Variable TextureSampleBiasOffset_Texture3D_coordinate;
 extern Variable TextureSampleBiasOffset_Texture3D_bias;
 extern Variable TextureSampleBiasOffset_Texture3D_offset;
 extern Function TextureSampleBiasOffset_Texture3D;
+inline constexpr auto TextureSampleBiasOffset_Texture3D_backend_index = 2477u;
 
 /// textureSampleBiasOffset with SampledTexture3D, Float32x3, Float32, Float32x3
 extern Variable SampledTextureSampleBiasOffset_Texture3D_texture;
@@ -7902,6 +9408,7 @@ extern Variable SampledTextureSampleBiasOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleBiasOffset_Texture3D_bias;
 extern Variable SampledTextureSampleBiasOffset_Texture3D_offset;
 extern Function SampledTextureSampleBiasOffset_Texture3D;
+inline constexpr auto SampledTextureSampleBiasOffset_Texture3D_backend_index = 2478u;
 
 /// textureSampleBiasOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32x2
 extern Variable TextureSampleBiasOffset_Texture1DArray_texture;
@@ -7910,6 +9417,7 @@ extern Variable TextureSampleBiasOffset_Texture1DArray_coordinate;
 extern Variable TextureSampleBiasOffset_Texture1DArray_bias;
 extern Variable TextureSampleBiasOffset_Texture1DArray_offset;
 extern Function TextureSampleBiasOffset_Texture1DArray;
+inline constexpr auto TextureSampleBiasOffset_Texture1DArray_backend_index = 2479u;
 
 /// textureSampleBiasOffset with SampledTexture1DArray, Float32x2, Float32, Float32x2
 extern Variable SampledTextureSampleBiasOffset_Texture1DArray_texture;
@@ -7917,6 +9425,7 @@ extern Variable SampledTextureSampleBiasOffset_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleBiasOffset_Texture1DArray_bias;
 extern Variable SampledTextureSampleBiasOffset_Texture1DArray_offset;
 extern Function SampledTextureSampleBiasOffset_Texture1DArray;
+inline constexpr auto SampledTextureSampleBiasOffset_Texture1DArray_backend_index = 2480u;
 
 /// textureSampleBiasOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32x3
 extern Variable TextureSampleBiasOffset_Texture2DArray_texture;
@@ -7925,6 +9434,7 @@ extern Variable TextureSampleBiasOffset_Texture2DArray_coordinate;
 extern Variable TextureSampleBiasOffset_Texture2DArray_bias;
 extern Variable TextureSampleBiasOffset_Texture2DArray_offset;
 extern Function TextureSampleBiasOffset_Texture2DArray;
+inline constexpr auto TextureSampleBiasOffset_Texture2DArray_backend_index = 2481u;
 
 /// textureSampleBiasOffset with SampledTexture2DArray, Float32x3, Float32, Float32x3
 extern Variable SampledTextureSampleBiasOffset_Texture2DArray_texture;
@@ -7932,6 +9442,7 @@ extern Variable SampledTextureSampleBiasOffset_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleBiasOffset_Texture2DArray_bias;
 extern Variable SampledTextureSampleBiasOffset_Texture2DArray_offset;
 extern Function SampledTextureSampleBiasOffset_Texture2DArray;
+inline constexpr auto SampledTextureSampleBiasOffset_Texture2DArray_backend_index = 2482u;
 
 /// textureSampleBiasProj with Texture1D, Sampler, Float32, Float32, Float32
 extern Variable TextureSampleBiasProj_Texture1D_texture;
@@ -7940,6 +9451,7 @@ extern Variable TextureSampleBiasProj_Texture1D_coordinate;
 extern Variable TextureSampleBiasProj_Texture1D_bias;
 extern Variable TextureSampleBiasProj_Texture1D_proj;
 extern Function TextureSampleBiasProj_Texture1D;
+inline constexpr auto TextureSampleBiasProj_Texture1D_backend_index = 2483u;
 
 /// textureSampleBiasProj with SampledTexture1D, Float32, Float32, Float32
 extern Variable SampledTextureSampleBiasProj_Texture1D_texture;
@@ -7947,6 +9459,7 @@ extern Variable SampledTextureSampleBiasProj_Texture1D_coordinate;
 extern Variable SampledTextureSampleBiasProj_Texture1D_bias;
 extern Variable SampledTextureSampleBiasProj_Texture1D_proj;
 extern Function SampledTextureSampleBiasProj_Texture1D;
+inline constexpr auto SampledTextureSampleBiasProj_Texture1D_backend_index = 2484u;
 
 /// textureSampleBiasProj with Texture2D, Sampler, Float32x2, Float32, Float32
 extern Variable TextureSampleBiasProj_Texture2D_texture;
@@ -7955,6 +9468,7 @@ extern Variable TextureSampleBiasProj_Texture2D_coordinate;
 extern Variable TextureSampleBiasProj_Texture2D_bias;
 extern Variable TextureSampleBiasProj_Texture2D_proj;
 extern Function TextureSampleBiasProj_Texture2D;
+inline constexpr auto TextureSampleBiasProj_Texture2D_backend_index = 2485u;
 
 /// textureSampleBiasProj with SampledTexture2D, Float32x2, Float32, Float32
 extern Variable SampledTextureSampleBiasProj_Texture2D_texture;
@@ -7962,6 +9476,7 @@ extern Variable SampledTextureSampleBiasProj_Texture2D_coordinate;
 extern Variable SampledTextureSampleBiasProj_Texture2D_bias;
 extern Variable SampledTextureSampleBiasProj_Texture2D_proj;
 extern Function SampledTextureSampleBiasProj_Texture2D;
+inline constexpr auto SampledTextureSampleBiasProj_Texture2D_backend_index = 2486u;
 
 /// textureSampleBiasProj with Texture3D, Sampler, Float32x3, Float32, Float32
 extern Variable TextureSampleBiasProj_Texture3D_texture;
@@ -7970,6 +9485,7 @@ extern Variable TextureSampleBiasProj_Texture3D_coordinate;
 extern Variable TextureSampleBiasProj_Texture3D_bias;
 extern Variable TextureSampleBiasProj_Texture3D_proj;
 extern Function TextureSampleBiasProj_Texture3D;
+inline constexpr auto TextureSampleBiasProj_Texture3D_backend_index = 2487u;
 
 /// textureSampleBiasProj with SampledTexture3D, Float32x3, Float32, Float32
 extern Variable SampledTextureSampleBiasProj_Texture3D_texture;
@@ -7977,6 +9493,7 @@ extern Variable SampledTextureSampleBiasProj_Texture3D_coordinate;
 extern Variable SampledTextureSampleBiasProj_Texture3D_bias;
 extern Variable SampledTextureSampleBiasProj_Texture3D_proj;
 extern Function SampledTextureSampleBiasProj_Texture3D;
+inline constexpr auto SampledTextureSampleBiasProj_Texture3D_backend_index = 2488u;
 
 /// textureSampleBiasProjOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
 extern Variable TextureSampleBiasProjOffset_Texture1D_texture;
@@ -7986,6 +9503,7 @@ extern Variable TextureSampleBiasProjOffset_Texture1D_bias;
 extern Variable TextureSampleBiasProjOffset_Texture1D_proj;
 extern Variable TextureSampleBiasProjOffset_Texture1D_offset;
 extern Function TextureSampleBiasProjOffset_Texture1D;
+inline constexpr auto TextureSampleBiasProjOffset_Texture1D_backend_index = 2489u;
 
 /// textureSampleBiasProjOffset with SampledTexture1D, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleBiasProjOffset_Texture1D_texture;
@@ -7994,6 +9512,7 @@ extern Variable SampledTextureSampleBiasProjOffset_Texture1D_bias;
 extern Variable SampledTextureSampleBiasProjOffset_Texture1D_proj;
 extern Variable SampledTextureSampleBiasProjOffset_Texture1D_offset;
 extern Function SampledTextureSampleBiasProjOffset_Texture1D;
+inline constexpr auto SampledTextureSampleBiasProjOffset_Texture1D_backend_index = 2490u;
 
 /// textureSampleBiasProjOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
 extern Variable TextureSampleBiasProjOffset_Texture2D_texture;
@@ -8003,6 +9522,7 @@ extern Variable TextureSampleBiasProjOffset_Texture2D_bias;
 extern Variable TextureSampleBiasProjOffset_Texture2D_proj;
 extern Variable TextureSampleBiasProjOffset_Texture2D_offset;
 extern Function TextureSampleBiasProjOffset_Texture2D;
+inline constexpr auto TextureSampleBiasProjOffset_Texture2D_backend_index = 2491u;
 
 /// textureSampleBiasProjOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
 extern Variable SampledTextureSampleBiasProjOffset_Texture2D_texture;
@@ -8011,6 +9531,7 @@ extern Variable SampledTextureSampleBiasProjOffset_Texture2D_bias;
 extern Variable SampledTextureSampleBiasProjOffset_Texture2D_proj;
 extern Variable SampledTextureSampleBiasProjOffset_Texture2D_offset;
 extern Function SampledTextureSampleBiasProjOffset_Texture2D;
+inline constexpr auto SampledTextureSampleBiasProjOffset_Texture2D_backend_index = 2492u;
 
 /// textureSampleBiasProjOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
 extern Variable TextureSampleBiasProjOffset_Texture3D_texture;
@@ -8020,6 +9541,7 @@ extern Variable TextureSampleBiasProjOffset_Texture3D_bias;
 extern Variable TextureSampleBiasProjOffset_Texture3D_proj;
 extern Variable TextureSampleBiasProjOffset_Texture3D_offset;
 extern Function TextureSampleBiasProjOffset_Texture3D;
+inline constexpr auto TextureSampleBiasProjOffset_Texture3D_backend_index = 2493u;
 
 /// textureSampleBiasProjOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
 extern Variable SampledTextureSampleBiasProjOffset_Texture3D_texture;
@@ -8028,6 +9550,7 @@ extern Variable SampledTextureSampleBiasProjOffset_Texture3D_bias;
 extern Variable SampledTextureSampleBiasProjOffset_Texture3D_proj;
 extern Variable SampledTextureSampleBiasProjOffset_Texture3D_offset;
 extern Function SampledTextureSampleBiasProjOffset_Texture3D;
+inline constexpr auto SampledTextureSampleBiasProjOffset_Texture3D_backend_index = 2494u;
 
 /// textureSampleBiasCompare with Texture1D, Sampler, Float32, Float32, Float32
 extern Variable TextureSampleBiasCompare_Texture1D_texture;
@@ -8036,6 +9559,7 @@ extern Variable TextureSampleBiasCompare_Texture1D_coordinate;
 extern Variable TextureSampleBiasCompare_Texture1D_bias;
 extern Variable TextureSampleBiasCompare_Texture1D_compare;
 extern Function TextureSampleBiasCompare_Texture1D;
+inline constexpr auto TextureSampleBiasCompare_Texture1D_backend_index = 2495u;
 
 /// textureSampleBiasCompare with SampledTexture1D, Float32, Float32, Float32
 extern Variable SampledTextureSampleBiasCompare_Texture1D_texture;
@@ -8043,6 +9567,7 @@ extern Variable SampledTextureSampleBiasCompare_Texture1D_coordinate;
 extern Variable SampledTextureSampleBiasCompare_Texture1D_bias;
 extern Variable SampledTextureSampleBiasCompare_Texture1D_compare;
 extern Function SampledTextureSampleBiasCompare_Texture1D;
+inline constexpr auto SampledTextureSampleBiasCompare_Texture1D_backend_index = 2496u;
 
 /// textureSampleBiasCompare with Texture2D, Sampler, Float32x2, Float32, Float32
 extern Variable TextureSampleBiasCompare_Texture2D_texture;
@@ -8051,6 +9576,7 @@ extern Variable TextureSampleBiasCompare_Texture2D_coordinate;
 extern Variable TextureSampleBiasCompare_Texture2D_bias;
 extern Variable TextureSampleBiasCompare_Texture2D_compare;
 extern Function TextureSampleBiasCompare_Texture2D;
+inline constexpr auto TextureSampleBiasCompare_Texture2D_backend_index = 2497u;
 
 /// textureSampleBiasCompare with SampledTexture2D, Float32x2, Float32, Float32
 extern Variable SampledTextureSampleBiasCompare_Texture2D_texture;
@@ -8058,6 +9584,7 @@ extern Variable SampledTextureSampleBiasCompare_Texture2D_coordinate;
 extern Variable SampledTextureSampleBiasCompare_Texture2D_bias;
 extern Variable SampledTextureSampleBiasCompare_Texture2D_compare;
 extern Function SampledTextureSampleBiasCompare_Texture2D;
+inline constexpr auto SampledTextureSampleBiasCompare_Texture2D_backend_index = 2498u;
 
 /// textureSampleBiasCompare with Texture3D, Sampler, Float32x3, Float32, Float32
 extern Variable TextureSampleBiasCompare_Texture3D_texture;
@@ -8066,6 +9593,7 @@ extern Variable TextureSampleBiasCompare_Texture3D_coordinate;
 extern Variable TextureSampleBiasCompare_Texture3D_bias;
 extern Variable TextureSampleBiasCompare_Texture3D_compare;
 extern Function TextureSampleBiasCompare_Texture3D;
+inline constexpr auto TextureSampleBiasCompare_Texture3D_backend_index = 2499u;
 
 /// textureSampleBiasCompare with SampledTexture3D, Float32x3, Float32, Float32
 extern Variable SampledTextureSampleBiasCompare_Texture3D_texture;
@@ -8073,6 +9601,7 @@ extern Variable SampledTextureSampleBiasCompare_Texture3D_coordinate;
 extern Variable SampledTextureSampleBiasCompare_Texture3D_bias;
 extern Variable SampledTextureSampleBiasCompare_Texture3D_compare;
 extern Function SampledTextureSampleBiasCompare_Texture3D;
+inline constexpr auto SampledTextureSampleBiasCompare_Texture3D_backend_index = 2500u;
 
 /// textureSampleBiasCompare with Texture1DArray, Sampler, Float32x2, Float32, Float32
 extern Variable TextureSampleBiasCompare_Texture1DArray_texture;
@@ -8081,6 +9610,7 @@ extern Variable TextureSampleBiasCompare_Texture1DArray_coordinate;
 extern Variable TextureSampleBiasCompare_Texture1DArray_bias;
 extern Variable TextureSampleBiasCompare_Texture1DArray_compare;
 extern Function TextureSampleBiasCompare_Texture1DArray;
+inline constexpr auto TextureSampleBiasCompare_Texture1DArray_backend_index = 2501u;
 
 /// textureSampleBiasCompare with SampledTexture1DArray, Float32x2, Float32, Float32
 extern Variable SampledTextureSampleBiasCompare_Texture1DArray_texture;
@@ -8088,6 +9618,7 @@ extern Variable SampledTextureSampleBiasCompare_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleBiasCompare_Texture1DArray_bias;
 extern Variable SampledTextureSampleBiasCompare_Texture1DArray_compare;
 extern Function SampledTextureSampleBiasCompare_Texture1DArray;
+inline constexpr auto SampledTextureSampleBiasCompare_Texture1DArray_backend_index = 2502u;
 
 /// textureSampleBiasCompare with Texture2DArray, Sampler, Float32x3, Float32, Float32
 extern Variable TextureSampleBiasCompare_Texture2DArray_texture;
@@ -8096,6 +9627,7 @@ extern Variable TextureSampleBiasCompare_Texture2DArray_coordinate;
 extern Variable TextureSampleBiasCompare_Texture2DArray_bias;
 extern Variable TextureSampleBiasCompare_Texture2DArray_compare;
 extern Function TextureSampleBiasCompare_Texture2DArray;
+inline constexpr auto TextureSampleBiasCompare_Texture2DArray_backend_index = 2503u;
 
 /// textureSampleBiasCompare with SampledTexture2DArray, Float32x3, Float32, Float32
 extern Variable SampledTextureSampleBiasCompare_Texture2DArray_texture;
@@ -8103,6 +9635,7 @@ extern Variable SampledTextureSampleBiasCompare_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleBiasCompare_Texture2DArray_bias;
 extern Variable SampledTextureSampleBiasCompare_Texture2DArray_compare;
 extern Function SampledTextureSampleBiasCompare_Texture2DArray;
+inline constexpr auto SampledTextureSampleBiasCompare_Texture2DArray_backend_index = 2504u;
 
 /// textureSampleBiasCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32
 extern Variable TextureSampleBiasCompareOffset_Texture1D_texture;
@@ -8112,6 +9645,7 @@ extern Variable TextureSampleBiasCompareOffset_Texture1D_bias;
 extern Variable TextureSampleBiasCompareOffset_Texture1D_compare;
 extern Variable TextureSampleBiasCompareOffset_Texture1D_offset;
 extern Function TextureSampleBiasCompareOffset_Texture1D;
+inline constexpr auto TextureSampleBiasCompareOffset_Texture1D_backend_index = 2505u;
 
 /// textureSampleBiasCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleBiasCompareOffset_Texture1D_texture;
@@ -8120,6 +9654,7 @@ extern Variable SampledTextureSampleBiasCompareOffset_Texture1D_bias;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture1D_compare;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture1D_offset;
 extern Function SampledTextureSampleBiasCompareOffset_Texture1D;
+inline constexpr auto SampledTextureSampleBiasCompareOffset_Texture1D_backend_index = 2506u;
 
 /// textureSampleBiasCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32x2
 extern Variable TextureSampleBiasCompareOffset_Texture2D_texture;
@@ -8129,6 +9664,7 @@ extern Variable TextureSampleBiasCompareOffset_Texture2D_bias;
 extern Variable TextureSampleBiasCompareOffset_Texture2D_compare;
 extern Variable TextureSampleBiasCompareOffset_Texture2D_offset;
 extern Function TextureSampleBiasCompareOffset_Texture2D;
+inline constexpr auto TextureSampleBiasCompareOffset_Texture2D_backend_index = 2507u;
 
 /// textureSampleBiasCompareOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32x2
 extern Variable SampledTextureSampleBiasCompareOffset_Texture2D_texture;
@@ -8137,6 +9673,7 @@ extern Variable SampledTextureSampleBiasCompareOffset_Texture2D_bias;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture2D_compare;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture2D_offset;
 extern Function SampledTextureSampleBiasCompareOffset_Texture2D;
+inline constexpr auto SampledTextureSampleBiasCompareOffset_Texture2D_backend_index = 2508u;
 
 /// textureSampleBiasCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32x3
 extern Variable TextureSampleBiasCompareOffset_Texture3D_texture;
@@ -8146,6 +9683,7 @@ extern Variable TextureSampleBiasCompareOffset_Texture3D_bias;
 extern Variable TextureSampleBiasCompareOffset_Texture3D_compare;
 extern Variable TextureSampleBiasCompareOffset_Texture3D_offset;
 extern Function TextureSampleBiasCompareOffset_Texture3D;
+inline constexpr auto TextureSampleBiasCompareOffset_Texture3D_backend_index = 2509u;
 
 /// textureSampleBiasCompareOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32x3
 extern Variable SampledTextureSampleBiasCompareOffset_Texture3D_texture;
@@ -8154,6 +9692,7 @@ extern Variable SampledTextureSampleBiasCompareOffset_Texture3D_bias;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture3D_compare;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture3D_offset;
 extern Function SampledTextureSampleBiasCompareOffset_Texture3D;
+inline constexpr auto SampledTextureSampleBiasCompareOffset_Texture3D_backend_index = 2510u;
 
 /// textureSampleBiasCompareOffset with Texture1DArray, Sampler, Float32x2, Float32, Float32, Float32x2
 extern Variable TextureSampleBiasCompareOffset_Texture1DArray_texture;
@@ -8163,6 +9702,7 @@ extern Variable TextureSampleBiasCompareOffset_Texture1DArray_bias;
 extern Variable TextureSampleBiasCompareOffset_Texture1DArray_compare;
 extern Variable TextureSampleBiasCompareOffset_Texture1DArray_offset;
 extern Function TextureSampleBiasCompareOffset_Texture1DArray;
+inline constexpr auto TextureSampleBiasCompareOffset_Texture1DArray_backend_index = 2511u;
 
 /// textureSampleBiasCompareOffset with SampledTexture1DArray, Float32x2, Float32, Float32, Float32x2
 extern Variable SampledTextureSampleBiasCompareOffset_Texture1DArray_texture;
@@ -8171,6 +9711,7 @@ extern Variable SampledTextureSampleBiasCompareOffset_Texture1DArray_bias;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture1DArray_compare;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture1DArray_offset;
 extern Function SampledTextureSampleBiasCompareOffset_Texture1DArray;
+inline constexpr auto SampledTextureSampleBiasCompareOffset_Texture1DArray_backend_index = 2512u;
 
 /// textureSampleBiasCompareOffset with Texture2DArray, Sampler, Float32x3, Float32, Float32, Float32x3
 extern Variable TextureSampleBiasCompareOffset_Texture2DArray_texture;
@@ -8180,6 +9721,7 @@ extern Variable TextureSampleBiasCompareOffset_Texture2DArray_bias;
 extern Variable TextureSampleBiasCompareOffset_Texture2DArray_compare;
 extern Variable TextureSampleBiasCompareOffset_Texture2DArray_offset;
 extern Function TextureSampleBiasCompareOffset_Texture2DArray;
+inline constexpr auto TextureSampleBiasCompareOffset_Texture2DArray_backend_index = 2513u;
 
 /// textureSampleBiasCompareOffset with SampledTexture2DArray, Float32x3, Float32, Float32, Float32x3
 extern Variable SampledTextureSampleBiasCompareOffset_Texture2DArray_texture;
@@ -8188,6 +9730,7 @@ extern Variable SampledTextureSampleBiasCompareOffset_Texture2DArray_bias;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture2DArray_compare;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture2DArray_offset;
 extern Function SampledTextureSampleBiasCompareOffset_Texture2DArray;
+inline constexpr auto SampledTextureSampleBiasCompareOffset_Texture2DArray_backend_index = 2514u;
 
 /// textureSampleBiasProjCompare with Texture1D, Sampler, Float32, Float32, Float32, Float32
 extern Variable TextureSampleBiasProjCompare_Texture1D_texture;
@@ -8197,6 +9740,7 @@ extern Variable TextureSampleBiasProjCompare_Texture1D_bias;
 extern Variable TextureSampleBiasProjCompare_Texture1D_proj;
 extern Variable TextureSampleBiasProjCompare_Texture1D_compare;
 extern Function TextureSampleBiasProjCompare_Texture1D;
+inline constexpr auto TextureSampleBiasProjCompare_Texture1D_backend_index = 2515u;
 
 /// textureSampleBiasProjCompare with SampledTexture1D, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleBiasProjCompare_Texture1D_texture;
@@ -8205,6 +9749,7 @@ extern Variable SampledTextureSampleBiasProjCompare_Texture1D_bias;
 extern Variable SampledTextureSampleBiasProjCompare_Texture1D_proj;
 extern Variable SampledTextureSampleBiasProjCompare_Texture1D_compare;
 extern Function SampledTextureSampleBiasProjCompare_Texture1D;
+inline constexpr auto SampledTextureSampleBiasProjCompare_Texture1D_backend_index = 2516u;
 
 /// textureSampleBiasProjCompare with Texture2D, Sampler, Float32x2, Float32, Float32, Float32
 extern Variable TextureSampleBiasProjCompare_Texture2D_texture;
@@ -8214,6 +9759,7 @@ extern Variable TextureSampleBiasProjCompare_Texture2D_bias;
 extern Variable TextureSampleBiasProjCompare_Texture2D_proj;
 extern Variable TextureSampleBiasProjCompare_Texture2D_compare;
 extern Function TextureSampleBiasProjCompare_Texture2D;
+inline constexpr auto TextureSampleBiasProjCompare_Texture2D_backend_index = 2517u;
 
 /// textureSampleBiasProjCompare with SampledTexture2D, Float32x2, Float32, Float32, Float32
 extern Variable SampledTextureSampleBiasProjCompare_Texture2D_texture;
@@ -8222,6 +9768,7 @@ extern Variable SampledTextureSampleBiasProjCompare_Texture2D_bias;
 extern Variable SampledTextureSampleBiasProjCompare_Texture2D_proj;
 extern Variable SampledTextureSampleBiasProjCompare_Texture2D_compare;
 extern Function SampledTextureSampleBiasProjCompare_Texture2D;
+inline constexpr auto SampledTextureSampleBiasProjCompare_Texture2D_backend_index = 2518u;
 
 /// textureSampleBiasProjCompare with Texture3D, Sampler, Float32x3, Float32, Float32, Float32
 extern Variable TextureSampleBiasProjCompare_Texture3D_texture;
@@ -8231,6 +9778,7 @@ extern Variable TextureSampleBiasProjCompare_Texture3D_bias;
 extern Variable TextureSampleBiasProjCompare_Texture3D_proj;
 extern Variable TextureSampleBiasProjCompare_Texture3D_compare;
 extern Function TextureSampleBiasProjCompare_Texture3D;
+inline constexpr auto TextureSampleBiasProjCompare_Texture3D_backend_index = 2519u;
 
 /// textureSampleBiasProjCompare with SampledTexture3D, Float32x3, Float32, Float32, Float32
 extern Variable SampledTextureSampleBiasProjCompare_Texture3D_texture;
@@ -8239,6 +9787,7 @@ extern Variable SampledTextureSampleBiasProjCompare_Texture3D_bias;
 extern Variable SampledTextureSampleBiasProjCompare_Texture3D_proj;
 extern Variable SampledTextureSampleBiasProjCompare_Texture3D_compare;
 extern Function SampledTextureSampleBiasProjCompare_Texture3D;
+inline constexpr auto SampledTextureSampleBiasProjCompare_Texture3D_backend_index = 2520u;
 
 /// textureSampleBiasProjCompareOffset with Texture1D, Sampler, Float32, Float32, Float32, Float32, Float32
 extern Variable TextureSampleBiasProjCompareOffset_Texture1D_texture;
@@ -8249,6 +9798,7 @@ extern Variable TextureSampleBiasProjCompareOffset_Texture1D_proj;
 extern Variable TextureSampleBiasProjCompareOffset_Texture1D_compare;
 extern Variable TextureSampleBiasProjCompareOffset_Texture1D_offset;
 extern Function TextureSampleBiasProjCompareOffset_Texture1D;
+inline constexpr auto TextureSampleBiasProjCompareOffset_Texture1D_backend_index = 2521u;
 
 /// textureSampleBiasProjCompareOffset with SampledTexture1D, Float32, Float32, Float32, Float32, Float32
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture1D_texture;
@@ -8258,6 +9808,7 @@ extern Variable SampledTextureSampleBiasProjCompareOffset_Texture1D_proj;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture1D_compare;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture1D_offset;
 extern Function SampledTextureSampleBiasProjCompareOffset_Texture1D;
+inline constexpr auto SampledTextureSampleBiasProjCompareOffset_Texture1D_backend_index = 2522u;
 
 /// textureSampleBiasProjCompareOffset with Texture2D, Sampler, Float32x2, Float32, Float32, Float32, Float32x2
 extern Variable TextureSampleBiasProjCompareOffset_Texture2D_texture;
@@ -8268,6 +9819,7 @@ extern Variable TextureSampleBiasProjCompareOffset_Texture2D_proj;
 extern Variable TextureSampleBiasProjCompareOffset_Texture2D_compare;
 extern Variable TextureSampleBiasProjCompareOffset_Texture2D_offset;
 extern Function TextureSampleBiasProjCompareOffset_Texture2D;
+inline constexpr auto TextureSampleBiasProjCompareOffset_Texture2D_backend_index = 2523u;
 
 /// textureSampleBiasProjCompareOffset with SampledTexture2D, Float32x2, Float32, Float32, Float32, Float32x2
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture2D_texture;
@@ -8277,6 +9829,7 @@ extern Variable SampledTextureSampleBiasProjCompareOffset_Texture2D_proj;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture2D_compare;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture2D_offset;
 extern Function SampledTextureSampleBiasProjCompareOffset_Texture2D;
+inline constexpr auto SampledTextureSampleBiasProjCompareOffset_Texture2D_backend_index = 2524u;
 
 /// textureSampleBiasProjCompareOffset with Texture3D, Sampler, Float32x3, Float32, Float32, Float32, Float32x3
 extern Variable TextureSampleBiasProjCompareOffset_Texture3D_texture;
@@ -8287,6 +9840,7 @@ extern Variable TextureSampleBiasProjCompareOffset_Texture3D_proj;
 extern Variable TextureSampleBiasProjCompareOffset_Texture3D_compare;
 extern Variable TextureSampleBiasProjCompareOffset_Texture3D_offset;
 extern Function TextureSampleBiasProjCompareOffset_Texture3D;
+inline constexpr auto TextureSampleBiasProjCompareOffset_Texture3D_backend_index = 2525u;
 
 /// textureSampleBiasProjCompareOffset with SampledTexture3D, Float32x3, Float32, Float32, Float32, Float32x3
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_texture;
@@ -8296,10 +9850,11 @@ extern Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_proj;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_compare;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_offset;
 extern Function SampledTextureSampleBiasProjCompareOffset_Texture3D;
+inline constexpr auto SampledTextureSampleBiasProjCompareOffset_Texture3D_backend_index = 2526u;
 
 void SetupIntrinsics();
 
-inline constexpr StaticMap<ConstantString, Symbol*, 3318> DefaultIntrinsics = {
+inline constexpr StaticMap<ConstantString, Symbol*, 3294> DefaultIntrinsics = {
     std::pair{ "AddressMode", &AddressModeType } /* 0 */,
     std::pair{ "AddressMode(u32)", &AddressModeType.toUnderlyingType } /* 1 */,
     std::pair{ "BlendColorMask", &BlendColorMaskType } /* 2 */,
@@ -8969,2655 +10524,2631 @@ inline constexpr StaticMap<ConstantString, Symbol*, 3318> DefaultIntrinsics = {
     std::pair{ "f16x2x2(f16x2,f16x2)", &Float16x2x2_Float16_2_ctor } /* 666 */,
     std::pair{ "f16x2x3", &Float16x2x3Type } /* 667 */,
     std::pair{ "f16x2x3", &Float16x2x3_Float16_3_ctor } /* 668 */,
-    std::pair{ "f16x2x3", &Float16x2x3_identity } /* 669 */,
-    std::pair{ "f16x2x3", &Float16x2x3_raw_list } /* 670 */,
-    std::pair{ "f16x2x3()", &Float16x2x3_identity } /* 671 */,
-    std::pair{ "f16x2x3(f16,f16,f16,f16,f16,f16)", &Float16x2x3_raw_list } /* 672 */,
-    std::pair{ "f16x2x3(f16x3,f16x3)", &Float16x2x3_Float16_3_ctor } /* 673 */,
-    std::pair{ "f16x2x4", &Float16x2x4Type } /* 674 */,
-    std::pair{ "f16x2x4", &Float16x2x4_Float16_4_ctor } /* 675 */,
-    std::pair{ "f16x2x4", &Float16x2x4_identity } /* 676 */,
-    std::pair{ "f16x2x4", &Float16x2x4_raw_list } /* 677 */,
-    std::pair{ "f16x2x4()", &Float16x2x4_identity } /* 678 */,
-    std::pair{ "f16x2x4(f16,f16,f16,f16,f16,f16,f16,f16)", &Float16x2x4_raw_list } /* 679 */,
-    std::pair{ "f16x2x4(f16x4,f16x4)", &Float16x2x4_Float16_4_ctor } /* 680 */,
-    std::pair{ "f16x3", &Float16x3Type } /* 681 */,
-    std::pair{ "f16x3", &Float16x3_from_Float32x3 } /* 682 */,
-    std::pair{ "f16x3", &Float16x3_splat_Float32 } /* 683 */,
-    std::pair{ "f16x3", &Float16x3_from_UInt32x3 } /* 684 */,
-    std::pair{ "f16x3", &Float16x3_splat_UInt32 } /* 685 */,
-    std::pair{ "f16x3", &Float16x3_from_Int32x3 } /* 686 */,
-    std::pair{ "f16x3", &Float16x3_splat_Int32 } /* 687 */,
-    std::pair{ "f16x3", &Float16x3_from_Bool8x3 } /* 688 */,
-    std::pair{ "f16x3", &Float16x3_splat_Bool8 } /* 689 */,
-    std::pair{ "f16x3", &Float16x3_from_Float16x3 } /* 690 */,
-    std::pair{ "f16x3", &Float16x3_splat_Float16 } /* 691 */,
-    std::pair{ "f16x3", &Float16x3_from_UInt16x3 } /* 692 */,
-    std::pair{ "f16x3", &Float16x3_splat_UInt16 } /* 693 */,
-    std::pair{ "f16x3", &Float16x3_from_Int16x3 } /* 694 */,
-    std::pair{ "f16x3", &Float16x3_splat_Int16 } /* 695 */,
-    std::pair{ "f16x3", &Float16x3_ctor0 } /* 696 */,
-    std::pair{ "f16x3", &Float16x3_ctor1 } /* 697 */,
-    std::pair{ "f16x3", &Float16x3_ctor2 } /* 698 */,
-    std::pair{ "f16x3(b8)", &Float16x3_splat_Bool8 } /* 699 */,
-    std::pair{ "f16x3(b8x3)", &Float16x3_from_Bool8x3 } /* 700 */,
-    std::pair{ "f16x3(f16)", &Float16x3_splat_Float16 } /* 701 */,
-    std::pair{ "f16x3(f16,f16,f16)", &Float16x3_ctor0 } /* 702 */,
-    std::pair{ "f16x3(f16,f16x2)", &Float16x3_ctor2 } /* 703 */,
-    std::pair{ "f16x3(f16x2,f16)", &Float16x3_ctor1 } /* 704 */,
-    std::pair{ "f16x3(f16x3)", &Float16x3_from_Float16x3 } /* 705 */,
-    std::pair{ "f16x3(f32)", &Float16x3_splat_Float32 } /* 706 */,
-    std::pair{ "f16x3(f32x3)", &Float16x3_from_Float32x3 } /* 707 */,
-    std::pair{ "f16x3(i16)", &Float16x3_splat_Int16 } /* 708 */,
-    std::pair{ "f16x3(i16x3)", &Float16x3_from_Int16x3 } /* 709 */,
-    std::pair{ "f16x3(i32)", &Float16x3_splat_Int32 } /* 710 */,
-    std::pair{ "f16x3(i32x3)", &Float16x3_from_Int32x3 } /* 711 */,
-    std::pair{ "f16x3(u16)", &Float16x3_splat_UInt16 } /* 712 */,
-    std::pair{ "f16x3(u16x3)", &Float16x3_from_UInt16x3 } /* 713 */,
-    std::pair{ "f16x3(u32)", &Float16x3_splat_UInt32 } /* 714 */,
-    std::pair{ "f16x3(u32x3)", &Float16x3_from_UInt32x3 } /* 715 */,
-    std::pair{ "f16x3x2", &Float16x3x2Type } /* 716 */,
-    std::pair{ "f16x3x2", &Float16x3x2_Float16_2_ctor } /* 717 */,
-    std::pair{ "f16x3x2", &Float16x3x2_identity } /* 718 */,
-    std::pair{ "f16x3x2", &Float16x3x2_raw_list } /* 719 */,
-    std::pair{ "f16x3x2()", &Float16x3x2_identity } /* 720 */,
-    std::pair{ "f16x3x2(f16,f16,f16,f16,f16,f16)", &Float16x3x2_raw_list } /* 721 */,
-    std::pair{ "f16x3x2(f16x2,f16x2,f16x2)", &Float16x3x2_Float16_2_ctor } /* 722 */,
-    std::pair{ "f16x3x3", &Float16x3x3Type } /* 723 */,
-    std::pair{ "f16x3x3", &Float16x3x3_Float16_3_ctor } /* 724 */,
-    std::pair{ "f16x3x3", &Float16x3x3_identity } /* 725 */,
-    std::pair{ "f16x3x3", &Float16x3x3_raw_list } /* 726 */,
-    std::pair{ "f16x3x3()", &Float16x3x3_identity } /* 727 */,
-    std::pair{ "f16x3x3(f16,f16,f16,f16,f16,f16,f16,f16,f16)", &Float16x3x3_raw_list } /* 728 */,
-    std::pair{ "f16x3x3(f16x3,f16x3,f16x3)", &Float16x3x3_Float16_3_ctor } /* 729 */,
-    std::pair{ "f16x3x4", &Float16x3x4Type } /* 730 */,
-    std::pair{ "f16x3x4", &Float16x3x4_Float16_4_ctor } /* 731 */,
-    std::pair{ "f16x3x4", &Float16x3x4_identity } /* 732 */,
-    std::pair{ "f16x3x4", &Float16x3x4_raw_list } /* 733 */,
-    std::pair{ "f16x3x4()", &Float16x3x4_identity } /* 734 */,
-    std::pair{ "f16x3x4(f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16)", &Float16x3x4_raw_list } /* 735 */,
-    std::pair{ "f16x3x4(f16x4,f16x4,f16x4)", &Float16x3x4_Float16_4_ctor } /* 736 */,
-    std::pair{ "f16x4", &Float16x4Type } /* 737 */,
-    std::pair{ "f16x4", &Float16x4_from_Float32x4 } /* 738 */,
-    std::pair{ "f16x4", &Float16x4_splat_Float32 } /* 739 */,
-    std::pair{ "f16x4", &Float16x4_from_UInt32x4 } /* 740 */,
-    std::pair{ "f16x4", &Float16x4_splat_UInt32 } /* 741 */,
-    std::pair{ "f16x4", &Float16x4_from_Int32x4 } /* 742 */,
-    std::pair{ "f16x4", &Float16x4_splat_Int32 } /* 743 */,
-    std::pair{ "f16x4", &Float16x4_from_Bool8x4 } /* 744 */,
-    std::pair{ "f16x4", &Float16x4_splat_Bool8 } /* 745 */,
-    std::pair{ "f16x4", &Float16x4_from_Float16x4 } /* 746 */,
-    std::pair{ "f16x4", &Float16x4_splat_Float16 } /* 747 */,
-    std::pair{ "f16x4", &Float16x4_from_UInt16x4 } /* 748 */,
-    std::pair{ "f16x4", &Float16x4_splat_UInt16 } /* 749 */,
-    std::pair{ "f16x4", &Float16x4_from_Int16x4 } /* 750 */,
-    std::pair{ "f16x4", &Float16x4_splat_Int16 } /* 751 */,
-    std::pair{ "f16x4", &Float16x4_ctor0 } /* 752 */,
-    std::pair{ "f16x4", &Float16x4_ctor1 } /* 753 */,
-    std::pair{ "f16x4", &Float16x4_ctor2 } /* 754 */,
-    std::pair{ "f16x4", &Float16x4_ctor3 } /* 755 */,
-    std::pair{ "f16x4", &Float16x4_ctor4 } /* 756 */,
-    std::pair{ "f16x4", &Float16x4_ctor5 } /* 757 */,
-    std::pair{ "f16x4", &Float16x4_ctor6 } /* 758 */,
-    std::pair{ "f16x4(b8)", &Float16x4_splat_Bool8 } /* 759 */,
-    std::pair{ "f16x4(b8x4)", &Float16x4_from_Bool8x4 } /* 760 */,
-    std::pair{ "f16x4(f16)", &Float16x4_splat_Float16 } /* 761 */,
-    std::pair{ "f16x4(f16,f16,f16,f16)", &Float16x4_ctor0 } /* 762 */,
-    std::pair{ "f16x4(f16,f16,f16x2)", &Float16x4_ctor3 } /* 763 */,
-    std::pair{ "f16x4(f16,f16x2,f16)", &Float16x4_ctor2 } /* 764 */,
-    std::pair{ "f16x4(f16,f16x3)", &Float16x4_ctor6 } /* 765 */,
-    std::pair{ "f16x4(f16x2,f16,f16)", &Float16x4_ctor1 } /* 766 */,
-    std::pair{ "f16x4(f16x2,f16x2)", &Float16x4_ctor4 } /* 767 */,
-    std::pair{ "f16x4(f16x3,f16)", &Float16x4_ctor5 } /* 768 */,
-    std::pair{ "f16x4(f16x4)", &Float16x4_from_Float16x4 } /* 769 */,
-    std::pair{ "f16x4(f32)", &Float16x4_splat_Float32 } /* 770 */,
-    std::pair{ "f16x4(f32x4)", &Float16x4_from_Float32x4 } /* 771 */,
-    std::pair{ "f16x4(i16)", &Float16x4_splat_Int16 } /* 772 */,
-    std::pair{ "f16x4(i16x4)", &Float16x4_from_Int16x4 } /* 773 */,
-    std::pair{ "f16x4(i32)", &Float16x4_splat_Int32 } /* 774 */,
-    std::pair{ "f16x4(i32x4)", &Float16x4_from_Int32x4 } /* 775 */,
-    std::pair{ "f16x4(u16)", &Float16x4_splat_UInt16 } /* 776 */,
-    std::pair{ "f16x4(u16x4)", &Float16x4_from_UInt16x4 } /* 777 */,
-    std::pair{ "f16x4(u32)", &Float16x4_splat_UInt32 } /* 778 */,
-    std::pair{ "f16x4(u32x4)", &Float16x4_from_UInt32x4 } /* 779 */,
-    std::pair{ "f16x4x2", &Float16x4x2Type } /* 780 */,
-    std::pair{ "f16x4x2", &Float16x4x2_Float16_2_ctor } /* 781 */,
-    std::pair{ "f16x4x2", &Float16x4x2_identity } /* 782 */,
-    std::pair{ "f16x4x2", &Float16x4x2_raw_list } /* 783 */,
-    std::pair{ "f16x4x2()", &Float16x4x2_identity } /* 784 */,
-    std::pair{ "f16x4x2(f16,f16,f16,f16,f16,f16,f16,f16)", &Float16x4x2_raw_list } /* 785 */,
-    std::pair{ "f16x4x2(f16x2,f16x2,f16x2,f16x2)", &Float16x4x2_Float16_2_ctor } /* 786 */,
-    std::pair{ "f16x4x3", &Float16x4x3Type } /* 787 */,
-    std::pair{ "f16x4x3", &Float16x4x3_Float16_3_ctor } /* 788 */,
-    std::pair{ "f16x4x3", &Float16x4x3_identity } /* 789 */,
-    std::pair{ "f16x4x3", &Float16x4x3_raw_list } /* 790 */,
-    std::pair{ "f16x4x3()", &Float16x4x3_identity } /* 791 */,
-    std::pair{ "f16x4x3(f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16)", &Float16x4x3_raw_list } /* 792 */,
-    std::pair{ "f16x4x3(f16x3,f16x3,f16x3,f16x3)", &Float16x4x3_Float16_3_ctor } /* 793 */,
-    std::pair{ "f16x4x4", &Float16x4x4Type } /* 794 */,
-    std::pair{ "f16x4x4", &Float16x4x4_Float16_4_ctor } /* 795 */,
-    std::pair{ "f16x4x4", &Float16x4x4_identity } /* 796 */,
-    std::pair{ "f16x4x4", &Float16x4x4_raw_list } /* 797 */,
-    std::pair{ "f16x4x4()", &Float16x4x4_identity } /* 798 */,
-    std::pair{ "f16x4x4(f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16)", &Float16x4x4_raw_list } /* 799 */,
-    std::pair{ "f16x4x4(f16x4,f16x4,f16x4,f16x4)", &Float16x4x4_Float16_4_ctor } /* 800 */,
-    std::pair{ "f32", &Float32Type } /* 801 */,
-    std::pair{ "f32", &Float32_from_UInt32 } /* 802 */,
-    std::pair{ "f32", &Float32_from_Int32 } /* 803 */,
-    std::pair{ "f32", &Float32_from_Bool8 } /* 804 */,
-    std::pair{ "f32", &Float32_from_Float16 } /* 805 */,
-    std::pair{ "f32", &Float32_from_UInt16 } /* 806 */,
-    std::pair{ "f32", &Float32_from_Int16 } /* 807 */,
-    std::pair{ "f32", &Float32_ctor0 } /* 808 */,
-    std::pair{ "f32(b8)", &Float32_from_Bool8 } /* 809 */,
-    std::pair{ "f32(f16)", &Float32_from_Float16 } /* 810 */,
-    std::pair{ "f32(f32)", &Float32_ctor0 } /* 811 */,
-    std::pair{ "f32(i16)", &Float32_from_Int16 } /* 812 */,
-    std::pair{ "f32(i32)", &Float32_from_Int32 } /* 813 */,
-    std::pair{ "f32(u16)", &Float32_from_UInt16 } /* 814 */,
-    std::pair{ "f32(u32)", &Float32_from_UInt32 } /* 815 */,
-    std::pair{ "f32x2", &Float32x2Type } /* 816 */,
-    std::pair{ "f32x2", &Float32x2_from_Float32x2 } /* 817 */,
-    std::pair{ "f32x2", &Float32x2_splat_Float32 } /* 818 */,
-    std::pair{ "f32x2", &Float32x2_from_UInt32x2 } /* 819 */,
-    std::pair{ "f32x2", &Float32x2_splat_UInt32 } /* 820 */,
-    std::pair{ "f32x2", &Float32x2_from_Int32x2 } /* 821 */,
-    std::pair{ "f32x2", &Float32x2_splat_Int32 } /* 822 */,
-    std::pair{ "f32x2", &Float32x2_from_Bool8x2 } /* 823 */,
-    std::pair{ "f32x2", &Float32x2_splat_Bool8 } /* 824 */,
-    std::pair{ "f32x2", &Float32x2_from_Float16x2 } /* 825 */,
-    std::pair{ "f32x2", &Float32x2_splat_Float16 } /* 826 */,
-    std::pair{ "f32x2", &Float32x2_from_UInt16x2 } /* 827 */,
-    std::pair{ "f32x2", &Float32x2_splat_UInt16 } /* 828 */,
-    std::pair{ "f32x2", &Float32x2_from_Int16x2 } /* 829 */,
-    std::pair{ "f32x2", &Float32x2_splat_Int16 } /* 830 */,
-    std::pair{ "f32x2", &Float32x2_ctor0 } /* 831 */,
-    std::pair{ "f32x2(b8)", &Float32x2_splat_Bool8 } /* 832 */,
-    std::pair{ "f32x2(b8x2)", &Float32x2_from_Bool8x2 } /* 833 */,
-    std::pair{ "f32x2(f16)", &Float32x2_splat_Float16 } /* 834 */,
-    std::pair{ "f32x2(f16x2)", &Float32x2_from_Float16x2 } /* 835 */,
-    std::pair{ "f32x2(f32)", &Float32x2_splat_Float32 } /* 836 */,
-    std::pair{ "f32x2(f32,f32)", &Float32x2_ctor0 } /* 837 */,
-    std::pair{ "f32x2(f32x2)", &Float32x2_from_Float32x2 } /* 838 */,
-    std::pair{ "f32x2(i16)", &Float32x2_splat_Int16 } /* 839 */,
-    std::pair{ "f32x2(i16x2)", &Float32x2_from_Int16x2 } /* 840 */,
-    std::pair{ "f32x2(i32)", &Float32x2_splat_Int32 } /* 841 */,
-    std::pair{ "f32x2(i32x2)", &Float32x2_from_Int32x2 } /* 842 */,
-    std::pair{ "f32x2(u16)", &Float32x2_splat_UInt16 } /* 843 */,
-    std::pair{ "f32x2(u16x2)", &Float32x2_from_UInt16x2 } /* 844 */,
-    std::pair{ "f32x2(u32)", &Float32x2_splat_UInt32 } /* 845 */,
-    std::pair{ "f32x2(u32x2)", &Float32x2_from_UInt32x2 } /* 846 */,
-    std::pair{ "f32x2x2", &Float32x2x2Type } /* 847 */,
-    std::pair{ "f32x2x2", &Float32x2x2_Float32_2_ctor } /* 848 */,
-    std::pair{ "f32x2x2", &Float32x2x2_identity } /* 849 */,
-    std::pair{ "f32x2x2", &Float32x2x2_raw_list } /* 850 */,
-    std::pair{ "f32x2x2()", &Float32x2x2_identity } /* 851 */,
-    std::pair{ "f32x2x2(f32,f32,f32,f32)", &Float32x2x2_raw_list } /* 852 */,
-    std::pair{ "f32x2x2(f32x2,f32x2)", &Float32x2x2_Float32_2_ctor } /* 853 */,
-    std::pair{ "f32x2x3", &Float32x2x3Type } /* 854 */,
-    std::pair{ "f32x2x3", &Float32x2x3_Float32_3_ctor } /* 855 */,
-    std::pair{ "f32x2x3", &Float32x2x3_identity } /* 856 */,
-    std::pair{ "f32x2x3", &Float32x2x3_raw_list } /* 857 */,
-    std::pair{ "f32x2x3()", &Float32x2x3_identity } /* 858 */,
-    std::pair{ "f32x2x3(f32,f32,f32,f32,f32,f32)", &Float32x2x3_raw_list } /* 859 */,
-    std::pair{ "f32x2x3(f32x3,f32x3)", &Float32x2x3_Float32_3_ctor } /* 860 */,
-    std::pair{ "f32x2x4", &Float32x2x4Type } /* 861 */,
-    std::pair{ "f32x2x4", &Float32x2x4_Float32_4_ctor } /* 862 */,
-    std::pair{ "f32x2x4", &Float32x2x4_identity } /* 863 */,
-    std::pair{ "f32x2x4", &Float32x2x4_raw_list } /* 864 */,
-    std::pair{ "f32x2x4()", &Float32x2x4_identity } /* 865 */,
-    std::pair{ "f32x2x4(f32,f32,f32,f32,f32,f32,f32,f32)", &Float32x2x4_raw_list } /* 866 */,
-    std::pair{ "f32x2x4(f32x4,f32x4)", &Float32x2x4_Float32_4_ctor } /* 867 */,
-    std::pair{ "f32x3", &Float32x3Type } /* 868 */,
-    std::pair{ "f32x3", &Float32x3_from_Float32x3 } /* 869 */,
-    std::pair{ "f32x3", &Float32x3_splat_Float32 } /* 870 */,
-    std::pair{ "f32x3", &Float32x3_from_UInt32x3 } /* 871 */,
-    std::pair{ "f32x3", &Float32x3_splat_UInt32 } /* 872 */,
-    std::pair{ "f32x3", &Float32x3_from_Int32x3 } /* 873 */,
-    std::pair{ "f32x3", &Float32x3_splat_Int32 } /* 874 */,
-    std::pair{ "f32x3", &Float32x3_from_Bool8x3 } /* 875 */,
-    std::pair{ "f32x3", &Float32x3_splat_Bool8 } /* 876 */,
-    std::pair{ "f32x3", &Float32x3_from_Float16x3 } /* 877 */,
-    std::pair{ "f32x3", &Float32x3_splat_Float16 } /* 878 */,
-    std::pair{ "f32x3", &Float32x3_from_UInt16x3 } /* 879 */,
-    std::pair{ "f32x3", &Float32x3_splat_UInt16 } /* 880 */,
-    std::pair{ "f32x3", &Float32x3_from_Int16x3 } /* 881 */,
-    std::pair{ "f32x3", &Float32x3_splat_Int16 } /* 882 */,
-    std::pair{ "f32x3", &Float32x3_ctor0 } /* 883 */,
-    std::pair{ "f32x3", &Float32x3_ctor1 } /* 884 */,
-    std::pair{ "f32x3", &Float32x3_ctor2 } /* 885 */,
-    std::pair{ "f32x3(b8)", &Float32x3_splat_Bool8 } /* 886 */,
-    std::pair{ "f32x3(b8x3)", &Float32x3_from_Bool8x3 } /* 887 */,
-    std::pair{ "f32x3(f16)", &Float32x3_splat_Float16 } /* 888 */,
-    std::pair{ "f32x3(f16x3)", &Float32x3_from_Float16x3 } /* 889 */,
-    std::pair{ "f32x3(f32)", &Float32x3_splat_Float32 } /* 890 */,
-    std::pair{ "f32x3(f32,f32,f32)", &Float32x3_ctor0 } /* 891 */,
-    std::pair{ "f32x3(f32,f32x2)", &Float32x3_ctor2 } /* 892 */,
-    std::pair{ "f32x3(f32x2,f32)", &Float32x3_ctor1 } /* 893 */,
-    std::pair{ "f32x3(f32x3)", &Float32x3_from_Float32x3 } /* 894 */,
-    std::pair{ "f32x3(i16)", &Float32x3_splat_Int16 } /* 895 */,
-    std::pair{ "f32x3(i16x3)", &Float32x3_from_Int16x3 } /* 896 */,
-    std::pair{ "f32x3(i32)", &Float32x3_splat_Int32 } /* 897 */,
-    std::pair{ "f32x3(i32x3)", &Float32x3_from_Int32x3 } /* 898 */,
-    std::pair{ "f32x3(u16)", &Float32x3_splat_UInt16 } /* 899 */,
-    std::pair{ "f32x3(u16x3)", &Float32x3_from_UInt16x3 } /* 900 */,
-    std::pair{ "f32x3(u32)", &Float32x3_splat_UInt32 } /* 901 */,
-    std::pair{ "f32x3(u32x3)", &Float32x3_from_UInt32x3 } /* 902 */,
-    std::pair{ "f32x3x2", &Float32x3x2Type } /* 903 */,
-    std::pair{ "f32x3x2", &Float32x3x2_Float32_2_ctor } /* 904 */,
-    std::pair{ "f32x3x2", &Float32x3x2_identity } /* 905 */,
-    std::pair{ "f32x3x2", &Float32x3x2_raw_list } /* 906 */,
-    std::pair{ "f32x3x2()", &Float32x3x2_identity } /* 907 */,
-    std::pair{ "f32x3x2(f32,f32,f32,f32,f32,f32)", &Float32x3x2_raw_list } /* 908 */,
-    std::pair{ "f32x3x2(f32x2,f32x2,f32x2)", &Float32x3x2_Float32_2_ctor } /* 909 */,
-    std::pair{ "f32x3x3", &Float32x3x3Type } /* 910 */,
-    std::pair{ "f32x3x3", &Float32x3x3_Float32_3_ctor } /* 911 */,
-    std::pair{ "f32x3x3", &Float32x3x3_identity } /* 912 */,
-    std::pair{ "f32x3x3", &Float32x3x3_raw_list } /* 913 */,
-    std::pair{ "f32x3x3()", &Float32x3x3_identity } /* 914 */,
-    std::pair{ "f32x3x3(f32,f32,f32,f32,f32,f32,f32,f32,f32)", &Float32x3x3_raw_list } /* 915 */,
-    std::pair{ "f32x3x3(f32x3,f32x3,f32x3)", &Float32x3x3_Float32_3_ctor } /* 916 */,
-    std::pair{ "f32x3x4", &Float32x3x4Type } /* 917 */,
-    std::pair{ "f32x3x4", &Float32x3x4_Float32_4_ctor } /* 918 */,
-    std::pair{ "f32x3x4", &Float32x3x4_identity } /* 919 */,
-    std::pair{ "f32x3x4", &Float32x3x4_raw_list } /* 920 */,
-    std::pair{ "f32x3x4()", &Float32x3x4_identity } /* 921 */,
-    std::pair{ "f32x3x4(f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32)", &Float32x3x4_raw_list } /* 922 */,
-    std::pair{ "f32x3x4(f32x4,f32x4,f32x4)", &Float32x3x4_Float32_4_ctor } /* 923 */,
-    std::pair{ "f32x4", &Float32x4Type } /* 924 */,
-    std::pair{ "f32x4", &Float32x4_from_Float32x4 } /* 925 */,
-    std::pair{ "f32x4", &Float32x4_splat_Float32 } /* 926 */,
-    std::pair{ "f32x4", &Float32x4_from_UInt32x4 } /* 927 */,
-    std::pair{ "f32x4", &Float32x4_splat_UInt32 } /* 928 */,
-    std::pair{ "f32x4", &Float32x4_from_Int32x4 } /* 929 */,
-    std::pair{ "f32x4", &Float32x4_splat_Int32 } /* 930 */,
-    std::pair{ "f32x4", &Float32x4_from_Bool8x4 } /* 931 */,
-    std::pair{ "f32x4", &Float32x4_splat_Bool8 } /* 932 */,
-    std::pair{ "f32x4", &Float32x4_from_Float16x4 } /* 933 */,
-    std::pair{ "f32x4", &Float32x4_splat_Float16 } /* 934 */,
-    std::pair{ "f32x4", &Float32x4_from_UInt16x4 } /* 935 */,
-    std::pair{ "f32x4", &Float32x4_splat_UInt16 } /* 936 */,
-    std::pair{ "f32x4", &Float32x4_from_Int16x4 } /* 937 */,
-    std::pair{ "f32x4", &Float32x4_splat_Int16 } /* 938 */,
-    std::pair{ "f32x4", &Float32x4_ctor0 } /* 939 */,
-    std::pair{ "f32x4", &Float32x4_ctor1 } /* 940 */,
-    std::pair{ "f32x4", &Float32x4_ctor2 } /* 941 */,
-    std::pair{ "f32x4", &Float32x4_ctor3 } /* 942 */,
-    std::pair{ "f32x4", &Float32x4_ctor4 } /* 943 */,
-    std::pair{ "f32x4", &Float32x4_ctor5 } /* 944 */,
-    std::pair{ "f32x4", &Float32x4_ctor6 } /* 945 */,
-    std::pair{ "f32x4(b8)", &Float32x4_splat_Bool8 } /* 946 */,
-    std::pair{ "f32x4(b8x4)", &Float32x4_from_Bool8x4 } /* 947 */,
-    std::pair{ "f32x4(f16)", &Float32x4_splat_Float16 } /* 948 */,
-    std::pair{ "f32x4(f16x4)", &Float32x4_from_Float16x4 } /* 949 */,
-    std::pair{ "f32x4(f32)", &Float32x4_splat_Float32 } /* 950 */,
-    std::pair{ "f32x4(f32,f32,f32,f32)", &Float32x4_ctor0 } /* 951 */,
-    std::pair{ "f32x4(f32,f32,f32x2)", &Float32x4_ctor3 } /* 952 */,
-    std::pair{ "f32x4(f32,f32x2,f32)", &Float32x4_ctor2 } /* 953 */,
-    std::pair{ "f32x4(f32,f32x3)", &Float32x4_ctor6 } /* 954 */,
-    std::pair{ "f32x4(f32x2,f32,f32)", &Float32x4_ctor1 } /* 955 */,
-    std::pair{ "f32x4(f32x2,f32x2)", &Float32x4_ctor4 } /* 956 */,
-    std::pair{ "f32x4(f32x3,f32)", &Float32x4_ctor5 } /* 957 */,
-    std::pair{ "f32x4(f32x4)", &Float32x4_from_Float32x4 } /* 958 */,
-    std::pair{ "f32x4(i16)", &Float32x4_splat_Int16 } /* 959 */,
-    std::pair{ "f32x4(i16x4)", &Float32x4_from_Int16x4 } /* 960 */,
-    std::pair{ "f32x4(i32)", &Float32x4_splat_Int32 } /* 961 */,
-    std::pair{ "f32x4(i32x4)", &Float32x4_from_Int32x4 } /* 962 */,
-    std::pair{ "f32x4(u16)", &Float32x4_splat_UInt16 } /* 963 */,
-    std::pair{ "f32x4(u16x4)", &Float32x4_from_UInt16x4 } /* 964 */,
-    std::pair{ "f32x4(u32)", &Float32x4_splat_UInt32 } /* 965 */,
-    std::pair{ "f32x4(u32x4)", &Float32x4_from_UInt32x4 } /* 966 */,
-    std::pair{ "f32x4x2", &Float32x4x2Type } /* 967 */,
-    std::pair{ "f32x4x2", &Float32x4x2_Float32_2_ctor } /* 968 */,
-    std::pair{ "f32x4x2", &Float32x4x2_identity } /* 969 */,
-    std::pair{ "f32x4x2", &Float32x4x2_raw_list } /* 970 */,
-    std::pair{ "f32x4x2()", &Float32x4x2_identity } /* 971 */,
-    std::pair{ "f32x4x2(f32,f32,f32,f32,f32,f32,f32,f32)", &Float32x4x2_raw_list } /* 972 */,
-    std::pair{ "f32x4x2(f32x2,f32x2,f32x2,f32x2)", &Float32x4x2_Float32_2_ctor } /* 973 */,
-    std::pair{ "f32x4x3", &Float32x4x3Type } /* 974 */,
-    std::pair{ "f32x4x3", &Float32x4x3_Float32_3_ctor } /* 975 */,
-    std::pair{ "f32x4x3", &Float32x4x3_identity } /* 976 */,
-    std::pair{ "f32x4x3", &Float32x4x3_raw_list } /* 977 */,
-    std::pair{ "f32x4x3()", &Float32x4x3_identity } /* 978 */,
-    std::pair{ "f32x4x3(f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32)", &Float32x4x3_raw_list } /* 979 */,
-    std::pair{ "f32x4x3(f32x3,f32x3,f32x3,f32x3)", &Float32x4x3_Float32_3_ctor } /* 980 */,
-    std::pair{ "f32x4x4", &Float32x4x4Type } /* 981 */,
-    std::pair{ "f32x4x4", &Float32x4x4_Float32_4_ctor } /* 982 */,
-    std::pair{ "f32x4x4", &Float32x4x4_identity } /* 983 */,
-    std::pair{ "f32x4x4", &Float32x4x4_raw_list } /* 984 */,
-    std::pair{ "f32x4x4()", &Float32x4x4_identity } /* 985 */,
-    std::pair{ "f32x4x4(f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32)", &Float32x4x4_raw_list } /* 986 */,
-    std::pair{ "f32x4x4(f32x4,f32x4,f32x4,f32x4)", &Float32x4x4_Float32_4_ctor } /* 987 */,
-    std::pair{ "floor", &floor_Float32 } /* 988 */,
-    std::pair{ "floor", &floor_Float32x2 } /* 989 */,
-    std::pair{ "floor", &floor_Float32x3 } /* 990 */,
-    std::pair{ "floor", &floor_Float32x4 } /* 991 */,
-    std::pair{ "floor", &floor_Float16 } /* 992 */,
-    std::pair{ "floor", &floor_Float16x2 } /* 993 */,
-    std::pair{ "floor", &floor_Float16x3 } /* 994 */,
-    std::pair{ "floor", &floor_Float16x4 } /* 995 */,
-    std::pair{ "floor(f16)", &floor_Float16 } /* 996 */,
-    std::pair{ "floor(f16x2)", &floor_Float16x2 } /* 997 */,
-    std::pair{ "floor(f16x3)", &floor_Float16x3 } /* 998 */,
-    std::pair{ "floor(f16x4)", &floor_Float16x4 } /* 999 */,
-    std::pair{ "floor(f32)", &floor_Float32 } /* 1000 */,
-    std::pair{ "floor(f32x2)", &floor_Float32x2 } /* 1001 */,
-    std::pair{ "floor(f32x3)", &floor_Float32x3 } /* 1002 */,
-    std::pair{ "floor(f32x4)", &floor_Float32x4 } /* 1003 */,
-    std::pair{ "fract", &fract_Float32 } /* 1004 */,
-    std::pair{ "fract", &fract_Float32x2 } /* 1005 */,
-    std::pair{ "fract", &fract_Float32x3 } /* 1006 */,
-    std::pair{ "fract", &fract_Float32x4 } /* 1007 */,
-    std::pair{ "fract", &fract_Float16 } /* 1008 */,
-    std::pair{ "fract", &fract_Float16x2 } /* 1009 */,
-    std::pair{ "fract", &fract_Float16x3 } /* 1010 */,
-    std::pair{ "fract", &fract_Float16x4 } /* 1011 */,
-    std::pair{ "fract(f16)", &fract_Float16 } /* 1012 */,
-    std::pair{ "fract(f16x2)", &fract_Float16x2 } /* 1013 */,
-    std::pair{ "fract(f16x3)", &fract_Float16x3 } /* 1014 */,
-    std::pair{ "fract(f16x4)", &fract_Float16x4 } /* 1015 */,
-    std::pair{ "fract(f32)", &fract_Float32 } /* 1016 */,
-    std::pair{ "fract(f32x2)", &fract_Float32x2 } /* 1017 */,
-    std::pair{ "fract(f32x3)", &fract_Float32x3 } /* 1018 */,
-    std::pair{ "fract(f32x4)", &fract_Float32x4 } /* 1019 */,
-    std::pair{ "fwidth", &fwidth_Float32 } /* 1020 */,
-    std::pair{ "fwidth", &fwidth_Float32x2 } /* 1021 */,
-    std::pair{ "fwidth", &fwidth_Float32x3 } /* 1022 */,
-    std::pair{ "fwidth", &fwidth_Float32x4 } /* 1023 */,
-    std::pair{ "fwidth", &fwidth_Float16 } /* 1024 */,
-    std::pair{ "fwidth", &fwidth_Float16x2 } /* 1025 */,
-    std::pair{ "fwidth", &fwidth_Float16x3 } /* 1026 */,
-    std::pair{ "fwidth", &fwidth_Float16x4 } /* 1027 */,
-    std::pair{ "fwidth(f16)", &fwidth_Float16 } /* 1028 */,
-    std::pair{ "fwidth(f16x2)", &fwidth_Float16x2 } /* 1029 */,
-    std::pair{ "fwidth(f16x3)", &fwidth_Float16x3 } /* 1030 */,
-    std::pair{ "fwidth(f16x4)", &fwidth_Float16x4 } /* 1031 */,
-    std::pair{ "fwidth(f32)", &fwidth_Float32 } /* 1032 */,
-    std::pair{ "fwidth(f32x2)", &fwidth_Float32x2 } /* 1033 */,
-    std::pair{ "fwidth(f32x3)", &fwidth_Float32x3 } /* 1034 */,
-    std::pair{ "fwidth(f32x4)", &fwidth_Float32x4 } /* 1035 */,
-    std::pair{ "geometryExportPrimitive", &GeometryExportPrimitive } /* 1036 */,
-    std::pair{ "geometryExportPrimitive()", &GeometryExportPrimitive } /* 1037 */,
-    std::pair{ "geometryExportVertex", &GeometryExportVertex } /* 1038 */,
-    std::pair{ "geometryExportVertex()", &GeometryExportVertex } /* 1039 */,
-    std::pair{ "i16", &Int16Type } /* 1040 */,
-    std::pair{ "i16", &Int16_from_Float32 } /* 1041 */,
-    std::pair{ "i16", &Int16_from_UInt32 } /* 1042 */,
-    std::pair{ "i16", &Int16_from_Int32 } /* 1043 */,
-    std::pair{ "i16", &Int16_from_Bool8 } /* 1044 */,
-    std::pair{ "i16", &Int16_from_Float16 } /* 1045 */,
-    std::pair{ "i16", &Int16_from_UInt16 } /* 1046 */,
-    std::pair{ "i16", &Int16_ctor0 } /* 1047 */,
-    std::pair{ "i16(b8)", &Int16_from_Bool8 } /* 1048 */,
-    std::pair{ "i16(f16)", &Int16_from_Float16 } /* 1049 */,
-    std::pair{ "i16(f32)", &Int16_from_Float32 } /* 1050 */,
-    std::pair{ "i16(i16)", &Int16_ctor0 } /* 1051 */,
-    std::pair{ "i16(i32)", &Int16_from_Int32 } /* 1052 */,
-    std::pair{ "i16(u16)", &Int16_from_UInt16 } /* 1053 */,
-    std::pair{ "i16(u32)", &Int16_from_UInt32 } /* 1054 */,
-    std::pair{ "i16x2", &Int16x2Type } /* 1055 */,
-    std::pair{ "i16x2", &Int16x2_from_Float32x2 } /* 1056 */,
-    std::pair{ "i16x2", &Int16x2_splat_Float32 } /* 1057 */,
-    std::pair{ "i16x2", &Int16x2_from_UInt32x2 } /* 1058 */,
-    std::pair{ "i16x2", &Int16x2_splat_UInt32 } /* 1059 */,
-    std::pair{ "i16x2", &Int16x2_from_Int32x2 } /* 1060 */,
-    std::pair{ "i16x2", &Int16x2_splat_Int32 } /* 1061 */,
-    std::pair{ "i16x2", &Int16x2_from_Bool8x2 } /* 1062 */,
-    std::pair{ "i16x2", &Int16x2_splat_Bool8 } /* 1063 */,
-    std::pair{ "i16x2", &Int16x2_from_Float16x2 } /* 1064 */,
-    std::pair{ "i16x2", &Int16x2_splat_Float16 } /* 1065 */,
-    std::pair{ "i16x2", &Int16x2_from_UInt16x2 } /* 1066 */,
-    std::pair{ "i16x2", &Int16x2_splat_UInt16 } /* 1067 */,
-    std::pair{ "i16x2", &Int16x2_from_Int16x2 } /* 1068 */,
-    std::pair{ "i16x2", &Int16x2_splat_Int16 } /* 1069 */,
-    std::pair{ "i16x2", &Int16x2_ctor0 } /* 1070 */,
-    std::pair{ "i16x2(b8)", &Int16x2_splat_Bool8 } /* 1071 */,
-    std::pair{ "i16x2(b8x2)", &Int16x2_from_Bool8x2 } /* 1072 */,
-    std::pair{ "i16x2(f16)", &Int16x2_splat_Float16 } /* 1073 */,
-    std::pair{ "i16x2(f16x2)", &Int16x2_from_Float16x2 } /* 1074 */,
-    std::pair{ "i16x2(f32)", &Int16x2_splat_Float32 } /* 1075 */,
-    std::pair{ "i16x2(f32x2)", &Int16x2_from_Float32x2 } /* 1076 */,
-    std::pair{ "i16x2(i16)", &Int16x2_splat_Int16 } /* 1077 */,
-    std::pair{ "i16x2(i16,i16)", &Int16x2_ctor0 } /* 1078 */,
-    std::pair{ "i16x2(i16x2)", &Int16x2_from_Int16x2 } /* 1079 */,
-    std::pair{ "i16x2(i32)", &Int16x2_splat_Int32 } /* 1080 */,
-    std::pair{ "i16x2(i32x2)", &Int16x2_from_Int32x2 } /* 1081 */,
-    std::pair{ "i16x2(u16)", &Int16x2_splat_UInt16 } /* 1082 */,
-    std::pair{ "i16x2(u16x2)", &Int16x2_from_UInt16x2 } /* 1083 */,
-    std::pair{ "i16x2(u32)", &Int16x2_splat_UInt32 } /* 1084 */,
-    std::pair{ "i16x2(u32x2)", &Int16x2_from_UInt32x2 } /* 1085 */,
-    std::pair{ "i16x3", &Int16x3Type } /* 1086 */,
-    std::pair{ "i16x3", &Int16x3_from_Float32x3 } /* 1087 */,
-    std::pair{ "i16x3", &Int16x3_splat_Float32 } /* 1088 */,
-    std::pair{ "i16x3", &Int16x3_from_UInt32x3 } /* 1089 */,
-    std::pair{ "i16x3", &Int16x3_splat_UInt32 } /* 1090 */,
-    std::pair{ "i16x3", &Int16x3_from_Int32x3 } /* 1091 */,
-    std::pair{ "i16x3", &Int16x3_splat_Int32 } /* 1092 */,
-    std::pair{ "i16x3", &Int16x3_from_Bool8x3 } /* 1093 */,
-    std::pair{ "i16x3", &Int16x3_splat_Bool8 } /* 1094 */,
-    std::pair{ "i16x3", &Int16x3_from_Float16x3 } /* 1095 */,
-    std::pair{ "i16x3", &Int16x3_splat_Float16 } /* 1096 */,
-    std::pair{ "i16x3", &Int16x3_from_UInt16x3 } /* 1097 */,
-    std::pair{ "i16x3", &Int16x3_splat_UInt16 } /* 1098 */,
-    std::pair{ "i16x3", &Int16x3_from_Int16x3 } /* 1099 */,
-    std::pair{ "i16x3", &Int16x3_splat_Int16 } /* 1100 */,
-    std::pair{ "i16x3", &Int16x3_ctor0 } /* 1101 */,
-    std::pair{ "i16x3", &Int16x3_ctor1 } /* 1102 */,
-    std::pair{ "i16x3", &Int16x3_ctor2 } /* 1103 */,
-    std::pair{ "i16x3(b8)", &Int16x3_splat_Bool8 } /* 1104 */,
-    std::pair{ "i16x3(b8x3)", &Int16x3_from_Bool8x3 } /* 1105 */,
-    std::pair{ "i16x3(f16)", &Int16x3_splat_Float16 } /* 1106 */,
-    std::pair{ "i16x3(f16x3)", &Int16x3_from_Float16x3 } /* 1107 */,
-    std::pair{ "i16x3(f32)", &Int16x3_splat_Float32 } /* 1108 */,
-    std::pair{ "i16x3(f32x3)", &Int16x3_from_Float32x3 } /* 1109 */,
-    std::pair{ "i16x3(i16)", &Int16x3_splat_Int16 } /* 1110 */,
-    std::pair{ "i16x3(i16,i16,i16)", &Int16x3_ctor0 } /* 1111 */,
-    std::pair{ "i16x3(i16,i16x2)", &Int16x3_ctor2 } /* 1112 */,
-    std::pair{ "i16x3(i16x2,i16)", &Int16x3_ctor1 } /* 1113 */,
-    std::pair{ "i16x3(i16x3)", &Int16x3_from_Int16x3 } /* 1114 */,
-    std::pair{ "i16x3(i32)", &Int16x3_splat_Int32 } /* 1115 */,
-    std::pair{ "i16x3(i32x3)", &Int16x3_from_Int32x3 } /* 1116 */,
-    std::pair{ "i16x3(u16)", &Int16x3_splat_UInt16 } /* 1117 */,
-    std::pair{ "i16x3(u16x3)", &Int16x3_from_UInt16x3 } /* 1118 */,
-    std::pair{ "i16x3(u32)", &Int16x3_splat_UInt32 } /* 1119 */,
-    std::pair{ "i16x3(u32x3)", &Int16x3_from_UInt32x3 } /* 1120 */,
-    std::pair{ "i16x4", &Int16x4Type } /* 1121 */,
-    std::pair{ "i16x4", &Int16x4_from_Float32x4 } /* 1122 */,
-    std::pair{ "i16x4", &Int16x4_splat_Float32 } /* 1123 */,
-    std::pair{ "i16x4", &Int16x4_from_UInt32x4 } /* 1124 */,
-    std::pair{ "i16x4", &Int16x4_splat_UInt32 } /* 1125 */,
-    std::pair{ "i16x4", &Int16x4_from_Int32x4 } /* 1126 */,
-    std::pair{ "i16x4", &Int16x4_splat_Int32 } /* 1127 */,
-    std::pair{ "i16x4", &Int16x4_from_Bool8x4 } /* 1128 */,
-    std::pair{ "i16x4", &Int16x4_splat_Bool8 } /* 1129 */,
-    std::pair{ "i16x4", &Int16x4_from_Float16x4 } /* 1130 */,
-    std::pair{ "i16x4", &Int16x4_splat_Float16 } /* 1131 */,
-    std::pair{ "i16x4", &Int16x4_from_UInt16x4 } /* 1132 */,
-    std::pair{ "i16x4", &Int16x4_splat_UInt16 } /* 1133 */,
-    std::pair{ "i16x4", &Int16x4_from_Int16x4 } /* 1134 */,
-    std::pair{ "i16x4", &Int16x4_splat_Int16 } /* 1135 */,
-    std::pair{ "i16x4", &Int16x4_ctor0 } /* 1136 */,
-    std::pair{ "i16x4", &Int16x4_ctor1 } /* 1137 */,
-    std::pair{ "i16x4", &Int16x4_ctor2 } /* 1138 */,
-    std::pair{ "i16x4", &Int16x4_ctor3 } /* 1139 */,
-    std::pair{ "i16x4", &Int16x4_ctor4 } /* 1140 */,
-    std::pair{ "i16x4", &Int16x4_ctor5 } /* 1141 */,
-    std::pair{ "i16x4", &Int16x4_ctor6 } /* 1142 */,
-    std::pair{ "i16x4(b8)", &Int16x4_splat_Bool8 } /* 1143 */,
-    std::pair{ "i16x4(b8x4)", &Int16x4_from_Bool8x4 } /* 1144 */,
-    std::pair{ "i16x4(f16)", &Int16x4_splat_Float16 } /* 1145 */,
-    std::pair{ "i16x4(f16x4)", &Int16x4_from_Float16x4 } /* 1146 */,
-    std::pair{ "i16x4(f32)", &Int16x4_splat_Float32 } /* 1147 */,
-    std::pair{ "i16x4(f32x4)", &Int16x4_from_Float32x4 } /* 1148 */,
-    std::pair{ "i16x4(i16)", &Int16x4_splat_Int16 } /* 1149 */,
-    std::pair{ "i16x4(i16,i16,i16,i16)", &Int16x4_ctor0 } /* 1150 */,
-    std::pair{ "i16x4(i16,i16,i16x2)", &Int16x4_ctor3 } /* 1151 */,
-    std::pair{ "i16x4(i16,i16x2,i16)", &Int16x4_ctor2 } /* 1152 */,
-    std::pair{ "i16x4(i16,i16x3)", &Int16x4_ctor6 } /* 1153 */,
-    std::pair{ "i16x4(i16x2,i16,i16)", &Int16x4_ctor1 } /* 1154 */,
-    std::pair{ "i16x4(i16x2,i16x2)", &Int16x4_ctor4 } /* 1155 */,
-    std::pair{ "i16x4(i16x3,i16)", &Int16x4_ctor5 } /* 1156 */,
-    std::pair{ "i16x4(i16x4)", &Int16x4_from_Int16x4 } /* 1157 */,
-    std::pair{ "i16x4(i32)", &Int16x4_splat_Int32 } /* 1158 */,
-    std::pair{ "i16x4(i32x4)", &Int16x4_from_Int32x4 } /* 1159 */,
-    std::pair{ "i16x4(u16)", &Int16x4_splat_UInt16 } /* 1160 */,
-    std::pair{ "i16x4(u16x4)", &Int16x4_from_UInt16x4 } /* 1161 */,
-    std::pair{ "i16x4(u32)", &Int16x4_splat_UInt32 } /* 1162 */,
-    std::pair{ "i16x4(u32x4)", &Int16x4_from_UInt32x4 } /* 1163 */,
-    std::pair{ "i32", &Int32Type } /* 1164 */,
-    std::pair{ "i32", &Int32_from_Float32 } /* 1165 */,
-    std::pair{ "i32", &Int32_from_UInt32 } /* 1166 */,
-    std::pair{ "i32", &Int32_from_Bool8 } /* 1167 */,
-    std::pair{ "i32", &Int32_from_Float16 } /* 1168 */,
-    std::pair{ "i32", &Int32_from_UInt16 } /* 1169 */,
-    std::pair{ "i32", &Int32_from_Int16 } /* 1170 */,
-    std::pair{ "i32", &Int32_ctor0 } /* 1171 */,
-    std::pair{ "i32(b8)", &Int32_from_Bool8 } /* 1172 */,
-    std::pair{ "i32(f16)", &Int32_from_Float16 } /* 1173 */,
-    std::pair{ "i32(f32)", &Int32_from_Float32 } /* 1174 */,
-    std::pair{ "i32(i16)", &Int32_from_Int16 } /* 1175 */,
-    std::pair{ "i32(i32)", &Int32_ctor0 } /* 1176 */,
-    std::pair{ "i32(u16)", &Int32_from_UInt16 } /* 1177 */,
-    std::pair{ "i32(u32)", &Int32_from_UInt32 } /* 1178 */,
-    std::pair{ "i32x2", &Int32x2Type } /* 1179 */,
-    std::pair{ "i32x2", &Int32x2_from_Float32x2 } /* 1180 */,
-    std::pair{ "i32x2", &Int32x2_splat_Float32 } /* 1181 */,
-    std::pair{ "i32x2", &Int32x2_from_UInt32x2 } /* 1182 */,
-    std::pair{ "i32x2", &Int32x2_splat_UInt32 } /* 1183 */,
-    std::pair{ "i32x2", &Int32x2_from_Int32x2 } /* 1184 */,
-    std::pair{ "i32x2", &Int32x2_splat_Int32 } /* 1185 */,
-    std::pair{ "i32x2", &Int32x2_from_Bool8x2 } /* 1186 */,
-    std::pair{ "i32x2", &Int32x2_splat_Bool8 } /* 1187 */,
-    std::pair{ "i32x2", &Int32x2_from_Float16x2 } /* 1188 */,
-    std::pair{ "i32x2", &Int32x2_splat_Float16 } /* 1189 */,
-    std::pair{ "i32x2", &Int32x2_from_UInt16x2 } /* 1190 */,
-    std::pair{ "i32x2", &Int32x2_splat_UInt16 } /* 1191 */,
-    std::pair{ "i32x2", &Int32x2_from_Int16x2 } /* 1192 */,
-    std::pair{ "i32x2", &Int32x2_splat_Int16 } /* 1193 */,
-    std::pair{ "i32x2", &Int32x2_ctor0 } /* 1194 */,
-    std::pair{ "i32x2(b8)", &Int32x2_splat_Bool8 } /* 1195 */,
-    std::pair{ "i32x2(b8x2)", &Int32x2_from_Bool8x2 } /* 1196 */,
-    std::pair{ "i32x2(f16)", &Int32x2_splat_Float16 } /* 1197 */,
-    std::pair{ "i32x2(f16x2)", &Int32x2_from_Float16x2 } /* 1198 */,
-    std::pair{ "i32x2(f32)", &Int32x2_splat_Float32 } /* 1199 */,
-    std::pair{ "i32x2(f32x2)", &Int32x2_from_Float32x2 } /* 1200 */,
-    std::pair{ "i32x2(i16)", &Int32x2_splat_Int16 } /* 1201 */,
-    std::pair{ "i32x2(i16x2)", &Int32x2_from_Int16x2 } /* 1202 */,
-    std::pair{ "i32x2(i32)", &Int32x2_splat_Int32 } /* 1203 */,
-    std::pair{ "i32x2(i32,i32)", &Int32x2_ctor0 } /* 1204 */,
-    std::pair{ "i32x2(i32x2)", &Int32x2_from_Int32x2 } /* 1205 */,
-    std::pair{ "i32x2(u16)", &Int32x2_splat_UInt16 } /* 1206 */,
-    std::pair{ "i32x2(u16x2)", &Int32x2_from_UInt16x2 } /* 1207 */,
-    std::pair{ "i32x2(u32)", &Int32x2_splat_UInt32 } /* 1208 */,
-    std::pair{ "i32x2(u32x2)", &Int32x2_from_UInt32x2 } /* 1209 */,
-    std::pair{ "i32x3", &Int32x3Type } /* 1210 */,
-    std::pair{ "i32x3", &Int32x3_from_Float32x3 } /* 1211 */,
-    std::pair{ "i32x3", &Int32x3_splat_Float32 } /* 1212 */,
-    std::pair{ "i32x3", &Int32x3_from_UInt32x3 } /* 1213 */,
-    std::pair{ "i32x3", &Int32x3_splat_UInt32 } /* 1214 */,
-    std::pair{ "i32x3", &Int32x3_from_Int32x3 } /* 1215 */,
-    std::pair{ "i32x3", &Int32x3_splat_Int32 } /* 1216 */,
-    std::pair{ "i32x3", &Int32x3_from_Bool8x3 } /* 1217 */,
-    std::pair{ "i32x3", &Int32x3_splat_Bool8 } /* 1218 */,
-    std::pair{ "i32x3", &Int32x3_from_Float16x3 } /* 1219 */,
-    std::pair{ "i32x3", &Int32x3_splat_Float16 } /* 1220 */,
-    std::pair{ "i32x3", &Int32x3_from_UInt16x3 } /* 1221 */,
-    std::pair{ "i32x3", &Int32x3_splat_UInt16 } /* 1222 */,
-    std::pair{ "i32x3", &Int32x3_from_Int16x3 } /* 1223 */,
-    std::pair{ "i32x3", &Int32x3_splat_Int16 } /* 1224 */,
-    std::pair{ "i32x3", &Int32x3_ctor0 } /* 1225 */,
-    std::pair{ "i32x3", &Int32x3_ctor1 } /* 1226 */,
-    std::pair{ "i32x3", &Int32x3_ctor2 } /* 1227 */,
-    std::pair{ "i32x3(b8)", &Int32x3_splat_Bool8 } /* 1228 */,
-    std::pair{ "i32x3(b8x3)", &Int32x3_from_Bool8x3 } /* 1229 */,
-    std::pair{ "i32x3(f16)", &Int32x3_splat_Float16 } /* 1230 */,
-    std::pair{ "i32x3(f16x3)", &Int32x3_from_Float16x3 } /* 1231 */,
-    std::pair{ "i32x3(f32)", &Int32x3_splat_Float32 } /* 1232 */,
-    std::pair{ "i32x3(f32x3)", &Int32x3_from_Float32x3 } /* 1233 */,
-    std::pair{ "i32x3(i16)", &Int32x3_splat_Int16 } /* 1234 */,
-    std::pair{ "i32x3(i16x3)", &Int32x3_from_Int16x3 } /* 1235 */,
-    std::pair{ "i32x3(i32)", &Int32x3_splat_Int32 } /* 1236 */,
-    std::pair{ "i32x3(i32,i32,i32)", &Int32x3_ctor0 } /* 1237 */,
-    std::pair{ "i32x3(i32,i32x2)", &Int32x3_ctor2 } /* 1238 */,
-    std::pair{ "i32x3(i32x2,i32)", &Int32x3_ctor1 } /* 1239 */,
-    std::pair{ "i32x3(i32x3)", &Int32x3_from_Int32x3 } /* 1240 */,
-    std::pair{ "i32x3(u16)", &Int32x3_splat_UInt16 } /* 1241 */,
-    std::pair{ "i32x3(u16x3)", &Int32x3_from_UInt16x3 } /* 1242 */,
-    std::pair{ "i32x3(u32)", &Int32x3_splat_UInt32 } /* 1243 */,
-    std::pair{ "i32x3(u32x3)", &Int32x3_from_UInt32x3 } /* 1244 */,
-    std::pair{ "i32x4", &Int32x4Type } /* 1245 */,
-    std::pair{ "i32x4", &Int32x4_from_Float32x4 } /* 1246 */,
-    std::pair{ "i32x4", &Int32x4_splat_Float32 } /* 1247 */,
-    std::pair{ "i32x4", &Int32x4_from_UInt32x4 } /* 1248 */,
-    std::pair{ "i32x4", &Int32x4_splat_UInt32 } /* 1249 */,
-    std::pair{ "i32x4", &Int32x4_from_Int32x4 } /* 1250 */,
-    std::pair{ "i32x4", &Int32x4_splat_Int32 } /* 1251 */,
-    std::pair{ "i32x4", &Int32x4_from_Bool8x4 } /* 1252 */,
-    std::pair{ "i32x4", &Int32x4_splat_Bool8 } /* 1253 */,
-    std::pair{ "i32x4", &Int32x4_from_Float16x4 } /* 1254 */,
-    std::pair{ "i32x4", &Int32x4_splat_Float16 } /* 1255 */,
-    std::pair{ "i32x4", &Int32x4_from_UInt16x4 } /* 1256 */,
-    std::pair{ "i32x4", &Int32x4_splat_UInt16 } /* 1257 */,
-    std::pair{ "i32x4", &Int32x4_from_Int16x4 } /* 1258 */,
-    std::pair{ "i32x4", &Int32x4_splat_Int16 } /* 1259 */,
-    std::pair{ "i32x4", &Int32x4_ctor0 } /* 1260 */,
-    std::pair{ "i32x4", &Int32x4_ctor1 } /* 1261 */,
-    std::pair{ "i32x4", &Int32x4_ctor2 } /* 1262 */,
-    std::pair{ "i32x4", &Int32x4_ctor3 } /* 1263 */,
-    std::pair{ "i32x4", &Int32x4_ctor4 } /* 1264 */,
-    std::pair{ "i32x4", &Int32x4_ctor5 } /* 1265 */,
-    std::pair{ "i32x4", &Int32x4_ctor6 } /* 1266 */,
-    std::pair{ "i32x4(b8)", &Int32x4_splat_Bool8 } /* 1267 */,
-    std::pair{ "i32x4(b8x4)", &Int32x4_from_Bool8x4 } /* 1268 */,
-    std::pair{ "i32x4(f16)", &Int32x4_splat_Float16 } /* 1269 */,
-    std::pair{ "i32x4(f16x4)", &Int32x4_from_Float16x4 } /* 1270 */,
-    std::pair{ "i32x4(f32)", &Int32x4_splat_Float32 } /* 1271 */,
-    std::pair{ "i32x4(f32x4)", &Int32x4_from_Float32x4 } /* 1272 */,
-    std::pair{ "i32x4(i16)", &Int32x4_splat_Int16 } /* 1273 */,
-    std::pair{ "i32x4(i16x4)", &Int32x4_from_Int16x4 } /* 1274 */,
-    std::pair{ "i32x4(i32)", &Int32x4_splat_Int32 } /* 1275 */,
-    std::pair{ "i32x4(i32,i32,i32,i32)", &Int32x4_ctor0 } /* 1276 */,
-    std::pair{ "i32x4(i32,i32,i32x2)", &Int32x4_ctor3 } /* 1277 */,
-    std::pair{ "i32x4(i32,i32x2,i32)", &Int32x4_ctor2 } /* 1278 */,
-    std::pair{ "i32x4(i32,i32x3)", &Int32x4_ctor6 } /* 1279 */,
-    std::pair{ "i32x4(i32x2,i32,i32)", &Int32x4_ctor1 } /* 1280 */,
-    std::pair{ "i32x4(i32x2,i32x2)", &Int32x4_ctor4 } /* 1281 */,
-    std::pair{ "i32x4(i32x3,i32)", &Int32x4_ctor5 } /* 1282 */,
-    std::pair{ "i32x4(i32x4)", &Int32x4_from_Int32x4 } /* 1283 */,
-    std::pair{ "i32x4(u16)", &Int32x4_splat_UInt16 } /* 1284 */,
-    std::pair{ "i32x4(u16x4)", &Int32x4_from_UInt16x4 } /* 1285 */,
-    std::pair{ "i32x4(u32)", &Int32x4_splat_UInt32 } /* 1286 */,
-    std::pair{ "i32x4(u32x4)", &Int32x4_from_UInt32x4 } /* 1287 */,
-    std::pair{ "invSqrt", &invSqrt_Float32 } /* 1288 */,
-    std::pair{ "invSqrt", &invSqrt_Float32x2 } /* 1289 */,
-    std::pair{ "invSqrt", &invSqrt_Float32x3 } /* 1290 */,
-    std::pair{ "invSqrt", &invSqrt_Float32x4 } /* 1291 */,
-    std::pair{ "invSqrt", &invSqrt_Float16 } /* 1292 */,
-    std::pair{ "invSqrt", &invSqrt_Float16x2 } /* 1293 */,
-    std::pair{ "invSqrt", &invSqrt_Float16x3 } /* 1294 */,
-    std::pair{ "invSqrt", &invSqrt_Float16x4 } /* 1295 */,
-    std::pair{ "invSqrt(f16)", &invSqrt_Float16 } /* 1296 */,
-    std::pair{ "invSqrt(f16x2)", &invSqrt_Float16x2 } /* 1297 */,
-    std::pair{ "invSqrt(f16x3)", &invSqrt_Float16x3 } /* 1298 */,
-    std::pair{ "invSqrt(f16x4)", &invSqrt_Float16x4 } /* 1299 */,
-    std::pair{ "invSqrt(f32)", &invSqrt_Float32 } /* 1300 */,
-    std::pair{ "invSqrt(f32x2)", &invSqrt_Float32x2 } /* 1301 */,
-    std::pair{ "invSqrt(f32x3)", &invSqrt_Float32x3 } /* 1302 */,
-    std::pair{ "invSqrt(f32x4)", &invSqrt_Float32x4 } /* 1303 */,
-    std::pair{ "inverse", &inverse_Float32x2x2 } /* 1304 */,
-    std::pair{ "inverse", &inverse_Float16x2x2 } /* 1305 */,
-    std::pair{ "inverse", &inverse_Float32x2x3 } /* 1306 */,
-    std::pair{ "inverse", &inverse_Float16x2x3 } /* 1307 */,
-    std::pair{ "inverse", &inverse_Float32x2x4 } /* 1308 */,
-    std::pair{ "inverse", &inverse_Float16x2x4 } /* 1309 */,
-    std::pair{ "inverse", &inverse_Float32x3x2 } /* 1310 */,
-    std::pair{ "inverse", &inverse_Float16x3x2 } /* 1311 */,
-    std::pair{ "inverse", &inverse_Float32x3x3 } /* 1312 */,
-    std::pair{ "inverse", &inverse_Float16x3x3 } /* 1313 */,
-    std::pair{ "inverse", &inverse_Float32x3x4 } /* 1314 */,
-    std::pair{ "inverse", &inverse_Float16x3x4 } /* 1315 */,
-    std::pair{ "inverse", &inverse_Float32x4x2 } /* 1316 */,
-    std::pair{ "inverse", &inverse_Float16x4x2 } /* 1317 */,
-    std::pair{ "inverse", &inverse_Float32x4x3 } /* 1318 */,
-    std::pair{ "inverse", &inverse_Float16x4x3 } /* 1319 */,
-    std::pair{ "inverse", &inverse_Float32x4x4 } /* 1320 */,
-    std::pair{ "inverse", &inverse_Float16x4x4 } /* 1321 */,
-    std::pair{ "inverse(f16x2x2)", &inverse_Float16x2x2 } /* 1322 */,
-    std::pair{ "inverse(f16x2x3)", &inverse_Float16x2x3 } /* 1323 */,
-    std::pair{ "inverse(f16x2x4)", &inverse_Float16x2x4 } /* 1324 */,
-    std::pair{ "inverse(f16x3x2)", &inverse_Float16x3x2 } /* 1325 */,
-    std::pair{ "inverse(f16x3x3)", &inverse_Float16x3x3 } /* 1326 */,
-    std::pair{ "inverse(f16x3x4)", &inverse_Float16x3x4 } /* 1327 */,
-    std::pair{ "inverse(f16x4x2)", &inverse_Float16x4x2 } /* 1328 */,
-    std::pair{ "inverse(f16x4x3)", &inverse_Float16x4x3 } /* 1329 */,
-    std::pair{ "inverse(f16x4x4)", &inverse_Float16x4x4 } /* 1330 */,
-    std::pair{ "inverse(f32x2x2)", &inverse_Float32x2x2 } /* 1331 */,
-    std::pair{ "inverse(f32x2x3)", &inverse_Float32x2x3 } /* 1332 */,
-    std::pair{ "inverse(f32x2x4)", &inverse_Float32x2x4 } /* 1333 */,
-    std::pair{ "inverse(f32x3x2)", &inverse_Float32x3x2 } /* 1334 */,
-    std::pair{ "inverse(f32x3x3)", &inverse_Float32x3x3 } /* 1335 */,
-    std::pair{ "inverse(f32x3x4)", &inverse_Float32x3x4 } /* 1336 */,
-    std::pair{ "inverse(f32x4x2)", &inverse_Float32x4x2 } /* 1337 */,
-    std::pair{ "inverse(f32x4x3)", &inverse_Float32x4x3 } /* 1338 */,
-    std::pair{ "inverse(f32x4x4)", &inverse_Float32x4x4 } /* 1339 */,
-    std::pair{ "length", &length_Float32x2 } /* 1340 */,
-    std::pair{ "length", &length_Float32x3 } /* 1341 */,
-    std::pair{ "length", &length_Float32x4 } /* 1342 */,
-    std::pair{ "length", &length_Float16x2 } /* 1343 */,
-    std::pair{ "length", &length_Float16x3 } /* 1344 */,
-    std::pair{ "length", &length_Float16x4 } /* 1345 */,
-    std::pair{ "length(f16x2)", &length_Float16x2 } /* 1346 */,
-    std::pair{ "length(f16x3)", &length_Float16x3 } /* 1347 */,
-    std::pair{ "length(f16x4)", &length_Float16x4 } /* 1348 */,
-    std::pair{ "length(f32x2)", &length_Float32x2 } /* 1349 */,
-    std::pair{ "length(f32x3)", &length_Float32x3 } /* 1350 */,
-    std::pair{ "length(f32x4)", &length_Float32x4 } /* 1351 */,
-    std::pair{ "lerp", &lerp_Float32x2 } /* 1352 */,
-    std::pair{ "lerp", &lerp_Float32x3 } /* 1353 */,
-    std::pair{ "lerp", &lerp_Float32x4 } /* 1354 */,
-    std::pair{ "lerp", &lerp_Float16x2 } /* 1355 */,
-    std::pair{ "lerp", &lerp_Float16x3 } /* 1356 */,
-    std::pair{ "lerp", &lerp_Float16x4 } /* 1357 */,
-    std::pair{ "lerp(f16x2,f16x2,f16x2)", &lerp_Float16x2 } /* 1358 */,
-    std::pair{ "lerp(f16x3,f16x3,f16x3)", &lerp_Float16x3 } /* 1359 */,
-    std::pair{ "lerp(f16x4,f16x4,f16x4)", &lerp_Float16x4 } /* 1360 */,
-    std::pair{ "lerp(f32x2,f32x2,f32x2)", &lerp_Float32x2 } /* 1361 */,
-    std::pair{ "lerp(f32x3,f32x3,f32x3)", &lerp_Float32x3 } /* 1362 */,
-    std::pair{ "lerp(f32x4,f32x4,f32x4)", &lerp_Float32x4 } /* 1363 */,
-    std::pair{ "log", &log_Float32 } /* 1364 */,
-    std::pair{ "log", &log_Float32x2 } /* 1365 */,
-    std::pair{ "log", &log_Float32x3 } /* 1366 */,
-    std::pair{ "log", &log_Float32x4 } /* 1367 */,
-    std::pair{ "log", &log_Float16 } /* 1368 */,
-    std::pair{ "log", &log_Float16x2 } /* 1369 */,
-    std::pair{ "log", &log_Float16x3 } /* 1370 */,
-    std::pair{ "log", &log_Float16x4 } /* 1371 */,
-    std::pair{ "log(f16)", &log_Float16 } /* 1372 */,
-    std::pair{ "log(f16x2)", &log_Float16x2 } /* 1373 */,
-    std::pair{ "log(f16x3)", &log_Float16x3 } /* 1374 */,
-    std::pair{ "log(f16x4)", &log_Float16x4 } /* 1375 */,
-    std::pair{ "log(f32)", &log_Float32 } /* 1376 */,
-    std::pair{ "log(f32x2)", &log_Float32x2 } /* 1377 */,
-    std::pair{ "log(f32x3)", &log_Float32x3 } /* 1378 */,
-    std::pair{ "log(f32x4)", &log_Float32x4 } /* 1379 */,
-    std::pair{ "log2", &log2_Float32 } /* 1380 */,
-    std::pair{ "log2", &log2_Float32x2 } /* 1381 */,
-    std::pair{ "log2", &log2_Float32x3 } /* 1382 */,
-    std::pair{ "log2", &log2_Float32x4 } /* 1383 */,
-    std::pair{ "log2", &log2_Float16 } /* 1384 */,
-    std::pair{ "log2", &log2_Float16x2 } /* 1385 */,
-    std::pair{ "log2", &log2_Float16x3 } /* 1386 */,
-    std::pair{ "log2", &log2_Float16x4 } /* 1387 */,
-    std::pair{ "log2(f16)", &log2_Float16 } /* 1388 */,
-    std::pair{ "log2(f16x2)", &log2_Float16x2 } /* 1389 */,
-    std::pair{ "log2(f16x3)", &log2_Float16x3 } /* 1390 */,
-    std::pair{ "log2(f16x4)", &log2_Float16x4 } /* 1391 */,
-    std::pair{ "log2(f32)", &log2_Float32 } /* 1392 */,
-    std::pair{ "log2(f32x2)", &log2_Float32x2 } /* 1393 */,
-    std::pair{ "log2(f32x3)", &log2_Float32x3 } /* 1394 */,
-    std::pair{ "log2(f32x4)", &log2_Float32x4 } /* 1395 */,
-    std::pair{ "mad", &mad_Float32 } /* 1396 */,
-    std::pair{ "mad", &mad_Float32x2 } /* 1397 */,
-    std::pair{ "mad", &mad_Float32x3 } /* 1398 */,
-    std::pair{ "mad", &mad_Float32x4 } /* 1399 */,
-    std::pair{ "mad", &mad_Float16 } /* 1400 */,
-    std::pair{ "mad", &mad_Float16x2 } /* 1401 */,
-    std::pair{ "mad", &mad_Float16x3 } /* 1402 */,
-    std::pair{ "mad", &mad_Float16x4 } /* 1403 */,
-    std::pair{ "mad", &mad_Int32 } /* 1404 */,
-    std::pair{ "mad", &mad_Int32x2 } /* 1405 */,
-    std::pair{ "mad", &mad_Int32x3 } /* 1406 */,
-    std::pair{ "mad", &mad_Int32x4 } /* 1407 */,
-    std::pair{ "mad", &mad_Int16 } /* 1408 */,
-    std::pair{ "mad", &mad_Int16x2 } /* 1409 */,
-    std::pair{ "mad", &mad_Int16x3 } /* 1410 */,
-    std::pair{ "mad", &mad_Int16x4 } /* 1411 */,
-    std::pair{ "mad", &mad_UInt32 } /* 1412 */,
-    std::pair{ "mad", &mad_UInt32x2 } /* 1413 */,
-    std::pair{ "mad", &mad_UInt32x3 } /* 1414 */,
-    std::pair{ "mad", &mad_UInt32x4 } /* 1415 */,
-    std::pair{ "mad", &mad_UInt16 } /* 1416 */,
-    std::pair{ "mad", &mad_UInt16x2 } /* 1417 */,
-    std::pair{ "mad", &mad_UInt16x3 } /* 1418 */,
-    std::pair{ "mad", &mad_UInt16x4 } /* 1419 */,
-    std::pair{ "mad(f16,f16,f16)", &mad_Float16 } /* 1420 */,
-    std::pair{ "mad(f16x2,f16x2,f16x2)", &mad_Float16x2 } /* 1421 */,
-    std::pair{ "mad(f16x3,f16x3,f16x3)", &mad_Float16x3 } /* 1422 */,
-    std::pair{ "mad(f16x4,f16x4,f16x4)", &mad_Float16x4 } /* 1423 */,
-    std::pair{ "mad(f32,f32,f32)", &mad_Float32 } /* 1424 */,
-    std::pair{ "mad(f32x2,f32x2,f32x2)", &mad_Float32x2 } /* 1425 */,
-    std::pair{ "mad(f32x3,f32x3,f32x3)", &mad_Float32x3 } /* 1426 */,
-    std::pair{ "mad(f32x4,f32x4,f32x4)", &mad_Float32x4 } /* 1427 */,
-    std::pair{ "mad(i16,i16,i16)", &mad_Int16 } /* 1428 */,
-    std::pair{ "mad(i16x2,i16x2,i16x2)", &mad_Int16x2 } /* 1429 */,
-    std::pair{ "mad(i16x3,i16x3,i16x3)", &mad_Int16x3 } /* 1430 */,
-    std::pair{ "mad(i16x4,i16x4,i16x4)", &mad_Int16x4 } /* 1431 */,
-    std::pair{ "mad(i32,i32,i32)", &mad_Int32 } /* 1432 */,
-    std::pair{ "mad(i32x2,i32x2,i32x2)", &mad_Int32x2 } /* 1433 */,
-    std::pair{ "mad(i32x3,i32x3,i32x3)", &mad_Int32x3 } /* 1434 */,
-    std::pair{ "mad(i32x4,i32x4,i32x4)", &mad_Int32x4 } /* 1435 */,
-    std::pair{ "mad(u16,u16,u16)", &mad_UInt16 } /* 1436 */,
-    std::pair{ "mad(u16x2,u16x2,u16x2)", &mad_UInt16x2 } /* 1437 */,
-    std::pair{ "mad(u16x3,u16x3,u16x3)", &mad_UInt16x3 } /* 1438 */,
-    std::pair{ "mad(u16x4,u16x4,u16x4)", &mad_UInt16x4 } /* 1439 */,
-    std::pair{ "mad(u32,u32,u32)", &mad_UInt32 } /* 1440 */,
-    std::pair{ "mad(u32x2,u32x2,u32x2)", &mad_UInt32x2 } /* 1441 */,
-    std::pair{ "mad(u32x3,u32x3,u32x3)", &mad_UInt32x3 } /* 1442 */,
-    std::pair{ "mad(u32x4,u32x4,u32x4)", &mad_UInt32x4 } /* 1443 */,
-    std::pair{ "max", &max_Float32 } /* 1444 */,
-    std::pair{ "max", &max_Float32x2 } /* 1445 */,
-    std::pair{ "max", &max_Float32x3 } /* 1446 */,
-    std::pair{ "max", &max_Float32x4 } /* 1447 */,
-    std::pair{ "max", &max_Float16 } /* 1448 */,
-    std::pair{ "max", &max_Float16x2 } /* 1449 */,
-    std::pair{ "max", &max_Float16x3 } /* 1450 */,
-    std::pair{ "max", &max_Float16x4 } /* 1451 */,
-    std::pair{ "max", &max_Int32 } /* 1452 */,
-    std::pair{ "max", &max_Int32x2 } /* 1453 */,
-    std::pair{ "max", &max_Int32x3 } /* 1454 */,
-    std::pair{ "max", &max_Int32x4 } /* 1455 */,
-    std::pair{ "max", &max_Int16 } /* 1456 */,
-    std::pair{ "max", &max_Int16x2 } /* 1457 */,
-    std::pair{ "max", &max_Int16x3 } /* 1458 */,
-    std::pair{ "max", &max_Int16x4 } /* 1459 */,
-    std::pair{ "max", &max_UInt32 } /* 1460 */,
-    std::pair{ "max", &max_UInt32x2 } /* 1461 */,
-    std::pair{ "max", &max_UInt32x3 } /* 1462 */,
-    std::pair{ "max", &max_UInt32x4 } /* 1463 */,
-    std::pair{ "max", &max_UInt16 } /* 1464 */,
-    std::pair{ "max", &max_UInt16x2 } /* 1465 */,
-    std::pair{ "max", &max_UInt16x3 } /* 1466 */,
-    std::pair{ "max", &max_UInt16x4 } /* 1467 */,
-    std::pair{ "max(f16,f16)", &max_Float16 } /* 1468 */,
-    std::pair{ "max(f16x2,f16x2)", &max_Float16x2 } /* 1469 */,
-    std::pair{ "max(f16x3,f16x3)", &max_Float16x3 } /* 1470 */,
-    std::pair{ "max(f16x4,f16x4)", &max_Float16x4 } /* 1471 */,
-    std::pair{ "max(f32,f32)", &max_Float32 } /* 1472 */,
-    std::pair{ "max(f32x2,f32x2)", &max_Float32x2 } /* 1473 */,
-    std::pair{ "max(f32x3,f32x3)", &max_Float32x3 } /* 1474 */,
-    std::pair{ "max(f32x4,f32x4)", &max_Float32x4 } /* 1475 */,
-    std::pair{ "max(i16,i16)", &max_Int16 } /* 1476 */,
-    std::pair{ "max(i16x2,i16x2)", &max_Int16x2 } /* 1477 */,
-    std::pair{ "max(i16x3,i16x3)", &max_Int16x3 } /* 1478 */,
-    std::pair{ "max(i16x4,i16x4)", &max_Int16x4 } /* 1479 */,
-    std::pair{ "max(i32,i32)", &max_Int32 } /* 1480 */,
-    std::pair{ "max(i32x2,i32x2)", &max_Int32x2 } /* 1481 */,
-    std::pair{ "max(i32x3,i32x3)", &max_Int32x3 } /* 1482 */,
-    std::pair{ "max(i32x4,i32x4)", &max_Int32x4 } /* 1483 */,
-    std::pair{ "max(u16,u16)", &max_UInt16 } /* 1484 */,
-    std::pair{ "max(u16x2,u16x2)", &max_UInt16x2 } /* 1485 */,
-    std::pair{ "max(u16x3,u16x3)", &max_UInt16x3 } /* 1486 */,
-    std::pair{ "max(u16x4,u16x4)", &max_UInt16x4 } /* 1487 */,
-    std::pair{ "max(u32,u32)", &max_UInt32 } /* 1488 */,
-    std::pair{ "max(u32x2,u32x2)", &max_UInt32x2 } /* 1489 */,
-    std::pair{ "max(u32x3,u32x3)", &max_UInt32x3 } /* 1490 */,
-    std::pair{ "max(u32x4,u32x4)", &max_UInt32x4 } /* 1491 */,
-    std::pair{ "memoryBarrier", &MemoryBarrier } /* 1492 */,
-    std::pair{ "memoryBarrier()", &MemoryBarrier } /* 1493 */,
-    std::pair{ "memoryBarrierAtomic", &MemoryBarrierAtomic } /* 1494 */,
-    std::pair{ "memoryBarrierAtomic()", &MemoryBarrierAtomic } /* 1495 */,
-    std::pair{ "memoryBarrierBuffer", &MemoryBarrierBuffer } /* 1496 */,
-    std::pair{ "memoryBarrierBuffer()", &MemoryBarrierBuffer } /* 1497 */,
-    std::pair{ "memoryBarrierSubgroup", &MemoryBarrierSubgroup } /* 1498 */,
-    std::pair{ "memoryBarrierSubgroup()", &MemoryBarrierSubgroup } /* 1499 */,
-    std::pair{ "memoryBarrierTexture", &MemoryBarrierTexture } /* 1500 */,
-    std::pair{ "memoryBarrierTexture()", &MemoryBarrierTexture } /* 1501 */,
-    std::pair{ "memoryBarrierWorkgroup", &MemoryBarrierWorkgroup } /* 1502 */,
-    std::pair{ "memoryBarrierWorkgroup()", &MemoryBarrierWorkgroup } /* 1503 */,
-    std::pair{ "min", &min_Float32 } /* 1504 */,
-    std::pair{ "min", &min_Float32x2 } /* 1505 */,
-    std::pair{ "min", &min_Float32x3 } /* 1506 */,
-    std::pair{ "min", &min_Float32x4 } /* 1507 */,
-    std::pair{ "min", &min_Float16 } /* 1508 */,
-    std::pair{ "min", &min_Float16x2 } /* 1509 */,
-    std::pair{ "min", &min_Float16x3 } /* 1510 */,
-    std::pair{ "min", &min_Float16x4 } /* 1511 */,
-    std::pair{ "min", &min_Int32 } /* 1512 */,
-    std::pair{ "min", &min_Int32x2 } /* 1513 */,
-    std::pair{ "min", &min_Int32x3 } /* 1514 */,
-    std::pair{ "min", &min_Int32x4 } /* 1515 */,
-    std::pair{ "min", &min_Int16 } /* 1516 */,
-    std::pair{ "min", &min_Int16x2 } /* 1517 */,
-    std::pair{ "min", &min_Int16x3 } /* 1518 */,
-    std::pair{ "min", &min_Int16x4 } /* 1519 */,
-    std::pair{ "min", &min_UInt32 } /* 1520 */,
-    std::pair{ "min", &min_UInt32x2 } /* 1521 */,
-    std::pair{ "min", &min_UInt32x3 } /* 1522 */,
-    std::pair{ "min", &min_UInt32x4 } /* 1523 */,
-    std::pair{ "min", &min_UInt16 } /* 1524 */,
-    std::pair{ "min", &min_UInt16x2 } /* 1525 */,
-    std::pair{ "min", &min_UInt16x3 } /* 1526 */,
-    std::pair{ "min", &min_UInt16x4 } /* 1527 */,
-    std::pair{ "min(f16,f16)", &min_Float16 } /* 1528 */,
-    std::pair{ "min(f16x2,f16x2)", &min_Float16x2 } /* 1529 */,
-    std::pair{ "min(f16x3,f16x3)", &min_Float16x3 } /* 1530 */,
-    std::pair{ "min(f16x4,f16x4)", &min_Float16x4 } /* 1531 */,
-    std::pair{ "min(f32,f32)", &min_Float32 } /* 1532 */,
-    std::pair{ "min(f32x2,f32x2)", &min_Float32x2 } /* 1533 */,
-    std::pair{ "min(f32x3,f32x3)", &min_Float32x3 } /* 1534 */,
-    std::pair{ "min(f32x4,f32x4)", &min_Float32x4 } /* 1535 */,
-    std::pair{ "min(i16,i16)", &min_Int16 } /* 1536 */,
-    std::pair{ "min(i16x2,i16x2)", &min_Int16x2 } /* 1537 */,
-    std::pair{ "min(i16x3,i16x3)", &min_Int16x3 } /* 1538 */,
-    std::pair{ "min(i16x4,i16x4)", &min_Int16x4 } /* 1539 */,
-    std::pair{ "min(i32,i32)", &min_Int32 } /* 1540 */,
-    std::pair{ "min(i32x2,i32x2)", &min_Int32x2 } /* 1541 */,
-    std::pair{ "min(i32x3,i32x3)", &min_Int32x3 } /* 1542 */,
-    std::pair{ "min(i32x4,i32x4)", &min_Int32x4 } /* 1543 */,
-    std::pair{ "min(u16,u16)", &min_UInt16 } /* 1544 */,
-    std::pair{ "min(u16x2,u16x2)", &min_UInt16x2 } /* 1545 */,
-    std::pair{ "min(u16x3,u16x3)", &min_UInt16x3 } /* 1546 */,
-    std::pair{ "min(u16x4,u16x4)", &min_UInt16x4 } /* 1547 */,
-    std::pair{ "min(u32,u32)", &min_UInt32 } /* 1548 */,
-    std::pair{ "min(u32x2,u32x2)", &min_UInt32x2 } /* 1549 */,
-    std::pair{ "min(u32x3,u32x3)", &min_UInt32x3 } /* 1550 */,
-    std::pair{ "min(u32x4,u32x4)", &min_UInt32x4 } /* 1551 */,
-    std::pair{ "normalize", &normalize_Float32x2 } /* 1552 */,
-    std::pair{ "normalize", &normalize_Float32x3 } /* 1553 */,
-    std::pair{ "normalize", &normalize_Float32x4 } /* 1554 */,
-    std::pair{ "normalize", &normalize_Float16x2 } /* 1555 */,
-    std::pair{ "normalize", &normalize_Float16x3 } /* 1556 */,
-    std::pair{ "normalize", &normalize_Float16x4 } /* 1557 */,
-    std::pair{ "normalize(f16x2)", &normalize_Float16x2 } /* 1558 */,
-    std::pair{ "normalize(f16x3)", &normalize_Float16x3 } /* 1559 */,
-    std::pair{ "normalize(f16x4)", &normalize_Float16x4 } /* 1560 */,
-    std::pair{ "normalize(f32x2)", &normalize_Float32x2 } /* 1561 */,
-    std::pair{ "normalize(f32x3)", &normalize_Float32x3 } /* 1562 */,
-    std::pair{ "normalize(f32x4)", &normalize_Float32x4 } /* 1563 */,
-    std::pair{ "pixelCache", &PixelCacheType } /* 1564 */,
-    std::pair{ "pixelCacheMS", &PixelCacheMSType } /* 1565 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float32_Int32 } /* 1566 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float32_UInt32 } /* 1567 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float32_Int16 } /* 1568 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float32_UInt16 } /* 1569 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float32x2_Int32 } /* 1570 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float32x2_UInt32 } /* 1571 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float32x2_Int16 } /* 1572 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float32x2_UInt16 } /* 1573 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float32x3_Int32 } /* 1574 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float32x3_UInt32 } /* 1575 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float32x3_Int16 } /* 1576 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float32x3_UInt16 } /* 1577 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float32x4_Int32 } /* 1578 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float32x4_UInt32 } /* 1579 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float32x4_Int16 } /* 1580 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float32x4_UInt16 } /* 1581 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float16_Int32 } /* 1582 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float16_UInt32 } /* 1583 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float16_Int16 } /* 1584 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float16_UInt16 } /* 1585 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float16x2_Int32 } /* 1586 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float16x2_UInt32 } /* 1587 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float16x2_Int16 } /* 1588 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float16x2_UInt16 } /* 1589 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float16x3_Int32 } /* 1590 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float16x3_UInt32 } /* 1591 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float16x3_Int16 } /* 1592 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float16x3_UInt16 } /* 1593 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float16x4_Int32 } /* 1594 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float16x4_UInt32 } /* 1595 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float16x4_Int16 } /* 1596 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Float16x4_UInt16 } /* 1597 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int32_Int32 } /* 1598 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int32_UInt32 } /* 1599 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int32_Int16 } /* 1600 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int32_UInt16 } /* 1601 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int32x2_Int32 } /* 1602 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int32x2_UInt32 } /* 1603 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int32x2_Int16 } /* 1604 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int32x2_UInt16 } /* 1605 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int32x3_Int32 } /* 1606 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int32x3_UInt32 } /* 1607 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int32x3_Int16 } /* 1608 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int32x3_UInt16 } /* 1609 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int32x4_Int32 } /* 1610 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int32x4_UInt32 } /* 1611 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int32x4_Int16 } /* 1612 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int32x4_UInt16 } /* 1613 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int16_Int32 } /* 1614 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int16_UInt32 } /* 1615 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int16_Int16 } /* 1616 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int16_UInt16 } /* 1617 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int16x2_Int32 } /* 1618 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int16x2_UInt32 } /* 1619 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int16x2_Int16 } /* 1620 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int16x2_UInt16 } /* 1621 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int16x3_Int32 } /* 1622 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int16x3_UInt32 } /* 1623 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int16x3_Int16 } /* 1624 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int16x3_UInt16 } /* 1625 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int16x4_Int32 } /* 1626 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int16x4_UInt32 } /* 1627 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int16x4_Int16 } /* 1628 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_Int16x4_UInt16 } /* 1629 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt32_Int32 } /* 1630 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt32_UInt32 } /* 1631 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt32_Int16 } /* 1632 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt32_UInt16 } /* 1633 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt32x2_Int32 } /* 1634 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt32x2_UInt32 } /* 1635 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt32x2_Int16 } /* 1636 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt32x2_UInt16 } /* 1637 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt32x3_Int32 } /* 1638 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt32x3_UInt32 } /* 1639 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt32x3_Int16 } /* 1640 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt32x3_UInt16 } /* 1641 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt32x4_Int32 } /* 1642 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt32x4_UInt32 } /* 1643 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt32x4_Int16 } /* 1644 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt32x4_UInt16 } /* 1645 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt16_Int32 } /* 1646 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt16_UInt32 } /* 1647 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt16_Int16 } /* 1648 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt16_UInt16 } /* 1649 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt16x2_Int32 } /* 1650 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt16x2_UInt32 } /* 1651 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt16x2_Int16 } /* 1652 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt16x2_UInt16 } /* 1653 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt16x3_Int32 } /* 1654 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt16x3_UInt32 } /* 1655 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt16x3_Int16 } /* 1656 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt16x3_UInt16 } /* 1657 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt16x4_Int32 } /* 1658 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt16x4_UInt32 } /* 1659 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt16x4_Int16 } /* 1660 */,
-    std::pair{ "pixelExportColor", &PixelExportColor_UInt16x4_UInt16 } /* 1661 */,
-    std::pair{ "pixelExportColor(f16,literal i16)", &PixelExportColor_Float16_Int16 } /* 1662 */,
-    std::pair{ "pixelExportColor(f16,literal i32)", &PixelExportColor_Float16_Int32 } /* 1663 */,
-    std::pair{ "pixelExportColor(f16,literal u16)", &PixelExportColor_Float16_UInt16 } /* 1664 */,
-    std::pair{ "pixelExportColor(f16,literal u32)", &PixelExportColor_Float16_UInt32 } /* 1665 */,
-    std::pair{ "pixelExportColor(f16x2,literal i16)", &PixelExportColor_Float16x2_Int16 } /* 1666 */,
-    std::pair{ "pixelExportColor(f16x2,literal i32)", &PixelExportColor_Float16x2_Int32 } /* 1667 */,
-    std::pair{ "pixelExportColor(f16x2,literal u16)", &PixelExportColor_Float16x2_UInt16 } /* 1668 */,
-    std::pair{ "pixelExportColor(f16x2,literal u32)", &PixelExportColor_Float16x2_UInt32 } /* 1669 */,
-    std::pair{ "pixelExportColor(f16x3,literal i16)", &PixelExportColor_Float16x3_Int16 } /* 1670 */,
-    std::pair{ "pixelExportColor(f16x3,literal i32)", &PixelExportColor_Float16x3_Int32 } /* 1671 */,
-    std::pair{ "pixelExportColor(f16x3,literal u16)", &PixelExportColor_Float16x3_UInt16 } /* 1672 */,
-    std::pair{ "pixelExportColor(f16x3,literal u32)", &PixelExportColor_Float16x3_UInt32 } /* 1673 */,
-    std::pair{ "pixelExportColor(f16x4,literal i16)", &PixelExportColor_Float16x4_Int16 } /* 1674 */,
-    std::pair{ "pixelExportColor(f16x4,literal i32)", &PixelExportColor_Float16x4_Int32 } /* 1675 */,
-    std::pair{ "pixelExportColor(f16x4,literal u16)", &PixelExportColor_Float16x4_UInt16 } /* 1676 */,
-    std::pair{ "pixelExportColor(f16x4,literal u32)", &PixelExportColor_Float16x4_UInt32 } /* 1677 */,
-    std::pair{ "pixelExportColor(f32,literal i16)", &PixelExportColor_Float32_Int16 } /* 1678 */,
-    std::pair{ "pixelExportColor(f32,literal i32)", &PixelExportColor_Float32_Int32 } /* 1679 */,
-    std::pair{ "pixelExportColor(f32,literal u16)", &PixelExportColor_Float32_UInt16 } /* 1680 */,
-    std::pair{ "pixelExportColor(f32,literal u32)", &PixelExportColor_Float32_UInt32 } /* 1681 */,
-    std::pair{ "pixelExportColor(f32x2,literal i16)", &PixelExportColor_Float32x2_Int16 } /* 1682 */,
-    std::pair{ "pixelExportColor(f32x2,literal i32)", &PixelExportColor_Float32x2_Int32 } /* 1683 */,
-    std::pair{ "pixelExportColor(f32x2,literal u16)", &PixelExportColor_Float32x2_UInt16 } /* 1684 */,
-    std::pair{ "pixelExportColor(f32x2,literal u32)", &PixelExportColor_Float32x2_UInt32 } /* 1685 */,
-    std::pair{ "pixelExportColor(f32x3,literal i16)", &PixelExportColor_Float32x3_Int16 } /* 1686 */,
-    std::pair{ "pixelExportColor(f32x3,literal i32)", &PixelExportColor_Float32x3_Int32 } /* 1687 */,
-    std::pair{ "pixelExportColor(f32x3,literal u16)", &PixelExportColor_Float32x3_UInt16 } /* 1688 */,
-    std::pair{ "pixelExportColor(f32x3,literal u32)", &PixelExportColor_Float32x3_UInt32 } /* 1689 */,
-    std::pair{ "pixelExportColor(f32x4,literal i16)", &PixelExportColor_Float32x4_Int16 } /* 1690 */,
-    std::pair{ "pixelExportColor(f32x4,literal i32)", &PixelExportColor_Float32x4_Int32 } /* 1691 */,
-    std::pair{ "pixelExportColor(f32x4,literal u16)", &PixelExportColor_Float32x4_UInt16 } /* 1692 */,
-    std::pair{ "pixelExportColor(f32x4,literal u32)", &PixelExportColor_Float32x4_UInt32 } /* 1693 */,
-    std::pair{ "pixelExportColor(i16,literal i16)", &PixelExportColor_Int16_Int16 } /* 1694 */,
-    std::pair{ "pixelExportColor(i16,literal i32)", &PixelExportColor_Int16_Int32 } /* 1695 */,
-    std::pair{ "pixelExportColor(i16,literal u16)", &PixelExportColor_Int16_UInt16 } /* 1696 */,
-    std::pair{ "pixelExportColor(i16,literal u32)", &PixelExportColor_Int16_UInt32 } /* 1697 */,
-    std::pair{ "pixelExportColor(i16x2,literal i16)", &PixelExportColor_Int16x2_Int16 } /* 1698 */,
-    std::pair{ "pixelExportColor(i16x2,literal i32)", &PixelExportColor_Int16x2_Int32 } /* 1699 */,
-    std::pair{ "pixelExportColor(i16x2,literal u16)", &PixelExportColor_Int16x2_UInt16 } /* 1700 */,
-    std::pair{ "pixelExportColor(i16x2,literal u32)", &PixelExportColor_Int16x2_UInt32 } /* 1701 */,
-    std::pair{ "pixelExportColor(i16x3,literal i16)", &PixelExportColor_Int16x3_Int16 } /* 1702 */,
-    std::pair{ "pixelExportColor(i16x3,literal i32)", &PixelExportColor_Int16x3_Int32 } /* 1703 */,
-    std::pair{ "pixelExportColor(i16x3,literal u16)", &PixelExportColor_Int16x3_UInt16 } /* 1704 */,
-    std::pair{ "pixelExportColor(i16x3,literal u32)", &PixelExportColor_Int16x3_UInt32 } /* 1705 */,
-    std::pair{ "pixelExportColor(i16x4,literal i16)", &PixelExportColor_Int16x4_Int16 } /* 1706 */,
-    std::pair{ "pixelExportColor(i16x4,literal i32)", &PixelExportColor_Int16x4_Int32 } /* 1707 */,
-    std::pair{ "pixelExportColor(i16x4,literal u16)", &PixelExportColor_Int16x4_UInt16 } /* 1708 */,
-    std::pair{ "pixelExportColor(i16x4,literal u32)", &PixelExportColor_Int16x4_UInt32 } /* 1709 */,
-    std::pair{ "pixelExportColor(i32,literal i16)", &PixelExportColor_Int32_Int16 } /* 1710 */,
-    std::pair{ "pixelExportColor(i32,literal i32)", &PixelExportColor_Int32_Int32 } /* 1711 */,
-    std::pair{ "pixelExportColor(i32,literal u16)", &PixelExportColor_Int32_UInt16 } /* 1712 */,
-    std::pair{ "pixelExportColor(i32,literal u32)", &PixelExportColor_Int32_UInt32 } /* 1713 */,
-    std::pair{ "pixelExportColor(i32x2,literal i16)", &PixelExportColor_Int32x2_Int16 } /* 1714 */,
-    std::pair{ "pixelExportColor(i32x2,literal i32)", &PixelExportColor_Int32x2_Int32 } /* 1715 */,
-    std::pair{ "pixelExportColor(i32x2,literal u16)", &PixelExportColor_Int32x2_UInt16 } /* 1716 */,
-    std::pair{ "pixelExportColor(i32x2,literal u32)", &PixelExportColor_Int32x2_UInt32 } /* 1717 */,
-    std::pair{ "pixelExportColor(i32x3,literal i16)", &PixelExportColor_Int32x3_Int16 } /* 1718 */,
-    std::pair{ "pixelExportColor(i32x3,literal i32)", &PixelExportColor_Int32x3_Int32 } /* 1719 */,
-    std::pair{ "pixelExportColor(i32x3,literal u16)", &PixelExportColor_Int32x3_UInt16 } /* 1720 */,
-    std::pair{ "pixelExportColor(i32x3,literal u32)", &PixelExportColor_Int32x3_UInt32 } /* 1721 */,
-    std::pair{ "pixelExportColor(i32x4,literal i16)", &PixelExportColor_Int32x4_Int16 } /* 1722 */,
-    std::pair{ "pixelExportColor(i32x4,literal i32)", &PixelExportColor_Int32x4_Int32 } /* 1723 */,
-    std::pair{ "pixelExportColor(i32x4,literal u16)", &PixelExportColor_Int32x4_UInt16 } /* 1724 */,
-    std::pair{ "pixelExportColor(i32x4,literal u32)", &PixelExportColor_Int32x4_UInt32 } /* 1725 */,
-    std::pair{ "pixelExportColor(u16,literal i16)", &PixelExportColor_UInt16_Int16 } /* 1726 */,
-    std::pair{ "pixelExportColor(u16,literal i32)", &PixelExportColor_UInt16_Int32 } /* 1727 */,
-    std::pair{ "pixelExportColor(u16,literal u16)", &PixelExportColor_UInt16_UInt16 } /* 1728 */,
-    std::pair{ "pixelExportColor(u16,literal u32)", &PixelExportColor_UInt16_UInt32 } /* 1729 */,
-    std::pair{ "pixelExportColor(u16x2,literal i16)", &PixelExportColor_UInt16x2_Int16 } /* 1730 */,
-    std::pair{ "pixelExportColor(u16x2,literal i32)", &PixelExportColor_UInt16x2_Int32 } /* 1731 */,
-    std::pair{ "pixelExportColor(u16x2,literal u16)", &PixelExportColor_UInt16x2_UInt16 } /* 1732 */,
-    std::pair{ "pixelExportColor(u16x2,literal u32)", &PixelExportColor_UInt16x2_UInt32 } /* 1733 */,
-    std::pair{ "pixelExportColor(u16x3,literal i16)", &PixelExportColor_UInt16x3_Int16 } /* 1734 */,
-    std::pair{ "pixelExportColor(u16x3,literal i32)", &PixelExportColor_UInt16x3_Int32 } /* 1735 */,
-    std::pair{ "pixelExportColor(u16x3,literal u16)", &PixelExportColor_UInt16x3_UInt16 } /* 1736 */,
-    std::pair{ "pixelExportColor(u16x3,literal u32)", &PixelExportColor_UInt16x3_UInt32 } /* 1737 */,
-    std::pair{ "pixelExportColor(u16x4,literal i16)", &PixelExportColor_UInt16x4_Int16 } /* 1738 */,
-    std::pair{ "pixelExportColor(u16x4,literal i32)", &PixelExportColor_UInt16x4_Int32 } /* 1739 */,
-    std::pair{ "pixelExportColor(u16x4,literal u16)", &PixelExportColor_UInt16x4_UInt16 } /* 1740 */,
-    std::pair{ "pixelExportColor(u16x4,literal u32)", &PixelExportColor_UInt16x4_UInt32 } /* 1741 */,
-    std::pair{ "pixelExportColor(u32,literal i16)", &PixelExportColor_UInt32_Int16 } /* 1742 */,
-    std::pair{ "pixelExportColor(u32,literal i32)", &PixelExportColor_UInt32_Int32 } /* 1743 */,
-    std::pair{ "pixelExportColor(u32,literal u16)", &PixelExportColor_UInt32_UInt16 } /* 1744 */,
-    std::pair{ "pixelExportColor(u32,literal u32)", &PixelExportColor_UInt32_UInt32 } /* 1745 */,
-    std::pair{ "pixelExportColor(u32x2,literal i16)", &PixelExportColor_UInt32x2_Int16 } /* 1746 */,
-    std::pair{ "pixelExportColor(u32x2,literal i32)", &PixelExportColor_UInt32x2_Int32 } /* 1747 */,
-    std::pair{ "pixelExportColor(u32x2,literal u16)", &PixelExportColor_UInt32x2_UInt16 } /* 1748 */,
-    std::pair{ "pixelExportColor(u32x2,literal u32)", &PixelExportColor_UInt32x2_UInt32 } /* 1749 */,
-    std::pair{ "pixelExportColor(u32x3,literal i16)", &PixelExportColor_UInt32x3_Int16 } /* 1750 */,
-    std::pair{ "pixelExportColor(u32x3,literal i32)", &PixelExportColor_UInt32x3_Int32 } /* 1751 */,
-    std::pair{ "pixelExportColor(u32x3,literal u16)", &PixelExportColor_UInt32x3_UInt16 } /* 1752 */,
-    std::pair{ "pixelExportColor(u32x3,literal u32)", &PixelExportColor_UInt32x3_UInt32 } /* 1753 */,
-    std::pair{ "pixelExportColor(u32x4,literal i16)", &PixelExportColor_UInt32x4_Int16 } /* 1754 */,
-    std::pair{ "pixelExportColor(u32x4,literal i32)", &PixelExportColor_UInt32x4_Int32 } /* 1755 */,
-    std::pair{ "pixelExportColor(u32x4,literal u16)", &PixelExportColor_UInt32x4_UInt16 } /* 1756 */,
-    std::pair{ "pixelExportColor(u32x4,literal u32)", &PixelExportColor_UInt32x4_UInt32 } /* 1757 */,
-    std::pair{ "pixelGetCoordinates", &PixelGetCoordinates_Float32x4 } /* 1758 */,
-    std::pair{ "pixelGetCoordinates", &PixelGetCoordinates_Float16x4 } /* 1759 */,
-    std::pair{ "pixelGetCoordinates()", &PixelGetCoordinates_Float32x4 } /* 1760 */,
-    std::pair{ "pixelGetCoordinates()", &PixelGetCoordinates_Float16x4 } /* 1761 */,
-    std::pair{ "pixelGetDepth", &PixelGetDepth } /* 1762 */,
-    std::pair{ "pixelGetDepth()", &PixelGetDepth } /* 1763 */,
-    std::pair{ "pixelSetDepth", &PixelSetDepth } /* 1764 */,
-    std::pair{ "pixelSetDepth(f32)", &PixelSetDepth } /* 1765 */,
-    std::pair{ "pow", &pow_Float32 } /* 1766 */,
-    std::pair{ "pow", &pow_Float32x2 } /* 1767 */,
-    std::pair{ "pow", &pow_Float32x3 } /* 1768 */,
-    std::pair{ "pow", &pow_Float32x4 } /* 1769 */,
-    std::pair{ "pow", &pow_Float16 } /* 1770 */,
-    std::pair{ "pow", &pow_Float16x2 } /* 1771 */,
-    std::pair{ "pow", &pow_Float16x3 } /* 1772 */,
-    std::pair{ "pow", &pow_Float16x4 } /* 1773 */,
-    std::pair{ "pow(f16,f16)", &pow_Float16 } /* 1774 */,
-    std::pair{ "pow(f16x2,f16x2)", &pow_Float16x2 } /* 1775 */,
-    std::pair{ "pow(f16x3,f16x3)", &pow_Float16x3 } /* 1776 */,
-    std::pair{ "pow(f16x4,f16x4)", &pow_Float16x4 } /* 1777 */,
-    std::pair{ "pow(f32,f32)", &pow_Float32 } /* 1778 */,
-    std::pair{ "pow(f32x2,f32x2)", &pow_Float32x2 } /* 1779 */,
-    std::pair{ "pow(f32x3,f32x3)", &pow_Float32x3 } /* 1780 */,
-    std::pair{ "pow(f32x4,f32x4)", &pow_Float32x4 } /* 1781 */,
-    std::pair{ "reflect", &reflect_Float32x2 } /* 1782 */,
-    std::pair{ "reflect", &reflect_Float32x3 } /* 1783 */,
-    std::pair{ "reflect", &reflect_Float32x4 } /* 1784 */,
-    std::pair{ "reflect", &reflect_Float16x2 } /* 1785 */,
-    std::pair{ "reflect", &reflect_Float16x3 } /* 1786 */,
-    std::pair{ "reflect", &reflect_Float16x4 } /* 1787 */,
-    std::pair{ "reflect(f16x2,f16x2)", &reflect_Float16x2 } /* 1788 */,
-    std::pair{ "reflect(f16x3,f16x3)", &reflect_Float16x3 } /* 1789 */,
-    std::pair{ "reflect(f16x4,f16x4)", &reflect_Float16x4 } /* 1790 */,
-    std::pair{ "reflect(f32x2,f32x2)", &reflect_Float32x2 } /* 1791 */,
-    std::pair{ "reflect(f32x3,f32x3)", &reflect_Float32x3 } /* 1792 */,
-    std::pair{ "reflect(f32x4,f32x4)", &reflect_Float32x4 } /* 1793 */,
-    std::pair{ "refract", &refract_Float32x2 } /* 1794 */,
-    std::pair{ "refract", &refract_Float32x3 } /* 1795 */,
-    std::pair{ "refract", &refract_Float32x4 } /* 1796 */,
-    std::pair{ "refract", &refract_Float16x2 } /* 1797 */,
-    std::pair{ "refract", &refract_Float16x3 } /* 1798 */,
-    std::pair{ "refract", &refract_Float16x4 } /* 1799 */,
-    std::pair{ "refract(f16x2,f16x2,f16x2)", &refract_Float16x2 } /* 1800 */,
-    std::pair{ "refract(f16x3,f16x3,f16x3)", &refract_Float16x3 } /* 1801 */,
-    std::pair{ "refract(f16x4,f16x4,f16x4)", &refract_Float16x4 } /* 1802 */,
-    std::pair{ "refract(f32x2,f32x2,f32x2)", &refract_Float32x2 } /* 1803 */,
-    std::pair{ "refract(f32x3,f32x3,f32x3)", &refract_Float32x3 } /* 1804 */,
-    std::pair{ "refract(f32x4,f32x4,f32x4)", &refract_Float32x4 } /* 1805 */,
-    std::pair{ "sampler", &SamplerType } /* 1806 */,
-    std::pair{ "saturate", &saturate_Float32 } /* 1807 */,
-    std::pair{ "saturate", &saturate_Float32x2 } /* 1808 */,
-    std::pair{ "saturate", &saturate_Float32x3 } /* 1809 */,
-    std::pair{ "saturate", &saturate_Float32x4 } /* 1810 */,
-    std::pair{ "saturate", &saturate_Float16 } /* 1811 */,
-    std::pair{ "saturate", &saturate_Float16x2 } /* 1812 */,
-    std::pair{ "saturate", &saturate_Float16x3 } /* 1813 */,
-    std::pair{ "saturate", &saturate_Float16x4 } /* 1814 */,
-    std::pair{ "saturate(f16)", &saturate_Float16 } /* 1815 */,
-    std::pair{ "saturate(f16x2)", &saturate_Float16x2 } /* 1816 */,
-    std::pair{ "saturate(f16x3)", &saturate_Float16x3 } /* 1817 */,
-    std::pair{ "saturate(f16x4)", &saturate_Float16x4 } /* 1818 */,
-    std::pair{ "saturate(f32)", &saturate_Float32 } /* 1819 */,
-    std::pair{ "saturate(f32x2)", &saturate_Float32x2 } /* 1820 */,
-    std::pair{ "saturate(f32x3)", &saturate_Float32x3 } /* 1821 */,
-    std::pair{ "saturate(f32x4)", &saturate_Float32x4 } /* 1822 */,
-    std::pair{ "sign", &sign_Int32 } /* 1823 */,
-    std::pair{ "sign", &sign_Int32x2 } /* 1824 */,
-    std::pair{ "sign", &sign_Int32x3 } /* 1825 */,
-    std::pair{ "sign", &sign_Int32x4 } /* 1826 */,
-    std::pair{ "sign", &sign_Int16 } /* 1827 */,
-    std::pair{ "sign", &sign_Int16x2 } /* 1828 */,
-    std::pair{ "sign", &sign_Int16x3 } /* 1829 */,
-    std::pair{ "sign", &sign_Int16x4 } /* 1830 */,
-    std::pair{ "sign", &sign_Float32 } /* 1831 */,
-    std::pair{ "sign", &sign_Float32x2 } /* 1832 */,
-    std::pair{ "sign", &sign_Float32x3 } /* 1833 */,
-    std::pair{ "sign", &sign_Float32x4 } /* 1834 */,
-    std::pair{ "sign", &sign_Float16 } /* 1835 */,
-    std::pair{ "sign", &sign_Float16x2 } /* 1836 */,
-    std::pair{ "sign", &sign_Float16x3 } /* 1837 */,
-    std::pair{ "sign", &sign_Float16x4 } /* 1838 */,
-    std::pair{ "sign(f16)", &sign_Float16 } /* 1839 */,
-    std::pair{ "sign(f16x2)", &sign_Float16x2 } /* 1840 */,
-    std::pair{ "sign(f16x3)", &sign_Float16x3 } /* 1841 */,
-    std::pair{ "sign(f16x4)", &sign_Float16x4 } /* 1842 */,
-    std::pair{ "sign(f32)", &sign_Float32 } /* 1843 */,
-    std::pair{ "sign(f32x2)", &sign_Float32x2 } /* 1844 */,
-    std::pair{ "sign(f32x3)", &sign_Float32x3 } /* 1845 */,
-    std::pair{ "sign(f32x4)", &sign_Float32x4 } /* 1846 */,
-    std::pair{ "sign(i16)", &sign_Int16 } /* 1847 */,
-    std::pair{ "sign(i16x2)", &sign_Int16x2 } /* 1848 */,
-    std::pair{ "sign(i16x3)", &sign_Int16x3 } /* 1849 */,
-    std::pair{ "sign(i16x4)", &sign_Int16x4 } /* 1850 */,
-    std::pair{ "sign(i32)", &sign_Int32 } /* 1851 */,
-    std::pair{ "sign(i32x2)", &sign_Int32x2 } /* 1852 */,
-    std::pair{ "sign(i32x3)", &sign_Int32x3 } /* 1853 */,
-    std::pair{ "sign(i32x4)", &sign_Int32x4 } /* 1854 */,
-    std::pair{ "sin", &sin_Float32 } /* 1855 */,
-    std::pair{ "sin", &sin_Float32x2 } /* 1856 */,
-    std::pair{ "sin", &sin_Float32x3 } /* 1857 */,
-    std::pair{ "sin", &sin_Float32x4 } /* 1858 */,
-    std::pair{ "sin", &sin_Float16 } /* 1859 */,
-    std::pair{ "sin", &sin_Float16x2 } /* 1860 */,
-    std::pair{ "sin", &sin_Float16x3 } /* 1861 */,
-    std::pair{ "sin", &sin_Float16x4 } /* 1862 */,
-    std::pair{ "sin(f16)", &sin_Float16 } /* 1863 */,
-    std::pair{ "sin(f16x2)", &sin_Float16x2 } /* 1864 */,
-    std::pair{ "sin(f16x3)", &sin_Float16x3 } /* 1865 */,
-    std::pair{ "sin(f16x4)", &sin_Float16x4 } /* 1866 */,
-    std::pair{ "sin(f32)", &sin_Float32 } /* 1867 */,
-    std::pair{ "sin(f32x2)", &sin_Float32x2 } /* 1868 */,
-    std::pair{ "sin(f32x3)", &sin_Float32x3 } /* 1869 */,
-    std::pair{ "sin(f32x4)", &sin_Float32x4 } /* 1870 */,
-    std::pair{ "sinh", &sinh_Float32 } /* 1871 */,
-    std::pair{ "sinh", &sinh_Float32x2 } /* 1872 */,
-    std::pair{ "sinh", &sinh_Float32x3 } /* 1873 */,
-    std::pair{ "sinh", &sinh_Float32x4 } /* 1874 */,
-    std::pair{ "sinh", &sinh_Float16 } /* 1875 */,
-    std::pair{ "sinh", &sinh_Float16x2 } /* 1876 */,
-    std::pair{ "sinh", &sinh_Float16x3 } /* 1877 */,
-    std::pair{ "sinh", &sinh_Float16x4 } /* 1878 */,
-    std::pair{ "sinh(f16)", &sinh_Float16 } /* 1879 */,
-    std::pair{ "sinh(f16x2)", &sinh_Float16x2 } /* 1880 */,
-    std::pair{ "sinh(f16x3)", &sinh_Float16x3 } /* 1881 */,
-    std::pair{ "sinh(f16x4)", &sinh_Float16x4 } /* 1882 */,
-    std::pair{ "sinh(f32)", &sinh_Float32 } /* 1883 */,
-    std::pair{ "sinh(f32x2)", &sinh_Float32x2 } /* 1884 */,
-    std::pair{ "sinh(f32x3)", &sinh_Float32x3 } /* 1885 */,
-    std::pair{ "sinh(f32x4)", &sinh_Float32x4 } /* 1886 */,
-    std::pair{ "smoothstep", &smoothstep_Float32 } /* 1887 */,
-    std::pair{ "smoothstep", &smoothstep_Float32x2 } /* 1888 */,
-    std::pair{ "smoothstep", &smoothstep_Float32x3 } /* 1889 */,
-    std::pair{ "smoothstep", &smoothstep_Float32x4 } /* 1890 */,
-    std::pair{ "smoothstep", &smoothstep_Float16 } /* 1891 */,
-    std::pair{ "smoothstep", &smoothstep_Float16x2 } /* 1892 */,
-    std::pair{ "smoothstep", &smoothstep_Float16x3 } /* 1893 */,
-    std::pair{ "smoothstep", &smoothstep_Float16x4 } /* 1894 */,
-    std::pair{ "smoothstep(f16,f16,f16)", &smoothstep_Float16 } /* 1895 */,
-    std::pair{ "smoothstep(f16x2,f16x2,f16x2)", &smoothstep_Float16x2 } /* 1896 */,
-    std::pair{ "smoothstep(f16x3,f16x3,f16x3)", &smoothstep_Float16x3 } /* 1897 */,
-    std::pair{ "smoothstep(f16x4,f16x4,f16x4)", &smoothstep_Float16x4 } /* 1898 */,
-    std::pair{ "smoothstep(f32,f32,f32)", &smoothstep_Float32 } /* 1899 */,
-    std::pair{ "smoothstep(f32x2,f32x2,f32x2)", &smoothstep_Float32x2 } /* 1900 */,
-    std::pair{ "smoothstep(f32x3,f32x3,f32x3)", &smoothstep_Float32x3 } /* 1901 */,
-    std::pair{ "smoothstep(f32x4,f32x4,f32x4)", &smoothstep_Float32x4 } /* 1902 */,
-    std::pair{ "sqrt", &sqrt_Float32 } /* 1903 */,
-    std::pair{ "sqrt", &sqrt_Float32x2 } /* 1904 */,
-    std::pair{ "sqrt", &sqrt_Float32x3 } /* 1905 */,
-    std::pair{ "sqrt", &sqrt_Float32x4 } /* 1906 */,
-    std::pair{ "sqrt", &sqrt_Float16 } /* 1907 */,
-    std::pair{ "sqrt", &sqrt_Float16x2 } /* 1908 */,
-    std::pair{ "sqrt", &sqrt_Float16x3 } /* 1909 */,
-    std::pair{ "sqrt", &sqrt_Float16x4 } /* 1910 */,
-    std::pair{ "sqrt(f16)", &sqrt_Float16 } /* 1911 */,
-    std::pair{ "sqrt(f16x2)", &sqrt_Float16x2 } /* 1912 */,
-    std::pair{ "sqrt(f16x3)", &sqrt_Float16x3 } /* 1913 */,
-    std::pair{ "sqrt(f16x4)", &sqrt_Float16x4 } /* 1914 */,
-    std::pair{ "sqrt(f32)", &sqrt_Float32 } /* 1915 */,
-    std::pair{ "sqrt(f32x2)", &sqrt_Float32x2 } /* 1916 */,
-    std::pair{ "sqrt(f32x3)", &sqrt_Float32x3 } /* 1917 */,
-    std::pair{ "sqrt(f32x4)", &sqrt_Float32x4 } /* 1918 */,
-    std::pair{ "step", &step_Float32 } /* 1919 */,
-    std::pair{ "step", &step_Float32x2 } /* 1920 */,
-    std::pair{ "step", &step_Float32x3 } /* 1921 */,
-    std::pair{ "step", &step_Float32x4 } /* 1922 */,
-    std::pair{ "step", &step_Float16 } /* 1923 */,
-    std::pair{ "step", &step_Float16x2 } /* 1924 */,
-    std::pair{ "step", &step_Float16x3 } /* 1925 */,
-    std::pair{ "step", &step_Float16x4 } /* 1926 */,
-    std::pair{ "step(f16,f16)", &step_Float16 } /* 1927 */,
-    std::pair{ "step(f16x2,f16x2)", &step_Float16x2 } /* 1928 */,
-    std::pair{ "step(f16x3,f16x3)", &step_Float16x3 } /* 1929 */,
-    std::pair{ "step(f16x4,f16x4)", &step_Float16x4 } /* 1930 */,
-    std::pair{ "step(f32,f32)", &step_Float32 } /* 1931 */,
-    std::pair{ "step(f32x2,f32x2)", &step_Float32x2 } /* 1932 */,
-    std::pair{ "step(f32x3,f32x3)", &step_Float32x3 } /* 1933 */,
-    std::pair{ "step(f32x4,f32x4)", &step_Float32x4 } /* 1934 */,
-    std::pair{ "subgroupBallot", &SubgroupBallot } /* 1935 */,
-    std::pair{ "subgroupBallot(b8)", &SubgroupBallot } /* 1936 */,
-    std::pair{ "subgroupBallotBit", &SubgroupBallotBit } /* 1937 */,
-    std::pair{ "subgroupBallotBit(u32x4,literal u32)", &SubgroupBallotBit } /* 1938 */,
-    std::pair{ "subgroupBallotBitCount", &SubgroupBallotBitCount } /* 1939 */,
-    std::pair{ "subgroupBallotBitCount(u32x4)", &SubgroupBallotBitCount } /* 1940 */,
-    std::pair{ "subgroupBallotFirstOne", &SubgroupBallotFirstOne } /* 1941 */,
-    std::pair{ "subgroupBallotFirstOne(u32x4)", &SubgroupBallotFirstOne } /* 1942 */,
-    std::pair{ "subgroupBallotLastOne", &SubgroupBallotLastOne } /* 1943 */,
-    std::pair{ "subgroupBallotLastOne(u32x4)", &SubgroupBallotLastOne } /* 1944 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Float32 } /* 1945 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Float32x2 } /* 1946 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Float32x3 } /* 1947 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Float32x4 } /* 1948 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Float16 } /* 1949 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Float16x2 } /* 1950 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Float16x3 } /* 1951 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Float16x4 } /* 1952 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Int32 } /* 1953 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Int32x2 } /* 1954 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Int32x3 } /* 1955 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Int32x4 } /* 1956 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Int16 } /* 1957 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Int16x2 } /* 1958 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Int16x3 } /* 1959 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Int16x4 } /* 1960 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_UInt32 } /* 1961 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_UInt32x2 } /* 1962 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_UInt32x3 } /* 1963 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_UInt32x4 } /* 1964 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_UInt16 } /* 1965 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_UInt16x2 } /* 1966 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_UInt16x3 } /* 1967 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_UInt16x4 } /* 1968 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread(f16)", &SubgroupBroadcastFirstActiveThread_Float16 } /* 1969 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread(f16x2)", &SubgroupBroadcastFirstActiveThread_Float16x2 } /* 1970 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread(f16x3)", &SubgroupBroadcastFirstActiveThread_Float16x3 } /* 1971 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread(f16x4)", &SubgroupBroadcastFirstActiveThread_Float16x4 } /* 1972 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread(f32)", &SubgroupBroadcastFirstActiveThread_Float32 } /* 1973 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread(f32x2)", &SubgroupBroadcastFirstActiveThread_Float32x2 } /* 1974 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread(f32x3)", &SubgroupBroadcastFirstActiveThread_Float32x3 } /* 1975 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread(f32x4)", &SubgroupBroadcastFirstActiveThread_Float32x4 } /* 1976 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread(i16)", &SubgroupBroadcastFirstActiveThread_Int16 } /* 1977 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread(i16x2)", &SubgroupBroadcastFirstActiveThread_Int16x2 } /* 1978 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread(i16x3)", &SubgroupBroadcastFirstActiveThread_Int16x3 } /* 1979 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread(i16x4)", &SubgroupBroadcastFirstActiveThread_Int16x4 } /* 1980 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread(i32)", &SubgroupBroadcastFirstActiveThread_Int32 } /* 1981 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread(i32x2)", &SubgroupBroadcastFirstActiveThread_Int32x2 } /* 1982 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread(i32x3)", &SubgroupBroadcastFirstActiveThread_Int32x3 } /* 1983 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread(i32x4)", &SubgroupBroadcastFirstActiveThread_Int32x4 } /* 1984 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread(u16)", &SubgroupBroadcastFirstActiveThread_UInt16 } /* 1985 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread(u16x2)", &SubgroupBroadcastFirstActiveThread_UInt16x2 } /* 1986 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread(u16x3)", &SubgroupBroadcastFirstActiveThread_UInt16x3 } /* 1987 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread(u16x4)", &SubgroupBroadcastFirstActiveThread_UInt16x4 } /* 1988 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread(u32)", &SubgroupBroadcastFirstActiveThread_UInt32 } /* 1989 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread(u32x2)", &SubgroupBroadcastFirstActiveThread_UInt32x2 } /* 1990 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread(u32x3)", &SubgroupBroadcastFirstActiveThread_UInt32x3 } /* 1991 */,
-    std::pair{ "subgroupBroadcastFirstActiveThread(u32x4)", &SubgroupBroadcastFirstActiveThread_UInt32x4 } /* 1992 */,
-    std::pair{ "subgroupGetFirstActiveThread", &SubgroupGetFirstActiveThread } /* 1993 */,
-    std::pair{ "subgroupGetFirstActiveThread()", &SubgroupGetFirstActiveThread } /* 1994 */,
-    std::pair{ "subgroupGetGreaterMask", &SubgroupGetGreaterMask } /* 1995 */,
-    std::pair{ "subgroupGetGreaterMask()", &SubgroupGetGreaterMask } /* 1996 */,
-    std::pair{ "subgroupGetId", &SubgroupGetId } /* 1997 */,
-    std::pair{ "subgroupGetId()", &SubgroupGetId } /* 1998 */,
-    std::pair{ "subgroupGetLowerMask", &SubgroupGetLowerMask } /* 1999 */,
-    std::pair{ "subgroupGetLowerMask()", &SubgroupGetLowerMask } /* 2000 */,
-    std::pair{ "subgroupGetNum", &SubgroupGetNum } /* 2001 */,
-    std::pair{ "subgroupGetNum()", &SubgroupGetNum } /* 2002 */,
-    std::pair{ "subgroupGetSize", &SubgroupGetSize } /* 2003 */,
-    std::pair{ "subgroupGetSize()", &SubgroupGetSize } /* 2004 */,
-    std::pair{ "subgroupGetThreadAndGreaterMask", &SubgroupGetThreadAndGreaterMask } /* 2005 */,
-    std::pair{ "subgroupGetThreadAndGreaterMask()", &SubgroupGetThreadAndGreaterMask } /* 2006 */,
-    std::pair{ "subgroupGetThreadAndLowerMask", &SubgroupGetThreadAndLowerMask } /* 2007 */,
-    std::pair{ "subgroupGetThreadAndLowerMask()", &SubgroupGetThreadAndLowerMask } /* 2008 */,
-    std::pair{ "subgroupGetThreadMask", &SubgroupGetThreadMask } /* 2009 */,
-    std::pair{ "subgroupGetThreadMask()", &SubgroupGetThreadMask } /* 2010 */,
-    std::pair{ "subgroupInverseBallot", &SubgroupInverseBallot } /* 2011 */,
-    std::pair{ "subgroupInverseBallot(b8)", &SubgroupInverseBallot } /* 2012 */,
-    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Float32 } /* 2013 */,
-    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Float32x2 } /* 2014 */,
-    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Float32x3 } /* 2015 */,
-    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Float32x4 } /* 2016 */,
-    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Float16 } /* 2017 */,
-    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Float16x2 } /* 2018 */,
-    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Float16x3 } /* 2019 */,
-    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Float16x4 } /* 2020 */,
-    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Int32 } /* 2021 */,
-    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Int32x2 } /* 2022 */,
-    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Int32x3 } /* 2023 */,
-    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Int32x4 } /* 2024 */,
-    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Int16 } /* 2025 */,
-    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Int16x2 } /* 2026 */,
-    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Int16x3 } /* 2027 */,
-    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Int16x4 } /* 2028 */,
-    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_UInt32 } /* 2029 */,
-    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_UInt32x2 } /* 2030 */,
-    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_UInt32x3 } /* 2031 */,
-    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_UInt32x4 } /* 2032 */,
-    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_UInt16 } /* 2033 */,
-    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_UInt16x2 } /* 2034 */,
-    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_UInt16x3 } /* 2035 */,
-    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_UInt16x4 } /* 2036 */,
-    std::pair{ "subgroupSwapDiagonal(f16)", &SubgroupSwapDiagonal_Float16 } /* 2037 */,
-    std::pair{ "subgroupSwapDiagonal(f16x2)", &SubgroupSwapDiagonal_Float16x2 } /* 2038 */,
-    std::pair{ "subgroupSwapDiagonal(f16x3)", &SubgroupSwapDiagonal_Float16x3 } /* 2039 */,
-    std::pair{ "subgroupSwapDiagonal(f16x4)", &SubgroupSwapDiagonal_Float16x4 } /* 2040 */,
-    std::pair{ "subgroupSwapDiagonal(f32)", &SubgroupSwapDiagonal_Float32 } /* 2041 */,
-    std::pair{ "subgroupSwapDiagonal(f32x2)", &SubgroupSwapDiagonal_Float32x2 } /* 2042 */,
-    std::pair{ "subgroupSwapDiagonal(f32x3)", &SubgroupSwapDiagonal_Float32x3 } /* 2043 */,
-    std::pair{ "subgroupSwapDiagonal(f32x4)", &SubgroupSwapDiagonal_Float32x4 } /* 2044 */,
-    std::pair{ "subgroupSwapDiagonal(i16)", &SubgroupSwapDiagonal_Int16 } /* 2045 */,
-    std::pair{ "subgroupSwapDiagonal(i16x2)", &SubgroupSwapDiagonal_Int16x2 } /* 2046 */,
-    std::pair{ "subgroupSwapDiagonal(i16x3)", &SubgroupSwapDiagonal_Int16x3 } /* 2047 */,
-    std::pair{ "subgroupSwapDiagonal(i16x4)", &SubgroupSwapDiagonal_Int16x4 } /* 2048 */,
-    std::pair{ "subgroupSwapDiagonal(i32)", &SubgroupSwapDiagonal_Int32 } /* 2049 */,
-    std::pair{ "subgroupSwapDiagonal(i32x2)", &SubgroupSwapDiagonal_Int32x2 } /* 2050 */,
-    std::pair{ "subgroupSwapDiagonal(i32x3)", &SubgroupSwapDiagonal_Int32x3 } /* 2051 */,
-    std::pair{ "subgroupSwapDiagonal(i32x4)", &SubgroupSwapDiagonal_Int32x4 } /* 2052 */,
-    std::pair{ "subgroupSwapDiagonal(u16)", &SubgroupSwapDiagonal_UInt16 } /* 2053 */,
-    std::pair{ "subgroupSwapDiagonal(u16x2)", &SubgroupSwapDiagonal_UInt16x2 } /* 2054 */,
-    std::pair{ "subgroupSwapDiagonal(u16x3)", &SubgroupSwapDiagonal_UInt16x3 } /* 2055 */,
-    std::pair{ "subgroupSwapDiagonal(u16x4)", &SubgroupSwapDiagonal_UInt16x4 } /* 2056 */,
-    std::pair{ "subgroupSwapDiagonal(u32)", &SubgroupSwapDiagonal_UInt32 } /* 2057 */,
-    std::pair{ "subgroupSwapDiagonal(u32x2)", &SubgroupSwapDiagonal_UInt32x2 } /* 2058 */,
-    std::pair{ "subgroupSwapDiagonal(u32x3)", &SubgroupSwapDiagonal_UInt32x3 } /* 2059 */,
-    std::pair{ "subgroupSwapDiagonal(u32x4)", &SubgroupSwapDiagonal_UInt32x4 } /* 2060 */,
-    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Float32 } /* 2061 */,
-    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Float32x2 } /* 2062 */,
-    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Float32x3 } /* 2063 */,
-    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Float32x4 } /* 2064 */,
-    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Float16 } /* 2065 */,
-    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Float16x2 } /* 2066 */,
-    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Float16x3 } /* 2067 */,
-    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Float16x4 } /* 2068 */,
-    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Int32 } /* 2069 */,
-    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Int32x2 } /* 2070 */,
-    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Int32x3 } /* 2071 */,
-    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Int32x4 } /* 2072 */,
-    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Int16 } /* 2073 */,
-    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Int16x2 } /* 2074 */,
-    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Int16x3 } /* 2075 */,
-    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Int16x4 } /* 2076 */,
-    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_UInt32 } /* 2077 */,
-    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_UInt32x2 } /* 2078 */,
-    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_UInt32x3 } /* 2079 */,
-    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_UInt32x4 } /* 2080 */,
-    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_UInt16 } /* 2081 */,
-    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_UInt16x2 } /* 2082 */,
-    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_UInt16x3 } /* 2083 */,
-    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_UInt16x4 } /* 2084 */,
-    std::pair{ "subgroupSwapHorizontal(f16)", &SubgroupSwapHorizontal_Float16 } /* 2085 */,
-    std::pair{ "subgroupSwapHorizontal(f16x2)", &SubgroupSwapHorizontal_Float16x2 } /* 2086 */,
-    std::pair{ "subgroupSwapHorizontal(f16x3)", &SubgroupSwapHorizontal_Float16x3 } /* 2087 */,
-    std::pair{ "subgroupSwapHorizontal(f16x4)", &SubgroupSwapHorizontal_Float16x4 } /* 2088 */,
-    std::pair{ "subgroupSwapHorizontal(f32)", &SubgroupSwapHorizontal_Float32 } /* 2089 */,
-    std::pair{ "subgroupSwapHorizontal(f32x2)", &SubgroupSwapHorizontal_Float32x2 } /* 2090 */,
-    std::pair{ "subgroupSwapHorizontal(f32x3)", &SubgroupSwapHorizontal_Float32x3 } /* 2091 */,
-    std::pair{ "subgroupSwapHorizontal(f32x4)", &SubgroupSwapHorizontal_Float32x4 } /* 2092 */,
-    std::pair{ "subgroupSwapHorizontal(i16)", &SubgroupSwapHorizontal_Int16 } /* 2093 */,
-    std::pair{ "subgroupSwapHorizontal(i16x2)", &SubgroupSwapHorizontal_Int16x2 } /* 2094 */,
-    std::pair{ "subgroupSwapHorizontal(i16x3)", &SubgroupSwapHorizontal_Int16x3 } /* 2095 */,
-    std::pair{ "subgroupSwapHorizontal(i16x4)", &SubgroupSwapHorizontal_Int16x4 } /* 2096 */,
-    std::pair{ "subgroupSwapHorizontal(i32)", &SubgroupSwapHorizontal_Int32 } /* 2097 */,
-    std::pair{ "subgroupSwapHorizontal(i32x2)", &SubgroupSwapHorizontal_Int32x2 } /* 2098 */,
-    std::pair{ "subgroupSwapHorizontal(i32x3)", &SubgroupSwapHorizontal_Int32x3 } /* 2099 */,
-    std::pair{ "subgroupSwapHorizontal(i32x4)", &SubgroupSwapHorizontal_Int32x4 } /* 2100 */,
-    std::pair{ "subgroupSwapHorizontal(u16)", &SubgroupSwapHorizontal_UInt16 } /* 2101 */,
-    std::pair{ "subgroupSwapHorizontal(u16x2)", &SubgroupSwapHorizontal_UInt16x2 } /* 2102 */,
-    std::pair{ "subgroupSwapHorizontal(u16x3)", &SubgroupSwapHorizontal_UInt16x3 } /* 2103 */,
-    std::pair{ "subgroupSwapHorizontal(u16x4)", &SubgroupSwapHorizontal_UInt16x4 } /* 2104 */,
-    std::pair{ "subgroupSwapHorizontal(u32)", &SubgroupSwapHorizontal_UInt32 } /* 2105 */,
-    std::pair{ "subgroupSwapHorizontal(u32x2)", &SubgroupSwapHorizontal_UInt32x2 } /* 2106 */,
-    std::pair{ "subgroupSwapHorizontal(u32x3)", &SubgroupSwapHorizontal_UInt32x3 } /* 2107 */,
-    std::pair{ "subgroupSwapHorizontal(u32x4)", &SubgroupSwapHorizontal_UInt32x4 } /* 2108 */,
-    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Float32 } /* 2109 */,
-    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Float32x2 } /* 2110 */,
-    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Float32x3 } /* 2111 */,
-    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Float32x4 } /* 2112 */,
-    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Float16 } /* 2113 */,
-    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Float16x2 } /* 2114 */,
-    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Float16x3 } /* 2115 */,
-    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Float16x4 } /* 2116 */,
-    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Int32 } /* 2117 */,
-    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Int32x2 } /* 2118 */,
-    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Int32x3 } /* 2119 */,
-    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Int32x4 } /* 2120 */,
-    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Int16 } /* 2121 */,
-    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Int16x2 } /* 2122 */,
-    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Int16x3 } /* 2123 */,
-    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Int16x4 } /* 2124 */,
-    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_UInt32 } /* 2125 */,
-    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_UInt32x2 } /* 2126 */,
-    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_UInt32x3 } /* 2127 */,
-    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_UInt32x4 } /* 2128 */,
-    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_UInt16 } /* 2129 */,
-    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_UInt16x2 } /* 2130 */,
-    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_UInt16x3 } /* 2131 */,
-    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_UInt16x4 } /* 2132 */,
-    std::pair{ "subgroupSwapVertical(f16)", &SubgroupSwapVertical_Float16 } /* 2133 */,
-    std::pair{ "subgroupSwapVertical(f16x2)", &SubgroupSwapVertical_Float16x2 } /* 2134 */,
-    std::pair{ "subgroupSwapVertical(f16x3)", &SubgroupSwapVertical_Float16x3 } /* 2135 */,
-    std::pair{ "subgroupSwapVertical(f16x4)", &SubgroupSwapVertical_Float16x4 } /* 2136 */,
-    std::pair{ "subgroupSwapVertical(f32)", &SubgroupSwapVertical_Float32 } /* 2137 */,
-    std::pair{ "subgroupSwapVertical(f32x2)", &SubgroupSwapVertical_Float32x2 } /* 2138 */,
-    std::pair{ "subgroupSwapVertical(f32x3)", &SubgroupSwapVertical_Float32x3 } /* 2139 */,
-    std::pair{ "subgroupSwapVertical(f32x4)", &SubgroupSwapVertical_Float32x4 } /* 2140 */,
-    std::pair{ "subgroupSwapVertical(i16)", &SubgroupSwapVertical_Int16 } /* 2141 */,
-    std::pair{ "subgroupSwapVertical(i16x2)", &SubgroupSwapVertical_Int16x2 } /* 2142 */,
-    std::pair{ "subgroupSwapVertical(i16x3)", &SubgroupSwapVertical_Int16x3 } /* 2143 */,
-    std::pair{ "subgroupSwapVertical(i16x4)", &SubgroupSwapVertical_Int16x4 } /* 2144 */,
-    std::pair{ "subgroupSwapVertical(i32)", &SubgroupSwapVertical_Int32 } /* 2145 */,
-    std::pair{ "subgroupSwapVertical(i32x2)", &SubgroupSwapVertical_Int32x2 } /* 2146 */,
-    std::pair{ "subgroupSwapVertical(i32x3)", &SubgroupSwapVertical_Int32x3 } /* 2147 */,
-    std::pair{ "subgroupSwapVertical(i32x4)", &SubgroupSwapVertical_Int32x4 } /* 2148 */,
-    std::pair{ "subgroupSwapVertical(u16)", &SubgroupSwapVertical_UInt16 } /* 2149 */,
-    std::pair{ "subgroupSwapVertical(u16x2)", &SubgroupSwapVertical_UInt16x2 } /* 2150 */,
-    std::pair{ "subgroupSwapVertical(u16x3)", &SubgroupSwapVertical_UInt16x3 } /* 2151 */,
-    std::pair{ "subgroupSwapVertical(u16x4)", &SubgroupSwapVertical_UInt16x4 } /* 2152 */,
-    std::pair{ "subgroupSwapVertical(u32)", &SubgroupSwapVertical_UInt32 } /* 2153 */,
-    std::pair{ "subgroupSwapVertical(u32x2)", &SubgroupSwapVertical_UInt32x2 } /* 2154 */,
-    std::pair{ "subgroupSwapVertical(u32x3)", &SubgroupSwapVertical_UInt32x3 } /* 2155 */,
-    std::pair{ "subgroupSwapVertical(u32x4)", &SubgroupSwapVertical_UInt32x4 } /* 2156 */,
-    std::pair{ "tan", &tan_Float32 } /* 2157 */,
-    std::pair{ "tan", &tan_Float32x2 } /* 2158 */,
-    std::pair{ "tan", &tan_Float32x3 } /* 2159 */,
-    std::pair{ "tan", &tan_Float32x4 } /* 2160 */,
-    std::pair{ "tan", &tan_Float16 } /* 2161 */,
-    std::pair{ "tan", &tan_Float16x2 } /* 2162 */,
-    std::pair{ "tan", &tan_Float16x3 } /* 2163 */,
-    std::pair{ "tan", &tan_Float16x4 } /* 2164 */,
-    std::pair{ "tan(f16)", &tan_Float16 } /* 2165 */,
-    std::pair{ "tan(f16x2)", &tan_Float16x2 } /* 2166 */,
-    std::pair{ "tan(f16x3)", &tan_Float16x3 } /* 2167 */,
-    std::pair{ "tan(f16x4)", &tan_Float16x4 } /* 2168 */,
-    std::pair{ "tan(f32)", &tan_Float32 } /* 2169 */,
-    std::pair{ "tan(f32x2)", &tan_Float32x2 } /* 2170 */,
-    std::pair{ "tan(f32x3)", &tan_Float32x3 } /* 2171 */,
-    std::pair{ "tan(f32x4)", &tan_Float32x4 } /* 2172 */,
-    std::pair{ "tanh", &tanh_Float32 } /* 2173 */,
-    std::pair{ "tanh", &tanh_Float32x2 } /* 2174 */,
-    std::pair{ "tanh", &tanh_Float32x3 } /* 2175 */,
-    std::pair{ "tanh", &tanh_Float32x4 } /* 2176 */,
-    std::pair{ "tanh", &tanh_Float16 } /* 2177 */,
-    std::pair{ "tanh", &tanh_Float16x2 } /* 2178 */,
-    std::pair{ "tanh", &tanh_Float16x3 } /* 2179 */,
-    std::pair{ "tanh", &tanh_Float16x4 } /* 2180 */,
-    std::pair{ "tanh", &atan2_Float32 } /* 2181 */,
-    std::pair{ "tanh", &atan2_Float32x2 } /* 2182 */,
-    std::pair{ "tanh", &atan2_Float32x3 } /* 2183 */,
-    std::pair{ "tanh", &atan2_Float32x4 } /* 2184 */,
-    std::pair{ "tanh", &atan2_Float16 } /* 2185 */,
-    std::pair{ "tanh", &atan2_Float16x2 } /* 2186 */,
-    std::pair{ "tanh", &atan2_Float16x3 } /* 2187 */,
-    std::pair{ "tanh", &atan2_Float16x4 } /* 2188 */,
-    std::pair{ "tanh(f16)", &tanh_Float16 } /* 2189 */,
-    std::pair{ "tanh(f16,f16)", &atan2_Float16 } /* 2190 */,
-    std::pair{ "tanh(f16x2)", &tanh_Float16x2 } /* 2191 */,
-    std::pair{ "tanh(f16x2,f16x2)", &atan2_Float16x2 } /* 2192 */,
-    std::pair{ "tanh(f16x3)", &tanh_Float16x3 } /* 2193 */,
-    std::pair{ "tanh(f16x3,f16x3)", &atan2_Float16x3 } /* 2194 */,
-    std::pair{ "tanh(f16x4)", &tanh_Float16x4 } /* 2195 */,
-    std::pair{ "tanh(f16x4,f16x4)", &atan2_Float16x4 } /* 2196 */,
-    std::pair{ "tanh(f32)", &tanh_Float32 } /* 2197 */,
-    std::pair{ "tanh(f32,f32)", &atan2_Float32 } /* 2198 */,
-    std::pair{ "tanh(f32x2)", &tanh_Float32x2 } /* 2199 */,
-    std::pair{ "tanh(f32x2,f32x2)", &atan2_Float32x2 } /* 2200 */,
-    std::pair{ "tanh(f32x3)", &tanh_Float32x3 } /* 2201 */,
-    std::pair{ "tanh(f32x3,f32x3)", &atan2_Float32x3 } /* 2202 */,
-    std::pair{ "tanh(f32x4)", &tanh_Float32x4 } /* 2203 */,
-    std::pair{ "tanh(f32x4,f32x4)", &atan2_Float32x4 } /* 2204 */,
-    std::pair{ "texture1D", &Texture1DType } /* 2205 */,
-    std::pair{ "texture1DArray", &Texture1DArrayType } /* 2206 */,
-    std::pair{ "texture2D", &Texture2DType } /* 2207 */,
-    std::pair{ "texture2DArray", &Texture2DArrayType } /* 2208 */,
-    std::pair{ "texture2DMS", &Texture2DMSType } /* 2209 */,
-    std::pair{ "texture2DMSArray", &Texture2DMSArrayType } /* 2210 */,
-    std::pair{ "texture3D", &Texture3DType } /* 2211 */,
-    std::pair{ "textureCube", &TextureCubeType } /* 2212 */,
-    std::pair{ "textureCubeArray", &TextureCubeArrayType } /* 2213 */,
-    std::pair{ "textureFetch", &TextureFetch_Texture1D } /* 2214 */,
-    std::pair{ "textureFetch", &TextureFetch_Texture2D } /* 2215 */,
-    std::pair{ "textureFetch", &TextureFetch_Texture3D } /* 2216 */,
-    std::pair{ "textureFetch", &TextureFetch_Texture1DArray } /* 2217 */,
-    std::pair{ "textureFetch", &TextureFetch_Texture2DArray } /* 2218 */,
-    std::pair{ "textureFetch", &TextureFetch_Texture2DMS } /* 2219 */,
-    std::pair{ "textureFetch", &TextureFetch_Texture2DMSArray } /* 2220 */,
-    std::pair{ "textureFetch(uniform *texture1D,i32,u32)", &TextureFetch_Texture1D } /* 2221 */,
-    std::pair{ "textureFetch(uniform *texture1DArray,i32x2,u32)", &TextureFetch_Texture1DArray } /* 2222 */,
-    std::pair{ "textureFetch(uniform *texture2D,i32x2,u32)", &TextureFetch_Texture2D } /* 2223 */,
-    std::pair{ "textureFetch(uniform *texture2DArray,i32x3,u32)", &TextureFetch_Texture2DArray } /* 2224 */,
-    std::pair{ "textureFetch(uniform *texture2DMS,i32x2,u32)", &TextureFetch_Texture2DMS } /* 2225 */,
-    std::pair{ "textureFetch(uniform *texture2DMSArray,i32x3,u32)", &TextureFetch_Texture2DMSArray } /* 2226 */,
-    std::pair{ "textureFetch(uniform *texture3D,i32x3,u32)", &TextureFetch_Texture3D } /* 2227 */,
-    std::pair{ "textureFetchSample", &TextureFetchSample_Texture1D } /* 2228 */,
-    std::pair{ "textureFetchSample", &TextureFetchSample_Texture2D } /* 2229 */,
-    std::pair{ "textureFetchSample", &TextureFetchSample_Texture3D } /* 2230 */,
-    std::pair{ "textureFetchSample", &TextureFetchSample_Texture1DArray } /* 2231 */,
-    std::pair{ "textureFetchSample", &TextureFetchSample_Texture2DArray } /* 2232 */,
-    std::pair{ "textureFetchSample", &TextureFetchSample_Texture2DMS } /* 2233 */,
-    std::pair{ "textureFetchSample", &TextureFetchSample_Texture2DMSArray } /* 2234 */,
-    std::pair{ "textureFetchSample(uniform *texture1D,i32,u32,u32)", &TextureFetchSample_Texture1D } /* 2235 */,
-    std::pair{ "textureFetchSample(uniform *texture1DArray,i32x2,u32,u32)", &TextureFetchSample_Texture1DArray } /* 2236 */,
-    std::pair{ "textureFetchSample(uniform *texture2D,i32x2,u32,u32)", &TextureFetchSample_Texture2D } /* 2237 */,
-    std::pair{ "textureFetchSample(uniform *texture2DArray,i32x3,u32,u32)", &TextureFetchSample_Texture2DArray } /* 2238 */,
-    std::pair{ "textureFetchSample(uniform *texture2DMS,i32x2,u32,u32)", &TextureFetchSample_Texture2DMS } /* 2239 */,
-    std::pair{ "textureFetchSample(uniform *texture2DMSArray,i32x3,u32,u32)", &TextureFetchSample_Texture2DMSArray } /* 2240 */,
-    std::pair{ "textureFetchSample(uniform *texture3D,i32x3,u32,u32)", &TextureFetchSample_Texture3D } /* 2241 */,
-    std::pair{ "textureGather", &TextureGather_Texture2D } /* 2242 */,
-    std::pair{ "textureGather", &SampledTextureGather_Texture2D } /* 2243 */,
-    std::pair{ "textureGather", &TextureGather_TextureCube } /* 2244 */,
-    std::pair{ "textureGather", &SampledTextureGather_TextureCube } /* 2245 */,
-    std::pair{ "textureGather", &TextureGather_Texture2DArray } /* 2246 */,
-    std::pair{ "textureGather", &SampledTextureGather_Texture2DArray } /* 2247 */,
-    std::pair{ "textureGather", &TextureGather_TextureCubeArray } /* 2248 */,
-    std::pair{ "textureGather", &SampledTextureGather_TextureCubeArray } /* 2249 */,
-    std::pair{ "textureGather(uniform *texture2D,uniform *sampler,i32x2,i32)", &TextureGather_Texture2D } /* 2250 */,
-    std::pair{ "textureGather(uniform *texture2DArray,uniform *sampler,i32x3,i32)", &TextureGather_Texture2DArray } /* 2251 */,
-    std::pair{ "textureGather(uniform *textureCube,uniform *sampler,i32x3,i32)", &TextureGather_TextureCube } /* 2252 */,
-    std::pair{ "textureGather(uniform *textureCubeArray,uniform *sampler,i32x4,i32)", &TextureGather_TextureCubeArray } /* 2253 */,
-    std::pair{ "textureGather(uniform *textureSampled2D,i32x2,i32)", &SampledTextureGather_Texture2D } /* 2254 */,
-    std::pair{ "textureGather(uniform *textureSampled2DArray,i32x3,i32)", &SampledTextureGather_Texture2DArray } /* 2255 */,
-    std::pair{ "textureGather(uniform *textureSampledCube,i32x3,i32)", &SampledTextureGather_TextureCube } /* 2256 */,
-    std::pair{ "textureGather(uniform *textureSampledCubeArray,i32x4,i32)", &SampledTextureGather_TextureCubeArray } /* 2257 */,
-    std::pair{ "textureGatherOffset", &TextureGatherOffset_Texture2D } /* 2258 */,
-    std::pair{ "textureGatherOffset", &SampledTextureGatherOffset_Texture2D } /* 2259 */,
-    std::pair{ "textureGatherOffset", &TextureGatherOffset_TextureCube } /* 2260 */,
-    std::pair{ "textureGatherOffset", &SampledTextureGatherOffset_TextureCube } /* 2261 */,
-    std::pair{ "textureGatherOffset", &TextureGatherOffset_Texture2DArray } /* 2262 */,
-    std::pair{ "textureGatherOffset", &SampledTextureGatherOffset_Texture2DArray } /* 2263 */,
-    std::pair{ "textureGatherOffset", &TextureGatherOffset_TextureCubeArray } /* 2264 */,
-    std::pair{ "textureGatherOffset", &SampledTextureGatherOffset_TextureCubeArray } /* 2265 */,
-    std::pair{ "textureGatherOffset(uniform *texture2D,uniform *sampler,i32x2,i32,u32)", &TextureGatherOffset_Texture2D } /* 2266 */,
-    std::pair{ "textureGatherOffset(uniform *texture2DArray,uniform *sampler,i32x3,i32,u32)", &TextureGatherOffset_Texture2DArray } /* 2267 */,
-    std::pair{ "textureGatherOffset(uniform *textureCube,uniform *sampler,i32x3,i32,u32)", &TextureGatherOffset_TextureCube } /* 2268 */,
-    std::pair{ "textureGatherOffset(uniform *textureCubeArray,uniform *sampler,i32x4,i32,u32)", &TextureGatherOffset_TextureCubeArray } /* 2269 */,
-    std::pair{ "textureGatherOffset(uniform *textureSampled2D,i32x2,i32,u32)", &SampledTextureGatherOffset_Texture2D } /* 2270 */,
-    std::pair{ "textureGatherOffset(uniform *textureSampled2DArray,i32x3,i32,u32)", &SampledTextureGatherOffset_Texture2DArray } /* 2271 */,
-    std::pair{ "textureGatherOffset(uniform *textureSampledCube,i32x3,i32,u32)", &SampledTextureGatherOffset_TextureCube } /* 2272 */,
-    std::pair{ "textureGatherOffset(uniform *textureSampledCubeArray,i32x4,i32,u32)", &SampledTextureGatherOffset_TextureCubeArray } /* 2273 */,
-    std::pair{ "textureGetMips", &TextureGetMips_Texture1D } /* 2274 */,
-    std::pair{ "textureGetMips", &TextureGetMips_Texture2D } /* 2275 */,
-    std::pair{ "textureGetMips", &TextureGetMips_Texture3D } /* 2276 */,
-    std::pair{ "textureGetMips", &TextureGetMips_TextureCube } /* 2277 */,
-    std::pair{ "textureGetMips", &TextureGetMips_Texture1DArray } /* 2278 */,
-    std::pair{ "textureGetMips", &TextureGetMips_Texture2DArray } /* 2279 */,
-    std::pair{ "textureGetMips", &TextureGetMips_TextureCubeArray } /* 2280 */,
-    std::pair{ "textureGetMips(uniform *texture1D)", &TextureGetMips_Texture1D } /* 2281 */,
-    std::pair{ "textureGetMips(uniform *texture1DArray)", &TextureGetMips_Texture1DArray } /* 2282 */,
-    std::pair{ "textureGetMips(uniform *texture2D)", &TextureGetMips_Texture2D } /* 2283 */,
-    std::pair{ "textureGetMips(uniform *texture2DArray)", &TextureGetMips_Texture2DArray } /* 2284 */,
-    std::pair{ "textureGetMips(uniform *texture3D)", &TextureGetMips_Texture3D } /* 2285 */,
-    std::pair{ "textureGetMips(uniform *textureCube)", &TextureGetMips_TextureCube } /* 2286 */,
-    std::pair{ "textureGetMips(uniform *textureCubeArray)", &TextureGetMips_TextureCubeArray } /* 2287 */,
-    std::pair{ "textureGetSampledMip", &TextureGetSampledMip_Texture1D } /* 2288 */,
-    std::pair{ "textureGetSampledMip", &SampledTextureGetSampledMip_Texture1D } /* 2289 */,
-    std::pair{ "textureGetSampledMip", &TextureGetSampledMip_Texture2D } /* 2290 */,
-    std::pair{ "textureGetSampledMip", &SampledTextureGetSampledMip_Texture2D } /* 2291 */,
-    std::pair{ "textureGetSampledMip", &TextureGetSampledMip_Texture3D } /* 2292 */,
-    std::pair{ "textureGetSampledMip", &SampledTextureGetSampledMip_Texture3D } /* 2293 */,
-    std::pair{ "textureGetSampledMip", &TextureGetSampledMip_TextureCube } /* 2294 */,
-    std::pair{ "textureGetSampledMip", &SampledTextureGetSampledMip_TextureCube } /* 2295 */,
-    std::pair{ "textureGetSampledMip", &TextureGetSampledMip_Texture1DArray } /* 2296 */,
-    std::pair{ "textureGetSampledMip", &SampledTextureGetSampledMip_Texture1DArray } /* 2297 */,
-    std::pair{ "textureGetSampledMip", &TextureGetSampledMip_Texture2DArray } /* 2298 */,
-    std::pair{ "textureGetSampledMip", &SampledTextureGetSampledMip_Texture2DArray } /* 2299 */,
-    std::pair{ "textureGetSampledMip", &TextureGetSampledMip_TextureCubeArray } /* 2300 */,
-    std::pair{ "textureGetSampledMip", &SampledTextureGetSampledMip_TextureCubeArray } /* 2301 */,
-    std::pair{ "textureGetSampledMip(uniform *texture1D,uniform *sampler,f32)", &TextureGetSampledMip_Texture1D } /* 2302 */,
-    std::pair{ "textureGetSampledMip(uniform *texture1DArray,uniform *sampler,f32x2)", &TextureGetSampledMip_Texture1DArray } /* 2303 */,
-    std::pair{ "textureGetSampledMip(uniform *texture2D,uniform *sampler,f32x2)", &TextureGetSampledMip_Texture2D } /* 2304 */,
-    std::pair{ "textureGetSampledMip(uniform *texture2DArray,uniform *sampler,f32x3)", &TextureGetSampledMip_Texture2DArray } /* 2305 */,
-    std::pair{ "textureGetSampledMip(uniform *texture3D,uniform *sampler,f32x3)", &TextureGetSampledMip_Texture3D } /* 2306 */,
-    std::pair{ "textureGetSampledMip(uniform *textureCube,uniform *sampler,f32x3)", &TextureGetSampledMip_TextureCube } /* 2307 */,
-    std::pair{ "textureGetSampledMip(uniform *textureCubeArray,uniform *sampler,f32x4)", &TextureGetSampledMip_TextureCubeArray } /* 2308 */,
-    std::pair{ "textureGetSampledMip(uniform *textureSampled1D,f32)", &SampledTextureGetSampledMip_Texture1D } /* 2309 */,
-    std::pair{ "textureGetSampledMip(uniform *textureSampled1DArray,f32x2)", &SampledTextureGetSampledMip_Texture1DArray } /* 2310 */,
-    std::pair{ "textureGetSampledMip(uniform *textureSampled2D,f32x2)", &SampledTextureGetSampledMip_Texture2D } /* 2311 */,
-    std::pair{ "textureGetSampledMip(uniform *textureSampled2DArray,f32x3)", &SampledTextureGetSampledMip_Texture2DArray } /* 2312 */,
-    std::pair{ "textureGetSampledMip(uniform *textureSampled3D,f32x3)", &SampledTextureGetSampledMip_Texture3D } /* 2313 */,
-    std::pair{ "textureGetSampledMip(uniform *textureSampledCube,f32x3)", &SampledTextureGetSampledMip_TextureCube } /* 2314 */,
-    std::pair{ "textureGetSampledMip(uniform *textureSampledCubeArray,f32x4)", &SampledTextureGetSampledMip_TextureCubeArray } /* 2315 */,
-    std::pair{ "textureGetSamples", &TextureGetSamples_Texture2DMS } /* 2316 */,
-    std::pair{ "textureGetSamples", &TextureGetSamples_Texture2DMSArray } /* 2317 */,
-    std::pair{ "textureGetSamples(uniform *texture2DMS)", &TextureGetSamples_Texture2DMS } /* 2318 */,
-    std::pair{ "textureGetSamples(uniform *texture2DMSArray)", &TextureGetSamples_Texture2DMSArray } /* 2319 */,
-    std::pair{ "textureGetSize", &TextureGetSize_Texture1D } /* 2320 */,
-    std::pair{ "textureGetSize", &TextureGetSize_Texture2D } /* 2321 */,
-    std::pair{ "textureGetSize", &TextureGetSize_Texture3D } /* 2322 */,
-    std::pair{ "textureGetSize", &TextureGetSize_TextureCube } /* 2323 */,
-    std::pair{ "textureGetSize", &TextureGetSize_Texture1DArray } /* 2324 */,
-    std::pair{ "textureGetSize", &TextureGetSize_Texture2DArray } /* 2325 */,
-    std::pair{ "textureGetSize", &TextureGetSize_TextureCubeArray } /* 2326 */,
-    std::pair{ "textureGetSize(uniform *texture1D)", &TextureGetSize_Texture1D } /* 2327 */,
-    std::pair{ "textureGetSize(uniform *texture1DArray)", &TextureGetSize_Texture1DArray } /* 2328 */,
-    std::pair{ "textureGetSize(uniform *texture2D)", &TextureGetSize_Texture2D } /* 2329 */,
-    std::pair{ "textureGetSize(uniform *texture2DArray)", &TextureGetSize_Texture2DArray } /* 2330 */,
-    std::pair{ "textureGetSize(uniform *texture3D)", &TextureGetSize_Texture3D } /* 2331 */,
-    std::pair{ "textureGetSize(uniform *textureCube)", &TextureGetSize_TextureCube } /* 2332 */,
-    std::pair{ "textureGetSize(uniform *textureCubeArray)", &TextureGetSize_TextureCubeArray } /* 2333 */,
-    std::pair{ "textureGetSizeMip", &TextureGetSizeMip_Texture1D } /* 2334 */,
-    std::pair{ "textureGetSizeMip", &TextureGetSizeMip_Texture2D } /* 2335 */,
-    std::pair{ "textureGetSizeMip", &TextureGetSizeMip_Texture3D } /* 2336 */,
-    std::pair{ "textureGetSizeMip", &TextureGetSizeMip_TextureCube } /* 2337 */,
-    std::pair{ "textureGetSizeMip", &TextureGetSizeMip_Texture1DArray } /* 2338 */,
-    std::pair{ "textureGetSizeMip", &TextureGetSizeMip_Texture2DArray } /* 2339 */,
-    std::pair{ "textureGetSizeMip", &TextureGetSizeMip_TextureCubeArray } /* 2340 */,
-    std::pair{ "textureGetSizeMip(uniform *texture1D,u32)", &TextureGetSizeMip_Texture1D } /* 2341 */,
-    std::pair{ "textureGetSizeMip(uniform *texture1DArray,u32)", &TextureGetSizeMip_Texture1DArray } /* 2342 */,
-    std::pair{ "textureGetSizeMip(uniform *texture2D,u32)", &TextureGetSizeMip_Texture2D } /* 2343 */,
-    std::pair{ "textureGetSizeMip(uniform *texture2DArray,u32)", &TextureGetSizeMip_Texture2DArray } /* 2344 */,
-    std::pair{ "textureGetSizeMip(uniform *texture3D,u32)", &TextureGetSizeMip_Texture3D } /* 2345 */,
-    std::pair{ "textureGetSizeMip(uniform *textureCube,u32)", &TextureGetSizeMip_TextureCube } /* 2346 */,
-    std::pair{ "textureGetSizeMip(uniform *textureCubeArray,u32)", &TextureGetSizeMip_TextureCubeArray } /* 2347 */,
-    std::pair{ "textureLoad", &TextureLoad_Texture1D } /* 2348 */,
-    std::pair{ "textureLoad", &TextureLoad_Texture2D } /* 2349 */,
-    std::pair{ "textureLoad", &TextureLoad_Texture3D } /* 2350 */,
-    std::pair{ "textureLoad", &TextureLoad_TextureCube } /* 2351 */,
-    std::pair{ "textureLoad", &TextureLoad_Texture1DArray } /* 2352 */,
-    std::pair{ "textureLoad", &TextureLoad_Texture2DArray } /* 2353 */,
-    std::pair{ "textureLoad", &TextureLoad_TextureCubeArray } /* 2354 */,
-    std::pair{ "textureLoad", &TextureLoad_Texture2DMS } /* 2355 */,
-    std::pair{ "textureLoad", &TextureLoad_Texture2DMSArray } /* 2356 */,
-    std::pair{ "textureLoad(uniform *mutable texture1D,i32)", &TextureLoad_Texture1D } /* 2357 */,
-    std::pair{ "textureLoad(uniform *mutable texture1DArray,i32x2)", &TextureLoad_Texture1DArray } /* 2358 */,
-    std::pair{ "textureLoad(uniform *mutable texture2D,i32x2)", &TextureLoad_Texture2D } /* 2359 */,
-    std::pair{ "textureLoad(uniform *mutable texture2DArray,i32x3)", &TextureLoad_Texture2DArray } /* 2360 */,
-    std::pair{ "textureLoad(uniform *mutable texture2DMS,i32x2)", &TextureLoad_Texture2DMS } /* 2361 */,
-    std::pair{ "textureLoad(uniform *mutable texture2DMSArray,i32x3)", &TextureLoad_Texture2DMSArray } /* 2362 */,
-    std::pair{ "textureLoad(uniform *mutable texture3D,i32x3)", &TextureLoad_Texture3D } /* 2363 */,
-    std::pair{ "textureLoad(uniform *mutable textureCube,i32x3)", &TextureLoad_TextureCube } /* 2364 */,
-    std::pair{ "textureLoad(uniform *mutable textureCubeArray,i32x4)", &TextureLoad_TextureCubeArray } /* 2365 */,
-    std::pair{ "textureLoadMip", &TextureLoadMip_Texture1D } /* 2366 */,
-    std::pair{ "textureLoadMip", &TextureLoadMip_Texture2D } /* 2367 */,
-    std::pair{ "textureLoadMip", &TextureLoadMip_Texture3D } /* 2368 */,
-    std::pair{ "textureLoadMip", &TextureLoadMip_TextureCube } /* 2369 */,
-    std::pair{ "textureLoadMip", &TextureLoadMip_Texture1DArray } /* 2370 */,
-    std::pair{ "textureLoadMip", &TextureLoadMip_Texture2DArray } /* 2371 */,
-    std::pair{ "textureLoadMip", &TextureLoadMip_TextureCubeArray } /* 2372 */,
-    std::pair{ "textureLoadMip", &TextureLoadMip_Texture2DMS } /* 2373 */,
-    std::pair{ "textureLoadMip", &TextureLoadMip_Texture2DMSArray } /* 2374 */,
-    std::pair{ "textureLoadMip(uniform *mutable texture1D,i32,i32)", &TextureLoadMip_Texture1D } /* 2375 */,
-    std::pair{ "textureLoadMip(uniform *mutable texture1DArray,i32x2,i32)", &TextureLoadMip_Texture1DArray } /* 2376 */,
-    std::pair{ "textureLoadMip(uniform *mutable texture2D,i32x2,i32)", &TextureLoadMip_Texture2D } /* 2377 */,
-    std::pair{ "textureLoadMip(uniform *mutable texture2DArray,i32x3,i32)", &TextureLoadMip_Texture2DArray } /* 2378 */,
-    std::pair{ "textureLoadMip(uniform *mutable texture2DMS,i32x2,i32)", &TextureLoadMip_Texture2DMS } /* 2379 */,
-    std::pair{ "textureLoadMip(uniform *mutable texture2DMSArray,i32x3,i32)", &TextureLoadMip_Texture2DMSArray } /* 2380 */,
-    std::pair{ "textureLoadMip(uniform *mutable texture3D,i32x3,i32)", &TextureLoadMip_Texture3D } /* 2381 */,
-    std::pair{ "textureLoadMip(uniform *mutable textureCube,i32x3,i32)", &TextureLoadMip_TextureCube } /* 2382 */,
-    std::pair{ "textureLoadMip(uniform *mutable textureCubeArray,i32x4,i32)", &TextureLoadMip_TextureCubeArray } /* 2383 */,
-    std::pair{ "texturePixelCacheLoad", &TexturePixelCacheLoad_PixelCache } /* 2384 */,
-    std::pair{ "texturePixelCacheLoad", &TexturePixelCacheLoad_PixelCacheMS } /* 2385 */,
-    std::pair{ "texturePixelCacheLoad(uniform *pixelCache)", &TexturePixelCacheLoad_PixelCache } /* 2386 */,
-    std::pair{ "texturePixelCacheLoad(uniform *pixelCacheMS,u32)", &TexturePixelCacheLoad_PixelCacheMS } /* 2387 */,
-    std::pair{ "textureSample", &TextureSample_Texture1D } /* 2388 */,
-    std::pair{ "textureSample", &SampledTextureSample_Texture1D } /* 2389 */,
-    std::pair{ "textureSample", &TextureSample_Texture2D } /* 2390 */,
-    std::pair{ "textureSample", &SampledTextureSample_Texture2D } /* 2391 */,
-    std::pair{ "textureSample", &TextureSample_Texture3D } /* 2392 */,
-    std::pair{ "textureSample", &SampledTextureSample_Texture3D } /* 2393 */,
-    std::pair{ "textureSample", &TextureSample_TextureCube } /* 2394 */,
-    std::pair{ "textureSample", &SampledTextureSample_TextureCube } /* 2395 */,
-    std::pair{ "textureSample", &TextureSample_Texture1DArray } /* 2396 */,
-    std::pair{ "textureSample", &SampledTextureSample_Texture1DArray } /* 2397 */,
-    std::pair{ "textureSample", &TextureSample_Texture2DArray } /* 2398 */,
-    std::pair{ "textureSample", &SampledTextureSample_Texture2DArray } /* 2399 */,
-    std::pair{ "textureSample", &TextureSample_TextureCubeArray } /* 2400 */,
-    std::pair{ "textureSample", &SampledTextureSample_TextureCubeArray } /* 2401 */,
-    std::pair{ "textureSample(uniform *texture1D,uniform *sampler,f32)", &TextureSample_Texture1D } /* 2402 */,
-    std::pair{ "textureSample(uniform *texture1DArray,uniform *sampler,f32x2)", &TextureSample_Texture1DArray } /* 2403 */,
-    std::pair{ "textureSample(uniform *texture2D,uniform *sampler,f32x2)", &TextureSample_Texture2D } /* 2404 */,
-    std::pair{ "textureSample(uniform *texture2DArray,uniform *sampler,f32x3)", &TextureSample_Texture2DArray } /* 2405 */,
-    std::pair{ "textureSample(uniform *texture3D,uniform *sampler,f32x3)", &TextureSample_Texture3D } /* 2406 */,
-    std::pair{ "textureSample(uniform *textureCube,uniform *sampler,f32x3)", &TextureSample_TextureCube } /* 2407 */,
-    std::pair{ "textureSample(uniform *textureCubeArray,uniform *sampler,f32x4)", &TextureSample_TextureCubeArray } /* 2408 */,
-    std::pair{ "textureSample(uniform *textureSampled1D,f32)", &SampledTextureSample_Texture1D } /* 2409 */,
-    std::pair{ "textureSample(uniform *textureSampled1DArray,f32x2)", &SampledTextureSample_Texture1DArray } /* 2410 */,
-    std::pair{ "textureSample(uniform *textureSampled2D,f32x2)", &SampledTextureSample_Texture2D } /* 2411 */,
-    std::pair{ "textureSample(uniform *textureSampled2DArray,f32x3)", &SampledTextureSample_Texture2DArray } /* 2412 */,
-    std::pair{ "textureSample(uniform *textureSampled3D,f32x3)", &SampledTextureSample_Texture3D } /* 2413 */,
-    std::pair{ "textureSample(uniform *textureSampledCube,f32x3)", &SampledTextureSample_TextureCube } /* 2414 */,
-    std::pair{ "textureSample(uniform *textureSampledCubeArray,f32x4)", &SampledTextureSample_TextureCubeArray } /* 2415 */,
-    std::pair{ "textureSampleBias", &TextureSampleBias_Texture1D } /* 2416 */,
-    std::pair{ "textureSampleBias", &SampledTextureSampleBias_Texture1D } /* 2417 */,
-    std::pair{ "textureSampleBias", &TextureSampleBias_Texture2D } /* 2418 */,
-    std::pair{ "textureSampleBias", &SampledTextureSampleBias_Texture2D } /* 2419 */,
-    std::pair{ "textureSampleBias", &TextureSampleBias_Texture3D } /* 2420 */,
-    std::pair{ "textureSampleBias", &SampledTextureSampleBias_Texture3D } /* 2421 */,
-    std::pair{ "textureSampleBias", &TextureSampleBias_TextureCube } /* 2422 */,
-    std::pair{ "textureSampleBias", &SampledTextureSampleBias_TextureCube } /* 2423 */,
-    std::pair{ "textureSampleBias", &TextureSampleBias_Texture1DArray } /* 2424 */,
-    std::pair{ "textureSampleBias", &SampledTextureSampleBias_Texture1DArray } /* 2425 */,
-    std::pair{ "textureSampleBias", &TextureSampleBias_Texture2DArray } /* 2426 */,
-    std::pair{ "textureSampleBias", &SampledTextureSampleBias_Texture2DArray } /* 2427 */,
-    std::pair{ "textureSampleBias", &TextureSampleBias_TextureCubeArray } /* 2428 */,
-    std::pair{ "textureSampleBias", &SampledTextureSampleBias_TextureCubeArray } /* 2429 */,
-    std::pair{ "textureSampleBias(uniform *texture1D,uniform *sampler,f32,f32)", &TextureSampleBias_Texture1D } /* 2430 */,
-    std::pair{ "textureSampleBias(uniform *texture1DArray,uniform *sampler,f32x2,f32)", &TextureSampleBias_Texture1DArray } /* 2431 */,
-    std::pair{ "textureSampleBias(uniform *texture2D,uniform *sampler,f32x2,f32)", &TextureSampleBias_Texture2D } /* 2432 */,
-    std::pair{ "textureSampleBias(uniform *texture2DArray,uniform *sampler,f32x3,f32)", &TextureSampleBias_Texture2DArray } /* 2433 */,
-    std::pair{ "textureSampleBias(uniform *texture3D,uniform *sampler,f32x3,f32)", &TextureSampleBias_Texture3D } /* 2434 */,
-    std::pair{ "textureSampleBias(uniform *textureCube,uniform *sampler,f32x3,f32)", &TextureSampleBias_TextureCube } /* 2435 */,
-    std::pair{ "textureSampleBias(uniform *textureCubeArray,uniform *sampler,f32x4,f32)", &TextureSampleBias_TextureCubeArray } /* 2436 */,
-    std::pair{ "textureSampleBias(uniform *textureSampled1D,f32,f32)", &SampledTextureSampleBias_Texture1D } /* 2437 */,
-    std::pair{ "textureSampleBias(uniform *textureSampled1DArray,f32x2,f32)", &SampledTextureSampleBias_Texture1DArray } /* 2438 */,
-    std::pair{ "textureSampleBias(uniform *textureSampled2D,f32x2,f32)", &SampledTextureSampleBias_Texture2D } /* 2439 */,
-    std::pair{ "textureSampleBias(uniform *textureSampled2DArray,f32x3,f32)", &SampledTextureSampleBias_Texture2DArray } /* 2440 */,
-    std::pair{ "textureSampleBias(uniform *textureSampled3D,f32x3,f32)", &SampledTextureSampleBias_Texture3D } /* 2441 */,
-    std::pair{ "textureSampleBias(uniform *textureSampledCube,f32x3,f32)", &SampledTextureSampleBias_TextureCube } /* 2442 */,
-    std::pair{ "textureSampleBias(uniform *textureSampledCubeArray,f32x4,f32)", &SampledTextureSampleBias_TextureCubeArray } /* 2443 */,
-    std::pair{ "textureSampleBiasCompare", &TextureSampleBiasCompare_Texture1D } /* 2444 */,
-    std::pair{ "textureSampleBiasCompare", &SampledTextureSampleBiasCompare_Texture1D } /* 2445 */,
-    std::pair{ "textureSampleBiasCompare", &TextureSampleBiasCompare_Texture2D } /* 2446 */,
-    std::pair{ "textureSampleBiasCompare", &SampledTextureSampleBiasCompare_Texture2D } /* 2447 */,
-    std::pair{ "textureSampleBiasCompare", &TextureSampleBiasCompare_Texture3D } /* 2448 */,
-    std::pair{ "textureSampleBiasCompare", &SampledTextureSampleBiasCompare_Texture3D } /* 2449 */,
-    std::pair{ "textureSampleBiasCompare", &TextureSampleBiasCompare_Texture1DArray } /* 2450 */,
-    std::pair{ "textureSampleBiasCompare", &SampledTextureSampleBiasCompare_Texture1DArray } /* 2451 */,
-    std::pair{ "textureSampleBiasCompare", &TextureSampleBiasCompare_Texture2DArray } /* 2452 */,
-    std::pair{ "textureSampleBiasCompare", &SampledTextureSampleBiasCompare_Texture2DArray } /* 2453 */,
-    std::pair{ "textureSampleBiasCompare(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleBiasCompare_Texture1D } /* 2454 */,
-    std::pair{ "textureSampleBiasCompare(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32)", &TextureSampleBiasCompare_Texture1DArray } /* 2455 */,
-    std::pair{ "textureSampleBiasCompare(uniform *texture2D,uniform *sampler,f32x2,f32,f32)", &TextureSampleBiasCompare_Texture2D } /* 2456 */,
-    std::pair{ "textureSampleBiasCompare(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32)", &TextureSampleBiasCompare_Texture2DArray } /* 2457 */,
-    std::pair{ "textureSampleBiasCompare(uniform *texture3D,uniform *sampler,f32x3,f32,f32)", &TextureSampleBiasCompare_Texture3D } /* 2458 */,
-    std::pair{ "textureSampleBiasCompare(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleBiasCompare_Texture1D } /* 2459 */,
-    std::pair{ "textureSampleBiasCompare(uniform *textureSampled1DArray,f32x2,f32,f32)", &SampledTextureSampleBiasCompare_Texture1DArray } /* 2460 */,
-    std::pair{ "textureSampleBiasCompare(uniform *textureSampled2D,f32x2,f32,f32)", &SampledTextureSampleBiasCompare_Texture2D } /* 2461 */,
-    std::pair{ "textureSampleBiasCompare(uniform *textureSampled2DArray,f32x3,f32,f32)", &SampledTextureSampleBiasCompare_Texture2DArray } /* 2462 */,
-    std::pair{ "textureSampleBiasCompare(uniform *textureSampled3D,f32x3,f32,f32)", &SampledTextureSampleBiasCompare_Texture3D } /* 2463 */,
-    std::pair{ "textureSampleBiasCompareOffset", &TextureSampleBiasCompareOffset_Texture1D } /* 2464 */,
-    std::pair{ "textureSampleBiasCompareOffset", &SampledTextureSampleBiasCompareOffset_Texture1D } /* 2465 */,
-    std::pair{ "textureSampleBiasCompareOffset", &TextureSampleBiasCompareOffset_Texture2D } /* 2466 */,
-    std::pair{ "textureSampleBiasCompareOffset", &SampledTextureSampleBiasCompareOffset_Texture2D } /* 2467 */,
-    std::pair{ "textureSampleBiasCompareOffset", &TextureSampleBiasCompareOffset_Texture3D } /* 2468 */,
-    std::pair{ "textureSampleBiasCompareOffset", &SampledTextureSampleBiasCompareOffset_Texture3D } /* 2469 */,
-    std::pair{ "textureSampleBiasCompareOffset", &TextureSampleBiasCompareOffset_Texture1DArray } /* 2470 */,
-    std::pair{ "textureSampleBiasCompareOffset", &SampledTextureSampleBiasCompareOffset_Texture1DArray } /* 2471 */,
-    std::pair{ "textureSampleBiasCompareOffset", &TextureSampleBiasCompareOffset_Texture2DArray } /* 2472 */,
-    std::pair{ "textureSampleBiasCompareOffset", &SampledTextureSampleBiasCompareOffset_Texture2DArray } /* 2473 */,
-    std::pair{ "textureSampleBiasCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleBiasCompareOffset_Texture1D } /* 2474 */,
-    std::pair{ "textureSampleBiasCompareOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleBiasCompareOffset_Texture1DArray } /* 2475 */,
-    std::pair{ "textureSampleBiasCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleBiasCompareOffset_Texture2D } /* 2476 */,
-    std::pair{ "textureSampleBiasCompareOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleBiasCompareOffset_Texture2DArray } /* 2477 */,
-    std::pair{ "textureSampleBiasCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleBiasCompareOffset_Texture3D } /* 2478 */,
-    std::pair{ "textureSampleBiasCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleBiasCompareOffset_Texture1D } /* 2479 */,
-    std::pair{ "textureSampleBiasCompareOffset(uniform *textureSampled1DArray,f32x2,f32,f32,f32x2)", &SampledTextureSampleBiasCompareOffset_Texture1DArray } /* 2480 */,
-    std::pair{ "textureSampleBiasCompareOffset(uniform *textureSampled2D,f32x2,f32,f32,f32x2)", &SampledTextureSampleBiasCompareOffset_Texture2D } /* 2481 */,
-    std::pair{ "textureSampleBiasCompareOffset(uniform *textureSampled2DArray,f32x3,f32,f32,f32x3)", &SampledTextureSampleBiasCompareOffset_Texture2DArray } /* 2482 */,
-    std::pair{ "textureSampleBiasCompareOffset(uniform *textureSampled3D,f32x3,f32,f32,f32x3)", &SampledTextureSampleBiasCompareOffset_Texture3D } /* 2483 */,
-    std::pair{ "textureSampleBiasOffset", &TextureSampleBiasOffset_Texture1D } /* 2484 */,
-    std::pair{ "textureSampleBiasOffset", &SampledTextureSampleBiasOffset_Texture1D } /* 2485 */,
-    std::pair{ "textureSampleBiasOffset", &TextureSampleBiasOffset_Texture2D } /* 2486 */,
-    std::pair{ "textureSampleBiasOffset", &SampledTextureSampleBiasOffset_Texture2D } /* 2487 */,
-    std::pair{ "textureSampleBiasOffset", &TextureSampleBiasOffset_Texture3D } /* 2488 */,
-    std::pair{ "textureSampleBiasOffset", &SampledTextureSampleBiasOffset_Texture3D } /* 2489 */,
-    std::pair{ "textureSampleBiasOffset", &TextureSampleBiasOffset_Texture1DArray } /* 2490 */,
-    std::pair{ "textureSampleBiasOffset", &SampledTextureSampleBiasOffset_Texture1DArray } /* 2491 */,
-    std::pair{ "textureSampleBiasOffset", &TextureSampleBiasOffset_Texture2DArray } /* 2492 */,
-    std::pair{ "textureSampleBiasOffset", &SampledTextureSampleBiasOffset_Texture2DArray } /* 2493 */,
-    std::pair{ "textureSampleBiasOffset(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleBiasOffset_Texture1D } /* 2494 */,
-    std::pair{ "textureSampleBiasOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleBiasOffset_Texture1DArray } /* 2495 */,
-    std::pair{ "textureSampleBiasOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleBiasOffset_Texture2D } /* 2496 */,
-    std::pair{ "textureSampleBiasOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleBiasOffset_Texture2DArray } /* 2497 */,
-    std::pair{ "textureSampleBiasOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleBiasOffset_Texture3D } /* 2498 */,
-    std::pair{ "textureSampleBiasOffset(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleBiasOffset_Texture1D } /* 2499 */,
-    std::pair{ "textureSampleBiasOffset(uniform *textureSampled1DArray,f32x2,f32,f32x2)", &SampledTextureSampleBiasOffset_Texture1DArray } /* 2500 */,
-    std::pair{ "textureSampleBiasOffset(uniform *textureSampled2D,f32x2,f32,f32x2)", &SampledTextureSampleBiasOffset_Texture2D } /* 2501 */,
-    std::pair{ "textureSampleBiasOffset(uniform *textureSampled2DArray,f32x3,f32,f32x3)", &SampledTextureSampleBiasOffset_Texture2DArray } /* 2502 */,
-    std::pair{ "textureSampleBiasOffset(uniform *textureSampled3D,f32x3,f32,f32x3)", &SampledTextureSampleBiasOffset_Texture3D } /* 2503 */,
-    std::pair{ "textureSampleBiasProj", &TextureSampleBiasProj_Texture1D } /* 2504 */,
-    std::pair{ "textureSampleBiasProj", &SampledTextureSampleBiasProj_Texture1D } /* 2505 */,
-    std::pair{ "textureSampleBiasProj", &TextureSampleBiasProj_Texture2D } /* 2506 */,
-    std::pair{ "textureSampleBiasProj", &SampledTextureSampleBiasProj_Texture2D } /* 2507 */,
-    std::pair{ "textureSampleBiasProj", &TextureSampleBiasProj_Texture3D } /* 2508 */,
-    std::pair{ "textureSampleBiasProj", &SampledTextureSampleBiasProj_Texture3D } /* 2509 */,
-    std::pair{ "textureSampleBiasProj(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleBiasProj_Texture1D } /* 2510 */,
-    std::pair{ "textureSampleBiasProj(uniform *texture2D,uniform *sampler,f32x2,f32,f32)", &TextureSampleBiasProj_Texture2D } /* 2511 */,
-    std::pair{ "textureSampleBiasProj(uniform *texture3D,uniform *sampler,f32x3,f32,f32)", &TextureSampleBiasProj_Texture3D } /* 2512 */,
-    std::pair{ "textureSampleBiasProj(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleBiasProj_Texture1D } /* 2513 */,
-    std::pair{ "textureSampleBiasProj(uniform *textureSampled2D,f32x2,f32,f32)", &SampledTextureSampleBiasProj_Texture2D } /* 2514 */,
-    std::pair{ "textureSampleBiasProj(uniform *textureSampled3D,f32x3,f32,f32)", &SampledTextureSampleBiasProj_Texture3D } /* 2515 */,
-    std::pair{ "textureSampleBiasProjCompare", &TextureSampleBiasProjCompare_Texture1D } /* 2516 */,
-    std::pair{ "textureSampleBiasProjCompare", &SampledTextureSampleBiasProjCompare_Texture1D } /* 2517 */,
-    std::pair{ "textureSampleBiasProjCompare", &TextureSampleBiasProjCompare_Texture2D } /* 2518 */,
-    std::pair{ "textureSampleBiasProjCompare", &SampledTextureSampleBiasProjCompare_Texture2D } /* 2519 */,
-    std::pair{ "textureSampleBiasProjCompare", &TextureSampleBiasProjCompare_Texture3D } /* 2520 */,
-    std::pair{ "textureSampleBiasProjCompare", &SampledTextureSampleBiasProjCompare_Texture3D } /* 2521 */,
-    std::pair{ "textureSampleBiasProjCompare(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleBiasProjCompare_Texture1D } /* 2522 */,
-    std::pair{ "textureSampleBiasProjCompare(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32)", &TextureSampleBiasProjCompare_Texture2D } /* 2523 */,
-    std::pair{ "textureSampleBiasProjCompare(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32)", &TextureSampleBiasProjCompare_Texture3D } /* 2524 */,
-    std::pair{ "textureSampleBiasProjCompare(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleBiasProjCompare_Texture1D } /* 2525 */,
-    std::pair{ "textureSampleBiasProjCompare(uniform *textureSampled2D,f32x2,f32,f32,f32)", &SampledTextureSampleBiasProjCompare_Texture2D } /* 2526 */,
-    std::pair{ "textureSampleBiasProjCompare(uniform *textureSampled3D,f32x3,f32,f32,f32)", &SampledTextureSampleBiasProjCompare_Texture3D } /* 2527 */,
-    std::pair{ "textureSampleBiasProjCompareOffset", &TextureSampleBiasProjCompareOffset_Texture1D } /* 2528 */,
-    std::pair{ "textureSampleBiasProjCompareOffset", &SampledTextureSampleBiasProjCompareOffset_Texture1D } /* 2529 */,
-    std::pair{ "textureSampleBiasProjCompareOffset", &TextureSampleBiasProjCompareOffset_Texture2D } /* 2530 */,
-    std::pair{ "textureSampleBiasProjCompareOffset", &SampledTextureSampleBiasProjCompareOffset_Texture2D } /* 2531 */,
-    std::pair{ "textureSampleBiasProjCompareOffset", &TextureSampleBiasProjCompareOffset_Texture3D } /* 2532 */,
-    std::pair{ "textureSampleBiasProjCompareOffset", &SampledTextureSampleBiasProjCompareOffset_Texture3D } /* 2533 */,
-    std::pair{ "textureSampleBiasProjCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)", &TextureSampleBiasProjCompareOffset_Texture1D } /* 2534 */,
-    std::pair{ "textureSampleBiasProjCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32,f32x2)", &TextureSampleBiasProjCompareOffset_Texture2D } /* 2535 */,
-    std::pair{ "textureSampleBiasProjCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32,f32x3)", &TextureSampleBiasProjCompareOffset_Texture3D } /* 2536 */,
-    std::pair{ "textureSampleBiasProjCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32)", &SampledTextureSampleBiasProjCompareOffset_Texture1D } /* 2537 */,
-    std::pair{ "textureSampleBiasProjCompareOffset(uniform *textureSampled2D,f32x2,f32,f32,f32,f32x2)", &SampledTextureSampleBiasProjCompareOffset_Texture2D } /* 2538 */,
-    std::pair{ "textureSampleBiasProjCompareOffset(uniform *textureSampled3D,f32x3,f32,f32,f32,f32x3)", &SampledTextureSampleBiasProjCompareOffset_Texture3D } /* 2539 */,
-    std::pair{ "textureSampleBiasProjOffset", &TextureSampleBiasProjOffset_Texture1D } /* 2540 */,
-    std::pair{ "textureSampleBiasProjOffset", &SampledTextureSampleBiasProjOffset_Texture1D } /* 2541 */,
-    std::pair{ "textureSampleBiasProjOffset", &TextureSampleBiasProjOffset_Texture2D } /* 2542 */,
-    std::pair{ "textureSampleBiasProjOffset", &SampledTextureSampleBiasProjOffset_Texture2D } /* 2543 */,
-    std::pair{ "textureSampleBiasProjOffset", &TextureSampleBiasProjOffset_Texture3D } /* 2544 */,
-    std::pair{ "textureSampleBiasProjOffset", &SampledTextureSampleBiasProjOffset_Texture3D } /* 2545 */,
-    std::pair{ "textureSampleBiasProjOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleBiasProjOffset_Texture1D } /* 2546 */,
-    std::pair{ "textureSampleBiasProjOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleBiasProjOffset_Texture2D } /* 2547 */,
-    std::pair{ "textureSampleBiasProjOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleBiasProjOffset_Texture3D } /* 2548 */,
-    std::pair{ "textureSampleBiasProjOffset(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleBiasProjOffset_Texture1D } /* 2549 */,
-    std::pair{ "textureSampleBiasProjOffset(uniform *textureSampled2D,f32x2,f32,f32,f32x2)", &SampledTextureSampleBiasProjOffset_Texture2D } /* 2550 */,
-    std::pair{ "textureSampleBiasProjOffset(uniform *textureSampled3D,f32x3,f32,f32,f32x3)", &SampledTextureSampleBiasProjOffset_Texture3D } /* 2551 */,
-    std::pair{ "textureSampleCompare", &TextureSampleCompare_Texture1D } /* 2552 */,
-    std::pair{ "textureSampleCompare", &SampledTextureSampleCompare_Texture1D } /* 2553 */,
-    std::pair{ "textureSampleCompare", &TextureSampleCompare_Texture2D } /* 2554 */,
-    std::pair{ "textureSampleCompare", &SampledTextureSampleCompare_Texture2D } /* 2555 */,
-    std::pair{ "textureSampleCompare", &TextureSampleCompare_Texture3D } /* 2556 */,
-    std::pair{ "textureSampleCompare", &SampledTextureSampleCompare_Texture3D } /* 2557 */,
-    std::pair{ "textureSampleCompare", &TextureSampleCompare_Texture1DArray } /* 2558 */,
-    std::pair{ "textureSampleCompare", &SampledTextureSampleCompare_Texture1DArray } /* 2559 */,
-    std::pair{ "textureSampleCompare", &TextureSampleCompare_Texture2DArray } /* 2560 */,
-    std::pair{ "textureSampleCompare", &SampledTextureSampleCompare_Texture2DArray } /* 2561 */,
-    std::pair{ "textureSampleCompare(uniform *texture1D,uniform *sampler,f32,f32)", &TextureSampleCompare_Texture1D } /* 2562 */,
-    std::pair{ "textureSampleCompare(uniform *texture1DArray,uniform *sampler,f32x2,f32)", &TextureSampleCompare_Texture1DArray } /* 2563 */,
-    std::pair{ "textureSampleCompare(uniform *texture2D,uniform *sampler,f32x2,f32)", &TextureSampleCompare_Texture2D } /* 2564 */,
-    std::pair{ "textureSampleCompare(uniform *texture2DArray,uniform *sampler,f32x3,f32)", &TextureSampleCompare_Texture2DArray } /* 2565 */,
-    std::pair{ "textureSampleCompare(uniform *texture3D,uniform *sampler,f32x3,f32)", &TextureSampleCompare_Texture3D } /* 2566 */,
-    std::pair{ "textureSampleCompare(uniform *textureSampled1D,f32,f32)", &SampledTextureSampleCompare_Texture1D } /* 2567 */,
-    std::pair{ "textureSampleCompare(uniform *textureSampled1DArray,f32x2,f32)", &SampledTextureSampleCompare_Texture1DArray } /* 2568 */,
-    std::pair{ "textureSampleCompare(uniform *textureSampled2D,f32x2,f32)", &SampledTextureSampleCompare_Texture2D } /* 2569 */,
-    std::pair{ "textureSampleCompare(uniform *textureSampled2DArray,f32x3,f32)", &SampledTextureSampleCompare_Texture2DArray } /* 2570 */,
-    std::pair{ "textureSampleCompare(uniform *textureSampled3D,f32x3,f32)", &SampledTextureSampleCompare_Texture3D } /* 2571 */,
-    std::pair{ "textureSampleCompareOffset", &TextureSampleCompareOffset_Texture1D } /* 2572 */,
-    std::pair{ "textureSampleCompareOffset", &SampledTextureSampleCompareOffset_Texture1D } /* 2573 */,
-    std::pair{ "textureSampleCompareOffset", &TextureSampleCompareOffset_Texture2D } /* 2574 */,
-    std::pair{ "textureSampleCompareOffset", &SampledTextureSampleCompareOffset_Texture2D } /* 2575 */,
-    std::pair{ "textureSampleCompareOffset", &TextureSampleCompareOffset_Texture3D } /* 2576 */,
-    std::pair{ "textureSampleCompareOffset", &SampledTextureSampleCompareOffset_Texture3D } /* 2577 */,
-    std::pair{ "textureSampleCompareOffset", &TextureSampleCompareOffset_Texture1DArray } /* 2578 */,
-    std::pair{ "textureSampleCompareOffset", &SampledTextureSampleCompareOffset_Texture1DArray } /* 2579 */,
-    std::pair{ "textureSampleCompareOffset", &TextureSampleCompareOffset_Texture2DArray } /* 2580 */,
-    std::pair{ "textureSampleCompareOffset", &SampledTextureSampleCompareOffset_Texture2DArray } /* 2581 */,
-    std::pair{ "textureSampleCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleCompareOffset_Texture1D } /* 2582 */,
-    std::pair{ "textureSampleCompareOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleCompareOffset_Texture1DArray } /* 2583 */,
-    std::pair{ "textureSampleCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleCompareOffset_Texture2D } /* 2584 */,
-    std::pair{ "textureSampleCompareOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleCompareOffset_Texture2DArray } /* 2585 */,
-    std::pair{ "textureSampleCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleCompareOffset_Texture3D } /* 2586 */,
-    std::pair{ "textureSampleCompareOffset(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleCompareOffset_Texture1D } /* 2587 */,
-    std::pair{ "textureSampleCompareOffset(uniform *textureSampled1DArray,f32x2,f32,f32x2)", &SampledTextureSampleCompareOffset_Texture1DArray } /* 2588 */,
-    std::pair{ "textureSampleCompareOffset(uniform *textureSampled2D,f32x2,f32,f32x2)", &SampledTextureSampleCompareOffset_Texture2D } /* 2589 */,
-    std::pair{ "textureSampleCompareOffset(uniform *textureSampled2DArray,f32x3,f32,f32x3)", &SampledTextureSampleCompareOffset_Texture2DArray } /* 2590 */,
-    std::pair{ "textureSampleCompareOffset(uniform *textureSampled3D,f32x3,f32,f32x3)", &SampledTextureSampleCompareOffset_Texture3D } /* 2591 */,
-    std::pair{ "textureSampleGrad", &TextureSampleGrad_Texture1D } /* 2592 */,
-    std::pair{ "textureSampleGrad", &SampledTextureSampleGrad_Texture1D } /* 2593 */,
-    std::pair{ "textureSampleGrad", &TextureSampleGrad_Texture2D } /* 2594 */,
-    std::pair{ "textureSampleGrad", &SampledTextureSampleGrad_Texture2D } /* 2595 */,
-    std::pair{ "textureSampleGrad", &TextureSampleGrad_Texture3D } /* 2596 */,
-    std::pair{ "textureSampleGrad", &SampledTextureSampleGrad_Texture3D } /* 2597 */,
-    std::pair{ "textureSampleGrad", &TextureSampleGrad_TextureCube } /* 2598 */,
-    std::pair{ "textureSampleGrad", &SampledTextureSampleGrad_TextureCube } /* 2599 */,
-    std::pair{ "textureSampleGrad", &TextureSampleGrad_Texture1DArray } /* 2600 */,
-    std::pair{ "textureSampleGrad", &SampledTextureSampleGrad_Texture1DArray } /* 2601 */,
-    std::pair{ "textureSampleGrad", &TextureSampleGrad_Texture2DArray } /* 2602 */,
-    std::pair{ "textureSampleGrad", &SampledTextureSampleGrad_Texture2DArray } /* 2603 */,
-    std::pair{ "textureSampleGrad", &TextureSampleGrad_TextureCubeArray } /* 2604 */,
-    std::pair{ "textureSampleGrad", &SampledTextureSampleGrad_TextureCubeArray } /* 2605 */,
-    std::pair{ "textureSampleGrad(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleGrad_Texture1D } /* 2606 */,
-    std::pair{ "textureSampleGrad(uniform *texture1DArray,uniform *sampler,f32x2,f32x2,f32x2)", &TextureSampleGrad_Texture1DArray } /* 2607 */,
-    std::pair{ "textureSampleGrad(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2)", &TextureSampleGrad_Texture2D } /* 2608 */,
-    std::pair{ "textureSampleGrad(uniform *texture2DArray,uniform *sampler,f32x3,f32x3,f32x3)", &TextureSampleGrad_Texture2DArray } /* 2609 */,
-    std::pair{ "textureSampleGrad(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3)", &TextureSampleGrad_Texture3D } /* 2610 */,
-    std::pair{ "textureSampleGrad(uniform *textureCube,uniform *sampler,f32x3,f32x3,f32x3)", &TextureSampleGrad_TextureCube } /* 2611 */,
-    std::pair{ "textureSampleGrad(uniform *textureCubeArray,uniform *sampler,f32x4,f32x4,f32x4)", &TextureSampleGrad_TextureCubeArray } /* 2612 */,
-    std::pair{ "textureSampleGrad(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleGrad_Texture1D } /* 2613 */,
-    std::pair{ "textureSampleGrad(uniform *textureSampled1DArray,f32x2,f32x2,f32x2)", &SampledTextureSampleGrad_Texture1DArray } /* 2614 */,
-    std::pair{ "textureSampleGrad(uniform *textureSampled2D,f32x2,f32x2,f32x2)", &SampledTextureSampleGrad_Texture2D } /* 2615 */,
-    std::pair{ "textureSampleGrad(uniform *textureSampled2DArray,f32x3,f32x3,f32x3)", &SampledTextureSampleGrad_Texture2DArray } /* 2616 */,
-    std::pair{ "textureSampleGrad(uniform *textureSampled3D,f32x3,f32x3,f32x3)", &SampledTextureSampleGrad_Texture3D } /* 2617 */,
-    std::pair{ "textureSampleGrad(uniform *textureSampledCube,f32x3,f32x3,f32x3)", &SampledTextureSampleGrad_TextureCube } /* 2618 */,
-    std::pair{ "textureSampleGrad(uniform *textureSampledCubeArray,f32x4,f32x4,f32x4)", &SampledTextureSampleGrad_TextureCubeArray } /* 2619 */,
-    std::pair{ "textureSampleGradCompare", &TextureSampleGradCompare_Texture1D } /* 2620 */,
-    std::pair{ "textureSampleGradCompare", &SampledTextureSampleGradCompare_Texture1D } /* 2621 */,
-    std::pair{ "textureSampleGradCompare", &TextureSampleGradCompare_Texture2D } /* 2622 */,
-    std::pair{ "textureSampleGradCompare", &SampledTextureSampleGradCompare_Texture2D } /* 2623 */,
-    std::pair{ "textureSampleGradCompare", &TextureSampleGradCompare_Texture3D } /* 2624 */,
-    std::pair{ "textureSampleGradCompare", &SampledTextureSampleGradCompare_Texture3D } /* 2625 */,
-    std::pair{ "textureSampleGradCompare", &TextureSampleGradCompare_Texture1DArray } /* 2626 */,
-    std::pair{ "textureSampleGradCompare", &SampledTextureSampleGradCompare_Texture1DArray } /* 2627 */,
-    std::pair{ "textureSampleGradCompare", &TextureSampleGradCompare_Texture2DArray } /* 2628 */,
-    std::pair{ "textureSampleGradCompare", &SampledTextureSampleGradCompare_Texture2DArray } /* 2629 */,
-    std::pair{ "textureSampleGradCompare(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleGradCompare_Texture1D } /* 2630 */,
-    std::pair{ "textureSampleGradCompare(uniform *texture1DArray,uniform *sampler,f32x2,f32x2,f32x2,f32)", &TextureSampleGradCompare_Texture1DArray } /* 2631 */,
-    std::pair{ "textureSampleGradCompare(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32)", &TextureSampleGradCompare_Texture2D } /* 2632 */,
-    std::pair{ "textureSampleGradCompare(uniform *texture2DArray,uniform *sampler,f32x3,f32x3,f32x3,f32)", &TextureSampleGradCompare_Texture2DArray } /* 2633 */,
-    std::pair{ "textureSampleGradCompare(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32)", &TextureSampleGradCompare_Texture3D } /* 2634 */,
-    std::pair{ "textureSampleGradCompare(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleGradCompare_Texture1D } /* 2635 */,
-    std::pair{ "textureSampleGradCompare(uniform *textureSampled1DArray,f32x2,f32x2,f32x2,f32)", &SampledTextureSampleGradCompare_Texture1DArray } /* 2636 */,
-    std::pair{ "textureSampleGradCompare(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32)", &SampledTextureSampleGradCompare_Texture2D } /* 2637 */,
-    std::pair{ "textureSampleGradCompare(uniform *textureSampled2DArray,f32x3,f32x3,f32x3,f32)", &SampledTextureSampleGradCompare_Texture2DArray } /* 2638 */,
-    std::pair{ "textureSampleGradCompare(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32)", &SampledTextureSampleGradCompare_Texture3D } /* 2639 */,
-    std::pair{ "textureSampleGradCompareOffset", &TextureSampleGradCompareOffset_Texture1D } /* 2640 */,
-    std::pair{ "textureSampleGradCompareOffset", &SampledTextureSampleGradCompareOffset_Texture1D } /* 2641 */,
-    std::pair{ "textureSampleGradCompareOffset", &TextureSampleGradCompareOffset_Texture2D } /* 2642 */,
-    std::pair{ "textureSampleGradCompareOffset", &SampledTextureSampleGradCompareOffset_Texture2D } /* 2643 */,
-    std::pair{ "textureSampleGradCompareOffset", &TextureSampleGradCompareOffset_Texture3D } /* 2644 */,
-    std::pair{ "textureSampleGradCompareOffset", &SampledTextureSampleGradCompareOffset_Texture3D } /* 2645 */,
-    std::pair{ "textureSampleGradCompareOffset", &TextureSampleGradCompareOffset_Texture1DArray } /* 2646 */,
-    std::pair{ "textureSampleGradCompareOffset", &SampledTextureSampleGradCompareOffset_Texture1DArray } /* 2647 */,
-    std::pair{ "textureSampleGradCompareOffset", &TextureSampleGradCompareOffset_Texture2DArray } /* 2648 */,
-    std::pair{ "textureSampleGradCompareOffset", &SampledTextureSampleGradCompareOffset_Texture2DArray } /* 2649 */,
-    std::pair{ "textureSampleGradCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)", &TextureSampleGradCompareOffset_Texture1D } /* 2650 */,
-    std::pair{ "textureSampleGradCompareOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32x2,f32x2,f32,f32x2)", &TextureSampleGradCompareOffset_Texture1DArray } /* 2651 */,
-    std::pair{ "textureSampleGradCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32,f32x2)", &TextureSampleGradCompareOffset_Texture2D } /* 2652 */,
-    std::pair{ "textureSampleGradCompareOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32x3,f32x3,f32,f32x3)", &TextureSampleGradCompareOffset_Texture2DArray } /* 2653 */,
-    std::pair{ "textureSampleGradCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32,f32x3)", &TextureSampleGradCompareOffset_Texture3D } /* 2654 */,
-    std::pair{ "textureSampleGradCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32)", &SampledTextureSampleGradCompareOffset_Texture1D } /* 2655 */,
-    std::pair{ "textureSampleGradCompareOffset(uniform *textureSampled1DArray,f32x2,f32x2,f32x2,f32,f32x2)", &SampledTextureSampleGradCompareOffset_Texture1DArray } /* 2656 */,
-    std::pair{ "textureSampleGradCompareOffset(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32,f32x2)", &SampledTextureSampleGradCompareOffset_Texture2D } /* 2657 */,
-    std::pair{ "textureSampleGradCompareOffset(uniform *textureSampled2DArray,f32x3,f32x3,f32x3,f32,f32x3)", &SampledTextureSampleGradCompareOffset_Texture2DArray } /* 2658 */,
-    std::pair{ "textureSampleGradCompareOffset(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32,f32x3)", &SampledTextureSampleGradCompareOffset_Texture3D } /* 2659 */,
-    std::pair{ "textureSampleGradOffset", &TextureSampleGradOffset_Texture1D } /* 2660 */,
-    std::pair{ "textureSampleGradOffset", &SampledTextureSampleGradOffset_Texture1D } /* 2661 */,
-    std::pair{ "textureSampleGradOffset", &TextureSampleGradOffset_Texture2D } /* 2662 */,
-    std::pair{ "textureSampleGradOffset", &SampledTextureSampleGradOffset_Texture2D } /* 2663 */,
-    std::pair{ "textureSampleGradOffset", &TextureSampleGradOffset_Texture3D } /* 2664 */,
-    std::pair{ "textureSampleGradOffset", &SampledTextureSampleGradOffset_Texture3D } /* 2665 */,
-    std::pair{ "textureSampleGradOffset", &TextureSampleGradOffset_Texture1DArray } /* 2666 */,
-    std::pair{ "textureSampleGradOffset", &SampledTextureSampleGradOffset_Texture1DArray } /* 2667 */,
-    std::pair{ "textureSampleGradOffset", &TextureSampleGradOffset_Texture2DArray } /* 2668 */,
-    std::pair{ "textureSampleGradOffset", &SampledTextureSampleGradOffset_Texture2DArray } /* 2669 */,
-    std::pair{ "textureSampleGradOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleGradOffset_Texture1D } /* 2670 */,
-    std::pair{ "textureSampleGradOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32x2,f32x2,f32x2)", &TextureSampleGradOffset_Texture1DArray } /* 2671 */,
-    std::pair{ "textureSampleGradOffset(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32x2)", &TextureSampleGradOffset_Texture2D } /* 2672 */,
-    std::pair{ "textureSampleGradOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32x3,f32x3,f32x3)", &TextureSampleGradOffset_Texture2DArray } /* 2673 */,
-    std::pair{ "textureSampleGradOffset(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32x3)", &TextureSampleGradOffset_Texture3D } /* 2674 */,
-    std::pair{ "textureSampleGradOffset(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleGradOffset_Texture1D } /* 2675 */,
-    std::pair{ "textureSampleGradOffset(uniform *textureSampled1DArray,f32x2,f32x2,f32x2,f32x2)", &SampledTextureSampleGradOffset_Texture1DArray } /* 2676 */,
-    std::pair{ "textureSampleGradOffset(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32x2)", &SampledTextureSampleGradOffset_Texture2D } /* 2677 */,
-    std::pair{ "textureSampleGradOffset(uniform *textureSampled2DArray,f32x3,f32x3,f32x3,f32x3)", &SampledTextureSampleGradOffset_Texture2DArray } /* 2678 */,
-    std::pair{ "textureSampleGradOffset(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32x3)", &SampledTextureSampleGradOffset_Texture3D } /* 2679 */,
-    std::pair{ "textureSampleGradProj", &TextureSampleGradProj_Texture1D } /* 2680 */,
-    std::pair{ "textureSampleGradProj", &SampledTextureSampleGradProj_Texture1D } /* 2681 */,
-    std::pair{ "textureSampleGradProj", &TextureSampleGradProj_Texture2D } /* 2682 */,
-    std::pair{ "textureSampleGradProj", &SampledTextureSampleGradProj_Texture2D } /* 2683 */,
-    std::pair{ "textureSampleGradProj", &TextureSampleGradProj_Texture3D } /* 2684 */,
-    std::pair{ "textureSampleGradProj", &SampledTextureSampleGradProj_Texture3D } /* 2685 */,
-    std::pair{ "textureSampleGradProj(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleGradProj_Texture1D } /* 2686 */,
-    std::pair{ "textureSampleGradProj(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32)", &TextureSampleGradProj_Texture2D } /* 2687 */,
-    std::pair{ "textureSampleGradProj(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32)", &TextureSampleGradProj_Texture3D } /* 2688 */,
-    std::pair{ "textureSampleGradProj(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleGradProj_Texture1D } /* 2689 */,
-    std::pair{ "textureSampleGradProj(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32)", &SampledTextureSampleGradProj_Texture2D } /* 2690 */,
-    std::pair{ "textureSampleGradProj(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32)", &SampledTextureSampleGradProj_Texture3D } /* 2691 */,
-    std::pair{ "textureSampleGradProjCompare", &TextureSampleGradProjCompare_Texture1D } /* 2692 */,
-    std::pair{ "textureSampleGradProjCompare", &SampledTextureSampleGradProjCompare_Texture1D } /* 2693 */,
-    std::pair{ "textureSampleGradProjCompare", &TextureSampleGradProjCompare_Texture2D } /* 2694 */,
-    std::pair{ "textureSampleGradProjCompare", &SampledTextureSampleGradProjCompare_Texture2D } /* 2695 */,
-    std::pair{ "textureSampleGradProjCompare", &TextureSampleGradProjCompare_Texture3D } /* 2696 */,
-    std::pair{ "textureSampleGradProjCompare", &SampledTextureSampleGradProjCompare_Texture3D } /* 2697 */,
-    std::pair{ "textureSampleGradProjCompare(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)", &TextureSampleGradProjCompare_Texture1D } /* 2698 */,
-    std::pair{ "textureSampleGradProjCompare(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32,f32)", &TextureSampleGradProjCompare_Texture2D } /* 2699 */,
-    std::pair{ "textureSampleGradProjCompare(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32,f32)", &TextureSampleGradProjCompare_Texture3D } /* 2700 */,
-    std::pair{ "textureSampleGradProjCompare(uniform *textureSampled1D,f32,f32,f32,f32,f32)", &SampledTextureSampleGradProjCompare_Texture1D } /* 2701 */,
-    std::pair{ "textureSampleGradProjCompare(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32,f32)", &SampledTextureSampleGradProjCompare_Texture2D } /* 2702 */,
-    std::pair{ "textureSampleGradProjCompare(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32,f32)", &SampledTextureSampleGradProjCompare_Texture3D } /* 2703 */,
-    std::pair{ "textureSampleGradProjCompareOffset", &TextureSampleGradProjCompareOffset_Texture1D } /* 2704 */,
-    std::pair{ "textureSampleGradProjCompareOffset", &SampledTextureSampleGradProjCompareOffset_Texture1D } /* 2705 */,
-    std::pair{ "textureSampleGradProjCompareOffset", &TextureSampleGradProjCompareOffset_Texture2D } /* 2706 */,
-    std::pair{ "textureSampleGradProjCompareOffset", &SampledTextureSampleGradProjCompareOffset_Texture2D } /* 2707 */,
-    std::pair{ "textureSampleGradProjCompareOffset", &TextureSampleGradProjCompareOffset_Texture3D } /* 2708 */,
-    std::pair{ "textureSampleGradProjCompareOffset", &SampledTextureSampleGradProjCompareOffset_Texture3D } /* 2709 */,
-    std::pair{ "textureSampleGradProjCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32,f32)", &TextureSampleGradProjCompareOffset_Texture1D } /* 2710 */,
-    std::pair{ "textureSampleGradProjCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32,f32,f32x2)", &TextureSampleGradProjCompareOffset_Texture2D } /* 2711 */,
-    std::pair{ "textureSampleGradProjCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32,f32,f32x3)", &TextureSampleGradProjCompareOffset_Texture3D } /* 2712 */,
-    std::pair{ "textureSampleGradProjCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32,f32)", &SampledTextureSampleGradProjCompareOffset_Texture1D } /* 2713 */,
-    std::pair{ "textureSampleGradProjCompareOffset(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32,f32,f32x2)", &SampledTextureSampleGradProjCompareOffset_Texture2D } /* 2714 */,
-    std::pair{ "textureSampleGradProjCompareOffset(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32,f32,f32x3)", &SampledTextureSampleGradProjCompareOffset_Texture3D } /* 2715 */,
-    std::pair{ "textureSampleGradProjOffset", &TextureSampleGradProjOffset_Texture1D } /* 2716 */,
-    std::pair{ "textureSampleGradProjOffset", &SampledTextureSampleGradProjOffset_Texture1D } /* 2717 */,
-    std::pair{ "textureSampleGradProjOffset", &TextureSampleGradProjOffset_Texture2D } /* 2718 */,
-    std::pair{ "textureSampleGradProjOffset", &SampledTextureSampleGradProjOffset_Texture2D } /* 2719 */,
-    std::pair{ "textureSampleGradProjOffset", &TextureSampleGradProjOffset_Texture3D } /* 2720 */,
-    std::pair{ "textureSampleGradProjOffset", &SampledTextureSampleGradProjOffset_Texture3D } /* 2721 */,
-    std::pair{ "textureSampleGradProjOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)", &TextureSampleGradProjOffset_Texture1D } /* 2722 */,
-    std::pair{ "textureSampleGradProjOffset(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32,f32x2)", &TextureSampleGradProjOffset_Texture2D } /* 2723 */,
-    std::pair{ "textureSampleGradProjOffset(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32,f32x3)", &TextureSampleGradProjOffset_Texture3D } /* 2724 */,
-    std::pair{ "textureSampleGradProjOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32)", &SampledTextureSampleGradProjOffset_Texture1D } /* 2725 */,
-    std::pair{ "textureSampleGradProjOffset(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32,f32x2)", &SampledTextureSampleGradProjOffset_Texture2D } /* 2726 */,
-    std::pair{ "textureSampleGradProjOffset(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32,f32x3)", &SampledTextureSampleGradProjOffset_Texture3D } /* 2727 */,
-    std::pair{ "textureSampleLod", &TextureSampleLod_Texture1D } /* 2728 */,
-    std::pair{ "textureSampleLod", &SampledTextureSampleLod_Texture1D } /* 2729 */,
-    std::pair{ "textureSampleLod", &TextureSampleLod_Texture2D } /* 2730 */,
-    std::pair{ "textureSampleLod", &SampledTextureSampleLod_Texture2D } /* 2731 */,
-    std::pair{ "textureSampleLod", &TextureSampleLod_Texture3D } /* 2732 */,
-    std::pair{ "textureSampleLod", &SampledTextureSampleLod_Texture3D } /* 2733 */,
-    std::pair{ "textureSampleLod", &TextureSampleLod_TextureCube } /* 2734 */,
-    std::pair{ "textureSampleLod", &SampledTextureSampleLod_TextureCube } /* 2735 */,
-    std::pair{ "textureSampleLod", &TextureSampleLod_Texture1DArray } /* 2736 */,
-    std::pair{ "textureSampleLod", &SampledTextureSampleLod_Texture1DArray } /* 2737 */,
-    std::pair{ "textureSampleLod", &TextureSampleLod_Texture2DArray } /* 2738 */,
-    std::pair{ "textureSampleLod", &SampledTextureSampleLod_Texture2DArray } /* 2739 */,
-    std::pair{ "textureSampleLod", &TextureSampleLod_TextureCubeArray } /* 2740 */,
-    std::pair{ "textureSampleLod", &SampledTextureSampleLod_TextureCubeArray } /* 2741 */,
-    std::pair{ "textureSampleLod(uniform *texture1D,uniform *sampler,f32,f32)", &TextureSampleLod_Texture1D } /* 2742 */,
-    std::pair{ "textureSampleLod(uniform *texture1DArray,uniform *sampler,f32x2,f32)", &TextureSampleLod_Texture1DArray } /* 2743 */,
-    std::pair{ "textureSampleLod(uniform *texture2D,uniform *sampler,f32x2,f32)", &TextureSampleLod_Texture2D } /* 2744 */,
-    std::pair{ "textureSampleLod(uniform *texture2DArray,uniform *sampler,f32x3,f32)", &TextureSampleLod_Texture2DArray } /* 2745 */,
-    std::pair{ "textureSampleLod(uniform *texture3D,uniform *sampler,f32x3,f32)", &TextureSampleLod_Texture3D } /* 2746 */,
-    std::pair{ "textureSampleLod(uniform *textureCube,uniform *sampler,f32x3,f32)", &TextureSampleLod_TextureCube } /* 2747 */,
-    std::pair{ "textureSampleLod(uniform *textureCubeArray,uniform *sampler,f32x4,f32)", &TextureSampleLod_TextureCubeArray } /* 2748 */,
-    std::pair{ "textureSampleLod(uniform *textureSampled1D,f32,f32)", &SampledTextureSampleLod_Texture1D } /* 2749 */,
-    std::pair{ "textureSampleLod(uniform *textureSampled1DArray,f32x2,f32)", &SampledTextureSampleLod_Texture1DArray } /* 2750 */,
-    std::pair{ "textureSampleLod(uniform *textureSampled2D,f32x2,f32)", &SampledTextureSampleLod_Texture2D } /* 2751 */,
-    std::pair{ "textureSampleLod(uniform *textureSampled2DArray,f32x3,f32)", &SampledTextureSampleLod_Texture2DArray } /* 2752 */,
-    std::pair{ "textureSampleLod(uniform *textureSampled3D,f32x3,f32)", &SampledTextureSampleLod_Texture3D } /* 2753 */,
-    std::pair{ "textureSampleLod(uniform *textureSampledCube,f32x3,f32)", &SampledTextureSampleLod_TextureCube } /* 2754 */,
-    std::pair{ "textureSampleLod(uniform *textureSampledCubeArray,f32x4,f32)", &SampledTextureSampleLod_TextureCubeArray } /* 2755 */,
-    std::pair{ "textureSampleLodCompare", &TextureSampleLodCompare_Texture1D } /* 2756 */,
-    std::pair{ "textureSampleLodCompare", &SampledTextureSampleLodCompare_Texture1D } /* 2757 */,
-    std::pair{ "textureSampleLodCompare", &TextureSampleLodCompare_Texture2D } /* 2758 */,
-    std::pair{ "textureSampleLodCompare", &SampledTextureSampleLodCompare_Texture2D } /* 2759 */,
-    std::pair{ "textureSampleLodCompare", &TextureSampleLodCompare_Texture3D } /* 2760 */,
-    std::pair{ "textureSampleLodCompare", &SampledTextureSampleLodCompare_Texture3D } /* 2761 */,
-    std::pair{ "textureSampleLodCompare", &TextureSampleLodCompare_Texture1DArray } /* 2762 */,
-    std::pair{ "textureSampleLodCompare", &SampledTextureSampleLodCompare_Texture1DArray } /* 2763 */,
-    std::pair{ "textureSampleLodCompare", &TextureSampleLodCompare_Texture2DArray } /* 2764 */,
-    std::pair{ "textureSampleLodCompare", &SampledTextureSampleLodCompare_Texture2DArray } /* 2765 */,
-    std::pair{ "textureSampleLodCompare(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleLodCompare_Texture1D } /* 2766 */,
-    std::pair{ "textureSampleLodCompare(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32)", &TextureSampleLodCompare_Texture1DArray } /* 2767 */,
-    std::pair{ "textureSampleLodCompare(uniform *texture2D,uniform *sampler,f32x2,f32,f32)", &TextureSampleLodCompare_Texture2D } /* 2768 */,
-    std::pair{ "textureSampleLodCompare(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32)", &TextureSampleLodCompare_Texture2DArray } /* 2769 */,
-    std::pair{ "textureSampleLodCompare(uniform *texture3D,uniform *sampler,f32x3,f32,f32)", &TextureSampleLodCompare_Texture3D } /* 2770 */,
-    std::pair{ "textureSampleLodCompare(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleLodCompare_Texture1D } /* 2771 */,
-    std::pair{ "textureSampleLodCompare(uniform *textureSampled1DArray,f32x2,f32,f32)", &SampledTextureSampleLodCompare_Texture1DArray } /* 2772 */,
-    std::pair{ "textureSampleLodCompare(uniform *textureSampled2D,f32x2,f32,f32)", &SampledTextureSampleLodCompare_Texture2D } /* 2773 */,
-    std::pair{ "textureSampleLodCompare(uniform *textureSampled2DArray,f32x3,f32,f32)", &SampledTextureSampleLodCompare_Texture2DArray } /* 2774 */,
-    std::pair{ "textureSampleLodCompare(uniform *textureSampled3D,f32x3,f32,f32)", &SampledTextureSampleLodCompare_Texture3D } /* 2775 */,
-    std::pair{ "textureSampleLodCompareOffset", &TextureSampleLodCompareOffset_Texture1D } /* 2776 */,
-    std::pair{ "textureSampleLodCompareOffset", &SampledTextureSampleLodCompareOffset_Texture1D } /* 2777 */,
-    std::pair{ "textureSampleLodCompareOffset", &TextureSampleLodCompareOffset_Texture2D } /* 2778 */,
-    std::pair{ "textureSampleLodCompareOffset", &SampledTextureSampleLodCompareOffset_Texture2D } /* 2779 */,
-    std::pair{ "textureSampleLodCompareOffset", &TextureSampleLodCompareOffset_Texture3D } /* 2780 */,
-    std::pair{ "textureSampleLodCompareOffset", &SampledTextureSampleLodCompareOffset_Texture3D } /* 2781 */,
-    std::pair{ "textureSampleLodCompareOffset", &TextureSampleLodCompareOffset_Texture1DArray } /* 2782 */,
-    std::pair{ "textureSampleLodCompareOffset", &SampledTextureSampleLodCompareOffset_Texture1DArray } /* 2783 */,
-    std::pair{ "textureSampleLodCompareOffset", &TextureSampleLodCompareOffset_Texture2DArray } /* 2784 */,
-    std::pair{ "textureSampleLodCompareOffset", &SampledTextureSampleLodCompareOffset_Texture2DArray } /* 2785 */,
-    std::pair{ "textureSampleLodCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleLodCompareOffset_Texture1D } /* 2786 */,
-    std::pair{ "textureSampleLodCompareOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleLodCompareOffset_Texture1DArray } /* 2787 */,
-    std::pair{ "textureSampleLodCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleLodCompareOffset_Texture2D } /* 2788 */,
-    std::pair{ "textureSampleLodCompareOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleLodCompareOffset_Texture2DArray } /* 2789 */,
-    std::pair{ "textureSampleLodCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleLodCompareOffset_Texture3D } /* 2790 */,
-    std::pair{ "textureSampleLodCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleLodCompareOffset_Texture1D } /* 2791 */,
-    std::pair{ "textureSampleLodCompareOffset(uniform *textureSampled1DArray,f32x2,f32,f32,f32x2)", &SampledTextureSampleLodCompareOffset_Texture1DArray } /* 2792 */,
-    std::pair{ "textureSampleLodCompareOffset(uniform *textureSampled2D,f32x2,f32,f32,f32x2)", &SampledTextureSampleLodCompareOffset_Texture2D } /* 2793 */,
-    std::pair{ "textureSampleLodCompareOffset(uniform *textureSampled2DArray,f32x3,f32,f32,f32x3)", &SampledTextureSampleLodCompareOffset_Texture2DArray } /* 2794 */,
-    std::pair{ "textureSampleLodCompareOffset(uniform *textureSampled3D,f32x3,f32,f32,f32x3)", &SampledTextureSampleLodCompareOffset_Texture3D } /* 2795 */,
-    std::pair{ "textureSampleLodOffset", &TextureSampleLodOffset_Texture1D } /* 2796 */,
-    std::pair{ "textureSampleLodOffset", &SampledTextureSampleLodOffset_Texture1D } /* 2797 */,
-    std::pair{ "textureSampleLodOffset", &TextureSampleLodOffset_Texture2D } /* 2798 */,
-    std::pair{ "textureSampleLodOffset", &SampledTextureSampleLodOffset_Texture2D } /* 2799 */,
-    std::pair{ "textureSampleLodOffset", &TextureSampleLodOffset_Texture3D } /* 2800 */,
-    std::pair{ "textureSampleLodOffset", &SampledTextureSampleLodOffset_Texture3D } /* 2801 */,
-    std::pair{ "textureSampleLodOffset", &TextureSampleLodOffset_Texture1DArray } /* 2802 */,
-    std::pair{ "textureSampleLodOffset", &SampledTextureSampleLodOffset_Texture1DArray } /* 2803 */,
-    std::pair{ "textureSampleLodOffset", &TextureSampleLodOffset_Texture2DArray } /* 2804 */,
-    std::pair{ "textureSampleLodOffset", &SampledTextureSampleLodOffset_Texture2DArray } /* 2805 */,
-    std::pair{ "textureSampleLodOffset(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleLodOffset_Texture1D } /* 2806 */,
-    std::pair{ "textureSampleLodOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleLodOffset_Texture1DArray } /* 2807 */,
-    std::pair{ "textureSampleLodOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleLodOffset_Texture2D } /* 2808 */,
-    std::pair{ "textureSampleLodOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleLodOffset_Texture2DArray } /* 2809 */,
-    std::pair{ "textureSampleLodOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleLodOffset_Texture3D } /* 2810 */,
-    std::pair{ "textureSampleLodOffset(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleLodOffset_Texture1D } /* 2811 */,
-    std::pair{ "textureSampleLodOffset(uniform *textureSampled1DArray,f32x2,f32,f32x2)", &SampledTextureSampleLodOffset_Texture1DArray } /* 2812 */,
-    std::pair{ "textureSampleLodOffset(uniform *textureSampled2D,f32x2,f32,f32x2)", &SampledTextureSampleLodOffset_Texture2D } /* 2813 */,
-    std::pair{ "textureSampleLodOffset(uniform *textureSampled2DArray,f32x3,f32,f32x3)", &SampledTextureSampleLodOffset_Texture2DArray } /* 2814 */,
-    std::pair{ "textureSampleLodOffset(uniform *textureSampled3D,f32x3,f32,f32x3)", &SampledTextureSampleLodOffset_Texture3D } /* 2815 */,
-    std::pair{ "textureSampleLodProj", &TextureSampleLodProj_Texture1D } /* 2816 */,
-    std::pair{ "textureSampleLodProj", &SampledTextureSampleLodProj_Texture1D } /* 2817 */,
-    std::pair{ "textureSampleLodProj", &TextureSampleLodProj_Texture2D } /* 2818 */,
-    std::pair{ "textureSampleLodProj", &SampledTextureSampleLodProj_Texture2D } /* 2819 */,
-    std::pair{ "textureSampleLodProj", &TextureSampleLodProj_Texture3D } /* 2820 */,
-    std::pair{ "textureSampleLodProj", &SampledTextureSampleLodProj_Texture3D } /* 2821 */,
-    std::pair{ "textureSampleLodProj(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleLodProj_Texture1D } /* 2822 */,
-    std::pair{ "textureSampleLodProj(uniform *texture2D,uniform *sampler,f32x2,f32,f32)", &TextureSampleLodProj_Texture2D } /* 2823 */,
-    std::pair{ "textureSampleLodProj(uniform *texture3D,uniform *sampler,f32x3,f32,f32)", &TextureSampleLodProj_Texture3D } /* 2824 */,
-    std::pair{ "textureSampleLodProj(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleLodProj_Texture1D } /* 2825 */,
-    std::pair{ "textureSampleLodProj(uniform *textureSampled2D,f32x2,f32,f32)", &SampledTextureSampleLodProj_Texture2D } /* 2826 */,
-    std::pair{ "textureSampleLodProj(uniform *textureSampled3D,f32x3,f32,f32)", &SampledTextureSampleLodProj_Texture3D } /* 2827 */,
-    std::pair{ "textureSampleLodProjCompare", &TextureSampleLodProjCompare_Texture1D } /* 2828 */,
-    std::pair{ "textureSampleLodProjCompare", &SampledTextureSampleLodProjCompare_Texture1D } /* 2829 */,
-    std::pair{ "textureSampleLodProjCompare", &TextureSampleLodProjCompare_Texture2D } /* 2830 */,
-    std::pair{ "textureSampleLodProjCompare", &SampledTextureSampleLodProjCompare_Texture2D } /* 2831 */,
-    std::pair{ "textureSampleLodProjCompare", &TextureSampleLodProjCompare_Texture3D } /* 2832 */,
-    std::pair{ "textureSampleLodProjCompare", &SampledTextureSampleLodProjCompare_Texture3D } /* 2833 */,
-    std::pair{ "textureSampleLodProjCompare(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleLodProjCompare_Texture1D } /* 2834 */,
-    std::pair{ "textureSampleLodProjCompare(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32)", &TextureSampleLodProjCompare_Texture2D } /* 2835 */,
-    std::pair{ "textureSampleLodProjCompare(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32)", &TextureSampleLodProjCompare_Texture3D } /* 2836 */,
-    std::pair{ "textureSampleLodProjCompare(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleLodProjCompare_Texture1D } /* 2837 */,
-    std::pair{ "textureSampleLodProjCompare(uniform *textureSampled2D,f32x2,f32,f32,f32)", &SampledTextureSampleLodProjCompare_Texture2D } /* 2838 */,
-    std::pair{ "textureSampleLodProjCompare(uniform *textureSampled3D,f32x3,f32,f32,f32)", &SampledTextureSampleLodProjCompare_Texture3D } /* 2839 */,
-    std::pair{ "textureSampleLodProjCompareOffset", &TextureSampleLodProjCompareOffset_Texture1D } /* 2840 */,
-    std::pair{ "textureSampleLodProjCompareOffset", &SampledTextureSampleLodProjCompareOffset_Texture1D } /* 2841 */,
-    std::pair{ "textureSampleLodProjCompareOffset", &TextureSampleLodProjCompareOffset_Texture2D } /* 2842 */,
-    std::pair{ "textureSampleLodProjCompareOffset", &SampledTextureSampleLodProjCompareOffset_Texture2D } /* 2843 */,
-    std::pair{ "textureSampleLodProjCompareOffset", &TextureSampleLodProjCompareOffset_Texture3D } /* 2844 */,
-    std::pair{ "textureSampleLodProjCompareOffset", &SampledTextureSampleLodProjCompareOffset_Texture3D } /* 2845 */,
-    std::pair{ "textureSampleLodProjCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)", &TextureSampleLodProjCompareOffset_Texture1D } /* 2846 */,
-    std::pair{ "textureSampleLodProjCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32,f32x2)", &TextureSampleLodProjCompareOffset_Texture2D } /* 2847 */,
-    std::pair{ "textureSampleLodProjCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32,f32x3)", &TextureSampleLodProjCompareOffset_Texture3D } /* 2848 */,
-    std::pair{ "textureSampleLodProjCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32)", &SampledTextureSampleLodProjCompareOffset_Texture1D } /* 2849 */,
-    std::pair{ "textureSampleLodProjCompareOffset(uniform *textureSampled2D,f32x2,f32,f32,f32,f32x2)", &SampledTextureSampleLodProjCompareOffset_Texture2D } /* 2850 */,
-    std::pair{ "textureSampleLodProjCompareOffset(uniform *textureSampled3D,f32x3,f32,f32,f32,f32x3)", &SampledTextureSampleLodProjCompareOffset_Texture3D } /* 2851 */,
-    std::pair{ "textureSampleLodProjOffset", &TextureSampleLodProjOffset_Texture1D } /* 2852 */,
-    std::pair{ "textureSampleLodProjOffset", &SampledTextureSampleLodProjOffset_Texture1D } /* 2853 */,
-    std::pair{ "textureSampleLodProjOffset", &TextureSampleLodProjOffset_Texture2D } /* 2854 */,
-    std::pair{ "textureSampleLodProjOffset", &SampledTextureSampleLodProjOffset_Texture2D } /* 2855 */,
-    std::pair{ "textureSampleLodProjOffset", &TextureSampleLodProjOffset_Texture3D } /* 2856 */,
-    std::pair{ "textureSampleLodProjOffset", &SampledTextureSampleLodProjOffset_Texture3D } /* 2857 */,
-    std::pair{ "textureSampleLodProjOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleLodProjOffset_Texture1D } /* 2858 */,
-    std::pair{ "textureSampleLodProjOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleLodProjOffset_Texture2D } /* 2859 */,
-    std::pair{ "textureSampleLodProjOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleLodProjOffset_Texture3D } /* 2860 */,
-    std::pair{ "textureSampleLodProjOffset(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleLodProjOffset_Texture1D } /* 2861 */,
-    std::pair{ "textureSampleLodProjOffset(uniform *textureSampled2D,f32x2,f32,f32,f32x2)", &SampledTextureSampleLodProjOffset_Texture2D } /* 2862 */,
-    std::pair{ "textureSampleLodProjOffset(uniform *textureSampled3D,f32x3,f32,f32,f32x3)", &SampledTextureSampleLodProjOffset_Texture3D } /* 2863 */,
-    std::pair{ "textureSampleOffset", &TextureSampleOffset_Texture1D } /* 2864 */,
-    std::pair{ "textureSampleOffset", &SampledTextureSampleOffset_Texture1D } /* 2865 */,
-    std::pair{ "textureSampleOffset", &TextureSampleOffset_Texture2D } /* 2866 */,
-    std::pair{ "textureSampleOffset", &SampledTextureSampleOffset_Texture2D } /* 2867 */,
-    std::pair{ "textureSampleOffset", &TextureSampleOffset_Texture3D } /* 2868 */,
-    std::pair{ "textureSampleOffset", &SampledTextureSampleOffset_Texture3D } /* 2869 */,
-    std::pair{ "textureSampleOffset", &TextureSampleOffset_Texture1DArray } /* 2870 */,
-    std::pair{ "textureSampleOffset", &SampledTextureSampleOffset_Texture1DArray } /* 2871 */,
-    std::pair{ "textureSampleOffset", &TextureSampleOffset_Texture2DArray } /* 2872 */,
-    std::pair{ "textureSampleOffset", &SampledTextureSampleOffset_Texture2DArray } /* 2873 */,
-    std::pair{ "textureSampleOffset(uniform *texture1D,uniform *sampler,f32,f32)", &TextureSampleOffset_Texture1D } /* 2874 */,
-    std::pair{ "textureSampleOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32x2)", &TextureSampleOffset_Texture1DArray } /* 2875 */,
-    std::pair{ "textureSampleOffset(uniform *texture2D,uniform *sampler,f32x2,f32x2)", &TextureSampleOffset_Texture2D } /* 2876 */,
-    std::pair{ "textureSampleOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32x3)", &TextureSampleOffset_Texture2DArray } /* 2877 */,
-    std::pair{ "textureSampleOffset(uniform *texture3D,uniform *sampler,f32x3,f32x3)", &TextureSampleOffset_Texture3D } /* 2878 */,
-    std::pair{ "textureSampleOffset(uniform *textureSampled1D,f32,f32)", &SampledTextureSampleOffset_Texture1D } /* 2879 */,
-    std::pair{ "textureSampleOffset(uniform *textureSampled1DArray,f32x2,f32x2)", &SampledTextureSampleOffset_Texture1DArray } /* 2880 */,
-    std::pair{ "textureSampleOffset(uniform *textureSampled2D,f32x2,f32x2)", &SampledTextureSampleOffset_Texture2D } /* 2881 */,
-    std::pair{ "textureSampleOffset(uniform *textureSampled2DArray,f32x3,f32x3)", &SampledTextureSampleOffset_Texture2DArray } /* 2882 */,
-    std::pair{ "textureSampleOffset(uniform *textureSampled3D,f32x3,f32x3)", &SampledTextureSampleOffset_Texture3D } /* 2883 */,
-    std::pair{ "textureSampleProj", &TextureSampleProj_Texture1D } /* 2884 */,
-    std::pair{ "textureSampleProj", &SampledTextureSampleProj_Texture1D } /* 2885 */,
-    std::pair{ "textureSampleProj", &TextureSampleProj_Texture2D } /* 2886 */,
-    std::pair{ "textureSampleProj", &SampledTextureSampleProj_Texture2D } /* 2887 */,
-    std::pair{ "textureSampleProj", &TextureSampleProj_Texture3D } /* 2888 */,
-    std::pair{ "textureSampleProj", &SampledTextureSampleProj_Texture3D } /* 2889 */,
-    std::pair{ "textureSampleProj(uniform *texture1D,uniform *sampler,f32,f32)", &TextureSampleProj_Texture1D } /* 2890 */,
-    std::pair{ "textureSampleProj(uniform *texture2D,uniform *sampler,f32x2,f32)", &TextureSampleProj_Texture2D } /* 2891 */,
-    std::pair{ "textureSampleProj(uniform *texture3D,uniform *sampler,f32x3,f32)", &TextureSampleProj_Texture3D } /* 2892 */,
-    std::pair{ "textureSampleProj(uniform *textureSampled1D,f32,f32)", &SampledTextureSampleProj_Texture1D } /* 2893 */,
-    std::pair{ "textureSampleProj(uniform *textureSampled2D,f32x2,f32)", &SampledTextureSampleProj_Texture2D } /* 2894 */,
-    std::pair{ "textureSampleProj(uniform *textureSampled3D,f32x3,f32)", &SampledTextureSampleProj_Texture3D } /* 2895 */,
-    std::pair{ "textureSampleProjCompare", &TextureSampleProjCompare_Texture1D } /* 2896 */,
-    std::pair{ "textureSampleProjCompare", &SampledTextureSampleProjCompare_Texture1D } /* 2897 */,
-    std::pair{ "textureSampleProjCompare", &TextureSampleProjCompare_Texture2D } /* 2898 */,
-    std::pair{ "textureSampleProjCompare", &SampledTextureSampleProjCompare_Texture2D } /* 2899 */,
-    std::pair{ "textureSampleProjCompare", &TextureSampleProjCompare_Texture3D } /* 2900 */,
-    std::pair{ "textureSampleProjCompare", &SampledTextureSampleProjCompare_Texture3D } /* 2901 */,
-    std::pair{ "textureSampleProjCompare(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleProjCompare_Texture1D } /* 2902 */,
-    std::pair{ "textureSampleProjCompare(uniform *texture2D,uniform *sampler,f32x2,f32,f32)", &TextureSampleProjCompare_Texture2D } /* 2903 */,
-    std::pair{ "textureSampleProjCompare(uniform *texture3D,uniform *sampler,f32x3,f32,f32)", &TextureSampleProjCompare_Texture3D } /* 2904 */,
-    std::pair{ "textureSampleProjCompare(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleProjCompare_Texture1D } /* 2905 */,
-    std::pair{ "textureSampleProjCompare(uniform *textureSampled2D,f32x2,f32,f32)", &SampledTextureSampleProjCompare_Texture2D } /* 2906 */,
-    std::pair{ "textureSampleProjCompare(uniform *textureSampled3D,f32x3,f32,f32)", &SampledTextureSampleProjCompare_Texture3D } /* 2907 */,
-    std::pair{ "textureSampleProjCompareOffset", &TextureSampleProjCompareOffset_Texture1D } /* 2908 */,
-    std::pair{ "textureSampleProjCompareOffset", &SampledTextureSampleProjCompareOffset_Texture1D } /* 2909 */,
-    std::pair{ "textureSampleProjCompareOffset", &TextureSampleProjCompareOffset_Texture2D } /* 2910 */,
-    std::pair{ "textureSampleProjCompareOffset", &SampledTextureSampleProjCompareOffset_Texture2D } /* 2911 */,
-    std::pair{ "textureSampleProjCompareOffset", &TextureSampleProjCompareOffset_Texture3D } /* 2912 */,
-    std::pair{ "textureSampleProjCompareOffset", &SampledTextureSampleProjCompareOffset_Texture3D } /* 2913 */,
-    std::pair{ "textureSampleProjCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleProjCompareOffset_Texture1D } /* 2914 */,
-    std::pair{ "textureSampleProjCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleProjCompareOffset_Texture2D } /* 2915 */,
-    std::pair{ "textureSampleProjCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleProjCompareOffset_Texture3D } /* 2916 */,
-    std::pair{ "textureSampleProjCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleProjCompareOffset_Texture1D } /* 2917 */,
-    std::pair{ "textureSampleProjCompareOffset(uniform *textureSampled2D,f32x2,f32,f32,f32x2)", &SampledTextureSampleProjCompareOffset_Texture2D } /* 2918 */,
-    std::pair{ "textureSampleProjCompareOffset(uniform *textureSampled3D,f32x3,f32,f32,f32x3)", &SampledTextureSampleProjCompareOffset_Texture3D } /* 2919 */,
-    std::pair{ "textureSampleProjOffset", &TextureSampleProjOffset_Texture1D } /* 2920 */,
-    std::pair{ "textureSampleProjOffset", &SampledTextureSampleProjOffset_Texture1D } /* 2921 */,
-    std::pair{ "textureSampleProjOffset", &TextureSampleProjOffset_Texture2D } /* 2922 */,
-    std::pair{ "textureSampleProjOffset", &SampledTextureSampleProjOffset_Texture2D } /* 2923 */,
-    std::pair{ "textureSampleProjOffset", &TextureSampleProjOffset_Texture3D } /* 2924 */,
-    std::pair{ "textureSampleProjOffset", &SampledTextureSampleProjOffset_Texture3D } /* 2925 */,
-    std::pair{ "textureSampleProjOffset(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleProjOffset_Texture1D } /* 2926 */,
-    std::pair{ "textureSampleProjOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleProjOffset_Texture2D } /* 2927 */,
-    std::pair{ "textureSampleProjOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleProjOffset_Texture3D } /* 2928 */,
-    std::pair{ "textureSampleProjOffset(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleProjOffset_Texture1D } /* 2929 */,
-    std::pair{ "textureSampleProjOffset(uniform *textureSampled2D,f32x2,f32,f32x2)", &SampledTextureSampleProjOffset_Texture2D } /* 2930 */,
-    std::pair{ "textureSampleProjOffset(uniform *textureSampled3D,f32x3,f32,f32x3)", &SampledTextureSampleProjOffset_Texture3D } /* 2931 */,
-    std::pair{ "textureSampled1D", &SampledTexture1DType } /* 2932 */,
-    std::pair{ "textureSampled1DArray", &SampledTexture1DArrayType } /* 2933 */,
-    std::pair{ "textureSampled2D", &SampledTexture2DType } /* 2934 */,
-    std::pair{ "textureSampled2DArray", &SampledTexture2DArrayType } /* 2935 */,
-    std::pair{ "textureSampled2DMS", &SampledTexture2DMSType } /* 2936 */,
-    std::pair{ "textureSampled2DMSArray", &SampledTexture2DMSArrayType } /* 2937 */,
-    std::pair{ "textureSampled3D", &SampledTexture3DType } /* 2938 */,
-    std::pair{ "textureSampledCube", &SampledTextureCubeType } /* 2939 */,
-    std::pair{ "textureSampledCubeArray", &SampledTextureCubeArrayType } /* 2940 */,
-    std::pair{ "textureStore", &TextureStore_Texture1D } /* 2941 */,
-    std::pair{ "textureStore", &TextureStore_Texture2D } /* 2942 */,
-    std::pair{ "textureStore", &TextureStore_Texture3D } /* 2943 */,
-    std::pair{ "textureStore", &TextureStore_TextureCube } /* 2944 */,
-    std::pair{ "textureStore", &TextureStore_Texture1DArray } /* 2945 */,
-    std::pair{ "textureStore", &TextureStore_Texture2DArray } /* 2946 */,
-    std::pair{ "textureStore", &TextureStore_TextureCubeArray } /* 2947 */,
-    std::pair{ "textureStore", &TextureStore_Texture2DMS } /* 2948 */,
-    std::pair{ "textureStore", &TextureStore_Texture2DMSArray } /* 2949 */,
-    std::pair{ "textureStore(uniform *mutable texture1D,i32,f32x4)", &TextureStore_Texture1D } /* 2950 */,
-    std::pair{ "textureStore(uniform *mutable texture1DArray,i32x2,f32x4)", &TextureStore_Texture1DArray } /* 2951 */,
-    std::pair{ "textureStore(uniform *mutable texture2D,i32x2,f32x4)", &TextureStore_Texture2D } /* 2952 */,
-    std::pair{ "textureStore(uniform *mutable texture2DArray,i32x3,f32x4)", &TextureStore_Texture2DArray } /* 2953 */,
-    std::pair{ "textureStore(uniform *mutable texture2DMS,i32x2,f32x4)", &TextureStore_Texture2DMS } /* 2954 */,
-    std::pair{ "textureStore(uniform *mutable texture2DMSArray,i32x3,f32x4)", &TextureStore_Texture2DMSArray } /* 2955 */,
-    std::pair{ "textureStore(uniform *mutable texture3D,i32x3,f32x4)", &TextureStore_Texture3D } /* 2956 */,
-    std::pair{ "textureStore(uniform *mutable textureCube,i32x3,f32x4)", &TextureStore_TextureCube } /* 2957 */,
-    std::pair{ "textureStore(uniform *mutable textureCubeArray,i32x4,f32x4)", &TextureStore_TextureCubeArray } /* 2958 */,
-    std::pair{ "textureStoreMip", &TextureStoreMip_Texture1D } /* 2959 */,
-    std::pair{ "textureStoreMip", &TextureStoreMip_Texture2D } /* 2960 */,
-    std::pair{ "textureStoreMip", &TextureStoreMip_Texture3D } /* 2961 */,
-    std::pair{ "textureStoreMip", &TextureStoreMip_TextureCube } /* 2962 */,
-    std::pair{ "textureStoreMip", &TextureStoreMip_Texture1DArray } /* 2963 */,
-    std::pair{ "textureStoreMip", &TextureStoreMip_Texture2DArray } /* 2964 */,
-    std::pair{ "textureStoreMip", &TextureStoreMip_TextureCubeArray } /* 2965 */,
-    std::pair{ "textureStoreMip", &TextureStoreMip_Texture2DMS } /* 2966 */,
-    std::pair{ "textureStoreMip", &TextureStoreMip_Texture2DMSArray } /* 2967 */,
-    std::pair{ "textureStoreMip(uniform *mutable texture1D,i32,i32,f32x4)", &TextureStoreMip_Texture1D } /* 2968 */,
-    std::pair{ "textureStoreMip(uniform *mutable texture1DArray,i32x2,i32,f32x4)", &TextureStoreMip_Texture1DArray } /* 2969 */,
-    std::pair{ "textureStoreMip(uniform *mutable texture2D,i32x2,i32,f32x4)", &TextureStoreMip_Texture2D } /* 2970 */,
-    std::pair{ "textureStoreMip(uniform *mutable texture2DArray,i32x3,i32,f32x4)", &TextureStoreMip_Texture2DArray } /* 2971 */,
-    std::pair{ "textureStoreMip(uniform *mutable texture2DMS,i32x2,i32,f32x4)", &TextureStoreMip_Texture2DMS } /* 2972 */,
-    std::pair{ "textureStoreMip(uniform *mutable texture2DMSArray,i32x3,i32,f32x4)", &TextureStoreMip_Texture2DMSArray } /* 2973 */,
-    std::pair{ "textureStoreMip(uniform *mutable texture3D,i32x3,i32,f32x4)", &TextureStoreMip_Texture3D } /* 2974 */,
-    std::pair{ "textureStoreMip(uniform *mutable textureCube,i32x3,i32,f32x4)", &TextureStoreMip_TextureCube } /* 2975 */,
-    std::pair{ "textureStoreMip(uniform *mutable textureCubeArray,i32x4,i32,f32x4)", &TextureStoreMip_TextureCubeArray } /* 2976 */,
-    std::pair{ "transpose", &transpose_Float32x2x2 } /* 2977 */,
-    std::pair{ "transpose", &transpose_Float16x2x2 } /* 2978 */,
-    std::pair{ "transpose", &transpose_Float32x2x3 } /* 2979 */,
-    std::pair{ "transpose", &transpose_Float16x2x3 } /* 2980 */,
-    std::pair{ "transpose", &transpose_Float32x2x4 } /* 2981 */,
-    std::pair{ "transpose", &transpose_Float16x2x4 } /* 2982 */,
-    std::pair{ "transpose", &transpose_Float32x3x2 } /* 2983 */,
-    std::pair{ "transpose", &transpose_Float16x3x2 } /* 2984 */,
-    std::pair{ "transpose", &transpose_Float32x3x3 } /* 2985 */,
-    std::pair{ "transpose", &transpose_Float16x3x3 } /* 2986 */,
-    std::pair{ "transpose", &transpose_Float32x3x4 } /* 2987 */,
-    std::pair{ "transpose", &transpose_Float16x3x4 } /* 2988 */,
-    std::pair{ "transpose", &transpose_Float32x4x2 } /* 2989 */,
-    std::pair{ "transpose", &transpose_Float16x4x2 } /* 2990 */,
-    std::pair{ "transpose", &transpose_Float32x4x3 } /* 2991 */,
-    std::pair{ "transpose", &transpose_Float16x4x3 } /* 2992 */,
-    std::pair{ "transpose", &transpose_Float32x4x4 } /* 2993 */,
-    std::pair{ "transpose", &transpose_Float16x4x4 } /* 2994 */,
-    std::pair{ "transpose(f16x2x2)", &transpose_Float16x2x2 } /* 2995 */,
-    std::pair{ "transpose(f16x2x3)", &transpose_Float16x2x3 } /* 2996 */,
-    std::pair{ "transpose(f16x2x4)", &transpose_Float16x2x4 } /* 2997 */,
-    std::pair{ "transpose(f16x3x2)", &transpose_Float16x3x2 } /* 2998 */,
-    std::pair{ "transpose(f16x3x3)", &transpose_Float16x3x3 } /* 2999 */,
-    std::pair{ "transpose(f16x3x4)", &transpose_Float16x3x4 } /* 3000 */,
-    std::pair{ "transpose(f16x4x2)", &transpose_Float16x4x2 } /* 3001 */,
-    std::pair{ "transpose(f16x4x3)", &transpose_Float16x4x3 } /* 3002 */,
-    std::pair{ "transpose(f16x4x4)", &transpose_Float16x4x4 } /* 3003 */,
-    std::pair{ "transpose(f32x2x2)", &transpose_Float32x2x2 } /* 3004 */,
-    std::pair{ "transpose(f32x2x3)", &transpose_Float32x2x3 } /* 3005 */,
-    std::pair{ "transpose(f32x2x4)", &transpose_Float32x2x4 } /* 3006 */,
-    std::pair{ "transpose(f32x3x2)", &transpose_Float32x3x2 } /* 3007 */,
-    std::pair{ "transpose(f32x3x3)", &transpose_Float32x3x3 } /* 3008 */,
-    std::pair{ "transpose(f32x3x4)", &transpose_Float32x3x4 } /* 3009 */,
-    std::pair{ "transpose(f32x4x2)", &transpose_Float32x4x2 } /* 3010 */,
-    std::pair{ "transpose(f32x4x3)", &transpose_Float32x4x3 } /* 3011 */,
-    std::pair{ "transpose(f32x4x4)", &transpose_Float32x4x4 } /* 3012 */,
-    std::pair{ "trunc", &trunc_Float32 } /* 3013 */,
-    std::pair{ "trunc", &trunc_Float32x2 } /* 3014 */,
-    std::pair{ "trunc", &trunc_Float32x3 } /* 3015 */,
-    std::pair{ "trunc", &trunc_Float32x4 } /* 3016 */,
-    std::pair{ "trunc", &trunc_Float16 } /* 3017 */,
-    std::pair{ "trunc", &trunc_Float16x2 } /* 3018 */,
-    std::pair{ "trunc", &trunc_Float16x3 } /* 3019 */,
-    std::pair{ "trunc", &trunc_Float16x4 } /* 3020 */,
-    std::pair{ "trunc(f16)", &trunc_Float16 } /* 3021 */,
-    std::pair{ "trunc(f16x2)", &trunc_Float16x2 } /* 3022 */,
-    std::pair{ "trunc(f16x3)", &trunc_Float16x3 } /* 3023 */,
-    std::pair{ "trunc(f16x4)", &trunc_Float16x4 } /* 3024 */,
-    std::pair{ "trunc(f32)", &trunc_Float32 } /* 3025 */,
-    std::pair{ "trunc(f32x2)", &trunc_Float32x2 } /* 3026 */,
-    std::pair{ "trunc(f32x3)", &trunc_Float32x3 } /* 3027 */,
-    std::pair{ "trunc(f32x4)", &trunc_Float32x4 } /* 3028 */,
-    std::pair{ "u16", &UInt16Type } /* 3029 */,
-    std::pair{ "u16", &UInt16_from_Float32 } /* 3030 */,
-    std::pair{ "u16", &UInt16_from_UInt32 } /* 3031 */,
-    std::pair{ "u16", &UInt16_from_Int32 } /* 3032 */,
-    std::pair{ "u16", &UInt16_from_Bool8 } /* 3033 */,
-    std::pair{ "u16", &UInt16_from_Float16 } /* 3034 */,
-    std::pair{ "u16", &UInt16_from_Int16 } /* 3035 */,
-    std::pair{ "u16", &UInt16_ctor0 } /* 3036 */,
-    std::pair{ "u16(b8)", &UInt16_from_Bool8 } /* 3037 */,
-    std::pair{ "u16(f16)", &UInt16_from_Float16 } /* 3038 */,
-    std::pair{ "u16(f32)", &UInt16_from_Float32 } /* 3039 */,
-    std::pair{ "u16(i16)", &UInt16_from_Int16 } /* 3040 */,
-    std::pair{ "u16(i32)", &UInt16_from_Int32 } /* 3041 */,
-    std::pair{ "u16(u16)", &UInt16_ctor0 } /* 3042 */,
-    std::pair{ "u16(u32)", &UInt16_from_UInt32 } /* 3043 */,
-    std::pair{ "u16x2", &UInt16x2Type } /* 3044 */,
-    std::pair{ "u16x2", &UInt16x2_from_Float32x2 } /* 3045 */,
-    std::pair{ "u16x2", &UInt16x2_splat_Float32 } /* 3046 */,
-    std::pair{ "u16x2", &UInt16x2_from_UInt32x2 } /* 3047 */,
-    std::pair{ "u16x2", &UInt16x2_splat_UInt32 } /* 3048 */,
-    std::pair{ "u16x2", &UInt16x2_from_Int32x2 } /* 3049 */,
-    std::pair{ "u16x2", &UInt16x2_splat_Int32 } /* 3050 */,
-    std::pair{ "u16x2", &UInt16x2_from_Bool8x2 } /* 3051 */,
-    std::pair{ "u16x2", &UInt16x2_splat_Bool8 } /* 3052 */,
-    std::pair{ "u16x2", &UInt16x2_from_Float16x2 } /* 3053 */,
-    std::pair{ "u16x2", &UInt16x2_splat_Float16 } /* 3054 */,
-    std::pair{ "u16x2", &UInt16x2_from_UInt16x2 } /* 3055 */,
-    std::pair{ "u16x2", &UInt16x2_splat_UInt16 } /* 3056 */,
-    std::pair{ "u16x2", &UInt16x2_from_Int16x2 } /* 3057 */,
-    std::pair{ "u16x2", &UInt16x2_splat_Int16 } /* 3058 */,
-    std::pair{ "u16x2", &UInt16x2_ctor0 } /* 3059 */,
-    std::pair{ "u16x2(b8)", &UInt16x2_splat_Bool8 } /* 3060 */,
-    std::pair{ "u16x2(b8x2)", &UInt16x2_from_Bool8x2 } /* 3061 */,
-    std::pair{ "u16x2(f16)", &UInt16x2_splat_Float16 } /* 3062 */,
-    std::pair{ "u16x2(f16x2)", &UInt16x2_from_Float16x2 } /* 3063 */,
-    std::pair{ "u16x2(f32)", &UInt16x2_splat_Float32 } /* 3064 */,
-    std::pair{ "u16x2(f32x2)", &UInt16x2_from_Float32x2 } /* 3065 */,
-    std::pair{ "u16x2(i16)", &UInt16x2_splat_Int16 } /* 3066 */,
-    std::pair{ "u16x2(i16x2)", &UInt16x2_from_Int16x2 } /* 3067 */,
-    std::pair{ "u16x2(i32)", &UInt16x2_splat_Int32 } /* 3068 */,
-    std::pair{ "u16x2(i32x2)", &UInt16x2_from_Int32x2 } /* 3069 */,
-    std::pair{ "u16x2(u16)", &UInt16x2_splat_UInt16 } /* 3070 */,
-    std::pair{ "u16x2(u16,u16)", &UInt16x2_ctor0 } /* 3071 */,
-    std::pair{ "u16x2(u16x2)", &UInt16x2_from_UInt16x2 } /* 3072 */,
-    std::pair{ "u16x2(u32)", &UInt16x2_splat_UInt32 } /* 3073 */,
-    std::pair{ "u16x2(u32x2)", &UInt16x2_from_UInt32x2 } /* 3074 */,
-    std::pair{ "u16x3", &UInt16x3Type } /* 3075 */,
-    std::pair{ "u16x3", &UInt16x3_from_Float32x3 } /* 3076 */,
-    std::pair{ "u16x3", &UInt16x3_splat_Float32 } /* 3077 */,
-    std::pair{ "u16x3", &UInt16x3_from_UInt32x3 } /* 3078 */,
-    std::pair{ "u16x3", &UInt16x3_splat_UInt32 } /* 3079 */,
-    std::pair{ "u16x3", &UInt16x3_from_Int32x3 } /* 3080 */,
-    std::pair{ "u16x3", &UInt16x3_splat_Int32 } /* 3081 */,
-    std::pair{ "u16x3", &UInt16x3_from_Bool8x3 } /* 3082 */,
-    std::pair{ "u16x3", &UInt16x3_splat_Bool8 } /* 3083 */,
-    std::pair{ "u16x3", &UInt16x3_from_Float16x3 } /* 3084 */,
-    std::pair{ "u16x3", &UInt16x3_splat_Float16 } /* 3085 */,
-    std::pair{ "u16x3", &UInt16x3_from_UInt16x3 } /* 3086 */,
-    std::pair{ "u16x3", &UInt16x3_splat_UInt16 } /* 3087 */,
-    std::pair{ "u16x3", &UInt16x3_from_Int16x3 } /* 3088 */,
-    std::pair{ "u16x3", &UInt16x3_splat_Int16 } /* 3089 */,
-    std::pair{ "u16x3", &UInt16x3_ctor0 } /* 3090 */,
-    std::pair{ "u16x3", &UInt16x3_ctor1 } /* 3091 */,
-    std::pair{ "u16x3", &UInt16x3_ctor2 } /* 3092 */,
-    std::pair{ "u16x3(b8)", &UInt16x3_splat_Bool8 } /* 3093 */,
-    std::pair{ "u16x3(b8x3)", &UInt16x3_from_Bool8x3 } /* 3094 */,
-    std::pair{ "u16x3(f16)", &UInt16x3_splat_Float16 } /* 3095 */,
-    std::pair{ "u16x3(f16x3)", &UInt16x3_from_Float16x3 } /* 3096 */,
-    std::pair{ "u16x3(f32)", &UInt16x3_splat_Float32 } /* 3097 */,
-    std::pair{ "u16x3(f32x3)", &UInt16x3_from_Float32x3 } /* 3098 */,
-    std::pair{ "u16x3(i16)", &UInt16x3_splat_Int16 } /* 3099 */,
-    std::pair{ "u16x3(i16x3)", &UInt16x3_from_Int16x3 } /* 3100 */,
-    std::pair{ "u16x3(i32)", &UInt16x3_splat_Int32 } /* 3101 */,
-    std::pair{ "u16x3(i32x3)", &UInt16x3_from_Int32x3 } /* 3102 */,
-    std::pair{ "u16x3(u16)", &UInt16x3_splat_UInt16 } /* 3103 */,
-    std::pair{ "u16x3(u16,u16,u16)", &UInt16x3_ctor0 } /* 3104 */,
-    std::pair{ "u16x3(u16,u16x2)", &UInt16x3_ctor2 } /* 3105 */,
-    std::pair{ "u16x3(u16x2,u16)", &UInt16x3_ctor1 } /* 3106 */,
-    std::pair{ "u16x3(u16x3)", &UInt16x3_from_UInt16x3 } /* 3107 */,
-    std::pair{ "u16x3(u32)", &UInt16x3_splat_UInt32 } /* 3108 */,
-    std::pair{ "u16x3(u32x3)", &UInt16x3_from_UInt32x3 } /* 3109 */,
-    std::pair{ "u16x4", &UInt16x4Type } /* 3110 */,
-    std::pair{ "u16x4", &UInt16x4_from_Float32x4 } /* 3111 */,
-    std::pair{ "u16x4", &UInt16x4_splat_Float32 } /* 3112 */,
-    std::pair{ "u16x4", &UInt16x4_from_UInt32x4 } /* 3113 */,
-    std::pair{ "u16x4", &UInt16x4_splat_UInt32 } /* 3114 */,
-    std::pair{ "u16x4", &UInt16x4_from_Int32x4 } /* 3115 */,
-    std::pair{ "u16x4", &UInt16x4_splat_Int32 } /* 3116 */,
-    std::pair{ "u16x4", &UInt16x4_from_Bool8x4 } /* 3117 */,
-    std::pair{ "u16x4", &UInt16x4_splat_Bool8 } /* 3118 */,
-    std::pair{ "u16x4", &UInt16x4_from_Float16x4 } /* 3119 */,
-    std::pair{ "u16x4", &UInt16x4_splat_Float16 } /* 3120 */,
-    std::pair{ "u16x4", &UInt16x4_from_UInt16x4 } /* 3121 */,
-    std::pair{ "u16x4", &UInt16x4_splat_UInt16 } /* 3122 */,
-    std::pair{ "u16x4", &UInt16x4_from_Int16x4 } /* 3123 */,
-    std::pair{ "u16x4", &UInt16x4_splat_Int16 } /* 3124 */,
-    std::pair{ "u16x4", &UInt16x4_ctor0 } /* 3125 */,
-    std::pair{ "u16x4", &UInt16x4_ctor1 } /* 3126 */,
-    std::pair{ "u16x4", &UInt16x4_ctor2 } /* 3127 */,
-    std::pair{ "u16x4", &UInt16x4_ctor3 } /* 3128 */,
-    std::pair{ "u16x4", &UInt16x4_ctor4 } /* 3129 */,
-    std::pair{ "u16x4", &UInt16x4_ctor5 } /* 3130 */,
-    std::pair{ "u16x4", &UInt16x4_ctor6 } /* 3131 */,
-    std::pair{ "u16x4(b8)", &UInt16x4_splat_Bool8 } /* 3132 */,
-    std::pair{ "u16x4(b8x4)", &UInt16x4_from_Bool8x4 } /* 3133 */,
-    std::pair{ "u16x4(f16)", &UInt16x4_splat_Float16 } /* 3134 */,
-    std::pair{ "u16x4(f16x4)", &UInt16x4_from_Float16x4 } /* 3135 */,
-    std::pair{ "u16x4(f32)", &UInt16x4_splat_Float32 } /* 3136 */,
-    std::pair{ "u16x4(f32x4)", &UInt16x4_from_Float32x4 } /* 3137 */,
-    std::pair{ "u16x4(i16)", &UInt16x4_splat_Int16 } /* 3138 */,
-    std::pair{ "u16x4(i16x4)", &UInt16x4_from_Int16x4 } /* 3139 */,
-    std::pair{ "u16x4(i32)", &UInt16x4_splat_Int32 } /* 3140 */,
-    std::pair{ "u16x4(i32x4)", &UInt16x4_from_Int32x4 } /* 3141 */,
-    std::pair{ "u16x4(u16)", &UInt16x4_splat_UInt16 } /* 3142 */,
-    std::pair{ "u16x4(u16,u16,u16,u16)", &UInt16x4_ctor0 } /* 3143 */,
-    std::pair{ "u16x4(u16,u16,u16x2)", &UInt16x4_ctor3 } /* 3144 */,
-    std::pair{ "u16x4(u16,u16x2,u16)", &UInt16x4_ctor2 } /* 3145 */,
-    std::pair{ "u16x4(u16,u16x3)", &UInt16x4_ctor6 } /* 3146 */,
-    std::pair{ "u16x4(u16x2,u16,u16)", &UInt16x4_ctor1 } /* 3147 */,
-    std::pair{ "u16x4(u16x2,u16x2)", &UInt16x4_ctor4 } /* 3148 */,
-    std::pair{ "u16x4(u16x3,u16)", &UInt16x4_ctor5 } /* 3149 */,
-    std::pair{ "u16x4(u16x4)", &UInt16x4_from_UInt16x4 } /* 3150 */,
-    std::pair{ "u16x4(u32)", &UInt16x4_splat_UInt32 } /* 3151 */,
-    std::pair{ "u16x4(u32x4)", &UInt16x4_from_UInt32x4 } /* 3152 */,
-    std::pair{ "u32", &UInt32Type } /* 3153 */,
-    std::pair{ "u32", &UInt32_from_Float32 } /* 3154 */,
-    std::pair{ "u32", &UInt32_from_Int32 } /* 3155 */,
-    std::pair{ "u32", &UInt32_from_Bool8 } /* 3156 */,
-    std::pair{ "u32", &UInt32_from_Float16 } /* 3157 */,
-    std::pair{ "u32", &UInt32_from_UInt16 } /* 3158 */,
-    std::pair{ "u32", &UInt32_from_Int16 } /* 3159 */,
-    std::pair{ "u32", &UInt32_ctor0 } /* 3160 */,
-    std::pair{ "u32(AddressMode)", &AddressModeType.fromUnderlyingType } /* 3161 */,
-    std::pair{ "u32(BlendColorMask)", &BlendColorMaskType.fromUnderlyingType } /* 3162 */,
-    std::pair{ "u32(BlendFactor)", &BlendFactorType.fromUnderlyingType } /* 3163 */,
-    std::pair{ "u32(BlendOperation)", &BlendOperationType.fromUnderlyingType } /* 3164 */,
-    std::pair{ "u32(Color)", &ColorType.fromUnderlyingType } /* 3165 */,
-    std::pair{ "u32(CompareMode)", &CompareModeType.fromUnderlyingType } /* 3166 */,
-    std::pair{ "u32(CullFace)", &CullFaceType.fromUnderlyingType } /* 3167 */,
-    std::pair{ "u32(ExecutionScope)", &ExecutionScopeType.fromUnderlyingType } /* 3168 */,
-    std::pair{ "u32(FilterMode)", &FilterModeType.fromUnderlyingType } /* 3169 */,
-    std::pair{ "u32(LogicOp)", &LogicOpType.fromUnderlyingType } /* 3170 */,
-    std::pair{ "u32(MemorySemantics)", &MemorySemanticsType.fromUnderlyingType } /* 3171 */,
-    std::pair{ "u32(PolygonMode)", &PolygonModeType.fromUnderlyingType } /* 3172 */,
-    std::pair{ "u32(StencilOp)", &StencilOpType.fromUnderlyingType } /* 3173 */,
-    std::pair{ "u32(WindingOrder)", &WindingOrderType.fromUnderlyingType } /* 3174 */,
-    std::pair{ "u32(b8)", &UInt32_from_Bool8 } /* 3175 */,
-    std::pair{ "u32(f16)", &UInt32_from_Float16 } /* 3176 */,
-    std::pair{ "u32(f32)", &UInt32_from_Float32 } /* 3177 */,
-    std::pair{ "u32(i16)", &UInt32_from_Int16 } /* 3178 */,
-    std::pair{ "u32(i32)", &UInt32_from_Int32 } /* 3179 */,
-    std::pair{ "u32(u16)", &UInt32_from_UInt16 } /* 3180 */,
-    std::pair{ "u32(u32)", &UInt32_ctor0 } /* 3181 */,
-    std::pair{ "u32x2", &UInt32x2Type } /* 3182 */,
-    std::pair{ "u32x2", &UInt32x2_from_Float32x2 } /* 3183 */,
-    std::pair{ "u32x2", &UInt32x2_splat_Float32 } /* 3184 */,
-    std::pair{ "u32x2", &UInt32x2_from_UInt32x2 } /* 3185 */,
-    std::pair{ "u32x2", &UInt32x2_splat_UInt32 } /* 3186 */,
-    std::pair{ "u32x2", &UInt32x2_from_Int32x2 } /* 3187 */,
-    std::pair{ "u32x2", &UInt32x2_splat_Int32 } /* 3188 */,
-    std::pair{ "u32x2", &UInt32x2_from_Bool8x2 } /* 3189 */,
-    std::pair{ "u32x2", &UInt32x2_splat_Bool8 } /* 3190 */,
-    std::pair{ "u32x2", &UInt32x2_from_Float16x2 } /* 3191 */,
-    std::pair{ "u32x2", &UInt32x2_splat_Float16 } /* 3192 */,
-    std::pair{ "u32x2", &UInt32x2_from_UInt16x2 } /* 3193 */,
-    std::pair{ "u32x2", &UInt32x2_splat_UInt16 } /* 3194 */,
-    std::pair{ "u32x2", &UInt32x2_from_Int16x2 } /* 3195 */,
-    std::pair{ "u32x2", &UInt32x2_splat_Int16 } /* 3196 */,
-    std::pair{ "u32x2", &UInt32x2_ctor0 } /* 3197 */,
-    std::pair{ "u32x2(b8)", &UInt32x2_splat_Bool8 } /* 3198 */,
-    std::pair{ "u32x2(b8x2)", &UInt32x2_from_Bool8x2 } /* 3199 */,
-    std::pair{ "u32x2(f16)", &UInt32x2_splat_Float16 } /* 3200 */,
-    std::pair{ "u32x2(f16x2)", &UInt32x2_from_Float16x2 } /* 3201 */,
-    std::pair{ "u32x2(f32)", &UInt32x2_splat_Float32 } /* 3202 */,
-    std::pair{ "u32x2(f32x2)", &UInt32x2_from_Float32x2 } /* 3203 */,
-    std::pair{ "u32x2(i16)", &UInt32x2_splat_Int16 } /* 3204 */,
-    std::pair{ "u32x2(i16x2)", &UInt32x2_from_Int16x2 } /* 3205 */,
-    std::pair{ "u32x2(i32)", &UInt32x2_splat_Int32 } /* 3206 */,
-    std::pair{ "u32x2(i32x2)", &UInt32x2_from_Int32x2 } /* 3207 */,
-    std::pair{ "u32x2(u16)", &UInt32x2_splat_UInt16 } /* 3208 */,
-    std::pair{ "u32x2(u16x2)", &UInt32x2_from_UInt16x2 } /* 3209 */,
-    std::pair{ "u32x2(u32)", &UInt32x2_splat_UInt32 } /* 3210 */,
-    std::pair{ "u32x2(u32,u32)", &UInt32x2_ctor0 } /* 3211 */,
-    std::pair{ "u32x2(u32x2)", &UInt32x2_from_UInt32x2 } /* 3212 */,
-    std::pair{ "u32x3", &UInt32x3Type } /* 3213 */,
-    std::pair{ "u32x3", &UInt32x3_from_Float32x3 } /* 3214 */,
-    std::pair{ "u32x3", &UInt32x3_splat_Float32 } /* 3215 */,
-    std::pair{ "u32x3", &UInt32x3_from_UInt32x3 } /* 3216 */,
-    std::pair{ "u32x3", &UInt32x3_splat_UInt32 } /* 3217 */,
-    std::pair{ "u32x3", &UInt32x3_from_Int32x3 } /* 3218 */,
-    std::pair{ "u32x3", &UInt32x3_splat_Int32 } /* 3219 */,
-    std::pair{ "u32x3", &UInt32x3_from_Bool8x3 } /* 3220 */,
-    std::pair{ "u32x3", &UInt32x3_splat_Bool8 } /* 3221 */,
-    std::pair{ "u32x3", &UInt32x3_from_Float16x3 } /* 3222 */,
-    std::pair{ "u32x3", &UInt32x3_splat_Float16 } /* 3223 */,
-    std::pair{ "u32x3", &UInt32x3_from_UInt16x3 } /* 3224 */,
-    std::pair{ "u32x3", &UInt32x3_splat_UInt16 } /* 3225 */,
-    std::pair{ "u32x3", &UInt32x3_from_Int16x3 } /* 3226 */,
-    std::pair{ "u32x3", &UInt32x3_splat_Int16 } /* 3227 */,
-    std::pair{ "u32x3", &UInt32x3_ctor0 } /* 3228 */,
-    std::pair{ "u32x3", &UInt32x3_ctor1 } /* 3229 */,
-    std::pair{ "u32x3", &UInt32x3_ctor2 } /* 3230 */,
-    std::pair{ "u32x3(b8)", &UInt32x3_splat_Bool8 } /* 3231 */,
-    std::pair{ "u32x3(b8x3)", &UInt32x3_from_Bool8x3 } /* 3232 */,
-    std::pair{ "u32x3(f16)", &UInt32x3_splat_Float16 } /* 3233 */,
-    std::pair{ "u32x3(f16x3)", &UInt32x3_from_Float16x3 } /* 3234 */,
-    std::pair{ "u32x3(f32)", &UInt32x3_splat_Float32 } /* 3235 */,
-    std::pair{ "u32x3(f32x3)", &UInt32x3_from_Float32x3 } /* 3236 */,
-    std::pair{ "u32x3(i16)", &UInt32x3_splat_Int16 } /* 3237 */,
-    std::pair{ "u32x3(i16x3)", &UInt32x3_from_Int16x3 } /* 3238 */,
-    std::pair{ "u32x3(i32)", &UInt32x3_splat_Int32 } /* 3239 */,
-    std::pair{ "u32x3(i32x3)", &UInt32x3_from_Int32x3 } /* 3240 */,
-    std::pair{ "u32x3(u16)", &UInt32x3_splat_UInt16 } /* 3241 */,
-    std::pair{ "u32x3(u16x3)", &UInt32x3_from_UInt16x3 } /* 3242 */,
-    std::pair{ "u32x3(u32)", &UInt32x3_splat_UInt32 } /* 3243 */,
-    std::pair{ "u32x3(u32,u32,u32)", &UInt32x3_ctor0 } /* 3244 */,
-    std::pair{ "u32x3(u32,u32x2)", &UInt32x3_ctor2 } /* 3245 */,
-    std::pair{ "u32x3(u32x2,u32)", &UInt32x3_ctor1 } /* 3246 */,
-    std::pair{ "u32x3(u32x3)", &UInt32x3_from_UInt32x3 } /* 3247 */,
-    std::pair{ "u32x4", &UInt32x4Type } /* 3248 */,
-    std::pair{ "u32x4", &UInt32x4_from_Float32x4 } /* 3249 */,
-    std::pair{ "u32x4", &UInt32x4_splat_Float32 } /* 3250 */,
-    std::pair{ "u32x4", &UInt32x4_from_UInt32x4 } /* 3251 */,
-    std::pair{ "u32x4", &UInt32x4_splat_UInt32 } /* 3252 */,
-    std::pair{ "u32x4", &UInt32x4_from_Int32x4 } /* 3253 */,
-    std::pair{ "u32x4", &UInt32x4_splat_Int32 } /* 3254 */,
-    std::pair{ "u32x4", &UInt32x4_from_Bool8x4 } /* 3255 */,
-    std::pair{ "u32x4", &UInt32x4_splat_Bool8 } /* 3256 */,
-    std::pair{ "u32x4", &UInt32x4_from_Float16x4 } /* 3257 */,
-    std::pair{ "u32x4", &UInt32x4_splat_Float16 } /* 3258 */,
-    std::pair{ "u32x4", &UInt32x4_from_UInt16x4 } /* 3259 */,
-    std::pair{ "u32x4", &UInt32x4_splat_UInt16 } /* 3260 */,
-    std::pair{ "u32x4", &UInt32x4_from_Int16x4 } /* 3261 */,
-    std::pair{ "u32x4", &UInt32x4_splat_Int16 } /* 3262 */,
-    std::pair{ "u32x4", &UInt32x4_ctor0 } /* 3263 */,
-    std::pair{ "u32x4", &UInt32x4_ctor1 } /* 3264 */,
-    std::pair{ "u32x4", &UInt32x4_ctor2 } /* 3265 */,
-    std::pair{ "u32x4", &UInt32x4_ctor3 } /* 3266 */,
-    std::pair{ "u32x4", &UInt32x4_ctor4 } /* 3267 */,
-    std::pair{ "u32x4", &UInt32x4_ctor5 } /* 3268 */,
-    std::pair{ "u32x4", &UInt32x4_ctor6 } /* 3269 */,
-    std::pair{ "u32x4(b8)", &UInt32x4_splat_Bool8 } /* 3270 */,
-    std::pair{ "u32x4(b8x4)", &UInt32x4_from_Bool8x4 } /* 3271 */,
-    std::pair{ "u32x4(f16)", &UInt32x4_splat_Float16 } /* 3272 */,
-    std::pair{ "u32x4(f16x4)", &UInt32x4_from_Float16x4 } /* 3273 */,
-    std::pair{ "u32x4(f32)", &UInt32x4_splat_Float32 } /* 3274 */,
-    std::pair{ "u32x4(f32x4)", &UInt32x4_from_Float32x4 } /* 3275 */,
-    std::pair{ "u32x4(i16)", &UInt32x4_splat_Int16 } /* 3276 */,
-    std::pair{ "u32x4(i16x4)", &UInt32x4_from_Int16x4 } /* 3277 */,
-    std::pair{ "u32x4(i32)", &UInt32x4_splat_Int32 } /* 3278 */,
-    std::pair{ "u32x4(i32x4)", &UInt32x4_from_Int32x4 } /* 3279 */,
-    std::pair{ "u32x4(u16)", &UInt32x4_splat_UInt16 } /* 3280 */,
-    std::pair{ "u32x4(u16x4)", &UInt32x4_from_UInt16x4 } /* 3281 */,
-    std::pair{ "u32x4(u32)", &UInt32x4_splat_UInt32 } /* 3282 */,
-    std::pair{ "u32x4(u32,u32,u32,u32)", &UInt32x4_ctor0 } /* 3283 */,
-    std::pair{ "u32x4(u32,u32,u32x2)", &UInt32x4_ctor3 } /* 3284 */,
-    std::pair{ "u32x4(u32,u32x2,u32)", &UInt32x4_ctor2 } /* 3285 */,
-    std::pair{ "u32x4(u32,u32x3)", &UInt32x4_ctor6 } /* 3286 */,
-    std::pair{ "u32x4(u32x2,u32,u32)", &UInt32x4_ctor1 } /* 3287 */,
-    std::pair{ "u32x4(u32x2,u32x2)", &UInt32x4_ctor4 } /* 3288 */,
-    std::pair{ "u32x4(u32x3,u32)", &UInt32x4_ctor5 } /* 3289 */,
-    std::pair{ "u32x4(u32x4)", &UInt32x4_from_UInt32x4 } /* 3290 */,
-    std::pair{ "vertexExportCoordinates", &VertexExportCoordinates_Float32x4 } /* 3291 */,
-    std::pair{ "vertexExportCoordinates", &VertexExportCoordinates_Float16x4 } /* 3292 */,
-    std::pair{ "vertexExportCoordinates(f16x4)", &VertexExportCoordinates_Float16x4 } /* 3293 */,
-    std::pair{ "vertexExportCoordinates(f32x4)", &VertexExportCoordinates_Float32x4 } /* 3294 */,
-    std::pair{ "vertexGetBaseIndex", &VertexGetBaseIndex } /* 3295 */,
-    std::pair{ "vertexGetBaseIndex()", &VertexGetBaseIndex } /* 3296 */,
-    std::pair{ "vertexGetBaseInstanceIndex", &VertexGetBaseInstanceIndex } /* 3297 */,
-    std::pair{ "vertexGetBaseInstanceIndex()", &VertexGetBaseInstanceIndex } /* 3298 */,
-    std::pair{ "vertexGetDrawIndex", &VertexGetDrawIndex } /* 3299 */,
-    std::pair{ "vertexGetDrawIndex()", &VertexGetDrawIndex } /* 3300 */,
-    std::pair{ "vertexGetIndex", &VertexGetIndex } /* 3301 */,
-    std::pair{ "vertexGetIndex()", &VertexGetIndex } /* 3302 */,
-    std::pair{ "vertexGetInstanceIndex", &VertexGetInstanceIndex } /* 3303 */,
-    std::pair{ "vertexGetInstanceIndex()", &VertexGetInstanceIndex } /* 3304 */,
-    std::pair{ "vertexGetOutputLayer", &VertexGetOutputLayer } /* 3305 */,
-    std::pair{ "vertexGetOutputLayer()", &VertexGetOutputLayer } /* 3306 */,
-    std::pair{ "vertexGetOutputViewport", &VertexGetOutputViewport } /* 3307 */,
-    std::pair{ "vertexGetOutputViewport()", &VertexGetOutputViewport } /* 3308 */,
-    std::pair{ "vertexSetOutputLayer", &VertexSetOutputLayer_UInt16 } /* 3309 */,
-    std::pair{ "vertexSetOutputLayer", &VertexSetOutputLayer_UInt32 } /* 3310 */,
-    std::pair{ "vertexSetOutputLayer(u16)", &VertexSetOutputLayer_UInt16 } /* 3311 */,
-    std::pair{ "vertexSetOutputLayer(u32)", &VertexSetOutputLayer_UInt32 } /* 3312 */,
-    std::pair{ "vertexSetOutputViewport", &VertexSetOutputViewport_UInt16 } /* 3313 */,
-    std::pair{ "vertexSetOutputViewport", &VertexSetOutputViewport_UInt32 } /* 3314 */,
-    std::pair{ "vertexSetOutputViewport(u16)", &VertexSetOutputViewport_UInt16 } /* 3315 */,
-    std::pair{ "vertexSetOutputViewport(u32)", &VertexSetOutputViewport_UInt32 } /* 3316 */,
-    std::pair{ "void", &VoidType } /* 3317 */
+    std::pair{ "f16x2x3", &Float16x2x3_raw_list } /* 669 */,
+    std::pair{ "f16x2x3(f16,f16,f16,f16,f16,f16)", &Float16x2x3_raw_list } /* 670 */,
+    std::pair{ "f16x2x3(f16x3,f16x3)", &Float16x2x3_Float16_3_ctor } /* 671 */,
+    std::pair{ "f16x2x4", &Float16x2x4Type } /* 672 */,
+    std::pair{ "f16x2x4", &Float16x2x4_Float16_4_ctor } /* 673 */,
+    std::pair{ "f16x2x4", &Float16x2x4_raw_list } /* 674 */,
+    std::pair{ "f16x2x4(f16,f16,f16,f16,f16,f16,f16,f16)", &Float16x2x4_raw_list } /* 675 */,
+    std::pair{ "f16x2x4(f16x4,f16x4)", &Float16x2x4_Float16_4_ctor } /* 676 */,
+    std::pair{ "f16x3", &Float16x3Type } /* 677 */,
+    std::pair{ "f16x3", &Float16x3_from_Float32x3 } /* 678 */,
+    std::pair{ "f16x3", &Float16x3_splat_Float32 } /* 679 */,
+    std::pair{ "f16x3", &Float16x3_from_UInt32x3 } /* 680 */,
+    std::pair{ "f16x3", &Float16x3_splat_UInt32 } /* 681 */,
+    std::pair{ "f16x3", &Float16x3_from_Int32x3 } /* 682 */,
+    std::pair{ "f16x3", &Float16x3_splat_Int32 } /* 683 */,
+    std::pair{ "f16x3", &Float16x3_from_Bool8x3 } /* 684 */,
+    std::pair{ "f16x3", &Float16x3_splat_Bool8 } /* 685 */,
+    std::pair{ "f16x3", &Float16x3_from_Float16x3 } /* 686 */,
+    std::pair{ "f16x3", &Float16x3_splat_Float16 } /* 687 */,
+    std::pair{ "f16x3", &Float16x3_from_UInt16x3 } /* 688 */,
+    std::pair{ "f16x3", &Float16x3_splat_UInt16 } /* 689 */,
+    std::pair{ "f16x3", &Float16x3_from_Int16x3 } /* 690 */,
+    std::pair{ "f16x3", &Float16x3_splat_Int16 } /* 691 */,
+    std::pair{ "f16x3", &Float16x3_ctor0 } /* 692 */,
+    std::pair{ "f16x3", &Float16x3_ctor1 } /* 693 */,
+    std::pair{ "f16x3", &Float16x3_ctor2 } /* 694 */,
+    std::pair{ "f16x3(b8)", &Float16x3_splat_Bool8 } /* 695 */,
+    std::pair{ "f16x3(b8x3)", &Float16x3_from_Bool8x3 } /* 696 */,
+    std::pair{ "f16x3(f16)", &Float16x3_splat_Float16 } /* 697 */,
+    std::pair{ "f16x3(f16,f16,f16)", &Float16x3_ctor0 } /* 698 */,
+    std::pair{ "f16x3(f16,f16x2)", &Float16x3_ctor2 } /* 699 */,
+    std::pair{ "f16x3(f16x2,f16)", &Float16x3_ctor1 } /* 700 */,
+    std::pair{ "f16x3(f16x3)", &Float16x3_from_Float16x3 } /* 701 */,
+    std::pair{ "f16x3(f32)", &Float16x3_splat_Float32 } /* 702 */,
+    std::pair{ "f16x3(f32x3)", &Float16x3_from_Float32x3 } /* 703 */,
+    std::pair{ "f16x3(i16)", &Float16x3_splat_Int16 } /* 704 */,
+    std::pair{ "f16x3(i16x3)", &Float16x3_from_Int16x3 } /* 705 */,
+    std::pair{ "f16x3(i32)", &Float16x3_splat_Int32 } /* 706 */,
+    std::pair{ "f16x3(i32x3)", &Float16x3_from_Int32x3 } /* 707 */,
+    std::pair{ "f16x3(u16)", &Float16x3_splat_UInt16 } /* 708 */,
+    std::pair{ "f16x3(u16x3)", &Float16x3_from_UInt16x3 } /* 709 */,
+    std::pair{ "f16x3(u32)", &Float16x3_splat_UInt32 } /* 710 */,
+    std::pair{ "f16x3(u32x3)", &Float16x3_from_UInt32x3 } /* 711 */,
+    std::pair{ "f16x3x2", &Float16x3x2Type } /* 712 */,
+    std::pair{ "f16x3x2", &Float16x3x2_Float16_2_ctor } /* 713 */,
+    std::pair{ "f16x3x2", &Float16x3x2_raw_list } /* 714 */,
+    std::pair{ "f16x3x2(f16,f16,f16,f16,f16,f16)", &Float16x3x2_raw_list } /* 715 */,
+    std::pair{ "f16x3x2(f16x2,f16x2,f16x2)", &Float16x3x2_Float16_2_ctor } /* 716 */,
+    std::pair{ "f16x3x3", &Float16x3x3Type } /* 717 */,
+    std::pair{ "f16x3x3", &Float16x3x3_Float16_3_ctor } /* 718 */,
+    std::pair{ "f16x3x3", &Float16x3x3_identity } /* 719 */,
+    std::pair{ "f16x3x3", &Float16x3x3_raw_list } /* 720 */,
+    std::pair{ "f16x3x3()", &Float16x3x3_identity } /* 721 */,
+    std::pair{ "f16x3x3(f16,f16,f16,f16,f16,f16,f16,f16,f16)", &Float16x3x3_raw_list } /* 722 */,
+    std::pair{ "f16x3x3(f16x3,f16x3,f16x3)", &Float16x3x3_Float16_3_ctor } /* 723 */,
+    std::pair{ "f16x3x4", &Float16x3x4Type } /* 724 */,
+    std::pair{ "f16x3x4", &Float16x3x4_Float16_4_ctor } /* 725 */,
+    std::pair{ "f16x3x4", &Float16x3x4_raw_list } /* 726 */,
+    std::pair{ "f16x3x4(f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16)", &Float16x3x4_raw_list } /* 727 */,
+    std::pair{ "f16x3x4(f16x4,f16x4,f16x4)", &Float16x3x4_Float16_4_ctor } /* 728 */,
+    std::pair{ "f16x4", &Float16x4Type } /* 729 */,
+    std::pair{ "f16x4", &Float16x4_from_Float32x4 } /* 730 */,
+    std::pair{ "f16x4", &Float16x4_splat_Float32 } /* 731 */,
+    std::pair{ "f16x4", &Float16x4_from_UInt32x4 } /* 732 */,
+    std::pair{ "f16x4", &Float16x4_splat_UInt32 } /* 733 */,
+    std::pair{ "f16x4", &Float16x4_from_Int32x4 } /* 734 */,
+    std::pair{ "f16x4", &Float16x4_splat_Int32 } /* 735 */,
+    std::pair{ "f16x4", &Float16x4_from_Bool8x4 } /* 736 */,
+    std::pair{ "f16x4", &Float16x4_splat_Bool8 } /* 737 */,
+    std::pair{ "f16x4", &Float16x4_from_Float16x4 } /* 738 */,
+    std::pair{ "f16x4", &Float16x4_splat_Float16 } /* 739 */,
+    std::pair{ "f16x4", &Float16x4_from_UInt16x4 } /* 740 */,
+    std::pair{ "f16x4", &Float16x4_splat_UInt16 } /* 741 */,
+    std::pair{ "f16x4", &Float16x4_from_Int16x4 } /* 742 */,
+    std::pair{ "f16x4", &Float16x4_splat_Int16 } /* 743 */,
+    std::pair{ "f16x4", &Float16x4_ctor0 } /* 744 */,
+    std::pair{ "f16x4", &Float16x4_ctor1 } /* 745 */,
+    std::pair{ "f16x4", &Float16x4_ctor2 } /* 746 */,
+    std::pair{ "f16x4", &Float16x4_ctor3 } /* 747 */,
+    std::pair{ "f16x4", &Float16x4_ctor4 } /* 748 */,
+    std::pair{ "f16x4", &Float16x4_ctor5 } /* 749 */,
+    std::pair{ "f16x4", &Float16x4_ctor6 } /* 750 */,
+    std::pair{ "f16x4(b8)", &Float16x4_splat_Bool8 } /* 751 */,
+    std::pair{ "f16x4(b8x4)", &Float16x4_from_Bool8x4 } /* 752 */,
+    std::pair{ "f16x4(f16)", &Float16x4_splat_Float16 } /* 753 */,
+    std::pair{ "f16x4(f16,f16,f16,f16)", &Float16x4_ctor0 } /* 754 */,
+    std::pair{ "f16x4(f16,f16,f16x2)", &Float16x4_ctor3 } /* 755 */,
+    std::pair{ "f16x4(f16,f16x2,f16)", &Float16x4_ctor2 } /* 756 */,
+    std::pair{ "f16x4(f16,f16x3)", &Float16x4_ctor6 } /* 757 */,
+    std::pair{ "f16x4(f16x2,f16,f16)", &Float16x4_ctor1 } /* 758 */,
+    std::pair{ "f16x4(f16x2,f16x2)", &Float16x4_ctor4 } /* 759 */,
+    std::pair{ "f16x4(f16x3,f16)", &Float16x4_ctor5 } /* 760 */,
+    std::pair{ "f16x4(f16x4)", &Float16x4_from_Float16x4 } /* 761 */,
+    std::pair{ "f16x4(f32)", &Float16x4_splat_Float32 } /* 762 */,
+    std::pair{ "f16x4(f32x4)", &Float16x4_from_Float32x4 } /* 763 */,
+    std::pair{ "f16x4(i16)", &Float16x4_splat_Int16 } /* 764 */,
+    std::pair{ "f16x4(i16x4)", &Float16x4_from_Int16x4 } /* 765 */,
+    std::pair{ "f16x4(i32)", &Float16x4_splat_Int32 } /* 766 */,
+    std::pair{ "f16x4(i32x4)", &Float16x4_from_Int32x4 } /* 767 */,
+    std::pair{ "f16x4(u16)", &Float16x4_splat_UInt16 } /* 768 */,
+    std::pair{ "f16x4(u16x4)", &Float16x4_from_UInt16x4 } /* 769 */,
+    std::pair{ "f16x4(u32)", &Float16x4_splat_UInt32 } /* 770 */,
+    std::pair{ "f16x4(u32x4)", &Float16x4_from_UInt32x4 } /* 771 */,
+    std::pair{ "f16x4x2", &Float16x4x2Type } /* 772 */,
+    std::pair{ "f16x4x2", &Float16x4x2_Float16_2_ctor } /* 773 */,
+    std::pair{ "f16x4x2", &Float16x4x2_raw_list } /* 774 */,
+    std::pair{ "f16x4x2(f16,f16,f16,f16,f16,f16,f16,f16)", &Float16x4x2_raw_list } /* 775 */,
+    std::pair{ "f16x4x2(f16x2,f16x2,f16x2,f16x2)", &Float16x4x2_Float16_2_ctor } /* 776 */,
+    std::pair{ "f16x4x3", &Float16x4x3Type } /* 777 */,
+    std::pair{ "f16x4x3", &Float16x4x3_Float16_3_ctor } /* 778 */,
+    std::pair{ "f16x4x3", &Float16x4x3_raw_list } /* 779 */,
+    std::pair{ "f16x4x3(f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16)", &Float16x4x3_raw_list } /* 780 */,
+    std::pair{ "f16x4x3(f16x3,f16x3,f16x3,f16x3)", &Float16x4x3_Float16_3_ctor } /* 781 */,
+    std::pair{ "f16x4x4", &Float16x4x4Type } /* 782 */,
+    std::pair{ "f16x4x4", &Float16x4x4_Float16_4_ctor } /* 783 */,
+    std::pair{ "f16x4x4", &Float16x4x4_identity } /* 784 */,
+    std::pair{ "f16x4x4", &Float16x4x4_raw_list } /* 785 */,
+    std::pair{ "f16x4x4()", &Float16x4x4_identity } /* 786 */,
+    std::pair{ "f16x4x4(f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16)", &Float16x4x4_raw_list } /* 787 */,
+    std::pair{ "f16x4x4(f16x4,f16x4,f16x4,f16x4)", &Float16x4x4_Float16_4_ctor } /* 788 */,
+    std::pair{ "f32", &Float32Type } /* 789 */,
+    std::pair{ "f32", &Float32_from_UInt32 } /* 790 */,
+    std::pair{ "f32", &Float32_from_Int32 } /* 791 */,
+    std::pair{ "f32", &Float32_from_Bool8 } /* 792 */,
+    std::pair{ "f32", &Float32_from_Float16 } /* 793 */,
+    std::pair{ "f32", &Float32_from_UInt16 } /* 794 */,
+    std::pair{ "f32", &Float32_from_Int16 } /* 795 */,
+    std::pair{ "f32", &Float32_ctor0 } /* 796 */,
+    std::pair{ "f32(b8)", &Float32_from_Bool8 } /* 797 */,
+    std::pair{ "f32(f16)", &Float32_from_Float16 } /* 798 */,
+    std::pair{ "f32(f32)", &Float32_ctor0 } /* 799 */,
+    std::pair{ "f32(i16)", &Float32_from_Int16 } /* 800 */,
+    std::pair{ "f32(i32)", &Float32_from_Int32 } /* 801 */,
+    std::pair{ "f32(u16)", &Float32_from_UInt16 } /* 802 */,
+    std::pair{ "f32(u32)", &Float32_from_UInt32 } /* 803 */,
+    std::pair{ "f32x2", &Float32x2Type } /* 804 */,
+    std::pair{ "f32x2", &Float32x2_from_Float32x2 } /* 805 */,
+    std::pair{ "f32x2", &Float32x2_splat_Float32 } /* 806 */,
+    std::pair{ "f32x2", &Float32x2_from_UInt32x2 } /* 807 */,
+    std::pair{ "f32x2", &Float32x2_splat_UInt32 } /* 808 */,
+    std::pair{ "f32x2", &Float32x2_from_Int32x2 } /* 809 */,
+    std::pair{ "f32x2", &Float32x2_splat_Int32 } /* 810 */,
+    std::pair{ "f32x2", &Float32x2_from_Bool8x2 } /* 811 */,
+    std::pair{ "f32x2", &Float32x2_splat_Bool8 } /* 812 */,
+    std::pair{ "f32x2", &Float32x2_from_Float16x2 } /* 813 */,
+    std::pair{ "f32x2", &Float32x2_splat_Float16 } /* 814 */,
+    std::pair{ "f32x2", &Float32x2_from_UInt16x2 } /* 815 */,
+    std::pair{ "f32x2", &Float32x2_splat_UInt16 } /* 816 */,
+    std::pair{ "f32x2", &Float32x2_from_Int16x2 } /* 817 */,
+    std::pair{ "f32x2", &Float32x2_splat_Int16 } /* 818 */,
+    std::pair{ "f32x2", &Float32x2_ctor0 } /* 819 */,
+    std::pair{ "f32x2(b8)", &Float32x2_splat_Bool8 } /* 820 */,
+    std::pair{ "f32x2(b8x2)", &Float32x2_from_Bool8x2 } /* 821 */,
+    std::pair{ "f32x2(f16)", &Float32x2_splat_Float16 } /* 822 */,
+    std::pair{ "f32x2(f16x2)", &Float32x2_from_Float16x2 } /* 823 */,
+    std::pair{ "f32x2(f32)", &Float32x2_splat_Float32 } /* 824 */,
+    std::pair{ "f32x2(f32,f32)", &Float32x2_ctor0 } /* 825 */,
+    std::pair{ "f32x2(f32x2)", &Float32x2_from_Float32x2 } /* 826 */,
+    std::pair{ "f32x2(i16)", &Float32x2_splat_Int16 } /* 827 */,
+    std::pair{ "f32x2(i16x2)", &Float32x2_from_Int16x2 } /* 828 */,
+    std::pair{ "f32x2(i32)", &Float32x2_splat_Int32 } /* 829 */,
+    std::pair{ "f32x2(i32x2)", &Float32x2_from_Int32x2 } /* 830 */,
+    std::pair{ "f32x2(u16)", &Float32x2_splat_UInt16 } /* 831 */,
+    std::pair{ "f32x2(u16x2)", &Float32x2_from_UInt16x2 } /* 832 */,
+    std::pair{ "f32x2(u32)", &Float32x2_splat_UInt32 } /* 833 */,
+    std::pair{ "f32x2(u32x2)", &Float32x2_from_UInt32x2 } /* 834 */,
+    std::pair{ "f32x2x2", &Float32x2x2Type } /* 835 */,
+    std::pair{ "f32x2x2", &Float32x2x2_Float32_2_ctor } /* 836 */,
+    std::pair{ "f32x2x2", &Float32x2x2_identity } /* 837 */,
+    std::pair{ "f32x2x2", &Float32x2x2_raw_list } /* 838 */,
+    std::pair{ "f32x2x2()", &Float32x2x2_identity } /* 839 */,
+    std::pair{ "f32x2x2(f32,f32,f32,f32)", &Float32x2x2_raw_list } /* 840 */,
+    std::pair{ "f32x2x2(f32x2,f32x2)", &Float32x2x2_Float32_2_ctor } /* 841 */,
+    std::pair{ "f32x2x3", &Float32x2x3Type } /* 842 */,
+    std::pair{ "f32x2x3", &Float32x2x3_Float32_3_ctor } /* 843 */,
+    std::pair{ "f32x2x3", &Float32x2x3_raw_list } /* 844 */,
+    std::pair{ "f32x2x3(f32,f32,f32,f32,f32,f32)", &Float32x2x3_raw_list } /* 845 */,
+    std::pair{ "f32x2x3(f32x3,f32x3)", &Float32x2x3_Float32_3_ctor } /* 846 */,
+    std::pair{ "f32x2x4", &Float32x2x4Type } /* 847 */,
+    std::pair{ "f32x2x4", &Float32x2x4_Float32_4_ctor } /* 848 */,
+    std::pair{ "f32x2x4", &Float32x2x4_raw_list } /* 849 */,
+    std::pair{ "f32x2x4(f32,f32,f32,f32,f32,f32,f32,f32)", &Float32x2x4_raw_list } /* 850 */,
+    std::pair{ "f32x2x4(f32x4,f32x4)", &Float32x2x4_Float32_4_ctor } /* 851 */,
+    std::pair{ "f32x3", &Float32x3Type } /* 852 */,
+    std::pair{ "f32x3", &Float32x3_from_Float32x3 } /* 853 */,
+    std::pair{ "f32x3", &Float32x3_splat_Float32 } /* 854 */,
+    std::pair{ "f32x3", &Float32x3_from_UInt32x3 } /* 855 */,
+    std::pair{ "f32x3", &Float32x3_splat_UInt32 } /* 856 */,
+    std::pair{ "f32x3", &Float32x3_from_Int32x3 } /* 857 */,
+    std::pair{ "f32x3", &Float32x3_splat_Int32 } /* 858 */,
+    std::pair{ "f32x3", &Float32x3_from_Bool8x3 } /* 859 */,
+    std::pair{ "f32x3", &Float32x3_splat_Bool8 } /* 860 */,
+    std::pair{ "f32x3", &Float32x3_from_Float16x3 } /* 861 */,
+    std::pair{ "f32x3", &Float32x3_splat_Float16 } /* 862 */,
+    std::pair{ "f32x3", &Float32x3_from_UInt16x3 } /* 863 */,
+    std::pair{ "f32x3", &Float32x3_splat_UInt16 } /* 864 */,
+    std::pair{ "f32x3", &Float32x3_from_Int16x3 } /* 865 */,
+    std::pair{ "f32x3", &Float32x3_splat_Int16 } /* 866 */,
+    std::pair{ "f32x3", &Float32x3_ctor0 } /* 867 */,
+    std::pair{ "f32x3", &Float32x3_ctor1 } /* 868 */,
+    std::pair{ "f32x3", &Float32x3_ctor2 } /* 869 */,
+    std::pair{ "f32x3(b8)", &Float32x3_splat_Bool8 } /* 870 */,
+    std::pair{ "f32x3(b8x3)", &Float32x3_from_Bool8x3 } /* 871 */,
+    std::pair{ "f32x3(f16)", &Float32x3_splat_Float16 } /* 872 */,
+    std::pair{ "f32x3(f16x3)", &Float32x3_from_Float16x3 } /* 873 */,
+    std::pair{ "f32x3(f32)", &Float32x3_splat_Float32 } /* 874 */,
+    std::pair{ "f32x3(f32,f32,f32)", &Float32x3_ctor0 } /* 875 */,
+    std::pair{ "f32x3(f32,f32x2)", &Float32x3_ctor2 } /* 876 */,
+    std::pair{ "f32x3(f32x2,f32)", &Float32x3_ctor1 } /* 877 */,
+    std::pair{ "f32x3(f32x3)", &Float32x3_from_Float32x3 } /* 878 */,
+    std::pair{ "f32x3(i16)", &Float32x3_splat_Int16 } /* 879 */,
+    std::pair{ "f32x3(i16x3)", &Float32x3_from_Int16x3 } /* 880 */,
+    std::pair{ "f32x3(i32)", &Float32x3_splat_Int32 } /* 881 */,
+    std::pair{ "f32x3(i32x3)", &Float32x3_from_Int32x3 } /* 882 */,
+    std::pair{ "f32x3(u16)", &Float32x3_splat_UInt16 } /* 883 */,
+    std::pair{ "f32x3(u16x3)", &Float32x3_from_UInt16x3 } /* 884 */,
+    std::pair{ "f32x3(u32)", &Float32x3_splat_UInt32 } /* 885 */,
+    std::pair{ "f32x3(u32x3)", &Float32x3_from_UInt32x3 } /* 886 */,
+    std::pair{ "f32x3x2", &Float32x3x2Type } /* 887 */,
+    std::pair{ "f32x3x2", &Float32x3x2_Float32_2_ctor } /* 888 */,
+    std::pair{ "f32x3x2", &Float32x3x2_raw_list } /* 889 */,
+    std::pair{ "f32x3x2(f32,f32,f32,f32,f32,f32)", &Float32x3x2_raw_list } /* 890 */,
+    std::pair{ "f32x3x2(f32x2,f32x2,f32x2)", &Float32x3x2_Float32_2_ctor } /* 891 */,
+    std::pair{ "f32x3x3", &Float32x3x3Type } /* 892 */,
+    std::pair{ "f32x3x3", &Float32x3x3_Float32_3_ctor } /* 893 */,
+    std::pair{ "f32x3x3", &Float32x3x3_identity } /* 894 */,
+    std::pair{ "f32x3x3", &Float32x3x3_raw_list } /* 895 */,
+    std::pair{ "f32x3x3()", &Float32x3x3_identity } /* 896 */,
+    std::pair{ "f32x3x3(f32,f32,f32,f32,f32,f32,f32,f32,f32)", &Float32x3x3_raw_list } /* 897 */,
+    std::pair{ "f32x3x3(f32x3,f32x3,f32x3)", &Float32x3x3_Float32_3_ctor } /* 898 */,
+    std::pair{ "f32x3x4", &Float32x3x4Type } /* 899 */,
+    std::pair{ "f32x3x4", &Float32x3x4_Float32_4_ctor } /* 900 */,
+    std::pair{ "f32x3x4", &Float32x3x4_raw_list } /* 901 */,
+    std::pair{ "f32x3x4(f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32)", &Float32x3x4_raw_list } /* 902 */,
+    std::pair{ "f32x3x4(f32x4,f32x4,f32x4)", &Float32x3x4_Float32_4_ctor } /* 903 */,
+    std::pair{ "f32x4", &Float32x4Type } /* 904 */,
+    std::pair{ "f32x4", &Float32x4_from_Float32x4 } /* 905 */,
+    std::pair{ "f32x4", &Float32x4_splat_Float32 } /* 906 */,
+    std::pair{ "f32x4", &Float32x4_from_UInt32x4 } /* 907 */,
+    std::pair{ "f32x4", &Float32x4_splat_UInt32 } /* 908 */,
+    std::pair{ "f32x4", &Float32x4_from_Int32x4 } /* 909 */,
+    std::pair{ "f32x4", &Float32x4_splat_Int32 } /* 910 */,
+    std::pair{ "f32x4", &Float32x4_from_Bool8x4 } /* 911 */,
+    std::pair{ "f32x4", &Float32x4_splat_Bool8 } /* 912 */,
+    std::pair{ "f32x4", &Float32x4_from_Float16x4 } /* 913 */,
+    std::pair{ "f32x4", &Float32x4_splat_Float16 } /* 914 */,
+    std::pair{ "f32x4", &Float32x4_from_UInt16x4 } /* 915 */,
+    std::pair{ "f32x4", &Float32x4_splat_UInt16 } /* 916 */,
+    std::pair{ "f32x4", &Float32x4_from_Int16x4 } /* 917 */,
+    std::pair{ "f32x4", &Float32x4_splat_Int16 } /* 918 */,
+    std::pair{ "f32x4", &Float32x4_ctor0 } /* 919 */,
+    std::pair{ "f32x4", &Float32x4_ctor1 } /* 920 */,
+    std::pair{ "f32x4", &Float32x4_ctor2 } /* 921 */,
+    std::pair{ "f32x4", &Float32x4_ctor3 } /* 922 */,
+    std::pair{ "f32x4", &Float32x4_ctor4 } /* 923 */,
+    std::pair{ "f32x4", &Float32x4_ctor5 } /* 924 */,
+    std::pair{ "f32x4", &Float32x4_ctor6 } /* 925 */,
+    std::pair{ "f32x4(b8)", &Float32x4_splat_Bool8 } /* 926 */,
+    std::pair{ "f32x4(b8x4)", &Float32x4_from_Bool8x4 } /* 927 */,
+    std::pair{ "f32x4(f16)", &Float32x4_splat_Float16 } /* 928 */,
+    std::pair{ "f32x4(f16x4)", &Float32x4_from_Float16x4 } /* 929 */,
+    std::pair{ "f32x4(f32)", &Float32x4_splat_Float32 } /* 930 */,
+    std::pair{ "f32x4(f32,f32,f32,f32)", &Float32x4_ctor0 } /* 931 */,
+    std::pair{ "f32x4(f32,f32,f32x2)", &Float32x4_ctor3 } /* 932 */,
+    std::pair{ "f32x4(f32,f32x2,f32)", &Float32x4_ctor2 } /* 933 */,
+    std::pair{ "f32x4(f32,f32x3)", &Float32x4_ctor6 } /* 934 */,
+    std::pair{ "f32x4(f32x2,f32,f32)", &Float32x4_ctor1 } /* 935 */,
+    std::pair{ "f32x4(f32x2,f32x2)", &Float32x4_ctor4 } /* 936 */,
+    std::pair{ "f32x4(f32x3,f32)", &Float32x4_ctor5 } /* 937 */,
+    std::pair{ "f32x4(f32x4)", &Float32x4_from_Float32x4 } /* 938 */,
+    std::pair{ "f32x4(i16)", &Float32x4_splat_Int16 } /* 939 */,
+    std::pair{ "f32x4(i16x4)", &Float32x4_from_Int16x4 } /* 940 */,
+    std::pair{ "f32x4(i32)", &Float32x4_splat_Int32 } /* 941 */,
+    std::pair{ "f32x4(i32x4)", &Float32x4_from_Int32x4 } /* 942 */,
+    std::pair{ "f32x4(u16)", &Float32x4_splat_UInt16 } /* 943 */,
+    std::pair{ "f32x4(u16x4)", &Float32x4_from_UInt16x4 } /* 944 */,
+    std::pair{ "f32x4(u32)", &Float32x4_splat_UInt32 } /* 945 */,
+    std::pair{ "f32x4(u32x4)", &Float32x4_from_UInt32x4 } /* 946 */,
+    std::pair{ "f32x4x2", &Float32x4x2Type } /* 947 */,
+    std::pair{ "f32x4x2", &Float32x4x2_Float32_2_ctor } /* 948 */,
+    std::pair{ "f32x4x2", &Float32x4x2_raw_list } /* 949 */,
+    std::pair{ "f32x4x2(f32,f32,f32,f32,f32,f32,f32,f32)", &Float32x4x2_raw_list } /* 950 */,
+    std::pair{ "f32x4x2(f32x2,f32x2,f32x2,f32x2)", &Float32x4x2_Float32_2_ctor } /* 951 */,
+    std::pair{ "f32x4x3", &Float32x4x3Type } /* 952 */,
+    std::pair{ "f32x4x3", &Float32x4x3_Float32_3_ctor } /* 953 */,
+    std::pair{ "f32x4x3", &Float32x4x3_raw_list } /* 954 */,
+    std::pair{ "f32x4x3(f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32)", &Float32x4x3_raw_list } /* 955 */,
+    std::pair{ "f32x4x3(f32x3,f32x3,f32x3,f32x3)", &Float32x4x3_Float32_3_ctor } /* 956 */,
+    std::pair{ "f32x4x4", &Float32x4x4Type } /* 957 */,
+    std::pair{ "f32x4x4", &Float32x4x4_Float32_4_ctor } /* 958 */,
+    std::pair{ "f32x4x4", &Float32x4x4_identity } /* 959 */,
+    std::pair{ "f32x4x4", &Float32x4x4_raw_list } /* 960 */,
+    std::pair{ "f32x4x4()", &Float32x4x4_identity } /* 961 */,
+    std::pair{ "f32x4x4(f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32)", &Float32x4x4_raw_list } /* 962 */,
+    std::pair{ "f32x4x4(f32x4,f32x4,f32x4,f32x4)", &Float32x4x4_Float32_4_ctor } /* 963 */,
+    std::pair{ "floor", &floor_Float32 } /* 964 */,
+    std::pair{ "floor", &floor_Float32x2 } /* 965 */,
+    std::pair{ "floor", &floor_Float32x3 } /* 966 */,
+    std::pair{ "floor", &floor_Float32x4 } /* 967 */,
+    std::pair{ "floor", &floor_Float16 } /* 968 */,
+    std::pair{ "floor", &floor_Float16x2 } /* 969 */,
+    std::pair{ "floor", &floor_Float16x3 } /* 970 */,
+    std::pair{ "floor", &floor_Float16x4 } /* 971 */,
+    std::pair{ "floor(f16)", &floor_Float16 } /* 972 */,
+    std::pair{ "floor(f16x2)", &floor_Float16x2 } /* 973 */,
+    std::pair{ "floor(f16x3)", &floor_Float16x3 } /* 974 */,
+    std::pair{ "floor(f16x4)", &floor_Float16x4 } /* 975 */,
+    std::pair{ "floor(f32)", &floor_Float32 } /* 976 */,
+    std::pair{ "floor(f32x2)", &floor_Float32x2 } /* 977 */,
+    std::pair{ "floor(f32x3)", &floor_Float32x3 } /* 978 */,
+    std::pair{ "floor(f32x4)", &floor_Float32x4 } /* 979 */,
+    std::pair{ "fract", &fract_Float32 } /* 980 */,
+    std::pair{ "fract", &fract_Float32x2 } /* 981 */,
+    std::pair{ "fract", &fract_Float32x3 } /* 982 */,
+    std::pair{ "fract", &fract_Float32x4 } /* 983 */,
+    std::pair{ "fract", &fract_Float16 } /* 984 */,
+    std::pair{ "fract", &fract_Float16x2 } /* 985 */,
+    std::pair{ "fract", &fract_Float16x3 } /* 986 */,
+    std::pair{ "fract", &fract_Float16x4 } /* 987 */,
+    std::pair{ "fract(f16)", &fract_Float16 } /* 988 */,
+    std::pair{ "fract(f16x2)", &fract_Float16x2 } /* 989 */,
+    std::pair{ "fract(f16x3)", &fract_Float16x3 } /* 990 */,
+    std::pair{ "fract(f16x4)", &fract_Float16x4 } /* 991 */,
+    std::pair{ "fract(f32)", &fract_Float32 } /* 992 */,
+    std::pair{ "fract(f32x2)", &fract_Float32x2 } /* 993 */,
+    std::pair{ "fract(f32x3)", &fract_Float32x3 } /* 994 */,
+    std::pair{ "fract(f32x4)", &fract_Float32x4 } /* 995 */,
+    std::pair{ "fwidth", &fwidth_Float32 } /* 996 */,
+    std::pair{ "fwidth", &fwidth_Float32x2 } /* 997 */,
+    std::pair{ "fwidth", &fwidth_Float32x3 } /* 998 */,
+    std::pair{ "fwidth", &fwidth_Float32x4 } /* 999 */,
+    std::pair{ "fwidth", &fwidth_Float16 } /* 1000 */,
+    std::pair{ "fwidth", &fwidth_Float16x2 } /* 1001 */,
+    std::pair{ "fwidth", &fwidth_Float16x3 } /* 1002 */,
+    std::pair{ "fwidth", &fwidth_Float16x4 } /* 1003 */,
+    std::pair{ "fwidth(f16)", &fwidth_Float16 } /* 1004 */,
+    std::pair{ "fwidth(f16x2)", &fwidth_Float16x2 } /* 1005 */,
+    std::pair{ "fwidth(f16x3)", &fwidth_Float16x3 } /* 1006 */,
+    std::pair{ "fwidth(f16x4)", &fwidth_Float16x4 } /* 1007 */,
+    std::pair{ "fwidth(f32)", &fwidth_Float32 } /* 1008 */,
+    std::pair{ "fwidth(f32x2)", &fwidth_Float32x2 } /* 1009 */,
+    std::pair{ "fwidth(f32x3)", &fwidth_Float32x3 } /* 1010 */,
+    std::pair{ "fwidth(f32x4)", &fwidth_Float32x4 } /* 1011 */,
+    std::pair{ "geometryExportPrimitive", &GeometryExportPrimitive } /* 1012 */,
+    std::pair{ "geometryExportPrimitive()", &GeometryExportPrimitive } /* 1013 */,
+    std::pair{ "geometryExportVertex", &GeometryExportVertex } /* 1014 */,
+    std::pair{ "geometryExportVertex()", &GeometryExportVertex } /* 1015 */,
+    std::pair{ "i16", &Int16Type } /* 1016 */,
+    std::pair{ "i16", &Int16_from_Float32 } /* 1017 */,
+    std::pair{ "i16", &Int16_from_UInt32 } /* 1018 */,
+    std::pair{ "i16", &Int16_from_Int32 } /* 1019 */,
+    std::pair{ "i16", &Int16_from_Bool8 } /* 1020 */,
+    std::pair{ "i16", &Int16_from_Float16 } /* 1021 */,
+    std::pair{ "i16", &Int16_from_UInt16 } /* 1022 */,
+    std::pair{ "i16", &Int16_ctor0 } /* 1023 */,
+    std::pair{ "i16(b8)", &Int16_from_Bool8 } /* 1024 */,
+    std::pair{ "i16(f16)", &Int16_from_Float16 } /* 1025 */,
+    std::pair{ "i16(f32)", &Int16_from_Float32 } /* 1026 */,
+    std::pair{ "i16(i16)", &Int16_ctor0 } /* 1027 */,
+    std::pair{ "i16(i32)", &Int16_from_Int32 } /* 1028 */,
+    std::pair{ "i16(u16)", &Int16_from_UInt16 } /* 1029 */,
+    std::pair{ "i16(u32)", &Int16_from_UInt32 } /* 1030 */,
+    std::pair{ "i16x2", &Int16x2Type } /* 1031 */,
+    std::pair{ "i16x2", &Int16x2_from_Float32x2 } /* 1032 */,
+    std::pair{ "i16x2", &Int16x2_splat_Float32 } /* 1033 */,
+    std::pair{ "i16x2", &Int16x2_from_UInt32x2 } /* 1034 */,
+    std::pair{ "i16x2", &Int16x2_splat_UInt32 } /* 1035 */,
+    std::pair{ "i16x2", &Int16x2_from_Int32x2 } /* 1036 */,
+    std::pair{ "i16x2", &Int16x2_splat_Int32 } /* 1037 */,
+    std::pair{ "i16x2", &Int16x2_from_Bool8x2 } /* 1038 */,
+    std::pair{ "i16x2", &Int16x2_splat_Bool8 } /* 1039 */,
+    std::pair{ "i16x2", &Int16x2_from_Float16x2 } /* 1040 */,
+    std::pair{ "i16x2", &Int16x2_splat_Float16 } /* 1041 */,
+    std::pair{ "i16x2", &Int16x2_from_UInt16x2 } /* 1042 */,
+    std::pair{ "i16x2", &Int16x2_splat_UInt16 } /* 1043 */,
+    std::pair{ "i16x2", &Int16x2_from_Int16x2 } /* 1044 */,
+    std::pair{ "i16x2", &Int16x2_splat_Int16 } /* 1045 */,
+    std::pair{ "i16x2", &Int16x2_ctor0 } /* 1046 */,
+    std::pair{ "i16x2(b8)", &Int16x2_splat_Bool8 } /* 1047 */,
+    std::pair{ "i16x2(b8x2)", &Int16x2_from_Bool8x2 } /* 1048 */,
+    std::pair{ "i16x2(f16)", &Int16x2_splat_Float16 } /* 1049 */,
+    std::pair{ "i16x2(f16x2)", &Int16x2_from_Float16x2 } /* 1050 */,
+    std::pair{ "i16x2(f32)", &Int16x2_splat_Float32 } /* 1051 */,
+    std::pair{ "i16x2(f32x2)", &Int16x2_from_Float32x2 } /* 1052 */,
+    std::pair{ "i16x2(i16)", &Int16x2_splat_Int16 } /* 1053 */,
+    std::pair{ "i16x2(i16,i16)", &Int16x2_ctor0 } /* 1054 */,
+    std::pair{ "i16x2(i16x2)", &Int16x2_from_Int16x2 } /* 1055 */,
+    std::pair{ "i16x2(i32)", &Int16x2_splat_Int32 } /* 1056 */,
+    std::pair{ "i16x2(i32x2)", &Int16x2_from_Int32x2 } /* 1057 */,
+    std::pair{ "i16x2(u16)", &Int16x2_splat_UInt16 } /* 1058 */,
+    std::pair{ "i16x2(u16x2)", &Int16x2_from_UInt16x2 } /* 1059 */,
+    std::pair{ "i16x2(u32)", &Int16x2_splat_UInt32 } /* 1060 */,
+    std::pair{ "i16x2(u32x2)", &Int16x2_from_UInt32x2 } /* 1061 */,
+    std::pair{ "i16x3", &Int16x3Type } /* 1062 */,
+    std::pair{ "i16x3", &Int16x3_from_Float32x3 } /* 1063 */,
+    std::pair{ "i16x3", &Int16x3_splat_Float32 } /* 1064 */,
+    std::pair{ "i16x3", &Int16x3_from_UInt32x3 } /* 1065 */,
+    std::pair{ "i16x3", &Int16x3_splat_UInt32 } /* 1066 */,
+    std::pair{ "i16x3", &Int16x3_from_Int32x3 } /* 1067 */,
+    std::pair{ "i16x3", &Int16x3_splat_Int32 } /* 1068 */,
+    std::pair{ "i16x3", &Int16x3_from_Bool8x3 } /* 1069 */,
+    std::pair{ "i16x3", &Int16x3_splat_Bool8 } /* 1070 */,
+    std::pair{ "i16x3", &Int16x3_from_Float16x3 } /* 1071 */,
+    std::pair{ "i16x3", &Int16x3_splat_Float16 } /* 1072 */,
+    std::pair{ "i16x3", &Int16x3_from_UInt16x3 } /* 1073 */,
+    std::pair{ "i16x3", &Int16x3_splat_UInt16 } /* 1074 */,
+    std::pair{ "i16x3", &Int16x3_from_Int16x3 } /* 1075 */,
+    std::pair{ "i16x3", &Int16x3_splat_Int16 } /* 1076 */,
+    std::pair{ "i16x3", &Int16x3_ctor0 } /* 1077 */,
+    std::pair{ "i16x3", &Int16x3_ctor1 } /* 1078 */,
+    std::pair{ "i16x3", &Int16x3_ctor2 } /* 1079 */,
+    std::pair{ "i16x3(b8)", &Int16x3_splat_Bool8 } /* 1080 */,
+    std::pair{ "i16x3(b8x3)", &Int16x3_from_Bool8x3 } /* 1081 */,
+    std::pair{ "i16x3(f16)", &Int16x3_splat_Float16 } /* 1082 */,
+    std::pair{ "i16x3(f16x3)", &Int16x3_from_Float16x3 } /* 1083 */,
+    std::pair{ "i16x3(f32)", &Int16x3_splat_Float32 } /* 1084 */,
+    std::pair{ "i16x3(f32x3)", &Int16x3_from_Float32x3 } /* 1085 */,
+    std::pair{ "i16x3(i16)", &Int16x3_splat_Int16 } /* 1086 */,
+    std::pair{ "i16x3(i16,i16,i16)", &Int16x3_ctor0 } /* 1087 */,
+    std::pair{ "i16x3(i16,i16x2)", &Int16x3_ctor2 } /* 1088 */,
+    std::pair{ "i16x3(i16x2,i16)", &Int16x3_ctor1 } /* 1089 */,
+    std::pair{ "i16x3(i16x3)", &Int16x3_from_Int16x3 } /* 1090 */,
+    std::pair{ "i16x3(i32)", &Int16x3_splat_Int32 } /* 1091 */,
+    std::pair{ "i16x3(i32x3)", &Int16x3_from_Int32x3 } /* 1092 */,
+    std::pair{ "i16x3(u16)", &Int16x3_splat_UInt16 } /* 1093 */,
+    std::pair{ "i16x3(u16x3)", &Int16x3_from_UInt16x3 } /* 1094 */,
+    std::pair{ "i16x3(u32)", &Int16x3_splat_UInt32 } /* 1095 */,
+    std::pair{ "i16x3(u32x3)", &Int16x3_from_UInt32x3 } /* 1096 */,
+    std::pair{ "i16x4", &Int16x4Type } /* 1097 */,
+    std::pair{ "i16x4", &Int16x4_from_Float32x4 } /* 1098 */,
+    std::pair{ "i16x4", &Int16x4_splat_Float32 } /* 1099 */,
+    std::pair{ "i16x4", &Int16x4_from_UInt32x4 } /* 1100 */,
+    std::pair{ "i16x4", &Int16x4_splat_UInt32 } /* 1101 */,
+    std::pair{ "i16x4", &Int16x4_from_Int32x4 } /* 1102 */,
+    std::pair{ "i16x4", &Int16x4_splat_Int32 } /* 1103 */,
+    std::pair{ "i16x4", &Int16x4_from_Bool8x4 } /* 1104 */,
+    std::pair{ "i16x4", &Int16x4_splat_Bool8 } /* 1105 */,
+    std::pair{ "i16x4", &Int16x4_from_Float16x4 } /* 1106 */,
+    std::pair{ "i16x4", &Int16x4_splat_Float16 } /* 1107 */,
+    std::pair{ "i16x4", &Int16x4_from_UInt16x4 } /* 1108 */,
+    std::pair{ "i16x4", &Int16x4_splat_UInt16 } /* 1109 */,
+    std::pair{ "i16x4", &Int16x4_from_Int16x4 } /* 1110 */,
+    std::pair{ "i16x4", &Int16x4_splat_Int16 } /* 1111 */,
+    std::pair{ "i16x4", &Int16x4_ctor0 } /* 1112 */,
+    std::pair{ "i16x4", &Int16x4_ctor1 } /* 1113 */,
+    std::pair{ "i16x4", &Int16x4_ctor2 } /* 1114 */,
+    std::pair{ "i16x4", &Int16x4_ctor3 } /* 1115 */,
+    std::pair{ "i16x4", &Int16x4_ctor4 } /* 1116 */,
+    std::pair{ "i16x4", &Int16x4_ctor5 } /* 1117 */,
+    std::pair{ "i16x4", &Int16x4_ctor6 } /* 1118 */,
+    std::pair{ "i16x4(b8)", &Int16x4_splat_Bool8 } /* 1119 */,
+    std::pair{ "i16x4(b8x4)", &Int16x4_from_Bool8x4 } /* 1120 */,
+    std::pair{ "i16x4(f16)", &Int16x4_splat_Float16 } /* 1121 */,
+    std::pair{ "i16x4(f16x4)", &Int16x4_from_Float16x4 } /* 1122 */,
+    std::pair{ "i16x4(f32)", &Int16x4_splat_Float32 } /* 1123 */,
+    std::pair{ "i16x4(f32x4)", &Int16x4_from_Float32x4 } /* 1124 */,
+    std::pair{ "i16x4(i16)", &Int16x4_splat_Int16 } /* 1125 */,
+    std::pair{ "i16x4(i16,i16,i16,i16)", &Int16x4_ctor0 } /* 1126 */,
+    std::pair{ "i16x4(i16,i16,i16x2)", &Int16x4_ctor3 } /* 1127 */,
+    std::pair{ "i16x4(i16,i16x2,i16)", &Int16x4_ctor2 } /* 1128 */,
+    std::pair{ "i16x4(i16,i16x3)", &Int16x4_ctor6 } /* 1129 */,
+    std::pair{ "i16x4(i16x2,i16,i16)", &Int16x4_ctor1 } /* 1130 */,
+    std::pair{ "i16x4(i16x2,i16x2)", &Int16x4_ctor4 } /* 1131 */,
+    std::pair{ "i16x4(i16x3,i16)", &Int16x4_ctor5 } /* 1132 */,
+    std::pair{ "i16x4(i16x4)", &Int16x4_from_Int16x4 } /* 1133 */,
+    std::pair{ "i16x4(i32)", &Int16x4_splat_Int32 } /* 1134 */,
+    std::pair{ "i16x4(i32x4)", &Int16x4_from_Int32x4 } /* 1135 */,
+    std::pair{ "i16x4(u16)", &Int16x4_splat_UInt16 } /* 1136 */,
+    std::pair{ "i16x4(u16x4)", &Int16x4_from_UInt16x4 } /* 1137 */,
+    std::pair{ "i16x4(u32)", &Int16x4_splat_UInt32 } /* 1138 */,
+    std::pair{ "i16x4(u32x4)", &Int16x4_from_UInt32x4 } /* 1139 */,
+    std::pair{ "i32", &Int32Type } /* 1140 */,
+    std::pair{ "i32", &Int32_from_Float32 } /* 1141 */,
+    std::pair{ "i32", &Int32_from_UInt32 } /* 1142 */,
+    std::pair{ "i32", &Int32_from_Bool8 } /* 1143 */,
+    std::pair{ "i32", &Int32_from_Float16 } /* 1144 */,
+    std::pair{ "i32", &Int32_from_UInt16 } /* 1145 */,
+    std::pair{ "i32", &Int32_from_Int16 } /* 1146 */,
+    std::pair{ "i32", &Int32_ctor0 } /* 1147 */,
+    std::pair{ "i32(b8)", &Int32_from_Bool8 } /* 1148 */,
+    std::pair{ "i32(f16)", &Int32_from_Float16 } /* 1149 */,
+    std::pair{ "i32(f32)", &Int32_from_Float32 } /* 1150 */,
+    std::pair{ "i32(i16)", &Int32_from_Int16 } /* 1151 */,
+    std::pair{ "i32(i32)", &Int32_ctor0 } /* 1152 */,
+    std::pair{ "i32(u16)", &Int32_from_UInt16 } /* 1153 */,
+    std::pair{ "i32(u32)", &Int32_from_UInt32 } /* 1154 */,
+    std::pair{ "i32x2", &Int32x2Type } /* 1155 */,
+    std::pair{ "i32x2", &Int32x2_from_Float32x2 } /* 1156 */,
+    std::pair{ "i32x2", &Int32x2_splat_Float32 } /* 1157 */,
+    std::pair{ "i32x2", &Int32x2_from_UInt32x2 } /* 1158 */,
+    std::pair{ "i32x2", &Int32x2_splat_UInt32 } /* 1159 */,
+    std::pair{ "i32x2", &Int32x2_from_Int32x2 } /* 1160 */,
+    std::pair{ "i32x2", &Int32x2_splat_Int32 } /* 1161 */,
+    std::pair{ "i32x2", &Int32x2_from_Bool8x2 } /* 1162 */,
+    std::pair{ "i32x2", &Int32x2_splat_Bool8 } /* 1163 */,
+    std::pair{ "i32x2", &Int32x2_from_Float16x2 } /* 1164 */,
+    std::pair{ "i32x2", &Int32x2_splat_Float16 } /* 1165 */,
+    std::pair{ "i32x2", &Int32x2_from_UInt16x2 } /* 1166 */,
+    std::pair{ "i32x2", &Int32x2_splat_UInt16 } /* 1167 */,
+    std::pair{ "i32x2", &Int32x2_from_Int16x2 } /* 1168 */,
+    std::pair{ "i32x2", &Int32x2_splat_Int16 } /* 1169 */,
+    std::pair{ "i32x2", &Int32x2_ctor0 } /* 1170 */,
+    std::pair{ "i32x2(b8)", &Int32x2_splat_Bool8 } /* 1171 */,
+    std::pair{ "i32x2(b8x2)", &Int32x2_from_Bool8x2 } /* 1172 */,
+    std::pair{ "i32x2(f16)", &Int32x2_splat_Float16 } /* 1173 */,
+    std::pair{ "i32x2(f16x2)", &Int32x2_from_Float16x2 } /* 1174 */,
+    std::pair{ "i32x2(f32)", &Int32x2_splat_Float32 } /* 1175 */,
+    std::pair{ "i32x2(f32x2)", &Int32x2_from_Float32x2 } /* 1176 */,
+    std::pair{ "i32x2(i16)", &Int32x2_splat_Int16 } /* 1177 */,
+    std::pair{ "i32x2(i16x2)", &Int32x2_from_Int16x2 } /* 1178 */,
+    std::pair{ "i32x2(i32)", &Int32x2_splat_Int32 } /* 1179 */,
+    std::pair{ "i32x2(i32,i32)", &Int32x2_ctor0 } /* 1180 */,
+    std::pair{ "i32x2(i32x2)", &Int32x2_from_Int32x2 } /* 1181 */,
+    std::pair{ "i32x2(u16)", &Int32x2_splat_UInt16 } /* 1182 */,
+    std::pair{ "i32x2(u16x2)", &Int32x2_from_UInt16x2 } /* 1183 */,
+    std::pair{ "i32x2(u32)", &Int32x2_splat_UInt32 } /* 1184 */,
+    std::pair{ "i32x2(u32x2)", &Int32x2_from_UInt32x2 } /* 1185 */,
+    std::pair{ "i32x3", &Int32x3Type } /* 1186 */,
+    std::pair{ "i32x3", &Int32x3_from_Float32x3 } /* 1187 */,
+    std::pair{ "i32x3", &Int32x3_splat_Float32 } /* 1188 */,
+    std::pair{ "i32x3", &Int32x3_from_UInt32x3 } /* 1189 */,
+    std::pair{ "i32x3", &Int32x3_splat_UInt32 } /* 1190 */,
+    std::pair{ "i32x3", &Int32x3_from_Int32x3 } /* 1191 */,
+    std::pair{ "i32x3", &Int32x3_splat_Int32 } /* 1192 */,
+    std::pair{ "i32x3", &Int32x3_from_Bool8x3 } /* 1193 */,
+    std::pair{ "i32x3", &Int32x3_splat_Bool8 } /* 1194 */,
+    std::pair{ "i32x3", &Int32x3_from_Float16x3 } /* 1195 */,
+    std::pair{ "i32x3", &Int32x3_splat_Float16 } /* 1196 */,
+    std::pair{ "i32x3", &Int32x3_from_UInt16x3 } /* 1197 */,
+    std::pair{ "i32x3", &Int32x3_splat_UInt16 } /* 1198 */,
+    std::pair{ "i32x3", &Int32x3_from_Int16x3 } /* 1199 */,
+    std::pair{ "i32x3", &Int32x3_splat_Int16 } /* 1200 */,
+    std::pair{ "i32x3", &Int32x3_ctor0 } /* 1201 */,
+    std::pair{ "i32x3", &Int32x3_ctor1 } /* 1202 */,
+    std::pair{ "i32x3", &Int32x3_ctor2 } /* 1203 */,
+    std::pair{ "i32x3(b8)", &Int32x3_splat_Bool8 } /* 1204 */,
+    std::pair{ "i32x3(b8x3)", &Int32x3_from_Bool8x3 } /* 1205 */,
+    std::pair{ "i32x3(f16)", &Int32x3_splat_Float16 } /* 1206 */,
+    std::pair{ "i32x3(f16x3)", &Int32x3_from_Float16x3 } /* 1207 */,
+    std::pair{ "i32x3(f32)", &Int32x3_splat_Float32 } /* 1208 */,
+    std::pair{ "i32x3(f32x3)", &Int32x3_from_Float32x3 } /* 1209 */,
+    std::pair{ "i32x3(i16)", &Int32x3_splat_Int16 } /* 1210 */,
+    std::pair{ "i32x3(i16x3)", &Int32x3_from_Int16x3 } /* 1211 */,
+    std::pair{ "i32x3(i32)", &Int32x3_splat_Int32 } /* 1212 */,
+    std::pair{ "i32x3(i32,i32,i32)", &Int32x3_ctor0 } /* 1213 */,
+    std::pair{ "i32x3(i32,i32x2)", &Int32x3_ctor2 } /* 1214 */,
+    std::pair{ "i32x3(i32x2,i32)", &Int32x3_ctor1 } /* 1215 */,
+    std::pair{ "i32x3(i32x3)", &Int32x3_from_Int32x3 } /* 1216 */,
+    std::pair{ "i32x3(u16)", &Int32x3_splat_UInt16 } /* 1217 */,
+    std::pair{ "i32x3(u16x3)", &Int32x3_from_UInt16x3 } /* 1218 */,
+    std::pair{ "i32x3(u32)", &Int32x3_splat_UInt32 } /* 1219 */,
+    std::pair{ "i32x3(u32x3)", &Int32x3_from_UInt32x3 } /* 1220 */,
+    std::pair{ "i32x4", &Int32x4Type } /* 1221 */,
+    std::pair{ "i32x4", &Int32x4_from_Float32x4 } /* 1222 */,
+    std::pair{ "i32x4", &Int32x4_splat_Float32 } /* 1223 */,
+    std::pair{ "i32x4", &Int32x4_from_UInt32x4 } /* 1224 */,
+    std::pair{ "i32x4", &Int32x4_splat_UInt32 } /* 1225 */,
+    std::pair{ "i32x4", &Int32x4_from_Int32x4 } /* 1226 */,
+    std::pair{ "i32x4", &Int32x4_splat_Int32 } /* 1227 */,
+    std::pair{ "i32x4", &Int32x4_from_Bool8x4 } /* 1228 */,
+    std::pair{ "i32x4", &Int32x4_splat_Bool8 } /* 1229 */,
+    std::pair{ "i32x4", &Int32x4_from_Float16x4 } /* 1230 */,
+    std::pair{ "i32x4", &Int32x4_splat_Float16 } /* 1231 */,
+    std::pair{ "i32x4", &Int32x4_from_UInt16x4 } /* 1232 */,
+    std::pair{ "i32x4", &Int32x4_splat_UInt16 } /* 1233 */,
+    std::pair{ "i32x4", &Int32x4_from_Int16x4 } /* 1234 */,
+    std::pair{ "i32x4", &Int32x4_splat_Int16 } /* 1235 */,
+    std::pair{ "i32x4", &Int32x4_ctor0 } /* 1236 */,
+    std::pair{ "i32x4", &Int32x4_ctor1 } /* 1237 */,
+    std::pair{ "i32x4", &Int32x4_ctor2 } /* 1238 */,
+    std::pair{ "i32x4", &Int32x4_ctor3 } /* 1239 */,
+    std::pair{ "i32x4", &Int32x4_ctor4 } /* 1240 */,
+    std::pair{ "i32x4", &Int32x4_ctor5 } /* 1241 */,
+    std::pair{ "i32x4", &Int32x4_ctor6 } /* 1242 */,
+    std::pair{ "i32x4(b8)", &Int32x4_splat_Bool8 } /* 1243 */,
+    std::pair{ "i32x4(b8x4)", &Int32x4_from_Bool8x4 } /* 1244 */,
+    std::pair{ "i32x4(f16)", &Int32x4_splat_Float16 } /* 1245 */,
+    std::pair{ "i32x4(f16x4)", &Int32x4_from_Float16x4 } /* 1246 */,
+    std::pair{ "i32x4(f32)", &Int32x4_splat_Float32 } /* 1247 */,
+    std::pair{ "i32x4(f32x4)", &Int32x4_from_Float32x4 } /* 1248 */,
+    std::pair{ "i32x4(i16)", &Int32x4_splat_Int16 } /* 1249 */,
+    std::pair{ "i32x4(i16x4)", &Int32x4_from_Int16x4 } /* 1250 */,
+    std::pair{ "i32x4(i32)", &Int32x4_splat_Int32 } /* 1251 */,
+    std::pair{ "i32x4(i32,i32,i32,i32)", &Int32x4_ctor0 } /* 1252 */,
+    std::pair{ "i32x4(i32,i32,i32x2)", &Int32x4_ctor3 } /* 1253 */,
+    std::pair{ "i32x4(i32,i32x2,i32)", &Int32x4_ctor2 } /* 1254 */,
+    std::pair{ "i32x4(i32,i32x3)", &Int32x4_ctor6 } /* 1255 */,
+    std::pair{ "i32x4(i32x2,i32,i32)", &Int32x4_ctor1 } /* 1256 */,
+    std::pair{ "i32x4(i32x2,i32x2)", &Int32x4_ctor4 } /* 1257 */,
+    std::pair{ "i32x4(i32x3,i32)", &Int32x4_ctor5 } /* 1258 */,
+    std::pair{ "i32x4(i32x4)", &Int32x4_from_Int32x4 } /* 1259 */,
+    std::pair{ "i32x4(u16)", &Int32x4_splat_UInt16 } /* 1260 */,
+    std::pair{ "i32x4(u16x4)", &Int32x4_from_UInt16x4 } /* 1261 */,
+    std::pair{ "i32x4(u32)", &Int32x4_splat_UInt32 } /* 1262 */,
+    std::pair{ "i32x4(u32x4)", &Int32x4_from_UInt32x4 } /* 1263 */,
+    std::pair{ "invSqrt", &invSqrt_Float32 } /* 1264 */,
+    std::pair{ "invSqrt", &invSqrt_Float32x2 } /* 1265 */,
+    std::pair{ "invSqrt", &invSqrt_Float32x3 } /* 1266 */,
+    std::pair{ "invSqrt", &invSqrt_Float32x4 } /* 1267 */,
+    std::pair{ "invSqrt", &invSqrt_Float16 } /* 1268 */,
+    std::pair{ "invSqrt", &invSqrt_Float16x2 } /* 1269 */,
+    std::pair{ "invSqrt", &invSqrt_Float16x3 } /* 1270 */,
+    std::pair{ "invSqrt", &invSqrt_Float16x4 } /* 1271 */,
+    std::pair{ "invSqrt(f16)", &invSqrt_Float16 } /* 1272 */,
+    std::pair{ "invSqrt(f16x2)", &invSqrt_Float16x2 } /* 1273 */,
+    std::pair{ "invSqrt(f16x3)", &invSqrt_Float16x3 } /* 1274 */,
+    std::pair{ "invSqrt(f16x4)", &invSqrt_Float16x4 } /* 1275 */,
+    std::pair{ "invSqrt(f32)", &invSqrt_Float32 } /* 1276 */,
+    std::pair{ "invSqrt(f32x2)", &invSqrt_Float32x2 } /* 1277 */,
+    std::pair{ "invSqrt(f32x3)", &invSqrt_Float32x3 } /* 1278 */,
+    std::pair{ "invSqrt(f32x4)", &invSqrt_Float32x4 } /* 1279 */,
+    std::pair{ "inverse", &inverse_Float32x2x2 } /* 1280 */,
+    std::pair{ "inverse", &inverse_Float16x2x2 } /* 1281 */,
+    std::pair{ "inverse", &inverse_Float32x2x3 } /* 1282 */,
+    std::pair{ "inverse", &inverse_Float16x2x3 } /* 1283 */,
+    std::pair{ "inverse", &inverse_Float32x2x4 } /* 1284 */,
+    std::pair{ "inverse", &inverse_Float16x2x4 } /* 1285 */,
+    std::pair{ "inverse", &inverse_Float32x3x2 } /* 1286 */,
+    std::pair{ "inverse", &inverse_Float16x3x2 } /* 1287 */,
+    std::pair{ "inverse", &inverse_Float32x3x3 } /* 1288 */,
+    std::pair{ "inverse", &inverse_Float16x3x3 } /* 1289 */,
+    std::pair{ "inverse", &inverse_Float32x3x4 } /* 1290 */,
+    std::pair{ "inverse", &inverse_Float16x3x4 } /* 1291 */,
+    std::pair{ "inverse", &inverse_Float32x4x2 } /* 1292 */,
+    std::pair{ "inverse", &inverse_Float16x4x2 } /* 1293 */,
+    std::pair{ "inverse", &inverse_Float32x4x3 } /* 1294 */,
+    std::pair{ "inverse", &inverse_Float16x4x3 } /* 1295 */,
+    std::pair{ "inverse", &inverse_Float32x4x4 } /* 1296 */,
+    std::pair{ "inverse", &inverse_Float16x4x4 } /* 1297 */,
+    std::pair{ "inverse(f16x2x2)", &inverse_Float16x2x2 } /* 1298 */,
+    std::pair{ "inverse(f16x2x3)", &inverse_Float16x2x3 } /* 1299 */,
+    std::pair{ "inverse(f16x2x4)", &inverse_Float16x2x4 } /* 1300 */,
+    std::pair{ "inverse(f16x3x2)", &inverse_Float16x3x2 } /* 1301 */,
+    std::pair{ "inverse(f16x3x3)", &inverse_Float16x3x3 } /* 1302 */,
+    std::pair{ "inverse(f16x3x4)", &inverse_Float16x3x4 } /* 1303 */,
+    std::pair{ "inverse(f16x4x2)", &inverse_Float16x4x2 } /* 1304 */,
+    std::pair{ "inverse(f16x4x3)", &inverse_Float16x4x3 } /* 1305 */,
+    std::pair{ "inverse(f16x4x4)", &inverse_Float16x4x4 } /* 1306 */,
+    std::pair{ "inverse(f32x2x2)", &inverse_Float32x2x2 } /* 1307 */,
+    std::pair{ "inverse(f32x2x3)", &inverse_Float32x2x3 } /* 1308 */,
+    std::pair{ "inverse(f32x2x4)", &inverse_Float32x2x4 } /* 1309 */,
+    std::pair{ "inverse(f32x3x2)", &inverse_Float32x3x2 } /* 1310 */,
+    std::pair{ "inverse(f32x3x3)", &inverse_Float32x3x3 } /* 1311 */,
+    std::pair{ "inverse(f32x3x4)", &inverse_Float32x3x4 } /* 1312 */,
+    std::pair{ "inverse(f32x4x2)", &inverse_Float32x4x2 } /* 1313 */,
+    std::pair{ "inverse(f32x4x3)", &inverse_Float32x4x3 } /* 1314 */,
+    std::pair{ "inverse(f32x4x4)", &inverse_Float32x4x4 } /* 1315 */,
+    std::pair{ "length", &length_Float32x2 } /* 1316 */,
+    std::pair{ "length", &length_Float32x3 } /* 1317 */,
+    std::pair{ "length", &length_Float32x4 } /* 1318 */,
+    std::pair{ "length", &length_Float16x2 } /* 1319 */,
+    std::pair{ "length", &length_Float16x3 } /* 1320 */,
+    std::pair{ "length", &length_Float16x4 } /* 1321 */,
+    std::pair{ "length(f16x2)", &length_Float16x2 } /* 1322 */,
+    std::pair{ "length(f16x3)", &length_Float16x3 } /* 1323 */,
+    std::pair{ "length(f16x4)", &length_Float16x4 } /* 1324 */,
+    std::pair{ "length(f32x2)", &length_Float32x2 } /* 1325 */,
+    std::pair{ "length(f32x3)", &length_Float32x3 } /* 1326 */,
+    std::pair{ "length(f32x4)", &length_Float32x4 } /* 1327 */,
+    std::pair{ "lerp", &lerp_Float32x2 } /* 1328 */,
+    std::pair{ "lerp", &lerp_Float32x3 } /* 1329 */,
+    std::pair{ "lerp", &lerp_Float32x4 } /* 1330 */,
+    std::pair{ "lerp", &lerp_Float16x2 } /* 1331 */,
+    std::pair{ "lerp", &lerp_Float16x3 } /* 1332 */,
+    std::pair{ "lerp", &lerp_Float16x4 } /* 1333 */,
+    std::pair{ "lerp(f16x2,f16x2,f16x2)", &lerp_Float16x2 } /* 1334 */,
+    std::pair{ "lerp(f16x3,f16x3,f16x3)", &lerp_Float16x3 } /* 1335 */,
+    std::pair{ "lerp(f16x4,f16x4,f16x4)", &lerp_Float16x4 } /* 1336 */,
+    std::pair{ "lerp(f32x2,f32x2,f32x2)", &lerp_Float32x2 } /* 1337 */,
+    std::pair{ "lerp(f32x3,f32x3,f32x3)", &lerp_Float32x3 } /* 1338 */,
+    std::pair{ "lerp(f32x4,f32x4,f32x4)", &lerp_Float32x4 } /* 1339 */,
+    std::pair{ "log", &log_Float32 } /* 1340 */,
+    std::pair{ "log", &log_Float32x2 } /* 1341 */,
+    std::pair{ "log", &log_Float32x3 } /* 1342 */,
+    std::pair{ "log", &log_Float32x4 } /* 1343 */,
+    std::pair{ "log", &log_Float16 } /* 1344 */,
+    std::pair{ "log", &log_Float16x2 } /* 1345 */,
+    std::pair{ "log", &log_Float16x3 } /* 1346 */,
+    std::pair{ "log", &log_Float16x4 } /* 1347 */,
+    std::pair{ "log(f16)", &log_Float16 } /* 1348 */,
+    std::pair{ "log(f16x2)", &log_Float16x2 } /* 1349 */,
+    std::pair{ "log(f16x3)", &log_Float16x3 } /* 1350 */,
+    std::pair{ "log(f16x4)", &log_Float16x4 } /* 1351 */,
+    std::pair{ "log(f32)", &log_Float32 } /* 1352 */,
+    std::pair{ "log(f32x2)", &log_Float32x2 } /* 1353 */,
+    std::pair{ "log(f32x3)", &log_Float32x3 } /* 1354 */,
+    std::pair{ "log(f32x4)", &log_Float32x4 } /* 1355 */,
+    std::pair{ "log2", &log2_Float32 } /* 1356 */,
+    std::pair{ "log2", &log2_Float32x2 } /* 1357 */,
+    std::pair{ "log2", &log2_Float32x3 } /* 1358 */,
+    std::pair{ "log2", &log2_Float32x4 } /* 1359 */,
+    std::pair{ "log2", &log2_Float16 } /* 1360 */,
+    std::pair{ "log2", &log2_Float16x2 } /* 1361 */,
+    std::pair{ "log2", &log2_Float16x3 } /* 1362 */,
+    std::pair{ "log2", &log2_Float16x4 } /* 1363 */,
+    std::pair{ "log2(f16)", &log2_Float16 } /* 1364 */,
+    std::pair{ "log2(f16x2)", &log2_Float16x2 } /* 1365 */,
+    std::pair{ "log2(f16x3)", &log2_Float16x3 } /* 1366 */,
+    std::pair{ "log2(f16x4)", &log2_Float16x4 } /* 1367 */,
+    std::pair{ "log2(f32)", &log2_Float32 } /* 1368 */,
+    std::pair{ "log2(f32x2)", &log2_Float32x2 } /* 1369 */,
+    std::pair{ "log2(f32x3)", &log2_Float32x3 } /* 1370 */,
+    std::pair{ "log2(f32x4)", &log2_Float32x4 } /* 1371 */,
+    std::pair{ "mad", &mad_Float32 } /* 1372 */,
+    std::pair{ "mad", &mad_Float32x2 } /* 1373 */,
+    std::pair{ "mad", &mad_Float32x3 } /* 1374 */,
+    std::pair{ "mad", &mad_Float32x4 } /* 1375 */,
+    std::pair{ "mad", &mad_Float16 } /* 1376 */,
+    std::pair{ "mad", &mad_Float16x2 } /* 1377 */,
+    std::pair{ "mad", &mad_Float16x3 } /* 1378 */,
+    std::pair{ "mad", &mad_Float16x4 } /* 1379 */,
+    std::pair{ "mad", &mad_Int32 } /* 1380 */,
+    std::pair{ "mad", &mad_Int32x2 } /* 1381 */,
+    std::pair{ "mad", &mad_Int32x3 } /* 1382 */,
+    std::pair{ "mad", &mad_Int32x4 } /* 1383 */,
+    std::pair{ "mad", &mad_Int16 } /* 1384 */,
+    std::pair{ "mad", &mad_Int16x2 } /* 1385 */,
+    std::pair{ "mad", &mad_Int16x3 } /* 1386 */,
+    std::pair{ "mad", &mad_Int16x4 } /* 1387 */,
+    std::pair{ "mad", &mad_UInt32 } /* 1388 */,
+    std::pair{ "mad", &mad_UInt32x2 } /* 1389 */,
+    std::pair{ "mad", &mad_UInt32x3 } /* 1390 */,
+    std::pair{ "mad", &mad_UInt32x4 } /* 1391 */,
+    std::pair{ "mad", &mad_UInt16 } /* 1392 */,
+    std::pair{ "mad", &mad_UInt16x2 } /* 1393 */,
+    std::pair{ "mad", &mad_UInt16x3 } /* 1394 */,
+    std::pair{ "mad", &mad_UInt16x4 } /* 1395 */,
+    std::pair{ "mad(f16,f16,f16)", &mad_Float16 } /* 1396 */,
+    std::pair{ "mad(f16x2,f16x2,f16x2)", &mad_Float16x2 } /* 1397 */,
+    std::pair{ "mad(f16x3,f16x3,f16x3)", &mad_Float16x3 } /* 1398 */,
+    std::pair{ "mad(f16x4,f16x4,f16x4)", &mad_Float16x4 } /* 1399 */,
+    std::pair{ "mad(f32,f32,f32)", &mad_Float32 } /* 1400 */,
+    std::pair{ "mad(f32x2,f32x2,f32x2)", &mad_Float32x2 } /* 1401 */,
+    std::pair{ "mad(f32x3,f32x3,f32x3)", &mad_Float32x3 } /* 1402 */,
+    std::pair{ "mad(f32x4,f32x4,f32x4)", &mad_Float32x4 } /* 1403 */,
+    std::pair{ "mad(i16,i16,i16)", &mad_Int16 } /* 1404 */,
+    std::pair{ "mad(i16x2,i16x2,i16x2)", &mad_Int16x2 } /* 1405 */,
+    std::pair{ "mad(i16x3,i16x3,i16x3)", &mad_Int16x3 } /* 1406 */,
+    std::pair{ "mad(i16x4,i16x4,i16x4)", &mad_Int16x4 } /* 1407 */,
+    std::pair{ "mad(i32,i32,i32)", &mad_Int32 } /* 1408 */,
+    std::pair{ "mad(i32x2,i32x2,i32x2)", &mad_Int32x2 } /* 1409 */,
+    std::pair{ "mad(i32x3,i32x3,i32x3)", &mad_Int32x3 } /* 1410 */,
+    std::pair{ "mad(i32x4,i32x4,i32x4)", &mad_Int32x4 } /* 1411 */,
+    std::pair{ "mad(u16,u16,u16)", &mad_UInt16 } /* 1412 */,
+    std::pair{ "mad(u16x2,u16x2,u16x2)", &mad_UInt16x2 } /* 1413 */,
+    std::pair{ "mad(u16x3,u16x3,u16x3)", &mad_UInt16x3 } /* 1414 */,
+    std::pair{ "mad(u16x4,u16x4,u16x4)", &mad_UInt16x4 } /* 1415 */,
+    std::pair{ "mad(u32,u32,u32)", &mad_UInt32 } /* 1416 */,
+    std::pair{ "mad(u32x2,u32x2,u32x2)", &mad_UInt32x2 } /* 1417 */,
+    std::pair{ "mad(u32x3,u32x3,u32x3)", &mad_UInt32x3 } /* 1418 */,
+    std::pair{ "mad(u32x4,u32x4,u32x4)", &mad_UInt32x4 } /* 1419 */,
+    std::pair{ "max", &max_Float32 } /* 1420 */,
+    std::pair{ "max", &max_Float32x2 } /* 1421 */,
+    std::pair{ "max", &max_Float32x3 } /* 1422 */,
+    std::pair{ "max", &max_Float32x4 } /* 1423 */,
+    std::pair{ "max", &max_Float16 } /* 1424 */,
+    std::pair{ "max", &max_Float16x2 } /* 1425 */,
+    std::pair{ "max", &max_Float16x3 } /* 1426 */,
+    std::pair{ "max", &max_Float16x4 } /* 1427 */,
+    std::pair{ "max", &max_Int32 } /* 1428 */,
+    std::pair{ "max", &max_Int32x2 } /* 1429 */,
+    std::pair{ "max", &max_Int32x3 } /* 1430 */,
+    std::pair{ "max", &max_Int32x4 } /* 1431 */,
+    std::pair{ "max", &max_Int16 } /* 1432 */,
+    std::pair{ "max", &max_Int16x2 } /* 1433 */,
+    std::pair{ "max", &max_Int16x3 } /* 1434 */,
+    std::pair{ "max", &max_Int16x4 } /* 1435 */,
+    std::pair{ "max", &max_UInt32 } /* 1436 */,
+    std::pair{ "max", &max_UInt32x2 } /* 1437 */,
+    std::pair{ "max", &max_UInt32x3 } /* 1438 */,
+    std::pair{ "max", &max_UInt32x4 } /* 1439 */,
+    std::pair{ "max", &max_UInt16 } /* 1440 */,
+    std::pair{ "max", &max_UInt16x2 } /* 1441 */,
+    std::pair{ "max", &max_UInt16x3 } /* 1442 */,
+    std::pair{ "max", &max_UInt16x4 } /* 1443 */,
+    std::pair{ "max(f16,f16)", &max_Float16 } /* 1444 */,
+    std::pair{ "max(f16x2,f16x2)", &max_Float16x2 } /* 1445 */,
+    std::pair{ "max(f16x3,f16x3)", &max_Float16x3 } /* 1446 */,
+    std::pair{ "max(f16x4,f16x4)", &max_Float16x4 } /* 1447 */,
+    std::pair{ "max(f32,f32)", &max_Float32 } /* 1448 */,
+    std::pair{ "max(f32x2,f32x2)", &max_Float32x2 } /* 1449 */,
+    std::pair{ "max(f32x3,f32x3)", &max_Float32x3 } /* 1450 */,
+    std::pair{ "max(f32x4,f32x4)", &max_Float32x4 } /* 1451 */,
+    std::pair{ "max(i16,i16)", &max_Int16 } /* 1452 */,
+    std::pair{ "max(i16x2,i16x2)", &max_Int16x2 } /* 1453 */,
+    std::pair{ "max(i16x3,i16x3)", &max_Int16x3 } /* 1454 */,
+    std::pair{ "max(i16x4,i16x4)", &max_Int16x4 } /* 1455 */,
+    std::pair{ "max(i32,i32)", &max_Int32 } /* 1456 */,
+    std::pair{ "max(i32x2,i32x2)", &max_Int32x2 } /* 1457 */,
+    std::pair{ "max(i32x3,i32x3)", &max_Int32x3 } /* 1458 */,
+    std::pair{ "max(i32x4,i32x4)", &max_Int32x4 } /* 1459 */,
+    std::pair{ "max(u16,u16)", &max_UInt16 } /* 1460 */,
+    std::pair{ "max(u16x2,u16x2)", &max_UInt16x2 } /* 1461 */,
+    std::pair{ "max(u16x3,u16x3)", &max_UInt16x3 } /* 1462 */,
+    std::pair{ "max(u16x4,u16x4)", &max_UInt16x4 } /* 1463 */,
+    std::pair{ "max(u32,u32)", &max_UInt32 } /* 1464 */,
+    std::pair{ "max(u32x2,u32x2)", &max_UInt32x2 } /* 1465 */,
+    std::pair{ "max(u32x3,u32x3)", &max_UInt32x3 } /* 1466 */,
+    std::pair{ "max(u32x4,u32x4)", &max_UInt32x4 } /* 1467 */,
+    std::pair{ "memoryBarrier", &MemoryBarrier } /* 1468 */,
+    std::pair{ "memoryBarrier()", &MemoryBarrier } /* 1469 */,
+    std::pair{ "memoryBarrierAtomic", &MemoryBarrierAtomic } /* 1470 */,
+    std::pair{ "memoryBarrierAtomic()", &MemoryBarrierAtomic } /* 1471 */,
+    std::pair{ "memoryBarrierBuffer", &MemoryBarrierBuffer } /* 1472 */,
+    std::pair{ "memoryBarrierBuffer()", &MemoryBarrierBuffer } /* 1473 */,
+    std::pair{ "memoryBarrierSubgroup", &MemoryBarrierSubgroup } /* 1474 */,
+    std::pair{ "memoryBarrierSubgroup()", &MemoryBarrierSubgroup } /* 1475 */,
+    std::pair{ "memoryBarrierTexture", &MemoryBarrierTexture } /* 1476 */,
+    std::pair{ "memoryBarrierTexture()", &MemoryBarrierTexture } /* 1477 */,
+    std::pair{ "memoryBarrierWorkgroup", &MemoryBarrierWorkgroup } /* 1478 */,
+    std::pair{ "memoryBarrierWorkgroup()", &MemoryBarrierWorkgroup } /* 1479 */,
+    std::pair{ "min", &min_Float32 } /* 1480 */,
+    std::pair{ "min", &min_Float32x2 } /* 1481 */,
+    std::pair{ "min", &min_Float32x3 } /* 1482 */,
+    std::pair{ "min", &min_Float32x4 } /* 1483 */,
+    std::pair{ "min", &min_Float16 } /* 1484 */,
+    std::pair{ "min", &min_Float16x2 } /* 1485 */,
+    std::pair{ "min", &min_Float16x3 } /* 1486 */,
+    std::pair{ "min", &min_Float16x4 } /* 1487 */,
+    std::pair{ "min", &min_Int32 } /* 1488 */,
+    std::pair{ "min", &min_Int32x2 } /* 1489 */,
+    std::pair{ "min", &min_Int32x3 } /* 1490 */,
+    std::pair{ "min", &min_Int32x4 } /* 1491 */,
+    std::pair{ "min", &min_Int16 } /* 1492 */,
+    std::pair{ "min", &min_Int16x2 } /* 1493 */,
+    std::pair{ "min", &min_Int16x3 } /* 1494 */,
+    std::pair{ "min", &min_Int16x4 } /* 1495 */,
+    std::pair{ "min", &min_UInt32 } /* 1496 */,
+    std::pair{ "min", &min_UInt32x2 } /* 1497 */,
+    std::pair{ "min", &min_UInt32x3 } /* 1498 */,
+    std::pair{ "min", &min_UInt32x4 } /* 1499 */,
+    std::pair{ "min", &min_UInt16 } /* 1500 */,
+    std::pair{ "min", &min_UInt16x2 } /* 1501 */,
+    std::pair{ "min", &min_UInt16x3 } /* 1502 */,
+    std::pair{ "min", &min_UInt16x4 } /* 1503 */,
+    std::pair{ "min(f16,f16)", &min_Float16 } /* 1504 */,
+    std::pair{ "min(f16x2,f16x2)", &min_Float16x2 } /* 1505 */,
+    std::pair{ "min(f16x3,f16x3)", &min_Float16x3 } /* 1506 */,
+    std::pair{ "min(f16x4,f16x4)", &min_Float16x4 } /* 1507 */,
+    std::pair{ "min(f32,f32)", &min_Float32 } /* 1508 */,
+    std::pair{ "min(f32x2,f32x2)", &min_Float32x2 } /* 1509 */,
+    std::pair{ "min(f32x3,f32x3)", &min_Float32x3 } /* 1510 */,
+    std::pair{ "min(f32x4,f32x4)", &min_Float32x4 } /* 1511 */,
+    std::pair{ "min(i16,i16)", &min_Int16 } /* 1512 */,
+    std::pair{ "min(i16x2,i16x2)", &min_Int16x2 } /* 1513 */,
+    std::pair{ "min(i16x3,i16x3)", &min_Int16x3 } /* 1514 */,
+    std::pair{ "min(i16x4,i16x4)", &min_Int16x4 } /* 1515 */,
+    std::pair{ "min(i32,i32)", &min_Int32 } /* 1516 */,
+    std::pair{ "min(i32x2,i32x2)", &min_Int32x2 } /* 1517 */,
+    std::pair{ "min(i32x3,i32x3)", &min_Int32x3 } /* 1518 */,
+    std::pair{ "min(i32x4,i32x4)", &min_Int32x4 } /* 1519 */,
+    std::pair{ "min(u16,u16)", &min_UInt16 } /* 1520 */,
+    std::pair{ "min(u16x2,u16x2)", &min_UInt16x2 } /* 1521 */,
+    std::pair{ "min(u16x3,u16x3)", &min_UInt16x3 } /* 1522 */,
+    std::pair{ "min(u16x4,u16x4)", &min_UInt16x4 } /* 1523 */,
+    std::pair{ "min(u32,u32)", &min_UInt32 } /* 1524 */,
+    std::pair{ "min(u32x2,u32x2)", &min_UInt32x2 } /* 1525 */,
+    std::pair{ "min(u32x3,u32x3)", &min_UInt32x3 } /* 1526 */,
+    std::pair{ "min(u32x4,u32x4)", &min_UInt32x4 } /* 1527 */,
+    std::pair{ "normalize", &normalize_Float32x2 } /* 1528 */,
+    std::pair{ "normalize", &normalize_Float32x3 } /* 1529 */,
+    std::pair{ "normalize", &normalize_Float32x4 } /* 1530 */,
+    std::pair{ "normalize", &normalize_Float16x2 } /* 1531 */,
+    std::pair{ "normalize", &normalize_Float16x3 } /* 1532 */,
+    std::pair{ "normalize", &normalize_Float16x4 } /* 1533 */,
+    std::pair{ "normalize(f16x2)", &normalize_Float16x2 } /* 1534 */,
+    std::pair{ "normalize(f16x3)", &normalize_Float16x3 } /* 1535 */,
+    std::pair{ "normalize(f16x4)", &normalize_Float16x4 } /* 1536 */,
+    std::pair{ "normalize(f32x2)", &normalize_Float32x2 } /* 1537 */,
+    std::pair{ "normalize(f32x3)", &normalize_Float32x3 } /* 1538 */,
+    std::pair{ "normalize(f32x4)", &normalize_Float32x4 } /* 1539 */,
+    std::pair{ "pixelCache", &PixelCacheType } /* 1540 */,
+    std::pair{ "pixelCacheMS", &PixelCacheMSType } /* 1541 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float32_Int32 } /* 1542 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float32_UInt32 } /* 1543 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float32_Int16 } /* 1544 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float32_UInt16 } /* 1545 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float32x2_Int32 } /* 1546 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float32x2_UInt32 } /* 1547 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float32x2_Int16 } /* 1548 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float32x2_UInt16 } /* 1549 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float32x3_Int32 } /* 1550 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float32x3_UInt32 } /* 1551 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float32x3_Int16 } /* 1552 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float32x3_UInt16 } /* 1553 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float32x4_Int32 } /* 1554 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float32x4_UInt32 } /* 1555 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float32x4_Int16 } /* 1556 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float32x4_UInt16 } /* 1557 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float16_Int32 } /* 1558 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float16_UInt32 } /* 1559 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float16_Int16 } /* 1560 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float16_UInt16 } /* 1561 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float16x2_Int32 } /* 1562 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float16x2_UInt32 } /* 1563 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float16x2_Int16 } /* 1564 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float16x2_UInt16 } /* 1565 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float16x3_Int32 } /* 1566 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float16x3_UInt32 } /* 1567 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float16x3_Int16 } /* 1568 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float16x3_UInt16 } /* 1569 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float16x4_Int32 } /* 1570 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float16x4_UInt32 } /* 1571 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float16x4_Int16 } /* 1572 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Float16x4_UInt16 } /* 1573 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int32_Int32 } /* 1574 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int32_UInt32 } /* 1575 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int32_Int16 } /* 1576 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int32_UInt16 } /* 1577 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int32x2_Int32 } /* 1578 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int32x2_UInt32 } /* 1579 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int32x2_Int16 } /* 1580 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int32x2_UInt16 } /* 1581 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int32x3_Int32 } /* 1582 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int32x3_UInt32 } /* 1583 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int32x3_Int16 } /* 1584 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int32x3_UInt16 } /* 1585 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int32x4_Int32 } /* 1586 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int32x4_UInt32 } /* 1587 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int32x4_Int16 } /* 1588 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int32x4_UInt16 } /* 1589 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int16_Int32 } /* 1590 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int16_UInt32 } /* 1591 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int16_Int16 } /* 1592 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int16_UInt16 } /* 1593 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int16x2_Int32 } /* 1594 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int16x2_UInt32 } /* 1595 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int16x2_Int16 } /* 1596 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int16x2_UInt16 } /* 1597 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int16x3_Int32 } /* 1598 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int16x3_UInt32 } /* 1599 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int16x3_Int16 } /* 1600 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int16x3_UInt16 } /* 1601 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int16x4_Int32 } /* 1602 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int16x4_UInt32 } /* 1603 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int16x4_Int16 } /* 1604 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_Int16x4_UInt16 } /* 1605 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt32_Int32 } /* 1606 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt32_UInt32 } /* 1607 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt32_Int16 } /* 1608 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt32_UInt16 } /* 1609 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt32x2_Int32 } /* 1610 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt32x2_UInt32 } /* 1611 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt32x2_Int16 } /* 1612 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt32x2_UInt16 } /* 1613 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt32x3_Int32 } /* 1614 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt32x3_UInt32 } /* 1615 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt32x3_Int16 } /* 1616 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt32x3_UInt16 } /* 1617 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt32x4_Int32 } /* 1618 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt32x4_UInt32 } /* 1619 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt32x4_Int16 } /* 1620 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt32x4_UInt16 } /* 1621 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt16_Int32 } /* 1622 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt16_UInt32 } /* 1623 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt16_Int16 } /* 1624 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt16_UInt16 } /* 1625 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt16x2_Int32 } /* 1626 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt16x2_UInt32 } /* 1627 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt16x2_Int16 } /* 1628 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt16x2_UInt16 } /* 1629 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt16x3_Int32 } /* 1630 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt16x3_UInt32 } /* 1631 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt16x3_Int16 } /* 1632 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt16x3_UInt16 } /* 1633 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt16x4_Int32 } /* 1634 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt16x4_UInt32 } /* 1635 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt16x4_Int16 } /* 1636 */,
+    std::pair{ "pixelExportColor", &PixelExportColor_UInt16x4_UInt16 } /* 1637 */,
+    std::pair{ "pixelExportColor(f16,literal i16)", &PixelExportColor_Float16_Int16 } /* 1638 */,
+    std::pair{ "pixelExportColor(f16,literal i32)", &PixelExportColor_Float16_Int32 } /* 1639 */,
+    std::pair{ "pixelExportColor(f16,literal u16)", &PixelExportColor_Float16_UInt16 } /* 1640 */,
+    std::pair{ "pixelExportColor(f16,literal u32)", &PixelExportColor_Float16_UInt32 } /* 1641 */,
+    std::pair{ "pixelExportColor(f16x2,literal i16)", &PixelExportColor_Float16x2_Int16 } /* 1642 */,
+    std::pair{ "pixelExportColor(f16x2,literal i32)", &PixelExportColor_Float16x2_Int32 } /* 1643 */,
+    std::pair{ "pixelExportColor(f16x2,literal u16)", &PixelExportColor_Float16x2_UInt16 } /* 1644 */,
+    std::pair{ "pixelExportColor(f16x2,literal u32)", &PixelExportColor_Float16x2_UInt32 } /* 1645 */,
+    std::pair{ "pixelExportColor(f16x3,literal i16)", &PixelExportColor_Float16x3_Int16 } /* 1646 */,
+    std::pair{ "pixelExportColor(f16x3,literal i32)", &PixelExportColor_Float16x3_Int32 } /* 1647 */,
+    std::pair{ "pixelExportColor(f16x3,literal u16)", &PixelExportColor_Float16x3_UInt16 } /* 1648 */,
+    std::pair{ "pixelExportColor(f16x3,literal u32)", &PixelExportColor_Float16x3_UInt32 } /* 1649 */,
+    std::pair{ "pixelExportColor(f16x4,literal i16)", &PixelExportColor_Float16x4_Int16 } /* 1650 */,
+    std::pair{ "pixelExportColor(f16x4,literal i32)", &PixelExportColor_Float16x4_Int32 } /* 1651 */,
+    std::pair{ "pixelExportColor(f16x4,literal u16)", &PixelExportColor_Float16x4_UInt16 } /* 1652 */,
+    std::pair{ "pixelExportColor(f16x4,literal u32)", &PixelExportColor_Float16x4_UInt32 } /* 1653 */,
+    std::pair{ "pixelExportColor(f32,literal i16)", &PixelExportColor_Float32_Int16 } /* 1654 */,
+    std::pair{ "pixelExportColor(f32,literal i32)", &PixelExportColor_Float32_Int32 } /* 1655 */,
+    std::pair{ "pixelExportColor(f32,literal u16)", &PixelExportColor_Float32_UInt16 } /* 1656 */,
+    std::pair{ "pixelExportColor(f32,literal u32)", &PixelExportColor_Float32_UInt32 } /* 1657 */,
+    std::pair{ "pixelExportColor(f32x2,literal i16)", &PixelExportColor_Float32x2_Int16 } /* 1658 */,
+    std::pair{ "pixelExportColor(f32x2,literal i32)", &PixelExportColor_Float32x2_Int32 } /* 1659 */,
+    std::pair{ "pixelExportColor(f32x2,literal u16)", &PixelExportColor_Float32x2_UInt16 } /* 1660 */,
+    std::pair{ "pixelExportColor(f32x2,literal u32)", &PixelExportColor_Float32x2_UInt32 } /* 1661 */,
+    std::pair{ "pixelExportColor(f32x3,literal i16)", &PixelExportColor_Float32x3_Int16 } /* 1662 */,
+    std::pair{ "pixelExportColor(f32x3,literal i32)", &PixelExportColor_Float32x3_Int32 } /* 1663 */,
+    std::pair{ "pixelExportColor(f32x3,literal u16)", &PixelExportColor_Float32x3_UInt16 } /* 1664 */,
+    std::pair{ "pixelExportColor(f32x3,literal u32)", &PixelExportColor_Float32x3_UInt32 } /* 1665 */,
+    std::pair{ "pixelExportColor(f32x4,literal i16)", &PixelExportColor_Float32x4_Int16 } /* 1666 */,
+    std::pair{ "pixelExportColor(f32x4,literal i32)", &PixelExportColor_Float32x4_Int32 } /* 1667 */,
+    std::pair{ "pixelExportColor(f32x4,literal u16)", &PixelExportColor_Float32x4_UInt16 } /* 1668 */,
+    std::pair{ "pixelExportColor(f32x4,literal u32)", &PixelExportColor_Float32x4_UInt32 } /* 1669 */,
+    std::pair{ "pixelExportColor(i16,literal i16)", &PixelExportColor_Int16_Int16 } /* 1670 */,
+    std::pair{ "pixelExportColor(i16,literal i32)", &PixelExportColor_Int16_Int32 } /* 1671 */,
+    std::pair{ "pixelExportColor(i16,literal u16)", &PixelExportColor_Int16_UInt16 } /* 1672 */,
+    std::pair{ "pixelExportColor(i16,literal u32)", &PixelExportColor_Int16_UInt32 } /* 1673 */,
+    std::pair{ "pixelExportColor(i16x2,literal i16)", &PixelExportColor_Int16x2_Int16 } /* 1674 */,
+    std::pair{ "pixelExportColor(i16x2,literal i32)", &PixelExportColor_Int16x2_Int32 } /* 1675 */,
+    std::pair{ "pixelExportColor(i16x2,literal u16)", &PixelExportColor_Int16x2_UInt16 } /* 1676 */,
+    std::pair{ "pixelExportColor(i16x2,literal u32)", &PixelExportColor_Int16x2_UInt32 } /* 1677 */,
+    std::pair{ "pixelExportColor(i16x3,literal i16)", &PixelExportColor_Int16x3_Int16 } /* 1678 */,
+    std::pair{ "pixelExportColor(i16x3,literal i32)", &PixelExportColor_Int16x3_Int32 } /* 1679 */,
+    std::pair{ "pixelExportColor(i16x3,literal u16)", &PixelExportColor_Int16x3_UInt16 } /* 1680 */,
+    std::pair{ "pixelExportColor(i16x3,literal u32)", &PixelExportColor_Int16x3_UInt32 } /* 1681 */,
+    std::pair{ "pixelExportColor(i16x4,literal i16)", &PixelExportColor_Int16x4_Int16 } /* 1682 */,
+    std::pair{ "pixelExportColor(i16x4,literal i32)", &PixelExportColor_Int16x4_Int32 } /* 1683 */,
+    std::pair{ "pixelExportColor(i16x4,literal u16)", &PixelExportColor_Int16x4_UInt16 } /* 1684 */,
+    std::pair{ "pixelExportColor(i16x4,literal u32)", &PixelExportColor_Int16x4_UInt32 } /* 1685 */,
+    std::pair{ "pixelExportColor(i32,literal i16)", &PixelExportColor_Int32_Int16 } /* 1686 */,
+    std::pair{ "pixelExportColor(i32,literal i32)", &PixelExportColor_Int32_Int32 } /* 1687 */,
+    std::pair{ "pixelExportColor(i32,literal u16)", &PixelExportColor_Int32_UInt16 } /* 1688 */,
+    std::pair{ "pixelExportColor(i32,literal u32)", &PixelExportColor_Int32_UInt32 } /* 1689 */,
+    std::pair{ "pixelExportColor(i32x2,literal i16)", &PixelExportColor_Int32x2_Int16 } /* 1690 */,
+    std::pair{ "pixelExportColor(i32x2,literal i32)", &PixelExportColor_Int32x2_Int32 } /* 1691 */,
+    std::pair{ "pixelExportColor(i32x2,literal u16)", &PixelExportColor_Int32x2_UInt16 } /* 1692 */,
+    std::pair{ "pixelExportColor(i32x2,literal u32)", &PixelExportColor_Int32x2_UInt32 } /* 1693 */,
+    std::pair{ "pixelExportColor(i32x3,literal i16)", &PixelExportColor_Int32x3_Int16 } /* 1694 */,
+    std::pair{ "pixelExportColor(i32x3,literal i32)", &PixelExportColor_Int32x3_Int32 } /* 1695 */,
+    std::pair{ "pixelExportColor(i32x3,literal u16)", &PixelExportColor_Int32x3_UInt16 } /* 1696 */,
+    std::pair{ "pixelExportColor(i32x3,literal u32)", &PixelExportColor_Int32x3_UInt32 } /* 1697 */,
+    std::pair{ "pixelExportColor(i32x4,literal i16)", &PixelExportColor_Int32x4_Int16 } /* 1698 */,
+    std::pair{ "pixelExportColor(i32x4,literal i32)", &PixelExportColor_Int32x4_Int32 } /* 1699 */,
+    std::pair{ "pixelExportColor(i32x4,literal u16)", &PixelExportColor_Int32x4_UInt16 } /* 1700 */,
+    std::pair{ "pixelExportColor(i32x4,literal u32)", &PixelExportColor_Int32x4_UInt32 } /* 1701 */,
+    std::pair{ "pixelExportColor(u16,literal i16)", &PixelExportColor_UInt16_Int16 } /* 1702 */,
+    std::pair{ "pixelExportColor(u16,literal i32)", &PixelExportColor_UInt16_Int32 } /* 1703 */,
+    std::pair{ "pixelExportColor(u16,literal u16)", &PixelExportColor_UInt16_UInt16 } /* 1704 */,
+    std::pair{ "pixelExportColor(u16,literal u32)", &PixelExportColor_UInt16_UInt32 } /* 1705 */,
+    std::pair{ "pixelExportColor(u16x2,literal i16)", &PixelExportColor_UInt16x2_Int16 } /* 1706 */,
+    std::pair{ "pixelExportColor(u16x2,literal i32)", &PixelExportColor_UInt16x2_Int32 } /* 1707 */,
+    std::pair{ "pixelExportColor(u16x2,literal u16)", &PixelExportColor_UInt16x2_UInt16 } /* 1708 */,
+    std::pair{ "pixelExportColor(u16x2,literal u32)", &PixelExportColor_UInt16x2_UInt32 } /* 1709 */,
+    std::pair{ "pixelExportColor(u16x3,literal i16)", &PixelExportColor_UInt16x3_Int16 } /* 1710 */,
+    std::pair{ "pixelExportColor(u16x3,literal i32)", &PixelExportColor_UInt16x3_Int32 } /* 1711 */,
+    std::pair{ "pixelExportColor(u16x3,literal u16)", &PixelExportColor_UInt16x3_UInt16 } /* 1712 */,
+    std::pair{ "pixelExportColor(u16x3,literal u32)", &PixelExportColor_UInt16x3_UInt32 } /* 1713 */,
+    std::pair{ "pixelExportColor(u16x4,literal i16)", &PixelExportColor_UInt16x4_Int16 } /* 1714 */,
+    std::pair{ "pixelExportColor(u16x4,literal i32)", &PixelExportColor_UInt16x4_Int32 } /* 1715 */,
+    std::pair{ "pixelExportColor(u16x4,literal u16)", &PixelExportColor_UInt16x4_UInt16 } /* 1716 */,
+    std::pair{ "pixelExportColor(u16x4,literal u32)", &PixelExportColor_UInt16x4_UInt32 } /* 1717 */,
+    std::pair{ "pixelExportColor(u32,literal i16)", &PixelExportColor_UInt32_Int16 } /* 1718 */,
+    std::pair{ "pixelExportColor(u32,literal i32)", &PixelExportColor_UInt32_Int32 } /* 1719 */,
+    std::pair{ "pixelExportColor(u32,literal u16)", &PixelExportColor_UInt32_UInt16 } /* 1720 */,
+    std::pair{ "pixelExportColor(u32,literal u32)", &PixelExportColor_UInt32_UInt32 } /* 1721 */,
+    std::pair{ "pixelExportColor(u32x2,literal i16)", &PixelExportColor_UInt32x2_Int16 } /* 1722 */,
+    std::pair{ "pixelExportColor(u32x2,literal i32)", &PixelExportColor_UInt32x2_Int32 } /* 1723 */,
+    std::pair{ "pixelExportColor(u32x2,literal u16)", &PixelExportColor_UInt32x2_UInt16 } /* 1724 */,
+    std::pair{ "pixelExportColor(u32x2,literal u32)", &PixelExportColor_UInt32x2_UInt32 } /* 1725 */,
+    std::pair{ "pixelExportColor(u32x3,literal i16)", &PixelExportColor_UInt32x3_Int16 } /* 1726 */,
+    std::pair{ "pixelExportColor(u32x3,literal i32)", &PixelExportColor_UInt32x3_Int32 } /* 1727 */,
+    std::pair{ "pixelExportColor(u32x3,literal u16)", &PixelExportColor_UInt32x3_UInt16 } /* 1728 */,
+    std::pair{ "pixelExportColor(u32x3,literal u32)", &PixelExportColor_UInt32x3_UInt32 } /* 1729 */,
+    std::pair{ "pixelExportColor(u32x4,literal i16)", &PixelExportColor_UInt32x4_Int16 } /* 1730 */,
+    std::pair{ "pixelExportColor(u32x4,literal i32)", &PixelExportColor_UInt32x4_Int32 } /* 1731 */,
+    std::pair{ "pixelExportColor(u32x4,literal u16)", &PixelExportColor_UInt32x4_UInt16 } /* 1732 */,
+    std::pair{ "pixelExportColor(u32x4,literal u32)", &PixelExportColor_UInt32x4_UInt32 } /* 1733 */,
+    std::pair{ "pixelGetCoordinates", &PixelGetCoordinates_Float32x4 } /* 1734 */,
+    std::pair{ "pixelGetCoordinates", &PixelGetCoordinates_Float16x4 } /* 1735 */,
+    std::pair{ "pixelGetCoordinates()", &PixelGetCoordinates_Float32x4 } /* 1736 */,
+    std::pair{ "pixelGetCoordinates()", &PixelGetCoordinates_Float16x4 } /* 1737 */,
+    std::pair{ "pixelGetDepth", &PixelGetDepth } /* 1738 */,
+    std::pair{ "pixelGetDepth()", &PixelGetDepth } /* 1739 */,
+    std::pair{ "pixelSetDepth", &PixelSetDepth } /* 1740 */,
+    std::pair{ "pixelSetDepth(f32)", &PixelSetDepth } /* 1741 */,
+    std::pair{ "pow", &pow_Float32 } /* 1742 */,
+    std::pair{ "pow", &pow_Float32x2 } /* 1743 */,
+    std::pair{ "pow", &pow_Float32x3 } /* 1744 */,
+    std::pair{ "pow", &pow_Float32x4 } /* 1745 */,
+    std::pair{ "pow", &pow_Float16 } /* 1746 */,
+    std::pair{ "pow", &pow_Float16x2 } /* 1747 */,
+    std::pair{ "pow", &pow_Float16x3 } /* 1748 */,
+    std::pair{ "pow", &pow_Float16x4 } /* 1749 */,
+    std::pair{ "pow(f16,f16)", &pow_Float16 } /* 1750 */,
+    std::pair{ "pow(f16x2,f16x2)", &pow_Float16x2 } /* 1751 */,
+    std::pair{ "pow(f16x3,f16x3)", &pow_Float16x3 } /* 1752 */,
+    std::pair{ "pow(f16x4,f16x4)", &pow_Float16x4 } /* 1753 */,
+    std::pair{ "pow(f32,f32)", &pow_Float32 } /* 1754 */,
+    std::pair{ "pow(f32x2,f32x2)", &pow_Float32x2 } /* 1755 */,
+    std::pair{ "pow(f32x3,f32x3)", &pow_Float32x3 } /* 1756 */,
+    std::pair{ "pow(f32x4,f32x4)", &pow_Float32x4 } /* 1757 */,
+    std::pair{ "reflect", &reflect_Float32x2 } /* 1758 */,
+    std::pair{ "reflect", &reflect_Float32x3 } /* 1759 */,
+    std::pair{ "reflect", &reflect_Float32x4 } /* 1760 */,
+    std::pair{ "reflect", &reflect_Float16x2 } /* 1761 */,
+    std::pair{ "reflect", &reflect_Float16x3 } /* 1762 */,
+    std::pair{ "reflect", &reflect_Float16x4 } /* 1763 */,
+    std::pair{ "reflect(f16x2,f16x2)", &reflect_Float16x2 } /* 1764 */,
+    std::pair{ "reflect(f16x3,f16x3)", &reflect_Float16x3 } /* 1765 */,
+    std::pair{ "reflect(f16x4,f16x4)", &reflect_Float16x4 } /* 1766 */,
+    std::pair{ "reflect(f32x2,f32x2)", &reflect_Float32x2 } /* 1767 */,
+    std::pair{ "reflect(f32x3,f32x3)", &reflect_Float32x3 } /* 1768 */,
+    std::pair{ "reflect(f32x4,f32x4)", &reflect_Float32x4 } /* 1769 */,
+    std::pair{ "refract", &refract_Float32x2 } /* 1770 */,
+    std::pair{ "refract", &refract_Float32x3 } /* 1771 */,
+    std::pair{ "refract", &refract_Float32x4 } /* 1772 */,
+    std::pair{ "refract", &refract_Float16x2 } /* 1773 */,
+    std::pair{ "refract", &refract_Float16x3 } /* 1774 */,
+    std::pair{ "refract", &refract_Float16x4 } /* 1775 */,
+    std::pair{ "refract(f16x2,f16x2,f16x2)", &refract_Float16x2 } /* 1776 */,
+    std::pair{ "refract(f16x3,f16x3,f16x3)", &refract_Float16x3 } /* 1777 */,
+    std::pair{ "refract(f16x4,f16x4,f16x4)", &refract_Float16x4 } /* 1778 */,
+    std::pair{ "refract(f32x2,f32x2,f32x2)", &refract_Float32x2 } /* 1779 */,
+    std::pair{ "refract(f32x3,f32x3,f32x3)", &refract_Float32x3 } /* 1780 */,
+    std::pair{ "refract(f32x4,f32x4,f32x4)", &refract_Float32x4 } /* 1781 */,
+    std::pair{ "sampler", &SamplerType } /* 1782 */,
+    std::pair{ "saturate", &saturate_Float32 } /* 1783 */,
+    std::pair{ "saturate", &saturate_Float32x2 } /* 1784 */,
+    std::pair{ "saturate", &saturate_Float32x3 } /* 1785 */,
+    std::pair{ "saturate", &saturate_Float32x4 } /* 1786 */,
+    std::pair{ "saturate", &saturate_Float16 } /* 1787 */,
+    std::pair{ "saturate", &saturate_Float16x2 } /* 1788 */,
+    std::pair{ "saturate", &saturate_Float16x3 } /* 1789 */,
+    std::pair{ "saturate", &saturate_Float16x4 } /* 1790 */,
+    std::pair{ "saturate(f16)", &saturate_Float16 } /* 1791 */,
+    std::pair{ "saturate(f16x2)", &saturate_Float16x2 } /* 1792 */,
+    std::pair{ "saturate(f16x3)", &saturate_Float16x3 } /* 1793 */,
+    std::pair{ "saturate(f16x4)", &saturate_Float16x4 } /* 1794 */,
+    std::pair{ "saturate(f32)", &saturate_Float32 } /* 1795 */,
+    std::pair{ "saturate(f32x2)", &saturate_Float32x2 } /* 1796 */,
+    std::pair{ "saturate(f32x3)", &saturate_Float32x3 } /* 1797 */,
+    std::pair{ "saturate(f32x4)", &saturate_Float32x4 } /* 1798 */,
+    std::pair{ "sign", &sign_Int32 } /* 1799 */,
+    std::pair{ "sign", &sign_Int32x2 } /* 1800 */,
+    std::pair{ "sign", &sign_Int32x3 } /* 1801 */,
+    std::pair{ "sign", &sign_Int32x4 } /* 1802 */,
+    std::pair{ "sign", &sign_Int16 } /* 1803 */,
+    std::pair{ "sign", &sign_Int16x2 } /* 1804 */,
+    std::pair{ "sign", &sign_Int16x3 } /* 1805 */,
+    std::pair{ "sign", &sign_Int16x4 } /* 1806 */,
+    std::pair{ "sign", &sign_Float32 } /* 1807 */,
+    std::pair{ "sign", &sign_Float32x2 } /* 1808 */,
+    std::pair{ "sign", &sign_Float32x3 } /* 1809 */,
+    std::pair{ "sign", &sign_Float32x4 } /* 1810 */,
+    std::pair{ "sign", &sign_Float16 } /* 1811 */,
+    std::pair{ "sign", &sign_Float16x2 } /* 1812 */,
+    std::pair{ "sign", &sign_Float16x3 } /* 1813 */,
+    std::pair{ "sign", &sign_Float16x4 } /* 1814 */,
+    std::pair{ "sign(f16)", &sign_Float16 } /* 1815 */,
+    std::pair{ "sign(f16x2)", &sign_Float16x2 } /* 1816 */,
+    std::pair{ "sign(f16x3)", &sign_Float16x3 } /* 1817 */,
+    std::pair{ "sign(f16x4)", &sign_Float16x4 } /* 1818 */,
+    std::pair{ "sign(f32)", &sign_Float32 } /* 1819 */,
+    std::pair{ "sign(f32x2)", &sign_Float32x2 } /* 1820 */,
+    std::pair{ "sign(f32x3)", &sign_Float32x3 } /* 1821 */,
+    std::pair{ "sign(f32x4)", &sign_Float32x4 } /* 1822 */,
+    std::pair{ "sign(i16)", &sign_Int16 } /* 1823 */,
+    std::pair{ "sign(i16x2)", &sign_Int16x2 } /* 1824 */,
+    std::pair{ "sign(i16x3)", &sign_Int16x3 } /* 1825 */,
+    std::pair{ "sign(i16x4)", &sign_Int16x4 } /* 1826 */,
+    std::pair{ "sign(i32)", &sign_Int32 } /* 1827 */,
+    std::pair{ "sign(i32x2)", &sign_Int32x2 } /* 1828 */,
+    std::pair{ "sign(i32x3)", &sign_Int32x3 } /* 1829 */,
+    std::pair{ "sign(i32x4)", &sign_Int32x4 } /* 1830 */,
+    std::pair{ "sin", &sin_Float32 } /* 1831 */,
+    std::pair{ "sin", &sin_Float32x2 } /* 1832 */,
+    std::pair{ "sin", &sin_Float32x3 } /* 1833 */,
+    std::pair{ "sin", &sin_Float32x4 } /* 1834 */,
+    std::pair{ "sin", &sin_Float16 } /* 1835 */,
+    std::pair{ "sin", &sin_Float16x2 } /* 1836 */,
+    std::pair{ "sin", &sin_Float16x3 } /* 1837 */,
+    std::pair{ "sin", &sin_Float16x4 } /* 1838 */,
+    std::pair{ "sin(f16)", &sin_Float16 } /* 1839 */,
+    std::pair{ "sin(f16x2)", &sin_Float16x2 } /* 1840 */,
+    std::pair{ "sin(f16x3)", &sin_Float16x3 } /* 1841 */,
+    std::pair{ "sin(f16x4)", &sin_Float16x4 } /* 1842 */,
+    std::pair{ "sin(f32)", &sin_Float32 } /* 1843 */,
+    std::pair{ "sin(f32x2)", &sin_Float32x2 } /* 1844 */,
+    std::pair{ "sin(f32x3)", &sin_Float32x3 } /* 1845 */,
+    std::pair{ "sin(f32x4)", &sin_Float32x4 } /* 1846 */,
+    std::pair{ "sinh", &sinh_Float32 } /* 1847 */,
+    std::pair{ "sinh", &sinh_Float32x2 } /* 1848 */,
+    std::pair{ "sinh", &sinh_Float32x3 } /* 1849 */,
+    std::pair{ "sinh", &sinh_Float32x4 } /* 1850 */,
+    std::pair{ "sinh", &sinh_Float16 } /* 1851 */,
+    std::pair{ "sinh", &sinh_Float16x2 } /* 1852 */,
+    std::pair{ "sinh", &sinh_Float16x3 } /* 1853 */,
+    std::pair{ "sinh", &sinh_Float16x4 } /* 1854 */,
+    std::pair{ "sinh(f16)", &sinh_Float16 } /* 1855 */,
+    std::pair{ "sinh(f16x2)", &sinh_Float16x2 } /* 1856 */,
+    std::pair{ "sinh(f16x3)", &sinh_Float16x3 } /* 1857 */,
+    std::pair{ "sinh(f16x4)", &sinh_Float16x4 } /* 1858 */,
+    std::pair{ "sinh(f32)", &sinh_Float32 } /* 1859 */,
+    std::pair{ "sinh(f32x2)", &sinh_Float32x2 } /* 1860 */,
+    std::pair{ "sinh(f32x3)", &sinh_Float32x3 } /* 1861 */,
+    std::pair{ "sinh(f32x4)", &sinh_Float32x4 } /* 1862 */,
+    std::pair{ "smoothstep", &smoothstep_Float32 } /* 1863 */,
+    std::pair{ "smoothstep", &smoothstep_Float32x2 } /* 1864 */,
+    std::pair{ "smoothstep", &smoothstep_Float32x3 } /* 1865 */,
+    std::pair{ "smoothstep", &smoothstep_Float32x4 } /* 1866 */,
+    std::pair{ "smoothstep", &smoothstep_Float16 } /* 1867 */,
+    std::pair{ "smoothstep", &smoothstep_Float16x2 } /* 1868 */,
+    std::pair{ "smoothstep", &smoothstep_Float16x3 } /* 1869 */,
+    std::pair{ "smoothstep", &smoothstep_Float16x4 } /* 1870 */,
+    std::pair{ "smoothstep(f16,f16,f16)", &smoothstep_Float16 } /* 1871 */,
+    std::pair{ "smoothstep(f16x2,f16x2,f16x2)", &smoothstep_Float16x2 } /* 1872 */,
+    std::pair{ "smoothstep(f16x3,f16x3,f16x3)", &smoothstep_Float16x3 } /* 1873 */,
+    std::pair{ "smoothstep(f16x4,f16x4,f16x4)", &smoothstep_Float16x4 } /* 1874 */,
+    std::pair{ "smoothstep(f32,f32,f32)", &smoothstep_Float32 } /* 1875 */,
+    std::pair{ "smoothstep(f32x2,f32x2,f32x2)", &smoothstep_Float32x2 } /* 1876 */,
+    std::pair{ "smoothstep(f32x3,f32x3,f32x3)", &smoothstep_Float32x3 } /* 1877 */,
+    std::pair{ "smoothstep(f32x4,f32x4,f32x4)", &smoothstep_Float32x4 } /* 1878 */,
+    std::pair{ "sqrt", &sqrt_Float32 } /* 1879 */,
+    std::pair{ "sqrt", &sqrt_Float32x2 } /* 1880 */,
+    std::pair{ "sqrt", &sqrt_Float32x3 } /* 1881 */,
+    std::pair{ "sqrt", &sqrt_Float32x4 } /* 1882 */,
+    std::pair{ "sqrt", &sqrt_Float16 } /* 1883 */,
+    std::pair{ "sqrt", &sqrt_Float16x2 } /* 1884 */,
+    std::pair{ "sqrt", &sqrt_Float16x3 } /* 1885 */,
+    std::pair{ "sqrt", &sqrt_Float16x4 } /* 1886 */,
+    std::pair{ "sqrt(f16)", &sqrt_Float16 } /* 1887 */,
+    std::pair{ "sqrt(f16x2)", &sqrt_Float16x2 } /* 1888 */,
+    std::pair{ "sqrt(f16x3)", &sqrt_Float16x3 } /* 1889 */,
+    std::pair{ "sqrt(f16x4)", &sqrt_Float16x4 } /* 1890 */,
+    std::pair{ "sqrt(f32)", &sqrt_Float32 } /* 1891 */,
+    std::pair{ "sqrt(f32x2)", &sqrt_Float32x2 } /* 1892 */,
+    std::pair{ "sqrt(f32x3)", &sqrt_Float32x3 } /* 1893 */,
+    std::pair{ "sqrt(f32x4)", &sqrt_Float32x4 } /* 1894 */,
+    std::pair{ "step", &step_Float32 } /* 1895 */,
+    std::pair{ "step", &step_Float32x2 } /* 1896 */,
+    std::pair{ "step", &step_Float32x3 } /* 1897 */,
+    std::pair{ "step", &step_Float32x4 } /* 1898 */,
+    std::pair{ "step", &step_Float16 } /* 1899 */,
+    std::pair{ "step", &step_Float16x2 } /* 1900 */,
+    std::pair{ "step", &step_Float16x3 } /* 1901 */,
+    std::pair{ "step", &step_Float16x4 } /* 1902 */,
+    std::pair{ "step(f16,f16)", &step_Float16 } /* 1903 */,
+    std::pair{ "step(f16x2,f16x2)", &step_Float16x2 } /* 1904 */,
+    std::pair{ "step(f16x3,f16x3)", &step_Float16x3 } /* 1905 */,
+    std::pair{ "step(f16x4,f16x4)", &step_Float16x4 } /* 1906 */,
+    std::pair{ "step(f32,f32)", &step_Float32 } /* 1907 */,
+    std::pair{ "step(f32x2,f32x2)", &step_Float32x2 } /* 1908 */,
+    std::pair{ "step(f32x3,f32x3)", &step_Float32x3 } /* 1909 */,
+    std::pair{ "step(f32x4,f32x4)", &step_Float32x4 } /* 1910 */,
+    std::pair{ "subgroupBallot", &SubgroupBallot } /* 1911 */,
+    std::pair{ "subgroupBallot(b8)", &SubgroupBallot } /* 1912 */,
+    std::pair{ "subgroupBallotBit", &SubgroupBallotBit } /* 1913 */,
+    std::pair{ "subgroupBallotBit(u32x4,literal u32)", &SubgroupBallotBit } /* 1914 */,
+    std::pair{ "subgroupBallotBitCount", &SubgroupBallotBitCount } /* 1915 */,
+    std::pair{ "subgroupBallotBitCount(u32x4)", &SubgroupBallotBitCount } /* 1916 */,
+    std::pair{ "subgroupBallotFirstOne", &SubgroupBallotFirstOne } /* 1917 */,
+    std::pair{ "subgroupBallotFirstOne(u32x4)", &SubgroupBallotFirstOne } /* 1918 */,
+    std::pair{ "subgroupBallotLastOne", &SubgroupBallotLastOne } /* 1919 */,
+    std::pair{ "subgroupBallotLastOne(u32x4)", &SubgroupBallotLastOne } /* 1920 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Float32 } /* 1921 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Float32x2 } /* 1922 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Float32x3 } /* 1923 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Float32x4 } /* 1924 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Float16 } /* 1925 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Float16x2 } /* 1926 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Float16x3 } /* 1927 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Float16x4 } /* 1928 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Int32 } /* 1929 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Int32x2 } /* 1930 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Int32x3 } /* 1931 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Int32x4 } /* 1932 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Int16 } /* 1933 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Int16x2 } /* 1934 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Int16x3 } /* 1935 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_Int16x4 } /* 1936 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_UInt32 } /* 1937 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_UInt32x2 } /* 1938 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_UInt32x3 } /* 1939 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_UInt32x4 } /* 1940 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_UInt16 } /* 1941 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_UInt16x2 } /* 1942 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_UInt16x3 } /* 1943 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread", &SubgroupBroadcastFirstActiveThread_UInt16x4 } /* 1944 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread(f16)", &SubgroupBroadcastFirstActiveThread_Float16 } /* 1945 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread(f16x2)", &SubgroupBroadcastFirstActiveThread_Float16x2 } /* 1946 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread(f16x3)", &SubgroupBroadcastFirstActiveThread_Float16x3 } /* 1947 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread(f16x4)", &SubgroupBroadcastFirstActiveThread_Float16x4 } /* 1948 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread(f32)", &SubgroupBroadcastFirstActiveThread_Float32 } /* 1949 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread(f32x2)", &SubgroupBroadcastFirstActiveThread_Float32x2 } /* 1950 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread(f32x3)", &SubgroupBroadcastFirstActiveThread_Float32x3 } /* 1951 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread(f32x4)", &SubgroupBroadcastFirstActiveThread_Float32x4 } /* 1952 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread(i16)", &SubgroupBroadcastFirstActiveThread_Int16 } /* 1953 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread(i16x2)", &SubgroupBroadcastFirstActiveThread_Int16x2 } /* 1954 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread(i16x3)", &SubgroupBroadcastFirstActiveThread_Int16x3 } /* 1955 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread(i16x4)", &SubgroupBroadcastFirstActiveThread_Int16x4 } /* 1956 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread(i32)", &SubgroupBroadcastFirstActiveThread_Int32 } /* 1957 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread(i32x2)", &SubgroupBroadcastFirstActiveThread_Int32x2 } /* 1958 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread(i32x3)", &SubgroupBroadcastFirstActiveThread_Int32x3 } /* 1959 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread(i32x4)", &SubgroupBroadcastFirstActiveThread_Int32x4 } /* 1960 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread(u16)", &SubgroupBroadcastFirstActiveThread_UInt16 } /* 1961 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread(u16x2)", &SubgroupBroadcastFirstActiveThread_UInt16x2 } /* 1962 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread(u16x3)", &SubgroupBroadcastFirstActiveThread_UInt16x3 } /* 1963 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread(u16x4)", &SubgroupBroadcastFirstActiveThread_UInt16x4 } /* 1964 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread(u32)", &SubgroupBroadcastFirstActiveThread_UInt32 } /* 1965 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread(u32x2)", &SubgroupBroadcastFirstActiveThread_UInt32x2 } /* 1966 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread(u32x3)", &SubgroupBroadcastFirstActiveThread_UInt32x3 } /* 1967 */,
+    std::pair{ "subgroupBroadcastFirstActiveThread(u32x4)", &SubgroupBroadcastFirstActiveThread_UInt32x4 } /* 1968 */,
+    std::pair{ "subgroupGetFirstActiveThread", &SubgroupGetFirstActiveThread } /* 1969 */,
+    std::pair{ "subgroupGetFirstActiveThread()", &SubgroupGetFirstActiveThread } /* 1970 */,
+    std::pair{ "subgroupGetGreaterMask", &SubgroupGetGreaterMask } /* 1971 */,
+    std::pair{ "subgroupGetGreaterMask()", &SubgroupGetGreaterMask } /* 1972 */,
+    std::pair{ "subgroupGetId", &SubgroupGetId } /* 1973 */,
+    std::pair{ "subgroupGetId()", &SubgroupGetId } /* 1974 */,
+    std::pair{ "subgroupGetLowerMask", &SubgroupGetLowerMask } /* 1975 */,
+    std::pair{ "subgroupGetLowerMask()", &SubgroupGetLowerMask } /* 1976 */,
+    std::pair{ "subgroupGetNum", &SubgroupGetNum } /* 1977 */,
+    std::pair{ "subgroupGetNum()", &SubgroupGetNum } /* 1978 */,
+    std::pair{ "subgroupGetSize", &SubgroupGetSize } /* 1979 */,
+    std::pair{ "subgroupGetSize()", &SubgroupGetSize } /* 1980 */,
+    std::pair{ "subgroupGetThreadAndGreaterMask", &SubgroupGetThreadAndGreaterMask } /* 1981 */,
+    std::pair{ "subgroupGetThreadAndGreaterMask()", &SubgroupGetThreadAndGreaterMask } /* 1982 */,
+    std::pair{ "subgroupGetThreadAndLowerMask", &SubgroupGetThreadAndLowerMask } /* 1983 */,
+    std::pair{ "subgroupGetThreadAndLowerMask()", &SubgroupGetThreadAndLowerMask } /* 1984 */,
+    std::pair{ "subgroupGetThreadMask", &SubgroupGetThreadMask } /* 1985 */,
+    std::pair{ "subgroupGetThreadMask()", &SubgroupGetThreadMask } /* 1986 */,
+    std::pair{ "subgroupInverseBallot", &SubgroupInverseBallot } /* 1987 */,
+    std::pair{ "subgroupInverseBallot(b8)", &SubgroupInverseBallot } /* 1988 */,
+    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Float32 } /* 1989 */,
+    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Float32x2 } /* 1990 */,
+    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Float32x3 } /* 1991 */,
+    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Float32x4 } /* 1992 */,
+    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Float16 } /* 1993 */,
+    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Float16x2 } /* 1994 */,
+    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Float16x3 } /* 1995 */,
+    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Float16x4 } /* 1996 */,
+    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Int32 } /* 1997 */,
+    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Int32x2 } /* 1998 */,
+    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Int32x3 } /* 1999 */,
+    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Int32x4 } /* 2000 */,
+    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Int16 } /* 2001 */,
+    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Int16x2 } /* 2002 */,
+    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Int16x3 } /* 2003 */,
+    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_Int16x4 } /* 2004 */,
+    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_UInt32 } /* 2005 */,
+    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_UInt32x2 } /* 2006 */,
+    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_UInt32x3 } /* 2007 */,
+    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_UInt32x4 } /* 2008 */,
+    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_UInt16 } /* 2009 */,
+    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_UInt16x2 } /* 2010 */,
+    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_UInt16x3 } /* 2011 */,
+    std::pair{ "subgroupSwapDiagonal", &SubgroupSwapDiagonal_UInt16x4 } /* 2012 */,
+    std::pair{ "subgroupSwapDiagonal(f16)", &SubgroupSwapDiagonal_Float16 } /* 2013 */,
+    std::pair{ "subgroupSwapDiagonal(f16x2)", &SubgroupSwapDiagonal_Float16x2 } /* 2014 */,
+    std::pair{ "subgroupSwapDiagonal(f16x3)", &SubgroupSwapDiagonal_Float16x3 } /* 2015 */,
+    std::pair{ "subgroupSwapDiagonal(f16x4)", &SubgroupSwapDiagonal_Float16x4 } /* 2016 */,
+    std::pair{ "subgroupSwapDiagonal(f32)", &SubgroupSwapDiagonal_Float32 } /* 2017 */,
+    std::pair{ "subgroupSwapDiagonal(f32x2)", &SubgroupSwapDiagonal_Float32x2 } /* 2018 */,
+    std::pair{ "subgroupSwapDiagonal(f32x3)", &SubgroupSwapDiagonal_Float32x3 } /* 2019 */,
+    std::pair{ "subgroupSwapDiagonal(f32x4)", &SubgroupSwapDiagonal_Float32x4 } /* 2020 */,
+    std::pair{ "subgroupSwapDiagonal(i16)", &SubgroupSwapDiagonal_Int16 } /* 2021 */,
+    std::pair{ "subgroupSwapDiagonal(i16x2)", &SubgroupSwapDiagonal_Int16x2 } /* 2022 */,
+    std::pair{ "subgroupSwapDiagonal(i16x3)", &SubgroupSwapDiagonal_Int16x3 } /* 2023 */,
+    std::pair{ "subgroupSwapDiagonal(i16x4)", &SubgroupSwapDiagonal_Int16x4 } /* 2024 */,
+    std::pair{ "subgroupSwapDiagonal(i32)", &SubgroupSwapDiagonal_Int32 } /* 2025 */,
+    std::pair{ "subgroupSwapDiagonal(i32x2)", &SubgroupSwapDiagonal_Int32x2 } /* 2026 */,
+    std::pair{ "subgroupSwapDiagonal(i32x3)", &SubgroupSwapDiagonal_Int32x3 } /* 2027 */,
+    std::pair{ "subgroupSwapDiagonal(i32x4)", &SubgroupSwapDiagonal_Int32x4 } /* 2028 */,
+    std::pair{ "subgroupSwapDiagonal(u16)", &SubgroupSwapDiagonal_UInt16 } /* 2029 */,
+    std::pair{ "subgroupSwapDiagonal(u16x2)", &SubgroupSwapDiagonal_UInt16x2 } /* 2030 */,
+    std::pair{ "subgroupSwapDiagonal(u16x3)", &SubgroupSwapDiagonal_UInt16x3 } /* 2031 */,
+    std::pair{ "subgroupSwapDiagonal(u16x4)", &SubgroupSwapDiagonal_UInt16x4 } /* 2032 */,
+    std::pair{ "subgroupSwapDiagonal(u32)", &SubgroupSwapDiagonal_UInt32 } /* 2033 */,
+    std::pair{ "subgroupSwapDiagonal(u32x2)", &SubgroupSwapDiagonal_UInt32x2 } /* 2034 */,
+    std::pair{ "subgroupSwapDiagonal(u32x3)", &SubgroupSwapDiagonal_UInt32x3 } /* 2035 */,
+    std::pair{ "subgroupSwapDiagonal(u32x4)", &SubgroupSwapDiagonal_UInt32x4 } /* 2036 */,
+    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Float32 } /* 2037 */,
+    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Float32x2 } /* 2038 */,
+    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Float32x3 } /* 2039 */,
+    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Float32x4 } /* 2040 */,
+    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Float16 } /* 2041 */,
+    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Float16x2 } /* 2042 */,
+    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Float16x3 } /* 2043 */,
+    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Float16x4 } /* 2044 */,
+    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Int32 } /* 2045 */,
+    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Int32x2 } /* 2046 */,
+    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Int32x3 } /* 2047 */,
+    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Int32x4 } /* 2048 */,
+    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Int16 } /* 2049 */,
+    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Int16x2 } /* 2050 */,
+    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Int16x3 } /* 2051 */,
+    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_Int16x4 } /* 2052 */,
+    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_UInt32 } /* 2053 */,
+    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_UInt32x2 } /* 2054 */,
+    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_UInt32x3 } /* 2055 */,
+    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_UInt32x4 } /* 2056 */,
+    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_UInt16 } /* 2057 */,
+    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_UInt16x2 } /* 2058 */,
+    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_UInt16x3 } /* 2059 */,
+    std::pair{ "subgroupSwapHorizontal", &SubgroupSwapHorizontal_UInt16x4 } /* 2060 */,
+    std::pair{ "subgroupSwapHorizontal(f16)", &SubgroupSwapHorizontal_Float16 } /* 2061 */,
+    std::pair{ "subgroupSwapHorizontal(f16x2)", &SubgroupSwapHorizontal_Float16x2 } /* 2062 */,
+    std::pair{ "subgroupSwapHorizontal(f16x3)", &SubgroupSwapHorizontal_Float16x3 } /* 2063 */,
+    std::pair{ "subgroupSwapHorizontal(f16x4)", &SubgroupSwapHorizontal_Float16x4 } /* 2064 */,
+    std::pair{ "subgroupSwapHorizontal(f32)", &SubgroupSwapHorizontal_Float32 } /* 2065 */,
+    std::pair{ "subgroupSwapHorizontal(f32x2)", &SubgroupSwapHorizontal_Float32x2 } /* 2066 */,
+    std::pair{ "subgroupSwapHorizontal(f32x3)", &SubgroupSwapHorizontal_Float32x3 } /* 2067 */,
+    std::pair{ "subgroupSwapHorizontal(f32x4)", &SubgroupSwapHorizontal_Float32x4 } /* 2068 */,
+    std::pair{ "subgroupSwapHorizontal(i16)", &SubgroupSwapHorizontal_Int16 } /* 2069 */,
+    std::pair{ "subgroupSwapHorizontal(i16x2)", &SubgroupSwapHorizontal_Int16x2 } /* 2070 */,
+    std::pair{ "subgroupSwapHorizontal(i16x3)", &SubgroupSwapHorizontal_Int16x3 } /* 2071 */,
+    std::pair{ "subgroupSwapHorizontal(i16x4)", &SubgroupSwapHorizontal_Int16x4 } /* 2072 */,
+    std::pair{ "subgroupSwapHorizontal(i32)", &SubgroupSwapHorizontal_Int32 } /* 2073 */,
+    std::pair{ "subgroupSwapHorizontal(i32x2)", &SubgroupSwapHorizontal_Int32x2 } /* 2074 */,
+    std::pair{ "subgroupSwapHorizontal(i32x3)", &SubgroupSwapHorizontal_Int32x3 } /* 2075 */,
+    std::pair{ "subgroupSwapHorizontal(i32x4)", &SubgroupSwapHorizontal_Int32x4 } /* 2076 */,
+    std::pair{ "subgroupSwapHorizontal(u16)", &SubgroupSwapHorizontal_UInt16 } /* 2077 */,
+    std::pair{ "subgroupSwapHorizontal(u16x2)", &SubgroupSwapHorizontal_UInt16x2 } /* 2078 */,
+    std::pair{ "subgroupSwapHorizontal(u16x3)", &SubgroupSwapHorizontal_UInt16x3 } /* 2079 */,
+    std::pair{ "subgroupSwapHorizontal(u16x4)", &SubgroupSwapHorizontal_UInt16x4 } /* 2080 */,
+    std::pair{ "subgroupSwapHorizontal(u32)", &SubgroupSwapHorizontal_UInt32 } /* 2081 */,
+    std::pair{ "subgroupSwapHorizontal(u32x2)", &SubgroupSwapHorizontal_UInt32x2 } /* 2082 */,
+    std::pair{ "subgroupSwapHorizontal(u32x3)", &SubgroupSwapHorizontal_UInt32x3 } /* 2083 */,
+    std::pair{ "subgroupSwapHorizontal(u32x4)", &SubgroupSwapHorizontal_UInt32x4 } /* 2084 */,
+    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Float32 } /* 2085 */,
+    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Float32x2 } /* 2086 */,
+    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Float32x3 } /* 2087 */,
+    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Float32x4 } /* 2088 */,
+    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Float16 } /* 2089 */,
+    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Float16x2 } /* 2090 */,
+    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Float16x3 } /* 2091 */,
+    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Float16x4 } /* 2092 */,
+    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Int32 } /* 2093 */,
+    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Int32x2 } /* 2094 */,
+    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Int32x3 } /* 2095 */,
+    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Int32x4 } /* 2096 */,
+    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Int16 } /* 2097 */,
+    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Int16x2 } /* 2098 */,
+    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Int16x3 } /* 2099 */,
+    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_Int16x4 } /* 2100 */,
+    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_UInt32 } /* 2101 */,
+    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_UInt32x2 } /* 2102 */,
+    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_UInt32x3 } /* 2103 */,
+    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_UInt32x4 } /* 2104 */,
+    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_UInt16 } /* 2105 */,
+    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_UInt16x2 } /* 2106 */,
+    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_UInt16x3 } /* 2107 */,
+    std::pair{ "subgroupSwapVertical", &SubgroupSwapVertical_UInt16x4 } /* 2108 */,
+    std::pair{ "subgroupSwapVertical(f16)", &SubgroupSwapVertical_Float16 } /* 2109 */,
+    std::pair{ "subgroupSwapVertical(f16x2)", &SubgroupSwapVertical_Float16x2 } /* 2110 */,
+    std::pair{ "subgroupSwapVertical(f16x3)", &SubgroupSwapVertical_Float16x3 } /* 2111 */,
+    std::pair{ "subgroupSwapVertical(f16x4)", &SubgroupSwapVertical_Float16x4 } /* 2112 */,
+    std::pair{ "subgroupSwapVertical(f32)", &SubgroupSwapVertical_Float32 } /* 2113 */,
+    std::pair{ "subgroupSwapVertical(f32x2)", &SubgroupSwapVertical_Float32x2 } /* 2114 */,
+    std::pair{ "subgroupSwapVertical(f32x3)", &SubgroupSwapVertical_Float32x3 } /* 2115 */,
+    std::pair{ "subgroupSwapVertical(f32x4)", &SubgroupSwapVertical_Float32x4 } /* 2116 */,
+    std::pair{ "subgroupSwapVertical(i16)", &SubgroupSwapVertical_Int16 } /* 2117 */,
+    std::pair{ "subgroupSwapVertical(i16x2)", &SubgroupSwapVertical_Int16x2 } /* 2118 */,
+    std::pair{ "subgroupSwapVertical(i16x3)", &SubgroupSwapVertical_Int16x3 } /* 2119 */,
+    std::pair{ "subgroupSwapVertical(i16x4)", &SubgroupSwapVertical_Int16x4 } /* 2120 */,
+    std::pair{ "subgroupSwapVertical(i32)", &SubgroupSwapVertical_Int32 } /* 2121 */,
+    std::pair{ "subgroupSwapVertical(i32x2)", &SubgroupSwapVertical_Int32x2 } /* 2122 */,
+    std::pair{ "subgroupSwapVertical(i32x3)", &SubgroupSwapVertical_Int32x3 } /* 2123 */,
+    std::pair{ "subgroupSwapVertical(i32x4)", &SubgroupSwapVertical_Int32x4 } /* 2124 */,
+    std::pair{ "subgroupSwapVertical(u16)", &SubgroupSwapVertical_UInt16 } /* 2125 */,
+    std::pair{ "subgroupSwapVertical(u16x2)", &SubgroupSwapVertical_UInt16x2 } /* 2126 */,
+    std::pair{ "subgroupSwapVertical(u16x3)", &SubgroupSwapVertical_UInt16x3 } /* 2127 */,
+    std::pair{ "subgroupSwapVertical(u16x4)", &SubgroupSwapVertical_UInt16x4 } /* 2128 */,
+    std::pair{ "subgroupSwapVertical(u32)", &SubgroupSwapVertical_UInt32 } /* 2129 */,
+    std::pair{ "subgroupSwapVertical(u32x2)", &SubgroupSwapVertical_UInt32x2 } /* 2130 */,
+    std::pair{ "subgroupSwapVertical(u32x3)", &SubgroupSwapVertical_UInt32x3 } /* 2131 */,
+    std::pair{ "subgroupSwapVertical(u32x4)", &SubgroupSwapVertical_UInt32x4 } /* 2132 */,
+    std::pair{ "tan", &tan_Float32 } /* 2133 */,
+    std::pair{ "tan", &tan_Float32x2 } /* 2134 */,
+    std::pair{ "tan", &tan_Float32x3 } /* 2135 */,
+    std::pair{ "tan", &tan_Float32x4 } /* 2136 */,
+    std::pair{ "tan", &tan_Float16 } /* 2137 */,
+    std::pair{ "tan", &tan_Float16x2 } /* 2138 */,
+    std::pair{ "tan", &tan_Float16x3 } /* 2139 */,
+    std::pair{ "tan", &tan_Float16x4 } /* 2140 */,
+    std::pair{ "tan(f16)", &tan_Float16 } /* 2141 */,
+    std::pair{ "tan(f16x2)", &tan_Float16x2 } /* 2142 */,
+    std::pair{ "tan(f16x3)", &tan_Float16x3 } /* 2143 */,
+    std::pair{ "tan(f16x4)", &tan_Float16x4 } /* 2144 */,
+    std::pair{ "tan(f32)", &tan_Float32 } /* 2145 */,
+    std::pair{ "tan(f32x2)", &tan_Float32x2 } /* 2146 */,
+    std::pair{ "tan(f32x3)", &tan_Float32x3 } /* 2147 */,
+    std::pair{ "tan(f32x4)", &tan_Float32x4 } /* 2148 */,
+    std::pair{ "tanh", &tanh_Float32 } /* 2149 */,
+    std::pair{ "tanh", &tanh_Float32x2 } /* 2150 */,
+    std::pair{ "tanh", &tanh_Float32x3 } /* 2151 */,
+    std::pair{ "tanh", &tanh_Float32x4 } /* 2152 */,
+    std::pair{ "tanh", &tanh_Float16 } /* 2153 */,
+    std::pair{ "tanh", &tanh_Float16x2 } /* 2154 */,
+    std::pair{ "tanh", &tanh_Float16x3 } /* 2155 */,
+    std::pair{ "tanh", &tanh_Float16x4 } /* 2156 */,
+    std::pair{ "tanh", &atan2_Float32 } /* 2157 */,
+    std::pair{ "tanh", &atan2_Float32x2 } /* 2158 */,
+    std::pair{ "tanh", &atan2_Float32x3 } /* 2159 */,
+    std::pair{ "tanh", &atan2_Float32x4 } /* 2160 */,
+    std::pair{ "tanh", &atan2_Float16 } /* 2161 */,
+    std::pair{ "tanh", &atan2_Float16x2 } /* 2162 */,
+    std::pair{ "tanh", &atan2_Float16x3 } /* 2163 */,
+    std::pair{ "tanh", &atan2_Float16x4 } /* 2164 */,
+    std::pair{ "tanh(f16)", &tanh_Float16 } /* 2165 */,
+    std::pair{ "tanh(f16,f16)", &atan2_Float16 } /* 2166 */,
+    std::pair{ "tanh(f16x2)", &tanh_Float16x2 } /* 2167 */,
+    std::pair{ "tanh(f16x2,f16x2)", &atan2_Float16x2 } /* 2168 */,
+    std::pair{ "tanh(f16x3)", &tanh_Float16x3 } /* 2169 */,
+    std::pair{ "tanh(f16x3,f16x3)", &atan2_Float16x3 } /* 2170 */,
+    std::pair{ "tanh(f16x4)", &tanh_Float16x4 } /* 2171 */,
+    std::pair{ "tanh(f16x4,f16x4)", &atan2_Float16x4 } /* 2172 */,
+    std::pair{ "tanh(f32)", &tanh_Float32 } /* 2173 */,
+    std::pair{ "tanh(f32,f32)", &atan2_Float32 } /* 2174 */,
+    std::pair{ "tanh(f32x2)", &tanh_Float32x2 } /* 2175 */,
+    std::pair{ "tanh(f32x2,f32x2)", &atan2_Float32x2 } /* 2176 */,
+    std::pair{ "tanh(f32x3)", &tanh_Float32x3 } /* 2177 */,
+    std::pair{ "tanh(f32x3,f32x3)", &atan2_Float32x3 } /* 2178 */,
+    std::pair{ "tanh(f32x4)", &tanh_Float32x4 } /* 2179 */,
+    std::pair{ "tanh(f32x4,f32x4)", &atan2_Float32x4 } /* 2180 */,
+    std::pair{ "texture1D", &Texture1DType } /* 2181 */,
+    std::pair{ "texture1DArray", &Texture1DArrayType } /* 2182 */,
+    std::pair{ "texture2D", &Texture2DType } /* 2183 */,
+    std::pair{ "texture2DArray", &Texture2DArrayType } /* 2184 */,
+    std::pair{ "texture2DMS", &Texture2DMSType } /* 2185 */,
+    std::pair{ "texture2DMSArray", &Texture2DMSArrayType } /* 2186 */,
+    std::pair{ "texture3D", &Texture3DType } /* 2187 */,
+    std::pair{ "textureCube", &TextureCubeType } /* 2188 */,
+    std::pair{ "textureCubeArray", &TextureCubeArrayType } /* 2189 */,
+    std::pair{ "textureFetch", &TextureFetch_Texture1D } /* 2190 */,
+    std::pair{ "textureFetch", &TextureFetch_Texture2D } /* 2191 */,
+    std::pair{ "textureFetch", &TextureFetch_Texture3D } /* 2192 */,
+    std::pair{ "textureFetch", &TextureFetch_Texture1DArray } /* 2193 */,
+    std::pair{ "textureFetch", &TextureFetch_Texture2DArray } /* 2194 */,
+    std::pair{ "textureFetch", &TextureFetch_Texture2DMS } /* 2195 */,
+    std::pair{ "textureFetch", &TextureFetch_Texture2DMSArray } /* 2196 */,
+    std::pair{ "textureFetch(uniform *texture1D,i32,u32)", &TextureFetch_Texture1D } /* 2197 */,
+    std::pair{ "textureFetch(uniform *texture1DArray,i32x2,u32)", &TextureFetch_Texture1DArray } /* 2198 */,
+    std::pair{ "textureFetch(uniform *texture2D,i32x2,u32)", &TextureFetch_Texture2D } /* 2199 */,
+    std::pair{ "textureFetch(uniform *texture2DArray,i32x3,u32)", &TextureFetch_Texture2DArray } /* 2200 */,
+    std::pair{ "textureFetch(uniform *texture2DMS,i32x2,u32)", &TextureFetch_Texture2DMS } /* 2201 */,
+    std::pair{ "textureFetch(uniform *texture2DMSArray,i32x3,u32)", &TextureFetch_Texture2DMSArray } /* 2202 */,
+    std::pair{ "textureFetch(uniform *texture3D,i32x3,u32)", &TextureFetch_Texture3D } /* 2203 */,
+    std::pair{ "textureFetchSample", &TextureFetchSample_Texture1D } /* 2204 */,
+    std::pair{ "textureFetchSample", &TextureFetchSample_Texture2D } /* 2205 */,
+    std::pair{ "textureFetchSample", &TextureFetchSample_Texture3D } /* 2206 */,
+    std::pair{ "textureFetchSample", &TextureFetchSample_Texture1DArray } /* 2207 */,
+    std::pair{ "textureFetchSample", &TextureFetchSample_Texture2DArray } /* 2208 */,
+    std::pair{ "textureFetchSample", &TextureFetchSample_Texture2DMS } /* 2209 */,
+    std::pair{ "textureFetchSample", &TextureFetchSample_Texture2DMSArray } /* 2210 */,
+    std::pair{ "textureFetchSample(uniform *texture1D,i32,u32,u32)", &TextureFetchSample_Texture1D } /* 2211 */,
+    std::pair{ "textureFetchSample(uniform *texture1DArray,i32x2,u32,u32)", &TextureFetchSample_Texture1DArray } /* 2212 */,
+    std::pair{ "textureFetchSample(uniform *texture2D,i32x2,u32,u32)", &TextureFetchSample_Texture2D } /* 2213 */,
+    std::pair{ "textureFetchSample(uniform *texture2DArray,i32x3,u32,u32)", &TextureFetchSample_Texture2DArray } /* 2214 */,
+    std::pair{ "textureFetchSample(uniform *texture2DMS,i32x2,u32,u32)", &TextureFetchSample_Texture2DMS } /* 2215 */,
+    std::pair{ "textureFetchSample(uniform *texture2DMSArray,i32x3,u32,u32)", &TextureFetchSample_Texture2DMSArray } /* 2216 */,
+    std::pair{ "textureFetchSample(uniform *texture3D,i32x3,u32,u32)", &TextureFetchSample_Texture3D } /* 2217 */,
+    std::pair{ "textureGather", &TextureGather_Texture2D } /* 2218 */,
+    std::pair{ "textureGather", &SampledTextureGather_Texture2D } /* 2219 */,
+    std::pair{ "textureGather", &TextureGather_TextureCube } /* 2220 */,
+    std::pair{ "textureGather", &SampledTextureGather_TextureCube } /* 2221 */,
+    std::pair{ "textureGather", &TextureGather_Texture2DArray } /* 2222 */,
+    std::pair{ "textureGather", &SampledTextureGather_Texture2DArray } /* 2223 */,
+    std::pair{ "textureGather", &TextureGather_TextureCubeArray } /* 2224 */,
+    std::pair{ "textureGather", &SampledTextureGather_TextureCubeArray } /* 2225 */,
+    std::pair{ "textureGather(uniform *texture2D,uniform *sampler,i32x2,i32)", &TextureGather_Texture2D } /* 2226 */,
+    std::pair{ "textureGather(uniform *texture2DArray,uniform *sampler,i32x3,i32)", &TextureGather_Texture2DArray } /* 2227 */,
+    std::pair{ "textureGather(uniform *textureCube,uniform *sampler,i32x3,i32)", &TextureGather_TextureCube } /* 2228 */,
+    std::pair{ "textureGather(uniform *textureCubeArray,uniform *sampler,i32x4,i32)", &TextureGather_TextureCubeArray } /* 2229 */,
+    std::pair{ "textureGather(uniform *textureSampled2D,i32x2,i32)", &SampledTextureGather_Texture2D } /* 2230 */,
+    std::pair{ "textureGather(uniform *textureSampled2DArray,i32x3,i32)", &SampledTextureGather_Texture2DArray } /* 2231 */,
+    std::pair{ "textureGather(uniform *textureSampledCube,i32x3,i32)", &SampledTextureGather_TextureCube } /* 2232 */,
+    std::pair{ "textureGather(uniform *textureSampledCubeArray,i32x4,i32)", &SampledTextureGather_TextureCubeArray } /* 2233 */,
+    std::pair{ "textureGatherOffset", &TextureGatherOffset_Texture2D } /* 2234 */,
+    std::pair{ "textureGatherOffset", &SampledTextureGatherOffset_Texture2D } /* 2235 */,
+    std::pair{ "textureGatherOffset", &TextureGatherOffset_TextureCube } /* 2236 */,
+    std::pair{ "textureGatherOffset", &SampledTextureGatherOffset_TextureCube } /* 2237 */,
+    std::pair{ "textureGatherOffset", &TextureGatherOffset_Texture2DArray } /* 2238 */,
+    std::pair{ "textureGatherOffset", &SampledTextureGatherOffset_Texture2DArray } /* 2239 */,
+    std::pair{ "textureGatherOffset", &TextureGatherOffset_TextureCubeArray } /* 2240 */,
+    std::pair{ "textureGatherOffset", &SampledTextureGatherOffset_TextureCubeArray } /* 2241 */,
+    std::pair{ "textureGatherOffset(uniform *texture2D,uniform *sampler,i32x2,i32,u32)", &TextureGatherOffset_Texture2D } /* 2242 */,
+    std::pair{ "textureGatherOffset(uniform *texture2DArray,uniform *sampler,i32x3,i32,u32)", &TextureGatherOffset_Texture2DArray } /* 2243 */,
+    std::pair{ "textureGatherOffset(uniform *textureCube,uniform *sampler,i32x3,i32,u32)", &TextureGatherOffset_TextureCube } /* 2244 */,
+    std::pair{ "textureGatherOffset(uniform *textureCubeArray,uniform *sampler,i32x4,i32,u32)", &TextureGatherOffset_TextureCubeArray } /* 2245 */,
+    std::pair{ "textureGatherOffset(uniform *textureSampled2D,i32x2,i32,u32)", &SampledTextureGatherOffset_Texture2D } /* 2246 */,
+    std::pair{ "textureGatherOffset(uniform *textureSampled2DArray,i32x3,i32,u32)", &SampledTextureGatherOffset_Texture2DArray } /* 2247 */,
+    std::pair{ "textureGatherOffset(uniform *textureSampledCube,i32x3,i32,u32)", &SampledTextureGatherOffset_TextureCube } /* 2248 */,
+    std::pair{ "textureGatherOffset(uniform *textureSampledCubeArray,i32x4,i32,u32)", &SampledTextureGatherOffset_TextureCubeArray } /* 2249 */,
+    std::pair{ "textureGetMips", &TextureGetMips_Texture1D } /* 2250 */,
+    std::pair{ "textureGetMips", &TextureGetMips_Texture2D } /* 2251 */,
+    std::pair{ "textureGetMips", &TextureGetMips_Texture3D } /* 2252 */,
+    std::pair{ "textureGetMips", &TextureGetMips_TextureCube } /* 2253 */,
+    std::pair{ "textureGetMips", &TextureGetMips_Texture1DArray } /* 2254 */,
+    std::pair{ "textureGetMips", &TextureGetMips_Texture2DArray } /* 2255 */,
+    std::pair{ "textureGetMips", &TextureGetMips_TextureCubeArray } /* 2256 */,
+    std::pair{ "textureGetMips(uniform *texture1D)", &TextureGetMips_Texture1D } /* 2257 */,
+    std::pair{ "textureGetMips(uniform *texture1DArray)", &TextureGetMips_Texture1DArray } /* 2258 */,
+    std::pair{ "textureGetMips(uniform *texture2D)", &TextureGetMips_Texture2D } /* 2259 */,
+    std::pair{ "textureGetMips(uniform *texture2DArray)", &TextureGetMips_Texture2DArray } /* 2260 */,
+    std::pair{ "textureGetMips(uniform *texture3D)", &TextureGetMips_Texture3D } /* 2261 */,
+    std::pair{ "textureGetMips(uniform *textureCube)", &TextureGetMips_TextureCube } /* 2262 */,
+    std::pair{ "textureGetMips(uniform *textureCubeArray)", &TextureGetMips_TextureCubeArray } /* 2263 */,
+    std::pair{ "textureGetSampledMip", &TextureGetSampledMip_Texture1D } /* 2264 */,
+    std::pair{ "textureGetSampledMip", &SampledTextureGetSampledMip_Texture1D } /* 2265 */,
+    std::pair{ "textureGetSampledMip", &TextureGetSampledMip_Texture2D } /* 2266 */,
+    std::pair{ "textureGetSampledMip", &SampledTextureGetSampledMip_Texture2D } /* 2267 */,
+    std::pair{ "textureGetSampledMip", &TextureGetSampledMip_Texture3D } /* 2268 */,
+    std::pair{ "textureGetSampledMip", &SampledTextureGetSampledMip_Texture3D } /* 2269 */,
+    std::pair{ "textureGetSampledMip", &TextureGetSampledMip_TextureCube } /* 2270 */,
+    std::pair{ "textureGetSampledMip", &SampledTextureGetSampledMip_TextureCube } /* 2271 */,
+    std::pair{ "textureGetSampledMip", &TextureGetSampledMip_Texture1DArray } /* 2272 */,
+    std::pair{ "textureGetSampledMip", &SampledTextureGetSampledMip_Texture1DArray } /* 2273 */,
+    std::pair{ "textureGetSampledMip", &TextureGetSampledMip_Texture2DArray } /* 2274 */,
+    std::pair{ "textureGetSampledMip", &SampledTextureGetSampledMip_Texture2DArray } /* 2275 */,
+    std::pair{ "textureGetSampledMip", &TextureGetSampledMip_TextureCubeArray } /* 2276 */,
+    std::pair{ "textureGetSampledMip", &SampledTextureGetSampledMip_TextureCubeArray } /* 2277 */,
+    std::pair{ "textureGetSampledMip(uniform *texture1D,uniform *sampler,f32)", &TextureGetSampledMip_Texture1D } /* 2278 */,
+    std::pair{ "textureGetSampledMip(uniform *texture1DArray,uniform *sampler,f32x2)", &TextureGetSampledMip_Texture1DArray } /* 2279 */,
+    std::pair{ "textureGetSampledMip(uniform *texture2D,uniform *sampler,f32x2)", &TextureGetSampledMip_Texture2D } /* 2280 */,
+    std::pair{ "textureGetSampledMip(uniform *texture2DArray,uniform *sampler,f32x3)", &TextureGetSampledMip_Texture2DArray } /* 2281 */,
+    std::pair{ "textureGetSampledMip(uniform *texture3D,uniform *sampler,f32x3)", &TextureGetSampledMip_Texture3D } /* 2282 */,
+    std::pair{ "textureGetSampledMip(uniform *textureCube,uniform *sampler,f32x3)", &TextureGetSampledMip_TextureCube } /* 2283 */,
+    std::pair{ "textureGetSampledMip(uniform *textureCubeArray,uniform *sampler,f32x4)", &TextureGetSampledMip_TextureCubeArray } /* 2284 */,
+    std::pair{ "textureGetSampledMip(uniform *textureSampled1D,f32)", &SampledTextureGetSampledMip_Texture1D } /* 2285 */,
+    std::pair{ "textureGetSampledMip(uniform *textureSampled1DArray,f32x2)", &SampledTextureGetSampledMip_Texture1DArray } /* 2286 */,
+    std::pair{ "textureGetSampledMip(uniform *textureSampled2D,f32x2)", &SampledTextureGetSampledMip_Texture2D } /* 2287 */,
+    std::pair{ "textureGetSampledMip(uniform *textureSampled2DArray,f32x3)", &SampledTextureGetSampledMip_Texture2DArray } /* 2288 */,
+    std::pair{ "textureGetSampledMip(uniform *textureSampled3D,f32x3)", &SampledTextureGetSampledMip_Texture3D } /* 2289 */,
+    std::pair{ "textureGetSampledMip(uniform *textureSampledCube,f32x3)", &SampledTextureGetSampledMip_TextureCube } /* 2290 */,
+    std::pair{ "textureGetSampledMip(uniform *textureSampledCubeArray,f32x4)", &SampledTextureGetSampledMip_TextureCubeArray } /* 2291 */,
+    std::pair{ "textureGetSamples", &TextureGetSamples_Texture2DMS } /* 2292 */,
+    std::pair{ "textureGetSamples", &TextureGetSamples_Texture2DMSArray } /* 2293 */,
+    std::pair{ "textureGetSamples(uniform *texture2DMS)", &TextureGetSamples_Texture2DMS } /* 2294 */,
+    std::pair{ "textureGetSamples(uniform *texture2DMSArray)", &TextureGetSamples_Texture2DMSArray } /* 2295 */,
+    std::pair{ "textureGetSize", &TextureGetSize_Texture1D } /* 2296 */,
+    std::pair{ "textureGetSize", &TextureGetSize_Texture2D } /* 2297 */,
+    std::pair{ "textureGetSize", &TextureGetSize_Texture3D } /* 2298 */,
+    std::pair{ "textureGetSize", &TextureGetSize_TextureCube } /* 2299 */,
+    std::pair{ "textureGetSize", &TextureGetSize_Texture1DArray } /* 2300 */,
+    std::pair{ "textureGetSize", &TextureGetSize_Texture2DArray } /* 2301 */,
+    std::pair{ "textureGetSize", &TextureGetSize_TextureCubeArray } /* 2302 */,
+    std::pair{ "textureGetSize(uniform *texture1D)", &TextureGetSize_Texture1D } /* 2303 */,
+    std::pair{ "textureGetSize(uniform *texture1DArray)", &TextureGetSize_Texture1DArray } /* 2304 */,
+    std::pair{ "textureGetSize(uniform *texture2D)", &TextureGetSize_Texture2D } /* 2305 */,
+    std::pair{ "textureGetSize(uniform *texture2DArray)", &TextureGetSize_Texture2DArray } /* 2306 */,
+    std::pair{ "textureGetSize(uniform *texture3D)", &TextureGetSize_Texture3D } /* 2307 */,
+    std::pair{ "textureGetSize(uniform *textureCube)", &TextureGetSize_TextureCube } /* 2308 */,
+    std::pair{ "textureGetSize(uniform *textureCubeArray)", &TextureGetSize_TextureCubeArray } /* 2309 */,
+    std::pair{ "textureGetSizeMip", &TextureGetSizeMip_Texture1D } /* 2310 */,
+    std::pair{ "textureGetSizeMip", &TextureGetSizeMip_Texture2D } /* 2311 */,
+    std::pair{ "textureGetSizeMip", &TextureGetSizeMip_Texture3D } /* 2312 */,
+    std::pair{ "textureGetSizeMip", &TextureGetSizeMip_TextureCube } /* 2313 */,
+    std::pair{ "textureGetSizeMip", &TextureGetSizeMip_Texture1DArray } /* 2314 */,
+    std::pair{ "textureGetSizeMip", &TextureGetSizeMip_Texture2DArray } /* 2315 */,
+    std::pair{ "textureGetSizeMip", &TextureGetSizeMip_TextureCubeArray } /* 2316 */,
+    std::pair{ "textureGetSizeMip(uniform *texture1D,u32)", &TextureGetSizeMip_Texture1D } /* 2317 */,
+    std::pair{ "textureGetSizeMip(uniform *texture1DArray,u32)", &TextureGetSizeMip_Texture1DArray } /* 2318 */,
+    std::pair{ "textureGetSizeMip(uniform *texture2D,u32)", &TextureGetSizeMip_Texture2D } /* 2319 */,
+    std::pair{ "textureGetSizeMip(uniform *texture2DArray,u32)", &TextureGetSizeMip_Texture2DArray } /* 2320 */,
+    std::pair{ "textureGetSizeMip(uniform *texture3D,u32)", &TextureGetSizeMip_Texture3D } /* 2321 */,
+    std::pair{ "textureGetSizeMip(uniform *textureCube,u32)", &TextureGetSizeMip_TextureCube } /* 2322 */,
+    std::pair{ "textureGetSizeMip(uniform *textureCubeArray,u32)", &TextureGetSizeMip_TextureCubeArray } /* 2323 */,
+    std::pair{ "textureLoad", &TextureLoad_Texture1D } /* 2324 */,
+    std::pair{ "textureLoad", &TextureLoad_Texture2D } /* 2325 */,
+    std::pair{ "textureLoad", &TextureLoad_Texture3D } /* 2326 */,
+    std::pair{ "textureLoad", &TextureLoad_TextureCube } /* 2327 */,
+    std::pair{ "textureLoad", &TextureLoad_Texture1DArray } /* 2328 */,
+    std::pair{ "textureLoad", &TextureLoad_Texture2DArray } /* 2329 */,
+    std::pair{ "textureLoad", &TextureLoad_TextureCubeArray } /* 2330 */,
+    std::pair{ "textureLoad", &TextureLoad_Texture2DMS } /* 2331 */,
+    std::pair{ "textureLoad", &TextureLoad_Texture2DMSArray } /* 2332 */,
+    std::pair{ "textureLoad(uniform *mutable texture1D,i32)", &TextureLoad_Texture1D } /* 2333 */,
+    std::pair{ "textureLoad(uniform *mutable texture1DArray,i32x2)", &TextureLoad_Texture1DArray } /* 2334 */,
+    std::pair{ "textureLoad(uniform *mutable texture2D,i32x2)", &TextureLoad_Texture2D } /* 2335 */,
+    std::pair{ "textureLoad(uniform *mutable texture2DArray,i32x3)", &TextureLoad_Texture2DArray } /* 2336 */,
+    std::pair{ "textureLoad(uniform *mutable texture2DMS,i32x2)", &TextureLoad_Texture2DMS } /* 2337 */,
+    std::pair{ "textureLoad(uniform *mutable texture2DMSArray,i32x3)", &TextureLoad_Texture2DMSArray } /* 2338 */,
+    std::pair{ "textureLoad(uniform *mutable texture3D,i32x3)", &TextureLoad_Texture3D } /* 2339 */,
+    std::pair{ "textureLoad(uniform *mutable textureCube,i32x3)", &TextureLoad_TextureCube } /* 2340 */,
+    std::pair{ "textureLoad(uniform *mutable textureCubeArray,i32x4)", &TextureLoad_TextureCubeArray } /* 2341 */,
+    std::pair{ "textureLoadMip", &TextureLoadMip_Texture1D } /* 2342 */,
+    std::pair{ "textureLoadMip", &TextureLoadMip_Texture2D } /* 2343 */,
+    std::pair{ "textureLoadMip", &TextureLoadMip_Texture3D } /* 2344 */,
+    std::pair{ "textureLoadMip", &TextureLoadMip_TextureCube } /* 2345 */,
+    std::pair{ "textureLoadMip", &TextureLoadMip_Texture1DArray } /* 2346 */,
+    std::pair{ "textureLoadMip", &TextureLoadMip_Texture2DArray } /* 2347 */,
+    std::pair{ "textureLoadMip", &TextureLoadMip_TextureCubeArray } /* 2348 */,
+    std::pair{ "textureLoadMip", &TextureLoadMip_Texture2DMS } /* 2349 */,
+    std::pair{ "textureLoadMip", &TextureLoadMip_Texture2DMSArray } /* 2350 */,
+    std::pair{ "textureLoadMip(uniform *mutable texture1D,i32,i32)", &TextureLoadMip_Texture1D } /* 2351 */,
+    std::pair{ "textureLoadMip(uniform *mutable texture1DArray,i32x2,i32)", &TextureLoadMip_Texture1DArray } /* 2352 */,
+    std::pair{ "textureLoadMip(uniform *mutable texture2D,i32x2,i32)", &TextureLoadMip_Texture2D } /* 2353 */,
+    std::pair{ "textureLoadMip(uniform *mutable texture2DArray,i32x3,i32)", &TextureLoadMip_Texture2DArray } /* 2354 */,
+    std::pair{ "textureLoadMip(uniform *mutable texture2DMS,i32x2,i32)", &TextureLoadMip_Texture2DMS } /* 2355 */,
+    std::pair{ "textureLoadMip(uniform *mutable texture2DMSArray,i32x3,i32)", &TextureLoadMip_Texture2DMSArray } /* 2356 */,
+    std::pair{ "textureLoadMip(uniform *mutable texture3D,i32x3,i32)", &TextureLoadMip_Texture3D } /* 2357 */,
+    std::pair{ "textureLoadMip(uniform *mutable textureCube,i32x3,i32)", &TextureLoadMip_TextureCube } /* 2358 */,
+    std::pair{ "textureLoadMip(uniform *mutable textureCubeArray,i32x4,i32)", &TextureLoadMip_TextureCubeArray } /* 2359 */,
+    std::pair{ "texturePixelCacheLoad", &TexturePixelCacheLoad_PixelCache } /* 2360 */,
+    std::pair{ "texturePixelCacheLoad", &TexturePixelCacheLoad_PixelCacheMS } /* 2361 */,
+    std::pair{ "texturePixelCacheLoad(uniform *pixelCache)", &TexturePixelCacheLoad_PixelCache } /* 2362 */,
+    std::pair{ "texturePixelCacheLoad(uniform *pixelCacheMS,u32)", &TexturePixelCacheLoad_PixelCacheMS } /* 2363 */,
+    std::pair{ "textureSample", &TextureSample_Texture1D } /* 2364 */,
+    std::pair{ "textureSample", &SampledTextureSample_Texture1D } /* 2365 */,
+    std::pair{ "textureSample", &TextureSample_Texture2D } /* 2366 */,
+    std::pair{ "textureSample", &SampledTextureSample_Texture2D } /* 2367 */,
+    std::pair{ "textureSample", &TextureSample_Texture3D } /* 2368 */,
+    std::pair{ "textureSample", &SampledTextureSample_Texture3D } /* 2369 */,
+    std::pair{ "textureSample", &TextureSample_TextureCube } /* 2370 */,
+    std::pair{ "textureSample", &SampledTextureSample_TextureCube } /* 2371 */,
+    std::pair{ "textureSample", &TextureSample_Texture1DArray } /* 2372 */,
+    std::pair{ "textureSample", &SampledTextureSample_Texture1DArray } /* 2373 */,
+    std::pair{ "textureSample", &TextureSample_Texture2DArray } /* 2374 */,
+    std::pair{ "textureSample", &SampledTextureSample_Texture2DArray } /* 2375 */,
+    std::pair{ "textureSample", &TextureSample_TextureCubeArray } /* 2376 */,
+    std::pair{ "textureSample", &SampledTextureSample_TextureCubeArray } /* 2377 */,
+    std::pair{ "textureSample(uniform *texture1D,uniform *sampler,f32)", &TextureSample_Texture1D } /* 2378 */,
+    std::pair{ "textureSample(uniform *texture1DArray,uniform *sampler,f32x2)", &TextureSample_Texture1DArray } /* 2379 */,
+    std::pair{ "textureSample(uniform *texture2D,uniform *sampler,f32x2)", &TextureSample_Texture2D } /* 2380 */,
+    std::pair{ "textureSample(uniform *texture2DArray,uniform *sampler,f32x3)", &TextureSample_Texture2DArray } /* 2381 */,
+    std::pair{ "textureSample(uniform *texture3D,uniform *sampler,f32x3)", &TextureSample_Texture3D } /* 2382 */,
+    std::pair{ "textureSample(uniform *textureCube,uniform *sampler,f32x3)", &TextureSample_TextureCube } /* 2383 */,
+    std::pair{ "textureSample(uniform *textureCubeArray,uniform *sampler,f32x4)", &TextureSample_TextureCubeArray } /* 2384 */,
+    std::pair{ "textureSample(uniform *textureSampled1D,f32)", &SampledTextureSample_Texture1D } /* 2385 */,
+    std::pair{ "textureSample(uniform *textureSampled1DArray,f32x2)", &SampledTextureSample_Texture1DArray } /* 2386 */,
+    std::pair{ "textureSample(uniform *textureSampled2D,f32x2)", &SampledTextureSample_Texture2D } /* 2387 */,
+    std::pair{ "textureSample(uniform *textureSampled2DArray,f32x3)", &SampledTextureSample_Texture2DArray } /* 2388 */,
+    std::pair{ "textureSample(uniform *textureSampled3D,f32x3)", &SampledTextureSample_Texture3D } /* 2389 */,
+    std::pair{ "textureSample(uniform *textureSampledCube,f32x3)", &SampledTextureSample_TextureCube } /* 2390 */,
+    std::pair{ "textureSample(uniform *textureSampledCubeArray,f32x4)", &SampledTextureSample_TextureCubeArray } /* 2391 */,
+    std::pair{ "textureSampleBias", &TextureSampleBias_Texture1D } /* 2392 */,
+    std::pair{ "textureSampleBias", &SampledTextureSampleBias_Texture1D } /* 2393 */,
+    std::pair{ "textureSampleBias", &TextureSampleBias_Texture2D } /* 2394 */,
+    std::pair{ "textureSampleBias", &SampledTextureSampleBias_Texture2D } /* 2395 */,
+    std::pair{ "textureSampleBias", &TextureSampleBias_Texture3D } /* 2396 */,
+    std::pair{ "textureSampleBias", &SampledTextureSampleBias_Texture3D } /* 2397 */,
+    std::pair{ "textureSampleBias", &TextureSampleBias_TextureCube } /* 2398 */,
+    std::pair{ "textureSampleBias", &SampledTextureSampleBias_TextureCube } /* 2399 */,
+    std::pair{ "textureSampleBias", &TextureSampleBias_Texture1DArray } /* 2400 */,
+    std::pair{ "textureSampleBias", &SampledTextureSampleBias_Texture1DArray } /* 2401 */,
+    std::pair{ "textureSampleBias", &TextureSampleBias_Texture2DArray } /* 2402 */,
+    std::pair{ "textureSampleBias", &SampledTextureSampleBias_Texture2DArray } /* 2403 */,
+    std::pair{ "textureSampleBias", &TextureSampleBias_TextureCubeArray } /* 2404 */,
+    std::pair{ "textureSampleBias", &SampledTextureSampleBias_TextureCubeArray } /* 2405 */,
+    std::pair{ "textureSampleBias(uniform *texture1D,uniform *sampler,f32,f32)", &TextureSampleBias_Texture1D } /* 2406 */,
+    std::pair{ "textureSampleBias(uniform *texture1DArray,uniform *sampler,f32x2,f32)", &TextureSampleBias_Texture1DArray } /* 2407 */,
+    std::pair{ "textureSampleBias(uniform *texture2D,uniform *sampler,f32x2,f32)", &TextureSampleBias_Texture2D } /* 2408 */,
+    std::pair{ "textureSampleBias(uniform *texture2DArray,uniform *sampler,f32x3,f32)", &TextureSampleBias_Texture2DArray } /* 2409 */,
+    std::pair{ "textureSampleBias(uniform *texture3D,uniform *sampler,f32x3,f32)", &TextureSampleBias_Texture3D } /* 2410 */,
+    std::pair{ "textureSampleBias(uniform *textureCube,uniform *sampler,f32x3,f32)", &TextureSampleBias_TextureCube } /* 2411 */,
+    std::pair{ "textureSampleBias(uniform *textureCubeArray,uniform *sampler,f32x4,f32)", &TextureSampleBias_TextureCubeArray } /* 2412 */,
+    std::pair{ "textureSampleBias(uniform *textureSampled1D,f32,f32)", &SampledTextureSampleBias_Texture1D } /* 2413 */,
+    std::pair{ "textureSampleBias(uniform *textureSampled1DArray,f32x2,f32)", &SampledTextureSampleBias_Texture1DArray } /* 2414 */,
+    std::pair{ "textureSampleBias(uniform *textureSampled2D,f32x2,f32)", &SampledTextureSampleBias_Texture2D } /* 2415 */,
+    std::pair{ "textureSampleBias(uniform *textureSampled2DArray,f32x3,f32)", &SampledTextureSampleBias_Texture2DArray } /* 2416 */,
+    std::pair{ "textureSampleBias(uniform *textureSampled3D,f32x3,f32)", &SampledTextureSampleBias_Texture3D } /* 2417 */,
+    std::pair{ "textureSampleBias(uniform *textureSampledCube,f32x3,f32)", &SampledTextureSampleBias_TextureCube } /* 2418 */,
+    std::pair{ "textureSampleBias(uniform *textureSampledCubeArray,f32x4,f32)", &SampledTextureSampleBias_TextureCubeArray } /* 2419 */,
+    std::pair{ "textureSampleBiasCompare", &TextureSampleBiasCompare_Texture1D } /* 2420 */,
+    std::pair{ "textureSampleBiasCompare", &SampledTextureSampleBiasCompare_Texture1D } /* 2421 */,
+    std::pair{ "textureSampleBiasCompare", &TextureSampleBiasCompare_Texture2D } /* 2422 */,
+    std::pair{ "textureSampleBiasCompare", &SampledTextureSampleBiasCompare_Texture2D } /* 2423 */,
+    std::pair{ "textureSampleBiasCompare", &TextureSampleBiasCompare_Texture3D } /* 2424 */,
+    std::pair{ "textureSampleBiasCompare", &SampledTextureSampleBiasCompare_Texture3D } /* 2425 */,
+    std::pair{ "textureSampleBiasCompare", &TextureSampleBiasCompare_Texture1DArray } /* 2426 */,
+    std::pair{ "textureSampleBiasCompare", &SampledTextureSampleBiasCompare_Texture1DArray } /* 2427 */,
+    std::pair{ "textureSampleBiasCompare", &TextureSampleBiasCompare_Texture2DArray } /* 2428 */,
+    std::pair{ "textureSampleBiasCompare", &SampledTextureSampleBiasCompare_Texture2DArray } /* 2429 */,
+    std::pair{ "textureSampleBiasCompare(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleBiasCompare_Texture1D } /* 2430 */,
+    std::pair{ "textureSampleBiasCompare(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32)", &TextureSampleBiasCompare_Texture1DArray } /* 2431 */,
+    std::pair{ "textureSampleBiasCompare(uniform *texture2D,uniform *sampler,f32x2,f32,f32)", &TextureSampleBiasCompare_Texture2D } /* 2432 */,
+    std::pair{ "textureSampleBiasCompare(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32)", &TextureSampleBiasCompare_Texture2DArray } /* 2433 */,
+    std::pair{ "textureSampleBiasCompare(uniform *texture3D,uniform *sampler,f32x3,f32,f32)", &TextureSampleBiasCompare_Texture3D } /* 2434 */,
+    std::pair{ "textureSampleBiasCompare(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleBiasCompare_Texture1D } /* 2435 */,
+    std::pair{ "textureSampleBiasCompare(uniform *textureSampled1DArray,f32x2,f32,f32)", &SampledTextureSampleBiasCompare_Texture1DArray } /* 2436 */,
+    std::pair{ "textureSampleBiasCompare(uniform *textureSampled2D,f32x2,f32,f32)", &SampledTextureSampleBiasCompare_Texture2D } /* 2437 */,
+    std::pair{ "textureSampleBiasCompare(uniform *textureSampled2DArray,f32x3,f32,f32)", &SampledTextureSampleBiasCompare_Texture2DArray } /* 2438 */,
+    std::pair{ "textureSampleBiasCompare(uniform *textureSampled3D,f32x3,f32,f32)", &SampledTextureSampleBiasCompare_Texture3D } /* 2439 */,
+    std::pair{ "textureSampleBiasCompareOffset", &TextureSampleBiasCompareOffset_Texture1D } /* 2440 */,
+    std::pair{ "textureSampleBiasCompareOffset", &SampledTextureSampleBiasCompareOffset_Texture1D } /* 2441 */,
+    std::pair{ "textureSampleBiasCompareOffset", &TextureSampleBiasCompareOffset_Texture2D } /* 2442 */,
+    std::pair{ "textureSampleBiasCompareOffset", &SampledTextureSampleBiasCompareOffset_Texture2D } /* 2443 */,
+    std::pair{ "textureSampleBiasCompareOffset", &TextureSampleBiasCompareOffset_Texture3D } /* 2444 */,
+    std::pair{ "textureSampleBiasCompareOffset", &SampledTextureSampleBiasCompareOffset_Texture3D } /* 2445 */,
+    std::pair{ "textureSampleBiasCompareOffset", &TextureSampleBiasCompareOffset_Texture1DArray } /* 2446 */,
+    std::pair{ "textureSampleBiasCompareOffset", &SampledTextureSampleBiasCompareOffset_Texture1DArray } /* 2447 */,
+    std::pair{ "textureSampleBiasCompareOffset", &TextureSampleBiasCompareOffset_Texture2DArray } /* 2448 */,
+    std::pair{ "textureSampleBiasCompareOffset", &SampledTextureSampleBiasCompareOffset_Texture2DArray } /* 2449 */,
+    std::pair{ "textureSampleBiasCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleBiasCompareOffset_Texture1D } /* 2450 */,
+    std::pair{ "textureSampleBiasCompareOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleBiasCompareOffset_Texture1DArray } /* 2451 */,
+    std::pair{ "textureSampleBiasCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleBiasCompareOffset_Texture2D } /* 2452 */,
+    std::pair{ "textureSampleBiasCompareOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleBiasCompareOffset_Texture2DArray } /* 2453 */,
+    std::pair{ "textureSampleBiasCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleBiasCompareOffset_Texture3D } /* 2454 */,
+    std::pair{ "textureSampleBiasCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleBiasCompareOffset_Texture1D } /* 2455 */,
+    std::pair{ "textureSampleBiasCompareOffset(uniform *textureSampled1DArray,f32x2,f32,f32,f32x2)", &SampledTextureSampleBiasCompareOffset_Texture1DArray } /* 2456 */,
+    std::pair{ "textureSampleBiasCompareOffset(uniform *textureSampled2D,f32x2,f32,f32,f32x2)", &SampledTextureSampleBiasCompareOffset_Texture2D } /* 2457 */,
+    std::pair{ "textureSampleBiasCompareOffset(uniform *textureSampled2DArray,f32x3,f32,f32,f32x3)", &SampledTextureSampleBiasCompareOffset_Texture2DArray } /* 2458 */,
+    std::pair{ "textureSampleBiasCompareOffset(uniform *textureSampled3D,f32x3,f32,f32,f32x3)", &SampledTextureSampleBiasCompareOffset_Texture3D } /* 2459 */,
+    std::pair{ "textureSampleBiasOffset", &TextureSampleBiasOffset_Texture1D } /* 2460 */,
+    std::pair{ "textureSampleBiasOffset", &SampledTextureSampleBiasOffset_Texture1D } /* 2461 */,
+    std::pair{ "textureSampleBiasOffset", &TextureSampleBiasOffset_Texture2D } /* 2462 */,
+    std::pair{ "textureSampleBiasOffset", &SampledTextureSampleBiasOffset_Texture2D } /* 2463 */,
+    std::pair{ "textureSampleBiasOffset", &TextureSampleBiasOffset_Texture3D } /* 2464 */,
+    std::pair{ "textureSampleBiasOffset", &SampledTextureSampleBiasOffset_Texture3D } /* 2465 */,
+    std::pair{ "textureSampleBiasOffset", &TextureSampleBiasOffset_Texture1DArray } /* 2466 */,
+    std::pair{ "textureSampleBiasOffset", &SampledTextureSampleBiasOffset_Texture1DArray } /* 2467 */,
+    std::pair{ "textureSampleBiasOffset", &TextureSampleBiasOffset_Texture2DArray } /* 2468 */,
+    std::pair{ "textureSampleBiasOffset", &SampledTextureSampleBiasOffset_Texture2DArray } /* 2469 */,
+    std::pair{ "textureSampleBiasOffset(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleBiasOffset_Texture1D } /* 2470 */,
+    std::pair{ "textureSampleBiasOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleBiasOffset_Texture1DArray } /* 2471 */,
+    std::pair{ "textureSampleBiasOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleBiasOffset_Texture2D } /* 2472 */,
+    std::pair{ "textureSampleBiasOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleBiasOffset_Texture2DArray } /* 2473 */,
+    std::pair{ "textureSampleBiasOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleBiasOffset_Texture3D } /* 2474 */,
+    std::pair{ "textureSampleBiasOffset(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleBiasOffset_Texture1D } /* 2475 */,
+    std::pair{ "textureSampleBiasOffset(uniform *textureSampled1DArray,f32x2,f32,f32x2)", &SampledTextureSampleBiasOffset_Texture1DArray } /* 2476 */,
+    std::pair{ "textureSampleBiasOffset(uniform *textureSampled2D,f32x2,f32,f32x2)", &SampledTextureSampleBiasOffset_Texture2D } /* 2477 */,
+    std::pair{ "textureSampleBiasOffset(uniform *textureSampled2DArray,f32x3,f32,f32x3)", &SampledTextureSampleBiasOffset_Texture2DArray } /* 2478 */,
+    std::pair{ "textureSampleBiasOffset(uniform *textureSampled3D,f32x3,f32,f32x3)", &SampledTextureSampleBiasOffset_Texture3D } /* 2479 */,
+    std::pair{ "textureSampleBiasProj", &TextureSampleBiasProj_Texture1D } /* 2480 */,
+    std::pair{ "textureSampleBiasProj", &SampledTextureSampleBiasProj_Texture1D } /* 2481 */,
+    std::pair{ "textureSampleBiasProj", &TextureSampleBiasProj_Texture2D } /* 2482 */,
+    std::pair{ "textureSampleBiasProj", &SampledTextureSampleBiasProj_Texture2D } /* 2483 */,
+    std::pair{ "textureSampleBiasProj", &TextureSampleBiasProj_Texture3D } /* 2484 */,
+    std::pair{ "textureSampleBiasProj", &SampledTextureSampleBiasProj_Texture3D } /* 2485 */,
+    std::pair{ "textureSampleBiasProj(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleBiasProj_Texture1D } /* 2486 */,
+    std::pair{ "textureSampleBiasProj(uniform *texture2D,uniform *sampler,f32x2,f32,f32)", &TextureSampleBiasProj_Texture2D } /* 2487 */,
+    std::pair{ "textureSampleBiasProj(uniform *texture3D,uniform *sampler,f32x3,f32,f32)", &TextureSampleBiasProj_Texture3D } /* 2488 */,
+    std::pair{ "textureSampleBiasProj(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleBiasProj_Texture1D } /* 2489 */,
+    std::pair{ "textureSampleBiasProj(uniform *textureSampled2D,f32x2,f32,f32)", &SampledTextureSampleBiasProj_Texture2D } /* 2490 */,
+    std::pair{ "textureSampleBiasProj(uniform *textureSampled3D,f32x3,f32,f32)", &SampledTextureSampleBiasProj_Texture3D } /* 2491 */,
+    std::pair{ "textureSampleBiasProjCompare", &TextureSampleBiasProjCompare_Texture1D } /* 2492 */,
+    std::pair{ "textureSampleBiasProjCompare", &SampledTextureSampleBiasProjCompare_Texture1D } /* 2493 */,
+    std::pair{ "textureSampleBiasProjCompare", &TextureSampleBiasProjCompare_Texture2D } /* 2494 */,
+    std::pair{ "textureSampleBiasProjCompare", &SampledTextureSampleBiasProjCompare_Texture2D } /* 2495 */,
+    std::pair{ "textureSampleBiasProjCompare", &TextureSampleBiasProjCompare_Texture3D } /* 2496 */,
+    std::pair{ "textureSampleBiasProjCompare", &SampledTextureSampleBiasProjCompare_Texture3D } /* 2497 */,
+    std::pair{ "textureSampleBiasProjCompare(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleBiasProjCompare_Texture1D } /* 2498 */,
+    std::pair{ "textureSampleBiasProjCompare(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32)", &TextureSampleBiasProjCompare_Texture2D } /* 2499 */,
+    std::pair{ "textureSampleBiasProjCompare(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32)", &TextureSampleBiasProjCompare_Texture3D } /* 2500 */,
+    std::pair{ "textureSampleBiasProjCompare(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleBiasProjCompare_Texture1D } /* 2501 */,
+    std::pair{ "textureSampleBiasProjCompare(uniform *textureSampled2D,f32x2,f32,f32,f32)", &SampledTextureSampleBiasProjCompare_Texture2D } /* 2502 */,
+    std::pair{ "textureSampleBiasProjCompare(uniform *textureSampled3D,f32x3,f32,f32,f32)", &SampledTextureSampleBiasProjCompare_Texture3D } /* 2503 */,
+    std::pair{ "textureSampleBiasProjCompareOffset", &TextureSampleBiasProjCompareOffset_Texture1D } /* 2504 */,
+    std::pair{ "textureSampleBiasProjCompareOffset", &SampledTextureSampleBiasProjCompareOffset_Texture1D } /* 2505 */,
+    std::pair{ "textureSampleBiasProjCompareOffset", &TextureSampleBiasProjCompareOffset_Texture2D } /* 2506 */,
+    std::pair{ "textureSampleBiasProjCompareOffset", &SampledTextureSampleBiasProjCompareOffset_Texture2D } /* 2507 */,
+    std::pair{ "textureSampleBiasProjCompareOffset", &TextureSampleBiasProjCompareOffset_Texture3D } /* 2508 */,
+    std::pair{ "textureSampleBiasProjCompareOffset", &SampledTextureSampleBiasProjCompareOffset_Texture3D } /* 2509 */,
+    std::pair{ "textureSampleBiasProjCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)", &TextureSampleBiasProjCompareOffset_Texture1D } /* 2510 */,
+    std::pair{ "textureSampleBiasProjCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32,f32x2)", &TextureSampleBiasProjCompareOffset_Texture2D } /* 2511 */,
+    std::pair{ "textureSampleBiasProjCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32,f32x3)", &TextureSampleBiasProjCompareOffset_Texture3D } /* 2512 */,
+    std::pair{ "textureSampleBiasProjCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32)", &SampledTextureSampleBiasProjCompareOffset_Texture1D } /* 2513 */,
+    std::pair{ "textureSampleBiasProjCompareOffset(uniform *textureSampled2D,f32x2,f32,f32,f32,f32x2)", &SampledTextureSampleBiasProjCompareOffset_Texture2D } /* 2514 */,
+    std::pair{ "textureSampleBiasProjCompareOffset(uniform *textureSampled3D,f32x3,f32,f32,f32,f32x3)", &SampledTextureSampleBiasProjCompareOffset_Texture3D } /* 2515 */,
+    std::pair{ "textureSampleBiasProjOffset", &TextureSampleBiasProjOffset_Texture1D } /* 2516 */,
+    std::pair{ "textureSampleBiasProjOffset", &SampledTextureSampleBiasProjOffset_Texture1D } /* 2517 */,
+    std::pair{ "textureSampleBiasProjOffset", &TextureSampleBiasProjOffset_Texture2D } /* 2518 */,
+    std::pair{ "textureSampleBiasProjOffset", &SampledTextureSampleBiasProjOffset_Texture2D } /* 2519 */,
+    std::pair{ "textureSampleBiasProjOffset", &TextureSampleBiasProjOffset_Texture3D } /* 2520 */,
+    std::pair{ "textureSampleBiasProjOffset", &SampledTextureSampleBiasProjOffset_Texture3D } /* 2521 */,
+    std::pair{ "textureSampleBiasProjOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleBiasProjOffset_Texture1D } /* 2522 */,
+    std::pair{ "textureSampleBiasProjOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleBiasProjOffset_Texture2D } /* 2523 */,
+    std::pair{ "textureSampleBiasProjOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleBiasProjOffset_Texture3D } /* 2524 */,
+    std::pair{ "textureSampleBiasProjOffset(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleBiasProjOffset_Texture1D } /* 2525 */,
+    std::pair{ "textureSampleBiasProjOffset(uniform *textureSampled2D,f32x2,f32,f32,f32x2)", &SampledTextureSampleBiasProjOffset_Texture2D } /* 2526 */,
+    std::pair{ "textureSampleBiasProjOffset(uniform *textureSampled3D,f32x3,f32,f32,f32x3)", &SampledTextureSampleBiasProjOffset_Texture3D } /* 2527 */,
+    std::pair{ "textureSampleCompare", &TextureSampleCompare_Texture1D } /* 2528 */,
+    std::pair{ "textureSampleCompare", &SampledTextureSampleCompare_Texture1D } /* 2529 */,
+    std::pair{ "textureSampleCompare", &TextureSampleCompare_Texture2D } /* 2530 */,
+    std::pair{ "textureSampleCompare", &SampledTextureSampleCompare_Texture2D } /* 2531 */,
+    std::pair{ "textureSampleCompare", &TextureSampleCompare_Texture3D } /* 2532 */,
+    std::pair{ "textureSampleCompare", &SampledTextureSampleCompare_Texture3D } /* 2533 */,
+    std::pair{ "textureSampleCompare", &TextureSampleCompare_Texture1DArray } /* 2534 */,
+    std::pair{ "textureSampleCompare", &SampledTextureSampleCompare_Texture1DArray } /* 2535 */,
+    std::pair{ "textureSampleCompare", &TextureSampleCompare_Texture2DArray } /* 2536 */,
+    std::pair{ "textureSampleCompare", &SampledTextureSampleCompare_Texture2DArray } /* 2537 */,
+    std::pair{ "textureSampleCompare(uniform *texture1D,uniform *sampler,f32,f32)", &TextureSampleCompare_Texture1D } /* 2538 */,
+    std::pair{ "textureSampleCompare(uniform *texture1DArray,uniform *sampler,f32x2,f32)", &TextureSampleCompare_Texture1DArray } /* 2539 */,
+    std::pair{ "textureSampleCompare(uniform *texture2D,uniform *sampler,f32x2,f32)", &TextureSampleCompare_Texture2D } /* 2540 */,
+    std::pair{ "textureSampleCompare(uniform *texture2DArray,uniform *sampler,f32x3,f32)", &TextureSampleCompare_Texture2DArray } /* 2541 */,
+    std::pair{ "textureSampleCompare(uniform *texture3D,uniform *sampler,f32x3,f32)", &TextureSampleCompare_Texture3D } /* 2542 */,
+    std::pair{ "textureSampleCompare(uniform *textureSampled1D,f32,f32)", &SampledTextureSampleCompare_Texture1D } /* 2543 */,
+    std::pair{ "textureSampleCompare(uniform *textureSampled1DArray,f32x2,f32)", &SampledTextureSampleCompare_Texture1DArray } /* 2544 */,
+    std::pair{ "textureSampleCompare(uniform *textureSampled2D,f32x2,f32)", &SampledTextureSampleCompare_Texture2D } /* 2545 */,
+    std::pair{ "textureSampleCompare(uniform *textureSampled2DArray,f32x3,f32)", &SampledTextureSampleCompare_Texture2DArray } /* 2546 */,
+    std::pair{ "textureSampleCompare(uniform *textureSampled3D,f32x3,f32)", &SampledTextureSampleCompare_Texture3D } /* 2547 */,
+    std::pair{ "textureSampleCompareOffset", &TextureSampleCompareOffset_Texture1D } /* 2548 */,
+    std::pair{ "textureSampleCompareOffset", &SampledTextureSampleCompareOffset_Texture1D } /* 2549 */,
+    std::pair{ "textureSampleCompareOffset", &TextureSampleCompareOffset_Texture2D } /* 2550 */,
+    std::pair{ "textureSampleCompareOffset", &SampledTextureSampleCompareOffset_Texture2D } /* 2551 */,
+    std::pair{ "textureSampleCompareOffset", &TextureSampleCompareOffset_Texture3D } /* 2552 */,
+    std::pair{ "textureSampleCompareOffset", &SampledTextureSampleCompareOffset_Texture3D } /* 2553 */,
+    std::pair{ "textureSampleCompareOffset", &TextureSampleCompareOffset_Texture1DArray } /* 2554 */,
+    std::pair{ "textureSampleCompareOffset", &SampledTextureSampleCompareOffset_Texture1DArray } /* 2555 */,
+    std::pair{ "textureSampleCompareOffset", &TextureSampleCompareOffset_Texture2DArray } /* 2556 */,
+    std::pair{ "textureSampleCompareOffset", &SampledTextureSampleCompareOffset_Texture2DArray } /* 2557 */,
+    std::pair{ "textureSampleCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleCompareOffset_Texture1D } /* 2558 */,
+    std::pair{ "textureSampleCompareOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleCompareOffset_Texture1DArray } /* 2559 */,
+    std::pair{ "textureSampleCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleCompareOffset_Texture2D } /* 2560 */,
+    std::pair{ "textureSampleCompareOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleCompareOffset_Texture2DArray } /* 2561 */,
+    std::pair{ "textureSampleCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleCompareOffset_Texture3D } /* 2562 */,
+    std::pair{ "textureSampleCompareOffset(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleCompareOffset_Texture1D } /* 2563 */,
+    std::pair{ "textureSampleCompareOffset(uniform *textureSampled1DArray,f32x2,f32,f32x2)", &SampledTextureSampleCompareOffset_Texture1DArray } /* 2564 */,
+    std::pair{ "textureSampleCompareOffset(uniform *textureSampled2D,f32x2,f32,f32x2)", &SampledTextureSampleCompareOffset_Texture2D } /* 2565 */,
+    std::pair{ "textureSampleCompareOffset(uniform *textureSampled2DArray,f32x3,f32,f32x3)", &SampledTextureSampleCompareOffset_Texture2DArray } /* 2566 */,
+    std::pair{ "textureSampleCompareOffset(uniform *textureSampled3D,f32x3,f32,f32x3)", &SampledTextureSampleCompareOffset_Texture3D } /* 2567 */,
+    std::pair{ "textureSampleGrad", &TextureSampleGrad_Texture1D } /* 2568 */,
+    std::pair{ "textureSampleGrad", &SampledTextureSampleGrad_Texture1D } /* 2569 */,
+    std::pair{ "textureSampleGrad", &TextureSampleGrad_Texture2D } /* 2570 */,
+    std::pair{ "textureSampleGrad", &SampledTextureSampleGrad_Texture2D } /* 2571 */,
+    std::pair{ "textureSampleGrad", &TextureSampleGrad_Texture3D } /* 2572 */,
+    std::pair{ "textureSampleGrad", &SampledTextureSampleGrad_Texture3D } /* 2573 */,
+    std::pair{ "textureSampleGrad", &TextureSampleGrad_TextureCube } /* 2574 */,
+    std::pair{ "textureSampleGrad", &SampledTextureSampleGrad_TextureCube } /* 2575 */,
+    std::pair{ "textureSampleGrad", &TextureSampleGrad_Texture1DArray } /* 2576 */,
+    std::pair{ "textureSampleGrad", &SampledTextureSampleGrad_Texture1DArray } /* 2577 */,
+    std::pair{ "textureSampleGrad", &TextureSampleGrad_Texture2DArray } /* 2578 */,
+    std::pair{ "textureSampleGrad", &SampledTextureSampleGrad_Texture2DArray } /* 2579 */,
+    std::pair{ "textureSampleGrad", &TextureSampleGrad_TextureCubeArray } /* 2580 */,
+    std::pair{ "textureSampleGrad", &SampledTextureSampleGrad_TextureCubeArray } /* 2581 */,
+    std::pair{ "textureSampleGrad(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleGrad_Texture1D } /* 2582 */,
+    std::pair{ "textureSampleGrad(uniform *texture1DArray,uniform *sampler,f32x2,f32x2,f32x2)", &TextureSampleGrad_Texture1DArray } /* 2583 */,
+    std::pair{ "textureSampleGrad(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2)", &TextureSampleGrad_Texture2D } /* 2584 */,
+    std::pair{ "textureSampleGrad(uniform *texture2DArray,uniform *sampler,f32x3,f32x3,f32x3)", &TextureSampleGrad_Texture2DArray } /* 2585 */,
+    std::pair{ "textureSampleGrad(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3)", &TextureSampleGrad_Texture3D } /* 2586 */,
+    std::pair{ "textureSampleGrad(uniform *textureCube,uniform *sampler,f32x3,f32x3,f32x3)", &TextureSampleGrad_TextureCube } /* 2587 */,
+    std::pair{ "textureSampleGrad(uniform *textureCubeArray,uniform *sampler,f32x4,f32x4,f32x4)", &TextureSampleGrad_TextureCubeArray } /* 2588 */,
+    std::pair{ "textureSampleGrad(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleGrad_Texture1D } /* 2589 */,
+    std::pair{ "textureSampleGrad(uniform *textureSampled1DArray,f32x2,f32x2,f32x2)", &SampledTextureSampleGrad_Texture1DArray } /* 2590 */,
+    std::pair{ "textureSampleGrad(uniform *textureSampled2D,f32x2,f32x2,f32x2)", &SampledTextureSampleGrad_Texture2D } /* 2591 */,
+    std::pair{ "textureSampleGrad(uniform *textureSampled2DArray,f32x3,f32x3,f32x3)", &SampledTextureSampleGrad_Texture2DArray } /* 2592 */,
+    std::pair{ "textureSampleGrad(uniform *textureSampled3D,f32x3,f32x3,f32x3)", &SampledTextureSampleGrad_Texture3D } /* 2593 */,
+    std::pair{ "textureSampleGrad(uniform *textureSampledCube,f32x3,f32x3,f32x3)", &SampledTextureSampleGrad_TextureCube } /* 2594 */,
+    std::pair{ "textureSampleGrad(uniform *textureSampledCubeArray,f32x4,f32x4,f32x4)", &SampledTextureSampleGrad_TextureCubeArray } /* 2595 */,
+    std::pair{ "textureSampleGradCompare", &TextureSampleGradCompare_Texture1D } /* 2596 */,
+    std::pair{ "textureSampleGradCompare", &SampledTextureSampleGradCompare_Texture1D } /* 2597 */,
+    std::pair{ "textureSampleGradCompare", &TextureSampleGradCompare_Texture2D } /* 2598 */,
+    std::pair{ "textureSampleGradCompare", &SampledTextureSampleGradCompare_Texture2D } /* 2599 */,
+    std::pair{ "textureSampleGradCompare", &TextureSampleGradCompare_Texture3D } /* 2600 */,
+    std::pair{ "textureSampleGradCompare", &SampledTextureSampleGradCompare_Texture3D } /* 2601 */,
+    std::pair{ "textureSampleGradCompare", &TextureSampleGradCompare_Texture1DArray } /* 2602 */,
+    std::pair{ "textureSampleGradCompare", &SampledTextureSampleGradCompare_Texture1DArray } /* 2603 */,
+    std::pair{ "textureSampleGradCompare", &TextureSampleGradCompare_Texture2DArray } /* 2604 */,
+    std::pair{ "textureSampleGradCompare", &SampledTextureSampleGradCompare_Texture2DArray } /* 2605 */,
+    std::pair{ "textureSampleGradCompare(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleGradCompare_Texture1D } /* 2606 */,
+    std::pair{ "textureSampleGradCompare(uniform *texture1DArray,uniform *sampler,f32x2,f32x2,f32x2,f32)", &TextureSampleGradCompare_Texture1DArray } /* 2607 */,
+    std::pair{ "textureSampleGradCompare(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32)", &TextureSampleGradCompare_Texture2D } /* 2608 */,
+    std::pair{ "textureSampleGradCompare(uniform *texture2DArray,uniform *sampler,f32x3,f32x3,f32x3,f32)", &TextureSampleGradCompare_Texture2DArray } /* 2609 */,
+    std::pair{ "textureSampleGradCompare(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32)", &TextureSampleGradCompare_Texture3D } /* 2610 */,
+    std::pair{ "textureSampleGradCompare(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleGradCompare_Texture1D } /* 2611 */,
+    std::pair{ "textureSampleGradCompare(uniform *textureSampled1DArray,f32x2,f32x2,f32x2,f32)", &SampledTextureSampleGradCompare_Texture1DArray } /* 2612 */,
+    std::pair{ "textureSampleGradCompare(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32)", &SampledTextureSampleGradCompare_Texture2D } /* 2613 */,
+    std::pair{ "textureSampleGradCompare(uniform *textureSampled2DArray,f32x3,f32x3,f32x3,f32)", &SampledTextureSampleGradCompare_Texture2DArray } /* 2614 */,
+    std::pair{ "textureSampleGradCompare(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32)", &SampledTextureSampleGradCompare_Texture3D } /* 2615 */,
+    std::pair{ "textureSampleGradCompareOffset", &TextureSampleGradCompareOffset_Texture1D } /* 2616 */,
+    std::pair{ "textureSampleGradCompareOffset", &SampledTextureSampleGradCompareOffset_Texture1D } /* 2617 */,
+    std::pair{ "textureSampleGradCompareOffset", &TextureSampleGradCompareOffset_Texture2D } /* 2618 */,
+    std::pair{ "textureSampleGradCompareOffset", &SampledTextureSampleGradCompareOffset_Texture2D } /* 2619 */,
+    std::pair{ "textureSampleGradCompareOffset", &TextureSampleGradCompareOffset_Texture3D } /* 2620 */,
+    std::pair{ "textureSampleGradCompareOffset", &SampledTextureSampleGradCompareOffset_Texture3D } /* 2621 */,
+    std::pair{ "textureSampleGradCompareOffset", &TextureSampleGradCompareOffset_Texture1DArray } /* 2622 */,
+    std::pair{ "textureSampleGradCompareOffset", &SampledTextureSampleGradCompareOffset_Texture1DArray } /* 2623 */,
+    std::pair{ "textureSampleGradCompareOffset", &TextureSampleGradCompareOffset_Texture2DArray } /* 2624 */,
+    std::pair{ "textureSampleGradCompareOffset", &SampledTextureSampleGradCompareOffset_Texture2DArray } /* 2625 */,
+    std::pair{ "textureSampleGradCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)", &TextureSampleGradCompareOffset_Texture1D } /* 2626 */,
+    std::pair{ "textureSampleGradCompareOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32x2,f32x2,f32,f32x2)", &TextureSampleGradCompareOffset_Texture1DArray } /* 2627 */,
+    std::pair{ "textureSampleGradCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32,f32x2)", &TextureSampleGradCompareOffset_Texture2D } /* 2628 */,
+    std::pair{ "textureSampleGradCompareOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32x3,f32x3,f32,f32x3)", &TextureSampleGradCompareOffset_Texture2DArray } /* 2629 */,
+    std::pair{ "textureSampleGradCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32,f32x3)", &TextureSampleGradCompareOffset_Texture3D } /* 2630 */,
+    std::pair{ "textureSampleGradCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32)", &SampledTextureSampleGradCompareOffset_Texture1D } /* 2631 */,
+    std::pair{ "textureSampleGradCompareOffset(uniform *textureSampled1DArray,f32x2,f32x2,f32x2,f32,f32x2)", &SampledTextureSampleGradCompareOffset_Texture1DArray } /* 2632 */,
+    std::pair{ "textureSampleGradCompareOffset(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32,f32x2)", &SampledTextureSampleGradCompareOffset_Texture2D } /* 2633 */,
+    std::pair{ "textureSampleGradCompareOffset(uniform *textureSampled2DArray,f32x3,f32x3,f32x3,f32,f32x3)", &SampledTextureSampleGradCompareOffset_Texture2DArray } /* 2634 */,
+    std::pair{ "textureSampleGradCompareOffset(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32,f32x3)", &SampledTextureSampleGradCompareOffset_Texture3D } /* 2635 */,
+    std::pair{ "textureSampleGradOffset", &TextureSampleGradOffset_Texture1D } /* 2636 */,
+    std::pair{ "textureSampleGradOffset", &SampledTextureSampleGradOffset_Texture1D } /* 2637 */,
+    std::pair{ "textureSampleGradOffset", &TextureSampleGradOffset_Texture2D } /* 2638 */,
+    std::pair{ "textureSampleGradOffset", &SampledTextureSampleGradOffset_Texture2D } /* 2639 */,
+    std::pair{ "textureSampleGradOffset", &TextureSampleGradOffset_Texture3D } /* 2640 */,
+    std::pair{ "textureSampleGradOffset", &SampledTextureSampleGradOffset_Texture3D } /* 2641 */,
+    std::pair{ "textureSampleGradOffset", &TextureSampleGradOffset_Texture1DArray } /* 2642 */,
+    std::pair{ "textureSampleGradOffset", &SampledTextureSampleGradOffset_Texture1DArray } /* 2643 */,
+    std::pair{ "textureSampleGradOffset", &TextureSampleGradOffset_Texture2DArray } /* 2644 */,
+    std::pair{ "textureSampleGradOffset", &SampledTextureSampleGradOffset_Texture2DArray } /* 2645 */,
+    std::pair{ "textureSampleGradOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleGradOffset_Texture1D } /* 2646 */,
+    std::pair{ "textureSampleGradOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32x2,f32x2,f32x2)", &TextureSampleGradOffset_Texture1DArray } /* 2647 */,
+    std::pair{ "textureSampleGradOffset(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32x2)", &TextureSampleGradOffset_Texture2D } /* 2648 */,
+    std::pair{ "textureSampleGradOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32x3,f32x3,f32x3)", &TextureSampleGradOffset_Texture2DArray } /* 2649 */,
+    std::pair{ "textureSampleGradOffset(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32x3)", &TextureSampleGradOffset_Texture3D } /* 2650 */,
+    std::pair{ "textureSampleGradOffset(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleGradOffset_Texture1D } /* 2651 */,
+    std::pair{ "textureSampleGradOffset(uniform *textureSampled1DArray,f32x2,f32x2,f32x2,f32x2)", &SampledTextureSampleGradOffset_Texture1DArray } /* 2652 */,
+    std::pair{ "textureSampleGradOffset(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32x2)", &SampledTextureSampleGradOffset_Texture2D } /* 2653 */,
+    std::pair{ "textureSampleGradOffset(uniform *textureSampled2DArray,f32x3,f32x3,f32x3,f32x3)", &SampledTextureSampleGradOffset_Texture2DArray } /* 2654 */,
+    std::pair{ "textureSampleGradOffset(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32x3)", &SampledTextureSampleGradOffset_Texture3D } /* 2655 */,
+    std::pair{ "textureSampleGradProj", &TextureSampleGradProj_Texture1D } /* 2656 */,
+    std::pair{ "textureSampleGradProj", &SampledTextureSampleGradProj_Texture1D } /* 2657 */,
+    std::pair{ "textureSampleGradProj", &TextureSampleGradProj_Texture2D } /* 2658 */,
+    std::pair{ "textureSampleGradProj", &SampledTextureSampleGradProj_Texture2D } /* 2659 */,
+    std::pair{ "textureSampleGradProj", &TextureSampleGradProj_Texture3D } /* 2660 */,
+    std::pair{ "textureSampleGradProj", &SampledTextureSampleGradProj_Texture3D } /* 2661 */,
+    std::pair{ "textureSampleGradProj(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleGradProj_Texture1D } /* 2662 */,
+    std::pair{ "textureSampleGradProj(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32)", &TextureSampleGradProj_Texture2D } /* 2663 */,
+    std::pair{ "textureSampleGradProj(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32)", &TextureSampleGradProj_Texture3D } /* 2664 */,
+    std::pair{ "textureSampleGradProj(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleGradProj_Texture1D } /* 2665 */,
+    std::pair{ "textureSampleGradProj(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32)", &SampledTextureSampleGradProj_Texture2D } /* 2666 */,
+    std::pair{ "textureSampleGradProj(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32)", &SampledTextureSampleGradProj_Texture3D } /* 2667 */,
+    std::pair{ "textureSampleGradProjCompare", &TextureSampleGradProjCompare_Texture1D } /* 2668 */,
+    std::pair{ "textureSampleGradProjCompare", &SampledTextureSampleGradProjCompare_Texture1D } /* 2669 */,
+    std::pair{ "textureSampleGradProjCompare", &TextureSampleGradProjCompare_Texture2D } /* 2670 */,
+    std::pair{ "textureSampleGradProjCompare", &SampledTextureSampleGradProjCompare_Texture2D } /* 2671 */,
+    std::pair{ "textureSampleGradProjCompare", &TextureSampleGradProjCompare_Texture3D } /* 2672 */,
+    std::pair{ "textureSampleGradProjCompare", &SampledTextureSampleGradProjCompare_Texture3D } /* 2673 */,
+    std::pair{ "textureSampleGradProjCompare(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)", &TextureSampleGradProjCompare_Texture1D } /* 2674 */,
+    std::pair{ "textureSampleGradProjCompare(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32,f32)", &TextureSampleGradProjCompare_Texture2D } /* 2675 */,
+    std::pair{ "textureSampleGradProjCompare(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32,f32)", &TextureSampleGradProjCompare_Texture3D } /* 2676 */,
+    std::pair{ "textureSampleGradProjCompare(uniform *textureSampled1D,f32,f32,f32,f32,f32)", &SampledTextureSampleGradProjCompare_Texture1D } /* 2677 */,
+    std::pair{ "textureSampleGradProjCompare(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32,f32)", &SampledTextureSampleGradProjCompare_Texture2D } /* 2678 */,
+    std::pair{ "textureSampleGradProjCompare(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32,f32)", &SampledTextureSampleGradProjCompare_Texture3D } /* 2679 */,
+    std::pair{ "textureSampleGradProjCompareOffset", &TextureSampleGradProjCompareOffset_Texture1D } /* 2680 */,
+    std::pair{ "textureSampleGradProjCompareOffset", &SampledTextureSampleGradProjCompareOffset_Texture1D } /* 2681 */,
+    std::pair{ "textureSampleGradProjCompareOffset", &TextureSampleGradProjCompareOffset_Texture2D } /* 2682 */,
+    std::pair{ "textureSampleGradProjCompareOffset", &SampledTextureSampleGradProjCompareOffset_Texture2D } /* 2683 */,
+    std::pair{ "textureSampleGradProjCompareOffset", &TextureSampleGradProjCompareOffset_Texture3D } /* 2684 */,
+    std::pair{ "textureSampleGradProjCompareOffset", &SampledTextureSampleGradProjCompareOffset_Texture3D } /* 2685 */,
+    std::pair{ "textureSampleGradProjCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32,f32)", &TextureSampleGradProjCompareOffset_Texture1D } /* 2686 */,
+    std::pair{ "textureSampleGradProjCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32,f32,f32x2)", &TextureSampleGradProjCompareOffset_Texture2D } /* 2687 */,
+    std::pair{ "textureSampleGradProjCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32,f32,f32x3)", &TextureSampleGradProjCompareOffset_Texture3D } /* 2688 */,
+    std::pair{ "textureSampleGradProjCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32,f32)", &SampledTextureSampleGradProjCompareOffset_Texture1D } /* 2689 */,
+    std::pair{ "textureSampleGradProjCompareOffset(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32,f32,f32x2)", &SampledTextureSampleGradProjCompareOffset_Texture2D } /* 2690 */,
+    std::pair{ "textureSampleGradProjCompareOffset(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32,f32,f32x3)", &SampledTextureSampleGradProjCompareOffset_Texture3D } /* 2691 */,
+    std::pair{ "textureSampleGradProjOffset", &TextureSampleGradProjOffset_Texture1D } /* 2692 */,
+    std::pair{ "textureSampleGradProjOffset", &SampledTextureSampleGradProjOffset_Texture1D } /* 2693 */,
+    std::pair{ "textureSampleGradProjOffset", &TextureSampleGradProjOffset_Texture2D } /* 2694 */,
+    std::pair{ "textureSampleGradProjOffset", &SampledTextureSampleGradProjOffset_Texture2D } /* 2695 */,
+    std::pair{ "textureSampleGradProjOffset", &TextureSampleGradProjOffset_Texture3D } /* 2696 */,
+    std::pair{ "textureSampleGradProjOffset", &SampledTextureSampleGradProjOffset_Texture3D } /* 2697 */,
+    std::pair{ "textureSampleGradProjOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)", &TextureSampleGradProjOffset_Texture1D } /* 2698 */,
+    std::pair{ "textureSampleGradProjOffset(uniform *texture2D,uniform *sampler,f32x2,f32x2,f32x2,f32,f32x2)", &TextureSampleGradProjOffset_Texture2D } /* 2699 */,
+    std::pair{ "textureSampleGradProjOffset(uniform *texture3D,uniform *sampler,f32x3,f32x3,f32x3,f32,f32x3)", &TextureSampleGradProjOffset_Texture3D } /* 2700 */,
+    std::pair{ "textureSampleGradProjOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32)", &SampledTextureSampleGradProjOffset_Texture1D } /* 2701 */,
+    std::pair{ "textureSampleGradProjOffset(uniform *textureSampled2D,f32x2,f32x2,f32x2,f32,f32x2)", &SampledTextureSampleGradProjOffset_Texture2D } /* 2702 */,
+    std::pair{ "textureSampleGradProjOffset(uniform *textureSampled3D,f32x3,f32x3,f32x3,f32,f32x3)", &SampledTextureSampleGradProjOffset_Texture3D } /* 2703 */,
+    std::pair{ "textureSampleLod", &TextureSampleLod_Texture1D } /* 2704 */,
+    std::pair{ "textureSampleLod", &SampledTextureSampleLod_Texture1D } /* 2705 */,
+    std::pair{ "textureSampleLod", &TextureSampleLod_Texture2D } /* 2706 */,
+    std::pair{ "textureSampleLod", &SampledTextureSampleLod_Texture2D } /* 2707 */,
+    std::pair{ "textureSampleLod", &TextureSampleLod_Texture3D } /* 2708 */,
+    std::pair{ "textureSampleLod", &SampledTextureSampleLod_Texture3D } /* 2709 */,
+    std::pair{ "textureSampleLod", &TextureSampleLod_TextureCube } /* 2710 */,
+    std::pair{ "textureSampleLod", &SampledTextureSampleLod_TextureCube } /* 2711 */,
+    std::pair{ "textureSampleLod", &TextureSampleLod_Texture1DArray } /* 2712 */,
+    std::pair{ "textureSampleLod", &SampledTextureSampleLod_Texture1DArray } /* 2713 */,
+    std::pair{ "textureSampleLod", &TextureSampleLod_Texture2DArray } /* 2714 */,
+    std::pair{ "textureSampleLod", &SampledTextureSampleLod_Texture2DArray } /* 2715 */,
+    std::pair{ "textureSampleLod", &TextureSampleLod_TextureCubeArray } /* 2716 */,
+    std::pair{ "textureSampleLod", &SampledTextureSampleLod_TextureCubeArray } /* 2717 */,
+    std::pair{ "textureSampleLod(uniform *texture1D,uniform *sampler,f32,f32)", &TextureSampleLod_Texture1D } /* 2718 */,
+    std::pair{ "textureSampleLod(uniform *texture1DArray,uniform *sampler,f32x2,f32)", &TextureSampleLod_Texture1DArray } /* 2719 */,
+    std::pair{ "textureSampleLod(uniform *texture2D,uniform *sampler,f32x2,f32)", &TextureSampleLod_Texture2D } /* 2720 */,
+    std::pair{ "textureSampleLod(uniform *texture2DArray,uniform *sampler,f32x3,f32)", &TextureSampleLod_Texture2DArray } /* 2721 */,
+    std::pair{ "textureSampleLod(uniform *texture3D,uniform *sampler,f32x3,f32)", &TextureSampleLod_Texture3D } /* 2722 */,
+    std::pair{ "textureSampleLod(uniform *textureCube,uniform *sampler,f32x3,f32)", &TextureSampleLod_TextureCube } /* 2723 */,
+    std::pair{ "textureSampleLod(uniform *textureCubeArray,uniform *sampler,f32x4,f32)", &TextureSampleLod_TextureCubeArray } /* 2724 */,
+    std::pair{ "textureSampleLod(uniform *textureSampled1D,f32,f32)", &SampledTextureSampleLod_Texture1D } /* 2725 */,
+    std::pair{ "textureSampleLod(uniform *textureSampled1DArray,f32x2,f32)", &SampledTextureSampleLod_Texture1DArray } /* 2726 */,
+    std::pair{ "textureSampleLod(uniform *textureSampled2D,f32x2,f32)", &SampledTextureSampleLod_Texture2D } /* 2727 */,
+    std::pair{ "textureSampleLod(uniform *textureSampled2DArray,f32x3,f32)", &SampledTextureSampleLod_Texture2DArray } /* 2728 */,
+    std::pair{ "textureSampleLod(uniform *textureSampled3D,f32x3,f32)", &SampledTextureSampleLod_Texture3D } /* 2729 */,
+    std::pair{ "textureSampleLod(uniform *textureSampledCube,f32x3,f32)", &SampledTextureSampleLod_TextureCube } /* 2730 */,
+    std::pair{ "textureSampleLod(uniform *textureSampledCubeArray,f32x4,f32)", &SampledTextureSampleLod_TextureCubeArray } /* 2731 */,
+    std::pair{ "textureSampleLodCompare", &TextureSampleLodCompare_Texture1D } /* 2732 */,
+    std::pair{ "textureSampleLodCompare", &SampledTextureSampleLodCompare_Texture1D } /* 2733 */,
+    std::pair{ "textureSampleLodCompare", &TextureSampleLodCompare_Texture2D } /* 2734 */,
+    std::pair{ "textureSampleLodCompare", &SampledTextureSampleLodCompare_Texture2D } /* 2735 */,
+    std::pair{ "textureSampleLodCompare", &TextureSampleLodCompare_Texture3D } /* 2736 */,
+    std::pair{ "textureSampleLodCompare", &SampledTextureSampleLodCompare_Texture3D } /* 2737 */,
+    std::pair{ "textureSampleLodCompare", &TextureSampleLodCompare_Texture1DArray } /* 2738 */,
+    std::pair{ "textureSampleLodCompare", &SampledTextureSampleLodCompare_Texture1DArray } /* 2739 */,
+    std::pair{ "textureSampleLodCompare", &TextureSampleLodCompare_Texture2DArray } /* 2740 */,
+    std::pair{ "textureSampleLodCompare", &SampledTextureSampleLodCompare_Texture2DArray } /* 2741 */,
+    std::pair{ "textureSampleLodCompare(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleLodCompare_Texture1D } /* 2742 */,
+    std::pair{ "textureSampleLodCompare(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32)", &TextureSampleLodCompare_Texture1DArray } /* 2743 */,
+    std::pair{ "textureSampleLodCompare(uniform *texture2D,uniform *sampler,f32x2,f32,f32)", &TextureSampleLodCompare_Texture2D } /* 2744 */,
+    std::pair{ "textureSampleLodCompare(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32)", &TextureSampleLodCompare_Texture2DArray } /* 2745 */,
+    std::pair{ "textureSampleLodCompare(uniform *texture3D,uniform *sampler,f32x3,f32,f32)", &TextureSampleLodCompare_Texture3D } /* 2746 */,
+    std::pair{ "textureSampleLodCompare(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleLodCompare_Texture1D } /* 2747 */,
+    std::pair{ "textureSampleLodCompare(uniform *textureSampled1DArray,f32x2,f32,f32)", &SampledTextureSampleLodCompare_Texture1DArray } /* 2748 */,
+    std::pair{ "textureSampleLodCompare(uniform *textureSampled2D,f32x2,f32,f32)", &SampledTextureSampleLodCompare_Texture2D } /* 2749 */,
+    std::pair{ "textureSampleLodCompare(uniform *textureSampled2DArray,f32x3,f32,f32)", &SampledTextureSampleLodCompare_Texture2DArray } /* 2750 */,
+    std::pair{ "textureSampleLodCompare(uniform *textureSampled3D,f32x3,f32,f32)", &SampledTextureSampleLodCompare_Texture3D } /* 2751 */,
+    std::pair{ "textureSampleLodCompareOffset", &TextureSampleLodCompareOffset_Texture1D } /* 2752 */,
+    std::pair{ "textureSampleLodCompareOffset", &SampledTextureSampleLodCompareOffset_Texture1D } /* 2753 */,
+    std::pair{ "textureSampleLodCompareOffset", &TextureSampleLodCompareOffset_Texture2D } /* 2754 */,
+    std::pair{ "textureSampleLodCompareOffset", &SampledTextureSampleLodCompareOffset_Texture2D } /* 2755 */,
+    std::pair{ "textureSampleLodCompareOffset", &TextureSampleLodCompareOffset_Texture3D } /* 2756 */,
+    std::pair{ "textureSampleLodCompareOffset", &SampledTextureSampleLodCompareOffset_Texture3D } /* 2757 */,
+    std::pair{ "textureSampleLodCompareOffset", &TextureSampleLodCompareOffset_Texture1DArray } /* 2758 */,
+    std::pair{ "textureSampleLodCompareOffset", &SampledTextureSampleLodCompareOffset_Texture1DArray } /* 2759 */,
+    std::pair{ "textureSampleLodCompareOffset", &TextureSampleLodCompareOffset_Texture2DArray } /* 2760 */,
+    std::pair{ "textureSampleLodCompareOffset", &SampledTextureSampleLodCompareOffset_Texture2DArray } /* 2761 */,
+    std::pair{ "textureSampleLodCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleLodCompareOffset_Texture1D } /* 2762 */,
+    std::pair{ "textureSampleLodCompareOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleLodCompareOffset_Texture1DArray } /* 2763 */,
+    std::pair{ "textureSampleLodCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleLodCompareOffset_Texture2D } /* 2764 */,
+    std::pair{ "textureSampleLodCompareOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleLodCompareOffset_Texture2DArray } /* 2765 */,
+    std::pair{ "textureSampleLodCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleLodCompareOffset_Texture3D } /* 2766 */,
+    std::pair{ "textureSampleLodCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleLodCompareOffset_Texture1D } /* 2767 */,
+    std::pair{ "textureSampleLodCompareOffset(uniform *textureSampled1DArray,f32x2,f32,f32,f32x2)", &SampledTextureSampleLodCompareOffset_Texture1DArray } /* 2768 */,
+    std::pair{ "textureSampleLodCompareOffset(uniform *textureSampled2D,f32x2,f32,f32,f32x2)", &SampledTextureSampleLodCompareOffset_Texture2D } /* 2769 */,
+    std::pair{ "textureSampleLodCompareOffset(uniform *textureSampled2DArray,f32x3,f32,f32,f32x3)", &SampledTextureSampleLodCompareOffset_Texture2DArray } /* 2770 */,
+    std::pair{ "textureSampleLodCompareOffset(uniform *textureSampled3D,f32x3,f32,f32,f32x3)", &SampledTextureSampleLodCompareOffset_Texture3D } /* 2771 */,
+    std::pair{ "textureSampleLodOffset", &TextureSampleLodOffset_Texture1D } /* 2772 */,
+    std::pair{ "textureSampleLodOffset", &SampledTextureSampleLodOffset_Texture1D } /* 2773 */,
+    std::pair{ "textureSampleLodOffset", &TextureSampleLodOffset_Texture2D } /* 2774 */,
+    std::pair{ "textureSampleLodOffset", &SampledTextureSampleLodOffset_Texture2D } /* 2775 */,
+    std::pair{ "textureSampleLodOffset", &TextureSampleLodOffset_Texture3D } /* 2776 */,
+    std::pair{ "textureSampleLodOffset", &SampledTextureSampleLodOffset_Texture3D } /* 2777 */,
+    std::pair{ "textureSampleLodOffset", &TextureSampleLodOffset_Texture1DArray } /* 2778 */,
+    std::pair{ "textureSampleLodOffset", &SampledTextureSampleLodOffset_Texture1DArray } /* 2779 */,
+    std::pair{ "textureSampleLodOffset", &TextureSampleLodOffset_Texture2DArray } /* 2780 */,
+    std::pair{ "textureSampleLodOffset", &SampledTextureSampleLodOffset_Texture2DArray } /* 2781 */,
+    std::pair{ "textureSampleLodOffset(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleLodOffset_Texture1D } /* 2782 */,
+    std::pair{ "textureSampleLodOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleLodOffset_Texture1DArray } /* 2783 */,
+    std::pair{ "textureSampleLodOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleLodOffset_Texture2D } /* 2784 */,
+    std::pair{ "textureSampleLodOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleLodOffset_Texture2DArray } /* 2785 */,
+    std::pair{ "textureSampleLodOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleLodOffset_Texture3D } /* 2786 */,
+    std::pair{ "textureSampleLodOffset(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleLodOffset_Texture1D } /* 2787 */,
+    std::pair{ "textureSampleLodOffset(uniform *textureSampled1DArray,f32x2,f32,f32x2)", &SampledTextureSampleLodOffset_Texture1DArray } /* 2788 */,
+    std::pair{ "textureSampleLodOffset(uniform *textureSampled2D,f32x2,f32,f32x2)", &SampledTextureSampleLodOffset_Texture2D } /* 2789 */,
+    std::pair{ "textureSampleLodOffset(uniform *textureSampled2DArray,f32x3,f32,f32x3)", &SampledTextureSampleLodOffset_Texture2DArray } /* 2790 */,
+    std::pair{ "textureSampleLodOffset(uniform *textureSampled3D,f32x3,f32,f32x3)", &SampledTextureSampleLodOffset_Texture3D } /* 2791 */,
+    std::pair{ "textureSampleLodProj", &TextureSampleLodProj_Texture1D } /* 2792 */,
+    std::pair{ "textureSampleLodProj", &SampledTextureSampleLodProj_Texture1D } /* 2793 */,
+    std::pair{ "textureSampleLodProj", &TextureSampleLodProj_Texture2D } /* 2794 */,
+    std::pair{ "textureSampleLodProj", &SampledTextureSampleLodProj_Texture2D } /* 2795 */,
+    std::pair{ "textureSampleLodProj", &TextureSampleLodProj_Texture3D } /* 2796 */,
+    std::pair{ "textureSampleLodProj", &SampledTextureSampleLodProj_Texture3D } /* 2797 */,
+    std::pair{ "textureSampleLodProj(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleLodProj_Texture1D } /* 2798 */,
+    std::pair{ "textureSampleLodProj(uniform *texture2D,uniform *sampler,f32x2,f32,f32)", &TextureSampleLodProj_Texture2D } /* 2799 */,
+    std::pair{ "textureSampleLodProj(uniform *texture3D,uniform *sampler,f32x3,f32,f32)", &TextureSampleLodProj_Texture3D } /* 2800 */,
+    std::pair{ "textureSampleLodProj(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleLodProj_Texture1D } /* 2801 */,
+    std::pair{ "textureSampleLodProj(uniform *textureSampled2D,f32x2,f32,f32)", &SampledTextureSampleLodProj_Texture2D } /* 2802 */,
+    std::pair{ "textureSampleLodProj(uniform *textureSampled3D,f32x3,f32,f32)", &SampledTextureSampleLodProj_Texture3D } /* 2803 */,
+    std::pair{ "textureSampleLodProjCompare", &TextureSampleLodProjCompare_Texture1D } /* 2804 */,
+    std::pair{ "textureSampleLodProjCompare", &SampledTextureSampleLodProjCompare_Texture1D } /* 2805 */,
+    std::pair{ "textureSampleLodProjCompare", &TextureSampleLodProjCompare_Texture2D } /* 2806 */,
+    std::pair{ "textureSampleLodProjCompare", &SampledTextureSampleLodProjCompare_Texture2D } /* 2807 */,
+    std::pair{ "textureSampleLodProjCompare", &TextureSampleLodProjCompare_Texture3D } /* 2808 */,
+    std::pair{ "textureSampleLodProjCompare", &SampledTextureSampleLodProjCompare_Texture3D } /* 2809 */,
+    std::pair{ "textureSampleLodProjCompare(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleLodProjCompare_Texture1D } /* 2810 */,
+    std::pair{ "textureSampleLodProjCompare(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32)", &TextureSampleLodProjCompare_Texture2D } /* 2811 */,
+    std::pair{ "textureSampleLodProjCompare(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32)", &TextureSampleLodProjCompare_Texture3D } /* 2812 */,
+    std::pair{ "textureSampleLodProjCompare(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleLodProjCompare_Texture1D } /* 2813 */,
+    std::pair{ "textureSampleLodProjCompare(uniform *textureSampled2D,f32x2,f32,f32,f32)", &SampledTextureSampleLodProjCompare_Texture2D } /* 2814 */,
+    std::pair{ "textureSampleLodProjCompare(uniform *textureSampled3D,f32x3,f32,f32,f32)", &SampledTextureSampleLodProjCompare_Texture3D } /* 2815 */,
+    std::pair{ "textureSampleLodProjCompareOffset", &TextureSampleLodProjCompareOffset_Texture1D } /* 2816 */,
+    std::pair{ "textureSampleLodProjCompareOffset", &SampledTextureSampleLodProjCompareOffset_Texture1D } /* 2817 */,
+    std::pair{ "textureSampleLodProjCompareOffset", &TextureSampleLodProjCompareOffset_Texture2D } /* 2818 */,
+    std::pair{ "textureSampleLodProjCompareOffset", &SampledTextureSampleLodProjCompareOffset_Texture2D } /* 2819 */,
+    std::pair{ "textureSampleLodProjCompareOffset", &TextureSampleLodProjCompareOffset_Texture3D } /* 2820 */,
+    std::pair{ "textureSampleLodProjCompareOffset", &SampledTextureSampleLodProjCompareOffset_Texture3D } /* 2821 */,
+    std::pair{ "textureSampleLodProjCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32,f32)", &TextureSampleLodProjCompareOffset_Texture1D } /* 2822 */,
+    std::pair{ "textureSampleLodProjCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32,f32x2)", &TextureSampleLodProjCompareOffset_Texture2D } /* 2823 */,
+    std::pair{ "textureSampleLodProjCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32,f32x3)", &TextureSampleLodProjCompareOffset_Texture3D } /* 2824 */,
+    std::pair{ "textureSampleLodProjCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32,f32)", &SampledTextureSampleLodProjCompareOffset_Texture1D } /* 2825 */,
+    std::pair{ "textureSampleLodProjCompareOffset(uniform *textureSampled2D,f32x2,f32,f32,f32,f32x2)", &SampledTextureSampleLodProjCompareOffset_Texture2D } /* 2826 */,
+    std::pair{ "textureSampleLodProjCompareOffset(uniform *textureSampled3D,f32x3,f32,f32,f32,f32x3)", &SampledTextureSampleLodProjCompareOffset_Texture3D } /* 2827 */,
+    std::pair{ "textureSampleLodProjOffset", &TextureSampleLodProjOffset_Texture1D } /* 2828 */,
+    std::pair{ "textureSampleLodProjOffset", &SampledTextureSampleLodProjOffset_Texture1D } /* 2829 */,
+    std::pair{ "textureSampleLodProjOffset", &TextureSampleLodProjOffset_Texture2D } /* 2830 */,
+    std::pair{ "textureSampleLodProjOffset", &SampledTextureSampleLodProjOffset_Texture2D } /* 2831 */,
+    std::pair{ "textureSampleLodProjOffset", &TextureSampleLodProjOffset_Texture3D } /* 2832 */,
+    std::pair{ "textureSampleLodProjOffset", &SampledTextureSampleLodProjOffset_Texture3D } /* 2833 */,
+    std::pair{ "textureSampleLodProjOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleLodProjOffset_Texture1D } /* 2834 */,
+    std::pair{ "textureSampleLodProjOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleLodProjOffset_Texture2D } /* 2835 */,
+    std::pair{ "textureSampleLodProjOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleLodProjOffset_Texture3D } /* 2836 */,
+    std::pair{ "textureSampleLodProjOffset(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleLodProjOffset_Texture1D } /* 2837 */,
+    std::pair{ "textureSampleLodProjOffset(uniform *textureSampled2D,f32x2,f32,f32,f32x2)", &SampledTextureSampleLodProjOffset_Texture2D } /* 2838 */,
+    std::pair{ "textureSampleLodProjOffset(uniform *textureSampled3D,f32x3,f32,f32,f32x3)", &SampledTextureSampleLodProjOffset_Texture3D } /* 2839 */,
+    std::pair{ "textureSampleOffset", &TextureSampleOffset_Texture1D } /* 2840 */,
+    std::pair{ "textureSampleOffset", &SampledTextureSampleOffset_Texture1D } /* 2841 */,
+    std::pair{ "textureSampleOffset", &TextureSampleOffset_Texture2D } /* 2842 */,
+    std::pair{ "textureSampleOffset", &SampledTextureSampleOffset_Texture2D } /* 2843 */,
+    std::pair{ "textureSampleOffset", &TextureSampleOffset_Texture3D } /* 2844 */,
+    std::pair{ "textureSampleOffset", &SampledTextureSampleOffset_Texture3D } /* 2845 */,
+    std::pair{ "textureSampleOffset", &TextureSampleOffset_Texture1DArray } /* 2846 */,
+    std::pair{ "textureSampleOffset", &SampledTextureSampleOffset_Texture1DArray } /* 2847 */,
+    std::pair{ "textureSampleOffset", &TextureSampleOffset_Texture2DArray } /* 2848 */,
+    std::pair{ "textureSampleOffset", &SampledTextureSampleOffset_Texture2DArray } /* 2849 */,
+    std::pair{ "textureSampleOffset(uniform *texture1D,uniform *sampler,f32,f32)", &TextureSampleOffset_Texture1D } /* 2850 */,
+    std::pair{ "textureSampleOffset(uniform *texture1DArray,uniform *sampler,f32x2,f32x2)", &TextureSampleOffset_Texture1DArray } /* 2851 */,
+    std::pair{ "textureSampleOffset(uniform *texture2D,uniform *sampler,f32x2,f32x2)", &TextureSampleOffset_Texture2D } /* 2852 */,
+    std::pair{ "textureSampleOffset(uniform *texture2DArray,uniform *sampler,f32x3,f32x3)", &TextureSampleOffset_Texture2DArray } /* 2853 */,
+    std::pair{ "textureSampleOffset(uniform *texture3D,uniform *sampler,f32x3,f32x3)", &TextureSampleOffset_Texture3D } /* 2854 */,
+    std::pair{ "textureSampleOffset(uniform *textureSampled1D,f32,f32)", &SampledTextureSampleOffset_Texture1D } /* 2855 */,
+    std::pair{ "textureSampleOffset(uniform *textureSampled1DArray,f32x2,f32x2)", &SampledTextureSampleOffset_Texture1DArray } /* 2856 */,
+    std::pair{ "textureSampleOffset(uniform *textureSampled2D,f32x2,f32x2)", &SampledTextureSampleOffset_Texture2D } /* 2857 */,
+    std::pair{ "textureSampleOffset(uniform *textureSampled2DArray,f32x3,f32x3)", &SampledTextureSampleOffset_Texture2DArray } /* 2858 */,
+    std::pair{ "textureSampleOffset(uniform *textureSampled3D,f32x3,f32x3)", &SampledTextureSampleOffset_Texture3D } /* 2859 */,
+    std::pair{ "textureSampleProj", &TextureSampleProj_Texture1D } /* 2860 */,
+    std::pair{ "textureSampleProj", &SampledTextureSampleProj_Texture1D } /* 2861 */,
+    std::pair{ "textureSampleProj", &TextureSampleProj_Texture2D } /* 2862 */,
+    std::pair{ "textureSampleProj", &SampledTextureSampleProj_Texture2D } /* 2863 */,
+    std::pair{ "textureSampleProj", &TextureSampleProj_Texture3D } /* 2864 */,
+    std::pair{ "textureSampleProj", &SampledTextureSampleProj_Texture3D } /* 2865 */,
+    std::pair{ "textureSampleProj(uniform *texture1D,uniform *sampler,f32,f32)", &TextureSampleProj_Texture1D } /* 2866 */,
+    std::pair{ "textureSampleProj(uniform *texture2D,uniform *sampler,f32x2,f32)", &TextureSampleProj_Texture2D } /* 2867 */,
+    std::pair{ "textureSampleProj(uniform *texture3D,uniform *sampler,f32x3,f32)", &TextureSampleProj_Texture3D } /* 2868 */,
+    std::pair{ "textureSampleProj(uniform *textureSampled1D,f32,f32)", &SampledTextureSampleProj_Texture1D } /* 2869 */,
+    std::pair{ "textureSampleProj(uniform *textureSampled2D,f32x2,f32)", &SampledTextureSampleProj_Texture2D } /* 2870 */,
+    std::pair{ "textureSampleProj(uniform *textureSampled3D,f32x3,f32)", &SampledTextureSampleProj_Texture3D } /* 2871 */,
+    std::pair{ "textureSampleProjCompare", &TextureSampleProjCompare_Texture1D } /* 2872 */,
+    std::pair{ "textureSampleProjCompare", &SampledTextureSampleProjCompare_Texture1D } /* 2873 */,
+    std::pair{ "textureSampleProjCompare", &TextureSampleProjCompare_Texture2D } /* 2874 */,
+    std::pair{ "textureSampleProjCompare", &SampledTextureSampleProjCompare_Texture2D } /* 2875 */,
+    std::pair{ "textureSampleProjCompare", &TextureSampleProjCompare_Texture3D } /* 2876 */,
+    std::pair{ "textureSampleProjCompare", &SampledTextureSampleProjCompare_Texture3D } /* 2877 */,
+    std::pair{ "textureSampleProjCompare(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleProjCompare_Texture1D } /* 2878 */,
+    std::pair{ "textureSampleProjCompare(uniform *texture2D,uniform *sampler,f32x2,f32,f32)", &TextureSampleProjCompare_Texture2D } /* 2879 */,
+    std::pair{ "textureSampleProjCompare(uniform *texture3D,uniform *sampler,f32x3,f32,f32)", &TextureSampleProjCompare_Texture3D } /* 2880 */,
+    std::pair{ "textureSampleProjCompare(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleProjCompare_Texture1D } /* 2881 */,
+    std::pair{ "textureSampleProjCompare(uniform *textureSampled2D,f32x2,f32,f32)", &SampledTextureSampleProjCompare_Texture2D } /* 2882 */,
+    std::pair{ "textureSampleProjCompare(uniform *textureSampled3D,f32x3,f32,f32)", &SampledTextureSampleProjCompare_Texture3D } /* 2883 */,
+    std::pair{ "textureSampleProjCompareOffset", &TextureSampleProjCompareOffset_Texture1D } /* 2884 */,
+    std::pair{ "textureSampleProjCompareOffset", &SampledTextureSampleProjCompareOffset_Texture1D } /* 2885 */,
+    std::pair{ "textureSampleProjCompareOffset", &TextureSampleProjCompareOffset_Texture2D } /* 2886 */,
+    std::pair{ "textureSampleProjCompareOffset", &SampledTextureSampleProjCompareOffset_Texture2D } /* 2887 */,
+    std::pair{ "textureSampleProjCompareOffset", &TextureSampleProjCompareOffset_Texture3D } /* 2888 */,
+    std::pair{ "textureSampleProjCompareOffset", &SampledTextureSampleProjCompareOffset_Texture3D } /* 2889 */,
+    std::pair{ "textureSampleProjCompareOffset(uniform *texture1D,uniform *sampler,f32,f32,f32,f32)", &TextureSampleProjCompareOffset_Texture1D } /* 2890 */,
+    std::pair{ "textureSampleProjCompareOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32,f32x2)", &TextureSampleProjCompareOffset_Texture2D } /* 2891 */,
+    std::pair{ "textureSampleProjCompareOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32,f32x3)", &TextureSampleProjCompareOffset_Texture3D } /* 2892 */,
+    std::pair{ "textureSampleProjCompareOffset(uniform *textureSampled1D,f32,f32,f32,f32)", &SampledTextureSampleProjCompareOffset_Texture1D } /* 2893 */,
+    std::pair{ "textureSampleProjCompareOffset(uniform *textureSampled2D,f32x2,f32,f32,f32x2)", &SampledTextureSampleProjCompareOffset_Texture2D } /* 2894 */,
+    std::pair{ "textureSampleProjCompareOffset(uniform *textureSampled3D,f32x3,f32,f32,f32x3)", &SampledTextureSampleProjCompareOffset_Texture3D } /* 2895 */,
+    std::pair{ "textureSampleProjOffset", &TextureSampleProjOffset_Texture1D } /* 2896 */,
+    std::pair{ "textureSampleProjOffset", &SampledTextureSampleProjOffset_Texture1D } /* 2897 */,
+    std::pair{ "textureSampleProjOffset", &TextureSampleProjOffset_Texture2D } /* 2898 */,
+    std::pair{ "textureSampleProjOffset", &SampledTextureSampleProjOffset_Texture2D } /* 2899 */,
+    std::pair{ "textureSampleProjOffset", &TextureSampleProjOffset_Texture3D } /* 2900 */,
+    std::pair{ "textureSampleProjOffset", &SampledTextureSampleProjOffset_Texture3D } /* 2901 */,
+    std::pair{ "textureSampleProjOffset(uniform *texture1D,uniform *sampler,f32,f32,f32)", &TextureSampleProjOffset_Texture1D } /* 2902 */,
+    std::pair{ "textureSampleProjOffset(uniform *texture2D,uniform *sampler,f32x2,f32,f32x2)", &TextureSampleProjOffset_Texture2D } /* 2903 */,
+    std::pair{ "textureSampleProjOffset(uniform *texture3D,uniform *sampler,f32x3,f32,f32x3)", &TextureSampleProjOffset_Texture3D } /* 2904 */,
+    std::pair{ "textureSampleProjOffset(uniform *textureSampled1D,f32,f32,f32)", &SampledTextureSampleProjOffset_Texture1D } /* 2905 */,
+    std::pair{ "textureSampleProjOffset(uniform *textureSampled2D,f32x2,f32,f32x2)", &SampledTextureSampleProjOffset_Texture2D } /* 2906 */,
+    std::pair{ "textureSampleProjOffset(uniform *textureSampled3D,f32x3,f32,f32x3)", &SampledTextureSampleProjOffset_Texture3D } /* 2907 */,
+    std::pair{ "textureSampled1D", &SampledTexture1DType } /* 2908 */,
+    std::pair{ "textureSampled1DArray", &SampledTexture1DArrayType } /* 2909 */,
+    std::pair{ "textureSampled2D", &SampledTexture2DType } /* 2910 */,
+    std::pair{ "textureSampled2DArray", &SampledTexture2DArrayType } /* 2911 */,
+    std::pair{ "textureSampled2DMS", &SampledTexture2DMSType } /* 2912 */,
+    std::pair{ "textureSampled2DMSArray", &SampledTexture2DMSArrayType } /* 2913 */,
+    std::pair{ "textureSampled3D", &SampledTexture3DType } /* 2914 */,
+    std::pair{ "textureSampledCube", &SampledTextureCubeType } /* 2915 */,
+    std::pair{ "textureSampledCubeArray", &SampledTextureCubeArrayType } /* 2916 */,
+    std::pair{ "textureStore", &TextureStore_Texture1D } /* 2917 */,
+    std::pair{ "textureStore", &TextureStore_Texture2D } /* 2918 */,
+    std::pair{ "textureStore", &TextureStore_Texture3D } /* 2919 */,
+    std::pair{ "textureStore", &TextureStore_TextureCube } /* 2920 */,
+    std::pair{ "textureStore", &TextureStore_Texture1DArray } /* 2921 */,
+    std::pair{ "textureStore", &TextureStore_Texture2DArray } /* 2922 */,
+    std::pair{ "textureStore", &TextureStore_TextureCubeArray } /* 2923 */,
+    std::pair{ "textureStore", &TextureStore_Texture2DMS } /* 2924 */,
+    std::pair{ "textureStore", &TextureStore_Texture2DMSArray } /* 2925 */,
+    std::pair{ "textureStore(uniform *mutable texture1D,i32,f32x4)", &TextureStore_Texture1D } /* 2926 */,
+    std::pair{ "textureStore(uniform *mutable texture1DArray,i32x2,f32x4)", &TextureStore_Texture1DArray } /* 2927 */,
+    std::pair{ "textureStore(uniform *mutable texture2D,i32x2,f32x4)", &TextureStore_Texture2D } /* 2928 */,
+    std::pair{ "textureStore(uniform *mutable texture2DArray,i32x3,f32x4)", &TextureStore_Texture2DArray } /* 2929 */,
+    std::pair{ "textureStore(uniform *mutable texture2DMS,i32x2,f32x4)", &TextureStore_Texture2DMS } /* 2930 */,
+    std::pair{ "textureStore(uniform *mutable texture2DMSArray,i32x3,f32x4)", &TextureStore_Texture2DMSArray } /* 2931 */,
+    std::pair{ "textureStore(uniform *mutable texture3D,i32x3,f32x4)", &TextureStore_Texture3D } /* 2932 */,
+    std::pair{ "textureStore(uniform *mutable textureCube,i32x3,f32x4)", &TextureStore_TextureCube } /* 2933 */,
+    std::pair{ "textureStore(uniform *mutable textureCubeArray,i32x4,f32x4)", &TextureStore_TextureCubeArray } /* 2934 */,
+    std::pair{ "textureStoreMip", &TextureStoreMip_Texture1D } /* 2935 */,
+    std::pair{ "textureStoreMip", &TextureStoreMip_Texture2D } /* 2936 */,
+    std::pair{ "textureStoreMip", &TextureStoreMip_Texture3D } /* 2937 */,
+    std::pair{ "textureStoreMip", &TextureStoreMip_TextureCube } /* 2938 */,
+    std::pair{ "textureStoreMip", &TextureStoreMip_Texture1DArray } /* 2939 */,
+    std::pair{ "textureStoreMip", &TextureStoreMip_Texture2DArray } /* 2940 */,
+    std::pair{ "textureStoreMip", &TextureStoreMip_TextureCubeArray } /* 2941 */,
+    std::pair{ "textureStoreMip", &TextureStoreMip_Texture2DMS } /* 2942 */,
+    std::pair{ "textureStoreMip", &TextureStoreMip_Texture2DMSArray } /* 2943 */,
+    std::pair{ "textureStoreMip(uniform *mutable texture1D,i32,i32,f32x4)", &TextureStoreMip_Texture1D } /* 2944 */,
+    std::pair{ "textureStoreMip(uniform *mutable texture1DArray,i32x2,i32,f32x4)", &TextureStoreMip_Texture1DArray } /* 2945 */,
+    std::pair{ "textureStoreMip(uniform *mutable texture2D,i32x2,i32,f32x4)", &TextureStoreMip_Texture2D } /* 2946 */,
+    std::pair{ "textureStoreMip(uniform *mutable texture2DArray,i32x3,i32,f32x4)", &TextureStoreMip_Texture2DArray } /* 2947 */,
+    std::pair{ "textureStoreMip(uniform *mutable texture2DMS,i32x2,i32,f32x4)", &TextureStoreMip_Texture2DMS } /* 2948 */,
+    std::pair{ "textureStoreMip(uniform *mutable texture2DMSArray,i32x3,i32,f32x4)", &TextureStoreMip_Texture2DMSArray } /* 2949 */,
+    std::pair{ "textureStoreMip(uniform *mutable texture3D,i32x3,i32,f32x4)", &TextureStoreMip_Texture3D } /* 2950 */,
+    std::pair{ "textureStoreMip(uniform *mutable textureCube,i32x3,i32,f32x4)", &TextureStoreMip_TextureCube } /* 2951 */,
+    std::pair{ "textureStoreMip(uniform *mutable textureCubeArray,i32x4,i32,f32x4)", &TextureStoreMip_TextureCubeArray } /* 2952 */,
+    std::pair{ "transpose", &transpose_Float32x2x2 } /* 2953 */,
+    std::pair{ "transpose", &transpose_Float16x2x2 } /* 2954 */,
+    std::pair{ "transpose", &transpose_Float32x2x3 } /* 2955 */,
+    std::pair{ "transpose", &transpose_Float16x2x3 } /* 2956 */,
+    std::pair{ "transpose", &transpose_Float32x2x4 } /* 2957 */,
+    std::pair{ "transpose", &transpose_Float16x2x4 } /* 2958 */,
+    std::pair{ "transpose", &transpose_Float32x3x2 } /* 2959 */,
+    std::pair{ "transpose", &transpose_Float16x3x2 } /* 2960 */,
+    std::pair{ "transpose", &transpose_Float32x3x3 } /* 2961 */,
+    std::pair{ "transpose", &transpose_Float16x3x3 } /* 2962 */,
+    std::pair{ "transpose", &transpose_Float32x3x4 } /* 2963 */,
+    std::pair{ "transpose", &transpose_Float16x3x4 } /* 2964 */,
+    std::pair{ "transpose", &transpose_Float32x4x2 } /* 2965 */,
+    std::pair{ "transpose", &transpose_Float16x4x2 } /* 2966 */,
+    std::pair{ "transpose", &transpose_Float32x4x3 } /* 2967 */,
+    std::pair{ "transpose", &transpose_Float16x4x3 } /* 2968 */,
+    std::pair{ "transpose", &transpose_Float32x4x4 } /* 2969 */,
+    std::pair{ "transpose", &transpose_Float16x4x4 } /* 2970 */,
+    std::pair{ "transpose(f16x2x2)", &transpose_Float16x2x2 } /* 2971 */,
+    std::pair{ "transpose(f16x2x3)", &transpose_Float16x2x3 } /* 2972 */,
+    std::pair{ "transpose(f16x2x4)", &transpose_Float16x2x4 } /* 2973 */,
+    std::pair{ "transpose(f16x3x2)", &transpose_Float16x3x2 } /* 2974 */,
+    std::pair{ "transpose(f16x3x3)", &transpose_Float16x3x3 } /* 2975 */,
+    std::pair{ "transpose(f16x3x4)", &transpose_Float16x3x4 } /* 2976 */,
+    std::pair{ "transpose(f16x4x2)", &transpose_Float16x4x2 } /* 2977 */,
+    std::pair{ "transpose(f16x4x3)", &transpose_Float16x4x3 } /* 2978 */,
+    std::pair{ "transpose(f16x4x4)", &transpose_Float16x4x4 } /* 2979 */,
+    std::pair{ "transpose(f32x2x2)", &transpose_Float32x2x2 } /* 2980 */,
+    std::pair{ "transpose(f32x2x3)", &transpose_Float32x2x3 } /* 2981 */,
+    std::pair{ "transpose(f32x2x4)", &transpose_Float32x2x4 } /* 2982 */,
+    std::pair{ "transpose(f32x3x2)", &transpose_Float32x3x2 } /* 2983 */,
+    std::pair{ "transpose(f32x3x3)", &transpose_Float32x3x3 } /* 2984 */,
+    std::pair{ "transpose(f32x3x4)", &transpose_Float32x3x4 } /* 2985 */,
+    std::pair{ "transpose(f32x4x2)", &transpose_Float32x4x2 } /* 2986 */,
+    std::pair{ "transpose(f32x4x3)", &transpose_Float32x4x3 } /* 2987 */,
+    std::pair{ "transpose(f32x4x4)", &transpose_Float32x4x4 } /* 2988 */,
+    std::pair{ "trunc", &trunc_Float32 } /* 2989 */,
+    std::pair{ "trunc", &trunc_Float32x2 } /* 2990 */,
+    std::pair{ "trunc", &trunc_Float32x3 } /* 2991 */,
+    std::pair{ "trunc", &trunc_Float32x4 } /* 2992 */,
+    std::pair{ "trunc", &trunc_Float16 } /* 2993 */,
+    std::pair{ "trunc", &trunc_Float16x2 } /* 2994 */,
+    std::pair{ "trunc", &trunc_Float16x3 } /* 2995 */,
+    std::pair{ "trunc", &trunc_Float16x4 } /* 2996 */,
+    std::pair{ "trunc(f16)", &trunc_Float16 } /* 2997 */,
+    std::pair{ "trunc(f16x2)", &trunc_Float16x2 } /* 2998 */,
+    std::pair{ "trunc(f16x3)", &trunc_Float16x3 } /* 2999 */,
+    std::pair{ "trunc(f16x4)", &trunc_Float16x4 } /* 3000 */,
+    std::pair{ "trunc(f32)", &trunc_Float32 } /* 3001 */,
+    std::pair{ "trunc(f32x2)", &trunc_Float32x2 } /* 3002 */,
+    std::pair{ "trunc(f32x3)", &trunc_Float32x3 } /* 3003 */,
+    std::pair{ "trunc(f32x4)", &trunc_Float32x4 } /* 3004 */,
+    std::pair{ "u16", &UInt16Type } /* 3005 */,
+    std::pair{ "u16", &UInt16_from_Float32 } /* 3006 */,
+    std::pair{ "u16", &UInt16_from_UInt32 } /* 3007 */,
+    std::pair{ "u16", &UInt16_from_Int32 } /* 3008 */,
+    std::pair{ "u16", &UInt16_from_Bool8 } /* 3009 */,
+    std::pair{ "u16", &UInt16_from_Float16 } /* 3010 */,
+    std::pair{ "u16", &UInt16_from_Int16 } /* 3011 */,
+    std::pair{ "u16", &UInt16_ctor0 } /* 3012 */,
+    std::pair{ "u16(b8)", &UInt16_from_Bool8 } /* 3013 */,
+    std::pair{ "u16(f16)", &UInt16_from_Float16 } /* 3014 */,
+    std::pair{ "u16(f32)", &UInt16_from_Float32 } /* 3015 */,
+    std::pair{ "u16(i16)", &UInt16_from_Int16 } /* 3016 */,
+    std::pair{ "u16(i32)", &UInt16_from_Int32 } /* 3017 */,
+    std::pair{ "u16(u16)", &UInt16_ctor0 } /* 3018 */,
+    std::pair{ "u16(u32)", &UInt16_from_UInt32 } /* 3019 */,
+    std::pair{ "u16x2", &UInt16x2Type } /* 3020 */,
+    std::pair{ "u16x2", &UInt16x2_from_Float32x2 } /* 3021 */,
+    std::pair{ "u16x2", &UInt16x2_splat_Float32 } /* 3022 */,
+    std::pair{ "u16x2", &UInt16x2_from_UInt32x2 } /* 3023 */,
+    std::pair{ "u16x2", &UInt16x2_splat_UInt32 } /* 3024 */,
+    std::pair{ "u16x2", &UInt16x2_from_Int32x2 } /* 3025 */,
+    std::pair{ "u16x2", &UInt16x2_splat_Int32 } /* 3026 */,
+    std::pair{ "u16x2", &UInt16x2_from_Bool8x2 } /* 3027 */,
+    std::pair{ "u16x2", &UInt16x2_splat_Bool8 } /* 3028 */,
+    std::pair{ "u16x2", &UInt16x2_from_Float16x2 } /* 3029 */,
+    std::pair{ "u16x2", &UInt16x2_splat_Float16 } /* 3030 */,
+    std::pair{ "u16x2", &UInt16x2_from_UInt16x2 } /* 3031 */,
+    std::pair{ "u16x2", &UInt16x2_splat_UInt16 } /* 3032 */,
+    std::pair{ "u16x2", &UInt16x2_from_Int16x2 } /* 3033 */,
+    std::pair{ "u16x2", &UInt16x2_splat_Int16 } /* 3034 */,
+    std::pair{ "u16x2", &UInt16x2_ctor0 } /* 3035 */,
+    std::pair{ "u16x2(b8)", &UInt16x2_splat_Bool8 } /* 3036 */,
+    std::pair{ "u16x2(b8x2)", &UInt16x2_from_Bool8x2 } /* 3037 */,
+    std::pair{ "u16x2(f16)", &UInt16x2_splat_Float16 } /* 3038 */,
+    std::pair{ "u16x2(f16x2)", &UInt16x2_from_Float16x2 } /* 3039 */,
+    std::pair{ "u16x2(f32)", &UInt16x2_splat_Float32 } /* 3040 */,
+    std::pair{ "u16x2(f32x2)", &UInt16x2_from_Float32x2 } /* 3041 */,
+    std::pair{ "u16x2(i16)", &UInt16x2_splat_Int16 } /* 3042 */,
+    std::pair{ "u16x2(i16x2)", &UInt16x2_from_Int16x2 } /* 3043 */,
+    std::pair{ "u16x2(i32)", &UInt16x2_splat_Int32 } /* 3044 */,
+    std::pair{ "u16x2(i32x2)", &UInt16x2_from_Int32x2 } /* 3045 */,
+    std::pair{ "u16x2(u16)", &UInt16x2_splat_UInt16 } /* 3046 */,
+    std::pair{ "u16x2(u16,u16)", &UInt16x2_ctor0 } /* 3047 */,
+    std::pair{ "u16x2(u16x2)", &UInt16x2_from_UInt16x2 } /* 3048 */,
+    std::pair{ "u16x2(u32)", &UInt16x2_splat_UInt32 } /* 3049 */,
+    std::pair{ "u16x2(u32x2)", &UInt16x2_from_UInt32x2 } /* 3050 */,
+    std::pair{ "u16x3", &UInt16x3Type } /* 3051 */,
+    std::pair{ "u16x3", &UInt16x3_from_Float32x3 } /* 3052 */,
+    std::pair{ "u16x3", &UInt16x3_splat_Float32 } /* 3053 */,
+    std::pair{ "u16x3", &UInt16x3_from_UInt32x3 } /* 3054 */,
+    std::pair{ "u16x3", &UInt16x3_splat_UInt32 } /* 3055 */,
+    std::pair{ "u16x3", &UInt16x3_from_Int32x3 } /* 3056 */,
+    std::pair{ "u16x3", &UInt16x3_splat_Int32 } /* 3057 */,
+    std::pair{ "u16x3", &UInt16x3_from_Bool8x3 } /* 3058 */,
+    std::pair{ "u16x3", &UInt16x3_splat_Bool8 } /* 3059 */,
+    std::pair{ "u16x3", &UInt16x3_from_Float16x3 } /* 3060 */,
+    std::pair{ "u16x3", &UInt16x3_splat_Float16 } /* 3061 */,
+    std::pair{ "u16x3", &UInt16x3_from_UInt16x3 } /* 3062 */,
+    std::pair{ "u16x3", &UInt16x3_splat_UInt16 } /* 3063 */,
+    std::pair{ "u16x3", &UInt16x3_from_Int16x3 } /* 3064 */,
+    std::pair{ "u16x3", &UInt16x3_splat_Int16 } /* 3065 */,
+    std::pair{ "u16x3", &UInt16x3_ctor0 } /* 3066 */,
+    std::pair{ "u16x3", &UInt16x3_ctor1 } /* 3067 */,
+    std::pair{ "u16x3", &UInt16x3_ctor2 } /* 3068 */,
+    std::pair{ "u16x3(b8)", &UInt16x3_splat_Bool8 } /* 3069 */,
+    std::pair{ "u16x3(b8x3)", &UInt16x3_from_Bool8x3 } /* 3070 */,
+    std::pair{ "u16x3(f16)", &UInt16x3_splat_Float16 } /* 3071 */,
+    std::pair{ "u16x3(f16x3)", &UInt16x3_from_Float16x3 } /* 3072 */,
+    std::pair{ "u16x3(f32)", &UInt16x3_splat_Float32 } /* 3073 */,
+    std::pair{ "u16x3(f32x3)", &UInt16x3_from_Float32x3 } /* 3074 */,
+    std::pair{ "u16x3(i16)", &UInt16x3_splat_Int16 } /* 3075 */,
+    std::pair{ "u16x3(i16x3)", &UInt16x3_from_Int16x3 } /* 3076 */,
+    std::pair{ "u16x3(i32)", &UInt16x3_splat_Int32 } /* 3077 */,
+    std::pair{ "u16x3(i32x3)", &UInt16x3_from_Int32x3 } /* 3078 */,
+    std::pair{ "u16x3(u16)", &UInt16x3_splat_UInt16 } /* 3079 */,
+    std::pair{ "u16x3(u16,u16,u16)", &UInt16x3_ctor0 } /* 3080 */,
+    std::pair{ "u16x3(u16,u16x2)", &UInt16x3_ctor2 } /* 3081 */,
+    std::pair{ "u16x3(u16x2,u16)", &UInt16x3_ctor1 } /* 3082 */,
+    std::pair{ "u16x3(u16x3)", &UInt16x3_from_UInt16x3 } /* 3083 */,
+    std::pair{ "u16x3(u32)", &UInt16x3_splat_UInt32 } /* 3084 */,
+    std::pair{ "u16x3(u32x3)", &UInt16x3_from_UInt32x3 } /* 3085 */,
+    std::pair{ "u16x4", &UInt16x4Type } /* 3086 */,
+    std::pair{ "u16x4", &UInt16x4_from_Float32x4 } /* 3087 */,
+    std::pair{ "u16x4", &UInt16x4_splat_Float32 } /* 3088 */,
+    std::pair{ "u16x4", &UInt16x4_from_UInt32x4 } /* 3089 */,
+    std::pair{ "u16x4", &UInt16x4_splat_UInt32 } /* 3090 */,
+    std::pair{ "u16x4", &UInt16x4_from_Int32x4 } /* 3091 */,
+    std::pair{ "u16x4", &UInt16x4_splat_Int32 } /* 3092 */,
+    std::pair{ "u16x4", &UInt16x4_from_Bool8x4 } /* 3093 */,
+    std::pair{ "u16x4", &UInt16x4_splat_Bool8 } /* 3094 */,
+    std::pair{ "u16x4", &UInt16x4_from_Float16x4 } /* 3095 */,
+    std::pair{ "u16x4", &UInt16x4_splat_Float16 } /* 3096 */,
+    std::pair{ "u16x4", &UInt16x4_from_UInt16x4 } /* 3097 */,
+    std::pair{ "u16x4", &UInt16x4_splat_UInt16 } /* 3098 */,
+    std::pair{ "u16x4", &UInt16x4_from_Int16x4 } /* 3099 */,
+    std::pair{ "u16x4", &UInt16x4_splat_Int16 } /* 3100 */,
+    std::pair{ "u16x4", &UInt16x4_ctor0 } /* 3101 */,
+    std::pair{ "u16x4", &UInt16x4_ctor1 } /* 3102 */,
+    std::pair{ "u16x4", &UInt16x4_ctor2 } /* 3103 */,
+    std::pair{ "u16x4", &UInt16x4_ctor3 } /* 3104 */,
+    std::pair{ "u16x4", &UInt16x4_ctor4 } /* 3105 */,
+    std::pair{ "u16x4", &UInt16x4_ctor5 } /* 3106 */,
+    std::pair{ "u16x4", &UInt16x4_ctor6 } /* 3107 */,
+    std::pair{ "u16x4(b8)", &UInt16x4_splat_Bool8 } /* 3108 */,
+    std::pair{ "u16x4(b8x4)", &UInt16x4_from_Bool8x4 } /* 3109 */,
+    std::pair{ "u16x4(f16)", &UInt16x4_splat_Float16 } /* 3110 */,
+    std::pair{ "u16x4(f16x4)", &UInt16x4_from_Float16x4 } /* 3111 */,
+    std::pair{ "u16x4(f32)", &UInt16x4_splat_Float32 } /* 3112 */,
+    std::pair{ "u16x4(f32x4)", &UInt16x4_from_Float32x4 } /* 3113 */,
+    std::pair{ "u16x4(i16)", &UInt16x4_splat_Int16 } /* 3114 */,
+    std::pair{ "u16x4(i16x4)", &UInt16x4_from_Int16x4 } /* 3115 */,
+    std::pair{ "u16x4(i32)", &UInt16x4_splat_Int32 } /* 3116 */,
+    std::pair{ "u16x4(i32x4)", &UInt16x4_from_Int32x4 } /* 3117 */,
+    std::pair{ "u16x4(u16)", &UInt16x4_splat_UInt16 } /* 3118 */,
+    std::pair{ "u16x4(u16,u16,u16,u16)", &UInt16x4_ctor0 } /* 3119 */,
+    std::pair{ "u16x4(u16,u16,u16x2)", &UInt16x4_ctor3 } /* 3120 */,
+    std::pair{ "u16x4(u16,u16x2,u16)", &UInt16x4_ctor2 } /* 3121 */,
+    std::pair{ "u16x4(u16,u16x3)", &UInt16x4_ctor6 } /* 3122 */,
+    std::pair{ "u16x4(u16x2,u16,u16)", &UInt16x4_ctor1 } /* 3123 */,
+    std::pair{ "u16x4(u16x2,u16x2)", &UInt16x4_ctor4 } /* 3124 */,
+    std::pair{ "u16x4(u16x3,u16)", &UInt16x4_ctor5 } /* 3125 */,
+    std::pair{ "u16x4(u16x4)", &UInt16x4_from_UInt16x4 } /* 3126 */,
+    std::pair{ "u16x4(u32)", &UInt16x4_splat_UInt32 } /* 3127 */,
+    std::pair{ "u16x4(u32x4)", &UInt16x4_from_UInt32x4 } /* 3128 */,
+    std::pair{ "u32", &UInt32Type } /* 3129 */,
+    std::pair{ "u32", &UInt32_from_Float32 } /* 3130 */,
+    std::pair{ "u32", &UInt32_from_Int32 } /* 3131 */,
+    std::pair{ "u32", &UInt32_from_Bool8 } /* 3132 */,
+    std::pair{ "u32", &UInt32_from_Float16 } /* 3133 */,
+    std::pair{ "u32", &UInt32_from_UInt16 } /* 3134 */,
+    std::pair{ "u32", &UInt32_from_Int16 } /* 3135 */,
+    std::pair{ "u32", &UInt32_ctor0 } /* 3136 */,
+    std::pair{ "u32(AddressMode)", &AddressModeType.fromUnderlyingType } /* 3137 */,
+    std::pair{ "u32(BlendColorMask)", &BlendColorMaskType.fromUnderlyingType } /* 3138 */,
+    std::pair{ "u32(BlendFactor)", &BlendFactorType.fromUnderlyingType } /* 3139 */,
+    std::pair{ "u32(BlendOperation)", &BlendOperationType.fromUnderlyingType } /* 3140 */,
+    std::pair{ "u32(Color)", &ColorType.fromUnderlyingType } /* 3141 */,
+    std::pair{ "u32(CompareMode)", &CompareModeType.fromUnderlyingType } /* 3142 */,
+    std::pair{ "u32(CullFace)", &CullFaceType.fromUnderlyingType } /* 3143 */,
+    std::pair{ "u32(ExecutionScope)", &ExecutionScopeType.fromUnderlyingType } /* 3144 */,
+    std::pair{ "u32(FilterMode)", &FilterModeType.fromUnderlyingType } /* 3145 */,
+    std::pair{ "u32(LogicOp)", &LogicOpType.fromUnderlyingType } /* 3146 */,
+    std::pair{ "u32(MemorySemantics)", &MemorySemanticsType.fromUnderlyingType } /* 3147 */,
+    std::pair{ "u32(PolygonMode)", &PolygonModeType.fromUnderlyingType } /* 3148 */,
+    std::pair{ "u32(StencilOp)", &StencilOpType.fromUnderlyingType } /* 3149 */,
+    std::pair{ "u32(WindingOrder)", &WindingOrderType.fromUnderlyingType } /* 3150 */,
+    std::pair{ "u32(b8)", &UInt32_from_Bool8 } /* 3151 */,
+    std::pair{ "u32(f16)", &UInt32_from_Float16 } /* 3152 */,
+    std::pair{ "u32(f32)", &UInt32_from_Float32 } /* 3153 */,
+    std::pair{ "u32(i16)", &UInt32_from_Int16 } /* 3154 */,
+    std::pair{ "u32(i32)", &UInt32_from_Int32 } /* 3155 */,
+    std::pair{ "u32(u16)", &UInt32_from_UInt16 } /* 3156 */,
+    std::pair{ "u32(u32)", &UInt32_ctor0 } /* 3157 */,
+    std::pair{ "u32x2", &UInt32x2Type } /* 3158 */,
+    std::pair{ "u32x2", &UInt32x2_from_Float32x2 } /* 3159 */,
+    std::pair{ "u32x2", &UInt32x2_splat_Float32 } /* 3160 */,
+    std::pair{ "u32x2", &UInt32x2_from_UInt32x2 } /* 3161 */,
+    std::pair{ "u32x2", &UInt32x2_splat_UInt32 } /* 3162 */,
+    std::pair{ "u32x2", &UInt32x2_from_Int32x2 } /* 3163 */,
+    std::pair{ "u32x2", &UInt32x2_splat_Int32 } /* 3164 */,
+    std::pair{ "u32x2", &UInt32x2_from_Bool8x2 } /* 3165 */,
+    std::pair{ "u32x2", &UInt32x2_splat_Bool8 } /* 3166 */,
+    std::pair{ "u32x2", &UInt32x2_from_Float16x2 } /* 3167 */,
+    std::pair{ "u32x2", &UInt32x2_splat_Float16 } /* 3168 */,
+    std::pair{ "u32x2", &UInt32x2_from_UInt16x2 } /* 3169 */,
+    std::pair{ "u32x2", &UInt32x2_splat_UInt16 } /* 3170 */,
+    std::pair{ "u32x2", &UInt32x2_from_Int16x2 } /* 3171 */,
+    std::pair{ "u32x2", &UInt32x2_splat_Int16 } /* 3172 */,
+    std::pair{ "u32x2", &UInt32x2_ctor0 } /* 3173 */,
+    std::pair{ "u32x2(b8)", &UInt32x2_splat_Bool8 } /* 3174 */,
+    std::pair{ "u32x2(b8x2)", &UInt32x2_from_Bool8x2 } /* 3175 */,
+    std::pair{ "u32x2(f16)", &UInt32x2_splat_Float16 } /* 3176 */,
+    std::pair{ "u32x2(f16x2)", &UInt32x2_from_Float16x2 } /* 3177 */,
+    std::pair{ "u32x2(f32)", &UInt32x2_splat_Float32 } /* 3178 */,
+    std::pair{ "u32x2(f32x2)", &UInt32x2_from_Float32x2 } /* 3179 */,
+    std::pair{ "u32x2(i16)", &UInt32x2_splat_Int16 } /* 3180 */,
+    std::pair{ "u32x2(i16x2)", &UInt32x2_from_Int16x2 } /* 3181 */,
+    std::pair{ "u32x2(i32)", &UInt32x2_splat_Int32 } /* 3182 */,
+    std::pair{ "u32x2(i32x2)", &UInt32x2_from_Int32x2 } /* 3183 */,
+    std::pair{ "u32x2(u16)", &UInt32x2_splat_UInt16 } /* 3184 */,
+    std::pair{ "u32x2(u16x2)", &UInt32x2_from_UInt16x2 } /* 3185 */,
+    std::pair{ "u32x2(u32)", &UInt32x2_splat_UInt32 } /* 3186 */,
+    std::pair{ "u32x2(u32,u32)", &UInt32x2_ctor0 } /* 3187 */,
+    std::pair{ "u32x2(u32x2)", &UInt32x2_from_UInt32x2 } /* 3188 */,
+    std::pair{ "u32x3", &UInt32x3Type } /* 3189 */,
+    std::pair{ "u32x3", &UInt32x3_from_Float32x3 } /* 3190 */,
+    std::pair{ "u32x3", &UInt32x3_splat_Float32 } /* 3191 */,
+    std::pair{ "u32x3", &UInt32x3_from_UInt32x3 } /* 3192 */,
+    std::pair{ "u32x3", &UInt32x3_splat_UInt32 } /* 3193 */,
+    std::pair{ "u32x3", &UInt32x3_from_Int32x3 } /* 3194 */,
+    std::pair{ "u32x3", &UInt32x3_splat_Int32 } /* 3195 */,
+    std::pair{ "u32x3", &UInt32x3_from_Bool8x3 } /* 3196 */,
+    std::pair{ "u32x3", &UInt32x3_splat_Bool8 } /* 3197 */,
+    std::pair{ "u32x3", &UInt32x3_from_Float16x3 } /* 3198 */,
+    std::pair{ "u32x3", &UInt32x3_splat_Float16 } /* 3199 */,
+    std::pair{ "u32x3", &UInt32x3_from_UInt16x3 } /* 3200 */,
+    std::pair{ "u32x3", &UInt32x3_splat_UInt16 } /* 3201 */,
+    std::pair{ "u32x3", &UInt32x3_from_Int16x3 } /* 3202 */,
+    std::pair{ "u32x3", &UInt32x3_splat_Int16 } /* 3203 */,
+    std::pair{ "u32x3", &UInt32x3_ctor0 } /* 3204 */,
+    std::pair{ "u32x3", &UInt32x3_ctor1 } /* 3205 */,
+    std::pair{ "u32x3", &UInt32x3_ctor2 } /* 3206 */,
+    std::pair{ "u32x3(b8)", &UInt32x3_splat_Bool8 } /* 3207 */,
+    std::pair{ "u32x3(b8x3)", &UInt32x3_from_Bool8x3 } /* 3208 */,
+    std::pair{ "u32x3(f16)", &UInt32x3_splat_Float16 } /* 3209 */,
+    std::pair{ "u32x3(f16x3)", &UInt32x3_from_Float16x3 } /* 3210 */,
+    std::pair{ "u32x3(f32)", &UInt32x3_splat_Float32 } /* 3211 */,
+    std::pair{ "u32x3(f32x3)", &UInt32x3_from_Float32x3 } /* 3212 */,
+    std::pair{ "u32x3(i16)", &UInt32x3_splat_Int16 } /* 3213 */,
+    std::pair{ "u32x3(i16x3)", &UInt32x3_from_Int16x3 } /* 3214 */,
+    std::pair{ "u32x3(i32)", &UInt32x3_splat_Int32 } /* 3215 */,
+    std::pair{ "u32x3(i32x3)", &UInt32x3_from_Int32x3 } /* 3216 */,
+    std::pair{ "u32x3(u16)", &UInt32x3_splat_UInt16 } /* 3217 */,
+    std::pair{ "u32x3(u16x3)", &UInt32x3_from_UInt16x3 } /* 3218 */,
+    std::pair{ "u32x3(u32)", &UInt32x3_splat_UInt32 } /* 3219 */,
+    std::pair{ "u32x3(u32,u32,u32)", &UInt32x3_ctor0 } /* 3220 */,
+    std::pair{ "u32x3(u32,u32x2)", &UInt32x3_ctor2 } /* 3221 */,
+    std::pair{ "u32x3(u32x2,u32)", &UInt32x3_ctor1 } /* 3222 */,
+    std::pair{ "u32x3(u32x3)", &UInt32x3_from_UInt32x3 } /* 3223 */,
+    std::pair{ "u32x4", &UInt32x4Type } /* 3224 */,
+    std::pair{ "u32x4", &UInt32x4_from_Float32x4 } /* 3225 */,
+    std::pair{ "u32x4", &UInt32x4_splat_Float32 } /* 3226 */,
+    std::pair{ "u32x4", &UInt32x4_from_UInt32x4 } /* 3227 */,
+    std::pair{ "u32x4", &UInt32x4_splat_UInt32 } /* 3228 */,
+    std::pair{ "u32x4", &UInt32x4_from_Int32x4 } /* 3229 */,
+    std::pair{ "u32x4", &UInt32x4_splat_Int32 } /* 3230 */,
+    std::pair{ "u32x4", &UInt32x4_from_Bool8x4 } /* 3231 */,
+    std::pair{ "u32x4", &UInt32x4_splat_Bool8 } /* 3232 */,
+    std::pair{ "u32x4", &UInt32x4_from_Float16x4 } /* 3233 */,
+    std::pair{ "u32x4", &UInt32x4_splat_Float16 } /* 3234 */,
+    std::pair{ "u32x4", &UInt32x4_from_UInt16x4 } /* 3235 */,
+    std::pair{ "u32x4", &UInt32x4_splat_UInt16 } /* 3236 */,
+    std::pair{ "u32x4", &UInt32x4_from_Int16x4 } /* 3237 */,
+    std::pair{ "u32x4", &UInt32x4_splat_Int16 } /* 3238 */,
+    std::pair{ "u32x4", &UInt32x4_ctor0 } /* 3239 */,
+    std::pair{ "u32x4", &UInt32x4_ctor1 } /* 3240 */,
+    std::pair{ "u32x4", &UInt32x4_ctor2 } /* 3241 */,
+    std::pair{ "u32x4", &UInt32x4_ctor3 } /* 3242 */,
+    std::pair{ "u32x4", &UInt32x4_ctor4 } /* 3243 */,
+    std::pair{ "u32x4", &UInt32x4_ctor5 } /* 3244 */,
+    std::pair{ "u32x4", &UInt32x4_ctor6 } /* 3245 */,
+    std::pair{ "u32x4(b8)", &UInt32x4_splat_Bool8 } /* 3246 */,
+    std::pair{ "u32x4(b8x4)", &UInt32x4_from_Bool8x4 } /* 3247 */,
+    std::pair{ "u32x4(f16)", &UInt32x4_splat_Float16 } /* 3248 */,
+    std::pair{ "u32x4(f16x4)", &UInt32x4_from_Float16x4 } /* 3249 */,
+    std::pair{ "u32x4(f32)", &UInt32x4_splat_Float32 } /* 3250 */,
+    std::pair{ "u32x4(f32x4)", &UInt32x4_from_Float32x4 } /* 3251 */,
+    std::pair{ "u32x4(i16)", &UInt32x4_splat_Int16 } /* 3252 */,
+    std::pair{ "u32x4(i16x4)", &UInt32x4_from_Int16x4 } /* 3253 */,
+    std::pair{ "u32x4(i32)", &UInt32x4_splat_Int32 } /* 3254 */,
+    std::pair{ "u32x4(i32x4)", &UInt32x4_from_Int32x4 } /* 3255 */,
+    std::pair{ "u32x4(u16)", &UInt32x4_splat_UInt16 } /* 3256 */,
+    std::pair{ "u32x4(u16x4)", &UInt32x4_from_UInt16x4 } /* 3257 */,
+    std::pair{ "u32x4(u32)", &UInt32x4_splat_UInt32 } /* 3258 */,
+    std::pair{ "u32x4(u32,u32,u32,u32)", &UInt32x4_ctor0 } /* 3259 */,
+    std::pair{ "u32x4(u32,u32,u32x2)", &UInt32x4_ctor3 } /* 3260 */,
+    std::pair{ "u32x4(u32,u32x2,u32)", &UInt32x4_ctor2 } /* 3261 */,
+    std::pair{ "u32x4(u32,u32x3)", &UInt32x4_ctor6 } /* 3262 */,
+    std::pair{ "u32x4(u32x2,u32,u32)", &UInt32x4_ctor1 } /* 3263 */,
+    std::pair{ "u32x4(u32x2,u32x2)", &UInt32x4_ctor4 } /* 3264 */,
+    std::pair{ "u32x4(u32x3,u32)", &UInt32x4_ctor5 } /* 3265 */,
+    std::pair{ "u32x4(u32x4)", &UInt32x4_from_UInt32x4 } /* 3266 */,
+    std::pair{ "vertexExportCoordinates", &VertexExportCoordinates_Float32x4 } /* 3267 */,
+    std::pair{ "vertexExportCoordinates", &VertexExportCoordinates_Float16x4 } /* 3268 */,
+    std::pair{ "vertexExportCoordinates(f16x4)", &VertexExportCoordinates_Float16x4 } /* 3269 */,
+    std::pair{ "vertexExportCoordinates(f32x4)", &VertexExportCoordinates_Float32x4 } /* 3270 */,
+    std::pair{ "vertexGetBaseIndex", &VertexGetBaseIndex } /* 3271 */,
+    std::pair{ "vertexGetBaseIndex()", &VertexGetBaseIndex } /* 3272 */,
+    std::pair{ "vertexGetBaseInstanceIndex", &VertexGetBaseInstanceIndex } /* 3273 */,
+    std::pair{ "vertexGetBaseInstanceIndex()", &VertexGetBaseInstanceIndex } /* 3274 */,
+    std::pair{ "vertexGetDrawIndex", &VertexGetDrawIndex } /* 3275 */,
+    std::pair{ "vertexGetDrawIndex()", &VertexGetDrawIndex } /* 3276 */,
+    std::pair{ "vertexGetIndex", &VertexGetIndex } /* 3277 */,
+    std::pair{ "vertexGetIndex()", &VertexGetIndex } /* 3278 */,
+    std::pair{ "vertexGetInstanceIndex", &VertexGetInstanceIndex } /* 3279 */,
+    std::pair{ "vertexGetInstanceIndex()", &VertexGetInstanceIndex } /* 3280 */,
+    std::pair{ "vertexGetOutputLayer", &VertexGetOutputLayer } /* 3281 */,
+    std::pair{ "vertexGetOutputLayer()", &VertexGetOutputLayer } /* 3282 */,
+    std::pair{ "vertexGetOutputViewport", &VertexGetOutputViewport } /* 3283 */,
+    std::pair{ "vertexGetOutputViewport()", &VertexGetOutputViewport } /* 3284 */,
+    std::pair{ "vertexSetOutputLayer", &VertexSetOutputLayer_UInt16 } /* 3285 */,
+    std::pair{ "vertexSetOutputLayer", &VertexSetOutputLayer_UInt32 } /* 3286 */,
+    std::pair{ "vertexSetOutputLayer(u16)", &VertexSetOutputLayer_UInt16 } /* 3287 */,
+    std::pair{ "vertexSetOutputLayer(u32)", &VertexSetOutputLayer_UInt32 } /* 3288 */,
+    std::pair{ "vertexSetOutputViewport", &VertexSetOutputViewport_UInt16 } /* 3289 */,
+    std::pair{ "vertexSetOutputViewport", &VertexSetOutputViewport_UInt32 } /* 3290 */,
+    std::pair{ "vertexSetOutputViewport(u16)", &VertexSetOutputViewport_UInt16 } /* 3291 */,
+    std::pair{ "vertexSetOutputViewport(u32)", &VertexSetOutputViewport_UInt32 } /* 3292 */,
+    std::pair{ "void", &VoidType } /* 3293 */
 };
 
 } // namespace GPULang

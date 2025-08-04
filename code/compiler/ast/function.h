@@ -35,6 +35,7 @@ struct Function : public Symbol
     bool hasBody;
     bool compileTime;
     FixedArray<Variable*> parameters;
+    uint64_t backendIndex = UINT64_MAX;
     _IMPLEMENT_ANNOTATIONS()
     _IMPLEMENT_ATTRIBUTES()
 

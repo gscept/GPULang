@@ -3625,9 +3625,9 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
             auto it = generator->generatorIntrinsics.find(varResolved->valueConversionFunction);
             if (it == generator->generatorIntrinsics.end())
             {
-                auto it = SPIRVDefaultIntrinsics.Find(varResolved->valueConversionFunction);
-                assert(it != SPIRVDefaultIntrinsics.end());
-                it->second(compiler, generator, typeName.typeName, { initializer });
+                assert(varResolved->valueConversionFunction->backendIndex != UINT64_MAX && varResolved->valueConversionFunction->backendIndex < SPIRVDefaultIntrinsics.size());
+                auto it = SPIRVDefaultIntrinsics[varResolved->valueConversionFunction->backendIndex];
+                it(compiler, generator, typeName.typeName, { initializer });
             }
             else
                 initializer = it->second(compiler, generator, typeName.typeName, { initializer });
@@ -3806,9 +3806,9 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
                     auto it = generator->generatorIntrinsics.find(conversion);
                     if (it == generator->generatorIntrinsics.end())
                     {
-                        auto it = SPIRVDefaultIntrinsics.Find(conversion);
-                        assert(it != SPIRVDefaultIntrinsics.end());
-                        arg = it->second(compiler, generator, convertedReturn, { arg });
+                        assert(conversion->backendIndex != UINT64_MAX && conversion->backendIndex < SPIRVDefaultIntrinsics.size());
+                        auto it = SPIRVDefaultIntrinsics[conversion->backendIndex];
+                        arg = it(compiler, generator, convertedReturn, { arg });
                     }
                     else
                         arg = it->second(compiler, generator, convertedReturn, { arg });
@@ -3890,9 +3890,9 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
                         auto it = generator->generatorIntrinsics.find(converter);
                         if (it == generator->generatorIntrinsics.end())
                         {
-                            auto it = SPIRVDefaultIntrinsics.Find(converter);
-                            assert(it != SPIRVDefaultIntrinsics.end());
-                            args[i] = it->second(compiler, generator, returnTypeName.typeName, tempArgs);
+                            assert(converter->backendIndex != UINT64_MAX && converter->backendIndex < SPIRVDefaultIntrinsics.size());
+                            auto it = SPIRVDefaultIntrinsics[converter->backendIndex];
+                            args[i] = it(compiler, generator, returnTypeName.typeName, tempArgs);
                         }
                         else
 
@@ -3926,9 +3926,9 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
         auto it = generator->generatorIntrinsics.find(resolvedCall->function);
         if (it == generator->generatorIntrinsics.end())
         {
-            auto it = SPIRVDefaultIntrinsics.Find(resolvedCall->function);
-            assert(it != SPIRVDefaultIntrinsics.end());
-            return it->second(compiler, generator, returnTypeName.typeName, args);
+            assert(resolvedCall->function->backendIndex != UINT64_MAX && resolvedCall->function->backendIndex < SPIRVDefaultIntrinsics.size());
+            auto it = SPIRVDefaultIntrinsics[resolvedCall->function->backendIndex];
+            return it(compiler, generator, returnTypeName.typeName, args);
         }
         else
             return it->second(compiler, generator, returnTypeName.typeName, args);
@@ -3982,9 +3982,9 @@ GenerateArrayIndexExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gene
             auto intrinsicIt = generator->generatorIntrinsics.find(func);
             if (intrinsicIt == generator->generatorIntrinsics.end())
             {
-                auto it = SPIRVDefaultIntrinsics.Find(func);
-                assert(it != SPIRVDefaultIntrinsics.end());
-                res = it->second(compiler, generator, returnType.typeName, { leftSymbol, indexConstant });
+                assert(func->backendIndex != UINT64_MAX && func->backendIndex < SPIRVDefaultIntrinsics.size());
+                auto it = SPIRVDefaultIntrinsics[func->backendIndex];
+                res = it(compiler, generator, returnType.typeName, { leftSymbol, indexConstant });
             }
             else
                 res = intrinsicIt->second(compiler, generator, returnType.typeName, { leftSymbol, indexConstant });
@@ -4164,9 +4164,9 @@ GenerateBinaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
         auto it = generator->generatorIntrinsics.find(binaryExpressionResolved->rightConversion);
         if (it == generator->generatorIntrinsics.end())
         {
-            auto it = SPIRVDefaultIntrinsics.Find(binaryExpressionResolved->rightConversion);
-            assert(it != SPIRVDefaultIntrinsics.end());
-            rightValue = it->second(compiler, generator, rightConvType.typeName, { rightValue });
+            assert(binaryExpressionResolved->rightConversion->backendIndex != UINT64_MAX && binaryExpressionResolved->rightConversion->backendIndex < SPIRVDefaultIntrinsics.size());
+            auto it = SPIRVDefaultIntrinsics[binaryExpressionResolved->rightConversion->backendIndex];
+            rightValue = it(compiler, generator, rightConvType.typeName, { rightValue });
         }
         else
             rightValue = it->second(compiler, generator, rightConvType.typeName, { rightValue });
@@ -4180,9 +4180,9 @@ GenerateBinaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
         auto it = generator->generatorIntrinsics.find(binaryExpressionResolved->leftConversion);
         if (it == generator->generatorIntrinsics.end())
         {
-            auto it = SPIRVDefaultIntrinsics.Find(binaryExpressionResolved->leftConversion);
-            assert(it != SPIRVDefaultIntrinsics.end());
-            leftValue = it->second(compiler, generator, leftConvType.typeName, { leftValue });
+            assert(binaryExpressionResolved->leftConversion->backendIndex != UINT64_MAX && binaryExpressionResolved->leftConversion->backendIndex < SPIRVDefaultIntrinsics.size());
+            auto it = SPIRVDefaultIntrinsics[binaryExpressionResolved->leftConversion->backendIndex];
+            leftValue = it(compiler, generator, leftConvType.typeName, { leftValue });
         }
         else
             leftValue = it->second(compiler, generator, leftConvType.typeName, { leftValue });
@@ -4204,9 +4204,9 @@ GenerateBinaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
         auto it = generator->generatorIntrinsics.find(fun);
         if (it == generator->generatorIntrinsics.end())
         {
-            auto it = SPIRVDefaultIntrinsics.Find(fun);
-            assert(it != SPIRVDefaultIntrinsics.end());
-            binaryOpResult = it->second(compiler, generator, retType.typeName, { leftValue, rightValue });
+            assert(fun->backendIndex != UINT64_MAX && fun->backendIndex < SPIRVDefaultIntrinsics.size());
+            auto it = SPIRVDefaultIntrinsics[fun->backendIndex];
+            binaryOpResult = it(compiler, generator, retType.typeName, { leftValue, rightValue });
         }
         else
             binaryOpResult = it->second(compiler, generator, retType.typeName, { leftValue, rightValue });
