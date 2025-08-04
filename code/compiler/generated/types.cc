@@ -21819,7 +21819,7 @@ Float32x2x2::Float32x2x2()
     this->name = "f32x2x2"_c;
     this->columnSize = 2;
     this->rowSize = 2;
-    this->byteSize = 8;
+    this->byteSize = 16;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float32;
     this->builtin = true;
@@ -22074,7 +22074,7 @@ Float32x3x2::Float32x3x2()
     this->name = "f32x3x2"_c;
     this->columnSize = 3;
     this->rowSize = 2;
-    this->byteSize = 12;
+    this->byteSize = 24;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float32;
     this->builtin = true;
@@ -22329,7 +22329,7 @@ Float32x4x2::Float32x4x2()
     this->name = "f32x4x2"_c;
     this->columnSize = 4;
     this->rowSize = 2;
-    this->byteSize = 16;
+    this->byteSize = 32;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float32;
     this->builtin = true;
@@ -22584,7 +22584,7 @@ Float32x2x3::Float32x2x3()
     this->name = "f32x2x3"_c;
     this->columnSize = 2;
     this->rowSize = 3;
-    this->byteSize = 8;
+    this->byteSize = 24;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float32;
     this->builtin = true;
@@ -22839,7 +22839,7 @@ Float32x3x3::Float32x3x3()
     this->name = "f32x3x3"_c;
     this->columnSize = 3;
     this->rowSize = 3;
-    this->byteSize = 12;
+    this->byteSize = 36;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float32;
     this->builtin = true;
@@ -23094,7 +23094,7 @@ Float32x4x3::Float32x4x3()
     this->name = "f32x4x3"_c;
     this->columnSize = 4;
     this->rowSize = 3;
-    this->byteSize = 16;
+    this->byteSize = 48;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float32;
     this->builtin = true;
@@ -23349,7 +23349,7 @@ Float32x2x4::Float32x2x4()
     this->name = "f32x2x4"_c;
     this->columnSize = 2;
     this->rowSize = 4;
-    this->byteSize = 8;
+    this->byteSize = 32;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float32;
     this->builtin = true;
@@ -23604,7 +23604,7 @@ Float32x3x4::Float32x3x4()
     this->name = "f32x3x4"_c;
     this->columnSize = 3;
     this->rowSize = 4;
-    this->byteSize = 12;
+    this->byteSize = 48;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float32;
     this->builtin = true;
@@ -23859,7 +23859,7 @@ Float32x4x4::Float32x4x4()
     this->name = "f32x4x4"_c;
     this->columnSize = 4;
     this->rowSize = 4;
-    this->byteSize = 16;
+    this->byteSize = 64;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float32;
     this->builtin = true;
@@ -24114,7 +24114,7 @@ Float16x2x2::Float16x2x2()
     this->name = "f16x2x2"_c;
     this->columnSize = 2;
     this->rowSize = 2;
-    this->byteSize = 4;
+    this->byteSize = 8;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float16;
     this->builtin = true;
@@ -24369,7 +24369,7 @@ Float16x3x2::Float16x3x2()
     this->name = "f16x3x2"_c;
     this->columnSize = 3;
     this->rowSize = 2;
-    this->byteSize = 6;
+    this->byteSize = 12;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float16;
     this->builtin = true;
@@ -24624,7 +24624,7 @@ Float16x4x2::Float16x4x2()
     this->name = "f16x4x2"_c;
     this->columnSize = 4;
     this->rowSize = 2;
-    this->byteSize = 8;
+    this->byteSize = 16;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float16;
     this->builtin = true;
@@ -24879,7 +24879,7 @@ Float16x2x3::Float16x2x3()
     this->name = "f16x2x3"_c;
     this->columnSize = 2;
     this->rowSize = 3;
-    this->byteSize = 4;
+    this->byteSize = 12;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float16;
     this->builtin = true;
@@ -25134,7 +25134,7 @@ Float16x3x3::Float16x3x3()
     this->name = "f16x3x3"_c;
     this->columnSize = 3;
     this->rowSize = 3;
-    this->byteSize = 6;
+    this->byteSize = 18;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float16;
     this->builtin = true;
@@ -25389,7 +25389,7 @@ Float16x4x3::Float16x4x3()
     this->name = "f16x4x3"_c;
     this->columnSize = 4;
     this->rowSize = 3;
-    this->byteSize = 8;
+    this->byteSize = 24;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float16;
     this->builtin = true;
@@ -25644,7 +25644,7 @@ Float16x2x4::Float16x2x4()
     this->name = "f16x2x4"_c;
     this->columnSize = 2;
     this->rowSize = 4;
-    this->byteSize = 4;
+    this->byteSize = 16;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float16;
     this->builtin = true;
@@ -25899,7 +25899,7 @@ Float16x3x4::Float16x3x4()
     this->name = "f16x3x4"_c;
     this->columnSize = 3;
     this->rowSize = 4;
-    this->byteSize = 6;
+    this->byteSize = 24;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float16;
     this->builtin = true;
@@ -26154,7 +26154,7 @@ Float16x4x4::Float16x4x4()
     this->name = "f16x4x4"_c;
     this->columnSize = 4;
     this->rowSize = 4;
-    this->byteSize = 8;
+    this->byteSize = 32;
     this->category = Type::ScalarCategory;
     this->baseType = TypeCode::Float16;
     this->builtin = true;

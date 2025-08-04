@@ -637,7 +637,7 @@ def generate_types():
             type_definition += f'    this->name = "{data_type_mapping[self.name]}"_c;\n'
             type_definition += f'    this->columnSize = {self.columnSize};\n'
             type_definition += f'    this->rowSize = {self.rowSize};\n'
-            type_definition += f'    this->byteSize = {trunc((bit_width_mapping[self.base_type] * self.columnSize) / 8)};\n'
+            type_definition += f'    this->byteSize = {trunc((bit_width_mapping[self.base_type] * self.columnSize * self.rowSize) / 8)};\n'
             type_definition += f'    this->category = Type::ScalarCategory;\n'
             type_definition += f'    this->baseType = TypeCode::{self.base_type};\n'
             type_definition += f'    this->builtin = true;\n'
