@@ -809,13 +809,13 @@ UnexpectedToken(const TokenStream& stream, const char* expected)
 /**
  */
 GPULangDiagnostic
-IncorrectToken(const TokenStream& stream)
+UnexpectedEndToken(const TokenStream& stream, const char* expected)
 {
     const Token& tok = stream.Data(0);
     
     GPULangDiagnostic diagnostic;
     diagnostic.severity = GPULangDiagnostic::Severity::Error;
-    diagnostic.error = TStr("Invalid token ", tok.text);
+    diagnostic.error = TStr("Expected ", expected, " got ", tok.text);
     diagnostic.file = tok.path;
     diagnostic.line = tok.startLine;
     diagnostic.column = tok.startChar;
@@ -1714,7 +1714,7 @@ ParseAlias(TokenStream& stream, ParseResult& ret)
     
     if (!stream.Match(TokenType::SemiColon))
     {
-        ret.errors.Append(UnexpectedToken(stream, ";"));
+        ret.errors.Append(UnexpectedEndToken(stream, ";"));
         return res;
     }
     return res;
@@ -1980,13 +1980,13 @@ ParseEnumeration(TokenStream& stream, ParseResult& ret)
     
     if (!stream.Match(TokenType::RightScope))
     {
-        ret.errors.Append(UnexpectedToken(stream, "}"));
+        ret.errors.Append(UnexpectedEndToken(stream, "}"));
         return res;
     }
     
     if (!stream.Match(TokenType::SemiColon))
     {
-        ret.errors.Append(UnexpectedToken(stream, ";"));
+        ret.errors.Append(UnexpectedEndToken(stream, ";"));
         return res;
     }
     return res;
@@ -2028,7 +2028,7 @@ ParseRenderState(TokenStream& stream, ParseResult& ret)
         entries.Append(expr);
         if (!stream.Match(TokenType::SemiColon))
         {
-            ret.errors.Append(UnexpectedToken(stream, ";"));
+            ret.errors.Append(UnexpectedEndToken(stream, ";"));
             return res;
         }
     }
@@ -2036,13 +2036,13 @@ ParseRenderState(TokenStream& stream, ParseResult& ret)
     
     if (!stream.Match(TokenType::RightScope))
     {
-        ret.errors.Append(UnexpectedToken(stream, "}"));
+        ret.errors.Append(UnexpectedEndToken(stream, "}"));
         return res;
     }
     
     if (!stream.Match(TokenType::SemiColon))
     {
-        ret.errors.Append(UnexpectedToken(stream, ";"));
+        ret.errors.Append(UnexpectedEndToken(stream, ";"));
         return res;
     }
     
@@ -2085,7 +2085,7 @@ ParseSamplerState(TokenStream& stream, ParseResult& ret)
         entries.Append(expr);
         if (!stream.Match(TokenType::SemiColon))
         {
-            ret.errors.Append(UnexpectedToken(stream, ";"));
+            ret.errors.Append(UnexpectedEndToken(stream, ";"));
             return res;
         }
     }
@@ -2093,13 +2093,13 @@ ParseSamplerState(TokenStream& stream, ParseResult& ret)
     
     if (!stream.Match(TokenType::RightScope))
     {
-        ret.errors.Append(UnexpectedToken(stream, "}"));
+        ret.errors.Append(UnexpectedEndToken(stream, "}"));
         return res;
     }
     
     if (!stream.Match(TokenType::SemiColon))
     {
-        ret.errors.Append(UnexpectedToken(stream, ";"));
+        ret.errors.Append(UnexpectedEndToken(stream, ";"));
         return res;
     }
     
@@ -2141,7 +2141,7 @@ ParseProgram(TokenStream& stream, ParseResult& ret)
         entries.Append(expr);
         if (!stream.Match(TokenType::SemiColon))
         {
-            ret.errors.Append(UnexpectedToken(stream, ";"));
+            ret.errors.Append(UnexpectedEndToken(stream, ";"));
             return res;
         }
     }
@@ -2149,13 +2149,13 @@ ParseProgram(TokenStream& stream, ParseResult& ret)
     
     if (!stream.Match(TokenType::RightScope))
     {
-        ret.errors.Append(UnexpectedToken(stream, "}"));
+        ret.errors.Append(UnexpectedEndToken(stream, "}"));
         return res;
     }
     
     if (!stream.Match(TokenType::SemiColon))
     {
-        ret.errors.Append(UnexpectedToken(stream, ";"));
+        ret.errors.Append(UnexpectedEndToken(stream, ";"));
         return res;
     }
     
@@ -2228,7 +2228,7 @@ ParseGenerateScopeStatement(TokenStream& stream, ParseResult& ret)
                     
                     if (!stream.Match(TokenType::SemiColon))
                     {
-                        ret.errors.Append(UnexpectedToken(stream, ";"));
+                        ret.errors.Append(UnexpectedEndToken(stream, ";"));
                         break;
                     }
                 }
@@ -2370,7 +2370,7 @@ ParseGenerate(TokenStream& stream, ParseResult& ret)
     
     if (!stream.Match(TokenType::SemiColon))
     {
-        ret.errors.Append(UnexpectedToken(stream, ";"));
+        ret.errors.Append(UnexpectedEndToken(stream, ";"));
         return res;
     }
     
@@ -2424,7 +2424,7 @@ ParseStruct(TokenStream& stream, ParseResult& ret)
         
         if (!stream.Match(TokenType::SemiColon))
         {
-            ret.errors.Append(UnexpectedToken(stream, ";"));
+            ret.errors.Append(UnexpectedEndToken(stream, ";"));
             break;
         }
         members.Append(var);
@@ -2433,13 +2433,13 @@ ParseStruct(TokenStream& stream, ParseResult& ret)
     
     if (!stream.Match(TokenType::RightScope))
     {
-        ret.errors.Append(UnexpectedToken(stream, "}"));
+        ret.errors.Append(UnexpectedEndToken(stream, "}"));
         return res;
     }
     
     if (!stream.Match(TokenType::SemiColon))
     {
-        ret.errors.Append(UnexpectedToken(stream, ";"));
+        ret.errors.Append(UnexpectedEndToken(stream, ";"));
         return res;
     }
 
@@ -2495,7 +2495,7 @@ ParseScopeStatement(TokenStream& stream, ParseResult& ret)
                     
                     if (!stream.Match(TokenType::SemiColon))
                     {
-                        ret.errors.Append(UnexpectedToken(stream, ";"));
+                        ret.errors.Append(UnexpectedEndToken(stream, ";"));
                         return res;
                     }
                 }
