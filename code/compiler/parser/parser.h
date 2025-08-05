@@ -32,6 +32,7 @@ enum class TokenType
     , While
     , Do
     , Break
+    , Continue
     , Discard
     , RayTerminate
     , RayIgnore

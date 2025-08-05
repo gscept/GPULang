@@ -2142,7 +2142,7 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
                 std::string str;
                 for (const auto& err : tokenizationResult.errors)
                 {
-                    str += Format("%s(%d:%d): %s\n", err.file.c_str(), err.line, err.column, err.error.c_str());
+                    str += Format("%s(%d,%d): %s\n", err.file.c_str(), err.line+1, err.column, err.error.c_str());
                 }
                 errorBuffer = Error(str);
                 return false;
@@ -2155,7 +2155,7 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
                 std::string str;
                 for (const auto& err : parseResult.errors)
                 {
-                    str += Format("%s(%d:%d): %s\n", err.file.c_str(), err.line, err.column, err.error.c_str());
+                    str += Format("%s(%d,%d): %s\n", err.file.c_str(), err.line+1, err.column, err.error.c_str());
                 }
                 errorBuffer = Error(str);
                 return false;
@@ -2192,7 +2192,7 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
                         err.Append("\n");
                     err.Append(compiler.messages[i]);
                 }
-                if (err.size > 0 && compiler.hasErrors)
+                if (err.size == 0 && compiler.hasErrors)
                     err = "Unhandled internal compiler error";
                 errorBuffer = Error(err);
             }
@@ -2325,7 +2325,7 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
             {
                 if (i > 0)
                     err.Append("\n");
-                err.Append(compiler.messages[i].ToView());
+                err.Append(compiler.messages[i]);
             }
             if (err.size == 0 && compiler.hasErrors)
                 err.Append("Unhandled internal compiler error");

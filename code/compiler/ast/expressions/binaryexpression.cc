@@ -174,7 +174,7 @@ BinaryExpression::Resolve(Compiler* compiler)
                 TypeCode promotedType = Type::PromoteTypes(this->thisResolved->lhsType->baseType, this->thisResolved->rhsType->baseType);
                 if (promotedType == TypeCode::InvalidType)
                 {
-                    compiler->Error(Format("Type '%s' could not be promomoted to '%s'", this->thisResolved->leftType.ToString().c_str(), this->thisResolved->rightType.ToString().c_str()), this    );
+                    compiler->Error(Format("Type '%s' could not be promoted to '%s'", this->thisResolved->leftType.ToString().c_str(), this->thisResolved->rightType.ToString().c_str()), this    );
                     return false;
                 }
                 Type::FullType promotedFullType = Type::TypeFromCode(promotedType, max(this->thisResolved->lhsType->columnSize, this->thisResolved->rhsType->columnSize), max(this->thisResolved->lhsType->rowSize, this->thisResolved->rhsType->rowSize));

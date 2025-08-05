@@ -162,6 +162,39 @@ def generate_types():
         "Void" : "void",
     }
 
+    
+    base_type_mapping = {
+        'Float32': 'Float32',
+        'Float32x2': 'Float32',
+        'Float32x3': 'Float32',
+        'Float32x4': 'Float32',
+        'Float16': 'Float16',
+        'Float16x2': 'Float16',
+        'Float16x3': 'Float16',
+        'Float16x4': 'Float16',
+        'Int32': 'Int32',
+        'Int32x2': 'Int32',
+        'Int32x3': 'Int32',
+        'Int32x4': 'Int32',
+        'Int16': 'Int16',
+        'Int16x2': 'Int16',
+        'Int16x3': 'Int16',
+        'Int16x4': 'Int16',
+        'UInt32': 'UInt32',
+        'UInt32x2': 'UInt32',
+        'UInt32x3': 'UInt32',
+        'UInt32x4': 'UInt32',
+        'UInt16': 'UInt16',
+        'UInt16x2': 'UInt16',
+        'UInt16x3': 'UInt16',
+        'UInt16x4': 'UInt16',
+        'Bool8': 'Bool8',
+        'Bool8x2': 'Bool8',
+        'Bool8x3': 'Bool8',
+        'Bool8x4': 'Bool8'
+    }
+
+
     bit_operator_names = ['or', 'and', 'xor', 'lsh', 'rsh']
     bit_operators = ['|', '&', '^', '<<', '>>']
 
@@ -737,7 +770,10 @@ def generate_types():
 
                     spirv_function = '    SPIRVResult val = args[0];\n'
                     if type != type2:
-                        spirv_function += f'    val = ConverterTable[TypeConversionTable::{type2}To{type}](c, g, 1, val);\n'
+                        spirv_function += f'    if (val.isLiteral)\n'
+                        spirv_function += f'        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::{base_type_mapping[type_name]}Type);\n'
+                        spirv_function += f'    else\n'
+                        spirv_function += f'        val = ConverterTable[TypeConversionTable::{type2}To{type}](c, g, 1, val);\n'
                     spirv_function += f'    return GenerateSplatCompositeSPIRV(c, g, returnType, {size}, val);\n'
                     spirv_type_construction += spirv_intrinsic(function_name, spirv_function)
                     fun.spirv = spirv_function
@@ -790,10 +826,17 @@ def generate_types():
                     else:
                         list_entry_key.append(f'{data_type_mapping[type]}x{s}')
 
+                spirv_function = f'    SPIRVResult convertedArgs[{len(comb)}];\n'
+                for arg_idx, s in enumerate(comb):
+                    spirv_function += f'    if (args[{arg_idx}].isLiteral)\n'
+                    spirv_function += f'        convertedArgs[{arg_idx}] = args[{arg_idx}].ConvertTo(SPIRVResult::LiteralValue::Type::{base_type_mapping[type_name]}Type);\n'
+                    spirv_function += f'    else\n'
+                    spirv_function += f'        convertedArgs[{arg_idx}] = args[{arg_idx}];\n'
+                    argList = ", ".join([f'convertedArgs[{arg_idx}]' for arg_idx in range(len(comb))])
                 if size > 1:
-                    spirv_function = f'    return GenerateCompositeSPIRV(c, g, returnType, args);\n'
+                    spirv_function += f'    return GenerateCompositeSPIRV(c, g, returnType, {{{argList}}});\n'
                 else:
-                    spirv_function = f'    return args[0];\n'
+                    spirv_function += f'    return convertedArgs[0];\n'
                 spirv_type_construction += spirv_intrinsic(function_name, spirv_function)
                 fun.spirv = spirv_function
                 functions.append(fun)
@@ -1916,37 +1959,6 @@ def generate_types():
     signed_types = ['Int32', 'Int32x2', 'Int32x3', 'Int32x4', 'Int16', 'Int16x2', 'Int16x3', 'Int16x4', 'Float32', 'Float32x2', 'Float32x3', 'Float32x4', 'Float16', 'Float16x2', 'Float16x3', 'Float16x4']
     bool_types = ['Bool8', 'Bool8x2', 'Bool8x3', 'Bool8x4']
 
-    base_type_mapping = {
-        'Float32': 'Float32',
-        'Float32x2': 'Float32',
-        'Float32x3': 'Float32',
-        'Float32x4': 'Float32',
-        'Float16': 'Float16',
-        'Float16x2': 'Float16',
-        'Float16x3': 'Float16',
-        'Float16x4': 'Float16',
-        'Int32': 'Int32',
-        'Int32x2': 'Int32',
-        'Int32x3': 'Int32',
-        'Int32x4': 'Int32',
-        'Int16': 'Int16',
-        'Int16x2': 'Int16',
-        'Int16x3': 'Int16',
-        'Int16x4': 'Int16',
-        'UInt32': 'UInt32',
-        'UInt32x2': 'UInt32',
-        'UInt32x3': 'UInt32',
-        'UInt32x4': 'UInt32',
-        'UInt16': 'UInt16',
-        'UInt16x2': 'UInt16',
-        'UInt16x3': 'UInt16',
-        'UInt16x4': 'UInt16',
-        'Bool8': 'Bool8',
-        'Bool8x2': 'Bool8',
-        'Bool8x3': 'Bool8',
-        'Bool8x4': 'Bool8'
-    }
-
     vector_size_mapping = {
         'Float32': 1, 'Float32x2': 2, 'Float32x3': 3, 'Float32x4': 4,
         'Float16': 1, 'Float16x2': 2, 'Float16x3': 3, 'Float16x4': 4,
@@ -2043,7 +2055,7 @@ def generate_types():
         x_name = f'atan2_{type}_x'
         fun = Function(
             decl_name = function_name,
-            api_name = intrinsic,
+            api_name = 'atan2',
             return_type = type,
             documentation = 'Returns the angle whose tangent is the quotient of the two specified numbers.',
             parameters = [
@@ -2233,10 +2245,14 @@ def generate_types():
             function_name = f'{intrinsic}_{type}'
             argument_name = f'{function_name}_arg'
 
+            if intrinsic == 'length':
+                return_type = 'Float32'
+            else:
+                return_type = type
             fun = Function(
                 decl_name = function_name,
                 api_name = intrinsic,
-                return_type = type,
+                return_type = return_type,
                 documentation = doc,
                 parameters = [
                     Variable(decl_name = argument_name, api_name = "val", type_name=type)
@@ -2347,7 +2363,7 @@ def generate_types():
         functions.append(fun)
     
     # Lerp
-    for type in float_vec_types:
+    for type in float_types:
         intrinsic = 'lerp'
         function_name = f'{intrinsic}_{type}'
         a_name = f'{function_name}_a'

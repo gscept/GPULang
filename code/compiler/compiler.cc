@@ -594,15 +594,6 @@ Compiler::MarkScopeReachable()
 bool 
 Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWriter)
 {
-    this->performanceTimer.Start();
-
-    //ThreadJoin(this->staticSetupThread);
-
-    this->performanceTimer.Stop();
-
-    if (this->options.emitTimings)
-        this->performanceTimer.Print("Static init wait");
-
     // push a new scope for all the parsed symbols
     this->PushScope(this->mainScope);
 
@@ -880,9 +871,9 @@ Compiler::Error(const TransientString& msg, const FixedString& file, int line, i
     else
     {
         TransientString err;
-        err.Format(ErrorStrings[(uint8_t)this->options.errorFormat], file.c_str(), line, column, msg.c_str());
+        err.Format(ErrorStrings[(uint8_t)this->options.errorFormat], file.c_str(), line+1, column, msg.c_str());
         this->messages.Append(err.c_str());
-        this->diagnostics.Append(GPULangDiagnostic{ .error = FixedString(msg), .file = file, .line = line, .column = column, .length = length });
+        this->diagnostics.Append(GPULangDiagnostic{ .error = FixedString(msg), .file = file, .line = line+1, .column = column, .length = length });
     }
     this->hasErrors = true;
 }

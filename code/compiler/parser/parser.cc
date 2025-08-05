@@ -96,7 +96,7 @@ struct CharacterClassInitializer
         CharacterClassTable['|'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
         CharacterClassTable['&'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
         CharacterClassTable['^'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
-        CharacterClassTable['!'] = SPECIAL_CHARACTER;
+        CharacterClassTable['!'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
         CharacterClassTable['~'] = SPECIAL_CHARACTER;
         CharacterClassTable['?'] = SPECIAL_CHARACTER;
         CharacterClassTable['='] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
@@ -106,8 +106,9 @@ struct CharacterClassInitializer
         CharacterClassTable['\f'] = WHITESPACE_CHARACTER;
         CharacterClassTable['\v'] = WHITESPACE_CHARACTER;
         
-        CharacterClassTable['\r'] = EOL_CHARACTER | WHITESPACE_CHARACTER;
-        CharacterClassTable['\n'] = EOL_CHARACTER | WHITESPACE_CHARACTER;
+        CharacterClassTable['\r'] = WHITESPACE_CHARACTER;
+        CharacterClassTable['\n'] = EOL_CHARACTER;
+        CharacterClassTable['\0'] = EOL_CHARACTER;
     }
 } CharacterTableInitializer;
 
@@ -119,6 +120,7 @@ StaticMap HardCodedTokens = std::array{
     , std::pair{ "while"_c, TokenType::While }
     , std::pair{ "do"_c, TokenType::Do }
     , std::pair{ "break"_c, TokenType::Break }
+    , std::pair{ "continue"_c, TokenType::Continue }
     , std::pair{ "discard"_c, TokenType::Discard }
     , std::pair{ "ray_ignore"_c, TokenType::RayIgnore }
     , std::pair{ "ray_terminate"_c, TokenType::RayTerminate }
@@ -136,7 +138,7 @@ StaticMap HardCodedTokens = std::array{
     , std::pair{ "uniform"_c, TokenType::Uniform_Storage }
     , std::pair{ "workgroup"_c, TokenType::Workgroup_Storage }
     , std::pair{ "inline"_c, TokenType::Inline_Storage }
-    , std::pair{ "link_defind"_c, TokenType::LinkDefined_Storage }
+    , std::pair{ "link_defined"_c, TokenType::LinkDefined_Storage }
     , std::pair{ "in"_c, TokenType::In_Storage }
     , std::pair{ "out"_c, TokenType::Out_Storage }
     , std::pair{ "ray_payload"_c, TokenType::RayPayload_Storage }
@@ -331,11 +333,10 @@ static auto skipWS = [](const char* begin, const char* end) -> const char*
     const char* start = begin;
     while (start < end)
     {
-        uint8_t nonWsOffset = noCharPos(start, end, WHITESPACE_CHARS);
-        if (nonWsOffset != 255)
-            return start + nonWsOffset;
+        if ((CharacterClassTable[start[0]] & WHITESPACE_CHARACTER) == WHITESPACE_CHARACTER)
+            start++;
         else
-            start += 8;
+            return start;
     }
     return end;
 };
@@ -345,25 +346,10 @@ static auto lineEnd = [](const char* begin, const char* end) -> const char*
     const char* start = begin;
     while (start < end)
     {
-        uint8_t crPos = findCharPos(start, end, '\r');
-        uint8_t nlPos = findCharPos(start, end, '\n');
-        uint8_t nPos = findCharPos(start, end, '\0');
-        if (crPos != 255)
-        {
-            const char* offset = start + crPos;
-            if ((offset != (end - 1)) && offset[1] == '\n')
-                return offset + 2;
-            return offset + 1;
-        }
-        else if (nlPos != 255)
-        {
-            return start + nlPos + 1;
-        }
-        else if (nPos != 255)
-        {
-            return start + nPos;
-        }
-        start += 8;
+        if ((CharacterClassTable[start[0]] & EOL_CHARACTER) != EOL_CHARACTER)
+            start++;
+        else
+            return start+1;
     }
     return end;
 };
@@ -434,7 +420,7 @@ Tokenize(const std::string& text, const TransientString& path)
         else if (it[0] == '/' && it[1] == '/') // If single line comment, move iterator to end
         {
             it = lineEnd(it, end);
-            line += 1;
+            line++;
             ret.lineCount++;
             continue;
         }
@@ -571,6 +557,7 @@ Tokenize(const std::string& text, const TransientString& path)
                 // Exponent
                 if (it[0] == 'e' || it[0] == 'E')
                 {
+                    type = TokenType::Double;
                     it++;
                     if (it[0] == '-' || it[0] == '+')
                         it++;
@@ -908,7 +895,7 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
             )
         {
             const Token& tok = stream.Data(-1);
-            Expression* rhs = ParseExpression(stream, ret, res, 1);
+            Expression* rhs = ParseExpression(stream, ret, res, 0);
             res = Alloc<BinaryExpression>(StringToFourCC(TransientString(tok.text)), res, rhs);
             res->location = LocationFromToken(tok);
         }
@@ -1736,17 +1723,17 @@ ParseVariables(TokenStream& stream, ParseResult& ret)
             ret.errors.Append(Limit(stream, "variable names", 128));
             break;
         }
-        
+
         Variable* var = Alloc<Variable>();
         var->name = stream.Data(-1).text;
         var->location = LocationFromToken(stream.Data(-1));
         vars.Append(var);
-        
+
         if (!stream.Match(TokenType::Comma))
             break;
     }
     res = vars;
-    
+
     bool typeKnown = false;
     if (stream.Match(TokenType::Colon))
     {
@@ -1766,10 +1753,10 @@ ParseVariables(TokenStream& stream, ParseResult& ret)
     {
         for (auto& var : vars)
         {
-            var->type = Type::FullType{UNDEFINED_TYPE};
+            var->type = Type::FullType{ UNDEFINED_TYPE };
         }
     }
-    
+
     TransientArray<Expression*> values(128);
     if (stream.Match(TokenType::Assign))
     {
@@ -1781,21 +1768,21 @@ ParseVariables(TokenStream& stream, ParseResult& ret)
                 break;
             }
             values.Append(ParseExpression(stream, ret));
-            
+
             // Match multiple arguments
             if (stream.Match(TokenType::Comma))
                 continue;
-            
+
             break;
         }
     }
-    
+
     if (!typeKnown && values.size > 0)
     {
         if (values.size > vars.size)
         {
             const Token& tok = stream.Data(0);
-            
+
             GPULangDiagnostic diagnostic;
             diagnostic.file = tok.path;
             diagnostic.error = TStr("Expected a variable (%d) for for each value (%d)", vars.size, values.size);
@@ -1807,7 +1794,7 @@ ParseVariables(TokenStream& stream, ParseResult& ret)
         else if (values.size < vars.size)
         {
             const Token& tok = stream.Data(0);
-            
+
             GPULangDiagnostic diagnostic;
             diagnostic.file = tok.path;
             diagnostic.error = TStr("Expected a value (%d) for for each variable (%d)", values.size, vars.size);
@@ -1817,7 +1804,7 @@ ParseVariables(TokenStream& stream, ParseResult& ret)
             ret.errors.Append(diagnostic);
         }
     }
-    
+
     for (size_t i = 0; i < vars.size; i++)
     {
         vars[i]->valueExpression = values[i];
@@ -2550,7 +2537,18 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
         res->location = LocationFromToken(tok);
         if (!stream.Match(TokenType::SemiColon))
         {
-            ret.errors.Append(UnexpectedToken(stream, "; after expression"));
+            ret.errors.Append(UnexpectedToken(stream, "; after statement"));
+            return res;
+        }
+    }
+    else if (stream.Match(TokenType::Continue))
+    {
+        const Token& tok = stream.Data(-1);
+        res = Alloc<ContinueStatement>();
+        res->location = LocationFromToken(tok);
+        if (!stream.Match(TokenType::SemiColon))
+        {
+            ret.errors.Append(UnexpectedToken(stream, "; after statement"));
             return res;
         }
     }
@@ -2561,7 +2559,7 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
         res->location = LocationFromToken(tok);
         if (!stream.Match(TokenType::SemiColon))
         {
-            ret.errors.Append(UnexpectedToken(stream, "; after expression"));
+            ret.errors.Append(UnexpectedToken(stream, "; after statement"));
             return res;
         }
     }
@@ -2572,7 +2570,7 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
         res->location = LocationFromToken(tok);
         if (!stream.Match(TokenType::SemiColon))
         {
-            ret.errors.Append(UnexpectedToken(stream, "; after expression"));
+            ret.errors.Append(UnexpectedToken(stream, "; after statement"));
             return res;
         }
     }
@@ -2583,7 +2581,7 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
         res->location = LocationFromToken(tok);
         if (!stream.Match(TokenType::SemiColon))
         {
-            ret.errors.Append(UnexpectedToken(stream, "; after expression"));
+            ret.errors.Append(UnexpectedToken(stream, "; after statement"));
             return res;
         }
     }
@@ -2594,7 +2592,7 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
         res->location = LocationFromToken(tok);
         if (!stream.Match(TokenType::SemiColon))
         {
-            ret.errors.Append(UnexpectedToken(stream, "; after expression"));
+            ret.errors.Append(UnexpectedToken(stream, "; after statement"));
             return res;
         }
     }
@@ -2650,20 +2648,20 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
             return res;
         }
         
-        if (!(stream.Match(TokenType::Const_Storage) || stream.Match(TokenType::Var_Storage)))
+        // If variables, parse
+        FixedArray<Variable*> variables;
+        if (stream.Match(TokenType::Const_Storage) || stream.Match(TokenType::Var_Storage))
         {
-            ret.errors.Append(UnexpectedToken(stream, "const/var"));
-            return res;
+            Attribute* storage = Alloc<Attribute>();
+            storage->name = stream.Data(-1).text;
+            storage->location = LocationFromToken(stream.Data(-1));
+            storage->expression = nullptr;
+
+            variables = ParseVariables(stream, ret);
+            for (auto var : variables)
+                var->attributes = { storage };
+
         }
-        
-        Attribute* storage = Alloc<Attribute>();
-        storage->name = stream.Data(-1).text;
-        storage->location = LocationFromToken(stream.Data(-1));
-        storage->expression = nullptr;
-        
-        FixedArray<Variable*> variables = ParseVariables(stream, ret);
-        for (auto var : variables)
-            var->attributes = { storage };
         
         if (!stream.Match(TokenType::SemiColon))
         {

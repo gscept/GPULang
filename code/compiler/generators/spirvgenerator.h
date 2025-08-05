@@ -63,12 +63,189 @@ struct SPIRVResult
 
         enum Type
         {
-            FloatType,
-            IntType,
-            UIntType,
-            BoolType
+            Float32Type,
+            Float16Type,
+            Int32Type,
+            Int16Type,
+            UInt32Type,
+            UInt16Type,
+            Bool8Type
         } type;
     } literalValue;
+
+    SPIRVResult ConvertTo(LiteralValue::Type toType) const
+    {
+        SPIRVResult result = *this;
+        if (this->isLiteral)
+        {
+            switch (this->literalValue.type)
+            {
+                case LiteralValue::Float32Type:
+                    switch (toType)
+                    {
+                        case LiteralValue::Float16Type:
+                            result.literalValue.f16 = this->literalValue.f32;
+                            break;
+                        case LiteralValue::Int32Type:
+                            result.literalValue.i32 = this->literalValue.f32;
+                            break;
+                        case LiteralValue::Int16Type:
+                            result.literalValue.i16 = this->literalValue.f32;
+                            break;
+                        case LiteralValue::UInt32Type:
+                            result.literalValue.u32 = this->literalValue.f32;
+                            break;
+                        case LiteralValue::UInt16Type:
+                            result.literalValue.u16 = this->literalValue.f32;
+                            break;
+                        case LiteralValue::Bool8Type:
+                            result.literalValue.b = this->literalValue.f32 != 0.0f;
+                            break;
+                    }
+                    break;
+                case LiteralValue::Float16Type:
+                    switch (toType)
+                    {
+                        case LiteralValue::Float32Type:
+                            result.literalValue.f32 = this->literalValue.f16;
+                            break;
+                        case LiteralValue::Int32Type:
+                            result.literalValue.i32 = this->literalValue.f16;
+                            break;
+                        case LiteralValue::Int16Type:
+                            result.literalValue.i16 = this->literalValue.f16;
+                            break;
+                        case LiteralValue::UInt32Type:
+                            result.literalValue.u32 = this->literalValue.f16;
+                            break;
+                        case LiteralValue::UInt16Type:
+                            result.literalValue.u16 = this->literalValue.f16;
+                            break;
+                        case LiteralValue::Bool8Type:
+                            result.literalValue.b = this->literalValue.f16 != 0.0f;
+                            break;
+                    }
+                    break;
+                case LiteralValue::Int32Type:
+                    switch (toType)
+                    {
+                        case LiteralValue::Float32Type:
+                            result.literalValue.f32 = this->literalValue.i32;
+                            break;
+                        case LiteralValue::Float16Type:
+                            result.literalValue.f16 = this->literalValue.i32;
+                            break;
+                        case LiteralValue::Int16Type:
+                            result.literalValue.i16 = this->literalValue.i32;
+                            break;
+                        case LiteralValue::UInt32Type:
+                            result.literalValue.u32 = this->literalValue.i32;
+                            break;
+                        case LiteralValue::UInt16Type:
+                            result.literalValue.u16 = this->literalValue.i32;
+                            break;
+                        case LiteralValue::Bool8Type:
+                            result.literalValue.b = this->literalValue.i32 != 0;
+                            break;
+                    }
+                    break;
+                case LiteralValue::Int16Type:
+                    switch (toType)
+                    {
+                        case LiteralValue::Float32Type:
+                            result.literalValue.f32 = this->literalValue.i16;
+                            break;
+                        case LiteralValue::Float16Type:
+                            result.literalValue.f16 = this->literalValue.i16;
+                            break;
+                        case LiteralValue::Int32Type:
+                            result.literalValue.i16 = this->literalValue.i16;
+                            break;
+                        case LiteralValue::UInt32Type:
+                            result.literalValue.u32 = this->literalValue.i16;
+                            break;
+                        case LiteralValue::UInt16Type:
+                            result.literalValue.u16 = this->literalValue.i16;
+                            break;
+                        case LiteralValue::Bool8Type:
+                            result.literalValue.b = this->literalValue.i16 != 0;
+                            break;
+                    }
+                    break;
+                case LiteralValue::UInt32Type:
+                    switch (toType)
+                    {
+                        case LiteralValue::Float32Type:
+                            result.literalValue.f32 = this->literalValue.u32;
+                            break;
+                        case LiteralValue::Float16Type:
+                            result.literalValue.f16 = this->literalValue.u32;
+                            break;
+                        case LiteralValue::Int32Type:
+                            result.literalValue.i32 = this->literalValue.u32;
+                            break;
+                        case LiteralValue::Int16Type:
+                            result.literalValue.i16 = this->literalValue.u32;
+                            break;
+                        case LiteralValue::UInt16Type:
+                            result.literalValue.u16 = this->literalValue.u32;
+                            break;
+                        case LiteralValue::Bool8Type:
+                            result.literalValue.b = this->literalValue.u32 != 0;
+                            break;
+                    }
+                    break;
+                case LiteralValue::UInt16Type:
+                    switch (toType)
+                    {
+                        case LiteralValue::Float32Type:
+                            result.literalValue.f32 = this->literalValue.u16;
+                            break;
+                        case LiteralValue::Float16Type:
+                            result.literalValue.f16 = this->literalValue.u16;
+                            break;
+                        case LiteralValue::Int32Type:
+                            result.literalValue.i32 = this->literalValue.u16;
+                            break;
+                        case LiteralValue::Int16Type:
+                            result.literalValue.i16 = this->literalValue.u16;
+                            break;
+                        case LiteralValue::UInt32Type:
+                            result.literalValue.u16 = this->literalValue.u16;
+                            break;
+                        case LiteralValue::Bool8Type:
+                            result.literalValue.b = this->literalValue.u16 != 0;
+                            break;
+                    }
+                    break;
+                case LiteralValue::Bool8Type:
+                    switch (toType)
+                    {
+                        case LiteralValue::Float32Type:
+                            result.literalValue.f32 = this->literalValue.b;
+                            break;
+                        case LiteralValue::Float16Type:
+                            result.literalValue.f16 = this->literalValue.b;
+                            break;
+                        case LiteralValue::Int32Type:
+                            result.literalValue.i32 = this->literalValue.b;
+                            break;
+                        case LiteralValue::Int16Type:
+                            result.literalValue.i16 = this->literalValue.b;
+                            break;
+                        case LiteralValue::UInt32Type:
+                            result.literalValue.u32 = this->literalValue.b;
+                            break;
+                        case LiteralValue::UInt16Type:
+                            result.literalValue.u16 = this->literalValue.b;
+                            break;
+                    }
+                    break;
+            }
+            result.literalValue.type = toType;
+        }
+        return result;
+    }
 
     enum class Storage
     {
@@ -154,10 +331,59 @@ struct SPIRVResult
         this->swizzleMask.bits.z = Type::SwizzleMask::Invalid;
         this->swizzleMask.bits.w = Type::SwizzleMask::Invalid;
     };
+    
+    explicit SPIRVResult(const ValueUnion& value)
+    {
+        switch (value.code)
+        {
+            case TypeCode::Bool8:
+                this->literalValue.type = LiteralValue::Bool8Type;
+                this->literalValue.b8 = value.b[0];
+                this->isLiteral = true;
+                this->isValue = false;
+                break;
+            case TypeCode::UInt16:
+                this->literalValue.type = LiteralValue::UInt16Type;
+                this->literalValue.u16 = value.ui[0];
+                this->isLiteral = true;
+                this->isValue = false;
+                break;
+            case TypeCode::UInt32:
+                this->literalValue.type = LiteralValue::UInt32Type;
+                this->literalValue.u32 = value.ui[0];
+                this->isLiteral = true;
+                this->isValue = false;
+                break;
+            case TypeCode::Int16:
+                this->literalValue.type = LiteralValue::Int16Type;
+                this->literalValue.i16 = value.i[0];
+                this->isLiteral = true;
+                this->isValue = false;
+                break;
+            case TypeCode::Int32:
+                this->literalValue.type = LiteralValue::Int32Type;
+                this->literalValue.i32 = value.i[0];
+                this->isLiteral = true;
+                this->isValue = false;
+                break;
+            case TypeCode::Float16:
+                this->literalValue.type = LiteralValue::Float16Type;
+                this->literalValue.f16 = value.f[0];
+                this->isLiteral = true;
+                this->isValue = false;
+                break;
+            case TypeCode::Float32:
+                this->literalValue.type = LiteralValue::Float32Type;
+                this->literalValue.f32 = value.f[0];
+                this->isLiteral = true;
+                this->isValue = false;
+                break;
+        }
+    }
 
     explicit SPIRVResult(float literal)
     {
-        this->literalValue.type = LiteralValue::FloatType;
+        this->literalValue.type = LiteralValue::Float32Type;
         this->literalValue.f = literal;
         this->isLiteral = true;
         this->isValue = false;
@@ -165,7 +391,7 @@ struct SPIRVResult
 
     explicit SPIRVResult(int literal)
     {
-        this->literalValue.type = LiteralValue::IntType;
+        this->literalValue.type = LiteralValue::Int32Type;
         this->literalValue.i = literal;
         this->isLiteral = true;
         this->isValue = false;
@@ -173,7 +399,7 @@ struct SPIRVResult
 
     explicit SPIRVResult(bool literal)
     {
-        this->literalValue.type = LiteralValue::BoolType;
+        this->literalValue.type = LiteralValue::Bool8Type;
         this->literalValue.b = literal;
         this->isLiteral = true;
         this->isValue = false;
@@ -181,7 +407,7 @@ struct SPIRVResult
 
     explicit SPIRVResult(uint32_t literal)
     {
-        this->literalValue.type = LiteralValue::UIntType;
+        this->literalValue.type = LiteralValue::UInt32Type;
         this->literalValue.ui = literal;
         this->isLiteral = true;
         this->isValue = false;

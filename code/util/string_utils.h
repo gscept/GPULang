@@ -770,6 +770,277 @@ FragmentString(const TransientString& arg, char* buf, size_t size)
     memcpy(buf, arg.buf, arg.size);
 }
 
+
+struct FixedString
+{
+    FixedString()
+        : buf(nullptr)
+        , len(0)
+    {
+    }
+
+    FixedString(const char* buf)
+    {
+        size_t len = strlen(buf) + 1;
+        this->buf = AllocArray<char>(len);
+        this->len = len - 1;
+        memcpy(this->buf, buf, len - 1);
+        this->buf[this->len] = '\0';
+    }
+
+    FixedString(const char* start, const char* end)
+    {
+        size_t len = (end - start) + 1;
+        this->buf = AllocArray<char>(len);
+        this->len = len - 1;
+        memcpy(this->buf, start, len - 1);
+        this->buf[this->len] = '\0';
+    }
+
+    explicit FixedString(const std::string& str)
+    {
+        size_t len = str.length() + 1;
+        this->buf = AllocArray<char>(len);
+        this->len = len - 1;
+        memcpy(this->buf, str.data(), len - 1);
+        this->buf[this->len] = '\0';
+    }
+
+    explicit FixedString(const TransientString& str)
+    {
+        size_t len = str.size + 1;
+        this->buf = AllocArray<char>(len);
+        this->len = len - 1;
+        memcpy(this->buf, str.buf, len - 1);
+        this->buf[this->len] = '\0';
+    }
+
+    explicit FixedString(const std::string_view& str)
+    {
+        size_t len = str.length() + 1;
+        this->buf = AllocArray<char>(len);
+        this->len = len - 1;
+        memcpy(this->buf, str.data(), len - 1);
+        this->buf[this->len] = '\0';
+    }
+
+    explicit FixedString(const ConstantString& str)
+    {
+        this->buf = const_cast<char*>(str.buf);
+        this->len = str.size;
+    }
+
+    FixedString(const FixedString& rhs)
+    {
+        this->buf = rhs.buf;
+        this->len = rhs.len;
+    }
+
+    void operator=(const FixedString& rhs)
+    {
+        this->buf = rhs.buf;
+        this->len = rhs.len;
+    }
+
+    void operator=(const char* buf)
+    {
+        size_t len = strlen(buf);
+        this->len = len;
+        this->buf = nullptr;
+        if (len > 0)
+        {
+            this->buf = AllocArray<char>(len + 1);
+            memcpy(this->buf, buf, len);
+            this->buf[this->len] = '\0';
+        }
+    }
+
+    void operator=(const std::string& str)
+    {
+        size_t len = str.length();
+        this->len = len;
+        this->buf = nullptr;
+        if (!str.empty())
+        {
+            this->buf = AllocArray<char>(len + 1);
+            memcpy(this->buf, str.data(), len);
+            this->buf[this->len] = '\0';
+        }
+    }
+
+    void operator=(const std::string_view& str)
+    {
+        size_t len = str.length();
+        this->len = len;
+        this->buf = nullptr;
+        if (!str.empty())
+        {
+            this->buf = AllocArray<char>(len + 1);
+            memcpy(this->buf, str.data(), len);
+            this->buf[this->len] = '\0';
+        }
+    }
+
+    void operator=(const TransientString& str)
+    {
+        size_t len = str.size;
+        this->len = len;
+        this->buf = nullptr;
+        if (str.size != 0)
+        {
+            this->buf = AllocArray<char>(len + 1);
+            memcpy(this->buf, str.buf, len);
+            this->buf[this->len] = '\0';
+        }
+    }
+
+    void operator=(const ConstantString& str)
+    {
+        this->len = str.size;
+        this->buf = const_cast<char*>(str.buf);
+    }
+
+    FixedString(FixedString&& rhs) noexcept
+    {
+        this->buf = rhs.buf;
+        this->len = rhs.len;
+        rhs.buf = nullptr;
+        rhs.len = 0;
+    }
+
+    void operator=(FixedString&& rhs) noexcept
+    {
+        this->buf = rhs.buf;
+        this->len = rhs.len;
+        rhs.buf = nullptr;
+        rhs.len = 0;
+    }
+
+    bool operator==(const char* cmp) const
+    {
+        return strcmp(this->buf, cmp) == 0;
+    }
+
+    bool operator<(const FixedString& rhs) const
+    {
+        size_t min_size = this->len < rhs.len ? this->len : rhs.len;
+        for (size_t i = 0; i < min_size; i++)
+        {
+            char lhs_char = this->buf[i];
+            char rhs_char = rhs.buf[i];
+
+            if (lhs_char != rhs_char)
+                return lhs_char < rhs_char;
+        }
+        return this->len < rhs.len;
+    }
+
+    bool operator<(const std::string_view& rhs) const
+    {
+        size_t min_size = this->len < rhs.length() ? this->len : rhs.length();
+        for (size_t i = 0; i < min_size; i++)
+        {
+            char lhs_char = this->buf[i];
+            char rhs_char = rhs.data()[i];
+
+            if (lhs_char != rhs_char)
+                return lhs_char < rhs_char;
+        }
+        return this->len < rhs.length();
+    }
+
+    bool operator==(const FixedString& rhs) const
+    {
+        if (this->len != rhs.len)
+            return false;
+
+        for (size_t i = 0; i < this->len; i++)
+        {
+            char lhs_char = this->buf[i];
+            char rhs_char = rhs.buf[i];
+
+            if (lhs_char != rhs_char)
+                return false;
+        }
+        return true;
+    }
+
+    bool operator==(const ConstantString& rhs) const
+    {
+        if (this->len != rhs.size)
+            return false;
+
+        for (size_t i = 0; i < this->len; i++)
+        {
+            char lhs_char = this->buf[i];
+            char rhs_char = rhs.buf[i];
+
+            if (lhs_char != rhs_char)
+                return false;
+        }
+        return true;
+    }
+
+    bool operator==(const std::string& rhs) const
+    {
+        if (this->len != rhs.size())
+            return false;
+
+        for (size_t i = 0; i < this->len; i++)
+        {
+            char lhs_char = this->buf[i];
+            char rhs_char = rhs.data()[i];
+
+            if (lhs_char != rhs_char)
+                return false;
+        }
+        return true;
+    }
+
+    bool StartsWith(const char* str) const
+    {
+        if (this->buf == nullptr)
+        {
+            if (strlen(str) == 0)
+                return true;
+            else
+                return false;
+        }
+        return strncmp(this->buf, str, strlen(str)) == 0;
+    }
+
+    bool StartsWith(const std::string_view& str) const
+    {
+        if (this->buf == nullptr)
+        {
+            if (str.empty())
+                return true;
+            else
+                return false;
+        }
+        return strncmp(this->buf, str.data(), str.length()) == 0;
+    }
+
+    bool StartsWith(const std::string& str) const
+    {
+        if (this->buf == nullptr)
+        {
+            if (str.empty())
+                return true;
+            else
+                return false;
+        }
+        return strncmp(this->buf, str.data(), str.length()) == 0;
+    }
+
+    const char* c_str() const { return this->buf; }
+
+    std::string_view ToView() const { return std::string_view(this->buf, this->len); }
+
+    char* buf;
+    size_t len;
+};
+
 struct GrowingString
 {
     char* data = nullptr;
@@ -969,6 +1240,22 @@ struct GrowingString
         this->data[this->size] = '\0';
     }
 
+    void Append(const FixedString& arg)
+    {
+        size_t newSize = this->size + arg.len;
+        if (this->capacity <= newSize)
+        {
+            newSize = std::min((size_t)0xFFFFFFFu, newSize << 1);
+            char* newData = (char*)malloc(newSize * sizeof(char) + 2);
+            assert(newData != nullptr);
+            memcpy(newData, this->data, sizeof(char) * this->size);
+            this->data = newData;
+            this->capacity = newSize;
+        }
+        memcpy(this->data + this->size, arg.buf, arg.len * sizeof(char));
+        this->size += arg.len;
+        this->data[this->size] = '\0';
+    }
 
     void Clear()
     {
@@ -980,289 +1267,6 @@ struct GrowingString
     {
         free(this->data);
     }
-};
-
-struct FixedString
-{
-    FixedString()
-        : buf(nullptr)
-        , len(0)
-    {
-    }
-
-    FixedString(const char* buf)
-    {
-        size_t len = strlen(buf) + 1;
-        this->buf = AllocArray<char>(len);
-        this->len = len - 1;
-        memcpy(this->buf, buf, len - 1);
-        this->buf[this->len] = '\0';
-    }
-
-    FixedString(const char* start, const char* end)
-    {
-        size_t len = (end - start) + 1;
-        this->buf = AllocArray<char>(len);
-        this->len = len - 1;
-        memcpy(this->buf, start, len - 1);
-        this->buf[this->len] = '\0';
-    }
-
-    explicit FixedString(const std::string& str)
-    {
-        size_t len = str.length() + 1;
-        this->buf = AllocArray<char>(len);
-        this->len = len - 1;
-        memcpy(this->buf, str.data(), len - 1);
-        this->buf[this->len] = '\0';
-    }
-    
-    explicit FixedString(const TransientString& str)
-    {
-        size_t len = str.size + 1;
-        this->buf = AllocArray<char>(len);
-        this->len = len - 1;
-        memcpy(this->buf, str.buf, len - 1);
-        this->buf[this->len] = '\0';
-    }
-
-    explicit FixedString(const std::string_view& str)
-    {
-        size_t len = str.length() + 1;
-        this->buf = AllocArray<char>(len);
-        this->len = len - 1;
-        memcpy(this->buf, str.data(), len - 1);
-        this->buf[this->len] = '\0';
-    }
-    
-    explicit FixedString(const ConstantString& str)
-    {
-        this->buf = const_cast<char*>(str.buf);
-        this->len = str.size;
-    }
-
-    FixedString(const FixedString& rhs)
-    {
-        this->buf = rhs.buf;
-        this->len = rhs.len;
-    }
-
-    void operator=(const FixedString& rhs)
-    {
-        this->buf = rhs.buf;
-        this->len = rhs.len;
-    }
-
-    void operator=(const char* buf)
-    {
-        size_t len = strlen(buf);
-        this->len = len;
-        this->buf = nullptr;
-        if (len > 0)
-        {
-            this->buf = AllocArray<char>(len + 1);
-            memcpy(this->buf, buf, len);
-            this->buf[this->len] = '\0';
-        }
-    }
-
-    void operator=(const std::string& str)
-    {
-        size_t len = str.length();
-        this->len = len;
-        this->buf = nullptr;
-        if (!str.empty())
-        {
-            this->buf = AllocArray<char>(len + 1);
-            memcpy(this->buf, str.data(), len);
-            this->buf[this->len] = '\0';
-        }
-    }
-
-    void operator=(const std::string_view& str)
-    {
-        size_t len = str.length();
-        this->len = len;
-        this->buf = nullptr;
-        if (!str.empty())
-        {
-            this->buf = AllocArray<char>(len + 1);
-            memcpy(this->buf, str.data(), len);
-            this->buf[this->len] = '\0';
-        }
-    }
-
-    void operator=(const TransientString& str)
-    {
-        size_t len = str.size;
-        this->len = len;
-        this->buf = nullptr;
-        if (str.size != 0)
-        {
-            this->buf = AllocArray<char>(len + 1);
-            memcpy(this->buf, str.buf, len);
-            this->buf[this->len] = '\0';
-        }
-    }
-
-    void operator=(const GrowingString& str)
-    {
-        size_t len = str.size;
-        this->len = len;
-        this->buf = nullptr;
-        if (str.size != 0)
-        {
-            this->buf = AllocArray<char>(len + 1);
-            memcpy(this->buf, str.data, len);
-            this->buf[this->len] = '\0';
-        }
-    }
-    
-    void operator=(const ConstantString& str)
-    {
-        this->len = str.size;
-        this->buf = const_cast<char*>(str.buf);
-    }
-
-    FixedString(FixedString&& rhs) noexcept
-    {
-        this->buf = rhs.buf;
-        this->len = rhs.len;
-        rhs.buf = nullptr;
-        rhs.len = 0;
-    }
-
-    void operator=(FixedString&& rhs) noexcept
-    {
-        this->buf = rhs.buf;
-        this->len = rhs.len;
-        rhs.buf = nullptr;
-        rhs.len = 0;
-    }
-
-    bool operator==(const char* cmp) const
-    {
-        return strcmp(this->buf, cmp) == 0;
-    }
-
-    bool operator<(const FixedString& rhs) const
-    {
-        size_t min_size = this->len < rhs.len ? this->len : rhs.len;
-        for (size_t i = 0; i < min_size; i++)
-        {
-            char lhs_char = this->buf[i];
-            char rhs_char = rhs.buf[i];
-                
-            if (lhs_char != rhs_char)
-                return lhs_char < rhs_char;
-        }
-        return this->len < rhs.len;
-    }
-
-    bool operator<(const std::string_view& rhs) const
-    {
-        size_t min_size = this->len < rhs.length() ? this->len : rhs.length();
-        for (size_t i = 0; i < min_size; i++)
-        {
-            char lhs_char = this->buf[i];
-            char rhs_char = rhs.data()[i];
-                
-            if (lhs_char != rhs_char)
-                return lhs_char < rhs_char;
-        }
-        return this->len < rhs.length();
-    }
-
-    bool operator==(const FixedString& rhs) const
-    {
-        if (this->len != rhs.len)
-            return false;
-        
-        for (size_t i = 0; i < this->len; i++)
-        {
-            char lhs_char = this->buf[i];
-            char rhs_char = rhs.buf[i];
-                
-            if (lhs_char != rhs_char)
-                return false;
-        }
-        return true;
-    }
-
-    bool operator==(const ConstantString& rhs) const
-    {
-        if (this->len != rhs.size)
-            return false;
-        
-        for (size_t i = 0; i < this->len; i++)
-        {
-            char lhs_char = this->buf[i];
-            char rhs_char = rhs.buf[i];
-                
-            if (lhs_char != rhs_char)
-                return false;
-        }
-        return true;
-    }
-
-    bool operator==(const std::string& rhs) const
-    {
-        if (this->len != rhs.size())
-            return false;
-        
-        for (size_t i = 0; i < this->len; i++)
-        {
-            char lhs_char = this->buf[i];
-            char rhs_char = rhs.data()[i];
-                
-            if (lhs_char != rhs_char)
-                return false;
-        }
-        return true;
-    }
-    
-    bool StartsWith(const char* str) const
-    {
-        if (this->buf == nullptr)
-        {
-            if (strlen(str) == 0)
-                return true;
-            else
-                return false;
-        }
-        return strncmp(this->buf, str, strlen(str)) == 0;
-    }
-    
-    bool StartsWith(const std::string_view& str) const
-    {
-        if (this->buf == nullptr)
-        {
-            if (str.empty())
-                return true;
-            else
-                return false;
-        }
-        return strncmp(this->buf, str.data(), str.length()) == 0;
-    }
-    
-    bool StartsWith(const std::string& str) const
-    {
-        if (this->buf == nullptr)
-        {
-            if (str.empty())
-                return true;
-            else
-                return false;
-        }
-        return strncmp(this->buf, str.data(), str.length()) == 0;
-    }
-
-    const char* c_str() const { return this->buf; }
-    
-    std::string_view ToView() const { return std::string_view(this->buf, this->len); }
-
-    char* buf;
-    size_t len;
 };
 
 template<>

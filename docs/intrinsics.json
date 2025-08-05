@@ -288,6 +288,42 @@
         ]
     },
     {
+        "name": "atan2",
+        "documentation": "Returns the angle whose tangent is the quotient of the two specified numbers.",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "atan2(y: f32, x: f32) f32"
+            },
+            {
+                "signature": "atan2(y: f32x2, x: f32x2) f32x2"
+            },
+            {
+                "signature": "atan2(y: f32x3, x: f32x3) f32x3"
+            },
+            {
+                "signature": "atan2(y: f32x4, x: f32x4) f32x4"
+            },
+            {
+                "signature": "atan2(y: f16, x: f16) f16"
+            },
+            {
+                "signature": "atan2(y: f16x2, x: f16x2) f16x2"
+            },
+            {
+                "signature": "atan2(y: f16x3, x: f16x3) f16x3"
+            },
+            {
+                "signature": "atan2(y: f16x4, x: f16x4) f16x4"
+            }
+        ]
+    },
+    {
         "name": "atanh",
         "documentation": "Returns the hyperbolic arc tangent of a value.",
         "target_support": [
@@ -1570,22 +1606,22 @@
         ],
         "overloads": [
             {
-                "signature": "length(val: f32x2) f32x2"
+                "signature": "length(val: f32x2) f32"
             },
             {
-                "signature": "length(val: f32x3) f32x3"
+                "signature": "length(val: f32x3) f32"
             },
             {
-                "signature": "length(val: f32x4) f32x4"
+                "signature": "length(val: f32x4) f32"
             },
             {
-                "signature": "length(val: f16x2) f16x2"
+                "signature": "length(val: f16x2) f32"
             },
             {
-                "signature": "length(val: f16x3) f16x3"
+                "signature": "length(val: f16x3) f32"
             },
             {
-                "signature": "length(val: f16x4) f16x4"
+                "signature": "length(val: f16x4) f32"
             }
         ]
     },
@@ -1600,6 +1636,9 @@
         ],
         "overloads": [
             {
+                "signature": "lerp(a: f32, b: f32, t: f32) f32"
+            },
+            {
                 "signature": "lerp(a: f32x2, b: f32x2, t: f32x2) f32x2"
             },
             {
@@ -1607,6 +1646,9 @@
             },
             {
                 "signature": "lerp(a: f32x4, b: f32x4, t: f32x4) f32x4"
+            },
+            {
+                "signature": "lerp(a: f16, b: f16, t: f16) f16"
             },
             {
                 "signature": "lerp(a: f16x2, b: f16x2, t: f16x2) f16x2"
@@ -3413,30 +3455,6 @@
             },
             {
                 "signature": "tanh(val: f16x4) f16x4"
-            },
-            {
-                "signature": "tanh(y: f32, x: f32) f32"
-            },
-            {
-                "signature": "tanh(y: f32x2, x: f32x2) f32x2"
-            },
-            {
-                "signature": "tanh(y: f32x3, x: f32x3) f32x3"
-            },
-            {
-                "signature": "tanh(y: f32x4, x: f32x4) f32x4"
-            },
-            {
-                "signature": "tanh(y: f16, x: f16) f16"
-            },
-            {
-                "signature": "tanh(y: f16x2, x: f16x2) f16x2"
-            },
-            {
-                "signature": "tanh(y: f16x3, x: f16x3) f16x3"
-            },
-            {
-                "signature": "tanh(y: f16x4, x: f16x4) f16x4"
             }
         ]
     },

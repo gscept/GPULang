@@ -233,11 +233,27 @@ struct ConstantCreationInfo
         return ret;
     }
 
+    static ConstantCreationInfo Float32(const SPIRVResult& val)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::Float32;
+        ret.data.f = val.literalValue.f32;
+        return ret;
+    }
+
     static ConstantCreationInfo Float16(float val)
     {
         ConstantCreationInfo ret;
         ret.type = Type::Float16;
         ret.data.f = val;
+        return ret;
+    }
+
+    static ConstantCreationInfo Float16(const SPIRVResult& val)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::Float16;
+        ret.data.f = val.literalValue.f16;
         return ret;
     }
 
@@ -257,11 +273,27 @@ struct ConstantCreationInfo
         return ret;
     }
 
+    static ConstantCreationInfo UInt32(const SPIRVResult& val)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::UInt32;
+        ret.data.ui = val.literalValue.u32;
+        return ret;
+    }
+
     static ConstantCreationInfo UInt16(uint16_t val)
     {
         ConstantCreationInfo ret;
         ret.type = Type::UInt16;
         ret.data.ui = val;
+        return ret;
+    }
+
+    static ConstantCreationInfo UInt16(const SPIRVResult& val)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::UInt16;
+        ret.data.ui = val.literalValue.u16;
         return ret;
     }
 
@@ -281,11 +313,27 @@ struct ConstantCreationInfo
         return ret;
     }
 
+    static ConstantCreationInfo Int32(const SPIRVResult& val)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::Int32;
+        ret.data.i = val.literalValue.i32;
+        return ret;
+    }
+
     static ConstantCreationInfo Int16(int16_t val)
     {
         ConstantCreationInfo ret;
         ret.type = Type::Int16;
         ret.data.i = val;
+        return ret;
+    }
+
+    static ConstantCreationInfo Int16(const SPIRVResult& val)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::Int16;
+        ret.data.i = val.literalValue.i16;
         return ret;
     }
 
@@ -302,6 +350,14 @@ struct ConstantCreationInfo
         ConstantCreationInfo ret;
         ret.type = Type::Bool;
         ret.data.b = b;
+        return ret;
+    }
+
+    static ConstantCreationInfo Bool8(const SPIRVResult& val)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::Bool8;
+        ret.data.b = val.literalValue.b8;
         return ret;
     }
 };
@@ -2610,17 +2666,26 @@ LoadValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult 
     {
         switch (arg.literalValue.type)
         {
-        case SPIRVResult::LiteralValue::FloatType:
-            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Float(arg.literalValue.f));
+        case SPIRVResult::LiteralValue::Float32Type:
+            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Float(arg.literalValue.f32));
             break;
-        case SPIRVResult::LiteralValue::IntType:
-            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Int(arg.literalValue.i));
+        case SPIRVResult::LiteralValue::Float16Type:
+            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Float16(arg.literalValue.f16));
             break;
-        case SPIRVResult::LiteralValue::UIntType:
-            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::UInt(arg.literalValue.ui));
+        case SPIRVResult::LiteralValue::Int32Type:
+            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Int(arg.literalValue.i32));
             break;
-        case SPIRVResult::LiteralValue::BoolType:
-            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Bool(arg.literalValue.b));
+        case SPIRVResult::LiteralValue::Int16Type:
+            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Int(arg.literalValue.i16));
+            break;
+        case SPIRVResult::LiteralValue::UInt32Type:
+            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::UInt(arg.literalValue.u32));
+            break;
+        case SPIRVResult::LiteralValue::UInt16Type:
+            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::UInt(arg.literalValue.u16));
+            break;
+        case SPIRVResult::LiteralValue::Bool8Type:
+            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Bool(arg.literalValue.b8));
             break;
         }
         return arg;
@@ -3859,41 +3924,17 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
         // Create arg list from argument expressions
         for (size_t i = 0; i < callExpression->args.size; i++)
         {
-            Variable* var = resolvedCall->function->parameters.buf[i];
-            Variable::__Resolved* varResolved = Symbol::Resolved(var);
+            Variable* param = resolvedCall->function->parameters.buf[i];
+            Variable::__Resolved* paramResolved = Symbol::Resolved(param);
 
             // If an argument is a literal, evalute it directly
-            if (!var->type.literal)
+            if (!param->type.literal)
             {
                 if (resolvedCall->argumentTypes[i].literal)
                 {
                     ValueUnion val;
                     callExpression->args[i]->EvalValue(val);
-                    val.Convert(varResolved->typeSymbol->baseType);
-                    val.Expand(varResolved->typeSymbol->columnSize, varResolved->typeSymbol->rowSize);
-                    SPIRVResult literalResults[16] = { };
-                    uint32_t resultsIterator = 0;
-                    SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, var->type, varResolved->typeSymbol);
-
-    #define X(Type, type, ty)\
-        for (size_t i = 0; i < val.columnSize; i++)\
-        {\
-            for (size_t j = 0; j < val.rowSize; j++)\
-            {\
-                literalResults[resultsIterator] = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Type(val.type[resultsIterator]));\
-                resultsIterator++;\
-            }\
-        }\
-        if (resultsIterator > 1)\
-            args.push_back(GenerateCompositeSPIRV(compiler, generator, typeName.typeName, std::vector<SPIRVResult>(literalResults, literalResults + resultsIterator)));\
-        else\
-            args.push_back(literalResults[0]);
-                                    
-                    switch(varResolved->typeSymbol->baseType)
-                    {
-                        VALUE_UNION_SWITCH()
-                    }
-#undef  X
+                    args.push_back(SPIRVResult(val));
                 }
                 else
                 {
@@ -3904,7 +3945,6 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
                     Function* converter = resolvedCall->conversions[i];
                     if (converter != nullptr)
                     {
-                        
                         Function::__Resolved* converterResolved = Symbol::Resolved(converter);
                         SPIRVResult returnTypeName = GenerateTypeSPIRV(compiler, generator, converter->returnType, converterResolved->returnTypeSymbol);
                         std::vector<SPIRVResult> tempArgs{ args[i] };
@@ -3923,19 +3963,12 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
                     }
                 }
             }
-            else
+            else // Param must be literal
             {
                 ValueUnion val;
-                callExpression->args[i]->EvalValue(val);
-                val.Convert(varResolved->typeSymbol->baseType);
-#define X(Type, type, ty)\
-        args.push_back(SPIRVResult(val.type[0]));
-
-                switch(varResolved->typeSymbol->baseType)
-                {
-                    VALUE_UNION_SWITCH()
-                }
-#undef X
+                bool res = callExpression->args[i]->EvalValue(val);
+                assert(res);
+                args.push_back(SPIRVResult(val));
             }
         }
 
