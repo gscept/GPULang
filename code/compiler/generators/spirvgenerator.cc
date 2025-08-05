@@ -2667,25 +2667,25 @@ LoadValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult 
         switch (arg.literalValue.type)
         {
         case SPIRVResult::LiteralValue::Float32Type:
-            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Float(arg.literalValue.f32));
+            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Float32(arg.literalValue.f32));
             break;
         case SPIRVResult::LiteralValue::Float16Type:
             arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Float16(arg.literalValue.f16));
             break;
         case SPIRVResult::LiteralValue::Int32Type:
-            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Int(arg.literalValue.i32));
+            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Int32(arg.literalValue.i32));
             break;
         case SPIRVResult::LiteralValue::Int16Type:
-            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Int(arg.literalValue.i16));
+            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Int16(arg.literalValue.i16));
             break;
         case SPIRVResult::LiteralValue::UInt32Type:
-            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::UInt(arg.literalValue.u32));
+            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::UInt32(arg.literalValue.u32));
             break;
         case SPIRVResult::LiteralValue::UInt16Type:
-            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::UInt(arg.literalValue.u16));
+            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::UInt16(arg.literalValue.u16));
             break;
         case SPIRVResult::LiteralValue::Bool8Type:
-            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Bool(arg.literalValue.b8));
+            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Bool8(arg.literalValue.b8));
             break;
         }
         return arg;
