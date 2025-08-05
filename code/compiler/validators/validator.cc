@@ -2585,9 +2585,13 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             compiler->Error(Format("Sampler can not be mutable", type->name.c_str()), symbol);
             return false;
         }
+        else if (type->category == Type::SampledTextureCategory)
+        {
+            compiler->Error(Format("Sampled textures can not be mutable", type->name.c_str()), symbol);
+            return false;
+        }
         else if (type->category == Type::PixelCacheCategory)
         {
-
             compiler->Error(Format("PixelCache can not be mutable", type->name.c_str()), symbol);
             return false;
         }

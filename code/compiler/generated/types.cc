@@ -5531,52 +5531,52 @@ Bool8x2::Bool8x2()
     Bool8x2_operator_oror_Bool8x2_arg.type = Type::FullType{ Bool8x2Type.name };
     Bool8x2_operator_oror_Bool8x2.name = "operator||"_c;
     Bool8x2_operator_oror_Bool8x2.backendIndex = 358;
-    Bool8x2_operator_oror_Bool8x2.returnType = Type::FullType { Bool8Type.name };
+    Bool8x2_operator_oror_Bool8x2.returnType = Type::FullType { Bool8x2Type.name };
     Bool8x2_operator_oror_Bool8x2.parameters = Bool8x2_operator_oror_Bool8x2_args;
     Symbol::Resolved(&Bool8x2_operator_oror_Bool8x2_arg)->typeSymbol = &Bool8x2Type;
-    Symbol::Resolved(&Bool8x2_operator_oror_Bool8x2)->signature = "b8 operator||(b8x2)"_c;
+    Symbol::Resolved(&Bool8x2_operator_oror_Bool8x2)->signature = "b8x2 operator||(b8x2)"_c;
     Symbol::Resolved(&Bool8x2_operator_oror_Bool8x2)->name = "operator||(b8x2)"_c;
     Symbol::Resolved(&Bool8x2_operator_oror_Bool8x2)->nameWithVarNames = "operator||(arg : b8x2)"_c;
-    Symbol::Resolved(&Bool8x2_operator_oror_Bool8x2)->returnTypeSymbol = &Bool8Type;
+    Symbol::Resolved(&Bool8x2_operator_oror_Bool8x2)->returnTypeSymbol = &Bool8x2Type;
 
     /// operator&& with Bool8x2
     Bool8x2_operator_andand_Bool8x2_arg.name = "arg"_c;
     Bool8x2_operator_andand_Bool8x2_arg.type = Type::FullType{ Bool8x2Type.name };
     Bool8x2_operator_andand_Bool8x2.name = "operator&&"_c;
     Bool8x2_operator_andand_Bool8x2.backendIndex = 359;
-    Bool8x2_operator_andand_Bool8x2.returnType = Type::FullType { Bool8Type.name };
+    Bool8x2_operator_andand_Bool8x2.returnType = Type::FullType { Bool8x2Type.name };
     Bool8x2_operator_andand_Bool8x2.parameters = Bool8x2_operator_andand_Bool8x2_args;
     Symbol::Resolved(&Bool8x2_operator_andand_Bool8x2_arg)->typeSymbol = &Bool8x2Type;
-    Symbol::Resolved(&Bool8x2_operator_andand_Bool8x2)->signature = "b8 operator&&(b8x2)"_c;
+    Symbol::Resolved(&Bool8x2_operator_andand_Bool8x2)->signature = "b8x2 operator&&(b8x2)"_c;
     Symbol::Resolved(&Bool8x2_operator_andand_Bool8x2)->name = "operator&&(b8x2)"_c;
     Symbol::Resolved(&Bool8x2_operator_andand_Bool8x2)->nameWithVarNames = "operator&&(arg : b8x2)"_c;
-    Symbol::Resolved(&Bool8x2_operator_andand_Bool8x2)->returnTypeSymbol = &Bool8Type;
+    Symbol::Resolved(&Bool8x2_operator_andand_Bool8x2)->returnTypeSymbol = &Bool8x2Type;
 
     /// operator== with Bool8x2
     Bool8x2_operator_eq_Bool8x2_arg.name = "arg"_c;
     Bool8x2_operator_eq_Bool8x2_arg.type = Type::FullType{ Bool8x2Type.name };
     Bool8x2_operator_eq_Bool8x2.name = "operator=="_c;
     Bool8x2_operator_eq_Bool8x2.backendIndex = 360;
-    Bool8x2_operator_eq_Bool8x2.returnType = Type::FullType { Bool8Type.name };
+    Bool8x2_operator_eq_Bool8x2.returnType = Type::FullType { Bool8x2Type.name };
     Bool8x2_operator_eq_Bool8x2.parameters = Bool8x2_operator_eq_Bool8x2_args;
     Symbol::Resolved(&Bool8x2_operator_eq_Bool8x2_arg)->typeSymbol = &Bool8x2Type;
-    Symbol::Resolved(&Bool8x2_operator_eq_Bool8x2)->signature = "b8 operator==(b8x2)"_c;
+    Symbol::Resolved(&Bool8x2_operator_eq_Bool8x2)->signature = "b8x2 operator==(b8x2)"_c;
     Symbol::Resolved(&Bool8x2_operator_eq_Bool8x2)->name = "operator==(b8x2)"_c;
     Symbol::Resolved(&Bool8x2_operator_eq_Bool8x2)->nameWithVarNames = "operator==(arg : b8x2)"_c;
-    Symbol::Resolved(&Bool8x2_operator_eq_Bool8x2)->returnTypeSymbol = &Bool8Type;
+    Symbol::Resolved(&Bool8x2_operator_eq_Bool8x2)->returnTypeSymbol = &Bool8x2Type;
 
     /// operator!= with Bool8x2
     Bool8x2_operator_neq_Bool8x2_arg.name = "arg"_c;
     Bool8x2_operator_neq_Bool8x2_arg.type = Type::FullType{ Bool8x2Type.name };
     Bool8x2_operator_neq_Bool8x2.name = "operator!="_c;
     Bool8x2_operator_neq_Bool8x2.backendIndex = 361;
-    Bool8x2_operator_neq_Bool8x2.returnType = Type::FullType { Bool8Type.name };
+    Bool8x2_operator_neq_Bool8x2.returnType = Type::FullType { Bool8x2Type.name };
     Bool8x2_operator_neq_Bool8x2.parameters = Bool8x2_operator_neq_Bool8x2_args;
     Symbol::Resolved(&Bool8x2_operator_neq_Bool8x2_arg)->typeSymbol = &Bool8x2Type;
-    Symbol::Resolved(&Bool8x2_operator_neq_Bool8x2)->signature = "b8 operator!=(b8x2)"_c;
+    Symbol::Resolved(&Bool8x2_operator_neq_Bool8x2)->signature = "b8x2 operator!=(b8x2)"_c;
     Symbol::Resolved(&Bool8x2_operator_neq_Bool8x2)->name = "operator!=(b8x2)"_c;
     Symbol::Resolved(&Bool8x2_operator_neq_Bool8x2)->nameWithVarNames = "operator!=(arg : b8x2)"_c;
-    Symbol::Resolved(&Bool8x2_operator_neq_Bool8x2)->returnTypeSymbol = &Bool8Type;
+    Symbol::Resolved(&Bool8x2_operator_neq_Bool8x2)->returnTypeSymbol = &Bool8x2Type;
 
     this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 76> { 
         std::pair{ "g"_c, &Bool8Type },
@@ -10316,52 +10316,52 @@ Bool8x3::Bool8x3()
     Bool8x3_operator_oror_Bool8x3_arg.type = Type::FullType{ Bool8x3Type.name };
     Bool8x3_operator_oror_Bool8x3.name = "operator||"_c;
     Bool8x3_operator_oror_Bool8x3.backendIndex = 653;
-    Bool8x3_operator_oror_Bool8x3.returnType = Type::FullType { Bool8Type.name };
+    Bool8x3_operator_oror_Bool8x3.returnType = Type::FullType { Bool8x3Type.name };
     Bool8x3_operator_oror_Bool8x3.parameters = Bool8x3_operator_oror_Bool8x3_args;
     Symbol::Resolved(&Bool8x3_operator_oror_Bool8x3_arg)->typeSymbol = &Bool8x3Type;
-    Symbol::Resolved(&Bool8x3_operator_oror_Bool8x3)->signature = "b8 operator||(b8x3)"_c;
+    Symbol::Resolved(&Bool8x3_operator_oror_Bool8x3)->signature = "b8x3 operator||(b8x3)"_c;
     Symbol::Resolved(&Bool8x3_operator_oror_Bool8x3)->name = "operator||(b8x3)"_c;
     Symbol::Resolved(&Bool8x3_operator_oror_Bool8x3)->nameWithVarNames = "operator||(arg : b8x3)"_c;
-    Symbol::Resolved(&Bool8x3_operator_oror_Bool8x3)->returnTypeSymbol = &Bool8Type;
+    Symbol::Resolved(&Bool8x3_operator_oror_Bool8x3)->returnTypeSymbol = &Bool8x3Type;
 
     /// operator&& with Bool8x3
     Bool8x3_operator_andand_Bool8x3_arg.name = "arg"_c;
     Bool8x3_operator_andand_Bool8x3_arg.type = Type::FullType{ Bool8x3Type.name };
     Bool8x3_operator_andand_Bool8x3.name = "operator&&"_c;
     Bool8x3_operator_andand_Bool8x3.backendIndex = 654;
-    Bool8x3_operator_andand_Bool8x3.returnType = Type::FullType { Bool8Type.name };
+    Bool8x3_operator_andand_Bool8x3.returnType = Type::FullType { Bool8x3Type.name };
     Bool8x3_operator_andand_Bool8x3.parameters = Bool8x3_operator_andand_Bool8x3_args;
     Symbol::Resolved(&Bool8x3_operator_andand_Bool8x3_arg)->typeSymbol = &Bool8x3Type;
-    Symbol::Resolved(&Bool8x3_operator_andand_Bool8x3)->signature = "b8 operator&&(b8x3)"_c;
+    Symbol::Resolved(&Bool8x3_operator_andand_Bool8x3)->signature = "b8x3 operator&&(b8x3)"_c;
     Symbol::Resolved(&Bool8x3_operator_andand_Bool8x3)->name = "operator&&(b8x3)"_c;
     Symbol::Resolved(&Bool8x3_operator_andand_Bool8x3)->nameWithVarNames = "operator&&(arg : b8x3)"_c;
-    Symbol::Resolved(&Bool8x3_operator_andand_Bool8x3)->returnTypeSymbol = &Bool8Type;
+    Symbol::Resolved(&Bool8x3_operator_andand_Bool8x3)->returnTypeSymbol = &Bool8x3Type;
 
     /// operator== with Bool8x3
     Bool8x3_operator_eq_Bool8x3_arg.name = "arg"_c;
     Bool8x3_operator_eq_Bool8x3_arg.type = Type::FullType{ Bool8x3Type.name };
     Bool8x3_operator_eq_Bool8x3.name = "operator=="_c;
     Bool8x3_operator_eq_Bool8x3.backendIndex = 655;
-    Bool8x3_operator_eq_Bool8x3.returnType = Type::FullType { Bool8Type.name };
+    Bool8x3_operator_eq_Bool8x3.returnType = Type::FullType { Bool8x3Type.name };
     Bool8x3_operator_eq_Bool8x3.parameters = Bool8x3_operator_eq_Bool8x3_args;
     Symbol::Resolved(&Bool8x3_operator_eq_Bool8x3_arg)->typeSymbol = &Bool8x3Type;
-    Symbol::Resolved(&Bool8x3_operator_eq_Bool8x3)->signature = "b8 operator==(b8x3)"_c;
+    Symbol::Resolved(&Bool8x3_operator_eq_Bool8x3)->signature = "b8x3 operator==(b8x3)"_c;
     Symbol::Resolved(&Bool8x3_operator_eq_Bool8x3)->name = "operator==(b8x3)"_c;
     Symbol::Resolved(&Bool8x3_operator_eq_Bool8x3)->nameWithVarNames = "operator==(arg : b8x3)"_c;
-    Symbol::Resolved(&Bool8x3_operator_eq_Bool8x3)->returnTypeSymbol = &Bool8Type;
+    Symbol::Resolved(&Bool8x3_operator_eq_Bool8x3)->returnTypeSymbol = &Bool8x3Type;
 
     /// operator!= with Bool8x3
     Bool8x3_operator_neq_Bool8x3_arg.name = "arg"_c;
     Bool8x3_operator_neq_Bool8x3_arg.type = Type::FullType{ Bool8x3Type.name };
     Bool8x3_operator_neq_Bool8x3.name = "operator!="_c;
     Bool8x3_operator_neq_Bool8x3.backendIndex = 656;
-    Bool8x3_operator_neq_Bool8x3.returnType = Type::FullType { Bool8Type.name };
+    Bool8x3_operator_neq_Bool8x3.returnType = Type::FullType { Bool8x3Type.name };
     Bool8x3_operator_neq_Bool8x3.parameters = Bool8x3_operator_neq_Bool8x3_args;
     Symbol::Resolved(&Bool8x3_operator_neq_Bool8x3_arg)->typeSymbol = &Bool8x3Type;
-    Symbol::Resolved(&Bool8x3_operator_neq_Bool8x3)->signature = "b8 operator!=(b8x3)"_c;
+    Symbol::Resolved(&Bool8x3_operator_neq_Bool8x3)->signature = "b8x3 operator!=(b8x3)"_c;
     Symbol::Resolved(&Bool8x3_operator_neq_Bool8x3)->name = "operator!=(b8x3)"_c;
     Symbol::Resolved(&Bool8x3_operator_neq_Bool8x3)->nameWithVarNames = "operator!=(arg : b8x3)"_c;
-    Symbol::Resolved(&Bool8x3_operator_neq_Bool8x3)->returnTypeSymbol = &Bool8Type;
+    Symbol::Resolved(&Bool8x3_operator_neq_Bool8x3)->returnTypeSymbol = &Bool8x3Type;
 
     this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 256> { 
         std::pair{ "b"_c, &Bool8Type },
@@ -17141,52 +17141,52 @@ Bool8x4::Bool8x4()
     Bool8x4_operator_oror_Bool8x4_arg.type = Type::FullType{ Bool8x4Type.name };
     Bool8x4_operator_oror_Bool8x4.name = "operator||"_c;
     Bool8x4_operator_oror_Bool8x4.backendIndex = 970;
-    Bool8x4_operator_oror_Bool8x4.returnType = Type::FullType { Bool8Type.name };
+    Bool8x4_operator_oror_Bool8x4.returnType = Type::FullType { Bool8x4Type.name };
     Bool8x4_operator_oror_Bool8x4.parameters = Bool8x4_operator_oror_Bool8x4_args;
     Symbol::Resolved(&Bool8x4_operator_oror_Bool8x4_arg)->typeSymbol = &Bool8x4Type;
-    Symbol::Resolved(&Bool8x4_operator_oror_Bool8x4)->signature = "b8 operator||(b8x4)"_c;
+    Symbol::Resolved(&Bool8x4_operator_oror_Bool8x4)->signature = "b8x4 operator||(b8x4)"_c;
     Symbol::Resolved(&Bool8x4_operator_oror_Bool8x4)->name = "operator||(b8x4)"_c;
     Symbol::Resolved(&Bool8x4_operator_oror_Bool8x4)->nameWithVarNames = "operator||(arg : b8x4)"_c;
-    Symbol::Resolved(&Bool8x4_operator_oror_Bool8x4)->returnTypeSymbol = &Bool8Type;
+    Symbol::Resolved(&Bool8x4_operator_oror_Bool8x4)->returnTypeSymbol = &Bool8x4Type;
 
     /// operator&& with Bool8x4
     Bool8x4_operator_andand_Bool8x4_arg.name = "arg"_c;
     Bool8x4_operator_andand_Bool8x4_arg.type = Type::FullType{ Bool8x4Type.name };
     Bool8x4_operator_andand_Bool8x4.name = "operator&&"_c;
     Bool8x4_operator_andand_Bool8x4.backendIndex = 971;
-    Bool8x4_operator_andand_Bool8x4.returnType = Type::FullType { Bool8Type.name };
+    Bool8x4_operator_andand_Bool8x4.returnType = Type::FullType { Bool8x4Type.name };
     Bool8x4_operator_andand_Bool8x4.parameters = Bool8x4_operator_andand_Bool8x4_args;
     Symbol::Resolved(&Bool8x4_operator_andand_Bool8x4_arg)->typeSymbol = &Bool8x4Type;
-    Symbol::Resolved(&Bool8x4_operator_andand_Bool8x4)->signature = "b8 operator&&(b8x4)"_c;
+    Symbol::Resolved(&Bool8x4_operator_andand_Bool8x4)->signature = "b8x4 operator&&(b8x4)"_c;
     Symbol::Resolved(&Bool8x4_operator_andand_Bool8x4)->name = "operator&&(b8x4)"_c;
     Symbol::Resolved(&Bool8x4_operator_andand_Bool8x4)->nameWithVarNames = "operator&&(arg : b8x4)"_c;
-    Symbol::Resolved(&Bool8x4_operator_andand_Bool8x4)->returnTypeSymbol = &Bool8Type;
+    Symbol::Resolved(&Bool8x4_operator_andand_Bool8x4)->returnTypeSymbol = &Bool8x4Type;
 
     /// operator== with Bool8x4
     Bool8x4_operator_eq_Bool8x4_arg.name = "arg"_c;
     Bool8x4_operator_eq_Bool8x4_arg.type = Type::FullType{ Bool8x4Type.name };
     Bool8x4_operator_eq_Bool8x4.name = "operator=="_c;
     Bool8x4_operator_eq_Bool8x4.backendIndex = 972;
-    Bool8x4_operator_eq_Bool8x4.returnType = Type::FullType { Bool8Type.name };
+    Bool8x4_operator_eq_Bool8x4.returnType = Type::FullType { Bool8x4Type.name };
     Bool8x4_operator_eq_Bool8x4.parameters = Bool8x4_operator_eq_Bool8x4_args;
     Symbol::Resolved(&Bool8x4_operator_eq_Bool8x4_arg)->typeSymbol = &Bool8x4Type;
-    Symbol::Resolved(&Bool8x4_operator_eq_Bool8x4)->signature = "b8 operator==(b8x4)"_c;
+    Symbol::Resolved(&Bool8x4_operator_eq_Bool8x4)->signature = "b8x4 operator==(b8x4)"_c;
     Symbol::Resolved(&Bool8x4_operator_eq_Bool8x4)->name = "operator==(b8x4)"_c;
     Symbol::Resolved(&Bool8x4_operator_eq_Bool8x4)->nameWithVarNames = "operator==(arg : b8x4)"_c;
-    Symbol::Resolved(&Bool8x4_operator_eq_Bool8x4)->returnTypeSymbol = &Bool8Type;
+    Symbol::Resolved(&Bool8x4_operator_eq_Bool8x4)->returnTypeSymbol = &Bool8x4Type;
 
     /// operator!= with Bool8x4
     Bool8x4_operator_neq_Bool8x4_arg.name = "arg"_c;
     Bool8x4_operator_neq_Bool8x4_arg.type = Type::FullType{ Bool8x4Type.name };
     Bool8x4_operator_neq_Bool8x4.name = "operator!="_c;
     Bool8x4_operator_neq_Bool8x4.backendIndex = 973;
-    Bool8x4_operator_neq_Bool8x4.returnType = Type::FullType { Bool8Type.name };
+    Bool8x4_operator_neq_Bool8x4.returnType = Type::FullType { Bool8x4Type.name };
     Bool8x4_operator_neq_Bool8x4.parameters = Bool8x4_operator_neq_Bool8x4_args;
     Symbol::Resolved(&Bool8x4_operator_neq_Bool8x4_arg)->typeSymbol = &Bool8x4Type;
-    Symbol::Resolved(&Bool8x4_operator_neq_Bool8x4)->signature = "b8 operator!=(b8x4)"_c;
+    Symbol::Resolved(&Bool8x4_operator_neq_Bool8x4)->signature = "b8x4 operator!=(b8x4)"_c;
     Symbol::Resolved(&Bool8x4_operator_neq_Bool8x4)->name = "operator!=(b8x4)"_c;
     Symbol::Resolved(&Bool8x4_operator_neq_Bool8x4)->nameWithVarNames = "operator!=(arg : b8x4)"_c;
-    Symbol::Resolved(&Bool8x4_operator_neq_Bool8x4)->returnTypeSymbol = &Bool8Type;
+    Symbol::Resolved(&Bool8x4_operator_neq_Bool8x4)->returnTypeSymbol = &Bool8x4Type;
 
     this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, 696> { 
         std::pair{ "a"_c, &Bool8Type },

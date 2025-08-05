@@ -406,6 +406,7 @@ SPV_INSTRUCTION(OpFunctionParameter, 55, 3, false)
 SPV_INSTRUCTION(OpFunctionEnd, 56, 1, false)
 SPV_INSTRUCTION(OpFunctionCall, 57, 4, true)
 SPV_INSTRUCTION(OpVariable, 59, 4, true)
+SPV_INSTRUCTION(OpImageTexelPointer, 60, 6, false)
 SPV_INSTRUCTION(OpAccessChain, 65, 4, true)
 SPV_INSTRUCTION(OpLoad, 61, 4, true)
 SPV_INSTRUCTION(OpStore, 62, 3, true)
@@ -466,6 +467,8 @@ SPV_INSTRUCTION(OpMatrixTimesMatrix, 146, 5, false)
 SPV_INSTRUCTION(OpDot, 148, 5, false)
 SPV_INSTRUCTION(OpAny, 154, 4, false)
 SPV_INSTRUCTION(OpAll, 155, 4, false)
+SPV_INSTRUCTION(OpLogicalEqual, 164, 5, false)
+SPV_INSTRUCTION(OpLogicalNotEqual, 165, 5, false)
 SPV_INSTRUCTION(OpLogicalOr, 166, 5, false)
 SPV_INSTRUCTION(OpLogicalAnd, 167, 5, false)
 SPV_INSTRUCTION(OpLogicalNot, 168, 5, false)
@@ -912,6 +915,8 @@ SPVEnum ScopeToEnum(SPIRVResult::Storage s)
         case SPIRVResult::Storage::MutableImage:
         case SPIRVResult::Storage::UniformConstant:
             return VariableStorage::UniformConstant;
+        case SPIRVResult::Storage::TexelPointer:
+            return VariableStorage::Image;
         case SPIRVResult::Storage::StorageBuffer:
             return VariableStorage::StorageBuffer;
         case SPIRVResult::Storage::PushConstant:
@@ -2322,8 +2327,7 @@ GenerateTypeSPIRV(
         else
             sampleBits = 1;
 
-        if (typeSymbol->baseType == TypeCode::Texture1D || typeSymbol->baseType == TypeCode::Texture1DArray
-            || typeSymbol->baseType == TypeCode::SampledTexture1D || typeSymbol->baseType == TypeCode::SampledTexture1DArray)
+        if (typeSymbol->baseType == TypeCode::Texture1D || typeSymbol->baseType == TypeCode::Texture1DArray)
         {
             generator->writer->Capability(Capabilities::Sampled1D);
         }
@@ -2332,6 +2336,32 @@ GenerateTypeSPIRV(
         TStr gpuLangStr = TStr::Compact(spirvFormat, "_", gpulangType, "Sample_", sampleBits, "Depth_", depthBits);
         if (extension.size > 0)
         {   
+            generator->writer->Capability(cap);
+        }
+        auto handleGenerator = generators.find(typeSymbol->baseType);
+        uint32_t name = handleGenerator->second(generator, gpuLangStr, floatType, depthBits, sampleBits, format);
+
+        TStr ty = spirvFormatter(floatType, depthBits, sampleBits, spirvFormat.buf);
+        baseType = std::tie(name, gpuLangStr);
+    }
+    else if (typeSymbol->category == Type::SampledTextureCategory)
+    {
+        uint32_t floatType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::Float, 1);
+        auto handleTypeIt = handleTable.find(typeSymbol->baseType);
+        auto [gpulangType, spirvFormatter] = handleTypeIt->second;
+
+        std::string accessPattern = "";
+        uint32_t sampleBits = 1, depthBits = 0;
+
+        if (typeSymbol->baseType == TypeCode::SampledTexture1D || typeSymbol->baseType == TypeCode::SampledTexture1DArray)
+        {
+            generator->writer->Capability(Capabilities::Sampled1D);
+        }
+
+        auto [spirvFormat, extension, format, cap] = imageFormatToSpirvType[type.imageFormat];
+        TStr gpuLangStr = TStr::Compact(spirvFormat, "_", gpulangType, "Sample_", sampleBits, "Depth_", depthBits);
+        if (extension.size > 0)
+        {
             generator->writer->Capability(cap);
         }
         auto handleGenerator = generators.find(typeSymbol->baseType);
@@ -3714,7 +3744,7 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
             {
                 assert(varResolved->valueConversionFunction->backendIndex != UINT64_MAX && varResolved->valueConversionFunction->backendIndex < SPIRVDefaultIntrinsics.size());
                 auto it = SPIRVDefaultIntrinsics[varResolved->valueConversionFunction->backendIndex];
-                it(compiler, generator, typeName.typeName, { initializer });
+                initializer = it(compiler, generator, typeName.typeName, { initializer });
             }
             else
                 initializer = it->second(compiler, generator, typeName.typeName, { initializer });
@@ -3935,7 +3965,7 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
                     ValueUnion val;
                     callExpression->args[i]->EvalValue(val);
                     SPIRVResult arg = SPIRVResult(val);
-                    arg.ConvertTo(paramResolved->typeSymbol->baseType);
+                    arg = arg.ConvertTo(paramResolved->typeSymbol->baseType);
                     if (paramResolved->typeSymbol->columnSize > 1)
                     {
                         SPIRVResult ty = GenerateTypeSPIRV(compiler, generator, param->type, paramResolved->typeSymbol);
@@ -3976,7 +4006,7 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
                 bool res = callExpression->args[i]->EvalValue(val);
                 assert(res);
                 SPIRVResult arg = SPIRVResult(val);
-                arg.ConvertTo(paramResolved->typeSymbol->baseType);
+                arg = arg.ConvertTo(paramResolved->typeSymbol->baseType);
                 if (paramResolved->typeSymbol->columnSize > 1)
                 {
                     SPIRVResult ty = GenerateTypeSPIRV(compiler, generator, param->type, paramResolved->typeSymbol);

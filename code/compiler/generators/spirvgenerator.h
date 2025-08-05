@@ -62,7 +62,6 @@ struct SPIRVResult
         };
 
         TypeCode type;
-        
     } literalValue;
 
     SPIRVResult ConvertTo(TypeCode toType) const
@@ -253,6 +252,7 @@ struct SPIRVResult
         Function,
         Image,
         MutableImage,
+        TexelPointer,                           // variable is a pointer to a texel
         Input,
         Output,
         RayPayload,                             // variable is a ray payload
@@ -279,6 +279,8 @@ struct SPIRVResult
             case Storage::MutableImage:
             case Storage::UniformConstant:
                 return "UniformConstant";
+            case Storage::TexelPointer:
+                return "Image";
             case Storage::StorageBuffer:
                 return "StorageBuffer";
             case Storage::PushConstant:

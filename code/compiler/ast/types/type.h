@@ -131,6 +131,8 @@ enum class TypeCode
     , PixelCache
     , PixelCacheMS
     , AccelerationStructure
+    
+    , TexelPointer
 
     , Buffer
 
@@ -172,6 +174,7 @@ struct Type : public Symbol
         VoidCategory,
         SamplerCategory,
         AccelerationStructureCategory,
+        TexelPointerCategory,
 
         // Special categories
         RenderStateCategory,
