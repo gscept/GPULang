@@ -953,9 +953,7 @@ SPIRVResult SPIRV_Float32_from_Int16(const Compiler* c, SPIRVGenerator* g, uint3
 SPIRVResult SPIRV_Float32_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[1];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
     return convertedArgs[0];
 }
@@ -963,7 +961,7 @@ SPIRVResult SPIRV_Float32_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Float32_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32_operator_index_Int32.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -976,7 +974,7 @@ SPIRVResult SPIRV_Float32_operator_index_Int32(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_Float32_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32_operator_index_UInt32.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -989,7 +987,7 @@ SPIRVResult SPIRV_Float32_operator_index_UInt32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_Float32_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32_operator_index_Int16.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -1002,7 +1000,7 @@ SPIRVResult SPIRV_Float32_operator_index_Int16(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_Float32_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32_operator_index_UInt16.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -1165,9 +1163,7 @@ SPIRVResult SPIRV_UInt32_from_Int16(const Compiler* c, SPIRVGenerator* g, uint32
 SPIRVResult SPIRV_UInt32_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[1];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
     return convertedArgs[0];
 }
@@ -1175,7 +1171,7 @@ SPIRVResult SPIRV_UInt32_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t re
 SPIRVResult SPIRV_UInt32_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt32_operator_index_Int32.returnType, &UInt32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -1188,7 +1184,7 @@ SPIRVResult SPIRV_UInt32_operator_index_Int32(const Compiler* c, SPIRVGenerator*
 SPIRVResult SPIRV_UInt32_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt32_operator_index_UInt32.returnType, &UInt32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -1201,7 +1197,7 @@ SPIRVResult SPIRV_UInt32_operator_index_UInt32(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_UInt32_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt32_operator_index_Int16.returnType, &UInt32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -1214,7 +1210,7 @@ SPIRVResult SPIRV_UInt32_operator_index_Int16(const Compiler* c, SPIRVGenerator*
 SPIRVResult SPIRV_UInt32_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt32_operator_index_UInt16.returnType, &UInt32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -1457,9 +1453,7 @@ SPIRVResult SPIRV_Int32_from_Int16(const Compiler* c, SPIRVGenerator* g, uint32_
 SPIRVResult SPIRV_Int32_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[1];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
     return convertedArgs[0];
 }
@@ -1467,7 +1461,7 @@ SPIRVResult SPIRV_Int32_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t ret
 SPIRVResult SPIRV_Int32_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int32_operator_index_Int32.returnType, &Int32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -1480,7 +1474,7 @@ SPIRVResult SPIRV_Int32_operator_index_Int32(const Compiler* c, SPIRVGenerator* 
 SPIRVResult SPIRV_Int32_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int32_operator_index_UInt32.returnType, &Int32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -1493,7 +1487,7 @@ SPIRVResult SPIRV_Int32_operator_index_UInt32(const Compiler* c, SPIRVGenerator*
 SPIRVResult SPIRV_Int32_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int32_operator_index_Int16.returnType, &Int32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -1506,7 +1500,7 @@ SPIRVResult SPIRV_Int32_operator_index_Int16(const Compiler* c, SPIRVGenerator* 
 SPIRVResult SPIRV_Int32_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int32_operator_index_UInt16.returnType, &Int32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -1739,9 +1733,7 @@ SPIRVResult SPIRV_Bool8_from_Int16(const Compiler* c, SPIRVGenerator* g, uint32_
 SPIRVResult SPIRV_Bool8_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[1];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
     return convertedArgs[0];
 }
@@ -1749,7 +1741,7 @@ SPIRVResult SPIRV_Bool8_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t ret
 SPIRVResult SPIRV_Bool8_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Bool8_operator_index_Int32.returnType, &Bool8Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -1762,7 +1754,7 @@ SPIRVResult SPIRV_Bool8_operator_index_Int32(const Compiler* c, SPIRVGenerator* 
 SPIRVResult SPIRV_Bool8_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Bool8_operator_index_UInt32.returnType, &Bool8Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -1775,7 +1767,7 @@ SPIRVResult SPIRV_Bool8_operator_index_UInt32(const Compiler* c, SPIRVGenerator*
 SPIRVResult SPIRV_Bool8_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Bool8_operator_index_Int16.returnType, &Bool8Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -1788,7 +1780,7 @@ SPIRVResult SPIRV_Bool8_operator_index_Int16(const Compiler* c, SPIRVGenerator* 
 SPIRVResult SPIRV_Bool8_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Bool8_operator_index_UInt16.returnType, &Bool8Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -1863,9 +1855,7 @@ SPIRVResult SPIRV_Float16_from_Int16(const Compiler* c, SPIRVGenerator* g, uint3
 SPIRVResult SPIRV_Float16_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[1];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
     return convertedArgs[0];
 }
@@ -1873,7 +1863,7 @@ SPIRVResult SPIRV_Float16_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Float16_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16_operator_index_Int32.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -1886,7 +1876,7 @@ SPIRVResult SPIRV_Float16_operator_index_Int32(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_Float16_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16_operator_index_UInt32.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -1899,7 +1889,7 @@ SPIRVResult SPIRV_Float16_operator_index_UInt32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_Float16_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16_operator_index_Int16.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -1912,7 +1902,7 @@ SPIRVResult SPIRV_Float16_operator_index_Int16(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_Float16_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16_operator_index_UInt16.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -2075,9 +2065,7 @@ SPIRVResult SPIRV_UInt16_from_Int16(const Compiler* c, SPIRVGenerator* g, uint32
 SPIRVResult SPIRV_UInt16_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[1];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
     return convertedArgs[0];
 }
@@ -2085,7 +2073,7 @@ SPIRVResult SPIRV_UInt16_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t re
 SPIRVResult SPIRV_UInt16_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt16_operator_index_Int32.returnType, &UInt16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -2098,7 +2086,7 @@ SPIRVResult SPIRV_UInt16_operator_index_Int32(const Compiler* c, SPIRVGenerator*
 SPIRVResult SPIRV_UInt16_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt16_operator_index_UInt32.returnType, &UInt16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -2111,7 +2099,7 @@ SPIRVResult SPIRV_UInt16_operator_index_UInt32(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_UInt16_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt16_operator_index_Int16.returnType, &UInt16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -2124,7 +2112,7 @@ SPIRVResult SPIRV_UInt16_operator_index_Int16(const Compiler* c, SPIRVGenerator*
 SPIRVResult SPIRV_UInt16_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt16_operator_index_UInt16.returnType, &UInt16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -2367,9 +2355,7 @@ SPIRVResult SPIRV_Int16_from_UInt16(const Compiler* c, SPIRVGenerator* g, uint32
 SPIRVResult SPIRV_Int16_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[1];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
     return convertedArgs[0];
 }
@@ -2377,7 +2363,7 @@ SPIRVResult SPIRV_Int16_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t ret
 SPIRVResult SPIRV_Int16_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int16_operator_index_Int32.returnType, &Int16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -2390,7 +2376,7 @@ SPIRVResult SPIRV_Int16_operator_index_Int32(const Compiler* c, SPIRVGenerator* 
 SPIRVResult SPIRV_Int16_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int16_operator_index_UInt32.returnType, &Int16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -2403,7 +2389,7 @@ SPIRVResult SPIRV_Int16_operator_index_UInt32(const Compiler* c, SPIRVGenerator*
 SPIRVResult SPIRV_Int16_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int16_operator_index_Int16.returnType, &Int16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -2416,7 +2402,7 @@ SPIRVResult SPIRV_Int16_operator_index_Int16(const Compiler* c, SPIRVGenerator* 
 SPIRVResult SPIRV_Int16_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int16_operator_index_UInt16.returnType, &Int16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -2645,9 +2631,7 @@ SPIRVResult SPIRV_Float32x2_from_UInt32x2(const Compiler* c, SPIRVGenerator* g, 
 SPIRVResult SPIRV_Float32x2_splat_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt32ToFloat32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -2660,9 +2644,7 @@ SPIRVResult SPIRV_Float32x2_from_Int32x2(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Float32x2_splat_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int32ToFloat32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -2675,9 +2657,7 @@ SPIRVResult SPIRV_Float32x2_from_Bool8x2(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Float32x2_splat_Bool8(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Bool8ToFloat32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -2690,9 +2670,7 @@ SPIRVResult SPIRV_Float32x2_from_Float16x2(const Compiler* c, SPIRVGenerator* g,
 SPIRVResult SPIRV_Float32x2_splat_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float16ToFloat32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -2705,9 +2683,7 @@ SPIRVResult SPIRV_Float32x2_from_UInt16x2(const Compiler* c, SPIRVGenerator* g, 
 SPIRVResult SPIRV_Float32x2_splat_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt16ToFloat32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -2720,9 +2696,7 @@ SPIRVResult SPIRV_Float32x2_from_Int16x2(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Float32x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int16ToFloat32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -2730,13 +2704,9 @@ SPIRVResult SPIRV_Float32x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_Float32x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -2744,7 +2714,7 @@ SPIRVResult SPIRV_Float32x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_Float32x2_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2_operator_index_Int32.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -2757,7 +2727,7 @@ SPIRVResult SPIRV_Float32x2_operator_index_Int32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_Float32x2_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2_operator_index_UInt32.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -2770,7 +2740,7 @@ SPIRVResult SPIRV_Float32x2_operator_index_UInt32(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_Float32x2_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2_operator_index_Int16.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -2783,7 +2753,7 @@ SPIRVResult SPIRV_Float32x2_operator_index_Int16(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_Float32x2_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2_operator_index_UInt16.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -2974,9 +2944,7 @@ SPIRVResult SPIRV_UInt32x2_from_Float32x2(const Compiler* c, SPIRVGenerator* g, 
 SPIRVResult SPIRV_UInt32x2_splat_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float32ToUInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -3000,9 +2968,7 @@ SPIRVResult SPIRV_UInt32x2_from_Int32x2(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_UInt32x2_splat_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int32ToUInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -3015,9 +2981,7 @@ SPIRVResult SPIRV_UInt32x2_from_Bool8x2(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_UInt32x2_splat_Bool8(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Bool8ToUInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -3030,9 +2994,7 @@ SPIRVResult SPIRV_UInt32x2_from_Float16x2(const Compiler* c, SPIRVGenerator* g, 
 SPIRVResult SPIRV_UInt32x2_splat_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float16ToUInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -3045,9 +3007,7 @@ SPIRVResult SPIRV_UInt32x2_from_UInt16x2(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_UInt32x2_splat_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt16ToUInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -3060,9 +3020,7 @@ SPIRVResult SPIRV_UInt32x2_from_Int16x2(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_UInt32x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int16ToUInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -3070,13 +3028,9 @@ SPIRVResult SPIRV_UInt32x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, uin
 SPIRVResult SPIRV_UInt32x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -3084,7 +3038,7 @@ SPIRVResult SPIRV_UInt32x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t 
 SPIRVResult SPIRV_UInt32x2_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt32x2_operator_index_Int32.returnType, &UInt32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -3097,7 +3051,7 @@ SPIRVResult SPIRV_UInt32x2_operator_index_Int32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_UInt32x2_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt32x2_operator_index_UInt32.returnType, &UInt32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -3110,7 +3064,7 @@ SPIRVResult SPIRV_UInt32x2_operator_index_UInt32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_UInt32x2_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt32x2_operator_index_Int16.returnType, &UInt32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -3123,7 +3077,7 @@ SPIRVResult SPIRV_UInt32x2_operator_index_Int16(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_UInt32x2_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt32x2_operator_index_UInt16.returnType, &UInt32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -3370,9 +3324,7 @@ SPIRVResult SPIRV_Int32x2_from_Float32x2(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Int32x2_splat_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float32ToInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -3385,9 +3337,7 @@ SPIRVResult SPIRV_Int32x2_from_UInt32x2(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_Int32x2_splat_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt32ToInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -3411,9 +3361,7 @@ SPIRVResult SPIRV_Int32x2_from_Bool8x2(const Compiler* c, SPIRVGenerator* g, uin
 SPIRVResult SPIRV_Int32x2_splat_Bool8(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Bool8ToInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -3426,9 +3374,7 @@ SPIRVResult SPIRV_Int32x2_from_Float16x2(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Int32x2_splat_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float16ToInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -3441,9 +3387,7 @@ SPIRVResult SPIRV_Int32x2_from_UInt16x2(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_Int32x2_splat_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt16ToInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -3456,9 +3400,7 @@ SPIRVResult SPIRV_Int32x2_from_Int16x2(const Compiler* c, SPIRVGenerator* g, uin
 SPIRVResult SPIRV_Int32x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int16ToInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -3466,13 +3408,9 @@ SPIRVResult SPIRV_Int32x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
 SPIRVResult SPIRV_Int32x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -3480,7 +3418,7 @@ SPIRVResult SPIRV_Int32x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Int32x2_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int32x2_operator_index_Int32.returnType, &Int32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -3493,7 +3431,7 @@ SPIRVResult SPIRV_Int32x2_operator_index_Int32(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_Int32x2_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int32x2_operator_index_UInt32.returnType, &Int32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -3506,7 +3444,7 @@ SPIRVResult SPIRV_Int32x2_operator_index_UInt32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_Int32x2_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int32x2_operator_index_Int16.returnType, &Int32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -3519,7 +3457,7 @@ SPIRVResult SPIRV_Int32x2_operator_index_Int16(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_Int32x2_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int32x2_operator_index_UInt16.returnType, &Int32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -3766,9 +3704,7 @@ SPIRVResult SPIRV_Bool8x2_from_UInt32x2(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_Bool8x2_splat_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt32ToBool8](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -3781,9 +3717,7 @@ SPIRVResult SPIRV_Bool8x2_from_Int32x2(const Compiler* c, SPIRVGenerator* g, uin
 SPIRVResult SPIRV_Bool8x2_splat_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int32ToBool8](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -3807,9 +3741,7 @@ SPIRVResult SPIRV_Bool8x2_from_UInt16x2(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_Bool8x2_splat_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt16ToBool8](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -3822,9 +3754,7 @@ SPIRVResult SPIRV_Bool8x2_from_Int16x2(const Compiler* c, SPIRVGenerator* g, uin
 SPIRVResult SPIRV_Bool8x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int16ToBool8](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -3832,13 +3762,9 @@ SPIRVResult SPIRV_Bool8x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
 SPIRVResult SPIRV_Bool8x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -3846,7 +3772,7 @@ SPIRVResult SPIRV_Bool8x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Bool8x2_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Bool8x2_operator_index_Int32.returnType, &Bool8Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -3859,7 +3785,7 @@ SPIRVResult SPIRV_Bool8x2_operator_index_Int32(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_Bool8x2_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Bool8x2_operator_index_UInt32.returnType, &Bool8Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -3872,7 +3798,7 @@ SPIRVResult SPIRV_Bool8x2_operator_index_UInt32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_Bool8x2_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Bool8x2_operator_index_Int16.returnType, &Bool8Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -3885,7 +3811,7 @@ SPIRVResult SPIRV_Bool8x2_operator_index_Int16(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_Bool8x2_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Bool8x2_operator_index_UInt16.returnType, &Bool8Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -3935,9 +3861,7 @@ SPIRVResult SPIRV_Float16x2_from_Float32x2(const Compiler* c, SPIRVGenerator* g,
 SPIRVResult SPIRV_Float16x2_splat_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float32ToFloat16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -3950,9 +3874,7 @@ SPIRVResult SPIRV_Float16x2_from_UInt32x2(const Compiler* c, SPIRVGenerator* g, 
 SPIRVResult SPIRV_Float16x2_splat_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt32ToFloat16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -3965,9 +3887,7 @@ SPIRVResult SPIRV_Float16x2_from_Int32x2(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Float16x2_splat_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int32ToFloat16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -3980,9 +3900,7 @@ SPIRVResult SPIRV_Float16x2_from_Bool8x2(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Float16x2_splat_Bool8(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Bool8ToFloat16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -4006,9 +3924,7 @@ SPIRVResult SPIRV_Float16x2_from_UInt16x2(const Compiler* c, SPIRVGenerator* g, 
 SPIRVResult SPIRV_Float16x2_splat_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt16ToFloat16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -4021,9 +3937,7 @@ SPIRVResult SPIRV_Float16x2_from_Int16x2(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Float16x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int16ToFloat16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -4031,13 +3945,9 @@ SPIRVResult SPIRV_Float16x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_Float16x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -4045,7 +3955,7 @@ SPIRVResult SPIRV_Float16x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_Float16x2_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2_operator_index_Int32.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -4058,7 +3968,7 @@ SPIRVResult SPIRV_Float16x2_operator_index_Int32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_Float16x2_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2_operator_index_UInt32.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -4071,7 +3981,7 @@ SPIRVResult SPIRV_Float16x2_operator_index_UInt32(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_Float16x2_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2_operator_index_Int16.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -4084,7 +3994,7 @@ SPIRVResult SPIRV_Float16x2_operator_index_Int16(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_Float16x2_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2_operator_index_UInt16.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -4275,9 +4185,7 @@ SPIRVResult SPIRV_UInt16x2_from_Float32x2(const Compiler* c, SPIRVGenerator* g, 
 SPIRVResult SPIRV_UInt16x2_splat_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float32ToUInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -4290,9 +4198,7 @@ SPIRVResult SPIRV_UInt16x2_from_UInt32x2(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_UInt16x2_splat_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt32ToUInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -4305,9 +4211,7 @@ SPIRVResult SPIRV_UInt16x2_from_Int32x2(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_UInt16x2_splat_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int32ToUInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -4320,9 +4224,7 @@ SPIRVResult SPIRV_UInt16x2_from_Bool8x2(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_UInt16x2_splat_Bool8(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Bool8ToUInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -4335,9 +4237,7 @@ SPIRVResult SPIRV_UInt16x2_from_Float16x2(const Compiler* c, SPIRVGenerator* g, 
 SPIRVResult SPIRV_UInt16x2_splat_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float16ToUInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -4361,9 +4261,7 @@ SPIRVResult SPIRV_UInt16x2_from_Int16x2(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_UInt16x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int16ToUInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -4371,13 +4269,9 @@ SPIRVResult SPIRV_UInt16x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, uin
 SPIRVResult SPIRV_UInt16x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -4385,7 +4279,7 @@ SPIRVResult SPIRV_UInt16x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t 
 SPIRVResult SPIRV_UInt16x2_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt16x2_operator_index_Int32.returnType, &UInt16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -4398,7 +4292,7 @@ SPIRVResult SPIRV_UInt16x2_operator_index_Int32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_UInt16x2_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt16x2_operator_index_UInt32.returnType, &UInt16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -4411,7 +4305,7 @@ SPIRVResult SPIRV_UInt16x2_operator_index_UInt32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_UInt16x2_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt16x2_operator_index_Int16.returnType, &UInt16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -4424,7 +4318,7 @@ SPIRVResult SPIRV_UInt16x2_operator_index_Int16(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_UInt16x2_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt16x2_operator_index_UInt16.returnType, &UInt16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -4671,9 +4565,7 @@ SPIRVResult SPIRV_Int16x2_from_Float32x2(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Int16x2_splat_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float32ToInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -4686,9 +4578,7 @@ SPIRVResult SPIRV_Int16x2_from_UInt32x2(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_Int16x2_splat_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt32ToInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -4701,9 +4591,7 @@ SPIRVResult SPIRV_Int16x2_from_Int32x2(const Compiler* c, SPIRVGenerator* g, uin
 SPIRVResult SPIRV_Int16x2_splat_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int32ToInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -4716,9 +4604,7 @@ SPIRVResult SPIRV_Int16x2_from_Bool8x2(const Compiler* c, SPIRVGenerator* g, uin
 SPIRVResult SPIRV_Int16x2_splat_Bool8(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Bool8ToInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -4731,9 +4617,7 @@ SPIRVResult SPIRV_Int16x2_from_Float16x2(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Int16x2_splat_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float16ToInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -4746,9 +4630,7 @@ SPIRVResult SPIRV_Int16x2_from_UInt16x2(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_Int16x2_splat_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt16ToInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 2, val);
 }
@@ -4767,13 +4649,9 @@ SPIRVResult SPIRV_Int16x2_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
 SPIRVResult SPIRV_Int16x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -4781,7 +4659,7 @@ SPIRVResult SPIRV_Int16x2_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Int16x2_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int16x2_operator_index_Int32.returnType, &Int16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -4794,7 +4672,7 @@ SPIRVResult SPIRV_Int16x2_operator_index_Int32(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_Int16x2_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int16x2_operator_index_UInt32.returnType, &Int16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -4807,7 +4685,7 @@ SPIRVResult SPIRV_Int16x2_operator_index_UInt32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_Int16x2_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int16x2_operator_index_Int16.returnType, &Int16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -4820,7 +4698,7 @@ SPIRVResult SPIRV_Int16x2_operator_index_Int16(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_Int16x2_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int16x2_operator_index_UInt16.returnType, &Int16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -5078,9 +4956,7 @@ SPIRVResult SPIRV_Float32x3_from_UInt32x3(const Compiler* c, SPIRVGenerator* g, 
 SPIRVResult SPIRV_Float32x3_splat_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt32ToFloat32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -5093,9 +4969,7 @@ SPIRVResult SPIRV_Float32x3_from_Int32x3(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Float32x3_splat_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int32ToFloat32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -5108,9 +4982,7 @@ SPIRVResult SPIRV_Float32x3_from_Bool8x3(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Float32x3_splat_Bool8(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Bool8ToFloat32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -5123,9 +4995,7 @@ SPIRVResult SPIRV_Float32x3_from_Float16x3(const Compiler* c, SPIRVGenerator* g,
 SPIRVResult SPIRV_Float32x3_splat_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float16ToFloat32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -5138,9 +5008,7 @@ SPIRVResult SPIRV_Float32x3_from_UInt16x3(const Compiler* c, SPIRVGenerator* g, 
 SPIRVResult SPIRV_Float32x3_splat_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt16ToFloat32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -5153,9 +5021,7 @@ SPIRVResult SPIRV_Float32x3_from_Int16x3(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Float32x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int16ToFloat32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -5163,17 +5029,11 @@ SPIRVResult SPIRV_Float32x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_Float32x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -5181,13 +5041,9 @@ SPIRVResult SPIRV_Float32x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_Float32x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -5195,13 +5051,9 @@ SPIRVResult SPIRV_Float32x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_Float32x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -5209,7 +5061,7 @@ SPIRVResult SPIRV_Float32x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_Float32x3_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3_operator_index_Int32.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -5222,7 +5074,7 @@ SPIRVResult SPIRV_Float32x3_operator_index_Int32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_Float32x3_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3_operator_index_UInt32.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -5235,7 +5087,7 @@ SPIRVResult SPIRV_Float32x3_operator_index_UInt32(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_Float32x3_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3_operator_index_Int16.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -5248,7 +5100,7 @@ SPIRVResult SPIRV_Float32x3_operator_index_Int16(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_Float32x3_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3_operator_index_UInt16.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -5439,9 +5291,7 @@ SPIRVResult SPIRV_UInt32x3_from_Float32x3(const Compiler* c, SPIRVGenerator* g, 
 SPIRVResult SPIRV_UInt32x3_splat_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float32ToUInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -5465,9 +5315,7 @@ SPIRVResult SPIRV_UInt32x3_from_Int32x3(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_UInt32x3_splat_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int32ToUInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -5480,9 +5328,7 @@ SPIRVResult SPIRV_UInt32x3_from_Bool8x3(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_UInt32x3_splat_Bool8(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Bool8ToUInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -5495,9 +5341,7 @@ SPIRVResult SPIRV_UInt32x3_from_Float16x3(const Compiler* c, SPIRVGenerator* g, 
 SPIRVResult SPIRV_UInt32x3_splat_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float16ToUInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -5510,9 +5354,7 @@ SPIRVResult SPIRV_UInt32x3_from_UInt16x3(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_UInt32x3_splat_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt16ToUInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -5525,9 +5367,7 @@ SPIRVResult SPIRV_UInt32x3_from_Int16x3(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_UInt32x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int16ToUInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -5535,17 +5375,11 @@ SPIRVResult SPIRV_UInt32x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, uin
 SPIRVResult SPIRV_UInt32x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -5553,13 +5387,9 @@ SPIRVResult SPIRV_UInt32x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t 
 SPIRVResult SPIRV_UInt32x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -5567,13 +5397,9 @@ SPIRVResult SPIRV_UInt32x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t 
 SPIRVResult SPIRV_UInt32x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -5581,7 +5407,7 @@ SPIRVResult SPIRV_UInt32x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t 
 SPIRVResult SPIRV_UInt32x3_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt32x3_operator_index_Int32.returnType, &UInt32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -5594,7 +5420,7 @@ SPIRVResult SPIRV_UInt32x3_operator_index_Int32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_UInt32x3_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt32x3_operator_index_UInt32.returnType, &UInt32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -5607,7 +5433,7 @@ SPIRVResult SPIRV_UInt32x3_operator_index_UInt32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_UInt32x3_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt32x3_operator_index_Int16.returnType, &UInt32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -5620,7 +5446,7 @@ SPIRVResult SPIRV_UInt32x3_operator_index_Int16(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_UInt32x3_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt32x3_operator_index_UInt16.returnType, &UInt32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -5867,9 +5693,7 @@ SPIRVResult SPIRV_Int32x3_from_Float32x3(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Int32x3_splat_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float32ToInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -5882,9 +5706,7 @@ SPIRVResult SPIRV_Int32x3_from_UInt32x3(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_Int32x3_splat_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt32ToInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -5908,9 +5730,7 @@ SPIRVResult SPIRV_Int32x3_from_Bool8x3(const Compiler* c, SPIRVGenerator* g, uin
 SPIRVResult SPIRV_Int32x3_splat_Bool8(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Bool8ToInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -5923,9 +5743,7 @@ SPIRVResult SPIRV_Int32x3_from_Float16x3(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Int32x3_splat_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float16ToInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -5938,9 +5756,7 @@ SPIRVResult SPIRV_Int32x3_from_UInt16x3(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_Int32x3_splat_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt16ToInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -5953,9 +5769,7 @@ SPIRVResult SPIRV_Int32x3_from_Int16x3(const Compiler* c, SPIRVGenerator* g, uin
 SPIRVResult SPIRV_Int32x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int16ToInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -5963,17 +5777,11 @@ SPIRVResult SPIRV_Int32x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
 SPIRVResult SPIRV_Int32x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -5981,13 +5789,9 @@ SPIRVResult SPIRV_Int32x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Int32x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -5995,13 +5799,9 @@ SPIRVResult SPIRV_Int32x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Int32x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -6009,7 +5809,7 @@ SPIRVResult SPIRV_Int32x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Int32x3_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int32x3_operator_index_Int32.returnType, &Int32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -6022,7 +5822,7 @@ SPIRVResult SPIRV_Int32x3_operator_index_Int32(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_Int32x3_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int32x3_operator_index_UInt32.returnType, &Int32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -6035,7 +5835,7 @@ SPIRVResult SPIRV_Int32x3_operator_index_UInt32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_Int32x3_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int32x3_operator_index_Int16.returnType, &Int32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -6048,7 +5848,7 @@ SPIRVResult SPIRV_Int32x3_operator_index_Int16(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_Int32x3_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int32x3_operator_index_UInt16.returnType, &Int32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -6295,9 +6095,7 @@ SPIRVResult SPIRV_Bool8x3_from_UInt32x3(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_Bool8x3_splat_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt32ToBool8](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -6310,9 +6108,7 @@ SPIRVResult SPIRV_Bool8x3_from_Int32x3(const Compiler* c, SPIRVGenerator* g, uin
 SPIRVResult SPIRV_Bool8x3_splat_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int32ToBool8](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -6336,9 +6132,7 @@ SPIRVResult SPIRV_Bool8x3_from_UInt16x3(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_Bool8x3_splat_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt16ToBool8](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -6351,9 +6145,7 @@ SPIRVResult SPIRV_Bool8x3_from_Int16x3(const Compiler* c, SPIRVGenerator* g, uin
 SPIRVResult SPIRV_Bool8x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int16ToBool8](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -6361,17 +6153,11 @@ SPIRVResult SPIRV_Bool8x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
 SPIRVResult SPIRV_Bool8x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -6379,13 +6165,9 @@ SPIRVResult SPIRV_Bool8x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Bool8x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -6393,13 +6175,9 @@ SPIRVResult SPIRV_Bool8x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Bool8x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -6407,7 +6185,7 @@ SPIRVResult SPIRV_Bool8x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Bool8x3_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Bool8x3_operator_index_Int32.returnType, &Bool8Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -6420,7 +6198,7 @@ SPIRVResult SPIRV_Bool8x3_operator_index_Int32(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_Bool8x3_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Bool8x3_operator_index_UInt32.returnType, &Bool8Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -6433,7 +6211,7 @@ SPIRVResult SPIRV_Bool8x3_operator_index_UInt32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_Bool8x3_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Bool8x3_operator_index_Int16.returnType, &Bool8Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -6446,7 +6224,7 @@ SPIRVResult SPIRV_Bool8x3_operator_index_Int16(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_Bool8x3_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Bool8x3_operator_index_UInt16.returnType, &Bool8Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -6496,9 +6274,7 @@ SPIRVResult SPIRV_Float16x3_from_Float32x3(const Compiler* c, SPIRVGenerator* g,
 SPIRVResult SPIRV_Float16x3_splat_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float32ToFloat16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -6511,9 +6287,7 @@ SPIRVResult SPIRV_Float16x3_from_UInt32x3(const Compiler* c, SPIRVGenerator* g, 
 SPIRVResult SPIRV_Float16x3_splat_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt32ToFloat16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -6526,9 +6300,7 @@ SPIRVResult SPIRV_Float16x3_from_Int32x3(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Float16x3_splat_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int32ToFloat16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -6541,9 +6313,7 @@ SPIRVResult SPIRV_Float16x3_from_Bool8x3(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Float16x3_splat_Bool8(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Bool8ToFloat16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -6567,9 +6337,7 @@ SPIRVResult SPIRV_Float16x3_from_UInt16x3(const Compiler* c, SPIRVGenerator* g, 
 SPIRVResult SPIRV_Float16x3_splat_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt16ToFloat16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -6582,9 +6350,7 @@ SPIRVResult SPIRV_Float16x3_from_Int16x3(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Float16x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int16ToFloat16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -6592,17 +6358,11 @@ SPIRVResult SPIRV_Float16x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_Float16x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -6610,13 +6370,9 @@ SPIRVResult SPIRV_Float16x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_Float16x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -6624,13 +6380,9 @@ SPIRVResult SPIRV_Float16x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_Float16x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -6638,7 +6390,7 @@ SPIRVResult SPIRV_Float16x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_Float16x3_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3_operator_index_Int32.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -6651,7 +6403,7 @@ SPIRVResult SPIRV_Float16x3_operator_index_Int32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_Float16x3_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3_operator_index_UInt32.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -6664,7 +6416,7 @@ SPIRVResult SPIRV_Float16x3_operator_index_UInt32(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_Float16x3_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3_operator_index_Int16.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -6677,7 +6429,7 @@ SPIRVResult SPIRV_Float16x3_operator_index_Int16(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_Float16x3_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3_operator_index_UInt16.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -6868,9 +6620,7 @@ SPIRVResult SPIRV_UInt16x3_from_Float32x3(const Compiler* c, SPIRVGenerator* g, 
 SPIRVResult SPIRV_UInt16x3_splat_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float32ToUInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -6883,9 +6633,7 @@ SPIRVResult SPIRV_UInt16x3_from_UInt32x3(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_UInt16x3_splat_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt32ToUInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -6898,9 +6646,7 @@ SPIRVResult SPIRV_UInt16x3_from_Int32x3(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_UInt16x3_splat_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int32ToUInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -6913,9 +6659,7 @@ SPIRVResult SPIRV_UInt16x3_from_Bool8x3(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_UInt16x3_splat_Bool8(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Bool8ToUInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -6928,9 +6672,7 @@ SPIRVResult SPIRV_UInt16x3_from_Float16x3(const Compiler* c, SPIRVGenerator* g, 
 SPIRVResult SPIRV_UInt16x3_splat_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float16ToUInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -6954,9 +6696,7 @@ SPIRVResult SPIRV_UInt16x3_from_Int16x3(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_UInt16x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int16ToUInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -6964,17 +6704,11 @@ SPIRVResult SPIRV_UInt16x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, uin
 SPIRVResult SPIRV_UInt16x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -6982,13 +6716,9 @@ SPIRVResult SPIRV_UInt16x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t 
 SPIRVResult SPIRV_UInt16x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -6996,13 +6726,9 @@ SPIRVResult SPIRV_UInt16x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t 
 SPIRVResult SPIRV_UInt16x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -7010,7 +6736,7 @@ SPIRVResult SPIRV_UInt16x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t 
 SPIRVResult SPIRV_UInt16x3_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt16x3_operator_index_Int32.returnType, &UInt16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -7023,7 +6749,7 @@ SPIRVResult SPIRV_UInt16x3_operator_index_Int32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_UInt16x3_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt16x3_operator_index_UInt32.returnType, &UInt16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -7036,7 +6762,7 @@ SPIRVResult SPIRV_UInt16x3_operator_index_UInt32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_UInt16x3_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt16x3_operator_index_Int16.returnType, &UInt16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -7049,7 +6775,7 @@ SPIRVResult SPIRV_UInt16x3_operator_index_Int16(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_UInt16x3_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt16x3_operator_index_UInt16.returnType, &UInt16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -7296,9 +7022,7 @@ SPIRVResult SPIRV_Int16x3_from_Float32x3(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Int16x3_splat_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float32ToInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -7311,9 +7035,7 @@ SPIRVResult SPIRV_Int16x3_from_UInt32x3(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_Int16x3_splat_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt32ToInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -7326,9 +7048,7 @@ SPIRVResult SPIRV_Int16x3_from_Int32x3(const Compiler* c, SPIRVGenerator* g, uin
 SPIRVResult SPIRV_Int16x3_splat_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int32ToInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -7341,9 +7061,7 @@ SPIRVResult SPIRV_Int16x3_from_Bool8x3(const Compiler* c, SPIRVGenerator* g, uin
 SPIRVResult SPIRV_Int16x3_splat_Bool8(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Bool8ToInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -7356,9 +7074,7 @@ SPIRVResult SPIRV_Int16x3_from_Float16x3(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Int16x3_splat_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float16ToInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -7371,9 +7087,7 @@ SPIRVResult SPIRV_Int16x3_from_UInt16x3(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_Int16x3_splat_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt16ToInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 3, val);
 }
@@ -7392,17 +7106,11 @@ SPIRVResult SPIRV_Int16x3_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
 SPIRVResult SPIRV_Int16x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -7410,13 +7118,9 @@ SPIRVResult SPIRV_Int16x3_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Int16x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -7424,13 +7128,9 @@ SPIRVResult SPIRV_Int16x3_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Int16x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -7438,7 +7138,7 @@ SPIRVResult SPIRV_Int16x3_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Int16x3_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int16x3_operator_index_Int32.returnType, &Int16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -7451,7 +7151,7 @@ SPIRVResult SPIRV_Int16x3_operator_index_Int32(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_Int16x3_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int16x3_operator_index_UInt32.returnType, &Int16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -7464,7 +7164,7 @@ SPIRVResult SPIRV_Int16x3_operator_index_UInt32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_Int16x3_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int16x3_operator_index_Int16.returnType, &Int16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -7477,7 +7177,7 @@ SPIRVResult SPIRV_Int16x3_operator_index_Int16(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_Int16x3_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int16x3_operator_index_UInt16.returnType, &Int16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -7735,9 +7435,7 @@ SPIRVResult SPIRV_Float32x4_from_UInt32x4(const Compiler* c, SPIRVGenerator* g, 
 SPIRVResult SPIRV_Float32x4_splat_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt32ToFloat32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -7750,9 +7448,7 @@ SPIRVResult SPIRV_Float32x4_from_Int32x4(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Float32x4_splat_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int32ToFloat32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -7765,9 +7461,7 @@ SPIRVResult SPIRV_Float32x4_from_Bool8x4(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Float32x4_splat_Bool8(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Bool8ToFloat32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -7780,9 +7474,7 @@ SPIRVResult SPIRV_Float32x4_from_Float16x4(const Compiler* c, SPIRVGenerator* g,
 SPIRVResult SPIRV_Float32x4_splat_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float16ToFloat32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -7795,9 +7487,7 @@ SPIRVResult SPIRV_Float32x4_from_UInt16x4(const Compiler* c, SPIRVGenerator* g, 
 SPIRVResult SPIRV_Float32x4_splat_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt16ToFloat32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -7810,9 +7500,7 @@ SPIRVResult SPIRV_Float32x4_from_Int16x4(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Float32x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int16ToFloat32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -7820,21 +7508,13 @@ SPIRVResult SPIRV_Float32x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_Float32x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[4];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
-    if (args[3].isLiteral)
-        convertedArgs[3] = args[3].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[3].isLiteral)
         convertedArgs[3] = args[3];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2], convertedArgs[3]});
 }
@@ -7842,17 +7522,11 @@ SPIRVResult SPIRV_Float32x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_Float32x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -7860,17 +7534,11 @@ SPIRVResult SPIRV_Float32x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_Float32x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -7878,17 +7546,11 @@ SPIRVResult SPIRV_Float32x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_Float32x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -7896,13 +7558,9 @@ SPIRVResult SPIRV_Float32x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_Float32x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -7910,13 +7568,9 @@ SPIRVResult SPIRV_Float32x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_Float32x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -7924,13 +7578,9 @@ SPIRVResult SPIRV_Float32x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_Float32x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Float32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -7938,7 +7588,7 @@ SPIRVResult SPIRV_Float32x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_Float32x4_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4_operator_index_Int32.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -7951,7 +7601,7 @@ SPIRVResult SPIRV_Float32x4_operator_index_Int32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_Float32x4_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4_operator_index_UInt32.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -7964,7 +7614,7 @@ SPIRVResult SPIRV_Float32x4_operator_index_UInt32(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_Float32x4_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4_operator_index_Int16.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -7977,7 +7627,7 @@ SPIRVResult SPIRV_Float32x4_operator_index_Int16(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_Float32x4_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4_operator_index_UInt16.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -8168,9 +7818,7 @@ SPIRVResult SPIRV_UInt32x4_from_Float32x4(const Compiler* c, SPIRVGenerator* g, 
 SPIRVResult SPIRV_UInt32x4_splat_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float32ToUInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -8194,9 +7842,7 @@ SPIRVResult SPIRV_UInt32x4_from_Int32x4(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_UInt32x4_splat_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int32ToUInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -8209,9 +7855,7 @@ SPIRVResult SPIRV_UInt32x4_from_Bool8x4(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_UInt32x4_splat_Bool8(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Bool8ToUInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -8224,9 +7868,7 @@ SPIRVResult SPIRV_UInt32x4_from_Float16x4(const Compiler* c, SPIRVGenerator* g, 
 SPIRVResult SPIRV_UInt32x4_splat_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float16ToUInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -8239,9 +7881,7 @@ SPIRVResult SPIRV_UInt32x4_from_UInt16x4(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_UInt32x4_splat_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt16ToUInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -8254,9 +7894,7 @@ SPIRVResult SPIRV_UInt32x4_from_Int16x4(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_UInt32x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int16ToUInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -8264,21 +7902,13 @@ SPIRVResult SPIRV_UInt32x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, uin
 SPIRVResult SPIRV_UInt32x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[4];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
-    if (args[3].isLiteral)
-        convertedArgs[3] = args[3].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[3].isLiteral)
         convertedArgs[3] = args[3];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2], convertedArgs[3]});
 }
@@ -8286,17 +7916,11 @@ SPIRVResult SPIRV_UInt32x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t 
 SPIRVResult SPIRV_UInt32x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -8304,17 +7928,11 @@ SPIRVResult SPIRV_UInt32x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t 
 SPIRVResult SPIRV_UInt32x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -8322,17 +7940,11 @@ SPIRVResult SPIRV_UInt32x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t 
 SPIRVResult SPIRV_UInt32x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -8340,13 +7952,9 @@ SPIRVResult SPIRV_UInt32x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t 
 SPIRVResult SPIRV_UInt32x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -8354,13 +7962,9 @@ SPIRVResult SPIRV_UInt32x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t 
 SPIRVResult SPIRV_UInt32x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -8368,13 +7972,9 @@ SPIRVResult SPIRV_UInt32x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t 
 SPIRVResult SPIRV_UInt32x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::UInt32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -8382,7 +7982,7 @@ SPIRVResult SPIRV_UInt32x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t 
 SPIRVResult SPIRV_UInt32x4_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt32x4_operator_index_Int32.returnType, &UInt32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -8395,7 +7995,7 @@ SPIRVResult SPIRV_UInt32x4_operator_index_Int32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_UInt32x4_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt32x4_operator_index_UInt32.returnType, &UInt32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -8408,7 +8008,7 @@ SPIRVResult SPIRV_UInt32x4_operator_index_UInt32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_UInt32x4_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt32x4_operator_index_Int16.returnType, &UInt32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -8421,7 +8021,7 @@ SPIRVResult SPIRV_UInt32x4_operator_index_Int16(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_UInt32x4_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt32x4_operator_index_UInt16.returnType, &UInt32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -8668,9 +8268,7 @@ SPIRVResult SPIRV_Int32x4_from_Float32x4(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Int32x4_splat_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float32ToInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -8683,9 +8281,7 @@ SPIRVResult SPIRV_Int32x4_from_UInt32x4(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_Int32x4_splat_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt32ToInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -8709,9 +8305,7 @@ SPIRVResult SPIRV_Int32x4_from_Bool8x4(const Compiler* c, SPIRVGenerator* g, uin
 SPIRVResult SPIRV_Int32x4_splat_Bool8(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Bool8ToInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -8724,9 +8318,7 @@ SPIRVResult SPIRV_Int32x4_from_Float16x4(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Int32x4_splat_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float16ToInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -8739,9 +8331,7 @@ SPIRVResult SPIRV_Int32x4_from_UInt16x4(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_Int32x4_splat_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt16ToInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -8754,9 +8344,7 @@ SPIRVResult SPIRV_Int32x4_from_Int16x4(const Compiler* c, SPIRVGenerator* g, uin
 SPIRVResult SPIRV_Int32x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int16ToInt32](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -8764,21 +8352,13 @@ SPIRVResult SPIRV_Int32x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
 SPIRVResult SPIRV_Int32x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[4];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
-    if (args[3].isLiteral)
-        convertedArgs[3] = args[3].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[3].isLiteral)
         convertedArgs[3] = args[3];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2], convertedArgs[3]});
 }
@@ -8786,17 +8366,11 @@ SPIRVResult SPIRV_Int32x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Int32x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -8804,17 +8378,11 @@ SPIRVResult SPIRV_Int32x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Int32x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -8822,17 +8390,11 @@ SPIRVResult SPIRV_Int32x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Int32x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -8840,13 +8402,9 @@ SPIRVResult SPIRV_Int32x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Int32x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -8854,13 +8412,9 @@ SPIRVResult SPIRV_Int32x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Int32x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -8868,13 +8422,9 @@ SPIRVResult SPIRV_Int32x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Int32x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Int32Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -8882,7 +8432,7 @@ SPIRVResult SPIRV_Int32x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Int32x4_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int32x4_operator_index_Int32.returnType, &Int32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -8895,7 +8445,7 @@ SPIRVResult SPIRV_Int32x4_operator_index_Int32(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_Int32x4_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int32x4_operator_index_UInt32.returnType, &Int32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -8908,7 +8458,7 @@ SPIRVResult SPIRV_Int32x4_operator_index_UInt32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_Int32x4_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int32x4_operator_index_Int16.returnType, &Int32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -8921,7 +8471,7 @@ SPIRVResult SPIRV_Int32x4_operator_index_Int16(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_Int32x4_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int32x4_operator_index_UInt16.returnType, &Int32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -9168,9 +8718,7 @@ SPIRVResult SPIRV_Bool8x4_from_UInt32x4(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_Bool8x4_splat_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt32ToBool8](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -9183,9 +8731,7 @@ SPIRVResult SPIRV_Bool8x4_from_Int32x4(const Compiler* c, SPIRVGenerator* g, uin
 SPIRVResult SPIRV_Bool8x4_splat_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int32ToBool8](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -9209,9 +8755,7 @@ SPIRVResult SPIRV_Bool8x4_from_UInt16x4(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_Bool8x4_splat_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt16ToBool8](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -9224,9 +8768,7 @@ SPIRVResult SPIRV_Bool8x4_from_Int16x4(const Compiler* c, SPIRVGenerator* g, uin
 SPIRVResult SPIRV_Bool8x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int16ToBool8](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -9234,21 +8776,13 @@ SPIRVResult SPIRV_Bool8x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
 SPIRVResult SPIRV_Bool8x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[4];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
-    if (args[3].isLiteral)
-        convertedArgs[3] = args[3].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[3].isLiteral)
         convertedArgs[3] = args[3];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2], convertedArgs[3]});
 }
@@ -9256,17 +8790,11 @@ SPIRVResult SPIRV_Bool8x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Bool8x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -9274,17 +8802,11 @@ SPIRVResult SPIRV_Bool8x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Bool8x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -9292,17 +8814,11 @@ SPIRVResult SPIRV_Bool8x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Bool8x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -9310,13 +8826,9 @@ SPIRVResult SPIRV_Bool8x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Bool8x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -9324,13 +8836,9 @@ SPIRVResult SPIRV_Bool8x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Bool8x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -9338,13 +8846,9 @@ SPIRVResult SPIRV_Bool8x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Bool8x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Bool8Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -9352,7 +8856,7 @@ SPIRVResult SPIRV_Bool8x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Bool8x4_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Bool8x4_operator_index_Int32.returnType, &Bool8Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -9365,7 +8869,7 @@ SPIRVResult SPIRV_Bool8x4_operator_index_Int32(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_Bool8x4_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Bool8x4_operator_index_UInt32.returnType, &Bool8Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -9378,7 +8882,7 @@ SPIRVResult SPIRV_Bool8x4_operator_index_UInt32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_Bool8x4_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Bool8x4_operator_index_Int16.returnType, &Bool8Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -9391,7 +8895,7 @@ SPIRVResult SPIRV_Bool8x4_operator_index_Int16(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_Bool8x4_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Bool8x4_operator_index_UInt16.returnType, &Bool8Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -9441,9 +8945,7 @@ SPIRVResult SPIRV_Float16x4_from_Float32x4(const Compiler* c, SPIRVGenerator* g,
 SPIRVResult SPIRV_Float16x4_splat_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float32ToFloat16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -9456,9 +8958,7 @@ SPIRVResult SPIRV_Float16x4_from_UInt32x4(const Compiler* c, SPIRVGenerator* g, 
 SPIRVResult SPIRV_Float16x4_splat_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt32ToFloat16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -9471,9 +8971,7 @@ SPIRVResult SPIRV_Float16x4_from_Int32x4(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Float16x4_splat_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int32ToFloat16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -9486,9 +8984,7 @@ SPIRVResult SPIRV_Float16x4_from_Bool8x4(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Float16x4_splat_Bool8(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Bool8ToFloat16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -9512,9 +9008,7 @@ SPIRVResult SPIRV_Float16x4_from_UInt16x4(const Compiler* c, SPIRVGenerator* g, 
 SPIRVResult SPIRV_Float16x4_splat_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt16ToFloat16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -9527,9 +9021,7 @@ SPIRVResult SPIRV_Float16x4_from_Int16x4(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Float16x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int16ToFloat16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -9537,21 +9029,13 @@ SPIRVResult SPIRV_Float16x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_Float16x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[4];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
-    if (args[3].isLiteral)
-        convertedArgs[3] = args[3].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[3].isLiteral)
         convertedArgs[3] = args[3];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2], convertedArgs[3]});
 }
@@ -9559,17 +9043,11 @@ SPIRVResult SPIRV_Float16x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_Float16x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -9577,17 +9055,11 @@ SPIRVResult SPIRV_Float16x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_Float16x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -9595,17 +9067,11 @@ SPIRVResult SPIRV_Float16x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_Float16x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -9613,13 +9079,9 @@ SPIRVResult SPIRV_Float16x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_Float16x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -9627,13 +9089,9 @@ SPIRVResult SPIRV_Float16x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_Float16x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -9641,13 +9099,9 @@ SPIRVResult SPIRV_Float16x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_Float16x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Float16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -9655,7 +9109,7 @@ SPIRVResult SPIRV_Float16x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_Float16x4_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4_operator_index_Int32.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -9668,7 +9122,7 @@ SPIRVResult SPIRV_Float16x4_operator_index_Int32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_Float16x4_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4_operator_index_UInt32.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -9681,7 +9135,7 @@ SPIRVResult SPIRV_Float16x4_operator_index_UInt32(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_Float16x4_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4_operator_index_Int16.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -9694,7 +9148,7 @@ SPIRVResult SPIRV_Float16x4_operator_index_Int16(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_Float16x4_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4_operator_index_UInt16.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -9885,9 +9339,7 @@ SPIRVResult SPIRV_UInt16x4_from_Float32x4(const Compiler* c, SPIRVGenerator* g, 
 SPIRVResult SPIRV_UInt16x4_splat_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float32ToUInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -9900,9 +9352,7 @@ SPIRVResult SPIRV_UInt16x4_from_UInt32x4(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_UInt16x4_splat_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt32ToUInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -9915,9 +9365,7 @@ SPIRVResult SPIRV_UInt16x4_from_Int32x4(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_UInt16x4_splat_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int32ToUInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -9930,9 +9378,7 @@ SPIRVResult SPIRV_UInt16x4_from_Bool8x4(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_UInt16x4_splat_Bool8(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Bool8ToUInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -9945,9 +9391,7 @@ SPIRVResult SPIRV_UInt16x4_from_Float16x4(const Compiler* c, SPIRVGenerator* g, 
 SPIRVResult SPIRV_UInt16x4_splat_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float16ToUInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -9971,9 +9415,7 @@ SPIRVResult SPIRV_UInt16x4_from_Int16x4(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_UInt16x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int16ToUInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -9981,21 +9423,13 @@ SPIRVResult SPIRV_UInt16x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, uin
 SPIRVResult SPIRV_UInt16x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[4];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
-    if (args[3].isLiteral)
-        convertedArgs[3] = args[3].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[3].isLiteral)
         convertedArgs[3] = args[3];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2], convertedArgs[3]});
 }
@@ -10003,17 +9437,11 @@ SPIRVResult SPIRV_UInt16x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t 
 SPIRVResult SPIRV_UInt16x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -10021,17 +9449,11 @@ SPIRVResult SPIRV_UInt16x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t 
 SPIRVResult SPIRV_UInt16x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -10039,17 +9461,11 @@ SPIRVResult SPIRV_UInt16x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t 
 SPIRVResult SPIRV_UInt16x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -10057,13 +9473,9 @@ SPIRVResult SPIRV_UInt16x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t 
 SPIRVResult SPIRV_UInt16x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -10071,13 +9483,9 @@ SPIRVResult SPIRV_UInt16x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t 
 SPIRVResult SPIRV_UInt16x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -10085,13 +9493,9 @@ SPIRVResult SPIRV_UInt16x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t 
 SPIRVResult SPIRV_UInt16x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::UInt16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -10099,7 +9503,7 @@ SPIRVResult SPIRV_UInt16x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t 
 SPIRVResult SPIRV_UInt16x4_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt16x4_operator_index_Int32.returnType, &UInt16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -10112,7 +9516,7 @@ SPIRVResult SPIRV_UInt16x4_operator_index_Int32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_UInt16x4_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt16x4_operator_index_UInt32.returnType, &UInt16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -10125,7 +9529,7 @@ SPIRVResult SPIRV_UInt16x4_operator_index_UInt32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_UInt16x4_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt16x4_operator_index_Int16.returnType, &UInt16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -10138,7 +9542,7 @@ SPIRVResult SPIRV_UInt16x4_operator_index_Int16(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_UInt16x4_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, UInt16x4_operator_index_UInt16.returnType, &UInt16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -10385,9 +9789,7 @@ SPIRVResult SPIRV_Int16x4_from_Float32x4(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Int16x4_splat_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float32ToInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -10400,9 +9802,7 @@ SPIRVResult SPIRV_Int16x4_from_UInt32x4(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_Int16x4_splat_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt32ToInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -10415,9 +9815,7 @@ SPIRVResult SPIRV_Int16x4_from_Int32x4(const Compiler* c, SPIRVGenerator* g, uin
 SPIRVResult SPIRV_Int16x4_splat_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Int32ToInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -10430,9 +9828,7 @@ SPIRVResult SPIRV_Int16x4_from_Bool8x4(const Compiler* c, SPIRVGenerator* g, uin
 SPIRVResult SPIRV_Int16x4_splat_Bool8(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Bool8ToInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -10445,9 +9841,7 @@ SPIRVResult SPIRV_Int16x4_from_Float16x4(const Compiler* c, SPIRVGenerator* g, u
 SPIRVResult SPIRV_Int16x4_splat_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::Float16ToInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -10460,9 +9854,7 @@ SPIRVResult SPIRV_Int16x4_from_UInt16x4(const Compiler* c, SPIRVGenerator* g, ui
 SPIRVResult SPIRV_Int16x4_splat_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = args[0];
-    if (val.isLiteral)
-        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!val.isLiteral)
         val = ConverterTable[TypeConversionTable::UInt16ToInt16](c, g, 1, val);
     return GenerateSplatCompositeSPIRV(c, g, returnType, 4, val);
 }
@@ -10481,21 +9873,13 @@ SPIRVResult SPIRV_Int16x4_splat_Int16(const Compiler* c, SPIRVGenerator* g, uint
 SPIRVResult SPIRV_Int16x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[4];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
-    if (args[3].isLiteral)
-        convertedArgs[3] = args[3].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[3].isLiteral)
         convertedArgs[3] = args[3];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2], convertedArgs[3]});
 }
@@ -10503,17 +9887,11 @@ SPIRVResult SPIRV_Int16x4_ctor0(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Int16x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -10521,17 +9899,11 @@ SPIRVResult SPIRV_Int16x4_ctor1(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Int16x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -10539,17 +9911,11 @@ SPIRVResult SPIRV_Int16x4_ctor2(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Int16x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[3];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
-    if (args[2].isLiteral)
-        convertedArgs[2] = args[2].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[2].isLiteral)
         convertedArgs[2] = args[2];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1], convertedArgs[2]});
 }
@@ -10557,13 +9923,9 @@ SPIRVResult SPIRV_Int16x4_ctor3(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Int16x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -10571,13 +9933,9 @@ SPIRVResult SPIRV_Int16x4_ctor4(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Int16x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -10585,13 +9943,9 @@ SPIRVResult SPIRV_Int16x4_ctor5(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Int16x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult convertedArgs[2];
-    if (args[0].isLiteral)
-        convertedArgs[0] = args[0].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[0].isLiteral)
         convertedArgs[0] = args[0];
-    if (args[1].isLiteral)
-        convertedArgs[1] = args[1].ConvertTo(SPIRVResult::LiteralValue::Type::Int16Type);
-    else
+    if (!args[1].isLiteral)
         convertedArgs[1] = args[1];
     return GenerateCompositeSPIRV(c, g, returnType, {convertedArgs[0], convertedArgs[1]});
 }
@@ -10599,7 +9953,7 @@ SPIRVResult SPIRV_Int16x4_ctor6(const Compiler* c, SPIRVGenerator* g, uint32_t r
 SPIRVResult SPIRV_Int16x4_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int16x4_operator_index_Int32.returnType, &Int16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -10612,7 +9966,7 @@ SPIRVResult SPIRV_Int16x4_operator_index_Int32(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_Int16x4_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int16x4_operator_index_UInt32.returnType, &Int16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -10625,7 +9979,7 @@ SPIRVResult SPIRV_Int16x4_operator_index_UInt32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_Int16x4_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int16x4_operator_index_Int16.returnType, &Int16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -10638,7 +9992,7 @@ SPIRVResult SPIRV_Int16x4_operator_index_Int16(const Compiler* c, SPIRVGenerator
 SPIRVResult SPIRV_Int16x4_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Int16x4_operator_index_UInt16.returnType, &Int16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -10902,8 +10256,8 @@ SPIRVResult SPIRV_Float32x2x2_raw_list(const Compiler* c, SPIRVGenerator* g, uin
 
 SPIRVResult SPIRV_Float32x2x2_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2x2_operator_index_Int32.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2x2_operator_index_Int32.returnType, &Float32x2Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -10915,8 +10269,8 @@ SPIRVResult SPIRV_Float32x2x2_operator_index_Int32(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float32x2x2_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2x2_operator_index_UInt32.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2x2_operator_index_UInt32.returnType, &Float32x2Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -10928,8 +10282,8 @@ SPIRVResult SPIRV_Float32x2x2_operator_index_UInt32(const Compiler* c, SPIRVGene
 
 SPIRVResult SPIRV_Float32x2x2_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2x2_operator_index_Int16.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2x2_operator_index_Int16.returnType, &Float32x2Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -10941,8 +10295,8 @@ SPIRVResult SPIRV_Float32x2x2_operator_index_Int16(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float32x2x2_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2x2_operator_index_UInt16.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2x2_operator_index_UInt16.returnType, &Float32x2Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -11068,8 +10422,8 @@ SPIRVResult SPIRV_Float32x3x2_raw_list(const Compiler* c, SPIRVGenerator* g, uin
 
 SPIRVResult SPIRV_Float32x3x2_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3x2_operator_index_Int32.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3x2_operator_index_Int32.returnType, &Float32x3Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -11081,8 +10435,8 @@ SPIRVResult SPIRV_Float32x3x2_operator_index_Int32(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float32x3x2_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3x2_operator_index_UInt32.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3x2_operator_index_UInt32.returnType, &Float32x3Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -11094,8 +10448,8 @@ SPIRVResult SPIRV_Float32x3x2_operator_index_UInt32(const Compiler* c, SPIRVGene
 
 SPIRVResult SPIRV_Float32x3x2_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3x2_operator_index_Int16.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3x2_operator_index_Int16.returnType, &Float32x3Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -11107,8 +10461,8 @@ SPIRVResult SPIRV_Float32x3x2_operator_index_Int16(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float32x3x2_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3x2_operator_index_UInt16.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3x2_operator_index_UInt16.returnType, &Float32x3Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -11235,8 +10589,8 @@ SPIRVResult SPIRV_Float32x4x2_raw_list(const Compiler* c, SPIRVGenerator* g, uin
 
 SPIRVResult SPIRV_Float32x4x2_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4x2_operator_index_Int32.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4x2_operator_index_Int32.returnType, &Float32x4Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -11248,8 +10602,8 @@ SPIRVResult SPIRV_Float32x4x2_operator_index_Int32(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float32x4x2_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4x2_operator_index_UInt32.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4x2_operator_index_UInt32.returnType, &Float32x4Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -11261,8 +10615,8 @@ SPIRVResult SPIRV_Float32x4x2_operator_index_UInt32(const Compiler* c, SPIRVGene
 
 SPIRVResult SPIRV_Float32x4x2_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4x2_operator_index_Int16.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4x2_operator_index_Int16.returnType, &Float32x4Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -11274,8 +10628,8 @@ SPIRVResult SPIRV_Float32x4x2_operator_index_Int16(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float32x4x2_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4x2_operator_index_UInt16.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4x2_operator_index_UInt16.returnType, &Float32x4Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -11400,8 +10754,8 @@ SPIRVResult SPIRV_Float32x2x3_raw_list(const Compiler* c, SPIRVGenerator* g, uin
 
 SPIRVResult SPIRV_Float32x2x3_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2x3_operator_index_Int32.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2x3_operator_index_Int32.returnType, &Float32x2Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -11413,8 +10767,8 @@ SPIRVResult SPIRV_Float32x2x3_operator_index_Int32(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float32x2x3_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2x3_operator_index_UInt32.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2x3_operator_index_UInt32.returnType, &Float32x2Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -11426,8 +10780,8 @@ SPIRVResult SPIRV_Float32x2x3_operator_index_UInt32(const Compiler* c, SPIRVGene
 
 SPIRVResult SPIRV_Float32x2x3_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2x3_operator_index_Int16.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2x3_operator_index_Int16.returnType, &Float32x2Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -11439,8 +10793,8 @@ SPIRVResult SPIRV_Float32x2x3_operator_index_Int16(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float32x2x3_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2x3_operator_index_UInt16.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2x3_operator_index_UInt16.returnType, &Float32x2Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -11577,8 +10931,8 @@ SPIRVResult SPIRV_Float32x3x3_raw_list(const Compiler* c, SPIRVGenerator* g, uin
 
 SPIRVResult SPIRV_Float32x3x3_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3x3_operator_index_Int32.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3x3_operator_index_Int32.returnType, &Float32x3Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -11590,8 +10944,8 @@ SPIRVResult SPIRV_Float32x3x3_operator_index_Int32(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float32x3x3_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3x3_operator_index_UInt32.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3x3_operator_index_UInt32.returnType, &Float32x3Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -11603,8 +10957,8 @@ SPIRVResult SPIRV_Float32x3x3_operator_index_UInt32(const Compiler* c, SPIRVGene
 
 SPIRVResult SPIRV_Float32x3x3_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3x3_operator_index_Int16.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3x3_operator_index_Int16.returnType, &Float32x3Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -11616,8 +10970,8 @@ SPIRVResult SPIRV_Float32x3x3_operator_index_Int16(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float32x3x3_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3x3_operator_index_UInt16.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3x3_operator_index_UInt16.returnType, &Float32x3Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -11744,8 +11098,8 @@ SPIRVResult SPIRV_Float32x4x3_raw_list(const Compiler* c, SPIRVGenerator* g, uin
 
 SPIRVResult SPIRV_Float32x4x3_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4x3_operator_index_Int32.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4x3_operator_index_Int32.returnType, &Float32x4Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -11757,8 +11111,8 @@ SPIRVResult SPIRV_Float32x4x3_operator_index_Int32(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float32x4x3_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4x3_operator_index_UInt32.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4x3_operator_index_UInt32.returnType, &Float32x4Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -11770,8 +11124,8 @@ SPIRVResult SPIRV_Float32x4x3_operator_index_UInt32(const Compiler* c, SPIRVGene
 
 SPIRVResult SPIRV_Float32x4x3_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4x3_operator_index_Int16.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4x3_operator_index_Int16.returnType, &Float32x4Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -11783,8 +11137,8 @@ SPIRVResult SPIRV_Float32x4x3_operator_index_Int16(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float32x4x3_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4x3_operator_index_UInt16.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4x3_operator_index_UInt16.returnType, &Float32x4Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -11909,8 +11263,8 @@ SPIRVResult SPIRV_Float32x2x4_raw_list(const Compiler* c, SPIRVGenerator* g, uin
 
 SPIRVResult SPIRV_Float32x2x4_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2x4_operator_index_Int32.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2x4_operator_index_Int32.returnType, &Float32x2Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -11922,8 +11276,8 @@ SPIRVResult SPIRV_Float32x2x4_operator_index_Int32(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float32x2x4_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2x4_operator_index_UInt32.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2x4_operator_index_UInt32.returnType, &Float32x2Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -11935,8 +11289,8 @@ SPIRVResult SPIRV_Float32x2x4_operator_index_UInt32(const Compiler* c, SPIRVGene
 
 SPIRVResult SPIRV_Float32x2x4_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2x4_operator_index_Int16.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2x4_operator_index_Int16.returnType, &Float32x2Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -11948,8 +11302,8 @@ SPIRVResult SPIRV_Float32x2x4_operator_index_Int16(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float32x2x4_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2x4_operator_index_UInt16.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x2x4_operator_index_UInt16.returnType, &Float32x2Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -12075,8 +11429,8 @@ SPIRVResult SPIRV_Float32x3x4_raw_list(const Compiler* c, SPIRVGenerator* g, uin
 
 SPIRVResult SPIRV_Float32x3x4_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3x4_operator_index_Int32.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3x4_operator_index_Int32.returnType, &Float32x3Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -12088,8 +11442,8 @@ SPIRVResult SPIRV_Float32x3x4_operator_index_Int32(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float32x3x4_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3x4_operator_index_UInt32.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3x4_operator_index_UInt32.returnType, &Float32x3Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -12101,8 +11455,8 @@ SPIRVResult SPIRV_Float32x3x4_operator_index_UInt32(const Compiler* c, SPIRVGene
 
 SPIRVResult SPIRV_Float32x3x4_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3x4_operator_index_Int16.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3x4_operator_index_Int16.returnType, &Float32x3Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -12114,8 +11468,8 @@ SPIRVResult SPIRV_Float32x3x4_operator_index_Int16(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float32x3x4_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3x4_operator_index_UInt16.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x3x4_operator_index_UInt16.returnType, &Float32x3Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -12254,8 +11608,8 @@ SPIRVResult SPIRV_Float32x4x4_raw_list(const Compiler* c, SPIRVGenerator* g, uin
 
 SPIRVResult SPIRV_Float32x4x4_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4x4_operator_index_Int32.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4x4_operator_index_Int32.returnType, &Float32x4Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -12267,8 +11621,8 @@ SPIRVResult SPIRV_Float32x4x4_operator_index_Int32(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float32x4x4_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4x4_operator_index_UInt32.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4x4_operator_index_UInt32.returnType, &Float32x4Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -12280,8 +11634,8 @@ SPIRVResult SPIRV_Float32x4x4_operator_index_UInt32(const Compiler* c, SPIRVGene
 
 SPIRVResult SPIRV_Float32x4x4_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4x4_operator_index_Int16.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4x4_operator_index_Int16.returnType, &Float32x4Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -12293,8 +11647,8 @@ SPIRVResult SPIRV_Float32x4x4_operator_index_Int16(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float32x4x4_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4x4_operator_index_UInt16.returnType, &Float32Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float32x4x4_operator_index_UInt16.returnType, &Float32x4Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -12429,8 +11783,8 @@ SPIRVResult SPIRV_Float16x2x2_raw_list(const Compiler* c, SPIRVGenerator* g, uin
 
 SPIRVResult SPIRV_Float16x2x2_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2x2_operator_index_Int32.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2x2_operator_index_Int32.returnType, &Float16x2Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -12442,8 +11796,8 @@ SPIRVResult SPIRV_Float16x2x2_operator_index_Int32(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float16x2x2_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2x2_operator_index_UInt32.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2x2_operator_index_UInt32.returnType, &Float16x2Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -12455,8 +11809,8 @@ SPIRVResult SPIRV_Float16x2x2_operator_index_UInt32(const Compiler* c, SPIRVGene
 
 SPIRVResult SPIRV_Float16x2x2_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2x2_operator_index_Int16.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2x2_operator_index_Int16.returnType, &Float16x2Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -12468,8 +11822,8 @@ SPIRVResult SPIRV_Float16x2x2_operator_index_Int16(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float16x2x2_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2x2_operator_index_UInt16.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2x2_operator_index_UInt16.returnType, &Float16x2Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -12595,8 +11949,8 @@ SPIRVResult SPIRV_Float16x3x2_raw_list(const Compiler* c, SPIRVGenerator* g, uin
 
 SPIRVResult SPIRV_Float16x3x2_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3x2_operator_index_Int32.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3x2_operator_index_Int32.returnType, &Float16x3Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -12608,8 +11962,8 @@ SPIRVResult SPIRV_Float16x3x2_operator_index_Int32(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float16x3x2_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3x2_operator_index_UInt32.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3x2_operator_index_UInt32.returnType, &Float16x3Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -12621,8 +11975,8 @@ SPIRVResult SPIRV_Float16x3x2_operator_index_UInt32(const Compiler* c, SPIRVGene
 
 SPIRVResult SPIRV_Float16x3x2_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3x2_operator_index_Int16.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3x2_operator_index_Int16.returnType, &Float16x3Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -12634,8 +11988,8 @@ SPIRVResult SPIRV_Float16x3x2_operator_index_Int16(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float16x3x2_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3x2_operator_index_UInt16.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3x2_operator_index_UInt16.returnType, &Float16x3Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -12762,8 +12116,8 @@ SPIRVResult SPIRV_Float16x4x2_raw_list(const Compiler* c, SPIRVGenerator* g, uin
 
 SPIRVResult SPIRV_Float16x4x2_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4x2_operator_index_Int32.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4x2_operator_index_Int32.returnType, &Float16x4Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -12775,8 +12129,8 @@ SPIRVResult SPIRV_Float16x4x2_operator_index_Int32(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float16x4x2_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4x2_operator_index_UInt32.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4x2_operator_index_UInt32.returnType, &Float16x4Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -12788,8 +12142,8 @@ SPIRVResult SPIRV_Float16x4x2_operator_index_UInt32(const Compiler* c, SPIRVGene
 
 SPIRVResult SPIRV_Float16x4x2_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4x2_operator_index_Int16.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4x2_operator_index_Int16.returnType, &Float16x4Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -12801,8 +12155,8 @@ SPIRVResult SPIRV_Float16x4x2_operator_index_Int16(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float16x4x2_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4x2_operator_index_UInt16.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4x2_operator_index_UInt16.returnType, &Float16x4Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -12927,8 +12281,8 @@ SPIRVResult SPIRV_Float16x2x3_raw_list(const Compiler* c, SPIRVGenerator* g, uin
 
 SPIRVResult SPIRV_Float16x2x3_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2x3_operator_index_Int32.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2x3_operator_index_Int32.returnType, &Float16x2Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -12940,8 +12294,8 @@ SPIRVResult SPIRV_Float16x2x3_operator_index_Int32(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float16x2x3_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2x3_operator_index_UInt32.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2x3_operator_index_UInt32.returnType, &Float16x2Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -12953,8 +12307,8 @@ SPIRVResult SPIRV_Float16x2x3_operator_index_UInt32(const Compiler* c, SPIRVGene
 
 SPIRVResult SPIRV_Float16x2x3_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2x3_operator_index_Int16.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2x3_operator_index_Int16.returnType, &Float16x2Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -12966,8 +12320,8 @@ SPIRVResult SPIRV_Float16x2x3_operator_index_Int16(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float16x2x3_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2x3_operator_index_UInt16.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2x3_operator_index_UInt16.returnType, &Float16x2Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -13104,8 +12458,8 @@ SPIRVResult SPIRV_Float16x3x3_raw_list(const Compiler* c, SPIRVGenerator* g, uin
 
 SPIRVResult SPIRV_Float16x3x3_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3x3_operator_index_Int32.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3x3_operator_index_Int32.returnType, &Float16x3Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -13117,8 +12471,8 @@ SPIRVResult SPIRV_Float16x3x3_operator_index_Int32(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float16x3x3_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3x3_operator_index_UInt32.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3x3_operator_index_UInt32.returnType, &Float16x3Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -13130,8 +12484,8 @@ SPIRVResult SPIRV_Float16x3x3_operator_index_UInt32(const Compiler* c, SPIRVGene
 
 SPIRVResult SPIRV_Float16x3x3_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3x3_operator_index_Int16.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3x3_operator_index_Int16.returnType, &Float16x3Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -13143,8 +12497,8 @@ SPIRVResult SPIRV_Float16x3x3_operator_index_Int16(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float16x3x3_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3x3_operator_index_UInt16.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3x3_operator_index_UInt16.returnType, &Float16x3Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -13271,8 +12625,8 @@ SPIRVResult SPIRV_Float16x4x3_raw_list(const Compiler* c, SPIRVGenerator* g, uin
 
 SPIRVResult SPIRV_Float16x4x3_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4x3_operator_index_Int32.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4x3_operator_index_Int32.returnType, &Float16x4Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -13284,8 +12638,8 @@ SPIRVResult SPIRV_Float16x4x3_operator_index_Int32(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float16x4x3_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4x3_operator_index_UInt32.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4x3_operator_index_UInt32.returnType, &Float16x4Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -13297,8 +12651,8 @@ SPIRVResult SPIRV_Float16x4x3_operator_index_UInt32(const Compiler* c, SPIRVGene
 
 SPIRVResult SPIRV_Float16x4x3_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4x3_operator_index_Int16.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4x3_operator_index_Int16.returnType, &Float16x4Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -13310,8 +12664,8 @@ SPIRVResult SPIRV_Float16x4x3_operator_index_Int16(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float16x4x3_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4x3_operator_index_UInt16.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4x3_operator_index_UInt16.returnType, &Float16x4Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -13436,8 +12790,8 @@ SPIRVResult SPIRV_Float16x2x4_raw_list(const Compiler* c, SPIRVGenerator* g, uin
 
 SPIRVResult SPIRV_Float16x2x4_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2x4_operator_index_Int32.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2x4_operator_index_Int32.returnType, &Float16x2Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -13449,8 +12803,8 @@ SPIRVResult SPIRV_Float16x2x4_operator_index_Int32(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float16x2x4_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2x4_operator_index_UInt32.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2x4_operator_index_UInt32.returnType, &Float16x2Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -13462,8 +12816,8 @@ SPIRVResult SPIRV_Float16x2x4_operator_index_UInt32(const Compiler* c, SPIRVGene
 
 SPIRVResult SPIRV_Float16x2x4_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2x4_operator_index_Int16.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2x4_operator_index_Int16.returnType, &Float16x2Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -13475,8 +12829,8 @@ SPIRVResult SPIRV_Float16x2x4_operator_index_Int16(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float16x2x4_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2x4_operator_index_UInt16.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x2x4_operator_index_UInt16.returnType, &Float16x2Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -13602,8 +12956,8 @@ SPIRVResult SPIRV_Float16x3x4_raw_list(const Compiler* c, SPIRVGenerator* g, uin
 
 SPIRVResult SPIRV_Float16x3x4_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3x4_operator_index_Int32.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3x4_operator_index_Int32.returnType, &Float16x3Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -13615,8 +12969,8 @@ SPIRVResult SPIRV_Float16x3x4_operator_index_Int32(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float16x3x4_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3x4_operator_index_UInt32.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3x4_operator_index_UInt32.returnType, &Float16x3Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -13628,8 +12982,8 @@ SPIRVResult SPIRV_Float16x3x4_operator_index_UInt32(const Compiler* c, SPIRVGene
 
 SPIRVResult SPIRV_Float16x3x4_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3x4_operator_index_Int16.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3x4_operator_index_Int16.returnType, &Float16x3Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -13641,8 +12995,8 @@ SPIRVResult SPIRV_Float16x3x4_operator_index_Int16(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float16x3x4_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3x4_operator_index_UInt16.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x3x4_operator_index_UInt16.returnType, &Float16x3Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -13781,8 +13135,8 @@ SPIRVResult SPIRV_Float16x4x4_raw_list(const Compiler* c, SPIRVGenerator* g, uin
 
 SPIRVResult SPIRV_Float16x4x4_operator_index_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4x4_operator_index_Int32.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4x4_operator_index_Int32.returnType, &Float16x4Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -13794,8 +13148,8 @@ SPIRVResult SPIRV_Float16x4x4_operator_index_Int32(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float16x4x4_operator_index_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4x4_operator_index_UInt32.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4x4_operator_index_UInt32.returnType, &Float16x4Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -13807,8 +13161,8 @@ SPIRVResult SPIRV_Float16x4x4_operator_index_UInt32(const Compiler* c, SPIRVGene
 
 SPIRVResult SPIRV_Float16x4x4_operator_index_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4x4_operator_index_Int16.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4x4_operator_index_Int16.returnType, &Float16x4Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;
@@ -13820,8 +13174,8 @@ SPIRVResult SPIRV_Float16x4x4_operator_index_Int16(const Compiler* c, SPIRVGener
 
 SPIRVResult SPIRV_Float16x4x4_operator_index_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4x4_operator_index_UInt16.returnType, &Float16Type, args[0].scope);
-    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, Float16x4x4_operator_index_UInt16.returnType, &Float16x4Type, args[0].scope);
+    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult ret = args[0];
     ret.AddAccessChainLink({index});
     ret.typeName = returnTypePtr.typeName;

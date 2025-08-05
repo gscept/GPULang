@@ -2666,25 +2666,25 @@ LoadValueSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SPIRVResult 
     {
         switch (arg.literalValue.type)
         {
-        case SPIRVResult::LiteralValue::Float32Type:
+        case TypeCode::Float32:
             arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Float32(arg.literalValue.f32));
             break;
-        case SPIRVResult::LiteralValue::Float16Type:
+        case TypeCode::Float16:
             arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Float16(arg.literalValue.f16));
             break;
-        case SPIRVResult::LiteralValue::Int32Type:
+        case TypeCode::Int32:
             arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Int32(arg.literalValue.i32));
             break;
-        case SPIRVResult::LiteralValue::Int16Type:
+        case TypeCode::Int16:
             arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Int16(arg.literalValue.i16));
             break;
-        case SPIRVResult::LiteralValue::UInt32Type:
+        case TypeCode::UInt32:
             arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::UInt32(arg.literalValue.u32));
             break;
-        case SPIRVResult::LiteralValue::UInt16Type:
+        case TypeCode::UInt16:
             arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::UInt16(arg.literalValue.u16));
             break;
-        case SPIRVResult::LiteralValue::Bool8Type:
+        case TypeCode::Bool8:
             arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Bool8(arg.literalValue.b8));
             break;
         }
@@ -3935,6 +3935,7 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
                     ValueUnion val;
                     callExpression->args[i]->EvalValue(val);
                     SPIRVResult arg = SPIRVResult(val);
+                    arg.ConvertTo(paramResolved->typeSymbol->baseType);
                     if (paramResolved->typeSymbol->columnSize > 1)
                     {
                         SPIRVResult ty = GenerateTypeSPIRV(compiler, generator, param->type, paramResolved->typeSymbol);
@@ -3975,6 +3976,7 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
                 bool res = callExpression->args[i]->EvalValue(val);
                 assert(res);
                 SPIRVResult arg = SPIRVResult(val);
+                arg.ConvertTo(paramResolved->typeSymbol->baseType);
                 if (paramResolved->typeSymbol->columnSize > 1)
                 {
                     SPIRVResult ty = GenerateTypeSPIRV(compiler, generator, param->type, paramResolved->typeSymbol);

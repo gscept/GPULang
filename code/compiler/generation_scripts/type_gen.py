@@ -770,9 +770,7 @@ def generate_types():
 
                     spirv_function = '    SPIRVResult val = args[0];\n'
                     if type != type2:
-                        spirv_function += f'    if (val.isLiteral)\n'
-                        spirv_function += f'        val = val.ConvertTo(SPIRVResult::LiteralValue::Type::{base_type_mapping[type_name]}Type);\n'
-                        spirv_function += f'    else\n'
+                        spirv_function += f'    if (!val.isLiteral)\n'
                         spirv_function += f'        val = ConverterTable[TypeConversionTable::{type2}To{type}](c, g, 1, val);\n'
                     spirv_function += f'    return GenerateSplatCompositeSPIRV(c, g, returnType, {size}, val);\n'
                     spirv_type_construction += spirv_intrinsic(function_name, spirv_function)
@@ -828,9 +826,7 @@ def generate_types():
 
                 spirv_function = f'    SPIRVResult convertedArgs[{len(comb)}];\n'
                 for arg_idx, s in enumerate(comb):
-                    spirv_function += f'    if (args[{arg_idx}].isLiteral)\n'
-                    spirv_function += f'        convertedArgs[{arg_idx}] = args[{arg_idx}].ConvertTo(SPIRVResult::LiteralValue::Type::{base_type_mapping[type_name]}Type);\n'
-                    spirv_function += f'    else\n'
+                    spirv_function += f'    if (!args[{arg_idx}].isLiteral)\n'
                     spirv_function += f'        convertedArgs[{arg_idx}] = args[{arg_idx}];\n'
                     argList = ", ".join([f'convertedArgs[{arg_idx}]' for arg_idx in range(len(comb))])
                 if size > 1:
@@ -855,7 +851,7 @@ def generate_types():
                 )
 
                 spirv_function =  f'    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, {function_name}.returnType, &{type}Type, args[0].scope);\n'
-                spirv_function += '    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);\n'
+                spirv_function += '    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);\n'
                 spirv_function += '    SPIRVResult ret = args[0];\n'
                 spirv_function += '    ret.AddAccessChainLink({index});\n'
                 spirv_function += '    ret.typeName = returnTypePtr.typeName;\n'
@@ -1232,8 +1228,8 @@ def generate_types():
                         is_member=True
                     )
 
-                    spirv_function =  f'    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, {function_name}.returnType, &{type}Type, args[0].scope);\n'
-                    spirv_function += '    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);\n'
+                    spirv_function =  f'    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, {function_name}.returnType, &{vec_type}Type, args[0].scope);\n'
+                    spirv_function += '    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);\n'
                     spirv_function += '    SPIRVResult ret = args[0];\n'
                     spirv_function += '    ret.AddAccessChainLink({index});\n'
                     spirv_function += '    ret.typeName = returnTypePtr.typeName;\n'

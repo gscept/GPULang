@@ -61,182 +61,174 @@ struct SPIRVResult
             bool b8;
         };
 
-        enum Type
-        {
-            Float32Type,
-            Float16Type,
-            Int32Type,
-            Int16Type,
-            UInt32Type,
-            UInt16Type,
-            Bool8Type
-        } type;
+        TypeCode type;
+        
     } literalValue;
 
-    SPIRVResult ConvertTo(LiteralValue::Type toType) const
+    SPIRVResult ConvertTo(TypeCode toType) const
     {
         SPIRVResult result = *this;
         if (this->isLiteral)
         {
             switch (this->literalValue.type)
             {
-                case LiteralValue::Float32Type:
+                case TypeCode::Float32:
                     switch (toType)
                     {
-                        case LiteralValue::Float16Type:
+                        case TypeCode::Float16:
                             result.literalValue.f16 = this->literalValue.f32;
                             break;
-                        case LiteralValue::Int32Type:
+                        case TypeCode::Int32:
                             result.literalValue.i32 = this->literalValue.f32;
                             break;
-                        case LiteralValue::Int16Type:
+                        case TypeCode::Int16:
                             result.literalValue.i16 = this->literalValue.f32;
                             break;
-                        case LiteralValue::UInt32Type:
+                        case TypeCode::UInt32:
                             result.literalValue.u32 = this->literalValue.f32;
                             break;
-                        case LiteralValue::UInt16Type:
+                        case TypeCode::UInt16:
                             result.literalValue.u16 = this->literalValue.f32;
                             break;
-                        case LiteralValue::Bool8Type:
+                        case TypeCode::Bool8:
                             result.literalValue.b = this->literalValue.f32 != 0.0f;
                             break;
                     }
                     break;
-                case LiteralValue::Float16Type:
+                case TypeCode::Float16:
                     switch (toType)
                     {
-                        case LiteralValue::Float32Type:
+                        case TypeCode::Float32:
                             result.literalValue.f32 = this->literalValue.f16;
                             break;
-                        case LiteralValue::Int32Type:
+                        case TypeCode::Int32:
                             result.literalValue.i32 = this->literalValue.f16;
                             break;
-                        case LiteralValue::Int16Type:
+                        case TypeCode::Int16:
                             result.literalValue.i16 = this->literalValue.f16;
                             break;
-                        case LiteralValue::UInt32Type:
+                        case TypeCode::UInt32:
                             result.literalValue.u32 = this->literalValue.f16;
                             break;
-                        case LiteralValue::UInt16Type:
+                        case TypeCode::UInt16:
                             result.literalValue.u16 = this->literalValue.f16;
                             break;
-                        case LiteralValue::Bool8Type:
+                        case TypeCode::Bool8:
                             result.literalValue.b = this->literalValue.f16 != 0.0f;
                             break;
                     }
                     break;
-                case LiteralValue::Int32Type:
+                case TypeCode::Int32:
                     switch (toType)
                     {
-                        case LiteralValue::Float32Type:
+                        case TypeCode::Float32:
                             result.literalValue.f32 = this->literalValue.i32;
                             break;
-                        case LiteralValue::Float16Type:
+                        case TypeCode::Float16:
                             result.literalValue.f16 = this->literalValue.i32;
                             break;
-                        case LiteralValue::Int16Type:
+                        case TypeCode::Int16:
                             result.literalValue.i16 = this->literalValue.i32;
                             break;
-                        case LiteralValue::UInt32Type:
+                        case TypeCode::UInt32:
                             result.literalValue.u32 = this->literalValue.i32;
                             break;
-                        case LiteralValue::UInt16Type:
+                        case TypeCode::UInt16:
                             result.literalValue.u16 = this->literalValue.i32;
                             break;
-                        case LiteralValue::Bool8Type:
+                        case TypeCode::Bool8:
                             result.literalValue.b = this->literalValue.i32 != 0;
                             break;
                     }
                     break;
-                case LiteralValue::Int16Type:
+                case TypeCode::Int16:
                     switch (toType)
                     {
-                        case LiteralValue::Float32Type:
+                        case TypeCode::Float32:
                             result.literalValue.f32 = this->literalValue.i16;
                             break;
-                        case LiteralValue::Float16Type:
+                        case TypeCode::Float16:
                             result.literalValue.f16 = this->literalValue.i16;
                             break;
-                        case LiteralValue::Int32Type:
+                        case TypeCode::Int32:
                             result.literalValue.i16 = this->literalValue.i16;
                             break;
-                        case LiteralValue::UInt32Type:
+                        case TypeCode::UInt32:
                             result.literalValue.u32 = this->literalValue.i16;
                             break;
-                        case LiteralValue::UInt16Type:
+                        case TypeCode::UInt16:
                             result.literalValue.u16 = this->literalValue.i16;
                             break;
-                        case LiteralValue::Bool8Type:
+                        case TypeCode::Bool8:
                             result.literalValue.b = this->literalValue.i16 != 0;
                             break;
                     }
                     break;
-                case LiteralValue::UInt32Type:
+                case TypeCode::UInt32:
                     switch (toType)
                     {
-                        case LiteralValue::Float32Type:
+                        case TypeCode::Float32:
                             result.literalValue.f32 = this->literalValue.u32;
                             break;
-                        case LiteralValue::Float16Type:
+                        case TypeCode::Float16:
                             result.literalValue.f16 = this->literalValue.u32;
                             break;
-                        case LiteralValue::Int32Type:
+                        case TypeCode::Int32:
                             result.literalValue.i32 = this->literalValue.u32;
                             break;
-                        case LiteralValue::Int16Type:
+                        case TypeCode::Int16:
                             result.literalValue.i16 = this->literalValue.u32;
                             break;
-                        case LiteralValue::UInt16Type:
+                        case TypeCode::UInt16:
                             result.literalValue.u16 = this->literalValue.u32;
                             break;
-                        case LiteralValue::Bool8Type:
+                        case TypeCode::Bool8:
                             result.literalValue.b = this->literalValue.u32 != 0;
                             break;
                     }
                     break;
-                case LiteralValue::UInt16Type:
+                case TypeCode::UInt16:
                     switch (toType)
                     {
-                        case LiteralValue::Float32Type:
+                        case TypeCode::Float32:
                             result.literalValue.f32 = this->literalValue.u16;
                             break;
-                        case LiteralValue::Float16Type:
+                        case TypeCode::Float16:
                             result.literalValue.f16 = this->literalValue.u16;
                             break;
-                        case LiteralValue::Int32Type:
+                        case TypeCode::Int32:
                             result.literalValue.i32 = this->literalValue.u16;
                             break;
-                        case LiteralValue::Int16Type:
+                        case TypeCode::Int16:
                             result.literalValue.i16 = this->literalValue.u16;
                             break;
-                        case LiteralValue::UInt32Type:
+                        case TypeCode::UInt32:
                             result.literalValue.u16 = this->literalValue.u16;
                             break;
-                        case LiteralValue::Bool8Type:
+                        case TypeCode::Bool8:
                             result.literalValue.b = this->literalValue.u16 != 0;
                             break;
                     }
                     break;
-                case LiteralValue::Bool8Type:
+                case TypeCode::Bool8:
                     switch (toType)
                     {
-                        case LiteralValue::Float32Type:
+                        case TypeCode::Float32:
                             result.literalValue.f32 = this->literalValue.b;
                             break;
-                        case LiteralValue::Float16Type:
+                        case TypeCode::Float16:
                             result.literalValue.f16 = this->literalValue.b;
                             break;
-                        case LiteralValue::Int32Type:
+                        case TypeCode::Int32:
                             result.literalValue.i32 = this->literalValue.b;
                             break;
-                        case LiteralValue::Int16Type:
+                        case TypeCode::Int16:
                             result.literalValue.i16 = this->literalValue.b;
                             break;
-                        case LiteralValue::UInt32Type:
+                        case TypeCode::UInt32:
                             result.literalValue.u32 = this->literalValue.b;
                             break;
-                        case LiteralValue::UInt16Type:
+                        case TypeCode::UInt16:
                             result.literalValue.u16 = this->literalValue.b;
                             break;
                     }
@@ -337,43 +329,43 @@ struct SPIRVResult
         switch (value.code)
         {
             case TypeCode::Bool8:
-                this->literalValue.type = LiteralValue::Bool8Type;
+                this->literalValue.type = TypeCode::Bool8;
                 this->literalValue.b8 = value.b[0];
                 this->isLiteral = true;
                 this->isValue = false;
                 break;
             case TypeCode::UInt16:
-                this->literalValue.type = LiteralValue::UInt16Type;
+                this->literalValue.type = TypeCode::UInt16;
                 this->literalValue.u16 = value.ui[0];
                 this->isLiteral = true;
                 this->isValue = false;
                 break;
             case TypeCode::UInt32:
-                this->literalValue.type = LiteralValue::UInt32Type;
+                this->literalValue.type = TypeCode::UInt32;
                 this->literalValue.u32 = value.ui[0];
                 this->isLiteral = true;
                 this->isValue = false;
                 break;
             case TypeCode::Int16:
-                this->literalValue.type = LiteralValue::Int16Type;
+                this->literalValue.type = TypeCode::Int16;
                 this->literalValue.i16 = value.i[0];
                 this->isLiteral = true;
                 this->isValue = false;
                 break;
             case TypeCode::Int32:
-                this->literalValue.type = LiteralValue::Int32Type;
+                this->literalValue.type = TypeCode::Int32;
                 this->literalValue.i32 = value.i[0];
                 this->isLiteral = true;
                 this->isValue = false;
                 break;
             case TypeCode::Float16:
-                this->literalValue.type = LiteralValue::Float16Type;
+                this->literalValue.type = TypeCode::Float16;
                 this->literalValue.f16 = value.f[0];
                 this->isLiteral = true;
                 this->isValue = false;
                 break;
             case TypeCode::Float32:
-                this->literalValue.type = LiteralValue::Float32Type;
+                this->literalValue.type = TypeCode::Float32;
                 this->literalValue.f32 = value.f[0];
                 this->isLiteral = true;
                 this->isValue = false;
@@ -383,32 +375,48 @@ struct SPIRVResult
 
     explicit SPIRVResult(float literal)
     {
-        this->literalValue.type = LiteralValue::Float32Type;
+        this->literalValue.type = TypeCode::Float32;
         this->literalValue.f = literal;
         this->isLiteral = true;
         this->isValue = false;
     }
 
-    explicit SPIRVResult(int literal)
+    explicit SPIRVResult(int32_t literal)
     {
-        this->literalValue.type = LiteralValue::Int32Type;
-        this->literalValue.i = literal;
+        this->literalValue.type = TypeCode::Int32;
+        this->literalValue.i32 = literal;
+        this->isLiteral = true;
+        this->isValue = false;
+    }
+    
+    explicit SPIRVResult(int16_t literal)
+    {
+        this->literalValue.type = TypeCode::Int16;
+        this->literalValue.i16 = literal;
         this->isLiteral = true;
         this->isValue = false;
     }
 
     explicit SPIRVResult(bool literal)
     {
-        this->literalValue.type = LiteralValue::Bool8Type;
-        this->literalValue.b = literal;
+        this->literalValue.type = TypeCode::Bool8;
+        this->literalValue.b8 = literal;
         this->isLiteral = true;
         this->isValue = false;
     }
 
     explicit SPIRVResult(uint32_t literal)
     {
-        this->literalValue.type = LiteralValue::UInt32Type;
-        this->literalValue.ui = literal;
+        this->literalValue.type = TypeCode::UInt32;
+        this->literalValue.u32 = literal;
+        this->isLiteral = true;
+        this->isValue = false;
+    }
+    
+    explicit SPIRVResult(uint16_t literal)
+    {
+        this->literalValue.type = TypeCode::UInt16;
+        this->literalValue.u16 = literal;
         this->isLiteral = true;
         this->isValue = false;
     }
