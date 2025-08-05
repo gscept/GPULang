@@ -359,6 +359,31 @@ static auto identifierStart = [](const char c) -> bool
     return (CharacterClassTable[c] & IDENTIFIER_START_CHARACTER) == IDENTIFIER_START_CHARACTER;
 };
 
+static auto identifierEnd = [](const char* it) -> const char*
+{
+    char c;
+    do
+    {
+        c = CharacterClassTable[it[0]];
+        if ((c & IDENTIFIER_CONTD_CHARACTER) != IDENTIFIER_CONTD_CHARACTER)
+            return it;
+        
+        c = CharacterClassTable[it[1]];
+        if ((c & IDENTIFIER_CONTD_CHARACTER) != IDENTIFIER_CONTD_CHARACTER)
+            return it + 1;
+            
+        c = CharacterClassTable[it[2]];
+        if ((c & IDENTIFIER_CONTD_CHARACTER) != IDENTIFIER_CONTD_CHARACTER)
+            return it + 2;
+            
+        c = CharacterClassTable[it[3]];
+        if ((c & IDENTIFIER_CONTD_CHARACTER) != IDENTIFIER_CONTD_CHARACTER)
+            return it + 3;
+            
+        it += 4;
+    } while(true);
+};
+
 static auto identifierChar = [](const char c) -> bool
 {
     return (CharacterClassTable[c] & IDENTIFIER_CONTD_CHARACTER) == IDENTIFIER_CONTD_CHARACTER;
@@ -369,6 +394,56 @@ static auto numberStart = [](const char c) -> bool
     return (CharacterClassTable[c] & NUMERIC_CHARACTER) == NUMERIC_CHARACTER;
 };
 
+static auto numberEnd = [](const char* it) -> const char*
+{
+    char c;
+    do
+    {
+        c = CharacterClassTable[it[0]];
+        if ((c & NUMERIC_CHARACTER) != NUMERIC_CHARACTER)
+            return it;
+        
+        c = CharacterClassTable[it[1]];
+        if ((c & NUMERIC_CHARACTER) != NUMERIC_CHARACTER)
+            return it + 1;
+            
+        c = CharacterClassTable[it[2]];
+        if ((c & NUMERIC_CHARACTER) != NUMERIC_CHARACTER)
+            return it + 2;
+            
+        c = CharacterClassTable[it[3]];
+        if ((c & NUMERIC_CHARACTER) != NUMERIC_CHARACTER)
+            return it + 3;
+            
+        it += 4;
+    } while(true);
+};
+
+static auto hexEnd = [](const char* it) -> const char*
+{
+    char c;
+    do
+    {
+        c = CharacterClassTable[it[0]];
+        if ((c & HEX_NUMERIC_CHARACTER) != HEX_NUMERIC_CHARACTER)
+            return it;
+        
+        c = CharacterClassTable[it[1]];
+        if ((c & HEX_NUMERIC_CHARACTER) != HEX_NUMERIC_CHARACTER)
+            return it + 1;
+            
+        c = CharacterClassTable[it[2]];
+        if ((c & HEX_NUMERIC_CHARACTER) != HEX_NUMERIC_CHARACTER)
+            return it + 2;
+            
+        c = CharacterClassTable[it[3]];
+        if ((c & HEX_NUMERIC_CHARACTER) != HEX_NUMERIC_CHARACTER)
+            return it + 3;
+            
+        it += 4;
+    } while(true);
+};
+
 static auto numberChar = [](const char c) -> bool
 {
     return (CharacterClassTable[c] & NUMERIC_CHARACTER) == NUMERIC_CHARACTER;
@@ -377,6 +452,36 @@ static auto numberChar = [](const char c) -> bool
 static auto hexChar = [](const char c) -> bool
 {
     return (CharacterClassTable[c] & HEX_NUMERIC_CHARACTER) == HEX_NUMERIC_CHARACTER;
+};
+
+static auto operatorStart = [](const char c) -> bool
+{
+    return (CharacterClassTable[c] & OPERATOR_CHARACTER) == OPERATOR_CHARACTER;
+};
+
+static auto operatorEnd = [](const char* it) -> const char*
+{
+    char c;
+    do
+    {
+        c = CharacterClassTable[it[0]];
+        if ((c & OPERATOR_CHARACTER) != OPERATOR_CHARACTER)
+            return it;
+        
+        c = CharacterClassTable[it[1]];
+        if ((c & OPERATOR_CHARACTER) != OPERATOR_CHARACTER)
+            return it + 1;
+            
+        c = CharacterClassTable[it[2]];
+        if ((c & OPERATOR_CHARACTER) != OPERATOR_CHARACTER)
+            return it + 2;
+            
+        c = CharacterClassTable[it[3]];
+        if ((c & OPERATOR_CHARACTER) != OPERATOR_CHARACTER)
+            return it + 3;
+            
+        it += 4;
+    } while(true);
 };
 
 //------------------------------------------------------------------------------
@@ -468,12 +573,7 @@ Tokenize(const std::string& text, const TransientString& path)
         if (identifierStart(it[0]))
         {
             const char* begin = it;
-            while (it != end)
-            {
-                if (!identifierChar(it[0]))
-                    break;
-                it++;
-            }
+            it = identifierEnd(it+1);
             Token newToken;
             newToken.path = currentPath;
             newToken.text = std::string_view(begin, it-begin);
@@ -501,14 +601,8 @@ Tokenize(const std::string& text, const TransientString& path)
             if (it[1] == 'x')
             {
                 type = TokenType::Hex;
-                it += 2;
                 begin += 2; // Skip the 0x bit
-                while (it != end)
-                {
-                    if (!hexChar(it[0]))
-                        break;
-                    it++;
-                }
+                it = hexEnd(it+2);
                 
                 // Unsigned hex
                 if (it[0] == 'u' || it[0] == 'U')
@@ -519,12 +613,7 @@ Tokenize(const std::string& text, const TransientString& path)
             }
             else
             {
-                while (it != end)
-                {
-                    if (!numberChar(it[0]))
-                        break;
-                    it++;
-                }
+                it = numberEnd(it+1);
                 
                 // Decimal point
                 if (it[0] == '.')
@@ -543,13 +632,7 @@ Tokenize(const std::string& text, const TransientString& path)
                     if (numberStart(it[0]))
                     {
                         type = TokenType::Double;
-                        it++;
-                        while (it != end)
-                        {
-                            if (!numberChar(it[0]))
-                                break;
-                            it++;
-                        }
+                        it = numberEnd(it+1);
                     }
                 }
 
@@ -573,13 +656,7 @@ Tokenize(const std::string& text, const TransientString& path)
                     }
                     else
                     {
-                        it++;
-                        while (it != end)
-                        {
-                            if (!numberChar(it[0]))
-                                break;
-                            it++;
-                        }
+                        it = numberEnd(it+1);
                     }
                 }
                 
@@ -651,12 +728,7 @@ Tokenize(const std::string& text, const TransientString& path)
                 if (identifierStart(it[0]))
                 {
                     const char* begin = it;
-                    while (it != end)
-                    {
-                        if (!identifierChar(it[0]))
-                            break;
-                        it++;
-                    }
+                    it = identifierEnd(it+1);
                     
                     std::string_view dir(begin, it);
                     if (dir == "line")
@@ -665,12 +737,7 @@ Tokenize(const std::string& text, const TransientString& path)
                         const char* begin = it;
                         if (numberStart(it[0]))
                         {
-                            while (it != end)
-                            {
-                                if (!numberChar(it[0]))
-                                    break;
-                                it++;
-                            }
+                            it = numberEnd(it+1);
                         }
                         std::string_view lineNo(begin, it);
                         int newLine;
@@ -713,15 +780,9 @@ Tokenize(const std::string& text, const TransientString& path)
             }
             
             const char* begin = it;
-            if ((CharacterClassTable[it[0]] & OPERATOR_CHARACTER) == OPERATOR_CHARACTER)
+            if (operatorStart(it[0]))
             {
-                it++;
-                while (it != end)
-                {
-                    if ((CharacterClassTable[it[0]] & OPERATOR_CHARACTER) != OPERATOR_CHARACTER)
-                        break;
-                    it++;
-                }
+                it = operatorEnd(it+1);
             }
             else
             {
