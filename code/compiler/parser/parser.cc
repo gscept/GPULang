@@ -53,7 +53,9 @@ static const uint32_t SPECIAL_CHARACTER = 0x10; // [.,;:(){}[]<>+-*/%&|^=!~?@#\\
 static const uint32_t OPERATOR_CHARACTER = 0x20; // [.,(){}[]<>+-*/%&|^=!~]
 static const uint32_t WHITESPACE_CHARACTER = 0x40; // [ \t\r\f\v]
 static const uint32_t EOL_CHARACTER = 0x80;
-
+static const uint32_t MULTILINE_COMMENT_END_BIT1 = 0x100; // end of multiline comment, first bit
+static const uint32_t MULTILINE_COMMENT_END_BIT2 = 0x200; // end of multiline comment, second bit
+static const uint32_t MULTILINE_COMMENT = MULTILINE_COMMENT_END_BIT1 | MULTILINE_COMMENT_END_BIT2;
 
 static uint32_t CharacterClassTable[256] = {};
 struct CharacterClassInitializer
@@ -90,8 +92,8 @@ struct CharacterClassInitializer
         CharacterClassTable['.'] = SPECIAL_CHARACTER;
         CharacterClassTable['+'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
         CharacterClassTable['-'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
-        CharacterClassTable['*'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
-        CharacterClassTable['/'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
+        CharacterClassTable['*'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER | MULTILINE_COMMENT_END_BIT1;
+        CharacterClassTable['/'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER | MULTILINE_COMMENT_END_BIT2;
         CharacterClassTable['%'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
         CharacterClassTable['|'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
         CharacterClassTable['&'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
@@ -359,7 +361,7 @@ static auto identifierStart = [](const char c) -> bool
     return (CharacterClassTable[c] & IDENTIFIER_START_CHARACTER) == IDENTIFIER_START_CHARACTER;
 };
 
-static auto identifierEnd = [](const char* it) -> const char*
+static auto identifierEnd = [](const char* it, const char* end) -> const char*
 {
     char c;
     do
@@ -381,7 +383,7 @@ static auto identifierEnd = [](const char* it) -> const char*
             return it + 3;
             
         it += 4;
-    } while(true);
+    } while(it < end);
 };
 
 static auto identifierChar = [](const char c) -> bool
@@ -394,7 +396,7 @@ static auto numberStart = [](const char c) -> bool
     return (CharacterClassTable[c] & NUMERIC_CHARACTER) == NUMERIC_CHARACTER;
 };
 
-static auto numberEnd = [](const char* it) -> const char*
+static auto numberEnd = [](const char* it, const char* end) -> const char*
 {
     char c;
     do
@@ -416,10 +418,10 @@ static auto numberEnd = [](const char* it) -> const char*
             return it + 3;
             
         it += 4;
-    } while(true);
+    } while(it < end);
 };
 
-static auto hexEnd = [](const char* it) -> const char*
+static auto hexEnd = [](const char* it, const char* end) -> const char*
 {
     char c;
     do
@@ -441,7 +443,7 @@ static auto hexEnd = [](const char* it) -> const char*
             return it + 3;
             
         it += 4;
-    } while(true);
+    } while(it < end);
 };
 
 static auto numberChar = [](const char c) -> bool
@@ -459,7 +461,7 @@ static auto operatorStart = [](const char c) -> bool
     return (CharacterClassTable[c] & OPERATOR_CHARACTER) == OPERATOR_CHARACTER;
 };
 
-static auto operatorEnd = [](const char* it) -> const char*
+static auto operatorEnd = [](const char* it, const char* end) -> const char*
 {
     char c;
     do
@@ -481,7 +483,12 @@ static auto operatorEnd = [](const char* it) -> const char*
             return it + 3;
             
         it += 4;
-    } while(true);
+    } while(it < end);
+};
+
+static auto commentEnd = [](const char* it, const char* end) -> const char*
+{
+    return it;
 };
 
 //------------------------------------------------------------------------------
@@ -573,7 +580,7 @@ Tokenize(const std::string& text, const TransientString& path)
         if (identifierStart(it[0]))
         {
             const char* begin = it;
-            it = identifierEnd(it+1);
+            it = identifierEnd(it+1, end);
             Token newToken;
             newToken.path = currentPath;
             newToken.text = std::string_view(begin, it-begin);
@@ -602,7 +609,7 @@ Tokenize(const std::string& text, const TransientString& path)
             {
                 type = TokenType::Hex;
                 begin += 2; // Skip the 0x bit
-                it = hexEnd(it+2);
+                it = hexEnd(it+2, end);
                 
                 // Unsigned hex
                 if (it[0] == 'u' || it[0] == 'U')
@@ -613,7 +620,7 @@ Tokenize(const std::string& text, const TransientString& path)
             }
             else
             {
-                it = numberEnd(it+1);
+                it = numberEnd(it+1, end);
                 
                 // Decimal point
                 if (it[0] == '.')
@@ -632,7 +639,7 @@ Tokenize(const std::string& text, const TransientString& path)
                     if (numberStart(it[0]))
                     {
                         type = TokenType::Double;
-                        it = numberEnd(it+1);
+                        it = numberEnd(it+1, end);
                     }
                 }
 
@@ -656,7 +663,7 @@ Tokenize(const std::string& text, const TransientString& path)
                     }
                     else
                     {
-                        it = numberEnd(it+1);
+                        it = numberEnd(it+1, end);
                     }
                 }
                 
@@ -728,7 +735,7 @@ Tokenize(const std::string& text, const TransientString& path)
                 if (identifierStart(it[0]))
                 {
                     const char* begin = it;
-                    it = identifierEnd(it+1);
+                    it = identifierEnd(it+1, end);
                     
                     std::string_view dir(begin, it);
                     if (dir == "line")
@@ -737,7 +744,7 @@ Tokenize(const std::string& text, const TransientString& path)
                         const char* begin = it;
                         if (numberStart(it[0]))
                         {
-                            it = numberEnd(it+1);
+                            it = numberEnd(it+1, end);
                         }
                         std::string_view lineNo(begin, it);
                         int newLine;
@@ -782,7 +789,7 @@ Tokenize(const std::string& text, const TransientString& path)
             const char* begin = it;
             if (operatorStart(it[0]))
             {
-                it = operatorEnd(it+1);
+                it = operatorEnd(it+1, end);
             }
             else
             {
