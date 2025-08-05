@@ -384,6 +384,8 @@ static auto identifierEnd = [](const char* it, const char* end) -> const char*
             
         it += 4;
     } while(it < end);
+    
+    return end;
 };
 
 static auto identifierChar = [](const char c) -> bool
@@ -419,6 +421,8 @@ static auto numberEnd = [](const char* it, const char* end) -> const char*
             
         it += 4;
     } while(it < end);
+    
+    return end;
 };
 
 static auto hexEnd = [](const char* it, const char* end) -> const char*
@@ -444,6 +448,8 @@ static auto hexEnd = [](const char* it, const char* end) -> const char*
             
         it += 4;
     } while(it < end);
+    
+    return end;
 };
 
 static auto numberChar = [](const char c) -> bool
@@ -484,6 +490,8 @@ static auto operatorEnd = [](const char* it, const char* end) -> const char*
             
         it += 4;
     } while(it < end);
+    
+    return end;
 };
 
 static auto commentEnd = [](const char* it, const char* end) -> const char*
