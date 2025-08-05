@@ -3934,7 +3934,13 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
                 {
                     ValueUnion val;
                     callExpression->args[i]->EvalValue(val);
-                    args.push_back(SPIRVResult(val));
+                    SPIRVResult arg = SPIRVResult(val);
+                    if (paramResolved->typeSymbol->columnSize > 1)
+                    {
+                        SPIRVResult ty = GenerateTypeSPIRV(compiler, generator, param->type, paramResolved->typeSymbol);
+                        arg = GenerateSplatCompositeSPIRV(compiler, generator, ty.typeName, paramResolved->typeSymbol->columnSize, arg);
+                    }
+                    args.push_back(arg);
                 }
                 else
                 {
@@ -3968,7 +3974,13 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
                 ValueUnion val;
                 bool res = callExpression->args[i]->EvalValue(val);
                 assert(res);
-                args.push_back(SPIRVResult(val));
+                SPIRVResult arg = SPIRVResult(val);
+                if (paramResolved->typeSymbol->columnSize > 1)
+                {
+                    SPIRVResult ty = GenerateTypeSPIRV(compiler, generator, param->type, paramResolved->typeSymbol);
+                    arg = GenerateSplatCompositeSPIRV(compiler, generator, ty.typeName, paramResolved->typeSymbol->columnSize, arg);
+                }
+                args.push_back(arg);
             }
         }
 
