@@ -531,15 +531,25 @@ struct Type : public Symbol
             case TypeCode::UInt:
                 name.Append("u32");
                 break;
+            case TypeCode::UInt16:
+                name.Append("u16");
+                break;
             case TypeCode::Int:
                 name.Append("i32");
+                break;
+            case TypeCode::Int16:
+                name.Append("i16");
                 break;
             case TypeCode::Float:
                 name.Append("f32");
                 break;
+            case TypeCode::Float16:
+                name.Append("f16");
+                break;
             case TypeCode::Bool:
                 name.Append("b8");
                 break;
+            default:
         }
         if (columnSize > 1)
         {
@@ -577,6 +587,8 @@ struct Type : public Symbol
 
 };
 
+extern Type::FullType UndefinedType;
+
 //------------------------------------------------------------------------------
 /**
 */
@@ -584,7 +596,7 @@ template<typename T>
 inline T*
 Type::GetSymbol(const FixedString& str)
 {
-    auto it = this->scope.symbolLookup.Find(str);
+    auto it = this->scope.symbolLookup.Find(HashString(str));
     if (it != this->scope.symbolLookup.end())
         return static_cast<T*>(it->second);
     else
@@ -598,7 +610,7 @@ template<typename T>
 inline T*
 Type::GetSymbol(const TransientString& str)
 {
-    auto it = this->scope.symbolLookup.Find(str);
+    auto it = this->scope.symbolLookup.Find(HashString(str));
     if (it != this->scope.symbolLookup.end())
         return static_cast<T*>(it->second);
     else

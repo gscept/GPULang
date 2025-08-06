@@ -302,7 +302,7 @@ Compiler::AddSymbol(const FixedString& name, Symbol* symbol, bool allowDuplicate
     Scope* scope = this->scopes.back();
     if (bypass)
         scope = *(this->scopes.end() - 1);
-    PinnedMap<FixedString, Symbol*>* lookup;
+    PinnedMap<HashString, Symbol*>* lookup;
     PinnedArray<Symbol*>* symbols;
     if (scope->type == Scope::ScopeType::Type)
     {
@@ -318,7 +318,7 @@ Compiler::AddSymbol(const FixedString& name, Symbol* symbol, bool allowDuplicate
 
     if (!allowDuplicate && !this->staticSymbolSetup)
     {
-        auto it = lookup->Find(name);
+        auto it = lookup->Find(HashString(name));
         if (it != lookup->end())
         {
             Symbol* prevSymbol = it->second;
@@ -343,7 +343,7 @@ Compiler::GetSymbol(const FixedString& name) const
     do
     {
         auto scope = scopeIter.get();
-        PinnedMap<FixedString, Symbol*>* map;
+        PinnedMap<HashString, Symbol*>* map;
         if (scope->type == Scope::ScopeType::Type)
         {
             Type* type = static_cast<Type*>(scope->owningSymbol);
@@ -353,7 +353,7 @@ Compiler::GetSymbol(const FixedString& name) const
         {
             map = &scope->symbolLookup;
         }
-        auto it = map->Find(name);
+        auto it = map->Find(HashString(name));
         if (it != map->end())
             return it->second;
         scopeIter++;
@@ -373,7 +373,7 @@ Compiler::GetSymbols(const FixedString& name) const
     do
     {
         auto scope = scopeIter.get();
-        PinnedMap<FixedString, Symbol*>* map;
+        PinnedMap<HashString, Symbol*>* map;
         if (scope->type == Scope::ScopeType::Type)
         {
             Type* type = static_cast<Type*>(scope->owningSymbol);
@@ -384,7 +384,7 @@ Compiler::GetSymbols(const FixedString& name) const
             map = &scope->symbolLookup;
         }
 
-        auto range = map->FindRange(name);
+        auto range = map->FindRange(HashString(name));
         for (auto it = range.first; it != range.second; it++)
             ret.push_back((*it).second);
         scopeIter++;
@@ -401,7 +401,7 @@ Compiler::AddSymbol(const TransientString& name, Symbol* symbol, bool allowDupli
     Scope* scope = this->scopes.back();
     if (bypass)
         scope = *(this->scopes.end() - 1);
-    PinnedMap<FixedString, Symbol*>* lookup;
+    PinnedMap<HashString, Symbol*>* lookup;
     PinnedArray<Symbol*>* symbols;
     if (scope->type == Scope::ScopeType::Type)
     {
@@ -417,7 +417,7 @@ Compiler::AddSymbol(const TransientString& name, Symbol* symbol, bool allowDupli
 
     if (!allowDuplicate && !this->staticSymbolSetup)
     {
-        auto it = lookup->Find(name);
+        auto it = lookup->Find(HashString(name));
         if (it != lookup->end())
         {
             Symbol* prevSymbol = it->second;
@@ -425,7 +425,7 @@ Compiler::AddSymbol(const TransientString& name, Symbol* symbol, bool allowDupli
             return false;
         }
     }
-    lookup->Insert(FixedString(name), symbol);
+    lookup->Insert(HashString(name), symbol);
     // Only add to symbols if scope type isn't a type, because they already have the symbols setup
     if (scope->type != Scope::ScopeType::Type)
         symbols->Append(symbol);
@@ -442,7 +442,7 @@ Compiler::GetSymbol(const TransientString& name) const
     do
     {
         auto scope = scopeIter.get();
-        PinnedMap<FixedString, Symbol*>* map;
+        PinnedMap<HashString, Symbol*>* map;
         if (scope->type == Scope::ScopeType::Type)
         {
             Type* type = static_cast<Type*>(scope->owningSymbol);
@@ -452,7 +452,7 @@ Compiler::GetSymbol(const TransientString& name) const
         {
             map = &scope->symbolLookup;
         }
-        auto it = map->Find(name);
+        auto it = map->Find(HashString(name));
         if (it != map->end())
             return it->second;
         scopeIter++;
@@ -472,7 +472,7 @@ Compiler::GetSymbols(const TransientString& name) const
     do
     {
         auto scope = scopeIter.get();
-        PinnedMap<FixedString, Symbol*>* map;
+        PinnedMap<HashString, Symbol*>* map;
         if (scope->type == Scope::ScopeType::Type)
         {
             Type* type = static_cast<Type*>(scope->owningSymbol);
@@ -483,7 +483,7 @@ Compiler::GetSymbols(const TransientString& name) const
             map = &scope->symbolLookup;
         }
 
-        auto range = map->FindRange(name);
+        auto range = map->FindRange(HashString(name));
         for (auto it = range.first; it != range.second; it++)
             ret.push_back((*it).second);
         scopeIter++;

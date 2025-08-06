@@ -432,7 +432,7 @@ Compiler::GetType(const Type::FullType& type) const
     do
     {
         auto scope = scopeIter.get();
-        PinnedMap<FixedString, Symbol*>* map;
+        PinnedMap<HashString, Symbol*>* map;
         if (scope->type == Scope::ScopeType::Type)
         {
             Type* type = static_cast<Type*>(scope->owningSymbol);
@@ -442,7 +442,7 @@ Compiler::GetType(const Type::FullType& type) const
         {
             map = &scope->symbolLookup;
         }
-        auto range = map->FindRange(str);
+        auto range = map->FindRange(HashString(str));
         for (auto it = range.first; it != range.second; it++)
         {
             sym = it->second;

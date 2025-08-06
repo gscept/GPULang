@@ -219,7 +219,7 @@ struct ParseContext
             auto scopeIt = scopes.rbegin();
             while (scopeIt != scopes.rend())
             {
-                auto symIt = (*scopeIt)->symbolLookup.Find(name);
+                auto symIt = (*scopeIt)->symbolLookup.Find(GPULang::HashString(name));
                 if (symIt != (*scopeIt)->symbolLookup.end())
                 {
                     return symIt->second;
@@ -245,7 +245,7 @@ struct ParseContext
                 bool startMatch = false;
                 while (symIt != (*scopeIt)->symbolLookup.end())
                 {
-                    if (symIt->first.StartsWith(name))
+                    if (symIt->second->name.StartsWith(name))
                     {
                         ret.insert(symIt->second);
                         startMatch = true;

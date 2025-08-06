@@ -180,6 +180,8 @@ enum class TokenType
     , R16U
     , R8U
     , UnknownFormat
+    
+    , NumTokenTypes
 };
 
 struct Token
@@ -206,7 +208,7 @@ struct ParseResult
     Effect* ast;
     PinnedArray<GPULangDiagnostic> errors = 0xFFFF;
 };
-
+extern uint32_t TokenClassTable[(uint32_t)TokenType::NumTokenTypes];
 struct TokenStream
 {
     TokenStream(const TokenizationResult& result)
@@ -241,6 +243,16 @@ struct TokenStream
     inline bool Match(TokenType type)
     {
         if (this->Type(0) == type)
+        {
+            this->tokenIndex++;
+            return true;
+        }
+        return false;
+    }
+    
+    inline bool MatchClass(uint32_t bits)
+    {
+        if ((TokenClassTable[(uint32_t)this->Type(0)] & bits) == bits)
         {
             this->tokenIndex++;
             return true;

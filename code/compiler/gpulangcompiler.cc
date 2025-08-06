@@ -2284,6 +2284,14 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
             return false;
         }
         
+        timer.Stop();
+        if (options.emitTimings)
+        {
+            printf("%zu tokens\n", tokenizationResult.tokens.size);
+            printf("%zu lines\n", tokenizationResult.lineCount);
+            timer.Print("Lexing");
+        }
+        timer.Start();
         GPULang::TokenStream tokenStream(tokenizationResult);
         ParseResult parseResult = Parse(tokenStream);
         for (const auto& err : parseResult.errors)
@@ -2294,8 +2302,6 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
         timer.Stop();
         if (options.emitTimings)
         {
-            printf("%zu tokens\n", tokenizationResult.tokens.size);
-            printf("%zu lines\n", tokenizationResult.lineCount);
             timer.Print("Parsing");
         }
         

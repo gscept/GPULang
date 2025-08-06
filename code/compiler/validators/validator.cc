@@ -1999,7 +1999,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
         // Check of label redefinition
         if (!compiler->staticSymbolSetup)
         {
-            if (enumeration->scope.symbolLookup.Find(str) != enumeration->scope.symbolLookup.end())
+            if (enumeration->scope.symbolLookup.Find(HashString(str)) != enumeration->scope.symbolLookup.end())
             {
                 compiler->Error(Format("Enumeration redefinition '%s' in '%s'", str.c_str(), enumeration->name.c_str()), symbol);
                 return false;
@@ -2050,7 +2050,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
         // Add to type
         sym->name = str.c_str();
         enumeration->symbols.Append(sym);
-        enumeration->scope.symbolLookup.Insert(sym->name, sym);
+        enumeration->scope.symbolLookup.Insert(HashString(sym->name), sym);
     }
     
     if (enumeration->builtin)
@@ -2835,7 +2835,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                         offset = alignedOffset + size;
                         structSize += generatedVarResolved->byteSize + generatedVarResolved->startPadding;
                         generatedStruct->symbols.Append(generatedVar);
-                        generatedStruct->scope.symbolLookup.Insert(var->name, generatedVar);
+                        generatedStruct->scope.symbolLookup.Insert(HashString(var->name), generatedVar);
                     }
                 }
                 Structure::__Resolved* generatedStructResolved = Symbol::Resolved(generatedStruct);
@@ -2868,7 +2868,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
                 // Insert symbol before this one, avoiding resolving (we assume the struct and members are already valid)
                 compiler->symbols.Insert(generatedStruct, compiler->symbolIterator);
-                compiler->scopes.back()->symbolLookup.Insert(generatedStruct->name, generatedStruct);
+                compiler->scopes.back()->symbolLookup.Insert(HashString(generatedStruct->name), generatedStruct);
                 compiler->symbolIterator++;
             }
 

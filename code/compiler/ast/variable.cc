@@ -13,7 +13,7 @@ Variable::Variable()
 {
     this->symbolType = VariableType;
     this->resolved = &this->variableResolved;
-    this->type = Type::FullType{ ConstantString("") };
+    this->type = UndefinedType;
     this->valueExpression = nullptr;
 
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(this->resolved);

@@ -68,7 +68,7 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
     {
         Type* type = static_cast<Type*>(compiler->GetType(thisResolved->returnFullType));
         TStr lookup = TStr("operator[](", thisResolved->rightFullType.name, ")");
-        auto it = type->scope.symbolLookup.Find(lookup);
+        auto it = type->scope.symbolLookup.Find(HashString(lookup));
         if (it == type->scope.symbolLookup.end())
         {
             compiler->Error(Format("'%s' does not implement the [] operator", thisResolved->leftFullType.ToString().c_str()), this);

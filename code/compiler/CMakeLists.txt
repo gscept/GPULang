@@ -140,15 +140,15 @@ fips_dir(generators)
         hlslgenerator.h
         spirvgenerator.cc
         spirvgenerator.h
-	wgslgenerator.cc
-	wgslgenerator.h
+        wgslgenerator.cc
+        wgslgenerator.h
     )
 fips_dir(generators/reflection)
     fips_files(
     	hgenerator.cc
     	hgenerator.h
-	jsgenerator.cc
-	jsgenerator.h
+        jsgenerator.cc
+        jsgenerator.h
     )
 fips_dir(validators)
     fips_files(
@@ -156,10 +156,10 @@ fips_dir(validators)
         validator.h
     )
 fips_dir(generated)
+    fips_files_ex(generated/ *_fragment.cc)
     fips_files(
         intrinsics.cc
         intrinsics.h
-        swizzle.h
         spirv.h
         types.cc
         types.h

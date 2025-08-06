@@ -4,7 +4,6 @@ import json
 from math import trunc
 
 os.makedirs('../generated', exist_ok=True)
-os.makedirs('../generated/spirv', exist_ok=True)
 
 function_counter = 0
 
@@ -355,8 +354,21 @@ def generate_types():
             self.decl_name = decl_name
             self.api_name = api_name
 
+    def fnv1a_64(s: str) -> int:
+        hash = 0xcbf29ce484222325  # 64-bit offset basis
+        fnv_prime = 0x100000001b3  # 64-bit FNV prime
+
+        for c in s:
+            hash ^= ord(c)
+            hash = (hash * fnv_prime) % (1 << 64)  # simulate 64-bit unsigned wraparound
+
+        return hash
+
     def IntrinsicSortKey(item):
-        return item.api_name
+        return fnv1a_64(item.api_name)
+    
+    def MemberSortKey(member):
+        return fnv1a_64(member.decl_name) if member.api_name == None else fnv1a_64(member.api_name)
     intrinsic_list = []
 
     ### Built-in data types (Float, Int, UInt, Bool and their vector/matrix variants)
@@ -507,7 +519,7 @@ def generate_types():
                     typeString += param.type_name
                     args.append(typeString)
                     argsWithNames.append(f'{param.api_name} : {typeString}')
-            return_string += f'    Symbol::Resolved(&{self.decl_name})->signature = "{return_type} {self.api_name}({",".join(args)})"_c;\n'
+            return_string += f'    Symbol::Resolved(&{self.decl_name})->signature = "{self.api_name}({",".join(args)}) {return_type}"_c;\n'
             return_string += f'    Symbol::Resolved(&{self.decl_name})->name = "{self.api_name}({",".join(args)})"_c;\n'
             return_string += f'    Symbol::Resolved(&{self.decl_name})->nameWithVarNames = "{self.api_name}({", ".join(argsWithNames)})"_c;\n'
             return_string += f'    Symbol::Resolved(&{self.decl_name})->returnTypeSymbol = &{self.return_type}Type;\n'
@@ -584,6 +596,9 @@ def generate_types():
                 lookup_list.append(IntrinsicPair(decl_name=f'{swizzle_type}Type', api_name=f'{swizzle}'))
             lookup_list.sort(key=IntrinsicSortKey)
             type_definition = ''
+            type_definition = f'static constexpr StaticMap<HashString, Symbol*, {len(lookup_list)}> {self.name}_symbolLookup = {{\n'
+            type_definition += ',\n'.join(f'    std::pair{{ "{item.api_name}"_h, &{item.decl_name} }}' for item in lookup_list)
+            type_definition += f'\n    }};\n\n'
             type_definition += f'{self.name}::{self.name}()\n'
             type_definition += '{\n'
             type_definition += f'    this->name = "{data_type_mapping[self.name]}"_c;\n'
@@ -595,9 +610,7 @@ def generate_types():
             type_definition += f'    this->builtin = true;\n'
             type_definition += f'\n'
             type_definition += f'{setup_string}'
-            type_definition += f'    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, {len(lookup_list)}> {{ \n'
-            type_definition += ',\n'.join(f'        std::pair{{ "{item.api_name}"_c, &{item.decl_name} }}' for item in lookup_list)
-            type_definition += f'\n    }};\n'
+            type_definition += f'    this->scope.symbolLookup = {self.name}_symbolLookup;\n'
             type_definition += '}\n'
             type_definition += f'{type_name} {type_name}Type;\n\n'
 
@@ -1438,11 +1451,10 @@ def generate_types():
             self.members.append(EnumMember(decl_name='eqOp', api_name='operator==', value=None))
             self.members.append(EnumMember(decl_name='neqOp', api_name='operator!=', value=None))
 
-            def MemberSortKey(member):
-                return member.decl_name if member.api_name == None else member.api_name
+            
             self.members.sort(key=MemberSortKey)
-            defn += f'    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, {len(self.members)}> {{\n'        
-            defn += ',\n'.join(f'        std::pair{{ "{member.decl_name if member.api_name == None else member.api_name}"_c, &{(self.name + member.decl_name) if member.api_name == None else self.name + 'Type.' + member.decl_name} }}' for member in self.members)
+            defn += f'    this->scope.symbolLookup = StaticMap<HashString, Symbol*, {len(self.members)}> {{\n'        
+            defn += ',\n'.join(f'        std::pair{{ "{member.decl_name if member.api_name == None else member.api_name}"_h, &{(self.name + member.decl_name) if member.api_name == None else self.name + 'Type.' + member.decl_name} }}' for member in self.members)
             defn += '\n    };\n'
             defn += '};\n'
             defn += f'{self.name} {self.name}Type;\n\n'
@@ -1712,10 +1724,10 @@ def generate_types():
                 defn += f'    Symbol::Resolved(&{self.name}{member.name})->typeSymbol = &{member.data_type}Type;\n\n'
 
             def MemberSortKey(member):
-                return member.name
+                return fnv1a_64(member.name )
             self.members.sort(key=MemberSortKey)
-            defn += f'    this->scope.symbolLookup = StaticMap<ConstantString, Symbol*, {len(self.members)}>{{\n'
-            defn += ',\n'.join(f'        std::pair{{ "{member.name}"_c, &{self.name}{member.name} }}' for member in self.members)
+            defn += f'    this->scope.symbolLookup = StaticMap<HashString, Symbol*, {len(self.members)}>{{\n'
+            defn += ',\n'.join(f'        std::pair{{ "{member.name}"_h, &{self.name}{member.name} }}' for member in self.members)
             defn += '\n    };\n'
             defn += '};\n'
             defn += f'{self.name} {self.name}Type;\n\n'
@@ -1971,6 +1983,7 @@ def generate_types():
         'Bool8': 1, 'Bool8x2': 2, 'Bool8x3': 3, 'Bool8x4': 4
     }
 
+
     intrinsics_header.write("//-------------------------------------------------\n")
     intrinsics_header.write("// *** Generated by type_gen.py. ***\n")
     intrinsics_header.write("//       DO NOT MODIFY!!!\n")
@@ -1978,18 +1991,21 @@ def generate_types():
     intrinsics_header.write('namespace GPULang\n')
     intrinsics_header.write('{\n')
 
-    intrinsics_source.write("//-------------------------------------------------\n")
-    intrinsics_source.write("// *** Generated by type_gen.py. ***\n")
-    intrinsics_source.write("//       DO NOT MODIFY!!!\n")
-    intrinsics_source.write("//-------------------------------------------------\n")
-    intrinsics_source.write('#include "ast/function.h"\n')
-    intrinsics_source.write('#include "ast/variable.h"\n')
-    intrinsics_source.write('#include "types.h"\n')
-    intrinsics_source.write('#include "compiler.h"\n')
+    intrinsics_source_start = ''
+    intrinsics_source_start += "//-------------------------------------------------\n"
+    intrinsics_source_start += "// *** Generated by type_gen.py. ***\n"
+    intrinsics_source_start += "//       DO NOT MODIFY!!!\n"
+    intrinsics_source_start += "//-------------------------------------------------\n"
+    intrinsics_source_start += '#include "ast/function.h"\n'
+    intrinsics_source_start += '#include "ast/variable.h"\n'
+    intrinsics_source_start += '#include "types.h"\n'
+    intrinsics_source_start += '#include "intrinsics.h"\n'
+    intrinsics_source_start += '#include "compiler.h"\n'
 
-    intrinsics_source.write('namespace GPULang\n')
-    intrinsics_source.write('{\n')
+    intrinsics_source_start += 'namespace GPULang\n'
+    intrinsics_source_start += '{\n'
 
+    intrinsics_source.write(intrinsics_source_start)
     intrinsics_source.write("Compiler::Timer StaticIntrinsicTimer;\n")
     intrinsics_source.write('struct StaticIntrinsicTimerStart\n')
     intrinsics_source.write('{\n')
@@ -4293,6 +4309,10 @@ def generate_types():
     
     intrinsic_decls = ''
     intrinsic_defs = ''
+    intrinsic_def_fragments = []
+    intrinsic_def_fragment = ''
+    intrinsic_setup_fragments = []
+    intrinsic_setup_fragment = ''
     intrinsic_setup = ''
     class WebIntrinsic:
         def __init__(self, name, initial_function):
@@ -4301,11 +4321,21 @@ def generate_types():
 
     web_intrinsic_list = []
     web_intrinsic_set = dict()
+    counter = 0
     for fun in functions:
         if not fun.is_member:
             intrinsic_decls += fun.declaration()
             intrinsic_defs += fun.definition()
             intrinsic_setup += fun.setup()
+            intrinsic_def_fragment += fun.definition()
+            intrinsic_setup_fragment += fun.setup()
+            if counter >= 128:
+                intrinsic_def_fragments.append(intrinsic_def_fragment)
+                intrinsic_def_fragment = ''
+                intrinsic_setup_fragments.append(intrinsic_setup_fragment)
+                intrinsic_setup_fragment = ''
+                counter = 0
+            counter += 1
             intrinsic_list.append(fun.typed_pair())
             intrinsic_list.append(fun.pair())
             if not fun.is_constructor:
@@ -4315,6 +4345,9 @@ def generate_types():
                 else:
                     web_intrinsic_set[fun.api_name] = WebIntrinsic(fun.api_name, fun)
 
+    # add remaining
+    intrinsic_def_fragments.append(intrinsic_def_fragment)
+    intrinsic_setup_fragments.append(intrinsic_setup_fragment)
     web_intrinsic_set = dict(sorted(web_intrinsic_set.items(), key=lambda item: item[1].name))
 
     for key, value in web_intrinsic_set.items():
@@ -4348,16 +4381,24 @@ def generate_types():
         })
     intrinsics_header.write(intrinsic_decls)
     intrinsics_header.write('void SetupIntrinsics();\n\n')
+    for i, fragment in enumerate(intrinsic_setup_fragments):
+        intrinsics_header.write(f'void SetupIntrinsics{i}();\n\n')
 
-    
-    
     intrinsic_list.sort(key=IntrinsicSortKey)
-    intrinsics_header.write(f'inline constexpr StaticMap<ConstantString, Symbol*, {len(intrinsic_list)}> DefaultIntrinsics = {{\n')
-    intrinsics_header.write(',\n'.join(f'    std::pair{{ "{i.api_name}", &{i.decl_name} }} /* {n} */' for n, i in enumerate(intrinsic_list)))
+    intrinsics_header.write(f'inline constexpr StaticMap<HashString, Symbol*, {len(intrinsic_list)}> DefaultIntrinsics = {{\n')
+    intrinsics_header.write(',\n'.join(f'    std::pair{{ "{i.api_name}"_h, &{i.decl_name} }} /* {n} */' for n, i in enumerate(intrinsic_list)))
     intrinsics_header.write('\n};\n\n')
     intrinsics_header.write('} // namespace GPULang\n\n')
 
-    intrinsics_source.write(intrinsic_defs)
+    for i, [defs, fragment] in enumerate(zip(intrinsic_def_fragments, intrinsic_setup_fragments)):
+        intrinsics_source_fragment = open(f'../generated/intrinsics{i}_fragment.cc', "w")
+        intrinsics_source_fragment.write(intrinsics_source_start)
+        intrinsics_source_fragment.write(defs)
+        intrinsics_source_fragment.write(f'void SetupIntrinsics{i}()\n')
+        intrinsics_source_fragment.write('{\n')
+        intrinsics_source_fragment.write(fragment)
+        intrinsics_source_fragment.write('}\n')
+        intrinsics_source_fragment.write(f'}} // namespace GPULang\n')
 
     intrinsics_source.write('void SetupIntrinsics()\n')
     intrinsics_source.write('{\n')
@@ -4365,7 +4406,9 @@ def generate_types():
     intrinsics_source.write('    if (IsSetup)\n')
     intrinsics_source.write('        return;\n')
     intrinsics_source.write('    IsSetup = true;\n\n')
-    intrinsics_source.write(intrinsic_setup)
+    for i, fragment in enumerate(intrinsic_setup_fragments):
+        intrinsics_source.write(f'    SetupIntrinsics{i}();\n')
+    #intrinsics_source.write(intrinsic_setup)
     intrinsics_source.write('}\n')
 
     intrinsics_source.write('struct StaticIntrinsicTimerStop\n')

@@ -158,7 +158,7 @@ struct Scope
     };
     ScopeType type = ScopeType::Local;
     PinnedArray<Symbol*> symbols = 0x82000;
-    PinnedMap<FixedString, Symbol*> symbolLookup = 0x82000;
+    PinnedMap<HashString, Symbol*> symbolLookup = 0x82000;
     Symbol* owningSymbol = nullptr;
     bool unreachable = false;
 };

@@ -114,7 +114,7 @@ struct CharacterClassInitializer
     }
 } CharacterTableInitializer;
 
-StaticMap HardCodedTokens = std::array{
+constexpr StaticMap HardCodedTokens = std::array{
     std::pair{ "alias"_h, TokenType::TypeAlias }
     , std::pair{ "as"_h, TokenType::As }
     , std::pair{ "struct"_h, TokenType::Struct }
@@ -944,6 +944,111 @@ ParseExpressionList(TokenStream& stream, ParseResult& ret)
     return FixedArray<Expression*>(expressions);
 }
 
+static const uint32_t TOKEN_ASSIGNMENT_OPERATOR_BIT = 0x1;
+static const uint32_t TOKEN_EQUALITY_OPERATOR_BIT = 0x2;
+static const uint32_t TOKEN_COMPARISON_OPERATOR_BIT = 0x4;
+static const uint32_t TOKEN_SHIFT_OPERATOR_BIT = 0x8;
+static const uint32_t TOKEN_ADD_SUB_OPERATOR_BIT = 0x10;
+static const uint32_t TOKEN_MUL_DIV_MOD_OPERATOR_BIT = 0x20;
+static const uint32_t TOKEN_PREFIX_OPERATOR_BIT = 0x40;
+static const uint32_t TOKEN_INCREMENT_DECREMENT_OPERATOR_BIT = 0x80;
+static const uint32_t TOKEN_FUNCTION_ATTRIBUTE_BIT = 0x100;
+static const uint32_t TOKEN_PARAMETER_ATTRIBUTE_BIT = 0x200;
+static const uint32_t TOKEN_VARIABLE_ATTRIBUTE_BIT = 0x400;
+static const uint32_t TOKEN_VARIABLE_STORAGE_BIT = 0x800;
+static const uint32_t TOKEN_PARAMETER_STORAGE_BIT = 0x1000;
+uint32_t TokenClassTable[(uint32_t)TokenType::NumTokenTypes];
+
+static void SetupTokenClassTable()
+{
+    memset(TokenClassTable, 0x0, sizeof(TokenClassTable));
+    TokenClassTable[(uint32_t)TokenType::AddAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::SubAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::MulAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::DivAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::ModAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::LeftShiftAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::RightShiftAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::AndAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::OrAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::XorAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Assign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT;
+    
+    TokenClassTable[(uint32_t)TokenType::Equal] |= TOKEN_EQUALITY_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::NotEqual] |= TOKEN_EQUALITY_OPERATOR_BIT;
+    
+    TokenClassTable[(uint32_t)TokenType::LeftAngle] |= TOKEN_COMPARISON_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::LessThanEqual] |= TOKEN_COMPARISON_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::RightAngle] |= TOKEN_COMPARISON_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::GreaterThanEqual] |= TOKEN_COMPARISON_OPERATOR_BIT;
+    
+    TokenClassTable[(uint32_t)TokenType::LeftShift] |= TOKEN_SHIFT_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::RightShift] |= TOKEN_SHIFT_OPERATOR_BIT;
+    
+    TokenClassTable[(uint32_t)TokenType::Add] |= TOKEN_ADD_SUB_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Sub] |= TOKEN_ADD_SUB_OPERATOR_BIT;
+    
+    TokenClassTable[(uint32_t)TokenType::Mul] |= TOKEN_MUL_DIV_MOD_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Div] |= TOKEN_MUL_DIV_MOD_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Mod] |= TOKEN_MUL_DIV_MOD_OPERATOR_BIT;
+    
+    TokenClassTable[(uint32_t)TokenType::Sub] |= TOKEN_PREFIX_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Add] |= TOKEN_PREFIX_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Not] |= TOKEN_PREFIX_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Complement] |= TOKEN_PREFIX_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Increment] |= TOKEN_PREFIX_OPERATOR_BIT | TOKEN_INCREMENT_DECREMENT_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Decrement] |= TOKEN_PREFIX_OPERATOR_BIT | TOKEN_INCREMENT_DECREMENT_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Mul] |= TOKEN_PREFIX_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::And] |= TOKEN_PREFIX_OPERATOR_BIT;
+    
+    TokenClassTable[(uint32_t)TokenType::EntryPoint_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::Threads_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::ThreadsX_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::ThreadsY_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::ThreadsZ_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::EarlyDepth_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::DepthLesser_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::DepthGreater_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::SubgroupSize_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::SubgroupsPerWorkgroup_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::InputVertices_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::MaxOutputVertices_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::Winding_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::InputTopology_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::OutputTopology_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::PatchType_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::Partition_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::PixelOrigin_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::DerivativeIndexLinear_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::DerivativeIndexQuad_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
+    
+    TokenClassTable[(uint32_t)TokenType::Binding_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::Group_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::Volatile_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::Atomic_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::NoRead_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::NonTemporal_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT;
+    
+    TokenClassTable[(uint32_t)TokenType::In_Storage] |= TOKEN_PARAMETER_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::Out_Storage] |= TOKEN_PARAMETER_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::Uniform_Storage] |= TOKEN_PARAMETER_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::Workgroup_Storage] |= TOKEN_PARAMETER_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::RayPayload_Storage] |= TOKEN_PARAMETER_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::CallableData_Storage] |= TOKEN_PARAMETER_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::RayHitAttribute_Storage] |= TOKEN_PARAMETER_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::NoInterpolate_Modifier] |= TOKEN_PARAMETER_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::NoPerspective_Modifier] |= TOKEN_PARAMETER_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::Patch_Domain] |= TOKEN_PARAMETER_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::Binding_Decorator] |= TOKEN_PARAMETER_ATTRIBUTE_BIT;
+    
+    TokenClassTable[(uint32_t)TokenType::Const_Storage] |= TOKEN_VARIABLE_STORAGE_BIT | TOKEN_PARAMETER_STORAGE_BIT;
+    TokenClassTable[(uint32_t)TokenType::Var_Storage] |= TOKEN_VARIABLE_STORAGE_BIT | TOKEN_PARAMETER_STORAGE_BIT;
+    TokenClassTable[(uint32_t)TokenType::Uniform_Storage] |= TOKEN_VARIABLE_STORAGE_BIT;
+    TokenClassTable[(uint32_t)TokenType::Workgroup_Storage] |= TOKEN_VARIABLE_STORAGE_BIT;
+    TokenClassTable[(uint32_t)TokenType::Inline_Storage] |= TOKEN_VARIABLE_STORAGE_BIT;
+    TokenClassTable[(uint32_t)TokenType::LinkDefined_Storage] |= TOKEN_VARIABLE_STORAGE_BIT;
+}
+
 //------------------------------------------------------------------------------
 /**
  */
@@ -957,18 +1062,7 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
         res = ParseExpression(stream, ret, res, 1);
         
         // Assignment is always right-associative
-        if (stream.Match(TokenType::AddAssign)
-            || stream.Match(TokenType::SubAssign)
-            || stream.Match(TokenType::MulAssign)
-            || stream.Match(TokenType::DivAssign)
-            || stream.Match(TokenType::ModAssign)
-            || stream.Match(TokenType::LeftShiftAssign)
-            || stream.Match(TokenType::RightShiftAssign)
-            || stream.Match(TokenType::AndAssign)
-            || stream.Match(TokenType::OrAssign)
-            || stream.Match(TokenType::XorAssign)
-            || stream.Match(TokenType::Assign)
-            )
+        if (stream.MatchClass(TOKEN_ASSIGNMENT_OPERATOR_BIT))
         {
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 0);
@@ -1053,7 +1147,7 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
     else if (precedence == 6)
     {
         res = ParseExpression(stream, ret, res, 7);
-        while (stream.Match(TokenType::Equal) || stream.Match(TokenType::NotEqual))
+        while (stream.MatchClass(TOKEN_EQUALITY_OPERATOR_BIT))
         {
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 7);
@@ -1064,7 +1158,7 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
     else if (precedence == 7)
     {
         res = ParseExpression(stream, ret, res, 8);
-        while (stream.Match(TokenType::LeftAngle) || stream.Match(TokenType::LessThanEqual) || stream.Match(TokenType::RightAngle) || stream.Match(TokenType::GreaterThanEqual))
+        while (stream.MatchClass(TOKEN_COMPARISON_OPERATOR_BIT))
         {
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 8);
@@ -1075,7 +1169,7 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
     else if (precedence == 8)
     {
         res = ParseExpression(stream, ret, res, 9);
-        while (stream.Match(TokenType::LeftShift) || stream.Match(TokenType::RightShift))
+        while (stream.MatchClass(TOKEN_SHIFT_OPERATOR_BIT))
         {
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 9);
@@ -1086,7 +1180,7 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
     else if (precedence == 9)
     {
         res = ParseExpression(stream, ret, res, 10);
-        while (stream.Match(TokenType::Add) || stream.Match(TokenType::Sub))
+        while (stream.MatchClass(TOKEN_ADD_SUB_OPERATOR_BIT))
         {
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 10);
@@ -1097,7 +1191,7 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
     else if (precedence == 10)
     {
         res = ParseExpression(stream, ret, res, 11);
-        while (stream.Match(TokenType::Mul) || stream.Match(TokenType::Div) || stream.Match(TokenType::Mod))
+        while (stream.MatchClass(TOKEN_MUL_DIV_MOD_OPERATOR_BIT))
         {
             const Token& tok = stream.Data(-1);
             Expression* rhs = ParseExpression(stream, ret, res, 11);
@@ -1108,15 +1202,7 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
     else if (precedence == 11)
     {
         // Right-associative unary operators
-        if (stream.Match(TokenType::Sub)
-            || stream.Match(TokenType::Add)
-            || stream.Match(TokenType::Not)
-            || stream.Match(TokenType::Complement)
-            || stream.Match(TokenType::Increment)
-            || stream.Match(TokenType::Decrement)
-            || stream.Match(TokenType::Mul)
-            || stream.Match(TokenType::And)
-        )
+        if (stream.MatchClass(TOKEN_PREFIX_OPERATOR_BIT))
         {
             const Token& tok = stream.Data(-1);
             
@@ -1172,7 +1258,7 @@ ParseExpression(TokenStream& stream, ParseResult& ret, Expression* prev = nullpt
                     return nullptr;
                 }
             }
-            else if (stream.Match(TokenType::Increment) || stream.Match(TokenType::Decrement))
+            else if (stream.MatchClass(TOKEN_INCREMENT_DECREMENT_OPERATOR_BIT))
             {
                 const Token& tok = stream.Data(-1);
                 res = Alloc<UnaryExpression>(StringToFourCC(TransientString(stream.Data(-1).text)), false, res);
@@ -1336,28 +1422,7 @@ Attribute*
 ParseFunctionAttribute(TokenStream& stream, ParseResult& ret)
 {
     Attribute* res = nullptr;
-    if (
-        stream.Match(TokenType::EntryPoint_Attribute)
-        || stream.Match(TokenType::Threads_Attribute)
-        || stream.Match(TokenType::ThreadsX_Attribute)
-        || stream.Match(TokenType::ThreadsY_Attribute)
-        || stream.Match(TokenType::ThreadsZ_Attribute)
-        || stream.Match(TokenType::EarlyDepth_Attribute)
-        || stream.Match(TokenType::DepthLesser_Attribute)
-        || stream.Match(TokenType::DepthGreater_Attribute)
-        || stream.Match(TokenType::SubgroupSize_Attribute)
-        || stream.Match(TokenType::SubgroupsPerWorkgroup_Attribute)
-        || stream.Match(TokenType::InputVertices_Attribute)
-        || stream.Match(TokenType::MaxOutputVertices_Attribute)
-        || stream.Match(TokenType::Winding_Attribute)
-        || stream.Match(TokenType::InputTopology_Attribute)
-        || stream.Match(TokenType::OutputTopology_Attribute)
-        || stream.Match(TokenType::PatchType_Attribute)
-        || stream.Match(TokenType::Partition_Attribute)
-        || stream.Match(TokenType::PixelOrigin_Attribute)
-        || stream.Match(TokenType::DerivativeIndexLinear_Attribute)
-        || stream.Match(TokenType::DerivativeIndexQuad_Attribute)
-        )
+    if (stream.MatchClass(TOKEN_FUNCTION_ATTRIBUTE_BIT))
     {
         const Token& tok = stream.Data(-1);
         if (stream.Match(TokenType::LeftParant))
@@ -1396,14 +1461,7 @@ Attribute*
 ParseVariableAttribute(TokenStream& stream, ParseResult& ret)
 {
     Attribute* res = nullptr;
-    if (
-        stream.Match(TokenType::Binding_Decorator)
-        || stream.Match(TokenType::Group_Decorator)
-        || stream.Match(TokenType::Volatile_Decorator)
-        || stream.Match(TokenType::Atomic_Decorator)
-        || stream.Match(TokenType::NoRead_Decorator)
-        || stream.Match(TokenType::NonTemporal_Decorator)
-        )
+    if (stream.MatchClass(TOKEN_VARIABLE_ATTRIBUTE_BIT))
     {
         const Token& tok = stream.Data(-1);
         if (stream.Match(TokenType::LeftParant))
@@ -1442,19 +1500,7 @@ Attribute*
 ParseParameterAttribute(TokenStream& stream, ParseResult& ret)
 {
     Attribute* res = nullptr;
-    if (
-        stream.Match(TokenType::In_Storage)
-        || stream.Match(TokenType::Out_Storage)
-        || stream.Match(TokenType::Uniform_Storage)
-        || stream.Match(TokenType::Workgroup_Storage)
-        || stream.Match(TokenType::RayPayload_Storage)
-        || stream.Match(TokenType::CallableData_Storage)
-        || stream.Match(TokenType::RayHitAttribute_Storage)
-        || stream.Match(TokenType::NoInterpolate_Modifier)
-        || stream.Match(TokenType::NoPerspective_Modifier)
-        || stream.Match(TokenType::Patch_Domain)
-        || stream.Match(TokenType::Binding_Decorator)
-        )
+    if (stream.MatchClass(TOKEN_PARAMETER_ATTRIBUTE_BIT))
     {
         const Token& tok = stream.Data(-1);
         if (stream.Match(TokenType::LeftParant))
@@ -2260,14 +2306,7 @@ ParseGenerateScopeStatement(TokenStream& stream, ParseResult& ret)
             {
                 symbols.Append(stat);
             }
-            else if (
-                     stream.Match(TokenType::Const_Storage)
-                     || stream.Match(TokenType::Var_Storage)
-                     || stream.Match(TokenType::Uniform_Storage)
-                     || stream.Match(TokenType::Workgroup_Storage)
-                     || stream.Match(TokenType::Inline_Storage)
-                     || stream.Match(TokenType::LinkDefined_Storage)
-                     )
+            else if (stream.MatchClass(TOKEN_VARIABLE_STORAGE_BIT))
             {
                 const Token& tok = stream.Data(-1);
                 FixedArray<Variable*> vars = ParseVariables(stream, ret);
@@ -2534,10 +2573,7 @@ ParseScopeStatement(TokenStream& stream, ParseResult& ret)
             {
                 attributes.Append(attr);
             }
-            else if (
-                     stream.Match(TokenType::Const_Storage)
-                     || stream.Match(TokenType::Var_Storage)
-                     )
+            else if (stream.MatchClass(TOKEN_PARAMETER_STORAGE_BIT))
             {
                 Attribute* storage = Alloc<Attribute>();
                 storage->name = stream.Data(-1).text;
@@ -2712,7 +2748,7 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
         res = Alloc<IfStatement>(cond, ifBody, elseBody);
         res->location = LocationFromToken(tok);
     }
-    else if (res = ParseScopeStatement(stream, ret))
+    else if ((res = ParseScopeStatement(stream, ret)))
     {
     }
     else if (stream.Match(TokenType::For))
@@ -2726,7 +2762,7 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
         
         // If variables, parse
         FixedArray<Variable*> variables;
-        if (stream.Match(TokenType::Const_Storage) || stream.Match(TokenType::Var_Storage))
+        if (stream.MatchClass(TOKEN_PARAMETER_STORAGE_BIT))
         {
             Attribute* storage = Alloc<Attribute>();
             storage->name = stream.Data(-1).text;
@@ -2836,6 +2872,7 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
 ParseResult
 Parse(TokenStream& stream)
 {
+    SetupTokenClassTable();
     ParseResult ret;
     ret.ast = Alloc<Effect>();
     TokenType type = stream.Type(0);
@@ -2880,14 +2917,7 @@ Parse(TokenStream& stream)
             attributes.size = 0;
             ret.ast->symbols.Append(sym);
         }
-        else if (
-                 stream.Match(TokenType::Const_Storage)
-                 || stream.Match(TokenType::Var_Storage)
-                 || stream.Match(TokenType::Uniform_Storage)
-                 || stream.Match(TokenType::Workgroup_Storage)
-                 || stream.Match(TokenType::Inline_Storage)
-                 || stream.Match(TokenType::LinkDefined_Storage)
-                 )
+        else if (stream.MatchClass(TOKEN_VARIABLE_STORAGE_BIT))
         {
             Attribute* storage = Alloc<Attribute>();
             storage->name = stream.Data(-1).text;

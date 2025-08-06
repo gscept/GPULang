@@ -1140,23 +1140,28 @@ struct FixedArray
         
         if (vec.size > 0)
         {
+            // If vec doesn't fit in the small stack buffer, copy pointer
             if (vec.size > STACK_SIZE)
             {
-                this->buf = AllocArray<TYPE>(vec.capacity);
                 this->capacity = vec.capacity;
-            }
-            // If mempcy suffices, do it
-            if (std::is_trivially_copy_constructible<TYPE>::value)
-            {
+                this->buf = vec.buf;
                 this->size = vec.size;
-                memcpy(this->buf, vec.buf, vec.size * sizeof(TYPE));
             }
             else
             {
-                // Otherwise, run copy constructors for every element
-                for (auto& v : vec)
+                // If the small stack buffer suffices, copy the data over
+                if (std::is_trivially_copy_constructible<TYPE>::value)
                 {
-                    this->buf[this->size++] = v;
+                    this->size = vec.size;
+                    memcpy(this->buf, vec.buf, vec.size * sizeof(TYPE));
+                }
+                else
+                {
+                    // Otherwise, run copy constructors for every element
+                    for (auto& v : vec)
+                    {
+                        this->buf[this->size++] = v;
+                    }
                 }
             }
         }
