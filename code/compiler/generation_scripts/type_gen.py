@@ -1828,28 +1828,16 @@ def generate_types():
     spirv_atomic_tables += "{\n"
     spirv_atomic_tables += "    uint32_t result = 0;\n"
     spirv_atomic_tables += "    uint32_t mask = sem;\n"
-    spirv_atomic_tables += "    while (mask != 0x0)\n"
-    spirv_atomic_tables += "    {\n"
-    spirv_atomic_tables += "        switch (mask & 0x1)\n"
-    spirv_atomic_tables += "        {\n"
-    spirv_atomic_tables += "            case 0x10:// Relaxed\n "
-    spirv_atomic_tables += "                result |= 0x0;\n"
-    spirv_atomic_tables += "                break;\n"
-    spirv_atomic_tables += "            case 0x1:// Acquire\n "
-    spirv_atomic_tables += "                result |= 0x2;\n"
-    spirv_atomic_tables += "                break;\n"
-    spirv_atomic_tables += "            case 0x2: // Release\n "
-    spirv_atomic_tables += "                result |= 0x4;\n"
-    spirv_atomic_tables += "                break;\n"
-    spirv_atomic_tables += "            case 0x4: // AcquireRelease\n"
-    spirv_atomic_tables += "                result |= 0x8;\n"
-    spirv_atomic_tables += "                break;\n"
-    spirv_atomic_tables += "            case 0x8: // SequentiallyConsistent\n"
-    spirv_atomic_tables += "                result |= 0x10;\n"
-    spirv_atomic_tables += "                break;\n"
-    spirv_atomic_tables += "        }\n"
-    spirv_atomic_tables += "        mask >>= 1;\n"
-    spirv_atomic_tables += "    }\n"
+    spirv_atomic_tables += "    if (mask == 0x0)\n"
+    spirv_atomic_tables += "        return 0x0; // Relaxed\n"
+    spirv_atomic_tables += "    if ((mask & 0x1) == 0x1)\n"
+    spirv_atomic_tables += "        result |= 0x2; // Acquire\n"
+    spirv_atomic_tables += "    if ((mask & 0x2) == 0x2)\n"
+    spirv_atomic_tables += "        result |= 0x4; // Release\n"
+    spirv_atomic_tables += "    if ((mask & 0x4) == 0x4)\n"
+    spirv_atomic_tables += "        result |= 0x8; // AcquireRelease\n"
+    spirv_atomic_tables += "    if ((mask & 0x8) == 0x8)\n"
+    spirv_atomic_tables += "        result |= 0x10; // SequentiallyConsistent\n"
     spirv_atomic_tables += "    return result;\n"
     spirv_atomic_tables += "}\n"
     
@@ -3372,7 +3360,7 @@ def generate_types():
             spirv_function = ''
             spirv_function += '    uint32_t ptr = AccessChainSPIRV(c, g, args[0].name, args[0].typeName, args[0].accessChain);\n'
             spirv_function += '    uint32_t scope = ScopeToAtomicScope(args[0].scope);\n'
-            spirv_function += '    uint32_t semantics = args[2].literalValue.ui;\n'
+            spirv_function += '    uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);\n'
             spirv_function += '    semantics |= ScopeToMemorySemantics(args[0].scope);\n'
             spirv_function += '    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);\n'
             spirv_function += '    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));\n'
@@ -3426,7 +3414,7 @@ def generate_types():
             spirv_function = ''
             spirv_function += '    uint32_t ptr = AccessChainSPIRV(c, g, args[0].name, args[0].typeName, args[0].accessChain);\n'
             spirv_function += '    uint32_t scope = ScopeToAtomicScope(args[0].scope);\n'
-            spirv_function += '    uint32_t semantics = args[2].literalValue.ui;\n'
+            spirv_function += '    uint32_t semantics = MemorySemanticsToSPIRV(args[2].literalValue.ui);\n'
             spirv_function += '    semantics |= ScopeToMemorySemantics(args[0].scope);\n'
             spirv_function += '    SPIRVResult compare = LoadValueSPIRV(c, g, args[1]);\n'
             spirv_function += '    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));\n'
@@ -3466,7 +3454,7 @@ def generate_types():
         spirv_function = ''
         spirv_function += '    uint32_t ptr = AccessChainSPIRV(c, g, args[0].name, args[0].typeName, args[0].accessChain);\n'
         spirv_function += '    uint32_t scope = ScopeToAtomicScope(args[0].scope);\n'
-        spirv_function += '    uint32_t semantics = args[3].literalValue.ui;\n'
+        spirv_function += '    uint32_t semantics = MemorySemanticsToSPIRV(args[3].literalValue.ui);\n'
         spirv_function += '    semantics |= ScopeToMemorySemantics(args[0].scope);\n'
         spirv_function += '    SPIRVResult value = LoadValueSPIRV(c, g, args[1]);\n'
         spirv_function += '    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);\n'
