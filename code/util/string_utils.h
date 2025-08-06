@@ -22,6 +22,72 @@ const_len(const char* str)
     return *str ? 1 + const_len(str + 1) : 0;
 }
 
+constexpr uint32_t fnv1a_32(const char* str, std::size_t length, uint32_t hash = 0x811c9dc5) {
+    return length == 0 ? hash
+                       : fnv1a_32(str + 1, length - 1, (hash ^ static_cast<uint8_t>(*str)) * 0x01000193);
+}
+
+constexpr uint32_t hash_str(const char* str) {
+    std::size_t len = 0;
+    while (str[len] != '\0') ++len;
+    return fnv1a_32(str, len);
+}
+
+constexpr uint32_t hash_str(const std::string_view& str) {
+    return fnv1a_32(str.data(), str.size());
+}
+
+struct HashString
+{
+    size_t hash;
+    
+    constexpr HashString()
+        : hash(0)
+    {
+    }
+    
+    constexpr HashString(std::nullptr_t)
+        : hash(0)
+    {
+    }
+
+    template<int num>
+    constexpr HashString(const char (&buf)[num])
+    {
+        this->hash = hash_str(buf);
+    }
+    
+    constexpr HashString(const char* buf, size_t size)
+    {
+        this->hash = hash_str(buf);
+    }
+
+    constexpr HashString(const char* buf)
+    {
+        this->hash = hash_str(buf);
+    }
+    
+    constexpr HashString(const std::string_view& str)
+    {
+        this->hash = hash_str(str);
+    }
+    
+    constexpr bool operator<(const HashString& rhs) const
+    {
+        return this->hash < rhs.hash;
+    }
+    
+    constexpr bool operator==(const HashString& rhs) const
+    {
+        return this->hash == rhs.hash;
+    }
+};
+
+inline constexpr HashString operator ""_h(const char* buf, const size_t len)
+{
+    return HashString{ buf, len };
+}
+
 struct ConstantString
 {
     const char* buf;
