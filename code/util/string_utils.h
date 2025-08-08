@@ -421,6 +421,15 @@ struct TransientString
         memcpy(this->buf, buf, len);
         this->buf[this->size] = '\0';
     }
+    
+    TransientString(char* buf, std::size_t len)
+        : size(0)
+        , capacity(2048)
+    {
+        this->size = len;
+        memcpy(this->buf, buf, len);
+        this->buf[this->size] = '\0';
+    }
 
     TransientString(const ConstantString& str)
         : size(0)
@@ -1409,8 +1418,7 @@ FourCCToString(uint32_t fourCC)
         shift += 8;
     }
     std::reverse(&buf[0], &buf[usedBytes]);
-    TransientString ret(buf);
-    ret.size = usedBytes;
+    TransientString ret(buf, (std::size_t)usedBytes);
     return ret;
 }
 

@@ -136,7 +136,7 @@ BinaryExpression::Resolve(Compiler* compiler)
     {
         // If not, or the operator is otherwise, look for conversion assignment or comparison operators
         //TStr functionName = Format("operator%s(%s)", FourCCToString(this->op).c_str(), this->thisResolved->rightType.Name().c_str());
-        TStr functionName = TStr("operator", FourCCToString(this->op), "(", this->thisResolved->rightType.Name().c_str(), ")");
+        TransientString functionName = TransientString("operator", FourCCToString(this->op), "(", this->thisResolved->rightType.Name().c_str(), ")");
         Symbol* conversionFunction = this->thisResolved->lhsType->GetSymbol(functionName);
         if (conversionFunction == nullptr)
         {
@@ -163,7 +163,7 @@ BinaryExpression::Resolve(Compiler* compiler)
         {
             if (compiler->options.disallowImplicitPromotion)
             {
-                std::string conversionSignature = Format("%s(%s)", this->thisResolved->lhsType->name.c_str(), this->thisResolved->rhsType->name.c_str());
+                TransientString conversionSignature = TransientString(this->thisResolved->lhsType->name, "(", this->thisResolved->rhsType->name, ")");
                 Symbol* conversionFunction = compiler->GetSymbol(conversionSignature);
                 compiler->Error(Format("'%s' does not implement '%s'", this->thisResolved->lhsType->name.c_str(), functionName.c_str()), this);
                 return false;
@@ -186,7 +186,7 @@ BinaryExpression::Resolve(Compiler* compiler)
                     return false;
                 }
                 
-                std::string promotedOperatorFunctionName = Format("operator%s(%s)", FourCCToString(this->op).c_str(), promotedFullType.Name().c_str());
+                TransientString promotedOperatorFunctionName = TransientString("operator", FourCCToString(this->op), "(", promotedFullType.Name(), ")");
                 Type* promotedLhsType = compiler->GetType(promotedFullType);
                 Function* promotedOperatorFunction = promotedLhsType->GetSymbol<Function>(promotedOperatorFunctionName);
                 if (promotedOperatorFunction == nullptr)
