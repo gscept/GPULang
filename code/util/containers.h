@@ -257,6 +257,13 @@ public:
         t = TYPE();
     }
     
+    void Pop()
+    {
+        assert(this->size > 0);
+        (this->ptr + this->size-1)->~TYPE();
+        this->size--;
+    }
+    
     const TYPE& operator[](const size_t index) const
     {
         return this->ptr[index];

@@ -189,8 +189,8 @@ enum class TokenType
     , PrefixAdd
     , PrefixIncrement
     , PrefixDecrement
-    , PrefixMul
-    , List
+    , PrefixMul       // Dereference
+    , PrefixAnd       // Indirection
     
     , NumTokenTypes
 };

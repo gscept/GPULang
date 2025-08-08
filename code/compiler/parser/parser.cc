@@ -1009,7 +1009,7 @@ Limit(const TokenStream& stream, const char* name, size_t size)
     return diagnostic;
 }
 
-Expression* ParseExpression2(TokenStream&, ParseResult&);
+Expression* ParseExpression2(TokenStream&, ParseResult&, bool);
 //------------------------------------------------------------------------------
 /**
  */
@@ -1017,38 +1017,18 @@ FixedArray<Expression*>
 ParseExpressionList2(TokenStream& stream, ParseResult& ret)
 {
     TransientArray<Expression*> expressions(256);
-    Expression* expr = ParseExpression2(stream, ret);
-    
-    // Flatten list
-    if (expr != nullptr)
+    while (Expression* expr = ParseExpression2(stream, ret, true))
     {
-        TransientArray<Expression*> visitationStack(256);
-        Expression* it = expr;
-        visitationStack.Append(it);
-        while (visitationStack.size > 0)
+        if (expressions.Full())
         {
-            it = visitationStack.back(); visitationStack.size--;
-            if (it->symbolType == Symbol::SymbolType::BinaryExpressionType)
-            {
-                BinaryExpression* binExpr = static_cast<BinaryExpression*>(it);
-                if (binExpr->op == ',')
-                {
-                    visitationStack.Append(binExpr->right);
-                    visitationStack.Append(binExpr->left);
-                }
-                else
-                {
-                    expressions.Append(it);
-                }
-            }
-            else
-            {
-                expressions.Append(it);
-            }
+            ret.errors.Append(Limit(stream, "expression list length", 256));
+            break;
         }
-        return FixedArray<Expression*>(expressions);
+        expressions.Append(expr);
+        if (!stream.Match(TokenType::Comma))
+            break;
     }
-    return FixedArray<Expression*>();
+    return FixedArray<Expression*>(expressions);
 }
 
 Expression* ParseExpression(TokenStream&, ParseResult&, Expression*, int);
@@ -1144,7 +1124,7 @@ static void SetupTokenClassTable()
     TokenClassTable[(uint32_t)TokenType::Xor] |= TOKEN_OPERATOR_BIT;
     TokenClassTable[(uint32_t)TokenType::And] |= TOKEN_OPERATOR_BIT;
     TokenClassTable[(uint32_t)TokenType::Dot] |= TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::Comma] |= TOKEN_OPERATOR_BIT;
+    //TokenClassTable[(uint32_t)TokenType::Comma] |= TOKEN_OPERATOR_BIT;
     
     TokenClassTable[(uint32_t)TokenType::EntryPoint_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
     TokenClassTable[(uint32_t)TokenType::Threads_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
@@ -1239,6 +1219,7 @@ static void SetupTokenClassTable()
     PostfixPrecedenceTable[(uint32_t)TokenType::PrefixAdd] = 3;
     PostfixPrecedenceTable[(uint32_t)TokenType::PrefixSub] = 3;
     PostfixPrecedenceTable[(uint32_t)TokenType::PrefixMul] = 3;
+    PostfixPrecedenceTable[(uint32_t)TokenType::PrefixAnd] = 3;
     PostfixPrecedenceTable[(uint32_t)TokenType::PrefixIncrement] = 3;
     PostfixPrecedenceTable[(uint32_t)TokenType::PrefixDecrement] = 3;
     PostfixPrecedenceTable[(uint32_t)TokenType::Not] = 3;
@@ -1271,7 +1252,7 @@ static void SetupTokenClassTable()
     PostfixPrecedenceTable[(uint32_t)TokenType::AndAssign] = 16;
     PostfixPrecedenceTable[(uint32_t)TokenType::OrAssign] = 16;
     PostfixPrecedenceTable[(uint32_t)TokenType::XorAssign] = 16;
-    PostfixPrecedenceTable[(uint32_t)TokenType::Comma] = 17;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Comma] = 0xFFFFFFFF;
     PostfixPrecedenceTable[(uint32_t)TokenType::ArrayInitializer] = 0xFFFFFFFF;
     PostfixPrecedenceTable[(uint32_t)TokenType::Call] = 0xFFFFFFFF;
 
@@ -1291,7 +1272,7 @@ static void SetupTokenClassTable()
 /**
  */
 Expression*
-ParseExpression2(TokenStream& stream, ParseResult& ret)
+ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false)
 {
     static const uint8_t BINARY_ARITY = 0;
     static const uint8_t UNARY_ARITY = 1;
@@ -1303,15 +1284,17 @@ ParseExpression2(TokenStream& stream, ParseResult& ret)
         uint8_t prefix = 0;
         uint8_t arity = BINARY_ARITY; // 0 = binary, 1 = unary, 2 = ternary
         uint16_t operandDepth = 0xFFFFFFFF;
+        const Token* token = nullptr;
     };
     
-    static const auto reduceTop = [](TransientArray<Operator>& operatorStack, TransientArray<Expression*>& operandStack, TransientArray<Expression*>& expressionList) -> void
+    static const auto reduceTop = [](TransientArray<Operator>& operatorStack, TransientArray<Expression*>& operandStack) -> void
     {
         const Operator& tok = operatorStack.back(); operatorStack.size--;
         if (tok.arity == UNARY_ARITY)
         {
             Expression* rhs = operandStack.back(); operandStack.size--;
             Expression* expr = Alloc<UnaryExpression>(tok.fourcc, tok.prefix, rhs);
+            expr->location = LocationFromToken(*tok.token);
             operandStack.Append(expr);
         }
         else if (tok.arity == BINARY_ARITY)
@@ -1321,6 +1304,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret)
                 Expression* rhs = operandStack.back(); operandStack.size--;
                 Expression* lhs = operandStack.back(); operandStack.size--;
                 Expression* expr = Alloc<AccessExpression>(lhs, rhs, false);
+                expr->location = LocationFromToken(*tok.token);
                 operandStack.Append(expr);
             }
             else
@@ -1328,6 +1312,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret)
                 Expression* rhs = operandStack.back(); operandStack.size--;
                 Expression* lhs = operandStack.back(); operandStack.size--;
                 Expression* expr = Alloc<BinaryExpression>(tok.fourcc, lhs, rhs);
+                expr->location = LocationFromToken(*tok.token);
                 operandStack.Append(expr);
             }
         }
@@ -1337,6 +1322,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret)
             Expression* lhs = operandStack.back(); operandStack.size--;
             Expression* cond = operandStack.back(); operandStack.size--;
             Expression* expr = Alloc<TernaryExpression>(cond, lhs, rhs);
+            expr->location = LocationFromToken(*tok.token);
             operandStack.Append(expr);
         }
     };
@@ -1344,7 +1330,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret)
     TransientArray<Operator> operatorStack(256);
     TokenType type = stream.Type();
     TransientArray<Expression*> operandStack(256);
-    TransientArray<Expression*> expressionList(256);
+    TransientArray<TransientArray<Expression*>> expressionListStack(32);
     size_t paranthesisDepth = 0;
     size_t bracketDepth = 0;
     
@@ -1472,6 +1458,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret)
             Operator parseTok;
             parseTok.type = matchedType;
             parseTok.fourcc = StringToFourCC(matchedTok->text);
+            parseTok.token = matchedTok;
             
             // If using prefix precedence, this is a prefix unary operator
             if (precedenceTable == PrefixPrecedenceTable)
@@ -1494,6 +1481,9 @@ ParseExpression2(TokenStream& stream, ParseResult& ret)
                         break;
                     case TokenType::Mul:
                         parseTok.type = TokenType::PrefixMul;
+                        break;
+                    case TokenType::And:
+                        parseTok.type = TokenType::PrefixAnd;
                         break;
                     case TokenType::Not:
                     case TokenType::Complement:
@@ -1520,7 +1510,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret)
                     if ((assoc == ASSOC_LEFT && p2 <= p1) ||
                         (assoc == ASSOC_RIGHT && p2 < p1))
                     {
-                        reduceTop(operatorStack, operandStack, expressionList);
+                        reduceTop(operatorStack, operandStack);
                     }
                     else
                         break;
@@ -1547,6 +1537,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret)
                 parseTok.type = TokenType::Call;
                 parseTok.operandDepth = operandStack.size;
                 operatorStack.Append(parseTok);
+                expressionListStack.Append(TransientArray<Expression*>(32));
             }
             precedenceTable = PrefixPrecedenceTable;
             associativityTable = PrefixAssociativityTable;
@@ -1574,7 +1565,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret)
                     callOrParen = 0;
                     break;
                 }
-                reduceTop(operatorStack, operandStack, expressionList);
+                reduceTop(operatorStack, operandStack);
             }
             
             const Operator& lastOp = operatorStack.back();
@@ -1588,45 +1579,26 @@ ParseExpression2(TokenStream& stream, ParseResult& ret)
                 
                 uint8_t hasArguments = (operandStack.size - lastOp.operandDepth) > 0;
                 Expression* name = nullptr;
+                TransientArray<Expression*>& expressionList = expressionListStack.back();
                 if (hasArguments)
                 {
+                    if (expressionList.Full())
+                    {
+                        ret.errors.Append(Limit(stream, "expression list", 256));
+                        return nullptr;
+                    }
                     Expression* arguments = operandStack.back(); operandStack.size--;
                     name = operandStack.back(); operandStack.size--;
-
-                    // Flatten comma separated binary expression to a list
-                    TransientArray<Expression*> visitationStack(256);
-                    Expression* it = arguments;
-                    visitationStack.Append(it);
-                    while (visitationStack.size > 0)
-                    {
-                        it = visitationStack.back(); visitationStack.size--;
-                        if (it->symbolType == Symbol::SymbolType::BinaryExpressionType)
-                        {
-                            BinaryExpression* binExpr = static_cast<BinaryExpression*>(it);
-                            if (binExpr->op == ',')
-                            {
-                                visitationStack.Append(binExpr->right);
-                                visitationStack.Append(binExpr->left);
-                            }
-                            else
-                            {
-                                expressionList.Append(it);
-                            }
-                        }
-                        else
-                        {
-                            expressionList.Append(it);
-                        }
-                    }
+                    expressionList.Append(arguments);
                 }
                 else
                 {
                     name = operandStack.back(); operandStack.size--;
                 }
-
-
+                
                 Expression* expr = Alloc<CallExpression>(name, expressionList);
-                expressionList.size = 0;
+                expressionListStack.Pop();
+                expr->location = name->location;
                 operandStack.Append(expr);
             }
             else
@@ -1649,6 +1621,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret)
                 Operator parseTok;
                 parseTok.type = TokenType::Subscript;
                 parseTok.operandDepth = operandStack.size;
+                parseTok.token = &stream.Data(-1);
                 operatorStack.Append(parseTok);
             }
             else
@@ -1656,7 +1629,9 @@ ParseExpression2(TokenStream& stream, ParseResult& ret)
                 Operator parseTok;
                 parseTok.type = TokenType::ArrayInitializer;
                 parseTok.operandDepth = operandStack.size;
+                parseTok.token = &stream.Data(-1);
                 operatorStack.Append(parseTok);
+                expressionListStack.Append(TransientArray<Expression*>(256));
             }
             precedenceTable = PrefixPrecedenceTable;
             associativityTable = PrefixAssociativityTable;
@@ -1685,7 +1660,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret)
                     break;
                 }
                 
-                reduceTop(operatorStack, operandStack, expressionList);
+                reduceTop(operatorStack, operandStack);
             }
             
             const Operator& lastOp = operatorStack.back();
@@ -1707,6 +1682,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret)
                 
                 Expression* target = operandStack.back(); operandStack.size--;
                 Expression* expr = Alloc<ArrayIndexExpression>(target, index);
+                expr->location = target->location;
                 operandStack.Append(expr);
             }
             else if (subscriptOrArray == 1)
@@ -1719,32 +1695,15 @@ ParseExpression2(TokenStream& stream, ParseResult& ret)
                 
                 // Flatten comma separated binary expression to a list
                 Expression* target = operandStack.back(); operandStack.size--;
-                TransientArray<Expression*> visitationStack(256);
-                Expression* it = target;
-                visitationStack.Append(it);
-                while (visitationStack.size > 0)
+                TransientArray<Expression*>& expressionList = expressionListStack.back();
+                if (expressionList.Full())
                 {
-                    it = visitationStack.back(); visitationStack.size--;
-                    if (it->symbolType == Symbol::SymbolType::BinaryExpressionType)
-                    {
-                        BinaryExpression* binExpr = static_cast<BinaryExpression*>(it);
-                        if (binExpr->op == ',')
-                        {
-                            visitationStack.Append(binExpr->right);
-                            visitationStack.Append(binExpr->left);
-                        }
-                        else
-                        {
-                            expressionList.Append(it);
-                        }
-                    }
-                    else
-                    {
-                        expressionList.Append(it);
-                    }
+                    ret.errors.Append(Limit(stream, "expression list", 256));
+                    return nullptr;
                 }
+                expressionList.Append(target);
                 Expression* expr = Alloc<ArrayInitializerExpression>(expressionList);
-                expressionList.size = 0;
+                expressionListStack.Pop();
                 operandStack.Append(expr);
             }
             operatorStack.size--; // Remove the left bracket
@@ -1755,8 +1714,8 @@ ParseExpression2(TokenStream& stream, ParseResult& ret)
         {
             Operator parseTok;
             parseTok.type = TokenType::Question;
-            
             parseTok.arity = TERNARY_ARITY;
+            parseTok.token = &stream.Data(-1);
             precedenceTable = PrefixPrecedenceTable;
             associativityTable = PrefixAssociativityTable;
             operatorStack.Append(parseTok);
@@ -1765,8 +1724,42 @@ ParseExpression2(TokenStream& stream, ParseResult& ret)
         {
             while (operatorStack.size > 0 && operatorStack.back().type != TokenType::Question)
             {
-                reduceTop(operatorStack, operandStack, expressionList);
+                reduceTop(operatorStack, operandStack);
             }
+            precedenceTable = PrefixPrecedenceTable;
+            associativityTable = PrefixAssociativityTable;
+        }
+        else if (stream.Match(TokenType::Comma))
+        {
+            if (stopAtComma && paranthesisDepth == 0 && bracketDepth == 0)
+            {
+                stream.Unmatch();
+                break;
+            }
+            // Reduce to left of comma
+            // Otherwise it's a binary
+            while (operatorStack.size > 0)
+            {
+                const Operator& tok = operatorStack.back();
+                uint32_t p1 = precedenceTable[(uint32_t)operatorStack.back().type];
+                
+                if (p1 != 0xFFFFFFFF)
+                {
+                    reduceTop(operatorStack, operandStack);
+                }
+                else
+                    break;
+            }
+            
+            TransientArray<Expression*>& expressionList = expressionListStack.back();
+            if (expressionList.Full())
+            {
+                ret.errors.Append(Limit(stream, "expression list", 256));
+                return nullptr;
+            }
+            expressionList.Append(operandStack.back());
+            
+            operandStack.size--;
             precedenceTable = PrefixPrecedenceTable;
             associativityTable = PrefixAssociativityTable;
         }
@@ -1777,7 +1770,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret)
     
     while (operatorStack.size > 0)
     {
-        reduceTop(operatorStack, operandStack, expressionList);
+        reduceTop(operatorStack, operandStack);
     }
     
     // Didn't match an expression
