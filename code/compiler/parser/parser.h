@@ -10,6 +10,8 @@
 #include "containers.h"
 
 struct GPULangDiagnostic;
+struct GPULangFile;
+
 namespace GPULang
 {
 struct Effect;
@@ -208,11 +210,13 @@ struct TokenizationResult
     PinnedArray<TokenType> tokenTypes = 0xFFFFFF;
     PinnedArray<Token> tokens = 0xFFFFFF;
     PinnedArray<GPULangDiagnostic> errors = 0xFFFF;
+    PinnedSet<TransientString> resolvedPaths = 0xFFF;
+    TransientArray<GPULangFile*> files = 128;
     size_t lineCount = 0;
 };
 
 // Tokenize string
-void Tokenize(const std::string& text, const TransientString& path, const TransientArray<std::string_view>& searchPaths, TokenizationResult& ret);
+void Tokenize(const GPULangFile* file, const TransientArray<std::string_view>& searchPaths, TokenizationResult& ret);
 
 struct ParseResult
 {

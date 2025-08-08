@@ -200,7 +200,7 @@ struct Compiler
     void OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, Serialize::DynamicLengthBlob& dynamicDataBlob);
 
     FixedString path;
-    std::string filename;
+    FixedString filename;
     std::vector<std::string> defines;
     PinnedArray<GPULangDiagnostic> diagnostics = 0xFFFFFF;
     PinnedArray<FixedString> messages = 0xFFF;

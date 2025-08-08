@@ -30,7 +30,6 @@ struct Function : public Symbol
 
     Statement* ast;
     Type::FullType returnType;
-    Symbol::Location returnTypeLocation;
     Symbol* constructorType = nullptr;
     bool hasBody;
     bool compileTime;

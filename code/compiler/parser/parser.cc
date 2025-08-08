@@ -66,6 +66,7 @@ static const uint32_t EOL_CHARACTER = 0x80;
 static const uint32_t MULTILINE_COMMENT_END_BIT1 = 0x100; // end of multiline comment, first bit
 static const uint32_t MULTILINE_COMMENT_END_BIT2 = 0x200; // end of multiline comment, second bit
 static const uint32_t MULTILINE_COMMENT = MULTILINE_COMMENT_END_BIT1 | MULTILINE_COMMENT_END_BIT2;
+static const uint32_t PATH_CHARACTER_BIT = 0x400; // path character, first bit
 
 static uint32_t CharacterClassTable[256] = {};
 struct CharacterClassInitializer
@@ -73,17 +74,17 @@ struct CharacterClassInitializer
     CharacterClassInitializer()
     {
         for (char c = 'a'; c <= 'z'; ++c)
-            CharacterClassTable[c] = IDENTIFIER_START_CHARACTER | IDENTIFIER_CONTD_CHARACTER;
+            CharacterClassTable[c] = IDENTIFIER_START_CHARACTER | IDENTIFIER_CONTD_CHARACTER | PATH_CHARACTER_BIT;
         for (char c = 'A'; c <= 'Z'; ++c)
-            CharacterClassTable[c] = IDENTIFIER_START_CHARACTER | IDENTIFIER_CONTD_CHARACTER;
-        CharacterClassTable['_'] = IDENTIFIER_START_CHARACTER | IDENTIFIER_CONTD_CHARACTER;
+            CharacterClassTable[c] = IDENTIFIER_START_CHARACTER | IDENTIFIER_CONTD_CHARACTER | PATH_CHARACTER_BIT;
+        CharacterClassTable['_'] = IDENTIFIER_START_CHARACTER | IDENTIFIER_CONTD_CHARACTER | PATH_CHARACTER_BIT;
         for (char c = 'a'; c <= 'f'; ++c)
             CharacterClassTable[c] |= HEX_NUMERIC_CHARACTER;
         for (char c = 'A'; c <= 'F'; ++c)
             CharacterClassTable[c] |= HEX_NUMERIC_CHARACTER;
         
         for (char c = '0'; c <= '9'; ++c)
-            CharacterClassTable[c] = HEX_NUMERIC_CHARACTER | NUMERIC_CHARACTER | IDENTIFIER_CONTD_CHARACTER;
+            CharacterClassTable[c] = HEX_NUMERIC_CHARACTER | NUMERIC_CHARACTER | IDENTIFIER_CONTD_CHARACTER | PATH_CHARACTER_BIT;
         
         CharacterClassTable['#'] = SPECIAL_CHARACTER;
         CharacterClassTable['@'] = SPECIAL_CHARACTER;
@@ -99,11 +100,11 @@ struct CharacterClassInitializer
         CharacterClassTable['<'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
         CharacterClassTable['>'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
         CharacterClassTable['"'] = SPECIAL_CHARACTER;
-        CharacterClassTable['.'] = SPECIAL_CHARACTER;
+        CharacterClassTable['.'] = SPECIAL_CHARACTER | PATH_CHARACTER_BIT;
         CharacterClassTable['+'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
         CharacterClassTable['-'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
         CharacterClassTable['*'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER | MULTILINE_COMMENT_END_BIT1;
-        CharacterClassTable['/'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER | MULTILINE_COMMENT_END_BIT2;
+        CharacterClassTable['/'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER | MULTILINE_COMMENT_END_BIT2  | PATH_CHARACTER_BIT;
         CharacterClassTable['%'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
         CharacterClassTable['|'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
         CharacterClassTable['&'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
@@ -371,9 +372,41 @@ static auto identifierStart = [](const char c) -> bool
     return (CharacterClassTable[c] & IDENTIFIER_START_CHARACTER) == IDENTIFIER_START_CHARACTER;
 };
 
+static auto pathStart = [](const char c) -> bool
+{
+    return (CharacterClassTable[c] & IDENTIFIER_START_CHARACTER) == IDENTIFIER_START_CHARACTER;
+};
+
+static auto pathEnd = [](const char* it, const char* end) -> const char*
+{
+    uint32_t c;
+    do
+    {
+        c = CharacterClassTable[it[0]];
+        if ((c & PATH_CHARACTER_BIT) != PATH_CHARACTER_BIT)
+            return it;
+        
+        c = CharacterClassTable[it[1]];
+        if ((c & PATH_CHARACTER_BIT) != PATH_CHARACTER_BIT)
+            return it + 1;
+            
+        c = CharacterClassTable[it[2]];
+        if ((c & PATH_CHARACTER_BIT) != PATH_CHARACTER_BIT)
+            return it + 2;
+            
+        c = CharacterClassTable[it[3]];
+        if ((c & PATH_CHARACTER_BIT) != PATH_CHARACTER_BIT)
+            return it + 3;
+            
+        it += 4;
+    } while(it < end);
+    
+    return end;
+};
+
 static auto identifierEnd = [](const char* it, const char* end) -> const char*
 {
-    char c;
+    uint32_t c;
     do
     {
         c = CharacterClassTable[it[0]];
@@ -410,7 +443,7 @@ static auto numberStart = [](const char c) -> bool
 
 static auto numberEnd = [](const char* it, const char* end) -> const char*
 {
-    char c;
+    uint32_t c;
     do
     {
         c = CharacterClassTable[it[0]];
@@ -437,7 +470,7 @@ static auto numberEnd = [](const char* it, const char* end) -> const char*
 
 static auto hexEnd = [](const char* it, const char* end) -> const char*
 {
-    char c;
+    uint32_t c;
     do
     {
         c = CharacterClassTable[it[0]];
@@ -479,7 +512,7 @@ static auto operatorStart = [](const char c) -> bool
 
 static auto operatorEnd = [](const char* it, const char* end) -> const char*
 {
-    char c;
+    uint32_t c;
     do
     {
         c = CharacterClassTable[it[0]];
@@ -509,60 +542,41 @@ static auto commentEnd = [](const char* it, const char* end) -> const char*
     return it;
 };
 
-static auto resolvePath = [](const std::string_view& path, const GPULang::FixedString& currentFilePath, const FixedArray<std::string_view>& searchPaths, PinnedSet<TransientString>& resolvedPaths) -> TransientString
+static auto resolvePath = [](const std::string_view& path, const GPULang::FixedString& currentFilePath, const FixedArray<std::string_view>& searchPaths, const PinnedSet<TransientString>& resolvedPaths) -> TransientString
 {
-    auto it = resolvedPaths.Find(path);
-    if (it != resolvedPaths.end())
-        return path;
+    struct stat sb;
+    if (stat(path.data(), &sb) == 0)
+    {
+        return TransientString(path);
+    }
     else
     {
-        struct stat sb;
-        if (stat(path.data(), &sb) == 0)
+        // First check the folder the file is currently in
+        const char* lastSlash = strrchr(currentFilePath.c_str(), '/');
+        if (lastSlash != nullptr)
         {
-            resolvedPaths.Insert(path);
-            return TransientString(path);
-        }
-        else
-        {
-            // First check the folder the file is currently in
-            const char* lastSlash = strrchr(currentFilePath.c_str(), '/');
-            if (lastSlash != nullptr)
+            std::string_view fileFolder(currentFilePath.c_str(), lastSlash + 1);
+            TStr fullPath = TStr::Compact(fileFolder, path);
+            struct stat sb;
+            if (stat(fullPath.Data(), &sb) == 0)
             {
-                std::string_view fileFolder(currentFilePath.c_str(), lastSlash + 1);
-                TStr fullPath = TStr::Compact(fileFolder, path);
-                auto it = resolvedPaths.Find(fullPath);
-                if (it != resolvedPaths.end())
-                    return fullPath;
-                else
-                {
-                    struct stat sb;
-                    if (stat(fullPath.Data(), &sb) == 0)
-                    {
-                        resolvedPaths.Insert(fullPath);
-                        return fullPath;
-                    }
-                }
+                return fullPath;
             }
-            
-            // If the file still isn't found, try the search paths
-            for (auto& searchPath : searchPaths)
+        }
+        
+        // If the file still isn't found, try the search paths
+        for (auto& searchPath : searchPaths)
+        {
+            TStr fullPath = TStr::Compact(searchPath, path);
+            auto it = resolvedPaths.Find(fullPath);
+            struct stat sb;
+            if (stat(fullPath.Data(), &sb) == 0)
             {
-                TStr fullPath = TStr::Compact(searchPath, path);
-                auto it = resolvedPaths.Find(fullPath);
-                if (it != resolvedPaths.end())
-                    return fullPath;
-                else
-                {
-                    struct stat sb;
-                    if (stat(fullPath.Data(), &sb) == 0)
-                    {
-                        resolvedPaths.Insert(fullPath);
-                        return fullPath;
-                    }
-                }
+                return fullPath;
             }
         }
     }
+
     return TransientString();
 };
 
@@ -570,17 +584,17 @@ static auto resolvePath = [](const std::string_view& path, const GPULang::FixedS
 /**
  */
 void
-Tokenize(const std::string& text, const TransientString& path, const TransientArray<std::string_view>& searchPaths, TokenizationResult& ret)
+Tokenize(const GPULangFile* file, const TransientArray<std::string_view>& searchPaths, TokenizationResult& ret)
 {
-    const char* it = text.data();
-    const char* end = text.data() + text.length();
+    const char* it = file->contents;
+    const char* end = file->contents + file->contentSize;
     const char* tokenStart = nullptr;
     const char* startOfLine = nullptr;
     TokenType tokenType = TokenType::InvalidToken;
     uint32_t line = 0;
     uint32_t charPos = 0;
     
-    TransientString currentPath = path;
+    TransientString currentPath = file->path;
     
     bool ignore = false;
     
@@ -595,11 +609,29 @@ Tokenize(const std::string& text, const TransientString& path, const TransientAr
         if (it[0] == '/' && it[1] == '*')
         {
             ignore = true;
+            it += 2;
             continue;
         }
-        else if (it[0] == '*' && it[1] == '/' && ignore)
+        else if (ignore)
         {
-            ignore = false;
+            const char* begin = it;
+            const char* eol = lineEnd(it, end);
+            while (it != end)
+            {
+                if (it == eol)
+                {
+                    ret.lineCount++;
+                    line++;
+                    break;
+                }
+                if (it[0] == '*' && it[1] == '/')
+                {
+                    ignore = false;
+                    it += 2;
+                    break;
+                }
+                it++;
+            }
             continue;
         }
         else if (it[0] == '/' && it[1] == '/') // If single line comment, move iterator to end
@@ -609,6 +641,7 @@ Tokenize(const std::string& text, const TransientString& path, const TransientAr
             ret.lineCount++;
             continue;
         }
+        
         
         // End early
         if (it[0] == '\0')
@@ -811,60 +844,76 @@ Tokenize(const std::string& text, const TransientString& path, const TransientAr
                     it = identifierEnd(it+1, end);
                     
                     std::string_view dir(begin, it);
-                    if (dir == "line")
-                    {
-                        it = skipWS(it+1, end);
-                        const char* begin = it;
-                        if (numberStart(it[0]))
-                        {
-                            it = numberEnd(it+1, end);
-                        }
-                        std::string_view lineNo(begin, it);
-                        int newLine;
-                        std::from_chars(lineNo.data(), lineNo.data() + lineNo.size(), newLine);
-                        line = newLine;
-                        
-                        it = skipWS(it+1, end);
-                        if (it[0] == '\"')
-                        {
-                            const char* begin = it;
-                            it++;
-                            while (it != end)
-                            {
-                                uint8_t eosOffset = findCharPos(it, end, '"');
-                                if (eosOffset != 255)
-                                {
-                                    it += eosOffset + 1;
-                                    break;
-                                }
-                                else
-                                    it += 8;
-                            }
-                            std::string_view path(begin + 1, it - 1);
-                            currentPath = path;
-                        }
-                    }
-                    else if (dir == "include")
+                    if (dir == "include")
                     {
                         it = skipWS(it, end);
-                        if (identifierStart(it[0]))
+                        if (it[0] == '\"' || it[0] == '<')
                         {
-                            const char* begin = it;
-                            it = identifierEnd(it+1, end);
-                            
-                            std::string_view path(begin, it);
-                            //TransientString resolvedPath = resolvePath(, <#const GPULang::FixedString &currentFilePath#>, <#const FixedArray<std::string_view> &searchPaths#>, <#PinnedSet<TransientString> &resolvedPaths#>)
+                            it++;
+                            if (pathStart(it[0]))
+                            {
+                                const char* begin = it;
+                                it = pathEnd(it, end);
+                                
+                                std::string_view path(begin, it);
+                                TransientString resolvedPath = resolvePath(path, file->path, searchPaths, ret.resolvedPaths);
+                                
+                                // Bad include
+                                if (resolvedPath.size == 0)
+                                {
+                                    GPULangDiagnostic diagnostic;
+                                    diagnostic.file = currentPath;
+                                    diagnostic.error = TStr("File cannot be found: ", path);
+                                    diagnostic.line = line;
+                                    diagnostic.column = it - startOfLine;
+                                    diagnostic.length = 1;
+                                    ret.errors.Append(diagnostic);
+                                    return;
+                                }
+                                
+                                // If resolved paths is not in set, it means file was never opened
+                                if (ret.resolvedPaths.Find(resolvedPath) == ret.resolvedPaths.end())
+                                {
+                                    // Add file to list of files that have been included
+                                    ret.resolvedPaths.Insert(resolvedPath);
+                                    
+                                    GPULangFile* file = GPULangLoadFile(resolvedPath.ToView());
+                                    ret.files.Append(file);
+                                    
+                                    // Tokenize included file
+                                    Tokenize(file, searchPaths, ret);
+                                    
+                                    // Remove previous files END token
+                                    ret.tokens.size--;
+                                    ret.tokenTypes.size--;
+                                }
+
+                                
+                                // Move past either " or >
+                                it++;
+                            }
+                            else
+                            {
+                                GPULangDiagnostic diagnostic;
+                                diagnostic.file = currentPath;
+                                diagnostic.error = TStr("Include directive file path missing");
+                                diagnostic.line = line;
+                                diagnostic.column = it - startOfLine;
+                                diagnostic.length = 1;
+                                ret.errors.Append(diagnostic);
+                            }
                         }
-                        else
-                        {
-                            GPULangDiagnostic diagnostic;
-                            diagnostic.file = currentPath;
-                            diagnostic.error = TStr("Include directive file path missing");
-                            diagnostic.line = line;
-                            diagnostic.column = it - startOfLine;
-                            diagnostic.length = 1;
-                            ret.errors.Append(diagnostic);
-                        }
+                        continue;
+                    }
+                    else
+                    {
+                        GPULangDiagnostic diagnostic;
+                        diagnostic.file = currentPath;
+                        diagnostic.error = TStr("Invalid directive ", dir);
+                        diagnostic.line = line;
+                        diagnostic.column = it - startOfLine;
+                        diagnostic.length = 1;
+                        ret.errors.Append(diagnostic);
                     }
                 }
                 else

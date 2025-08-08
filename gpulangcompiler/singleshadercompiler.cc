@@ -155,15 +155,19 @@ SingleShaderCompiler::CompileSPIRV(const std::string& src)
 	
 	fs::path escapedDst(this->dstBinary);
 	fs::path escapedHeader(this->dstHeader);
+    
+    GPULangFile* f = GPULangLoadFile(sp.string());
 
     bool res = GPULangCompile(
-        sp.string()
+          f
         , GPULang::Compiler::Language::VULKAN_SPIRV
         , escapedDst.string()
         , escapedHeader.string()
         , defines
         , options
         , errors);
+    
+    delete f;
     if (!res)
     {
         if (errors)

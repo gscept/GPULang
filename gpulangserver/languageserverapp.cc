@@ -547,6 +547,10 @@ void
 InsertSemanticToken(Context& ctx, const GPULang::Symbol::Location& loc, SemanticTypeMapping type, uint32_t modifiers, std::vector<uint32_t>& result)
 {
     SemanticToken token;
+    if (loc.line == -1)
+    {
+        return;
+    }
     
     if (loc.line < ctx.loc.line)
         return;
@@ -709,12 +713,12 @@ CreateSemanticToken(Context& ctx, const GPULang::Symbol* sym, ParseContext::Pars
                 CreateSemanticToken(ctx, var, file, result, scopes);
             }
 
-            InsertSemanticToken(ctx, fun->returnTypeLocation, deadBranch ? SemanticTypeMapping::Comment : SemanticTypeMapping::Type, (uint32_t)dead, result);
+            InsertSemanticToken(ctx, fun->returnType.nameLocation, deadBranch ? SemanticTypeMapping::Comment : SemanticTypeMapping::Type, (uint32_t)dead, result);
             TextRange range;
-            range.startLine = fun->returnTypeLocation.line;
-            range.stopLine = fun->returnTypeLocation.line;
-            range.startColumn = fun->returnTypeLocation.start;
-            range.stopColumn = fun->returnTypeLocation.end;
+            range.startLine = fun->returnType.nameLocation.line;
+            range.stopLine = fun->returnType.nameLocation.line;
+            range.startColumn = fun->returnType.nameLocation.start;
+            range.stopColumn = fun->returnType.nameLocation.end;
             file->symbolsByLine[range.startLine].push_back(std::make_tuple(range, PresentationBits{ {.typeLookup = 1} }, res->returnTypeSymbol));
 
             if (fun->ast != nullptr)

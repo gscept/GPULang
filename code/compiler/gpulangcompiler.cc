@@ -1117,7 +1117,7 @@ escape_newline:
                         }
                         else
                         {
-                            output.append(Format("// include %.*s omitted\n", path.size(), path.data()));
+                            output.append("\n");
                             pp->args = args;
                             pp->argLocations = argLocs;
                             goto next_line;
@@ -1840,11 +1840,7 @@ GPULangPreprocessFile(
 FixedArray<FixedString>
 GPULangGenerateDependencies(GPULangFile* file, const std::vector<std::string>& defines, PinnedArray<GPULangDiagnostic>& diagnostics)
 {
-    TransientArray<FileLevel> fileStack(128);
-    fileStack.Append({file});
     TransientArray<std::string_view> searchPaths(128);
-    FileLevel* level = &fileStack.back();
-    
     for (auto& arg : defines)
     {
         std::string_view argView = arg;
@@ -1854,7 +1850,7 @@ GPULangGenerateDependencies(GPULangFile* file, const std::vector<std::string>& d
             {
                 if (searchPaths.Full())
                 {
-                    diagnostics.Append(DIAGNOSTIC("Maximum include paths of 128 hit"));
+                    //diagnostics.Append(DIAGNOSTIC("Maximum include paths of 128 hit"));
                     return false;
                 }
                 searchPaths.Append(argView.substr(2));
@@ -1862,198 +1858,13 @@ GPULangGenerateDependencies(GPULangFile* file, const std::vector<std::string>& d
         }
     }
     
-    // Insert into file map
-    PinnedMap<TransientString, GPULangFile*> fileMap = 0xFFFF;
-    PinnedSet<TransientString> resolvedPaths = 0xFFF;
-    bool comment = false;
+    TokenizationResult res;
+    Tokenize(file, searchPaths, res);
     
-#define POP_FILE_DEP() \
-level->file->lines = level->lineCounter;\
-fileStack.size--;\
-if (fileStack.size > 0)\
-{\
-level = &fileStack.back();\
-level->lineCounter++;\
-}\
-continue;
-    
-    while (fileStack.size > 0)
+    TransientArray<FixedString> ret(res.resolvedPaths.size());
+    for (const auto& file : res.resolvedPaths)
     {
-        // Find next unescaped \n
-        if (level->it == nullptr || level->it == level->file->contents + level->file->contentSize)
-        {
-            POP_FILE_DEP()
-        }
-        const char* endOfFile = level->file->contents + level->file->contentSize;
-        const char* endOfLine = lineEnd(level->it, endOfFile);
-        
-        std::string_view lineSpan(level->it, endOfLine);
-        level->it = endOfLine;
-        
-        int lineEndingLength = 0;
-        if (lineSpan.ends_with("\r\n"))
-            lineEndingLength = 2;
-        else if (lineSpan.ends_with("\r") || lineSpan.ends_with("\n"))
-            lineEndingLength = 1;
-        
-        // Check for valid end of line, meaning the file is corrupt after this point
-        auto charIterator = lineSpan.rbegin();
-        if (lineSpan.length() >= 3 && (charIterator[2] == '\r' || charIterator[2] == '\n'))
-            lineEndingLength = -1;
-        if (lineEndingLength == -1)
-        {
-            //diagnostics.push_back(Diagnostic{ .error = Format("Line is either too long or has corrupt file endings\n%s", lineStr.c_str()), .file = level->path, .line = level->lineCounter });
-            POP_FILE_DEP()
-        }
-        
-    escape_newline:
-        
-        if (lineSpan.ends_with("\\\n"))
-        {
-            char* endOfLineMutable = const_cast<char*>(level->it);
-            endOfLineMutable[-1] = ' ';
-            endOfLineMutable[-2] = ' ';
-            const char* startOfNextLine = lineEnd(level->it, level->file->contents + level->file->contentSize);
-            lineSpan = std::string_view(lineSpan.data(), startOfNextLine);
-            level->it = startOfNextLine;
-            level->lineCounter++;
-            goto escape_newline;
-        }
-        else if (lineSpan.ends_with("\\\r\n"))
-        {
-            char* endOfLineMutable = const_cast<char*>(level->it);
-            endOfLineMutable[-1] = ' ';
-            endOfLineMutable[-2] = ' ';
-            endOfLineMutable[-3] = ' ';
-            const char* startOfNextLine = lineEnd(level->it, level->file->contents + level->file->contentSize);
-            lineSpan = std::string_view(lineSpan.data(), startOfNextLine);
-            level->it = startOfNextLine;
-            level->lineCounter++;
-            goto escape_newline;
-        }
-        
-        auto lineIt = lineSpan.cbegin();
-        auto lineEndIt = lineSpan.cend();
-    
-        
-        const char* lineBegin = &(*lineIt);
-        const char* eol = &(*(lineEndIt - 1)) + 1;
-        const char* columnIt = lineBegin;
-        const char* prevColumnIt = columnIt;
-        
-        do
-        {
-            // Find beginning of first non-WS character
-            const char* firstWord = wordStart(columnIt, eol);
-            
-            // If empty line, just add it and continue
-            if (firstWord == eol)
-            {
-                break;
-            }
-            
-            if (firstWord[0] == '#') // Directives
-            {
-                firstWord++;
-                const char* startOfDirective = wordStart(firstWord, eol);
-                const char* endOfDirective = wordEnd(firstWord, eol);
-                if (strncmp(startOfDirective, "include", 7) == 0) // Include
-                {
-                    const char* startOfPath = wordStart(endOfDirective, eol);
-                    const char* endOfPath = wordEnd(startOfPath, eol);
-                    
-                    TransientArray<Symbol::Location> argLocs(1);
-                    TransientArray<std::string_view> args(1);
-                    
-                    if ((startOfPath[0] == '"' && endOfPath[-1] == '"')
-                        || (startOfPath[0] == '<' && endOfPath[-1] == '>'))
-                    {
-                        const std::string_view path = std::string_view(startOfPath + 1, endOfPath - 1);
-                        SETUP_ARG2(pp, path, startOfPath, endOfPath);
-                        
-                        GPULangFile* inc = nullptr;
-                        TransientString fullPath = resolvePath(path, level->file->path, searchPaths, resolvedPaths);
-                        auto fileIt = fileMap.Find(fullPath);
-                        if (fileIt == fileMap.end())
-                        {
-                            inc = GPULangLoadFile(fullPath.ToView());
-                            fileMap.Insert(fullPath, inc);
-                        }
-                        else
-                        {
-                            inc = fileIt->second;
-                        }
-                        if (inc == nullptr)
-                        {
-                            diagnostics.Append(DIAGNOSTIC(Format("File not found '%s'", fullPath.ToView())));
-                            goto end;
-                        }
-                        
-                        // Include guarded
-                        if (!inc->consumed)
-                        {
-                            if (fileStack.Full())
-                            {
-                                diagnostics.Append(DIAGNOSTIC("File stack maximum depth of 128 reached"));
-                                goto end;
-                            }
-                            fileStack.Append({ inc });
-                            level = &fileStack.back();
-                            level->lineCounter -= 1; // Set the counter to -1 to counter the extra line we add ourselves
-                            break;
-                        }
-                        else
-                        {
-                            break;
-                            // Do nothing
-                        }
-                    }
-                    else
-                    {
-                        goto end;
-                    }
-                }
-                break;
-            }
-            else if (firstWord[0] == '/' && firstWord[1] == '/')
-            {
-                break;
-            }
-            else if (!comment && firstWord[0] == '/' && firstWord[1] == '*')
-            {
-                comment = true;
-                const char* endOfComment = commentEnd(columnIt, eol);
-                if (endOfComment != eol)
-                {
-                    columnIt = endOfComment + 2;
-                    comment = false;
-                    continue;
-                }
-                else
-                {
-                    columnIt = firstWord + 2;
-                    break;
-                }
-            }
-            else if (comment && firstWord[0] == '*' && firstWord[1] == '/')
-            {
-                comment = false;
-                columnIt = firstWord + 2;
-                continue;
-            }
-            else
-            {
-                // Nothing interesting, move to next line
-                break;
-            }
-            prevColumnIt = columnIt;
-        } while (columnIt != eol);
-    }
-end:
-    TransientArray<FixedString> ret(fileMap.data.size);
-    for (const auto& file : fileMap)
-    {
-        ret.Append(FixedString(file.first));
+        ret.Append(FixedString(file));
     }
     return FixedArray(ret);
 }
@@ -2092,7 +1903,7 @@ Error(const GPULang::TransientString message)
     @param errorBuffer	Buffer containing errors, created in function but must be deleted manually
 */
 bool
-GPULangCompile(const std::string& file, GPULang::Compiler::Language target, const std::string& output, const std::string& header_output, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangErrorBlob*& errorBuffer)
+GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, const std::string& output, const std::string& header_output, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangErrorBlob*& errorBuffer)
 {
     SetupSystem();
     bool ret = true;
@@ -2105,127 +1916,148 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
 
     Compiler compiler;
     compiler.Setup(target, options);
-
+    
+    TransientArray<std::string_view> searchPaths(128);
+    for (auto& arg : defines)
     {
-        GPULang::Compiler::Timer timer;
-        timer.Start();
-        
-        PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
-        PinnedArray<GPULangDiagnostic> diagnostics(0xFFFFFF);
-        //GPULangParser::LineStack.clear();
-        if (GPULangPreprocessFile(file, defines, preprocessed, preprocessorSymbols, diagnostics))
+        std::string_view argView = arg;
+        if (arg[0] == '-')
         {
-            // get the name of the shader
-            std::locale loc;
-            size_t extension = file.rfind('.');
-            size_t lastFolder = file.rfind('/') + 1;
-            std::string effectName = file.substr(lastFolder, (file.length() - lastFolder) - (file.length() - extension));
-            effectName[0] = std::toupper(effectName[0]);
-            size_t undersc = effectName.find('_');
-            while (undersc != std::string::npos)
+            if (arg[1] == 'I')
             {
-                effectName[undersc + 1] = std::toupper(effectName[undersc + 1]);
-                effectName = effectName.erase(undersc, 1);
-                undersc = effectName.find('_');
-            }
-
-            timer.Stop();
-            if (options.emitTimings)
-                timer.Print("Preprocessing");
-            
-            timer.Start();
-            
-            TransientArray<std::string_view> searchPaths(128);
-            for (auto& arg : defines)
-            {
-                std::string_view argView = arg;
-                if (arg[0] == '-')
+                if (searchPaths.Full())
                 {
-                    if (arg[1] == 'I')
-                    {
-                        if (searchPaths.Full())
-                        {
-                            //diagnostics.Append(DIAGNOSTIC("Maximum include paths of 128 hit"));
-                            return false;
-                        }
-                        searchPaths.Append(argView.substr(2));
-                    }
+                    //diagnostics.Append(DIAGNOSTIC("Maximum include paths of 128 hit"));
+                    return false;
                 }
+                searchPaths.Append(argView.substr(2));
             }
-            
-            TokenizationResult tokenizationResult;
-            Tokenize(preprocessed, TransientString{file.c_str()}, {}, tokenizationResult);
-            if (tokenizationResult.errors.size > 0)
-            {
-                std::string str;
-                for (const auto& err : tokenizationResult.errors)
-                {
-                    str += Format("%s(%d,%d): %s\n", err.file.c_str(), err.line+1, err.column, err.error.c_str());
-                }
-                errorBuffer = Error(str);
-                return false;
-            }
-
-            GPULang::TokenStream tokenStream(tokenizationResult);
-            ParseResult parseResult = Parse(tokenStream);
-            if (parseResult.errors.size > 0)
-            {
-                std::string str;
-                for (const auto& err : parseResult.errors)
-                {
-                    str += Format("%s(%d,%d): %s\n", err.file.c_str(), err.line+1, err.column, err.error.c_str());
-                }
-                errorBuffer = Error(str);
-                return false;
-            }
-
-            timer.Stop();
-            if (options.emitTimings)
-            {
-                printf("%zu tokens\n", tokenizationResult.tokens.size);
-                printf("%zu lines\n", tokenizationResult.lineCount);
-                timer.Print("Parsing");
-            }
-
-            // setup and run compiler
-            BinWriter binaryWriter;
-            binaryWriter.SetPath(output);
-            TextWriter headerWriter;
-            headerWriter.SetPath(header_output);
-
-            compiler.path = file;
-            compiler.filename = effectName;
-            compiler.debugPath = output;
-            compiler.debugOutput = true;
-
-            bool res = compiler.Compile(parseResult.ast, binaryWriter, headerWriter);
-
-            // convert error list to string
-            if (compiler.messages.size != 0 && !compiler.options.quiet)
-            {
-                TransientString err;
-                for (size_t i = 0; i < compiler.messages.size; i++)
-                {
-                    if (i > 0)
-                        err.Append("\n");
-                    err.Append(compiler.messages[i]);
-                }
-                if (err.size == 0 && compiler.hasErrors)
-                    err = "Unhandled internal compiler error";
-                errorBuffer = Error(err);
-            }
-            if (options.emitTimings)
-                timer.TotalTime();
-            GPULang::ResetAllocator(&alloc);
-            return res;
         }
-        std::string err;
-        for (auto& diagnostic : diagnostics)
-        {
-            err += Format("%s(%d:%d): %s\n", diagnostic.file.c_str(), diagnostic.line, diagnostic.column, diagnostic.error.c_str());
-        }
-        errorBuffer = Error(err);
     }
+    
+    GPULang::Compiler::Timer timer;
+    timer.Start();
+
+    TokenizationResult tokenizationResult;
+    Tokenize(file, searchPaths, tokenizationResult);
+    if (tokenizationResult.errors.size > 0)
+    {
+        std::string str;
+        for (const auto& err : tokenizationResult.errors)
+        {
+            str += Format("%s(%d,%d): %s\n", err.file.c_str(), err.line+1, err.column, err.error.c_str());
+        }
+        errorBuffer = Error(str);
+        return false;
+    }
+    
+    timer.Stop();
+    if (options.emitTimings)
+    {
+        printf("%zu tokens\n", tokenizationResult.tokens.size);
+        printf("%zu lines\n", tokenizationResult.lineCount);
+        timer.Print("Lexing");
+    }
+    
+    PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
+    PinnedArray<GPULangDiagnostic> diagnostics(0xFFFFFF);
+    if (tokenizationResult.errors.size == 0)
+    {
+        // get the name of the shader
+        char* it = file->path.buf + file->path.len - 1;
+        const char* extensionEnd = nullptr;
+        TransientString fileName;
+        while (it != file->path.buf)
+        {
+            if (it[0] == '.')
+            {
+                extensionEnd = it;
+            }
+            if (it[0] == '/')
+            {
+                fileName = std::string_view(it+1, extensionEnd-1);
+            }
+            it--;
+        }
+        it = fileName.buf;
+        const char* end = fileName.buf + fileName.size;
+        while (it < fileName.buf + fileName.size)
+        {
+            if (it[0] == '_')
+            {
+                it[1] = std::toupper(it[1]);
+                memmove(it, it+1, end - it);;
+                it--;
+            }
+        }
+
+        timer.Stop();
+        if (options.emitTimings)
+            timer.Print("Preprocessing");
+        
+        timer.Start();
+
+
+        GPULang::TokenStream tokenStream(tokenizationResult);
+        ParseResult parseResult = Parse(tokenStream);
+        if (parseResult.errors.size > 0)
+        {
+            std::string str;
+            for (const auto& err : parseResult.errors)
+            {
+                str += Format("%s(%d,%d): %s\n", err.file.c_str(), err.line+1, err.column, err.error.c_str());
+            }
+            errorBuffer = Error(str);
+            return false;
+        }
+
+        timer.Stop();
+        if (options.emitTimings)
+        {
+            printf("%zu tokens\n", tokenizationResult.tokens.size);
+            printf("%zu lines\n", tokenizationResult.lineCount);
+            timer.Print("Parsing");
+        }
+
+        // setup and run compiler
+        BinWriter binaryWriter;
+        binaryWriter.SetPath(output);
+        TextWriter headerWriter;
+        headerWriter.SetPath(header_output);
+
+        compiler.path = file;
+        compiler.filename = fileName;
+        compiler.debugPath = output;
+        compiler.debugOutput = true;
+
+        bool res = compiler.Compile(parseResult.ast, binaryWriter, headerWriter);
+
+        // convert error list to string
+        if (compiler.messages.size != 0 && !compiler.options.quiet)
+        {
+            TransientString err;
+            for (size_t i = 0; i < compiler.messages.size; i++)
+            {
+                if (i > 0)
+                    err.Append("\n");
+                err.Append(compiler.messages[i]);
+            }
+            if (err.size == 0 && compiler.hasErrors)
+                err = "Unhandled internal compiler error";
+            errorBuffer = Error(err);
+        }
+        if (options.emitTimings)
+            timer.TotalTime();
+        GPULang::ResetAllocator(&alloc);
+        return res;
+    }
+    std::string err;
+    for (auto& diagnostic : diagnostics)
+    {
+        err += Format("%s(%d:%d): %s\n", diagnostic.file.c_str(), diagnostic.line, diagnostic.column, diagnostic.error.c_str());
+    }
+    errorBuffer = Error(err);
+
     
     GPULang::ResetAllocator(&alloc);
     
@@ -2255,8 +2087,43 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
     PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
     PinnedArray<GPULangDiagnostic> diagnostics(0xFFFFFF);
     //GPULangParser::LineStack.clear();
+    
+    TransientArray<std::string_view> searchPaths(128);
+    for (auto& arg : defines)
+    {
+        std::string_view argView = arg;
+        if (arg[0] == '-')
+        {
+            if (arg[1] == 'I')
+            {
+                if (searchPaths.Full())
+                {
+                    //diagnostics.Append(DIAGNOSTIC("Maximum include paths of 128 hit"));
+                    return false;
+                }
+                searchPaths.Append(argView.substr(2));
+            }
+        }
+    }
+    
+    TokenizationResult tokenizationResult;
+    Tokenize(file, searchPaths, tokenizationResult);
+    for (const auto& err : tokenizationResult.errors)
+    {
+        result.diagnostics.Append(err);
+        return false;
+    }
+    
+    timer.Stop();
+    if (options.emitTimings)
+    {
+        printf("%zu tokens\n", tokenizationResult.tokens.size);
+        printf("%zu lines\n", tokenizationResult.lineCount);
+        timer.Print("Lexing");
+    }
 
-    if (GPULangPreprocess(file, defines, preprocessed, preprocessorSymbols, diagnostics))
+    // If lexing is succesful, continue
+    if (tokenizationResult.errors.size == 0)
     {
         // get the name of the shader
         std::locale loc;
@@ -2285,49 +2152,7 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
             end--;
         }
         auto effectName = std::string_view(lastSlash, extension);
-
-        // setup preprocessor
-        //parser.preprocess();
-
-        timer.Stop();
-        if (options.emitTimings)
-            timer.Print("Preprocessing");
-
-        timer.Start();
-        
-        TransientArray<std::string_view> searchPaths(128);
-        for (auto& arg : defines)
-        {
-            std::string_view argView = arg;
-            if (arg[0] == '-')
-            {
-                if (arg[1] == 'I')
-                {
-                    if (searchPaths.Full())
-                    {
-                        //diagnostics.Append(DIAGNOSTIC("Maximum include paths of 128 hit"));
-                        return false;
-                    }
-                    searchPaths.Append(argView.substr(2));
-                }
-            }
-        }
-        
-        TokenizationResult tokenizationResult;
-        Tokenize(preprocessed, file->path, searchPaths, tokenizationResult);
-        for (const auto& err : tokenizationResult.errors)
-        {
-            result.diagnostics.Append(err);
-            return false;
-        }
-        
-        timer.Stop();
-        if (options.emitTimings)
-        {
-            printf("%zu tokens\n", tokenizationResult.tokens.size);
-            printf("%zu lines\n", tokenizationResult.lineCount);
-            timer.Print("Lexing");
-        }
+ 
         timer.Start();
         GPULang::TokenStream tokenStream(tokenizationResult);
         ParseResult parseResult = Parse(tokenStream);
