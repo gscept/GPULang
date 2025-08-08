@@ -550,6 +550,7 @@ struct Type : public Symbol
                 name.Append("b8");
                 break;
             default:
+                break;
         }
         if (columnSize > 1)
         {

@@ -616,7 +616,7 @@ Tokenize(const std::string& text, const TransientString& path, const TransientAr
             Token newToken;
             ret.tokens.Append(newToken);
             ret.tokenTypes.Append(TokenType::End);
-            return ret;
+            return;
         }
         
         if (it[0] == '\r')
@@ -920,7 +920,7 @@ Tokenize(const std::string& text, const TransientString& path, const TransientAr
     Token newToken;
     ret.tokens.Append(newToken);
     ret.tokenTypes.Append(TokenType::End);
-    return ret;
+    return;
 }
 
 //------------------------------------------------------------------------------
