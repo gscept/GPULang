@@ -1433,7 +1433,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
                     if (!stream.Match(TokenType::RightAngle))
                     {
                         ret.errors.Append(UnexpectedToken(stream, ">"));
-                        return nullptr;
+                        break;
                     }
                     operandStack.Append(res);
                     precedenceTable = PostfixPrecedenceTable;
@@ -1442,13 +1442,13 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
                 else
                 {
                     ret.errors.Append(UnexpectedToken(stream, "identifier"));
-                    return nullptr;
+                    break;
                 }
             }
             else
             {
                 ret.errors.Append(UnexpectedToken(stream, "<"));
-                return nullptr;
+                break;
             }
         }
         else if (stream.MatchClass(TOKEN_OPERATOR_BIT))
@@ -1574,7 +1574,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
                 if (operatorStack.size == 0 || lastOp.type != TokenType::Call)
                 {
                     ret.errors.Append(UnexpectedToken(stream, ")"));
-                    return nullptr;
+                    break;
                 }
                 
                 uint8_t hasArguments = (operandStack.size - lastOp.operandDepth) > 0;
@@ -1585,7 +1585,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
                     if (expressionList.Full())
                     {
                         ret.errors.Append(Limit(stream, "expression list", 256));
-                        return nullptr;
+                        break;
                     }
                     Expression* arguments = operandStack.back(); operandStack.size--;
                     name = operandStack.back(); operandStack.size--;
@@ -1606,7 +1606,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
                 if (operatorStack.size == 0 || lastOp.type != TokenType::LeftParant)
                 {
                     ret.errors.Append(UnexpectedToken(stream, ")"));
-                    return nullptr;
+                    break;
                 }
             }
             operatorStack.size--; // Remove the left parant
@@ -1670,14 +1670,14 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
                 if (numIndexExpressions == 0)
                 {
                     ret.errors.Append(UnexpectedToken(stream, "index expression"));
-                    return nullptr;
+                    break;
                 }
                 Expression* index = operandStack.back(); operandStack.size--;
                 
                 if (operatorStack.size == 0 || lastOp.type != TokenType::Subscript)
                 {
                     ret.errors.Append(UnexpectedToken(stream, "]"));
-                    return nullptr;
+                    break;
                 }
                 
                 Expression* target = operandStack.back(); operandStack.size--;
@@ -1690,7 +1690,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
                 if (operatorStack.size == 0 || lastOp.type != TokenType::ArrayInitializer)
                 {
                     ret.errors.Append(UnexpectedToken(stream, "]"));
-                    return nullptr;
+                    break;
                 }
                 
                 // Flatten comma separated binary expression to a list
@@ -1699,7 +1699,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
                 if (expressionList.Full())
                 {
                     ret.errors.Append(Limit(stream, "expression list", 256));
-                    return nullptr;
+                    break;
                 }
                 expressionList.Append(target);
                 Expression* expr = Alloc<ArrayInitializerExpression>(expressionList);
@@ -1755,7 +1755,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
             if (expressionList.Full())
             {
                 ret.errors.Append(Limit(stream, "expression list", 256));
-                return nullptr;
+                break;
             }
             expressionList.Append(operandStack.back());
             
@@ -1772,6 +1772,22 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
     {
         reduceTop(operatorStack, operandStack);
     }
+    
+    if (paranthesisDepth > 0)
+    {
+        ret.errors.Append(UnexpectedEndToken(stream, ")"));
+    }
+    
+    if (bracketDepth > 0)
+    {
+        ret.errors.Append(UnexpectedEndToken(stream, "]"));
+    }
+    
+    if (operandStack.size > 1)
+    {
+        ret.errors.Append(UnexpectedToken(stream, "operator"));
+    }
+    
     
     // Didn't match an expression
     if (operandStack.size == 0)
