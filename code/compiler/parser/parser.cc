@@ -43,6 +43,16 @@
 #include "ast/statements/switchstatement.h"
 #include "ast/statements/scopestatement.h"
 
+#ifdef __WIN32__
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+#include <io.h>
+#define stat _stat
+#else
+#include <unistd.h>
+#include <sys/stat.h>
+#endif
+
 namespace GPULang
 {
 static const uint32_t NUMERIC_CHARACTER = 0x1; // [0..9]
@@ -499,14 +509,69 @@ static auto commentEnd = [](const char* it, const char* end) -> const char*
     return it;
 };
 
+static auto resolvePath = [](const std::string_view& path, const GPULang::FixedString& currentFilePath, const FixedArray<std::string_view>& searchPaths, PinnedSet<TransientString>& resolvedPaths) -> TransientString
+{
+    auto it = resolvedPaths.Find(path);
+    if (it != resolvedPaths.end())
+        return path;
+    else
+    {
+        struct stat sb;
+        if (stat(path.data(), &sb) == 0)
+        {
+            resolvedPaths.Insert(path);
+            return TransientString(path);
+        }
+        else
+        {
+            // First check the folder the file is currently in
+            const char* lastSlash = strrchr(currentFilePath.c_str(), '/');
+            if (lastSlash != nullptr)
+            {
+                std::string_view fileFolder(currentFilePath.c_str(), lastSlash + 1);
+                TStr fullPath = TStr::Compact(fileFolder, path);
+                auto it = resolvedPaths.Find(fullPath);
+                if (it != resolvedPaths.end())
+                    return fullPath;
+                else
+                {
+                    struct stat sb;
+                    if (stat(fullPath.Data(), &sb) == 0)
+                    {
+                        resolvedPaths.Insert(fullPath);
+                        return fullPath;
+                    }
+                }
+            }
+            
+            // If the file still isn't found, try the search paths
+            for (auto& searchPath : searchPaths)
+            {
+                TStr fullPath = TStr::Compact(searchPath, path);
+                auto it = resolvedPaths.Find(fullPath);
+                if (it != resolvedPaths.end())
+                    return fullPath;
+                else
+                {
+                    struct stat sb;
+                    if (stat(fullPath.Data(), &sb) == 0)
+                    {
+                        resolvedPaths.Insert(fullPath);
+                        return fullPath;
+                    }
+                }
+            }
+        }
+    }
+    return TransientString();
+};
+
 //------------------------------------------------------------------------------
 /**
  */
-TokenizationResult
-Tokenize(const std::string& text, const TransientString& path)
-{   
-    TokenizationResult ret;
-    
+void
+Tokenize(const std::string& text, const TransientString& path, const TransientArray<std::string_view>& searchPaths, TokenizationResult& ret)
+{
     const char* it = text.data();
     const char* end = text.data() + text.length();
     const char* tokenStart = nullptr;
@@ -779,6 +844,28 @@ Tokenize(const std::string& text, const TransientString& path)
                             currentPath = path;
                         }
                     }
+                    else if (dir == "include")
+                    {
+                        it = skipWS(it, end);
+                        if (identifierStart(it[0]))
+                        {
+                            const char* begin = it;
+                            it = identifierEnd(it+1, end);
+                            
+                            std::string_view path(begin, it);
+                            //TransientString resolvedPath = resolvePath(, <#const GPULang::FixedString &currentFilePath#>, <#const FixedArray<std::string_view> &searchPaths#>, <#PinnedSet<TransientString> &resolvedPaths#>)
+                        }
+                        else
+                        {
+                            GPULangDiagnostic diagnostic;
+                            diagnostic.file = currentPath;
+                            diagnostic.error = TStr("Include directive file path missing");
+                            diagnostic.line = line;
+                            diagnostic.column = it - startOfLine;
+                            diagnostic.length = 1;
+                            ret.errors.Append(diagnostic);
+                        }
+                    }
                 }
                 else
                 {
@@ -922,6 +1009,48 @@ Limit(const TokenStream& stream, const char* name, size_t size)
     return diagnostic;
 }
 
+Expression* ParseExpression2(TokenStream&, ParseResult&);
+//------------------------------------------------------------------------------
+/**
+ */
+FixedArray<Expression*>
+ParseExpressionList2(TokenStream& stream, ParseResult& ret)
+{
+    TransientArray<Expression*> expressions(256);
+    Expression* expr = ParseExpression2(stream, ret);
+    
+    // Flatten list
+    if (expr != nullptr)
+    {
+        TransientArray<Expression*> visitationStack(256);
+        Expression* it = expr;
+        visitationStack.Append(it);
+        while (visitationStack.size > 0)
+        {
+            it = visitationStack.back(); visitationStack.size--;
+            if (it->symbolType == Symbol::SymbolType::BinaryExpressionType)
+            {
+                BinaryExpression* binExpr = static_cast<BinaryExpression*>(it);
+                if (binExpr->op == ',')
+                {
+                    visitationStack.Append(binExpr->right);
+                    visitationStack.Append(binExpr->left);
+                }
+                else
+                {
+                    expressions.Append(it);
+                }
+            }
+            else
+            {
+                expressions.Append(it);
+            }
+        }
+        return FixedArray<Expression*>(expressions);
+    }
+    return FixedArray<Expression*>();
+}
+
 Expression* ParseExpression(TokenStream&, ParseResult&, Expression*, int);
 //------------------------------------------------------------------------------
 /**
@@ -957,49 +1086,65 @@ static const uint32_t TOKEN_PARAMETER_ATTRIBUTE_BIT = 0x200;
 static const uint32_t TOKEN_VARIABLE_ATTRIBUTE_BIT = 0x400;
 static const uint32_t TOKEN_VARIABLE_STORAGE_BIT = 0x800;
 static const uint32_t TOKEN_PARAMETER_STORAGE_BIT = 0x1000;
+static const uint32_t TOKEN_OPERATOR_BIT = 0x2000;
 uint32_t TokenClassTable[(uint32_t)TokenType::NumTokenTypes];
+
+uint32_t PrefixAssociativityTable[(uint32_t)TokenType::NumTokenTypes];
+uint32_t PostfixAssociativityTable[(uint32_t)TokenType::NumTokenTypes];
+uint32_t PrefixPrecedenceTable[(uint32_t)TokenType::NumTokenTypes];
+uint32_t PostfixPrecedenceTable[(uint32_t)TokenType::NumTokenTypes];
+static const uint32_t ASSOC_LEFT = 0;
+static const uint32_t ASSOC_RIGHT = 1;
 
 static void SetupTokenClassTable()
 {
     memset(TokenClassTable, 0x0, sizeof(TokenClassTable));
-    TokenClassTable[(uint32_t)TokenType::AddAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::SubAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::MulAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::DivAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::ModAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::LeftShiftAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::RightShiftAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::AndAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::OrAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::XorAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::Assign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::AddAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT | TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::SubAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::MulAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::DivAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::ModAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::LeftShiftAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::RightShiftAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::AndAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::OrAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::XorAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Assign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
     
-    TokenClassTable[(uint32_t)TokenType::Equal] |= TOKEN_EQUALITY_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::NotEqual] |= TOKEN_EQUALITY_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Equal] |= TOKEN_EQUALITY_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::NotEqual] |= TOKEN_EQUALITY_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
     
-    TokenClassTable[(uint32_t)TokenType::LeftAngle] |= TOKEN_COMPARISON_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::LessThanEqual] |= TOKEN_COMPARISON_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::RightAngle] |= TOKEN_COMPARISON_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::GreaterThanEqual] |= TOKEN_COMPARISON_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::LeftAngle] |= TOKEN_COMPARISON_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::LessThanEqual] |= TOKEN_COMPARISON_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::RightAngle] |= TOKEN_COMPARISON_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::GreaterThanEqual] |= TOKEN_COMPARISON_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
     
-    TokenClassTable[(uint32_t)TokenType::LeftShift] |= TOKEN_SHIFT_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::RightShift] |= TOKEN_SHIFT_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::LeftShift] |= TOKEN_SHIFT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::RightShift] |= TOKEN_SHIFT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
     
-    TokenClassTable[(uint32_t)TokenType::Add] |= TOKEN_ADD_SUB_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::Sub] |= TOKEN_ADD_SUB_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Add] |= TOKEN_ADD_SUB_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Sub] |= TOKEN_ADD_SUB_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
     
-    TokenClassTable[(uint32_t)TokenType::Mul] |= TOKEN_MUL_DIV_MOD_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::Div] |= TOKEN_MUL_DIV_MOD_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::Mod] |= TOKEN_MUL_DIV_MOD_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Mul] |= TOKEN_MUL_DIV_MOD_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Div] |= TOKEN_MUL_DIV_MOD_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Mod] |= TOKEN_MUL_DIV_MOD_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
     
-    TokenClassTable[(uint32_t)TokenType::Sub] |= TOKEN_PREFIX_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::Add] |= TOKEN_PREFIX_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::Not] |= TOKEN_PREFIX_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::Complement] |= TOKEN_PREFIX_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::Increment] |= TOKEN_PREFIX_OPERATOR_BIT | TOKEN_INCREMENT_DECREMENT_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::Decrement] |= TOKEN_PREFIX_OPERATOR_BIT | TOKEN_INCREMENT_DECREMENT_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::Mul] |= TOKEN_PREFIX_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::And] |= TOKEN_PREFIX_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Sub] |= TOKEN_PREFIX_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Add] |= TOKEN_PREFIX_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Not] |= TOKEN_PREFIX_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Complement] |= TOKEN_PREFIX_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Increment] |= TOKEN_PREFIX_OPERATOR_BIT | TOKEN_INCREMENT_DECREMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Decrement] |= TOKEN_PREFIX_OPERATOR_BIT | TOKEN_INCREMENT_DECREMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Mul] |= TOKEN_PREFIX_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::And] |= TOKEN_PREFIX_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    
+    TokenClassTable[(uint32_t)TokenType::LogicalOr] |= TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::LogicalAnd] |= TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Or] |= TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Xor] |= TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::And] |= TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Dot] |= TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Comma] |= TOKEN_OPERATOR_BIT;
     
     TokenClassTable[(uint32_t)TokenType::EntryPoint_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
     TokenClassTable[(uint32_t)TokenType::Threads_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
@@ -1047,6 +1192,585 @@ static void SetupTokenClassTable()
     TokenClassTable[(uint32_t)TokenType::Workgroup_Storage] |= TOKEN_VARIABLE_STORAGE_BIT;
     TokenClassTable[(uint32_t)TokenType::Inline_Storage] |= TOKEN_VARIABLE_STORAGE_BIT;
     TokenClassTable[(uint32_t)TokenType::LinkDefined_Storage] |= TOKEN_VARIABLE_STORAGE_BIT;
+    
+    memset(PrefixAssociativityTable, 0x0, sizeof(PrefixAssociativityTable));
+    memset(PostfixAssociativityTable, 0x0, sizeof(PostfixAssociativityTable));
+    PrefixAssociativityTable[(uint32_t)TokenType::Add] = ASSOC_RIGHT;
+    PrefixAssociativityTable[(uint32_t)TokenType::Mul] = ASSOC_RIGHT;
+    PrefixAssociativityTable[(uint32_t)TokenType::Sub] = ASSOC_RIGHT;
+    PrefixAssociativityTable[(uint32_t)TokenType::Not] = ASSOC_RIGHT;
+    PrefixAssociativityTable[(uint32_t)TokenType::Complement] = ASSOC_RIGHT;
+    PrefixAssociativityTable[(uint32_t)TokenType::Increment] = ASSOC_RIGHT;
+    PrefixAssociativityTable[(uint32_t)TokenType::Decrement] = ASSOC_RIGHT;
+    PrefixAssociativityTable[(uint32_t)TokenType::And] = ASSOC_RIGHT;
+    
+    PostfixAssociativityTable[(uint32_t)TokenType::Increment] = ASSOC_LEFT;
+    PostfixAssociativityTable[(uint32_t)TokenType::Decrement] = ASSOC_LEFT;
+    PostfixAssociativityTable[(uint32_t)TokenType::Add] = ASSOC_LEFT;
+    PostfixAssociativityTable[(uint32_t)TokenType::Sub] = ASSOC_LEFT;
+    PostfixAssociativityTable[(uint32_t)TokenType::Mul] = ASSOC_LEFT;
+    PostfixAssociativityTable[(uint32_t)TokenType::Div] = ASSOC_LEFT;
+    PostfixAssociativityTable[(uint32_t)TokenType::Mod] = ASSOC_LEFT;
+    PostfixAssociativityTable[(uint32_t)TokenType::Increment] = ASSOC_LEFT;
+    PostfixAssociativityTable[(uint32_t)TokenType::Decrement] = ASSOC_LEFT;
+    PostfixAssociativityTable[(uint32_t)TokenType::And] = ASSOC_LEFT;
+    PostfixAssociativityTable[(uint32_t)TokenType::Or] = ASSOC_LEFT;
+    PostfixAssociativityTable[(uint32_t)TokenType::Xor] = ASSOC_LEFT;
+    PostfixAssociativityTable[(uint32_t)TokenType::AddAssign] = ASSOC_RIGHT;
+    PostfixAssociativityTable[(uint32_t)TokenType::SubAssign] = ASSOC_RIGHT;
+    PostfixAssociativityTable[(uint32_t)TokenType::MulAssign] = ASSOC_RIGHT;
+    PostfixAssociativityTable[(uint32_t)TokenType::DivAssign] = ASSOC_RIGHT;
+    PostfixAssociativityTable[(uint32_t)TokenType::ModAssign] = ASSOC_RIGHT;
+    PostfixAssociativityTable[(uint32_t)TokenType::AndAssign] = ASSOC_RIGHT;
+    PostfixAssociativityTable[(uint32_t)TokenType::OrAssign] = ASSOC_RIGHT;
+    PostfixAssociativityTable[(uint32_t)TokenType::XorAssign] = ASSOC_RIGHT;
+    PostfixAssociativityTable[(uint32_t)TokenType::Question] = ASSOC_RIGHT;
+    PostfixAssociativityTable[(uint32_t)TokenType::Comma] = ASSOC_LEFT;
+    
+    memset(PostfixPrecedenceTable, 0x0, sizeof(PostfixPrecedenceTable));
+    PostfixPrecedenceTable[(uint32_t)TokenType::Increment] = 2;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Decrement] = 2;
+    PostfixPrecedenceTable[(uint32_t)TokenType::LeftBracket] = 2;
+    PostfixPrecedenceTable[(uint32_t)TokenType::RightBracket] = 2;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Subscript] = 2;
+    PostfixPrecedenceTable[(uint32_t)TokenType::LeftParant] = 0xFFFFFFFF;
+    PostfixPrecedenceTable[(uint32_t)TokenType::RightParant] = 0xFFFFFFFF;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Dot] = 2;
+    PostfixPrecedenceTable[(uint32_t)TokenType::PrefixAdd] = 3;
+    PostfixPrecedenceTable[(uint32_t)TokenType::PrefixSub] = 3;
+    PostfixPrecedenceTable[(uint32_t)TokenType::PrefixMul] = 3;
+    PostfixPrecedenceTable[(uint32_t)TokenType::PrefixIncrement] = 3;
+    PostfixPrecedenceTable[(uint32_t)TokenType::PrefixDecrement] = 3;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Not] = 3;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Mul] = 5;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Div] = 5;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Mod] = 5;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Add] = 6;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Sub] = 6;
+    PostfixPrecedenceTable[(uint32_t)TokenType::LeftShift] = 7;
+    PostfixPrecedenceTable[(uint32_t)TokenType::RightShift] = 7;
+    PostfixPrecedenceTable[(uint32_t)TokenType::LeftAngle] = 9;
+    PostfixPrecedenceTable[(uint32_t)TokenType::LessThanEqual] = 9;
+    PostfixPrecedenceTable[(uint32_t)TokenType::RightAngle] = 9;
+    PostfixPrecedenceTable[(uint32_t)TokenType::GreaterThanEqual] = 9;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Equal] = 10;
+    PostfixPrecedenceTable[(uint32_t)TokenType::NotEqual] = 10;
+    PostfixPrecedenceTable[(uint32_t)TokenType::And] = 11;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Xor] = 12;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Or] = 13;
+    PostfixPrecedenceTable[(uint32_t)TokenType::LogicalAnd] = 14;
+    PostfixPrecedenceTable[(uint32_t)TokenType::LogicalOr] = 15;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Assign] = 16;
+    PostfixPrecedenceTable[(uint32_t)TokenType::AddAssign] = 16;
+    PostfixPrecedenceTable[(uint32_t)TokenType::SubAssign] = 16;
+    PostfixPrecedenceTable[(uint32_t)TokenType::MulAssign] = 16;
+    PostfixPrecedenceTable[(uint32_t)TokenType::DivAssign] = 16;
+    PostfixPrecedenceTable[(uint32_t)TokenType::ModAssign] = 16;
+    PostfixPrecedenceTable[(uint32_t)TokenType::LeftShiftAssign] = 16;
+    PostfixPrecedenceTable[(uint32_t)TokenType::RightShiftAssign] = 16;
+    PostfixPrecedenceTable[(uint32_t)TokenType::AndAssign] = 16;
+    PostfixPrecedenceTable[(uint32_t)TokenType::OrAssign] = 16;
+    PostfixPrecedenceTable[(uint32_t)TokenType::XorAssign] = 16;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Comma] = 17;
+    PostfixPrecedenceTable[(uint32_t)TokenType::ArrayInitializer] = 0xFFFFFFFF;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Call] = 0xFFFFFFFF;
+
+    
+    memset(PrefixPrecedenceTable, 0x0, sizeof(PrefixPrecedenceTable));
+    PrefixPrecedenceTable[(uint32_t)TokenType::Add] = 3;
+    PrefixPrecedenceTable[(uint32_t)TokenType::Sub] = 3;
+    PrefixPrecedenceTable[(uint32_t)TokenType::Mul] = 3;
+    PrefixPrecedenceTable[(uint32_t)TokenType::Increment] = 3;
+    PrefixPrecedenceTable[(uint32_t)TokenType::Decrement] = 3;
+    PrefixPrecedenceTable[(uint32_t)TokenType::Complement] = 3;
+    PrefixPrecedenceTable[(uint32_t)TokenType::Not] = 3;
+}
+
+
+//------------------------------------------------------------------------------
+/**
+ */
+Expression*
+ParseExpression2(TokenStream& stream, ParseResult& ret)
+{
+    static const uint8_t BINARY_ARITY = 0;
+    static const uint8_t UNARY_ARITY = 1;
+    static const uint8_t TERNARY_ARITY = 2;
+    struct Operator
+    {
+        TokenType type;
+        uint32_t fourcc = 0xFFFFFFFF;
+        uint8_t prefix = 0;
+        uint8_t arity = BINARY_ARITY; // 0 = binary, 1 = unary, 2 = ternary
+    };
+    
+    static const auto reduceTop = [](TransientArray<Operator>& operatorStack, TransientArray<Expression*>& operandStack, TransientArray<Expression*>& expressionList) -> void
+    {
+        const Operator& tok = operatorStack.back(); operatorStack.size--;
+        if (tok.arity == UNARY_ARITY)
+        {
+            Expression* rhs = operandStack.back(); operandStack.size--;
+            Expression* expr = Alloc<UnaryExpression>(tok.fourcc, tok.prefix, rhs);
+            operandStack.Append(expr);
+        }
+        else if (tok.arity == BINARY_ARITY)
+        {
+            if (tok.type == TokenType::Dot)
+            {
+                Expression* rhs = operandStack.back(); operandStack.size--;
+                Expression* lhs = operandStack.back(); operandStack.size--;
+                Expression* expr = Alloc<AccessExpression>(lhs, rhs, false);
+                operandStack.Append(expr);
+            }
+            else if (tok.type == TokenType::ArrayInitializer || tok.type == TokenType::Call)
+            {
+                operatorStack.Append(tok); // push back the operator to handle it later
+            }
+            else
+            {
+                Expression* rhs = operandStack.back(); operandStack.size--;
+                Expression* lhs = operandStack.back(); operandStack.size--;
+                Expression* expr = Alloc<BinaryExpression>(tok.fourcc, lhs, rhs);
+                operandStack.Append(expr);
+            }
+        }
+        else if (tok.arity == TERNARY_ARITY)
+        {
+            Expression* rhs = operandStack.back(); operandStack.size--;
+            Expression* lhs = operandStack.back(); operandStack.size--;
+            Expression* cond = operandStack.back(); operandStack.size--;
+            Expression* expr = Alloc<TernaryExpression>(cond, lhs, rhs);
+            operandStack.Append(expr);
+        }
+    };
+    
+    TransientArray<Operator> operatorStack(256);
+    TokenType type = stream.Type();
+    TransientArray<Expression*> operandStack(256);
+    TransientArray<Expression*> expressionList(256);
+    size_t paranthesisDepth = 0;
+    
+    uint32_t* precedenceTable = PrefixPrecedenceTable;
+    uint32_t* associativityTable = PrefixAssociativityTable;
+    
+    while (type != TokenType::End)
+    {
+        if (stream.Match(TokenType::Quote))
+        {
+            const Token& tok = stream.Data(-1);
+            Expression* res = Alloc<StringExpression>(std::string(tok.text));
+            res->location = LocationFromToken(tok);
+            operandStack.Append(res);
+            precedenceTable = PostfixPrecedenceTable;
+            associativityTable = PostfixAssociativityTable;
+        }
+        else if (stream.Match(TokenType::Integer))
+        {
+            const Token& tok = stream.Data(-1);
+            int value;
+            std::from_chars(tok.text.data(), tok.text.data() + tok.text.size(), value);
+            Expression* res = Alloc<IntExpression>(value);
+            res->location = LocationFromToken(tok);
+            operandStack.Append(res);
+            precedenceTable = PostfixPrecedenceTable;
+            associativityTable = PostfixAssociativityTable;
+        }
+        else if (stream.Match(TokenType::UnsignedInteger))
+        {
+            const Token& tok = stream.Data(-1);
+            unsigned int value;
+            std::from_chars(tok.text.data(), tok.text.data() + tok.text.size(), value);
+            Expression* res = Alloc<UIntExpression>(value);
+            res->location = LocationFromToken(tok);
+            operandStack.Append(res);
+            precedenceTable = PostfixPrecedenceTable;
+            associativityTable = PostfixAssociativityTable;
+        }
+        else if (stream.Match(TokenType::Hex))
+        {
+            const Token& tok = stream.Data(-1);
+            int value;
+            std::from_chars(tok.text.data(), tok.text.data() + tok.text.size(), value, 16);
+            Expression* res = Alloc<IntExpression>(value);
+            res->location = LocationFromToken(tok);
+            operandStack.Append(res);
+            precedenceTable = PostfixPrecedenceTable;
+            associativityTable = PostfixAssociativityTable;
+        }
+        else if (stream.Match(TokenType::UnsignedHex))
+        {
+            const Token& tok = stream.Data(-1);
+            unsigned int value;
+            std::from_chars(tok.text.data(), tok.text.data() + tok.text.size(), value, 16);
+            Expression* res = Alloc<UIntExpression>(value);
+            res->location = LocationFromToken(tok);
+            operandStack.Append(res);
+            precedenceTable = PostfixPrecedenceTable;
+            associativityTable = PostfixAssociativityTable;
+        }
+        else if (stream.Match(TokenType::Float) || stream.Match(TokenType::Double))
+        {
+            const Token& tok = stream.Data(-1);
+            Expression* res = Alloc<FloatExpression>(std::stof(std::string(tok.text)));
+            res->location = LocationFromToken(tok);
+            operandStack.Append(res);
+            precedenceTable = PostfixPrecedenceTable;
+            associativityTable = PostfixAssociativityTable;
+        }
+        else if (stream.Match(TokenType::Bool))
+        {
+            const Token& tok = stream.Data(-1);
+            Expression* res = Alloc<BoolExpression>(tok.text == "true" ? true : false);
+            res->location = LocationFromToken(tok);
+            operandStack.Append(res);
+            precedenceTable = PostfixPrecedenceTable;
+            associativityTable = PostfixAssociativityTable;
+        }
+        else if (stream.Match(TokenType::Identifier))
+        {
+            const Token& tok = stream.Data(-1);
+            Expression* res = Alloc<SymbolExpression>(FixedString(tok.text));
+            res->location = LocationFromToken(tok);
+            operandStack.Append(res);
+            precedenceTable = PostfixPrecedenceTable;
+            associativityTable = PostfixAssociativityTable;
+        }
+        else if (stream.Match(TokenType::Declared))
+        {
+            const Token& tok = stream.Data(-1);
+            if (stream.Match(TokenType::LeftAngle))
+            {
+                if (stream.Match(TokenType::Identifier))
+                {
+                    const Token& tok = stream.Data(-1);
+                    Expression* res = Alloc<DeclaredExpression>(FixedString(tok.text));
+                    res->location = LocationFromToken(tok);
+                    
+                    if (!stream.Match(TokenType::RightAngle))
+                    {
+                        ret.errors.Append(UnexpectedToken(stream, ">"));
+                        return nullptr;
+                    }
+                    operandStack.Append(res);
+                    precedenceTable = PostfixPrecedenceTable;
+                    associativityTable = PostfixAssociativityTable;
+                }
+                else
+                {
+                    ret.errors.Append(UnexpectedToken(stream, "identifier"));
+                    return nullptr;
+                }
+            }
+            else
+            {
+                ret.errors.Append(UnexpectedToken(stream, "<"));
+                return nullptr;
+            }
+        }
+        else if (stream.MatchClass(TOKEN_OPERATOR_BIT))
+        {
+            const Token* matchedTok = &stream.Data(-1);
+            TokenType matchedType = stream.Type(-1);
+            Operator parseTok;
+            parseTok.type = matchedType;
+            parseTok.fourcc = StringToFourCC(matchedTok->text);
+            
+            // If using prefix precedence, this is a prefix unary operator
+            if (precedenceTable == PrefixPrecedenceTable)
+            {
+                parseTok.arity = UNARY_ARITY;
+                parseTok.prefix = 1;
+                precedenceTable = PostfixPrecedenceTable;
+                associativityTable = PostfixAssociativityTable;
+                switch (matchedType)
+                {
+                    case TokenType::Add:
+                        parseTok.type = TokenType::PrefixAdd;
+                        break;
+                    case TokenType::Sub:
+                        parseTok.type = TokenType::PrefixSub;
+                        break;
+                    case TokenType::Increment:
+                        parseTok.type = TokenType::PrefixIncrement;
+                        break;
+                    case TokenType::Decrement:
+                        parseTok.type = TokenType::PrefixDecrement;
+                        break;
+                    case TokenType::Not:
+                    case TokenType::Complement:
+                        break; // These are only allowed as unary
+                    default:
+                        ret.errors.Append(UnexpectedToken(stream, "+/-/!/~/++/--"));
+                    
+                }
+            }
+            else
+            {
+                // Otherwise it's a binary
+                while (operatorStack.size > 0)
+                {
+                    const Operator& tok = operatorStack.back();
+                    uint32_t p1 = precedenceTable[(uint32_t)matchedType];
+                    uint32_t p2 = precedenceTable[(uint32_t)operatorStack.back().type];
+                    uint32_t assoc = associativityTable[(uint32_t)matchedType];
+                    
+                    if ((assoc == ASSOC_LEFT && p2 <= p1) ||
+                        (assoc == ASSOC_RIGHT && p2 < p1))
+                    {
+                        reduceTop(operatorStack, operandStack, expressionList);
+                    }
+                    else
+                        break;
+                }
+                precedenceTable = PrefixPrecedenceTable;
+                associativityTable = PrefixAssociativityTable;
+            }
+            
+            operatorStack.Append(parseTok);
+        }
+        else if (stream.Match(TokenType::LeftParant))
+        {
+            paranthesisDepth++;
+            // No previous operand, assume '(' expr ')'
+            if (precedenceTable == PrefixPrecedenceTable)
+            {
+                Operator parseTok;
+                parseTok.type = TokenType::LeftParant;
+                operatorStack.Append(parseTok);
+            }
+            else // Assume call
+            {
+                Operator parseTok;
+                parseTok.type = TokenType::Call;
+                operatorStack.Append(parseTok);
+            }
+            precedenceTable = PrefixPrecedenceTable;
+            associativityTable = PrefixAssociativityTable;
+        }
+        else if (stream.Match(TokenType::RightParant))
+        {
+            uint8_t callOrParen = 0;
+            if (paranthesisDepth == 0)
+            {
+                stream.Unmatch();
+                break; // No matching left parant
+            }
+            
+            paranthesisDepth--;
+            
+            // Reduce to '('
+            while (operatorStack.size > 0)
+            {
+                if (operatorStack.back().type == TokenType::LeftParant)
+                {
+                    callOrParen = 1;
+                    break;
+                }
+                else if (operatorStack.back().type == TokenType::Call)
+                {
+                    callOrParen = 0;
+                    break;
+                }
+                reduceTop(operatorStack, operandStack, expressionList);
+            }
+            
+            if (callOrParen == 0)
+            {
+                if (operatorStack.size == 0 || operatorStack.back().type != TokenType::Call)
+                {
+                    ret.errors.Append(UnexpectedToken(stream, ")"));
+                    return nullptr;
+                }
+                
+                
+                Expression* target = operandStack.back(); operandStack.size--;
+                
+                // Flatten comma separated binary expression to a list
+                TransientArray<Expression*> visitationStack(256);
+                Expression* it = target;
+                visitationStack.Append(it);
+                while (visitationStack.size > 0)
+                {
+                    it = visitationStack.back(); visitationStack.size--;
+                    if (it->symbolType == Symbol::SymbolType::BinaryExpressionType)
+                    {
+                        BinaryExpression* binExpr = static_cast<BinaryExpression*>(it);
+                        if (binExpr->op == ',')
+                        {
+                            visitationStack.Append(binExpr->right);
+                            visitationStack.Append(binExpr->left);
+                        }
+                        else
+                        {
+                            expressionList.Append(it);
+                        }
+                    }
+                    else
+                    {
+                        expressionList.Append(it);
+                    }
+                }
+                Expression* expr = Alloc<CallExpression>(target, expressionList);
+                expressionList.size = 0;
+                operandStack.Append(expr);
+            }
+            else
+            {
+                if (operatorStack.size == 0 || operatorStack.back().type != TokenType::LeftParant)
+                {
+                    ret.errors.Append(UnexpectedToken(stream, ")"));
+                    return nullptr;
+                }
+            }
+            operatorStack.size--; // Remove the left parant
+        }
+        else if (stream.Match(TokenType::LeftBracket))
+        {
+            if (precedenceTable == PostfixPrecedenceTable)
+            {
+                Operator parseTok;
+                parseTok.type = TokenType::Subscript;
+                operatorStack.Append(parseTok);
+            }
+            else
+            {
+                Operator parseTok;
+                parseTok.type = TokenType::ArrayInitializer;
+                operatorStack.Append(parseTok);
+            }
+            precedenceTable = PrefixPrecedenceTable;
+            associativityTable = PrefixAssociativityTable;
+        }
+        else if (stream.Match(TokenType::RightBracket))
+        {
+            uint8_t subscriptOrArray = 0;
+            while (operatorStack.size > 0)
+            {
+                if (operatorStack.back().type == TokenType::Subscript)
+                {
+                    subscriptOrArray = 0;
+                    break;
+                }
+                else if (operatorStack.back().type == TokenType::ArrayInitializer)
+                {
+                    subscriptOrArray = 1;
+                    break;
+                }
+                
+                reduceTop(operatorStack, operandStack, expressionList);
+            }
+            
+            if (subscriptOrArray == 0)
+            {
+                Expression* index = operandStack.back(); operandStack.size--;
+                
+                if (operatorStack.size == 0 || operatorStack.back().type != TokenType::Subscript)
+                {
+                    ret.errors.Append(UnexpectedToken(stream, "]"));
+                    return nullptr;
+                }
+                
+                Expression* target = operandStack.back(); operandStack.size--;
+                Expression* expr = Alloc<ArrayIndexExpression>(target, index);
+                operandStack.Append(expr);
+            }
+            else if (subscriptOrArray == 1)
+            {
+                if (operatorStack.size == 0 || operatorStack.back().type != TokenType::ArrayInitializer)
+                {
+                    ret.errors.Append(UnexpectedToken(stream, "]"));
+                    return nullptr;
+                }
+                
+                // Flatten comma separated binary expression to a list
+                Expression* target = operandStack.back(); operandStack.size--;
+                TransientArray<Expression*> visitationStack(256);
+                Expression* it = target;
+                visitationStack.Append(it);
+                while (visitationStack.size > 0)
+                {
+                    it = visitationStack.back(); visitationStack.size--;
+                    if (it->symbolType == Symbol::SymbolType::BinaryExpressionType)
+                    {
+                        BinaryExpression* binExpr = static_cast<BinaryExpression*>(it);
+                        if (binExpr->op == ',')
+                        {
+                            visitationStack.Append(binExpr->right);
+                            visitationStack.Append(binExpr->left);
+                        }
+                        else
+                        {
+                            expressionList.Append(it);
+                        }
+                    }
+                    else
+                    {
+                        expressionList.Append(it);
+                    }
+                }
+                Expression* expr = Alloc<ArrayInitializerExpression>(expressionList);
+                expressionList.size = 0;
+                operandStack.Append(expr);
+            }
+            operatorStack.size--; // Remove the left parant
+
+        }
+        else if (stream.Match(TokenType::Question))
+        {
+            Operator parseTok;
+            parseTok.type = TokenType::Question;
+            
+            parseTok.arity = TERNARY_ARITY;
+            precedenceTable = PrefixPrecedenceTable;
+            associativityTable = PrefixAssociativityTable;
+            operatorStack.Append(parseTok);
+        }
+        else if (stream.Match(TokenType::Colon))
+        {
+            while (operatorStack.size > 0 && operatorStack.back().type != TokenType::Question)
+            {
+                reduceTop(operatorStack, operandStack, expressionList);
+            }
+            precedenceTable = PrefixPrecedenceTable;
+            associativityTable = PrefixAssociativityTable;
+        }
+        //else if (stream.Match(TokenType::Comma))
+        //{
+        //    if (operandStack.size < 2)
+        //    {
+        //        ret.errors.Append(UnexpectedToken(stream, ","));
+        //        return nullptr;
+        //    }
+        //
+        //    while (operatorStack.size > 0)
+        //    {
+        //        if (operatorStack.back().type == TokenType::List || operatorStack.back().type == TokenType::Call || operatorStack.back().type == //TokenType::ArrayInitializer)
+        //        {
+        //            expressionList.Append(operandStack.back()); operandStack.size--;
+        //            break;
+        //        }
+        //
+        //        reduceTop(operatorStack, operandStack, expressionList);
+        //    }
+        //
+        //    Operator parseTok;
+        //    parseTok.type = TokenType::List;
+        //    operatorStack.Append(parseTok);
+        //}
+        else
+            break;
+        type = stream.Type();
+    }
+    
+    while (operatorStack.size > 0)
+    {
+        reduceTop(operatorStack, operandStack, expressionList);
+    }
+    
+    // Didn't match an expression
+    if (operandStack.size == 0)
+        return nullptr;
+    return operandStack.back();
 }
 
 //------------------------------------------------------------------------------
@@ -1405,7 +2129,7 @@ ParseAnnotation(TokenStream& stream, ParseResult& ret)
             return nullptr;
         }
         
-        res->value = ParseExpression(stream, ret);
+        res->value = ParseExpression2(stream, ret);
         if (!stream.Match(TokenType::RightParant))
         {
             ret.errors.Append(UnexpectedToken(stream, ")"));
@@ -1427,7 +2151,7 @@ ParseFunctionAttribute(TokenStream& stream, ParseResult& ret)
         const Token& tok = stream.Data(-1);
         if (stream.Match(TokenType::LeftParant))
         {
-            Expression* expr = ParseExpression(stream, ret);
+            Expression* expr = ParseExpression2(stream, ret);
             if (expr == nullptr)
             {
                 ret.errors.Append(UnexpectedToken(stream, "expression"));
@@ -1466,7 +2190,7 @@ ParseVariableAttribute(TokenStream& stream, ParseResult& ret)
         const Token& tok = stream.Data(-1);
         if (stream.Match(TokenType::LeftParant))
         {
-            Expression* expr = ParseExpression(stream, ret);
+            Expression* expr = ParseExpression2(stream, ret);
             if (expr == nullptr)
             {
                 ret.errors.Append(UnexpectedToken(stream, "expression"));
@@ -1505,7 +2229,7 @@ ParseParameterAttribute(TokenStream& stream, ParseResult& ret)
         const Token& tok = stream.Data(-1);
         if (stream.Match(TokenType::LeftParant))
         {
-            Expression* expr = ParseExpression(stream, ret);
+            Expression* expr = ParseExpression2(stream, ret);
             if (expr == nullptr)
             {
                 ret.errors.Append(UnexpectedToken(stream, "expression"));
@@ -1549,7 +2273,7 @@ ParseType(TokenStream& stream, ParseResult& ret, Type::FullType& res)
         }
         else if (stream.Match(TokenType::LeftBracket))
         {
-            Expression* sizeExpr = ParseExpression(stream, ret);
+            Expression* sizeExpr = ParseExpression2(stream, ret);
             modifiers.Append(Type::FullType::Modifier::Array);
             modifierValues.Append(sizeExpr);
             
@@ -1889,7 +2613,7 @@ ParseVariables(TokenStream& stream, ParseResult& ret)
                 ret.errors.Append(Limit(stream, "initializer values", 128));
                 break;
             }
-            values.Append(ParseExpression(stream, ret));
+            values.Append(ParseExpression2(stream, ret));
 
             // Match multiple arguments
             if (stream.Match(TokenType::Comma))
@@ -2070,7 +2794,7 @@ ParseEnumeration(TokenStream& stream, ParseResult& ret)
         Expression* value = nullptr;
         if (stream.Match(TokenType::Assign))
         {
-            value = ParseExpression(stream, ret);
+            value = ParseExpression2(stream, ret);
         }
         
         labels.Append(label);
@@ -2127,7 +2851,7 @@ ParseRenderState(TokenStream& stream, ParseResult& ret)
     }
     
     TransientArray<Expression*> entries(32);
-    while (Expression* expr = ParseExpression(stream, ret))
+    while (Expression* expr = ParseExpression2(stream, ret))
     {
         if (entries.Full())
         {
@@ -2184,7 +2908,7 @@ ParseSamplerState(TokenStream& stream, ParseResult& ret)
     }
     
     TransientArray<Expression*> entries(32);
-    while (Expression* expr = ParseExpression(stream, ret))
+    while (Expression* expr = ParseExpression2(stream, ret))
     {
         if (entries.Full())
         {
@@ -2240,7 +2964,7 @@ ParseProgram(TokenStream& stream, ParseResult& ret)
     }
     
     TransientArray<Expression*> entries(32);
-    while (Expression* expr = ParseExpression(stream, ret))
+    while (Expression* expr = ParseExpression2(stream, ret))
     {
         if (entries.Full())
         {
@@ -2412,7 +3136,7 @@ ParseGenerateStatement(TokenStream& stream, ParseResult& ret)
             return res;
         }
         
-        Expression* cond = ParseExpression(stream, ret);
+        Expression* cond = ParseExpression2(stream, ret);
         if (cond == nullptr)
             return res;
         
@@ -2667,7 +3391,7 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
     else if (stream.Match(TokenType::Return))
     {
         const Token& tok = stream.Data(-1);
-        res = Alloc<TerminateStatement>(ParseExpression(stream, ret), TerminateStatement::TerminationType::Return);
+        res = Alloc<TerminateStatement>(ParseExpression2(stream, ret), TerminateStatement::TerminationType::Return);
         res->location = LocationFromToken(tok);
         if (!stream.Match(TokenType::SemiColon))
         {
@@ -2717,7 +3441,7 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
             return res;
         }
         
-        Expression* cond = ParseExpression(stream, ret);
+        Expression* cond = ParseExpression2(stream, ret);
         if (cond == nullptr)
             return res;
         
@@ -2781,14 +3505,14 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
             return res;
         }   
         
-        Expression* cond = ParseExpression(stream, ret);
+        Expression* cond = ParseExpression2(stream, ret);
         if (!stream.Match(TokenType::SemiColon))
         {
             ret.errors.Append(UnexpectedToken(stream, ";"));
             return res;
         }
         
-        Expression* postLoop = ParseExpression(stream, ret);
+        Expression* postLoop = ParseExpression2(stream, ret);
         if (!stream.Match(TokenType::RightParant))
         {
             ret.errors.Append(UnexpectedToken(stream, ")"));
@@ -2806,7 +3530,7 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
             ret.errors.Append(UnexpectedToken(stream, "("));
             return res;
         }
-        Expression* cond = ParseExpression(stream, ret);
+        Expression* cond = ParseExpression2(stream, ret);
         
         if (!stream.Match(TokenType::RightParant))
         {
@@ -2832,7 +3556,7 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
             ret.errors.Append(UnexpectedToken(stream, "("));
             return res;
         }
-        Expression* cond = ParseExpression(stream, ret);
+        Expression* cond = ParseExpression2(stream, ret);
         
         if (!stream.Match(TokenType::RightParant))
         {
@@ -2850,7 +3574,7 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
     }
     else
     {
-        FixedArray<Expression*> exprs = ParseExpressionList(stream, ret);
+        FixedArray<Expression*> exprs = ParseExpressionList2(stream, ret);
         if (exprs.size > 0)
         {
             if (!stream.Match(TokenType::SemiColon))

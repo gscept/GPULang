@@ -402,7 +402,6 @@ static auto argListEnd = [](const char* begin, const char* end) -> const char*
     return end;
 };
 
-
 static auto resolvePath = [](const std::string_view& path, const GPULang::FixedString& currentFilePath, const FixedArray<std::string_view>& searchPaths, PinnedSet<TransientString>& resolvedPaths) -> TransientString
 {
     auto it = resolvedPaths.Find(path);
@@ -2136,7 +2135,26 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
             
             timer.Start();
             
-            TokenizationResult tokenizationResult = Tokenize(preprocessed, TransientString{file.c_str()});
+            TransientArray<std::string_view> searchPaths(128);
+            for (auto& arg : defines)
+            {
+                std::string_view argView = arg;
+                if (arg[0] == '-')
+                {
+                    if (arg[1] == 'I')
+                    {
+                        if (searchPaths.Full())
+                        {
+                            //diagnostics.Append(DIAGNOSTIC("Maximum include paths of 128 hit"));
+                            return false;
+                        }
+                        searchPaths.Append(argView.substr(2));
+                    }
+                }
+            }
+            
+            TokenizationResult tokenizationResult;
+            Tokenize(preprocessed, TransientString{file.c_str()}, {}, tokenizationResult);
             if (tokenizationResult.errors.size > 0)
             {
                 std::string str;
@@ -2277,7 +2295,26 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
 
         timer.Start();
         
-        TokenizationResult tokenizationResult = Tokenize(preprocessed, file->path);
+        TransientArray<std::string_view> searchPaths(128);
+        for (auto& arg : defines)
+        {
+            std::string_view argView = arg;
+            if (arg[0] == '-')
+            {
+                if (arg[1] == 'I')
+                {
+                    if (searchPaths.Full())
+                    {
+                        //diagnostics.Append(DIAGNOSTIC("Maximum include paths of 128 hit"));
+                        return false;
+                    }
+                    searchPaths.Append(argView.substr(2));
+                }
+            }
+        }
+        
+        TokenizationResult tokenizationResult;
+        Tokenize(preprocessed, file->path, searchPaths, tokenizationResult);
         for (const auto& err : tokenizationResult.errors)
         {
             result.diagnostics.Append(err);

@@ -181,6 +181,17 @@ enum class TokenType
     , R8U
     , UnknownFormat
     
+    // All following tokens are special tokens inserted by the parser
+    , Call
+    , Subscript
+    , ArrayInitializer
+    , PrefixSub
+    , PrefixAdd
+    , PrefixIncrement
+    , PrefixDecrement
+    , PrefixMul
+    , List
+    
     , NumTokenTypes
 };
 
@@ -201,7 +212,7 @@ struct TokenizationResult
 };
 
 // Tokenize string
-TokenizationResult Tokenize(const std::string& text, const TransientString& path);
+void Tokenize(const std::string& text, const TransientString& path, const TransientArray<std::string_view>& searchPaths, TokenizationResult& ret);
 
 struct ParseResult
 {
@@ -215,57 +226,68 @@ struct TokenStream
     {
         this->tokens = std::move(result.tokens);
         this->tokenTypes = std::move(result.tokenTypes);
+        this->dataIt = this->tokens.begin();
+        this->dataEnd = this->tokens.end();
+        this->typeIt = this->tokenTypes.begin();
+        this->typeEnd = this->tokenTypes.end();
     }
     
     // Consume the token
     void Consume(size_t count = 1)
     {
-        this->tokenIndex += count;
+        this->dataIt += count;
+        this->typeIt += count;
     }
 
     TokenType Type(int64_t lookAhead = 0)
     {
-        if (this->tokenIndex + lookAhead > this->tokenTypes.size)
+        if (this->typeIt + lookAhead > this->typeEnd)
             return TokenType::InvalidToken;
         else
-            return this->tokenTypes[this->tokenIndex + lookAhead];
+            return *(this->typeIt + lookAhead);
     }
     
     const Token& Data(int64_t lookAhead = 0) const
     {
         static Token InvalidToken = Token();
-        if (this->tokenIndex + lookAhead > this->tokens.size)
+        if (this->dataIt + lookAhead >= this->dataEnd)
             return InvalidToken;
         else
-            return this->tokens[this->tokenIndex + lookAhead];
+            return *(this->dataIt + lookAhead);
     }
     
     inline bool Match(TokenType type)
     {
-        if (this->Type(0) == type)
+        if (*this->typeIt == type)
         {
-            this->tokenIndex++;
+            this->typeIt++;
+            this->dataIt++;
             return true;
         }
         return false;
+    }
+    
+    void Unmatch()
+    {
+        this->typeIt--;
+        this->dataIt--;
     }
     
     inline bool MatchClass(uint32_t bits)
     {
-        if ((TokenClassTable[(uint32_t)this->Type(0)] & bits) == bits)
+        if ((TokenClassTable[(uint32_t)*this->typeIt] & bits) == bits)
         {
-            this->tokenIndex++;
+            this->typeIt++;
+            this->dataIt++;
             return true;
         }
         return false;
     }
     
-    void Unmatch(size_t count)
-    {
-        this->tokenIndex -= count;
-    }
-    
-    size_t tokenIndex = 0;
+    TokenType* typeIt;
+    TokenType* typeEnd;
+    Token* dataIt;
+    Token* dataEnd;
     PinnedArray<TokenType> tokenTypes = 0xFFFFFF;
     PinnedArray<Token> tokens = 0xFFFFFF;
 };
