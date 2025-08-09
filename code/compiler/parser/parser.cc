@@ -117,7 +117,7 @@ struct CharacterClassInitializer
         
         CharacterClassTable['$'] = PATH_CHARACTER_BIT;
         CharacterClassTable['\''] = PATH_CHARACTER_BIT;
-        CharacterClassTable['\`'] = PATH_CHARACTER_BIT;
+        CharacterClassTable['`'] = PATH_CHARACTER_BIT;
         
         CharacterClassTable[' '] = WHITESPACE_CHARACTER | PATH_CHARACTER_BIT;
         CharacterClassTable['\t'] = WHITESPACE_CHARACTER;
