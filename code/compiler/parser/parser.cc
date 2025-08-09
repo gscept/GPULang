@@ -87,35 +87,39 @@ struct CharacterClassInitializer
         for (char c = '0'; c <= '9'; ++c)
             CharacterClassTable[c] = HEX_NUMERIC_CHARACTER | NUMERIC_CHARACTER | IDENTIFIER_CONTD_CHARACTER | PATH_CHARACTER_BIT;
         
-        CharacterClassTable['#'] = SPECIAL_CHARACTER;
-        CharacterClassTable['@'] = SPECIAL_CHARACTER;
-        CharacterClassTable[','] = SPECIAL_CHARACTER;
+        CharacterClassTable['#'] = SPECIAL_CHARACTER | PATH_CHARACTER_BIT;
+        CharacterClassTable['@'] = SPECIAL_CHARACTER | PATH_CHARACTER_BIT;
+        CharacterClassTable[','] = SPECIAL_CHARACTER | PATH_CHARACTER_BIT;
         CharacterClassTable[':'] = SPECIAL_CHARACTER;
         CharacterClassTable[';'] = SPECIAL_CHARACTER;
-        CharacterClassTable['('] = SPECIAL_CHARACTER;
-        CharacterClassTable[')'] = SPECIAL_CHARACTER;
-        CharacterClassTable['{'] = SPECIAL_CHARACTER;
-        CharacterClassTable['}'] = SPECIAL_CHARACTER;
-        CharacterClassTable['['] = SPECIAL_CHARACTER;
-        CharacterClassTable[']'] = SPECIAL_CHARACTER;
+        CharacterClassTable['('] = SPECIAL_CHARACTER | PATH_CHARACTER_BIT;
+        CharacterClassTable[')'] = SPECIAL_CHARACTER | PATH_CHARACTER_BIT;
+        CharacterClassTable['{'] = SPECIAL_CHARACTER | PATH_CHARACTER_BIT;
+        CharacterClassTable['}'] = SPECIAL_CHARACTER | PATH_CHARACTER_BIT;
+        CharacterClassTable['['] = SPECIAL_CHARACTER | PATH_CHARACTER_BIT;
+        CharacterClassTable[']'] = SPECIAL_CHARACTER | PATH_CHARACTER_BIT;
         CharacterClassTable['<'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
         CharacterClassTable['>'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
         CharacterClassTable['"'] = SPECIAL_CHARACTER;
         CharacterClassTable['.'] = SPECIAL_CHARACTER | PATH_CHARACTER_BIT;
-        CharacterClassTable['+'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
-        CharacterClassTable['-'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
+        CharacterClassTable['+'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER | PATH_CHARACTER_BIT;
+        CharacterClassTable['-'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER | PATH_CHARACTER_BIT;
         CharacterClassTable['*'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER | MULTILINE_COMMENT_END_BIT1;
         CharacterClassTable['/'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER | MULTILINE_COMMENT_END_BIT2  | PATH_CHARACTER_BIT;
-        CharacterClassTable['%'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
+        CharacterClassTable['%'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER | PATH_CHARACTER_BIT;
         CharacterClassTable['|'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
-        CharacterClassTable['&'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
-        CharacterClassTable['^'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
-        CharacterClassTable['!'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
-        CharacterClassTable['~'] = SPECIAL_CHARACTER;
+        CharacterClassTable['&'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER | PATH_CHARACTER_BIT;
+        CharacterClassTable['^'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER | PATH_CHARACTER_BIT;
+        CharacterClassTable['!'] = SPECIAL_CHARACTER | OPERATOR_CHARACTER | PATH_CHARACTER_BIT;
+        CharacterClassTable['~'] = SPECIAL_CHARACTER | PATH_CHARACTER_BIT;
         CharacterClassTable['?'] = SPECIAL_CHARACTER;
-        CharacterClassTable['='] = SPECIAL_CHARACTER | OPERATOR_CHARACTER;
+        CharacterClassTable['='] = SPECIAL_CHARACTER | OPERATOR_CHARACTER | PATH_CHARACTER_BIT;
         
-        CharacterClassTable[' '] = WHITESPACE_CHARACTER;
+        CharacterClassTable['$'] = PATH_CHARACTER_BIT;
+        CharacterClassTable['\''] = PATH_CHARACTER_BIT;
+        CharacterClassTable['\`'] = PATH_CHARACTER_BIT;
+        
+        CharacterClassTable[' '] = WHITESPACE_CHARACTER | PATH_CHARACTER_BIT;
         CharacterClassTable['\t'] = WHITESPACE_CHARACTER;
         CharacterClassTable['\f'] = WHITESPACE_CHARACTER;
         CharacterClassTable['\v'] = WHITESPACE_CHARACTER;
