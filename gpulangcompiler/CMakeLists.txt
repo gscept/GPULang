@@ -2,7 +2,7 @@
 # gpulangc
 #-------------------------------------------------------------------------------
 
-fips_begin_app(gpulangc cmdline)
+fips_begin_app(gpulangc-${OS_NAME} cmdline)
      fips_vs_warning_level(3)
      fips_include_directories(${CMAKE_CURRENT_SOURCE_DIR})
      fips_deps(gpulang_compiler glslang)

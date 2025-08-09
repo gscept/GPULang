@@ -18,6 +18,13 @@ else()
     set(BUILD_GPULANG_APP OFF)
 endif()
 
+if(APPLE)
+    set(OS_NAME "macos-${CMAKE_SYSTEM_PROCESSOR}")
+elseif(WIN32)
+    set(OS_NAME "windows-${CMAKE_SYSTEM_PROCESSOR}")
+elseif(UNIX)
+    set(OS_NAME "linux-${CMAKE_SYSTEM_PROCESSOR}")
+endif()
 
 IF(WIN32)
     add_definitions(-D__WIN32__)

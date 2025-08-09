@@ -81,7 +81,6 @@ SingleShaderCompiler::CompileShader(const std::string& src)
             fprintf(stderr, "[gpulangc] error: could not create output directory '%s'\n", sp.parent_path().string().c_str());
             return false;
         }
-        
 
 		// If output is just a folder, then assume binary output is .gplb for the binary and .h for the header to that folder 
 		if (is_directory(sp))
