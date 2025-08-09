@@ -219,6 +219,29 @@ nav {
     color: inherit;
 }
 
+/* Best Practices Box */
+.best-practice {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0 0.5rem 0;
+}
+
+.best-practice-title {
+    color: #22c55e;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.best-practice-content {
+    color: #b0b0b0;
+    line-height: 1.6;
+}
+
 .feature-icon, .doc-icon {
     font-size: 3rem;
     color: #c084fc;
@@ -480,7 +503,7 @@ code {
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: bold;
-    margin-left: 1rem;
+
 }
 
 .status-wip {

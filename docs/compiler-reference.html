@@ -364,12 +364,6 @@
                 <div class="command-example">git clone https://github.com/gscept/GPULang.git</div>
                 <div class="command-example">cd GPULang && mkdir build && cd build</div>
                 <div class="command-example">cmake .. && make -j$(nproc)</div>
-
-                <h3>Package Managers</h3>
-                <p>GPULang will be available through popular package managers:</p>
-                <div class="command-example"># Coming soon
-# vcpkg install gpulang
-# conan install gpulang</div>
             </section>
 
             <section id="basic-usage" class="content-section">
@@ -563,94 +557,29 @@
                         </p>
                     </div>
                     <div class="target-card">
-                        <h4><i class="fab fa-windows icon"></i>DirectX</h4>
+                        <h4><span class="status-badge status-wip"><i class="fas fa-hammer"></i> Work in progress</span><i class="fab fa-windows icon"></i>DirectX</h4>
                         <p>
                             <strong>Versions:</strong> DirectX 12<br>
                             <strong>Features:</strong> Windows platform, Xbox support
                         </p>
                     </div>
                     <div class="target-card">
-                        <h4><i class="fab fa-apple icon"></i>Metal</h4>
+                        <h4><span class="status-badge status-wip"><i class="fas fa-hammer"></i> Work in progress</span><i class="fab fa-apple icon"></i>Metal</h4>
                         <p>
                             <strong>Versions:</strong> 2.0 - 2.4<br>
                             <strong>Features:</strong> Apple platforms, iOS, macOS
                         </p>
                     </div>
                     <div class="target-card">
-                        <h4><i class="fas fa-globe icon"></i>WebGPU</h4>
+                        <h4><span class="status-badge status-wip"><i class="fas fa-hammer"></i> Work in progress</span><i class="fas fa-globe icon"></i>WebGPU</h4>
                         <p>
                             <strong>Versions:</strong> Current specification<br>
                             <strong>Features:</strong> Web browsers, cross-platform
                         </p>
                     </div>
                 </div>
-
-                <h3>Target-Specific Options</h3>
-                <div class="command-example">gpulangc shader.gpul --target vulkan --vulkan-version 1.3 --spirv-extensions VK_KHR_ray_tracing</div>
-                <div class="command-example">gpulangc shader.gpul --target directx --directx-version 12 --shader-model 6.6</div>
-                <div class="command-example">gpulangc shader.gpul --target metal --metal-version 2.4 --ios-deployment-target 14.0</div>
             </section>
-
-            <section id="optimization" class="content-section">
-                <h2>Optimization Levels</h2>
-                <p>
-                    The GPULang compiler provides multiple optimization levels to balance compilation time
-                    and runtime performance.
-                </p>
-
-                <h3>Optimization Levels</h3>
-                <ul>
-                    <li><strong>-O0 (Debug):</strong> No optimizations, fastest compilation, includes debug info</li>
-                    <li><strong>-O1 (Basic):</strong> Basic optimizations, moderate compilation time</li>
-                    <li><strong>-O2 (Standard):</strong> Standard optimizations, good balance of size and speed</li>
-                    <li><strong>-O3 (Aggressive):</strong> Maximum optimizations, slowest compilation, best performance</li>
-                </ul>
-
-                <h3>Specific Optimization Flags</h3>
-                <table class="options-table">
-                    <thead>
-                        <tr>
-                            <th>Flag</th>
-                            <th>Description</th>
-                            <th>Impact</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="option-name">--inline-functions</td>
-                            <td>Inline function calls</td>
-                            <td>Reduces call overhead, increases code size</td>
-                        </tr>
-                        <tr>
-                            <td class="option-name">--unroll-loops</td>
-                            <td>Unroll small loops</td>
-                            <td>Better performance, larger code size</td>
-                        </tr>
-                        <tr>
-                            <td class="option-name">--dead-code-elimination</td>
-                            <td>Remove unused code</td>
-                            <td>Smaller binaries, faster execution</td>
-                        </tr>
-                        <tr>
-                            <td class="option-name">--constant-folding</td>
-                            <td>Evaluate constants at compile time</td>
-                            <td>Faster execution, reduced memory usage</td>
-                        </tr>
-                        <tr>
-                            <td class="option-name">--vectorize</td>
-                            <td>Auto-vectorization of operations</td>
-                            <td>Better GPU utilization</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <h3>Debug vs Release Builds</h3>
-                <div class="command-example"># Debug build - fast compilation, debug info
-gpulangc shader.gpul -O0 --debug --target vulkan</div>
-                <div class="command-example"># Release build - optimized for performance
-gpulangc shader.gpul -O2 --strip --target vulkan,directx,metal</div>
-            </section>
-
+        
             <section id="build-systems" class="content-section">
                 <h2>Build System Integration</h2>
                 <p>
@@ -971,6 +900,7 @@ private:
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    
     <script src="syntax-loader.js"></script>
     <script>
         // Header scroll effect
