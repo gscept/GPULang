@@ -242,10 +242,15 @@ BinaryExpression::Resolve(Compiler* compiler)
         {
 #define X(Type, type, ty)\
     if (value.columnSize > 1)\
+    {\
         this->thisResolved->constValueExpression = Alloc<Type##VecExpression>(FixedArray<ty>(value.type, value.type + value.columnSize));\
+    }\
     else\
+    {\
         this->thisResolved->constValueExpression = Alloc<Type##Expression>(value.type[0]);\
-        this->thisResolved->constValueExpression->Resolve(compiler);
+    }\
+    this->thisResolved->constValueExpression->location = this->location;\
+    this->thisResolved->constValueExpression->Resolve(compiler);
 
             switch (value.code)
             {

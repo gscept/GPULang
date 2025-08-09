@@ -654,10 +654,14 @@ Tokenize(const GPULangFile* file, const TransientArray<std::string_view>& search
             Token newToken;
             newToken.path = currentPath;
             newToken.text = commentText;
+            newToken.startLine = line;
+            newToken.endLine = line;
+            newToken.startChar = it - startOfLine + 2;
+            newToken.endChar = eol - startOfLine;
             ret.tokens.Append(newToken);
             
             it = eol;
-            
+            startOfLine = it;
             line++;
             ret.lineCount++;
             continue;
@@ -2691,7 +2695,7 @@ ParseVariables(TokenStream& stream, ParseResult& ret)
     {
         for (auto& var : vars)
         {
-            var->type = Type::FullType{ UNDEFINED_TYPE };
+            var->type = UndefinedType;
         }
     }
 
@@ -2768,6 +2772,7 @@ ParseFunction(TokenStream& stream, ParseResult& ret)
     res = Alloc<Function>();
     res->name = stream.Data(-1).text;
     res->location = LocationFromToken(stream.Data(-1));
+    res->documentation = stream.ConsumeComment();
     
     if (!stream.Match(TokenType::LeftParant))
     {
@@ -2854,7 +2859,7 @@ ParseEnumeration(TokenStream& stream, ParseResult& ret)
     const Token& tok = stream.Data(-1);
     res->name = tok.text;
     res->location = LocationFromToken(tok);
-    
+    res->documentation = stream.ConsumeComment();
     
     if (stream.Match(TokenType::Colon))
     {
@@ -2936,6 +2941,7 @@ ParseRenderState(TokenStream& stream, ParseResult& ret)
     const Token& tok = stream.Data(-1);
     res->name = tok.text;
     res->location = LocationFromToken(tok);
+    res->documentation = stream.ConsumeComment();
     
     if (!stream.Match(TokenType::LeftScope))
     {
@@ -2993,7 +2999,8 @@ ParseSamplerState(TokenStream& stream, ParseResult& ret)
     const Token& tok = stream.Data(-1);
     res->name = tok.text;
     res->location = LocationFromToken(tok);
-    
+    res->documentation = stream.ConsumeComment();
+
     if (!stream.Match(TokenType::LeftScope))
     {
         ret.errors.Append(UnexpectedToken(stream, "{"));
@@ -3049,6 +3056,7 @@ ParseProgram(TokenStream& stream, ParseResult& ret)
     const Token& tok = stream.Data(-1);
     res->name = tok.text;
     res->location = LocationFromToken(tok);
+    res->documentation = stream.ConsumeComment();
     
     if (!stream.Match(TokenType::LeftScope))
     {
@@ -3315,6 +3323,7 @@ ParseStruct(TokenStream& stream, ParseResult& ret)
     const Token& tok = stream.Data(-1);
     res->name = tok.text;
     res->location = LocationFromToken(tok);
+    res->documentation = stream.ConsumeComment();
 
     if (!stream.Match(TokenType::LeftScope))
     {
@@ -3730,7 +3739,6 @@ Parse(TokenStream& stream)
             sym->attributes = attributes;
             annotations.size = 0;
             attributes.size = 0;
-            sym->documentation = stream.ConsumeComment();
             ret.ast->symbols.Append(sym);
         }
         else if (stream.MatchClass(TOKEN_VARIABLE_STORAGE_BIT))
@@ -3777,7 +3785,6 @@ Parse(TokenStream& stream)
                 ret.errors.Append(Unsupported(stream, "attributes", "generate"));
                 break;
             }
-            sym->documentation = stream.ConsumeComment();
             ret.ast->symbols.Append(sym);
         }
         else if (stream.Match(TokenType::RenderState))
@@ -3793,7 +3800,6 @@ Parse(TokenStream& stream)
                 ret.errors.Append(Unsupported(stream, "attributes", "generate"));
                 break;
             }
-            sym->documentation = stream.ConsumeComment();
             ret.ast->symbols.Append(sym);
         }
         else if (stream.Match(TokenType::SamplerState))
@@ -3803,7 +3809,6 @@ Parse(TokenStream& stream)
             sym->attributes = attributes;
             annotations.size = 0;
             attributes.size = 0;
-            sym->documentation = stream.ConsumeComment();
             ret.ast->symbols.Append(sym);
         }
         else if (stream.Match(TokenType::Program))
@@ -3816,7 +3821,6 @@ Parse(TokenStream& stream)
                 break;
             }
             annotations.size = 0;
-            sym->documentation = stream.ConsumeComment();
             ret.ast->symbols.Append(sym);
         }
         else if (stream.Match(TokenType::ConditionalCompile))
@@ -3844,7 +3848,6 @@ Parse(TokenStream& stream)
             }
             sym->annotations = annotations;
             sym->attributes = attributes;
-            sym->documentation = stream.ConsumeComment();
             annotations.size = 0;
             attributes.size = 0;
             ret.ast->symbols.Append(sym);

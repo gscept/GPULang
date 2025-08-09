@@ -2085,7 +2085,12 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     if (var->type.name == UNDEFINED_TYPE)
     {
         if (var->valueExpression != nullptr)
+        {
             var->valueExpression->EvalType(var->type);
+            var->type.nameLocation = Symbol::Location();
+            var->type.formatLocation = Symbol::Location();
+            var->type.modifierLocation = Symbol::Location();
+        }
         else
         {
             compiler->Error(Format("'%s' can't infer it's type, either initialize the value or declare its type explicitly", var->name.c_str()), symbol);
@@ -2627,14 +2632,17 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             ValueUnion val;
             if (rhs.literal && var->valueExpression->EvalValue(val))
             {
+                auto loc = var->valueExpression->location;
                 #define X(Type, type, ty)\
                     if (val.columnSize > 1)\
                     {\
                         auto arr = FixedArray<ty>(val.type, val.type + val.columnSize);\
                         var->valueExpression = Alloc<Type##VecExpression>(arr);\
+                        var->valueExpression->location = loc;\
                     }\
                     else\
                         var->valueExpression = Alloc<Type##Expression>(val.type[0]);\
+                        var->valueExpression->location = loc;\
                         var->valueExpression->Resolve(compiler);
                 
                 switch (lhsType->baseType)
@@ -3052,7 +3060,9 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
 
                     // Replace condition with a call expression to the conversion function
                     FixedArray<Expression*> arguments = { statement->condition };
+                    Symbol::Location loc = statement->condition->location;
                     statement->condition = Alloc<CallExpression>(Alloc<SymbolExpression>(conversionFunction->name), arguments);
+                    statement->condition->location = loc;
 
                     // Resolve again
                     if (!statement->condition->Resolve(compiler))
@@ -3088,7 +3098,9 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
 
                 // Replace condition with a call expression to the conversion function
                 FixedArray<Expression*> arguments = { statement->condition };
+                Symbol::Location loc = statement->condition->location;
                 statement->condition = Alloc<CallExpression>(Alloc<SymbolExpression>(conversionFunction->name), arguments);
+                statement->condition->location = loc;
 
                 // Resolve again
                 if (!statement->condition->Resolve(compiler))
@@ -3356,7 +3368,9 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
 
                     // Replace condition with a call expression to the conversion function
                     FixedArray<Expression*> arguments = { statement->condition };
+                    Symbol::Location loc = statement->condition->location;
                     statement->condition = Alloc<CallExpression>(Alloc<SymbolExpression>(conversionFunction->name), arguments);
+                    statement->condition->location = loc;
 
                     // Resolve again
                     if (!statement->condition->Resolve(compiler))
