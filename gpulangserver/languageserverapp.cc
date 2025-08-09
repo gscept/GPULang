@@ -1061,7 +1061,7 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
                 ret += var->type.ToString().c_str();
                 if (var->valueExpression != nullptr)
                 {
-                    ValueUnion val;
+                    GPULang::ValueUnion val;
                     if (var->valueExpression->EvalValue(val))
                     {
                         ret += "\n";
