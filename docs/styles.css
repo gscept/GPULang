@@ -497,6 +497,106 @@ code {
     }
 }
 
+/* Table wrapper for horizontal scrolling - shared across all pages */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 2rem 0;
+    border-radius: 12px;
+}
+
+/* Content Navigation - shared across documentation pages */
+.content-nav {
+    position: fixed;
+    right: 20px;
+    top: 30%;
+    transform: translateY(-50%);
+    background: rgba(15, 15, 35, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1rem;
+    max-width: 200px;
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+.content-nav h4 {
+    color: #c084fc;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.content-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.content-nav li {
+    margin-bottom: 0.3rem;
+}
+
+.content-nav a {
+    color: #b0b0b0;
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: color 0.3s ease;
+}
+
+.content-nav a:hover {
+    color: #c084fc;
+}
+
+/* Hide content navigation on smaller screens */
+@media (max-width: 1200px) {
+    .content-nav {
+        display: none;
+    }
+}
+
+/* Content Links */
+a:not(.logo):not(.nav-links a):not(.cta-button):not(.download-button):not(.btn-primary):not(.btn-secondary):not(.quick-link):not(.toc-link):not(.content-nav a):not(.download-button-primary):not(.download-button-secondary) {
+    color: #c084fc;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+a:not(.logo):not(.nav-links a):not(.cta-button):not(.download-button):not(.btn-primary):not(.btn-secondary):not(.quick-link):not(.toc-link):not(.content-nav a):not(.download-button-primary):not(.download-button-secondary):hover {
+    color: #f472b6;
+    text-shadow: 0 0 8px rgba(244, 114, 182, 0.3);
+}
+
+a:not(.logo):not(.nav-links a):not(.cta-button):not(.download-button):not(.btn-primary):not(.btn-secondary):not(.quick-link):not(.toc-link):not(.content-nav a):not(.download-button-primary):not(.download-button-secondary)::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(45deg, #c084fc, #f472b6);
+    transition: width 0.3s ease;
+}
+
+a:not(.logo):not(.nav-links a):not(.cta-button):not(.download-button):not(.btn-primary):not(.btn-secondary):not(.quick-link):not(.toc-link):not(.content-nav a):not(.download-button-primary):not(.download-button-secondary):hover::after {
+    width: 100%;
+}
+
+/* External link icon */
+a[target="_blank"]:not(.logo):not(.nav-links a):not(.cta-button):not(.download-button):not(.btn-primary):not(.btn-secondary):not(.quick-link):not(.toc-link):not(.content-nav a):not(.download-button-primary):not(.download-button-secondary)::before {
+    content: '\f35d';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 0.8em;
+    margin-right: 0.3em;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+a[target="_blank"]:not(.logo):not(.nav-links a):not(.cta-button):not(.download-button):not(.btn-primary):not(.btn-secondary):not(.quick-link):not(.toc-link):not(.content-nav a):not(.download-button-primary):not(.download-button-secondary):hover::before {
+    opacity: 1;
+}
+
 /* Status Badge */
 .status-badge {
     padding: 0.3rem 0.8rem;
