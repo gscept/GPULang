@@ -1917,16 +1917,6 @@ def generate_types():
     source_file.write('#include "compiler.h"\n')
     source_file.write('namespace GPULang \n{\n')
 
-    source_file.write("Compiler::Timer StaticTypeTimer;\n")
-    source_file.write('struct StaticTypeTimerStart\n')
-    source_file.write('{\n')
-    source_file.write('    StaticTypeTimerStart()\n')
-    source_file.write('    {\n')
-    source_file.write('        StaticTypeTimer.Start();\n')
-    source_file.write('    }\n')
-    source_file.write('};\n')
-    source_file.write('StaticTypeTimerStart StaticTypeTimerStartInstance;\n\n')
-
     for type in type_list:
         declaration_string += type.declaration()
         definition_string += type.definition()
@@ -1948,16 +1938,6 @@ def generate_types():
     header_file.write("\n")
     source_file.write(definition_string[0:-1] + '\n')
     source_file.write("\n")
-
-    source_file.write('struct StaticTypeTimerStop\n')
-    source_file.write('{\n')
-    source_file.write('    StaticTypeTimerStop()\n')
-    source_file.write('    {\n')
-    source_file.write('        StaticTypeTimer.Stop();\n')
-    source_file.write('        StaticTypeTimer.Print("Static Type Setup");\n')
-    source_file.write('    }\n')
-    source_file.write('};\n')
-    source_file.write('StaticTypeTimerStop StaticTypeTimerStopInstance;\n\n')
 
     header_file.write('} // namespace GPULang\n\n')
     source_file.write('} // namespace GPULang\n\n')
@@ -2006,15 +1986,6 @@ def generate_types():
     intrinsics_source_start += '{\n'
 
     intrinsics_source.write(intrinsics_source_start)
-    intrinsics_source.write("Compiler::Timer StaticIntrinsicTimer;\n")
-    intrinsics_source.write('struct StaticIntrinsicTimerStart\n')
-    intrinsics_source.write('{\n')
-    intrinsics_source.write('    StaticIntrinsicTimerStart()\n')
-    intrinsics_source.write('    {\n')
-    intrinsics_source.write('        StaticIntrinsicTimer.Start();\n')
-    intrinsics_source.write('    }\n')
-    intrinsics_source.write('};\n')
-    intrinsics_source.write('StaticIntrinsicTimerStart StaticIntrinsicTimerStartInstance;\n\n')
 
     float_only_single_argument_intrinsics = [
         'acos', 'acosh', 'asin', 'asinh', 'atan', 'atanh', 'cos', 'cosh', 'exp',
@@ -4411,15 +4382,6 @@ def generate_types():
     #intrinsics_source.write(intrinsic_setup)
     intrinsics_source.write('}\n')
 
-    intrinsics_source.write('struct StaticIntrinsicTimerStop\n')
-    intrinsics_source.write('{\n')
-    intrinsics_source.write('    StaticIntrinsicTimerStop()\n')
-    intrinsics_source.write('    {\n')
-    intrinsics_source.write('        StaticIntrinsicTimer.Stop();\n')
-    intrinsics_source.write('        StaticIntrinsicTimer.Print("Static Intrinsic Alloc");\n')
-    intrinsics_source.write('    }\n')
-    intrinsics_source.write('};\n')
-    intrinsics_source.write('StaticIntrinsicTimerStop StaticIntrinsicTimerStopInstance;\n\n')
 
     intrinsics_source.write('} // namespace GPULang\n')
 

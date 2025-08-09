@@ -64,16 +64,6 @@ Namer namer;
 #include "compiler.h"
 namespace GPULang 
 {
-Compiler::Timer StaticTypeTimer;
-struct StaticTypeTimerStart
-{
-    StaticTypeTimerStart()
-    {
-        StaticTypeTimer.Start();
-    }
-};
-StaticTypeTimerStart StaticTypeTimerStartInstance;
-
 /// operator[] with Int32
 Variable Float32_operator_index_Int32_arg;
 Function Float32_operator_index_Int32;
@@ -28338,16 +28328,6 @@ Program::Program()
 };
 Program ProgramType;
 
-
-struct StaticTypeTimerStop
-{
-    StaticTypeTimerStop()
-    {
-        StaticTypeTimer.Stop();
-        StaticTypeTimer.Print("Static Type Setup");
-    }
-};
-StaticTypeTimerStop StaticTypeTimerStopInstance;
 
 } // namespace GPULang
 

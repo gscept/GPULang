@@ -73,7 +73,15 @@ SingleShaderCompiler::CompileShader(const std::string& src)
 	if (!this->dstBinary.empty())
     {
     	fs::path sp(this->dstBinary);
-		fs::create_directories(sp.parent_path());
+        try
+        {
+            fs::create_directories(sp.parent_path());
+        } catch (const fs::filesystem_error& e)
+        {
+            fprintf(stderr, "[gpulangc] error: could not create output directory '%s'\n", sp.parent_path().string().c_str());
+            return false;
+        }
+        
 
 		// If output is just a folder, then assume binary output is .gplb for the binary and .h for the header to that folder 
 		if (is_directory(sp))
@@ -118,9 +126,9 @@ SingleShaderCompiler::CompileSPIRV(const std::string& src)
 		// compile
 		if (!(this->flags & Flags::Quiet))
 		{
-			fprintf(stderr, "[gpulangc] \n Compiling:\n   %s -> %s", src.c_str(), this->dstBinary.c_str());
+			fprintf(stderr, "[gpulangc] \n %s -> %s\n", src.c_str(), this->dstBinary.c_str());
             if (!this->dstHeader.empty())
-			    fprintf(stderr,"          \n Generating:\n   %s -> %s\n", src.c_str(), this->dstHeader.c_str());
+			    fprintf(stderr,"          \n %s -> %s\n", src.c_str(), this->dstHeader.c_str());
 		}
 	}
     

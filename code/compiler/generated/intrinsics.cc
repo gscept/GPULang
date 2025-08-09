@@ -9,16 +9,6 @@
 #include "compiler.h"
 namespace GPULang
 {
-Compiler::Timer StaticIntrinsicTimer;
-struct StaticIntrinsicTimerStart
-{
-    StaticIntrinsicTimerStart()
-    {
-        StaticIntrinsicTimer.Start();
-    }
-};
-StaticIntrinsicTimerStart StaticIntrinsicTimerStartInstance;
-
 void SetupIntrinsics()
 {
     static bool IsSetup = false;
@@ -43,14 +33,4 @@ void SetupIntrinsics()
     SetupIntrinsics14();
     SetupIntrinsics15();
 }
-struct StaticIntrinsicTimerStop
-{
-    StaticIntrinsicTimerStop()
-    {
-        StaticIntrinsicTimer.Stop();
-        StaticIntrinsicTimer.Print("Static Intrinsic Alloc");
-    }
-};
-StaticIntrinsicTimerStop StaticIntrinsicTimerStopInstance;
-
 } // namespace GPULang
