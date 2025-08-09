@@ -4073,7 +4073,7 @@ GenerateArrayIndexExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gene
         if (type->IsVector() || type->IsMatrix())
         {
             auto op = TransientString("operator[](", rightType.name, ")");
-            auto it = type->scope.symbolLookup.Find(op);
+            auto it = type->scope.symbolLookup.Find(HashString(op));
             Function* func = static_cast<Function*>((*it).second);
 
             SPIRVResult res;
