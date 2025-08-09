@@ -707,12 +707,6 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
         if (this->options.emitTimings)
             this->performanceTimer.Print("Reflection serialization");
     }
-    else
-    {
-        this->messages.Append(FixedString(Format("Failed to open file '%s'", binaryWriter.GetPath().c_str())));
-        this->hasErrors = true;
-        return false;
-    }
 
     // header writing is optional
     if (headerWriter.Open())
@@ -730,11 +724,6 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
 
         if (this->options.emitTimings)
             this->performanceTimer.Print("Header generation");
-    }
-    else
-    {
-        this->messages.Append(FixedString(Format("Failed to open file '%s'", headerWriter.GetPath().c_str())));
-        this->hasErrors = true;
     }
 
     return ret;

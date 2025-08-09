@@ -35,7 +35,8 @@ BinWriter::~BinWriter()
 bool
 BinWriter::Open()
 {
-	assert(this->path.size() > 0);
+    if (this->path.empty())
+        return false;
 	std::filesystem::path path(this->path);
 	path.remove_filename();
 	std::filesystem::create_directories(path);

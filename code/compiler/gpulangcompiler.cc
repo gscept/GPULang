@@ -1975,21 +1975,23 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
             }
             if (it[0] == '/')
             {
-                fileName = std::string_view(it+1, extensionEnd-1);
+                fileName = std::string_view(it+1, extensionEnd);
+                break;
             }
             it--;
         }
         it = fileName.buf;
         const char* end = fileName.buf + fileName.size;
-        while (it < fileName.buf + fileName.size)
+        while (it < end)
         {
             if (it[0] == '_')
             {
                 it[1] = std::toupper(it[1]);
                 memmove(it, it+1, end - it);;
-                it--;
             }
+            it++;
         }
+        fileName.buf[0] = std::toupper(fileName.buf[0]);
 
         timer.Stop();
         if (options.emitTimings)
@@ -2025,7 +2027,7 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
         TextWriter headerWriter;
         headerWriter.SetPath(header_output);
 
-        compiler.path = file;
+        compiler.path = file->path;
         compiler.filename = fileName;
         compiler.debugPath = output;
         compiler.debugOutput = true;

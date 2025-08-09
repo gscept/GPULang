@@ -110,7 +110,7 @@ SingleShaderCompiler::CompileSPIRV(const std::string& src)
 	{
 		if (!(this->flags & Flags::Quiet))
 		{
-			fprintf(stderr, "[gpulangc] \n Checking for problems:\n   %s\n", src.c_str());
+			fprintf(stderr, "[gpulangc] \n Validating:\n   %s\n", src.c_str());
 		}
 	}
 	else

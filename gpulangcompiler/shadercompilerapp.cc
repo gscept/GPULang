@@ -16,7 +16,7 @@ bool
 ShaderCompilerApp::ParseCmdLineArgs(const char ** argv)
 {
 	argh::parser args;
-	args.add_params({ "-i", "-o", "-r", "-h", "-g" });
+	args.add_params({ "-o", "-h", "-g", "-I" });
 	args.parse(argv);
 
 	if (args["--help"])
@@ -41,7 +41,7 @@ ShaderCompilerApp::ParseCmdLineArgs(const char ** argv)
 	this->shaderCompiler.SetFlag(args["validate"] || args["v"] ? SingleShaderCompiler::Validate : 0);
 	this->shaderCompiler.SetFlag(args["profile"] || args["p"] ? SingleShaderCompiler::Profile : 0);
 	uint32_t defaultGroup;
-	if (args("g") >> defaultGroup)
+    if (args("g") >> defaultGroup || (args("group") >> defaultGroup))
 		this->shaderCompiler.SetDefaultGroup(defaultGroup);
 	std::string buffer;
 	if (args("o") >> buffer)
@@ -60,14 +60,14 @@ ShaderCompilerApp::ParseCmdLineArgs(const char ** argv)
         this->shaderCompiler.SetRootDir(buffer);
     }	
 
-	if (!(args("i") >> buffer))
+    if (args.pos_args().size() <= 1)
 	{
 		fprintf(stderr, "gpulangc error: no input file specified\n");
 		this->PrintHelp();
 		return false;
 	}
 
-	this->src = buffer;
+    this->src = args.pos_args()[1];
 	if (args("h") >> buffer)
 	{
 		this->shaderCompiler.SetDstHeader(buffer);
@@ -114,21 +114,22 @@ void
 ShaderCompilerApp::PrintHelp()
 {
 	const char* help = "\
-usage: gpulangc [-M] [--help] [-i <file>] [-I <path>]\n\
-                     [-o <path>] [-h <path>] [-q] [-debug] [-profile] [-validate]\n\
+usage: gpulangc file [--help] [-I <path>]\n\
+                     [-o <path>] [-h <path>]\n\
+                     [-quiet/-q] [-optimize/-Ox] [-profile/-p] [-validate/-v] [-symbols/-s]\n\
+                     [-group/-g <value>] [-M]\n\
 \n\
--M       		Create dependencies\n\
---help   		Print this message\n\
--i       		Path to input file\n\
--I       		Where to search for include headers. This can be repeated multiple times.\n\
--o       		Where to output the binaries. If folder, outputs both binaries and headers to this folder unless -h is provided.\n\
--h       		Where to output generated C headers.\n\
--g <value>      Default binding group if none is provided.\n\
--quiet/-q  		Suppress standard output.\n\
--optimize/-Ox  	Optimize output (not allowed with -symbols/-s).\n\
--symbols/-s		Generate debug symbols (not allowed with -optimize/-Ox).\n\
--profile/-p		Log compilation times.\n\
--validate/-v	Validate compilation output.\n\
+--help              Print this message\n\
+-I <path>           Where to search for include headers. This can be repeated multiple times.\n\
+-o <path>           Where to output the binaries. If folder, outputs both binaries and headers to this folder unless -h is provided.\n\
+-h <path>           Where to output generated C++ headers.\n\
+-group/-g <value>   Default binding group if none is provided.\n\
+-quiet/-q           Suppress standard output.\n\
+-optimize/-Ox       Optimize output (not allowed with -symbols/-s).\n\
+-symbols/-s         Generate debug symbols (not allowed with -optimize/-Ox).\n\
+-profile/-p         Print compilation timings.\n\
+-validate/-v        Validate compilation output against backend library (spv-tools).\n\
+-M                  Parses the file and walks the included files to generate a dependency list\n\
 ";
 
 	fprintf(stdout, help);
