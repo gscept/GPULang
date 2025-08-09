@@ -76,7 +76,7 @@ SingleShaderCompiler::CompileShader(const std::string& src)
         try
         {
             fs::create_directories(sp.parent_path());
-        } catch (const fs::filesystem_error& e)
+        } catch (const fs::filesystem_error&)
         {
             fprintf(stderr, "[gpulangc] error: could not create output directory '%s'\n", sp.parent_path().string().c_str());
             return false;
