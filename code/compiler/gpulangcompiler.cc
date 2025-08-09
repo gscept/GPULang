@@ -2107,7 +2107,7 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
     }
     
     TokenizationResult tokenizationResult;
-    Tokenize(file, searchPaths, tokenizationResult);
+    Tokenize(file, searchPaths, tokenizationResult, true);
     for (const auto& err : tokenizationResult.errors)
     {
         result.diagnostics.Append(err);

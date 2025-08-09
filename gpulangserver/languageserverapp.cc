@@ -1059,6 +1059,15 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
                     ret += ": ";
                 }
                 ret += var->type.ToString().c_str();
+                if (var->valueExpression != nullptr)
+                {
+                    ValueUnion val;
+                    if (var->valueExpression->EvalValue(val))
+                    {
+                        ret += "\n";
+                        ret += GPULang::Format("Value: %s\n", var->valueExpression->EvalString().c_str());
+                    }
+                }
             }
             else if (lookup.flags.typeLookup)
             {

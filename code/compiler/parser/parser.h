@@ -142,6 +142,7 @@ enum class TokenType
     , CommentRow
     , CommentBlockStart
     , CommentBlockEnd
+    , Comment
     , Rgba16
     , Rgb10_A2
     , Rgba8
@@ -216,7 +217,7 @@ struct TokenizationResult
 };
 
 // Tokenize string
-void Tokenize(const GPULangFile* file, const TransientArray<std::string_view>& searchPaths, TokenizationResult& ret);
+void Tokenize(const GPULangFile* file, const TransientArray<std::string_view>& searchPaths, TokenizationResult& ret, bool captureComments = false);
 
 struct ParseResult
 {
@@ -234,6 +235,7 @@ struct TokenStream
         this->dataEnd = this->tokens.end();
         this->typeIt = this->tokenTypes.begin();
         this->typeEnd = this->tokenTypes.end();
+        this->lastComment = nullptr;
     }
     
     // Consume the token
@@ -262,6 +264,13 @@ struct TokenStream
     
     inline bool Match(TokenType type)
     {
+        // If not matching comments, skip all comment tokens
+        while (*this->typeIt == TokenType::Comment)
+        {
+            this->lastComment = this->dataIt;
+            this->typeIt++;
+            this->dataIt++;
+        }
         if (*this->typeIt == type)
         {
             this->typeIt++;
@@ -279,6 +288,13 @@ struct TokenStream
     
     inline bool MatchClass(uint32_t bits)
     {
+        // Always skip comments when matching a class
+        while (*this->typeIt == TokenType::Comment)
+        {
+            this->lastComment = this->dataIt;
+            this->typeIt++;
+            this->dataIt++;
+        }
         if ((TokenClassTable[(uint32_t)*this->typeIt] & bits) == bits)
         {
             this->typeIt++;
@@ -288,6 +304,18 @@ struct TokenStream
         return false;
     }
     
+    inline std::string_view ConsumeComment()
+    {
+        if (this->lastComment != nullptr)
+        {
+            std::string_view ret = this->lastComment->text;
+            this->lastComment = nullptr;
+            return ret;
+        }
+        return std::string_view();
+    }
+    
+    Token* lastComment;
     TokenType* typeIt;
     TokenType* typeEnd;
     Token* dataIt;

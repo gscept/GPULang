@@ -19,6 +19,7 @@
 #include "ast/variable.h"
 #include "ast/function.h"
 #include "ast/generate.h"
+#include "ast/preprocessor.h"
 #include "ast/expressions/stringexpression.h"
 #include "ast/expressions/arrayinitializerexpression.h"
 #include "ast/expressions/intexpression.h"
@@ -556,7 +557,7 @@ static auto resolvePath = [](const std::string_view& path, const GPULang::FixedS
         if (lastSlash != nullptr)
         {
             std::string_view fileFolder(currentFilePath.c_str(), lastSlash + 1);
-            TStr fullPath = TStr::Compact(fileFolder, path);
+            TStr fullPath = TStr::Compact(fileFolder, path);            
             struct stat sb;
             if (stat(fullPath.Data(), &sb) == 0)
             {
@@ -584,7 +585,7 @@ static auto resolvePath = [](const std::string_view& path, const GPULang::FixedS
 /**
  */
 void
-Tokenize(const GPULangFile* file, const TransientArray<std::string_view>& searchPaths, TokenizationResult& ret)
+Tokenize(const GPULangFile* file, const TransientArray<std::string_view>& searchPaths, TokenizationResult& ret, bool captureComments)
 {
     const char* it = file->contents;
     const char* end = file->contents + file->contentSize;
@@ -597,6 +598,7 @@ Tokenize(const GPULangFile* file, const TransientArray<std::string_view>& search
     TransientString currentPath = file->path;
     
     bool ignore = false;
+    const char* commentBegin = nullptr;
     
     startOfLine = it;
     while (it != end)
@@ -610,6 +612,7 @@ Tokenize(const GPULangFile* file, const TransientArray<std::string_view>& search
         {
             ignore = true;
             it += 2;
+            commentBegin = it;
             continue;
         }
         else if (ignore)
@@ -627,6 +630,15 @@ Tokenize(const GPULangFile* file, const TransientArray<std::string_view>& search
                 if (it[0] == '*' && it[1] == '/')
                 {
                     ignore = false;
+                    if (captureComments)
+                    {
+                        std::string_view commentText(commentBegin, it);
+                        ret.tokenTypes.Append(TokenType::Comment);
+                        Token newToken;
+                        newToken.path = currentPath;
+                        newToken.text = commentText;
+                        ret.tokens.Append(newToken);
+                    }
                     it += 2;
                     break;
                 }
@@ -636,7 +648,16 @@ Tokenize(const GPULangFile* file, const TransientArray<std::string_view>& search
         }
         else if (it[0] == '/' && it[1] == '/') // If single line comment, move iterator to end
         {
-            it = lineEnd(it, end);
+            const char* eol = lineEnd(it+2, end);
+            std::string_view commentText(it+2, eol);
+            ret.tokenTypes.Append(TokenType::Comment);
+            Token newToken;
+            newToken.path = currentPath;
+            newToken.text = commentText;
+            ret.tokens.Append(newToken);
+            
+            it = eol;
+            
             line++;
             ret.lineCount++;
             continue;
@@ -881,7 +902,7 @@ Tokenize(const GPULangFile* file, const TransientArray<std::string_view>& search
                                     ret.files.Append(file);
                                     
                                     // Tokenize included file
-                                    Tokenize(file, searchPaths, ret);
+                                    Tokenize(file, searchPaths, ret, captureComments);
                                     
                                     // Remove previous files END token
                                     ret.tokens.size--;
@@ -2778,6 +2799,7 @@ ParseFunction(TokenStream& stream, ParseResult& ret)
         var->name = stream.Data(-1).text;
         var->location = LocationFromToken(stream.Data(-1));
         var->attributes = paramAttributes;
+        var->documentation = stream.ConsumeComment();
         
         if (!stream.Match(TokenType::Colon))
         {
@@ -3306,7 +3328,7 @@ ParseStruct(TokenStream& stream, ParseResult& ret)
         Variable* var = Alloc<Variable>();
         var->name = stream.Data(-1).text;
         var->location = LocationFromToken(stream.Data(-1));
-        
+        var->documentation = stream.ConsumeComment();
         if (!stream.Match(TokenType::Colon))
         {
             ret.errors.Append(UnexpectedToken(stream, ":"));
@@ -3380,10 +3402,12 @@ ParseScopeStatement(TokenStream& stream, ParseResult& ret)
                 if (vars.size > 0)
                 {
                     symbols.Grow(vars.size);
+                    std::string_view doc = stream.ConsumeComment();
                     for (auto var : vars)
                     {
                         symbols.Append(var);
                         var->attributes = attributes;
+                        var->documentation = doc;
                     }
                     attributes.size = 0;
                     
@@ -3680,11 +3704,7 @@ Parse(TokenStream& stream)
         if (ret.errors.size > 0)
             return ret;
         
-        if (stream.Match(TokenType::Directive))
-        {
-            // skip
-        }
-        else if (Annotation* annot = ParseAnnotation(stream, ret))
+        if (Annotation* annot = ParseAnnotation(stream, ret))
         {
             annotations.Append(annot);
         }
@@ -3710,6 +3730,7 @@ Parse(TokenStream& stream)
             sym->attributes = attributes;
             annotations.size = 0;
             attributes.size = 0;
+            sym->documentation = stream.ConsumeComment();
             ret.ast->symbols.Append(sym);
         }
         else if (stream.MatchClass(TOKEN_VARIABLE_STORAGE_BIT))
@@ -3724,10 +3745,12 @@ Parse(TokenStream& stream)
             if (vars.size > 0)
             {
                 ret.ast->symbols.Grow(vars.size);
+                const std::string_view comment = stream.ConsumeComment();
                 for (auto var : vars)
                 {
                     var->attributes = attributes;
                     var->annotations = annotations;
+                    var->documentation = comment;
                     ret.ast->symbols.Append(var);
                 }
                 attributes.size = 0;
@@ -3754,8 +3777,8 @@ Parse(TokenStream& stream)
                 ret.errors.Append(Unsupported(stream, "attributes", "generate"));
                 break;
             }
+            sym->documentation = stream.ConsumeComment();
             ret.ast->symbols.Append(sym);
-            
         }
         else if (stream.Match(TokenType::RenderState))
         {
@@ -3770,8 +3793,8 @@ Parse(TokenStream& stream)
                 ret.errors.Append(Unsupported(stream, "attributes", "generate"));
                 break;
             }
+            sym->documentation = stream.ConsumeComment();
             ret.ast->symbols.Append(sym);
-            
         }
         else if (stream.Match(TokenType::SamplerState))
         {
@@ -3780,8 +3803,8 @@ Parse(TokenStream& stream)
             sym->attributes = attributes;
             annotations.size = 0;
             attributes.size = 0;
+            sym->documentation = stream.ConsumeComment();
             ret.ast->symbols.Append(sym);
-            
         }
         else if (stream.Match(TokenType::Program))
         {
@@ -3793,6 +3816,7 @@ Parse(TokenStream& stream)
                 break;
             }
             annotations.size = 0;
+            sym->documentation = stream.ConsumeComment();
             ret.ast->symbols.Append(sym);
         }
         else if (stream.Match(TokenType::ConditionalCompile))
@@ -3820,6 +3844,7 @@ Parse(TokenStream& stream)
             }
             sym->annotations = annotations;
             sym->attributes = attributes;
+            sym->documentation = stream.ConsumeComment();
             annotations.size = 0;
             attributes.size = 0;
             ret.ast->symbols.Append(sym);
