@@ -1,0 +1,82 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"   # Runs only when you push a version tag like v1.0.0
+  workflow_dispatch:
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    name: ${{ matrix.name }}-build
+    runs-on: ${{ matrix.name }}
+    strategy:
+      matrix:
+        name: [ubuntu-latest, windows-latest, macos-latest]
+        include:
+          - name: windows-latest
+            os: windows-latest
+            config: win64
+          - name: ubuntu-latest
+            os: ubuntu-latest
+            config: linux
+          - name: macos-latest
+            os: macos-latest
+            config: macos
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python 3.x
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.x' # Semantic version range syntax or exact version of a Python version
+        architecture: 'x64' # Optional - x64 or x86, defaults to x64
+
+    - name: Clone dependencies
+      run: |
+        python fips fetch
+        python fips set config ${{ matrix.config }}      
+
+    - name: Fix clang version
+      if: startsWith(matrix.os, 'ubuntu')
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y clang-17 ninja-build
+        echo "CC=clang-17" >> $GITHUB_ENV
+        echo "CXX=clang++-17" >> $GITHUB_ENV
+
+    - name: Configure
+      run: |
+        python fips gen
+
+    - name: Build
+      run: |
+        python fips build
+
+    - name: Upload to release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: |
+          build/gpulangc
+          build/Release/gpulangc.exe
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  notify:
+    runs-on: ubuntu-latest
+    needs: [build]
+    name: Notify
+    if: cancelled() == false
+    steps:
+    - name: Telegram
+      uses: xinthink/action-telegram@v1.1
+      with: 
+        chatId: ${{ secrets.TELEGRAM_CHAT_ID }}
+        botToken: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        jobStatus: ${{ needs.build.result }}
+        skipSuccess: false
