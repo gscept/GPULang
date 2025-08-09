@@ -176,6 +176,13 @@
             color: #ffffff;
         }
 
+        /* Table wrapper for horizontal scrolling */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: 12px;
+        }
+
         /* Navigation */
         .content-nav {
             position: fixed;
@@ -232,6 +239,38 @@
             
             .feature-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            /* Responsive table handling */
+            .syntax-table {
+                font-size: 0.8rem;
+                margin: 1rem 0;
+            }
+            
+            .syntax-table th,
+            .syntax-table td {
+                padding: 0.75rem 0.5rem;
+                white-space: nowrap;
+            }
+            
+            .syntax-table td {
+                min-width: 120px;
+            }
+            
+            .syntax-table th:first-child,
+            .syntax-table td:first-child {
+                min-width: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .syntax-table {
+                font-size: 0.75rem;
+            }
+            
+            .syntax-table th,
+            .syntax-table td {
+                padding: 0.5rem 0.4rem;
             }
         }
     </style>
@@ -330,7 +369,7 @@
                 </div>
 
                 <h3>Texture Types</h3>
-                <p>Various texture types for different dimensionalities and use cases:</p>
+                <p>Various texture types for different dimensionalities and use cases. Texture types containing the <code>Sampled</code> word is a combined texture and sampler and can't be used with for example <code>textureLoad</code>.</p>
                 <div id="textureTypesTable">
                     <p style="color: #888;">Loading texture types...</p>
                 </div>
@@ -427,7 +466,7 @@ VertexMain(
                     </div>
                 </div>
                 <h3>Shader Attributes</h3>
-                <p>Functions tagged with entry_point can be provided shader attributes. They will activate based per program based on binding point, allowing for the same shader to change its execution mode.</p>
+                <p>Functions tagged with entry_point can be provided shader attributes. They will activate based on their program binding point, allowing for the same shader to change its execution mode.</p>
                 <div class="code-example">
                     <div class="code-container">
                         <pre><code class="language-gpulang">// Compute shader attributes
@@ -437,6 +476,25 @@ entry_point csMain() void {...}
 // Pixel shader attributes
 pixel_origin("center")
 entry_point psMain() void {...}</code></pre>
+                    </div>
+                </div>
+                <h3>Shader Type Switches</h3>
+                <p>GPULang provides a set of built-in booleans to test what execution mode the shader is executing in:</p>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-gpulang">var pixel : i32x2;
+
+// GPULang will determine this branch at compile time
+if (gplIsPixelShader)
+{
+    // Pixel shader specific code
+    pixel = pixelGetCoordinates().xy;
+}
+else if (gplIsComputeShader)
+{
+    // Compute shader specific code
+    pixel = computeGetGlobalThreadIndices().xy;
+}</code></pre>
                     </div>
                 </div>
             </section>
@@ -463,7 +521,7 @@ generate
             <section id="control" class="content-section">
                 <h2>Control Flow</h2>
                 
-                <h3>Conditional Statements</h3>
+                <h3>Branching</h3>
                 <div class="code-example">
                     <div class="code-container">
                         <pre><code class="language-gpulang">// If-else statements
@@ -502,7 +560,24 @@ while (samples < MAX_SAMPLES && quality > threshold)
                     </div>
                 </div>
 
-                <h3>Uniform Value Loops</h3>
+                <h3>Switch</h3>
+                <p>C-like Switch-case is supported in GPULang:</p>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-gpulang">switch (shaderType);
+case ShaderTypes.PBR:
+{
+    // PBR shader logic
+}
+case ShaderTypes.Diffuse:
+{
+    // Diffuse shader logic
+}
+</code></pre>
+                    </div>
+                </div>
+
+                <h3>Uniform Value Loops <span class="status-badge status-wip"><i class="fas fa-hammer"></i> in progress</span></h3>
                 <p>Uniformely looping over threads sharing the same value is built-in to GPULang:</p>
                 <div class="code-example">
                     <div class="code-container">
@@ -592,7 +667,7 @@ program StandardShading
                 <div class="code-example">
                     <div class="code-container">
                         <pre><code class="language-gpulang">// Compute shader entry point
-local_size(i32x3(8, 8, 1))
+threads(i32x3(8, 8, 1))
 entry_point
 ComputeMain() void
 {
@@ -770,8 +845,13 @@ sampler_state LinearSampler
             });
             table.appendChild(tbody);
             
+            // Wrap table in a scrollable container
+            const wrapper = document.createElement('div');
+            wrapper.className = 'table-wrapper';
+            wrapper.appendChild(table);
+            
             container.innerHTML = '';
-            container.appendChild(table);
+            container.appendChild(wrapper);
         }
 
         function createVectorExamples(vectorTypes) {

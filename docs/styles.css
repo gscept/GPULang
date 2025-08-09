@@ -109,6 +109,10 @@ nav {
     font-weight: bold;
     text-decoration: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .download-button {
@@ -120,6 +124,10 @@ nav {
     font-weight: bold;
     text-decoration: none;
     transition: all 0.3s ease;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .cta-button:hover {
@@ -427,18 +435,28 @@ code {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .nav-links {
         display: none;
     }
-    
+}
+
+@media (max-width: 768px) {
     .header-buttons {
         gap: 0.5rem;
     }
     
+    .download-button span,
+    .cta-button span {
+        display: none;
+    }
+    
     .download-button, .cta-button {
-        padding: 0.6rem 1rem;
-        font-size: 0.9rem;
+        padding: 0.6rem;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .download-button {
@@ -456,16 +474,25 @@ code {
     }
 }
 
+/* Status Badge */
+.status-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-left: 1rem;
+}
+
+.status-wip {
+    background: rgba(251, 191, 36, 0.2);
+    color: #fbbf24;
+}
+
 /* Very small screens */
 @media (max-width: 480px) {
-    .download-button span,
-    .cta-button span {
-        display: none;
-    }
-    
     .download-button,
     .cta-button {
-        padding: 0.6rem;
-        min-width: 44px;
+        padding: 0.5rem;
+        min-width: 40px;
     }
 }
