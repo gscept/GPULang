@@ -33,6 +33,9 @@ enum class TokenType
     , Enum
     , While
     , Do
+    , Switch
+    , Case
+    , Default
     , Break
     , Continue
     , Discard

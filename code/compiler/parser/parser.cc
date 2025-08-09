@@ -137,6 +137,9 @@ constexpr StaticMap HardCodedTokens = std::array{
     , std::pair{ "enum"_h, TokenType::Enum }
     , std::pair{ "while"_h, TokenType::While }
     , std::pair{ "do"_h, TokenType::Do }
+    , std::pair{ "switch"_h, TokenType::Switch }
+    , std::pair{ "case"_h, TokenType::Case }
+    , std::pair{ "default"_h, TokenType::Default }
     , std::pair{ "break"_h, TokenType::Break }
     , std::pair{ "continue"_h, TokenType::Continue }
     , std::pair{ "discard"_h, TokenType::Discard }
@@ -3679,6 +3682,75 @@ ParseStatement(TokenStream& stream, ParseResult& ret)
             ret.errors.Append(UnexpectedToken(stream, "; after expression"));
             return res;
         }
+    }
+    else if (stream.Match(TokenType::Switch))
+    {
+        const Token& tok = stream.Data(-1);
+        if (!stream.Match(TokenType::LeftParant))
+        {
+            ret.errors.Append(UnexpectedToken(stream, "("));
+            return res;
+        }
+        Expression* cond = ParseExpression2(stream, ret);
+        if (!stream.Match(TokenType::RightParant))
+        {
+            ret.errors.Append(UnexpectedToken(stream, ")"));
+            return res;
+        }
+        
+        if (!stream.Match(TokenType::LeftScope))
+        {
+            ret.errors.Append(UnexpectedToken(stream, "{"));
+            return res;
+        }
+        
+        TransientArray<Expression*> caseExprs(128);
+        TransientArray<Statement*> caseBodies(128);
+        while (stream.Match(TokenType::Case))
+        {
+            Expression* caseExpr = ParseExpression2(stream, ret);
+            if (caseExprs.Full())
+            {
+                ret.errors.Append(Limit(stream, "case expressions", 128));
+                break;
+            }
+            caseExprs.Append(caseExpr);
+            
+            if (!stream.Match(TokenType::Colon))
+            {
+                ret.errors.Append(UnexpectedToken(stream, ": after case expression"));
+                break;
+            }
+            
+            Statement* body = ParseStatement(stream, ret);
+            caseBodies.Append(body);
+        }
+        
+        Statement* defaultBody = nullptr;
+        if (stream.Match(TokenType::Default))
+        {
+            if (!stream.Match(TokenType::Colon))
+            {
+                ret.errors.Append(UnexpectedToken(stream, ": after default"));
+                return res;
+            }
+            defaultBody = ParseStatement(stream, ret);
+        }
+        
+        if (stream.Match(TokenType::Case))
+        {
+            ret.errors.Append(UnexpectedToken(stream, "case before default"));
+            return res;
+        }
+        
+        if (!stream.Match(TokenType::RightScope))
+        {
+            ret.errors.Append(UnexpectedToken(stream, "}"));
+            return res;
+        }
+        
+        res = Alloc<SwitchStatement>(cond, caseExprs, caseBodies, defaultBody);
+        res->location = LocationFromToken(tok);
     }
     else
     {
