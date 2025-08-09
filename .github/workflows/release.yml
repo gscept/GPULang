@@ -62,8 +62,10 @@ jobs:
       uses: softprops/action-gh-release@v2
       with:
         files: |
-          ../fips-deploy/gpulang/${{matrix.config}}/gpulangc
-          ../fips-deploy/gpulang/${{matrix.config}}/gpulangc.exe
+          ../fips-deploy/GPULang/${{matrix.config}}/gpulangc
+          ../fips-deploy/GPULang/${{matrix.config}}/gpulangc.exe
+          ../fips-deploy/GPULang/${{matrix.config}}/gpulangserver
+          ../fips-deploy/GPULang/${{matrix.config}}/gpulangserver.exe
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
