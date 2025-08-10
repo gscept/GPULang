@@ -20,16 +20,16 @@ jobs:
         include:
           - name: windows-latest
             os: windows-latest
-            config: win64
-            arch: x64
+            config: win64-deploy
+            arch: x86_64
           - name: ubuntu-latest
             os: ubuntu-latest
-            config: linux
-            arch: x64
+            config: linux-deploy
+            arch: x86_64
           - name: macos-latest
             os: macos-latest
-            config: macos
-            arch: arm64
+            config: macos-deploy
+            arch: aarch64
 
     steps:
     - uses: actions/checkout@v4

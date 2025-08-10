@@ -1,0 +1,11 @@
+---
+platform: osx
+generator: Xcode
+build_tool: cmake
+build_type: Release
+defines:
+  BUILD_COMPILER: ON
+  FIPS_RTTI: ON
+  FIPS_EXCEPTIONS: ON
+  LSP_USE_SANITIZERS: OFF
+  DEPLOY: ON
