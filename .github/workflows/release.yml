@@ -70,8 +70,8 @@ jobs:
         files: |
           ../fips-deploy/GPULang/${{matrix.config}}/gpulangc-${{matrix.platform}}-${{matrix.arch}}
           ../fips-deploy/GPULang/${{matrix.config}}/gpulangc-${{matrix.platform}}-${{matrix.arch}}.exe
-          ../fips-deploy/GPULang/${{matrix.config}}/gpulangserver-${{matrix.platform}}-${{matrix.arch}}
-          ../fips-deploy/GPULang/${{matrix.config}}/gpulangserver-${{matrix.platform}}-${{matrix.arch}}.exe
+          ../fips-deploy/GPULang/${{matrix.config}}/gpulang_server-${{matrix.platform}}-${{matrix.arch}}
+          ../fips-deploy/GPULang/${{matrix.config}}/gpulang_server-${{matrix.platform}}-${{matrix.arch}}.exe
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
