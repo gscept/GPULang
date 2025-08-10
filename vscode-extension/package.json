@@ -1,14 +1,15 @@
 {
-	"name": "gpulang-lsp",
+	"name": "gpulang-vscode-client",
 	"description": "GPULang Language Server Client",
 	"author": "Gustav Sterbrant",
 	"license": "MIT",
 	"version": "1.0.0",
+	"icon": "temp-icon.png",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Microsoft/vscode-extension-samples"
 	},
-	"publisher": "Gustav Sterbrant",
+	"publisher": "GustavSterbrant",
 	"categories": [
 		"Programming Languages"
 	],
@@ -25,7 +26,6 @@
 		"aliases": ["GPULang", "gpulang"]
 	}],
 	"activationEvents": [
-		"onLanguage:gpulang",
 		"onStartupFinished"
 	],
 	"main": "./client/out/extension",

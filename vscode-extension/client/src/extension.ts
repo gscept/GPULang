@@ -82,12 +82,16 @@ export function activate(context: ExtensionContext) {
 		const binary_name = `gpulang_server-${platform}-${arch}`;
 
 		console.log(platform);
-		const serverPath = context.asAbsolutePath(path.join(`bin/`, process.platform === 'win32' ? `${binary_name}.exe` : binary_name));
+		let serverPath = context.asAbsolutePath(path.join(`bin/`, process.platform === 'win32' ? `${binary_name}.exe` : binary_name));
+		if (fs.existsSync(serverPath) === false) {
+			// Try loading a local version of it
+			serverPath = context.asAbsolutePath(path.join(`bin/`, process.platform === 'win32' ? 'gpulang_server.exe' : 'gpulang_server'));
+		}
 		await startServerAndConnect(serverPath).catch(err => {
-			vscode.window.showErrorMessage(`Failed to start language server: ${err.message}`);
+			vscode.window.showErrorMessage(`Failed to GPULang server: ${err.message}`);
 			return rejects(err);
 		});
-		vscode.window.showInformationMessage(`Language server started: ${serverPath}`);
+		vscode.window.showInformationMessage(`GPULang server started: ${serverPath}`);
 
 		let socket_file;
 		if (process.platform === 'win32')
@@ -100,7 +104,6 @@ export function activate(context: ExtensionContext) {
 		}
 
 		const socket = net.createConnection(socket_file);
-		//const socket = net.connect(connectionInfo);
 		const result: StreamInfo = {
 			writer: socket,
 			reader: socket
