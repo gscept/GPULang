@@ -72,6 +72,30 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  package-extension:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: bin
+      - name: Move binaries into extension folder
+        run: |
+          mkdir -p vscode-extension/bin
+          for dir in bin/*; do
+            cp -r "$dir" vscode-extension/bin/
+          done
+      - name: Install dependencies
+        run: cd vscode-extension && npm install
+      - name: Publish to VS Code Marketplace
+        run: |
+          cd vscode-extension
+          npx vsce publish
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+
   notify:
     runs-on: ubuntu-latest
     needs: [build]

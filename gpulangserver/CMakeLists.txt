@@ -30,11 +30,3 @@ if (APPLE)
         COMMENT "Signing the binary with codesign"
     )
 endif()
-
-set(EXTENSION_BIN_DIR "${CMAKE_SOURCE_DIR}/vscode-extension/bin")
-add_custom_command(TARGET gpulang_server POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy
-        $<TARGET_FILE:gpulang_server>
-        "${EXTENSION_BIN_DIR}/$<TARGET_FILE_NAME:gpulang_server>"
-    COMMENT "Copying language server binary to vscode extension folder"
-)
