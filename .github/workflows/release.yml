@@ -21,7 +21,7 @@ jobs:
           - name: windows-latest
             os: windows-latest
             config: win64-deploy
-            platform: win64
+            platform: windows
             arch: x86_64
           - name: ubuntu-latest
             os: ubuntu-latest
