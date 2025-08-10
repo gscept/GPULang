@@ -54,7 +54,35 @@ async function startServerAndConnect(serverPath: string): Promise<void> {
 
 export function activate(context: ExtensionContext) {
 	const serverOptions = async () => {
-		const serverPath = context.asAbsolutePath(path.join('bin', process.platform === 'win32' ? 'gpulang_server.exe' : 'gpulang_server'));
+		
+		let platform = '';
+		if (os.platform() == "win32")
+		{
+			platform = "windows";
+		}
+		else if (os.platform() == "linux")
+		{
+			platform = "linux";
+		}
+		else if (os.platform() == "darwin")
+		{
+			platform = "macos";
+		}
+
+		let arch = '';
+		if (os.arch() == "x64")
+		{
+			arch = "x64";
+		}
+		else if (os.arch() == "arm64")
+		{
+			arch = "aarch64";
+		}
+
+		const binary_name = `gpulang_server-${platform}-${arch}`;
+
+		console.log(platform);
+		const serverPath = context.asAbsolutePath(path.join(`bin/`, process.platform === 'win32' ? `${binary_name}.exe` : binary_name));
 		await startServerAndConnect(serverPath).catch(err => {
 			vscode.window.showErrorMessage(`Failed to start language server: ${err.message}`);
 			return rejects(err);
