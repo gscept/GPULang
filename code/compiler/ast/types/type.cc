@@ -168,7 +168,7 @@ Type::GetSymbols(const FixedString& str)
 Symbol*
 Type::GetSymbol(const TransientString& str)
 {
-    auto it = this->scope.symbolLookup.Find(str);
+    auto it = this->scope.symbolLookup.Find(HashString(str));
     if (it != this->scope.symbolLookup.end())
         return it->second;
     else
@@ -182,7 +182,7 @@ std::vector<Symbol*>
 Type::GetSymbols(const TransientString& str)
 {
     std::vector<Symbol*> ret;
-    auto range = this->scope.symbolLookup.FindRange(str);
+    auto range = this->scope.symbolLookup.FindRange(HashString(str));
     for (auto it = range.first; it != range.second; it++)
         ret.push_back((*it).second);
     return ret;
