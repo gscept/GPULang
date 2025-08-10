@@ -1082,7 +1082,7 @@ Limit(const TokenStream& stream, const char* name, size_t size)
 
     GPULangDiagnostic diagnostic;
     diagnostic.severity = GPULangDiagnostic::Severity::Error;
-    diagnostic.error = TStr("Limit %s(%d) reached", name, size);
+    diagnostic.error = TStr("Limit ", name, "(", size, ")" , " reached");
     diagnostic.file = tok.path;
     diagnostic.line = tok.startLine;
     diagnostic.column = tok.startChar;
@@ -1291,11 +1291,6 @@ static void SetupTokenClassTable()
     memset(PostfixPrecedenceTable, 0x0, sizeof(PostfixPrecedenceTable));
     PostfixPrecedenceTable[(uint32_t)TokenType::Increment] = 2;
     PostfixPrecedenceTable[(uint32_t)TokenType::Decrement] = 2;
-    PostfixPrecedenceTable[(uint32_t)TokenType::LeftBracket] = 0xFFFFFFFF;
-    PostfixPrecedenceTable[(uint32_t)TokenType::RightBracket] = 0xFFFFFFFF;
-    PostfixPrecedenceTable[(uint32_t)TokenType::Subscript] = 0xFFFFFFFF;
-    PostfixPrecedenceTable[(uint32_t)TokenType::LeftParant] = 0xFFFFFFFF;
-    PostfixPrecedenceTable[(uint32_t)TokenType::RightParant] = 0xFFFFFFFF;
     PostfixPrecedenceTable[(uint32_t)TokenType::Dot] = 2;
     PostfixPrecedenceTable[(uint32_t)TokenType::PrefixAdd] = 3;
     PostfixPrecedenceTable[(uint32_t)TokenType::PrefixSub] = 3;
@@ -1335,8 +1330,13 @@ static void SetupTokenClassTable()
     PostfixPrecedenceTable[(uint32_t)TokenType::XorAssign] = 16;
     PostfixPrecedenceTable[(uint32_t)TokenType::Comma] = 0xFFFFFFFF;
     PostfixPrecedenceTable[(uint32_t)TokenType::ArrayInitializer] = 0xFFFFFFFF;
+    PostfixPrecedenceTable[(uint32_t)TokenType::LeftBracket] = 0xFFFFFFFF;
+    PostfixPrecedenceTable[(uint32_t)TokenType::RightBracket] = 0xFFFFFFFF;
+    PostfixPrecedenceTable[(uint32_t)TokenType::LeftParant] = 0xFFFFFFFF;
+    PostfixPrecedenceTable[(uint32_t)TokenType::RightParant] = 0xFFFFFFFF;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Question] = 16;
+    PostfixPrecedenceTable[(uint32_t)TokenType::Subscript] = 0xFFFFFFFF;
     PostfixPrecedenceTable[(uint32_t)TokenType::Call] = 0xFFFFFFFF;
-
     
     memset(PrefixPrecedenceTable, 0x0, sizeof(PrefixPrecedenceTable));
     PrefixPrecedenceTable[(uint32_t)TokenType::Add] = 3;
@@ -1418,7 +1418,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
     uint32_t* precedenceTable = PrefixPrecedenceTable;
     uint32_t* associativityTable = PrefixAssociativityTable;
     
-    while (type != TokenType::End)
+    while (type != TokenType::End && type != TokenType::SemiColon)
     {
         if (stream.Match(TokenType::Quote))
         {
@@ -1793,6 +1793,22 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
         }
         else if (stream.Match(TokenType::Question))
         {
+            while (operatorStack.size > 0)
+            {
+                const Operator& tok = operatorStack.back();
+                uint32_t p1 = precedenceTable[(uint32_t)TokenType::Question];
+                uint32_t p2 = precedenceTable[(uint32_t)operatorStack.back().type];
+                uint32_t assoc = associativityTable[(uint32_t)TokenType::Question];
+
+                if ((assoc == ASSOC_LEFT && p2 <= p1) ||
+                    (assoc == ASSOC_RIGHT && p2 < p1))
+                {
+                    reduceTop(operatorStack, operandStack);
+                }
+                else
+                    break;
+            }
+
             Operator parseTok;
             parseTok.type = TokenType::Question;
             parseTok.arity = TERNARY_ARITY;
@@ -2716,7 +2732,7 @@ ParseVariables(TokenStream& stream, ParseResult& ret)
                 ret.errors.Append(Limit(stream, "initializer values", 128));
                 break;
             }
-            values.Append(ParseExpression2(stream, ret));
+            values.Append(ParseExpression2(stream, ret, true));
 
             // Match multiple arguments
             if (stream.Match(TokenType::Comma))
@@ -2734,7 +2750,7 @@ ParseVariables(TokenStream& stream, ParseResult& ret)
 
             GPULangDiagnostic diagnostic;
             diagnostic.file = tok.path;
-            diagnostic.error = TStr("Expected a variable (%d) for for each value (%d)", vars.size, values.size);
+            diagnostic.error = TStr("Expected a variable for for each value");
             diagnostic.line = tok.startLine;
             diagnostic.column = tok.startChar;
             diagnostic.length = tok.endChar - tok.startChar;
@@ -2746,7 +2762,7 @@ ParseVariables(TokenStream& stream, ParseResult& ret)
 
             GPULangDiagnostic diagnostic;
             diagnostic.file = tok.path;
-            diagnostic.error = TStr("Expected a value (%d) for for each variable (%d)", values.size, vars.size);
+            diagnostic.error = TStr("Expected a value for for each variable");
             diagnostic.line = tok.startLine;
             diagnostic.column = tok.startChar;
             diagnostic.length = tok.endChar - tok.startChar;
