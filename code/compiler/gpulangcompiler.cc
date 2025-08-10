@@ -1873,14 +1873,14 @@ GPULangGenerateDependencies(GPULangFile* file, const std::vector<std::string>& d
 /**
 */
 GPULangErrorBlob*
-Error(const GPULang::TransientString message)
+Error(const GPULang::GrowingString& message)
 {
     GPULangErrorBlob* ret = new GPULangErrorBlob();
     if (message.size > 0)
     {
         ret->buffer = new char[message.size + 1];
         ret->size = message.size;
-        memcpy(ret->buffer, message.buf, ret->size);
+        memcpy(ret->buffer, message.data, ret->size);
         ret->buffer[ret->size] = '\0';
     }
     else
@@ -1942,10 +1942,10 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
     Tokenize(file, searchPaths, tokenizationResult);
     if (tokenizationResult.errors.size > 0)
     {
-        std::string str;
+        GrowingString str;
         for (const auto& err : tokenizationResult.errors)
         {
-            str += Format("%s(%d,%d): %s\n", err.file.c_str(), err.line+1, err.column, err.error.c_str());
+            str.Append(Format("%s(%d,%d): error: %s\n", err.file.c_str(), err.line+1, err.column, err.error.c_str()));
         }
         errorBuffer = Error(str);
         return false;
@@ -1992,10 +1992,6 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
             it++;
         }
         fileName.buf[0] = std::toupper(fileName.buf[0]);
-
-        timer.Stop();
-        if (options.emitTimings)
-            timer.Print("Preprocessing");
         
         timer.Start();
 
@@ -2004,10 +2000,10 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
         ParseResult parseResult = Parse(tokenStream);
         if (parseResult.errors.size > 0)
         {
-            std::string str;
+            GrowingString str;
             for (const auto& err : parseResult.errors)
             {
-                str += Format("%s(%d,%d): %s\n", err.file.c_str(), err.line+1, err.column, err.error.c_str());
+                str.Append(Format("%s(%d,%d): error: %s\n", err.file.c_str(), err.line+1, err.column, err.error.c_str()));
             }
             errorBuffer = Error(str);
             return false;
@@ -2016,8 +2012,6 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
         timer.Stop();
         if (options.emitTimings)
         {
-            printf("%zu tokens\n", tokenizationResult.tokens.size);
-            printf("%zu lines\n", tokenizationResult.lineCount);
             timer.Print("Parsing");
         }
 
@@ -2037,7 +2031,7 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
         // convert error list to string
         if (compiler.messages.size != 0 && !compiler.options.quiet)
         {
-            TransientString err;
+            GrowingString err;
             for (size_t i = 0; i < compiler.messages.size; i++)
             {
                 if (i > 0)
@@ -2045,7 +2039,7 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
                 err.Append(compiler.messages[i]);
             }
             if (err.size == 0 && compiler.hasErrors)
-                err = "Unhandled internal compiler error";
+                err.Append("Unhandled internal compiler error");
             errorBuffer = Error(err);
         }
         if (options.emitTimings)
@@ -2053,10 +2047,10 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
         GPULang::ResetAllocator(&alloc);
         return res;
     }
-    std::string err;
+    GrowingString err;
     for (auto& diagnostic : diagnostics)
     {
-        err += Format("%s(%d:%d): %s\n", diagnostic.file.c_str(), diagnostic.line, diagnostic.column, diagnostic.error.c_str());
+        err.Append(Format("%s(%d:%d): error: %s\n", diagnostic.file.c_str(), diagnostic.line, diagnostic.column, diagnostic.error.c_str()));
     }
     errorBuffer = Error(err);
 
