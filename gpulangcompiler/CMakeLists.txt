@@ -14,6 +14,9 @@ fips_begin_app(gpulangc cmdline)
         shadercompilerapp.h
         singleshadercompiler.cc
         singleshadercompiler.h   
+    )
+    fips_dir(argh)
+    fips_files(
         argh.h
     )
 

@@ -4,7 +4,7 @@
 //------------------------------------------------------------------------------
 
 #include "shadercompilerapp.h"
-#include "argh.h"
+#include "argh/argh.h"
 #include "memory.h"
 #include <filesystem>
 
