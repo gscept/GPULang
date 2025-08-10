@@ -5,7 +5,7 @@ GPULang
 
 GPULang is a frontend shader language meant to serve as a common shader interface for multiple backends. 
 
-**GPULang is not based on or is dependent on LLVM**
+**GPULang is not based on nor is dependent on LLVM**
 
 GPULang targets backend platforms directly, by aiming to translate its relatively low level custom frontend language to SPIR-V, WGSL and Metal. GPULang is designed from the bottom up to support certain quality of life features such as enums, aliasing, and fp16 (work in progress), as well as exposing certain hardware level functionality on a native level, such as device addresses (through pointers), shader stage link validation and shader pipeline composition with depth/rasterization/blend states and shader stages combined and validated at compile time.
 
@@ -14,6 +14,7 @@ GPULang also offers a reflection API, which allows a title to reason about the s
 GPULang uses the following libraries (which are automatically downloaded through fips), and all of which follows either the BSD or GNU lesser general license:
 
 * spv-tools
+* argh
 
 GPULang also allows for compile time linking of shader programs, allowing outputting of shader binaries for graphics APIs that support them.
 
