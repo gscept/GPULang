@@ -21,14 +21,17 @@ jobs:
           - name: windows-latest
             os: windows-latest
             config: win64-deploy
+            platform: windows
             arch: x86_64
           - name: ubuntu-latest
             os: ubuntu-latest
             config: linux-deploy
+            platform: linux
             arch: x86_64
           - name: macos-latest
             os: macos-latest
             config: macos-deploy
+            platform: macos
             arch: aarch64
 
     steps:
@@ -65,10 +68,10 @@ jobs:
       uses: softprops/action-gh-release@v2
       with:
         files: |
-          ../fips-deploy/GPULang/${{matrix.config}}/gpulangc-${{matrix.config}}-${{matrix.arch}}
-          ../fips-deploy/GPULang/${{matrix.config}}/gpulangc-${{matrix.config}}-${{matrix.arch}}.exe
-          ../fips-deploy/GPULang/${{matrix.config}}/gpulangserver-${{matrix.config}}-${{matrix.arch}}
-          ../fips-deploy/GPULang/${{matrix.config}}/gpulangserver-${{matrix.config}}-${{matrix.arch}}.exe
+          ../fips-deploy/GPULang/${{matrix.config}}/gpulangc-${{matrix.platform}}-${{matrix.arch}}
+          ../fips-deploy/GPULang/${{matrix.config}}/gpulangc-${{matrix.platform}}-${{matrix.arch}}.exe
+          ../fips-deploy/GPULang/${{matrix.config}}/gpulang_server-${{matrix.platform}}-${{matrix.arch}}
+          ../fips-deploy/GPULang/${{matrix.config}}/gpulang_server-${{matrix.platform}}-${{matrix.arch}}.exe
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
