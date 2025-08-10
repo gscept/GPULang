@@ -8,6 +8,7 @@ import * as os from 'os';
 import * as path from 'path';
 import * as vscode from 'vscode';
 import * as fs from 'fs';
+import { spawn, ChildProcess } from 'child_process';
 
 import {
 	LanguageClient,
@@ -16,14 +17,50 @@ import {
 	Trace,
 } from 'vscode-languageclient/node';
 import { ExtensionContext, workspace } from 'vscode';
+import { rejects } from 'assert';
 
 let client: LanguageClient;
+const serverProcess: ChildProcess | null = null;
 
+async function startServerAndConnect(serverPath: string): Promise<void> {
+	const serverProcess = spawn(serverPath, [], { stdio: ['ignore', 'pipe', 'pipe'], cwd: path.dirname(serverPath)});
 
-export function activate(_: ExtensionContext) {
-	
+	await new Promise<void>((resolve, reject) => {
+		let settled = false;
 
-	const serverOptions = () => {
+		serverProcess.stdout.on('data', (data) => {
+			if (data.toString().includes('Waiting for client...')) {
+				settled = true;
+				resolve();
+			} else {
+				console.log(`Server output: ${data}`);
+			}
+		});
+
+		serverProcess.on('error', (err) => {
+			reject(err);
+		});
+		serverProcess.on('exit', (code) => {
+			reject(new Error(`Server exited with ${code}`));
+		});
+
+		setTimeout(() => {
+			if (settled) {return;}
+			serverProcess.kill();
+			reject(new Error('Server did not start in time. Make sure the server path is correct.'));
+		}, 500);
+	});
+}
+
+export function activate(context: ExtensionContext) {
+	const serverOptions = async () => {
+		const serverPath = context.asAbsolutePath(path.join('bin', process.platform === 'win32' ? 'gpulang_server.exe' : 'gpulang_server'));
+		await startServerAndConnect(serverPath).catch(err => {
+			vscode.window.showErrorMessage(`Failed to start language server: ${err.message}`);
+			return rejects(err);
+		});
+		vscode.window.showInformationMessage(`Language server started: ${serverPath}`);
+
 		let socket_file;
 		if (process.platform === 'win32')
 		{
@@ -33,6 +70,7 @@ export function activate(_: ExtensionContext) {
 		{
 			socket_file = path.join(os.tmpdir(), "gpulang_socket");
 		}
+
 		const socket = net.createConnection(socket_file);
 		//const socket = net.connect(connectionInfo);
 		const result: StreamInfo = {
@@ -76,6 +114,16 @@ export function activate(_: ExtensionContext) {
 		clientOptions
 	);
 
+	context.subscriptions.push({
+        dispose() {
+            if (client) {
+                client.stop();
+            }
+            if (serverProcess) {
+                serverProcess.kill();
+            }
+        }
+    });
 
 	client.setTrace(Trace.Verbose);
 
