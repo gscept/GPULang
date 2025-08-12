@@ -72,8 +72,7 @@ jobs:
     - name: Upload gpulangc to GitHub release
       uses: softprops/action-gh-release@v2
       with:
-        files: |
-          bin/gpulangc-${{matrix.binary_name}}
+        files: ../fips-deploy/GPULang/${{matrix.config}}/gpulangc-${{matrix.binary_name}}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
