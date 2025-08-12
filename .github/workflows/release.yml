@@ -21,15 +21,15 @@ jobs:
           - name: windows-latest
             os: windows-latest
             config: win64-deploy
-            binary_name: -windows-x86_64.exe
+            binary_name: windows-x86_64.exe
           - name: ubuntu-latest
             os: ubuntu-latest
             config: linux-deploy
-            binary_name: -linux-x86_64
+            binary_name: linux-x86_64
           - name: macos-latest
             os: macos-latest
             config: macos-deploy
-            binary_name: -macos-aarch64
+            binary_name: macos-aarch64
 
     steps:
     - uses: actions/checkout@v4
