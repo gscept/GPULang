@@ -26,6 +26,14 @@ fips_begin_app(gpulang_server cmdline)
 
 fips_end_app()
 
+
+if (APPLE)
+    add_custom_command(TARGET gpulang_server POST_BUILD
+        COMMAND codesign --sign - $<TARGET_FILE:gpulang_server>
+        COMMENT "Signing the binary with codesign"
+    )
+endif()
+
 if (NOT DEPLOY)
     set(EXTENSION_BIN_DIR "${CMAKE_SOURCE_DIR}/vscode-extension/bin")
     add_custom_command(TARGET gpulang_server POST_BUILD
@@ -33,12 +41,5 @@ if (NOT DEPLOY)
             $<TARGET_FILE:gpulang_server>
             "${EXTENSION_BIN_DIR}/$<TARGET_FILE_NAME:gpulang_server>"
         COMMENT "Copying language server binary to vscode extension folder"
-    )
-endif()
-
-if (APPLE)
-    add_custom_command(TARGET gpulang_server POST_BUILD
-        COMMAND codesign --sign - $<TARGET_FILE:gpulang_server>
-        COMMENT "Signing the binary with codesign"
     )
 endif()
