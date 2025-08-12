@@ -64,7 +64,7 @@ jobs:
     - name: Upload binary artifact
       uses: actions/upload-artifact@v4
       with:
-        name: gpulang_server-${{matrix.platform}}-${{matrix.arch}}${{matrix.extension}}
+        name: gpulang_server-${{matrix.binary_name}}
         path: vscode-extension/bin/
 
     - name: Upload to release
