@@ -65,7 +65,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: gpulang_server-${{matrix.binary_name}}
-        path: ../fips-deploy/GPULang/${{matrix.config}}/gpulang_server-${{matrix.binary_name}}
+        path: bin/gpulang_server-${{matrix.binary_name}}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -73,7 +73,7 @@ jobs:
       uses: softprops/action-gh-release@v2
       with:
         files: |
-          ../fips-deploy/GPULang/${{matrix.config}}/gpulangc-${{matrix.binary_name}}
+          bin/gpulangc-${{matrix.binary_name}}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
