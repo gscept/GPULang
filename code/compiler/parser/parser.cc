@@ -1148,6 +1148,7 @@ static const uint32_t TOKEN_VARIABLE_ATTRIBUTE_BIT = 0x400;
 static const uint32_t TOKEN_VARIABLE_STORAGE_BIT = 0x800;
 static const uint32_t TOKEN_PARAMETER_STORAGE_BIT = 0x1000;
 static const uint32_t TOKEN_OPERATOR_BIT = 0x2000;
+static const uint32_t TOKEN_EXPRESSION_BIT = 0x4000;
 uint32_t TokenClassTable[(uint32_t)TokenType::NumTokenTypes];
 
 uint32_t PrefixAssociativityTable[(uint32_t)TokenType::NumTokenTypes];
@@ -1160,52 +1161,70 @@ static const uint32_t ASSOC_RIGHT = 1;
 static void SetupTokenClassTable()
 {
     memset(TokenClassTable, 0x0, sizeof(TokenClassTable));
-    TokenClassTable[(uint32_t)TokenType::AddAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT | TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::SubAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::MulAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::DivAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::ModAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::LeftShiftAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::RightShiftAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::AndAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::OrAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::XorAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::Assign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::AddAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::SubAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::MulAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::DivAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::ModAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::LeftShiftAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::RightShiftAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::AndAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::OrAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::XorAssign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Assign] |= TOKEN_ASSIGNMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
     
-    TokenClassTable[(uint32_t)TokenType::Equal] |= TOKEN_EQUALITY_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::NotEqual] |= TOKEN_EQUALITY_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Equal] |= TOKEN_EQUALITY_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::NotEqual] |= TOKEN_EQUALITY_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
     
-    TokenClassTable[(uint32_t)TokenType::LeftAngle] |= TOKEN_COMPARISON_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::LessThanEqual] |= TOKEN_COMPARISON_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::RightAngle] |= TOKEN_COMPARISON_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::GreaterThanEqual] |= TOKEN_COMPARISON_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::LeftAngle] |= TOKEN_COMPARISON_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::LessThanEqual] |= TOKEN_COMPARISON_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::RightAngle] |= TOKEN_COMPARISON_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::GreaterThanEqual] |= TOKEN_COMPARISON_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
     
-    TokenClassTable[(uint32_t)TokenType::LeftShift] |= TOKEN_SHIFT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::RightShift] |= TOKEN_SHIFT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::LeftShift] |= TOKEN_SHIFT_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::RightShift] |= TOKEN_SHIFT_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
     
-    TokenClassTable[(uint32_t)TokenType::Add] |= TOKEN_ADD_SUB_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::Sub] |= TOKEN_ADD_SUB_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Add] |= TOKEN_ADD_SUB_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Sub] |= TOKEN_ADD_SUB_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
     
-    TokenClassTable[(uint32_t)TokenType::Mul] |= TOKEN_MUL_DIV_MOD_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::Div] |= TOKEN_MUL_DIV_MOD_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::Mod] |= TOKEN_MUL_DIV_MOD_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Mul] |= TOKEN_MUL_DIV_MOD_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Div] |= TOKEN_MUL_DIV_MOD_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Mod] |= TOKEN_MUL_DIV_MOD_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
     
-    TokenClassTable[(uint32_t)TokenType::Sub] |= TOKEN_PREFIX_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::Add] |= TOKEN_PREFIX_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::Not] |= TOKEN_PREFIX_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::Complement] |= TOKEN_PREFIX_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::Increment] |= TOKEN_PREFIX_OPERATOR_BIT | TOKEN_INCREMENT_DECREMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::Decrement] |= TOKEN_PREFIX_OPERATOR_BIT | TOKEN_INCREMENT_DECREMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::Mul] |= TOKEN_PREFIX_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::And] |= TOKEN_PREFIX_OPERATOR_BIT| TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Sub] |= TOKEN_PREFIX_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Add] |= TOKEN_PREFIX_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::Not] |= TOKEN_PREFIX_OPERATOR_BIT | TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Complement] |= TOKEN_PREFIX_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Increment] |= TOKEN_PREFIX_OPERATOR_BIT | TOKEN_INCREMENT_DECREMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Decrement] |= TOKEN_PREFIX_OPERATOR_BIT | TOKEN_INCREMENT_DECREMENT_OPERATOR_BIT| TOKEN_OPERATOR_BIT  | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Mul] |= TOKEN_PREFIX_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::And] |= TOKEN_PREFIX_OPERATOR_BIT | TOKEN_OPERATOR_BIT;
     
-    TokenClassTable[(uint32_t)TokenType::LogicalOr] |= TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::LogicalAnd] |= TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::Or] |= TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::Xor] |= TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::And] |= TOKEN_OPERATOR_BIT;
-    TokenClassTable[(uint32_t)TokenType::Dot] |= TOKEN_OPERATOR_BIT;
-    //TokenClassTable[(uint32_t)TokenType::Comma] |= TOKEN_OPERATOR_BIT;
+    TokenClassTable[(uint32_t)TokenType::LogicalOr] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::LogicalAnd] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Or] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Xor] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::And] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Dot] |= TOKEN_OPERATOR_BIT | TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Comma] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Question] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Colon] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::LeftBracket] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::RightBracket] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::LeftParant] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::RightParant] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Identifier] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Integer] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::UnsignedInteger] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Hex] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::UnsignedHex] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Float] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Double] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Bool] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Quote] |= TOKEN_EXPRESSION_BIT;
+    TokenClassTable[(uint32_t)TokenType::Declared] |= TOKEN_EXPRESSION_BIT;
+
+    
     
     TokenClassTable[(uint32_t)TokenType::EntryPoint_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
     TokenClassTable[(uint32_t)TokenType::Threads_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
@@ -1418,8 +1437,18 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
     uint32_t* precedenceTable = PrefixPrecedenceTable;
     uint32_t* associativityTable = PrefixAssociativityTable;
     
-    while (type != TokenType::End && type != TokenType::SemiColon)
+    while (type != TokenType::End)
     {
+        if (stream.MatchClass(TOKEN_EXPRESSION_BIT))
+        {
+            // If it's a valid token, unmatch it for expression evaluation
+            stream.Unmatch();
+        }
+        else
+        {
+            // Otherwise, break because the expression is over
+            break;
+        }
         if (stream.Match(TokenType::Quote))
         {
             const Token& tok = stream.Data(-1);
@@ -2980,6 +3009,7 @@ ParseRenderState(TokenStream& stream, ParseResult& ret)
             ret.errors.Append(Limit(stream, "render_state entries", 32));
             break;
         }
+        stream.ConsumeComment();
         entries.Append(expr);
         if (!stream.Match(TokenType::SemiColon))
         {
@@ -3039,6 +3069,7 @@ ParseSamplerState(TokenStream& stream, ParseResult& ret)
             break;
         }
         entries.Append(expr);
+        stream.ConsumeComment();
         if (!stream.Match(TokenType::SemiColon))
         {
             ret.errors.Append(UnexpectedEndToken(stream, ";"));
@@ -3096,6 +3127,7 @@ ParseProgram(TokenStream& stream, ParseResult& ret)
             break;
         }
         entries.Append(expr);
+        stream.ConsumeComment();
         if (!stream.Match(TokenType::SemiColon))
         {
             ret.errors.Append(UnexpectedEndToken(stream, ";"));
