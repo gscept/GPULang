@@ -21,18 +21,15 @@ jobs:
           - name: windows-latest
             os: windows-latest
             config: win64-deploy
-            platform: windows
-            arch: x86_64
+            binary_name: -windows-x86_64.exe
           - name: ubuntu-latest
             os: ubuntu-latest
             config: linux-deploy
-            platform: linux
-            arch: x86_64
+            binary_name: -linux-x86_64
           - name: macos-latest
             os: macos-latest
             config: macos-deploy
-            platform: macos
-            arch: aarch64
+            binary_name: -macos-aarch64
 
     steps:
     - uses: actions/checkout@v4
@@ -64,14 +61,19 @@ jobs:
       run: |
         python fips build
 
+    - name: Upload binary artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: gpulang_server-${{matrix.platform}}-${{matrix.arch}}${{matrix.extension}}
+        path: vscode-extension/bin/
+
     - name: Upload to release
       uses: softprops/action-gh-release@v2
       with:
         files: |
-          ../fips-deploy/GPULang/${{matrix.config}}/gpulangc-${{matrix.platform}}-${{matrix.arch}}
-          ../fips-deploy/GPULang/${{matrix.config}}/gpulangc-${{matrix.platform}}-${{matrix.arch}}.exe
-          ../fips-deploy/GPULang/${{matrix.config}}/gpulang_server-${{matrix.platform}}-${{matrix.arch}}
-          ../fips-deploy/GPULang/${{matrix.config}}/gpulang_server-${{matrix.platform}}-${{matrix.arch}}.exe
+          ../fips-deploy/GPULang/${{matrix.config}}/gpulangc-${{matrix.binary_name}}
+          ../fips-deploy/GPULang/${{matrix.config}}/gpulang_server-${{matrix.binary_name}}
+          
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -80,22 +82,12 @@ jobs:
     needs: [build]
     steps:
       - uses: actions/checkout@v4
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
-        with:
-          path: bin
-      - name: Move binaries into extension folder
-        run: |
-          mkdir -p vscode-extension/bin
-          for dir in bin/*; do
-            cp -r "$dir" vscode-extension/bin/
-          done
+
       - name: Install dependencies
         run: cd vscode-extension && npm install
       - name: Publish to VS Code Marketplace
         run: |
           cd vscode-extension
-          npx vsce package
           npx vsce publish
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
