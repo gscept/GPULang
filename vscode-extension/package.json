@@ -1,7 +1,7 @@
 {
 	"name": "gpulang-vscode-client",
 	"description": "GPULang Language Server Client",
-	"author": "Gustav Sterbrant",
+	"publisher": "gustavsterbrant",
 	"license": "MIT",
 	"version": "1.0.0",
 	"icon": "temp-icon.png",
@@ -9,7 +9,6 @@
 		"type": "git",
 		"url": "https://github.com/Microsoft/vscode-extension-samples"
 	},
-	"publisher": "GustavSterbrant",
 	"categories": [
 		"Programming Languages"
 	],

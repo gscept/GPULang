@@ -94,7 +94,8 @@ jobs:
       - name: Publish to VS Code Marketplace
         run: |
           cd vscode-extension
-          npx vsce publish
+          TAG=${GITHUB_REF#refs/tags/}
+          npx vsce publish ${TAG#v}
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
 
