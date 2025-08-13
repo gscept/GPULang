@@ -1,5 +1,5 @@
 {
-	"name": "gpulang-vscode-client",
+	"name": "GPULang",
 	"description": "GPULang Language Server Client",
 	"publisher": "gustavsterbrant",
 	"license": "MIT",
