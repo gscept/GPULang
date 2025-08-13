@@ -162,7 +162,11 @@ SingleShaderCompiler::CompileSPIRV(const std::string& src)
 	
 	fs::path escapedDst(this->dstBinary);
 	fs::path escapedHeader(this->dstHeader);
-    
+
+    GPULang::Allocator GlobalStringAllocator = GPULang::CreateAllocator();
+    GPULang::InitAllocator(&GlobalStringAllocator);
+
+    GPULang::StringAllocator = &GlobalStringAllocator;    
     GPULangFile* f = GPULangLoadFile(sp.string());
 
     bool res = GPULangCompile(
@@ -173,8 +177,9 @@ SingleShaderCompiler::CompileSPIRV(const std::string& src)
         , defines
         , options
         , errors);
+
+    GPULang::ResetAllocator(&GlobalStringAllocator);
     
-    delete f;
     if (!res)
     {
         if (errors)
