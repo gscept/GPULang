@@ -74,11 +74,12 @@ struct MemoryBlock
 
 struct Allocator
 {
-    uint32_t freeBlockCounter;
-    uint32_t* freeBlocks;
-    MemoryBlock* blocks;
-    size_t currentBlock;
-    size_t blockSize;
+    // Virtual memory range
+    void* mem;
+    void* it;
+    void* end;
+    size_t maxSize;
+    uint32_t pageCount;
 
     struct VAlloc
     {
@@ -96,11 +97,11 @@ inline Allocator CreateAllocator()
 {
     return Allocator
     {
-        .freeBlockCounter = 0,
-        .freeBlocks = nullptr,
-        .blocks = nullptr,
-        .currentBlock = 0,
-        .blockSize = 65535,
+        .mem = nullptr,
+        .it = nullptr,
+        .end = nullptr,
+        .maxSize = 0xFFFFFFFF,
+        .pageCount = 0,
         .virtualMem = nullptr,
         .freeVirtualMemSlotCounter = 0,
         .freeVirtualMemSlots = nullptr
@@ -163,30 +164,29 @@ __AllocInternal(Allocator* allocator, ARGS&&... args)
 {
     const size_t size = sizeof(T);
     const size_t alignment = alignof(T);
-    MemoryBlock* block = &allocator->blocks[allocator->currentBlock];
-    const char* blockBegin = (char*)block->mem;
-    const char* blockEnd = blockBegin + allocator->blockSize;
-    size_t sizeLeft = blockEnd - (char*)block->iterator;
-    void* alignedIterator = std::align(alignment, size, block->iterator, sizeLeft);
-    assert(size <= allocator->blockSize);
-    if (alignedIterator == nullptr)
+    void* alignedIt = (char*)allocator->it;
+    size_t vmemLeft = (char*)allocator->end - (char*)allocator->it;
+    alignedIt = (char*)std::align(alignment, size, alignedIt, vmemLeft);
+    assert(alignedIt != nullptr && "Allocator is full");
+    
+    // check if we need a new commit
+    char* validOffset = (char*)allocator->mem + allocator->pageCount * SystemPageSize;
+    char* neededOffset = (char*)alignedIt + size;
+    if (validOffset <= neededOffset)
     {
-        allocator->currentBlock = allocator->freeBlocks[allocator->freeBlockCounter--];
-        block = &allocator->blocks[allocator->currentBlock];
-        block->blockIndex = allocator->currentBlock;
-        block->mem = malloc(allocator->blockSize);
-        sizeLeft = allocator->blockSize;
-        alignedIterator = std::align(alignment, size, block->mem, sizeLeft);
+        size_t numNeededPages = ceil((neededOffset - (validOffset-1)) / (float)SystemPageSize);
+        assert(numNeededPages > 0 && "Invalid number of pages needed");
+        vcommit(validOffset, numNeededPages * SystemPageSize);
+        allocator->pageCount += numNeededPages;
     }
-    assert(block->blockIndex != -1);
-    block->allocs++;
-
-    block->iterator = (char*)alignedIterator + size;
+    
+    allocator->it = (char*)alignedIt + size;
     if (std::is_trivially_constructible<T>::value)
-        std::memset(alignedIterator, 0x0, sizeof(T));
+        std::memset(alignedIt, 0x0, sizeof(T));
     else
-        new (alignedIterator) T(std::forward<ARGS>(args)...);
-    return (T*)alignedIterator;
+        new (alignedIt) T(std::forward<ARGS>(args)...);
+    
+    return (T*)alignedIt;
 }
 
 //------------------------------------------------------------------------------
@@ -198,30 +198,29 @@ __AllocArrayInternal(Allocator* allocator, size_t num)
 {
     const size_t size = sizeof(T) * num;
     const size_t alignment = alignof(T);
-    MemoryBlock* block = &allocator->blocks[allocator->currentBlock];
-    const char* blockBegin = (char*)block->mem;
-    const char* blockEnd = blockBegin + allocator->blockSize;
-    size_t sizeLeft = blockEnd - (char*)block->iterator;
-    void* alignedIterator = std::align(alignment, size, block->iterator, sizeLeft);
-    assert(size <= allocator->blockSize);
-    if (alignedIterator == nullptr)
+    void* alignedIt = (char*)allocator->it;
+    size_t vmemLeft = (char*)allocator->end - (char*)allocator->it;
+    alignedIt = (char*)std::align(alignment, size, alignedIt, vmemLeft);
+    assert(alignedIt != nullptr && "Allocator is full");
+    
+    // check if we need a new commit
+    char* validOffset = (char*)allocator->mem + allocator->pageCount * SystemPageSize;
+    char* neededOffset = (char*)alignedIt + size;
+    if (validOffset <= neededOffset)
     {
-        allocator->currentBlock = allocator->freeBlocks[allocator->freeBlockCounter--];
-        block = &allocator->blocks[allocator->currentBlock];
-        block->blockIndex = allocator->currentBlock;
-        block->mem = malloc(allocator->blockSize);
-        sizeLeft = allocator->blockSize;
-        alignedIterator = std::align(alignment, size, block->mem, sizeLeft);
+        size_t numNeededPages = ceil((neededOffset - (validOffset-1)) / (float)SystemPageSize);
+        assert(numNeededPages > 0 && "Invalid number of pages needed");
+        vcommit(validOffset, numNeededPages * SystemPageSize);
+        allocator->pageCount += numNeededPages;
     }
-    assert(block->blockIndex != -1 && "Allocator is full");
-    block->allocs++;
-
-    block->iterator = (char*)alignedIterator + size;
+    
+    allocator->it = (char*)alignedIt + size;
     if (std::is_trivially_constructible<T>::value)
-        memset(alignedIterator, 0x0, sizeof(T) * num);
+        std::memset(alignedIt, 0x0, sizeof(T) * num);
     else
-        new (alignedIterator) T[num];
-    return (T*)alignedIterator;
+        new (alignedIt) T[num];
+    
+    return (T*)alignedIt;
 }
 
 //------------------------------------------------------------------------------
@@ -230,23 +229,8 @@ __AllocArrayInternal(Allocator* allocator, size_t num)
 inline void
 Dealloc(Allocator* allocator, void* mem)
 {
-    for (size_t i = 0; i < allocator->currentBlock; i++)
-    {
-        MemoryBlock* block = &allocator->blocks[i];
-
-        // Check if memory lies within block
-        if (block->mem <= mem && ((char*)block->mem + allocator->blockSize) > mem)
-        {
-            // This is the block the memory comes from, decrement counter and free if the block is empty
-            assert(block->allocs > 0);
-            block->allocs--;
-            if (block->allocs == 0)
-            {
-                free(block->mem);
-                allocator->freeBlocks[++allocator->freeBlockCounter] = (int)i;
-            }
-        }
-    }
+    vdecommit(allocator->mem, allocator->pageCount * SystemPageSize);
+    allocator->pageCount = 0;
 }
 
 //------------------------------------------------------------------------------
@@ -347,6 +331,16 @@ Alloc(ARGS&&... args)
 //------------------------------------------------------------------------------
 /**
 */
+template<typename T, typename ... ARGS>
+inline T*
+Alloc(Allocator* allocoator, ARGS&&... args)
+{
+    return __AllocInternal<T>(allocoator, std::forward<ARGS>(args)...);
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 template<typename T>
 inline T*
 AllocArray(std::size_t num)
@@ -369,6 +363,16 @@ AllocArray(std::size_t num)
         }
     }
     return __AllocArrayInternal<T>(Allocator, num);
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+template<typename T>
+inline T*
+AllocArray(Allocator* allocoator, std::size_t num)
+{
+    return __AllocArrayInternal<T>(allocoator, num);
 }
 
 //------------------------------------------------------------------------------

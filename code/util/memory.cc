@@ -23,11 +23,11 @@ std::recursive_mutex StaticAllocMutex;
 thread_local Allocator* CurrentAllocator;
 Allocator DefaultAllocator = 
 {
-    .freeBlockCounter = 0,
-    .freeBlocks = nullptr,
-    .blocks = nullptr,
-    .currentBlock = 0,
-    .blockSize = 65535,
+    .mem = nullptr,
+    .it = nullptr,
+    .end = nullptr,
+    .maxSize = 0xFFFFFFFF,
+    .pageCount = 0,
     .virtualMem = nullptr,
     .freeVirtualMemSlotCounter = 0,
     .freeVirtualMemSlots = nullptr
@@ -36,11 +36,11 @@ bool IsDefaultAllocatorInitialized = false;
 
 Allocator StaticAllocator =
 {
-    .freeBlockCounter = 0,
-    .freeBlocks = nullptr,
-    .blocks = nullptr,
-    .currentBlock = 0,
-    .blockSize = 65535,
+    .mem = nullptr,
+    .it = nullptr,
+    .end = nullptr,
+    .maxSize = 0xFFFFFFFF,
+    .pageCount = 0,
     .virtualMem = nullptr,
     .freeVirtualMemSlotCounter = 0,
     .freeVirtualMemSlots = nullptr
@@ -56,22 +56,12 @@ static int NumAllocatorVirtualAllocs = 8192;
 void 
 InitAllocator(Allocator* alloc)
 {
-    assert(alloc->blockSize > 0);
-    if (alloc->freeBlocks != nullptr)
-        free(alloc->freeBlocks);
-    if (alloc->blocks != nullptr)
-        free(alloc->blocks);
-    alloc->freeBlocks = (uint32_t*)malloc(sizeof(uint32_t) * NumAllocatorBlocks);
-    alloc->blocks = (MemoryBlock*)malloc(sizeof(MemoryBlock) * NumAllocatorBlocks);
-    for (int32_t i = NumAllocatorBlocks-1; i >= 0; i--)
-    {
-        alloc->blocks[i] = MemoryBlock();
-        alloc->freeBlocks[NumAllocatorBlocks - 1 - i] = i;
-    }
-    alloc->freeBlockCounter = NumAllocatorBlocks - 1;
-    alloc->currentBlock = alloc->freeBlocks[alloc->freeBlockCounter];
-    alloc->blocks[alloc->currentBlock] = MemoryBlock(malloc(alloc->blockSize), alloc->currentBlock);
-    alloc->freeBlockCounter--;
+    // Virtual alloc 16MB and commit the first page
+    alloc->mem = vmalloc(alloc->maxSize);
+    alloc->it = alloc->mem;
+    alloc->end = (char*)alloc->mem + alloc->maxSize;
+    vcommit(alloc->mem, SystemPageSize);
+    alloc->pageCount = 1; // Start with one page committed
 
     alloc->freeVirtualMemSlots = (uint32_t*)malloc(sizeof(uint32_t) * NumAllocatorVirtualAllocs);
     alloc->virtualMem = (Allocator::VAlloc*)malloc(sizeof(Allocator::VAlloc) * NumAllocatorVirtualAllocs);
@@ -89,27 +79,12 @@ InitAllocator(Allocator* alloc)
 void 
 DestroyAllocator(Allocator* alloc)
 {
-    if (alloc->blocks != nullptr)
-    {
-        for (uint32_t i = 0; i < 2048; i++)
-        {
-            if (alloc->blocks[i].mem != nullptr)
-            {
-                free(alloc->blocks[i].mem);
-                alloc->blocks[i] = MemoryBlock();
-            }
-        }
-    }
-    if (alloc->freeBlocks != nullptr)
-        free(alloc->freeBlocks);
-    if (alloc->blocks != nullptr)
-        free(alloc->blocks);
-
-    alloc->freeBlocks = nullptr;
-    alloc->blocks = nullptr;
-    alloc->freeBlockCounter = 0;
-    alloc->currentBlock = 0;
-
+    vdecommit(alloc->mem, alloc->pageCount * SystemPageSize);
+    vfree(alloc->mem, alloc->maxSize);
+    alloc->pageCount = 0;
+    alloc->mem = nullptr;
+    alloc->it = nullptr;
+    
     // Free up any dangling virtual memory ranges
     if (alloc->virtualMem != nullptr)
     {
