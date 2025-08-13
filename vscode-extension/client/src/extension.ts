@@ -55,44 +55,48 @@ async function startServerAndConnect(serverPath: string): Promise<void> {
 export function activate(context: ExtensionContext) {
 	const serverOptions = async () => {
 		
-		let platform = '';
-		if (os.platform() == "win32")
-		{
-			platform = "windows";
-		}
-		else if (os.platform() == "linux")
-		{
-			platform = "linux";
-		}
-		else if (os.platform() == "darwin")
-		{
-			platform = "macos";
-		}
+		const isDebug = process.execArgv.some(arg => /^--inspect/.test(arg));
 
-		let arch = '';
-		if (os.arch() == "x64")
-		{
-			arch = "x64";
-		}
-		else if (os.arch() == "arm64")
-		{
-			arch = "aarch64";
-		}
+		// If running with debugger, don't launch server
+		if (!isDebug) {
+			let platform = '';
+			if (os.platform() == "win32")
+			{
+				platform = "windows";
+			}
+			else if (os.platform() == "linux")
+			{
+				platform = "linux";
+			}
+			else if (os.platform() == "darwin")
+			{
+				platform = "macos";
+			}
 
-		const binary_name = `gpulang_server-${platform}-${arch}`;
+			let arch = '';
+			if (os.arch() == "x64")
+			{
+				arch = "x64";
+			}
+			else if (os.arch() == "arm64")
+			{
+				arch = "aarch64";
+			}
 
-		console.log(platform);
-		let serverPath = context.asAbsolutePath(path.join(`bin/`, process.platform === 'win32' ? `${binary_name}.exe` : binary_name));
-		if (fs.existsSync(serverPath) === false) {
-			// Try loading a local version of it
-			serverPath = context.asAbsolutePath(path.join(`bin/`, process.platform === 'win32' ? 'gpulang_server.exe' : 'gpulang_server'));
+			const binary_name = `gpulang_server-${platform}-${arch}`;
+
+			console.log(platform);
+			let serverPath = context.asAbsolutePath(path.join(`bin/`, process.platform === 'win32' ? `${binary_name}.exe` : binary_name));
+			if (fs.existsSync(serverPath) === false) {
+				// Try loading a local version of it
+				serverPath = context.asAbsolutePath(path.join(`bin/`, process.platform === 'win32' ? 'gpulang_server.exe' : 'gpulang_server'));
+			}
+			await startServerAndConnect(serverPath).catch(err => {
+				vscode.window.showErrorMessage(`Failed to GPULang server: ${err.message}`);
+				return rejects(err);
+			});
+			vscode.window.showInformationMessage(`GPULang server started: ${serverPath}`);
 		}
-		await startServerAndConnect(serverPath).catch(err => {
-			vscode.window.showErrorMessage(`Failed to GPULang server: ${err.message}`);
-			return rejects(err);
-		});
-		vscode.window.showInformationMessage(`GPULang server started: ${serverPath}`);
-
 		let socket_file;
 		if (process.platform === 'win32')
 		{
