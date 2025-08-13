@@ -649,16 +649,22 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
     TransientArray<std::thread> threads(programs.size());
     TransientArray<bool> returnValues(programs.size());
     TransientArray<Generator*> generators(programs.size());
+    TransientArray<Allocator> allocators(programs.size());
 
     // Run the code generation per thread
     for (size_t programIndex = 0; programIndex < programs.size(); programIndex++)
     {
         auto program = programs[programIndex];
         Generator* gen = CreateGenerator(this->lang, this->options);
+        allocators[programIndex] = CreateAllocator();
+        InitAllocator(&allocators[programIndex]);
         generators.Append(gen);
-        new (&threads[programIndex]) std::thread([this, values = returnValues.begin(), program = programs[programIndex], programIndex, gen, &symbols = this->symbols, writeFunction]()
+        new (&threads[programIndex]) std::thread([this, values = returnValues.begin(), program = programs[programIndex], allocator = &allocators[programIndex], programIndex, gen, &symbols = this->symbols, writeFunction]()
         {
+            GPULang::CurrentAllocator = allocator;
+            GPULang::StringAllocator = allocator;
             values[programIndex] = gen->Generate(this, program, symbols, writeFunction);
+            
         });
     }
 
@@ -669,6 +675,7 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
         {
             this->messages.Append(generators[programIndex]->messages);
         }
+        DestroyAllocator(&allocators[programIndex]);
         ret &= returnValues[programIndex];
     }
 
