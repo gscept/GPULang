@@ -19,7 +19,5 @@ exports:
     header-dirs:
     - code
     - code/compiler
-    - code/compiler/ext/antlr4/src
-    - code/compiler/ext/mcpp
     modules:
         code: .
