@@ -16,7 +16,7 @@
 #include <type_traits>
 #include <memory>
 #include <limits>
-
+#include <cmath>
 
 extern bool SYMBOL_STATIC_ALLOC;
 
@@ -174,7 +174,7 @@ __AllocInternal(Allocator* allocator, ARGS&&... args)
     char* neededOffset = (char*)alignedIt + size;
     if (validOffset <= neededOffset)
     {
-        size_t numNeededPages = ceil((neededOffset - (validOffset-1)) / (float)SystemPageSize);
+        uint32_t numNeededPages = ceil((neededOffset - (validOffset-1)) / (float)SystemPageSize);
         assert(numNeededPages > 0 && "Invalid number of pages needed");
         vcommit(validOffset, numNeededPages * SystemPageSize);
         allocator->pageCount += numNeededPages;
@@ -208,7 +208,7 @@ __AllocArrayInternal(Allocator* allocator, size_t num)
     char* neededOffset = (char*)alignedIt + size;
     if (validOffset <= neededOffset)
     {
-        size_t numNeededPages = ceil((neededOffset - (validOffset-1)) / (float)SystemPageSize);
+        uint32_t numNeededPages = ceil((neededOffset - (validOffset-1)) / (float)SystemPageSize);
         assert(numNeededPages > 0 && "Invalid number of pages needed");
         vcommit(validOffset, numNeededPages * SystemPageSize);
         allocator->pageCount += numNeededPages;
