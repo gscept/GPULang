@@ -32,10 +32,6 @@ public:
 	/// destructor
 	~SingleShaderCompiler();
 
-	/// set target platform
-	void SetPlatform(const std::string& platform);
-	/// sets the source language
-	void SetLanguage(const std::string& lang);
 	/// set source directory for base shaders
 	void AddIncludeDir(const std::string& incDir);    
 	/// set destination directory
@@ -78,27 +74,9 @@ private:
 /**
 */
 inline void
-SingleShaderCompiler::SetPlatform(std::string const & p)
-{
-	this->platform = p;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-inline void
 SingleShaderCompiler::SetDefaultSet(int size)
 {
 	this->defaultSet = size;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-inline void 
-SingleShaderCompiler::SetLanguage( const std::string& lang )
-{
-	this->language = lang;
 }
 
 ///------------------------------------------------------------------------------
