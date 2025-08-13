@@ -1393,7 +1393,7 @@ def generate_types():
             defn += f'    this->name = "{self.name}"_c;\n'
             defn += '    this->category = Type::EnumCategory;\n'
             defn += f'    this->type = Type::FullType{{ {self.type_name}Type.name }};\n'
-            defn += f'    Symbol::Resolved(this)->typeSymbol = &{self.type_name}Type;\n'
+            defn += f'    this->thisResolved->typeSymbol = &{self.type_name}Type;\n'
             defn += '    this->baseType = TypeCode::UInt;\n'
             defn += '    this->type.literal = true;\n'
             defn += '    this->builtin = true;\n'
@@ -1406,13 +1406,12 @@ def generate_types():
                 defn += f'    {self.name}{member.decl_name}.value = {hex(value)};\n'
                 defn += f'    {self.name}{member.decl_name}.type = Type::FullType{{ {self.name}Type.name, true }};\n'
                 defn += f'    {self.name}{member.decl_name}.underlyingType = Type::FullType{{ {self.type_name}Type.name }};\n'
-                defn += f'    Symbol::Resolved(&{self.name}{member.decl_name})->type = this;\n'
+                defn += f'    {self.name}{member.decl_name}.thisResolved->type = this;\n'
                 labels.append( f'"{member.decl_name if member.api_name is None else member.api_name}"_c' )
                 value = value + 1
 
             defn += f'    this->labels = std::array{{ {", ".join(labels)} }};\n'
 
-            defn += '    auto enumResolved = Symbol::Resolved(this);\n'
 
             defn += '    this->fromUnderlyingType.name = this->name;\n'
             defn += '    this->fromUnderlyingType.returnType = Type::FullType{{ this->name }};\n'
@@ -1421,7 +1420,7 @@ def generate_types():
             defn += '    this->fromUnderlyingType.parameters = { &this->fromUnderlyingTypeArg };\n'
             defn += '    this->fromUnderlyingTypeArg.name = "arg"_c;\n'
             defn += '    this->fromUnderlyingTypeArg.type = this->type;\n'
-            defn += '    Symbol::Resolved(&this->fromUnderlyingTypeArg)->typeSymbol = enumResolved->typeSymbol;\n'
+            defn += '    Symbol::Resolved(&this->fromUnderlyingTypeArg)->typeSymbol = this->thisResolved->typeSymbol;\n'
             defn += '    Symbol::Resolved(&this->fromUnderlyingType)->returnTypeSymbol = this;\n'
 
             defn += '    this->toUnderlyingType.name = this->type.name;\n'
@@ -1432,7 +1431,7 @@ def generate_types():
             defn += '    this->toUnderlyingTypeArg.name = "arg"_c;\n'
             defn += '    this->toUnderlyingTypeArg.type = Type::FullType{{ this->name }};\n'
             defn += '    Symbol::Resolved(&this->toUnderlyingTypeArg)->typeSymbol = this;\n'
-            defn += '    Symbol::Resolved(&this->toUnderlyingType)->returnTypeSymbol = enumResolved->typeSymbol;\n'
+            defn += '    Symbol::Resolved(&this->toUnderlyingType)->returnTypeSymbol = this->thisResolved->typeSymbol;\n'
 
             defn += '    this->eqOp.name = "operator=="_c;\n'
             defn += '    this->eqOp.returnType = Type::FullType{{ "Bool8"_c }};\n'

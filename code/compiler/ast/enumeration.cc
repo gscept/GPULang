@@ -13,10 +13,7 @@ Enumeration::Enumeration()
 {
     this->symbolType = Symbol::EnumerationType;
     this->category = Type::Category::EnumCategory;
-    if (SYMBOL_STATIC_ALLOC)
-        this->resolved = StaticAlloc<Enumeration::__Resolved>();
-    else
-        this->resolved = Alloc<Enumeration::__Resolved>();
+    this->thisResolved = &this->enumResolved;
 
     this->scope.owningSymbol = this;
     this->scope.type = Scope::ScopeType::Type;

@@ -17,7 +17,7 @@ EnumExpression::EnumExpression()
     , type(Type::FullType{ UNDEFINED_TYPE })
     , underlyingType(Type::FullType{ UNDEFINED_TYPE })
 {
-    this->resolved = Alloc<EnumExpression::__Resolved>();
+    this->thisResolved = &this->enumResolved;
     this->symbolType = EnumExpressionType;
 }
 
@@ -29,7 +29,7 @@ EnumExpression::EnumExpression(int value, Type::FullType type, Type::FullType un
     , type(type)
     , underlyingType(underlyingType)
 {
-    this->resolved = Alloc<EnumExpression::__Resolved>();
+    this->thisResolved = &this->enumResolved;
     this->symbolType = EnumExpressionType;
 }
 
@@ -47,8 +47,7 @@ EnumExpression::~EnumExpression()
 bool 
 EnumExpression::Resolve(Compiler* compiler)
 {
-    auto thisResolved = Symbol::Resolved(this);
-    thisResolved->type = compiler->GetType(this->type);
+    this->thisResolved->type = compiler->GetType(this->type);
     return true;
 }
 
@@ -71,11 +70,9 @@ EnumExpression::EvalType(Type::FullType& out) const
 bool
 EnumExpression::EvalTypeSymbol(Type*& out) const
 {
-    auto thisResolved = Symbol::Resolved(this);
-    if (thisResolved->type == nullptr)
+    if (this->thisResolved->type == nullptr)
         return false;
-    out = thisResolved->type;
-    assert(out->symbolType == Symbol::SymbolType::TypeType || out->symbolType == Symbol::SymbolType::EnumerationType || out->symbolType == Symbol::SymbolType::StructureType);
+    out = this->thisResolved->type;
     return true;
 }
 

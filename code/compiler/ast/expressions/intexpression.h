@@ -44,7 +44,8 @@ public:
         virtual ~__Resolved() {};
         Type::FullType fullType;
         Type* type;
-    };
-}; 
+    } intResolved;
+    __Resolved* thisResolved;
+};
 } // namespace GPULang
 //------------------------------------------------------------------------------

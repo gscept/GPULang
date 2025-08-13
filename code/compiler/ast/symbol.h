@@ -89,7 +89,7 @@ struct Symbol
         uint16_t start, end;
 
         Location()
-            : file("")
+            : file()
             , line(-1)
             , start(0)
             , end(0)
@@ -131,6 +131,14 @@ struct Symbol
         bool unreachable = false;
     };
     __Resolved* resolved;
+    
+    // Trait to check if T has member `foo`
+    template <typename, typename = std::void_t<>>
+    struct has_member_thisResolved : std::false_type {};
+
+    template <typename T>
+    struct has_member_thisResolved<T, std::void_t<decltype(std::declval<T>().thisResolved)>>
+        : std::true_type {};
 
     template <typename T>
     using Resolve = typename std::remove_pointer<T>::type::__Resolved*;
@@ -138,7 +146,14 @@ struct Symbol
     template <typename T> 
     static Resolve<T> Resolved(T* t)
     {
-        return static_cast<Resolve<T>>(t->resolved);
+        if constexpr (has_member_thisResolved<std::decay_t<T>>::value)
+        {
+            return t->thisResolved;
+        }
+        else
+        {
+            return static_cast<Resolve<T>>(t->resolved);
+        }
     }
 }; 
 

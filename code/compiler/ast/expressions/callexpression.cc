@@ -17,8 +17,7 @@ CallExpression::CallExpression(Expression* function, const FixedArray<Expression
     : function(function)
     , args(args)
 {
-    this->resolved = Alloc<CallExpression::__Resolved>();
-    this->thisResolved = Symbol::Resolved(this);
+    this->thisResolved = Alloc<CallExpression::__Resolved>();
     this->thisResolved->function = nullptr;
     this->thisResolved->retType = nullptr;
     this->symbolType = CallExpressionType;

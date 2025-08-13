@@ -16,7 +16,7 @@ namespace GPULang
 IntExpression::IntExpression(int value) :
     value(value)
 {
-    this->resolved = Alloc<IntExpression::__Resolved>();
+    this->thisResolved = &this->intResolved;
     this->symbolType = IntExpressionType;
 }
 
@@ -34,10 +34,9 @@ IntExpression::~IntExpression()
 bool 
 IntExpression::Resolve(Compiler* compiler)
 {
-    auto thisResolved = Symbol::Resolved(this);
-    thisResolved->fullType = Type::FullType{ ConstantString("i32") };
-    thisResolved->fullType.literal = true;
-    thisResolved->type = &Int32Type;
+    this->thisResolved->fullType = Type::FullType{ ConstantString("i32") };
+    this->thisResolved->fullType.literal = true;
+    this->thisResolved->type = &Int32Type;
     return true;
 }
 
@@ -47,8 +46,7 @@ IntExpression::Resolve(Compiler* compiler)
 bool
 IntExpression::EvalType(Type::FullType& out) const
 {
-    auto thisResolved = Symbol::Resolved(this);
-    out = thisResolved->fullType;
+    out = this->thisResolved->fullType;
     return true;
 }
 
@@ -58,9 +56,7 @@ IntExpression::EvalType(Type::FullType& out) const
 bool
 IntExpression::EvalTypeSymbol(Type*& out) const
 {
-    auto thisResolved = Symbol::Resolved(this);
-    out = thisResolved->type;
-    assert(out->symbolType == Symbol::SymbolType::TypeType || out->symbolType == Symbol::SymbolType::EnumerationType || out->symbolType == Symbol::SymbolType::StructureType);
+    out = this->thisResolved->type;
     return true;
 }
 

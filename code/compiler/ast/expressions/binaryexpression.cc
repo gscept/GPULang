@@ -28,8 +28,7 @@ BinaryExpression::BinaryExpression(uint32_t op, Expression* left, Expression* ri
     , left(left)
     , right(right)
 {
-    this->resolved = Alloc<BinaryExpression::__Resolved>();
-    this->thisResolved = Symbol::Resolved(this);
+    this->thisResolved = Alloc<BinaryExpression::__Resolved>();
     this->thisResolved->leftConversion = nullptr;
     this->thisResolved->rightConversion = nullptr;
     this->thisResolved->lhsType = nullptr;

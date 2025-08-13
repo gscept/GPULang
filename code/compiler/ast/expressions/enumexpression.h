@@ -47,7 +47,9 @@ public:
     {
         virtual ~__Resolved() {};
         Type* type;
-    };
-}; 
+    } enumResolved;
+    __Resolved* thisResolved;
+
+};
 } // namespace GPULang
 //------------------------------------------------------------------------------

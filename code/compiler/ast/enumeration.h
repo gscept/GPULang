@@ -30,8 +30,8 @@ struct Enumeration : public Type
     {
         virtual ~__Resolved() { typeSymbol = nullptr; };
         Type* typeSymbol;
-
-    };
+    } enumResolved;
+    Enumeration::__Resolved* thisResolved;
 };
 
 } // namespace GPULang

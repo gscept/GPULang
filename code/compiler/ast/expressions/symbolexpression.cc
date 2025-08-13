@@ -23,8 +23,7 @@ namespace GPULang
 SymbolExpression::SymbolExpression(const FixedString& symbol)
     : symbol(symbol)
 {
-    this->resolved = Alloc<SymbolExpression::__Resolved>();
-    this->thisResolved = Symbol::Resolved(this);
+    this->thisResolved = Alloc<SymbolExpression::__Resolved>();
     this->thisResolved->type = nullptr;
     this->symbolType = SymbolExpressionType;
 }
