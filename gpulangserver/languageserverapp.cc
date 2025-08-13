@@ -282,7 +282,7 @@ Clear(ParseContext::ParsedFile* file)
     file->result.mainScope = nullptr;
     file->result.symbols.Invalidate();
     GPULang::ResetAllocator(&file->alloc);
-    GPULang::ResetAllocator(&file->stringAlloc);
+    //GPULang::ResetAllocator(&file->stringAlloc);
 }
 
 //------------------------------------------------------------------------------
@@ -423,6 +423,7 @@ ParseFile(const std::string path, ParseContext* context, lsp::MessageHandler& me
         it = context->parsedFiles.insert({ path, ParseContext::ParsedFile() }).first;
         it->second.alloc = GPULang::CreateAllocator();
         it->second.stringAlloc = GPULang::CreateAllocator();
+        InitAllocator(&it->second.stringAlloc);
         it->second.f = GPULangLoadFile(path.c_str());
         it->second.path = path;
     }
