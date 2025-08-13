@@ -27,7 +27,7 @@ fips_end_app()
 
 if (APPLE)
     add_custom_command(TARGET gpulangc POST_BUILD
-        COMMAND codesign --sign - $<TARGET_FILE:gpulangc>
+        COMMAND codesign --force --sign - $<TARGET_FILE:gpulangc>
         COMMENT "Signing the binary with codesign"
     )
 endif()
