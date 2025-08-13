@@ -9,6 +9,7 @@ import * as path from 'path';
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import { spawn, ChildProcess } from 'child_process';
+import { chmodSync } from "fs";
 
 import {
 	LanguageClient,
@@ -91,6 +92,9 @@ export function activate(context: ExtensionContext) {
 				// Try loading a local version of it
 				serverPath = context.asAbsolutePath(path.join(`bin/`, process.platform === 'win32' ? 'gpulang_server.exe' : 'gpulang_server'));
 			}
+
+			// Make binary executable
+			chmodSync(serverPath, 0o755);
 			await startServerAndConnect(serverPath).catch(err => {
 				vscode.window.showErrorMessage(`Failed to GPULang server: ${err.message}`);
 				return rejects(err);
