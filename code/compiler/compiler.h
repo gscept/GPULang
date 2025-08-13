@@ -305,14 +305,13 @@ struct Compiler
         void Print(const std::string& message)
         {
             fprintf(stdout, "%s took %.2f ms\n", message.c_str(), this->duration.count());
-            fflush(stdout);
         }
         
         void TotalTime()
         {
             std::chrono::duration<double, std::milli> duration = std::chrono::high_resolution_clock::now() - this->creation;
             fprintf(stdout, "Total time %.2f ms\n\n", duration.count());
-            fflush(stdout);
+            fflush(stdout); // Only flush final output
         }
     } performanceTimer;
 };
