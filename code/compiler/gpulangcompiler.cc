@@ -1920,7 +1920,7 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
     StringAllocator = &stringAllocator;
     GPULang::InitAllocator(StringAllocator);
 
-    std::string preprocessed;
+    
     errorBuffer = nullptr;
 
     Compiler compiler;
@@ -2080,7 +2080,6 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
     SetupSystem();
     bool ret = true;
 
-    std::string preprocessed;
     result.diagnostics.Invalidate();
     result.messages.Invalidate();
     
@@ -2092,7 +2091,6 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
 
     PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
     PinnedArray<GPULangDiagnostic> diagnostics(0xFFFFFF);
-    //GPULangParser::LineStack.clear();
     
     TransientArray<std::string_view> searchPaths(128);
     for (auto& arg : defines)
@@ -2189,7 +2187,6 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
             result.diagnostics = compiler.diagnostics;
         if (diagnostics.size > 0)
             result.diagnostics.Append(diagnostics);
-
         
         // convert error list to string
         if (compiler.messages.size != 0 && !compiler.options.quiet)
@@ -2205,8 +2202,6 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
                 err.Append("Unhandled internal compiler error");
             result.messages.Append(FixedString(err.data));
         }
-
-
         
         return true;
     }

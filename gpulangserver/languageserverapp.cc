@@ -1375,7 +1375,7 @@ main(int argc, const char** argv)
     ParseContext* context = nullptr;
 
     messageHandler.requestHandler()
-        .add<lsp::requests::Initialize>([&parseContexts, &context, &options, &language](const lsp::jsonrpc::MessageId& id, lsp::requests::Initialize::Params&& params)
+    .add<lsp::requests::Initialize>([&parseContexts, &context, &options, &language](const lsp::jsonrpc::MessageId& id, lsp::requests::Initialize::Params&& params)
     {
         lsp::requests::Initialize::Result result;
         if (params.processId.isNull())
@@ -1453,7 +1453,7 @@ main(int argc, const char** argv)
         result.serverInfo = lsp::InitializeResultServerInfo{ .name = "GPULang Language Server", .version = "1.0" };
         return result;
     })
-        .add<lsp::notifications::TextDocument_DidOpen>([&context, &messageHandler](lsp::notifications::TextDocument_DidOpen::Params&& params)
+    .add<lsp::notifications::TextDocument_DidOpen>([&context, &messageHandler](lsp::notifications::TextDocument_DidOpen::Params&& params)
     {
         if (params.textDocument.uri.path().ends_with("gpul") || params.textDocument.uri.path().ends_with("gpuh"))
         {
@@ -1484,13 +1484,13 @@ main(int argc, const char** argv)
             }
         }
     })
-        .add<lsp::notifications::TextDocument_DidClose>([&context, &messageHandler](lsp::notifications::TextDocument_DidClose::Params&& params)
+    .add<lsp::notifications::TextDocument_DidClose>([&context, &messageHandler](lsp::notifications::TextDocument_DidClose::Params&& params)
     {
         ParseContext::ParsedFile* file = GetFile(params.textDocument.uri.path(), context, messageHandler);
         if (file != nullptr)
             Clear(file);
     })
-        .add<lsp::notifications::TextDocument_DidSave>([&context, &messageHandler](lsp::notifications::TextDocument_DidSave::Params&& params)
+    .add<lsp::notifications::TextDocument_DidSave>([&context, &messageHandler](lsp::notifications::TextDocument_DidSave::Params&& params)
     {
         if (params.textDocument.uri.path().ends_with("gpul") || params.textDocument.uri.path().ends_with("gpuh"))
         {
@@ -1562,7 +1562,7 @@ main(int argc, const char** argv)
             }
         }
     })
-        .add<lsp::requests::TextDocument_SemanticTokens_Full>([&context, &messageHandler](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_SemanticTokens_Full::Params&& params)
+    .add<lsp::requests::TextDocument_SemanticTokens_Full>([&context, &messageHandler](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_SemanticTokens_Full::Params&& params)
     {
         lsp::requests::TextDocument_SemanticTokens_Full::Result result;
         const std::string& path = params.textDocument.uri.path();
@@ -1574,13 +1574,13 @@ main(int argc, const char** argv)
 
         return result;
     })
-        .add<lsp::requests::TextDocument_SemanticTokens_Range>([&context](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_SemanticTokens_Range::Params&& params)
+    .add<lsp::requests::TextDocument_SemanticTokens_Range>([&context](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_SemanticTokens_Range::Params&& params)
     {
         lsp::requests::TextDocument_SemanticTokens_Range::Result result;
 
         return result;
     })
-        .add<lsp::requests::TextDocument_Hover>([&context, &messageHandler](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_Hover::Params&& params)
+    .add<lsp::requests::TextDocument_Hover>([&context, &messageHandler](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_Hover::Params&& params)
     {
         lsp::requests::TextDocument_Hover::Result result;
         ParseContext::ParsedFile* file = GetFile(params.textDocument.uri.path(), context, messageHandler);
@@ -1630,7 +1630,7 @@ main(int argc, const char** argv)
 
         return result;
     })
-        .add<lsp::requests::TextDocument_References>([&context, &messageHandler](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_References::Params&& params)
+    .add<lsp::requests::TextDocument_References>([&context, &messageHandler](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_References::Params&& params)
     {
         lsp::requests::TextDocument_References::Result result;
         ParseContext::ParsedFile* file = GetFile(params.textDocument.uri.path(), context, messageHandler);
@@ -1689,7 +1689,7 @@ main(int argc, const char** argv)
             
         return result;
     })
-        .add<lsp::requests::TextDocument_DocumentHighlight>([&context, &messageHandler](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_DocumentHighlight::Params&& params)
+    .add<lsp::requests::TextDocument_DocumentHighlight>([&context, &messageHandler](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_DocumentHighlight::Params&& params)
     {
         lsp::requests::TextDocument_DocumentHighlight::Result result;
         ParseContext::ParsedFile* file = GetFile(params.textDocument.uri.path(), context, messageHandler);
@@ -1730,7 +1730,7 @@ main(int argc, const char** argv)
         }
         return result;
     })
-        .add<lsp::requests::TextDocument_Definition>([&context, &messageHandler](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_Definition::Params&& params)
+    .add<lsp::requests::TextDocument_Definition>([&context, &messageHandler](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_Definition::Params&& params)
     {
             lsp::requests::TextDocument_Definition::Result result;
             const std::string& path = params.textDocument.uri.path();
@@ -1779,7 +1779,7 @@ main(int argc, const char** argv)
             }
             return result;
     })
-        .add<lsp::requests::TextDocument_Completion>([&context, &messageHandler](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_Completion::Params&& params)
+    .add<lsp::requests::TextDocument_Completion>([&context, &messageHandler](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_Completion::Params&& params)
     {
         lsp::requests::TextDocument_Completion::Result result;
         ParseContext::ParsedFile* file = GetFile(params.textDocument.uri.path(), context, messageHandler);
@@ -1929,7 +1929,7 @@ main(int argc, const char** argv)
         }
         return result;
     })
-        .add<lsp::notifications::Exit>([&running]()
+    .add<lsp::notifications::Exit>([&running]()
     {
         running = false;
     });

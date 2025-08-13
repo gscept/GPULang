@@ -65,11 +65,9 @@ private:
 	/// compiles shaders for SPIRV
 	bool CompileSPIRV(const std::string& src);
 	int defaultSet;
-	std::string platform;	
 	std::string dstBinary;
 	std::string dstHeader;
     std::string rootDir;
-	std::string language;
 	uint32_t flags;
 	uint8_t defaultGroup = 0;
 	std::string additionalParams;

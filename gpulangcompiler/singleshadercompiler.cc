@@ -16,8 +16,6 @@ namespace fs = std::filesystem;
 /**
 */
 SingleShaderCompiler::SingleShaderCompiler() :
-	language("SPIRV"),        	
-	platform("win32"),
 	flags(0x0),
 	defaultSet(3)
 {
@@ -117,7 +115,7 @@ SingleShaderCompiler::CompileSPIRV(const std::string& src)
 	{
 		if (!(this->flags & Flags::Quiet))
 		{
-			fprintf(stderr, "[gpulangc] \n Validating:\n   %s\n", src.c_str());
+			fprintf(stdout, "[gpulangc] \n Validating:\n   %s\n", src.c_str());
 		}
 	}
 	else
@@ -125,9 +123,9 @@ SingleShaderCompiler::CompileSPIRV(const std::string& src)
 		// compile
 		if (!(this->flags & Flags::Quiet))
 		{
-			fprintf(stderr, "[gpulangc] \n %s -> %s\n", src.c_str(), this->dstBinary.c_str());
+			fprintf(stdout, "[gpulangc] \n %s -> %s\n", src.c_str(), this->dstBinary.c_str());
             if (!this->dstHeader.empty())
-			    fprintf(stderr,"          \n %s -> %s\n", src.c_str(), this->dstHeader.c_str());
+			    fprintf(stdout,"          \n %s -> %s\n", src.c_str(), this->dstHeader.c_str());
 		}
 	}
     
@@ -206,7 +204,6 @@ SingleShaderCompiler::CompileSPIRV(const std::string& src)
 bool
 SingleShaderCompiler::CreateDependencies(const std::string& src)
 {
-
     if (!this->dstBinary.empty())
     {
     	fs::path sp(this->dstBinary);
@@ -220,7 +217,7 @@ SingleShaderCompiler::CreateDependencies(const std::string& src)
 	// compile
 	if (!(this->flags & Flags::Quiet))
 	{
-        fprintf(stderr, "[gpulangc] \n Analyzing:\n   %s -> %s\n", src.c_str(), this->dstBinary.c_str());
+        fprintf(stdout, "[gpulangc] \n Analyzing:\n   %s\n", src.c_str());
 	}
 
 	std::vector<std::string> defines;
