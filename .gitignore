@@ -9,3 +9,4 @@ code/test/shaders/output
 .idea
 CMakeUserPresets.json
 *.DS_Store
+vscode-extension/bin
