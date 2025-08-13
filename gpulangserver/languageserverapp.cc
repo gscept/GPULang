@@ -416,7 +416,7 @@ ValidateFile(ParseContext::ParsedFile* file, ParseContext* context, const std::s
 //------------------------------------------------------------------------------
 /**
 */
-ParseContext::ParsedFile* 
+ParseContext::ParsedFile*
 ParseFile(const std::string path, ParseContext* context, lsp::MessageHandler& messageHandler, bool reload = false)
 {
     auto it = context->parsedFiles.find(path);
@@ -627,7 +627,7 @@ CreateSemanticToken(Context& ctx, const GPULang::Symbol* sym, ParseContext::Pars
             case GPULang::Preprocessor::Macro:
                 InsertSemanticToken(ctx, pp->location, SemanticTypeMapping::Keyword, 0x0, result);
                 InsertSemanticToken(ctx, pp->argLocations[0], SemanticTypeMapping::Macro, 0x0, result);
-                break;                
+                break;
             case GPULang::Preprocessor::Include:
                 InsertSemanticToken(ctx, pp->location, SemanticTypeMapping::Keyword, 0x0, result);
                 InsertSemanticToken(ctx, pp->argLocations[0], SemanticTypeMapping::String, 0x0, result);
@@ -1628,6 +1628,65 @@ main(int argc, const char** argv)
             }
         }
 
+        return result;
+    })
+        .add<lsp::requests::TextDocument_References>([&context, &messageHandler](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_References::Params&& params)
+    {
+        lsp::requests::TextDocument_References::Result result;
+        ParseContext::ParsedFile* file = GetFile(params.textDocument.uri.path(), context, messageHandler);
+        if (file != nullptr)
+        {
+            TextRange inputRange;
+            inputRange.startLine = params.position.line;
+            inputRange.startColumn = params.position.character;
+            const auto symbolsOnLine = file->symbolsByLine[params.position.line];
+            const GPULang::Symbol* sym = nullptr;
+            for (const auto& [range, bits, lineSym] : symbolsOnLine)
+            {
+                if (lineSym->location.start < params.position.character && lineSym->location.end > params.position.character)
+                    sym = lineSym;
+                else if (lineSym->location.start > params.position.character)
+                    break;
+            }
+            if (sym != nullptr)
+            {
+                if (sym->symbolType == GPULang::Symbol::SymbolType::CallExpressionType)
+                {
+                    auto* expr = static_cast<const GPULang::CallExpression*>(sym);
+                    auto* res = GPULang::Symbol::Resolved(expr);
+                    if (res->function->location.line != -1)
+                    {
+                        lsp::Location link;
+                        link.uri = res->function->location.file.c_str();
+                        link.range.start.line = res->function->location.line;
+                        link.range.start.character = res->function->location.start;
+                        link.range.end.line = res->function->location.line;
+                        link.range.end.character = res->function->location.end;
+                        result = lsp::requests::TextDocument_References::Result {
+                            { link }
+                        };
+                    }
+                }
+                else if (sym->symbolType == GPULang::Symbol::SymbolType::SymbolExpressionType)
+                {
+                    auto* expr = static_cast<const GPULang::SymbolExpression*>(sym);
+                    auto* res = GPULang::Symbol::Resolved(expr);
+                    if (res->symbol->location.line != -1)
+                    {
+                        lsp::Location link;
+                        link.uri = res->symbol->location.file.c_str();
+                        link.range.start.line = res->symbol->location.line;
+                        link.range.start.character = res->symbol->location.start;
+                        link.range.end.line = res->symbol->location.line;
+                        link.range.end.character = res->symbol->location.end;
+                        result = lsp::requests::TextDocument_References::Result {
+                            { link }
+                        };
+                    }
+                }
+            }
+        }
+            
         return result;
     })
         .add<lsp::requests::TextDocument_DocumentHighlight>([&context, &messageHandler](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_DocumentHighlight::Params&& params)
