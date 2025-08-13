@@ -147,6 +147,7 @@ constexpr StaticMap HardCodedTokens = std::array{
     , std::pair{ "ray_terminate"_h, TokenType::RayTerminate }
     , std::pair{ "return"_h, TokenType::Return }
     , std::pair{ "for"_h, TokenType::For }
+    , std::pair{ "for_uniform"_h, TokenType::ForUniform }
     , std::pair{ "if"_h, TokenType::If }
     , std::pair{ "else"_h, TokenType::Else }
     , std::pair{ "generate"_h, TokenType::ConditionalCompile }

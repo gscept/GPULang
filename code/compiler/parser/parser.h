@@ -43,6 +43,7 @@ enum class TokenType
     , RayIgnore
     , Return
     , For
+    , ForUniform
     , If
     , Else
     , ConditionalCompile
