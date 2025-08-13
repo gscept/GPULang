@@ -12,11 +12,8 @@ namespace GPULang
 */
 RenderStateInstance::RenderStateInstance()
 {
-    this->symbolType = RenderStateInstanceType;
-    if (SYMBOL_STATIC_ALLOC)
-        this->resolved = StaticAlloc<RenderStateInstance::__Resolved>();
-    else
-        this->resolved = Alloc<RenderStateInstance::__Resolved>();
+    this->symbolType = RenderStateInstanceType;    
+    this->resolved = Alloc<RenderStateInstance::__Resolved>();
     RenderStateInstance::__Resolved* typeResolved = static_cast<RenderStateInstance::__Resolved*>(this->resolved);
     typeResolved->depthClampEnabled = false;
     typeResolved->noPixels = false;

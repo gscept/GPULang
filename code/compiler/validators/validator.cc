@@ -58,69 +58,69 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-static StaticSet<ConstantString> scalarQualifiers =
-{
-    "const", "var"
+static StaticSet scalarQualifiers =
+std::array{
+    "const"_c, "var"_c
 };
 
-static StaticSet<ConstantString> bindingQualifiers =
-{
-    "group", "binding"
+static StaticSet bindingQualifiers =
+std::array{
+    "group"_c, "binding"_c
 };
 
-static StaticSet<ConstantString> functionAttributes =
-{
-    "entry_point", "local_size_x", "local_size_y", "local_size_z", "local_size", "threads_x", "threads_y", "threads_z", "threads"
-    , "early_depth", "depth_greater", "depth_lesser"
-    , "group_size", "groups_per_workgroup"
-    , "input_vertices", "max_output_vertices", "winding"
-    , "input_topology", "output_topology", "patch_type", "partition"
-    , "pixel_origin"
-    , "prototype"
-    , "derivative_index_linear", "derivative_index_quad"
+static StaticSet functionAttributes =
+std::array{
+    "entry_point"_c, "local_size_x"_c, "local_size_y"_c, "local_size_z"_c, "local_size"_c, "threads_x"_c, "threads_y"_c, "threads_z"_c, "threads"_c
+    , "early_depth"_c, "depth_greater"_c, "depth_lesser"_c
+    , "group_size"_c, "groups_per_workgroup"_c
+    , "input_vertices"_c, "max_output_vertices"_c, "winding"_c
+    , "input_topology"_c, "output_topology"_c, "patch_type"_c, "partition"_c
+    , "pixel_origin"_c
+    , "prototype"_c
+    , "derivative_index_linear"_c, "derivative_index_quad"_c
 };
 
-static StaticSet<ConstantString> parameterAccessFlags =
-{
-    "in", "out", "ray_payload", "ray_hit_attribute", "ray_callable_data"
+static StaticSet parameterAccessFlags =
+std::array{
+    "in"_c, "out"_c, "ray_payload"_c, "ray_hit_attribute"_c, "ray_callable_data"_c
 };
 
-static StaticSet<ConstantString> parameterQualifiers =
-{
-    "patch", "no_interpolate", "no_perspective", "binding"
+static StaticSet parameterQualifiers =
+std::array{
+    "patch"_c, "no_interpolate"_c, "no_perspective"_c, "binding"_c
 };
 
-static StaticSet<ConstantString> structureQualifiers =
-{
-    "packed"
+static StaticSet structureQualifiers =
+std::array{
+    "packed"_c
 };
 
-static StaticSet<ConstantString> pixelShaderInputQualifiers =
-{
-    "binding", "no_interpolate", "no_perspective"
+static StaticSet pixelShaderInputQualifiers =
+std::array{
+    "binding"_c, "no_interpolate"_c, "no_perspective"_c
 };
 
-static StaticSet<ConstantString> attributesRequiringEvaluation =
-{
-    "binding", "group", "local_size_x", "local_size_y", "local_size_z", "local_size", "threads_x", "threads_y", "threads_z", "threads"
-    , "group_size", "groups_per_workgroup"
-    , "input_vertices", "max_output_vertices", "winding"
-    , "input_topology", "output_topology", "patch_type", "patch_size", "partition"
+static StaticSet attributesRequiringEvaluation =
+std::array{
+    "binding"_c, "group"_c, "local_size_x"_c, "local_size_y"_c, "local_size_z"_c, "local_size"_c, "threads_x"_c, "threads_y"_c, "threads_z"_c, "threads"_c
+    , "group_size"_c, "groups_per_workgroup"_c
+    , "input_vertices"_c, "max_output_vertices"_c, "winding"_c
+    , "input_topology"_c, "output_topology"_c, "patch_type"_c, "patch_size"_c, "partition"_c
 };
 
-static StaticSet<ConstantString> pointerQualifiers =
-{
-    "no_read", "atomic", "volatile"
+static StaticSet pointerQualifiers =
+std::array{
+    "no_read"_c, "atomic"_c, "volatile"_c
 };
 
-static StaticSet<ConstantString> storageQualifiers =
-{
-    "uniform", "inline", "workgroup", "device", "link_defined"
+static StaticSet storageQualifiers =
+std::array{
+    "uniform"_c, "inline"_c, "workgroup"_c, "device"_c, "link_defined"_c
 };
 
-static StaticSet<ConstantString> textureQualifiers =
-{
-    "sampled"
+static StaticSet textureQualifiers =
+std::array{
+    "sampled"_c
 };
 
 //------------------------------------------------------------------------------

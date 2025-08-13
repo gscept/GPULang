@@ -188,17 +188,6 @@ Type::GetSymbols(const TransientString& str)
     return ret;
 }
 
-//------------------------------------------------------------------------------
-/**
-*/
-void
-Type::SetupDefaultTypes()
-{
-    SYMBOL_STATIC_ALLOC = true;
-
-    SYMBOL_STATIC_ALLOC = false;
-}
-
 constexpr StaticMap singleComponentToVectorMap =
 std::array{
     std::pair{ TypeCode::Float,      std::array{ ConstantString("f32"),    ConstantString("f32x2"),    ConstantString("f32x3"),    ConstantString("f32x4") } }

@@ -18,8 +18,6 @@
 #include <limits>
 #include <cmath>
 
-extern bool SYMBOL_STATIC_ALLOC;
-
 //------------------------------------------------------------------------------
 /**
 */
@@ -119,12 +117,7 @@ void vdecommit(void* data, size_t size);
 extern Allocator DefaultAllocator;
 extern bool IsDefaultAllocatorInitialized;
 
-extern Allocator StaticAllocator;
-extern bool IsStaticAllocatorInitialized;
-extern thread_local bool IsStaticAllocating;
-
 extern thread_local Allocator* CurrentAllocator;
-extern std::recursive_mutex StaticAllocMutex;
 void InitAllocator(Allocator* alloc);
 void DestroyAllocator(Allocator* alloc);
 void MakeAllocatorCurrent(Allocator* alloc);
@@ -243,22 +236,17 @@ AllocVirtual(size_t num)
     if (num == 0)
         return nullptr;
     Allocator* Allocator = CurrentAllocator;
-    if (IsStaticAllocating)
+    
+    if (Allocator == nullptr)
     {
-        Allocator = &StaticAllocator;
-    }
-    else
-    {
-        if (Allocator == nullptr)
+        if (!IsDefaultAllocatorInitialized)
         {
-            if (!IsDefaultAllocatorInitialized)
-            {
-                InitAllocator(&DefaultAllocator);
-                IsDefaultAllocatorInitialized = true;
-            }
-            Allocator = &DefaultAllocator;
+            InitAllocator(&DefaultAllocator);
+            IsDefaultAllocatorInitialized = true;
         }
+        Allocator = &DefaultAllocator;
     }
+    
     assert(Allocator->freeVirtualMemSlotCounter > 0 && "Too many virtual allocations");
     uint32_t vmemIndex = Allocator->freeVirtualMemSlots[Allocator->freeVirtualMemSlotCounter--];
     Allocator::VAlloc* ret = &Allocator->virtualMem[vmemIndex];
@@ -287,44 +275,20 @@ DeallocVirtual(Allocator::VAlloc* alloc)
 */
 template<typename T, typename ... ARGS>
 inline T*
-StaticAlloc(ARGS&&... args)
-{
-    if (!IsStaticAllocatorInitialized)
-    {
-        InitAllocator(&StaticAllocator);
-        IsStaticAllocatorInitialized = true;
-    }
-    Allocator* Allocator = &StaticAllocator;
-    IsStaticAllocating = true;
-    T* ret = __AllocInternal<T>(Allocator, std::forward<ARGS>(args)...);
-    IsStaticAllocating = false;
-    return ret;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-template<typename T, typename ... ARGS>
-inline T*
 Alloc(ARGS&&... args)
 {
     Allocator* Allocator = CurrentAllocator;
-    if (IsStaticAllocating)
+    
+    if (Allocator == nullptr)
     {
-        Allocator = &StaticAllocator;
-    }
-    else
-    {
-        if (Allocator == nullptr)
+        if (!IsDefaultAllocatorInitialized)
         {
-            if (!IsDefaultAllocatorInitialized)
-            {
-                InitAllocator(&DefaultAllocator);
-                IsDefaultAllocatorInitialized = true;
-            }
-            Allocator = &DefaultAllocator;
+            InitAllocator(&DefaultAllocator);
+            IsDefaultAllocatorInitialized = true;
         }
+        Allocator = &DefaultAllocator;
     }
+    
     return __AllocInternal<T>(Allocator, std::forward<ARGS>(args)...);
 }
 
@@ -346,22 +310,17 @@ inline T*
 AllocArray(std::size_t num)
 {
     Allocator* Allocator = CurrentAllocator;
-    if (IsStaticAllocating)
+
+    if (Allocator == nullptr)
     {
-        Allocator = &StaticAllocator;
-    }
-    else
-    {
-        if (Allocator == nullptr)
+        if (!IsDefaultAllocatorInitialized)
         {
-            if (!IsDefaultAllocatorInitialized)
-            {
-                InitAllocator(&DefaultAllocator);
-                IsDefaultAllocatorInitialized = true;
-            }
-            Allocator = &DefaultAllocator;
+            InitAllocator(&DefaultAllocator);
+            IsDefaultAllocatorInitialized = true;
         }
+        Allocator = &DefaultAllocator;
     }
+
     return __AllocArrayInternal<T>(Allocator, num);
 }
 
@@ -375,24 +334,6 @@ AllocArray(Allocator* allocoator, std::size_t num)
     return __AllocArrayInternal<T>(allocoator, num);
 }
 
-//------------------------------------------------------------------------------
-/**
-*/
-template<typename T>
-inline T*
-StaticAllocArray(std::size_t num)
-{
-    if (!IsStaticAllocatorInitialized)
-    {
-        InitAllocator(&StaticAllocator);
-        IsStaticAllocatorInitialized = true;
-    }
-    Allocator* Allocator = &StaticAllocator;
-    IsStaticAllocating = true;
-    T* ret = __AllocArrayInternal<T>(Allocator, num);
-    IsStaticAllocating = false;
-    return ret;
-}
 
 static const size_t ThreadLocalHeapSize = 16_MB;
 extern thread_local char* ThreadLocalHeap;

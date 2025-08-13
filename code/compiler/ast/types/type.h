@@ -583,9 +583,6 @@ struct Type : public Symbol
     /// return member symbols matching string
     std::vector<Symbol*> GetSymbols(const TransientString& str);
 
-    /// setup all default shader types, like float, int, vec4, etc
-    static void SetupDefaultTypes();
-
 };
 
 extern Type::FullType UndefinedType;

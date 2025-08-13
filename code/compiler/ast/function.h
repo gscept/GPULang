@@ -40,7 +40,6 @@ struct Function : public Symbol
 
     static Symbol* MatchOverload(Compiler* compiler, const std::vector<Symbol*>& functions, const std::vector<Type::FullType>& args, bool allowImplicitConversion = false);
 
-    static void SetupIntrinsics();
 
     /// returns true if functions are compatible
     bool IsCompatible(Function* otherFunction, bool checkReturnType = false);

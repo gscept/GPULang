@@ -1884,25 +1884,20 @@ struct PinnedMap
  
  Does not need to free its memory.
  */
-template <typename K>
+template <typename K, size_t SIZE>
+
 struct StaticSet
 {
-    StaticSet(const std::initializer_list<K>& items)
+    constexpr StaticSet(const std::array<K, SIZE>& items)
     {
-        this->data = StaticAllocArray<K>(items.size());
-        this->size = 0;
-        for (auto& item : items)
-        {
-            this->data[this->size++] = item;
-        }
-        
-        std::sort(this->data, this->data + this->size, [](const K& lhs, const K& rhs)
+        std::copy(items.begin(), items.end(), this->data.begin());
+        std::sort(this->data.data(), this->data.data() + SIZE, [](const K& lhs, const K& rhs)
         {
             return lhs < rhs;
         });
         
         // Remove duplicates
-        for (size_t i = 0; i < this->size; i++)
+        for (size_t i = 0; i < SIZE; i++)
         {
             if (i > 0)
             {
@@ -1925,7 +1920,7 @@ struct StaticSet
         {
             bool operator()(const K& key, const K& item) { return key < item; }
         };
-        auto it = std::equal_range(this->data, this->data + this->size, key, Comp{});
+        auto it = std::equal_range(this->data.data(), this->data.data() + SIZE, key, Comp{});
         
         auto [beginRange, endRange] = it;
         return beginRange == endRange ? this->end() : beginRange;
@@ -1939,7 +1934,7 @@ struct StaticSet
             bool operator()(const U& key, const K& item) { return key < item; }
             bool operator()(const K& item, const U& key) { return item < key; }
         };
-        auto it = std::equal_range(this->data, this->data + this->size, key, Comp{});
+        auto it = std::equal_range(this->data.data(), this->data.data() + SIZE, key, Comp{});
         
         auto [beginRange, endRange] = it;
         return beginRange == endRange ? this->end() : beginRange;
@@ -1947,27 +1942,28 @@ struct StaticSet
     
     K* begin()
     {
-        return this->data;
+        return this->data.data();
     }
     
     K* end()
     {
-        return this->data + this->size;
+        return this->data.data() + SIZE;
     }
     
     const K* begin() const
     {
-        return this->data;
+        return this->data.data();
     }
     
     const K* end() const
     {
-        return this->data + this->size;
+        return this->data.data() + SIZE;
     }
     
-    K* data;
-    size_t size;
+    std::array<K, SIZE> data;
 };
+template <typename K, size_t SIZE>
+StaticSet(const std::array<K, SIZE>&) -> StaticSet<K, SIZE>;
 
 //------------------------------------------------------------------------------
 /**
@@ -2016,7 +2012,8 @@ struct PinnedSet
         }
     }
     
-    void Insert(const StaticSet<K>& set)
+    template<size_t SIZE>
+    void Insert(const StaticSet<K, SIZE>& set)
     {
         for (auto& val : set)
         {
@@ -2024,8 +2021,8 @@ struct PinnedSet
         }
     }
     
-    template<typename K2>
-    void Insert(const StaticSet<K2>& set)
+    template<typename K2, size_t SIZE>
+    void Insert(const StaticSet<K2, SIZE>& set)
     {
         for (auto& val : set)
         {
@@ -2125,7 +2122,8 @@ struct FixedSet
         }
     }
     
-    void Insert(const StaticSet<K>& set)
+    template<size_t SIZE>
+    void Insert(const StaticSet<K, SIZE>& set)
     {
         this->BeginBulkAdd();
         for (auto& val : set)
@@ -2135,8 +2133,8 @@ struct FixedSet
         this->EndBulkAdd();
     }
     
-    template<typename K2>
-    void Insert(const StaticSet<K2>& set)
+    template<typename K2, size_t SIZE>
+    void Insert(const StaticSet<K2, SIZE>& set)
     {
         this->BeginBulkAdd();
         for (auto& val : set)

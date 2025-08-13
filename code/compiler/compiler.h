@@ -319,8 +319,8 @@ struct Compiler
 //------------------------------------------------------------------------------
 /**
 */
-template <typename K> inline bool
-set_contains(const StaticSet<K>& set, const K& key)
+template <typename K, size_t SIZE> inline bool
+set_contains(const StaticSet<K, SIZE>& set, const K& key)
 {
     return set.Find(key) != set.end();
 }
@@ -328,18 +328,17 @@ set_contains(const StaticSet<K>& set, const K& key)
 //------------------------------------------------------------------------------
 /**
 */
-template <typename T, typename K> inline bool
-set_contains(const StaticSet<T>& set, const K& key)
+template <typename T, typename K, size_t SIZE> inline bool
+set_contains(const StaticSet<T, SIZE>& set, const K& key)
 {
-    using T_const = const T;
     return set.Find(key) != set.end();
 }
 
 //------------------------------------------------------------------------------
 /**
 */
-template <typename K> inline bool
-set_contains(const StaticSet<K>& set, const StaticSet<K>& otherSet)
+template <typename K, size_t SIZE1, size_t SIZE2> inline bool
+set_contains(const StaticSet<K, SIZE1>& set, const StaticSet<K, SIZE2>& otherSet)
 {
     for (const K& key : otherSet)
         if (set.Find(key) != set.end())

@@ -14,11 +14,8 @@ namespace GPULang
 */
 SamplerStateInstance::SamplerStateInstance()
 {
-    this->symbolType = SamplerStateInstanceType;
-    if (SYMBOL_STATIC_ALLOC)
-        this->resolved = StaticAlloc<SamplerStateInstance::__Resolved>();
-    else
-        this->resolved = Alloc<SamplerStateInstance::__Resolved>();
+    this->symbolType = SamplerStateInstanceType;    
+    this->resolved = Alloc<SamplerStateInstance::__Resolved>();
     this->isInline = false;
     this->isImmutable = false;
 

@@ -50,8 +50,8 @@ UnaryExpression::Resolve(Compiler* compiler)
     Type* typeSymbol;
     this->expr->EvalTypeSymbol(typeSymbol);
 
-    static const StaticSet<TypeCode> allowedIncrementDecrementTypes =
-    {
+    static const StaticSet allowedIncrementDecrementTypes =
+    std::array{
         TypeCode::Int,
         TypeCode::Int16,
         TypeCode::UInt,
@@ -59,23 +59,23 @@ UnaryExpression::Resolve(Compiler* compiler)
         TypeCode::Float,
         TypeCode::Float16
     };
-    static const StaticSet<TypeCode> signedTypes =
-    {
+    static const StaticSet signedTypes =
+    std::array{
         TypeCode::Int,
         TypeCode::Int16,
         TypeCode::Float,
         TypeCode::Float16,
     };
-    static const StaticSet<TypeCode> negatableTypes =
-    {
+    static const StaticSet negatableTypes =
+    std::array{
         TypeCode::Int,
         TypeCode::Int16,
         TypeCode::UInt,
         TypeCode::UInt16,
         TypeCode::Bool,
     };
-    static const StaticSet<TypeCode> conjuctableTypes =
-    {
+    static const StaticSet conjuctableTypes =
+    std::array{
         TypeCode::Int,
         TypeCode::Int16,
         TypeCode::UInt,

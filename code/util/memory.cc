@@ -13,8 +13,6 @@
 #include <sys/mman.h>
 #endif
 
-bool SYMBOL_STATIC_ALLOC = false;
-
 namespace GPULang
 {
 
