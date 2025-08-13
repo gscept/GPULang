@@ -1,6 +1,6 @@
 {
 	"name": "GPULang",
-	"description": "GPULang Language Server Client",
+	"description": "GPULang Language Server",
 	"publisher": "gustavsterbrant",
 	"license": "MIT",
 	"version": "1.0.0",

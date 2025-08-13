@@ -1,4 +1,4 @@
-# GPULang Client
+# GPULang Language Server
 
 [[GitHub]](https://github.com/gscept/GPULang)
 
@@ -7,8 +7,8 @@
 This Language Server works for GPULang files (.gpul). It has the following language features:
 - Completions
 - Diagnostics
-- Symbol resolution
-  
+- Symbol links
+- Intrinsic lookups
 
 ## Please refer to the GPULang documentation for more information
 
