@@ -78,48 +78,6 @@
             font-weight: bold;
         }
 
-        /* Options Table */
-        .options-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 2rem 0;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .options-table th,
-        .options-table td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            vertical-align: top;
-        }
-
-        .options-table th {
-            background: rgba(192, 132, 252, 0.2);
-            color: #c084fc;
-            font-weight: 600;
-        }
-
-        .options-table td {
-            color: #b0b0b0;
-        }
-
-        .options-table td code {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 0.2rem 0.4rem;
-            border-radius: 4px;
-            font-family: 'JetBrains Mono', monospace;
-            color: #ffffff;
-        }
-
-        .options-table .option-name {
-            color: #ffffff;
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 600;
-        }
-
         /* Target Grid */
         .target-grid {
             display: grid;
@@ -245,36 +203,6 @@
             .target-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .options-table {
-                font-size: 0.8rem;
-            }
-            
-            .options-table th,
-            .options-table td {
-                padding: 0.5rem;
-                white-space: nowrap;
-            }
-            
-            .options-table td {
-                min-width: 120px;
-            }
-            
-            .options-table th:first-child,
-            .options-table td:first-child {
-                min-width: 100px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .options-table {
-                font-size: 0.75rem;
-            }
-            
-            .options-table th,
-            .options-table td {
-                padding: 0.4rem;
-            }
         }
     </style>
 </head>
@@ -314,7 +242,7 @@
             <div class="page-header">
                 <h1 class="page-title">Compiler Reference</h1>
                 <p class="page-subtitle">
-                    Complete guide to the GPULang compiler, command-line options, and build system integration
+                    Complete guide to the GPULang compiler and command-line options
                 </p>
             </div>
 
@@ -352,10 +280,9 @@
 
             <section id="options" class="content-section">
                 <h2>Command-Line Options</h2>
-                
-                <h3>Input/Output Options</h3>
+
                 <div class="table-wrapper">
-                <table class="options-table">
+                <table class="syntax-table">
                     <thead>
                         <tr>
                             <th>Option</th>
@@ -365,22 +292,48 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="option-name">-o</td>
+                            <td><code>-o</code></td>
                             <td>Output file path (without extension)</td>
                             <td><code>-o build/shader</code></td>
                         </tr>
                         <tr>
-                            <td class="option-name">-I</td>
-                            <td>Add include directory</td>
+                            <td><code>-I</code></td>
+                            <td>Add include directory. Can be repeated multiple times.</td>
                             <td><code>-I include/</code></td>
                         </tr>
                         <tr>
-                            <td class="option-name">-h</td>
+                            <td><code>-h</code></td>
                             <td>Static reflection header output path</td>
                             <td><code>-h include/reflection.h</code></td>
                         </tr>
+                        <tr>
+                            <td><code>-g</code></td>
+                            <td>Set the implicit binding group for resources without an explicit one</td>
+                            <td><code>-g 1</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>-v/-validate</code></td>
+                            <td>Run backend validation</td>
+                            <td><code>n/a</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>-Ox/-optimize</code></td>
+                            <td>Optimize shader code. Can't be used with -s/-symbols</td>
+                            <td><code>n/a</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>-p/-profile</code></td>
+                            <td>Output profiling information to stdout</td>
+                            <td><code>n/a</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>-s/-symbols</code></td>
+                            <td>Emit debug symbols in the backend. Can't be used with -Ox/-optimize</td>
+                            <td><code>n/a</code></td>
+                        </tr>
                     </tbody>
                 </table>
+                
                 </div>
 
             </section>

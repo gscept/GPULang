@@ -153,11 +153,94 @@
         .file-size {
             display: block;
             font-size: 0.8rem;
+            color: #000;
             margin-top: 0.5rem;
             font-weight: 600;
         }
 
-        /* Installation Instructions */
+        /* VS Code Extension Section */
+        .extension-section {
+            margin: 4rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .extension-section h3 {
+            color: #c084fc;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .extension-section > p {
+            text-align: center;
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .extension-card {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .extension-info h4 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .extension-info p {
+            color: #b0b0b0;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .extension-info ul {
+            color: #b0b0b0;
+            padding-left: 1.5rem;
+        }
+
+        .extension-info li {
+            margin-bottom: 0.5rem;
+        }
+
+        .extension-actions {
+            text-align: center;
+        }
+
+        .extension-command {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .extension-command strong {
+            color: #ffffff;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .extension-command code {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            color: #22c55e;
+            display: block;
+            font-size: 0.85rem;
+        }        /* Installation Instructions */
         .install-instructions {
             margin-top: 4rem;
             padding: 2rem;
@@ -204,6 +287,43 @@
             display: block;
         }
 
+        .instruction-content h4 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .instruction-content p {
+            color: #b0b0b0;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .instruction-content ul,
+        .instruction-content ol {
+            color: #b0b0b0;
+            padding-left: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .instruction-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .instruction-content strong {
+            color: #ffffff;
+        }
+
+        .instruction-content code {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            color: #22c55e;
+            font-size: 0.9rem;
+        }
+
         .code-block {
             background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -246,6 +366,11 @@
             
             .os-card {
                 padding: 2rem;
+            }
+            
+            .extension-card {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
             
             .instruction-tabs {
@@ -291,9 +416,9 @@
             </div>
 
             <div class="version-info">
-                <h2><i class="fas fa-tag"></i> Latest Version: v1.0.0</h2>
-                <p>The first stable release of GPULang is here! Experience the future of GPU programming.</p>
-                <div class="release-date">Released: January 15, 2025</div>
+                <h2><i class="fas fa-tag"></i> Latest Version: <span id="latest-version">Loading...</span></h2>
+                
+                <div class="release-date" id="release-date">Checking for latest release...</div>
             </div>
 
             <div class="os-grid">
@@ -308,15 +433,10 @@
                         Windows 10/11 (64-bit)<br>
                     </div>
                     <div class="download-options">
-                        <a href="#" class="download-button-primary" onclick="downloadFile('gpulang-v1.0.0-windows-x64.exe')">
+                        <a href="#" class="download-button-primary" onclick="downloadFile('gpulang-windows-x86_64.exe')">
                             <i class="fas fa-download"></i>
-                            Download Installer
+                            Download Compiler (.exe)
                             <span class="file-size">~45 MB</span>
-                        </a>
-                        <a href="#" class="download-button-secondary" onclick="downloadFile('gpulang-v1.0.0-windows-x64.zip')">
-                            <i class="fas fa-file-archive"></i>
-                            Portable ZIP
-                            <span class="file-size">~38 MB</span>
                         </a>
                     </div>
                 </div>
@@ -334,34 +454,24 @@
                     </div>
                     <div class="download-options">
                         <div style="margin-bottom: 1rem;">
-                            <h4 style="color: #ffffff; margin-bottom: 0.5rem; font-size: 1.1rem;">Apple Silicon (M1/M2/M3)</h4>
-                            <a href="#" class="download-button-primary" onclick="downloadFile('gpulang-v1.0.0-macos-arm64.dmg')">
+                            <h4 style="color: #ffffff; margin-bottom: 0.5rem; font-size: 1.1rem;">Apple Silicon</h4>
+                            <a href="#" class="download-button-primary" onclick="downloadFile('gpulang-macos-arm64')">
                                 <i class="fas fa-download"></i>
-                                Download DMG (ARM64)
+                                Download Compiler (ARM64)
                                 <span class="file-size">~40 MB</span>
-                            </a>
-                            <a href="#" class="download-button-secondary" onclick="downloadFile('gpulang-v1.0.0-macos-arm64.tar.gz')">
-                                <i class="fas fa-file-archive"></i>
-                                TAR.GZ (ARM64)
-                                <span class="file-size">~33 MB</span>
                             </a>
                         </div>
                         <div>
                             <h4 style="color: #ffffff; margin-bottom: 0.5rem; font-size: 1.1rem;">Intel Macs</h4>
-                            <a href="#" class="download-button-primary" onclick="downloadFile('gpulang-v1.0.0-macos-x64.dmg')">
+                            <a href="#" class="download-button-primary" onclick="downloadFile('gpulang-macos-x86_64')">
                                 <i class="fas fa-download"></i>
-                                Download DMG (x64)
+                                Download Compiler (x86_64)
                                 <span class="file-size">~42 MB</span>
-                            </a>
-                            <a href="#" class="download-button-secondary" onclick="downloadFile('gpulang-v1.0.0-macos-x64.tar.gz')">
-                                <i class="fas fa-file-archive"></i>
-                                TAR.GZ (x64)
-                                <span class="file-size">~35 MB</span>
                             </a>
                         </div>
                         <div style="margin-top: 1rem; padding: 0.8rem; background: rgba(192, 132, 252, 0.1); border-radius: 8px; font-size: 0.85rem; color: #b0b0b0;">
                             <i class="fas fa-info-circle" style="color: #c084fc;"></i>
-                            <strong>Not sure which one?</strong> Check "About This Mac" in the Apple menu. If you see "Apple M1", "Apple M2", or "Apple M3", choose Apple Silicon. Otherwise, choose Intel.
+                            <strong>Not sure which one?</strong> Check "About This Mac" in the Apple menu. If you see "Apple" followed by a processor name (like M1, M2, etc.), choose Apple Silicon. Otherwise, choose Intel.
                         </div>
                     </div>
                 </div>
@@ -378,15 +488,34 @@
 
                     </div>
                     <div class="download-options">
-                        <a href="#" class="download-button-primary" onclick="downloadFile('gpulang-v1.0.0-linux-x64.AppImage')">
+                        <a href="#" class="download-button-primary" onclick="downloadFile('gpulang-linux-x86_64')">
                             <i class="fas fa-download"></i>
-                            Download AppImage
+                            Download Compiler
                             <span class="file-size">~40 MB</span>
                         </a>
-                        <a href="#" class="download-button-secondary" onclick="downloadFile('gpulang-v1.0.0-linux-x64.tar.gz')">
-                            <i class="fas fa-file-archive"></i>
-                            TAR.GZ Archive
-                            <span class="file-size">~33 MB</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VS Code Extension -->
+            <div class="extension-section">
+                <h3><i class="fas fa-code"></i> VS Code Extension</h3>
+                <p>Get syntax highlighting, IntelliSense, and debugging support for GPULang in Visual Studio Code.</p>
+                <div class="extension-card">
+                    <div class="extension-info">
+                        <h4>GPULang Language Support</h4>
+                        <p>Complete language support including syntax highlighting, auto-completion, error diagnostics, and integrated compilation.</p>
+                        <ul>
+                            <li>Syntax highlighting for .gpul files</li>
+                            <li>IntelliSense and auto-completion</li>
+                            <li>Real-time error checking</li>
+                            <li>Integrated compiler support</li>
+                        </ul>
+                    </div>
+                    <div class="extension-actions">
+                        <a href="https://marketplace.visualstudio.com/items?itemName=GustavSterbrant.GPULang" target="_blank" class="download-button-primary">
+                            <i class="fas fa-code"></i>
+                            Install from Marketplace
                         </a>
                     </div>
                 </div>
@@ -409,18 +538,11 @@
 
                 <div class="instruction-content active" id="instructions-windows">
                     <h4>Windows Installation</h4>
-                    <p><strong>Option 1: Using the Installer (Recommended)</strong></p>
                     <ol>
-                        <li>Download the installer (.exe file)</li>
-                        <li>Right-click and "Run as administrator"</li>
-                        <li>Follow the installation wizard</li>
-                        <li>GPULang will be added to your PATH automatically</li>
-                    </ol>
-                    
-                    <p><strong>Option 2: Portable ZIP</strong></p>
-                    <ol>
-                        <li>Download and extract the ZIP file</li>
-                        <li>Add the bin/ directory to your PATH environment variable</li>
+                        <li>Download the compiler (.exe file)</li>
+                        <li>Place the executable in a directory of your choice (e.g., <code>C:\Tools\GPULang\</code>)</li>
+                        <li>Add the directory to your PATH environment variable</li>
+                        <li>Open Command Prompt and verify the installation</li>
                     </ol>
                     
                     <p><strong>Verify Installation:</strong></p>
@@ -432,22 +554,18 @@
                     
                     <p><strong>Step 1: Choose Your Architecture</strong></p>
                     <ul>
-                        <li><strong>Apple Silicon (M1/M2/M3):</strong> Download the ARM64 version for better performance</li>
-                        <li><strong>Intel Macs:</strong> Download the x64 version for Intel-based Macs</li>
+                        <li><strong>Apple Silicon:</strong> Download the ARM64 version for Apple's custom processors</li>
+                        <li><strong>Intel Macs:</strong> Download the x86_64 version for Intel-based Macs</li>
                         <li><strong>Unsure?</strong> Go to Apple Menu → "About This Mac" to check your processor</li>
                     </ul>
                     
-                    <p><strong>Option 1: Using the DMG (Recommended)</strong></p>
+                    <p><strong>Installation Steps:</strong></p>
                     <ol>
-                        <li>Download the appropriate .dmg file for your Mac architecture</li>
-                        <li>Double-click to mount the disk image</li>
-                        <li>Drag GPULang to your Applications folder</li>
-                        <li>Add /Applications/GPULang.app/Contents/MacOS to your PATH</li>
+                        <li>Download the appropriate compiler binary for your Mac architecture</li>
+                        <li>Make the binary executable: <code>chmod +x gpulangc</code></li>
+                        <li>Move it to a directory in your PATH (e.g., <code>/usr/local/bin/</code>)</li>
+                        <li>Alternatively, add the binary's directory to your PATH</li>
                     </ol>
-                    
-                    <p><strong>Option 2: TAR.GZ Archive</strong></p>
-                    <div class="code-block">tar -xzf gpulang-v1.0.0-macos-[architecture].tar.gz</div>
-                    <div class="code-block">sudo mv gpulang /usr/local/bin/</div>
                     
                     <p><strong>Architecture Detection (Optional):</strong></p>
                     <div class="code-block">uname -m</div>
@@ -461,33 +579,20 @@
 
                 <div class="instruction-content" id="instructions-linux">
                     <h4>Linux Installation</h4>
-                    <p><strong>Option 1: AppImage (Recommended)</strong></p>
                     <ol>
-                        <li>Download the .AppImage file</li>
-                        <li>Make it executable and run:</li>
+                        <li>Download the compiler binary</li>
+                        <li>Make the binary executable:</li>
                     </ol>
-                    <div class="code-block">chmod +x gpulang-v1.0.0-linux-x64.AppImage</div>
-                    <div class="code-block">./gpulang-v1.0.0-linux-x64.AppImage --install</div>
+                    <div class="code-block">chmod +x gpulangc</div>
                     
-                    <p><strong>Option 2: TAR.GZ Archive</strong></p>
-                    <div class="code-block">tar -xzf gpulang-v1.0.0-linux-x64.tar.gz</div>
-                    <div class="code-block">sudo cp gpulang/bin/* /usr/local/bin/</div>
+                    <ol start="3">
+                        <li>Move it to a system directory or add to PATH:</li>
+                    </ol>
+                    <div class="code-block">sudo mv gpulangc /usr/local/bin/</div>
                     
                     <p><strong>Verify Installation:</strong></p>
                     <div class="code-block">gpulangc --version</div>
                 </div>
-            </div>
-
-            <div class="release-notes">
-                <p>
-                    <a href="https://github.com/gscept/GPULang/releases/tag/v1.0.0" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> View Full Release Notes
-                    </a>
-                    |
-                    <a href="https://github.com/gscept/GPULang/releases" target="_blank">
-                        <i class="fas fa-history"></i> Previous Releases
-                    </a>
-                </p>
             </div>
         </div>
     </main>
@@ -558,8 +663,142 @@
             }
         });
 
+        // Fetch latest release from GitHub
+        async function fetchLatestRelease() {
+            try {
+                const response = await fetch('https://api.github.com/repos/gscept/GPULang/releases/latest');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch release data');
+                }
+                
+                const release = await response.json();
+                
+                // Update version
+                document.getElementById('latest-version').textContent = release.tag_name;
+                
+                // Update release date
+                const releaseDate = new Date(release.published_at);
+                const formattedDate = releaseDate.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                document.getElementById('release-date').textContent = `Released: ${formattedDate}`;
+                
+                // Update download URLs to use the actual assets
+                updateDownloadButtons(release.assets, release.tag_name);
+                
+            } catch (error) {
+                console.error('Error fetching latest release:', error);
+                // Fallback to static values
+                document.getElementById('latest-version').textContent = 'v0.1.8';
+                document.getElementById('release-description').textContent = 'Latest release of GPULang. Visit GitHub for more details.';
+                document.getElementById('release-date').textContent = 'Visit GitHub releases for latest information.';
+            }
+        }
+
+        // Update download buttons with actual GitHub release assets
+        function updateDownloadButtons(assets, version) {
+            // Find and update each download button
+            const downloadButtons = document.querySelectorAll('[onclick*="downloadFile"]');
+            downloadButtons.forEach(button => {
+                const onclick = button.getAttribute('onclick');
+                const filenameMatch = onclick.match(/downloadFile\('([^']+)'\)/);
+                
+                if (filenameMatch) {
+                    const expectedFilename = filenameMatch[1];
+                    
+                    // Find the corresponding asset in the GitHub release
+                    const matchingAsset = assets.find(asset => {
+                        const assetName = asset.name.toLowerCase();
+                        
+                        // Match based on platform and architecture
+                        if (expectedFilename.includes('windows') && expectedFilename.includes('x86_64')) {
+                            // Windows: look for .exe files
+                            return assetName.includes('windows') && assetName.includes('x86_64') && assetName.endsWith('.exe');
+                        } else if (expectedFilename.includes('macos') && expectedFilename.includes('arm64')) {
+                            // macOS ARM64: look for extensionless binary or with macos/arm64 in name
+                            return (assetName.includes('macos') || assetName.includes('darwin')) && 
+                                   (assetName.includes('arm64') || assetName.includes('aarch64')) &&
+                                   !assetName.includes('.') && !assetName.includes('windows') && !assetName.includes('linux');
+                        } else if (expectedFilename.includes('macos') && expectedFilename.includes('x86_64')) {
+                            // macOS x86_64: look for extensionless binary or with macos/x86_64 in name
+                            return (assetName.includes('macos') || assetName.includes('darwin')) && 
+                                   assetName.includes('x86_64') &&
+                                   !assetName.includes('.') && !assetName.includes('windows') && !assetName.includes('linux');
+                        } else if (expectedFilename.includes('linux') && expectedFilename.includes('x86_64')) {
+                            // Linux x86_64: look for extensionless binary or with linux/x86_64 in name
+                            return assetName.includes('linux') && 
+                                   assetName.includes('x86_64') &&
+                                   !assetName.includes('.') && !assetName.includes('windows');
+                        }
+                        return false;
+                    });
+
+                    if (matchingAsset) {
+                        // Update button to use direct download URL
+                        button.href = matchingAsset.browser_download_url;
+                        button.removeAttribute('onclick');
+                        button.download = matchingAsset.name;
+                        
+                        // Update file size if available
+                        const fileSizeSpan = button.querySelector('.file-size');
+                        if (fileSizeSpan && matchingAsset.size) {
+                            const sizeInMB = (matchingAsset.size / (1024 * 1024));
+                            if (sizeInMB < 1) {
+                                const sizeInKB = (matchingAsset.size / 1024).toFixed(0);
+                                fileSizeSpan.textContent = `${sizeInKB} KB`;
+                            } else {
+                                fileSizeSpan.textContent = `${sizeInMB.toFixed(1)} MB`;
+                            }
+                        }
+                    } else {
+                        // No matching asset found - hide the button or show unavailable
+                        button.style.opacity = '0.5';
+                        button.setAttribute('onclick', `showUnavailable('${expectedFilename}')`);
+                        const fileSizeSpan = button.querySelector('.file-size');
+                        if (fileSizeSpan) {
+                            fileSizeSpan.textContent = 'Not available';
+                        }
+                    }
+                }
+            });
+        }
+
+        // New function to handle direct GitHub downloads
+        function downloadFromGitHub(downloadUrl, filename) {
+            // Create a temporary link and click it to trigger download
+            const link = document.createElement('a');
+            link.href = downloadUrl;
+            link.download = filename;
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Optional: Show a brief notification
+            console.log(`Downloading ${filename} from GitHub...`);
+        }
+
+        // Show unavailable download message
+        function showUnavailable(filename) {
+            alert(`${filename} is not available in the latest release. Please check the GitHub releases page for available downloads.`);
+            window.open('https://github.com/gscept/GPULang/releases/latest', '_blank');
+        }
+
+        function downloadFile(filename) {
+            // Fallback function for when GitHub assets aren't available
+            alert(`Download for ${filename} is not currently available. Please visit the GitHub releases page.`);
+            
+            // Redirect to GitHub releases page
+            window.open('https://github.com/gscept/GPULang/releases/latest', '_blank');
+        }
+
         // Auto-detect OS on page load
-        document.addEventListener('DOMContentLoaded', detectOS);
+        document.addEventListener('DOMContentLoaded', () => {
+            detectOS();
+            fetchLatestRelease();
+        });
     </script>
 </body>
 </html>
