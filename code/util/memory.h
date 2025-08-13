@@ -79,7 +79,7 @@ struct Allocator
     void* it;
     void* end;
     size_t maxSize;
-    uint32_t pageCount;
+    size_t pageCount;
 
     struct VAlloc
     {
