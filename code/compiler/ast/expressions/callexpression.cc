@@ -142,7 +142,7 @@ CallExpression::Resolve(Compiler* compiler)
                             
                             if (param->type != this->thisResolved->argumentTypes[i])
                             {
-                                std::string conversion = Format("%s(%s)", ctorFun->parameters[i]->type.ToString().c_str(), this->thisResolved->argumentTypes[i].ToString().c_str());
+                                TransientString conversion = TransientString(ctorFun->parameters[i]->type.ToString(), "(", this->thisResolved->argumentTypes[i].ToString(), ")");
                                 Symbol* componentConversionSymbol = compiler->GetSymbol(conversion);
 
                                 // No conversion available for this member, skip to next constructor
@@ -196,7 +196,7 @@ CallExpression::Resolve(Compiler* compiler)
                         
                         if (param->type != this->thisResolved->argumentTypes[i])
                         {
-                            std::string conversion = Format("%s(%s)", param->type.name.c_str(), this->thisResolved->argTypes[i]->name.c_str());
+                            TransientString conversion = TransientString(param->type.name, "(", this->thisResolved->argTypes[i]->name, ")"); 
                             Symbol* componentConversionSymbol = compiler->GetSymbol(conversion);
 
                             // No conversion available for this member, skip to next constructor

@@ -561,6 +561,8 @@ Type::FullType::operator==(const FullType& rhs) const
         return false;
     if (this->modifiers != rhs.modifiers)
         return false;
+    if (this->modifierValues.size != rhs.modifierValues.size)
+        return false;
     for (size_t i = 0; i < this->modifierValues.size; i++)
         if (this->modifierValues[i] != rhs.modifierValues[i])
         {
