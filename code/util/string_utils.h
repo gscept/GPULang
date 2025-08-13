@@ -778,7 +778,7 @@ FragmentString(const TransientString& arg, char* buf, size_t size)
 {
     memcpy(buf, arg.buf, arg.size);
 }
-
+extern Allocator* StringAllocator;
 
 struct FixedString
 {
@@ -791,7 +791,7 @@ struct FixedString
     FixedString(const char* buf)
     {
         size_t len = strlen(buf) + 1;
-        this->buf = AllocArray<char>(len);
+        this->buf = AllocArray<char>(StringAllocator, len);
         this->len = len - 1;
         memcpy(this->buf, buf, len - 1);
         this->buf[this->len] = '\0';
@@ -800,7 +800,7 @@ struct FixedString
     FixedString(const char* start, const char* end)
     {
         size_t len = (end - start) + 1;
-        this->buf = AllocArray<char>(len);
+        this->buf = AllocArray<char>(StringAllocator, len);
         this->len = len - 1;
         memcpy(this->buf, start, len - 1);
         this->buf[this->len] = '\0';
@@ -809,7 +809,7 @@ struct FixedString
     explicit FixedString(const std::string& str)
     {
         size_t len = str.length() + 1;
-        this->buf = AllocArray<char>(len);
+        this->buf = AllocArray<char>(StringAllocator, len);
         this->len = len - 1;
         memcpy(this->buf, str.data(), len - 1);
         this->buf[this->len] = '\0';
@@ -818,7 +818,7 @@ struct FixedString
     explicit FixedString(const TransientString& str)
     {
         size_t len = str.size + 1;
-        this->buf = AllocArray<char>(len);
+        this->buf = AllocArray<char>(StringAllocator, len);
         this->len = len - 1;
         memcpy(this->buf, str.buf, len - 1);
         this->buf[this->len] = '\0';
@@ -827,7 +827,7 @@ struct FixedString
     explicit FixedString(const std::string_view& str)
     {
         size_t len = str.length() + 1;
-        this->buf = AllocArray<char>(len);
+        this->buf = AllocArray<char>(StringAllocator, len);
         this->len = len - 1;
         memcpy(this->buf, str.data(), len - 1);
         this->buf[this->len] = '\0';
@@ -858,7 +858,7 @@ struct FixedString
         this->buf = nullptr;
         if (len > 0)
         {
-            this->buf = AllocArray<char>(len + 1);
+            this->buf = AllocArray<char>(StringAllocator, len + 1);
             memcpy(this->buf, buf, len);
             this->buf[this->len] = '\0';
         }
@@ -871,7 +871,7 @@ struct FixedString
         this->buf = nullptr;
         if (!str.empty())
         {
-            this->buf = AllocArray<char>(len + 1);
+            this->buf = AllocArray<char>(StringAllocator, len + 1);
             memcpy(this->buf, str.data(), len);
             this->buf[this->len] = '\0';
         }
@@ -884,7 +884,7 @@ struct FixedString
         this->buf = nullptr;
         if (!str.empty())
         {
-            this->buf = AllocArray<char>(len + 1);
+            this->buf = AllocArray<char>(StringAllocator, len + 1);
             memcpy(this->buf, str.data(), len);
             this->buf[this->len] = '\0';
         }
@@ -897,7 +897,7 @@ struct FixedString
         this->buf = nullptr;
         if (str.size != 0)
         {
-            this->buf = AllocArray<char>(len + 1);
+            this->buf = AllocArray<char>(StringAllocator, len + 1);
             memcpy(this->buf, str.buf, len);
             this->buf[this->len] = '\0';
         }

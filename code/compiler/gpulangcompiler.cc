@@ -23,6 +23,11 @@
 #include <sys/stat.h>
 #endif
 
+namespace GPULang
+{
+Allocator* StringAllocator;
+}
+
 using namespace GPULang;
 
 //------------------------------------------------------------------------------
@@ -1910,6 +1915,10 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
     Allocator alloc = GPULang::CreateAllocator();
     GPULang::InitAllocator(&alloc);
     GPULang::MakeAllocatorCurrent(&alloc);
+    
+    Allocator stringAllocator = GPULang::CreateAllocator();
+    StringAllocator = &stringAllocator;
+    GPULang::InitAllocator(StringAllocator);
 
     std::string preprocessed;
     errorBuffer = nullptr;
@@ -2056,6 +2065,7 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
 
     
     GPULang::ResetAllocator(&alloc);
+    GPULang::ResetAllocator(&stringAllocator);
     
     return false;
 }

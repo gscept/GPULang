@@ -204,7 +204,7 @@ struct ParseContext
     struct ParsedFile
     {
         GPULangServerResult result;
-        GPULang::Allocator alloc;
+        GPULang::Allocator alloc, stringAlloc;
 
         std::string path;
         GPULangFile* f;
@@ -272,16 +272,17 @@ struct ParseContext
 /**
 */
 void
-Clear(GPULangServerResult& result, GPULang::Allocator& allocator)
+Clear(ParseContext::ParsedFile* file)
 {
-    if (result.intrinsicScope != nullptr)
-        result.intrinsicScope->~Scope();
-    result.intrinsicScope = nullptr;
-    if (result.mainScope != nullptr)
-        result.mainScope->~Scope();
-    result.mainScope = nullptr;
-    result.symbols.Invalidate();
-    GPULang::ResetAllocator(&allocator);
+    if (file->result.intrinsicScope != nullptr)
+        file->result.intrinsicScope->~Scope();
+    file->result.intrinsicScope = nullptr;
+    if (file->result.mainScope != nullptr)
+        file->result.mainScope->~Scope();
+    file->result.mainScope = nullptr;
+    file->result.symbols.Invalidate();
+    GPULang::ResetAllocator(&file->alloc);
+    GPULang::ResetAllocator(&file->stringAlloc);
 }
 
 //------------------------------------------------------------------------------
@@ -330,8 +331,9 @@ ValidateFile(ParseContext::ParsedFile* file, ParseContext* context, const std::s
     }
 
     // Pass it to the compiler
-    Clear(file->result, file->alloc);
+    Clear(file);
     GPULang::MakeAllocatorCurrent(&file->alloc);
+    GPULang::StringAllocator = &file->stringAlloc;
     GPULang::Compiler::Options options = context->options;
     options.emitTimings = true;
 
@@ -420,6 +422,7 @@ ParseFile(const std::string path, ParseContext* context, lsp::MessageHandler& me
     {
         it = context->parsedFiles.insert({ path, ParseContext::ParsedFile() }).first;
         it->second.alloc = GPULang::CreateAllocator();
+        it->second.stringAlloc = GPULang::CreateAllocator();
         it->second.f = GPULangLoadFile(path.c_str());
         it->second.path = path;
     }
@@ -1358,6 +1361,10 @@ main(int argc, const char** argv)
     
     GPULang::Compiler::Options options;
     GPULang::Compiler::Language language;
+    
+    GPULang::Allocator GlobalStringAllocator = GPULang::CreateAllocator();
+    GPULang::InitAllocator(&GlobalStringAllocator);
+    GPULang::StringAllocator = &GlobalStringAllocator;
 
     lsp::MessageHandler messageHandler{ connection };
     bool running = true;
@@ -1477,7 +1484,7 @@ main(int argc, const char** argv)
     {
         ParseContext::ParsedFile* file = GetFile(params.textDocument.uri.path(), context, messageHandler);
         if (file != nullptr)
-            Clear(file->result, file->alloc);
+            Clear(file);
     })
         .add<lsp::notifications::TextDocument_DidSave>([&context, &messageHandler](lsp::notifications::TextDocument_DidSave::Params&& params)
     {
