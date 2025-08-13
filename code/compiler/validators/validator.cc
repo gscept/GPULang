@@ -1016,7 +1016,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         if (!compiler->staticSymbolSetup)
         {
             // find functions with similar name
-            std::vector<Symbol*> matchingFunctions = compiler->GetSymbols(fun->name);
+            TransientArray<Symbol*> matchingFunctions = compiler->GetSymbols(fun->name);
             for (Symbol* matchingFunction : matchingFunctions)
             {
                 if (matchingFunction->symbolType == Symbol::FunctionType)
@@ -1183,10 +1183,10 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                     compiler->Error(Format("Expected symbol, but got '%s'", entryStr.c_str()), symbol);
                     return false;
                 }
-                std::vector<Symbol*> functions = compiler->GetSymbols(functionName);
+                TransientArray<Symbol*> functions = compiler->GetSymbols(functionName);
 
                 // again, check if not null
-                if (functions.empty())
+                if (functions.size == 0)
                 {
                     compiler->UnrecognizedTypeError(TransientString(functionName), symbol);
                     return false;

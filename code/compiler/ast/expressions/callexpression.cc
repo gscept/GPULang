@@ -109,13 +109,13 @@ CallExpression::Resolve(Compiler* compiler)
     if (symbol == nullptr)
     {
         // If the function isn't available, check for any type constructor that might implement it
-        std::vector<Symbol*> functionSymbols = compiler->GetSymbols(this->thisResolved->functionSymbol);
-        if (functionSymbols.empty())
+        TransientArray<Symbol*> functionSymbols = compiler->GetSymbols(this->thisResolved->functionSymbol);
+        if (functionSymbols.size == 0)
         {
             compiler->UnrecognizedSymbolError(callSignature, this);
             return false;
         }
-        TransientArray<Candidate> candidates(functionSymbols.size());
+        TransientArray<Candidate> candidates(functionSymbols.size);
         for (auto functionSymbol : functionSymbols)
         {
             if (functionSymbol->symbolType == Type::SymbolType::TypeType)
@@ -196,7 +196,7 @@ CallExpression::Resolve(Compiler* compiler)
                         
                         if (param->type != this->thisResolved->argumentTypes[i])
                         {
-                            TransientString conversion = TransientString(param->type.name, "(", this->thisResolved->argTypes[i]->name, ")"); 
+                            TransientString conversion = TransientString(param->type.name, "(", this->thisResolved->argTypes[i]->name, ")");
                             Symbol* componentConversionSymbol = compiler->GetSymbol(conversion);
 
                             // No conversion available for this member, skip to next constructor
@@ -275,7 +275,6 @@ CallExpression::Resolve(Compiler* compiler)
                 {
                     return a.numTransformationsNeeded < b.numTransformationsNeeded;
                 });
-                
                 
                 uint32_t minConversion = 0xFFFFFFFF;
                 for (auto& candidate : candidates)

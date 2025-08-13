@@ -119,11 +119,11 @@ struct Compiler
     /// get symbol by name as other type
     template <typename T> T* GetSymbol(const FixedString& name) const;
     /// return iterator to first and last symbol matching name
-    std::vector<Symbol*> GetSymbols(const FixedString& name) const;
+    TransientArray<Symbol*> GetSymbols(const FixedString& name) const;
     /// get symbol by name as other type
     template <typename T> T* GetSymbol(const TransientString& name) const;
     /// return iterator to first and last symbol matching name
-    std::vector<Symbol*> GetSymbols(const TransientString& name) const;
+    TransientArray<Symbol*> GetSymbols(const TransientString& name) const;
 
     /// Push a new scope
     void PushScope(Scope* scope);

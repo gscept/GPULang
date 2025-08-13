@@ -365,10 +365,10 @@ Compiler::GetSymbol(const FixedString& name) const
 //------------------------------------------------------------------------------
 /**
 */
-std::vector<Symbol*>
+TransientArray<Symbol*>
 Compiler::GetSymbols(const FixedString& name) const
 {
-    std::vector<Symbol*> ret;
+    TransientArray<Symbol*> ret(256);
     auto scopeIter = this->scopes.rbegin();
     do
     {
@@ -386,7 +386,7 @@ Compiler::GetSymbols(const FixedString& name) const
 
         auto range = map->FindRange(HashString(name));
         for (auto it = range.first; it != range.second; it++)
-            ret.push_back((*it).second);
+            ret.Append((*it).second);
         scopeIter++;
     } while (scopeIter != this->scopes.rend());
     return ret;
@@ -464,10 +464,10 @@ Compiler::GetSymbol(const TransientString& name) const
 //------------------------------------------------------------------------------
 /**
 */
-std::vector<Symbol*>
+TransientArray<Symbol*>
 Compiler::GetSymbols(const TransientString& name) const
 {
-    std::vector<Symbol*> ret;
+    TransientArray<Symbol*> ret(256);
     auto scopeIter = this->scopes.rbegin();
     do
     {
@@ -485,7 +485,7 @@ Compiler::GetSymbols(const TransientString& name) const
 
         auto range = map->FindRange(HashString(name));
         for (auto it = range.first; it != range.second; it++)
-            ret.push_back((*it).second);
+            ret.Append((*it).second);
         scopeIter++;
     } while (scopeIter != this->scopes.rend());
     return ret;

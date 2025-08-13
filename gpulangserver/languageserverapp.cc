@@ -1348,7 +1348,7 @@ main(int argc, const char** argv)
 {
     Socket socket = CreateServerSocket();
 
-    fprintf(stdout, "GPULang Language Server Version 1.0\n");
+    fprintf(stdout, "*** GPULang Language Server ***\n");
     fprintf(stdout, "Waiting for client...\n");
     fflush(stdout);
 
