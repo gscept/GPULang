@@ -102,7 +102,7 @@ GPULangLoadFile(const std::string_view& path)
     
     if (f != nullptr)
     {
-        file = new GPULangFile();
+        file = Alloc<GPULangFile>();
         file->path = path;
         
         fseek(f, 0, SEEK_END);
