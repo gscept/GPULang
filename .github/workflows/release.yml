@@ -99,12 +99,12 @@ jobs:
                 
         - name: Package runtime
           run: |
-            tar czfv ./runtime.tar runtime
+            tar czfv ./sdk.tar.gz runtime
             
         - name: Upload runtime to GitHub release
           uses: softprops/action-gh-release@v2
           with:
-            files: runtime.tar
+            files: sdk.tar.gz
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
