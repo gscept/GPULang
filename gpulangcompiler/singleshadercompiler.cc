@@ -16,8 +16,7 @@ namespace fs = std::filesystem;
 /**
 */
 SingleShaderCompiler::SingleShaderCompiler() :
-	flags(0x0),
-	defaultSet(3)
+	flags(0x0)
 {
 	// empty
 }

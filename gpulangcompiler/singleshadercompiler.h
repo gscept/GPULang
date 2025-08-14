@@ -40,6 +40,8 @@ public:
 	void SetDstHeader(const std::string& dstHeader);
     /// set the root dir
     void SetRootDir(const std::string& rootDir);
+    /// Set the targets
+    void SetTargets(const std::string& targets);
 			
 	/// set additional command line params
 	void SetAdditionalParams(const std::string& params);
@@ -54,30 +56,19 @@ public:
 	/// calculate include dependencies
 	bool CreateDependencies(const std::string& src);
 	
-	///
-	void SetDefaultSet(int size);
 private:
 	
 	/// compiles shaders for SPIRV
 	bool CompileSPIRV(const std::string& src);
-	int defaultSet;
 	std::string dstBinary;
 	std::string dstHeader;
     std::string rootDir;
+    std::string targets;
 	uint32_t flags;
 	uint8_t defaultGroup = 0;
 	std::string additionalParams;
 	std::vector<std::string> includeDirs;
 }; 
-
-//------------------------------------------------------------------------------
-/**
-*/
-inline void
-SingleShaderCompiler::SetDefaultSet(int size)
-{
-	this->defaultSet = size;
-}
 
 ///------------------------------------------------------------------------------
 /**
@@ -104,6 +95,15 @@ inline void
 SingleShaderCompiler::SetRootDir(const std::string& rootDir)
 {
 	this->rootDir = rootDir;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+inline void
+SingleShaderCompiler::SetTargets(const std::string& targets)
+{
+    this->targets = targets;
 }
 
 //------------------------------------------------------------------------------
