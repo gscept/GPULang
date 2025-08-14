@@ -33,11 +33,7 @@ if (APPLE)
 endif()
 
 if (DEPLOY)
-    add_custom_command(TARGET gpulangc POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_SOURCE_DIR}/bin
-        COMMAND ${CMAKE_COMMAND} -E copy
-            $<TARGET_FILE:gpulangc>
-            ${CMAKE_SOURCE_DIR}/bin/
-        COMMENT "Copying the GPULang compiler binary to deploy folder"
+    install(TARGETS gpulangc
+        RUNTIME DESTINATION ${CMAKE_SOURCE_DIR}/bin/
     )
 endif()

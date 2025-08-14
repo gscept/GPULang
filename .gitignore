@@ -10,3 +10,7 @@ code/test/shaders/output
 CMakeUserPresets.json
 *.DS_Store
 vscode-extension/bin
+node_modules/
+node_modules/
+bin/
+runtime

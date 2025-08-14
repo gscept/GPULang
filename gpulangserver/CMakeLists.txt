@@ -43,11 +43,7 @@ if (NOT DEPLOY)
         COMMENT "Copying language server binary to vscode extension folder"
     )
 else()
-    add_custom_command(TARGET gpulang_server POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_SOURCE_DIR}/bin
-        COMMAND ${CMAKE_COMMAND} -E copy
-            $<TARGET_FILE:gpulang_server>
-            ${CMAKE_SOURCE_DIR}/bin/
-        COMMENT "Copying the GPULang server binary to deploy folder"
+    install(TARGETS gpulang_server
+        RUNTIME DESTINATION ${CMAKE_SOURCE_DIR}/bin/
     )
 endif()
