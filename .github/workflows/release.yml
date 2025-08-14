@@ -91,11 +91,11 @@ jobs:
     steps:
         - uses: actions/checkout@v4
         - name: Download server artifacts to runtime binary folder
-            uses: actions/download-artifact@v4
-            with:
-                pattern: gpulang_runtime-*
-                merge-multiple: true
-                path: runtime/
+          uses: actions/download-artifact@v4
+          with:
+            pattern: gpulang_runtime-*
+            merge-multiple: true
+            path: runtime/
                 
         - name: Package runtime
           run: |
