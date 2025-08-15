@@ -35,7 +35,7 @@ struct Scope;
 struct Generate;
 struct Compiler
 {
-    enum class Language : uint8_t
+    enum class Backend : uint8_t
     {
         GLSL,
         HLSL,
@@ -45,6 +45,28 @@ struct Compiler
         WEBGPU,         // target is wgsl
         METAL,          // target is msl
         METAL_IR        // target is Metal IR (not implemented)
+    };
+    
+    static constexpr StaticMap BackendMap = std::array {
+        std::pair{ "vulkan"_h, Backend::VULKAN_SPIRV },
+        std::pair{ "directx"_h, Backend::HLSL },
+        std::pair{ "metal"_h, Backend::METAL },
+        std::pair{ "webgpu"_h, Backend::WEBGPU }
+    };
+    
+    enum class Binding : uint8_t
+    {
+        Cpp,            // C++ .h
+        Rust,           // .rs
+        Zig,            // .zig
+        JavaScript,     // .js
+    };
+    
+    static constexpr StaticMap BindingMap = std::array {
+        std::pair{ "cpp"_h, Binding::Cpp },
+        std::pair{ "rust"_h, Binding::Rust },
+        std::pair{ "zig"_h, Binding::Zig },
+        std::pair{ "javascript"_h, Binding::JavaScript }
     };
 
     enum class ErrorFormat : uint8_t
@@ -95,11 +117,11 @@ struct Compiler
     ~Compiler();
 
     /// setup compiler with target language in generation mode
-    void Setup(const Compiler::Language& lang, Options options);
+    void Setup(const Compiler::Backend& lang, Options options);
     /// setup compiler for validation (language server) mode
-    void SetupServer(const Compiler::Language& lang, Options options);
+    void SetupServer(const Compiler::Backend& lang, Options options);
     /// Create generator
-    Generator* CreateGenerator(const Compiler::Language& lang, Options options);
+    Generator* CreateGenerator(const Compiler::Backend& lang, Options options);
 
     /// Start static symbol setup
     void BeginStaticSymbolSetup();
@@ -212,7 +234,7 @@ struct Compiler
 
     GPULang::Thread* staticSetupThread;
 
-    Compiler::Language lang;
+    Compiler::Backend lang;
     Validator* validator = nullptr;
     Generator* headerGenerator = nullptr;
 

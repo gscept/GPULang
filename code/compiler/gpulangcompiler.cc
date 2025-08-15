@@ -1908,7 +1908,7 @@ Error(const GPULang::GrowingString& message)
     @param errorBuffer	Buffer containing errors, created in function but must be deleted manually
 */
 bool
-GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, const std::string& output, const std::string& header_output, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangErrorBlob*& errorBuffer)
+GPULangCompile(const GPULangFile* file, GPULang::Compiler::Backend target, const std::string& output, const std::string& header_output, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangErrorBlob*& errorBuffer)
 {
     SetupSystem();
     bool ret = true;
@@ -2075,7 +2075,7 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
     Runs compilation without output
 */
 bool
-GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangServerResult& result)
+GPULangValidate(GPULangFile* file, GPULang::Compiler::Backend target, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangServerResult& result)
 {
     SetupSystem();
     bool ret = true;

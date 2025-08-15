@@ -16,7 +16,7 @@ bool
 ShaderCompilerApp::ParseCmdLineArgs(const char ** argv)
 {
     argh::parser args;
-    args.add_params({ "-o", "-h", "-g", "-I", "-t" });
+    args.add_params({ "-o", "-h", "-g", "-I", "-t", "-b" });
     args.parse(argv, argh::parser::SINGLE_DASH_IS_MULTIFLAG);
 
     if (args["--help"])
@@ -61,9 +61,14 @@ ShaderCompilerApp::ParseCmdLineArgs(const char ** argv)
         this->shaderCompiler.SetRootDir(buffer);
     }
     
-    if (args("t") >> buffer)
+    if (args("t") >> buffer || args("--targets") >> buffer)
     {
-        
+        this->shaderCompiler.SetBackends(buffer);
+    }
+    
+    if (args("b") >> buffer || args("--bindings") >> buffer)
+    {
+        this->shaderCompiler.SetBindings(buffer);
     }
 
     if (args.pos_args().size() <= 1)
@@ -128,7 +133,9 @@ usage: gpulangc file [--help] [-I <path>]\n\
 --help              Print this message\n\
 -I <path>           Where to search for include headers. This can be repeated multiple times.\n\
 -o <path>           Where to output the binaries. If folder, outputs both binaries and headers to this folder unless -h is provided.\n\
--h <path>           Where to output generated C++ headers.\n\
+-h <path>           Where to output static reflection code.\n\
+--targets/-t <value>  Comma separated list of target platforms to compile for. Valid values: (spirv/vulkan/webgpu/metal/directx)\n\
+--bindings/-b <value>  Comma separated list of static reflection header languages to generate. Valud values: (cpp/rust/zig/javascript)\n\
 --group/-g <value>   Default binding group if none is provided.\n\
 --quiet/-q           Suppress standard output.\n\
 --optimize/-Ox       Optimize output (not allowed with -symbols/-s).\n\

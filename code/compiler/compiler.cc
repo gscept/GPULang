@@ -73,38 +73,38 @@ Compiler::~Compiler()
 /**
 */
 void
-SetupTargetLanguage(const Compiler::Language& lang, Compiler::Target& target)
+SetupTargetLanguage(const Compiler::Backend& lang, Compiler::Target& target)
 {
     switch (lang)
     {
-    case Compiler::Language::GLSL:
+    case Compiler::Backend::GLSL:
         target.name = "GLSL"_c;
         break;
-    case Compiler::Language::HLSL:
+    case Compiler::Backend::HLSL:
         target.name = "HLSL"_c;
         break;
-    case Compiler::Language::DXIL:
+    case Compiler::Backend::DXIL:
         target.name = "DXIL"_c;
         break;
-    case Compiler::Language::SPIRV:
+    case Compiler::Backend::SPIRV:
         target.name = "SPIRV"_c;
         target.supportsInlineSamplers = true;
         target.supportsPhysicalBufferAddresses = true;
         target.supportsPhysicalAddressing = true;
         target.supportsGlobalDeviceStorage = true;
         break;
-    case Compiler::Language::VULKAN_SPIRV:
+    case Compiler::Backend::VULKAN_SPIRV:
         target.name = "Vulkan"_c;
         target.supportsInlineSamplers = true;
         target.supportsPhysicalBufferAddresses = true;
         target.supportsPhysicalAddressing = false;
         target.supportsGlobalDeviceStorage = false;
         break;
-    case Compiler::Language::WEBGPU:
+    case Compiler::Backend::WEBGPU:
         target.name = "WebGPU"_c;
         break;
-    case Compiler::Language::METAL_IR:
-    case Compiler::Language::METAL:
+    case Compiler::Backend::METAL_IR:
+    case Compiler::Backend::METAL:
         target.name = "Metal"_c;
         break;
     }
@@ -114,7 +114,7 @@ SetupTargetLanguage(const Compiler::Language& lang, Compiler::Target& target)
 /**
 */
 void 
-Compiler::Setup(const Compiler::Language& lang, Options options)
+Compiler::Setup(const Compiler::Backend& lang, Options options)
 {
     this->lang = lang;
     this->options = options;
@@ -179,12 +179,12 @@ Compiler::Setup(const Compiler::Language& lang, Options options)
 
     switch (this->lang)
     {
-    case Language::GLSL:
+    case Backend::GLSL:
         break;
-    case Language::HLSL:
+    case Backend::HLSL:
         break;
-    case Language::SPIRV:
-    case Language::VULKAN_SPIRV:
+    case Backend::SPIRV:
+    case Backend::VULKAN_SPIRV:
         SPIRVGenerator::SetupIntrinsics();
         break;
     }
@@ -198,7 +198,7 @@ Compiler::Setup(const Compiler::Language& lang, Options options)
 /**
 */
 void
-Compiler::SetupServer(const Compiler::Language& lang,Options options)
+Compiler::SetupServer(const Compiler::Backend& lang,Options options)
 {
     this->options = options;
     this->lang = lang;
@@ -260,15 +260,15 @@ Compiler::SetupServer(const Compiler::Language& lang,Options options)
 /**
 */
 Generator* 
-Compiler::CreateGenerator(const Compiler::Language& lang, Options options)
+Compiler::CreateGenerator(const Compiler::Backend& lang, Options options)
 {
     switch (lang)
     {
-        case Language::HLSL:
+        case Backend::HLSL:
             return Alloc<HLSLGenerator>();
             break;
-        case Language::SPIRV:
-        case Language::VULKAN_SPIRV:
+        case Backend::SPIRV:
+        case Backend::VULKAN_SPIRV:
             return Alloc<SPIRVGenerator>();
             break;
     }

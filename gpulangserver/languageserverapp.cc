@@ -200,7 +200,7 @@ struct TextRange
 
 struct ParseContext
 {
-    GPULang::Compiler::Language lang = GPULang::Compiler::Language::VULKAN_SPIRV;
+    GPULang::Compiler::Backend lang = GPULang::Compiler::Backend::VULKAN_SPIRV;
     GPULang::Compiler::Options options;
     std::vector<std::string> includePaths;
     struct ParsedFile
@@ -1364,7 +1364,7 @@ main(int argc, const char** argv)
     lsp::Connection connection{ input, output };
     
     GPULang::Compiler::Options options;
-    GPULang::Compiler::Language language;
+    GPULang::Compiler::Backend language;
     
     GlobalStringAllocator = GPULang::CreateAllocator();
     GPULang::InitAllocator(&GlobalStringAllocator);
@@ -1413,9 +1413,9 @@ main(int argc, const char** argv)
             {
                 const std::string flagStr = flag.string();
                 if (flagStr == "SPIRV")
-                    context->lang = GPULang::Compiler::Language::SPIRV;
+                    context->lang = GPULang::Compiler::Backend::SPIRV;
                 else if (flagStr == "VULKAN_SPIRV")
-                    context->lang = GPULang::Compiler::Language::VULKAN_SPIRV;
+                    context->lang = GPULang::Compiler::Backend::VULKAN_SPIRV;
                 else if (flagStr == "disallowImplicitConversion")
                     context->options.disallowImplicitConversion = true;
                 else if (flagStr == "disallowImplicitPromotion")

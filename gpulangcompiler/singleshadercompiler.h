@@ -41,7 +41,9 @@ public:
     /// set the root dir
     void SetRootDir(const std::string& rootDir);
     /// Set the targets
-    void SetTargets(const std::string& targets);
+    void SetBackends(const std::string& targets);
+    /// Set the bindings
+    void SetBindings(const std::string& bindings);
 			
 	/// set additional command line params
 	void SetAdditionalParams(const std::string& params);
@@ -63,7 +65,8 @@ private:
 	std::string dstBinary;
 	std::string dstHeader;
     std::string rootDir;
-    std::string targets;
+    std::string backends;
+    std::string bindings;
 	uint32_t flags;
 	uint8_t defaultGroup = 0;
 	std::string additionalParams;
@@ -101,9 +104,18 @@ SingleShaderCompiler::SetRootDir(const std::string& rootDir)
 /**
 */
 inline void
-SingleShaderCompiler::SetTargets(const std::string& targets)
+SingleShaderCompiler::SetBackends(const std::string& backends)
 {
-    this->targets = targets;
+    this->backends = backends;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+inline void
+SingleShaderCompiler::SetBindings(const std::string& bindings)
+{
+    this->bindings = bindings;
 }
 
 //------------------------------------------------------------------------------

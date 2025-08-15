@@ -141,6 +141,82 @@ SingleShaderCompiler::CompileSPIRV(const std::string& src)
 		define = "-I" + inc + "/";
         defines.push_back(define);
     }
+    
+    // Allow maximum 8 different backends, should cover all cases
+    GPULang::TransientArray<GPULang::Compiler::Backend> backends(8);
+    GPULang::TransientArray<GPULang::Compiler::Binding> bindings(8);
+    
+    const char* it = this->backends.data();
+    const char* begin = it;
+    while (it != this->backends.data() + this->backends.size())
+    {
+        if (it[0] == ',')
+        {
+            std::string_view backend(begin, it);
+            auto lookup = GPULang::Compiler::BackendMap.Find(GPULang::HashString(backend));
+            if (lookup == GPULang::Compiler::BackendMap.end())
+            {
+                fprintf(stderr, "[gpulangc] error: unknown backend '%.*s'\n", (int32_t)backend.length(), backend.data());
+                return false;
+            }
+            else
+            {
+                backends.Append(lookup->second);
+            }
+            begin = it+1;
+        }
+        it++;
+    }
+    std::string_view backend(begin, it);
+    if (!backend.empty())
+    {
+        auto lookup = GPULang::Compiler::BackendMap.Find(GPULang::HashString(backend));
+        if (lookup == GPULang::Compiler::BackendMap.end())
+        {
+            fprintf(stderr, "[gpulangc] error: unknown backend '%.*s'\n", (int32_t)backend.length(), backend.data());
+            return false;
+        }
+        else
+        {
+            backends.Append(lookup->second);
+        }
+    }
+    
+    it = this->bindings.data();
+    begin = it;
+    while (it != this->bindings.data() + this->bindings.size())
+    {
+        if (it[0] == ',')
+        {
+            std::string_view binding(begin, it);
+            auto lookup = GPULang::Compiler::BindingMap.Find(GPULang::HashString(binding));
+            if (lookup == GPULang::Compiler::BindingMap.end())
+            {
+                fprintf(stderr, "[gpulangc] error: unknown binding '%.*s'\n", (int32_t)binding.length(), binding.data());
+                return false;
+            }
+            else
+            {
+                bindings.Append(lookup->second);
+            }
+            begin = it+1;
+        }
+        it++;
+    }
+    std::string_view binding(begin, it);
+    if (!binding.empty())
+    {
+        auto lookup2 = GPULang::Compiler::BindingMap.Find(GPULang::HashString(binding));
+        if (lookup2 == GPULang::Compiler::BindingMap.end())
+        {
+            fprintf(stderr, "[gpulangc] error: unknown binding '%.*s'\n", (int32_t)binding.length(), binding.data());
+            return false;
+        }
+        else
+        {
+            bindings.Append(lookup2->second);
+        }
+    }
 	
     // if using debug, output raw shader code
 	options.quiet = this->flags & Flags::Quiet ? 1 : 0; 
@@ -168,7 +244,7 @@ SingleShaderCompiler::CompileSPIRV(const std::string& src)
 
     bool res = GPULangCompile(
           f
-        , GPULang::Compiler::Language::VULKAN_SPIRV
+        , GPULang::Compiler::Backend::VULKAN_SPIRV
         , escapedDst.string()
         , escapedHeader.string()
         , defines
