@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Development Guide - GPULang Documentation</title>
+    <title>Integration Guide - GPULang Documentation</title>
     <link href="styles.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -265,7 +265,7 @@
     <main>
         <div class="container">
             <div class="page-header">
-                <h1 class="page-title">Game Development Guide</h1>
+                <h1 class="page-title">Integration Guide</h1>
                 <p class="page-subtitle">
                     Learn how to integrate GPULang into your game engine and optimize rendering performance
                 </p>
@@ -274,28 +274,56 @@
             <section id="overview" class="content-section">
                 <h2>Overview</h2>
                 <p>
-                    GPULang is designed from the ground up to make shader development in games more efficient
+                    GPULang is designed from the ground up to make shader development more efficient
                     and maintainable. This guide covers integration patterns, performance optimization,
                     and best practices for using GPULang in real-time rendering applications.
                 </p>
 
-                <h3>Why GPULang for Games?</h3>
-                <div class="feature-grid">
-                    <div class="feature-card">
-                        <h4><i class="fas fa-bolt icon"></i>Fast Iteration</h4>
-                        <p>Hot reloading and rapid compilation enables quick shader iteration during development.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h4><i class="fas fa-code icon"></i>Shader Variants</h4>
-                        <p>Built-in support for shader variants and permutations reduces code duplication.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h4><i class="fas fa-search icon"></i>Reflection</h4>
-                        <p>Automatic resource binding and pipeline creation through reflection data.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h4><i class="fas fa-microchip icon"></i>Multi-Platform</h4>
-                        <p>Single codebase targeting Vulkan, DirectX, Metal, and WebGPU simultaneously.</p>
+                <h3>Loading a GPULang output file</h3>
+
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-cpp">struct Program
+{
+    char* memory;
+    GPULang::Loader loader;
+    GPULang::VulkanPipelineInfo pipelineInfo;
+};
+
+//------------------------------------------------------------------------------
+/**
+*/
+Program
+LoadShader(char* fileBuffer, size_t fileBufferSize, VkDevice device, std::string shader)
+{
+    GPULang::Loader loader;
+    loader.Load(fileBuffer, fileBufferSize);
+
+    auto prog = loader.Get<GPULang::ProgramObject>("TestProgram");
+
+    GPULang::VulkanPipelineInfo vulkanPipeline = GPULang::SetupVulkan(
+        device
+        , prog
+        , loader.variables.data()
+        , loader.variables.size()
+        , GPULang::VulkanFunctions{ .vkCreateShaderModule = vkCreateShaderModule, .vkCreatePipelineLayout = vkCreatePipelineLayout, .vkCreateDescriptorSetLayout = vkCreateDescriptorSetLayout }
+    );
+    Program ret;
+
+    ret.pipelineInfo = vulkanPipeline;
+    ret.memory = buf;
+    ret.loader = loader;
+    return ret;
+//------------------------------------------------------------------------------
+/**
+*/
+void main()
+{
+    ... // Setup vulkan
+    Program computeProgram = LoadShader(device, "computewithstore.gplb");
+    VkComputePipelineCreateInfo cmpPsoInfo = GPULang::GetComputePipeline(computeProgram.pipelineInfo);
+}
+}}</code></pre>
                     </div>
                 </div>
             </section>
