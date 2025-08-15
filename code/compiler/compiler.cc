@@ -73,52 +73,71 @@ Compiler::~Compiler()
 /**
 */
 void
-SetupTargetLanguage(const Compiler::Backend& lang, Compiler::Target& target)
+SetupTargetLanguage(const TransientArray<Compiler::Backend>& langs, Compiler::Target& target)
 {
-    switch (lang)
+    target.bits = 0xFFFFFFFF; // Enable EVERYTHING
+    for (auto lang : langs)
     {
-    case Compiler::Backend::GLSL:
-        target.name = "GLSL"_c;
-        break;
-    case Compiler::Backend::HLSL:
-        target.name = "HLSL"_c;
-        break;
-    case Compiler::Backend::DXIL:
-        target.name = "DXIL"_c;
-        break;
-    case Compiler::Backend::SPIRV:
-        target.name = "SPIRV"_c;
-        target.supportsInlineSamplers = true;
-        target.supportsPhysicalBufferAddresses = true;
-        target.supportsPhysicalAddressing = true;
-        target.supportsGlobalDeviceStorage = true;
-        break;
-    case Compiler::Backend::VULKAN_SPIRV:
-        target.name = "Vulkan"_c;
-        target.supportsInlineSamplers = true;
-        target.supportsPhysicalBufferAddresses = true;
-        target.supportsPhysicalAddressing = false;
-        target.supportsGlobalDeviceStorage = false;
-        break;
-    case Compiler::Backend::WEBGPU:
-        target.name = "WebGPU"_c;
-        break;
-    case Compiler::Backend::METAL_IR:
-    case Compiler::Backend::METAL:
-        target.name = "Metal"_c;
-        break;
+        target.backends |= (uint32_t)lang;
+        switch (lang)
+        {
+        case Compiler::Backend::GLSL:
+            target.flags.supportsInlineSamplers &= false;
+            target.flags.supportsPhysicalBufferAddresses &= true;
+            target.flags.supportsPhysicalAddressing &= false;
+            target.flags.supportsGlobalDeviceStorage &= false;
+            break;
+        case Compiler::Backend::HLSL:
+            target.flags.supportsInlineSamplers &= false;
+            target.flags.supportsPhysicalBufferAddresses &= true;
+            target.flags.supportsPhysicalAddressing &= false;
+            target.flags.supportsGlobalDeviceStorage &= false;
+            break;
+        case Compiler::Backend::DXIL:
+            target.flags.supportsInlineSamplers &= true;
+            target.flags.supportsPhysicalBufferAddresses &= true;
+            target.flags.supportsPhysicalAddressing &= false;
+            target.flags.supportsGlobalDeviceStorage &= false;
+            break;
+        case Compiler::Backend::SPIRV:
+            target.flags.supportsInlineSamplers &= true;
+            target.flags.supportsPhysicalBufferAddresses &= true;
+            target.flags.supportsPhysicalAddressing &= true;
+            target.flags.supportsGlobalDeviceStorage &= true;
+            break;
+        case Compiler::Backend::VULKAN_SPIRV:
+            target.flags.supportsInlineSamplers &= true;
+            target.flags.supportsPhysicalBufferAddresses &= true;
+            target.flags.supportsPhysicalAddressing &= false;
+            target.flags.supportsGlobalDeviceStorage &= false;
+            break;
+        case Compiler::Backend::WEBGPU:
+            target.flags.supportsInlineSamplers &= false;
+            target.flags.supportsPhysicalBufferAddresses &= false;
+            target.flags.supportsPhysicalAddressing &= false;
+            target.flags.supportsGlobalDeviceStorage &= false;
+            break;
+        case Compiler::Backend::METAL_IR:
+        case Compiler::Backend::METAL:
+            target.flags.supportsInlineSamplers &= true;
+            target.flags.supportsPhysicalBufferAddresses &= false;
+            target.flags.supportsPhysicalAddressing &= false;
+            target.flags.supportsGlobalDeviceStorage &= false;
+            break;
+        }
     }
+
 }
 
 //------------------------------------------------------------------------------
 /**
 */
 void 
-Compiler::Setup(const Compiler::Backend& lang, Options options)
+Compiler::Setup(const TransientArray<Compiler::Backend>& targets, Options options)
 {
-    this->lang = lang;
+    this->backends = targets;
     this->options = options;
-    SetupTargetLanguage(lang, this->target);
+    SetupTargetLanguage(targets, this->target);
 
     // if we want other header generators in the future, add here
     this->headerGenerator = Alloc<HGenerator>();
@@ -177,17 +196,9 @@ Compiler::Setup(const Compiler::Backend& lang, Options options)
 
     this->performanceTimer.Start();
 
-    switch (this->lang)
-    {
-    case Backend::GLSL:
-        break;
-    case Backend::HLSL:
-        break;
-    case Backend::SPIRV:
-    case Backend::VULKAN_SPIRV:
+    if (this->target.backends && (uint32_t)Backend::SPIRV || this->target.backends && (uint32_t)Backend::VULKAN_SPIRV)
         SPIRVGenerator::SetupIntrinsics();
-        break;
-    }
+    
 
     this->performanceTimer.Stop();
     if (this->options.emitTimings)
@@ -198,11 +209,11 @@ Compiler::Setup(const Compiler::Backend& lang, Options options)
 /**
 */
 void
-Compiler::SetupServer(const Compiler::Backend& lang,Options options)
+Compiler::SetupServer(const TransientArray<Compiler::Backend>& targets, Options options)
 {
     this->options = options;
-    this->lang = lang;
-    SetupTargetLanguage(lang, this->target);
+    this->backends = targets;
+    SetupTargetLanguage(targets, this->target);
     
     // Allocate main scopes
     this->intrinsicScope = Alloc<Scope>();
@@ -260,18 +271,11 @@ Compiler::SetupServer(const Compiler::Backend& lang,Options options)
 /**
 */
 Generator* 
-Compiler::CreateGenerator(const Compiler::Backend& lang, Options options)
+CreateGenerator(const Compiler::Target& target, Compiler::Options options)
 {
-    switch (lang)
-    {
-        case Backend::HLSL:
-            return Alloc<HLSLGenerator>();
-            break;
-        case Backend::SPIRV:
-        case Backend::VULKAN_SPIRV:
-            return Alloc<SPIRVGenerator>();
-            break;
-    }
+    if ((target.backends & (uint32_t)Compiler::Backend::SPIRV) || (target.backends & (uint32_t)Compiler::Backend::VULKAN_SPIRV))
+        return Alloc<SPIRVGenerator>();
+
     return nullptr;
 }
 
@@ -655,7 +659,7 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
     for (size_t programIndex = 0; programIndex < programs.size(); programIndex++)
     {
         auto program = programs[programIndex];
-        Generator* gen = CreateGenerator(this->lang, this->options);
+        Generator* gen = CreateGenerator(this->target, this->options);
         allocators[programIndex] = CreateAllocator();
         InitAllocator(&allocators[programIndex]);
         generators.Append(gen);
@@ -811,7 +815,7 @@ Compiler::Validate(Effect* root)
         for (size_t programIndex = 0; programIndex < programs.size(); programIndex++)
         {
             auto program = programs[programIndex];
-            Generator* gen = CreateGenerator(this->lang, this->options);
+            Generator* gen = CreateGenerator(this->target, this->options);
             generators.Append(gen);
             new (&threads[programIndex]) std::thread([this, values = returnValues.begin(), program, programIndex, gen, &symbols = this->symbols, writeFunction]()
             {

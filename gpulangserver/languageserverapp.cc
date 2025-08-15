@@ -200,7 +200,7 @@ struct TextRange
 
 struct ParseContext
 {
-    GPULang::Compiler::Backend lang = GPULang::Compiler::Backend::VULKAN_SPIRV;
+    std::vector<GPULang::Compiler::Backend> backends;
     GPULang::Compiler::Options options;
     std::vector<std::string> includePaths;
     struct ParsedFile
@@ -339,7 +339,8 @@ ValidateFile(ParseContext::ParsedFile* file, ParseContext* context, const std::s
     GPULang::Compiler::Options options = context->options;
     options.emitTimings = true;
 
-    GPULangValidate(file->f, context->lang, context->includePaths, options, file->result);
+    GPULang::TransientArray<GPULang::Compiler::Backend> backends(context->backends);
+    GPULangValidate(file->f, backends, context->includePaths, options, file->result);
 
     // sort symbols on line and starting point
     std::sort(file->result.symbols.begin(), file->result.symbols.end(), [](const GPULang::Symbol* lhs, const GPULang::Symbol* rhs)
@@ -1409,14 +1410,21 @@ main(int argc, const char** argv)
             for (const auto& dir : dirs)
                 context->includePaths.push_back("-I" + root + "/" + dir.string() + "/");
             
+            const auto targets = config.get("targets").array();
+            GPULang::TransientArray<GPULang::Compiler::Backend> backends;
+            for (const auto& target : targets)
+            {
+                const std::string targetStr = target.string();
+                auto it = GPULang::Compiler::BackendMap.Find(GPULang::HashString(targetStr));
+                if (it != GPULang::Compiler::BackendMap.end())
+                {
+                    context->backends.push_back(it->second);
+                }
+            }
             for (const auto& flag : flags)
             {
                 const std::string flagStr = flag.string();
-                if (flagStr == "SPIRV")
-                    context->lang = GPULang::Compiler::Backend::SPIRV;
-                else if (flagStr == "VULKAN_SPIRV")
-                    context->lang = GPULang::Compiler::Backend::VULKAN_SPIRV;
-                else if (flagStr == "disallowImplicitConversion")
+                if (flagStr == "disallowImplicitConversion")
                     context->options.disallowImplicitConversion = true;
                 else if (flagStr == "disallowImplicitPromotion")
                     context->options.disallowImplicitPromotion = true;

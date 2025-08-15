@@ -5681,7 +5681,7 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
         }
 
         this->writer->Capability(extensionEnumMap[(ProgramInstance::__Resolved::EntryType)mapping]);
-        if (compiler->target.supportsPhysicalAddressing)
+        if (compiler->target.flags.supportsPhysicalAddressing)
         {
             this->writer->Capability(Capabilities::Addresses);
             this->writer->Instruction(OpMemoryModel, SPVWriter::Section::Header, AddressingModels::Physical64, MemoryModels::GLSL450);

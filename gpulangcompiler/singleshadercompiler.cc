@@ -244,7 +244,7 @@ SingleShaderCompiler::CompileSPIRV(const std::string& src)
 
     bool res = GPULangCompile(
           f
-        , GPULang::Compiler::Backend::VULKAN_SPIRV
+                              , backends
         , escapedDst.string()
         , escapedHeader.string()
         , defines

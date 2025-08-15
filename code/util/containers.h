@@ -66,20 +66,6 @@ struct TransientArray
         }
     }
     
-    /*
-    TransientArray(TransientArray&& rhs) noexcept
-    {
-        this->ptr = rhs.ptr;
-        this->size = rhs.size;
-        this->capacity = rhs.capacity;
-        this->allocatedBytes = rhs.allocatedBytes;
-        rhs.ptr = nullptr;
-        rhs.size = 0;
-        rhs.capacity = 0;
-        rhs.allocatedBytes = 0;
-    }
-     */
-    
     TransientArray(const std::initializer_list<TYPE>& list) noexcept
     {
         if (list.size() > 0)
@@ -123,6 +109,26 @@ struct TransientArray
                 }
             }
         }
+    }
+    
+    explicit TransientArray(const std::vector<TYPE>& arr)
+    {
+        size_t size = arr.size();
+        this->ptr = AllocStack<TYPE>(size, this->allocatedBytes);
+        this->capacity = size;
+
+        if (std::is_trivially_copyable<TYPE>::value)
+        {
+            memcpy(this->ptr, arr.data(), sizeof(TYPE) * this->capacity);
+            this->size = size;
+        }
+        else
+        {
+            for (size_t i = 0; i < arr.size(); i++)
+            {
+                this->ptr[this->size++] = arr[i];
+            }
+        }   
     }
 
 private:

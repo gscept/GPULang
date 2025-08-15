@@ -2158,7 +2158,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             }
             if (size == 0)
             {
-                if (compiler->target.supportsPhysicalBufferAddresses)
+                if (compiler->target.flags.supportsPhysicalBufferAddresses)
                     varResolved->usageBits.flags.isPhysicalAddress = true;
                 else
                 {
@@ -2291,7 +2291,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 compiler->Error(Format("Multiple storage qualifiers are not allowed"), symbol);
                 return false;
             }
-            if (!compiler->target.supportsGlobalDeviceStorage)
+            if (!compiler->target.flags.supportsGlobalDeviceStorage)
             {
                 compiler->Error(Format("'device' storage not supported by target '%s'", compiler->target.name.c_str()), symbol);
                 return false;
@@ -2402,11 +2402,11 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         }
     }
 
-    if (!compiler->target.supportsPhysicalAddressing)
+    if (!compiler->target.flags.supportsPhysicalAddressing)
     {
         if (varResolved->usageBits.flags.isStructMember && type->category == Type::UserTypeCategory && var->type.IsPointer())
         {
-            if (!compiler->target.supportsPhysicalBufferAddresses)
+            if (!compiler->target.flags.supportsPhysicalBufferAddresses)
             {
                 compiler->Error(Format("Struct members may not be pointers if ('%s') does not support physical buffer addresses", compiler->target.name.c_str()), var);
                 return false;
@@ -2508,7 +2508,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     {
         if (varResolved->storage == Storage::Device)
         {
-            if (!compiler->target.supportsGlobalDeviceStorage)
+            if (!compiler->target.flags.supportsGlobalDeviceStorage)
             {
                 compiler->Error(Format("Target language %s does not support 'device' storage", compiler->target.name.c_str()), symbol);
                 return false;    
@@ -3903,7 +3903,7 @@ Validator::ValidateType(Compiler* compiler, const Type::FullType& type, Type* ty
         }
     }
 
-    if (!compiler->target.supportsPhysicalAddressing)
+    if (!compiler->target.flags.supportsPhysicalAddressing)
     {
         if (numPointers > 1)
         {

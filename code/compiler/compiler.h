@@ -37,14 +37,14 @@ struct Compiler
 {
     enum class Backend : uint8_t
     {
-        GLSL,
-        HLSL,
-        DXIL,           // target is DXIL
-        SPIRV,          // target is generic SPIRV
-        VULKAN_SPIRV,   // target is SPIRV with the Vulkan subset
-        WEBGPU,         // target is wgsl
-        METAL,          // target is msl
-        METAL_IR        // target is Metal IR (not implemented)
+        GLSL = 0x1,
+        HLSL = 0x2,
+        DXIL = 0x4,            // target is DXIL
+        SPIRV = 0x8,           // target is generic SPIRV
+        VULKAN_SPIRV = 0x10,   // target is SPIRV with the Vulkan subset
+        WEBGPU = 0x20,         // target is wgsl
+        METAL = 0x40,          // target is msl
+        METAL_IR = 0x80        // target is Metal IR (not implemented)
     };
     
     static constexpr StaticMap BackendMap = std::array {
@@ -105,10 +105,18 @@ struct Compiler
     {
         FixedString name;
 
-        uint8_t supportsPhysicalBufferAddresses : 1;
-        uint8_t supportsPhysicalAddressing : 1;
-        uint8_t supportsInlineSamplers : 1;
-        uint8_t supportsGlobalDeviceStorage : 1;
+        union
+        {
+            struct
+            {
+                uint8_t supportsPhysicalBufferAddresses : 1;
+                uint8_t supportsPhysicalAddressing : 1;
+                uint8_t supportsInlineSamplers : 1;
+                uint8_t supportsGlobalDeviceStorage : 1;
+            } flags;
+            uint32_t bits;
+        };
+        uint32_t backends = 0x0;
     } target;
 
     /// constructor
@@ -117,11 +125,9 @@ struct Compiler
     ~Compiler();
 
     /// setup compiler with target language in generation mode
-    void Setup(const Compiler::Backend& lang, Options options);
+    void Setup(const TransientArray<Compiler::Backend>& langs, Options options);
     /// setup compiler for validation (language server) mode
-    void SetupServer(const Compiler::Backend& lang, Options options);
-    /// Create generator
-    Generator* CreateGenerator(const Compiler::Backend& lang, Options options);
+    void SetupServer(const TransientArray<Compiler::Backend>& langs, Options options);
 
     /// Start static symbol setup
     void BeginStaticSymbolSetup();
@@ -234,7 +240,7 @@ struct Compiler
 
     GPULang::Thread* staticSetupThread;
 
-    Compiler::Backend lang;
+    FixedArray<Compiler::Backend> backends;
     Validator* validator = nullptr;
     Generator* headerGenerator = nullptr;
 

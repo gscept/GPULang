@@ -109,6 +109,6 @@ struct GPULangFile
 };
 
 extern GPULang::FixedArray<GPULang::FixedString> GPULangGenerateDependencies(GPULangFile*, const std::vector<std::string>&, GPULang::PinnedArray<GPULangDiagnostic>&);
-extern bool GPULangCompile(const GPULangFile* file, GPULang::Compiler::Backend target, const std::string& output, const std::string& header_output, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangErrorBlob*& errorBuffer);
-extern bool GPULangValidate(GPULangFile*, GPULang::Compiler::Backend , const std::vector<std::string>&, GPULang::Compiler::Options, GPULangServerResult&);
+extern bool GPULangCompile(const GPULangFile* file, const GPULang::TransientArray<GPULang::Compiler::Backend>&, const std::string& output, const std::string& header_output, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangErrorBlob*& errorBuffer);
+extern bool GPULangValidate(GPULangFile*, const GPULang::TransientArray<GPULang::Compiler::Backend>&, const std::vector<std::string>&, GPULang::Compiler::Options, GPULangServerResult&);
 extern GPULangFile* GPULangLoadFile(const std::string_view& path);

@@ -1908,7 +1908,7 @@ Error(const GPULang::GrowingString& message)
     @param errorBuffer	Buffer containing errors, created in function but must be deleted manually
 */
 bool
-GPULangCompile(const GPULangFile* file, GPULang::Compiler::Backend target, const std::string& output, const std::string& header_output, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangErrorBlob*& errorBuffer)
+GPULangCompile(const GPULangFile* file, const TransientArray<Compiler::Backend>& targets, const std::string& output, const std::string& header_output, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangErrorBlob*& errorBuffer)
 {
     SetupSystem();
     bool ret = true;
@@ -1924,7 +1924,7 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Backend target, const
     errorBuffer = nullptr;
 
     Compiler compiler;
-    compiler.Setup(target, options);
+    compiler.Setup(targets, options);
     
     TransientArray<std::string_view> searchPaths(128);
     for (auto& arg : defines)
@@ -2075,7 +2075,7 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Backend target, const
     Runs compilation without output
 */
 bool
-GPULangValidate(GPULangFile* file, GPULang::Compiler::Backend target, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangServerResult& result)
+GPULangValidate(GPULangFile* file,  const GPULang::TransientArray<GPULang::Compiler::Backend>& targets, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangServerResult& result)
 {
     SetupSystem();
     bool ret = true;
@@ -2084,7 +2084,7 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Backend target, const std:
     result.messages.Invalidate();
     
     Compiler compiler;
-    compiler.SetupServer(target, options);
+    compiler.SetupServer(targets, options);
     
     GPULang::Compiler::Timer timer;
     timer.Start();

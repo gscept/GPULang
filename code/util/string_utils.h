@@ -1378,6 +1378,11 @@ struct HashString
         this->hash = hash_str(str);
     }
     
+    constexpr HashString(const std::string& str)
+    {
+        this->hash = hash_str(std::string_view(str));
+    }
+    
     constexpr bool operator<(const HashString& rhs) const
     {
         return this->hash < rhs.hash;
