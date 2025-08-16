@@ -78,53 +78,12 @@ SetupTargetLanguage(const TransientArray<Compiler::Backend>& langs, Compiler::Ta
     target.bits = 0xFFFFFFFF; // Enable EVERYTHING
     for (auto lang : langs)
     {
-        target.backends |= (uint32_t)lang;
-        switch (lang)
+        auto it = TargetCapabilityMap.Find(lang);
+        if (it != TargetCapabilityMap.end())
         {
-        case Compiler::Backend::GLSL:
-            target.flags.supportsInlineSamplers &= false;
-            target.flags.supportsPhysicalBufferAddresses &= true;
-            target.flags.supportsPhysicalAddressing &= false;
-            target.flags.supportsGlobalDeviceStorage &= false;
-            break;
-        case Compiler::Backend::HLSL:
-            target.flags.supportsInlineSamplers &= false;
-            target.flags.supportsPhysicalBufferAddresses &= true;
-            target.flags.supportsPhysicalAddressing &= false;
-            target.flags.supportsGlobalDeviceStorage &= false;
-            break;
-        case Compiler::Backend::DXIL:
-            target.flags.supportsInlineSamplers &= true;
-            target.flags.supportsPhysicalBufferAddresses &= true;
-            target.flags.supportsPhysicalAddressing &= false;
-            target.flags.supportsGlobalDeviceStorage &= false;
-            break;
-        case Compiler::Backend::SPIRV:
-            target.flags.supportsInlineSamplers &= true;
-            target.flags.supportsPhysicalBufferAddresses &= true;
-            target.flags.supportsPhysicalAddressing &= true;
-            target.flags.supportsGlobalDeviceStorage &= true;
-            break;
-        case Compiler::Backend::VULKAN_SPIRV:
-            target.flags.supportsInlineSamplers &= true;
-            target.flags.supportsPhysicalBufferAddresses &= true;
-            target.flags.supportsPhysicalAddressing &= false;
-            target.flags.supportsGlobalDeviceStorage &= false;
-            break;
-        case Compiler::Backend::WEBGPU:
-            target.flags.supportsInlineSamplers &= false;
-            target.flags.supportsPhysicalBufferAddresses &= false;
-            target.flags.supportsPhysicalAddressing &= false;
-            target.flags.supportsGlobalDeviceStorage &= false;
-            break;
-        case Compiler::Backend::METAL_IR:
-        case Compiler::Backend::METAL:
-            target.flags.supportsInlineSamplers &= true;
-            target.flags.supportsPhysicalBufferAddresses &= false;
-            target.flags.supportsPhysicalAddressing &= false;
-            target.flags.supportsGlobalDeviceStorage &= false;
-            break;
+            target.bits &= it->second.bits
         }
+        target.backends |= (uint32_t)lang;
     }
 
 }

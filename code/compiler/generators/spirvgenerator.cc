@@ -5918,7 +5918,7 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
         }
 
         // conversion and optional validation is successful, dump binary in program
-        progResolved->binaries[mapping] = spvBinary;
+        progResolved->spirv[mapping] = spvBinary;
 
         if (diag != nullptr)
             delete diag;

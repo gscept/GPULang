@@ -2158,7 +2158,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             }
             if (size == 0)
             {
-                if (compiler->target.flags.supportsPhysicalBufferAddresses)
+                if (compiler->target.capabilities.flags.supportsPhysicalBufferAddresses)
                     varResolved->usageBits.flags.isPhysicalAddress = true;
                 else
                 {
@@ -2291,7 +2291,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 compiler->Error(Format("Multiple storage qualifiers are not allowed"), symbol);
                 return false;
             }
-            if (!compiler->target.flags.supportsGlobalDeviceStorage)
+            if (!compiler->target.capabilities.flags.supportsGlobalDeviceStorage)
             {
                 compiler->Error(Format("'device' storage not supported by target '%s'", compiler->target.name.c_str()), symbol);
                 return false;
@@ -2402,11 +2402,11 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         }
     }
 
-    if (!compiler->target.flags.supportsPhysicalAddressing)
+    if (!compiler->target.capabilities.flags.supportsPhysicalAddressing)
     {
         if (varResolved->usageBits.flags.isStructMember && type->category == Type::UserTypeCategory && var->type.IsPointer())
         {
-            if (!compiler->target.flags.supportsPhysicalBufferAddresses)
+            if (!compiler->target.capabilities.flags.supportsPhysicalBufferAddresses)
             {
                 compiler->Error(Format("Struct members may not be pointers if ('%s') does not support physical buffer addresses", compiler->target.name.c_str()), var);
                 return false;
@@ -2508,7 +2508,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     {
         if (varResolved->storage == Storage::Device)
         {
-            if (!compiler->target.flags.supportsGlobalDeviceStorage)
+            if (!compiler->target.capabilities.flags.supportsGlobalDeviceStorage)
             {
                 compiler->Error(Format("Target language %s does not support 'device' storage", compiler->target.name.c_str()), symbol);
                 return false;    
@@ -3481,6 +3481,11 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
 
     if (compiler->currentState.shaderType == ProgramInstance::__Resolved::HullShader)
     {
+        if (!compiler->target.capabilities.flags.supportsTessellationShaders)
+        {
+            compiler->Error(Format("Mesh shaders are not supported on all target platforms"), symbol);
+            return false;
+        }
         if (funResolved->executionModifiers.maxOutputVertices == Function::__Resolved::INVALID_SIZE)
         {
             compiler->Error(Format("Hull shader '%s' does not define 'patch_size'", fun->name.c_str()), symbol);
@@ -3519,6 +3524,12 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
 
     if (compiler->currentState.shaderType == ProgramInstance::__Resolved::DomainShader)
     {
+        if (!compiler->target.capabilities.flags.supportsTessellationShaders)
+        {
+            compiler->Error(Format("Mesh shaders are not supported on all target platforms"), symbol);
+            return false;
+        }
+        
         // validate required qualifiers
         if (funResolved->executionModifiers.patchType != Function::__Resolved::InvalidPatchType)
         {
@@ -3530,6 +3541,11 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
 
     if (compiler->currentState.shaderType == ProgramInstance::__Resolved::GeometryShader)
     {
+        if (!compiler->target.capabilities.flags.supportsGeometryShaders)
+        {
+            compiler->Error(Format("Geometry shaders are not supported on all target platforms"), symbol);
+            return false;
+        }
         if (funResolved->executionModifiers.maxOutputVertices == Function::__Resolved::INVALID_SIZE)
         {
             compiler->Error(Format("Geometry shader '%s' does not define 'max_output_vertices' for GeometryShader", fun->name.c_str()), symbol);
@@ -3590,6 +3606,11 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
 
     if (compiler->currentState.shaderType == ProgramInstance::__Resolved::TaskShader)
     {
+        if (!compiler->target.capabilities.flags.supportsMeshShaders)
+        {
+            compiler->Error(Format("Mesh shaders are not supported on all target platforms"), symbol);
+            return false;
+        }
         if (funResolved->executionModifiers.computeShaderWorkGroupSize[1] > 1)
         {
             compiler->Error(Format("Task shader must declare 'local_size_y' as 1", fun->name.c_str()), symbol);
@@ -3604,6 +3625,11 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
 
     if (compiler->currentState.shaderType == ProgramInstance::__Resolved::MeshShader)
     {
+        if (!compiler->target.capabilities.flags.supportsMeshShaders)
+        {
+            compiler->Error(Format("Mesh shaders are not supported on all target platforms"), symbol);
+            return false;
+        }
         if (funResolved->executionModifiers.computeShaderWorkGroupSize[0] <= 0)
         {
             compiler->Error(Format("Mesh shader must declare 'local_size_x' bigger than or equal to 1", fun->name.c_str()), symbol);
@@ -3627,6 +3653,22 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
         if (funResolved->executionModifiers.groupsPerWorkgroup <= 0)
         {
             compiler->Error(Format("Mesh shader must declare 'groups_per_workgroup' bigger than or equal to 1", fun->name.c_str()), symbol);
+            return false;
+        }
+    }
+    
+    if (
+        compiler->currentState.shaderType == ProgramInstance::__Resolved::RayGenerationShader
+        || compiler->currentState.shaderType == ProgramInstance::__Resolved::RayAnyHitShader
+        || compiler->currentState.shaderType == ProgramInstance::__Resolved::RayClosestHitShader
+        || compiler->currentState.shaderType == ProgramInstance::__Resolved::RayMissShader
+        || compiler->currentState.shaderType == ProgramInstance::__Resolved::RayCallableShader
+        || compiler->currentState.shaderType == ProgramInstance::__Resolved::RayIntersectionShader
+        )
+    {
+        if (!compiler->target.capabilities.flags.supportsRayTracing)
+        {
+            compiler->Error(Format("Ray tracing shaders are not supported on all target platforms"), symbol);
             return false;
         }
     }
@@ -3903,7 +3945,7 @@ Validator::ValidateType(Compiler* compiler, const Type::FullType& type, Type* ty
         }
     }
 
-    if (!compiler->target.flags.supportsPhysicalAddressing)
+    if (!compiler->target.capabilities.flags.supportsPhysicalAddressing)
     {
         if (numPointers > 1)
         {

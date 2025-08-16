@@ -101,7 +101,9 @@ struct ProgramInstance : public Symbol
             uint32_t bits;
         } effects;
         Symbol* mappings[EntryType::NumProgramEntries];
-        std::vector<uint32_t> binaries[EntryType::NumProgramEntries];
+        std::vector<uint32_t> spirv[EntryType::NumProgramEntries];
+        std::vector<char> hlsl[EntryType::NumProgramEntries];
+        std::vector<char> metal[EntryType::NumProgramEntries];
         PinnedMap<Function*, Function*> functionOverrides = 0xFFF;
         PinnedMap<Variable*, Expression*> constVarInitializationOverrides = 0xFFF;
     };

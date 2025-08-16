@@ -54,12 +54,19 @@ struct Compiler
         std::pair{ "webgpu"_h, Backend::WEBGPU }
     };
     
+    static constexpr StaticMap BackendLookup = std::array {
+        std::pair{ Backend::VULKAN_SPIRV, "vulkan"_c },
+        std::pair{ Backend::HLSL, "directx"_c },
+        std::pair{ Backend::METAL, "metal"_c },
+        std::pair{ Backend::WEBGPU, "webgpu"_c }
+    };  
+    
     enum class Binding : uint8_t
     {
-        Cpp,            // C++ .h
-        Rust,           // .rs
-        Zig,            // .zig
-        JavaScript,     // .js
+        Cpp         = 0x1,          // C++ header (.h)
+        Rust        = 0x2,          // .rs
+        Zig         = 0x4,          // .zig
+        JavaScript  = 0x8,          // .js
     };
     
     static constexpr StaticMap BindingMap = std::array {
@@ -75,6 +82,8 @@ struct Compiler
         GCC,
         Clang
     };
+    
+
 
     struct Options
     {
@@ -100,22 +109,104 @@ struct Compiler
 
         ErrorFormat errorFormat = ErrorFormat::MSVC;
     };
-
-    struct Target
+    
+    struct TargetCapabilities
     {
-        FixedString name;
-
         union
         {
             struct
             {
-                uint8_t supportsPhysicalBufferAddresses : 1;
-                uint8_t supportsPhysicalAddressing : 1;
-                uint8_t supportsInlineSamplers : 1;
-                uint8_t supportsGlobalDeviceStorage : 1;
+                uint32_t supportsPhysicalBufferAddresses : 1;
+                uint32_t supportsPhysicalAddressing : 1;
+                uint32_t supportsInlineSamplers : 1;
+                uint32_t supportsGlobalDeviceStorage : 1;
+                uint32_t supportsGeometryShaders : 1;
+                uint32_t supportsTessellationShaders : 1;
+                uint32_t supportsMeshShaders : 1;
+                uint32_t supportsRayTracing : 1;
             } flags;
             uint32_t bits;
         };
+    };
+    
+    static constexpr StaticMap TargetCapabilityMap = std::array{
+        std::pair{ Backend::HLSL, TargetCapabilities{.flags =
+            {
+                .supportsPhysicalBufferAddresses = true
+                , .supportsPhysicalAddressing = false
+                , .supportsInlineSamplers = false
+                , .supportsGlobalDeviceStorage = false
+                , .supportsGeometryShaders = true
+                , .supportsTessellationShaders = true
+                , .supportsMeshShaders = true
+                , .supportsRayTracing = true
+            }
+        }},
+        std::pair{ Backend::GLSL, TargetCapabilities{.flags =
+            {
+                .supportsPhysicalBufferAddresses = true
+                , .supportsPhysicalAddressing = false
+                , .supportsInlineSamplers = false
+                , .supportsGlobalDeviceStorage = false
+                , .supportsGeometryShaders = true
+                , .supportsTessellationShaders = true
+                , .supportsMeshShaders = true
+                , .supportsRayTracing = true
+            }
+        }},
+        std::pair{ Backend::SPIRV, TargetCapabilities{.flags =
+            {
+                .supportsPhysicalBufferAddresses = true
+                , .supportsPhysicalAddressing = true
+                , .supportsInlineSamplers = true
+                , .supportsGlobalDeviceStorage = true
+                , .supportsGeometryShaders = false
+                , .supportsTessellationShaders = false
+                , .supportsMeshShaders = false
+                , .supportsRayTracing = false
+            }
+        }},
+        std::pair{ Backend::VULKAN_SPIRV, TargetCapabilities{.flags =
+            {
+                .supportsPhysicalBufferAddresses = true
+                , .supportsPhysicalAddressing = false
+                , .supportsInlineSamplers = true
+                , .supportsGlobalDeviceStorage = false
+                , .supportsGeometryShaders = true
+                , .supportsTessellationShaders = true
+                , .supportsMeshShaders = true
+                , .supportsRayTracing = true
+            }
+        }},
+        std::pair{ Backend::WEBGPU, TargetCapabilities{.flags =
+            {
+                .supportsPhysicalBufferAddresses = false
+                , .supportsPhysicalAddressing = false
+                , .supportsInlineSamplers = false
+                , .supportsGlobalDeviceStorage = false
+                , .supportsGeometryShaders = false
+                , .supportsTessellationShaders = false
+                , .supportsMeshShaders = false
+                , .supportsRayTracing = false
+            }
+        }},
+        std::pair{ Backend::METAL, TargetCapabilities{.flags =
+            {
+                .supportsPhysicalBufferAddresses = false
+                , .supportsPhysicalAddressing = false
+                , .supportsInlineSamplers = true
+                , .supportsGlobalDeviceStorage = false
+                , .supportsGeometryShaders = false
+                , .supportsTessellationShaders = false
+                , .supportsMeshShaders = true
+                , .supportsRayTracing = true
+            }
+        }}
+    };
+    
+    struct Target
+    {
+        TargetCapabilities capabilities;
         uint32_t backends = 0x0;
     } target;
 
