@@ -267,7 +267,7 @@
             <div class="page-header">
                 <h1 class="page-title">Integration Guide</h1>
                 <p class="page-subtitle">
-                    Learn how to integrate GPULang into your game engine and optimize rendering performance
+                    Learn how to integrate GPULang into your game engine
                 </p>
             </div>
 
@@ -279,7 +279,7 @@
                     and best practices for using GPULang in real-time rendering applications.
                 </p>
 
-                <h3>Loading a GPULang output file</h3>
+                <h3>Loading a GPULang output file and extracting a single program</h3>
 
                 <div class="code-example">
                     <div class="code-container">
@@ -314,6 +314,8 @@ LoadShader(char* fileBuffer, size_t fileBufferSize, VkDevice device, std::string
     ret.memory = buf;
     ret.loader = loader;
     return ret;
+}
+
 //------------------------------------------------------------------------------
 /**
 */
@@ -322,10 +324,84 @@ void main()
     ... // Setup vulkan
     Program computeProgram = LoadShader(device, "computewithstore.gplb");
     VkComputePipelineCreateInfo cmpPsoInfo = GPULang::GetComputePipeline(computeProgram.pipelineInfo);
-}
-}}</code></pre>
+}</code></pre>
                     </div>
                 </div>
+                <h3>Iterate and and setup dynamically</h3>
+
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-cpp">//------------------------------------------------------------------------------
+/**
+*/
+Program
+LoadShader(char* fileBuffer, size_t fileBufferSize, VkDevice device, std::string shader)
+{
+    GPULang::Loader loader;
+    loader.Load(fileBuffer, fileBufferSize);
+
+    // Map for looking up symbols by name
+    for (auto& [name, object] : info.loader->nameToObject)
+    {
+        if (object->type == GPULang::Serialize::Type::VariableType)
+        {
+            auto variable = (GPULang::Deserialize::Variable*)object;
+
+            // If variable is a uniform buffer, store it in the reflection data
+            if (variable->bindingType == GPULang::BindingType::Buffer)
+            {
+                // Setup read-only buffer (uniform/constant)
+            }
+            else if (variable->bindingType == GPULang::BindingType::MutableBuffer)
+            {
+                // Setup writeable buffer (storage/rw)
+            }
+        }
+        if (object->type == GPULang::Serialize::Type::ProgramType)
+        {
+            auto program = (GPULang::Deserialize::Program*)object;
+            VkShaderModule vs,hs,ds,gs,ps,cs;
+            VulkanCreateShader(device, &vs, program->shaders[GPULang::Deserialize::Program::ShaderStages::VertexShader]);
+            VulkanCreateShader(device, &hs, program->shaders[GPULang::Deserialize::Program::ShaderStages::HullShader]);
+            VulkanCreateShader(device, &ds, program->shaders[GPULang::Deserialize::Program::ShaderStages::DomainShader]);
+            VulkanCreateShader(device, &gs, program->shaders[GPULang::Deserialize::Program::ShaderStages::GeometryShader]);
+            VulkanCreateShader(device, &ps, program->shaders[GPULang::Deserialize::Program::ShaderStages::PixelShader]);
+            VulkanCreateShader(device, &cs, program->shaders[GPULang::Deserialize::Program::ShaderStages::ComputeShader]);
+        }
+    }
+}</code></pre>
+                    </div>
+                </div>
+
+                <h3>Using static reflection</h3>
+                <div class="code-example">
+                    <div class="code-container">
+                        <pre><code class="language-cpp">#include "histogram.h"
+//------------------------------------------------------------------------------
+/**
+*/
+void
+BindHistogram(const std::vector&ltVkDescriptorSet&gt& sets, VkBuffer buf)
+{
+    WriteDescriptor(sets[Histogram::HistogramBuffer::GROUP], Histogram::HistogramBuffer::BINDING, buf);
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void
+RunHistogram(VkCmdBuffer& cmd, int ScreenSize[2])
+{
+    vkCmdDispatch(cmd
+        , HistogramProgram::csMain::WORKGROUP_SIZE[0] / ScreenSize[0]
+        , HistogramProgram::csMain::WORKGROUP_SIZE[1] / ScreenSize[1]
+        , HistogramProgram::csMain::WORKGROUP_SIZE[2]
+    )
+}
+                        </code></pre>
+                    </div>
+                </div>  
+                           
             </section>
 
         </div>
