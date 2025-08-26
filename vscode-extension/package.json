@@ -25,7 +25,7 @@
 		"aliases": ["GPULang", "gpulang"]
 	}],
 	"activationEvents": [
-		"onStartupFinished"
+		"onLanguage:gpulang"
 	],
 	"main": "./client/out/extension",
 	"contributes": {

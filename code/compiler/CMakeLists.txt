@@ -165,6 +165,7 @@ fips_dir(generated)
         types.h
     )
 
+target_compile_features(gpulang_compiler PUBLIC cxx_std_20)
 fips_deps(gpulang_util glslang)
 SET_DEFAULT_OUTPUT(gpulang_compiler)
 

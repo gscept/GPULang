@@ -34,6 +34,7 @@ fips_dir(reflection/vk)
     set_target_properties(gpulang_reflection PROPERTIES
         OUTPUT_NAME "gpulang_reflection${PLATFORM}"
     )
+    target_compile_features(gpulang_reflection PUBLIC cxx_std_20)
 
 if(DEPLOY)
     install(TARGETS gpulang_reflection

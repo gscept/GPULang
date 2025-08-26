@@ -17,7 +17,9 @@ imports:
 
 exports:
     header-dirs:
+    - code/reflection
+    - code/util
     - code
-    - code/compiler
     modules:
-        code: .
+      runtime: code/api
+      util: code/util

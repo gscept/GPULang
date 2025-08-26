@@ -23,6 +23,7 @@ fips_begin_app(gpulang_server cmdline)
     set_target_properties(gpulang_server PROPERTIES
         OUTPUT_NAME "gpulang_server${PLATFORM}"
     )
+    target_compile_features(gpulang_server PRIVATE cxx_std_20)
 
 fips_end_app()
 

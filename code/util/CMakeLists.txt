@@ -30,4 +30,6 @@ fips_files(
 	util.h
 )
 
+target_compile_features(gpulang_util PUBLIC cxx_std_20)
+
 fips_end_lib()

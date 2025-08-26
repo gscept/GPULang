@@ -54,12 +54,6 @@ ELSEIF(APPLE)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unused-variable -Wno-unused-parameter -fbracket-depth=4096")
 ENDIF()
 
-	set(CMAKE_CXX_STANDARD 20)
-	set(CMAKE_CXX_STANDARD_REQUIRED on)
-	set(CMAKE_CXX_EXTENSIONS OFF)
-	#set(FIPS_WINDOWS_LTCG OFF)
-
-
 	SET(GPULANG_ROOT ${CMAKE_CURRENT_SOURCE_DIR})
 	get_filename_component(GPULANG_SOURCE_DIR "gpulang" ABSOLUTE)
 

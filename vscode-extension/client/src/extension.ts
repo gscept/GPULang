@@ -96,7 +96,7 @@ export function activate(context: ExtensionContext) {
 			// Make binary executable
 			chmodSync(serverPath, 0o755);
 			await startServerAndConnect(serverPath).catch(err => {
-				vscode.window.showErrorMessage(`Failed to GPULang server: ${err.message}`);
+				vscode.window.showInformationMessage(`Failed to GPULang server: ${err.message}`);
 				return rejects(err);
 			});
 			vscode.window.showInformationMessage(`GPULang server started: ${serverPath}`);
@@ -125,20 +125,23 @@ export function activate(context: ExtensionContext) {
 	const configPath = path.join(workspaceFolders[0].uri.fsPath, 'gpulang_config.json');
 
 	let fd = null;
+	let fileData = null;
 	if (fs.existsSync(configPath) === false) {
-		vscode.window.showErrorMessage(`Could not find gpulang configuration file: ${configPath}`);
+		vscode.window.showInformationMessage(`Could not find gpulang configuration file: ${configPath}`);
 	} else {
 		fd = fs.openSync(configPath, 'r');
 		vscode.window.showInformationMessage(`Using gpulang configuration file: ${configPath}`);
+		fileData = fs.readFileSync(fd).toString('utf8');		
+		vscode.window.showInformationMessage(`Config: ${fileData}`);
 	}
 
-	const fileData = fs.readFileSync(fd);
+	
 	const clientOptions: LanguageClientOptions = {
 		// Register the server for plain text documents
 		documentSelector: ['gpulang'],
 		initializationOptions: {
 			root : workspaceFolders[0].uri.fsPath,
-			config : JSON.parse(fileData.toString('utf8'))
+			config : JSON.parse(fileData)
 		},
 		synchronize: {
 			// Notify the server about file changes to '.gpul files contained in the workspace
