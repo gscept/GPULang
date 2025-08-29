@@ -1560,6 +1560,36 @@
         ]
     },
     {
+        "name": "geometryGetLine",
+        "documentation": "Returns a struct of the current line.",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "geometryGetLine() GeometryLine"
+            }
+        ]
+    },
+    {
+        "name": "geometryGetPoint",
+        "documentation": "Returns a struct of the current point.",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "geometryGetPoint() GeometryPoint"
+            }
+        ]
+    },
+    {
         "name": "geometryGetTriangle",
         "documentation": "Returns a struct of the current triangle.",
         "target_support": [
@@ -1570,7 +1600,7 @@
         ],
         "overloads": [
             {
-                "signature": "geometryGetTriangle() f32x4"
+                "signature": "geometryGetTriangle() GeometryTriangle"
             }
         ]
     },

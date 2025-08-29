@@ -27938,13 +27938,57 @@ GeometryLine::GeometryLine()
     GeometryLineClipDistance.type = Type::FullType{ Float32Type.name, {Type::FullType::Modifier::Array}, {&GeometryLineClipDistanceArraySize} };
     GeometryLineClipDistance.thisResolved->typeSymbol = &Float32Type;
     this->scope.symbolLookup = StaticMap<HashString, Symbol*, 4> {
-        std::pair{ "Position"_h, &GeometryLinePosition },
         std::pair{ "CullDistance"_h, &GeometryLineCullDistance },
+        std::pair{ "Position"_h, &GeometryLinePosition },
         std::pair{ "ClipDistance"_h, &GeometryLineClipDistance },
         std::pair{ "PointSize"_h, &GeometryLinePointSize }
     };
 };
 GeometryLine GeometryLineType;
+
+Variable GeometryTrianglePosition;
+IntExpression GeometryTrianglePositionArraySize(3);
+Variable GeometryTrianglePointSize;
+IntExpression GeometryTrianglePointSizeArraySize(3);
+Variable GeometryTriangleCullDistance;
+IntExpression GeometryTriangleCullDistanceArraySize(3);
+Variable GeometryTriangleClipDistance;
+IntExpression GeometryTriangleClipDistanceArraySize(3);
+GeometryTriangle::GeometryTriangle()
+{
+    this->name = "GeometryTriangle"_c;
+    this->resolved = Alloc<Structure::__Resolved>();
+    this->category = Type::StructureCategory;
+    this->arraySizeExpression = nullptr;
+    this->isArray = false;
+    this->scope.owningSymbol = this;
+    this->scope.type = Scope::ScopeType::Type;
+    this->baseType = TypeCode::InvalidType;
+    this->builtin = true;
+    Structure::__Resolved* typeResolved = static_cast<Structure::__Resolved*>(this->resolved);
+    typeResolved->usageFlags.bits = 0x0;
+    typeResolved->accessBits.bits = 0x0;
+    typeResolved->byteSize = 84;
+    typeResolved->baseAlignment = 0;
+    typeResolved->packMembers = false;
+    typeResolved->storageFunction = nullptr;
+    typeResolved->loadFunction = nullptr;
+    GeometryTrianglePosition.type = Type::FullType{ Float32x4Type.name, {Type::FullType::Modifier::Array}, {&GeometryTrianglePositionArraySize} };
+    GeometryTrianglePosition.thisResolved->typeSymbol = &Float32x4Type;
+    GeometryTrianglePointSize.type = Type::FullType{ Float32Type.name, {Type::FullType::Modifier::Array}, {&GeometryTrianglePointSizeArraySize} };
+    GeometryTrianglePointSize.thisResolved->typeSymbol = &Float32Type;
+    GeometryTriangleCullDistance.type = Type::FullType{ Float32Type.name, {Type::FullType::Modifier::Array}, {&GeometryTriangleCullDistanceArraySize} };
+    GeometryTriangleCullDistance.thisResolved->typeSymbol = &Float32Type;
+    GeometryTriangleClipDistance.type = Type::FullType{ Float32Type.name, {Type::FullType::Modifier::Array}, {&GeometryTriangleClipDistanceArraySize} };
+    GeometryTriangleClipDistance.thisResolved->typeSymbol = &Float32Type;
+    this->scope.symbolLookup = StaticMap<HashString, Symbol*, 4> {
+        std::pair{ "CullDistance"_h, &GeometryTriangleCullDistance },
+        std::pair{ "Position"_h, &GeometryTrianglePosition },
+        std::pair{ "ClipDistance"_h, &GeometryTriangleClipDistance },
+        std::pair{ "PointSize"_h, &GeometryTrianglePointSize }
+    };
+};
+GeometryTriangle GeometryTriangleType;
 
 Variable StencilStateFail;
 Variable StencilStatePass;

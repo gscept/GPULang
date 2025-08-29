@@ -120,7 +120,8 @@
         "AddressMode",
         "Color",
         "GeometryPoint",
-        "GeometryLine"
+        "GeometryLine",
+        "GeometryTriangle"
     ],
     "builtin_functions": [
         "abs",
@@ -180,6 +181,8 @@
         "fwidth",
         "geometryExportPrimitive",
         "geometryExportVertex",
+        "geometryGetLine",
+        "geometryGetPoint",
         "geometryGetTriangle",
         "invSqrt",
         "inverse",

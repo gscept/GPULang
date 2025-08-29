@@ -5358,6 +5358,20 @@ extern Variable GeometryLineCullDistance;
 extern IntExpression GeometryLineCullDistanceArraySize;
 extern Variable GeometryLineClipDistance;
 extern IntExpression GeometryLineClipDistanceArraySize;
+struct GeometryTriangle : public Structure
+{
+    GeometryTriangle();
+};
+extern GeometryTriangle GeometryTriangleType;
+
+extern Variable GeometryTrianglePosition;
+extern IntExpression GeometryTrianglePositionArraySize;
+extern Variable GeometryTrianglePointSize;
+extern IntExpression GeometryTrianglePointSizeArraySize;
+extern Variable GeometryTriangleCullDistance;
+extern IntExpression GeometryTriangleCullDistanceArraySize;
+extern Variable GeometryTriangleClipDistance;
+extern IntExpression GeometryTriangleClipDistanceArraySize;
 extern Variable StencilStateFail;
 extern Variable StencilStatePass;
 extern Variable StencilStateDepthFail;

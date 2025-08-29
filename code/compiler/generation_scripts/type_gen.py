@@ -135,7 +135,10 @@ def generate_types():
         "Float16x3x4": "f16x3x4",
         "Float16x4x2": "f16x4x2",
         "Float16x4x3": "f16x4x3",
-        "Float16x4x4": "f16x4x4"
+        "Float16x4x4": "f16x4x4",
+        "GeometryTriangle": "GeometryTriangle",
+        "GeometryLine": "GeometryLine",
+        "GeometryPoint": "GeometryPoint"
     }
 
     
@@ -1798,6 +1801,17 @@ def generate_types():
     )
     structs.append(struct)
 
+    struct = Struct(
+        name = 'GeometryTriangle',
+        members=[
+            StructMember('Position', 'position', 'Float32x4', 3),
+            StructMember('PointSize', 'pointSize', 'Float32', 3),
+            StructMember('CullDistance', 'cullDistance', 'Float32', 3),
+            StructMember('ClipDistance', 'clipDistance', 'Float32', 3)
+        ]
+    )
+    structs.append(struct)
+
     class StateMember:
         def __init__(self, name, data_type, array_size=1):
             self.name = name
@@ -2904,12 +2918,54 @@ def generate_types():
         fun.spirv = spirv_function
         functions.append(fun)
 
+    intrinsic = "GetPoint"
+    function_name = f'Geometry{intrinsic}'
+    fun = Function(
+        decl_name = function_name,
+        api_name = f'geometry{intrinsic}',
+        return_type = 'GeometryPoint',
+        documentation = 'Returns a struct of the current point.',
+        parameters = [
+        ]
+    )
+
+    spirv_function = ''
+    spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
+    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_gplGeometryPoint_Input"), OpTypePointer, VariableStorage::Input, SPVArg(returnType));\n'
+    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{intrinsic}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
+    spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+    spirv_function += '    return SPIRVResult(ret, typePtr);\n'
+
+    fun.spirv = spirv_function
+    functions.append(fun)
+
+    intrinsic = "GetLine"
+    function_name = f'Geometry{intrinsic}'
+    fun = Function(
+        decl_name = function_name,
+        api_name = f'geometry{intrinsic}',
+        return_type = 'GeometryLine',
+        documentation = 'Returns a struct of the current line.',
+        parameters = [
+        ]
+    )
+
+    spirv_function = ''
+    spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
+    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_gplGeometryLine_Input"), OpTypePointer, VariableStorage::Input, SPVArg(returnType));\n'
+    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{intrinsic}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
+    spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+    spirv_function += '    return SPIRVResult(ret, typePtr);\n'
+
+    fun.spirv = spirv_function
+    functions.append(fun)
+
     intrinsic = "GetTriangle"
     function_name = f'Geometry{intrinsic}'
     fun = Function(
         decl_name = function_name,
         api_name = f'geometry{intrinsic}',
-        return_type = 'Float32x4',
+        return_type = 'GeometryTriangle',
         documentation = 'Returns a struct of the current triangle.',
         parameters = [
         ]
@@ -2917,33 +2973,10 @@ def generate_types():
 
     spirv_function = ''
     spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
-    spirv_function += '    static bool HasGeneratedGeometryVertex = false;\n'
-    spirv_function += '    static uint32_t GeneratedGeometryVertexType = 0xFFFFFFFF;\n'
-    spirv_function += '    if (!HasGeneratedGeometryVertex) {\n'
-    spirv_function += '        uint32_t type = g->writer->Reserve();\n'
-    spirv_function += '        uint32_t positionType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);\n'
-    spirv_function += '        g->writer->MemberDecorate(SPVArg{{type}}, 0, Builtins::Position, 0);\n'
-    spirv_function += '        uint32_t pointSizeType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);\n'
-    spirv_function += '        g->writer->MemberDecorate(SPVArg{{type}}, 1, Builtins::PointSize, 1);\n'
-    spirv_function += '        uint32_t clipDistanceType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);\n'
-    spirv_function += '        g->writer->MemberDecorate(SPVArg{{type}}, 2, Builtins::ClipDistance, 2);\n'
-    spirv_function += '        uint32_t cullDistanceType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);\n'
-    spirv_function += '        g->writer->MemberDecorate(SPVArg{{type}}, 3, Builtins::CullDistance, 3);\n'
-    spirv_function += '        TransientArray<SPVArg> memberTypes = {{positionType, pointSizeType, clipDistanceType, cullDistanceType}};\n'
-    spirv_function += '        g->writer->ReservedType(OpTypeStruct, "gplGeometryShaderVertex", SPVWriter::Section::Declarations, type, SPVArgList{{memberTypes}});\n'
-    spirv_function += '        g->writer->Decorate({{type}}, Decorations::Block);\n'
-    spirv_function += '        GeneratedGeometryVertexType = type;\n'
-    spirv_function += '        HasGeneratedGeometryVertex = true;\n'
-    spirv_function += '    }\n'
-    
-    spirv_function += '    uint32_t arrayType = GPULang::AddType(g, TStr("gplGeometryShaderVertex[3]"), OpTypeArray, SPVArg(GeneratedGeometryVertexType), 3);\n'
-    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_gplGeometryShaderVertex[3]_Input"), OpTypePointer, VariableStorage::Input, SPVArg(arrayType));\n'
-    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{builtin}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
+    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_gplGeometryTriangle_Input"), OpTypePointer, VariableStorage::Input, SPVArg(returnType));\n'
+    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{intrinsic}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
-    spirv_function += '    SPIRVResult arg = args[0];\n'
-    spirv_function += '    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);\n'
-    spirv_function += '    arg.AddAccessChainLink({index});\n'
-    spirv_function += '    return LoadValueSPIRV(c, g, arg);\n'
+    spirv_function += '    return SPIRVResult(ret, typePtr);\n'
 
     fun.spirv = spirv_function
     functions.append(fun)
