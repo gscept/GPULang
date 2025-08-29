@@ -169,7 +169,7 @@ struct Type : public Symbol
         SampledTextureCategory,
         PixelCacheCategory,
         ScalarCategory,
-        UserTypeCategory,
+        StructureCategory,
         EnumCategory,
         VoidCategory,
         SamplerCategory,

@@ -27862,6 +27862,90 @@ Color::Color()
 };
 Color ColorType;
 
+Variable GeometryPointPosition;
+Variable GeometryPointPointSize;
+Variable GeometryPointCullDistance;
+Variable GeometryPointClipDistance;
+GeometryPoint::GeometryPoint()
+{
+    this->name = "GeometryPoint"_c;
+    this->resolved = Alloc<Structure::__Resolved>();
+    this->category = Type::StructureCategory;
+    this->arraySizeExpression = nullptr;
+    this->isArray = false;
+    this->scope.owningSymbol = this;
+    this->scope.type = Scope::ScopeType::Type;
+    this->baseType = TypeCode::InvalidType;
+    this->builtin = true;
+    Structure::__Resolved* typeResolved = static_cast<Structure::__Resolved*>(this->resolved);
+    typeResolved->usageFlags.bits = 0x0;
+    typeResolved->accessBits.bits = 0x0;
+    typeResolved->byteSize = 28;
+    typeResolved->baseAlignment = 0;
+    typeResolved->packMembers = false;
+    typeResolved->storageFunction = nullptr;
+    typeResolved->loadFunction = nullptr;
+    GeometryPointPosition.type = Type::FullType{ Float32x4Type.name };
+    GeometryPointPosition.thisResolved->typeSymbol = &Float32x4Type;
+    GeometryPointPointSize.type = Type::FullType{ Float32Type.name };
+    GeometryPointPointSize.thisResolved->typeSymbol = &Float32Type;
+    GeometryPointCullDistance.type = Type::FullType{ Float32Type.name };
+    GeometryPointCullDistance.thisResolved->typeSymbol = &Float32Type;
+    GeometryPointClipDistance.type = Type::FullType{ Float32Type.name };
+    GeometryPointClipDistance.thisResolved->typeSymbol = &Float32Type;
+    this->scope.symbolLookup = StaticMap<HashString, Symbol*, 4> {
+        std::pair{ "CullDistance"_h, &GeometryPointCullDistance },
+        std::pair{ "Position"_h, &GeometryPointPosition },
+        std::pair{ "ClipDistance"_h, &GeometryPointClipDistance },
+        std::pair{ "PointSize"_h, &GeometryPointPointSize }
+    };
+};
+GeometryPoint GeometryPointType;
+
+Variable GeometryLinePosition;
+IntExpression GeometryLinePositionArraySize(2);
+Variable GeometryLinePointSize;
+IntExpression GeometryLinePointSizeArraySize(2);
+Variable GeometryLineCullDistance;
+IntExpression GeometryLineCullDistanceArraySize(2);
+Variable GeometryLineClipDistance;
+IntExpression GeometryLineClipDistanceArraySize(2);
+GeometryLine::GeometryLine()
+{
+    this->name = "GeometryLine"_c;
+    this->resolved = Alloc<Structure::__Resolved>();
+    this->category = Type::StructureCategory;
+    this->arraySizeExpression = nullptr;
+    this->isArray = false;
+    this->scope.owningSymbol = this;
+    this->scope.type = Scope::ScopeType::Type;
+    this->baseType = TypeCode::InvalidType;
+    this->builtin = true;
+    Structure::__Resolved* typeResolved = static_cast<Structure::__Resolved*>(this->resolved);
+    typeResolved->usageFlags.bits = 0x0;
+    typeResolved->accessBits.bits = 0x0;
+    typeResolved->byteSize = 56;
+    typeResolved->baseAlignment = 0;
+    typeResolved->packMembers = false;
+    typeResolved->storageFunction = nullptr;
+    typeResolved->loadFunction = nullptr;
+    GeometryLinePosition.type = Type::FullType{ Float32x4Type.name, {Type::FullType::Modifier::Array}, {&GeometryLinePositionArraySize} };
+    GeometryLinePosition.thisResolved->typeSymbol = &Float32x4Type;
+    GeometryLinePointSize.type = Type::FullType{ Float32Type.name, {Type::FullType::Modifier::Array}, {&GeometryLinePointSizeArraySize} };
+    GeometryLinePointSize.thisResolved->typeSymbol = &Float32Type;
+    GeometryLineCullDistance.type = Type::FullType{ Float32Type.name, {Type::FullType::Modifier::Array}, {&GeometryLineCullDistanceArraySize} };
+    GeometryLineCullDistance.thisResolved->typeSymbol = &Float32Type;
+    GeometryLineClipDistance.type = Type::FullType{ Float32Type.name, {Type::FullType::Modifier::Array}, {&GeometryLineClipDistanceArraySize} };
+    GeometryLineClipDistance.thisResolved->typeSymbol = &Float32Type;
+    this->scope.symbolLookup = StaticMap<HashString, Symbol*, 4> {
+        std::pair{ "Position"_h, &GeometryLinePosition },
+        std::pair{ "CullDistance"_h, &GeometryLineCullDistance },
+        std::pair{ "ClipDistance"_h, &GeometryLineClipDistance },
+        std::pair{ "PointSize"_h, &GeometryLinePointSize }
+    };
+};
+GeometryLine GeometryLineType;
+
 Variable StencilStateFail;
 Variable StencilStatePass;
 Variable StencilStateDepthFail;

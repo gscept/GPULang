@@ -118,7 +118,9 @@
         "BlendColorMask",
         "FilterMode",
         "AddressMode",
-        "Color"
+        "Color",
+        "GeometryPoint",
+        "GeometryLine"
     ],
     "builtin_functions": [
         "abs",
@@ -178,6 +180,7 @@
         "fwidth",
         "geometryExportPrimitive",
         "geometryExportVertex",
+        "geometryGetTriangle",
         "invSqrt",
         "inverse",
         "length",
@@ -197,6 +200,7 @@
         "pixelExportColor",
         "pixelGetCoordinates",
         "pixelGetDepth",
+        "pixelGetFrontFacing",
         "pixelSetDepth",
         "pow",
         "reflect",

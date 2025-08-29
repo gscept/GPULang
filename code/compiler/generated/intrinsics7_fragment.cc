@@ -171,11 +171,17 @@ Function GeometryExportVertex;
 /// geometryExportPrimitive
 Function GeometryExportPrimitive;
 
+/// geometryGetTriangle
+Function GeometryGetTriangle;
+
 /// pixelGetCoordinates
 Function PixelGetCoordinates_Float32x4;
 
 /// pixelGetCoordinates
 Function PixelGetCoordinates_Float16x4;
+
+/// pixelGetFrontFacing
+Function PixelGetFrontFacing;
 
 /// pixelGetDepth
 Function PixelGetDepth;
@@ -701,18 +707,6 @@ Variable PixelExportColor_UInt16x2_UInt32_index;
 Function PixelExportColor_UInt16x2_UInt32;
 inline constexpr std::array PixelExportColor_UInt16x2_UInt32_args = { &PixelExportColor_UInt16x2_UInt32_color, &PixelExportColor_UInt16x2_UInt32_index };
 
-/// pixelExportColor with UInt16x2, Int16
-Variable PixelExportColor_UInt16x2_Int16_color;
-Variable PixelExportColor_UInt16x2_Int16_index;
-Function PixelExportColor_UInt16x2_Int16;
-inline constexpr std::array PixelExportColor_UInt16x2_Int16_args = { &PixelExportColor_UInt16x2_Int16_color, &PixelExportColor_UInt16x2_Int16_index };
-
-/// pixelExportColor with UInt16x2, UInt16
-Variable PixelExportColor_UInt16x2_UInt16_color;
-Variable PixelExportColor_UInt16x2_UInt16_index;
-Function PixelExportColor_UInt16x2_UInt16;
-inline constexpr std::array PixelExportColor_UInt16x2_UInt16_args = { &PixelExportColor_UInt16x2_UInt16_color, &PixelExportColor_UInt16x2_UInt16_index };
-
 void SetupIntrinsics7()
 {
     /// transpose with Float16x4x3
@@ -1183,10 +1177,20 @@ void SetupIntrinsics7()
     Symbol::Resolved(&GeometryExportPrimitive)->nameWithVarNames = "geometryExportPrimitive()"_c;
     Symbol::Resolved(&GeometryExportPrimitive)->returnTypeSymbol = &VoidType;
 
+    /// geometryGetTriangle
+    GeometryGetTriangle.documentation = "Returns a struct of the current triangle."_c;
+    GeometryGetTriangle.name = "geometryGetTriangle"_c;
+    GeometryGetTriangle.backendIndex = 1869;
+    GeometryGetTriangle.returnType = Type::FullType { Float32x4Type.name };
+    Symbol::Resolved(&GeometryGetTriangle)->signature = "geometryGetTriangle() f32x4"_c;
+    Symbol::Resolved(&GeometryGetTriangle)->name = "geometryGetTriangle()"_c;
+    Symbol::Resolved(&GeometryGetTriangle)->nameWithVarNames = "geometryGetTriangle()"_c;
+    Symbol::Resolved(&GeometryGetTriangle)->returnTypeSymbol = &Float32x4Type;
+
     /// pixelGetCoordinates
     PixelGetCoordinates_Float32x4.documentation = "Returns the post transformation coordinates of the current pixel. xy is the pixel position in non-normalized coordinates, z is the depth in the range [0, 1] or [-1, 1] based on the graphics API."_c;
     PixelGetCoordinates_Float32x4.name = "pixelGetCoordinates"_c;
-    PixelGetCoordinates_Float32x4.backendIndex = 1869;
+    PixelGetCoordinates_Float32x4.backendIndex = 1870;
     PixelGetCoordinates_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     Symbol::Resolved(&PixelGetCoordinates_Float32x4)->signature = "pixelGetCoordinates() f32x4"_c;
     Symbol::Resolved(&PixelGetCoordinates_Float32x4)->name = "pixelGetCoordinates()"_c;
@@ -1196,17 +1200,27 @@ void SetupIntrinsics7()
     /// pixelGetCoordinates
     PixelGetCoordinates_Float16x4.documentation = "Returns the post transformation coordinates of the current pixel. xy is the pixel position in non-normalized coordinates, z is the depth in the range [0, 1] or [-1, 1] based on the graphics API."_c;
     PixelGetCoordinates_Float16x4.name = "pixelGetCoordinates"_c;
-    PixelGetCoordinates_Float16x4.backendIndex = 1870;
+    PixelGetCoordinates_Float16x4.backendIndex = 1871;
     PixelGetCoordinates_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     Symbol::Resolved(&PixelGetCoordinates_Float16x4)->signature = "pixelGetCoordinates() f16x4"_c;
     Symbol::Resolved(&PixelGetCoordinates_Float16x4)->name = "pixelGetCoordinates()"_c;
     Symbol::Resolved(&PixelGetCoordinates_Float16x4)->nameWithVarNames = "pixelGetCoordinates()"_c;
     Symbol::Resolved(&PixelGetCoordinates_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// pixelGetFrontFacing
+    PixelGetFrontFacing.documentation = "Returns the facing direction of the current pixel"_c;
+    PixelGetFrontFacing.name = "pixelGetFrontFacing"_c;
+    PixelGetFrontFacing.backendIndex = 1872;
+    PixelGetFrontFacing.returnType = Type::FullType { Bool8Type.name };
+    Symbol::Resolved(&PixelGetFrontFacing)->signature = "pixelGetFrontFacing() b8"_c;
+    Symbol::Resolved(&PixelGetFrontFacing)->name = "pixelGetFrontFacing()"_c;
+    Symbol::Resolved(&PixelGetFrontFacing)->nameWithVarNames = "pixelGetFrontFacing()"_c;
+    Symbol::Resolved(&PixelGetFrontFacing)->returnTypeSymbol = &Bool8Type;
+
     /// pixelGetDepth
     PixelGetDepth.documentation = "Returns the depth value for the current pixel"_c;
     PixelGetDepth.name = "pixelGetDepth"_c;
-    PixelGetDepth.backendIndex = 1871;
+    PixelGetDepth.backendIndex = 1873;
     PixelGetDepth.returnType = Type::FullType { Float32Type.name };
     Symbol::Resolved(&PixelGetDepth)->signature = "pixelGetDepth() f32"_c;
     Symbol::Resolved(&PixelGetDepth)->name = "pixelGetDepth()"_c;
@@ -1218,7 +1232,7 @@ void SetupIntrinsics7()
     PixelSetDepth_val.type = Type::FullType{ Float32Type.name };
     PixelSetDepth.documentation = "Sets the depth value for the current pixel"_c;
     PixelSetDepth.name = "pixelSetDepth"_c;
-    PixelSetDepth.backendIndex = 1872;
+    PixelSetDepth.backendIndex = 1874;
     PixelSetDepth.returnType = Type::FullType { VoidType.name };
     PixelSetDepth.parameters = PixelSetDepth_args;
     Symbol::Resolved(&PixelSetDepth_val)->typeSymbol = &Float32Type;
@@ -1235,7 +1249,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float32_Int32_index.type.literal = true;
     PixelExportColor_Float32_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float32_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Float32_Int32.backendIndex = 1873;
+    PixelExportColor_Float32_Int32.backendIndex = 1875;
     PixelExportColor_Float32_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32_Int32.parameters = PixelExportColor_Float32_Int32_args;
     Symbol::Resolved(&PixelExportColor_Float32_Int32_color)->typeSymbol = &Float32Type;
@@ -1253,7 +1267,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float32_UInt32_index.type.literal = true;
     PixelExportColor_Float32_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float32_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Float32_UInt32.backendIndex = 1874;
+    PixelExportColor_Float32_UInt32.backendIndex = 1876;
     PixelExportColor_Float32_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32_UInt32.parameters = PixelExportColor_Float32_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Float32_UInt32_color)->typeSymbol = &Float32Type;
@@ -1271,7 +1285,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float32_Int16_index.type.literal = true;
     PixelExportColor_Float32_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float32_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Float32_Int16.backendIndex = 1875;
+    PixelExportColor_Float32_Int16.backendIndex = 1877;
     PixelExportColor_Float32_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32_Int16.parameters = PixelExportColor_Float32_Int16_args;
     Symbol::Resolved(&PixelExportColor_Float32_Int16_color)->typeSymbol = &Float32Type;
@@ -1289,7 +1303,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float32_UInt16_index.type.literal = true;
     PixelExportColor_Float32_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float32_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Float32_UInt16.backendIndex = 1876;
+    PixelExportColor_Float32_UInt16.backendIndex = 1878;
     PixelExportColor_Float32_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32_UInt16.parameters = PixelExportColor_Float32_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Float32_UInt16_color)->typeSymbol = &Float32Type;
@@ -1307,7 +1321,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float32x2_Int32_index.type.literal = true;
     PixelExportColor_Float32x2_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float32x2_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Float32x2_Int32.backendIndex = 1877;
+    PixelExportColor_Float32x2_Int32.backendIndex = 1879;
     PixelExportColor_Float32x2_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x2_Int32.parameters = PixelExportColor_Float32x2_Int32_args;
     Symbol::Resolved(&PixelExportColor_Float32x2_Int32_color)->typeSymbol = &Float32x2Type;
@@ -1325,7 +1339,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float32x2_UInt32_index.type.literal = true;
     PixelExportColor_Float32x2_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float32x2_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Float32x2_UInt32.backendIndex = 1878;
+    PixelExportColor_Float32x2_UInt32.backendIndex = 1880;
     PixelExportColor_Float32x2_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x2_UInt32.parameters = PixelExportColor_Float32x2_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Float32x2_UInt32_color)->typeSymbol = &Float32x2Type;
@@ -1343,7 +1357,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float32x2_Int16_index.type.literal = true;
     PixelExportColor_Float32x2_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float32x2_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Float32x2_Int16.backendIndex = 1879;
+    PixelExportColor_Float32x2_Int16.backendIndex = 1881;
     PixelExportColor_Float32x2_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x2_Int16.parameters = PixelExportColor_Float32x2_Int16_args;
     Symbol::Resolved(&PixelExportColor_Float32x2_Int16_color)->typeSymbol = &Float32x2Type;
@@ -1361,7 +1375,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float32x2_UInt16_index.type.literal = true;
     PixelExportColor_Float32x2_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float32x2_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Float32x2_UInt16.backendIndex = 1880;
+    PixelExportColor_Float32x2_UInt16.backendIndex = 1882;
     PixelExportColor_Float32x2_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x2_UInt16.parameters = PixelExportColor_Float32x2_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Float32x2_UInt16_color)->typeSymbol = &Float32x2Type;
@@ -1379,7 +1393,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float32x3_Int32_index.type.literal = true;
     PixelExportColor_Float32x3_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float32x3_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Float32x3_Int32.backendIndex = 1881;
+    PixelExportColor_Float32x3_Int32.backendIndex = 1883;
     PixelExportColor_Float32x3_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x3_Int32.parameters = PixelExportColor_Float32x3_Int32_args;
     Symbol::Resolved(&PixelExportColor_Float32x3_Int32_color)->typeSymbol = &Float32x3Type;
@@ -1397,7 +1411,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float32x3_UInt32_index.type.literal = true;
     PixelExportColor_Float32x3_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float32x3_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Float32x3_UInt32.backendIndex = 1882;
+    PixelExportColor_Float32x3_UInt32.backendIndex = 1884;
     PixelExportColor_Float32x3_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x3_UInt32.parameters = PixelExportColor_Float32x3_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Float32x3_UInt32_color)->typeSymbol = &Float32x3Type;
@@ -1415,7 +1429,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float32x3_Int16_index.type.literal = true;
     PixelExportColor_Float32x3_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float32x3_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Float32x3_Int16.backendIndex = 1883;
+    PixelExportColor_Float32x3_Int16.backendIndex = 1885;
     PixelExportColor_Float32x3_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x3_Int16.parameters = PixelExportColor_Float32x3_Int16_args;
     Symbol::Resolved(&PixelExportColor_Float32x3_Int16_color)->typeSymbol = &Float32x3Type;
@@ -1433,7 +1447,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float32x3_UInt16_index.type.literal = true;
     PixelExportColor_Float32x3_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float32x3_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Float32x3_UInt16.backendIndex = 1884;
+    PixelExportColor_Float32x3_UInt16.backendIndex = 1886;
     PixelExportColor_Float32x3_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x3_UInt16.parameters = PixelExportColor_Float32x3_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Float32x3_UInt16_color)->typeSymbol = &Float32x3Type;
@@ -1451,7 +1465,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float32x4_Int32_index.type.literal = true;
     PixelExportColor_Float32x4_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float32x4_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Float32x4_Int32.backendIndex = 1885;
+    PixelExportColor_Float32x4_Int32.backendIndex = 1887;
     PixelExportColor_Float32x4_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x4_Int32.parameters = PixelExportColor_Float32x4_Int32_args;
     Symbol::Resolved(&PixelExportColor_Float32x4_Int32_color)->typeSymbol = &Float32x4Type;
@@ -1469,7 +1483,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float32x4_UInt32_index.type.literal = true;
     PixelExportColor_Float32x4_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float32x4_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Float32x4_UInt32.backendIndex = 1886;
+    PixelExportColor_Float32x4_UInt32.backendIndex = 1888;
     PixelExportColor_Float32x4_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x4_UInt32.parameters = PixelExportColor_Float32x4_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Float32x4_UInt32_color)->typeSymbol = &Float32x4Type;
@@ -1487,7 +1501,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float32x4_Int16_index.type.literal = true;
     PixelExportColor_Float32x4_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float32x4_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Float32x4_Int16.backendIndex = 1887;
+    PixelExportColor_Float32x4_Int16.backendIndex = 1889;
     PixelExportColor_Float32x4_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x4_Int16.parameters = PixelExportColor_Float32x4_Int16_args;
     Symbol::Resolved(&PixelExportColor_Float32x4_Int16_color)->typeSymbol = &Float32x4Type;
@@ -1505,7 +1519,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float32x4_UInt16_index.type.literal = true;
     PixelExportColor_Float32x4_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float32x4_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Float32x4_UInt16.backendIndex = 1888;
+    PixelExportColor_Float32x4_UInt16.backendIndex = 1890;
     PixelExportColor_Float32x4_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float32x4_UInt16.parameters = PixelExportColor_Float32x4_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Float32x4_UInt16_color)->typeSymbol = &Float32x4Type;
@@ -1523,7 +1537,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float16_Int32_index.type.literal = true;
     PixelExportColor_Float16_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float16_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Float16_Int32.backendIndex = 1889;
+    PixelExportColor_Float16_Int32.backendIndex = 1891;
     PixelExportColor_Float16_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16_Int32.parameters = PixelExportColor_Float16_Int32_args;
     Symbol::Resolved(&PixelExportColor_Float16_Int32_color)->typeSymbol = &Float16Type;
@@ -1541,7 +1555,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float16_UInt32_index.type.literal = true;
     PixelExportColor_Float16_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float16_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Float16_UInt32.backendIndex = 1890;
+    PixelExportColor_Float16_UInt32.backendIndex = 1892;
     PixelExportColor_Float16_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16_UInt32.parameters = PixelExportColor_Float16_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Float16_UInt32_color)->typeSymbol = &Float16Type;
@@ -1559,7 +1573,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float16_Int16_index.type.literal = true;
     PixelExportColor_Float16_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float16_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Float16_Int16.backendIndex = 1891;
+    PixelExportColor_Float16_Int16.backendIndex = 1893;
     PixelExportColor_Float16_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16_Int16.parameters = PixelExportColor_Float16_Int16_args;
     Symbol::Resolved(&PixelExportColor_Float16_Int16_color)->typeSymbol = &Float16Type;
@@ -1577,7 +1591,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float16_UInt16_index.type.literal = true;
     PixelExportColor_Float16_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float16_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Float16_UInt16.backendIndex = 1892;
+    PixelExportColor_Float16_UInt16.backendIndex = 1894;
     PixelExportColor_Float16_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16_UInt16.parameters = PixelExportColor_Float16_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Float16_UInt16_color)->typeSymbol = &Float16Type;
@@ -1595,7 +1609,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float16x2_Int32_index.type.literal = true;
     PixelExportColor_Float16x2_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float16x2_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Float16x2_Int32.backendIndex = 1893;
+    PixelExportColor_Float16x2_Int32.backendIndex = 1895;
     PixelExportColor_Float16x2_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x2_Int32.parameters = PixelExportColor_Float16x2_Int32_args;
     Symbol::Resolved(&PixelExportColor_Float16x2_Int32_color)->typeSymbol = &Float16x2Type;
@@ -1613,7 +1627,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float16x2_UInt32_index.type.literal = true;
     PixelExportColor_Float16x2_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float16x2_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Float16x2_UInt32.backendIndex = 1894;
+    PixelExportColor_Float16x2_UInt32.backendIndex = 1896;
     PixelExportColor_Float16x2_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x2_UInt32.parameters = PixelExportColor_Float16x2_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Float16x2_UInt32_color)->typeSymbol = &Float16x2Type;
@@ -1631,7 +1645,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float16x2_Int16_index.type.literal = true;
     PixelExportColor_Float16x2_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float16x2_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Float16x2_Int16.backendIndex = 1895;
+    PixelExportColor_Float16x2_Int16.backendIndex = 1897;
     PixelExportColor_Float16x2_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x2_Int16.parameters = PixelExportColor_Float16x2_Int16_args;
     Symbol::Resolved(&PixelExportColor_Float16x2_Int16_color)->typeSymbol = &Float16x2Type;
@@ -1649,7 +1663,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float16x2_UInt16_index.type.literal = true;
     PixelExportColor_Float16x2_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float16x2_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Float16x2_UInt16.backendIndex = 1896;
+    PixelExportColor_Float16x2_UInt16.backendIndex = 1898;
     PixelExportColor_Float16x2_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x2_UInt16.parameters = PixelExportColor_Float16x2_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Float16x2_UInt16_color)->typeSymbol = &Float16x2Type;
@@ -1667,7 +1681,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float16x3_Int32_index.type.literal = true;
     PixelExportColor_Float16x3_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float16x3_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Float16x3_Int32.backendIndex = 1897;
+    PixelExportColor_Float16x3_Int32.backendIndex = 1899;
     PixelExportColor_Float16x3_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x3_Int32.parameters = PixelExportColor_Float16x3_Int32_args;
     Symbol::Resolved(&PixelExportColor_Float16x3_Int32_color)->typeSymbol = &Float16x3Type;
@@ -1685,7 +1699,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float16x3_UInt32_index.type.literal = true;
     PixelExportColor_Float16x3_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float16x3_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Float16x3_UInt32.backendIndex = 1898;
+    PixelExportColor_Float16x3_UInt32.backendIndex = 1900;
     PixelExportColor_Float16x3_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x3_UInt32.parameters = PixelExportColor_Float16x3_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Float16x3_UInt32_color)->typeSymbol = &Float16x3Type;
@@ -1703,7 +1717,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float16x3_Int16_index.type.literal = true;
     PixelExportColor_Float16x3_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float16x3_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Float16x3_Int16.backendIndex = 1899;
+    PixelExportColor_Float16x3_Int16.backendIndex = 1901;
     PixelExportColor_Float16x3_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x3_Int16.parameters = PixelExportColor_Float16x3_Int16_args;
     Symbol::Resolved(&PixelExportColor_Float16x3_Int16_color)->typeSymbol = &Float16x3Type;
@@ -1721,7 +1735,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float16x3_UInt16_index.type.literal = true;
     PixelExportColor_Float16x3_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float16x3_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Float16x3_UInt16.backendIndex = 1900;
+    PixelExportColor_Float16x3_UInt16.backendIndex = 1902;
     PixelExportColor_Float16x3_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x3_UInt16.parameters = PixelExportColor_Float16x3_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Float16x3_UInt16_color)->typeSymbol = &Float16x3Type;
@@ -1739,7 +1753,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float16x4_Int32_index.type.literal = true;
     PixelExportColor_Float16x4_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float16x4_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Float16x4_Int32.backendIndex = 1901;
+    PixelExportColor_Float16x4_Int32.backendIndex = 1903;
     PixelExportColor_Float16x4_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x4_Int32.parameters = PixelExportColor_Float16x4_Int32_args;
     Symbol::Resolved(&PixelExportColor_Float16x4_Int32_color)->typeSymbol = &Float16x4Type;
@@ -1757,7 +1771,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float16x4_UInt32_index.type.literal = true;
     PixelExportColor_Float16x4_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float16x4_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Float16x4_UInt32.backendIndex = 1902;
+    PixelExportColor_Float16x4_UInt32.backendIndex = 1904;
     PixelExportColor_Float16x4_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x4_UInt32.parameters = PixelExportColor_Float16x4_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Float16x4_UInt32_color)->typeSymbol = &Float16x4Type;
@@ -1775,7 +1789,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float16x4_Int16_index.type.literal = true;
     PixelExportColor_Float16x4_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float16x4_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Float16x4_Int16.backendIndex = 1903;
+    PixelExportColor_Float16x4_Int16.backendIndex = 1905;
     PixelExportColor_Float16x4_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x4_Int16.parameters = PixelExportColor_Float16x4_Int16_args;
     Symbol::Resolved(&PixelExportColor_Float16x4_Int16_color)->typeSymbol = &Float16x4Type;
@@ -1793,7 +1807,7 @@ void SetupIntrinsics7()
     PixelExportColor_Float16x4_UInt16_index.type.literal = true;
     PixelExportColor_Float16x4_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Float16x4_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Float16x4_UInt16.backendIndex = 1904;
+    PixelExportColor_Float16x4_UInt16.backendIndex = 1906;
     PixelExportColor_Float16x4_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Float16x4_UInt16.parameters = PixelExportColor_Float16x4_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Float16x4_UInt16_color)->typeSymbol = &Float16x4Type;
@@ -1811,7 +1825,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int32_Int32_index.type.literal = true;
     PixelExportColor_Int32_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int32_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Int32_Int32.backendIndex = 1905;
+    PixelExportColor_Int32_Int32.backendIndex = 1907;
     PixelExportColor_Int32_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32_Int32.parameters = PixelExportColor_Int32_Int32_args;
     Symbol::Resolved(&PixelExportColor_Int32_Int32_color)->typeSymbol = &Int32Type;
@@ -1829,7 +1843,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int32_UInt32_index.type.literal = true;
     PixelExportColor_Int32_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int32_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Int32_UInt32.backendIndex = 1906;
+    PixelExportColor_Int32_UInt32.backendIndex = 1908;
     PixelExportColor_Int32_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32_UInt32.parameters = PixelExportColor_Int32_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Int32_UInt32_color)->typeSymbol = &Int32Type;
@@ -1847,7 +1861,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int32_Int16_index.type.literal = true;
     PixelExportColor_Int32_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int32_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Int32_Int16.backendIndex = 1907;
+    PixelExportColor_Int32_Int16.backendIndex = 1909;
     PixelExportColor_Int32_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32_Int16.parameters = PixelExportColor_Int32_Int16_args;
     Symbol::Resolved(&PixelExportColor_Int32_Int16_color)->typeSymbol = &Int32Type;
@@ -1865,7 +1879,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int32_UInt16_index.type.literal = true;
     PixelExportColor_Int32_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int32_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Int32_UInt16.backendIndex = 1908;
+    PixelExportColor_Int32_UInt16.backendIndex = 1910;
     PixelExportColor_Int32_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32_UInt16.parameters = PixelExportColor_Int32_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Int32_UInt16_color)->typeSymbol = &Int32Type;
@@ -1883,7 +1897,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int32x2_Int32_index.type.literal = true;
     PixelExportColor_Int32x2_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int32x2_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Int32x2_Int32.backendIndex = 1909;
+    PixelExportColor_Int32x2_Int32.backendIndex = 1911;
     PixelExportColor_Int32x2_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x2_Int32.parameters = PixelExportColor_Int32x2_Int32_args;
     Symbol::Resolved(&PixelExportColor_Int32x2_Int32_color)->typeSymbol = &Int32x2Type;
@@ -1901,7 +1915,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int32x2_UInt32_index.type.literal = true;
     PixelExportColor_Int32x2_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int32x2_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Int32x2_UInt32.backendIndex = 1910;
+    PixelExportColor_Int32x2_UInt32.backendIndex = 1912;
     PixelExportColor_Int32x2_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x2_UInt32.parameters = PixelExportColor_Int32x2_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Int32x2_UInt32_color)->typeSymbol = &Int32x2Type;
@@ -1919,7 +1933,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int32x2_Int16_index.type.literal = true;
     PixelExportColor_Int32x2_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int32x2_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Int32x2_Int16.backendIndex = 1911;
+    PixelExportColor_Int32x2_Int16.backendIndex = 1913;
     PixelExportColor_Int32x2_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x2_Int16.parameters = PixelExportColor_Int32x2_Int16_args;
     Symbol::Resolved(&PixelExportColor_Int32x2_Int16_color)->typeSymbol = &Int32x2Type;
@@ -1937,7 +1951,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int32x2_UInt16_index.type.literal = true;
     PixelExportColor_Int32x2_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int32x2_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Int32x2_UInt16.backendIndex = 1912;
+    PixelExportColor_Int32x2_UInt16.backendIndex = 1914;
     PixelExportColor_Int32x2_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x2_UInt16.parameters = PixelExportColor_Int32x2_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Int32x2_UInt16_color)->typeSymbol = &Int32x2Type;
@@ -1955,7 +1969,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int32x3_Int32_index.type.literal = true;
     PixelExportColor_Int32x3_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int32x3_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Int32x3_Int32.backendIndex = 1913;
+    PixelExportColor_Int32x3_Int32.backendIndex = 1915;
     PixelExportColor_Int32x3_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x3_Int32.parameters = PixelExportColor_Int32x3_Int32_args;
     Symbol::Resolved(&PixelExportColor_Int32x3_Int32_color)->typeSymbol = &Int32x3Type;
@@ -1973,7 +1987,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int32x3_UInt32_index.type.literal = true;
     PixelExportColor_Int32x3_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int32x3_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Int32x3_UInt32.backendIndex = 1914;
+    PixelExportColor_Int32x3_UInt32.backendIndex = 1916;
     PixelExportColor_Int32x3_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x3_UInt32.parameters = PixelExportColor_Int32x3_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Int32x3_UInt32_color)->typeSymbol = &Int32x3Type;
@@ -1991,7 +2005,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int32x3_Int16_index.type.literal = true;
     PixelExportColor_Int32x3_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int32x3_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Int32x3_Int16.backendIndex = 1915;
+    PixelExportColor_Int32x3_Int16.backendIndex = 1917;
     PixelExportColor_Int32x3_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x3_Int16.parameters = PixelExportColor_Int32x3_Int16_args;
     Symbol::Resolved(&PixelExportColor_Int32x3_Int16_color)->typeSymbol = &Int32x3Type;
@@ -2009,7 +2023,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int32x3_UInt16_index.type.literal = true;
     PixelExportColor_Int32x3_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int32x3_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Int32x3_UInt16.backendIndex = 1916;
+    PixelExportColor_Int32x3_UInt16.backendIndex = 1918;
     PixelExportColor_Int32x3_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x3_UInt16.parameters = PixelExportColor_Int32x3_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Int32x3_UInt16_color)->typeSymbol = &Int32x3Type;
@@ -2027,7 +2041,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int32x4_Int32_index.type.literal = true;
     PixelExportColor_Int32x4_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int32x4_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Int32x4_Int32.backendIndex = 1917;
+    PixelExportColor_Int32x4_Int32.backendIndex = 1919;
     PixelExportColor_Int32x4_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x4_Int32.parameters = PixelExportColor_Int32x4_Int32_args;
     Symbol::Resolved(&PixelExportColor_Int32x4_Int32_color)->typeSymbol = &Int32x4Type;
@@ -2045,7 +2059,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int32x4_UInt32_index.type.literal = true;
     PixelExportColor_Int32x4_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int32x4_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Int32x4_UInt32.backendIndex = 1918;
+    PixelExportColor_Int32x4_UInt32.backendIndex = 1920;
     PixelExportColor_Int32x4_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x4_UInt32.parameters = PixelExportColor_Int32x4_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Int32x4_UInt32_color)->typeSymbol = &Int32x4Type;
@@ -2063,7 +2077,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int32x4_Int16_index.type.literal = true;
     PixelExportColor_Int32x4_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int32x4_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Int32x4_Int16.backendIndex = 1919;
+    PixelExportColor_Int32x4_Int16.backendIndex = 1921;
     PixelExportColor_Int32x4_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x4_Int16.parameters = PixelExportColor_Int32x4_Int16_args;
     Symbol::Resolved(&PixelExportColor_Int32x4_Int16_color)->typeSymbol = &Int32x4Type;
@@ -2081,7 +2095,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int32x4_UInt16_index.type.literal = true;
     PixelExportColor_Int32x4_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int32x4_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Int32x4_UInt16.backendIndex = 1920;
+    PixelExportColor_Int32x4_UInt16.backendIndex = 1922;
     PixelExportColor_Int32x4_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int32x4_UInt16.parameters = PixelExportColor_Int32x4_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Int32x4_UInt16_color)->typeSymbol = &Int32x4Type;
@@ -2099,7 +2113,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int16_Int32_index.type.literal = true;
     PixelExportColor_Int16_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int16_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Int16_Int32.backendIndex = 1921;
+    PixelExportColor_Int16_Int32.backendIndex = 1923;
     PixelExportColor_Int16_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16_Int32.parameters = PixelExportColor_Int16_Int32_args;
     Symbol::Resolved(&PixelExportColor_Int16_Int32_color)->typeSymbol = &Int16Type;
@@ -2117,7 +2131,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int16_UInt32_index.type.literal = true;
     PixelExportColor_Int16_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int16_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Int16_UInt32.backendIndex = 1922;
+    PixelExportColor_Int16_UInt32.backendIndex = 1924;
     PixelExportColor_Int16_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16_UInt32.parameters = PixelExportColor_Int16_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Int16_UInt32_color)->typeSymbol = &Int16Type;
@@ -2135,7 +2149,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int16_Int16_index.type.literal = true;
     PixelExportColor_Int16_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int16_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Int16_Int16.backendIndex = 1923;
+    PixelExportColor_Int16_Int16.backendIndex = 1925;
     PixelExportColor_Int16_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16_Int16.parameters = PixelExportColor_Int16_Int16_args;
     Symbol::Resolved(&PixelExportColor_Int16_Int16_color)->typeSymbol = &Int16Type;
@@ -2153,7 +2167,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int16_UInt16_index.type.literal = true;
     PixelExportColor_Int16_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int16_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Int16_UInt16.backendIndex = 1924;
+    PixelExportColor_Int16_UInt16.backendIndex = 1926;
     PixelExportColor_Int16_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16_UInt16.parameters = PixelExportColor_Int16_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Int16_UInt16_color)->typeSymbol = &Int16Type;
@@ -2171,7 +2185,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int16x2_Int32_index.type.literal = true;
     PixelExportColor_Int16x2_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int16x2_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Int16x2_Int32.backendIndex = 1925;
+    PixelExportColor_Int16x2_Int32.backendIndex = 1927;
     PixelExportColor_Int16x2_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x2_Int32.parameters = PixelExportColor_Int16x2_Int32_args;
     Symbol::Resolved(&PixelExportColor_Int16x2_Int32_color)->typeSymbol = &Int16x2Type;
@@ -2189,7 +2203,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int16x2_UInt32_index.type.literal = true;
     PixelExportColor_Int16x2_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int16x2_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Int16x2_UInt32.backendIndex = 1926;
+    PixelExportColor_Int16x2_UInt32.backendIndex = 1928;
     PixelExportColor_Int16x2_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x2_UInt32.parameters = PixelExportColor_Int16x2_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Int16x2_UInt32_color)->typeSymbol = &Int16x2Type;
@@ -2207,7 +2221,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int16x2_Int16_index.type.literal = true;
     PixelExportColor_Int16x2_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int16x2_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Int16x2_Int16.backendIndex = 1927;
+    PixelExportColor_Int16x2_Int16.backendIndex = 1929;
     PixelExportColor_Int16x2_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x2_Int16.parameters = PixelExportColor_Int16x2_Int16_args;
     Symbol::Resolved(&PixelExportColor_Int16x2_Int16_color)->typeSymbol = &Int16x2Type;
@@ -2225,7 +2239,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int16x2_UInt16_index.type.literal = true;
     PixelExportColor_Int16x2_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int16x2_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Int16x2_UInt16.backendIndex = 1928;
+    PixelExportColor_Int16x2_UInt16.backendIndex = 1930;
     PixelExportColor_Int16x2_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x2_UInt16.parameters = PixelExportColor_Int16x2_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Int16x2_UInt16_color)->typeSymbol = &Int16x2Type;
@@ -2243,7 +2257,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int16x3_Int32_index.type.literal = true;
     PixelExportColor_Int16x3_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int16x3_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Int16x3_Int32.backendIndex = 1929;
+    PixelExportColor_Int16x3_Int32.backendIndex = 1931;
     PixelExportColor_Int16x3_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x3_Int32.parameters = PixelExportColor_Int16x3_Int32_args;
     Symbol::Resolved(&PixelExportColor_Int16x3_Int32_color)->typeSymbol = &Int16x3Type;
@@ -2261,7 +2275,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int16x3_UInt32_index.type.literal = true;
     PixelExportColor_Int16x3_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int16x3_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Int16x3_UInt32.backendIndex = 1930;
+    PixelExportColor_Int16x3_UInt32.backendIndex = 1932;
     PixelExportColor_Int16x3_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x3_UInt32.parameters = PixelExportColor_Int16x3_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Int16x3_UInt32_color)->typeSymbol = &Int16x3Type;
@@ -2279,7 +2293,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int16x3_Int16_index.type.literal = true;
     PixelExportColor_Int16x3_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int16x3_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Int16x3_Int16.backendIndex = 1931;
+    PixelExportColor_Int16x3_Int16.backendIndex = 1933;
     PixelExportColor_Int16x3_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x3_Int16.parameters = PixelExportColor_Int16x3_Int16_args;
     Symbol::Resolved(&PixelExportColor_Int16x3_Int16_color)->typeSymbol = &Int16x3Type;
@@ -2297,7 +2311,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int16x3_UInt16_index.type.literal = true;
     PixelExportColor_Int16x3_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int16x3_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Int16x3_UInt16.backendIndex = 1932;
+    PixelExportColor_Int16x3_UInt16.backendIndex = 1934;
     PixelExportColor_Int16x3_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x3_UInt16.parameters = PixelExportColor_Int16x3_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Int16x3_UInt16_color)->typeSymbol = &Int16x3Type;
@@ -2315,7 +2329,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int16x4_Int32_index.type.literal = true;
     PixelExportColor_Int16x4_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int16x4_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Int16x4_Int32.backendIndex = 1933;
+    PixelExportColor_Int16x4_Int32.backendIndex = 1935;
     PixelExportColor_Int16x4_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x4_Int32.parameters = PixelExportColor_Int16x4_Int32_args;
     Symbol::Resolved(&PixelExportColor_Int16x4_Int32_color)->typeSymbol = &Int16x4Type;
@@ -2333,7 +2347,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int16x4_UInt32_index.type.literal = true;
     PixelExportColor_Int16x4_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int16x4_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Int16x4_UInt32.backendIndex = 1934;
+    PixelExportColor_Int16x4_UInt32.backendIndex = 1936;
     PixelExportColor_Int16x4_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x4_UInt32.parameters = PixelExportColor_Int16x4_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Int16x4_UInt32_color)->typeSymbol = &Int16x4Type;
@@ -2351,7 +2365,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int16x4_Int16_index.type.literal = true;
     PixelExportColor_Int16x4_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int16x4_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Int16x4_Int16.backendIndex = 1935;
+    PixelExportColor_Int16x4_Int16.backendIndex = 1937;
     PixelExportColor_Int16x4_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x4_Int16.parameters = PixelExportColor_Int16x4_Int16_args;
     Symbol::Resolved(&PixelExportColor_Int16x4_Int16_color)->typeSymbol = &Int16x4Type;
@@ -2369,7 +2383,7 @@ void SetupIntrinsics7()
     PixelExportColor_Int16x4_UInt16_index.type.literal = true;
     PixelExportColor_Int16x4_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_Int16x4_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Int16x4_UInt16.backendIndex = 1936;
+    PixelExportColor_Int16x4_UInt16.backendIndex = 1938;
     PixelExportColor_Int16x4_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_Int16x4_UInt16.parameters = PixelExportColor_Int16x4_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Int16x4_UInt16_color)->typeSymbol = &Int16x4Type;
@@ -2387,7 +2401,7 @@ void SetupIntrinsics7()
     PixelExportColor_UInt32_Int32_index.type.literal = true;
     PixelExportColor_UInt32_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt32_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32_Int32.backendIndex = 1937;
+    PixelExportColor_UInt32_Int32.backendIndex = 1939;
     PixelExportColor_UInt32_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32_Int32.parameters = PixelExportColor_UInt32_Int32_args;
     Symbol::Resolved(&PixelExportColor_UInt32_Int32_color)->typeSymbol = &UInt32Type;
@@ -2405,7 +2419,7 @@ void SetupIntrinsics7()
     PixelExportColor_UInt32_UInt32_index.type.literal = true;
     PixelExportColor_UInt32_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt32_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32_UInt32.backendIndex = 1938;
+    PixelExportColor_UInt32_UInt32.backendIndex = 1940;
     PixelExportColor_UInt32_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32_UInt32.parameters = PixelExportColor_UInt32_UInt32_args;
     Symbol::Resolved(&PixelExportColor_UInt32_UInt32_color)->typeSymbol = &UInt32Type;
@@ -2423,7 +2437,7 @@ void SetupIntrinsics7()
     PixelExportColor_UInt32_Int16_index.type.literal = true;
     PixelExportColor_UInt32_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt32_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32_Int16.backendIndex = 1939;
+    PixelExportColor_UInt32_Int16.backendIndex = 1941;
     PixelExportColor_UInt32_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32_Int16.parameters = PixelExportColor_UInt32_Int16_args;
     Symbol::Resolved(&PixelExportColor_UInt32_Int16_color)->typeSymbol = &UInt32Type;
@@ -2441,7 +2455,7 @@ void SetupIntrinsics7()
     PixelExportColor_UInt32_UInt16_index.type.literal = true;
     PixelExportColor_UInt32_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt32_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32_UInt16.backendIndex = 1940;
+    PixelExportColor_UInt32_UInt16.backendIndex = 1942;
     PixelExportColor_UInt32_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32_UInt16.parameters = PixelExportColor_UInt32_UInt16_args;
     Symbol::Resolved(&PixelExportColor_UInt32_UInt16_color)->typeSymbol = &UInt32Type;
@@ -2459,7 +2473,7 @@ void SetupIntrinsics7()
     PixelExportColor_UInt32x2_Int32_index.type.literal = true;
     PixelExportColor_UInt32x2_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt32x2_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32x2_Int32.backendIndex = 1941;
+    PixelExportColor_UInt32x2_Int32.backendIndex = 1943;
     PixelExportColor_UInt32x2_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x2_Int32.parameters = PixelExportColor_UInt32x2_Int32_args;
     Symbol::Resolved(&PixelExportColor_UInt32x2_Int32_color)->typeSymbol = &UInt32x2Type;
@@ -2477,7 +2491,7 @@ void SetupIntrinsics7()
     PixelExportColor_UInt32x2_UInt32_index.type.literal = true;
     PixelExportColor_UInt32x2_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt32x2_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32x2_UInt32.backendIndex = 1942;
+    PixelExportColor_UInt32x2_UInt32.backendIndex = 1944;
     PixelExportColor_UInt32x2_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x2_UInt32.parameters = PixelExportColor_UInt32x2_UInt32_args;
     Symbol::Resolved(&PixelExportColor_UInt32x2_UInt32_color)->typeSymbol = &UInt32x2Type;
@@ -2495,7 +2509,7 @@ void SetupIntrinsics7()
     PixelExportColor_UInt32x2_Int16_index.type.literal = true;
     PixelExportColor_UInt32x2_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt32x2_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32x2_Int16.backendIndex = 1943;
+    PixelExportColor_UInt32x2_Int16.backendIndex = 1945;
     PixelExportColor_UInt32x2_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x2_Int16.parameters = PixelExportColor_UInt32x2_Int16_args;
     Symbol::Resolved(&PixelExportColor_UInt32x2_Int16_color)->typeSymbol = &UInt32x2Type;
@@ -2513,7 +2527,7 @@ void SetupIntrinsics7()
     PixelExportColor_UInt32x2_UInt16_index.type.literal = true;
     PixelExportColor_UInt32x2_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt32x2_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32x2_UInt16.backendIndex = 1944;
+    PixelExportColor_UInt32x2_UInt16.backendIndex = 1946;
     PixelExportColor_UInt32x2_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x2_UInt16.parameters = PixelExportColor_UInt32x2_UInt16_args;
     Symbol::Resolved(&PixelExportColor_UInt32x2_UInt16_color)->typeSymbol = &UInt32x2Type;
@@ -2531,7 +2545,7 @@ void SetupIntrinsics7()
     PixelExportColor_UInt32x3_Int32_index.type.literal = true;
     PixelExportColor_UInt32x3_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt32x3_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32x3_Int32.backendIndex = 1945;
+    PixelExportColor_UInt32x3_Int32.backendIndex = 1947;
     PixelExportColor_UInt32x3_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x3_Int32.parameters = PixelExportColor_UInt32x3_Int32_args;
     Symbol::Resolved(&PixelExportColor_UInt32x3_Int32_color)->typeSymbol = &UInt32x3Type;
@@ -2549,7 +2563,7 @@ void SetupIntrinsics7()
     PixelExportColor_UInt32x3_UInt32_index.type.literal = true;
     PixelExportColor_UInt32x3_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt32x3_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32x3_UInt32.backendIndex = 1946;
+    PixelExportColor_UInt32x3_UInt32.backendIndex = 1948;
     PixelExportColor_UInt32x3_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x3_UInt32.parameters = PixelExportColor_UInt32x3_UInt32_args;
     Symbol::Resolved(&PixelExportColor_UInt32x3_UInt32_color)->typeSymbol = &UInt32x3Type;
@@ -2567,7 +2581,7 @@ void SetupIntrinsics7()
     PixelExportColor_UInt32x3_Int16_index.type.literal = true;
     PixelExportColor_UInt32x3_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt32x3_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32x3_Int16.backendIndex = 1947;
+    PixelExportColor_UInt32x3_Int16.backendIndex = 1949;
     PixelExportColor_UInt32x3_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x3_Int16.parameters = PixelExportColor_UInt32x3_Int16_args;
     Symbol::Resolved(&PixelExportColor_UInt32x3_Int16_color)->typeSymbol = &UInt32x3Type;
@@ -2585,7 +2599,7 @@ void SetupIntrinsics7()
     PixelExportColor_UInt32x3_UInt16_index.type.literal = true;
     PixelExportColor_UInt32x3_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt32x3_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32x3_UInt16.backendIndex = 1948;
+    PixelExportColor_UInt32x3_UInt16.backendIndex = 1950;
     PixelExportColor_UInt32x3_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x3_UInt16.parameters = PixelExportColor_UInt32x3_UInt16_args;
     Symbol::Resolved(&PixelExportColor_UInt32x3_UInt16_color)->typeSymbol = &UInt32x3Type;
@@ -2603,7 +2617,7 @@ void SetupIntrinsics7()
     PixelExportColor_UInt32x4_Int32_index.type.literal = true;
     PixelExportColor_UInt32x4_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt32x4_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32x4_Int32.backendIndex = 1949;
+    PixelExportColor_UInt32x4_Int32.backendIndex = 1951;
     PixelExportColor_UInt32x4_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x4_Int32.parameters = PixelExportColor_UInt32x4_Int32_args;
     Symbol::Resolved(&PixelExportColor_UInt32x4_Int32_color)->typeSymbol = &UInt32x4Type;
@@ -2621,7 +2635,7 @@ void SetupIntrinsics7()
     PixelExportColor_UInt32x4_UInt32_index.type.literal = true;
     PixelExportColor_UInt32x4_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt32x4_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32x4_UInt32.backendIndex = 1950;
+    PixelExportColor_UInt32x4_UInt32.backendIndex = 1952;
     PixelExportColor_UInt32x4_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x4_UInt32.parameters = PixelExportColor_UInt32x4_UInt32_args;
     Symbol::Resolved(&PixelExportColor_UInt32x4_UInt32_color)->typeSymbol = &UInt32x4Type;
@@ -2639,7 +2653,7 @@ void SetupIntrinsics7()
     PixelExportColor_UInt32x4_Int16_index.type.literal = true;
     PixelExportColor_UInt32x4_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt32x4_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32x4_Int16.backendIndex = 1951;
+    PixelExportColor_UInt32x4_Int16.backendIndex = 1953;
     PixelExportColor_UInt32x4_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x4_Int16.parameters = PixelExportColor_UInt32x4_Int16_args;
     Symbol::Resolved(&PixelExportColor_UInt32x4_Int16_color)->typeSymbol = &UInt32x4Type;
@@ -2657,7 +2671,7 @@ void SetupIntrinsics7()
     PixelExportColor_UInt32x4_UInt16_index.type.literal = true;
     PixelExportColor_UInt32x4_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt32x4_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32x4_UInt16.backendIndex = 1952;
+    PixelExportColor_UInt32x4_UInt16.backendIndex = 1954;
     PixelExportColor_UInt32x4_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt32x4_UInt16.parameters = PixelExportColor_UInt32x4_UInt16_args;
     Symbol::Resolved(&PixelExportColor_UInt32x4_UInt16_color)->typeSymbol = &UInt32x4Type;
@@ -2675,7 +2689,7 @@ void SetupIntrinsics7()
     PixelExportColor_UInt16_Int32_index.type.literal = true;
     PixelExportColor_UInt16_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt16_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt16_Int32.backendIndex = 1953;
+    PixelExportColor_UInt16_Int32.backendIndex = 1955;
     PixelExportColor_UInt16_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16_Int32.parameters = PixelExportColor_UInt16_Int32_args;
     Symbol::Resolved(&PixelExportColor_UInt16_Int32_color)->typeSymbol = &UInt16Type;
@@ -2693,7 +2707,7 @@ void SetupIntrinsics7()
     PixelExportColor_UInt16_UInt32_index.type.literal = true;
     PixelExportColor_UInt16_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt16_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt16_UInt32.backendIndex = 1954;
+    PixelExportColor_UInt16_UInt32.backendIndex = 1956;
     PixelExportColor_UInt16_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16_UInt32.parameters = PixelExportColor_UInt16_UInt32_args;
     Symbol::Resolved(&PixelExportColor_UInt16_UInt32_color)->typeSymbol = &UInt16Type;
@@ -2711,7 +2725,7 @@ void SetupIntrinsics7()
     PixelExportColor_UInt16_Int16_index.type.literal = true;
     PixelExportColor_UInt16_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt16_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt16_Int16.backendIndex = 1955;
+    PixelExportColor_UInt16_Int16.backendIndex = 1957;
     PixelExportColor_UInt16_Int16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16_Int16.parameters = PixelExportColor_UInt16_Int16_args;
     Symbol::Resolved(&PixelExportColor_UInt16_Int16_color)->typeSymbol = &UInt16Type;
@@ -2729,7 +2743,7 @@ void SetupIntrinsics7()
     PixelExportColor_UInt16_UInt16_index.type.literal = true;
     PixelExportColor_UInt16_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt16_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt16_UInt16.backendIndex = 1956;
+    PixelExportColor_UInt16_UInt16.backendIndex = 1958;
     PixelExportColor_UInt16_UInt16.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16_UInt16.parameters = PixelExportColor_UInt16_UInt16_args;
     Symbol::Resolved(&PixelExportColor_UInt16_UInt16_color)->typeSymbol = &UInt16Type;
@@ -2747,7 +2761,7 @@ void SetupIntrinsics7()
     PixelExportColor_UInt16x2_Int32_index.type.literal = true;
     PixelExportColor_UInt16x2_Int32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt16x2_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt16x2_Int32.backendIndex = 1957;
+    PixelExportColor_UInt16x2_Int32.backendIndex = 1959;
     PixelExportColor_UInt16x2_Int32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x2_Int32.parameters = PixelExportColor_UInt16x2_Int32_args;
     Symbol::Resolved(&PixelExportColor_UInt16x2_Int32_color)->typeSymbol = &UInt16x2Type;
@@ -2765,7 +2779,7 @@ void SetupIntrinsics7()
     PixelExportColor_UInt16x2_UInt32_index.type.literal = true;
     PixelExportColor_UInt16x2_UInt32.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
     PixelExportColor_UInt16x2_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt16x2_UInt32.backendIndex = 1958;
+    PixelExportColor_UInt16x2_UInt32.backendIndex = 1960;
     PixelExportColor_UInt16x2_UInt32.returnType = Type::FullType { VoidType.name };
     PixelExportColor_UInt16x2_UInt32.parameters = PixelExportColor_UInt16x2_UInt32_args;
     Symbol::Resolved(&PixelExportColor_UInt16x2_UInt32_color)->typeSymbol = &UInt16x2Type;
@@ -2774,42 +2788,6 @@ void SetupIntrinsics7()
     Symbol::Resolved(&PixelExportColor_UInt16x2_UInt32)->name = "pixelExportColor(u16x2,literal u32)"_c;
     Symbol::Resolved(&PixelExportColor_UInt16x2_UInt32)->nameWithVarNames = "pixelExportColor(color : u16x2, index : literal u32)"_c;
     Symbol::Resolved(&PixelExportColor_UInt16x2_UInt32)->returnTypeSymbol = &VoidType;
-
-    /// pixelExportColor with UInt16x2, Int16
-    PixelExportColor_UInt16x2_Int16_color.name = "color"_c;
-    PixelExportColor_UInt16x2_Int16_color.type = Type::FullType{ UInt16x2Type.name };
-    PixelExportColor_UInt16x2_Int16_index.name = "index"_c;
-    PixelExportColor_UInt16x2_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_UInt16x2_Int16_index.type.literal = true;
-    PixelExportColor_UInt16x2_Int16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
-    PixelExportColor_UInt16x2_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt16x2_Int16.backendIndex = 1959;
-    PixelExportColor_UInt16x2_Int16.returnType = Type::FullType { VoidType.name };
-    PixelExportColor_UInt16x2_Int16.parameters = PixelExportColor_UInt16x2_Int16_args;
-    Symbol::Resolved(&PixelExportColor_UInt16x2_Int16_color)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&PixelExportColor_UInt16x2_Int16_index)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&PixelExportColor_UInt16x2_Int16)->signature = "pixelExportColor(u16x2,literal i16) void"_c;
-    Symbol::Resolved(&PixelExportColor_UInt16x2_Int16)->name = "pixelExportColor(u16x2,literal i16)"_c;
-    Symbol::Resolved(&PixelExportColor_UInt16x2_Int16)->nameWithVarNames = "pixelExportColor(color : u16x2, index : literal i16)"_c;
-    Symbol::Resolved(&PixelExportColor_UInt16x2_Int16)->returnTypeSymbol = &VoidType;
-
-    /// pixelExportColor with UInt16x2, UInt16
-    PixelExportColor_UInt16x2_UInt16_color.name = "color"_c;
-    PixelExportColor_UInt16x2_UInt16_color.type = Type::FullType{ UInt16x2Type.name };
-    PixelExportColor_UInt16x2_UInt16_index.name = "index"_c;
-    PixelExportColor_UInt16x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_UInt16x2_UInt16_index.type.literal = true;
-    PixelExportColor_UInt16x2_UInt16.documentation = "Exports a color value to the framebuffer output at index. This is the same as writing to `SV_TARGET<index>` in HLSL or to a GLSL `layout(location = <index>)` out variable."_c;
-    PixelExportColor_UInt16x2_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt16x2_UInt16.backendIndex = 1960;
-    PixelExportColor_UInt16x2_UInt16.returnType = Type::FullType { VoidType.name };
-    PixelExportColor_UInt16x2_UInt16.parameters = PixelExportColor_UInt16x2_UInt16_args;
-    Symbol::Resolved(&PixelExportColor_UInt16x2_UInt16_color)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&PixelExportColor_UInt16x2_UInt16_index)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&PixelExportColor_UInt16x2_UInt16)->signature = "pixelExportColor(u16x2,literal u16) void"_c;
-    Symbol::Resolved(&PixelExportColor_UInt16x2_UInt16)->name = "pixelExportColor(u16x2,literal u16)"_c;
-    Symbol::Resolved(&PixelExportColor_UInt16x2_UInt16)->nameWithVarNames = "pixelExportColor(color : u16x2, index : literal u16)"_c;
-    Symbol::Resolved(&PixelExportColor_UInt16x2_UInt16)->returnTypeSymbol = &VoidType;
 
 }
 } // namespace GPULang

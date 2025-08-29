@@ -16,7 +16,7 @@ Structure::Structure()
     this->symbolType = StructureType;
     this->baseType = TypeCode::InvalidType;
     this->resolved = Alloc<Structure::__Resolved>();
-    this->category = Type::Category::UserTypeCategory;
+    this->category = Type::Category::StructureCategory;
     this->arraySizeExpression = nullptr;
     this->isArray = false;
 

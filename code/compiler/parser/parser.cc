@@ -680,6 +680,10 @@ Tokenize(const GPULangFile* file, const TransientArray<std::string_view>& search
         if (it[0] == '\0')
         {
             Token newToken;
+            newToken.startLine = line;
+            newToken.endLine = line;
+            newToken.startChar = it - startOfLine;
+            newToken.endChar = it + 1 - startOfLine;
             ret.tokens.Append(newToken);
             ret.tokenTypes.Append(TokenType::End);
             return;
@@ -832,7 +836,7 @@ Tokenize(const GPULangFile* file, const TransientArray<std::string_view>& search
         {
             const char* begin = it;
             it++;
-            while (it != end)
+            while (it < end)
             {
                 uint8_t eosOffset = findCharPos(it, end, '"');
                 if (eosOffset != 255)
@@ -843,6 +847,8 @@ Tokenize(const GPULangFile* file, const TransientArray<std::string_view>& search
                 else
                     it += 8;
             }
+            if (it > end)
+                it = end;
             if (it == end)
             {
                 GPULangDiagnostic diagnostic;
@@ -1080,7 +1086,6 @@ GPULangDiagnostic
 Limit(const TokenStream& stream, const char* name, size_t size)
 {
     const Token& tok = stream.Data(0);
-
     GPULangDiagnostic diagnostic;
     diagnostic.severity = GPULangDiagnostic::Severity::Error;
     diagnostic.error = TStr("Limit ", name, "(", size, ")" , " reached");

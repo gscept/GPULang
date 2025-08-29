@@ -5,6 +5,7 @@
 //-------------------------------------------------
 #include "ast/types/type.h"
 #include "ast/enumeration.h"
+#include "ast/structure.h"
 #include "ast/expressions/intexpression.h"
 #include "ast/expressions/enumexpression.h"
 namespace GPULang
@@ -5333,6 +5334,30 @@ extern Color ColorType;
 extern EnumExpression ColorTransparent;
 extern EnumExpression ColorBlack;
 extern EnumExpression ColorWhite;
+struct GeometryPoint : public Structure
+{
+    GeometryPoint();
+};
+extern GeometryPoint GeometryPointType;
+
+extern Variable GeometryPointPosition;
+extern Variable GeometryPointPointSize;
+extern Variable GeometryPointCullDistance;
+extern Variable GeometryPointClipDistance;
+struct GeometryLine : public Structure
+{
+    GeometryLine();
+};
+extern GeometryLine GeometryLineType;
+
+extern Variable GeometryLinePosition;
+extern IntExpression GeometryLinePositionArraySize;
+extern Variable GeometryLinePointSize;
+extern IntExpression GeometryLinePointSizeArraySize;
+extern Variable GeometryLineCullDistance;
+extern IntExpression GeometryLineCullDistanceArraySize;
+extern Variable GeometryLineClipDistance;
+extern IntExpression GeometryLineClipDistanceArraySize;
 extern Variable StencilStateFail;
 extern Variable StencilStatePass;
 extern Variable StencilStateDepthFail;

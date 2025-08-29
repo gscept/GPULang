@@ -1560,6 +1560,21 @@
         ]
     },
     {
+        "name": "geometryGetTriangle",
+        "documentation": "Returns a struct of the current triangle.",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "geometryGetTriangle() f32x4"
+            }
+        ]
+    },
+    {
         "name": "invSqrt",
         "documentation": "Returns the inverse square root of a value.",
         "target_support": [
@@ -2501,6 +2516,21 @@
         "overloads": [
             {
                 "signature": "pixelGetDepth() f32"
+            }
+        ]
+    },
+    {
+        "name": "pixelGetFrontFacing",
+        "documentation": "Returns the facing direction of the current pixel",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "pixelGetFrontFacing() b8"
             }
         ]
     },

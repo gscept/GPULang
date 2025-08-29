@@ -364,7 +364,7 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
         }
         else if (varResolved->storage == Storage::Uniform)
         {
-            if (varResolved->typeSymbol->category == Type::Category::UserTypeCategory
+            if (varResolved->typeSymbol->category == Type::Category::StructureCategory
                 || varResolved->typeSymbol->category == Type::Category::TextureCategory
                 || varResolved->typeSymbol->category == Type::Category::SamplerCategory
                 || varResolved->typeSymbol->category == Type::Category::PixelCacheCategory
@@ -375,7 +375,7 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
                 writer.Indent();
                 writer.WriteLine(Format("static const unsigned int BINDING = %d;", varResolved->binding));
                 writer.WriteLine(Format("static const unsigned int GROUP = %d;", varResolved->group));
-                if (varResolved->typeSymbol->category == Type::Category::UserTypeCategory)
+                if (varResolved->typeSymbol->category == Type::Category::StructureCategory)
                 {
                     writer.WriteLine(Format("using STRUCT = %s;", varResolved->typeSymbol->name.c_str()));
                 }

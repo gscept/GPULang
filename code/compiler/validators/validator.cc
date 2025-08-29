@@ -1871,7 +1871,7 @@ Validator::ResolveStructure(Compiler* compiler, Symbol* symbol)
             uint32_t varSize = varResolved->byteSize;
             if (!strucResolved->packMembers)
             {
-                if (varResolved->typeSymbol->category == Type::Category::UserTypeCategory)
+                if (varResolved->typeSymbol->category == Type::Category::StructureCategory)
                 {
                     Structure::__Resolved* strucRes = Symbol::Resolved(static_cast<Structure*>(varResolved->typeSymbol));
                     offset = Type::Align(offset, strucRes->byteSize);
@@ -2128,7 +2128,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
     // struct members may only be scalars, or stencil states but they can't be created by the grammar rules
     if (varResolved->usageBits.flags.isStructMember && 
-        (type->category != Type::ScalarCategory && type->category != Type::EnumCategory && type->category != Type::UserTypeCategory && type->category != Type::StencilStateCategory))
+        (type->category != Type::ScalarCategory && type->category != Type::EnumCategory && type->category != Type::StructureCategory && type->category != Type::StencilStateCategory))
     {
         compiler->Error(Format("'%s' may only be scalar or struct type if member of a struct", var->name.c_str()), symbol);
         return false;
@@ -2185,7 +2185,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             allowedAttributesSet = &this->allowedScalarAttributes;
         else if (type->category == Type::SamplerCategory)
             allowedAttributesSet = &this->allowedSamplerAttributes;
-        else if (type->category == Type::UserTypeCategory)
+        else if (type->category == Type::StructureCategory)
         {
             if (lastIndirectionModifier == Type::FullType::Modifier::Pointer)
                 allowedAttributesSet = &this->allowedPointerAttributes;
@@ -2404,7 +2404,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
     if (!compiler->target.supportsPhysicalAddressing)
     {
-        if (varResolved->usageBits.flags.isStructMember && type->category == Type::UserTypeCategory && var->type.IsPointer())
+        if (varResolved->usageBits.flags.isStructMember && type->category == Type::StructureCategory && var->type.IsPointer())
         {
             if (!compiler->target.supportsPhysicalBufferAddresses)
             {
@@ -2414,7 +2414,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         }
         else
         {
-            if (type->category == Type::UserTypeCategory && varResolved->storage != Storage::InlineUniform && varResolved->storage != Storage::Uniform && var->type.IsPointer())
+            if (type->category == Type::StructureCategory && varResolved->storage != Storage::InlineUniform && varResolved->storage != Storage::Uniform && var->type.IsPointer())
             {
                 compiler->Error(Format("Type may not be pointer if target language ('%s') does not support physical addressing", compiler->target.name.c_str()), var);
                 return false;
@@ -2448,14 +2448,14 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             
 
             /*
-            if (varResolved->type.modifiers.front() != Type::FullType::Modifier::Pointer && (varResolved->typeSymbol->category == Type::UserTypeCategory || varResolved->typeSymbol->category == Type::ScalarCategory))
+            if (varResolved->type.modifiers.front() != Type::FullType::Modifier::Pointer && (varResolved->typeSymbol->category == Type::StructureCategory || varResolved->typeSymbol->category == Type::ScalarCategory))
             {
                 compiler->Error(Format("Variables in the global scope with storage 'uniform' must be pointers"), symbol);
                 return false;        
             }
             */
 
-            if (type->category != Type::SamplerCategory && type->category != Type::TextureCategory && type->category != Type::PixelCacheCategory && type->category != Type::UserTypeCategory)
+            if (type->category != Type::SamplerCategory && type->category != Type::TextureCategory && type->category != Type::PixelCacheCategory && type->category != Type::StructureCategory)
             {
                 compiler->Error(Format("Variables of storage 'uniform' may only be pointers to 'sampler'/'texture'/'pixel_cache'/'struct' types"), symbol);
                 return false;
@@ -2463,7 +2463,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         }
         else if (varResolved->storage == Storage::InlineUniform)
         {
-            if (type->category != Type::UserTypeCategory)
+            if (type->category != Type::StructureCategory)
             {
                 compiler->Error(Format("Variables of storage 'inline_uniform' storage may only be pointers to 'struct' types"), symbol);
                 return false;
@@ -2553,7 +2553,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         return false;
     }
 
-    if (type->category == Type::UserTypeCategory)
+    if (type->category == Type::StructureCategory)
     {
         if (lastIndirectionModifier != Type::FullType::Modifier::Pointer)
         {
@@ -2711,7 +2711,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         Type::Category cat = type->category;
 
         // if user type and mutable or uniform, convert to either mutable or constant type
-        if (cat == Type::Category::UserTypeCategory)
+        if (cat == Type::Category::StructureCategory)
         {
             if (compiler->IsScopeGlobal())
             {
@@ -2727,7 +2727,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         if (cat == Type::Category::TextureCategory
             || cat == Type::Category::SamplerCategory
             || cat == Type::Category::PixelCacheCategory
-            || (cat == Type::Category::UserTypeCategory && varResolved->storage == Storage::Uniform))
+            || (cat == Type::Category::StructureCategory && varResolved->storage == Storage::Uniform))
         {
             if (varResolved->group == Variable::__Resolved::NOT_BOUND)
             {
@@ -2796,7 +2796,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             }
         }
 
-        if (cat == Type::Category::UserTypeCategory && varResolved->storage == Storage::Uniform)
+        if (cat == Type::Category::StructureCategory && varResolved->storage == Storage::Uniform)
         {
             Structure* currentStructure = static_cast<Structure*>(varResolved->typeSymbol);
             Structure::__Resolved* currentStrucResolved = Symbol::Resolved(currentStructure);
@@ -3679,25 +3679,30 @@ ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc)
 {
     TransientArray<Variable*> outParams = SortAndFilterParameters(outFunc->parameters, false);
     TransientArray<Variable*> inParams = SortAndFilterParameters(inFunc->parameters, true);
-    size_t inIterator = 0;
-    for (Variable* var : outParams)
+    size_t iterator = 0;
+    for (; iterator < outParams.size && iterator < inParams.size; iterator++)
     {
+        Variable* var = outParams.ptr[iterator];
         Variable::__Resolved* outResolved = Symbol::Resolved(var);
-        Variable::__Resolved* inResolved = Symbol::Resolved(inParams.ptr[inIterator]);
+        Variable::__Resolved* inResolved = Symbol::Resolved(inParams.ptr[iterator]);
 
-        // if bindings don't match, it means the output will be unused since the parameter sets should be sorted
-        if ((outResolved->outBinding != inResolved->inBinding))
+        // If types don't match, then the linkage is invalid
+        if (var->type != inParams.ptr[iterator]->type)
         {
-            if (compiler->options.warnOnUnusedParameter)
-                compiler->Warning(Format("Unused parameter '%s' (binding %d) from shader '%s' to '%s'", var->name.c_str(), outResolved->outBinding, outFunc->name.c_str(), inFunc->name.c_str()), outFunc);
+            compiler->Error(Format("Can't match types '%s' and '%s' between shader '%s' and '%s'", var->type.name.c_str(), inParams.ptr[iterator]->type.name.c_str(), outFunc->name.c_str(), inFunc->name.c_str()), outFunc);
+            return false;
         }
-        else
+    }
+
+
+    // If there is a mismatch in the parameter count and we want to warn, then do so
+    if (compiler->options.warnOnUnusedParameter)
+    {
+        for (; iterator < outParams.size; iterator++)
         {
-            if (var->type != inParams.ptr[inIterator]->type)
-            {
-                compiler->Error(Format("Can't match types '%s' and '%s' between shader '%s' and '%s'", var->type.name.c_str(), inParams.ptr[inIterator]->type.name.c_str(), outFunc->name.c_str(), inFunc->name.c_str()), outFunc);
-                return false;
-            }
+            Variable* var = outParams.ptr[iterator];
+            Variable::__Resolved* outResolved = Symbol::Resolved(var);
+            compiler->Warning(Format("Unused parameter '%s' (binding %d) from shader '%s' to '%s'", var->name.c_str(), outResolved->outBinding, outFunc->name.c_str(), inFunc->name.c_str()), outFunc);
         }
     }
 

@@ -1363,14 +1363,14 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
 
             if (var->type.IsMutable())
             {
-                if (resolved->typeSymbol->category == Type::Category::UserTypeCategory)
+                if (resolved->typeSymbol->category == Type::Category::StructureCategory)
                     output.bindingType = Serialization::BindingType::MutableBuffer;
                 else if (resolved->typeSymbol->category == Type::Category::TextureCategory)
                     output.bindingType = Serialization::BindingType::MutableImage;
             }
             else
             {
-                if (resolved->typeSymbol->category == Type::Category::UserTypeCategory)
+                if (resolved->typeSymbol->category == Type::Category::StructureCategory)
                     output.bindingType = Serialization::BindingType::Buffer;
                 else if (resolved->typeSymbol->category == Type::Category::SampledTextureCategory)
                         output.bindingType = Serialization::BindingType::SampledImage;

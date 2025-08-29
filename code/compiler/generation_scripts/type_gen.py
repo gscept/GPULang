@@ -170,6 +170,18 @@ def generate_types():
         'Bool8x4': 'Bool8'
     }
 
+    
+    vector_size_mapping = {
+        'Float32': 1, 'Float32x2': 2, 'Float32x3': 3, 'Float32x4': 4,
+        'Float16': 1, 'Float16x2': 2, 'Float16x3': 3, 'Float16x4': 4,
+        'Int32': 1, 'Int32x2': 2, 'Int32x3': 3, 'Int32x4': 4,
+        'Int16': 1, 'Int16x2': 2, 'Int16x3': 3, 'Int16x4': 4,
+        'UInt32': 1, 'UInt32x2': 2, 'UInt32x3': 3, 'UInt32x4': 4,
+        'UInt16': 1, 'UInt16x2': 2, 'UInt16x3': 3, 'UInt16x4': 4,
+        'Bool8': 1, 'Bool8x2': 2, 'Bool8x3': 3, 'Bool8x4': 4
+    }
+
+
 
     bit_operator_names = ['or', 'and', 'xor', 'lsh', 'rsh']
     bit_operators = ['|', '&', '^', '<<', '>>']
@@ -381,6 +393,7 @@ def generate_types():
     #header_file.write('#include "ast/variable.h"\n')
     #header_file.write('#include "ast/function.h"\n')
     header_file.write('#include "ast/enumeration.h"\n')
+    header_file.write('#include "ast/structure.h"\n')
     header_file.write('#include "ast/expressions/intexpression.h"\n')
     header_file.write('#include "ast/expressions/enumexpression.h"\n')
     header_file.write('namespace GPULang\n')
@@ -1679,6 +1692,112 @@ def generate_types():
     )
     enums.append(enum)
 
+    class StructMember:
+        def __init__(self, decl_name, api_name, type, array_size=1):
+            self.decl_name = decl_name
+            self.api_name = api_name
+            self.type = type
+            self.array_size = array_size
+
+    class Struct:
+        def __init__(self, name, members=[]):
+            self.name = name
+            self.members = members
+
+        def declaration(self):
+            decl = f'struct {self.name} : public Structure\n'
+            decl += '{\n'
+            decl += f'    {self.name}();\n'
+            decl += '};\n'
+            decl += f'extern {self.name} {self.name}Type;\n\n'
+
+            for member in self.members:
+                decl += f'extern Variable {self.name}{member.decl_name};\n'
+                if member.array_size > 1:
+                    decl += f'extern IntExpression {self.name}{member.decl_name}ArraySize;\n'
+            return decl
+        
+            return decl
+        
+        def definition(self):
+            defn = ''
+            for i, member in enumerate(self.members):
+                defn += f'Variable {self.name}{member.decl_name};\n'
+                if member.array_size > 1:
+                    defn += f'IntExpression {self.name}{member.decl_name}ArraySize({member.array_size});\n'
+
+            byte_size = 0
+            for member in self.members:
+                base_type = base_type_mapping[member.type]
+                row_count = vector_size_mapping[member.type]
+                byte_size += bit_width_mapping[base_type] * row_count * member.array_size / 8
+            defn += f'{self.name}::{self.name}()\n'
+            defn += '{\n'
+            defn += f'    this->name = "{self.name}"_c;\n'
+            defn += f'    this->resolved = Alloc<Structure::__Resolved>();\n'
+            defn += '    this->category = Type::StructureCategory;\n'
+            defn += '    this->arraySizeExpression = nullptr;\n'
+            defn += '    this->isArray = false;\n'
+            defn += '    this->scope.owningSymbol = this;\n'
+            defn += '    this->scope.type = Scope::ScopeType::Type;\n'
+            defn += '    this->baseType = TypeCode::InvalidType;\n'
+            defn += '    this->builtin = true;\n'
+            defn += '    Structure::__Resolved* typeResolved = static_cast<Structure::__Resolved*>(this->resolved);\n'
+            defn += f'    typeResolved->usageFlags.bits = 0x0;\n'
+            defn += f'    typeResolved->accessBits.bits = 0x0;\n'
+            defn += f'    typeResolved->byteSize = {trunc(byte_size)};\n'
+            
+            defn += f'    typeResolved->baseAlignment = 0;\n'
+            defn += f'    typeResolved->packMembers = false;\n'
+            defn += f'    typeResolved->storageFunction = nullptr;\n'
+            defn += f'    typeResolved->loadFunction = nullptr;\n'
+
+            for i, member in enumerate(self.members):
+                if member.array_size > 1:
+                    defn += f'    {self.name}{member.decl_name}.type = Type::FullType{{ {member.type}Type.name, {{Type::FullType::Modifier::Array}}, {{&{self.name}{member.decl_name}ArraySize}} }};\n'
+                else:
+                    defn += f'    {self.name}{member.decl_name}.type = Type::FullType{{ {member.type}Type.name }};\n'
+                defn += f'    {self.name}{member.decl_name}.thisResolved->typeSymbol = &{member.type}Type;\n'
+
+            self.members.sort(key=MemberSortKey)
+            defn += f'    this->scope.symbolLookup = StaticMap<HashString, Symbol*, {len(self.members)}> {{\n'        
+            defn += ',\n'.join(f'        std::pair{{ "{member.decl_name}"_h, &{self.name + member.decl_name} }}' for member in self.members)
+            defn += '\n    };\n'
+            defn += '};\n'
+            defn += f'{self.name} {self.name}Type;\n\n'
+            return defn
+
+        def pairs(self):
+            return [
+                IntrinsicPair(decl_name=f'{self.name}Type', api_name=self.name),
+            ]
+        
+        def web_type(self):
+            return self.name;
+
+    structs = []
+    struct = Struct(
+        name = 'GeometryPoint',
+        members=[
+            StructMember('Position', 'position', 'Float32x4'),
+            StructMember('PointSize', 'pointSize', 'Float32'),
+            StructMember('CullDistance', 'cullDistance', 'Float32'),
+            StructMember('ClipDistance', 'clipDistance', 'Float32')
+        ]
+    )
+    structs.append(struct)
+
+    struct = Struct(
+        name = 'GeometryLine',
+        members=[
+            StructMember('Position', 'position', 'Float32x4', 2),
+            StructMember('PointSize', 'pointSize', 'Float32', 2),
+            StructMember('CullDistance', 'cullDistance', 'Float32', 2),
+            StructMember('ClipDistance', 'clipDistance', 'Float32', 2)
+        ]
+    )
+    structs.append(struct)
+
     class StateMember:
         def __init__(self, name, data_type, array_size=1):
             self.name = name
@@ -1928,6 +2047,12 @@ def generate_types():
         intrinsic_list.extend(enum.pairs())
         web_types['types'].append(enum.name)
 
+    for struct in structs:
+        declaration_string += struct.declaration()
+        definition_string += struct.definition()
+        intrinsic_list.extend(struct.pairs())
+        web_types['types'].append(struct.name)
+
     for state in states:
         declaration_string += state.declaration()
         definition_string += state.definition()
@@ -1951,16 +2076,6 @@ def generate_types():
     float_vec_types = ['Float32x2', 'Float32x3', 'Float32x4', 'Float16x2', 'Float16x3', 'Float16x4']
     signed_types = ['Int32', 'Int32x2', 'Int32x3', 'Int32x4', 'Int16', 'Int16x2', 'Int16x3', 'Int16x4', 'Float32', 'Float32x2', 'Float32x3', 'Float32x4', 'Float16', 'Float16x2', 'Float16x3', 'Float16x4']
     bool_types = ['Bool8', 'Bool8x2', 'Bool8x3', 'Bool8x4']
-
-    vector_size_mapping = {
-        'Float32': 1, 'Float32x2': 2, 'Float32x3': 3, 'Float32x4': 4,
-        'Float16': 1, 'Float16x2': 2, 'Float16x3': 3, 'Float16x4': 4,
-        'Int32': 1, 'Int32x2': 2, 'Int32x3': 3, 'Int32x4': 4,
-        'Int16': 1, 'Int16x2': 2, 'Int16x3': 3, 'Int16x4': 4,
-        'UInt32': 1, 'UInt32x2': 2, 'UInt32x3': 3, 'UInt32x4': 4,
-        'UInt16': 1, 'UInt16x2': 2, 'UInt16x3': 3, 'UInt16x4': 4,
-        'Bool8': 1, 'Bool8x2': 2, 'Bool8x3': 3, 'Bool8x4': 4
-    }
 
 
     intrinsics_header.write("//-------------------------------------------------\n")
@@ -2789,6 +2904,50 @@ def generate_types():
         fun.spirv = spirv_function
         functions.append(fun)
 
+    intrinsic = "GetTriangle"
+    function_name = f'Geometry{intrinsic}'
+    fun = Function(
+        decl_name = function_name,
+        api_name = f'geometry{intrinsic}',
+        return_type = 'Float32x4',
+        documentation = 'Returns a struct of the current triangle.',
+        parameters = [
+        ]
+    )
+
+    spirv_function = ''
+    spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
+    spirv_function += '    static bool HasGeneratedGeometryVertex = false;\n'
+    spirv_function += '    static uint32_t GeneratedGeometryVertexType = 0xFFFFFFFF;\n'
+    spirv_function += '    if (!HasGeneratedGeometryVertex) {\n'
+    spirv_function += '        uint32_t type = g->writer->Reserve();\n'
+    spirv_function += '        uint32_t positionType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);\n'
+    spirv_function += '        g->writer->MemberDecorate(SPVArg{{type}}, 0, Builtins::Position, 0);\n'
+    spirv_function += '        uint32_t pointSizeType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);\n'
+    spirv_function += '        g->writer->MemberDecorate(SPVArg{{type}}, 1, Builtins::PointSize, 1);\n'
+    spirv_function += '        uint32_t clipDistanceType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);\n'
+    spirv_function += '        g->writer->MemberDecorate(SPVArg{{type}}, 2, Builtins::ClipDistance, 2);\n'
+    spirv_function += '        uint32_t cullDistanceType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);\n'
+    spirv_function += '        g->writer->MemberDecorate(SPVArg{{type}}, 3, Builtins::CullDistance, 3);\n'
+    spirv_function += '        TransientArray<SPVArg> memberTypes = {{positionType, pointSizeType, clipDistanceType, cullDistanceType}};\n'
+    spirv_function += '        g->writer->ReservedType(OpTypeStruct, "gplGeometryShaderVertex", SPVWriter::Section::Declarations, type, SPVArgList{{memberTypes}});\n'
+    spirv_function += '        g->writer->Decorate({{type}}, Decorations::Block);\n'
+    spirv_function += '        GeneratedGeometryVertexType = type;\n'
+    spirv_function += '        HasGeneratedGeometryVertex = true;\n'
+    spirv_function += '    }\n'
+    
+    spirv_function += '    uint32_t arrayType = GPULang::AddType(g, TStr("gplGeometryShaderVertex[3]"), OpTypeArray, SPVArg(GeneratedGeometryVertexType), 3);\n'
+    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_gplGeometryShaderVertex[3]_Input"), OpTypePointer, VariableStorage::Input, SPVArg(arrayType));\n'
+    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{builtin}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
+    spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+    spirv_function += '    SPIRVResult arg = args[0];\n'
+    spirv_function += '    SPIRVResult index = LoadValueSPIRV(c, g, args[1]);\n'
+    spirv_function += '    arg.AddAccessChainLink({index});\n'
+    spirv_function += '    return LoadValueSPIRV(c, g, arg);\n'
+
+    fun.spirv = spirv_function
+    functions.append(fun)
+
     for type in four_component_float_vec_types:
         intrinsic = 'GetCoordinates'
         spirv_builtin = 'FragCoord'
@@ -2814,10 +2973,34 @@ def generate_types():
         spirv_function += '    res.parentTypes.push_back(baseType);\n'
         spirv_function += '    return res;\n'
         
-
         fun.spirv = spirv_function
         functions.append(fun)
-    
+
+    intrinsic = 'GetFrontFacing'
+    spirv_builtin = 'FrontFacing'
+    function_name = f'Pixel{intrinsic}'
+    fun = Function(
+        decl_name = function_name,
+        api_name = f'pixel{intrinsic}',
+        return_type = 'Bool8',
+        documentation = 'Returns the facing direction of the current pixel',
+        parameters = [
+        ]
+    )
+
+    spirv_function = ''
+    spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
+    spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Bool8, 1);\n'
+    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_b8_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
+    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
+    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+    spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+    spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
+    spirv_function += '    res.parentTypes.push_back(baseType);\n'
+    spirv_function += '    return res;\n'
+    fun.spirv = spirv_function
+    functions.append(fun)
+
     intrinsic = 'GetDepth'
     spirv_builtin = 'FragDepth'
     function_name = f'Pixel{intrinsic}'

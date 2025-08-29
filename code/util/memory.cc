@@ -77,8 +77,14 @@ InitAllocator(Allocator* alloc)
 void 
 DestroyAllocator(Allocator* alloc)
 {
-    vdecommit(alloc->mem, alloc->pageCount * SystemPageSize);
-    vfree(alloc->mem, alloc->maxSize);
+    if (alloc->mem != nullptr)
+    {
+        if (alloc->pageCount > 0)
+        {
+            vdecommit(alloc->mem, alloc->pageCount * SystemPageSize);
+        }
+        vfree(alloc->mem, alloc->maxSize);
+    }
     alloc->pageCount = 0;
     alloc->mem = nullptr;
     alloc->it = nullptr;
@@ -93,7 +99,6 @@ DestroyAllocator(Allocator* alloc)
                 vfree(alloc->virtualMem[i].mem, alloc->virtualMem[i].size);
                 alloc->virtualMem[i] = Allocator::VAlloc();
             }
-                
         }
     }
 }

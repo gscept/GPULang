@@ -2266,7 +2266,7 @@ ResolveSPIRVVariableStorage(
         else if (storage == Storage::Device)
             scope = SPIRVResult::Storage::Device;
     }
-    else if (typeSymbol->category == Type::UserTypeCategory)
+    else if (typeSymbol->category == Type::StructureCategory)
     {
         if (storage == Storage::Uniform && (type.IsMutable() || usageBits.flags.isDynamicSizedArray))
             scope = SPIRVResult::Storage::StorageBuffer;
@@ -2397,7 +2397,7 @@ GenerateTypeSPIRV(
     {
         baseType = GenerateBaseTypeSPIRV(compiler, generator, TypeCode::UInt, 1);
     }
-    else if (typeSymbol->category == Type::UserTypeCategory)
+    else if (typeSymbol->category == Type::StructureCategory)
     {
         uint32_t name = GetSymbol(generator, typeSymbol->name).value;
         baseType = std::tie(name, typeSymbol->name);
@@ -2426,7 +2426,7 @@ GenerateTypeSPIRV(
                 TStr newBase = TStr("[]_", gpulangType, scopeString);
                 parentType.push_back(typeName);
                 typeName = AddType(generator, newBase, OpTypeRuntimeArray, SPVArg{ typeName });
-                if (typeSymbol->category == Type::UserTypeCategory)
+                if (typeSymbol->category == Type::StructureCategory)
                 {
                     Structure::__Resolved* strucRes = Symbol::Resolved(static_cast<Structure*>(typeSymbol));
                     generator->writer->Decorate(SPVArg(typeName), Decorations::ArrayStride, strucRes->byteSize);
@@ -2458,7 +2458,7 @@ GenerateTypeSPIRV(
                 SPIRVResult arraySizeConstant = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Int(size));
                 typeName = AddType(generator, newBase, OpTypeArray, SPVArg{ typeName }, arraySizeConstant);
                 baseType = std::tie(typeName, newBase);
-                if (typeSymbol->category == Type::UserTypeCategory)
+                if (typeSymbol->category == Type::StructureCategory)
                 {
                     Structure::__Resolved* strucRes = Symbol::Resolved(static_cast<Structure*>(typeSymbol));
                     generator->writer->Decorate(SPVArg(typeName), Decorations::ArrayStride, strucRes->byteSize);

@@ -116,7 +116,7 @@ std::array{
     std::pair{ Type::Category::TextureCategory, ConstantString("Texture") }
     , std::pair{ Type::Category::PixelCacheCategory, ConstantString("PixelCache") }
     , std::pair{ Type::Category::ScalarCategory, ConstantString("Scalar") }
-    , std::pair{ Type::Category::UserTypeCategory, ConstantString("Buffer") }
+    , std::pair{ Type::Category::StructureCategory, ConstantString("Buffer") }
     , std::pair{ Type::Category::EnumCategory, ConstantString("Enum") }
     , std::pair{ Type::Category::VoidCategory, ConstantString("Void") }
     , std::pair{ Type::Category::SamplerCategory, ConstantString("Sampler") }
