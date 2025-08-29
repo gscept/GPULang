@@ -1702,10 +1702,13 @@ main(int argc, const char** argv)
             const GPULang::Symbol* sym = nullptr;
             for (const auto& [range, bits, lineSym] : symbolsOnLine)
             {
-                if (lineSym->location.start < params.position.character && lineSym->location.end > params.position.character)
-                    sym = lineSym;
-                else if (lineSym->location.start > params.position.character)
-                    break;
+                if (lineSym != nullptr)
+                {
+                    if (lineSym->location.start < params.position.character && lineSym->location.end > params.position.character)
+                        sym = lineSym;
+                    else if (lineSym->location.start > params.position.character)
+                        break;
+                }
             }
             if (sym != nullptr)
             {
@@ -1743,10 +1746,13 @@ main(int argc, const char** argv)
             const GPULang::Symbol* sym = nullptr;
             for (const auto& [range, bits, lineSym] : symbolsOnLine)
             {
-                if (lineSym->location.start < params.position.character && lineSym->location.end > params.position.character)
-                    sym = lineSym;
-                else if (lineSym->location.start > params.position.character)
-                    break;
+                if (lineSym != nullptr)
+                {
+                    if (lineSym->location.start < params.position.character && lineSym->location.end > params.position.character)
+                        sym = lineSym;
+                    else if (lineSym->location.start > params.position.character)
+                        break;
+                }
             }
             if (sym != nullptr)
             {
@@ -1754,17 +1760,22 @@ main(int argc, const char** argv)
                 {
                     const auto expr = static_cast<const GPULang::SymbolExpression*>(sym);
                     GPULang::Symbol* symbol = GPULang::Symbol::Resolved(expr)->symbol;
-                    
-                    lsp::DefinitionLink link;
-                    link.targetUri = symbol->location.file.c_str();
-                    lsp::Range range;
-                    range.start.line = symbol->location.line;
-                    range.start.character = symbol->location.start;
-                    range.end.line = symbol->location.line;
-                    range.end.character = symbol->location.end;
-                    link.targetRange = range;
-                    link.targetSelectionRange = range;
-                    result = std::vector{ link };
+                    if (symbol != nullptr)
+                    {
+                        if (symbol->location.line != -1)
+                        {
+                            lsp::DefinitionLink link;
+                            link.targetUri = symbol->location.file.c_str();
+                            lsp::Range range;
+                            range.start.line = symbol->location.line;
+                            range.start.character = symbol->location.start;
+                            range.end.line = symbol->location.line;
+                            range.end.character = symbol->location.end;
+                            link.targetRange = range;
+                            link.targetSelectionRange = range;
+                            result = std::vector{ link };
+                        }
+                    }
                 }
                 else
                 {
