@@ -111,9 +111,9 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
             ValueUnion val2;
             if (thisResolved->leftFullType.modifierValues[0]->EvalValue(val2))
             {
-                if (val.ui[0] > val2.ui[0])
+                if (val.ui[0] >= val2.ui[0])
                 {
-                    compiler->Error(Format("Index '%d' is outside of array bounds (%d)", val.ui[0], val2.ui[0]), this);
+                    compiler->Error(Format("Index '%d' is outside of array bounds (0..%d)", val.ui[0], val2.ui[0]-1), this);
                     return false;
                 }
             }
