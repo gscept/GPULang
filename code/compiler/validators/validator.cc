@@ -3736,12 +3736,19 @@ SortAndFilterParameters(const FixedArray<Variable*>& vars, bool in)
     return ret;
 }
 
+struct ParameterSetValidationRules
+{
+    uint8_t inputIsArray : 1 = 0;
+    uint8_t outputIsArray : 1 = 0;
+    uint8_t previousOutputIsArray : 1 = 0;
+};
+
 //------------------------------------------------------------------------------
 /**
     TODO: Add program to better describe when unused bindings happen. Also add a compiler flag to turning the warnings off
 */
 bool 
-ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc)
+ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc, const ParameterSetValidationRules rules = ParameterSetValidationRules())
 {
     TransientArray<Variable*> outParams = SortAndFilterParameters(outFunc->parameters, false);
     TransientArray<Variable*> inParams = SortAndFilterParameters(inFunc->parameters, true);
@@ -3752,8 +3759,19 @@ ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc)
         Variable::__Resolved* outResolved = Symbol::Resolved(var);
         Variable::__Resolved* inResolved = Symbol::Resolved(inParams.ptr[iterator]);
 
-        // If types don't match, then the linkage is invalid
-        if (var->type != inParams.ptr[iterator]->type)
+        if (rules.inputIsArray && !rules.previousOutputIsArray)
+        {
+            // If in type is removed 1 array level, the types must match
+            auto inType = inParams.ptr[iterator]->type;
+            inType.modifiers.size--;
+            inType.modifierValues.size--;
+            if (var->type != inType)
+            {
+                compiler->Error(Format("Can't match types '%s' and '%s' between shader '%s' and '%s'", var->type.ToString().c_str(), inParams.ptr[iterator]->type.ToString().c_str(), outFunc->name.c_str(), inFunc->name.c_str()), outFunc);
+                return false;
+            }
+        }
+        else if (var->type != inParams.ptr[iterator]->type)
         {
             compiler->Error(Format("Can't match types '%s' and '%s' between shader '%s' and '%s'", var->type.ToString().c_str(), inParams.ptr[iterator]->type.ToString().c_str(), outFunc->name.c_str(), inFunc->name.c_str()), outFunc);
             return false;
@@ -3892,7 +3910,11 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
                 return false;
             }
             Function* hs = static_cast<Function*>(progResolved->mappings[ProgramInstance::__Resolved::HullShader]);
-            if (!ValidateParameterSets(compiler, lastPrimitiveShader, hs))
+            ParameterSetValidationRules rules;
+            rules.inputIsArray = 1;
+            rules.outputIsArray = 1;
+            rules.previousOutputIsArray = 0;
+            if (!ValidateParameterSets(compiler, lastPrimitiveShader, hs, rules))
                 return false;
 
             lastPrimitiveShader = hs;
@@ -3907,7 +3929,11 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
                 return false;
             }
             Function* ds = static_cast<Function*>(progResolved->mappings[ProgramInstance::__Resolved::DomainShader]);
-            if (!ValidateParameterSets(compiler, lastPrimitiveShader, ds))
+            ParameterSetValidationRules rules;
+            rules.inputIsArray = 1;
+            rules.outputIsArray = 0;
+            rules.previousOutputIsArray = 1;
+            if (!ValidateParameterSets(compiler, lastPrimitiveShader, ds, rules))
                 return false;
 
             lastPrimitiveShader = ds;
@@ -3921,7 +3947,11 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
                 return false;
             }
             Function* gs = static_cast<Function*>(progResolved->mappings[ProgramInstance::__Resolved::GeometryShader]);
-            if (!ValidateParameterSets(compiler, lastPrimitiveShader, gs))
+            ParameterSetValidationRules rules;
+            rules.inputIsArray = 1;
+            rules.outputIsArray = 0;
+            rules.previousOutputIsArray = 0;
+            if (!ValidateParameterSets(compiler, lastPrimitiveShader, gs, rules))
                 return false;
 
             lastPrimitiveShader = gs;
