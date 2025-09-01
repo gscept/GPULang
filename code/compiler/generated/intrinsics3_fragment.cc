@@ -835,7 +835,7 @@ void SetupIntrinsics3()
     Int16x4_from_Float32x4_arg.name = "val"_c;
     Int16x4_from_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     Int16x4_from_Float32x4.documentation = "Convert from f32x4 to i16x4"_c;
-    Int16x4_from_Float32x4.name = "i16x4"_c;
+    Int16x4_from_Float32x4.name = Int16x4_from_Float32x4_name;
     Int16x4_from_Float32x4.compileTime = true;
     Int16x4_from_Float32x4.backendIndex = 1073;
     Int16x4_from_Float32x4.returnType = Type::FullType { Int16x4Type.name };
@@ -850,7 +850,7 @@ void SetupIntrinsics3()
     Int16x4_splat_Float32_arg.name = "val"_c;
     Int16x4_splat_Float32_arg.type = Type::FullType{ Float32Type.name };
     Int16x4_splat_Float32.documentation = "Splat f32 to i16x4"_c;
-    Int16x4_splat_Float32.name = "i16x4"_c;
+    Int16x4_splat_Float32.name = Int16x4_splat_Float32_name;
     Int16x4_splat_Float32.compileTime = true;
     Int16x4_splat_Float32.backendIndex = 1074;
     Int16x4_splat_Float32.returnType = Type::FullType { Int16x4Type.name };
@@ -865,7 +865,7 @@ void SetupIntrinsics3()
     Int16x4_from_UInt32x4_arg.name = "val"_c;
     Int16x4_from_UInt32x4_arg.type = Type::FullType{ UInt32x4Type.name };
     Int16x4_from_UInt32x4.documentation = "Convert from u32x4 to i16x4"_c;
-    Int16x4_from_UInt32x4.name = "i16x4"_c;
+    Int16x4_from_UInt32x4.name = Int16x4_from_UInt32x4_name;
     Int16x4_from_UInt32x4.compileTime = true;
     Int16x4_from_UInt32x4.backendIndex = 1075;
     Int16x4_from_UInt32x4.returnType = Type::FullType { Int16x4Type.name };
@@ -880,7 +880,7 @@ void SetupIntrinsics3()
     Int16x4_splat_UInt32_arg.name = "val"_c;
     Int16x4_splat_UInt32_arg.type = Type::FullType{ UInt32Type.name };
     Int16x4_splat_UInt32.documentation = "Splat u32 to i16x4"_c;
-    Int16x4_splat_UInt32.name = "i16x4"_c;
+    Int16x4_splat_UInt32.name = Int16x4_splat_UInt32_name;
     Int16x4_splat_UInt32.compileTime = true;
     Int16x4_splat_UInt32.backendIndex = 1076;
     Int16x4_splat_UInt32.returnType = Type::FullType { Int16x4Type.name };
@@ -895,7 +895,7 @@ void SetupIntrinsics3()
     Int16x4_from_Int32x4_arg.name = "val"_c;
     Int16x4_from_Int32x4_arg.type = Type::FullType{ Int32x4Type.name };
     Int16x4_from_Int32x4.documentation = "Convert from i32x4 to i16x4"_c;
-    Int16x4_from_Int32x4.name = "i16x4"_c;
+    Int16x4_from_Int32x4.name = Int16x4_from_Int32x4_name;
     Int16x4_from_Int32x4.compileTime = true;
     Int16x4_from_Int32x4.backendIndex = 1077;
     Int16x4_from_Int32x4.returnType = Type::FullType { Int16x4Type.name };
@@ -910,7 +910,7 @@ void SetupIntrinsics3()
     Int16x4_splat_Int32_arg.name = "val"_c;
     Int16x4_splat_Int32_arg.type = Type::FullType{ Int32Type.name };
     Int16x4_splat_Int32.documentation = "Splat i32 to i16x4"_c;
-    Int16x4_splat_Int32.name = "i16x4"_c;
+    Int16x4_splat_Int32.name = Int16x4_splat_Int32_name;
     Int16x4_splat_Int32.compileTime = true;
     Int16x4_splat_Int32.backendIndex = 1078;
     Int16x4_splat_Int32.returnType = Type::FullType { Int16x4Type.name };
@@ -925,7 +925,7 @@ void SetupIntrinsics3()
     Int16x4_from_Bool8x4_arg.name = "val"_c;
     Int16x4_from_Bool8x4_arg.type = Type::FullType{ Bool8x4Type.name };
     Int16x4_from_Bool8x4.documentation = "Convert from b8x4 to i16x4"_c;
-    Int16x4_from_Bool8x4.name = "i16x4"_c;
+    Int16x4_from_Bool8x4.name = Int16x4_from_Bool8x4_name;
     Int16x4_from_Bool8x4.compileTime = true;
     Int16x4_from_Bool8x4.backendIndex = 1079;
     Int16x4_from_Bool8x4.returnType = Type::FullType { Int16x4Type.name };
@@ -940,7 +940,7 @@ void SetupIntrinsics3()
     Int16x4_splat_Bool8_arg.name = "val"_c;
     Int16x4_splat_Bool8_arg.type = Type::FullType{ Bool8Type.name };
     Int16x4_splat_Bool8.documentation = "Splat b8 to i16x4"_c;
-    Int16x4_splat_Bool8.name = "i16x4"_c;
+    Int16x4_splat_Bool8.name = Int16x4_splat_Bool8_name;
     Int16x4_splat_Bool8.compileTime = true;
     Int16x4_splat_Bool8.backendIndex = 1080;
     Int16x4_splat_Bool8.returnType = Type::FullType { Int16x4Type.name };
@@ -955,7 +955,7 @@ void SetupIntrinsics3()
     Int16x4_from_Float16x4_arg.name = "val"_c;
     Int16x4_from_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     Int16x4_from_Float16x4.documentation = "Convert from f16x4 to i16x4"_c;
-    Int16x4_from_Float16x4.name = "i16x4"_c;
+    Int16x4_from_Float16x4.name = Int16x4_from_Float16x4_name;
     Int16x4_from_Float16x4.compileTime = true;
     Int16x4_from_Float16x4.backendIndex = 1081;
     Int16x4_from_Float16x4.returnType = Type::FullType { Int16x4Type.name };
@@ -970,7 +970,7 @@ void SetupIntrinsics3()
     Int16x4_splat_Float16_arg.name = "val"_c;
     Int16x4_splat_Float16_arg.type = Type::FullType{ Float16Type.name };
     Int16x4_splat_Float16.documentation = "Splat f16 to i16x4"_c;
-    Int16x4_splat_Float16.name = "i16x4"_c;
+    Int16x4_splat_Float16.name = Int16x4_splat_Float16_name;
     Int16x4_splat_Float16.compileTime = true;
     Int16x4_splat_Float16.backendIndex = 1082;
     Int16x4_splat_Float16.returnType = Type::FullType { Int16x4Type.name };
@@ -985,7 +985,7 @@ void SetupIntrinsics3()
     Int16x4_from_UInt16x4_arg.name = "val"_c;
     Int16x4_from_UInt16x4_arg.type = Type::FullType{ UInt16x4Type.name };
     Int16x4_from_UInt16x4.documentation = "Convert from u16x4 to i16x4"_c;
-    Int16x4_from_UInt16x4.name = "i16x4"_c;
+    Int16x4_from_UInt16x4.name = Int16x4_from_UInt16x4_name;
     Int16x4_from_UInt16x4.compileTime = true;
     Int16x4_from_UInt16x4.backendIndex = 1083;
     Int16x4_from_UInt16x4.returnType = Type::FullType { Int16x4Type.name };
@@ -1000,7 +1000,7 @@ void SetupIntrinsics3()
     Int16x4_splat_UInt16_arg.name = "val"_c;
     Int16x4_splat_UInt16_arg.type = Type::FullType{ UInt16Type.name };
     Int16x4_splat_UInt16.documentation = "Splat u16 to i16x4"_c;
-    Int16x4_splat_UInt16.name = "i16x4"_c;
+    Int16x4_splat_UInt16.name = Int16x4_splat_UInt16_name;
     Int16x4_splat_UInt16.compileTime = true;
     Int16x4_splat_UInt16.backendIndex = 1084;
     Int16x4_splat_UInt16.returnType = Type::FullType { Int16x4Type.name };
@@ -1015,7 +1015,7 @@ void SetupIntrinsics3()
     Int16x4_from_Int16x4_arg.name = "val"_c;
     Int16x4_from_Int16x4_arg.type = Type::FullType{ Int16x4Type.name };
     Int16x4_from_Int16x4.documentation = "Convert from i16x4 to i16x4"_c;
-    Int16x4_from_Int16x4.name = "i16x4"_c;
+    Int16x4_from_Int16x4.name = Int16x4_from_Int16x4_name;
     Int16x4_from_Int16x4.compileTime = true;
     Int16x4_from_Int16x4.backendIndex = 1085;
     Int16x4_from_Int16x4.returnType = Type::FullType { Int16x4Type.name };
@@ -1030,7 +1030,7 @@ void SetupIntrinsics3()
     Int16x4_splat_Int16_arg.name = "val"_c;
     Int16x4_splat_Int16_arg.type = Type::FullType{ Int16Type.name };
     Int16x4_splat_Int16.documentation = "Splat i16 to i16x4"_c;
-    Int16x4_splat_Int16.name = "i16x4"_c;
+    Int16x4_splat_Int16.name = Int16x4_splat_Int16_name;
     Int16x4_splat_Int16.compileTime = true;
     Int16x4_splat_Int16.backendIndex = 1086;
     Int16x4_splat_Int16.returnType = Type::FullType { Int16x4Type.name };
@@ -1050,7 +1050,7 @@ void SetupIntrinsics3()
     Int16x4_ctor0_arg2_Int16.type = Type::FullType{ Int16Type.name };
     Int16x4_ctor0_arg3_Int16.name = "arg3"_c;
     Int16x4_ctor0_arg3_Int16.type = Type::FullType{ Int16Type.name };
-    Int16x4_ctor0.name = "i16x4"_c;
+    Int16x4_ctor0.name = Int16x4_ctor0_name;
     Int16x4_ctor0.compileTime = true;
     Int16x4_ctor0.backendIndex = 1087;
     Int16x4_ctor0.returnType = Type::FullType { Int16x4Type.name };
@@ -1071,7 +1071,7 @@ void SetupIntrinsics3()
     Int16x4_ctor1_arg1_Int16.type = Type::FullType{ Int16Type.name };
     Int16x4_ctor1_arg2_Int16.name = "arg2"_c;
     Int16x4_ctor1_arg2_Int16.type = Type::FullType{ Int16Type.name };
-    Int16x4_ctor1.name = "i16x4"_c;
+    Int16x4_ctor1.name = Int16x4_ctor1_name;
     Int16x4_ctor1.compileTime = true;
     Int16x4_ctor1.backendIndex = 1088;
     Int16x4_ctor1.returnType = Type::FullType { Int16x4Type.name };
@@ -1091,7 +1091,7 @@ void SetupIntrinsics3()
     Int16x4_ctor2_arg1_Int16x2.type = Type::FullType{ Int16x2Type.name };
     Int16x4_ctor2_arg2_Int16.name = "arg2"_c;
     Int16x4_ctor2_arg2_Int16.type = Type::FullType{ Int16Type.name };
-    Int16x4_ctor2.name = "i16x4"_c;
+    Int16x4_ctor2.name = Int16x4_ctor2_name;
     Int16x4_ctor2.compileTime = true;
     Int16x4_ctor2.backendIndex = 1089;
     Int16x4_ctor2.returnType = Type::FullType { Int16x4Type.name };
@@ -1111,7 +1111,7 @@ void SetupIntrinsics3()
     Int16x4_ctor3_arg1_Int16.type = Type::FullType{ Int16Type.name };
     Int16x4_ctor3_arg2_Int16x2.name = "arg2"_c;
     Int16x4_ctor3_arg2_Int16x2.type = Type::FullType{ Int16x2Type.name };
-    Int16x4_ctor3.name = "i16x4"_c;
+    Int16x4_ctor3.name = Int16x4_ctor3_name;
     Int16x4_ctor3.compileTime = true;
     Int16x4_ctor3.backendIndex = 1090;
     Int16x4_ctor3.returnType = Type::FullType { Int16x4Type.name };
@@ -1129,7 +1129,7 @@ void SetupIntrinsics3()
     Int16x4_ctor4_arg0_Int16x2.type = Type::FullType{ Int16x2Type.name };
     Int16x4_ctor4_arg1_Int16x2.name = "arg1"_c;
     Int16x4_ctor4_arg1_Int16x2.type = Type::FullType{ Int16x2Type.name };
-    Int16x4_ctor4.name = "i16x4"_c;
+    Int16x4_ctor4.name = Int16x4_ctor4_name;
     Int16x4_ctor4.compileTime = true;
     Int16x4_ctor4.backendIndex = 1091;
     Int16x4_ctor4.returnType = Type::FullType { Int16x4Type.name };
@@ -1146,7 +1146,7 @@ void SetupIntrinsics3()
     Int16x4_ctor5_arg0_Int16x3.type = Type::FullType{ Int16x3Type.name };
     Int16x4_ctor5_arg1_Int16.name = "arg1"_c;
     Int16x4_ctor5_arg1_Int16.type = Type::FullType{ Int16Type.name };
-    Int16x4_ctor5.name = "i16x4"_c;
+    Int16x4_ctor5.name = Int16x4_ctor5_name;
     Int16x4_ctor5.compileTime = true;
     Int16x4_ctor5.backendIndex = 1092;
     Int16x4_ctor5.returnType = Type::FullType { Int16x4Type.name };
@@ -1163,7 +1163,7 @@ void SetupIntrinsics3()
     Int16x4_ctor6_arg0_Int16.type = Type::FullType{ Int16Type.name };
     Int16x4_ctor6_arg1_Int16x3.name = "arg1"_c;
     Int16x4_ctor6_arg1_Int16x3.type = Type::FullType{ Int16x3Type.name };
-    Int16x4_ctor6.name = "i16x4"_c;
+    Int16x4_ctor6.name = Int16x4_ctor6_name;
     Int16x4_ctor6.compileTime = true;
     Int16x4_ctor6.backendIndex = 1093;
     Int16x4_ctor6.returnType = Type::FullType { Int16x4Type.name };
@@ -1180,7 +1180,7 @@ void SetupIntrinsics3()
     Float32x2x2_Float32_2_ctor_arg0.type = Type::FullType{ Float32x2Type.name };
     Float32x2x2_Float32_2_ctor_arg1.name = "arg1"_c;
     Float32x2x2_Float32_2_ctor_arg1.type = Type::FullType{ Float32x2Type.name };
-    Float32x2x2_Float32_2_ctor.name = "f32x2x2"_c;
+    Float32x2x2_Float32_2_ctor.name = Float32x2x2_Float32_2_ctor_name;
     Float32x2x2_Float32_2_ctor.compileTime = true;
     Float32x2x2_Float32_2_ctor.backendIndex = 1126;
     Float32x2x2_Float32_2_ctor.returnType = Type::FullType { Float32x2x2Type.name };
@@ -1193,7 +1193,7 @@ void SetupIntrinsics3()
     Symbol::Resolved(&Float32x2x2_Float32_2_ctor)->returnTypeSymbol = &Float32x2x2Type;
 
     /// f32x2x2
-    Float32x2x2_identity.name = "f32x2x2"_c;
+    Float32x2x2_identity.name = Float32x2x2_identity_name;
     Float32x2x2_identity.compileTime = true;
     Float32x2x2_identity.backendIndex = 1127;
     Float32x2x2_identity.returnType = Type::FullType { Float32x2x2Type.name };
@@ -1211,7 +1211,7 @@ void SetupIntrinsics3()
     Float32x2x2_raw_list_arg2.type = Type::FullType{ Float32Type.name };
     Float32x2x2_raw_list_arg3.name = "arg3"_c;
     Float32x2x2_raw_list_arg3.type = Type::FullType{ Float32Type.name };
-    Float32x2x2_raw_list.name = "f32x2x2"_c;
+    Float32x2x2_raw_list.name = Float32x2x2_raw_list_name;
     Float32x2x2_raw_list.compileTime = true;
     Float32x2x2_raw_list.backendIndex = 1128;
     Float32x2x2_raw_list.returnType = Type::FullType { Float32x2x2Type.name };
@@ -1232,7 +1232,7 @@ void SetupIntrinsics3()
     Float32x3x2_Float32_2_ctor_arg1.type = Type::FullType{ Float32x2Type.name };
     Float32x3x2_Float32_2_ctor_arg2.name = "arg2"_c;
     Float32x3x2_Float32_2_ctor_arg2.type = Type::FullType{ Float32x2Type.name };
-    Float32x3x2_Float32_2_ctor.name = "f32x3x2"_c;
+    Float32x3x2_Float32_2_ctor.name = Float32x3x2_Float32_2_ctor_name;
     Float32x3x2_Float32_2_ctor.compileTime = true;
     Float32x3x2_Float32_2_ctor.backendIndex = 1141;
     Float32x3x2_Float32_2_ctor.returnType = Type::FullType { Float32x3x2Type.name };
@@ -1258,7 +1258,7 @@ void SetupIntrinsics3()
     Float32x3x2_raw_list_arg4.type = Type::FullType{ Float32Type.name };
     Float32x3x2_raw_list_arg5.name = "arg5"_c;
     Float32x3x2_raw_list_arg5.type = Type::FullType{ Float32Type.name };
-    Float32x3x2_raw_list.name = "f32x3x2"_c;
+    Float32x3x2_raw_list.name = Float32x3x2_raw_list_name;
     Float32x3x2_raw_list.compileTime = true;
     Float32x3x2_raw_list.backendIndex = 1142;
     Float32x3x2_raw_list.returnType = Type::FullType { Float32x3x2Type.name };
@@ -1283,7 +1283,7 @@ void SetupIntrinsics3()
     Float32x4x2_Float32_2_ctor_arg2.type = Type::FullType{ Float32x2Type.name };
     Float32x4x2_Float32_2_ctor_arg3.name = "arg3"_c;
     Float32x4x2_Float32_2_ctor_arg3.type = Type::FullType{ Float32x2Type.name };
-    Float32x4x2_Float32_2_ctor.name = "f32x4x2"_c;
+    Float32x4x2_Float32_2_ctor.name = Float32x4x2_Float32_2_ctor_name;
     Float32x4x2_Float32_2_ctor.compileTime = true;
     Float32x4x2_Float32_2_ctor.backendIndex = 1155;
     Float32x4x2_Float32_2_ctor.returnType = Type::FullType { Float32x4x2Type.name };
@@ -1314,7 +1314,7 @@ void SetupIntrinsics3()
     Float32x4x2_raw_list_arg6.type = Type::FullType{ Float32Type.name };
     Float32x4x2_raw_list_arg7.name = "arg7"_c;
     Float32x4x2_raw_list_arg7.type = Type::FullType{ Float32Type.name };
-    Float32x4x2_raw_list.name = "f32x4x2"_c;
+    Float32x4x2_raw_list.name = Float32x4x2_raw_list_name;
     Float32x4x2_raw_list.compileTime = true;
     Float32x4x2_raw_list.backendIndex = 1156;
     Float32x4x2_raw_list.returnType = Type::FullType { Float32x4x2Type.name };
@@ -1337,7 +1337,7 @@ void SetupIntrinsics3()
     Float32x2x3_Float32_3_ctor_arg0.type = Type::FullType{ Float32x3Type.name };
     Float32x2x3_Float32_3_ctor_arg1.name = "arg1"_c;
     Float32x2x3_Float32_3_ctor_arg1.type = Type::FullType{ Float32x3Type.name };
-    Float32x2x3_Float32_3_ctor.name = "f32x2x3"_c;
+    Float32x2x3_Float32_3_ctor.name = Float32x2x3_Float32_3_ctor_name;
     Float32x2x3_Float32_3_ctor.compileTime = true;
     Float32x2x3_Float32_3_ctor.backendIndex = 1169;
     Float32x2x3_Float32_3_ctor.returnType = Type::FullType { Float32x2x3Type.name };
@@ -1362,7 +1362,7 @@ void SetupIntrinsics3()
     Float32x2x3_raw_list_arg4.type = Type::FullType{ Float32Type.name };
     Float32x2x3_raw_list_arg5.name = "arg5"_c;
     Float32x2x3_raw_list_arg5.type = Type::FullType{ Float32Type.name };
-    Float32x2x3_raw_list.name = "f32x2x3"_c;
+    Float32x2x3_raw_list.name = Float32x2x3_raw_list_name;
     Float32x2x3_raw_list.compileTime = true;
     Float32x2x3_raw_list.backendIndex = 1170;
     Float32x2x3_raw_list.returnType = Type::FullType { Float32x2x3Type.name };
@@ -1385,7 +1385,7 @@ void SetupIntrinsics3()
     Float32x3x3_Float32_3_ctor_arg1.type = Type::FullType{ Float32x3Type.name };
     Float32x3x3_Float32_3_ctor_arg2.name = "arg2"_c;
     Float32x3x3_Float32_3_ctor_arg2.type = Type::FullType{ Float32x3Type.name };
-    Float32x3x3_Float32_3_ctor.name = "f32x3x3"_c;
+    Float32x3x3_Float32_3_ctor.name = Float32x3x3_Float32_3_ctor_name;
     Float32x3x3_Float32_3_ctor.compileTime = true;
     Float32x3x3_Float32_3_ctor.backendIndex = 1183;
     Float32x3x3_Float32_3_ctor.returnType = Type::FullType { Float32x3x3Type.name };
@@ -1399,7 +1399,7 @@ void SetupIntrinsics3()
     Symbol::Resolved(&Float32x3x3_Float32_3_ctor)->returnTypeSymbol = &Float32x3x3Type;
 
     /// f32x3x3
-    Float32x3x3_identity.name = "f32x3x3"_c;
+    Float32x3x3_identity.name = Float32x3x3_identity_name;
     Float32x3x3_identity.compileTime = true;
     Float32x3x3_identity.backendIndex = 1184;
     Float32x3x3_identity.returnType = Type::FullType { Float32x3x3Type.name };
@@ -1427,7 +1427,7 @@ void SetupIntrinsics3()
     Float32x3x3_raw_list_arg7.type = Type::FullType{ Float32Type.name };
     Float32x3x3_raw_list_arg8.name = "arg8"_c;
     Float32x3x3_raw_list_arg8.type = Type::FullType{ Float32Type.name };
-    Float32x3x3_raw_list.name = "f32x3x3"_c;
+    Float32x3x3_raw_list.name = Float32x3x3_raw_list_name;
     Float32x3x3_raw_list.compileTime = true;
     Float32x3x3_raw_list.backendIndex = 1185;
     Float32x3x3_raw_list.returnType = Type::FullType { Float32x3x3Type.name };
@@ -1455,7 +1455,7 @@ void SetupIntrinsics3()
     Float32x4x3_Float32_3_ctor_arg2.type = Type::FullType{ Float32x3Type.name };
     Float32x4x3_Float32_3_ctor_arg3.name = "arg3"_c;
     Float32x4x3_Float32_3_ctor_arg3.type = Type::FullType{ Float32x3Type.name };
-    Float32x4x3_Float32_3_ctor.name = "f32x4x3"_c;
+    Float32x4x3_Float32_3_ctor.name = Float32x4x3_Float32_3_ctor_name;
     Float32x4x3_Float32_3_ctor.compileTime = true;
     Float32x4x3_Float32_3_ctor.backendIndex = 1198;
     Float32x4x3_Float32_3_ctor.returnType = Type::FullType { Float32x4x3Type.name };
@@ -1494,7 +1494,7 @@ void SetupIntrinsics3()
     Float32x4x3_raw_list_arg10.type = Type::FullType{ Float32Type.name };
     Float32x4x3_raw_list_arg11.name = "arg11"_c;
     Float32x4x3_raw_list_arg11.type = Type::FullType{ Float32Type.name };
-    Float32x4x3_raw_list.name = "f32x4x3"_c;
+    Float32x4x3_raw_list.name = Float32x4x3_raw_list_name;
     Float32x4x3_raw_list.compileTime = true;
     Float32x4x3_raw_list.backendIndex = 1199;
     Float32x4x3_raw_list.returnType = Type::FullType { Float32x4x3Type.name };
@@ -1521,7 +1521,7 @@ void SetupIntrinsics3()
     Float32x2x4_Float32_4_ctor_arg0.type = Type::FullType{ Float32x4Type.name };
     Float32x2x4_Float32_4_ctor_arg1.name = "arg1"_c;
     Float32x2x4_Float32_4_ctor_arg1.type = Type::FullType{ Float32x4Type.name };
-    Float32x2x4_Float32_4_ctor.name = "f32x2x4"_c;
+    Float32x2x4_Float32_4_ctor.name = Float32x2x4_Float32_4_ctor_name;
     Float32x2x4_Float32_4_ctor.compileTime = true;
     Float32x2x4_Float32_4_ctor.backendIndex = 1212;
     Float32x2x4_Float32_4_ctor.returnType = Type::FullType { Float32x2x4Type.name };
@@ -1550,7 +1550,7 @@ void SetupIntrinsics3()
     Float32x2x4_raw_list_arg6.type = Type::FullType{ Float32Type.name };
     Float32x2x4_raw_list_arg7.name = "arg7"_c;
     Float32x2x4_raw_list_arg7.type = Type::FullType{ Float32Type.name };
-    Float32x2x4_raw_list.name = "f32x2x4"_c;
+    Float32x2x4_raw_list.name = Float32x2x4_raw_list_name;
     Float32x2x4_raw_list.compileTime = true;
     Float32x2x4_raw_list.backendIndex = 1213;
     Float32x2x4_raw_list.returnType = Type::FullType { Float32x2x4Type.name };
@@ -1575,7 +1575,7 @@ void SetupIntrinsics3()
     Float32x3x4_Float32_4_ctor_arg1.type = Type::FullType{ Float32x4Type.name };
     Float32x3x4_Float32_4_ctor_arg2.name = "arg2"_c;
     Float32x3x4_Float32_4_ctor_arg2.type = Type::FullType{ Float32x4Type.name };
-    Float32x3x4_Float32_4_ctor.name = "f32x3x4"_c;
+    Float32x3x4_Float32_4_ctor.name = Float32x3x4_Float32_4_ctor_name;
     Float32x3x4_Float32_4_ctor.compileTime = true;
     Float32x3x4_Float32_4_ctor.backendIndex = 1226;
     Float32x3x4_Float32_4_ctor.returnType = Type::FullType { Float32x3x4Type.name };
@@ -1613,7 +1613,7 @@ void SetupIntrinsics3()
     Float32x3x4_raw_list_arg10.type = Type::FullType{ Float32Type.name };
     Float32x3x4_raw_list_arg11.name = "arg11"_c;
     Float32x3x4_raw_list_arg11.type = Type::FullType{ Float32Type.name };
-    Float32x3x4_raw_list.name = "f32x3x4"_c;
+    Float32x3x4_raw_list.name = Float32x3x4_raw_list_name;
     Float32x3x4_raw_list.compileTime = true;
     Float32x3x4_raw_list.backendIndex = 1227;
     Float32x3x4_raw_list.returnType = Type::FullType { Float32x3x4Type.name };
@@ -1644,7 +1644,7 @@ void SetupIntrinsics3()
     Float32x4x4_Float32_4_ctor_arg2.type = Type::FullType{ Float32x4Type.name };
     Float32x4x4_Float32_4_ctor_arg3.name = "arg3"_c;
     Float32x4x4_Float32_4_ctor_arg3.type = Type::FullType{ Float32x4Type.name };
-    Float32x4x4_Float32_4_ctor.name = "f32x4x4"_c;
+    Float32x4x4_Float32_4_ctor.name = Float32x4x4_Float32_4_ctor_name;
     Float32x4x4_Float32_4_ctor.compileTime = true;
     Float32x4x4_Float32_4_ctor.backendIndex = 1240;
     Float32x4x4_Float32_4_ctor.returnType = Type::FullType { Float32x4x4Type.name };
@@ -1659,7 +1659,7 @@ void SetupIntrinsics3()
     Symbol::Resolved(&Float32x4x4_Float32_4_ctor)->returnTypeSymbol = &Float32x4x4Type;
 
     /// f32x4x4
-    Float32x4x4_identity.name = "f32x4x4"_c;
+    Float32x4x4_identity.name = Float32x4x4_identity_name;
     Float32x4x4_identity.compileTime = true;
     Float32x4x4_identity.backendIndex = 1241;
     Float32x4x4_identity.returnType = Type::FullType { Float32x4x4Type.name };
@@ -1701,7 +1701,7 @@ void SetupIntrinsics3()
     Float32x4x4_raw_list_arg14.type = Type::FullType{ Float32Type.name };
     Float32x4x4_raw_list_arg15.name = "arg15"_c;
     Float32x4x4_raw_list_arg15.type = Type::FullType{ Float32Type.name };
-    Float32x4x4_raw_list.name = "f32x4x4"_c;
+    Float32x4x4_raw_list.name = Float32x4x4_raw_list_name;
     Float32x4x4_raw_list.compileTime = true;
     Float32x4x4_raw_list.backendIndex = 1242;
     Float32x4x4_raw_list.returnType = Type::FullType { Float32x4x4Type.name };
@@ -1732,7 +1732,7 @@ void SetupIntrinsics3()
     Float16x2x2_Float16_2_ctor_arg0.type = Type::FullType{ Float16x2Type.name };
     Float16x2x2_Float16_2_ctor_arg1.name = "arg1"_c;
     Float16x2x2_Float16_2_ctor_arg1.type = Type::FullType{ Float16x2Type.name };
-    Float16x2x2_Float16_2_ctor.name = "f16x2x2"_c;
+    Float16x2x2_Float16_2_ctor.name = Float16x2x2_Float16_2_ctor_name;
     Float16x2x2_Float16_2_ctor.compileTime = true;
     Float16x2x2_Float16_2_ctor.backendIndex = 1255;
     Float16x2x2_Float16_2_ctor.returnType = Type::FullType { Float16x2x2Type.name };
@@ -1745,7 +1745,7 @@ void SetupIntrinsics3()
     Symbol::Resolved(&Float16x2x2_Float16_2_ctor)->returnTypeSymbol = &Float16x2x2Type;
 
     /// f16x2x2
-    Float16x2x2_identity.name = "f16x2x2"_c;
+    Float16x2x2_identity.name = Float16x2x2_identity_name;
     Float16x2x2_identity.compileTime = true;
     Float16x2x2_identity.backendIndex = 1256;
     Float16x2x2_identity.returnType = Type::FullType { Float16x2x2Type.name };
@@ -1763,7 +1763,7 @@ void SetupIntrinsics3()
     Float16x2x2_raw_list_arg2.type = Type::FullType{ Float16Type.name };
     Float16x2x2_raw_list_arg3.name = "arg3"_c;
     Float16x2x2_raw_list_arg3.type = Type::FullType{ Float16Type.name };
-    Float16x2x2_raw_list.name = "f16x2x2"_c;
+    Float16x2x2_raw_list.name = Float16x2x2_raw_list_name;
     Float16x2x2_raw_list.compileTime = true;
     Float16x2x2_raw_list.backendIndex = 1257;
     Float16x2x2_raw_list.returnType = Type::FullType { Float16x2x2Type.name };
@@ -1784,7 +1784,7 @@ void SetupIntrinsics3()
     Float16x3x2_Float16_2_ctor_arg1.type = Type::FullType{ Float16x2Type.name };
     Float16x3x2_Float16_2_ctor_arg2.name = "arg2"_c;
     Float16x3x2_Float16_2_ctor_arg2.type = Type::FullType{ Float16x2Type.name };
-    Float16x3x2_Float16_2_ctor.name = "f16x3x2"_c;
+    Float16x3x2_Float16_2_ctor.name = Float16x3x2_Float16_2_ctor_name;
     Float16x3x2_Float16_2_ctor.compileTime = true;
     Float16x3x2_Float16_2_ctor.backendIndex = 1270;
     Float16x3x2_Float16_2_ctor.returnType = Type::FullType { Float16x3x2Type.name };
@@ -1810,7 +1810,7 @@ void SetupIntrinsics3()
     Float16x3x2_raw_list_arg4.type = Type::FullType{ Float16Type.name };
     Float16x3x2_raw_list_arg5.name = "arg5"_c;
     Float16x3x2_raw_list_arg5.type = Type::FullType{ Float16Type.name };
-    Float16x3x2_raw_list.name = "f16x3x2"_c;
+    Float16x3x2_raw_list.name = Float16x3x2_raw_list_name;
     Float16x3x2_raw_list.compileTime = true;
     Float16x3x2_raw_list.backendIndex = 1271;
     Float16x3x2_raw_list.returnType = Type::FullType { Float16x3x2Type.name };
@@ -1835,7 +1835,7 @@ void SetupIntrinsics3()
     Float16x4x2_Float16_2_ctor_arg2.type = Type::FullType{ Float16x2Type.name };
     Float16x4x2_Float16_2_ctor_arg3.name = "arg3"_c;
     Float16x4x2_Float16_2_ctor_arg3.type = Type::FullType{ Float16x2Type.name };
-    Float16x4x2_Float16_2_ctor.name = "f16x4x2"_c;
+    Float16x4x2_Float16_2_ctor.name = Float16x4x2_Float16_2_ctor_name;
     Float16x4x2_Float16_2_ctor.compileTime = true;
     Float16x4x2_Float16_2_ctor.backendIndex = 1284;
     Float16x4x2_Float16_2_ctor.returnType = Type::FullType { Float16x4x2Type.name };
@@ -1866,7 +1866,7 @@ void SetupIntrinsics3()
     Float16x4x2_raw_list_arg6.type = Type::FullType{ Float16Type.name };
     Float16x4x2_raw_list_arg7.name = "arg7"_c;
     Float16x4x2_raw_list_arg7.type = Type::FullType{ Float16Type.name };
-    Float16x4x2_raw_list.name = "f16x4x2"_c;
+    Float16x4x2_raw_list.name = Float16x4x2_raw_list_name;
     Float16x4x2_raw_list.compileTime = true;
     Float16x4x2_raw_list.backendIndex = 1285;
     Float16x4x2_raw_list.returnType = Type::FullType { Float16x4x2Type.name };
@@ -1889,7 +1889,7 @@ void SetupIntrinsics3()
     Float16x2x3_Float16_3_ctor_arg0.type = Type::FullType{ Float16x3Type.name };
     Float16x2x3_Float16_3_ctor_arg1.name = "arg1"_c;
     Float16x2x3_Float16_3_ctor_arg1.type = Type::FullType{ Float16x3Type.name };
-    Float16x2x3_Float16_3_ctor.name = "f16x2x3"_c;
+    Float16x2x3_Float16_3_ctor.name = Float16x2x3_Float16_3_ctor_name;
     Float16x2x3_Float16_3_ctor.compileTime = true;
     Float16x2x3_Float16_3_ctor.backendIndex = 1298;
     Float16x2x3_Float16_3_ctor.returnType = Type::FullType { Float16x2x3Type.name };
@@ -1914,7 +1914,7 @@ void SetupIntrinsics3()
     Float16x2x3_raw_list_arg4.type = Type::FullType{ Float16Type.name };
     Float16x2x3_raw_list_arg5.name = "arg5"_c;
     Float16x2x3_raw_list_arg5.type = Type::FullType{ Float16Type.name };
-    Float16x2x3_raw_list.name = "f16x2x3"_c;
+    Float16x2x3_raw_list.name = Float16x2x3_raw_list_name;
     Float16x2x3_raw_list.compileTime = true;
     Float16x2x3_raw_list.backendIndex = 1299;
     Float16x2x3_raw_list.returnType = Type::FullType { Float16x2x3Type.name };
@@ -1937,7 +1937,7 @@ void SetupIntrinsics3()
     Float16x3x3_Float16_3_ctor_arg1.type = Type::FullType{ Float16x3Type.name };
     Float16x3x3_Float16_3_ctor_arg2.name = "arg2"_c;
     Float16x3x3_Float16_3_ctor_arg2.type = Type::FullType{ Float16x3Type.name };
-    Float16x3x3_Float16_3_ctor.name = "f16x3x3"_c;
+    Float16x3x3_Float16_3_ctor.name = Float16x3x3_Float16_3_ctor_name;
     Float16x3x3_Float16_3_ctor.compileTime = true;
     Float16x3x3_Float16_3_ctor.backendIndex = 1312;
     Float16x3x3_Float16_3_ctor.returnType = Type::FullType { Float16x3x3Type.name };
@@ -1951,7 +1951,7 @@ void SetupIntrinsics3()
     Symbol::Resolved(&Float16x3x3_Float16_3_ctor)->returnTypeSymbol = &Float16x3x3Type;
 
     /// f16x3x3
-    Float16x3x3_identity.name = "f16x3x3"_c;
+    Float16x3x3_identity.name = Float16x3x3_identity_name;
     Float16x3x3_identity.compileTime = true;
     Float16x3x3_identity.backendIndex = 1313;
     Float16x3x3_identity.returnType = Type::FullType { Float16x3x3Type.name };
@@ -1979,7 +1979,7 @@ void SetupIntrinsics3()
     Float16x3x3_raw_list_arg7.type = Type::FullType{ Float16Type.name };
     Float16x3x3_raw_list_arg8.name = "arg8"_c;
     Float16x3x3_raw_list_arg8.type = Type::FullType{ Float16Type.name };
-    Float16x3x3_raw_list.name = "f16x3x3"_c;
+    Float16x3x3_raw_list.name = Float16x3x3_raw_list_name;
     Float16x3x3_raw_list.compileTime = true;
     Float16x3x3_raw_list.backendIndex = 1314;
     Float16x3x3_raw_list.returnType = Type::FullType { Float16x3x3Type.name };
@@ -2007,7 +2007,7 @@ void SetupIntrinsics3()
     Float16x4x3_Float16_3_ctor_arg2.type = Type::FullType{ Float16x3Type.name };
     Float16x4x3_Float16_3_ctor_arg3.name = "arg3"_c;
     Float16x4x3_Float16_3_ctor_arg3.type = Type::FullType{ Float16x3Type.name };
-    Float16x4x3_Float16_3_ctor.name = "f16x4x3"_c;
+    Float16x4x3_Float16_3_ctor.name = Float16x4x3_Float16_3_ctor_name;
     Float16x4x3_Float16_3_ctor.compileTime = true;
     Float16x4x3_Float16_3_ctor.backendIndex = 1327;
     Float16x4x3_Float16_3_ctor.returnType = Type::FullType { Float16x4x3Type.name };
@@ -2046,7 +2046,7 @@ void SetupIntrinsics3()
     Float16x4x3_raw_list_arg10.type = Type::FullType{ Float16Type.name };
     Float16x4x3_raw_list_arg11.name = "arg11"_c;
     Float16x4x3_raw_list_arg11.type = Type::FullType{ Float16Type.name };
-    Float16x4x3_raw_list.name = "f16x4x3"_c;
+    Float16x4x3_raw_list.name = Float16x4x3_raw_list_name;
     Float16x4x3_raw_list.compileTime = true;
     Float16x4x3_raw_list.backendIndex = 1328;
     Float16x4x3_raw_list.returnType = Type::FullType { Float16x4x3Type.name };
@@ -2073,7 +2073,7 @@ void SetupIntrinsics3()
     Float16x2x4_Float16_4_ctor_arg0.type = Type::FullType{ Float16x4Type.name };
     Float16x2x4_Float16_4_ctor_arg1.name = "arg1"_c;
     Float16x2x4_Float16_4_ctor_arg1.type = Type::FullType{ Float16x4Type.name };
-    Float16x2x4_Float16_4_ctor.name = "f16x2x4"_c;
+    Float16x2x4_Float16_4_ctor.name = Float16x2x4_Float16_4_ctor_name;
     Float16x2x4_Float16_4_ctor.compileTime = true;
     Float16x2x4_Float16_4_ctor.backendIndex = 1341;
     Float16x2x4_Float16_4_ctor.returnType = Type::FullType { Float16x2x4Type.name };
@@ -2102,7 +2102,7 @@ void SetupIntrinsics3()
     Float16x2x4_raw_list_arg6.type = Type::FullType{ Float16Type.name };
     Float16x2x4_raw_list_arg7.name = "arg7"_c;
     Float16x2x4_raw_list_arg7.type = Type::FullType{ Float16Type.name };
-    Float16x2x4_raw_list.name = "f16x2x4"_c;
+    Float16x2x4_raw_list.name = Float16x2x4_raw_list_name;
     Float16x2x4_raw_list.compileTime = true;
     Float16x2x4_raw_list.backendIndex = 1342;
     Float16x2x4_raw_list.returnType = Type::FullType { Float16x2x4Type.name };
@@ -2127,7 +2127,7 @@ void SetupIntrinsics3()
     Float16x3x4_Float16_4_ctor_arg1.type = Type::FullType{ Float16x4Type.name };
     Float16x3x4_Float16_4_ctor_arg2.name = "arg2"_c;
     Float16x3x4_Float16_4_ctor_arg2.type = Type::FullType{ Float16x4Type.name };
-    Float16x3x4_Float16_4_ctor.name = "f16x3x4"_c;
+    Float16x3x4_Float16_4_ctor.name = Float16x3x4_Float16_4_ctor_name;
     Float16x3x4_Float16_4_ctor.compileTime = true;
     Float16x3x4_Float16_4_ctor.backendIndex = 1355;
     Float16x3x4_Float16_4_ctor.returnType = Type::FullType { Float16x3x4Type.name };
@@ -2165,7 +2165,7 @@ void SetupIntrinsics3()
     Float16x3x4_raw_list_arg10.type = Type::FullType{ Float16Type.name };
     Float16x3x4_raw_list_arg11.name = "arg11"_c;
     Float16x3x4_raw_list_arg11.type = Type::FullType{ Float16Type.name };
-    Float16x3x4_raw_list.name = "f16x3x4"_c;
+    Float16x3x4_raw_list.name = Float16x3x4_raw_list_name;
     Float16x3x4_raw_list.compileTime = true;
     Float16x3x4_raw_list.backendIndex = 1356;
     Float16x3x4_raw_list.returnType = Type::FullType { Float16x3x4Type.name };
@@ -2196,7 +2196,7 @@ void SetupIntrinsics3()
     Float16x4x4_Float16_4_ctor_arg2.type = Type::FullType{ Float16x4Type.name };
     Float16x4x4_Float16_4_ctor_arg3.name = "arg3"_c;
     Float16x4x4_Float16_4_ctor_arg3.type = Type::FullType{ Float16x4Type.name };
-    Float16x4x4_Float16_4_ctor.name = "f16x4x4"_c;
+    Float16x4x4_Float16_4_ctor.name = Float16x4x4_Float16_4_ctor_name;
     Float16x4x4_Float16_4_ctor.compileTime = true;
     Float16x4x4_Float16_4_ctor.backendIndex = 1369;
     Float16x4x4_Float16_4_ctor.returnType = Type::FullType { Float16x4x4Type.name };
@@ -2211,7 +2211,7 @@ void SetupIntrinsics3()
     Symbol::Resolved(&Float16x4x4_Float16_4_ctor)->returnTypeSymbol = &Float16x4x4Type;
 
     /// f16x4x4
-    Float16x4x4_identity.name = "f16x4x4"_c;
+    Float16x4x4_identity.name = Float16x4x4_identity_name;
     Float16x4x4_identity.compileTime = true;
     Float16x4x4_identity.backendIndex = 1370;
     Float16x4x4_identity.returnType = Type::FullType { Float16x4x4Type.name };
@@ -2253,7 +2253,7 @@ void SetupIntrinsics3()
     Float16x4x4_raw_list_arg14.type = Type::FullType{ Float16Type.name };
     Float16x4x4_raw_list_arg15.name = "arg15"_c;
     Float16x4x4_raw_list_arg15.type = Type::FullType{ Float16Type.name };
-    Float16x4x4_raw_list.name = "f16x4x4"_c;
+    Float16x4x4_raw_list.name = Float16x4x4_raw_list_name;
     Float16x4x4_raw_list.compileTime = true;
     Float16x4x4_raw_list.backendIndex = 1371;
     Float16x4x4_raw_list.returnType = Type::FullType { Float16x4x4Type.name };
@@ -2283,7 +2283,7 @@ void SetupIntrinsics3()
     acos_Float32_arg.name = "val"_c;
     acos_Float32_arg.type = Type::FullType{ Float32Type.name };
     acos_Float32.documentation = "Returns the arc cosine of a value."_c;
-    acos_Float32.name = "acos"_c;
+    acos_Float32.name = acos_Float32_name;
     acos_Float32.backendIndex = 1384;
     acos_Float32.returnType = Type::FullType { Float32Type.name };
     acos_Float32.parameters = acos_Float32_args;
@@ -2297,7 +2297,7 @@ void SetupIntrinsics3()
     acos_Float32x2_arg.name = "val"_c;
     acos_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     acos_Float32x2.documentation = "Returns the arc cosine of a value."_c;
-    acos_Float32x2.name = "acos"_c;
+    acos_Float32x2.name = acos_Float32x2_name;
     acos_Float32x2.backendIndex = 1385;
     acos_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     acos_Float32x2.parameters = acos_Float32x2_args;
@@ -2311,7 +2311,7 @@ void SetupIntrinsics3()
     acos_Float32x3_arg.name = "val"_c;
     acos_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     acos_Float32x3.documentation = "Returns the arc cosine of a value."_c;
-    acos_Float32x3.name = "acos"_c;
+    acos_Float32x3.name = acos_Float32x3_name;
     acos_Float32x3.backendIndex = 1386;
     acos_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     acos_Float32x3.parameters = acos_Float32x3_args;
@@ -2325,7 +2325,7 @@ void SetupIntrinsics3()
     acos_Float32x4_arg.name = "val"_c;
     acos_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     acos_Float32x4.documentation = "Returns the arc cosine of a value."_c;
-    acos_Float32x4.name = "acos"_c;
+    acos_Float32x4.name = acos_Float32x4_name;
     acos_Float32x4.backendIndex = 1387;
     acos_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     acos_Float32x4.parameters = acos_Float32x4_args;
@@ -2339,7 +2339,7 @@ void SetupIntrinsics3()
     acos_Float16_arg.name = "val"_c;
     acos_Float16_arg.type = Type::FullType{ Float16Type.name };
     acos_Float16.documentation = "Returns the arc cosine of a value."_c;
-    acos_Float16.name = "acos"_c;
+    acos_Float16.name = acos_Float16_name;
     acos_Float16.backendIndex = 1388;
     acos_Float16.returnType = Type::FullType { Float16Type.name };
     acos_Float16.parameters = acos_Float16_args;
@@ -2353,7 +2353,7 @@ void SetupIntrinsics3()
     acos_Float16x2_arg.name = "val"_c;
     acos_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     acos_Float16x2.documentation = "Returns the arc cosine of a value."_c;
-    acos_Float16x2.name = "acos"_c;
+    acos_Float16x2.name = acos_Float16x2_name;
     acos_Float16x2.backendIndex = 1389;
     acos_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     acos_Float16x2.parameters = acos_Float16x2_args;
@@ -2367,7 +2367,7 @@ void SetupIntrinsics3()
     acos_Float16x3_arg.name = "val"_c;
     acos_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     acos_Float16x3.documentation = "Returns the arc cosine of a value."_c;
-    acos_Float16x3.name = "acos"_c;
+    acos_Float16x3.name = acos_Float16x3_name;
     acos_Float16x3.backendIndex = 1390;
     acos_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     acos_Float16x3.parameters = acos_Float16x3_args;
@@ -2381,7 +2381,7 @@ void SetupIntrinsics3()
     acos_Float16x4_arg.name = "val"_c;
     acos_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     acos_Float16x4.documentation = "Returns the arc cosine of a value."_c;
-    acos_Float16x4.name = "acos"_c;
+    acos_Float16x4.name = acos_Float16x4_name;
     acos_Float16x4.backendIndex = 1391;
     acos_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     acos_Float16x4.parameters = acos_Float16x4_args;
@@ -2395,7 +2395,7 @@ void SetupIntrinsics3()
     acosh_Float32_arg.name = "val"_c;
     acosh_Float32_arg.type = Type::FullType{ Float32Type.name };
     acosh_Float32.documentation = "Returns the hyperbolic arc cosine of a value."_c;
-    acosh_Float32.name = "acosh"_c;
+    acosh_Float32.name = acosh_Float32_name;
     acosh_Float32.backendIndex = 1392;
     acosh_Float32.returnType = Type::FullType { Float32Type.name };
     acosh_Float32.parameters = acosh_Float32_args;
@@ -2409,7 +2409,7 @@ void SetupIntrinsics3()
     acosh_Float32x2_arg.name = "val"_c;
     acosh_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     acosh_Float32x2.documentation = "Returns the hyperbolic arc cosine of a value."_c;
-    acosh_Float32x2.name = "acosh"_c;
+    acosh_Float32x2.name = acosh_Float32x2_name;
     acosh_Float32x2.backendIndex = 1393;
     acosh_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     acosh_Float32x2.parameters = acosh_Float32x2_args;
@@ -2423,7 +2423,7 @@ void SetupIntrinsics3()
     acosh_Float32x3_arg.name = "val"_c;
     acosh_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     acosh_Float32x3.documentation = "Returns the hyperbolic arc cosine of a value."_c;
-    acosh_Float32x3.name = "acosh"_c;
+    acosh_Float32x3.name = acosh_Float32x3_name;
     acosh_Float32x3.backendIndex = 1394;
     acosh_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     acosh_Float32x3.parameters = acosh_Float32x3_args;
@@ -2437,7 +2437,7 @@ void SetupIntrinsics3()
     acosh_Float32x4_arg.name = "val"_c;
     acosh_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     acosh_Float32x4.documentation = "Returns the hyperbolic arc cosine of a value."_c;
-    acosh_Float32x4.name = "acosh"_c;
+    acosh_Float32x4.name = acosh_Float32x4_name;
     acosh_Float32x4.backendIndex = 1395;
     acosh_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     acosh_Float32x4.parameters = acosh_Float32x4_args;
@@ -2451,7 +2451,7 @@ void SetupIntrinsics3()
     acosh_Float16_arg.name = "val"_c;
     acosh_Float16_arg.type = Type::FullType{ Float16Type.name };
     acosh_Float16.documentation = "Returns the hyperbolic arc cosine of a value."_c;
-    acosh_Float16.name = "acosh"_c;
+    acosh_Float16.name = acosh_Float16_name;
     acosh_Float16.backendIndex = 1396;
     acosh_Float16.returnType = Type::FullType { Float16Type.name };
     acosh_Float16.parameters = acosh_Float16_args;
@@ -2465,7 +2465,7 @@ void SetupIntrinsics3()
     acosh_Float16x2_arg.name = "val"_c;
     acosh_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     acosh_Float16x2.documentation = "Returns the hyperbolic arc cosine of a value."_c;
-    acosh_Float16x2.name = "acosh"_c;
+    acosh_Float16x2.name = acosh_Float16x2_name;
     acosh_Float16x2.backendIndex = 1397;
     acosh_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     acosh_Float16x2.parameters = acosh_Float16x2_args;
@@ -2479,7 +2479,7 @@ void SetupIntrinsics3()
     acosh_Float16x3_arg.name = "val"_c;
     acosh_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     acosh_Float16x3.documentation = "Returns the hyperbolic arc cosine of a value."_c;
-    acosh_Float16x3.name = "acosh"_c;
+    acosh_Float16x3.name = acosh_Float16x3_name;
     acosh_Float16x3.backendIndex = 1398;
     acosh_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     acosh_Float16x3.parameters = acosh_Float16x3_args;
@@ -2493,7 +2493,7 @@ void SetupIntrinsics3()
     acosh_Float16x4_arg.name = "val"_c;
     acosh_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     acosh_Float16x4.documentation = "Returns the hyperbolic arc cosine of a value."_c;
-    acosh_Float16x4.name = "acosh"_c;
+    acosh_Float16x4.name = acosh_Float16x4_name;
     acosh_Float16x4.backendIndex = 1399;
     acosh_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     acosh_Float16x4.parameters = acosh_Float16x4_args;
@@ -2507,7 +2507,7 @@ void SetupIntrinsics3()
     asin_Float32_arg.name = "val"_c;
     asin_Float32_arg.type = Type::FullType{ Float32Type.name };
     asin_Float32.documentation = "Returns the arc sine of a value."_c;
-    asin_Float32.name = "asin"_c;
+    asin_Float32.name = asin_Float32_name;
     asin_Float32.backendIndex = 1400;
     asin_Float32.returnType = Type::FullType { Float32Type.name };
     asin_Float32.parameters = asin_Float32_args;
@@ -2521,7 +2521,7 @@ void SetupIntrinsics3()
     asin_Float32x2_arg.name = "val"_c;
     asin_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     asin_Float32x2.documentation = "Returns the arc sine of a value."_c;
-    asin_Float32x2.name = "asin"_c;
+    asin_Float32x2.name = asin_Float32x2_name;
     asin_Float32x2.backendIndex = 1401;
     asin_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     asin_Float32x2.parameters = asin_Float32x2_args;
@@ -2535,7 +2535,7 @@ void SetupIntrinsics3()
     asin_Float32x3_arg.name = "val"_c;
     asin_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     asin_Float32x3.documentation = "Returns the arc sine of a value."_c;
-    asin_Float32x3.name = "asin"_c;
+    asin_Float32x3.name = asin_Float32x3_name;
     asin_Float32x3.backendIndex = 1402;
     asin_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     asin_Float32x3.parameters = asin_Float32x3_args;
@@ -2549,7 +2549,7 @@ void SetupIntrinsics3()
     asin_Float32x4_arg.name = "val"_c;
     asin_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     asin_Float32x4.documentation = "Returns the arc sine of a value."_c;
-    asin_Float32x4.name = "asin"_c;
+    asin_Float32x4.name = asin_Float32x4_name;
     asin_Float32x4.backendIndex = 1403;
     asin_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     asin_Float32x4.parameters = asin_Float32x4_args;
@@ -2563,7 +2563,7 @@ void SetupIntrinsics3()
     asin_Float16_arg.name = "val"_c;
     asin_Float16_arg.type = Type::FullType{ Float16Type.name };
     asin_Float16.documentation = "Returns the arc sine of a value."_c;
-    asin_Float16.name = "asin"_c;
+    asin_Float16.name = asin_Float16_name;
     asin_Float16.backendIndex = 1404;
     asin_Float16.returnType = Type::FullType { Float16Type.name };
     asin_Float16.parameters = asin_Float16_args;
@@ -2577,7 +2577,7 @@ void SetupIntrinsics3()
     asin_Float16x2_arg.name = "val"_c;
     asin_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     asin_Float16x2.documentation = "Returns the arc sine of a value."_c;
-    asin_Float16x2.name = "asin"_c;
+    asin_Float16x2.name = asin_Float16x2_name;
     asin_Float16x2.backendIndex = 1405;
     asin_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     asin_Float16x2.parameters = asin_Float16x2_args;
@@ -2591,7 +2591,7 @@ void SetupIntrinsics3()
     asin_Float16x3_arg.name = "val"_c;
     asin_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     asin_Float16x3.documentation = "Returns the arc sine of a value."_c;
-    asin_Float16x3.name = "asin"_c;
+    asin_Float16x3.name = asin_Float16x3_name;
     asin_Float16x3.backendIndex = 1406;
     asin_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     asin_Float16x3.parameters = asin_Float16x3_args;
@@ -2605,7 +2605,7 @@ void SetupIntrinsics3()
     asin_Float16x4_arg.name = "val"_c;
     asin_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     asin_Float16x4.documentation = "Returns the arc sine of a value."_c;
-    asin_Float16x4.name = "asin"_c;
+    asin_Float16x4.name = asin_Float16x4_name;
     asin_Float16x4.backendIndex = 1407;
     asin_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     asin_Float16x4.parameters = asin_Float16x4_args;
@@ -2619,7 +2619,7 @@ void SetupIntrinsics3()
     asinh_Float32_arg.name = "val"_c;
     asinh_Float32_arg.type = Type::FullType{ Float32Type.name };
     asinh_Float32.documentation = "Returns the hyperbolic arc sine of a value."_c;
-    asinh_Float32.name = "asinh"_c;
+    asinh_Float32.name = asinh_Float32_name;
     asinh_Float32.backendIndex = 1408;
     asinh_Float32.returnType = Type::FullType { Float32Type.name };
     asinh_Float32.parameters = asinh_Float32_args;
@@ -2633,7 +2633,7 @@ void SetupIntrinsics3()
     asinh_Float32x2_arg.name = "val"_c;
     asinh_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     asinh_Float32x2.documentation = "Returns the hyperbolic arc sine of a value."_c;
-    asinh_Float32x2.name = "asinh"_c;
+    asinh_Float32x2.name = asinh_Float32x2_name;
     asinh_Float32x2.backendIndex = 1409;
     asinh_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     asinh_Float32x2.parameters = asinh_Float32x2_args;
@@ -2647,7 +2647,7 @@ void SetupIntrinsics3()
     asinh_Float32x3_arg.name = "val"_c;
     asinh_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     asinh_Float32x3.documentation = "Returns the hyperbolic arc sine of a value."_c;
-    asinh_Float32x3.name = "asinh"_c;
+    asinh_Float32x3.name = asinh_Float32x3_name;
     asinh_Float32x3.backendIndex = 1410;
     asinh_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     asinh_Float32x3.parameters = asinh_Float32x3_args;
@@ -2661,7 +2661,7 @@ void SetupIntrinsics3()
     asinh_Float32x4_arg.name = "val"_c;
     asinh_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     asinh_Float32x4.documentation = "Returns the hyperbolic arc sine of a value."_c;
-    asinh_Float32x4.name = "asinh"_c;
+    asinh_Float32x4.name = asinh_Float32x4_name;
     asinh_Float32x4.backendIndex = 1411;
     asinh_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     asinh_Float32x4.parameters = asinh_Float32x4_args;
@@ -2675,7 +2675,7 @@ void SetupIntrinsics3()
     asinh_Float16_arg.name = "val"_c;
     asinh_Float16_arg.type = Type::FullType{ Float16Type.name };
     asinh_Float16.documentation = "Returns the hyperbolic arc sine of a value."_c;
-    asinh_Float16.name = "asinh"_c;
+    asinh_Float16.name = asinh_Float16_name;
     asinh_Float16.backendIndex = 1412;
     asinh_Float16.returnType = Type::FullType { Float16Type.name };
     asinh_Float16.parameters = asinh_Float16_args;
@@ -2689,7 +2689,7 @@ void SetupIntrinsics3()
     asinh_Float16x2_arg.name = "val"_c;
     asinh_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     asinh_Float16x2.documentation = "Returns the hyperbolic arc sine of a value."_c;
-    asinh_Float16x2.name = "asinh"_c;
+    asinh_Float16x2.name = asinh_Float16x2_name;
     asinh_Float16x2.backendIndex = 1413;
     asinh_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     asinh_Float16x2.parameters = asinh_Float16x2_args;
@@ -2703,7 +2703,7 @@ void SetupIntrinsics3()
     asinh_Float16x3_arg.name = "val"_c;
     asinh_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     asinh_Float16x3.documentation = "Returns the hyperbolic arc sine of a value."_c;
-    asinh_Float16x3.name = "asinh"_c;
+    asinh_Float16x3.name = asinh_Float16x3_name;
     asinh_Float16x3.backendIndex = 1414;
     asinh_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     asinh_Float16x3.parameters = asinh_Float16x3_args;
@@ -2717,7 +2717,7 @@ void SetupIntrinsics3()
     asinh_Float16x4_arg.name = "val"_c;
     asinh_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     asinh_Float16x4.documentation = "Returns the hyperbolic arc sine of a value."_c;
-    asinh_Float16x4.name = "asinh"_c;
+    asinh_Float16x4.name = asinh_Float16x4_name;
     asinh_Float16x4.backendIndex = 1415;
     asinh_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     asinh_Float16x4.parameters = asinh_Float16x4_args;
@@ -2731,7 +2731,7 @@ void SetupIntrinsics3()
     atan_Float32_arg.name = "val"_c;
     atan_Float32_arg.type = Type::FullType{ Float32Type.name };
     atan_Float32.documentation = "Returns the arc tangent of a value."_c;
-    atan_Float32.name = "atan"_c;
+    atan_Float32.name = atan_Float32_name;
     atan_Float32.backendIndex = 1416;
     atan_Float32.returnType = Type::FullType { Float32Type.name };
     atan_Float32.parameters = atan_Float32_args;
@@ -2745,7 +2745,7 @@ void SetupIntrinsics3()
     atan_Float32x2_arg.name = "val"_c;
     atan_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     atan_Float32x2.documentation = "Returns the arc tangent of a value."_c;
-    atan_Float32x2.name = "atan"_c;
+    atan_Float32x2.name = atan_Float32x2_name;
     atan_Float32x2.backendIndex = 1417;
     atan_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     atan_Float32x2.parameters = atan_Float32x2_args;
@@ -2759,7 +2759,7 @@ void SetupIntrinsics3()
     atan_Float32x3_arg.name = "val"_c;
     atan_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     atan_Float32x3.documentation = "Returns the arc tangent of a value."_c;
-    atan_Float32x3.name = "atan"_c;
+    atan_Float32x3.name = atan_Float32x3_name;
     atan_Float32x3.backendIndex = 1418;
     atan_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     atan_Float32x3.parameters = atan_Float32x3_args;
@@ -2773,7 +2773,7 @@ void SetupIntrinsics3()
     atan_Float32x4_arg.name = "val"_c;
     atan_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     atan_Float32x4.documentation = "Returns the arc tangent of a value."_c;
-    atan_Float32x4.name = "atan"_c;
+    atan_Float32x4.name = atan_Float32x4_name;
     atan_Float32x4.backendIndex = 1419;
     atan_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     atan_Float32x4.parameters = atan_Float32x4_args;
@@ -2787,7 +2787,7 @@ void SetupIntrinsics3()
     atan_Float16_arg.name = "val"_c;
     atan_Float16_arg.type = Type::FullType{ Float16Type.name };
     atan_Float16.documentation = "Returns the arc tangent of a value."_c;
-    atan_Float16.name = "atan"_c;
+    atan_Float16.name = atan_Float16_name;
     atan_Float16.backendIndex = 1420;
     atan_Float16.returnType = Type::FullType { Float16Type.name };
     atan_Float16.parameters = atan_Float16_args;
@@ -2801,7 +2801,7 @@ void SetupIntrinsics3()
     atan_Float16x2_arg.name = "val"_c;
     atan_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     atan_Float16x2.documentation = "Returns the arc tangent of a value."_c;
-    atan_Float16x2.name = "atan"_c;
+    atan_Float16x2.name = atan_Float16x2_name;
     atan_Float16x2.backendIndex = 1421;
     atan_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     atan_Float16x2.parameters = atan_Float16x2_args;
@@ -2815,7 +2815,7 @@ void SetupIntrinsics3()
     atan_Float16x3_arg.name = "val"_c;
     atan_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     atan_Float16x3.documentation = "Returns the arc tangent of a value."_c;
-    atan_Float16x3.name = "atan"_c;
+    atan_Float16x3.name = atan_Float16x3_name;
     atan_Float16x3.backendIndex = 1422;
     atan_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     atan_Float16x3.parameters = atan_Float16x3_args;
@@ -2829,7 +2829,7 @@ void SetupIntrinsics3()
     atan_Float16x4_arg.name = "val"_c;
     atan_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     atan_Float16x4.documentation = "Returns the arc tangent of a value."_c;
-    atan_Float16x4.name = "atan"_c;
+    atan_Float16x4.name = atan_Float16x4_name;
     atan_Float16x4.backendIndex = 1423;
     atan_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     atan_Float16x4.parameters = atan_Float16x4_args;
@@ -2843,7 +2843,7 @@ void SetupIntrinsics3()
     atanh_Float32_arg.name = "val"_c;
     atanh_Float32_arg.type = Type::FullType{ Float32Type.name };
     atanh_Float32.documentation = "Returns the hyperbolic arc tangent of a value."_c;
-    atanh_Float32.name = "atanh"_c;
+    atanh_Float32.name = atanh_Float32_name;
     atanh_Float32.backendIndex = 1424;
     atanh_Float32.returnType = Type::FullType { Float32Type.name };
     atanh_Float32.parameters = atanh_Float32_args;
@@ -2857,7 +2857,7 @@ void SetupIntrinsics3()
     atanh_Float32x2_arg.name = "val"_c;
     atanh_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     atanh_Float32x2.documentation = "Returns the hyperbolic arc tangent of a value."_c;
-    atanh_Float32x2.name = "atanh"_c;
+    atanh_Float32x2.name = atanh_Float32x2_name;
     atanh_Float32x2.backendIndex = 1425;
     atanh_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     atanh_Float32x2.parameters = atanh_Float32x2_args;
@@ -2871,7 +2871,7 @@ void SetupIntrinsics3()
     atanh_Float32x3_arg.name = "val"_c;
     atanh_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     atanh_Float32x3.documentation = "Returns the hyperbolic arc tangent of a value."_c;
-    atanh_Float32x3.name = "atanh"_c;
+    atanh_Float32x3.name = atanh_Float32x3_name;
     atanh_Float32x3.backendIndex = 1426;
     atanh_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     atanh_Float32x3.parameters = atanh_Float32x3_args;
@@ -2885,7 +2885,7 @@ void SetupIntrinsics3()
     atanh_Float32x4_arg.name = "val"_c;
     atanh_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     atanh_Float32x4.documentation = "Returns the hyperbolic arc tangent of a value."_c;
-    atanh_Float32x4.name = "atanh"_c;
+    atanh_Float32x4.name = atanh_Float32x4_name;
     atanh_Float32x4.backendIndex = 1427;
     atanh_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     atanh_Float32x4.parameters = atanh_Float32x4_args;
@@ -2899,7 +2899,7 @@ void SetupIntrinsics3()
     atanh_Float16_arg.name = "val"_c;
     atanh_Float16_arg.type = Type::FullType{ Float16Type.name };
     atanh_Float16.documentation = "Returns the hyperbolic arc tangent of a value."_c;
-    atanh_Float16.name = "atanh"_c;
+    atanh_Float16.name = atanh_Float16_name;
     atanh_Float16.backendIndex = 1428;
     atanh_Float16.returnType = Type::FullType { Float16Type.name };
     atanh_Float16.parameters = atanh_Float16_args;
@@ -2913,7 +2913,7 @@ void SetupIntrinsics3()
     atanh_Float16x2_arg.name = "val"_c;
     atanh_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     atanh_Float16x2.documentation = "Returns the hyperbolic arc tangent of a value."_c;
-    atanh_Float16x2.name = "atanh"_c;
+    atanh_Float16x2.name = atanh_Float16x2_name;
     atanh_Float16x2.backendIndex = 1429;
     atanh_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     atanh_Float16x2.parameters = atanh_Float16x2_args;
@@ -2927,7 +2927,7 @@ void SetupIntrinsics3()
     atanh_Float16x3_arg.name = "val"_c;
     atanh_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     atanh_Float16x3.documentation = "Returns the hyperbolic arc tangent of a value."_c;
-    atanh_Float16x3.name = "atanh"_c;
+    atanh_Float16x3.name = atanh_Float16x3_name;
     atanh_Float16x3.backendIndex = 1430;
     atanh_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     atanh_Float16x3.parameters = atanh_Float16x3_args;
@@ -2941,7 +2941,7 @@ void SetupIntrinsics3()
     atanh_Float16x4_arg.name = "val"_c;
     atanh_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     atanh_Float16x4.documentation = "Returns the hyperbolic arc tangent of a value."_c;
-    atanh_Float16x4.name = "atanh"_c;
+    atanh_Float16x4.name = atanh_Float16x4_name;
     atanh_Float16x4.backendIndex = 1431;
     atanh_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     atanh_Float16x4.parameters = atanh_Float16x4_args;
@@ -2955,7 +2955,7 @@ void SetupIntrinsics3()
     cos_Float32_arg.name = "val"_c;
     cos_Float32_arg.type = Type::FullType{ Float32Type.name };
     cos_Float32.documentation = "Returns the cosine of a value."_c;
-    cos_Float32.name = "cos"_c;
+    cos_Float32.name = cos_Float32_name;
     cos_Float32.backendIndex = 1432;
     cos_Float32.returnType = Type::FullType { Float32Type.name };
     cos_Float32.parameters = cos_Float32_args;
@@ -2969,7 +2969,7 @@ void SetupIntrinsics3()
     cos_Float32x2_arg.name = "val"_c;
     cos_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     cos_Float32x2.documentation = "Returns the cosine of a value."_c;
-    cos_Float32x2.name = "cos"_c;
+    cos_Float32x2.name = cos_Float32x2_name;
     cos_Float32x2.backendIndex = 1433;
     cos_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     cos_Float32x2.parameters = cos_Float32x2_args;
@@ -2983,7 +2983,7 @@ void SetupIntrinsics3()
     cos_Float32x3_arg.name = "val"_c;
     cos_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     cos_Float32x3.documentation = "Returns the cosine of a value."_c;
-    cos_Float32x3.name = "cos"_c;
+    cos_Float32x3.name = cos_Float32x3_name;
     cos_Float32x3.backendIndex = 1434;
     cos_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     cos_Float32x3.parameters = cos_Float32x3_args;
@@ -2997,7 +2997,7 @@ void SetupIntrinsics3()
     cos_Float32x4_arg.name = "val"_c;
     cos_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     cos_Float32x4.documentation = "Returns the cosine of a value."_c;
-    cos_Float32x4.name = "cos"_c;
+    cos_Float32x4.name = cos_Float32x4_name;
     cos_Float32x4.backendIndex = 1435;
     cos_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     cos_Float32x4.parameters = cos_Float32x4_args;
@@ -3011,7 +3011,7 @@ void SetupIntrinsics3()
     cos_Float16_arg.name = "val"_c;
     cos_Float16_arg.type = Type::FullType{ Float16Type.name };
     cos_Float16.documentation = "Returns the cosine of a value."_c;
-    cos_Float16.name = "cos"_c;
+    cos_Float16.name = cos_Float16_name;
     cos_Float16.backendIndex = 1436;
     cos_Float16.returnType = Type::FullType { Float16Type.name };
     cos_Float16.parameters = cos_Float16_args;
@@ -3025,7 +3025,7 @@ void SetupIntrinsics3()
     cos_Float16x2_arg.name = "val"_c;
     cos_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     cos_Float16x2.documentation = "Returns the cosine of a value."_c;
-    cos_Float16x2.name = "cos"_c;
+    cos_Float16x2.name = cos_Float16x2_name;
     cos_Float16x2.backendIndex = 1437;
     cos_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     cos_Float16x2.parameters = cos_Float16x2_args;
@@ -3039,7 +3039,7 @@ void SetupIntrinsics3()
     cos_Float16x3_arg.name = "val"_c;
     cos_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     cos_Float16x3.documentation = "Returns the cosine of a value."_c;
-    cos_Float16x3.name = "cos"_c;
+    cos_Float16x3.name = cos_Float16x3_name;
     cos_Float16x3.backendIndex = 1438;
     cos_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     cos_Float16x3.parameters = cos_Float16x3_args;
@@ -3053,7 +3053,7 @@ void SetupIntrinsics3()
     cos_Float16x4_arg.name = "val"_c;
     cos_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     cos_Float16x4.documentation = "Returns the cosine of a value."_c;
-    cos_Float16x4.name = "cos"_c;
+    cos_Float16x4.name = cos_Float16x4_name;
     cos_Float16x4.backendIndex = 1439;
     cos_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     cos_Float16x4.parameters = cos_Float16x4_args;
@@ -3067,7 +3067,7 @@ void SetupIntrinsics3()
     cosh_Float32_arg.name = "val"_c;
     cosh_Float32_arg.type = Type::FullType{ Float32Type.name };
     cosh_Float32.documentation = "Returns the hyperbolic cosine of a value."_c;
-    cosh_Float32.name = "cosh"_c;
+    cosh_Float32.name = cosh_Float32_name;
     cosh_Float32.backendIndex = 1440;
     cosh_Float32.returnType = Type::FullType { Float32Type.name };
     cosh_Float32.parameters = cosh_Float32_args;
@@ -3081,7 +3081,7 @@ void SetupIntrinsics3()
     cosh_Float32x2_arg.name = "val"_c;
     cosh_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     cosh_Float32x2.documentation = "Returns the hyperbolic cosine of a value."_c;
-    cosh_Float32x2.name = "cosh"_c;
+    cosh_Float32x2.name = cosh_Float32x2_name;
     cosh_Float32x2.backendIndex = 1441;
     cosh_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     cosh_Float32x2.parameters = cosh_Float32x2_args;
@@ -3095,7 +3095,7 @@ void SetupIntrinsics3()
     cosh_Float32x3_arg.name = "val"_c;
     cosh_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     cosh_Float32x3.documentation = "Returns the hyperbolic cosine of a value."_c;
-    cosh_Float32x3.name = "cosh"_c;
+    cosh_Float32x3.name = cosh_Float32x3_name;
     cosh_Float32x3.backendIndex = 1442;
     cosh_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     cosh_Float32x3.parameters = cosh_Float32x3_args;
@@ -3109,7 +3109,7 @@ void SetupIntrinsics3()
     cosh_Float32x4_arg.name = "val"_c;
     cosh_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     cosh_Float32x4.documentation = "Returns the hyperbolic cosine of a value."_c;
-    cosh_Float32x4.name = "cosh"_c;
+    cosh_Float32x4.name = cosh_Float32x4_name;
     cosh_Float32x4.backendIndex = 1443;
     cosh_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     cosh_Float32x4.parameters = cosh_Float32x4_args;
@@ -3123,7 +3123,7 @@ void SetupIntrinsics3()
     cosh_Float16_arg.name = "val"_c;
     cosh_Float16_arg.type = Type::FullType{ Float16Type.name };
     cosh_Float16.documentation = "Returns the hyperbolic cosine of a value."_c;
-    cosh_Float16.name = "cosh"_c;
+    cosh_Float16.name = cosh_Float16_name;
     cosh_Float16.backendIndex = 1444;
     cosh_Float16.returnType = Type::FullType { Float16Type.name };
     cosh_Float16.parameters = cosh_Float16_args;
@@ -3137,7 +3137,7 @@ void SetupIntrinsics3()
     cosh_Float16x2_arg.name = "val"_c;
     cosh_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     cosh_Float16x2.documentation = "Returns the hyperbolic cosine of a value."_c;
-    cosh_Float16x2.name = "cosh"_c;
+    cosh_Float16x2.name = cosh_Float16x2_name;
     cosh_Float16x2.backendIndex = 1445;
     cosh_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     cosh_Float16x2.parameters = cosh_Float16x2_args;
@@ -3151,7 +3151,7 @@ void SetupIntrinsics3()
     cosh_Float16x3_arg.name = "val"_c;
     cosh_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     cosh_Float16x3.documentation = "Returns the hyperbolic cosine of a value."_c;
-    cosh_Float16x3.name = "cosh"_c;
+    cosh_Float16x3.name = cosh_Float16x3_name;
     cosh_Float16x3.backendIndex = 1446;
     cosh_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     cosh_Float16x3.parameters = cosh_Float16x3_args;
@@ -3165,7 +3165,7 @@ void SetupIntrinsics3()
     cosh_Float16x4_arg.name = "val"_c;
     cosh_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     cosh_Float16x4.documentation = "Returns the hyperbolic cosine of a value."_c;
-    cosh_Float16x4.name = "cosh"_c;
+    cosh_Float16x4.name = cosh_Float16x4_name;
     cosh_Float16x4.backendIndex = 1447;
     cosh_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     cosh_Float16x4.parameters = cosh_Float16x4_args;
@@ -3179,7 +3179,7 @@ void SetupIntrinsics3()
     exp_Float32_arg.name = "val"_c;
     exp_Float32_arg.type = Type::FullType{ Float32Type.name };
     exp_Float32.documentation = "Returns the exponential of a value."_c;
-    exp_Float32.name = "exp"_c;
+    exp_Float32.name = exp_Float32_name;
     exp_Float32.backendIndex = 1448;
     exp_Float32.returnType = Type::FullType { Float32Type.name };
     exp_Float32.parameters = exp_Float32_args;

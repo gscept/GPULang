@@ -60,128 +60,6 @@ struct Function : public Symbol
         
         static const uint8_t INVALID_SIZE = 0xF;
 
-        enum WindingOrder
-        {
-            InvalidWindingOrder,
-            Clockwise,
-            CounterClockwise
-        };
-
-        /// convert from string
-        static const WindingOrder WindingOrderFromString(const TransientString& str)
-        {
-            if (str == "cw" || str == "clockwise")
-                return Clockwise;
-            else if (str == "ccw" || str == "counter_clockwise")
-                return CounterClockwise;
-
-            return InvalidWindingOrder;
-        };
-
-        enum PrimitiveTopology
-        {
-            InvalidPrimitiveTopology,
-            Points,
-            Lines,
-            LinesAdjacency,
-            Triangles,
-            TrianglesAdjacency,
-            Quads,
-            Isolines
-        };
-
-        /// convert from string
-        static const PrimitiveTopology PrimitiveTopologyFromString(const TransientString& str)
-        {
-            if (str == "points")
-                return PrimitiveTopology::Points;
-            else if (str == "lines")
-                return PrimitiveTopology::Lines;
-            else if (str == "lines_adjacency")
-                return PrimitiveTopology::LinesAdjacency;
-            else if (str == "triangles")
-                return PrimitiveTopology::Triangles;
-            else if (str == "triangles_adjacency")
-                return PrimitiveTopology::TrianglesAdjacency;
-            else if (str == "quads")
-                return PrimitiveTopology::Quads;
-            else if (str == "isolines")
-                return PrimitiveTopology::Isolines;
-
-            return InvalidPrimitiveTopology;
-        };
-
-
-        enum PatchType
-        {
-            InvalidPatchType,
-            IsolinePatch,
-            TrianglePatch,
-            QuadPatch
-        };
-
-        /// convert from string
-        static const PatchType PatchTypeFromString(const TransientString& str)
-        {
-            if (str == "isolines")
-                return PatchType::IsolinePatch;
-            else if (str == "triangles")
-                return PatchType::TrianglePatch;
-            else if (str == "quads")
-                return PatchType::QuadPatch;
-
-            return InvalidPatchType;
-        };
-
-
-        enum PartitionMethod
-        {
-            InvalidPartitionMethod,
-            IntegerSteps,
-            FloatEven,
-            FloatOdd           
-        };
-                /// convert from string
-        static const PartitionMethod PartitionMethodFromString(const TransientString& str)
-        {
-            if (str == "steps" || str == "integer")
-                return PartitionMethod::IntegerSteps;
-            else if (str == "even" || str == "fract_even")
-                return PartitionMethod::FloatEven;
-            else if (str == "odd" || str == "fract_odd")
-                return PartitionMethod::FloatOdd;
-
-            return InvalidPartitionMethod;
-        };
-
-
-        enum PixelOrigin
-        {
-            InvalidPixelOrigin,
-            Lower,      // lower left corner
-            Upper,      // upper right corner
-            Center      // pixel center
-        };
-
-        static const PixelOrigin PixelOriginFromString(const TransientString& str)
-        {
-            if (str == "lower_left" || str == "lower")
-                return PixelOrigin::Lower;
-            else if (str == "upper_left" || str == "upper")
-                return PixelOrigin::Upper;
-            else if (str == "center")
-                return PixelOrigin::Center;
-
-            return PixelOrigin::InvalidPixelOrigin;
-        }
-
-        enum ComputeDerivativeIndexing
-        {
-            NoDerivatives,
-            DerivativeIndexLinear,
-            DerivativeIndexQuad
-        };
-
 
         struct ExecutionModifiers
         {
@@ -195,15 +73,15 @@ struct Function : public Symbol
             uint32_t invocations = 0;
 
             uint32_t maxOutputVertices = 0;
-            PatchType patchType = PatchType::InvalidPatchType;
 
-            WindingOrder windingOrder = WindingOrder::InvalidWindingOrder;
-            PrimitiveTopology inputPrimitiveTopology = PrimitiveTopology::InvalidPrimitiveTopology;
-            PrimitiveTopology outputPrimitiveTopology = PrimitiveTopology::InvalidPrimitiveTopology;
+            uint32_t patchType = 0x0;                   // Managed by the generated Patch type
+            uint32_t windingOrder = 0x0;                // Managed by the generated Winding type
+            uint32_t inputPrimitiveTopology = 0x0;      // Managed by the generated InputTopology type
+            uint32_t outputPrimitiveTopology = 0x0;     // Managed by the generated OutputTopology type
 
-            PartitionMethod partitionMethod = PartitionMethod::InvalidPartitionMethod;
-            PixelOrigin pixelOrigin = PixelOrigin::InvalidPixelOrigin;
-            ComputeDerivativeIndexing computeDerivativeIndexing = ComputeDerivativeIndexing::NoDerivatives;
+            uint32_t partitionMethod = 0x0;
+            uint32_t pixelOrigin = 0x0;
+            uint32_t computeDerivativeIndexing = 0x0;
 
         } executionModifiers;
 

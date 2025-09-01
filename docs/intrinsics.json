@@ -1531,7 +1531,7 @@
     },
     {
         "name": "geometryExportPrimitive",
-        "documentation": "Exports the current primitive to the output stream. This function must be called after all vertices of a primitive have been exported.",
+        "documentation": "Sets the output viewport for the current vertex.",
         "target_support": [
             1,
             1,
@@ -1546,7 +1546,7 @@
     },
     {
         "name": "geometryExportVertex",
-        "documentation": "Exports the current vertex to the output stream. This function must be called for each vertex in a geometry shader.",
+        "documentation": "Exports the value as a vertex for the current primitive. This function must be called for each point in the topology given by output_primitive. This is the same as writing `gl_Position` followed by calling EmitVertex() in GLSL.",
         "target_support": [
             1,
             1,
@@ -1555,7 +1555,10 @@
         ],
         "overloads": [
             {
-                "signature": "geometryExportVertex() void"
+                "signature": "geometryExportVertex(val: f32x4) void"
+            },
+            {
+                "signature": "geometryExportVertex(val: f16x4) void"
             }
         ]
     },

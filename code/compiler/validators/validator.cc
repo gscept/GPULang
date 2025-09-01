@@ -52,6 +52,7 @@
 #include "ast/statements/discardstatement.h"
 
 #include "generated/types.h"
+#include "generated/intrinsics.h"
 namespace GPULang
 {
 
@@ -77,7 +78,7 @@ std::array{
     , "input_topology"_c, "output_topology"_c, "patch_type"_c, "partition"_c
     , "pixel_origin"_c
     , "prototype"_c
-    , "derivative_index_linear"_c, "derivative_index_quad"_c
+    , "compute_derivatives"_c
 };
 
 static StaticSet parameterAccessFlags =
@@ -674,8 +675,8 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     {
         if (attr->expression != nullptr)
         {
-            if (!attr->expression->Resolve(compiler))
-                return false;
+            // This can fail, but it's up to the validator to report the error
+            attr->expression->Resolve(compiler);
         }
         if (!set_contains(this->allowedFunctionAttributes, attr->name))
         {
@@ -783,55 +784,98 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         }
         else if (attr->name == "winding")
         {
-            TransientString str = attr->expression->EvalString();
-            funResolved->executionModifiers.windingOrder = Function::__Resolved::WindingOrderFromString(str);
-            if (funResolved->executionModifiers.windingOrder == Function::__Resolved::InvalidWindingOrder)
+            Type::FullType expressionType;
+            attr->expression->EvalType(expressionType);
+
+            if (expressionType.name != WindingType.name)
             {
-                compiler->Error(Format("Attribute 'winding' supports values: cw/clockwise, ccw/counter_clockwise, but got '%s'", str.c_str()), symbol);
+                compiler->Error(Format("Attribute 'winding' must be provided a value from the Winding enum'"), symbol);
                 return false;
             }
+
+            ValueUnion val;
+            if (!attr->expression->EvalValue(val))
+            {
+                compiler->Error(Format("Attribute 'winding' must resolve to a compile time expression'"), symbol);
+                return false;
+            }
+            funResolved->executionModifiers.windingOrder = val.ui[0];
         }
         else if (attr->name == "input_topology")
         {
-            TransientString str = attr->expression->EvalString();
-            funResolved->executionModifiers.inputPrimitiveTopology = Function::__Resolved::PrimitiveTopologyFromString(str);
-            if (funResolved->executionModifiers.inputPrimitiveTopology == Function::__Resolved::InvalidPrimitiveTopology)
+            Type::FullType expressionType;
+            attr->expression->EvalType(expressionType);
+
+            if (expressionType.name != InputTopologyType.name)
             {
-                compiler->Error(Format("Attribute 'input_topology' supports values: points, lines, lines_adjacency, triangles, triangles_adjacency, but got '%s'", str.c_str()), symbol);
+                compiler->Error(Format("Attribute 'input_topology' must be provided a value from the InputTopology enum'"), symbol);
                 return false;
             }
+
+            ValueUnion val;
+            if (!attr->expression->EvalValue(val))
+            {
+                compiler->Error(Format("Attribute 'input_topology' must resolve to a compile time expression'"), symbol);
+                return false;
+            }
+            funResolved->executionModifiers.inputPrimitiveTopology = val.ui[0];
         }
         else if (attr->name == "output_topology")
         {
-            TransientString str = attr->expression->EvalString();
-            funResolved->executionModifiers.outputPrimitiveTopology = Function::__Resolved::PrimitiveTopologyFromString(str);
-            if (funResolved->executionModifiers.outputPrimitiveTopology == Function::__Resolved::InvalidPrimitiveTopology
-                || funResolved->executionModifiers.outputPrimitiveTopology == Function::__Resolved::LinesAdjacency
-                || funResolved->executionModifiers.outputPrimitiveTopology == Function::__Resolved::TrianglesAdjacency)
+            Type::FullType expressionType;
+            attr->expression->EvalType(expressionType);
+
+            if (expressionType.name != OutputTopologyType.name)
             {
-                compiler->Error(Format("Attribute 'output_topology' supports values: points, lines, triangles, but got '%s'", str.c_str()), symbol);
+                compiler->Error(Format("Attribute 'output_topology' must be provided a value from the OutputTopology enum'"), symbol);
                 return false;
             }
+
+            ValueUnion val;
+            if (!attr->expression->EvalValue(val))
+            {
+                compiler->Error(Format("Attribute 'output_topology' must resolve to a compile time expression'"), symbol);
+                return false;
+            }
+            funResolved->executionModifiers.outputPrimitiveTopology = val.ui[0];
         }
         else if (attr->name == "patch_type")
         {
-            TransientString str = attr->expression->EvalString();
-            funResolved->executionModifiers.patchType = Function::__Resolved::PatchTypeFromString(str);
-            if (funResolved->executionModifiers.patchType == Function::__Resolved::InvalidPatchType)
+            Type::FullType expressionType;
+            attr->expression->EvalType(expressionType);
+
+            if (expressionType.name != PatchType.name)
             {
-                compiler->Error(Format("Attribute 'patch_type' supports values: isolines, triangles, quads, but got '%s'", str.c_str()), symbol);
+                compiler->Error(Format("Attribute 'patch_type' must be provided a value from the Patch enum'"), symbol);
                 return false;
             }
+
+            ValueUnion val;
+            if (!attr->expression->EvalValue(val))
+            {
+                compiler->Error(Format("Attribute 'patch_type' must resolve to a compile time expression'"), symbol);
+                return false;
+            }
+            funResolved->executionModifiers.patchType = val.ui[0];
         }
         else if (attr->name == "partition")
         {
-            TransientString str = attr->expression->EvalString();
-            funResolved->executionModifiers.partitionMethod = Function::__Resolved::PartitionMethodFromString(str);
-            if (funResolved->executionModifiers.partitionMethod == Function::__Resolved::InvalidPartitionMethod)
+            Type::FullType expressionType;
+            attr->expression->EvalType(expressionType);
+
+            if (expressionType.name != PartitionType.name)
             {
-                compiler->Error(Format("Attribute 'partition' supports values: steps/integer, even/fract_even, odd/fract_odd, but got '%s'", str.c_str()), symbol);
+                compiler->Error(Format("Attribute 'partition' must be provided a value from the Partition enum'"), symbol);
                 return false;
             }
+
+            ValueUnion val;
+            if (!attr->expression->EvalValue(val))
+            {
+                compiler->Error(Format("Attribute 'partition' must resolve to a compile time expression'"), symbol);
+                return false;
+            }
+            funResolved->executionModifiers.partitionMethod = val.ui[0];
         }
         else if (attr->name == "prototype")
         {
@@ -844,21 +888,43 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         }
         else if (attr->name == "pixel_origin")
         {
-            TransientString str = attr->expression->EvalString();
-            funResolved->executionModifiers.pixelOrigin = Function::__Resolved::PixelOriginFromString(str);
-            if (funResolved->executionModifiers.pixelOrigin == Function::__Resolved::InvalidPixelOrigin)
+            Type::FullType expressionType;
+            attr->expression->EvalType(expressionType);
+
+            if (expressionType.name != PixelOriginType.name)
             {
-                compiler->Error(Format("Attribute 'pixel_origin' supports values: lower/lower_left, upper/upper_left, center, but got '%s'", str.c_str()), symbol);
+                compiler->Error(Format("Attribute 'pixel_origin' must be provided a value from the PixelOrigin enum'"), symbol);
                 return false;
             }
+
+            ValueUnion val;
+            if (!attr->expression->EvalValue(val))
+            {
+                compiler->Error(Format("Attribute 'pixel_origin' must resolve to a compile time expression'"), symbol);
+                return false;
+            }
+
+            funResolved->executionModifiers.pixelOrigin = val.ui[0];
         }
-        else if (attr->name == "derivative_index_linear")
+        else if (attr->name == "compute_derivatives")
         {
-            funResolved->executionModifiers.computeDerivativeIndexing = Function::__Resolved::DerivativeIndexLinear;
-        }
-        else if (attr->name == "derivative_index_quad")
-        {
-            funResolved->executionModifiers.computeDerivativeIndexing = Function::__Resolved::DerivativeIndexQuad;
+            Type::FullType expressionType;
+            attr->expression->EvalType(expressionType);
+
+            if (expressionType.name != ComputeDerivativesType.name)
+            {
+                compiler->Error(Format("Attribute 'compute_derivatives' must be provided a value from the ComputeDerivatives enum'"), symbol);
+                return false;
+            }
+
+            ValueUnion val;
+            if (!attr->expression->EvalValue(val))
+            {
+                compiler->Error(Format("Attribute 'compute_derivatives' must resolve to a compile time expression'"), symbol);
+                return false;
+            }
+
+            funResolved->executionModifiers.computeDerivativeIndexing = val.ui[0];
         }
     }
 
@@ -891,7 +957,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
             return false;
         }
 
-        if (funResolved->executionModifiers.computeDerivativeIndexing != Function::__Resolved::NoDerivatives)
+        if (funResolved->executionModifiers.computeDerivativeIndexing != ComputeDerivativesInvalid_value)
         {
             compiler->Error("Setting derivative indexing is only allowed on functions with the 'entry_point' qualifier", symbol);
             return false;
@@ -904,7 +970,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
             compiler->Error("Entry point may only return 'void'", symbol);
             return false;
         }
-        if (funResolved->executionModifiers.computeDerivativeIndexing == Function::__Resolved::DerivativeIndexLinear)
+        if (funResolved->executionModifiers.computeDerivativeIndexing == ComputeDerivativesIndexLinear_value)
         {
             uint32_t numThreads = funResolved->executionModifiers.computeShaderWorkGroupSize[0] * funResolved->executionModifiers.computeShaderWorkGroupSize[1] * funResolved->executionModifiers.computeShaderWorkGroupSize[2];
             if (numThreads % 4 != 0)
@@ -913,7 +979,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
                 return false;
             }
         }
-        else if (funResolved->executionModifiers.computeDerivativeIndexing == Function::__Resolved::DerivativeIndexQuad)
+        else if (funResolved->executionModifiers.computeDerivativeIndexing == ComputeDerivativesIndexQuad_value)
         {
             uint32_t numThreadsX = funResolved->executionModifiers.computeShaderWorkGroupSize[0] % 2;
             uint32_t numThreadsY = funResolved->executionModifiers.computeShaderWorkGroupSize[1] % 2;
@@ -3487,43 +3553,43 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
             return false;
         }
 
-        if (funResolved->executionModifiers.inputPrimitiveTopology == Function::__Resolved::PrimitiveTopology::Points)
+        if (funResolved->executionModifiers.inputPrimitiveTopology == InputTopologyPoints_value)
         {
-            compiler->Error(Format("Hull shader '%s' doesn't support input topology 'points", fun->name.c_str()), symbol);
+            compiler->Error(Format("Hull shader '%s' doesn't support input topology 'InputTopology.Points", fun->name.c_str()), symbol);
             return false;
         }
 
-        if (funResolved->executionModifiers.inputPrimitiveTopology == Function::__Resolved::PrimitiveTopology::Lines)
+        if (funResolved->executionModifiers.inputPrimitiveTopology == InputTopologyLines_value)
         {
-            compiler->Error(Format("Hull shader '%s' doesn't support input topology 'lines", fun->name.c_str()), symbol);
+            compiler->Error(Format("Hull shader '%s' doesn't support input topology 'InputTopology.Lines", fun->name.c_str()), symbol);
             return false;
         }
 
-        if (funResolved->executionModifiers.inputPrimitiveTopology == Function::__Resolved::PrimitiveTopology::LinesAdjacency)
+        if (funResolved->executionModifiers.inputPrimitiveTopology == InputTopologyLinesAdjacency_value)
         {
-            compiler->Error(Format("Hull shader '%s' doesn't support input topology 'lines_adjacency", fun->name.c_str()), symbol);
+            compiler->Error(Format("Hull shader '%s' doesn't support input topology 'InputTopology.LinesAdjacency", fun->name.c_str()), symbol);
             return false;
         }
 
-        if (funResolved->executionModifiers.inputPrimitiveTopology == Function::__Resolved::PrimitiveTopology::TrianglesAdjacency)
+        if (funResolved->executionModifiers.inputPrimitiveTopology == InputTopologyTrianglesAdjacency_value)
         {
-            compiler->Error(Format("Hull shader '%s' doesn't support input topology 'triangles_adjacency", fun->name.c_str()), symbol);
+            compiler->Error(Format("Hull shader '%s' doesn't support input topology 'InputTopology.TrianglesAdjacency", fun->name.c_str()), symbol);
             return false;
         }
-        if (funResolved->executionModifiers.partitionMethod != Function::__Resolved::InvalidPartitionMethod)
+        if (funResolved->executionModifiers.partitionMethod != PartitionInvalid_value)
         {
             compiler->Warning(Format("Domain shader '%s' does not define 'partition', defaulting to 'integer'", fun->name.c_str()), symbol);
-            funResolved->executionModifiers.partitionMethod = Function::__Resolved::PartitionMethod::IntegerSteps;
+            funResolved->executionModifiers.partitionMethod = PartitionIntegerSteps_value;
         }
     }
 
     if (compiler->currentState.shaderType == ProgramInstance::__Resolved::DomainShader)
     {
         // validate required qualifiers
-        if (funResolved->executionModifiers.patchType != Function::__Resolved::InvalidPatchType)
+        if (funResolved->executionModifiers.patchType != PatchInvalid_value)
         {
             compiler->Warning(Format("Domain shader '%s' does not define 'patch_type' for DomainShader/TessellationEvaluationShader, defaulting to 'triangles'", fun->name.c_str()), symbol);
-            funResolved->executionModifiers.patchType = Function::__Resolved::PatchType::TrianglePatch;
+            funResolved->executionModifiers.patchType = PatchTriangles_value;
         }
 
     }
@@ -3535,24 +3601,24 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
             compiler->Error(Format("Geometry shader '%s' does not define 'max_output_vertices' for GeometryShader", fun->name.c_str()), symbol);
             return false;
         }
-        if (funResolved->executionModifiers.inputPrimitiveTopology == Function::__Resolved::InvalidPrimitiveTopology)
+        if (funResolved->executionModifiers.inputPrimitiveTopology == InputTopologyInvalid_value)
         {
             compiler->Warning(Format("Geometry shader '%s' does not define 'input_topology' for GeometryShader, defaulting to 'triangles'", fun->name.c_str()), symbol);
-            funResolved->executionModifiers.inputPrimitiveTopology = Function::__Resolved::Triangles;
+            funResolved->executionModifiers.inputPrimitiveTopology = InputTopologyTriangles_value;
         }
-        if (funResolved->executionModifiers.outputPrimitiveTopology == Function::__Resolved::InvalidPrimitiveTopology)
+        if (funResolved->executionModifiers.outputPrimitiveTopology == OutputTopologyInvalid_value)
         {
             compiler->Warning(Format("Geometry shader '%s' does not define 'output_topology' for GeometryShader, defaulting to 'triangles'", fun->name.c_str()), symbol);
-            funResolved->executionModifiers.outputPrimitiveTopology = Function::__Resolved::Triangles;
+            funResolved->executionModifiers.outputPrimitiveTopology = OutputTopologyTriangles_value;
         }
 
-        if (funResolved->executionModifiers.inputPrimitiveTopology == Function::__Resolved::PrimitiveTopology::Quads)
+        if (funResolved->executionModifiers.inputPrimitiveTopology == InputTopologyQuads_value)
         {
             compiler->Error(Format("Geometry shader '%s' doesn't support input topology 'quads", fun->name.c_str()), symbol);
             return false;
         }
 
-        if (funResolved->executionModifiers.inputPrimitiveTopology == Function::__Resolved::PrimitiveTopology::Isolines)
+        if (funResolved->executionModifiers.inputPrimitiveTopology == InputTopologyIsolines_value)
         {
             compiler->Error(Format("Geometry shader '%s' doesn't support input topology 'isolines", fun->name.c_str()), symbol);
             return false;
@@ -3633,7 +3699,7 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
 
     if (compiler->currentState.shaderType != ProgramInstance::__Resolved::ComputeShader && compiler->currentState.shaderType != ProgramInstance::__Resolved::TaskShader && compiler->currentState.shaderType != ProgramInstance::__Resolved::MeshShader)
     {
-        if (funResolved->executionModifiers.computeDerivativeIndexing != Function::__Resolved::NoDerivatives)
+        if (funResolved->executionModifiers.computeDerivativeIndexing != ComputeDerivativesInvalid_value)
         {
             compiler->Error("Setting the derivative indexing method is only allowed on shaders with explicit work group sizes", symbol);
             return false;
@@ -3689,11 +3755,10 @@ ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc)
         // If types don't match, then the linkage is invalid
         if (var->type != inParams.ptr[iterator]->type)
         {
-            compiler->Error(Format("Can't match types '%s' and '%s' between shader '%s' and '%s'", var->type.name.c_str(), inParams.ptr[iterator]->type.name.c_str(), outFunc->name.c_str(), inFunc->name.c_str()), outFunc);
+            compiler->Error(Format("Can't match types '%s' and '%s' between shader '%s' and '%s'", var->type.ToString().c_str(), inParams.ptr[iterator]->type.ToString().c_str(), outFunc->name.c_str(), inFunc->name.c_str()), outFunc);
             return false;
         }
     }
-
 
     // If there is a mismatch in the parameter count and we want to warn, then do so
     if (compiler->options.warnOnUnusedParameter)
@@ -4176,9 +4241,8 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 compiler->currentState.sideEffects.bits |= (uint32_t)it->second.sideEffect;
             }
 
-            static const auto derivativeConditionFunction = [](Compiler* compiler, Expression* expr, const ConstantString& fun)
+            static const std::function<bool(Compiler* compiler, Expression* expr, const ConstantString& fun)> derivativeConditionFunction = [](Compiler* compiler, Expression* expr, const ConstantString& fun)
             {
-                
                 static constexpr StaticArray derivativeProducingShaders =
                 std::array {
                     ProgramInstance::__Resolved::EntryType::VertexShader
@@ -4194,12 +4258,12 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 if (compiler->currentState.shaderType == ProgramInstance::__Resolved::ComputeShader || compiler->currentState.shaderType == ProgramInstance::__Resolved::TaskShader || compiler->currentState.shaderType == ProgramInstance::__Resolved::EntryType::MeshShader)
                 {
                     Function::__Resolved* funResolved = Symbol::Resolved(compiler->currentState.function);
-                    if (funResolved->executionModifiers.computeDerivativeIndexing != Function::__Resolved::NoDerivatives)
+                    if (funResolved->executionModifiers.computeDerivativeIndexing != ComputeDerivativesInvalid_value)
                         return true;
                     else
                     {
                         const ConstantString& shaderString = ProgramInstance::__Resolved::EntryTypeToString(compiler->currentState.shaderType);
-                        compiler->Error(Format("%s must either specify 'derivative_index_linear' or 'derivative_index_quads' when using derivatives", shaderString.c_str()), expr);
+                        compiler->Error(Format("%s must specify 'compute_derivatives' with a valid value when using derivatives", shaderString.c_str()), expr);
                         return false;    
                     }
                 }
@@ -4213,25 +4277,55 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 
                 return false;
             };
+
+            static const std::function<bool(Compiler* compiler, Expression* expr, const ConstantString& fun)> geometryTypeConditionFunction = [](Compiler* compiler, Expression* expr, const ConstantString& fun)
+            {
+                if (compiler->currentState.shaderType != ProgramInstance::__Resolved::GeometryShader)
+                {
+                    const ConstantString& shaderString = ProgramInstance::__Resolved::EntryTypeToString(compiler->currentState.shaderType);
+                    compiler->Error(Format("%s can only be called from a geometry shader", fun.c_str()), expr);
+                    return false;
+                }
+
+                if (fun == GeometryGetTriangle.name && compiler->currentState.function->functionResolved.executionModifiers.inputPrimitiveTopology != InputTopologyTriangles_value)
+                {
+                    compiler->Error(Format("geometry shader must use input topology 'triangles' to support %s", GeometryGetTriangle.name.c_str()), expr);
+                    return false;
+                }
+                else if (fun == GeometryGetLine.name && compiler->currentState.function->functionResolved.executionModifiers.inputPrimitiveTopology != InputTopologyLines_value)
+                {
+                    compiler->Error(Format("geometry shader must use input topology 'lines' to support %s", GeometryGetTriangle.name.c_str()), expr);
+                    return false;
+                }
+                else if (fun == GeometryGetPoint.name && compiler->currentState.function->functionResolved.executionModifiers.inputPrimitiveTopology != InputTopologyPoints_value)
+                {
+                    compiler->Error(Format("geometry shader must use input topology 'points' to support %s", GeometryGetTriangle.name.c_str()), expr);
+                    return false;
+                }
+                return true;
+            };
             
             static const StaticMap conditionalBuiltins =
             std::array{
-                std::pair{ ConstantString("textureSample"), derivativeConditionFunction }
-                , std::pair{ ConstantString("textureSampleBias"), derivativeConditionFunction }
-                , std::pair{ ConstantString("textureSampleBiasCompare"), derivativeConditionFunction }
-                , std::pair{ ConstantString("textureSampleBiasOffset"), derivativeConditionFunction }
-                , std::pair{ ConstantString("textureSampleBiasProj"), derivativeConditionFunction }
-                , std::pair{ ConstantString("textureSampleBiasProjCompare"), derivativeConditionFunction }
-                , std::pair{ ConstantString("textureSampleBiasProjOffset"), derivativeConditionFunction }
-                , std::pair{ ConstantString("textureSampleCompare"), derivativeConditionFunction }
-                , std::pair{ ConstantString("textureSampleCompareOffset"), derivativeConditionFunction }
-                , std::pair{ ConstantString("textureSampleProj"), derivativeConditionFunction }
-                , std::pair{ ConstantString("textureSampleProjCompare"), derivativeConditionFunction }
-                , std::pair{ ConstantString("textureSampleProjCompareOffset"), derivativeConditionFunction }
-                , std::pair{ ConstantString("textureSampleProjOffset"), derivativeConditionFunction }
-                , std::pair{ ConstantString("ddx"), derivativeConditionFunction }
-                , std::pair{ ConstantString("ddy"), derivativeConditionFunction }
-                , std::pair{ ConstantString("fwidth"), derivativeConditionFunction }
+                std::pair{ "textureSample"_c, derivativeConditionFunction }
+                , std::pair{ "textureSampleBias"_c, derivativeConditionFunction }
+                , std::pair{ "textureSampleBiasCompare"_c, derivativeConditionFunction }
+                , std::pair{ "textureSampleBiasOffset"_c, derivativeConditionFunction }
+                , std::pair{ "textureSampleBiasProj"_c, derivativeConditionFunction }
+                , std::pair{ "textureSampleBiasProjCompare"_c, derivativeConditionFunction }
+                , std::pair{ "textureSampleBiasProjOffset"_c, derivativeConditionFunction }
+                , std::pair{ "textureSampleCompare"_c, derivativeConditionFunction }
+                , std::pair{ "textureSampleCompareOffset"_c, derivativeConditionFunction }
+                , std::pair{ "textureSampleProj"_c, derivativeConditionFunction }
+                , std::pair{ "textureSampleProjCompare"_c, derivativeConditionFunction }
+                , std::pair{ "textureSampleProjCompareOffset"_c, derivativeConditionFunction }
+                , std::pair{ "textureSampleProjOffset"_c, derivativeConditionFunction }
+                , std::pair{ GeometryGetPoint_name, geometryTypeConditionFunction }
+                , std::pair{ GeometryGetLine_name, geometryTypeConditionFunction }
+                , std::pair{ GeometryGetTriangle_name, geometryTypeConditionFunction }
+                , std::pair{ "ddx"_c, derivativeConditionFunction }
+                , std::pair{ "ddy"_c, derivativeConditionFunction }
+                , std::pair{ "fwidth"_c, derivativeConditionFunction }
             };
             const auto it2 = conditionalBuiltins.Find(callResolved->functionSymbol);
             if (it2 != conditionalBuiltins.end())

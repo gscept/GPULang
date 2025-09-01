@@ -816,7 +816,7 @@ void SetupIntrinsics5()
     reflect_Float16x2_normal.name = "normal"_c;
     reflect_Float16x2_normal.type = Type::FullType{ Float16x2Type.name };
     reflect_Float16x2.documentation = "Returns the reflection of a vector through a surface using an incident vector and normal."_c;
-    reflect_Float16x2.name = "reflect"_c;
+    reflect_Float16x2.name = reflect_Float16x2_name;
     reflect_Float16x2.backendIndex = 1577;
     reflect_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     reflect_Float16x2.parameters = reflect_Float16x2_args;
@@ -833,7 +833,7 @@ void SetupIntrinsics5()
     reflect_Float16x3_normal.name = "normal"_c;
     reflect_Float16x3_normal.type = Type::FullType{ Float16x3Type.name };
     reflect_Float16x3.documentation = "Returns the reflection of a vector through a surface using an incident vector and normal."_c;
-    reflect_Float16x3.name = "reflect"_c;
+    reflect_Float16x3.name = reflect_Float16x3_name;
     reflect_Float16x3.backendIndex = 1578;
     reflect_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     reflect_Float16x3.parameters = reflect_Float16x3_args;
@@ -850,7 +850,7 @@ void SetupIntrinsics5()
     reflect_Float16x4_normal.name = "normal"_c;
     reflect_Float16x4_normal.type = Type::FullType{ Float16x4Type.name };
     reflect_Float16x4.documentation = "Returns the reflection of a vector through a surface using an incident vector and normal."_c;
-    reflect_Float16x4.name = "reflect"_c;
+    reflect_Float16x4.name = reflect_Float16x4_name;
     reflect_Float16x4.backendIndex = 1579;
     reflect_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     reflect_Float16x4.parameters = reflect_Float16x4_args;
@@ -869,7 +869,7 @@ void SetupIntrinsics5()
     refract_Float32x2_ior.name = "ior"_c;
     refract_Float32x2_ior.type = Type::FullType{ Float32x2Type.name };
     refract_Float32x2.documentation = "Returns the refraction of a vector through a surface using an incident vector, normal and an index of refraction."_c;
-    refract_Float32x2.name = "refract"_c;
+    refract_Float32x2.name = refract_Float32x2_name;
     refract_Float32x2.backendIndex = 1580;
     refract_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     refract_Float32x2.parameters = refract_Float32x2_args;
@@ -889,7 +889,7 @@ void SetupIntrinsics5()
     refract_Float32x3_ior.name = "ior"_c;
     refract_Float32x3_ior.type = Type::FullType{ Float32x3Type.name };
     refract_Float32x3.documentation = "Returns the refraction of a vector through a surface using an incident vector, normal and an index of refraction."_c;
-    refract_Float32x3.name = "refract"_c;
+    refract_Float32x3.name = refract_Float32x3_name;
     refract_Float32x3.backendIndex = 1581;
     refract_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     refract_Float32x3.parameters = refract_Float32x3_args;
@@ -909,7 +909,7 @@ void SetupIntrinsics5()
     refract_Float32x4_ior.name = "ior"_c;
     refract_Float32x4_ior.type = Type::FullType{ Float32x4Type.name };
     refract_Float32x4.documentation = "Returns the refraction of a vector through a surface using an incident vector, normal and an index of refraction."_c;
-    refract_Float32x4.name = "refract"_c;
+    refract_Float32x4.name = refract_Float32x4_name;
     refract_Float32x4.backendIndex = 1582;
     refract_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     refract_Float32x4.parameters = refract_Float32x4_args;
@@ -929,7 +929,7 @@ void SetupIntrinsics5()
     refract_Float16x2_ior.name = "ior"_c;
     refract_Float16x2_ior.type = Type::FullType{ Float16x2Type.name };
     refract_Float16x2.documentation = "Returns the refraction of a vector through a surface using an incident vector, normal and an index of refraction."_c;
-    refract_Float16x2.name = "refract"_c;
+    refract_Float16x2.name = refract_Float16x2_name;
     refract_Float16x2.backendIndex = 1583;
     refract_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     refract_Float16x2.parameters = refract_Float16x2_args;
@@ -949,7 +949,7 @@ void SetupIntrinsics5()
     refract_Float16x3_ior.name = "ior"_c;
     refract_Float16x3_ior.type = Type::FullType{ Float16x3Type.name };
     refract_Float16x3.documentation = "Returns the refraction of a vector through a surface using an incident vector, normal and an index of refraction."_c;
-    refract_Float16x3.name = "refract"_c;
+    refract_Float16x3.name = refract_Float16x3_name;
     refract_Float16x3.backendIndex = 1584;
     refract_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     refract_Float16x3.parameters = refract_Float16x3_args;
@@ -969,7 +969,7 @@ void SetupIntrinsics5()
     refract_Float16x4_ior.name = "ior"_c;
     refract_Float16x4_ior.type = Type::FullType{ Float16x4Type.name };
     refract_Float16x4.documentation = "Returns the refraction of a vector through a surface using an incident vector, normal and an index of refraction."_c;
-    refract_Float16x4.name = "refract"_c;
+    refract_Float16x4.name = refract_Float16x4_name;
     refract_Float16x4.backendIndex = 1585;
     refract_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     refract_Float16x4.parameters = refract_Float16x4_args;
@@ -987,7 +987,7 @@ void SetupIntrinsics5()
     cross_Float32x3_v1.name = "v1"_c;
     cross_Float32x3_v1.type = Type::FullType{ Float32x3Type.name };
     cross_Float32x3.documentation = "Returns the cross product of two vectors."_c;
-    cross_Float32x3.name = "cross"_c;
+    cross_Float32x3.name = cross_Float32x3_name;
     cross_Float32x3.backendIndex = 1586;
     cross_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     cross_Float32x3.parameters = cross_Float32x3_args;
@@ -1004,7 +1004,7 @@ void SetupIntrinsics5()
     cross_Float16x3_v1.name = "v1"_c;
     cross_Float16x3_v1.type = Type::FullType{ Float16x3Type.name };
     cross_Float16x3.documentation = "Returns the cross product of two vectors."_c;
-    cross_Float16x3.name = "cross"_c;
+    cross_Float16x3.name = cross_Float16x3_name;
     cross_Float16x3.backendIndex = 1587;
     cross_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     cross_Float16x3.parameters = cross_Float16x3_args;
@@ -1019,7 +1019,7 @@ void SetupIntrinsics5()
     length_Float32x2_arg.name = "val"_c;
     length_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     length_Float32x2.documentation = "Returns the length of the vector."_c;
-    length_Float32x2.name = "length"_c;
+    length_Float32x2.name = length_Float32x2_name;
     length_Float32x2.backendIndex = 1588;
     length_Float32x2.returnType = Type::FullType { Float32Type.name };
     length_Float32x2.parameters = length_Float32x2_args;
@@ -1033,7 +1033,7 @@ void SetupIntrinsics5()
     length_Float32x3_arg.name = "val"_c;
     length_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     length_Float32x3.documentation = "Returns the length of the vector."_c;
-    length_Float32x3.name = "length"_c;
+    length_Float32x3.name = length_Float32x3_name;
     length_Float32x3.backendIndex = 1589;
     length_Float32x3.returnType = Type::FullType { Float32Type.name };
     length_Float32x3.parameters = length_Float32x3_args;
@@ -1047,7 +1047,7 @@ void SetupIntrinsics5()
     length_Float32x4_arg.name = "val"_c;
     length_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     length_Float32x4.documentation = "Returns the length of the vector."_c;
-    length_Float32x4.name = "length"_c;
+    length_Float32x4.name = length_Float32x4_name;
     length_Float32x4.backendIndex = 1590;
     length_Float32x4.returnType = Type::FullType { Float32Type.name };
     length_Float32x4.parameters = length_Float32x4_args;
@@ -1061,7 +1061,7 @@ void SetupIntrinsics5()
     length_Float16x2_arg.name = "val"_c;
     length_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     length_Float16x2.documentation = "Returns the length of the vector."_c;
-    length_Float16x2.name = "length"_c;
+    length_Float16x2.name = length_Float16x2_name;
     length_Float16x2.backendIndex = 1591;
     length_Float16x2.returnType = Type::FullType { Float32Type.name };
     length_Float16x2.parameters = length_Float16x2_args;
@@ -1075,7 +1075,7 @@ void SetupIntrinsics5()
     length_Float16x3_arg.name = "val"_c;
     length_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     length_Float16x3.documentation = "Returns the length of the vector."_c;
-    length_Float16x3.name = "length"_c;
+    length_Float16x3.name = length_Float16x3_name;
     length_Float16x3.backendIndex = 1592;
     length_Float16x3.returnType = Type::FullType { Float32Type.name };
     length_Float16x3.parameters = length_Float16x3_args;
@@ -1089,7 +1089,7 @@ void SetupIntrinsics5()
     length_Float16x4_arg.name = "val"_c;
     length_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     length_Float16x4.documentation = "Returns the length of the vector."_c;
-    length_Float16x4.name = "length"_c;
+    length_Float16x4.name = length_Float16x4_name;
     length_Float16x4.backendIndex = 1593;
     length_Float16x4.returnType = Type::FullType { Float32Type.name };
     length_Float16x4.parameters = length_Float16x4_args;
@@ -1103,7 +1103,7 @@ void SetupIntrinsics5()
     normalize_Float32x2_arg.name = "val"_c;
     normalize_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     normalize_Float32x2.documentation = "Returns the normalized vector."_c;
-    normalize_Float32x2.name = "normalize"_c;
+    normalize_Float32x2.name = normalize_Float32x2_name;
     normalize_Float32x2.backendIndex = 1594;
     normalize_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     normalize_Float32x2.parameters = normalize_Float32x2_args;
@@ -1117,7 +1117,7 @@ void SetupIntrinsics5()
     normalize_Float32x3_arg.name = "val"_c;
     normalize_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     normalize_Float32x3.documentation = "Returns the normalized vector."_c;
-    normalize_Float32x3.name = "normalize"_c;
+    normalize_Float32x3.name = normalize_Float32x3_name;
     normalize_Float32x3.backendIndex = 1595;
     normalize_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     normalize_Float32x3.parameters = normalize_Float32x3_args;
@@ -1131,7 +1131,7 @@ void SetupIntrinsics5()
     normalize_Float32x4_arg.name = "val"_c;
     normalize_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     normalize_Float32x4.documentation = "Returns the normalized vector."_c;
-    normalize_Float32x4.name = "normalize"_c;
+    normalize_Float32x4.name = normalize_Float32x4_name;
     normalize_Float32x4.backendIndex = 1596;
     normalize_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     normalize_Float32x4.parameters = normalize_Float32x4_args;
@@ -1145,7 +1145,7 @@ void SetupIntrinsics5()
     normalize_Float16x2_arg.name = "val"_c;
     normalize_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     normalize_Float16x2.documentation = "Returns the normalized vector."_c;
-    normalize_Float16x2.name = "normalize"_c;
+    normalize_Float16x2.name = normalize_Float16x2_name;
     normalize_Float16x2.backendIndex = 1597;
     normalize_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     normalize_Float16x2.parameters = normalize_Float16x2_args;
@@ -1159,7 +1159,7 @@ void SetupIntrinsics5()
     normalize_Float16x3_arg.name = "val"_c;
     normalize_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     normalize_Float16x3.documentation = "Returns the normalized vector."_c;
-    normalize_Float16x3.name = "normalize"_c;
+    normalize_Float16x3.name = normalize_Float16x3_name;
     normalize_Float16x3.backendIndex = 1598;
     normalize_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     normalize_Float16x3.parameters = normalize_Float16x3_args;
@@ -1173,7 +1173,7 @@ void SetupIntrinsics5()
     normalize_Float16x4_arg.name = "val"_c;
     normalize_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     normalize_Float16x4.documentation = "Returns the normalized vector."_c;
-    normalize_Float16x4.name = "normalize"_c;
+    normalize_Float16x4.name = normalize_Float16x4_name;
     normalize_Float16x4.backendIndex = 1599;
     normalize_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     normalize_Float16x4.parameters = normalize_Float16x4_args;
@@ -1189,7 +1189,7 @@ void SetupIntrinsics5()
     distance_Float32x2_p1.name = "p1"_c;
     distance_Float32x2_p1.type = Type::FullType{ Float32x2Type.name };
     distance_Float32x2.documentation = "Returns the distance between two points."_c;
-    distance_Float32x2.name = "distance"_c;
+    distance_Float32x2.name = distance_Float32x2_name;
     distance_Float32x2.backendIndex = 1600;
     distance_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     distance_Float32x2.parameters = distance_Float32x2_args;
@@ -1206,7 +1206,7 @@ void SetupIntrinsics5()
     distance_Float32x3_p1.name = "p1"_c;
     distance_Float32x3_p1.type = Type::FullType{ Float32x3Type.name };
     distance_Float32x3.documentation = "Returns the distance between two points."_c;
-    distance_Float32x3.name = "distance"_c;
+    distance_Float32x3.name = distance_Float32x3_name;
     distance_Float32x3.backendIndex = 1601;
     distance_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     distance_Float32x3.parameters = distance_Float32x3_args;
@@ -1223,7 +1223,7 @@ void SetupIntrinsics5()
     distance_Float32x4_p1.name = "p1"_c;
     distance_Float32x4_p1.type = Type::FullType{ Float32x4Type.name };
     distance_Float32x4.documentation = "Returns the distance between two points."_c;
-    distance_Float32x4.name = "distance"_c;
+    distance_Float32x4.name = distance_Float32x4_name;
     distance_Float32x4.backendIndex = 1602;
     distance_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     distance_Float32x4.parameters = distance_Float32x4_args;
@@ -1240,7 +1240,7 @@ void SetupIntrinsics5()
     distance_Float16x2_p1.name = "p1"_c;
     distance_Float16x2_p1.type = Type::FullType{ Float16x2Type.name };
     distance_Float16x2.documentation = "Returns the distance between two points."_c;
-    distance_Float16x2.name = "distance"_c;
+    distance_Float16x2.name = distance_Float16x2_name;
     distance_Float16x2.backendIndex = 1603;
     distance_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     distance_Float16x2.parameters = distance_Float16x2_args;
@@ -1257,7 +1257,7 @@ void SetupIntrinsics5()
     distance_Float16x3_p1.name = "p1"_c;
     distance_Float16x3_p1.type = Type::FullType{ Float16x3Type.name };
     distance_Float16x3.documentation = "Returns the distance between two points."_c;
-    distance_Float16x3.name = "distance"_c;
+    distance_Float16x3.name = distance_Float16x3_name;
     distance_Float16x3.backendIndex = 1604;
     distance_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     distance_Float16x3.parameters = distance_Float16x3_args;
@@ -1274,7 +1274,7 @@ void SetupIntrinsics5()
     distance_Float16x4_p1.name = "p1"_c;
     distance_Float16x4_p1.type = Type::FullType{ Float16x4Type.name };
     distance_Float16x4.documentation = "Returns the distance between two points."_c;
-    distance_Float16x4.name = "distance"_c;
+    distance_Float16x4.name = distance_Float16x4_name;
     distance_Float16x4.backendIndex = 1605;
     distance_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     distance_Float16x4.parameters = distance_Float16x4_args;
@@ -1291,7 +1291,7 @@ void SetupIntrinsics5()
     min_Float32_y.name = "y"_c;
     min_Float32_y.type = Type::FullType{ Float32Type.name };
     min_Float32.documentation = "Returns the minimum of x and y."_c;
-    min_Float32.name = "min"_c;
+    min_Float32.name = min_Float32_name;
     min_Float32.backendIndex = 1606;
     min_Float32.returnType = Type::FullType { Float32Type.name };
     min_Float32.parameters = min_Float32_args;
@@ -1308,7 +1308,7 @@ void SetupIntrinsics5()
     min_Float32x2_y.name = "y"_c;
     min_Float32x2_y.type = Type::FullType{ Float32x2Type.name };
     min_Float32x2.documentation = "Returns the minimum of x and y."_c;
-    min_Float32x2.name = "min"_c;
+    min_Float32x2.name = min_Float32x2_name;
     min_Float32x2.backendIndex = 1607;
     min_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     min_Float32x2.parameters = min_Float32x2_args;
@@ -1325,7 +1325,7 @@ void SetupIntrinsics5()
     min_Float32x3_y.name = "y"_c;
     min_Float32x3_y.type = Type::FullType{ Float32x3Type.name };
     min_Float32x3.documentation = "Returns the minimum of x and y."_c;
-    min_Float32x3.name = "min"_c;
+    min_Float32x3.name = min_Float32x3_name;
     min_Float32x3.backendIndex = 1608;
     min_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     min_Float32x3.parameters = min_Float32x3_args;
@@ -1342,7 +1342,7 @@ void SetupIntrinsics5()
     min_Float32x4_y.name = "y"_c;
     min_Float32x4_y.type = Type::FullType{ Float32x4Type.name };
     min_Float32x4.documentation = "Returns the minimum of x and y."_c;
-    min_Float32x4.name = "min"_c;
+    min_Float32x4.name = min_Float32x4_name;
     min_Float32x4.backendIndex = 1609;
     min_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     min_Float32x4.parameters = min_Float32x4_args;
@@ -1359,7 +1359,7 @@ void SetupIntrinsics5()
     min_Float16_y.name = "y"_c;
     min_Float16_y.type = Type::FullType{ Float16Type.name };
     min_Float16.documentation = "Returns the minimum of x and y."_c;
-    min_Float16.name = "min"_c;
+    min_Float16.name = min_Float16_name;
     min_Float16.backendIndex = 1610;
     min_Float16.returnType = Type::FullType { Float16Type.name };
     min_Float16.parameters = min_Float16_args;
@@ -1376,7 +1376,7 @@ void SetupIntrinsics5()
     min_Float16x2_y.name = "y"_c;
     min_Float16x2_y.type = Type::FullType{ Float16x2Type.name };
     min_Float16x2.documentation = "Returns the minimum of x and y."_c;
-    min_Float16x2.name = "min"_c;
+    min_Float16x2.name = min_Float16x2_name;
     min_Float16x2.backendIndex = 1611;
     min_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     min_Float16x2.parameters = min_Float16x2_args;
@@ -1393,7 +1393,7 @@ void SetupIntrinsics5()
     min_Float16x3_y.name = "y"_c;
     min_Float16x3_y.type = Type::FullType{ Float16x3Type.name };
     min_Float16x3.documentation = "Returns the minimum of x and y."_c;
-    min_Float16x3.name = "min"_c;
+    min_Float16x3.name = min_Float16x3_name;
     min_Float16x3.backendIndex = 1612;
     min_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     min_Float16x3.parameters = min_Float16x3_args;
@@ -1410,7 +1410,7 @@ void SetupIntrinsics5()
     min_Float16x4_y.name = "y"_c;
     min_Float16x4_y.type = Type::FullType{ Float16x4Type.name };
     min_Float16x4.documentation = "Returns the minimum of x and y."_c;
-    min_Float16x4.name = "min"_c;
+    min_Float16x4.name = min_Float16x4_name;
     min_Float16x4.backendIndex = 1613;
     min_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     min_Float16x4.parameters = min_Float16x4_args;
@@ -1427,7 +1427,7 @@ void SetupIntrinsics5()
     min_Int32_y.name = "y"_c;
     min_Int32_y.type = Type::FullType{ Int32Type.name };
     min_Int32.documentation = "Returns the minimum of x and y."_c;
-    min_Int32.name = "min"_c;
+    min_Int32.name = min_Int32_name;
     min_Int32.backendIndex = 1614;
     min_Int32.returnType = Type::FullType { Int32Type.name };
     min_Int32.parameters = min_Int32_args;
@@ -1444,7 +1444,7 @@ void SetupIntrinsics5()
     min_Int32x2_y.name = "y"_c;
     min_Int32x2_y.type = Type::FullType{ Int32x2Type.name };
     min_Int32x2.documentation = "Returns the minimum of x and y."_c;
-    min_Int32x2.name = "min"_c;
+    min_Int32x2.name = min_Int32x2_name;
     min_Int32x2.backendIndex = 1615;
     min_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     min_Int32x2.parameters = min_Int32x2_args;
@@ -1461,7 +1461,7 @@ void SetupIntrinsics5()
     min_Int32x3_y.name = "y"_c;
     min_Int32x3_y.type = Type::FullType{ Int32x3Type.name };
     min_Int32x3.documentation = "Returns the minimum of x and y."_c;
-    min_Int32x3.name = "min"_c;
+    min_Int32x3.name = min_Int32x3_name;
     min_Int32x3.backendIndex = 1616;
     min_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     min_Int32x3.parameters = min_Int32x3_args;
@@ -1478,7 +1478,7 @@ void SetupIntrinsics5()
     min_Int32x4_y.name = "y"_c;
     min_Int32x4_y.type = Type::FullType{ Int32x4Type.name };
     min_Int32x4.documentation = "Returns the minimum of x and y."_c;
-    min_Int32x4.name = "min"_c;
+    min_Int32x4.name = min_Int32x4_name;
     min_Int32x4.backendIndex = 1617;
     min_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     min_Int32x4.parameters = min_Int32x4_args;
@@ -1495,7 +1495,7 @@ void SetupIntrinsics5()
     min_Int16_y.name = "y"_c;
     min_Int16_y.type = Type::FullType{ Int16Type.name };
     min_Int16.documentation = "Returns the minimum of x and y."_c;
-    min_Int16.name = "min"_c;
+    min_Int16.name = min_Int16_name;
     min_Int16.backendIndex = 1618;
     min_Int16.returnType = Type::FullType { Int16Type.name };
     min_Int16.parameters = min_Int16_args;
@@ -1512,7 +1512,7 @@ void SetupIntrinsics5()
     min_Int16x2_y.name = "y"_c;
     min_Int16x2_y.type = Type::FullType{ Int16x2Type.name };
     min_Int16x2.documentation = "Returns the minimum of x and y."_c;
-    min_Int16x2.name = "min"_c;
+    min_Int16x2.name = min_Int16x2_name;
     min_Int16x2.backendIndex = 1619;
     min_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     min_Int16x2.parameters = min_Int16x2_args;
@@ -1529,7 +1529,7 @@ void SetupIntrinsics5()
     min_Int16x3_y.name = "y"_c;
     min_Int16x3_y.type = Type::FullType{ Int16x3Type.name };
     min_Int16x3.documentation = "Returns the minimum of x and y."_c;
-    min_Int16x3.name = "min"_c;
+    min_Int16x3.name = min_Int16x3_name;
     min_Int16x3.backendIndex = 1620;
     min_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     min_Int16x3.parameters = min_Int16x3_args;
@@ -1546,7 +1546,7 @@ void SetupIntrinsics5()
     min_Int16x4_y.name = "y"_c;
     min_Int16x4_y.type = Type::FullType{ Int16x4Type.name };
     min_Int16x4.documentation = "Returns the minimum of x and y."_c;
-    min_Int16x4.name = "min"_c;
+    min_Int16x4.name = min_Int16x4_name;
     min_Int16x4.backendIndex = 1621;
     min_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     min_Int16x4.parameters = min_Int16x4_args;
@@ -1563,7 +1563,7 @@ void SetupIntrinsics5()
     min_UInt32_y.name = "y"_c;
     min_UInt32_y.type = Type::FullType{ UInt32Type.name };
     min_UInt32.documentation = "Returns the minimum of x and y."_c;
-    min_UInt32.name = "min"_c;
+    min_UInt32.name = min_UInt32_name;
     min_UInt32.backendIndex = 1622;
     min_UInt32.returnType = Type::FullType { UInt32Type.name };
     min_UInt32.parameters = min_UInt32_args;
@@ -1580,7 +1580,7 @@ void SetupIntrinsics5()
     min_UInt32x2_y.name = "y"_c;
     min_UInt32x2_y.type = Type::FullType{ UInt32x2Type.name };
     min_UInt32x2.documentation = "Returns the minimum of x and y."_c;
-    min_UInt32x2.name = "min"_c;
+    min_UInt32x2.name = min_UInt32x2_name;
     min_UInt32x2.backendIndex = 1623;
     min_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
     min_UInt32x2.parameters = min_UInt32x2_args;
@@ -1597,7 +1597,7 @@ void SetupIntrinsics5()
     min_UInt32x3_y.name = "y"_c;
     min_UInt32x3_y.type = Type::FullType{ UInt32x3Type.name };
     min_UInt32x3.documentation = "Returns the minimum of x and y."_c;
-    min_UInt32x3.name = "min"_c;
+    min_UInt32x3.name = min_UInt32x3_name;
     min_UInt32x3.backendIndex = 1624;
     min_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
     min_UInt32x3.parameters = min_UInt32x3_args;
@@ -1614,7 +1614,7 @@ void SetupIntrinsics5()
     min_UInt32x4_y.name = "y"_c;
     min_UInt32x4_y.type = Type::FullType{ UInt32x4Type.name };
     min_UInt32x4.documentation = "Returns the minimum of x and y."_c;
-    min_UInt32x4.name = "min"_c;
+    min_UInt32x4.name = min_UInt32x4_name;
     min_UInt32x4.backendIndex = 1625;
     min_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
     min_UInt32x4.parameters = min_UInt32x4_args;
@@ -1631,7 +1631,7 @@ void SetupIntrinsics5()
     min_UInt16_y.name = "y"_c;
     min_UInt16_y.type = Type::FullType{ UInt16Type.name };
     min_UInt16.documentation = "Returns the minimum of x and y."_c;
-    min_UInt16.name = "min"_c;
+    min_UInt16.name = min_UInt16_name;
     min_UInt16.backendIndex = 1626;
     min_UInt16.returnType = Type::FullType { UInt16Type.name };
     min_UInt16.parameters = min_UInt16_args;
@@ -1648,7 +1648,7 @@ void SetupIntrinsics5()
     min_UInt16x2_y.name = "y"_c;
     min_UInt16x2_y.type = Type::FullType{ UInt16x2Type.name };
     min_UInt16x2.documentation = "Returns the minimum of x and y."_c;
-    min_UInt16x2.name = "min"_c;
+    min_UInt16x2.name = min_UInt16x2_name;
     min_UInt16x2.backendIndex = 1627;
     min_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
     min_UInt16x2.parameters = min_UInt16x2_args;
@@ -1665,7 +1665,7 @@ void SetupIntrinsics5()
     min_UInt16x3_y.name = "y"_c;
     min_UInt16x3_y.type = Type::FullType{ UInt16x3Type.name };
     min_UInt16x3.documentation = "Returns the minimum of x and y."_c;
-    min_UInt16x3.name = "min"_c;
+    min_UInt16x3.name = min_UInt16x3_name;
     min_UInt16x3.backendIndex = 1628;
     min_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
     min_UInt16x3.parameters = min_UInt16x3_args;
@@ -1682,7 +1682,7 @@ void SetupIntrinsics5()
     min_UInt16x4_y.name = "y"_c;
     min_UInt16x4_y.type = Type::FullType{ UInt16x4Type.name };
     min_UInt16x4.documentation = "Returns the minimum of x and y."_c;
-    min_UInt16x4.name = "min"_c;
+    min_UInt16x4.name = min_UInt16x4_name;
     min_UInt16x4.backendIndex = 1629;
     min_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
     min_UInt16x4.parameters = min_UInt16x4_args;
@@ -1699,7 +1699,7 @@ void SetupIntrinsics5()
     max_Float32_y.name = "y"_c;
     max_Float32_y.type = Type::FullType{ Float32Type.name };
     max_Float32.documentation = "Returns the maximum of x and y."_c;
-    max_Float32.name = "max"_c;
+    max_Float32.name = max_Float32_name;
     max_Float32.backendIndex = 1630;
     max_Float32.returnType = Type::FullType { Float32Type.name };
     max_Float32.parameters = max_Float32_args;
@@ -1716,7 +1716,7 @@ void SetupIntrinsics5()
     max_Float32x2_y.name = "y"_c;
     max_Float32x2_y.type = Type::FullType{ Float32x2Type.name };
     max_Float32x2.documentation = "Returns the maximum of x and y."_c;
-    max_Float32x2.name = "max"_c;
+    max_Float32x2.name = max_Float32x2_name;
     max_Float32x2.backendIndex = 1631;
     max_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     max_Float32x2.parameters = max_Float32x2_args;
@@ -1733,7 +1733,7 @@ void SetupIntrinsics5()
     max_Float32x3_y.name = "y"_c;
     max_Float32x3_y.type = Type::FullType{ Float32x3Type.name };
     max_Float32x3.documentation = "Returns the maximum of x and y."_c;
-    max_Float32x3.name = "max"_c;
+    max_Float32x3.name = max_Float32x3_name;
     max_Float32x3.backendIndex = 1632;
     max_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     max_Float32x3.parameters = max_Float32x3_args;
@@ -1750,7 +1750,7 @@ void SetupIntrinsics5()
     max_Float32x4_y.name = "y"_c;
     max_Float32x4_y.type = Type::FullType{ Float32x4Type.name };
     max_Float32x4.documentation = "Returns the maximum of x and y."_c;
-    max_Float32x4.name = "max"_c;
+    max_Float32x4.name = max_Float32x4_name;
     max_Float32x4.backendIndex = 1633;
     max_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     max_Float32x4.parameters = max_Float32x4_args;
@@ -1767,7 +1767,7 @@ void SetupIntrinsics5()
     max_Float16_y.name = "y"_c;
     max_Float16_y.type = Type::FullType{ Float16Type.name };
     max_Float16.documentation = "Returns the maximum of x and y."_c;
-    max_Float16.name = "max"_c;
+    max_Float16.name = max_Float16_name;
     max_Float16.backendIndex = 1634;
     max_Float16.returnType = Type::FullType { Float16Type.name };
     max_Float16.parameters = max_Float16_args;
@@ -1784,7 +1784,7 @@ void SetupIntrinsics5()
     max_Float16x2_y.name = "y"_c;
     max_Float16x2_y.type = Type::FullType{ Float16x2Type.name };
     max_Float16x2.documentation = "Returns the maximum of x and y."_c;
-    max_Float16x2.name = "max"_c;
+    max_Float16x2.name = max_Float16x2_name;
     max_Float16x2.backendIndex = 1635;
     max_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     max_Float16x2.parameters = max_Float16x2_args;
@@ -1801,7 +1801,7 @@ void SetupIntrinsics5()
     max_Float16x3_y.name = "y"_c;
     max_Float16x3_y.type = Type::FullType{ Float16x3Type.name };
     max_Float16x3.documentation = "Returns the maximum of x and y."_c;
-    max_Float16x3.name = "max"_c;
+    max_Float16x3.name = max_Float16x3_name;
     max_Float16x3.backendIndex = 1636;
     max_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     max_Float16x3.parameters = max_Float16x3_args;
@@ -1818,7 +1818,7 @@ void SetupIntrinsics5()
     max_Float16x4_y.name = "y"_c;
     max_Float16x4_y.type = Type::FullType{ Float16x4Type.name };
     max_Float16x4.documentation = "Returns the maximum of x and y."_c;
-    max_Float16x4.name = "max"_c;
+    max_Float16x4.name = max_Float16x4_name;
     max_Float16x4.backendIndex = 1637;
     max_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     max_Float16x4.parameters = max_Float16x4_args;
@@ -1835,7 +1835,7 @@ void SetupIntrinsics5()
     max_Int32_y.name = "y"_c;
     max_Int32_y.type = Type::FullType{ Int32Type.name };
     max_Int32.documentation = "Returns the maximum of x and y."_c;
-    max_Int32.name = "max"_c;
+    max_Int32.name = max_Int32_name;
     max_Int32.backendIndex = 1638;
     max_Int32.returnType = Type::FullType { Int32Type.name };
     max_Int32.parameters = max_Int32_args;
@@ -1852,7 +1852,7 @@ void SetupIntrinsics5()
     max_Int32x2_y.name = "y"_c;
     max_Int32x2_y.type = Type::FullType{ Int32x2Type.name };
     max_Int32x2.documentation = "Returns the maximum of x and y."_c;
-    max_Int32x2.name = "max"_c;
+    max_Int32x2.name = max_Int32x2_name;
     max_Int32x2.backendIndex = 1639;
     max_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     max_Int32x2.parameters = max_Int32x2_args;
@@ -1869,7 +1869,7 @@ void SetupIntrinsics5()
     max_Int32x3_y.name = "y"_c;
     max_Int32x3_y.type = Type::FullType{ Int32x3Type.name };
     max_Int32x3.documentation = "Returns the maximum of x and y."_c;
-    max_Int32x3.name = "max"_c;
+    max_Int32x3.name = max_Int32x3_name;
     max_Int32x3.backendIndex = 1640;
     max_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     max_Int32x3.parameters = max_Int32x3_args;
@@ -1886,7 +1886,7 @@ void SetupIntrinsics5()
     max_Int32x4_y.name = "y"_c;
     max_Int32x4_y.type = Type::FullType{ Int32x4Type.name };
     max_Int32x4.documentation = "Returns the maximum of x and y."_c;
-    max_Int32x4.name = "max"_c;
+    max_Int32x4.name = max_Int32x4_name;
     max_Int32x4.backendIndex = 1641;
     max_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     max_Int32x4.parameters = max_Int32x4_args;
@@ -1903,7 +1903,7 @@ void SetupIntrinsics5()
     max_Int16_y.name = "y"_c;
     max_Int16_y.type = Type::FullType{ Int16Type.name };
     max_Int16.documentation = "Returns the maximum of x and y."_c;
-    max_Int16.name = "max"_c;
+    max_Int16.name = max_Int16_name;
     max_Int16.backendIndex = 1642;
     max_Int16.returnType = Type::FullType { Int16Type.name };
     max_Int16.parameters = max_Int16_args;
@@ -1920,7 +1920,7 @@ void SetupIntrinsics5()
     max_Int16x2_y.name = "y"_c;
     max_Int16x2_y.type = Type::FullType{ Int16x2Type.name };
     max_Int16x2.documentation = "Returns the maximum of x and y."_c;
-    max_Int16x2.name = "max"_c;
+    max_Int16x2.name = max_Int16x2_name;
     max_Int16x2.backendIndex = 1643;
     max_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     max_Int16x2.parameters = max_Int16x2_args;
@@ -1937,7 +1937,7 @@ void SetupIntrinsics5()
     max_Int16x3_y.name = "y"_c;
     max_Int16x3_y.type = Type::FullType{ Int16x3Type.name };
     max_Int16x3.documentation = "Returns the maximum of x and y."_c;
-    max_Int16x3.name = "max"_c;
+    max_Int16x3.name = max_Int16x3_name;
     max_Int16x3.backendIndex = 1644;
     max_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     max_Int16x3.parameters = max_Int16x3_args;
@@ -1954,7 +1954,7 @@ void SetupIntrinsics5()
     max_Int16x4_y.name = "y"_c;
     max_Int16x4_y.type = Type::FullType{ Int16x4Type.name };
     max_Int16x4.documentation = "Returns the maximum of x and y."_c;
-    max_Int16x4.name = "max"_c;
+    max_Int16x4.name = max_Int16x4_name;
     max_Int16x4.backendIndex = 1645;
     max_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     max_Int16x4.parameters = max_Int16x4_args;
@@ -1971,7 +1971,7 @@ void SetupIntrinsics5()
     max_UInt32_y.name = "y"_c;
     max_UInt32_y.type = Type::FullType{ UInt32Type.name };
     max_UInt32.documentation = "Returns the maximum of x and y."_c;
-    max_UInt32.name = "max"_c;
+    max_UInt32.name = max_UInt32_name;
     max_UInt32.backendIndex = 1646;
     max_UInt32.returnType = Type::FullType { UInt32Type.name };
     max_UInt32.parameters = max_UInt32_args;
@@ -1988,7 +1988,7 @@ void SetupIntrinsics5()
     max_UInt32x2_y.name = "y"_c;
     max_UInt32x2_y.type = Type::FullType{ UInt32x2Type.name };
     max_UInt32x2.documentation = "Returns the maximum of x and y."_c;
-    max_UInt32x2.name = "max"_c;
+    max_UInt32x2.name = max_UInt32x2_name;
     max_UInt32x2.backendIndex = 1647;
     max_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
     max_UInt32x2.parameters = max_UInt32x2_args;
@@ -2005,7 +2005,7 @@ void SetupIntrinsics5()
     max_UInt32x3_y.name = "y"_c;
     max_UInt32x3_y.type = Type::FullType{ UInt32x3Type.name };
     max_UInt32x3.documentation = "Returns the maximum of x and y."_c;
-    max_UInt32x3.name = "max"_c;
+    max_UInt32x3.name = max_UInt32x3_name;
     max_UInt32x3.backendIndex = 1648;
     max_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
     max_UInt32x3.parameters = max_UInt32x3_args;
@@ -2022,7 +2022,7 @@ void SetupIntrinsics5()
     max_UInt32x4_y.name = "y"_c;
     max_UInt32x4_y.type = Type::FullType{ UInt32x4Type.name };
     max_UInt32x4.documentation = "Returns the maximum of x and y."_c;
-    max_UInt32x4.name = "max"_c;
+    max_UInt32x4.name = max_UInt32x4_name;
     max_UInt32x4.backendIndex = 1649;
     max_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
     max_UInt32x4.parameters = max_UInt32x4_args;
@@ -2039,7 +2039,7 @@ void SetupIntrinsics5()
     max_UInt16_y.name = "y"_c;
     max_UInt16_y.type = Type::FullType{ UInt16Type.name };
     max_UInt16.documentation = "Returns the maximum of x and y."_c;
-    max_UInt16.name = "max"_c;
+    max_UInt16.name = max_UInt16_name;
     max_UInt16.backendIndex = 1650;
     max_UInt16.returnType = Type::FullType { UInt16Type.name };
     max_UInt16.parameters = max_UInt16_args;
@@ -2056,7 +2056,7 @@ void SetupIntrinsics5()
     max_UInt16x2_y.name = "y"_c;
     max_UInt16x2_y.type = Type::FullType{ UInt16x2Type.name };
     max_UInt16x2.documentation = "Returns the maximum of x and y."_c;
-    max_UInt16x2.name = "max"_c;
+    max_UInt16x2.name = max_UInt16x2_name;
     max_UInt16x2.backendIndex = 1651;
     max_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
     max_UInt16x2.parameters = max_UInt16x2_args;
@@ -2073,7 +2073,7 @@ void SetupIntrinsics5()
     max_UInt16x3_y.name = "y"_c;
     max_UInt16x3_y.type = Type::FullType{ UInt16x3Type.name };
     max_UInt16x3.documentation = "Returns the maximum of x and y."_c;
-    max_UInt16x3.name = "max"_c;
+    max_UInt16x3.name = max_UInt16x3_name;
     max_UInt16x3.backendIndex = 1652;
     max_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
     max_UInt16x3.parameters = max_UInt16x3_args;
@@ -2090,7 +2090,7 @@ void SetupIntrinsics5()
     max_UInt16x4_y.name = "y"_c;
     max_UInt16x4_y.type = Type::FullType{ UInt16x4Type.name };
     max_UInt16x4.documentation = "Returns the maximum of x and y."_c;
-    max_UInt16x4.name = "max"_c;
+    max_UInt16x4.name = max_UInt16x4_name;
     max_UInt16x4.backendIndex = 1653;
     max_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
     max_UInt16x4.parameters = max_UInt16x4_args;
@@ -2109,7 +2109,7 @@ void SetupIntrinsics5()
     clamp_Float32_max.name = "max"_c;
     clamp_Float32_max.type = Type::FullType{ Float32Type.name };
     clamp_Float32.documentation = "Returns the value clamped between min and max."_c;
-    clamp_Float32.name = "clamp"_c;
+    clamp_Float32.name = clamp_Float32_name;
     clamp_Float32.backendIndex = 1654;
     clamp_Float32.returnType = Type::FullType { Float32Type.name };
     clamp_Float32.parameters = clamp_Float32_args;
@@ -2129,7 +2129,7 @@ void SetupIntrinsics5()
     clamp_Float32x2_max.name = "max"_c;
     clamp_Float32x2_max.type = Type::FullType{ Float32x2Type.name };
     clamp_Float32x2.documentation = "Returns the value clamped between min and max."_c;
-    clamp_Float32x2.name = "clamp"_c;
+    clamp_Float32x2.name = clamp_Float32x2_name;
     clamp_Float32x2.backendIndex = 1655;
     clamp_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     clamp_Float32x2.parameters = clamp_Float32x2_args;
@@ -2149,7 +2149,7 @@ void SetupIntrinsics5()
     clamp_Float32x3_max.name = "max"_c;
     clamp_Float32x3_max.type = Type::FullType{ Float32x3Type.name };
     clamp_Float32x3.documentation = "Returns the value clamped between min and max."_c;
-    clamp_Float32x3.name = "clamp"_c;
+    clamp_Float32x3.name = clamp_Float32x3_name;
     clamp_Float32x3.backendIndex = 1656;
     clamp_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     clamp_Float32x3.parameters = clamp_Float32x3_args;
@@ -2169,7 +2169,7 @@ void SetupIntrinsics5()
     clamp_Float32x4_max.name = "max"_c;
     clamp_Float32x4_max.type = Type::FullType{ Float32x4Type.name };
     clamp_Float32x4.documentation = "Returns the value clamped between min and max."_c;
-    clamp_Float32x4.name = "clamp"_c;
+    clamp_Float32x4.name = clamp_Float32x4_name;
     clamp_Float32x4.backendIndex = 1657;
     clamp_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     clamp_Float32x4.parameters = clamp_Float32x4_args;
@@ -2189,7 +2189,7 @@ void SetupIntrinsics5()
     clamp_Float16_max.name = "max"_c;
     clamp_Float16_max.type = Type::FullType{ Float16Type.name };
     clamp_Float16.documentation = "Returns the value clamped between min and max."_c;
-    clamp_Float16.name = "clamp"_c;
+    clamp_Float16.name = clamp_Float16_name;
     clamp_Float16.backendIndex = 1658;
     clamp_Float16.returnType = Type::FullType { Float16Type.name };
     clamp_Float16.parameters = clamp_Float16_args;
@@ -2209,7 +2209,7 @@ void SetupIntrinsics5()
     clamp_Float16x2_max.name = "max"_c;
     clamp_Float16x2_max.type = Type::FullType{ Float16x2Type.name };
     clamp_Float16x2.documentation = "Returns the value clamped between min and max."_c;
-    clamp_Float16x2.name = "clamp"_c;
+    clamp_Float16x2.name = clamp_Float16x2_name;
     clamp_Float16x2.backendIndex = 1659;
     clamp_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     clamp_Float16x2.parameters = clamp_Float16x2_args;
@@ -2229,7 +2229,7 @@ void SetupIntrinsics5()
     clamp_Float16x3_max.name = "max"_c;
     clamp_Float16x3_max.type = Type::FullType{ Float16x3Type.name };
     clamp_Float16x3.documentation = "Returns the value clamped between min and max."_c;
-    clamp_Float16x3.name = "clamp"_c;
+    clamp_Float16x3.name = clamp_Float16x3_name;
     clamp_Float16x3.backendIndex = 1660;
     clamp_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     clamp_Float16x3.parameters = clamp_Float16x3_args;
@@ -2249,7 +2249,7 @@ void SetupIntrinsics5()
     clamp_Float16x4_max.name = "max"_c;
     clamp_Float16x4_max.type = Type::FullType{ Float16x4Type.name };
     clamp_Float16x4.documentation = "Returns the value clamped between min and max."_c;
-    clamp_Float16x4.name = "clamp"_c;
+    clamp_Float16x4.name = clamp_Float16x4_name;
     clamp_Float16x4.backendIndex = 1661;
     clamp_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     clamp_Float16x4.parameters = clamp_Float16x4_args;
@@ -2269,7 +2269,7 @@ void SetupIntrinsics5()
     clamp_Int32_max.name = "max"_c;
     clamp_Int32_max.type = Type::FullType{ Int32Type.name };
     clamp_Int32.documentation = "Returns the value clamped between min and max."_c;
-    clamp_Int32.name = "clamp"_c;
+    clamp_Int32.name = clamp_Int32_name;
     clamp_Int32.backendIndex = 1662;
     clamp_Int32.returnType = Type::FullType { Int32Type.name };
     clamp_Int32.parameters = clamp_Int32_args;
@@ -2289,7 +2289,7 @@ void SetupIntrinsics5()
     clamp_Int32x2_max.name = "max"_c;
     clamp_Int32x2_max.type = Type::FullType{ Int32x2Type.name };
     clamp_Int32x2.documentation = "Returns the value clamped between min and max."_c;
-    clamp_Int32x2.name = "clamp"_c;
+    clamp_Int32x2.name = clamp_Int32x2_name;
     clamp_Int32x2.backendIndex = 1663;
     clamp_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     clamp_Int32x2.parameters = clamp_Int32x2_args;
@@ -2309,7 +2309,7 @@ void SetupIntrinsics5()
     clamp_Int32x3_max.name = "max"_c;
     clamp_Int32x3_max.type = Type::FullType{ Int32x3Type.name };
     clamp_Int32x3.documentation = "Returns the value clamped between min and max."_c;
-    clamp_Int32x3.name = "clamp"_c;
+    clamp_Int32x3.name = clamp_Int32x3_name;
     clamp_Int32x3.backendIndex = 1664;
     clamp_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     clamp_Int32x3.parameters = clamp_Int32x3_args;
@@ -2329,7 +2329,7 @@ void SetupIntrinsics5()
     clamp_Int32x4_max.name = "max"_c;
     clamp_Int32x4_max.type = Type::FullType{ Int32x4Type.name };
     clamp_Int32x4.documentation = "Returns the value clamped between min and max."_c;
-    clamp_Int32x4.name = "clamp"_c;
+    clamp_Int32x4.name = clamp_Int32x4_name;
     clamp_Int32x4.backendIndex = 1665;
     clamp_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     clamp_Int32x4.parameters = clamp_Int32x4_args;
@@ -2349,7 +2349,7 @@ void SetupIntrinsics5()
     clamp_Int16_max.name = "max"_c;
     clamp_Int16_max.type = Type::FullType{ Int16Type.name };
     clamp_Int16.documentation = "Returns the value clamped between min and max."_c;
-    clamp_Int16.name = "clamp"_c;
+    clamp_Int16.name = clamp_Int16_name;
     clamp_Int16.backendIndex = 1666;
     clamp_Int16.returnType = Type::FullType { Int16Type.name };
     clamp_Int16.parameters = clamp_Int16_args;
@@ -2369,7 +2369,7 @@ void SetupIntrinsics5()
     clamp_Int16x2_max.name = "max"_c;
     clamp_Int16x2_max.type = Type::FullType{ Int16x2Type.name };
     clamp_Int16x2.documentation = "Returns the value clamped between min and max."_c;
-    clamp_Int16x2.name = "clamp"_c;
+    clamp_Int16x2.name = clamp_Int16x2_name;
     clamp_Int16x2.backendIndex = 1667;
     clamp_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     clamp_Int16x2.parameters = clamp_Int16x2_args;
@@ -2389,7 +2389,7 @@ void SetupIntrinsics5()
     clamp_Int16x3_max.name = "max"_c;
     clamp_Int16x3_max.type = Type::FullType{ Int16x3Type.name };
     clamp_Int16x3.documentation = "Returns the value clamped between min and max."_c;
-    clamp_Int16x3.name = "clamp"_c;
+    clamp_Int16x3.name = clamp_Int16x3_name;
     clamp_Int16x3.backendIndex = 1668;
     clamp_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     clamp_Int16x3.parameters = clamp_Int16x3_args;
@@ -2409,7 +2409,7 @@ void SetupIntrinsics5()
     clamp_Int16x4_max.name = "max"_c;
     clamp_Int16x4_max.type = Type::FullType{ Int16x4Type.name };
     clamp_Int16x4.documentation = "Returns the value clamped between min and max."_c;
-    clamp_Int16x4.name = "clamp"_c;
+    clamp_Int16x4.name = clamp_Int16x4_name;
     clamp_Int16x4.backendIndex = 1669;
     clamp_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     clamp_Int16x4.parameters = clamp_Int16x4_args;
@@ -2429,7 +2429,7 @@ void SetupIntrinsics5()
     clamp_UInt32_max.name = "max"_c;
     clamp_UInt32_max.type = Type::FullType{ UInt32Type.name };
     clamp_UInt32.documentation = "Returns the value clamped between min and max."_c;
-    clamp_UInt32.name = "clamp"_c;
+    clamp_UInt32.name = clamp_UInt32_name;
     clamp_UInt32.backendIndex = 1670;
     clamp_UInt32.returnType = Type::FullType { UInt32Type.name };
     clamp_UInt32.parameters = clamp_UInt32_args;
@@ -2449,7 +2449,7 @@ void SetupIntrinsics5()
     clamp_UInt32x2_max.name = "max"_c;
     clamp_UInt32x2_max.type = Type::FullType{ UInt32x2Type.name };
     clamp_UInt32x2.documentation = "Returns the value clamped between min and max."_c;
-    clamp_UInt32x2.name = "clamp"_c;
+    clamp_UInt32x2.name = clamp_UInt32x2_name;
     clamp_UInt32x2.backendIndex = 1671;
     clamp_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
     clamp_UInt32x2.parameters = clamp_UInt32x2_args;
@@ -2469,7 +2469,7 @@ void SetupIntrinsics5()
     clamp_UInt32x3_max.name = "max"_c;
     clamp_UInt32x3_max.type = Type::FullType{ UInt32x3Type.name };
     clamp_UInt32x3.documentation = "Returns the value clamped between min and max."_c;
-    clamp_UInt32x3.name = "clamp"_c;
+    clamp_UInt32x3.name = clamp_UInt32x3_name;
     clamp_UInt32x3.backendIndex = 1672;
     clamp_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
     clamp_UInt32x3.parameters = clamp_UInt32x3_args;
@@ -2489,7 +2489,7 @@ void SetupIntrinsics5()
     clamp_UInt32x4_max.name = "max"_c;
     clamp_UInt32x4_max.type = Type::FullType{ UInt32x4Type.name };
     clamp_UInt32x4.documentation = "Returns the value clamped between min and max."_c;
-    clamp_UInt32x4.name = "clamp"_c;
+    clamp_UInt32x4.name = clamp_UInt32x4_name;
     clamp_UInt32x4.backendIndex = 1673;
     clamp_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
     clamp_UInt32x4.parameters = clamp_UInt32x4_args;
@@ -2509,7 +2509,7 @@ void SetupIntrinsics5()
     clamp_UInt16_max.name = "max"_c;
     clamp_UInt16_max.type = Type::FullType{ UInt16Type.name };
     clamp_UInt16.documentation = "Returns the value clamped between min and max."_c;
-    clamp_UInt16.name = "clamp"_c;
+    clamp_UInt16.name = clamp_UInt16_name;
     clamp_UInt16.backendIndex = 1674;
     clamp_UInt16.returnType = Type::FullType { UInt16Type.name };
     clamp_UInt16.parameters = clamp_UInt16_args;
@@ -2529,7 +2529,7 @@ void SetupIntrinsics5()
     clamp_UInt16x2_max.name = "max"_c;
     clamp_UInt16x2_max.type = Type::FullType{ UInt16x2Type.name };
     clamp_UInt16x2.documentation = "Returns the value clamped between min and max."_c;
-    clamp_UInt16x2.name = "clamp"_c;
+    clamp_UInt16x2.name = clamp_UInt16x2_name;
     clamp_UInt16x2.backendIndex = 1675;
     clamp_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
     clamp_UInt16x2.parameters = clamp_UInt16x2_args;
@@ -2549,7 +2549,7 @@ void SetupIntrinsics5()
     clamp_UInt16x3_max.name = "max"_c;
     clamp_UInt16x3_max.type = Type::FullType{ UInt16x3Type.name };
     clamp_UInt16x3.documentation = "Returns the value clamped between min and max."_c;
-    clamp_UInt16x3.name = "clamp"_c;
+    clamp_UInt16x3.name = clamp_UInt16x3_name;
     clamp_UInt16x3.backendIndex = 1676;
     clamp_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
     clamp_UInt16x3.parameters = clamp_UInt16x3_args;
@@ -2569,7 +2569,7 @@ void SetupIntrinsics5()
     clamp_UInt16x4_max.name = "max"_c;
     clamp_UInt16x4_max.type = Type::FullType{ UInt16x4Type.name };
     clamp_UInt16x4.documentation = "Returns the value clamped between min and max."_c;
-    clamp_UInt16x4.name = "clamp"_c;
+    clamp_UInt16x4.name = clamp_UInt16x4_name;
     clamp_UInt16x4.backendIndex = 1677;
     clamp_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
     clamp_UInt16x4.parameters = clamp_UInt16x4_args;
@@ -2589,7 +2589,7 @@ void SetupIntrinsics5()
     lerp_Float32_t.name = "t"_c;
     lerp_Float32_t.type = Type::FullType{ Float32Type.name };
     lerp_Float32.documentation = "Returns the linear interpolation between a and b by t."_c;
-    lerp_Float32.name = "lerp"_c;
+    lerp_Float32.name = lerp_Float32_name;
     lerp_Float32.backendIndex = 1678;
     lerp_Float32.returnType = Type::FullType { Float32Type.name };
     lerp_Float32.parameters = lerp_Float32_args;
@@ -2609,7 +2609,7 @@ void SetupIntrinsics5()
     lerp_Float32x2_t.name = "t"_c;
     lerp_Float32x2_t.type = Type::FullType{ Float32x2Type.name };
     lerp_Float32x2.documentation = "Returns the linear interpolation between a and b by t."_c;
-    lerp_Float32x2.name = "lerp"_c;
+    lerp_Float32x2.name = lerp_Float32x2_name;
     lerp_Float32x2.backendIndex = 1679;
     lerp_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     lerp_Float32x2.parameters = lerp_Float32x2_args;
@@ -2629,7 +2629,7 @@ void SetupIntrinsics5()
     lerp_Float32x3_t.name = "t"_c;
     lerp_Float32x3_t.type = Type::FullType{ Float32x3Type.name };
     lerp_Float32x3.documentation = "Returns the linear interpolation between a and b by t."_c;
-    lerp_Float32x3.name = "lerp"_c;
+    lerp_Float32x3.name = lerp_Float32x3_name;
     lerp_Float32x3.backendIndex = 1680;
     lerp_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     lerp_Float32x3.parameters = lerp_Float32x3_args;
@@ -2649,7 +2649,7 @@ void SetupIntrinsics5()
     lerp_Float32x4_t.name = "t"_c;
     lerp_Float32x4_t.type = Type::FullType{ Float32x4Type.name };
     lerp_Float32x4.documentation = "Returns the linear interpolation between a and b by t."_c;
-    lerp_Float32x4.name = "lerp"_c;
+    lerp_Float32x4.name = lerp_Float32x4_name;
     lerp_Float32x4.backendIndex = 1681;
     lerp_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     lerp_Float32x4.parameters = lerp_Float32x4_args;
@@ -2669,7 +2669,7 @@ void SetupIntrinsics5()
     lerp_Float16_t.name = "t"_c;
     lerp_Float16_t.type = Type::FullType{ Float16Type.name };
     lerp_Float16.documentation = "Returns the linear interpolation between a and b by t."_c;
-    lerp_Float16.name = "lerp"_c;
+    lerp_Float16.name = lerp_Float16_name;
     lerp_Float16.backendIndex = 1682;
     lerp_Float16.returnType = Type::FullType { Float16Type.name };
     lerp_Float16.parameters = lerp_Float16_args;
@@ -2689,7 +2689,7 @@ void SetupIntrinsics5()
     lerp_Float16x2_t.name = "t"_c;
     lerp_Float16x2_t.type = Type::FullType{ Float16x2Type.name };
     lerp_Float16x2.documentation = "Returns the linear interpolation between a and b by t."_c;
-    lerp_Float16x2.name = "lerp"_c;
+    lerp_Float16x2.name = lerp_Float16x2_name;
     lerp_Float16x2.backendIndex = 1683;
     lerp_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     lerp_Float16x2.parameters = lerp_Float16x2_args;
@@ -2709,7 +2709,7 @@ void SetupIntrinsics5()
     lerp_Float16x3_t.name = "t"_c;
     lerp_Float16x3_t.type = Type::FullType{ Float16x3Type.name };
     lerp_Float16x3.documentation = "Returns the linear interpolation between a and b by t."_c;
-    lerp_Float16x3.name = "lerp"_c;
+    lerp_Float16x3.name = lerp_Float16x3_name;
     lerp_Float16x3.backendIndex = 1684;
     lerp_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     lerp_Float16x3.parameters = lerp_Float16x3_args;
@@ -2729,7 +2729,7 @@ void SetupIntrinsics5()
     lerp_Float16x4_t.name = "t"_c;
     lerp_Float16x4_t.type = Type::FullType{ Float16x4Type.name };
     lerp_Float16x4.documentation = "Returns the linear interpolation between a and b by t."_c;
-    lerp_Float16x4.name = "lerp"_c;
+    lerp_Float16x4.name = lerp_Float16x4_name;
     lerp_Float16x4.backendIndex = 1685;
     lerp_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     lerp_Float16x4.parameters = lerp_Float16x4_args;
@@ -2747,7 +2747,7 @@ void SetupIntrinsics5()
     step_Float32_x.name = "x"_c;
     step_Float32_x.type = Type::FullType{ Float32Type.name };
     step_Float32.documentation = "Returns 0.0 if x < edge, otherwise returns 1.0."_c;
-    step_Float32.name = "step"_c;
+    step_Float32.name = step_Float32_name;
     step_Float32.backendIndex = 1686;
     step_Float32.returnType = Type::FullType { Float32Type.name };
     step_Float32.parameters = step_Float32_args;
@@ -2764,7 +2764,7 @@ void SetupIntrinsics5()
     step_Float32x2_x.name = "x"_c;
     step_Float32x2_x.type = Type::FullType{ Float32x2Type.name };
     step_Float32x2.documentation = "Returns 0.0 if x < edge, otherwise returns 1.0."_c;
-    step_Float32x2.name = "step"_c;
+    step_Float32x2.name = step_Float32x2_name;
     step_Float32x2.backendIndex = 1687;
     step_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     step_Float32x2.parameters = step_Float32x2_args;
@@ -2781,7 +2781,7 @@ void SetupIntrinsics5()
     step_Float32x3_x.name = "x"_c;
     step_Float32x3_x.type = Type::FullType{ Float32x3Type.name };
     step_Float32x3.documentation = "Returns 0.0 if x < edge, otherwise returns 1.0."_c;
-    step_Float32x3.name = "step"_c;
+    step_Float32x3.name = step_Float32x3_name;
     step_Float32x3.backendIndex = 1688;
     step_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     step_Float32x3.parameters = step_Float32x3_args;
@@ -2798,7 +2798,7 @@ void SetupIntrinsics5()
     step_Float32x4_x.name = "x"_c;
     step_Float32x4_x.type = Type::FullType{ Float32x4Type.name };
     step_Float32x4.documentation = "Returns 0.0 if x < edge, otherwise returns 1.0."_c;
-    step_Float32x4.name = "step"_c;
+    step_Float32x4.name = step_Float32x4_name;
     step_Float32x4.backendIndex = 1689;
     step_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     step_Float32x4.parameters = step_Float32x4_args;
@@ -2815,7 +2815,7 @@ void SetupIntrinsics5()
     step_Float16_x.name = "x"_c;
     step_Float16_x.type = Type::FullType{ Float16Type.name };
     step_Float16.documentation = "Returns 0.0 if x < edge, otherwise returns 1.0."_c;
-    step_Float16.name = "step"_c;
+    step_Float16.name = step_Float16_name;
     step_Float16.backendIndex = 1690;
     step_Float16.returnType = Type::FullType { Float16Type.name };
     step_Float16.parameters = step_Float16_args;
@@ -2832,7 +2832,7 @@ void SetupIntrinsics5()
     step_Float16x2_x.name = "x"_c;
     step_Float16x2_x.type = Type::FullType{ Float16x2Type.name };
     step_Float16x2.documentation = "Returns 0.0 if x < edge, otherwise returns 1.0."_c;
-    step_Float16x2.name = "step"_c;
+    step_Float16x2.name = step_Float16x2_name;
     step_Float16x2.backendIndex = 1691;
     step_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     step_Float16x2.parameters = step_Float16x2_args;
@@ -2849,7 +2849,7 @@ void SetupIntrinsics5()
     step_Float16x3_x.name = "x"_c;
     step_Float16x3_x.type = Type::FullType{ Float16x3Type.name };
     step_Float16x3.documentation = "Returns 0.0 if x < edge, otherwise returns 1.0."_c;
-    step_Float16x3.name = "step"_c;
+    step_Float16x3.name = step_Float16x3_name;
     step_Float16x3.backendIndex = 1692;
     step_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     step_Float16x3.parameters = step_Float16x3_args;
@@ -2866,7 +2866,7 @@ void SetupIntrinsics5()
     step_Float16x4_x.name = "x"_c;
     step_Float16x4_x.type = Type::FullType{ Float16x4Type.name };
     step_Float16x4.documentation = "Returns 0.0 if x < edge, otherwise returns 1.0."_c;
-    step_Float16x4.name = "step"_c;
+    step_Float16x4.name = step_Float16x4_name;
     step_Float16x4.backendIndex = 1693;
     step_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     step_Float16x4.parameters = step_Float16x4_args;
@@ -2885,7 +2885,7 @@ void SetupIntrinsics5()
     smoothstep_Float32_x.name = "x"_c;
     smoothstep_Float32_x.type = Type::FullType{ Float32Type.name };
     smoothstep_Float32.documentation = "Returns the smoothstep interpolation of the input."_c;
-    smoothstep_Float32.name = "smoothstep"_c;
+    smoothstep_Float32.name = smoothstep_Float32_name;
     smoothstep_Float32.backendIndex = 1694;
     smoothstep_Float32.returnType = Type::FullType { Float32Type.name };
     smoothstep_Float32.parameters = smoothstep_Float32_args;
@@ -2905,7 +2905,7 @@ void SetupIntrinsics5()
     smoothstep_Float32x2_x.name = "x"_c;
     smoothstep_Float32x2_x.type = Type::FullType{ Float32x2Type.name };
     smoothstep_Float32x2.documentation = "Returns the smoothstep interpolation of the input."_c;
-    smoothstep_Float32x2.name = "smoothstep"_c;
+    smoothstep_Float32x2.name = smoothstep_Float32x2_name;
     smoothstep_Float32x2.backendIndex = 1695;
     smoothstep_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     smoothstep_Float32x2.parameters = smoothstep_Float32x2_args;
@@ -2925,7 +2925,7 @@ void SetupIntrinsics5()
     smoothstep_Float32x3_x.name = "x"_c;
     smoothstep_Float32x3_x.type = Type::FullType{ Float32x3Type.name };
     smoothstep_Float32x3.documentation = "Returns the smoothstep interpolation of the input."_c;
-    smoothstep_Float32x3.name = "smoothstep"_c;
+    smoothstep_Float32x3.name = smoothstep_Float32x3_name;
     smoothstep_Float32x3.backendIndex = 1696;
     smoothstep_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     smoothstep_Float32x3.parameters = smoothstep_Float32x3_args;
@@ -2945,7 +2945,7 @@ void SetupIntrinsics5()
     smoothstep_Float32x4_x.name = "x"_c;
     smoothstep_Float32x4_x.type = Type::FullType{ Float32x4Type.name };
     smoothstep_Float32x4.documentation = "Returns the smoothstep interpolation of the input."_c;
-    smoothstep_Float32x4.name = "smoothstep"_c;
+    smoothstep_Float32x4.name = smoothstep_Float32x4_name;
     smoothstep_Float32x4.backendIndex = 1697;
     smoothstep_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     smoothstep_Float32x4.parameters = smoothstep_Float32x4_args;
@@ -2965,7 +2965,7 @@ void SetupIntrinsics5()
     smoothstep_Float16_x.name = "x"_c;
     smoothstep_Float16_x.type = Type::FullType{ Float16Type.name };
     smoothstep_Float16.documentation = "Returns the smoothstep interpolation of the input."_c;
-    smoothstep_Float16.name = "smoothstep"_c;
+    smoothstep_Float16.name = smoothstep_Float16_name;
     smoothstep_Float16.backendIndex = 1698;
     smoothstep_Float16.returnType = Type::FullType { Float16Type.name };
     smoothstep_Float16.parameters = smoothstep_Float16_args;
@@ -2985,7 +2985,7 @@ void SetupIntrinsics5()
     smoothstep_Float16x2_x.name = "x"_c;
     smoothstep_Float16x2_x.type = Type::FullType{ Float16x2Type.name };
     smoothstep_Float16x2.documentation = "Returns the smoothstep interpolation of the input."_c;
-    smoothstep_Float16x2.name = "smoothstep"_c;
+    smoothstep_Float16x2.name = smoothstep_Float16x2_name;
     smoothstep_Float16x2.backendIndex = 1699;
     smoothstep_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     smoothstep_Float16x2.parameters = smoothstep_Float16x2_args;
@@ -3005,7 +3005,7 @@ void SetupIntrinsics5()
     smoothstep_Float16x3_x.name = "x"_c;
     smoothstep_Float16x3_x.type = Type::FullType{ Float16x3Type.name };
     smoothstep_Float16x3.documentation = "Returns the smoothstep interpolation of the input."_c;
-    smoothstep_Float16x3.name = "smoothstep"_c;
+    smoothstep_Float16x3.name = smoothstep_Float16x3_name;
     smoothstep_Float16x3.backendIndex = 1700;
     smoothstep_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     smoothstep_Float16x3.parameters = smoothstep_Float16x3_args;
@@ -3025,7 +3025,7 @@ void SetupIntrinsics5()
     smoothstep_Float16x4_x.name = "x"_c;
     smoothstep_Float16x4_x.type = Type::FullType{ Float16x4Type.name };
     smoothstep_Float16x4.documentation = "Returns the smoothstep interpolation of the input."_c;
-    smoothstep_Float16x4.name = "smoothstep"_c;
+    smoothstep_Float16x4.name = smoothstep_Float16x4_name;
     smoothstep_Float16x4.backendIndex = 1701;
     smoothstep_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     smoothstep_Float16x4.parameters = smoothstep_Float16x4_args;
@@ -3041,7 +3041,7 @@ void SetupIntrinsics5()
     ceil_Float32_arg.name = "val"_c;
     ceil_Float32_arg.type = Type::FullType{ Float32Type.name };
     ceil_Float32.documentation = "Returns the smallest integer value that is greater than or equal to the input."_c;
-    ceil_Float32.name = "ceil"_c;
+    ceil_Float32.name = ceil_Float32_name;
     ceil_Float32.backendIndex = 1702;
     ceil_Float32.returnType = Type::FullType { Float32Type.name };
     ceil_Float32.parameters = ceil_Float32_args;
@@ -3055,7 +3055,7 @@ void SetupIntrinsics5()
     ceil_Float32x2_arg.name = "val"_c;
     ceil_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     ceil_Float32x2.documentation = "Returns the smallest integer value that is greater than or equal to the input."_c;
-    ceil_Float32x2.name = "ceil"_c;
+    ceil_Float32x2.name = ceil_Float32x2_name;
     ceil_Float32x2.backendIndex = 1703;
     ceil_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     ceil_Float32x2.parameters = ceil_Float32x2_args;
@@ -3069,7 +3069,7 @@ void SetupIntrinsics5()
     ceil_Float32x3_arg.name = "val"_c;
     ceil_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     ceil_Float32x3.documentation = "Returns the smallest integer value that is greater than or equal to the input."_c;
-    ceil_Float32x3.name = "ceil"_c;
+    ceil_Float32x3.name = ceil_Float32x3_name;
     ceil_Float32x3.backendIndex = 1704;
     ceil_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     ceil_Float32x3.parameters = ceil_Float32x3_args;

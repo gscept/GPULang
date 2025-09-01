@@ -23,7 +23,7 @@ fips_begin_app(gpulangc cmdline)
     set_target_properties(gpulangc PROPERTIES
         OUTPUT_NAME "gpulangc${PLATFORM}"
     )
-    target_compile_features(gpulangc PRIVATE cxx_std_20)
+    target_compile_features(gpulangc PUBLIC cxx_std_20)
 fips_end_app()
 
 if (APPLE)

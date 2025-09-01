@@ -86,7 +86,8 @@ def generate_types():
         "Bool8": 8,
         "Float16": 16,
         "UInt16": 16,
-        "Int16": 16
+        "Int16": 16,
+        "GeometryVertex": 28
     }
 
     data_type_mapping = {
@@ -136,6 +137,7 @@ def generate_types():
         "Float16x4x2": "f16x4x2",
         "Float16x4x3": "f16x4x3",
         "Float16x4x4": "f16x4x4",
+        "GeometryVertex": "GeometryVertex",
         "GeometryTriangle": "GeometryTriangle",
         "GeometryLine": "GeometryLine",
         "GeometryPoint": "GeometryPoint"
@@ -170,7 +172,8 @@ def generate_types():
         'Bool8': 'Bool8',
         'Bool8x2': 'Bool8',
         'Bool8x3': 'Bool8',
-        'Bool8x4': 'Bool8'
+        'Bool8x4': 'Bool8',
+        'GeometryVertex': 'GeometryVertex',
     }
 
     
@@ -181,7 +184,8 @@ def generate_types():
         'Int16': 1, 'Int16x2': 2, 'Int16x3': 3, 'Int16x4': 4,
         'UInt32': 1, 'UInt32x2': 2, 'UInt32x3': 3, 'UInt32x4': 4,
         'UInt16': 1, 'UInt16x2': 2, 'UInt16x3': 3, 'UInt16x4': 4,
-        'Bool8': 1, 'Bool8x2': 2, 'Bool8x3': 3, 'Bool8x4': 4
+        'Bool8': 1, 'Bool8x2': 2, 'Bool8x3': 3, 'Bool8x4': 4,
+        'GeometryVertex': 1
     }
 
 
@@ -455,6 +459,7 @@ def generate_types():
             for param in self.parameters:
                 return_string += f'extern Variable {param.decl_name};\n'
             return_string += f'extern Function {self.decl_name};\n'
+            return_string += f'inline constexpr auto {self.decl_name}_name = "{self.api_name}"_c;\n'
             return_string += f'inline constexpr auto {self.decl_name}_backend_index = {self.index}u;\n'
             return_string += '\n'
             return return_string
@@ -490,7 +495,7 @@ def generate_types():
                     return_string += f'    {param.decl_name}.type.modifierValues = {param.decl_name}_modifierValues;\n'
             if self.documentation:
                 return_string += f'    {self.decl_name}.documentation = "{self.documentation}"_c;\n'
-            return_string += f'    {self.decl_name}.name = "{self.api_name}"_c;\n'
+            return_string += f'    {self.decl_name}.name = {self.decl_name}_name;\n'
             
             if self.compile_time:
                 return_string += f'    {self.decl_name}.compileTime = true;\n'
@@ -1396,8 +1401,12 @@ def generate_types():
             decl += '};\n'
             decl += f'extern {self.name} {self.name}Type;\n\n'
 
+            value = 0
             for member in self.members:
+                value = member.value if member.value is not None else value 
+                decl += f'inline constexpr auto {self.name}{member.decl_name}_value = {hex(value)};\n'
                 decl += f'extern EnumExpression {self.name}{member.decl_name};\n'
+                value = value + 1
             return decl
         
         def definition(self):
@@ -1416,15 +1425,12 @@ def generate_types():
 
 
             labels = []
-            value = 0
             for i, member in enumerate(self.members):
-                value = member.value if member.value is not None else value 
-                defn += f'    {self.name}{member.decl_name}.value = {hex(value)};\n'
+                defn += f'    {self.name}{member.decl_name}.value = {self.name}{member.decl_name}_value;\n'
                 defn += f'    {self.name}{member.decl_name}.type = Type::FullType{{ {self.name}Type.name, true }};\n'
                 defn += f'    {self.name}{member.decl_name}.underlyingType = Type::FullType{{ {self.type_name}Type.name }};\n'
                 defn += f'    {self.name}{member.decl_name}.thisResolved->type = this;\n'
                 labels.append( f'"{member.decl_name if member.api_name is None else member.api_name}"_c' )
-                value = value + 1
 
             defn += f'    this->labels = std::array{{ {", ".join(labels)} }};\n'
 
@@ -1695,6 +1701,92 @@ def generate_types():
     )
     enums.append(enum)
 
+    enum = Enumeration(
+        name = 'InputTopology',
+        type_name = 'UInt32',
+        members=[
+            EnumMember("Invalid"),
+            EnumMember("Points"),
+            EnumMember("Lines"),
+            EnumMember("LinesAdjacency"),
+            EnumMember("Triangles"),
+            EnumMember("TrianglesAdjacency"),
+            EnumMember("Quads"),
+            EnumMember("Isolines"),
+        ]
+    )
+    enums.append(enum)
+
+    enum = Enumeration(
+        name = 'OutputTopology',
+        type_name = 'UInt32',
+        members=[
+            EnumMember("Invalid"),
+            EnumMember("Points"),
+            EnumMember("Lines"),
+            EnumMember("Triangles"),
+        ]
+    )
+    enums.append(enum)
+
+    enum = Enumeration(
+        name = 'Patch',
+        type_name = 'UInt32',
+        members=[
+            EnumMember("Invalid"),
+            EnumMember("Isolines"),
+            EnumMember("Triangles"),
+            EnumMember("Quads"),
+        ]
+    )
+    enums.append(enum)
+
+    enum = Enumeration(
+        name = 'Winding',
+        type_name = 'UInt32',
+        members=[
+            EnumMember("Invalid"),
+            EnumMember("Clockwise"),
+            EnumMember("CounterClockwise"),
+        ]
+    )
+    enums.append(enum)
+
+    enum = Enumeration(
+        name = 'Partition',
+        type_name = 'UInt32',
+        members=[
+            EnumMember("Invalid"),
+            EnumMember("IntegerSteps"),
+            EnumMember("FractionalEven"),
+            EnumMember("FractionalOdd"),
+        ]
+    )
+    enums.append(enum)
+
+    enum = Enumeration(
+        name = 'PixelOrigin',
+        type_name = 'UInt32',
+        members=[
+            EnumMember("Invalid"),
+            EnumMember("LowerLeft"),
+            EnumMember("UpperLeft"),
+            EnumMember("Center"),
+        ]
+    )
+    enums.append(enum)
+
+    enum = Enumeration(
+        name = 'ComputeDerivatives',
+        type_name = 'UInt32',
+        members=[
+            EnumMember("Invalid"),
+            EnumMember("IndexLinear"),
+            EnumMember("IndexQuad"),
+        ]
+    )
+    enums.append(enum)
+
     class StructMember:
         def __init__(self, decl_name, api_name, type, array_size=1):
             self.decl_name = decl_name
@@ -1764,7 +1856,7 @@ def generate_types():
 
             self.members.sort(key=MemberSortKey)
             defn += f'    this->scope.symbolLookup = StaticMap<HashString, Symbol*, {len(self.members)}> {{\n'        
-            defn += ',\n'.join(f'        std::pair{{ "{member.decl_name}"_h, &{self.name + member.decl_name} }}' for member in self.members)
+            defn += ',\n'.join(f'        std::pair{{ "{member.api_name}"_h, &{self.name + member.decl_name} }}' for member in self.members)
             defn += '\n    };\n'
             defn += '};\n'
             defn += f'{self.name} {self.name}Type;\n\n'
@@ -1779,8 +1871,9 @@ def generate_types():
             return self.name;
 
     structs = []
+
     struct = Struct(
-        name = 'GeometryPoint',
+        name = 'GeometryVertex',
         members=[
             StructMember('Position', 'position', 'Float32x4'),
             StructMember('PointSize', 'pointSize', 'Float32'),
@@ -1791,24 +1884,43 @@ def generate_types():
     structs.append(struct)
 
     struct = Struct(
+        name = 'GeometryPoint',
+        members=[ StructMember('P0', 'p0', 'GeometryVertex')]
+    )
+    structs.append(struct)
+
+    struct = Struct(
         name = 'GeometryLine',
-        members=[
-            StructMember('Position', 'position', 'Float32x4', 2),
-            StructMember('PointSize', 'pointSize', 'Float32', 2),
-            StructMember('CullDistance', 'cullDistance', 'Float32', 2),
-            StructMember('ClipDistance', 'clipDistance', 'Float32', 2)
-        ]
+        members=[ StructMember('P0', 'p0', 'GeometryVertex'),
+                  StructMember('P1', 'p1', 'GeometryVertex')]
+    )
+    structs.append(struct)
+
+    struct = Struct(
+        name = 'GeometryLineAdjacency',
+        members=[ StructMember('P0', 'p0', 'GeometryVertex'),
+                  StructMember('P1', 'p1', 'GeometryVertex'), 
+                  StructMember('P2', 'p2', 'GeometryVertex'),
+                  StructMember('P3', 'p3', 'GeometryVertex')]
     )
     structs.append(struct)
 
     struct = Struct(
         name = 'GeometryTriangle',
-        members=[
-            StructMember('Position', 'position', 'Float32x4', 3),
-            StructMember('PointSize', 'pointSize', 'Float32', 3),
-            StructMember('CullDistance', 'cullDistance', 'Float32', 3),
-            StructMember('ClipDistance', 'clipDistance', 'Float32', 3)
-        ]
+        members=[ StructMember('P0', 'p0', 'GeometryVertex'),
+                  StructMember('P1', 'p1', 'GeometryVertex'),
+                  StructMember('P2', 'p2', 'GeometryVertex')]
+    )
+    structs.append(struct)
+
+    struct = Struct(
+        name = 'GeometryTriangleAdjacency',
+        members=[ StructMember('P0', 'p0', 'GeometryVertex'),
+                  StructMember('P1', 'p1', 'GeometryVertex'),
+                  StructMember('P2', 'p2', 'GeometryVertex'),
+                  StructMember('P3', 'p3', 'GeometryVertex'),
+                  StructMember('P4', 'p4', 'GeometryVertex'),
+                  StructMember('P5', 'p5', 'GeometryVertex')]
     )
     structs.append(struct)
 
@@ -2890,33 +3002,57 @@ def generate_types():
         fun.spirv = spirv_function
         functions.append(fun)
 
-    intrinsics = ['ExportVertex', 'ExportPrimitive']
-    docs = [
-        'Exports the current vertex to the output stream. This function must be called for each vertex in a geometry shader.',
-        'Exports the current primitive to the output stream. This function must be called after all vertices of a primitive have been exported.'
-    ]
-    geometry_export_builtins_spirv = ['EmitVertex', 'EndPrimitive']
-
-    for builtin, spirv_builtin, doc in zip(intrinsics, geometry_export_builtins_spirv, docs):
-        intrinsic = builtin
-        function_name = f'Geometry{intrinsic}'
+    for type, spirv_builtin in zip(four_component_float_vec_types, vertex_value_builtins_spirv):
+        intrinsic = 'ExportVertex'
+        function_name = f'Geometry{intrinsic}_{type}'
+        argument_name = f'{function_name}_arg'
         fun = Function( 
             decl_name = function_name,
             api_name = f'geometry{intrinsic}',
             return_type = 'Void',
-            documentation=doc,
+            documentation = 'Exports the value as a vertex for the current primitive. This function must be called for each point in the topology given by output_primitive. This is the same as writing `gl_Position` followed by calling EmitVertex() in GLSL.',
             parameters = [
+                Variable(decl_name = argument_name, api_name = "val", type_name=type)
             ]
         )
 
         spirv_function = ''
+        spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
         spirv_function += '    g->writer->Capability(Capabilities::Geometry);\n'
-        spirv_function += f'    g->writer->Instruction(Op{spirv_builtin}, SPVWriter::Section::LocalFunction);\n'
+        spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);\n'
+        spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
+        spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{builtin}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
+        spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+        spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+        spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
+        spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);\n'
+        spirv_function += f'    g->writer->Instruction(OpEmitVertex, SPVWriter::Section::LocalFunction);\n'
         spirv_function += '    return SPIRVResult::Invalid();\n'
         
 
         fun.spirv = spirv_function
         functions.append(fun)
+
+    intrinsic = 'ExportPrimitive'
+    docs = 'Exports the current primitive to the output stream. This function must be called after all vertices of a primitive have been exported.'
+
+    function_name = f'Geometry{intrinsic}'
+    fun = Function( 
+        decl_name = function_name,
+        api_name = f'geometry{intrinsic}',
+        return_type = 'Void',
+        documentation=doc,
+        parameters = [
+        ]
+    )
+
+    spirv_function = ''
+    spirv_function += '    g->writer->Capability(Capabilities::Geometry);\n'
+    spirv_function += f'    g->writer->Instruction(OpEndPrimitive, SPVWriter::Section::LocalFunction);\n'
+    spirv_function += '    return SPIRVResult::Invalid();\n'
+
+    fun.spirv = spirv_function
+    functions.append(fun)
 
     intrinsic = "GetPoint"
     function_name = f'Geometry{intrinsic}'

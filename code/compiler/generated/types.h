@@ -65,96 +65,115 @@ extern Float32 Float32Type;
 /// operator[] with Int32
 extern Variable Float32_operator_index_Int32_arg;
 extern Function Float32_operator_index_Int32;
+inline constexpr auto Float32_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Float32_operator_index_Int32_backend_index = 7u;
 
 /// operator[] with UInt32
 extern Variable Float32_operator_index_UInt32_arg;
 extern Function Float32_operator_index_UInt32;
+inline constexpr auto Float32_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Float32_operator_index_UInt32_backend_index = 8u;
 
 /// operator[] with Int16
 extern Variable Float32_operator_index_Int16_arg;
 extern Function Float32_operator_index_Int16;
+inline constexpr auto Float32_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Float32_operator_index_Int16_backend_index = 9u;
 
 /// operator[] with UInt16
 extern Variable Float32_operator_index_UInt16_arg;
 extern Function Float32_operator_index_UInt16;
+inline constexpr auto Float32_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Float32_operator_index_UInt16_backend_index = 10u;
 
 /// operator+ with Float32
 extern Variable Float32_operator_add_Float32_arg;
 extern Function Float32_operator_add_Float32;
+inline constexpr auto Float32_operator_add_Float32_name = "operator+"_c;
 inline constexpr auto Float32_operator_add_Float32_backend_index = 11u;
 
 /// operator- with Float32
 extern Variable Float32_operator_sub_Float32_arg;
 extern Function Float32_operator_sub_Float32;
+inline constexpr auto Float32_operator_sub_Float32_name = "operator-"_c;
 inline constexpr auto Float32_operator_sub_Float32_backend_index = 12u;
 
 /// operator* with Float32
 extern Variable Float32_operator_mul_Float32_arg;
 extern Function Float32_operator_mul_Float32;
+inline constexpr auto Float32_operator_mul_Float32_name = "operator*"_c;
 inline constexpr auto Float32_operator_mul_Float32_backend_index = 13u;
 
 /// operator/ with Float32
 extern Variable Float32_operator_div_Float32_arg;
 extern Function Float32_operator_div_Float32;
+inline constexpr auto Float32_operator_div_Float32_name = "operator/"_c;
 inline constexpr auto Float32_operator_div_Float32_backend_index = 14u;
 
 /// operator% with Float32
 extern Variable Float32_operator_mod_Float32_arg;
 extern Function Float32_operator_mod_Float32;
+inline constexpr auto Float32_operator_mod_Float32_name = "operator%"_c;
 inline constexpr auto Float32_operator_mod_Float32_backend_index = 15u;
 
 /// operator+= with Float32
 extern Variable Float32_operator_addasg_Float32_arg;
 extern Function Float32_operator_addasg_Float32;
+inline constexpr auto Float32_operator_addasg_Float32_name = "operator+="_c;
 inline constexpr auto Float32_operator_addasg_Float32_backend_index = 16u;
 
 /// operator-= with Float32
 extern Variable Float32_operator_subasg_Float32_arg;
 extern Function Float32_operator_subasg_Float32;
+inline constexpr auto Float32_operator_subasg_Float32_name = "operator-="_c;
 inline constexpr auto Float32_operator_subasg_Float32_backend_index = 17u;
 
 /// operator*= with Float32
 extern Variable Float32_operator_mulasg_Float32_arg;
 extern Function Float32_operator_mulasg_Float32;
+inline constexpr auto Float32_operator_mulasg_Float32_name = "operator*="_c;
 inline constexpr auto Float32_operator_mulasg_Float32_backend_index = 18u;
 
 /// operator/= with Float32
 extern Variable Float32_operator_divasg_Float32_arg;
 extern Function Float32_operator_divasg_Float32;
+inline constexpr auto Float32_operator_divasg_Float32_name = "operator/="_c;
 inline constexpr auto Float32_operator_divasg_Float32_backend_index = 19u;
 
 /// operator< with Float32
 extern Variable Float32_operator_lt_Float32_arg;
 extern Function Float32_operator_lt_Float32;
+inline constexpr auto Float32_operator_lt_Float32_name = "operator<"_c;
 inline constexpr auto Float32_operator_lt_Float32_backend_index = 20u;
 
 /// operator<= with Float32
 extern Variable Float32_operator_lte_Float32_arg;
 extern Function Float32_operator_lte_Float32;
+inline constexpr auto Float32_operator_lte_Float32_name = "operator<="_c;
 inline constexpr auto Float32_operator_lte_Float32_backend_index = 21u;
 
 /// operator> with Float32
 extern Variable Float32_operator_gt_Float32_arg;
 extern Function Float32_operator_gt_Float32;
+inline constexpr auto Float32_operator_gt_Float32_name = "operator>"_c;
 inline constexpr auto Float32_operator_gt_Float32_backend_index = 22u;
 
 /// operator>= with Float32
 extern Variable Float32_operator_gte_Float32_arg;
 extern Function Float32_operator_gte_Float32;
+inline constexpr auto Float32_operator_gte_Float32_name = "operator>="_c;
 inline constexpr auto Float32_operator_gte_Float32_backend_index = 23u;
 
 /// operator== with Float32
 extern Variable Float32_operator_eq_Float32_arg;
 extern Function Float32_operator_eq_Float32;
+inline constexpr auto Float32_operator_eq_Float32_name = "operator=="_c;
 inline constexpr auto Float32_operator_eq_Float32_backend_index = 24u;
 
 /// operator!= with Float32
 extern Variable Float32_operator_neq_Float32_arg;
 extern Function Float32_operator_neq_Float32;
+inline constexpr auto Float32_operator_neq_Float32_name = "operator!="_c;
 inline constexpr auto Float32_operator_neq_Float32_backend_index = 25u;
 
 struct UInt32 : public Type
@@ -166,146 +185,175 @@ extern UInt32 UInt32Type;
 /// operator[] with Int32
 extern Variable UInt32_operator_index_Int32_arg;
 extern Function UInt32_operator_index_Int32;
+inline constexpr auto UInt32_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto UInt32_operator_index_Int32_backend_index = 33u;
 
 /// operator[] with UInt32
 extern Variable UInt32_operator_index_UInt32_arg;
 extern Function UInt32_operator_index_UInt32;
+inline constexpr auto UInt32_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto UInt32_operator_index_UInt32_backend_index = 34u;
 
 /// operator[] with Int16
 extern Variable UInt32_operator_index_Int16_arg;
 extern Function UInt32_operator_index_Int16;
+inline constexpr auto UInt32_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto UInt32_operator_index_Int16_backend_index = 35u;
 
 /// operator[] with UInt16
 extern Variable UInt32_operator_index_UInt16_arg;
 extern Function UInt32_operator_index_UInt16;
+inline constexpr auto UInt32_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto UInt32_operator_index_UInt16_backend_index = 36u;
 
 /// operator+ with UInt32
 extern Variable UInt32_operator_add_UInt32_arg;
 extern Function UInt32_operator_add_UInt32;
+inline constexpr auto UInt32_operator_add_UInt32_name = "operator+"_c;
 inline constexpr auto UInt32_operator_add_UInt32_backend_index = 37u;
 
 /// operator- with UInt32
 extern Variable UInt32_operator_sub_UInt32_arg;
 extern Function UInt32_operator_sub_UInt32;
+inline constexpr auto UInt32_operator_sub_UInt32_name = "operator-"_c;
 inline constexpr auto UInt32_operator_sub_UInt32_backend_index = 38u;
 
 /// operator* with UInt32
 extern Variable UInt32_operator_mul_UInt32_arg;
 extern Function UInt32_operator_mul_UInt32;
+inline constexpr auto UInt32_operator_mul_UInt32_name = "operator*"_c;
 inline constexpr auto UInt32_operator_mul_UInt32_backend_index = 39u;
 
 /// operator/ with UInt32
 extern Variable UInt32_operator_div_UInt32_arg;
 extern Function UInt32_operator_div_UInt32;
+inline constexpr auto UInt32_operator_div_UInt32_name = "operator/"_c;
 inline constexpr auto UInt32_operator_div_UInt32_backend_index = 40u;
 
 /// operator% with UInt32
 extern Variable UInt32_operator_mod_UInt32_arg;
 extern Function UInt32_operator_mod_UInt32;
+inline constexpr auto UInt32_operator_mod_UInt32_name = "operator%"_c;
 inline constexpr auto UInt32_operator_mod_UInt32_backend_index = 41u;
 
 /// operator+= with UInt32
 extern Variable UInt32_operator_addasg_UInt32_arg;
 extern Function UInt32_operator_addasg_UInt32;
+inline constexpr auto UInt32_operator_addasg_UInt32_name = "operator+="_c;
 inline constexpr auto UInt32_operator_addasg_UInt32_backend_index = 42u;
 
 /// operator-= with UInt32
 extern Variable UInt32_operator_subasg_UInt32_arg;
 extern Function UInt32_operator_subasg_UInt32;
+inline constexpr auto UInt32_operator_subasg_UInt32_name = "operator-="_c;
 inline constexpr auto UInt32_operator_subasg_UInt32_backend_index = 43u;
 
 /// operator*= with UInt32
 extern Variable UInt32_operator_mulasg_UInt32_arg;
 extern Function UInt32_operator_mulasg_UInt32;
+inline constexpr auto UInt32_operator_mulasg_UInt32_name = "operator*="_c;
 inline constexpr auto UInt32_operator_mulasg_UInt32_backend_index = 44u;
 
 /// operator/= with UInt32
 extern Variable UInt32_operator_divasg_UInt32_arg;
 extern Function UInt32_operator_divasg_UInt32;
+inline constexpr auto UInt32_operator_divasg_UInt32_name = "operator/="_c;
 inline constexpr auto UInt32_operator_divasg_UInt32_backend_index = 45u;
 
 /// operator< with UInt32
 extern Variable UInt32_operator_lt_UInt32_arg;
 extern Function UInt32_operator_lt_UInt32;
+inline constexpr auto UInt32_operator_lt_UInt32_name = "operator<"_c;
 inline constexpr auto UInt32_operator_lt_UInt32_backend_index = 46u;
 
 /// operator<= with UInt32
 extern Variable UInt32_operator_lte_UInt32_arg;
 extern Function UInt32_operator_lte_UInt32;
+inline constexpr auto UInt32_operator_lte_UInt32_name = "operator<="_c;
 inline constexpr auto UInt32_operator_lte_UInt32_backend_index = 47u;
 
 /// operator> with UInt32
 extern Variable UInt32_operator_gt_UInt32_arg;
 extern Function UInt32_operator_gt_UInt32;
+inline constexpr auto UInt32_operator_gt_UInt32_name = "operator>"_c;
 inline constexpr auto UInt32_operator_gt_UInt32_backend_index = 48u;
 
 /// operator>= with UInt32
 extern Variable UInt32_operator_gte_UInt32_arg;
 extern Function UInt32_operator_gte_UInt32;
+inline constexpr auto UInt32_operator_gte_UInt32_name = "operator>="_c;
 inline constexpr auto UInt32_operator_gte_UInt32_backend_index = 49u;
 
 /// operator== with UInt32
 extern Variable UInt32_operator_eq_UInt32_arg;
 extern Function UInt32_operator_eq_UInt32;
+inline constexpr auto UInt32_operator_eq_UInt32_name = "operator=="_c;
 inline constexpr auto UInt32_operator_eq_UInt32_backend_index = 50u;
 
 /// operator!= with UInt32
 extern Variable UInt32_operator_neq_UInt32_arg;
 extern Function UInt32_operator_neq_UInt32;
+inline constexpr auto UInt32_operator_neq_UInt32_name = "operator!="_c;
 inline constexpr auto UInt32_operator_neq_UInt32_backend_index = 51u;
 
 /// operator| with UInt32
 extern Variable UInt32_operator_or_UInt32_arg;
 extern Function UInt32_operator_or_UInt32;
+inline constexpr auto UInt32_operator_or_UInt32_name = "operator|"_c;
 inline constexpr auto UInt32_operator_or_UInt32_backend_index = 52u;
 
 /// operator& with UInt32
 extern Variable UInt32_operator_and_UInt32_arg;
 extern Function UInt32_operator_and_UInt32;
+inline constexpr auto UInt32_operator_and_UInt32_name = "operator&"_c;
 inline constexpr auto UInt32_operator_and_UInt32_backend_index = 53u;
 
 /// operator^ with UInt32
 extern Variable UInt32_operator_xor_UInt32_arg;
 extern Function UInt32_operator_xor_UInt32;
+inline constexpr auto UInt32_operator_xor_UInt32_name = "operator^"_c;
 inline constexpr auto UInt32_operator_xor_UInt32_backend_index = 54u;
 
 /// operator<< with UInt32
 extern Variable UInt32_operator_lsh_UInt32_arg;
 extern Function UInt32_operator_lsh_UInt32;
+inline constexpr auto UInt32_operator_lsh_UInt32_name = "operator<<"_c;
 inline constexpr auto UInt32_operator_lsh_UInt32_backend_index = 55u;
 
 /// operator>> with UInt32
 extern Variable UInt32_operator_rsh_UInt32_arg;
 extern Function UInt32_operator_rsh_UInt32;
+inline constexpr auto UInt32_operator_rsh_UInt32_name = "operator>>"_c;
 inline constexpr auto UInt32_operator_rsh_UInt32_backend_index = 56u;
 
 /// operator|= with UInt32
 extern Variable UInt32_operator_orasg_UInt32_arg;
 extern Function UInt32_operator_orasg_UInt32;
+inline constexpr auto UInt32_operator_orasg_UInt32_name = "operator|="_c;
 inline constexpr auto UInt32_operator_orasg_UInt32_backend_index = 57u;
 
 /// operator&= with UInt32
 extern Variable UInt32_operator_andasg_UInt32_arg;
 extern Function UInt32_operator_andasg_UInt32;
+inline constexpr auto UInt32_operator_andasg_UInt32_name = "operator&="_c;
 inline constexpr auto UInt32_operator_andasg_UInt32_backend_index = 58u;
 
 /// operator^= with UInt32
 extern Variable UInt32_operator_xorasg_UInt32_arg;
 extern Function UInt32_operator_xorasg_UInt32;
+inline constexpr auto UInt32_operator_xorasg_UInt32_name = "operator^="_c;
 inline constexpr auto UInt32_operator_xorasg_UInt32_backend_index = 59u;
 
 /// operator<<= with UInt32
 extern Variable UInt32_operator_lshasg_UInt32_arg;
 extern Function UInt32_operator_lshasg_UInt32;
+inline constexpr auto UInt32_operator_lshasg_UInt32_name = "operator<<="_c;
 inline constexpr auto UInt32_operator_lshasg_UInt32_backend_index = 60u;
 
 /// operator>>= with UInt32
 extern Variable UInt32_operator_rhsasg_UInt32_arg;
 extern Function UInt32_operator_rhsasg_UInt32;
+inline constexpr auto UInt32_operator_rhsasg_UInt32_name = "operator>>="_c;
 inline constexpr auto UInt32_operator_rhsasg_UInt32_backend_index = 61u;
 
 struct Int32 : public Type
@@ -317,146 +365,175 @@ extern Int32 Int32Type;
 /// operator[] with Int32
 extern Variable Int32_operator_index_Int32_arg;
 extern Function Int32_operator_index_Int32;
+inline constexpr auto Int32_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Int32_operator_index_Int32_backend_index = 69u;
 
 /// operator[] with UInt32
 extern Variable Int32_operator_index_UInt32_arg;
 extern Function Int32_operator_index_UInt32;
+inline constexpr auto Int32_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Int32_operator_index_UInt32_backend_index = 70u;
 
 /// operator[] with Int16
 extern Variable Int32_operator_index_Int16_arg;
 extern Function Int32_operator_index_Int16;
+inline constexpr auto Int32_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Int32_operator_index_Int16_backend_index = 71u;
 
 /// operator[] with UInt16
 extern Variable Int32_operator_index_UInt16_arg;
 extern Function Int32_operator_index_UInt16;
+inline constexpr auto Int32_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Int32_operator_index_UInt16_backend_index = 72u;
 
 /// operator+ with Int32
 extern Variable Int32_operator_add_Int32_arg;
 extern Function Int32_operator_add_Int32;
+inline constexpr auto Int32_operator_add_Int32_name = "operator+"_c;
 inline constexpr auto Int32_operator_add_Int32_backend_index = 73u;
 
 /// operator- with Int32
 extern Variable Int32_operator_sub_Int32_arg;
 extern Function Int32_operator_sub_Int32;
+inline constexpr auto Int32_operator_sub_Int32_name = "operator-"_c;
 inline constexpr auto Int32_operator_sub_Int32_backend_index = 74u;
 
 /// operator* with Int32
 extern Variable Int32_operator_mul_Int32_arg;
 extern Function Int32_operator_mul_Int32;
+inline constexpr auto Int32_operator_mul_Int32_name = "operator*"_c;
 inline constexpr auto Int32_operator_mul_Int32_backend_index = 75u;
 
 /// operator/ with Int32
 extern Variable Int32_operator_div_Int32_arg;
 extern Function Int32_operator_div_Int32;
+inline constexpr auto Int32_operator_div_Int32_name = "operator/"_c;
 inline constexpr auto Int32_operator_div_Int32_backend_index = 76u;
 
 /// operator% with Int32
 extern Variable Int32_operator_mod_Int32_arg;
 extern Function Int32_operator_mod_Int32;
+inline constexpr auto Int32_operator_mod_Int32_name = "operator%"_c;
 inline constexpr auto Int32_operator_mod_Int32_backend_index = 77u;
 
 /// operator+= with Int32
 extern Variable Int32_operator_addasg_Int32_arg;
 extern Function Int32_operator_addasg_Int32;
+inline constexpr auto Int32_operator_addasg_Int32_name = "operator+="_c;
 inline constexpr auto Int32_operator_addasg_Int32_backend_index = 78u;
 
 /// operator-= with Int32
 extern Variable Int32_operator_subasg_Int32_arg;
 extern Function Int32_operator_subasg_Int32;
+inline constexpr auto Int32_operator_subasg_Int32_name = "operator-="_c;
 inline constexpr auto Int32_operator_subasg_Int32_backend_index = 79u;
 
 /// operator*= with Int32
 extern Variable Int32_operator_mulasg_Int32_arg;
 extern Function Int32_operator_mulasg_Int32;
+inline constexpr auto Int32_operator_mulasg_Int32_name = "operator*="_c;
 inline constexpr auto Int32_operator_mulasg_Int32_backend_index = 80u;
 
 /// operator/= with Int32
 extern Variable Int32_operator_divasg_Int32_arg;
 extern Function Int32_operator_divasg_Int32;
+inline constexpr auto Int32_operator_divasg_Int32_name = "operator/="_c;
 inline constexpr auto Int32_operator_divasg_Int32_backend_index = 81u;
 
 /// operator< with Int32
 extern Variable Int32_operator_lt_Int32_arg;
 extern Function Int32_operator_lt_Int32;
+inline constexpr auto Int32_operator_lt_Int32_name = "operator<"_c;
 inline constexpr auto Int32_operator_lt_Int32_backend_index = 82u;
 
 /// operator<= with Int32
 extern Variable Int32_operator_lte_Int32_arg;
 extern Function Int32_operator_lte_Int32;
+inline constexpr auto Int32_operator_lte_Int32_name = "operator<="_c;
 inline constexpr auto Int32_operator_lte_Int32_backend_index = 83u;
 
 /// operator> with Int32
 extern Variable Int32_operator_gt_Int32_arg;
 extern Function Int32_operator_gt_Int32;
+inline constexpr auto Int32_operator_gt_Int32_name = "operator>"_c;
 inline constexpr auto Int32_operator_gt_Int32_backend_index = 84u;
 
 /// operator>= with Int32
 extern Variable Int32_operator_gte_Int32_arg;
 extern Function Int32_operator_gte_Int32;
+inline constexpr auto Int32_operator_gte_Int32_name = "operator>="_c;
 inline constexpr auto Int32_operator_gte_Int32_backend_index = 85u;
 
 /// operator== with Int32
 extern Variable Int32_operator_eq_Int32_arg;
 extern Function Int32_operator_eq_Int32;
+inline constexpr auto Int32_operator_eq_Int32_name = "operator=="_c;
 inline constexpr auto Int32_operator_eq_Int32_backend_index = 86u;
 
 /// operator!= with Int32
 extern Variable Int32_operator_neq_Int32_arg;
 extern Function Int32_operator_neq_Int32;
+inline constexpr auto Int32_operator_neq_Int32_name = "operator!="_c;
 inline constexpr auto Int32_operator_neq_Int32_backend_index = 87u;
 
 /// operator| with Int32
 extern Variable Int32_operator_or_Int32_arg;
 extern Function Int32_operator_or_Int32;
+inline constexpr auto Int32_operator_or_Int32_name = "operator|"_c;
 inline constexpr auto Int32_operator_or_Int32_backend_index = 88u;
 
 /// operator& with Int32
 extern Variable Int32_operator_and_Int32_arg;
 extern Function Int32_operator_and_Int32;
+inline constexpr auto Int32_operator_and_Int32_name = "operator&"_c;
 inline constexpr auto Int32_operator_and_Int32_backend_index = 89u;
 
 /// operator^ with Int32
 extern Variable Int32_operator_xor_Int32_arg;
 extern Function Int32_operator_xor_Int32;
+inline constexpr auto Int32_operator_xor_Int32_name = "operator^"_c;
 inline constexpr auto Int32_operator_xor_Int32_backend_index = 90u;
 
 /// operator<< with Int32
 extern Variable Int32_operator_lsh_Int32_arg;
 extern Function Int32_operator_lsh_Int32;
+inline constexpr auto Int32_operator_lsh_Int32_name = "operator<<"_c;
 inline constexpr auto Int32_operator_lsh_Int32_backend_index = 91u;
 
 /// operator>> with Int32
 extern Variable Int32_operator_rsh_Int32_arg;
 extern Function Int32_operator_rsh_Int32;
+inline constexpr auto Int32_operator_rsh_Int32_name = "operator>>"_c;
 inline constexpr auto Int32_operator_rsh_Int32_backend_index = 92u;
 
 /// operator|= with Int32
 extern Variable Int32_operator_orasg_Int32_arg;
 extern Function Int32_operator_orasg_Int32;
+inline constexpr auto Int32_operator_orasg_Int32_name = "operator|="_c;
 inline constexpr auto Int32_operator_orasg_Int32_backend_index = 93u;
 
 /// operator&= with Int32
 extern Variable Int32_operator_andasg_Int32_arg;
 extern Function Int32_operator_andasg_Int32;
+inline constexpr auto Int32_operator_andasg_Int32_name = "operator&="_c;
 inline constexpr auto Int32_operator_andasg_Int32_backend_index = 94u;
 
 /// operator^= with Int32
 extern Variable Int32_operator_xorasg_Int32_arg;
 extern Function Int32_operator_xorasg_Int32;
+inline constexpr auto Int32_operator_xorasg_Int32_name = "operator^="_c;
 inline constexpr auto Int32_operator_xorasg_Int32_backend_index = 95u;
 
 /// operator<<= with Int32
 extern Variable Int32_operator_lshasg_Int32_arg;
 extern Function Int32_operator_lshasg_Int32;
+inline constexpr auto Int32_operator_lshasg_Int32_name = "operator<<="_c;
 inline constexpr auto Int32_operator_lshasg_Int32_backend_index = 96u;
 
 /// operator>>= with Int32
 extern Variable Int32_operator_rhsasg_Int32_arg;
 extern Function Int32_operator_rhsasg_Int32;
+inline constexpr auto Int32_operator_rhsasg_Int32_name = "operator>>="_c;
 inline constexpr auto Int32_operator_rhsasg_Int32_backend_index = 97u;
 
 struct Bool8 : public Type
@@ -468,41 +545,49 @@ extern Bool8 Bool8Type;
 /// operator[] with Int32
 extern Variable Bool8_operator_index_Int32_arg;
 extern Function Bool8_operator_index_Int32;
+inline constexpr auto Bool8_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Bool8_operator_index_Int32_backend_index = 103u;
 
 /// operator[] with UInt32
 extern Variable Bool8_operator_index_UInt32_arg;
 extern Function Bool8_operator_index_UInt32;
+inline constexpr auto Bool8_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Bool8_operator_index_UInt32_backend_index = 104u;
 
 /// operator[] with Int16
 extern Variable Bool8_operator_index_Int16_arg;
 extern Function Bool8_operator_index_Int16;
+inline constexpr auto Bool8_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Bool8_operator_index_Int16_backend_index = 105u;
 
 /// operator[] with UInt16
 extern Variable Bool8_operator_index_UInt16_arg;
 extern Function Bool8_operator_index_UInt16;
+inline constexpr auto Bool8_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Bool8_operator_index_UInt16_backend_index = 106u;
 
 /// operator|| with Bool8
 extern Variable Bool8_operator_oror_Bool8_arg;
 extern Function Bool8_operator_oror_Bool8;
+inline constexpr auto Bool8_operator_oror_Bool8_name = "operator||"_c;
 inline constexpr auto Bool8_operator_oror_Bool8_backend_index = 107u;
 
 /// operator&& with Bool8
 extern Variable Bool8_operator_andand_Bool8_arg;
 extern Function Bool8_operator_andand_Bool8;
+inline constexpr auto Bool8_operator_andand_Bool8_name = "operator&&"_c;
 inline constexpr auto Bool8_operator_andand_Bool8_backend_index = 108u;
 
 /// operator== with Bool8
 extern Variable Bool8_operator_eq_Bool8_arg;
 extern Function Bool8_operator_eq_Bool8;
+inline constexpr auto Bool8_operator_eq_Bool8_name = "operator=="_c;
 inline constexpr auto Bool8_operator_eq_Bool8_backend_index = 109u;
 
 /// operator!= with Bool8
 extern Variable Bool8_operator_neq_Bool8_arg;
 extern Function Bool8_operator_neq_Bool8;
+inline constexpr auto Bool8_operator_neq_Bool8_name = "operator!="_c;
 inline constexpr auto Bool8_operator_neq_Bool8_backend_index = 110u;
 
 struct Float16 : public Type
@@ -514,96 +599,115 @@ extern Float16 Float16Type;
 /// operator[] with Int32
 extern Variable Float16_operator_index_Int32_arg;
 extern Function Float16_operator_index_Int32;
+inline constexpr auto Float16_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Float16_operator_index_Int32_backend_index = 118u;
 
 /// operator[] with UInt32
 extern Variable Float16_operator_index_UInt32_arg;
 extern Function Float16_operator_index_UInt32;
+inline constexpr auto Float16_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Float16_operator_index_UInt32_backend_index = 119u;
 
 /// operator[] with Int16
 extern Variable Float16_operator_index_Int16_arg;
 extern Function Float16_operator_index_Int16;
+inline constexpr auto Float16_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Float16_operator_index_Int16_backend_index = 120u;
 
 /// operator[] with UInt16
 extern Variable Float16_operator_index_UInt16_arg;
 extern Function Float16_operator_index_UInt16;
+inline constexpr auto Float16_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Float16_operator_index_UInt16_backend_index = 121u;
 
 /// operator+ with Float16
 extern Variable Float16_operator_add_Float16_arg;
 extern Function Float16_operator_add_Float16;
+inline constexpr auto Float16_operator_add_Float16_name = "operator+"_c;
 inline constexpr auto Float16_operator_add_Float16_backend_index = 122u;
 
 /// operator- with Float16
 extern Variable Float16_operator_sub_Float16_arg;
 extern Function Float16_operator_sub_Float16;
+inline constexpr auto Float16_operator_sub_Float16_name = "operator-"_c;
 inline constexpr auto Float16_operator_sub_Float16_backend_index = 123u;
 
 /// operator* with Float16
 extern Variable Float16_operator_mul_Float16_arg;
 extern Function Float16_operator_mul_Float16;
+inline constexpr auto Float16_operator_mul_Float16_name = "operator*"_c;
 inline constexpr auto Float16_operator_mul_Float16_backend_index = 124u;
 
 /// operator/ with Float16
 extern Variable Float16_operator_div_Float16_arg;
 extern Function Float16_operator_div_Float16;
+inline constexpr auto Float16_operator_div_Float16_name = "operator/"_c;
 inline constexpr auto Float16_operator_div_Float16_backend_index = 125u;
 
 /// operator% with Float16
 extern Variable Float16_operator_mod_Float16_arg;
 extern Function Float16_operator_mod_Float16;
+inline constexpr auto Float16_operator_mod_Float16_name = "operator%"_c;
 inline constexpr auto Float16_operator_mod_Float16_backend_index = 126u;
 
 /// operator+= with Float16
 extern Variable Float16_operator_addasg_Float16_arg;
 extern Function Float16_operator_addasg_Float16;
+inline constexpr auto Float16_operator_addasg_Float16_name = "operator+="_c;
 inline constexpr auto Float16_operator_addasg_Float16_backend_index = 127u;
 
 /// operator-= with Float16
 extern Variable Float16_operator_subasg_Float16_arg;
 extern Function Float16_operator_subasg_Float16;
+inline constexpr auto Float16_operator_subasg_Float16_name = "operator-="_c;
 inline constexpr auto Float16_operator_subasg_Float16_backend_index = 128u;
 
 /// operator*= with Float16
 extern Variable Float16_operator_mulasg_Float16_arg;
 extern Function Float16_operator_mulasg_Float16;
+inline constexpr auto Float16_operator_mulasg_Float16_name = "operator*="_c;
 inline constexpr auto Float16_operator_mulasg_Float16_backend_index = 129u;
 
 /// operator/= with Float16
 extern Variable Float16_operator_divasg_Float16_arg;
 extern Function Float16_operator_divasg_Float16;
+inline constexpr auto Float16_operator_divasg_Float16_name = "operator/="_c;
 inline constexpr auto Float16_operator_divasg_Float16_backend_index = 130u;
 
 /// operator< with Float16
 extern Variable Float16_operator_lt_Float16_arg;
 extern Function Float16_operator_lt_Float16;
+inline constexpr auto Float16_operator_lt_Float16_name = "operator<"_c;
 inline constexpr auto Float16_operator_lt_Float16_backend_index = 131u;
 
 /// operator<= with Float16
 extern Variable Float16_operator_lte_Float16_arg;
 extern Function Float16_operator_lte_Float16;
+inline constexpr auto Float16_operator_lte_Float16_name = "operator<="_c;
 inline constexpr auto Float16_operator_lte_Float16_backend_index = 132u;
 
 /// operator> with Float16
 extern Variable Float16_operator_gt_Float16_arg;
 extern Function Float16_operator_gt_Float16;
+inline constexpr auto Float16_operator_gt_Float16_name = "operator>"_c;
 inline constexpr auto Float16_operator_gt_Float16_backend_index = 133u;
 
 /// operator>= with Float16
 extern Variable Float16_operator_gte_Float16_arg;
 extern Function Float16_operator_gte_Float16;
+inline constexpr auto Float16_operator_gte_Float16_name = "operator>="_c;
 inline constexpr auto Float16_operator_gte_Float16_backend_index = 134u;
 
 /// operator== with Float16
 extern Variable Float16_operator_eq_Float16_arg;
 extern Function Float16_operator_eq_Float16;
+inline constexpr auto Float16_operator_eq_Float16_name = "operator=="_c;
 inline constexpr auto Float16_operator_eq_Float16_backend_index = 135u;
 
 /// operator!= with Float16
 extern Variable Float16_operator_neq_Float16_arg;
 extern Function Float16_operator_neq_Float16;
+inline constexpr auto Float16_operator_neq_Float16_name = "operator!="_c;
 inline constexpr auto Float16_operator_neq_Float16_backend_index = 136u;
 
 struct UInt16 : public Type
@@ -615,146 +719,175 @@ extern UInt16 UInt16Type;
 /// operator[] with Int32
 extern Variable UInt16_operator_index_Int32_arg;
 extern Function UInt16_operator_index_Int32;
+inline constexpr auto UInt16_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto UInt16_operator_index_Int32_backend_index = 144u;
 
 /// operator[] with UInt32
 extern Variable UInt16_operator_index_UInt32_arg;
 extern Function UInt16_operator_index_UInt32;
+inline constexpr auto UInt16_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto UInt16_operator_index_UInt32_backend_index = 145u;
 
 /// operator[] with Int16
 extern Variable UInt16_operator_index_Int16_arg;
 extern Function UInt16_operator_index_Int16;
+inline constexpr auto UInt16_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto UInt16_operator_index_Int16_backend_index = 146u;
 
 /// operator[] with UInt16
 extern Variable UInt16_operator_index_UInt16_arg;
 extern Function UInt16_operator_index_UInt16;
+inline constexpr auto UInt16_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto UInt16_operator_index_UInt16_backend_index = 147u;
 
 /// operator+ with UInt16
 extern Variable UInt16_operator_add_UInt16_arg;
 extern Function UInt16_operator_add_UInt16;
+inline constexpr auto UInt16_operator_add_UInt16_name = "operator+"_c;
 inline constexpr auto UInt16_operator_add_UInt16_backend_index = 148u;
 
 /// operator- with UInt16
 extern Variable UInt16_operator_sub_UInt16_arg;
 extern Function UInt16_operator_sub_UInt16;
+inline constexpr auto UInt16_operator_sub_UInt16_name = "operator-"_c;
 inline constexpr auto UInt16_operator_sub_UInt16_backend_index = 149u;
 
 /// operator* with UInt16
 extern Variable UInt16_operator_mul_UInt16_arg;
 extern Function UInt16_operator_mul_UInt16;
+inline constexpr auto UInt16_operator_mul_UInt16_name = "operator*"_c;
 inline constexpr auto UInt16_operator_mul_UInt16_backend_index = 150u;
 
 /// operator/ with UInt16
 extern Variable UInt16_operator_div_UInt16_arg;
 extern Function UInt16_operator_div_UInt16;
+inline constexpr auto UInt16_operator_div_UInt16_name = "operator/"_c;
 inline constexpr auto UInt16_operator_div_UInt16_backend_index = 151u;
 
 /// operator% with UInt16
 extern Variable UInt16_operator_mod_UInt16_arg;
 extern Function UInt16_operator_mod_UInt16;
+inline constexpr auto UInt16_operator_mod_UInt16_name = "operator%"_c;
 inline constexpr auto UInt16_operator_mod_UInt16_backend_index = 152u;
 
 /// operator+= with UInt16
 extern Variable UInt16_operator_addasg_UInt16_arg;
 extern Function UInt16_operator_addasg_UInt16;
+inline constexpr auto UInt16_operator_addasg_UInt16_name = "operator+="_c;
 inline constexpr auto UInt16_operator_addasg_UInt16_backend_index = 153u;
 
 /// operator-= with UInt16
 extern Variable UInt16_operator_subasg_UInt16_arg;
 extern Function UInt16_operator_subasg_UInt16;
+inline constexpr auto UInt16_operator_subasg_UInt16_name = "operator-="_c;
 inline constexpr auto UInt16_operator_subasg_UInt16_backend_index = 154u;
 
 /// operator*= with UInt16
 extern Variable UInt16_operator_mulasg_UInt16_arg;
 extern Function UInt16_operator_mulasg_UInt16;
+inline constexpr auto UInt16_operator_mulasg_UInt16_name = "operator*="_c;
 inline constexpr auto UInt16_operator_mulasg_UInt16_backend_index = 155u;
 
 /// operator/= with UInt16
 extern Variable UInt16_operator_divasg_UInt16_arg;
 extern Function UInt16_operator_divasg_UInt16;
+inline constexpr auto UInt16_operator_divasg_UInt16_name = "operator/="_c;
 inline constexpr auto UInt16_operator_divasg_UInt16_backend_index = 156u;
 
 /// operator< with UInt16
 extern Variable UInt16_operator_lt_UInt16_arg;
 extern Function UInt16_operator_lt_UInt16;
+inline constexpr auto UInt16_operator_lt_UInt16_name = "operator<"_c;
 inline constexpr auto UInt16_operator_lt_UInt16_backend_index = 157u;
 
 /// operator<= with UInt16
 extern Variable UInt16_operator_lte_UInt16_arg;
 extern Function UInt16_operator_lte_UInt16;
+inline constexpr auto UInt16_operator_lte_UInt16_name = "operator<="_c;
 inline constexpr auto UInt16_operator_lte_UInt16_backend_index = 158u;
 
 /// operator> with UInt16
 extern Variable UInt16_operator_gt_UInt16_arg;
 extern Function UInt16_operator_gt_UInt16;
+inline constexpr auto UInt16_operator_gt_UInt16_name = "operator>"_c;
 inline constexpr auto UInt16_operator_gt_UInt16_backend_index = 159u;
 
 /// operator>= with UInt16
 extern Variable UInt16_operator_gte_UInt16_arg;
 extern Function UInt16_operator_gte_UInt16;
+inline constexpr auto UInt16_operator_gte_UInt16_name = "operator>="_c;
 inline constexpr auto UInt16_operator_gte_UInt16_backend_index = 160u;
 
 /// operator== with UInt16
 extern Variable UInt16_operator_eq_UInt16_arg;
 extern Function UInt16_operator_eq_UInt16;
+inline constexpr auto UInt16_operator_eq_UInt16_name = "operator=="_c;
 inline constexpr auto UInt16_operator_eq_UInt16_backend_index = 161u;
 
 /// operator!= with UInt16
 extern Variable UInt16_operator_neq_UInt16_arg;
 extern Function UInt16_operator_neq_UInt16;
+inline constexpr auto UInt16_operator_neq_UInt16_name = "operator!="_c;
 inline constexpr auto UInt16_operator_neq_UInt16_backend_index = 162u;
 
 /// operator| with UInt16
 extern Variable UInt16_operator_or_UInt16_arg;
 extern Function UInt16_operator_or_UInt16;
+inline constexpr auto UInt16_operator_or_UInt16_name = "operator|"_c;
 inline constexpr auto UInt16_operator_or_UInt16_backend_index = 163u;
 
 /// operator& with UInt16
 extern Variable UInt16_operator_and_UInt16_arg;
 extern Function UInt16_operator_and_UInt16;
+inline constexpr auto UInt16_operator_and_UInt16_name = "operator&"_c;
 inline constexpr auto UInt16_operator_and_UInt16_backend_index = 164u;
 
 /// operator^ with UInt16
 extern Variable UInt16_operator_xor_UInt16_arg;
 extern Function UInt16_operator_xor_UInt16;
+inline constexpr auto UInt16_operator_xor_UInt16_name = "operator^"_c;
 inline constexpr auto UInt16_operator_xor_UInt16_backend_index = 165u;
 
 /// operator<< with UInt16
 extern Variable UInt16_operator_lsh_UInt16_arg;
 extern Function UInt16_operator_lsh_UInt16;
+inline constexpr auto UInt16_operator_lsh_UInt16_name = "operator<<"_c;
 inline constexpr auto UInt16_operator_lsh_UInt16_backend_index = 166u;
 
 /// operator>> with UInt16
 extern Variable UInt16_operator_rsh_UInt16_arg;
 extern Function UInt16_operator_rsh_UInt16;
+inline constexpr auto UInt16_operator_rsh_UInt16_name = "operator>>"_c;
 inline constexpr auto UInt16_operator_rsh_UInt16_backend_index = 167u;
 
 /// operator|= with UInt16
 extern Variable UInt16_operator_orasg_UInt16_arg;
 extern Function UInt16_operator_orasg_UInt16;
+inline constexpr auto UInt16_operator_orasg_UInt16_name = "operator|="_c;
 inline constexpr auto UInt16_operator_orasg_UInt16_backend_index = 168u;
 
 /// operator&= with UInt16
 extern Variable UInt16_operator_andasg_UInt16_arg;
 extern Function UInt16_operator_andasg_UInt16;
+inline constexpr auto UInt16_operator_andasg_UInt16_name = "operator&="_c;
 inline constexpr auto UInt16_operator_andasg_UInt16_backend_index = 169u;
 
 /// operator^= with UInt16
 extern Variable UInt16_operator_xorasg_UInt16_arg;
 extern Function UInt16_operator_xorasg_UInt16;
+inline constexpr auto UInt16_operator_xorasg_UInt16_name = "operator^="_c;
 inline constexpr auto UInt16_operator_xorasg_UInt16_backend_index = 170u;
 
 /// operator<<= with UInt16
 extern Variable UInt16_operator_lshasg_UInt16_arg;
 extern Function UInt16_operator_lshasg_UInt16;
+inline constexpr auto UInt16_operator_lshasg_UInt16_name = "operator<<="_c;
 inline constexpr auto UInt16_operator_lshasg_UInt16_backend_index = 171u;
 
 /// operator>>= with UInt16
 extern Variable UInt16_operator_rhsasg_UInt16_arg;
 extern Function UInt16_operator_rhsasg_UInt16;
+inline constexpr auto UInt16_operator_rhsasg_UInt16_name = "operator>>="_c;
 inline constexpr auto UInt16_operator_rhsasg_UInt16_backend_index = 172u;
 
 struct Int16 : public Type
@@ -766,146 +899,175 @@ extern Int16 Int16Type;
 /// operator[] with Int32
 extern Variable Int16_operator_index_Int32_arg;
 extern Function Int16_operator_index_Int32;
+inline constexpr auto Int16_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Int16_operator_index_Int32_backend_index = 180u;
 
 /// operator[] with UInt32
 extern Variable Int16_operator_index_UInt32_arg;
 extern Function Int16_operator_index_UInt32;
+inline constexpr auto Int16_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Int16_operator_index_UInt32_backend_index = 181u;
 
 /// operator[] with Int16
 extern Variable Int16_operator_index_Int16_arg;
 extern Function Int16_operator_index_Int16;
+inline constexpr auto Int16_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Int16_operator_index_Int16_backend_index = 182u;
 
 /// operator[] with UInt16
 extern Variable Int16_operator_index_UInt16_arg;
 extern Function Int16_operator_index_UInt16;
+inline constexpr auto Int16_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Int16_operator_index_UInt16_backend_index = 183u;
 
 /// operator+ with Int16
 extern Variable Int16_operator_add_Int16_arg;
 extern Function Int16_operator_add_Int16;
+inline constexpr auto Int16_operator_add_Int16_name = "operator+"_c;
 inline constexpr auto Int16_operator_add_Int16_backend_index = 184u;
 
 /// operator- with Int16
 extern Variable Int16_operator_sub_Int16_arg;
 extern Function Int16_operator_sub_Int16;
+inline constexpr auto Int16_operator_sub_Int16_name = "operator-"_c;
 inline constexpr auto Int16_operator_sub_Int16_backend_index = 185u;
 
 /// operator* with Int16
 extern Variable Int16_operator_mul_Int16_arg;
 extern Function Int16_operator_mul_Int16;
+inline constexpr auto Int16_operator_mul_Int16_name = "operator*"_c;
 inline constexpr auto Int16_operator_mul_Int16_backend_index = 186u;
 
 /// operator/ with Int16
 extern Variable Int16_operator_div_Int16_arg;
 extern Function Int16_operator_div_Int16;
+inline constexpr auto Int16_operator_div_Int16_name = "operator/"_c;
 inline constexpr auto Int16_operator_div_Int16_backend_index = 187u;
 
 /// operator% with Int16
 extern Variable Int16_operator_mod_Int16_arg;
 extern Function Int16_operator_mod_Int16;
+inline constexpr auto Int16_operator_mod_Int16_name = "operator%"_c;
 inline constexpr auto Int16_operator_mod_Int16_backend_index = 188u;
 
 /// operator+= with Int16
 extern Variable Int16_operator_addasg_Int16_arg;
 extern Function Int16_operator_addasg_Int16;
+inline constexpr auto Int16_operator_addasg_Int16_name = "operator+="_c;
 inline constexpr auto Int16_operator_addasg_Int16_backend_index = 189u;
 
 /// operator-= with Int16
 extern Variable Int16_operator_subasg_Int16_arg;
 extern Function Int16_operator_subasg_Int16;
+inline constexpr auto Int16_operator_subasg_Int16_name = "operator-="_c;
 inline constexpr auto Int16_operator_subasg_Int16_backend_index = 190u;
 
 /// operator*= with Int16
 extern Variable Int16_operator_mulasg_Int16_arg;
 extern Function Int16_operator_mulasg_Int16;
+inline constexpr auto Int16_operator_mulasg_Int16_name = "operator*="_c;
 inline constexpr auto Int16_operator_mulasg_Int16_backend_index = 191u;
 
 /// operator/= with Int16
 extern Variable Int16_operator_divasg_Int16_arg;
 extern Function Int16_operator_divasg_Int16;
+inline constexpr auto Int16_operator_divasg_Int16_name = "operator/="_c;
 inline constexpr auto Int16_operator_divasg_Int16_backend_index = 192u;
 
 /// operator< with Int16
 extern Variable Int16_operator_lt_Int16_arg;
 extern Function Int16_operator_lt_Int16;
+inline constexpr auto Int16_operator_lt_Int16_name = "operator<"_c;
 inline constexpr auto Int16_operator_lt_Int16_backend_index = 193u;
 
 /// operator<= with Int16
 extern Variable Int16_operator_lte_Int16_arg;
 extern Function Int16_operator_lte_Int16;
+inline constexpr auto Int16_operator_lte_Int16_name = "operator<="_c;
 inline constexpr auto Int16_operator_lte_Int16_backend_index = 194u;
 
 /// operator> with Int16
 extern Variable Int16_operator_gt_Int16_arg;
 extern Function Int16_operator_gt_Int16;
+inline constexpr auto Int16_operator_gt_Int16_name = "operator>"_c;
 inline constexpr auto Int16_operator_gt_Int16_backend_index = 195u;
 
 /// operator>= with Int16
 extern Variable Int16_operator_gte_Int16_arg;
 extern Function Int16_operator_gte_Int16;
+inline constexpr auto Int16_operator_gte_Int16_name = "operator>="_c;
 inline constexpr auto Int16_operator_gte_Int16_backend_index = 196u;
 
 /// operator== with Int16
 extern Variable Int16_operator_eq_Int16_arg;
 extern Function Int16_operator_eq_Int16;
+inline constexpr auto Int16_operator_eq_Int16_name = "operator=="_c;
 inline constexpr auto Int16_operator_eq_Int16_backend_index = 197u;
 
 /// operator!= with Int16
 extern Variable Int16_operator_neq_Int16_arg;
 extern Function Int16_operator_neq_Int16;
+inline constexpr auto Int16_operator_neq_Int16_name = "operator!="_c;
 inline constexpr auto Int16_operator_neq_Int16_backend_index = 198u;
 
 /// operator| with Int16
 extern Variable Int16_operator_or_Int16_arg;
 extern Function Int16_operator_or_Int16;
+inline constexpr auto Int16_operator_or_Int16_name = "operator|"_c;
 inline constexpr auto Int16_operator_or_Int16_backend_index = 199u;
 
 /// operator& with Int16
 extern Variable Int16_operator_and_Int16_arg;
 extern Function Int16_operator_and_Int16;
+inline constexpr auto Int16_operator_and_Int16_name = "operator&"_c;
 inline constexpr auto Int16_operator_and_Int16_backend_index = 200u;
 
 /// operator^ with Int16
 extern Variable Int16_operator_xor_Int16_arg;
 extern Function Int16_operator_xor_Int16;
+inline constexpr auto Int16_operator_xor_Int16_name = "operator^"_c;
 inline constexpr auto Int16_operator_xor_Int16_backend_index = 201u;
 
 /// operator<< with Int16
 extern Variable Int16_operator_lsh_Int16_arg;
 extern Function Int16_operator_lsh_Int16;
+inline constexpr auto Int16_operator_lsh_Int16_name = "operator<<"_c;
 inline constexpr auto Int16_operator_lsh_Int16_backend_index = 202u;
 
 /// operator>> with Int16
 extern Variable Int16_operator_rsh_Int16_arg;
 extern Function Int16_operator_rsh_Int16;
+inline constexpr auto Int16_operator_rsh_Int16_name = "operator>>"_c;
 inline constexpr auto Int16_operator_rsh_Int16_backend_index = 203u;
 
 /// operator|= with Int16
 extern Variable Int16_operator_orasg_Int16_arg;
 extern Function Int16_operator_orasg_Int16;
+inline constexpr auto Int16_operator_orasg_Int16_name = "operator|="_c;
 inline constexpr auto Int16_operator_orasg_Int16_backend_index = 204u;
 
 /// operator&= with Int16
 extern Variable Int16_operator_andasg_Int16_arg;
 extern Function Int16_operator_andasg_Int16;
+inline constexpr auto Int16_operator_andasg_Int16_name = "operator&="_c;
 inline constexpr auto Int16_operator_andasg_Int16_backend_index = 205u;
 
 /// operator^= with Int16
 extern Variable Int16_operator_xorasg_Int16_arg;
 extern Function Int16_operator_xorasg_Int16;
+inline constexpr auto Int16_operator_xorasg_Int16_name = "operator^="_c;
 inline constexpr auto Int16_operator_xorasg_Int16_backend_index = 206u;
 
 /// operator<<= with Int16
 extern Variable Int16_operator_lshasg_Int16_arg;
 extern Function Int16_operator_lshasg_Int16;
+inline constexpr auto Int16_operator_lshasg_Int16_name = "operator<<="_c;
 inline constexpr auto Int16_operator_lshasg_Int16_backend_index = 207u;
 
 /// operator>>= with Int16
 extern Variable Int16_operator_rhsasg_Int16_arg;
 extern Function Int16_operator_rhsasg_Int16;
+inline constexpr auto Int16_operator_rhsasg_Int16_name = "operator>>="_c;
 inline constexpr auto Int16_operator_rhsasg_Int16_backend_index = 208u;
 
 struct Float32x2 : public Type
@@ -917,126 +1079,151 @@ extern Float32x2 Float32x2Type;
 /// operator[] with Int32
 extern Variable Float32x2_operator_index_Int32_arg;
 extern Function Float32x2_operator_index_Int32;
+inline constexpr auto Float32x2_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Float32x2_operator_index_Int32_backend_index = 224u;
 
 /// operator[] with UInt32
 extern Variable Float32x2_operator_index_UInt32_arg;
 extern Function Float32x2_operator_index_UInt32;
+inline constexpr auto Float32x2_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Float32x2_operator_index_UInt32_backend_index = 225u;
 
 /// operator[] with Int16
 extern Variable Float32x2_operator_index_Int16_arg;
 extern Function Float32x2_operator_index_Int16;
+inline constexpr auto Float32x2_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Float32x2_operator_index_Int16_backend_index = 226u;
 
 /// operator[] with UInt16
 extern Variable Float32x2_operator_index_UInt16_arg;
 extern Function Float32x2_operator_index_UInt16;
+inline constexpr auto Float32x2_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Float32x2_operator_index_UInt16_backend_index = 227u;
 
 /// operator+ with Float32x2
 extern Variable Float32x2_operator_add_Float32x2_arg;
 extern Function Float32x2_operator_add_Float32x2;
+inline constexpr auto Float32x2_operator_add_Float32x2_name = "operator+"_c;
 inline constexpr auto Float32x2_operator_add_Float32x2_backend_index = 228u;
 
 /// operator- with Float32x2
 extern Variable Float32x2_operator_sub_Float32x2_arg;
 extern Function Float32x2_operator_sub_Float32x2;
+inline constexpr auto Float32x2_operator_sub_Float32x2_name = "operator-"_c;
 inline constexpr auto Float32x2_operator_sub_Float32x2_backend_index = 229u;
 
 /// operator* with Float32x2
 extern Variable Float32x2_operator_mul_Float32x2_arg;
 extern Function Float32x2_operator_mul_Float32x2;
+inline constexpr auto Float32x2_operator_mul_Float32x2_name = "operator*"_c;
 inline constexpr auto Float32x2_operator_mul_Float32x2_backend_index = 230u;
 
 /// operator/ with Float32x2
 extern Variable Float32x2_operator_div_Float32x2_arg;
 extern Function Float32x2_operator_div_Float32x2;
+inline constexpr auto Float32x2_operator_div_Float32x2_name = "operator/"_c;
 inline constexpr auto Float32x2_operator_div_Float32x2_backend_index = 231u;
 
 /// operator% with Float32x2
 extern Variable Float32x2_operator_mod_Float32x2_arg;
 extern Function Float32x2_operator_mod_Float32x2;
+inline constexpr auto Float32x2_operator_mod_Float32x2_name = "operator%"_c;
 inline constexpr auto Float32x2_operator_mod_Float32x2_backend_index = 232u;
 
 /// operator+= with Float32x2
 extern Variable Float32x2_operator_addasg_Float32x2_arg;
 extern Function Float32x2_operator_addasg_Float32x2;
+inline constexpr auto Float32x2_operator_addasg_Float32x2_name = "operator+="_c;
 inline constexpr auto Float32x2_operator_addasg_Float32x2_backend_index = 233u;
 
 /// operator-= with Float32x2
 extern Variable Float32x2_operator_subasg_Float32x2_arg;
 extern Function Float32x2_operator_subasg_Float32x2;
+inline constexpr auto Float32x2_operator_subasg_Float32x2_name = "operator-="_c;
 inline constexpr auto Float32x2_operator_subasg_Float32x2_backend_index = 234u;
 
 /// operator*= with Float32x2
 extern Variable Float32x2_operator_mulasg_Float32x2_arg;
 extern Function Float32x2_operator_mulasg_Float32x2;
+inline constexpr auto Float32x2_operator_mulasg_Float32x2_name = "operator*="_c;
 inline constexpr auto Float32x2_operator_mulasg_Float32x2_backend_index = 235u;
 
 /// operator/= with Float32x2
 extern Variable Float32x2_operator_divasg_Float32x2_arg;
 extern Function Float32x2_operator_divasg_Float32x2;
+inline constexpr auto Float32x2_operator_divasg_Float32x2_name = "operator/="_c;
 inline constexpr auto Float32x2_operator_divasg_Float32x2_backend_index = 236u;
 
 /// operator< with Float32x2
 extern Variable Float32x2_operator_lt_Float32x2_arg;
 extern Function Float32x2_operator_lt_Float32x2;
+inline constexpr auto Float32x2_operator_lt_Float32x2_name = "operator<"_c;
 inline constexpr auto Float32x2_operator_lt_Float32x2_backend_index = 237u;
 
 /// operator<= with Float32x2
 extern Variable Float32x2_operator_lte_Float32x2_arg;
 extern Function Float32x2_operator_lte_Float32x2;
+inline constexpr auto Float32x2_operator_lte_Float32x2_name = "operator<="_c;
 inline constexpr auto Float32x2_operator_lte_Float32x2_backend_index = 238u;
 
 /// operator> with Float32x2
 extern Variable Float32x2_operator_gt_Float32x2_arg;
 extern Function Float32x2_operator_gt_Float32x2;
+inline constexpr auto Float32x2_operator_gt_Float32x2_name = "operator>"_c;
 inline constexpr auto Float32x2_operator_gt_Float32x2_backend_index = 239u;
 
 /// operator>= with Float32x2
 extern Variable Float32x2_operator_gte_Float32x2_arg;
 extern Function Float32x2_operator_gte_Float32x2;
+inline constexpr auto Float32x2_operator_gte_Float32x2_name = "operator>="_c;
 inline constexpr auto Float32x2_operator_gte_Float32x2_backend_index = 240u;
 
 /// operator== with Float32x2
 extern Variable Float32x2_operator_eq_Float32x2_arg;
 extern Function Float32x2_operator_eq_Float32x2;
+inline constexpr auto Float32x2_operator_eq_Float32x2_name = "operator=="_c;
 inline constexpr auto Float32x2_operator_eq_Float32x2_backend_index = 241u;
 
 /// operator!= with Float32x2
 extern Variable Float32x2_operator_neq_Float32x2_arg;
 extern Function Float32x2_operator_neq_Float32x2;
+inline constexpr auto Float32x2_operator_neq_Float32x2_name = "operator!="_c;
 inline constexpr auto Float32x2_operator_neq_Float32x2_backend_index = 242u;
 
 /// operator* with Float32
 extern Variable Float32x2_operator_scale_Float32_arg;
 extern Function Float32x2_operator_scale_Float32;
+inline constexpr auto Float32x2_operator_scale_Float32_name = "operator*"_c;
 inline constexpr auto Float32x2_operator_scale_Float32_backend_index = 243u;
 
 /// operator* with UInt32
 extern Variable Float32x2_operator_scale_UInt32_arg;
 extern Function Float32x2_operator_scale_UInt32;
+inline constexpr auto Float32x2_operator_scale_UInt32_name = "operator*"_c;
 inline constexpr auto Float32x2_operator_scale_UInt32_backend_index = 244u;
 
 /// operator* with Int32
 extern Variable Float32x2_operator_scale_Int32_arg;
 extern Function Float32x2_operator_scale_Int32;
+inline constexpr auto Float32x2_operator_scale_Int32_name = "operator*"_c;
 inline constexpr auto Float32x2_operator_scale_Int32_backend_index = 245u;
 
 /// operator* with Float32x2x2
 extern Variable Float32x2_operator_transform_Float32x2x2_arg;
 extern Function Float32x2_operator_transform_Float32x2x2;
+inline constexpr auto Float32x2_operator_transform_Float32x2x2_name = "operator*"_c;
 inline constexpr auto Float32x2_operator_transform_Float32x2x2_backend_index = 246u;
 
 /// operator* with Float32x2x3
 extern Variable Float32x2_operator_transform_Float32x2x3_arg;
 extern Function Float32x2_operator_transform_Float32x2x3;
+inline constexpr auto Float32x2_operator_transform_Float32x2x3_name = "operator*"_c;
 inline constexpr auto Float32x2_operator_transform_Float32x2x3_backend_index = 247u;
 
 /// operator* with Float32x2x4
 extern Variable Float32x2_operator_transform_Float32x2x4_arg;
 extern Function Float32x2_operator_transform_Float32x2x4;
+inline constexpr auto Float32x2_operator_transform_Float32x2x4_name = "operator*"_c;
 inline constexpr auto Float32x2_operator_transform_Float32x2x4_backend_index = 248u;
 
 struct UInt32x2 : public Type
@@ -1048,161 +1235,193 @@ extern UInt32x2 UInt32x2Type;
 /// operator[] with Int32
 extern Variable UInt32x2_operator_index_Int32_arg;
 extern Function UInt32x2_operator_index_Int32;
+inline constexpr auto UInt32x2_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto UInt32x2_operator_index_Int32_backend_index = 264u;
 
 /// operator[] with UInt32
 extern Variable UInt32x2_operator_index_UInt32_arg;
 extern Function UInt32x2_operator_index_UInt32;
+inline constexpr auto UInt32x2_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto UInt32x2_operator_index_UInt32_backend_index = 265u;
 
 /// operator[] with Int16
 extern Variable UInt32x2_operator_index_Int16_arg;
 extern Function UInt32x2_operator_index_Int16;
+inline constexpr auto UInt32x2_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto UInt32x2_operator_index_Int16_backend_index = 266u;
 
 /// operator[] with UInt16
 extern Variable UInt32x2_operator_index_UInt16_arg;
 extern Function UInt32x2_operator_index_UInt16;
+inline constexpr auto UInt32x2_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto UInt32x2_operator_index_UInt16_backend_index = 267u;
 
 /// operator+ with UInt32x2
 extern Variable UInt32x2_operator_add_UInt32x2_arg;
 extern Function UInt32x2_operator_add_UInt32x2;
+inline constexpr auto UInt32x2_operator_add_UInt32x2_name = "operator+"_c;
 inline constexpr auto UInt32x2_operator_add_UInt32x2_backend_index = 268u;
 
 /// operator- with UInt32x2
 extern Variable UInt32x2_operator_sub_UInt32x2_arg;
 extern Function UInt32x2_operator_sub_UInt32x2;
+inline constexpr auto UInt32x2_operator_sub_UInt32x2_name = "operator-"_c;
 inline constexpr auto UInt32x2_operator_sub_UInt32x2_backend_index = 269u;
 
 /// operator* with UInt32x2
 extern Variable UInt32x2_operator_mul_UInt32x2_arg;
 extern Function UInt32x2_operator_mul_UInt32x2;
+inline constexpr auto UInt32x2_operator_mul_UInt32x2_name = "operator*"_c;
 inline constexpr auto UInt32x2_operator_mul_UInt32x2_backend_index = 270u;
 
 /// operator/ with UInt32x2
 extern Variable UInt32x2_operator_div_UInt32x2_arg;
 extern Function UInt32x2_operator_div_UInt32x2;
+inline constexpr auto UInt32x2_operator_div_UInt32x2_name = "operator/"_c;
 inline constexpr auto UInt32x2_operator_div_UInt32x2_backend_index = 271u;
 
 /// operator% with UInt32x2
 extern Variable UInt32x2_operator_mod_UInt32x2_arg;
 extern Function UInt32x2_operator_mod_UInt32x2;
+inline constexpr auto UInt32x2_operator_mod_UInt32x2_name = "operator%"_c;
 inline constexpr auto UInt32x2_operator_mod_UInt32x2_backend_index = 272u;
 
 /// operator+= with UInt32x2
 extern Variable UInt32x2_operator_addasg_UInt32x2_arg;
 extern Function UInt32x2_operator_addasg_UInt32x2;
+inline constexpr auto UInt32x2_operator_addasg_UInt32x2_name = "operator+="_c;
 inline constexpr auto UInt32x2_operator_addasg_UInt32x2_backend_index = 273u;
 
 /// operator-= with UInt32x2
 extern Variable UInt32x2_operator_subasg_UInt32x2_arg;
 extern Function UInt32x2_operator_subasg_UInt32x2;
+inline constexpr auto UInt32x2_operator_subasg_UInt32x2_name = "operator-="_c;
 inline constexpr auto UInt32x2_operator_subasg_UInt32x2_backend_index = 274u;
 
 /// operator*= with UInt32x2
 extern Variable UInt32x2_operator_mulasg_UInt32x2_arg;
 extern Function UInt32x2_operator_mulasg_UInt32x2;
+inline constexpr auto UInt32x2_operator_mulasg_UInt32x2_name = "operator*="_c;
 inline constexpr auto UInt32x2_operator_mulasg_UInt32x2_backend_index = 275u;
 
 /// operator/= with UInt32x2
 extern Variable UInt32x2_operator_divasg_UInt32x2_arg;
 extern Function UInt32x2_operator_divasg_UInt32x2;
+inline constexpr auto UInt32x2_operator_divasg_UInt32x2_name = "operator/="_c;
 inline constexpr auto UInt32x2_operator_divasg_UInt32x2_backend_index = 276u;
 
 /// operator< with UInt32x2
 extern Variable UInt32x2_operator_lt_UInt32x2_arg;
 extern Function UInt32x2_operator_lt_UInt32x2;
+inline constexpr auto UInt32x2_operator_lt_UInt32x2_name = "operator<"_c;
 inline constexpr auto UInt32x2_operator_lt_UInt32x2_backend_index = 277u;
 
 /// operator<= with UInt32x2
 extern Variable UInt32x2_operator_lte_UInt32x2_arg;
 extern Function UInt32x2_operator_lte_UInt32x2;
+inline constexpr auto UInt32x2_operator_lte_UInt32x2_name = "operator<="_c;
 inline constexpr auto UInt32x2_operator_lte_UInt32x2_backend_index = 278u;
 
 /// operator> with UInt32x2
 extern Variable UInt32x2_operator_gt_UInt32x2_arg;
 extern Function UInt32x2_operator_gt_UInt32x2;
+inline constexpr auto UInt32x2_operator_gt_UInt32x2_name = "operator>"_c;
 inline constexpr auto UInt32x2_operator_gt_UInt32x2_backend_index = 279u;
 
 /// operator>= with UInt32x2
 extern Variable UInt32x2_operator_gte_UInt32x2_arg;
 extern Function UInt32x2_operator_gte_UInt32x2;
+inline constexpr auto UInt32x2_operator_gte_UInt32x2_name = "operator>="_c;
 inline constexpr auto UInt32x2_operator_gte_UInt32x2_backend_index = 280u;
 
 /// operator== with UInt32x2
 extern Variable UInt32x2_operator_eq_UInt32x2_arg;
 extern Function UInt32x2_operator_eq_UInt32x2;
+inline constexpr auto UInt32x2_operator_eq_UInt32x2_name = "operator=="_c;
 inline constexpr auto UInt32x2_operator_eq_UInt32x2_backend_index = 281u;
 
 /// operator!= with UInt32x2
 extern Variable UInt32x2_operator_neq_UInt32x2_arg;
 extern Function UInt32x2_operator_neq_UInt32x2;
+inline constexpr auto UInt32x2_operator_neq_UInt32x2_name = "operator!="_c;
 inline constexpr auto UInt32x2_operator_neq_UInt32x2_backend_index = 282u;
 
 /// operator* with Float32
 extern Variable UInt32x2_operator_scale_Float32_arg;
 extern Function UInt32x2_operator_scale_Float32;
+inline constexpr auto UInt32x2_operator_scale_Float32_name = "operator*"_c;
 inline constexpr auto UInt32x2_operator_scale_Float32_backend_index = 283u;
 
 /// operator* with UInt32
 extern Variable UInt32x2_operator_scale_UInt32_arg;
 extern Function UInt32x2_operator_scale_UInt32;
+inline constexpr auto UInt32x2_operator_scale_UInt32_name = "operator*"_c;
 inline constexpr auto UInt32x2_operator_scale_UInt32_backend_index = 284u;
 
 /// operator* with Int32
 extern Variable UInt32x2_operator_scale_Int32_arg;
 extern Function UInt32x2_operator_scale_Int32;
+inline constexpr auto UInt32x2_operator_scale_Int32_name = "operator*"_c;
 inline constexpr auto UInt32x2_operator_scale_Int32_backend_index = 285u;
 
 /// operator| with UInt32x2
 extern Variable UInt32x2_operator_or_UInt32x2_arg;
 extern Function UInt32x2_operator_or_UInt32x2;
+inline constexpr auto UInt32x2_operator_or_UInt32x2_name = "operator|"_c;
 inline constexpr auto UInt32x2_operator_or_UInt32x2_backend_index = 286u;
 
 /// operator& with UInt32x2
 extern Variable UInt32x2_operator_and_UInt32x2_arg;
 extern Function UInt32x2_operator_and_UInt32x2;
+inline constexpr auto UInt32x2_operator_and_UInt32x2_name = "operator&"_c;
 inline constexpr auto UInt32x2_operator_and_UInt32x2_backend_index = 287u;
 
 /// operator^ with UInt32x2
 extern Variable UInt32x2_operator_xor_UInt32x2_arg;
 extern Function UInt32x2_operator_xor_UInt32x2;
+inline constexpr auto UInt32x2_operator_xor_UInt32x2_name = "operator^"_c;
 inline constexpr auto UInt32x2_operator_xor_UInt32x2_backend_index = 288u;
 
 /// operator<< with UInt32x2
 extern Variable UInt32x2_operator_lsh_UInt32x2_arg;
 extern Function UInt32x2_operator_lsh_UInt32x2;
+inline constexpr auto UInt32x2_operator_lsh_UInt32x2_name = "operator<<"_c;
 inline constexpr auto UInt32x2_operator_lsh_UInt32x2_backend_index = 289u;
 
 /// operator>> with UInt32x2
 extern Variable UInt32x2_operator_rsh_UInt32x2_arg;
 extern Function UInt32x2_operator_rsh_UInt32x2;
+inline constexpr auto UInt32x2_operator_rsh_UInt32x2_name = "operator>>"_c;
 inline constexpr auto UInt32x2_operator_rsh_UInt32x2_backend_index = 290u;
 
 /// operator|= with UInt32x2
 extern Variable UInt32x2_operator_orasg_UInt32x2_arg;
 extern Function UInt32x2_operator_orasg_UInt32x2;
+inline constexpr auto UInt32x2_operator_orasg_UInt32x2_name = "operator|="_c;
 inline constexpr auto UInt32x2_operator_orasg_UInt32x2_backend_index = 291u;
 
 /// operator&= with UInt32x2
 extern Variable UInt32x2_operator_andasg_UInt32x2_arg;
 extern Function UInt32x2_operator_andasg_UInt32x2;
+inline constexpr auto UInt32x2_operator_andasg_UInt32x2_name = "operator&="_c;
 inline constexpr auto UInt32x2_operator_andasg_UInt32x2_backend_index = 292u;
 
 /// operator^= with UInt32x2
 extern Variable UInt32x2_operator_xorasg_UInt32x2_arg;
 extern Function UInt32x2_operator_xorasg_UInt32x2;
+inline constexpr auto UInt32x2_operator_xorasg_UInt32x2_name = "operator^="_c;
 inline constexpr auto UInt32x2_operator_xorasg_UInt32x2_backend_index = 293u;
 
 /// operator<<= with UInt32x2
 extern Variable UInt32x2_operator_lshasg_UInt32x2_arg;
 extern Function UInt32x2_operator_lshasg_UInt32x2;
+inline constexpr auto UInt32x2_operator_lshasg_UInt32x2_name = "operator<<="_c;
 inline constexpr auto UInt32x2_operator_lshasg_UInt32x2_backend_index = 294u;
 
 /// operator>>= with UInt32x2
 extern Variable UInt32x2_operator_rhsasg_UInt32x2_arg;
 extern Function UInt32x2_operator_rhsasg_UInt32x2;
+inline constexpr auto UInt32x2_operator_rhsasg_UInt32x2_name = "operator>>="_c;
 inline constexpr auto UInt32x2_operator_rhsasg_UInt32x2_backend_index = 295u;
 
 struct Int32x2 : public Type
@@ -1214,161 +1433,193 @@ extern Int32x2 Int32x2Type;
 /// operator[] with Int32
 extern Variable Int32x2_operator_index_Int32_arg;
 extern Function Int32x2_operator_index_Int32;
+inline constexpr auto Int32x2_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Int32x2_operator_index_Int32_backend_index = 311u;
 
 /// operator[] with UInt32
 extern Variable Int32x2_operator_index_UInt32_arg;
 extern Function Int32x2_operator_index_UInt32;
+inline constexpr auto Int32x2_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Int32x2_operator_index_UInt32_backend_index = 312u;
 
 /// operator[] with Int16
 extern Variable Int32x2_operator_index_Int16_arg;
 extern Function Int32x2_operator_index_Int16;
+inline constexpr auto Int32x2_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Int32x2_operator_index_Int16_backend_index = 313u;
 
 /// operator[] with UInt16
 extern Variable Int32x2_operator_index_UInt16_arg;
 extern Function Int32x2_operator_index_UInt16;
+inline constexpr auto Int32x2_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Int32x2_operator_index_UInt16_backend_index = 314u;
 
 /// operator+ with Int32x2
 extern Variable Int32x2_operator_add_Int32x2_arg;
 extern Function Int32x2_operator_add_Int32x2;
+inline constexpr auto Int32x2_operator_add_Int32x2_name = "operator+"_c;
 inline constexpr auto Int32x2_operator_add_Int32x2_backend_index = 315u;
 
 /// operator- with Int32x2
 extern Variable Int32x2_operator_sub_Int32x2_arg;
 extern Function Int32x2_operator_sub_Int32x2;
+inline constexpr auto Int32x2_operator_sub_Int32x2_name = "operator-"_c;
 inline constexpr auto Int32x2_operator_sub_Int32x2_backend_index = 316u;
 
 /// operator* with Int32x2
 extern Variable Int32x2_operator_mul_Int32x2_arg;
 extern Function Int32x2_operator_mul_Int32x2;
+inline constexpr auto Int32x2_operator_mul_Int32x2_name = "operator*"_c;
 inline constexpr auto Int32x2_operator_mul_Int32x2_backend_index = 317u;
 
 /// operator/ with Int32x2
 extern Variable Int32x2_operator_div_Int32x2_arg;
 extern Function Int32x2_operator_div_Int32x2;
+inline constexpr auto Int32x2_operator_div_Int32x2_name = "operator/"_c;
 inline constexpr auto Int32x2_operator_div_Int32x2_backend_index = 318u;
 
 /// operator% with Int32x2
 extern Variable Int32x2_operator_mod_Int32x2_arg;
 extern Function Int32x2_operator_mod_Int32x2;
+inline constexpr auto Int32x2_operator_mod_Int32x2_name = "operator%"_c;
 inline constexpr auto Int32x2_operator_mod_Int32x2_backend_index = 319u;
 
 /// operator+= with Int32x2
 extern Variable Int32x2_operator_addasg_Int32x2_arg;
 extern Function Int32x2_operator_addasg_Int32x2;
+inline constexpr auto Int32x2_operator_addasg_Int32x2_name = "operator+="_c;
 inline constexpr auto Int32x2_operator_addasg_Int32x2_backend_index = 320u;
 
 /// operator-= with Int32x2
 extern Variable Int32x2_operator_subasg_Int32x2_arg;
 extern Function Int32x2_operator_subasg_Int32x2;
+inline constexpr auto Int32x2_operator_subasg_Int32x2_name = "operator-="_c;
 inline constexpr auto Int32x2_operator_subasg_Int32x2_backend_index = 321u;
 
 /// operator*= with Int32x2
 extern Variable Int32x2_operator_mulasg_Int32x2_arg;
 extern Function Int32x2_operator_mulasg_Int32x2;
+inline constexpr auto Int32x2_operator_mulasg_Int32x2_name = "operator*="_c;
 inline constexpr auto Int32x2_operator_mulasg_Int32x2_backend_index = 322u;
 
 /// operator/= with Int32x2
 extern Variable Int32x2_operator_divasg_Int32x2_arg;
 extern Function Int32x2_operator_divasg_Int32x2;
+inline constexpr auto Int32x2_operator_divasg_Int32x2_name = "operator/="_c;
 inline constexpr auto Int32x2_operator_divasg_Int32x2_backend_index = 323u;
 
 /// operator< with Int32x2
 extern Variable Int32x2_operator_lt_Int32x2_arg;
 extern Function Int32x2_operator_lt_Int32x2;
+inline constexpr auto Int32x2_operator_lt_Int32x2_name = "operator<"_c;
 inline constexpr auto Int32x2_operator_lt_Int32x2_backend_index = 324u;
 
 /// operator<= with Int32x2
 extern Variable Int32x2_operator_lte_Int32x2_arg;
 extern Function Int32x2_operator_lte_Int32x2;
+inline constexpr auto Int32x2_operator_lte_Int32x2_name = "operator<="_c;
 inline constexpr auto Int32x2_operator_lte_Int32x2_backend_index = 325u;
 
 /// operator> with Int32x2
 extern Variable Int32x2_operator_gt_Int32x2_arg;
 extern Function Int32x2_operator_gt_Int32x2;
+inline constexpr auto Int32x2_operator_gt_Int32x2_name = "operator>"_c;
 inline constexpr auto Int32x2_operator_gt_Int32x2_backend_index = 326u;
 
 /// operator>= with Int32x2
 extern Variable Int32x2_operator_gte_Int32x2_arg;
 extern Function Int32x2_operator_gte_Int32x2;
+inline constexpr auto Int32x2_operator_gte_Int32x2_name = "operator>="_c;
 inline constexpr auto Int32x2_operator_gte_Int32x2_backend_index = 327u;
 
 /// operator== with Int32x2
 extern Variable Int32x2_operator_eq_Int32x2_arg;
 extern Function Int32x2_operator_eq_Int32x2;
+inline constexpr auto Int32x2_operator_eq_Int32x2_name = "operator=="_c;
 inline constexpr auto Int32x2_operator_eq_Int32x2_backend_index = 328u;
 
 /// operator!= with Int32x2
 extern Variable Int32x2_operator_neq_Int32x2_arg;
 extern Function Int32x2_operator_neq_Int32x2;
+inline constexpr auto Int32x2_operator_neq_Int32x2_name = "operator!="_c;
 inline constexpr auto Int32x2_operator_neq_Int32x2_backend_index = 329u;
 
 /// operator* with Float32
 extern Variable Int32x2_operator_scale_Float32_arg;
 extern Function Int32x2_operator_scale_Float32;
+inline constexpr auto Int32x2_operator_scale_Float32_name = "operator*"_c;
 inline constexpr auto Int32x2_operator_scale_Float32_backend_index = 330u;
 
 /// operator* with UInt32
 extern Variable Int32x2_operator_scale_UInt32_arg;
 extern Function Int32x2_operator_scale_UInt32;
+inline constexpr auto Int32x2_operator_scale_UInt32_name = "operator*"_c;
 inline constexpr auto Int32x2_operator_scale_UInt32_backend_index = 331u;
 
 /// operator* with Int32
 extern Variable Int32x2_operator_scale_Int32_arg;
 extern Function Int32x2_operator_scale_Int32;
+inline constexpr auto Int32x2_operator_scale_Int32_name = "operator*"_c;
 inline constexpr auto Int32x2_operator_scale_Int32_backend_index = 332u;
 
 /// operator| with Int32x2
 extern Variable Int32x2_operator_or_Int32x2_arg;
 extern Function Int32x2_operator_or_Int32x2;
+inline constexpr auto Int32x2_operator_or_Int32x2_name = "operator|"_c;
 inline constexpr auto Int32x2_operator_or_Int32x2_backend_index = 333u;
 
 /// operator& with Int32x2
 extern Variable Int32x2_operator_and_Int32x2_arg;
 extern Function Int32x2_operator_and_Int32x2;
+inline constexpr auto Int32x2_operator_and_Int32x2_name = "operator&"_c;
 inline constexpr auto Int32x2_operator_and_Int32x2_backend_index = 334u;
 
 /// operator^ with Int32x2
 extern Variable Int32x2_operator_xor_Int32x2_arg;
 extern Function Int32x2_operator_xor_Int32x2;
+inline constexpr auto Int32x2_operator_xor_Int32x2_name = "operator^"_c;
 inline constexpr auto Int32x2_operator_xor_Int32x2_backend_index = 335u;
 
 /// operator<< with Int32x2
 extern Variable Int32x2_operator_lsh_Int32x2_arg;
 extern Function Int32x2_operator_lsh_Int32x2;
+inline constexpr auto Int32x2_operator_lsh_Int32x2_name = "operator<<"_c;
 inline constexpr auto Int32x2_operator_lsh_Int32x2_backend_index = 336u;
 
 /// operator>> with Int32x2
 extern Variable Int32x2_operator_rsh_Int32x2_arg;
 extern Function Int32x2_operator_rsh_Int32x2;
+inline constexpr auto Int32x2_operator_rsh_Int32x2_name = "operator>>"_c;
 inline constexpr auto Int32x2_operator_rsh_Int32x2_backend_index = 337u;
 
 /// operator|= with Int32x2
 extern Variable Int32x2_operator_orasg_Int32x2_arg;
 extern Function Int32x2_operator_orasg_Int32x2;
+inline constexpr auto Int32x2_operator_orasg_Int32x2_name = "operator|="_c;
 inline constexpr auto Int32x2_operator_orasg_Int32x2_backend_index = 338u;
 
 /// operator&= with Int32x2
 extern Variable Int32x2_operator_andasg_Int32x2_arg;
 extern Function Int32x2_operator_andasg_Int32x2;
+inline constexpr auto Int32x2_operator_andasg_Int32x2_name = "operator&="_c;
 inline constexpr auto Int32x2_operator_andasg_Int32x2_backend_index = 339u;
 
 /// operator^= with Int32x2
 extern Variable Int32x2_operator_xorasg_Int32x2_arg;
 extern Function Int32x2_operator_xorasg_Int32x2;
+inline constexpr auto Int32x2_operator_xorasg_Int32x2_name = "operator^="_c;
 inline constexpr auto Int32x2_operator_xorasg_Int32x2_backend_index = 340u;
 
 /// operator<<= with Int32x2
 extern Variable Int32x2_operator_lshasg_Int32x2_arg;
 extern Function Int32x2_operator_lshasg_Int32x2;
+inline constexpr auto Int32x2_operator_lshasg_Int32x2_name = "operator<<="_c;
 inline constexpr auto Int32x2_operator_lshasg_Int32x2_backend_index = 341u;
 
 /// operator>>= with Int32x2
 extern Variable Int32x2_operator_rhsasg_Int32x2_arg;
 extern Function Int32x2_operator_rhsasg_Int32x2;
+inline constexpr auto Int32x2_operator_rhsasg_Int32x2_name = "operator>>="_c;
 inline constexpr auto Int32x2_operator_rhsasg_Int32x2_backend_index = 342u;
 
 struct Bool8x2 : public Type
@@ -1380,41 +1631,49 @@ extern Bool8x2 Bool8x2Type;
 /// operator[] with Int32
 extern Variable Bool8x2_operator_index_Int32_arg;
 extern Function Bool8x2_operator_index_Int32;
+inline constexpr auto Bool8x2_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Bool8x2_operator_index_Int32_backend_index = 354u;
 
 /// operator[] with UInt32
 extern Variable Bool8x2_operator_index_UInt32_arg;
 extern Function Bool8x2_operator_index_UInt32;
+inline constexpr auto Bool8x2_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Bool8x2_operator_index_UInt32_backend_index = 355u;
 
 /// operator[] with Int16
 extern Variable Bool8x2_operator_index_Int16_arg;
 extern Function Bool8x2_operator_index_Int16;
+inline constexpr auto Bool8x2_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Bool8x2_operator_index_Int16_backend_index = 356u;
 
 /// operator[] with UInt16
 extern Variable Bool8x2_operator_index_UInt16_arg;
 extern Function Bool8x2_operator_index_UInt16;
+inline constexpr auto Bool8x2_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Bool8x2_operator_index_UInt16_backend_index = 357u;
 
 /// operator|| with Bool8x2
 extern Variable Bool8x2_operator_oror_Bool8x2_arg;
 extern Function Bool8x2_operator_oror_Bool8x2;
+inline constexpr auto Bool8x2_operator_oror_Bool8x2_name = "operator||"_c;
 inline constexpr auto Bool8x2_operator_oror_Bool8x2_backend_index = 358u;
 
 /// operator&& with Bool8x2
 extern Variable Bool8x2_operator_andand_Bool8x2_arg;
 extern Function Bool8x2_operator_andand_Bool8x2;
+inline constexpr auto Bool8x2_operator_andand_Bool8x2_name = "operator&&"_c;
 inline constexpr auto Bool8x2_operator_andand_Bool8x2_backend_index = 359u;
 
 /// operator== with Bool8x2
 extern Variable Bool8x2_operator_eq_Bool8x2_arg;
 extern Function Bool8x2_operator_eq_Bool8x2;
+inline constexpr auto Bool8x2_operator_eq_Bool8x2_name = "operator=="_c;
 inline constexpr auto Bool8x2_operator_eq_Bool8x2_backend_index = 360u;
 
 /// operator!= with Bool8x2
 extern Variable Bool8x2_operator_neq_Bool8x2_arg;
 extern Function Bool8x2_operator_neq_Bool8x2;
+inline constexpr auto Bool8x2_operator_neq_Bool8x2_name = "operator!="_c;
 inline constexpr auto Bool8x2_operator_neq_Bool8x2_backend_index = 361u;
 
 struct Float16x2 : public Type
@@ -1426,126 +1685,151 @@ extern Float16x2 Float16x2Type;
 /// operator[] with Int32
 extern Variable Float16x2_operator_index_Int32_arg;
 extern Function Float16x2_operator_index_Int32;
+inline constexpr auto Float16x2_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Float16x2_operator_index_Int32_backend_index = 377u;
 
 /// operator[] with UInt32
 extern Variable Float16x2_operator_index_UInt32_arg;
 extern Function Float16x2_operator_index_UInt32;
+inline constexpr auto Float16x2_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Float16x2_operator_index_UInt32_backend_index = 378u;
 
 /// operator[] with Int16
 extern Variable Float16x2_operator_index_Int16_arg;
 extern Function Float16x2_operator_index_Int16;
+inline constexpr auto Float16x2_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Float16x2_operator_index_Int16_backend_index = 379u;
 
 /// operator[] with UInt16
 extern Variable Float16x2_operator_index_UInt16_arg;
 extern Function Float16x2_operator_index_UInt16;
+inline constexpr auto Float16x2_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Float16x2_operator_index_UInt16_backend_index = 380u;
 
 /// operator+ with Float16x2
 extern Variable Float16x2_operator_add_Float16x2_arg;
 extern Function Float16x2_operator_add_Float16x2;
+inline constexpr auto Float16x2_operator_add_Float16x2_name = "operator+"_c;
 inline constexpr auto Float16x2_operator_add_Float16x2_backend_index = 381u;
 
 /// operator- with Float16x2
 extern Variable Float16x2_operator_sub_Float16x2_arg;
 extern Function Float16x2_operator_sub_Float16x2;
+inline constexpr auto Float16x2_operator_sub_Float16x2_name = "operator-"_c;
 inline constexpr auto Float16x2_operator_sub_Float16x2_backend_index = 382u;
 
 /// operator* with Float16x2
 extern Variable Float16x2_operator_mul_Float16x2_arg;
 extern Function Float16x2_operator_mul_Float16x2;
+inline constexpr auto Float16x2_operator_mul_Float16x2_name = "operator*"_c;
 inline constexpr auto Float16x2_operator_mul_Float16x2_backend_index = 383u;
 
 /// operator/ with Float16x2
 extern Variable Float16x2_operator_div_Float16x2_arg;
 extern Function Float16x2_operator_div_Float16x2;
+inline constexpr auto Float16x2_operator_div_Float16x2_name = "operator/"_c;
 inline constexpr auto Float16x2_operator_div_Float16x2_backend_index = 384u;
 
 /// operator% with Float16x2
 extern Variable Float16x2_operator_mod_Float16x2_arg;
 extern Function Float16x2_operator_mod_Float16x2;
+inline constexpr auto Float16x2_operator_mod_Float16x2_name = "operator%"_c;
 inline constexpr auto Float16x2_operator_mod_Float16x2_backend_index = 385u;
 
 /// operator+= with Float16x2
 extern Variable Float16x2_operator_addasg_Float16x2_arg;
 extern Function Float16x2_operator_addasg_Float16x2;
+inline constexpr auto Float16x2_operator_addasg_Float16x2_name = "operator+="_c;
 inline constexpr auto Float16x2_operator_addasg_Float16x2_backend_index = 386u;
 
 /// operator-= with Float16x2
 extern Variable Float16x2_operator_subasg_Float16x2_arg;
 extern Function Float16x2_operator_subasg_Float16x2;
+inline constexpr auto Float16x2_operator_subasg_Float16x2_name = "operator-="_c;
 inline constexpr auto Float16x2_operator_subasg_Float16x2_backend_index = 387u;
 
 /// operator*= with Float16x2
 extern Variable Float16x2_operator_mulasg_Float16x2_arg;
 extern Function Float16x2_operator_mulasg_Float16x2;
+inline constexpr auto Float16x2_operator_mulasg_Float16x2_name = "operator*="_c;
 inline constexpr auto Float16x2_operator_mulasg_Float16x2_backend_index = 388u;
 
 /// operator/= with Float16x2
 extern Variable Float16x2_operator_divasg_Float16x2_arg;
 extern Function Float16x2_operator_divasg_Float16x2;
+inline constexpr auto Float16x2_operator_divasg_Float16x2_name = "operator/="_c;
 inline constexpr auto Float16x2_operator_divasg_Float16x2_backend_index = 389u;
 
 /// operator< with Float16x2
 extern Variable Float16x2_operator_lt_Float16x2_arg;
 extern Function Float16x2_operator_lt_Float16x2;
+inline constexpr auto Float16x2_operator_lt_Float16x2_name = "operator<"_c;
 inline constexpr auto Float16x2_operator_lt_Float16x2_backend_index = 390u;
 
 /// operator<= with Float16x2
 extern Variable Float16x2_operator_lte_Float16x2_arg;
 extern Function Float16x2_operator_lte_Float16x2;
+inline constexpr auto Float16x2_operator_lte_Float16x2_name = "operator<="_c;
 inline constexpr auto Float16x2_operator_lte_Float16x2_backend_index = 391u;
 
 /// operator> with Float16x2
 extern Variable Float16x2_operator_gt_Float16x2_arg;
 extern Function Float16x2_operator_gt_Float16x2;
+inline constexpr auto Float16x2_operator_gt_Float16x2_name = "operator>"_c;
 inline constexpr auto Float16x2_operator_gt_Float16x2_backend_index = 392u;
 
 /// operator>= with Float16x2
 extern Variable Float16x2_operator_gte_Float16x2_arg;
 extern Function Float16x2_operator_gte_Float16x2;
+inline constexpr auto Float16x2_operator_gte_Float16x2_name = "operator>="_c;
 inline constexpr auto Float16x2_operator_gte_Float16x2_backend_index = 393u;
 
 /// operator== with Float16x2
 extern Variable Float16x2_operator_eq_Float16x2_arg;
 extern Function Float16x2_operator_eq_Float16x2;
+inline constexpr auto Float16x2_operator_eq_Float16x2_name = "operator=="_c;
 inline constexpr auto Float16x2_operator_eq_Float16x2_backend_index = 394u;
 
 /// operator!= with Float16x2
 extern Variable Float16x2_operator_neq_Float16x2_arg;
 extern Function Float16x2_operator_neq_Float16x2;
+inline constexpr auto Float16x2_operator_neq_Float16x2_name = "operator!="_c;
 inline constexpr auto Float16x2_operator_neq_Float16x2_backend_index = 395u;
 
 /// operator* with Float16
 extern Variable Float16x2_operator_scale_Float16_arg;
 extern Function Float16x2_operator_scale_Float16;
+inline constexpr auto Float16x2_operator_scale_Float16_name = "operator*"_c;
 inline constexpr auto Float16x2_operator_scale_Float16_backend_index = 396u;
 
 /// operator* with UInt16
 extern Variable Float16x2_operator_scale_UInt16_arg;
 extern Function Float16x2_operator_scale_UInt16;
+inline constexpr auto Float16x2_operator_scale_UInt16_name = "operator*"_c;
 inline constexpr auto Float16x2_operator_scale_UInt16_backend_index = 397u;
 
 /// operator* with Int16
 extern Variable Float16x2_operator_scale_Int16_arg;
 extern Function Float16x2_operator_scale_Int16;
+inline constexpr auto Float16x2_operator_scale_Int16_name = "operator*"_c;
 inline constexpr auto Float16x2_operator_scale_Int16_backend_index = 398u;
 
 /// operator* with Float32x2x2
 extern Variable Float16x2_operator_transform_Float32x2x2_arg;
 extern Function Float16x2_operator_transform_Float32x2x2;
+inline constexpr auto Float16x2_operator_transform_Float32x2x2_name = "operator*"_c;
 inline constexpr auto Float16x2_operator_transform_Float32x2x2_backend_index = 399u;
 
 /// operator* with Float32x2x3
 extern Variable Float16x2_operator_transform_Float32x2x3_arg;
 extern Function Float16x2_operator_transform_Float32x2x3;
+inline constexpr auto Float16x2_operator_transform_Float32x2x3_name = "operator*"_c;
 inline constexpr auto Float16x2_operator_transform_Float32x2x3_backend_index = 400u;
 
 /// operator* with Float32x2x4
 extern Variable Float16x2_operator_transform_Float32x2x4_arg;
 extern Function Float16x2_operator_transform_Float32x2x4;
+inline constexpr auto Float16x2_operator_transform_Float32x2x4_name = "operator*"_c;
 inline constexpr auto Float16x2_operator_transform_Float32x2x4_backend_index = 401u;
 
 struct UInt16x2 : public Type
@@ -1557,161 +1841,193 @@ extern UInt16x2 UInt16x2Type;
 /// operator[] with Int32
 extern Variable UInt16x2_operator_index_Int32_arg;
 extern Function UInt16x2_operator_index_Int32;
+inline constexpr auto UInt16x2_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto UInt16x2_operator_index_Int32_backend_index = 417u;
 
 /// operator[] with UInt32
 extern Variable UInt16x2_operator_index_UInt32_arg;
 extern Function UInt16x2_operator_index_UInt32;
+inline constexpr auto UInt16x2_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto UInt16x2_operator_index_UInt32_backend_index = 418u;
 
 /// operator[] with Int16
 extern Variable UInt16x2_operator_index_Int16_arg;
 extern Function UInt16x2_operator_index_Int16;
+inline constexpr auto UInt16x2_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto UInt16x2_operator_index_Int16_backend_index = 419u;
 
 /// operator[] with UInt16
 extern Variable UInt16x2_operator_index_UInt16_arg;
 extern Function UInt16x2_operator_index_UInt16;
+inline constexpr auto UInt16x2_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto UInt16x2_operator_index_UInt16_backend_index = 420u;
 
 /// operator+ with UInt16x2
 extern Variable UInt16x2_operator_add_UInt16x2_arg;
 extern Function UInt16x2_operator_add_UInt16x2;
+inline constexpr auto UInt16x2_operator_add_UInt16x2_name = "operator+"_c;
 inline constexpr auto UInt16x2_operator_add_UInt16x2_backend_index = 421u;
 
 /// operator- with UInt16x2
 extern Variable UInt16x2_operator_sub_UInt16x2_arg;
 extern Function UInt16x2_operator_sub_UInt16x2;
+inline constexpr auto UInt16x2_operator_sub_UInt16x2_name = "operator-"_c;
 inline constexpr auto UInt16x2_operator_sub_UInt16x2_backend_index = 422u;
 
 /// operator* with UInt16x2
 extern Variable UInt16x2_operator_mul_UInt16x2_arg;
 extern Function UInt16x2_operator_mul_UInt16x2;
+inline constexpr auto UInt16x2_operator_mul_UInt16x2_name = "operator*"_c;
 inline constexpr auto UInt16x2_operator_mul_UInt16x2_backend_index = 423u;
 
 /// operator/ with UInt16x2
 extern Variable UInt16x2_operator_div_UInt16x2_arg;
 extern Function UInt16x2_operator_div_UInt16x2;
+inline constexpr auto UInt16x2_operator_div_UInt16x2_name = "operator/"_c;
 inline constexpr auto UInt16x2_operator_div_UInt16x2_backend_index = 424u;
 
 /// operator% with UInt16x2
 extern Variable UInt16x2_operator_mod_UInt16x2_arg;
 extern Function UInt16x2_operator_mod_UInt16x2;
+inline constexpr auto UInt16x2_operator_mod_UInt16x2_name = "operator%"_c;
 inline constexpr auto UInt16x2_operator_mod_UInt16x2_backend_index = 425u;
 
 /// operator+= with UInt16x2
 extern Variable UInt16x2_operator_addasg_UInt16x2_arg;
 extern Function UInt16x2_operator_addasg_UInt16x2;
+inline constexpr auto UInt16x2_operator_addasg_UInt16x2_name = "operator+="_c;
 inline constexpr auto UInt16x2_operator_addasg_UInt16x2_backend_index = 426u;
 
 /// operator-= with UInt16x2
 extern Variable UInt16x2_operator_subasg_UInt16x2_arg;
 extern Function UInt16x2_operator_subasg_UInt16x2;
+inline constexpr auto UInt16x2_operator_subasg_UInt16x2_name = "operator-="_c;
 inline constexpr auto UInt16x2_operator_subasg_UInt16x2_backend_index = 427u;
 
 /// operator*= with UInt16x2
 extern Variable UInt16x2_operator_mulasg_UInt16x2_arg;
 extern Function UInt16x2_operator_mulasg_UInt16x2;
+inline constexpr auto UInt16x2_operator_mulasg_UInt16x2_name = "operator*="_c;
 inline constexpr auto UInt16x2_operator_mulasg_UInt16x2_backend_index = 428u;
 
 /// operator/= with UInt16x2
 extern Variable UInt16x2_operator_divasg_UInt16x2_arg;
 extern Function UInt16x2_operator_divasg_UInt16x2;
+inline constexpr auto UInt16x2_operator_divasg_UInt16x2_name = "operator/="_c;
 inline constexpr auto UInt16x2_operator_divasg_UInt16x2_backend_index = 429u;
 
 /// operator< with UInt16x2
 extern Variable UInt16x2_operator_lt_UInt16x2_arg;
 extern Function UInt16x2_operator_lt_UInt16x2;
+inline constexpr auto UInt16x2_operator_lt_UInt16x2_name = "operator<"_c;
 inline constexpr auto UInt16x2_operator_lt_UInt16x2_backend_index = 430u;
 
 /// operator<= with UInt16x2
 extern Variable UInt16x2_operator_lte_UInt16x2_arg;
 extern Function UInt16x2_operator_lte_UInt16x2;
+inline constexpr auto UInt16x2_operator_lte_UInt16x2_name = "operator<="_c;
 inline constexpr auto UInt16x2_operator_lte_UInt16x2_backend_index = 431u;
 
 /// operator> with UInt16x2
 extern Variable UInt16x2_operator_gt_UInt16x2_arg;
 extern Function UInt16x2_operator_gt_UInt16x2;
+inline constexpr auto UInt16x2_operator_gt_UInt16x2_name = "operator>"_c;
 inline constexpr auto UInt16x2_operator_gt_UInt16x2_backend_index = 432u;
 
 /// operator>= with UInt16x2
 extern Variable UInt16x2_operator_gte_UInt16x2_arg;
 extern Function UInt16x2_operator_gte_UInt16x2;
+inline constexpr auto UInt16x2_operator_gte_UInt16x2_name = "operator>="_c;
 inline constexpr auto UInt16x2_operator_gte_UInt16x2_backend_index = 433u;
 
 /// operator== with UInt16x2
 extern Variable UInt16x2_operator_eq_UInt16x2_arg;
 extern Function UInt16x2_operator_eq_UInt16x2;
+inline constexpr auto UInt16x2_operator_eq_UInt16x2_name = "operator=="_c;
 inline constexpr auto UInt16x2_operator_eq_UInt16x2_backend_index = 434u;
 
 /// operator!= with UInt16x2
 extern Variable UInt16x2_operator_neq_UInt16x2_arg;
 extern Function UInt16x2_operator_neq_UInt16x2;
+inline constexpr auto UInt16x2_operator_neq_UInt16x2_name = "operator!="_c;
 inline constexpr auto UInt16x2_operator_neq_UInt16x2_backend_index = 435u;
 
 /// operator* with Float16
 extern Variable UInt16x2_operator_scale_Float16_arg;
 extern Function UInt16x2_operator_scale_Float16;
+inline constexpr auto UInt16x2_operator_scale_Float16_name = "operator*"_c;
 inline constexpr auto UInt16x2_operator_scale_Float16_backend_index = 436u;
 
 /// operator* with UInt16
 extern Variable UInt16x2_operator_scale_UInt16_arg;
 extern Function UInt16x2_operator_scale_UInt16;
+inline constexpr auto UInt16x2_operator_scale_UInt16_name = "operator*"_c;
 inline constexpr auto UInt16x2_operator_scale_UInt16_backend_index = 437u;
 
 /// operator* with Int16
 extern Variable UInt16x2_operator_scale_Int16_arg;
 extern Function UInt16x2_operator_scale_Int16;
+inline constexpr auto UInt16x2_operator_scale_Int16_name = "operator*"_c;
 inline constexpr auto UInt16x2_operator_scale_Int16_backend_index = 438u;
 
 /// operator| with UInt16x2
 extern Variable UInt16x2_operator_or_UInt16x2_arg;
 extern Function UInt16x2_operator_or_UInt16x2;
+inline constexpr auto UInt16x2_operator_or_UInt16x2_name = "operator|"_c;
 inline constexpr auto UInt16x2_operator_or_UInt16x2_backend_index = 439u;
 
 /// operator& with UInt16x2
 extern Variable UInt16x2_operator_and_UInt16x2_arg;
 extern Function UInt16x2_operator_and_UInt16x2;
+inline constexpr auto UInt16x2_operator_and_UInt16x2_name = "operator&"_c;
 inline constexpr auto UInt16x2_operator_and_UInt16x2_backend_index = 440u;
 
 /// operator^ with UInt16x2
 extern Variable UInt16x2_operator_xor_UInt16x2_arg;
 extern Function UInt16x2_operator_xor_UInt16x2;
+inline constexpr auto UInt16x2_operator_xor_UInt16x2_name = "operator^"_c;
 inline constexpr auto UInt16x2_operator_xor_UInt16x2_backend_index = 441u;
 
 /// operator<< with UInt16x2
 extern Variable UInt16x2_operator_lsh_UInt16x2_arg;
 extern Function UInt16x2_operator_lsh_UInt16x2;
+inline constexpr auto UInt16x2_operator_lsh_UInt16x2_name = "operator<<"_c;
 inline constexpr auto UInt16x2_operator_lsh_UInt16x2_backend_index = 442u;
 
 /// operator>> with UInt16x2
 extern Variable UInt16x2_operator_rsh_UInt16x2_arg;
 extern Function UInt16x2_operator_rsh_UInt16x2;
+inline constexpr auto UInt16x2_operator_rsh_UInt16x2_name = "operator>>"_c;
 inline constexpr auto UInt16x2_operator_rsh_UInt16x2_backend_index = 443u;
 
 /// operator|= with UInt16x2
 extern Variable UInt16x2_operator_orasg_UInt16x2_arg;
 extern Function UInt16x2_operator_orasg_UInt16x2;
+inline constexpr auto UInt16x2_operator_orasg_UInt16x2_name = "operator|="_c;
 inline constexpr auto UInt16x2_operator_orasg_UInt16x2_backend_index = 444u;
 
 /// operator&= with UInt16x2
 extern Variable UInt16x2_operator_andasg_UInt16x2_arg;
 extern Function UInt16x2_operator_andasg_UInt16x2;
+inline constexpr auto UInt16x2_operator_andasg_UInt16x2_name = "operator&="_c;
 inline constexpr auto UInt16x2_operator_andasg_UInt16x2_backend_index = 445u;
 
 /// operator^= with UInt16x2
 extern Variable UInt16x2_operator_xorasg_UInt16x2_arg;
 extern Function UInt16x2_operator_xorasg_UInt16x2;
+inline constexpr auto UInt16x2_operator_xorasg_UInt16x2_name = "operator^="_c;
 inline constexpr auto UInt16x2_operator_xorasg_UInt16x2_backend_index = 446u;
 
 /// operator<<= with UInt16x2
 extern Variable UInt16x2_operator_lshasg_UInt16x2_arg;
 extern Function UInt16x2_operator_lshasg_UInt16x2;
+inline constexpr auto UInt16x2_operator_lshasg_UInt16x2_name = "operator<<="_c;
 inline constexpr auto UInt16x2_operator_lshasg_UInt16x2_backend_index = 447u;
 
 /// operator>>= with UInt16x2
 extern Variable UInt16x2_operator_rhsasg_UInt16x2_arg;
 extern Function UInt16x2_operator_rhsasg_UInt16x2;
+inline constexpr auto UInt16x2_operator_rhsasg_UInt16x2_name = "operator>>="_c;
 inline constexpr auto UInt16x2_operator_rhsasg_UInt16x2_backend_index = 448u;
 
 struct Int16x2 : public Type
@@ -1723,161 +2039,193 @@ extern Int16x2 Int16x2Type;
 /// operator[] with Int32
 extern Variable Int16x2_operator_index_Int32_arg;
 extern Function Int16x2_operator_index_Int32;
+inline constexpr auto Int16x2_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Int16x2_operator_index_Int32_backend_index = 464u;
 
 /// operator[] with UInt32
 extern Variable Int16x2_operator_index_UInt32_arg;
 extern Function Int16x2_operator_index_UInt32;
+inline constexpr auto Int16x2_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Int16x2_operator_index_UInt32_backend_index = 465u;
 
 /// operator[] with Int16
 extern Variable Int16x2_operator_index_Int16_arg;
 extern Function Int16x2_operator_index_Int16;
+inline constexpr auto Int16x2_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Int16x2_operator_index_Int16_backend_index = 466u;
 
 /// operator[] with UInt16
 extern Variable Int16x2_operator_index_UInt16_arg;
 extern Function Int16x2_operator_index_UInt16;
+inline constexpr auto Int16x2_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Int16x2_operator_index_UInt16_backend_index = 467u;
 
 /// operator+ with Int16x2
 extern Variable Int16x2_operator_add_Int16x2_arg;
 extern Function Int16x2_operator_add_Int16x2;
+inline constexpr auto Int16x2_operator_add_Int16x2_name = "operator+"_c;
 inline constexpr auto Int16x2_operator_add_Int16x2_backend_index = 468u;
 
 /// operator- with Int16x2
 extern Variable Int16x2_operator_sub_Int16x2_arg;
 extern Function Int16x2_operator_sub_Int16x2;
+inline constexpr auto Int16x2_operator_sub_Int16x2_name = "operator-"_c;
 inline constexpr auto Int16x2_operator_sub_Int16x2_backend_index = 469u;
 
 /// operator* with Int16x2
 extern Variable Int16x2_operator_mul_Int16x2_arg;
 extern Function Int16x2_operator_mul_Int16x2;
+inline constexpr auto Int16x2_operator_mul_Int16x2_name = "operator*"_c;
 inline constexpr auto Int16x2_operator_mul_Int16x2_backend_index = 470u;
 
 /// operator/ with Int16x2
 extern Variable Int16x2_operator_div_Int16x2_arg;
 extern Function Int16x2_operator_div_Int16x2;
+inline constexpr auto Int16x2_operator_div_Int16x2_name = "operator/"_c;
 inline constexpr auto Int16x2_operator_div_Int16x2_backend_index = 471u;
 
 /// operator% with Int16x2
 extern Variable Int16x2_operator_mod_Int16x2_arg;
 extern Function Int16x2_operator_mod_Int16x2;
+inline constexpr auto Int16x2_operator_mod_Int16x2_name = "operator%"_c;
 inline constexpr auto Int16x2_operator_mod_Int16x2_backend_index = 472u;
 
 /// operator+= with Int16x2
 extern Variable Int16x2_operator_addasg_Int16x2_arg;
 extern Function Int16x2_operator_addasg_Int16x2;
+inline constexpr auto Int16x2_operator_addasg_Int16x2_name = "operator+="_c;
 inline constexpr auto Int16x2_operator_addasg_Int16x2_backend_index = 473u;
 
 /// operator-= with Int16x2
 extern Variable Int16x2_operator_subasg_Int16x2_arg;
 extern Function Int16x2_operator_subasg_Int16x2;
+inline constexpr auto Int16x2_operator_subasg_Int16x2_name = "operator-="_c;
 inline constexpr auto Int16x2_operator_subasg_Int16x2_backend_index = 474u;
 
 /// operator*= with Int16x2
 extern Variable Int16x2_operator_mulasg_Int16x2_arg;
 extern Function Int16x2_operator_mulasg_Int16x2;
+inline constexpr auto Int16x2_operator_mulasg_Int16x2_name = "operator*="_c;
 inline constexpr auto Int16x2_operator_mulasg_Int16x2_backend_index = 475u;
 
 /// operator/= with Int16x2
 extern Variable Int16x2_operator_divasg_Int16x2_arg;
 extern Function Int16x2_operator_divasg_Int16x2;
+inline constexpr auto Int16x2_operator_divasg_Int16x2_name = "operator/="_c;
 inline constexpr auto Int16x2_operator_divasg_Int16x2_backend_index = 476u;
 
 /// operator< with Int16x2
 extern Variable Int16x2_operator_lt_Int16x2_arg;
 extern Function Int16x2_operator_lt_Int16x2;
+inline constexpr auto Int16x2_operator_lt_Int16x2_name = "operator<"_c;
 inline constexpr auto Int16x2_operator_lt_Int16x2_backend_index = 477u;
 
 /// operator<= with Int16x2
 extern Variable Int16x2_operator_lte_Int16x2_arg;
 extern Function Int16x2_operator_lte_Int16x2;
+inline constexpr auto Int16x2_operator_lte_Int16x2_name = "operator<="_c;
 inline constexpr auto Int16x2_operator_lte_Int16x2_backend_index = 478u;
 
 /// operator> with Int16x2
 extern Variable Int16x2_operator_gt_Int16x2_arg;
 extern Function Int16x2_operator_gt_Int16x2;
+inline constexpr auto Int16x2_operator_gt_Int16x2_name = "operator>"_c;
 inline constexpr auto Int16x2_operator_gt_Int16x2_backend_index = 479u;
 
 /// operator>= with Int16x2
 extern Variable Int16x2_operator_gte_Int16x2_arg;
 extern Function Int16x2_operator_gte_Int16x2;
+inline constexpr auto Int16x2_operator_gte_Int16x2_name = "operator>="_c;
 inline constexpr auto Int16x2_operator_gte_Int16x2_backend_index = 480u;
 
 /// operator== with Int16x2
 extern Variable Int16x2_operator_eq_Int16x2_arg;
 extern Function Int16x2_operator_eq_Int16x2;
+inline constexpr auto Int16x2_operator_eq_Int16x2_name = "operator=="_c;
 inline constexpr auto Int16x2_operator_eq_Int16x2_backend_index = 481u;
 
 /// operator!= with Int16x2
 extern Variable Int16x2_operator_neq_Int16x2_arg;
 extern Function Int16x2_operator_neq_Int16x2;
+inline constexpr auto Int16x2_operator_neq_Int16x2_name = "operator!="_c;
 inline constexpr auto Int16x2_operator_neq_Int16x2_backend_index = 482u;
 
 /// operator* with Float16
 extern Variable Int16x2_operator_scale_Float16_arg;
 extern Function Int16x2_operator_scale_Float16;
+inline constexpr auto Int16x2_operator_scale_Float16_name = "operator*"_c;
 inline constexpr auto Int16x2_operator_scale_Float16_backend_index = 483u;
 
 /// operator* with UInt16
 extern Variable Int16x2_operator_scale_UInt16_arg;
 extern Function Int16x2_operator_scale_UInt16;
+inline constexpr auto Int16x2_operator_scale_UInt16_name = "operator*"_c;
 inline constexpr auto Int16x2_operator_scale_UInt16_backend_index = 484u;
 
 /// operator* with Int16
 extern Variable Int16x2_operator_scale_Int16_arg;
 extern Function Int16x2_operator_scale_Int16;
+inline constexpr auto Int16x2_operator_scale_Int16_name = "operator*"_c;
 inline constexpr auto Int16x2_operator_scale_Int16_backend_index = 485u;
 
 /// operator| with Int16x2
 extern Variable Int16x2_operator_or_Int16x2_arg;
 extern Function Int16x2_operator_or_Int16x2;
+inline constexpr auto Int16x2_operator_or_Int16x2_name = "operator|"_c;
 inline constexpr auto Int16x2_operator_or_Int16x2_backend_index = 486u;
 
 /// operator& with Int16x2
 extern Variable Int16x2_operator_and_Int16x2_arg;
 extern Function Int16x2_operator_and_Int16x2;
+inline constexpr auto Int16x2_operator_and_Int16x2_name = "operator&"_c;
 inline constexpr auto Int16x2_operator_and_Int16x2_backend_index = 487u;
 
 /// operator^ with Int16x2
 extern Variable Int16x2_operator_xor_Int16x2_arg;
 extern Function Int16x2_operator_xor_Int16x2;
+inline constexpr auto Int16x2_operator_xor_Int16x2_name = "operator^"_c;
 inline constexpr auto Int16x2_operator_xor_Int16x2_backend_index = 488u;
 
 /// operator<< with Int16x2
 extern Variable Int16x2_operator_lsh_Int16x2_arg;
 extern Function Int16x2_operator_lsh_Int16x2;
+inline constexpr auto Int16x2_operator_lsh_Int16x2_name = "operator<<"_c;
 inline constexpr auto Int16x2_operator_lsh_Int16x2_backend_index = 489u;
 
 /// operator>> with Int16x2
 extern Variable Int16x2_operator_rsh_Int16x2_arg;
 extern Function Int16x2_operator_rsh_Int16x2;
+inline constexpr auto Int16x2_operator_rsh_Int16x2_name = "operator>>"_c;
 inline constexpr auto Int16x2_operator_rsh_Int16x2_backend_index = 490u;
 
 /// operator|= with Int16x2
 extern Variable Int16x2_operator_orasg_Int16x2_arg;
 extern Function Int16x2_operator_orasg_Int16x2;
+inline constexpr auto Int16x2_operator_orasg_Int16x2_name = "operator|="_c;
 inline constexpr auto Int16x2_operator_orasg_Int16x2_backend_index = 491u;
 
 /// operator&= with Int16x2
 extern Variable Int16x2_operator_andasg_Int16x2_arg;
 extern Function Int16x2_operator_andasg_Int16x2;
+inline constexpr auto Int16x2_operator_andasg_Int16x2_name = "operator&="_c;
 inline constexpr auto Int16x2_operator_andasg_Int16x2_backend_index = 492u;
 
 /// operator^= with Int16x2
 extern Variable Int16x2_operator_xorasg_Int16x2_arg;
 extern Function Int16x2_operator_xorasg_Int16x2;
+inline constexpr auto Int16x2_operator_xorasg_Int16x2_name = "operator^="_c;
 inline constexpr auto Int16x2_operator_xorasg_Int16x2_backend_index = 493u;
 
 /// operator<<= with Int16x2
 extern Variable Int16x2_operator_lshasg_Int16x2_arg;
 extern Function Int16x2_operator_lshasg_Int16x2;
+inline constexpr auto Int16x2_operator_lshasg_Int16x2_name = "operator<<="_c;
 inline constexpr auto Int16x2_operator_lshasg_Int16x2_backend_index = 494u;
 
 /// operator>>= with Int16x2
 extern Variable Int16x2_operator_rhsasg_Int16x2_arg;
 extern Function Int16x2_operator_rhsasg_Int16x2;
+inline constexpr auto Int16x2_operator_rhsasg_Int16x2_name = "operator>>="_c;
 inline constexpr auto Int16x2_operator_rhsasg_Int16x2_backend_index = 495u;
 
 struct Float32x3 : public Type
@@ -1889,126 +2237,151 @@ extern Float32x3 Float32x3Type;
 /// operator[] with Int32
 extern Variable Float32x3_operator_index_Int32_arg;
 extern Function Float32x3_operator_index_Int32;
+inline constexpr auto Float32x3_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Float32x3_operator_index_Int32_backend_index = 513u;
 
 /// operator[] with UInt32
 extern Variable Float32x3_operator_index_UInt32_arg;
 extern Function Float32x3_operator_index_UInt32;
+inline constexpr auto Float32x3_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Float32x3_operator_index_UInt32_backend_index = 514u;
 
 /// operator[] with Int16
 extern Variable Float32x3_operator_index_Int16_arg;
 extern Function Float32x3_operator_index_Int16;
+inline constexpr auto Float32x3_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Float32x3_operator_index_Int16_backend_index = 515u;
 
 /// operator[] with UInt16
 extern Variable Float32x3_operator_index_UInt16_arg;
 extern Function Float32x3_operator_index_UInt16;
+inline constexpr auto Float32x3_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Float32x3_operator_index_UInt16_backend_index = 516u;
 
 /// operator+ with Float32x3
 extern Variable Float32x3_operator_add_Float32x3_arg;
 extern Function Float32x3_operator_add_Float32x3;
+inline constexpr auto Float32x3_operator_add_Float32x3_name = "operator+"_c;
 inline constexpr auto Float32x3_operator_add_Float32x3_backend_index = 517u;
 
 /// operator- with Float32x3
 extern Variable Float32x3_operator_sub_Float32x3_arg;
 extern Function Float32x3_operator_sub_Float32x3;
+inline constexpr auto Float32x3_operator_sub_Float32x3_name = "operator-"_c;
 inline constexpr auto Float32x3_operator_sub_Float32x3_backend_index = 518u;
 
 /// operator* with Float32x3
 extern Variable Float32x3_operator_mul_Float32x3_arg;
 extern Function Float32x3_operator_mul_Float32x3;
+inline constexpr auto Float32x3_operator_mul_Float32x3_name = "operator*"_c;
 inline constexpr auto Float32x3_operator_mul_Float32x3_backend_index = 519u;
 
 /// operator/ with Float32x3
 extern Variable Float32x3_operator_div_Float32x3_arg;
 extern Function Float32x3_operator_div_Float32x3;
+inline constexpr auto Float32x3_operator_div_Float32x3_name = "operator/"_c;
 inline constexpr auto Float32x3_operator_div_Float32x3_backend_index = 520u;
 
 /// operator% with Float32x3
 extern Variable Float32x3_operator_mod_Float32x3_arg;
 extern Function Float32x3_operator_mod_Float32x3;
+inline constexpr auto Float32x3_operator_mod_Float32x3_name = "operator%"_c;
 inline constexpr auto Float32x3_operator_mod_Float32x3_backend_index = 521u;
 
 /// operator+= with Float32x3
 extern Variable Float32x3_operator_addasg_Float32x3_arg;
 extern Function Float32x3_operator_addasg_Float32x3;
+inline constexpr auto Float32x3_operator_addasg_Float32x3_name = "operator+="_c;
 inline constexpr auto Float32x3_operator_addasg_Float32x3_backend_index = 522u;
 
 /// operator-= with Float32x3
 extern Variable Float32x3_operator_subasg_Float32x3_arg;
 extern Function Float32x3_operator_subasg_Float32x3;
+inline constexpr auto Float32x3_operator_subasg_Float32x3_name = "operator-="_c;
 inline constexpr auto Float32x3_operator_subasg_Float32x3_backend_index = 523u;
 
 /// operator*= with Float32x3
 extern Variable Float32x3_operator_mulasg_Float32x3_arg;
 extern Function Float32x3_operator_mulasg_Float32x3;
+inline constexpr auto Float32x3_operator_mulasg_Float32x3_name = "operator*="_c;
 inline constexpr auto Float32x3_operator_mulasg_Float32x3_backend_index = 524u;
 
 /// operator/= with Float32x3
 extern Variable Float32x3_operator_divasg_Float32x3_arg;
 extern Function Float32x3_operator_divasg_Float32x3;
+inline constexpr auto Float32x3_operator_divasg_Float32x3_name = "operator/="_c;
 inline constexpr auto Float32x3_operator_divasg_Float32x3_backend_index = 525u;
 
 /// operator< with Float32x3
 extern Variable Float32x3_operator_lt_Float32x3_arg;
 extern Function Float32x3_operator_lt_Float32x3;
+inline constexpr auto Float32x3_operator_lt_Float32x3_name = "operator<"_c;
 inline constexpr auto Float32x3_operator_lt_Float32x3_backend_index = 526u;
 
 /// operator<= with Float32x3
 extern Variable Float32x3_operator_lte_Float32x3_arg;
 extern Function Float32x3_operator_lte_Float32x3;
+inline constexpr auto Float32x3_operator_lte_Float32x3_name = "operator<="_c;
 inline constexpr auto Float32x3_operator_lte_Float32x3_backend_index = 527u;
 
 /// operator> with Float32x3
 extern Variable Float32x3_operator_gt_Float32x3_arg;
 extern Function Float32x3_operator_gt_Float32x3;
+inline constexpr auto Float32x3_operator_gt_Float32x3_name = "operator>"_c;
 inline constexpr auto Float32x3_operator_gt_Float32x3_backend_index = 528u;
 
 /// operator>= with Float32x3
 extern Variable Float32x3_operator_gte_Float32x3_arg;
 extern Function Float32x3_operator_gte_Float32x3;
+inline constexpr auto Float32x3_operator_gte_Float32x3_name = "operator>="_c;
 inline constexpr auto Float32x3_operator_gte_Float32x3_backend_index = 529u;
 
 /// operator== with Float32x3
 extern Variable Float32x3_operator_eq_Float32x3_arg;
 extern Function Float32x3_operator_eq_Float32x3;
+inline constexpr auto Float32x3_operator_eq_Float32x3_name = "operator=="_c;
 inline constexpr auto Float32x3_operator_eq_Float32x3_backend_index = 530u;
 
 /// operator!= with Float32x3
 extern Variable Float32x3_operator_neq_Float32x3_arg;
 extern Function Float32x3_operator_neq_Float32x3;
+inline constexpr auto Float32x3_operator_neq_Float32x3_name = "operator!="_c;
 inline constexpr auto Float32x3_operator_neq_Float32x3_backend_index = 531u;
 
 /// operator* with Float32
 extern Variable Float32x3_operator_scale_Float32_arg;
 extern Function Float32x3_operator_scale_Float32;
+inline constexpr auto Float32x3_operator_scale_Float32_name = "operator*"_c;
 inline constexpr auto Float32x3_operator_scale_Float32_backend_index = 532u;
 
 /// operator* with UInt32
 extern Variable Float32x3_operator_scale_UInt32_arg;
 extern Function Float32x3_operator_scale_UInt32;
+inline constexpr auto Float32x3_operator_scale_UInt32_name = "operator*"_c;
 inline constexpr auto Float32x3_operator_scale_UInt32_backend_index = 533u;
 
 /// operator* with Int32
 extern Variable Float32x3_operator_scale_Int32_arg;
 extern Function Float32x3_operator_scale_Int32;
+inline constexpr auto Float32x3_operator_scale_Int32_name = "operator*"_c;
 inline constexpr auto Float32x3_operator_scale_Int32_backend_index = 534u;
 
 /// operator* with Float32x3x2
 extern Variable Float32x3_operator_transform_Float32x3x2_arg;
 extern Function Float32x3_operator_transform_Float32x3x2;
+inline constexpr auto Float32x3_operator_transform_Float32x3x2_name = "operator*"_c;
 inline constexpr auto Float32x3_operator_transform_Float32x3x2_backend_index = 535u;
 
 /// operator* with Float32x3x3
 extern Variable Float32x3_operator_transform_Float32x3x3_arg;
 extern Function Float32x3_operator_transform_Float32x3x3;
+inline constexpr auto Float32x3_operator_transform_Float32x3x3_name = "operator*"_c;
 inline constexpr auto Float32x3_operator_transform_Float32x3x3_backend_index = 536u;
 
 /// operator* with Float32x3x4
 extern Variable Float32x3_operator_transform_Float32x3x4_arg;
 extern Function Float32x3_operator_transform_Float32x3x4;
+inline constexpr auto Float32x3_operator_transform_Float32x3x4_name = "operator*"_c;
 inline constexpr auto Float32x3_operator_transform_Float32x3x4_backend_index = 537u;
 
 struct UInt32x3 : public Type
@@ -2020,161 +2393,193 @@ extern UInt32x3 UInt32x3Type;
 /// operator[] with Int32
 extern Variable UInt32x3_operator_index_Int32_arg;
 extern Function UInt32x3_operator_index_Int32;
+inline constexpr auto UInt32x3_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto UInt32x3_operator_index_Int32_backend_index = 555u;
 
 /// operator[] with UInt32
 extern Variable UInt32x3_operator_index_UInt32_arg;
 extern Function UInt32x3_operator_index_UInt32;
+inline constexpr auto UInt32x3_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto UInt32x3_operator_index_UInt32_backend_index = 556u;
 
 /// operator[] with Int16
 extern Variable UInt32x3_operator_index_Int16_arg;
 extern Function UInt32x3_operator_index_Int16;
+inline constexpr auto UInt32x3_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto UInt32x3_operator_index_Int16_backend_index = 557u;
 
 /// operator[] with UInt16
 extern Variable UInt32x3_operator_index_UInt16_arg;
 extern Function UInt32x3_operator_index_UInt16;
+inline constexpr auto UInt32x3_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto UInt32x3_operator_index_UInt16_backend_index = 558u;
 
 /// operator+ with UInt32x3
 extern Variable UInt32x3_operator_add_UInt32x3_arg;
 extern Function UInt32x3_operator_add_UInt32x3;
+inline constexpr auto UInt32x3_operator_add_UInt32x3_name = "operator+"_c;
 inline constexpr auto UInt32x3_operator_add_UInt32x3_backend_index = 559u;
 
 /// operator- with UInt32x3
 extern Variable UInt32x3_operator_sub_UInt32x3_arg;
 extern Function UInt32x3_operator_sub_UInt32x3;
+inline constexpr auto UInt32x3_operator_sub_UInt32x3_name = "operator-"_c;
 inline constexpr auto UInt32x3_operator_sub_UInt32x3_backend_index = 560u;
 
 /// operator* with UInt32x3
 extern Variable UInt32x3_operator_mul_UInt32x3_arg;
 extern Function UInt32x3_operator_mul_UInt32x3;
+inline constexpr auto UInt32x3_operator_mul_UInt32x3_name = "operator*"_c;
 inline constexpr auto UInt32x3_operator_mul_UInt32x3_backend_index = 561u;
 
 /// operator/ with UInt32x3
 extern Variable UInt32x3_operator_div_UInt32x3_arg;
 extern Function UInt32x3_operator_div_UInt32x3;
+inline constexpr auto UInt32x3_operator_div_UInt32x3_name = "operator/"_c;
 inline constexpr auto UInt32x3_operator_div_UInt32x3_backend_index = 562u;
 
 /// operator% with UInt32x3
 extern Variable UInt32x3_operator_mod_UInt32x3_arg;
 extern Function UInt32x3_operator_mod_UInt32x3;
+inline constexpr auto UInt32x3_operator_mod_UInt32x3_name = "operator%"_c;
 inline constexpr auto UInt32x3_operator_mod_UInt32x3_backend_index = 563u;
 
 /// operator+= with UInt32x3
 extern Variable UInt32x3_operator_addasg_UInt32x3_arg;
 extern Function UInt32x3_operator_addasg_UInt32x3;
+inline constexpr auto UInt32x3_operator_addasg_UInt32x3_name = "operator+="_c;
 inline constexpr auto UInt32x3_operator_addasg_UInt32x3_backend_index = 564u;
 
 /// operator-= with UInt32x3
 extern Variable UInt32x3_operator_subasg_UInt32x3_arg;
 extern Function UInt32x3_operator_subasg_UInt32x3;
+inline constexpr auto UInt32x3_operator_subasg_UInt32x3_name = "operator-="_c;
 inline constexpr auto UInt32x3_operator_subasg_UInt32x3_backend_index = 565u;
 
 /// operator*= with UInt32x3
 extern Variable UInt32x3_operator_mulasg_UInt32x3_arg;
 extern Function UInt32x3_operator_mulasg_UInt32x3;
+inline constexpr auto UInt32x3_operator_mulasg_UInt32x3_name = "operator*="_c;
 inline constexpr auto UInt32x3_operator_mulasg_UInt32x3_backend_index = 566u;
 
 /// operator/= with UInt32x3
 extern Variable UInt32x3_operator_divasg_UInt32x3_arg;
 extern Function UInt32x3_operator_divasg_UInt32x3;
+inline constexpr auto UInt32x3_operator_divasg_UInt32x3_name = "operator/="_c;
 inline constexpr auto UInt32x3_operator_divasg_UInt32x3_backend_index = 567u;
 
 /// operator< with UInt32x3
 extern Variable UInt32x3_operator_lt_UInt32x3_arg;
 extern Function UInt32x3_operator_lt_UInt32x3;
+inline constexpr auto UInt32x3_operator_lt_UInt32x3_name = "operator<"_c;
 inline constexpr auto UInt32x3_operator_lt_UInt32x3_backend_index = 568u;
 
 /// operator<= with UInt32x3
 extern Variable UInt32x3_operator_lte_UInt32x3_arg;
 extern Function UInt32x3_operator_lte_UInt32x3;
+inline constexpr auto UInt32x3_operator_lte_UInt32x3_name = "operator<="_c;
 inline constexpr auto UInt32x3_operator_lte_UInt32x3_backend_index = 569u;
 
 /// operator> with UInt32x3
 extern Variable UInt32x3_operator_gt_UInt32x3_arg;
 extern Function UInt32x3_operator_gt_UInt32x3;
+inline constexpr auto UInt32x3_operator_gt_UInt32x3_name = "operator>"_c;
 inline constexpr auto UInt32x3_operator_gt_UInt32x3_backend_index = 570u;
 
 /// operator>= with UInt32x3
 extern Variable UInt32x3_operator_gte_UInt32x3_arg;
 extern Function UInt32x3_operator_gte_UInt32x3;
+inline constexpr auto UInt32x3_operator_gte_UInt32x3_name = "operator>="_c;
 inline constexpr auto UInt32x3_operator_gte_UInt32x3_backend_index = 571u;
 
 /// operator== with UInt32x3
 extern Variable UInt32x3_operator_eq_UInt32x3_arg;
 extern Function UInt32x3_operator_eq_UInt32x3;
+inline constexpr auto UInt32x3_operator_eq_UInt32x3_name = "operator=="_c;
 inline constexpr auto UInt32x3_operator_eq_UInt32x3_backend_index = 572u;
 
 /// operator!= with UInt32x3
 extern Variable UInt32x3_operator_neq_UInt32x3_arg;
 extern Function UInt32x3_operator_neq_UInt32x3;
+inline constexpr auto UInt32x3_operator_neq_UInt32x3_name = "operator!="_c;
 inline constexpr auto UInt32x3_operator_neq_UInt32x3_backend_index = 573u;
 
 /// operator* with Float32
 extern Variable UInt32x3_operator_scale_Float32_arg;
 extern Function UInt32x3_operator_scale_Float32;
+inline constexpr auto UInt32x3_operator_scale_Float32_name = "operator*"_c;
 inline constexpr auto UInt32x3_operator_scale_Float32_backend_index = 574u;
 
 /// operator* with UInt32
 extern Variable UInt32x3_operator_scale_UInt32_arg;
 extern Function UInt32x3_operator_scale_UInt32;
+inline constexpr auto UInt32x3_operator_scale_UInt32_name = "operator*"_c;
 inline constexpr auto UInt32x3_operator_scale_UInt32_backend_index = 575u;
 
 /// operator* with Int32
 extern Variable UInt32x3_operator_scale_Int32_arg;
 extern Function UInt32x3_operator_scale_Int32;
+inline constexpr auto UInt32x3_operator_scale_Int32_name = "operator*"_c;
 inline constexpr auto UInt32x3_operator_scale_Int32_backend_index = 576u;
 
 /// operator| with UInt32x3
 extern Variable UInt32x3_operator_or_UInt32x3_arg;
 extern Function UInt32x3_operator_or_UInt32x3;
+inline constexpr auto UInt32x3_operator_or_UInt32x3_name = "operator|"_c;
 inline constexpr auto UInt32x3_operator_or_UInt32x3_backend_index = 577u;
 
 /// operator& with UInt32x3
 extern Variable UInt32x3_operator_and_UInt32x3_arg;
 extern Function UInt32x3_operator_and_UInt32x3;
+inline constexpr auto UInt32x3_operator_and_UInt32x3_name = "operator&"_c;
 inline constexpr auto UInt32x3_operator_and_UInt32x3_backend_index = 578u;
 
 /// operator^ with UInt32x3
 extern Variable UInt32x3_operator_xor_UInt32x3_arg;
 extern Function UInt32x3_operator_xor_UInt32x3;
+inline constexpr auto UInt32x3_operator_xor_UInt32x3_name = "operator^"_c;
 inline constexpr auto UInt32x3_operator_xor_UInt32x3_backend_index = 579u;
 
 /// operator<< with UInt32x3
 extern Variable UInt32x3_operator_lsh_UInt32x3_arg;
 extern Function UInt32x3_operator_lsh_UInt32x3;
+inline constexpr auto UInt32x3_operator_lsh_UInt32x3_name = "operator<<"_c;
 inline constexpr auto UInt32x3_operator_lsh_UInt32x3_backend_index = 580u;
 
 /// operator>> with UInt32x3
 extern Variable UInt32x3_operator_rsh_UInt32x3_arg;
 extern Function UInt32x3_operator_rsh_UInt32x3;
+inline constexpr auto UInt32x3_operator_rsh_UInt32x3_name = "operator>>"_c;
 inline constexpr auto UInt32x3_operator_rsh_UInt32x3_backend_index = 581u;
 
 /// operator|= with UInt32x3
 extern Variable UInt32x3_operator_orasg_UInt32x3_arg;
 extern Function UInt32x3_operator_orasg_UInt32x3;
+inline constexpr auto UInt32x3_operator_orasg_UInt32x3_name = "operator|="_c;
 inline constexpr auto UInt32x3_operator_orasg_UInt32x3_backend_index = 582u;
 
 /// operator&= with UInt32x3
 extern Variable UInt32x3_operator_andasg_UInt32x3_arg;
 extern Function UInt32x3_operator_andasg_UInt32x3;
+inline constexpr auto UInt32x3_operator_andasg_UInt32x3_name = "operator&="_c;
 inline constexpr auto UInt32x3_operator_andasg_UInt32x3_backend_index = 583u;
 
 /// operator^= with UInt32x3
 extern Variable UInt32x3_operator_xorasg_UInt32x3_arg;
 extern Function UInt32x3_operator_xorasg_UInt32x3;
+inline constexpr auto UInt32x3_operator_xorasg_UInt32x3_name = "operator^="_c;
 inline constexpr auto UInt32x3_operator_xorasg_UInt32x3_backend_index = 584u;
 
 /// operator<<= with UInt32x3
 extern Variable UInt32x3_operator_lshasg_UInt32x3_arg;
 extern Function UInt32x3_operator_lshasg_UInt32x3;
+inline constexpr auto UInt32x3_operator_lshasg_UInt32x3_name = "operator<<="_c;
 inline constexpr auto UInt32x3_operator_lshasg_UInt32x3_backend_index = 585u;
 
 /// operator>>= with UInt32x3
 extern Variable UInt32x3_operator_rhsasg_UInt32x3_arg;
 extern Function UInt32x3_operator_rhsasg_UInt32x3;
+inline constexpr auto UInt32x3_operator_rhsasg_UInt32x3_name = "operator>>="_c;
 inline constexpr auto UInt32x3_operator_rhsasg_UInt32x3_backend_index = 586u;
 
 struct Int32x3 : public Type
@@ -2186,161 +2591,193 @@ extern Int32x3 Int32x3Type;
 /// operator[] with Int32
 extern Variable Int32x3_operator_index_Int32_arg;
 extern Function Int32x3_operator_index_Int32;
+inline constexpr auto Int32x3_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Int32x3_operator_index_Int32_backend_index = 604u;
 
 /// operator[] with UInt32
 extern Variable Int32x3_operator_index_UInt32_arg;
 extern Function Int32x3_operator_index_UInt32;
+inline constexpr auto Int32x3_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Int32x3_operator_index_UInt32_backend_index = 605u;
 
 /// operator[] with Int16
 extern Variable Int32x3_operator_index_Int16_arg;
 extern Function Int32x3_operator_index_Int16;
+inline constexpr auto Int32x3_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Int32x3_operator_index_Int16_backend_index = 606u;
 
 /// operator[] with UInt16
 extern Variable Int32x3_operator_index_UInt16_arg;
 extern Function Int32x3_operator_index_UInt16;
+inline constexpr auto Int32x3_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Int32x3_operator_index_UInt16_backend_index = 607u;
 
 /// operator+ with Int32x3
 extern Variable Int32x3_operator_add_Int32x3_arg;
 extern Function Int32x3_operator_add_Int32x3;
+inline constexpr auto Int32x3_operator_add_Int32x3_name = "operator+"_c;
 inline constexpr auto Int32x3_operator_add_Int32x3_backend_index = 608u;
 
 /// operator- with Int32x3
 extern Variable Int32x3_operator_sub_Int32x3_arg;
 extern Function Int32x3_operator_sub_Int32x3;
+inline constexpr auto Int32x3_operator_sub_Int32x3_name = "operator-"_c;
 inline constexpr auto Int32x3_operator_sub_Int32x3_backend_index = 609u;
 
 /// operator* with Int32x3
 extern Variable Int32x3_operator_mul_Int32x3_arg;
 extern Function Int32x3_operator_mul_Int32x3;
+inline constexpr auto Int32x3_operator_mul_Int32x3_name = "operator*"_c;
 inline constexpr auto Int32x3_operator_mul_Int32x3_backend_index = 610u;
 
 /// operator/ with Int32x3
 extern Variable Int32x3_operator_div_Int32x3_arg;
 extern Function Int32x3_operator_div_Int32x3;
+inline constexpr auto Int32x3_operator_div_Int32x3_name = "operator/"_c;
 inline constexpr auto Int32x3_operator_div_Int32x3_backend_index = 611u;
 
 /// operator% with Int32x3
 extern Variable Int32x3_operator_mod_Int32x3_arg;
 extern Function Int32x3_operator_mod_Int32x3;
+inline constexpr auto Int32x3_operator_mod_Int32x3_name = "operator%"_c;
 inline constexpr auto Int32x3_operator_mod_Int32x3_backend_index = 612u;
 
 /// operator+= with Int32x3
 extern Variable Int32x3_operator_addasg_Int32x3_arg;
 extern Function Int32x3_operator_addasg_Int32x3;
+inline constexpr auto Int32x3_operator_addasg_Int32x3_name = "operator+="_c;
 inline constexpr auto Int32x3_operator_addasg_Int32x3_backend_index = 613u;
 
 /// operator-= with Int32x3
 extern Variable Int32x3_operator_subasg_Int32x3_arg;
 extern Function Int32x3_operator_subasg_Int32x3;
+inline constexpr auto Int32x3_operator_subasg_Int32x3_name = "operator-="_c;
 inline constexpr auto Int32x3_operator_subasg_Int32x3_backend_index = 614u;
 
 /// operator*= with Int32x3
 extern Variable Int32x3_operator_mulasg_Int32x3_arg;
 extern Function Int32x3_operator_mulasg_Int32x3;
+inline constexpr auto Int32x3_operator_mulasg_Int32x3_name = "operator*="_c;
 inline constexpr auto Int32x3_operator_mulasg_Int32x3_backend_index = 615u;
 
 /// operator/= with Int32x3
 extern Variable Int32x3_operator_divasg_Int32x3_arg;
 extern Function Int32x3_operator_divasg_Int32x3;
+inline constexpr auto Int32x3_operator_divasg_Int32x3_name = "operator/="_c;
 inline constexpr auto Int32x3_operator_divasg_Int32x3_backend_index = 616u;
 
 /// operator< with Int32x3
 extern Variable Int32x3_operator_lt_Int32x3_arg;
 extern Function Int32x3_operator_lt_Int32x3;
+inline constexpr auto Int32x3_operator_lt_Int32x3_name = "operator<"_c;
 inline constexpr auto Int32x3_operator_lt_Int32x3_backend_index = 617u;
 
 /// operator<= with Int32x3
 extern Variable Int32x3_operator_lte_Int32x3_arg;
 extern Function Int32x3_operator_lte_Int32x3;
+inline constexpr auto Int32x3_operator_lte_Int32x3_name = "operator<="_c;
 inline constexpr auto Int32x3_operator_lte_Int32x3_backend_index = 618u;
 
 /// operator> with Int32x3
 extern Variable Int32x3_operator_gt_Int32x3_arg;
 extern Function Int32x3_operator_gt_Int32x3;
+inline constexpr auto Int32x3_operator_gt_Int32x3_name = "operator>"_c;
 inline constexpr auto Int32x3_operator_gt_Int32x3_backend_index = 619u;
 
 /// operator>= with Int32x3
 extern Variable Int32x3_operator_gte_Int32x3_arg;
 extern Function Int32x3_operator_gte_Int32x3;
+inline constexpr auto Int32x3_operator_gte_Int32x3_name = "operator>="_c;
 inline constexpr auto Int32x3_operator_gte_Int32x3_backend_index = 620u;
 
 /// operator== with Int32x3
 extern Variable Int32x3_operator_eq_Int32x3_arg;
 extern Function Int32x3_operator_eq_Int32x3;
+inline constexpr auto Int32x3_operator_eq_Int32x3_name = "operator=="_c;
 inline constexpr auto Int32x3_operator_eq_Int32x3_backend_index = 621u;
 
 /// operator!= with Int32x3
 extern Variable Int32x3_operator_neq_Int32x3_arg;
 extern Function Int32x3_operator_neq_Int32x3;
+inline constexpr auto Int32x3_operator_neq_Int32x3_name = "operator!="_c;
 inline constexpr auto Int32x3_operator_neq_Int32x3_backend_index = 622u;
 
 /// operator* with Float32
 extern Variable Int32x3_operator_scale_Float32_arg;
 extern Function Int32x3_operator_scale_Float32;
+inline constexpr auto Int32x3_operator_scale_Float32_name = "operator*"_c;
 inline constexpr auto Int32x3_operator_scale_Float32_backend_index = 623u;
 
 /// operator* with UInt32
 extern Variable Int32x3_operator_scale_UInt32_arg;
 extern Function Int32x3_operator_scale_UInt32;
+inline constexpr auto Int32x3_operator_scale_UInt32_name = "operator*"_c;
 inline constexpr auto Int32x3_operator_scale_UInt32_backend_index = 624u;
 
 /// operator* with Int32
 extern Variable Int32x3_operator_scale_Int32_arg;
 extern Function Int32x3_operator_scale_Int32;
+inline constexpr auto Int32x3_operator_scale_Int32_name = "operator*"_c;
 inline constexpr auto Int32x3_operator_scale_Int32_backend_index = 625u;
 
 /// operator| with Int32x3
 extern Variable Int32x3_operator_or_Int32x3_arg;
 extern Function Int32x3_operator_or_Int32x3;
+inline constexpr auto Int32x3_operator_or_Int32x3_name = "operator|"_c;
 inline constexpr auto Int32x3_operator_or_Int32x3_backend_index = 626u;
 
 /// operator& with Int32x3
 extern Variable Int32x3_operator_and_Int32x3_arg;
 extern Function Int32x3_operator_and_Int32x3;
+inline constexpr auto Int32x3_operator_and_Int32x3_name = "operator&"_c;
 inline constexpr auto Int32x3_operator_and_Int32x3_backend_index = 627u;
 
 /// operator^ with Int32x3
 extern Variable Int32x3_operator_xor_Int32x3_arg;
 extern Function Int32x3_operator_xor_Int32x3;
+inline constexpr auto Int32x3_operator_xor_Int32x3_name = "operator^"_c;
 inline constexpr auto Int32x3_operator_xor_Int32x3_backend_index = 628u;
 
 /// operator<< with Int32x3
 extern Variable Int32x3_operator_lsh_Int32x3_arg;
 extern Function Int32x3_operator_lsh_Int32x3;
+inline constexpr auto Int32x3_operator_lsh_Int32x3_name = "operator<<"_c;
 inline constexpr auto Int32x3_operator_lsh_Int32x3_backend_index = 629u;
 
 /// operator>> with Int32x3
 extern Variable Int32x3_operator_rsh_Int32x3_arg;
 extern Function Int32x3_operator_rsh_Int32x3;
+inline constexpr auto Int32x3_operator_rsh_Int32x3_name = "operator>>"_c;
 inline constexpr auto Int32x3_operator_rsh_Int32x3_backend_index = 630u;
 
 /// operator|= with Int32x3
 extern Variable Int32x3_operator_orasg_Int32x3_arg;
 extern Function Int32x3_operator_orasg_Int32x3;
+inline constexpr auto Int32x3_operator_orasg_Int32x3_name = "operator|="_c;
 inline constexpr auto Int32x3_operator_orasg_Int32x3_backend_index = 631u;
 
 /// operator&= with Int32x3
 extern Variable Int32x3_operator_andasg_Int32x3_arg;
 extern Function Int32x3_operator_andasg_Int32x3;
+inline constexpr auto Int32x3_operator_andasg_Int32x3_name = "operator&="_c;
 inline constexpr auto Int32x3_operator_andasg_Int32x3_backend_index = 632u;
 
 /// operator^= with Int32x3
 extern Variable Int32x3_operator_xorasg_Int32x3_arg;
 extern Function Int32x3_operator_xorasg_Int32x3;
+inline constexpr auto Int32x3_operator_xorasg_Int32x3_name = "operator^="_c;
 inline constexpr auto Int32x3_operator_xorasg_Int32x3_backend_index = 633u;
 
 /// operator<<= with Int32x3
 extern Variable Int32x3_operator_lshasg_Int32x3_arg;
 extern Function Int32x3_operator_lshasg_Int32x3;
+inline constexpr auto Int32x3_operator_lshasg_Int32x3_name = "operator<<="_c;
 inline constexpr auto Int32x3_operator_lshasg_Int32x3_backend_index = 634u;
 
 /// operator>>= with Int32x3
 extern Variable Int32x3_operator_rhsasg_Int32x3_arg;
 extern Function Int32x3_operator_rhsasg_Int32x3;
+inline constexpr auto Int32x3_operator_rhsasg_Int32x3_name = "operator>>="_c;
 inline constexpr auto Int32x3_operator_rhsasg_Int32x3_backend_index = 635u;
 
 struct Bool8x3 : public Type
@@ -2352,41 +2789,49 @@ extern Bool8x3 Bool8x3Type;
 /// operator[] with Int32
 extern Variable Bool8x3_operator_index_Int32_arg;
 extern Function Bool8x3_operator_index_Int32;
+inline constexpr auto Bool8x3_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Bool8x3_operator_index_Int32_backend_index = 649u;
 
 /// operator[] with UInt32
 extern Variable Bool8x3_operator_index_UInt32_arg;
 extern Function Bool8x3_operator_index_UInt32;
+inline constexpr auto Bool8x3_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Bool8x3_operator_index_UInt32_backend_index = 650u;
 
 /// operator[] with Int16
 extern Variable Bool8x3_operator_index_Int16_arg;
 extern Function Bool8x3_operator_index_Int16;
+inline constexpr auto Bool8x3_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Bool8x3_operator_index_Int16_backend_index = 651u;
 
 /// operator[] with UInt16
 extern Variable Bool8x3_operator_index_UInt16_arg;
 extern Function Bool8x3_operator_index_UInt16;
+inline constexpr auto Bool8x3_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Bool8x3_operator_index_UInt16_backend_index = 652u;
 
 /// operator|| with Bool8x3
 extern Variable Bool8x3_operator_oror_Bool8x3_arg;
 extern Function Bool8x3_operator_oror_Bool8x3;
+inline constexpr auto Bool8x3_operator_oror_Bool8x3_name = "operator||"_c;
 inline constexpr auto Bool8x3_operator_oror_Bool8x3_backend_index = 653u;
 
 /// operator&& with Bool8x3
 extern Variable Bool8x3_operator_andand_Bool8x3_arg;
 extern Function Bool8x3_operator_andand_Bool8x3;
+inline constexpr auto Bool8x3_operator_andand_Bool8x3_name = "operator&&"_c;
 inline constexpr auto Bool8x3_operator_andand_Bool8x3_backend_index = 654u;
 
 /// operator== with Bool8x3
 extern Variable Bool8x3_operator_eq_Bool8x3_arg;
 extern Function Bool8x3_operator_eq_Bool8x3;
+inline constexpr auto Bool8x3_operator_eq_Bool8x3_name = "operator=="_c;
 inline constexpr auto Bool8x3_operator_eq_Bool8x3_backend_index = 655u;
 
 /// operator!= with Bool8x3
 extern Variable Bool8x3_operator_neq_Bool8x3_arg;
 extern Function Bool8x3_operator_neq_Bool8x3;
+inline constexpr auto Bool8x3_operator_neq_Bool8x3_name = "operator!="_c;
 inline constexpr auto Bool8x3_operator_neq_Bool8x3_backend_index = 656u;
 
 struct Float16x3 : public Type
@@ -2398,126 +2843,151 @@ extern Float16x3 Float16x3Type;
 /// operator[] with Int32
 extern Variable Float16x3_operator_index_Int32_arg;
 extern Function Float16x3_operator_index_Int32;
+inline constexpr auto Float16x3_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Float16x3_operator_index_Int32_backend_index = 674u;
 
 /// operator[] with UInt32
 extern Variable Float16x3_operator_index_UInt32_arg;
 extern Function Float16x3_operator_index_UInt32;
+inline constexpr auto Float16x3_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Float16x3_operator_index_UInt32_backend_index = 675u;
 
 /// operator[] with Int16
 extern Variable Float16x3_operator_index_Int16_arg;
 extern Function Float16x3_operator_index_Int16;
+inline constexpr auto Float16x3_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Float16x3_operator_index_Int16_backend_index = 676u;
 
 /// operator[] with UInt16
 extern Variable Float16x3_operator_index_UInt16_arg;
 extern Function Float16x3_operator_index_UInt16;
+inline constexpr auto Float16x3_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Float16x3_operator_index_UInt16_backend_index = 677u;
 
 /// operator+ with Float16x3
 extern Variable Float16x3_operator_add_Float16x3_arg;
 extern Function Float16x3_operator_add_Float16x3;
+inline constexpr auto Float16x3_operator_add_Float16x3_name = "operator+"_c;
 inline constexpr auto Float16x3_operator_add_Float16x3_backend_index = 678u;
 
 /// operator- with Float16x3
 extern Variable Float16x3_operator_sub_Float16x3_arg;
 extern Function Float16x3_operator_sub_Float16x3;
+inline constexpr auto Float16x3_operator_sub_Float16x3_name = "operator-"_c;
 inline constexpr auto Float16x3_operator_sub_Float16x3_backend_index = 679u;
 
 /// operator* with Float16x3
 extern Variable Float16x3_operator_mul_Float16x3_arg;
 extern Function Float16x3_operator_mul_Float16x3;
+inline constexpr auto Float16x3_operator_mul_Float16x3_name = "operator*"_c;
 inline constexpr auto Float16x3_operator_mul_Float16x3_backend_index = 680u;
 
 /// operator/ with Float16x3
 extern Variable Float16x3_operator_div_Float16x3_arg;
 extern Function Float16x3_operator_div_Float16x3;
+inline constexpr auto Float16x3_operator_div_Float16x3_name = "operator/"_c;
 inline constexpr auto Float16x3_operator_div_Float16x3_backend_index = 681u;
 
 /// operator% with Float16x3
 extern Variable Float16x3_operator_mod_Float16x3_arg;
 extern Function Float16x3_operator_mod_Float16x3;
+inline constexpr auto Float16x3_operator_mod_Float16x3_name = "operator%"_c;
 inline constexpr auto Float16x3_operator_mod_Float16x3_backend_index = 682u;
 
 /// operator+= with Float16x3
 extern Variable Float16x3_operator_addasg_Float16x3_arg;
 extern Function Float16x3_operator_addasg_Float16x3;
+inline constexpr auto Float16x3_operator_addasg_Float16x3_name = "operator+="_c;
 inline constexpr auto Float16x3_operator_addasg_Float16x3_backend_index = 683u;
 
 /// operator-= with Float16x3
 extern Variable Float16x3_operator_subasg_Float16x3_arg;
 extern Function Float16x3_operator_subasg_Float16x3;
+inline constexpr auto Float16x3_operator_subasg_Float16x3_name = "operator-="_c;
 inline constexpr auto Float16x3_operator_subasg_Float16x3_backend_index = 684u;
 
 /// operator*= with Float16x3
 extern Variable Float16x3_operator_mulasg_Float16x3_arg;
 extern Function Float16x3_operator_mulasg_Float16x3;
+inline constexpr auto Float16x3_operator_mulasg_Float16x3_name = "operator*="_c;
 inline constexpr auto Float16x3_operator_mulasg_Float16x3_backend_index = 685u;
 
 /// operator/= with Float16x3
 extern Variable Float16x3_operator_divasg_Float16x3_arg;
 extern Function Float16x3_operator_divasg_Float16x3;
+inline constexpr auto Float16x3_operator_divasg_Float16x3_name = "operator/="_c;
 inline constexpr auto Float16x3_operator_divasg_Float16x3_backend_index = 686u;
 
 /// operator< with Float16x3
 extern Variable Float16x3_operator_lt_Float16x3_arg;
 extern Function Float16x3_operator_lt_Float16x3;
+inline constexpr auto Float16x3_operator_lt_Float16x3_name = "operator<"_c;
 inline constexpr auto Float16x3_operator_lt_Float16x3_backend_index = 687u;
 
 /// operator<= with Float16x3
 extern Variable Float16x3_operator_lte_Float16x3_arg;
 extern Function Float16x3_operator_lte_Float16x3;
+inline constexpr auto Float16x3_operator_lte_Float16x3_name = "operator<="_c;
 inline constexpr auto Float16x3_operator_lte_Float16x3_backend_index = 688u;
 
 /// operator> with Float16x3
 extern Variable Float16x3_operator_gt_Float16x3_arg;
 extern Function Float16x3_operator_gt_Float16x3;
+inline constexpr auto Float16x3_operator_gt_Float16x3_name = "operator>"_c;
 inline constexpr auto Float16x3_operator_gt_Float16x3_backend_index = 689u;
 
 /// operator>= with Float16x3
 extern Variable Float16x3_operator_gte_Float16x3_arg;
 extern Function Float16x3_operator_gte_Float16x3;
+inline constexpr auto Float16x3_operator_gte_Float16x3_name = "operator>="_c;
 inline constexpr auto Float16x3_operator_gte_Float16x3_backend_index = 690u;
 
 /// operator== with Float16x3
 extern Variable Float16x3_operator_eq_Float16x3_arg;
 extern Function Float16x3_operator_eq_Float16x3;
+inline constexpr auto Float16x3_operator_eq_Float16x3_name = "operator=="_c;
 inline constexpr auto Float16x3_operator_eq_Float16x3_backend_index = 691u;
 
 /// operator!= with Float16x3
 extern Variable Float16x3_operator_neq_Float16x3_arg;
 extern Function Float16x3_operator_neq_Float16x3;
+inline constexpr auto Float16x3_operator_neq_Float16x3_name = "operator!="_c;
 inline constexpr auto Float16x3_operator_neq_Float16x3_backend_index = 692u;
 
 /// operator* with Float16
 extern Variable Float16x3_operator_scale_Float16_arg;
 extern Function Float16x3_operator_scale_Float16;
+inline constexpr auto Float16x3_operator_scale_Float16_name = "operator*"_c;
 inline constexpr auto Float16x3_operator_scale_Float16_backend_index = 693u;
 
 /// operator* with UInt16
 extern Variable Float16x3_operator_scale_UInt16_arg;
 extern Function Float16x3_operator_scale_UInt16;
+inline constexpr auto Float16x3_operator_scale_UInt16_name = "operator*"_c;
 inline constexpr auto Float16x3_operator_scale_UInt16_backend_index = 694u;
 
 /// operator* with Int16
 extern Variable Float16x3_operator_scale_Int16_arg;
 extern Function Float16x3_operator_scale_Int16;
+inline constexpr auto Float16x3_operator_scale_Int16_name = "operator*"_c;
 inline constexpr auto Float16x3_operator_scale_Int16_backend_index = 695u;
 
 /// operator* with Float32x3x2
 extern Variable Float16x3_operator_transform_Float32x3x2_arg;
 extern Function Float16x3_operator_transform_Float32x3x2;
+inline constexpr auto Float16x3_operator_transform_Float32x3x2_name = "operator*"_c;
 inline constexpr auto Float16x3_operator_transform_Float32x3x2_backend_index = 696u;
 
 /// operator* with Float32x3x3
 extern Variable Float16x3_operator_transform_Float32x3x3_arg;
 extern Function Float16x3_operator_transform_Float32x3x3;
+inline constexpr auto Float16x3_operator_transform_Float32x3x3_name = "operator*"_c;
 inline constexpr auto Float16x3_operator_transform_Float32x3x3_backend_index = 697u;
 
 /// operator* with Float32x3x4
 extern Variable Float16x3_operator_transform_Float32x3x4_arg;
 extern Function Float16x3_operator_transform_Float32x3x4;
+inline constexpr auto Float16x3_operator_transform_Float32x3x4_name = "operator*"_c;
 inline constexpr auto Float16x3_operator_transform_Float32x3x4_backend_index = 698u;
 
 struct UInt16x3 : public Type
@@ -2529,161 +2999,193 @@ extern UInt16x3 UInt16x3Type;
 /// operator[] with Int32
 extern Variable UInt16x3_operator_index_Int32_arg;
 extern Function UInt16x3_operator_index_Int32;
+inline constexpr auto UInt16x3_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto UInt16x3_operator_index_Int32_backend_index = 716u;
 
 /// operator[] with UInt32
 extern Variable UInt16x3_operator_index_UInt32_arg;
 extern Function UInt16x3_operator_index_UInt32;
+inline constexpr auto UInt16x3_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto UInt16x3_operator_index_UInt32_backend_index = 717u;
 
 /// operator[] with Int16
 extern Variable UInt16x3_operator_index_Int16_arg;
 extern Function UInt16x3_operator_index_Int16;
+inline constexpr auto UInt16x3_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto UInt16x3_operator_index_Int16_backend_index = 718u;
 
 /// operator[] with UInt16
 extern Variable UInt16x3_operator_index_UInt16_arg;
 extern Function UInt16x3_operator_index_UInt16;
+inline constexpr auto UInt16x3_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto UInt16x3_operator_index_UInt16_backend_index = 719u;
 
 /// operator+ with UInt16x3
 extern Variable UInt16x3_operator_add_UInt16x3_arg;
 extern Function UInt16x3_operator_add_UInt16x3;
+inline constexpr auto UInt16x3_operator_add_UInt16x3_name = "operator+"_c;
 inline constexpr auto UInt16x3_operator_add_UInt16x3_backend_index = 720u;
 
 /// operator- with UInt16x3
 extern Variable UInt16x3_operator_sub_UInt16x3_arg;
 extern Function UInt16x3_operator_sub_UInt16x3;
+inline constexpr auto UInt16x3_operator_sub_UInt16x3_name = "operator-"_c;
 inline constexpr auto UInt16x3_operator_sub_UInt16x3_backend_index = 721u;
 
 /// operator* with UInt16x3
 extern Variable UInt16x3_operator_mul_UInt16x3_arg;
 extern Function UInt16x3_operator_mul_UInt16x3;
+inline constexpr auto UInt16x3_operator_mul_UInt16x3_name = "operator*"_c;
 inline constexpr auto UInt16x3_operator_mul_UInt16x3_backend_index = 722u;
 
 /// operator/ with UInt16x3
 extern Variable UInt16x3_operator_div_UInt16x3_arg;
 extern Function UInt16x3_operator_div_UInt16x3;
+inline constexpr auto UInt16x3_operator_div_UInt16x3_name = "operator/"_c;
 inline constexpr auto UInt16x3_operator_div_UInt16x3_backend_index = 723u;
 
 /// operator% with UInt16x3
 extern Variable UInt16x3_operator_mod_UInt16x3_arg;
 extern Function UInt16x3_operator_mod_UInt16x3;
+inline constexpr auto UInt16x3_operator_mod_UInt16x3_name = "operator%"_c;
 inline constexpr auto UInt16x3_operator_mod_UInt16x3_backend_index = 724u;
 
 /// operator+= with UInt16x3
 extern Variable UInt16x3_operator_addasg_UInt16x3_arg;
 extern Function UInt16x3_operator_addasg_UInt16x3;
+inline constexpr auto UInt16x3_operator_addasg_UInt16x3_name = "operator+="_c;
 inline constexpr auto UInt16x3_operator_addasg_UInt16x3_backend_index = 725u;
 
 /// operator-= with UInt16x3
 extern Variable UInt16x3_operator_subasg_UInt16x3_arg;
 extern Function UInt16x3_operator_subasg_UInt16x3;
+inline constexpr auto UInt16x3_operator_subasg_UInt16x3_name = "operator-="_c;
 inline constexpr auto UInt16x3_operator_subasg_UInt16x3_backend_index = 726u;
 
 /// operator*= with UInt16x3
 extern Variable UInt16x3_operator_mulasg_UInt16x3_arg;
 extern Function UInt16x3_operator_mulasg_UInt16x3;
+inline constexpr auto UInt16x3_operator_mulasg_UInt16x3_name = "operator*="_c;
 inline constexpr auto UInt16x3_operator_mulasg_UInt16x3_backend_index = 727u;
 
 /// operator/= with UInt16x3
 extern Variable UInt16x3_operator_divasg_UInt16x3_arg;
 extern Function UInt16x3_operator_divasg_UInt16x3;
+inline constexpr auto UInt16x3_operator_divasg_UInt16x3_name = "operator/="_c;
 inline constexpr auto UInt16x3_operator_divasg_UInt16x3_backend_index = 728u;
 
 /// operator< with UInt16x3
 extern Variable UInt16x3_operator_lt_UInt16x3_arg;
 extern Function UInt16x3_operator_lt_UInt16x3;
+inline constexpr auto UInt16x3_operator_lt_UInt16x3_name = "operator<"_c;
 inline constexpr auto UInt16x3_operator_lt_UInt16x3_backend_index = 729u;
 
 /// operator<= with UInt16x3
 extern Variable UInt16x3_operator_lte_UInt16x3_arg;
 extern Function UInt16x3_operator_lte_UInt16x3;
+inline constexpr auto UInt16x3_operator_lte_UInt16x3_name = "operator<="_c;
 inline constexpr auto UInt16x3_operator_lte_UInt16x3_backend_index = 730u;
 
 /// operator> with UInt16x3
 extern Variable UInt16x3_operator_gt_UInt16x3_arg;
 extern Function UInt16x3_operator_gt_UInt16x3;
+inline constexpr auto UInt16x3_operator_gt_UInt16x3_name = "operator>"_c;
 inline constexpr auto UInt16x3_operator_gt_UInt16x3_backend_index = 731u;
 
 /// operator>= with UInt16x3
 extern Variable UInt16x3_operator_gte_UInt16x3_arg;
 extern Function UInt16x3_operator_gte_UInt16x3;
+inline constexpr auto UInt16x3_operator_gte_UInt16x3_name = "operator>="_c;
 inline constexpr auto UInt16x3_operator_gte_UInt16x3_backend_index = 732u;
 
 /// operator== with UInt16x3
 extern Variable UInt16x3_operator_eq_UInt16x3_arg;
 extern Function UInt16x3_operator_eq_UInt16x3;
+inline constexpr auto UInt16x3_operator_eq_UInt16x3_name = "operator=="_c;
 inline constexpr auto UInt16x3_operator_eq_UInt16x3_backend_index = 733u;
 
 /// operator!= with UInt16x3
 extern Variable UInt16x3_operator_neq_UInt16x3_arg;
 extern Function UInt16x3_operator_neq_UInt16x3;
+inline constexpr auto UInt16x3_operator_neq_UInt16x3_name = "operator!="_c;
 inline constexpr auto UInt16x3_operator_neq_UInt16x3_backend_index = 734u;
 
 /// operator* with Float16
 extern Variable UInt16x3_operator_scale_Float16_arg;
 extern Function UInt16x3_operator_scale_Float16;
+inline constexpr auto UInt16x3_operator_scale_Float16_name = "operator*"_c;
 inline constexpr auto UInt16x3_operator_scale_Float16_backend_index = 735u;
 
 /// operator* with UInt16
 extern Variable UInt16x3_operator_scale_UInt16_arg;
 extern Function UInt16x3_operator_scale_UInt16;
+inline constexpr auto UInt16x3_operator_scale_UInt16_name = "operator*"_c;
 inline constexpr auto UInt16x3_operator_scale_UInt16_backend_index = 736u;
 
 /// operator* with Int16
 extern Variable UInt16x3_operator_scale_Int16_arg;
 extern Function UInt16x3_operator_scale_Int16;
+inline constexpr auto UInt16x3_operator_scale_Int16_name = "operator*"_c;
 inline constexpr auto UInt16x3_operator_scale_Int16_backend_index = 737u;
 
 /// operator| with UInt16x3
 extern Variable UInt16x3_operator_or_UInt16x3_arg;
 extern Function UInt16x3_operator_or_UInt16x3;
+inline constexpr auto UInt16x3_operator_or_UInt16x3_name = "operator|"_c;
 inline constexpr auto UInt16x3_operator_or_UInt16x3_backend_index = 738u;
 
 /// operator& with UInt16x3
 extern Variable UInt16x3_operator_and_UInt16x3_arg;
 extern Function UInt16x3_operator_and_UInt16x3;
+inline constexpr auto UInt16x3_operator_and_UInt16x3_name = "operator&"_c;
 inline constexpr auto UInt16x3_operator_and_UInt16x3_backend_index = 739u;
 
 /// operator^ with UInt16x3
 extern Variable UInt16x3_operator_xor_UInt16x3_arg;
 extern Function UInt16x3_operator_xor_UInt16x3;
+inline constexpr auto UInt16x3_operator_xor_UInt16x3_name = "operator^"_c;
 inline constexpr auto UInt16x3_operator_xor_UInt16x3_backend_index = 740u;
 
 /// operator<< with UInt16x3
 extern Variable UInt16x3_operator_lsh_UInt16x3_arg;
 extern Function UInt16x3_operator_lsh_UInt16x3;
+inline constexpr auto UInt16x3_operator_lsh_UInt16x3_name = "operator<<"_c;
 inline constexpr auto UInt16x3_operator_lsh_UInt16x3_backend_index = 741u;
 
 /// operator>> with UInt16x3
 extern Variable UInt16x3_operator_rsh_UInt16x3_arg;
 extern Function UInt16x3_operator_rsh_UInt16x3;
+inline constexpr auto UInt16x3_operator_rsh_UInt16x3_name = "operator>>"_c;
 inline constexpr auto UInt16x3_operator_rsh_UInt16x3_backend_index = 742u;
 
 /// operator|= with UInt16x3
 extern Variable UInt16x3_operator_orasg_UInt16x3_arg;
 extern Function UInt16x3_operator_orasg_UInt16x3;
+inline constexpr auto UInt16x3_operator_orasg_UInt16x3_name = "operator|="_c;
 inline constexpr auto UInt16x3_operator_orasg_UInt16x3_backend_index = 743u;
 
 /// operator&= with UInt16x3
 extern Variable UInt16x3_operator_andasg_UInt16x3_arg;
 extern Function UInt16x3_operator_andasg_UInt16x3;
+inline constexpr auto UInt16x3_operator_andasg_UInt16x3_name = "operator&="_c;
 inline constexpr auto UInt16x3_operator_andasg_UInt16x3_backend_index = 744u;
 
 /// operator^= with UInt16x3
 extern Variable UInt16x3_operator_xorasg_UInt16x3_arg;
 extern Function UInt16x3_operator_xorasg_UInt16x3;
+inline constexpr auto UInt16x3_operator_xorasg_UInt16x3_name = "operator^="_c;
 inline constexpr auto UInt16x3_operator_xorasg_UInt16x3_backend_index = 745u;
 
 /// operator<<= with UInt16x3
 extern Variable UInt16x3_operator_lshasg_UInt16x3_arg;
 extern Function UInt16x3_operator_lshasg_UInt16x3;
+inline constexpr auto UInt16x3_operator_lshasg_UInt16x3_name = "operator<<="_c;
 inline constexpr auto UInt16x3_operator_lshasg_UInt16x3_backend_index = 746u;
 
 /// operator>>= with UInt16x3
 extern Variable UInt16x3_operator_rhsasg_UInt16x3_arg;
 extern Function UInt16x3_operator_rhsasg_UInt16x3;
+inline constexpr auto UInt16x3_operator_rhsasg_UInt16x3_name = "operator>>="_c;
 inline constexpr auto UInt16x3_operator_rhsasg_UInt16x3_backend_index = 747u;
 
 struct Int16x3 : public Type
@@ -2695,161 +3197,193 @@ extern Int16x3 Int16x3Type;
 /// operator[] with Int32
 extern Variable Int16x3_operator_index_Int32_arg;
 extern Function Int16x3_operator_index_Int32;
+inline constexpr auto Int16x3_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Int16x3_operator_index_Int32_backend_index = 765u;
 
 /// operator[] with UInt32
 extern Variable Int16x3_operator_index_UInt32_arg;
 extern Function Int16x3_operator_index_UInt32;
+inline constexpr auto Int16x3_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Int16x3_operator_index_UInt32_backend_index = 766u;
 
 /// operator[] with Int16
 extern Variable Int16x3_operator_index_Int16_arg;
 extern Function Int16x3_operator_index_Int16;
+inline constexpr auto Int16x3_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Int16x3_operator_index_Int16_backend_index = 767u;
 
 /// operator[] with UInt16
 extern Variable Int16x3_operator_index_UInt16_arg;
 extern Function Int16x3_operator_index_UInt16;
+inline constexpr auto Int16x3_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Int16x3_operator_index_UInt16_backend_index = 768u;
 
 /// operator+ with Int16x3
 extern Variable Int16x3_operator_add_Int16x3_arg;
 extern Function Int16x3_operator_add_Int16x3;
+inline constexpr auto Int16x3_operator_add_Int16x3_name = "operator+"_c;
 inline constexpr auto Int16x3_operator_add_Int16x3_backend_index = 769u;
 
 /// operator- with Int16x3
 extern Variable Int16x3_operator_sub_Int16x3_arg;
 extern Function Int16x3_operator_sub_Int16x3;
+inline constexpr auto Int16x3_operator_sub_Int16x3_name = "operator-"_c;
 inline constexpr auto Int16x3_operator_sub_Int16x3_backend_index = 770u;
 
 /// operator* with Int16x3
 extern Variable Int16x3_operator_mul_Int16x3_arg;
 extern Function Int16x3_operator_mul_Int16x3;
+inline constexpr auto Int16x3_operator_mul_Int16x3_name = "operator*"_c;
 inline constexpr auto Int16x3_operator_mul_Int16x3_backend_index = 771u;
 
 /// operator/ with Int16x3
 extern Variable Int16x3_operator_div_Int16x3_arg;
 extern Function Int16x3_operator_div_Int16x3;
+inline constexpr auto Int16x3_operator_div_Int16x3_name = "operator/"_c;
 inline constexpr auto Int16x3_operator_div_Int16x3_backend_index = 772u;
 
 /// operator% with Int16x3
 extern Variable Int16x3_operator_mod_Int16x3_arg;
 extern Function Int16x3_operator_mod_Int16x3;
+inline constexpr auto Int16x3_operator_mod_Int16x3_name = "operator%"_c;
 inline constexpr auto Int16x3_operator_mod_Int16x3_backend_index = 773u;
 
 /// operator+= with Int16x3
 extern Variable Int16x3_operator_addasg_Int16x3_arg;
 extern Function Int16x3_operator_addasg_Int16x3;
+inline constexpr auto Int16x3_operator_addasg_Int16x3_name = "operator+="_c;
 inline constexpr auto Int16x3_operator_addasg_Int16x3_backend_index = 774u;
 
 /// operator-= with Int16x3
 extern Variable Int16x3_operator_subasg_Int16x3_arg;
 extern Function Int16x3_operator_subasg_Int16x3;
+inline constexpr auto Int16x3_operator_subasg_Int16x3_name = "operator-="_c;
 inline constexpr auto Int16x3_operator_subasg_Int16x3_backend_index = 775u;
 
 /// operator*= with Int16x3
 extern Variable Int16x3_operator_mulasg_Int16x3_arg;
 extern Function Int16x3_operator_mulasg_Int16x3;
+inline constexpr auto Int16x3_operator_mulasg_Int16x3_name = "operator*="_c;
 inline constexpr auto Int16x3_operator_mulasg_Int16x3_backend_index = 776u;
 
 /// operator/= with Int16x3
 extern Variable Int16x3_operator_divasg_Int16x3_arg;
 extern Function Int16x3_operator_divasg_Int16x3;
+inline constexpr auto Int16x3_operator_divasg_Int16x3_name = "operator/="_c;
 inline constexpr auto Int16x3_operator_divasg_Int16x3_backend_index = 777u;
 
 /// operator< with Int16x3
 extern Variable Int16x3_operator_lt_Int16x3_arg;
 extern Function Int16x3_operator_lt_Int16x3;
+inline constexpr auto Int16x3_operator_lt_Int16x3_name = "operator<"_c;
 inline constexpr auto Int16x3_operator_lt_Int16x3_backend_index = 778u;
 
 /// operator<= with Int16x3
 extern Variable Int16x3_operator_lte_Int16x3_arg;
 extern Function Int16x3_operator_lte_Int16x3;
+inline constexpr auto Int16x3_operator_lte_Int16x3_name = "operator<="_c;
 inline constexpr auto Int16x3_operator_lte_Int16x3_backend_index = 779u;
 
 /// operator> with Int16x3
 extern Variable Int16x3_operator_gt_Int16x3_arg;
 extern Function Int16x3_operator_gt_Int16x3;
+inline constexpr auto Int16x3_operator_gt_Int16x3_name = "operator>"_c;
 inline constexpr auto Int16x3_operator_gt_Int16x3_backend_index = 780u;
 
 /// operator>= with Int16x3
 extern Variable Int16x3_operator_gte_Int16x3_arg;
 extern Function Int16x3_operator_gte_Int16x3;
+inline constexpr auto Int16x3_operator_gte_Int16x3_name = "operator>="_c;
 inline constexpr auto Int16x3_operator_gte_Int16x3_backend_index = 781u;
 
 /// operator== with Int16x3
 extern Variable Int16x3_operator_eq_Int16x3_arg;
 extern Function Int16x3_operator_eq_Int16x3;
+inline constexpr auto Int16x3_operator_eq_Int16x3_name = "operator=="_c;
 inline constexpr auto Int16x3_operator_eq_Int16x3_backend_index = 782u;
 
 /// operator!= with Int16x3
 extern Variable Int16x3_operator_neq_Int16x3_arg;
 extern Function Int16x3_operator_neq_Int16x3;
+inline constexpr auto Int16x3_operator_neq_Int16x3_name = "operator!="_c;
 inline constexpr auto Int16x3_operator_neq_Int16x3_backend_index = 783u;
 
 /// operator* with Float16
 extern Variable Int16x3_operator_scale_Float16_arg;
 extern Function Int16x3_operator_scale_Float16;
+inline constexpr auto Int16x3_operator_scale_Float16_name = "operator*"_c;
 inline constexpr auto Int16x3_operator_scale_Float16_backend_index = 784u;
 
 /// operator* with UInt16
 extern Variable Int16x3_operator_scale_UInt16_arg;
 extern Function Int16x3_operator_scale_UInt16;
+inline constexpr auto Int16x3_operator_scale_UInt16_name = "operator*"_c;
 inline constexpr auto Int16x3_operator_scale_UInt16_backend_index = 785u;
 
 /// operator* with Int16
 extern Variable Int16x3_operator_scale_Int16_arg;
 extern Function Int16x3_operator_scale_Int16;
+inline constexpr auto Int16x3_operator_scale_Int16_name = "operator*"_c;
 inline constexpr auto Int16x3_operator_scale_Int16_backend_index = 786u;
 
 /// operator| with Int16x3
 extern Variable Int16x3_operator_or_Int16x3_arg;
 extern Function Int16x3_operator_or_Int16x3;
+inline constexpr auto Int16x3_operator_or_Int16x3_name = "operator|"_c;
 inline constexpr auto Int16x3_operator_or_Int16x3_backend_index = 787u;
 
 /// operator& with Int16x3
 extern Variable Int16x3_operator_and_Int16x3_arg;
 extern Function Int16x3_operator_and_Int16x3;
+inline constexpr auto Int16x3_operator_and_Int16x3_name = "operator&"_c;
 inline constexpr auto Int16x3_operator_and_Int16x3_backend_index = 788u;
 
 /// operator^ with Int16x3
 extern Variable Int16x3_operator_xor_Int16x3_arg;
 extern Function Int16x3_operator_xor_Int16x3;
+inline constexpr auto Int16x3_operator_xor_Int16x3_name = "operator^"_c;
 inline constexpr auto Int16x3_operator_xor_Int16x3_backend_index = 789u;
 
 /// operator<< with Int16x3
 extern Variable Int16x3_operator_lsh_Int16x3_arg;
 extern Function Int16x3_operator_lsh_Int16x3;
+inline constexpr auto Int16x3_operator_lsh_Int16x3_name = "operator<<"_c;
 inline constexpr auto Int16x3_operator_lsh_Int16x3_backend_index = 790u;
 
 /// operator>> with Int16x3
 extern Variable Int16x3_operator_rsh_Int16x3_arg;
 extern Function Int16x3_operator_rsh_Int16x3;
+inline constexpr auto Int16x3_operator_rsh_Int16x3_name = "operator>>"_c;
 inline constexpr auto Int16x3_operator_rsh_Int16x3_backend_index = 791u;
 
 /// operator|= with Int16x3
 extern Variable Int16x3_operator_orasg_Int16x3_arg;
 extern Function Int16x3_operator_orasg_Int16x3;
+inline constexpr auto Int16x3_operator_orasg_Int16x3_name = "operator|="_c;
 inline constexpr auto Int16x3_operator_orasg_Int16x3_backend_index = 792u;
 
 /// operator&= with Int16x3
 extern Variable Int16x3_operator_andasg_Int16x3_arg;
 extern Function Int16x3_operator_andasg_Int16x3;
+inline constexpr auto Int16x3_operator_andasg_Int16x3_name = "operator&="_c;
 inline constexpr auto Int16x3_operator_andasg_Int16x3_backend_index = 793u;
 
 /// operator^= with Int16x3
 extern Variable Int16x3_operator_xorasg_Int16x3_arg;
 extern Function Int16x3_operator_xorasg_Int16x3;
+inline constexpr auto Int16x3_operator_xorasg_Int16x3_name = "operator^="_c;
 inline constexpr auto Int16x3_operator_xorasg_Int16x3_backend_index = 794u;
 
 /// operator<<= with Int16x3
 extern Variable Int16x3_operator_lshasg_Int16x3_arg;
 extern Function Int16x3_operator_lshasg_Int16x3;
+inline constexpr auto Int16x3_operator_lshasg_Int16x3_name = "operator<<="_c;
 inline constexpr auto Int16x3_operator_lshasg_Int16x3_backend_index = 795u;
 
 /// operator>>= with Int16x3
 extern Variable Int16x3_operator_rhsasg_Int16x3_arg;
 extern Function Int16x3_operator_rhsasg_Int16x3;
+inline constexpr auto Int16x3_operator_rhsasg_Int16x3_name = "operator>>="_c;
 inline constexpr auto Int16x3_operator_rhsasg_Int16x3_backend_index = 796u;
 
 struct Float32x4 : public Type
@@ -2861,126 +3395,151 @@ extern Float32x4 Float32x4Type;
 /// operator[] with Int32
 extern Variable Float32x4_operator_index_Int32_arg;
 extern Function Float32x4_operator_index_Int32;
+inline constexpr auto Float32x4_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Float32x4_operator_index_Int32_backend_index = 818u;
 
 /// operator[] with UInt32
 extern Variable Float32x4_operator_index_UInt32_arg;
 extern Function Float32x4_operator_index_UInt32;
+inline constexpr auto Float32x4_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Float32x4_operator_index_UInt32_backend_index = 819u;
 
 /// operator[] with Int16
 extern Variable Float32x4_operator_index_Int16_arg;
 extern Function Float32x4_operator_index_Int16;
+inline constexpr auto Float32x4_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Float32x4_operator_index_Int16_backend_index = 820u;
 
 /// operator[] with UInt16
 extern Variable Float32x4_operator_index_UInt16_arg;
 extern Function Float32x4_operator_index_UInt16;
+inline constexpr auto Float32x4_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Float32x4_operator_index_UInt16_backend_index = 821u;
 
 /// operator+ with Float32x4
 extern Variable Float32x4_operator_add_Float32x4_arg;
 extern Function Float32x4_operator_add_Float32x4;
+inline constexpr auto Float32x4_operator_add_Float32x4_name = "operator+"_c;
 inline constexpr auto Float32x4_operator_add_Float32x4_backend_index = 822u;
 
 /// operator- with Float32x4
 extern Variable Float32x4_operator_sub_Float32x4_arg;
 extern Function Float32x4_operator_sub_Float32x4;
+inline constexpr auto Float32x4_operator_sub_Float32x4_name = "operator-"_c;
 inline constexpr auto Float32x4_operator_sub_Float32x4_backend_index = 823u;
 
 /// operator* with Float32x4
 extern Variable Float32x4_operator_mul_Float32x4_arg;
 extern Function Float32x4_operator_mul_Float32x4;
+inline constexpr auto Float32x4_operator_mul_Float32x4_name = "operator*"_c;
 inline constexpr auto Float32x4_operator_mul_Float32x4_backend_index = 824u;
 
 /// operator/ with Float32x4
 extern Variable Float32x4_operator_div_Float32x4_arg;
 extern Function Float32x4_operator_div_Float32x4;
+inline constexpr auto Float32x4_operator_div_Float32x4_name = "operator/"_c;
 inline constexpr auto Float32x4_operator_div_Float32x4_backend_index = 825u;
 
 /// operator% with Float32x4
 extern Variable Float32x4_operator_mod_Float32x4_arg;
 extern Function Float32x4_operator_mod_Float32x4;
+inline constexpr auto Float32x4_operator_mod_Float32x4_name = "operator%"_c;
 inline constexpr auto Float32x4_operator_mod_Float32x4_backend_index = 826u;
 
 /// operator+= with Float32x4
 extern Variable Float32x4_operator_addasg_Float32x4_arg;
 extern Function Float32x4_operator_addasg_Float32x4;
+inline constexpr auto Float32x4_operator_addasg_Float32x4_name = "operator+="_c;
 inline constexpr auto Float32x4_operator_addasg_Float32x4_backend_index = 827u;
 
 /// operator-= with Float32x4
 extern Variable Float32x4_operator_subasg_Float32x4_arg;
 extern Function Float32x4_operator_subasg_Float32x4;
+inline constexpr auto Float32x4_operator_subasg_Float32x4_name = "operator-="_c;
 inline constexpr auto Float32x4_operator_subasg_Float32x4_backend_index = 828u;
 
 /// operator*= with Float32x4
 extern Variable Float32x4_operator_mulasg_Float32x4_arg;
 extern Function Float32x4_operator_mulasg_Float32x4;
+inline constexpr auto Float32x4_operator_mulasg_Float32x4_name = "operator*="_c;
 inline constexpr auto Float32x4_operator_mulasg_Float32x4_backend_index = 829u;
 
 /// operator/= with Float32x4
 extern Variable Float32x4_operator_divasg_Float32x4_arg;
 extern Function Float32x4_operator_divasg_Float32x4;
+inline constexpr auto Float32x4_operator_divasg_Float32x4_name = "operator/="_c;
 inline constexpr auto Float32x4_operator_divasg_Float32x4_backend_index = 830u;
 
 /// operator< with Float32x4
 extern Variable Float32x4_operator_lt_Float32x4_arg;
 extern Function Float32x4_operator_lt_Float32x4;
+inline constexpr auto Float32x4_operator_lt_Float32x4_name = "operator<"_c;
 inline constexpr auto Float32x4_operator_lt_Float32x4_backend_index = 831u;
 
 /// operator<= with Float32x4
 extern Variable Float32x4_operator_lte_Float32x4_arg;
 extern Function Float32x4_operator_lte_Float32x4;
+inline constexpr auto Float32x4_operator_lte_Float32x4_name = "operator<="_c;
 inline constexpr auto Float32x4_operator_lte_Float32x4_backend_index = 832u;
 
 /// operator> with Float32x4
 extern Variable Float32x4_operator_gt_Float32x4_arg;
 extern Function Float32x4_operator_gt_Float32x4;
+inline constexpr auto Float32x4_operator_gt_Float32x4_name = "operator>"_c;
 inline constexpr auto Float32x4_operator_gt_Float32x4_backend_index = 833u;
 
 /// operator>= with Float32x4
 extern Variable Float32x4_operator_gte_Float32x4_arg;
 extern Function Float32x4_operator_gte_Float32x4;
+inline constexpr auto Float32x4_operator_gte_Float32x4_name = "operator>="_c;
 inline constexpr auto Float32x4_operator_gte_Float32x4_backend_index = 834u;
 
 /// operator== with Float32x4
 extern Variable Float32x4_operator_eq_Float32x4_arg;
 extern Function Float32x4_operator_eq_Float32x4;
+inline constexpr auto Float32x4_operator_eq_Float32x4_name = "operator=="_c;
 inline constexpr auto Float32x4_operator_eq_Float32x4_backend_index = 835u;
 
 /// operator!= with Float32x4
 extern Variable Float32x4_operator_neq_Float32x4_arg;
 extern Function Float32x4_operator_neq_Float32x4;
+inline constexpr auto Float32x4_operator_neq_Float32x4_name = "operator!="_c;
 inline constexpr auto Float32x4_operator_neq_Float32x4_backend_index = 836u;
 
 /// operator* with Float32
 extern Variable Float32x4_operator_scale_Float32_arg;
 extern Function Float32x4_operator_scale_Float32;
+inline constexpr auto Float32x4_operator_scale_Float32_name = "operator*"_c;
 inline constexpr auto Float32x4_operator_scale_Float32_backend_index = 837u;
 
 /// operator* with UInt32
 extern Variable Float32x4_operator_scale_UInt32_arg;
 extern Function Float32x4_operator_scale_UInt32;
+inline constexpr auto Float32x4_operator_scale_UInt32_name = "operator*"_c;
 inline constexpr auto Float32x4_operator_scale_UInt32_backend_index = 838u;
 
 /// operator* with Int32
 extern Variable Float32x4_operator_scale_Int32_arg;
 extern Function Float32x4_operator_scale_Int32;
+inline constexpr auto Float32x4_operator_scale_Int32_name = "operator*"_c;
 inline constexpr auto Float32x4_operator_scale_Int32_backend_index = 839u;
 
 /// operator* with Float32x4x2
 extern Variable Float32x4_operator_transform_Float32x4x2_arg;
 extern Function Float32x4_operator_transform_Float32x4x2;
+inline constexpr auto Float32x4_operator_transform_Float32x4x2_name = "operator*"_c;
 inline constexpr auto Float32x4_operator_transform_Float32x4x2_backend_index = 840u;
 
 /// operator* with Float32x4x3
 extern Variable Float32x4_operator_transform_Float32x4x3_arg;
 extern Function Float32x4_operator_transform_Float32x4x3;
+inline constexpr auto Float32x4_operator_transform_Float32x4x3_name = "operator*"_c;
 inline constexpr auto Float32x4_operator_transform_Float32x4x3_backend_index = 841u;
 
 /// operator* with Float32x4x4
 extern Variable Float32x4_operator_transform_Float32x4x4_arg;
 extern Function Float32x4_operator_transform_Float32x4x4;
+inline constexpr auto Float32x4_operator_transform_Float32x4x4_name = "operator*"_c;
 inline constexpr auto Float32x4_operator_transform_Float32x4x4_backend_index = 842u;
 
 struct UInt32x4 : public Type
@@ -2992,161 +3551,193 @@ extern UInt32x4 UInt32x4Type;
 /// operator[] with Int32
 extern Variable UInt32x4_operator_index_Int32_arg;
 extern Function UInt32x4_operator_index_Int32;
+inline constexpr auto UInt32x4_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto UInt32x4_operator_index_Int32_backend_index = 864u;
 
 /// operator[] with UInt32
 extern Variable UInt32x4_operator_index_UInt32_arg;
 extern Function UInt32x4_operator_index_UInt32;
+inline constexpr auto UInt32x4_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto UInt32x4_operator_index_UInt32_backend_index = 865u;
 
 /// operator[] with Int16
 extern Variable UInt32x4_operator_index_Int16_arg;
 extern Function UInt32x4_operator_index_Int16;
+inline constexpr auto UInt32x4_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto UInt32x4_operator_index_Int16_backend_index = 866u;
 
 /// operator[] with UInt16
 extern Variable UInt32x4_operator_index_UInt16_arg;
 extern Function UInt32x4_operator_index_UInt16;
+inline constexpr auto UInt32x4_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto UInt32x4_operator_index_UInt16_backend_index = 867u;
 
 /// operator+ with UInt32x4
 extern Variable UInt32x4_operator_add_UInt32x4_arg;
 extern Function UInt32x4_operator_add_UInt32x4;
+inline constexpr auto UInt32x4_operator_add_UInt32x4_name = "operator+"_c;
 inline constexpr auto UInt32x4_operator_add_UInt32x4_backend_index = 868u;
 
 /// operator- with UInt32x4
 extern Variable UInt32x4_operator_sub_UInt32x4_arg;
 extern Function UInt32x4_operator_sub_UInt32x4;
+inline constexpr auto UInt32x4_operator_sub_UInt32x4_name = "operator-"_c;
 inline constexpr auto UInt32x4_operator_sub_UInt32x4_backend_index = 869u;
 
 /// operator* with UInt32x4
 extern Variable UInt32x4_operator_mul_UInt32x4_arg;
 extern Function UInt32x4_operator_mul_UInt32x4;
+inline constexpr auto UInt32x4_operator_mul_UInt32x4_name = "operator*"_c;
 inline constexpr auto UInt32x4_operator_mul_UInt32x4_backend_index = 870u;
 
 /// operator/ with UInt32x4
 extern Variable UInt32x4_operator_div_UInt32x4_arg;
 extern Function UInt32x4_operator_div_UInt32x4;
+inline constexpr auto UInt32x4_operator_div_UInt32x4_name = "operator/"_c;
 inline constexpr auto UInt32x4_operator_div_UInt32x4_backend_index = 871u;
 
 /// operator% with UInt32x4
 extern Variable UInt32x4_operator_mod_UInt32x4_arg;
 extern Function UInt32x4_operator_mod_UInt32x4;
+inline constexpr auto UInt32x4_operator_mod_UInt32x4_name = "operator%"_c;
 inline constexpr auto UInt32x4_operator_mod_UInt32x4_backend_index = 872u;
 
 /// operator+= with UInt32x4
 extern Variable UInt32x4_operator_addasg_UInt32x4_arg;
 extern Function UInt32x4_operator_addasg_UInt32x4;
+inline constexpr auto UInt32x4_operator_addasg_UInt32x4_name = "operator+="_c;
 inline constexpr auto UInt32x4_operator_addasg_UInt32x4_backend_index = 873u;
 
 /// operator-= with UInt32x4
 extern Variable UInt32x4_operator_subasg_UInt32x4_arg;
 extern Function UInt32x4_operator_subasg_UInt32x4;
+inline constexpr auto UInt32x4_operator_subasg_UInt32x4_name = "operator-="_c;
 inline constexpr auto UInt32x4_operator_subasg_UInt32x4_backend_index = 874u;
 
 /// operator*= with UInt32x4
 extern Variable UInt32x4_operator_mulasg_UInt32x4_arg;
 extern Function UInt32x4_operator_mulasg_UInt32x4;
+inline constexpr auto UInt32x4_operator_mulasg_UInt32x4_name = "operator*="_c;
 inline constexpr auto UInt32x4_operator_mulasg_UInt32x4_backend_index = 875u;
 
 /// operator/= with UInt32x4
 extern Variable UInt32x4_operator_divasg_UInt32x4_arg;
 extern Function UInt32x4_operator_divasg_UInt32x4;
+inline constexpr auto UInt32x4_operator_divasg_UInt32x4_name = "operator/="_c;
 inline constexpr auto UInt32x4_operator_divasg_UInt32x4_backend_index = 876u;
 
 /// operator< with UInt32x4
 extern Variable UInt32x4_operator_lt_UInt32x4_arg;
 extern Function UInt32x4_operator_lt_UInt32x4;
+inline constexpr auto UInt32x4_operator_lt_UInt32x4_name = "operator<"_c;
 inline constexpr auto UInt32x4_operator_lt_UInt32x4_backend_index = 877u;
 
 /// operator<= with UInt32x4
 extern Variable UInt32x4_operator_lte_UInt32x4_arg;
 extern Function UInt32x4_operator_lte_UInt32x4;
+inline constexpr auto UInt32x4_operator_lte_UInt32x4_name = "operator<="_c;
 inline constexpr auto UInt32x4_operator_lte_UInt32x4_backend_index = 878u;
 
 /// operator> with UInt32x4
 extern Variable UInt32x4_operator_gt_UInt32x4_arg;
 extern Function UInt32x4_operator_gt_UInt32x4;
+inline constexpr auto UInt32x4_operator_gt_UInt32x4_name = "operator>"_c;
 inline constexpr auto UInt32x4_operator_gt_UInt32x4_backend_index = 879u;
 
 /// operator>= with UInt32x4
 extern Variable UInt32x4_operator_gte_UInt32x4_arg;
 extern Function UInt32x4_operator_gte_UInt32x4;
+inline constexpr auto UInt32x4_operator_gte_UInt32x4_name = "operator>="_c;
 inline constexpr auto UInt32x4_operator_gte_UInt32x4_backend_index = 880u;
 
 /// operator== with UInt32x4
 extern Variable UInt32x4_operator_eq_UInt32x4_arg;
 extern Function UInt32x4_operator_eq_UInt32x4;
+inline constexpr auto UInt32x4_operator_eq_UInt32x4_name = "operator=="_c;
 inline constexpr auto UInt32x4_operator_eq_UInt32x4_backend_index = 881u;
 
 /// operator!= with UInt32x4
 extern Variable UInt32x4_operator_neq_UInt32x4_arg;
 extern Function UInt32x4_operator_neq_UInt32x4;
+inline constexpr auto UInt32x4_operator_neq_UInt32x4_name = "operator!="_c;
 inline constexpr auto UInt32x4_operator_neq_UInt32x4_backend_index = 882u;
 
 /// operator* with Float32
 extern Variable UInt32x4_operator_scale_Float32_arg;
 extern Function UInt32x4_operator_scale_Float32;
+inline constexpr auto UInt32x4_operator_scale_Float32_name = "operator*"_c;
 inline constexpr auto UInt32x4_operator_scale_Float32_backend_index = 883u;
 
 /// operator* with UInt32
 extern Variable UInt32x4_operator_scale_UInt32_arg;
 extern Function UInt32x4_operator_scale_UInt32;
+inline constexpr auto UInt32x4_operator_scale_UInt32_name = "operator*"_c;
 inline constexpr auto UInt32x4_operator_scale_UInt32_backend_index = 884u;
 
 /// operator* with Int32
 extern Variable UInt32x4_operator_scale_Int32_arg;
 extern Function UInt32x4_operator_scale_Int32;
+inline constexpr auto UInt32x4_operator_scale_Int32_name = "operator*"_c;
 inline constexpr auto UInt32x4_operator_scale_Int32_backend_index = 885u;
 
 /// operator| with UInt32x4
 extern Variable UInt32x4_operator_or_UInt32x4_arg;
 extern Function UInt32x4_operator_or_UInt32x4;
+inline constexpr auto UInt32x4_operator_or_UInt32x4_name = "operator|"_c;
 inline constexpr auto UInt32x4_operator_or_UInt32x4_backend_index = 886u;
 
 /// operator& with UInt32x4
 extern Variable UInt32x4_operator_and_UInt32x4_arg;
 extern Function UInt32x4_operator_and_UInt32x4;
+inline constexpr auto UInt32x4_operator_and_UInt32x4_name = "operator&"_c;
 inline constexpr auto UInt32x4_operator_and_UInt32x4_backend_index = 887u;
 
 /// operator^ with UInt32x4
 extern Variable UInt32x4_operator_xor_UInt32x4_arg;
 extern Function UInt32x4_operator_xor_UInt32x4;
+inline constexpr auto UInt32x4_operator_xor_UInt32x4_name = "operator^"_c;
 inline constexpr auto UInt32x4_operator_xor_UInt32x4_backend_index = 888u;
 
 /// operator<< with UInt32x4
 extern Variable UInt32x4_operator_lsh_UInt32x4_arg;
 extern Function UInt32x4_operator_lsh_UInt32x4;
+inline constexpr auto UInt32x4_operator_lsh_UInt32x4_name = "operator<<"_c;
 inline constexpr auto UInt32x4_operator_lsh_UInt32x4_backend_index = 889u;
 
 /// operator>> with UInt32x4
 extern Variable UInt32x4_operator_rsh_UInt32x4_arg;
 extern Function UInt32x4_operator_rsh_UInt32x4;
+inline constexpr auto UInt32x4_operator_rsh_UInt32x4_name = "operator>>"_c;
 inline constexpr auto UInt32x4_operator_rsh_UInt32x4_backend_index = 890u;
 
 /// operator|= with UInt32x4
 extern Variable UInt32x4_operator_orasg_UInt32x4_arg;
 extern Function UInt32x4_operator_orasg_UInt32x4;
+inline constexpr auto UInt32x4_operator_orasg_UInt32x4_name = "operator|="_c;
 inline constexpr auto UInt32x4_operator_orasg_UInt32x4_backend_index = 891u;
 
 /// operator&= with UInt32x4
 extern Variable UInt32x4_operator_andasg_UInt32x4_arg;
 extern Function UInt32x4_operator_andasg_UInt32x4;
+inline constexpr auto UInt32x4_operator_andasg_UInt32x4_name = "operator&="_c;
 inline constexpr auto UInt32x4_operator_andasg_UInt32x4_backend_index = 892u;
 
 /// operator^= with UInt32x4
 extern Variable UInt32x4_operator_xorasg_UInt32x4_arg;
 extern Function UInt32x4_operator_xorasg_UInt32x4;
+inline constexpr auto UInt32x4_operator_xorasg_UInt32x4_name = "operator^="_c;
 inline constexpr auto UInt32x4_operator_xorasg_UInt32x4_backend_index = 893u;
 
 /// operator<<= with UInt32x4
 extern Variable UInt32x4_operator_lshasg_UInt32x4_arg;
 extern Function UInt32x4_operator_lshasg_UInt32x4;
+inline constexpr auto UInt32x4_operator_lshasg_UInt32x4_name = "operator<<="_c;
 inline constexpr auto UInt32x4_operator_lshasg_UInt32x4_backend_index = 894u;
 
 /// operator>>= with UInt32x4
 extern Variable UInt32x4_operator_rhsasg_UInt32x4_arg;
 extern Function UInt32x4_operator_rhsasg_UInt32x4;
+inline constexpr auto UInt32x4_operator_rhsasg_UInt32x4_name = "operator>>="_c;
 inline constexpr auto UInt32x4_operator_rhsasg_UInt32x4_backend_index = 895u;
 
 struct Int32x4 : public Type
@@ -3158,161 +3749,193 @@ extern Int32x4 Int32x4Type;
 /// operator[] with Int32
 extern Variable Int32x4_operator_index_Int32_arg;
 extern Function Int32x4_operator_index_Int32;
+inline constexpr auto Int32x4_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Int32x4_operator_index_Int32_backend_index = 917u;
 
 /// operator[] with UInt32
 extern Variable Int32x4_operator_index_UInt32_arg;
 extern Function Int32x4_operator_index_UInt32;
+inline constexpr auto Int32x4_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Int32x4_operator_index_UInt32_backend_index = 918u;
 
 /// operator[] with Int16
 extern Variable Int32x4_operator_index_Int16_arg;
 extern Function Int32x4_operator_index_Int16;
+inline constexpr auto Int32x4_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Int32x4_operator_index_Int16_backend_index = 919u;
 
 /// operator[] with UInt16
 extern Variable Int32x4_operator_index_UInt16_arg;
 extern Function Int32x4_operator_index_UInt16;
+inline constexpr auto Int32x4_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Int32x4_operator_index_UInt16_backend_index = 920u;
 
 /// operator+ with Int32x4
 extern Variable Int32x4_operator_add_Int32x4_arg;
 extern Function Int32x4_operator_add_Int32x4;
+inline constexpr auto Int32x4_operator_add_Int32x4_name = "operator+"_c;
 inline constexpr auto Int32x4_operator_add_Int32x4_backend_index = 921u;
 
 /// operator- with Int32x4
 extern Variable Int32x4_operator_sub_Int32x4_arg;
 extern Function Int32x4_operator_sub_Int32x4;
+inline constexpr auto Int32x4_operator_sub_Int32x4_name = "operator-"_c;
 inline constexpr auto Int32x4_operator_sub_Int32x4_backend_index = 922u;
 
 /// operator* with Int32x4
 extern Variable Int32x4_operator_mul_Int32x4_arg;
 extern Function Int32x4_operator_mul_Int32x4;
+inline constexpr auto Int32x4_operator_mul_Int32x4_name = "operator*"_c;
 inline constexpr auto Int32x4_operator_mul_Int32x4_backend_index = 923u;
 
 /// operator/ with Int32x4
 extern Variable Int32x4_operator_div_Int32x4_arg;
 extern Function Int32x4_operator_div_Int32x4;
+inline constexpr auto Int32x4_operator_div_Int32x4_name = "operator/"_c;
 inline constexpr auto Int32x4_operator_div_Int32x4_backend_index = 924u;
 
 /// operator% with Int32x4
 extern Variable Int32x4_operator_mod_Int32x4_arg;
 extern Function Int32x4_operator_mod_Int32x4;
+inline constexpr auto Int32x4_operator_mod_Int32x4_name = "operator%"_c;
 inline constexpr auto Int32x4_operator_mod_Int32x4_backend_index = 925u;
 
 /// operator+= with Int32x4
 extern Variable Int32x4_operator_addasg_Int32x4_arg;
 extern Function Int32x4_operator_addasg_Int32x4;
+inline constexpr auto Int32x4_operator_addasg_Int32x4_name = "operator+="_c;
 inline constexpr auto Int32x4_operator_addasg_Int32x4_backend_index = 926u;
 
 /// operator-= with Int32x4
 extern Variable Int32x4_operator_subasg_Int32x4_arg;
 extern Function Int32x4_operator_subasg_Int32x4;
+inline constexpr auto Int32x4_operator_subasg_Int32x4_name = "operator-="_c;
 inline constexpr auto Int32x4_operator_subasg_Int32x4_backend_index = 927u;
 
 /// operator*= with Int32x4
 extern Variable Int32x4_operator_mulasg_Int32x4_arg;
 extern Function Int32x4_operator_mulasg_Int32x4;
+inline constexpr auto Int32x4_operator_mulasg_Int32x4_name = "operator*="_c;
 inline constexpr auto Int32x4_operator_mulasg_Int32x4_backend_index = 928u;
 
 /// operator/= with Int32x4
 extern Variable Int32x4_operator_divasg_Int32x4_arg;
 extern Function Int32x4_operator_divasg_Int32x4;
+inline constexpr auto Int32x4_operator_divasg_Int32x4_name = "operator/="_c;
 inline constexpr auto Int32x4_operator_divasg_Int32x4_backend_index = 929u;
 
 /// operator< with Int32x4
 extern Variable Int32x4_operator_lt_Int32x4_arg;
 extern Function Int32x4_operator_lt_Int32x4;
+inline constexpr auto Int32x4_operator_lt_Int32x4_name = "operator<"_c;
 inline constexpr auto Int32x4_operator_lt_Int32x4_backend_index = 930u;
 
 /// operator<= with Int32x4
 extern Variable Int32x4_operator_lte_Int32x4_arg;
 extern Function Int32x4_operator_lte_Int32x4;
+inline constexpr auto Int32x4_operator_lte_Int32x4_name = "operator<="_c;
 inline constexpr auto Int32x4_operator_lte_Int32x4_backend_index = 931u;
 
 /// operator> with Int32x4
 extern Variable Int32x4_operator_gt_Int32x4_arg;
 extern Function Int32x4_operator_gt_Int32x4;
+inline constexpr auto Int32x4_operator_gt_Int32x4_name = "operator>"_c;
 inline constexpr auto Int32x4_operator_gt_Int32x4_backend_index = 932u;
 
 /// operator>= with Int32x4
 extern Variable Int32x4_operator_gte_Int32x4_arg;
 extern Function Int32x4_operator_gte_Int32x4;
+inline constexpr auto Int32x4_operator_gte_Int32x4_name = "operator>="_c;
 inline constexpr auto Int32x4_operator_gte_Int32x4_backend_index = 933u;
 
 /// operator== with Int32x4
 extern Variable Int32x4_operator_eq_Int32x4_arg;
 extern Function Int32x4_operator_eq_Int32x4;
+inline constexpr auto Int32x4_operator_eq_Int32x4_name = "operator=="_c;
 inline constexpr auto Int32x4_operator_eq_Int32x4_backend_index = 934u;
 
 /// operator!= with Int32x4
 extern Variable Int32x4_operator_neq_Int32x4_arg;
 extern Function Int32x4_operator_neq_Int32x4;
+inline constexpr auto Int32x4_operator_neq_Int32x4_name = "operator!="_c;
 inline constexpr auto Int32x4_operator_neq_Int32x4_backend_index = 935u;
 
 /// operator* with Float32
 extern Variable Int32x4_operator_scale_Float32_arg;
 extern Function Int32x4_operator_scale_Float32;
+inline constexpr auto Int32x4_operator_scale_Float32_name = "operator*"_c;
 inline constexpr auto Int32x4_operator_scale_Float32_backend_index = 936u;
 
 /// operator* with UInt32
 extern Variable Int32x4_operator_scale_UInt32_arg;
 extern Function Int32x4_operator_scale_UInt32;
+inline constexpr auto Int32x4_operator_scale_UInt32_name = "operator*"_c;
 inline constexpr auto Int32x4_operator_scale_UInt32_backend_index = 937u;
 
 /// operator* with Int32
 extern Variable Int32x4_operator_scale_Int32_arg;
 extern Function Int32x4_operator_scale_Int32;
+inline constexpr auto Int32x4_operator_scale_Int32_name = "operator*"_c;
 inline constexpr auto Int32x4_operator_scale_Int32_backend_index = 938u;
 
 /// operator| with Int32x4
 extern Variable Int32x4_operator_or_Int32x4_arg;
 extern Function Int32x4_operator_or_Int32x4;
+inline constexpr auto Int32x4_operator_or_Int32x4_name = "operator|"_c;
 inline constexpr auto Int32x4_operator_or_Int32x4_backend_index = 939u;
 
 /// operator& with Int32x4
 extern Variable Int32x4_operator_and_Int32x4_arg;
 extern Function Int32x4_operator_and_Int32x4;
+inline constexpr auto Int32x4_operator_and_Int32x4_name = "operator&"_c;
 inline constexpr auto Int32x4_operator_and_Int32x4_backend_index = 940u;
 
 /// operator^ with Int32x4
 extern Variable Int32x4_operator_xor_Int32x4_arg;
 extern Function Int32x4_operator_xor_Int32x4;
+inline constexpr auto Int32x4_operator_xor_Int32x4_name = "operator^"_c;
 inline constexpr auto Int32x4_operator_xor_Int32x4_backend_index = 941u;
 
 /// operator<< with Int32x4
 extern Variable Int32x4_operator_lsh_Int32x4_arg;
 extern Function Int32x4_operator_lsh_Int32x4;
+inline constexpr auto Int32x4_operator_lsh_Int32x4_name = "operator<<"_c;
 inline constexpr auto Int32x4_operator_lsh_Int32x4_backend_index = 942u;
 
 /// operator>> with Int32x4
 extern Variable Int32x4_operator_rsh_Int32x4_arg;
 extern Function Int32x4_operator_rsh_Int32x4;
+inline constexpr auto Int32x4_operator_rsh_Int32x4_name = "operator>>"_c;
 inline constexpr auto Int32x4_operator_rsh_Int32x4_backend_index = 943u;
 
 /// operator|= with Int32x4
 extern Variable Int32x4_operator_orasg_Int32x4_arg;
 extern Function Int32x4_operator_orasg_Int32x4;
+inline constexpr auto Int32x4_operator_orasg_Int32x4_name = "operator|="_c;
 inline constexpr auto Int32x4_operator_orasg_Int32x4_backend_index = 944u;
 
 /// operator&= with Int32x4
 extern Variable Int32x4_operator_andasg_Int32x4_arg;
 extern Function Int32x4_operator_andasg_Int32x4;
+inline constexpr auto Int32x4_operator_andasg_Int32x4_name = "operator&="_c;
 inline constexpr auto Int32x4_operator_andasg_Int32x4_backend_index = 945u;
 
 /// operator^= with Int32x4
 extern Variable Int32x4_operator_xorasg_Int32x4_arg;
 extern Function Int32x4_operator_xorasg_Int32x4;
+inline constexpr auto Int32x4_operator_xorasg_Int32x4_name = "operator^="_c;
 inline constexpr auto Int32x4_operator_xorasg_Int32x4_backend_index = 946u;
 
 /// operator<<= with Int32x4
 extern Variable Int32x4_operator_lshasg_Int32x4_arg;
 extern Function Int32x4_operator_lshasg_Int32x4;
+inline constexpr auto Int32x4_operator_lshasg_Int32x4_name = "operator<<="_c;
 inline constexpr auto Int32x4_operator_lshasg_Int32x4_backend_index = 947u;
 
 /// operator>>= with Int32x4
 extern Variable Int32x4_operator_rhsasg_Int32x4_arg;
 extern Function Int32x4_operator_rhsasg_Int32x4;
+inline constexpr auto Int32x4_operator_rhsasg_Int32x4_name = "operator>>="_c;
 inline constexpr auto Int32x4_operator_rhsasg_Int32x4_backend_index = 948u;
 
 struct Bool8x4 : public Type
@@ -3324,41 +3947,49 @@ extern Bool8x4 Bool8x4Type;
 /// operator[] with Int32
 extern Variable Bool8x4_operator_index_Int32_arg;
 extern Function Bool8x4_operator_index_Int32;
+inline constexpr auto Bool8x4_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Bool8x4_operator_index_Int32_backend_index = 966u;
 
 /// operator[] with UInt32
 extern Variable Bool8x4_operator_index_UInt32_arg;
 extern Function Bool8x4_operator_index_UInt32;
+inline constexpr auto Bool8x4_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Bool8x4_operator_index_UInt32_backend_index = 967u;
 
 /// operator[] with Int16
 extern Variable Bool8x4_operator_index_Int16_arg;
 extern Function Bool8x4_operator_index_Int16;
+inline constexpr auto Bool8x4_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Bool8x4_operator_index_Int16_backend_index = 968u;
 
 /// operator[] with UInt16
 extern Variable Bool8x4_operator_index_UInt16_arg;
 extern Function Bool8x4_operator_index_UInt16;
+inline constexpr auto Bool8x4_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Bool8x4_operator_index_UInt16_backend_index = 969u;
 
 /// operator|| with Bool8x4
 extern Variable Bool8x4_operator_oror_Bool8x4_arg;
 extern Function Bool8x4_operator_oror_Bool8x4;
+inline constexpr auto Bool8x4_operator_oror_Bool8x4_name = "operator||"_c;
 inline constexpr auto Bool8x4_operator_oror_Bool8x4_backend_index = 970u;
 
 /// operator&& with Bool8x4
 extern Variable Bool8x4_operator_andand_Bool8x4_arg;
 extern Function Bool8x4_operator_andand_Bool8x4;
+inline constexpr auto Bool8x4_operator_andand_Bool8x4_name = "operator&&"_c;
 inline constexpr auto Bool8x4_operator_andand_Bool8x4_backend_index = 971u;
 
 /// operator== with Bool8x4
 extern Variable Bool8x4_operator_eq_Bool8x4_arg;
 extern Function Bool8x4_operator_eq_Bool8x4;
+inline constexpr auto Bool8x4_operator_eq_Bool8x4_name = "operator=="_c;
 inline constexpr auto Bool8x4_operator_eq_Bool8x4_backend_index = 972u;
 
 /// operator!= with Bool8x4
 extern Variable Bool8x4_operator_neq_Bool8x4_arg;
 extern Function Bool8x4_operator_neq_Bool8x4;
+inline constexpr auto Bool8x4_operator_neq_Bool8x4_name = "operator!="_c;
 inline constexpr auto Bool8x4_operator_neq_Bool8x4_backend_index = 973u;
 
 struct Float16x4 : public Type
@@ -3370,126 +4001,151 @@ extern Float16x4 Float16x4Type;
 /// operator[] with Int32
 extern Variable Float16x4_operator_index_Int32_arg;
 extern Function Float16x4_operator_index_Int32;
+inline constexpr auto Float16x4_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Float16x4_operator_index_Int32_backend_index = 995u;
 
 /// operator[] with UInt32
 extern Variable Float16x4_operator_index_UInt32_arg;
 extern Function Float16x4_operator_index_UInt32;
+inline constexpr auto Float16x4_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Float16x4_operator_index_UInt32_backend_index = 996u;
 
 /// operator[] with Int16
 extern Variable Float16x4_operator_index_Int16_arg;
 extern Function Float16x4_operator_index_Int16;
+inline constexpr auto Float16x4_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Float16x4_operator_index_Int16_backend_index = 997u;
 
 /// operator[] with UInt16
 extern Variable Float16x4_operator_index_UInt16_arg;
 extern Function Float16x4_operator_index_UInt16;
+inline constexpr auto Float16x4_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Float16x4_operator_index_UInt16_backend_index = 998u;
 
 /// operator+ with Float16x4
 extern Variable Float16x4_operator_add_Float16x4_arg;
 extern Function Float16x4_operator_add_Float16x4;
+inline constexpr auto Float16x4_operator_add_Float16x4_name = "operator+"_c;
 inline constexpr auto Float16x4_operator_add_Float16x4_backend_index = 999u;
 
 /// operator- with Float16x4
 extern Variable Float16x4_operator_sub_Float16x4_arg;
 extern Function Float16x4_operator_sub_Float16x4;
+inline constexpr auto Float16x4_operator_sub_Float16x4_name = "operator-"_c;
 inline constexpr auto Float16x4_operator_sub_Float16x4_backend_index = 1000u;
 
 /// operator* with Float16x4
 extern Variable Float16x4_operator_mul_Float16x4_arg;
 extern Function Float16x4_operator_mul_Float16x4;
+inline constexpr auto Float16x4_operator_mul_Float16x4_name = "operator*"_c;
 inline constexpr auto Float16x4_operator_mul_Float16x4_backend_index = 1001u;
 
 /// operator/ with Float16x4
 extern Variable Float16x4_operator_div_Float16x4_arg;
 extern Function Float16x4_operator_div_Float16x4;
+inline constexpr auto Float16x4_operator_div_Float16x4_name = "operator/"_c;
 inline constexpr auto Float16x4_operator_div_Float16x4_backend_index = 1002u;
 
 /// operator% with Float16x4
 extern Variable Float16x4_operator_mod_Float16x4_arg;
 extern Function Float16x4_operator_mod_Float16x4;
+inline constexpr auto Float16x4_operator_mod_Float16x4_name = "operator%"_c;
 inline constexpr auto Float16x4_operator_mod_Float16x4_backend_index = 1003u;
 
 /// operator+= with Float16x4
 extern Variable Float16x4_operator_addasg_Float16x4_arg;
 extern Function Float16x4_operator_addasg_Float16x4;
+inline constexpr auto Float16x4_operator_addasg_Float16x4_name = "operator+="_c;
 inline constexpr auto Float16x4_operator_addasg_Float16x4_backend_index = 1004u;
 
 /// operator-= with Float16x4
 extern Variable Float16x4_operator_subasg_Float16x4_arg;
 extern Function Float16x4_operator_subasg_Float16x4;
+inline constexpr auto Float16x4_operator_subasg_Float16x4_name = "operator-="_c;
 inline constexpr auto Float16x4_operator_subasg_Float16x4_backend_index = 1005u;
 
 /// operator*= with Float16x4
 extern Variable Float16x4_operator_mulasg_Float16x4_arg;
 extern Function Float16x4_operator_mulasg_Float16x4;
+inline constexpr auto Float16x4_operator_mulasg_Float16x4_name = "operator*="_c;
 inline constexpr auto Float16x4_operator_mulasg_Float16x4_backend_index = 1006u;
 
 /// operator/= with Float16x4
 extern Variable Float16x4_operator_divasg_Float16x4_arg;
 extern Function Float16x4_operator_divasg_Float16x4;
+inline constexpr auto Float16x4_operator_divasg_Float16x4_name = "operator/="_c;
 inline constexpr auto Float16x4_operator_divasg_Float16x4_backend_index = 1007u;
 
 /// operator< with Float16x4
 extern Variable Float16x4_operator_lt_Float16x4_arg;
 extern Function Float16x4_operator_lt_Float16x4;
+inline constexpr auto Float16x4_operator_lt_Float16x4_name = "operator<"_c;
 inline constexpr auto Float16x4_operator_lt_Float16x4_backend_index = 1008u;
 
 /// operator<= with Float16x4
 extern Variable Float16x4_operator_lte_Float16x4_arg;
 extern Function Float16x4_operator_lte_Float16x4;
+inline constexpr auto Float16x4_operator_lte_Float16x4_name = "operator<="_c;
 inline constexpr auto Float16x4_operator_lte_Float16x4_backend_index = 1009u;
 
 /// operator> with Float16x4
 extern Variable Float16x4_operator_gt_Float16x4_arg;
 extern Function Float16x4_operator_gt_Float16x4;
+inline constexpr auto Float16x4_operator_gt_Float16x4_name = "operator>"_c;
 inline constexpr auto Float16x4_operator_gt_Float16x4_backend_index = 1010u;
 
 /// operator>= with Float16x4
 extern Variable Float16x4_operator_gte_Float16x4_arg;
 extern Function Float16x4_operator_gte_Float16x4;
+inline constexpr auto Float16x4_operator_gte_Float16x4_name = "operator>="_c;
 inline constexpr auto Float16x4_operator_gte_Float16x4_backend_index = 1011u;
 
 /// operator== with Float16x4
 extern Variable Float16x4_operator_eq_Float16x4_arg;
 extern Function Float16x4_operator_eq_Float16x4;
+inline constexpr auto Float16x4_operator_eq_Float16x4_name = "operator=="_c;
 inline constexpr auto Float16x4_operator_eq_Float16x4_backend_index = 1012u;
 
 /// operator!= with Float16x4
 extern Variable Float16x4_operator_neq_Float16x4_arg;
 extern Function Float16x4_operator_neq_Float16x4;
+inline constexpr auto Float16x4_operator_neq_Float16x4_name = "operator!="_c;
 inline constexpr auto Float16x4_operator_neq_Float16x4_backend_index = 1013u;
 
 /// operator* with Float16
 extern Variable Float16x4_operator_scale_Float16_arg;
 extern Function Float16x4_operator_scale_Float16;
+inline constexpr auto Float16x4_operator_scale_Float16_name = "operator*"_c;
 inline constexpr auto Float16x4_operator_scale_Float16_backend_index = 1014u;
 
 /// operator* with UInt16
 extern Variable Float16x4_operator_scale_UInt16_arg;
 extern Function Float16x4_operator_scale_UInt16;
+inline constexpr auto Float16x4_operator_scale_UInt16_name = "operator*"_c;
 inline constexpr auto Float16x4_operator_scale_UInt16_backend_index = 1015u;
 
 /// operator* with Int16
 extern Variable Float16x4_operator_scale_Int16_arg;
 extern Function Float16x4_operator_scale_Int16;
+inline constexpr auto Float16x4_operator_scale_Int16_name = "operator*"_c;
 inline constexpr auto Float16x4_operator_scale_Int16_backend_index = 1016u;
 
 /// operator* with Float32x4x2
 extern Variable Float16x4_operator_transform_Float32x4x2_arg;
 extern Function Float16x4_operator_transform_Float32x4x2;
+inline constexpr auto Float16x4_operator_transform_Float32x4x2_name = "operator*"_c;
 inline constexpr auto Float16x4_operator_transform_Float32x4x2_backend_index = 1017u;
 
 /// operator* with Float32x4x3
 extern Variable Float16x4_operator_transform_Float32x4x3_arg;
 extern Function Float16x4_operator_transform_Float32x4x3;
+inline constexpr auto Float16x4_operator_transform_Float32x4x3_name = "operator*"_c;
 inline constexpr auto Float16x4_operator_transform_Float32x4x3_backend_index = 1018u;
 
 /// operator* with Float32x4x4
 extern Variable Float16x4_operator_transform_Float32x4x4_arg;
 extern Function Float16x4_operator_transform_Float32x4x4;
+inline constexpr auto Float16x4_operator_transform_Float32x4x4_name = "operator*"_c;
 inline constexpr auto Float16x4_operator_transform_Float32x4x4_backend_index = 1019u;
 
 struct UInt16x4 : public Type
@@ -3501,161 +4157,193 @@ extern UInt16x4 UInt16x4Type;
 /// operator[] with Int32
 extern Variable UInt16x4_operator_index_Int32_arg;
 extern Function UInt16x4_operator_index_Int32;
+inline constexpr auto UInt16x4_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto UInt16x4_operator_index_Int32_backend_index = 1041u;
 
 /// operator[] with UInt32
 extern Variable UInt16x4_operator_index_UInt32_arg;
 extern Function UInt16x4_operator_index_UInt32;
+inline constexpr auto UInt16x4_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto UInt16x4_operator_index_UInt32_backend_index = 1042u;
 
 /// operator[] with Int16
 extern Variable UInt16x4_operator_index_Int16_arg;
 extern Function UInt16x4_operator_index_Int16;
+inline constexpr auto UInt16x4_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto UInt16x4_operator_index_Int16_backend_index = 1043u;
 
 /// operator[] with UInt16
 extern Variable UInt16x4_operator_index_UInt16_arg;
 extern Function UInt16x4_operator_index_UInt16;
+inline constexpr auto UInt16x4_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto UInt16x4_operator_index_UInt16_backend_index = 1044u;
 
 /// operator+ with UInt16x4
 extern Variable UInt16x4_operator_add_UInt16x4_arg;
 extern Function UInt16x4_operator_add_UInt16x4;
+inline constexpr auto UInt16x4_operator_add_UInt16x4_name = "operator+"_c;
 inline constexpr auto UInt16x4_operator_add_UInt16x4_backend_index = 1045u;
 
 /// operator- with UInt16x4
 extern Variable UInt16x4_operator_sub_UInt16x4_arg;
 extern Function UInt16x4_operator_sub_UInt16x4;
+inline constexpr auto UInt16x4_operator_sub_UInt16x4_name = "operator-"_c;
 inline constexpr auto UInt16x4_operator_sub_UInt16x4_backend_index = 1046u;
 
 /// operator* with UInt16x4
 extern Variable UInt16x4_operator_mul_UInt16x4_arg;
 extern Function UInt16x4_operator_mul_UInt16x4;
+inline constexpr auto UInt16x4_operator_mul_UInt16x4_name = "operator*"_c;
 inline constexpr auto UInt16x4_operator_mul_UInt16x4_backend_index = 1047u;
 
 /// operator/ with UInt16x4
 extern Variable UInt16x4_operator_div_UInt16x4_arg;
 extern Function UInt16x4_operator_div_UInt16x4;
+inline constexpr auto UInt16x4_operator_div_UInt16x4_name = "operator/"_c;
 inline constexpr auto UInt16x4_operator_div_UInt16x4_backend_index = 1048u;
 
 /// operator% with UInt16x4
 extern Variable UInt16x4_operator_mod_UInt16x4_arg;
 extern Function UInt16x4_operator_mod_UInt16x4;
+inline constexpr auto UInt16x4_operator_mod_UInt16x4_name = "operator%"_c;
 inline constexpr auto UInt16x4_operator_mod_UInt16x4_backend_index = 1049u;
 
 /// operator+= with UInt16x4
 extern Variable UInt16x4_operator_addasg_UInt16x4_arg;
 extern Function UInt16x4_operator_addasg_UInt16x4;
+inline constexpr auto UInt16x4_operator_addasg_UInt16x4_name = "operator+="_c;
 inline constexpr auto UInt16x4_operator_addasg_UInt16x4_backend_index = 1050u;
 
 /// operator-= with UInt16x4
 extern Variable UInt16x4_operator_subasg_UInt16x4_arg;
 extern Function UInt16x4_operator_subasg_UInt16x4;
+inline constexpr auto UInt16x4_operator_subasg_UInt16x4_name = "operator-="_c;
 inline constexpr auto UInt16x4_operator_subasg_UInt16x4_backend_index = 1051u;
 
 /// operator*= with UInt16x4
 extern Variable UInt16x4_operator_mulasg_UInt16x4_arg;
 extern Function UInt16x4_operator_mulasg_UInt16x4;
+inline constexpr auto UInt16x4_operator_mulasg_UInt16x4_name = "operator*="_c;
 inline constexpr auto UInt16x4_operator_mulasg_UInt16x4_backend_index = 1052u;
 
 /// operator/= with UInt16x4
 extern Variable UInt16x4_operator_divasg_UInt16x4_arg;
 extern Function UInt16x4_operator_divasg_UInt16x4;
+inline constexpr auto UInt16x4_operator_divasg_UInt16x4_name = "operator/="_c;
 inline constexpr auto UInt16x4_operator_divasg_UInt16x4_backend_index = 1053u;
 
 /// operator< with UInt16x4
 extern Variable UInt16x4_operator_lt_UInt16x4_arg;
 extern Function UInt16x4_operator_lt_UInt16x4;
+inline constexpr auto UInt16x4_operator_lt_UInt16x4_name = "operator<"_c;
 inline constexpr auto UInt16x4_operator_lt_UInt16x4_backend_index = 1054u;
 
 /// operator<= with UInt16x4
 extern Variable UInt16x4_operator_lte_UInt16x4_arg;
 extern Function UInt16x4_operator_lte_UInt16x4;
+inline constexpr auto UInt16x4_operator_lte_UInt16x4_name = "operator<="_c;
 inline constexpr auto UInt16x4_operator_lte_UInt16x4_backend_index = 1055u;
 
 /// operator> with UInt16x4
 extern Variable UInt16x4_operator_gt_UInt16x4_arg;
 extern Function UInt16x4_operator_gt_UInt16x4;
+inline constexpr auto UInt16x4_operator_gt_UInt16x4_name = "operator>"_c;
 inline constexpr auto UInt16x4_operator_gt_UInt16x4_backend_index = 1056u;
 
 /// operator>= with UInt16x4
 extern Variable UInt16x4_operator_gte_UInt16x4_arg;
 extern Function UInt16x4_operator_gte_UInt16x4;
+inline constexpr auto UInt16x4_operator_gte_UInt16x4_name = "operator>="_c;
 inline constexpr auto UInt16x4_operator_gte_UInt16x4_backend_index = 1057u;
 
 /// operator== with UInt16x4
 extern Variable UInt16x4_operator_eq_UInt16x4_arg;
 extern Function UInt16x4_operator_eq_UInt16x4;
+inline constexpr auto UInt16x4_operator_eq_UInt16x4_name = "operator=="_c;
 inline constexpr auto UInt16x4_operator_eq_UInt16x4_backend_index = 1058u;
 
 /// operator!= with UInt16x4
 extern Variable UInt16x4_operator_neq_UInt16x4_arg;
 extern Function UInt16x4_operator_neq_UInt16x4;
+inline constexpr auto UInt16x4_operator_neq_UInt16x4_name = "operator!="_c;
 inline constexpr auto UInt16x4_operator_neq_UInt16x4_backend_index = 1059u;
 
 /// operator* with Float16
 extern Variable UInt16x4_operator_scale_Float16_arg;
 extern Function UInt16x4_operator_scale_Float16;
+inline constexpr auto UInt16x4_operator_scale_Float16_name = "operator*"_c;
 inline constexpr auto UInt16x4_operator_scale_Float16_backend_index = 1060u;
 
 /// operator* with UInt16
 extern Variable UInt16x4_operator_scale_UInt16_arg;
 extern Function UInt16x4_operator_scale_UInt16;
+inline constexpr auto UInt16x4_operator_scale_UInt16_name = "operator*"_c;
 inline constexpr auto UInt16x4_operator_scale_UInt16_backend_index = 1061u;
 
 /// operator* with Int16
 extern Variable UInt16x4_operator_scale_Int16_arg;
 extern Function UInt16x4_operator_scale_Int16;
+inline constexpr auto UInt16x4_operator_scale_Int16_name = "operator*"_c;
 inline constexpr auto UInt16x4_operator_scale_Int16_backend_index = 1062u;
 
 /// operator| with UInt16x4
 extern Variable UInt16x4_operator_or_UInt16x4_arg;
 extern Function UInt16x4_operator_or_UInt16x4;
+inline constexpr auto UInt16x4_operator_or_UInt16x4_name = "operator|"_c;
 inline constexpr auto UInt16x4_operator_or_UInt16x4_backend_index = 1063u;
 
 /// operator& with UInt16x4
 extern Variable UInt16x4_operator_and_UInt16x4_arg;
 extern Function UInt16x4_operator_and_UInt16x4;
+inline constexpr auto UInt16x4_operator_and_UInt16x4_name = "operator&"_c;
 inline constexpr auto UInt16x4_operator_and_UInt16x4_backend_index = 1064u;
 
 /// operator^ with UInt16x4
 extern Variable UInt16x4_operator_xor_UInt16x4_arg;
 extern Function UInt16x4_operator_xor_UInt16x4;
+inline constexpr auto UInt16x4_operator_xor_UInt16x4_name = "operator^"_c;
 inline constexpr auto UInt16x4_operator_xor_UInt16x4_backend_index = 1065u;
 
 /// operator<< with UInt16x4
 extern Variable UInt16x4_operator_lsh_UInt16x4_arg;
 extern Function UInt16x4_operator_lsh_UInt16x4;
+inline constexpr auto UInt16x4_operator_lsh_UInt16x4_name = "operator<<"_c;
 inline constexpr auto UInt16x4_operator_lsh_UInt16x4_backend_index = 1066u;
 
 /// operator>> with UInt16x4
 extern Variable UInt16x4_operator_rsh_UInt16x4_arg;
 extern Function UInt16x4_operator_rsh_UInt16x4;
+inline constexpr auto UInt16x4_operator_rsh_UInt16x4_name = "operator>>"_c;
 inline constexpr auto UInt16x4_operator_rsh_UInt16x4_backend_index = 1067u;
 
 /// operator|= with UInt16x4
 extern Variable UInt16x4_operator_orasg_UInt16x4_arg;
 extern Function UInt16x4_operator_orasg_UInt16x4;
+inline constexpr auto UInt16x4_operator_orasg_UInt16x4_name = "operator|="_c;
 inline constexpr auto UInt16x4_operator_orasg_UInt16x4_backend_index = 1068u;
 
 /// operator&= with UInt16x4
 extern Variable UInt16x4_operator_andasg_UInt16x4_arg;
 extern Function UInt16x4_operator_andasg_UInt16x4;
+inline constexpr auto UInt16x4_operator_andasg_UInt16x4_name = "operator&="_c;
 inline constexpr auto UInt16x4_operator_andasg_UInt16x4_backend_index = 1069u;
 
 /// operator^= with UInt16x4
 extern Variable UInt16x4_operator_xorasg_UInt16x4_arg;
 extern Function UInt16x4_operator_xorasg_UInt16x4;
+inline constexpr auto UInt16x4_operator_xorasg_UInt16x4_name = "operator^="_c;
 inline constexpr auto UInt16x4_operator_xorasg_UInt16x4_backend_index = 1070u;
 
 /// operator<<= with UInt16x4
 extern Variable UInt16x4_operator_lshasg_UInt16x4_arg;
 extern Function UInt16x4_operator_lshasg_UInt16x4;
+inline constexpr auto UInt16x4_operator_lshasg_UInt16x4_name = "operator<<="_c;
 inline constexpr auto UInt16x4_operator_lshasg_UInt16x4_backend_index = 1071u;
 
 /// operator>>= with UInt16x4
 extern Variable UInt16x4_operator_rhsasg_UInt16x4_arg;
 extern Function UInt16x4_operator_rhsasg_UInt16x4;
+inline constexpr auto UInt16x4_operator_rhsasg_UInt16x4_name = "operator>>="_c;
 inline constexpr auto UInt16x4_operator_rhsasg_UInt16x4_backend_index = 1072u;
 
 struct Int16x4 : public Type
@@ -3667,161 +4355,193 @@ extern Int16x4 Int16x4Type;
 /// operator[] with Int32
 extern Variable Int16x4_operator_index_Int32_arg;
 extern Function Int16x4_operator_index_Int32;
+inline constexpr auto Int16x4_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Int16x4_operator_index_Int32_backend_index = 1094u;
 
 /// operator[] with UInt32
 extern Variable Int16x4_operator_index_UInt32_arg;
 extern Function Int16x4_operator_index_UInt32;
+inline constexpr auto Int16x4_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Int16x4_operator_index_UInt32_backend_index = 1095u;
 
 /// operator[] with Int16
 extern Variable Int16x4_operator_index_Int16_arg;
 extern Function Int16x4_operator_index_Int16;
+inline constexpr auto Int16x4_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Int16x4_operator_index_Int16_backend_index = 1096u;
 
 /// operator[] with UInt16
 extern Variable Int16x4_operator_index_UInt16_arg;
 extern Function Int16x4_operator_index_UInt16;
+inline constexpr auto Int16x4_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Int16x4_operator_index_UInt16_backend_index = 1097u;
 
 /// operator+ with Int16x4
 extern Variable Int16x4_operator_add_Int16x4_arg;
 extern Function Int16x4_operator_add_Int16x4;
+inline constexpr auto Int16x4_operator_add_Int16x4_name = "operator+"_c;
 inline constexpr auto Int16x4_operator_add_Int16x4_backend_index = 1098u;
 
 /// operator- with Int16x4
 extern Variable Int16x4_operator_sub_Int16x4_arg;
 extern Function Int16x4_operator_sub_Int16x4;
+inline constexpr auto Int16x4_operator_sub_Int16x4_name = "operator-"_c;
 inline constexpr auto Int16x4_operator_sub_Int16x4_backend_index = 1099u;
 
 /// operator* with Int16x4
 extern Variable Int16x4_operator_mul_Int16x4_arg;
 extern Function Int16x4_operator_mul_Int16x4;
+inline constexpr auto Int16x4_operator_mul_Int16x4_name = "operator*"_c;
 inline constexpr auto Int16x4_operator_mul_Int16x4_backend_index = 1100u;
 
 /// operator/ with Int16x4
 extern Variable Int16x4_operator_div_Int16x4_arg;
 extern Function Int16x4_operator_div_Int16x4;
+inline constexpr auto Int16x4_operator_div_Int16x4_name = "operator/"_c;
 inline constexpr auto Int16x4_operator_div_Int16x4_backend_index = 1101u;
 
 /// operator% with Int16x4
 extern Variable Int16x4_operator_mod_Int16x4_arg;
 extern Function Int16x4_operator_mod_Int16x4;
+inline constexpr auto Int16x4_operator_mod_Int16x4_name = "operator%"_c;
 inline constexpr auto Int16x4_operator_mod_Int16x4_backend_index = 1102u;
 
 /// operator+= with Int16x4
 extern Variable Int16x4_operator_addasg_Int16x4_arg;
 extern Function Int16x4_operator_addasg_Int16x4;
+inline constexpr auto Int16x4_operator_addasg_Int16x4_name = "operator+="_c;
 inline constexpr auto Int16x4_operator_addasg_Int16x4_backend_index = 1103u;
 
 /// operator-= with Int16x4
 extern Variable Int16x4_operator_subasg_Int16x4_arg;
 extern Function Int16x4_operator_subasg_Int16x4;
+inline constexpr auto Int16x4_operator_subasg_Int16x4_name = "operator-="_c;
 inline constexpr auto Int16x4_operator_subasg_Int16x4_backend_index = 1104u;
 
 /// operator*= with Int16x4
 extern Variable Int16x4_operator_mulasg_Int16x4_arg;
 extern Function Int16x4_operator_mulasg_Int16x4;
+inline constexpr auto Int16x4_operator_mulasg_Int16x4_name = "operator*="_c;
 inline constexpr auto Int16x4_operator_mulasg_Int16x4_backend_index = 1105u;
 
 /// operator/= with Int16x4
 extern Variable Int16x4_operator_divasg_Int16x4_arg;
 extern Function Int16x4_operator_divasg_Int16x4;
+inline constexpr auto Int16x4_operator_divasg_Int16x4_name = "operator/="_c;
 inline constexpr auto Int16x4_operator_divasg_Int16x4_backend_index = 1106u;
 
 /// operator< with Int16x4
 extern Variable Int16x4_operator_lt_Int16x4_arg;
 extern Function Int16x4_operator_lt_Int16x4;
+inline constexpr auto Int16x4_operator_lt_Int16x4_name = "operator<"_c;
 inline constexpr auto Int16x4_operator_lt_Int16x4_backend_index = 1107u;
 
 /// operator<= with Int16x4
 extern Variable Int16x4_operator_lte_Int16x4_arg;
 extern Function Int16x4_operator_lte_Int16x4;
+inline constexpr auto Int16x4_operator_lte_Int16x4_name = "operator<="_c;
 inline constexpr auto Int16x4_operator_lte_Int16x4_backend_index = 1108u;
 
 /// operator> with Int16x4
 extern Variable Int16x4_operator_gt_Int16x4_arg;
 extern Function Int16x4_operator_gt_Int16x4;
+inline constexpr auto Int16x4_operator_gt_Int16x4_name = "operator>"_c;
 inline constexpr auto Int16x4_operator_gt_Int16x4_backend_index = 1109u;
 
 /// operator>= with Int16x4
 extern Variable Int16x4_operator_gte_Int16x4_arg;
 extern Function Int16x4_operator_gte_Int16x4;
+inline constexpr auto Int16x4_operator_gte_Int16x4_name = "operator>="_c;
 inline constexpr auto Int16x4_operator_gte_Int16x4_backend_index = 1110u;
 
 /// operator== with Int16x4
 extern Variable Int16x4_operator_eq_Int16x4_arg;
 extern Function Int16x4_operator_eq_Int16x4;
+inline constexpr auto Int16x4_operator_eq_Int16x4_name = "operator=="_c;
 inline constexpr auto Int16x4_operator_eq_Int16x4_backend_index = 1111u;
 
 /// operator!= with Int16x4
 extern Variable Int16x4_operator_neq_Int16x4_arg;
 extern Function Int16x4_operator_neq_Int16x4;
+inline constexpr auto Int16x4_operator_neq_Int16x4_name = "operator!="_c;
 inline constexpr auto Int16x4_operator_neq_Int16x4_backend_index = 1112u;
 
 /// operator* with Float16
 extern Variable Int16x4_operator_scale_Float16_arg;
 extern Function Int16x4_operator_scale_Float16;
+inline constexpr auto Int16x4_operator_scale_Float16_name = "operator*"_c;
 inline constexpr auto Int16x4_operator_scale_Float16_backend_index = 1113u;
 
 /// operator* with UInt16
 extern Variable Int16x4_operator_scale_UInt16_arg;
 extern Function Int16x4_operator_scale_UInt16;
+inline constexpr auto Int16x4_operator_scale_UInt16_name = "operator*"_c;
 inline constexpr auto Int16x4_operator_scale_UInt16_backend_index = 1114u;
 
 /// operator* with Int16
 extern Variable Int16x4_operator_scale_Int16_arg;
 extern Function Int16x4_operator_scale_Int16;
+inline constexpr auto Int16x4_operator_scale_Int16_name = "operator*"_c;
 inline constexpr auto Int16x4_operator_scale_Int16_backend_index = 1115u;
 
 /// operator| with Int16x4
 extern Variable Int16x4_operator_or_Int16x4_arg;
 extern Function Int16x4_operator_or_Int16x4;
+inline constexpr auto Int16x4_operator_or_Int16x4_name = "operator|"_c;
 inline constexpr auto Int16x4_operator_or_Int16x4_backend_index = 1116u;
 
 /// operator& with Int16x4
 extern Variable Int16x4_operator_and_Int16x4_arg;
 extern Function Int16x4_operator_and_Int16x4;
+inline constexpr auto Int16x4_operator_and_Int16x4_name = "operator&"_c;
 inline constexpr auto Int16x4_operator_and_Int16x4_backend_index = 1117u;
 
 /// operator^ with Int16x4
 extern Variable Int16x4_operator_xor_Int16x4_arg;
 extern Function Int16x4_operator_xor_Int16x4;
+inline constexpr auto Int16x4_operator_xor_Int16x4_name = "operator^"_c;
 inline constexpr auto Int16x4_operator_xor_Int16x4_backend_index = 1118u;
 
 /// operator<< with Int16x4
 extern Variable Int16x4_operator_lsh_Int16x4_arg;
 extern Function Int16x4_operator_lsh_Int16x4;
+inline constexpr auto Int16x4_operator_lsh_Int16x4_name = "operator<<"_c;
 inline constexpr auto Int16x4_operator_lsh_Int16x4_backend_index = 1119u;
 
 /// operator>> with Int16x4
 extern Variable Int16x4_operator_rsh_Int16x4_arg;
 extern Function Int16x4_operator_rsh_Int16x4;
+inline constexpr auto Int16x4_operator_rsh_Int16x4_name = "operator>>"_c;
 inline constexpr auto Int16x4_operator_rsh_Int16x4_backend_index = 1120u;
 
 /// operator|= with Int16x4
 extern Variable Int16x4_operator_orasg_Int16x4_arg;
 extern Function Int16x4_operator_orasg_Int16x4;
+inline constexpr auto Int16x4_operator_orasg_Int16x4_name = "operator|="_c;
 inline constexpr auto Int16x4_operator_orasg_Int16x4_backend_index = 1121u;
 
 /// operator&= with Int16x4
 extern Variable Int16x4_operator_andasg_Int16x4_arg;
 extern Function Int16x4_operator_andasg_Int16x4;
+inline constexpr auto Int16x4_operator_andasg_Int16x4_name = "operator&="_c;
 inline constexpr auto Int16x4_operator_andasg_Int16x4_backend_index = 1122u;
 
 /// operator^= with Int16x4
 extern Variable Int16x4_operator_xorasg_Int16x4_arg;
 extern Function Int16x4_operator_xorasg_Int16x4;
+inline constexpr auto Int16x4_operator_xorasg_Int16x4_name = "operator^="_c;
 inline constexpr auto Int16x4_operator_xorasg_Int16x4_backend_index = 1123u;
 
 /// operator<<= with Int16x4
 extern Variable Int16x4_operator_lshasg_Int16x4_arg;
 extern Function Int16x4_operator_lshasg_Int16x4;
+inline constexpr auto Int16x4_operator_lshasg_Int16x4_name = "operator<<="_c;
 inline constexpr auto Int16x4_operator_lshasg_Int16x4_backend_index = 1124u;
 
 /// operator>>= with Int16x4
 extern Variable Int16x4_operator_rhsasg_Int16x4_arg;
 extern Function Int16x4_operator_rhsasg_Int16x4;
+inline constexpr auto Int16x4_operator_rhsasg_Int16x4_name = "operator>>="_c;
 inline constexpr auto Int16x4_operator_rhsasg_Int16x4_backend_index = 1125u;
 
 struct Float32x2x2 : public Type
@@ -3833,61 +4553,73 @@ extern Float32x2x2 Float32x2x2Type;
 /// operator[] with Int32
 extern Variable Float32x2x2_operator_index_Int32_arg;
 extern Function Float32x2x2_operator_index_Int32;
+inline constexpr auto Float32x2x2_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Float32x2x2_operator_index_Int32_backend_index = 1129u;
 
 /// operator[] with UInt32
 extern Variable Float32x2x2_operator_index_UInt32_arg;
 extern Function Float32x2x2_operator_index_UInt32;
+inline constexpr auto Float32x2x2_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Float32x2x2_operator_index_UInt32_backend_index = 1130u;
 
 /// operator[] with Int16
 extern Variable Float32x2x2_operator_index_Int16_arg;
 extern Function Float32x2x2_operator_index_Int16;
+inline constexpr auto Float32x2x2_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Float32x2x2_operator_index_Int16_backend_index = 1131u;
 
 /// operator[] with UInt16
 extern Variable Float32x2x2_operator_index_UInt16_arg;
 extern Function Float32x2x2_operator_index_UInt16;
+inline constexpr auto Float32x2x2_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Float32x2x2_operator_index_UInt16_backend_index = 1132u;
 
 /// operator* with Float32x2
 extern Variable Float32x2x2_transform_Float32x2_vec;
 extern Function Float32x2x2_transform_Float32x2;
+inline constexpr auto Float32x2x2_transform_Float32x2_name = "operator*"_c;
 inline constexpr auto Float32x2x2_transform_Float32x2_backend_index = 1133u;
 
 /// operator+ with Float32x2x2
 extern Variable Float32x2x2_operator_add_Float32x2x2_arg;
 extern Function Float32x2x2_operator_add_Float32x2x2;
+inline constexpr auto Float32x2x2_operator_add_Float32x2x2_name = "operator+"_c;
 inline constexpr auto Float32x2x2_operator_add_Float32x2x2_backend_index = 1134u;
 
 /// operator- with Float32x2x2
 extern Variable Float32x2x2_operator_sub_Float32x2x2_arg;
 extern Function Float32x2x2_operator_sub_Float32x2x2;
+inline constexpr auto Float32x2x2_operator_sub_Float32x2x2_name = "operator-"_c;
 inline constexpr auto Float32x2x2_operator_sub_Float32x2x2_backend_index = 1135u;
 
 /// operator* with Float32x2x2
 extern Variable Float32x2x2_operator_mul_Float32x2x2_arg;
 extern Function Float32x2x2_operator_mul_Float32x2x2;
+inline constexpr auto Float32x2x2_operator_mul_Float32x2x2_name = "operator*"_c;
 inline constexpr auto Float32x2x2_operator_mul_Float32x2x2_backend_index = 1136u;
 
 /// operator+= with Float32x2x2
 extern Variable Float32x2x2_operator_addasg_Float32x2x2_arg;
 extern Function Float32x2x2_operator_addasg_Float32x2x2;
+inline constexpr auto Float32x2x2_operator_addasg_Float32x2x2_name = "operator+="_c;
 inline constexpr auto Float32x2x2_operator_addasg_Float32x2x2_backend_index = 1137u;
 
 /// operator-= with Float32x2x2
 extern Variable Float32x2x2_operator_subasg_Float32x2x2_arg;
 extern Function Float32x2x2_operator_subasg_Float32x2x2;
+inline constexpr auto Float32x2x2_operator_subasg_Float32x2x2_name = "operator-="_c;
 inline constexpr auto Float32x2x2_operator_subasg_Float32x2x2_backend_index = 1138u;
 
 /// operator*= with Float32x2x2
 extern Variable Float32x2x2_operator_mulasg_Float32x2x2_arg;
 extern Function Float32x2x2_operator_mulasg_Float32x2x2;
+inline constexpr auto Float32x2x2_operator_mulasg_Float32x2x2_name = "operator*="_c;
 inline constexpr auto Float32x2x2_operator_mulasg_Float32x2x2_backend_index = 1139u;
 
 /// operator* with Float32
 extern Variable Float32x2x2_operator_scale_Float32_arg;
 extern Function Float32x2x2_operator_scale_Float32;
+inline constexpr auto Float32x2x2_operator_scale_Float32_name = "operator*"_c;
 inline constexpr auto Float32x2x2_operator_scale_Float32_backend_index = 1140u;
 
 struct Float32x3x2 : public Type
@@ -3899,61 +4631,73 @@ extern Float32x3x2 Float32x3x2Type;
 /// operator[] with Int32
 extern Variable Float32x3x2_operator_index_Int32_arg;
 extern Function Float32x3x2_operator_index_Int32;
+inline constexpr auto Float32x3x2_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Float32x3x2_operator_index_Int32_backend_index = 1143u;
 
 /// operator[] with UInt32
 extern Variable Float32x3x2_operator_index_UInt32_arg;
 extern Function Float32x3x2_operator_index_UInt32;
+inline constexpr auto Float32x3x2_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Float32x3x2_operator_index_UInt32_backend_index = 1144u;
 
 /// operator[] with Int16
 extern Variable Float32x3x2_operator_index_Int16_arg;
 extern Function Float32x3x2_operator_index_Int16;
+inline constexpr auto Float32x3x2_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Float32x3x2_operator_index_Int16_backend_index = 1145u;
 
 /// operator[] with UInt16
 extern Variable Float32x3x2_operator_index_UInt16_arg;
 extern Function Float32x3x2_operator_index_UInt16;
+inline constexpr auto Float32x3x2_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Float32x3x2_operator_index_UInt16_backend_index = 1146u;
 
 /// operator* with Float32x2
 extern Variable Float32x3x2_transform_Float32x3_vec;
 extern Function Float32x3x2_transform_Float32x3;
+inline constexpr auto Float32x3x2_transform_Float32x3_name = "operator*"_c;
 inline constexpr auto Float32x3x2_transform_Float32x3_backend_index = 1147u;
 
 /// operator+ with Float32x3x2
 extern Variable Float32x3x2_operator_add_Float32x3x2_arg;
 extern Function Float32x3x2_operator_add_Float32x3x2;
+inline constexpr auto Float32x3x2_operator_add_Float32x3x2_name = "operator+"_c;
 inline constexpr auto Float32x3x2_operator_add_Float32x3x2_backend_index = 1148u;
 
 /// operator- with Float32x3x2
 extern Variable Float32x3x2_operator_sub_Float32x3x2_arg;
 extern Function Float32x3x2_operator_sub_Float32x3x2;
+inline constexpr auto Float32x3x2_operator_sub_Float32x3x2_name = "operator-"_c;
 inline constexpr auto Float32x3x2_operator_sub_Float32x3x2_backend_index = 1149u;
 
 /// operator* with Float32x3x2
 extern Variable Float32x3x2_operator_mul_Float32x3x2_arg;
 extern Function Float32x3x2_operator_mul_Float32x3x2;
+inline constexpr auto Float32x3x2_operator_mul_Float32x3x2_name = "operator*"_c;
 inline constexpr auto Float32x3x2_operator_mul_Float32x3x2_backend_index = 1150u;
 
 /// operator+= with Float32x3x2
 extern Variable Float32x3x2_operator_addasg_Float32x3x2_arg;
 extern Function Float32x3x2_operator_addasg_Float32x3x2;
+inline constexpr auto Float32x3x2_operator_addasg_Float32x3x2_name = "operator+="_c;
 inline constexpr auto Float32x3x2_operator_addasg_Float32x3x2_backend_index = 1151u;
 
 /// operator-= with Float32x3x2
 extern Variable Float32x3x2_operator_subasg_Float32x3x2_arg;
 extern Function Float32x3x2_operator_subasg_Float32x3x2;
+inline constexpr auto Float32x3x2_operator_subasg_Float32x3x2_name = "operator-="_c;
 inline constexpr auto Float32x3x2_operator_subasg_Float32x3x2_backend_index = 1152u;
 
 /// operator*= with Float32x3x2
 extern Variable Float32x3x2_operator_mulasg_Float32x3x2_arg;
 extern Function Float32x3x2_operator_mulasg_Float32x3x2;
+inline constexpr auto Float32x3x2_operator_mulasg_Float32x3x2_name = "operator*="_c;
 inline constexpr auto Float32x3x2_operator_mulasg_Float32x3x2_backend_index = 1153u;
 
 /// operator* with Float32
 extern Variable Float32x3x2_operator_scale_Float32_arg;
 extern Function Float32x3x2_operator_scale_Float32;
+inline constexpr auto Float32x3x2_operator_scale_Float32_name = "operator*"_c;
 inline constexpr auto Float32x3x2_operator_scale_Float32_backend_index = 1154u;
 
 struct Float32x4x2 : public Type
@@ -3965,61 +4709,73 @@ extern Float32x4x2 Float32x4x2Type;
 /// operator[] with Int32
 extern Variable Float32x4x2_operator_index_Int32_arg;
 extern Function Float32x4x2_operator_index_Int32;
+inline constexpr auto Float32x4x2_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Float32x4x2_operator_index_Int32_backend_index = 1157u;
 
 /// operator[] with UInt32
 extern Variable Float32x4x2_operator_index_UInt32_arg;
 extern Function Float32x4x2_operator_index_UInt32;
+inline constexpr auto Float32x4x2_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Float32x4x2_operator_index_UInt32_backend_index = 1158u;
 
 /// operator[] with Int16
 extern Variable Float32x4x2_operator_index_Int16_arg;
 extern Function Float32x4x2_operator_index_Int16;
+inline constexpr auto Float32x4x2_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Float32x4x2_operator_index_Int16_backend_index = 1159u;
 
 /// operator[] with UInt16
 extern Variable Float32x4x2_operator_index_UInt16_arg;
 extern Function Float32x4x2_operator_index_UInt16;
+inline constexpr auto Float32x4x2_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Float32x4x2_operator_index_UInt16_backend_index = 1160u;
 
 /// operator* with Float32x2
 extern Variable Float32x4x2_transform_Float32x4_vec;
 extern Function Float32x4x2_transform_Float32x4;
+inline constexpr auto Float32x4x2_transform_Float32x4_name = "operator*"_c;
 inline constexpr auto Float32x4x2_transform_Float32x4_backend_index = 1161u;
 
 /// operator+ with Float32x4x2
 extern Variable Float32x4x2_operator_add_Float32x4x2_arg;
 extern Function Float32x4x2_operator_add_Float32x4x2;
+inline constexpr auto Float32x4x2_operator_add_Float32x4x2_name = "operator+"_c;
 inline constexpr auto Float32x4x2_operator_add_Float32x4x2_backend_index = 1162u;
 
 /// operator- with Float32x4x2
 extern Variable Float32x4x2_operator_sub_Float32x4x2_arg;
 extern Function Float32x4x2_operator_sub_Float32x4x2;
+inline constexpr auto Float32x4x2_operator_sub_Float32x4x2_name = "operator-"_c;
 inline constexpr auto Float32x4x2_operator_sub_Float32x4x2_backend_index = 1163u;
 
 /// operator* with Float32x4x2
 extern Variable Float32x4x2_operator_mul_Float32x4x2_arg;
 extern Function Float32x4x2_operator_mul_Float32x4x2;
+inline constexpr auto Float32x4x2_operator_mul_Float32x4x2_name = "operator*"_c;
 inline constexpr auto Float32x4x2_operator_mul_Float32x4x2_backend_index = 1164u;
 
 /// operator+= with Float32x4x2
 extern Variable Float32x4x2_operator_addasg_Float32x4x2_arg;
 extern Function Float32x4x2_operator_addasg_Float32x4x2;
+inline constexpr auto Float32x4x2_operator_addasg_Float32x4x2_name = "operator+="_c;
 inline constexpr auto Float32x4x2_operator_addasg_Float32x4x2_backend_index = 1165u;
 
 /// operator-= with Float32x4x2
 extern Variable Float32x4x2_operator_subasg_Float32x4x2_arg;
 extern Function Float32x4x2_operator_subasg_Float32x4x2;
+inline constexpr auto Float32x4x2_operator_subasg_Float32x4x2_name = "operator-="_c;
 inline constexpr auto Float32x4x2_operator_subasg_Float32x4x2_backend_index = 1166u;
 
 /// operator*= with Float32x4x2
 extern Variable Float32x4x2_operator_mulasg_Float32x4x2_arg;
 extern Function Float32x4x2_operator_mulasg_Float32x4x2;
+inline constexpr auto Float32x4x2_operator_mulasg_Float32x4x2_name = "operator*="_c;
 inline constexpr auto Float32x4x2_operator_mulasg_Float32x4x2_backend_index = 1167u;
 
 /// operator* with Float32
 extern Variable Float32x4x2_operator_scale_Float32_arg;
 extern Function Float32x4x2_operator_scale_Float32;
+inline constexpr auto Float32x4x2_operator_scale_Float32_name = "operator*"_c;
 inline constexpr auto Float32x4x2_operator_scale_Float32_backend_index = 1168u;
 
 struct Float32x2x3 : public Type
@@ -4031,61 +4787,73 @@ extern Float32x2x3 Float32x2x3Type;
 /// operator[] with Int32
 extern Variable Float32x2x3_operator_index_Int32_arg;
 extern Function Float32x2x3_operator_index_Int32;
+inline constexpr auto Float32x2x3_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Float32x2x3_operator_index_Int32_backend_index = 1171u;
 
 /// operator[] with UInt32
 extern Variable Float32x2x3_operator_index_UInt32_arg;
 extern Function Float32x2x3_operator_index_UInt32;
+inline constexpr auto Float32x2x3_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Float32x2x3_operator_index_UInt32_backend_index = 1172u;
 
 /// operator[] with Int16
 extern Variable Float32x2x3_operator_index_Int16_arg;
 extern Function Float32x2x3_operator_index_Int16;
+inline constexpr auto Float32x2x3_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Float32x2x3_operator_index_Int16_backend_index = 1173u;
 
 /// operator[] with UInt16
 extern Variable Float32x2x3_operator_index_UInt16_arg;
 extern Function Float32x2x3_operator_index_UInt16;
+inline constexpr auto Float32x2x3_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Float32x2x3_operator_index_UInt16_backend_index = 1174u;
 
 /// operator* with Float32x3
 extern Variable Float32x2x3_transform_Float32x2_vec;
 extern Function Float32x2x3_transform_Float32x2;
+inline constexpr auto Float32x2x3_transform_Float32x2_name = "operator*"_c;
 inline constexpr auto Float32x2x3_transform_Float32x2_backend_index = 1175u;
 
 /// operator+ with Float32x2x3
 extern Variable Float32x2x3_operator_add_Float32x2x3_arg;
 extern Function Float32x2x3_operator_add_Float32x2x3;
+inline constexpr auto Float32x2x3_operator_add_Float32x2x3_name = "operator+"_c;
 inline constexpr auto Float32x2x3_operator_add_Float32x2x3_backend_index = 1176u;
 
 /// operator- with Float32x2x3
 extern Variable Float32x2x3_operator_sub_Float32x2x3_arg;
 extern Function Float32x2x3_operator_sub_Float32x2x3;
+inline constexpr auto Float32x2x3_operator_sub_Float32x2x3_name = "operator-"_c;
 inline constexpr auto Float32x2x3_operator_sub_Float32x2x3_backend_index = 1177u;
 
 /// operator* with Float32x2x3
 extern Variable Float32x2x3_operator_mul_Float32x2x3_arg;
 extern Function Float32x2x3_operator_mul_Float32x2x3;
+inline constexpr auto Float32x2x3_operator_mul_Float32x2x3_name = "operator*"_c;
 inline constexpr auto Float32x2x3_operator_mul_Float32x2x3_backend_index = 1178u;
 
 /// operator+= with Float32x2x3
 extern Variable Float32x2x3_operator_addasg_Float32x2x3_arg;
 extern Function Float32x2x3_operator_addasg_Float32x2x3;
+inline constexpr auto Float32x2x3_operator_addasg_Float32x2x3_name = "operator+="_c;
 inline constexpr auto Float32x2x3_operator_addasg_Float32x2x3_backend_index = 1179u;
 
 /// operator-= with Float32x2x3
 extern Variable Float32x2x3_operator_subasg_Float32x2x3_arg;
 extern Function Float32x2x3_operator_subasg_Float32x2x3;
+inline constexpr auto Float32x2x3_operator_subasg_Float32x2x3_name = "operator-="_c;
 inline constexpr auto Float32x2x3_operator_subasg_Float32x2x3_backend_index = 1180u;
 
 /// operator*= with Float32x2x3
 extern Variable Float32x2x3_operator_mulasg_Float32x2x3_arg;
 extern Function Float32x2x3_operator_mulasg_Float32x2x3;
+inline constexpr auto Float32x2x3_operator_mulasg_Float32x2x3_name = "operator*="_c;
 inline constexpr auto Float32x2x3_operator_mulasg_Float32x2x3_backend_index = 1181u;
 
 /// operator* with Float32
 extern Variable Float32x2x3_operator_scale_Float32_arg;
 extern Function Float32x2x3_operator_scale_Float32;
+inline constexpr auto Float32x2x3_operator_scale_Float32_name = "operator*"_c;
 inline constexpr auto Float32x2x3_operator_scale_Float32_backend_index = 1182u;
 
 struct Float32x3x3 : public Type
@@ -4097,61 +4865,73 @@ extern Float32x3x3 Float32x3x3Type;
 /// operator[] with Int32
 extern Variable Float32x3x3_operator_index_Int32_arg;
 extern Function Float32x3x3_operator_index_Int32;
+inline constexpr auto Float32x3x3_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Float32x3x3_operator_index_Int32_backend_index = 1186u;
 
 /// operator[] with UInt32
 extern Variable Float32x3x3_operator_index_UInt32_arg;
 extern Function Float32x3x3_operator_index_UInt32;
+inline constexpr auto Float32x3x3_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Float32x3x3_operator_index_UInt32_backend_index = 1187u;
 
 /// operator[] with Int16
 extern Variable Float32x3x3_operator_index_Int16_arg;
 extern Function Float32x3x3_operator_index_Int16;
+inline constexpr auto Float32x3x3_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Float32x3x3_operator_index_Int16_backend_index = 1188u;
 
 /// operator[] with UInt16
 extern Variable Float32x3x3_operator_index_UInt16_arg;
 extern Function Float32x3x3_operator_index_UInt16;
+inline constexpr auto Float32x3x3_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Float32x3x3_operator_index_UInt16_backend_index = 1189u;
 
 /// operator* with Float32x3
 extern Variable Float32x3x3_transform_Float32x3_vec;
 extern Function Float32x3x3_transform_Float32x3;
+inline constexpr auto Float32x3x3_transform_Float32x3_name = "operator*"_c;
 inline constexpr auto Float32x3x3_transform_Float32x3_backend_index = 1190u;
 
 /// operator+ with Float32x3x3
 extern Variable Float32x3x3_operator_add_Float32x3x3_arg;
 extern Function Float32x3x3_operator_add_Float32x3x3;
+inline constexpr auto Float32x3x3_operator_add_Float32x3x3_name = "operator+"_c;
 inline constexpr auto Float32x3x3_operator_add_Float32x3x3_backend_index = 1191u;
 
 /// operator- with Float32x3x3
 extern Variable Float32x3x3_operator_sub_Float32x3x3_arg;
 extern Function Float32x3x3_operator_sub_Float32x3x3;
+inline constexpr auto Float32x3x3_operator_sub_Float32x3x3_name = "operator-"_c;
 inline constexpr auto Float32x3x3_operator_sub_Float32x3x3_backend_index = 1192u;
 
 /// operator* with Float32x3x3
 extern Variable Float32x3x3_operator_mul_Float32x3x3_arg;
 extern Function Float32x3x3_operator_mul_Float32x3x3;
+inline constexpr auto Float32x3x3_operator_mul_Float32x3x3_name = "operator*"_c;
 inline constexpr auto Float32x3x3_operator_mul_Float32x3x3_backend_index = 1193u;
 
 /// operator+= with Float32x3x3
 extern Variable Float32x3x3_operator_addasg_Float32x3x3_arg;
 extern Function Float32x3x3_operator_addasg_Float32x3x3;
+inline constexpr auto Float32x3x3_operator_addasg_Float32x3x3_name = "operator+="_c;
 inline constexpr auto Float32x3x3_operator_addasg_Float32x3x3_backend_index = 1194u;
 
 /// operator-= with Float32x3x3
 extern Variable Float32x3x3_operator_subasg_Float32x3x3_arg;
 extern Function Float32x3x3_operator_subasg_Float32x3x3;
+inline constexpr auto Float32x3x3_operator_subasg_Float32x3x3_name = "operator-="_c;
 inline constexpr auto Float32x3x3_operator_subasg_Float32x3x3_backend_index = 1195u;
 
 /// operator*= with Float32x3x3
 extern Variable Float32x3x3_operator_mulasg_Float32x3x3_arg;
 extern Function Float32x3x3_operator_mulasg_Float32x3x3;
+inline constexpr auto Float32x3x3_operator_mulasg_Float32x3x3_name = "operator*="_c;
 inline constexpr auto Float32x3x3_operator_mulasg_Float32x3x3_backend_index = 1196u;
 
 /// operator* with Float32
 extern Variable Float32x3x3_operator_scale_Float32_arg;
 extern Function Float32x3x3_operator_scale_Float32;
+inline constexpr auto Float32x3x3_operator_scale_Float32_name = "operator*"_c;
 inline constexpr auto Float32x3x3_operator_scale_Float32_backend_index = 1197u;
 
 struct Float32x4x3 : public Type
@@ -4163,61 +4943,73 @@ extern Float32x4x3 Float32x4x3Type;
 /// operator[] with Int32
 extern Variable Float32x4x3_operator_index_Int32_arg;
 extern Function Float32x4x3_operator_index_Int32;
+inline constexpr auto Float32x4x3_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Float32x4x3_operator_index_Int32_backend_index = 1200u;
 
 /// operator[] with UInt32
 extern Variable Float32x4x3_operator_index_UInt32_arg;
 extern Function Float32x4x3_operator_index_UInt32;
+inline constexpr auto Float32x4x3_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Float32x4x3_operator_index_UInt32_backend_index = 1201u;
 
 /// operator[] with Int16
 extern Variable Float32x4x3_operator_index_Int16_arg;
 extern Function Float32x4x3_operator_index_Int16;
+inline constexpr auto Float32x4x3_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Float32x4x3_operator_index_Int16_backend_index = 1202u;
 
 /// operator[] with UInt16
 extern Variable Float32x4x3_operator_index_UInt16_arg;
 extern Function Float32x4x3_operator_index_UInt16;
+inline constexpr auto Float32x4x3_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Float32x4x3_operator_index_UInt16_backend_index = 1203u;
 
 /// operator* with Float32x3
 extern Variable Float32x4x3_transform_Float32x4_vec;
 extern Function Float32x4x3_transform_Float32x4;
+inline constexpr auto Float32x4x3_transform_Float32x4_name = "operator*"_c;
 inline constexpr auto Float32x4x3_transform_Float32x4_backend_index = 1204u;
 
 /// operator+ with Float32x4x3
 extern Variable Float32x4x3_operator_add_Float32x4x3_arg;
 extern Function Float32x4x3_operator_add_Float32x4x3;
+inline constexpr auto Float32x4x3_operator_add_Float32x4x3_name = "operator+"_c;
 inline constexpr auto Float32x4x3_operator_add_Float32x4x3_backend_index = 1205u;
 
 /// operator- with Float32x4x3
 extern Variable Float32x4x3_operator_sub_Float32x4x3_arg;
 extern Function Float32x4x3_operator_sub_Float32x4x3;
+inline constexpr auto Float32x4x3_operator_sub_Float32x4x3_name = "operator-"_c;
 inline constexpr auto Float32x4x3_operator_sub_Float32x4x3_backend_index = 1206u;
 
 /// operator* with Float32x4x3
 extern Variable Float32x4x3_operator_mul_Float32x4x3_arg;
 extern Function Float32x4x3_operator_mul_Float32x4x3;
+inline constexpr auto Float32x4x3_operator_mul_Float32x4x3_name = "operator*"_c;
 inline constexpr auto Float32x4x3_operator_mul_Float32x4x3_backend_index = 1207u;
 
 /// operator+= with Float32x4x3
 extern Variable Float32x4x3_operator_addasg_Float32x4x3_arg;
 extern Function Float32x4x3_operator_addasg_Float32x4x3;
+inline constexpr auto Float32x4x3_operator_addasg_Float32x4x3_name = "operator+="_c;
 inline constexpr auto Float32x4x3_operator_addasg_Float32x4x3_backend_index = 1208u;
 
 /// operator-= with Float32x4x3
 extern Variable Float32x4x3_operator_subasg_Float32x4x3_arg;
 extern Function Float32x4x3_operator_subasg_Float32x4x3;
+inline constexpr auto Float32x4x3_operator_subasg_Float32x4x3_name = "operator-="_c;
 inline constexpr auto Float32x4x3_operator_subasg_Float32x4x3_backend_index = 1209u;
 
 /// operator*= with Float32x4x3
 extern Variable Float32x4x3_operator_mulasg_Float32x4x3_arg;
 extern Function Float32x4x3_operator_mulasg_Float32x4x3;
+inline constexpr auto Float32x4x3_operator_mulasg_Float32x4x3_name = "operator*="_c;
 inline constexpr auto Float32x4x3_operator_mulasg_Float32x4x3_backend_index = 1210u;
 
 /// operator* with Float32
 extern Variable Float32x4x3_operator_scale_Float32_arg;
 extern Function Float32x4x3_operator_scale_Float32;
+inline constexpr auto Float32x4x3_operator_scale_Float32_name = "operator*"_c;
 inline constexpr auto Float32x4x3_operator_scale_Float32_backend_index = 1211u;
 
 struct Float32x2x4 : public Type
@@ -4229,61 +5021,73 @@ extern Float32x2x4 Float32x2x4Type;
 /// operator[] with Int32
 extern Variable Float32x2x4_operator_index_Int32_arg;
 extern Function Float32x2x4_operator_index_Int32;
+inline constexpr auto Float32x2x4_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Float32x2x4_operator_index_Int32_backend_index = 1214u;
 
 /// operator[] with UInt32
 extern Variable Float32x2x4_operator_index_UInt32_arg;
 extern Function Float32x2x4_operator_index_UInt32;
+inline constexpr auto Float32x2x4_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Float32x2x4_operator_index_UInt32_backend_index = 1215u;
 
 /// operator[] with Int16
 extern Variable Float32x2x4_operator_index_Int16_arg;
 extern Function Float32x2x4_operator_index_Int16;
+inline constexpr auto Float32x2x4_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Float32x2x4_operator_index_Int16_backend_index = 1216u;
 
 /// operator[] with UInt16
 extern Variable Float32x2x4_operator_index_UInt16_arg;
 extern Function Float32x2x4_operator_index_UInt16;
+inline constexpr auto Float32x2x4_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Float32x2x4_operator_index_UInt16_backend_index = 1217u;
 
 /// operator* with Float32x4
 extern Variable Float32x2x4_transform_Float32x2_vec;
 extern Function Float32x2x4_transform_Float32x2;
+inline constexpr auto Float32x2x4_transform_Float32x2_name = "operator*"_c;
 inline constexpr auto Float32x2x4_transform_Float32x2_backend_index = 1218u;
 
 /// operator+ with Float32x2x4
 extern Variable Float32x2x4_operator_add_Float32x2x4_arg;
 extern Function Float32x2x4_operator_add_Float32x2x4;
+inline constexpr auto Float32x2x4_operator_add_Float32x2x4_name = "operator+"_c;
 inline constexpr auto Float32x2x4_operator_add_Float32x2x4_backend_index = 1219u;
 
 /// operator- with Float32x2x4
 extern Variable Float32x2x4_operator_sub_Float32x2x4_arg;
 extern Function Float32x2x4_operator_sub_Float32x2x4;
+inline constexpr auto Float32x2x4_operator_sub_Float32x2x4_name = "operator-"_c;
 inline constexpr auto Float32x2x4_operator_sub_Float32x2x4_backend_index = 1220u;
 
 /// operator* with Float32x2x4
 extern Variable Float32x2x4_operator_mul_Float32x2x4_arg;
 extern Function Float32x2x4_operator_mul_Float32x2x4;
+inline constexpr auto Float32x2x4_operator_mul_Float32x2x4_name = "operator*"_c;
 inline constexpr auto Float32x2x4_operator_mul_Float32x2x4_backend_index = 1221u;
 
 /// operator+= with Float32x2x4
 extern Variable Float32x2x4_operator_addasg_Float32x2x4_arg;
 extern Function Float32x2x4_operator_addasg_Float32x2x4;
+inline constexpr auto Float32x2x4_operator_addasg_Float32x2x4_name = "operator+="_c;
 inline constexpr auto Float32x2x4_operator_addasg_Float32x2x4_backend_index = 1222u;
 
 /// operator-= with Float32x2x4
 extern Variable Float32x2x4_operator_subasg_Float32x2x4_arg;
 extern Function Float32x2x4_operator_subasg_Float32x2x4;
+inline constexpr auto Float32x2x4_operator_subasg_Float32x2x4_name = "operator-="_c;
 inline constexpr auto Float32x2x4_operator_subasg_Float32x2x4_backend_index = 1223u;
 
 /// operator*= with Float32x2x4
 extern Variable Float32x2x4_operator_mulasg_Float32x2x4_arg;
 extern Function Float32x2x4_operator_mulasg_Float32x2x4;
+inline constexpr auto Float32x2x4_operator_mulasg_Float32x2x4_name = "operator*="_c;
 inline constexpr auto Float32x2x4_operator_mulasg_Float32x2x4_backend_index = 1224u;
 
 /// operator* with Float32
 extern Variable Float32x2x4_operator_scale_Float32_arg;
 extern Function Float32x2x4_operator_scale_Float32;
+inline constexpr auto Float32x2x4_operator_scale_Float32_name = "operator*"_c;
 inline constexpr auto Float32x2x4_operator_scale_Float32_backend_index = 1225u;
 
 struct Float32x3x4 : public Type
@@ -4295,61 +5099,73 @@ extern Float32x3x4 Float32x3x4Type;
 /// operator[] with Int32
 extern Variable Float32x3x4_operator_index_Int32_arg;
 extern Function Float32x3x4_operator_index_Int32;
+inline constexpr auto Float32x3x4_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Float32x3x4_operator_index_Int32_backend_index = 1228u;
 
 /// operator[] with UInt32
 extern Variable Float32x3x4_operator_index_UInt32_arg;
 extern Function Float32x3x4_operator_index_UInt32;
+inline constexpr auto Float32x3x4_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Float32x3x4_operator_index_UInt32_backend_index = 1229u;
 
 /// operator[] with Int16
 extern Variable Float32x3x4_operator_index_Int16_arg;
 extern Function Float32x3x4_operator_index_Int16;
+inline constexpr auto Float32x3x4_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Float32x3x4_operator_index_Int16_backend_index = 1230u;
 
 /// operator[] with UInt16
 extern Variable Float32x3x4_operator_index_UInt16_arg;
 extern Function Float32x3x4_operator_index_UInt16;
+inline constexpr auto Float32x3x4_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Float32x3x4_operator_index_UInt16_backend_index = 1231u;
 
 /// operator* with Float32x4
 extern Variable Float32x3x4_transform_Float32x3_vec;
 extern Function Float32x3x4_transform_Float32x3;
+inline constexpr auto Float32x3x4_transform_Float32x3_name = "operator*"_c;
 inline constexpr auto Float32x3x4_transform_Float32x3_backend_index = 1232u;
 
 /// operator+ with Float32x3x4
 extern Variable Float32x3x4_operator_add_Float32x3x4_arg;
 extern Function Float32x3x4_operator_add_Float32x3x4;
+inline constexpr auto Float32x3x4_operator_add_Float32x3x4_name = "operator+"_c;
 inline constexpr auto Float32x3x4_operator_add_Float32x3x4_backend_index = 1233u;
 
 /// operator- with Float32x3x4
 extern Variable Float32x3x4_operator_sub_Float32x3x4_arg;
 extern Function Float32x3x4_operator_sub_Float32x3x4;
+inline constexpr auto Float32x3x4_operator_sub_Float32x3x4_name = "operator-"_c;
 inline constexpr auto Float32x3x4_operator_sub_Float32x3x4_backend_index = 1234u;
 
 /// operator* with Float32x3x4
 extern Variable Float32x3x4_operator_mul_Float32x3x4_arg;
 extern Function Float32x3x4_operator_mul_Float32x3x4;
+inline constexpr auto Float32x3x4_operator_mul_Float32x3x4_name = "operator*"_c;
 inline constexpr auto Float32x3x4_operator_mul_Float32x3x4_backend_index = 1235u;
 
 /// operator+= with Float32x3x4
 extern Variable Float32x3x4_operator_addasg_Float32x3x4_arg;
 extern Function Float32x3x4_operator_addasg_Float32x3x4;
+inline constexpr auto Float32x3x4_operator_addasg_Float32x3x4_name = "operator+="_c;
 inline constexpr auto Float32x3x4_operator_addasg_Float32x3x4_backend_index = 1236u;
 
 /// operator-= with Float32x3x4
 extern Variable Float32x3x4_operator_subasg_Float32x3x4_arg;
 extern Function Float32x3x4_operator_subasg_Float32x3x4;
+inline constexpr auto Float32x3x4_operator_subasg_Float32x3x4_name = "operator-="_c;
 inline constexpr auto Float32x3x4_operator_subasg_Float32x3x4_backend_index = 1237u;
 
 /// operator*= with Float32x3x4
 extern Variable Float32x3x4_operator_mulasg_Float32x3x4_arg;
 extern Function Float32x3x4_operator_mulasg_Float32x3x4;
+inline constexpr auto Float32x3x4_operator_mulasg_Float32x3x4_name = "operator*="_c;
 inline constexpr auto Float32x3x4_operator_mulasg_Float32x3x4_backend_index = 1238u;
 
 /// operator* with Float32
 extern Variable Float32x3x4_operator_scale_Float32_arg;
 extern Function Float32x3x4_operator_scale_Float32;
+inline constexpr auto Float32x3x4_operator_scale_Float32_name = "operator*"_c;
 inline constexpr auto Float32x3x4_operator_scale_Float32_backend_index = 1239u;
 
 struct Float32x4x4 : public Type
@@ -4361,61 +5177,73 @@ extern Float32x4x4 Float32x4x4Type;
 /// operator[] with Int32
 extern Variable Float32x4x4_operator_index_Int32_arg;
 extern Function Float32x4x4_operator_index_Int32;
+inline constexpr auto Float32x4x4_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Float32x4x4_operator_index_Int32_backend_index = 1243u;
 
 /// operator[] with UInt32
 extern Variable Float32x4x4_operator_index_UInt32_arg;
 extern Function Float32x4x4_operator_index_UInt32;
+inline constexpr auto Float32x4x4_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Float32x4x4_operator_index_UInt32_backend_index = 1244u;
 
 /// operator[] with Int16
 extern Variable Float32x4x4_operator_index_Int16_arg;
 extern Function Float32x4x4_operator_index_Int16;
+inline constexpr auto Float32x4x4_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Float32x4x4_operator_index_Int16_backend_index = 1245u;
 
 /// operator[] with UInt16
 extern Variable Float32x4x4_operator_index_UInt16_arg;
 extern Function Float32x4x4_operator_index_UInt16;
+inline constexpr auto Float32x4x4_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Float32x4x4_operator_index_UInt16_backend_index = 1246u;
 
 /// operator* with Float32x4
 extern Variable Float32x4x4_transform_Float32x4_vec;
 extern Function Float32x4x4_transform_Float32x4;
+inline constexpr auto Float32x4x4_transform_Float32x4_name = "operator*"_c;
 inline constexpr auto Float32x4x4_transform_Float32x4_backend_index = 1247u;
 
 /// operator+ with Float32x4x4
 extern Variable Float32x4x4_operator_add_Float32x4x4_arg;
 extern Function Float32x4x4_operator_add_Float32x4x4;
+inline constexpr auto Float32x4x4_operator_add_Float32x4x4_name = "operator+"_c;
 inline constexpr auto Float32x4x4_operator_add_Float32x4x4_backend_index = 1248u;
 
 /// operator- with Float32x4x4
 extern Variable Float32x4x4_operator_sub_Float32x4x4_arg;
 extern Function Float32x4x4_operator_sub_Float32x4x4;
+inline constexpr auto Float32x4x4_operator_sub_Float32x4x4_name = "operator-"_c;
 inline constexpr auto Float32x4x4_operator_sub_Float32x4x4_backend_index = 1249u;
 
 /// operator* with Float32x4x4
 extern Variable Float32x4x4_operator_mul_Float32x4x4_arg;
 extern Function Float32x4x4_operator_mul_Float32x4x4;
+inline constexpr auto Float32x4x4_operator_mul_Float32x4x4_name = "operator*"_c;
 inline constexpr auto Float32x4x4_operator_mul_Float32x4x4_backend_index = 1250u;
 
 /// operator+= with Float32x4x4
 extern Variable Float32x4x4_operator_addasg_Float32x4x4_arg;
 extern Function Float32x4x4_operator_addasg_Float32x4x4;
+inline constexpr auto Float32x4x4_operator_addasg_Float32x4x4_name = "operator+="_c;
 inline constexpr auto Float32x4x4_operator_addasg_Float32x4x4_backend_index = 1251u;
 
 /// operator-= with Float32x4x4
 extern Variable Float32x4x4_operator_subasg_Float32x4x4_arg;
 extern Function Float32x4x4_operator_subasg_Float32x4x4;
+inline constexpr auto Float32x4x4_operator_subasg_Float32x4x4_name = "operator-="_c;
 inline constexpr auto Float32x4x4_operator_subasg_Float32x4x4_backend_index = 1252u;
 
 /// operator*= with Float32x4x4
 extern Variable Float32x4x4_operator_mulasg_Float32x4x4_arg;
 extern Function Float32x4x4_operator_mulasg_Float32x4x4;
+inline constexpr auto Float32x4x4_operator_mulasg_Float32x4x4_name = "operator*="_c;
 inline constexpr auto Float32x4x4_operator_mulasg_Float32x4x4_backend_index = 1253u;
 
 /// operator* with Float32
 extern Variable Float32x4x4_operator_scale_Float32_arg;
 extern Function Float32x4x4_operator_scale_Float32;
+inline constexpr auto Float32x4x4_operator_scale_Float32_name = "operator*"_c;
 inline constexpr auto Float32x4x4_operator_scale_Float32_backend_index = 1254u;
 
 struct Float16x2x2 : public Type
@@ -4427,61 +5255,73 @@ extern Float16x2x2 Float16x2x2Type;
 /// operator[] with Int32
 extern Variable Float16x2x2_operator_index_Int32_arg;
 extern Function Float16x2x2_operator_index_Int32;
+inline constexpr auto Float16x2x2_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Float16x2x2_operator_index_Int32_backend_index = 1258u;
 
 /// operator[] with UInt32
 extern Variable Float16x2x2_operator_index_UInt32_arg;
 extern Function Float16x2x2_operator_index_UInt32;
+inline constexpr auto Float16x2x2_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Float16x2x2_operator_index_UInt32_backend_index = 1259u;
 
 /// operator[] with Int16
 extern Variable Float16x2x2_operator_index_Int16_arg;
 extern Function Float16x2x2_operator_index_Int16;
+inline constexpr auto Float16x2x2_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Float16x2x2_operator_index_Int16_backend_index = 1260u;
 
 /// operator[] with UInt16
 extern Variable Float16x2x2_operator_index_UInt16_arg;
 extern Function Float16x2x2_operator_index_UInt16;
+inline constexpr auto Float16x2x2_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Float16x2x2_operator_index_UInt16_backend_index = 1261u;
 
 /// operator* with Float16x2
 extern Variable Float16x2x2_transform_Float16x2_vec;
 extern Function Float16x2x2_transform_Float16x2;
+inline constexpr auto Float16x2x2_transform_Float16x2_name = "operator*"_c;
 inline constexpr auto Float16x2x2_transform_Float16x2_backend_index = 1262u;
 
 /// operator+ with Float16x2x2
 extern Variable Float16x2x2_operator_add_Float16x2x2_arg;
 extern Function Float16x2x2_operator_add_Float16x2x2;
+inline constexpr auto Float16x2x2_operator_add_Float16x2x2_name = "operator+"_c;
 inline constexpr auto Float16x2x2_operator_add_Float16x2x2_backend_index = 1263u;
 
 /// operator- with Float16x2x2
 extern Variable Float16x2x2_operator_sub_Float16x2x2_arg;
 extern Function Float16x2x2_operator_sub_Float16x2x2;
+inline constexpr auto Float16x2x2_operator_sub_Float16x2x2_name = "operator-"_c;
 inline constexpr auto Float16x2x2_operator_sub_Float16x2x2_backend_index = 1264u;
 
 /// operator* with Float16x2x2
 extern Variable Float16x2x2_operator_mul_Float16x2x2_arg;
 extern Function Float16x2x2_operator_mul_Float16x2x2;
+inline constexpr auto Float16x2x2_operator_mul_Float16x2x2_name = "operator*"_c;
 inline constexpr auto Float16x2x2_operator_mul_Float16x2x2_backend_index = 1265u;
 
 /// operator+= with Float16x2x2
 extern Variable Float16x2x2_operator_addasg_Float16x2x2_arg;
 extern Function Float16x2x2_operator_addasg_Float16x2x2;
+inline constexpr auto Float16x2x2_operator_addasg_Float16x2x2_name = "operator+="_c;
 inline constexpr auto Float16x2x2_operator_addasg_Float16x2x2_backend_index = 1266u;
 
 /// operator-= with Float16x2x2
 extern Variable Float16x2x2_operator_subasg_Float16x2x2_arg;
 extern Function Float16x2x2_operator_subasg_Float16x2x2;
+inline constexpr auto Float16x2x2_operator_subasg_Float16x2x2_name = "operator-="_c;
 inline constexpr auto Float16x2x2_operator_subasg_Float16x2x2_backend_index = 1267u;
 
 /// operator*= with Float16x2x2
 extern Variable Float16x2x2_operator_mulasg_Float16x2x2_arg;
 extern Function Float16x2x2_operator_mulasg_Float16x2x2;
+inline constexpr auto Float16x2x2_operator_mulasg_Float16x2x2_name = "operator*="_c;
 inline constexpr auto Float16x2x2_operator_mulasg_Float16x2x2_backend_index = 1268u;
 
 /// operator* with Float16
 extern Variable Float16x2x2_operator_scale_Float16_arg;
 extern Function Float16x2x2_operator_scale_Float16;
+inline constexpr auto Float16x2x2_operator_scale_Float16_name = "operator*"_c;
 inline constexpr auto Float16x2x2_operator_scale_Float16_backend_index = 1269u;
 
 struct Float16x3x2 : public Type
@@ -4493,61 +5333,73 @@ extern Float16x3x2 Float16x3x2Type;
 /// operator[] with Int32
 extern Variable Float16x3x2_operator_index_Int32_arg;
 extern Function Float16x3x2_operator_index_Int32;
+inline constexpr auto Float16x3x2_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Float16x3x2_operator_index_Int32_backend_index = 1272u;
 
 /// operator[] with UInt32
 extern Variable Float16x3x2_operator_index_UInt32_arg;
 extern Function Float16x3x2_operator_index_UInt32;
+inline constexpr auto Float16x3x2_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Float16x3x2_operator_index_UInt32_backend_index = 1273u;
 
 /// operator[] with Int16
 extern Variable Float16x3x2_operator_index_Int16_arg;
 extern Function Float16x3x2_operator_index_Int16;
+inline constexpr auto Float16x3x2_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Float16x3x2_operator_index_Int16_backend_index = 1274u;
 
 /// operator[] with UInt16
 extern Variable Float16x3x2_operator_index_UInt16_arg;
 extern Function Float16x3x2_operator_index_UInt16;
+inline constexpr auto Float16x3x2_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Float16x3x2_operator_index_UInt16_backend_index = 1275u;
 
 /// operator* with Float16x2
 extern Variable Float16x3x2_transform_Float16x3_vec;
 extern Function Float16x3x2_transform_Float16x3;
+inline constexpr auto Float16x3x2_transform_Float16x3_name = "operator*"_c;
 inline constexpr auto Float16x3x2_transform_Float16x3_backend_index = 1276u;
 
 /// operator+ with Float16x3x2
 extern Variable Float16x3x2_operator_add_Float16x3x2_arg;
 extern Function Float16x3x2_operator_add_Float16x3x2;
+inline constexpr auto Float16x3x2_operator_add_Float16x3x2_name = "operator+"_c;
 inline constexpr auto Float16x3x2_operator_add_Float16x3x2_backend_index = 1277u;
 
 /// operator- with Float16x3x2
 extern Variable Float16x3x2_operator_sub_Float16x3x2_arg;
 extern Function Float16x3x2_operator_sub_Float16x3x2;
+inline constexpr auto Float16x3x2_operator_sub_Float16x3x2_name = "operator-"_c;
 inline constexpr auto Float16x3x2_operator_sub_Float16x3x2_backend_index = 1278u;
 
 /// operator* with Float16x3x2
 extern Variable Float16x3x2_operator_mul_Float16x3x2_arg;
 extern Function Float16x3x2_operator_mul_Float16x3x2;
+inline constexpr auto Float16x3x2_operator_mul_Float16x3x2_name = "operator*"_c;
 inline constexpr auto Float16x3x2_operator_mul_Float16x3x2_backend_index = 1279u;
 
 /// operator+= with Float16x3x2
 extern Variable Float16x3x2_operator_addasg_Float16x3x2_arg;
 extern Function Float16x3x2_operator_addasg_Float16x3x2;
+inline constexpr auto Float16x3x2_operator_addasg_Float16x3x2_name = "operator+="_c;
 inline constexpr auto Float16x3x2_operator_addasg_Float16x3x2_backend_index = 1280u;
 
 /// operator-= with Float16x3x2
 extern Variable Float16x3x2_operator_subasg_Float16x3x2_arg;
 extern Function Float16x3x2_operator_subasg_Float16x3x2;
+inline constexpr auto Float16x3x2_operator_subasg_Float16x3x2_name = "operator-="_c;
 inline constexpr auto Float16x3x2_operator_subasg_Float16x3x2_backend_index = 1281u;
 
 /// operator*= with Float16x3x2
 extern Variable Float16x3x2_operator_mulasg_Float16x3x2_arg;
 extern Function Float16x3x2_operator_mulasg_Float16x3x2;
+inline constexpr auto Float16x3x2_operator_mulasg_Float16x3x2_name = "operator*="_c;
 inline constexpr auto Float16x3x2_operator_mulasg_Float16x3x2_backend_index = 1282u;
 
 /// operator* with Float16
 extern Variable Float16x3x2_operator_scale_Float16_arg;
 extern Function Float16x3x2_operator_scale_Float16;
+inline constexpr auto Float16x3x2_operator_scale_Float16_name = "operator*"_c;
 inline constexpr auto Float16x3x2_operator_scale_Float16_backend_index = 1283u;
 
 struct Float16x4x2 : public Type
@@ -4559,61 +5411,73 @@ extern Float16x4x2 Float16x4x2Type;
 /// operator[] with Int32
 extern Variable Float16x4x2_operator_index_Int32_arg;
 extern Function Float16x4x2_operator_index_Int32;
+inline constexpr auto Float16x4x2_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Float16x4x2_operator_index_Int32_backend_index = 1286u;
 
 /// operator[] with UInt32
 extern Variable Float16x4x2_operator_index_UInt32_arg;
 extern Function Float16x4x2_operator_index_UInt32;
+inline constexpr auto Float16x4x2_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Float16x4x2_operator_index_UInt32_backend_index = 1287u;
 
 /// operator[] with Int16
 extern Variable Float16x4x2_operator_index_Int16_arg;
 extern Function Float16x4x2_operator_index_Int16;
+inline constexpr auto Float16x4x2_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Float16x4x2_operator_index_Int16_backend_index = 1288u;
 
 /// operator[] with UInt16
 extern Variable Float16x4x2_operator_index_UInt16_arg;
 extern Function Float16x4x2_operator_index_UInt16;
+inline constexpr auto Float16x4x2_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Float16x4x2_operator_index_UInt16_backend_index = 1289u;
 
 /// operator* with Float16x2
 extern Variable Float16x4x2_transform_Float16x4_vec;
 extern Function Float16x4x2_transform_Float16x4;
+inline constexpr auto Float16x4x2_transform_Float16x4_name = "operator*"_c;
 inline constexpr auto Float16x4x2_transform_Float16x4_backend_index = 1290u;
 
 /// operator+ with Float16x4x2
 extern Variable Float16x4x2_operator_add_Float16x4x2_arg;
 extern Function Float16x4x2_operator_add_Float16x4x2;
+inline constexpr auto Float16x4x2_operator_add_Float16x4x2_name = "operator+"_c;
 inline constexpr auto Float16x4x2_operator_add_Float16x4x2_backend_index = 1291u;
 
 /// operator- with Float16x4x2
 extern Variable Float16x4x2_operator_sub_Float16x4x2_arg;
 extern Function Float16x4x2_operator_sub_Float16x4x2;
+inline constexpr auto Float16x4x2_operator_sub_Float16x4x2_name = "operator-"_c;
 inline constexpr auto Float16x4x2_operator_sub_Float16x4x2_backend_index = 1292u;
 
 /// operator* with Float16x4x2
 extern Variable Float16x4x2_operator_mul_Float16x4x2_arg;
 extern Function Float16x4x2_operator_mul_Float16x4x2;
+inline constexpr auto Float16x4x2_operator_mul_Float16x4x2_name = "operator*"_c;
 inline constexpr auto Float16x4x2_operator_mul_Float16x4x2_backend_index = 1293u;
 
 /// operator+= with Float16x4x2
 extern Variable Float16x4x2_operator_addasg_Float16x4x2_arg;
 extern Function Float16x4x2_operator_addasg_Float16x4x2;
+inline constexpr auto Float16x4x2_operator_addasg_Float16x4x2_name = "operator+="_c;
 inline constexpr auto Float16x4x2_operator_addasg_Float16x4x2_backend_index = 1294u;
 
 /// operator-= with Float16x4x2
 extern Variable Float16x4x2_operator_subasg_Float16x4x2_arg;
 extern Function Float16x4x2_operator_subasg_Float16x4x2;
+inline constexpr auto Float16x4x2_operator_subasg_Float16x4x2_name = "operator-="_c;
 inline constexpr auto Float16x4x2_operator_subasg_Float16x4x2_backend_index = 1295u;
 
 /// operator*= with Float16x4x2
 extern Variable Float16x4x2_operator_mulasg_Float16x4x2_arg;
 extern Function Float16x4x2_operator_mulasg_Float16x4x2;
+inline constexpr auto Float16x4x2_operator_mulasg_Float16x4x2_name = "operator*="_c;
 inline constexpr auto Float16x4x2_operator_mulasg_Float16x4x2_backend_index = 1296u;
 
 /// operator* with Float16
 extern Variable Float16x4x2_operator_scale_Float16_arg;
 extern Function Float16x4x2_operator_scale_Float16;
+inline constexpr auto Float16x4x2_operator_scale_Float16_name = "operator*"_c;
 inline constexpr auto Float16x4x2_operator_scale_Float16_backend_index = 1297u;
 
 struct Float16x2x3 : public Type
@@ -4625,61 +5489,73 @@ extern Float16x2x3 Float16x2x3Type;
 /// operator[] with Int32
 extern Variable Float16x2x3_operator_index_Int32_arg;
 extern Function Float16x2x3_operator_index_Int32;
+inline constexpr auto Float16x2x3_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Float16x2x3_operator_index_Int32_backend_index = 1300u;
 
 /// operator[] with UInt32
 extern Variable Float16x2x3_operator_index_UInt32_arg;
 extern Function Float16x2x3_operator_index_UInt32;
+inline constexpr auto Float16x2x3_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Float16x2x3_operator_index_UInt32_backend_index = 1301u;
 
 /// operator[] with Int16
 extern Variable Float16x2x3_operator_index_Int16_arg;
 extern Function Float16x2x3_operator_index_Int16;
+inline constexpr auto Float16x2x3_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Float16x2x3_operator_index_Int16_backend_index = 1302u;
 
 /// operator[] with UInt16
 extern Variable Float16x2x3_operator_index_UInt16_arg;
 extern Function Float16x2x3_operator_index_UInt16;
+inline constexpr auto Float16x2x3_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Float16x2x3_operator_index_UInt16_backend_index = 1303u;
 
 /// operator* with Float16x3
 extern Variable Float16x2x3_transform_Float16x2_vec;
 extern Function Float16x2x3_transform_Float16x2;
+inline constexpr auto Float16x2x3_transform_Float16x2_name = "operator*"_c;
 inline constexpr auto Float16x2x3_transform_Float16x2_backend_index = 1304u;
 
 /// operator+ with Float16x2x3
 extern Variable Float16x2x3_operator_add_Float16x2x3_arg;
 extern Function Float16x2x3_operator_add_Float16x2x3;
+inline constexpr auto Float16x2x3_operator_add_Float16x2x3_name = "operator+"_c;
 inline constexpr auto Float16x2x3_operator_add_Float16x2x3_backend_index = 1305u;
 
 /// operator- with Float16x2x3
 extern Variable Float16x2x3_operator_sub_Float16x2x3_arg;
 extern Function Float16x2x3_operator_sub_Float16x2x3;
+inline constexpr auto Float16x2x3_operator_sub_Float16x2x3_name = "operator-"_c;
 inline constexpr auto Float16x2x3_operator_sub_Float16x2x3_backend_index = 1306u;
 
 /// operator* with Float16x2x3
 extern Variable Float16x2x3_operator_mul_Float16x2x3_arg;
 extern Function Float16x2x3_operator_mul_Float16x2x3;
+inline constexpr auto Float16x2x3_operator_mul_Float16x2x3_name = "operator*"_c;
 inline constexpr auto Float16x2x3_operator_mul_Float16x2x3_backend_index = 1307u;
 
 /// operator+= with Float16x2x3
 extern Variable Float16x2x3_operator_addasg_Float16x2x3_arg;
 extern Function Float16x2x3_operator_addasg_Float16x2x3;
+inline constexpr auto Float16x2x3_operator_addasg_Float16x2x3_name = "operator+="_c;
 inline constexpr auto Float16x2x3_operator_addasg_Float16x2x3_backend_index = 1308u;
 
 /// operator-= with Float16x2x3
 extern Variable Float16x2x3_operator_subasg_Float16x2x3_arg;
 extern Function Float16x2x3_operator_subasg_Float16x2x3;
+inline constexpr auto Float16x2x3_operator_subasg_Float16x2x3_name = "operator-="_c;
 inline constexpr auto Float16x2x3_operator_subasg_Float16x2x3_backend_index = 1309u;
 
 /// operator*= with Float16x2x3
 extern Variable Float16x2x3_operator_mulasg_Float16x2x3_arg;
 extern Function Float16x2x3_operator_mulasg_Float16x2x3;
+inline constexpr auto Float16x2x3_operator_mulasg_Float16x2x3_name = "operator*="_c;
 inline constexpr auto Float16x2x3_operator_mulasg_Float16x2x3_backend_index = 1310u;
 
 /// operator* with Float16
 extern Variable Float16x2x3_operator_scale_Float16_arg;
 extern Function Float16x2x3_operator_scale_Float16;
+inline constexpr auto Float16x2x3_operator_scale_Float16_name = "operator*"_c;
 inline constexpr auto Float16x2x3_operator_scale_Float16_backend_index = 1311u;
 
 struct Float16x3x3 : public Type
@@ -4691,61 +5567,73 @@ extern Float16x3x3 Float16x3x3Type;
 /// operator[] with Int32
 extern Variable Float16x3x3_operator_index_Int32_arg;
 extern Function Float16x3x3_operator_index_Int32;
+inline constexpr auto Float16x3x3_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Float16x3x3_operator_index_Int32_backend_index = 1315u;
 
 /// operator[] with UInt32
 extern Variable Float16x3x3_operator_index_UInt32_arg;
 extern Function Float16x3x3_operator_index_UInt32;
+inline constexpr auto Float16x3x3_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Float16x3x3_operator_index_UInt32_backend_index = 1316u;
 
 /// operator[] with Int16
 extern Variable Float16x3x3_operator_index_Int16_arg;
 extern Function Float16x3x3_operator_index_Int16;
+inline constexpr auto Float16x3x3_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Float16x3x3_operator_index_Int16_backend_index = 1317u;
 
 /// operator[] with UInt16
 extern Variable Float16x3x3_operator_index_UInt16_arg;
 extern Function Float16x3x3_operator_index_UInt16;
+inline constexpr auto Float16x3x3_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Float16x3x3_operator_index_UInt16_backend_index = 1318u;
 
 /// operator* with Float16x3
 extern Variable Float16x3x3_transform_Float16x3_vec;
 extern Function Float16x3x3_transform_Float16x3;
+inline constexpr auto Float16x3x3_transform_Float16x3_name = "operator*"_c;
 inline constexpr auto Float16x3x3_transform_Float16x3_backend_index = 1319u;
 
 /// operator+ with Float16x3x3
 extern Variable Float16x3x3_operator_add_Float16x3x3_arg;
 extern Function Float16x3x3_operator_add_Float16x3x3;
+inline constexpr auto Float16x3x3_operator_add_Float16x3x3_name = "operator+"_c;
 inline constexpr auto Float16x3x3_operator_add_Float16x3x3_backend_index = 1320u;
 
 /// operator- with Float16x3x3
 extern Variable Float16x3x3_operator_sub_Float16x3x3_arg;
 extern Function Float16x3x3_operator_sub_Float16x3x3;
+inline constexpr auto Float16x3x3_operator_sub_Float16x3x3_name = "operator-"_c;
 inline constexpr auto Float16x3x3_operator_sub_Float16x3x3_backend_index = 1321u;
 
 /// operator* with Float16x3x3
 extern Variable Float16x3x3_operator_mul_Float16x3x3_arg;
 extern Function Float16x3x3_operator_mul_Float16x3x3;
+inline constexpr auto Float16x3x3_operator_mul_Float16x3x3_name = "operator*"_c;
 inline constexpr auto Float16x3x3_operator_mul_Float16x3x3_backend_index = 1322u;
 
 /// operator+= with Float16x3x3
 extern Variable Float16x3x3_operator_addasg_Float16x3x3_arg;
 extern Function Float16x3x3_operator_addasg_Float16x3x3;
+inline constexpr auto Float16x3x3_operator_addasg_Float16x3x3_name = "operator+="_c;
 inline constexpr auto Float16x3x3_operator_addasg_Float16x3x3_backend_index = 1323u;
 
 /// operator-= with Float16x3x3
 extern Variable Float16x3x3_operator_subasg_Float16x3x3_arg;
 extern Function Float16x3x3_operator_subasg_Float16x3x3;
+inline constexpr auto Float16x3x3_operator_subasg_Float16x3x3_name = "operator-="_c;
 inline constexpr auto Float16x3x3_operator_subasg_Float16x3x3_backend_index = 1324u;
 
 /// operator*= with Float16x3x3
 extern Variable Float16x3x3_operator_mulasg_Float16x3x3_arg;
 extern Function Float16x3x3_operator_mulasg_Float16x3x3;
+inline constexpr auto Float16x3x3_operator_mulasg_Float16x3x3_name = "operator*="_c;
 inline constexpr auto Float16x3x3_operator_mulasg_Float16x3x3_backend_index = 1325u;
 
 /// operator* with Float16
 extern Variable Float16x3x3_operator_scale_Float16_arg;
 extern Function Float16x3x3_operator_scale_Float16;
+inline constexpr auto Float16x3x3_operator_scale_Float16_name = "operator*"_c;
 inline constexpr auto Float16x3x3_operator_scale_Float16_backend_index = 1326u;
 
 struct Float16x4x3 : public Type
@@ -4757,61 +5645,73 @@ extern Float16x4x3 Float16x4x3Type;
 /// operator[] with Int32
 extern Variable Float16x4x3_operator_index_Int32_arg;
 extern Function Float16x4x3_operator_index_Int32;
+inline constexpr auto Float16x4x3_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Float16x4x3_operator_index_Int32_backend_index = 1329u;
 
 /// operator[] with UInt32
 extern Variable Float16x4x3_operator_index_UInt32_arg;
 extern Function Float16x4x3_operator_index_UInt32;
+inline constexpr auto Float16x4x3_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Float16x4x3_operator_index_UInt32_backend_index = 1330u;
 
 /// operator[] with Int16
 extern Variable Float16x4x3_operator_index_Int16_arg;
 extern Function Float16x4x3_operator_index_Int16;
+inline constexpr auto Float16x4x3_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Float16x4x3_operator_index_Int16_backend_index = 1331u;
 
 /// operator[] with UInt16
 extern Variable Float16x4x3_operator_index_UInt16_arg;
 extern Function Float16x4x3_operator_index_UInt16;
+inline constexpr auto Float16x4x3_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Float16x4x3_operator_index_UInt16_backend_index = 1332u;
 
 /// operator* with Float16x3
 extern Variable Float16x4x3_transform_Float16x4_vec;
 extern Function Float16x4x3_transform_Float16x4;
+inline constexpr auto Float16x4x3_transform_Float16x4_name = "operator*"_c;
 inline constexpr auto Float16x4x3_transform_Float16x4_backend_index = 1333u;
 
 /// operator+ with Float16x4x3
 extern Variable Float16x4x3_operator_add_Float16x4x3_arg;
 extern Function Float16x4x3_operator_add_Float16x4x3;
+inline constexpr auto Float16x4x3_operator_add_Float16x4x3_name = "operator+"_c;
 inline constexpr auto Float16x4x3_operator_add_Float16x4x3_backend_index = 1334u;
 
 /// operator- with Float16x4x3
 extern Variable Float16x4x3_operator_sub_Float16x4x3_arg;
 extern Function Float16x4x3_operator_sub_Float16x4x3;
+inline constexpr auto Float16x4x3_operator_sub_Float16x4x3_name = "operator-"_c;
 inline constexpr auto Float16x4x3_operator_sub_Float16x4x3_backend_index = 1335u;
 
 /// operator* with Float16x4x3
 extern Variable Float16x4x3_operator_mul_Float16x4x3_arg;
 extern Function Float16x4x3_operator_mul_Float16x4x3;
+inline constexpr auto Float16x4x3_operator_mul_Float16x4x3_name = "operator*"_c;
 inline constexpr auto Float16x4x3_operator_mul_Float16x4x3_backend_index = 1336u;
 
 /// operator+= with Float16x4x3
 extern Variable Float16x4x3_operator_addasg_Float16x4x3_arg;
 extern Function Float16x4x3_operator_addasg_Float16x4x3;
+inline constexpr auto Float16x4x3_operator_addasg_Float16x4x3_name = "operator+="_c;
 inline constexpr auto Float16x4x3_operator_addasg_Float16x4x3_backend_index = 1337u;
 
 /// operator-= with Float16x4x3
 extern Variable Float16x4x3_operator_subasg_Float16x4x3_arg;
 extern Function Float16x4x3_operator_subasg_Float16x4x3;
+inline constexpr auto Float16x4x3_operator_subasg_Float16x4x3_name = "operator-="_c;
 inline constexpr auto Float16x4x3_operator_subasg_Float16x4x3_backend_index = 1338u;
 
 /// operator*= with Float16x4x3
 extern Variable Float16x4x3_operator_mulasg_Float16x4x3_arg;
 extern Function Float16x4x3_operator_mulasg_Float16x4x3;
+inline constexpr auto Float16x4x3_operator_mulasg_Float16x4x3_name = "operator*="_c;
 inline constexpr auto Float16x4x3_operator_mulasg_Float16x4x3_backend_index = 1339u;
 
 /// operator* with Float16
 extern Variable Float16x4x3_operator_scale_Float16_arg;
 extern Function Float16x4x3_operator_scale_Float16;
+inline constexpr auto Float16x4x3_operator_scale_Float16_name = "operator*"_c;
 inline constexpr auto Float16x4x3_operator_scale_Float16_backend_index = 1340u;
 
 struct Float16x2x4 : public Type
@@ -4823,61 +5723,73 @@ extern Float16x2x4 Float16x2x4Type;
 /// operator[] with Int32
 extern Variable Float16x2x4_operator_index_Int32_arg;
 extern Function Float16x2x4_operator_index_Int32;
+inline constexpr auto Float16x2x4_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Float16x2x4_operator_index_Int32_backend_index = 1343u;
 
 /// operator[] with UInt32
 extern Variable Float16x2x4_operator_index_UInt32_arg;
 extern Function Float16x2x4_operator_index_UInt32;
+inline constexpr auto Float16x2x4_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Float16x2x4_operator_index_UInt32_backend_index = 1344u;
 
 /// operator[] with Int16
 extern Variable Float16x2x4_operator_index_Int16_arg;
 extern Function Float16x2x4_operator_index_Int16;
+inline constexpr auto Float16x2x4_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Float16x2x4_operator_index_Int16_backend_index = 1345u;
 
 /// operator[] with UInt16
 extern Variable Float16x2x4_operator_index_UInt16_arg;
 extern Function Float16x2x4_operator_index_UInt16;
+inline constexpr auto Float16x2x4_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Float16x2x4_operator_index_UInt16_backend_index = 1346u;
 
 /// operator* with Float16x4
 extern Variable Float16x2x4_transform_Float16x2_vec;
 extern Function Float16x2x4_transform_Float16x2;
+inline constexpr auto Float16x2x4_transform_Float16x2_name = "operator*"_c;
 inline constexpr auto Float16x2x4_transform_Float16x2_backend_index = 1347u;
 
 /// operator+ with Float16x2x4
 extern Variable Float16x2x4_operator_add_Float16x2x4_arg;
 extern Function Float16x2x4_operator_add_Float16x2x4;
+inline constexpr auto Float16x2x4_operator_add_Float16x2x4_name = "operator+"_c;
 inline constexpr auto Float16x2x4_operator_add_Float16x2x4_backend_index = 1348u;
 
 /// operator- with Float16x2x4
 extern Variable Float16x2x4_operator_sub_Float16x2x4_arg;
 extern Function Float16x2x4_operator_sub_Float16x2x4;
+inline constexpr auto Float16x2x4_operator_sub_Float16x2x4_name = "operator-"_c;
 inline constexpr auto Float16x2x4_operator_sub_Float16x2x4_backend_index = 1349u;
 
 /// operator* with Float16x2x4
 extern Variable Float16x2x4_operator_mul_Float16x2x4_arg;
 extern Function Float16x2x4_operator_mul_Float16x2x4;
+inline constexpr auto Float16x2x4_operator_mul_Float16x2x4_name = "operator*"_c;
 inline constexpr auto Float16x2x4_operator_mul_Float16x2x4_backend_index = 1350u;
 
 /// operator+= with Float16x2x4
 extern Variable Float16x2x4_operator_addasg_Float16x2x4_arg;
 extern Function Float16x2x4_operator_addasg_Float16x2x4;
+inline constexpr auto Float16x2x4_operator_addasg_Float16x2x4_name = "operator+="_c;
 inline constexpr auto Float16x2x4_operator_addasg_Float16x2x4_backend_index = 1351u;
 
 /// operator-= with Float16x2x4
 extern Variable Float16x2x4_operator_subasg_Float16x2x4_arg;
 extern Function Float16x2x4_operator_subasg_Float16x2x4;
+inline constexpr auto Float16x2x4_operator_subasg_Float16x2x4_name = "operator-="_c;
 inline constexpr auto Float16x2x4_operator_subasg_Float16x2x4_backend_index = 1352u;
 
 /// operator*= with Float16x2x4
 extern Variable Float16x2x4_operator_mulasg_Float16x2x4_arg;
 extern Function Float16x2x4_operator_mulasg_Float16x2x4;
+inline constexpr auto Float16x2x4_operator_mulasg_Float16x2x4_name = "operator*="_c;
 inline constexpr auto Float16x2x4_operator_mulasg_Float16x2x4_backend_index = 1353u;
 
 /// operator* with Float16
 extern Variable Float16x2x4_operator_scale_Float16_arg;
 extern Function Float16x2x4_operator_scale_Float16;
+inline constexpr auto Float16x2x4_operator_scale_Float16_name = "operator*"_c;
 inline constexpr auto Float16x2x4_operator_scale_Float16_backend_index = 1354u;
 
 struct Float16x3x4 : public Type
@@ -4889,61 +5801,73 @@ extern Float16x3x4 Float16x3x4Type;
 /// operator[] with Int32
 extern Variable Float16x3x4_operator_index_Int32_arg;
 extern Function Float16x3x4_operator_index_Int32;
+inline constexpr auto Float16x3x4_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Float16x3x4_operator_index_Int32_backend_index = 1357u;
 
 /// operator[] with UInt32
 extern Variable Float16x3x4_operator_index_UInt32_arg;
 extern Function Float16x3x4_operator_index_UInt32;
+inline constexpr auto Float16x3x4_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Float16x3x4_operator_index_UInt32_backend_index = 1358u;
 
 /// operator[] with Int16
 extern Variable Float16x3x4_operator_index_Int16_arg;
 extern Function Float16x3x4_operator_index_Int16;
+inline constexpr auto Float16x3x4_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Float16x3x4_operator_index_Int16_backend_index = 1359u;
 
 /// operator[] with UInt16
 extern Variable Float16x3x4_operator_index_UInt16_arg;
 extern Function Float16x3x4_operator_index_UInt16;
+inline constexpr auto Float16x3x4_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Float16x3x4_operator_index_UInt16_backend_index = 1360u;
 
 /// operator* with Float16x4
 extern Variable Float16x3x4_transform_Float16x3_vec;
 extern Function Float16x3x4_transform_Float16x3;
+inline constexpr auto Float16x3x4_transform_Float16x3_name = "operator*"_c;
 inline constexpr auto Float16x3x4_transform_Float16x3_backend_index = 1361u;
 
 /// operator+ with Float16x3x4
 extern Variable Float16x3x4_operator_add_Float16x3x4_arg;
 extern Function Float16x3x4_operator_add_Float16x3x4;
+inline constexpr auto Float16x3x4_operator_add_Float16x3x4_name = "operator+"_c;
 inline constexpr auto Float16x3x4_operator_add_Float16x3x4_backend_index = 1362u;
 
 /// operator- with Float16x3x4
 extern Variable Float16x3x4_operator_sub_Float16x3x4_arg;
 extern Function Float16x3x4_operator_sub_Float16x3x4;
+inline constexpr auto Float16x3x4_operator_sub_Float16x3x4_name = "operator-"_c;
 inline constexpr auto Float16x3x4_operator_sub_Float16x3x4_backend_index = 1363u;
 
 /// operator* with Float16x3x4
 extern Variable Float16x3x4_operator_mul_Float16x3x4_arg;
 extern Function Float16x3x4_operator_mul_Float16x3x4;
+inline constexpr auto Float16x3x4_operator_mul_Float16x3x4_name = "operator*"_c;
 inline constexpr auto Float16x3x4_operator_mul_Float16x3x4_backend_index = 1364u;
 
 /// operator+= with Float16x3x4
 extern Variable Float16x3x4_operator_addasg_Float16x3x4_arg;
 extern Function Float16x3x4_operator_addasg_Float16x3x4;
+inline constexpr auto Float16x3x4_operator_addasg_Float16x3x4_name = "operator+="_c;
 inline constexpr auto Float16x3x4_operator_addasg_Float16x3x4_backend_index = 1365u;
 
 /// operator-= with Float16x3x4
 extern Variable Float16x3x4_operator_subasg_Float16x3x4_arg;
 extern Function Float16x3x4_operator_subasg_Float16x3x4;
+inline constexpr auto Float16x3x4_operator_subasg_Float16x3x4_name = "operator-="_c;
 inline constexpr auto Float16x3x4_operator_subasg_Float16x3x4_backend_index = 1366u;
 
 /// operator*= with Float16x3x4
 extern Variable Float16x3x4_operator_mulasg_Float16x3x4_arg;
 extern Function Float16x3x4_operator_mulasg_Float16x3x4;
+inline constexpr auto Float16x3x4_operator_mulasg_Float16x3x4_name = "operator*="_c;
 inline constexpr auto Float16x3x4_operator_mulasg_Float16x3x4_backend_index = 1367u;
 
 /// operator* with Float16
 extern Variable Float16x3x4_operator_scale_Float16_arg;
 extern Function Float16x3x4_operator_scale_Float16;
+inline constexpr auto Float16x3x4_operator_scale_Float16_name = "operator*"_c;
 inline constexpr auto Float16x3x4_operator_scale_Float16_backend_index = 1368u;
 
 struct Float16x4x4 : public Type
@@ -4955,61 +5879,73 @@ extern Float16x4x4 Float16x4x4Type;
 /// operator[] with Int32
 extern Variable Float16x4x4_operator_index_Int32_arg;
 extern Function Float16x4x4_operator_index_Int32;
+inline constexpr auto Float16x4x4_operator_index_Int32_name = "operator[]"_c;
 inline constexpr auto Float16x4x4_operator_index_Int32_backend_index = 1372u;
 
 /// operator[] with UInt32
 extern Variable Float16x4x4_operator_index_UInt32_arg;
 extern Function Float16x4x4_operator_index_UInt32;
+inline constexpr auto Float16x4x4_operator_index_UInt32_name = "operator[]"_c;
 inline constexpr auto Float16x4x4_operator_index_UInt32_backend_index = 1373u;
 
 /// operator[] with Int16
 extern Variable Float16x4x4_operator_index_Int16_arg;
 extern Function Float16x4x4_operator_index_Int16;
+inline constexpr auto Float16x4x4_operator_index_Int16_name = "operator[]"_c;
 inline constexpr auto Float16x4x4_operator_index_Int16_backend_index = 1374u;
 
 /// operator[] with UInt16
 extern Variable Float16x4x4_operator_index_UInt16_arg;
 extern Function Float16x4x4_operator_index_UInt16;
+inline constexpr auto Float16x4x4_operator_index_UInt16_name = "operator[]"_c;
 inline constexpr auto Float16x4x4_operator_index_UInt16_backend_index = 1375u;
 
 /// operator* with Float16x4
 extern Variable Float16x4x4_transform_Float16x4_vec;
 extern Function Float16x4x4_transform_Float16x4;
+inline constexpr auto Float16x4x4_transform_Float16x4_name = "operator*"_c;
 inline constexpr auto Float16x4x4_transform_Float16x4_backend_index = 1376u;
 
 /// operator+ with Float16x4x4
 extern Variable Float16x4x4_operator_add_Float16x4x4_arg;
 extern Function Float16x4x4_operator_add_Float16x4x4;
+inline constexpr auto Float16x4x4_operator_add_Float16x4x4_name = "operator+"_c;
 inline constexpr auto Float16x4x4_operator_add_Float16x4x4_backend_index = 1377u;
 
 /// operator- with Float16x4x4
 extern Variable Float16x4x4_operator_sub_Float16x4x4_arg;
 extern Function Float16x4x4_operator_sub_Float16x4x4;
+inline constexpr auto Float16x4x4_operator_sub_Float16x4x4_name = "operator-"_c;
 inline constexpr auto Float16x4x4_operator_sub_Float16x4x4_backend_index = 1378u;
 
 /// operator* with Float16x4x4
 extern Variable Float16x4x4_operator_mul_Float16x4x4_arg;
 extern Function Float16x4x4_operator_mul_Float16x4x4;
+inline constexpr auto Float16x4x4_operator_mul_Float16x4x4_name = "operator*"_c;
 inline constexpr auto Float16x4x4_operator_mul_Float16x4x4_backend_index = 1379u;
 
 /// operator+= with Float16x4x4
 extern Variable Float16x4x4_operator_addasg_Float16x4x4_arg;
 extern Function Float16x4x4_operator_addasg_Float16x4x4;
+inline constexpr auto Float16x4x4_operator_addasg_Float16x4x4_name = "operator+="_c;
 inline constexpr auto Float16x4x4_operator_addasg_Float16x4x4_backend_index = 1380u;
 
 /// operator-= with Float16x4x4
 extern Variable Float16x4x4_operator_subasg_Float16x4x4_arg;
 extern Function Float16x4x4_operator_subasg_Float16x4x4;
+inline constexpr auto Float16x4x4_operator_subasg_Float16x4x4_name = "operator-="_c;
 inline constexpr auto Float16x4x4_operator_subasg_Float16x4x4_backend_index = 1381u;
 
 /// operator*= with Float16x4x4
 extern Variable Float16x4x4_operator_mulasg_Float16x4x4_arg;
 extern Function Float16x4x4_operator_mulasg_Float16x4x4;
+inline constexpr auto Float16x4x4_operator_mulasg_Float16x4x4_name = "operator*="_c;
 inline constexpr auto Float16x4x4_operator_mulasg_Float16x4x4_backend_index = 1382u;
 
 /// operator* with Float16
 extern Variable Float16x4x4_operator_scale_Float16_arg;
 extern Function Float16x4x4_operator_scale_Float16;
+inline constexpr auto Float16x4x4_operator_scale_Float16_name = "operator*"_c;
 inline constexpr auto Float16x4x4_operator_scale_Float16_backend_index = 1383u;
 
 struct Texture1D : public Type
@@ -5162,13 +6098,21 @@ struct CompareMode : public Enumeration
 };
 extern CompareMode CompareModeType;
 
+inline constexpr auto CompareModeLess_value = 0x0;
 extern EnumExpression CompareModeLess;
+inline constexpr auto CompareModeLessEqual_value = 0x1;
 extern EnumExpression CompareModeLessEqual;
+inline constexpr auto CompareModeGreater_value = 0x2;
 extern EnumExpression CompareModeGreater;
+inline constexpr auto CompareModeGreaterEqual_value = 0x3;
 extern EnumExpression CompareModeGreaterEqual;
+inline constexpr auto CompareModeEqual_value = 0x4;
 extern EnumExpression CompareModeEqual;
+inline constexpr auto CompareModeNotEqual_value = 0x5;
 extern EnumExpression CompareModeNotEqual;
+inline constexpr auto CompareModeAlways_value = 0x6;
 extern EnumExpression CompareModeAlways;
+inline constexpr auto CompareModeNever_value = 0x7;
 extern EnumExpression CompareModeNever;
 struct StencilOp : public Enumeration
 {
@@ -5176,13 +6120,21 @@ struct StencilOp : public Enumeration
 };
 extern StencilOp StencilOpType;
 
+inline constexpr auto StencilOpKeep_value = 0x0;
 extern EnumExpression StencilOpKeep;
+inline constexpr auto StencilOpZero_value = 0x1;
 extern EnumExpression StencilOpZero;
+inline constexpr auto StencilOpReplace_value = 0x2;
 extern EnumExpression StencilOpReplace;
+inline constexpr auto StencilOpIncrement_value = 0x3;
 extern EnumExpression StencilOpIncrement;
+inline constexpr auto StencilOpDecrement_value = 0x4;
 extern EnumExpression StencilOpDecrement;
+inline constexpr auto StencilOpInvert_value = 0x5;
 extern EnumExpression StencilOpInvert;
+inline constexpr auto StencilOpIncrementWrap_value = 0x6;
 extern EnumExpression StencilOpIncrementWrap;
+inline constexpr auto StencilOpDecrementWrap_value = 0x7;
 extern EnumExpression StencilOpDecrementWrap;
 struct ExecutionScope : public Enumeration
 {
@@ -5190,11 +6142,17 @@ struct ExecutionScope : public Enumeration
 };
 extern ExecutionScope ExecutionScopeType;
 
+inline constexpr auto ExecutionScopeGlobal_value = 0x0;
 extern EnumExpression ExecutionScopeGlobal;
+inline constexpr auto ExecutionScopeDevice_value = 0x1;
 extern EnumExpression ExecutionScopeDevice;
+inline constexpr auto ExecutionScopeWorkgroup_value = 0x2;
 extern EnumExpression ExecutionScopeWorkgroup;
+inline constexpr auto ExecutionScopeSubgroup_value = 0x3;
 extern EnumExpression ExecutionScopeSubgroup;
+inline constexpr auto ExecutionScopeInvocation_value = 0x4;
 extern EnumExpression ExecutionScopeInvocation;
+inline constexpr auto ExecutionScopeQueue_value = 0x5;
 extern EnumExpression ExecutionScopeQueue;
 struct MemorySemantics : public Enumeration
 {
@@ -5202,10 +6160,15 @@ struct MemorySemantics : public Enumeration
 };
 extern MemorySemantics MemorySemanticsType;
 
+inline constexpr auto MemorySemanticsAcquire_value = 0x1;
 extern EnumExpression MemorySemanticsAcquire;
+inline constexpr auto MemorySemanticsRelease_value = 0x2;
 extern EnumExpression MemorySemanticsRelease;
+inline constexpr auto MemorySemanticsAcquireRelease_value = 0x4;
 extern EnumExpression MemorySemanticsAcquireRelease;
+inline constexpr auto MemorySemanticsSequentiallyConsistent_value = 0x8;
 extern EnumExpression MemorySemanticsSequentiallyConsistent;
+inline constexpr auto MemorySemanticsRelaxed_value = 0x10;
 extern EnumExpression MemorySemanticsRelaxed;
 struct PolygonMode : public Enumeration
 {
@@ -5213,8 +6176,11 @@ struct PolygonMode : public Enumeration
 };
 extern PolygonMode PolygonModeType;
 
+inline constexpr auto PolygonModeFill_value = 0x0;
 extern EnumExpression PolygonModeFill;
+inline constexpr auto PolygonModeLine_value = 0x1;
 extern EnumExpression PolygonModeLine;
+inline constexpr auto PolygonModePoint_value = 0x2;
 extern EnumExpression PolygonModePoint;
 struct CullFace : public Enumeration
 {
@@ -5222,9 +6188,13 @@ struct CullFace : public Enumeration
 };
 extern CullFace CullFaceType;
 
+inline constexpr auto CullFaceNone_value = 0x0;
 extern EnumExpression CullFaceNone;
+inline constexpr auto CullFaceFront_value = 0x1;
 extern EnumExpression CullFaceFront;
+inline constexpr auto CullFaceBack_value = 0x2;
 extern EnumExpression CullFaceBack;
+inline constexpr auto CullFaceFrontAndBack_value = 0x3;
 extern EnumExpression CullFaceFrontAndBack;
 struct WindingOrder : public Enumeration
 {
@@ -5232,7 +6202,9 @@ struct WindingOrder : public Enumeration
 };
 extern WindingOrder WindingOrderType;
 
+inline constexpr auto WindingOrderClockwise_value = 0x0;
 extern EnumExpression WindingOrderClockwise;
+inline constexpr auto WindingOrderCounterClockwise_value = 0x1;
 extern EnumExpression WindingOrderCounterClockwise;
 struct LogicOp : public Enumeration
 {
@@ -5240,21 +6212,37 @@ struct LogicOp : public Enumeration
 };
 extern LogicOp LogicOpType;
 
+inline constexpr auto LogicOpAnd_value = 0x0;
 extern EnumExpression LogicOpAnd;
+inline constexpr auto LogicOpAndInverted_value = 0x1;
 extern EnumExpression LogicOpAndInverted;
+inline constexpr auto LogicOpAndReverse_value = 0x2;
 extern EnumExpression LogicOpAndReverse;
+inline constexpr auto LogicOpClear_value = 0x3;
 extern EnumExpression LogicOpClear;
+inline constexpr auto LogicOpCopy_value = 0x4;
 extern EnumExpression LogicOpCopy;
+inline constexpr auto LogicOpCopyInverted_value = 0x5;
 extern EnumExpression LogicOpCopyInverted;
+inline constexpr auto LogicOpEquivalence_value = 0x6;
 extern EnumExpression LogicOpEquivalence;
+inline constexpr auto LogicOpInvert_value = 0x7;
 extern EnumExpression LogicOpInvert;
+inline constexpr auto LogicOpNand_value = 0x8;
 extern EnumExpression LogicOpNand;
+inline constexpr auto LogicOpNo_value = 0x9;
 extern EnumExpression LogicOpNo;
+inline constexpr auto LogicOpNor_value = 0xa;
 extern EnumExpression LogicOpNor;
+inline constexpr auto LogicOpOr_value = 0xb;
 extern EnumExpression LogicOpOr;
+inline constexpr auto LogicOpOrInverted_value = 0xc;
 extern EnumExpression LogicOpOrInverted;
+inline constexpr auto LogicOpOrReverse_value = 0xd;
 extern EnumExpression LogicOpOrReverse;
+inline constexpr auto LogicOpSet_value = 0xe;
 extern EnumExpression LogicOpSet;
+inline constexpr auto LogicOpXor_value = 0xf;
 extern EnumExpression LogicOpXor;
 struct BlendFactor : public Enumeration
 {
@@ -5262,19 +6250,33 @@ struct BlendFactor : public Enumeration
 };
 extern BlendFactor BlendFactorType;
 
+inline constexpr auto BlendFactorZero_value = 0x0;
 extern EnumExpression BlendFactorZero;
+inline constexpr auto BlendFactorOne_value = 0x1;
 extern EnumExpression BlendFactorOne;
+inline constexpr auto BlendFactorSourceColor_value = 0x2;
 extern EnumExpression BlendFactorSourceColor;
+inline constexpr auto BlendFactorOneMinusSourceColor_value = 0x3;
 extern EnumExpression BlendFactorOneMinusSourceColor;
+inline constexpr auto BlendFactorSourceAlpha_value = 0x4;
 extern EnumExpression BlendFactorSourceAlpha;
+inline constexpr auto BlendFactorOneMinusSourceAlpha_value = 0x5;
 extern EnumExpression BlendFactorOneMinusSourceAlpha;
+inline constexpr auto BlendFactorDestinationColor_value = 0x6;
 extern EnumExpression BlendFactorDestinationColor;
+inline constexpr auto BlendFactorOneMinusDestinationColor_value = 0x7;
 extern EnumExpression BlendFactorOneMinusDestinationColor;
+inline constexpr auto BlendFactorDestinationAlpha_value = 0x8;
 extern EnumExpression BlendFactorDestinationAlpha;
+inline constexpr auto BlendFactorOneMinusDestinationAlpha_value = 0x9;
 extern EnumExpression BlendFactorOneMinusDestinationAlpha;
+inline constexpr auto BlendFactorConstantColor_value = 0xa;
 extern EnumExpression BlendFactorConstantColor;
+inline constexpr auto BlendFactorOneMinusConstantColor_value = 0xb;
 extern EnumExpression BlendFactorOneMinusConstantColor;
+inline constexpr auto BlendFactorConstantAlpha_value = 0xc;
 extern EnumExpression BlendFactorConstantAlpha;
+inline constexpr auto BlendFactorOneMinusConstantAlpha_value = 0xd;
 extern EnumExpression BlendFactorOneMinusConstantAlpha;
 struct BlendOperation : public Enumeration
 {
@@ -5282,10 +6284,15 @@ struct BlendOperation : public Enumeration
 };
 extern BlendOperation BlendOperationType;
 
+inline constexpr auto BlendOperationAdd_value = 0x0;
 extern EnumExpression BlendOperationAdd;
+inline constexpr auto BlendOperationSubtract_value = 0x1;
 extern EnumExpression BlendOperationSubtract;
+inline constexpr auto BlendOperationReverseSubtract_value = 0x2;
 extern EnumExpression BlendOperationReverseSubtract;
+inline constexpr auto BlendOperationMin_value = 0x3;
 extern EnumExpression BlendOperationMin;
+inline constexpr auto BlendOperationMax_value = 0x4;
 extern EnumExpression BlendOperationMax;
 struct BlendColorMask : public Enumeration
 {
@@ -5293,10 +6300,15 @@ struct BlendColorMask : public Enumeration
 };
 extern BlendColorMask BlendColorMaskType;
 
+inline constexpr auto BlendColorMaskNone_value = 0x0;
 extern EnumExpression BlendColorMaskNone;
+inline constexpr auto BlendColorMaskR_value = 0x1;
 extern EnumExpression BlendColorMaskR;
+inline constexpr auto BlendColorMaskRG_value = 0x2;
 extern EnumExpression BlendColorMaskRG;
+inline constexpr auto BlendColorMaskRGB_value = 0x3;
 extern EnumExpression BlendColorMaskRGB;
+inline constexpr auto BlendColorMaskRGBA_value = 0x4;
 extern EnumExpression BlendColorMaskRGBA;
 struct FilterMode : public Enumeration
 {
@@ -5304,16 +6316,27 @@ struct FilterMode : public Enumeration
 };
 extern FilterMode FilterModeType;
 
+inline constexpr auto FilterModePoint_value = 0x0;
 extern EnumExpression FilterModePoint;
+inline constexpr auto FilterModeNearest_value = 0x0;
 extern EnumExpression FilterModeNearest;
+inline constexpr auto FilterModeLinear_value = 0x1;
 extern EnumExpression FilterModeLinear;
+inline constexpr auto FilterModeMinMagMipLinear_value = 0x2;
 extern EnumExpression FilterModeMinMagMipLinear;
+inline constexpr auto FilterModeMinMagLinearMipPoint_value = 0x3;
 extern EnumExpression FilterModeMinMagLinearMipPoint;
+inline constexpr auto FilterModeMinLinearMagMipPoint_value = 0x4;
 extern EnumExpression FilterModeMinLinearMagMipPoint;
+inline constexpr auto FilterModeMinMagMipPoint_value = 0x5;
 extern EnumExpression FilterModeMinMagMipPoint;
+inline constexpr auto FilterModeMinMagPointMipLinear_value = 0x6;
 extern EnumExpression FilterModeMinMagPointMipLinear;
+inline constexpr auto FilterModeMinPointMagMipLinear_value = 0x7;
 extern EnumExpression FilterModeMinPointMagMipLinear;
+inline constexpr auto FilterModeMinLinearMagPointMipLinear_value = 0x8;
 extern EnumExpression FilterModeMinLinearMagPointMipLinear;
+inline constexpr auto FilterModeMinPointMagLinearMipPoint_value = 0x9;
 extern EnumExpression FilterModeMinPointMagLinearMipPoint;
 struct AddressMode : public Enumeration
 {
@@ -5321,9 +6344,13 @@ struct AddressMode : public Enumeration
 };
 extern AddressMode AddressModeType;
 
+inline constexpr auto AddressModeRepeat_value = 0x0;
 extern EnumExpression AddressModeRepeat;
+inline constexpr auto AddressModeMirror_value = 0x1;
 extern EnumExpression AddressModeMirror;
+inline constexpr auto AddressModeClamp_value = 0x2;
 extern EnumExpression AddressModeClamp;
+inline constexpr auto AddressModeBorder_value = 0x3;
 extern EnumExpression AddressModeBorder;
 struct Color : public Enumeration
 {
@@ -5331,47 +6358,170 @@ struct Color : public Enumeration
 };
 extern Color ColorType;
 
+inline constexpr auto ColorTransparent_value = 0x0;
 extern EnumExpression ColorTransparent;
+inline constexpr auto ColorBlack_value = 0x1;
 extern EnumExpression ColorBlack;
+inline constexpr auto ColorWhite_value = 0x2;
 extern EnumExpression ColorWhite;
+struct InputTopology : public Enumeration
+{
+    InputTopology();
+};
+extern InputTopology InputTopologyType;
+
+inline constexpr auto InputTopologyInvalid_value = 0x0;
+extern EnumExpression InputTopologyInvalid;
+inline constexpr auto InputTopologyPoints_value = 0x1;
+extern EnumExpression InputTopologyPoints;
+inline constexpr auto InputTopologyLines_value = 0x2;
+extern EnumExpression InputTopologyLines;
+inline constexpr auto InputTopologyLinesAdjacency_value = 0x3;
+extern EnumExpression InputTopologyLinesAdjacency;
+inline constexpr auto InputTopologyTriangles_value = 0x4;
+extern EnumExpression InputTopologyTriangles;
+inline constexpr auto InputTopologyTrianglesAdjacency_value = 0x5;
+extern EnumExpression InputTopologyTrianglesAdjacency;
+inline constexpr auto InputTopologyQuads_value = 0x6;
+extern EnumExpression InputTopologyQuads;
+inline constexpr auto InputTopologyIsolines_value = 0x7;
+extern EnumExpression InputTopologyIsolines;
+struct OutputTopology : public Enumeration
+{
+    OutputTopology();
+};
+extern OutputTopology OutputTopologyType;
+
+inline constexpr auto OutputTopologyInvalid_value = 0x0;
+extern EnumExpression OutputTopologyInvalid;
+inline constexpr auto OutputTopologyPoints_value = 0x1;
+extern EnumExpression OutputTopologyPoints;
+inline constexpr auto OutputTopologyLines_value = 0x2;
+extern EnumExpression OutputTopologyLines;
+inline constexpr auto OutputTopologyTriangles_value = 0x3;
+extern EnumExpression OutputTopologyTriangles;
+struct Patch : public Enumeration
+{
+    Patch();
+};
+extern Patch PatchType;
+
+inline constexpr auto PatchInvalid_value = 0x0;
+extern EnumExpression PatchInvalid;
+inline constexpr auto PatchIsolines_value = 0x1;
+extern EnumExpression PatchIsolines;
+inline constexpr auto PatchTriangles_value = 0x2;
+extern EnumExpression PatchTriangles;
+inline constexpr auto PatchQuads_value = 0x3;
+extern EnumExpression PatchQuads;
+struct Winding : public Enumeration
+{
+    Winding();
+};
+extern Winding WindingType;
+
+inline constexpr auto WindingInvalid_value = 0x0;
+extern EnumExpression WindingInvalid;
+inline constexpr auto WindingClockwise_value = 0x1;
+extern EnumExpression WindingClockwise;
+inline constexpr auto WindingCounterClockwise_value = 0x2;
+extern EnumExpression WindingCounterClockwise;
+struct Partition : public Enumeration
+{
+    Partition();
+};
+extern Partition PartitionType;
+
+inline constexpr auto PartitionInvalid_value = 0x0;
+extern EnumExpression PartitionInvalid;
+inline constexpr auto PartitionIntegerSteps_value = 0x1;
+extern EnumExpression PartitionIntegerSteps;
+inline constexpr auto PartitionFractionalEven_value = 0x2;
+extern EnumExpression PartitionFractionalEven;
+inline constexpr auto PartitionFractionalOdd_value = 0x3;
+extern EnumExpression PartitionFractionalOdd;
+struct PixelOrigin : public Enumeration
+{
+    PixelOrigin();
+};
+extern PixelOrigin PixelOriginType;
+
+inline constexpr auto PixelOriginInvalid_value = 0x0;
+extern EnumExpression PixelOriginInvalid;
+inline constexpr auto PixelOriginLowerLeft_value = 0x1;
+extern EnumExpression PixelOriginLowerLeft;
+inline constexpr auto PixelOriginUpperLeft_value = 0x2;
+extern EnumExpression PixelOriginUpperLeft;
+inline constexpr auto PixelOriginCenter_value = 0x3;
+extern EnumExpression PixelOriginCenter;
+struct ComputeDerivatives : public Enumeration
+{
+    ComputeDerivatives();
+};
+extern ComputeDerivatives ComputeDerivativesType;
+
+inline constexpr auto ComputeDerivativesInvalid_value = 0x0;
+extern EnumExpression ComputeDerivativesInvalid;
+inline constexpr auto ComputeDerivativesIndexLinear_value = 0x1;
+extern EnumExpression ComputeDerivativesIndexLinear;
+inline constexpr auto ComputeDerivativesIndexQuad_value = 0x2;
+extern EnumExpression ComputeDerivativesIndexQuad;
+struct GeometryVertex : public Structure
+{
+    GeometryVertex();
+};
+extern GeometryVertex GeometryVertexType;
+
+extern Variable GeometryVertexPosition;
+extern Variable GeometryVertexPointSize;
+extern Variable GeometryVertexCullDistance;
+extern Variable GeometryVertexClipDistance;
 struct GeometryPoint : public Structure
 {
     GeometryPoint();
 };
 extern GeometryPoint GeometryPointType;
 
-extern Variable GeometryPointPosition;
-extern Variable GeometryPointPointSize;
-extern Variable GeometryPointCullDistance;
-extern Variable GeometryPointClipDistance;
+extern Variable GeometryPointP0;
 struct GeometryLine : public Structure
 {
     GeometryLine();
 };
 extern GeometryLine GeometryLineType;
 
-extern Variable GeometryLinePosition;
-extern IntExpression GeometryLinePositionArraySize;
-extern Variable GeometryLinePointSize;
-extern IntExpression GeometryLinePointSizeArraySize;
-extern Variable GeometryLineCullDistance;
-extern IntExpression GeometryLineCullDistanceArraySize;
-extern Variable GeometryLineClipDistance;
-extern IntExpression GeometryLineClipDistanceArraySize;
+extern Variable GeometryLineP0;
+extern Variable GeometryLineP1;
+struct GeometryLineAdjacency : public Structure
+{
+    GeometryLineAdjacency();
+};
+extern GeometryLineAdjacency GeometryLineAdjacencyType;
+
+extern Variable GeometryLineAdjacencyP0;
+extern Variable GeometryLineAdjacencyP1;
+extern Variable GeometryLineAdjacencyP2;
+extern Variable GeometryLineAdjacencyP3;
 struct GeometryTriangle : public Structure
 {
     GeometryTriangle();
 };
 extern GeometryTriangle GeometryTriangleType;
 
-extern Variable GeometryTrianglePosition;
-extern IntExpression GeometryTrianglePositionArraySize;
-extern Variable GeometryTrianglePointSize;
-extern IntExpression GeometryTrianglePointSizeArraySize;
-extern Variable GeometryTriangleCullDistance;
-extern IntExpression GeometryTriangleCullDistanceArraySize;
-extern Variable GeometryTriangleClipDistance;
-extern IntExpression GeometryTriangleClipDistanceArraySize;
+extern Variable GeometryTriangleP0;
+extern Variable GeometryTriangleP1;
+extern Variable GeometryTriangleP2;
+struct GeometryTriangleAdjacency : public Structure
+{
+    GeometryTriangleAdjacency();
+};
+extern GeometryTriangleAdjacency GeometryTriangleAdjacencyType;
+
+extern Variable GeometryTriangleAdjacencyP0;
+extern Variable GeometryTriangleAdjacencyP1;
+extern Variable GeometryTriangleAdjacencyP2;
+extern Variable GeometryTriangleAdjacencyP3;
+extern Variable GeometryTriangleAdjacencyP4;
+extern Variable GeometryTriangleAdjacencyP5;
 extern Variable StencilStateFail;
 extern Variable StencilStatePass;
 extern Variable StencilStateDepthFail;

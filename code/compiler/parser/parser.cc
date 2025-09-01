@@ -197,8 +197,7 @@ constexpr StaticMap HardCodedTokens = std::array{
     , std::pair{ "patch_type"_h, TokenType::PatchType_Attribute }
     , std::pair{ "partition"_h, TokenType::Partition_Attribute }
     , std::pair{ "pixel_origin"_h, TokenType::PixelOrigin_Attribute }
-    , std::pair{ "derivative_index_linear"_h, TokenType::DerivativeIndexLinear_Attribute }
-    , std::pair{ "derivative_index_quad"_h, TokenType::DerivativeIndexQuad_Attribute }
+    , std::pair{ "compute_derivatives"_h, TokenType::ComputeDerivatives_Attribute }
     , std::pair{ "mutable"_h, TokenType::Mutable_TypeModifier }
     , std::pair{ "literal"_h, TokenType::Literal_TypeModifier }
     , std::pair{ "#"_h, TokenType::Directive }
@@ -1250,8 +1249,7 @@ static void SetupTokenClassTable()
     TokenClassTable[(uint32_t)TokenType::PatchType_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
     TokenClassTable[(uint32_t)TokenType::Partition_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
     TokenClassTable[(uint32_t)TokenType::PixelOrigin_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::DerivativeIndexLinear_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
-    TokenClassTable[(uint32_t)TokenType::DerivativeIndexQuad_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::ComputeDerivatives_Attribute] |= TOKEN_FUNCTION_ATTRIBUTE_BIT;
     
     TokenClassTable[(uint32_t)TokenType::Binding_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT;
     TokenClassTable[(uint32_t)TokenType::Group_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT;
@@ -1645,6 +1643,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
             {
                 Operator parseTok;
                 parseTok.type = TokenType::LeftParant;
+                parseTok.token = &stream.Data(-1);
                 operatorStack.Append(parseTok);
             }
             else // Assume call
@@ -1652,6 +1651,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
                 Operator parseTok;
                 parseTok.type = TokenType::Call;
                 parseTok.operandDepth = operandStack.size;
+                parseTok.token = &stream.Data(-1);
                 operatorStack.Append(parseTok);
                 expressionListStack.Append(TransientArray<Expression*>(32));
             }

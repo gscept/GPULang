@@ -48,7 +48,11 @@ UnaryExpression::Resolve(Compiler* compiler)
     Type::FullType type;
     this->expr->EvalType(type);
     Type* typeSymbol;
-    this->expr->EvalTypeSymbol(typeSymbol);
+    if (!this->expr->EvalTypeSymbol(typeSymbol))
+    {
+        compiler->UnrecognizedTypeError(type.name, this);
+        return false;
+    }
 
     static const StaticSet allowedIncrementDecrementTypes =
     std::array{

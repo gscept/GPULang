@@ -728,7 +728,7 @@ void SetupIntrinsics4()
     exp_Float32x2_arg.name = "val"_c;
     exp_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     exp_Float32x2.documentation = "Returns the exponential of a value."_c;
-    exp_Float32x2.name = "exp"_c;
+    exp_Float32x2.name = exp_Float32x2_name;
     exp_Float32x2.backendIndex = 1449;
     exp_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     exp_Float32x2.parameters = exp_Float32x2_args;
@@ -742,7 +742,7 @@ void SetupIntrinsics4()
     exp_Float32x3_arg.name = "val"_c;
     exp_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     exp_Float32x3.documentation = "Returns the exponential of a value."_c;
-    exp_Float32x3.name = "exp"_c;
+    exp_Float32x3.name = exp_Float32x3_name;
     exp_Float32x3.backendIndex = 1450;
     exp_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     exp_Float32x3.parameters = exp_Float32x3_args;
@@ -756,7 +756,7 @@ void SetupIntrinsics4()
     exp_Float32x4_arg.name = "val"_c;
     exp_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     exp_Float32x4.documentation = "Returns the exponential of a value."_c;
-    exp_Float32x4.name = "exp"_c;
+    exp_Float32x4.name = exp_Float32x4_name;
     exp_Float32x4.backendIndex = 1451;
     exp_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     exp_Float32x4.parameters = exp_Float32x4_args;
@@ -770,7 +770,7 @@ void SetupIntrinsics4()
     exp_Float16_arg.name = "val"_c;
     exp_Float16_arg.type = Type::FullType{ Float16Type.name };
     exp_Float16.documentation = "Returns the exponential of a value."_c;
-    exp_Float16.name = "exp"_c;
+    exp_Float16.name = exp_Float16_name;
     exp_Float16.backendIndex = 1452;
     exp_Float16.returnType = Type::FullType { Float16Type.name };
     exp_Float16.parameters = exp_Float16_args;
@@ -784,7 +784,7 @@ void SetupIntrinsics4()
     exp_Float16x2_arg.name = "val"_c;
     exp_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     exp_Float16x2.documentation = "Returns the exponential of a value."_c;
-    exp_Float16x2.name = "exp"_c;
+    exp_Float16x2.name = exp_Float16x2_name;
     exp_Float16x2.backendIndex = 1453;
     exp_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     exp_Float16x2.parameters = exp_Float16x2_args;
@@ -798,7 +798,7 @@ void SetupIntrinsics4()
     exp_Float16x3_arg.name = "val"_c;
     exp_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     exp_Float16x3.documentation = "Returns the exponential of a value."_c;
-    exp_Float16x3.name = "exp"_c;
+    exp_Float16x3.name = exp_Float16x3_name;
     exp_Float16x3.backendIndex = 1454;
     exp_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     exp_Float16x3.parameters = exp_Float16x3_args;
@@ -812,7 +812,7 @@ void SetupIntrinsics4()
     exp_Float16x4_arg.name = "val"_c;
     exp_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     exp_Float16x4.documentation = "Returns the exponential of a value."_c;
-    exp_Float16x4.name = "exp"_c;
+    exp_Float16x4.name = exp_Float16x4_name;
     exp_Float16x4.backendIndex = 1455;
     exp_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     exp_Float16x4.parameters = exp_Float16x4_args;
@@ -826,7 +826,7 @@ void SetupIntrinsics4()
     exp2_Float32_arg.name = "val"_c;
     exp2_Float32_arg.type = Type::FullType{ Float32Type.name };
     exp2_Float32.documentation = "Returns the base 2 exponential of a value."_c;
-    exp2_Float32.name = "exp2"_c;
+    exp2_Float32.name = exp2_Float32_name;
     exp2_Float32.backendIndex = 1456;
     exp2_Float32.returnType = Type::FullType { Float32Type.name };
     exp2_Float32.parameters = exp2_Float32_args;
@@ -840,7 +840,7 @@ void SetupIntrinsics4()
     exp2_Float32x2_arg.name = "val"_c;
     exp2_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     exp2_Float32x2.documentation = "Returns the base 2 exponential of a value."_c;
-    exp2_Float32x2.name = "exp2"_c;
+    exp2_Float32x2.name = exp2_Float32x2_name;
     exp2_Float32x2.backendIndex = 1457;
     exp2_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     exp2_Float32x2.parameters = exp2_Float32x2_args;
@@ -854,7 +854,7 @@ void SetupIntrinsics4()
     exp2_Float32x3_arg.name = "val"_c;
     exp2_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     exp2_Float32x3.documentation = "Returns the base 2 exponential of a value."_c;
-    exp2_Float32x3.name = "exp2"_c;
+    exp2_Float32x3.name = exp2_Float32x3_name;
     exp2_Float32x3.backendIndex = 1458;
     exp2_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     exp2_Float32x3.parameters = exp2_Float32x3_args;
@@ -868,7 +868,7 @@ void SetupIntrinsics4()
     exp2_Float32x4_arg.name = "val"_c;
     exp2_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     exp2_Float32x4.documentation = "Returns the base 2 exponential of a value."_c;
-    exp2_Float32x4.name = "exp2"_c;
+    exp2_Float32x4.name = exp2_Float32x4_name;
     exp2_Float32x4.backendIndex = 1459;
     exp2_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     exp2_Float32x4.parameters = exp2_Float32x4_args;
@@ -882,7 +882,7 @@ void SetupIntrinsics4()
     exp2_Float16_arg.name = "val"_c;
     exp2_Float16_arg.type = Type::FullType{ Float16Type.name };
     exp2_Float16.documentation = "Returns the base 2 exponential of a value."_c;
-    exp2_Float16.name = "exp2"_c;
+    exp2_Float16.name = exp2_Float16_name;
     exp2_Float16.backendIndex = 1460;
     exp2_Float16.returnType = Type::FullType { Float16Type.name };
     exp2_Float16.parameters = exp2_Float16_args;
@@ -896,7 +896,7 @@ void SetupIntrinsics4()
     exp2_Float16x2_arg.name = "val"_c;
     exp2_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     exp2_Float16x2.documentation = "Returns the base 2 exponential of a value."_c;
-    exp2_Float16x2.name = "exp2"_c;
+    exp2_Float16x2.name = exp2_Float16x2_name;
     exp2_Float16x2.backendIndex = 1461;
     exp2_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     exp2_Float16x2.parameters = exp2_Float16x2_args;
@@ -910,7 +910,7 @@ void SetupIntrinsics4()
     exp2_Float16x3_arg.name = "val"_c;
     exp2_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     exp2_Float16x3.documentation = "Returns the base 2 exponential of a value."_c;
-    exp2_Float16x3.name = "exp2"_c;
+    exp2_Float16x3.name = exp2_Float16x3_name;
     exp2_Float16x3.backendIndex = 1462;
     exp2_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     exp2_Float16x3.parameters = exp2_Float16x3_args;
@@ -924,7 +924,7 @@ void SetupIntrinsics4()
     exp2_Float16x4_arg.name = "val"_c;
     exp2_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     exp2_Float16x4.documentation = "Returns the base 2 exponential of a value."_c;
-    exp2_Float16x4.name = "exp2"_c;
+    exp2_Float16x4.name = exp2_Float16x4_name;
     exp2_Float16x4.backendIndex = 1463;
     exp2_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     exp2_Float16x4.parameters = exp2_Float16x4_args;
@@ -938,7 +938,7 @@ void SetupIntrinsics4()
     invSqrt_Float32_arg.name = "val"_c;
     invSqrt_Float32_arg.type = Type::FullType{ Float32Type.name };
     invSqrt_Float32.documentation = "Returns the inverse square root of a value."_c;
-    invSqrt_Float32.name = "invSqrt"_c;
+    invSqrt_Float32.name = invSqrt_Float32_name;
     invSqrt_Float32.backendIndex = 1464;
     invSqrt_Float32.returnType = Type::FullType { Float32Type.name };
     invSqrt_Float32.parameters = invSqrt_Float32_args;
@@ -952,7 +952,7 @@ void SetupIntrinsics4()
     invSqrt_Float32x2_arg.name = "val"_c;
     invSqrt_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     invSqrt_Float32x2.documentation = "Returns the inverse square root of a value."_c;
-    invSqrt_Float32x2.name = "invSqrt"_c;
+    invSqrt_Float32x2.name = invSqrt_Float32x2_name;
     invSqrt_Float32x2.backendIndex = 1465;
     invSqrt_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     invSqrt_Float32x2.parameters = invSqrt_Float32x2_args;
@@ -966,7 +966,7 @@ void SetupIntrinsics4()
     invSqrt_Float32x3_arg.name = "val"_c;
     invSqrt_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     invSqrt_Float32x3.documentation = "Returns the inverse square root of a value."_c;
-    invSqrt_Float32x3.name = "invSqrt"_c;
+    invSqrt_Float32x3.name = invSqrt_Float32x3_name;
     invSqrt_Float32x3.backendIndex = 1466;
     invSqrt_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     invSqrt_Float32x3.parameters = invSqrt_Float32x3_args;
@@ -980,7 +980,7 @@ void SetupIntrinsics4()
     invSqrt_Float32x4_arg.name = "val"_c;
     invSqrt_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     invSqrt_Float32x4.documentation = "Returns the inverse square root of a value."_c;
-    invSqrt_Float32x4.name = "invSqrt"_c;
+    invSqrt_Float32x4.name = invSqrt_Float32x4_name;
     invSqrt_Float32x4.backendIndex = 1467;
     invSqrt_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     invSqrt_Float32x4.parameters = invSqrt_Float32x4_args;
@@ -994,7 +994,7 @@ void SetupIntrinsics4()
     invSqrt_Float16_arg.name = "val"_c;
     invSqrt_Float16_arg.type = Type::FullType{ Float16Type.name };
     invSqrt_Float16.documentation = "Returns the inverse square root of a value."_c;
-    invSqrt_Float16.name = "invSqrt"_c;
+    invSqrt_Float16.name = invSqrt_Float16_name;
     invSqrt_Float16.backendIndex = 1468;
     invSqrt_Float16.returnType = Type::FullType { Float16Type.name };
     invSqrt_Float16.parameters = invSqrt_Float16_args;
@@ -1008,7 +1008,7 @@ void SetupIntrinsics4()
     invSqrt_Float16x2_arg.name = "val"_c;
     invSqrt_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     invSqrt_Float16x2.documentation = "Returns the inverse square root of a value."_c;
-    invSqrt_Float16x2.name = "invSqrt"_c;
+    invSqrt_Float16x2.name = invSqrt_Float16x2_name;
     invSqrt_Float16x2.backendIndex = 1469;
     invSqrt_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     invSqrt_Float16x2.parameters = invSqrt_Float16x2_args;
@@ -1022,7 +1022,7 @@ void SetupIntrinsics4()
     invSqrt_Float16x3_arg.name = "val"_c;
     invSqrt_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     invSqrt_Float16x3.documentation = "Returns the inverse square root of a value."_c;
-    invSqrt_Float16x3.name = "invSqrt"_c;
+    invSqrt_Float16x3.name = invSqrt_Float16x3_name;
     invSqrt_Float16x3.backendIndex = 1470;
     invSqrt_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     invSqrt_Float16x3.parameters = invSqrt_Float16x3_args;
@@ -1036,7 +1036,7 @@ void SetupIntrinsics4()
     invSqrt_Float16x4_arg.name = "val"_c;
     invSqrt_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     invSqrt_Float16x4.documentation = "Returns the inverse square root of a value."_c;
-    invSqrt_Float16x4.name = "invSqrt"_c;
+    invSqrt_Float16x4.name = invSqrt_Float16x4_name;
     invSqrt_Float16x4.backendIndex = 1471;
     invSqrt_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     invSqrt_Float16x4.parameters = invSqrt_Float16x4_args;
@@ -1050,7 +1050,7 @@ void SetupIntrinsics4()
     log_Float32_arg.name = "val"_c;
     log_Float32_arg.type = Type::FullType{ Float32Type.name };
     log_Float32.documentation = "Returns the natural logarithm of a value."_c;
-    log_Float32.name = "log"_c;
+    log_Float32.name = log_Float32_name;
     log_Float32.backendIndex = 1472;
     log_Float32.returnType = Type::FullType { Float32Type.name };
     log_Float32.parameters = log_Float32_args;
@@ -1064,7 +1064,7 @@ void SetupIntrinsics4()
     log_Float32x2_arg.name = "val"_c;
     log_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     log_Float32x2.documentation = "Returns the natural logarithm of a value."_c;
-    log_Float32x2.name = "log"_c;
+    log_Float32x2.name = log_Float32x2_name;
     log_Float32x2.backendIndex = 1473;
     log_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     log_Float32x2.parameters = log_Float32x2_args;
@@ -1078,7 +1078,7 @@ void SetupIntrinsics4()
     log_Float32x3_arg.name = "val"_c;
     log_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     log_Float32x3.documentation = "Returns the natural logarithm of a value."_c;
-    log_Float32x3.name = "log"_c;
+    log_Float32x3.name = log_Float32x3_name;
     log_Float32x3.backendIndex = 1474;
     log_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     log_Float32x3.parameters = log_Float32x3_args;
@@ -1092,7 +1092,7 @@ void SetupIntrinsics4()
     log_Float32x4_arg.name = "val"_c;
     log_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     log_Float32x4.documentation = "Returns the natural logarithm of a value."_c;
-    log_Float32x4.name = "log"_c;
+    log_Float32x4.name = log_Float32x4_name;
     log_Float32x4.backendIndex = 1475;
     log_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     log_Float32x4.parameters = log_Float32x4_args;
@@ -1106,7 +1106,7 @@ void SetupIntrinsics4()
     log_Float16_arg.name = "val"_c;
     log_Float16_arg.type = Type::FullType{ Float16Type.name };
     log_Float16.documentation = "Returns the natural logarithm of a value."_c;
-    log_Float16.name = "log"_c;
+    log_Float16.name = log_Float16_name;
     log_Float16.backendIndex = 1476;
     log_Float16.returnType = Type::FullType { Float16Type.name };
     log_Float16.parameters = log_Float16_args;
@@ -1120,7 +1120,7 @@ void SetupIntrinsics4()
     log_Float16x2_arg.name = "val"_c;
     log_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     log_Float16x2.documentation = "Returns the natural logarithm of a value."_c;
-    log_Float16x2.name = "log"_c;
+    log_Float16x2.name = log_Float16x2_name;
     log_Float16x2.backendIndex = 1477;
     log_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     log_Float16x2.parameters = log_Float16x2_args;
@@ -1134,7 +1134,7 @@ void SetupIntrinsics4()
     log_Float16x3_arg.name = "val"_c;
     log_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     log_Float16x3.documentation = "Returns the natural logarithm of a value."_c;
-    log_Float16x3.name = "log"_c;
+    log_Float16x3.name = log_Float16x3_name;
     log_Float16x3.backendIndex = 1478;
     log_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     log_Float16x3.parameters = log_Float16x3_args;
@@ -1148,7 +1148,7 @@ void SetupIntrinsics4()
     log_Float16x4_arg.name = "val"_c;
     log_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     log_Float16x4.documentation = "Returns the natural logarithm of a value."_c;
-    log_Float16x4.name = "log"_c;
+    log_Float16x4.name = log_Float16x4_name;
     log_Float16x4.backendIndex = 1479;
     log_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     log_Float16x4.parameters = log_Float16x4_args;
@@ -1162,7 +1162,7 @@ void SetupIntrinsics4()
     log2_Float32_arg.name = "val"_c;
     log2_Float32_arg.type = Type::FullType{ Float32Type.name };
     log2_Float32.documentation = "Returns the base 2 logarithm of a value."_c;
-    log2_Float32.name = "log2"_c;
+    log2_Float32.name = log2_Float32_name;
     log2_Float32.backendIndex = 1480;
     log2_Float32.returnType = Type::FullType { Float32Type.name };
     log2_Float32.parameters = log2_Float32_args;
@@ -1176,7 +1176,7 @@ void SetupIntrinsics4()
     log2_Float32x2_arg.name = "val"_c;
     log2_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     log2_Float32x2.documentation = "Returns the base 2 logarithm of a value."_c;
-    log2_Float32x2.name = "log2"_c;
+    log2_Float32x2.name = log2_Float32x2_name;
     log2_Float32x2.backendIndex = 1481;
     log2_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     log2_Float32x2.parameters = log2_Float32x2_args;
@@ -1190,7 +1190,7 @@ void SetupIntrinsics4()
     log2_Float32x3_arg.name = "val"_c;
     log2_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     log2_Float32x3.documentation = "Returns the base 2 logarithm of a value."_c;
-    log2_Float32x3.name = "log2"_c;
+    log2_Float32x3.name = log2_Float32x3_name;
     log2_Float32x3.backendIndex = 1482;
     log2_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     log2_Float32x3.parameters = log2_Float32x3_args;
@@ -1204,7 +1204,7 @@ void SetupIntrinsics4()
     log2_Float32x4_arg.name = "val"_c;
     log2_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     log2_Float32x4.documentation = "Returns the base 2 logarithm of a value."_c;
-    log2_Float32x4.name = "log2"_c;
+    log2_Float32x4.name = log2_Float32x4_name;
     log2_Float32x4.backendIndex = 1483;
     log2_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     log2_Float32x4.parameters = log2_Float32x4_args;
@@ -1218,7 +1218,7 @@ void SetupIntrinsics4()
     log2_Float16_arg.name = "val"_c;
     log2_Float16_arg.type = Type::FullType{ Float16Type.name };
     log2_Float16.documentation = "Returns the base 2 logarithm of a value."_c;
-    log2_Float16.name = "log2"_c;
+    log2_Float16.name = log2_Float16_name;
     log2_Float16.backendIndex = 1484;
     log2_Float16.returnType = Type::FullType { Float16Type.name };
     log2_Float16.parameters = log2_Float16_args;
@@ -1232,7 +1232,7 @@ void SetupIntrinsics4()
     log2_Float16x2_arg.name = "val"_c;
     log2_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     log2_Float16x2.documentation = "Returns the base 2 logarithm of a value."_c;
-    log2_Float16x2.name = "log2"_c;
+    log2_Float16x2.name = log2_Float16x2_name;
     log2_Float16x2.backendIndex = 1485;
     log2_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     log2_Float16x2.parameters = log2_Float16x2_args;
@@ -1246,7 +1246,7 @@ void SetupIntrinsics4()
     log2_Float16x3_arg.name = "val"_c;
     log2_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     log2_Float16x3.documentation = "Returns the base 2 logarithm of a value."_c;
-    log2_Float16x3.name = "log2"_c;
+    log2_Float16x3.name = log2_Float16x3_name;
     log2_Float16x3.backendIndex = 1486;
     log2_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     log2_Float16x3.parameters = log2_Float16x3_args;
@@ -1260,7 +1260,7 @@ void SetupIntrinsics4()
     log2_Float16x4_arg.name = "val"_c;
     log2_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     log2_Float16x4.documentation = "Returns the base 2 logarithm of a value."_c;
-    log2_Float16x4.name = "log2"_c;
+    log2_Float16x4.name = log2_Float16x4_name;
     log2_Float16x4.backendIndex = 1487;
     log2_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     log2_Float16x4.parameters = log2_Float16x4_args;
@@ -1274,7 +1274,7 @@ void SetupIntrinsics4()
     sin_Float32_arg.name = "val"_c;
     sin_Float32_arg.type = Type::FullType{ Float32Type.name };
     sin_Float32.documentation = "Returns the sine of a value."_c;
-    sin_Float32.name = "sin"_c;
+    sin_Float32.name = sin_Float32_name;
     sin_Float32.backendIndex = 1488;
     sin_Float32.returnType = Type::FullType { Float32Type.name };
     sin_Float32.parameters = sin_Float32_args;
@@ -1288,7 +1288,7 @@ void SetupIntrinsics4()
     sin_Float32x2_arg.name = "val"_c;
     sin_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     sin_Float32x2.documentation = "Returns the sine of a value."_c;
-    sin_Float32x2.name = "sin"_c;
+    sin_Float32x2.name = sin_Float32x2_name;
     sin_Float32x2.backendIndex = 1489;
     sin_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     sin_Float32x2.parameters = sin_Float32x2_args;
@@ -1302,7 +1302,7 @@ void SetupIntrinsics4()
     sin_Float32x3_arg.name = "val"_c;
     sin_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     sin_Float32x3.documentation = "Returns the sine of a value."_c;
-    sin_Float32x3.name = "sin"_c;
+    sin_Float32x3.name = sin_Float32x3_name;
     sin_Float32x3.backendIndex = 1490;
     sin_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     sin_Float32x3.parameters = sin_Float32x3_args;
@@ -1316,7 +1316,7 @@ void SetupIntrinsics4()
     sin_Float32x4_arg.name = "val"_c;
     sin_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     sin_Float32x4.documentation = "Returns the sine of a value."_c;
-    sin_Float32x4.name = "sin"_c;
+    sin_Float32x4.name = sin_Float32x4_name;
     sin_Float32x4.backendIndex = 1491;
     sin_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     sin_Float32x4.parameters = sin_Float32x4_args;
@@ -1330,7 +1330,7 @@ void SetupIntrinsics4()
     sin_Float16_arg.name = "val"_c;
     sin_Float16_arg.type = Type::FullType{ Float16Type.name };
     sin_Float16.documentation = "Returns the sine of a value."_c;
-    sin_Float16.name = "sin"_c;
+    sin_Float16.name = sin_Float16_name;
     sin_Float16.backendIndex = 1492;
     sin_Float16.returnType = Type::FullType { Float16Type.name };
     sin_Float16.parameters = sin_Float16_args;
@@ -1344,7 +1344,7 @@ void SetupIntrinsics4()
     sin_Float16x2_arg.name = "val"_c;
     sin_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     sin_Float16x2.documentation = "Returns the sine of a value."_c;
-    sin_Float16x2.name = "sin"_c;
+    sin_Float16x2.name = sin_Float16x2_name;
     sin_Float16x2.backendIndex = 1493;
     sin_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     sin_Float16x2.parameters = sin_Float16x2_args;
@@ -1358,7 +1358,7 @@ void SetupIntrinsics4()
     sin_Float16x3_arg.name = "val"_c;
     sin_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     sin_Float16x3.documentation = "Returns the sine of a value."_c;
-    sin_Float16x3.name = "sin"_c;
+    sin_Float16x3.name = sin_Float16x3_name;
     sin_Float16x3.backendIndex = 1494;
     sin_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     sin_Float16x3.parameters = sin_Float16x3_args;
@@ -1372,7 +1372,7 @@ void SetupIntrinsics4()
     sin_Float16x4_arg.name = "val"_c;
     sin_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     sin_Float16x4.documentation = "Returns the sine of a value."_c;
-    sin_Float16x4.name = "sin"_c;
+    sin_Float16x4.name = sin_Float16x4_name;
     sin_Float16x4.backendIndex = 1495;
     sin_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     sin_Float16x4.parameters = sin_Float16x4_args;
@@ -1386,7 +1386,7 @@ void SetupIntrinsics4()
     sinh_Float32_arg.name = "val"_c;
     sinh_Float32_arg.type = Type::FullType{ Float32Type.name };
     sinh_Float32.documentation = "Returns the hyperbolic sine of a value."_c;
-    sinh_Float32.name = "sinh"_c;
+    sinh_Float32.name = sinh_Float32_name;
     sinh_Float32.backendIndex = 1496;
     sinh_Float32.returnType = Type::FullType { Float32Type.name };
     sinh_Float32.parameters = sinh_Float32_args;
@@ -1400,7 +1400,7 @@ void SetupIntrinsics4()
     sinh_Float32x2_arg.name = "val"_c;
     sinh_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     sinh_Float32x2.documentation = "Returns the hyperbolic sine of a value."_c;
-    sinh_Float32x2.name = "sinh"_c;
+    sinh_Float32x2.name = sinh_Float32x2_name;
     sinh_Float32x2.backendIndex = 1497;
     sinh_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     sinh_Float32x2.parameters = sinh_Float32x2_args;
@@ -1414,7 +1414,7 @@ void SetupIntrinsics4()
     sinh_Float32x3_arg.name = "val"_c;
     sinh_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     sinh_Float32x3.documentation = "Returns the hyperbolic sine of a value."_c;
-    sinh_Float32x3.name = "sinh"_c;
+    sinh_Float32x3.name = sinh_Float32x3_name;
     sinh_Float32x3.backendIndex = 1498;
     sinh_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     sinh_Float32x3.parameters = sinh_Float32x3_args;
@@ -1428,7 +1428,7 @@ void SetupIntrinsics4()
     sinh_Float32x4_arg.name = "val"_c;
     sinh_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     sinh_Float32x4.documentation = "Returns the hyperbolic sine of a value."_c;
-    sinh_Float32x4.name = "sinh"_c;
+    sinh_Float32x4.name = sinh_Float32x4_name;
     sinh_Float32x4.backendIndex = 1499;
     sinh_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     sinh_Float32x4.parameters = sinh_Float32x4_args;
@@ -1442,7 +1442,7 @@ void SetupIntrinsics4()
     sinh_Float16_arg.name = "val"_c;
     sinh_Float16_arg.type = Type::FullType{ Float16Type.name };
     sinh_Float16.documentation = "Returns the hyperbolic sine of a value."_c;
-    sinh_Float16.name = "sinh"_c;
+    sinh_Float16.name = sinh_Float16_name;
     sinh_Float16.backendIndex = 1500;
     sinh_Float16.returnType = Type::FullType { Float16Type.name };
     sinh_Float16.parameters = sinh_Float16_args;
@@ -1456,7 +1456,7 @@ void SetupIntrinsics4()
     sinh_Float16x2_arg.name = "val"_c;
     sinh_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     sinh_Float16x2.documentation = "Returns the hyperbolic sine of a value."_c;
-    sinh_Float16x2.name = "sinh"_c;
+    sinh_Float16x2.name = sinh_Float16x2_name;
     sinh_Float16x2.backendIndex = 1501;
     sinh_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     sinh_Float16x2.parameters = sinh_Float16x2_args;
@@ -1470,7 +1470,7 @@ void SetupIntrinsics4()
     sinh_Float16x3_arg.name = "val"_c;
     sinh_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     sinh_Float16x3.documentation = "Returns the hyperbolic sine of a value."_c;
-    sinh_Float16x3.name = "sinh"_c;
+    sinh_Float16x3.name = sinh_Float16x3_name;
     sinh_Float16x3.backendIndex = 1502;
     sinh_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     sinh_Float16x3.parameters = sinh_Float16x3_args;
@@ -1484,7 +1484,7 @@ void SetupIntrinsics4()
     sinh_Float16x4_arg.name = "val"_c;
     sinh_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     sinh_Float16x4.documentation = "Returns the hyperbolic sine of a value."_c;
-    sinh_Float16x4.name = "sinh"_c;
+    sinh_Float16x4.name = sinh_Float16x4_name;
     sinh_Float16x4.backendIndex = 1503;
     sinh_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     sinh_Float16x4.parameters = sinh_Float16x4_args;
@@ -1498,7 +1498,7 @@ void SetupIntrinsics4()
     sqrt_Float32_arg.name = "val"_c;
     sqrt_Float32_arg.type = Type::FullType{ Float32Type.name };
     sqrt_Float32.documentation = "Returns the square root of a value."_c;
-    sqrt_Float32.name = "sqrt"_c;
+    sqrt_Float32.name = sqrt_Float32_name;
     sqrt_Float32.backendIndex = 1504;
     sqrt_Float32.returnType = Type::FullType { Float32Type.name };
     sqrt_Float32.parameters = sqrt_Float32_args;
@@ -1512,7 +1512,7 @@ void SetupIntrinsics4()
     sqrt_Float32x2_arg.name = "val"_c;
     sqrt_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     sqrt_Float32x2.documentation = "Returns the square root of a value."_c;
-    sqrt_Float32x2.name = "sqrt"_c;
+    sqrt_Float32x2.name = sqrt_Float32x2_name;
     sqrt_Float32x2.backendIndex = 1505;
     sqrt_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     sqrt_Float32x2.parameters = sqrt_Float32x2_args;
@@ -1526,7 +1526,7 @@ void SetupIntrinsics4()
     sqrt_Float32x3_arg.name = "val"_c;
     sqrt_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     sqrt_Float32x3.documentation = "Returns the square root of a value."_c;
-    sqrt_Float32x3.name = "sqrt"_c;
+    sqrt_Float32x3.name = sqrt_Float32x3_name;
     sqrt_Float32x3.backendIndex = 1506;
     sqrt_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     sqrt_Float32x3.parameters = sqrt_Float32x3_args;
@@ -1540,7 +1540,7 @@ void SetupIntrinsics4()
     sqrt_Float32x4_arg.name = "val"_c;
     sqrt_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     sqrt_Float32x4.documentation = "Returns the square root of a value."_c;
-    sqrt_Float32x4.name = "sqrt"_c;
+    sqrt_Float32x4.name = sqrt_Float32x4_name;
     sqrt_Float32x4.backendIndex = 1507;
     sqrt_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     sqrt_Float32x4.parameters = sqrt_Float32x4_args;
@@ -1554,7 +1554,7 @@ void SetupIntrinsics4()
     sqrt_Float16_arg.name = "val"_c;
     sqrt_Float16_arg.type = Type::FullType{ Float16Type.name };
     sqrt_Float16.documentation = "Returns the square root of a value."_c;
-    sqrt_Float16.name = "sqrt"_c;
+    sqrt_Float16.name = sqrt_Float16_name;
     sqrt_Float16.backendIndex = 1508;
     sqrt_Float16.returnType = Type::FullType { Float16Type.name };
     sqrt_Float16.parameters = sqrt_Float16_args;
@@ -1568,7 +1568,7 @@ void SetupIntrinsics4()
     sqrt_Float16x2_arg.name = "val"_c;
     sqrt_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     sqrt_Float16x2.documentation = "Returns the square root of a value."_c;
-    sqrt_Float16x2.name = "sqrt"_c;
+    sqrt_Float16x2.name = sqrt_Float16x2_name;
     sqrt_Float16x2.backendIndex = 1509;
     sqrt_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     sqrt_Float16x2.parameters = sqrt_Float16x2_args;
@@ -1582,7 +1582,7 @@ void SetupIntrinsics4()
     sqrt_Float16x3_arg.name = "val"_c;
     sqrt_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     sqrt_Float16x3.documentation = "Returns the square root of a value."_c;
-    sqrt_Float16x3.name = "sqrt"_c;
+    sqrt_Float16x3.name = sqrt_Float16x3_name;
     sqrt_Float16x3.backendIndex = 1510;
     sqrt_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     sqrt_Float16x3.parameters = sqrt_Float16x3_args;
@@ -1596,7 +1596,7 @@ void SetupIntrinsics4()
     sqrt_Float16x4_arg.name = "val"_c;
     sqrt_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     sqrt_Float16x4.documentation = "Returns the square root of a value."_c;
-    sqrt_Float16x4.name = "sqrt"_c;
+    sqrt_Float16x4.name = sqrt_Float16x4_name;
     sqrt_Float16x4.backendIndex = 1511;
     sqrt_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     sqrt_Float16x4.parameters = sqrt_Float16x4_args;
@@ -1610,7 +1610,7 @@ void SetupIntrinsics4()
     tan_Float32_arg.name = "val"_c;
     tan_Float32_arg.type = Type::FullType{ Float32Type.name };
     tan_Float32.documentation = "Returns the tangent of a value."_c;
-    tan_Float32.name = "tan"_c;
+    tan_Float32.name = tan_Float32_name;
     tan_Float32.backendIndex = 1512;
     tan_Float32.returnType = Type::FullType { Float32Type.name };
     tan_Float32.parameters = tan_Float32_args;
@@ -1624,7 +1624,7 @@ void SetupIntrinsics4()
     tan_Float32x2_arg.name = "val"_c;
     tan_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     tan_Float32x2.documentation = "Returns the tangent of a value."_c;
-    tan_Float32x2.name = "tan"_c;
+    tan_Float32x2.name = tan_Float32x2_name;
     tan_Float32x2.backendIndex = 1513;
     tan_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     tan_Float32x2.parameters = tan_Float32x2_args;
@@ -1638,7 +1638,7 @@ void SetupIntrinsics4()
     tan_Float32x3_arg.name = "val"_c;
     tan_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     tan_Float32x3.documentation = "Returns the tangent of a value."_c;
-    tan_Float32x3.name = "tan"_c;
+    tan_Float32x3.name = tan_Float32x3_name;
     tan_Float32x3.backendIndex = 1514;
     tan_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     tan_Float32x3.parameters = tan_Float32x3_args;
@@ -1652,7 +1652,7 @@ void SetupIntrinsics4()
     tan_Float32x4_arg.name = "val"_c;
     tan_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     tan_Float32x4.documentation = "Returns the tangent of a value."_c;
-    tan_Float32x4.name = "tan"_c;
+    tan_Float32x4.name = tan_Float32x4_name;
     tan_Float32x4.backendIndex = 1515;
     tan_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     tan_Float32x4.parameters = tan_Float32x4_args;
@@ -1666,7 +1666,7 @@ void SetupIntrinsics4()
     tan_Float16_arg.name = "val"_c;
     tan_Float16_arg.type = Type::FullType{ Float16Type.name };
     tan_Float16.documentation = "Returns the tangent of a value."_c;
-    tan_Float16.name = "tan"_c;
+    tan_Float16.name = tan_Float16_name;
     tan_Float16.backendIndex = 1516;
     tan_Float16.returnType = Type::FullType { Float16Type.name };
     tan_Float16.parameters = tan_Float16_args;
@@ -1680,7 +1680,7 @@ void SetupIntrinsics4()
     tan_Float16x2_arg.name = "val"_c;
     tan_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     tan_Float16x2.documentation = "Returns the tangent of a value."_c;
-    tan_Float16x2.name = "tan"_c;
+    tan_Float16x2.name = tan_Float16x2_name;
     tan_Float16x2.backendIndex = 1517;
     tan_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     tan_Float16x2.parameters = tan_Float16x2_args;
@@ -1694,7 +1694,7 @@ void SetupIntrinsics4()
     tan_Float16x3_arg.name = "val"_c;
     tan_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     tan_Float16x3.documentation = "Returns the tangent of a value."_c;
-    tan_Float16x3.name = "tan"_c;
+    tan_Float16x3.name = tan_Float16x3_name;
     tan_Float16x3.backendIndex = 1518;
     tan_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     tan_Float16x3.parameters = tan_Float16x3_args;
@@ -1708,7 +1708,7 @@ void SetupIntrinsics4()
     tan_Float16x4_arg.name = "val"_c;
     tan_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     tan_Float16x4.documentation = "Returns the tangent of a value."_c;
-    tan_Float16x4.name = "tan"_c;
+    tan_Float16x4.name = tan_Float16x4_name;
     tan_Float16x4.backendIndex = 1519;
     tan_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     tan_Float16x4.parameters = tan_Float16x4_args;
@@ -1722,7 +1722,7 @@ void SetupIntrinsics4()
     tanh_Float32_arg.name = "val"_c;
     tanh_Float32_arg.type = Type::FullType{ Float32Type.name };
     tanh_Float32.documentation = "Returns the hyperbolic tangent of a value."_c;
-    tanh_Float32.name = "tanh"_c;
+    tanh_Float32.name = tanh_Float32_name;
     tanh_Float32.backendIndex = 1520;
     tanh_Float32.returnType = Type::FullType { Float32Type.name };
     tanh_Float32.parameters = tanh_Float32_args;
@@ -1736,7 +1736,7 @@ void SetupIntrinsics4()
     tanh_Float32x2_arg.name = "val"_c;
     tanh_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     tanh_Float32x2.documentation = "Returns the hyperbolic tangent of a value."_c;
-    tanh_Float32x2.name = "tanh"_c;
+    tanh_Float32x2.name = tanh_Float32x2_name;
     tanh_Float32x2.backendIndex = 1521;
     tanh_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     tanh_Float32x2.parameters = tanh_Float32x2_args;
@@ -1750,7 +1750,7 @@ void SetupIntrinsics4()
     tanh_Float32x3_arg.name = "val"_c;
     tanh_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     tanh_Float32x3.documentation = "Returns the hyperbolic tangent of a value."_c;
-    tanh_Float32x3.name = "tanh"_c;
+    tanh_Float32x3.name = tanh_Float32x3_name;
     tanh_Float32x3.backendIndex = 1522;
     tanh_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     tanh_Float32x3.parameters = tanh_Float32x3_args;
@@ -1764,7 +1764,7 @@ void SetupIntrinsics4()
     tanh_Float32x4_arg.name = "val"_c;
     tanh_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     tanh_Float32x4.documentation = "Returns the hyperbolic tangent of a value."_c;
-    tanh_Float32x4.name = "tanh"_c;
+    tanh_Float32x4.name = tanh_Float32x4_name;
     tanh_Float32x4.backendIndex = 1523;
     tanh_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     tanh_Float32x4.parameters = tanh_Float32x4_args;
@@ -1778,7 +1778,7 @@ void SetupIntrinsics4()
     tanh_Float16_arg.name = "val"_c;
     tanh_Float16_arg.type = Type::FullType{ Float16Type.name };
     tanh_Float16.documentation = "Returns the hyperbolic tangent of a value."_c;
-    tanh_Float16.name = "tanh"_c;
+    tanh_Float16.name = tanh_Float16_name;
     tanh_Float16.backendIndex = 1524;
     tanh_Float16.returnType = Type::FullType { Float16Type.name };
     tanh_Float16.parameters = tanh_Float16_args;
@@ -1792,7 +1792,7 @@ void SetupIntrinsics4()
     tanh_Float16x2_arg.name = "val"_c;
     tanh_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     tanh_Float16x2.documentation = "Returns the hyperbolic tangent of a value."_c;
-    tanh_Float16x2.name = "tanh"_c;
+    tanh_Float16x2.name = tanh_Float16x2_name;
     tanh_Float16x2.backendIndex = 1525;
     tanh_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     tanh_Float16x2.parameters = tanh_Float16x2_args;
@@ -1806,7 +1806,7 @@ void SetupIntrinsics4()
     tanh_Float16x3_arg.name = "val"_c;
     tanh_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     tanh_Float16x3.documentation = "Returns the hyperbolic tangent of a value."_c;
-    tanh_Float16x3.name = "tanh"_c;
+    tanh_Float16x3.name = tanh_Float16x3_name;
     tanh_Float16x3.backendIndex = 1526;
     tanh_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     tanh_Float16x3.parameters = tanh_Float16x3_args;
@@ -1820,7 +1820,7 @@ void SetupIntrinsics4()
     tanh_Float16x4_arg.name = "val"_c;
     tanh_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     tanh_Float16x4.documentation = "Returns the hyperbolic tangent of a value."_c;
-    tanh_Float16x4.name = "tanh"_c;
+    tanh_Float16x4.name = tanh_Float16x4_name;
     tanh_Float16x4.backendIndex = 1527;
     tanh_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     tanh_Float16x4.parameters = tanh_Float16x4_args;
@@ -1836,7 +1836,7 @@ void SetupIntrinsics4()
     atan2_Float32_x.name = "x"_c;
     atan2_Float32_x.type = Type::FullType{ Float32Type.name };
     atan2_Float32.documentation = "Returns the angle whose tangent is the quotient of the two specified numbers."_c;
-    atan2_Float32.name = "atan2"_c;
+    atan2_Float32.name = atan2_Float32_name;
     atan2_Float32.backendIndex = 1528;
     atan2_Float32.returnType = Type::FullType { Float32Type.name };
     atan2_Float32.parameters = atan2_Float32_args;
@@ -1853,7 +1853,7 @@ void SetupIntrinsics4()
     atan2_Float32x2_x.name = "x"_c;
     atan2_Float32x2_x.type = Type::FullType{ Float32x2Type.name };
     atan2_Float32x2.documentation = "Returns the angle whose tangent is the quotient of the two specified numbers."_c;
-    atan2_Float32x2.name = "atan2"_c;
+    atan2_Float32x2.name = atan2_Float32x2_name;
     atan2_Float32x2.backendIndex = 1529;
     atan2_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     atan2_Float32x2.parameters = atan2_Float32x2_args;
@@ -1870,7 +1870,7 @@ void SetupIntrinsics4()
     atan2_Float32x3_x.name = "x"_c;
     atan2_Float32x3_x.type = Type::FullType{ Float32x3Type.name };
     atan2_Float32x3.documentation = "Returns the angle whose tangent is the quotient of the two specified numbers."_c;
-    atan2_Float32x3.name = "atan2"_c;
+    atan2_Float32x3.name = atan2_Float32x3_name;
     atan2_Float32x3.backendIndex = 1530;
     atan2_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     atan2_Float32x3.parameters = atan2_Float32x3_args;
@@ -1887,7 +1887,7 @@ void SetupIntrinsics4()
     atan2_Float32x4_x.name = "x"_c;
     atan2_Float32x4_x.type = Type::FullType{ Float32x4Type.name };
     atan2_Float32x4.documentation = "Returns the angle whose tangent is the quotient of the two specified numbers."_c;
-    atan2_Float32x4.name = "atan2"_c;
+    atan2_Float32x4.name = atan2_Float32x4_name;
     atan2_Float32x4.backendIndex = 1531;
     atan2_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     atan2_Float32x4.parameters = atan2_Float32x4_args;
@@ -1904,7 +1904,7 @@ void SetupIntrinsics4()
     atan2_Float16_x.name = "x"_c;
     atan2_Float16_x.type = Type::FullType{ Float16Type.name };
     atan2_Float16.documentation = "Returns the angle whose tangent is the quotient of the two specified numbers."_c;
-    atan2_Float16.name = "atan2"_c;
+    atan2_Float16.name = atan2_Float16_name;
     atan2_Float16.backendIndex = 1532;
     atan2_Float16.returnType = Type::FullType { Float16Type.name };
     atan2_Float16.parameters = atan2_Float16_args;
@@ -1921,7 +1921,7 @@ void SetupIntrinsics4()
     atan2_Float16x2_x.name = "x"_c;
     atan2_Float16x2_x.type = Type::FullType{ Float16x2Type.name };
     atan2_Float16x2.documentation = "Returns the angle whose tangent is the quotient of the two specified numbers."_c;
-    atan2_Float16x2.name = "atan2"_c;
+    atan2_Float16x2.name = atan2_Float16x2_name;
     atan2_Float16x2.backendIndex = 1533;
     atan2_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     atan2_Float16x2.parameters = atan2_Float16x2_args;
@@ -1938,7 +1938,7 @@ void SetupIntrinsics4()
     atan2_Float16x3_x.name = "x"_c;
     atan2_Float16x3_x.type = Type::FullType{ Float16x3Type.name };
     atan2_Float16x3.documentation = "Returns the angle whose tangent is the quotient of the two specified numbers."_c;
-    atan2_Float16x3.name = "atan2"_c;
+    atan2_Float16x3.name = atan2_Float16x3_name;
     atan2_Float16x3.backendIndex = 1534;
     atan2_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     atan2_Float16x3.parameters = atan2_Float16x3_args;
@@ -1955,7 +1955,7 @@ void SetupIntrinsics4()
     atan2_Float16x4_x.name = "x"_c;
     atan2_Float16x4_x.type = Type::FullType{ Float16x4Type.name };
     atan2_Float16x4.documentation = "Returns the angle whose tangent is the quotient of the two specified numbers."_c;
-    atan2_Float16x4.name = "atan2"_c;
+    atan2_Float16x4.name = atan2_Float16x4_name;
     atan2_Float16x4.backendIndex = 1535;
     atan2_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     atan2_Float16x4.parameters = atan2_Float16x4_args;
@@ -1972,7 +1972,7 @@ void SetupIntrinsics4()
     pow_Float32_exp.name = "exponent"_c;
     pow_Float32_exp.type = Type::FullType{ Float32Type.name };
     pow_Float32.documentation = "Returns the result of raising a value to the power of an exponent."_c;
-    pow_Float32.name = "pow"_c;
+    pow_Float32.name = pow_Float32_name;
     pow_Float32.backendIndex = 1536;
     pow_Float32.returnType = Type::FullType { Float32Type.name };
     pow_Float32.parameters = pow_Float32_args;
@@ -1989,7 +1989,7 @@ void SetupIntrinsics4()
     pow_Float32x2_exp.name = "exponent"_c;
     pow_Float32x2_exp.type = Type::FullType{ Float32x2Type.name };
     pow_Float32x2.documentation = "Returns the result of raising a value to the power of an exponent."_c;
-    pow_Float32x2.name = "pow"_c;
+    pow_Float32x2.name = pow_Float32x2_name;
     pow_Float32x2.backendIndex = 1537;
     pow_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     pow_Float32x2.parameters = pow_Float32x2_args;
@@ -2006,7 +2006,7 @@ void SetupIntrinsics4()
     pow_Float32x3_exp.name = "exponent"_c;
     pow_Float32x3_exp.type = Type::FullType{ Float32x3Type.name };
     pow_Float32x3.documentation = "Returns the result of raising a value to the power of an exponent."_c;
-    pow_Float32x3.name = "pow"_c;
+    pow_Float32x3.name = pow_Float32x3_name;
     pow_Float32x3.backendIndex = 1538;
     pow_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     pow_Float32x3.parameters = pow_Float32x3_args;
@@ -2023,7 +2023,7 @@ void SetupIntrinsics4()
     pow_Float32x4_exp.name = "exponent"_c;
     pow_Float32x4_exp.type = Type::FullType{ Float32x4Type.name };
     pow_Float32x4.documentation = "Returns the result of raising a value to the power of an exponent."_c;
-    pow_Float32x4.name = "pow"_c;
+    pow_Float32x4.name = pow_Float32x4_name;
     pow_Float32x4.backendIndex = 1539;
     pow_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     pow_Float32x4.parameters = pow_Float32x4_args;
@@ -2040,7 +2040,7 @@ void SetupIntrinsics4()
     pow_Float16_exp.name = "exponent"_c;
     pow_Float16_exp.type = Type::FullType{ Float16Type.name };
     pow_Float16.documentation = "Returns the result of raising a value to the power of an exponent."_c;
-    pow_Float16.name = "pow"_c;
+    pow_Float16.name = pow_Float16_name;
     pow_Float16.backendIndex = 1540;
     pow_Float16.returnType = Type::FullType { Float16Type.name };
     pow_Float16.parameters = pow_Float16_args;
@@ -2057,7 +2057,7 @@ void SetupIntrinsics4()
     pow_Float16x2_exp.name = "exponent"_c;
     pow_Float16x2_exp.type = Type::FullType{ Float16x2Type.name };
     pow_Float16x2.documentation = "Returns the result of raising a value to the power of an exponent."_c;
-    pow_Float16x2.name = "pow"_c;
+    pow_Float16x2.name = pow_Float16x2_name;
     pow_Float16x2.backendIndex = 1541;
     pow_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     pow_Float16x2.parameters = pow_Float16x2_args;
@@ -2074,7 +2074,7 @@ void SetupIntrinsics4()
     pow_Float16x3_exp.name = "exponent"_c;
     pow_Float16x3_exp.type = Type::FullType{ Float16x3Type.name };
     pow_Float16x3.documentation = "Returns the result of raising a value to the power of an exponent."_c;
-    pow_Float16x3.name = "pow"_c;
+    pow_Float16x3.name = pow_Float16x3_name;
     pow_Float16x3.backendIndex = 1542;
     pow_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     pow_Float16x3.parameters = pow_Float16x3_args;
@@ -2091,7 +2091,7 @@ void SetupIntrinsics4()
     pow_Float16x4_exp.name = "exponent"_c;
     pow_Float16x4_exp.type = Type::FullType{ Float16x4Type.name };
     pow_Float16x4.documentation = "Returns the result of raising a value to the power of an exponent."_c;
-    pow_Float16x4.name = "pow"_c;
+    pow_Float16x4.name = pow_Float16x4_name;
     pow_Float16x4.backendIndex = 1543;
     pow_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     pow_Float16x4.parameters = pow_Float16x4_args;
@@ -2110,7 +2110,7 @@ void SetupIntrinsics4()
     mad_Float32_add.name = "addend"_c;
     mad_Float32_add.type = Type::FullType{ Float32Type.name };
     mad_Float32.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
-    mad_Float32.name = "mad"_c;
+    mad_Float32.name = mad_Float32_name;
     mad_Float32.backendIndex = 1544;
     mad_Float32.returnType = Type::FullType { Float32Type.name };
     mad_Float32.parameters = mad_Float32_args;
@@ -2130,7 +2130,7 @@ void SetupIntrinsics4()
     mad_Float32x2_add.name = "addend"_c;
     mad_Float32x2_add.type = Type::FullType{ Float32x2Type.name };
     mad_Float32x2.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
-    mad_Float32x2.name = "mad"_c;
+    mad_Float32x2.name = mad_Float32x2_name;
     mad_Float32x2.backendIndex = 1545;
     mad_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     mad_Float32x2.parameters = mad_Float32x2_args;
@@ -2150,7 +2150,7 @@ void SetupIntrinsics4()
     mad_Float32x3_add.name = "addend"_c;
     mad_Float32x3_add.type = Type::FullType{ Float32x3Type.name };
     mad_Float32x3.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
-    mad_Float32x3.name = "mad"_c;
+    mad_Float32x3.name = mad_Float32x3_name;
     mad_Float32x3.backendIndex = 1546;
     mad_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     mad_Float32x3.parameters = mad_Float32x3_args;
@@ -2170,7 +2170,7 @@ void SetupIntrinsics4()
     mad_Float32x4_add.name = "addend"_c;
     mad_Float32x4_add.type = Type::FullType{ Float32x4Type.name };
     mad_Float32x4.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
-    mad_Float32x4.name = "mad"_c;
+    mad_Float32x4.name = mad_Float32x4_name;
     mad_Float32x4.backendIndex = 1547;
     mad_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     mad_Float32x4.parameters = mad_Float32x4_args;
@@ -2190,7 +2190,7 @@ void SetupIntrinsics4()
     mad_Float16_add.name = "addend"_c;
     mad_Float16_add.type = Type::FullType{ Float16Type.name };
     mad_Float16.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
-    mad_Float16.name = "mad"_c;
+    mad_Float16.name = mad_Float16_name;
     mad_Float16.backendIndex = 1548;
     mad_Float16.returnType = Type::FullType { Float16Type.name };
     mad_Float16.parameters = mad_Float16_args;
@@ -2210,7 +2210,7 @@ void SetupIntrinsics4()
     mad_Float16x2_add.name = "addend"_c;
     mad_Float16x2_add.type = Type::FullType{ Float16x2Type.name };
     mad_Float16x2.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
-    mad_Float16x2.name = "mad"_c;
+    mad_Float16x2.name = mad_Float16x2_name;
     mad_Float16x2.backendIndex = 1549;
     mad_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     mad_Float16x2.parameters = mad_Float16x2_args;
@@ -2230,7 +2230,7 @@ void SetupIntrinsics4()
     mad_Float16x3_add.name = "addend"_c;
     mad_Float16x3_add.type = Type::FullType{ Float16x3Type.name };
     mad_Float16x3.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
-    mad_Float16x3.name = "mad"_c;
+    mad_Float16x3.name = mad_Float16x3_name;
     mad_Float16x3.backendIndex = 1550;
     mad_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     mad_Float16x3.parameters = mad_Float16x3_args;
@@ -2250,7 +2250,7 @@ void SetupIntrinsics4()
     mad_Float16x4_add.name = "addend"_c;
     mad_Float16x4_add.type = Type::FullType{ Float16x4Type.name };
     mad_Float16x4.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
-    mad_Float16x4.name = "mad"_c;
+    mad_Float16x4.name = mad_Float16x4_name;
     mad_Float16x4.backendIndex = 1551;
     mad_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     mad_Float16x4.parameters = mad_Float16x4_args;
@@ -2270,7 +2270,7 @@ void SetupIntrinsics4()
     mad_Int32_add.name = "addend"_c;
     mad_Int32_add.type = Type::FullType{ Int32Type.name };
     mad_Int32.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
-    mad_Int32.name = "mad"_c;
+    mad_Int32.name = mad_Int32_name;
     mad_Int32.backendIndex = 1552;
     mad_Int32.returnType = Type::FullType { Int32Type.name };
     mad_Int32.parameters = mad_Int32_args;
@@ -2290,7 +2290,7 @@ void SetupIntrinsics4()
     mad_Int32x2_add.name = "addend"_c;
     mad_Int32x2_add.type = Type::FullType{ Int32x2Type.name };
     mad_Int32x2.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
-    mad_Int32x2.name = "mad"_c;
+    mad_Int32x2.name = mad_Int32x2_name;
     mad_Int32x2.backendIndex = 1553;
     mad_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     mad_Int32x2.parameters = mad_Int32x2_args;
@@ -2310,7 +2310,7 @@ void SetupIntrinsics4()
     mad_Int32x3_add.name = "addend"_c;
     mad_Int32x3_add.type = Type::FullType{ Int32x3Type.name };
     mad_Int32x3.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
-    mad_Int32x3.name = "mad"_c;
+    mad_Int32x3.name = mad_Int32x3_name;
     mad_Int32x3.backendIndex = 1554;
     mad_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     mad_Int32x3.parameters = mad_Int32x3_args;
@@ -2330,7 +2330,7 @@ void SetupIntrinsics4()
     mad_Int32x4_add.name = "addend"_c;
     mad_Int32x4_add.type = Type::FullType{ Int32x4Type.name };
     mad_Int32x4.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
-    mad_Int32x4.name = "mad"_c;
+    mad_Int32x4.name = mad_Int32x4_name;
     mad_Int32x4.backendIndex = 1555;
     mad_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     mad_Int32x4.parameters = mad_Int32x4_args;
@@ -2350,7 +2350,7 @@ void SetupIntrinsics4()
     mad_Int16_add.name = "addend"_c;
     mad_Int16_add.type = Type::FullType{ Int16Type.name };
     mad_Int16.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
-    mad_Int16.name = "mad"_c;
+    mad_Int16.name = mad_Int16_name;
     mad_Int16.backendIndex = 1556;
     mad_Int16.returnType = Type::FullType { Int16Type.name };
     mad_Int16.parameters = mad_Int16_args;
@@ -2370,7 +2370,7 @@ void SetupIntrinsics4()
     mad_Int16x2_add.name = "addend"_c;
     mad_Int16x2_add.type = Type::FullType{ Int16x2Type.name };
     mad_Int16x2.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
-    mad_Int16x2.name = "mad"_c;
+    mad_Int16x2.name = mad_Int16x2_name;
     mad_Int16x2.backendIndex = 1557;
     mad_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     mad_Int16x2.parameters = mad_Int16x2_args;
@@ -2390,7 +2390,7 @@ void SetupIntrinsics4()
     mad_Int16x3_add.name = "addend"_c;
     mad_Int16x3_add.type = Type::FullType{ Int16x3Type.name };
     mad_Int16x3.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
-    mad_Int16x3.name = "mad"_c;
+    mad_Int16x3.name = mad_Int16x3_name;
     mad_Int16x3.backendIndex = 1558;
     mad_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     mad_Int16x3.parameters = mad_Int16x3_args;
@@ -2410,7 +2410,7 @@ void SetupIntrinsics4()
     mad_Int16x4_add.name = "addend"_c;
     mad_Int16x4_add.type = Type::FullType{ Int16x4Type.name };
     mad_Int16x4.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
-    mad_Int16x4.name = "mad"_c;
+    mad_Int16x4.name = mad_Int16x4_name;
     mad_Int16x4.backendIndex = 1559;
     mad_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     mad_Int16x4.parameters = mad_Int16x4_args;
@@ -2430,7 +2430,7 @@ void SetupIntrinsics4()
     mad_UInt32_add.name = "addend"_c;
     mad_UInt32_add.type = Type::FullType{ UInt32Type.name };
     mad_UInt32.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
-    mad_UInt32.name = "mad"_c;
+    mad_UInt32.name = mad_UInt32_name;
     mad_UInt32.backendIndex = 1560;
     mad_UInt32.returnType = Type::FullType { UInt32Type.name };
     mad_UInt32.parameters = mad_UInt32_args;
@@ -2450,7 +2450,7 @@ void SetupIntrinsics4()
     mad_UInt32x2_add.name = "addend"_c;
     mad_UInt32x2_add.type = Type::FullType{ UInt32x2Type.name };
     mad_UInt32x2.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
-    mad_UInt32x2.name = "mad"_c;
+    mad_UInt32x2.name = mad_UInt32x2_name;
     mad_UInt32x2.backendIndex = 1561;
     mad_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
     mad_UInt32x2.parameters = mad_UInt32x2_args;
@@ -2470,7 +2470,7 @@ void SetupIntrinsics4()
     mad_UInt32x3_add.name = "addend"_c;
     mad_UInt32x3_add.type = Type::FullType{ UInt32x3Type.name };
     mad_UInt32x3.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
-    mad_UInt32x3.name = "mad"_c;
+    mad_UInt32x3.name = mad_UInt32x3_name;
     mad_UInt32x3.backendIndex = 1562;
     mad_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
     mad_UInt32x3.parameters = mad_UInt32x3_args;
@@ -2490,7 +2490,7 @@ void SetupIntrinsics4()
     mad_UInt32x4_add.name = "addend"_c;
     mad_UInt32x4_add.type = Type::FullType{ UInt32x4Type.name };
     mad_UInt32x4.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
-    mad_UInt32x4.name = "mad"_c;
+    mad_UInt32x4.name = mad_UInt32x4_name;
     mad_UInt32x4.backendIndex = 1563;
     mad_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
     mad_UInt32x4.parameters = mad_UInt32x4_args;
@@ -2510,7 +2510,7 @@ void SetupIntrinsics4()
     mad_UInt16_add.name = "addend"_c;
     mad_UInt16_add.type = Type::FullType{ UInt16Type.name };
     mad_UInt16.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
-    mad_UInt16.name = "mad"_c;
+    mad_UInt16.name = mad_UInt16_name;
     mad_UInt16.backendIndex = 1564;
     mad_UInt16.returnType = Type::FullType { UInt16Type.name };
     mad_UInt16.parameters = mad_UInt16_args;
@@ -2530,7 +2530,7 @@ void SetupIntrinsics4()
     mad_UInt16x2_add.name = "addend"_c;
     mad_UInt16x2_add.type = Type::FullType{ UInt16x2Type.name };
     mad_UInt16x2.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
-    mad_UInt16x2.name = "mad"_c;
+    mad_UInt16x2.name = mad_UInt16x2_name;
     mad_UInt16x2.backendIndex = 1565;
     mad_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
     mad_UInt16x2.parameters = mad_UInt16x2_args;
@@ -2550,7 +2550,7 @@ void SetupIntrinsics4()
     mad_UInt16x3_add.name = "addend"_c;
     mad_UInt16x3_add.type = Type::FullType{ UInt16x3Type.name };
     mad_UInt16x3.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
-    mad_UInt16x3.name = "mad"_c;
+    mad_UInt16x3.name = mad_UInt16x3_name;
     mad_UInt16x3.backendIndex = 1566;
     mad_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
     mad_UInt16x3.parameters = mad_UInt16x3_args;
@@ -2570,7 +2570,7 @@ void SetupIntrinsics4()
     mad_UInt16x4_add.name = "addend"_c;
     mad_UInt16x4_add.type = Type::FullType{ UInt16x4Type.name };
     mad_UInt16x4.documentation = "Returns the result of multiplying a value by a multiplier and adding an addend."_c;
-    mad_UInt16x4.name = "mad"_c;
+    mad_UInt16x4.name = mad_UInt16x4_name;
     mad_UInt16x4.backendIndex = 1567;
     mad_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
     mad_UInt16x4.parameters = mad_UInt16x4_args;
@@ -2588,7 +2588,7 @@ void SetupIntrinsics4()
     dot_Float32x2_y.name = "y"_c;
     dot_Float32x2_y.type = Type::FullType{ Float32x2Type.name };
     dot_Float32x2.documentation = "Returns the dot product of two vectors."_c;
-    dot_Float32x2.name = "dot"_c;
+    dot_Float32x2.name = dot_Float32x2_name;
     dot_Float32x2.backendIndex = 1568;
     dot_Float32x2.returnType = Type::FullType { Float32Type.name };
     dot_Float32x2.parameters = dot_Float32x2_args;
@@ -2605,7 +2605,7 @@ void SetupIntrinsics4()
     dot_Float32x3_y.name = "y"_c;
     dot_Float32x3_y.type = Type::FullType{ Float32x3Type.name };
     dot_Float32x3.documentation = "Returns the dot product of two vectors."_c;
-    dot_Float32x3.name = "dot"_c;
+    dot_Float32x3.name = dot_Float32x3_name;
     dot_Float32x3.backendIndex = 1569;
     dot_Float32x3.returnType = Type::FullType { Float32Type.name };
     dot_Float32x3.parameters = dot_Float32x3_args;
@@ -2622,7 +2622,7 @@ void SetupIntrinsics4()
     dot_Float32x4_y.name = "y"_c;
     dot_Float32x4_y.type = Type::FullType{ Float32x4Type.name };
     dot_Float32x4.documentation = "Returns the dot product of two vectors."_c;
-    dot_Float32x4.name = "dot"_c;
+    dot_Float32x4.name = dot_Float32x4_name;
     dot_Float32x4.backendIndex = 1570;
     dot_Float32x4.returnType = Type::FullType { Float32Type.name };
     dot_Float32x4.parameters = dot_Float32x4_args;
@@ -2639,7 +2639,7 @@ void SetupIntrinsics4()
     dot_Float16x2_y.name = "y"_c;
     dot_Float16x2_y.type = Type::FullType{ Float16x2Type.name };
     dot_Float16x2.documentation = "Returns the dot product of two vectors."_c;
-    dot_Float16x2.name = "dot"_c;
+    dot_Float16x2.name = dot_Float16x2_name;
     dot_Float16x2.backendIndex = 1571;
     dot_Float16x2.returnType = Type::FullType { Float16Type.name };
     dot_Float16x2.parameters = dot_Float16x2_args;
@@ -2656,7 +2656,7 @@ void SetupIntrinsics4()
     dot_Float16x3_y.name = "y"_c;
     dot_Float16x3_y.type = Type::FullType{ Float16x3Type.name };
     dot_Float16x3.documentation = "Returns the dot product of two vectors."_c;
-    dot_Float16x3.name = "dot"_c;
+    dot_Float16x3.name = dot_Float16x3_name;
     dot_Float16x3.backendIndex = 1572;
     dot_Float16x3.returnType = Type::FullType { Float16Type.name };
     dot_Float16x3.parameters = dot_Float16x3_args;
@@ -2673,7 +2673,7 @@ void SetupIntrinsics4()
     dot_Float16x4_y.name = "y"_c;
     dot_Float16x4_y.type = Type::FullType{ Float16x4Type.name };
     dot_Float16x4.documentation = "Returns the dot product of two vectors."_c;
-    dot_Float16x4.name = "dot"_c;
+    dot_Float16x4.name = dot_Float16x4_name;
     dot_Float16x4.backendIndex = 1573;
     dot_Float16x4.returnType = Type::FullType { Float16Type.name };
     dot_Float16x4.parameters = dot_Float16x4_args;
@@ -2690,7 +2690,7 @@ void SetupIntrinsics4()
     reflect_Float32x2_normal.name = "normal"_c;
     reflect_Float32x2_normal.type = Type::FullType{ Float32x2Type.name };
     reflect_Float32x2.documentation = "Returns the reflection of a vector through a surface using an incident vector and normal."_c;
-    reflect_Float32x2.name = "reflect"_c;
+    reflect_Float32x2.name = reflect_Float32x2_name;
     reflect_Float32x2.backendIndex = 1574;
     reflect_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     reflect_Float32x2.parameters = reflect_Float32x2_args;
@@ -2707,7 +2707,7 @@ void SetupIntrinsics4()
     reflect_Float32x3_normal.name = "normal"_c;
     reflect_Float32x3_normal.type = Type::FullType{ Float32x3Type.name };
     reflect_Float32x3.documentation = "Returns the reflection of a vector through a surface using an incident vector and normal."_c;
-    reflect_Float32x3.name = "reflect"_c;
+    reflect_Float32x3.name = reflect_Float32x3_name;
     reflect_Float32x3.backendIndex = 1575;
     reflect_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     reflect_Float32x3.parameters = reflect_Float32x3_args;
@@ -2724,7 +2724,7 @@ void SetupIntrinsics4()
     reflect_Float32x4_normal.name = "normal"_c;
     reflect_Float32x4_normal.type = Type::FullType{ Float32x4Type.name };
     reflect_Float32x4.documentation = "Returns the reflection of a vector through a surface using an incident vector and normal."_c;
-    reflect_Float32x4.name = "reflect"_c;
+    reflect_Float32x4.name = reflect_Float32x4_name;
     reflect_Float32x4.backendIndex = 1576;
     reflect_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     reflect_Float32x4.parameters = reflect_Float32x4_args;

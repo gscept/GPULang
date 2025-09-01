@@ -119,9 +119,19 @@
         "FilterMode",
         "AddressMode",
         "Color",
+        "InputTopology",
+        "OutputTopology",
+        "Patch",
+        "Winding",
+        "Partition",
+        "PixelOrigin",
+        "ComputeDerivatives",
+        "GeometryVertex",
         "GeometryPoint",
         "GeometryLine",
-        "GeometryTriangle"
+        "GeometryLineAdjacency",
+        "GeometryTriangle",
+        "GeometryTriangleAdjacency"
     ],
     "builtin_functions": [
         "abs",

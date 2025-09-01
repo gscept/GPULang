@@ -5577,80 +5577,80 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
         , { ProgramInstance::__Resolved::EntryType::RayCallableShader, Capabilities::RayTracingKHR }
     };
 
-    static std::unordered_map<Function::__Resolved::PartitionMethod, std::string> partitionMap =
+    static std::unordered_map<uint32_t, std::string> partitionMap =
     {
-        { Function::__Resolved::PartitionMethod::IntegerSteps, "SpacingEqual" }
-        , { Function::__Resolved::PartitionMethod::FloatEven, "SpacingFractionalEven" }
-        , { Function::__Resolved::PartitionMethod::FloatOdd, "SpacingFractionalOdd" }
+        { PartitionIntegerSteps_value, "SpacingEqual" }
+        , { PartitionFractionalEven_value, "SpacingFractionalEven" }
+        , { PartitionFractionalOdd_value, "SpacingFractionalOdd" }
     };
     
-    static std::unordered_map<Function::__Resolved::PartitionMethod, SPVEnum> partitionEnumMap =
+    static std::unordered_map<uint32_t, SPVEnum> partitionEnumMap =
     {
-        { Function::__Resolved::PartitionMethod::IntegerSteps, ExecutionModes::SpacingEqual }
-        , { Function::__Resolved::PartitionMethod::FloatEven, ExecutionModes::SpacingFractionalEven }
-        , { Function::__Resolved::PartitionMethod::FloatOdd, ExecutionModes::SpacingFractionalOdd }
+        { PartitionIntegerSteps_value, ExecutionModes::SpacingEqual }
+        , { PartitionFractionalEven_value, ExecutionModes::SpacingFractionalEven }
+        , { PartitionFractionalOdd_value, ExecutionModes::SpacingFractionalOdd }
     };
 
-    static std::unordered_map<Function::__Resolved::WindingOrder, std::string> windingOrderMap =
+    static std::unordered_map<uint32_t, std::string> windingOrderMap =
     {
-        { Function::__Resolved::WindingOrder::Clockwise, "VertexOrderCw" }
-        , { Function::__Resolved::WindingOrder::CounterClockwise, "VertexOrderCcw" }
+        { WindingClockwise_value, "VertexOrderCw" }
+        , { WindingCounterClockwise_value, "VertexOrderCcw" }
     };
     
-    static std::unordered_map<Function::__Resolved::WindingOrder, SPVEnum> windingOrderEnumMap =
+    static std::unordered_map<uint32_t, SPVEnum> windingOrderEnumMap =
     {
-        { Function::__Resolved::WindingOrder::Clockwise, ExecutionModes::VertexOrderCw }
-        , { Function::__Resolved::WindingOrder::CounterClockwise, ExecutionModes::VertexOrderCcw }
+        { WindingClockwise_value, ExecutionModes::VertexOrderCw }
+        , { WindingCounterClockwise_value, ExecutionModes::VertexOrderCcw }
     };
 
-    static std::unordered_map<Function::__Resolved::PixelOrigin, std::string> pixelOriginMap =
+    static std::unordered_map<uint32_t, std::string> pixelOriginMap =
     {
-        { Function::__Resolved::PixelOrigin::Center, "VertexOrderCw" }
-        , { Function::__Resolved::PixelOrigin::Upper, "OriginUpperLeft" }
-        , { Function::__Resolved::PixelOrigin::Lower, "OriginLowerLeft" }
+        { PixelOriginCenter_value, "PixelCenterInteger" }
+        , { PixelOriginUpperLeft_value, "OriginUpperLeft" }
+        , { PixelOriginLowerLeft_value, "OriginLowerLeft" }
     };
     
-    static std::unordered_map<Function::__Resolved::PixelOrigin, SPVEnum> pixelOriginEnumMap =
+    static std::unordered_map<uint32_t, SPVEnum> pixelOriginEnumMap =
     {
-        { Function::__Resolved::PixelOrigin::Center, ExecutionModes::VertexOrderCw }
-        , { Function::__Resolved::PixelOrigin::Upper, ExecutionModes::OriginUpperLeft }
-        , { Function::__Resolved::PixelOrigin::Lower, ExecutionModes::OriginLowerLeft }
+        { PixelOriginCenter_value, ExecutionModes::PixelCenterInteger }
+        , { PixelOriginUpperLeft_value, ExecutionModes::OriginUpperLeft }
+        , { PixelOriginLowerLeft_value, ExecutionModes::OriginLowerLeft }
     };
 
-    static std::unordered_map<Function::__Resolved::PrimitiveTopology, std::string> inputPrimitiveTopologyMap =
+    static std::unordered_map<uint32_t, std::string> inputPrimitiveTopologyMap =
     {
-        { Function::__Resolved::PrimitiveTopology::Points, "InputPoints" }
-        , { Function::__Resolved::PrimitiveTopology::Lines, "InputLines" }
-        , { Function::__Resolved::PrimitiveTopology::LinesAdjacency, "InputLinesAdjacency" }
-        , { Function::__Resolved::PrimitiveTopology::Triangles, "Triangles" }
-        , { Function::__Resolved::PrimitiveTopology::TrianglesAdjacency, "InputTrianglesAdjacency" }
-        , { Function::__Resolved::PrimitiveTopology::Quads, "Quads" }
-        , { Function::__Resolved::PrimitiveTopology::Isolines, "Isolines" }
+        { InputTopologyPoints_value, "InputPoints" }
+        , { InputTopologyLines_value, "InputLines" }
+        , { InputTopologyLinesAdjacency_value, "InputLinesAdjacency" }
+        , { InputTopologyTriangles_value, "Triangles" }
+        , { InputTopologyTrianglesAdjacency_value, "InputTrianglesAdjacency" }
+        //, { Function::__Resolved::PrimitiveTopology::Quads, "Quads" }
+        //, { Function::__Resolved::PrimitiveTopology::Isolines, "Isolines" }
     };
 
-    static std::unordered_map<Function::__Resolved::PrimitiveTopology, SPVEnum> inputPrimitiveTopologyEnumMap =
+    static std::unordered_map<uint32_t, SPVEnum> inputPrimitiveTopologyEnumMap =
     {
-        { Function::__Resolved::PrimitiveTopology::Points, ExecutionModes::InputPoints }
-        , { Function::__Resolved::PrimitiveTopology::Lines, ExecutionModes::InputLines }
-        , { Function::__Resolved::PrimitiveTopology::LinesAdjacency, ExecutionModes::InputLinesAdjacency }
-        , { Function::__Resolved::PrimitiveTopology::Triangles, ExecutionModes::Triangles }
-        , { Function::__Resolved::PrimitiveTopology::TrianglesAdjacency, ExecutionModes::InputTrianglesAdjacency }
-        , { Function::__Resolved::PrimitiveTopology::Quads, ExecutionModes::Quads }
-        , { Function::__Resolved::PrimitiveTopology::Isolines, ExecutionModes::Isolines }
+        { InputTopologyPoints_value, ExecutionModes::InputPoints }
+        , { InputTopologyLines_value, ExecutionModes::InputLines }
+        , { InputTopologyLinesAdjacency_value, ExecutionModes::InputLinesAdjacency }
+        , { InputTopologyTriangles_value, ExecutionModes::Triangles }
+        , { InputTopologyTrianglesAdjacency_value, ExecutionModes::InputTrianglesAdjacency }
+        //, { Function::__Resolved::PrimitiveTopology::Quads, ExecutionModes::Quads }
+        //, { Function::__Resolved::PrimitiveTopology::Isolines, ExecutionModes::Isolines }
 };
 
-    static std::unordered_map<Function::__Resolved::PrimitiveTopology, std::string> outputPrimitiveTopologyMap =
+    static std::unordered_map<uint32_t, std::string> outputPrimitiveTopologyMap =
     {
-        { Function::__Resolved::PrimitiveTopology::Points, "OutputPoints" }
-        , { Function::__Resolved::PrimitiveTopology::Lines, "OutputLineStrip" }
-        , { Function::__Resolved::PrimitiveTopology::Triangles, "OutputTriangleStrip" }
+        { OutputTopologyPoints_value, "OutputPoints" }
+        , { OutputTopologyLines_value, "OutputLineStrip" }
+        , { OutputTopologyTriangles_value, "OutputTriangleStrip" }
     };
 
-    static std::unordered_map<Function::__Resolved::PrimitiveTopology, SPVEnum> outputPrimitiveTopologyEnumMap =
+    static std::unordered_map<uint32_t, SPVEnum> outputPrimitiveTopologyEnumMap =
     {
-        { Function::__Resolved::PrimitiveTopology::Points, ExecutionModes::OutputPoints }
-        , { Function::__Resolved::PrimitiveTopology::Lines, ExecutionModes::OutputLineStrip }
-        , { Function::__Resolved::PrimitiveTopology::Triangles, ExecutionModes::OutputTriangleStrip }
+        { OutputTopologyPoints_value, ExecutionModes::OutputPoints }
+        , { OutputTopologyLines_value, ExecutionModes::OutputLineStrip }
+        , { OutputTopologyTriangles_value, ExecutionModes::OutputTriangleStrip }
     };
 
     this->evaluatingProgram = progResolved;
@@ -5826,13 +5826,13 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
             {
                 this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, SPVArg{ entryFunction }, ExecutionModes::SubgroupsPerWorkgroup, funResolved->executionModifiers.groupsPerWorkgroup);
             }
-            if (funResolved->executionModifiers.computeDerivativeIndexing == Function::__Resolved::DerivativeIndexLinear)
+            if (funResolved->executionModifiers.computeDerivativeIndexing == ComputeDerivativesIndexLinear_value)
             {
                 this->writer->Extension(SPV_KHR_compute_shader_derivatives);
                 this->writer->Capability(Capabilities::ComputeDerivativeGroupLinearKHR);
                 this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, SPVArg(entryFunction), ExecutionModes::DerivativeGroupLinearKHR);
             }
-            else if (funResolved->executionModifiers.computeDerivativeIndexing == Function::__Resolved::DerivativeIndexQuad)
+            else if (funResolved->executionModifiers.computeDerivativeIndexing == ComputeDerivativesIndexQuad_value)
             {
                 this->writer->Extension(SPV_KHR_compute_shader_derivatives);
                 this->writer->Capability(Capabilities::ComputeDerivativeGroupQuadsKHR);

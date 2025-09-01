@@ -87,8 +87,7 @@ enum class TokenType
     , PatchType_Attribute
     , Partition_Attribute
     , PixelOrigin_Attribute
-    , DerivativeIndexLinear_Attribute
-    , DerivativeIndexQuad_Attribute
+    , ComputeDerivatives_Attribute
     , Mutable_TypeModifier
     , Literal_TypeModifier
     , Directive

@@ -665,7 +665,7 @@ void SetupIntrinsics0()
     Float32_from_UInt32_arg.name = "val"_c;
     Float32_from_UInt32_arg.type = Type::FullType{ UInt32Type.name };
     Float32_from_UInt32.documentation = "Convert from u32 to f32"_c;
-    Float32_from_UInt32.name = "f32"_c;
+    Float32_from_UInt32.name = Float32_from_UInt32_name;
     Float32_from_UInt32.compileTime = true;
     Float32_from_UInt32.backendIndex = 0;
     Float32_from_UInt32.returnType = Type::FullType { Float32Type.name };
@@ -680,7 +680,7 @@ void SetupIntrinsics0()
     Float32_from_Int32_arg.name = "val"_c;
     Float32_from_Int32_arg.type = Type::FullType{ Int32Type.name };
     Float32_from_Int32.documentation = "Convert from i32 to f32"_c;
-    Float32_from_Int32.name = "f32"_c;
+    Float32_from_Int32.name = Float32_from_Int32_name;
     Float32_from_Int32.compileTime = true;
     Float32_from_Int32.backendIndex = 1;
     Float32_from_Int32.returnType = Type::FullType { Float32Type.name };
@@ -695,7 +695,7 @@ void SetupIntrinsics0()
     Float32_from_Bool8_arg.name = "val"_c;
     Float32_from_Bool8_arg.type = Type::FullType{ Bool8Type.name };
     Float32_from_Bool8.documentation = "Convert from b8 to f32"_c;
-    Float32_from_Bool8.name = "f32"_c;
+    Float32_from_Bool8.name = Float32_from_Bool8_name;
     Float32_from_Bool8.compileTime = true;
     Float32_from_Bool8.backendIndex = 2;
     Float32_from_Bool8.returnType = Type::FullType { Float32Type.name };
@@ -710,7 +710,7 @@ void SetupIntrinsics0()
     Float32_from_Float16_arg.name = "val"_c;
     Float32_from_Float16_arg.type = Type::FullType{ Float16Type.name };
     Float32_from_Float16.documentation = "Convert from f16 to f32"_c;
-    Float32_from_Float16.name = "f32"_c;
+    Float32_from_Float16.name = Float32_from_Float16_name;
     Float32_from_Float16.compileTime = true;
     Float32_from_Float16.backendIndex = 3;
     Float32_from_Float16.returnType = Type::FullType { Float32Type.name };
@@ -725,7 +725,7 @@ void SetupIntrinsics0()
     Float32_from_UInt16_arg.name = "val"_c;
     Float32_from_UInt16_arg.type = Type::FullType{ UInt16Type.name };
     Float32_from_UInt16.documentation = "Convert from u16 to f32"_c;
-    Float32_from_UInt16.name = "f32"_c;
+    Float32_from_UInt16.name = Float32_from_UInt16_name;
     Float32_from_UInt16.compileTime = true;
     Float32_from_UInt16.backendIndex = 4;
     Float32_from_UInt16.returnType = Type::FullType { Float32Type.name };
@@ -740,7 +740,7 @@ void SetupIntrinsics0()
     Float32_from_Int16_arg.name = "val"_c;
     Float32_from_Int16_arg.type = Type::FullType{ Int16Type.name };
     Float32_from_Int16.documentation = "Convert from i16 to f32"_c;
-    Float32_from_Int16.name = "f32"_c;
+    Float32_from_Int16.name = Float32_from_Int16_name;
     Float32_from_Int16.compileTime = true;
     Float32_from_Int16.backendIndex = 5;
     Float32_from_Int16.returnType = Type::FullType { Float32Type.name };
@@ -754,7 +754,7 @@ void SetupIntrinsics0()
     /// f32 with Float32
     Float32_ctor0_arg0_Float32.name = "arg0"_c;
     Float32_ctor0_arg0_Float32.type = Type::FullType{ Float32Type.name };
-    Float32_ctor0.name = "f32"_c;
+    Float32_ctor0.name = Float32_ctor0_name;
     Float32_ctor0.compileTime = true;
     Float32_ctor0.backendIndex = 6;
     Float32_ctor0.returnType = Type::FullType { Float32Type.name };
@@ -769,7 +769,7 @@ void SetupIntrinsics0()
     UInt32_from_Float32_arg.name = "val"_c;
     UInt32_from_Float32_arg.type = Type::FullType{ Float32Type.name };
     UInt32_from_Float32.documentation = "Convert from f32 to u32"_c;
-    UInt32_from_Float32.name = "u32"_c;
+    UInt32_from_Float32.name = UInt32_from_Float32_name;
     UInt32_from_Float32.compileTime = true;
     UInt32_from_Float32.backendIndex = 26;
     UInt32_from_Float32.returnType = Type::FullType { UInt32Type.name };
@@ -784,7 +784,7 @@ void SetupIntrinsics0()
     UInt32_from_Int32_arg.name = "val"_c;
     UInt32_from_Int32_arg.type = Type::FullType{ Int32Type.name };
     UInt32_from_Int32.documentation = "Convert from i32 to u32"_c;
-    UInt32_from_Int32.name = "u32"_c;
+    UInt32_from_Int32.name = UInt32_from_Int32_name;
     UInt32_from_Int32.compileTime = true;
     UInt32_from_Int32.backendIndex = 27;
     UInt32_from_Int32.returnType = Type::FullType { UInt32Type.name };
@@ -799,7 +799,7 @@ void SetupIntrinsics0()
     UInt32_from_Bool8_arg.name = "val"_c;
     UInt32_from_Bool8_arg.type = Type::FullType{ Bool8Type.name };
     UInt32_from_Bool8.documentation = "Convert from b8 to u32"_c;
-    UInt32_from_Bool8.name = "u32"_c;
+    UInt32_from_Bool8.name = UInt32_from_Bool8_name;
     UInt32_from_Bool8.compileTime = true;
     UInt32_from_Bool8.backendIndex = 28;
     UInt32_from_Bool8.returnType = Type::FullType { UInt32Type.name };
@@ -814,7 +814,7 @@ void SetupIntrinsics0()
     UInt32_from_Float16_arg.name = "val"_c;
     UInt32_from_Float16_arg.type = Type::FullType{ Float16Type.name };
     UInt32_from_Float16.documentation = "Convert from f16 to u32"_c;
-    UInt32_from_Float16.name = "u32"_c;
+    UInt32_from_Float16.name = UInt32_from_Float16_name;
     UInt32_from_Float16.compileTime = true;
     UInt32_from_Float16.backendIndex = 29;
     UInt32_from_Float16.returnType = Type::FullType { UInt32Type.name };
@@ -829,7 +829,7 @@ void SetupIntrinsics0()
     UInt32_from_UInt16_arg.name = "val"_c;
     UInt32_from_UInt16_arg.type = Type::FullType{ UInt16Type.name };
     UInt32_from_UInt16.documentation = "Convert from u16 to u32"_c;
-    UInt32_from_UInt16.name = "u32"_c;
+    UInt32_from_UInt16.name = UInt32_from_UInt16_name;
     UInt32_from_UInt16.compileTime = true;
     UInt32_from_UInt16.backendIndex = 30;
     UInt32_from_UInt16.returnType = Type::FullType { UInt32Type.name };
@@ -844,7 +844,7 @@ void SetupIntrinsics0()
     UInt32_from_Int16_arg.name = "val"_c;
     UInt32_from_Int16_arg.type = Type::FullType{ Int16Type.name };
     UInt32_from_Int16.documentation = "Convert from i16 to u32"_c;
-    UInt32_from_Int16.name = "u32"_c;
+    UInt32_from_Int16.name = UInt32_from_Int16_name;
     UInt32_from_Int16.compileTime = true;
     UInt32_from_Int16.backendIndex = 31;
     UInt32_from_Int16.returnType = Type::FullType { UInt32Type.name };
@@ -858,7 +858,7 @@ void SetupIntrinsics0()
     /// u32 with UInt32
     UInt32_ctor0_arg0_UInt32.name = "arg0"_c;
     UInt32_ctor0_arg0_UInt32.type = Type::FullType{ UInt32Type.name };
-    UInt32_ctor0.name = "u32"_c;
+    UInt32_ctor0.name = UInt32_ctor0_name;
     UInt32_ctor0.compileTime = true;
     UInt32_ctor0.backendIndex = 32;
     UInt32_ctor0.returnType = Type::FullType { UInt32Type.name };
@@ -873,7 +873,7 @@ void SetupIntrinsics0()
     Int32_from_Float32_arg.name = "val"_c;
     Int32_from_Float32_arg.type = Type::FullType{ Float32Type.name };
     Int32_from_Float32.documentation = "Convert from f32 to i32"_c;
-    Int32_from_Float32.name = "i32"_c;
+    Int32_from_Float32.name = Int32_from_Float32_name;
     Int32_from_Float32.compileTime = true;
     Int32_from_Float32.backendIndex = 62;
     Int32_from_Float32.returnType = Type::FullType { Int32Type.name };
@@ -888,7 +888,7 @@ void SetupIntrinsics0()
     Int32_from_UInt32_arg.name = "val"_c;
     Int32_from_UInt32_arg.type = Type::FullType{ UInt32Type.name };
     Int32_from_UInt32.documentation = "Convert from u32 to i32"_c;
-    Int32_from_UInt32.name = "i32"_c;
+    Int32_from_UInt32.name = Int32_from_UInt32_name;
     Int32_from_UInt32.compileTime = true;
     Int32_from_UInt32.backendIndex = 63;
     Int32_from_UInt32.returnType = Type::FullType { Int32Type.name };
@@ -903,7 +903,7 @@ void SetupIntrinsics0()
     Int32_from_Bool8_arg.name = "val"_c;
     Int32_from_Bool8_arg.type = Type::FullType{ Bool8Type.name };
     Int32_from_Bool8.documentation = "Convert from b8 to i32"_c;
-    Int32_from_Bool8.name = "i32"_c;
+    Int32_from_Bool8.name = Int32_from_Bool8_name;
     Int32_from_Bool8.compileTime = true;
     Int32_from_Bool8.backendIndex = 64;
     Int32_from_Bool8.returnType = Type::FullType { Int32Type.name };
@@ -918,7 +918,7 @@ void SetupIntrinsics0()
     Int32_from_Float16_arg.name = "val"_c;
     Int32_from_Float16_arg.type = Type::FullType{ Float16Type.name };
     Int32_from_Float16.documentation = "Convert from f16 to i32"_c;
-    Int32_from_Float16.name = "i32"_c;
+    Int32_from_Float16.name = Int32_from_Float16_name;
     Int32_from_Float16.compileTime = true;
     Int32_from_Float16.backendIndex = 65;
     Int32_from_Float16.returnType = Type::FullType { Int32Type.name };
@@ -933,7 +933,7 @@ void SetupIntrinsics0()
     Int32_from_UInt16_arg.name = "val"_c;
     Int32_from_UInt16_arg.type = Type::FullType{ UInt16Type.name };
     Int32_from_UInt16.documentation = "Convert from u16 to i32"_c;
-    Int32_from_UInt16.name = "i32"_c;
+    Int32_from_UInt16.name = Int32_from_UInt16_name;
     Int32_from_UInt16.compileTime = true;
     Int32_from_UInt16.backendIndex = 66;
     Int32_from_UInt16.returnType = Type::FullType { Int32Type.name };
@@ -948,7 +948,7 @@ void SetupIntrinsics0()
     Int32_from_Int16_arg.name = "val"_c;
     Int32_from_Int16_arg.type = Type::FullType{ Int16Type.name };
     Int32_from_Int16.documentation = "Convert from i16 to i32"_c;
-    Int32_from_Int16.name = "i32"_c;
+    Int32_from_Int16.name = Int32_from_Int16_name;
     Int32_from_Int16.compileTime = true;
     Int32_from_Int16.backendIndex = 67;
     Int32_from_Int16.returnType = Type::FullType { Int32Type.name };
@@ -962,7 +962,7 @@ void SetupIntrinsics0()
     /// i32 with Int32
     Int32_ctor0_arg0_Int32.name = "arg0"_c;
     Int32_ctor0_arg0_Int32.type = Type::FullType{ Int32Type.name };
-    Int32_ctor0.name = "i32"_c;
+    Int32_ctor0.name = Int32_ctor0_name;
     Int32_ctor0.compileTime = true;
     Int32_ctor0.backendIndex = 68;
     Int32_ctor0.returnType = Type::FullType { Int32Type.name };
@@ -977,7 +977,7 @@ void SetupIntrinsics0()
     Bool8_from_UInt32_arg.name = "val"_c;
     Bool8_from_UInt32_arg.type = Type::FullType{ UInt32Type.name };
     Bool8_from_UInt32.documentation = "Convert from u32 to b8"_c;
-    Bool8_from_UInt32.name = "b8"_c;
+    Bool8_from_UInt32.name = Bool8_from_UInt32_name;
     Bool8_from_UInt32.compileTime = true;
     Bool8_from_UInt32.backendIndex = 98;
     Bool8_from_UInt32.returnType = Type::FullType { Bool8Type.name };
@@ -992,7 +992,7 @@ void SetupIntrinsics0()
     Bool8_from_Int32_arg.name = "val"_c;
     Bool8_from_Int32_arg.type = Type::FullType{ Int32Type.name };
     Bool8_from_Int32.documentation = "Convert from i32 to b8"_c;
-    Bool8_from_Int32.name = "b8"_c;
+    Bool8_from_Int32.name = Bool8_from_Int32_name;
     Bool8_from_Int32.compileTime = true;
     Bool8_from_Int32.backendIndex = 99;
     Bool8_from_Int32.returnType = Type::FullType { Bool8Type.name };
@@ -1007,7 +1007,7 @@ void SetupIntrinsics0()
     Bool8_from_UInt16_arg.name = "val"_c;
     Bool8_from_UInt16_arg.type = Type::FullType{ UInt16Type.name };
     Bool8_from_UInt16.documentation = "Convert from u16 to b8"_c;
-    Bool8_from_UInt16.name = "b8"_c;
+    Bool8_from_UInt16.name = Bool8_from_UInt16_name;
     Bool8_from_UInt16.compileTime = true;
     Bool8_from_UInt16.backendIndex = 100;
     Bool8_from_UInt16.returnType = Type::FullType { Bool8Type.name };
@@ -1022,7 +1022,7 @@ void SetupIntrinsics0()
     Bool8_from_Int16_arg.name = "val"_c;
     Bool8_from_Int16_arg.type = Type::FullType{ Int16Type.name };
     Bool8_from_Int16.documentation = "Convert from i16 to b8"_c;
-    Bool8_from_Int16.name = "b8"_c;
+    Bool8_from_Int16.name = Bool8_from_Int16_name;
     Bool8_from_Int16.compileTime = true;
     Bool8_from_Int16.backendIndex = 101;
     Bool8_from_Int16.returnType = Type::FullType { Bool8Type.name };
@@ -1036,7 +1036,7 @@ void SetupIntrinsics0()
     /// b8 with Bool8
     Bool8_ctor0_arg0_Bool8.name = "arg0"_c;
     Bool8_ctor0_arg0_Bool8.type = Type::FullType{ Bool8Type.name };
-    Bool8_ctor0.name = "b8"_c;
+    Bool8_ctor0.name = Bool8_ctor0_name;
     Bool8_ctor0.compileTime = true;
     Bool8_ctor0.backendIndex = 102;
     Bool8_ctor0.returnType = Type::FullType { Bool8Type.name };
@@ -1051,7 +1051,7 @@ void SetupIntrinsics0()
     Float16_from_Float32_arg.name = "val"_c;
     Float16_from_Float32_arg.type = Type::FullType{ Float32Type.name };
     Float16_from_Float32.documentation = "Convert from f32 to f16"_c;
-    Float16_from_Float32.name = "f16"_c;
+    Float16_from_Float32.name = Float16_from_Float32_name;
     Float16_from_Float32.compileTime = true;
     Float16_from_Float32.backendIndex = 111;
     Float16_from_Float32.returnType = Type::FullType { Float16Type.name };
@@ -1066,7 +1066,7 @@ void SetupIntrinsics0()
     Float16_from_UInt32_arg.name = "val"_c;
     Float16_from_UInt32_arg.type = Type::FullType{ UInt32Type.name };
     Float16_from_UInt32.documentation = "Convert from u32 to f16"_c;
-    Float16_from_UInt32.name = "f16"_c;
+    Float16_from_UInt32.name = Float16_from_UInt32_name;
     Float16_from_UInt32.compileTime = true;
     Float16_from_UInt32.backendIndex = 112;
     Float16_from_UInt32.returnType = Type::FullType { Float16Type.name };
@@ -1081,7 +1081,7 @@ void SetupIntrinsics0()
     Float16_from_Int32_arg.name = "val"_c;
     Float16_from_Int32_arg.type = Type::FullType{ Int32Type.name };
     Float16_from_Int32.documentation = "Convert from i32 to f16"_c;
-    Float16_from_Int32.name = "f16"_c;
+    Float16_from_Int32.name = Float16_from_Int32_name;
     Float16_from_Int32.compileTime = true;
     Float16_from_Int32.backendIndex = 113;
     Float16_from_Int32.returnType = Type::FullType { Float16Type.name };
@@ -1096,7 +1096,7 @@ void SetupIntrinsics0()
     Float16_from_Bool8_arg.name = "val"_c;
     Float16_from_Bool8_arg.type = Type::FullType{ Bool8Type.name };
     Float16_from_Bool8.documentation = "Convert from b8 to f16"_c;
-    Float16_from_Bool8.name = "f16"_c;
+    Float16_from_Bool8.name = Float16_from_Bool8_name;
     Float16_from_Bool8.compileTime = true;
     Float16_from_Bool8.backendIndex = 114;
     Float16_from_Bool8.returnType = Type::FullType { Float16Type.name };
@@ -1111,7 +1111,7 @@ void SetupIntrinsics0()
     Float16_from_UInt16_arg.name = "val"_c;
     Float16_from_UInt16_arg.type = Type::FullType{ UInt16Type.name };
     Float16_from_UInt16.documentation = "Convert from u16 to f16"_c;
-    Float16_from_UInt16.name = "f16"_c;
+    Float16_from_UInt16.name = Float16_from_UInt16_name;
     Float16_from_UInt16.compileTime = true;
     Float16_from_UInt16.backendIndex = 115;
     Float16_from_UInt16.returnType = Type::FullType { Float16Type.name };
@@ -1126,7 +1126,7 @@ void SetupIntrinsics0()
     Float16_from_Int16_arg.name = "val"_c;
     Float16_from_Int16_arg.type = Type::FullType{ Int16Type.name };
     Float16_from_Int16.documentation = "Convert from i16 to f16"_c;
-    Float16_from_Int16.name = "f16"_c;
+    Float16_from_Int16.name = Float16_from_Int16_name;
     Float16_from_Int16.compileTime = true;
     Float16_from_Int16.backendIndex = 116;
     Float16_from_Int16.returnType = Type::FullType { Float16Type.name };
@@ -1140,7 +1140,7 @@ void SetupIntrinsics0()
     /// f16 with Float16
     Float16_ctor0_arg0_Float16.name = "arg0"_c;
     Float16_ctor0_arg0_Float16.type = Type::FullType{ Float16Type.name };
-    Float16_ctor0.name = "f16"_c;
+    Float16_ctor0.name = Float16_ctor0_name;
     Float16_ctor0.compileTime = true;
     Float16_ctor0.backendIndex = 117;
     Float16_ctor0.returnType = Type::FullType { Float16Type.name };
@@ -1155,7 +1155,7 @@ void SetupIntrinsics0()
     UInt16_from_Float32_arg.name = "val"_c;
     UInt16_from_Float32_arg.type = Type::FullType{ Float32Type.name };
     UInt16_from_Float32.documentation = "Convert from f32 to u16"_c;
-    UInt16_from_Float32.name = "u16"_c;
+    UInt16_from_Float32.name = UInt16_from_Float32_name;
     UInt16_from_Float32.compileTime = true;
     UInt16_from_Float32.backendIndex = 137;
     UInt16_from_Float32.returnType = Type::FullType { UInt16Type.name };
@@ -1170,7 +1170,7 @@ void SetupIntrinsics0()
     UInt16_from_UInt32_arg.name = "val"_c;
     UInt16_from_UInt32_arg.type = Type::FullType{ UInt32Type.name };
     UInt16_from_UInt32.documentation = "Convert from u32 to u16"_c;
-    UInt16_from_UInt32.name = "u16"_c;
+    UInt16_from_UInt32.name = UInt16_from_UInt32_name;
     UInt16_from_UInt32.compileTime = true;
     UInt16_from_UInt32.backendIndex = 138;
     UInt16_from_UInt32.returnType = Type::FullType { UInt16Type.name };
@@ -1185,7 +1185,7 @@ void SetupIntrinsics0()
     UInt16_from_Int32_arg.name = "val"_c;
     UInt16_from_Int32_arg.type = Type::FullType{ Int32Type.name };
     UInt16_from_Int32.documentation = "Convert from i32 to u16"_c;
-    UInt16_from_Int32.name = "u16"_c;
+    UInt16_from_Int32.name = UInt16_from_Int32_name;
     UInt16_from_Int32.compileTime = true;
     UInt16_from_Int32.backendIndex = 139;
     UInt16_from_Int32.returnType = Type::FullType { UInt16Type.name };
@@ -1200,7 +1200,7 @@ void SetupIntrinsics0()
     UInt16_from_Bool8_arg.name = "val"_c;
     UInt16_from_Bool8_arg.type = Type::FullType{ Bool8Type.name };
     UInt16_from_Bool8.documentation = "Convert from b8 to u16"_c;
-    UInt16_from_Bool8.name = "u16"_c;
+    UInt16_from_Bool8.name = UInt16_from_Bool8_name;
     UInt16_from_Bool8.compileTime = true;
     UInt16_from_Bool8.backendIndex = 140;
     UInt16_from_Bool8.returnType = Type::FullType { UInt16Type.name };
@@ -1215,7 +1215,7 @@ void SetupIntrinsics0()
     UInt16_from_Float16_arg.name = "val"_c;
     UInt16_from_Float16_arg.type = Type::FullType{ Float16Type.name };
     UInt16_from_Float16.documentation = "Convert from f16 to u16"_c;
-    UInt16_from_Float16.name = "u16"_c;
+    UInt16_from_Float16.name = UInt16_from_Float16_name;
     UInt16_from_Float16.compileTime = true;
     UInt16_from_Float16.backendIndex = 141;
     UInt16_from_Float16.returnType = Type::FullType { UInt16Type.name };
@@ -1230,7 +1230,7 @@ void SetupIntrinsics0()
     UInt16_from_Int16_arg.name = "val"_c;
     UInt16_from_Int16_arg.type = Type::FullType{ Int16Type.name };
     UInt16_from_Int16.documentation = "Convert from i16 to u16"_c;
-    UInt16_from_Int16.name = "u16"_c;
+    UInt16_from_Int16.name = UInt16_from_Int16_name;
     UInt16_from_Int16.compileTime = true;
     UInt16_from_Int16.backendIndex = 142;
     UInt16_from_Int16.returnType = Type::FullType { UInt16Type.name };
@@ -1244,7 +1244,7 @@ void SetupIntrinsics0()
     /// u16 with UInt16
     UInt16_ctor0_arg0_UInt16.name = "arg0"_c;
     UInt16_ctor0_arg0_UInt16.type = Type::FullType{ UInt16Type.name };
-    UInt16_ctor0.name = "u16"_c;
+    UInt16_ctor0.name = UInt16_ctor0_name;
     UInt16_ctor0.compileTime = true;
     UInt16_ctor0.backendIndex = 143;
     UInt16_ctor0.returnType = Type::FullType { UInt16Type.name };
@@ -1259,7 +1259,7 @@ void SetupIntrinsics0()
     Int16_from_Float32_arg.name = "val"_c;
     Int16_from_Float32_arg.type = Type::FullType{ Float32Type.name };
     Int16_from_Float32.documentation = "Convert from f32 to i16"_c;
-    Int16_from_Float32.name = "i16"_c;
+    Int16_from_Float32.name = Int16_from_Float32_name;
     Int16_from_Float32.compileTime = true;
     Int16_from_Float32.backendIndex = 173;
     Int16_from_Float32.returnType = Type::FullType { Int16Type.name };
@@ -1274,7 +1274,7 @@ void SetupIntrinsics0()
     Int16_from_UInt32_arg.name = "val"_c;
     Int16_from_UInt32_arg.type = Type::FullType{ UInt32Type.name };
     Int16_from_UInt32.documentation = "Convert from u32 to i16"_c;
-    Int16_from_UInt32.name = "i16"_c;
+    Int16_from_UInt32.name = Int16_from_UInt32_name;
     Int16_from_UInt32.compileTime = true;
     Int16_from_UInt32.backendIndex = 174;
     Int16_from_UInt32.returnType = Type::FullType { Int16Type.name };
@@ -1289,7 +1289,7 @@ void SetupIntrinsics0()
     Int16_from_Int32_arg.name = "val"_c;
     Int16_from_Int32_arg.type = Type::FullType{ Int32Type.name };
     Int16_from_Int32.documentation = "Convert from i32 to i16"_c;
-    Int16_from_Int32.name = "i16"_c;
+    Int16_from_Int32.name = Int16_from_Int32_name;
     Int16_from_Int32.compileTime = true;
     Int16_from_Int32.backendIndex = 175;
     Int16_from_Int32.returnType = Type::FullType { Int16Type.name };
@@ -1304,7 +1304,7 @@ void SetupIntrinsics0()
     Int16_from_Bool8_arg.name = "val"_c;
     Int16_from_Bool8_arg.type = Type::FullType{ Bool8Type.name };
     Int16_from_Bool8.documentation = "Convert from b8 to i16"_c;
-    Int16_from_Bool8.name = "i16"_c;
+    Int16_from_Bool8.name = Int16_from_Bool8_name;
     Int16_from_Bool8.compileTime = true;
     Int16_from_Bool8.backendIndex = 176;
     Int16_from_Bool8.returnType = Type::FullType { Int16Type.name };
@@ -1319,7 +1319,7 @@ void SetupIntrinsics0()
     Int16_from_Float16_arg.name = "val"_c;
     Int16_from_Float16_arg.type = Type::FullType{ Float16Type.name };
     Int16_from_Float16.documentation = "Convert from f16 to i16"_c;
-    Int16_from_Float16.name = "i16"_c;
+    Int16_from_Float16.name = Int16_from_Float16_name;
     Int16_from_Float16.compileTime = true;
     Int16_from_Float16.backendIndex = 177;
     Int16_from_Float16.returnType = Type::FullType { Int16Type.name };
@@ -1334,7 +1334,7 @@ void SetupIntrinsics0()
     Int16_from_UInt16_arg.name = "val"_c;
     Int16_from_UInt16_arg.type = Type::FullType{ UInt16Type.name };
     Int16_from_UInt16.documentation = "Convert from u16 to i16"_c;
-    Int16_from_UInt16.name = "i16"_c;
+    Int16_from_UInt16.name = Int16_from_UInt16_name;
     Int16_from_UInt16.compileTime = true;
     Int16_from_UInt16.backendIndex = 178;
     Int16_from_UInt16.returnType = Type::FullType { Int16Type.name };
@@ -1348,7 +1348,7 @@ void SetupIntrinsics0()
     /// i16 with Int16
     Int16_ctor0_arg0_Int16.name = "arg0"_c;
     Int16_ctor0_arg0_Int16.type = Type::FullType{ Int16Type.name };
-    Int16_ctor0.name = "i16"_c;
+    Int16_ctor0.name = Int16_ctor0_name;
     Int16_ctor0.compileTime = true;
     Int16_ctor0.backendIndex = 179;
     Int16_ctor0.returnType = Type::FullType { Int16Type.name };
@@ -1363,7 +1363,7 @@ void SetupIntrinsics0()
     Float32x2_from_Float32x2_arg.name = "val"_c;
     Float32x2_from_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     Float32x2_from_Float32x2.documentation = "Convert from f32x2 to f32x2"_c;
-    Float32x2_from_Float32x2.name = "f32x2"_c;
+    Float32x2_from_Float32x2.name = Float32x2_from_Float32x2_name;
     Float32x2_from_Float32x2.compileTime = true;
     Float32x2_from_Float32x2.backendIndex = 209;
     Float32x2_from_Float32x2.returnType = Type::FullType { Float32x2Type.name };
@@ -1378,7 +1378,7 @@ void SetupIntrinsics0()
     Float32x2_splat_Float32_arg.name = "val"_c;
     Float32x2_splat_Float32_arg.type = Type::FullType{ Float32Type.name };
     Float32x2_splat_Float32.documentation = "Splat f32 to f32x2"_c;
-    Float32x2_splat_Float32.name = "f32x2"_c;
+    Float32x2_splat_Float32.name = Float32x2_splat_Float32_name;
     Float32x2_splat_Float32.compileTime = true;
     Float32x2_splat_Float32.backendIndex = 210;
     Float32x2_splat_Float32.returnType = Type::FullType { Float32x2Type.name };
@@ -1393,7 +1393,7 @@ void SetupIntrinsics0()
     Float32x2_from_UInt32x2_arg.name = "val"_c;
     Float32x2_from_UInt32x2_arg.type = Type::FullType{ UInt32x2Type.name };
     Float32x2_from_UInt32x2.documentation = "Convert from u32x2 to f32x2"_c;
-    Float32x2_from_UInt32x2.name = "f32x2"_c;
+    Float32x2_from_UInt32x2.name = Float32x2_from_UInt32x2_name;
     Float32x2_from_UInt32x2.compileTime = true;
     Float32x2_from_UInt32x2.backendIndex = 211;
     Float32x2_from_UInt32x2.returnType = Type::FullType { Float32x2Type.name };
@@ -1408,7 +1408,7 @@ void SetupIntrinsics0()
     Float32x2_splat_UInt32_arg.name = "val"_c;
     Float32x2_splat_UInt32_arg.type = Type::FullType{ UInt32Type.name };
     Float32x2_splat_UInt32.documentation = "Splat u32 to f32x2"_c;
-    Float32x2_splat_UInt32.name = "f32x2"_c;
+    Float32x2_splat_UInt32.name = Float32x2_splat_UInt32_name;
     Float32x2_splat_UInt32.compileTime = true;
     Float32x2_splat_UInt32.backendIndex = 212;
     Float32x2_splat_UInt32.returnType = Type::FullType { Float32x2Type.name };
@@ -1423,7 +1423,7 @@ void SetupIntrinsics0()
     Float32x2_from_Int32x2_arg.name = "val"_c;
     Float32x2_from_Int32x2_arg.type = Type::FullType{ Int32x2Type.name };
     Float32x2_from_Int32x2.documentation = "Convert from i32x2 to f32x2"_c;
-    Float32x2_from_Int32x2.name = "f32x2"_c;
+    Float32x2_from_Int32x2.name = Float32x2_from_Int32x2_name;
     Float32x2_from_Int32x2.compileTime = true;
     Float32x2_from_Int32x2.backendIndex = 213;
     Float32x2_from_Int32x2.returnType = Type::FullType { Float32x2Type.name };
@@ -1438,7 +1438,7 @@ void SetupIntrinsics0()
     Float32x2_splat_Int32_arg.name = "val"_c;
     Float32x2_splat_Int32_arg.type = Type::FullType{ Int32Type.name };
     Float32x2_splat_Int32.documentation = "Splat i32 to f32x2"_c;
-    Float32x2_splat_Int32.name = "f32x2"_c;
+    Float32x2_splat_Int32.name = Float32x2_splat_Int32_name;
     Float32x2_splat_Int32.compileTime = true;
     Float32x2_splat_Int32.backendIndex = 214;
     Float32x2_splat_Int32.returnType = Type::FullType { Float32x2Type.name };
@@ -1453,7 +1453,7 @@ void SetupIntrinsics0()
     Float32x2_from_Bool8x2_arg.name = "val"_c;
     Float32x2_from_Bool8x2_arg.type = Type::FullType{ Bool8x2Type.name };
     Float32x2_from_Bool8x2.documentation = "Convert from b8x2 to f32x2"_c;
-    Float32x2_from_Bool8x2.name = "f32x2"_c;
+    Float32x2_from_Bool8x2.name = Float32x2_from_Bool8x2_name;
     Float32x2_from_Bool8x2.compileTime = true;
     Float32x2_from_Bool8x2.backendIndex = 215;
     Float32x2_from_Bool8x2.returnType = Type::FullType { Float32x2Type.name };
@@ -1468,7 +1468,7 @@ void SetupIntrinsics0()
     Float32x2_splat_Bool8_arg.name = "val"_c;
     Float32x2_splat_Bool8_arg.type = Type::FullType{ Bool8Type.name };
     Float32x2_splat_Bool8.documentation = "Splat b8 to f32x2"_c;
-    Float32x2_splat_Bool8.name = "f32x2"_c;
+    Float32x2_splat_Bool8.name = Float32x2_splat_Bool8_name;
     Float32x2_splat_Bool8.compileTime = true;
     Float32x2_splat_Bool8.backendIndex = 216;
     Float32x2_splat_Bool8.returnType = Type::FullType { Float32x2Type.name };
@@ -1483,7 +1483,7 @@ void SetupIntrinsics0()
     Float32x2_from_Float16x2_arg.name = "val"_c;
     Float32x2_from_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     Float32x2_from_Float16x2.documentation = "Convert from f16x2 to f32x2"_c;
-    Float32x2_from_Float16x2.name = "f32x2"_c;
+    Float32x2_from_Float16x2.name = Float32x2_from_Float16x2_name;
     Float32x2_from_Float16x2.compileTime = true;
     Float32x2_from_Float16x2.backendIndex = 217;
     Float32x2_from_Float16x2.returnType = Type::FullType { Float32x2Type.name };
@@ -1498,7 +1498,7 @@ void SetupIntrinsics0()
     Float32x2_splat_Float16_arg.name = "val"_c;
     Float32x2_splat_Float16_arg.type = Type::FullType{ Float16Type.name };
     Float32x2_splat_Float16.documentation = "Splat f16 to f32x2"_c;
-    Float32x2_splat_Float16.name = "f32x2"_c;
+    Float32x2_splat_Float16.name = Float32x2_splat_Float16_name;
     Float32x2_splat_Float16.compileTime = true;
     Float32x2_splat_Float16.backendIndex = 218;
     Float32x2_splat_Float16.returnType = Type::FullType { Float32x2Type.name };
@@ -1513,7 +1513,7 @@ void SetupIntrinsics0()
     Float32x2_from_UInt16x2_arg.name = "val"_c;
     Float32x2_from_UInt16x2_arg.type = Type::FullType{ UInt16x2Type.name };
     Float32x2_from_UInt16x2.documentation = "Convert from u16x2 to f32x2"_c;
-    Float32x2_from_UInt16x2.name = "f32x2"_c;
+    Float32x2_from_UInt16x2.name = Float32x2_from_UInt16x2_name;
     Float32x2_from_UInt16x2.compileTime = true;
     Float32x2_from_UInt16x2.backendIndex = 219;
     Float32x2_from_UInt16x2.returnType = Type::FullType { Float32x2Type.name };
@@ -1528,7 +1528,7 @@ void SetupIntrinsics0()
     Float32x2_splat_UInt16_arg.name = "val"_c;
     Float32x2_splat_UInt16_arg.type = Type::FullType{ UInt16Type.name };
     Float32x2_splat_UInt16.documentation = "Splat u16 to f32x2"_c;
-    Float32x2_splat_UInt16.name = "f32x2"_c;
+    Float32x2_splat_UInt16.name = Float32x2_splat_UInt16_name;
     Float32x2_splat_UInt16.compileTime = true;
     Float32x2_splat_UInt16.backendIndex = 220;
     Float32x2_splat_UInt16.returnType = Type::FullType { Float32x2Type.name };
@@ -1543,7 +1543,7 @@ void SetupIntrinsics0()
     Float32x2_from_Int16x2_arg.name = "val"_c;
     Float32x2_from_Int16x2_arg.type = Type::FullType{ Int16x2Type.name };
     Float32x2_from_Int16x2.documentation = "Convert from i16x2 to f32x2"_c;
-    Float32x2_from_Int16x2.name = "f32x2"_c;
+    Float32x2_from_Int16x2.name = Float32x2_from_Int16x2_name;
     Float32x2_from_Int16x2.compileTime = true;
     Float32x2_from_Int16x2.backendIndex = 221;
     Float32x2_from_Int16x2.returnType = Type::FullType { Float32x2Type.name };
@@ -1558,7 +1558,7 @@ void SetupIntrinsics0()
     Float32x2_splat_Int16_arg.name = "val"_c;
     Float32x2_splat_Int16_arg.type = Type::FullType{ Int16Type.name };
     Float32x2_splat_Int16.documentation = "Splat i16 to f32x2"_c;
-    Float32x2_splat_Int16.name = "f32x2"_c;
+    Float32x2_splat_Int16.name = Float32x2_splat_Int16_name;
     Float32x2_splat_Int16.compileTime = true;
     Float32x2_splat_Int16.backendIndex = 222;
     Float32x2_splat_Int16.returnType = Type::FullType { Float32x2Type.name };
@@ -1574,7 +1574,7 @@ void SetupIntrinsics0()
     Float32x2_ctor0_arg0_Float32.type = Type::FullType{ Float32Type.name };
     Float32x2_ctor0_arg1_Float32.name = "arg1"_c;
     Float32x2_ctor0_arg1_Float32.type = Type::FullType{ Float32Type.name };
-    Float32x2_ctor0.name = "f32x2"_c;
+    Float32x2_ctor0.name = Float32x2_ctor0_name;
     Float32x2_ctor0.compileTime = true;
     Float32x2_ctor0.backendIndex = 223;
     Float32x2_ctor0.returnType = Type::FullType { Float32x2Type.name };
@@ -1590,7 +1590,7 @@ void SetupIntrinsics0()
     UInt32x2_from_Float32x2_arg.name = "val"_c;
     UInt32x2_from_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     UInt32x2_from_Float32x2.documentation = "Convert from f32x2 to u32x2"_c;
-    UInt32x2_from_Float32x2.name = "u32x2"_c;
+    UInt32x2_from_Float32x2.name = UInt32x2_from_Float32x2_name;
     UInt32x2_from_Float32x2.compileTime = true;
     UInt32x2_from_Float32x2.backendIndex = 249;
     UInt32x2_from_Float32x2.returnType = Type::FullType { UInt32x2Type.name };
@@ -1605,7 +1605,7 @@ void SetupIntrinsics0()
     UInt32x2_splat_Float32_arg.name = "val"_c;
     UInt32x2_splat_Float32_arg.type = Type::FullType{ Float32Type.name };
     UInt32x2_splat_Float32.documentation = "Splat f32 to u32x2"_c;
-    UInt32x2_splat_Float32.name = "u32x2"_c;
+    UInt32x2_splat_Float32.name = UInt32x2_splat_Float32_name;
     UInt32x2_splat_Float32.compileTime = true;
     UInt32x2_splat_Float32.backendIndex = 250;
     UInt32x2_splat_Float32.returnType = Type::FullType { UInt32x2Type.name };
@@ -1620,7 +1620,7 @@ void SetupIntrinsics0()
     UInt32x2_from_UInt32x2_arg.name = "val"_c;
     UInt32x2_from_UInt32x2_arg.type = Type::FullType{ UInt32x2Type.name };
     UInt32x2_from_UInt32x2.documentation = "Convert from u32x2 to u32x2"_c;
-    UInt32x2_from_UInt32x2.name = "u32x2"_c;
+    UInt32x2_from_UInt32x2.name = UInt32x2_from_UInt32x2_name;
     UInt32x2_from_UInt32x2.compileTime = true;
     UInt32x2_from_UInt32x2.backendIndex = 251;
     UInt32x2_from_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
@@ -1635,7 +1635,7 @@ void SetupIntrinsics0()
     UInt32x2_splat_UInt32_arg.name = "val"_c;
     UInt32x2_splat_UInt32_arg.type = Type::FullType{ UInt32Type.name };
     UInt32x2_splat_UInt32.documentation = "Splat u32 to u32x2"_c;
-    UInt32x2_splat_UInt32.name = "u32x2"_c;
+    UInt32x2_splat_UInt32.name = UInt32x2_splat_UInt32_name;
     UInt32x2_splat_UInt32.compileTime = true;
     UInt32x2_splat_UInt32.backendIndex = 252;
     UInt32x2_splat_UInt32.returnType = Type::FullType { UInt32x2Type.name };
@@ -1650,7 +1650,7 @@ void SetupIntrinsics0()
     UInt32x2_from_Int32x2_arg.name = "val"_c;
     UInt32x2_from_Int32x2_arg.type = Type::FullType{ Int32x2Type.name };
     UInt32x2_from_Int32x2.documentation = "Convert from i32x2 to u32x2"_c;
-    UInt32x2_from_Int32x2.name = "u32x2"_c;
+    UInt32x2_from_Int32x2.name = UInt32x2_from_Int32x2_name;
     UInt32x2_from_Int32x2.compileTime = true;
     UInt32x2_from_Int32x2.backendIndex = 253;
     UInt32x2_from_Int32x2.returnType = Type::FullType { UInt32x2Type.name };
@@ -1665,7 +1665,7 @@ void SetupIntrinsics0()
     UInt32x2_splat_Int32_arg.name = "val"_c;
     UInt32x2_splat_Int32_arg.type = Type::FullType{ Int32Type.name };
     UInt32x2_splat_Int32.documentation = "Splat i32 to u32x2"_c;
-    UInt32x2_splat_Int32.name = "u32x2"_c;
+    UInt32x2_splat_Int32.name = UInt32x2_splat_Int32_name;
     UInt32x2_splat_Int32.compileTime = true;
     UInt32x2_splat_Int32.backendIndex = 254;
     UInt32x2_splat_Int32.returnType = Type::FullType { UInt32x2Type.name };
@@ -1680,7 +1680,7 @@ void SetupIntrinsics0()
     UInt32x2_from_Bool8x2_arg.name = "val"_c;
     UInt32x2_from_Bool8x2_arg.type = Type::FullType{ Bool8x2Type.name };
     UInt32x2_from_Bool8x2.documentation = "Convert from b8x2 to u32x2"_c;
-    UInt32x2_from_Bool8x2.name = "u32x2"_c;
+    UInt32x2_from_Bool8x2.name = UInt32x2_from_Bool8x2_name;
     UInt32x2_from_Bool8x2.compileTime = true;
     UInt32x2_from_Bool8x2.backendIndex = 255;
     UInt32x2_from_Bool8x2.returnType = Type::FullType { UInt32x2Type.name };
@@ -1695,7 +1695,7 @@ void SetupIntrinsics0()
     UInt32x2_splat_Bool8_arg.name = "val"_c;
     UInt32x2_splat_Bool8_arg.type = Type::FullType{ Bool8Type.name };
     UInt32x2_splat_Bool8.documentation = "Splat b8 to u32x2"_c;
-    UInt32x2_splat_Bool8.name = "u32x2"_c;
+    UInt32x2_splat_Bool8.name = UInt32x2_splat_Bool8_name;
     UInt32x2_splat_Bool8.compileTime = true;
     UInt32x2_splat_Bool8.backendIndex = 256;
     UInt32x2_splat_Bool8.returnType = Type::FullType { UInt32x2Type.name };
@@ -1710,7 +1710,7 @@ void SetupIntrinsics0()
     UInt32x2_from_Float16x2_arg.name = "val"_c;
     UInt32x2_from_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     UInt32x2_from_Float16x2.documentation = "Convert from f16x2 to u32x2"_c;
-    UInt32x2_from_Float16x2.name = "u32x2"_c;
+    UInt32x2_from_Float16x2.name = UInt32x2_from_Float16x2_name;
     UInt32x2_from_Float16x2.compileTime = true;
     UInt32x2_from_Float16x2.backendIndex = 257;
     UInt32x2_from_Float16x2.returnType = Type::FullType { UInt32x2Type.name };
@@ -1725,7 +1725,7 @@ void SetupIntrinsics0()
     UInt32x2_splat_Float16_arg.name = "val"_c;
     UInt32x2_splat_Float16_arg.type = Type::FullType{ Float16Type.name };
     UInt32x2_splat_Float16.documentation = "Splat f16 to u32x2"_c;
-    UInt32x2_splat_Float16.name = "u32x2"_c;
+    UInt32x2_splat_Float16.name = UInt32x2_splat_Float16_name;
     UInt32x2_splat_Float16.compileTime = true;
     UInt32x2_splat_Float16.backendIndex = 258;
     UInt32x2_splat_Float16.returnType = Type::FullType { UInt32x2Type.name };
@@ -1740,7 +1740,7 @@ void SetupIntrinsics0()
     UInt32x2_from_UInt16x2_arg.name = "val"_c;
     UInt32x2_from_UInt16x2_arg.type = Type::FullType{ UInt16x2Type.name };
     UInt32x2_from_UInt16x2.documentation = "Convert from u16x2 to u32x2"_c;
-    UInt32x2_from_UInt16x2.name = "u32x2"_c;
+    UInt32x2_from_UInt16x2.name = UInt32x2_from_UInt16x2_name;
     UInt32x2_from_UInt16x2.compileTime = true;
     UInt32x2_from_UInt16x2.backendIndex = 259;
     UInt32x2_from_UInt16x2.returnType = Type::FullType { UInt32x2Type.name };
@@ -1755,7 +1755,7 @@ void SetupIntrinsics0()
     UInt32x2_splat_UInt16_arg.name = "val"_c;
     UInt32x2_splat_UInt16_arg.type = Type::FullType{ UInt16Type.name };
     UInt32x2_splat_UInt16.documentation = "Splat u16 to u32x2"_c;
-    UInt32x2_splat_UInt16.name = "u32x2"_c;
+    UInt32x2_splat_UInt16.name = UInt32x2_splat_UInt16_name;
     UInt32x2_splat_UInt16.compileTime = true;
     UInt32x2_splat_UInt16.backendIndex = 260;
     UInt32x2_splat_UInt16.returnType = Type::FullType { UInt32x2Type.name };
@@ -1770,7 +1770,7 @@ void SetupIntrinsics0()
     UInt32x2_from_Int16x2_arg.name = "val"_c;
     UInt32x2_from_Int16x2_arg.type = Type::FullType{ Int16x2Type.name };
     UInt32x2_from_Int16x2.documentation = "Convert from i16x2 to u32x2"_c;
-    UInt32x2_from_Int16x2.name = "u32x2"_c;
+    UInt32x2_from_Int16x2.name = UInt32x2_from_Int16x2_name;
     UInt32x2_from_Int16x2.compileTime = true;
     UInt32x2_from_Int16x2.backendIndex = 261;
     UInt32x2_from_Int16x2.returnType = Type::FullType { UInt32x2Type.name };
@@ -1785,7 +1785,7 @@ void SetupIntrinsics0()
     UInt32x2_splat_Int16_arg.name = "val"_c;
     UInt32x2_splat_Int16_arg.type = Type::FullType{ Int16Type.name };
     UInt32x2_splat_Int16.documentation = "Splat i16 to u32x2"_c;
-    UInt32x2_splat_Int16.name = "u32x2"_c;
+    UInt32x2_splat_Int16.name = UInt32x2_splat_Int16_name;
     UInt32x2_splat_Int16.compileTime = true;
     UInt32x2_splat_Int16.backendIndex = 262;
     UInt32x2_splat_Int16.returnType = Type::FullType { UInt32x2Type.name };
@@ -1801,7 +1801,7 @@ void SetupIntrinsics0()
     UInt32x2_ctor0_arg0_UInt32.type = Type::FullType{ UInt32Type.name };
     UInt32x2_ctor0_arg1_UInt32.name = "arg1"_c;
     UInt32x2_ctor0_arg1_UInt32.type = Type::FullType{ UInt32Type.name };
-    UInt32x2_ctor0.name = "u32x2"_c;
+    UInt32x2_ctor0.name = UInt32x2_ctor0_name;
     UInt32x2_ctor0.compileTime = true;
     UInt32x2_ctor0.backendIndex = 263;
     UInt32x2_ctor0.returnType = Type::FullType { UInt32x2Type.name };
@@ -1817,7 +1817,7 @@ void SetupIntrinsics0()
     Int32x2_from_Float32x2_arg.name = "val"_c;
     Int32x2_from_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     Int32x2_from_Float32x2.documentation = "Convert from f32x2 to i32x2"_c;
-    Int32x2_from_Float32x2.name = "i32x2"_c;
+    Int32x2_from_Float32x2.name = Int32x2_from_Float32x2_name;
     Int32x2_from_Float32x2.compileTime = true;
     Int32x2_from_Float32x2.backendIndex = 296;
     Int32x2_from_Float32x2.returnType = Type::FullType { Int32x2Type.name };
@@ -1832,7 +1832,7 @@ void SetupIntrinsics0()
     Int32x2_splat_Float32_arg.name = "val"_c;
     Int32x2_splat_Float32_arg.type = Type::FullType{ Float32Type.name };
     Int32x2_splat_Float32.documentation = "Splat f32 to i32x2"_c;
-    Int32x2_splat_Float32.name = "i32x2"_c;
+    Int32x2_splat_Float32.name = Int32x2_splat_Float32_name;
     Int32x2_splat_Float32.compileTime = true;
     Int32x2_splat_Float32.backendIndex = 297;
     Int32x2_splat_Float32.returnType = Type::FullType { Int32x2Type.name };
@@ -1847,7 +1847,7 @@ void SetupIntrinsics0()
     Int32x2_from_UInt32x2_arg.name = "val"_c;
     Int32x2_from_UInt32x2_arg.type = Type::FullType{ UInt32x2Type.name };
     Int32x2_from_UInt32x2.documentation = "Convert from u32x2 to i32x2"_c;
-    Int32x2_from_UInt32x2.name = "i32x2"_c;
+    Int32x2_from_UInt32x2.name = Int32x2_from_UInt32x2_name;
     Int32x2_from_UInt32x2.compileTime = true;
     Int32x2_from_UInt32x2.backendIndex = 298;
     Int32x2_from_UInt32x2.returnType = Type::FullType { Int32x2Type.name };
@@ -1862,7 +1862,7 @@ void SetupIntrinsics0()
     Int32x2_splat_UInt32_arg.name = "val"_c;
     Int32x2_splat_UInt32_arg.type = Type::FullType{ UInt32Type.name };
     Int32x2_splat_UInt32.documentation = "Splat u32 to i32x2"_c;
-    Int32x2_splat_UInt32.name = "i32x2"_c;
+    Int32x2_splat_UInt32.name = Int32x2_splat_UInt32_name;
     Int32x2_splat_UInt32.compileTime = true;
     Int32x2_splat_UInt32.backendIndex = 299;
     Int32x2_splat_UInt32.returnType = Type::FullType { Int32x2Type.name };
@@ -1877,7 +1877,7 @@ void SetupIntrinsics0()
     Int32x2_from_Int32x2_arg.name = "val"_c;
     Int32x2_from_Int32x2_arg.type = Type::FullType{ Int32x2Type.name };
     Int32x2_from_Int32x2.documentation = "Convert from i32x2 to i32x2"_c;
-    Int32x2_from_Int32x2.name = "i32x2"_c;
+    Int32x2_from_Int32x2.name = Int32x2_from_Int32x2_name;
     Int32x2_from_Int32x2.compileTime = true;
     Int32x2_from_Int32x2.backendIndex = 300;
     Int32x2_from_Int32x2.returnType = Type::FullType { Int32x2Type.name };
@@ -1892,7 +1892,7 @@ void SetupIntrinsics0()
     Int32x2_splat_Int32_arg.name = "val"_c;
     Int32x2_splat_Int32_arg.type = Type::FullType{ Int32Type.name };
     Int32x2_splat_Int32.documentation = "Splat i32 to i32x2"_c;
-    Int32x2_splat_Int32.name = "i32x2"_c;
+    Int32x2_splat_Int32.name = Int32x2_splat_Int32_name;
     Int32x2_splat_Int32.compileTime = true;
     Int32x2_splat_Int32.backendIndex = 301;
     Int32x2_splat_Int32.returnType = Type::FullType { Int32x2Type.name };
@@ -1907,7 +1907,7 @@ void SetupIntrinsics0()
     Int32x2_from_Bool8x2_arg.name = "val"_c;
     Int32x2_from_Bool8x2_arg.type = Type::FullType{ Bool8x2Type.name };
     Int32x2_from_Bool8x2.documentation = "Convert from b8x2 to i32x2"_c;
-    Int32x2_from_Bool8x2.name = "i32x2"_c;
+    Int32x2_from_Bool8x2.name = Int32x2_from_Bool8x2_name;
     Int32x2_from_Bool8x2.compileTime = true;
     Int32x2_from_Bool8x2.backendIndex = 302;
     Int32x2_from_Bool8x2.returnType = Type::FullType { Int32x2Type.name };
@@ -1922,7 +1922,7 @@ void SetupIntrinsics0()
     Int32x2_splat_Bool8_arg.name = "val"_c;
     Int32x2_splat_Bool8_arg.type = Type::FullType{ Bool8Type.name };
     Int32x2_splat_Bool8.documentation = "Splat b8 to i32x2"_c;
-    Int32x2_splat_Bool8.name = "i32x2"_c;
+    Int32x2_splat_Bool8.name = Int32x2_splat_Bool8_name;
     Int32x2_splat_Bool8.compileTime = true;
     Int32x2_splat_Bool8.backendIndex = 303;
     Int32x2_splat_Bool8.returnType = Type::FullType { Int32x2Type.name };
@@ -1937,7 +1937,7 @@ void SetupIntrinsics0()
     Int32x2_from_Float16x2_arg.name = "val"_c;
     Int32x2_from_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     Int32x2_from_Float16x2.documentation = "Convert from f16x2 to i32x2"_c;
-    Int32x2_from_Float16x2.name = "i32x2"_c;
+    Int32x2_from_Float16x2.name = Int32x2_from_Float16x2_name;
     Int32x2_from_Float16x2.compileTime = true;
     Int32x2_from_Float16x2.backendIndex = 304;
     Int32x2_from_Float16x2.returnType = Type::FullType { Int32x2Type.name };
@@ -1952,7 +1952,7 @@ void SetupIntrinsics0()
     Int32x2_splat_Float16_arg.name = "val"_c;
     Int32x2_splat_Float16_arg.type = Type::FullType{ Float16Type.name };
     Int32x2_splat_Float16.documentation = "Splat f16 to i32x2"_c;
-    Int32x2_splat_Float16.name = "i32x2"_c;
+    Int32x2_splat_Float16.name = Int32x2_splat_Float16_name;
     Int32x2_splat_Float16.compileTime = true;
     Int32x2_splat_Float16.backendIndex = 305;
     Int32x2_splat_Float16.returnType = Type::FullType { Int32x2Type.name };
@@ -1967,7 +1967,7 @@ void SetupIntrinsics0()
     Int32x2_from_UInt16x2_arg.name = "val"_c;
     Int32x2_from_UInt16x2_arg.type = Type::FullType{ UInt16x2Type.name };
     Int32x2_from_UInt16x2.documentation = "Convert from u16x2 to i32x2"_c;
-    Int32x2_from_UInt16x2.name = "i32x2"_c;
+    Int32x2_from_UInt16x2.name = Int32x2_from_UInt16x2_name;
     Int32x2_from_UInt16x2.compileTime = true;
     Int32x2_from_UInt16x2.backendIndex = 306;
     Int32x2_from_UInt16x2.returnType = Type::FullType { Int32x2Type.name };
@@ -1982,7 +1982,7 @@ void SetupIntrinsics0()
     Int32x2_splat_UInt16_arg.name = "val"_c;
     Int32x2_splat_UInt16_arg.type = Type::FullType{ UInt16Type.name };
     Int32x2_splat_UInt16.documentation = "Splat u16 to i32x2"_c;
-    Int32x2_splat_UInt16.name = "i32x2"_c;
+    Int32x2_splat_UInt16.name = Int32x2_splat_UInt16_name;
     Int32x2_splat_UInt16.compileTime = true;
     Int32x2_splat_UInt16.backendIndex = 307;
     Int32x2_splat_UInt16.returnType = Type::FullType { Int32x2Type.name };
@@ -1997,7 +1997,7 @@ void SetupIntrinsics0()
     Int32x2_from_Int16x2_arg.name = "val"_c;
     Int32x2_from_Int16x2_arg.type = Type::FullType{ Int16x2Type.name };
     Int32x2_from_Int16x2.documentation = "Convert from i16x2 to i32x2"_c;
-    Int32x2_from_Int16x2.name = "i32x2"_c;
+    Int32x2_from_Int16x2.name = Int32x2_from_Int16x2_name;
     Int32x2_from_Int16x2.compileTime = true;
     Int32x2_from_Int16x2.backendIndex = 308;
     Int32x2_from_Int16x2.returnType = Type::FullType { Int32x2Type.name };
@@ -2012,7 +2012,7 @@ void SetupIntrinsics0()
     Int32x2_splat_Int16_arg.name = "val"_c;
     Int32x2_splat_Int16_arg.type = Type::FullType{ Int16Type.name };
     Int32x2_splat_Int16.documentation = "Splat i16 to i32x2"_c;
-    Int32x2_splat_Int16.name = "i32x2"_c;
+    Int32x2_splat_Int16.name = Int32x2_splat_Int16_name;
     Int32x2_splat_Int16.compileTime = true;
     Int32x2_splat_Int16.backendIndex = 309;
     Int32x2_splat_Int16.returnType = Type::FullType { Int32x2Type.name };
@@ -2028,7 +2028,7 @@ void SetupIntrinsics0()
     Int32x2_ctor0_arg0_Int32.type = Type::FullType{ Int32Type.name };
     Int32x2_ctor0_arg1_Int32.name = "arg1"_c;
     Int32x2_ctor0_arg1_Int32.type = Type::FullType{ Int32Type.name };
-    Int32x2_ctor0.name = "i32x2"_c;
+    Int32x2_ctor0.name = Int32x2_ctor0_name;
     Int32x2_ctor0.compileTime = true;
     Int32x2_ctor0.backendIndex = 310;
     Int32x2_ctor0.returnType = Type::FullType { Int32x2Type.name };
@@ -2044,7 +2044,7 @@ void SetupIntrinsics0()
     Bool8x2_from_UInt32x2_arg.name = "val"_c;
     Bool8x2_from_UInt32x2_arg.type = Type::FullType{ UInt32x2Type.name };
     Bool8x2_from_UInt32x2.documentation = "Convert from u32x2 to b8x2"_c;
-    Bool8x2_from_UInt32x2.name = "b8x2"_c;
+    Bool8x2_from_UInt32x2.name = Bool8x2_from_UInt32x2_name;
     Bool8x2_from_UInt32x2.compileTime = true;
     Bool8x2_from_UInt32x2.backendIndex = 343;
     Bool8x2_from_UInt32x2.returnType = Type::FullType { Bool8x2Type.name };
@@ -2059,7 +2059,7 @@ void SetupIntrinsics0()
     Bool8x2_splat_UInt32_arg.name = "val"_c;
     Bool8x2_splat_UInt32_arg.type = Type::FullType{ UInt32Type.name };
     Bool8x2_splat_UInt32.documentation = "Splat u32 to b8x2"_c;
-    Bool8x2_splat_UInt32.name = "b8x2"_c;
+    Bool8x2_splat_UInt32.name = Bool8x2_splat_UInt32_name;
     Bool8x2_splat_UInt32.compileTime = true;
     Bool8x2_splat_UInt32.backendIndex = 344;
     Bool8x2_splat_UInt32.returnType = Type::FullType { Bool8x2Type.name };
@@ -2074,7 +2074,7 @@ void SetupIntrinsics0()
     Bool8x2_from_Int32x2_arg.name = "val"_c;
     Bool8x2_from_Int32x2_arg.type = Type::FullType{ Int32x2Type.name };
     Bool8x2_from_Int32x2.documentation = "Convert from i32x2 to b8x2"_c;
-    Bool8x2_from_Int32x2.name = "b8x2"_c;
+    Bool8x2_from_Int32x2.name = Bool8x2_from_Int32x2_name;
     Bool8x2_from_Int32x2.compileTime = true;
     Bool8x2_from_Int32x2.backendIndex = 345;
     Bool8x2_from_Int32x2.returnType = Type::FullType { Bool8x2Type.name };
@@ -2089,7 +2089,7 @@ void SetupIntrinsics0()
     Bool8x2_splat_Int32_arg.name = "val"_c;
     Bool8x2_splat_Int32_arg.type = Type::FullType{ Int32Type.name };
     Bool8x2_splat_Int32.documentation = "Splat i32 to b8x2"_c;
-    Bool8x2_splat_Int32.name = "b8x2"_c;
+    Bool8x2_splat_Int32.name = Bool8x2_splat_Int32_name;
     Bool8x2_splat_Int32.compileTime = true;
     Bool8x2_splat_Int32.backendIndex = 346;
     Bool8x2_splat_Int32.returnType = Type::FullType { Bool8x2Type.name };
@@ -2104,7 +2104,7 @@ void SetupIntrinsics0()
     Bool8x2_from_Bool8x2_arg.name = "val"_c;
     Bool8x2_from_Bool8x2_arg.type = Type::FullType{ Bool8x2Type.name };
     Bool8x2_from_Bool8x2.documentation = "Convert from b8x2 to b8x2"_c;
-    Bool8x2_from_Bool8x2.name = "b8x2"_c;
+    Bool8x2_from_Bool8x2.name = Bool8x2_from_Bool8x2_name;
     Bool8x2_from_Bool8x2.compileTime = true;
     Bool8x2_from_Bool8x2.backendIndex = 347;
     Bool8x2_from_Bool8x2.returnType = Type::FullType { Bool8x2Type.name };
@@ -2119,7 +2119,7 @@ void SetupIntrinsics0()
     Bool8x2_splat_Bool8_arg.name = "val"_c;
     Bool8x2_splat_Bool8_arg.type = Type::FullType{ Bool8Type.name };
     Bool8x2_splat_Bool8.documentation = "Splat b8 to b8x2"_c;
-    Bool8x2_splat_Bool8.name = "b8x2"_c;
+    Bool8x2_splat_Bool8.name = Bool8x2_splat_Bool8_name;
     Bool8x2_splat_Bool8.compileTime = true;
     Bool8x2_splat_Bool8.backendIndex = 348;
     Bool8x2_splat_Bool8.returnType = Type::FullType { Bool8x2Type.name };
@@ -2134,7 +2134,7 @@ void SetupIntrinsics0()
     Bool8x2_from_UInt16x2_arg.name = "val"_c;
     Bool8x2_from_UInt16x2_arg.type = Type::FullType{ UInt16x2Type.name };
     Bool8x2_from_UInt16x2.documentation = "Convert from u16x2 to b8x2"_c;
-    Bool8x2_from_UInt16x2.name = "b8x2"_c;
+    Bool8x2_from_UInt16x2.name = Bool8x2_from_UInt16x2_name;
     Bool8x2_from_UInt16x2.compileTime = true;
     Bool8x2_from_UInt16x2.backendIndex = 349;
     Bool8x2_from_UInt16x2.returnType = Type::FullType { Bool8x2Type.name };
@@ -2149,7 +2149,7 @@ void SetupIntrinsics0()
     Bool8x2_splat_UInt16_arg.name = "val"_c;
     Bool8x2_splat_UInt16_arg.type = Type::FullType{ UInt16Type.name };
     Bool8x2_splat_UInt16.documentation = "Splat u16 to b8x2"_c;
-    Bool8x2_splat_UInt16.name = "b8x2"_c;
+    Bool8x2_splat_UInt16.name = Bool8x2_splat_UInt16_name;
     Bool8x2_splat_UInt16.compileTime = true;
     Bool8x2_splat_UInt16.backendIndex = 350;
     Bool8x2_splat_UInt16.returnType = Type::FullType { Bool8x2Type.name };
@@ -2164,7 +2164,7 @@ void SetupIntrinsics0()
     Bool8x2_from_Int16x2_arg.name = "val"_c;
     Bool8x2_from_Int16x2_arg.type = Type::FullType{ Int16x2Type.name };
     Bool8x2_from_Int16x2.documentation = "Convert from i16x2 to b8x2"_c;
-    Bool8x2_from_Int16x2.name = "b8x2"_c;
+    Bool8x2_from_Int16x2.name = Bool8x2_from_Int16x2_name;
     Bool8x2_from_Int16x2.compileTime = true;
     Bool8x2_from_Int16x2.backendIndex = 351;
     Bool8x2_from_Int16x2.returnType = Type::FullType { Bool8x2Type.name };
@@ -2179,7 +2179,7 @@ void SetupIntrinsics0()
     Bool8x2_splat_Int16_arg.name = "val"_c;
     Bool8x2_splat_Int16_arg.type = Type::FullType{ Int16Type.name };
     Bool8x2_splat_Int16.documentation = "Splat i16 to b8x2"_c;
-    Bool8x2_splat_Int16.name = "b8x2"_c;
+    Bool8x2_splat_Int16.name = Bool8x2_splat_Int16_name;
     Bool8x2_splat_Int16.compileTime = true;
     Bool8x2_splat_Int16.backendIndex = 352;
     Bool8x2_splat_Int16.returnType = Type::FullType { Bool8x2Type.name };
@@ -2195,7 +2195,7 @@ void SetupIntrinsics0()
     Bool8x2_ctor0_arg0_Bool8.type = Type::FullType{ Bool8Type.name };
     Bool8x2_ctor0_arg1_Bool8.name = "arg1"_c;
     Bool8x2_ctor0_arg1_Bool8.type = Type::FullType{ Bool8Type.name };
-    Bool8x2_ctor0.name = "b8x2"_c;
+    Bool8x2_ctor0.name = Bool8x2_ctor0_name;
     Bool8x2_ctor0.compileTime = true;
     Bool8x2_ctor0.backendIndex = 353;
     Bool8x2_ctor0.returnType = Type::FullType { Bool8x2Type.name };
@@ -2211,7 +2211,7 @@ void SetupIntrinsics0()
     Float16x2_from_Float32x2_arg.name = "val"_c;
     Float16x2_from_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     Float16x2_from_Float32x2.documentation = "Convert from f32x2 to f16x2"_c;
-    Float16x2_from_Float32x2.name = "f16x2"_c;
+    Float16x2_from_Float32x2.name = Float16x2_from_Float32x2_name;
     Float16x2_from_Float32x2.compileTime = true;
     Float16x2_from_Float32x2.backendIndex = 362;
     Float16x2_from_Float32x2.returnType = Type::FullType { Float16x2Type.name };
@@ -2226,7 +2226,7 @@ void SetupIntrinsics0()
     Float16x2_splat_Float32_arg.name = "val"_c;
     Float16x2_splat_Float32_arg.type = Type::FullType{ Float32Type.name };
     Float16x2_splat_Float32.documentation = "Splat f32 to f16x2"_c;
-    Float16x2_splat_Float32.name = "f16x2"_c;
+    Float16x2_splat_Float32.name = Float16x2_splat_Float32_name;
     Float16x2_splat_Float32.compileTime = true;
     Float16x2_splat_Float32.backendIndex = 363;
     Float16x2_splat_Float32.returnType = Type::FullType { Float16x2Type.name };
@@ -2241,7 +2241,7 @@ void SetupIntrinsics0()
     Float16x2_from_UInt32x2_arg.name = "val"_c;
     Float16x2_from_UInt32x2_arg.type = Type::FullType{ UInt32x2Type.name };
     Float16x2_from_UInt32x2.documentation = "Convert from u32x2 to f16x2"_c;
-    Float16x2_from_UInt32x2.name = "f16x2"_c;
+    Float16x2_from_UInt32x2.name = Float16x2_from_UInt32x2_name;
     Float16x2_from_UInt32x2.compileTime = true;
     Float16x2_from_UInt32x2.backendIndex = 364;
     Float16x2_from_UInt32x2.returnType = Type::FullType { Float16x2Type.name };
@@ -2256,7 +2256,7 @@ void SetupIntrinsics0()
     Float16x2_splat_UInt32_arg.name = "val"_c;
     Float16x2_splat_UInt32_arg.type = Type::FullType{ UInt32Type.name };
     Float16x2_splat_UInt32.documentation = "Splat u32 to f16x2"_c;
-    Float16x2_splat_UInt32.name = "f16x2"_c;
+    Float16x2_splat_UInt32.name = Float16x2_splat_UInt32_name;
     Float16x2_splat_UInt32.compileTime = true;
     Float16x2_splat_UInt32.backendIndex = 365;
     Float16x2_splat_UInt32.returnType = Type::FullType { Float16x2Type.name };
@@ -2271,7 +2271,7 @@ void SetupIntrinsics0()
     Float16x2_from_Int32x2_arg.name = "val"_c;
     Float16x2_from_Int32x2_arg.type = Type::FullType{ Int32x2Type.name };
     Float16x2_from_Int32x2.documentation = "Convert from i32x2 to f16x2"_c;
-    Float16x2_from_Int32x2.name = "f16x2"_c;
+    Float16x2_from_Int32x2.name = Float16x2_from_Int32x2_name;
     Float16x2_from_Int32x2.compileTime = true;
     Float16x2_from_Int32x2.backendIndex = 366;
     Float16x2_from_Int32x2.returnType = Type::FullType { Float16x2Type.name };
@@ -2286,7 +2286,7 @@ void SetupIntrinsics0()
     Float16x2_splat_Int32_arg.name = "val"_c;
     Float16x2_splat_Int32_arg.type = Type::FullType{ Int32Type.name };
     Float16x2_splat_Int32.documentation = "Splat i32 to f16x2"_c;
-    Float16x2_splat_Int32.name = "f16x2"_c;
+    Float16x2_splat_Int32.name = Float16x2_splat_Int32_name;
     Float16x2_splat_Int32.compileTime = true;
     Float16x2_splat_Int32.backendIndex = 367;
     Float16x2_splat_Int32.returnType = Type::FullType { Float16x2Type.name };
@@ -2301,7 +2301,7 @@ void SetupIntrinsics0()
     Float16x2_from_Bool8x2_arg.name = "val"_c;
     Float16x2_from_Bool8x2_arg.type = Type::FullType{ Bool8x2Type.name };
     Float16x2_from_Bool8x2.documentation = "Convert from b8x2 to f16x2"_c;
-    Float16x2_from_Bool8x2.name = "f16x2"_c;
+    Float16x2_from_Bool8x2.name = Float16x2_from_Bool8x2_name;
     Float16x2_from_Bool8x2.compileTime = true;
     Float16x2_from_Bool8x2.backendIndex = 368;
     Float16x2_from_Bool8x2.returnType = Type::FullType { Float16x2Type.name };
@@ -2316,7 +2316,7 @@ void SetupIntrinsics0()
     Float16x2_splat_Bool8_arg.name = "val"_c;
     Float16x2_splat_Bool8_arg.type = Type::FullType{ Bool8Type.name };
     Float16x2_splat_Bool8.documentation = "Splat b8 to f16x2"_c;
-    Float16x2_splat_Bool8.name = "f16x2"_c;
+    Float16x2_splat_Bool8.name = Float16x2_splat_Bool8_name;
     Float16x2_splat_Bool8.compileTime = true;
     Float16x2_splat_Bool8.backendIndex = 369;
     Float16x2_splat_Bool8.returnType = Type::FullType { Float16x2Type.name };
@@ -2331,7 +2331,7 @@ void SetupIntrinsics0()
     Float16x2_from_Float16x2_arg.name = "val"_c;
     Float16x2_from_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     Float16x2_from_Float16x2.documentation = "Convert from f16x2 to f16x2"_c;
-    Float16x2_from_Float16x2.name = "f16x2"_c;
+    Float16x2_from_Float16x2.name = Float16x2_from_Float16x2_name;
     Float16x2_from_Float16x2.compileTime = true;
     Float16x2_from_Float16x2.backendIndex = 370;
     Float16x2_from_Float16x2.returnType = Type::FullType { Float16x2Type.name };
@@ -2346,7 +2346,7 @@ void SetupIntrinsics0()
     Float16x2_splat_Float16_arg.name = "val"_c;
     Float16x2_splat_Float16_arg.type = Type::FullType{ Float16Type.name };
     Float16x2_splat_Float16.documentation = "Splat f16 to f16x2"_c;
-    Float16x2_splat_Float16.name = "f16x2"_c;
+    Float16x2_splat_Float16.name = Float16x2_splat_Float16_name;
     Float16x2_splat_Float16.compileTime = true;
     Float16x2_splat_Float16.backendIndex = 371;
     Float16x2_splat_Float16.returnType = Type::FullType { Float16x2Type.name };
@@ -2361,7 +2361,7 @@ void SetupIntrinsics0()
     Float16x2_from_UInt16x2_arg.name = "val"_c;
     Float16x2_from_UInt16x2_arg.type = Type::FullType{ UInt16x2Type.name };
     Float16x2_from_UInt16x2.documentation = "Convert from u16x2 to f16x2"_c;
-    Float16x2_from_UInt16x2.name = "f16x2"_c;
+    Float16x2_from_UInt16x2.name = Float16x2_from_UInt16x2_name;
     Float16x2_from_UInt16x2.compileTime = true;
     Float16x2_from_UInt16x2.backendIndex = 372;
     Float16x2_from_UInt16x2.returnType = Type::FullType { Float16x2Type.name };
@@ -2376,7 +2376,7 @@ void SetupIntrinsics0()
     Float16x2_splat_UInt16_arg.name = "val"_c;
     Float16x2_splat_UInt16_arg.type = Type::FullType{ UInt16Type.name };
     Float16x2_splat_UInt16.documentation = "Splat u16 to f16x2"_c;
-    Float16x2_splat_UInt16.name = "f16x2"_c;
+    Float16x2_splat_UInt16.name = Float16x2_splat_UInt16_name;
     Float16x2_splat_UInt16.compileTime = true;
     Float16x2_splat_UInt16.backendIndex = 373;
     Float16x2_splat_UInt16.returnType = Type::FullType { Float16x2Type.name };
@@ -2391,7 +2391,7 @@ void SetupIntrinsics0()
     Float16x2_from_Int16x2_arg.name = "val"_c;
     Float16x2_from_Int16x2_arg.type = Type::FullType{ Int16x2Type.name };
     Float16x2_from_Int16x2.documentation = "Convert from i16x2 to f16x2"_c;
-    Float16x2_from_Int16x2.name = "f16x2"_c;
+    Float16x2_from_Int16x2.name = Float16x2_from_Int16x2_name;
     Float16x2_from_Int16x2.compileTime = true;
     Float16x2_from_Int16x2.backendIndex = 374;
     Float16x2_from_Int16x2.returnType = Type::FullType { Float16x2Type.name };
@@ -2406,7 +2406,7 @@ void SetupIntrinsics0()
     Float16x2_splat_Int16_arg.name = "val"_c;
     Float16x2_splat_Int16_arg.type = Type::FullType{ Int16Type.name };
     Float16x2_splat_Int16.documentation = "Splat i16 to f16x2"_c;
-    Float16x2_splat_Int16.name = "f16x2"_c;
+    Float16x2_splat_Int16.name = Float16x2_splat_Int16_name;
     Float16x2_splat_Int16.compileTime = true;
     Float16x2_splat_Int16.backendIndex = 375;
     Float16x2_splat_Int16.returnType = Type::FullType { Float16x2Type.name };
@@ -2422,7 +2422,7 @@ void SetupIntrinsics0()
     Float16x2_ctor0_arg0_Float16.type = Type::FullType{ Float16Type.name };
     Float16x2_ctor0_arg1_Float16.name = "arg1"_c;
     Float16x2_ctor0_arg1_Float16.type = Type::FullType{ Float16Type.name };
-    Float16x2_ctor0.name = "f16x2"_c;
+    Float16x2_ctor0.name = Float16x2_ctor0_name;
     Float16x2_ctor0.compileTime = true;
     Float16x2_ctor0.backendIndex = 376;
     Float16x2_ctor0.returnType = Type::FullType { Float16x2Type.name };
@@ -2438,7 +2438,7 @@ void SetupIntrinsics0()
     UInt16x2_from_Float32x2_arg.name = "val"_c;
     UInt16x2_from_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     UInt16x2_from_Float32x2.documentation = "Convert from f32x2 to u16x2"_c;
-    UInt16x2_from_Float32x2.name = "u16x2"_c;
+    UInt16x2_from_Float32x2.name = UInt16x2_from_Float32x2_name;
     UInt16x2_from_Float32x2.compileTime = true;
     UInt16x2_from_Float32x2.backendIndex = 402;
     UInt16x2_from_Float32x2.returnType = Type::FullType { UInt16x2Type.name };
@@ -2453,7 +2453,7 @@ void SetupIntrinsics0()
     UInt16x2_splat_Float32_arg.name = "val"_c;
     UInt16x2_splat_Float32_arg.type = Type::FullType{ Float32Type.name };
     UInt16x2_splat_Float32.documentation = "Splat f32 to u16x2"_c;
-    UInt16x2_splat_Float32.name = "u16x2"_c;
+    UInt16x2_splat_Float32.name = UInt16x2_splat_Float32_name;
     UInt16x2_splat_Float32.compileTime = true;
     UInt16x2_splat_Float32.backendIndex = 403;
     UInt16x2_splat_Float32.returnType = Type::FullType { UInt16x2Type.name };
@@ -2468,7 +2468,7 @@ void SetupIntrinsics0()
     UInt16x2_from_UInt32x2_arg.name = "val"_c;
     UInt16x2_from_UInt32x2_arg.type = Type::FullType{ UInt32x2Type.name };
     UInt16x2_from_UInt32x2.documentation = "Convert from u32x2 to u16x2"_c;
-    UInt16x2_from_UInt32x2.name = "u16x2"_c;
+    UInt16x2_from_UInt32x2.name = UInt16x2_from_UInt32x2_name;
     UInt16x2_from_UInt32x2.compileTime = true;
     UInt16x2_from_UInt32x2.backendIndex = 404;
     UInt16x2_from_UInt32x2.returnType = Type::FullType { UInt16x2Type.name };
@@ -2483,7 +2483,7 @@ void SetupIntrinsics0()
     UInt16x2_splat_UInt32_arg.name = "val"_c;
     UInt16x2_splat_UInt32_arg.type = Type::FullType{ UInt32Type.name };
     UInt16x2_splat_UInt32.documentation = "Splat u32 to u16x2"_c;
-    UInt16x2_splat_UInt32.name = "u16x2"_c;
+    UInt16x2_splat_UInt32.name = UInt16x2_splat_UInt32_name;
     UInt16x2_splat_UInt32.compileTime = true;
     UInt16x2_splat_UInt32.backendIndex = 405;
     UInt16x2_splat_UInt32.returnType = Type::FullType { UInt16x2Type.name };
@@ -2498,7 +2498,7 @@ void SetupIntrinsics0()
     UInt16x2_from_Int32x2_arg.name = "val"_c;
     UInt16x2_from_Int32x2_arg.type = Type::FullType{ Int32x2Type.name };
     UInt16x2_from_Int32x2.documentation = "Convert from i32x2 to u16x2"_c;
-    UInt16x2_from_Int32x2.name = "u16x2"_c;
+    UInt16x2_from_Int32x2.name = UInt16x2_from_Int32x2_name;
     UInt16x2_from_Int32x2.compileTime = true;
     UInt16x2_from_Int32x2.backendIndex = 406;
     UInt16x2_from_Int32x2.returnType = Type::FullType { UInt16x2Type.name };
@@ -2513,7 +2513,7 @@ void SetupIntrinsics0()
     UInt16x2_splat_Int32_arg.name = "val"_c;
     UInt16x2_splat_Int32_arg.type = Type::FullType{ Int32Type.name };
     UInt16x2_splat_Int32.documentation = "Splat i32 to u16x2"_c;
-    UInt16x2_splat_Int32.name = "u16x2"_c;
+    UInt16x2_splat_Int32.name = UInt16x2_splat_Int32_name;
     UInt16x2_splat_Int32.compileTime = true;
     UInt16x2_splat_Int32.backendIndex = 407;
     UInt16x2_splat_Int32.returnType = Type::FullType { UInt16x2Type.name };
@@ -2528,7 +2528,7 @@ void SetupIntrinsics0()
     UInt16x2_from_Bool8x2_arg.name = "val"_c;
     UInt16x2_from_Bool8x2_arg.type = Type::FullType{ Bool8x2Type.name };
     UInt16x2_from_Bool8x2.documentation = "Convert from b8x2 to u16x2"_c;
-    UInt16x2_from_Bool8x2.name = "u16x2"_c;
+    UInt16x2_from_Bool8x2.name = UInt16x2_from_Bool8x2_name;
     UInt16x2_from_Bool8x2.compileTime = true;
     UInt16x2_from_Bool8x2.backendIndex = 408;
     UInt16x2_from_Bool8x2.returnType = Type::FullType { UInt16x2Type.name };
@@ -2543,7 +2543,7 @@ void SetupIntrinsics0()
     UInt16x2_splat_Bool8_arg.name = "val"_c;
     UInt16x2_splat_Bool8_arg.type = Type::FullType{ Bool8Type.name };
     UInt16x2_splat_Bool8.documentation = "Splat b8 to u16x2"_c;
-    UInt16x2_splat_Bool8.name = "u16x2"_c;
+    UInt16x2_splat_Bool8.name = UInt16x2_splat_Bool8_name;
     UInt16x2_splat_Bool8.compileTime = true;
     UInt16x2_splat_Bool8.backendIndex = 409;
     UInt16x2_splat_Bool8.returnType = Type::FullType { UInt16x2Type.name };
@@ -2558,7 +2558,7 @@ void SetupIntrinsics0()
     UInt16x2_from_Float16x2_arg.name = "val"_c;
     UInt16x2_from_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     UInt16x2_from_Float16x2.documentation = "Convert from f16x2 to u16x2"_c;
-    UInt16x2_from_Float16x2.name = "u16x2"_c;
+    UInt16x2_from_Float16x2.name = UInt16x2_from_Float16x2_name;
     UInt16x2_from_Float16x2.compileTime = true;
     UInt16x2_from_Float16x2.backendIndex = 410;
     UInt16x2_from_Float16x2.returnType = Type::FullType { UInt16x2Type.name };
@@ -2573,7 +2573,7 @@ void SetupIntrinsics0()
     UInt16x2_splat_Float16_arg.name = "val"_c;
     UInt16x2_splat_Float16_arg.type = Type::FullType{ Float16Type.name };
     UInt16x2_splat_Float16.documentation = "Splat f16 to u16x2"_c;
-    UInt16x2_splat_Float16.name = "u16x2"_c;
+    UInt16x2_splat_Float16.name = UInt16x2_splat_Float16_name;
     UInt16x2_splat_Float16.compileTime = true;
     UInt16x2_splat_Float16.backendIndex = 411;
     UInt16x2_splat_Float16.returnType = Type::FullType { UInt16x2Type.name };
@@ -2588,7 +2588,7 @@ void SetupIntrinsics0()
     UInt16x2_from_UInt16x2_arg.name = "val"_c;
     UInt16x2_from_UInt16x2_arg.type = Type::FullType{ UInt16x2Type.name };
     UInt16x2_from_UInt16x2.documentation = "Convert from u16x2 to u16x2"_c;
-    UInt16x2_from_UInt16x2.name = "u16x2"_c;
+    UInt16x2_from_UInt16x2.name = UInt16x2_from_UInt16x2_name;
     UInt16x2_from_UInt16x2.compileTime = true;
     UInt16x2_from_UInt16x2.backendIndex = 412;
     UInt16x2_from_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
