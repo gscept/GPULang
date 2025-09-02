@@ -2894,7 +2894,7 @@ def generate_types():
         'Returns the base instance index of the current vertex.',
         'Returns the draw index of the current vertex.'
     ]
-    vertex_value_builtins_spirv = ['Layer', 'ViewportIndex', 'VertexId', 'InstanceId', 'BaseVertex', 'BaseInstance', 'DrawIndex']
+    vertex_value_builtins_spirv = ['Layer', 'ViewportIndex', 'VertexIndex', 'InstanceIndex', 'BaseVertex', 'BaseInstance', 'DrawIndex']
     for builtin, spirv_builtin, doc in zip(intrinsics, vertex_value_builtins_spirv, docs):
         intrinsic = builtin
         function_name = f'Vertex{intrinsic}'
@@ -2991,7 +2991,7 @@ def generate_types():
         spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
         spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);\n'
         spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
-        spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{builtin}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
+        spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gplVertexCoordinates"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
         spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
         spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
@@ -3002,6 +3002,96 @@ def generate_types():
         fun.spirv = spirv_function
         functions.append(fun)
 
+    intrinsic = 'ExportPrimitiveIndex'
+    docs = 'Exports the primitive index of the current primitive being processed. This can be read in the pixel shader with pixelGetPrimitiveIndex().'
+
+    function_name = f'Geometry{intrinsic}'
+    fun = Function( 
+        decl_name = function_name,
+        api_name = f'geometry{intrinsic}',
+        return_type = 'UInt32',
+        documentation=doc,
+        parameters = [
+            Variable(decl_name = argument_name, api_name = "index", type_name="UInt32")
+
+        ]
+    )
+
+    spirv_function = ''
+    spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
+    spirv_function += '    g->writer->Capability(Capabilities::Geometry);\n'
+    spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);\n'
+    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
+    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gplGeometryExportPrimitiveIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
+    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::PrimitiveId);\n'
+    spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+    spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
+    spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);\n'
+    spirv_function += '    return SPIRVResult::Invalid();\n'
+
+    fun.spirv = spirv_function
+    functions.append(fun)
+
+    primitive_get_id_stages = ['Hull', 'Domain', 'Pixel']
+    intrinsic = "GetPrimitiveIndex"
+    doc = "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value."
+    for stage in primitive_get_id_stages:
+        function_name = f'{stage}{intrinsic}'
+        fun = Function( 
+            decl_name = function_name,
+            api_name = f'{stage.lower()}{intrinsic}',
+            return_type = 'UInt32',
+            documentation=doc,
+            parameters = [
+                Variable(decl_name = argument_name, api_name = "index", type_name="UInt32")
+
+            ]
+        )
+
+        spirv_function = ''
+        spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
+        if stage == 'Hull' or stage == 'Domain':
+            spirv_function += '    g->writer->Capability(Capabilities::Tessellation);\n'
+        spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);\n'
+        spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
+        spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{stage}ExportPrimitiveIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
+        spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::PrimitiveId);\n'
+        spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+        spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
+        spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);\n'
+        spirv_function += '    return SPIRVResult::Invalid();\n'
+
+        fun.spirv = spirv_function
+        functions.append(fun)
+
+    intrinsic = 'GetInvocationIndex'
+    docs = 'Returns the invocation index of the vertex within the primitive being processed.'
+
+    function_name = f'Geometry{intrinsic}'
+    fun = Function( 
+        decl_name = function_name,
+        api_name = f'geometry{intrinsic}',
+        return_type = 'UInt32',
+        documentation=doc,
+        parameters = [
+        ]
+    )
+
+    spirv_function = ''
+    spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
+    spirv_function += '    g->writer->Capability(Capabilities::Geometry);\n'
+    spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);\n'
+    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
+    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gplGeometryGetInvocationIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
+    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::InvocationId);\n'
+    spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+    spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
+    spirv_function += '    res.parentTypes.push_back(baseType);\n'
+    spirv_function += '    return res;\n'
+
+    fun.spirv = spirv_function
+    functions.append(fun)
+
     for type, spirv_builtin in zip(four_component_float_vec_types, vertex_value_builtins_spirv):
         intrinsic = 'ExportVertex'
         function_name = f'Geometry{intrinsic}_{type}'
@@ -3010,7 +3100,7 @@ def generate_types():
             decl_name = function_name,
             api_name = f'geometry{intrinsic}',
             return_type = 'Void',
-            documentation = 'Exports the value as a vertex for the current primitive. This function must be called for each point in the topology given by output_primitive. This is the same as writing `gl_Position` followed by calling EmitVertex() in GLSL.',
+            documentation = 'Exports the state of all "out" values as vertex data, and sets the argument "val" as the rasterization position. This function must be called for each point in the topology given by output_primitive. This is the same as writing `gl_Position` followed by calling EmitVertex() in GLSL.',
             parameters = [
                 Variable(decl_name = argument_name, api_name = "val", type_name=type)
             ]
@@ -3021,7 +3111,7 @@ def generate_types():
         spirv_function += '    g->writer->Capability(Capabilities::Geometry);\n'
         spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);\n'
         spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
-        spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{builtin}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
+        spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gplGeometryCoordinates"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
         spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
         spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
@@ -3050,6 +3140,120 @@ def generate_types():
     spirv_function += '    g->writer->Capability(Capabilities::Geometry);\n'
     spirv_function += f'    g->writer->Instruction(OpEndPrimitive, SPVWriter::Section::LocalFunction);\n'
     spirv_function += '    return SPIRVResult::Invalid();\n'
+
+    fun.spirv = spirv_function
+    functions.append(fun)
+
+    intrinsic = 'ExportOuterTessellationLevel'
+    docs = 'Sets the outer tessellation levels for the current patch. This function must be called once per patch.'
+
+    function_name = f'Hull{intrinsic}'
+    fun = Function( 
+        decl_name = function_name,
+        api_name = f'hull{intrinsic}',
+        return_type = 'Void',
+        documentation=docs,
+        parameters = [
+            Variable(decl_name = f'{function_name}_arg', api_name = "levels", type_name='Float32x4')
+        ]
+    )
+
+    spirv_function = ''
+    spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
+    spirv_function += '    g->writer->Capability(Capabilities::Tessellation);\n'
+    spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);\n'
+    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
+    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gplHullOuterTessellationLevels"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
+    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::TessLevelOuter);\n'
+    spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+    spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
+    spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);\n'
+    spirv_function += '    return SPIRVResult::Invalid();\n'
+    
+    fun.spirv = spirv_function
+    functions.append(fun)
+
+    intrinsic = 'ExportInnerTessellationLevel'
+    docs = 'Sets the inner tessellation levels for the current patch. This function must be called once per patch.'
+
+    function_name = f'Hull{intrinsic}'
+    fun = Function( 
+        decl_name = function_name,
+        api_name = f'hull{intrinsic}',
+        return_type = 'Void',
+        documentation=docs,
+        parameters = [
+            Variable(decl_name = f'{function_name}_arg', api_name = "levels", type_name='Float32x2')
+        ]
+    )
+
+    spirv_function = ''
+    spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
+    spirv_function += '    g->writer->Capability(Capabilities::Tessellation);\n'
+    spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);\n'
+    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x2_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
+    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gplInnerHullTessellationLevels"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
+    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::TessLevelInner);\n'
+    spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+    spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
+    spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);\n'
+    spirv_function += '    return SPIRVResult::Invalid();\n'
+    
+    fun.spirv = spirv_function
+    functions.append(fun)
+
+    intrinsic = 'GetTessellationCoordinates'
+    docs = 'Returns the tessellation coordinates of the point being processed. For quads, the z coordinate is meaningless and will always be 0, and x,y are bilinear weights. For triangles, x,y,z form barycentric coordinates.'
+
+    function_name = f'Domain{intrinsic}'
+    fun = Function( 
+        decl_name = function_name,
+        api_name = f'domain{intrinsic}',
+        return_type = 'Float32x3',
+        documentation=docs,
+        parameters = [
+        ]
+    )
+
+    spirv_function = ''
+    spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
+    spirv_function += '    g->writer->Capability(Capabilities::Tessellation);\n'
+    spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 23);\n'
+    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
+    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gplDomainTessellationCoordinates"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
+    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::TessCoord);\n'
+    spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+    spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
+    spirv_function += '    res.parentTypes.push_back(baseType);\n'
+    spirv_function += '    return res;\n'
+    
+    fun.spirv = spirv_function
+    functions.append(fun)
+
+    intrinsic = 'GetInvocationIndex'
+    docs = 'Returns the invocation index of the vertex within the patch being processed.'
+
+    function_name = f'Domain{intrinsic}'
+    fun = Function( 
+        decl_name = function_name,
+        api_name = f'domain{intrinsic}',
+        return_type = 'UInt32',
+        documentation=doc,
+        parameters = [
+        ]
+    )
+
+    spirv_function = ''
+    spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
+    spirv_function += '    g->writer->Capability(Capabilities::Tessellation);\n'
+    spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);\n'
+    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
+    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gplDomainGetInvocationIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
+    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::InvocationId);\n'
+    spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+    spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
+    spirv_function += '    res.parentTypes.push_back(baseType);\n'
+    spirv_function += '    return res;\n'
 
     fun.spirv = spirv_function
     functions.append(fun)

@@ -1275,6 +1275,51 @@
         ]
     },
     {
+        "name": "domainGetInvocationIndex",
+        "documentation": "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value.",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "domainGetInvocationIndex() u32"
+            }
+        ]
+    },
+    {
+        "name": "domainGetPrimitiveIndex",
+        "documentation": "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value.",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "domainGetPrimitiveIndex(index: u32) u32"
+            }
+        ]
+    },
+    {
+        "name": "domainGetTessellationCoordinates",
+        "documentation": "Returns the tessellation coordinates of the point being processed. For quads, the z coordinate is meaningless and will always be 0, and x,y are bilinear weights. For triangles, x,y,z form barycentric coordinates.",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "domainGetTessellationCoordinates() f32x3"
+            }
+        ]
+    },
+    {
         "name": "dot",
         "documentation": "Returns the dot product of two vectors.",
         "target_support": [
@@ -1531,7 +1576,7 @@
     },
     {
         "name": "geometryExportPrimitive",
-        "documentation": "Sets the output viewport for the current vertex.",
+        "documentation": "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value.",
         "target_support": [
             1,
             1,
@@ -1545,8 +1590,23 @@
         ]
     },
     {
+        "name": "geometryExportPrimitiveIndex",
+        "documentation": "Sets the output viewport for the current vertex.",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "geometryExportPrimitiveIndex(index: u32) u32"
+            }
+        ]
+    },
+    {
         "name": "geometryExportVertex",
-        "documentation": "Exports the value as a vertex for the current primitive. This function must be called for each point in the topology given by output_primitive. This is the same as writing `gl_Position` followed by calling EmitVertex() in GLSL.",
+        "documentation": "Exports the state of all \"out\" values as vertex data, and sets the argument \"val\" as the rasterization position. This function must be called for each point in the topology given by output_primitive. This is the same as writing `gl_Position` followed by calling EmitVertex() in GLSL.",
         "target_support": [
             1,
             1,
@@ -1559,6 +1619,21 @@
             },
             {
                 "signature": "geometryExportVertex(val: f16x4) void"
+            }
+        ]
+    },
+    {
+        "name": "geometryGetInvocationIndex",
+        "documentation": "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value.",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "geometryGetInvocationIndex() u32"
             }
         ]
     },
@@ -1604,6 +1679,51 @@
         "overloads": [
             {
                 "signature": "geometryGetTriangle() GeometryTriangle"
+            }
+        ]
+    },
+    {
+        "name": "hullExportInnerTessellationLevel",
+        "documentation": "Sets the inner tessellation levels for the current patch. This function must be called once per patch.",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "hullExportInnerTessellationLevel(levels: f32x2) void"
+            }
+        ]
+    },
+    {
+        "name": "hullExportOuterTessellationLevel",
+        "documentation": "Sets the outer tessellation levels for the current patch. This function must be called once per patch.",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "hullExportOuterTessellationLevel(levels: f32x4) void"
+            }
+        ]
+    },
+    {
+        "name": "hullGetPrimitiveIndex",
+        "documentation": "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value.",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "hullGetPrimitiveIndex(index: u32) u32"
             }
         ]
     },
@@ -2564,6 +2684,21 @@
         "overloads": [
             {
                 "signature": "pixelGetFrontFacing() b8"
+            }
+        ]
+    },
+    {
+        "name": "pixelGetPrimitiveIndex",
+        "documentation": "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value.",
+        "target_support": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "overloads": [
+            {
+                "signature": "pixelGetPrimitiveIndex(index: u32) u32"
             }
         ]
     },
