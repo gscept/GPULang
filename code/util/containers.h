@@ -814,7 +814,6 @@ struct StaticArray
             // leak memory
             LeakedStaticArrayBytes += this->capacity;
         }
-        this->capacity = size;
         this->size = 0;
         this->buf = StaticAllocArray<T>(size);
     }
@@ -827,7 +826,6 @@ struct StaticArray
             LeakedStaticArrayBytes += this->capacity;
         }
         this->buf = StaticAllocArray<T>(list.size());
-        this->capacity = list.size();
         this->size = 0;
         for (auto& val : list)
         {
@@ -842,7 +840,6 @@ struct StaticArray
             // leak memory
             LeakedStaticArrayBytes += this->capacity;
         }
-        this->capacity = vec.size;
         this->buf = StaticAllocArray<T>(vec.size);
         
         if (vec.size > 0)
@@ -878,7 +875,6 @@ struct StaticArray
             // leak memory
             LeakedStaticArrayBytes += this->capacity;
         }
-        this->capacity = vec.capacity;
         this->buf = StaticAllocArray<T>(vec.capacity);
         
         if (vec.size > 0)
