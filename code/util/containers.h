@@ -286,12 +286,12 @@ public:
     
     const TYPE& front() const
     {
-        return this->buf[0];
+        return this->ptr[0];
     }
     
     TYPE& front()
     {
-        return this->buf[0];
+        return this->ptr[0];
     }
     
     const TYPE& back() const
