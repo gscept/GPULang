@@ -467,7 +467,7 @@ Type::FullType::Assignable(const Type::FullType& rhs) const
     for (size_t i = 0; i < this->modifierValues.size; i++)
         if (this->modifierValues[i] != rhs.modifierValues[i])
         {
-            uint32_t lhsSize = UINT32_MAX, rhsSize;
+            uint32_t lhsSize = UINT32_MAX, rhsSize = UINT32_MAX;
             if (this->modifierValues[i] != nullptr)
             {
                 ValueUnion value;
@@ -506,7 +506,7 @@ Type::FullType::Constructible(const FullType& rhs) const
     for (size_t i = 0; i < this->modifierValues.size; i++)
         if (this->modifierValues[i] != rhs.modifierValues[i])
         {
-            uint32_t lhsSize = UINT32_MAX, rhsSize;
+            uint32_t lhsSize = UINT32_MAX, rhsSize = UINT32_MAX;
             // If we are constructing an unbound array to a bound sized array, that's fine
             if (this->modifierValues[i] == nullptr && rhs.modifierValues[i] != nullptr)
                 continue;
@@ -555,7 +555,7 @@ Type::FullType::operator==(const FullType& rhs) const
     for (size_t i = 0; i < this->modifierValues.size; i++)
         if (this->modifierValues[i] != rhs.modifierValues[i])
         {
-            uint32_t lhsSize, rhsSize;
+            uint32_t lhsSize = UINT32_MAX, rhsSize = UINT32_MAX;
             if (this->modifierValues[i] != nullptr)
             {
                 ValueUnion value;

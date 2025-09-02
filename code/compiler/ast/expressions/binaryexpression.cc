@@ -310,7 +310,7 @@ BinaryExpression::EvalValue(ValueUnion& out) const
         return false;
     
     ValueUnion lval, rval;
-    if (!(this->left->EvalValue(lval) & this->right->EvalValue(rval)))
+    if (!(this->left->EvalValue(lval) && this->right->EvalValue(rval)))
         return false;
 
 #define OPERATOR_EXECUTE(mem, op)\

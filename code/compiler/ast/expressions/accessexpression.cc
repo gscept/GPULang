@@ -14,9 +14,9 @@ namespace GPULang
 /**
 */
 AccessExpression::AccessExpression(Expression* left, Expression* right, bool deref)
-    : left(left)
+    : deref(deref)
+    , left(left)
     , right(right)
-    , deref(deref)
 {
     this->resolved = Alloc<AccessExpression::__Resolved>();
     this->symbolType = AccessExpressionType;

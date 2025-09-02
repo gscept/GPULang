@@ -38,19 +38,6 @@ namespace GPULang
 
 //------------------------------------------------------------------------------
 /**
-    Uses va_list to format message
-*/
-static void
-Emit(const char* msg, ...)
-{
-    va_list args;
-    va_start(args, msg);
-    vprintf(msg, args);
-	va_end(args);
-}
-
-//------------------------------------------------------------------------------
-/**
 	Formats const char* to std::string
 */
 static std::string
@@ -65,15 +52,6 @@ Format(const char* format, ...)
 	return retVal;
 }
 
-//------------------------------------------------------------------------------
-/**
-	Compares std::string with const char*
-*/
-static bool
-operator==(const std::string& lhs, const char* rhs)
-{
-	return lhs.compare(rhs) == 0;
-}
 
 //------------------------------------------------------------------------------
 /**

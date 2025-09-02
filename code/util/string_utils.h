@@ -390,22 +390,22 @@ struct TransientString
     size_t size = 0;
 
     TransientString()
-        : size(0)
-        , capacity(2048)
+        : capacity(2048)
+        , size(0)
     {
     }
 
     // Copy constructor
     TransientString(const TransientString& rhs)
-        : size(0)
-        , capacity(2048)
+        : capacity(2048)
+        , size(0)
     {
         *this = rhs;
     }
 
     TransientString(const char* buf)
-        : size(0)
-        , capacity(2048)
+        : capacity(2048)
+        , size(0)
     {
         this->size = const_len(buf);
         memcpy(this->buf, buf, const_len(buf));
@@ -414,8 +414,8 @@ struct TransientString
 
 
     TransientString(const char* buf, std::size_t len)
-        : size(0)
-        , capacity(2048)
+        : capacity(2048)
+        , size(0)
     {
         this->size = len;
         memcpy(this->buf, buf, len);
@@ -423,8 +423,8 @@ struct TransientString
     }
     
     TransientString(char* buf, std::size_t len)
-        : size(0)
-        , capacity(2048)
+        : capacity(2048)
+        , size(0)
     {
         this->size = len;
         memcpy(this->buf, buf, len);
@@ -432,8 +432,8 @@ struct TransientString
     }
 
     TransientString(const ConstantString& str)
-        : size(0)
-        , capacity(2048)
+        : capacity(2048)
+        , size(0)
     {
         memcpy(this->buf, str.buf, str.size);
         this->size = str.size;
@@ -442,8 +442,8 @@ struct TransientString
 
     template<typename ...ARGS>
     TransientString(const ARGS&... args)
-        : size(0)
-        , capacity(2048)
+        : capacity(2048)
+        , size(0)
     {
         this->Concatenate<false>(std::forward<const ARGS&>(args)...);
     }
@@ -464,12 +464,10 @@ struct TransientString
 
     void operator=(const TransientString& rhs)
     {
-        if (rhs.buf != nullptr)
-        {
-            memcpy(this->buf, rhs.buf, rhs.size * sizeof(char));
-            this->size = rhs.size;
-            this->buf[this->size] = '\0';
-        }
+        memcpy(this->buf, rhs.buf, rhs.size * sizeof(char));
+        this->size = rhs.size;
+        this->buf[this->size] = '\0';
+        
     }
 
     std::string ToString() const

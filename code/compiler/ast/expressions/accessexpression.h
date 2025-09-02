@@ -29,7 +29,7 @@ struct AccessExpression : public Expression
     /// eval type symbol
     bool EvalTypeSymbol(Type*& out) const override;
     /// eval unswizzle type symbol
-    bool EvalUnswizzledTypeSymbol(Type*& out) const;
+    bool EvalUnswizzledTypeSymbol(Type*& out) const override;
     /// eval symbol
     bool EvalSymbol(FixedString& out) const override;
     /// Evaluate value

@@ -441,32 +441,32 @@ struct Type : public Symbol
         
         explicit FullType(const ConstantString& type, const TransientArray<Modifier>& modifiers, const TransientArray<Expression*>& modifierValues)
             : name(type)
-            , modifiers(modifiers)
             , literal(false)
+            , modifiers(modifiers)
             , modifierValues(modifierValues)
         {
         }
 
         explicit FullType(const FixedString& type, const TransientArray<Modifier>& modifiers, const TransientArray<Expression*>& modifierValues)
             : name(type)
-            , modifiers(modifiers)
             , literal(false)
+            , modifiers(modifiers)
             , modifierValues(modifierValues)
         {
         }
         
         explicit FullType(const char* type, const TransientArray<Modifier>& modifiers, const TransientArray<Expression*>& modifierValues)
             : name(type)
-            , modifiers(modifiers)
             , literal(false)
+            , modifiers(modifiers)
             , modifierValues(modifierValues)
         {
         }
         
         explicit FullType(const std::string& type, const TransientArray<Modifier>& modifiers, const TransientArray<Expression*>& modifierValues)
             : name(type)
-            , modifiers(modifiers)
             , literal(false)
+            , modifiers(modifiers)
             , modifierValues(modifierValues)
         {
         }

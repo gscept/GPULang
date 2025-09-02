@@ -35,9 +35,9 @@ namespace GPULang
 /**
 */
 Compiler::Compiler() 
-    : debugOutput(false)
+    : hasErrors(false)
+    , debugOutput(false)
     , ignoreReservedWords(false)
-    , hasErrors(false)
 {
     this->validator = Alloc<Validator>();
 

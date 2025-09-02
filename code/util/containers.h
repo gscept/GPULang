@@ -907,11 +907,8 @@ struct StaticArray
     }
     
     T* end()
-    {
-        if (this->buf == nullptr)
-            return nullptr;
-        else
-            return this->buf + this->size;
+    {    
+        return this->buf + this->size;
     }
     
     const T* begin() const
@@ -921,10 +918,7 @@ struct StaticArray
     
     const T* end() const
     {
-        if (this->buf == nullptr)
-            return nullptr;
-        else
-            return this->buf + this->size;
+        return this->buf + this->size;
     }
 };
 
