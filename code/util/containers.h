@@ -809,22 +809,12 @@ struct StaticArray
     
     StaticArray(const size_t size)
     {
-        if (this->buf != nullptr)
-        {
-            // leak memory
-            LeakedStaticArrayBytes += this->capacity;
-        }
         this->size = 0;
         this->buf = StaticAllocArray<T>(size);
     }
 
     void operator=(const std::initializer_list<T>& list)
     {
-        if (this->buf != nullptr)
-        {
-            // leak memory
-            LeakedStaticArrayBytes += this->capacity;
-        }
         this->buf = StaticAllocArray<T>(list.size());
         this->size = 0;
         for (auto& val : list)
@@ -835,11 +825,6 @@ struct StaticArray
     
     void operator=(const TransientArray<T>& vec)
     {
-        if (this->buf != nullptr)
-        {
-            // leak memory
-            LeakedStaticArrayBytes += this->capacity;
-        }
         this->buf = StaticAllocArray<T>(vec.size);
         
         if (vec.size > 0)
