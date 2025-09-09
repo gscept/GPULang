@@ -1606,7 +1606,7 @@
     },
     {
         "name": "geometryExportVertex",
-        "documentation": "Exports the state of all \"out\" values as vertex data, and sets the argument \"val\" as the rasterization position. This function must be called for each point in the topology given by output_primitive. This is the same as writing `gl_Position` followed by calling EmitVertex() in GLSL.",
+        "documentation": "Exports the state of all *out* values as vertex data, and sets the argument *val* as the rasterization position. This function must be called for each point in the topology given by output_primitive. This is the same as writing `gl_Position` followed by calling EmitVertex() in GLSL.",
         "target_support": [
             1,
             1,

@@ -3006,6 +3006,7 @@ def generate_types():
     docs = 'Exports the primitive index of the current primitive being processed. This can be read in the pixel shader with pixelGetPrimitiveIndex().'
 
     function_name = f'Geometry{intrinsic}'
+    argument_name = f'{function_name}_arg'
     fun = Function( 
         decl_name = function_name,
         api_name = f'geometry{intrinsic}',
@@ -3037,6 +3038,8 @@ def generate_types():
     doc = "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value."
     for stage in primitive_get_id_stages:
         function_name = f'{stage}{intrinsic}'
+        argument_name = f'{function_name}_arg'
+
         fun = Function( 
             decl_name = function_name,
             api_name = f'{stage.lower()}{intrinsic}',
@@ -3100,7 +3103,7 @@ def generate_types():
             decl_name = function_name,
             api_name = f'geometry{intrinsic}',
             return_type = 'Void',
-            documentation = 'Exports the state of all "out" values as vertex data, and sets the argument "val" as the rasterization position. This function must be called for each point in the topology given by output_primitive. This is the same as writing `gl_Position` followed by calling EmitVertex() in GLSL.',
+            documentation = 'Exports the state of all *out* values as vertex data, and sets the argument *val* as the rasterization position. This function must be called for each point in the topology given by output_primitive. This is the same as writing `gl_Position` followed by calling EmitVertex() in GLSL.',
             parameters = [
                 Variable(decl_name = argument_name, api_name = "val", type_name=type)
             ]

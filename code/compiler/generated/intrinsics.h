@@ -6109,25 +6109,25 @@ inline constexpr auto VertexExportCoordinates_Float16x4_name = "vertexExportCoor
 inline constexpr auto VertexExportCoordinates_Float16x4_backend_index = 1866u;
 
 /// geometryExportPrimitiveIndex with UInt32
-extern Variable VertexExportCoordinates_Float16x4_arg;
+extern Variable GeometryExportPrimitiveIndex_arg;
 extern Function GeometryExportPrimitiveIndex;
 inline constexpr auto GeometryExportPrimitiveIndex_name = "geometryExportPrimitiveIndex"_c;
 inline constexpr auto GeometryExportPrimitiveIndex_backend_index = 1867u;
 
 /// hullGetPrimitiveIndex with UInt32
-extern Variable VertexExportCoordinates_Float16x4_arg;
+extern Variable HullGetPrimitiveIndex_arg;
 extern Function HullGetPrimitiveIndex;
 inline constexpr auto HullGetPrimitiveIndex_name = "hullGetPrimitiveIndex"_c;
 inline constexpr auto HullGetPrimitiveIndex_backend_index = 1868u;
 
 /// domainGetPrimitiveIndex with UInt32
-extern Variable VertexExportCoordinates_Float16x4_arg;
+extern Variable DomainGetPrimitiveIndex_arg;
 extern Function DomainGetPrimitiveIndex;
 inline constexpr auto DomainGetPrimitiveIndex_name = "domainGetPrimitiveIndex"_c;
 inline constexpr auto DomainGetPrimitiveIndex_backend_index = 1869u;
 
 /// pixelGetPrimitiveIndex with UInt32
-extern Variable VertexExportCoordinates_Float16x4_arg;
+extern Variable PixelGetPrimitiveIndex_arg;
 extern Function PixelGetPrimitiveIndex;
 inline constexpr auto PixelGetPrimitiveIndex_name = "pixelGetPrimitiveIndex"_c;
 inline constexpr auto PixelGetPrimitiveIndex_backend_index = 1870u;

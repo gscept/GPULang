@@ -166,24 +166,24 @@ Function VertexExportCoordinates_Float16x4;
 inline constexpr std::array VertexExportCoordinates_Float16x4_args = { &VertexExportCoordinates_Float16x4_arg };
 
 /// geometryExportPrimitiveIndex with UInt32
-Variable VertexExportCoordinates_Float16x4_arg;
+Variable GeometryExportPrimitiveIndex_arg;
 Function GeometryExportPrimitiveIndex;
-inline constexpr std::array GeometryExportPrimitiveIndex_args = { &VertexExportCoordinates_Float16x4_arg };
+inline constexpr std::array GeometryExportPrimitiveIndex_args = { &GeometryExportPrimitiveIndex_arg };
 
 /// hullGetPrimitiveIndex with UInt32
-Variable VertexExportCoordinates_Float16x4_arg;
+Variable HullGetPrimitiveIndex_arg;
 Function HullGetPrimitiveIndex;
-inline constexpr std::array HullGetPrimitiveIndex_args = { &VertexExportCoordinates_Float16x4_arg };
+inline constexpr std::array HullGetPrimitiveIndex_args = { &HullGetPrimitiveIndex_arg };
 
 /// domainGetPrimitiveIndex with UInt32
-Variable VertexExportCoordinates_Float16x4_arg;
+Variable DomainGetPrimitiveIndex_arg;
 Function DomainGetPrimitiveIndex;
-inline constexpr std::array DomainGetPrimitiveIndex_args = { &VertexExportCoordinates_Float16x4_arg };
+inline constexpr std::array DomainGetPrimitiveIndex_args = { &DomainGetPrimitiveIndex_arg };
 
 /// pixelGetPrimitiveIndex with UInt32
-Variable VertexExportCoordinates_Float16x4_arg;
+Variable PixelGetPrimitiveIndex_arg;
 Function PixelGetPrimitiveIndex;
-inline constexpr std::array PixelGetPrimitiveIndex_args = { &VertexExportCoordinates_Float16x4_arg };
+inline constexpr std::array PixelGetPrimitiveIndex_args = { &PixelGetPrimitiveIndex_arg };
 
 /// geometryGetInvocationIndex
 Function GeometryGetInvocationIndex;
@@ -1138,56 +1138,56 @@ void SetupIntrinsics7()
     Symbol::Resolved(&VertexExportCoordinates_Float16x4)->returnTypeSymbol = &VoidType;
 
     /// geometryExportPrimitiveIndex with UInt32
-    VertexExportCoordinates_Float16x4_arg.name = "index"_c;
-    VertexExportCoordinates_Float16x4_arg.type = Type::FullType{ UInt32Type.name };
+    GeometryExportPrimitiveIndex_arg.name = "index"_c;
+    GeometryExportPrimitiveIndex_arg.type = Type::FullType{ UInt32Type.name };
     GeometryExportPrimitiveIndex.documentation = "Sets the output viewport for the current vertex."_c;
     GeometryExportPrimitiveIndex.name = GeometryExportPrimitiveIndex_name;
     GeometryExportPrimitiveIndex.backendIndex = 1867;
     GeometryExportPrimitiveIndex.returnType = Type::FullType { UInt32Type.name };
     GeometryExportPrimitiveIndex.parameters = GeometryExportPrimitiveIndex_args;
-    Symbol::Resolved(&VertexExportCoordinates_Float16x4_arg)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&GeometryExportPrimitiveIndex_arg)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&GeometryExportPrimitiveIndex)->signature = "geometryExportPrimitiveIndex(u32) u32"_c;
     Symbol::Resolved(&GeometryExportPrimitiveIndex)->name = "geometryExportPrimitiveIndex(u32)"_c;
     Symbol::Resolved(&GeometryExportPrimitiveIndex)->nameWithVarNames = "geometryExportPrimitiveIndex(index : u32)"_c;
     Symbol::Resolved(&GeometryExportPrimitiveIndex)->returnTypeSymbol = &UInt32Type;
 
     /// hullGetPrimitiveIndex with UInt32
-    VertexExportCoordinates_Float16x4_arg.name = "index"_c;
-    VertexExportCoordinates_Float16x4_arg.type = Type::FullType{ UInt32Type.name };
+    HullGetPrimitiveIndex_arg.name = "index"_c;
+    HullGetPrimitiveIndex_arg.type = Type::FullType{ UInt32Type.name };
     HullGetPrimitiveIndex.documentation = "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value."_c;
     HullGetPrimitiveIndex.name = HullGetPrimitiveIndex_name;
     HullGetPrimitiveIndex.backendIndex = 1868;
     HullGetPrimitiveIndex.returnType = Type::FullType { UInt32Type.name };
     HullGetPrimitiveIndex.parameters = HullGetPrimitiveIndex_args;
-    Symbol::Resolved(&VertexExportCoordinates_Float16x4_arg)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&HullGetPrimitiveIndex_arg)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&HullGetPrimitiveIndex)->signature = "hullGetPrimitiveIndex(u32) u32"_c;
     Symbol::Resolved(&HullGetPrimitiveIndex)->name = "hullGetPrimitiveIndex(u32)"_c;
     Symbol::Resolved(&HullGetPrimitiveIndex)->nameWithVarNames = "hullGetPrimitiveIndex(index : u32)"_c;
     Symbol::Resolved(&HullGetPrimitiveIndex)->returnTypeSymbol = &UInt32Type;
 
     /// domainGetPrimitiveIndex with UInt32
-    VertexExportCoordinates_Float16x4_arg.name = "index"_c;
-    VertexExportCoordinates_Float16x4_arg.type = Type::FullType{ UInt32Type.name };
+    DomainGetPrimitiveIndex_arg.name = "index"_c;
+    DomainGetPrimitiveIndex_arg.type = Type::FullType{ UInt32Type.name };
     DomainGetPrimitiveIndex.documentation = "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value."_c;
     DomainGetPrimitiveIndex.name = DomainGetPrimitiveIndex_name;
     DomainGetPrimitiveIndex.backendIndex = 1869;
     DomainGetPrimitiveIndex.returnType = Type::FullType { UInt32Type.name };
     DomainGetPrimitiveIndex.parameters = DomainGetPrimitiveIndex_args;
-    Symbol::Resolved(&VertexExportCoordinates_Float16x4_arg)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&DomainGetPrimitiveIndex_arg)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&DomainGetPrimitiveIndex)->signature = "domainGetPrimitiveIndex(u32) u32"_c;
     Symbol::Resolved(&DomainGetPrimitiveIndex)->name = "domainGetPrimitiveIndex(u32)"_c;
     Symbol::Resolved(&DomainGetPrimitiveIndex)->nameWithVarNames = "domainGetPrimitiveIndex(index : u32)"_c;
     Symbol::Resolved(&DomainGetPrimitiveIndex)->returnTypeSymbol = &UInt32Type;
 
     /// pixelGetPrimitiveIndex with UInt32
-    VertexExportCoordinates_Float16x4_arg.name = "index"_c;
-    VertexExportCoordinates_Float16x4_arg.type = Type::FullType{ UInt32Type.name };
+    PixelGetPrimitiveIndex_arg.name = "index"_c;
+    PixelGetPrimitiveIndex_arg.type = Type::FullType{ UInt32Type.name };
     PixelGetPrimitiveIndex.documentation = "Gets the primitive index being processed. If the previous stage was a GeometryShader, it must call ExportPrimitiveIndex to set the value."_c;
     PixelGetPrimitiveIndex.name = PixelGetPrimitiveIndex_name;
     PixelGetPrimitiveIndex.backendIndex = 1870;
     PixelGetPrimitiveIndex.returnType = Type::FullType { UInt32Type.name };
     PixelGetPrimitiveIndex.parameters = PixelGetPrimitiveIndex_args;
-    Symbol::Resolved(&VertexExportCoordinates_Float16x4_arg)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&PixelGetPrimitiveIndex_arg)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelGetPrimitiveIndex)->signature = "pixelGetPrimitiveIndex(u32) u32"_c;
     Symbol::Resolved(&PixelGetPrimitiveIndex)->name = "pixelGetPrimitiveIndex(u32)"_c;
     Symbol::Resolved(&PixelGetPrimitiveIndex)->nameWithVarNames = "pixelGetPrimitiveIndex(index : u32)"_c;
@@ -1206,7 +1206,7 @@ void SetupIntrinsics7()
     /// geometryExportVertex with Float32x4
     GeometryExportVertex_Float32x4_arg.name = "val"_c;
     GeometryExportVertex_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
-    GeometryExportVertex_Float32x4.documentation = "Exports the state of all "out" values as vertex data, and sets the argument "val" as the rasterization position. This function must be called for each point in the topology given by output_primitive. This is the same as writing `gl_Position` followed by calling EmitVertex() in GLSL."_c;
+    GeometryExportVertex_Float32x4.documentation = "Exports the state of all *out* values as vertex data, and sets the argument *val* as the rasterization position. This function must be called for each point in the topology given by output_primitive. This is the same as writing `gl_Position` followed by calling EmitVertex() in GLSL."_c;
     GeometryExportVertex_Float32x4.name = GeometryExportVertex_Float32x4_name;
     GeometryExportVertex_Float32x4.backendIndex = 1872;
     GeometryExportVertex_Float32x4.returnType = Type::FullType { VoidType.name };
@@ -1220,7 +1220,7 @@ void SetupIntrinsics7()
     /// geometryExportVertex with Float16x4
     GeometryExportVertex_Float16x4_arg.name = "val"_c;
     GeometryExportVertex_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
-    GeometryExportVertex_Float16x4.documentation = "Exports the state of all "out" values as vertex data, and sets the argument "val" as the rasterization position. This function must be called for each point in the topology given by output_primitive. This is the same as writing `gl_Position` followed by calling EmitVertex() in GLSL."_c;
+    GeometryExportVertex_Float16x4.documentation = "Exports the state of all *out* values as vertex data, and sets the argument *val* as the rasterization position. This function must be called for each point in the topology given by output_primitive. This is the same as writing `gl_Position` followed by calling EmitVertex() in GLSL."_c;
     GeometryExportVertex_Float16x4.name = GeometryExportVertex_Float16x4_name;
     GeometryExportVertex_Float16x4.backendIndex = 1873;
     GeometryExportVertex_Float16x4.returnType = Type::FullType { VoidType.name };

@@ -2035,6 +2035,7 @@ SPIRVResult GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* gene
 SPIRVResult GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Expression* expr);
 bool GenerateStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Statement* stat);
 SPIRVResult GenerateConstantSPIRV(const Compiler* compiler, SPIRVGenerator* generator, ConstantCreationInfo info, uint32_t vectorSize = 1);
+uint32_t GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol* symbol);
 
 using ImageFormatter = std::function<TransientString(uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format)>;
 using ImageTypeGenerator = std::function<uint32_t(SPIRVGenerator* gen, const TStr& name, uint32_t type, uint32_t depthBits, uint32_t sampledBits, SPVEnum format)>;
