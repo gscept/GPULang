@@ -17007,7 +17007,9 @@ SPIRVResult SPIRV_GeometryGetPoint(const Compiler* c, SPIRVGenerator* g, uint32_
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_gplGeometryPoint_Input"), OpTypePointer, VariableStorage::Input, SPVArg(returnType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetPoint"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
     g->interfaceVariables.Insert(ret);
-    return SPIRVResult(ret, typePtr);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(returnType);
+    return res;
 }
 
 SPIRVResult SPIRV_GeometryGetLine(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -17016,7 +17018,9 @@ SPIRVResult SPIRV_GeometryGetLine(const Compiler* c, SPIRVGenerator* g, uint32_t
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_gplGeometryLine_Input"), OpTypePointer, VariableStorage::Input, SPVArg(returnType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetLine"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
     g->interfaceVariables.Insert(ret);
-    return SPIRVResult(ret, typePtr);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(returnType);
+    return res;
 }
 
 SPIRVResult SPIRV_GeometryGetTriangle(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
@@ -17025,7 +17029,9 @@ SPIRVResult SPIRV_GeometryGetTriangle(const Compiler* c, SPIRVGenerator* g, uint
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_gplGeometryTriangle_Input"), OpTypePointer, VariableStorage::Input, SPVArg(returnType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetTriangle"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
     g->interfaceVariables.Insert(ret);
-    return SPIRVResult(ret, typePtr);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(returnType);
+    return res;
 }
 
 SPIRVResult SPIRV_PixelGetCoordinates_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)

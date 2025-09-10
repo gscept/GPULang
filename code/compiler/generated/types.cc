@@ -28394,14 +28394,19 @@ GeometryVertex::GeometryVertex()
     typeResolved->packMembers = false;
     typeResolved->storageFunction = nullptr;
     typeResolved->loadFunction = nullptr;
+    GeometryVertexPosition.name = "position"_c;
     GeometryVertexPosition.type = Type::FullType{ Float32x4Type.name };
     GeometryVertexPosition.thisResolved->typeSymbol = &Float32x4Type;
+    GeometryVertexPointSize.name = "pointSize"_c;
     GeometryVertexPointSize.type = Type::FullType{ Float32Type.name };
     GeometryVertexPointSize.thisResolved->typeSymbol = &Float32Type;
+    GeometryVertexCullDistance.name = "cullDistance"_c;
     GeometryVertexCullDistance.type = Type::FullType{ Float32Type.name };
     GeometryVertexCullDistance.thisResolved->typeSymbol = &Float32Type;
+    GeometryVertexClipDistance.name = "clipDistance"_c;
     GeometryVertexClipDistance.type = Type::FullType{ Float32Type.name };
     GeometryVertexClipDistance.thisResolved->typeSymbol = &Float32Type;
+    this->symbols = TransientArray<Symbol*>({ &GeometryVertexPosition, &GeometryVertexPointSize, &GeometryVertexCullDistance, &GeometryVertexClipDistance });
     this->scope.symbolLookup = StaticMap<HashString, Symbol*, 4> {
         std::pair{ "cullDistance"_h, &GeometryVertexCullDistance },
         std::pair{ "position"_h, &GeometryVertexPosition },
@@ -28431,8 +28436,10 @@ GeometryPoint::GeometryPoint()
     typeResolved->packMembers = false;
     typeResolved->storageFunction = nullptr;
     typeResolved->loadFunction = nullptr;
+    GeometryPointP0.name = "p0"_c;
     GeometryPointP0.type = Type::FullType{ GeometryVertexType.name };
     GeometryPointP0.thisResolved->typeSymbol = &GeometryVertexType;
+    this->symbols = TransientArray<Symbol*>({ &GeometryPointP0 });
     this->scope.symbolLookup = StaticMap<HashString, Symbol*, 1> {
         std::pair{ "p0"_h, &GeometryPointP0 }
     };
@@ -28460,10 +28467,13 @@ GeometryLine::GeometryLine()
     typeResolved->packMembers = false;
     typeResolved->storageFunction = nullptr;
     typeResolved->loadFunction = nullptr;
+    GeometryLineP0.name = "p0"_c;
     GeometryLineP0.type = Type::FullType{ GeometryVertexType.name };
     GeometryLineP0.thisResolved->typeSymbol = &GeometryVertexType;
+    GeometryLineP1.name = "p1"_c;
     GeometryLineP1.type = Type::FullType{ GeometryVertexType.name };
     GeometryLineP1.thisResolved->typeSymbol = &GeometryVertexType;
+    this->symbols = TransientArray<Symbol*>({ &GeometryLineP0, &GeometryLineP1 });
     this->scope.symbolLookup = StaticMap<HashString, Symbol*, 2> {
         std::pair{ "p1"_h, &GeometryLineP1 },
         std::pair{ "p0"_h, &GeometryLineP0 }
@@ -28494,14 +28504,19 @@ GeometryLineAdjacency::GeometryLineAdjacency()
     typeResolved->packMembers = false;
     typeResolved->storageFunction = nullptr;
     typeResolved->loadFunction = nullptr;
+    GeometryLineAdjacencyP0.name = "p0"_c;
     GeometryLineAdjacencyP0.type = Type::FullType{ GeometryVertexType.name };
     GeometryLineAdjacencyP0.thisResolved->typeSymbol = &GeometryVertexType;
+    GeometryLineAdjacencyP1.name = "p1"_c;
     GeometryLineAdjacencyP1.type = Type::FullType{ GeometryVertexType.name };
     GeometryLineAdjacencyP1.thisResolved->typeSymbol = &GeometryVertexType;
+    GeometryLineAdjacencyP2.name = "p2"_c;
     GeometryLineAdjacencyP2.type = Type::FullType{ GeometryVertexType.name };
     GeometryLineAdjacencyP2.thisResolved->typeSymbol = &GeometryVertexType;
+    GeometryLineAdjacencyP3.name = "p3"_c;
     GeometryLineAdjacencyP3.type = Type::FullType{ GeometryVertexType.name };
     GeometryLineAdjacencyP3.thisResolved->typeSymbol = &GeometryVertexType;
+    this->symbols = TransientArray<Symbol*>({ &GeometryLineAdjacencyP0, &GeometryLineAdjacencyP1, &GeometryLineAdjacencyP2, &GeometryLineAdjacencyP3 });
     this->scope.symbolLookup = StaticMap<HashString, Symbol*, 4> {
         std::pair{ "p3"_h, &GeometryLineAdjacencyP3 },
         std::pair{ "p2"_h, &GeometryLineAdjacencyP2 },
@@ -28533,12 +28548,16 @@ GeometryTriangle::GeometryTriangle()
     typeResolved->packMembers = false;
     typeResolved->storageFunction = nullptr;
     typeResolved->loadFunction = nullptr;
+    GeometryTriangleP0.name = "p0"_c;
     GeometryTriangleP0.type = Type::FullType{ GeometryVertexType.name };
     GeometryTriangleP0.thisResolved->typeSymbol = &GeometryVertexType;
+    GeometryTriangleP1.name = "p1"_c;
     GeometryTriangleP1.type = Type::FullType{ GeometryVertexType.name };
     GeometryTriangleP1.thisResolved->typeSymbol = &GeometryVertexType;
+    GeometryTriangleP2.name = "p2"_c;
     GeometryTriangleP2.type = Type::FullType{ GeometryVertexType.name };
     GeometryTriangleP2.thisResolved->typeSymbol = &GeometryVertexType;
+    this->symbols = TransientArray<Symbol*>({ &GeometryTriangleP0, &GeometryTriangleP1, &GeometryTriangleP2 });
     this->scope.symbolLookup = StaticMap<HashString, Symbol*, 3> {
         std::pair{ "p2"_h, &GeometryTriangleP2 },
         std::pair{ "p1"_h, &GeometryTriangleP1 },
@@ -28572,18 +28591,25 @@ GeometryTriangleAdjacency::GeometryTriangleAdjacency()
     typeResolved->packMembers = false;
     typeResolved->storageFunction = nullptr;
     typeResolved->loadFunction = nullptr;
+    GeometryTriangleAdjacencyP0.name = "p0"_c;
     GeometryTriangleAdjacencyP0.type = Type::FullType{ GeometryVertexType.name };
     GeometryTriangleAdjacencyP0.thisResolved->typeSymbol = &GeometryVertexType;
+    GeometryTriangleAdjacencyP1.name = "p1"_c;
     GeometryTriangleAdjacencyP1.type = Type::FullType{ GeometryVertexType.name };
     GeometryTriangleAdjacencyP1.thisResolved->typeSymbol = &GeometryVertexType;
+    GeometryTriangleAdjacencyP2.name = "p2"_c;
     GeometryTriangleAdjacencyP2.type = Type::FullType{ GeometryVertexType.name };
     GeometryTriangleAdjacencyP2.thisResolved->typeSymbol = &GeometryVertexType;
+    GeometryTriangleAdjacencyP3.name = "p3"_c;
     GeometryTriangleAdjacencyP3.type = Type::FullType{ GeometryVertexType.name };
     GeometryTriangleAdjacencyP3.thisResolved->typeSymbol = &GeometryVertexType;
+    GeometryTriangleAdjacencyP4.name = "p4"_c;
     GeometryTriangleAdjacencyP4.type = Type::FullType{ GeometryVertexType.name };
     GeometryTriangleAdjacencyP4.thisResolved->typeSymbol = &GeometryVertexType;
+    GeometryTriangleAdjacencyP5.name = "p5"_c;
     GeometryTriangleAdjacencyP5.type = Type::FullType{ GeometryVertexType.name };
     GeometryTriangleAdjacencyP5.thisResolved->typeSymbol = &GeometryVertexType;
+    this->symbols = TransientArray<Symbol*>({ &GeometryTriangleAdjacencyP0, &GeometryTriangleAdjacencyP1, &GeometryTriangleAdjacencyP2, &GeometryTriangleAdjacencyP3, &GeometryTriangleAdjacencyP4, &GeometryTriangleAdjacencyP5 });
     this->scope.symbolLookup = StaticMap<HashString, Symbol*, 6> {
         std::pair{ "p5"_h, &GeometryTriangleAdjacencyP5 },
         std::pair{ "p4"_h, &GeometryTriangleAdjacencyP4 },

@@ -1848,12 +1848,14 @@ def generate_types():
             defn += f'    typeResolved->loadFunction = nullptr;\n'
 
             for i, member in enumerate(self.members):
+                defn += f'    {self.name}{member.decl_name}.name = "{member.api_name}"_c;\n'
                 if member.array_size > 1:
                     defn += f'    {self.name}{member.decl_name}.type = Type::FullType{{ {member.type}Type.name, {{Type::FullType::Modifier::Array}}, {{&{self.name}{member.decl_name}ArraySize}} }};\n'
                 else:
                     defn += f'    {self.name}{member.decl_name}.type = Type::FullType{{ {member.type}Type.name }};\n'
                 defn += f'    {self.name}{member.decl_name}.thisResolved->typeSymbol = &{member.type}Type;\n'
 
+            defn += f'    this->symbols = TransientArray<Symbol*>({{ {", ".join(f"&{self.name}{member.decl_name}" for member in self.members)} }});\n'
             self.members.sort(key=MemberSortKey)
             defn += f'    this->scope.symbolLookup = StaticMap<HashString, Symbol*, {len(self.members)}> {{\n'        
             defn += ',\n'.join(f'        std::pair{{ "{member.api_name}"_h, &{self.name + member.decl_name} }}' for member in self.members)
@@ -3277,7 +3279,9 @@ def generate_types():
     spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_gplGeometryPoint_Input"), OpTypePointer, VariableStorage::Input, SPVArg(returnType));\n'
     spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{intrinsic}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
-    spirv_function += '    return SPIRVResult(ret, typePtr);\n'
+    spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
+    spirv_function += '    res.parentTypes.push_back(returnType);\n'
+    spirv_function += '    return res;\n'
 
     fun.spirv = spirv_function
     functions.append(fun)
@@ -3298,7 +3302,9 @@ def generate_types():
     spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_gplGeometryLine_Input"), OpTypePointer, VariableStorage::Input, SPVArg(returnType));\n'
     spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{intrinsic}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
-    spirv_function += '    return SPIRVResult(ret, typePtr);\n'
+    spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
+    spirv_function += '    res.parentTypes.push_back(returnType);\n'
+    spirv_function += '    return res;\n'
 
     fun.spirv = spirv_function
     functions.append(fun)
@@ -3319,7 +3325,9 @@ def generate_types():
     spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_gplGeometryTriangle_Input"), OpTypePointer, VariableStorage::Input, SPVArg(returnType));\n'
     spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{intrinsic}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
     spirv_function += '    g->interfaceVariables.Insert(ret);\n'
-    spirv_function += '    return SPIRVResult(ret, typePtr);\n'
+    spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
+    spirv_function += '    res.parentTypes.push_back(returnType);\n'
+    spirv_function += '    return res;\n'
 
     fun.spirv = spirv_function
     functions.append(fun)
