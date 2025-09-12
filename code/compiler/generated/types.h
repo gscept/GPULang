@@ -6170,18 +6170,18 @@ inline constexpr auto MemorySemanticsSequentiallyConsistent_value = 0x8;
 extern EnumExpression MemorySemanticsSequentiallyConsistent;
 inline constexpr auto MemorySemanticsRelaxed_value = 0x10;
 extern EnumExpression MemorySemanticsRelaxed;
-struct PolygonMode : public Enumeration
+struct RasterizationMode : public Enumeration
 {
-    PolygonMode();
+    RasterizationMode();
 };
-extern PolygonMode PolygonModeType;
+extern RasterizationMode RasterizationModeType;
 
-inline constexpr auto PolygonModeFill_value = 0x0;
-extern EnumExpression PolygonModeFill;
-inline constexpr auto PolygonModeLine_value = 0x1;
-extern EnumExpression PolygonModeLine;
-inline constexpr auto PolygonModePoint_value = 0x2;
-extern EnumExpression PolygonModePoint;
+inline constexpr auto RasterizationModeFill_value = 0x0;
+extern EnumExpression RasterizationModeFill;
+inline constexpr auto RasterizationModeLine_value = 0x1;
+extern EnumExpression RasterizationModeLine;
+inline constexpr auto RasterizationModePoint_value = 0x2;
+extern EnumExpression RasterizationModePoint;
 struct CullFace : public Enumeration
 {
     CullFace();
@@ -6547,7 +6547,7 @@ extern Variable RenderStateDepthBoundsTestEnabled;
 extern Variable RenderStateDepthBoundsMin;
 extern Variable RenderStateDepthBoundsMax;
 extern Variable RenderStateNoRasterization;
-extern Variable RenderStatePolygonMode;
+extern Variable RenderStateRasterize;
 extern Variable RenderStateCull;
 extern Variable RenderStateWindingOrder;
 extern Variable RenderStateScissorEnabled;

@@ -17,7 +17,7 @@ RenderStateInstance::RenderStateInstance()
     RenderStateInstance::__Resolved* typeResolved = static_cast<RenderStateInstance::__Resolved*>(this->resolved);
     typeResolved->depthClampEnabled = false;
     typeResolved->noPixels = false;
-    typeResolved->polygonMode = Serialization::PolygonMode::FillMode;
+    typeResolved->rasterizationMode = Serialization::RasterizationMode::FillMode;
     typeResolved->cullMode = Serialization::CullMode::BackMode;
     typeResolved->windingOrderMode = Serialization::WindingOrderMode::CounterClockwiseMode;
     typeResolved->depthBiasEnabled = false;
@@ -74,7 +74,7 @@ constexpr StaticMap stringToRenderStateEntryType =
 std::array{
     std::pair{ "DepthClampEnabled"_c, RenderStateInstance::__Resolved::DepthClampEnabledType },
     std::pair{ "NoPixels"_c, RenderStateInstance::__Resolved::NoPixelsType },
-    std::pair{ "Polygon"_c, RenderStateInstance::__Resolved::PolygonModeType },
+    std::pair{ "Rasterize"_c, RenderStateInstance::__Resolved::RasterizationModeType },
     std::pair{ "Cull"_c, RenderStateInstance::__Resolved::CullModeType },
     std::pair{ "WindingOrder"_c, RenderStateInstance::__Resolved::WindingOrderType },
     std::pair{ "DepthBiasEnabled"_c, RenderStateInstance::__Resolved::DepthBiasEnabledType },
@@ -153,22 +153,22 @@ RenderStateInstance::__Resolved::EntryTypeToString(const RenderStateEntryType ty
 
 constexpr StaticMap stringToPolygonMode =
 std::array{
-    std::pair{ "Fill"_c , Serialization::PolygonMode::FillMode },
-    std::pair{ "Line"_c , Serialization::PolygonMode::LineMode },
-    std::pair{ "Point"_c, Serialization::PolygonMode::PointMode }
+    std::pair{ "Fill"_c , Serialization::RasterizationMode::FillMode },
+    std::pair{ "Line"_c , Serialization::RasterizationMode::LineMode },
+    std::pair{ "Point"_c, Serialization::RasterizationMode::PointMode }
 };
 
 //------------------------------------------------------------------------------
 /**
 */
-const Serialization::PolygonMode
+const Serialization::RasterizationMode
 RenderStateInstance::__Resolved::StringToPolygonMode(const TransientString& str)
 {
     auto it = stringToPolygonMode.Find(str);
     if (it != stringToPolygonMode.end())
         return it->second;
     else
-        return Serialization::PolygonMode::InvalidPolygonMode;
+        return Serialization::RasterizationMode::InvalidRasterizationMode;
 }
 
 constexpr StaticMap stringToCullMode =

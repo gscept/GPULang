@@ -16945,7 +16945,7 @@ SPIRVResult SPIRV_GeometryExportPrimitive(const Compiler* c, SPIRVGenerator* g, 
     return SPIRVResult::Invalid();
 }
 
-SPIRVResult SPIRV_HullExportOuterTessellationLevel(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_HullExportOuterTessellationLevels(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
     g->writer->Capability(Capabilities::Tessellation);
@@ -16959,7 +16959,7 @@ SPIRVResult SPIRV_HullExportOuterTessellationLevel(const Compiler* c, SPIRVGener
     return SPIRVResult::Invalid();
 }
 
-SPIRVResult SPIRV_HullExportInnerTessellationLevel(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_HullExportInnerTessellationLevels(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::Shader);
     g->writer->Capability(Capabilities::Tessellation);
@@ -30872,8 +30872,8 @@ constexpr std::array<SPIRVIntrinsic, 2907> SPIRVDefaultIntrinsics = {
         &SPIRV_GeometryExportVertex_Float32x4 /* 1872 -> 1872 */,
         &SPIRV_GeometryExportVertex_Float16x4 /* 1873 -> 1873 */,
         &SPIRV_GeometryExportPrimitive /* 1874 -> 1874 */,
-        &SPIRV_HullExportOuterTessellationLevel /* 1875 -> 1875 */,
-        &SPIRV_HullExportInnerTessellationLevel /* 1876 -> 1876 */,
+        &SPIRV_HullExportOuterTessellationLevels /* 1875 -> 1875 */,
+        &SPIRV_HullExportInnerTessellationLevels /* 1876 -> 1876 */,
         &SPIRV_DomainGetTessellationCoordinates /* 1877 -> 1877 */,
         &SPIRV_DomainGetInvocationIndex /* 1878 -> 1878 */,
         &SPIRV_GeometryGetPoint /* 1879 -> 1879 */,

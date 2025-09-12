@@ -1172,7 +1172,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             output.nameOffset = dynamicDataBlob.Write(symbol->name.c_str(), symbol->name.len);
             output.depthClampEnabled = resolved->depthClampEnabled;
             output.noPixels = resolved->noPixels;
-            output.polygonMode = resolved->polygonMode;
+            output.rasterizationMode = resolved->rasterizationMode;
             output.cullMode = resolved->cullMode;
             output.windingOrderMode = resolved->windingOrderMode;
             output.depthBiasEnabled = resolved->depthBiasEnabled;

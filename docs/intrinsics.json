@@ -1683,7 +1683,7 @@
         ]
     },
     {
-        "name": "hullExportInnerTessellationLevel",
+        "name": "hullExportInnerTessellationLevels",
         "documentation": "Sets the inner tessellation levels for the current patch. This function must be called once per patch.",
         "target_support": [
             1,
@@ -1693,12 +1693,12 @@
         ],
         "overloads": [
             {
-                "signature": "hullExportInnerTessellationLevel(levels: f32x2) void"
+                "signature": "hullExportInnerTessellationLevels(levels: f32x2) void"
             }
         ]
     },
     {
-        "name": "hullExportOuterTessellationLevel",
+        "name": "hullExportOuterTessellationLevels",
         "documentation": "Sets the outer tessellation levels for the current patch. This function must be called once per patch.",
         "target_support": [
             1,
@@ -1708,7 +1708,7 @@
         ],
         "overloads": [
             {
-                "signature": "hullExportOuterTessellationLevel(levels: f32x4) void"
+                "signature": "hullExportOuterTessellationLevels(levels: f32x4) void"
             }
         ]
     },

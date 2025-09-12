@@ -201,15 +201,15 @@ inline constexpr std::array GeometryExportVertex_Float16x4_args = { &GeometryExp
 /// geometryExportPrimitive
 Function GeometryExportPrimitive;
 
-/// hullExportOuterTessellationLevel with Float32x4
-Variable HullExportOuterTessellationLevel_arg;
-Function HullExportOuterTessellationLevel;
-inline constexpr std::array HullExportOuterTessellationLevel_args = { &HullExportOuterTessellationLevel_arg };
+/// hullExportOuterTessellationLevels with Float32x4
+Variable HullExportOuterTessellationLevels_arg;
+Function HullExportOuterTessellationLevels;
+inline constexpr std::array HullExportOuterTessellationLevels_args = { &HullExportOuterTessellationLevels_arg };
 
-/// hullExportInnerTessellationLevel with Float32x2
-Variable HullExportInnerTessellationLevel_arg;
-Function HullExportInnerTessellationLevel;
-inline constexpr std::array HullExportInnerTessellationLevel_args = { &HullExportInnerTessellationLevel_arg };
+/// hullExportInnerTessellationLevels with Float32x2
+Variable HullExportInnerTessellationLevels_arg;
+Function HullExportInnerTessellationLevels;
+inline constexpr std::array HullExportInnerTessellationLevels_args = { &HullExportInnerTessellationLevels_arg };
 
 /// domainGetTessellationCoordinates
 Function DomainGetTessellationCoordinates;
@@ -1241,33 +1241,33 @@ void SetupIntrinsics7()
     Symbol::Resolved(&GeometryExportPrimitive)->nameWithVarNames = "geometryExportPrimitive()"_c;
     Symbol::Resolved(&GeometryExportPrimitive)->returnTypeSymbol = &VoidType;
 
-    /// hullExportOuterTessellationLevel with Float32x4
-    HullExportOuterTessellationLevel_arg.name = "levels"_c;
-    HullExportOuterTessellationLevel_arg.type = Type::FullType{ Float32x4Type.name };
-    HullExportOuterTessellationLevel.documentation = "Sets the outer tessellation levels for the current patch. This function must be called once per patch."_c;
-    HullExportOuterTessellationLevel.name = HullExportOuterTessellationLevel_name;
-    HullExportOuterTessellationLevel.backendIndex = 1875;
-    HullExportOuterTessellationLevel.returnType = Type::FullType { VoidType.name };
-    HullExportOuterTessellationLevel.parameters = HullExportOuterTessellationLevel_args;
-    Symbol::Resolved(&HullExportOuterTessellationLevel_arg)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&HullExportOuterTessellationLevel)->signature = "hullExportOuterTessellationLevel(f32x4) void"_c;
-    Symbol::Resolved(&HullExportOuterTessellationLevel)->name = "hullExportOuterTessellationLevel(f32x4)"_c;
-    Symbol::Resolved(&HullExportOuterTessellationLevel)->nameWithVarNames = "hullExportOuterTessellationLevel(levels : f32x4)"_c;
-    Symbol::Resolved(&HullExportOuterTessellationLevel)->returnTypeSymbol = &VoidType;
+    /// hullExportOuterTessellationLevels with Float32x4
+    HullExportOuterTessellationLevels_arg.name = "levels"_c;
+    HullExportOuterTessellationLevels_arg.type = Type::FullType{ Float32x4Type.name };
+    HullExportOuterTessellationLevels.documentation = "Sets the outer tessellation levels for the current patch. This function must be called once per patch."_c;
+    HullExportOuterTessellationLevels.name = HullExportOuterTessellationLevels_name;
+    HullExportOuterTessellationLevels.backendIndex = 1875;
+    HullExportOuterTessellationLevels.returnType = Type::FullType { VoidType.name };
+    HullExportOuterTessellationLevels.parameters = HullExportOuterTessellationLevels_args;
+    Symbol::Resolved(&HullExportOuterTessellationLevels_arg)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&HullExportOuterTessellationLevels)->signature = "hullExportOuterTessellationLevels(f32x4) void"_c;
+    Symbol::Resolved(&HullExportOuterTessellationLevels)->name = "hullExportOuterTessellationLevels(f32x4)"_c;
+    Symbol::Resolved(&HullExportOuterTessellationLevels)->nameWithVarNames = "hullExportOuterTessellationLevels(levels : f32x4)"_c;
+    Symbol::Resolved(&HullExportOuterTessellationLevels)->returnTypeSymbol = &VoidType;
 
-    /// hullExportInnerTessellationLevel with Float32x2
-    HullExportInnerTessellationLevel_arg.name = "levels"_c;
-    HullExportInnerTessellationLevel_arg.type = Type::FullType{ Float32x2Type.name };
-    HullExportInnerTessellationLevel.documentation = "Sets the inner tessellation levels for the current patch. This function must be called once per patch."_c;
-    HullExportInnerTessellationLevel.name = HullExportInnerTessellationLevel_name;
-    HullExportInnerTessellationLevel.backendIndex = 1876;
-    HullExportInnerTessellationLevel.returnType = Type::FullType { VoidType.name };
-    HullExportInnerTessellationLevel.parameters = HullExportInnerTessellationLevel_args;
-    Symbol::Resolved(&HullExportInnerTessellationLevel_arg)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&HullExportInnerTessellationLevel)->signature = "hullExportInnerTessellationLevel(f32x2) void"_c;
-    Symbol::Resolved(&HullExportInnerTessellationLevel)->name = "hullExportInnerTessellationLevel(f32x2)"_c;
-    Symbol::Resolved(&HullExportInnerTessellationLevel)->nameWithVarNames = "hullExportInnerTessellationLevel(levels : f32x2)"_c;
-    Symbol::Resolved(&HullExportInnerTessellationLevel)->returnTypeSymbol = &VoidType;
+    /// hullExportInnerTessellationLevels with Float32x2
+    HullExportInnerTessellationLevels_arg.name = "levels"_c;
+    HullExportInnerTessellationLevels_arg.type = Type::FullType{ Float32x2Type.name };
+    HullExportInnerTessellationLevels.documentation = "Sets the inner tessellation levels for the current patch. This function must be called once per patch."_c;
+    HullExportInnerTessellationLevels.name = HullExportInnerTessellationLevels_name;
+    HullExportInnerTessellationLevels.backendIndex = 1876;
+    HullExportInnerTessellationLevels.returnType = Type::FullType { VoidType.name };
+    HullExportInnerTessellationLevels.parameters = HullExportInnerTessellationLevels_args;
+    Symbol::Resolved(&HullExportInnerTessellationLevels_arg)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&HullExportInnerTessellationLevels)->signature = "hullExportInnerTessellationLevels(f32x2) void"_c;
+    Symbol::Resolved(&HullExportInnerTessellationLevels)->name = "hullExportInnerTessellationLevels(f32x2)"_c;
+    Symbol::Resolved(&HullExportInnerTessellationLevels)->nameWithVarNames = "hullExportInnerTessellationLevels(levels : f32x2)"_c;
+    Symbol::Resolved(&HullExportInnerTessellationLevels)->returnTypeSymbol = &VoidType;
 
     /// domainGetTessellationCoordinates
     DomainGetTessellationCoordinates.documentation = "Returns the tessellation coordinates of the point being processed. For quads, the z coordinate is meaningless and will always be 0, and x,y are bilinear weights. For triangles, x,y,z form barycentric coordinates."_c;

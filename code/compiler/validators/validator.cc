@@ -1794,8 +1794,8 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 case RenderStateInstance::__Resolved::NoPixelsType:
                     value.Store(stateResolved->noPixels);
                     break;
-                case RenderStateInstance::__Resolved::PolygonModeType:
-                    stateResolved->polygonMode = (GPULang::Serialization::PolygonMode)value.i[0];
+                case RenderStateInstance::__Resolved::RasterizationModeType:
+                    stateResolved->rasterizationMode = (GPULang::Serialization::RasterizationMode)value.i[0];
                     break;
                 case RenderStateInstance::__Resolved::CullModeType:
                     stateResolved->cullMode = (GPULang::Serialization::CullMode)value.i[0];
@@ -4319,17 +4319,17 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
 
                 if (fun == GeometryGetTriangle.name && compiler->currentState.function->functionResolved.executionModifiers.inputPrimitiveTopology != InputTopologyTriangles_value)
                 {
-                    compiler->Error(Format("geometry shader must use input topology 'triangles' to support %s", GeometryGetTriangle.name.c_str()), expr);
+                    compiler->Error(Format("geometry shader must use input topology 'InputTopology.Triangles' to support %s", GeometryGetTriangle.name.c_str()), expr);
                     return false;
                 }
                 else if (fun == GeometryGetLine.name && compiler->currentState.function->functionResolved.executionModifiers.inputPrimitiveTopology != InputTopologyLines_value)
                 {
-                    compiler->Error(Format("geometry shader must use input topology 'lines' to support %s", GeometryGetTriangle.name.c_str()), expr);
+                    compiler->Error(Format("geometry shader must use input topology 'InputTopology.Lines' to support %s", GeometryGetTriangle.name.c_str()), expr);
                     return false;
                 }
                 else if (fun == GeometryGetPoint.name && compiler->currentState.function->functionResolved.executionModifiers.inputPrimitiveTopology != InputTopologyPoints_value)
                 {
-                    compiler->Error(Format("geometry shader must use input topology 'points' to support %s", GeometryGetTriangle.name.c_str()), expr);
+                    compiler->Error(Format("geometry shader must use input topology 'InputTopology.Points' to support %s", GeometryGetTriangle.name.c_str()), expr);
                     return false;
                 }
                 return true;

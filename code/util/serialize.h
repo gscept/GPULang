@@ -60,9 +60,9 @@ enum class CompareMode
     AlwaysCompare
 };
 
-enum class PolygonMode
+enum class RasterizationMode
 {
-    InvalidPolygonMode,
+    InvalidRasterizationMode,
     FillMode,
     LineMode,
     PointMode
@@ -266,7 +266,7 @@ struct RenderState : public Serializable
     }
     bool depthClampEnabled;
     bool noPixels;
-    Serialization::PolygonMode polygonMode;
+    Serialization::RasterizationMode rasterizationMode;
     Serialization::CullMode cullMode;
     Serialization::WindingOrderMode windingOrderMode;
     bool depthBiasEnabled;
@@ -581,7 +581,7 @@ struct RenderState : public Deserializable
 {
     bool depthClampEnabled;
     bool noPixels;
-    Serialization::PolygonMode polygonMode;
+    Serialization::RasterizationMode rasterizationMode;
     Serialization::CullMode cullMode;
     Serialization::WindingOrderMode windingOrderMode;
     bool depthBiasEnabled;

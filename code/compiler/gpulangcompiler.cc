@@ -1949,15 +1949,15 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
 
     TokenizationResult tokenizationResult;
     Tokenize(file, searchPaths, tokenizationResult);
-    if (tokenizationResult.errors.size > 0)
+    if (tokenizationResult.diagnostics.size > 0)
     {
         GrowingString str;
-        for (const auto& err : tokenizationResult.errors)
+        for (const auto& err : tokenizationResult.diagnostics)
         {
             str.Append(Format("%s(%d,%d): error: %s\n", err.file.c_str(), err.line+1, err.column, err.error.c_str()));
         }
         errorBuffer = Error(str);
-        return false;
+        //return false;
     }
     
     timer.Stop();
@@ -1970,7 +1970,7 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
     
     PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
     PinnedArray<GPULangDiagnostic> diagnostics(0xFFFFFF);
-    if (tokenizationResult.errors.size == 0)
+    if (tokenizationResult.diagnostics.size == 0)
     {
         // get the name of the shader
         char* it = file->path.buf + file->path.len - 1;
@@ -2007,15 +2007,15 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
 
         GPULang::TokenStream tokenStream(tokenizationResult);
         ParseResult parseResult = Parse(tokenStream);
-        if (parseResult.errors.size > 0)
+        if (parseResult.diagnostics.size > 0)
         {
             GrowingString str;
-            for (const auto& err : parseResult.errors)
+            for (const auto& err : parseResult.diagnostics)
             {
                 str.Append(Format("%s(%d,%d): error: %s\n", err.file.c_str(), err.line+1, err.column, err.error.c_str()));
             }
             errorBuffer = Error(str);
-            return false;
+            //return false;
         }
 
         timer.Stop();
@@ -2112,10 +2112,10 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
     
     TokenizationResult tokenizationResult;
     Tokenize(file, searchPaths, tokenizationResult, true);
-    for (const auto& err : tokenizationResult.errors)
+    for (const auto& err : tokenizationResult.diagnostics)
     {
         result.diagnostics.Append(err);
-        return false;
+        //return false;
     }
     
     timer.Stop();
@@ -2127,7 +2127,7 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
     }
 
     // If lexing is succesful, continue
-    if (tokenizationResult.errors.size == 0)
+    if (tokenizationResult.diagnostics.size == 0)
     {
         // get the name of the shader
         std::locale loc;
@@ -2160,10 +2160,10 @@ GPULangValidate(GPULangFile* file, GPULang::Compiler::Language target, const std
         timer.Start();
         GPULang::TokenStream tokenStream(tokenizationResult);
         ParseResult parseResult = Parse(tokenStream);
-        for (const auto& err : parseResult.errors)
+        for (const auto& err : parseResult.diagnostics)
         {
             result.diagnostics.Append(err);
-            return false;
+            //return false;
         }
         timer.Stop();
         if (options.emitTimings)

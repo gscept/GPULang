@@ -1555,7 +1555,7 @@ def generate_types():
     enums.append(enum)
 
     enum = Enumeration(
-        name = 'PolygonMode',
+        name = 'RasterizationMode',
         type_name = 'UInt32',
         members=[
             EnumMember("Fill"),
@@ -2013,7 +2013,7 @@ def generate_types():
             StateMember('DepthBoundsMin', 'Float32'),
             StateMember('DepthBoundsMax', 'Float32'),
             StateMember('NoRasterization', 'Bool8'),
-            StateMember('PolygonMode', 'PolygonMode'),
+            StateMember('Rasterize', 'RasterizationMode'),
             StateMember('Cull', 'CullFace'),
             StateMember('WindingOrder', 'WindingOrder'),
             StateMember('ScissorEnabled', 'Bool8'),
@@ -3149,7 +3149,7 @@ def generate_types():
     fun.spirv = spirv_function
     functions.append(fun)
 
-    intrinsic = 'ExportOuterTessellationLevel'
+    intrinsic = 'ExportOuterTessellationLevels'
     docs = 'Sets the outer tessellation levels for the current patch. This function must be called once per patch.'
 
     function_name = f'Hull{intrinsic}'
@@ -3178,7 +3178,7 @@ def generate_types():
     fun.spirv = spirv_function
     functions.append(fun)
 
-    intrinsic = 'ExportInnerTessellationLevel'
+    intrinsic = 'ExportInnerTessellationLevels'
     docs = 'Sets the inner tessellation levels for the current patch. This function must be called once per patch.'
 
     function_name = f'Hull{intrinsic}'

@@ -26990,30 +26990,30 @@ MemorySemantics::MemorySemantics()
 };
 MemorySemantics MemorySemanticsType;
 
-EnumExpression PolygonModeFill;
-EnumExpression PolygonModeLine;
-EnumExpression PolygonModePoint;
-PolygonMode::PolygonMode()
+EnumExpression RasterizationModeFill;
+EnumExpression RasterizationModeLine;
+EnumExpression RasterizationModePoint;
+RasterizationMode::RasterizationMode()
 {
-    this->name = "PolygonMode"_c;
+    this->name = "RasterizationMode"_c;
     this->category = Type::EnumCategory;
     this->type = Type::FullType{ UInt32Type.name };
     this->thisResolved->typeSymbol = &UInt32Type;
     this->baseType = TypeCode::UInt;
     this->type.literal = true;
     this->builtin = true;
-    PolygonModeFill.value = PolygonModeFill_value;
-    PolygonModeFill.type = Type::FullType{ PolygonModeType.name, true };
-    PolygonModeFill.underlyingType = Type::FullType{ UInt32Type.name };
-    PolygonModeFill.thisResolved->type = this;
-    PolygonModeLine.value = PolygonModeLine_value;
-    PolygonModeLine.type = Type::FullType{ PolygonModeType.name, true };
-    PolygonModeLine.underlyingType = Type::FullType{ UInt32Type.name };
-    PolygonModeLine.thisResolved->type = this;
-    PolygonModePoint.value = PolygonModePoint_value;
-    PolygonModePoint.type = Type::FullType{ PolygonModeType.name, true };
-    PolygonModePoint.underlyingType = Type::FullType{ UInt32Type.name };
-    PolygonModePoint.thisResolved->type = this;
+    RasterizationModeFill.value = RasterizationModeFill_value;
+    RasterizationModeFill.type = Type::FullType{ RasterizationModeType.name, true };
+    RasterizationModeFill.underlyingType = Type::FullType{ UInt32Type.name };
+    RasterizationModeFill.thisResolved->type = this;
+    RasterizationModeLine.value = RasterizationModeLine_value;
+    RasterizationModeLine.type = Type::FullType{ RasterizationModeType.name, true };
+    RasterizationModeLine.underlyingType = Type::FullType{ UInt32Type.name };
+    RasterizationModeLine.thisResolved->type = this;
+    RasterizationModePoint.value = RasterizationModePoint_value;
+    RasterizationModePoint.type = Type::FullType{ RasterizationModeType.name, true };
+    RasterizationModePoint.underlyingType = Type::FullType{ UInt32Type.name };
+    RasterizationModePoint.thisResolved->type = this;
     this->labels = std::array{ "Fill"_c, "Line"_c, "Point"_c };
     this->fromUnderlyingType.name = this->name;
     this->fromUnderlyingType.returnType = Type::FullType{{ this->name }};
@@ -27046,14 +27046,14 @@ PolygonMode::PolygonMode()
     Symbol::Resolved(&this->neqOpArg)->typeSymbol = this;
     Symbol::Resolved(&this->neqOp)->returnTypeSymbol = &Bool8Type;
     this->scope.symbolLookup = StaticMap<HashString, Symbol*, 5> {
-        std::pair{ "Line"_h, &PolygonModeLine },
-        std::pair{ "Point"_h, &PolygonModePoint },
-        std::pair{ "Fill"_h, &PolygonModeFill },
-        std::pair{ "operator=="_h, &PolygonModeType.eqOp },
-        std::pair{ "operator!="_h, &PolygonModeType.neqOp }
+        std::pair{ "Line"_h, &RasterizationModeLine },
+        std::pair{ "Point"_h, &RasterizationModePoint },
+        std::pair{ "Fill"_h, &RasterizationModeFill },
+        std::pair{ "operator=="_h, &RasterizationModeType.eqOp },
+        std::pair{ "operator!="_h, &RasterizationModeType.neqOp }
     };
 };
-PolygonMode PolygonModeType;
+RasterizationMode RasterizationModeType;
 
 EnumExpression CullFaceNone;
 EnumExpression CullFaceFront;
@@ -28684,7 +28684,7 @@ Variable RenderStateDepthBoundsTestEnabled;
 Variable RenderStateDepthBoundsMin;
 Variable RenderStateDepthBoundsMax;
 Variable RenderStateNoRasterization;
-Variable RenderStatePolygonMode;
+Variable RenderStateRasterize;
 Variable RenderStateCull;
 Variable RenderStateWindingOrder;
 Variable RenderStateScissorEnabled;
@@ -28761,9 +28761,9 @@ RenderState::RenderState()
     RenderStateNoRasterization.type = Type::FullType{ Bool8Type.name };
     Symbol::Resolved(&RenderStateNoRasterization)->typeSymbol = &Bool8Type;
 
-    RenderStatePolygonMode.name = "PolygonMode"_c;
-    RenderStatePolygonMode.type = Type::FullType{ PolygonModeType.name };
-    Symbol::Resolved(&RenderStatePolygonMode)->typeSymbol = &PolygonModeType;
+    RenderStateRasterize.name = "Rasterize"_c;
+    RenderStateRasterize.type = Type::FullType{ RasterizationModeType.name };
+    Symbol::Resolved(&RenderStateRasterize)->typeSymbol = &RasterizationModeType;
 
     RenderStateCull.name = "Cull"_c;
     RenderStateCull.type = Type::FullType{ CullFaceType.name };
@@ -28835,6 +28835,7 @@ RenderState::RenderState()
         std::pair{ "DepthBoundsTestEnabled"_h, &RenderStateDepthBoundsTestEnabled },
         std::pair{ "ColorBlendOp"_h, &RenderStateColorBlendOp },
         std::pair{ "BlendEnabled"_h, &RenderStateBlendEnabled },
+        std::pair{ "Rasterize"_h, &RenderStateRasterize },
         std::pair{ "StencilEnabled"_h, &RenderStateStencilEnabled },
         std::pair{ "Mask"_h, &RenderStateMask },
         std::pair{ "DepthBiasEnabled"_h, &RenderStateDepthBiasEnabled },
@@ -28857,7 +28858,6 @@ RenderState::RenderState()
         std::pair{ "AlphaBlendOp"_h, &RenderStateAlphaBlendOp },
         std::pair{ "DepthBiasClamp"_h, &RenderStateDepthBiasClamp },
         std::pair{ "LogicOpEnabled"_h, &RenderStateLogicOpEnabled },
-        std::pair{ "PolygonMode"_h, &RenderStatePolygonMode },
         std::pair{ "DepthBiasFactor"_h, &RenderStateDepthBiasFactor }
     };
 };
