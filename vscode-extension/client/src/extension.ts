@@ -140,7 +140,6 @@ export function activate(context: ExtensionContext) {
 		// Register the server for plain text documents
 		documentSelector: ['gpulang'],
 		initializationOptions: {
-			root : workspaceFolders[0].uri.fsPath,
 			config : JSON.parse(fileData)
 		},
 		synchronize: {
