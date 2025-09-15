@@ -1088,6 +1088,18 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
                 if (matchingFunction->symbolType == Symbol::FunctionType)
                 {
                     Function* otherFunction = static_cast<Function*>(matchingFunction);
+                    Function::__Resolved* otherFunRes = Symbol::Resolved(otherFunction);
+
+                    if (funResolved->isEntryPoint)
+                    {
+                        compiler->Error(Format("Function '%s' can't be overloaded because it's marked as entry_point, previous definition at %s(%d)", functionFormatted.c_str(), otherFunction->location.file.c_str(), otherFunction->location.line), fun);
+                        return false;
+                    }
+                    if (otherFunRes->isEntryPoint)
+                    {
+                        compiler->Error(Format("Function '%s' can't be overloaded because it's marked as entry_point, previous definition at %s(%d)", otherFunRes->signature.c_str(), fun->location.file.c_str(), fun->location.line), fun);
+                        return false;
+                    }
 
                     if (!fun->IsCompatible(otherFunction, false))
                         continue;
@@ -1097,6 +1109,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
                         compiler->Error(Format("Function '%s' can not be overloaded because it only differs by return type when trying to overload previous definition at %s(%d)", functionFormatted.c_str(), otherFunction->location.file.c_str(), otherFunction->location.line), fun);
                     else
                         compiler->Error(Format("Function '%s' redefinition, previous definition at %s(%d)", functionFormatted.c_str(), otherFunction->location.file.c_str(), otherFunction->location.line), fun);
+
 
                     return false;
                 }
@@ -1212,7 +1225,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
         const BinaryExpression* assignEntry = static_cast<const BinaryExpression*>(entry);
         BinaryExpression::__Resolved* binExp = Symbol::Resolved(assignEntry);
 
-        if (entry->symbolType != Symbol::BinaryExpressionType)
+        if (entry->symbolType != Symbol::BinaryExpressionType && assignEntry->op != '=')
         {
             compiler->Error(Format("Program entry '%s' must be an assignment expression", assignEntry->EvalString().c_str()), symbol);
             return false;
@@ -1413,12 +1426,13 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 && entryType <= ProgramInstance::__Resolved::EntryType::RayIntersectionShader)
             {
                 compiler->currentState.shaderType = entryType;
+                compiler->currentState.prog = prog;
                 // when we've set these flags, run function validation to make sure it's properly formatted
                 if (!this->ValidateFunction(compiler, fun))
                     return false;
 
                 compiler->currentState.sideEffects.bits = 0x0;
-                compiler->shaderValueExpressions[entryType].value = true;
+                ShaderValueExpressions[entryType].value = true;
                 compiler->currentState.function = fun;
                 
                 Function::__Resolved* funRes = Symbol::Resolved(fun);
@@ -1452,7 +1466,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                     originalVariableValues.Find(it2->first)->second = it2->second;
                 }
                 
-                compiler->shaderValueExpressions[entryType].value = false;
+                ShaderValueExpressions[entryType].value = false;
                 compiler->currentState.function = nullptr;
 
                 if (entryType == ProgramInstance::__Resolved::VertexShader)
@@ -3525,21 +3539,21 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
             if (varResolved->parameterBits.flags.isPatch
                 && !(compiler->currentState.shaderType == ProgramInstance::__Resolved::HullShader || compiler->currentState.shaderType == ProgramInstance::__Resolved::DomainShader))
             {
-                compiler->Error(Format("Parameter '%s' can not use 'patch' if function is not being used as a HullShader/TessellationControlShader or DomainShader/TessellationEvaluationShader", var->name.c_str(), fun->name.c_str()), var);
+                compiler->Error(Format("Parameter '%s' in shader '%s' can not use 'patch' if function is not being used as a HullShader/TessellationControlShader or DomainShader/TessellationEvaluationShader", var->name.c_str(), fun->name.c_str()), var);
                 return false;
             }
 
             if (varResolved->parameterBits.flags.isNoInterpolate
                 && compiler->currentState.shaderType != ProgramInstance::__Resolved::PixelShader)
             {
-                compiler->Error(Format("Parameter '%s' can not use 'no_interpolate' if function is not being used as a PixelShader", var->name.c_str(), fun->name.c_str()), var);
+                compiler->Error(Format("Parameter '%s' in shader '%s' can not use 'no_interpolate' if function is not being used as a PixelShader", var->name.c_str(), fun->name.c_str()), var);
                 return false;
             }
 
             if (varResolved->parameterBits.flags.isNoPerspective
                 && compiler->currentState.shaderType != ProgramInstance::__Resolved::PixelShader)
             {
-                compiler->Error(Format("Parameter '%s' can not use 'no_perspective' if function is not being used as a PixelShader", var->name.c_str(), fun->name.c_str()), var);
+                compiler->Error(Format("Parameter '%s' in shader '%s' can not use 'no_perspective' if function is not being used as a PixelShader", var->name.c_str(), fun->name.c_str()), var);
                 return false;
             }
         }
@@ -3767,13 +3781,13 @@ ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc, c
             inType.modifierValues.size--;
             if (var->type != inType)
             {
-                compiler->Error(Format("Can't match types '%s' and '%s' between shader '%s' and '%s'", var->type.ToString().c_str(), inParams.ptr[iterator]->type.ToString().c_str(), outFunc->name.c_str(), inFunc->name.c_str()), outFunc);
+                compiler->Error(Format("Can't match types for %s ('%s') in shader %s and %s ('%s') in shader '%s'", var->name.c_str(), var->type.ToString().c_str(), outFunc->name.c_str(), inParams.ptr[iterator]->name.c_str(), inParams.ptr[iterator]->type.ToString().c_str(), inFunc->name.c_str()), outFunc);
                 return false;
             }
         }
         else if (var->type != inParams.ptr[iterator]->type)
         {
-            compiler->Error(Format("Can't match types '%s' and '%s' between shader '%s' and '%s'", var->type.ToString().c_str(), inParams.ptr[iterator]->type.ToString().c_str(), outFunc->name.c_str(), inFunc->name.c_str()), outFunc);
+            compiler->Error(Format("Can't match types for %s ('%s') in shader '%s' and %s ('%s') in shader '%s'", var->name.c_str(), var->type.ToString().c_str(), outFunc->name.c_str(), inParams.ptr[iterator]->name.c_str(), inParams.ptr[iterator]->type.ToString().c_str(), inFunc->name.c_str()), outFunc);
             return false;
         }
     }

@@ -33,6 +33,10 @@ struct Thread;
 struct Type;
 struct Scope;
 struct Generate;
+
+extern thread_local Variable ShaderSwitches[ProgramInstance::__Resolved::EntryType::NumProgramEntries];
+extern thread_local BoolExpression ShaderValueExpressions[ProgramInstance::__Resolved::EntryType::NumProgramEntries];
+
 struct Compiler
 {
     enum class Language : uint8_t
@@ -181,7 +185,7 @@ struct Compiler
     /// produce error in compiler with explicit file, line and column
     void Error(const TransientString& msg, const FixedString& file, int line, int column, int length = 1);
     /// produce error in compiler from symbol
-    void Error(const TransientString& msg, const Symbol* sym);
+    void Error(TransientString msg, const Symbol* sym);
     /// produce error in compiler with explicit file, line and column
     void Warning(const TransientString& msg, const FixedString& file, int line, int column);
     /// produce error in compiler from symbol
@@ -253,6 +257,7 @@ struct Compiler
             uint32_t bits;
         } sideEffects;
         Function* function;
+        ProgramInstance* prog;
     } currentState;
     uint32_t linkDefineCounter = 0;
 
@@ -275,8 +280,7 @@ struct Compiler
     bool ignoreReservedWords;
 
     RenderStateInstance defaultRenderState;
-    Variable shaderSwitches[ProgramInstance::__Resolved::EntryType::NumProgramEntries];
-    BoolExpression shaderValueExpressions[ProgramInstance::__Resolved::EntryType::NumProgramEntries];
+
 
     Options options;
 
