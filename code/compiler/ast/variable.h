@@ -47,6 +47,7 @@ struct Variable : public Symbol
                 uint32_t isNoPerspective : 1;
                 uint32_t isNoInterpolate : 1;
                 uint32_t isCentroid : 1;
+                uint32_t isSample : 1;
             } flags;
             uint32_t bits;
         };

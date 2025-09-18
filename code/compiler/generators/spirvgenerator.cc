@@ -817,6 +817,7 @@ SPV_ENUM(NoPerspective, 13)
 SPV_ENUM(Flat, 14)
 SPV_ENUM(Patch, 15)
 SPV_ENUM(Centroid, 16)
+SPV_ENUM(Sample, 17)
 SPV_ENUM(Restrict, 19)
 SPV_ENUM(Volatile, 21)
 SPV_ENUM(Coherent, 23)
@@ -3835,21 +3836,30 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
             uint8_t binding = typeName.scope == SPIRVResult::Storage::Input ? varResolved->inBinding : varResolved->outBinding;
             generator->writer->Decorate(SPVArg(name), Decorations::Location, binding);
             generator->writer->Decorate(SPVArg(name), Decorations::Component, 0);
-            if (varResolved->parameterBits.flags.isNoInterpolate)
+            Variable::__Resolved::ParameterBits paramBits = varResolved->parameterBits.bits;
+            auto transientBits = generator->evaluatingProgram->variablesWithTransientModifiers.Find(var);
+            if (transientBits != generator->evaluatingProgram->variablesWithTransientModifiers.end())
+                paramBits.bits |= transientBits->second;
+
+            if (paramBits.flags.isNoInterpolate)
             {
                 generator->writer->Decorate(SPVArg(name), Decorations::Flat);
             }
-            if (varResolved->parameterBits.flags.isNoPerspective)
+            if (paramBits.flags.isNoPerspective)
             {
                 generator->writer->Decorate(SPVArg(name), Decorations::NoPerspective);
             }
-            if (varResolved->parameterBits.flags.isPatch)
+            if (paramBits.flags.isPatch)
             {
                 generator->writer->Decorate(SPVArg(name), Decorations::Patch);
             }
-            if (varResolved->parameterBits.flags.isCentroid)
+            if (paramBits.flags.isCentroid)
             {
                 generator->writer->Decorate(SPVArg(name), Decorations::Centroid);
+            }
+            if (paramBits.flags.isSample)
+            {
+                generator->writer->Decorate(SPVArg(name), Decorations::Sample);
             }
         }
 

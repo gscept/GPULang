@@ -104,6 +104,7 @@ struct ProgramInstance : public Symbol
         std::vector<uint32_t> binaries[EntryType::NumProgramEntries];
         PinnedMap<Function*, Function*> functionOverrides = 0xFFF;
         PinnedMap<Variable*, Expression*> constVarInitializationOverrides = 0xFFF;
+        PinnedMap<Variable*, uint32_t> variablesWithTransientModifiers = 0xFFF;
     };
 
 };

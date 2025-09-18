@@ -68,6 +68,8 @@ enum class TokenType
     , Group_Decorator
     , NoInterpolate_Modifier
     , NoPerspective_Modifier
+    , Centroid_Modifier
+    , Sample_Modifier
     , Patch_Domain
     , EntryPoint_Attribute
     , Threads_Attribute

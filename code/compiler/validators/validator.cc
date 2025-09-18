@@ -1235,6 +1235,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
         ProgramInstance::__Resolved::EntryType entryType = ProgramInstance::__Resolved::StringToEntryType(entryStr);
         if (entryType == ProgramInstance::__Resolved::InvalidProgramEntryType)
         {
+            // TODO: I think we don't need function overrides anymore, so designate this one for deletion
             Symbol* overrideSymbol = compiler->GetSymbol(entryStr);
             if (overrideSymbol->symbolType == Symbol::FunctionType)
             {
@@ -2446,6 +2447,8 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 varResolved->parameterBits.flags.isNoInterpolate = true;
             else if (attr->name == "centroid")
                 varResolved->parameterBits.flags.isCentroid = true;
+            else if (attr->name == "sample")
+                varResolved->parameterBits.flags.isSample = true;
         }
     }
 
@@ -3549,11 +3552,48 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
                 compiler->Error(Format("Parameter '%s' in shader '%s' can not use 'no_interpolate' if function is not being used as a PixelShader", var->name.c_str(), fun->name.c_str()), var);
                 return false;
             }
+            else
+            {
+                if (varResolved->parameterBits.flags.isNoInterpolate && varResolved->parameterBits.flags.isNoPerspective)
+                {
+                    compiler->Error(Format("Parameter '%s' in shader '%s' can not use both 'no_interpolate' and 'no_perspective'", var->name.c_str(), fun->name.c_str()), var);
+                    return false;
+                }
+            }
+            
 
             if (varResolved->parameterBits.flags.isNoPerspective
                 && compiler->currentState.shaderType != ProgramInstance::__Resolved::PixelShader)
             {
                 compiler->Error(Format("Parameter '%s' in shader '%s' can not use 'no_perspective' if function is not being used as a PixelShader", var->name.c_str(), fun->name.c_str()), var);
+                return false;
+            }
+            else
+            {
+                if (varResolved->parameterBits.flags.isNoInterpolate && varResolved->parameterBits.flags.isNoPerspective)
+                {
+                    compiler->Error(Format("Parameter '%s' in shader '%s' can not use both 'no_interpolate' and 'no_perspective'", var->name.c_str(), fun->name.c_str()), var);
+                    return false;
+                }
+            }
+
+            if (varResolved->parameterBits.flags.isSample
+                && compiler->currentState.shaderType != ProgramInstance::__Resolved::PixelShader)
+            {
+                compiler->Error(Format("Parameter '%s' in shader '%s' can not use 'sample' if function is not being used as a PixelShader", var->name.c_str(), fun->name.c_str()), var);
+                return false;
+            }
+
+            if (varResolved->parameterBits.flags.isCentroid
+                && compiler->currentState.shaderType != ProgramInstance::__Resolved::PixelShader)
+            {
+                compiler->Error(Format("Parameter '%s' in shader '%s' can not use 'centroid' if function is not being used as a PixelShader", var->name.c_str(), fun->name.c_str()), var);
+                return false;
+            }
+
+            if (varResolved->parameterBits.flags.isSample && varResolved->parameterBits.flags.isCentroid)
+            {
+                compiler->Error(Format("Parameter '%s' in shader '%s' can not use both 'sample' and 'centroid'", var->name.c_str(), fun->name.c_str()), var);
                 return false;
             }
         }
@@ -3773,6 +3813,24 @@ ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc, c
         Variable::__Resolved* outResolved = Symbol::Resolved(var);
         Variable::__Resolved* inResolved = Symbol::Resolved(inParams.ptr[iterator]);
 
+        // Add transient modifiers from the next stages in parameters to the previous stages out parameters
+        ProgramInstance::__Resolved* progRes = Symbol::Resolved(compiler->currentState.prog);
+        progRes->variablesWithTransientModifiers.Insert(var, inResolved->usageBits.bits);
+
+        if (outResolved->parameterBits.flags.isPatch)
+        {
+            if (inResolved->parameterBits.flags.isCentroid)
+            {
+                compiler->Error(Format("Can't match 'patch' output '%s' in shader %s with 'centroid' input in shader %s", var->name.c_str(), outFunc->name.c_str(), inFunc->name.c_str()), outFunc);
+                return false;
+            }
+            if (inResolved->parameterBits.flags.isSample)
+            {
+                compiler->Error(Format("Can't match 'patch' output '%s' in shader %s with 'sample' input in shader %s", var->name.c_str(), outFunc->name.c_str(), inFunc->name.c_str()), outFunc);
+                return false;
+            }
+        }
+
         if (rules.inputIsArray && !rules.previousOutputIsArray)
         {
             // If in type is removed 1 array level, the types must match
@@ -3978,6 +4036,7 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
                 compiler->Error(Format("Invalid program setup, PixelShader needs either a VertexShader, a VertexShader-GeometryShader, a VertexShader-HullShader/TessellationControlShader-DomainShader/TessellationEvaluationShader or a VertexShader-HullShader/TessellationControlShader-DomainShader/TessellationEvaluationShader-GeometryShader setup"), symbol);
                 return false;
             }
+            // TODO: use the parameter sets to create transient parameter attributes
             Function* ps = static_cast<Function*>(progResolved->mappings[ProgramInstance::__Resolved::PixelShader]);
             if (!ValidateParameterSets(compiler, lastPrimitiveShader, ps))
                 return false;

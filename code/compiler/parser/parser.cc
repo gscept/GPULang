@@ -174,6 +174,8 @@ constexpr StaticMap HardCodedTokens = std::array{
     , std::pair{ "group"_h, TokenType::Group_Decorator }
     , std::pair{ "no_interpolate"_h, TokenType::NoInterpolate_Modifier }
     , std::pair{ "no_perspective"_h, TokenType::NoPerspective_Modifier }
+    , std::pair{ "centroid"_h, TokenType::Centroid_Modifier }
+    , std::pair{ "sample"_h, TokenType::Sample_Modifier }
     , std::pair{ "patch"_h, TokenType::Patch_Domain }
     , std::pair{ "entry_point"_h, TokenType::EntryPoint_Attribute }
     , std::pair{ "threads"_h, TokenType::Threads_Attribute }
