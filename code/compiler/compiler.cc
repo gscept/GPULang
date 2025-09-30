@@ -58,6 +58,8 @@ Compiler::Compiler()
     this->options.validate = true;
     this->options.optimize = false;
     this->options.emitTimings = true;
+    this->currentState.prog = nullptr;
+    this->currentState.function = nullptr;
 
     this->branchReturns = false;
     this->defaultRenderState.name = "__DefaultRenderState";
