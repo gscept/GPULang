@@ -1925,7 +1925,8 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
 
     Compiler compiler;
     compiler.Setup(target, options);
-    
+    GrowingString errorString;
+
     TransientArray<std::string_view> searchPaths(128);
     for (auto& arg : defines)
     {
@@ -1951,13 +1952,10 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
     Tokenize(file, searchPaths, tokenizationResult);
     if (tokenizationResult.diagnostics.size > 0)
     {
-        GrowingString str;
         for (const auto& err : tokenizationResult.diagnostics)
         {
-            str.Append(Format("%s(%d,%d): error: %s\n", err.file.c_str(), err.line+1, err.column, err.error.c_str()));
+            errorString.Append(Format("%s(%d,%d): error: %s\n", err.file.c_str(), err.line+1, err.column, err.error.c_str()));
         }
-        errorBuffer = Error(str);
-        //return false;
     }
     
     timer.Stop();
@@ -2009,13 +2007,10 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
         ParseResult parseResult = Parse(tokenStream);
         if (parseResult.diagnostics.size > 0)
         {
-            GrowingString str;
             for (const auto& err : parseResult.diagnostics)
             {
-                str.Append(Format("%s(%d,%d): error: %s\n", err.file.c_str(), err.line+1, err.column, err.error.c_str()));
+                errorString.Append(Format("%s(%d,%d): error: %s\n", err.file.c_str(), err.line+1, err.column, err.error.c_str()));
             }
-            errorBuffer = Error(str);
-            //return false;
         }
 
         timer.Stop();
@@ -2040,30 +2035,35 @@ GPULangCompile(const GPULangFile* file, GPULang::Compiler::Language target, cons
         // convert error list to string
         if (compiler.messages.size != 0 && !compiler.options.quiet)
         {
-            GrowingString err;
             for (size_t i = 0; i < compiler.messages.size; i++)
             {
                 if (i > 0)
-                    err.Append("\n");
-                err.Append(compiler.messages[i]);
+                    errorString.Append("\n");
+                errorString.Append(compiler.messages[i]);
             }
-            if (err.size == 0 && compiler.hasErrors)
-                err.Append("Unhandled internal compiler error");
-            errorBuffer = Error(err);
+            if (errorString.size == 0 && compiler.hasErrors)
+                errorString.Append("Unhandled internal compiler error");
         }
         if (options.emitTimings)
             timer.TotalTime();
         GPULang::ResetAllocator(&alloc);
+        if (errorString.size > 0) 
+        {
+            errorBuffer = Error(errorString);
+        }
+
         return res;
     }
-    GrowingString err;
     for (auto& diagnostic : diagnostics)
     {
-        err.Append(Format("%s(%d:%d): error: %s\n", diagnostic.file.c_str(), diagnostic.line, diagnostic.column, diagnostic.error.c_str()));
+        errorString.Append(Format("%s(%d:%d): error: %s\n", diagnostic.file.c_str(), diagnostic.line, diagnostic.column, diagnostic.error.c_str()));
     }
-    errorBuffer = Error(err);
 
-    
+    if (errorString.size > 0) 
+    {
+        errorBuffer = Error(errorString);
+    }
+
     GPULang::ResetAllocator(&alloc);
     GPULang::ResetAllocator(&stringAllocator);
     
