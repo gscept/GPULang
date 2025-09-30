@@ -975,9 +975,13 @@ def generate_types():
                             spirv_function += '    rhs = LoadValueSPIRV(c, g, args[1]);\n'
                             if type != base_type_mapping[scale_type]:
                                 spirv_function += f'    rhs = ConverterTable[TypeConversionTable::{scale_type}To{type}](c, g, 1, args[1]);\n'
+                            else:
+                                spirv_function += '    rhs = args[1]'
                         else:
                             if type != base_type_mapping[scale_type]:
                                 spirv_function += f'    rhs = ConverterTable[TypeConversionTable::{scale_type}To{type}](c, g, 1, args[1]);\n'
+                            else:
+                                spirv_function += '    rhs = args[1]'
                             spirv_function += f'    rhs = GenerateSplatCompositeSPIRV(c, g, returnType, {size}, rhs);\n'
                         if type.startswith('Float'):
                             spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);\n'
