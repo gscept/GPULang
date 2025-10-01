@@ -1928,7 +1928,7 @@ ParseExpression2(TokenStream& stream, ParseResult& ret, bool stopAtComma = false
     
     if (operandStack.size > 1)
     {
-        ret.diagnostics.Append(UnexpectedToken(stream, "operator"));
+        ret.diagnostics.Append(UnexpectedToken(stream, ";"));
     }
     
     

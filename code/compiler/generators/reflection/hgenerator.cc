@@ -321,7 +321,7 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
                 {
                     ptrdiff_t diff = std::distance(modIt, var->type.modifiers.rend()) - 1;
                     ValueUnion val;
-                    if (var->type.modifierValues[diff]->EvalValue(val))
+                    if (var->type.modifierValues[diff] && var->type.modifierValues[diff]->EvalValue(val))
                     {
                         arrayType = Format("[%d]%s", val.ui[0], arrayType.buf);
                     }
