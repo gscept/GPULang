@@ -50,6 +50,7 @@ UnaryExpression::Resolve(Compiler* compiler)
     Type* typeSymbol;
     if (!this->expr->EvalTypeSymbol(typeSymbol))
     {
+        this->name = this->expr->EvalString();
         compiler->UnrecognizedTypeError(type.name, this);
         return false;
     }

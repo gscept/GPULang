@@ -3721,6 +3721,12 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
     Variable* var = static_cast<Variable*>(symbol);
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
 
+    // If builtin, just return value as a literal
+    if (varResolved->builtin && var->name.StartsWith("gplIs"))
+    {
+        return SPIRVResult(generator->shaderValueExpressions[generator->shaderStage].value);
+    }
+
     Function::__Resolved* entryRes = Symbol::Resolved(generator->entryPoint);
     if (entryRes->visibleSymbols.Find(var) == entryRes->visibleSymbols.end())
         return SPIRVResult::Invalid();
@@ -5092,18 +5098,16 @@ GenerateForStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, F
 void
 GenerateIfStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, IfStatement* stat)
 {
-    // If B evaluates to a constant value, pick a branch and return early
-    ValueUnion val;
-    if (stat->condition->EvalValue(val))
+    // If B evaluates to a constant value, pick a branch and return early    
+    SPIRVResult lhsResult = GenerateExpressionSPIRV(compiler, generator, stat->condition);
+    if (lhsResult.isLiteral)
     {
-        if (val.b[0])
+        if (lhsResult.literalValue.b)
             GenerateStatementSPIRV(compiler, generator, stat->ifStatement);
         else if (stat->elseStatement != nullptr)
             GenerateStatementSPIRV(compiler, generator, stat->elseStatement);
         return;
     }
-    
-    SPIRVResult lhsResult = GenerateExpressionSPIRV(compiler, generator, stat->condition);
     lhsResult = LoadValueSPIRV(compiler, generator, lhsResult);
     
     uint32_t ifLabel = generator->writer->Reserve();
