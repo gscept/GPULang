@@ -256,8 +256,8 @@ struct Compiler
             } flags;
             uint32_t bits;
         } sideEffects;
-        Function* function;
-        ProgramInstance* prog;
+        Function* function = nullptr;
+        ProgramInstance* prog = nullptr;
     } currentState;
     uint32_t linkDefineCounter = 0;
 

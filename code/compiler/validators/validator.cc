@@ -1469,6 +1469,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 
                 ShaderValueExpressions[entryType].value = false;
                 compiler->currentState.function = nullptr;
+                compiler->currentState.prog = nullptr;
 
                 if (entryType == ProgramInstance::__Resolved::VertexShader)
                 {
