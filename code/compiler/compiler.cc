@@ -31,7 +31,6 @@
 namespace GPULang
 {
 
-thread_local Variable ShaderSwitches[ProgramInstance::__Resolved::EntryType::NumProgramEntries];
 thread_local BoolExpression ShaderValueExpressions[ProgramInstance::__Resolved::EntryType::NumProgramEntries];
 
 //------------------------------------------------------------------------------
@@ -150,31 +149,11 @@ Compiler::Setup(const Compiler::Language& lang, Options options)
     this->intrinsicScope->symbolLookup = DefaultIntrinsics;
 
     this->ignoreReservedWords = true;
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::VertexShader].name = "gplIsVertexShader";
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::HullShader].name = "gplIsHullShader";
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::DomainShader].name = "gplIsDomainShader";
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::GeometryShader].name = "gplIsGeometryShader";
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::PixelShader].name = "gplIsPixelShader";
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::ComputeShader].name = "gplIsComputeShader";
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::TaskShader].name = "gplIsTaskShader";
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::MeshShader].name = "gplIsMeshShader";
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::RayGenerationShader].name = "gplIsRayGenerationShader";
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::RayClosestHitShader].name = "gplIsRayClosestHitShader";
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::RayAnyHitShader].name = "gplIsRayAnyHitShader";
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::RayMissShader].name = "gplIsRayMissShader";
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::RayIntersectionShader].name = "gplIsRayIntersectionShader";
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::RayCallableShader].name = "gplIsRayCallableShader";
-
     for (uint32_t i = ProgramInstance::__Resolved::EntryType::FirstShader; i <= ProgramInstance::__Resolved::EntryType::LastShader; i++)
     {
-        ShaderSwitches[i].type = Type::FullType{ "b8"_c };
-        Variable::__Resolved* res = Symbol::Resolved(&ShaderSwitches[i]);
-        res->usageBits.flags.isConst = true;
-        res->builtin = true;
-        res->typeSymbol = &Bool8Type;
         ShaderValueExpressions[i].value = false;
-        ShaderSwitches[i].valueExpression = &ShaderValueExpressions[i];
-        this->validator->ResolveVariable(this, &ShaderSwitches[i]);
+        TransientString str = TransientString("gplIs", ProgramInstance::__Resolved::EntryTypeToString(ProgramInstance::__Resolved::EntryType(i)));
+        this->intrinsicScope->symbolLookup.Insert(HashString(str), &ShaderValueExpressions[i]);
     }
 
     this->ignoreReservedWords = false;
@@ -230,31 +209,12 @@ Compiler::SetupServer(const Compiler::Language& lang,Options options)
     
     this->ignoreReservedWords = true;
     
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::VertexShader].name = "gplIsVertexShader";
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::HullShader].name = "gplIsHullShader";
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::DomainShader].name = "gplIsDomainShader";
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::GeometryShader].name = "gplIsGeometryShader";
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::PixelShader].name = "gplIsPixelShader";
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::ComputeShader].name = "gplIsComputeShader";
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::TaskShader].name = "gplIsTaskShader";
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::MeshShader].name = "gplIsMeshShader";
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::RayGenerationShader].name = "gplIsRayGenerationShader";
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::RayClosestHitShader].name = "gplIsRayClosestHitShader";
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::RayAnyHitShader].name = "gplIsRayAnyHitShader";
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::RayMissShader].name = "gplIsRayMissShader";
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::RayIntersectionShader].name = "gplIsRayIntersectionShader";
-    ShaderSwitches[ProgramInstance::__Resolved::EntryType::RayCallableShader].name = "gplIsRayCallableShader";
-    
     for (uint32_t i = ProgramInstance::__Resolved::EntryType::FirstShader; i <= ProgramInstance::__Resolved::EntryType::LastShader; i++)
     {
-        ShaderSwitches[i].type = Type::FullType{ "b8"_c };
-        Variable::__Resolved* res = Symbol::Resolved(&ShaderSwitches[i]);
-        res->usageBits.flags.isConst = true;
-        res->builtin = true;
-        res->typeSymbol = &Bool8Type;
         ShaderValueExpressions[i].value = false;
-        ShaderSwitches[i].valueExpression = &ShaderValueExpressions[i];
-        this->validator->ResolveVariable(this, &ShaderSwitches[i]);
+        TransientString str = TransientString("gplIs", ProgramInstance::__Resolved::EntryTypeToString(ProgramInstance::__Resolved::EntryType(i)));
+        this->intrinsicScope->symbolLookup.Insert(HashString(str), &ShaderValueExpressions[i]);
+
     }
     
     this->ignoreReservedWords = false;

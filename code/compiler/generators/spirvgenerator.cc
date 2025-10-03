@@ -3721,12 +3721,6 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
     Variable* var = static_cast<Variable*>(symbol);
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
 
-    // If builtin, just return value as a literal
-    if (varResolved->builtin && var->name.StartsWith("gplIs"))
-    {
-        return SPIRVResult(generator->shaderValueExpressions[generator->shaderStage].value);
-    }
-
     Function::__Resolved* entryRes = Symbol::Resolved(generator->entryPoint);
     if (entryRes->visibleSymbols.Find(var) == entryRes->visibleSymbols.end())
         return SPIRVResult::Invalid();
@@ -4525,17 +4519,19 @@ GenerateTernaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generat
 {
     TernaryExpression* ternaryExpression = static_cast<TernaryExpression*>(expr);
     TernaryExpression::__Resolved* ternaryExpressionResolved = Symbol::Resolved(ternaryExpression);
-    
-    ValueUnion val;
-    if (ternaryExpression->lhs->EvalValue(val))
+    Function::__Resolved* entryRes = Symbol::Resolved(generator->entryPoint);
+
+    SPIRVResult lhsResult = GenerateExpressionSPIRV(compiler, generator, ternaryExpression->lhs);
+
+    // First check for literal code gen
+    if (lhsResult.isLiteral)
     {
-        if (val.b[0])
+        if (lhsResult.literalValue.b)
             return GenerateExpressionSPIRV(compiler, generator, ternaryExpression->ifExpression);
         else
             return GenerateExpressionSPIRV(compiler, generator, ternaryExpression->elseExpression);
     }
 
-    SPIRVResult lhsResult = GenerateExpressionSPIRV(compiler, generator, ternaryExpression->lhs);
     SPIRVResult ifResult = GenerateExpressionSPIRV(compiler, generator, ternaryExpression->ifExpression);
     SPIRVResult elseResult = GenerateExpressionSPIRV(compiler, generator, ternaryExpression->elseExpression);
     
@@ -4881,81 +4877,91 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
             SymbolExpression* symbolExpression = static_cast<SymbolExpression*>(expr);
             SymbolExpression::__Resolved* symResolved = Symbol::Resolved(symbolExpression);
             SPIRVResult type = SPIRVResult::Invalid();
-            if (symResolved->symbol->symbolType == Symbol::SymbolType::VariableType)
+
+            if (symbolExpression->symbol.StartsWith("gpl"))
             {
-                Variable* var = static_cast<Variable*>(symResolved->symbol);
-                Variable::__Resolved* varResolved = Symbol::Resolved(var);
-                SPIRVResult res = SPIRVResult::Invalid();
-                if (!varResolved->builtin)
+                // Special case for variables that start with GPL and might be per program
+                const SymbolAssignment& assign = GetSymbol(generator, symbolExpression->symbol);
+                return SPIRVResult(assign.value);
+            }
+            else
+            {
+                if (symResolved->symbol->symbolType == Symbol::SymbolType::VariableType)
                 {
-                    SPIRVResult::Storage storage = ResolveSPIRVVariableStorage(var->type, varResolved->typeSymbol, varResolved->storage, varResolved->usageBits);
-                    const SymbolAssignment& sym = GetSymbol(generator, symbolExpression->symbol);
-                    type = sym.type;
-                    if (generator->accessChain.empty())
+                    Variable* var = static_cast<Variable*>(symResolved->symbol);
+                    Variable::__Resolved* varResolved = Symbol::Resolved(var);
+                    SPIRVResult res = SPIRVResult::Invalid();
+                    if (!varResolved->builtin)
                     {
-                        if (generator->literalExtract)
+                        SPIRVResult::Storage storage = ResolveSPIRVVariableStorage(var->type, varResolved->typeSymbol, varResolved->storage, varResolved->usageBits);
+                        const SymbolAssignment& sym = GetSymbol(generator, symbolExpression->symbol);
+                        type = sym.type;
+                        if (generator->accessChain.empty())
                         {
-                            if (sym.sym->symbolType == Symbol::SymbolType::VariableType)
+                            if (generator->literalExtract)
                             {
-                                Variable* var = static_cast<Variable*>(sym.sym);
-                                Variable::__Resolved* varRes = Symbol::Resolved(var);
-                                if (var->type.literal && varRes->typeSymbol->columnSize == 1 && varRes->typeSymbol->rowSize == 1)
+                                if (sym.sym->symbolType == Symbol::SymbolType::VariableType)
                                 {
-                                    res = SPIRVResult(INVALID_ARG, type.typeName);
-                                    res.isValue = true;
-                                    res.isConst = true;
-                                    res.literalValue = SPIRVResult::LiteralValue();
+                                    Variable* var = static_cast<Variable*>(sym.sym);
+                                    Variable::__Resolved* varRes = Symbol::Resolved(var);
+                                    if (var->type.literal && varRes->typeSymbol->columnSize == 1 && varRes->typeSymbol->rowSize == 1)
+                                    {
+                                        res = SPIRVResult(INVALID_ARG, type.typeName);
+                                        res.isValue = true;
+                                        res.isConst = true;
+                                        res.literalValue = SPIRVResult::LiteralValue();
+                                    }
+                                }
+                                else
+                                {
+                                    assert(false);
                                 }
                             }
                             else
                             {
-                                assert(false);
+                                res = type;
+                                res.name = sym.value;
                             }
                         }
                         else
                         {
-                            res = type;
-                            res.name = sym.value;
+                            auto [ty, accessStorage] = generator->accessChain.back();
+                            for (size_t i = 0; i < ty->symbols.size; i++)
+                            {
+                                if (ty->symbols[i]->name == symbolExpression->symbol)
+                                {
+                                    Variable* var = static_cast<Variable*>(ty->symbols[i]);
+                                    Variable::__Resolved* varRes = Symbol::Resolved(var);
+                                    SPIRVResult index = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(i));
+
+                                    // If part of an access chain, generate a pointer version of the type
+                                    res = GeneratePointerTypeSPIRV(compiler, generator, var->type, varRes->typeSymbol, accessStorage);
+                                    res.scope = accessStorage;
+                                    res.AddAccessChainLink({ index });
+                                    break;
+                                }
+                            }
                         }
                     }
                     else
                     {
-                        auto [ty, accessStorage] = generator->accessChain.back();
-                        for (size_t i = 0; i < ty->symbols.size; i++)
-                        {
-                            if (ty->symbols[i]->name == symbolExpression->symbol)
-                            {
-                                Variable* var = static_cast<Variable*>(ty->symbols[i]);
-                                Variable::__Resolved* varRes = Symbol::Resolved(var);
-                                SPIRVResult index = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(i));
-
-                                // If part of an access chain, generate a pointer version of the type
-                                res = GeneratePointerTypeSPIRV(compiler, generator, var->type, varRes->typeSymbol, accessStorage);
-                                res.scope = accessStorage;
-                                res.AddAccessChainLink({index});
-                                break;
-                            }
-                        }
+                        res = GenerateVariableSPIRV(compiler, generator, var, false, true);
                     }
+
+                    return res;
+                }
+                else if (symResolved->symbol->symbolType == Symbol::SymbolType::EnumerationType)
+                {
+                    Enumeration* enu = static_cast<Enumeration*>(symResolved->symbol);
+                    Enumeration::__Resolved* enuResolved = Symbol::Resolved(enu);
+                    type = GenerateTypeSPIRV(compiler, generator, enu->type, enuResolved->typeSymbol);
+                    return SPIRVResult(INVALID_ARG, type.typeName, false, false, type.scope, type.parentTypes);
                 }
                 else
                 {
-                    res = GenerateVariableSPIRV(compiler, generator, var, false, true);
+                    type = GenerateTypeSPIRV(compiler, generator, symResolved->fullType, symResolved->type);
+                    return SPIRVResult(GetSymbol(generator, symbolExpression->symbol).value, type.typeName, false, false, type.scope, type.parentTypes);
                 }
-                
-                return res;
-            }
-            else if (symResolved->symbol->symbolType == Symbol::SymbolType::EnumerationType)
-            {
-                Enumeration* enu = static_cast<Enumeration*>(symResolved->symbol);
-                Enumeration::__Resolved* enuResolved = Symbol::Resolved(enu);
-                type = GenerateTypeSPIRV(compiler, generator, enu->type, enuResolved->typeSymbol);
-                return SPIRVResult(INVALID_ARG, type.typeName, false, false, type.scope, type.parentTypes);
-            }
-            else
-            {
-                type = GenerateTypeSPIRV(compiler, generator, symResolved->fullType, symResolved->type);
-                return SPIRVResult(GetSymbol(generator, symbolExpression->symbol).value, type.typeName, false, false, type.scope, type.parentTypes);
             }
         }
         case Symbol::AccessExpressionType:
@@ -5098,16 +5104,21 @@ GenerateForStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, F
 void
 GenerateIfStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, IfStatement* stat)
 {
-    // If B evaluates to a constant value, pick a branch and return early    
+    Function::__Resolved* entryRes = Symbol::Resolved(generator->entryPoint);
+
     SPIRVResult lhsResult = GenerateExpressionSPIRV(compiler, generator, stat->condition);
+
+    // First check if branching is static
     if (lhsResult.isLiteral)
     {
+        // We don't care about the value of val, all we care about is that only one branch will be visible
         if (lhsResult.literalValue.b)
             GenerateStatementSPIRV(compiler, generator, stat->ifStatement);
-        else if (stat->elseStatement != nullptr)
-            GenerateStatementSPIRV(compiler, generator, stat->elseStatement);
+        else
+             GenerateStatementSPIRV(compiler, generator, stat->elseStatement);
         return;
     }
+
     lhsResult = LoadValueSPIRV(compiler, generator, lhsResult);
     
     uint32_t ifLabel = generator->writer->Reserve();
@@ -5205,20 +5216,26 @@ GenerateTerminateStatementSPIRV(const Compiler* compiler, SPIRVGenerator* genera
 void
 GenerateSwitchStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, SwitchStatement* stat)
 {
-    ValueUnion val;
-    if (stat->switchExpression->EvalValue(val))
+    SPIRVResult lhsResult = GenerateExpressionSPIRV(compiler, generator, stat->switchExpression);
+
+    // Check if switch is static
+    if (lhsResult.isLiteral)
     {
+        Function::__Resolved* entryRes = Symbol::Resolved(generator->entryPoint);
+
         generator->skipBreakContinue = true;
-        if (val.ui[0] < stat->caseExpressions.size)
-            GenerateStatementSPIRV(compiler, generator, stat->caseStatements[val.ui[0]]);
+
+        // We don't care about the value of val, all we care about is that only one branch will be visible
+        if (lhsResult.literalValue.u32 < stat->caseExpressions.size)
+            GenerateStatementSPIRV(compiler, generator, stat->caseStatements[lhsResult.literalValue.u32]);
         else if (stat->defaultStatement != nullptr)
             GenerateStatementSPIRV(compiler, generator, stat->defaultStatement);
+
         generator->skipBreakContinue = false;
         return;
     }
     
-    SPIRVResult switchRes = GenerateExpressionSPIRV(compiler, generator, stat->switchExpression);
-    switchRes = LoadValueSPIRV(compiler, generator, switchRes);
+    lhsResult = LoadValueSPIRV(compiler, generator, lhsResult);
 
     uint32_t defaultCase = generator->writer->Reserve();
     uint32_t mergeLabel = generator->writer->Reserve();
@@ -5255,7 +5272,7 @@ GenerateSwitchStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.start);
     }
     generator->writer->Instruction(OpSelectionMerge, SPVWriter::Section::LocalFunction, SPVArg{mergeLabel}, SelectionControl::None);
-    generator->writer->Instruction(OpSwitch, SPVWriter::Section::LocalFunction, switchRes, SPVArg{defaultCase}, SPVCaseList(caseArgs, branchArgs));
+    generator->writer->Instruction(OpSwitch, SPVWriter::Section::LocalFunction, lhsResult, SPVArg{defaultCase}, SPVCaseList(caseArgs, branchArgs));
 
     for (size_t i = 0; i < stat->caseStatements.size; i++)
     {
@@ -5685,6 +5702,8 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
     };
 
     this->evaluatingProgram = progResolved;
+    for (auto& val : this->shaderValueExpressions)
+        val.value;
     for (uint32_t mapping = ProgramInstance::__Resolved::EntryType::FirstShader; mapping < ProgramInstance::__Resolved::EntryType::LastShader; mapping++)
     {
         Cleanup cleanup(this);
@@ -5701,6 +5720,13 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
 
         // Main scope
         this->writer->PushScope();
+
+        uint32_t boolType = GeneratePODTypeSPIRV(compiler, this, GPULang::TypeCode::Bool8);
+        for (uint32_t switchMapping = ProgramInstance::__Resolved::EntryType::FirstShader; switchMapping < ProgramInstance::__Resolved::EntryType::LastShader; switchMapping++)
+        {
+            TransientString str = TransientString("gplIs", ProgramInstance::__Resolved::EntryTypeToString(ProgramInstance::__Resolved::EntryType(switchMapping)));
+            this->writer->scopeStack.back().symbols[str.c_str()] = SymbolAssignment{ .sym = nullptr, .value = this->shaderValueExpressions[switchMapping].value, .type = SPIRVResult(INVALID_ARG, boolType) };
+        }
 
         // Temporarily store original variable values
         std::unordered_map<Variable*, Expression*> originalVariableValues;

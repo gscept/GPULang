@@ -1210,6 +1210,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
 {
     ProgramInstance* prog = static_cast<ProgramInstance*>(symbol);
     ProgramInstance::__Resolved* progResolved = Symbol::Resolved(prog);
+    compiler->currentState.prog = prog;
 
     Type* progType = &ProgramType;
     Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &progType->scope);
@@ -1427,7 +1428,6 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 && entryType <= ProgramInstance::__Resolved::EntryType::RayIntersectionShader)
             {
                 compiler->currentState.shaderType = entryType;
-                compiler->currentState.prog = prog;
                 // when we've set these flags, run function validation to make sure it's properly formatted
                 if (!this->ValidateFunction(compiler, fun))
                     return false;
@@ -1469,7 +1469,6 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 
                 ShaderValueExpressions[entryType].value = false;
                 compiler->currentState.function = nullptr;
-                compiler->currentState.prog = nullptr;
 
                 if (entryType == ProgramInstance::__Resolved::VertexShader)
                 {
@@ -1516,6 +1515,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
         progResolved->mappings[ProgramInstance::__Resolved::EntryType::RenderState] = &compiler->defaultRenderState;
         progResolved->usage.flags.hasRenderState = true;
     }
+    compiler->currentState.prog = nullptr;
 
     return true;
 }
@@ -4185,12 +4185,20 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         {
             IfStatement* ifStat = static_cast<IfStatement*>(symbol);
             ValueUnion val;
+
             if (ifStat->condition->EvalValue(val))
             {
+                Function::__Resolved* entryRes = Symbol::Resolved(compiler->currentState.function);
                 if (val.b[0])
+                {
                     res |= this->ResolveVisibility(compiler, ifStat->ifStatement);
+                    entryRes->visibleSymbols.Insert(ifStat->ifStatement);
+                }
                 else if (ifStat->elseStatement != nullptr)
+                {
                     res |= this->ResolveVisibility(compiler, ifStat->elseStatement);
+                    entryRes->visibleSymbols.Insert(ifStat->elseStatement);
+                }
             }
             else
             {
@@ -4198,7 +4206,9 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
 
                 res |= this->ResolveVisibility(compiler, ifStat->ifStatement);
                 if (ifStat->elseStatement != nullptr)
+                {
                     res |= this->ResolveVisibility(compiler, ifStat->elseStatement);
+                }
             }
             break;
         }
@@ -4208,10 +4218,17 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             ValueUnion val;
             if (ternExp->lhs->EvalValue(val))
             {
+                Function::__Resolved* entryRes = Symbol::Resolved(compiler->currentState.function);
                 if (val.b[0])
+                {
                     res |= this->ResolveVisibility(compiler, ternExp->ifExpression);
+                    entryRes->visibleSymbols.Insert(ternExp->ifExpression);
+                }
                 else
+                {
                     res |= this->ResolveVisibility(compiler, ternExp->elseExpression);
+                    entryRes->visibleSymbols.Insert(ternExp->elseExpression);
+                }
             }
             else
             {
@@ -4227,10 +4244,17 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             ValueUnion val;
             if (switchStat->switchExpression->EvalValue(val))
             {
+                Function::__Resolved* entryRes = Symbol::Resolved(compiler->currentState.function);
                 if (val.i[0] < switchStat->caseExpressions.size)
+                {
                     res |= this->ResolveVisibility(compiler, switchStat->caseStatements[val.i[0]]);
+                    entryRes->visibleSymbols.Insert(switchStat->caseStatements[val.i[0]]);
+                }
                 else if (switchStat->defaultStatement != nullptr)
+                {
                     res |= this->ResolveVisibility(compiler, switchStat->defaultStatement);
+                    entryRes->visibleSymbols.Insert(switchStat->defaultStatement);
+                }
             }
             else
             {

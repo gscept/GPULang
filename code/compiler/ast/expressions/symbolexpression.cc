@@ -117,6 +117,12 @@ SymbolExpression::Resolve(Compiler* compiler)
             thisResolved->type = &SamplerType;
             return true;
         }
+        else if (thisResolved->symbol->symbolType == Symbol::BoolExpressionType)
+        {
+            thisResolved->fullType = Type::FullType{ "b8"_c };
+            thisResolved->type = &Bool8Type;
+            return true;
+        }
         else
         {
             compiler->Error(Format("Symbol is not function, type, variable, enum or structure"), this);
@@ -164,7 +170,6 @@ SymbolExpression::EvalSymbol(FixedString& out) const
     out = this->symbol;
     return true;
 }
-
 
 //------------------------------------------------------------------------------
 /**

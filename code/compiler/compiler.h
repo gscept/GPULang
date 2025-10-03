@@ -34,7 +34,6 @@ struct Type;
 struct Scope;
 struct Generate;
 
-extern thread_local Variable ShaderSwitches[ProgramInstance::__Resolved::EntryType::NumProgramEntries];
 extern thread_local BoolExpression ShaderValueExpressions[ProgramInstance::__Resolved::EntryType::NumProgramEntries];
 
 struct Compiler
