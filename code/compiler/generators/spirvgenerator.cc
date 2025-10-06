@@ -2025,7 +2025,7 @@ inline size_t FragmentSize<GPULang::SPVArg>(GPULang::SPVArg arg)
 template<>
 inline size_t FragmentSize<GPULang::SPVEnum>(GPULang::SPVEnum arg)
 {
-    return const_len(arg.str);
+    return const_len(arg.str) + 1;
 }
 
 GPULang::SPVArg operator""_spv(unsigned long long arg)
@@ -5971,6 +5971,10 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
             if (optimizer.Run(spvBinary.data(), spvBinary.size(), &optimized))
             {
                 spvBinary = std::move(optimized);
+            }
+            else
+            {
+                assert(false && "Fuuuuck");
             }
         }
 

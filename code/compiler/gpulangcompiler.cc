@@ -25,7 +25,7 @@
 
 namespace GPULang
 {
-Allocator* StringAllocator;
+thread_local Allocator* StringAllocator;
 }
 
 using namespace GPULang;
