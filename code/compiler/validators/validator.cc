@@ -61,7 +61,7 @@ namespace GPULang
 */
 static StaticSet scalarQualifiers =
 std::array{
-    "const"_c, "var"_c
+    "const"_c, "var"_c, "no_reflect"_c
 };
 
 static StaticSet bindingQualifiers =
@@ -2323,6 +2323,10 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         {
             varResolved->usageBits.flags.isVar = true;
             var->type.literal = false;
+        }
+        else if (attr->name == "no_reflect")
+        {
+            varResolved->usageBits.flags.isNoReflect = true;
         }
         else if (attr->name == "link_defined")
         {

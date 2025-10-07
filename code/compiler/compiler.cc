@@ -1301,6 +1301,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
         {
             Variable* var = static_cast<Variable*>(symbol);
             Variable::__Resolved* resolved = static_cast<Variable::__Resolved*>(symbol->resolved);
+            if (resolved->usageBits.flags.isNoReflect)
+                continue;
             Serialize::Variable output;
             output.binding = resolved->binding;
             output.group = resolved->group;

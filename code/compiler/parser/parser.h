@@ -66,6 +66,7 @@ enum class TokenType
     , NonTemporal_Decorator
     , Binding_Decorator
     , Group_Decorator
+    , NoReflect_Decorator
     , NoInterpolate_Modifier
     , NoPerspective_Modifier
     , Centroid_Modifier

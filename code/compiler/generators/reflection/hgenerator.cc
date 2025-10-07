@@ -237,6 +237,8 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
 {
     Variable* var = static_cast<Variable*>(symbol);
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
+    if (varResolved->usageBits.flags.isNoReflect) // skip
+        return;        
 
     if (evaluateLinkDefinedVariables)
     {

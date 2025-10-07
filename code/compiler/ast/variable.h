@@ -69,6 +69,7 @@ struct Variable : public Symbol
                 uint32_t isProgramMember : 1;           // variable is part of a program
                 uint32_t isPadding : 1;
                 uint32_t isPhysicalAddress : 1;         // variable is a physical address
+                uint32_t isNoReflect : 1;               // variable should not be emitted in reflection
             } flags;
             uint32_t bits;
         };

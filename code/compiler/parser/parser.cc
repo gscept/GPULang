@@ -172,6 +172,7 @@ constexpr StaticMap HardCodedTokens = std::array{
     , std::pair{ "non_temporal"_h, TokenType::NonTemporal_Decorator }
     , std::pair{ "binding"_h, TokenType::Binding_Decorator }
     , std::pair{ "group"_h, TokenType::Group_Decorator }
+    , std::pair{ "no_reflect"_h, TokenType::NoReflect_Decorator }
     , std::pair{ "no_interpolate"_h, TokenType::NoInterpolate_Modifier }
     , std::pair{ "no_perspective"_h, TokenType::NoPerspective_Modifier }
     , std::pair{ "centroid"_h, TokenType::Centroid_Modifier }
@@ -1268,6 +1269,7 @@ static void SetupTokenClassTable()
     TokenClassTable[(uint32_t)TokenType::Atomic_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT;
     TokenClassTable[(uint32_t)TokenType::NoRead_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT;
     TokenClassTable[(uint32_t)TokenType::NonTemporal_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT;
+    TokenClassTable[(uint32_t)TokenType::NoReflect_Decorator] |= TOKEN_VARIABLE_ATTRIBUTE_BIT;
     
     TokenClassTable[(uint32_t)TokenType::In_Storage] |= TOKEN_PARAMETER_ATTRIBUTE_BIT;
     TokenClassTable[(uint32_t)TokenType::Out_Storage] |= TOKEN_PARAMETER_ATTRIBUTE_BIT;
