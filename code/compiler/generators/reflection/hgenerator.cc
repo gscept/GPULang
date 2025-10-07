@@ -309,7 +309,7 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
             if (it != typeToHeaderType.end())
                 type = it->second.c_str();
             auto item = typeToArraySize.Find(var->type.name);
-            TStr arrayType;// = typeToArraySize.Find(var->type.name)->second.c_str();
+            TStr arrayType = "";// = typeToArraySize.Find(var->type.name)->second.c_str();
             if (item != typeToArraySize.end())
                 arrayType = item->second;
             auto modIt = var->type.modifiers.rbegin();
@@ -433,8 +433,49 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* p
             HeaderWriter initWriter;
             if (var->valueExpression != nullptr)
             {
-                GenerateHInitializer(compiler, var->valueExpression, initWriter);
-                writer.WriteLine(Format("static const %s %s%s = %s;", type.buf, var->name.c_str(), arrayType.buf, initWriter.output.c_str()));
+                ValueUnion val;
+                if (var->valueExpression->EvalValue(val))
+                {
+                    TransientString initializer;
+                    for (int size = 0; size < val.columnSize; size++)
+                    {
+                        switch (val.code)
+                        {
+                            case TypeCode::Bool:
+                                initializer.Append(val.b[size]);
+                                break;
+                            case TypeCode::Int:
+                            case TypeCode::Int16:
+                                initializer.Append(val.i[size]);
+                                break;
+                            case TypeCode::UInt:
+                            case TypeCode::UInt16:
+                                initializer.Append(val.ui[size]);
+                                break;
+                            case TypeCode::Float:
+                            case TypeCode::Float16:
+                                initializer.Append(val.f[size]);
+                                initializer.Append('f');
+                                break;
+                        }
+                        if (size < val.columnSize-1)
+                            initializer.Append(",");
+                    }
+                    if (val.columnSize > 1)
+                    {
+                        writer.WriteLine(Format("static const %s %s%s = {%s};", type.buf, var->name.c_str(), arrayType.buf, initializer.c_str()));
+                    }
+                    else
+                    {
+                        writer.WriteLine(Format("static const %s %s%s = %s;", type.buf, var->name.c_str(), arrayType.buf, initializer.c_str()));
+                    }
+
+                }
+                else
+                {
+                    GenerateHInitializer(compiler, var->valueExpression, initWriter);
+                    writer.WriteLine(Format("static const %s %s%s = %s;", type.buf, var->name.c_str(), arrayType.buf, initWriter.output.c_str()));
+                }
             }
             else
             {
