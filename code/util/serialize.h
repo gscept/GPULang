@@ -25,7 +25,6 @@ namespace Serialization
 //------------------------------------------------------------------------------
 enum class AddressMode
 {
-    InvalidAddressMode,
     RepeatAddressMode,
     MirrorAddressMode,
     ClampAddressMode,
@@ -34,14 +33,12 @@ enum class AddressMode
 
 enum class Filter
 {
-    InvalidFilter,
     PointFilter,
     LinearFilter
 };
 
 enum class BorderColor
 {
-    InvalidBorderColor,
     TransparentBorder,
     BlackBorder,
     WhiteBorder
@@ -49,7 +46,6 @@ enum class BorderColor
 
 enum class CompareMode
 {
-    InvalidCompareMode,
     NeverCompare,
     LessCompare,
     EqualCompare,
@@ -62,7 +58,6 @@ enum class CompareMode
 
 enum class RasterizationMode
 {
-    InvalidRasterizationMode,
     FillMode,
     LineMode,
     PointMode
@@ -70,7 +65,6 @@ enum class RasterizationMode
 
 enum class CullMode
 {
-    InvalidCullMode,
     NoCullMode,
     FrontMode,
     BackMode,
@@ -79,14 +73,12 @@ enum class CullMode
 
 enum class WindingOrderMode
 {
-    InvalidWindingOrderMode,
     ClockwiseMode,
     CounterClockwiseMode
 };
 
 enum class StencilOp
 {
-    InvalidStencilOp,
     StencilKeepOp,
     StencilZeroOp,
     StencilReplaceOp,
@@ -99,7 +91,6 @@ enum class StencilOp
 
 enum class LogicOp
 {
-    InvalidLogicOp,
     LogicClearOp,
     LogicAndOp,
     LogicAndReverseOp,
@@ -120,7 +111,6 @@ enum class LogicOp
 
 enum class BlendFactor
 {
-    InvalidBlendFactor,
     ZeroFactor,
     OneFactor,
     SourceColorFactor,
@@ -144,7 +134,6 @@ enum class BlendFactor
 
 enum class BlendOp
 {
-    InvalidBlendOp,
     AddOp,
     SubtractOp,
     ReverseSubtractOp,
