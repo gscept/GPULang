@@ -555,14 +555,14 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
             stateResolved->addressW = (GPULang::Serialization::AddressMode)value.i[0];
             break;
         case SamplerStateInstance::__Resolved::AllFilterType:
-            if (stateResolved->isInline && (value.i[0] != 0x7 && value.i[0] != 0x0))
+            if (stateResolved->isInline && (value.i[0] != 0x1 && value.i[0] != 0x0))
             {
                 compiler->Error(Format("inline_sampler requires filter mode to either be FilterMode.Linear or FilterMode.Point"), assignEntry);
                 return false;
             }
-            stateResolved->minFilter = (GPULang::Serialization::Filter)((value.i[0] & 0x1) + 1);
-            stateResolved->magFilter = (GPULang::Serialization::Filter)(((value.i[0] >> 1) & 0x1) + 1);
-            stateResolved->mipFilter = (GPULang::Serialization::Filter)(((value.i[0] >> 2) & 0x1) + 1);
+            stateResolved->minFilter = (GPULang::Serialization::Filter)(value.i[0] & 0x1);
+            stateResolved->magFilter = (GPULang::Serialization::Filter)((value.i[0] >> 1) & 0x1);
+            stateResolved->mipFilter = (GPULang::Serialization::Filter)((value.i[0] >> 2) & 0x1);
             break;
         case SamplerStateInstance::__Resolved::MinFilterType:
             if (stateResolved->isInline)

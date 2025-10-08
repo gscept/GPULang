@@ -1667,17 +1667,17 @@ def generate_types():
         name = 'FilterMode',
         type_name = 'UInt32',
         members=[
-            EnumMember("Point"),
+            EnumMember("Point", value = 0),
             EnumMember("Nearest", value = 0),
-            EnumMember("Linear"),
-            EnumMember("MinMagMipLinear"),
-            EnumMember("MinMagLinearMipPoint"),
-            EnumMember("MinLinearMagMipPoint"),
-            EnumMember("MinMagMipPoint"),
-            EnumMember("MinMagPointMipLinear"),
-            EnumMember("MinPointMagMipLinear"),
-            EnumMember("MinLinearMagPointMipLinear"),
-            EnumMember("MinPointMagLinearMipPoint")
+            EnumMember("Linear", value = 1),
+            EnumMember("MinMagMipLinear", value = 0x1 | (0x1 << 1) | (0x1) << 2),
+            EnumMember("MinMagLinearMipPoint", value = 0x1 | (0x1 << 1) | (0x0) << 2),
+            EnumMember("MinLinearMagMipPoint", value = 0x1 | (0x0 << 1) | (0x0) << 2),
+            EnumMember("MinMagMipPoint", value = 0x0 | (0x0 << 1) | (0x0) << 2),
+            EnumMember("MinMagPointMipLinear", value = 0x0 | (0x0 << 1) | (0x1) << 2),
+            EnumMember("MinPointMagMipLinear", value = 0x0 | (0x1 << 1) | (0x1) << 2),
+            EnumMember("MinLinearMagPointMipLinear", value = 0x1 | (0x0 << 1) | (0x1) << 2),
+            EnumMember("MinPointMagLinearMipPoint", value = 0x0 | (0x1 << 1) | (0x0) << 2)
         ]
     )
     enums.append(enum)

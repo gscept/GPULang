@@ -6322,21 +6322,21 @@ inline constexpr auto FilterModeNearest_value = 0x0;
 extern EnumExpression FilterModeNearest;
 inline constexpr auto FilterModeLinear_value = 0x1;
 extern EnumExpression FilterModeLinear;
-inline constexpr auto FilterModeMinMagMipLinear_value = 0x2;
+inline constexpr auto FilterModeMinMagMipLinear_value = 0x7;
 extern EnumExpression FilterModeMinMagMipLinear;
 inline constexpr auto FilterModeMinMagLinearMipPoint_value = 0x3;
 extern EnumExpression FilterModeMinMagLinearMipPoint;
-inline constexpr auto FilterModeMinLinearMagMipPoint_value = 0x4;
+inline constexpr auto FilterModeMinLinearMagMipPoint_value = 0x1;
 extern EnumExpression FilterModeMinLinearMagMipPoint;
-inline constexpr auto FilterModeMinMagMipPoint_value = 0x5;
+inline constexpr auto FilterModeMinMagMipPoint_value = 0x0;
 extern EnumExpression FilterModeMinMagMipPoint;
-inline constexpr auto FilterModeMinMagPointMipLinear_value = 0x6;
+inline constexpr auto FilterModeMinMagPointMipLinear_value = 0x4;
 extern EnumExpression FilterModeMinMagPointMipLinear;
-inline constexpr auto FilterModeMinPointMagMipLinear_value = 0x7;
+inline constexpr auto FilterModeMinPointMagMipLinear_value = 0x6;
 extern EnumExpression FilterModeMinPointMagMipLinear;
-inline constexpr auto FilterModeMinLinearMagPointMipLinear_value = 0x8;
+inline constexpr auto FilterModeMinLinearMagPointMipLinear_value = 0x5;
 extern EnumExpression FilterModeMinLinearMagPointMipLinear;
-inline constexpr auto FilterModeMinPointMagLinearMipPoint_value = 0x9;
+inline constexpr auto FilterModeMinPointMagLinearMipPoint_value = 0x2;
 extern EnumExpression FilterModeMinPointMagLinearMipPoint;
 struct AddressMode : public Enumeration
 {
