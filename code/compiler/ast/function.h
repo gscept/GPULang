@@ -82,6 +82,7 @@ struct Function : public Symbol
             uint32_t partitionMethod = 0x0;
             uint32_t pixelOrigin = 0x0;
             uint32_t computeDerivativeIndexing = 0x0;
+            uint32_t layerOrViewportOutput = 0x0;
 
         } executionModifiers;
 

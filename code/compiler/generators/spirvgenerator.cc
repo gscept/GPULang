@@ -60,7 +60,6 @@ namespace GPULang
 {
 struct SPVHeader
 {
-    uint32_t magic;
     union
     {
         struct
@@ -577,9 +576,10 @@ SPV_ENUM(ShaderViewportIndex, 70)
 SPV_ENUM(MeshShadingEXT, 5283)
 SPV_ENUM(RayTracingKHR, 4479)
 SPV_ENUM(Int64ImageEXT, 5016)
-SPV_ENUM(ComputeDerivativeGroupLinearKHR, 5350)
+SPV_ENUM(ShaderViewportIndexLayerEXT, 5254)
 SPV_ENUM(ComputeDerivativeGroupQuadsKHR, 5288)
 SPV_ENUM(PhysicalStorageBufferAddresses, 5347)
+SPV_ENUM(ComputeDerivativeGroupLinearKHR, 5350)
 SPV_ENUM(BitInstructions, 6025)
 }
 
@@ -1001,6 +1001,7 @@ SPV_ENUM(Refract, 72)
 SPV_STRING(GLSL, GLSL.std.450)
 SPV_ENUM(SPV_KHR_compute_shader_derivatives, 0xFFFF)
 SPV_ENUM(SPV_KHR_bit_instructions, 0xFFFF)
+SPV_ENUM(SPV_EXT_shader_viewport_index_layer, 0xFFFF)
 
 static const unsigned INVALID_ARG = 0xFFFFFFFF;
 
@@ -1042,7 +1043,7 @@ struct SPVWriter
     void Header(uint32_t spvMajor, uint32_t spvMinor, uint32_t compilerVersion, uint32_t generatorVersion, uint32_t bound)
     {
         SPVHeader header;
-        header.magic = 0x07230203;
+        uint32_t magic = 0x07230203;
         header.version.flags.leading = 0;
         header.version.flags.major = spvMajor;
         header.version.flags.minor = spvMinor;
@@ -1051,7 +1052,7 @@ struct SPVWriter
         header.bound = bound;
         header.schema = 0;
             
-        this->binaries[(uint32_t)Section::Top].push_back(header.magic);
+        this->binaries[(uint32_t)Section::Top].push_back(magic);
         this->binaries[(uint32_t)Section::Top].push_back(header.version.bits);
         this->binaries[(uint32_t)Section::Top].push_back(header.generatorVersion);
         this->binaries[(uint32_t)Section::Top].push_back(header.bound);
@@ -1059,7 +1060,7 @@ struct SPVWriter
         if (this->outputText)
         {
             char buf[64];
-            uint32_t written = snprintf(buf, 64, "; Magic: 0x%.8lx (SPIRV Universal %d.%d)\n", header.version.bits, spvMajor, spvMinor);
+            uint32_t written = snprintf(buf, 64, "; Magic: 0x%.8lx (SPIRV Vulkan %d.%d)\n", header.version.bits, spvMajor, spvMinor);
             this->texts[(uint32_t)Section::Top].Append(buf, written);
             written = snprintf(buf, 64, "; Generator: 0x%.8lx (GPULang: %d)\n", 0x00080001, header.generatorVersion);
             this->texts[(uint32_t)Section::Top].Append(buf, written);
@@ -5826,11 +5827,21 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
 
         switch (mapping)
         {
+        case ProgramInstance::__Resolved::VertexShader:
+            if (funResolved->executionModifiers.layerOrViewportOutput)
+            {
+                this->writer->Extension(SPV_EXT_shader_viewport_index_layer);
+            }
+            break;
         case ProgramInstance::__Resolved::GeometryShader:
             this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, SPVArg{ entryFunction }, ExecutionModes::Invocations, funResolved->executionModifiers.invocations);
             this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, SPVArg{ entryFunction }, ExecutionModes::OutputVertices, funResolved->executionModifiers.maxOutputVertices);
             this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, SPVArg{ entryFunction }, inputPrimitiveTopologyEnumMap[funResolved->executionModifiers.inputPrimitiveTopology]);
             this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, SPVArg{ entryFunction }, outputPrimitiveTopologyEnumMap[funResolved->executionModifiers.inputPrimitiveTopology]);
+            if (funResolved->executionModifiers.layerOrViewportOutput)
+            {
+                this->writer->Extension(SPV_EXT_shader_viewport_index_layer);
+            }
             break;
         case ProgramInstance::__Resolved::HullShader:
             this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, SPVArg{ entryFunction }, partitionMap[funResolved->executionModifiers.partitionMethod]);
@@ -5839,6 +5850,10 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
             this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, SPVArg{ entryFunction }, ExecutionModes::OutputVertices, funResolved->executionModifiers.maxOutputVertices);
             break;
         case ProgramInstance::__Resolved::DomainShader:
+            if (funResolved->executionModifiers.layerOrViewportOutput)
+            {
+                this->writer->Extension(SPV_EXT_shader_viewport_index_layer);
+            }
             break;
         case ProgramInstance::__Resolved::PixelShader:
         {
@@ -5904,7 +5919,7 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
             originalVariableValues[it2->first] = it2->second;
         }
 
-        this->writer->Header(1, 5, 1, 1, this->writer->counter);
+        this->writer->Header(1, 2, 1, 1, this->writer->counter);
 
         std::vector<uint32_t> spvBinary;
         spvBinary.insert(spvBinary.end(), this->writer->binaries[(uint32_t)SPVWriter::Section::Top].begin(), this->writer->binaries[(uint32_t)SPVWriter::Section::Top].end());

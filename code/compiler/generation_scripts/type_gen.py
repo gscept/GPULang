@@ -2971,16 +2971,17 @@ def generate_types():
             )
 
             spirv_function = '' 
-            if builtin == 'OutputLayer':
+            if builtin == 'SetOutputLayer':
                 spirv_function += '    g->writer->Capability(Capabilities::ShaderLayer);\n'
-            elif builtin == 'OutputViewport':
+            elif builtin == 'SetOutputViewport':
                 spirv_function += '    g->writer->Capability(Capabilities::ShaderViewportIndex);\n'
             spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);\n'
             spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
             spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{builtin}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
             spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
             spirv_function += '    g->interfaceVariables.Insert(ret);\n'
-            spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, args[0]);\n'
+            spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
+            spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);\n'
             spirv_function += '    return SPIRVResult::Invalid();\n'
             
 

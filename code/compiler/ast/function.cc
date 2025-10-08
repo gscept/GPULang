@@ -46,6 +46,7 @@ Function::Function()
     thisResolved->executionModifiers.earlyDepth = false;
     thisResolved->executionModifiers.depthAlwaysGreater = false;
     thisResolved->executionModifiers.depthAlwaysLesser = false;
+    thisResolved->executionModifiers.layerOrViewportOutput = false;
     thisResolved->isPrototype = false;
     thisResolved->scope.type = Scope::ScopeType::Local;
     thisResolved->scope.owningSymbol = this;

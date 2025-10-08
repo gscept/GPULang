@@ -16712,45 +16712,53 @@ SPIRVResult SPIRV_VertexGetDrawIndex(const Compiler* c, SPIRVGenerator* g, uint3
 
 SPIRVResult SPIRV_VertexSetOutputLayer_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
+    g->writer->Capability(Capabilities::ShaderLayer);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSetOutputLayer"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Layer);
     g->interfaceVariables.Insert(ret);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, args[0]);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
     return SPIRVResult::Invalid();
 }
 
 SPIRVResult SPIRV_VertexSetOutputLayer_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
+    g->writer->Capability(Capabilities::ShaderLayer);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSetOutputLayer"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Layer);
     g->interfaceVariables.Insert(ret);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, args[0]);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
     return SPIRVResult::Invalid();
 }
 
 SPIRVResult SPIRV_VertexSetOutputViewport_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
+    g->writer->Capability(Capabilities::ShaderViewportIndex);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSetOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::ViewportIndex);
     g->interfaceVariables.Insert(ret);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, args[0]);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
     return SPIRVResult::Invalid();
 }
 
 SPIRVResult SPIRV_VertexSetOutputViewport_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
+    g->writer->Capability(Capabilities::ShaderViewportIndex);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSetOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
     g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::ViewportIndex);
     g->interfaceVariables.Insert(ret);
-    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, args[0]);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
     return SPIRVResult::Invalid();
 }
 

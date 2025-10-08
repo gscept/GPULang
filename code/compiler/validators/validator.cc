@@ -4451,6 +4451,13 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 }
                 return true;
             };
+
+            static const std::function<bool(Compiler* compiler, Expression* expr, const ConstantString& fun)> layerViewportFunction = [](Compiler* compiler, Expression* expr, const ConstantString& fun)
+            {
+                Function::__Resolved* funResolved = Symbol::Resolved(compiler->currentState.function);
+                funResolved->executionModifiers.layerOrViewportOutput = true;
+                return true;
+            };
             
             static const StaticMap conditionalBuiltins =
             std::array{
@@ -4470,6 +4477,10 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 , std::pair{ GeometryGetPoint_name, geometryTypeConditionFunction }
                 , std::pair{ GeometryGetLine_name, geometryTypeConditionFunction }
                 , std::pair{ GeometryGetTriangle_name, geometryTypeConditionFunction }
+                , std::pair{ VertexSetOutputLayer_UInt16_name, layerViewportFunction }
+                , std::pair{ VertexSetOutputLayer_UInt32_name, layerViewportFunction }
+                , std::pair{ VertexSetOutputViewport_UInt16_name, layerViewportFunction }
+                , std::pair{ VertexSetOutputViewport_UInt32_name, layerViewportFunction }
                 , std::pair{ "ddx"_c, derivativeConditionFunction }
                 , std::pair{ "ddy"_c, derivativeConditionFunction }
                 , std::pair{ "fwidth"_c, derivativeConditionFunction }
