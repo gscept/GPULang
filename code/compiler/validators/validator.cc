@@ -2401,9 +2401,23 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         if (set_contains(parameterAccessFlags, attr->name))
         {
             if (attr->name == "in")
+            {
+                if (!varResolved->usageBits.flags.isEntryPointParameter)
+                {
+                    compiler->Error(Format("'in' storage only supported on functions marked as entry_point"), symbol);
+                    return false;
+                }
                 varResolved->storage = Storage::Input;
+            }
             else if (attr->name == "out")
+            {
+                if (!varResolved->usageBits.flags.isEntryPointParameter)
+                {
+                    compiler->Error(Format("'out' storage only supported on functions marked as entry_point"), symbol);
+                    return false;
+                }
                 varResolved->storage = Storage::Output;
+            }
             else if (attr->name == "ray_payload")
             {
                 if (varResolved->storage == Storage::Input)
@@ -3565,7 +3579,8 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
                     return false;
                 }
             }
-            
+
+
 
             if (varResolved->parameterBits.flags.isNoPerspective
                 && compiler->currentState.shaderType != ProgramInstance::__Resolved::PixelShader)
@@ -3820,7 +3835,7 @@ ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc, c
 
         // Add transient modifiers from the next stages in parameters to the previous stages out parameters
         ProgramInstance::__Resolved* progRes = Symbol::Resolved(compiler->currentState.prog);
-        progRes->variablesWithTransientModifiers.Insert(var, inResolved->usageBits.bits);
+        progRes->variablesWithTransientModifiers.Insert(var, inResolved->parameterBits.bits);
 
         if (outResolved->parameterBits.flags.isPatch)
         {

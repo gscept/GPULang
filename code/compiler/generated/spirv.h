@@ -2896,9 +2896,7 @@ SPIRVResult SPIRV_Float32x2_operator_neq_Float32x2(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_Float32x2_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = args[1];
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -2906,9 +2904,7 @@ SPIRVResult SPIRV_Float32x2_operator_scale_Float32(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_Float32x2_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = ConverterTable[TypeConversionTable::UInt32ToFloat32](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::UInt32ToFloat32](c, g, 1, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -2916,9 +2912,7 @@ SPIRVResult SPIRV_Float32x2_operator_scale_UInt32(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_Float32x2_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = ConverterTable[TypeConversionTable::Int32ToFloat32](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::Int32ToFloat32](c, g, 1, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -3228,19 +3222,16 @@ SPIRVResult SPIRV_UInt32x2_operator_neq_UInt32x2(const Compiler* c, SPIRVGenerat
 
 SPIRVResult SPIRV_UInt32x2_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Float32ToUInt32](c, g, 1, args[1]);
-    rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, rhs);
-    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    SPIRVResult lhs = ConverterTable[TypeConversionTable::UInt32ToFloat32](c, g, 2, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_UInt32x2_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = args[1];
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -3249,8 +3240,7 @@ SPIRVResult SPIRV_UInt32x2_operator_scale_UInt32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_UInt32x2_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Int32ToUInt32](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::Int32ToUInt32](c, g, 1, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -3617,19 +3607,16 @@ SPIRVResult SPIRV_Int32x2_operator_neq_Int32x2(const Compiler* c, SPIRVGenerator
 
 SPIRVResult SPIRV_Int32x2_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Float32ToInt32](c, g, 1, args[1]);
-    rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, rhs);
-    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    SPIRVResult lhs = ConverterTable[TypeConversionTable::Int32ToFloat32](c, g, 2, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_Int32x2_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::UInt32ToInt32](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::UInt32ToInt32](c, g, 1, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -3638,8 +3625,7 @@ SPIRVResult SPIRV_Int32x2_operator_scale_UInt32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_Int32x2_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = args[1];
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -4168,9 +4154,7 @@ SPIRVResult SPIRV_Float16x2_operator_neq_Float16x2(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_Float16x2_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = args[1];
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -4178,9 +4162,7 @@ SPIRVResult SPIRV_Float16x2_operator_scale_Float16(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_Float16x2_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = ConverterTable[TypeConversionTable::UInt16ToFloat16](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::UInt16ToFloat16](c, g, 1, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -4188,9 +4170,7 @@ SPIRVResult SPIRV_Float16x2_operator_scale_UInt16(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_Float16x2_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = ConverterTable[TypeConversionTable::Int16ToFloat16](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::Int16ToFloat16](c, g, 1, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -4500,19 +4480,16 @@ SPIRVResult SPIRV_UInt16x2_operator_neq_UInt16x2(const Compiler* c, SPIRVGenerat
 
 SPIRVResult SPIRV_UInt16x2_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Float16ToUInt16](c, g, 1, args[1]);
-    rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, rhs);
-    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    SPIRVResult lhs = ConverterTable[TypeConversionTable::UInt16ToFloat16](c, g, 2, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_UInt16x2_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = args[1];
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -4521,8 +4498,7 @@ SPIRVResult SPIRV_UInt16x2_operator_scale_UInt16(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_UInt16x2_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Int16ToUInt16](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::Int16ToUInt16](c, g, 1, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -4889,19 +4865,16 @@ SPIRVResult SPIRV_Int16x2_operator_neq_Int16x2(const Compiler* c, SPIRVGenerator
 
 SPIRVResult SPIRV_Int16x2_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Float16ToInt16](c, g, 1, args[1]);
-    rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, rhs);
-    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    SPIRVResult lhs = ConverterTable[TypeConversionTable::Int16ToFloat16](c, g, 2, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_Int16x2_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::UInt16ToInt16](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::UInt16ToInt16](c, g, 1, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -4910,8 +4883,7 @@ SPIRVResult SPIRV_Int16x2_operator_scale_UInt16(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_Int16x2_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = args[1];
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 2, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -5291,9 +5263,7 @@ SPIRVResult SPIRV_Float32x3_operator_neq_Float32x3(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_Float32x3_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = args[1];
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -5301,9 +5271,7 @@ SPIRVResult SPIRV_Float32x3_operator_scale_Float32(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_Float32x3_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = ConverterTable[TypeConversionTable::UInt32ToFloat32](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::UInt32ToFloat32](c, g, 1, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -5311,9 +5279,7 @@ SPIRVResult SPIRV_Float32x3_operator_scale_UInt32(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_Float32x3_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = ConverterTable[TypeConversionTable::Int32ToFloat32](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::Int32ToFloat32](c, g, 1, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -5635,19 +5601,16 @@ SPIRVResult SPIRV_UInt32x3_operator_neq_UInt32x3(const Compiler* c, SPIRVGenerat
 
 SPIRVResult SPIRV_UInt32x3_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Float32ToUInt32](c, g, 1, args[1]);
-    rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, rhs);
-    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    SPIRVResult lhs = ConverterTable[TypeConversionTable::UInt32ToFloat32](c, g, 3, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_UInt32x3_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = args[1];
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -5656,8 +5619,7 @@ SPIRVResult SPIRV_UInt32x3_operator_scale_UInt32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_UInt32x3_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Int32ToUInt32](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::Int32ToUInt32](c, g, 1, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -6036,19 +5998,16 @@ SPIRVResult SPIRV_Int32x3_operator_neq_Int32x3(const Compiler* c, SPIRVGenerator
 
 SPIRVResult SPIRV_Int32x3_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Float32ToInt32](c, g, 1, args[1]);
-    rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, rhs);
-    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    SPIRVResult lhs = ConverterTable[TypeConversionTable::Int32ToFloat32](c, g, 3, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_Int32x3_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::UInt32ToInt32](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::UInt32ToInt32](c, g, 1, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -6057,8 +6016,7 @@ SPIRVResult SPIRV_Int32x3_operator_scale_UInt32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_Int32x3_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = args[1];
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -6611,9 +6569,7 @@ SPIRVResult SPIRV_Float16x3_operator_neq_Float16x3(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_Float16x3_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = args[1];
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -6621,9 +6577,7 @@ SPIRVResult SPIRV_Float16x3_operator_scale_Float16(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_Float16x3_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = ConverterTable[TypeConversionTable::UInt16ToFloat16](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::UInt16ToFloat16](c, g, 1, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -6631,9 +6585,7 @@ SPIRVResult SPIRV_Float16x3_operator_scale_UInt16(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_Float16x3_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = ConverterTable[TypeConversionTable::Int16ToFloat16](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::Int16ToFloat16](c, g, 1, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -6955,19 +6907,16 @@ SPIRVResult SPIRV_UInt16x3_operator_neq_UInt16x3(const Compiler* c, SPIRVGenerat
 
 SPIRVResult SPIRV_UInt16x3_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Float16ToUInt16](c, g, 1, args[1]);
-    rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, rhs);
-    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    SPIRVResult lhs = ConverterTable[TypeConversionTable::UInt16ToFloat16](c, g, 3, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_UInt16x3_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = args[1];
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -6976,8 +6925,7 @@ SPIRVResult SPIRV_UInt16x3_operator_scale_UInt16(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_UInt16x3_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Int16ToUInt16](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::Int16ToUInt16](c, g, 1, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -7356,19 +7304,16 @@ SPIRVResult SPIRV_Int16x3_operator_neq_Int16x3(const Compiler* c, SPIRVGenerator
 
 SPIRVResult SPIRV_Int16x3_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Float16ToInt16](c, g, 1, args[1]);
-    rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, rhs);
-    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    SPIRVResult lhs = ConverterTable[TypeConversionTable::Int16ToFloat16](c, g, 3, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_Int16x3_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::UInt16ToInt16](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::UInt16ToInt16](c, g, 1, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -7377,8 +7322,7 @@ SPIRVResult SPIRV_Int16x3_operator_scale_UInt16(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_Int16x3_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = args[1];
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 3, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -7782,9 +7726,7 @@ SPIRVResult SPIRV_Float32x4_operator_neq_Float32x4(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_Float32x4_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = args[1];
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -7792,9 +7734,7 @@ SPIRVResult SPIRV_Float32x4_operator_scale_Float32(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_Float32x4_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = ConverterTable[TypeConversionTable::UInt32ToFloat32](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::UInt32ToFloat32](c, g, 1, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -7802,9 +7742,7 @@ SPIRVResult SPIRV_Float32x4_operator_scale_UInt32(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_Float32x4_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = ConverterTable[TypeConversionTable::Int32ToFloat32](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::Int32ToFloat32](c, g, 1, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -8150,19 +8088,16 @@ SPIRVResult SPIRV_UInt32x4_operator_neq_UInt32x4(const Compiler* c, SPIRVGenerat
 
 SPIRVResult SPIRV_UInt32x4_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Float32ToUInt32](c, g, 1, args[1]);
-    rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, rhs);
-    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    SPIRVResult lhs = ConverterTable[TypeConversionTable::UInt32ToFloat32](c, g, 4, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_UInt32x4_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = args[1];
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -8171,8 +8106,7 @@ SPIRVResult SPIRV_UInt32x4_operator_scale_UInt32(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_UInt32x4_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Int32ToUInt32](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::Int32ToUInt32](c, g, 1, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -8575,19 +8509,16 @@ SPIRVResult SPIRV_Int32x4_operator_neq_Int32x4(const Compiler* c, SPIRVGenerator
 
 SPIRVResult SPIRV_Int32x4_operator_scale_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Float32ToInt32](c, g, 1, args[1]);
-    rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, rhs);
-    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    SPIRVResult lhs = ConverterTable[TypeConversionTable::Int32ToFloat32](c, g, 4, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_Int32x4_operator_scale_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::UInt32ToInt32](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::UInt32ToInt32](c, g, 1, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -8596,8 +8527,7 @@ SPIRVResult SPIRV_Int32x4_operator_scale_UInt32(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_Int32x4_operator_scale_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = args[1];
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -9198,9 +9128,7 @@ SPIRVResult SPIRV_Float16x4_operator_neq_Float16x4(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_Float16x4_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = args[1];
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -9208,9 +9136,7 @@ SPIRVResult SPIRV_Float16x4_operator_scale_Float16(const Compiler* c, SPIRVGener
 SPIRVResult SPIRV_Float16x4_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = ConverterTable[TypeConversionTable::UInt16ToFloat16](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::UInt16ToFloat16](c, g, 1, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -9218,9 +9144,7 @@ SPIRVResult SPIRV_Float16x4_operator_scale_UInt16(const Compiler* c, SPIRVGenera
 SPIRVResult SPIRV_Float16x4_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = LoadValueSPIRV(c, g, args[1]);
-    rhs = ConverterTable[TypeConversionTable::Int16ToFloat16](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::Int16ToFloat16](c, g, 1, args[1]);
     uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
@@ -9566,19 +9490,16 @@ SPIRVResult SPIRV_UInt16x4_operator_neq_UInt16x4(const Compiler* c, SPIRVGenerat
 
 SPIRVResult SPIRV_UInt16x4_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Float16ToUInt16](c, g, 1, args[1]);
-    rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, rhs);
-    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    SPIRVResult lhs = ConverterTable[TypeConversionTable::UInt16ToFloat16](c, g, 4, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_UInt16x4_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = args[1];
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -9587,8 +9508,7 @@ SPIRVResult SPIRV_UInt16x4_operator_scale_UInt16(const Compiler* c, SPIRVGenerat
 SPIRVResult SPIRV_UInt16x4_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Int16ToUInt16](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::Int16ToUInt16](c, g, 1, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -9991,19 +9911,16 @@ SPIRVResult SPIRV_Int16x4_operator_neq_Int16x4(const Compiler* c, SPIRVGenerator
 
 SPIRVResult SPIRV_Int16x4_operator_scale_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
-    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::Float16ToInt16](c, g, 1, args[1]);
-    rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, rhs);
-    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+    SPIRVResult lhs = ConverterTable[TypeConversionTable::Int16ToFloat16](c, g, 4, args[0]);
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_Int16x4_operator_scale_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = ConverterTable[TypeConversionTable::UInt16ToInt16](c, g, 1, args[1]);
+    SPIRVResult rhs = ConverterTable[TypeConversionTable::UInt16ToInt16](c, g, 1, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -10012,8 +9929,7 @@ SPIRVResult SPIRV_Int16x4_operator_scale_UInt16(const Compiler* c, SPIRVGenerato
 SPIRVResult SPIRV_Int16x4_operator_scale_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult rhs;
-    rhs = args[1];
+    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
     rhs = GenerateSplatCompositeSPIRV(c, g, returnType, 4, rhs);
     uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
     return SPIRVResult(ret, returnType, true);
@@ -16705,6 +16621,7 @@ SPIRVResult SPIRV_inverse_Float16x4x4(const Compiler* c, SPIRVGenerator* g, uint
 
 SPIRVResult SPIRV_VertexGetOutputLayer(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
+    g->writer->Capability(Capabilities::ShaderLayer);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetOutputLayer"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
@@ -16717,6 +16634,7 @@ SPIRVResult SPIRV_VertexGetOutputLayer(const Compiler* c, SPIRVGenerator* g, uin
 
 SPIRVResult SPIRV_VertexGetOutputViewport(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
+    g->writer->Capability(Capabilities::ShaderViewportIndex);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
@@ -16729,6 +16647,7 @@ SPIRVResult SPIRV_VertexGetOutputViewport(const Compiler* c, SPIRVGenerator* g, 
 
 SPIRVResult SPIRV_VertexGetIndex(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
+    g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
@@ -16741,6 +16660,7 @@ SPIRVResult SPIRV_VertexGetIndex(const Compiler* c, SPIRVGenerator* g, uint32_t 
 
 SPIRVResult SPIRV_VertexGetInstanceIndex(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
+    g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetInstanceIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
@@ -16753,6 +16673,7 @@ SPIRVResult SPIRV_VertexGetInstanceIndex(const Compiler* c, SPIRVGenerator* g, u
 
 SPIRVResult SPIRV_VertexGetBaseIndex(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
+    g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetBaseIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
@@ -16765,6 +16686,7 @@ SPIRVResult SPIRV_VertexGetBaseIndex(const Compiler* c, SPIRVGenerator* g, uint3
 
 SPIRVResult SPIRV_VertexGetBaseInstanceIndex(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
+    g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetBaseInstanceIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
@@ -16777,6 +16699,7 @@ SPIRVResult SPIRV_VertexGetBaseInstanceIndex(const Compiler* c, SPIRVGenerator* 
 
 SPIRVResult SPIRV_VertexGetDrawIndex(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
+    g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplGetDrawIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);

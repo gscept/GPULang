@@ -5653,14 +5653,16 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
 
     static std::unordered_map<uint32_t, std::string> pixelOriginMap =
     {
-        { PixelOriginCenter_value, "PixelCenterInteger" }
+        { 0, "OriginUpperLeft" }
+        , { PixelOriginCenter_value, "PixelCenterInteger" }
         , { PixelOriginUpperLeft_value, "OriginUpperLeft" }
         , { PixelOriginLowerLeft_value, "OriginLowerLeft" }
     };
     
     static std::unordered_map<uint32_t, SPVEnum> pixelOriginEnumMap =
     {
-        { PixelOriginCenter_value, ExecutionModes::PixelCenterInteger }
+        { 0, ExecutionModes::OriginUpperLeft }
+        , { PixelOriginCenter_value, ExecutionModes::PixelCenterInteger }
         , { PixelOriginUpperLeft_value, ExecutionModes::OriginUpperLeft }
         , { PixelOriginLowerLeft_value, ExecutionModes::OriginLowerLeft }
     };
@@ -5672,8 +5674,6 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
         , { InputTopologyLinesAdjacency_value, "InputLinesAdjacency" }
         , { InputTopologyTriangles_value, "Triangles" }
         , { InputTopologyTrianglesAdjacency_value, "InputTrianglesAdjacency" }
-        //, { Function::__Resolved::PrimitiveTopology::Quads, "Quads" }
-        //, { Function::__Resolved::PrimitiveTopology::Isolines, "Isolines" }
     };
 
     static std::unordered_map<uint32_t, SPVEnum> inputPrimitiveTopologyEnumMap =
@@ -5683,8 +5683,6 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
         , { InputTopologyLinesAdjacency_value, ExecutionModes::InputLinesAdjacency }
         , { InputTopologyTriangles_value, ExecutionModes::Triangles }
         , { InputTopologyTrianglesAdjacency_value, ExecutionModes::InputTrianglesAdjacency }
-        //, { Function::__Resolved::PrimitiveTopology::Quads, ExecutionModes::Quads }
-        //, { Function::__Resolved::PrimitiveTopology::Isolines, ExecutionModes::Isolines }
 };
 
     static std::unordered_map<uint32_t, std::string> outputPrimitiveTopologyMap =

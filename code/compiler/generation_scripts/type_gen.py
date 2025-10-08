@@ -956,34 +956,46 @@ def generate_types():
                         if bit_width_mapping[type] != bit_width_mapping[scale_type]:
                             continue
 
+                        # If scale type is float, then we must convert the vector to float always
                         if scale_type.startswith('Float'):
-                            scalar_result_type = f'{scale_type}x{size}'
+                            scalar_return_type = scale_type
+                            vector_result_type = f'{scale_type}x{size}'
                         else:
-                            scalar_result_type = type_name
+                            scalar_return_type = base_type_mapping[type_name]
+                            vector_result_type = type_name
                         fun = Function(
                             decl_name=function_name,
                             api_name=f'operator{op}',
-                            return_type=scalar_result_type,
+                            return_type=vector_result_type,
                             parameters=[Variable(decl_name=arg_name, api_name='arg', type_name=scale_type)],
                             is_member=True
                         )
 
                         spirv_function = ''
-                        spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
-                        spirv_function += '    SPIRVResult rhs;\n'
-                        if type.startswith('Float'):
-                            spirv_function += '    rhs = LoadValueSPIRV(c, g, args[1]);\n'
-                            if type != base_type_mapping[scale_type]:
-                                spirv_function += f'    rhs = ConverterTable[TypeConversionTable::{scale_type}To{type}](c, g, 1, args[1]);\n'
+
+                        # If we scale to float, convert whatever is on the left to float
+                        if scalar_return_type.startswith('Float'):
+                            if type != scalar_return_type:
+                                spirv_function += f'    SPIRVResult lhs = ConverterTable[TypeConversionTable::{type}To{scalar_return_type}](c, g, {size}, args[0]);\n'
+                                spirv_function += f'    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);\n'
+                            elif scale_type != scalar_return_type:
+                                spirv_function += f'    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
+                                spirv_function += f'    SPIRVResult rhs = ConverterTable[TypeConversionTable::{scale_type}To{scalar_return_type}](c, g, 1, args[1]);\n'
                             else:
-                                spirv_function += '    rhs = args[1];\n'
+                                spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
+                                spirv_function += '    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);\n'
                         else:
-                            if type != base_type_mapping[scale_type]:
-                                spirv_function += f'    rhs = ConverterTable[TypeConversionTable::{scale_type}To{type}](c, g, 1, args[1]);\n'
+                            if type != scalar_return_type:
+                                spirv_function += f'    SPIRVResult lhs = ConverterTable[TypeConversionTable::{type}To{scalar_return_type}](c, g, {size}, args[0]);\n'
+                                spirv_function += f'    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);\n'
+                            elif scale_type != scalar_return_type:
+                                spirv_function += f'    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
+                                spirv_function += f'    SPIRVResult rhs = ConverterTable[TypeConversionTable::{scale_type}To{scalar_return_type}](c, g, 1, args[1]);\n'
                             else:
-                                spirv_function += '    rhs = args[1];\n'
+                                spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
+                                spirv_function += '    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);\n'
                             spirv_function += f'    rhs = GenerateSplatCompositeSPIRV(c, g, returnType, {size}, rhs);\n'
-                        if type.startswith('Float'):
+                        if scalar_return_type.startswith('Float'):
                             spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);\n'
                         else:
                             spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);\n'
@@ -2916,11 +2928,11 @@ def generate_types():
         )
 
         spirv_function = ''
-        if builtin == 'OutputLayer':
+        if builtin == 'GetOutputLayer':
             spirv_function += '    g->writer->Capability(Capabilities::ShaderLayer);\n'
-        elif builtin == 'OutputViewport':
+        elif builtin == 'GetOutputViewport':
             spirv_function += '    g->writer->Capability(Capabilities::ShaderViewportIndex);\n'
-        elif builtin == 'Index' or builtin == 'InstanceIndex' or builtin == 'BaseIndex' or builtin == 'BaseInstanceIndex' or builtin == 'DrawIndex':
+        elif builtin == 'GetIndex' or builtin == 'GetInstanceIndex' or builtin == 'GetBaseIndex' or builtin == 'GetBaseInstanceIndex' or builtin == 'GetDrawIndex':
             spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
         spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);\n'
         spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'

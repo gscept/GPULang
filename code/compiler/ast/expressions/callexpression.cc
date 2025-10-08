@@ -360,12 +360,20 @@ CallExpression::Resolve(Compiler* compiler)
         if (symbol->symbolType != Symbol::FunctionType)
         {
             compiler->Error(Format("Unrecognized function '%s' called", this->thisResolved->functionSymbol.c_str()), this);
+            return false;
         }
         this->thisResolved->function = static_cast<Function*>(symbol);
     }
 
     if (this->thisResolved->function != nullptr)
     {
+        Function::__Resolved* funRes = Symbol::Resolved(this->thisResolved->function);
+        if (funRes->isEntryPoint)
+        {
+            compiler->Error("entry_point functions can't be called", this);
+            return false;
+        }
+
         // Check for recursion
         auto scopeIt = compiler->scopes.rbegin();
         auto end = compiler->scopes.rend();
