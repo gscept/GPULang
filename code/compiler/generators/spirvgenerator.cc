@@ -1003,6 +1003,7 @@ SPV_ENUM(SPV_KHR_compute_shader_derivatives, 0)
 SPV_ENUM(SPV_KHR_bit_instructions, 1)
 SPV_ENUM(SPV_EXT_shader_viewport_index_layer, 2)
 SPV_ENUM(SPV_EXT_physical_storage_buffer, 3)
+SPV_ENUM(SPV_KHR_storage_buffer_storage_class, 4)
 
 static const unsigned INVALID_ARG = 0xFFFFFFFF;
 
@@ -3879,7 +3880,7 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
             )
             generator->interfaceVariables.Insert(name);
         
-        auto ret = SPIRVResult(name, typeName.typeName, false, false, typeName.scope, parentTypes);\
+        auto ret = SPIRVResult(name, typeName.typeName, false, false, typeName.scope, parentTypes);
         ret.isStructPadded = typeName.isStructPadded;
         return ret;
     }
@@ -5738,6 +5739,8 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
         }
 
         this->writer->Capability(extensionEnumMap[(ProgramInstance::__Resolved::EntryType)mapping]);
+        this->writer->Extension(SPV_KHR_storage_buffer_storage_class);
+
         if (compiler->target.supportsPhysicalAddressing)
         {
             this->writer->Capability(Capabilities::Addresses);
@@ -5921,7 +5924,7 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
             originalVariableValues[it2->first] = it2->second;
         }
 
-        this->writer->Header(1, 2, 1, 1, this->writer->counter);
+        this->writer->Header(1, 5, 1, 1, this->writer->counter);
 
         std::vector<uint32_t> spvBinary;
         spvBinary.insert(spvBinary.end(), this->writer->binaries[(uint32_t)SPVWriter::Section::Top].begin(), this->writer->binaries[(uint32_t)SPVWriter::Section::Top].end());

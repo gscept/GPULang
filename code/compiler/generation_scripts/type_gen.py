@@ -2929,9 +2929,9 @@ def generate_types():
 
         spirv_function = ''
         if builtin == 'GetOutputLayer':
-            spirv_function += '    g->writer->Capability(Capabilities::ShaderLayer);\n'
+            spirv_function += '    g->writer->Capability(Capabilities::ShaderViewportIndexLayerEXT);\n'
         elif builtin == 'GetOutputViewport':
-            spirv_function += '    g->writer->Capability(Capabilities::ShaderViewportIndex);\n'
+            spirv_function += '    g->writer->Capability(Capabilities::ShaderViewportIndexLayerEXT);\n'
         elif builtin == 'GetIndex' or builtin == 'GetInstanceIndex' or builtin == 'GetBaseIndex' or builtin == 'GetBaseInstanceIndex' or builtin == 'GetDrawIndex':
             spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
         spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);\n'
@@ -2972,9 +2972,9 @@ def generate_types():
 
             spirv_function = '' 
             if builtin == 'SetOutputLayer':
-                spirv_function += '    g->writer->Capability(Capabilities::ShaderLayer);\n'
+                spirv_function += '    g->writer->Capability(Capabilities::ShaderViewportIndexLayerEXT);\n'
             elif builtin == 'SetOutputViewport':
-                spirv_function += '    g->writer->Capability(Capabilities::ShaderViewportIndex);\n'
+                spirv_function += '    g->writer->Capability(Capabilities::ShaderViewportIndexLayerEXT);\n'
             spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);\n'
             spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
             spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{builtin}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
