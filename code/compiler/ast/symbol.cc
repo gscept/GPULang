@@ -53,8 +53,6 @@ Symbol::TypeToString() const
         return "sampler_state";
     case VariableType:
         return "variable";
-    case SubroutineType:
-        return "subroutine";
     case FunctionType:
         return "function";
     case StructureType:
