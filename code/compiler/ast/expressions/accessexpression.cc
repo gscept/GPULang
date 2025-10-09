@@ -4,6 +4,7 @@
 //------------------------------------------------------------------------------
 #include "accessexpression.h"
 #include "ast/expressions/enumexpression.h"
+#include "ast/expressions/symbolexpression.h"
 #include "util.h"
 #include "compiler.h"
 #include "ast/variable.h"
@@ -48,6 +49,23 @@ AccessExpression::Resolve(Compiler* compiler)
     
     if (!this->left->Resolve(compiler))
         return false;
+
+    if (this->left->symbolType == Symbol::SymbolType::SymbolExpressionType)
+    {
+        auto symExpr = static_cast<SymbolExpression*>(this->left);
+        Symbol* leftSym = compiler->GetSymbol(symExpr->symbol);
+        if (leftSym != nullptr)
+        {
+            if (leftSym->symbolType == SymbolType::StructureType
+                || leftSym->symbolType == SymbolType::ProgramInstanceType
+                || leftSym->symbolType == SymbolType::RenderStateInstanceType
+                || leftSym->symbolType == SymbolType::SamplerStateInstanceType)
+            {
+                compiler->Error("Access is only possible on left hand values and enums", this);
+                return false;
+            }
+        }
+    }
 
     this->left->EvalType(thisResolved->leftType);
 
