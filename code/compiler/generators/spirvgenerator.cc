@@ -999,9 +999,10 @@ SPV_ENUM(Refract, 72)
 
 #define SPV_STRING(str, value) const char* str = #value;
 SPV_STRING(GLSL, GLSL.std.450)
-SPV_ENUM(SPV_KHR_compute_shader_derivatives, 0xFFFF)
-SPV_ENUM(SPV_KHR_bit_instructions, 0xFFFF)
-SPV_ENUM(SPV_EXT_shader_viewport_index_layer, 0xFFFF)
+SPV_ENUM(SPV_KHR_compute_shader_derivatives, 0)
+SPV_ENUM(SPV_KHR_bit_instructions, 1)
+SPV_ENUM(SPV_EXT_shader_viewport_index_layer, 2)
+SPV_ENUM(SPV_EXT_physical_storage_buffer, 3)
 
 static const unsigned INVALID_ARG = 0xFFFFFFFF;
 
@@ -5744,6 +5745,7 @@ SPIRVGenerator::Generate(const Compiler* compiler, const ProgramInstance* progra
         }
         else
         {
+            this->writer->Extension(SPV_EXT_physical_storage_buffer);
             this->writer->Capability(Capabilities::PhysicalStorageBufferAddresses);
             this->writer->Instruction(OpMemoryModel, SPVWriter::Section::Header, AddressingModels::PhysicalStorageBuffer64, MemoryModels::GLSL450);
         }
